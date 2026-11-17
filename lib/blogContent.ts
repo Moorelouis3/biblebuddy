@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-17-explained",
+    title: "Judges 17 Explained: Micah's Idols and a Priest for Hire",
+    description:
+      "Judges 17 explained verse by verse: Micah's stolen silver, his private house of gods, and the Levite who became his priest for ten shekels a year.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-17-explained",
+    publishedAt: "2026-11-17",
+    readTime: "13 min read",
+    image: "/blog-banners/judges-17-explained.jpg",
+    groupPost: {
+      title: "Judges 17 Explained 📖",
+      content:
+        "A stolen fortune.\nA home filled with its own gods.\n\n📌 Nobody fought this. Everyone just went along.\n\n📖 Micah's mother melts stolen silver into an idol.\n📖 He hires a Levite as his own private priest.\n📖 \"Every man did that which was right in his own eyes.\"\n\nNew article on:\n🟢 what a **graven image** and **teraphim** actually were\n🟢 why a **Levite** took a job like this\n🟢 what happens when faith is built on your own terms\n\nHave you ever built something that felt right but wasn't? 🙏",
+    },
+  },
+  {
     slug: "judges-16-explained",
     title: "Judges 16 Explained: Delilah, Blindness, and One Last Prayer",
     description:
