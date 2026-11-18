@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-21-explained",
+    title: "Judges 21 Explained: Two Oaths and a Kidnapping at Shiloh",
+    description:
+      "Judges 21 explained verse by verse: the oath against Benjamin, the destruction of Jabeshgilead, and the ambush at Shiloh that closes the book of Judges.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-21-explained",
+    publishedAt: "2026-11-18",
+    readTime: "13 min read",
+    image: "/blog-banners/judges-21-explained.jpg",
+    groupPost: {
+      title: "Judges 21 Explained 📖",
+      content:
+        "Six hundred men survive the war.\nAn oath means not one of them can marry.\n\n📌 Israel solves one problem by creating two more.\n\n📖 A town is destroyed for missing a meeting.\n📖 Four hundred virgins still aren't enough.\n📖 A festival becomes the cover for an ambush.\n\nNew article on:\n🟢 why **Jabeshgilead** paid for Benjamin's shortage\n🟢 how Israel found a loophole in its own vow\n🟢 the one line that closes the whole book of Judges\n\nHave you ever made a promise in anger that cost more than you expected? 🙏",
+    },
+  },
+  {
     slug: "judges-20-explained",
     title: "Judges 20 Explained: Israel Goes to War With Benjamin",
     description:
