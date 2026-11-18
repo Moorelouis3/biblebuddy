@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "ruth-2-explained",
+    title: "Ruth 2 Explained: Ruth Meets Boaz in the Barley Field",
+    description:
+      "Ruth 2 explained verse by verse: Ruth gleans in Boaz's field, his unusual kindness and protection, and the first mention of a kinsman redeemer.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/ruth-2-explained",
+    publishedAt: "2026-11-18",
+    readTime: "13 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "Ruth 2 Explained 📖",
+      content:
+        "A widow walks into a field hoping for leftovers.\nBy evening the owner is protecting her himself.\n\n📌 Her quiet loyalty already reached him first.\n\n📖 Ruth gleans in a field that happens to be Boaz's.\n📖 He orders his men not to touch her.\n📖 Naomi recognizes his name as a near kinsman.\n\nNew article on:\n🟢 what **under whose wings** really pictures\n🟢 why gleaning was **her legal right**, not charity\n🟢 how one name sets up the rest of **Ruth's story**\n\nHave you ever kept working with nothing guaranteed, and had it quietly pay off? 🙏",
+    },
+  },
+  {
     slug: "ruth-1-explained",
     title: "Ruth 1 Explained: Naomi's Loss and Ruth's Vow of Loyalty",
     description:

@@ -1040,8 +1040,9 @@ banner, per the doc's own "one rule about state" section. Worth a one-line
 fix to the doc header so a future run or a human reader does not get the
 wrong signal from it.
 
-## Chapter library: ruth-1-explained on the fallback banner
-No `public/blog-banners/ruth-1-explained.jpg` exists yet, so this new chapter
-article uses the verse-breakdowns fallback (`/Whatisthebiblebanner.png`).
-Updating this one line going forward (per the routine's own doc) rather than
-adding a new block each time a chapter lands without a custom banner.
+## Chapter library: chapters on the fallback banner, waiting on a real one
+No `public/blog-banners/<slug>.jpg` exists yet for these chapters, so each
+uses the verse-breakdowns fallback (`/Whatisthebiblebanner.png`):
+ruth-1-explained, ruth-2-explained. Updating this one line going forward
+(per the routine's own doc) rather than adding a new block each time a
+chapter lands without a custom banner.
