@@ -32,6 +32,7 @@ import { BIBLE_STUDY_GROUP_ID } from "../lib/bibleStudiesCatalog";
 import StreakFlameEmoji from "./StreakFlameEmoji";
 import LevelProgressCard from "./LevelProgressCard";
 import BibleReferenceCard from "./BibleReferenceCard";
+import { updateWidgets } from "../lib/nativeWidgets";
 
 /** Chapters in the Protestant canon, so progress is a real fraction. */
 const TOTAL_BIBLE_CHAPTERS = 1189;
@@ -177,6 +178,8 @@ export default function HomeScreen() {
         displayName: profile?.display_name || profile?.username || null,
         flameId: profile?.selected_streak_flame ?? null,
       });
+      // The Streak widget on the iPhone home screen.
+      if (typeof profile?.current_streak === "number") updateWidgets({ streak: profile.current_streak });
     })();
   }, [userId]);
 

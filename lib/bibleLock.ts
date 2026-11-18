@@ -109,9 +109,22 @@ type BibleLockPlugin = {
   chooseApps(): Promise<{ chosen?: number; cancelled?: boolean }>;
   lock(): Promise<{ locked: boolean }>;
   clear(): Promise<{ locked: boolean }>;
+  /** The home-screen widgets' data; see lib/nativeWidgets.ts. Builds from 1.1 on. */
+  setWidgetSnapshot(options: { snapshot: string }): Promise<{ saved: boolean }>;
 };
 
 const BibleLock = registerPlugin<BibleLockPlugin>("BibleLock");
+
+/**
+ * Hand the iOS widgets a JSON snapshot. The native side merges it into what is
+ * stored and redraws them. Rejects on builds older than the widgets, which the
+ * caller treats as "no widgets on this phone yet".
+ */
+export async function saveWidgetSnapshot(snapshot: string): Promise<boolean> {
+  if (!isNativeApp() || !nativePluginAvailable("BibleLock")) return false;
+  const { saved } = await BibleLock.setWidgetSnapshot({ snapshot });
+  return saved;
+}
 
 const OFF: BibleLockStatus = { supported: false, authorized: false, chosen: 0, locked: false };
 

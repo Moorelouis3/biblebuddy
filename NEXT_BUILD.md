@@ -106,6 +106,27 @@ If it is ever reconsidered, none of the groundwork needs redoing:
 
 Own branch, never the same build as a submission.
 
+### 4. Home-screen widgets: Verse of the Day, Streak, My Study, Bible Lock
+**Written 2026-11-18. Blocked on a signing profile, then needs a test build.**
+
+Four widgets in one WidgetKit extension (`native/ios-extensions/BibleBuddyWidgets`,
+added to the project by `scripts/ios-widgets-extension.sh`). People add
+whichever they want from the widget gallery; Streak and Bible Lock also come in
+lock-screen sizes. Bible Lock shows locked, or unlocked with a live countdown
+to midnight, when the apps lock again.
+
+- The app hands the widgets streak, current study and today's verse through a
+  new `setWidgetSnapshot` method on the BibleLock plugin (`lib/nativeWidgets.ts`).
+  The website half is already live and does nothing on builds without it.
+- The Verse widget also fetches `/api/widgets/verse` itself, already live.
+
+**Needs before it can build:** an App ID `net.mybiblebuddy.app.widgets` with
+App Groups (`group.net.mybiblebuddy.app`) in the Apple portal, and its App Store
+provisioning profile committed to `ios-signing/` like the Bible Lock one.
+
+**Not verified:** none of the Swift has been compiled yet. The first Codemagic
+run is the compile check.
+
 ---
 
 ## Waiting for the next Android build

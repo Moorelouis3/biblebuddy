@@ -17,6 +17,7 @@ import VerseOfTheDayModal from "./VerseOfTheDayModal";
 import { useDailyVerseBookmark } from "../lib/useDailyVerseBookmark";
 import { useMemoryVerse } from "../lib/useMemoryVerse";
 import { getVerseOfTheDay } from "../lib/verseOfTheDay";
+import { updateWidgets } from "../lib/nativeWidgets";
 import {
   fetchVotdEngagement,
   fetchVotdEntryByDate,
@@ -60,6 +61,12 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
       const row = await fetchVotdEntryByDate(todayKey);
       setEntry(row);
       setLoaded(true);
+      // The Verse of the Day widget's fallback, for when it cannot fetch.
+      if (row) {
+        updateWidgets({
+          verse: { reference: row.reference, text: row.verse_text, translation: row.translation, date: row.scheduled_date },
+        });
+      }
       if (row && !impressionSent.current) {
         impressionSent.current = true;
         trackVotdEvent("votd_card_impression", {

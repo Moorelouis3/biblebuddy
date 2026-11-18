@@ -112,6 +112,12 @@ workflows:
         # carrying App Groups and Family Controls.
         script: bash scripts/ios-bible-lock-extension.sh
 
+      - name: Add the home-screen widgets
+        # Verse of the Day, Streak, My Study and Bible Lock, in one WidgetKit
+        # extension (2026-11-18). Same pattern and traps as the step above;
+        # net.mybiblebuddy.app.widgets has its own profile in ios-signing/.
+        script: bash scripts/ios-widgets-extension.sh
+
       - name: Install the app icon
         # Otherwise the app wears Capacitor's grey placeholder everywhere -
         # home screen, TestFlight, and the store listing.
@@ -266,6 +272,12 @@ workflows:
         # provisioning profile - made by hand and committed beside the app's,
         # carrying App Groups and Family Controls.
         script: bash scripts/ios-bible-lock-extension.sh
+
+      - name: Add the home-screen widgets
+        # Verse of the Day, Streak, My Study and Bible Lock, in one WidgetKit
+        # extension (2026-11-18). Same pattern and traps as the step above;
+        # net.mybiblebuddy.app.widgets has its own profile in ios-signing/.
+        script: bash scripts/ios-widgets-extension.sh
 
       - name: Install the app icon
         script: bash scripts/ios-app-icon.sh

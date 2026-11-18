@@ -14,6 +14,7 @@ import {
 import { BIBLE_YEAR_PLAN_HREF } from "../../lib/bibleYearProgress";
 import { BIBLE_YEAR_KEY, SHELF_SEATS, selectShelf, type ShelfCandidate, type ShelfRole } from "../../lib/bookshelf/selectShelf";
 import { trackWisdomBookEvent } from "../../lib/wisdomOfProverbsProducts";
+import { updateWidgets } from "../../lib/nativeWidgets";
 import LoadFailedNotice from "../LoadFailedNotice";
 import {
   BIBLE_YEAR_SHELF_COVER,
@@ -384,15 +385,30 @@ export default function YourBookshelf({
         max: SHELF_MAX_BOOKS,
       });
 
-      setBooks(
-        slots
-          .map((slot) => {
-            const book = byKey.get(slot.key);
-            return book ? { ...book, role: slot.role, reason: slot.reason } : null;
-          })
-          .filter((book): book is ShelfBook => Boolean(book)),
-      );
+      const shelf = slots
+        .map((slot) => {
+          const book = byKey.get(slot.key);
+          return book ? { ...book, role: slot.role, reason: slot.reason } : null;
+        })
+        .filter((book): book is ShelfBook => Boolean(book));
+      setBooks(shelf);
       setLoading(false);
+
+      // The My Study widget on the iPhone home screen: the first study on the
+      // shelf the reader is actually partway through, in shelf order.
+      const inProgress = shelf.find((book) => !book.isComplete && book.currentDay !== null && book.role !== "upcoming");
+      updateWidgets({
+        study: inProgress
+          ? {
+              title: inProgress.title,
+              day: inProgress.currentDay,
+              totalDays: inProgress.totalDays,
+              completedDays: inProgress.completedDays,
+              cover: inProgress.cover || null,
+              href: inProgress.href,
+            }
+          : null,
+      });
     })().catch((error: unknown) => {
       if (cancelled) return;
       console.warn("[BOOKSHELF] Could not load the shelf:", error);

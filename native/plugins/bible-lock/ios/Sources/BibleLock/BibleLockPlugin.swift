@@ -4,6 +4,7 @@ import DeviceActivity
 import FamilyControls
 import ManagedSettings
 import SwiftUI
+import WidgetKit
 
 /**
  The Bible lock (Louis, 2026-10-14).
@@ -35,7 +36,8 @@ public class BibleLockPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "requestAuthorization", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "chooseApps", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "lock", returnType: CAPPluginReturnPromise),
-        CAPPluginMethod(name: "clear", returnType: CAPPluginReturnPromise)
+        CAPPluginMethod(name: "clear", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "setWidgetSnapshot", returnType: CAPPluginReturnPromise)
     ]
 
     private let store = ManagedSettingsStore(named: .bibleLock)
@@ -168,6 +170,7 @@ public class BibleLockPlugin: CAPPlugin, CAPBridgedPlugin {
         // hour before locking does not buy the apps straight back.
         BibleLockSharedState.markLocked(force: true)
         scheduleDailyRelock()
+        WidgetCenter.shared.reloadAllTimelines()
         call.resolve(["locked": true])
     }
 
@@ -186,7 +189,62 @@ public class BibleLockPlugin: CAPPlugin, CAPBridgedPlugin {
         // Which period this unlock belongs to, so reopening the app does not
         // put the lock straight back on a day that has already been earned.
         BibleLockSharedState.markUnlocked()
+        // The Bible Lock widget starts its countdown to the next lock now.
+        WidgetCenter.shared.reloadAllTimelines()
         call.resolve(["locked": false])
+    }
+
+    // MARK: - Home-screen widgets
+
+    /**
+     Hand the widgets what only the app knows (Louis, 2026-11-18).
+
+     The widgets live in their own extension (native/ios-extensions/
+     BibleBuddyWidgets) and cannot see the web view, the sign-in or the
+     database. The app passes them a small JSON snapshot - streak, the study in
+     progress, today's verse - and this writes it into the App Group and asks
+     iOS to redraw them.
+
+     It lives in this plugin because this is the app's one native plugin and
+     already owns the App Group; a second plugin would be a second package to
+     name, link and keep in step (see the product-name note in Package.swift).
+
+     The JSON is MERGED into what is stored, key by key, because different
+     screens know different parts: a page that only knows the streak must not
+     wipe the study another page wrote. A key sent as null is cleared.
+     */
+    @objc func setWidgetSnapshot(_ call: CAPPluginCall) {
+        guard let json = call.getString("snapshot"),
+              let incomingData = json.data(using: .utf8),
+              let incoming = (try? JSONSerialization.jsonObject(with: incomingData)) as? [String: Any]
+        else {
+            call.reject("No widget snapshot to save.")
+            return
+        }
+        let key = "net.mybiblebuddy.app.widgets.snapshot"
+        let defaults = UserDefaults(suiteName: bibleLockAppGroup)
+        var merged: [String: Any] = [:]
+        if let stored = defaults?.string(forKey: key),
+           let storedData = stored.data(using: .utf8),
+           let existing = (try? JSONSerialization.jsonObject(with: storedData)) as? [String: Any] {
+            merged = existing
+        }
+        for (field, value) in incoming {
+            if value is NSNull {
+                merged.removeValue(forKey: field)
+            } else {
+                merged[field] = value
+            }
+        }
+        guard let outData = try? JSONSerialization.data(withJSONObject: merged),
+              let out = String(data: outData, encoding: .utf8)
+        else {
+            call.reject("Could not save the widget snapshot.")
+            return
+        }
+        defaults?.set(out, forKey: key)
+        WidgetCenter.shared.reloadAllTimelines()
+        call.resolve(["saved": true])
     }
 
     /**
