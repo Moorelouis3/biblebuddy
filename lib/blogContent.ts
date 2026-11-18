@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-20-explained",
+    title: "Judges 20 Explained: Israel Goes to War With Benjamin",
+    description:
+      "Judges 20 explained verse by verse: Israel's demand for justice, two days of defeat, the ambush at Gibeah, and a tribe nearly wiped out.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-20-explained",
+    publishedAt: "2026-11-18",
+    readTime: "14 min read",
+    image: "/blog-banners/judges-20-explained.jpg",
+    groupPost: {
+      title: "Judges 20 Explained 📖",
+      content:
+        "Twelve pieces go out to twelve tribes.\nFour hundred thousand men answer the call.\n\n📌 A just demand turns into a civil war.\n\n📖 Israel asks for the guilty men, not a tribe.\n📖 Benjamin refuses, and loses two days of battle first.\n📖 By the end, one tribe is almost gone.\n\nNew article on:\n🟢 why **Benjamin** chose war over surrender\n🟢 how a smaller army won **twice** before losing\n🟢 what the chapter's own numbers do and do not add up to\n\nHave you ever watched a fair fight go further than it needed to? 🙏",
+    },
+  },
+  {
     slug: "judges-19-explained",
     title: "Judges 19 Explained: The Levite and His Concubine",
     description:
