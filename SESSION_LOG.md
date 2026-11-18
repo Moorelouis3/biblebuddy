@@ -14147,3 +14147,11 @@ Next: next scheduled run keeps clearing the backlog; worth checking first whethe
 ## 2026-11-16T22:14:07Z (blog writer run)
 Article: Who Actually Wrote the Bible? | Words: ~4,521 | Category: Bible Insights | Status: pass
 Queue remaining: 38
+
+## 2026-11-18 (Bug Fixer run)
+Marching orders: work through open bug reports per docs/BUG_FIXER_AGENT.md.
+Today: fetched the open queue (25 open, all auto-logged telemetry/crash reports, none sitting in needs_louis or awaiting_approval visible to this endpoint - that check only covers `open`, which the API scopes to new/fixing), worked the oldest 5.
+Done: No new code this run - all five were ordinary, self-recovering noise, not app bugs. Two (community_event_day_posts, notifications on /bible-study-games/memory) were the same one-second connection drop, so the second was closed `duplicate` of the first. One was Sarah's chunk-load crash on /plan after an update went out - the app's own self-healing reload already fired (`autoReloaded: true` on the record), closed `not_a_bug` with a reply for her. One was an iPhone auth check cut off by the phone locking/backgrounding on /dashboard - already covered by the existing timeout/retry safeguard, closed `not_a_bug`. The last was a profile_stats load failing on a devotional day page from a brief dropped connection (two more reports from the exact same second on the same page are the same drop, left for the next run). All five closed `not_a_bug`/`duplicate`, no commit needed.
+Not live yet: nothing - no code changed this run.
+Still open: 20 more reports in the queue, left for the next run under the 5-bug cap. Cannot confirm from this agent's API whether the 7 login-redirect reports noted in the 2026-11-16 runs are still sitting in `awaiting_approval` - that endpoint only returns `new`/`fixing` reports, so Louis should check /admin/bugs directly for anything waiting on his yes/no.
+Next: next scheduled run keeps clearing the backlog (20 reports left, same shape of connection-drop noise so far).
