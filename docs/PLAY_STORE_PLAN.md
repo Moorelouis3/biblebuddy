@@ -726,6 +726,22 @@ going in through Test and release > Closed testing > Manage track works. And
 screenshots of the Console time out often enough that the accessibility tree
 is the reliable way to read it.
 
+## Production access applied for, 2026-11-18
+
+The closed test met all three criteria (published, 12+ opted in, 14 days)
+and the application went to Google at 15:34 on 18 Nov, approved by Louis
+answer by answer before Apply. Google: "usually takes 7 days or less", and
+it emails the account owner. Once approved, a production release still has
+to be created and rolled out; approval alone publishes nothing.
+
+What was claimed, so it can be stood behind: recruitment by the mailing
+list, the /android page and an in-app announcement; feedback through
+Report a Problem and DMs (the launch crash from push setup, and testers
+stuck joining the group); 0-10K installs expected in year one; "used every
+week by hundreds of people" (261 active in the 7 days to 12 Nov). Not
+measured: Android usage itself - native_app_session rows carried no Android
+user agent, so tester engagement was not visible in our own data.
+
 ## The testers
 
 Twelve real people with Google accounts, opted in and staying opted in for
