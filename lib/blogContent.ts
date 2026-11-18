@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-does-it-mean-to-fear-god",
+    title: "What Does It Mean to Fear God?",
+    description:
+      "What does it mean to fear God? Not terror, not mere respect, but reverent awe. See what Isaiah, the disciples, and Proverbs reveal about fearing the Lord.",
+    category: "Bible Insights",
+    categorySlug: "bible-insights",
+    canonicalPath: "/blog/what-does-it-mean-to-fear-god",
+    publishedAt: "2026-11-18",
+    readTime: "16 min read",
+    image: "/what-does-it-mean-to-fear-god-banner.png",
+    groupPost: {
+      title: "What Does It Mean to Fear God? 📖",
+      content:
+        "Fear God sits right next to God is love.\nThat stopped a lot of readers cold.\n\n📌 It's not terror, and it's not mere respect either.\n\n📖 Isaiah saw God's throne and said he was undone.\n📖 The disciples got more afraid after the storm calmed.\n📖 Proverbs calls it the very beginning of wisdom.\n\nNew article on:\n🟢 why fear and love were never **rivals**\n🟢 what reverent **awe** actually looks like\n🟢 how to grow in the **fear of the Lord**\n\nDoes fearing God feel like a contradiction to you? 🙏",
+    },
+  },
+  {
     slug: "ruth-2-explained",
     title: "Ruth 2 Explained: Ruth Meets Boaz in the Barley Field",
     description:

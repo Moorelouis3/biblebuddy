@@ -14155,3 +14155,8 @@ Done: No new code this run - all five were ordinary, self-recovering noise, not 
 Not live yet: nothing - no code changed this run.
 Still open: 20 more reports in the queue, left for the next run under the 5-bug cap. Cannot confirm from this agent's API whether the 7 login-redirect reports noted in the 2026-11-16 runs are still sitting in `awaiting_approval` - that endpoint only returns `new`/`fixing` reports, so Louis should check /admin/bugs directly for anything waiting on his yes/no.
 Next: next scheduled run keeps clearing the backlog (20 reports left, same shape of connection-drop noise so far).
+
+## 2026-11-18T22:15:45Z (blog writer run)
+Article: What Does It Mean to Fear God? | Words: ~3,114 | Category: Bible Insights | Status: pass
+Not live yet: no [deploy] tag on this commit (Louis removed the blog exception 2026-10-10) - goes live at the next scheduled deploy, 08:05 Berlin.
+Queue remaining: 37
