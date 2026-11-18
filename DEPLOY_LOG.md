@@ -127,3 +127,4 @@
 2026-11-17T09:02:46Z | 10 commits | Judges 14-16 Explained chapter library entries and a blog article on who wrote the Bible
 2026-11-17T17:03:25Z | 6 commits | Judges 17-18 Explained chapter library entries
 2026-11-18T09:02:08Z | 10 commits | Judges 19-21 Explained chapter library entries, iOS home-screen widgets (Verse of the Day, Streak, My Study, Bible Lock), and DM replies answering real DMs with no "this is automatic" line
+2026-11-18T17:02:42Z | 8 commits | Ruth 1-2 Explained chapter library entries, Play Store production access applied for, and a Bug Fixer session log
