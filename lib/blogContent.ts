@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-19-explained",
+    title: "Judges 19 Explained: The Levite and His Concubine",
+    description:
+      "Judges 19 explained verse by verse: the Levite's concubine, the night at Gibeah, and the crime that pushes Israel to civil war.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-19-explained",
+    publishedAt: "2026-11-18",
+    readTime: "15 min read",
+    image: "/blog-banners/judges-19-explained.jpg",
+    groupPost: {
+      title: "Judges 19 Explained 📖",
+      content:
+        "A guest is turned away in the street.\nThe night that follows breaks the whole book open.\n\n📌 Israel has no king, and it shows.\n\n📖 An old man takes in strangers nobody else would.\n📖 The men of Gibeah demand what Sodom once demanded.\n📖 By morning, the whole nation has to answer for it.\n\nNew article on:\n🟢 why Gibeah echoes **Sodom**\n🟢 what \"no king in Israel\" has already cost\n🟢 how one night leads to civil war\n\nHave you ever watched people protect themselves instead of doing right? 🙏",
+    },
+  },
+  {
     slug: "judges-18-explained",
     title: "Judges 18 Explained: A Tribe Steals a Priest and a God",
     description:
