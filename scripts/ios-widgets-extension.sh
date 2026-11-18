@@ -28,6 +28,9 @@ fi
 
 mkdir -p "$DEST"
 cp "$SOURCE_DIR"/*.swift "$DEST/"
+# The illustrations (designs v2, 2026-11-18). Bundled as plain PNG resources
+# and loaded with UIImage(named:), so no asset catalog is needed.
+cp "$SOURCE_DIR"/Art/*.png "$DEST/"
 cp "$SOURCE_DIR/Info.plist" "$DEST/"
 cp "$SOURCE_DIR/BibleBuddyWidgets.entitlements" "$DEST/"
 
@@ -59,8 +62,15 @@ ext = project.new_target(:app_extension, target_name, :ios, '16.0', nil, :swift)
 
 # Bare filenames: the group already carries the folder name.
 group = project.main_group.new_group(target_name, target_name)
-ref = group.new_reference('BibleBuddyWidgets.swift')
-ext.add_file_references([ref])
+dest = "ios/App/#{target_name}"
+Dir.glob("#{dest}/*.swift").sort.each do |path|
+  ref = group.new_reference(File.basename(path))
+  ext.add_file_references([ref])
+end
+Dir.glob("#{dest}/*.png").sort.each do |path|
+  ref = group.new_reference(File.basename(path))
+  ext.resources_build_phase.add_file_reference(ref)
+end
 group.new_reference('Info.plist')
 group.new_reference('BibleBuddyWidgets.entitlements')
 

@@ -31,6 +31,8 @@ import UIKit
  through the same link handling as an email link (components/NativeDeepLinks).
 
  Deployment target is iOS 16, so iOS 17-only modifiers sit behind #available.
+ The look is in WidgetDesign.swift and the views in WidgetViews.swift, built to
+ the approved designs in docs/widgets (v2, 2026-11-18).
  */
 
 // MARK: - Shared
@@ -44,8 +46,6 @@ let widgetsLockStateKey = "net.mybiblebuddy.app.biblelock.state"
 let widgetsLockSelectionKey = "net.mybiblebuddy.app.biblelock.selection"
 
 let siteOrigin = "https://www.mybiblebuddy.net"
-let brandBlue = Color(red: 0 / 255, green: 86 / 255, blue: 253 / 255)
-let inkColor = Color(red: 14 / 255, green: 26 / 255, blue: 58 / 255)
 
 struct StudySnapshot: Codable {
     var title: String
@@ -104,18 +104,6 @@ func siteURL(_ path: String?) -> URL {
     return URL(string: siteOrigin + (path.hasPrefix("/") ? path : "/" + path)) ?? fallback
 }
 
-extension View {
-    /// iOS 17 wants the background declared this way; iOS 16 has no such API.
-    @ViewBuilder
-    func widgetBackground(_ color: Color) -> some View {
-        if #available(iOS 17.0, *) {
-            self.containerBackground(for: .widget) { color }
-        } else {
-            self.background(color)
-        }
-    }
-}
-
 // MARK: - Verse of the Day
 
 struct VerseEntry: TimelineEntry {
@@ -128,8 +116,8 @@ struct VerseProvider: TimelineProvider {
     func placeholder(in context: Context) -> VerseEntry {
         VerseEntry(
             date: Date(),
-            reference: "Psalm 119:105",
-            text: "Thy word is a lamp unto my feet, and a light unto my path."
+            reference: "Psalm 23:1",
+            text: "The LORD is my shepherd; I shall not want."
         )
     }
 
@@ -186,42 +174,6 @@ struct VerseProvider: TimelineProvider {
     }
 }
 
-struct VerseView: View {
-    let entry: VerseEntry
-    @Environment(\.widgetFamily) private var family
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text("VERSE OF THE DAY")
-                .font(.system(size: 10, weight: .heavy))
-                .foregroundColor(Color(red: 1, green: 0.78, blue: 0.35))
-            Text(entry.text)
-                .font(.system(size: family == .systemSmall ? 13 : 15, weight: .semibold, design: .serif))
-                .foregroundColor(.white)
-                .lineLimit(family == .systemSmall ? 6 : 5)
-                .minimumScaleFactor(0.7)
-            Spacer(minLength: 0)
-            Text(entry.reference)
-                .font(.system(size: 11, weight: .bold))
-                .foregroundColor(.white.opacity(0.8))
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .widgetBackground(inkColor)
-        .widgetURL(siteURL("/dashboard"))
-    }
-}
-
-struct VerseWidget: Widget {
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "BibleBuddyVerseWidget", provider: VerseProvider()) { entry in
-            VerseView(entry: entry)
-        }
-        .configurationDisplayName("Verse of the Day")
-        .description("Today's verse from Bible Buddy.")
-        .supportedFamilies([.systemSmall, .systemMedium])
-    }
-}
-
 // MARK: - Streak
 
 struct StreakEntry: TimelineEntry {
@@ -244,60 +196,6 @@ struct StreakProvider: TimelineProvider {
     }
 }
 
-struct StreakView: View {
-    let entry: StreakEntry
-    @Environment(\.widgetFamily) private var family
-
-    private var number: String { entry.streak.map(String.init) ?? "–" }
-
-    var body: some View {
-        switch family {
-        case .accessoryCircular:
-            ZStack {
-                AccessoryWidgetBackground()
-                VStack(spacing: 0) {
-                    Text("🔥").font(.system(size: 14))
-                    Text(number).font(.system(size: 18, weight: .heavy))
-                }
-            }
-            .widgetURL(siteURL("/dashboard"))
-        case .accessoryRectangular:
-            VStack(alignment: .leading, spacing: 2) {
-                Text("🔥 \(number) day streak").font(.system(size: 15, weight: .heavy))
-                Text("Keep it going today").font(.system(size: 12))
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .widgetURL(siteURL("/dashboard"))
-        default:
-            VStack(spacing: 4) {
-                Text("🔥").font(.system(size: 34))
-                Text(number)
-                    .font(.system(size: 40, weight: .heavy))
-                    .foregroundColor(inkColor)
-                    .minimumScaleFactor(0.5)
-                    .lineLimit(1)
-                Text(entry.streak == 1 ? "DAY STREAK" : "DAY STREAK")
-                    .font(.system(size: 11, weight: .heavy))
-                    .foregroundColor(Color(red: 0.54, green: 0.36, blue: 0.25))
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .widgetBackground(Color(red: 1, green: 0.95, blue: 0.9))
-            .widgetURL(siteURL("/dashboard"))
-        }
-    }
-}
-
-struct StreakWidget: Widget {
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "BibleBuddyStreakWidget", provider: StreakProvider()) { entry in
-            StreakView(entry: entry)
-        }
-        .configurationDisplayName("Streak")
-        .description("Your Bible Buddy day streak.")
-        .supportedFamilies([.systemSmall, .accessoryCircular, .accessoryRectangular])
-    }
-}
-
 // MARK: - My Study
 
 struct StudyEntry: TimelineEntry {
@@ -310,7 +208,7 @@ struct StudyProvider: TimelineProvider {
     func placeholder(in context: Context) -> StudyEntry {
         StudyEntry(
             date: Date(),
-            study: StudySnapshot(title: "The Beginning of Everything", day: 8, totalDays: 21, completedDays: 7),
+            study: StudySnapshot(title: "The Obedience of Abraham", day: 8, totalDays: 30, completedDays: 7),
             cover: nil
         )
     }
@@ -367,84 +265,6 @@ func resized(_ image: UIImage, width: CGFloat) -> UIImage {
     format.scale = 2
     return UIGraphicsImageRenderer(size: size, format: format).image { _ in
         image.draw(in: CGRect(origin: .zero, size: size))
-    }
-}
-
-struct StudyProgressBar: View {
-    let fraction: Double
-
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                Capsule().fill(Color.black.opacity(0.08))
-                Capsule().fill(brandBlue).frame(width: max(6, geometry.size.width * CGFloat(min(1, max(0, fraction)))))
-            }
-        }
-        .frame(height: 6)
-    }
-}
-
-struct StudyView: View {
-    let entry: StudyEntry
-    @Environment(\.widgetFamily) private var family
-
-    var body: some View {
-        Group {
-            if let study = entry.study {
-                content(study)
-            } else {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("MY STUDY").font(.system(size: 10, weight: .heavy)).foregroundColor(brandBlue)
-                    Text("Start a Bible study").font(.system(size: 16, weight: .heavy)).foregroundColor(inkColor)
-                    Text("Pick one in the Library.").font(.system(size: 12)).foregroundColor(.secondary)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                .widgetURL(siteURL("/library"))
-            }
-        }
-        .widgetBackground(Color.white)
-    }
-
-    @ViewBuilder
-    private func content(_ study: StudySnapshot) -> some View {
-        let done = Double(study.completedDays ?? max(0, (study.day ?? 1) - 1))
-        let fraction = study.totalDays > 0 ? done / Double(study.totalDays) : 0
-        let dayLine = study.day.map { "Day \($0) of \(study.totalDays)" } ?? "\(study.totalDays) days"
-
-        HStack(alignment: .top, spacing: 12) {
-            if family != .systemSmall, let cover = entry.cover {
-                Image(uiImage: cover)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .cornerRadius(4)
-                    .shadow(radius: 2)
-            }
-            VStack(alignment: .leading, spacing: 5) {
-                Text("MY STUDY").font(.system(size: 10, weight: .heavy)).foregroundColor(brandBlue)
-                Text(study.title)
-                    .font(.system(size: family == .systemSmall ? 14 : 16, weight: .heavy))
-                    .foregroundColor(inkColor)
-                    .lineLimit(3)
-                    .minimumScaleFactor(0.8)
-                Spacer(minLength: 0)
-                Text(dayLine).font(.system(size: 12, weight: .bold)).foregroundColor(.secondary)
-                StudyProgressBar(fraction: fraction)
-                Text("Continue →").font(.system(size: 12, weight: .heavy)).foregroundColor(brandBlue)
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .widgetURL(siteURL(study.href ?? "/library"))
-    }
-}
-
-struct StudyWidget: Widget {
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "BibleBuddyStudyWidget", provider: StudyProvider()) { entry in
-            StudyView(entry: entry)
-        }
-        .configurationDisplayName("My Study")
-        .description("The Bible study you're in, and the day you're on.")
-        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
@@ -505,103 +325,6 @@ struct LockProvider: TimelineProvider {
             LockEntry(date: midnight, status: lockStatus(at: midnight.addingTimeInterval(1))),
         ]
         completion(Timeline(entries: entries, policy: .after(midnight.addingTimeInterval(60))))
-    }
-}
-
-struct LockView: View {
-    let entry: LockEntry
-    @Environment(\.widgetFamily) private var family
-
-    var body: some View {
-        switch family {
-        case .accessoryRectangular:
-            accessory
-        default:
-            small
-        }
-    }
-
-    private var accessory: some View {
-        VStack(alignment: .leading, spacing: 2) {
-            switch entry.status {
-            case .locked:
-                Text("🔒 Apps locked").font(.system(size: 15, weight: .heavy))
-                Text("Read today to unlock").font(.system(size: 12))
-            case .unlocked(let relocksAt):
-                Text("🔓 Unlocked").font(.system(size: 15, weight: .heavy))
-                HStack(spacing: 3) {
-                    Text("Locks in").font(.system(size: 12))
-                    Text(relocksAt, style: .timer).font(.system(size: 12, weight: .bold)).monospacedDigit()
-                }
-            case .notSetUp:
-                Text("Bible Lock").font(.system(size: 15, weight: .heavy))
-                Text("Set it up in Settings").font(.system(size: 12))
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .widgetURL(siteURL(destination))
-    }
-
-    private var small: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text("BIBLE LOCK").font(.system(size: 10, weight: .heavy)).foregroundColor(.white.opacity(0.75))
-            switch entry.status {
-            case .locked:
-                Text("🔒").font(.system(size: 30))
-                Text("Apps locked").font(.system(size: 17, weight: .heavy)).foregroundColor(.white)
-                Spacer(minLength: 0)
-                Text("Finish today's reading to unlock them.")
-                    .font(.system(size: 11, weight: .semibold))
-                    .foregroundColor(.white.opacity(0.85))
-                    .lineLimit(3)
-            case .unlocked(let relocksAt):
-                Text("🔓").font(.system(size: 30))
-                Text("Unlocked").font(.system(size: 17, weight: .heavy)).foregroundColor(.white)
-                Spacer(minLength: 0)
-                Text("Locks again in").font(.system(size: 11, weight: .semibold)).foregroundColor(.white.opacity(0.85))
-                Text(relocksAt, style: .timer)
-                    .font(.system(size: 20, weight: .heavy))
-                    .monospacedDigit()
-                    .foregroundColor(.white)
-            case .notSetUp:
-                Text("🔒").font(.system(size: 30))
-                Text("Bible Lock").font(.system(size: 17, weight: .heavy)).foregroundColor(.white)
-                Spacer(minLength: 0)
-                Text("Lock distracting apps until you've read today.")
-                    .font(.system(size: 11, weight: .semibold))
-                    .foregroundColor(.white.opacity(0.85))
-                    .lineLimit(3)
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .widgetBackground(lockColor)
-        .widgetURL(siteURL(destination))
-    }
-
-    private var lockColor: Color {
-        switch entry.status {
-        case .locked: return inkColor
-        case .unlocked: return brandBlue
-        case .notSetUp: return Color(red: 0.25, green: 0.28, blue: 0.36)
-        }
-    }
-
-    private var destination: String {
-        switch entry.status {
-        case .notSetUp: return "/settings"
-        default: return Shared.snapshot().study?.href ?? "/dashboard"
-        }
-    }
-}
-
-struct BibleLockWidget: Widget {
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "BibleBuddyLockWidget", provider: LockProvider()) { entry in
-            LockView(entry: entry)
-        }
-        .configurationDisplayName("Bible Lock")
-        .description("Whether your apps are locked, and a countdown to when they lock again.")
-        .supportedFamilies([.systemSmall, .accessoryRectangular])
     }
 }
 

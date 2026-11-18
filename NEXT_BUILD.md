@@ -106,7 +106,7 @@ If it is ever reconsidered, none of the groundwork needs redoing:
 
 Own branch, never the same build as a submission.
 
-### 4. Home-screen widgets: Verse of the Day, Streak, My Study, Bible Lock
+### 4. Home-screen widgets: Verse of the Day, Streak, My Study, Bible Lock (designs v2)
 **Written 2026-11-18. Blocked on a signing profile, then needs a test build.**
 
 Four widgets in one WidgetKit extension (`native/ios-extensions/BibleBuddyWidgets`,
