@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "ruth-1-explained",
+    title: "Ruth 1 Explained: Naomi's Loss and Ruth's Vow of Loyalty",
+    description:
+      "Ruth 1 explained verse by verse: the famine that sends Naomi's family to Moab, three deaths, Orpah's choice, and Ruth's vow never to leave her.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/ruth-1-explained",
+    publishedAt: "2026-11-18",
+    readTime: "12 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "Ruth 1 Explained 📖",
+      content:
+        "A famine sends one family away from home.\nTen years later, only two widows walk back.\n\n📌 One of them makes a vow with nothing to gain.\n\n📖 Naomi loses her husband and both sons in Moab.\n📖 Orpah says goodbye and turns back.\n📖 Ruth clings to Naomi and will not let go.\n\nNew article on:\n🟢 why Naomi asks to be called **Mara** instead\n🟢 what **whither thou goest** really promises\n🟢 how this quiet chapter leads to **King David**\n\nHave you ever chosen loyalty with no guarantee it would pay off? 🙏",
+    },
+  },
+  {
     slug: "judges-21-explained",
     title: "Judges 21 Explained: Two Oaths and a Kidnapping at Shiloh",
     description:

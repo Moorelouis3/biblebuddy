@@ -1039,3 +1039,9 @@ through Joshua 19. This run trusted the live queue state over the stale doc
 banner, per the doc's own "one rule about state" section. Worth a one-line
 fix to the doc header so a future run or a human reader does not get the
 wrong signal from it.
+
+## Chapter library: ruth-1-explained on the fallback banner
+No `public/blog-banners/ruth-1-explained.jpg` exists yet, so this new chapter
+article uses the verse-breakdowns fallback (`/Whatisthebiblebanner.png`).
+Updating this one line going forward (per the routine's own doc) rather than
+adding a new block each time a chapter lands without a custom banner.
