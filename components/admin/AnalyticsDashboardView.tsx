@@ -2008,6 +2008,45 @@ export default function AnalyticsDashboardView({
                           </tbody>
                         </table>
                       </div>
+                      {/* Offer coverage: did every finish get the popup? Only
+                          Bible in One Year stores a finished day, so only it
+                          has a denominator (lib/adminDashboard.ts). Older
+                          snapshots lack these fields, hence the guard. */}
+                      {d.dayCompletePopup.rows[0] && "bibleYearFinishedDays" in d.dayCompletePopup.rows[0] ? (
+                        <div className="mt-4 overflow-x-auto">
+                          <table className="w-full min-w-[560px] text-left text-sm">
+                            <thead>
+                              <tr className="text-[11px] font-black uppercase tracking-wide text-[#64748b]">
+                                <th className="py-2 pr-3"> </th>
+                                <th className="px-2 py-2 text-right">Bible in One Year days finished</th>
+                                <th className="px-2 py-2 text-right">By people</th>
+                                <th className="px-2 py-2 text-right">Popup shown</th>
+                                <th className="px-2 py-2 text-right">Coverage</th>
+                                <th className="px-2 py-2 text-right">Study popups shown</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {d.dayCompletePopup.rows.map((row) => (
+                                <tr key={row.label} className="border-t border-[#e2e8f0]">
+                                  <td className="py-2.5 pr-3 font-black">{row.label}</td>
+                                  <td className="px-2 py-2.5 text-right font-semibold">{fmt(row.bibleYearFinishedDays ?? 0)}</td>
+                                  <td className="px-2 py-2.5 text-right font-semibold text-[#475569]">{fmt(row.bibleYearFinishedPeople ?? 0)}</td>
+                                  <td className="px-2 py-2.5 text-right font-semibold">{fmt(row.bibleYearShown ?? 0)}</td>
+                                  <td className="px-2 py-2.5 text-right font-black">
+                                    {row.bibleYearCoverage === null || row.bibleYearCoverage === undefined ? "-" : `${row.bibleYearCoverage}%`}
+                                  </td>
+                                  <td className="px-2 py-2.5 text-right font-semibold">{fmt(row.studyShown ?? 0)}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      ) : null}
+                      <p className="mt-3 text-xs font-semibold leading-relaxed text-[#64748b]">
+                        Coverage is popups shown for each Bible in One Year day finished. A study day has no stored finish (all four
+                        parts done), so studies show popups only; the feed&apos;s &quot;Completed Day N&quot; is the Overview being
+                        ticked, not the whole day. Design previews are left out.
+                      </p>
                       <p className="mt-3 text-xs font-semibold leading-relaxed text-[#64748b]">
                         Amazon is a tap on Buy on Amazon, not a sale. It opens in a new tab, so the same person can also start the next
                         day. Did nothing means the popup was shown and nothing was pressed. The book was on{" "}
