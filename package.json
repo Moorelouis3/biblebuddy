@@ -91,7 +91,8 @@
     "verify:beginning": "tsx scripts/verify-beginning-formatting.ts",
     "check:study-guides": "tsx scripts/check-study-guides.ts",
     "verify:study-template": "tsx scripts/verify-study-template.ts",
-    "verify:display-name": "tsx scripts/verify-display-name.ts"
+    "verify:display-name": "tsx scripts/verify-display-name.ts",
+    "verify:profile-gate": "tsx scripts/verify-profile-gate.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",

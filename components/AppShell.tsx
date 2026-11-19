@@ -40,7 +40,7 @@ import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRe
 import { LouisAvatar } from "./LouisAvatar";
 import { SELECTED_BUDDY_STORAGE_KEY, getBuddyAvatar, normalizeBuddyAvatarId, type BuddyAvatarId } from "../lib/buddyAvatars";
 import { normalizeCustomMemberBadge } from "../lib/userBadges";
-import { buildFullName, hasRequiredFullName, splitFullName } from "../lib/profileName";
+import ProfileCompletionGate, { useProfileGateBlocking } from "./ProfileCompletionGate";
 import { extractLegacyDirectMessageAction } from "../lib/directMessageActions";
 import {
   GROUP_ERA_NOTIFICATION_TYPES,
@@ -210,8 +210,8 @@ function getCurrentSignupAttribution() {
  * 325 profiles ended up carrying it, and it is what the community feed shows
  * next to their activity (Louis, 2026-11-13). The placeholder is worse than
  * no name at all: the feed already falls back to "Bible Buddy" on an empty
- * name, and DisplayNamePromptGate asks an unnamed account for a real one -
- * but it cannot ask someone who looks like they already answered.
+ * name, and ProfileCompletionGate requires a real one before the app opens -
+ * using the shared placeholder rule in lib/profileCompleteness.ts.
  *
  * So: save a real name or save nothing.
  */
@@ -608,12 +608,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   // Contact Us modal state
   const [showContactUsModal, setShowContactUsModal] = useState(false);
   
-  // Account setup state
-  const [showFullNameModal, setShowFullNameModal] = useState(false);
-  const [fullNameFirst, setFullNameFirst] = useState("");
-  const [fullNameLast, setFullNameLast] = useState("");
-  const [fullNameSaving, setFullNameSaving] = useState(false);
-  const [fullNameError, setFullNameError] = useState<string | null>(null);
+  // True while the mandatory profile step (ProfileCompletionGate) is up, so no
+  // popup stacks on top of it. Replaced the old showFullNameModal, whose check
+  // had been reduced to "always false" and was never called (2026-11-19).
+  const showFullNameModal = useProfileGateBlocking();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -1104,9 +1102,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
    * What survives is only what a signed-in account genuinely needs: the
    * profile_stats row and a record of where they came from. No plan is picked
    * for them - they land on the home screen with nothing chosen, and go to the
-   * Plans tab if and when they want one. Name and profile picture are asked
-   * for later, once, by DisplayNamePromptGate, after the account finishes its
-   * first real thing. That is the whole of it.
+   * Plans tab if and when they want one. Name and profile picture are
+   * required up front by ProfileCompletionGate (since 2026-11-19; before that
+   * they were asked only after a first community action). That is the whole of it.
    */
   async function ensureNewAccountSetUp(currentUserId: string) {
     try {
@@ -1253,27 +1251,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
   }
 
-  async function checkFullNameRequirement(currentUserId: string) {
-    try {
-      const { data: profile } = await supabase
-        .from("profile_stats")
-        .select("display_name, username")
-        .eq("user_id", currentUserId)
-        .maybeSingle();
-
-      const currentName = profile?.display_name || profile?.username || "";
-      if (hasRequiredFullName(currentName)) {
-        setShowFullNameModal(false);
-        setFullNameError(null);
-        return;
-      }
-
-      setShowFullNameModal(false);
-    } catch (error) {
-      console.warn("[FULL_NAME] Check skipped due to transient issue.", error);
-    }
-  }
-
   async function handleResendConfirmationEmail() {
     if (!userEmail) {
       setResendConfirmationMessage("We could not find an email address for this session. Please log out and sign back in.");
@@ -1296,36 +1273,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
 
     setResendConfirmationMessage("Confirmation email sent. Check your inbox and spam folder.");
-  }
-
-  async function handleSaveRequiredFullName() {
-    if (!userId || fullNameSaving) return;
-
-    const normalizedFullName = buildFullName(fullNameFirst, fullNameLast);
-    if (!hasRequiredFullName(normalizedFullName)) {
-      setFullNameError("Please add both your first and last name.");
-      return;
-    }
-
-    setFullNameSaving(true);
-    setFullNameError(null);
-
-    try {
-      const { error } = await supabase
-        .from("profile_stats")
-        .update({ display_name: normalizedFullName })
-        .eq("user_id", userId);
-
-      if (error) {
-        throw error;
-      }
-
-      setShowFullNameModal(false);
-    } catch (error: any) {
-      setFullNameError(error?.message || "Could not save your full name.");
-    } finally {
-      setFullNameSaving(false);
-    }
   }
 
   async function checkDailyRecommendation(currentUserId: string) {
@@ -2913,10 +2860,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
   }, [userId, isLoggedIn, feedbackChecked, showFeedbackModal]);
 
-  useEffect(() => {
-    setShowFullNameModal(false);
-  }, [userId, isLoggedIn, pathname]);
-
   const appShellPopupQueue: PopupQueueItem[] = [
     ...(AUTOMATIC_STREAK_RESCUE_POPUPS_ENABLED && graceReward
       ? [{ popup_id: "reward:grace-day-earned", type: "reward" as const, priority: POPUP_QUEUE_PRIORITIES.reward + 20, user_id: userId, payload: graceReward }]
@@ -3856,7 +3799,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             unless the lock is on or has never been set up, and it carries its
             own spacing so there is no empty gap when it is silent. */}
         {showBottomNav ? <BibleLockBanner /> : null}
-        {children}
+        {/* Mandatory first name, last name and picture before any app page
+            renders (Louis, 2026-11-19). Public pages pass straight through. */}
+        <ProfileCompletionGate>{children}</ProfileCompletionGate>
         {/* Report a Problem lives at the bottom of EVERY app page (Louis,
             2026-09-03) so people report from the page where the issue
             happened - the report captures the current page itself. */}
