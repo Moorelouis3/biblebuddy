@@ -129,3 +129,4 @@
 2026-11-18T09:02:08Z | 10 commits | Judges 19-21 Explained chapter library entries, iOS home-screen widgets (Verse of the Day, Streak, My Study, Bible Lock), and DM replies answering real DMs with no "this is automatic" line
 2026-11-18T17:02:42Z | 8 commits | Ruth 1-2 Explained chapter library entries, Play Store production access applied for, and a Bug Fixer session log
 2026-11-19T09:02:52Z | 20 commits | Ruth 3-4 and 1 Samuel 1 Explained chapter library entries, mandatory profile completion gate, day-complete popup and Bible in One Year feed-cover fixes (an ad-hoc deploy already live), widgets v2 rebuild with new iOS signing profiles, a blog article (What Does It Mean to Fear God?), and a stale-local-main anomaly flag
+2026-11-19T17:02:57Z | 6 commits | 1 Samuel 2-3 Explained chapter library entries
