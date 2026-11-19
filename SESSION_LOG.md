@@ -14160,3 +14160,11 @@ Next: next scheduled run keeps clearing the backlog (20 reports left, same shape
 Article: What Does It Mean to Fear God? | Words: ~3,114 | Category: Bible Insights | Status: pass
 Not live yet: no [deploy] tag on this commit (Louis removed the blog exception 2026-10-10) - goes live at the next scheduled deploy, 08:05 Berlin.
 Queue remaining: 37
+
+## 2026-11-19 (Bug Fixer run)
+Marching orders: work through open bug reports per docs/BUG_FIXER_AGENT.md.
+Today: fetched the open queue (25 open, not paused; all auto-logged telemetry with no reporter except one from annmay1 Williams and one 500 error, both further down the queue and left for next run), worked the oldest 5.
+Done: No new code this run - all five were ordinary noise, not app bugs. Two (master_actions insert, notifications select on /devotionals/.../day/1) fired at the exact same millisecond - one connection drop making two checks fail together - so the second was closed `duplicate` of the first. Two more (completed_chapters insert, notifications select on /plan, 7 seconds apart) were the browser's own "signal is aborted without reason" cancellation from the reader leaving the page - the app already stops reporting that exact case (lib/supabaseClient.ts), these two just predate that safeguard reaching those readers, so the second was closed `duplicate` of the first. The last (community_event_day_posts select on /library) was an isolated, self-recovering connection drop. All five closed `not_a_bug`/`duplicate`, no commit needed, no replies needed (no reporters).
+Not live yet: nothing - no code changed this run.
+Still open: 20 more reports in the queue, left for the next run under the 5-bug cap, including annmay1 Williams's Apple-account-verification report (has a reporter, needs a reply) and one blog_article_likes 500 server error (an actual server error, not client noise - worth a closer look next run). Cannot confirm from this agent's API whether anything is sitting in `needs_louis` or `awaiting_approval` - that endpoint only returns `new`/`fixing` reports, so Louis should check /admin/bugs directly.
+Next: next scheduled run picks up the oldest 5 of the 20 remaining, starting with the /plan cluster from 23:31 on 13 Nov.
