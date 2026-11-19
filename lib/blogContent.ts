@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "ruth-4-explained",
+    title: "Ruth 4 Explained: Boaz Redeems Ruth at the City Gate",
+    description:
+      "Ruth 4 explained verse by verse: Boaz redeems Ruth at the city gate, the shoe ceremony, the elders' blessing, and the birth of Obed, grandfather of David.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/ruth-4-explained",
+    publishedAt: "2026-11-19",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "Ruth 4 Explained 📖",
+      content:
+        "One morning at the gate settles everything.\nA promise made in the dark gets kept in daylight.\n\n📌 The nearer kinsman says yes, then changes his mind.\n\n📖 Boaz offers the land first, then names the real cost.\n📖 A sandal custom seals the whole transaction.\n📖 The elders bless Boaz by naming Rachel, Leah, and Tamar.\n\nNew article on:\n🟢 why the kinsman backs out once **Ruth** enters the deal\n🟢 what the **sandal ceremony** actually confirmed\n🟢 how **Obed** becomes David's own grandfather\n\nHave you ever had to keep a promise once it finally cost you something? 🙏",
+    },
+  },
+  {
     slug: "ruth-3-explained",
     title: "Ruth 3 Explained: Naomi's Plan at the Threshing Floor",
     description:
