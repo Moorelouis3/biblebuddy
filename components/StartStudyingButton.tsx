@@ -7,9 +7,9 @@ import { useState } from "react";
  * three call-to-action points.
  *
  * Click -> sign up -> the app. There is nothing in between any more (Louis,
- * 2026-10-18): no questionnaire, no chooser, no first-login modal. Name and
- * profile picture are asked for later, once, after the account finishes its
- * first real thing - see DisplayNamePromptGate.
+ * 2026-10-18): no questionnaire, no chooser, no first-login modal. Since
+ * 2026-11-19 the one required step is first name, last name and a picture -
+ * see ProfileCompletionGate.
  *
  * It is a plain <a>, not a <button> with router.push, and that is the whole
  * point (Louis, 2026-11-02, after the button did nothing on the live site):

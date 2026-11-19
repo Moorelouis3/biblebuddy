@@ -8,6 +8,7 @@
  */
 
 import { supabase } from "./supabaseClient";
+import { evaluateProfile, validateFullName } from "./profileCompleteness";
 
 export type AccountGateState = {
   ok: boolean;
@@ -17,9 +18,15 @@ export type AccountGateState = {
   profileImageUrl: string | null;
 };
 
-/** A real name: at least two words, like the comment section requires. */
+/**
+ * A real first and last name, by the same rule as the mandatory profile gate
+ * (lib/profileCompleteness.ts) - so "Bible Buddy User" no longer passes here
+ * just because it has two words.
+ */
 export function hasFullName(value: string | null | undefined) {
-  return Boolean(value && value.trim().split(/\s+/).length >= 2);
+  const parts = (value || "").trim().split(/\s+/).filter(Boolean);
+  if (parts.length < 2) return false;
+  return validateFullName(parts[0], parts.slice(1).join(" ")).ok;
 }
 
 export async function checkFullAccount(): Promise<AccountGateState> {
@@ -41,8 +48,9 @@ export async function checkFullAccount(): Promise<AccountGateState> {
       .eq("user_id", user.id)
       .maybeSingle();
     const displayName = (profile?.display_name || profile?.username || "").trim();
-    const name = hasFullName(displayName);
-    const photo = Boolean(profile?.profile_image_url);
+    const evaluated = evaluateProfile(profile, user.email);
+    const name = !evaluated.missing.firstName && !evaluated.missing.lastName;
+    const photo = !evaluated.missing.photo;
     return {
       ok: hasEmail && name && photo,
       userId: user.id,

@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { ActionType } from "./actionTypes";
+import { isPlaceholderName as isSharedPlaceholderName } from "./profileCompleteness";
 
 /**
  * Milestones, posted to the community wall under the reader's own name.
@@ -73,24 +74,13 @@ export const MILESTONE_MARKER = "milestone";
 /**
  * Names this app wrote to a profile when it had nothing real to use.
  *
- * Kept in step with components/DisplayNamePromptGate.tsx, which asks the
- * member for a real one. "Bible Buddy" is absent on purpose: that is the
- * official account's chosen name, and it posts to the wall legitimately.
+ * One list since 2026-11-19, shared with the mandatory profile gate
+ * (components/ProfileCompletionGate.tsx) - see lib/profileCompleteness.ts.
+ * "Bible Buddy" is absent on purpose: that is the official account's chosen
+ * name, and it posts to the wall legitimately.
  */
-const PLACEHOLDER_NAMES = new Set([
-  "bible buddy user",
-  "user",
-  "new user",
-  "guest",
-  "guest user",
-  "anonymous",
-]);
-
 export function isPlaceholderName(name: string | null | undefined): boolean {
-  const trimmed = (name || "").trim();
-  if (!trimmed) return true;
-  if (/^user[\s_-]*[0-9a-f]{2,}$/i.test(trimmed)) return true;
-  return PLACEHOLDER_NAMES.has(trimmed.toLowerCase());
+  return isSharedPlaceholderName(name);
 }
 
 export const COMMUNITY_MILESTONES = new Set<ActionType>([
@@ -269,7 +259,8 @@ export async function postMilestoneToWall(
     /**
      * No placeholder goes on the wall under somebody's activity.
      *
-     * This is the other half of DisplayNamePromptGate (Louis, 2026-11-13).
+     * This is the other half of the profile gate (Louis, 2026-11-13; mandatory
+     * up front since 2026-11-19, components/ProfileCompletionGate.tsx).
      * The post carries only user_id and the name is joined from this table at
      * read time, so publishing now would put "Bible Buddy User" on the wall
      * and leave it there until the profile changed. Holding it back costs one
