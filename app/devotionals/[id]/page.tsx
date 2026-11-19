@@ -539,9 +539,10 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
    *
    * This page is where four of the five published studies actually finish a
    * day - only Proverbs reaches the dedicated day page, which has had the
-   * celebration since it was written. Set from handleDayComplete inside its
-   * existing !wasAlreadyCompleted guard, so re-opening a finished day stays
-   * silent.
+   * celebration since it was written. Set when a four-task day goes to 4/4
+   * after the reader did one of its tasks (see isFourTaskDayFinished), and
+   * from the legacy handleDayComplete inside its !wasAlreadyCompleted guard.
+   * Re-opening a finished day stays silent.
    */
   const [celebrationDay, setCelebrationDay] = useState<number | null>(null);
   const [freeDevotionalId, setFreeDevotionalId] = useState<string | null | undefined>(undefined);
@@ -1910,6 +1911,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
 
   const handleIntroComplete = async (dayNumber: number) => {
     if (!userId || !devotional) return;
+    armDayCelebration(dayNumber);
 
     try {
       const { data: existingProgressData } = await supabase
@@ -2014,6 +2016,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
 
     try {
       setMarkingReaderChapter(key);
+      armDayCelebration(day.day_number);
       await markChapterDone(userId, day.bible_reading_book, day.bible_reading_chapter);
       await handleReadingComplete(day.day_number);
       setCompletedReaderChapterKeys((previous) => {
@@ -2092,6 +2095,58 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     if (isProLocked) setShowProModal(true);
     else setShowProModal(false);
   }, [isProLocked]);
+
+  /**
+   * The day-complete popup for the four-task day (Overview, Reading, Trivia,
+   * Discussion) - which is every study since isModernStudyPlanTitle went true.
+   *
+   * Until 2026-11-19 the popup on this page hung only off handleDayComplete,
+   * the "LEGACY SECTION MODAL" path, and no four-task day ever reaches it. So a
+   * reader who ticked all four parts got nothing: 0 real popups from 15 Nov.
+   *
+   * A day counts as finished by the same four ticks the day row shows (the
+   * reading tick includes a chapter already read in the Bible reader). The
+   * popup opens when a day goes from not-finished to finished right after the
+   * reader did one of its tasks here ("armed" below). Background loads that
+   * merely discover an old finish - the reader's chapters, a reply found in a
+   * thread - never arm it, so opening a study never throws up an old day.
+   */
+  const isFourTaskDayFinished = (day: DevotionalDay) => {
+    const own = progress.get(day.day_number);
+    const readingDone =
+      own?.reading_completed === true ||
+      completedReaderChapterKeys.has(completedReaderChapterKey(day.bible_reading_book, day.bible_reading_chapter));
+    return (
+      [own?.is_completed === true, readingDone, completedTriviaDayNumbers.has(day.day_number), completedDiscussionDayNumbers.has(day.day_number)].filter(
+        Boolean,
+      ).length >= WISDOM_TASK_TOTAL
+    );
+  };
+  const finishedDaysRef = useRef<Set<number> | null>(null);
+  const celebrationArmRef = useRef<{ day: number; at: number } | null>(null);
+  const armDayCelebration = (dayNumber: number) => {
+    celebrationArmRef.current = { day: dayNumber, at: Date.now() };
+  };
+
+  useEffect(() => {
+    finishedDaysRef.current = null;
+    celebrationArmRef.current = null;
+  }, [devotionalId]);
+
+  useEffect(() => {
+    if (!isModernStudyPlan || loading || !userId || days.length === 0) return;
+    const finished = new Set(days.filter(isFourTaskDayFinished).map((day) => day.day_number));
+    const before = finishedDaysRef.current;
+    finishedDaysRef.current = finished;
+    const arm = celebrationArmRef.current;
+    if (!before || !arm) return;
+    if (!finished.has(arm.day) || before.has(arm.day)) return;
+    celebrationArmRef.current = null;
+    // A task done here ten minutes ago is still this finish; anything older is not.
+    if (Date.now() - arm.at > 10 * 60 * 1000) return;
+    setCelebrationDay(arm.day);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [days, progress, completedReaderChapterKeys, completedTriviaDayNumbers, completedDiscussionDayNumbers, loading, userId, isModernStudyPlan]);
 
   // A devotional opens inside the app, on the Devotionals tab, with the top bar
   // and the bottom menu around it - never as a freestanding page. Reached as a
@@ -2738,6 +2793,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                 skipUpgradeGate
                                 hideSkipButton
                                 onComplete={() => {
+                                  armDayCelebration(day.day_number);
                                   setCompletedTriviaDayNumbers((previous) => {
                                     const next = new Set(previous);
                                     next.add(day.day_number);
@@ -2793,6 +2849,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                       placeholderText="Start typing your thoughts..."
                                       submitButtonText="Post Comment"
                                       onPosted={() => {
+                                        armDayCelebration(day.day_number);
                                         setCompletedDiscussionDayNumbers((previous) => {
                                           const next = new Set(previous);
                                           next.add(day.day_number);
@@ -2819,6 +2876,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                   submitButtonText="Post Comment"
                                   variant="plain"
                                   onPosted={() => {
+                                    armDayCelebration(day.day_number);
                                     setCompletedDiscussionDayNumbers((previous) => {
                                       const next = new Set(previous);
                                       next.add(day.day_number);
@@ -2954,10 +3012,23 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           onPrimary={() => {
             const next = days.find((d) => d.day_number === celebrationDay + 1);
             setCelebrationDay(null);
+            if (!next) return;
+            // A four-task day opens in place, exactly as tapping its row in
+            // the list does - same free-day gate, same scroll.
+            if (isModernStudyPlan) {
+              if (shouldBlockFreeWisdomDay(next.day_number)) {
+                openFreeWisdomDayGate();
+                return;
+              }
+              setExpandedWisdomTask(null);
+              setExpandedDayNumber(next.day_number);
+              scrollDevotionalElementIntoView(`devotional-day-${next.day_number}`);
+              return;
+            }
             // handleDayClick, not setSelectedDay: it carries the unlock and
             // credit checks, and routes journey studies to the dashboard the
             // same way tapping the day in the list does.
-            if (next) void handleDayClick(next);
+            void handleDayClick(next);
           }}
           secondaryButtonText="Back to bookshelf"
           onSecondary={() => {

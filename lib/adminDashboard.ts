@@ -1089,8 +1089,15 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   // "Did nothing" is what is left: the popup was shown and no answer was
   // recorded - the app was closed, or the page was left another way.
   const DAY_POPUP_SINCE = "2026-11-15";
-  type DayPopupRow = { user_id: string | null; session_id: string | null; event_name: string; metadata: Record<string, unknown> | null; created_at: string };
-  const dayPopupRows = await fetchAll<DayPopupRow>(admin, "landing_page_events", "user_id, session_id, event_name, metadata, created_at", (q) =>
+  type DayPopupRow = {
+    user_id: string | null;
+    session_id: string | null;
+    event_name: string;
+    metadata: Record<string, unknown> | null;
+    created_at: string;
+    page_path: string | null;
+  };
+  const dayPopupRowsAll = await fetchAll<DayPopupRow>(admin, "landing_page_events", "user_id, session_id, event_name, metadata, created_at, page_path", (q) =>
     q
       .in("event_name", [
         "day_complete_popup_shown",
@@ -1103,6 +1110,27 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       .gte("created_at", `${DAY_POPUP_SINCE}T00:00:00Z`)
       .or(`user_id.is.null,user_id.neq.${OWNER_USER_ID}`),
   );
+  // Design previews are not readers. All 15 "shown" events up to 19 Nov came
+  // from throwaway preview pages (/day-complete-preview-tmp,
+  // /zz-abraham-popup-preview) on launch morning; one of them, under an
+  // account that is not the owner's, was the "1" on this card.
+  const isPreviewPath = (path: string | null) => /preview/i.test(path || "");
+  const dayPopupRows = dayPopupRowsAll.filter((row) => !isPreviewPath(row.page_path));
+  // The finishes the popup should answer, from the completion record itself
+  // and not from the popup - so a popup that never opened shows up as a gap.
+  // Only Bible in One Year writes one: its bible_in_one_year_day_completed is
+  // the finished day. A study's devotional_day_completed is NOT - it is
+  // written when the Overview is ticked (1 of the day's 4 parts), and it is
+  // what the feed calls "Completed Day N". The 4/4 study finish is not stored
+  // anywhere, so it cannot be a denominator here; studies show shown only.
+  type DayFinishRow = { user_id: string | null; created_at: string };
+  const bibleYearFinishRows = await fetchAll<DayFinishRow>(admin, "master_actions", "user_id, created_at", (q) =>
+    q
+      .eq("action_type", "bible_in_one_year_day_completed")
+      .gte("created_at", `${DAY_POPUP_SINCE}T00:00:00Z`)
+      .neq("user_id", OWNER_USER_ID),
+  );
+  const isBibleYearPopup = (row: DayPopupRow) => (row.metadata as { guide?: string } | null)?.guide === "Bible in One Year";
   // Midnight in Berlin, where Louis is, so "today" is his today.
   const dayPopupTodayStart = (() => {
     const now = new Date();
@@ -1120,9 +1148,19 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     const nextDay = times("day_complete_next_clicked");
     const bookshelf = times("day_complete_bookshelf_clicked");
     const closed = times("day_complete_closed");
+    const shownRows = rows.filter((row) => row.event_name === "day_complete_popup_shown");
+    const bibleYearShown = shownRows.filter(isBibleYearPopup).length;
+    const bibleYearFinished = bibleYearFinishRows.filter((row) => Date.parse(row.created_at) >= fromMs);
     return {
       label,
       shown,
+      // Bible in One Year: finished days (completion record) against popups.
+      // Days and people are separate on purpose - one reader can finish five.
+      bibleYearFinishedDays: bibleYearFinished.length,
+      bibleYearFinishedPeople: new Set(bibleYearFinished.map((row) => row.user_id)).size,
+      bibleYearShown,
+      bibleYearCoverage: rateOrNull(bibleYearShown, bibleYearFinished.length),
+      studyShown: shownRows.length - bibleYearShown,
       people: new Set(rows.filter((row) => row.event_name === "day_complete_popup_shown").map((row) => row.user_id || row.session_id || row.created_at)).size,
       nextDay,
       bookshelf,

@@ -2359,6 +2359,7 @@ export default function DashboardJourneyExperience({
     devotionalTitle: string;
     nextDay: CurrentStudyChapter | null;
   } | null>(null);
+  const celebratedDevotionalDaysRef = useRef<Set<string>>(new Set());
   const [embeddedBibleStudyId, setEmbeddedBibleStudyId] = useState<string | null>(null);
   /**
    * The day of the embedded study to open on arrival, from ?day=<n>.
@@ -10535,7 +10536,16 @@ Before we understand redemption, we need to understand what God made humanity fo
     await incrementProfileTotalActions();
   }
 
-  async function markBibleYearDayCardsComplete(day: GenesisBibleYearDay, cards: BibleYearDayCardKey[]) {
+  /**
+   * `celebrate: false` is for background catch-up (a reflection posted earlier
+   * and found on load): the day is still recorded, but no "You finished Day N"
+   * popup jumps up for a day the reader is not looking at.
+   */
+  async function markBibleYearDayCardsComplete(
+    day: GenesisBibleYearDay,
+    cards: BibleYearDayCardKey[],
+    { celebrate = true }: { celebrate?: boolean } = {},
+  ) {
     const completionOccurredAt = new Date().toISOString();
     const alreadyCompleted = bibleYearCompletedCardsByDay[day.dayNumber] || {};
     const newlyCompletedCards = cards.filter((card) => alreadyCompleted[card] !== true);
@@ -10615,8 +10625,13 @@ Before we understand redemption, we need to understand what God made humanity fo
       }
       setBibleYearIncompleteChecklistDay((current) => current?.dayNumber === day.dayNumber ? null : current);
       setSelectedBibleYearSeriesDay(day);
-      if (!dayWasFullyComplete && newlyCompletedCards.length > 0) {
-        setBibleYearCompletionModalDay(null);
+      // The day-complete popup. This line set null from June 2026, when an
+      // inline "lesson complete" card replaced the old modal (that card is
+      // no longer rendered anywhere). So from 15 Nov the shared popup was
+      // wired to state nothing ever set, and no Bible in One Year finish
+      // showed it. Only a genuinely new finish opens it, once.
+      if (celebrate && !dayWasFullyComplete && newlyCompletedCards.length > 0) {
+        setBibleYearCompletionModalDay(day);
       }
       setBibleYearCompletedTasksExpandedDay(null);
       setActiveBibleYearDayCard(null);
@@ -10707,7 +10722,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         }
         const reflectedDays = Array.from(new Set((data || []).map((row) => slugToDay.get(row.article_slug)).filter(Boolean))) as GenesisBibleYearDay[];
         if (!reflectedDays.length) return;
-        await Promise.allSettled(reflectedDays.map((day) => markBibleYearDayCardsComplete(day, ["reflection"])));
+        await Promise.allSettled(reflectedDays.map((day) => markBibleYearDayCardsComplete(day, ["reflection"], { celebrate: false })));
       } catch (error) {
         console.error("[BIBLE_YEAR_REFLECTION] Could not sync saved reflections:", error);
       }
@@ -12548,6 +12563,14 @@ Before we understand redemption, we need to understand what God made humanity fo
    * in it instead of the year plan's. The audio is the day's overview read by
    * OpenAI text to speech, generated once and cached.
    */
+  /** The day's own tick (its devotional task) AND its chapter read. */
+  function isDevotionalDashboardDayFinished() {
+    return (
+      Boolean(dashboardTaskSource.find((task) => task.kind === "devotional")?.done) &&
+      Boolean(dashboardTaskSource.find((task) => task.kind === "reading")?.done)
+    );
+  }
+
   function renderDevotionalDashboardStudyArea() {
     if (!currentDevotionalId || !currentStudyChapters.length) return null;
 
@@ -12561,6 +12584,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         : currentDevotionalTitle || "";
     const cover = getDevotionalDayCover(currentDevotionalTitle, day.day_number) || currentStudyCover;
     const readingComplete = Boolean(dashboardTaskSource.find((task) => task.kind === "reading")?.done);
+    const dayFinished = isDevotionalDashboardDayFinished();
     const overview = String(day.devotional_text || "").replace(/<[^>]+>/g, " ").trim();
     const audioSrc = `/api/tts/devotional-overview?devotionalId=${encodeURIComponent(currentDevotionalId)}&day=${day.day_number}`;
     const previousDay = currentStudyChapters.find((item) => item.day_number === day.day_number - 1) || null;
@@ -12686,7 +12710,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             type="button"
             onClick={() => void completeDevotionalDay(day)}
             className={`inline-flex w-full items-center justify-center gap-2 rounded-[18px] px-5 py-3.5 text-[15px] font-black shadow-[0_18px_38px_rgba(47,127,232,0.24)] transition ${
-              readingComplete
+              dayFinished
                 ? "border border-emerald-300 bg-emerald-50 text-emerald-700"
                 : "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
             }`}
@@ -12694,7 +12718,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="m5 12 4 4L19 6" />
             </svg>
-            {readingComplete
+            {dayFinished
               ? nextDay
                 ? `Continue to Day ${nextDay.day_number}`
                 : "Day Completed"
@@ -12720,7 +12744,11 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (!userId || !currentDevotionalId) return;
 
     const nextDay = currentStudyChapters.find((item) => item.day_number === day.day_number + 1) || null;
-    const alreadyComplete = Boolean(dashboardTaskSource.find((task) => task.kind === "reading")?.done);
+    // Finished means the day itself was marked done, not only its chapter.
+    // The reading task is ticked by ANY read of the chapter (the Bible reader,
+    // an earlier study), and treating that as "already complete" skipped both
+    // saving the day and the day-complete popup.
+    const alreadyComplete = isDevotionalDashboardDayFinished();
 
     // Already done - this is the "Continue to Day N" press.
     if (alreadyComplete && nextDay?.bible_reading_book && nextDay.bible_reading_chapter) {
@@ -12757,6 +12785,11 @@ Before we understand redemption, we need to understand what God made humanity fo
       // reaches the dedicated day page that already had it. The advance that
       // used to happen here now hangs off the popup's primary button, so
       // nothing is lost, it just waits for a tap.
+      // Once per finish: until the checklist refreshes the button can still
+      // read "Mark as Complete", and a second press must not celebrate twice.
+      const celebrationKey = `${currentDevotionalId}:${day.day_number}`;
+      if (celebratedDevotionalDaysRef.current.has(celebrationKey)) return;
+      celebratedDevotionalDaysRef.current.add(celebrationKey);
       setJourneyCelebration({
         dayNumber: day.day_number,
         devotionalTitle: currentDevotionalTitle || "Your devotional",

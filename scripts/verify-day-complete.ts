@@ -89,4 +89,88 @@ check("the admin page has one Completed day popup section, for all studies toget
   assert.equal((view.match(/>Completed day popup</g) || []).length, 1);
 });
 
+// ---- 2026-11-19: the popup was wired but nothing opened it ----
+//
+// From 15 Nov to 19 Nov production recorded 0 real popups against 74 Bible
+// in One Year finishes and 7+ four-task study finishes. Bible in One Year set
+// its popup state to null on completion (a June change nobody undid), and the
+// study page only opened it from the legacy section modal no four-task day
+// reaches. These hold the wiring itself.
+
+const journey = read("components/DashboardJourneyExperience.tsx");
+const studyPage = read("app/devotionals/[id]/page.tsx");
+const sliceFrom = (source: string, start: string, length = 6000) => {
+  const at = source.indexOf(start);
+  assert.ok(at >= 0, `${start} exists`);
+  return source.slice(at, at + length);
+};
+
+check("Bible in One Year: a new finish opens the popup with that day", () => {
+  const body = sliceFrom(journey, "async function markBibleYearDayCardsComplete(");
+  assert.ok(body.includes("if (celebrate && !dayWasFullyComplete && newlyCompletedCards.length > 0) {"));
+  assert.ok(body.includes("setBibleYearCompletionModalDay(day);"));
+  // Somewhere, something must open it - a state only ever set to null is
+  // exactly the bug.
+  assert.ok(/setBibleYearCompletionModalDay\((?!null)/.test(journey), "the popup state is set to a day somewhere");
+});
+
+check("Bible in One Year: background catch-up records the day but does not pop up", () => {
+  assert.ok(journey.includes('markBibleYearDayCardsComplete(day, ["reflection"], { celebrate: false })'));
+});
+
+check("Bible in One Year: the popup carries the plan's own book", () => {
+  const modal = sliceFrom(journey, "function renderBibleYearCompletionModal()", 2500);
+  assert.ok(modal.includes('devotionalTitle="Bible in One Year"'));
+  assert.ok(modal.includes("url: BIBLE_YEAR_PAPERBACK_URL"));
+});
+
+check("study page: the fourth ticked part opens the popup, any order", () => {
+  assert.ok(studyPage.includes("const isFourTaskDayFinished = (day: DevotionalDay) =>"));
+  assert.ok(studyPage.includes("setCelebrationDay(arm.day);"));
+  // Every part a reader does here arms it: Overview, Reading, Trivia, and
+  // both kinds of Discussion box.
+  const arms = (studyPage.match(/armDayCelebration\((?:dayNumber|day\.day_number)\);/g) || []).length;
+  assert.ok(arms >= 5, `five places arm the popup, found ${arms}`);
+  const intro = sliceFrom(studyPage, "const handleIntroComplete = async", 300);
+  assert.ok(intro.includes("armDayCelebration(dayNumber);"));
+  const reader = sliceFrom(studyPage, "const handlePlanReaderChapterComplete = async", 600);
+  assert.ok(reader.includes("armDayCelebration(day.day_number);"));
+});
+
+check("study page: finding an old reply never arms it", () => {
+  // onUserHasPosted fires when a thread loads and the reader had already
+  // posted - that is discovery, not finishing.
+  for (const block of studyPage.split("onUserHasPosted={() => {").slice(1)) {
+    const body = block.slice(0, block.indexOf("}}"));
+    assert.ok(!body.includes("armDayCelebration"), "onUserHasPosted does not arm the popup");
+  }
+});
+
+check("study page: the reading tick counts a chapter already read, as the day row does", () => {
+  const helper = sliceFrom(studyPage, "const isFourTaskDayFinished = (day: DevotionalDay) =>", 700);
+  assert.ok(helper.includes("completedReaderChapterKeys.has("));
+  assert.ok(studyPage.includes("const wisdomReadingDone = dayProgress?.reading_completed === true || readerChapterDone;"));
+});
+
+check("dashboard study day: a chapter read elsewhere does not swallow the finish", () => {
+  const complete = sliceFrom(journey, "async function completeDevotionalDay(", 1500);
+  assert.ok(complete.includes("const alreadyComplete = isDevotionalDashboardDayFinished();"));
+  assert.ok(journey.includes("celebratedDevotionalDaysRef.current.has(celebrationKey)"));
+});
+
+check("tracking goes to an absolute address that survives the page closing", () => {
+  const tracker = read("lib/wisdomOfProverbsProducts.ts");
+  assert.ok(tracker.includes("fetch(`${window.location.origin}/api/landing-analytics`"));
+  assert.ok(tracker.includes("keepalive: true"));
+});
+
+check("admin: previews are not readers, and coverage is against the completion record", () => {
+  assert.ok(dashboard.includes("const dayPopupRows = dayPopupRowsAll.filter((row) => !isPreviewPath(row.page_path));"));
+  assert.ok(dashboard.includes('.eq("action_type", "bible_in_one_year_day_completed")'));
+  assert.ok(dashboard.includes("bibleYearCoverage: rateOrNull(bibleYearShown, bibleYearFinished.length)"));
+  // A study's devotional_day_completed is the Overview tick, never a finished day.
+  const section = sliceFrom(dashboard, "const DAY_POPUP_SINCE", 6000);
+  assert.ok(!section.includes('.eq("action_type", "devotional_day_completed")'));
+});
+
 console.log(`\n${passed} checks passed.`);
