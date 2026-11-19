@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-2-explained",
+    title: "1 Samuel 2 Explained: Hannah's Song and Eli's Corrupt Sons",
+    description:
+      "1 Samuel 2 explained verse by verse: Hannah's song of praise, the corruption of Hophni and Phinehas, Samuel's growth, and the prophecy against Eli's house.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-2-explained",
+    publishedAt: "2026-11-19",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 2 Explained 📖",
+      content:
+        "A woman who could barely speak last chapter cannot stop singing in this one.\nHer prayer turns into one of the Bible's great songs of praise.\n\n📌 Two priests inherit everything she wanted and treat it like nothing.\n\n📖 Hannah's song celebrates how God reverses situations.\n📖 Eli's sons steal from sacrifices and threaten worshippers.\n📖 A prophet tells Eli exactly how it ends for his sons.\n\nNew article on:\n🟢 what **sons of Belial** actually means\n🟢 why Hannah mentions a **king** before Israel had one\n🟢 who the **faithful priest** in verse 35 might be\n\nHave you ever watched someone waste a gift you would have given anything for? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-1-explained",
     title: "1 Samuel 1 Explained: Hannah's Prayer and the Birth of Samuel",
     description:
