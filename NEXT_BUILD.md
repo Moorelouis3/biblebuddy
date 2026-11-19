@@ -21,6 +21,17 @@ app, however finished it looks and however long ago it was written.
 
 ## Waiting for the next iOS build
 
+**In TestFlight since 19 Nov 2026 (Codemagic build 6afe3b47, commit c2568946),
+not yet submitted to the App Store.** Items 1, 3 and 4 below are all in that
+build, so they can be tried on a phone through TestFlight. They reach App
+Store users only once a version is submitted and approved, which first needs
+the updated Apple Developer Program License Agreement accepted (below).
+
+That build needed one fix first: the app's provisioning profile was
+regenerated on 19 Nov, because adding Associated Domains to the App ID on
+9 Nov had made Apple mark the committed one Invalid, and TestFlight build 32
+failed at archive on exactly that.
+
 ### 1. Email links open the app instead of Chrome
 **Ready. Nothing more to do but build.**
 
