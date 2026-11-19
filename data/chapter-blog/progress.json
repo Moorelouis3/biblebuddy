@@ -4,7 +4,7 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-11-19T02:33:57.174Z",
+  "updatedAt": "2026-11-19T02:43:05.314Z",
   "nextChapter": "Ruth 4",
   "chapters": {
     "genesis-1-explained": {
@@ -1855,8 +1855,9 @@
     },
     "ruth-3-explained": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-19T02:33:38.589Z"
+      "status": "committed",
+      "startedAt": "2026-11-19T02:33:38.589Z",
+      "committedAt": "2026-11-19T02:43:05.314Z"
     }
   },
   "priorityBooks": [

@@ -1043,6 +1043,6 @@ wrong signal from it.
 ## Chapter library: chapters on the fallback banner, waiting on a real one
 No `public/blog-banners/<slug>.jpg` exists yet for these chapters, so each
 uses the verse-breakdowns fallback (`/Whatisthebiblebanner.png`):
-ruth-1-explained, ruth-2-explained. Updating this one line going forward
-(per the routine's own doc) rather than adding a new block each time a
-chapter lands without a custom banner.
+ruth-1-explained, ruth-2-explained, ruth-3-explained. Updating this one
+line going forward (per the routine's own doc) rather than adding a new
+block each time a chapter lands without a custom banner.

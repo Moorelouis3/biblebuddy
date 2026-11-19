@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "ruth-3-explained",
+    title: "Ruth 3 Explained: Naomi's Plan at the Threshing Floor",
+    description:
+      "Ruth 3 explained verse by verse: Naomi's plan, Ruth's request at Boaz's feet, his blessing, the nearer kinsman, and the barley sent home with her.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/ruth-3-explained",
+    publishedAt: "2026-11-19",
+    readTime: "15 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "Ruth 3 Explained 📖",
+      content:
+        "A widow sends her daughter in law out after dark.\nOne night, and everything starts moving.\n\n📌 Ruth asks for exactly what the law already allowed.\n\n📖 Naomi sends Ruth to the threshing floor at night.\n📖 Boaz blesses her before she even finishes asking.\n📖 He admits a nearer kinsman has first claim.\n\nNew article on:\n🟢 what **uncover his feet** actually meant\n🟢 why **spread thy skirt** echoes Ruth 2's wings\n🟢 how one oath settles the whole night's risk\n\nHave you ever had to stop waiting and just ask plainly for what you needed? 🙏",
+    },
+  },
+  {
     slug: "what-does-it-mean-to-fear-god",
     title: "What Does It Mean to Fear God?",
     description:
