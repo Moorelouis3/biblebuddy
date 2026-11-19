@@ -1046,3 +1046,32 @@ uses the verse-breakdowns fallback (`/Whatisthebiblebanner.png`):
 ruth-1-explained, ruth-2-explained, ruth-3-explained. Updating this one
 line going forward (per the routine's own doc) rather than adding a new
 block each time a chapter lands without a custom banner.
+
+## Stale local main / detached HEAD recurrence: 29 commits including 3 overdue [deploy] tags found unpushed, now fixed
+This run's checkout started HEAD detached from main, 29 commits ahead of
+origin/main, with origin/main as a clean ancestor (no divergent history —
+same recurring anomaly as the earlier `rescue/stale-local-main-*` incidents,
+not the worse "unrelated history" variant). The gap went back to
+2026-11-18 05:14 Berlin (`iOS home-screen widgets` was the last commit that
+had actually reached origin/main). The 29 stranded commits included three
+`[deploy]`-tagged commits (profile gate / day-complete popup / feed covers,
+plus two chapter-library deploy batches) that had sat un-built on Vercel for
+over 24 hours, plus four full Ruth chapter articles, Judges 20-21, iOS
+widget signing work, and more.
+
+Backed everything up first to `origin/rescue/stale-local-main-2026-11-19`
+(matches the existing rescue-branch convention), then fast-forwarded
+`origin/main` itself — this was a true fast-forward (origin/main was a
+direct ancestor of the stranded tip), not a force-push or rewrite, so no
+history was altered. A later session has since built on top of it, so this
+is confirmed landed for real; local `main` is synced and clean.
+
+Flagging because this is now at least the 4th+ time this exact "stale local
+main / detached HEAD" anomaly has recurred (prior incidents: 2026-09-06,
+09-17 (x2), 09-18, 09-19 (x2), 09-21, 09-22, plus the unrelated-history
+variant around Day 90/91). Each time it has cost real deploy latency and an
+agent's run having to notice and manually recover instead of doing its
+assigned job. Worth asking whoever manages this container/environment
+whether the session startup can reliably check out and fast-forward `main`
+before an agent's work begins, since this keeps happening in exactly the
+same shape.
