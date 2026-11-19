@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-3-explained",
+    title: "1 Samuel 3 Explained: The Call of Samuel, Judgment on Eli",
+    description:
+      "1 Samuel 3 explained verse by verse: God calls Samuel by name at Shiloh, Eli's slow recognition, and the judgment confirmed against his sons.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-3-explained",
+    publishedAt: "2026-11-19",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 3 Explained 📖",
+      content:
+        "A boy hears his name called in the dark.\nHe thinks it is the old priest calling him.\n\n📌 Three times he runs to the wrong man before he understands who is speaking.\n\n📖 Eli's eyes are failing, but his ears still miss the voice of God.\n📖 Samuel delivers the hardest news of his life to the man who raised him.\n📖 All Israel learns Samuel is a true prophet of the LORD.\n\nNew article on:\n🟢 why the **word of the LORD** was so rare before this night\n🟢 what Samuel's answer in **verse 10** leaves out\n🟢 why Eli responds to judgment **so calmly**\n\nHave you ever had to tell someone hard news you wished was not yours to carry? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-2-explained",
     title: "1 Samuel 2 Explained: Hannah's Song and Eli's Corrupt Sons",
     description:
