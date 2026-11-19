@@ -1043,9 +1043,10 @@ wrong signal from it.
 ## Chapter library: chapters on the fallback banner, waiting on a real one
 No `public/blog-banners/<slug>.jpg` exists yet for these chapters, so each
 uses the verse-breakdowns fallback (`/Whatisthebiblebanner.png`):
-ruth-1-explained, ruth-2-explained, ruth-3-explained. Updating this one
-line going forward (per the routine's own doc) rather than adding a new
-block each time a chapter lands without a custom banner.
+ruth-1-explained, ruth-2-explained, ruth-3-explained, ruth-4-explained,
+1-samuel-1-explained. Updating this one line going forward (per the
+routine's own doc) rather than adding a new block each time a chapter
+lands without a custom banner.
 
 ## Stale local main / detached HEAD recurrence: 29 commits including 3 overdue [deploy] tags found unpushed, now fixed
 This run's checkout started HEAD detached from main, 29 commits ahead of

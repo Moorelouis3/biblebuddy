@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-1-explained",
+    title: "1 Samuel 1 Explained: Hannah's Prayer and the Birth of Samuel",
+    description:
+      "1 Samuel 1 explained verse by verse: Hannah's bitter prayer at Shiloh, her vow, Eli's blessing, and the birth of Samuel, Israel's next prophet.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-1-explained",
+    publishedAt: "2026-11-19",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 1 Explained 📖",
+      content:
+        "A priest sees a woman's lips move with no sound.\nHe assumes she is drunk. She is actually praying.\n\n📌 Hannah pours out years of grief in total silence.\n\n📖 She vows to give any son back to the LORD for life.\n📖 Eli misreads her, then blesses her once he understands.\n📖 She keeps the vow in full once Samuel is born.\n\nNew article on:\n🟢 why **Eli** thought Hannah was drunk\n🟢 what her **vow** actually promised\n🟢 how this quiet prayer leads to **Samuel**, Israel's next prophet\n\nHave you ever prayed so hard that nobody around you understood what you were doing? 🙏",
+    },
+  },
+  {
     slug: "ruth-4-explained",
     title: "Ruth 4 Explained: Boaz Redeems Ruth at the City Gate",
     description:
