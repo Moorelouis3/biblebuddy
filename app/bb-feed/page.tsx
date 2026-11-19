@@ -18,6 +18,7 @@ import { logActionToMasterActions } from "../../lib/actionRecorder";
 import { requestAutoReplyDraft } from "../../lib/requestAutoReplyDraft";
 import { requestAutoCommentDraft } from "../../lib/requestAutoCommentDraft";
 import { readStudyActivity } from "../../lib/communityMilestones";
+import { resolveStudyActivityCover } from "../../lib/studyActivityCover";
 import { BIBLE_BUDDY_USER_ID } from "../../lib/bibleBuddyAccount";
 import { FEED_OPEN_POST_EVENT } from "../../components/AppShell";
 import AddBuddyButton, { type BuddyState } from "../../components/feed/AddBuddyButton";
@@ -1857,7 +1858,7 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
   const milestoneHeadline = studyActivity
     ? `${studyActivity.lead.replace(/\s*\bof\s*$/i, "").trim()}!`
     : "";
-  const studyCover = studyActivity ? studyCovers[studyActivity.title] : undefined;
+  const studyCover = studyActivity ? resolveStudyActivityCover(studyActivity.title, studyCovers) : null;
 
   return (
     <div ref={cardRef} className={`bb-community-post-card bg-white border rounded-xl p-4 shadow-sm relative transition-all ${isHighlighted ? "border-green-400 ring-2 ring-green-200" : "border-gray-200"}`}>
