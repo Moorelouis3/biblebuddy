@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-8-explained",
+    title: "1 Samuel 8 Explained: Israel Asks for a King Like the Nations",
+    description:
+      "1 Samuel 8 explained verse by verse: Samuel's corrupt sons, Israel's demand for a king, and God's warning about what it will cost them.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-8-explained",
+    publishedAt: "2026-11-20",
+    readTime: "13 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 8 Explained 📖",
+      content:
+        "Samuel is old now. His own sons turn out corrupt.\n\nSo the elders do not ask God to fix it. They ask for a whole new system.\n\n📌 God does not call this a request for a king. He calls it a rejection of Himself.\n\n📖 Samuel's sons take bribes and pervert justice.\n📖 The elders demand a king like all the nations.\n📖 God grants it, but only after naming the full cost first.\n\nNew article on:\n🟢 why wanting a king was really about rejecting **God**\n🟢 the six times Samuel warns the people a king will **take**\n🟢 why the people ask for the same thing twice, word for word\n\nHave you ever tried to fix a trust problem by changing the system instead of dealing with what broke it? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-7-explained",
     title: "1 Samuel 7 Explained: Repentance at Mizpeh and the Stone Called Ebenezer",
     description:
