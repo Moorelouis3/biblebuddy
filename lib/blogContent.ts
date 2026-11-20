@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-5-explained",
+    title: "1 Samuel 5 Explained: Dagon Falls Before the Ark",
+    description:
+      "1 Samuel 5 explained verse by verse: the ark in Dagon's temple, the idol's fall, and the plague that drives the Philistines to send it away.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-5-explained",
+    publishedAt: "2026-11-20",
+    readTime: "13 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 5 Explained 📖",
+      content:
+        "The Philistines just won the greatest trophy of their lives.\nThey set it right next to their own god, to show him off.\n\n📌 Within days they are begging to get rid of it.\n\n📖 Dagon falls on his face before the ark, twice.\n📖 The second time he loses his head and both hands.\n📖 Three cities in a row get struck before anyone sends it home.\n\nNew article on:\n🟢 why the Philistines set the ark beside **Dagon**\n🟢 what **emerods** actually were\n🟢 why moving the ark never moved the problem\n\nHave you ever relocated a problem instead of actually dealing with it? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-4-explained",
     title: "1 Samuel 4 Explained: The Ark Captured and Eli's Death",
     description:
