@@ -117,6 +117,68 @@ function Sparkline({ values, color }: { values: number[]; color: string }) {
   );
 }
 
+/**
+ * Retention against a typical app (Louis, 2026-11-20). Rolling headline per
+ * window, with the industry figure beside it, then the Version 1.0 signup
+ * months underneath. Data: computeRetentionTracker in lib/adminDashboard.ts.
+ */
+function RetentionTrackerCard({ tracker }: { tracker: NonNullable<DashboardData["retentionTracker"]> }) {
+  return (
+    <Card>
+      <CardTitle icon="📈">Retention vs a typical app</CardTitle>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+        {tracker.rolling.map((w) => {
+          const ahead = w.percent !== null && w.percent >= w.benchmark;
+          return (
+            <div key={w.key} className="rounded-2xl border border-[#eef2f8] p-4">
+              <p className="text-xs font-bold text-[#64748b]">Active in {w.label.toLowerCase()}</p>
+              <p className="mt-1 text-[32px] font-black leading-none text-[#0b1633]">{w.percent === null ? "—" : `${w.percent}%`}</p>
+              <p className="mt-2 text-xs font-bold" style={{ color: ahead ? "#15803d" : "#475569" }}>
+                Typical app: {w.benchmark}% on {w.benchmarkLabel}
+              </p>
+              <p className="mt-1 text-[10px] font-semibold text-[#94a3b8]">
+                {w.eligible > 0 ? `${w.active} of ${w.eligible} people` : "nobody's window has closed yet"}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+      <div className="mt-4 overflow-x-auto">
+        <table className="w-full min-w-[420px] text-left text-xs">
+          <thead>
+            <tr className="text-[#64748b]">
+              <th className="py-1.5 pr-2 font-bold">Signed up in</th>
+              <th className="py-1.5 pr-2 font-bold">People</th>
+              {tracker.rolling.map((w) => (
+                <th key={w.key} className="py-1.5 pr-2 font-bold">{w.label}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {tracker.months.map((m) => (
+              <tr key={m.month} className="border-t border-[#eef2f8]">
+                <td className="py-1.5 pr-2 font-bold text-[#0b1633]">{m.label}</td>
+                <td className="py-1.5 pr-2 font-semibold">{m.accounts}</td>
+                {m.windows.map((w) => (
+                  <td key={w.key} className="py-1.5 pr-2 font-black text-[#0b1633]">
+                    {w.percent !== null ? `${w.percent}%` : (
+                      <span className="font-semibold text-[#94a3b8]">from {w.fillsOn ? new Date(`${w.fillsOn}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "UTC" }) : "—"}</span>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-3 text-[11px] font-semibold text-[#94a3b8]">
+        Version 1.0 accounts. Top: people whose window ended in the last 30 days. Months fill in once every signup
+        in that month has had the full window. Typical app: {tracker.benchmarkSource}.
+      </p>
+    </Card>
+  );
+}
+
 function KpiCard({
   icon,
   label,
@@ -1069,6 +1131,9 @@ export default function AnalyticsDashboardView({
               <KpiCard icon="📄" label="Blog views" value={fmt(d.topCards.blogViews.value)} change={d.topCards.blogViews.change} spark={d.topCards.blogViews.spark} color="#7c3aed" />
               <KpiCard icon="%" label="Sign-up rate" value={pct(d.topCards.signupRate.value)} change={d.topCards.signupRate.change} spark={d.topCards.signupRate.spark} color="#e11d48" points />
             </div>
+
+            {/* Retention against a typical app, rolling (Louis, 2026-11-20) */}
+            {d.retentionTracker ? <RetentionTrackerCard tracker={d.retentionTracker} /> : null}
 
             {/* Over time + funnel */}
             <div className="grid gap-5 lg:grid-cols-[1.9fr_1fr]">

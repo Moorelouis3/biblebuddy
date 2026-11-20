@@ -329,6 +329,110 @@ async function countAuthAccounts(admin: SupabaseClient, current: { start: Date; 
   return { total: counts.total, guests: counts.guests, withEmail: counts.withEmail, newInWindow };
 }
 
+// ---------- retention tracker ----------
+
+/**
+ * Retention against normal apps (Louis, 2026-11-20): "It should let me know
+ * days 1 to 7... days 8 to 14... days 15 to 30... a rolling tracker, up there
+ * with new signups." He asked for it to be judged against what an average
+ * app achieves, not against an ideal - so every figure sits next to the
+ * industry one.
+ *
+ * Definitions, the same as docs/BIBLE_BUDDY_BETA_VS_VERSION_1_RETENTION_AUDIT_2026-11-12.md:
+ *  - Version 1.0 accounts only (created 1 Oct 2026 or later), registered
+ *    accounts (no guests), Louis's own account left out.
+ *  - "Active" is any master_actions row: anything the person did in the app.
+ *  - Windows are measured from the moment the account was created, in whole
+ *    24-hour days: "days 1-7" is 24 hours to 8 days after signup.
+ *  - An account counts in a window only once that whole window has passed.
+ *
+ * Rolling: the headline is the accounts whose window closed in the last 30
+ * days, so it moves as new people come through. The month rows follow the
+ * Version 1.0 reporting rule: a month's figure is filled in only once every
+ * account in that month has had the full window, so no month is compared
+ * with one that has had more time.
+ *
+ * Benchmarks: MWM, US Education & Knowledge apps, Q3 2025 median - 24.9% on
+ * day 1, 8.6% on day 7, 3.6% on day 30. Those are the share active on that
+ * single day; each sits beside the window it belongs to.
+ */
+const VERSION_1_START = Date.parse("2026-10-01T00:00:00Z");
+export const RETENTION_WINDOWS = [
+  { key: "d1_7", label: "Days 1–7", from: 1, to: 8, benchmark: 24.9, benchmarkLabel: "day 1" },
+  { key: "d8_14", label: "Days 8–14", from: 8, to: 15, benchmark: 8.6, benchmarkLabel: "day 7" },
+  { key: "d15_30", label: "Days 15–30", from: 15, to: 31, benchmark: 3.6, benchmarkLabel: "day 30" },
+] as const;
+export const RETENTION_BENCHMARK_SOURCE = "Typical education app (MWM, US, Q3 2025)";
+
+export async function computeRetentionTracker(admin: SupabaseClient, now: Date) {
+  const nowMs = now.getTime();
+  const people = (
+    await fetchAll<{ user_id: string; created_at: string; account_type: string | null }>(
+      admin,
+      "profile_stats",
+      "user_id, created_at, account_type",
+      (q) => q.gte("created_at", new Date(VERSION_1_START).toISOString()),
+    )
+  ).filter((p) => p.user_id !== OWNER_USER_ID && p.account_type !== "guest");
+
+  // Only the first 31 days after each signup matter, so the read stops there.
+  const actions = await inBatches<{ user_id: string; created_at: string }>(
+    people.map((p) => p.user_id),
+    (chunk) =>
+      fetchAll<{ user_id: string; created_at: string }>(admin, "master_actions", "user_id, created_at", (q) =>
+        q.in("user_id", chunk).gte("created_at", new Date(VERSION_1_START).toISOString()),
+      ),
+  );
+  const activity = new Map<string, number[]>();
+  for (const a of actions) {
+    const list = activity.get(a.user_id) || [];
+    list.push(Date.parse(a.created_at));
+    activity.set(a.user_id, list);
+  }
+
+  const activeIn = (createdMs: number, userId: string, from: number, to: number) =>
+    (activity.get(userId) || []).some((t) => t - createdMs >= from * DAY_MS && t - createdMs < to * DAY_MS);
+  const measure = (group: typeof people, from: number, to: number) => {
+    const eligible = group.filter((p) => nowMs - Date.parse(p.created_at) >= to * DAY_MS);
+    const active = eligible.filter((p) => activeIn(Date.parse(p.created_at), p.user_id, from, to)).length;
+    return { percent: eligible.length ? Math.round((active / eligible.length) * 1000) / 10 : null, active, eligible: eligible.length };
+  };
+
+  const rolling = RETENTION_WINDOWS.map((w) => {
+    // Accounts whose window closed in the last 30 days.
+    const closedFrom = nowMs - (w.to + 30) * DAY_MS;
+    const closedTo = nowMs - w.to * DAY_MS;
+    const group = people.filter((p) => {
+      const c = Date.parse(p.created_at);
+      return c >= closedFrom && c < closedTo;
+    });
+    return { ...w, ...measure(group, w.from, w.to) };
+  });
+
+  // Signup months, oldest first, from October 2026 to the current month.
+  const months: Array<{ month: string; label: string; accounts: number; windows: Array<{ key: string; percent: number | null; active: number; eligible: number; fillsOn: string | null }> }> = [];
+  for (let d = new Date(VERSION_1_START); d.getTime() <= nowMs; d = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1))) {
+    const start = d.getTime();
+    const end = Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 1);
+    const group = people.filter((p) => {
+      const c = Date.parse(p.created_at);
+      return c >= start && c < end;
+    });
+    months.push({
+      month: d.toISOString().slice(0, 7),
+      label: d.toLocaleDateString("en-GB", { month: "long", year: "numeric", timeZone: "UTC" }),
+      accounts: group.length,
+      windows: RETENTION_WINDOWS.map((w) => {
+        const closesAt = end + w.to * DAY_MS;
+        if (closesAt > nowMs) return { key: w.key, percent: null, active: 0, eligible: 0, fillsOn: new Date(closesAt).toISOString().slice(0, 10) };
+        return { key: w.key, ...measure(group, w.from, w.to), fillsOn: null };
+      }),
+    });
+  }
+
+  return { rolling, months, benchmarkSource: RETENTION_BENCHMARK_SOURCE };
+}
+
 // ---------- main ----------
 
 export async function computeDashboard(admin: SupabaseClient, window: DashboardWindow) {
@@ -344,6 +448,13 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   const profileCols =
     "user_id, created_at, account_type, bible_year_launch_seen_at, preferred_study_mode, signup_source, signup_utm_source, signup_first_touch_source, signup_referrer_url, signup_source_detail, signup_landing_session_id, registered_at, converted_from_guest_at";
 
+  // Independent of the chosen window, and read alongside everything else; a
+  // failure leaves the card out rather than the page.
+  const retentionTrackerPromise = computeRetentionTracker(admin, now).catch((error) => {
+    console.error("[ADMIN_DASHBOARD] retention tracker failed:", error);
+    return null;
+  });
+
   const [profilesAll, events, blogViews, promoEvents, groupPosts, proverbsMembers, emailRowsAll, lifetimeCounts] = await Promise.all([
     fetchAll<ProfileRow>(admin, "profile_stats", profileCols, (q) => q.gte("created_at", widest)),
     fetchAll<EventRow>(admin, "landing_page_events", "session_id, user_id, event_name, referrer, page_path, source, created_at", (q) => q.gte("created_at", sinceIso)),
@@ -358,6 +469,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     // which only reaches back as far as the comparison window needs.
     countAuthAccounts(admin, current),
   ]);
+  const retentionTracker = await retentionTrackerPromise;
 
   const profiles = profilesAll.filter((p) => p.user_id !== OWNER_USER_ID);
   const inCur = (iso: string) => within(iso, current);
@@ -1981,6 +2093,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     },
     trafficSources,
     firstLandingPages,
+    retentionTracker,
     returning: {
       activeToday: activeToday.size,
       studiedToday: studiedToday.size,
