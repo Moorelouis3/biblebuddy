@@ -117,7 +117,7 @@ If it is ever reconsidered, none of the groundwork needs redoing:
 Own branch, never the same build as a submission.
 
 ### 4. Home-screen widgets: Verse of the Day, Streak, My Study, Bible Lock (designs v2)
-**In build 17 (1.17), submitted for review 2026-11-20.** Compiled and signed; not yet tried on a phone.
+**In build 17 (1.17), submitted for review 2026-11-20.** Compiled, signed, and tested by Louis on an iPhone through TestFlight (20 Nov): works.
 
 Four widgets in one WidgetKit extension (`native/ios-extensions/BibleBuddyWidgets`,
 added to the project by `scripts/ios-widgets-extension.sh`). People add
