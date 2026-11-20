@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-7-explained",
+    title: "1 Samuel 7 Explained: Repentance at Mizpeh and the Stone Called Ebenezer",
+    description:
+      "1 Samuel 7 explained verse by verse: Israel puts away its idols, confesses at Mizpeh, and wins a battle by thunder, not the sword.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-7-explained",
+    publishedAt: "2026-11-20",
+    readTime: "13 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 7 Explained 📖",
+      content:
+        "Twenty years pass in one verse. Then everything changes in one day.\n\n📌 Israel finally does the one thing nobody tried in the three chapters before it: actually turn back to God, before asking Him for anything.\n\n📖 The nation puts away Baalim and Ashtaroth, for good.\n📖 A whole crowd confesses, \"we have sinned,\" with no disaster forcing the words out.\n📖 God wins the battle with thunder. Israel never swings a sword.\n\nNew article on:\n🟢 what **Baalim and Ashtaroth** actually were\n🟢 why Samuel names a stone **Ebenezer**\n🟢 why this victory looks nothing like the defeat in 1 Samuel 4\n\nHave you ever waited years for a breakthrough that only came once you stopped bargaining and actually changed? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-6-explained",
     title: "1 Samuel 6 Explained: The Ark Goes Home on a Cart of Cows",
     description:

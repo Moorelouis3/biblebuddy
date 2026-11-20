@@ -1045,8 +1045,8 @@ No `public/blog-banners/<slug>.jpg` exists yet for these chapters, so each
 uses the verse-breakdowns fallback (`/Whatisthebiblebanner.png`):
 ruth-1-explained, ruth-2-explained, ruth-3-explained, ruth-4-explained,
 1-samuel-1-explained, 1-samuel-2-explained, 1-samuel-3-explained,
-1-samuel-4-explained, 1-samuel-5-explained, 1-samuel-6-explained. Updating this one line going
-forward (per the routine's own doc) rather than adding a new block each
+1-samuel-4-explained, 1-samuel-5-explained, 1-samuel-6-explained, 1-samuel-7-explained. Updating
+this one line going forward (per the routine's own doc) rather than adding a new block each
 time a chapter lands without a custom banner.
 
 ## Stale local main / detached HEAD recurrence: 29 commits including 3 overdue [deploy] tags found unpushed, now fixed
