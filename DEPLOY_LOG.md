@@ -131,3 +131,4 @@
 2026-11-19T09:02:52Z | 20 commits | Ruth 3-4 and 1 Samuel 1 Explained chapter library entries, mandatory profile completion gate, day-complete popup and Bible in One Year feed-cover fixes (an ad-hoc deploy already live), widgets v2 rebuild with new iOS signing profiles, a blog article (What Does It Mean to Fear God?), and a stale-local-main anomaly flag
 2026-11-19T17:02:57Z | 6 commits | 1 Samuel 2-3 Explained chapter library entries
 2026-11-20T09:02:18Z | 10 commits | 1 Samuel 4-6 Explained chapter library entries, analytics overview rolling retention tracker, and build-list updates (widgets tested via TestFlight, iOS 1.17 with widgets submitted to App Review)
+2026-11-20T17:02:34Z | 5 commits | 1 Samuel 7-8 Explained chapter library entries
