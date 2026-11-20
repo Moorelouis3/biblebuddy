@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-4-explained",
+    title: "1 Samuel 4 Explained: The Ark Captured and Eli's Death",
+    description:
+      "1 Samuel 4 explained verse by verse: Israel's defeat, the ark of the covenant captured, Eli's death, and the birth of Ichabod.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-4-explained",
+    publishedAt: "2026-11-20",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 4 Explained 📖",
+      content:
+        "Israel loses a battle, so they send for the one object they think cannot lose.\nThey are wrong, and the cost is almost beyond counting.\n\n📌 Nobody in this chapter asks God anything until it is far too late to matter.\n\n📖 The ark gets carried into battle like a guaranteed win.\n📖 Thirty thousand soldiers fall, and the ark is captured anyway.\n📖 Eli dies the moment he hears the ark is gone, not when he hears about his own sons.\n\nNew article on:\n🟢 why the elders' plan was never really trust in God\n🟢 what finally breaks **Eli** at the very end\n🟢 what the name **Ichabod** actually means\n\nHave you ever reached for a familiar ritual hoping it would fix something only real repentance could? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-3-explained",
     title: "1 Samuel 3 Explained: The Call of Samuel, Judgment on Eli",
     description:
