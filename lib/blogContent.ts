@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "who-was-job",
+    title: "Who Was Job? The Man Who Lost Everything",
+    description:
+      "Who was Job in the Bible? The full story of his loss, his friends' bad advice, and what God actually said from the whirlwind.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-job",
+    publishedAt: "2026-11-20",
+    readTime: "22 min read",
+    image: "/who-was-job-banner.png",
+    groupPost: {
+      title: "Who Was Job? The Man Who Lost Everything 📖",
+      content:
+        "One day Job had everything.\nThe next day almost all of it was gone.\n\n📌 He never learns why, not even by the end.\n\n📖 Job loses his children, his wealth, and his health.\n📖 His friends insist he must have sinned.\n📖 God finally speaks, but never explains.\n\nNew article on:\n🟢 why Job never learns about the conversation in **heaven**\n🟢 the fourth friend most readers skip, named **Elihu**\n🟢 what God's answer from the **whirlwind** actually means\n\nHave you ever kept trusting God with no explanation at all? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-8-explained",
     title: "1 Samuel 8 Explained: Israel Asks for a King Like the Nations",
     description:

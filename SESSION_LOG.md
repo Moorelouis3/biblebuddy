@@ -14168,3 +14168,8 @@ Done: No new code this run - all five were ordinary noise, not app bugs. Two (ma
 Not live yet: nothing - no code changed this run.
 Still open: 20 more reports in the queue, left for the next run under the 5-bug cap, including annmay1 Williams's Apple-account-verification report (has a reporter, needs a reply) and one blog_article_likes 500 server error (an actual server error, not client noise - worth a closer look next run). Cannot confirm from this agent's API whether anything is sitting in `needs_louis` or `awaiting_approval` - that endpoint only returns `new`/`fixing` reports, so Louis should check /admin/bugs directly.
 Next: next scheduled run picks up the oldest 5 of the 20 remaining, starting with the /plan cluster from 23:31 on 13 Nov.
+
+## 2026-11-20T22:20:53Z (blog writer run)
+Article: Who Was Job? The Man Who Lost Everything | Words: ~4,487 | Category: Character Studies | Status: pass
+Not live yet: no [deploy] tag on this commit (Louis removed the blog exception 2026-10-10) - goes live at the next scheduled deploy, 08:05 Berlin.
+Queue remaining: 36
