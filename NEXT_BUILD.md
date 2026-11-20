@@ -21,11 +21,10 @@ app, however finished it looks and however long ago it was written.
 
 ## Waiting for the next iOS build
 
-**In TestFlight since 19 Nov 2026 (Codemagic build 6afe3b47, commit c2568946),
-not yet submitted to the App Store.** Items 1, 3 and 4 below are all in that
-build, so they can be tried on a phone through TestFlight. They reach App
-Store users only once a version is submitted and approved, which first needs
-the updated Apple Developer Program License Agreement accepted (below).
+**Submitted to App Review on 20 Nov 2026 as version 1.17 (build 17, Codemagic
+6afe3b47, commit c2568946), set to release automatically to everyone once
+approved.** Items 1, 3 and 4 below are all in that build. Until Apple
+approves it they are only on TestFlight phones, not App Store ones.
 
 That build needed one fix first: the app's provisioning profile was
 regenerated on 19 Nov, because adding Associated Domains to the App ID on
@@ -118,7 +117,7 @@ If it is ever reconsidered, none of the groundwork needs redoing:
 Own branch, never the same build as a submission.
 
 ### 4. Home-screen widgets: Verse of the Day, Streak, My Study, Bible Lock (designs v2)
-**Written 2026-11-18. Blocked on a signing profile, then needs a test build.**
+**In build 17 (1.17), submitted for review 2026-11-20.** Compiled and signed; not yet tried on a phone.
 
 Four widgets in one WidgetKit extension (`native/ios-extensions/BibleBuddyWidgets`,
 added to the project by `scripts/ios-widgets-extension.sh`). People add
@@ -199,4 +198,4 @@ build is made. Each entry says what it is, whether it is **ready** or
 to "Already in the current build" rather than deleting it, so the history of
 what is actually on people's phones stays readable.
 
-Last updated: 2026-11-10
+Last updated: 2026-11-20
