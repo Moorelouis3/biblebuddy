@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-6-explained",
+    title: "1 Samuel 6 Explained: The Ark Goes Home on a Cart of Cows",
+    description:
+      "1 Samuel 6 explained verse by verse: the Philistines test the ark with two cows, the golden mice offering, and the cost of looking inside at Bethshemesh.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-6-explained",
+    publishedAt: "2026-11-20",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 6 Explained 📖",
+      content:
+        "Seven months of plagues, and the Philistines finally ask the right question.\nNot how do we fight back. How do we send it home.\n\n📌 Two cows that have never pulled anything settle the whole argument.\n\n📖 Priests send back gold mice and gold tumors as a guilt offering.\n📖 A rigged test still proves exactly what it was built to avoid.\n📖 A rejoicing town pays a heavy price for one careless look.\n\nNew article on:\n🟢 why the Philistines made **golden mice** and **golden tumors**\n🟢 what the **cart test** was actually designed to prove\n🟢 why **Bethshemesh** paid so dearly for one mistake\n\nHave you ever tried to fix something while still avoiding the one honest admission that would actually solve it? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-5-explained",
     title: "1 Samuel 5 Explained: Dagon Falls Before the Ark",
     description:
