@@ -21,9 +21,7 @@ app, however finished it looks and however long ago it was written.
 
 ## Waiting for the next iOS build
 
-**Submitted to App Review on 20 Nov 2026 as version 1.17 (build 17, Codemagic
-6afe3b47, commit c2568946), set to release automatically to everyone once
-approved.** Items 1, 3 and 4 below are all in that build. Until Apple
+**LIVE in the App Store as 1.17 since 20 Nov 2026** (build 17, approved overnight, Louis installed it from the store and tested it on 21 Nov). Items 1, 3 and 4 below shipped in it; item 5 is the first thing waiting for the next build. Items 1, 3 and 4 below are all in that build. Until Apple
 approves it they are only on TestFlight phones, not App Store ones.
 
 That build needed one fix first: the app's provisioning profile was
