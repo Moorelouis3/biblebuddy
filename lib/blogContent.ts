@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-10-explained",
+    title: "1 Samuel 10 Explained: Anointed in Secret, Chosen by Lot",
+    description:
+      "1 Samuel 10 explained verse by verse: Saul's private anointing, the three signs, prophesying with strangers, and the lot that names him king at Mizpeh.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-10-explained",
+    publishedAt: "2026-11-21",
+    readTime: "15 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 10 Explained 📖",
+      content:
+        "A jar of oil. Just two men watching.\n\nMonths later, a whole nation watches a lot pick the same name.\n\n📌 Saul is confirmed king in private long before Israel sees it in public.\n\n📖 Saul prophesies with strangers and it becomes a saying.\n📖 The chosen king is found hiding among the baggage.\n📖 Some people refuse to bring him a gift at all.\n\nNew article on:\n🟢 the **three signs** Samuel promises Saul\n🟢 why Saul was chosen by **casting lots**\n🟢 what **children of Belial** means\n\nEver been told something true about yourself long before anyone else found out? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-9-explained",
     title: "1 Samuel 9 Explained: Saul Looks for Donkeys, Finds a Kingdom",
     description:
