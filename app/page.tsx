@@ -1030,7 +1030,7 @@ export default function LandingPage() {
     );
 
     cacheAppThemeForUser(user.id, "light");
-    applyAppThemeToDocument("light");
+    applyAppThemeToDocument("light", { cover: false });
     window.localStorage.setItem(`bb:skip-initial-login:${user.id}`, "1");
     window.localStorage.setItem(`bb:skip-initial-dashboard-view:${user.id}`, "1");
 
@@ -1109,7 +1109,7 @@ export default function LandingPage() {
     setError(null);
     markTermsAcceptancePending("google_landing");
     cacheAppThemeForUser(null, "light");
-    applyAppThemeToDocument("light");
+    applyAppThemeToDocument("light", { cover: false });
     // In the app: in-app Safari sheet plus a deep link back, because a plain
     // redirect leaves for the system browser and the session never returns.
     try {

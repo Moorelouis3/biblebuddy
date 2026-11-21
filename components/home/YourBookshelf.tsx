@@ -564,6 +564,9 @@ export default function YourBookshelf({
               const finishedOn = book.isComplete ? formatDate(book.lastActivityAt) : null;
               const lastRead = relativeDayLabel(book.lastActivityAt, now);
               const groupPercent = live ? safePercent((live.communityDay / Math.max(1, book.totalDays)) * 100) : 0;
+              // What this seat is, for a Bible Cover to style (bb-cv-* hooks,
+              // app/bible-covers.css). Has no effect without a cover.
+              const tone = isUpcoming ? "upcoming" : live ? "live" : comingSoon ? "soon" : book.isComplete ? "done" : book.role === "current" ? "current" : "other";
 
               // Where a tap goes, and what the button says.
               const target = isUpcoming
@@ -575,7 +578,8 @@ export default function YourBookshelf({
               return (
                 <li
                   key={book.key}
-                  className={`flex w-[168px] shrink-0 snap-start flex-col rounded-2xl border p-2 shadow-sm transition motion-safe:duration-200 hover:shadow-md sm:w-[184px] lg:w-auto ${
+                  data-tone={tone}
+                  className={`bb-cv-book flex w-[168px] shrink-0 snap-start flex-col rounded-2xl border p-2 shadow-sm transition motion-safe:duration-200 hover:shadow-md sm:w-[184px] lg:w-auto ${
                     isUpcoming ? "bb-shelf-upcoming" : ""
                   }`}
                   style={{ backgroundColor: tint.bg, borderColor: isUpcoming ? "#b79cf3" : tint.border }}
@@ -588,31 +592,31 @@ export default function YourBookshelf({
                   >
                     {/* One badge, never a stack: what this seat is. */}
                     {isUpcoming ? (
-                      <span className="absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#6d3fd4] px-2 py-1 text-[9px] font-black text-white shadow-md">
+                      <span className="bb-cv-badge absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#6d3fd4] px-2 py-1 text-[9px] font-black text-white shadow-md">
                         <span aria-hidden>🗓️</span> Upcoming Study
                       </span>
                     ) : live ? (
-                      <span className="absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#b91c1c] px-2 py-1 text-[9px] font-black text-white shadow-md">
+                      <span className="bb-cv-badge absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#b91c1c] px-2 py-1 text-[9px] font-black text-white shadow-md">
                         <span aria-hidden className="bb-shelf-live-dot h-1.5 w-1.5 rounded-full bg-white" /> Live Group Study
                       </span>
                     ) : comingSoon ? (
-                      <span className="absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 rounded-full bg-[#6d3fd4] px-2 py-1 text-[9px] font-black text-white shadow-md">
+                      <span className="bb-cv-badge absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 rounded-full bg-[#6d3fd4] px-2 py-1 text-[9px] font-black text-white shadow-md">
                         <span aria-hidden>🗓️</span> Coming Soon
                       </span>
                     ) : book.isComplete ? (
-                      <span className="absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#1f8f54] px-2 py-1 text-[9px] font-black text-white shadow-md">
+                      <span className="bb-cv-badge absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#1f8f54] px-2 py-1 text-[9px] font-black text-white shadow-md">
                         <span aria-hidden>✔</span> Study Completed
                       </span>
                     ) : book.role === "current" ? (
-                      <span className="absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#5b3fd4] px-2 py-1 text-[9px] font-black text-white shadow-md">
+                      <span className="bb-cv-badge absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#5b3fd4] px-2 py-1 text-[9px] font-black text-white shadow-md">
                         <span aria-hidden>📖</span> Currently Reading
                       </span>
                     ) : book.role === "chosen" ? (
-                      <span className="absolute left-1.5 top-1.5 z-10 rounded-full bg-[#2b2150] px-2 py-1 text-[9px] font-black uppercase tracking-wide text-white shadow-md">
+                      <span className="bb-cv-badge absolute left-1.5 top-1.5 z-10 rounded-full bg-[#2b2150] px-2 py-1 text-[9px] font-black uppercase tracking-wide text-white shadow-md">
                         Your study
                       </span>
                     ) : book.role === "recommended" ? (
-                      <span className="absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 rounded-full bg-[#0056fd] px-2 py-1 text-[9px] font-black text-white shadow-md">
+                      <span className="bb-cv-badge absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 rounded-full bg-[#0056fd] px-2 py-1 text-[9px] font-black text-white shadow-md">
                         <span aria-hidden>✨</span> For You
                       </span>
                     ) : null}
@@ -638,11 +642,11 @@ export default function YourBookshelf({
                   </button>
 
                   {/* Two lines reserved, so the rows under the titles line up. */}
-                  <p className="mt-2 line-clamp-2 min-h-[2.5em] text-xs font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[13px]">
+                  <p className="bb-cv-book-title mt-2 line-clamp-2 min-h-[2.5em] text-xs font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[13px]">
                     {book.title}
                   </p>
 
-                  <div className="mt-1 flex-1">
+                  <div className="bb-cv-book-body mt-1 flex-1">
                     {isUpcoming ? (
                       <>
                         {countdown ? (
@@ -653,8 +657,8 @@ export default function YourBookshelf({
                                 [countdown.hours, "Hours"],
                                 [countdown.minutes, "Minutes"],
                               ].map(([value, label]) => (
-                                <span key={label} className="flex-1 rounded-lg bg-white/80 px-1 py-1 text-center">
-                                  <span className="block text-[14px] font-black leading-none text-[#4b2fae]">{value}</span>
+                                <span key={label} className="bb-cv-count flex-1 rounded-lg bg-white/80 px-1 py-1 text-center">
+                                  <span className="bb-cv-hl block text-[14px] font-black leading-none text-[#4b2fae]">{value}</span>
                                   <span className="block text-[8px] font-bold uppercase tracking-wide text-[#7a6aa8]">{label}</span>
                                 </span>
                               ))}
@@ -664,10 +668,10 @@ export default function YourBookshelf({
                             </p>
                           </>
                         ) : (
-                          <p className="text-[11px] font-black text-[#4b2fae]">Starting now</p>
+                          <p className="bb-cv-hl text-[11px] font-black text-[#4b2fae]">Starting now</p>
                         )}
                         {releaseDate ? (
-                          <p className="mt-1.5 flex items-center gap-1 text-[11px] font-black text-[#c81e1e]">
+                          <p className="bb-cv-hl mt-1.5 flex items-center gap-1 text-[11px] font-black text-[#c81e1e]">
                             <span aria-hidden>📅</span> Starts {releaseDate}
                           </p>
                         ) : null}
@@ -679,12 +683,12 @@ export default function YourBookshelf({
                       <>
                         {/* The GROUP's day, from the calendar. Not this
                             person's: theirs is the line under the bar. */}
-                        <p className="text-[11px] font-black text-[#b91c1c]">
+                        <p className="bb-cv-hl text-[11px] font-black text-[#b91c1c]">
                           Day {live.communityDay} of {book.totalDays}
                         </p>
-                        <span className="mt-1 block h-2 overflow-hidden rounded-full bg-white/80">
+                        <span className="bb-cv-track mt-1 block h-2 overflow-hidden rounded-full bg-white/80">
                           <span
-                            className="block h-full rounded-full bg-[#b91c1c] motion-safe:transition-[width] motion-safe:duration-700 motion-safe:ease-out"
+                            className="bb-cv-fill bb-cv-fill-warm block h-full rounded-full bg-[#b91c1c] motion-safe:transition-[width] motion-safe:duration-700 motion-safe:ease-out"
                             style={{ width: `${barsIn ? groupPercent : 0}%` }}
                             role="progressbar"
                             aria-valuenow={groupPercent}
@@ -693,7 +697,7 @@ export default function YourBookshelf({
                             aria-label={`${book.title}: the group is on day ${live.communityDay} of ${book.totalDays}`}
                           />
                         </span>
-                        <p className="mt-1.5 flex items-center gap-1 text-[10px] font-black text-[var(--bb-text-primary,#111827)]">
+                        <p className="bb-cv-hl mt-1.5 flex items-center gap-1 text-[10px] font-black text-[var(--bb-text-primary,#111827)]">
                           <span aria-hidden>📖</span> Today&apos;s reading is live!
                         </p>
                         <p className="mt-1 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
@@ -708,7 +712,7 @@ export default function YourBookshelf({
                       </>
                     ) : comingSoon ? (
                       <>
-                        <p className="text-[11px] font-black text-[#a57d2c]">{countdownLabel(book, now)}</p>
+                        <p className="bb-cv-hl text-[11px] font-black text-[#a57d2c]">{countdownLabel(book, now)}</p>
                         {releaseDate ? (
                           <p className="mt-1.5 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
                             <span aria-hidden>📅</span> Releases {releaseDate}
@@ -717,7 +721,7 @@ export default function YourBookshelf({
                       </>
                     ) : book.isComplete ? (
                       <>
-                        <p className="flex items-center gap-1 text-[11px] font-bold text-[#2f8f5b]">
+                        <p className="bb-cv-ok flex items-center gap-1 text-[11px] font-bold text-[#2f8f5b]">
                           <span aria-hidden>✅</span> Completed
                         </p>
                         {finishedOn ? (
@@ -732,13 +736,13 @@ export default function YourBookshelf({
                           <p className="text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
                             Day {book.currentDay} of {book.totalDays}
                           </p>
-                          <span className="shrink-0 rounded-full bg-white/70 px-1.5 py-0.5 text-[10px] font-black text-[var(--bb-accent,#2f7fe8)]">
+                          <span className="bb-cv-pill shrink-0 rounded-full bg-white/70 px-1.5 py-0.5 text-[10px] font-black text-[var(--bb-accent,#2f7fe8)]">
                             {percent}%
                           </span>
                         </div>
-                        <span className="mt-1.5 block h-2 overflow-hidden rounded-full bg-white/70">
+                        <span className="bb-cv-track mt-1.5 block h-2 overflow-hidden rounded-full bg-white/70">
                           <span
-                            className="block h-full rounded-full bg-[var(--bb-accent,#2f7fe8)] motion-safe:transition-[width] motion-safe:duration-700 motion-safe:ease-out"
+                            className="bb-cv-fill block h-full rounded-full bg-[var(--bb-accent,#2f7fe8)] motion-safe:transition-[width] motion-safe:duration-700 motion-safe:ease-out"
                             style={{ width: `${barsIn ? percent : 0}%` }}
                             role="progressbar"
                             aria-valuenow={percent}
@@ -781,7 +785,8 @@ export default function YourBookshelf({
                     type="button"
                     disabled={comingSoon}
                     onClick={() => open(book, index, target.href, target.action)}
-                    className={`mt-2.5 flex min-h-[40px] w-full items-center justify-center gap-1 whitespace-nowrap rounded-full px-1.5 py-2 text-center text-[12px] font-black transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 active:scale-[0.98] ${
+                    data-signed={isUpcoming && book.signedUp ? "true" : undefined}
+                    className={`bb-cv-btn mt-2.5 flex min-h-[40px] w-full items-center justify-center gap-1 whitespace-nowrap rounded-full px-1.5 py-2 text-center text-[12px] font-black transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 active:scale-[0.98] ${
                       isUpcoming
                         ? book.signedUp
                           ? "border-2 border-[#6d3fd4] bg-white/70 text-[#5b3fd4] ring-[#5b3fd4]"

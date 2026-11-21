@@ -333,12 +333,12 @@ export default function VerseOfTheDayBreakdown({
           connected; light wash and dark text, never a dark overlay. */}
       <div className="relative">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="bb-cv-verse-art absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${background.src})` }}
           aria-hidden="true"
         />
         <div
-          className="absolute inset-0"
+          className="bb-cv-verse-art absolute inset-0"
           style={{
             background:
               "linear-gradient(90deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.22) 55%, rgba(255,255,255,0) 100%)",

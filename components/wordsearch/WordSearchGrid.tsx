@@ -241,8 +241,8 @@ export default function WordSearchGrid({ puzzle, found, onFound, disabled = fals
             return (
               <g key={placement.letters}>
                 {/* A dark outline under a pale fill: a capsule you can see without colour. */}
-                <line {...points} stroke="#166534" strokeWidth={0.84} strokeLinecap="round" />
-                <line {...points} stroke="#dcfce7" strokeWidth={0.7} strokeLinecap="round" />
+                <line {...points} className="bb-cv-ws-edge" stroke="#166534" strokeWidth={0.84} strokeLinecap="round" />
+                <line {...points} className="bb-cv-ws-fill" stroke="#dcfce7" strokeWidth={0.7} strokeLinecap="round" />
               </g>
             );
           })}

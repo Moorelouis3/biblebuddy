@@ -317,7 +317,7 @@ export default function HomeScreen() {
           {stats.streak !== null ? (
             // Peach, same family as the Bible Trivia card below
             <div
-              className="flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#f4dcc8] px-2.5 py-2.5 shadow-sm sm:gap-2.5 sm:px-4 sm:py-3"
+              className="bb-cv-stat flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#f4dcc8] px-2.5 py-2.5 shadow-sm sm:gap-2.5 sm:px-4 sm:py-3"
               style={{
                 backgroundColor: "#fff3e6",
                 backgroundImage: "url(/home-cards/bg-trivia.jpg)",
@@ -343,7 +343,7 @@ export default function HomeScreen() {
           {biblePercent !== null ? (
             // Mint, same family as the Scrambled card below
             <div
-              className="flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#cde9dc] px-2.5 py-2.5 shadow-sm sm:gap-2.5 sm:px-4 sm:py-3"
+              className="bb-cv-stat flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#cde9dc] px-2.5 py-2.5 shadow-sm sm:gap-2.5 sm:px-4 sm:py-3"
               style={{
                 backgroundColor: "#eefaf3",
                 backgroundImage: "url(/home-cards/bg-scrambled.jpg)",
@@ -424,7 +424,7 @@ export default function HomeScreen() {
               // Each banner on its own tinted card. The width grew by the
               // padding so the artwork keeps the size it had rather than
               // shrinking to make room for the frame.
-              className="block w-[256px] shrink-0 snap-start rounded-2xl border p-2 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] sm:w-[296px]"
+              className="bb-cv-card block w-[256px] shrink-0 snap-start rounded-2xl border p-2 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] sm:w-[296px]"
               style={{ backgroundColor: tint.bg, borderColor: tint.border }}
             >
               <div className="relative aspect-[1728/910] overflow-hidden rounded-xl bg-[var(--bb-surface-soft,#eef2f7)]">
@@ -468,7 +468,7 @@ export default function HomeScreen() {
             href="/bible-trivia"
             onClick={() => trackHomeEvent("home_trivia_click", {})}
             aria-label="Bible Trivia - test your Bible knowledge"
-            className="relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#f4dcc8] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
+            className="bb-cv-card bb-cv-game relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#f4dcc8] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
             style={{
               backgroundColor: "#fff3e6",
               backgroundImage: "url(/home-cards/bg-trivia.jpg)",
@@ -477,22 +477,22 @@ export default function HomeScreen() {
             }}
           >
             <span
-              className="grid h-20 w-20 shrink-0 place-items-center rounded-full text-4xl font-black text-white shadow-[0_6px_16px_rgba(240,130,90,0.35)]"
+              className="bb-cv-game-art bb-cv-game-art-round grid h-20 w-20 shrink-0 place-items-center rounded-full text-4xl font-black text-white shadow-[0_6px_16px_rgba(240,130,90,0.35)]"
               style={{ background: "linear-gradient(160deg, #ff9d7e 0%, #f2708a 100%)" }}
               aria-hidden="true"
             >
               ?
             </span>
-            <span className="relative z-10 min-w-0 flex-1">
+            <span className="bb-cv-game-text relative z-10 min-w-0 flex-1">
               <span className="block text-lg font-black text-[#3d2417]">Bible Trivia</span>
               <span className="mt-0.5 block text-xs font-semibold text-[#8a5c40]">
                 Books and people · Test your Bible knowledge
               </span>
-              <span className="mt-2 inline-block rounded-full bg-[#ffe1d2] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#c1543a]">
+              <span className="bb-cv-tag mt-2 inline-block rounded-full bg-[#ffe1d2] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#c1543a]">
                 🔥 CHALLENGE YOURSELF
               </span>
               <span className="mt-2.5 block">
-                <span className="inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
+                <span className="bb-cv-cta inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
                   Start →
                 </span>
               </span>
@@ -503,7 +503,7 @@ export default function HomeScreen() {
             href="/bible-study-games/scrambled"
             onClick={() => trackHomeEvent("home_scrambled_click", {})}
             aria-label="Scrambled - unscramble the verse"
-            className="relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#cde9dc] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
+            className="bb-cv-card bb-cv-game relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#cde9dc] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
             style={{
               backgroundColor: "#eefaf3",
               backgroundImage: "url(/home-cards/bg-scrambled.jpg)",
@@ -515,7 +515,7 @@ export default function HomeScreen() {
               {["B", "I", "B", "L", "E"].map((letter, index) => (
                 <span
                   key={index}
-                  className={`grid h-6 w-6 place-items-center rounded-md bg-white text-xs font-black text-[#1e7f63] shadow-sm ${
+                  className={`bb-cv-tile grid h-6 w-6 place-items-center rounded-md bg-white text-xs font-black text-[#1e7f63] shadow-sm ${
                     index === 3 ? "col-start-1" : ""
                   } ${index >= 3 ? "translate-x-3" : ""}`}
                 >
@@ -523,16 +523,16 @@ export default function HomeScreen() {
                 </span>
               ))}
             </span>
-            <span className="relative z-10 min-w-0 flex-1">
+            <span className="bb-cv-game-text relative z-10 min-w-0 flex-1">
               <span className="block text-lg font-black text-[#123f30]">Scrambled</span>
               <span className="mt-0.5 block text-xs font-semibold text-[#3f7a63]">
                 Unscramble the verse before the hints run out
               </span>
-              <span className="mt-2 inline-block rounded-full bg-[#d8f2e4] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#1e7f63]">
+              <span className="bb-cv-tag mt-2 inline-block rounded-full bg-[#d8f2e4] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#1e7f63]">
                 ⭐ EVERY CHAPTER
               </span>
               <span className="mt-2.5 block">
-                <span className="inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
+                <span className="bb-cv-cta inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
                   Play →
                 </span>
               </span>
@@ -550,12 +550,12 @@ export default function HomeScreen() {
             href="/bible-study-games/word-search"
             onClick={() => trackHomeEvent("home_word_search_click", {})}
             aria-label="Bible Word Search - find hidden Bible words"
-            className="relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#cfe0fb] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
+            className="bb-cv-card bb-cv-game relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#cfe0fb] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
             style={{ background: "linear-gradient(135deg, #eef5ff 0%, #dbe9ff 100%)" }}
           >
-            <span className="grid w-20 shrink-0 gap-y-0.5 rounded-xl bg-white p-1.5 shadow-sm" aria-hidden="true">
+            <span className="bb-cv-game-art grid w-20 shrink-0 gap-y-0.5 rounded-xl bg-white p-1.5 shadow-sm" aria-hidden="true">
               {["FAITH", "GRACE", "TRUST"].map((row, rowIndex) => (
-                <span key={row} className={`grid grid-cols-5 rounded ${rowIndex === 1 ? "bg-[#5eead4]" : ""}`}>
+                <span key={row} className={`grid grid-cols-5 rounded ${rowIndex === 1 ? "bb-cv-found bg-[#5eead4]" : ""}`}>
                   {row.split("").map((letter, index) => (
                     <span
                       key={index}
@@ -569,16 +569,16 @@ export default function HomeScreen() {
                 </span>
               ))}
             </span>
-            <span className="relative z-10 min-w-0 flex-1">
+            <span className="bb-cv-game-text relative z-10 min-w-0 flex-1">
               <span className="block text-lg font-black text-[#14213d]">Bible Word Search</span>
               <span className="mt-0.5 block text-xs font-semibold text-[#3f5d8a]">
                 Find hidden Bible words and strengthen your biblical vocabulary
               </span>
-              <span className="mt-2 inline-block rounded-full bg-[#d3e3ff] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#1d4ed8]">
+              <span className="bb-cv-tag mt-2 inline-block rounded-full bg-[#d3e3ff] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#1d4ed8]">
                 📖 ALL 66 BOOKS
               </span>
               <span className="mt-2.5 block">
-                <span className="inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
+                <span className="bb-cv-cta inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
                   Play Now →
                 </span>
               </span>
@@ -589,25 +589,25 @@ export default function HomeScreen() {
             href="/bible-study-games/memory"
             onClick={() => trackHomeEvent("home_memory_click", {})}
             aria-label="Bible Memory - practice remembering Scripture"
-            className="relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#dccdf8] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
+            className="bb-cv-card bb-cv-game relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#dccdf8] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
             style={{ background: "linear-gradient(135deg, #f6efff 0%, #eadcff 100%)" }}
           >
-            <span className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl bg-white text-center shadow-sm" aria-hidden="true">
+            <span className="bb-cv-game-art grid h-20 w-20 shrink-0 place-items-center rounded-2xl bg-white text-center shadow-sm" aria-hidden="true">
               <span>
                 <span className="block text-[9px] font-bold leading-tight text-[#14213d]">The LORD is my</span>
-                <span className="mt-1 inline-block rounded-full bg-[#7c3aed] px-2 py-0.5 text-[9px] font-black text-white">shepherd</span>
+                <span className="bb-cv-found mt-1 inline-block rounded-full bg-[#7c3aed] px-2 py-0.5 text-[9px] font-black text-white">shepherd</span>
               </span>
             </span>
-            <span className="relative z-10 min-w-0 flex-1">
+            <span className="bb-cv-game-text relative z-10 min-w-0 flex-1">
               <span className="block text-lg font-black text-[#2b1a52]">Bible Memory</span>
               <span className="mt-0.5 block text-xs font-semibold text-[#5d4a8a]">
                 Practice remembering Scripture and strengthen your knowledge of God&apos;s Word
               </span>
-              <span className="mt-2 inline-block rounded-full bg-[#e2d4fb] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#5b21b6]">
+              <span className="bb-cv-tag mt-2 inline-block rounded-full bg-[#e2d4fb] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#5b21b6]">
                 🧠 LEARN IT BY HEART
               </span>
               <span className="mt-2.5 block">
-                <span className="inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
+                <span className="bb-cv-cta inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
                   Play Now →
                 </span>
               </span>

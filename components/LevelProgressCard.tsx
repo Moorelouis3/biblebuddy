@@ -142,7 +142,7 @@ export default function LevelProgressCard() {
       <Link
         href="/levels"
         aria-label={`Level ${summary.level}, ${summary.levelName}. ${summary.nextLevelName ? `${summary.pointsToNextLevel.toLocaleString()} XP to the next level` : "Top level"}. Open your levels and badges.`}
-        className="flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#ddd6f3] px-2.5 py-2.5 shadow-sm outline-none transition focus-visible:ring-2 focus-visible:ring-[#6d5bd0] focus-visible:ring-offset-2 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-[0.98] sm:gap-2.5 sm:px-4 sm:py-3"
+        className="bb-cv-stat flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#ddd6f3] px-2.5 py-2.5 shadow-sm outline-none transition focus-visible:ring-2 focus-visible:ring-[#6d5bd0] focus-visible:ring-offset-2 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-[0.98] sm:gap-2.5 sm:px-4 sm:py-3"
         style={{
           backgroundColor: "#f5f2ff",
           backgroundImage: "url(/home-cards/bg-group.jpg)",
@@ -152,7 +152,7 @@ export default function LevelProgressCard() {
         }}
         title={`Level ${summary.level} - ${summary.levelName} · ${summary.totalPoints.toLocaleString()} points`}
       >
-        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#6d5bd0] text-[10px] font-black text-white shadow-sm sm:h-7 sm:w-7 sm:text-[11px]">
+        <span className="bb-cv-stat-icon flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#6d5bd0] text-[10px] font-black text-white shadow-sm sm:h-7 sm:w-7 sm:text-[11px]">
           L{summary.level}
         </span>
         <div className="min-w-0">

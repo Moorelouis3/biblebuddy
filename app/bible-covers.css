@@ -1,0 +1,547 @@
+/*
+ * Bible Covers (lib/bibleCovers.ts). Everything here is scoped to
+ * html[data-bb-cover], so with no cover on, none of it applies and every page
+ * looks exactly as before.
+ *
+ * Colours come from the cover's tokens, never from hex values here, so the
+ * next cover is new tokens and art, not a new stylesheet. Pages are reached
+ * through bb-cv-* hook classes on the components themselves, not through
+ * [class*="..."] substring rules - those were how the old skins (2026-05)
+ * skinned pages, and they were both patchy and slow to match.
+ *
+ * Performance rules for anything added here:
+ *  - animate transform and opacity only;
+ *  - no backdrop-filter, no filter: blur, no mix-blend-mode;
+ *  - no background-attachment: fixed.
+ */
+
+/* ---------- the page under the scene ---------- */
+
+html[data-bb-cover] {
+  background-color: var(--bb-cover-base);
+  color-scheme: dark;
+}
+
+/* body[class] outranks the generated remap, which would otherwise paint the
+   body (it carries bg-gray-50) and hide the scene. */
+html[data-bb-cover] body,
+html[data-bb-cover] body[class] {
+  background: transparent !important;
+  color: var(--bb-text-primary);
+}
+
+/* ---------- the scene (components/BibleCoverBackdrop.tsx) ---------- */
+
+.bb-cover-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--bb-cover-base, #07111f);
+  contain: strict;
+}
+
+.bb-cover-art {
+  position: absolute;
+  top: -3%;
+  left: -3%;
+  width: 106%;
+  height: 106%;
+  object-fit: cover;
+  object-position: center 28%;
+  animation: bb-cover-drift 48s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.bb-cover-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bb-cover-base) 42%, transparent) 0%, color-mix(in srgb, var(--bb-cover-base) 20%, transparent) 32%, color-mix(in srgb, var(--bb-cover-base) 58%, transparent) 100%);
+}
+
+/* Two pre-drawn tiles that only move: the GPU slides them, nothing repaints.
+   The layer is one tile taller than the screen and moves exactly one tile,
+   so the loop is seamless. */
+.bb-cover-snow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -512px;
+  height: calc(100% + 512px);
+  background-repeat: repeat;
+  background-size: 512px 512px;
+  will-change: transform;
+}
+
+.bb-cover-snow-far {
+  background-image: url(/covers/snow-far.png);
+  opacity: 0.75;
+  animation: bb-cover-snow 52s linear infinite;
+}
+
+.bb-cover-snow-near {
+  background-image: url(/covers/snow-near.png);
+  animation: bb-cover-snow 26s linear infinite;
+}
+
+@keyframes bb-cover-drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-1.2%, -1%, 0) scale(1.05); }
+}
+
+@keyframes bb-cover-snow {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, 512px, 0); }
+}
+
+/* Still: the reader turned snow off, this device dropped frames, or the
+   device asked for less motion or is low on memory. */
+html[data-bb-cover-motion="still"] .bb-cover-snow,
+html[data-bb-perf-reduce="true"] .bb-cover-snow {
+  display: none;
+}
+
+html[data-bb-cover-motion="still"] .bb-cover-art,
+html[data-bb-perf-reduce="true"] .bb-cover-art {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bb-cover-snow { display: none; }
+  .bb-cover-art { animation: none; }
+}
+
+/* Paused while the app is in the background (lib/appPerformance.ts sets it). */
+html[data-bb-app-hidden="true"] .bb-cover-art,
+html[data-bb-app-hidden="true"] .bb-cover-snow {
+  animation-play-state: paused;
+}
+
+/* ---------- shared chrome ---------- */
+
+/* The header and page wrappers sit on the scene. */
+html[data-bb-cover] .bb-safe-top-header {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bb-cover-base) 60%, transparent), transparent) !important;
+  border-color: transparent !important;
+}
+
+/* The bottom bar: a frosted-navy pill, no blur. */
+html[data-bb-cover] .bb-bottom-pill > div {
+  background: var(--bb-cover-panel-strong) !important;
+  border-color: var(--bb-cover-frame-strong) !important;
+  box-shadow: 0 14px 34px rgba(2, 6, 16, 0.5) !important;
+}
+
+/* ---------- Home: greeting stats ---------- */
+
+html[data-bb-cover] .bb-cv-stat {
+  background: var(--bb-cover-panel) !important;
+  border-color: var(--bb-cover-frame) !important;
+  box-shadow: none !important;
+}
+
+html[data-bb-cover] .bb-cv-stat p:first-child { color: var(--bb-text-primary) !important; }
+html[data-bb-cover] .bb-cv-stat p + p { color: var(--bb-text-secondary) !important; }
+html[data-bb-cover] .bb-cv-stat-icon {
+  background: var(--bb-cover-cool-soft) !important;
+  color: var(--bb-cover-cool) !important;
+  box-shadow: inset 0 0 0 1px var(--bb-cover-frame) !important;
+}
+
+/* ---------- Home: Verse of the Day ---------- */
+
+html[data-bb-cover] .bb-cv-verse {
+  background: var(--bb-cover-panel) !important;
+  border-color: var(--bb-cover-frame-strong) !important;
+  box-shadow: 0 18px 40px rgba(2, 6, 16, 0.35) !important;
+}
+
+/* The light-sky art and its white wash belong to the plain look. */
+html[data-bb-cover] .bb-cv-verse-art { display: none !important; }
+
+/* Light from the cabin windows: one soft amber glow in the lower corner,
+   static, behind the text. */
+html[data-bb-cover] .bb-cv-verse::after {
+  content: "";
+  position: absolute;
+  right: -12%;
+  bottom: -40%;
+  width: 70%;
+  height: 120%;
+  background: radial-gradient(closest-side, var(--bb-cover-glow), transparent);
+  pointer-events: none;
+}
+
+html[data-bb-cover] .bb-cv-verse-label { color: var(--bb-text-secondary) !important; }
+html[data-bb-cover] .bb-cv-verse-text { color: var(--bb-text-primary) !important; }
+html[data-bb-cover] .bb-cv-verse-ref { color: var(--bb-cover-cool) !important; }
+html[data-bb-cover] .bb-cv-verse-link,
+html[data-bb-cover] .bb-cv-verse-link span { color: var(--bb-cover-warm) !important; }
+
+html[data-bb-cover] .bb-cv-chip {
+  background: var(--bb-cover-tile) !important;
+  border-color: var(--bb-cover-frame-strong) !important;
+  color: var(--bb-text-primary) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* ---------- Home: Bookshelf ---------- */
+
+/* The holders take the skin; the book art stays as it is. */
+html[data-bb-cover] .bb-cv-book {
+  background: var(--bb-cover-panel) !important;
+  border-color: var(--bb-cover-frame) !important;
+  box-shadow: none !important;
+}
+
+html[data-bb-cover] .bb-cv-book[data-tone="live"],
+html[data-bb-cover] .bb-cv-book[data-tone="upcoming"] {
+  border-color: color-mix(in srgb, var(--bb-cover-warm) 55%, transparent) !important;
+}
+
+html[data-bb-cover] .bb-cv-book-title { color: var(--bb-text-primary) !important; }
+html[data-bb-cover] .bb-cv-book-body p { color: var(--bb-text-secondary) !important; }
+html[data-bb-cover] .bb-cv-book-body .bb-cv-hl { color: var(--bb-cover-warm) !important; }
+html[data-bb-cover] .bb-cv-book-body .bb-cv-ok { color: var(--bb-cover-done) !important; }
+
+html[data-bb-cover] .bb-cv-count {
+  background: var(--bb-cover-warm-soft) !important;
+}
+html[data-bb-cover] .bb-cv-count > span:last-child { color: var(--bb-text-secondary) !important; }
+
+html[data-bb-cover] .bb-cv-pill {
+  background: transparent !important;
+  color: var(--bb-text-primary) !important;
+}
+
+html[data-bb-cover] .bb-cv-track { background: var(--bb-progress-track) !important; }
+html[data-bb-cover] .bb-cv-fill { background: var(--bb-progress-fill) !important; }
+html[data-bb-cover] .bb-cv-fill-warm { background: var(--bb-cover-warm) !important; }
+
+/* Badges: dark glass with a frosted edge; tone colours the text. */
+html[data-bb-cover] .bb-cv-badge {
+  background: var(--bb-cover-tile) !important;
+  box-shadow: inset 0 0 0 1px var(--bb-cover-frame-strong) !important;
+  color: var(--bb-text-primary) !important;
+}
+html[data-bb-cover] .bb-cv-book[data-tone="live"] .bb-cv-badge,
+html[data-bb-cover] .bb-cv-book[data-tone="upcoming"] .bb-cv-badge,
+html[data-bb-cover] .bb-cv-book[data-tone="soon"] .bb-cv-badge {
+  color: var(--bb-cover-warm) !important;
+}
+html[data-bb-cover] .bb-cv-book[data-tone="done"] .bb-cv-badge {
+  background: var(--bb-cover-done-soft) !important;
+  color: var(--bb-text-primary) !important;
+}
+html[data-bb-cover] .bb-cv-book[data-tone="live"] .bb-shelf-live-dot { background: var(--bb-cover-warm) !important; }
+
+/* Buttons: amber for the live study, quiet slate for the rest,
+   evergreen to read a finished one again. */
+html[data-bb-cover] .bb-cv-btn {
+  background: var(--bb-cover-tile-strong) !important;
+  border: 1px solid var(--bb-cover-frame-strong) !important;
+  color: var(--bb-text-primary) !important;
+  box-shadow: none !important;
+}
+html[data-bb-cover] .bb-cv-book[data-tone="live"] .bb-cv-btn {
+  background: var(--bb-cover-warm) !important;
+  border-color: transparent !important;
+  color: var(--bb-cover-warm-text) !important;
+}
+html[data-bb-cover] .bb-cv-book[data-tone="upcoming"] .bb-cv-btn {
+  background: transparent !important;
+  border-color: color-mix(in srgb, var(--bb-cover-warm) 70%, transparent) !important;
+  color: var(--bb-cover-warm) !important;
+}
+html[data-bb-cover] .bb-cv-book[data-tone="upcoming"] .bb-cv-btn:not([data-signed]) {
+  background: var(--bb-cover-warm) !important;
+  color: var(--bb-cover-warm-text) !important;
+}
+html[data-bb-cover] .bb-cv-book[data-tone="done"] .bb-cv-btn {
+  background: var(--bb-cover-done-soft) !important;
+  border-color: color-mix(in srgb, var(--bb-cover-done) 60%, transparent) !important;
+  color: var(--bb-text-primary) !important;
+}
+html[data-bb-cover] .bb-cv-book[data-tone="soon"] .bb-cv-btn {
+  background: var(--bb-cover-warm-soft) !important;
+  color: var(--bb-cover-warm) !important;
+}
+
+/* ---------- Home: Today's Group Study ---------- */
+
+html[data-bb-cover] .bb-cv-group {
+  background: var(--bb-cover-panel) !important;
+  border-color: var(--bb-cover-frame) !important;
+  box-shadow: none !important;
+}
+html[data-bb-cover] .bb-cv-group h2,
+html[data-bb-cover] .bb-cv-group h2 + p,
+html[data-bb-cover] .bb-cv-group span { color: var(--bb-text-primary) !important; }
+html[data-bb-cover] .bb-cv-group p { color: var(--bb-text-secondary) !important; }
+html[data-bb-cover] .bb-cv-group-btn {
+  background: var(--bb-cover-warm) !important;
+  color: var(--bb-cover-warm-text) !important;
+}
+
+/* ---------- cover-aware screens (bb-cv-scope) ----------
+ *
+ * Screens built with Tailwind's fixed neutrals (bg-white, text-slate-900...)
+ * rather than the theme tokens put `bb-cv-scope` on their root. Inside it, and
+ * only under a cover, that short fixed list of utilities maps to the cover's
+ * surfaces and text. Exact class names, not substring matches, so the browser
+ * matches them as cheaply as any class rule. A screen root that should show
+ * the scene also gets `bb-cv-page`; the part a person reads for a long time
+ * gets `bb-cv-reading`, which is solid, not see-through.
+ */
+
+html[data-bb-cover] .bb-cv-page { background: transparent !important; }
+
+html[data-bb-cover] :is(.bg-white, .bg-slate-50, .bg-gray-50, .bg-gray-100, .bg-slate-100, .bg-\[\#f5f7fb\]) {
+  background-color: var(--bb-cover-panel) !important;
+}
+html[data-bb-cover] :is(.bg-slate-200, .bg-gray-200) {
+  background-color: var(--bb-cover-frame) !important;
+}
+html[data-bb-cover] :is(.border-slate-200, .border-slate-100, .border-gray-200, .border-gray-100, .border-blue-100, .border-sky-100) {
+  border-color: var(--bb-cover-frame) !important;
+}
+html[data-bb-cover] :is(.text-slate-900, .text-slate-800, .text-gray-950, .text-gray-900, .text-gray-800, .text-black) {
+  color: var(--bb-text-primary) !important;
+}
+html[data-bb-cover] :is(.text-slate-700, .text-slate-600, .text-gray-700, .text-gray-600) {
+  color: var(--bb-text-secondary) !important;
+}
+html[data-bb-cover] :is(.text-slate-500, .text-slate-400, .text-gray-500, .text-gray-400) {
+  color: var(--bb-text-muted) !important;
+}
+html[data-bb-cover] :is(.text-sky-600, .text-sky-500, .text-sky-700, .text-blue-600, .text-blue-700) {
+  color: var(--bb-cover-cool) !important;
+}
+html[data-bb-cover] :is(.hover\:bg-slate-50, .hover\:bg-slate-100, .hover\:bg-gray-50, .hover\:bg-gray-100, .hover\:bg-sky-50):hover {
+  background-color: var(--bb-cover-cool-soft) !important;
+}
+html[data-bb-cover] .bb-cv-page .bg-gradient-to-br {
+  background-image: none !important;
+  background-color: var(--bb-cover-panel) !important;
+}
+/* Primary actions warm, toggles and quiet states cool, done is evergreen. */
+html[data-bb-cover] :is(.bg-sky-500, .bg-\[\#0056fd\], .bg-blue-600) {
+  background-color: var(--bb-cover-warm) !important;
+  border-color: transparent !important;
+  color: var(--bb-cover-warm-text) !important;
+}
+html[data-bb-cover] .border-sky-500 { border-color: var(--bb-cover-warm) !important; }
+html[data-bb-cover] .bg-slate-300 { background-color: var(--bb-cover-cool-soft) !important; }
+html[data-bb-cover] :is(.bg-emerald-50, .bg-green-50) {
+  background-color: var(--bb-cover-done-soft) !important;
+}
+html[data-bb-cover] :is(.text-emerald-800, .text-emerald-700, .text-green-700) { color: var(--bb-text-primary) !important; }
+html[data-bb-cover] :is(.border-emerald-300, .border-green-300) { border-color: var(--bb-cover-done) !important; }
+/* Shadows were tuned for white pages; on the scene they read as smudges. */
+html[data-bb-cover] :is(.shadow-sm, .shadow, .shadow-md) { box-shadow: none !important; }
+
+/* The reading surface: solid and calm for long sessions. */
+html[data-bb-cover] .bb-cv-reading,
+html[data-bb-cover] .bb-cv-scope .bb-cv-reading {
+  background-color: var(--bb-cover-reader-bg) !important;
+  border-color: var(--bb-cover-frame) !important;
+  color: var(--bb-cover-reader-text);
+}
+html[data-bb-cover] .bb-cv-reading .bg-white { background-color: rgba(255, 255, 255, 0.035) !important; }
+
+/* Bottom bar items: the active pill is a hard-coded pale blue. */
+html[data-bb-cover] .bb-bottom-pill a[aria-current="page"] {
+  background: var(--bb-cover-cool-soft) !important;
+  box-shadow: inset 0 0 0 1px var(--bb-cover-frame-strong);
+  color: var(--bb-text-primary) !important;
+}
+html[data-bb-cover] .bb-bottom-pill a:not([aria-current="page"]) { color: var(--bb-text-secondary) !important; }
+
+/* Study Mode Insight Cards: each keeps its colour family, as a tint on the
+   dark reading surface instead of a pastel block. */
+html[data-bb-cover] .bb-cv-insight {
+  background-color: color-mix(in srgb, var(--bb-cover-cool) 7%, var(--bb-cover-reader-bg)) !important;
+  border-color: var(--bb-cover-frame) !important;
+}
+html[data-bb-cover] .bb-cv-insight :is(.bg-white\/70, .bg-white) { background-color: rgba(255, 255, 255, 0.08) !important; }
+
+/* In the verse text: a saved highlight keeps its pale highlighter colour with
+   dark ink (a real highlighter on a page); the tapped phrase takes a tint of
+   its own colour so the white text stays readable. */
+html[data-bb-cover] .bb-cv-mark { color: #0e1a2c !important; }
+html[data-bb-cover] .bb-cv-phrase-open {
+  background-color: var(--bb-cover-warm-soft) !important;
+  border-bottom-color: var(--bb-cover-warm) !important;
+}
+/* Every Study Mode underline in one cover colour, not the card hues. */
+html[data-bb-cover] .bb-cv-underline { border-bottom-color: color-mix(in srgb, var(--bb-cover-cool) 75%, transparent) !important; }
+
+/* ---------- Home: Quick Reads, Look It Up, the four games ----------
+ * The cover palette only: navy panels, slate frames, icy blue and amber.
+ * The cards do NOT keep their old peach / mint / violet colours as tints
+ * (Louis, 2026-11-21: "there is no red in the theme... its lazy to just
+ * lighten the color up"). Each card is redrawn in the palette instead. */
+
+html[data-bb-cover] .bb-cv-card {
+  background: var(--bb-cover-panel) !important;
+  border-color: var(--bb-cover-frame) !important;
+  box-shadow: none !important;
+}
+html[data-bb-cover] .bb-cv-card p:first-of-type,
+html[data-bb-cover] .bb-cv-game-text > span:first-child { color: var(--bb-text-primary) !important; }
+html[data-bb-cover] .bb-cv-card p + p,
+html[data-bb-cover] .bb-cv-game-text > span:nth-child(2) { color: var(--bb-text-secondary) !important; }
+html[data-bb-cover] .bb-cv-tag {
+  background: var(--bb-cover-cool-soft) !important;
+  box-shadow: inset 0 0 0 1px var(--bb-cover-frame);
+  color: var(--bb-cover-cool) !important;
+}
+/* The little picture on each game card: a frosted navy tile, icy glyphs,
+   amber for the one thing that is "found" or "answered". */
+html[data-bb-cover] .bb-cv-game-art {
+  background: var(--bb-cover-tile) !important;
+  box-shadow: inset 0 0 0 1px var(--bb-cover-frame-strong) !important;
+  color: var(--bb-cover-cool) !important;
+}
+html[data-bb-cover] .bb-cv-game-art-round { color: var(--bb-cover-warm) !important; }
+html[data-bb-cover] .bb-cv-game-art span { color: var(--bb-cover-cool) !important; }
+html[data-bb-cover] .bb-cv-tile {
+  background: var(--bb-cover-tile) !important;
+  box-shadow: inset 0 0 0 1px var(--bb-cover-frame-strong) !important;
+  color: var(--bb-cover-cool) !important;
+}
+html[data-bb-cover] .bb-cv-found,
+html[data-bb-cover] .bb-cv-game-art .bb-cv-found {
+  background: var(--bb-cover-warm) !important;
+  color: var(--bb-cover-warm-text) !important;
+}
+html[data-bb-cover] .bb-cv-found span { color: var(--bb-cover-warm-text) !important; }
+html[data-bb-cover] .bb-cv-cta {
+  background: var(--bb-cover-tile-strong) !important;
+  box-shadow: inset 0 0 0 1px var(--bb-cover-frame-strong);
+  color: var(--bb-text-primary) !important;
+}
+html[data-bb-cover] .bb-cv-input {
+  background: var(--bb-cover-tile) !important;
+  border-color: var(--bb-cover-frame-strong) !important;
+  color: var(--bb-text-primary) !important;
+}
+html[data-bb-cover] .bb-cv-input::placeholder { color: var(--bb-text-muted) !important; }
+html[data-bb-cover] .bb-cv-lookup-tile {
+  background: var(--bb-cover-tile) !important;
+  border-color: var(--bb-cover-frame) !important;
+}
+html[data-bb-cover] .bb-cv-lookup-tile span:first-child { color: var(--bb-text-primary) !important; }
+html[data-bb-cover] .bb-cv-lookup-tile span + span { color: var(--bb-text-secondary) !important; }
+
+/* App-wide under a cover (the remap above is no longer limited to marked
+   screens - popups and dialogs live everywhere): dark ink that was written as
+   a hex value on white panels, and full-page white roots, which should show
+   the scene instead of covering it. */
+html[data-bb-cover] :is(.text-\[\#111827\], .text-\[\#1f2937\], .text-\[\#0f172a\], .text-\[\#14213d\], .text-\[\#0b1633\], .text-\[\#102a43\], .text-slate-950) {
+  color: var(--bb-text-primary) !important;
+}
+html[data-bb-cover] :is(.text-\[\#334155\], .text-\[\#4b5563\], .text-\[\#475569\], .text-\[\#5f6368\]) {
+  color: var(--bb-text-secondary) !important;
+}
+html[data-bb-cover] :is(.text-\[\#6b7280\], .text-\[\#64748b\], .text-\[\#94a3b8\]) {
+  color: var(--bb-text-muted) !important;
+}
+html[data-bb-cover] :is(.min-h-screen.bg-gray-50, .min-h-screen.bg-white, .min-h-screen.bg-slate-50) {
+  background: transparent !important;
+}
+/* Dark "ink" buttons (bg-[#111827]) become the quiet slate button. */
+html[data-bb-cover] .bg-\[\#111827\] {
+  background-color: var(--bb-cover-tile-strong) !important;
+  box-shadow: inset 0 0 0 1px var(--bb-cover-frame-strong);
+}
+/* Shadows were tuned for white pages; on the scene they read as smudges. */
+html[data-bb-cover] :is(.shadow-sm, .shadow) { box-shadow: none !important; }
+
+/* ---------- popups and dialogs ----------
+ * Solid, not see-through: a dialog sits over a busy page, and a translucent
+ * panel lets that page bleed into what you are reading. Two ways in, because
+ * the app has two: the shared ModalShell, and full-screen overlays that draw
+ * their own white card (feature popups and about twenty others). No blur
+ * behind any of them under a cover - that is the most expensive effect a
+ * phone can draw, and the dim is enough. */
+
+html[data-bb-cover] .bb-modal-shell {
+  background: color-mix(in srgb, var(--bb-cover-base) 78%, transparent) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html[data-bb-cover] .bb-skin-modal-panel > *,
+html[data-bb-cover] .bb-feature-popup-card,
+html[data-bb-cover] .fixed.inset-0 :is(.bg-white, .bg-\[var\(--bb-card\,\#ffffff\)\], .bg-\[var\(--bb-card\,\#19212c\)\]) {
+  background-color: var(--bb-cover-reader-bg) !important;
+  background-image: none !important;
+  border-color: var(--bb-cover-frame-strong) !important;
+  color: var(--bb-text-primary);
+}
+html[data-bb-cover] .bb-skin-modal-panel > *,
+html[data-bb-cover] .bb-feature-popup-card {
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55), inset 0 0 0 1px var(--bb-cover-frame-strong) !important;
+}
+/* Panels inside a dialog step up one shade so the layout still reads. */
+html[data-bb-cover] :is(.bb-skin-modal-panel, .bb-feature-popup-card, .fixed.inset-0) :is(.bg-white .bg-white, .bg-slate-50, .bg-gray-50, .bg-gray-100, .bg-slate-100) {
+  background-color: var(--bb-cover-cool-soft) !important;
+}
+html[data-bb-cover] :is(.backdrop-blur-md, .backdrop-blur-sm, .backdrop-blur-\[3px\], .backdrop-blur) {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html[data-bb-cover] .fixed.inset-0:is(.bg-black\/65, .bg-black\/50, .bg-black\/40, .bg-\[rgba\(30\,27\,45\,0\.5\)\]) {
+  background-color: color-mix(in srgb, var(--bb-cover-base) 78%, transparent) !important;
+}
+
+/* ---------- Feed ---------- */
+
+html[data-bb-cover] .bb-community-page { background: transparent !important; }
+html[data-bb-cover] :is(.bb-cv-hero, .bb-community-panel, .bb-community-composer, .bb-community-post-card) {
+  background: var(--bb-cover-panel) !important;
+  border-color: var(--bb-cover-frame) !important;
+  box-shadow: none !important;
+}
+html[data-bb-cover] .bb-cv-hero-title,
+html[data-bb-cover] .bb-community-panel :is(h2, p, .truncate) { color: var(--bb-text-primary) !important; }
+html[data-bb-cover] .bb-community-panel :is(.border-t, li) { border-color: var(--bb-cover-frame) !important; }
+html[data-bb-cover] .bb-community-panel :is(.hover\:bg-white\/50):hover { background: var(--bb-cover-cool-soft) !important; }
+/* The tabs: a dark track, the selected one a frosted pill. */
+html[data-bb-cover] .bb-community-tab { background: var(--bb-cover-tile) !important; }
+html[data-bb-cover] .bb-community-tab button { color: var(--bb-text-secondary) !important; background: transparent !important; box-shadow: none !important; }
+html[data-bb-cover] .bb-community-tab button[data-active="true"] {
+  background: var(--bb-cover-cool-soft) !important;
+  box-shadow: inset 0 0 0 1px var(--bb-cover-frame-strong) !important;
+  color: var(--bb-text-primary) !important;
+}
+/* The composer pill and poll answers. */
+html[data-bb-cover] .bb-community-composer .bg-gray-50\/70 {
+  background: var(--bb-cover-tile) !important;
+  border-color: var(--bb-cover-frame-strong) !important;
+  color: var(--bb-text-muted) !important;
+}
+html[data-bb-cover] .bb-cv-poll {
+  background: var(--bb-cover-tile) !important;
+  border-color: var(--bb-cover-frame) !important;
+  color: var(--bb-text-primary) !important;
+}
+html[data-bb-cover] .bb-cv-poll[data-chosen="true"] { border-color: var(--bb-cover-warm) !important; }
+html[data-bb-cover] .bb-cv-poll-fill { background: var(--bb-cover-cool-soft) !important; }
+html[data-bb-cover] .bb-cv-poll[data-chosen="true"] .bb-cv-poll-fill { background: var(--bb-cover-warm-soft) !important; }
+html[data-bb-cover] .bb-cv-poll :is(.text-\[\#2f7fe8\], .text-blue-600) { color: var(--bb-cover-cool) !important; }
+/* "Read more" fade: into the card's own navy, not white. */
+html[data-bb-cover] .bb-cv-fade { background: linear-gradient(to bottom, transparent, var(--bb-cover-panel-strong)) !important; }
+
+/* Word Search: found words were drawn green on white. Under a cover a found
+   word is an amber stroke - the "found it" colour across the games. */
+html[data-bb-cover] .bb-cv-ws-edge { stroke: var(--bb-cover-warm) !important; }
+html[data-bb-cover] .bb-cv-ws-fill { stroke: color-mix(in srgb, var(--bb-cover-warm) 35%, var(--bb-cover-reader-bg)) !important; }
+
+/* Text that sits straight on the artwork (greeting, section headings) gets a
+   soft shadow in the cover's base colour, so bright skies stay readable. */
+html[data-bb-cover] main :is(h1, h1 + p, h2) {
+  text-shadow: 0 1px 14px color-mix(in srgb, var(--bb-cover-base) 85%, transparent);
+}

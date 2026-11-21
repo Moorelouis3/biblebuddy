@@ -177,7 +177,7 @@ export default function LibraryPage({ embedded = false, onStudySelect }: Library
   };
 
   return (
-    <div className={`mx-auto w-full max-w-3xl ${embedded ? "px-0 pb-5" : "px-4 py-5 md:py-8"}`}>
+    <div className={`bb-cv-scope mx-auto w-full max-w-3xl ${embedded ? "px-0 pb-5" : "px-4 py-5 md:py-8"}`}>
       <h1 className="text-3xl font-black text-[var(--bb-text-primary,#111827)] md:text-4xl">Library</h1>
       <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
         Bible Studies to help you grow your faith.

@@ -40,6 +40,7 @@ import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRe
 import { LouisAvatar } from "./LouisAvatar";
 import { SELECTED_BUDDY_STORAGE_KEY, getBuddyAvatar, normalizeBuddyAvatarId, type BuddyAvatarId } from "../lib/buddyAvatars";
 import { normalizeCustomMemberBadge } from "../lib/userBadges";
+import { BIBLE_COVER_EVENT, isCoverExcludedPath, normalizeBibleCoverId, readBibleCover, setBibleCover } from "../lib/bibleCovers";
 import ProfileCompletionGate, { useProfileGateBlocking } from "./ProfileCompletionGate";
 import { extractLegacyDirectMessageAction } from "../lib/directMessageActions";
 import {
@@ -664,6 +665,29 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       window.removeEventListener("storage", handleStreakFlameChanged);
     };
   }, []);
+
+  // Bible Covers (lib/bibleCovers.ts). Putting one on or off re-runs the theme
+  // code, which writes the cover's tokens or the theme's alone. Until the
+  // cover picker lands in Settings, ?cover=winter-cabin / ?cover=none switches
+  // it on this device (for review, 2026-11-21).
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const reapply = () => applyAppThemeToDocument(readCachedAppTheme(userId));
+    window.addEventListener(BIBLE_COVER_EVENT, reapply);
+    const requested = new URLSearchParams(window.location.search).get("cover");
+    if (requested) setBibleCover(requested === "none" ? null : normalizeBibleCoverId(requested));
+    return () => window.removeEventListener(BIBLE_COVER_EVENT, reapply);
+  }, [userId]);
+
+  // Moving between a page that keeps its own look (the blog, sign-in) and an
+  // app page puts the cover on or takes it off. Only then - an ordinary
+  // navigation between app pages touches nothing.
+  useEffect(() => {
+    if (typeof window === "undefined" || !readBibleCover()) return;
+    const shouldWear = !isCoverExcludedPath(window.location.pathname);
+    const wearing = Boolean(document.documentElement.dataset.bbCover);
+    if (shouldWear !== wearing) applyAppThemeToDocument(readCachedAppTheme(userId));
+  }, [pathname, userId]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;

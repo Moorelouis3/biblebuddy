@@ -193,7 +193,8 @@ export default function FeedPollBlock({ pollId, userId }: { pollId: string; user
               type="button"
               disabled={Boolean(myVote) || Boolean(busy) || !userId}
               onClick={() => void vote(option.key)}
-              className={`relative w-full overflow-hidden rounded-xl border px-3 py-2.5 text-left text-sm font-semibold transition ${
+              data-chosen={chosen ? "true" : undefined}
+              className={`bb-cv-poll relative w-full overflow-hidden rounded-xl border px-3 py-2.5 text-left text-sm font-semibold transition ${
                 chosen
                   ? "border-[#2f7fe8] text-gray-900"
                   : myVote
@@ -202,7 +203,7 @@ export default function FeedPollBlock({ pollId, userId }: { pollId: string; user
               }`}
             >
               {myVote ? (
-                <span aria-hidden className="absolute inset-y-0 left-0 bg-[#eaf2ff]" style={{ width: `${share}%` }} />
+                <span aria-hidden className="bb-cv-poll-fill absolute inset-y-0 left-0 bg-[#eaf2ff]" style={{ width: `${share}%` }} />
               ) : null}
               <span className="relative flex items-center justify-between gap-3">
                 <span>{option.text}</span>

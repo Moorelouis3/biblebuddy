@@ -216,7 +216,7 @@ export default function BibleReferenceCard({
           text would go white on it in dark mode. */}
       <div
         ref={containerRef}
-        className="relative overflow-hidden rounded-2xl border border-[#f4dcc8] p-4 shadow-sm sm:p-5"
+        className="bb-cv-card bb-cv-scope bb-cv-lookup relative overflow-hidden rounded-2xl border border-[#f4dcc8] p-4 shadow-sm sm:p-5"
         style={{
           backgroundColor: "#fff3e6",
           backgroundImage: "url(/home-cards/bg-trivia.jpg)",
@@ -252,7 +252,7 @@ export default function BibleReferenceCard({
             // patch in the middle of a peach illustration. The search box is
             // the point of the card, so it sits on top of the background
             // rather than in it.
-            className="w-full rounded-xl border border-[#f0d6bd] bg-white px-4 py-3 text-sm text-[#111827] shadow-sm outline-none transition placeholder:text-[#a98e76] focus:border-[var(--bb-accent,#2f7fe8)]"
+            className="bb-cv-input w-full rounded-xl border border-[#f0d6bd] bg-white px-4 py-3 text-sm text-[#111827] shadow-sm outline-none transition placeholder:text-[#a98e76] focus:border-[var(--bb-accent,#2f7fe8)]"
           />
 
           {showPanel ? (
@@ -303,7 +303,7 @@ export default function BibleReferenceCard({
               key={category.kind}
               href={category.href}
               onClick={() => onEvent?.("home_reference_category_click", { kind: category.kind })}
-              className={`rounded-xl border p-3 text-center outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] ${category.containerClassName}`}
+              className={`bb-cv-lookup-tile rounded-xl border p-3 text-center outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] ${category.containerClassName}`}
             >
               <span className={`block text-sm font-black ${category.titleClassName}`}>{category.title}</span>
               {counts ? (

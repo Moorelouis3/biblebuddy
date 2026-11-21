@@ -2370,7 +2370,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 py-8 px-4">
+      <div className="bb-cv-scope bb-cv-page min-h-screen bg-gray-50 py-8 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center py-20">
             <p className="text-red-600">Error: {error}</p>
@@ -2494,8 +2494,8 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         : isGenesisOnePrototype
           // The breadcrumb above already supplies the top spacing, so the
           // prototype does not add another 2rem on top of it.
-          ? "min-h-screen bg-gray-50 px-4 pt-0 pb-8"
-          : "min-h-screen bg-gray-50 py-8 px-4"
+          ? "bb-cv-scope bb-cv-page min-h-screen bg-gray-50 px-4 pt-0 pb-8"
+          : "bb-cv-scope bb-cv-page min-h-screen bg-gray-50 py-8 px-4"
     }>
       {/* The phone coming back is the whole point of the Bible lock, and it
           used to happen in silence - when it happened at all. */}

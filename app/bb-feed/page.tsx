@@ -1724,7 +1724,7 @@ function PostBody({ content }: { content: string }) {
 
         {folded && (
           <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-10"
+            className="bb-cv-fade pointer-events-none absolute inset-x-0 bottom-0 h-10"
             style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0), #ffffff)" }}
           />
         )}
@@ -3569,7 +3569,7 @@ export default function BbFeedPage() {
             the background is a fixed light illustration, so themed text would
             turn white on it in dark mode. */}
         <div
-          className="relative mb-3 overflow-hidden rounded-3xl border border-[#ddd6f3] p-4 shadow-sm sm:p-5"
+          className="bb-cv-hero relative mb-3 overflow-hidden rounded-3xl border border-[#ddd6f3] p-4 shadow-sm sm:p-5"
           style={{
             backgroundColor: "#f5f2ff",
             backgroundImage: "url(/home-cards/bg-journey.jpg)",
@@ -3590,7 +3590,7 @@ export default function BbFeedPage() {
               ← Back to the feed
             </button>
           ) : null}
-          <h1 className="text-[26px] font-black leading-tight text-[#2b2150] sm:text-3xl">
+          <h1 className="bb-cv-hero-title text-[26px] font-black leading-tight text-[#2b2150] sm:text-3xl">
             {viewingUserId
               ? wallName || "Loading…"
               : tab === "myfeed"
@@ -3616,6 +3616,7 @@ export default function BbFeedPage() {
                 key={key}
                 onClick={() => setTab(key)}
                 aria-pressed={tab === key}
+                data-active={tab === key ? "true" : undefined}
                 className={`flex-1 rounded-xl px-2 py-2 text-[13px] font-black transition sm:text-[15px] ${
                   tab === key ? "bg-white shadow-sm" : "hover:bg-white/50"
                 }`}

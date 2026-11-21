@@ -146,17 +146,17 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
           }
         }}
         aria-label={`Verse of the Day - ${entry.reference}. Read the breakdown.`}
-        className="relative cursor-pointer overflow-hidden rounded-[24px] border border-[rgba(15,23,42,0.12)] shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.995]"
+        className="bb-cv-verse relative cursor-pointer overflow-hidden rounded-[24px] border border-[rgba(15,23,42,0.12)] shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.995]"
       >
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="bb-cv-verse-art absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${background.src})` }}
           aria-hidden="true"
         />
         {/* Light left-to-right wash so dark text stays readable over the sky
             art - never a dark overlay on the pastel set. */}
         <div
-          className="absolute inset-0"
+          className="bb-cv-verse-art absolute inset-0"
           style={{
             background:
               "linear-gradient(90deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.18) 55%, rgba(255,255,255,0) 100%)",
@@ -166,24 +166,24 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
 
         <div className="relative z-10 flex flex-col gap-2.5 px-5 py-5 sm:px-6 sm:py-6">
           <div className="flex items-center justify-between gap-3">
-            <p className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.22em] text-[#1f2937]">
+            <p className="bb-cv-verse-label flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.22em] text-[#1f2937]">
               📖 Verse of the Day
               {alreadyRead ? (
-                <span className="rounded-full border border-[rgba(15,23,42,0.12)] bg-white/65 px-2 py-0.5 text-[10px] font-black tracking-normal text-[#1f2937] backdrop-blur-sm">
+                <span className="bb-cv-chip rounded-full border border-[rgba(15,23,42,0.12)] bg-white/65 px-2 py-0.5 text-[10px] font-black tracking-normal text-[#1f2937] backdrop-blur-sm">
                   ✓ Read
                 </span>
               ) : null}
             </p>
-            <span className="rounded-full border border-[rgba(15,23,42,0.12)] bg-white/65 px-3 py-1 text-[10px] font-black tracking-[0.12em] text-[#1f2937] backdrop-blur-sm">
+            <span className="bb-cv-chip rounded-full border border-[rgba(15,23,42,0.12)] bg-white/65 px-3 py-1 text-[10px] font-black tracking-[0.12em] text-[#1f2937] backdrop-blur-sm">
               {formatVotdDateLabel(entry.scheduled_date)}
             </span>
           </div>
 
-          <p className="max-w-[46rem] font-serif text-lg font-bold leading-snug text-[#111827] sm:text-2xl">
+          <p className="bb-cv-verse-text max-w-[46rem] font-serif text-lg font-bold leading-snug text-[#111827] sm:text-2xl">
             {entry.verse_text}
           </p>
 
-          <p className="text-[13px] font-black text-[#334155]">
+          <p className="bb-cv-verse-ref text-[13px] font-black text-[#334155]">
             {entry.reference} · {entry.translation}
           </p>
 
@@ -194,7 +194,7 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
                 event.stopPropagation();
                 openBreakdown("votd_read_breakdown_click");
               }}
-              className="text-[12px] font-black uppercase tracking-[0.14em] text-[#1f2937] transition hover:opacity-70"
+              className="bb-cv-verse-link text-[12px] font-black uppercase tracking-[0.14em] text-[#1f2937] transition hover:opacity-70"
             >
               Read the Breakdown <span className="text-[var(--bb-accent,#2f7fe8)]">→</span>
             </button>
@@ -210,7 +210,7 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
                   aria-pressed={memory.saved}
                   aria-label={memory.saved ? "Remove from Bible Memory" : "Add to Bible Memory"}
                   title={memory.saved ? "In Bible Memory" : "Add to Bible Memory"}
-                  className={`flex h-9 items-center gap-1 rounded-full border border-[rgba(15,23,42,0.12)] px-3 text-[11px] font-black text-[#1f2937] backdrop-blur-sm transition hover:bg-white active:scale-95 ${
+                  className={`bb-cv-chip flex h-9 items-center gap-1 rounded-full border border-[rgba(15,23,42,0.12)] px-3 text-[11px] font-black text-[#1f2937] backdrop-blur-sm transition hover:bg-white active:scale-95 ${
                     memory.saved ? "bg-white/90" : "bg-white/65"
                   }`}
                 >
@@ -223,7 +223,7 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
                   onClick={(event) => void handleBookmark(event)}
                   aria-pressed={bookmarked}
                   aria-label={bookmarked ? "Remove bookmark" : "Bookmark this verse"}
-                  className={`grid h-9 w-9 place-items-center rounded-full border border-[rgba(15,23,42,0.12)] text-base text-[#1f2937] backdrop-blur-sm transition hover:bg-white active:scale-95 ${
+                  className={`bb-cv-chip grid h-9 w-9 place-items-center rounded-full border border-[rgba(15,23,42,0.12)] text-base text-[#1f2937] backdrop-blur-sm transition hover:bg-white active:scale-95 ${
                     bookmarked ? "bg-white/90" : "bg-white/65"
                   }`}
                 >
@@ -234,7 +234,7 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
                 type="button"
                 onClick={(event) => void handleShare(event)}
                 aria-label="Share this verse"
-                className="grid h-9 w-9 place-items-center rounded-full border border-[rgba(15,23,42,0.12)] bg-white/65 text-base text-[#1f2937] backdrop-blur-sm transition hover:bg-white active:scale-95"
+                className="bb-cv-chip grid h-9 w-9 place-items-center rounded-full border border-[rgba(15,23,42,0.12)] bg-white/65 text-base text-[#1f2937] backdrop-blur-sm transition hover:bg-white active:scale-95"
               >
                 {shareCopied ? "✓" : "↗"}
               </button>

@@ -1,3 +1,4 @@
+import { applyBibleCoverToDocument, readBibleCover } from "./bibleCovers";
 export type AppThemeId =
   | "light"
   | "dark"
@@ -609,7 +610,7 @@ export function clearPendingAppThemeSync(userId: string | null | undefined, them
   }
 }
 
-export function applyAppThemeToDocument(themeId: AppThemeId) {
+export function applyAppThemeToDocument(themeId: AppThemeId, options: { cover?: boolean } = {}) {
   if (typeof document === "undefined") return;
   const theme = getAppTheme(themeId);
   const root = document.documentElement;
@@ -646,21 +647,29 @@ export function applyAppThemeToDocument(themeId: AppThemeId) {
     progressFill: "--bb-progress-fill",
   };
 
-  (Object.keys(variableMap) as Array<keyof AppThemeTokens>).forEach((key) => {
-    root.style.setProperty(variableMap[key], theme[key]);
-  });
-
   root.style.removeProperty("--bb-skin-bg-image");
   root.style.removeProperty("--bb-skin-bg-image-mobile");
   root.style.removeProperty("--bb-skin-bg-image-desktop");
   root.style.removeProperty("--bb-skin-glow");
   root.style.removeProperty("--bb-skin-warm-glow");
-  root.style.setProperty("--bb-reader-bg", theme.card);
-  root.style.setProperty("--bb-reader-surface", theme.surface);
-  root.style.setProperty("--bb-reader-border", theme.cardBorder);
-  root.style.setProperty("--bb-reader-text", theme.textPrimary);
-  root.style.setProperty("--bb-reader-secondary", theme.textSecondary);
-  root.style.setProperty("--bb-reader-muted", theme.textMuted);
-  root.style.setProperty("--background", theme.background);
-  root.style.setProperty("--foreground", theme.textPrimary);
+
+  // One writer for the tokens, so a Bible Cover (lib/bibleCovers.ts) writes
+  // its own through exactly the same path, and taking the cover off is just
+  // this function running again with the theme alone.
+  const writeTokens = (tokens: AppThemeTokens) => {
+    (Object.keys(variableMap) as Array<keyof AppThemeTokens>).forEach((key) => {
+      root.style.setProperty(variableMap[key], tokens[key]);
+    });
+    root.style.setProperty("--bb-reader-bg", tokens.card);
+    root.style.setProperty("--bb-reader-surface", tokens.surface);
+    root.style.setProperty("--bb-reader-border", tokens.cardBorder);
+    root.style.setProperty("--bb-reader-text", tokens.textPrimary);
+    root.style.setProperty("--bb-reader-secondary", tokens.textSecondary);
+    root.style.setProperty("--bb-reader-muted", tokens.textMuted);
+    root.style.setProperty("--background", tokens.background);
+    root.style.setProperty("--foreground", tokens.textPrimary);
+  };
+  writeTokens(theme);
+  // The marketing landing page passes cover: false - a cover belongs to the app.
+  applyBibleCoverToDocument(options.cover === false ? null : readBibleCover(), writeTokens);
 }

@@ -4,6 +4,10 @@ import "./globals.css";
 
 import AppShell from "@/components/AppShell";
 import { APP_THEMES } from "@/lib/appThemes";
+import { BIBLE_COVERS, BIBLE_COVER_STORAGE_KEY, COVER_EXCLUDED_EXACT, COVER_EXCLUDED_PREFIXES, bibleCoverCssVars } from "@/lib/bibleCovers";
+import "./bible-covers-remap.generated.css";
+import "./bible-covers.css";
+import BibleCoverBackdrop from "@/components/BibleCoverBackdrop";
 import { SmokeDeleteEffect } from "@/components/SmokeDeleteEffect";
 import TrafficSourceCapture from "@/components/TrafficSourceCapture";
 import AdSenseScript from "@/components/AdSenseScript";
@@ -132,6 +136,15 @@ const appThemeFirstPaintPalettes = JSON.stringify(
   ),
 );
 
+const bibleCoverFirstPaint = JSON.stringify(
+  Object.fromEntries(
+    Object.values(BIBLE_COVERS).map((cover) => [
+      cover.id,
+      { base: cover.base, theme: cover.theme, vars: bibleCoverCssVars(cover) },
+    ]),
+  ),
+);
+
 const appThemeFirstPaintScript = `
 (function () {
   try {
@@ -189,6 +202,35 @@ const appThemeFirstPaintScript = `
     style.setProperty("--bb-reader-muted", palette.textMuted);
     style.setProperty("--background", palette.background);
     style.setProperty("--foreground", palette.textPrimary);
+    // Bible Cover (lib/bibleCovers.ts): same tokens, painted over the theme's
+    // before React, so a cover never flashes the plain theme first.
+    var covers = ${bibleCoverFirstPaint};
+    var coverId = window.localStorage.getItem("${BIBLE_COVER_STORAGE_KEY}");
+    // Not on the marketing, sign-in and blog pages (isCoverExcludedPath).
+    var path = window.location.pathname.replace(/[/]$/, "") || "/";
+    var excludedExact = ${JSON.stringify(COVER_EXCLUDED_EXACT)};
+    var excludedPrefixes = ${JSON.stringify(COVER_EXCLUDED_PREFIXES)};
+    var excluded = excludedExact.indexOf(path) !== -1 || excludedPrefixes.some(function (p) { return path === p || path.indexOf(p + "/") === 0; });
+    var cover = coverId && !excluded ? covers[coverId] : null;
+    if (cover) {
+      Object.keys(vars).forEach(function (key) {
+        style.setProperty(vars[key], cover.theme[key]);
+      });
+      Object.keys(cover.vars).forEach(function (name) {
+        style.setProperty(name, cover.vars[name]);
+      });
+      style.setProperty("--bb-reader-bg", cover.theme.card);
+      style.setProperty("--bb-reader-surface", cover.theme.surface);
+      style.setProperty("--bb-reader-border", cover.theme.cardBorder);
+      style.setProperty("--bb-reader-text", cover.theme.textPrimary);
+      style.setProperty("--bb-reader-secondary", cover.theme.textSecondary);
+      style.setProperty("--bb-reader-muted", cover.theme.textMuted);
+      style.setProperty("--background", cover.base);
+      style.setProperty("--foreground", cover.theme.textPrimary);
+      style.setProperty("color-scheme", "dark");
+      root.dataset.bbCover = coverId;
+      palette = { background: cover.base };
+    }
     root.style.backgroundColor = palette.background;
     if (document.body) document.body.style.backgroundColor = palette.background;
     var themeMeta = document.querySelector('meta[name="theme-color"]') || document.createElement("meta");
@@ -216,6 +258,10 @@ export default function RootLayout({
         className="antialiased bg-gray-50"
         suppressHydrationWarning
       >
+        {/* The Bible Cover's scene: one layer for the whole app, mounted once
+            here so navigating never stacks or restarts it. Draws nothing
+            without a cover. */}
+        <BibleCoverBackdrop />
         {/* Responsive bottom padding for banner - applied to main content */}
         <div className="flex flex-col min-h-screen w-full">
           <div className="flex-1 w-full">

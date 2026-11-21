@@ -125,7 +125,7 @@ export default function ReportProblemCard() {
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="relative flex w-full items-center gap-4 overflow-hidden rounded-2xl border border-[rgba(15,23,42,0.12)] p-4 text-left shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
+          className="bb-cv-card relative flex w-full items-center gap-4 overflow-hidden rounded-2xl border border-[rgba(15,23,42,0.12)] p-4 text-left shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
           style={{
             backgroundColor: "#fdf6e9",
             backgroundImage: "url(/verse-of-the-day/verse-bg-05-cream-gold-clouds.jpg)",
@@ -140,14 +140,14 @@ export default function ReportProblemCard() {
           >
             🛟
           </span>
-          <span className="min-w-0 flex-1">
+          <span className="bb-cv-game-text min-w-0 flex-1">
             <span className="block text-base font-black text-[#111827] sm:text-lg">Report a Problem</span>
             <span className="mt-0.5 block text-xs font-semibold text-[#334155]">
               Something broken or confusing on this page? Tell Louis - it goes straight to him.
             </span>
           </span>
           <span
-            className="hidden shrink-0 items-center rounded-lg bg-[#111827] px-5 py-2.5 text-xs font-black uppercase tracking-wide sm:flex"
+            className="bb-cv-cta hidden shrink-0 items-center rounded-lg bg-[#111827] px-5 py-2.5 text-xs font-black uppercase tracking-wide sm:flex"
             style={{ color: "#ffffff" }}
           >
             Report →

@@ -168,7 +168,7 @@ export default function TodaysGroupStudy() {
               Groups: the background is a fixed light illustration, so themed
               text would turn white on it in dark mode. */}
           <div
-            className="relative overflow-hidden rounded-3xl border border-[#ddd6f3] p-4 shadow-sm sm:p-5"
+            className="bb-cv-group relative overflow-hidden rounded-3xl border border-[#ddd6f3] p-4 shadow-sm sm:p-5"
             style={{
               backgroundColor: "#f5f2ff",
               backgroundImage: "url(/home-cards/bg-journey.jpg)",
@@ -274,7 +274,7 @@ export default function TodaysGroupStudy() {
                    family instead of being the one loud thing on a pastel
                    card. Fixed, like the text above it, because the
                    illustrated background stays light in dark mode. */
-                className="block shrink-0 rounded-full bg-[#2b2150] px-5 py-2.5 text-center text-sm font-black shadow-sm transition hover:bg-[#3a2d6b] sm:py-3"
+                className="bb-cv-group-btn block shrink-0 rounded-full bg-[#2b2150] px-5 py-2.5 text-center text-sm font-black shadow-sm transition hover:bg-[#3a2d6b] sm:py-3"
                 /* The colour is inline, not a utility class, because
                    globals.css carries an unlayered `a { color: inherit }`.
                    Tailwind v4 puts utilities in @layer utilities, and

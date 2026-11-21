@@ -31,6 +31,7 @@ import { isAdminUser } from "../../lib/readingProgress";
 import type { BuddyAvatar } from "../../lib/buddyAvatars";
 import { clearLegacyBibleYearOfflineStorage } from "../../lib/bibleYearOfflinePack";
 import BibleLockSettings from "@/components/BibleLockSettings";
+import BibleCoverPicker from "@/components/BibleCoverPicker";
 import NotificationDiagnostics from "@/components/NotificationDiagnostics";
 import { isNativeApp } from "@/lib/nativeApp";
 import { APP_WELCOME_PATH } from "@/lib/appHome";
@@ -699,6 +700,15 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         ) : null}
 
         {/* App Theme Section - the full color catalog came back 2026-09-02 */}
+        {/* Bible Covers: admin-only until Louis has reviewed them on his
+            phone (2026-11-21). ownerHasUnlimitedDiamonds is the existing
+            isAdminUser() flag. To open covers to everyone, drop the condition. */}
+        {ownerHasUnlimitedDiamonds ? (
+          <SettingsSection title="Bible cover" icon="📖" description="Pick the Bible you want to carry. It dresses every page of Bible Buddy.">
+            <BibleCoverPicker />
+          </SettingsSection>
+        ) : null}
+
         <SettingsSection title="App theme" icon="🎨" description="Pick the color Bible Buddy wears everywhere - it saves to your account.">
           <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-4">
             {APP_THEMES.map((theme) => {

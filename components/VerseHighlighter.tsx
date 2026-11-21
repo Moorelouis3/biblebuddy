@@ -563,8 +563,11 @@ function GenesisOneInsightCard({
   return (
     <div
       ref={cardRef}
-      className="relative overflow-hidden rounded-[14px] border scroll-mt-24"
-      style={{ backgroundColor: color.cardBg, borderColor: color.cardBorder }}
+      className="bb-cv-insight relative overflow-hidden rounded-[14px] border scroll-mt-24"
+      style={{
+        backgroundColor: color.cardBg,
+        borderColor: color.cardBorder,
+      }}
     >
       {onClose ? (
         <button
@@ -2130,7 +2133,13 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       return (
         <span
           key={`${segment.start}-${segment.end}`}
-          className={`${range || phraseIsOpen ? "rounded-[3px]" : ""}${opensPhraseCard ? " cursor-pointer" : ""}`.trim() || undefined}
+          className={`${range || phraseIsOpen ? "rounded-[3px]" : ""}${opensPhraseCard ? " cursor-pointer" : ""}${
+            // Hooks for a Bible Cover (app/bible-covers.css): a saved
+            // highlight stays a pale highlighter with dark ink, an open phrase
+            // glows in the cover's warm colour, and every underline takes the
+            // cover's own colour. No effect without a cover.
+            range ? " bb-cv-mark" : phraseIsOpen ? " bb-cv-phrase-open" : ""
+          }${underline ? " bb-cv-underline" : ""}`.trim() || undefined}
           style={{
             backgroundColor: range
               ? getColorCode(range.color, surface)
