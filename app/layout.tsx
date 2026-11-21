@@ -149,8 +149,8 @@ const appThemeFirstPaintScript = `
 (function () {
   try {
     var palettes = ${appThemeFirstPaintPalettes};
-    var themeId = window.localStorage.getItem("bb:app-theme");
-    if (!themeId || !palettes[themeId]) themeId = "light";
+    // Colour themes are retired: always the Light base (see applyAppThemeToDocument).
+    var themeId = "light";
     var root = document.documentElement;
     var style = root.style;
     var palette = palettes[themeId];

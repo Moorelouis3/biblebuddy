@@ -137,7 +137,7 @@ export default function NewGamesPopup({
           {/* Header, on a lavender wash that fades into the white card. */}
           <div
             className="px-5 pb-3.5 pt-5 sm:px-6"
-            style={{ background: "linear-gradient(180deg, #e9defd 0%, #f3ecff 48%, #ffffff 100%)" }}
+            style={{ background: "var(--bb-pop-wash, linear-gradient(180deg, #e9defd 0%, #f3ecff 48%, #ffffff 100%))" }}
           >
             <div className="flex items-center gap-1.5 pr-14">
               <Sparkle color="#7c3aed" className="h-5 w-5 shrink-0 -rotate-12" />
@@ -172,7 +172,7 @@ export default function NewGamesPopup({
             <section
               aria-labelledby="new-games-memory-title"
               className="relative overflow-hidden rounded-[26px] border border-[#d9c8fb] p-4 shadow-[0_6px_18px_rgba(124,58,237,0.10)]"
-              style={{ background: "linear-gradient(135deg, #f6efff 0%, #eadcff 100%)" }}
+              style={{ background: "var(--bb-pop-card, linear-gradient(135deg, #f6efff 0%, #eadcff 100%))" }}
             >
               {/* Decoration sits under the content and gives way to the words,
                   never the other way round. On a phone it is drawn small
@@ -214,8 +214,8 @@ export default function NewGamesPopup({
                 <button
                   type="button"
                   onClick={() => openGame(MEMORY)}
-                  className="mt-3.5 inline-flex min-h-[48px] items-center gap-2 whitespace-nowrap rounded-full px-5 text-[16px] font-black text-white shadow-[0_6px_14px_rgba(109,40,217,0.35)] outline-none transition active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-[#c4b5fd]"
-                  style={{ background: "linear-gradient(180deg, #8b45f0 0%, #6d28d9 100%)" }}
+                  className="bb-cv-fp-main mt-3.5 inline-flex min-h-[48px] items-center gap-2 whitespace-nowrap rounded-full px-5 text-[16px] font-black text-white shadow-[0_6px_14px_rgba(109,40,217,0.35)] outline-none transition active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-[#c4b5fd]"
+                  style={{ background: "var(--bb-pop-button, linear-gradient(180deg, #8b45f0 0%, #6d28d9 100%))" }}
                 >
                   Try Bible Memory <span aria-hidden="true">→</span>
                 </button>
@@ -226,7 +226,7 @@ export default function NewGamesPopup({
             <section
               aria-labelledby="new-games-search-title"
               className="relative overflow-hidden rounded-[26px] border border-[#bfdcf8] p-4 shadow-[0_6px_18px_rgba(37,99,235,0.10)]"
-              style={{ background: "linear-gradient(135deg, #eef7ff 0%, #d9ecff 100%)" }}
+              style={{ background: "var(--bb-pop-card, linear-gradient(135deg, #eef7ff 0%, #d9ecff 100%))" }}
             >
               {/* Two layouts from one set of elements.
                   Phone: title across the top, then the description beside the
@@ -254,8 +254,8 @@ export default function NewGamesPopup({
                   <button
                     type="button"
                     onClick={() => openGame(WORD_SEARCH)}
-                    className="col-span-2 mt-3.5 inline-flex min-h-[48px] items-center gap-2 justify-self-start whitespace-nowrap rounded-full px-5 text-[16px] font-black text-white sm:col-span-1 sm:col-start-1 shadow-[0_6px_14px_rgba(29,78,216,0.35)] outline-none transition active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-[#93c5fd]"
-                    style={{ background: "linear-gradient(180deg, #2f6bf0 0%, #1d4ed8 100%)" }}
+                    className="bb-cv-fp-main col-span-2 mt-3.5 inline-flex min-h-[48px] items-center gap-2 justify-self-start whitespace-nowrap rounded-full px-5 text-[16px] font-black text-white sm:col-span-1 sm:col-start-1 shadow-[0_6px_14px_rgba(29,78,216,0.35)] outline-none transition active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-[#93c5fd]"
+                    style={{ background: "var(--bb-pop-button, linear-gradient(180deg, #2f6bf0 0%, #1d4ed8 100%))" }}
                   >
                     Try Word Search <span aria-hidden="true">→</span>
                   </button>

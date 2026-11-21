@@ -676,6 +676,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     window.addEventListener(BIBLE_COVER_EVENT, reapply);
     const requested = new URLSearchParams(window.location.search).get("cover");
     if (requested) setBibleCover(requested === "none" ? null : normalizeBibleCoverId(requested));
+    // The cover saved on the account (user_metadata.bible_cover, written by
+    // /api/bible-covers) follows the Buddy to this device. Only when the
+    // account has made a choice - an account that never picked one leaves
+    // the device alone.
+    else if (userId) {
+      void supabase.auth.getSession().then(({ data }) => {
+        const meta = data.session?.user?.user_metadata as Record<string, unknown> | undefined;
+        if (!meta || !("bible_cover" in meta)) return;
+        const saved = meta.bible_cover === null ? null : normalizeBibleCoverId(meta.bible_cover);
+        if (saved !== readBibleCover()) setBibleCover(saved);
+      });
+    }
     return () => window.removeEventListener(BIBLE_COVER_EVENT, reapply);
   }, [userId]);
 

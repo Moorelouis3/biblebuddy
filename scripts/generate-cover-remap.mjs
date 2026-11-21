@@ -78,6 +78,8 @@ function classify(cls) {
     const tone = n <= 100 ? "light" : n <= 300 ? "mid" : n <= 600 ? "strong" : "dark";
     return { kind: m[1], family: TW_HUES[m[2]], tone };
   }
+  // Semi-transparent white chips and pills (bg-white/70 ...): light tiles.
+  if (/^bg-white\/\d+$/.test(cls)) return { kind: "bg", family: "gray", tone: "light" };
   return null;
 }
 
@@ -85,6 +87,7 @@ const found = new Set();
 for (const f of files) {
   const src = readFileSync(f, "utf8");
   for (const m of src.matchAll(/(?<![\w:-])(?:bg|text|border)-(?:\[#[0-9a-fA-F]{3,6}\]|[a-z]+-\d{2,3})(?![\w\]/-])/g)) found.add(m[0]);
+  for (const m of src.matchAll(/(?<![\w:-])bg-white\/\d+(?![\w\]-])/g)) found.add(m[0]);
 }
 
 // What each class becomes. Values are cover tokens, so every cover works.

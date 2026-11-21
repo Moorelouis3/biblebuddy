@@ -699,50 +699,13 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
           </div>
         ) : null}
 
-        {/* App Theme Section - the full color catalog came back 2026-09-02 */}
-        {/* Bible Covers: admin-only until Louis has reviewed them on his
-            phone (2026-11-21). ownerHasUnlimitedDiamonds is the existing
-            isAdminUser() flag. To open covers to everyone, drop the condition. */}
-        {ownerHasUnlimitedDiamonds ? (
-          <SettingsSection title="Bible cover" icon="📖" description="Pick the Bible you want to carry. It dresses every page of Bible Buddy.">
-            <BibleCoverPicker />
-          </SettingsSection>
-        ) : null}
-
-        <SettingsSection title="App theme" icon="🎨" description="Pick the color Bible Buddy wears everywhere - it saves to your account.">
-          <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-4">
-            {APP_THEMES.map((theme) => {
-              const active = selectedTheme === theme.id;
-              return (
-                <button
-                  key={theme.id}
-                  type="button"
-                  onClick={() => void handleThemeSelect(theme.id)}
-                  disabled={themeSaving !== null}
-                  aria-pressed={active}
-                  className={`flex flex-col items-center gap-2 rounded-2xl border-2 p-3 transition active:scale-[0.97] disabled:cursor-wait disabled:opacity-60 ${
-                    active
-                      ? "border-[var(--bb-accent,#2563eb)] bg-[var(--bb-accent-soft,#eaf2ff)]"
-                      : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#ffffff)] hover:brightness-95"
-                  }`}
-                >
-                  <span
-                    className="grid h-12 w-12 place-items-center rounded-full border shadow-sm"
-                    style={{ background: theme.background, borderColor: theme.cardBorder }}
-                    aria-hidden="true"
-                  >
-                    <span className="h-6 w-6 rounded-full" style={{ background: theme.accent }} />
-                  </span>
-                  <span className="text-xs font-black">{theme.name}</span>
-                  {active ? (
-                    <span className="text-[10px] font-black text-[var(--bb-accent,#2563eb)]">
-                      {themeSaving === theme.id ? "Saving..." : "Selected"}
-                    </span>
-                  ) : null}
-                </button>
-              );
-            })}
-          </div>
+        {/* Bible Covers are the one design choice (Louis, 2026-11-21: "remove the
+            themes section.. we only have covers now.. not themes.. two separate
+            designs competing"). The colour-theme picker that sat here is gone;
+            lib/appThemes.ts now always paints the plain Light look underneath a
+            cover. */}
+        <SettingsSection title="Bible cover" icon="📖" description="Pick the Bible you want to carry. It dresses every page of Bible Buddy.">
+          <BibleCoverPicker />
         </SettingsSection>
 
         {/* Bible Buddy Section */}

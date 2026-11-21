@@ -690,3 +690,27 @@ html[data-bb-app-hidden="true"] .bb-cover-fx { animation-play-state: paused; }
   from { transform: rotate(-4deg); }
   to { transform: rotate(4deg); }
 }
+
+/* Feature popups (components/popups/FeaturePopup.tsx) take COVER_TONE under a
+   cover; their main button text is white on amber there, so it goes dark. */
+html[data-bb-cover] .bb-cv-fp-main { color: var(--bb-cover-warm-text) !important; }
+
+/* The two custom popups (New Games, Bible Lock) draw their washes, cards and
+   buttons as inline gradients written var(--bb-pop-*, <the pastel>): with no
+   cover the pastel is used, under a cover these. */
+html[data-bb-cover] {
+  --bb-pop-wash: linear-gradient(180deg, var(--bb-cover-glow) 0%, transparent 100%);
+  --bb-pop-card: var(--bb-cover-tile);
+  --bb-pop-button: var(--bb-cover-warm);
+}
+html[data-bb-cover] :is(.bb-new-games-card, .bb-bible-lock-card) {
+  background-color: var(--bb-cover-reader-bg) !important;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55), inset 0 0 0 1px var(--bb-cover-frame-strong) !important;
+}
+/* The study sign-up poster's gold button: the cover's warm colour, dark text. */
+html[data-bb-cover] .bb-cv-gold {
+  background-image: none !important;
+  background-color: var(--bb-cover-warm) !important;
+  color: var(--bb-cover-warm-text) !important;
+}
+html[data-bb-cover] { --bb-pop-button-text: var(--bb-cover-warm-text); }

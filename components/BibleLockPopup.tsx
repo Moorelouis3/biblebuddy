@@ -142,7 +142,7 @@ export default function BibleLockPopup({
           {/* Header, on a lavender wash that fades into the white card. */}
           <div
             className="px-5 pb-3.5 pt-5 sm:px-6"
-            style={{ background: "linear-gradient(180deg, #e9defd 0%, #f3ecff 48%, #ffffff 100%)" }}
+            style={{ background: "var(--bb-pop-wash, linear-gradient(180deg, #e9defd 0%, #f3ecff 48%, #ffffff 100%))" }}
           >
             <div className="flex items-center gap-1.5 pr-14">
               <Sparkle color="#7c3aed" className="h-5 w-5 shrink-0 -rotate-12" />
@@ -180,7 +180,7 @@ export default function BibleLockPopup({
             <section
               aria-labelledby="bible-lock-popup-card-title"
               className="relative overflow-hidden rounded-[26px] border border-[#cfd2fb] p-4 shadow-[0_6px_18px_rgba(91,80,220,0.12)]"
-              style={{ background: "linear-gradient(135deg, #f1eaff 0%, #e3e6ff 52%, #d9ecff 100%)" }}
+              style={{ background: "var(--bb-pop-card, linear-gradient(135deg, #f1eaff 0%, #e3e6ff 52%, #d9ecff 100%))" }}
             >
               <Sparkle color="#14b8a6" className="absolute right-4 top-4 h-4 w-4 rotate-12" />
 
@@ -256,8 +256,8 @@ export default function BibleLockPopup({
           <button
             type="button"
             onClick={setUp}
-            className="flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full px-5 text-[17px] font-black text-white shadow-[0_8px_18px_rgba(109,40,217,0.35)] outline-none transition active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-[#c4b5fd]"
-            style={{ background: "linear-gradient(180deg, #8b45f0 0%, #6d28d9 100%)" }}
+            className="bb-cv-fp-main flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full px-5 text-[17px] font-black text-white shadow-[0_8px_18px_rgba(109,40,217,0.35)] outline-none transition active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-[#c4b5fd]"
+            style={{ background: "var(--bb-pop-button, linear-gradient(180deg, #8b45f0 0%, #6d28d9 100%))" }}
           >
             Set up Bible Lock <span aria-hidden="true">→</span>
           </button>

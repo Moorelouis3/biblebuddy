@@ -612,7 +612,12 @@ export function clearPendingAppThemeSync(userId: string | null | undefined, them
 
 export function applyAppThemeToDocument(themeId: AppThemeId, options: { cover?: boolean } = {}) {
   if (typeof document === "undefined") return;
-  const theme = getAppTheme(themeId);
+  // Colour themes are retired (Louis, 2026-11-21): Bible Covers are the one
+  // design choice, so the base under a cover is always the plain Light look,
+  // whatever an older account saved in profile_stats.app_theme. The themeId
+  // argument stays so the callers did not have to change.
+  void themeId;
+  const theme = getAppTheme("light");
   const root = document.documentElement;
   root.dataset.bbTheme = theme.id;
   delete root.dataset.bbSkin;

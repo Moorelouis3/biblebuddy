@@ -106,8 +106,28 @@ const TONES: Record<
   },
 };
 
+/**
+ * Under a Bible Cover every popup wears the cover (Louis, 2026-11-21: "make
+ * sure every pop up is in the cover themes also"). The same slots as the
+ * pastel tones above, filled with the cover's own tokens, so the popup reads
+ * as part of the scene rather than a lavender card dropped on top of it.
+ */
+const COVER_TONE: (typeof TONES)[keyof typeof TONES] = {
+  card: "var(--bb-cover-tile)",
+  border: "var(--bb-cover-frame)",
+  icon: "var(--bb-cover-cool-soft)",
+  button: "var(--bb-cover-warm)",
+  ring: "var(--bb-cover-warm)",
+  shadow: "none",
+  wash: "linear-gradient(180deg, var(--bb-cover-glow) 0%, transparent 100%)",
+  pillBg: "var(--bb-cover-warm-soft)",
+  pillText: "var(--bb-cover-warm)",
+  accent: "var(--bb-cover-warm)",
+  line: "var(--bb-cover-frame)",
+};
+
 const MAIN_BUTTON =
-  "flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full px-5 text-[17px] font-black text-white outline-none transition active:scale-[0.98] focus-visible:ring-4";
+  "bb-cv-fp-main flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full px-5 text-[17px] font-black text-white outline-none transition active:scale-[0.98] focus-visible:ring-4";
 
 const TONE_BY_PREVIEW: Record<PopupPreview, keyof typeof TONES> = {
   reader: "lavender",
@@ -170,7 +190,10 @@ export default function FeaturePopup({
 }) {
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const titleId = `feature-popup-title-${popup.id}`;
-  const tone = TONES[TONE_BY_PREVIEW[popup.preview]];
+  const tone =
+    typeof document !== "undefined" && document.documentElement.dataset.bbCover
+      ? COVER_TONE
+      : TONES[TONE_BY_PREVIEW[popup.preview]];
   const headlineStart = popup.headline.slice(
     0,
     popup.headline.length - popup.headlineAccent.length,
@@ -641,7 +664,7 @@ function EventSignupBody({
 // ───────────────────────── a study sign-up with designed artwork ─────────────────────────
 
 const GOLD_BUTTON =
-  "flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-b from-[#f5dfa0] to-[#ddb862] whitespace-nowrap px-3 py-4 text-[15px] font-black uppercase text-[#1c1307] max-[359px]:text-[13px] shadow-lg outline-none transition active:scale-[0.99] disabled:opacity-80 focus-visible:ring-4 focus-visible:ring-white";
+  "bb-cv-gold flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-b from-[#f5dfa0] to-[#ddb862] whitespace-nowrap px-3 py-4 text-[15px] font-black uppercase text-[#1c1307] max-[359px]:text-[13px] shadow-lg outline-none transition active:scale-[0.99] disabled:opacity-80 focus-visible:ring-4 focus-visible:ring-white";
 
 /**
  * The look of the Beginning of Everything popup, for a catalog entry whose

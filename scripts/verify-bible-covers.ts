@@ -111,9 +111,19 @@ ok("the generated remap is loaded before the hand-written hooks", () => {
   assert.ok(layout.indexOf("bible-covers-remap.generated.css") < layout.indexOf('"./bible-covers.css"'));
 });
 
-ok("the cover picker is admin-only until reviewed", () => {
+ok("covers are the one design choice: the theme picker is gone, the shelf is in Settings", () => {
   const settings = readFileSync("app/settings/page.tsx", "utf8");
-  assert.match(settings, /ownerHasUnlimitedDiamonds \? \(\s*<SettingsSection title="Bible cover"/);
+  assert.ok(!settings.includes('title="App theme"'), "App theme section still there");
+  assert.match(settings, /<SettingsSection title="Bible cover"[\s\S]*?<BibleCoverPicker \/>/);
+  assert.ok(readFileSync("lib/appThemes.ts", "utf8").includes('getAppTheme("light")'));
+});
+
+ok("every popup is drawn in the cover: feature popups, custom popups, day complete", () => {
+  assert.match(readFileSync("components/popups/FeaturePopup.tsx", "utf8"), /COVER_TONE/);
+  for (const f of ["components/NewGamesPopup.tsx", "components/BibleLockPopup.tsx", "components/DevotionalDayCompletionModal.tsx"]) {
+    const src = readFileSync(f, "utf8");
+    assert.ok(!src.includes('background: "linear-gradient('), `${f} has a gradient the cover cannot reach`);
+  }
 });
 
 ok("every cover has a light effect, and every effect layer can be stilled", () => {

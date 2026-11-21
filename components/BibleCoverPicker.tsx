@@ -3,21 +3,67 @@
 /**
  * The Bible Cover shelf in Settings (lib/bibleCovers.ts). A cover is chosen
  * like a Bible is - by its cover - so they are shown as books on a shelf, not
- * as colour swatches. "None" puts the reader's own theme back exactly.
+ * as colour swatches. "No cover" is the plain Bible Buddy look.
  *
- * Saved on this device for now (localStorage). Saving it to the account so it
- * follows someone to their phone needs a profile_stats column; see the
- * handoff of 2026-11-21.
+ * The choice is applied on this device at once and saved to the account
+ * through /api/bible-covers, which also says how many Buddies have each
+ * cover on (Louis, 2026-11-21: "when a buddy selects it shows 56 buddies are
+ * using this cover").
  */
 import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
 import { BIBLE_COVERS, BIBLE_COVER_EVENT, EFFECT_LABELS, readBibleCover, setBibleCover, type BibleCoverId } from "@/lib/bibleCovers";
 import { setBibleCoverSnow } from "@/components/BibleCoverBackdrop";
 
 const SNOW_PREF_KEY = "bb:bible-cover-snow:v1";
 
+type Counts = Partial<Record<BibleCoverId, number>>;
+
+const buddies = (n: number) => `${n.toLocaleString()} ${n === 1 ? "Buddy" : "Buddies"}`;
+
 export default function BibleCoverPicker() {
   const [current, setCurrent] = useState<BibleCoverId | null>(null);
   const [motionOn, setMotionOn] = useState(true);
+  const [counts, setCounts] = useState<Counts | null>(null);
+
+  // How many Buddies wear each cover. Absolute URL: a relative fetch can hang
+  // forever inside the app (CapacitorHttp).
+  useEffect(() => {
+    let alive = true;
+    fetch(`${window.location.origin}/api/bible-covers`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => { if (alive && data?.counts) setCounts(data.counts); })
+      .catch(() => {});
+    return () => { alive = false; };
+  }, []);
+
+  /** On this device at once; then to the account, which returns fresh counts. */
+  async function choose(id: BibleCoverId | null) {
+    const before = current;
+    setBibleCover(id);
+    // Show the change straight away; the server's numbers replace this.
+    setCounts((prev) => {
+      if (!prev) return prev;
+      const next = { ...prev };
+      if (before) next[before] = Math.max(0, (next[before] || 0) - 1);
+      if (id) next[id] = (next[id] || 0) + 1;
+      return next;
+    });
+    try {
+      const { data } = await supabase.auth.getSession();
+      const token = data.session?.access_token;
+      if (!token) return;
+      const res = await fetch(`${window.location.origin}/api/bible-covers`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ cover: id }),
+      });
+      const payload = await res.json().catch(() => null);
+      if (payload?.counts) setCounts(payload.counts);
+    } catch {
+      // Saved on this device either way; the account catches up next time.
+    }
+  }
 
   useEffect(() => {
     const sync = () => setCurrent(readBibleCover());
@@ -39,7 +85,7 @@ export default function BibleCoverPicker() {
       <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
         <button
           type="button"
-          onClick={() => setBibleCover(null)}
+          onClick={() => void choose(null)}
           aria-pressed={current === null}
           className="text-left"
         >
@@ -53,7 +99,7 @@ export default function BibleCoverPicker() {
               No cover
             </span>
           </span>
-          <span className="mt-1.5 block text-center text-[11px] font-bold text-[var(--bb-text-secondary,#4b5563)]">Your theme</span>
+          <span className="mt-1.5 block text-center text-[11px] font-bold text-[var(--bb-text-secondary,#4b5563)]">Plain look</span>
         </button>
         {covers.map((cover) => {
           const selected = current === cover.id;
@@ -61,7 +107,7 @@ export default function BibleCoverPicker() {
             <button
               key={cover.id}
               type="button"
-              onClick={() => setBibleCover(cover.id)}
+              onClick={() => void choose(cover.id)}
               aria-pressed={selected}
               aria-label={`${cover.name} Bible cover`}
               className="text-left"
@@ -86,10 +132,24 @@ export default function BibleCoverPicker() {
                 ) : null}
               </span>
               <span className="mt-1.5 block text-center text-[11px] font-bold text-[var(--bb-text-secondary,#4b5563)]">{cover.name}</span>
+              {counts && (counts[cover.id] || 0) > 0 ? (
+                <span className="block text-center text-[10px] font-semibold text-[var(--bb-text-muted,#6b7280)]">
+                  {buddies(counts[cover.id] || 0)}
+                </span>
+              ) : null}
             </button>
           );
         })}
       </div>
+
+      {current && counts ? (
+        <p className="mt-4 rounded-xl border border-[var(--bb-card-border,#dbe7f4)] px-4 py-3 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
+          <span aria-hidden>👥 </span>
+          {(counts[current] || 0) <= 1
+            ? `You're the first Buddy using ${BIBLE_COVERS[current].name}.`
+            : `${buddies(counts[current] || 0)} are using ${BIBLE_COVERS[current].name}.`}
+        </p>
+      ) : null}
 
       {current ? (
         <label className="mt-4 flex items-center justify-between gap-3 rounded-xl border border-[var(--bb-card-border,#dbe7f4)] px-4 py-3">

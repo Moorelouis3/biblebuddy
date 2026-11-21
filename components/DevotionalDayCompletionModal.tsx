@@ -325,7 +325,7 @@ export default function DevotionalDayCompletionModal({
       <div className="relative mb-8 mt-12 w-full max-w-[440px]">
         <div
           className="relative overflow-hidden rounded-[32px] border border-[#e3d6fb] shadow-[0_30px_80px_rgba(31,20,70,0.35)]"
-          style={{ background: "linear-gradient(180deg, #ece2ff 0%, #f6f0ff 42%, #ffffff 100%)" }}
+          style={{ background: "var(--bb-pop-wash, linear-gradient(180deg, #ece2ff 0%, #f6f0ff 42%, #ffffff 100%))" }}
         >
           <Scenery />
 
@@ -401,7 +401,7 @@ export default function DevotionalDayCompletionModal({
                     rel="noopener noreferrer"
                     onClick={() => void trackWisdomBookEvent("study_guide_amazon_clicked", { ...facts, placement: "day_complete" })}
                     className="flex min-h-[48px] w-full items-center justify-center gap-2.5 rounded-full px-4 text-[15px] font-black shadow-[0_6px_14px_rgba(109,40,217,0.35)] outline-none transition active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-[#c4b5fd]"
-                    style={{ background: "linear-gradient(180deg, #8b45f0 0%, #6d28d9 100%)", color: "#ffffff" }}
+                    style={{ background: "var(--bb-pop-button, linear-gradient(180deg, #8b45f0 0%, #6d28d9 100%))", color: "var(--bb-pop-button-text, #ffffff)" }}
                   >
                     <AmazonMark className="h-6 w-6 shrink-0" />
                     <span className="h-5 w-px bg-white/35" aria-hidden="true" />
@@ -431,7 +431,7 @@ export default function DevotionalDayCompletionModal({
                         className="h-full rounded-full"
                         style={{
                           width: `${Math.min(100, Math.max(4, Math.round((Math.min(day, length) / length) * 100)))}%`,
-                          background: "linear-gradient(90deg, #8b45f0 0%, #6d28d9 100%)",
+                          background: "var(--bb-pop-button, linear-gradient(90deg, #8b45f0 0%, #6d28d9 100%))",
                         }}
                       />
                     </div>
@@ -449,8 +449,8 @@ export default function DevotionalDayCompletionModal({
                 type="button"
                 onClick={handlePrimary}
                 disabled={primaryDisabled}
-                className="mt-5 flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full px-5 text-[17px] font-black text-white shadow-[0_8px_18px_rgba(0,86,253,0.35)] outline-none transition active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-[#93c5fd] disabled:opacity-70"
-                style={{ background: "linear-gradient(180deg, #2f74ff 0%, #0056fd 100%)" }}
+                className="bb-cv-fp-main mt-5 flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full px-5 text-[17px] font-black text-white shadow-[0_8px_18px_rgba(0,86,253,0.35)] outline-none transition active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-[#93c5fd] disabled:opacity-70"
+                style={{ background: "var(--bb-pop-button, linear-gradient(180deg, #2f74ff 0%, #0056fd 100%))" }}
               >
                 {primaryButtonText ?? "Close"}
                 {finishedStudy ? null : <span aria-hidden="true">→</span>}
@@ -462,10 +462,10 @@ export default function DevotionalDayCompletionModal({
               onClick={handleSecondary}
               className={
                 wait
-                  ? "mt-4 flex min-h-[52px] w-full items-center justify-center rounded-full px-5 text-[17px] font-black text-white shadow-[0_8px_18px_rgba(0,86,253,0.35)] outline-none transition active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-[#93c5fd]"
+                  ? "bb-cv-fp-main mt-4 flex min-h-[52px] w-full items-center justify-center rounded-full px-5 text-[17px] font-black text-white shadow-[0_8px_18px_rgba(0,86,253,0.35)] outline-none transition active:scale-[0.98] focus-visible:ring-4 focus-visible:ring-[#93c5fd]"
                   : "mx-auto mt-1 block min-h-[44px] rounded-xl px-6 text-[15px] font-bold text-[#6b7086] outline-none focus-visible:ring-2 focus-visible:ring-[#7c3aed]"
               }
-              style={wait ? { background: "linear-gradient(180deg, #2f74ff 0%, #0056fd 100%)" } : undefined}
+              style={wait ? { background: "var(--bb-pop-button, linear-gradient(180deg, #2f74ff 0%, #0056fd 100%))" } : undefined}
             >
               {secondaryButtonText ?? (onSecondary ? "Back to bookshelf" : "Close")}
             </button>
