@@ -204,7 +204,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/1-samuel-8-explained",
     publishedAt: "2026-11-20",
     readTime: "13 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/1-samuel-8-explained.jpg",
     groupPost: {
       title: "1 Samuel 8 Explained 📖",
       content:
@@ -221,7 +221,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/1-samuel-7-explained",
     publishedAt: "2026-11-20",
     readTime: "13 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/1-samuel-7-explained.jpg",
     groupPost: {
       title: "1 Samuel 7 Explained 📖",
       content:
@@ -238,7 +238,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/1-samuel-6-explained",
     publishedAt: "2026-11-20",
     readTime: "14 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/1-samuel-6-explained.jpg",
     groupPost: {
       title: "1 Samuel 6 Explained 📖",
       content:
@@ -255,7 +255,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/1-samuel-5-explained",
     publishedAt: "2026-11-20",
     readTime: "13 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/1-samuel-5-explained.jpg",
     groupPost: {
       title: "1 Samuel 5 Explained 📖",
       content:
@@ -272,7 +272,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/1-samuel-4-explained",
     publishedAt: "2026-11-20",
     readTime: "14 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/1-samuel-4-explained.jpg",
     groupPost: {
       title: "1 Samuel 4 Explained 📖",
       content:
@@ -289,7 +289,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/1-samuel-3-explained",
     publishedAt: "2026-11-19",
     readTime: "14 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/1-samuel-3-explained.jpg",
     groupPost: {
       title: "1 Samuel 3 Explained 📖",
       content:
@@ -306,7 +306,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/1-samuel-2-explained",
     publishedAt: "2026-11-19",
     readTime: "14 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/1-samuel-2-explained.jpg",
     groupPost: {
       title: "1 Samuel 2 Explained 📖",
       content:
@@ -323,7 +323,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/1-samuel-1-explained",
     publishedAt: "2026-11-19",
     readTime: "14 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/1-samuel-1-explained.jpg",
     groupPost: {
       title: "1 Samuel 1 Explained 📖",
       content:
@@ -340,7 +340,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/ruth-4-explained",
     publishedAt: "2026-11-19",
     readTime: "14 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/ruth-4-explained.jpg",
     groupPost: {
       title: "Ruth 4 Explained 📖",
       content:
@@ -357,7 +357,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/ruth-3-explained",
     publishedAt: "2026-11-19",
     readTime: "15 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/ruth-3-explained.jpg",
     groupPost: {
       title: "Ruth 3 Explained 📖",
       content:
@@ -391,7 +391,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/ruth-2-explained",
     publishedAt: "2026-11-18",
     readTime: "13 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/ruth-2-explained.jpg",
     groupPost: {
       title: "Ruth 2 Explained 📖",
       content:
@@ -408,7 +408,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/ruth-1-explained",
     publishedAt: "2026-11-18",
     readTime: "12 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/ruth-1-explained.jpg",
     groupPost: {
       title: "Ruth 1 Explained 📖",
       content:
