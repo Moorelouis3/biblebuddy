@@ -51,7 +51,7 @@ ok("marketing, sign-in and blog pages keep their own look", () => {
 ok("every cover rule is scoped to html[data-bb-cover] (plain app untouched)", () => {
   const selectors = [...(css + generated).replace(/\/\*[\s\S]*?\*\//g, "").matchAll(/(^|\})\s*([^{}@]+)\{/g)].map((m) => m[2].trim());
   for (const sel of selectors) {
-    if (/^(from|to|\d+%)/.test(sel) || sel.startsWith(".bb-cover-")) continue; // keyframes and the backdrop's own layers
+    if (/^(from|to|[\d.]+%)/.test(sel) || sel.startsWith(".bb-cover-")) continue; // keyframes and the backdrop's own layers
     // Split on top-level commas only: :is(a, b) lists stay whole.
     const parts: string[] = [];
     let depth = 0, cur = "";
@@ -63,7 +63,8 @@ ok("every cover rule is scoped to html[data-bb-cover] (plain app untouched)", ()
     parts.push(cur);
     for (const part of parts) {
       const p = part.trim();
-      if (!p || p.includes(".bb-cover-")) continue; // the backdrop only exists under a cover
+      // The backdrop and its effect layers only exist under a cover.
+      if (!p || p.includes(".bb-cover-") || p.includes(".bb-fx-")) continue;
       assert.ok(p.startsWith("html[data-bb-cover"), `unscoped selector: ${p.slice(0, 80)}`);
     }
   }
@@ -82,8 +83,9 @@ ok("no expensive effects: no blur, no blend modes, no fixed attachment", () => {
 });
 
 ok("the snow and drift only move (transform), never repaint", () => {
-  const frames = [...css.matchAll(/@keyframes bb-cover-[a-z-]+\s*\{([\s\S]*?)\n\}/g)].map((m) => m[1]);
-  assert.ok(frames.length >= 2);
+  // Balanced braces, so one-line and multi-line keyframes both match.
+  const frames = [...css.matchAll(/@keyframes bb-(?:cover|fx)-[a-z-]+\s*\{((?:[^{}]|\{[^{}]*\})*)\}/g)].map((m) => m[1]);
+  assert.ok(frames.length >= 10, `only ${frames.length} keyframes found`);
   for (const f of frames) {
     const props = [...f.matchAll(/([a-z-]+)\s*:/g)].map((m) => m[1]);
     for (const prop of props) assert.ok(["transform", "opacity"].includes(prop), `animates ${prop}`);
@@ -112,6 +114,23 @@ ok("the generated remap is loaded before the hand-written hooks", () => {
 ok("the cover picker is admin-only until reviewed", () => {
   const settings = readFileSync("app/settings/page.tsx", "utf8");
   assert.match(settings, /ownerHasUnlimitedDiamonds \? \(\s*<SettingsSection title="Bible cover"/);
+});
+
+ok("every cover has a light effect, and every effect layer can be stilled", () => {
+  const backdrop = readFileSync("components/BibleCoverBackdrop.tsx", "utf8");
+  for (const cover of covers) {
+    assert.ok(!["drift", "none"].includes(cover.motion), `${cover.id} has no effect`);
+    assert.ok(backdrop.includes(`case "${cover.motion}":`), `${cover.id}: no layers for ${cover.motion}`);
+  }
+  assert.match(css, /data-bb-cover-motion="still"\] \.bb-cover-fx/);
+  assert.match(css, /data-bb-app-hidden="true"\] \.bb-cover-fx \{ animation-play-state: paused/);
+  for (const tile of ["fireflies", "stars", "embers", "sparkles", "sand", "rain", "petals"]) {
+    assert.ok(existsSync(`public/covers/fx/${tile}.png`), tile);
+  }
+});
+
+ok("the art is not capped at 100% width (no bare strip at the edge)", () => {
+  assert.match(css, /\.bb-cover-art \{[\s\S]*?max-width: none;/);
 });
 
 console.log(`\n${passed} checks passed.`);

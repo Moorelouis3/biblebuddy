@@ -10,7 +10,7 @@
  * handoff of 2026-11-21.
  */
 import { useEffect, useState } from "react";
-import { BIBLE_COVERS, BIBLE_COVER_EVENT, readBibleCover, setBibleCover, type BibleCoverId } from "@/lib/bibleCovers";
+import { BIBLE_COVERS, BIBLE_COVER_EVENT, EFFECT_LABELS, readBibleCover, setBibleCover, type BibleCoverId } from "@/lib/bibleCovers";
 import { setBibleCoverSnow } from "@/components/BibleCoverBackdrop";
 
 const SNOW_PREF_KEY = "bb:bible-cover-snow:v1";
@@ -95,7 +95,7 @@ export default function BibleCoverPicker() {
         <label className="mt-4 flex items-center justify-between gap-3 rounded-xl border border-[var(--bb-card-border,#dbe7f4)] px-4 py-3">
           <span>
             <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">
-              {BIBLE_COVERS[current].motion === "snow" ? "Falling snow" : "Moving background"}
+              {EFFECT_LABELS[BIBLE_COVERS[current].motion]}
             </span>
             <span className="block text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
               Off keeps the picture still. It also goes still by itself on phones that cannot keep up.

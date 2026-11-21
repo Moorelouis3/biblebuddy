@@ -29,7 +29,7 @@
  * Animations pause while the app is hidden (data-bb-app-hidden).
  */
 import { useEffect, useState } from "react";
-import { BIBLE_COVERS, normalizeBibleCoverId, type BibleCoverId } from "@/lib/bibleCovers";
+import { BIBLE_COVERS, normalizeBibleCoverId, type BibleCover, type BibleCoverId } from "@/lib/bibleCovers";
 
 const SNOW_PREF_KEY = "bb:bible-cover-snow:v1";
 const AUTO_STILL_KEY = "bb:bible-cover-auto-still:v1";
@@ -173,12 +173,94 @@ export default function BibleCoverBackdrop() {
         <img className="bb-cover-art" src={cover.art.mobile} alt="" decoding="async" />
       </picture>
       <div className="bb-cover-shade" />
-      {cover.motion === "snow" ? (
-        <>
-          <div className="bb-cover-snow bb-cover-snow-far" />
-          <div className="bb-cover-snow bb-cover-snow-near" />
-        </>
-      ) : null}
+      <CoverEffect effect={cover.motion} />
     </div>
   );
+}
+
+/**
+ * Each cover's light effect as plain layers. Every layer carries bb-cover-fx,
+ * which is what the still / reduced-motion / hidden rules in
+ * app/bible-covers.css switch off, and every animation on them is transform
+ * or opacity only (scripts/verify-bible-covers.ts checks the keyframes).
+ * Tiles come from scripts/generate-cover-fx.mjs.
+ */
+function CoverEffect({ effect }: { effect: BibleCover["motion"] }) {
+  switch (effect) {
+    case "snow":
+      return (
+        <>
+          <div className="bb-cover-fx bb-cover-snow bb-cover-snow-far" />
+          <div className="bb-cover-fx bb-cover-snow bb-cover-snow-near" />
+        </>
+      );
+    case "fireflies":
+      return (
+        <>
+          <div className="bb-cover-fx bb-fx-tile bb-fx-rise bb-fx-fireflies bb-fx-slow" />
+          <div className="bb-cover-fx bb-fx-tile bb-fx-rise bb-fx-fireflies bb-fx-twinkle bb-fx-offset" />
+        </>
+      );
+    case "stars":
+      return (
+        <>
+          <div className="bb-cover-fx bb-fx-tile bb-fx-still bb-fx-stars bb-fx-twinkle" />
+          <div className="bb-cover-fx bb-fx-tile bb-fx-still bb-fx-stars bb-fx-twinkle bb-fx-offset bb-fx-shift" />
+          <div className="bb-cover-fx bb-fx-tile bb-fx-rise bb-fx-fireflies bb-fx-slow bb-fx-faint" />
+        </>
+      );
+    case "embers":
+      return (
+        <>
+          <div className="bb-cover-fx bb-fx-tile bb-fx-rise bb-fx-embers bb-fx-slow" />
+          <div className="bb-cover-fx bb-fx-tile bb-fx-rise bb-fx-embers bb-fx-twinkle bb-fx-offset" />
+        </>
+      );
+    case "fire":
+      return (
+        <>
+          <div className="bb-cover-fx bb-fx-firelight" />
+          <div className="bb-cover-fx bb-fx-tile bb-fx-rise bb-fx-embers" />
+          <div className="bb-cover-fx bb-fx-tile bb-fx-rise bb-fx-embers bb-fx-slow bb-fx-offset" />
+        </>
+      );
+    case "lightning":
+      return <div className="bb-cover-fx bb-fx-lightning" />;
+    case "beam":
+      return (
+        <div className="bb-fx-beam-pivot">
+          <div className="bb-cover-fx bb-fx-beam" />
+        </div>
+      );
+    case "rays":
+      return (
+        <>
+          <div className="bb-cover-fx bb-fx-rays" />
+          <div className="bb-cover-fx bb-fx-tile bb-fx-rise bb-fx-sparkles bb-fx-slow bb-fx-twinkle" />
+        </>
+      );
+    case "sand":
+      return (
+        <>
+          <div className="bb-cover-fx bb-fx-tile bb-fx-wind bb-fx-sand" />
+          <div className="bb-cover-fx bb-fx-tile bb-fx-wind bb-fx-sand bb-fx-slow bb-fx-offset bb-fx-faint" />
+        </>
+      );
+    case "rain":
+      return (
+        <div className="bb-fx-window">
+          <div className="bb-cover-fx bb-fx-tile bb-fx-fall bb-fx-rain" />
+          <div className="bb-cover-fx bb-fx-tile bb-fx-fall bb-fx-rain bb-fx-slow bb-fx-offset bb-fx-faint" />
+        </div>
+      );
+    case "petals":
+      return (
+        <>
+          <div className="bb-cover-fx bb-fx-tile bb-fx-flutter bb-fx-petals" />
+          <div className="bb-cover-fx bb-fx-tile bb-fx-flutter bb-fx-petals bb-fx-slow bb-fx-offset bb-fx-faint" />
+        </>
+      );
+    default:
+      return null;
+  }
 }

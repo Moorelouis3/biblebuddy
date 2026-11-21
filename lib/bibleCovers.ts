@@ -29,6 +29,19 @@ export type BibleCoverId =
   | "morning-mercy"
   | "mount-sinai";
 
+/** One light effect per cover (Louis, 2026-11-21: "do all them have light animation like the winter cabin snow one?"). */
+export type BibleCoverEffect =
+  | "snow" | "fireflies" | "stars" | "embers" | "fire" | "lightning"
+  | "beam" | "rays" | "sand" | "rain" | "petals" | "drift" | "none";
+
+/** What the motion switch in Settings is called for each effect. */
+export const EFFECT_LABELS: Record<BibleCoverEffect, string> = {
+  snow: "Falling snow", fireflies: "Fireflies", stars: "Twinkling stars", embers: "Rising embers",
+  fire: "Embers and firelight", lightning: "Distant lightning", beam: "Lighthouse beam",
+  rays: "Light and sparkles", sand: "Drifting sand", rain: "Rain on the window", petals: "Falling petals",
+  drift: "Moving background", none: "Moving background",
+};
+
 export type BibleCoverTokens = {
   /** Panels and card frames: the deep surface the content sits on. */
   panel: string;
@@ -65,8 +78,11 @@ export type BibleCover = {
   art: { mobile: string; desktop: string; thumb: string };
   /** Base colour under the art while it loads, and the still fallback tint. */
   base: string;
-  /** snow: drift + falling snow. drift: the slow drift only. */
-  motion: "snow" | "drift" | "none";
+  /**
+   * The cover's light effect, drawn over the slowly drifting art. Every one
+   * only moves or fades layers (components/BibleCoverBackdrop.tsx).
+   */
+  motion: BibleCoverEffect;
 };
 
 /**
@@ -161,61 +177,61 @@ function makeCover(spec: CoverSpec): BibleCover {
 
 const MORE_COVERS: CoverSpec[] = [
   {
-    id: "midnight-garden", name: "Midnight Garden", art: "midnight-garden",
+    id: "midnight-garden", motion: "fireflies", name: "Midnight Garden", art: "midnight-garden",
     base: "#050b0a", readerBg: "#0c1614", panelRgb: "10, 22, 20", frameRgb: "190, 214, 196",
     text: "#F2F6F1", secondary: "#C2D0C4", muted: "#90A496",
     warm: "#F2C072", warmText: "#2A1A05", cool: "#C6D6E6", done: "#8FC08C", doneRgb: "52, 96, 62",
   },
   {
-    id: "lavender-prayer", name: "Lavender Prayer", art: "lavender-prayer",
+    id: "lavender-prayer", motion: "stars", name: "Lavender Prayer", art: "lavender-prayer",
     base: "#0e0820", readerBg: "#160f2b", panelRgb: "26, 16, 50", frameRgb: "204, 180, 255",
     text: "#F6F2FF", secondary: "#D1C3F0", muted: "#A293C6",
     warm: "#F4C27E", warmText: "#2B1A06", cool: "#C9B3FF", done: "#8FC2A0", doneRgb: "50, 92, 72",
   },
   {
-    id: "ruby-village", name: "Ruby Village", art: "ruby-village",
+    id: "ruby-village", motion: "embers", name: "Ruby Village", art: "ruby-village",
     base: "#160405", readerBg: "#1d0a0b", panelRgb: "36, 10, 12", frameRgb: "255, 176, 156",
     text: "#FFF4F0", secondary: "#EBC4BA", muted: "#BC948A",
     warm: "#FFB45E", warmText: "#2E1500", cool: "#F2B8A8", done: "#9CC49A", doneRgb: "58, 92, 58",
   },
   {
-    id: "blue-storm", name: "Blue Storm", art: "blue-storm",
+    id: "blue-storm", motion: "lightning", name: "Blue Storm", art: "blue-storm",
     base: "#03081a", readerBg: "#0a1226", panelRgb: "8, 16, 40", frameRgb: "128, 172, 255",
     text: "#F1F6FF", secondary: "#B6C9EE", muted: "#8197C2",
     warm: "#CFE4FF", warmText: "#06142E", cool: "#8FB8FF", done: "#7DB894", doneRgb: "40, 92, 72",
   },
   {
-    id: "carolina-coastline", name: "Carolina Coast", art: "carolina-coastline",
+    id: "carolina-coastline", motion: "beam", name: "Carolina Coast", art: "carolina-coastline",
     base: "#050e1c", readerBg: "#0c1828", panelRgb: "8, 20, 40", frameRgb: "150, 190, 235",
     text: "#F3F7FC", secondary: "#B8CBE4", muted: "#8DA3C0",
     warm: "#F6A65E", warmText: "#2C1300", cool: "#9CC6F0", done: "#7DB894", doneRgb: "40, 92, 72",
   },
   {
-    id: "angel-wings", name: "Angel Wings", art: "angel-wings",
+    id: "angel-wings", motion: "rays", name: "Angel Wings", art: "angel-wings",
     base: "#0a1834", readerBg: "#10203f", panelRgb: "14, 32, 68", frameRgb: "222, 236, 255",
     text: "#F6FAFF", secondary: "#C8D9F2", muted: "#97ACCB",
     warm: "#FFDC86", warmText: "#2A1D00", cool: "#D6E6FF", done: "#8CC4A2", doneRgb: "44, 96, 76",
   },
   {
-    id: "desert-dawn", name: "Desert Dawn", art: "desert-dawn",
+    id: "desert-dawn", motion: "sand", name: "Desert Dawn", art: "desert-dawn",
     base: "#0b0805", readerBg: "#16110b", panelRgb: "26, 18, 10", frameRgb: "240, 204, 150",
     text: "#FBF5EC", secondary: "#E2CFAE", muted: "#B09B7C",
     warm: "#F5B24E", warmText: "#2A1700", cool: "#E6CFA6", done: "#9CBE8A", doneRgb: "60, 90, 50",
   },
   {
-    id: "slow-mornings", name: "Slow Mornings", art: "slow-mornings",
+    id: "slow-mornings", motion: "rain", name: "Slow Mornings", art: "slow-mornings",
     base: "#120b07", readerBg: "#1a120c", panelRgb: "32, 21, 13", frameRgb: "240, 204, 158",
     text: "#FCF6EE", secondary: "#E2CDAE", muted: "#AE987D",
     warm: "#F2B866", warmText: "#2B1700", cool: "#E9D4B5", done: "#9DBE8C", doneRgb: "62, 90, 52",
   },
   {
-    id: "morning-mercy", name: "Morning Mercy", art: "morning-mercy",
+    id: "morning-mercy", motion: "petals", name: "Morning Mercy", art: "morning-mercy",
     base: "#241310", readerBg: "#2a1814", panelRgb: "46, 25, 20", frameRgb: "255, 206, 178",
     text: "#FFF6F0", secondary: "#F0CDBE", muted: "#C49F90",
     warm: "#FFC46B", warmText: "#2C1800", cool: "#FFCFB8", done: "#A2C49A", doneRgb: "64, 94, 58",
   },
   {
-    id: "mount-sinai", name: "Mount Sinai", art: "mount-sinai",
+    id: "mount-sinai", motion: "fire", name: "Mount Sinai", art: "mount-sinai",
     base: "#060403", readerBg: "#120d09", panelRgb: "18, 12, 8", frameRgb: "255, 184, 116",
     text: "#FDF5EC", secondary: "#DCC5A8", muted: "#A6917A",
     warm: "#FFA94D", warmText: "#2C1300", cool: "#E2C9A8", done: "#9CBE8A", doneRgb: "60, 90, 50",
