@@ -132,3 +132,4 @@
 2026-11-19T17:02:57Z | 6 commits | 1 Samuel 2-3 Explained chapter library entries
 2026-11-20T09:02:18Z | 10 commits | 1 Samuel 4-6 Explained chapter library entries, analytics overview rolling retention tracker, and build-list updates (widgets tested via TestFlight, iOS 1.17 with widgets submitted to App Review)
 2026-11-20T17:02:34Z | 5 commits | 1 Samuel 7-8 Explained chapter library entries
+2026-11-21T09:02:37Z | 10 commits | 1 Samuel 9-11 Explained chapter library entries and a blog article (Who Was Job? The Man Who Lost Everything)
