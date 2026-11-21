@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-12-explained",
+    title: "1 Samuel 12 Explained: Samuel's Farewell Speech to Israel",
+    description:
+      "1 Samuel 12 explained verse by verse: Samuel's integrity trial, Israel's history of rescue, the thunder at wheat harvest, and his warning to Israel and the king.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-12-explained",
+    publishedAt: "2026-11-21",
+    readTime: "15 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 12 Explained 📖",
+      content:
+        "An old leader stands before the whole nation.\n\nHe is not stepping down because he lost. He is stepping down on purpose.\n\n📌 Samuel clears his own name before he says a hard word to anyone else.\n\n📖 He puts his own record on trial first.\n📖 He calls down rain in the middle of the dry season.\n📖 Israel finally admits out loud that asking for a king was sin.\n\nNew article on:\n🟢 why **wheat harvest rain** proved his point\n🟢 who **Jerubbaal and Jephthah** really were\n🟢 the warning Samuel leaves hanging over the **new king**\n\nHave you ever had to say a hard true thing right as you stepped back? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-11-explained",
     title: "1 Samuel 11 Explained: Saul's First Victory and His Mercy",
     description:
