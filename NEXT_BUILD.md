@@ -141,6 +141,9 @@ run is the compile check.
 
 ## Waiting for the next Android build
 
+**Production release 1.06 (version code 6, Codemagic build 6b0184318f52ca275129b059, commit 3e906e0) sent to Google for review on 21 Nov 2026**, all 177 countries plus rest of world, full rollout. Production access was granted 20 Nov. Every Android item below is in that build; it is live for nobody until Google approves it.
+
+
 ### 1. Email links open the app instead of Chrome
 **Ready. Nothing more to do but build.**
 

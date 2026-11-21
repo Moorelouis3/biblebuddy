@@ -771,3 +771,9 @@ a reason to keep that change narrow and behind a configured check, the way
   <https://support.google.com/googleplay/android-developer/answer/14151465>
 - Target API level 36 required for new submissions from 31 August 2026:
   <https://developer.android.com/google/play/requirements/target-sdk>
+
+## Status, 21 Nov 2026
+
+- Production access granted (email, 20 Nov).
+- Production release 1.06 (version code 6) built fresh on Codemagic from commit 3e906e0, uploaded by hand, sent for review 21 Nov to 177 countries + rest of world. The closed-test build 1.05 was not used: it predates the Android app-links switch-on.
+- Trader status: declared as Trader up to the phone-verification step; Louis has to verify a phone number by text code to finish. Deadline Feb 2027.
