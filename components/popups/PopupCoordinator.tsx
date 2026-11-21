@@ -60,6 +60,8 @@ import { joinCommunityEvent } from "../../lib/communityEventJoin";
 import { getCommunityEvent, isCommunityEventDayUnlocked } from "../../lib/communityEvents";
 import { isAndroid, isIOS, isStandalone } from "../../lib/installEnvironment";
 import { isNativeApp } from "../../lib/nativeApp";
+import { openStoreListingForReview } from "../../lib/appReviewPrompt";
+import { OPEN_REVIEW_FORM_EVENT } from "../../lib/reviewForm";
 import { inSection, liveCatalog, type PopupDefinition, type PopupDevice } from "../../lib/popups/catalog";
 import { coordinatorActive, testDevice } from "../../lib/popups/switch";
 import {
@@ -711,6 +713,16 @@ export default function PopupCoordinator({
         }
         setSignup("done");
       })();
+      return;
+    }
+
+    if (open.popup.cta.review) {
+      // A review: the store in the apps, our own form on the web. Each one is
+      // opened by the click itself, so nothing waits on the write.
+      send(supabase.from("user_popups_seen").update(patch).eq("user_id", userId).eq("popup_id", open.popup.id));
+      setOpen(null);
+      if (isNativeApp()) openStoreListingForReview();
+      else window.dispatchEvent(new Event(OPEN_REVIEW_FORM_EVENT));
       return;
     }
 

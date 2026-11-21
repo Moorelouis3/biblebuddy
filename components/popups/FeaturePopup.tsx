@@ -143,6 +143,7 @@ const TONE_BY_PREVIEW: Record<PopupPreview, keyof typeof TONES> = {
   prayer: "brand",
   poll: "brand",
   covers: "brand",
+  birthday: "brand",
 };
 
 /**
@@ -491,7 +492,7 @@ export default function FeaturePopup({
               />
             </p>
           ) : null}
-          <div className="mt-1 flex items-center justify-center gap-1">
+          <div className={`mt-1 flex items-center justify-center gap-1 ${popup.hideLater ? "hidden" : ""}`}>
             <button
               type="button"
               onClick={() => onClose("later")}
@@ -995,6 +996,23 @@ function Preview({ kind }: { kind: PopupPreview }) {
               David
             </span>
           </div>
+        </div>
+      );
+    case "birthday":
+      // The header's party hat, sat on a big 1. Static, like the hat.
+      return (
+        <div className="flex items-center justify-center gap-3 py-1" aria-hidden="true">
+          <span className="relative inline-block font-serif text-[64px] font-black leading-none text-[#0056FD]">
+            1
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/birthday-hat.png" alt="" className="absolute -left-[18px] -top-[34px] h-[44px] w-auto" />
+          </span>
+          <span className="text-left">
+            <span className="block text-[13px] font-black uppercase tracking-wide text-[var(--bb-text-primary,#111827)]">
+              Year one
+            </span>
+            <span className="block text-[12px] font-bold text-[var(--bb-text-muted,#6b7280)]">Nov 2025 – Nov 2026</span>
+          </span>
         </div>
       );
     case "covers":

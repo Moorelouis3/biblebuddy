@@ -107,6 +107,8 @@ export function whyNot(popup: PopupDefinition, input: DecideInput): string | nul
   const settings = input.settings[popup.id];
   if (!settings?.enabled) return "switched off";
 
+  if (popup.startsAt && Date.parse(popup.startsAt) > input.now.getTime()) return "not started yet";
+
   const expiresAt = settings.expiresAt ?? popup.expiresAt;
   if (expiresAt && Date.parse(expiresAt) <= input.now.getTime()) return "expired";
 

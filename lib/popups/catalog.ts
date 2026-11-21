@@ -28,6 +28,7 @@
 import type { ActionType } from "../actionTypes";
 import { communityEventStartsAt, getCommunityEvent } from "../communityEvents";
 import { getPrayerWeekKey } from "../weeklyFeedPopups";
+import { BIRTHDAY_ENDS_AT, BIRTHDAY_HEADLINE, BIRTHDAY_MESSAGE, BIRTHDAY_SHORT_LINE, BIRTHDAY_STARTS_AT } from "../birthday";
 
 export type PopupKind =
   /** Teaches a feature. Shown only in the section where it can be used. */
@@ -65,7 +66,9 @@ export type PopupPreview =
   /** A study sign-up: the study's own artwork instead of a drawn preview. */
   | "event_signup"
   /** Bible Covers: a little shelf of real cover thumbnails. */
-  | "covers";
+  | "covers"
+  /** The first birthday: the party hat and a big 1. */
+  | "birthday";
 
 /**
  * Makes a popup a sign-up for a community study (lib/communityEvents.ts).
@@ -159,7 +162,20 @@ export type PopupDefinition = {
   preview: PopupPreview;
   steps: PopupStep[];
   /** Button when the person is somewhere else: goes to the feature. */
-  cta: { label: string; href: string; /** Leaves the site (the App Store). */ external?: boolean };
+  cta: {
+    label: string;
+    href: string;
+    /** Leaves the site (the App Store). */
+    external?: boolean;
+    /**
+     * Asks for a review instead of going to href: the App Store's write-a-review
+     * page in the iPhone app, the Play listing in the Android app, and our own
+     * review form (components/FeedbackModal.tsx) on the web.
+     */
+    review?: boolean;
+  };
+  /** No "Maybe later" under the button; the corner X still closes it. */
+  hideLater?: boolean;
   /** Only shown on this kind of device. */
   device?: PopupDevice;
   /** Offer "Don't show this again". For asks, never for tutorials. */
@@ -176,6 +192,8 @@ export type PopupDefinition = {
   minAccountAgeDays: number;
   /** ISO date. After this the popup is never chosen. null = no end. */
   expiresAt: string | null;
+  /** ISO date. Before this the popup is never chosen. Absent = already open. */
+  startsAt?: string;
   /** Set on a study sign-up. See PopupEventSignup. */
   event?: PopupEventSignup;
   /**
@@ -210,6 +228,37 @@ function communityEventEndsAt(startsAt: string, totalDays: number): string {
 }
 
 export const POPUP_CATALOG: PopupDefinition[] = [
+  {
+    // Bible Buddy's first birthday (Louis, 2026-11-21). Shown only inside the
+    // window in lib/birthday.ts, the same one that puts the party hat on the
+    // header, so the two start and stop together. A headline, so it is the
+    // first thing a Buddy sees on their next visit; priority above the Bible
+    // Covers headline, which then follows on a later visit.
+    id: "bible_buddy_birthday_2026",
+    version: 1,
+    kind: "announcement",
+    level: "headline",
+    priority: 96,
+    sections: [],
+    pill: "One year together",
+    headline: BIRTHDAY_HEADLINE,
+    headlineAccent: "turns 1! 🎉",
+    description: BIRTHDAY_MESSAGE,
+    cardTitle: "One year in God’s Word",
+    cardLine: BIRTHDAY_SHORT_LINE,
+    cardIcon: "🎉",
+    preview: "birthday",
+    steps: [],
+    // Louis, 2026-11-21: the birthday "should lead them to leave a review".
+    cta: { label: "Leave us a review ⭐", href: "/dashboard", review: true },
+    ctaInSection: "Leave us a review ⭐",
+    hideLater: true,
+    footnote: "Thank you for being here",
+    usedWhen: [],
+    minAccountAgeDays: 0,
+    startsAt: BIRTHDAY_STARTS_AT,
+    expiresAt: BIRTHDAY_ENDS_AT,
+  },
   {
     // Headline (2026-11-21): Bible Covers launch to everyone.
     id: "bible_covers_2026_11",

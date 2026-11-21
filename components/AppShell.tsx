@@ -74,6 +74,8 @@ import { ACTION_TYPE } from "../lib/actionTypes";
 import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
 import { ACTIVE_STREAK_FLAME_STORAGE_KEY, normalizeFlameCosmeticId, persistActiveStreakFlame, type FlameCosmeticId } from "../lib/flameCosmetics";
 import { getActivePopupFromQueue, markPopupShown, POPUP_QUEUE_PRIORITIES, type PopupQueueItem } from "../lib/popupQueue";
+import { BIRTHDAY_HAT_SRC, isBirthdayWindow, msUntilBirthdayChange } from "../lib/birthday";
+import { OPEN_REVIEW_FORM_EVENT } from "../lib/reviewForm";
 import {
   clearPendingSignupAttribution,
   getSignupAttributionFromBrowser,
@@ -590,6 +592,26 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const profileMenuRef = useRef<HTMLDivElement>(null);
   const closeProfileMenu = () => setIsProfileMenuOpen(false);
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
+  /**
+   * The birthday hat (lib/birthday.ts). Decided after mount, never during the
+   * server render, so the page cannot hydrate with one header and switch to
+   * another. A tab left open across a boundary flips by itself: one timer to
+   * the next start or end, no polling.
+   */
+  const [isBirthday, setIsBirthday] = useState(false);
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    const check = () => {
+      setIsBirthday(isBirthdayWindow());
+      const wait = msUntilBirthdayChange();
+      // setTimeout overflows past ~24.8 days; re-check then instead.
+      if (wait !== null) timer = setTimeout(check, Math.min(wait + 1000, 2_000_000_000));
+    };
+    check();
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, []);
   const navMenuRef = useRef<HTMLDivElement>(null);
   const [isDashboardStoreOpen, setIsDashboardStoreOpen] = useState(false);
   const [appThemeId, setAppThemeId] = useState<AppThemeId>(() => {
@@ -603,6 +625,17 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string>("");
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const [feedbackFromReviewTap, setFeedbackFromReviewTap] = useState(false);
+  // A tap on "Leave us a review" on the web (lib/reviewForm.ts) opens the
+  // same form. Only on a tap: the automatic feedback popup stays off.
+  useEffect(() => {
+    const openForm = () => {
+      setFeedbackFromReviewTap(true);
+      setShowFeedbackModal(true);
+    };
+    window.addEventListener(OPEN_REVIEW_FORM_EVENT, openForm);
+    return () => window.removeEventListener(OPEN_REVIEW_FORM_EVENT, openForm);
+  }, []);
   const [bannerDismissed, setBannerDismissed] = useState(false);
   const [feedbackChecked, setFeedbackChecked] = useState(false);
   
@@ -2987,8 +3020,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           userId={userId}
           username={username}
           isOpen={showFeedbackModal}
+          startWithSurvey={feedbackFromReviewTap}
           onClose={() => {
             setShowFeedbackModal(false);
+            setFeedbackFromReviewTap(false);
             // Don't dismiss banner on close - only on "No"
           }}
           onDoLater={() => {
@@ -3113,8 +3148,24 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               >
                 {/* Logo removed as requested */}
                 <div>
-                  <div className="text-sm font-bold text-[var(--bb-text-primary,#f9fafb)] tracking-tight">
+                  <div className="relative text-sm font-bold text-[var(--bb-text-primary,#f9fafb)] tracking-tight">
                     Bible Buddy
+                    {/* First birthday, 21-30 Nov 2026 Berlin (lib/birthday.ts):
+                        a small static party hat on the first B, sparkles to
+                        its left. Absolutely placed over the wordmark, so the
+                        header never moves or grows, and aria-hidden so the
+                        link still reads "Bible Buddy". */}
+                    {isBirthday ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={BIRTHDAY_HAT_SRC}
+                        alt=""
+                        aria-hidden="true"
+                        width={17}
+                        height={18}
+                        className="pointer-events-none absolute -left-[6px] -top-[9px] h-[18px] w-auto select-none"
+                      />
+                    ) : null}
                   </div>
                 </div>
               </Link>

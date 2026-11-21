@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { ModalShell } from "./ModalShell";
 
@@ -11,6 +11,11 @@ interface FeedbackModalProps {
   onClose: () => void;
   onDoLater: () => void;
   onNo: () => void;
+  /**
+   * Skip the "take a short questionnaire?" ask and open on the questions:
+   * the person already tapped "Leave us a review" (lib/reviewForm.ts).
+   */
+  startWithSurvey?: boolean;
 }
 
 export function FeedbackModal({
@@ -20,9 +25,14 @@ export function FeedbackModal({
   onClose,
   onDoLater,
   onNo,
+  startWithSurvey = false,
 }: FeedbackModalProps) {
   const [submitting, setSubmitting] = useState(false);
   const [showSurvey, setShowSurvey] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (isOpen && startWithSurvey) setShowSurvey(true);
+  }, [isOpen, startWithSurvey]);
   const [answers, setAnswers] = useState<Record<string, string>>({});
 
   // Survey questions (EXACT text as specified)

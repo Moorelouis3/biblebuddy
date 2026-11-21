@@ -12,6 +12,7 @@ import { readFileSync } from "node:fs";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { COMMUNITY_EVENTS, communityEventStartsAt, getCommunityEvent, getCommunityEventState } from "../lib/communityEvents";
 import { existsSync } from "node:fs";
+import { BIRTHDAY_HEADLINE, isBirthdayWindow, msUntilBirthdayChange } from "../lib/birthday";
 import { liveCatalog, LOCAL_POPUP_SIGNALS, POPUP_CATALOG, TIPS_CATALOG } from "../lib/popups/catalog";
 import {
   decide,
@@ -105,7 +106,9 @@ check("every 'already uses it' action is a real action type", () => {
 check("copy stays short enough for a phone", () => {
   for (const popup of POPUP_CATALOG) {
     assert.ok(popup.headline.length <= 34, `${popup.id} headline`);
-    assert.ok(popup.description.length <= 130, `${popup.id} description`);
+    // A popup with no steps has their room for words (the birthday message,
+    // Louis's exact copy, is 160).
+    assert.ok(popup.description.length <= (popup.steps.length ? 130 : 170), `${popup.id} description`);
     assert.ok(popup.steps.length <= 4, `${popup.id} steps`);
   }
 });
@@ -422,7 +425,9 @@ check("it stops by itself when the study starts, in Berlin time", () => {
   const after = new Date("2026-11-30T23:00:00Z");
   assert.equal(getCommunityEventState(event, before).phase, "countdown");
   assert.equal(getCommunityEventState(event, after).phase, "live");
-  assert.equal(decide(notMember({ now: before })).chosen?.id, SIGNUP_ID);
+  // The birthday headline (lib/birthday.ts) is out of the way: already answered.
+  const birthdayDone = { bible_buddy_birthday_2026: seen({ ctaClickedAt: daysAgo(1) }) };
+  assert.equal(decide(notMember({ now: before, history: birthdayDone })).chosen?.id, SIGNUP_ID);
   assert.notEqual(decide(notMember({ now: after })).chosen?.id, SIGNUP_ID);
   assert.equal(decide(notMember({ now: after })).verdicts.find((verdict) => verdict.id === SIGNUP_ID)?.reason, "expired");
   // Every event's start is a Berlin midnight, summer or winter.
@@ -578,7 +583,8 @@ check("prayer and poll come round once a week, in the shared card", () => {
     assert.equal(later.version, now.version + 1, id);
     assert.equal(now.custom, undefined, `${id} is drawn by the shared card`);
     // Answered or closed this week: not again this week, but again next week.
-    const quiet = { usedActions: used, history: { new_games_2026_11: seen({ ctaClickedAt: daysAgo(1) }), weekly_prayer: seen({ version: thisWeek.find((p) => p.id === "weekly_prayer")!.version, ctaClickedAt: hoursAgo(30) }), weekly_poll: seen({ version: thisWeek.find((p) => p.id === "weekly_poll")!.version, dismissedAt: hoursAgo(30), nextEligibleAt: nextEligibleAfterClose(new Date(hoursAgo(30))) }) } };
+    // Next week is inside the birthday window; that headline is already answered.
+    const quiet = { usedActions: used, history: { bible_buddy_birthday_2026: seen({ ctaClickedAt: daysAgo(1) }), new_games_2026_11: seen({ ctaClickedAt: daysAgo(1) }), weekly_prayer: seen({ version: thisWeek.find((p) => p.id === "weekly_prayer")!.version, ctaClickedAt: hoursAgo(30) }), weekly_poll: seen({ version: thisWeek.find((p) => p.id === "weekly_poll")!.version, dismissedAt: hoursAgo(30), nextEligibleAt: nextEligibleAfterClose(new Date(hoursAgo(30))) }) } };
     assert.equal(decide(everything({ ...quiet, catalog: thisWeek })).chosen, null);
     assert.ok(["weekly_prayer", "weekly_poll"].includes(decide(everything({ ...quiet, catalog: nextWeek, now: new Date(NOW.getTime() + 7 * 86_400_000) })).chosen?.id || ""));
   }
@@ -625,6 +631,43 @@ check("nobody who already has a cover is told about covers", () => {
 
 check("not on the Settings page, where the shelf already is", () => {
   assert.notEqual(decide(noCover({ pathname: "/settings" })).chosen?.id, "bible_covers_2026_11");
+});
+
+console.log("\nFirst birthday (one window for the hat and the popup)");
+
+// lib/birthday.ts. Berlin is UTC+1 on both dates.
+const at = (iso: string) => new Date(iso);
+const BDAY = "bible_buddy_birthday_2026";
+const bday = (iso: string) => decide(base({ now: at(iso), settings: everythingOn })).chosen?.id;
+
+check("the window opens at 00:00 Berlin on 21 November, not a second before", () => {
+  assert.equal(isBirthdayWindow(at("2026-11-20T22:59:59.999Z")), false);
+  assert.equal(isBirthdayWindow(at("2026-11-20T23:00:00.000Z")), true);
+});
+
+check("the window closes at 00:00 Berlin on 1 December", () => {
+  assert.equal(isBirthdayWindow(at("2026-11-30T22:59:59.999Z")), true);
+  assert.equal(isBirthdayWindow(at("2026-11-30T23:00:00.000Z")), false);
+  assert.equal(isBirthdayWindow(at("2027-11-21T12:00:00Z")), false);
+});
+
+check("the popup follows the same two instants as the hat", () => {
+  assert.notEqual(bday("2026-11-20T22:59:59.999Z"), BDAY);
+  assert.equal(bday("2026-11-20T23:00:00.000Z"), BDAY);
+  assert.equal(bday("2026-11-30T22:59:59.999Z"), BDAY);
+  assert.notEqual(bday("2026-11-30T23:00:00.000Z"), BDAY);
+});
+
+check("the birthday asks for a review and offers no Maybe later", () => {
+  const popup = POPUP_CATALOG.find((p) => p.id === BDAY)!;
+  assert.equal(popup.cta.review, true);
+  assert.equal(popup.hideLater, true);
+  assert.equal(popup.headline, BIRTHDAY_HEADLINE);
+});
+
+check("a tab left open switches at the boundary", () => {
+  assert.equal(msUntilBirthdayChange(at("2026-11-30T22:59:00.000Z")), 60_000);
+  assert.equal(msUntilBirthdayChange(at("2026-12-01T00:00:00Z")), null);
 });
 
 console.log(`\n${passed} checks passed.`);
