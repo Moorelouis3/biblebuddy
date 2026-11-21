@@ -218,7 +218,7 @@ export default function BibleReferenceCard({
         ref={containerRef}
         className="bb-cv-card bb-cv-scope bb-cv-lookup relative overflow-hidden rounded-2xl border border-[#f4dcc8] p-4 shadow-sm sm:p-5"
         style={{
-          backgroundColor: "#fff3e6",
+          backgroundColor: "var(--bb-cv-light-bg, #fff3e6)",
           backgroundImage: "url(/home-cards/bg-trivia.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "left bottom",

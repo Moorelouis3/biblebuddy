@@ -2319,11 +2319,11 @@ function HowItWorksSection({ onStart }: { onStart: () => void }) {
           <article
             key={card.title}
             className="relative rounded-[14px] px-5 pb-5 pt-10 text-center shadow-[0_12px_28px_rgba(14,26,58,0.045)]"
-            style={{ backgroundColor: "#fffdfa", border: "1px solid #eadfcd" }}
+            style={{ backgroundColor: "var(--bb-cv-light-bg, #fffdfa)", border: "1px solid #eadfcd" }}
           >
             <span
               className="bb-how-step absolute left-4 top-4 grid h-8 w-8 place-items-center rounded-full text-sm font-black shadow-[0_8px_18px_rgba(14,26,58,0.10)]"
-              style={{ backgroundColor: iconBackground, color: "#0E1A3A" }}
+              style={{ backgroundColor: iconBackground, color: "var(--bb-cv-ink, #0E1A3A)" }}
             >
               {index + 1}
             </span>
@@ -2340,14 +2340,14 @@ function HowItWorksSection({ onStart }: { onStart: () => void }) {
         })}
       </div>
 
-      <div className="relative mx-auto mt-9 grid max-w-2xl gap-0 rounded-[24px] shadow-[0_14px_34px_rgba(14,26,58,0.045)] md:hidden" style={{ backgroundColor: "#fffdfa", border: "1px solid #eadfcd" }}>
+      <div className="relative mx-auto mt-9 grid max-w-2xl gap-0 rounded-[24px] shadow-[0_14px_34px_rgba(14,26,58,0.045)] md:hidden" style={{ backgroundColor: "var(--bb-cv-light-bg, #fffdfa)", border: "1px solid #eadfcd" }}>
         {howItWorksCards.map((card, index) => {
           const accent = stepAccents[index] ?? "#0E1A3A";
           const iconBackground = stepIconBackgrounds[index] ?? "#edf2ff";
           return (
           <div key={card.title} className={`relative flex gap-4 px-4 py-5 text-left ${index > 0 ? "border-t border-[#eee5d8]" : ""}`}>
             {index < howItWorksCards.length - 1 ? <span className="absolute left-[31px] top-12 h-14 border-l border-dashed border-[#dec89f]" aria-hidden="true" /> : null}
-            <span className="bb-how-step z-10 grid h-8 w-8 shrink-0 place-items-center rounded-full text-sm font-black" style={{ backgroundColor: iconBackground, color: "#0E1A3A" }}>{index + 1}</span>
+            <span className="bb-how-step z-10 grid h-8 w-8 shrink-0 place-items-center rounded-full text-sm font-black" style={{ backgroundColor: iconBackground, color: "var(--bb-cv-ink, #0E1A3A)" }}>{index + 1}</span>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-3">
                 <div className="grid h-11 w-11 place-items-center rounded-xl" style={{ backgroundColor: iconBackground }}>
@@ -2367,13 +2367,13 @@ function HowItWorksSection({ onStart }: { onStart: () => void }) {
 
       <div
         className="mt-5 grid gap-0 overflow-hidden rounded-[18px] border border-[#eadfcd] text-left shadow-[0_12px_30px_rgba(14,26,58,0.045)] sm:grid-cols-2 lg:grid-cols-4"
-        style={{ backgroundColor: "#fffdfa" }}
+        style={{ backgroundColor: "var(--bb-cv-light-bg, #fffdfa)" }}
       >
         {benefitRows.map(([title, copy], index) => (
           <div
             key={title}
             className={`flex items-start gap-3 px-5 py-4 ${index > 0 ? "border-t border-[#eadfcd] sm:border-l sm:border-t-0" : ""} ${index === 2 ? "sm:border-t lg:border-t-0" : ""}`}
-            style={{ backgroundColor: "#fffdfa" }}
+            style={{ backgroundColor: "var(--bb-cv-light-bg, #fffdfa)" }}
           >
             <div
               className="bb-benefit-icon grid h-10 w-10 shrink-0 place-items-center rounded-xl"
@@ -2414,7 +2414,7 @@ function MiniPreview({ panel, compact = false, accent = "#0E1A3A" }: { panel: Pr
 
   if (panel === "watch") {
     return (
-      <div className={`${wrapperMargin} overflow-hidden rounded-xl p-2 shadow-[0_8px_18px_rgba(14,26,58,0.045)]`} style={{ backgroundColor: "#fffaf4", border: "1px solid #eadfcd" }}>
+      <div className={`${wrapperMargin} overflow-hidden rounded-xl p-2 shadow-[0_8px_18px_rgba(14,26,58,0.045)]`} style={{ backgroundColor: "var(--bb-cv-light-bg, #fffaf4)", border: "1px solid #eadfcd" }}>
         <div className="relative overflow-hidden rounded-xl">
           {showVideoPlayer ? (
             <iframe
@@ -2448,13 +2448,13 @@ function MiniPreview({ panel, compact = false, accent = "#0E1A3A" }: { panel: Pr
 
   if (panel === "study") {
     return (
-      <div className={`${wrapperMargin} rounded-xl p-3 text-left shadow-[0_8px_18px_rgba(14,26,58,0.04)]`} style={{ backgroundColor: "#fffaf4", border: "1px solid #eadfcd" }}>
+      <div className={`${wrapperMargin} rounded-xl p-3 text-left shadow-[0_8px_18px_rgba(14,26,58,0.04)]`} style={{ backgroundColor: "var(--bb-cv-light-bg, #fffaf4)", border: "1px solid #eadfcd" }}>
         <p className="text-[9px] font-black uppercase tracking-[0.14em]" style={{ color: accent }}>Chapter Summary</p>
         <p className="mt-2 text-[12px] font-black leading-5 text-black">Genesis 1-2</p>
         <p className="mt-2 text-[11px] font-semibold leading-5 text-black">God brings order out of darkness, creates life with purpose, and forms humanity in His image.</p>
         <div className="mt-3 grid gap-1.5">
           {["Creation is good", "Humanity has dignity", "Eden shows God's design"].map((line) => (
-            <span key={line} className="rounded-lg px-2 py-1.5 text-[10px] font-bold text-black" style={{ backgroundColor: "#fffdfa", border: "1px solid #eadfcd" }}>{line}</span>
+            <span key={line} className="rounded-lg px-2 py-1.5 text-[10px] font-bold text-black" style={{ backgroundColor: "var(--bb-cv-light-bg, #fffdfa)", border: "1px solid #eadfcd" }}>{line}</span>
           ))}
         </div>
       </div>
@@ -2463,14 +2463,14 @@ function MiniPreview({ panel, compact = false, accent = "#0E1A3A" }: { panel: Pr
 
   if (panel === "trivia") {
     return (
-      <div className={`${wrapperMargin} rounded-xl p-3 text-left shadow-[0_8px_18px_rgba(14,26,58,0.04)]`} style={{ backgroundColor: "#fffaf4", border: "1px solid #eadfcd" }}>
+      <div className={`${wrapperMargin} rounded-xl p-3 text-left shadow-[0_8px_18px_rgba(14,26,58,0.04)]`} style={{ backgroundColor: "var(--bb-cv-light-bg, #fffaf4)", border: "1px solid #eadfcd" }}>
         <p className="text-[10px] font-black text-black">Question 1 of 5</p>
         <p className="mt-1 text-[11px] font-black leading-4 text-black">Who created everything?</p>
         {["Angels", "God", "Humans", "The Universe"].map((answer) => (
           <p
             key={answer}
             className="mt-1 rounded-lg px-2 py-1 text-[10px] font-semibold text-black"
-            style={answer === "God" ? { backgroundColor: "#fff6e6", border: `1px solid ${accent}` } : { backgroundColor: "#fffdfa", border: "1px solid #eadfcd" }}
+            style={answer === "God" ? { backgroundColor: "var(--bb-cv-light-bg, #fff6e6)", border: `1px solid ${accent}` } : { backgroundColor: "var(--bb-cv-light-bg, #fffdfa)", border: "1px solid #eadfcd" }}
           >
             {answer}
           </p>
@@ -2480,7 +2480,7 @@ function MiniPreview({ panel, compact = false, accent = "#0E1A3A" }: { panel: Pr
   }
 
   return (
-    <div className={`${wrapperMargin} rounded-xl p-3 text-left shadow-[0_8px_18px_rgba(14,26,58,0.04)]`} style={{ backgroundColor: "#fffaf4", border: "1px solid #eadfcd" }}>
+    <div className={`${wrapperMargin} rounded-xl p-3 text-left shadow-[0_8px_18px_rgba(14,26,58,0.04)]`} style={{ backgroundColor: "var(--bb-cv-light-bg, #fffaf4)", border: "1px solid #eadfcd" }}>
       <p className="text-[10px] font-black text-black">Sarah W. <span className="font-semibold text-black">2h ago</span></p>
       <p className="mt-1 text-[11px] font-semibold leading-5 text-black">I never noticed how creation points to God's purpose.</p>
       <p className="bb-accent-text mt-2 text-[10px] font-black" style={{ "--bb-step-accent": accent } as CSSProperties}>5 stars - 12</p>
@@ -3001,7 +3001,7 @@ function OnboardingFlow(props: {
       <div className="mx-auto flex min-h-full max-w-lg flex-col justify-center">
         <div
           className="relative rounded-[28px] border p-5 shadow-[0_24px_70px_rgba(14,26,58,0.14)] sm:p-6"
-          style={{ backgroundColor: "#FFFCF6", borderColor: "#e7dccb" }}
+          style={{ backgroundColor: "var(--bb-cv-light-bg, #FFFCF6)", borderColor: "#e7dccb" }}
         >
           <style>{`
             @keyframes bb-question-swipe-in {
@@ -3151,7 +3151,7 @@ function OnboardingFlow(props: {
                   type="button"
                   onClick={() => props.onClose("intro_no_thanks")}
                   className="w-full rounded-2xl border px-5 py-4 text-sm font-black transition"
-                  style={{ backgroundColor: "#f3f4f6", borderColor: "#d8d5cf", color: "#111827" }}
+                  style={{ backgroundColor: "var(--bb-cv-light-bg, #f3f4f6)", borderColor: "#d8d5cf", color: "var(--bb-cv-ink, #111827)" }}
                 >
                   No thanks, maybe later
                 </button>
@@ -3202,7 +3202,7 @@ function OnboardingFlow(props: {
                     style={{
                       backgroundColor: props.selectedAnswer === option ? "#fff8ea" : "#ffffff",
                       borderColor: props.selectedAnswer === option ? "#d89b43" : "#eadcc2",
-                      color: "#0E1A3A",
+                      color: "var(--bb-cv-ink, #0E1A3A)",
                     }}
                   >
                     {option}
@@ -3270,7 +3270,7 @@ function OnboardingFlow(props: {
               <h2 className="bb-serif mx-auto mt-3 max-w-sm text-center text-3xl font-black leading-tight text-[#0E1A3A]">
                 Your Bible in One Year journey is ready.
               </h2>
-              <div className="mt-6 rounded-[24px] border p-5 text-center" style={{ backgroundColor: "#fffaf1", borderColor: "#eadcc2" }}>
+              <div className="mt-6 rounded-[24px] border p-5 text-center" style={{ backgroundColor: "var(--bb-cv-light-bg, #fffaf1)", borderColor: "#eadcc2" }}>
                 <p className="text-xl font-black leading-8 text-[#0E1A3A]">
                   If you spend {props.answers.time || "30 minutes"} a day
                   <br />
@@ -3288,7 +3288,7 @@ function OnboardingFlow(props: {
               </p>
               <div className="mt-4 grid gap-3">
                 <button type="button" onClick={() => void props.startGuestJourney("bible_year")} disabled={props.submitting} className="bb-green-start-button rounded-2xl px-4 py-4 text-sm font-black transition hover:-translate-y-0.5 disabled:opacity-60">{props.submitting ? "Starting..." : "Yes, start my journey"}</button>
-                <button type="button" onClick={() => props.onClose("recommendation_not_right_now")} className="rounded-2xl border px-4 py-4 text-sm font-black" style={{ backgroundColor: "#f3f4f6", borderColor: "#d8d5cf", color: "#111827" }}>Not right now</button>
+                <button type="button" onClick={() => props.onClose("recommendation_not_right_now")} className="rounded-2xl border px-4 py-4 text-sm font-black" style={{ backgroundColor: "var(--bb-cv-light-bg, #f3f4f6)", borderColor: "#d8d5cf", color: "var(--bb-cv-ink, #111827)" }}>Not right now</button>
               </div>
             </div>
           ) : null}
@@ -3302,11 +3302,11 @@ function OnboardingFlow(props: {
               </p>
               <div className="mt-5 grid max-h-[360px] gap-3 overflow-y-auto pr-1">
                 {props.devotionalsLoading ? (
-                  <div className="rounded-2xl border px-4 py-5 text-center text-sm font-bold text-[#667085]" style={{ backgroundColor: "#ffffff", borderColor: "#eadcc2" }}>
+                  <div className="rounded-2xl border px-4 py-5 text-center text-sm font-bold text-[#667085]" style={{ backgroundColor: "var(--bb-cv-light-bg, #ffffff)", borderColor: "#eadcc2" }}>
                     Loading devotionals...
                   </div>
                 ) : props.devotionalOptions.length === 0 ? (
-                  <div className="rounded-2xl border px-4 py-5 text-center text-sm font-bold text-[#667085]" style={{ backgroundColor: "#ffffff", borderColor: "#eadcc2" }}>
+                  <div className="rounded-2xl border px-4 py-5 text-center text-sm font-bold text-[#667085]" style={{ backgroundColor: "var(--bb-cv-light-bg, #ffffff)", borderColor: "#eadcc2" }}>
                     Devotionals are loading slowly. You can still continue with Bible in One Year.
                   </div>
                 ) : (
@@ -3319,7 +3319,7 @@ function OnboardingFlow(props: {
                       style={{
                         backgroundColor: props.selectedDevotionalId === devotional.id ? "#fff8ea" : "#ffffff",
                         borderColor: props.selectedDevotionalId === devotional.id ? "#d89b43" : "#eadcc2",
-                        color: "#0E1A3A",
+                        color: "var(--bb-cv-ink, #0E1A3A)",
                       }}
                     >
                       <span className="block text-sm font-black">{devotional.title}</span>
@@ -3340,7 +3340,7 @@ function OnboardingFlow(props: {
                 >
                   {props.submitting ? "Starting..." : "Continue with this devotional"}
                 </button>
-                <button type="button" onClick={props.chooseBibleYearRoute} className="rounded-2xl border px-4 py-4 text-sm font-black" style={{ backgroundColor: "#f3f4f6", borderColor: "#d8d5cf", color: "#111827" }}>
+                <button type="button" onClick={props.chooseBibleYearRoute} className="rounded-2xl border px-4 py-4 text-sm font-black" style={{ backgroundColor: "var(--bb-cv-light-bg, #f3f4f6)", borderColor: "#d8d5cf", color: "var(--bb-cv-ink, #111827)" }}>
                   Choose Bible in One Year instead
                 </button>
               </div>
@@ -3354,7 +3354,7 @@ function OnboardingFlow(props: {
               <p className="mx-auto mt-3 max-w-sm text-center text-sm font-semibold leading-6 text-[#667085]">
                 Save your Bible study plan and keep your progress as you continue your journey.
               </p>
-              <button type="button" onClick={props.handleOAuthSignIn} disabled={props.submitting} className="mt-5 flex w-full items-center justify-center gap-3 rounded-2xl border px-4 py-3 text-sm font-black transition hover:bg-[#fafafa] disabled:opacity-60" style={{ backgroundColor: "#ffffff", borderColor: "#d9c49e", color: "#0E1A3A" }}>
+              <button type="button" onClick={props.handleOAuthSignIn} disabled={props.submitting} className="mt-5 flex w-full items-center justify-center gap-3 rounded-2xl border px-4 py-3 text-sm font-black transition hover:bg-[#fafafa] disabled:opacity-60" style={{ backgroundColor: "var(--bb-cv-light-bg, #ffffff)", borderColor: "#d9c49e", color: "var(--bb-cv-ink, #0E1A3A)" }}>
                 <GoogleLogo />
                 <span>Sign up with Google</span>
               </button>
@@ -3366,27 +3366,27 @@ function OnboardingFlow(props: {
                 <div>
                   <div className="relative">
                     <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#667085]"><FieldIcon name="email" /></span>
-                    <input value={props.email} onChange={(event) => props.setEmail(event.target.value)} required type="email" placeholder="Email address" className="w-full rounded-2xl border py-3 pl-11 pr-4 text-sm font-bold outline-none focus:border-[#c59a4a]" style={{ backgroundColor: "#ffffff", borderColor: "#d9c49e", color: "#0E1A3A" }} />
+                    <input value={props.email} onChange={(event) => props.setEmail(event.target.value)} required type="email" placeholder="Email address" className="w-full rounded-2xl border py-3 pl-11 pr-4 text-sm font-bold outline-none focus:border-[#c59a4a]" style={{ backgroundColor: "var(--bb-cv-light-bg, #ffffff)", borderColor: "#d9c49e", color: "var(--bb-cv-ink, #0E1A3A)" }} />
                   </div>
                 </div>
                 <div>
                   <div className="relative">
                     <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#667085]"><FieldIcon name="user" /></span>
-                    <input value={props.firstName} onChange={(event) => props.setFirstName(event.target.value)} required placeholder="Full name (first and last)" className="w-full rounded-2xl border py-3 pl-11 pr-4 text-sm font-bold outline-none focus:border-[#c59a4a]" style={{ backgroundColor: "#ffffff", borderColor: showFullNameError ? "#dc2626" : "#d9c49e", color: "#0E1A3A" }} />
+                    <input value={props.firstName} onChange={(event) => props.setFirstName(event.target.value)} required placeholder="Full name (first and last)" className="w-full rounded-2xl border py-3 pl-11 pr-4 text-sm font-bold outline-none focus:border-[#c59a4a]" style={{ backgroundColor: "var(--bb-cv-light-bg, #ffffff)", borderColor: showFullNameError ? "#dc2626" : "#d9c49e", color: "var(--bb-cv-ink, #0E1A3A)" }} />
                   </div>
                   {showFullNameError ? <p className="mt-1.5 text-xs font-bold text-red-600">Please enter your full name.</p> : null}
                 </div>
                 <div className="relative">
                   <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#667085]"><FieldIcon name="lock" /></span>
-                  <input value={props.password} onChange={(event) => props.setPassword(event.target.value)} required minLength={6} type={showPassword ? "text" : "password"} placeholder="Password" className="w-full rounded-2xl border py-3 pl-11 pr-12 text-sm font-bold outline-none focus:border-[#c59a4a]" style={{ backgroundColor: "#ffffff", borderColor: "#d9c49e", color: "#0E1A3A" }} />
+                  <input value={props.password} onChange={(event) => props.setPassword(event.target.value)} required minLength={6} type={showPassword ? "text" : "password"} placeholder="Password" className="w-full rounded-2xl border py-3 pl-11 pr-12 text-sm font-bold outline-none focus:border-[#c59a4a]" style={{ backgroundColor: "var(--bb-cv-light-bg, #ffffff)", borderColor: "#d9c49e", color: "var(--bb-cv-ink, #0E1A3A)" }} />
                   <button type="button" onClick={() => setShowPassword((value) => !value)} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#667085]" aria-label={showPassword ? "Hide password" : "Show password"}>
                     <FieldIcon name="eye" />
                   </button>
                 </div>
-                <label className="rounded-2xl border border-dashed px-4 py-3 text-sm font-bold text-[#58677a]" style={{ backgroundColor: "#ffffff", borderColor: "#d9c49e" }}>
+                <label className="rounded-2xl border border-dashed px-4 py-3 text-sm font-bold text-[#58677a]" style={{ backgroundColor: "var(--bb-cv-light-bg, #ffffff)", borderColor: "#d9c49e" }}>
                   <span className="block text-sm font-black text-[#667085]">Optional profile picture</span>
                   <span className="mt-2 flex items-center gap-3">
-                    <span className="inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-black text-[#0E1A3A]" style={{ backgroundColor: "#f8f3e9", borderColor: "#eadcc2" }}>
+                    <span className="inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-black text-[#0E1A3A]" style={{ backgroundColor: "var(--bb-cv-light-bg, #f8f3e9)", borderColor: "#eadcc2" }}>
                       <FieldIcon name="upload" />
                       Choose file
                     </span>

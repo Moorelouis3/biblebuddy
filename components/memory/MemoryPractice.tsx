@@ -60,8 +60,8 @@ const primaryButton =
   "rounded-xl bg-[var(--bb-button,#2563eb)] px-5 py-3 text-base font-black text-[var(--bb-button-text,#ffffff)] transition hover:brightness-95";
 
 function answerStyle(state: "right" | "wrong" | "idle") {
-  if (state === "right") return { backgroundColor: "#BBF7D0", borderColor: "#16A34A", color: "#111827" };
-  if (state === "wrong") return { backgroundColor: "#FECACA", borderColor: "#DC2626", color: "#111827" };
+  if (state === "right") return { backgroundColor: "var(--bb-cv-done-bg, #BBF7D0)", borderColor: "#16A34A", color: "var(--bb-cv-ink, #111827)" };
+  if (state === "wrong") return { backgroundColor: "#FECACA", borderColor: "#DC2626", color: "var(--bb-cv-ink, #111827)" };
   return undefined;
 }
 

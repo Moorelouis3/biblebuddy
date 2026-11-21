@@ -338,7 +338,7 @@ const meta: any = user.user_metadata || {};
             </Link>
             <Link
               href="/bible-trivia"
-              className="block w-full bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition" style={{ color: "#374151" }}
+              className="block w-full bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition" style={{ color: "var(--bb-cv-ink, #374151)" }}
             >
               Back to Decks
             </Link>

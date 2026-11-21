@@ -16,7 +16,7 @@ export default function GlobalError({ error }: { error: Error & { digest?: strin
 
   return (
     <html lang="en">
-      <body style={{ margin: 0, fontFamily: "system-ui, sans-serif", background: "#eef4fb", color: "#111827" }}>
+      <body style={{ margin: 0, fontFamily: "system-ui, sans-serif", background: "#eef4fb", color: "var(--bb-cv-ink, #111827)" }}>
         {reloading ? null : (
           <div style={{ maxWidth: 420, margin: "0 auto", padding: "20vh 24px", textAlign: "center" }}>
             <div style={{ fontSize: 40 }}>🛠️</div>

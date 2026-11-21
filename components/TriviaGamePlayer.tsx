@@ -471,13 +471,13 @@ export default function TriviaGamePlayer({
             <div className="mt-8 space-y-3">
               <Link
                 href={`/bible-trivia/${bookSlug}`}
-                className="block rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200" style={{ color: "#1f2937" }}
+                className="block rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200" style={{ color: "var(--bb-cv-ink, #1f2937)" }}
               >
                 Back to chapters
               </Link>
               <Link
                 href={`/bible-trivia/${bookSlug}/${chapter.chapter}`}
-                className="block rounded-xl border border-gray-200 bg-white px-4 py-3 font-semibold text-gray-700 transition hover:bg-gray-50" style={{ color: "#374151" }}
+                className="block rounded-xl border border-gray-200 bg-white px-4 py-3 font-semibold text-gray-700 transition hover:bg-gray-50" style={{ color: "var(--bb-cv-ink, #374151)" }}
               >
                 Play trivia again
               </Link>
@@ -556,7 +556,7 @@ export default function TriviaGamePlayer({
               const isWrongSelection = isSelected && option.label !== currentQuestion.correctAnswer;
               const answerStyle = isRightOption
                 ? {
-                    backgroundColor: "#BBF7D0",
+                    backgroundColor: "var(--bb-cv-done-bg, #BBF7D0)",
                     borderColor: "#16A34A",
                     boxShadow: "0 0 0 2px rgba(22, 163, 74, 0.14)",
                   }

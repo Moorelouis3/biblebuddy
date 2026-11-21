@@ -173,7 +173,7 @@ export default function TopBuddiesCard({
           type="button"
           onClick={() => { setBuddies(null); loadedAt.current = 0; void load(); }}
           className="rounded-full border border-[#dbe7f4] px-3 py-1 text-xs font-black"
-          style={{ color: "#2f7fe8" }}
+          style={{ color: "var(--bb-cv-link, #2f7fe8)" }}
         >
           Try again
         </button>
@@ -219,7 +219,7 @@ export default function TopBuddiesCard({
       aria-labelledby="top-buddies-heading"
       className="bb-community-panel relative mb-3 overflow-hidden rounded-2xl border border-[#f4dcc8] shadow-sm"
       style={{
-        backgroundColor: "#fff3e6",
+        backgroundColor: "var(--bb-cv-light-bg, #fff3e6)",
         backgroundImage: "url(/home-cards/bg-trivia.jpg)",
         backgroundSize: "cover",
         backgroundPosition: "left bottom",
@@ -289,7 +289,7 @@ export default function TopBuddiesCard({
           aria-expanded={expanded}
           aria-controls="top-buddies-heading"
           className="text-sm font-black transition"
-          style={{ color: "#2f7fe8" }}
+          style={{ color: "var(--bb-cv-link, #2f7fe8)" }}
         >
           {expanded ? "Hide rankings ˄" : "View rankings ˅"}
         </button>
@@ -302,7 +302,7 @@ export default function TopBuddiesCard({
             type="button"
             onClick={() => setShowAll(true)}
             className="text-sm font-black transition"
-            style={{ color: "#2f7fe8" }}
+            style={{ color: "var(--bb-cv-link, #2f7fe8)" }}
           >
             View Top 100 →
           </button>

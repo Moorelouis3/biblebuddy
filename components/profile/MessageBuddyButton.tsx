@@ -66,7 +66,7 @@ export default function MessageBuddyButton({
         className={`profile-skin-button inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg px-4 py-1.5 text-sm font-medium transition disabled:opacity-60 ${className}`}
         // Inline, because globals.css carries unlayered colour rules that
         // outrank a utility class - see components/home/BibleLockBanner.
-        style={{ backgroundColor: "#4a9b6f", color: "#ffffff" }}
+        style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)", color: "#ffffff" }}
       >
         <svg
           className="h-4 w-4"

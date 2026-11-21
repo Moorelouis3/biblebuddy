@@ -319,7 +319,7 @@ export default function HomeScreen() {
             <div
               className="bb-cv-stat flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#f4dcc8] px-2.5 py-2.5 shadow-sm sm:gap-2.5 sm:px-4 sm:py-3"
               style={{
-                backgroundColor: "#fff3e6",
+                backgroundColor: "var(--bb-cv-light-bg, #fff3e6)",
                 backgroundImage: "url(/home-cards/bg-trivia.jpg)",
                 backgroundSize: "cover",
                 backgroundPosition: "center bottom",
@@ -345,7 +345,7 @@ export default function HomeScreen() {
             <div
               className="bb-cv-stat flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#cde9dc] px-2.5 py-2.5 shadow-sm sm:gap-2.5 sm:px-4 sm:py-3"
               style={{
-                backgroundColor: "#eefaf3",
+                backgroundColor: "var(--bb-cv-light-bg, #eefaf3)",
                 backgroundImage: "url(/home-cards/bg-scrambled.jpg)",
                 backgroundSize: "cover",
                 backgroundPosition: "center bottom",
@@ -470,7 +470,7 @@ export default function HomeScreen() {
             aria-label="Bible Trivia - test your Bible knowledge"
             className="bb-cv-card bb-cv-game relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#f4dcc8] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
             style={{
-              backgroundColor: "#fff3e6",
+              backgroundColor: "var(--bb-cv-light-bg, #fff3e6)",
               backgroundImage: "url(/home-cards/bg-trivia.jpg)",
               backgroundSize: "cover",
               backgroundPosition: "center bottom",
@@ -505,7 +505,7 @@ export default function HomeScreen() {
             aria-label="Scrambled - unscramble the verse"
             className="bb-cv-card bb-cv-game relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#cde9dc] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
             style={{
-              backgroundColor: "#eefaf3",
+              backgroundColor: "var(--bb-cv-light-bg, #eefaf3)",
               backgroundImage: "url(/home-cards/bg-scrambled.jpg)",
               backgroundSize: "cover",
               backgroundPosition: "center bottom",

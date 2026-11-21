@@ -170,7 +170,7 @@ export default function TodaysGroupStudy() {
           <div
             className="bb-cv-group relative overflow-hidden rounded-3xl border border-[#ddd6f3] p-4 shadow-sm sm:p-5"
             style={{
-              backgroundColor: "#f5f2ff",
+              backgroundColor: "var(--bb-cv-light-bg, #f5f2ff)",
               backgroundImage: "url(/home-cards/bg-journey.jpg)",
               backgroundSize: "cover",
               backgroundPosition: "left bottom",

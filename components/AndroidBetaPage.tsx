@@ -212,7 +212,7 @@ export default function AndroidBetaPage() {
             Still stuck? Email{" "}
             <a
               href="mailto:support@mybiblebuddy.net"
-              style={{ color: "#0056FD" }}
+              style={{ color: "var(--bb-cv-link, #0056FD)" }}
               className="font-black underline"
             >
               support@mybiblebuddy.net

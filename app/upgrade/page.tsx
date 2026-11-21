@@ -72,7 +72,7 @@ export default function UpgradePage() {
         </Link>
         <Link
           href="/plans"
-          className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100" style={{ color: "#374151" }}
+          className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100" style={{ color: "var(--bb-cv-ink, #374151)" }}
         >
           Browse study plans
         </Link>

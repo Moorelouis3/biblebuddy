@@ -1142,7 +1142,7 @@ export default function PublicProfilePage() {
                         onClick={handleAddBuddy}
                         disabled={buddyActionLoading}
                         className="profile-skin-button px-4 py-1.5 rounded-lg text-sm font-medium text-white transition disabled:opacity-60"
-                        style={{ backgroundColor: "#4a9b6f" }}
+                        style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
                       >
                         Add Buddy
                       </button>
@@ -1167,7 +1167,7 @@ export default function PublicProfilePage() {
                           onClick={handleAcceptRequest}
                           disabled={buddyActionLoading}
                           className="profile-skin-button px-4 py-1.5 rounded-lg text-sm font-medium text-white transition disabled:opacity-60"
-                          style={{ backgroundColor: "#4a9b6f" }}
+                          style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
                         >
                           Accept
                         </button>
@@ -1186,7 +1186,7 @@ export default function PublicProfilePage() {
                           <button
                             onClick={() => router.push(`/messages/${conversationId}`)}
                             className="profile-skin-button px-4 py-1.5 rounded-lg text-sm font-medium text-white transition"
-                            style={{ backgroundColor: "#4a9b6f" }}
+                            style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
                           >
                             Message
                           </button>
@@ -1194,7 +1194,7 @@ export default function PublicProfilePage() {
                           <button
                             onClick={() => router.push("/messages")}
                             className="profile-skin-button px-4 py-1.5 rounded-lg text-sm font-medium text-white transition"
-                            style={{ backgroundColor: "#4a9b6f" }}
+                            style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
                           >
                             Message
                           </button>
@@ -1261,7 +1261,7 @@ export default function PublicProfilePage() {
                       onClick={handleSaveMemberBadge}
                       disabled={savingBadge}
                       className="profile-skin-button rounded-xl px-4 py-2 text-sm font-semibold text-white transition disabled:opacity-60"
-                      style={{ backgroundColor: "#4a9b6f" }}
+                      style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
                     >
                       {savingBadge ? "Saving..." : "Save Badge"}
                     </button>
@@ -1750,7 +1750,7 @@ export default function PublicProfilePage() {
                     onClick={handleSaveProfile}
                     disabled={saving}
                     className="flex-1 py-2.5 rounded-xl text-sm font-semibold text-white transition disabled:opacity-60"
-                    style={{ backgroundColor: "#4a9b6f" }}
+                    style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
                   >
                     {uploadingImage ? "Uploading..." : saving ? "Saving..." : "Save"}
                   </button>
@@ -1870,7 +1870,7 @@ export default function PublicProfilePage() {
                           onClick={() => { setBuddiesPage(p as number); loadBuddiesPage(p as number); }}
                           disabled={buddiesLoadingPage}
                           className={`w-8 h-8 text-sm rounded-lg font-medium transition ${buddiesPage === p ? "text-white" : "text-gray-600 hover:bg-gray-100"}`}
-                          style={buddiesPage === p ? { backgroundColor: "#4a9b6f" } : {}}
+                          style={buddiesPage === p ? { backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" } : {}}
                         >{p}</button>
                       )
                     )}

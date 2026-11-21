@@ -144,7 +144,7 @@ export default function LevelProgressCard() {
         aria-label={`Level ${summary.level}, ${summary.levelName}. ${summary.nextLevelName ? `${summary.pointsToNextLevel.toLocaleString()} XP to the next level` : "Top level"}. Open your levels and badges.`}
         className="bb-cv-stat flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#ddd6f3] px-2.5 py-2.5 shadow-sm outline-none transition focus-visible:ring-2 focus-visible:ring-[#6d5bd0] focus-visible:ring-offset-2 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-[0.98] sm:gap-2.5 sm:px-4 sm:py-3"
         style={{
-          backgroundColor: "#f5f2ff",
+          backgroundColor: "var(--bb-cv-light-bg, #f5f2ff)",
           backgroundImage: "url(/home-cards/bg-group.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center bottom",

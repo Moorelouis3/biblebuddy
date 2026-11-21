@@ -127,7 +127,7 @@ export default function ReportProblemCard() {
           onClick={() => setIsOpen(true)}
           className="bb-cv-card relative flex w-full items-center gap-4 overflow-hidden rounded-2xl border border-[rgba(15,23,42,0.12)] p-4 text-left shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
           style={{
-            backgroundColor: "#fdf6e9",
+            backgroundColor: "var(--bb-cv-light-bg, #fdf6e9)",
             backgroundImage: "url(/verse-of-the-day/verse-bg-05-cream-gold-clouds.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "center bottom",

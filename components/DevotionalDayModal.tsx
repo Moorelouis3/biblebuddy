@@ -1155,7 +1155,7 @@ Be accurate to Scripture.`;
             type="button"
             onClick={handleMarkComplete}
             className="w-full max-w-sm px-6 py-3 rounded-lg font-semibold text-slate-950 transition shadow-sm"
-            style={{ backgroundColor: "#7BAFD4" }}
+            style={{ backgroundColor: "var(--bb-cv-action-bg, #7BAFD4)" }}
           >
             ✓ Mark Day as Complete
           </button>

@@ -330,14 +330,14 @@ export default function ProfileCompletionGate({ children }: { children: ReactNod
                   type="button"
                   onClick={() => session && void check(session.userId, session.email, session.meta)}
                   className="mt-4 w-full rounded-2xl px-5 py-3 text-sm font-black"
-                  style={{ backgroundColor: "#0056FD", color: "#ffffff" }}
+                  style={{ backgroundColor: "var(--bb-cv-primary-bg, #0056FD)", color: "var(--bb-cv-primary-text, #ffffff)" }}
                 >
                   Try again
                 </button>
               </div>
             ) : (
               <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-white p-5 text-left shadow-xl">
-                <p className="text-xs font-black uppercase tracking-[0.18em]" style={{ color: "#0056FD" }}>
+                <p className="text-xs font-black uppercase tracking-[0.18em]" style={{ color: "var(--bb-cv-link, #0056FD)" }}>
                   Complete your profile
                 </p>
                 <h2 id="bb-profile-gate-title" className="mt-2 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">
@@ -359,13 +359,13 @@ export default function ProfileCompletionGate({ children }: { children: ReactNod
                     ) : (
                       <span
                         className="grid h-24 w-24 place-items-center rounded-full border-2 border-dashed border-[#0056FD]/40 bg-[#0056FD]/5 text-2xl font-black"
-                        style={{ color: "#0056FD" }}
+                        style={{ color: "var(--bb-cv-link, #0056FD)" }}
                         aria-hidden="true"
                       >
                         {initials}
                       </span>
                     )}
-                    <span className="text-sm font-black" style={{ color: "#0056FD" }}>
+                    <span className="text-sm font-black" style={{ color: "var(--bb-cv-link, #0056FD)" }}>
                       {photoPreview ? "Change picture" : "Choose a profile picture"}
                     </span>
                     <input
@@ -421,7 +421,7 @@ export default function ProfileCompletionGate({ children }: { children: ReactNod
                     onClick={() => void save()}
                     disabled={saving}
                     className="rounded-2xl px-5 py-3 text-sm font-black disabled:cursor-wait disabled:opacity-70"
-                    style={{ backgroundColor: "#0056FD", color: "#ffffff" }}
+                    style={{ backgroundColor: "var(--bb-cv-primary-bg, #0056FD)", color: "var(--bb-cv-primary-text, #ffffff)" }}
                   >
                     {saving ? "Saving..." : "Save & continue"}
                   </button>

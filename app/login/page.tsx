@@ -247,7 +247,7 @@ export default function LoginPage() {
             onClick={() => void handleOAuthSignIn("google")}
             disabled={loading}
             className="mt-7 flex min-h-[54px] w-full items-center justify-center gap-3 rounded-[14px] border px-4 text-[15px] font-black transition active:scale-[0.99] disabled:opacity-60"
-            style={{ backgroundColor: "#ffffff", borderColor: "#DCE1E8", color: "#1F2937" }}
+            style={{ backgroundColor: "var(--bb-cv-light-bg, #ffffff)", borderColor: "#DCE1E8", color: "#1F2937" }}
           >
             <GoogleLogo />
             <span>Continue with Google</span>
@@ -284,7 +284,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full rounded-[14px] border px-4 py-3.5 text-[15px] font-bold outline-none transition focus:border-[#102D4D]"
-                style={{ backgroundColor: "#FFFFFF", borderColor: "#E3DACA", color: "#102D4D" }}
+                style={{ backgroundColor: "var(--bb-cv-light-bg, #FFFFFF)", borderColor: "#E3DACA", color: "#102D4D" }}
                 placeholder="you@example.com"
               />
             </div>
@@ -299,7 +299,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full rounded-[14px] border px-4 py-3.5 text-[15px] font-bold outline-none transition focus:border-[#102D4D]"
-                style={{ backgroundColor: "#FFFFFF", borderColor: "#E3DACA", color: "#102D4D" }}
+                style={{ backgroundColor: "var(--bb-cv-light-bg, #FFFFFF)", borderColor: "#E3DACA", color: "#102D4D" }}
               />
               <div className="mt-2 text-right">
                 <Link

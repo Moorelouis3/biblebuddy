@@ -13050,7 +13050,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         const cardBlob = await toBlob(bibleProgressShareCardRef.current, {
           cacheBust: true,
           pixelRatio: 2,
-          backgroundColor: "#f8fbff",
+          backgroundColor: "var(--bb-cv-light-bg, #f8fbff)",
         });
 
         if (!cardBlob) {

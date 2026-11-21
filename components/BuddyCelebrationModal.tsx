@@ -12,24 +12,24 @@ function avatarColor(uid: string): string {
 
 // Predefined confetti pieces (stable, no Math.random in render)
 const CONFETTI = [
-  { left: 4,  color: "#4a9b6f", delay: 0.0, size: 10, rotate: 45  },
+  { left: 4,  color: "var(--bb-cv-done-ink, #4a9b6f)", delay: 0.0, size: 10, rotate: 45  },
   { left: 10, color: "#5b8dd9", delay: 0.2, size: 8,  rotate: 20  },
-  { left: 17, color: "#d45f7a", delay: 0.1, size: 12, rotate: 60  },
+  { left: 17, color: "var(--bb-cv-accent-ink, #d45f7a)", delay: 0.1, size: 12, rotate: 60  },
   { left: 24, color: "#c97b3e", delay: 0.4, size: 8,  rotate: 10  },
   { left: 31, color: "#9b6bb5", delay: 0.0, size: 10, rotate: 80  },
-  { left: 38, color: "#4a9b6f", delay: 0.3, size: 12, rotate: 30  },
+  { left: 38, color: "var(--bb-cv-done-ink, #4a9b6f)", delay: 0.3, size: 12, rotate: 30  },
   { left: 45, color: "#3ea8a8", delay: 0.1, size: 8,  rotate: 55  },
-  { left: 52, color: "#d45f7a", delay: 0.5, size: 10, rotate: 15  },
+  { left: 52, color: "var(--bb-cv-accent-ink, #d45f7a)", delay: 0.5, size: 10, rotate: 15  },
   { left: 59, color: "#c97b3e", delay: 0.2, size: 12, rotate: 70  },
   { left: 66, color: "#9b6bb5", delay: 0.0, size: 8,  rotate: 40  },
-  { left: 73, color: "#4a9b6f", delay: 0.4, size: 10, rotate: 25  },
+  { left: 73, color: "var(--bb-cv-done-ink, #4a9b6f)", delay: 0.4, size: 10, rotate: 25  },
   { left: 80, color: "#5b8dd9", delay: 0.1, size: 12, rotate: 65  },
-  { left: 87, color: "#d45f7a", delay: 0.3, size: 8,  rotate: 50  },
+  { left: 87, color: "var(--bb-cv-accent-ink, #d45f7a)", delay: 0.3, size: 8,  rotate: 50  },
   { left: 93, color: "#3ea8a8", delay: 0.6, size: 10, rotate: 35  },
   { left: 7,  color: "#9b6bb5", delay: 0.5, size: 8,  rotate: 85  },
   { left: 20, color: "#3ea8a8", delay: 0.2, size: 12, rotate: 20  },
-  { left: 50, color: "#4a9b6f", delay: 0.4, size: 8,  rotate: 75  },
-  { left: 70, color: "#d45f7a", delay: 0.1, size: 10, rotate: 45  },
+  { left: 50, color: "var(--bb-cv-done-ink, #4a9b6f)", delay: 0.4, size: 8,  rotate: 75  },
+  { left: 70, color: "var(--bb-cv-accent-ink, #d45f7a)", delay: 0.1, size: 10, rotate: 45  },
   { left: 84, color: "#c97b3e", delay: 0.3, size: 12, rotate: 55  },
   { left: 96, color: "#5b8dd9", delay: 0.0, size: 8,  rotate: 30  },
 ];
@@ -164,7 +164,7 @@ export function BuddyCelebrationModal({ me, buddy, onClose }: Props) {
           <button
             onClick={onClose}
             className="w-full py-3 rounded-xl text-sm font-bold text-white transition hover:opacity-90"
-            style={{ backgroundColor: "#4a9b6f" }}
+            style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
           >
             Let's Go! 🙌
           </button>

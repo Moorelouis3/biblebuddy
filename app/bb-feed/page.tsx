@@ -689,7 +689,7 @@ function PostComposer({ userId, userProfile, onPosted }: {
               onClick={handleSubmit}
               disabled={!canPost || submitting}
               className="px-4 py-2 rounded-lg text-xs font-semibold text-white transition disabled:opacity-40"
-              style={{ backgroundColor: "#4a9b6f" }}
+              style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
             >
               {submitting && tab === "video" && uploadProgress !== null
                 ? `Uploading ${uploadProgress}%`
@@ -702,7 +702,7 @@ function PostComposer({ userId, userProfile, onPosted }: {
             <div className="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
               <div
                 className="h-full rounded-full transition-all duration-300"
-                style={{ width: `${uploadProgress}%`, backgroundColor: "#4a9b6f" }}
+                style={{ width: `${uploadProgress}%`, backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
               />
             </div>
             <p className="text-xs text-gray-400 mt-1 text-center">Uploading to Bible Buddy Feed… {uploadProgress}%</p>
@@ -1180,7 +1180,7 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
           onClick={() => submitComment(newComment, null)}
           disabled={!newComment.trim() || submitting}
           className="text-xs font-semibold text-white px-3 py-2 rounded-xl transition disabled:opacity-40 flex-shrink-0"
-          style={{ backgroundColor: "#4a9b6f" }}
+          style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
         >
           Post
         </button>
@@ -1411,7 +1411,7 @@ function CommentRow({
               onClick={() => ctx.submitComment(ctx.replyText, indent ? comment.parent_comment_id ?? comment.id : comment.id)}
               disabled={!ctx.replyText.trim() || ctx.submitting}
               className="text-xs font-semibold text-white px-3 py-2 rounded-xl transition disabled:opacity-40 flex-shrink-0"
-              style={{ backgroundColor: "#4a9b6f" }}
+              style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
             >
               Reply
             </button>
@@ -1634,7 +1634,7 @@ function renderWithLinks(text: string, keyPrefix: string): ReactNode[] {
           key={`${keyPrefix}-${match.index}`}
           href={path}
           className="font-bold underline"
-          style={{ color: "#2f7fe8" }}
+          style={{ color: "var(--bb-cv-link, #2f7fe8)" }}
         >
           {label}
         </Link>
@@ -1645,7 +1645,7 @@ function renderWithLinks(text: string, keyPrefix: string): ReactNode[] {
           target="_blank"
           rel="noopener noreferrer"
           className="font-bold underline"
-          style={{ color: "#2f7fe8" }}
+          style={{ color: "var(--bb-cv-link, #2f7fe8)" }}
         >
           {label}
         </a>
@@ -1737,7 +1737,7 @@ function PostBody({ content }: { content: string }) {
           className="mt-1 text-sm font-bold"
           // Inline, because globals.css carries unlayered colour rules that
           // outrank a utility class - see components/home/BibleLockBanner.
-          style={{ color: "#2f7fe8" }}
+          style={{ color: "var(--bb-cv-link, #2f7fe8)" }}
         >
           {expanded ? "Show less" : "Read more"}
         </button>
@@ -2143,7 +2143,7 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
                 </span>
               ))}
             </span>
-            <span className="text-sm font-semibold" style={{ color: "#2f7fe8" }}>
+            <span className="text-sm font-semibold" style={{ color: "var(--bb-cv-link, #2f7fe8)" }}>
               New comment {timeAgo(preview.lastAt)}
             </span>
           </button>
@@ -2292,7 +2292,7 @@ function FeedUpgradeCard({ compact = false }: { compact?: boolean }) {
       <div className="mt-3">
         <span
           className="inline-flex rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
-          style={{ backgroundColor: "#4a9b6f" }}
+          style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
         >
           Upgrade to Pro
         </span>
@@ -3301,7 +3301,7 @@ export default function BbFeedPage() {
               : "Try All posts."}
           </p>
           {postFilter === "all" ? (
-            <button type="button" onClick={() => setTab("community")} className="inline-block px-4 py-2 rounded-xl text-sm font-semibold text-white transition hover:opacity-90" style={{ backgroundColor: "#4a9b6f" }}>
+            <button type="button" onClick={() => setTab("community")} className="inline-block px-4 py-2 rounded-xl text-sm font-semibold text-white transition hover:opacity-90" style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}>
               Find People
             </button>
           ) : null}
@@ -3478,7 +3478,7 @@ export default function BbFeedPage() {
             type="button"
             onClick={() => setTab("community")}
             className="mt-4 inline-flex min-h-[40px] items-center rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
-            style={{ backgroundColor: "#4a9b6f" }}
+            style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
           >
             Go to Community
           </button>
@@ -3571,7 +3571,7 @@ export default function BbFeedPage() {
         <div
           className="bb-cv-hero relative mb-3 overflow-hidden rounded-3xl border border-[#ddd6f3] p-4 shadow-sm sm:p-5"
           style={{
-            backgroundColor: "#f5f2ff",
+            backgroundColor: "var(--bb-cv-light-bg, #f5f2ff)",
             backgroundImage: "url(/home-cards/bg-journey.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "left bottom",

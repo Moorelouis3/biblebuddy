@@ -2617,7 +2617,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
                     onClick={handleShareSubmit}
                     disabled={shareSubmitting}
                     className="px-4 py-2 rounded-xl text-xs font-bold text-white transition disabled:opacity-40"
-                    style={{ backgroundColor: "#4a9b6f" }}
+                    style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
                   >
                     {shareSubmitting ? "Sharing..." : "Share"}
                   </button>

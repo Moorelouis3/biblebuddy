@@ -816,7 +816,7 @@ export default function CommentSection({
                             onClick={() => void handleSaveCommentEdit(c)}
                             disabled={savingCommentId === c.id || !editingCommentText.trim()}
                             className="rounded-xl px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50"
-                            style={{ backgroundColor: "#5a9a5a" }}
+                            style={{ backgroundColor: "var(--bb-cv-action-bg, #5a9a5a)" }}
                           >
                             {savingCommentId === c.id ? "Saving..." : "Save"}
                           </button>
@@ -998,7 +998,7 @@ export default function CommentSection({
               <button
                 type="submit"
                 className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full transition disabled:opacity-40"
-                style={{ backgroundColor: "#4a9b6f" }}
+                style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
                 disabled={loading || !content.trim()}
                 aria-label={submitButtonText}
               >

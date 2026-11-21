@@ -714,3 +714,19 @@ html[data-bb-cover] .bb-cv-gold {
   color: var(--bb-cover-warm-text) !important;
 }
 html[data-bb-cover] { --bb-pop-button-text: var(--bb-cover-warm-text); }
+
+/* Inline style colours (style={{ backgroundColor: "var(--bb-cv-*, #hex)" }}).
+   The class remap cannot reach a style attribute, so those colours read these
+   variables; they exist only under a cover, and without one every value falls
+   back to the original hex. */
+html[data-bb-cover] {
+  --bb-cv-light-bg: var(--bb-cover-tile);
+  --bb-cv-action-bg: var(--bb-cover-tile-strong);
+  --bb-cv-done-bg: var(--bb-cover-done-soft);
+  --bb-cv-primary-bg: var(--bb-cover-warm);
+  --bb-cv-primary-text: var(--bb-cover-warm-text);
+  --bb-cv-ink: var(--bb-text-primary);
+  --bb-cv-link: var(--bb-cover-cool);
+  --bb-cv-done-ink: var(--bb-cover-done);
+  --bb-cv-accent-ink: var(--bb-cover-cool);
+}

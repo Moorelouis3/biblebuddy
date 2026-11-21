@@ -84,7 +84,7 @@ const ResetTitle = ({ title, description }: { title: string; description: string
 );
 
 const inputClass = "w-full rounded-[14px] border px-4 py-3.5 text-[15px] font-bold outline-none transition focus:border-[#102D4D]";
-const inputStyle = { backgroundColor: "#FFFFFF", borderColor: "#E3DACA", color: "#102D4D" };
+const inputStyle = { backgroundColor: "var(--bb-cv-light-bg, #FFFFFF)", borderColor: "#E3DACA", color: "#102D4D" };
 const primaryButtonClass = "w-full rounded-2xl px-4 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(14,26,58,0.18)] transition hover:-translate-y-0.5 disabled:opacity-60";
 
 function getPasswordResetRedirectUrl() {

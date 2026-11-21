@@ -189,7 +189,7 @@ const MORE_COVERS: CoverSpec[] = [
     id: "dark", name: "Dark", art: null, motion: "none",
     base: "#0b1017", readerBg: "#121821", panelRgb: "22, 29, 40", frameRgb: "148, 163, 184",
     text: "#F1F5F9", secondary: "#CBD5E1", muted: "#94A3B8",
-    warm: "#6EA4FF", warmText: "#06142E", cool: "#93C5FD", done: "#7DB894", doneRgb: "40, 92, 72",
+    warm: "#6EA4FF", warmText: "#06142E", cool: "#93C5FD", done: "#7FB0FF", doneRgb: "30, 58, 110",
   },
   {
     id: "midnight-garden", motion: "fireflies", name: "Midnight Garden", art: "midnight-garden",
@@ -201,55 +201,55 @@ const MORE_COVERS: CoverSpec[] = [
     id: "lavender-prayer", motion: "stars", name: "Lavender Prayer", art: "lavender-prayer",
     base: "#0e0820", readerBg: "#160f2b", panelRgb: "26, 16, 50", frameRgb: "204, 180, 255",
     text: "#F6F2FF", secondary: "#D1C3F0", muted: "#A293C6",
-    warm: "#F4C27E", warmText: "#2B1A06", cool: "#C9B3FF", done: "#8FC2A0", doneRgb: "50, 92, 72",
+    warm: "#F4C27E", warmText: "#2B1A06", cool: "#C9B3FF", done: "#E9C98A", doneRgb: "92, 70, 34",
   },
   {
     id: "ruby-village", motion: "embers", name: "Ruby Village", art: "ruby-village",
     base: "#160405", readerBg: "#1d0a0b", panelRgb: "36, 10, 12", frameRgb: "255, 176, 156",
     text: "#FFF4F0", secondary: "#EBC4BA", muted: "#BC948A",
-    warm: "#FFB45E", warmText: "#2E1500", cool: "#F2B8A8", done: "#9CC49A", doneRgb: "58, 92, 58",
+    warm: "#FFB45E", warmText: "#2E1500", cool: "#F2B8A8", done: "#F2C27A", doneRgb: "110, 64, 22",
   },
   {
     id: "blue-storm", motion: "lightning", name: "Blue Storm", art: "blue-storm",
     base: "#03081a", readerBg: "#0a1226", panelRgb: "8, 16, 40", frameRgb: "128, 172, 255",
     text: "#F1F6FF", secondary: "#B6C9EE", muted: "#8197C2",
-    warm: "#CFE4FF", warmText: "#06142E", cool: "#8FB8FF", done: "#7DB894", doneRgb: "40, 92, 72",
+    warm: "#CFE4FF", warmText: "#06142E", cool: "#8FB8FF", done: "#A8D8FF", doneRgb: "30, 70, 120",
   },
   {
     id: "carolina-coastline", motion: "beam", name: "Carolina Coast", art: "carolina-coastline",
     base: "#050e1c", readerBg: "#0c1828", panelRgb: "8, 20, 40", frameRgb: "150, 190, 235",
     text: "#F3F7FC", secondary: "#B8CBE4", muted: "#8DA3C0",
-    warm: "#F6A65E", warmText: "#2C1300", cool: "#9CC6F0", done: "#7DB894", doneRgb: "40, 92, 72",
+    warm: "#F6A65E", warmText: "#2C1300", cool: "#9CC6F0", done: "#F3B77A", doneRgb: "104, 60, 26",
   },
   {
     id: "angel-wings", motion: "rays", name: "Angel Wings", art: "angel-wings",
     base: "#0a1834", readerBg: "#10203f", panelRgb: "14, 32, 68", frameRgb: "222, 236, 255",
     text: "#F6FAFF", secondary: "#C8D9F2", muted: "#97ACCB",
-    warm: "#FFDC86", warmText: "#2A1D00", cool: "#D6E6FF", done: "#8CC4A2", doneRgb: "44, 96, 76",
+    warm: "#FFDC86", warmText: "#2A1D00", cool: "#D6E6FF", done: "#FFE6A0", doneRgb: "100, 84, 36",
   },
   {
     id: "desert-dawn", motion: "sand", name: "Desert Dawn", art: "desert-dawn",
     base: "#0b0805", readerBg: "#16110b", panelRgb: "26, 18, 10", frameRgb: "240, 204, 150",
     text: "#FBF5EC", secondary: "#E2CFAE", muted: "#B09B7C",
-    warm: "#F5B24E", warmText: "#2A1700", cool: "#E6CFA6", done: "#9CBE8A", doneRgb: "60, 90, 50",
+    warm: "#F5B24E", warmText: "#2A1700", cool: "#E6CFA6", done: "#E8C98E", doneRgb: "96, 72, 34",
   },
   {
     id: "slow-mornings", motion: "rain", name: "Slow Mornings", art: "slow-mornings",
     base: "#120b07", readerBg: "#1a120c", panelRgb: "32, 21, 13", frameRgb: "240, 204, 158",
     text: "#FCF6EE", secondary: "#E2CDAE", muted: "#AE987D",
-    warm: "#F2B866", warmText: "#2B1700", cool: "#E9D4B5", done: "#9DBE8C", doneRgb: "62, 90, 52",
+    warm: "#F2B866", warmText: "#2B1700", cool: "#E9D4B5", done: "#EBCB95", doneRgb: "96, 70, 36",
   },
   {
     id: "morning-mercy", motion: "petals", name: "Morning Mercy", art: "morning-mercy",
     base: "#241310", readerBg: "#2a1814", panelRgb: "46, 25, 20", frameRgb: "255, 206, 178",
     text: "#FFF6F0", secondary: "#F0CDBE", muted: "#C49F90",
-    warm: "#FFC46B", warmText: "#2C1800", cool: "#FFCFB8", done: "#A2C49A", doneRgb: "64, 94, 58",
+    warm: "#FFC46B", warmText: "#2C1800", cool: "#FFCFB8", done: "#F6C9A0", doneRgb: "110, 66, 44",
   },
   {
     id: "mount-sinai", motion: "fire", name: "Mount Sinai", art: "mount-sinai",
     base: "#060403", readerBg: "#120d09", panelRgb: "18, 12, 8", frameRgb: "255, 184, 116",
     text: "#FDF5EC", secondary: "#DCC5A8", muted: "#A6917A",
-    warm: "#FFA94D", warmText: "#2C1300", cool: "#E2C9A8", done: "#9CBE8A", doneRgb: "60, 90, 50",
+    warm: "#FFA94D", warmText: "#2C1300", cool: "#E2C9A8", done: "#F2BE7A", doneRgb: "104, 62, 24",
   },
 ];
 
@@ -316,7 +316,7 @@ export const BIBLE_COVERS: Record<BibleCoverId, BibleCover> = {
 export const COVER_EXCLUDED_EXACT = [
   "/", "/app", "/login", "/signup", "/reset-password", "/privacy", "/terms",
   "/community-guidelines", "/faq", "/unsubscribe", "/features", "/how-it-works",
-  "/android", "/updates", "/ambassador",
+  "/android", "/updates", "/ambassador", "/bible-in-one-year",
 ];
 export const COVER_EXCLUDED_PREFIXES = ["/blog", "/r"];
 

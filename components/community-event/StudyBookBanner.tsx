@@ -114,8 +114,8 @@ export default function StudyBookBanner({ eventSlug }: { eventSlug: string }) {
         target="_blank"
         rel="noopener noreferrer"
         onClick={track}
-        className="shrink-0 rounded-lg px-3 py-2 text-xs font-black text-[#1A1205] transition hover:brightness-95"
-        style={{ backgroundColor: "#FFB43D" }}
+        className="bb-cv-fp-main shrink-0 rounded-lg px-3 py-2 text-xs font-black text-[#1A1205] transition hover:brightness-95"
+        style={{ backgroundColor: "var(--bb-cv-primary-bg, #FFB43D)" }}
       >
         Buy on Amazon
       </a>

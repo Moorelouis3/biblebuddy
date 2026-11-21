@@ -305,7 +305,7 @@ export default function LevelsPage() {
               <LevelRing level={summary.level} size={84} progressPercent={atTop ? undefined : summary.progressPercent}>
                 <span
                   className="flex h-full w-full items-center justify-center rounded-full text-2xl font-black text-white"
-                  style={{ backgroundColor: tier?.coreColor ?? "#334155" }}
+                  style={{ backgroundColor: `var(--bb-cv-action-bg, ${tier?.coreColor ?? "#334155"})` }}
                 >
                   {summary.level}
                 </span>
@@ -446,7 +446,7 @@ export default function LevelsPage() {
               >
                 <span
                   className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-black text-white"
-                  style={{ backgroundColor: state === "ahead" ? "#94a3b8" : defTier.coreColor }}
+                  style={{ backgroundColor: `var(--bb-cv-action-bg, ${state === "ahead" ? "#94a3b8" : defTier.coreColor})` }}
                   aria-hidden
                 >
                   {state === "done" ? "✓" : def.level}

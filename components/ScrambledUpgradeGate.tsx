@@ -122,7 +122,7 @@ export default function ScrambledUpgradeGate({
             </Link>
             <Link
               href="/bible-study-games/scrambled/books"
-              className="inline-flex items-center justify-center rounded-full border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-100" style={{ color: "#374151" }}
+              className="inline-flex items-center justify-center rounded-full border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-100" style={{ color: "var(--bb-cv-ink, #374151)" }}
             >
               Back to books
             </Link>
