@@ -100,25 +100,31 @@ export default function StudyBookBanner({ eventSlug }: { eventSlug: string }) {
   };
 
   return (
+    // Bigger, with a gently pulsing button (Louis, 2026-11-21: "the book
+    // section can be bigger and the button can be like dancing or pulsing").
+    // Still one strip: cover, a line, one button.
     <div
       aria-label={`${book.title}, the printed book`}
-      className="flex items-center gap-3 rounded-xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-3 py-2.5"
+      className="flex items-center gap-4 rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] p-4"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={book.cover} alt="" className="h-14 w-auto shrink-0 rounded-[3px] shadow-sm" />
-      <p className="min-w-0 flex-1 text-xs font-semibold leading-snug text-[var(--bb-text-secondary,#4b5563)]">
-        Prefer a printed copy? Optional. The study is free here.
-      </p>
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={track}
-        className="bb-cv-fp-main shrink-0 rounded-lg px-3 py-2 text-xs font-black text-[#1A1205] transition hover:brightness-95"
-        style={{ backgroundColor: "var(--bb-cv-primary-bg, #FFB43D)" }}
-      >
-        Buy on Amazon
-      </a>
+      <img src={book.cover} alt="" className="h-28 w-auto shrink-0 rounded-[4px] shadow-md" />
+      <div className="min-w-0 flex-1">
+        <p className="text-[15px] font-black leading-snug text-[var(--bb-text-primary,#111827)]">Get the printed book</p>
+        <p className="mt-0.5 text-xs font-semibold leading-snug text-[var(--bb-text-secondary,#4b5563)]">
+          Optional. The study is free here.
+        </p>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={track}
+          className="bb-cv-fp-main bb-pulse-cta relative mt-3 inline-flex items-center rounded-xl px-4 py-2.5 text-sm font-black text-[#1A1205] transition hover:brightness-95"
+          style={{ backgroundColor: "var(--bb-cv-primary-bg, #FFB43D)" }}
+        >
+          Buy on Amazon →
+        </a>
+      </div>
     </div>
   );
 }

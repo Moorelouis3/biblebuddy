@@ -5293,3 +5293,35 @@ body.bb-modal-scroll-locked {
   .bb-levelup-shield { animation: none; opacity: 1; transform: none; }
   .bb-levelup-ribbon::after { animation: none; display: none; }
 }
+
+/* A button that gently pulses to be noticed (StudyBookBanner's Buy on Amazon,
+   2026-11-21). Transform and opacity only: the button breathes, and a ring
+   of its own colour swells and fades behind it. Still for reduced motion. */
+.bb-pulse-cta {
+  animation: bb-pulse-cta 2.4s ease-in-out infinite;
+  will-change: transform;
+}
+.bb-pulse-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  z-index: -1;
+  animation: bb-pulse-ring 2.4s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes bb-pulse-cta {
+  0%, 100% { transform: scale(1); }
+  12% { transform: scale(1.06); }
+  24% { transform: scale(0.98); }
+  36% { transform: scale(1.03); }
+  48% { transform: scale(1); }
+}
+@keyframes bb-pulse-ring {
+  0% { transform: scale(1); opacity: 0.55; }
+  70%, 100% { transform: scale(1.35); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bb-pulse-cta, .bb-pulse-cta::after { animation: none; }
+}

@@ -68,6 +68,36 @@ function firstName(name: string) {
   return (name || "Buddy").trim().split(/\s+/)[0];
 }
 
+/**
+ * A study intro: a blank line starts a paragraph, and the lines under a
+ * paragraph's first line become an emoji list (Louis, 2026-11-21). An intro
+ * written as one paragraph renders exactly as before.
+ */
+function IntroText({ text }: { text: string }) {
+  const blocks = text
+    .split(/\n\s*\n/)
+    .map((block) => block.split("\n").filter((line) => line.trim()))
+    .filter((lines) => lines.length);
+  return (
+    <div className="flex flex-col gap-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+      {blocks.map(([first, ...rest], index) => (
+        <div key={index}>
+          <p>{first}</p>
+          {rest.length ? (
+            <ul className="mt-2 flex flex-col gap-1.5">
+              {rest.map((line) => (
+                <li key={line} className="rounded-xl bg-[var(--bb-surface-soft,#f4f7fc)] px-3 py-2 font-bold text-[var(--bb-text-primary,#111827)]">
+                  {line}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function CommunityEventPage() {
   const params = useParams();
   const router = useRouter();
@@ -419,9 +449,7 @@ export default function CommunityEventPage() {
         </header>
       )}
 
-      <p className="text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-        {event.intro}
-      </p>
+      <IntroText text={event.intro} />
 
       {/* The printed book, near the top in every phase (Louis, 2026-11-15:
           on the signup page before the study starts, and still at the top

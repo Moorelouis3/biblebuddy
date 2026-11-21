@@ -153,8 +153,26 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     countdownSub: "A 30-day devotional · Starting December 1",
     liveSub: "Day {day} of Genesis 9-25",
     evergreenSub: "Follow Abraham from the call to the promise, one day at a time.",
-    intro:
-      "This is not a character study about Abraham. It is a study about obedience. Walk through Genesis 9 to 25 with Bible Buddies around the world - the world starting over after the flood, the call Abram answered, the years he waited, the covenant God made under the stars, the mistakes he made on the way, the son who came at last, and the mountain where the Lord provided. A new day opens every day from the 1st to the 30th of December. Join whenever you like and study each day when it suits you, then meet the community in the daily discussion.",
+    // Short paragraphs and an emoji list (Louis, 2026-11-21: "breaks
+    // paragraphs not one big one"). A blank line starts a paragraph; lines
+    // under a paragraph's first line become its list. See IntroText on
+    // app/events/[slug]/page.tsx.
+    intro: [
+      "This is not a character study about Abraham. It is a study about obedience.",
+      "",
+      "Walk through Genesis 9 to 25 with Bible Buddies around the world:",
+      "🌊 The world starting over after the flood",
+      "📣 The call Abram answered",
+      "⏳ The years he waited",
+      "✨ The covenant God made under the stars",
+      "🪨 The mistakes he made on the way",
+      "👶 The son who came at last",
+      "⛰️ The mountain where the Lord provided",
+      "",
+      "📅 A new day opens every day from 1 to 30 December. Join whenever you like and study each day when it suits you.",
+      "",
+      "💬 Then meet the community in the daily discussion.",
+    ].join("\n"),
     howItWorks: [
       // Thirty days over seventeen chapters, so this study paces by passage.
       "A new devotional unlocks each day. Read or listen, read that day's passage in Genesis, take the trivia, and answer the daily discussion question—whenever you have time.",
