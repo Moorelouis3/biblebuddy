@@ -33,6 +33,21 @@ import StreakFlameEmoji from "./StreakFlameEmoji";
 import LevelProgressCard from "./LevelProgressCard";
 import BibleReferenceCard from "./BibleReferenceCard";
 import { updateWidgets } from "../lib/nativeWidgets";
+import HomeWidgetBoard from "./home/HomeWidgetBoard";
+import {
+  AskLilLouisWidget,
+  BibleInOneYearWidget,
+  BuddiesWidget,
+  ContinueReadingWidget,
+  GroupCountdownWidget,
+  MessagesWidget,
+  PrayerRequestsWidget,
+  SavedVersesWidget,
+  StudyGuideWidget,
+  StudyNotesWidget,
+} from "./home/HomeExtraWidgets";
+import { useHomeLayout } from "../lib/homeLayoutStore";
+import type { HomeWidget } from "../lib/homeWidgets";
 
 /** Chapters in the Protestant canon, so progress is a real fraction. */
 const TOTAL_BIBLE_CHAPTERS = 1189;
@@ -97,6 +112,18 @@ function BibleProgressRing({ percent }: { percent: number }) {
 
 export default function HomeScreen() {
   const { userId } = useSupabaseUser();
+  const homeLayout = useHomeLayout(userId ?? null);
+  const [editingHome, setEditingHome] = useState(false);
+  // ?edit=1 (the "Make Home yours" popup's button) opens Home in edit mode,
+  // then drops the parameter so a reload does not reopen it.
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (url.searchParams.get("edit") !== "1") return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setEditingHome(true);
+    url.searchParams.delete("edit");
+    window.history.replaceState(window.history.state, "", url.pathname + (url.search || "") + url.hash);
+  }, []);
   const [stats, setStats] = useState<HomeStats>({
     loaded: false,
     streak: null,
@@ -273,24 +300,29 @@ export default function HomeScreen() {
 
   // Bottom-card impressions, fired once when that part of the page is
   // actually scrolled into view - a render alone is not a view.
-  const knowledgeSectionRef = useRef<HTMLElement | null>(null);
-  const impressionsSent = useRef(false);
+  // The games are separate widgets now, anywhere on the board (or not on it
+  // at all), so each game widget reports its own impression when it is seen.
+  const impressionsSent = useRef(new Set<string>());
   useEffect(() => {
-    const target = knowledgeSectionRef.current;
-    if (!target || typeof IntersectionObserver === "undefined") return;
+    if (typeof IntersectionObserver === "undefined") return;
+    const events: Record<string, string> = {
+      game_trivia: "home_trivia_impression",
+      game_scrambled: "home_scrambled_impression",
+      game_word_search: "home_word_search_impression",
+      game_memory: "home_memory_impression",
+    };
     const observer = new IntersectionObserver((entries) => {
-      if (!entries.some((entry) => entry.isIntersecting) || impressionsSent.current) return;
-      impressionsSent.current = true;
-      trackHomeEvent("home_trivia_impression", {});
-      trackHomeEvent("home_scrambled_impression", {});
-      trackHomeEvent("home_word_search_impression", {});
-      trackHomeEvent("home_memory_impression", {});
-      trackHomeEvent("home_group_impression", { postsToday: group.postsToday });
-      observer.disconnect();
+      for (const entry of entries) {
+        const kind = (entry.target as HTMLElement).dataset.widgetKind || "";
+        if (!entry.isIntersecting || !events[kind] || impressionsSent.current.has(kind)) continue;
+        impressionsSent.current.add(kind);
+        trackHomeEvent(events[kind] as Parameters<typeof trackHomeEvent>[0], {});
+        observer.unobserve(entry.target);
+      }
     });
-    observer.observe(target);
+    document.querySelectorAll('[data-widget-kind^="game_"]').forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [group.postsToday]);
+  }, [homeLayout.layout]);
 
 
   function openPlanDay(source: "home_continue_plan_click" | "home_nearby_day_click", day: number) {
@@ -298,22 +330,17 @@ export default function HomeScreen() {
     if (userId) recordNewUser(userId, "plan_day_opened");
   }
 
-  return (
-    // pb stays small: AppShell already reserves the bottom bar's height and
-    // renders the Report a Problem card right below this - pb-28 left a big
-    // hole between the group card and the reporter (Louis, 2026-09-03).
-    <div className="mx-auto flex w-full max-w-[960px] flex-col gap-6 px-4 pb-2 pt-5">
-      {/* 1-2. Greeting left, compact stat cards right */}
-      <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-black text-[var(--bb-text-primary,#111827)] sm:text-3xl">
-            {greeting}, {greetingName}
-          </h1>
-          <p className="mt-1 text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">
-            Let&apos;s grow closer to God today.
-          </p>
-        </div>
-        <div className="grid grid-cols-3 gap-2 sm:w-auto sm:shrink-0 sm:gap-3">
+  /**
+   * Each widget on the board (components/home/HomeWidgetBoard.tsx). The
+   * dashboard's own sections are rendered here exactly as they were before
+   * widgets, so the default Home looks the same; the new widgets live in
+   * components/home/HomeExtraWidgets.tsx.
+   */
+  function renderWidget(widget: HomeWidget) {
+    switch (widget.kind) {
+      case "streak":
+        return (
+          <>
           {stats.streak !== null ? (
             // Peach, same family as the Bible Trivia card below
             <div
@@ -340,6 +367,11 @@ export default function HomeScreen() {
           ) : !stats.loaded && userId ? (
             <div className="h-[64px] min-w-0 animate-pulse rounded-2xl bg-[var(--bb-surface-soft,#eef2f7)]" />
           ) : null}
+          </>
+        );
+      case "bible_progress":
+        return (
+          <>
           {biblePercent !== null ? (
             // Mint, same family as the Scrambled card below
             <div
@@ -361,53 +393,21 @@ export default function HomeScreen() {
           ) : !stats.loaded && userId ? (
             <div className="h-[64px] min-w-0 animate-pulse rounded-2xl bg-[var(--bb-surface-soft,#eef2f7)]" />
           ) : null}
-          {/* Points & levels relaunch (2026-09-05): purple level card, same
-              family as the two beside it. The level-up celebration modal
-              lives inside this component too. */}
-          <LevelProgressCard />
-        </div>
-      </header>
-
-      {/* The page reads: verse, bookshelf, TV, Quick Reads (Louis,
-          2026-10-18). The verse led until this morning, the shelf took the
-          front for a few hours, and this puts it back - one short thing to
-          read before the shelf of long ones.
-
-          Today's Group Study sits directly under the shelf (below). */}
-      <VerseOfTheDayCard userId={userId} />
-
-      <YourBookshelf
-        userId={userId}
-        planDay={stats.planDay}
-        planCompletedDays={completedDays}
-      />
-
-      {/* Today's Group Study, directly under the bookshelf (Louis,
-          2026-11-15). The shelf introduces the study the group is doing; this
-          is the same study's reading and discussion for today. It was at the
-          bottom above the games from 2026-10-18 until then. There is one of
-          it: it was moved here, not copied. It draws nothing when no study is
-          live. */}
-      <TodaysGroupStudy />
-
-      {/* Your Notes sat here for part of 2026-10-25 and was pulled the same
-          day. Louis: the dashboard is prime real estate and the card made it
-          ugly. It did not belong here, and that is the reason - not the
-          separate bug where the previews printed their stored HTML as text.
-          Fixing that markup would not earn the space back.
-
-          So do not re-mount this on the dashboard. The notes feature, the
-          table and /notes are all untouched; if notes need a way in, find it
-          somewhere that is not the first screen everybody opens. */}
-
-      {/* Recommended For You - above Look It Up since 2026-10-17 (Louis).
-          Today's reading comes first, then something to read next; looking a
-          name up is a tool you reach for, not a thing to be offered. */}
-      {/* Bible Buddy TV, above Quick Reads (Louis, 2026-10-18). The shows had
-          no door into them at all for six weeks; this is the one people walk
-          past every morning. Same shape as the bookshelf - what you left
-          unfinished first, then what you have not started. */}
-
+          </>
+        );
+      case "level":
+        // Points & levels relaunch (2026-09-05): purple level card. The
+        // level-up celebration modal lives inside this component too.
+        return <LevelProgressCard />;
+      case "verse_of_the_day":
+        return <VerseOfTheDayCard userId={userId} />;
+      case "bookshelf":
+        return <YourBookshelf userId={userId} planDay={stats.planDay} planCompletedDays={completedDays} />;
+      case "group_study_today":
+        // Draws nothing when no study is live; the board hides the empty slot.
+        return <TodaysGroupStudy />;
+      case "quick_reads":
+        return (
       <section aria-labelledby="home-recommended-heading">
         {/* "Quick Reads", not "Recommended For You" (Louis, 2026-10-17). The
             analytics key stays "recommended" so the history before the rename
@@ -446,24 +446,11 @@ export default function HomeScreen() {
           })}
         </div>
       </section>
-
-      {/* Look It Up - the people/places/keywords lists, which were buried
-          under Plans > Bible Study Tools > Bible References where nobody
-          found them. Sits high on the page because looking a name up is a
-          reading-time need, not an end-of-session one (Louis, 2026-10-12). */}
-      <BibleReferenceCard onEvent={trackHomeEvent} />
-
-      {/* The Upcoming Community Study banner lived here - the Proverbs "Day N
-          of 31" card with its Join the Study button. Taken off the dashboard
-          on 2026-10-18 (Louis: "we don't need it anymore"); the study itself
-          is still on the Plans tab and at /devotionals/wisdom-of-proverbs. */}
-
-      {/* 7. Test Your Knowledge - the approved Option 2 colorful pair.
-          Decorative art is CSS/emoji, never baked text. No "daily challenge"
-          claims: neither game has a daily system, so the copy stays honest. */}
-      <section aria-labelledby="home-knowledge-heading" ref={knowledgeSectionRef}>
-        <SectionHeading label="Test Your Knowledge" />
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        );
+      case "look_it_up":
+        return <BibleReferenceCard onEvent={trackHomeEvent} />;
+      case "game_trivia":
+        return (
           <Link
             href="/bible-trivia"
             onClick={() => trackHomeEvent("home_trivia_click", {})}
@@ -498,7 +485,9 @@ export default function HomeScreen() {
               </span>
             </span>
           </Link>
-
+        );
+      case "game_scrambled":
+        return (
           <Link
             href="/bible-study-games/scrambled"
             onClick={() => trackHomeEvent("home_scrambled_click", {})}
@@ -538,14 +527,9 @@ export default function HomeScreen() {
               </span>
             </span>
           </Link>
-
-          {/* Bible Word Search and Bible Memory (Louis, 2026-11-15), under
-              the first two so the four read as a 2 x 2. Same card, same
-              spacing, same button. Neither game has artwork of its own, so
-              the picture is drawn here from the game itself - a letter grid
-              with a found word, a verse with one word to fill in - as the
-              Scrambled tiles are. No numbers are claimed that the card does
-              not load. */}
+        );
+      case "game_word_search":
+        return (
           <Link
             href="/bible-study-games/word-search"
             onClick={() => trackHomeEvent("home_word_search_click", {})}
@@ -584,7 +568,9 @@ export default function HomeScreen() {
               </span>
             </span>
           </Link>
-
+        );
+      case "game_memory":
+        return (
           <Link
             href="/bible-study-games/memory"
             onClick={() => trackHomeEvent("home_memory_click", {})}
@@ -613,14 +599,76 @@ export default function HomeScreen() {
               </span>
             </span>
           </Link>
-        </div>
-      </section>
+        );
+      case "study_guide":
+        return widget.studyId ? <StudyGuideWidget studyId={widget.studyId} userId={userId} size={widget.size} /> : null;
+      case "ask_lil_louis":
+        return <AskLilLouisWidget size={widget.size} />;
+      case "continue_reading":
+        return <ContinueReadingWidget userId={userId} size={widget.size} />;
+      case "bible_in_one_year":
+        return (
+          <BibleInOneYearWidget
+            planDay={stats.planDay}
+            completedDays={completedDays}
+            planFinished={stats.planFinished}
+            size={widget.size}
+          />
+        );
+      case "study_notes":
+        return <StudyNotesWidget userId={userId} size={widget.size} />;
+      case "saved_verses":
+        return <SavedVersesWidget userId={userId} size={widget.size} />;
+      case "group_countdown":
+        return <GroupCountdownWidget size={widget.size} />;
+      case "buddies":
+        return <BuddiesWidget userId={userId} size={widget.size} />;
+      case "messages":
+        return <MessagesWidget userId={userId} size={widget.size} />;
+      case "prayer_requests":
+        return <PrayerRequestsWidget size={widget.size} />;
+      default:
+        return null;
+    }
+  }
 
-      {/* The From Your Groups banner is gone (Louis, 2026-10-18: "remove
-          the group purple banner at the bottom of the dashboard"). It was
-          the last thing on the dashboard still called a group, and it
-          pointed at the feed anyway - a second door to a room that is now
-          the Community tab. */}
+  return (
+    // pb stays small: AppShell already reserves the bottom bar's height and
+    // renders the Report a Problem card right below this - pb-28 left a big
+    // hole between the group card and the reporter (Louis, 2026-09-03).
+    <div className="mx-auto flex w-full max-w-[960px] flex-col gap-6 px-4 pb-2 pt-5">
+      {/* The greeting stays at the top and is not a widget. Everything under
+          it is the reader's widget Home (Louis, 2026-11-21); with no saved
+          layout it is the dashboard in its usual order. */}
+      <header className="flex items-start justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-black text-[var(--bb-text-primary,#111827)] sm:text-3xl">
+            {greeting}, {greetingName}
+          </h1>
+          <p className="mt-1 text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">
+            Let&apos;s grow closer to God today.
+          </p>
+        </div>
+        {!editingHome ? (
+          <button
+            type="button"
+            onClick={() => setEditingHome(true)}
+            className="shrink-0 rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 py-1.5 text-xs font-black text-[var(--bb-text-primary,#111827)] shadow-sm"
+          >
+            ✏️ Edit Home
+          </button>
+        ) : null}
+      </header>
+
+      <HomeWidgetBoard
+        userId={userId ?? null}
+        layout={homeLayout.layout}
+        editing={editingHome}
+        setEditing={setEditingHome}
+        onSave={homeLayout.save}
+        onReset={homeLayout.reset}
+        renderWidget={renderWidget}
+      />
     </div>
   );
 }

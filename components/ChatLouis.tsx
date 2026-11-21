@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { takeQuestionForLouis } from "../lib/louisHandoff";
 import { LouisAvatar } from "./LouisAvatar";
 import { supabase } from "../lib/supabaseClient";
 import { FeatureTourModal } from "./FeatureTourModal";
@@ -1660,6 +1661,10 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const loadedChatKeyRef = useRef<string | null>(null);
   const loadingChatRef = useRef(false);
+  /** The thread has finished loading, so a handed-over question can be sent. */
+  const [threadReady, setThreadReady] = useState(false);
+  /** A question typed on Home (lib/louisHandoff.ts), waiting to be sent. */
+  const [handoffQuestion, setHandoffQuestion] = useState<string | null>(null);
   const showLouisGuideModal = false;
   const louisGuideView: "intro" | "tour" | "recommendation" = "intro";
   const showChatTourModal = false;
@@ -2426,6 +2431,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
       loadedChatKeyRef.current = chatKey;
       loadingChatRef.current = false;
       setMessages(finalMessages);
+      setThreadReady(true);
       window.localStorage.setItem(chatKey, JSON.stringify(finalMessages));
     }
 
@@ -3304,6 +3310,27 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
 
     return false;
   }
+
+  // The Ask Lil Louis widget on Home: take the question once, put it in the
+  // box, and send it through handleSend below as if it had been typed here.
+  // Waits for the thread so it is added to the conversation, not overwritten
+  // by it. Without AI consent it stays in the box, as a typed one would.
+  useEffect(() => {
+    if (displayMode !== "embedded") return;
+    const question = takeQuestionForLouis();
+    if (question) {
+      setInput(question);
+      setHandoffQuestion(question);
+    }
+  }, [displayMode]);
+  useEffect(() => {
+    if (!handoffQuestion || !threadReady || isSending || !aiConsent) return;
+    if (input.trim() !== handoffQuestion) return;
+    setHandoffQuestion(null);
+    void handleSend();
+    // handleSend reads the current input; it is not a dependency to re-run on.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handoffQuestion, threadReady, isSending, aiConsent, input]);
 
   async function handleSend() {
     const trimmed = input.trim();

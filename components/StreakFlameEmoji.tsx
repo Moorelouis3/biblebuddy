@@ -76,11 +76,12 @@ export default function StreakFlameEmoji({ flameId, currentStreak, size = 42, cl
 
   // Under a Bible Cover the flame takes the cover's own colours
   // (COVER_FLAMES in lib/bibleCovers.ts, set as --bb-cover-flame-*). With no
-  // cover the variables are not set and the Buddy's chosen flame shows.
+  // cover it is one light orange for everybody (Louis, 2026-11-21: "with no
+  // cover have one light orange flame").
   const tone = {
-    light: `var(--bb-cover-flame-light, ${flame.light})`,
-    main: `var(--bb-cover-flame-main, ${flame.main})`,
-    dark: `var(--bb-cover-flame-dark, ${flame.dark})`,
+    light: "var(--bb-cover-flame-light, #FFE3C2)",
+    main: "var(--bb-cover-flame-main, #FD9F4E)",
+    dark: "var(--bb-cover-flame-dark, #D9641A)",
   };
   const gradientId = useId().replace(/:/g, "");
   const outerGradientId = `flame-outer-${gradientId}`;

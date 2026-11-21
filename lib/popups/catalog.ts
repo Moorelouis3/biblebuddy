@@ -68,7 +68,9 @@ export type PopupPreview =
   /** Bible Covers: a little shelf of real cover thumbnails. */
   | "covers"
   /** The first birthday: the party hat and a big 1. */
-  | "birthday";
+  | "birthday"
+  /** The widget Home: a little grid of widget tiles. */
+  | "home_widgets";
 
 /**
  * Makes a popup a sign-up for a community study (lib/communityEvents.ts).
@@ -127,7 +129,7 @@ export type PopupStep = { title: string; detail: string };
  * master_actions (PopupCoordinator sets them). bible_cover_chosen: a Bible
  * Cover or Dark mode is on.
  */
-export const LOCAL_POPUP_SIGNALS = ["bible_cover_chosen"] as const;
+export const LOCAL_POPUP_SIGNALS = ["bible_cover_chosen", "home_customized"] as const;
 export type LocalPopupSignal = (typeof LOCAL_POPUP_SIGNALS)[number];
 
 export type PopupDefinition = {
@@ -228,6 +230,37 @@ function communityEventEndsAt(startsAt: string, totalDays: number): string {
 }
 
 export const POPUP_CATALOG: PopupDefinition[] = [
+  {
+    // The customizable Home (Louis, 2026-11-21: "we also need pop up for the
+    // dashboard widgets"). The button opens Home straight in edit mode
+    // (HomeScreen reads ?edit=1). Anyone who has already arranged their Home
+    // has found it and is never told (home_customized, set on the device by
+    // PopupCoordinator from lib/homeLayoutStore's saved copy).
+    id: "home_widgets_2026_11",
+    version: 1,
+    kind: "announcement",
+    priority: 90,
+    sections: [],
+    pill: "New in Bible Buddy",
+    headline: "Make Home yours.",
+    headlineAccent: "yours.",
+    description: "Pin the study guides you are doing, ask Lil Louis from Home, move or remove anything you never use.",
+    cardTitle: "Your Home, your widgets",
+    cardLine: "Add, move, resize and remove what is on Home.",
+    cardIcon: "🧩",
+    preview: "home_widgets",
+    steps: [
+      { title: "Tap Edit Home, or press and hold a widget", detail: "Everything on Home starts to wiggle." },
+      { title: "Drag to move, tap − to remove", detail: "Removing a widget never deletes your progress or notes." },
+      { title: "Add Widget, then Study Guide", detail: "Pin any study you like, as many as you want." },
+    ],
+    cta: { label: "Edit my Home", href: "/dashboard?edit=1" },
+    ctaInSection: "Edit my Home",
+    footnote: "Find this again in Tips",
+    usedWhen: ["home_customized"],
+    minAccountAgeDays: 0,
+    expiresAt: null,
+  },
   {
     // Bible Buddy's first birthday (Louis, 2026-11-21). Shown only inside the
     // window in lib/birthday.ts, the same one that puts the party hat on the

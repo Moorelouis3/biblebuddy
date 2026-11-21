@@ -369,6 +369,15 @@ async function load(userId: string, catalog: PopupDefinition[]): Promise<Loaded 
   // the server: a cover is on or it is not (lib/bibleCovers.ts).
   const LOCAL_SIGNALS: Record<string, () => boolean> = {
     bible_cover_chosen: () => Boolean(readBibleCover()),
+    // Home has been arranged on this device (lib/homeLayoutStore.ts keeps a
+    // copy of the reader's own layout; none means the default).
+    home_customized: () => {
+      try {
+        return Object.keys(window.localStorage).some((key) => key.startsWith("bb:home-layout:v1:"));
+      } catch {
+        return false;
+      }
+    },
   };
   for (const [signal, isOn] of Object.entries(LOCAL_SIGNALS)) if (isOn()) usedActions.add(signal);
   const unknown = Array.from(new Set(live.flatMap((popup) => popup.usedWhen))).filter(

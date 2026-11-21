@@ -38,7 +38,8 @@ const everythingOn = Object.fromEntries(POPUP_CATALOG.map((popup) => [popup.id, 
 const allOn = Object.fromEntries(POPUP_CATALOG.filter((popup) => !MOVED_IN.includes(popup.id)).map((popup) => [popup.id, { enabled: true }]));
 
 const NO_COVER = "__noCover";
-const base = (over: Partial<DecideInput> & { [NO_COVER]?: true } = {}): DecideInput => ({
+const NO_HOME = "__noHome";
+const base = (over: Partial<DecideInput> & { [NO_COVER]?: true; [NO_HOME]?: true } = {}): DecideInput => ({
   now: NOW,
   pathname: "/dashboard",
   catalog: POPUP_CATALOG,
@@ -61,6 +62,17 @@ const base = (over: Partial<DecideInput> & { [NO_COVER]?: true } = {}): DecideIn
   // Every scenario has a Bible Cover on unless it says otherwise (noCover
   // below), so the covers headline does not take over checks written before it.
   ...(NO_COVER in over ? {} : { usedActions: new Set([...(over.usedActions ?? []), "bible_cover_chosen"]) }),
+  // Home already arranged, so the "Make Home yours" popup stays out of the
+  // checks written before it; its own checks at the end pass NO_HOME.
+  ...(NO_HOME in over
+    ? {}
+    : {
+        usedActions: new Set([
+          ...(over.usedActions ?? []),
+          ...(NO_COVER in over ? [] : ["bible_cover_chosen"]),
+          "home_customized",
+        ]),
+      }),
 });
 
 const seen = (over: Partial<PopupHistory> = {}): PopupHistory => ({
@@ -668,6 +680,23 @@ check("the birthday asks for a review and offers no Maybe later", () => {
 check("a tab left open switches at the boundary", () => {
   assert.equal(msUntilBirthdayChange(at("2026-11-30T22:59:00.000Z")), 60_000);
   assert.equal(msUntilBirthdayChange(at("2026-12-01T00:00:00Z")), null);
+});
+
+console.log("\nMake Home yours (the widget Home)");
+
+const HOME = "home_widgets_2026_11";
+const homeOnly = { [HOME]: { enabled: true } };
+
+check("offered to someone who has never arranged Home", () => {
+  assert.equal(decide(base({ settings: homeOnly, [NO_HOME]: true })).chosen?.id, HOME);
+});
+
+check("never to someone who already arranged Home", () => {
+  assert.notEqual(decide(base({ settings: homeOnly })).chosen?.id, HOME);
+});
+
+check("its button opens Home in edit mode", () => {
+  assert.equal(POPUP_CATALOG.find((p) => p.id === HOME)!.cta.href, "/dashboard?edit=1");
 });
 
 console.log(`\n${passed} checks passed.`);

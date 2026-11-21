@@ -382,7 +382,7 @@ const COVER_VARS: Record<keyof BibleCoverTokens, string> = {
  * cover's own art, never a pastel of an outside colour.
  */
 export const COVER_FLAMES: Record<BibleCoverId, { light: string; main: string; dark: string }> = {
-  dark: { light: "#BFD8FF", main: "#3B82F6", dark: "#1E3A8A" },
+  dark: { light: "#8FB8FF", main: "#2563EB", dark: "#0B1A4F" },
   "midnight-garden": { light: "#FFE7A3", main: "#F2B54A", dark: "#7A4A0E" },
   "lavender-prayer": { light: "#E6D6FF", main: "#A77BF3", dark: "#4C2E8C" },
   "ruby-village": { light: "#FF6B5E", main: "#E5182B", dark: "#5E0710" },

@@ -144,6 +144,7 @@ const TONE_BY_PREVIEW: Record<PopupPreview, keyof typeof TONES> = {
   poll: "brand",
   covers: "brand",
   birthday: "brand",
+  home_widgets: "brand",
 };
 
 /**
@@ -996,6 +997,28 @@ function Preview({ kind }: { kind: PopupPreview }) {
               David
             </span>
           </div>
+        </div>
+      );
+    case "home_widgets":
+      // A small Home: three smalls, a study guide, Ask Lil Louis.
+      return (
+        <div className="grid grid-cols-3 gap-1.5" aria-hidden="true">
+          {["🔥 320", "📖 13%", "⭐ L20"].map((label) => (
+            <span key={label} className="rounded-xl bg-white/80 px-2 py-2 text-center text-[11px] font-black text-[#14213d] shadow-sm">
+              {label}
+            </span>
+          ))}
+          <span className="col-span-3 flex items-center gap-2 rounded-xl bg-white/80 p-2 shadow-sm">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/obedienceofabraham28day.png" alt="" className="h-12 w-8 rounded object-cover" />
+            <span className="text-left text-[11px] font-black leading-tight text-[#14213d]">
+              The Obedience of Abraham
+              <span className="block font-bold text-[#5b6b8a]">Study guide · pinned</span>
+            </span>
+          </span>
+          <span className="col-span-3 rounded-xl bg-white/80 px-2 py-2 text-left text-[11px] font-bold text-[#5b6b8a] shadow-sm">
+            💬 Ask Lil Louis anything…
+          </span>
         </div>
       );
     case "birthday":
