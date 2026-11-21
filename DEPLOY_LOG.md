@@ -133,3 +133,4 @@
 2026-11-20T09:02:18Z | 10 commits | 1 Samuel 4-6 Explained chapter library entries, analytics overview rolling retention tracker, and build-list updates (widgets tested via TestFlight, iOS 1.17 with widgets submitted to App Review)
 2026-11-20T17:02:34Z | 5 commits | 1 Samuel 7-8 Explained chapter library entries
 2026-11-21T09:02:37Z | 10 commits | 1 Samuel 9-11 Explained chapter library entries and a blog article (Who Was Job? The Man Who Lost Everything)
+2026-11-21T17:03:03Z | 22 commits | 1 Samuel 12-13 Explained chapter library entries, Bible Covers (replacing themes, with per-cover light effects, thumbnails and popup), Library/study page redesign (study holders with Buddy counts, About drop-down, book strip), the first-birthday party-hat header and review-ask popup (21-30 Nov), blog-views reader/browser logging, Bible Lock widget setup-link fix, and build-list iOS 1.17 live note
