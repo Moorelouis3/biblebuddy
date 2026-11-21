@@ -1046,7 +1046,7 @@ uses the verse-breakdowns fallback (`/Whatisthebiblebanner.png`):
 ruth-1-explained, ruth-2-explained, ruth-3-explained, ruth-4-explained,
 1-samuel-1-explained, 1-samuel-2-explained, 1-samuel-3-explained,
 1-samuel-4-explained, 1-samuel-5-explained, 1-samuel-6-explained, 1-samuel-7-explained,
-1-samuel-8-explained. Updating
+1-samuel-8-explained, 1-samuel-9-explained. Updating
 this one line going forward (per the routine's own doc) rather than adding a new block each
 time a chapter lands without a custom banner.
 

@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-9-explained",
+    title: "1 Samuel 9 Explained: Saul Looks for Donkeys, Finds a Kingdom",
+    description:
+      "1 Samuel 9 explained verse by verse: Saul's search for lost donkeys, Samuel's advance warning from God, and the meal that honors a king nobody has crowned yet.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-9-explained",
+    publishedAt: "2026-11-21",
+    readTime: "15 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 9 Explained 📖",
+      content:
+        "A father's donkeys wander off.\nHis son gets sent to find them.\n\n📌 God already picked Israel's king before the search even started.\n\n📖 Saul almost gives up and turns back for home.\n📖 Samuel reserves him a seat before they ever meet.\n📖 The whole chapter never once says the word king.\n\nNew article on:\n🟢 why God chose **Saul** through an ordinary errand\n🟢 what **seer** and prophet actually mean\n🟢 why Saul calls his own family the **smallest**\n\nHas an ordinary task ever turned out to be more than it looked? 🙏",
+    },
+  },
+  {
     slug: "who-was-job",
     title: "Who Was Job? The Man Who Lost Everything",
     description:
