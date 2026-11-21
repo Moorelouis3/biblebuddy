@@ -92,6 +92,7 @@
     "check:study-guides": "tsx scripts/check-study-guides.ts",
     "verify:study-template": "tsx scripts/verify-study-template.ts",
     "verify:display-name": "tsx scripts/verify-display-name.ts",
+    "verify:widget-links": "tsx scripts/verify-widget-links.ts",
     "verify:profile-gate": "tsx scripts/verify-profile-gate.ts"
   },
   "dependencies": {

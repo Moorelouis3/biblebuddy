@@ -139,6 +139,14 @@ run is the compile check.
 
 ---
 
+### 5. Bible Lock widget: "set it up" opens the Bible Lock page
+**Ready. Nothing more to do but build.** Written 2026-11-21.
+
+Louis found it in 1.17 (approved 20 Nov): tapping the widget when the lock is not set up opened the dashboard. The widget now opens `/bible-lock` instead of `/settings` (`WidgetViews.swift`).
+
+**Already fixed on the website for 1.17**, no build needed: the app maps a `/settings` link from outside to `/bible-lock`, and the front door no longer overrides a link that opened the app with `/dashboard` (`lib/pendingDeepLink.ts`). This entry only makes the widget say the right address itself.
+
+
 ## Waiting for the next Android build
 
 **Production release 1.06 (version code 6, Codemagic build 6b0184318f52ca275129b059, commit 3e906e0) sent to Google for review on 21 Nov 2026**, all 177 countries plus rest of world, full rollout. Production access was granted 20 Nov. Every Android item below is in that build; it is live for nobody until Google approves it.

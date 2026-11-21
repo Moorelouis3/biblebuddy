@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import { takePendingDeepLink } from "@/lib/pendingDeepLink";
 import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending } from "@/lib/termsAcceptance";
 import {
@@ -92,7 +93,8 @@ export default function AppEntryPage() {
         const { data } = await supabase.auth.getSession();
         if (cancelled) return;
         if (data?.session) {
-          router.replace("/dashboard");
+          // A widget or link that opened the app wins over the default.
+          router.replace(takePendingDeepLink() || "/dashboard");
           return;
         }
       } catch {

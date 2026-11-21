@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { isExternalUrl, isNativeApp } from "@/lib/nativeApp";
+import { resolveOpenedPath, setPendingDeepLink } from "@/lib/pendingDeepLink";
 
 /**
  * When iOS or Android hands the app a mybiblebuddy.net link, go to that page.
@@ -72,11 +73,14 @@ export default function NativeDeepLinks() {
       if (target.protocol !== "https:") return;
       if (isExternalUrl(target.href)) return;
 
-      const path = `${target.pathname}${target.search}${target.hash}`;
+      const path = resolveOpenedPath(`${target.pathname}${target.search}${target.hash}`);
       // Already there - a cold start that landed on the right page anyway.
       if (path === `${window.location.pathname}${window.location.search}${window.location.hash}`) {
         return;
       }
+      // Held for the front door too: on a cold start it may finish its session
+      // check after this push and would otherwise replace into /dashboard.
+      setPendingDeepLink(path);
       router.push(path);
     };
 

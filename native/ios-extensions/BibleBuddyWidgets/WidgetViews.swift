@@ -353,7 +353,9 @@ struct LockView: View {
     /// Configured states open today's reading; setup opens Bible Lock.
     private var destination: String {
         switch entry.status {
-        case .notSetUp: return "/settings"
+        // The lock's own page, setup included. 1.17 opened /settings, where it
+        // sits at the bottom; the website maps that to /bible-lock meanwhile.
+        case .notSetUp: return "/bible-lock"
         default: return Shared.snapshot().study?.href ?? "/dashboard"
         }
     }
