@@ -74,6 +74,14 @@ export default function StreakFlameEmoji({ flameId, currentStreak, size = 42, cl
     return () => window.clearInterval(timer);
   }, [isBuilding, streakDays]);
 
+  // Under a Bible Cover the flame takes the cover's own colours
+  // (COVER_FLAMES in lib/bibleCovers.ts, set as --bb-cover-flame-*). With no
+  // cover the variables are not set and the Buddy's chosen flame shows.
+  const tone = {
+    light: `var(--bb-cover-flame-light, ${flame.light})`,
+    main: `var(--bb-cover-flame-main, ${flame.main})`,
+    dark: `var(--bb-cover-flame-dark, ${flame.dark})`,
+  };
   const gradientId = useId().replace(/:/g, "");
   const outerGradientId = `flame-outer-${gradientId}`;
   const innerGradientId = `flame-inner-${gradientId}`;
@@ -93,7 +101,7 @@ export default function StreakFlameEmoji({ flameId, currentStreak, size = 42, cl
   const flameStyle = {
     width: size,
     height: size,
-    color: flame.main,
+    color: tone.main,
     "--bb-streak-earned-duration": `${earnedPulseDuration}s`,
     "--bb-streak-earned-scale": earnedPulseScale,
   } as CSSProperties;
@@ -159,18 +167,18 @@ export default function StreakFlameEmoji({ flameId, currentStreak, size = 42, cl
       >
         <defs>
           <radialGradient id={glowGradientId} cx="50%" cy="74%" r="56%">
-            <stop offset="0%" stopColor={flame.main} stopOpacity="0.32" />
-            <stop offset="100%" stopColor={flame.main} stopOpacity="0" />
+            <stop offset="0%" style={{ stopColor: tone.main }} stopOpacity="0.32" />
+            <stop offset="100%" style={{ stopColor: tone.main }} stopOpacity="0" />
           </radialGradient>
           <linearGradient id={outerGradientId} x1="20%" y1="8%" x2="78%" y2="96%">
-            <stop offset="0%" stopColor={flame.light} />
-            <stop offset="38%" stopColor={flame.main} />
-            <stop offset="100%" stopColor={flame.dark} />
+            <stop offset="0%" style={{ stopColor: tone.light }} />
+            <stop offset="38%" style={{ stopColor: tone.main }} />
+            <stop offset="100%" style={{ stopColor: tone.dark }} />
           </linearGradient>
           <linearGradient id={innerGradientId} x1="34%" y1="22%" x2="70%" y2="96%">
             <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.92" />
-            <stop offset="38%" stopColor={flame.light} />
-            <stop offset="100%" stopColor={flame.main} />
+            <stop offset="38%" style={{ stopColor: tone.light }} />
+            <stop offset="100%" style={{ stopColor: tone.main }} />
           </linearGradient>
         </defs>
         <ellipse className="bb-streak-flame-glow" cx="32" cy="47" rx="22" ry="15" fill={`url(#${glowGradientId})`} />

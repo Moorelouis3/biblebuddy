@@ -373,9 +373,38 @@ const COVER_VARS: Record<keyof BibleCoverTokens, string> = {
   readerText: "--bb-cover-reader-text",
 };
 
+/**
+ * The streak flame in each cover's own colours (Louis, 2026-11-21: "matching
+ * the cover color ... mine should be bright red with dark red inside the
+ * shadow"). light = the tips, main = the body, dark = the shadow inside.
+ * StreakFlameEmoji reads them as --bb-cover-flame-*; with no cover on, the
+ * flame keeps the colour the Buddy picked in the store. Taken from each
+ * cover's own art, never a pastel of an outside colour.
+ */
+export const COVER_FLAMES: Record<BibleCoverId, { light: string; main: string; dark: string }> = {
+  dark: { light: "#BFD8FF", main: "#3B82F6", dark: "#1E3A8A" },
+  "midnight-garden": { light: "#FFE7A3", main: "#F2B54A", dark: "#7A4A0E" },
+  "lavender-prayer": { light: "#E6D6FF", main: "#A77BF3", dark: "#4C2E8C" },
+  "ruby-village": { light: "#FF6B5E", main: "#E5182B", dark: "#5E0710" },
+  "blue-storm": { light: "#DDF0FF", main: "#5AA9FF", dark: "#1E3F8A" },
+  "carolina-coastline": { light: "#FFD6A8", main: "#F48A3C", dark: "#8A3A12" },
+  "angel-wings": { light: "#FFF3C4", main: "#FFC94A", dark: "#9A6410" },
+  "desert-dawn": { light: "#FFDCA0", main: "#F29A35", dark: "#86460E" },
+  "slow-mornings": { light: "#FFE2B8", main: "#EFA552", dark: "#8A5218" },
+  "morning-mercy": { light: "#FFD8C2", main: "#FF8A5C", dark: "#93351C" },
+  "mount-sinai": { light: "#FFC97A", main: "#FF6A12", dark: "#7E2206" },
+  "winter-cabin": { light: "#FFD9A0", main: "#F28A3A", dark: "#7C2E0E" },
+};
+
 /** The cover-only CSS variables, by name - shared with the first-paint script. */
 export function bibleCoverCssVars(cover: BibleCover): Record<string, string> {
-  const out: Record<string, string> = { "--bb-cover-base": cover.base };
+  const flame = COVER_FLAMES[cover.id];
+  const out: Record<string, string> = {
+    "--bb-cover-base": cover.base,
+    ...(flame
+      ? { "--bb-cover-flame-light": flame.light, "--bb-cover-flame-main": flame.main, "--bb-cover-flame-dark": flame.dark }
+      : {}),
+  };
   (Object.keys(COVER_VARS) as Array<keyof BibleCoverTokens>).forEach((key) => {
     out[COVER_VARS[key]] = cover.cover[key];
   });
@@ -398,6 +427,7 @@ export function applyBibleCoverToDocument(
     delete root.dataset.bbCover;
     (Object.values(COVER_VARS) as string[]).forEach((name) => root.style.removeProperty(name));
     root.style.removeProperty("--bb-cover-base");
+    ["light", "main", "dark"].forEach((part) => root.style.removeProperty(`--bb-cover-flame-${part}`));
     root.style.removeProperty("color-scheme");
     // The first-paint script may have painted the cover's base here.
     root.style.backgroundColor = root.style.getPropertyValue("--bb-background") || "";
