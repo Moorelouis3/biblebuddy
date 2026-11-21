@@ -63,7 +63,9 @@ export type PopupPreview =
   /** The week's poll: the options themselves, answered in the popup. */
   | "poll"
   /** A study sign-up: the study's own artwork instead of a drawn preview. */
-  | "event_signup";
+  | "event_signup"
+  /** Bible Covers: a little shelf of real cover thumbnails. */
+  | "covers";
 
 /**
  * Makes a popup a sign-up for a community study (lib/communityEvents.ts).
@@ -117,12 +119,29 @@ export type PopupPoster = {
 
 export type PopupStep = { title: string; detail: string };
 
+/**
+ * "Already uses it" signals that live on the device instead of in
+ * master_actions (PopupCoordinator sets them). bible_cover_chosen: a Bible
+ * Cover or Dark mode is on.
+ */
+export const LOCAL_POPUP_SIGNALS = ["bible_cover_chosen"] as const;
+export type LocalPopupSignal = (typeof LOCAL_POPUP_SIGNALS)[number];
+
 export type PopupDefinition = {
   id: string;
   version: number;
   kind: PopupKind;
   /** Higher wins among popups of the same kind that are all eligible. */
   priority: number;
+  /**
+   * "headline": something Louis wants every Buddy to know about (Louis,
+   * 2026-11-21, the Bible Covers launch). It is chosen before anything else
+   * that is eligible - timed, tutorial, announcement or ask - and it may go
+   * past the three-a-week limit. Every other rule still holds: never while
+   * someone is reading, typing or playing, one popup a visit, 20 hours apart,
+   * and once closed it comes back at most once, two weeks later.
+   */
+  level?: "headline";
   /**
    * Path prefixes. A tutorial appears only on these. An announcement appears
    * anywhere EXCEPT these (somebody already there has found the feature).
@@ -152,7 +171,7 @@ export type PopupDefinition = {
    * Doing any of these means the person already uses the feature, so they
    * are never taught it. Also what counts as "adopted" in reporting.
    */
-  usedWhen: ActionType[];
+  usedWhen: Array<ActionType | LocalPopupSignal>;
   /** Days after signup before this may appear on its own. 0 = at once. */
   minAccountAgeDays: number;
   /** ISO date. After this the popup is never chosen. null = no end. */
@@ -191,6 +210,38 @@ function communityEventEndsAt(startsAt: string, totalDays: number): string {
 }
 
 export const POPUP_CATALOG: PopupDefinition[] = [
+  {
+    // Headline (2026-11-21): Bible Covers launch to everyone.
+    id: "bible_covers_2026_11",
+    version: 1,
+    kind: "announcement",
+    level: "headline",
+    priority: 95,
+    sections: ["/settings"],
+    pill: "New in Bible Buddy",
+    headline: "Pick the Bible you carry.",
+    headlineAccent: "you carry.",
+    description:
+      "Covers dress every page of Bible Buddy: snowy Winter Cabin, Midnight Garden with fireflies, nine more. Or go Dark.",
+    cardTitle: "Bible Covers",
+    cardLine: "Eleven covers, plus Light and Dark.",
+    cardIcon: "📖",
+    preview: "covers",
+    steps: [
+      { title: "Open Settings, then Bible cover", detail: "Every cover is on one shelf, with how many Buddies use it." },
+      { title: "Tap the Bible you like", detail: "Your whole app changes at once, and follows you to your other devices." },
+      { title: "Turn the effect off any time", detail: "Snow, fireflies and the rest have their own switch." },
+    ],
+    cta: { label: "Choose my cover", href: "/settings?open=cover" },
+    ctaInSection: "Got it",
+    footnote: "Find this again in Tips",
+    // Not a master_actions row: the coordinator sets it on the device when a
+    // cover is on (PopupCoordinator LOCAL_SIGNALS), so a Buddy who already
+    // picked one is never told about covers.
+    usedWhen: ["bible_cover_chosen"],
+    minAccountAgeDays: 0,
+    expiresAt: null,
+  },
   {
     id: "tutorial_reader_study_notes",
     version: 1,

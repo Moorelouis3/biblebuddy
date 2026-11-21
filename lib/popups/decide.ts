@@ -24,7 +24,9 @@
  *     device, right section, account old enough, the person does not already
  *     use the feature (or, for a study sign-up, is not already signed up),
  *     and their own history with this popup allows it.
- *  5. Of what is left, timed things beat tutorials, tutorials beat
+ *  5. Of what is left, a headline (catalog level "headline") beats
+ *     everything, and may go past the weekly limit in rule 3. Then timed
+ *     things beat tutorials, tutorials beat
  *     announcements, announcements beat asks (get the app), and within a
  *     kind the higher priority wins.
  *
@@ -152,17 +154,24 @@ export function decide(input: DecideInput): Decision {
     return { id: popup.id, eligible: reason === null, reason: reason ?? "eligible" };
   });
 
-  const blockedBy = globalBlock(input);
+  const isEligible = (popup: PopupDefinition) => verdicts.find((verdict) => verdict.id === popup.id)?.eligible;
+  const headlines = input.catalog.filter((popup) => popup.level === "headline" && isEligible(popup));
+
+  let blockedBy = globalBlock(input);
+  // A headline may go past the weekly limit; nothing else is relaxed.
+  if (blockedBy === `${MAX_POPUPS_PER_WEEK} already shown this week` && headlines.length) blockedBy = null;
   if (blockedBy) return { chosen: null, blockedBy, verdicts };
+  const weekFull = input.automaticInLast7Days >= MAX_POPUPS_PER_WEEK;
 
   const priorityOf = (popup: PopupDefinition) => input.settings[popup.id]?.priority ?? popup.priority;
   // Something with an end date is shown before something that can wait.
   const timed = (popup: PopupDefinition) => ((input.settings[popup.id]?.expiresAt ?? popup.expiresAt) ? 1 : 0);
 
-  const eligible = input.catalog
-    .filter((popup) => verdicts.find((verdict) => verdict.id === popup.id)?.eligible)
+  const headline = (popup: PopupDefinition) => (popup.level === "headline" ? 1 : 0);
+  const eligible = (weekFull ? headlines : input.catalog.filter(isEligible))
     .sort(
       (a, b) =>
+        headline(b) - headline(a) ||
         timed(b) - timed(a) ||
         KIND_RANK[b.kind] - KIND_RANK[a.kind] ||
         priorityOf(b) - priorityOf(a) ||

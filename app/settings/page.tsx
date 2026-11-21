@@ -87,6 +87,11 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
   const [settingsMessage, setSettingsMessage] = useState<string | null>(null);
   const [storePurchases, setStorePurchases] = useState<StorePurchaseRow[]>([]);
   const [ownerHasUnlimitedDiamonds, setOwnerHasUnlimitedDiamonds] = useState(false);
+  // ?open=cover: arrived from the Bible Covers popup, so open the shelf.
+  const [openCoverShelf, setOpenCoverShelf] = useState(false);
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("open") === "cover") setOpenCoverShelf(true);
+  }, []);
   const [selectedTheme, setSelectedTheme] = useState<AppThemeId>("light");
   const [selectedFlame, setSelectedFlame] = useState<FlameCosmeticId>("default");
   const [selectedBuddy, setSelectedBuddy] = useState<BuddyAvatarId>(DEFAULT_BUDDY_AVATAR);
@@ -704,7 +709,14 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
             designs competing"). The colour-theme picker that sat here is gone;
             lib/appThemes.ts now always paints the plain Light look underneath a
             cover. */}
-        <SettingsSection title="Bible cover" icon="📖" description="Pick the Bible you want to carry. It dresses every page of Bible Buddy.">
+        {/* ?open=cover (the Bible Covers popup's button) opens the shelf. */}
+        <SettingsSection
+          key={openCoverShelf ? "cover-open" : "cover"}
+          defaultOpen={openCoverShelf}
+          title="Bible cover"
+          icon="📖"
+          description="Pick the Bible you want to carry. It dresses every page of Bible Buddy."
+        >
           <BibleCoverPicker />
         </SettingsSection>
 

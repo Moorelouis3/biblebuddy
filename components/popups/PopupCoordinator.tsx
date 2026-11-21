@@ -40,6 +40,7 @@
  * study activity and must never look like it.
  */
 
+import { readBibleCover } from "@/lib/bibleCovers";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { checkFullAccount } from "../../lib/accountGate";
@@ -362,7 +363,15 @@ async function load(userId: string, catalog: PopupDefinition[]): Promise<Loaded 
     known = JSON.parse(window.localStorage.getItem(usedKey(userId)) || "[]") as string[];
   } catch {}
   const usedActions = new Set<string>(known);
-  const unknown = Array.from(new Set(live.flatMap((popup) => popup.usedWhen))).filter((action) => !usedActions.has(action));
+  // Signals that live on the device, not in master_actions. Never asked of
+  // the server: a cover is on or it is not (lib/bibleCovers.ts).
+  const LOCAL_SIGNALS: Record<string, () => boolean> = {
+    bible_cover_chosen: () => Boolean(readBibleCover()),
+  };
+  for (const [signal, isOn] of Object.entries(LOCAL_SIGNALS)) if (isOn()) usedActions.add(signal);
+  const unknown = Array.from(new Set(live.flatMap((popup) => popup.usedWhen))).filter(
+    (action) => !usedActions.has(action) && !(action in LOCAL_SIGNALS),
+  );
   // Asked at most once every few hours, not on every page (audit, 2026-11-15).
   // This was one request per still-unknown action on EVERY page load - eleven
   // of them for somebody new, on the dashboard, the reader, everywhere - to

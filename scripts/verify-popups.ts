@@ -12,7 +12,7 @@ import { readFileSync } from "node:fs";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { COMMUNITY_EVENTS, communityEventStartsAt, getCommunityEvent, getCommunityEventState } from "../lib/communityEvents";
 import { existsSync } from "node:fs";
-import { liveCatalog, POPUP_CATALOG, TIPS_CATALOG } from "../lib/popups/catalog";
+import { liveCatalog, LOCAL_POPUP_SIGNALS, POPUP_CATALOG, TIPS_CATALOG } from "../lib/popups/catalog";
 import {
   decide,
   HOURS_BETWEEN_POPUPS,
@@ -36,14 +36,17 @@ const MOVED_IN = ["beginning_of_everything_2026", "bible_lock_2026_11", "new_gam
 const everythingOn = Object.fromEntries(POPUP_CATALOG.map((popup) => [popup.id, { enabled: true }]));
 const allOn = Object.fromEntries(POPUP_CATALOG.filter((popup) => !MOVED_IN.includes(popup.id)).map((popup) => [popup.id, { enabled: true }]));
 
-const base = (over: Partial<DecideInput> = {}): DecideInput => ({
+const NO_COVER = "__noCover";
+const base = (over: Partial<DecideInput> & { [NO_COVER]?: true } = {}): DecideInput => ({
   now: NOW,
   pathname: "/dashboard",
   catalog: POPUP_CATALOG,
   settings: allOn,
   history: {},
   devices: new Set(),
-  usedActions: new Set<string>(),
+  // Has a Bible Cover on, so the covers headline is out of the way of the
+  // ordinary rules below; the headline has its own checks at the end.
+  usedActions: new Set<string>(["bible_cover_chosen"]),
   // Already in the study that is recruiting, so the checks written before the
   // sign-up popup existed still describe what they always did. The sign-up's
   // own checks are at the end and hand in an empty set.
@@ -54,6 +57,9 @@ const base = (over: Partial<DecideInput> = {}): DecideInput => ({
   lastAutomaticAt: null,
   automaticInLast7Days: 0,
   ...over,
+  // Every scenario has a Bible Cover on unless it says otherwise (noCover
+  // below), so the covers headline does not take over checks written before it.
+  ...(NO_COVER in over ? {} : { usedActions: new Set([...(over.usedActions ?? []), "bible_cover_chosen"]) }),
 });
 
 const seen = (over: Partial<PopupHistory> = {}): PopupHistory => ({
@@ -70,7 +76,7 @@ const seen = (over: Partial<PopupHistory> = {}): PopupHistory => ({
 
 /** Somebody who already uses the two discovery features, so only tutorials are in play. */
 const triviaOnly = (over: Partial<DecideInput> = {}) =>
-  base({ pathname: "/bible-trivia", usedActions: new Set(["feed_post_thought", "understand_verse_of_the_day"]), ...over });
+  base({ pathname: "/bible-trivia", usedActions: new Set(["bible_cover_chosen", "feed_post_thought", "understand_verse_of_the_day"]), ...over });
 
 let passed = 0;
 const check = (name: string, run: () => void) => {
@@ -92,7 +98,8 @@ check("the underlined words end the headline", () => {
 
 check("every 'already uses it' action is a real action type", () => {
   const known = new Set<string>(Object.values(ACTION_TYPE));
-  for (const popup of POPUP_CATALOG) for (const action of popup.usedWhen) assert.ok(known.has(action), `${popup.id}: ${action}`);
+  const local = new Set<string>(LOCAL_POPUP_SIGNALS);
+  for (const popup of POPUP_CATALOG) for (const action of popup.usedWhen) assert.ok(known.has(action) || local.has(action), `${popup.id}: ${action}`);
 });
 
 check("copy stays short enough for a phone", () => {
@@ -590,6 +597,34 @@ check("the Features report still gets the new-games events it reads", () => {
   assert.ok(coordinator.includes('shown: "new_games_popup_impression"') && coordinator.includes("track(also.clicked"));
   const report = readFileSync("lib/newFeaturesReport.ts", "utf8");
   assert.ok(report.includes('"new_games_popup_impression"'));
+});
+
+console.log("Headline level");
+
+const noCover = (over: Partial<DecideInput> = {}) => base({ usedActions: new Set<string>(), ...over, [NO_COVER]: true });
+
+check("the covers headline beats every other popup", () => {
+  assert.equal(decide(noCover({ pathname: "/bible/genesis/1" })).chosen?.id, "bible_covers_2026_11");
+  assert.equal(decide(noCover({ pathname: "/bible-trivia" })).chosen?.id, "bible_covers_2026_11");
+});
+
+check("a headline may go past the weekly limit, nothing else may", () => {
+  assert.equal(decide(noCover({ automaticInLast7Days: 3 })).chosen?.id, "bible_covers_2026_11");
+  assert.equal(decide(base({ pathname: "/bible-trivia", automaticInLast7Days: 3 })).chosen, null);
+});
+
+check("a headline keeps every other rule", () => {
+  assert.equal(decide(noCover({ busy: "reading" })).chosen, null);
+  assert.equal(decide(noCover({ shownThisVisit: true })).chosen, null);
+  assert.equal(decide(noCover({ lastAutomaticAt: hoursAgo(5) })).chosen, null);
+});
+
+check("nobody who already has a cover is told about covers", () => {
+  assert.notEqual(decide(base({ pathname: "/bible/genesis/1" })).chosen?.id, "bible_covers_2026_11");
+});
+
+check("not on the Settings page, where the shelf already is", () => {
+  assert.notEqual(decide(noCover({ pathname: "/settings" })).chosen?.id, "bible_covers_2026_11");
 });
 
 console.log(`\n${passed} checks passed.`);

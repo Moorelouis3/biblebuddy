@@ -142,6 +142,7 @@ const TONE_BY_PREVIEW: Record<PopupPreview, keyof typeof TONES> = {
   event_signup: "brand",
   prayer: "brand",
   poll: "brand",
+  covers: "brand",
 };
 
 /**
@@ -994,6 +995,29 @@ function Preview({ kind }: { kind: PopupPreview }) {
               David
             </span>
           </div>
+        </div>
+      );
+    case "covers":
+      // A little shelf of the real covers, Winter Cabin first.
+      return (
+        <div className="grid grid-cols-4 gap-2" aria-hidden="true">
+          {[
+            ["/covers/winter-cabin-thumb.webp", "Winter Cabin"],
+            ["/skins/optimized/midnight-garden-thumb.webp", "Midnight Garden"],
+            ["/skins/optimized/ruby-village-thumb.webp", "Ruby Village"],
+            ["/covers/dark-thumb.webp", "Dark"],
+          ].map(([src, name]) => (
+            <span key={name} className="block">
+              <span
+                className="relative block aspect-[3/4] overflow-hidden rounded-l-[4px] rounded-r-lg bg-cover bg-center shadow-[0_6px_12px_-6px_rgba(14,26,58,0.6)]"
+                style={{ backgroundImage: `url(${src})` }}
+              >
+                <span className="absolute inset-y-0 left-0 w-1 bg-black/30" />
+                <span className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60" />
+                <span className="absolute inset-x-1 bottom-1 font-serif text-[9px] font-bold leading-tight text-white">{name}</span>
+              </span>
+            </span>
+          ))}
         </div>
       );
     case "feed":
