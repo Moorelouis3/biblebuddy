@@ -167,12 +167,17 @@ export default function BibleCoverBackdrop() {
 
   return (
     <div className="bb-cover-backdrop" data-cover={cover.id} aria-hidden="true">
-      <picture>
-        <source media="(min-width: 900px)" srcSet={cover.art.desktop} />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="bb-cover-art" src={cover.art.mobile} alt="" decoding="async" />
-      </picture>
-      <div className="bb-cover-shade" />
+      {/* Dark has no picture: the backdrop is just its base colour. */}
+      {cover.art ? (
+        <>
+          <picture>
+            <source media="(min-width: 900px)" srcSet={cover.art.desktop} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="bb-cover-art" src={cover.art.mobile} alt="" decoding="async" />
+          </picture>
+          <div className="bb-cover-shade" />
+        </>
+      ) : null}
       <CoverEffect effect={cover.motion} />
     </div>
   );

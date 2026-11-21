@@ -27,7 +27,8 @@ export type BibleCoverId =
   | "desert-dawn"
   | "slow-mornings"
   | "morning-mercy"
-  | "mount-sinai";
+  | "mount-sinai"
+  | "dark";
 
 /** One light effect per cover (Louis, 2026-11-21: "do all them have light animation like the winter cabin snow one?"). */
 export type BibleCoverEffect =
@@ -75,7 +76,8 @@ export type BibleCover = {
   /** The theme tokens while the cover is on. */
   theme: AppThemeTokens;
   cover: BibleCoverTokens;
-  art: { mobile: string; desktop: string; thumb: string };
+  /** null: a plain cover with no picture (Dark). */
+  art: { mobile: string; desktop: string; thumb: string } | null;
   /** Base colour under the art while it loads, and the still fallback tint. */
   base: string;
   /**
@@ -95,7 +97,7 @@ export type BibleCover = {
 type CoverSpec = {
   id: BibleCoverId;
   name: string;
-  art: string; // public/skins/optimized/<art>-{mobile,desktop}.webp
+  art: string | null; // public/skins/optimized/<art>-{mobile,desktop}.webp; null = no picture
   motion?: BibleCover["motion"];
   /** The darkest colour in the art: the page base and the reading surface. */
   base: string;
@@ -129,11 +131,13 @@ function makeCover(spec: CoverSpec): BibleCover {
     id: spec.id,
     name: spec.name,
     base: spec.base,
-    art: {
-      mobile: `/skins/optimized/${spec.art}-mobile.webp`,
-      desktop: `/skins/optimized/${spec.art}-desktop.webp`,
-      thumb: `/skins/optimized/${spec.art}-thumb.webp`,
-    },
+    art: spec.art
+      ? {
+          mobile: `/skins/optimized/${spec.art}-mobile.webp`,
+          desktop: `/skins/optimized/${spec.art}-desktop.webp`,
+          thumb: `/skins/optimized/${spec.art}-thumb.webp`,
+        }
+      : null,
     motion: spec.motion ?? "drift",
     theme: {
       background: "transparent",
@@ -176,6 +180,17 @@ function makeCover(spec: CoverSpec): BibleCover {
 }
 
 const MORE_COVERS: CoverSpec[] = [
+  // Dark mode (Louis, 2026-11-21: "light mode, dark mode and the covers").
+  // Built as a cover with no picture, so every screen and popup gets the same
+  // finished treatment the covers have - the old dark theme only swapped the
+  // theme tokens and left white panels scattered through the app. The
+  // actions stay Bible Buddy blue rather than a cover's warm colour.
+  {
+    id: "dark", name: "Dark", art: null, motion: "none",
+    base: "#0b1017", readerBg: "#121821", panelRgb: "22, 29, 40", frameRgb: "148, 163, 184",
+    text: "#F1F5F9", secondary: "#CBD5E1", muted: "#94A3B8",
+    warm: "#6EA4FF", warmText: "#06142E", cool: "#93C5FD", done: "#7DB894", doneRgb: "40, 92, 72",
+  },
   {
     id: "midnight-garden", motion: "fireflies", name: "Midnight Garden", art: "midnight-garden",
     base: "#050b0a", readerBg: "#0c1614", panelRgb: "10, 22, 20", frameRgb: "190, 214, 196",

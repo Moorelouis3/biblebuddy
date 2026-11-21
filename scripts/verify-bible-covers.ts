@@ -18,13 +18,15 @@ const covers = Object.values(BIBLE_COVERS);
 const css = readFileSync("app/bible-covers.css", "utf8");
 const generated = readFileSync("app/bible-covers-remap.generated.css", "utf8");
 
-ok("eleven covers, Winter Cabin among them", () => {
-  assert.equal(covers.length, 11);
+ok("eleven picture covers plus Dark, Winter Cabin among them", () => {
+  assert.equal(covers.filter((c) => c.art).length, 11);
+  assert.ok(BIBLE_COVERS.dark && BIBLE_COVERS.dark.art === null && BIBLE_COVERS.dark.motion === "none");
   assert.ok(BIBLE_COVERS["winter-cabin"]);
 });
 
 ok("every cover's artwork exists on disk", () => {
   for (const cover of covers) {
+    if (!cover.art) continue; // Dark: no picture
     for (const src of [cover.art.mobile, cover.art.desktop, cover.art.thumb]) {
       assert.ok(existsSync(`public${src}`), `${cover.id}: missing public${src}`);
     }
@@ -129,6 +131,7 @@ ok("every popup is drawn in the cover: feature popups, custom popups, day comple
 ok("every cover has a light effect, and every effect layer can be stilled", () => {
   const backdrop = readFileSync("components/BibleCoverBackdrop.tsx", "utf8");
   for (const cover of covers) {
+    if (!cover.art) continue; // Dark is still on purpose
     assert.ok(!["drift", "none"].includes(cover.motion), `${cover.id} has no effect`);
     assert.ok(backdrop.includes(`case "${cover.motion}":`), `${cover.id}: no layers for ${cover.motion}`);
   }

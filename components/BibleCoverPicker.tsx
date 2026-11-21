@@ -77,30 +77,48 @@ export default function BibleCoverPicker() {
     return () => window.removeEventListener(BIBLE_COVER_EVENT, sync);
   }, []);
 
-  // Winter Cabin first: it is the one the others were modelled on.
-  const covers = Object.values(BIBLE_COVERS).sort((a, b) => Number(b.id === "winter-cabin") - Number(a.id === "winter-cabin"));
+  // Light and Dark first, as plain books; then the picture covers, Winter
+  // Cabin first because it is the one the others were modelled on.
+  const covers = Object.values(BIBLE_COVERS)
+    .filter((cover) => cover.art)
+    .sort((a, b) => Number(b.id === "winter-cabin") - Number(a.id === "winter-cabin"));
+
+  /** Light and Dark: plain books, drawn in fixed colours so each shows what it is under any cover. */
+  const plain = (id: BibleCoverId | null, label: string, bg: string, ink: string, edge: string) => {
+    const selected = current === id;
+    const count = id ? counts?.[id] || 0 : 0;
+    return (
+      <button type="button" onClick={() => void choose(id)} aria-pressed={selected} aria-label={`${label} mode`} className="text-left">
+        <span
+          className={`relative grid aspect-[3/4] w-full place-items-center overflow-hidden rounded-l-md rounded-r-xl border text-center shadow-[0_10px_18px_-8px_rgba(14,26,58,0.45)] ${
+            selected ? "ring-[3px] ring-[var(--bb-accent,#0056fd)] ring-offset-2" : ""
+          }`}
+          style={{ background: bg, borderColor: edge }}
+        >
+          <span aria-hidden className="absolute inset-y-0 left-0 w-1.5" style={{ background: edge }} />
+          <span className="px-2">
+            <span className="block text-[7px] font-black tracking-[0.22em]" style={{ color: "#0056FD" }}>BIBLE BUDDY</span>
+            <span className="block font-serif text-[15px] font-bold" style={{ color: ink }}>{label}</span>
+          </span>
+          {selected ? (
+            <span className="absolute right-1.5 top-1.5 grid h-5 w-5 place-items-center rounded-full bg-[var(--bb-accent,#0056fd)] text-[11px] font-black text-[var(--bb-button-text,#ffffff)]">
+              ✓
+            </span>
+          ) : null}
+        </span>
+        <span className="mt-1.5 block text-center text-[11px] font-bold text-[var(--bb-text-secondary,#4b5563)]">{label}</span>
+        {count > 0 ? (
+          <span className="block text-center text-[10px] font-semibold text-[var(--bb-text-muted,#6b7280)]">{buddies(count)}</span>
+        ) : null}
+      </button>
+    );
+  };
 
   return (
     <div>
       <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
-        <button
-          type="button"
-          onClick={() => void choose(null)}
-          aria-pressed={current === null}
-          className="text-left"
-        >
-          <span
-            className={`grid aspect-[3/4] w-full place-items-center rounded-l-md rounded-r-xl border text-center shadow-sm ${
-              current === null ? "ring-[3px] ring-[var(--bb-accent,#0056fd)] ring-offset-2" : ""
-            }`}
-            style={{ background: "var(--bb-surface-soft, #f4f7fc)", borderColor: "var(--bb-card-border, #dbe7f4)" }}
-          >
-            <span className="px-2 font-serif text-[13px] font-bold text-[var(--bb-text-primary,#0e1a3a)]">
-              No cover
-            </span>
-          </span>
-          <span className="mt-1.5 block text-center text-[11px] font-bold text-[var(--bb-text-secondary,#4b5563)]">Plain look</span>
-        </button>
+        {plain(null, "Light", "#F7FAFC", "#0E1A3A", "#DBE7F4")}
+        {plain("dark", "Dark", "#121821", "#F1F5F9", "#2A3444")}
         {covers.map((cover) => {
           const selected = current === cover.id;
           return (
@@ -116,7 +134,7 @@ export default function BibleCoverPicker() {
                 className={`relative block aspect-[3/4] w-full overflow-hidden rounded-l-md rounded-r-xl bg-cover bg-center shadow-[0_10px_18px_-8px_rgba(14,26,58,0.55)] ${
                   selected ? "ring-[3px] ring-[var(--bb-accent,#0056fd)] ring-offset-2" : ""
                 }`}
-                style={{ backgroundImage: `url(${cover.art.thumb})`, backgroundColor: cover.base }}
+                style={{ backgroundImage: `url(${cover.art?.thumb})`, backgroundColor: cover.base }}
               >
                 {/* The spine and the gilt title, so it reads as a Bible. */}
                 <span aria-hidden className="absolute inset-y-0 left-0 w-1.5 bg-black/30" />
@@ -146,12 +164,12 @@ export default function BibleCoverPicker() {
         <p className="mt-4 rounded-xl border border-[var(--bb-card-border,#dbe7f4)] px-4 py-3 text-sm font-bold text-[var(--bb-text-primary,#111827)]">
           <span aria-hidden>👥 </span>
           {(counts[current] || 0) <= 1
-            ? `You're the first Buddy using ${BIBLE_COVERS[current].name}.`
-            : `${buddies(counts[current] || 0)} are using ${BIBLE_COVERS[current].name}.`}
+            ? `You're the first Buddy using ${BIBLE_COVERS[current].art ? BIBLE_COVERS[current].name : "Dark mode"}.`
+            : `${buddies(counts[current] || 0)} are using ${BIBLE_COVERS[current].art ? BIBLE_COVERS[current].name : "Dark mode"}.`}
         </p>
       ) : null}
 
-      {current ? (
+      {current && BIBLE_COVERS[current].motion !== "none" ? (
         <label className="mt-4 flex items-center justify-between gap-3 rounded-xl border border-[var(--bb-card-border,#dbe7f4)] px-4 py-3">
           <span>
             <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">
