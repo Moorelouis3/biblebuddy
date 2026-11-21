@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-13-explained",
+    title: "1 Samuel 13 Explained: Saul's Unlawful Sacrifice at Gilgal",
+    description:
+      "1 Samuel 13 explained verse by verse: Jonathan's raid, Israel hiding in caves, Saul's sacrifice at Gilgal, and Samuel's verdict that his kingdom will not continue.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-13-explained",
+    publishedAt: "2026-11-21",
+    readTime: "13 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 13 Explained 📖",
+      content:
+        "Seven days of waiting.\n\nAn army melting away by the hour.\n\n📌 Saul finally decides seven days is long enough.\n\n📖 A sacrifice offered without Samuel.\n📖 Samuel arrives the moment it ends.\n📖 A kingdom that will not continue.\n\nNew article on:\n🟢 why **thirty thousand chariots** raises real questions\n🟢 the **man after his own heart** Samuel will not name\n🟢 why Israel had **no swords of its own**\n\nHave you ever stopped waiting right before the answer arrived? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-12-explained",
     title: "1 Samuel 12 Explained: Samuel's Farewell Speech to Israel",
     description:
