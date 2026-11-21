@@ -94,7 +94,8 @@
     "verify:display-name": "tsx scripts/verify-display-name.ts",
     "verify:widget-links": "tsx scripts/verify-widget-links.ts",
     "verify:bible-covers": "tsx scripts/verify-bible-covers.ts",
-    "verify:profile-gate": "tsx scripts/verify-profile-gate.ts"
+    "verify:profile-gate": "tsx scripts/verify-profile-gate.ts",
+    "verify:study-activity": "tsx scripts/verify-study-activity.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",

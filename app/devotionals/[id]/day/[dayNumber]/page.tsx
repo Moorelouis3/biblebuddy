@@ -1,5 +1,6 @@
 "use client";
 
+import { claimDevotionalDayCompletion } from "@/lib/devotionalDayClaim";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -852,7 +853,9 @@ export default function ProverbsStudyDayPage() {
       .eq("devotional_id", devotionalId)
       .eq("day_number", dayNumber)
       .maybeSingle();
-    const wasAlreadyCompleted = existingProgress?.is_completed === true;
+    // Only one tap, tab or phone can be the first completion (lib/devotionalDayClaim.ts).
+    const { firstTime } = await claimDevotionalDayCompletion(supabase, { userId, devotionalId, dayNumber }, existingProgress?.completed_at || now);
+    const wasAlreadyCompleted = !firstTime;
 
     await supabase.from("devotional_progress").upsert(
       {

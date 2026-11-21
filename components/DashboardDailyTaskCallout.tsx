@@ -1,5 +1,6 @@
 "use client";
 
+import { claimDevotionalDayCompletion } from "@/lib/devotionalDayClaim";
 import { Component, type MouseEvent, type ReactNode, type RefObject, useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
@@ -1017,7 +1018,11 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
       .eq("devotional_id", devotionalTarget.devotionalId)
       .eq("day_number", devotionalTarget.dayNumber)
       .maybeSingle();
-    const wasAlreadyCompleted = existingProgressData?.is_completed === true;
+    // Only one tap, tab or phone can be the first completion (lib/devotionalDayClaim.ts).
+    const { firstTime } = existingProgressData?.is_completed === true
+      ? { firstTime: false }
+      : await claimDevotionalDayCompletion(supabase, { userId, devotionalId: devotionalTarget.devotionalId, dayNumber: devotionalTarget.dayNumber });
+    const wasAlreadyCompleted = !firstTime;
 
     await supabase.from("devotional_progress").upsert(
       {

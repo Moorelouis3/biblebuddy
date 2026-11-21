@@ -89,6 +89,7 @@ function getPreviewDescription(title: string, fallback: string): string {
 
   return descriptions[title] ?? fallback;
 }
+import { claimDevotionalDayCompletion } from "@/lib/devotionalDayClaim";
 import { useEffect, useRef, useState } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -1672,7 +1673,11 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         .eq("day_number", dayNumber)
         .maybeSingle();
       
-      const wasAlreadyCompleted = existingProgressData?.is_completed === true;
+      // Only one tap, tab or phone can be the first completion (lib/devotionalDayClaim.ts).
+      const { firstTime } = existingProgressData?.is_completed === true
+        ? { firstTime: false }
+        : await claimDevotionalDayCompletion(supabase, { userId, devotionalId, dayNumber });
+      const wasAlreadyCompleted = !firstTime;
 
       // Save everything in one transaction: reflection, reading status, and completion
       const { error } = await supabase

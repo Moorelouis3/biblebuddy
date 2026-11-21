@@ -18,6 +18,7 @@ import { logActionToMasterActions } from "../../lib/actionRecorder";
 import { requestAutoReplyDraft } from "../../lib/requestAutoReplyDraft";
 import { requestAutoCommentDraft } from "../../lib/requestAutoCommentDraft";
 import { readStudyActivity } from "../../lib/communityMilestones";
+import { collapseStudyActivity } from "../../lib/studyActivityFeed";
 import { resolveStudyActivityCover } from "../../lib/studyActivityCover";
 import { BIBLE_BUDDY_USER_ID } from "../../lib/bibleBuddyAccount";
 import { FEED_OPEN_POST_EVENT } from "../../components/AppShell";
@@ -1986,10 +1987,10 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
          * The landscape is bg-journey.jpg, the dashboard's own, at low
          * opacity - a reused asset rather than new art.
          */
-        <div className="relative overflow-hidden rounded-xl border border-[#e4ddf7] bg-gradient-to-br from-[#f3efff] via-[#f7f2fb] to-[#fdeef2] p-3.5">
+        <div className="bb-study-activity relative overflow-hidden rounded-xl border border-[#e4ddf7] bg-gradient-to-br from-[#f3efff] via-[#f7f2fb] to-[#fdeef2] p-3.5">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-20 opacity-25"
+            className="bb-study-activity-art pointer-events-none absolute inset-x-0 bottom-0 h-20 opacity-25"
             style={{
               backgroundImage: "url(/home-cards/bg-journey.jpg)",
               backgroundSize: "cover",
@@ -2006,18 +2007,18 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
               />
             ) : (
               // No cover on file: the app's own book mark, not a gap.
-              <div className="flex h-[76px] w-[56px] flex-shrink-0 items-center justify-center rounded-lg bg-white/70 text-2xl shadow-md">
+              <div className="bb-study-activity-pill flex h-[76px] w-[56px] flex-shrink-0 items-center justify-center rounded-lg bg-white/70 text-2xl shadow-md">
                 📖
               </div>
             )}
             <div className="min-w-0">
-              <p className="mb-1 inline-flex items-center gap-1.5 rounded-full bg-white/70 px-2 py-0.5 text-[11px] font-bold text-[#6b5ba8]">
+              <p className="bb-study-activity-pill mb-1 inline-flex items-center gap-1.5 rounded-full bg-white/70 px-2 py-0.5 text-[11px] font-bold text-[#6b5ba8]">
                 <span aria-hidden>📘</span> Study Activity
               </p>
-              <p className="text-[19px] font-black leading-tight text-gray-900">
+              <p className="bb-study-activity-headline text-[19px] font-black leading-tight text-gray-900">
                 {milestoneHeadline}
               </p>
-              <p className="truncate text-sm font-semibold text-gray-600">{studyActivity.title}</p>
+              <p className="bb-study-activity-title truncate text-sm font-semibold text-gray-600">{studyActivity.title}</p>
             </div>
           </div>
         </div>
@@ -2835,7 +2836,9 @@ export default function BbFeedPage() {
       .order("created_at", { ascending: false })
       .limit(200);
 
-    const buddyPosts = (postRows || []).filter((row) => buddyIdSet.has(row.user_id));
+    // One person's run of study check-offs is one card, at most three a day
+    // (lib/studyActivityFeed.ts), before anything is ranked or shown.
+    const buddyPosts = collapseStudyActivity((postRows || []).filter((row) => buddyIdSet.has(row.user_id)));
 
     // Profiles only for the handful of people who actually posted, rather
     // than for every buddy on the list.
@@ -2931,7 +2934,8 @@ export default function BbFeedPage() {
         .eq("visibility", "community")
         .gte("created_at", sevenDaysAgo)
         .order("created_at", { ascending: false })
-        .limit(100),
+        // 200, then collapsed: a flood of check-offs used to eat the page.
+        .limit(200),
       // Same cap. This one is a single query whatever the answer's size, so it
       // was never a request-count problem - but uncapped it ships 7,045 rows to
       // the phone to build a Set used only for ranking signals, and the top 300
@@ -2948,7 +2952,10 @@ export default function BbFeedPage() {
       (buddyRows.data || []).map((b) => b.user_id_1 === userId ? b.user_id_2 : b.user_id_1)
     );
 
-    const allUserIds = [...new Set((postsRes.data || []).map((r) => r.user_id))];
+    // One person's run of study check-offs is one card, at most three a day
+    // (lib/studyActivityFeed.ts), before anything is ranked or shown.
+    const communityRows = collapseStudyActivity(postsRes.data || []).slice(0, 120);
+    const allUserIds = [...new Set(communityRows.map((r) => r.user_id))];
 
     // Fetch profiles in batches to avoid 1000-row limit
     const profileMap: Record<string, { user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null }> = {};
@@ -2961,7 +2968,7 @@ export default function BbFeedPage() {
     }
     const profiles = Object.values(profileMap);
 
-    const enrichedPosts = await enrichWithProfiles(postsRes.data || [], profiles) as FeedPost[];
+    const enrichedPosts = await enrichWithProfiles(communityRows, profiles) as FeedPost[];
     void loadMyReactions(userId, enrichedPosts.map((pt) => pt.id));
     void loadCommentPreviews(enrichedPosts.map((pt) => pt.id));
     void loadBuddyStates(userId, enrichedPosts.map((row) => row.user_id));

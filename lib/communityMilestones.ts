@@ -1,3 +1,12 @@
+import {
+  STUDY_ACTIVITY_CAP,
+  STUDY_ACTIVITY_GROUP_GAP_MS,
+  STUDY_ACTIVITY_WINDOW_MS,
+  completionSentence,
+  parseStudyCompletion,
+  sameStudy,
+  type StudyCompletion,
+} from "./studyActivityFeed";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { ActionType } from "./actionTypes";
 import { isPlaceholderName as isSharedPlaceholderName } from "./profileCompleteness";
@@ -167,9 +176,11 @@ export function milestoneSentence(actionType: ActionType, actionLabel?: string |
  * These live next to milestoneSentence on purpose: change one, change both.
  */
 const STUDY_ACTIVITY_SHAPES: Array<{ pattern: RegExp; titleGroup: number }> = [
-  { pattern: /^✅ Completed Day (\d+) of "(.+)"\.$/, titleGroup: 2 },
-  { pattern: /^✅ Completed Day (\d+) of (a Bible study)\.$/, titleGroup: 2 },
-  { pattern: /^✅ Finished Day (\d+) of (Bible in One Year)\.$/, titleGroup: 2 },
+  // "Day 9", "Days 7–9", "Days 2, 5 and 9" or "6 days": the grouped cards of
+  // lib/studyActivityFeed.ts use the same sentence with more than one day.
+  { pattern: /^✅ Completed (Days? [\d–\-, and]+|\d+ days) of "(.+)"\.$/, titleGroup: 2 },
+  { pattern: /^✅ Completed (Days? [\d–\-, and]+|\d+ days) of (a Bible study)\.$/, titleGroup: 2 },
+  { pattern: /^✅ Finished (Days? [\d–\-, and]+|\d+ days) of (Bible in One Year)\.$/, titleGroup: 2 },
   { pattern: /^📖 Finished the book of (.+)\.$/, titleGroup: 1 },
 ];
 
@@ -284,15 +295,45 @@ export async function postMilestoneToWall(
     // of the app, and the wall should not say so twice.
     const { data: mine } = await admin
       .from("feed_posts")
-      .select("content, created_at")
+      .select("id, content, created_at")
       .eq("user_id", userId)
       .eq("post_type", "thought")
       .order("created_at", { ascending: false })
       .limit(200);
 
-    const rows = mine || [];
+    const rows = (mine || []) as Array<{ id: string; content: string | null; created_at: string }>;
     if (rows.some((row) => row.content === content)) {
       return { posted: false, reason: "already posted" };
+    }
+
+    /**
+     * Grouped and capped (Louis, 2026-11-21; lib/studyActivityFeed.ts).
+     * A day already inside a grouped card is a repeat too. A completion close
+     * to this person's last card for the same study joins that card, and past
+     * STUDY_ACTIVITY_CAP cards in 24 hours nothing new goes on the shared
+     * Feed: master_actions still holds every completion for their history.
+     */
+    const completion = parseStudyCompletion(content);
+    if (completion) {
+      const now = Date.now();
+      const earlier = rows
+        .map((row) => ({ row, at: Date.parse(row.created_at), parsed: parseStudyCompletion(row.content) }))
+        .filter((r): r is { row: (typeof rows)[number]; at: number; parsed: StudyCompletion } => Boolean(r.parsed) && Number.isFinite(r.at));
+      if (
+        completion.days.length &&
+        earlier.some((r) => sameStudy(r.parsed, completion) && completion.days.every((d) => r.parsed.days.includes(d)))
+      ) {
+        return { posted: false, reason: "already posted" };
+      }
+      const sameRecent = earlier.find((r) => sameStudy(r.parsed, completion) && now - r.at <= STUDY_ACTIVITY_GROUP_GAP_MS);
+      if (sameRecent) {
+        const merged = completionSentence({ ...completion, days: [...new Set([...sameRecent.parsed.days, ...completion.days])] });
+        const { error: mergeError } = await admin.from("feed_posts").update({ content: merged }).eq("id", sameRecent.row.id);
+        if (mergeError) return { posted: false, reason: mergeError.message };
+        return { posted: true, reason: "grouped" };
+      }
+      const inWindow = earlier.filter((r) => now - r.at < STUDY_ACTIVITY_WINDOW_MS).length;
+      if (inWindow >= STUDY_ACTIVITY_CAP) return { posted: false, reason: "daily cap" };
     }
 
     /**

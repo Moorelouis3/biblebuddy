@@ -124,6 +124,18 @@ html[data-bb-app-hidden="true"] .bb-cover-snow {
 
 /* ---------- shared chrome ---------- */
 
+/* The strip behind the phone clock (globals.css paints it solid in the page
+   colour so scrolled text never runs into the clock). On a cover that solid
+   strip stopped exactly where the see-through header began, which showed as a
+   hard brightness seam under the status bar on every cover (Louis,
+   2026-11-21). Under a cover the strip carries the same dimming the header
+   starts at, so the artwork reads as one background from the top of the
+   screen down: a touch darker under the clock for the white status icons,
+   then the header fades it out. */
+html.bb-native[data-bb-cover] body::before {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bb-cover-base) 78%, transparent), color-mix(in srgb, var(--bb-cover-base) 60%, transparent)) !important;
+}
+
 /* The header and page wrappers sit on the scene. */
 html[data-bb-cover] .bb-safe-top-header {
   background: linear-gradient(180deg, color-mix(in srgb, var(--bb-cover-base) 60%, transparent), transparent) !important;
@@ -514,6 +526,23 @@ html[data-bb-cover] .bb-cv-hero-title,
 html[data-bb-cover] .bb-community-panel :is(h2, p, .truncate) { color: var(--bb-text-primary) !important; }
 html[data-bb-cover] .bb-community-panel :is(.border-t, li) { border-color: var(--bb-cover-frame) !important; }
 html[data-bb-cover] .bb-community-panel :is(.hover\:bg-white\/50):hover { background: var(--bb-cover-cool-soft) !important; }
+/* The Study Activity card inside a post (app/bb-feed/page.tsx). It kept its
+   pale lilac gradient under every cover while the cover's light text landed
+   on it, so "Completed Day…" and the study title were hard to read (Louis,
+   2026-11-21). Background and text are set together here, one step stronger
+   than the post around it so the card still stands apart. */
+html[data-bb-cover] .bb-study-activity {
+  background: linear-gradient(135deg, var(--bb-cover-cool-soft), var(--bb-cover-tile-strong) 70%) !important;
+  border-color: var(--bb-cover-frame-strong) !important;
+}
+html[data-bb-cover] .bb-study-activity-art { opacity: 0.1 !important; }
+html[data-bb-cover] .bb-study-activity-pill {
+  background: var(--bb-cover-tile) !important;
+  color: var(--bb-cover-cool) !important;
+  box-shadow: inset 0 0 0 1px var(--bb-cover-frame) !important;
+}
+html[data-bb-cover] .bb-study-activity-headline { color: var(--bb-text-primary) !important; }
+html[data-bb-cover] .bb-study-activity-title { color: var(--bb-text-secondary) !important; }
 /* The tabs: a dark track, the selected one a frosted pill. */
 html[data-bb-cover] .bb-community-tab { background: var(--bb-cover-tile) !important; }
 html[data-bb-cover] .bb-community-tab button { color: var(--bb-text-secondary) !important; background: transparent !important; box-shadow: none !important; }

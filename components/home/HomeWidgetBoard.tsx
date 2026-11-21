@@ -5,12 +5,11 @@
  * for what a layout is, lib/homeLayoutStore.ts for where it is saved).
  *
  * - Edit Home (the button in the greeting) or a long press on any widget
- *   starts edit mode. Widgets wobble, each gets a remove badge, move buttons
+ *   starts edit mode. Widgets wobble, each gets a remove badge, a drag grip
  *   and a size button when it comes in more than one size.
- * - Drag: press anywhere on a widget in edit mode and move. Pointer events,
- *   so the same code serves a finger and a mouse; the page scrolls when the
- *   finger nears the top or bottom edge. The arrow buttons do the same job
- *   for a mouse or keyboard.
+ * - Drag: a mouse clicks and drags any widget. A finger scrolls the page as
+ *   usual, and picks a widget up by holding still on it briefly or from its
+ *   grip. The page scrolls when the widget nears the top or bottom edge.
  * - Add Widget opens the gallery. Study Guide opens the published catalogue
  *   so the exact guide can be chosen, as many guides as the reader likes.
  * - Done saves. Reset to Default puts the original dashboard back.
@@ -19,7 +18,7 @@
  * not delete progress, notes, bookmarks or anything else.
  */
 
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import {
   DEFAULT_LAYOUT,
@@ -39,6 +38,8 @@ import { availability, withTotals, type LibraryStudy, type StudyProgress } from 
 import { loadStudyShelf } from "./HomeExtraWidgets";
 
 const LONG_PRESS_MS = 550;
+/** In edit mode, how long a finger holds still on a widget to pick it up. */
+const DRAG_HOLD_MS = 220;
 
 type Props = {
   userId: string | null;
@@ -106,17 +107,6 @@ export default function HomeWidgetBoard({ userId, layout, editing, setEditing, o
   }, []);
 
   /* ----- editing actions ----- */
-  const move = useCallback((id: string, by: number) => {
-    setDraft((current) => {
-      const from = current.findIndex((w) => w.id === id);
-      const to = Math.max(0, Math.min(current.length - 1, from + by));
-      if (from < 0 || from === to) return current;
-      const next = current.slice();
-      const [item] = next.splice(from, 1);
-      next.splice(to, 0, item);
-      return next;
-    });
-  }, []);
   const remove = (id: string) => setDraft((current) => current.filter((w) => w.id !== id));
   const resize = (id: string) => setDraft((current) => current.map((w) => (w.id === id ? { ...w, size: nextSize(w) } : w)));
   const add = (widget: HomeWidget) => {
@@ -150,56 +140,111 @@ export default function HomeWidgetBoard({ userId, layout, editing, setEditing, o
     return () => window.clearTimeout(timer);
   }, [notice]);
 
-  /* ----- drag to reorder ----- */
+  /* ----- drag to reorder -----
+   * No arrow buttons (Louis, 2026-11-21: "I want a click and drag option
+   * instead... we can scroll down the page easier"). A mouse drags at once.
+   * A finger scrolls the page as normal; it picks a widget up by holding
+   * still on it for a moment, or straight away from the grip in its corner.
+   * The moves are followed on the window, so the finger can travel anywhere. */
   const drag = useRef<{ id: string; pointerId: number } | null>(null);
-  const beginDrag = (event: React.PointerEvent<HTMLDivElement>, id: string) => {
+  const hold = useRef<{ timer: number; x: number; y: number; pointerId: number } | null>(null);
+  const cancelHold = () => {
+    if (hold.current) window.clearTimeout(hold.current.timer);
+    hold.current = null;
+  };
+  const pickUp = (id: string, pointerId: number) => {
+    cancelHold();
+    drag.current = { id, pointerId };
+    setDraggingId(id);
+    try {
+      navigator.vibrate?.(10);
+    } catch {}
+  };
+  const pressWidget = (event: React.PointerEvent<HTMLDivElement>, id: string) => {
+    if (event.button > 0) return;
+    if (event.pointerType === "mouse") {
+      event.preventDefault();
+      pickUp(id, event.pointerId);
+      return;
+    }
+    cancelHold();
+    const pointerId = event.pointerId;
+    hold.current = {
+      x: event.clientX,
+      y: event.clientY,
+      pointerId,
+      timer: window.setTimeout(() => pickUp(id, pointerId), DRAG_HOLD_MS),
+    };
+  };
+  const pressGrip = (event: React.PointerEvent<HTMLElement>, id: string) => {
     if (event.button > 0) return;
     event.preventDefault();
-    try {
-      event.currentTarget.setPointerCapture(event.pointerId);
-    } catch {
-      /* no capture: the moves still reach this element while over it */
-    }
-    drag.current = { id, pointerId: event.pointerId };
-    setDraggingId(id);
+    event.stopPropagation();
+    pickUp(id, event.pointerId);
   };
-  const dragMove = (event: React.PointerEvent<HTMLDivElement>) => {
-    const current = drag.current;
-    if (!current || event.pointerId !== current.pointerId) return;
-    // Near an edge: scroll, so a widget can travel the whole page.
-    const edge = 70;
-    if (event.clientY < edge) window.scrollBy(0, -12);
-    else if (event.clientY > window.innerHeight - edge) window.scrollBy(0, 12);
 
-    const over = document
-      .elementsFromPoint(event.clientX, event.clientY)
-      .map((el) => (el as HTMLElement).closest<HTMLElement>("[data-widget-id]"))
-      .find((el) => el && el.dataset.widgetId !== current.id);
-    if (!over) return;
-    const overId = over.dataset.widgetId!;
-    const rect = over.getBoundingClientRect();
-    const gridWidth = gridRef.current?.getBoundingClientRect().width ?? rect.width;
-    // Side by side (smalls, desktop mediums): left half goes before. Full
-    // width: top half goes before.
-    const before = rect.width < gridWidth * 0.7 ? event.clientX < rect.left + rect.width / 2 : event.clientY < rect.top + rect.height / 2;
-    setDraft((list) => {
-      const from = list.findIndex((w) => w.id === current.id);
-      if (from < 0) return list;
-      const next = list.slice();
-      const [item] = next.splice(from, 1);
-      let to = next.findIndex((w) => w.id === overId);
-      if (to < 0) return list;
-      if (!before) to += 1;
-      next.splice(to, 0, item);
-      const same = next.every((w, i) => w.id === list[i].id);
-      return same ? list : next;
-    });
-  };
-  const endDrag = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (!drag.current || event.pointerId !== drag.current.pointerId) return;
-    drag.current = null;
-    setDraggingId(null);
-  };
+  useEffect(() => {
+    if (!editing) return;
+    const onMove = (event: PointerEvent) => {
+      const h = hold.current;
+      if (h && h.pointerId === event.pointerId && Math.hypot(event.clientX - h.x, event.clientY - h.y) > 8) {
+        cancelHold(); // the finger is scrolling, not picking up
+        return;
+      }
+      const current = drag.current;
+      if (!current || event.pointerId !== current.pointerId) return;
+      // Near an edge: scroll, so a widget can travel the whole page.
+      const edge = 80;
+      if (event.clientY < edge) window.scrollBy(0, -14);
+      else if (event.clientY > window.innerHeight - edge) window.scrollBy(0, 14);
+
+      const over = document
+        .elementsFromPoint(event.clientX, event.clientY)
+        .map((el) => (el as HTMLElement).closest<HTMLElement>("[data-widget-id]"))
+        .find((el) => el && el.dataset.widgetId !== current.id);
+      if (!over) return;
+      const overId = over.dataset.widgetId!;
+      const rect = over.getBoundingClientRect();
+      const gridWidth = gridRef.current?.getBoundingClientRect().width ?? rect.width;
+      // Side by side (smalls, desktop mediums): left half goes before. Full
+      // width: top half goes before.
+      const before = rect.width < gridWidth * 0.7 ? event.clientX < rect.left + rect.width / 2 : event.clientY < rect.top + rect.height / 2;
+      setDraft((list) => {
+        const from = list.findIndex((w) => w.id === current.id);
+        if (from < 0) return list;
+        const next = list.slice();
+        const [item] = next.splice(from, 1);
+        let to = next.findIndex((w) => w.id === overId);
+        if (to < 0) return list;
+        if (!before) to += 1;
+        next.splice(to, 0, item);
+        const same = next.every((w, i) => w.id === list[i].id);
+        return same ? list : next;
+      });
+    };
+    const onUp = (event: PointerEvent) => {
+      if (hold.current?.pointerId === event.pointerId) cancelHold();
+      if (!drag.current || event.pointerId !== drag.current.pointerId) return;
+      drag.current = null;
+      setDraggingId(null);
+    };
+    // While a widget is held the page must not scroll under the finger.
+    const onTouchMove = (event: TouchEvent) => {
+      if (drag.current) event.preventDefault();
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onUp);
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
+      window.removeEventListener("touchmove", onTouchMove);
+      cancelHold();
+      drag.current = null;
+    };
+  }, [editing]);
 
   return (
     <div>
@@ -244,7 +289,7 @@ export default function HomeWidgetBoard({ userId, layout, editing, setEditing, o
         className="grid grid-cols-6 gap-3 sm:gap-4"
         style={{ WebkitTouchCallout: "none" } as React.CSSProperties}
       >
-        {items.map((widget, index) => {
+        {items.map((widget) => {
           const def = WIDGETS[widget.kind];
           const dragging = draggingId === widget.id;
           return (
@@ -267,11 +312,9 @@ export default function HomeWidgetBoard({ userId, layout, editing, setEditing, o
                   {/* Covers the widget so nothing inside opens while editing,
                       and is what a finger or mouse drags. */}
                   <div
-                    className="absolute inset-0 z-20 cursor-grab touch-none rounded-2xl ring-2 ring-[var(--bb-accent,#2f7fe8)]/40 active:cursor-grabbing"
-                    onPointerDown={(event) => beginDrag(event, widget.id)}
-                    onPointerMove={dragMove}
-                    onPointerUp={endDrag}
-                    onPointerCancel={endDrag}
+                    className="absolute inset-0 z-20 cursor-grab touch-pan-y select-none rounded-2xl ring-2 ring-[var(--bb-accent,#2f7fe8)]/40 active:cursor-grabbing"
+                    onPointerDown={(event) => pressWidget(event, widget.id)}
+                    onContextMenu={(event) => event.preventDefault()}
                     aria-hidden="true"
                   />
                   <span className="pointer-events-none absolute bottom-1.5 left-1.5 z-30 max-w-[90%] truncate rounded-full bg-black/60 px-2 py-0.5 text-[10px] font-bold text-white">
@@ -287,24 +330,14 @@ export default function HomeWidgetBoard({ userId, layout, editing, setEditing, o
                     −
                   </button>
                   <div className="absolute right-1 top-1 z-30 flex gap-1" onPointerDown={(event) => event.stopPropagation()}>
-                    <button
-                      type="button"
-                      onClick={() => move(widget.id, -1)}
-                      disabled={index === 0}
-                      aria-label={`Move ${def.name} earlier`}
-                      className="grid h-7 w-7 place-items-center rounded-full bg-white/90 text-xs font-black text-[#111827] shadow disabled:opacity-40"
+                    <span
+                      role="img"
+                      aria-label={`Drag to move ${def.name}`}
+                      onPointerDown={(event) => pressGrip(event, widget.id)}
+                      className="grid h-7 w-7 cursor-grab touch-none select-none place-items-center rounded-full bg-white/90 text-sm font-black leading-none text-[#111827] shadow active:cursor-grabbing"
                     >
-                      ↑
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => move(widget.id, 1)}
-                      disabled={index === items.length - 1}
-                      aria-label={`Move ${def.name} later`}
-                      className="grid h-7 w-7 place-items-center rounded-full bg-white/90 text-xs font-black text-[#111827] shadow disabled:opacity-40"
-                    >
-                      ↓
-                    </button>
+                      ⠿
+                    </span>
                     {def.sizes.length > 1 ? (
                       <button
                         type="button"
