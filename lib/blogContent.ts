@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-11-explained",
+    title: "1 Samuel 11 Explained: Saul's First Victory and His Mercy",
+    description:
+      "1 Samuel 11 explained verse by verse: Nahash's siege of Jabeshgilead, Saul's rage with the oxen, the battle at Bezek, and the mercy that followed.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-11-explained",
+    publishedAt: "2026-11-21",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 11 Explained 📖",
+      content:
+        "A city about to fall. A king still out in the field.\n\nThen everything changes in one chapter.\n\n📌 Saul answers his loudest critics not with words but with a rescue.\n\n📖 Nahash threatens to blind an entire city.\n📖 Saul cuts up oxen to call Israel to war.\n📖 Saul spares the men who mocked him.\n\nNew article on:\n🟢 why the **right eye** mattered so much\n🟢 the **night march** that won the battle\n🟢 why Israel crowned Saul a **second time**\n\nHave you ever answered a doubter with action instead of an argument? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-10-explained",
     title: "1 Samuel 10 Explained: Anointed in Secret, Chosen by Lot",
     description:
