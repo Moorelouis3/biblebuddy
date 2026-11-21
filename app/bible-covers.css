@@ -206,7 +206,8 @@ html[data-bb-cover] .bb-cv-book[data-tone="upcoming"] {
 }
 
 html[data-bb-cover] .bb-cv-book-title { color: var(--bb-text-primary) !important; }
-html[data-bb-cover] .bb-cv-book-body p { color: var(--bb-text-secondary) !important; }
+html[data-bb-cover] .bb-cv-book-body p,
+html[data-bb-cover] .bb-cv-book-body > span { color: var(--bb-text-secondary) !important; }
 html[data-bb-cover] .bb-cv-book-body .bb-cv-hl { color: var(--bb-cover-warm) !important; }
 html[data-bb-cover] .bb-cv-book-body .bb-cv-ok { color: var(--bb-cover-done) !important; }
 

@@ -10,6 +10,7 @@ import {
   BIBLE_YEAR_SHELF_TITLE,
   LIBRARY_CATEGORIES,
   availability,
+  releaseAt,
   fetchLibraryStudies,
   fetchProgressByStudy,
   withTotals,
@@ -17,7 +18,8 @@ import {
   type StudyProgress,
 } from "../../lib/libraryCatalog";
 import LoadFailedNotice from "../LoadFailedNotice";
-import { upcomingEventHref } from "../../lib/communityEvents";
+import { getLiveCommunityEvent, getUpcomingCommunityEvent, upcomingEventHref } from "../../lib/communityEvents";
+import { cardTint } from "../../lib/cardTints";
 
 /**
  * The Library bookshelf - what the Plans tab used to be.
@@ -71,6 +73,27 @@ export default function LibraryPage({ embedded = false, onStudySelect }: Library
   const [failed, setFailed] = useState(false);
   /** Bumped by Try Again; it is in the effect's deps, so the load re-runs. */
   const [reloadKey, setReloadKey] = useState(0);
+  /**
+   * Buddies in each study, keyed by devotional id (and the Bible in One Year
+   * shelf id), from /api/library/counts. Empty until it loads; if it never
+   * does, the holders show no number and fall back to title order - never a
+   * zero that is not true.
+   */
+  const [counts, setCounts] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    let cancelled = false;
+    // Absolute: a relative fetch never resolves inside the app shell.
+    void fetch(`${window.location.origin}/api/library/counts`)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((body: { counts?: Record<string, number> } | null) => {
+        if (!cancelled && body?.counts) setCounts(body.counts);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -142,6 +165,90 @@ export default function LibraryPage({ embedded = false, onStudySelect }: Library
       .filter(({ p }) => p.completedDays > 0 && !p.isComplete)
       .sort((a, b) => (b.p.lastActivityAt || "").localeCompare(a.p.lastActivityAt || ""));
   }, [studies, progress]);
+
+  /**
+   * The shelf, in Louis's default order (2026-11-21): "the one coming out next
+   * should be first then the current study then bible in one year then most
+   * popular to least".
+   *
+   * - next: the upcoming community study, else the study that releases soonest.
+   * - current: the live community study, else the reader's most recent one.
+   * - then Bible in One Year (All Studies only; it has no category).
+   * - then every other study by Buddies, most first, title to break a tie.
+   */
+  const shelf = useMemo(() => {
+    const now = new Date();
+    type Entry = {
+      id: string;
+      title: string;
+      cover: string | null;
+      totalDays: number;
+      comingSoon: boolean;
+      label: string | null;
+      completedDays: number;
+      isComplete: boolean;
+      percent: number;
+      nextDay: number;
+      releaseMs: number | null;
+    };
+    const entries: Entry[] = filtered.map((study) => {
+      const p = withTotals(progress[study.id], study.total_days);
+      const { comingSoon, label } = availability(study, p.completedDays > 0, now);
+      const release = releaseAt(study);
+      return {
+        id: study.id,
+        title: study.title,
+        cover: study.cover_image || null,
+        totalDays: study.total_days,
+        comingSoon,
+        label,
+        completedDays: p.completedDays,
+        isComplete: p.isComplete,
+        percent: p.percent,
+        nextDay: p.nextDay,
+        releaseMs: release ? release.getTime() : null,
+      };
+    });
+    if (category === "all" && bibleYear) {
+      const read = bibleYear.highestReadDay;
+      entries.push({
+        id: BIBLE_YEAR_SHELF_ID,
+        title: BIBLE_YEAR_SHELF_TITLE,
+        cover: BIBLE_YEAR_SHELF_COVER,
+        totalDays: BIBLE_YEAR_TOTAL_DAYS,
+        comingSoon: false,
+        label: null,
+        completedDays: read,
+        isComplete: read >= BIBLE_YEAR_TOTAL_DAYS,
+        percent: Math.round((read / BIBLE_YEAR_TOTAL_DAYS) * 100),
+        nextDay: bibleYear.planDay ?? 1,
+        releaseMs: null,
+      });
+    }
+
+    const ids = new Set(entries.map((e) => e.id));
+    const upcomingEvent = getUpcomingCommunityEvent(now);
+    const soonest = entries
+      .filter((e) => e.comingSoon && e.releaseMs !== null)
+      .sort((a, b) => (a.releaseMs ?? 0) - (b.releaseMs ?? 0))[0];
+    const nextId =
+      upcomingEvent && ids.has(upcomingEvent.devotionalId) ? upcomingEvent.devotionalId : soonest?.id ?? null;
+    const liveEvent = getLiveCommunityEvent(now);
+    const currentId =
+      liveEvent && ids.has(liveEvent.devotionalId) && liveEvent.devotionalId !== nextId
+        ? liveEvent.devotionalId
+        : inFlight.find(({ study }) => ids.has(study.id) && study.id !== nextId)?.study.id ?? null;
+
+    const rank = (e: Entry) => (e.id === nextId ? 0 : e.id === currentId ? 1 : e.id === BIBLE_YEAR_SHELF_ID ? 2 : 3);
+    entries.sort(
+      (a, b) => rank(a) - rank(b) || (counts[b.id] ?? 0) - (counts[a.id] ?? 0) || a.title.localeCompare(b.title),
+    );
+    return entries.map((e) => ({
+      ...e,
+      seat: e.id === nextId ? ("next" as const) : e.id === currentId ? ("current" as const) : null,
+      live: Boolean(liveEvent && e.id === liveEvent.devotionalId),
+    }));
+  }, [filtered, progress, category, bibleYear, inFlight, counts]);
 
   /** A shelf tile: the study's own guide page. */
   const openStudy = (id: string) => {
@@ -280,103 +387,124 @@ export default function LibraryPage({ embedded = false, onStudySelect }: Library
             Nothing in this category yet. Try All Studies.
           </p>
         ) : (
-          <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-6">
-            {filtered.map((study) => {
-              const p = withTotals(progress[study.id], study.total_days);
-              const { comingSoon, label } = availability(study, p.completedDays > 0);
+          // Each study in its own holder, like the dashboard bookshelf
+          // (Louis, 2026-11-21). bb-cv-book and its data-tone are the same
+          // hooks the shelf uses, so a Bible Cover skins both alike.
+          <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {shelf.map((entry, index) => {
+              const tint = cardTint(index);
+              const buddies = counts[entry.id] ?? 0;
+              const tone =
+                entry.seat === "next"
+                  ? "upcoming"
+                  : entry.live
+                    ? "live"
+                    : entry.comingSoon
+                      ? "soon"
+                      : entry.isComplete
+                        ? "done"
+                        : entry.seat === "current"
+                          ? "current"
+                          : "other";
+              const badge =
+                entry.seat === "next"
+                  ? { text: "Upcoming Study", icon: "🗓️", bg: "#6d3fd4" }
+                  : entry.live
+                    ? { text: "Live Group Study", icon: null, bg: "#b91c1c" }
+                    : entry.comingSoon
+                      ? { text: "Coming Soon", icon: "🗓️", bg: "#6d3fd4" }
+                      : entry.isComplete
+                        ? { text: "Study Completed", icon: "✔", bg: "#1f8f54" }
+                        : entry.seat === "current"
+                          ? { text: "Currently Reading", icon: "📖", bg: "#5b3fd4" }
+                          : null;
+              const grey = entry.comingSoon || entry.seat === "next";
               return (
-                <button
-                  key={study.id}
-                  type="button"
-                  onClick={() => openStudy(study.id)}
-                  className="group text-left"
+                <li
+                  key={entry.id}
+                  data-tone={tone}
+                  className="bb-cv-book flex flex-col rounded-2xl border p-2 shadow-sm transition motion-safe:duration-200 hover:shadow-md"
+                  style={{ backgroundColor: tint.bg, borderColor: entry.seat === "next" ? "#b79cf3" : tint.border }}
                 >
-                  <div className="overflow-hidden rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f1f5fa)] shadow-sm transition group-hover:border-[var(--bb-accent,#2f7fe8)]">
-                    {study.cover_image ? (
-                      // Covers are real artwork at mixed sizes; object-cover on a
-                      // fixed 2:3 frame keeps the shelf even without squashing one.
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={study.cover_image}
-                        alt={study.title}
-                        loading="lazy"
-                        className={`aspect-[2/3] w-full object-cover ${comingSoon ? "opacity-70 grayscale" : ""}`}
-                      />
-                    ) : (
-                      <div className="flex aspect-[2/3] w-full items-center justify-center px-2 text-center text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-                        {study.title}
-                      </div>
-                    )}
-                  </div>
-                  <p className="mt-2 text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-                    {study.title}
-                  </p>
-                  <p className="mt-0.5 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-                    {study.total_days} Days
-                  </p>
-                  {comingSoon ? (
-                    <p className="mt-1 text-[11px] font-black uppercase tracking-wide text-[#a57d2c]">{label}</p>
-                  ) : p.completedDays > 0 ? (
-                    <>
-                      <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#f1f5fa)]">
+                  <button
+                    type="button"
+                    onClick={() => openStudy(entry.id)}
+                    className="group flex flex-1 flex-col text-left outline-none focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)]"
+                  >
+                    <span className="relative block">
+                      {badge ? (
                         <span
-                          className="block h-full rounded-full bg-[var(--bb-accent,#2f7fe8)]"
-                          style={{ width: `${p.percent}%` }}
-                        />
+                          className="bb-cv-badge absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-1 text-[9px] font-black text-white shadow-md"
+                          style={{ backgroundColor: badge.bg }}
+                        >
+                          {badge.icon ? (
+                            <span aria-hidden>{badge.icon}</span>
+                          ) : (
+                            <span aria-hidden className="bb-shelf-live-dot h-1.5 w-1.5 rounded-full bg-white" />
+                          )}
+                          {badge.text}
+                        </span>
+                      ) : null}
+                      <span className="block overflow-hidden rounded-xl shadow-[0_6px_16px_rgba(16,33,58,0.2)]">
+                        {entry.cover ? (
+                          // Covers are real artwork at mixed sizes; object-cover on a
+                          // fixed 2:3 frame keeps the shelf even without squashing one.
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={entry.cover}
+                            alt={entry.title}
+                            loading={index < 4 ? "eager" : "lazy"}
+                            className={`aspect-[2/3] w-full object-cover ${grey ? "opacity-70 grayscale" : ""}`}
+                          />
+                        ) : (
+                          <span className="flex aspect-[2/3] w-full items-center justify-center bg-[var(--bb-surface-soft,#eef2f7)] px-2 text-center text-[11px] font-black text-[var(--bb-text-muted,#6b7280)]">
+                            {entry.title}
+                          </span>
+                        )}
                       </span>
-                      <p className="mt-1 text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
-                        {p.isComplete ? "Completed" : `Day ${p.nextDay} of ${study.total_days}`}
-                      </p>
-                    </>
-                  ) : null}
-                </button>
+                    </span>
+
+                    {/* Two lines reserved, so the rows under the titles line up. */}
+                    <span className="bb-cv-book-title mt-2 line-clamp-2 min-h-[2.5em] text-[13px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                      {entry.title}
+                    </span>
+
+                    <span className="bb-cv-book-body mt-1 block">
+                      <span className="block text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
+                        {entry.totalDays} Days
+                      </span>
+                      {buddies > 0 ? (
+                        <span className="mt-1 flex items-center gap-1 text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
+                          <span aria-hidden>👥</span>
+                          {new Intl.NumberFormat().format(buddies)} {buddies === 1 ? "Buddy" : "Buddies"}{" "}
+                          {entry.seat === "next" ? "joined" : "studying"}
+                        </span>
+                      ) : null}
+                      {entry.comingSoon && entry.label ? (
+                        <span className="bb-cv-hl mt-1 block text-[11px] font-black text-[#a57d2c]">{entry.label}</span>
+                      ) : entry.completedDays > 0 ? (
+                        <>
+                          <span className="bb-cv-track mt-1.5 block h-1.5 overflow-hidden rounded-full bg-white/70">
+                            <span
+                              className="bb-cv-fill block h-full rounded-full bg-[var(--bb-accent,#2f7fe8)]"
+                              style={{ width: `${entry.percent}%` }}
+                            />
+                          </span>
+                          {entry.isComplete ? (
+                            <span className="bb-cv-ok mt-1 block text-[11px] font-bold text-[#2f8f5b]">✅ Completed</span>
+                          ) : (
+                            <span className="mt-1 block text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
+                              Day {entry.nextDay} of {entry.totalDays}
+                            </span>
+                          )}
+                        </>
+                      ) : null}
+                    </span>
+                  </button>
+                </li>
               );
             })}
-            {/* Bible in One Year sits on the shelf like a book and now opens
-                like one: the same detail page every other guide opens, not its
-                old hero-and-365-cards screen. Louis, 2026-11-03: "wisdom of
-                proverbs is the Template!" The plan itself, its days and its
-                progress are untouched - only the way in changed. It carries no
-                category, so it shows under All Studies only. */}
-            {category === "all" && bibleYear ? (
-              <button
-                type="button"
-                onClick={() => openStudy(BIBLE_YEAR_SHELF_ID)}
-                className="group text-left"
-              >
-                <div className="overflow-hidden rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f1f5fa)] shadow-sm transition group-hover:border-[var(--bb-accent,#2f7fe8)]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={BIBLE_YEAR_SHELF_COVER}
-                    alt={BIBLE_YEAR_SHELF_TITLE}
-                    loading="lazy"
-                    className="aspect-[2/3] w-full object-cover"
-                  />
-                </div>
-                <p className="mt-2 text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">
-                  {BIBLE_YEAR_SHELF_TITLE}
-                </p>
-                <p className="mt-0.5 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-                  {BIBLE_YEAR_TOTAL_DAYS} Days
-                </p>
-                {bibleYear.highestReadDay > 0 ? (
-                  <>
-                    <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#f1f5fa)]">
-                      <span
-                        className="block h-full rounded-full bg-[var(--bb-accent,#2f7fe8)]"
-                        style={{
-                          width: `${Math.round((bibleYear.highestReadDay / BIBLE_YEAR_TOTAL_DAYS) * 100)}%`,
-                        }}
-                      />
-                    </span>
-                    <p className="mt-1 text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
-                      Day {bibleYear.planDay} of {BIBLE_YEAR_TOTAL_DAYS}
-                    </p>
-                  </>
-                ) : null}
-              </button>
-            ) : null}
-          </div>
+          </ul>
         )}
       </section>
     </div>

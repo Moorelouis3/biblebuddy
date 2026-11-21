@@ -74,12 +74,32 @@ function firstName(name: string) {
  * written as one paragraph renders exactly as before.
  */
 function IntroText({ text }: { text: string }) {
+  // A drop-down like "How does the community study work?" below it (Louis,
+  // 2026-11-21: "have that description be a drop down also"). Closed at
+  // first, so the join button and the book sit higher on the page.
+  const [open, setOpen] = useState(false);
   const blocks = text
     .split(/\n\s*\n/)
     .map((block) => block.split("\n").filter((line) => line.trim()))
     .filter((lines) => lines.length);
   return (
-    <div className="flex flex-col gap-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+    <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]">
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        className="flex min-h-12 w-full items-center justify-between gap-3 px-5 py-3.5 text-left"
+      >
+        <span className="text-sm font-black tracking-wide text-[var(--bb-text-primary,#111827)]">ABOUT THIS STUDY</span>
+        <span
+          aria-hidden="true"
+          className={`text-[var(--bb-text-muted,#6b7280)] transition-transform ${open ? "rotate-180" : ""}`}
+        >
+          ⌄
+        </span>
+      </button>
+      {open ? (
+    <div className="flex flex-col gap-3 border-t border-[var(--bb-card-border,#dbe7f4)] px-5 py-4 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
       {blocks.map(([first, ...rest], index) => (
         <div key={index}>
           <p>{first}</p>
@@ -94,6 +114,8 @@ function IntroText({ text }: { text: string }) {
           ) : null}
         </div>
       ))}
+    </div>
+      ) : null}
     </div>
   );
 }

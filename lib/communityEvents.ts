@@ -153,25 +153,20 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     countdownSub: "A 30-day devotional · Starting December 1",
     liveSub: "Day {day} of Genesis 9-25",
     evergreenSub: "Follow Abraham from the call to the promise, one day at a time.",
-    // Short paragraphs and an emoji list (Louis, 2026-11-21: "breaks
-    // paragraphs not one big one"). A blank line starts a paragraph; lines
-    // under a paragraph's first line become its list. See IntroText on
-    // app/events/[slug]/page.tsx.
+    // Short paragraphs with a few bullets, like a study guide day (Louis,
+    // 2026-11-21: "only like 3 bullet points not 11 ... we can still have
+    // sentences and paragraphs just not one big block"). A blank line starts
+    // a paragraph; lines under a paragraph's first line become its list. See
+    // IntroText on app/events/[slug]/page.tsx.
     intro: [
       "This is not a character study about Abraham. It is a study about obedience.",
       "",
-      "Walk through Genesis 9 to 25 with Bible Buddies around the world:",
-      "🌊 The world starting over after the flood",
-      "📣 The call Abram answered",
-      "⏳ The years he waited",
-      "✨ The covenant God made under the stars",
-      "🪨 The mistakes he made on the way",
-      "👶 The son who came at last",
-      "⛰️ The mountain where the Lord provided",
+      "For thirty days we walk through Genesis 9 to 25 together, from the world starting over after the flood to the mountain where the Lord provided. Along the way you will see:",
+      "📣 The call Abram answered, and the long years he waited",
+      "✨ The covenant God made with him under the stars",
+      "⛰️ The son who came at last, and the test on the mountain",
       "",
-      "📅 A new day opens every day from 1 to 30 December. Join whenever you like and study each day when it suits you.",
-      "",
-      "💬 Then meet the community in the daily discussion.",
+      "A new day opens every day from 1 to 30 December. Join whenever you like, study each day when it suits you, then meet the community in the daily discussion.",
     ].join("\n"),
     howItWorks: [
       // Thirty days over seventeen chapters, so this study paces by passage.

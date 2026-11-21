@@ -108,18 +108,20 @@ export default function StudyBookBanner({ eventSlug }: { eventSlug: string }) {
       className="flex items-center gap-4 rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] p-4"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={book.cover} alt="" className="h-28 w-auto shrink-0 rounded-[4px] shadow-md" />
-      <div className="min-w-0 flex-1">
-        <p className="text-[15px] font-black leading-snug text-[var(--bb-text-primary,#111827)]">Get the printed book</p>
-        <p className="mt-0.5 text-xs font-semibold leading-snug text-[var(--bb-text-secondary,#4b5563)]">
-          Optional. The study is free here.
+      <img src={book.cover} alt="" className="h-32 w-auto shrink-0 rounded-[4px] shadow-md sm:h-36" />
+      {/* The text and button fill the width beside the cover (Louis,
+          2026-11-21: "still too much empty space on the right"). */}
+      <div className="flex min-w-0 flex-1 flex-col">
+        <p className="text-lg font-black leading-snug text-[var(--bb-text-primary,#111827)]">Get the printed book</p>
+        <p className="mt-0.5 text-sm font-semibold leading-snug text-[var(--bb-text-secondary,#4b5563)]">
+          {book.title}, in your hands. Optional: the study is free here.
         </p>
         <a
           href={href}
           target="_blank"
           rel="noopener noreferrer"
           onClick={track}
-          className="bb-cv-fp-main bb-pulse-cta relative mt-3 inline-flex items-center rounded-xl px-4 py-2.5 text-sm font-black text-[#1A1205] transition hover:brightness-95"
+          className="bb-cv-fp-main bb-pulse-cta relative mt-3 flex w-full items-center justify-center rounded-xl px-4 py-3 text-base font-black text-[#1A1205] transition hover:brightness-95"
           style={{ backgroundColor: "var(--bb-cv-primary-bg, #FFB43D)" }}
         >
           Buy on Amazon →
