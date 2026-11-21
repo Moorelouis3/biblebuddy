@@ -46,12 +46,24 @@ export async function POST(request: NextRequest) {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  const { error } = await supabaseAdmin.from("blog_page_views").insert({
+  // The browser that made the view, so no-referrer traffic can be split into
+  // people, the app (the "BibleBuddyApp" marker) and bots at read time
+  // (Louis, 2026-11-21). See ADD_BLOG_PAGE_VIEWS_USER_AGENT.sql.
+  const userAgent = (request.headers.get("user-agent") || "").slice(0, 300) || null;
+
+  const row = {
     article_slug: articleSlug,
     session_id: sessionId,
     user_id: userId,
     referrer,
-  });
+  };
+
+  let { error } = await supabaseAdmin.from("blog_page_views").insert({ ...row, user_agent: userAgent });
+
+  // A database without the user_agent column yet must still count the view.
+  if (error && /user_agent/i.test(error.message || "")) {
+    ({ error } = await supabaseAdmin.from("blog_page_views").insert(row));
+  }
 
   if (error) {
     if (isMissingViewsTable(error.message)) {

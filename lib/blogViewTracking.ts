@@ -42,14 +42,32 @@ export function trackBlogPageView(articleSlug: string) {
     referrer: document.referrer || null,
   };
 
-  void fetch("/api/blog/track-view", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-    keepalive: true,
-  }).catch((error) => {
-    console.error("Blog view tracking failed:", error);
-  });
+  // The route has always read a Bearer token to fill user_id, and nothing ever
+  // sent one, so every view on record looks logged out (Louis, 2026-11-21: a
+  // signed-in reader opening a post from the dashboard was invisible). The
+  // token comes from the local session, no network. It is bounded because a
+  // stuck auth lock must never cost the view itself.
+  const accessToken: Promise<string | null> = Promise.race([
+    supabase.auth
+      .getSession()
+      .then(({ data }) => data.session?.access_token ?? null)
+      .catch(() => null),
+    new Promise<null>((resolve) => setTimeout(() => resolve(null), 1500)),
+  ]);
+
+  void accessToken.then((token) =>
+    fetch("/api/blog/track-view", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    }).catch((error) => {
+      console.error("Blog view tracking failed:", error);
+    }),
+  );
 }
 
 // Also record the read in master_actions so it shows up in the Action Log on
