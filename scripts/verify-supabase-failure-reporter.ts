@@ -56,6 +56,14 @@ check(
   describeSupabaseRequest(`${SUPABASE}/rest/v1/feed_post_comments`, "POST")?.operation === "insert",
 );
 check(
+  "an upsert is told apart from an insert, even though both are a POST",
+  describeSupabaseRequest(
+    `${SUPABASE}/rest/v1/profile_stats`,
+    "POST",
+    "resolution=merge-duplicates,return=representation",
+  )?.operation === "upsert",
+);
+check(
   "an auth call is described without naming a table",
   describeSupabaseRequest(`${SUPABASE}/auth/v1/token?grant_type=refresh_token`, "POST")?.table === "auth",
 );

@@ -62,8 +62,18 @@ export type RequestDescription = {
  *
  * Returns null for anything that is not a Supabase request, and for our own
  * reporting endpoint - a reporter that reports its own failures is a loop.
+ *
+ * `preferHeader` disambiguates `insert` from `upsert`: postgrest-js sends both
+ * as a plain POST (it never actually sends the PUT this used to check for),
+ * and only an upsert adds a `Prefer: resolution=...-duplicates` header. Without
+ * it every failed upsert across the app - which is most writes to profile_stats
+ * - was being filed as "insert", which is misleading when Louis reads it.
  */
-export function describeSupabaseRequest(url: string, method: string): RequestDescription | null {
+export function describeSupabaseRequest(
+  url: string,
+  method: string,
+  preferHeader?: string | null,
+): RequestDescription | null {
   if (!url) return null;
   if (url.includes("/api/bug-reports")) return null;
 
@@ -84,7 +94,7 @@ export function describeSupabaseRequest(url: string, method: string): RequestDes
   const table = rest[1];
   if (path.includes("/rest/v1/rpc/")) return { table, operation: "rpc" };
 
-  const operation: RequestDescription["operation"] =
+  let operation: RequestDescription["operation"] =
     verb === "GET" || verb === "HEAD"
       ? "select"
       : verb === "POST"
@@ -96,6 +106,10 @@ export function describeSupabaseRequest(url: string, method: string): RequestDes
             : verb === "DELETE"
               ? "delete"
               : "select";
+
+  if (operation === "insert" && preferHeader && /resolution=/i.test(preferHeader)) {
+    operation = "upsert";
+  }
 
   return { table, operation };
 }
@@ -202,12 +216,13 @@ export function reportSupabaseFailure(input: {
   method: string;
   status: number;
   reason: string;
+  preferHeader?: string | null;
 }): void {
   try {
     if (typeof window === "undefined") return;
     if (isLocalDevHost()) return;
 
-    const described = describeSupabaseRequest(input.url, input.method);
+    const described = describeSupabaseRequest(input.url, input.method, input.preferHeader);
     if (!described) return;
 
     const pathname = window.location.pathname;
