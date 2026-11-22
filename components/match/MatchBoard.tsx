@@ -264,7 +264,7 @@ export default function MatchBoard({
     }
   };
 
-  // Stuck? After 6 seconds without a move, a swap that works pulses until the
+  // Stuck? After 10 seconds without a move (6 felt too quick: Louis, 2026-11-22), a swap that works pulses until the
   // next move (Jessica, via Louis, 2026-11-22: "if you take too long, a
   // suggestion should flash on the board").
   useEffect(() => {
@@ -272,7 +272,7 @@ export default function MatchBoard({
     const id = window.setTimeout(() => {
       const found = findMove(boardRef.current);
       if (found) setHint(found);
-    }, 6000);
+    }, 10000);
     return () => window.clearTimeout(id);
   }, [board, busy, outcome, hint, selected]);
 
