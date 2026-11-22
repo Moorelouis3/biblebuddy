@@ -79,7 +79,7 @@ html.bb-game-screen :is(.bb-bottom-pill, .bb-safe-top-header, .bb-report-problem
 .bbm-medal-best { font-size: 12px; font-weight:800; color:#fff3cf !important; text-shadow: 0 1px 3px rgba(0,0,0,.8); }
 .bbm-medal.is-arrived .bbm-medal-coin { animation: bbm-glow 1.2s ease-in-out infinite alternate; }
 @keyframes bbm-glow { from { box-shadow: inset 0 0 0 4px #f6cc6a, inset 0 0 0 7px #c0661a, 0 0 0 rgba(255,220,120,0); } to { box-shadow: inset 0 0 0 4px #f6cc6a, inset 0 0 0 7px #c0661a, 0 0 34px 10px rgba(255,220,120,.85); } }
-.bbm-marker { position:absolute; z-index:5; width: 52px; height: 52px; transform: translate(-50%, -128%); border-radius:999px; overflow:hidden; display:grid; place-items:center; font-size:28px;
+.bbm-marker { position:absolute; z-index:5; width: 52px; height: 52px; transform: translate(-50%, -205%); border-radius:999px; overflow:hidden; display:grid; place-items:center; font-size:28px;
   background:#fff; box-shadow: 0 0 0 4px #f6cc6a, 0 8px 14px rgba(0,0,0,.45); }
 .bbm-marker::after { content:""; position:absolute; left:50%; bottom:-10px; transform: translateX(-50%); border: 8px solid transparent; border-top-color:#f6cc6a; }
 .bbm-marker img { width:100%; height:100%; object-fit:cover; }
@@ -187,6 +187,77 @@ html.bb-game-screen :is(.bb-bottom-pill, .bb-safe-top-header, .bb-report-problem
   min-width: 30px; padding: 2px 9px; border-radius:999px; text-align:center; font-weight:900; font-size:16px; color:#4a2a10 !important; background:#fbeccb; box-shadow: 0 0 0 2px #c9934a, 0 4px 8px rgba(0,0,0,.35); white-space:nowrap; }
 .bbm-linkcount.is-ready { background:#ffe27a; }
 .bbm-linkcount em { display:block; font-style:normal; font-size:11px; letter-spacing:.04em; }
+/* ================= the production art (Drive "Production Art", 2026-11-22) ================= */
+/* home: phone art on tall screens, desktop art on wide ones */
+.bbm-home2-blur { background-image: url(/games/match/ui/home-desktop.webp); }
+.bbm-home2-art.is-phone { height: min(100dvh, 216.67vw); aspect-ratio: 1080 / 2340; }
+.bbm-home2-art.is-desktop { display:none; width: min(100vw, 177.78dvh); height:auto; aspect-ratio: 1920 / 1080; }
+@media (min-aspect-ratio: 1/1) {
+  .bbm-home2-art.is-phone { display:none; }
+  .bbm-home2-art.is-desktop { display:block; }
+}
+.bbm-home2-label { background:none; font-family: Georgia, serif; }
+.bbm-home2-art.is-phone .bbm-home2-label { font-size: min(5vw, 2.3dvh); }
+.bbm-home2-art.is-desktop .bbm-home2-label { font-size: min(1.9vw, 3.4dvh); }
+
+/* map: the painted trail, one column, blurred art either side on wide screens */
+.bbm-map { background:#173a22; }
+.bbm-map-blur { position:absolute; inset:-30px; background: url(/games/match/ui/map-desktop.webp) center / cover no-repeat; filter: blur(18px) brightness(.75); }
+.bbm-map-scroll { position:relative; z-index:1; }
+.bbm-map-world { height:auto; width: min(100vw, 560px); margin: 0 auto; aspect-ratio: 1080 / 4680; box-shadow: 0 0 40px rgba(0,0,0,.45); }
+.bbm-map-art { display:block; width:100%; height:100%; user-select:none; -webkit-user-drag:none; }
+.bbm-map .bbm-topbar { z-index:6; width: min(100vw, 560px); left:50%; right:auto; transform: translateX(-50%); }
+.bbm-ribbon { width: 230px; height: 53px; padding: 0 0 6px; display:flex; align-items:center; justify-content:center; border-radius:0; box-shadow:none;
+  background: url(/games/match/ui/genesis-ribbon.webp) center / 100% 100% no-repeat; font-size: 24px; letter-spacing:.02em; }
+.bbm-medal-coin { width: 86px; height: 86px; border-radius:0; padding-bottom: 22%; box-sizing:border-box; font-size: 32px; box-shadow:none; filter: drop-shadow(0 8px 12px rgba(0,0,0,.45));
+  background: url(/games/match/ui/level-coin-normal.webp) center / contain no-repeat; }
+.bbm-medal-coin { position:relative; }
+.bbm-medal.is-next .bbm-medal-coin { animation: bbm-pulse-coin 1.1s ease-in-out infinite; }
+@keyframes bbm-pulse-coin { 0%,100% { transform: scale(1); filter: drop-shadow(0 8px 12px rgba(0,0,0,.45)) drop-shadow(0 0 0 rgba(255,220,120,0)); } 50% { transform: scale(1.1); filter: drop-shadow(0 8px 12px rgba(0,0,0,.45)) drop-shadow(0 0 18px rgba(255,220,120,.95)); } }
+.bbm-playme { position:absolute; left:50%; bottom: calc(100% - 4px); transform: translateX(-50%); padding: 5px 12px; border-radius: 999px; white-space:nowrap; font-weight:900; font-size:15px;
+  color:#fff7dd !important; background: linear-gradient(180deg,#3d9a4b,#1d6a2e); box-shadow: 0 0 0 2px #f0c75e, 0 6px 12px rgba(0,0,0,.35); animation: bbm-bob 1.1s ease-in-out infinite; }
+.bbm-playme::after { content:""; position:absolute; left:50%; top:100%; transform: translateX(-50%); border: 7px solid transparent; border-top-color:#1d6a2e; }
+.bbm-medal-photo { position:absolute; left:50%; top:42%; width:54%; aspect-ratio:1; transform: translate(-50%,-50%); border-radius:999px; overflow:hidden; background:#fff; box-shadow: 0 0 0 2px #f6cc6a, inset 0 0 6px rgba(0,0,0,.4); display:grid; place-items:center; font-size:24px; }
+.bbm-medal-photo img { width:100%; height:100%; object-fit:cover; object-position: 50% 30%; display:block; }
+.bbm-medal-coin.is-done { background-image: url(/games/match/ui/level-coin-completed.webp); }
+.bbm-medal-coin.is-locked { background-image: url(/games/match/ui/level-coin-locked.webp); filter: drop-shadow(0 8px 12px rgba(0,0,0,.45)); }
+.bbm-medal.is-locked .bbm-medal-coin { filter: drop-shadow(0 8px 12px rgba(0,0,0,.45)); }
+.bbm-medal-name { min-width: 150px; padding: 8px 18px 9px; border-radius:0; box-shadow:none; filter: drop-shadow(0 4px 8px rgba(0,0,0,.35));
+  background: url(/games/match/ui/level-name-plaque.webp) center / 100% 100% no-repeat; }
+.bbm-medal.is-arrived .bbm-medal-coin { animation: bbm-glow2 1.2s ease-in-out infinite alternate; }
+@keyframes bbm-glow2 { from { filter: drop-shadow(0 0 0 rgba(255,220,120,0)); } to { filter: drop-shadow(0 0 22px rgba(255,220,120,.95)); } }
+
+/* board */
+.bbm-board[data-level="creation"] .bbm-board-bg { background-image: url(/games/match/ui/creation-phone.webp); }
+.bbm-board[data-level="eden"] .bbm-board-bg { background-image: url(/games/match/ui/eden-phone.webp); }
+@media (min-aspect-ratio: 1/1) {
+  .bbm-board[data-level="creation"] .bbm-board-bg { background-image: url(/games/match/ui/creation-desktop.webp); }
+  .bbm-board[data-level="eden"] .bbm-board-bg { background-image: url(/games/match/ui/eden-desktop.webp); }
+}
+.bbm-board-title { box-shadow:none; border-radius:0; padding: 0 18%; aspect-ratio: 1000 / 280; display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box;
+  background: url(/games/match/ui/board-title-plaque.webp) center / 100% 100% no-repeat; width: calc(var(--w) * .86); }
+.bbm-board-title h1 { color:#4a2a10 !important; text-shadow: 0 1px 0 rgba(255,240,200,.6); }
+.bbm-hud { box-shadow:none; border-radius:0; aspect-ratio: 1200 / 220; padding: 0 15%; background: url(/games/match/ui/goal-bar.webp) center / 100% 100% no-repeat; }
+.bbm-hud-sep { background: rgba(160,110,40,.55); margin: 14% 0; }
+/* A thin gold rim, one piece with the board (Louis: the heavy frame looked separate). */
+.bbm-gridframe { padding: 5px; border-radius: 16px; background: linear-gradient(160deg, #ffe9a6, #d9a23a 40%, #f6d27a 60%, #b07a20); box-shadow: 0 10px 22px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.5); }
+.bbm-board { --size: min(100vw - 34px, 100dvh - 300px, 520px); --w: calc(var(--size) + 10px); }
+.bbm-grid { border-radius: 12px; background: #0e1834; }
+.bbm-board[data-level="eden"] .bbm-grid { background: #0f2a17; }
+.bbm-socket::before { background: url(/games/match/ui/tile-socket-navy.webp) center / 100% 100% no-repeat; box-shadow:none; border-radius:0; }
+.bbm-board[data-level="eden"] .bbm-socket::before { background-image: url(/games/match/ui/tile-socket-green.webp); }
+.bbm-mapbtn { width: calc(var(--w) * .34); aspect-ratio: 500 / 170; padding:0; border-radius:0; box-shadow:none; font-size:0; color: transparent !important; filter: drop-shadow(0 6px 10px rgba(0,0,0,.35));
+  background: url(/games/match/ui/map-button.webp) center / 100% 100% no-repeat; }
+.bbm-mapbtn span { display:none; }
+.bbm-hintbtn { width: calc(var(--w) * .18); height:auto; aspect-ratio:1; padding:0; border-radius:0; box-shadow:none; filter: drop-shadow(0 6px 12px rgba(0,0,0,.4));
+  background: url(/games/match/ui/hint-button.webp) center / 100% 100% no-repeat; }
+.bbm-hintbtn img { display:none; }
+.bbm-panel { aspect-ratio: 900 / 1100; width: min(90vw, 420px); box-sizing:border-box; padding: 15% 13% 12%; border-radius:0; box-shadow:none; display:flex; flex-direction:column; justify-content:center;
+  background: url(/games/match/ui/result-panel.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 16px 30px rgba(0,0,0,.5)); }
+.bbm-btn-green, .bbm-btn-cream { border-radius:0; box-shadow:none; aspect-ratio: 700 / 180; padding:0; display:flex; align-items:center; justify-content:center; font-size: 19px; }
+.bbm-btn-green { background: url(/games/match/ui/button-green.webp) center / 100% 100% no-repeat; }
+.bbm-btn-cream { background: url(/games/match/ui/button-cream.webp) center / 100% 100% no-repeat; }
+
 @media (prefers-reduced-motion: reduce) {
   .bbm-home-buddy, .bbm-marker.is-walking, .bbm-medal.is-arrived .bbm-medal-coin, .bbm-hud-count.is-low { animation: none !important; }
 }

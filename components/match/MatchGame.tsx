@@ -126,10 +126,10 @@ export default function MatchGame() {
 /* ---------------- home ---------------- */
 
 /**
- * The home screen is Louis's own art (Drive: Bible-Buddy-Match-Main-Screen,
- * 1024x1536). Back, Play and settings are tappable spots on the picture; the
- * level label is live text laid over the art's plaque so it can say Eden.
- * On a wide screen the picture stands in the middle over a blurred copy.
+ * The home screen is Louis's own art (Drive "Production Art": home-phone and
+ * home-desktop, with the level plaque left blank). Back, Play and settings
+ * are tappable spots on the picture; the level label is live text on the
+ * blank plaque so it can say Eden.
  */
 function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; ready: boolean }) {
   const [settings, setSettings] = useState(false);
@@ -152,16 +152,39 @@ function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; rea
   return (
     <div className="bbm-home2">
       <div className="bbm-home2-blur" aria-hidden="true" />
-      <div className="bbm-home2-art">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/games/match/home-phone.webp" alt="Bible Buddy Match: Buddy on the path through Eden with sun, moon, star and tree tiles" />
-        <Link href="/bible-study-games" className="bbm-hot" style={{ left: "4.5%", top: "2.5%", width: "10%", height: "7%" }} aria-label="Back to Bible Buddy" />
-        <button type="button" className="bbm-hot" style={{ left: "85%", top: "2.5%", width: "10%", height: "7%" }} aria-label="Settings" onClick={() => setSettings(true)} />
-        <button type="button" className="bbm-hot is-play" style={{ left: "17%", top: "74%", width: "66%", height: "15%" }} aria-label="Play" onClick={onPlay} disabled={!ready} />
-        <span className="bbm-home2-label" style={{ left: "25%", top: "90.6%", width: "50%", height: "5.8%" }}>
-          {label}
-        </span>
-      </div>
+      {/* Phone art (1080x2340) on tall screens, desktop art (1920x1080) on wide
+          ones. The tap spots and the label sit on each picture's own buttons. */}
+      {(
+        [
+          {
+            kind: "phone",
+            src: "/games/match/ui/home-phone.webp",
+            back: { left: "4%", top: "2%", width: "11%", height: "5%" },
+            gear: { left: "85%", top: "2%", width: "11%", height: "5%" },
+            play: { left: "18%", top: "61%", width: "62%", height: "10.5%" },
+            label: { left: "23%", top: "72.8%", width: "54%", height: "4%" },
+          },
+          {
+            kind: "desktop",
+            src: "/games/match/ui/home-desktop.webp",
+            back: { left: "2.5%", top: "2%", width: "5.5%", height: "10%" },
+            gear: { left: "92.5%", top: "2%", width: "5.5%", height: "10%" },
+            play: { left: "32.5%", top: "66%", width: "34.5%", height: "17.5%" },
+            label: { left: "35%", top: "86.5%", width: "30%", height: "6.5%" },
+          },
+        ] as const
+      ).map((art) => (
+        <div key={art.kind} className={`bbm-home2-art is-${art.kind}`}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={art.src} alt="Bible Buddy Match: Buddy on the path through Eden with sun, moon, star and tree tiles" />
+          <Link href="/bible-study-games" className="bbm-hot" style={art.back} aria-label="Back to Bible Buddy" />
+          <button type="button" className="bbm-hot" style={art.gear} aria-label="Settings" onClick={() => setSettings(true)} />
+          <button type="button" className="bbm-hot is-play" style={art.play} aria-label="Play" onClick={onPlay} disabled={!ready} />
+          <span className="bbm-home2-label" style={art.label}>
+            {label}
+          </span>
+        </div>
+      ))}
       {settings ? (
         <div className="bbm-panelwrap" role="dialog" aria-modal="true" onClick={() => setSettings(false)}>
           <div className="bbm-panel" onClick={(e) => e.stopPropagation()}>
@@ -181,12 +204,36 @@ function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; rea
 
 /* ---------------- the Genesis map ---------------- */
 
-// The trail in a 100 x 200 box: the bottom half is Creation's coast, the top
-// half the garden. Creation's medallion sits low, Eden's one screen above.
-const TRAIL = "M 52 200 C 30 192, 70 178, 50 166 C 30 156, 26 140, 52 130 C 78 120, 80 104, 56 96 C 30 88, 28 74, 50 64 C 72 54, 76 36, 56 24 C 40 14, 48 4, 50 0";
+/**
+ * The map is Louis's painted art (Drive "Production Art": map-phone,
+ * 1080x4680, two phone screens tall): the coast at the bottom, the garden at
+ * the top, the sand path already painted. These points trace that path in
+ * percent of the picture (x of its width, y of its height), bottom to top;
+ * the marker walks along them. Creation sits at the coast, Eden one screen up
+ * past the stone bridge.
+ */
+const PATH_POINTS: Array<[number, number]> = [
+  [38, 99], [37, 95], [30, 91], [21, 87], [14, 82], [12, 78], [14, 74], [25, 71], [26, 68], [21, 65], [24, 62],
+  [30, 59], [40, 57], [47, 55], [44, 52.5], [38, 50], [30, 48.5], [36, 46], [44, 44], [50, 42], [60, 40], [66, 37.5],
+  [64, 35], [67, 32.5], [66, 30], [61, 27.5], [55, 25], [53, 22.5], [48, 20], [33, 17.5], [36, 15], [31, 12.5],
+  [35, 10], [41, 7.5], [47, 5], [50, 2],
+];
+/** A smooth curve through the points (Catmull-Rom, as cubic Beziers). */
+const TRAIL = (() => {
+  const p = PATH_POINTS;
+  let d = `M ${p[0][0]} ${p[0][1]}`;
+  for (let i = 0; i < p.length - 1; i += 1) {
+    const [x0, y0] = p[Math.max(0, i - 1)];
+    const [x1, y1] = p[i];
+    const [x2, y2] = p[i + 1];
+    const [x3, y3] = p[Math.min(p.length - 1, i + 2)];
+    d += ` C ${x1 + (x2 - x0) / 6} ${y1 + (y2 - y0) / 6}, ${x2 - (x3 - x1) / 6} ${y2 - (y3 - y1) / 6}, ${x2} ${y2}`;
+  }
+  return d;
+})();
 const SPOTS = [
-  { x: 50, y: 166 },
-  { x: 50, y: 64 },
+  { x: 21, y: 87 },
+  { x: 61, y: 27.5 },
 ];
 
 function GenesisMap({
@@ -233,7 +280,7 @@ function GenesisMap({
     const el = scroller.current;
     if (!el) return;
     const content = el.scrollHeight;
-    const top = (yUnits / 200) * content - el.clientHeight / 2;
+    const top = (yUnits / 100) * content - el.clientHeight / 2;
     el.scrollTo({ top: Math.max(0, top), behavior: smooth ? "smooth" : "auto" });
   };
 
@@ -284,6 +331,7 @@ function GenesisMap({
 
   return (
     <div className="bbm-map">
+      <div className="bbm-map-blur" aria-hidden="true" />
       <div className="bbm-topbar">
         <button type="button" className="bbm-roundbtn" onClick={onBack} aria-label="Back">
           ←
@@ -293,38 +341,53 @@ function GenesisMap({
       </div>
       <div ref={scroller} className="bbm-map-scroll">
         <div className="bbm-map-world">
-          <div className="bbm-map-eden" aria-hidden="true" />
-          <div className="bbm-map-creation" aria-hidden="true" />
-          <svg className="bbm-map-trail" viewBox="0 0 100 200" preserveAspectRatio="none" aria-hidden="true">
-            <path d={TRAIL} className="bbm-trail-edge" vectorEffect="non-scaling-stroke" />
-            <path ref={pathRef} d={TRAIL} className="bbm-trail" vectorEffect="non-scaling-stroke" />
-            <path d={TRAIL} className="bbm-trail-dash" vectorEffect="non-scaling-stroke" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="bbm-map-art" src="/games/match/ui/map-phone.webp" alt="The Genesis trail from the coast of Creation up to the Garden of Eden" draggable={false} />
+          {/* The painted path, traced: invisible, the marker walks along it. */}
+          <svg className="bbm-map-trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path ref={pathRef} d={TRAIL} fill="none" stroke="none" />
           </svg>
           {MATCH_LEVELS.map((level, i) => {
             const spot = SPOTS[i];
             const unlocked = level.number <= progress.unlocked;
             const done = progress.done.includes(level.id);
+            // The board to play next pulses and says so (Louis, 2026-11-22);
+            // finished boards stay tappable for replays.
+            const next = unlocked && !done && !walking;
             return (
               <button
                 key={level.id}
                 type="button"
-                className={`bbm-medal ${unlocked ? "" : "is-locked"} ${done ? "is-done" : ""} ${arrived === level.id ? "is-arrived" : ""}`}
-                style={{ left: `${spot.x}%`, top: `${spot.y / 2}%` }}
+                className={`bbm-medal ${unlocked ? "" : "is-locked"} ${done ? "is-done" : ""} ${next ? "is-next" : ""} ${arrived === level.id ? "is-arrived" : ""}`}
+                style={{ left: `${spot.x}%`, top: `${spot.y}%` }}
                 disabled={!unlocked || walking}
                 onClick={() => onOpen(level)}
                 aria-label={`${level.number}: ${level.title}${done ? ", complete" : unlocked ? "" : ", locked"}`}
               >
-                <span className="bbm-medal-coin">
-                  {unlocked ? level.number : "🔒"}
-                  {done ? <span className="bbm-medal-check">✓</span> : null}
+                <span className={`bbm-medal-coin ${done ? "is-done" : unlocked ? "" : "is-locked"}`}>
+                  {/* You are here: your photo sits right inside the coin's circle. */}
+                  {!walking && level.number === Math.min(progress.unlocked, MATCH_LEVELS.length) ? (
+                    <span className="bbm-medal-photo">
+                      {avatar ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={avatar} alt="" />
+                      ) : (
+                        <span>🙂</span>
+                      )}
+                    </span>
+                  ) : unlocked && !done ? (
+                    level.number
+                  ) : null}
                 </span>
+                {next ? <span className="bbm-playme">Play me!</span> : null}
                 <span className="bbm-medal-name">{level.title}</span>
                 {progress.best[level.id] ? <span className="bbm-medal-best">Best {progress.best[level.id]}</span> : null}
               </button>
             );
           })}
-          {marker ? (
-            <span className={`bbm-marker ${walking ? "is-walking" : ""}`} style={{ left: `${marker.x}%`, top: `${marker.y / 2}%` }} aria-hidden="true">
+          {/* While walking to the next board, the photo travels on its own. */}
+          {marker && walking ? (
+            <span className={`bbm-marker ${walking ? "is-walking" : ""}`} style={{ left: `${marker.x}%`, top: `${marker.y}%` }} aria-hidden="true">
               {avatar ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={avatar} alt="" />
