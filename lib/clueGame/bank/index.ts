@@ -14,11 +14,14 @@ import { neededForMatch, poolForSelection } from "../engine";
 import { GENESIS_CARDS } from "../decks/genesis";
 import type { ClueQuestion } from "../types";
 import { BANK_FILES } from "./files";
+import { artFor } from "./art";
 
 const CARDS = new Map(GENESIS_CARDS.map((c) => [c.id, c]));
 
 function toItem(q: ClueQuestion): BankItem {
   const card = q.cardId ? CARDS.get(q.cardId) : undefined;
+  // Not a deck card: its own art once made (docs/clue-card-art-needed.md), else the chapter card.
+  const own = card ? null : artFor(q.choices[q.answer], q.category, q.chapter);
   return {
     id: q.id,
     book: q.book,
@@ -31,8 +34,8 @@ function toItem(q: ClueQuestion): BankItem {
     explanation: q.explanation,
     ref: q.ref,
     answerText: q.choices[q.answer],
-    mystery: card?.art.mystery,
-    reveal: card?.art.reveal,
+    mystery: card?.art.mystery ?? own?.mystery,
+    reveal: card?.art.reveal ?? own?.reveal,
     teaching: card?.teaching,
     study: card?.study,
   };
