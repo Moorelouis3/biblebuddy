@@ -21,16 +21,16 @@ export async function generateMetadata({ params }: { params: Promise<{ code: str
     // The preview still works without the name.
   }
   const title = `${host} invited you to play Bible Clue`;
-  const description = "Follow the clues, guess the Bible person, place or thing. Free on Bible Buddy, up to 4 players.";
+  const description = "How much of the Bible do you know? A free, fun way to grow in God’s Word. Join my game on Bible Buddy.";
   const url = `${SITE}/play/${encodeURIComponent(code)}`;
   return {
     title,
     description,
     robots: { index: false, follow: false },
-    openGraph: { title, description, url, siteName: "Bible Buddy", type: "website", images: [{ url: IMAGE, width: 1200, height: 630, alt: "Bible Clue: follow the clues, guess the answer" }] },
+    openGraph: { title, description, url, siteName: "Bible Buddy", type: "website", images: [{ url: IMAGE, width: 1200, height: 630, alt: "Bible Clue by Bible Buddy: how much of the Bible do you know?" }] },
     twitter: { card: "summary_large_image", title, description, images: [IMAGE] },
     // The root layout sets these for the site banner; an invite shows its own.
-    other: { "og:image:secure_url": IMAGE, "twitter:image:alt": "Bible Clue: follow the clues, guess the answer" },
+    other: { "og:image:secure_url": IMAGE, "twitter:image:alt": "Bible Clue by Bible Buddy: how much of the Bible do you know?" },
   };
 }
 
