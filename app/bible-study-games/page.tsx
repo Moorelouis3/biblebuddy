@@ -36,6 +36,27 @@ export default function BibleStudyGamesPage() {
         </span>
       </Link>
 
+      {/* Bible Buddy Match, 2026-11-22: on the page so Louis can test it on different phones. */}
+      <Link
+        href="/bible-study-games/match"
+        className="flex items-center gap-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+      >
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-2xl" style={{ backgroundColor: "#0056FD" }} aria-hidden="true">
+          💎
+        </span>
+        <span className="min-w-0">
+          <span className="block text-lg font-black text-[var(--bb-text-primary,#111827)]">
+            Bible Buddy Match{" "}
+            <span className="ml-1 rounded-full px-2 py-0.5 align-middle text-[10px] font-black uppercase tracking-wide" style={{ backgroundColor: "#f4d35e", color: "#2a2205" }}>
+              New
+            </span>
+          </span>
+          <span className="mt-0.5 block text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+            Connect the tiles and walk through Genesis, board by board.
+          </span>
+        </span>
+      </Link>
+
       <Link
         href="/bible-trivia"
         className="flex items-center gap-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
