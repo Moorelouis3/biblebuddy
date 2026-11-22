@@ -253,12 +253,22 @@ html.bb-game-screen :is(.bb-bottom-pill, .bb-safe-top-header, .bb-report-problem
 .bbm-hintbtn { width: calc(var(--w) * .18); height:auto; aspect-ratio:1; padding:0; border-radius:0; box-shadow:none; filter: drop-shadow(0 6px 12px rgba(0,0,0,.4));
   background: url(/games/match/ui/hint-button.webp) center / 100% 100% no-repeat; }
 .bbm-hintbtn img { display:none; }
-.bbm-panel { aspect-ratio: 900 / 1100; width: min(90vw, 420px); box-sizing:border-box; padding: 15% 13% 12%; border-radius:0; box-shadow:none; display:flex; flex-direction:column; justify-content:center;
+.bbm-panel { --pw: min(90vw, 420px, calc((100dvh - 32px) * 900 / 1100)); aspect-ratio: 900 / 1100; width: var(--pw); box-sizing:border-box; padding: calc(var(--pw) * .2) calc(var(--pw) * .15) calc(var(--pw) * .15); font-size: calc(var(--pw) * .04); border-radius:0; box-shadow:none; display:flex; flex-direction:column; justify-content:center;
   background: url(/games/match/ui/result-panel.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 16px 30px rgba(0,0,0,.5)); }
 .bbm-btn-green, .bbm-btn-cream { border-radius:0; box-shadow:none; aspect-ratio: 700 / 180; padding:0; display:flex; align-items:center; justify-content:center; font-size: 19px; }
 .bbm-btn-green { background: url(/games/match/ui/button-green.webp) center / 100% 100% no-repeat; }
 .bbm-btn-cream { background: url(/games/match/ui/button-cream.webp) center / 100% 100% no-repeat; }
 
+/* The win/lose scroll: every size from the scroll's own width, never a percentage (Louis, 2026-11-22: text squeezed to one word a line). */
+.bbm-panel h2 { font-size: calc(var(--pw) * .075) !important; line-height:1.1; margin: 2px 0 4px; }
+.bbm-panel-kicker { font-size: calc(var(--pw) * .032); margin:0; }
+.bbm-panel-line { font-size: calc(var(--pw) * .04); margin: 4px 0 0; }
+.bbm-panel-score { font-size: calc(var(--pw) * .04); margin: 6px 0 0; }
+.bbm-panel-score b { font-size: calc(var(--pw) * .06); }
+.bbm-panel .bbm-btn-green { margin-top: calc(var(--pw) * .035); font-size: calc(var(--pw) * .048); }
+.bbm-panel .bbm-btn-cream { margin-top: calc(var(--pw) * .02); font-size: calc(var(--pw) * .042); }
+.bbm-panel .bbm-btn-green, .bbm-panel .bbm-btn-cream { width: 88%; margin-left:auto; margin-right:auto; }
+.bbm-panel-link { margin-top: calc(var(--pw) * .025); font-size: calc(var(--pw) * .036); }
 @media (prefers-reduced-motion: reduce) {
   .bbm-home-buddy, .bbm-marker.is-walking, .bbm-medal.is-arrived .bbm-medal-coin, .bbm-hud-count.is-low { animation: none !important; }
 }
