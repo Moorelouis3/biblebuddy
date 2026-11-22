@@ -214,37 +214,22 @@ check("every welcome link is one we approved", () => {
   }
 });
 
-check("the Android link is the explainer, never Play itself, while the beta runs", () => {
+check("the Android link is /android, and /android follows the beta switch", () => {
   /**
-   * Bible Buddy is in a Google closed test, so the Play listing is invisible
-   * to anyone who has not first joined the tester group. Someone sent straight
-   * there is told they are not a tester, which reads like a broken app.
-   * /android is the page that explains the two steps, and it is what every
-   * Play button on the site points at.
+   * The emails link to our own /android, never to Play directly: a welcome
+   * sent months later carries whatever link is baked into its row, and our
+   * own link can change where it goes without reinstalling a single email.
+   * During the closed test /android explained the two tester steps; since the
+   * public launch (2026-11-22, BETA_OPEN = false) it redirects to the listing.
    */
   assert.equal(ANDROID_URL, "https://www.mybiblebuddy.net/android");
   for (const step of WELCOME_SEQUENCE) {
-    assert.ok(
-      !/play\.google\.com/.test(step.body),
-      `step ${step.step} links straight to Play, which is invisible during the closed test`,
-    );
+    assert.ok(!/play\.google\.com/.test(step.body), `step ${step.step} links straight to Play; use ANDROID_URL`);
   }
-  /**
-   * THE TRAP THIS EXISTS FOR. /android is built to be retired the day the beta
-   * ends (app/android/page.tsx is noindex and says so) and it does not
-   * redirect. A page can be retired; an email cannot - a welcome sent months
-   * later still carries whatever link is baked into it. So the moment
-   * BETA_OPEN goes false, this fails until the bodies point at the real
-   * listing and the five rows are reinstalled.
-   */
   if (!BETA_OPEN) {
-    for (const step of WELCOME_SEQUENCE) {
-      assert.ok(
-        step.body.includes(PLAY_LISTING_URL),
-        `the Android beta is over and /android is retired, but step ${step.step} still links to it. ` +
-          `Point ANDROID_URL at ${PLAY_LISTING_URL} and re-run scripts/install-welcome-sequence.ts.`,
-      );
-    }
+    const page = read("app/android/page.tsx");
+    assert.ok(page.includes("permanentRedirect(PLAY_LISTING_URL)"), "the beta is over but /android does not redirect to the Play listing");
+    assert.ok(PLAY_LISTING_URL.endsWith("net.mybiblebuddy.app"));
   }
 });
 

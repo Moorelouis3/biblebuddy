@@ -84,7 +84,7 @@ const FACTS = [
   "A good place for a beginner to start is The Beginning of Everything, or a gospel such as Mark or John in the Bible tab with the study notes open.",
   "Lil Louis tab: an AI Bible helper you can ask questions while you read.",
   "Feed tab: the Bible Buddy community, where people share what they are learning.",
-  `iPhone: Bible Buddy is in the App Store (${APP_STORE_URL}). Android: still in testing; sign up at mybiblebuddy.net/android.`,
+  `iPhone: Bible Buddy is in the App Store (${APP_STORE_URL}). Android: on Google Play (https://play.google.com/store/apps/details?id=net.mybiblebuddy.app); search Bible Buddy in the Play Store.`,
   "Something broken in the app: the Report a Problem card at the bottom of every page sends it straight into Louis's bug tracker, and the person gets a message when it is fixed.",
 ];
 

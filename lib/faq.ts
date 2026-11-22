@@ -24,8 +24,9 @@
  *   change-translation  the button at the top of the Bible reader reads KJV /
  *                       WEB / ASV; in the phone layout's menu the row is
  *                       "Translation".
- *   phone-app           iOS live since 1 Nov 2026 (id 6822155944); Android is
- *                       a closed test, page /android.
+ *   phone-app           iOS live since 1 Nov 2026 (id 6822155944); Android
+ *                       public on Google Play since 22 Nov 2026, /android
+ *                       redirects to the listing.
  *   locked-day,         app/devotionals/[id]/page.tsx isDayUnlocked: a day you
  *   earlier-days        have been into never closes; the next day opens once
  *                       the day before is read.
@@ -91,10 +92,10 @@ export const FAQ: FaqEntry[] = [
     question: "Is there a Bible Buddy app for my phone?",
     answer: [
       "Yes. On iPhone, Bible Buddy is in the App Store. Search for Bible Buddy, or use the link below.",
-      "On Android, the app is in testing on Google Play and is not public yet. You can sign up to test it at mybiblebuddy.net/android. Until it is public, open mybiblebuddy.net in Chrome, tap the three-dot menu and choose Add to Home screen, and it opens like an app.",
+      "On Android, Bible Buddy is on Google Play. Search for Bible Buddy in the Play Store, or open mybiblebuddy.net/android on your phone.",
       "Your account is the same everywhere. Sign in on the phone with the same method you used on the website and all your progress is there.",
     ],
-    dm: "Yes! On iPhone, Bible Buddy is in the App Store: just search for Bible Buddy, or tap the button below.\n\nOn Android the app is still in testing on Google Play, so it isn't public yet. You can sign up to test it at mybiblebuddy.net/android. Until then, open mybiblebuddy.net in Chrome, tap the three dots and choose Add to Home screen and it works just like an app.\n\nSign in with the same method you used before and all your progress comes with you.",
+    dm: "Yes! On iPhone, Bible Buddy is in the App Store: just search for Bible Buddy, or tap the button below.\n\nOn Android it's on Google Play: search for Bible Buddy in the Play Store, or open mybiblebuddy.net/android on your phone.\n\nSign in with the same method you used before and all your progress comes with you.",
     dmAction: { label: "Get the iPhone app", href: APP_STORE_URL },
     askedAs: [
       "Is there an app to download?",

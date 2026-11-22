@@ -1,15 +1,12 @@
-import type { Metadata } from "next";
-import AndroidBetaPage from "@/components/AndroidBetaPage";
+import { permanentRedirect } from "next/navigation";
+import { PLAY_LISTING_URL } from "@/lib/androidBeta";
 
-export const metadata: Metadata = {
-  title: "Bible Buddy on Android | Beta testing",
-  description:
-    "Bible Buddy is in closed beta on Android. Join the testing group, install it from Google Play, and keep it for 14 days to help us launch publicly.",
-  // Not a page to rank - it is a step in a flow, it will be retired the day
-  // the beta ends, and an indexed copy would outlive the links on it.
-  robots: { index: false, follow: false },
-};
-
+/**
+ * /android was the two-step tester explainer for the closed beta. Bible Buddy
+ * is public on Google Play since 2026-11-22, so every link to it (old emails,
+ * old posts) now goes straight to the listing. components/AndroidBetaPage.tsx
+ * is no longer reached.
+ */
 export default function Page() {
-  return <AndroidBetaPage />;
+  permanentRedirect(PLAY_LISTING_URL);
 }

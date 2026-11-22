@@ -317,11 +317,12 @@ check("the ask's facts match the app: store id, tester numbers", () => {
   const android = POPUP_CATALOG.find((popup) => popup.id === "ask_android_beta");
   const storeId = appStore?.cta.href.split("/id")[1] ?? "missing";
   assert.ok(review.includes('"' + storeId + '"'), "App Store id");
-  // The Android ask sends people to the two-step page and nowhere else.
-  assert.equal(android?.cta.href, "/android");
-  const page = readFileSync("components/AndroidBetaPage.tsx", "utf8");
-  assert.ok(page.includes("Step 1") && page.includes("Step 2") && !page.includes("Step 3"));
-  assert.ok(beta.includes("BETA_OPEN = true"));
+  // Public on Google Play since 2026-11-22 (BETA_OPEN = false): the Android
+  // ask goes straight to the listing, and /android redirects there too.
+  assert.ok(beta.includes("BETA_OPEN = false"));
+  assert.equal(android?.cta.href, "https://play.google.com/store/apps/details?id=net.mybiblebuddy.app");
+  assert.equal(android?.cta.external, true);
+  assert.ok(readFileSync("app/android/page.tsx", "utf8").includes("permanentRedirect(PLAY_LISTING_URL)"));
 });
 
 check("there is exactly one master switch, and the coordinator reads it", () => {

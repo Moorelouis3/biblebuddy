@@ -767,14 +767,15 @@ export const POPUP_CATALOG: PopupDefinition[] = [
     headline: "Get Bible Buddy on Android.",
     headlineAccent: "Android.",
     description: "You're on Android. The real app is free and opens straight to today's reading.",
-    cardTitle: "Help us launch",
-    cardLine: "You're on Android. Would you be one of them?",
+    cardTitle: "Get the app",
+    cardLine: "Bible Buddy, on your Android phone.",
     cardIcon: "🤖",
     preview: "android_beta",
     steps: [],
     // Louis, 2026-11-14: "I want it to say Download on Play Store, not talk
-    // about the 2 steps". The steps are on the page it opens (/android).
-    cta: { label: "Download on the Play Store", href: "/android" },
+    // about the 2 steps". Since 2026-11-22 the app is public on Play, so it
+    // goes straight to the listing (lib/androidBeta.ts PLAY_LISTING_URL).
+    cta: { label: "Download on the Play Store", href: "https://play.google.com/store/apps/details?id=net.mybiblebuddy.app", external: true },
     ctaInSection: "Download on the Play Store",
     footnote: "",
     usedWhen: [],

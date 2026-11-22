@@ -59,6 +59,11 @@ const nextConfig: NextConfig = {
       { source: "/biblebuddy-tv/:path*", destination: "/", permanent: false },
       { source: "/study-groups", destination: "/bb-feed", permanent: false },
       { source: "/study-groups/:path*", destination: "/bb-feed", permanent: false },
+      // Android is public on Google Play since 2026-11-22. /android was the
+      // two-step tester page; every link to it (the welcome emails among
+      // them) now goes straight to the listing. Not permanent, so the path
+      // can come back. app/android/page.tsx redirects too, as a fallback.
+      { source: "/android", destination: "https://play.google.com/store/apps/details?id=net.mybiblebuddy.app", permanent: false },
       // The Bible reader lives at lowercase /bible. Capital /Bible was a
       // half-finished rename: ecc877d17 renamed the index route in git,
       // core.ignorecase made the directory rename a no-op on Windows, and later

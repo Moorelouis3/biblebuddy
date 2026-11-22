@@ -44,7 +44,6 @@ import { readBibleCover } from "@/lib/bibleCovers";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { checkFullAccount } from "../../lib/accountGate";
-import { BETA_OPEN } from "../../lib/androidBeta";
 import {
   readStoreAsk,
   recordAppStoreTap,
@@ -226,7 +225,9 @@ function devicesHere(): Set<PopupDevice> {
   // what the ask is offering, or have made their choice.
   if (isNativeApp() || isStandalone()) return devices;
   if (isIOS()) devices.add("ios_web");
-  if (isAndroid() && BETA_OPEN) devices.add("android_web");
+  // The Android ask runs whether or not the beta is open: it used to explain
+  // the tester steps, and since the public launch it goes straight to Play.
+  if (isAndroid()) devices.add("android_web");
   return devices;
 }
 

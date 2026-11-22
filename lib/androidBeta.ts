@@ -19,8 +19,13 @@
 
 import { PLAY_PACKAGE } from "@/lib/appReviewPrompt";
 
-/** False once Bible Buddy is publicly listed on Google Play. */
-export const BETA_OPEN = true;
+/**
+ * False once Bible Buddy is publicly listed on Google Play. It is: the
+ * listing went public by 2026-11-22 (checked logged out: Install button, 10+
+ * downloads), and Louis asked for the Play link everywhere instead of the two
+ * steps. /android now redirects to the listing.
+ */
+export const BETA_OPEN = false;
 
 /** Google's bar: this many testers, installed continuously for 14 days. */
 export const TESTERS_NEEDED = 12;
