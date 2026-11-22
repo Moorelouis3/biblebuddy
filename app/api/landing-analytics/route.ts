@@ -56,6 +56,12 @@ const ALLOWED_EVENTS = new Set([
   "bible_memory_opened",
   "bible_memory_verse_saved",
   "word_search_opened",
+  // Bible Clue Game (2026-11-22): opened, a game dealt, each card's outcome,
+  // and the finished game. Read by lib/newFeaturesReport.ts.
+  "clue_game_opened",
+  "clue_game_started",
+  "clue_game_card",
+  "clue_game_finished",
   // One-time "It starts today" popup for members who have not started (Oct 1+).
   "proverbs_launch_popup_impression",
   "proverbs_launch_popup_dismissed",

@@ -87,8 +87,16 @@ const step = (key: string, label: string) => {
 const breakdown = (key: string, title: string) =>
   Object.fromEntries((feature(key).breakdowns.find((entry) => entry.title === title)?.rows || []).map((row) => [row.label, row.value]));
 
-check("three features, in launch order, each with steps and a place to open it", () => {
-  assert.deepEqual(report.features.map((entry) => entry.key), ["new_games_popup", "bible_memory", "word_search"]);
+check("every game is on the tab (newest first, the popup last), each with steps and a place to open it", () => {
+  // Louis, 2026-11-22: "the other games should be tracking also".
+  assert.deepEqual(report.features.map((entry) => entry.key), [
+    "clue_game",
+    "trivia",
+    "scrambled",
+    "bible_memory",
+    "word_search",
+    "new_games_popup",
+  ]);
   for (const entry of report.features) {
     assert.ok(entry.steps.length >= 4);
     assert.ok(entry.href.startsWith("/"));
@@ -134,7 +142,7 @@ check("coming back is counted in the period the person is active in, so Today is
 
 check("an empty history is a report of zeros, not a crash", () => {
   const empty = summariseNewFeatures({ events: [], memoryVerses: [], actions: [], wordSearch: [] }, period);
-  assert.equal(empty.features.length, 3);
+  assert.equal(empty.features.length, 6);
   for (const entry of empty.features) for (const each of entry.steps) assert.deepEqual([each.allTime, each.period], [0, 0]);
 });
 
@@ -144,7 +152,7 @@ check("every event the report reads is sent by the app and accepted by the analy
   const route = read("app/api/landing-analytics/route.ts");
   // The two-games popup is shown by the popup coordinator since 2026-11-15,
   // which sends these under their old names as well as its own.
-  const senders = ["components/popups/PopupCoordinator.tsx", "lib/featureEvents.ts", "lib/bibleMemory.ts", "components/memory/BibleMemoryHome.tsx", "components/wordsearch/WordSearchBooks.tsx"]
+  const senders = ["components/popups/PopupCoordinator.tsx", "lib/featureEvents.ts", "lib/bibleMemory.ts", "components/memory/BibleMemoryHome.tsx", "components/wordsearch/WordSearchBooks.tsx", "components/clueGame/ClueGame.tsx"]
     .map(read)
     .join("\n");
   for (const name of FEATURE_EVENT_NAMES) {

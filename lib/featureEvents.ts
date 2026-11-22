@@ -19,7 +19,14 @@
  * break the thing it is measuring.
  */
 
-export type FeatureEventName = "bible_memory_opened" | "bible_memory_verse_saved" | "word_search_opened";
+export type FeatureEventName =
+  | "bible_memory_opened"
+  | "bible_memory_verse_saved"
+  | "word_search_opened"
+  | "clue_game_opened"
+  | "clue_game_started"
+  | "clue_game_card"
+  | "clue_game_finished";
 
 /** Where "Add to Bible Memory" was tapped. */
 export type MemorySaveSource = "daily_verse_card" | "daily_verse_popup" | "reader" | "picker" | "word_search";

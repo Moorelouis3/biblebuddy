@@ -28,6 +28,8 @@ import {
 } from "@/lib/clueGame/engine";
 import type { ClueCard, ClueCategory, ClueRef } from "@/lib/clueGame/types";
 import { kjvStaticUrl } from "@/lib/chapterStaticData";
+import { trackFeatureEvent } from "@/lib/featureEvents";
+import { supabase } from "@/lib/supabaseClient";
 
 const ME = "me";
 const deck = GENESIS_DECK;
@@ -185,16 +187,52 @@ export default function ClueGame() {
     return () => window.clearInterval(id);
   }, [match.phase, act]);
 
-  // Read what the engine logged, for the "Not it, -5" feedback.
+  // Who is playing, for the Features tab on /admin/analytics
+  // (lib/newFeaturesReport.ts). One "opened" per visit.
+  const userIdRef = useRef<string | null>(null);
+  useEffect(() => {
+    let live = true;
+    void supabase.auth.getUser().then(({ data }) => {
+      if (!live) return;
+      userIdRef.current = data.user?.id ?? null;
+      trackFeatureEvent("clue_game_opened", userIdRef.current, { deck: deck.id });
+    });
+    return () => {
+      live = false;
+    };
+  }, []);
+
+  // Read what the engine logged: the "Not it, -5" feedback, and the
+  // measurement (a game dealt, each card's outcome, the finished game).
   const lastLogged = useRef(0);
   useEffect(() => {
     const fresh = match.log.slice(lastLogged.current);
     lastLogged.current = match.log.length;
+    const uid = userIdRef.current;
     for (const e of fresh) {
       if (e.type === "wrong") setFlash({ kind: "wrong", text: `“${e.guess}” isn’t it. −${e.points}`, key: e.at + Math.random() });
       if (e.type === "correct") setFlash({ kind: "right", text: `+${e.points}`, key: e.at + Math.random() });
+      if (e.type === "deal" && match.dealt === 1) trackFeatureEvent("clue_game_started", uid, { deck: deck.id, cards: match.deck.length });
+      if (e.type === "correct" || e.type === "missed") {
+        const wrong = match.log.filter((x) => x.type === "wrong" && x.cardId === e.cardId).length;
+        trackFeatureEvent("clue_game_card", uid, {
+          deck: deck.id,
+          card: e.cardId,
+          outcome: e.type === "correct" ? "won" : "missed",
+          points: e.type === "correct" ? e.points : 0,
+          wrong_guesses: wrong,
+        });
+      }
+      if (e.type === "over") {
+        trackFeatureEvent("clue_game_finished", uid, {
+          deck: deck.id,
+          score: match.scores[ME] ?? 0,
+          won: (match.piles[ME] || []).length,
+          cards: match.deck.length,
+        });
+      }
     }
-  }, [match.log]);
+  }, [match]);
   useEffect(() => {
     if (!flash) return;
     const id = window.setTimeout(() => setFlash(null), 2200);

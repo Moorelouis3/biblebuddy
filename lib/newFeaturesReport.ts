@@ -105,15 +105,21 @@ const peopleIn = (touches: Touch[], range?: FeatureRange) =>
  * "Today" always zero.
  */
 function cameBack(touches: Touch[], range?: FeatureRange) {
+  // One pass: trivia brings tens of thousands of touches, so no per-user scans.
   const days = new Map<string, Set<string>>();
+  const activeInRange = new Set<string>();
   for (const touch of touches) {
     if (!days.has(touch.user)) days.set(touch.user, new Set());
-    days.get(touch.user)!.add(berlinDayKey(touch.at));
+    days.get(touch.user)!.add(touch.at.slice(0, 13)); // hour bucket, cheap
+    if (range && inRange(touch.at, range)) activeInRange.add(touch.user);
   }
   let count = 0;
-  for (const [user, set] of days) {
-    if (set.size < 2) continue;
-    if (range && !touches.some((touch) => touch.user === user && inRange(touch.at, range))) continue;
+  for (const [user, hours] of days) {
+    if (range && !activeInRange.has(user)) continue;
+    // Berlin day keys only for people who could have two days at all.
+    if (hours.size < 2) continue;
+    const berlinDays = new Set([...hours].map((h) => berlinDayKey(`${h}:00:00Z`)));
+    if (berlinDays.size < 2) continue;
     count += 1;
   }
   return count;
@@ -283,7 +289,128 @@ export function summariseNewFeatures(input: NewFeaturesInput, range: FeatureRang
     ],
   };
 
-  return { features: [popup, memory, wordSearch] };
+  // ----- Bible Clue Game (2026-11-22) -----
+  const clueOpened = eventTouches("clue_game_opened");
+  const clueStarted = eventTouches("clue_game_started");
+  const clueCards = input.events.filter((row) => row.event_name === "clue_game_card");
+  const clueWonTouches = eventTouches("clue_game_card", (row) => meta(row, "outcome") === "won");
+  const clueFinished = eventTouches("clue_game_finished");
+  const clueActivity = [...clueOpened, ...clueStarted, ...clueFinished];
+  const cardRows = new Map<string, { won: number; missed: number }>();
+  for (const row of clueCards) {
+    const id = meta(row, "card") || "unknown";
+    const entry = cardRows.get(id) || { won: 0, missed: 0 };
+    if (meta(row, "outcome") === "won") entry.won += 1;
+    else entry.missed += 1;
+    cardRows.set(id, entry);
+  }
+  const clueGame: FeatureReport = {
+    key: "clue_game",
+    icon: "🃏",
+    title: "Bible Clue Game",
+    href: "/bible-study-games/clue",
+    launched: "22 Nov 2026",
+    steps: [
+      step("Opened it", "People who opened the card table.", clueOpened, range),
+      step("Dealt a card", "People who started a game.", clueStarted, range),
+      step("Won a card", "People who guessed at least one card right.", clueWonTouches, range),
+      step("Finished a game", "People who played until the deck ran out or they reached the target.", clueFinished, range),
+      {
+        label: "Came back another day",
+        hint: "People who opened or played on two or more different days.",
+        allTime: cameBack(clueActivity),
+        period: cameBack(clueActivity, range),
+      },
+    ],
+    breakdowns: [
+      {
+        title: "Cards: won / missed",
+        unit: "",
+        rows: [...cardRows.entries()]
+          .map(([card, c]) => ({ label: `${card} (${c.won} won, ${c.missed} missed)`, value: c.won + c.missed }))
+          .sort((a, b) => b.value - a.value),
+      },
+      {
+        title: "Totals",
+        unit: "",
+        rows: [
+          { label: "Cards played", value: clueCards.length },
+          { label: "Games finished", value: clueFinished.length },
+        ],
+      },
+    ],
+  };
+
+  // ----- Bible Trivia (older than this tab; added so every game is here) -----
+  const triviaStarted = actionTouches("trivia_started");
+  const triviaAnswered = actionTouches("trivia_question_answered");
+  const triviaChapter = actionTouches("trivia_chapter_completed");
+  const triviaYear = actionTouches("bible_in_one_year_trivia_completed");
+  const triviaActivity = [...triviaStarted, ...triviaAnswered, ...triviaChapter, ...triviaYear];
+  const trivia: FeatureReport = {
+    key: "trivia",
+    icon: "❓",
+    title: "Bible Trivia",
+    href: "/bible-trivia",
+    launched: "before Nov 2026",
+    steps: [
+      step("Started trivia", "People who opened a chapter's or a plan day's trivia.", triviaStarted, range),
+      step("Answered a question", "People who answered at least one question.", triviaAnswered, range),
+      step("Finished a chapter", "People who completed a chapter's trivia.", triviaChapter, range),
+      step("Finished Bible in One Year trivia", "People who completed a plan day's trivia.", triviaYear, range),
+      {
+        label: "Came back another day",
+        hint: "People who played on two or more different days.",
+        allTime: cameBack(triviaActivity),
+        period: cameBack(triviaActivity, range),
+      },
+    ],
+    breakdowns: [
+      {
+        title: "Totals",
+        unit: "",
+        rows: [
+          { label: "Questions answered", value: triviaAnswered.length },
+          { label: "Chapters finished", value: triviaChapter.length },
+        ],
+      },
+    ],
+  };
+
+  // ----- Scrambled -----
+  const scrambledOpened = actionTouches("scrambled_chapter_opened");
+  const scrambledDone = actionTouches("scrambled_chapter_completed");
+  const scrambledActivity = [...actionTouches("scrambled_book_viewed"), ...scrambledOpened, ...scrambledDone];
+  const scrambled: FeatureReport = {
+    key: "scrambled",
+    icon: "🔤",
+    title: "Scrambled",
+    href: "/bible-study-games/scrambled",
+    launched: "Sep 2026",
+    steps: [
+      step("Opened a book", "People who opened a book's list of chapters.", actionTouches("scrambled_book_viewed"), range),
+      step("Started a chapter", "People who opened a chapter to unscramble.", scrambledOpened, range),
+      step("Finished a chapter", "People who completed a chapter.", scrambledDone, range),
+      {
+        label: "Came back another day",
+        hint: "People who played on two or more different days.",
+        allTime: cameBack(scrambledActivity),
+        period: cameBack(scrambledActivity, range),
+      },
+    ],
+    breakdowns: [
+      {
+        title: "Totals",
+        unit: "",
+        rows: [
+          { label: "Chapters started", value: scrambledOpened.length },
+          { label: "Chapters finished", value: scrambledDone.length },
+        ],
+      },
+    ],
+  };
+
+  return { features: [clueGame, trivia, scrambled, memory, wordSearch, popup] };
 }
 
 // ---------- loading ----------
@@ -296,9 +423,25 @@ export const FEATURE_EVENT_NAMES = [
   "bible_memory_opened",
   "bible_memory_verse_saved",
   "word_search_opened",
+  "clue_game_opened",
+  "clue_game_started",
+  "clue_game_card",
+  "clue_game_finished",
 ];
 
-const FEATURE_ACTION_TYPES = ["bible_memory_session_completed", "word_search_book_completed"];
+const FEATURE_ACTION_TYPES = [
+  "bible_memory_session_completed",
+  "word_search_book_completed",
+  // Every game is on the tab (Louis, 2026-11-22: "the other games should be
+  // tracking also"): trivia and Scrambled already logged these.
+  "trivia_started",
+  "trivia_question_answered",
+  "trivia_chapter_completed",
+  "bible_in_one_year_trivia_completed",
+  "scrambled_book_viewed",
+  "scrambled_chapter_opened",
+  "scrambled_chapter_completed",
+];
 
 /**
  * Every row, however many: PostgREST caps a response at 1,000 rows, so a
