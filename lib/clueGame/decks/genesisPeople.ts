@@ -17,7 +17,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 1,
     answer: "God",
     accepted: ["the lord", "lord", "lord god", "yahweh", "jehovah", "god almighty", "the lord god", "i am", "elohim"],
-    art: {},
+    art: genesisArt("god"),
     clues: [
       { text: "I asked a man whether he had entered the storehouses of the snow.", ref: ref("Job 38:22") },
       { text: "I told a prophet to take a scroll and write on it again after a king burned the first one.", ref: ref("Jeremiah 36:27–28") },
@@ -37,7 +37,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 2,
     answer: "Adam",
     accepted: ["adam the first man", "the first man"],
-    art: {},
+    art: genesisArt("adam"),
     clues: [
       { text: "After my son was born, I lived another 800 years.", ref: ref("Genesis 5:4") },
       { text: "Luke traces Jesus’ family line all the way back to me.", ref: ref("Luke 3:23–38") },
@@ -59,7 +59,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 3,
     answer: "Eve",
     accepted: ["eva", "chavah", "havah"],
-    art: {},
+    art: genesisArt("eve"),
     clues: [
       { text: "After Abel died, I said God had given me another child in his place.", ref: ref("Genesis 4:25") },
       { text: "Paul worried the Corinthians could be led astray the way I was.", ref: ref("2 Corinthians 11:3") },
@@ -76,7 +76,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 4,
     answer: "Cain",
     accepted: ["kain"],
-    art: {},
+    art: genesisArt("cain"),
     clues: [
       { text: "I built a city and named it after my son.", ref: ref("Genesis 4:17") },
       { text: "Jude warned about people who followed my way.", ref: ref("Jude 1:11") },
@@ -92,7 +92,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 5,
     answer: "Noah",
     accepted: ["noe", "noach"],
-    art: {},
+    art: genesisArt("noah"),
     clues: [
       // Louis, 2026-11-22: "ark" and "flood" are saved for the 1-point clue.
       { text: "God found me righteous in a world of unrighteousness.", ref: ref("Genesis 7:1") },
@@ -114,7 +114,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 6,
     answer: "Abraham",
     accepted: ["abram", "avraham", "abraham the father of many nations", "father abraham"],
-    art: {},
+    art: genesisArt("abraham"),
     clues: [
       { text: "Melchizedek blessed me, and I gave him a tenth of everything.", ref: ref("Genesis 14:18–20") },
       { text: "James says I was called the friend of God.", ref: ref("James 2:23") },
@@ -136,7 +136,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 7,
     answer: "Sarah",
     accepted: ["sarai", "sara"],
-    art: {},
+    art: genesisArt("sarah"),
     clues: [
       { text: "Peter tells wives to follow my example, since I called my husband lord.", ref: ref("1 Peter 3:6") },
       { text: "I died in Hebron when I was 127 years old.", ref: ref("Genesis 23:1–2") },
@@ -153,7 +153,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 8,
     answer: "Lot",
     accepted: ["lott"],
-    art: {},
+    art: genesisArt("lot"),
     clues: [
       { text: "Peter calls me a righteous man, troubled by the wicked people around me.", ref: ref("2 Peter 2:7–8") },
       { text: "When my uncle let me choose, I picked the well-watered plain of the Jordan.", ref: ref("Genesis 13:10–11") },
@@ -169,7 +169,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 9,
     answer: "Hagar",
     accepted: ["agar", "haggar"],
-    art: {},
+    art: genesisArt("hagar"),
     clues: [
       { text: "Paul uses me as a picture of Mount Sinai in Arabia.", ref: ref("Galatians 4:24–25") },
       { text: "An angel found me by a spring on the way to Shur.", ref: ref("Genesis 16:7") },
@@ -186,7 +186,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 10,
     answer: "Ishmael",
     accepted: ["ismael", "ishmail", "ishmeal"],
-    art: {},
+    art: genesisArt("ishmael"),
     clues: [
       { text: "I lived 137 years, and my twelve sons became twelve princes.", ref: ref("Genesis 25:16–17") },
       { text: "I grew up in the wilderness and became an archer.", ref: ref("Genesis 21:20") },
@@ -202,7 +202,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 11,
     answer: "Isaac",
     accepted: ["issac", "isaak", "yitzhak", "itzhak"],
-    art: {},
+    art: genesisArt("isaac"),
     clues: [
       { text: "I dug again the wells my father had dug, after the Philistines filled them in.", ref: ref("Genesis 26:18") },
       { text: "I went out to the field in the evening to meditate.", ref: ref("Genesis 24:63") },
@@ -218,7 +218,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 12,
     answer: "Rebekah",
     accepted: ["rebecca", "rebeca", "rebekka", "rebeka", "rebecka", "rebekah"],
-    art: {},
+    art: genesisArt("rebekah"),
     clues: [
       { text: "Paul says I was told the older would serve the younger before my sons were born.", ref: ref("Romans 9:10–12") },
       { text: "I gave a stranger a drink at the well and watered his camels too.", ref: ref("Genesis 24:18–20") },
@@ -235,7 +235,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 13,
     answer: "Esau",
     accepted: ["edom", "esaw"],
-    art: {},
+    art: genesisArt("esau"),
     clues: [
       { text: "Hebrews warns us not to be godless like me.", ref: ref("Hebrews 12:16") },
       { text: "I married two Hittite women, and it grieved my parents.", ref: ref("Genesis 26:34–35") },
@@ -251,7 +251,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 14,
     answer: "Jacob",
     accepted: ["israel", "jakob", "jacobs", "yaakov"],
-    art: {},
+    art: genesisArt("jacob"),
     clues: [
       { text: "I told my father-in-law I had served him twenty years, fourteen for his daughters.", ref: ref("Genesis 31:41") },
       { text: "Hosea says I took my brother by the heel in the womb.", ref: ref("Hosea 12:3") },
@@ -272,7 +272,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 15,
     answer: "Laban",
     accepted: ["labban"],
-    art: {},
+    art: genesisArt("laban"),
     clues: [
       { text: "I said our heap of stones would be a witness between me and my son-in-law.", ref: ref("Genesis 31:48") },
       { text: "I searched every tent for my missing household gods.", ref: ref("Genesis 31:33–35") },
@@ -288,7 +288,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 16,
     answer: "Leah",
     accepted: ["lea", "leia"],
-    art: {},
+    art: genesisArt("leah"),
     clues: [
       { text: "When my fourth son was born, I said, “Now I will praise the Lord.”", ref: ref("Genesis 29:35") },
       { text: "My eyes were called weak, while my sister was beautiful.", ref: ref("Genesis 29:17") },
@@ -305,7 +305,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 17,
     answer: "Rachel",
     accepted: ["rahel", "rachael", "rachelle"],
-    art: {},
+    art: genesisArt("rachel"),
     clues: [
       { text: "Jeremiah heard me weeping for my children in Ramah.", ref: ref("Jeremiah 31:15") },
       { text: "I hid my father’s household gods under a camel saddle and sat on them.", ref: ref("Genesis 31:34") },
@@ -322,7 +322,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 18,
     answer: "Reuben",
     accepted: ["ruben", "rueben", "reubin"],
-    art: {},
+    art: genesisArt("reuben"),
     clues: [
       { text: "Moses prayed that my tribe would live and not die.", ref: ref("Deuteronomy 33:6") },
       { text: "I found mandrakes in the field and brought them to my mother.", ref: ref("Genesis 30:14") },
@@ -338,7 +338,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 19,
     answer: "Simeon",
     accepted: ["symeon", "simon of jacob", "shimon"],
-    art: {},
+    art: genesisArt("simeon"),
     clues: [
       { text: "When the tribes were counted in Moab, my families numbered 22,200.", ref: ref("Numbers 26:14") },
       { text: "My tribe’s land lay inside the land of Judah.", ref: ref("Joshua 19:1") },
@@ -354,7 +354,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 20,
     answer: "Levi",
     accepted: ["levy", "leevi"],
-    art: {},
+    art: genesisArt("levi"),
     clues: [
       { text: "My sons were Gershon, Kohath and Merari.", ref: ref("Exodus 6:16") },
       { text: "Leah named me hoping her husband would now be joined to her.", ref: ref("Genesis 29:34") },
@@ -370,7 +370,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 21,
     answer: "Judah",
     accepted: ["juda", "judas of jacob", "yehuda"],
-    art: {},
+    art: genesisArt("judah"),
     clues: [
       { text: "I went up to Timnath to my sheepshearers.", ref: ref("Genesis 38:12") },
       { text: "My father called me a lion’s cub.", ref: ref("Genesis 49:9") },
@@ -408,7 +408,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 23,
     answer: "Benjamin",
     accepted: ["benjamen", "benjamim", "ben-oni", "benoni"],
-    art: {},
+    art: genesisArt("benjamin"),
     clues: [
       { text: "My father said I would tear like a wolf.", ref: ref("Genesis 49:27") },
       { text: "Paul said he came from my tribe.", ref: ref("Romans 11:1") },
@@ -424,7 +424,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 24,
     answer: "Potiphar",
     accepted: ["potifar", "potipher", "potiphur"],
-    art: {},
+    art: genesisArt("potiphar"),
     clues: [
       { text: "Pharaoh’s chief butler and chief baker were held in my house.", ref: ref("Genesis 40:3") },
       { text: "I was an officer of Pharaoh and captain of the guard.", ref: ref("Genesis 37:36") },
@@ -440,7 +440,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     number: 25,
     answer: "Pharaoh",
     accepted: ["pharaoh of egypt", "the pharaoh", "pharoah", "pharao", "farao"],
-    art: {},
+    art: genesisArt("pharaoh"),
     clues: [
       { text: "I asked a very old visitor how old he was.", ref: ref("Genesis 47:8") },
       { text: "I gave my new governor an Egyptian name, Zaphnath-paaneah.", ref: ref("Genesis 41:45") },

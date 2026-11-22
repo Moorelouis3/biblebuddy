@@ -17,7 +17,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "place",
     answer: "The Garden of Eden",
     accepted: ["eden", "garden", "garden of eden", "the garden", "garden of god", "garden in eden"],
-    art: {},
+    art: genesisArt("garden-of-eden"),
     clues: [
       { text: "Ezekiel told the king of Tyre he had once been in me, covered in precious stones.", ref: ref("Ezekiel 28:12–13") },
       { text: "A river flowed out of me and split into four.", ref: ref("Genesis 2:10") },
@@ -35,7 +35,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "place",
     answer: "Noah’s Ark",
     accepted: ["ark", "noahs ark", "ark of noah", "the ark"],
-    art: {},
+    art: genesisArt("noahs-ark"),
     clues: [
       { text: "I was 300 cubits long, 50 wide and 30 high.", ref: ref("Genesis 6:15") },
       { text: "I had a window, a door in my side, and three decks.", ref: ref("Genesis 6:16") },
@@ -53,7 +53,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "place",
     answer: "Mountains of Ararat",
     accepted: ["ararat", "mount ararat", "mt ararat", "mountains of ararat", "ararat mountains", "mountain of ararat"],
-    art: {},
+    art: genesisArt("mountains-of-ararat"),
     clues: [
       // KJV says "the land of Armenia" in 2 Kings 19:37 and Isaiah 37:38; the Hebrew is Ararat.
       { text: "Esar-haddon became king after his brothers escaped into my land.", ref: ref("Isaiah 37:38") },
@@ -72,7 +72,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "place",
     answer: "Babel",
     accepted: ["tower of babel", "babel tower", "city of babel"],
-    art: {},
+    art: genesisArt("babel"),
     clues: [
       { text: "Nimrod’s kingdom began with me.", ref: ref("Genesis 10:10") },
       { text: "My builders settled on a plain in the land of Shinar.", ref: ref("Genesis 11:2") },
@@ -90,7 +90,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "place",
     answer: "Ur",
     accepted: ["ur of the chaldees", "ur of the chaldeans", "ur of chaldees", "ur of chaldea"],
-    art: {},
+    art: genesisArt("ur"),
     clues: [
       { text: "Haran died in me before his father Terah.", ref: ref("Genesis 11:28") },
       { text: "Stephen said Abraham came out of my land, the land of the Chaldeans.", ref: ref("Acts 7:4") },
@@ -108,7 +108,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "place",
     answer: "Haran",
     accepted: ["charran", "harran"],
-    art: {},
+    art: genesisArt("haran"),
     clues: [
       { text: "Shepherds at a well told Jacob they were from me, and that they knew Laban.", ref: ref("Genesis 29:4–5") },
       { text: "Rebekah told Jacob to run to her brother Laban in me.", ref: ref("Genesis 27:43") },
@@ -126,7 +126,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "place",
     answer: "Canaan",
     accepted: ["land of canaan", "promised land", "the promised land"],
-    art: {},
+    art: genesisArt("canaan"),
     clues: [
       { text: "My people’s border ran from Sidon toward Gerar and Gaza.", ref: ref("Genesis 10:19") },
       { text: "Moses sent one leader from every tribe to search me.", ref: ref("Numbers 13:2") },
@@ -144,7 +144,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "place",
     answer: "Egypt",
     accepted: ["land of egypt", "mizraim"],
-    art: {},
+    art: genesisArt("egypt"),
     clues: [
       { text: "Hagar found a wife for Ishmael from me.", ref: ref("Genesis 21:21") },
       { text: "Abram came to me in a famine and told Sarai to say she was his sister.", ref: ref("Genesis 12:10–13") },
@@ -162,7 +162,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "place",
     answer: "Goshen",
     accepted: ["land of goshen"],
-    art: {},
+    art: genesisArt("goshen"),
     clues: [
       { text: "Jacob sent Judah ahead to Joseph to get directions to me.", ref: ref("Genesis 46:28") },
       { text: "Joseph drove his chariot to me and wept on his father’s neck a long time.", ref: ref("Genesis 46:29") },
@@ -180,7 +180,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "place",
     answer: "Bethel",
     accepted: ["beth el", "beth-el", "luz", "el bethel", "el-beth-el"],
-    art: {},
+    art: genesisArt("bethel"),
     clues: [
       { text: "King Jeroboam set up a golden calf in me.", ref: ref("1 Kings 12:28–29") },
       { text: "Rebekah’s nurse Deborah was buried below me under an oak.", ref: ref("Genesis 35:8") },
@@ -216,7 +216,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "place",
     answer: "Sodom",
     accepted: ["sodom and gomorrah"],
-    art: {},
+    art: genesisArt("sodom"),
     clues: [
       { text: "Jesus said judgment day would be easier for my land than for Capernaum.", ref: ref("Matthew 11:23–24") },
       { text: "Ezekiel said my sins were pride, too much food, and ignoring the poor.", ref: ref("Ezekiel 16:49") },
@@ -234,7 +234,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "place",
     answer: "Hebron",
     accepted: ["kirjath arba", "kiriath arba", "kirjath-arba"],
-    art: {},
+    art: genesisArt("hebron"),
     clues: [
       { text: "David reigned in me for seven years and six months.", ref: ref("2 Samuel 5:5") },
       { text: "Joshua gave me to Caleb as his inheritance.", ref: ref("Joshua 14:13") },
@@ -252,7 +252,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "place",
     answer: "Shechem",
     accepted: ["sichem", "sychem"],
-    art: {},
+    art: genesisArt("shechem"),
     clues: [
       { text: "Joshua made a covenant with the people in me and gave them laws.", ref: ref("Joshua 24:25") },
       { text: "Joseph’s bones were buried in me.", ref: ref("Joshua 24:32") },
@@ -270,7 +270,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "place",
     answer: "The City of Enoch",
     accepted: ["city of enoch", "enoch", "enoch city", "city of cain", "cains city"],
-    art: {},
+    art: genesisArt("city-of-enoch"),
     clues: [
       { text: "I share my name with the father of Irad.", ref: ref("Genesis 4:18") },
       { text: "My builder settled in the land of Nod, east of Eden.", ref: ref("Genesis 4:16") },
@@ -290,7 +290,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "keyword",
     answer: "Joseph’s Dreams",
     accepted: ["josephs dreams", "josephs dream", "dreams of joseph", "joseph dreams", "joseph dream"],
-    art: {},
+    art: genesisArt("josephs-dreams"),
     clues: [
       { text: "A father kept one of us in mind while his other sons envied.", ref: ref("Genesis 37:11") },
       { text: "Brothers hated a young man even more because of us and his words.", ref: ref("Genesis 37:8") },
@@ -308,7 +308,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "keyword",
     answer: "Pharaoh’s Dreams",
     accepted: ["pharaohs dreams", "pharaohs dream", "dreams of pharaoh", "pharaoh dreams", "pharaoh dream"],
-    art: {},
+    art: genesisArt("pharaohs-dreams"),
     clues: [
       { text: "All the magicians and wise men of Egypt could not explain us.", ref: ref("Genesis 41:8") },
       { text: "We made a chief butler finally remember his faults.", ref: ref("Genesis 41:9") },
@@ -337,7 +337,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
       "josephs robe",
       "robe of many colors",
     ],
-    art: {},
+    art: genesisArt("josephs-coat"),
     clues: [
       { text: "King David’s daughter Tamar wore a robe like me, as royal daughters did.", ref: ref("2 Samuel 13:18") },
       { text: "Brothers dipped me in the blood of a goat.", ref: ref("Genesis 37:31") },
@@ -367,7 +367,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
       "labans gods",
       "labans idols",
     ],
-    art: {},
+    art: genesisArt("rachels-idols"),
     clues: [
       { text: "Jacob said whoever was found with us should not live.", ref: ref("Genesis 31:32") },
       { text: "A father searched four tents for us and found nothing.", ref: ref("Genesis 31:33") },
@@ -385,7 +385,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "keyword",
     answer: "The Ram in the Thicket",
     accepted: ["ram", "ram in the thicket", "ram caught in the thicket", "ram in a thicket", "ram in the bush", "abrahams ram"],
-    art: {},
+    art: genesisArt("ram-in-the-thicket"),
     clues: [
       { text: "Where I was found, the place was named “The LORD will provide.”", ref: ref("Genesis 22:14") },
       { text: "A father told his son that God would provide the lamb.", ref: ref("Genesis 22:8") },
@@ -411,7 +411,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
       "covenant with abram",
       "covenant of circumcision",
     ],
-    art: {},
+    art: genesisArt("covenant-with-abraham"),
     clues: [
       { text: "Paul said a law given 430 years later could not cancel me.", ref: ref("Galatians 3:17") },
       { text: "A smoking furnace and a burning lamp passed between the pieces of a sacrifice when I was made.", ref: ref("Genesis 15:17–18") },
@@ -439,7 +439,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
       "judahs signet",
       "judahs seal",
     ],
-    art: {},
+    art: genesisArt("judahs-pledge"),
     clues: [
       { text: "A friend from Adullam went to fetch us back but could not find the woman.", ref: ref("Genesis 38:20") },
       { text: "One of us could leave its owner’s personal mark.", ref: ref("Genesis 38:25") },
@@ -457,7 +457,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "keyword",
     answer: "Altar",
     accepted: ["altars", "an altar", "altar of stone", "stone altar"],
-    art: {},
+    art: genesisArt("altar"),
     clues: [
       { text: "Jacob built me where God had appeared to him as he fled from his brother.", ref: ref("Genesis 35:7") },
       { text: "Isaac built me, pitched his tent, and his servants dug a well nearby.", ref: ref("Genesis 26:25") },
@@ -475,7 +475,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "keyword",
     answer: "The Rainbow",
     accepted: ["rainbow", "bow", "bow in the cloud", "bow in the clouds", "gods bow"],
-    art: {},
+    art: genesisArt("rainbow"),
     clues: [
       { text: "Ezekiel said the brightness around God’s glory looked like me on a rainy day.", ref: ref("Ezekiel 1:28") },
       { text: "John saw a mighty angel coming down from heaven with me on his head.", ref: ref("Revelation 10:1") },
@@ -493,7 +493,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "keyword",
     answer: "The Tree of Life",
     accepted: ["tree of life"],
-    art: {},
+    art: genesisArt("tree-of-life"),
     clues: [
       { text: "Proverbs says a longing fulfilled is like me.", ref: ref("Proverbs 13:12") },
       { text: "In the new Jerusalem I bear twelve kinds of fruit, a new crop every month.", ref: ref("Revelation 22:2") },
@@ -511,7 +511,7 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     category: "keyword",
     answer: "Jacob’s Ladder",
     accepted: ["jacobs ladder", "ladder", "stairway", "staircase", "stairway to heaven", "ladder to heaven", "jacobs stairway", "jacobs dream"],
-    art: {},
+    art: genesisArt("jacobs-ladder"),
     clues: [
       { text: "A man slept with stones for pillows the night he saw me.", ref: ref("Genesis 28:11") },
       { text: "The man who saw me woke and said, “Surely the LORD is in this place.”", ref: ref("Genesis 28:16") },
