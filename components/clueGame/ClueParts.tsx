@@ -425,6 +425,18 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 @keyframes bb-clue-bump { 0% { transform: scale(1); } 40% { transform: scale(1.3); } 100% { transform: scale(1); } }
 @keyframes bb-clue-glow { 0% { filter: drop-shadow(0 0 0 rgba(255,214,90,0)); } 30% { filter: drop-shadow(0 0 22px rgba(255,214,90,1)); } 100% { filter: drop-shadow(0 0 0 rgba(255,214,90,0)); } }
 @keyframes bb-clue-shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
+.bb-clue-answers { border-top: 1.5px dashed #c99a46; padding-top: 8px; }
+.bb-clue-answers-title { font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:.12em; opacity:.65; margin-bottom:4px; }
+.bb-clue-answers ol { display:flex; flex-direction:column; gap:4px; max-height: 132px; overflow-y:auto; }
+.bb-clue-answers li { display:flex; align-items:center; gap:8px; padding:4px 8px; border-radius:10px; font-size:14px; animation: bb-clue-fadein .3s ease-out both; }
+.bb-clue-answers li.is-right { background: rgba(47,138,79,.16); }
+.bb-clue-answers li.is-wrong { background: rgba(160,40,24,.1); }
+.bb-clue-answers-name { font-weight:800; max-width: 84px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.bb-clue-answers-time { font-variant-numeric: tabular-nums; font-weight:900; font-size:12px; padding:1px 6px; border-radius:6px; background: rgba(59,36,18,.1); }
+.bb-clue-answers-guess { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-style:italic; font-family: Georgia, serif; }
+.bb-clue-answers-result { font-weight:900; white-space:nowrap; }
+.bb-clue-answers li.is-right .bb-clue-answers-result { color:#1d6a34 !important; }
+.bb-clue-answers li.is-wrong .bb-clue-answers-result { color:#a3291b !important; }
 .bb-clue-fallback { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:10px; text-align:center;
   background: radial-gradient(circle at 50% 35%, #fff8e6, #ead6a6); }
 .bb-clue-fallback-icon { font-size: 2.2em; }

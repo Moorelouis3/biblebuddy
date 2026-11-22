@@ -393,6 +393,25 @@ export default function ClueTable({
               </div>
             </div>
           )}
+          {view.roundAnswers.length && !inIntro ? (
+            <div className="bb-clue-answers mt-3">
+              <p className="bb-clue-answers-title">Answers, fastest first</p>
+              <ol>
+                {view.roundAnswers.map((a, i) => {
+                  const who = players.find((p) => p.id === a.playerId);
+                  return (
+                    <li key={`${a.playerId}-${a.clueIndex}-${i}`} className={a.right ? "is-right" : "is-wrong"}>
+                      <Avatar name={who?.name || "?"} src={who?.avatar} size={26} />
+                      <span className="bb-clue-answers-name">{a.playerId === youId ? "You" : who?.name || "Buddy"}</span>
+                      <span className="bb-clue-answers-time">{a.seconds.toFixed(1)}s</span>
+                      <span className="bb-clue-answers-guess">“{a.guess}”</span>
+                      <span className="bb-clue-answers-result">{a.right ? `✓ +${a.points}` : `✗ −${a.points}`}</span>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          ) : null}
           {view.phase === "reveal" && !paused ? (
             <div className="mt-3">
               <p className="bb-clue-serif text-center text-[15px] italic">

@@ -397,6 +397,15 @@ export type PublicMatch = Omit<ClueMatch, "deck" | "topClue" | "log" | "round"> 
   serverNow: number;
   /** The last wrong guesses, for the "not it" feedback (no answers in them). */
   recentWrong: Array<{ at: number; playerId: string; guess: string; points: number }>;
+  /**
+   * Every answer given this round, in the order the server judged them
+   * (fastest first): who, what, how many seconds into its clue, and whether
+   * it was right. Answers are judged one by one: a wrong one loses that
+   * clue's points and the next answer is judged; the first right one wins
+   * and ends the round. A right answer is only ever in here once the round
+   * is revealed, so this never gives the card away.
+   */
+  roundAnswers: Array<{ playerId: string; guess: string; clueIndex: number; seconds: number; right: boolean; points: number }>;
 };
 
 function fullPublicCard(card: ClueCard, topClue: number): PublicCard {
@@ -448,5 +457,23 @@ export function publicView(match: ClueMatch, cards: Map<string, ClueCard>, now: 
     .filter((e): e is Extract<ClueEvent, { type: "wrong" }> => e.type === "wrong")
     .slice(-6)
     .map((e) => ({ at: e.at, playerId: e.playerId, guess: e.guess, points: e.points }));
-  return { ...rest, deckSize: deck.length, round: publicRound, history, serverNow: now, recentWrong };
+  const roundAnswers: PublicMatch["roundAnswers"] = [];
+  if (round) {
+    const clueStart = new Map<number, number>();
+    for (const e of log) {
+      if (e.type === "clue" && e.cardId === round.cardId) clueStart.set(e.clueIndex, e.at);
+      if ((e.type === "wrong" || e.type === "correct") && e.cardId === round.cardId) {
+        const started = clueStart.get(e.clueIndex) ?? e.at;
+        roundAnswers.push({
+          playerId: e.playerId,
+          guess: e.guess,
+          clueIndex: e.clueIndex,
+          seconds: Math.max(0, Math.round((e.at - started) / 100) / 10),
+          right: e.type === "correct",
+          points: e.points,
+        });
+      }
+    }
+  }
+  return { ...rest, deckSize: deck.length, round: publicRound, history, serverNow: now, recentWrong, roundAnswers };
 }

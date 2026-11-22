@@ -52,6 +52,13 @@ export async function clueUserFrom(request: Request, admin = clueAdmin()): Promi
 
 /* ---------- rooms ---------- */
 
+/**
+ * Players per room (Louis, 2026-11-22: "I don't want it to be too many
+ * people where it's so much chaos"). Six fits round the table and keeps the
+ * answer list readable on a phone. One number to change.
+ */
+export const MAX_ROOM_PLAYERS = 6;
+
 // No 0/O, 1/I/L: a code read aloud across a room has to survive.
 const CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
 const newCode = (length = 5) =>
@@ -134,7 +141,7 @@ export async function joinRoom(admin: SupabaseClient, rawCode: string, user: Clu
   const already = players.some((p) => p.user_id === user.id);
   if (!already) {
     if (room.status !== "lobby") return { ok: false as const, reason: "This game has already started." };
-    if (players.length >= 8) return { ok: false as const, reason: "This room is full." };
+    if (players.length >= MAX_ROOM_PLAYERS) return { ok: false as const, reason: `This room is full (${MAX_ROOM_PLAYERS} players).` };
     await admin.from("clue_room_players").insert({ room_code: code, user_id: user.id, display_name: user.name, avatar_url: user.avatar });
     await ping(code);
   } else {
