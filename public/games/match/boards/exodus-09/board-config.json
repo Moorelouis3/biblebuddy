@@ -1,0 +1,32 @@
+{
+  "level": 9,
+  "name": "Plans for the Tabernacle",
+  "scripture": "Exodus 25–31",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "gold",
+    "acacia",
+    "blue-linen",
+    "lampstand",
+    "covenant-ark",
+    "tent",
+    "bronze-altar"
+  ],
+  "goals": {
+    "gold": 8,
+    "acacia": 8,
+    "blue-linen": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Collect materials to reveal the Tabernacle plans.",
+  "storyEffect": "Collect materials to reveal the Tabernacle plans.",
+  "chapter": "Exodus",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

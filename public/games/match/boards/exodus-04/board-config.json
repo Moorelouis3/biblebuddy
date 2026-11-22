@@ -1,0 +1,31 @@
+{
+  "level": 4,
+  "name": "The Plagues of Egypt",
+  "scripture": "Exodus 7:14–10:29",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "frog",
+    "hail",
+    "thundercloud",
+    "nile-reeds",
+    "water-drop",
+    "moses",
+    "pharaoh"
+  ],
+  "goals": {
+    "frog": 8,
+    "hail": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Collect frogs and hail as the sky darkens.",
+  "storyEffect": "Collect frogs and hail as the sky darkens.",
+  "chapter": "Exodus",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

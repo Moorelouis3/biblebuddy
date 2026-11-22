@@ -1,0 +1,32 @@
+{
+  "level": 12,
+  "name": "The Tabernacle",
+  "scripture": "Exodus 35–40",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "tabernacle",
+    "cloud",
+    "blue-linen",
+    "lampstand",
+    "covenant-ark",
+    "acacia",
+    "bronze-altar"
+  ],
+  "goals": {
+    "tabernacle": 8,
+    "blue-linen": 8,
+    "acacia": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Gather materials, raise the tent and reveal the cloud over it.",
+  "storyEffect": "Gather materials, raise the tent and reveal the cloud over it.",
+  "chapter": "Exodus",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

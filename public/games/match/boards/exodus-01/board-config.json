@@ -1,0 +1,31 @@
+{
+  "level": 1,
+  "name": "Moses in the Basket",
+  "scripture": "Exodus 1–2",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "basket",
+    "nile-reeds",
+    "water-drop",
+    "brick",
+    "straw",
+    "bread",
+    "tree"
+  ],
+  "goals": {
+    "nile-reeds": 8,
+    "basket": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Clear reeds and guide the basket along the Nile.",
+  "storyEffect": "Clear reeds and guide the basket along the Nile.",
+  "chapter": "Exodus",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

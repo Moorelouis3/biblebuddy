@@ -1,0 +1,29 @@
+{
+  "level": 6,
+  "name": "Babel",
+  "scripture": "Genesis 11:1–9",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "brick",
+    "stone",
+    "logs",
+    "wheat",
+    "water-jar",
+    "tree",
+    "water-drop"
+  ],
+  "goals": {
+    "brick": 8,
+    "logs": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Collect bricks and timber at the tower site.",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

@@ -1,24 +1,30 @@
 /**
  * Bible Buddy Match: the board rules, checked offline (npm run verify:match).
  * Same idiom as the other verify scripts: plain asserts, no test framework.
+ * Swap rules since 2026-11-22 (lib/match/engine.ts).
  */
 import assert from "node:assert/strict";
 import {
-  canExtend,
+  adjacent,
+  COLS,
   createBoard,
-  findLine,
+  findMove,
+  findRuns,
   goalsMet,
-  lineIsValid,
   MATCH_LEVELS,
   ORB,
-  playLine,
+  playSwap,
   reshuffle,
+  ROWS,
   seededRng,
+  swapWorks,
+  tileArt,
   type Board,
   type IdSource,
   type Pos,
   type Tile,
 } from "../lib/match/engine";
+import { existsSync } from "node:fs";
 
 let passed = 0;
 function ok(name: string, fn: () => void) {
@@ -42,135 +48,148 @@ const FILL = ["p", "q", "r", "s", "t", "u", "v"];
 const rng = () => seededRng(7);
 const total = (o: Record<string, number>) => Object.values(o).reduce((a, n) => a + n, 0);
 
-const PLAIN = ["abcdefg", "cdefgab", "efgabcd", "gabcdef", "bcdefga", "defgabc", "fgabcde"];
-
-ok("a new board always has a line to make, for both boards", () => {
+ok("a new board has nothing lined up and at least one swap, for every board", () => {
   for (const level of MATCH_LEVELS) {
-    for (let seed = 1; seed <= 30; seed += 1) {
+    for (let seed = 1; seed <= 20; seed += 1) {
       const b = createBoard(level.types, seededRng(seed), { next: 1 });
-      assert.equal(b.length, 9, "9 rows");
-      assert.equal(b[0].length, 7, "7 columns");
-      assert.ok(findLine(b));
+      assert.equal(b.length, ROWS, "9 rows");
+      assert.equal(b[0].length, COLS, "7 columns");
+      assert.equal(findRuns(b).length, 0, `${level.id}: dealt a run`);
+      assert.ok(findMove(b), `${level.id}: no swap`);
     }
   }
 });
 
-ok("a line links touching tiles of one kind in any of 8 directions, never twice, never across a gap", () => {
-  const b = board(["aax", "xay", "yyy"]);
-  assert.ok(canExtend(b, [p(0, 0)], p(0, 1)), "sideways");
-  assert.ok(canExtend(b, [p(0, 0), p(0, 1)], p(1, 1)), "down");
-  assert.ok(canExtend(b, [p(0, 0)], p(1, 1)), "diagonal");
-  assert.equal(canExtend(b, [p(0, 0), p(0, 1)], p(0, 0)), false, "not the same tile twice");
-  assert.equal(canExtend(b, [p(0, 0)], p(0, 2)), false, "a different kind");
-  assert.equal(canExtend(b, [p(0, 0)], p(2, 2)), false, "not touching");
+ok("only side-by-side or above/below tiles swap, never diagonals or far apart", () => {
+  assert.ok(adjacent(p(0, 0), p(0, 1)));
+  assert.ok(adjacent(p(0, 0), p(1, 0)));
+  assert.ok(!adjacent(p(0, 0), p(1, 1)));
+  assert.ok(!adjacent(p(0, 0), p(0, 2)));
+  assert.ok(!adjacent(p(0, 0), p(0, 0)));
 });
 
-ok("fewer than 3, or a broken line, does nothing and costs nothing", () => {
-  const b = board(PLAIN);
-  const res = playLine(b, [p(0, 0), p(1, 1)], FILL, rng(), { next: 100 });
+ok("a swap that lines nothing up is not a move: nothing changes", () => {
+  const b = board(["abcd", "bcda", "cdab"]);
+  assert.equal(swapWorks(b, p(0, 0), p(0, 1)), false);
+  const res = playSwap(b, p(0, 0), p(0, 1), FILL, rng(), { next: 100 });
   assert.equal(res.valid, false);
   assert.equal(res.final, b);
-  assert.equal(lineIsValid(board(["aaxa"]), [p(0, 0), p(0, 1), p(0, 3)]), false);
+  assert.equal(res.steps.length, 0);
 });
 
-ok("a line of 3 clears those 3, counts them once, and new tiles drop in", () => {
-  const b = board(["aaa", "bcd", "efg"]);
-  const res = playLine(b, [p(0, 0), p(0, 1), p(0, 2)], FILL, rng(), { next: 100 });
+ok("swapping into a row of 3 clears those 3, counts them once, and new tiles drop in", () => {
+  // Swapping (1,2) up into row 0 makes a a a.
+  const b = board(["aabd", "cdae", "efgh"]);
+  const res = playSwap(b, p(0, 2), p(1, 2), FILL, rng(), { next: 100 });
   assert.ok(res.valid);
-  assert.equal(res.removed.a, 3);
-  assert.equal(res.steps[0].made.length, 0);
-  assert.equal(Object.keys(res.steps[0].dropFrom).length, 3);
-  assert.equal(res.final.flat().filter(Boolean).length, 9);
+  const s = res.steps[0];
+  assert.equal(s.removed.a, 3);
+  assert.deepEqual(s.cleared.map((q) => `${q.r},${q.c}`).sort(), ["0,0", "0,1", "0,2"]);
+  assert.equal(res.final.flat().filter(Boolean).length, 12, "full again");
 });
 
-ok("a line of 5 clears all 5 (every tile counted), and a Light Burst drops in at the top of the last tile's column", () => {
-  const b = board(["aaaaa", "bcdef", "cdefb"]);
-  const line = [p(0, 0), p(0, 1), p(0, 2), p(0, 3), p(0, 4)];
-  const s = playLine(b, line, FILL, rng(), { next: 100 }).steps[0];
+ok("a column of 3 clears the same way", () => {
+  const b = board(["axc", "aqc", "bad"]);
+  const res = playSwap(b, p(2, 0), p(2, 1), FILL, rng(), { next: 100 });
+  assert.ok(res.valid);
+  assert.equal(res.steps[0].removed.a, 3);
+});
+
+ok("a run of 4 clears all 4 and earns a Light Burst that drops in from the top", () => {
+  const b = board(["aaxa", "bcad", "defg"]);
+  const res = playSwap(b, p(0, 2), p(1, 2), FILL, rng(), { next: 100 });
+  const s = res.steps[0];
+  assert.equal(s.removed.a, 4, "every matched tile goes");
   assert.equal(s.made.length, 1);
   assert.equal(s.made[0].tile.power, "light");
   assert.equal(s.made[0].tile.type, "a");
-  assert.deepEqual({ r: s.made[0].r, c: s.made[0].c }, { r: 0, c: 4 });
+  assert.equal(s.made[0].r, 0);
+  assert.equal(s.afterFill[0][s.made[0].c]!.power, "light");
+});
+
+ok("a run of 5 or more earns an All Match orb", () => {
+  const b = board(["aaxaa", "bcade", "defgh"]);
+  const res = playSwap(b, p(0, 2), p(1, 2), FILL, rng(), { next: 100 });
+  const s = res.steps[0];
   assert.equal(s.removed.a, 5);
-  assert.equal(s.cleared.length, 5, "the last tile goes too");
-  for (const q of line) assert.equal(s.afterClear[q.r][q.c], null);
-  assert.equal(s.afterFill[0][4]!.power, "light");
-});
-
-ok("a Light Burst in a line sweeps its whole row; every tile counted once", () => {
-  const b = board(["bcdef", "aAabc", "cdefb"]);
-  const s = playLine(b, [p(1, 0), p(1, 1), p(1, 2)], FILL, rng(), { next: 100 }).steps[0];
-  assert.deepEqual(s.beams, [{ row: 1 }]);
-  assert.equal(s.cleared.length, 5, "the whole row");
-  assert.equal(total(s.removed), 5);
-});
-
-ok("a line of 7 leaves an All Match orb instead", () => {
-  const b = board(["aaaaaaa", "bcdefgb", "cdefgbc"]);
-  const line = Array.from({ length: 7 }, (_, c) => p(0, c));
-  const s = playLine(b, line, FILL, rng(), { next: 100 }).steps[0];
   assert.equal(s.made[0].tile.type, ORB);
-  assert.equal(s.removed.a, 7);
 });
 
-ok("an orb joins any line and clears every tile of that line's kind", () => {
-  const b = board(["b*bcd", "cdbeb", "bdecf"]);
-  assert.ok(canExtend(b, [p(0, 0)], p(0, 1)), "orb joins a b line");
-  assert.ok(canExtend(b, [p(0, 0), p(0, 1)], p(0, 2)), "and the line carries on as b");
-  const bs = b.flat().filter((t) => t?.type === "b").length;
-  const res = playLine(b, [p(0, 0), p(0, 1), p(0, 2)], FILL, rng(), { next: 100 });
-  assert.equal(res.steps[0].orbType, "b");
-  assert.equal(res.removed.b, bs, "every b on the board, once");
-  assert.equal(res.removed[ORB], undefined, "the orb is used up, not collected");
-  assert.equal(lineIsValid(board(["***"]), [p(0, 0), p(0, 1), p(0, 2)]), false, "a line of only orbs is nothing");
+ok("a Light Burst caught in a clear sweeps its whole row; every tile counted once", () => {
+  const b = board(["bcdefg", "aAxabc", "cdaefg"]);
+  const res = playSwap(b, p(1, 2), p(2, 2), FILL, rng(), { next: 100 });
+  const s = res.steps[0];
+  assert.deepEqual(s.beams, [{ row: 1 }]);
+  assert.equal(s.cleared.length, 6, "the whole row");
+  assert.equal(total(s.removed), 6);
 });
 
-ok("overlapping clears (an orb that also catches Light Bursts) count each tile once and fire each burst once", () => {
-  const b = board(["b*bcd", "cdBeb", "bdecB"]);
-  const s = playLine(b, [p(0, 0), p(0, 1), p(0, 2)], FILL, rng(), { next: 100 }).steps[0];
-  assert.deepEqual(s.beams.map((x) => x.row).sort(), [1, 2]);
-  const keys = new Set(s.cleared.map((x) => `${x.r},${x.c}`));
-  assert.equal(keys.size, s.cleared.length, "no cell twice");
-  assert.equal(total(s.removed), s.cleared.length - 1, "everything but the orb is counted");
+ok("swap an orb with a tile: every tile of that kind clears; two orbs clear the board", () => {
+  const b = board(["*abc", "dbae", "aefa"]);
+  const res = playSwap(b, p(0, 0), p(0, 1), FILL, rng(), { next: 100 });
+  assert.ok(res.valid);
+  assert.equal(res.steps[0].orbType, "a");
+  assert.equal(res.steps[0].removed.a, 4);
+  const two = board(["**bc", "dbae", "aefa"]);
+  const all = playSwap(two, p(0, 0), p(0, 1), FILL, rng(), { next: 100 });
+  assert.equal(all.steps[0].cleared.length, 12);
 });
 
-ok("no line left: the board reshuffles with the same tiles and gains one", () => {
-  const stuck = board(PLAIN);
-  assert.equal(findLine(stuck), null);
-  const next = reshuffle(stuck, seededRng(3));
-  const ids = (x: Board) => x.flat().map((t) => t!.id).sort((m, n) => m - n);
-  assert.deepEqual(ids(next), ids(stuck));
-  assert.ok(findLine(next));
+ok("chains: new lines after the fall clear too, and are worth more", () => {
+  for (let seed = 1; seed <= 60; seed += 1) {
+    const level = MATCH_LEVELS[0];
+    const r = seededRng(seed);
+    const ids = { next: 1 };
+    const b = createBoard(level.types, r, ids);
+    const [a, c] = findMove(b)!;
+    const res = playSwap(b, a, c, level.types, r, ids);
+    for (let i = 1; i < res.steps.length; i += 1) assert.ok(res.steps[i].points >= res.steps[i].cleared.length * 10 * (i + 1), "chain bonus");
+  }
 });
 
-ok("goals are met exactly at the target, including on the last move", () => {
+ok("no swap left: the board reshuffles with the same tiles and has a swap again", () => {
+  const types = ["a", "b", "c", "d", "e", "f", "g"];
+  const b = createBoard(types, seededRng(5), { next: 1 });
+  const again = reshuffle(b, seededRng(6));
+  assert.deepEqual(again.flat().map((t) => t!.type).sort(), b.flat().map((t) => t!.type).sort());
+  assert.ok(findMove(again));
+  assert.equal(findRuns(again).length, 0);
+});
+
+ok("goals are met exactly at the target", () => {
   const goals = MATCH_LEVELS[0].goals;
   assert.equal(goalsMet(goals, { sun: 8, globe: 8, tree: 7 }), false);
   assert.equal(goalsMet(goals, { sun: 9, globe: 8, tree: 8 }), true);
 });
 
-ok("the two boards as briefed: 7 kinds each, 3 goals of 8, 28 moves, the tree shared", () => {
-  const [creation, eden] = MATCH_LEVELS;
-  assert.deepEqual(creation.types, ["sun", "moon", "star", "globe", "tree", "lion", "lamb"]);
-  assert.deepEqual(eden.types, ["adam", "eve", "orange", "fig", "water-drop", "dove", "tree"]);
-  assert.deepEqual(creation.goals.map((g) => `${g.type}${g.count}`), ["sun8", "globe8", "tree8"]);
-  assert.deepEqual(eden.goals.map((g) => `${g.type}${g.count}`), ["orange8", "dove8", "tree8"]);
-  assert.equal(creation.moves + eden.moves, 56);
+ok("the boards: Creation and Eden first, up to 20, numbered in order, every tile has art", () => {
+  assert.equal(MATCH_LEVELS[0].id, "creation");
+  assert.equal(MATCH_LEVELS[1].id, "eden");
+  assert.ok(MATCH_LEVELS.length <= 20);
+  MATCH_LEVELS.forEach((l, i) => {
+    assert.equal(l.number, i + 1);
+    assert.ok(l.types.length >= 4, l.id);
+    for (const g of l.goals) assert.ok(l.types.includes(g.type), `${l.id}: goal ${g.type} is not one of its tiles`);
+    for (const t of l.types) assert.ok(existsSync(`public${tileArt(t)}`), `${l.id}: missing tile art ${t}`);
+    if (l.backgrounds) for (const bg of [l.backgrounds.phone, l.backgrounds.desktop]) assert.ok(existsSync(`public${bg}`), `${l.id}: missing ${bg}`);
+  });
+  assert.equal(new Set(MATCH_LEVELS.map((l) => l.id)).size, MATCH_LEVELS.length);
 });
 
-ok("a long random game never breaks the board (always full, always a line, ids unique)", () => {
+ok("a long random game never breaks the board (always full, nothing left lined up, a swap, ids unique)", () => {
   for (const level of MATCH_LEVELS) {
     const r = seededRng(99);
     const ids = { next: 1 };
     let b = createBoard(level.types, r, ids);
-    for (let turn = 0; turn < 200; turn += 1) {
-      const line = findLine(b)!;
-      const res = playLine(b, line, level.types, r, ids);
+    for (let turn = 0; turn < 120; turn += 1) {
+      const [a, c] = findMove(b)!;
+      const res = playSwap(b, a, c, level.types, r, ids);
       assert.ok(res.valid);
       b = res.final;
-      assert.equal(b.flat().filter(Boolean).length, 63);
-      assert.ok(findLine(b));
-      assert.equal(new Set(b.flat().map((t) => t!.id)).size, 63);
+      assert.equal(b.flat().filter(Boolean).length, ROWS * COLS);
+      assert.equal(findRuns(b).length, 0, `${level.id}: a run was left on the board`);
+      assert.ok(findMove(b));
+      assert.equal(new Set(b.flat().map((t) => t!.id)).size, ROWS * COLS);
     }
   }
 });

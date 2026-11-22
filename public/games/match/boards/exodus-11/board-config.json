@@ -1,0 +1,31 @@
+{
+  "level": 11,
+  "name": "New Tablets",
+  "scripture": "Exodus 33–34",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "tablets",
+    "stone",
+    "moses",
+    "staff",
+    "cloud",
+    "tent",
+    "water-jar"
+  ],
+  "goals": {
+    "tablets": 8,
+    "stone": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Reveal two new tablets as God renews the covenant.",
+  "storyEffect": "Reveal two new tablets as God renews the covenant.",
+  "chapter": "Exodus",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

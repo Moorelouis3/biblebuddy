@@ -1,0 +1,29 @@
+{
+  "level": 3,
+  "name": "Cain and Abel’s Field",
+  "scripture": "Genesis 4",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "cain",
+    "abel",
+    "wheat",
+    "lamb",
+    "stone",
+    "tree",
+    "water-drop"
+  ],
+  "goals": {
+    "wheat": 8,
+    "lamb": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Collect grain and lambs across the field.",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

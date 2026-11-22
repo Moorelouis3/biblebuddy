@@ -3,28 +3,26 @@
 /**
  * One Bible Buddy Match board: the 7x9 grid, the parchment HUD (moves and
  * goals), and the win / out-of-moves panels. The rules are lib/match/engine.ts;
- * this file draws the line you drag and animates what letting go resolves to:
- *   flash, beams, pop, the power-up left behind, tiles fall, new tiles drop in,
- *   then a free reshuffle if no line is left.
- * Input is locked from letting go until the last tile lands. With reduced
- * motion the same order runs with short pauses and no movement.
+ * this file takes the swap (swipe a tile toward a neighbour, or tap one then
+ * the other) and animates what it resolves to: the two tiles trade places,
+ * then each clear in turn (flash, beams, break apart, tiles fall, new tiles
+ * drop in), then a free reshuffle if no swap is left. A swap that lines
+ * nothing up slides back. Input is locked until the last tile lands. With
+ * reduced motion the same order runs with short pauses and no movement.
  */
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import {
-  canExtend,
+  adjacent,
+  cloneBoard,
   createBoard,
   COLS,
   ROWS,
-  findLine,
+  findMove,
   goalsMet,
-  lineType,
-  LIGHT_AT,
-  MIN_LINE,
   ORB,
-  ORB_AT,
-  playLine,
+  playSwap,
   tileArt,
   type Board,
   type MatchLevel,
@@ -74,7 +72,7 @@ export default function MatchBoard({
   const [collected, setCollected] = useState<Record<string, number>>({});
   const [score, setScore] = useState(0);
   const [busy, setBusy] = useState(false);
-  const [line, setLine] = useState<Pos[]>([]);
+  const [selected, setSelected] = useState<Pos | null>(null);
   const [flash, setFlash] = useState<Set<number>>(new Set());
   const [popping, setPopping] = useState<Set<number>>(new Set());
   const [beams, setBeams] = useState<number[]>([]);
@@ -89,14 +87,14 @@ export default function MatchBoard({
   }, [board]);
 
   // Timings (ms). Reduced motion keeps the order and drops the movement.
-  const T = useMemo(() => (reduced ? { flash: 120, pop: 60, fall: 80, between: 40 } : { flash: 240, pop: 220, fall: 340, between: 60 }), [reduced]);
+  const T = useMemo(() => (reduced ? { swap: 60, flash: 120, pop: 60, fall: 80, between: 40 } : { swap: 200, flash: 220, pop: 220, fall: 340, between: 60 }), [reduced]);
 
   const restart = () => {
     setBoard(createBoard(level.types, Math.random, ids.current));
     setMoves(level.moves);
     setCollected({});
     setScore(0);
-    setLine([]);
+    setSelected(null);
     setFlash(new Set());
     setPopping(new Set());
     setBeams([]);
@@ -106,139 +104,141 @@ export default function MatchBoard({
     setSeed((s) => s + 1);
   };
 
-  const play = async (drawn: Pos[]) => {
-      if (busy || outcome) return;
-      const before = boardRef.current;
-      const res = playLine(before, drawn, level.types, Math.random, ids.current);
-      if (!res.valid) {
-        if (drawn.length > 1) matchSound.nope();
-        return; // too short: nothing happens, no move used
-      }
-      setBusy(true);
-      setHint(null);
-      const movesLeft = moves - 1;
-      setMoves(movesLeft);
-      let got = { ...collected };
-      let total = score;
-      for (const step of res.steps) {
-        const clearedIds = new Set(step.cleared.map((p) => before[p.r][p.c]?.id).filter((id): id is number => typeof id === "number"));
-        setFlash(clearedIds);
-        setBeams(step.beams.map((b) => b.row));
-        if (step.orbType) matchSound.orb();
-        else if (step.beams.length) matchSound.beam();
-        else matchSound.match(Math.min(6, drawn.length - MIN_LINE));
-        matchSound.crack();
-        await sleep(T.flash);
-        setPopping(clearedIds);
-        await sleep(T.pop);
-        for (const [t, n] of Object.entries(step.removed)) got = { ...got, [t]: (got[t] || 0) + n };
-        total += step.points;
-        setCollected(got);
-        setScore(total);
-        if (step.made.length) matchSound.power();
-        setFlash(new Set());
-        setPopping(new Set());
-        setBeams([]);
-        setBoard(step.afterClear);
-        // The first light: Creation's dark lifts on the first clear.
-        if (dark) setDark(false);
-        await sleep(T.between);
-        setDrops(step.dropFrom);
-        setBoard(step.afterFill);
-        await sleep(T.fall);
-      }
-      if (res.reshuffled) {
-        setToast("No lines left. Shuffling…");
-        await sleep(reduced ? 200 : 700);
-        setDrops({});
-        setBoard(res.final);
-        await sleep(T.fall);
-        setToast(null);
-      }
+  const play = async (a: Pos, b: Pos) => {
+    if (busy || outcome) return;
+    const before = boardRef.current;
+    setSelected(null);
+    setHint(null);
+    const res = playSwap(before, a, b, level.types, Math.random, ids.current);
+    setBusy(true);
+    // The two tiles trade places either way.
+    const traded = cloneBoard(before);
+    traded[a.r][a.c] = before[b.r][b.c];
+    traded[b.r][b.c] = before[a.r][a.c];
+    setDrops({});
+    setBoard(traded);
+    matchSound.link(1);
+    await sleep(T.swap);
+    if (!res.valid) {
+      // Nothing lined up: they slide back, and no move is used.
+      matchSound.nope();
+      await sleep(80);
+      setBoard(before);
+      await sleep(T.swap);
       setBusy(false);
-      if (goalsMet(level.goals, got)) {
-        const finalScore = total + movesLeft * 25;
-        setScore(finalScore);
-        onWin(finalScore);
-        matchSound.win();
-        setOutcome({ won: true, score: finalScore, movesLeft });
-      } else if (movesLeft <= 0) {
-        matchSound.lose();
-        setOutcome({ won: false, score: total, movesLeft: 0 });
+      return;
+    }
+    const movesLeft = moves - 1;
+    setMoves(movesLeft);
+    let got = { ...collected };
+    let total = score;
+    for (const [i, step] of res.steps.entries()) {
+      const clearedIds = new Set(step.cleared.map((p) => step.before[p.r][p.c]?.id).filter((id): id is number => typeof id === "number"));
+      setFlash(clearedIds);
+      setBeams(step.beams.map((x) => x.row));
+      if (step.orbType) matchSound.orb();
+      else if (step.beams.length) matchSound.beam();
+      // Higher with longer runs and with each link of a chain.
+      else matchSound.match(Math.min(6, Math.max(0, step.longest - 3) + i));
+      matchSound.crack();
+      await sleep(T.flash);
+      setPopping(clearedIds);
+      await sleep(T.pop);
+      for (const [t, n] of Object.entries(step.removed)) got = { ...got, [t]: (got[t] || 0) + n };
+      total += step.points;
+      setCollected(got);
+      setScore(total);
+      if (step.made.length) matchSound.power();
+      setFlash(new Set());
+      setPopping(new Set());
+      setBeams([]);
+      setBoard(step.afterClear);
+      // The first light: Creation's dark lifts on the first clear.
+      if (dark) setDark(false);
+      await sleep(T.between);
+      setDrops(step.dropFrom);
+      setBoard(step.afterFill);
+      await sleep(T.fall);
+      if (i > 0 && !reduced) {
+        setToast(i >= 3 ? "Amazing chain!" : i === 2 ? "Great chain!" : "Chain!");
+        window.setTimeout(() => setToast(null), 700);
       }
+    }
+    if (res.reshuffled) {
+      setToast("No swaps left. Shuffling…");
+      await sleep(reduced ? 200 : 700);
+      setDrops({});
+      setBoard(res.final);
+      await sleep(T.fall);
+      setToast(null);
+    }
+    setBusy(false);
+    if (goalsMet(level.goals, got)) {
+      const finalScore = total + movesLeft * 25;
+      setScore(finalScore);
+      onWin(finalScore);
+      matchSound.win();
+      setOutcome({ won: true, score: finalScore, movesLeft });
+    } else if (movesLeft <= 0) {
+      matchSound.lose();
+      setOutcome({ won: false, score: total, movesLeft: 0 });
+    }
   };
 
-  // ---- input: drag a line (finger or mouse) ----
+  // ---- input: swipe a tile toward a neighbour, or tap one then the other ----
   const gridRef = useRef<HTMLDivElement | null>(null);
-  const drawing = useRef(false);
-  const lineRef = useRef<Pos[]>([]);
-  const setLineBoth = (next: Pos[]) => {
-    lineRef.current = next;
-    setLine(next);
-  };
-  /**
-   * The cell under the pointer, only when the pointer is near its middle, so
-   * a diagonal drag does not catch the cells beside the corner it passes.
-   */
-  const cellAt = (clientX: number, clientY: number, strict: boolean): Pos | null => {
+  const press = useRef<{ cell: Pos; x: number; y: number; swiped: boolean } | null>(null);
+  const cellAt = (clientX: number, clientY: number): Pos | null => {
     const el = gridRef.current;
     if (!el) return null;
     const rect = el.getBoundingClientRect();
     const size = rect.width / COLS;
-    const fx = (clientX - rect.left) / size;
-    const fy = (clientY - rect.top) / size;
-    const c = Math.floor(fx);
-    const r = Math.floor(fy);
+    const c = Math.floor((clientX - rect.left) / size);
+    const r = Math.floor((clientY - rect.top) / size);
     if (r < 0 || r >= ROWS || c < 0 || c >= COLS) return null;
-    if (strict) {
-      const dx = fx - c - 0.5;
-      const dy = fy - r - 0.5;
-      if (dx * dx + dy * dy > 0.38 * 0.38) return null;
-    }
     return { r, c };
   };
+  const cellSize = () => (gridRef.current ? gridRef.current.getBoundingClientRect().width / COLS : 40);
   const onDown = (e: React.PointerEvent) => {
     if (busy || outcome) return;
-    const cell = cellAt(e.clientX, e.clientY, false);
+    const cell = cellAt(e.clientX, e.clientY);
     if (!cell || !boardRef.current[cell.r][cell.c]) return;
     matchSound.unlock();
-    drawing.current = true;
     setHint(null);
-    setLineBoth([cell]);
-    matchSound.link(0);
+    press.current = { cell, x: e.clientX, y: e.clientY, swiped: false };
     (e.currentTarget as Element).setPointerCapture?.(e.pointerId);
   };
   const onMove = (e: React.PointerEvent) => {
-    if (!drawing.current) return;
-    const cell = cellAt(e.clientX, e.clientY, true);
-    if (!cell) return;
-    const current = lineRef.current;
-    const last = current[current.length - 1];
-    if (last && last.r === cell.r && last.c === cell.c) return;
-    // Back onto the previous tile: take the last one off.
-    const prev = current[current.length - 2];
-    if (prev && prev.r === cell.r && prev.c === cell.c) {
-      setLineBoth(current.slice(0, -1));
-      matchSound.link(current.length - 2);
-      return;
-    }
-    if (canExtend(boardRef.current, current, cell)) {
-      setLineBoth([...current, cell]);
-      matchSound.link(current.length);
-    }
+    const pr = press.current;
+    if (!pr || pr.swiped) return;
+    const dx = e.clientX - pr.x;
+    const dy = e.clientY - pr.y;
+    // A swipe of a third of a tile picks the neighbour in that direction.
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < cellSize() * 0.33) return;
+    pr.swiped = true;
+    const to = Math.abs(dx) > Math.abs(dy) ? { r: pr.cell.r, c: pr.cell.c + Math.sign(dx) } : { r: pr.cell.r + Math.sign(dy), c: pr.cell.c };
+    if (to.r < 0 || to.r >= ROWS || to.c < 0 || to.c >= COLS) return;
+    void play(pr.cell, to);
   };
   const finish = () => {
-    if (!drawing.current) return;
-    drawing.current = false;
-    const drawn = lineRef.current;
-    setLineBoth([]);
-    void play(drawn);
+    const pr = press.current;
+    press.current = null;
+    if (!pr || pr.swiped || busy || outcome) return;
+    // A tap: select, or swap with the tile already selected.
+    if (selected && adjacent(selected, pr.cell)) {
+      void play(selected, pr.cell);
+    } else if (selected && selected.r === pr.cell.r && selected.c === pr.cell.c) {
+      setSelected(null);
+    } else {
+      setSelected(pr.cell);
+      matchSound.link(0);
+    }
   };
 
-  // The sun button shows a line for a moment.
+  // The sun button shows a swap that works, for a moment.
   const showHint = () => {
     if (busy || outcome) return;
-    const found = findLine(boardRef.current);
+    const found = findMove(boardRef.current);
     if (!found) return;
     setHint(found);
     window.setTimeout(() => setHint(null), 2400);
@@ -251,14 +251,22 @@ export default function MatchBoard({
   }, [board]);
   const inList = (list: Pos[] | null, r: number, c: number) => !!list && list.some((p) => p.r === r && p.c === c);
   const leftFor = (type: string, count: number) => Math.max(0, count - (collected[type] || 0));
-  const kind = line.length ? lineType(board, line) : null;
-  const reward = line.length >= ORB_AT ? "All Match orb!" : line.length >= LIGHT_AT ? "Light Burst!" : null;
 
   return (
-    <div className="bbm-board" style={{ ["--bg" as string]: `url(${level.background})`, ["--socket" as string]: level.socket } as React.CSSProperties} data-level={level.id}>
+    <div
+      className={`bbm-board ${level.backgrounds ? "has-art" : ""}`}
+      style={
+        {
+          ["--bg" as string]: `url(${level.background})`,
+          ["--socket" as string]: level.socket,
+          ...(level.backgrounds ? { ["--bg-phone" as string]: `url(${level.backgrounds.phone})`, ["--bg-desktop" as string]: `url(${level.backgrounds.desktop})` } : {}),
+        } as React.CSSProperties
+      }
+      data-level={level.id}
+    >
       <div className="bbm-board-bg" aria-hidden="true" />
 
-      <div className={`bbm-plaque bbm-board-title ${level.title.length > 10 ? "is-long" : ""}`}>
+      <div className={`bbm-plaque bbm-board-title ${level.title.length > 16 ? "is-long is-xlong" : level.title.length > 10 ? "is-long" : ""}`}>
         <h1>{level.title}</h1>
         <p>— {level.reference} —</p>
       </div>
@@ -296,7 +304,7 @@ export default function MatchBoard({
           onPointerUp={finish}
           onPointerCancel={finish}
           role="grid"
-          aria-label={`${level.title} board: drag across matching tiles`}
+          aria-label={`${level.title} board: swap two tiles to line up three or more`}
         >
           {Array.from({ length: ROWS * COLS }).map((_, i) => (
             <span key={`s${i}`} className="bbm-socket" style={{ ["--r" as string]: Math.floor(i / COLS), ["--c" as string]: i % COLS } as React.CSSProperties} />
@@ -313,8 +321,7 @@ export default function MatchBoard({
                   "bbm-tile",
                   tile.power === "light" ? "is-light" : "",
                   tile.type === ORB ? "is-orb" : "",
-                  inList(line, r, c) ? "is-linked" : "",
-                  line.length && kind && tile.type !== kind && tile.type !== ORB && !inList(line, r, c) ? "is-dim" : "",
+                  selected && selected.r === r && selected.c === c ? "is-linked" : "",
                   flash.has(tile.id) ? "is-flash" : "",
                   popping.has(tile.id) ? "is-pop" : "",
                   drop ? "is-drop" : "",
@@ -357,23 +364,6 @@ export default function MatchBoard({
               </span>
             );
           })}
-          {/* The line being drawn, through the middles of the linked tiles. */}
-          {line.length > 1 ? (
-            <svg className="bbm-linksvg" viewBox={`0 0 ${COLS} ${ROWS}`} aria-hidden="true">
-              <polyline className="bbm-link-glow" points={line.map((p) => `${p.c + 0.5},${p.r + 0.5}`).join(" ")} />
-              <polyline className="bbm-link" points={line.map((p) => `${p.c + 0.5},${p.r + 0.5}`).join(" ")} />
-            </svg>
-          ) : null}
-          {line.length ? (
-            <span
-              className={`bbm-linkcount ${line.length >= MIN_LINE ? "is-ready" : ""}`}
-              style={{ ["--r" as string]: line[line.length - 1].r, ["--c" as string]: line[line.length - 1].c } as React.CSSProperties}
-              aria-live="polite"
-            >
-              {line.length}
-              {reward ? <em>{reward}</em> : null}
-            </span>
-          ) : null}
           {dark ? <span className="bbm-dark" aria-hidden="true" /> : null}
         </div>
         {toast ? <div className="bbm-toast">{toast}</div> : null}
@@ -384,7 +374,7 @@ export default function MatchBoard({
           <span aria-hidden="true">🗺️</span> Map
         </button>
         <span className="bbm-score">Score {score}</span>
-        <button type="button" className="bbm-hintbtn" onClick={showHint} aria-label="Show a line" title="Show a line">
+        <button type="button" className="bbm-hintbtn" onClick={showHint} aria-label="Show a swap" title="Show a swap">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={tileArt("light-power-up")} alt="" />
         </button>
@@ -396,8 +386,9 @@ export default function MatchBoard({
             {outcome.won ? (
               <>
                 <p className="bbm-panel-kicker">{level.reference}</p>
-                <h2>{isLastLevel ? "Creation to Eden, done!" : `${level.title} complete!`}</h2>
-                <p className="bbm-panel-line">{level.id === "creation" ? "“Let there be light: and there was light.”" : "“The LORD God planted a garden eastward in Eden.”"}</p>
+                <h2>{`${level.title} complete!`}</h2>
+                {level.line ? <p className="bbm-panel-line">{level.line}</p> : null}
+                {isLastLevel ? <p className="bbm-panel-line">That’s every board so far. More are coming!</p> : null}
                 <p className="bbm-panel-score">
                   Score <b>{outcome.score}</b>
                   {outcome.movesLeft ? <span> · {outcome.movesLeft} moves to spare</span> : <span> · on the last move!</span>}

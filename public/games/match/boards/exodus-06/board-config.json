@@ -1,0 +1,31 @@
+{
+  "level": 6,
+  "name": "Across the Red Sea",
+  "scripture": "Exodus 13:17–15:21",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "wave",
+    "staff",
+    "tambourine",
+    "moses",
+    "water-drop",
+    "stone",
+    "thundercloud"
+  ],
+  "goals": {
+    "wave": 8,
+    "staff": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Open a dry path through the sea and reach the far shore.",
+  "storyEffect": "Open a dry path through the sea and reach the far shore.",
+  "chapter": "Exodus",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

@@ -1,0 +1,31 @@
+{
+  "level": 8,
+  "name": "Mount Sinai",
+  "scripture": "Exodus 19–24",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "tablets",
+    "thundercloud",
+    "stone",
+    "tent",
+    "moses",
+    "staff",
+    "burning-bush"
+  ],
+  "goals": {
+    "tablets": 8,
+    "thundercloud": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Clear the trail to Sinai and reveal the stone tablets.",
+  "storyEffect": "Clear the trail to Sinai and reveal the stone tablets.",
+  "chapter": "Exodus",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

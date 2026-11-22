@@ -1,0 +1,29 @@
+{
+  "level": 7,
+  "name": "Abraham at Beersheba",
+  "scripture": "Genesis 21:22–34",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "abraham",
+    "well",
+    "tent",
+    "lamb",
+    "tree",
+    "water-jar",
+    "wheat"
+  ],
+  "goals": {
+    "well": 8,
+    "lamb": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Collect well and lamb tiles near the tamarisk tree.",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

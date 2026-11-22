@@ -1,0 +1,30 @@
+{
+  "level": 10,
+  "name": "Joseph in Egypt",
+  "scripture": "Genesis 41–45",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "joseph",
+    "grain-sack",
+    "storehouse",
+    "wheat",
+    "bread",
+    "river-reeds",
+    "water-jar"
+  ],
+  "goals": {
+    "grain-sack": 8,
+    "wheat": 8,
+    "storehouse": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Collect grain and fill Egypt’s storehouses.",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

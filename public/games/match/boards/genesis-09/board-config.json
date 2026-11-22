@@ -1,0 +1,29 @@
+{
+  "level": 9,
+  "name": "Jacob at Shechem",
+  "scripture": "Genesis 33:18–20",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "jacob",
+    "altar",
+    "stone",
+    "tent",
+    "lamb",
+    "tree",
+    "grape"
+  ],
+  "goals": {
+    "stone": 8,
+    "altar": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Collect stones and altar tiles at Jacob’s camp.",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

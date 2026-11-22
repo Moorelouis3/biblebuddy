@@ -142,9 +142,16 @@ export function matchMusicOn(): boolean {
   }
 }
 
+/** Boards after Eden: one of the five tracks each, steady per board, so neighbours differ. */
+function trackFor(scene: string) {
+  let h = 0;
+  for (const ch of scene) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return BIBLE_READING_BACKGROUND_TRACKS[h % BIBLE_READING_BACKGROUND_TRACKS.length];
+}
+
 function startScene() {
   if (typeof window === "undefined" || !musicScene || !matchMusicOn()) return;
-  const src = SCENE_TRACK[musicScene] || SCENE_TRACK.trail;
+  const src = SCENE_TRACK[musicScene] || trackFor(musicScene);
   if (!musicEl || !musicEl.src.endsWith(src)) {
     musicEl?.pause();
     musicEl = new Audio(src);

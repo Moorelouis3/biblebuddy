@@ -3,24 +3,26 @@
  * whole game can be checked offline (scripts/verify-match.ts) and the screen
  * only has to animate what this returns.
  *
- * How it plays (Louis, 2026-11-22: "drawing connections across the same signs
- * to get rid of them", not swap-match-three):
- * - Drag a line through 3 or more matching tiles that touch, in any of the
- *   8 directions. Let go and the line clears. One line is one move.
- *   Dragging back onto the previous tile takes the last one off the line.
- * - A line of 5 or 6 leaves a Light Burst where it ended: the same tile with a
- *   gold rim. Linked into a later line, it sweeps its whole row.
- * - A line of 7 or more leaves an All Match orb. The orb joins any line as a
- *   wildcard, and that line then clears every tile of its kind on the board.
- * - Each power-up fires once, and each removed collectible counts once, even
- *   when clears overlap. A tile kept as a new power-up is not removed.
- * - Tiles fall, new ones drop in from above. If no line of 3 is possible the
- *   board reshuffles for free.
+ * How it plays (Louis, 2026-11-22: "switch from the drag the line way... back
+ * to the swap one icon to match 3, 4, 5, or however many in a row"):
+ * - Swap two tiles that sit side by side or one above the other. If that
+ *   lines up 3 or more of a kind in a row or a column, they clear and it
+ *   costs one move. A swap that lines nothing up goes back and costs nothing.
+ * - Every matched tile clears. A run of 4 earns a Light Burst and a run of 5
+ *   or more an All Match orb; the power-up drops in from the top of that
+ *   column with the new tiles.
+ * - A Light Burst caught in a clear sweeps its whole row. Swap an orb with
+ *   any tile to clear every tile of that kind (two orbs: the whole board).
+ * - Tiles fall, new ones drop in, and anything that lines up then clears too
+ *   (a chain, worth more each time). If no swap is possible the board
+ *   reshuffles for free.
  *
  * A board is rows of cells; a cell holds a tile or is empty mid-resolution.
  * Every tile has a stable id so the screen can slide it from where it was to
  * where it is.
  */
+
+import BOARD_CONFIGS from "./boards.generated.json";
 
 export type Power = "light" | "orb";
 export type Tile = { id: number; type: string; power?: Power };
@@ -33,11 +35,11 @@ export const SIZE = 7;
 /** The board: 7 across, 9 down (Louis, 2026-11-22: the 7x7 left the top of the screen empty). */
 export const COLS = 7;
 export const ROWS = 9;
-/** Shortest line that clears. */
+/** Shortest run (row or column) that clears. */
 export const MIN_LINE = 3;
-/** Line lengths that leave a power-up behind. */
-export const LIGHT_AT = 5;
-export const ORB_AT = 7;
+/** Run lengths that earn a power-up: 4 a Light Burst, 5 or more an All Match orb. */
+export const LIGHT_AT = 4;
+export const ORB_AT = 5;
 
 export type Rng = () => number;
 
@@ -61,87 +63,121 @@ export const cloneBoard = (b: Board): Board => b.map((row) => row.map((t) => (t 
 const key = (r: number, c: number) => `${r},${c}`;
 const samePos = (a: Pos, b: Pos) => a.r === b.r && a.c === b.c;
 
-/** Touching, including diagonally. */
-export const touching = (a: Pos, b: Pos) => !samePos(a, b) && Math.abs(a.r - b.r) <= 1 && Math.abs(a.c - b.c) <= 1;
+/** Side by side or one above the other (no diagonals): the swaps you can make. */
+export const adjacent = (a: Pos, b: Pos) => Math.abs(a.r - b.r) + Math.abs(a.c - b.c) === 1;
 
-/** The kind a line is made of: its first tile that is not an orb (null while it is all orbs). */
-export function lineType(board: Board, line: Pos[]): string | null {
-  for (const p of line) {
-    const t = board[p.r]?.[p.c];
-    if (t && t.type !== ORB) return t.type;
-  }
-  return null;
-}
-
-/** Can this tile be added to the end of the line? */
-export function canExtend(board: Board, line: Pos[], next: Pos): boolean {
-  const t = board[next.r]?.[next.c];
-  if (!t) return false;
-  if (line.some((p) => samePos(p, next))) return false;
-  if (line.length === 0) return true;
-  if (!touching(line[line.length - 1], next)) return false;
-  if (t.type === ORB) return true;
-  const kind = lineType(board, line);
-  return kind === null || kind === t.type;
-}
-
-/** Is there any line of MIN_LINE on the board? Returns one, for hints. */
-export function findLine(board: Board): Pos[] | null {
+/**
+ * Every row or column run of MIN_LINE or more of one kind (orbs never make a
+ * run). Each run is its cells in order.
+ */
+export function findRuns(board: Board): Pos[][] {
   const rows = board.length;
   const cols = board[0].length;
-  // A connected group (8 directions, same kind, orbs join anything) of 3 or
-  // more always contains a line of 3, so a short search is enough.
-  const extend = (line: Pos[]): Pos[] | null => {
-    if (line.length >= MIN_LINE) return line;
-    const last = line[line.length - 1];
-    for (let dr = -1; dr <= 1; dr += 1) {
-      for (let dc = -1; dc <= 1; dc += 1) {
-        const n = { r: last.r + dr, c: last.c + dc };
-        if (n.r < 0 || n.c < 0 || n.r >= rows || n.c >= cols) continue;
-        if (canExtend(board, line, n)) {
-          const found = extend([...line, n]);
-          if (found) return found;
-        }
-      }
-    }
-    return null;
+  const runs: Pos[][] = [];
+  const typeAt = (r: number, c: number) => {
+    const t = board[r]?.[c];
+    return t && t.type !== ORB ? t.type : null;
   };
   for (let r = 0; r < rows; r += 1) {
+    let c = 0;
+    while (c < cols) {
+      const t = typeAt(r, c);
+      let end = c + 1;
+      while (t && end < cols && typeAt(r, end) === t) end += 1;
+      if (t && end - c >= MIN_LINE) runs.push(Array.from({ length: end - c }, (_, i) => ({ r, c: c + i })));
+      c = end;
+    }
+  }
+  for (let c = 0; c < cols; c += 1) {
+    let r = 0;
+    while (r < rows) {
+      const t = typeAt(r, c);
+      let end = r + 1;
+      while (t && end < rows && typeAt(end, c) === t) end += 1;
+      if (t && end - r >= MIN_LINE) runs.push(Array.from({ length: end - r }, (_, i) => ({ r: r + i, c })));
+      r = end;
+    }
+  }
+  return runs;
+}
+
+function swapped(board: Board, a: Pos, b: Pos): Board {
+  const next = cloneBoard(board);
+  const t = next[a.r][a.c];
+  next[a.r][a.c] = next[b.r][b.c];
+  next[b.r][b.c] = t;
+  return next;
+}
+
+/** Would swapping these two make something happen? */
+export function swapWorks(board: Board, a: Pos, b: Pos): boolean {
+  if (!adjacent(a, b)) return false;
+  const ta = board[a.r]?.[a.c];
+  const tb = board[b.r]?.[b.c];
+  if (!ta || !tb) return false;
+  if (ta.type === ORB || tb.type === ORB) return true;
+  return findRuns(swapped(board, a, b)).length > 0;
+}
+
+/** A swap that works, for the hint (null when the board is stuck). */
+export function findMove(board: Board): [Pos, Pos] | null {
+  const rows = board.length;
+  const cols = board[0].length;
+  for (let r = 0; r < rows; r += 1) {
     for (let c = 0; c < cols; c += 1) {
-      const found = extend([{ r, c }]);
-      if (found && lineType(board, found) !== null) return found;
+      for (const n of [{ r, c: c + 1 }, { r: r + 1, c }]) {
+        if (n.r < rows && n.c < cols && swapWorks(board, { r, c }, n)) return [{ r, c }, n];
+      }
     }
   }
   return null;
 }
 
-/** A fresh board with at least one line to make. */
+/** Kept for older callers: a move's two tiles, or null. */
+export function findLine(board: Board): Pos[] | null {
+  return findMove(board);
+}
+
+/** A fresh board: nothing already lined up, and at least one swap that works. */
 export function createBoard(types: string[], rng: Rng, ids: IdSource, rows = ROWS, cols = COLS): Board {
-  for (let attempt = 0; attempt < 200; attempt += 1) {
-    const b: Board = Array.from({ length: rows }, () => Array.from({ length: cols }, () => ({ id: ids.next++, type: pick(types, rng) }) as Cell));
-    if (findLine(b)) return b;
+  for (let attempt = 0; attempt < 500; attempt += 1) {
+    const b: Board = Array.from({ length: rows }, () => Array.from({ length: cols }, () => null as Cell));
+    for (let r = 0; r < rows; r += 1) {
+      for (let c = 0; c < cols; c += 1) {
+        // Never deal three in a row: pick again when this one would make a run.
+        let type = pick(types, rng);
+        for (let tries = 0; tries < 12; tries += 1) {
+          const rowRun = c >= 2 && b[r][c - 1]?.type === type && b[r][c - 2]?.type === type;
+          const colRun = r >= 2 && b[r - 1][c]?.type === type && b[r - 2][c]?.type === type;
+          if (!rowRun && !colRun) break;
+          type = pick(types, rng);
+        }
+        b[r][c] = { id: ids.next++, type };
+      }
+    }
+    if (findRuns(b).length === 0 && findMove(b)) return b;
   }
   throw new Error("Could not deal a playable board.");
 }
 
-/** Same tiles, new places, with a line available. Costs nothing. */
+/** Same tiles, new places: nothing lined up, a swap available. Costs nothing. */
 export function reshuffle(b: Board, rng: Rng): Board {
   const tiles = b.flat().filter((t): t is Tile => !!t);
   const rows = b.length;
   const cols = b[0].length;
-  for (let attempt = 0; attempt < 500; attempt += 1) {
+  for (let attempt = 0; attempt < 800; attempt += 1) {
     const bag = [...tiles];
     for (let i = bag.length - 1; i > 0; i -= 1) {
       const j = Math.floor(rng() * (i + 1));
       [bag[i], bag[j]] = [bag[j], bag[i]];
     }
     const next: Board = Array.from({ length: rows }, (_, r) => Array.from({ length: cols }, (_, c) => ({ ...bag[r * cols + c] })));
-    if (findLine(next)) return next;
+    if (findRuns(next).length === 0 && findMove(next)) return next;
   }
   return b;
 }
 
-// ---------- resolving a line ----------
+// ---------- resolving a swap ----------
 
 export type Beam = { row: number };
 
@@ -150,11 +186,15 @@ export type Step = {
   cleared: Pos[];
   /** Rows swept by a Light Burst. */
   beams: Beam[];
-  /** The kind an All Match orb cleared, if one was in the line. */
+  /** The kind an All Match orb cleared, if one was used. */
   orbType: string | null;
-  /** The power-up left behind (kept, not counted). */
+  /** Power-ups earned this step (they drop in from the top with the new tiles). */
   made: Array<Pos & { tile: Tile }>;
-  /** The board with the cleared cells empty and the power-up in place. */
+  /** The longest run this step, for the sound. */
+  longest: number;
+  /** The board this step starts from. */
+  before: Board;
+  /** With the cleared cells empty. */
   afterClear: Board;
   /** After the fall and the refill. */
   afterFill: Board;
@@ -167,21 +207,17 @@ export type Step = {
 
 export type Resolution = {
   valid: boolean;
+  /** The two tiles swapped, and the board right after the swap. */
+  swap: [Pos, Pos] | null;
+  afterSwap: Board;
+  /** The clear, then each chain reaction it sets off. */
   steps: Step[];
   final: Board;
   removed: Record<string, number>;
   points: number;
-  /** True when the board had to be reshuffled at the end (no line left). */
+  /** True when the board had to be reshuffled at the end (no swap left). */
   reshuffled: boolean;
 };
-
-/** Is this a line that clears? */
-export function lineIsValid(board: Board, line: Pos[]): boolean {
-  if (line.length < MIN_LINE) return false;
-  if (lineType(board, line) === null) return false; // all orbs: nothing to match
-  for (let i = 0; i < line.length; i += 1) if (!canExtend(board, line.slice(0, i), line[i])) return false;
-  return true;
-}
 
 /** Gravity and refill. Returns the new board and how far each new tile drops. */
 function fall(b: Board, types: string[], rng: Rng, ids: IdSource): { board: Board; dropFrom: Record<number, number> } {
@@ -207,26 +243,23 @@ function fall(b: Board, types: string[], rng: Rng, ids: IdSource): { board: Boar
   return { board: next, dropFrom };
 }
 
-/** Play a line from start to finish. An invalid line changes nothing and costs nothing. */
-export function playLine(board: Board, line: Pos[], types: string[], rng: Rng, ids: IdSource): Resolution {
-  if (!lineIsValid(board, line)) return { valid: false, steps: [], final: board, removed: {}, points: 0, reshuffled: false };
-  const rows = board.length;
+/**
+ * Clear a set of cells (plus the rows of any Light Bursts caught in it), let
+ * the tiles fall, and drop in the power-ups earned.
+ */
+function clearStep(
+  board: Board,
+  start: Set<string>,
+  earned: Array<{ c: number; power: Power; type: string }>,
+  orbType: string | null,
+  longest: number,
+  chain: number,
+  types: string[],
+  rng: Rng,
+  ids: IdSource,
+): Step {
   const cols = board[0].length;
-  const kind = lineType(board, line)!;
-  const clear = new Set<string>(line.map((p) => key(p.r, p.c)));
-
-  // An orb in the line takes every tile of the line's kind.
-  const hasOrb = line.some((p) => board[p.r][p.c]?.type === ORB);
-  if (hasOrb) board.forEach((row, r) => row.forEach((t, c) => t && t.type === kind && clear.add(key(r, c))));
-
-  // Every tile of the line clears (Louis, 2026-11-22: "if I select six, all
-  // six need to be gone"). The power-up a long line earns drops in from the
-  // top of the last tile's column with the new tiles.
-  const made: Array<Pos & { tile: Tile }> = [];
-  const last = line[line.length - 1];
-  const earned: Tile["power"] | null = line.length >= ORB_AT ? "orb" : line.length >= LIGHT_AT ? "light" : null;
-  const keep = new Set<string>();
-
+  const clear = new Set(start);
   // Light Bursts caught in the clear sweep their row, once each; a sweep can
   // catch another Light Burst, which sweeps its own row.
   const fired = new Set<number>();
@@ -241,16 +274,14 @@ export function playLine(board: Board, line: Pos[], types: string[], rng: Rng, i
         fired.add(t.id);
         beams.push({ row: r });
         for (let cc = 0; cc < cols; cc += 1) {
-          const kk = key(r, cc);
-          if (!keep.has(kk) && !clear.has(kk)) {
-            clear.add(kk);
+          if (!clear.has(key(r, cc))) {
+            clear.add(key(r, cc));
             grew = true;
           }
         }
       }
     }
   }
-
   const removed: Record<string, number> = {};
   const afterClear = cloneBoard(board);
   const cleared: Pos[] = [];
@@ -262,34 +293,113 @@ export function playLine(board: Board, line: Pos[], types: string[], rng: Rng, i
     if (t.type !== ORB) removed[t.type] = (removed[t.type] || 0) + 1;
     afterClear[r][c] = null;
   }
-  void rows;
-  // Longer lines are worth more per tile.
-  const points = cleared.length * (10 + Math.max(0, line.length - MIN_LINE) * 2) + (earned ? 40 : 0) + beams.length * 30 + (hasOrb ? 60 : 0);
   const { board: afterFill, dropFrom } = fall(afterClear, types, rng, ids);
-  if (earned) {
-    // The top tile of that column is always new (the column lost at least one tile).
-    const top = afterFill[0][last.c]!;
-    const tile: Tile = earned === "orb" ? { id: top.id, type: ORB, power: "orb" } : { id: top.id, type: kind === ORB ? top.type : kind, power: "light" };
-    afterFill[0][last.c] = tile;
-    made.push({ r: 0, c: last.c, tile });
+  // Every matched tile clears (Louis: "if I select six, all six need to be
+  // gone"); a power-up earned drops in at the top of its column.
+  const made: Step["made"] = [];
+  const usedCols = new Set<number>();
+  for (const e of earned) {
+    let c = e.c;
+    if (usedCols.has(c)) c = [...Array(cols).keys()].find((x) => !usedCols.has(x) && afterFill[0][x]) ?? c;
+    usedCols.add(c);
+    const top = afterFill[0][c];
+    if (!top) continue;
+    const tile: Tile = e.power === "orb" ? { id: top.id, type: ORB, power: "orb" } : { id: top.id, type: e.type, power: "light" };
+    afterFill[0][c] = tile;
+    made.push({ r: 0, c, tile });
   }
-  const step: Step = { cleared, beams, orbType: hasOrb ? kind : null, made, afterClear, afterFill, dropFrom, removed, points };
+  // Chains are worth more: x1, x2, x3...
+  const points = (cleared.length * 10 + made.length * 40 + beams.length * 30 + (orbType ? 60 : 0)) * chain;
+  return { cleared, beams, orbType, made, longest, before: board, afterClear, afterFill, dropFrom, removed, points };
+}
 
-  let final = afterFill;
+/** The runs on a board as one clear: their cells, and the power-ups they earn (4 = Light Burst, 5+ = orb). */
+function runsToClear(board: Board, runs: Pos[][], prefer: Pos[]) {
+  const start = new Set<string>();
+  const earned: Array<{ c: number; power: Power; type: string }> = [];
+  let longest = 0;
+  for (const run of runs) {
+    for (const p of run) start.add(key(p.r, p.c));
+    longest = Math.max(longest, run.length);
+    if (run.length >= LIGHT_AT) {
+      // Where the swap landed in this run, else its middle: that column gets the power-up.
+      const at = run.find((p) => prefer.some((q) => samePos(p, q))) ?? run[Math.floor(run.length / 2)];
+      earned.push({ c: at.c, power: run.length >= ORB_AT ? "orb" : "light", type: board[at.r][at.c]!.type });
+    }
+  }
+  return { start, earned, longest };
+}
+
+/**
+ * Swap two neighbouring tiles. A swap that lines nothing up is not a move:
+ * the tiles go back and no move is used. Otherwise everything lined up
+ * clears, tiles fall, and any new lines clear too (a chain), until the board
+ * settles.
+ */
+export function playSwap(board: Board, a: Pos, b: Pos, types: string[], rng: Rng, ids: IdSource): Resolution {
+  const none: Resolution = { valid: false, swap: null, afterSwap: board, steps: [], final: board, removed: {}, points: 0, reshuffled: false };
+  if (!swapWorks(board, a, b)) return none;
+  const afterSwap = swapped(board, a, b);
+  const steps: Step[] = [];
+  let current = afterSwap;
+  const ta = board[a.r][a.c]!;
+  const tb = board[b.r][b.c]!;
+
+  // An orb swapped with a tile takes every tile of that kind (and itself).
+  if (ta.type === ORB || tb.type === ORB) {
+    const orbAt = ta.type === ORB ? b : a; // where the orb is now
+    const other = ta.type === ORB ? tb : ta;
+    const start = new Set<string>([key(orbAt.r, orbAt.c)]);
+    let orbType: string | null = null;
+    if (other.type === ORB) {
+      // Two orbs: the whole board.
+      current.forEach((row, r) => row.forEach((_, c) => start.add(key(r, c))));
+      orbType = "all";
+    } else {
+      orbType = other.type;
+      current.forEach((row, r) => row.forEach((t, c) => t && t.type === other.type && start.add(key(r, c))));
+    }
+    const step = clearStep(current, start, [], orbType, 0, 1, types, rng, ids);
+    steps.push(step);
+    current = step.afterFill;
+  }
+
+  for (let chain = steps.length + 1; chain <= 30; chain += 1) {
+    const runs = findRuns(current);
+    if (!runs.length) break;
+    const { start, earned, longest } = runsToClear(current, runs, chain === 1 ? [a, b] : []);
+    const step = clearStep(current, start, earned, null, longest, chain, types, rng, ids);
+    steps.push(step);
+    current = step.afterFill;
+  }
+
+  const removed: Record<string, number> = {};
+  let points = 0;
+  for (const s of steps) {
+    points += s.points;
+    for (const [t, n] of Object.entries(s.removed)) removed[t] = (removed[t] || 0) + n;
+  }
+  let final = current;
   let reshuffled = false;
-  if (!findLine(final)) {
+  if (!findMove(final)) {
     final = reshuffle(final, rng);
     reshuffled = true;
   }
-  return { valid: true, steps: [step], final, removed, points, reshuffled };
+  return { valid: true, swap: [a, b], afterSwap, steps, final, removed, points, reshuffled };
 }
 
 // ---------- levels ----------
 
 export type Goal = { type: string; count: number };
 export type MatchLevel = {
-  id: "creation" | "eden";
+  id: string;
   number: number;
+  /** "Genesis", "Exodus": the map ribbon and home label. */
+  book: string;
+  /** The board's own backgrounds (Drive board folders); Creation and Eden use matchCss. */
+  backgrounds?: { phone: string; desktop: string };
+  /** The line on the win scroll. */
+  line?: string;
   title: string;
   reference: string;
   /** For "Read in Bible Buddy". */
@@ -305,10 +415,12 @@ export type MatchLevel = {
 };
 
 /** Goals and moves are here so they can be tuned after playtesting. */
-export const MATCH_LEVELS: MatchLevel[] = [
+const FIRST_LEVELS: MatchLevel[] = [
   {
     id: "creation",
     number: 1,
+    book: "Genesis",
+    line: "“Let there be light: and there was light.”",
     title: "Creation",
     reference: "Genesis 1",
     chapter: { book: "genesis", chapter: 1 },
@@ -326,6 +438,8 @@ export const MATCH_LEVELS: MatchLevel[] = [
   {
     id: "eden",
     number: 2,
+    book: "Genesis",
+    line: "“The LORD God planted a garden eastward in Eden.”",
     title: "Garden of Eden",
     reference: "Genesis 2–3",
     chapter: { book: "genesis", chapter: 2 },
@@ -340,6 +454,63 @@ export const MATCH_LEVELS: MatchLevel[] = [
     socket: "#1d4a2a",
   },
 ];
+
+/**
+ * Every board after Eden comes from Louis's Drive board folders (2026-11-22:
+ * "the rest of the Genesis boards and Exodus... the first 20 levels"), one
+ * board-config.json each, collected into boards.generated.json with their art
+ * under public/games/match/boards/<slug>/. The configs ask for 7x7; every
+ * board is 7 across and 9 down here (ROWS), like Creation and Eden.
+ */
+type BoardConfig = {
+  slug: string;
+  level: number;
+  name: string;
+  scripture: string;
+  moveLimit: number;
+  tiles: string[];
+  goals: Record<string, number>;
+  goalText?: string;
+  storyEffect?: string;
+  chapter?: string;
+};
+
+/** "Exodus 7:14–10:29" -> exodus 7; "Genesis 6–9" -> genesis 6. */
+function chapterOf(scripture: string): { book: string; chapter: number } {
+  const m = /^\s*((?:\d\s)?[A-Za-z ]+?)\s+(\d+)/.exec(scripture || "");
+  return m ? { book: m[1].trim().toLowerCase().replace(/\s+/g, "-"), chapter: Number(m[2]) } : { book: "genesis", chapter: 1 };
+}
+
+const SOCKETS = ["#1b2b57", "#1d4a2a", "#4a2a14", "#1f3b4d", "#3b2350"];
+
+/** The playable order: Genesis boards after Eden, then Exodus; the first 20. */
+export const MAX_MATCH_LEVELS = 20;
+function fromConfigs(configs: BoardConfig[]): MatchLevel[] {
+  const book = (c: BoardConfig) => (c.chapter || c.slug.split("-")[0]).replace(/^\w/, (x) => x.toUpperCase());
+  const order = (c: BoardConfig) => (book(c).toLowerCase() === "genesis" ? 0 : 1) * 1000 + c.level;
+  const rest = configs
+    // Creation and Eden are the first two boards already.
+    .filter((c) => !(book(c).toLowerCase() === "genesis" && c.level <= 2))
+    .filter((c) => c.tiles?.length >= 4 && Object.keys(c.goals || {}).length > 0)
+    .sort((a, b) => order(a) - order(b));
+  return rest.map((c, i) => ({
+    id: c.slug,
+    number: FIRST_LEVELS.length + i + 1,
+    book: book(c),
+    title: c.name,
+    reference: c.scripture,
+    chapter: chapterOf(c.scripture),
+    types: c.tiles,
+    goals: Object.entries(c.goals).map(([type, count]) => ({ type, count })),
+    moves: c.moveLimit || 28,
+    background: `/games/match/boards/${c.slug}/background-phone.webp`,
+    backgrounds: { phone: `/games/match/boards/${c.slug}/background-phone.webp`, desktop: `/games/match/boards/${c.slug}/background-desktop.webp` },
+    line: c.storyEffect || c.goalText,
+    socket: SOCKETS[(FIRST_LEVELS.length + i) % SOCKETS.length],
+  }));
+}
+
+export const MATCH_LEVELS: MatchLevel[] = [...FIRST_LEVELS, ...fromConfigs(BOARD_CONFIGS as unknown as BoardConfig[])].slice(0, MAX_MATCH_LEVELS);
 
 export const tileArt = (type: string) => `/games/match/tiles/${type}.webp`;
 

@@ -1,0 +1,31 @@
+{
+  "level": 2,
+  "name": "The Burning Bush",
+  "scripture": "Exodus 3–4",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "moses",
+    "burning-bush",
+    "staff",
+    "stone",
+    "lamb",
+    "tree",
+    "water-jar"
+  ],
+  "goals": {
+    "burning-bush": 8,
+    "staff": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match around the bush as its light grows.",
+  "storyEffect": "Match around the bush as its light grows.",
+  "chapter": "Exodus",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

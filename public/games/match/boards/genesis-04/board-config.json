@@ -1,0 +1,29 @@
+{
+  "level": 4,
+  "name": "City of Enoch",
+  "scripture": "Genesis 4:17",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "cain",
+    "stone",
+    "logs",
+    "brick",
+    "wheat",
+    "tree",
+    "water-drop"
+  ],
+  "goals": {
+    "stone": 8,
+    "logs": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Collect stone and timber for the settlement.",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

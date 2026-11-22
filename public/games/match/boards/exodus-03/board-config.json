@@ -1,0 +1,31 @@
+{
+  "level": 3,
+  "name": "Let My People Go",
+  "scripture": "Exodus 5–7:13",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "moses",
+    "aaron",
+    "pharaoh",
+    "straw",
+    "brick",
+    "staff",
+    "stone"
+  ],
+  "goals": {
+    "straw": 8,
+    "brick": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Collect straw and bricks before the audience with Pharaoh.",
+  "storyEffect": "Collect straw and bricks before the audience with Pharaoh.",
+  "chapter": "Exodus",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

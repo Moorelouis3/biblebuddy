@@ -1,0 +1,32 @@
+{
+  "level": 5,
+  "name": "The First Passover",
+  "scripture": "Exodus 11–13:16",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "lamb",
+    "flatbread",
+    "hyssop",
+    "brick",
+    "water-jar",
+    "moses",
+    "staff"
+  ],
+  "goals": {
+    "lamb": 8,
+    "flatbread": 8,
+    "hyssop": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Collect the Passover tiles before the families leave Egypt.",
+  "storyEffect": "Collect the Passover tiles before the families leave Egypt.",
+  "chapter": "Exodus",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

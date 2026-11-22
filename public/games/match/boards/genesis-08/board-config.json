@@ -1,0 +1,29 @@
+{
+  "level": 8,
+  "name": "Isaac’s Wells",
+  "scripture": "Genesis 26",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "isaac",
+    "well",
+    "water-drop",
+    "stone",
+    "water-jar",
+    "wheat",
+    "camel"
+  ],
+  "goals": {
+    "well": 8,
+    "water-drop": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Collect well and water tiles on the way to Rehoboth.",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

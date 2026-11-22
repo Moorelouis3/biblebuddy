@@ -1,0 +1,30 @@
+{
+  "level": 5,
+  "name": "Noah and the Flood",
+  "scripture": "Genesis 6–9",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "noah",
+    "ark",
+    "dove",
+    "olive-sprig",
+    "rainbow",
+    "elephant",
+    "lamb"
+  ],
+  "goals": {
+    "dove": 8,
+    "elephant": 8,
+    "lamb": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Collect animal tiles as the waters recede.",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

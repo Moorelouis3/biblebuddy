@@ -1,0 +1,31 @@
+{
+  "level": 10,
+  "name": "The Golden Calf",
+  "scripture": "Exodus 32",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "golden-calf",
+    "gold",
+    "tent",
+    "stone",
+    "moses",
+    "aaron",
+    "tablets"
+  ],
+  "goals": {
+    "golden-calf": 8,
+    "stone": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Clear tiles around the calf as Moses returns.",
+  "storyEffect": "Clear tiles around the calf as Moses returns.",
+  "chapter": "Exodus",
+  "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+}

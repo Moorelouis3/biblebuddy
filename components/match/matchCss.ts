@@ -296,6 +296,10 @@ html.bb-native.bb-game-screen body::before { display:none !important; }
    battery (Louis, 2026-11-22): the inset the phone reports can come back 0
    there. Every notched or island iPhone needs at least ~50px, so that is the
    floor. The website and Android keep the reported inset. */
+.bbm-board-title.is-xlong h1 { font-size: clamp(15px, calc(var(--w) * .045), 26px) !important; }
+/* Boards from the Drive board folders bring their own phone and desktop art. */
+.bbm-board.has-art .bbm-board-bg { background-image: var(--bg-phone); background-color:#1a1410; }
+@media (min-aspect-ratio: 1/1) { .bbm-board.has-art .bbm-board-bg { background-image: var(--bg-desktop); } }
 /* The home picture has Back and settings drawn into it near the top: start it below the clock. */
 .bbm-home2 { --safe-top: env(safe-area-inset-top); padding-top: var(--safe-top); box-sizing:border-box; }
 html.bb-native.bb-ios .bbm-home2 { --safe-top: max(env(safe-area-inset-top), 50px); }

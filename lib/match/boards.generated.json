@@ -1,0 +1,683 @@
+[
+  {
+    "slug": "genesis-03",
+    "folderTitle": "03-Cain-and-Abels-Field",
+    "level": 3,
+    "name": "Cain and Abel’s Field",
+    "scripture": "Genesis 4",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "cain",
+      "abel",
+      "wheat",
+      "lamb",
+      "stone",
+      "tree",
+      "water-drop"
+    ],
+    "goals": {
+      "wheat": 8,
+      "lamb": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Collect grain and lambs across the field.",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "genesis-04",
+    "folderTitle": "04-City-of-Enoch",
+    "level": 4,
+    "name": "City of Enoch",
+    "scripture": "Genesis 4:17",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "cain",
+      "stone",
+      "logs",
+      "brick",
+      "wheat",
+      "tree",
+      "water-drop"
+    ],
+    "goals": {
+      "stone": 8,
+      "logs": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Collect stone and timber for the settlement.",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "genesis-05",
+    "folderTitle": "05-Noah-and-the-Flood",
+    "level": 5,
+    "name": "Noah and the Flood",
+    "scripture": "Genesis 6–9",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "noah",
+      "ark",
+      "dove",
+      "olive-sprig",
+      "rainbow",
+      "elephant",
+      "lamb"
+    ],
+    "goals": {
+      "dove": 8,
+      "elephant": 8,
+      "lamb": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Collect animal tiles as the waters recede.",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "genesis-06",
+    "folderTitle": "06-Babel",
+    "level": 6,
+    "name": "Babel",
+    "scripture": "Genesis 11:1–9",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "brick",
+      "stone",
+      "logs",
+      "wheat",
+      "water-jar",
+      "tree",
+      "water-drop"
+    ],
+    "goals": {
+      "brick": 8,
+      "logs": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Collect bricks and timber at the tower site.",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "genesis-07",
+    "folderTitle": "07-Abraham-at-Beersheba",
+    "level": 7,
+    "name": "Abraham at Beersheba",
+    "scripture": "Genesis 21:22–34",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "abraham",
+      "well",
+      "tent",
+      "lamb",
+      "tree",
+      "water-jar",
+      "wheat"
+    ],
+    "goals": {
+      "well": 8,
+      "lamb": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Collect well and lamb tiles near the tamarisk tree.",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "genesis-08",
+    "folderTitle": "08-Isaacs-Wells",
+    "level": 8,
+    "name": "Isaac’s Wells",
+    "scripture": "Genesis 26",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "isaac",
+      "well",
+      "water-drop",
+      "stone",
+      "water-jar",
+      "wheat",
+      "camel"
+    ],
+    "goals": {
+      "well": 8,
+      "water-drop": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Collect well and water tiles on the way to Rehoboth.",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "genesis-09",
+    "folderTitle": "09-Jacob-at-Shechem",
+    "level": 9,
+    "name": "Jacob at Shechem",
+    "scripture": "Genesis 33:18–20",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "jacob",
+      "altar",
+      "stone",
+      "tent",
+      "lamb",
+      "tree",
+      "grape"
+    ],
+    "goals": {
+      "stone": 8,
+      "altar": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Collect stones and altar tiles at Jacob’s camp.",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "genesis-10",
+    "folderTitle": "10-Joseph-in-Egypt",
+    "level": 10,
+    "name": "Joseph in Egypt",
+    "scripture": "Genesis 41–45",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "joseph",
+      "grain-sack",
+      "storehouse",
+      "wheat",
+      "bread",
+      "river-reeds",
+      "water-jar"
+    ],
+    "goals": {
+      "grain-sack": 8,
+      "wheat": 8,
+      "storehouse": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Collect grain and fill Egypt’s storehouses.",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "genesis-11",
+    "folderTitle": "11-Twelve-Tribes-of-Israel",
+    "level": 11,
+    "name": "Twelve Tribes of Israel",
+    "scripture": "Genesis 46–50",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "jacob",
+      "joseph",
+      "benjamin",
+      "banner",
+      "tent",
+      "fabric",
+      "lamb"
+    ],
+    "goals": {
+      "banner": 8,
+      "tent": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather family banners and tents in Goshen.",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "exodus-01",
+    "folderTitle": "01-Moses-in-the-Basket",
+    "level": 1,
+    "name": "Moses in the Basket",
+    "scripture": "Exodus 1–2",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "basket",
+      "nile-reeds",
+      "water-drop",
+      "brick",
+      "straw",
+      "bread",
+      "tree"
+    ],
+    "goals": {
+      "nile-reeds": 8,
+      "basket": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Clear reeds and guide the basket along the Nile.",
+    "storyEffect": "Clear reeds and guide the basket along the Nile.",
+    "chapter": "Exodus",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "exodus-02",
+    "folderTitle": "02-The-Burning-Bush",
+    "level": 2,
+    "name": "The Burning Bush",
+    "scripture": "Exodus 3–4",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "moses",
+      "burning-bush",
+      "staff",
+      "stone",
+      "lamb",
+      "tree",
+      "water-jar"
+    ],
+    "goals": {
+      "burning-bush": 8,
+      "staff": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match around the bush as its light grows.",
+    "storyEffect": "Match around the bush as its light grows.",
+    "chapter": "Exodus",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "exodus-03",
+    "folderTitle": "03-Let-My-People-Go",
+    "level": 3,
+    "name": "Let My People Go",
+    "scripture": "Exodus 5–7:13",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "moses",
+      "aaron",
+      "pharaoh",
+      "straw",
+      "brick",
+      "staff",
+      "stone"
+    ],
+    "goals": {
+      "straw": 8,
+      "brick": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Collect straw and bricks before the audience with Pharaoh.",
+    "storyEffect": "Collect straw and bricks before the audience with Pharaoh.",
+    "chapter": "Exodus",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "exodus-04",
+    "folderTitle": "04-The-Plagues-of-Egypt",
+    "level": 4,
+    "name": "The Plagues of Egypt",
+    "scripture": "Exodus 7:14–10:29",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "frog",
+      "hail",
+      "thundercloud",
+      "nile-reeds",
+      "water-drop",
+      "moses",
+      "pharaoh"
+    ],
+    "goals": {
+      "frog": 8,
+      "hail": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Collect frogs and hail as the sky darkens.",
+    "storyEffect": "Collect frogs and hail as the sky darkens.",
+    "chapter": "Exodus",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "exodus-05",
+    "folderTitle": "05-The-First-Passover",
+    "level": 5,
+    "name": "The First Passover",
+    "scripture": "Exodus 11–13:16",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "lamb",
+      "flatbread",
+      "hyssop",
+      "brick",
+      "water-jar",
+      "moses",
+      "staff"
+    ],
+    "goals": {
+      "lamb": 8,
+      "flatbread": 8,
+      "hyssop": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Collect the Passover tiles before the families leave Egypt.",
+    "storyEffect": "Collect the Passover tiles before the families leave Egypt.",
+    "chapter": "Exodus",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "exodus-06",
+    "folderTitle": "06-Across-the-Red-Sea",
+    "level": 6,
+    "name": "Across the Red Sea",
+    "scripture": "Exodus 13:17–15:21",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "wave",
+      "staff",
+      "tambourine",
+      "moses",
+      "water-drop",
+      "stone",
+      "thundercloud"
+    ],
+    "goals": {
+      "wave": 8,
+      "staff": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Open a dry path through the sea and reach the far shore.",
+    "storyEffect": "Open a dry path through the sea and reach the far shore.",
+    "chapter": "Exodus",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "exodus-07",
+    "folderTitle": "07-Through-the-Wilderness",
+    "level": 7,
+    "name": "Through the Wilderness",
+    "scripture": "Exodus 15:22–18:27",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "manna",
+      "quail",
+      "water-drop",
+      "stone",
+      "tent",
+      "water-jar",
+      "staff"
+    ],
+    "goals": {
+      "manna": 8,
+      "quail": 8,
+      "water-drop": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather manna and quail, then reveal water from the rock.",
+    "storyEffect": "Gather manna and quail, then reveal water from the rock.",
+    "chapter": "Exodus",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "exodus-08",
+    "folderTitle": "08-Mount-Sinai",
+    "level": 8,
+    "name": "Mount Sinai",
+    "scripture": "Exodus 19–24",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "tablets",
+      "thundercloud",
+      "stone",
+      "tent",
+      "moses",
+      "staff",
+      "burning-bush"
+    ],
+    "goals": {
+      "tablets": 8,
+      "thundercloud": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Clear the trail to Sinai and reveal the stone tablets.",
+    "storyEffect": "Clear the trail to Sinai and reveal the stone tablets.",
+    "chapter": "Exodus",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "exodus-09",
+    "folderTitle": "09-Plans-for-the-Tabernacle",
+    "level": 9,
+    "name": "Plans for the Tabernacle",
+    "scripture": "Exodus 25–31",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "gold",
+      "acacia",
+      "blue-linen",
+      "lampstand",
+      "covenant-ark",
+      "tent",
+      "bronze-altar"
+    ],
+    "goals": {
+      "gold": 8,
+      "acacia": 8,
+      "blue-linen": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Collect materials to reveal the Tabernacle plans.",
+    "storyEffect": "Collect materials to reveal the Tabernacle plans.",
+    "chapter": "Exodus",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "exodus-10",
+    "folderTitle": "10-The-Golden-Calf",
+    "level": 10,
+    "name": "The Golden Calf",
+    "scripture": "Exodus 32",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "golden-calf",
+      "gold",
+      "tent",
+      "stone",
+      "moses",
+      "aaron",
+      "tablets"
+    ],
+    "goals": {
+      "golden-calf": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Clear tiles around the calf as Moses returns.",
+    "storyEffect": "Clear tiles around the calf as Moses returns.",
+    "chapter": "Exodus",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "exodus-11",
+    "folderTitle": "11-New-Tablets",
+    "level": 11,
+    "name": "New Tablets",
+    "scripture": "Exodus 33–34",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "tablets",
+      "stone",
+      "moses",
+      "staff",
+      "cloud",
+      "tent",
+      "water-jar"
+    ],
+    "goals": {
+      "tablets": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Reveal two new tablets as God renews the covenant.",
+    "storyEffect": "Reveal two new tablets as God renews the covenant.",
+    "chapter": "Exodus",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  },
+  {
+    "slug": "exodus-12",
+    "folderTitle": "12-The-Tabernacle",
+    "level": 12,
+    "name": "The Tabernacle",
+    "scripture": "Exodus 35–40",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "tabernacle",
+      "cloud",
+      "blue-linen",
+      "lampstand",
+      "covenant-ark",
+      "acacia",
+      "bronze-altar"
+    ],
+    "goals": {
+      "tabernacle": 8,
+      "blue-linen": 8,
+      "acacia": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather materials, raise the tent and reveal the cloud over it.",
+    "storyEffect": "Gather materials, raise the tent and reveal the cloud over it.",
+    "chapter": "Exodus",
+    "balance": "Draft values for playtesting. Reuse the existing drag-to-match rules and shared UI."
+  }
+]

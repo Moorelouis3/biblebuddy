@@ -2,8 +2,8 @@
 
 /**
  * Bible Buddy Match: an original match-three game inside Bible Buddy, built
- * from the starter kit (Louis, 2026-11-22). This pass: two boards, Creation
- * (Genesis 1) and the Garden of Eden (Genesis 2-3).
+ * from the starter kit (Louis, 2026-11-22). Creation and Eden first, then the
+ * Genesis and Exodus boards from Drive: 20 boards (lib/match/engine.ts).
  *
  *   Home  -> Play opens the Genesis map at the latest unlocked board; the
  *            label says which board that is. Back returns to the Games page.
@@ -102,7 +102,7 @@ export default function MatchGame() {
     <div className="bbm-root">
       <style>{MATCH_CSS}</style>
       {screen.name === "home" ? (
-        <Home label={allDone ? "Genesis · Creation to Eden ✓" : `Genesis · ${latest.title}`} onPlay={() => setScreen({ name: "map" })} ready={ready} />
+        <Home label={allDone ? `All ${MATCH_LEVELS.length} boards ✓` : `${latest.book} · ${latest.title}`} onPlay={() => setScreen({ name: "map" })} ready={ready} />
       ) : screen.name === "map" ? (
         <GenesisMap
           progress={progress}
@@ -243,9 +243,31 @@ const PATH_POINTS: Array<[number, number]> = [
   [64, 35], [67, 32.5], [66, 30], [61, 27.5], [55, 25], [53, 22.5], [48, 20], [33, 17.5], [36, 15], [31, 12.5],
   [35, 10], [41, 7.5], [47, 5], [50, 2],
 ];
-/** A smooth curve through the points (Catmull-Rom, as cubic Beziers). */
+/** Where the two boards of one map picture sit, in that picture's percent. */
+const SEGMENT_SPOTS = [
+  { x: 21, y: 87 },
+  { x: 61, y: 27.5 },
+];
+
+/**
+ * 20 boards (Louis, 2026-11-22): the painted map holds two, so the picture
+ * repeats up the screen, one copy per two boards, with the first two at the
+ * bottom. Everything below is in percent of the whole world: x of its width,
+ * y of its height.
+ */
+const SEGMENTS = Math.max(1, Math.ceil(MATCH_LEVELS.length / 2));
+const toWorld = (seg: number, x: number, y: number) => ({ x, y: ((SEGMENTS - 1 - seg) * 100 + y) / SEGMENTS });
+const SPOTS = MATCH_LEVELS.map((_, i) => {
+  const s = SEGMENT_SPOTS[i % 2];
+  return toWorld(Math.floor(i / 2), s.x, s.y);
+});
+/** A smooth curve through the points (Catmull-Rom, as cubic Beziers), every picture's path joined bottom to top. */
 const TRAIL = (() => {
-  const p = PATH_POINTS;
+  const p: Array<[number, number]> = [];
+  for (let seg = 0; seg < SEGMENTS; seg += 1) for (const [x, y] of PATH_POINTS) {
+    const w = toWorld(seg, x, y);
+    p.push([w.x, w.y]);
+  }
   let d = `M ${p[0][0]} ${p[0][1]}`;
   for (let i = 0; i < p.length - 1; i += 1) {
     const [x0, y0] = p[Math.max(0, i - 1)];
@@ -256,10 +278,6 @@ const TRAIL = (() => {
   }
   return d;
 })();
-const SPOTS = [
-  { x: 21, y: 87 },
-  { x: 61, y: 27.5 },
-];
 
 function GenesisMap({
   progress,
@@ -278,27 +296,33 @@ function GenesisMap({
   const pathRef = useRef<SVGPathElement | null>(null);
   const [marker, setMarker] = useState<{ x: number; y: number } | null>(null);
   const [walking, setWalking] = useState(false);
-  const [arrived, setArrived] = useState<string | null>(null);
+  const [arrived, setArrived] = useState<MatchLevel | null>(null);
   const skip = useRef(false);
-  const travel = progress.travel && progress.unlocked >= 2;
+  const current = Math.min(progress.unlocked, MATCH_LEVELS.length);
+  const travel = progress.travel && current >= 2;
   const allDone = MATCH_LEVELS.every((l) => progress.done.includes(l.id));
+  const book = MATCH_LEVELS[current - 1]?.book || "Genesis";
 
-  /** Where along the trail each medallion is. */
+  /** Where along the trail a spot is (the closest point, searched coarse then fine). */
   const lengthAt = useCallback((spot: { x: number; y: number }) => {
     const p = pathRef.current;
     if (!p) return 0;
     const total = p.getTotalLength();
-    let best = 0;
-    let bestD = Infinity;
-    for (let l = 0; l <= total; l += 0.5) {
-      const pt = p.getPointAtLength(l);
-      const d = (pt.x - spot.x) ** 2 + (pt.y - spot.y) ** 2;
-      if (d < bestD) {
-        bestD = d;
-        best = l;
+    const near = (from: number, to: number, step: number) => {
+      let best = from;
+      let bestD = Infinity;
+      for (let l = from; l <= to; l += step) {
+        const pt = p.getPointAtLength(l);
+        const d = (pt.x - spot.x) ** 2 + (pt.y - spot.y) ** 2;
+        if (d < bestD) {
+          bestD = d;
+          best = l;
+        }
       }
-    }
-    return best;
+      return best;
+    };
+    const rough = near(0, total, 2);
+    return near(Math.max(0, rough - 2), Math.min(total, rough + 2), 0.1);
   }, []);
 
   const scrollToY = (yUnits: number, smooth: boolean) => {
@@ -309,12 +333,12 @@ function GenesisMap({
     el.scrollTo({ top: Math.max(0, top), behavior: smooth ? "smooth" : "auto" });
   };
 
-  // Place the marker and the camera; walk to Eden after the first Creation win.
+  // Place the marker and the camera; after a first win, walk to the next board.
   useEffect(() => {
     const p = pathRef.current;
     if (!p) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const here = SPOTS[Math.min(progress.unlocked, SPOTS.length) - 1];
+    const here = SPOTS[current - 1];
     if (!travel) {
       const id = window.setTimeout(() => {
         setMarker(here);
@@ -322,14 +346,15 @@ function GenesisMap({
       }, 0);
       return () => window.clearTimeout(id);
     }
-    const from = lengthAt(SPOTS[0]);
-    const to = lengthAt(SPOTS[1]);
+    const fromSpot = SPOTS[current - 2];
+    const from = lengthAt(fromSpot);
+    const to = lengthAt(here);
     let raf = 0;
-    const startAt = performance.now() + 700; // a beat on Creation's completed medallion first
+    const startAt = performance.now() + 700; // a beat on the finished board first
     const dur = reduced ? 0 : 2800;
     const first = window.setTimeout(() => {
-      setMarker(SPOTS[0]);
-      scrollToY(SPOTS[0].y, false);
+      setMarker(fromSpot);
+      scrollToY(fromSpot.y, false);
       setWalking(true);
     }, 0);
     const tick = (now: number) => {
@@ -341,7 +366,7 @@ function GenesisMap({
       if (t < 1) raf = requestAnimationFrame(tick);
       else {
         setWalking(false);
-        setArrived("eden");
+        setArrived(MATCH_LEVELS[current - 1]);
         onTravelled();
       }
     };
@@ -361,13 +386,22 @@ function GenesisMap({
         <button type="button" className="bbm-roundbtn" onClick={onBack} aria-label="Back">
           ←
         </button>
-        <div className="bbm-ribbon">Genesis</div>
+        <div className="bbm-ribbon">{book}</div>
         <span className="bbm-roundbtn is-spacer" />
       </div>
       <div ref={scroller} className="bbm-map-scroll">
-        <div className="bbm-map-world">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="bbm-map-art" src="/games/match/ui/map-phone.webp" alt="The Genesis trail from the coast of Creation up to the Garden of Eden" draggable={false} />
+        <div className="bbm-map-world" style={{ aspectRatio: `1080 / ${4680 * SEGMENTS}` }}>
+          {Array.from({ length: SEGMENTS }).map((_, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={i}
+              className="bbm-map-art"
+              style={{ height: `${100 / SEGMENTS}%` }}
+              src="/games/match/ui/map-phone.webp"
+              alt={i === SEGMENTS - 1 ? "The Bible Buddy trail, from Creation upward" : ""}
+              draggable={false}
+            />
+          ))}
           {/* The painted path, traced: invisible, the marker walks along it. */}
           <svg className="bbm-map-trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
             <path ref={pathRef} d={TRAIL} fill="none" stroke="none" />
@@ -376,14 +410,13 @@ function GenesisMap({
             const spot = SPOTS[i];
             const unlocked = level.number <= progress.unlocked;
             const done = progress.done.includes(level.id);
-            // The board to play next pulses and says so (Louis, 2026-11-22);
-            // finished boards stay tappable for replays.
+            // The board to play next pulses and says so; finished boards stay tappable for replays.
             const next = unlocked && !done && !walking;
             return (
               <button
                 key={level.id}
                 type="button"
-                className={`bbm-medal ${unlocked ? "" : "is-locked"} ${done ? "is-done" : ""} ${next ? "is-next" : ""} ${arrived === level.id ? "is-arrived" : ""}`}
+                className={`bbm-medal ${unlocked ? "" : "is-locked"} ${done ? "is-done" : ""} ${next ? "is-next" : ""} ${arrived?.id === level.id ? "is-arrived" : ""}`}
                 style={{ left: `${spot.x}%`, top: `${spot.y}%` }}
                 disabled={!unlocked || walking}
                 onClick={() => onOpen(level)}
@@ -391,7 +424,7 @@ function GenesisMap({
               >
                 <span className={`bbm-medal-coin ${done ? "is-done" : unlocked ? "" : "is-locked"}`}>
                   {/* You are here: your photo sits right inside the coin's circle. */}
-                  {!walking && level.number === Math.min(progress.unlocked, MATCH_LEVELS.length) ? (
+                  {!walking && level.number === current ? (
                     <span className="bbm-medal-photo">
                       {avatar ? (
                         // eslint-disable-next-line @next/next/no-img-element
@@ -428,11 +461,11 @@ function GenesisMap({
           Skip ›
         </button>
       ) : null}
-      {arrived === "eden" ? <div className="bbm-arrive">The Garden of Eden is open. Tap it to play!</div> : null}
+      {arrived ? <div className="bbm-arrive">{arrived.title} is open. Tap it to play!</div> : null}
       {allDone && !walking ? (
         <div className="bbm-finished">
-          <b>Creation to Eden: complete!</b>
-          <span>Replay either board any time. More of Genesis is coming.</span>
+          <b>All {MATCH_LEVELS.length} boards complete!</b>
+          <span>Replay any board any time. More boards are coming.</span>
         </div>
       ) : null}
     </div>
