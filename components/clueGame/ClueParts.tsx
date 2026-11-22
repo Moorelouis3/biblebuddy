@@ -504,6 +504,131 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-clue-fancard .bb-clue-card-art { flex:1; padding:6% 6% 0; }
 .bb-clue-fancard .bb-clue-art { border-radius:6px; }
 .bb-clue-fancard .bb-clue-card-name { font-size: clamp(9px, 2.4vw, 12px); padding: 3px 2px 5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+/* ---------- the board (ClueTable): the Genesis four-player layout ---------- */
+.bb-cb { position:relative; width: min(100%, 760px); margin: 0 auto; padding: 0 12px 6px; display:flex; flex-direction:column;
+  height: calc(100dvh - var(--cb-top, 60px) - env(safe-area-inset-bottom)); }
+html.bb-in-game .bb-bottom-pill, html.bb-in-game .bb-safe-top-header, html.bb-in-game .bb-report-problem { display:none !important; }
+.bb-cb > * { flex-shrink: 0; }
+.bb-cb-scene { position:fixed; inset:0; z-index:-1; pointer-events:none; background: var(--scene-phone) center bottom / cover no-repeat #d9a55e; }
+@media (min-aspect-ratio: 1/1) { .bb-cb-scene { background-image: var(--scene-desktop); background-position: center; } }
+.bb-cb-titles { position:relative; z-index:6; margin: -58px auto 0; width: max-content; max-width: calc(100% - 120px); display:flex; flex-direction:column; align-items:center; gap:3px; pointer-events:none; }
+.bb-cb-titles button { pointer-events:auto; }
+.bb-cb-deckpill { min-width: 170px; padding: 5px 26px 6px; text-align:center; font-family: Georgia, serif; font-weight:800; letter-spacing:.2em; text-transform:uppercase; font-size: clamp(16px, 4.6vw, 22px); color:#f8e4a6 !important;
+  background: url(/games/clue/ui/green-pill.webp) center / 100% 100% no-repeat; text-shadow: 0 1px 2px rgba(0,0,0,.6); }
+.bb-cb-roundpill { padding: 3px 18px 4px; font-family: Georgia, serif; font-weight:800; font-size: 14px; color:#3b2412 !important; white-space:nowrap; background: url(/games/clue/ui/cream-pill.webp) center / 100% 100% no-repeat; }
+.bb-cb-roundpill.is-button { cursor:pointer; margin-top:2px; }
+.bb-cb-others { display:grid; gap: 6px; margin-top: 12px; position:relative; z-index:3; }
+.bb-cb-other { position:relative; min-width:0; display:flex; flex-direction:column; align-items:center; }
+.bb-cb-ring { position:relative; display:inline-block; flex:none; }
+.bb-cb-ring-photo { position:absolute; inset:9%; border-radius:999px; overflow:hidden; display:grid; place-items:center; background: linear-gradient(160deg,#f6e3b4,#d8b16a); color:#3b2412; font-weight:900; font-family: Georgia, serif; }
+.bb-cb-ring-photo img { width:100%; height:100%; object-fit:cover; }
+.bb-cb-ring-frame { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; filter: drop-shadow(0 3px 6px rgba(0,0,0,.4)); }
+.bb-cb-greenpill { display:inline-flex; align-items:center; justify-content:center; gap:4px; color:#fff3cf !important; font-family: Georgia, serif; font-weight:800; white-space:nowrap;
+  background: url(/games/clue/ui/green-pill.webp) center / 100% 100% no-repeat; text-shadow: 0 1px 2px rgba(0,0,0,.5); }
+.bb-cb-greenpill * { color:inherit !important; }
+.bb-cb-namepill { margin-top:-8px; position:relative; z-index:2; max-width:100%; padding: 4px 12px 5px; font-size: clamp(11px, 3.3vw, 15px); }
+.bb-cb-name { min-width:0; overflow:hidden; text-overflow:ellipsis; }
+.bb-cb-pts { flex:none; }
+.bb-cb-fan { position:relative; display:flex; justify-content:center; align-items:flex-end; min-height: 40px; margin-top: 6px; max-width:100%; }
+.bb-cb-fancard { position:relative; width: min(12.5vw, 9vh, 70px); aspect-ratio: 5/6.4; margin: 0 -5px; border-radius:6px; overflow:hidden; background:#fbf1d8; box-shadow: 0 0 0 1.5px #d9a843, 0 4px 8px rgba(0,0,0,.35); transform-origin: 50% 110%; }
+.bb-cb-fancard .bb-clue-art { width:100%; height:100%; object-fit:cover; }
+.bb-cb-fanmore { position:absolute; right: 2px; bottom:-6px; z-index:5; min-width:22px; height:22px; padding:0 5px; border-radius:999px; display:grid; place-items:center; background:#f6d36b; color:#3b2412; font-weight:900; font-size:11px; box-shadow: 0 0 0 1.5px #8a5a1a; }
+.bb-cb-crown { position:absolute; top:-18px; left:50%; transform:translateX(-50%); font-size:20px; z-index:3; }
+.bb-cb-other.is-scored .bb-cb-ring, .bb-cb-mechip.is-scored .bb-cb-ring { animation: bb-clue-glow 1.4s ease-out .8s both; border-radius:999px; }
+.bb-cb-other.is-scored .bb-cb-namepill, .bb-cb-mechip.is-scored .bb-cb-mepill { animation: bb-clue-bump .6s ease-out .9s both; }
+.bb-cb-other.is-docked .bb-cb-namepill, .bb-cb-mechip.is-docked .bb-cb-mepill { animation: bb-clue-shake .5s ease-in-out both; }
+.bb-cb-gap { flex: 1 1 0; min-height: 0; display:flex; flex-direction:column; justify-content:flex-end; padding-bottom: 8px; }
+.bb-cb-answers { margin: 0 auto; width: min(100%, 460px); padding: 6px 8px !important; border-top:0 !important; border-radius:14px; background: rgba(255,248,232,.92); box-shadow: 0 0 0 1.5px #d9a843, 0 8px 18px rgba(0,0,0,.25); color:#2a1a0c; }
+.bb-cb-answers li { font-size: 13px !important; padding: 3px 6px !important; }
+.bb-cb-play { display:grid; grid-template-columns: minmax(0, 19fr) minmax(0, 60fr) minmax(0, 21fr); align-items:center; gap: clamp(6px, 2vw, 14px); position:relative; z-index:4; }
+.bb-cb-pileslot { display:flex; justify-content:center; }
+.bb-cb-pile { position:relative; width: 100%; max-width: min(120px, 15vh); aspect-ratio: 5/7; }
+.bb-cb-pile.is-empty { opacity:.35; }
+.bb-cb-pilecard { position:absolute; inset:0; border-radius:9px; overflow:hidden; box-shadow: 0 0 0 1.5px #c99a46, 0 6px 12px rgba(0,0,0,.35); }
+.bb-cb-pilebadge { position:absolute; right:-6px; bottom:-8px; z-index:8; min-width:28px; height:28px; padding:0 6px; border-radius:999px; display:grid; place-items:center; background: radial-gradient(circle at 40% 35%, #fff2b8, #f2c95a); color:#3b2412; font-weight:900; font-size:14px; box-shadow: 0 0 0 2px #a8741f, 0 3px 6px rgba(0,0,0,.35); }
+.bb-cb-shuffle { width: 100% !important; max-width: min(120px, 15vh); }
+.bb-cb-panel { position:relative; min-height: clamp(96px, min(30vw, 17vh), 200px); display:flex; flex-direction:column; justify-content:center; padding: clamp(12px, 3vw, 22px) clamp(12px, 3.4vw, 24px); color:#2a1a0c;
+  background: url(/games/clue/ui/clue-panel.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 8px 14px rgba(0,0,0,.35)); }
+.bb-cb-panel :is(p, span) { color: inherit; }
+.bb-cb-panel-head { display:flex; align-items:center; justify-content:center; gap: 10px; font-family: Georgia, serif; font-weight:800; font-size: clamp(12px, 3.4vw, 16px); white-space:nowrap; }
+.bb-cb-worth { font-weight:700; opacity:.6; }
+.bb-cb-sep { width:1.5px; align-self:stretch; background:#d9a843; }
+.bb-cb-timer { display:inline-flex; align-items:center; gap:4px; color:#b3261e !important; font-variant-numeric: tabular-nums; }
+.bb-cb-timer img { width: 1.25em; height:1.25em; }
+.bb-cb-timer.is-final { animation: bb-cb-pulse .5s ease-in-out infinite alternate; }
+@keyframes bb-cb-pulse { to { transform: scale(1.12); } }
+.bb-cb-timebar { height:3px; margin: 7px 0 2px; border-radius:999px; background: rgba(184,134,46,.35); overflow:hidden; }
+.bb-cb-timebar span { display:block; height:100%; transform-origin:left; background:#b8862e; transition: transform .15s linear; }
+.bb-cb-timebar span.is-final { background:#c8452d; }
+.bb-cb-clue { margin-top:6px; text-align:center; font-family: Georgia, serif; font-weight:700; font-size: clamp(15px, min(5vw, 3.4vh), 30px); line-height:1.22; color:#2a1a0c !important; overflow-wrap:anywhere; }
+.bb-cb-panel-big { text-align:center; font-family: Georgia, serif; font-weight:700; font-size: clamp(16px, 4.6vw, 24px); }
+.bb-cb-answer { text-align:center; font-family: Georgia, serif; font-weight:800; font-size: clamp(22px, 6.4vw, 34px); line-height:1.1; color:#173b23 !important; }
+.bb-cb-panel-row { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap: 4px 10px; margin-top:6px; }
+.bb-cb-ref { padding: 2px 12px 3px; font-family: Georgia, serif; font-weight:800; font-size: 13px; background: url(/games/clue/ui/cream-pill.webp) center / 100% 100% no-repeat; }
+.bb-cb-outcome { margin-top:6px; text-align:center; font-weight:900; font-size: clamp(12px, 3.3vw, 14px); }
+.bb-cb-slot { display:flex; justify-content:center; }
+.bb-cb-cardwrap { position:relative; width:100%; max-width: min(140px, 17vh); }
+.bb-cb-card { position:relative; width:100%; max-width: min(140px, 17vh); aspect-ratio: 5/7; border-radius:10px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding: 10%;
+  background: url(/games/clue/ui/mystery-card.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 8px 12px rgba(0,0,0,.35)); color:#123d24; }
+.bb-cb-card .bb-clue-art { width:100%; height:100%; object-fit:contain; }
+.bb-cb-card.is-revealed { padding: 6%; }
+.bb-cb-card.is-revealed .bb-clue-art { object-fit:cover; border-radius:6px; }
+.bb-cb-card.is-empty { opacity:.55; }
+.bb-cb-cardcover { position:absolute; inset:0; z-index:2; animation: bb-clue-uncover .5s steps(1, end) .5s both; }
+.bb-cb-me { display:flex; align-items:center; justify-content:center; gap: 10px; margin-top: clamp(6px, 1.6vh, 14px); position:relative; z-index:3; }
+.bb-cb-mechip { display:inline-flex; align-items:center; }
+.bb-cb-mepill { margin-left:-14px; padding: 7px 18px 8px 22px; font-size: clamp(15px, 4.4vw, 20px); }
+.bb-cb-divider { width:1.5px; height:34px; background: rgba(217,168,67,.8); }
+.bb-cb-creampill { display:inline-flex; align-items:center; gap:6px; padding: 6px 16px 7px; font-family: Georgia, serif; font-weight:800; font-size: clamp(14px, 4vw, 18px); color:#3b2412 !important; white-space:nowrap;
+  background: url(/games/clue/ui/cream-pill.webp) center / 100% 100% no-repeat; }
+.bb-cb-creampill img { width: 1.4em; height: 1.4em; }
+.bb-cb-stripwrap { position:relative; margin-top: clamp(4px, 1vh, 10px); display:flex; align-items:center; gap:4px; flex: 0 0 clamp(110px, 22vh, 210px) !important; min-height: 0; overflow:hidden; }
+.bb-cb-strip { flex:1; min-width:0; height:100%; min-height:0; display:flex; align-items:stretch; gap: 10px; overflow-x:auto; overflow-y:hidden; scroll-snap-type: x mandatory; padding: 2px 2px 6px; scrollbar-width:none; }
+.bb-cb-strip::-webkit-scrollbar { display:none; }
+.bb-cb-strip-empty { align-self:center; margin: 0 auto; padding: 4px 14px; border-radius:999px; background: rgba(255,248,232,.85); color:#6a4a22 !important; font-weight:800; font-size:13px; }
+.bb-cb-won { position:relative; isolation:isolate; flex: 0 0 auto; height:100%; aspect-ratio: 6/7; scroll-snap-align:start; background: url(/games/clue/ui/won-card-frame.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 6px 10px rgba(0,0,0,.3)); }
+.bb-cb-won-art { position:absolute; left:4.5%; right:4.5%; top:4%; height:64%; border-radius:9px; overflow:hidden; z-index:-1; background:#f3e3bd; }
+.bb-cb-won-art .bb-clue-art { width:100%; height:100%; object-fit:cover; }
+.bb-cb-won-name { position:absolute; left:5%; right:5%; top:63%; line-height:1.15; letter-spacing:-.01em; text-align:center; font-family: Georgia, serif; font-weight:800; font-size: clamp(11px, 2.1vh, 17px); color:#2a1a0c !important; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding-top:2px; background: rgba(251,241,216,.96); border-radius: 8px 8px 0 0; }
+.bb-cb-won-pts { position:absolute; left:50%; bottom:3%; transform:translateX(-50%); min-width: 52%; padding: 0 10px 1px; line-height:1.3; text-align:center; font-weight:900; font-size: clamp(11px, 3.2vw, 16px); color:#fff3cf !important; background: url(/games/clue/ui/win-ribbon.webp) center / 100% 100% no-repeat; text-shadow: 0 1px 2px rgba(0,0,0,.5); }
+.bb-cb-arrow { flex:none; width: 34px; height:34px; padding:0; background:none; filter: drop-shadow(0 3px 5px rgba(0,0,0,.35)); }
+.bb-cb-arrow img { width:100%; height:100%; }
+.bb-cb-arrow.is-left img { transform: scaleX(-1); }
+.bb-cb-overlay { position:relative; z-index:5; flex: 1 1 0 !important; min-height:0; overflow-y:auto; overscroll-behavior: contain; border-radius:18px; }
+.bb-cb-overlay .bb-clue-panel { margin:0 auto; width:100%; }
+.bb-cb-hand { position: relative; z-index: 30; width: min(100%, 620px); margin: 6px auto 4px;
+  display:flex; gap:8px; align-items:center; padding: 12px 14px; background: url(/games/clue/ui/guess-bar.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 8px 16px rgba(0,0,0,.4)); }
+.bb-cb-input { flex:1; min-width:0; height:48px; padding: 0 14px; border-radius:14px; background:#fffdf6 !important; color:#2a1a0c !important; font-family: Georgia, serif; font-size:17px; font-weight:600; box-shadow: inset 0 0 0 1.5px #d9a843; outline:none; }
+.bb-cb-input::placeholder { color:#9a8466 !important; }
+.bb-cb-input:focus { box-shadow: inset 0 0 0 2px #1d6a34; }
+.bb-cb-input:disabled { opacity:.6; }
+.bb-cb-guess { flex:none; height:50px; padding: 0 22px; font-family: Georgia, serif; font-weight:800; font-size:19px; color:#fff3cf !important; background: url(/games/clue/ui/guess-button.webp) center / 100% 100% no-repeat; text-shadow: 0 1px 2px rgba(0,0,0,.5); }
+.bb-cb-wait { flex:none; height:50px; padding: 0 16px; font-family: Georgia, serif; font-weight:800; font-size:17px; color:#3b2412 !important; background: url(/games/clue/ui/wait-button.webp) center / 100% 100% no-repeat; }
+.bb-cb-guess:disabled, .bb-cb-wait:disabled { opacity:.55; }
+@media (max-height: 760px) {
+  .bb-cb-others .bb-cb-ring { width:46px !important; height:46px !important; }
+  .bb-cb-me .bb-cb-ring { width:50px !important; height:50px !important; }
+  .bb-cb-titles { margin-top:-54px; }
+  .bb-cb-deckpill { font-size:15px; padding:3px 22px 4px; }
+  .bb-cb-roundpill { font-size:12.5px; }
+  .bb-cb-others { margin-top:8px; }
+  .bb-cb-namepill { margin-top:-6px; }
+  .bb-cb-hand { padding: 9px 12px; }
+  .bb-cb-input, .bb-cb-guess, .bb-cb-wait { height:44px; }
+}
+@media (max-height: 600px) {
+  .bb-cb-fan { display:none; }
+  .bb-cb-others .bb-cb-ring { width:38px !important; height:38px !important; }
+  .bb-cb-panel { min-height: 100px; }
+  .bb-cb-clue { font-size: 16px; }
+  .bb-cb-me .bb-cb-ring { width:42px !important; height:42px !important; }
+  .bb-cb-mepill, .bb-cb-creampill { font-size:14px; }
+}
+@media (max-width: 380px) {
+  .bb-cb-guess { padding: 0 14px; font-size:17px; }
+  .bb-cb-wait { padding: 0 11px; font-size:15px; }
+  .bb-cb-hand { padding: 10px 11px; gap:6px; }
+}
 /* ---------- the menu hero (Louis's mockup) ---------- */
 .bb-clue-hero { position:relative; width: min(100%, 640px); margin: 8px auto 0; text-align:center; }
 .bb-clue-herotitle { display:flex; align-items:center; justify-content:center; gap: 6px; }

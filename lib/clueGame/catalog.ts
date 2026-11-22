@@ -6,7 +6,7 @@
  */
 
 import { GENESIS_CARDS } from "./decks/genesis";
-import type { ClueCard, ClueDeck } from "./types";
+import type { ClueCard, ClueDeck, ClueScene } from "./types";
 
 const OLD = [
   "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy", "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel",
@@ -29,6 +29,14 @@ const TILE_ART = new Set(["genesis", "exodus", "leviticus", "numbers", "deuteron
 
 const PLAYABLE: Record<string, ClueCard[]> = { genesis: GENESIS_CARDS };
 
+/**
+ * Each book sets its own board scene; the board layout is shared (Louis,
+ * 2026-11-22). Genesis is the Beersheba campsite: tents and the well.
+ */
+const SCENES: Record<string, ClueScene> = {
+  genesis: { phone: "/games/clue/scenes/genesis-beersheba-phone.webp", desktop: "/games/clue/scenes/genesis-beersheba-desktop.webp" },
+};
+
 export const CLUE_DECKS: ClueDeck[] = [...OLD.map((b) => [b, "old"] as const), ...NEW.map((b) => [b, "new"] as const)].map(
   ([book, testament], i) => {
     const id = slug(book);
@@ -43,11 +51,16 @@ export const CLUE_DECKS: ClueDeck[] = [...OLD.map((b) => [b, "old"] as const), .
       cardBack: id === "genesis" ? "/games/clue/genesis/art/card-back.webp" : undefined,
       // Tile pictures made so far (Drive "Bible Clue Game → UI"); others show a book.
       tile: TILE_ART.has(id) ? `/games/clue/ui/deck-${id}.webp` : undefined,
+      scene: SCENES[id],
     };
   },
 );
 
 export const deckById = (id: string) => CLUE_DECKS.find((d) => d.id === id);
+
+/** The board scene for a game: the first chosen deck that has one, else Genesis. */
+export const sceneFor = (deckIds: string[] | undefined): ClueScene =>
+  (deckIds || []).map((id) => deckById(id)?.scene).find(Boolean) || SCENES.genesis;
 
 /** Every playable card, by id. Ids are unique across decks (prefix new decks' ids if a name repeats). */
 export const ALL_CLUE_CARDS = new Map<string, ClueCard>(

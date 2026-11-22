@@ -80,6 +80,8 @@ function ChallengeRound({ c, onDone }: { c: Challenge; onDone: (c: Challenge, ra
         youId="me"
         now={now}
         cardBack="/games/clue/genesis/art/card-back.webp"
+        deckIds={c.deckIds}
+        roundLabel={c.deckName}
         onGuess={(text) => act({ type: "guess", playerId: "me", text })}
         onWait={() => act({ type: "wait", playerId: "me" })}
         onStudy={(card) => {
@@ -119,7 +121,7 @@ export default function ClueChallenge({ id }: { id: string }) {
   return (
     <ClueRoomFrame>
       <div className="pb-28">
-        <ClueHeader backHref="/bible-study-games/clue" subtitle={c?.deckName || "Genesis"} badge="Challenge" />
+        <ClueHeader backHref="/bible-study-games/clue" subtitle={playing ? undefined : c?.deckName || "Genesis"} badge={playing ? undefined : "Challenge"} hideLogo={playing} />
         {error ? (
           <div className="bb-clue-panel bb-clue-parchment text-center">
             <p className="bb-clue-serif text-xl font-bold">{error}</p>

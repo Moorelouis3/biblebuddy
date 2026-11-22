@@ -121,7 +121,7 @@ export default function ReportProblemCard() {
 
   return (
     <>
-      <div className="mx-auto w-full max-w-[960px] px-4 pb-6">
+      <div className="bb-report-problem mx-auto w-full max-w-[960px] px-4 pb-6">
         <button
           type="button"
           onClick={() => setIsOpen(true)}

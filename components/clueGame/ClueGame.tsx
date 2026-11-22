@@ -194,6 +194,7 @@ function SoloRound({ deckIds, onExit }: { deckIds: string[]; onExit: () => void 
         youId="me"
         now={now}
         cardBack={deckById(deckIds[0])?.cardBack}
+        deckIds={deckIds}
         roundLabel={deckLabel(deckIds)}
         onGuess={(text) => act({ type: "guess", playerId: "me", text })}
         onWait={() => act({ type: "wait", playerId: "me" })}
@@ -328,7 +329,7 @@ export default function ClueGame() {
   return (
     <ClueRoomFrame>
       <div className="pb-28">
-        <ClueHeader backHref={screen === "menu" ? "/bible-study-games" : undefined} onBack={back} subtitle={screen === "play" ? undefined : subtitle} badge={screen === "decks" ? "Beta" : undefined} hideLogo={screen === "menu"} />
+        <ClueHeader backHref={screen === "menu" ? "/bible-study-games" : undefined} onBack={back} subtitle={screen === "play" ? undefined : subtitle} badge={screen === "decks" ? "Beta" : undefined} hideLogo={screen === "menu" || screen === "play"} />
         {screen === "menu" ? (
           <div className="px-4">
             {/* The menu, built to Louis's mockup (2026-11-22): gold title between

@@ -77,4 +77,8 @@ export type ClueDeck = {
   cardBack?: string;
   /** The picture on its Choose Your Deck tile. */
   tile?: string;
+  /** The scene the game board floats over: portrait for phones, wide for desktop. */
+  scene?: ClueScene;
 };
+
+export type ClueScene = { phone: string; desktop: string };

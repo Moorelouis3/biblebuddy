@@ -1,44 +1,66 @@
 "use client";
 
 /**
- * The Bible Clue Game table. One component for solo, private rooms and
+ * The Bible Clue Game board. One component for solo, private rooms and
  * challenges: it draws a PublicMatch (lib/clueGame/engine.ts publicView),
  * which never holds the current card's answer before the reveal, and calls
  * back with what the player did. Solo makes the PublicMatch on the device;
  * a room gets it from the server.
  *
- * Layout (Louis, 2026-11-22: "it should feel like I'm sitting down at a
- * spades game table and not leaving to go to other rooms for information"):
- * one screen. The felt fills it; every player stays seated round its edge the
- * whole game (photo, name, score, won pile); everything that happens - the
- * deal, the card, the clue and timer, the answers, the reveal, the points
- * flying to a seat, even the final results - happens on the green in the
- * middle. Your guess box is docked at your seat like the hand you hold.
+ * Layout: Louis's Genesis four-player board (Drive "Genesis Beersheba",
+ * 2026-11-22), the same on phones and desktop. The book's scene fills the
+ * screen and the UI floats over it:
+ *   - the deck and round in the header;
+ *   - the other players in equal columns across the top, each with a small
+ *     fan of the cards they have won (none in solo);
+ *   - one stable play row: the draw pile, the clue panel, the card in play
+ *     (its mystery picture, swapped for the reveal in the same slot);
+ *   - you: photo, round points, cards collected, then your won cards in a
+ *     swipeable strip, each with the points that win actually earned;
+ *   - the guess bar docked at the bottom.
  */
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { INTRO_DEAL_EACH_MS, INTRO_SHUFFLE_MS, ROUND_INTRO_MS, type PublicCard, type PublicMatch } from "@/lib/clueGame/engine";
-import { Avatar, CardBack, PlayingCard } from "./ClueParts";
+import { sceneFor } from "@/lib/clueGame/catalog";
+import { CardBack, SubjectArt } from "./ClueParts";
 import { clueSound } from "@/lib/clueGame/sound";
 
 export type TablePlayer = { id: string; name: string; avatar?: string | null };
 
-/**
- * Seats round a portrait table, as % of the stage. You always sit at the
- * bottom; the others fill the sides and the top like players at a card table.
- */
-function seatSpots(count: number): Array<{ x: number; y: number }> {
-  const you = { x: 50, y: 88 };
-  const layouts: Record<number, Array<{ x: number; y: number }>> = {
-    0: [],
-    1: [{ x: 50, y: 7 }],
-    2: [{ x: 22, y: 9 }, { x: 78, y: 9 }],
-    3: [{ x: 11, y: 42 }, { x: 50, y: 7 }, { x: 89, y: 42 }],
-    4: [{ x: 11, y: 50 }, { x: 25, y: 10 }, { x: 75, y: 10 }, { x: 89, y: 50 }],
-    5: [{ x: 11, y: 56 }, { x: 13, y: 22 }, { x: 50, y: 7 }, { x: 87, y: 22 }, { x: 89, y: 56 }],
-  };
-  return [you, ...(layouts[Math.min(5, Math.max(0, count - 1))] || [])].slice(0, count);
+const UI = "/games/clue/ui";
+
+function initials(name: string) {
+  return (
+    name
+      .split(/\s+/)
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((w) => w[0]?.toUpperCase())
+      .join("") || "?"
+  );
 }
+
+/** A real profile photo (or initials) inside the gold player ring. */
+function RingPhoto({ name, src, size, seat }: { name: string; src?: string | null; size: number; seat: string }) {
+  const [broken, setBroken] = useState(false);
+  return (
+    <span className="bb-cb-ring" style={{ width: size, height: size }} data-seat={seat}>
+      <span className="bb-cb-ring-photo" style={{ fontSize: size * 0.34 }}>
+        {src && !broken ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={src} alt="" onError={() => setBroken(true)} />
+        ) : (
+          initials(name)
+        )}
+      </span>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="bb-cb-ring-frame" src={`${UI}/player-ring.webp`} alt="" aria-hidden="true" />
+    </span>
+  );
+}
+
+type Won = PublicMatch["history"][number];
 
 export default function ClueTable({
   view,
@@ -46,6 +68,7 @@ export default function ClueTable({
   youId,
   now,
   cardBack,
+  deckIds,
   onGuess,
   onWait,
   onStudy,
@@ -61,31 +84,43 @@ export default function ClueTable({
   /** Server-adjusted clock. */
   now: number;
   cardBack?: string;
+  /** The decks in play: they choose the scene. */
+  deckIds?: string[];
   onGuess: (text: string) => void;
   onWait: () => void;
   onStudy: (card: PublicCard) => void;
   isHost?: boolean;
   onPause?: () => void;
   onResume?: () => void;
-  /** Shown on the felt instead of the card (the final results), seats still round it. */
+  /** Shown in place of the play row (the final results); the players stay in view. */
   overlay?: ReactNode;
-  /** Shown top centre of the felt, e.g. the deck name. */
+  /** The deck name in the header pill. */
   roundLabel?: string;
 }) {
   const [guess, setGuess] = useState("");
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const feltRef = useRef<HTMLDivElement | null>(null);
+  const boardRef = useRef<HTMLDivElement | null>(null);
+  const slotRef = useRef<HTMLDivElement | null>(null);
+  const stripRef = useRef<HTMLDivElement | null>(null);
   const round = view.round;
   const card = round?.card ?? null;
   const revealed = (view.phase === "reveal" || view.phase === "over") && !!round?.outcome;
   const paused = view.pausedAt !== null;
+  const scene = sceneFor(deckIds);
 
-  // You first (bottom seat), then everyone else in join order.
-  const seated = useMemo(() => {
-    const me = players.find((p) => p.id === youId);
-    return [...(me ? [me] : []), ...players.filter((p) => p.id !== youId)];
-  }, [players, youId]);
-  const spots = seatSpots(seated.length);
+  const me = players.find((p) => p.id === youId) || { id: youId, name: "You" };
+  const others = useMemo(() => players.filter((p) => p.id !== youId).slice(0, 3), [players, youId]);
+
+  // Wins, newest last, from resolved public history only.
+  const winsBy = useMemo(() => {
+    const map = new Map<string, Won[]>();
+    for (const c of view.history) {
+      if (c.outcome !== "won" || !c.sideId) continue;
+      map.set(c.sideId, [...(map.get(c.sideId) || []), c]);
+    }
+    return map;
+  }, [view.history]);
+  const myWins = winsBy.get(youId) || [];
 
   const at = paused && view.pausedAt ? view.pausedAt : now;
   const clueMsLeft = round && view.phase === "clue" ? Math.max(0, round.clueStartedAt + view.settings.clueSeconds * 1000 - at) : 0;
@@ -105,6 +140,34 @@ export default function ClueTable({
   const waiting = !!round?.waiting?.includes(youId);
   const points = round ? 5 - round.clueIndex : 0;
 
+  // The game screen is locked (Louis: "ain't no scrolling on a game"): the
+  // page cannot scroll while the board is up, the app menu is hidden, and the
+  // board fills exactly the screen below where it starts.
+  const [top, setTop] = useState(0);
+  useLayoutEffect(() => {
+    const html = document.documentElement;
+    const before = { html: html.style.overflow, body: document.body.style.overflow, overscroll: html.style.overscrollBehavior };
+    window.scrollTo(0, 0);
+    html.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+    html.style.overscrollBehavior = "none";
+    // The app menu and top bar step aside while a game is on (Louis, 2026-11-22).
+    html.classList.add("bb-in-game");
+    const measure = () => {
+      const el = boardRef.current;
+      if (el) setTop(Math.max(0, Math.round(el.getBoundingClientRect().top + window.scrollY)));
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => {
+      window.removeEventListener("resize", measure);
+      html.style.overflow = before.html;
+      document.body.style.overflow = before.body;
+      html.style.overscrollBehavior = before.overscroll;
+      html.classList.remove("bb-in-game");
+    };
+  }, []);
+
   // Keep the guess box in focus as clues change.
   const clueKey = round ? `${view.dealt}:${round.clueIndex}` : "";
   useEffect(() => {
@@ -121,43 +184,50 @@ export default function ClueTable({
     return () => window.clearTimeout(id);
   }, [view.dealt, inIntro, hasRound]);
 
-  // Send the won card flying to the winner's seat, just before the next deal.
-  const [award, setAward] = useState<{ dx: number; dy: number } | null>(null);
-  const winnerSeat = round?.outcome?.kind === "won" ? seated.findIndex((p) => p.id === round.outcome!.sideId) : -1;
-  const flyNow = view.phase === "reveal" && winnerSeat >= 0 && dealMsLeft > 0 && dealMsLeft < 900;
-  const vectorTo = (index: number) => {
-    const felt = feltRef.current?.getBoundingClientRect();
-    const spot = spots[index];
-    if (!felt || !spot) return null;
-    // The card sits at about 30% down the stage.
-    return { dx: ((spot.x - 50) / 100) * felt.width, dy: ((spot.y - 30) / 100) * felt.height };
+  // New wins slide into your strip: keep the newest in view.
+  useEffect(() => {
+    const el = stripRef.current;
+    if (el) el.scrollTo({ left: el.scrollWidth, behavior: "smooth" });
+  }, [myWins.length]);
+
+  /** From the card in play to a player's photo, in px. */
+  const vectorTo = (playerId: string) => {
+    const board = boardRef.current;
+    const slot = slotRef.current?.getBoundingClientRect();
+    const seat = board?.querySelector(`[data-seat="${CSS.escape(playerId)}"]`)?.getBoundingClientRect();
+    const b = board?.getBoundingClientRect();
+    if (!slot || !seat || !b) return null;
+    const x = slot.left + slot.width / 2 - b.left;
+    const y = slot.top + slot.height / 2 - b.top;
+    return { x, y, dx: seat.left + seat.width / 2 - (slot.left + slot.width / 2), dy: seat.top + seat.height / 2 - (slot.top + slot.height / 2) };
   };
+
+  // Send the won card flying to the winner, just before the next deal.
+  const [award, setAward] = useState<{ dx: number; dy: number } | null>(null);
+  const winnerId = round?.outcome?.kind === "won" ? round.outcome.sideId : null;
+  const flyNow = view.phase === "reveal" && !!winnerId && dealMsLeft > 0 && dealMsLeft < 900;
   useLayoutEffect(() => {
-    if (!flyNow) {
+    if (!flyNow || !winnerId) {
       setAward(null);
       return;
     }
-    const v = vectorTo(winnerSeat);
-    if (v) setAward(v);
-    // spots/vectorTo derive from seated; winnerSeat/flyNow are the triggers.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [flyNow, winnerSeat]);
+    const v = vectorTo(winnerId);
+    if (v) setAward({ dx: v.dx, dy: v.dy });
+  }, [flyNow, winnerId]);
 
-  // Points popping out of the table and flying to a seat, and the seat's
-  // score plate bouncing when it changes.
-  const [pops, setPops] = useState<Array<{ id: number; text: string; kind: "win" | "lose"; dx: number; dy: number; seat: string }>>([]);
+  // Points popping out of the card and flying to a player.
+  const [pops, setPops] = useState<Array<{ id: number; text: string; kind: "win" | "lose"; x: number; y: number; dx: number; dy: number; seat: string }>>([]);
   const popId = useRef(0);
   const pop = (text: string, kind: "win" | "lose", playerId: string) => {
-    const index = seated.findIndex((p) => p.id === playerId);
-    const v = vectorTo(index);
+    const v = vectorTo(playerId);
     if (!v) return;
     const id = (popId.current += 1);
     setPops((list) => [...list, { id, text, kind, seat: playerId, ...v }]);
     window.setTimeout(() => setPops((list) => list.filter((p) => p.id !== id)), 1900);
   };
 
-  // Sounds, from what changed on the table (the same for solo and rooms).
-  // Wrong guesses already on the table when it first draws are old news.
+  // Sounds, from what changed on the board (the same for solo and rooms).
+  // Wrong guesses already on the board when it first draws are old news.
   const heard = useRef({ dealt: view.dealt, clue: round?.clueIndex ?? -1, phase: view.phase, tick: 0, wrongAt: view.recentWrong.length ? view.recentWrong[view.recentWrong.length - 1].at : 0 });
   useEffect(() => {
     const h = heard.current;
@@ -176,8 +246,6 @@ export default function ClueTable({
         window.setTimeout(() => clueSound.aww(), 150);
       }
     }
-    // Wrong guesses from anyone at the table: the minus pops at their seat;
-    // your own also buzzes and the room groans.
     const fresh = view.recentWrong.filter((w) => w.at > h.wrongAt);
     if (fresh.length) {
       for (const w of fresh) pop(`−${w.points}`, "lose", w.playerId);
@@ -192,7 +260,6 @@ export default function ClueTable({
     h.phase = view.phase;
     // The first card's deal sound waits for the opening to finish.
     if (view.dealt === 1 && inIntro) h.dealt = 0;
-    // pop/vectorTo read the latest seats; the view is what triggers this.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [view.dealt, view.phase, round, view.recentWrong, youId, inIntro]);
   // Opening sounds: one riffle, then a flick per card onto the pile.
@@ -225,189 +292,245 @@ export default function ClueTable({
 
   const currentClue = round && view.phase === "clue" ? round.shownClues[round.clueIndex] : "";
   const keyRef = card?.clues?.[4]?.ref ?? card?.clues?.[0]?.ref;
-  const winnerName = round?.outcome?.kind === "won" ? players.find((p) => p.id === round.outcome!.sideId)?.name : null;
+  const winnerName = winnerId ? players.find((p) => p.id === winnerId)?.name : null;
   const pileLeft = inIntro ? (shuffling ? 0 : introPile) : Math.max(0, view.deckSize - view.dealt);
   const over = view.phase === "over";
+  const scrollStrip = (dir: 1 | -1) => stripRef.current?.scrollBy({ left: dir * (stripRef.current.clientWidth * 0.7), behavior: "smooth" });
+  const nameOf = (id: string) => (id === youId ? "You" : players.find((p) => p.id === id)?.name || "Buddy");
 
   return (
-    <div className="bb-ct">
-      {/* The table: everything happens here */}
-      <div ref={feltRef} className="bb-ct-stage">
-        <div className="bb-ct-felt" aria-hidden="true" />
+    <div ref={boardRef} className="bb-cb" style={{ ["--cb-top" as string]: `${top}px`, ["--scene-phone" as string]: `url(${scene.phone})`, ["--scene-desktop" as string]: `url(${scene.desktop})` } as React.CSSProperties}>
+      <div className="bb-cb-scene" aria-hidden="true" />
 
-        {/* Round and host controls, top of the felt */}
-        <div className="bb-ct-topbar">
-          <span className="bb-ct-roundpill">{over ? "Game over" : `Round ${Math.max(1, view.dealt)} of ${view.deckSize}`}</span>
-          {roundLabel ? <span className="bb-ct-decklabel">{roundLabel}</span> : null}
-          {isHost && !over ? (
-            <button type="button" className="bb-ct-roundpill is-button" onClick={paused ? onResume : onPause}>
-              {paused ? "▶ Resume" : "⏸ Pause"}
-            </button>
-          ) : null}
-        </div>
+      {/* Deck and round, in the header between Back and Sound */}
+      <div className="bb-cb-titles">
+        <span className="bb-cb-deckpill">{roundLabel || "Genesis"}</span>
+        <span className="bb-cb-roundpill">{over ? "Game over" : `Round ${Math.max(1, view.dealt)} of ${view.deckSize}`}</span>
+        {isHost && !over ? (
+          <button type="button" className="bb-cb-roundpill is-button" onClick={paused ? onResume : onPause}>
+            {paused ? "▶ Resume" : "⏸ Pause"}
+          </button>
+        ) : null}
+      </div>
 
-        {/* The seats, always in view */}
-        {seated.map((p, i) => {
-          const spot = spots[i];
-          const score = view.scores[p.id] ?? 0;
-          const pile = view.piles[p.id]?.length ?? 0;
-          const leading = over && view.winnerSideIds.includes(p.id);
-          return (
-            <div
-              key={p.id}
-              className={`bb-clue-seat ${p.id === youId ? "is-you" : ""} ${pops.some((x) => x.seat === p.id && x.kind === "win") ? "is-scored" : ""} ${pops.some((x) => x.seat === p.id && x.kind === "lose") ? "is-docked" : ""} ${leading ? "is-winner" : ""}`}
-              style={{ left: `${spot.x}%`, top: `${spot.y}%` }}
-            >
-              {leading ? <span className="bb-ct-crown" aria-label="Winner">👑</span> : null}
-              <Avatar name={p.name} src={p.avatar} size={seated.length > 4 ? 42 : 50} />
-              <div className="bb-clue-seatplate">
-                <span className="max-w-[76px] truncate">{p.id === youId && seated.length > 1 ? "You" : p.name}</span>
-                <span>⭐ {score}</span>
-                <span className="bb-clue-pilecount" title="Cards won">{pile}</span>
+      {/* The other players across the top, each with their won cards */}
+      {others.length ? (
+        <div className="bb-cb-others" style={{ gridTemplateColumns: `repeat(${others.length}, minmax(0, 1fr))` }}>
+          {others.map((p) => {
+            const wins = winsBy.get(p.id) || [];
+            const fan = wins.slice(-3);
+            const total = view.piles[p.id]?.length ?? wins.length;
+            const leading = over && view.winnerSideIds.includes(p.id);
+            return (
+              <div
+                key={p.id}
+                className={`bb-cb-other ${pops.some((x) => x.seat === p.id && x.kind === "win") ? "is-scored" : ""} ${pops.some((x) => x.seat === p.id && x.kind === "lose") ? "is-docked" : ""} ${leading ? "is-winner" : ""}`}
+              >
+                {leading ? <span className="bb-cb-crown" aria-label="Winner">👑</span> : null}
+                <RingPhoto name={p.name} src={p.avatar} size={56} seat={p.id} />
+                <span className="bb-cb-greenpill bb-cb-namepill">
+                  <span className="bb-cb-name">{p.name}</span>
+                  <span className="bb-cb-dot">·</span>
+                  <span className="bb-cb-pts">{view.scores[p.id] ?? 0} pts</span>
+                </span>
+                <div className="bb-cb-fan" aria-label={`${total} cards won`}>
+                  {fan.map((c, i) => (
+                    <span key={`${c.id}-${i}`} className="bb-cb-fancard" style={{ transform: `rotate(${(i - (fan.length - 1) / 2) * 8}deg)`, zIndex: i }}>
+                      <SubjectArt card={c} mode="reveal" />
+                    </span>
+                  ))}
+                  {total > fan.length ? <span className="bb-cb-fanmore">+{total - fan.length}</span> : null}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
+      ) : null}
 
-        {pops.map((p) => (
-          <span
-            key={p.id}
-            className={`bb-clue-pop ${p.kind === "win" ? "is-win" : "is-lose"}`}
-            style={{ ["--dx" as string]: `${p.dx}px`, ["--dy" as string]: `${p.dy}px` } as React.CSSProperties}
-            aria-hidden="true"
-          >
-            {p.text}
-          </span>
-        ))}
+      {pops.map((p) => (
+        <span
+          key={p.id}
+          className={`bb-clue-pop ${p.kind === "win" ? "is-win" : "is-lose"}`}
+          style={{ left: p.x, top: p.y, ["--dx" as string]: `${p.dx}px`, ["--dy" as string]: `${p.dy}px` } as React.CSSProperties}
+          aria-hidden="true"
+        >
+          {p.text}
+        </span>
+      ))}
 
-        {/* The middle of the felt */}
-        <div className="bb-ct-middle">
-          {overlay ? (
-            <div className="bb-ct-overlay">{overlay}</div>
-          ) : (
-            <>
-              <div className="bb-ct-cards">
-                {inIntro ? (
-                  shuffling ? (
-                    <div className="bb-clue-shuffle" aria-label="Shuffling the deck">
-                      {[0, 1, 2, 3, 4, 5].map((i) => (
-                        <div key={i} className={`bb-clue-shuffle-card ${i % 2 ? "is-right" : "is-left"}`} style={{ animationDelay: `${i * 40}ms` }}>
-                          <CardBack src={cardBack} />
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="bb-clue-card" aria-hidden="true">
-                      {!dealingDone ? (
-                        <div key={introPile} className="bb-clue-intro-fly">
-                          <CardBack src={cardBack} />
-                        </div>
-                      ) : null}
-                    </div>
-                  )
-                ) : card ? (
-                  <div
-                    key={view.dealt}
-                    className={`bb-clue-deal ${award ? "bb-clue-award" : ""}`}
-                    style={award ? ({ ["--dx" as string]: `${award.dx}px`, ["--dy" as string]: `${award.dy}px` } as React.CSSProperties) : undefined}
-                  >
-                    {revealed && round?.outcome?.kind === "won" ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img className="bb-clue-sparkle" src="/games/clue/ui/sparkle.webp" alt="" aria-hidden="true" />
-                    ) : null}
-                    <div className={revealed ? "" : "bb-clue-flipin"}>
-                      <PlayingCard card={card} face={revealed ? "reveal" : "mystery"} back={cardBack} />
-                      {!revealed && uncovered !== view.dealt ? (
-                        <div className="bb-clue-flipcover" aria-hidden="true">
-                          <CardBack src={cardBack} />
-                        </div>
-                      ) : null}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="bb-clue-card" aria-hidden="true" />
-                )}
-                <div className={`bb-clue-drawpile ${pileLeft === 0 ? "is-empty" : ""}`} aria-label={`${pileLeft} cards left`}>
-                  {Array.from({ length: Math.min(pileLeft, 5) }).map((_, i) => (
-                    <div key={i} style={{ transform: `translate(${i * 2}px, ${-i * 2}px)` }}>
+      {/* The scenery stays visible here; the answers float over it */}
+      {overlay ? null : <div className="bb-cb-gap">
+        {view.roundAnswers.length && !inIntro && !overlay ? (
+          <div className="bb-cb-answers bb-clue-answers">
+            <ol>
+              {view.roundAnswers.slice(-3).map((a, i) => (
+                <li key={`${a.playerId}-${a.clueIndex}-${i}`} className={a.right ? "is-right" : "is-wrong"}>
+                  <span className="bb-clue-answers-name">{nameOf(a.playerId)}</span>
+                  <span className="bb-clue-answers-time">{a.seconds.toFixed(1)}s</span>
+                  <span className="bb-clue-answers-guess">“{a.guess}”</span>
+                  <span className="bb-clue-answers-result">{a.right ? `✓ +${a.points}` : `✗ −${a.points}`}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        ) : null}
+      </div>}
+
+      {overlay ? (
+        <div className="bb-cb-overlay">{overlay}</div>
+      ) : (
+        <>
+          {/* Draw pile · clue · the card in play */}
+          <div className="bb-cb-play">
+            <div className="bb-cb-pileslot">
+              {shuffling ? (
+                <div className="bb-clue-shuffle bb-cb-shuffle" aria-label="Shuffling the deck">
+                  {[0, 1, 2, 3, 4, 5].map((i) => (
+                    <div key={i} className={`bb-clue-shuffle-card ${i % 2 ? "is-right" : "is-left"}`} style={{ animationDelay: `${i * 40}ms` }}>
                       <CardBack src={cardBack} />
                     </div>
                   ))}
-                  {pileLeft > 0 ? <span className="bb-clue-pilebadge">{pileLeft}</span> : null}
                 </div>
-              </div>
+              ) : (
+                <div className={`bb-cb-pile ${pileLeft === 0 ? "is-empty" : ""}`} aria-label={`${pileLeft} cards left`}>
+                  {Array.from({ length: Math.min(pileLeft, 4) }).map((_, i) => (
+                    <div key={i} className="bb-cb-pilecard" style={{ transform: `translate(${-i * 2.5}px, ${i * 2.5}px)`, zIndex: 4 - i }}>
+                      <CardBack src={cardBack} />
+                    </div>
+                  ))}
+                  {inIntro && !dealingDone && introPile > 0 ? (
+                    <div key={introPile} className="bb-cb-pilecard bb-clue-intro-fly" style={{ zIndex: 6 }}>
+                      <CardBack src={cardBack} />
+                    </div>
+                  ) : null}
+                  {pileLeft > 0 ? <span className="bb-cb-pilebadge">{pileLeft}</span> : null}
+                </div>
+              )}
+            </div>
 
-              {/* What's happening, on a slip of parchment on the felt */}
-              <div className="bb-ct-slip">
-                {inIntro ? (
-                  <p className="bb-ct-slip-big">{shuffling ? "Shuffling the deck…" : dealingDone ? "Round 1. Here we go!" : `Dealing ${view.deckSize} cards…`}</p>
-                ) : paused ? (
-                  <p className="bb-ct-slip-big">Paused by the host. Talk it over!</p>
-                ) : view.phase === "clue" && card ? (
-                  <>
-                    <div className="bb-ct-slip-row">
-                      <span className="bb-clue-pointsbadge">⭐ {points}</span>
-                      <span className="bb-ct-cat">Clue {(round?.clueIndex ?? 0) + 1} of 5</span>
-                      <span className={`bb-clue-timerpill ${seconds <= 3 ? "is-final" : ""}`} aria-live="polite">
-                        ⏱ {seconds}
-                      </span>
-                    </div>
-                    <div className="bb-ct-timebar">
-                      <span style={{ transform: `scaleX(${clueMsLeft / (view.settings.clueSeconds * 1000)})` }} className={seconds <= 3 ? "is-final" : ""} />
-                    </div>
-                    <p key={clueKey} className="bb-clue-cluetext bb-clue-fadein">{currentClue}</p>
-                  </>
-                ) : revealed && card ? (
-                  <>
-                    <p className="bb-ct-answer">{card.answer}</p>
-                    <div className="bb-ct-slip-row">
-                      {keyRef ? <span className="bb-clue-refpill">{keyRef.label}</span> : null}
-                      <button type="button" className="bb-clue-link text-[14px]" onClick={() => onStudy(card)}>
-                        📖 Study
-                      </button>
-                    </div>
-                    <p className="text-center text-[13px] font-black" style={{ color: round?.outcome?.kind === "won" ? "#1d5a34" : "#8a5a1a" }}>
-                      {round?.outcome?.kind === "won"
-                        ? `${round.outcome.sideId === youId ? "You" : winnerName || "A player"} won it · +${round.outcome.points}`
-                        : "Nobody got this one."}
-                      {view.phase === "reveal" ? (view.dealt >= view.deckSize ? " · Last round!" : ` · Round ${view.dealt + 1} in ${Math.max(1, Math.ceil(dealMsLeft / 1000))}…`) : ""}
-                    </p>
-                  </>
-                ) : null}
-
-                {view.roundAnswers.length && !inIntro ? (
-                  <div className="bb-clue-answers">
-                    <ol>
-                      {view.roundAnswers.slice(-4).map((a, i) => {
-                        const who = players.find((p) => p.id === a.playerId);
-                        return (
-                          <li key={`${a.playerId}-${a.clueIndex}-${i}`} className={a.right ? "is-right" : "is-wrong"}>
-                            <span className="bb-clue-answers-name">{a.playerId === youId ? "You" : who?.name || "Buddy"}</span>
-                            <span className="bb-clue-answers-time">{a.seconds.toFixed(1)}s</span>
-                            <span className="bb-clue-answers-guess">“{a.guess}”</span>
-                            <span className="bb-clue-answers-result">{a.right ? `✓ +${a.points}` : `✗ −${a.points}`}</span>
-                          </li>
-                        );
-                      })}
-                    </ol>
+            <div className="bb-cb-panel">
+              {inIntro ? (
+                <p className="bb-cb-panel-big">{shuffling ? "Shuffling the deck…" : dealingDone ? "Round 1. Here we go!" : `Dealing ${view.deckSize} cards…`}</p>
+              ) : paused ? (
+                <p className="bb-cb-panel-big">Paused by the host. Talk it over!</p>
+              ) : view.phase === "clue" && card ? (
+                <>
+                  <div className="bb-cb-panel-head">
+                    <span>
+                      Clue {(round?.clueIndex ?? 0) + 1} of 5 <span className="bb-cb-worth">· {points} pts</span>
+                    </span>
+                    <span className="bb-cb-sep" />
+                    <span className={`bb-cb-timer ${seconds <= 3 ? "is-final" : ""}`} aria-live="polite">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={`${UI}/icon-stopwatch.webp`} alt="" />
+                      0:{String(seconds).padStart(2, "0")}
+                    </span>
                   </div>
-                ) : null}
-              </div>
-            </>
-          )}
-        </div>
-      </div>
+                  <div className="bb-cb-timebar">
+                    <span style={{ transform: `scaleX(${clueMsLeft / (view.settings.clueSeconds * 1000)})` }} className={seconds <= 3 ? "is-final" : ""} />
+                  </div>
+                  <p key={clueKey} className="bb-cb-clue bb-clue-fadein">{currentClue}</p>
+                </>
+              ) : revealed && card ? (
+                <>
+                  <p className="bb-cb-answer">{card.answer}</p>
+                  <div className="bb-cb-panel-row">
+                    {keyRef ? <span className="bb-cb-ref">{keyRef.label}</span> : null}
+                    <button type="button" className="bb-clue-link text-[14px]" onClick={() => onStudy(card)}>
+                      📖 Study
+                    </button>
+                  </div>
+                  <p className="bb-cb-outcome" style={{ color: round?.outcome?.kind === "won" ? "#1d5a34" : "#8a5a1a" }}>
+                    {round?.outcome?.kind === "won" ? `${winnerId === youId ? "You" : winnerName || "A player"} won it · +${round.outcome.points}` : "Nobody got this one."}
+                    {view.phase === "reveal" ? (view.dealt >= view.deckSize ? " · Last round!" : ` · Round ${view.dealt + 1} in ${Math.max(1, Math.ceil(dealMsLeft / 1000))}…`) : ""}
+                  </p>
+                </>
+              ) : null}
+            </div>
 
-      {/* Your hand: the guess box, docked at your seat */}
+            <div ref={slotRef} className="bb-cb-slot">
+              {card && !inIntro ? (
+                <div
+                  key={view.dealt}
+                  className={`bb-cb-cardwrap bb-clue-deal ${award ? "bb-clue-award" : ""}`}
+                  style={award ? ({ ["--dx" as string]: `${award.dx}px`, ["--dy" as string]: `${award.dy}px` } as React.CSSProperties) : undefined}
+                >
+                  {revealed && round?.outcome?.kind === "won" ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img className="bb-clue-sparkle" src={`${UI}/sparkle.webp`} alt="" aria-hidden="true" />
+                  ) : null}
+                  <div className={`bb-cb-card ${revealed ? "is-revealed" : "bb-clue-flipin"}`}>
+                    <SubjectArt card={card} mode={revealed ? "reveal" : "mystery"} />
+                    {!revealed && uncovered !== view.dealt ? (
+                      <div className="bb-cb-cardcover" aria-hidden="true">
+                        <CardBack src={cardBack} />
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              ) : (
+                <div className="bb-cb-card is-empty" aria-hidden="true" />
+              )}
+            </div>
+          </div>
+
+          {/* You */}
+          <div className="bb-cb-me">
+            <span className={`bb-cb-mechip ${pops.some((x) => x.seat === youId && x.kind === "win") ? "is-scored" : ""} ${pops.some((x) => x.seat === youId && x.kind === "lose") ? "is-docked" : ""}`}>
+              <RingPhoto name={me.name} src={me.avatar} size={60} seat={youId} />
+              <span className="bb-cb-greenpill bb-cb-mepill">You · {view.scores[youId] ?? 0} pts</span>
+            </span>
+            <span className="bb-cb-divider" />
+            <span className="bb-cb-creampill bb-cb-collected">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`${UI}/icon-trophy.webp`} alt="" />
+              {view.piles[youId]?.length ?? myWins.length} collected
+            </span>
+          </div>
+
+          {/* Your won cards */}
+          <div className="bb-cb-stripwrap">
+            {myWins.length > 2 ? (
+              <button type="button" className="bb-cb-arrow is-left" aria-label="Earlier cards" onClick={() => scrollStrip(-1)}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`${UI}/icon-arrow.webp`} alt="" />
+              </button>
+            ) : null}
+            <div ref={stripRef} className="bb-cb-strip">
+              {myWins.length ? (
+                myWins.map((c, i) => (
+                  <button key={`${c.id}-${i}`} type="button" className="bb-cb-won" onClick={() => onStudy(c)} aria-label={`Review ${c.answer}`}>
+                    <span className="bb-cb-won-art">
+                      <SubjectArt card={c} mode="reveal" />
+                    </span>
+                    <span className="bb-cb-won-name">{c.answer}</span>
+                    <span className="bb-cb-won-pts">+{c.points ?? 0}</span>
+                  </button>
+                ))
+              ) : (
+                <p className="bb-cb-strip-empty">Cards you win land here.</p>
+              )}
+            </div>
+            {myWins.length > 2 ? (
+              <button type="button" className="bb-cb-arrow is-right" aria-label="Later cards" onClick={() => scrollStrip(1)}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`${UI}/icon-arrow.webp`} alt="" />
+              </button>
+            ) : null}
+          </div>
+        </>
+      )}
+
+      {/* The guess bar, docked at the bottom */}
       {!over && !overlay ? (
-        <form onSubmit={submit} className="bb-ct-hand">
+        <form onSubmit={submit} className="bb-cb-hand">
           <input
             ref={inputRef}
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
             disabled={!canGuess}
-            placeholder={inIntro ? "Get ready…" : canGuess ? (roundLeft === 1 ? "Last guess this round…" : `Your guess… (${roundLeft} this round)`) : view.phase === "clue" && roundLeft <= 0 ? "No guesses left this round" : view.phase === "reveal" ? "Next round coming…" : waiting ? "Waiting for the next clue…" : "Next clue coming…"}
-            className="bb-clue-input"
+            placeholder={inIntro ? "Get ready…" : canGuess ? (roundLeft === 1 ? "Last guess this round…" : `Your guess… (${roundLeft} left)`) : view.phase === "clue" && roundLeft <= 0 ? "No guesses left this round" : view.phase === "reveal" ? "Next round coming…" : waiting ? "Waiting for the next clue…" : "Next clue coming…"}
+            className="bb-cb-input"
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="words"
@@ -415,10 +538,10 @@ export default function ClueTable({
             enterKeyHint="go"
             aria-label="Your guess"
           />
-          <button type="submit" className="bb-clue-btn bb-clue-btn-green" disabled={!guess.trim() || !canGuess}>
+          <button type="submit" className="bb-cb-guess" disabled={!guess.trim() || !canGuess}>
             Guess
           </button>
-          <button type="button" onClick={onWait} className="bb-ct-wait" disabled={waiting || !canGuess} title="Wait for the next clue (free)">
+          <button type="button" onClick={onWait} className="bb-cb-wait" disabled={waiting || !canGuess} title="Wait for the next clue (free)">
             {round && round.clueIndex >= 4 ? "Pass" : "Wait"}
           </button>
         </form>

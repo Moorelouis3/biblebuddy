@@ -153,7 +153,7 @@ export default function ClueRoom({ code }: { code: string }) {
   return (
     <ClueRoomFrame>
       <div className="pb-28">
-        <ClueHeader backHref="/bible-study-games/clue" subtitle={room?.deckName || "Genesis"} badge={room?.status === "lobby" ? "Room" : undefined} />
+        <ClueHeader backHref="/bible-study-games/clue" subtitle={room && room.status !== "lobby" ? undefined : room?.deckName || "Genesis"} badge={room?.status === "lobby" ? "Room" : undefined} hideLogo={!!room && room.status !== "lobby"} />
         {error ? (
           <div className="bb-clue-panel bb-clue-parchment text-center">
             <p className="bb-clue-serif text-xl font-bold">{error}</p>
@@ -205,6 +205,7 @@ export default function ClueRoom({ code }: { code: string }) {
             now={now}
             cardBack="/games/clue/genesis/art/card-back.webp"
             roundLabel={room.deckName}
+            deckIds={room.deckIds}
             onGuess={(text) => void send("guess", text)}
             onWait={() => void send("wait")}
             onStudy={openStudy}
