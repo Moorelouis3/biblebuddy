@@ -1,0 +1,30 @@
+{
+  "level": 1,
+  "name": "The Burnt Offering",
+  "scripture": "Leviticus 1",
+  "chapter": "Leviticus",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "lamb",
+    "altar",
+    "fire",
+    "tabernacle",
+    "wheat",
+    "water-jar",
+    "stone"
+  ],
+  "goals": {
+    "lamb": 8,
+    "fire": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Bring the offerings to the altar.",
+  "storyEffect": "Bring the offerings to the altar."
+}

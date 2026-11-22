@@ -3,7 +3,7 @@
 /**
  * Bible Buddy Match: an original match-three game inside Bible Buddy, built
  * from the starter kit (Louis, 2026-11-22). Creation and Eden first, then the
- * Genesis and Exodus boards from Drive: 20 boards (lib/match/engine.ts).
+ * Genesis, Exodus and Leviticus boards from Drive: 33 boards (lib/match/engine.ts).
  *
  *   Home  -> Play opens the Genesis map at the latest unlocked board; the
  *            label says which board that is. Back returns to the Games page.
@@ -220,7 +220,7 @@ function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; rea
   const [settings, setSettings] = useState(false);
   // The map pictures start downloading while the home screen is up, so the map opens ready.
   useEffect(() => {
-    for (const src of ["/games/match/ui/map-phone.webp", "/games/match/ui/map-exodus-phone.webp"]) {
+    for (const src of ["/games/match/ui/map-phone.webp", "/games/match/ui/map-exodus-phone.webp", "/games/match/ui/map-leviticus-phone.webp"]) {
       const img = new Image();
       img.src = src;
     }
@@ -346,12 +346,25 @@ const EXODUS_PATH: Array<[number, number]> = [
   [33, 12.5], [27, 9.5], [33, 6.5], [45, 4], [52, 1],
 ];
 
-type Section = { src: string; fx: "genesis" | "exodus"; path: Array<[number, number]>; levels: MatchLevel[] };
+/**
+ * The Leviticus map (Drive 00-Leviticus-Map, map-leviticus-phone.webp): the
+ * Tabernacle court and the altar fire at the bottom, the camp, the scapegoat
+ * led out, the harvest with gleaners, the booths of branches, and the ram's
+ * horn on the hill at the top.
+ */
+const LEVITICUS_PATH: Array<[number, number]> = [
+  [37, 99.5], [39, 95], [47, 90], [59, 85], [69, 80], [74, 75], [72, 70], [68, 65], [63, 60], [55, 55], [42, 51],
+  [31, 47.5], [31, 45], [35, 42.5], [41, 40], [48, 37.5], [56, 35], [60, 32], [61, 28.5], [58, 25], [51, 22.5],
+  [43, 20], [37, 17.5], [33, 15], [32, 12.5], [34, 10], [40, 7.5], [47, 5], [50, 2.5], [50, 0.5],
+];
+
+type Section = { src: string; fx: "genesis" | "exodus" | "leviticus"; path: Array<[number, number]>; levels: MatchLevel[] };
 
 /** The painted maps, by book; a book without its own map yet uses the last one. */
 const BOOK_MAPS: Record<string, { src: string; path: Array<[number, number]>; fx: Section["fx"] }> = {
   Genesis: { src: "/games/match/ui/map-phone.webp", path: GENESIS_PATH, fx: "genesis" },
   Exodus: { src: "/games/match/ui/map-exodus-phone.webp", path: EXODUS_PATH, fx: "exodus" },
+  Leviticus: { src: "/games/match/ui/map-leviticus-phone.webp", path: LEVITICUS_PATH, fx: "leviticus" },
 };
 
 /**
@@ -362,7 +375,9 @@ const BOOK_MAPS: Record<string, { src: string; path: Array<[number, number]>; fx
  * Nile) and the Exodus boards. Each map is drawn in the art of the book of
  * its last board.
  */
-const PER_MAP = 10;
+// 11 a map since Leviticus came in (2026-11-23): 33 boards fill three maps
+// exactly, and Genesis 1-11 sits whole on the Genesis map.
+const PER_MAP = 11;
 const SECTIONS: Section[] = (() => {
   const out: Section[] = [];
   let lastMap = BOOK_MAPS.Genesis;
@@ -407,10 +422,15 @@ function pointAt(at: number) {
 const LEVEL_AT: number[] = (() => {
   const out: number[] = [];
   let start = 0;
-  SECTIONS.forEach((s) => {
+  SECTIONS.forEach((s, seg) => {
     const first = WORLD[start].at;
     const last = WORLD[start + s.path.length - 1].at;
-    s.levels.forEach((_, k) => out.push(first + ((k + 0.5) / PER_MAP) * (last - first)));
+    // A map above another starts past the blended seam, so the first coin on it
+    // keeps its distance from the last coin below; the top map stops a little
+    // short, so its last coin is not under the banner.
+    const lo = seg > 0 ? 0.07 : 0;
+    const hi = seg === SECTIONS.length - 1 ? 0.93 : 1;
+    s.levels.forEach((_, k) => out.push(first + (lo + ((k + 0.5) / PER_MAP) * (hi - lo)) * (last - first)));
     start += s.path.length;
   });
   return out;
@@ -449,7 +469,7 @@ function GenesisMap({
     const mid = ((el.scrollTop + el.clientHeight / 2) / el.scrollHeight) * 100;
     const seg = Math.min(SEGMENTS - 1, Math.max(0, SEGMENTS - 1 - Math.floor((mid / 100) * SEGMENTS)));
     const s = SECTIONS[seg];
-    const name = s.fx === "exodus" ? "Exodus" : "Genesis";
+    const name = s.fx === "leviticus" ? "Leviticus" : s.fx === "exodus" ? "Exodus" : "Genesis";
     setBook((b) => (b === name ? b : name));
   };
 
@@ -533,7 +553,7 @@ function GenesisMap({
                 backgroundImage: `url(${MAP_PREVIEWS[s.fx]})`,
               }}
               src={s.src}
-              alt={i === 0 ? "The Bible Buddy trail through Genesis and Exodus" : ""}
+              alt={i === 0 ? "The Bible Buddy trail through Genesis, Exodus and Leviticus" : ""}
               draggable={false}
             />
           ))}
@@ -643,8 +663,17 @@ function GenesisMap({
  * lightning over the clouds, then snow, then fireflies in the garden.
  * Decoration only: no taps, and nothing moves with reduced motion.
  */
-function MapFx({ seg, kind }: { seg: number; kind: "genesis" | "exodus" }) {
+function MapFx({ seg, kind }: { seg: number; kind: Section["fx"] }) {
   const box = { top: `${((SEGMENTS - 1 - seg) * 100) / SEGMENTS}%`, height: `${(100 / SEGMENTS) * (seg > 0 ? BLEND : 1)}%` };
+  if (kind === "leviticus") {
+    // The Leviticus map: the altar fire glowing by the Tabernacle, and fireflies over the harvest and the booths.
+    return (
+      <div className="bbm-fx" style={box} aria-hidden="true">
+        <span className="bbm-fx-shimmer" style={{ left: "26%", top: "73%", width: "20%", height: "6%" }} />
+        <span className="bbm-fx-flies" />
+      </div>
+    );
+  }
   if (kind === "exodus") {
     // The Exodus map: the Nile, the walls of the Red Sea, the oasis waterfall, and Sinai's storm.
     return (

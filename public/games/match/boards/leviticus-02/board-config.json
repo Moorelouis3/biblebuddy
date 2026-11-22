@@ -1,0 +1,31 @@
+{
+  "level": 2,
+  "name": "Grain and Peace Offerings",
+  "scripture": "Leviticus 2–3",
+  "chapter": "Leviticus",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "wheat",
+    "oil-jar",
+    "incense",
+    "flatbread",
+    "grain-sack",
+    "altar",
+    "bread"
+  ],
+  "goals": {
+    "wheat": 8,
+    "flatbread": 8,
+    "incense": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Gather grain, bread, and frankincense.",
+  "storyEffect": "Gather grain, bread, and frankincense."
+}

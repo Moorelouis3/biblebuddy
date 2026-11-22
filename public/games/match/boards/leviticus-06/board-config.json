@@ -1,0 +1,30 @@
+{
+  "level": 6,
+  "name": "The Day of Atonement",
+  "scripture": "Leviticus 16",
+  "chapter": "Leviticus",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "aaron",
+    "covenant-ark",
+    "scapegoat",
+    "incense",
+    "tabernacle",
+    "blue-linen",
+    "cloud"
+  ],
+  "goals": {
+    "scapegoat": 8,
+    "incense": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match the goat and incense.",
+  "storyEffect": "Match the goat and incense."
+}

@@ -1,0 +1,31 @@
+{
+  "level": 10,
+  "name": "Blessings for Obedience",
+  "scripture": "Leviticus 26",
+  "chapter": "Leviticus",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "water-drop",
+    "wheat",
+    "grape",
+    "basket",
+    "tree",
+    "cloud",
+    "grain-sack"
+  ],
+  "goals": {
+    "water-drop": 8,
+    "wheat": 8,
+    "grape": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Gather rain, wheat, and grapes.",
+  "storyEffect": "Gather rain, wheat, and grapes."
+}

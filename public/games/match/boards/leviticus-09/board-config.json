@@ -1,0 +1,30 @@
+{
+  "level": 9,
+  "name": "The Year of Jubilee",
+  "scripture": "Leviticus 25",
+  "chapter": "Leviticus",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "ram-horn",
+    "wheat",
+    "basket",
+    "tree",
+    "tent",
+    "banner",
+    "stone"
+  ],
+  "goals": {
+    "ram-horn": 8,
+    "wheat": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Sound the horn and gather the wheat.",
+  "storyEffect": "Sound the horn and gather the wheat."
+}

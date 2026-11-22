@@ -1,0 +1,30 @@
+{
+  "level": 7,
+  "name": "Love Your Neighbor",
+  "scripture": "Leviticus 19",
+  "chapter": "Leviticus",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "wheat",
+    "basket",
+    "grape",
+    "bread",
+    "water-jar",
+    "tree",
+    "grain-sack"
+  ],
+  "goals": {
+    "wheat": 8,
+    "basket": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Gather wheat and baskets for your neighbors.",
+  "storyEffect": "Gather wheat and baskets for your neighbors."
+}

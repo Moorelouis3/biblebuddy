@@ -20,6 +20,8 @@ export function winStoryFor(book: string, number: number, id = ""): string | nul
   if (book === "Genesis" && number >= 1 && number <= 11) return `/games/match/transitions/genesis-${String(number).padStart(2, "0")}.webp`;
   const ex = /^exodus-(\d\d)$/.exec(id);
   if (ex && Number(ex[1]) >= 1 && Number(ex[1]) <= 12) return `/games/match/transitions/exodus-${ex[1]}.webp`;
+  const lv = /^leviticus-(\d\d)$/.exec(id);
+  if (lv && Number(lv[1]) >= 1 && Number(lv[1]) <= 10) return `/games/match/transitions/leviticus-${lv[1]}.webp`;
   return null;
 }
 

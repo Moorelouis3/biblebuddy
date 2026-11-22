@@ -1,0 +1,31 @@
+{
+  "level": 8,
+  "name": "The Feasts of the LORD",
+  "scripture": "Leviticus 23",
+  "chapter": "Leviticus",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "flatbread",
+    "wheat",
+    "trumpet",
+    "booth",
+    "grape",
+    "basket",
+    "banner"
+  ],
+  "goals": {
+    "flatbread": 8,
+    "trumpet": 8,
+    "booth": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Gather bread, trumpets, and leafy booths.",
+  "storyEffect": "Gather bread, trumpets, and leafy booths."
+}

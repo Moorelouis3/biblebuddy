@@ -1,0 +1,31 @@
+{
+  "level": 5,
+  "name": "Clean and Unclean",
+  "scripture": "Leviticus 11",
+  "chapter": "Leviticus",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "lamb",
+    "camel",
+    "dove",
+    "quail",
+    "fish",
+    "river-reeds",
+    "water-drop"
+  ],
+  "goals": {
+    "lamb": 8,
+    "quail": 8,
+    "fish": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Find animals of the field, air, and water.",
+  "storyEffect": "Find animals of the field, air, and water."
+}

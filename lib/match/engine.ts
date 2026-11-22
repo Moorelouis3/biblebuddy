@@ -539,11 +539,15 @@ function chapterOf(scripture: string): { book: string; chapter: number } {
 
 const SOCKETS = ["#1b2b57", "#1d4a2a", "#4a2a14", "#1f3b4d", "#3b2350"];
 
-/** The playable order: Genesis boards after Eden, then Exodus; the first 20. */
-export const MAX_MATCH_LEVELS = 20;
+/** The playable order: Genesis boards after Eden, then Exodus, then Leviticus (33 boards since 2026-11-23). */
+export const MAX_MATCH_LEVELS = 33;
+const BOOK_ORDER = ["genesis", "exodus", "leviticus", "numbers", "deuteronomy"];
 function fromConfigs(configs: BoardConfig[]): MatchLevel[] {
   const book = (c: BoardConfig) => (c.chapter || c.slug.split("-")[0]).replace(/^\w/, (x) => x.toUpperCase());
-  const order = (c: BoardConfig) => (book(c).toLowerCase() === "genesis" ? 0 : 1) * 1000 + c.level;
+  const order = (c: BoardConfig) => {
+    const i = BOOK_ORDER.indexOf(book(c).toLowerCase());
+    return (i < 0 ? 99 : i) * 1000 + c.level;
+  };
   const rest = configs
     // Creation and Eden are the first two boards already.
     .filter((c) => !(book(c).toLowerCase() === "genesis" && c.level <= 2))
