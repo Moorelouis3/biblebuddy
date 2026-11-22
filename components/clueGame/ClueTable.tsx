@@ -99,7 +99,9 @@ export default function ClueTable({
   const introPile = inIntro && !shuffling ? Math.min(view.deckSize, Math.floor((introElapsed - INTRO_SHUFFLE_MS) / INTRO_DEAL_EACH_MS) + 1) : 0;
   const dealingDone = inIntro && introPile >= view.deckSize;
   const myGuesses = round?.guesses?.[youId] || 0;
-  const canGuess = view.phase === "clue" && !paused && !inIntro && myGuesses < view.settings.guessesPerClue && clueMsLeft > 0;
+  const maxRoundGuesses = view.settings.guessesPerRound ?? 2;
+  const roundLeft = Math.max(0, maxRoundGuesses - (round?.roundGuesses?.[youId] || 0));
+  const canGuess = view.phase === "clue" && !paused && !inIntro && myGuesses < view.settings.guessesPerClue && roundLeft > 0 && clueMsLeft > 0;
   const waiting = !!round?.waiting?.includes(youId);
   const points = round ? 5 - round.clueIndex : 0;
 
@@ -404,7 +406,7 @@ export default function ClueTable({
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
             disabled={!canGuess}
-            placeholder={inIntro ? "Get ready…" : canGuess ? "Your guess…" : view.phase === "reveal" ? "Next round coming…" : waiting ? "Waiting for the next clue…" : "Next clue coming…"}
+            placeholder={inIntro ? "Get ready…" : canGuess ? (roundLeft === 1 ? "Last guess this round…" : `Your guess… (${roundLeft} this round)`) : view.phase === "clue" && roundLeft <= 0 ? "No guesses left this round" : view.phase === "reveal" ? "Next round coming…" : waiting ? "Waiting for the next clue…" : "Next clue coming…"}
             className="bb-clue-input"
             autoComplete="off"
             autoCorrect="off"

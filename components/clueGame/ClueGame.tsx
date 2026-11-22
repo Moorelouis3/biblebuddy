@@ -39,7 +39,7 @@ function HowToPlay({ onBack }: { onBack: () => void }) {
     ["🃏", "A game is 10 rounds. Each round, one card is dealt face down: you see only whether it is a Person, Place or Keyword, and its silhouette."],
     ["5️⃣", "Clues come one at a time, from 5 points down to 1. Each clue stays up for 12 seconds."],
     ["✅", "The fastest right answer wins that clue’s points and the card."],
-    ["❌", "Guess wrong and you lose that many points. One guess per clue."],
+    ["❌", "Guess wrong and you lose that many points. One guess per clue, two per round."],
     ["⏳", "Not sure? Wait for the next clue. Waiting is free."],
     ["🔁", "The next round deals itself. Most points after 10 rounds wins."],
     ["📖", "After each card, tap Study This Card for its Scripture and a short teaching note."],

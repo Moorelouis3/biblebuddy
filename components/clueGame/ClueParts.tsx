@@ -447,7 +447,7 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-ct-felt { position:absolute; left:50%; top:50%; width: 112cqh; height: 112cqw; transform: translate(-50%,-50%) rotate(90deg);
   background: url(/games/clue/ui/table.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 18px 26px rgba(0,0,0,.5)); }
 @container (min-aspect-ratio: 1/1) { .bb-ct-felt { width: 112cqw; height: 112cqh; transform: translate(-50%,-50%); } }
-.bb-ct-topbar { position:absolute; left:50%; top: 15%; transform: translateX(-50%); z-index:6; display:flex; gap:6px; align-items:center; white-space:nowrap; }
+.bb-ct-topbar { position:absolute; left:50%; top: 13%; transform: translateX(-50%); z-index:6; display:flex; gap:6px; align-items:center; white-space:nowrap; }
 .bb-ct-roundpill { padding:4px 14px; font-family: Georgia, serif; font-weight:800; font-size:13px; color:#3b2412;
   background: url(/games/clue/ui/name-shield.webp) center / 100% 100% no-repeat; }
 .bb-ct-roundpill.is-button { cursor:pointer; }
@@ -472,6 +472,19 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-ct-answer { font-family: Georgia, serif; font-weight:700; font-size: clamp(22px, 6.4vw, 30px); text-align:center; color:#173b23; line-height:1.1; margin-bottom:4px; }
 .bb-ct-slip .bb-clue-answers { margin-top:6px; }
 .bb-ct-slip .bb-clue-answers li { font-size:12.5px; padding:3px 6px; }
+/* Wide screens (tablet, laptop): the table lies flat, so the card and the
+   slip sit side by side instead of stacked. */
+@container (min-aspect-ratio: 1/1) {
+  .bb-ct-topbar { top: 11%; }
+  .bb-ct-middle { top: 20%; bottom: 20%; width: 74%; flex-direction: row; align-items: center; justify-content: center; gap: 3cqw; }
+  .bb-ct-middle .bb-clue-card { width: min(15cqw, 36cqh, 150px); }
+  .bb-ct-middle .bb-clue-drawpile { width: min(11cqw, 27cqh, 110px); }
+  .bb-ct-middle .bb-clue-shuffle { width: min(15cqw, 36cqh, 150px); }
+  .bb-ct-cards { flex: none; gap: 2.4cqw; }
+  .bb-ct-slip { flex: 1 1 0; min-width: 0; max-height: 100%; }
+  .bb-ct-overlay { flex: 1 1 auto; }
+}
+.bb-ct-slip { scrollbar-width: thin; }
 .bb-ct-overlay { width: 100%; max-height: 100%; overflow-y:auto; border-radius:18px; }
 .bb-ct-overlay .bb-clue-panel { margin:0; width:100%; }
 .bb-ct-overlay .bb-clue-title { font-size: clamp(24px, 7vw, 32px); }

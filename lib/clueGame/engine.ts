@@ -33,6 +33,12 @@ export type ClueSettings = {
   allowNegative: boolean;
   /** Playtest default 1: official guesses per player per clue. */
   guessesPerClue: number;
+  /**
+   * Guesses per player per round (Louis, 2026-11-22: one guess a clue let a
+   * player lose 15 points on one card; two a round still lets you take a
+   * shot early and another when you know it).
+   */
+  guessesPerRound: number;
 };
 
 /**
@@ -47,6 +53,7 @@ export const DEFAULT_CLUE_SETTINGS: ClueSettings = {
   targetScore: null,
   allowNegative: true,
   guessesPerClue: 1,
+  guessesPerRound: 2,
 };
 
 /** A player or a team. Points and won cards belong to the side. */
@@ -70,6 +77,8 @@ export type ClueRound = {
   guesses: Record<string, number>;
   /** Players who chose to wait for the next clue. */
   waiting: string[];
+  /** Official guesses this round (all clues), by player. Older saved matches lack it. */
+  roundGuesses?: Record<string, number>;
   outcome: null | { kind: "won"; sideId: string; playerId: string; points: number; guess: string } | { kind: "missed" };
   revealedAt: number | null;
 };
@@ -198,7 +207,19 @@ export function canGuess(match: ClueMatch, playerId: string): boolean {
   const r = match.round;
   if (match.phase !== "clue" || !r || r.outcome || match.pausedAt !== null) return false;
   if (!match.players.some((p) => p.id === playerId)) return false;
+  if (roundGuessesLeft(match, playerId) <= 0) return false;
   return (r.guesses[playerId] || 0) < match.settings.guessesPerClue;
+}
+
+/** Guesses this player has left on the card in play. */
+export function roundGuessesLeft(match: Pick<ClueMatch, "settings" | "round">, playerId: string): number {
+  const max = match.settings.guessesPerRound ?? DEFAULT_CLUE_SETTINGS.guessesPerRound;
+  return Math.max(0, max - (match.round?.roundGuesses?.[playerId] || 0));
+}
+
+/** Nobody at the table has a guess left on this card. */
+function nobodyCanGuessThisRound(match: ClueMatch): boolean {
+  return match.players.every((p) => roundGuessesLeft(match, p.id) <= 0);
 }
 
 /** Milliseconds left on the current clue (0 outside a clue). Frozen while paused. */
@@ -240,7 +261,7 @@ function reveal(match: ClueMatch, at: number, outcome: ClueRound["outcome"]): Cl
 
 function nextClueOrMiss(match: ClueMatch, now: number): ClueMatch {
   const r = match.round!;
-  if (r.clueIndex >= 4) {
+  if (r.clueIndex >= 4 || nobodyCanGuessThisRound(match)) {
     return {
       ...match,
       phase: "reveal",
@@ -260,7 +281,7 @@ function nextClueOrMiss(match: ClueMatch, now: number): ClueMatch {
 /** True when nobody left on this clue can still guess or is still thinking. */
 function everyoneDone(match: ClueMatch): boolean {
   const r = match.round!;
-  return match.players.every((p) => r.waiting.includes(p.id) || (r.guesses[p.id] || 0) >= match.settings.guessesPerClue);
+  return match.players.every((p) => r.waiting.includes(p.id) || (r.guesses[p.id] || 0) >= match.settings.guessesPerClue || roundGuessesLeft(match, p.id) <= 0);
 }
 
 function dealNext(match: ClueMatch, now: number): ClueMatch {
@@ -270,7 +291,7 @@ function dealNext(match: ClueMatch, now: number): ClueMatch {
     ...match,
     dealt: match.dealt + 1,
     phase: "clue",
-    round: { cardId, clueIndex: 0, clueStartedAt: now, guesses: {}, waiting: [], outcome: null, revealedAt: null },
+    round: { cardId, clueIndex: 0, clueStartedAt: now, guesses: {}, waiting: [], roundGuesses: {}, outcome: null, revealedAt: null },
     log: [...match.log, { type: "deal", at: now, cardId }, { type: "clue", at: now, cardId, clueIndex: 0 }],
   };
 }
@@ -339,11 +360,12 @@ export function reduceClueMatch(match: ClueMatch, action: ClueAction, cards: Map
       if (!card) return match;
       const points = pointsForClue(r.clueIndex);
       const guesses = { ...r.guesses, [player.id]: (r.guesses[player.id] || 0) + 1 };
+      const roundGuesses = { ...(r.roundGuesses || {}), [player.id]: (r.roundGuesses?.[player.id] || 0) + 1 };
       if (isCorrectGuess(card, text)) {
         return {
           ...match,
           phase: "reveal",
-          round: { ...r, guesses, outcome: { kind: "won", sideId: player.sideId, playerId: player.id, points, guess: text }, revealedAt: action.now },
+          round: { ...r, guesses, roundGuesses, outcome: { kind: "won", sideId: player.sideId, playerId: player.id, points, guess: text }, revealedAt: action.now },
           scores: { ...match.scores, [player.sideId]: (match.scores[player.sideId] ?? 0) + points },
           piles: { ...match.piles, [player.sideId]: [...(match.piles[player.sideId] || []), r.cardId] },
           log: [...match.log, { type: "correct", at: action.now, cardId: r.cardId, clueIndex: r.clueIndex, playerId: player.id, sideId: player.sideId, guess: text, points }],
@@ -353,7 +375,7 @@ export function reduceClueMatch(match: ClueMatch, action: ClueAction, cards: Map
       const after = match.settings.allowNegative ? before - points : Math.max(0, before - points);
       const m: ClueMatch = {
         ...match,
-        round: { ...r, guesses },
+        round: { ...r, guesses, roundGuesses },
         scores: { ...match.scores, [player.sideId]: after },
         log: [...match.log, { type: "wrong", at: action.now, cardId: r.cardId, clueIndex: r.clueIndex, playerId: player.id, sideId: player.sideId, guess: text, points }],
       };

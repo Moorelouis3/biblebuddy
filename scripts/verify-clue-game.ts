@@ -145,6 +145,18 @@ ok("one guess per player per clue, and two racing right answers award the card o
   assert.equal(after.piles.a.length + after.piles.b.length, 1);
 });
 
+ok("two guesses a round, so one card costs at most 9; with no guesses left at the table the card is missed", () => {
+  let m = start();
+  const at = (k: number) => m.round!.clueStartedAt + 1 + k * 0;
+  m = reduceClueMatch(m, { type: "guess", now: at(0), playerId: "me", text: "Goliath" }, cards);
+  assert.equal(m.round!.clueIndex, 1);
+  assert.ok(canGuess(m, "me"));
+  m = reduceClueMatch(m, { type: "guess", now: at(0), playerId: "me", text: "Goliath" }, cards);
+  assert.equal(m.scores.me, -9, "lost 5 then 4, never more");
+  assert.equal(m.phase, "reveal");
+  assert.equal(m.round!.outcome?.kind, "missed");
+});
+
 ok("the round ends after 10 cards; highest score wins", () => {
   let m = start(9);
   for (let i = 0; i < 10; i += 1) {
