@@ -300,43 +300,31 @@ const EXODUS_PATH: Array<[number, number]> = [
   [33, 12.5], [27, 9.5], [33, 6.5], [45, 4], [52, 1],
 ];
 
-type Section = { src: string; path: Array<[number, number]>; fx: "genesis" | "exodus"; levels: MatchLevel[]; spots: Array<{ x: number; y: number }> };
+type Section = { src: string; fx: "genesis" | "exodus"; path: Array<[number, number]>; levels: MatchLevel[] };
 
-/** Evenly along a path: n spots at (i + .5) / slots of its length, measured as straight pieces. */
-function spaced(path: Array<[number, number]>, n: number, slots = n) {
-  const len: number[] = [0];
-  for (let i = 1; i < path.length; i += 1) len.push(len[i - 1] + Math.hypot(path[i][0] - path[i - 1][0], (path[i][1] - path[i - 1][1]) * 4.33));
-  const total = len[len.length - 1];
-  return Array.from({ length: n }, (_, k) => {
-    const at = ((k + 0.5) / slots) * total;
-    const i = Math.max(1, len.findIndex((l) => l >= at));
-    const t = (at - len[i - 1]) / (len[i] - len[i - 1] || 1);
-    return { x: path[i - 1][0] + (path[i][0] - path[i - 1][0]) * t, y: path[i - 1][1] + (path[i][1] - path[i - 1][1]) * t };
-  });
-}
+/** The painted maps, by book; a book without its own map yet uses the last one. */
+const BOOK_MAPS: Record<string, { src: string; path: Array<[number, number]>; fx: Section["fx"] }> = {
+  Genesis: { src: "/games/match/ui/map-phone.webp", path: GENESIS_PATH, fx: "genesis" },
+  Exodus: { src: "/games/match/ui/map-exodus-phone.webp", path: EXODUS_PATH, fx: "exodus" },
+};
 
 /**
- * The map, bottom to top (Louis, 2026-11-22: "I gave you maps for every
- * level"). Each picture is a section of one tall world: the Genesis map
- * holds the Genesis boards and the Exodus map the Exodus boards, each spread
- * evenly along its painted path, up to 12 to a map.
+ * The map, bottom to top. Ten boards to a painted map (Louis, 2026-11-22:
+ * "spread the levels out a little... give us a little travel room"), in
+ * board order: the Genesis map holds boards 1-10, and the Exodus map
+ * Twelve Tribes of Israel (Jacob's family going down into Egypt, at the
+ * Nile) and the Exodus boards. Each map is drawn in the art of the book of
+ * its last board.
  */
-const PER_MAP = 12;
+const PER_MAP = 10;
 const SECTIONS: Section[] = (() => {
-  // Each book's map holds up to 12 boards spread along its path (Louis: "I
-  // love how 12-20 look", "it's gonna be 500 plus boards"); a book with more
-  // gets another copy of its map for each next 12.
-  const books: Array<{ book: string; src: string; path: Array<[number, number]>; fx: Section["fx"] }> = [
-    { book: "Genesis", src: "/games/match/ui/map-phone.webp", path: GENESIS_PATH, fx: "genesis" },
-    { book: "Exodus", src: "/games/match/ui/map-exodus-phone.webp", path: EXODUS_PATH, fx: "exodus" },
-  ];
   const out: Section[] = [];
-  for (const m of books) {
-    const levels = MATCH_LEVELS.filter((l) => l.book === m.book);
-    for (let i = 0; i < levels.length; i += PER_MAP) {
-      const chunk = levels.slice(i, i + PER_MAP);
-      out.push({ src: m.src, path: m.path, fx: m.fx, levels: chunk, spots: spaced(m.path, chunk.length, PER_MAP) });
-    }
+  let lastMap = BOOK_MAPS.Genesis;
+  for (let i = 0; i < MATCH_LEVELS.length; i += PER_MAP) {
+    const levels = MATCH_LEVELS.slice(i, i + PER_MAP);
+    const m = BOOK_MAPS[levels[levels.length - 1].book] || lastMap;
+    lastMap = m;
+    out.push({ src: m.src, fx: m.fx, path: m.path, levels });
   }
   return out;
 })();
@@ -344,27 +332,45 @@ const SEGMENTS = SECTIONS.length;
 /** Every section but the bottom is drawn 6% taller, its bottom fading over the one below (see the img). */
 const BLEND = 1.06;
 const toWorld = (seg: number, x: number, y: number) => ({ x, y: ((SEGMENTS - 1 - seg) * 100 + y * (seg > 0 ? BLEND : 1)) / SEGMENTS });
-/** Each board's spot, in percent of the whole world, in board order. */
-const SPOTS = SECTIONS.flatMap((s, seg) => s.spots.map((p) => toWorld(seg, p.x, p.y)));
-/** A smooth curve through every section's path, bottom to top (Catmull-Rom, as cubic Beziers). */
-const TRAIL = (() => {
-  const p: Array<[number, number]> = [];
-  SECTIONS.forEach((s, seg) => {
-    for (const [x, y] of s.path) {
-      const w = toWorld(seg, x, y);
-      p.push([w.x, w.y]);
-    }
+
+/**
+ * The trail as one line through the whole world (percent of its width and
+ * height), with distances along it measured the way it looks on screen. The
+ * coins sit on this line and the walking photo follows the same line, so it
+ * stops exactly on the next coin (Louis: "it goes past the next point then
+ * comes back").
+ */
+const ASPECT = (4680 * SEGMENTS) / 1080;
+const WORLD: Array<{ x: number; y: number; at: number }> = (() => {
+  const pts: Array<{ x: number; y: number }> = [];
+  SECTIONS.forEach((s, seg) => s.path.forEach(([x, y]) => pts.push(toWorld(seg, x, y))));
+  let at = 0;
+  return pts.map((p, i) => {
+    if (i > 0) at += Math.hypot(p.x - pts[i - 1].x, (p.y - pts[i - 1].y) * ASPECT);
+    return { ...p, at };
   });
-  let d = `M ${p[0][0]} ${p[0][1]}`;
-  for (let i = 0; i < p.length - 1; i += 1) {
-    const [x0, y0] = p[Math.max(0, i - 1)];
-    const [x1, y1] = p[i];
-    const [x2, y2] = p[i + 1];
-    const [x3, y3] = p[Math.min(p.length - 1, i + 2)];
-    d += ` C ${x1 + (x2 - x0) / 6} ${y1 + (y2 - y0) / 6}, ${x2 - (x3 - x1) / 6} ${y2 - (y3 - y1) / 6}, ${x2} ${y2}`;
-  }
-  return d;
 })();
+function pointAt(at: number) {
+  const i = Math.max(1, WORLD.findIndex((p) => p.at >= at));
+  const a = WORLD[i - 1];
+  const b = WORLD[Math.min(i, WORLD.length - 1)];
+  const t = b.at === a.at ? 0 : Math.min(1, Math.max(0, (at - a.at) / (b.at - a.at)));
+  return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t };
+}
+/** Each board's distance along the trail: evenly through its own map. */
+const LEVEL_AT: number[] = (() => {
+  const out: number[] = [];
+  let start = 0;
+  SECTIONS.forEach((s) => {
+    const first = WORLD[start].at;
+    const last = WORLD[start + s.path.length - 1].at;
+    s.levels.forEach((_, k) => out.push(first + ((k + 0.5) / PER_MAP) * (last - first)));
+    start += s.path.length;
+  });
+  return out;
+})();
+/** Each board's spot, in percent of the whole world, in board order. */
+const SPOTS = LEVEL_AT.map(pointAt);
 
 function GenesisMap({
   progress,
@@ -382,7 +388,6 @@ function GenesisMap({
   onTravelled: () => void;
 }) {
   const scroller = useRef<HTMLDivElement | null>(null);
-  const pathRef = useRef<SVGPathElement | null>(null);
   const [marker, setMarker] = useState<{ x: number; y: number } | null>(null);
   const [walking, setWalking] = useState(false);
   const [arrived, setArrived] = useState<MatchLevel | null>(null);
@@ -391,28 +396,6 @@ function GenesisMap({
   const travel = progress.travel && current >= 2;
   const allDone = MATCH_LEVELS.every((l) => progress.done.includes(l.id));
   const book = MATCH_LEVELS[current - 1]?.book || "Genesis";
-
-  /** Where along the trail a spot is (the closest point, searched coarse then fine). */
-  const lengthAt = useCallback((spot: { x: number; y: number }) => {
-    const p = pathRef.current;
-    if (!p) return 0;
-    const total = p.getTotalLength();
-    const near = (from: number, to: number, step: number) => {
-      let best = from;
-      let bestD = Infinity;
-      for (let l = from; l <= to; l += step) {
-        const pt = p.getPointAtLength(l);
-        const d = (pt.x - spot.x) ** 2 + (pt.y - spot.y) ** 2;
-        if (d < bestD) {
-          bestD = d;
-          best = l;
-        }
-      }
-      return best;
-    };
-    const rough = near(0, total, 2);
-    return near(Math.max(0, rough - 2), Math.min(total, rough + 2), 0.1);
-  }, []);
 
   const scrollToY = (yUnits: number, smooth: boolean) => {
     const el = scroller.current;
@@ -424,8 +407,6 @@ function GenesisMap({
 
   // Place the marker and the camera; after a first win, walk to the next board.
   useEffect(() => {
-    const p = pathRef.current;
-    if (!p) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const here = SPOTS[current - 1];
     if (!travel) {
@@ -435,22 +416,22 @@ function GenesisMap({
       }, 0);
       return () => window.clearTimeout(id);
     }
-    const fromSpot = SPOTS[current - 2];
-    const from = lengthAt(fromSpot);
-    const to = lengthAt(here);
+    const from = LEVEL_AT[current - 2];
+    const to = LEVEL_AT[current - 1];
     let raf = 0;
     const startAt = performance.now() + 700; // a beat on the finished board first
     const dur = reduced ? 0 : 2800;
     const first = window.setTimeout(() => {
-      setMarker(fromSpot);
-      scrollToY(fromSpot.y, false);
+      setMarker(SPOTS[current - 2]);
+      scrollToY(SPOTS[current - 2].y, false);
       setWalking(true);
     }, 0);
     const tick = (now: number) => {
       const t = dur === 0 || skip.current ? 1 : Math.min(1, Math.max(0, (now - startAt) / dur));
+      // Ease in and out, never past the end: it arrives on the coin and stops.
       const eased = t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2;
-      const pt = p.getPointAtLength(from + (to - from) * eased);
-      setMarker({ x: pt.x, y: pt.y });
+      const pt = pointAt(from + (to - from) * eased);
+      setMarker(pt);
       scrollToY(pt.y, false);
       if (t < 1) raf = requestAnimationFrame(tick);
       else {
@@ -499,10 +480,6 @@ function GenesisMap({
           {SECTIONS.map((s, i) => (
             <MapFx key={`fx${i}`} seg={i} kind={s.fx} />
           ))}
-          {/* The painted path, traced: invisible, the marker walks along it. */}
-          <svg className="bbm-map-trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <path ref={pathRef} d={TRAIL} fill="none" stroke="none" />
-          </svg>
           {MATCH_LEVELS.map((level, i) => {
             const spot = SPOTS[i];
             const unlocked = level.number <= progress.unlocked;
@@ -514,7 +491,7 @@ function GenesisMap({
                 key={level.id}
                 type="button"
                 className={`bbm-medal ${unlocked ? "" : "is-locked"} ${done ? "is-done" : ""} ${next ? "is-next" : ""} ${arrived?.id === level.id ? "is-arrived" : ""}`}
-                style={{ left: `${Math.min(76, Math.max(24, spot.x))}%`, top: `${spot.y}%`, zIndex: next ? 60 : unlocked ? 50 : 45 }}
+                style={{ left: `${spot.x}%`, top: `${spot.y}%`, zIndex: next ? 60 : unlocked ? 50 : 45 }}
                 disabled={!unlocked || walking}
                 onClick={() => onOpen(level)}
                 aria-label={`${level.number}: ${level.title}${done ? ", complete" : unlocked ? "" : ", locked"}`}
@@ -561,7 +538,8 @@ function GenesisMap({
                     </span>
                   );
                 })()}
-                <span className="bbm-medal-name">{level.title}</span>
+                {/* The coin stays on the trail; a name near the edge slides inward so it is never cut off. */}
+                <span className="bbm-medal-name" style={{ transform: `translateX(calc(${Math.max(0, 24 - spot.x) - Math.max(0, spot.x - 76)} * min(1vw, 5.6px)))` }}>{level.title}</span>
                 {progress.best[level.id] ? <span className="bbm-medal-best">Best {progress.best[level.id]}</span> : null}
               </button>
             );

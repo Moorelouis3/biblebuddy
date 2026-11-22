@@ -370,7 +370,11 @@ html.bb-native.bb-game-screen body::before { display:none !important; }
 .bbm-home2 { --safe-top: env(safe-area-inset-top); overflow:hidden; }
 html.bb-native.bb-ios .bbm-home2 { --safe-top: max(env(safe-area-inset-top), 50px); }
 .bbm-home2-art.is-phone { transform: translateY(calc(var(--safe-top) / 2)); }
-@media (max-aspect-ratio: 1/1) { .bbm-home2 { place-items: start center; } .bbm-home2-art.is-phone { transform: translateY(var(--safe-top)); } }
+@media (max-aspect-ratio: 1/1) {
+  .bbm-home2 { place-items: start center; }
+  /* Always the full width of the phone (Louis: on a short screen it shrank and showed blurred sides); a short screen trims the bottom instead. */
+  .bbm-home2-art.is-phone { transform: translateY(var(--safe-top)); height: max(100dvh - var(--safe-top), 216.67vw) !important; max-width: none !important; }
+}
 /* Above the picture (behind the clock): the leaf green of its top edge, so the art reaches the very top with no band (Louis, 2026-11-22: "the whole page doesn't reach the top"). */
 .bbm-home2-art.is-phone::before { content:""; position:absolute; left:0; right:0; bottom:calc(100% - 2px); height: calc(var(--safe-top) + 4px); pointer-events:none;
   background: linear-gradient(90deg, #2f3d02 0%, #445204 9%, #3b4504 18%, #3c3e03 27%, #515d02 36%, #4b5b02 45%, #364003 55%, #414b07 64%, #384c0a 73%, #2e3405 82%, #353704 91%, #677404 100%); }
