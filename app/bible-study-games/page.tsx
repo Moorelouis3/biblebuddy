@@ -15,6 +15,27 @@ export default function BibleStudyGamesPage() {
         </p>
       </header>
 
+      {/* Bible Clue Game, 2026-11-22. The last feature planned for 1.0, so it leads. */}
+      <Link
+        href="/bible-study-games/clue"
+        className="flex items-center gap-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+      >
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-2xl" style={{ backgroundColor: "#1d5a37" }} aria-hidden="true">
+          🃏
+        </span>
+        <span className="min-w-0">
+          <span className="block text-lg font-black text-[var(--bb-text-primary,#111827)]">
+            Bible Clue Game{" "}
+            <span className="ml-1 rounded-full px-2 py-0.5 align-middle text-[10px] font-black uppercase tracking-wide" style={{ backgroundColor: "#f4d35e", color: "#2a2205" }}>
+              New
+            </span>
+          </span>
+          <span className="mt-0.5 block text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+            Five clues, from 5 points down to 1. Who is it?
+          </span>
+        </span>
+      </Link>
+
       <Link
         href="/bible-trivia"
         className="flex items-center gap-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"

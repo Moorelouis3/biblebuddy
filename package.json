@@ -96,7 +96,8 @@
     "verify:bible-covers": "tsx scripts/verify-bible-covers.ts",
     "verify:profile-gate": "tsx scripts/verify-profile-gate.ts",
     "verify:study-activity": "tsx scripts/verify-study-activity.ts",
-    "verify:study-day-pace": "tsx scripts/verify-study-day-pace.ts"
+    "verify:study-day-pace": "tsx scripts/verify-study-day-pace.ts",
+    "verify:clue-game": "tsx scripts/verify-clue-game.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",
