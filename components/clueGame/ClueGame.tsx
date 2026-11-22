@@ -14,7 +14,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { CLUE_DECKS, deckById, deckLabel, poolFor } from "@/lib/clueGame/catalog";
-import { createMatch, soloSetup, type PublicCard } from "@/lib/clueGame/engine";
+import { createMatch, ROUND_INTRO_MS, soloSetup, type PublicCard } from "@/lib/clueGame/engine";
 import type { ClueRef } from "@/lib/clueGame/types";
 import { clueApi, clueUserId, trackClue } from "@/lib/clueGame/track";
 import { supabase } from "@/lib/supabaseClient";
@@ -136,7 +136,7 @@ function SoloRound({ deckIds, onExit }: { deckIds: string[]; onExit: () => void 
 
   // Deal the first card as soon as the table is up.
   useEffect(() => {
-    if (match.phase === "ready") act({ type: "deal" });
+    if (match.phase === "ready") act({ type: "deal", now: Date.now() + ROUND_INTRO_MS });
   }, [match.phase, act]);
 
   const playAgain = () => {

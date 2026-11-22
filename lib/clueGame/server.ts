@@ -17,7 +17,7 @@
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { ALL_CLUE_CARDS, deckLabel, poolFor } from "./catalog";
-import { createMatch, publicView, reduceClueMatch, type ClueAction, type ClueMatch, DEFAULT_CLUE_SETTINGS } from "./engine";
+import { createMatch, publicView, reduceClueMatch, type ClueAction, type ClueMatch, DEFAULT_CLUE_SETTINGS, ROUND_INTRO_MS } from "./engine";
 
 export type ClueUser = { id: string; name: string; avatar: string | null };
 
@@ -176,7 +176,8 @@ export function startRoom(admin: SupabaseClient, code: string, user: ClueUser) {
         players: players.map((p) => ({ id: p.user_id, name: p.display_name || "Buddy", sideId: p.user_id })),
         seed: Math.floor(Math.random() * 2147483647),
       }),
-      { type: "deal", now },
+      // The shuffle-and-deal opening plays first; the first clock starts after it.
+      { type: "deal", now: now + ROUND_INTRO_MS },
       ALL_CLUE_CARDS,
     );
     return { status: "playing", state: match };

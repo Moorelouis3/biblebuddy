@@ -15,7 +15,7 @@
  */
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import type { PublicCard, PublicMatch } from "@/lib/clueGame/engine";
+import { INTRO_DEAL_EACH_MS, INTRO_SHUFFLE_MS, ROUND_INTRO_MS, type PublicCard, type PublicMatch } from "@/lib/clueGame/engine";
 import { Avatar, CardBack, CATEGORY_LABEL, PlayingCard, SubjectArt } from "./ClueParts";
 import { clueSound } from "@/lib/clueGame/sound";
 
@@ -79,9 +79,16 @@ export default function ClueTable({
   const at = paused && view.pausedAt ? view.pausedAt : now;
   const clueMsLeft = round && view.phase === "clue" ? Math.max(0, round.clueStartedAt + view.settings.clueSeconds * 1000 - at) : 0;
   const dealMsLeft = round?.revealedAt && view.phase === "reveal" ? Math.max(0, round.revealedAt + view.settings.revealSeconds * 1000 - at) : 0;
-  const seconds = Math.ceil(clueMsLeft / 1000);
+  const seconds = Math.min(view.settings.clueSeconds, Math.ceil(clueMsLeft / 1000));
+  // The round's opening: shuffle, then the round's cards dealt onto the pile.
+  const introLeft = view.dealt === 1 && round && view.phase === "clue" && !paused ? round.clueStartedAt - at : 0;
+  const inIntro = introLeft > 0;
+  const introElapsed = ROUND_INTRO_MS - introLeft;
+  const shuffling = inIntro && introElapsed < INTRO_SHUFFLE_MS;
+  const introPile = inIntro && !shuffling ? Math.min(view.deckSize, Math.floor((introElapsed - INTRO_SHUFFLE_MS) / INTRO_DEAL_EACH_MS) + 1) : 0;
+  const dealingDone = inIntro && introPile >= view.deckSize;
   const myGuesses = round?.guesses?.[youId] || 0;
-  const canGuess = view.phase === "clue" && !paused && myGuesses < view.settings.guessesPerClue && clueMsLeft > 0;
+  const canGuess = view.phase === "clue" && !paused && !inIntro && myGuesses < view.settings.guessesPerClue && clueMsLeft > 0;
   const waiting = !!round?.waiting?.includes(youId);
   const points = round ? 5 - round.clueIndex : 0;
 
@@ -90,6 +97,15 @@ export default function ClueTable({
   useEffect(() => {
     if (canGuess) inputRef.current?.focus({ preventScroll: true });
   }, [clueKey, canGuess]);
+
+  // The face-down cover on a newly dealt card is taken away after its flip,
+  // even if a device never runs the animation, so the silhouette always shows.
+  const [uncovered, setUncovered] = useState(0);
+  useEffect(() => {
+    if (inIntro || !round) return;
+    const id = window.setTimeout(() => setUncovered(view.dealt), 1100);
+    return () => window.clearTimeout(id);
+  }, [view.dealt, inIntro, round]);
 
   // Send the won card flying to the winner's seat, just before the next deal.
   const [award, setAward] = useState<{ dx: number; dy: number } | null>(null);
@@ -112,7 +128,7 @@ export default function ClueTable({
   const heard = useRef({ dealt: view.dealt, clue: round?.clueIndex ?? -1, phase: view.phase, tick: 0, wrongAt: 0 });
   useEffect(() => {
     const h = heard.current;
-    if (view.dealt !== h.dealt && view.phase === "clue") clueSound.deal();
+    if (view.dealt !== h.dealt && view.phase === "clue" && !(view.dealt === 1 && inIntro)) clueSound.deal();
     else if (view.phase === "clue" && round && round.clueIndex > h.clue && view.dealt === h.dealt) clueSound.clue();
     if (view.phase === "reveal" && h.phase !== "reveal" && round?.outcome) {
       clueSound.flip();
@@ -127,13 +143,29 @@ export default function ClueTable({
     h.dealt = view.dealt;
     h.clue = round?.clueIndex ?? -1;
     h.phase = view.phase;
-  }, [view.dealt, view.phase, round, view.recentWrong, youId]);
+    // The first card's deal sound waits for the opening to finish.
+    if (view.dealt === 1 && inIntro) h.dealt = 0;
+  }, [view.dealt, view.phase, round, view.recentWrong, youId, inIntro]);
+  // Opening sounds: one riffle, then a flick per card onto the pile.
+  const introHeard = useRef({ shuffled: false, pile: 0 });
   useEffect(() => {
-    if (view.phase !== "clue" || paused || seconds > 3 || seconds < 1) return;
+    if (!inIntro) return;
+    const h = introHeard.current;
+    if (shuffling && !h.shuffled) {
+      h.shuffled = true;
+      clueSound.shuffle();
+    }
+    if (introPile > h.pile) {
+      h.pile = introPile;
+      clueSound.dealCard();
+    }
+  }, [inIntro, shuffling, introPile]);
+  useEffect(() => {
+    if (view.phase !== "clue" || paused || inIntro || seconds > 3 || seconds < 1) return;
     if (heard.current.tick === seconds + (round?.clueIndex ?? 0) * 100 + view.dealt * 1000) return;
     heard.current.tick = seconds + (round?.clueIndex ?? 0) * 100 + view.dealt * 1000;
     clueSound.tick(seconds === 1);
-  }, [seconds, view.phase, paused, round?.clueIndex, view.dealt]);
+  }, [seconds, view.phase, paused, inIntro, round?.clueIndex, view.dealt]);
 
   const submit = (e?: React.FormEvent) => {
     e?.preventDefault();
@@ -168,24 +200,55 @@ export default function ClueTable({
         })}
 
         <div className="bb-clue-center">
-          {card ? (
+          {inIntro ? (
+            shuffling ? (
+              <div className="bb-clue-shuffle" aria-label="Shuffling the deck">
+                {[0, 1, 2, 3, 4, 5].map((i) => (
+                  <div key={i} className={`bb-clue-shuffle-card ${i % 2 ? "is-right" : "is-left"}`} style={{ animationDelay: `${i * 40}ms` }}>
+                    <CardBack src={cardBack} />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="bb-clue-card" aria-hidden="true">
+                {!dealingDone ? (
+                  <div key={introPile} className="bb-clue-intro-fly">
+                    <CardBack src={cardBack} />
+                  </div>
+                ) : null}
+              </div>
+            )
+          ) : card ? (
             <div
               key={view.dealt}
               className={`bb-clue-deal ${award ? "bb-clue-award" : ""}`}
               style={award ? ({ ["--dx" as string]: `${award.dx}px`, ["--dy" as string]: `${award.dy}px` } as React.CSSProperties) : undefined}
             >
-              <PlayingCard card={card} face={revealed ? "reveal" : "mystery"} back={cardBack} />
+              <div className={revealed ? "" : "bb-clue-flipin"}>
+                <PlayingCard card={card} face={revealed ? "reveal" : "mystery"} back={cardBack} />
+                {!revealed && uncovered !== view.dealt ? (
+                  <div className="bb-clue-flipcover" aria-hidden="true">
+                    <CardBack src={cardBack} />
+                  </div>
+                ) : null}
+              </div>
             </div>
           ) : (
             <div className="bb-clue-card" aria-hidden="true" />
           )}
-          <div className="bb-clue-drawpile" aria-label={`${Math.max(0, view.deckSize - view.dealt)} cards left`}>
-            {[0, 1, 2].map((i) => (
-              <div key={i} style={{ transform: `translate(${i * 3}px, ${-i * 3}px)` }}>
-                <CardBack src={cardBack} />
+          {(() => {
+            const left = inIntro ? (shuffling ? 0 : introPile) : Math.max(0, view.deckSize - view.dealt);
+            return (
+              <div className={`bb-clue-drawpile ${left === 0 ? "is-empty" : ""}`} aria-label={`${left} cards left`}>
+                {Array.from({ length: Math.min(left, 5) }).map((_, i) => (
+                  <div key={i} style={{ transform: `translate(${i * 2}px, ${-i * 2}px)` }}>
+                    <CardBack src={cardBack} />
+                  </div>
+                ))}
+                {left > 0 ? <span className="bb-clue-pilebadge">{left}</span> : null}
               </div>
-            ))}
-          </div>
+            );
+          })()}
         </div>
       </div>
 
@@ -203,7 +266,14 @@ export default function ClueTable({
       {/* The clue and guess panel */}
       {round && card ? (
         <div className="bb-clue-panel bb-clue-parchment">
-          {paused ? (
+          {inIntro ? (
+            <div className="py-5 text-center">
+              <p className="bb-clue-serif text-[22px] font-bold">{shuffling ? "Shuffling the deck…" : dealingDone ? "Here we go!" : `Dealing ${view.deckSize} cards…`}</p>
+              <p className="mt-1 text-[14px] font-semibold opacity-75">
+                {view.deckSize} cards, 5 clues each, {view.settings.clueSeconds} seconds a clue.
+              </p>
+            </div>
+          ) : paused ? (
             <p className="bb-clue-serif py-6 text-center text-xl font-bold">Paused by the host. Talk it over!</p>
           ) : view.phase === "clue" ? (
             <>

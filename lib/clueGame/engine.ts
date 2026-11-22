@@ -103,6 +103,16 @@ export type ClueMatch = {
 
 export const pointsForClue = (clueIndex: number) => 5 - clueIndex;
 
+/**
+ * The round's opening (Louis, 2026-11-22): the deck is shuffled, the round's
+ * cards are dealt onto the draw pile one by one, then the first card comes
+ * off it. Callers deal the first card at now + ROUND_INTRO_MS, so its first
+ * clue's clock starts after the show; nobody can guess or wait before then.
+ */
+export const ROUND_INTRO_MS = 4200;
+export const INTRO_SHUFFLE_MS = 1500;
+export const INTRO_DEAL_EACH_MS = 220;
+
 /** A seeded random stream (mulberry32). */
 function seeded(seed: number) {
   let a = seed >>> 0;
@@ -309,6 +319,7 @@ export function reduceClueMatch(match: ClueMatch, action: ClueAction, cards: Map
     case "wait": {
       if (match.phase !== "clue" || !match.round || match.pausedAt !== null) return match;
       const r = match.round;
+      if (action.now < r.clueStartedAt) return match; // still dealing
       if (r.waiting.includes(action.playerId) || !match.players.some((p) => p.id === action.playerId)) return match;
       const m = { ...match, round: { ...r, waiting: [...r.waiting, action.playerId] } };
       // Everyone is waiting or out of guesses: no reason to sit out the timer.
@@ -316,6 +327,7 @@ export function reduceClueMatch(match: ClueMatch, action: ClueAction, cards: Map
     }
     case "guess": {
       if (!canGuess(match, action.playerId) || !match.round) return match;
+      if (action.now < match.round.clueStartedAt) return match; // still dealing
       // The clock is the judge: a guess that arrives after its clue ran out
       // belongs to no clue.
       if (action.now >= match.round.clueStartedAt + match.settings.clueSeconds * 1000) return match;

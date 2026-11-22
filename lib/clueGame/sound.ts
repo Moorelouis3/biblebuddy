@@ -103,10 +103,24 @@ function swish(start: number, dur: number, from: number, to: number, vol = 0.25)
 }
 
 export const clueSound = {
-  /** A card sliding off the deck onto the felt. */
+  /** A riffle shuffle: two halves of the deck flicking together, twice. */
+  shuffle() {
+    for (let pass = 0; pass < 2; pass += 1) {
+      const base = pass * 0.72;
+      for (let i = 0; i < 16; i += 1) swish(base + i * 0.028 + Math.random() * 0.01, 0.035, 2600, 4200, 0.16);
+      swish(base + 0.5, 0.16, 700, 1800, 0.3); // the bridge: cards settling
+    }
+  },
+  /** One card dealt onto the draw pile at the start of the round. */
+  dealCard() {
+    swish(0, 0.09, 1800, 3400, 0.16);
+    tone(150, 0.07, 0.04, { type: "triangle", vol: 0.1 });
+  },
+  /** A card sliding off the pile onto the felt, then turning face up. */
   deal() {
     swish(0, 0.22, 900, 3200, 0.28);
     tone(180, 0.18, 0.08, { type: "triangle", vol: 0.18 });
+    swish(0.55, 0.12, 2400, 1200, 0.18);
   },
   /** The card turning over at the reveal. */
   flip() {

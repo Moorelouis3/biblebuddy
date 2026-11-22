@@ -365,6 +365,20 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-clue-back-plain { width:100%; height:100%; background: radial-gradient(circle,#2f7a47,#123a22); }
 .bb-clue-drawpile { position:relative; width: min(17vw, 92px); aspect-ratio:5/7; flex:none; }
 .bb-clue-drawpile > div { position:absolute; inset:0; border-radius:9px; overflow:hidden; box-shadow: 0 0 0 1.5px #c99a46, 0 6px 14px rgba(0,0,0,.4); }
+.bb-clue-drawpile.is-empty { visibility:hidden; }
+.bb-clue-pilebadge { position:absolute; right:-8px; bottom:-8px; z-index:5; min-width:24px; height:24px; padding:0 6px; border-radius:999px; display:grid; place-items:center; background:#f6d36b; color:#3b2412; font-size:12px; font-weight:900; box-shadow: 0 0 0 2px #7a4a12; }
+.bb-clue-shuffle { position:relative; width: min(22vw, 120px); aspect-ratio:5/7; }
+.bb-clue-shuffle-card { position:absolute; inset:0; border-radius:9px; overflow:hidden; box-shadow: 0 0 0 1.5px #c99a46, 0 6px 14px rgba(0,0,0,.4); }
+.bb-clue-shuffle-card.is-left { animation: bb-clue-riffle-l .72s ease-in-out 2 both; }
+.bb-clue-shuffle-card.is-right { animation: bb-clue-riffle-r .72s ease-in-out 2 both; }
+@keyframes bb-clue-riffle-l { 0%,100% { transform: translate(0,0) rotate(0); } 35% { transform: translate(-62%, -4%) rotate(-10deg); } 60% { transform: translate(-30%, -10%) rotate(-4deg); } }
+@keyframes bb-clue-riffle-r { 0%,100% { transform: translate(0,0) rotate(0); } 35% { transform: translate(62%, -4%) rotate(10deg); } 60% { transform: translate(30%, -10%) rotate(4deg); } }
+.bb-clue-intro-fly { position:absolute; inset:0; border-radius:9px; overflow:hidden; box-shadow: 0 0 0 1.5px #c99a46, 0 6px 14px rgba(0,0,0,.4); animation: bb-clue-fly-to-pile .2s ease-in forwards; }
+@keyframes bb-clue-fly-to-pile { from { transform: translate(0,0) rotate(-6deg); opacity:1; } to { transform: translate(135%, -4%) rotate(4deg) scale(.82); opacity:.9; } }
+.bb-clue-flipin { position:relative; animation: bb-clue-flipin .5s ease-in-out .5s both; }
+@keyframes bb-clue-flipin { 0% { transform: scaleX(1); } 50% { transform: scaleX(0.02); } 100% { transform: scaleX(1); } }
+.bb-clue-flipcover { position:absolute; inset:0; border-radius:10px; overflow:hidden; z-index:2; box-shadow: 0 0 0 2px #c99a46; animation: bb-clue-uncover .5s steps(1, end) .5s both; }
+@keyframes bb-clue-uncover { 0% { opacity:1; } 50% { opacity:0; } 100% { opacity:0; } }
 .bb-clue-fallback { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:10px; text-align:center;
   background: radial-gradient(circle at 50% 35%, #fff8e6, #ead6a6); }
 .bb-clue-fallback-icon { font-size: 2.2em; }
@@ -429,6 +443,6 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-clue-tabs button.is-on { background: linear-gradient(180deg,#2f8a4f,#1a5a33); color:#fff3c8; }
 .bb-clue-code { font-family: ui-monospace, Menlo, monospace; font-size: clamp(34px, 11vw, 52px); font-weight:900; letter-spacing:.18em; color:#173b23; }
 @media (prefers-reduced-motion: reduce) {
-  .bb-clue-card-inner, .bb-clue-deal, .bb-clue-fadein, .bb-clue-award, .bb-clue-flash, .bb-clue-timerpill { animation:none !important; transition:none !important; }
+  .bb-clue-card-inner, .bb-clue-deal, .bb-clue-fadein, .bb-clue-shuffle-card, .bb-clue-intro-fly, .bb-clue-flipin, .bb-clue-flipcover, .bb-clue-award, .bb-clue-flash, .bb-clue-timerpill { animation:none !important; transition:none !important; }
 }
 `;

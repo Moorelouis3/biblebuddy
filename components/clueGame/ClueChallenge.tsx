@@ -10,7 +10,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { poolFor } from "@/lib/clueGame/catalog";
-import { createMatch, soloSetup, type PublicCard } from "@/lib/clueGame/engine";
+import { createMatch, ROUND_INTRO_MS, soloSetup, type PublicCard } from "@/lib/clueGame/engine";
 import type { ClueRef } from "@/lib/clueGame/types";
 import { clueApi, trackClue } from "@/lib/clueGame/track";
 import ClueTable from "./ClueTable";
@@ -55,7 +55,7 @@ function ChallengeRound({ c, onDone }: { c: Challenge; onDone: (c: Challenge, ra
   const [scripture, setScripture] = useState<ClueRef | null>(null);
   useEffect(() => {
     if (match.phase === "ready") {
-      act({ type: "deal" });
+      act({ type: "deal", now: Date.now() + ROUND_INTRO_MS });
       trackClue("clue_game_challenge_started", { challenge: c.id });
     }
   }, [match.phase, act, c.id]);

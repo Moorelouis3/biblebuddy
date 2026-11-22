@@ -184,6 +184,16 @@ ok("a player's view holds no answer, reference or later clue before the reveal",
   assert.ok(JSON.stringify(publicView(won, cards, S + 1)).includes(card.answer));
 });
 
+ok("during the shuffle-and-deal opening nobody can guess or wait, and the first clock starts after it", () => {
+  const intro = 4200;
+  const m = reduceClueMatch(createMatch({ cards: GENESIS_CARDS, ...soloSetup(), seed: 5 }), { type: "deal", now: intro }, cards);
+  const answer = cards.get(m.round!.cardId)!.answer;
+  assert.equal(reduceClueMatch(m, { type: "guess", now: 1000, playerId: "me", text: answer }, cards), m);
+  assert.equal(reduceClueMatch(m, { type: "wait", now: 1000, playerId: "me" }, cards), m);
+  assert.equal(reduceClueMatch(m, { type: "tick", now: intro + S - 1 }, cards).round!.clueIndex, 0);
+  assert.equal(reduceClueMatch(m, { type: "guess", now: intro + 1, playerId: "me", text: answer }, cards).scores.me, 5);
+});
+
 ok("a challenge replays the exact round: same cards, order and clue variants", () => {
   const original = createMatch({ cards: GENESIS_CARDS, ...soloSetup(), seed: 77 });
   const replay = createMatch({ cards: GENESIS_CARDS, ...soloSetup(), seed: 1, cardIds: original.deck, topClue: original.topClue });
