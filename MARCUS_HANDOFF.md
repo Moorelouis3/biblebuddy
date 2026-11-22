@@ -1046,7 +1046,7 @@ uses the verse-breakdowns fallback (`/Whatisthebiblebanner.png`):
 1-samuel-9-explained, 1-samuel-10-explained,
 1-samuel-11-explained, 1-samuel-12-explained, 1-samuel-13-explained,
 1-samuel-14-explained, 1-samuel-15-explained, 1-samuel-16-explained,
-1-samuel-17-explained.
+1-samuel-17-explained, 1-samuel-18-explained.
 (Ruth 1-4 and 1 Samuel 1-8 got their real banners from Louis on
 2026-11-21.) Updating this one line going forward (per the routine's own
 doc) rather than adding a new block each time a chapter lands without a
@@ -1080,3 +1080,12 @@ assigned job. Worth asking whoever manages this container/environment
 whether the session startup can reliably check out and fast-forward `main`
 before an agent's work begins, since this keeps happening in exactly the
 same shape.
+
+**2026-11-22 recurrence (Chapter Blog Writer run, 1 Samuel 18):** same
+shape again, HEAD detached 190 commits ahead of a stale local `main`
+(stale since the 2026-11-18 iOS widgets commit). This time local `main`
+was simply behind a clean ancestor, origin/main itself (nothing stranded,
+no unpushed work at risk), so a plain `git merge --ff-only origin/main`
+fixed it with no rescue branch needed. Still the same container-startup
+pattern as every prior entry above; raising the environment-fix question
+again rather than re-describing it.
