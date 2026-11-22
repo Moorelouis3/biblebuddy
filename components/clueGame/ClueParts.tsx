@@ -205,9 +205,11 @@ export function StudyCard({ card, onClose, onOpenRef }: { card: PublicCard; onCl
       <div className="bb-clue-parchment bb-clue-study" onClick={(e) => e.stopPropagation()}>
         <button type="button" onClick={onClose} className="bb-clue-x bb-clue-study-x" aria-label="Close">✕</button>
         <h2 className="bb-clue-serif bb-clue-title">{card.answer}</h2>
-        <div className="bb-clue-study-art">
-          <SubjectArt card={card} mode="reveal" />
-        </div>
+        {card.reveal ? (
+          <div className="bb-clue-study-art">
+            <SubjectArt card={card} mode="reveal" />
+          </div>
+        ) : null}
         {card.teaching ? (
           <div className="bb-clue-note">
             <span className="bb-clue-note-tag">Teaching Note</span>
@@ -761,6 +763,22 @@ html:is(.bb-in-game, .bb-game-screen) :is(.bb-bottom-pill, .bb-safe-top-header, 
 .bb-cb-choice.is-wrong .bb-cb-letter { background:#ffe7df; color:#8a2418 !important; }
 .bb-cb-hint { grid-column: 1 / -1; text-align:center; margin-top:2px; font-weight:800; font-size: 12.5px; color:#fff3d2 !important; text-shadow: 0 1px 3px rgba(0,0,0,.85); }
 .bb-cb-card .bb-clue-fallback-note { display:none; }
+/* Trivia only (no cards): one big question panel in the middle of the table. */
+.bb-cb.is-trivia .bb-cb-gap { flex: 1 1 0; min-height: 8px; }
+.bb-cb.is-trivia .bb-cb-bottomgap { flex: .6 1 0; min-height: 6px; }
+.bb-cb-bigpanel { order:0 !important; position:relative; z-index:4; width: min(100%, 620px); margin: 0 auto; box-sizing:border-box; min-height: clamp(170px, 30vh, 300px); padding: clamp(18px, 5vw, 30px) clamp(18px, 6vw, 36px); }
+.bb-cb-bigpanel .bb-cb-question { font-size: clamp(20px, min(6.2vw, 3.6vh), 32px) !important; line-height:1.25; margin-top:10px; }
+.bb-cb-bigpanel .bb-cb-panel-head { font-size: clamp(13px, 3.8vw, 17px); }
+.bb-cb-bigpanel .bb-cb-answer { font-size: clamp(24px, 7vw, 36px) !important; }
+.bb-cb-bigpanel .bb-cb-explain { font-size: clamp(14px, 4vw, 18px); margin-top:8px; }
+.bb-cb-bigpanel .bb-cb-howto-text { font-size: clamp(16px, 4.6vw, 21px); }
+.bb-cb-bigpanel .bb-cb-howto-deal { font-size: 14px; }
+.bb-cb.is-trivia .bb-cb-choices { margin-top: 12px; }
+.bb-cb.is-trivia .bb-cb-choice { min-height: 60px; }
+.bb-cb.is-trivia .bb-cb-choice-text { font-size: clamp(15px, 4.2vw, 19px); }
+.bb-cb.is-trivia .bb-cb-me { margin-top: 10px; }
+.bb-cb.is-trivia .bb-cb-others .bb-cb-status { margin-top:4px; }
+@media (max-height: 700px) { .bb-cb-bigpanel { min-height: 150px; } .bb-cb.is-trivia .bb-cb-choice { min-height: 50px; } }
 .bb-cb-card .bb-clue-fallback { font-size: clamp(10px, 2.8vw, 14px); padding:4px; }
 .bb-cb.is-quiz .bb-cb-stripwrap { flex-basis: clamp(70px, 14vh, 150px) !important; min-height: 56px; }
 @media (max-height: 760px) {

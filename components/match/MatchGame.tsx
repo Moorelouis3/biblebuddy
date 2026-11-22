@@ -307,20 +307,26 @@ function spaced(path: Array<[number, number]>, n: number, slots = n) {
 /**
  * The map, bottom to top (Louis, 2026-11-22: "I gave you maps for every
  * level"). Each picture is a section of one tall world: the Genesis map
- * holds Creation and Eden; the Exodus map holds the Exodus boards, spread
- * along its path (12 slots, the whole of Exodus). Genesis boards 3-11 have
- * no map art yet, so they sit on copies of the Genesis map until it comes.
+ * holds the Genesis boards and the Exodus map the Exodus boards, each spread
+ * evenly along its painted path, up to 12 to a map.
  */
+const PER_MAP = 12;
 const SECTIONS: Section[] = (() => {
-  const genesis = MATCH_LEVELS.filter((l) => l.book === "Genesis");
-  const exodus = MATCH_LEVELS.filter((l) => l.book === "Exodus");
+  // Each book's map holds up to 12 boards spread along its path (Louis: "I
+  // love how 12-20 look", "it's gonna be 500 plus boards"); a book with more
+  // gets another copy of its map for each next 12.
+  const books: Array<{ book: string; src: string; path: Array<[number, number]>; fx: Section["fx"] }> = [
+    { book: "Genesis", src: "/games/match/ui/map-phone.webp", path: GENESIS_PATH, fx: "genesis" },
+    { book: "Exodus", src: "/games/match/ui/map-exodus-phone.webp", path: EXODUS_PATH, fx: "exodus" },
+  ];
   const out: Section[] = [];
-  const GEN_SPOTS = [{ x: 21, y: 87 }, { x: 61, y: 27.5 }];
-  for (let i = 0; i < genesis.length; i += 2) {
-    const levels = genesis.slice(i, i + 2);
-    out.push({ src: "/games/match/ui/map-phone.webp", path: GENESIS_PATH, fx: "genesis", levels, spots: GEN_SPOTS.slice(0, levels.length) });
+  for (const m of books) {
+    const levels = MATCH_LEVELS.filter((l) => l.book === m.book);
+    for (let i = 0; i < levels.length; i += PER_MAP) {
+      const chunk = levels.slice(i, i + PER_MAP);
+      out.push({ src: m.src, path: m.path, fx: m.fx, levels: chunk, spots: spaced(m.path, chunk.length, PER_MAP) });
+    }
   }
-  if (exodus.length) out.push({ src: "/games/match/ui/map-exodus-phone.webp", path: EXODUS_PATH, fx: "exodus", levels: exodus, spots: spaced(EXODUS_PATH, exodus.length, 12) });
   return out;
 })();
 const SEGMENTS = SECTIONS.length;

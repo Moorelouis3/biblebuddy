@@ -1,8 +1,7 @@
 "use client";
 
 /**
- * Round Complete (approved mockup): selection, points, right answers out of 10, a fan
- * of won cards, Challenge, Play Again, Review Cards. Plus the Beta question:
+ * Round Complete (approved mockup): selection, points, right answers out of 10, Challenge, Play Again, Review Cards. Plus the Beta question:
  * did you enjoy it, and do you want another book.
  */
 
@@ -11,7 +10,6 @@ import Link from "next/link";
 import type { ClueRef } from "@/lib/clueGame/types";
 import { clueSound } from "@/lib/clueGame/sound";
 import type { PublicCard, PublicMatch } from "@/lib/clueGame/engine";
-import { SubjectArt } from "./ClueParts";
 import { trackClue } from "@/lib/clueGame/track";
 
 /**
@@ -52,9 +50,7 @@ export function ReviewList({
         return (
           <li key={`${c.id}-${i}`} className="bb-clue-review">
             <div className="flex items-center gap-3">
-              <button type="button" onClick={() => onStudy(c)} className="bb-clue-thumb is-color" style={{ width: 56 }} aria-label={`Study ${c.answer}`}>
-                <SubjectArt card={c} mode="reveal" />
-              </button>
+
               <div className="min-w-0 flex-1">
                 <div className="text-[11px] font-black uppercase tracking-[0.12em] opacity-60">
                   {c.tiebreak ? "Tiebreaker" : `Question ${i + 1}`} · Genesis {c.quiz.chapter}
@@ -109,7 +105,6 @@ export default function ClueResults({
   score,
   won,
   total,
-  wonCards,
   heading = "Game Complete",
   standings,
   primary,
@@ -121,7 +116,8 @@ export default function ClueResults({
   score: number;
   won: number;
   total: number;
-  wonCards: PublicCard[];
+  /** No longer drawn (no cards since the trivia version); kept so callers need not change. */
+  wonCards?: PublicCard[];
   heading?: string;
   standings?: ReactNode;
   primary?: ReactNode;
@@ -131,7 +127,6 @@ export default function ClueResults({
 }) {
   const [feedback, setFeedback] = useState<null | "up" | "down">(null);
   const [wantMore, setWantMore] = useState(false);
-  const fan = wonCards.slice(-3);
   useEffect(() => {
     clueSound.fanfare(heading !== "Game Over" && score > 0);
     // Once, when the results appear.
@@ -147,19 +142,7 @@ export default function ClueResults({
       <p className="bb-clue-serif mt-3 text-[22px] font-bold">
         {won} of {total} right
       </p>
-      {fan.length ? (
-        <div className="mt-3 flex items-end justify-center">
-          {fan.map((c, i) => (
-            <div
-              key={`${c.id}-${i}`}
-              className="bb-clue-thumb is-color"
-              style={{ width: 84, transform: `rotate(${(i - (fan.length - 1) / 2) * 9}deg) translateY(${i === Math.floor(fan.length / 2) ? -8 : 0}px)`, margin: "0 -6px" }}
-            >
-              <SubjectArt card={c} mode="reveal" />
-            </div>
-          ))}
-        </div>
-      ) : null}
+
       {standings ? <div className="mt-4">{standings}</div> : null}
       <div className="mt-5 flex flex-col gap-3">
         {primary}
