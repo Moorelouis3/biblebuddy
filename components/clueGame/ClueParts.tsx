@@ -504,6 +504,28 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-clue-fancard .bb-clue-card-art { flex:1; padding:6% 6% 0; }
 .bb-clue-fancard .bb-clue-art { border-radius:6px; }
 .bb-clue-fancard .bb-clue-card-name { font-size: clamp(9px, 2.4vw, 12px); padding: 3px 2px 5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+/* ---------- the menu hero (Louis's mockup) ---------- */
+.bb-clue-hero { position:relative; width: min(100%, 640px); margin: 8px auto 0; text-align:center; }
+.bb-clue-herotitle { display:flex; align-items:center; justify-content:center; gap: 6px; }
+.bb-clue-herotitle h1 { margin:0; font-size: clamp(44px, 13vw, 78px); line-height:1; font-weight:800; letter-spacing:.01em;
+  color:#f8de96 !important; text-shadow: 0 1px 0 #fff4cf, 0 3px 0 #8a5518, 0 5px 0 #4e2c0c, 0 10px 18px rgba(0,0,0,.65) !important; }
+.bb-clue-laurel { width: clamp(26px, 8vw, 46px); height:auto; flex:none; filter: drop-shadow(0 2px 3px rgba(0,0,0,.6)); }
+.bb-clue-herorule { width: min(62%, 380px); height:3px; margin: 4px auto 0; border-radius:3px; background: linear-gradient(90deg, transparent, #f0c766, transparent); }
+.bb-clue-herotag { margin: 8px 0 0; font-family: Georgia, serif; font-style: italic; font-weight:700; font-size: clamp(16px, 4.6vw, 24px); color:#fff3d2 !important; text-shadow: 0 2px 6px rgba(0,0,0,.85); }
+.bb-clue-herotable { position:relative; margin-top: 14px; padding-bottom: 18px; }
+.bb-clue-herofelt { position:absolute; left:50%; top: 22%; bottom:-24px; width: 150%; transform: translateX(-50%); border-radius: 50% 50% 0 0 / 120px 120px 0 0;
+  background: radial-gradient(ellipse at 50% 0%, #2d6a3c 0%, #1c4a29 55%, #12331c 100%);
+  box-shadow: 0 -10px 0 #6b3b17, 0 -14px 0 #3e200b, inset 0 18px 30px rgba(0,0,0,.45); }
+.bb-clue-hero { overflow-x: clip; }
+.bb-clue-herocards { position:relative; display:flex; align-items:center; justify-content:center; gap: 2%; }
+.bb-clue-herocard { position:relative; width: min(34%, 26vh, 190px); aspect-ratio: 5/7; padding: 7%; border-radius: 14px;
+  background: url(/games/clue/ui/card-face.webp) center / 100% 100% no-repeat; box-shadow: 0 16px 28px rgba(0,0,0,.55); display:flex; align-items:center; justify-content:center; }
+.bb-clue-herocard { overflow:hidden; }
+.bb-clue-herocard img { width:100%; height:100%; object-fit: contain; transform: scale(1.55); transform-origin: 50% 55%; }
+.bb-clue-herocard.is-left { transform: rotate(-6deg); }
+.bb-clue-herocard.is-right { transform: rotate(5deg); }
+.bb-clue-heroarrow { width: min(16%, 96px); flex:none; margin: 0 -3%; position:relative; z-index:2; align-self: flex-start; margin-top: 18%; filter: drop-shadow(0 0 8px rgba(255,210,100,.7)); }
+.bb-clue-heropanel { position:relative; margin: 16px auto 0 !important; width: min(100% - 16px, 470px); }
 .bb-clue-titlegroup { position:relative; margin-top: 10px; }
 .bb-clue-titlegroup .bb-clue-banner { margin-top:0; }
 .bb-clue-titlegroup .bb-clue-ribbon { position:relative; z-index:2; margin-top: -3.2%; }

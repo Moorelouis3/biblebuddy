@@ -15,8 +15,28 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ALL_CLUE_CARDS, CLUE_DECKS, deckById, deckLabel, poolFor } from "@/lib/clueGame/catalog";
 
-/** The menu's fan of face-up cards. */
-const MENU_FAN = ["noahs-ark", "abraham", "joseph", "rainbow", "jacobs-ladder"];
+/** The menu's card: Joseph, mystery then revealed (Louis's mockup). */
+const HERO_CARD = ALL_CLUE_CARDS.get("joseph");
+
+/** A gold laurel branch for the title. */
+function Laurel({ flip }: { flip?: boolean }) {
+  const leaves = [0, 1, 2, 3, 4, 5];
+  return (
+    <svg className="bb-clue-laurel" viewBox="0 0 40 80" aria-hidden="true" style={flip ? { transform: "scaleX(-1)" } : undefined}>
+      <path d="M30 76 C 10 60, 8 32, 22 6" fill="none" stroke="#d9a843" strokeWidth="2.6" strokeLinecap="round" />
+      {leaves.map((i) => {
+        const y = 66 - i * 11;
+        const x = 22 - Math.sin((i / 5) * Math.PI) * 9 + (i === 5 ? 2 : 0);
+        return (
+          <g key={i}>
+            <ellipse cx={x - 7} cy={y} rx="7.5" ry="3.4" fill="#e8bb55" transform={`rotate(-35 ${x - 7} ${y})`} />
+            <ellipse cx={x + 6} cy={y - 4} rx="7" ry="3.2" fill="#c8952f" transform={`rotate(-70 ${x + 6} ${y - 4})`} />
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
 import { createMatch, ROUND_INTRO_MS, soloSetup, type PublicCard } from "@/lib/clueGame/engine";
 import type { ClueRef } from "@/lib/clueGame/types";
 import { clueApi, clueUserId, trackClue } from "@/lib/clueGame/track";
@@ -311,36 +331,46 @@ export default function ClueGame() {
         <ClueHeader backHref={screen === "menu" ? "/bible-study-games" : undefined} onBack={back} subtitle={screen === "play" ? undefined : subtitle} badge={screen === "decks" ? "Beta" : undefined} hideLogo={screen === "menu"} />
         {screen === "menu" ? (
           <div className="px-4">
-            <div className="bb-clue-titlegroup text-center">
-              <div className="bb-clue-banner">
-                <h1 className="bb-clue-serif">Bible Clue Game</h1>
+            {/* The menu, built to Louis's mockup (2026-11-22): gold title between
+                laurels, the tagline, Joseph's mystery card turning into his
+                revealed card on the edge of the table, the three buttons on the felt. */}
+            <div className="bb-clue-hero">
+              <div className="bb-clue-herotitle">
+                <Laurel />
+                <h1 className="bb-clue-serif">Bible Clue</h1>
+                <Laurel flip />
               </div>
-              <span className="bb-clue-ribbon">A fun way to test your Bible knowledge</span>
-            </div>
-            <div className="bb-clue-menutable">
-              <div className="bb-clue-menufan">
-                {/* Five of the finished cards, face up (Louis: "the revealed versions
-                    of some of the best ones, not the plain back"). Joseph in the middle. */}
-                {MENU_FAN.map((id, i) => {
-                  const c = ALL_CLUE_CARDS.get(id);
-                  const r = [-16, -8, 0, 8, 16][i];
-                  if (!c) return null;
-                  return (
-                    <div key={id} className="bb-clue-fancard" style={{ transform: `rotate(${r}deg) translateY(${Math.abs(r) / 1.6}px)`, zIndex: i === 2 ? 3 : i === 1 || i === 3 ? 2 : 1 }}>
-                      <div className="bb-clue-card-art is-color">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={c.art.reveal} alt={c.answer} className="bb-clue-art" />
-                      </div>
-                      <div className="bb-clue-card-name">{c.answer}</div>
-                    </div>
-                  );
-                })}
+              <div className="bb-clue-herorule" />
+              <p className="bb-clue-herotag">Follow the clues. Guess the answer.</p>
+              <div className="bb-clue-herotable">
+                <div className="bb-clue-herofelt" />
+                <div className="bb-clue-herocards">
+                  <div className="bb-clue-herocard is-left">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={HERO_CARD?.art.mystery} alt="A mystery card" />
+                  </div>
+                  <svg className="bb-clue-heroarrow" viewBox="0 0 120 80" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="bbHeroGold" x1="0" x2="1">
+                        <stop offset="0" stopColor="#b8862e" />
+                        <stop offset="1" stopColor="#ffe08a" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M8 58 C 34 22, 70 18, 96 34" fill="none" stroke="url(#bbHeroGold)" strokeWidth="9" strokeLinecap="round" />
+                    <path d="M90 18 L112 40 L84 48 Z" fill="#ffe08a" />
+                    <path d="M58 6 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z M20 20 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z M100 62 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z" fill="#fff1b8" />
+                  </svg>
+                  <div className="bb-clue-herocard is-right">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={HERO_CARD?.art.reveal} alt={HERO_CARD?.answer || ""} />
+                  </div>
+                </div>
+                <div className="bb-clue-panel bb-clue-parchment bb-clue-heropanel flex flex-col gap-3">
+                  <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big" onClick={() => setScreen("decks")}>▶ Play Solo</button>
+                  <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big" onClick={() => setScreen("multi")}><img src="/games/clue/ui/icon-players.webp" alt="" className="bb-clue-btnicon" /> Multiplayer</button>
+                  <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big" onClick={() => setScreen("how")}>📖 How to Play</button>
+                </div>
               </div>
-            </div>
-            <div className="bb-clue-panel bb-clue-parchment flex flex-col gap-3">
-              <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big" onClick={() => setScreen("decks")}>▶ Play Solo</button>
-              <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big" onClick={() => setScreen("multi")}><img src="/games/clue/ui/icon-players.webp" alt="" className="bb-clue-btnicon" /> Multiplayer</button>
-              <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big" onClick={() => setScreen("how")}>📖 How to Play</button>
             </div>
           </div>
         ) : screen === "how" ? (
