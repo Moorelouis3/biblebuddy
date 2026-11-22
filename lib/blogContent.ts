@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-16-explained",
+    title: "1 Samuel 16 Explained: David Anointed King in Secret",
+    description:
+      "1 Samuel 16 explained verse by verse: Samuel anoints David in secret, God looks at the heart instead of appearance, and an evil spirit begins to trouble Saul.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-16-explained",
+    publishedAt: "2026-11-22",
+    readTime: "13 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 16 Explained 📖",
+      content:
+        "A prophet is sent to crown a king.\n\nHe almost picks the wrong one.\n\n📌 God looks at the heart, not the outward appearance.\n\n📖 Seven sons pass by and none of them is the one.\n📖 The one left out is the one God chooses.\n📖 An anointing nobody outside one family even knows happened.\n\nNew article on:\n🟢 why **Samuel** needed a cover story to get to Bethlehem\n🟢 the verse about the **heart** that corrects a prophet\n🟢 why the **Spirit** that comes on David also leaves Saul\n\nHave you ever been the one nobody thought to call in? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-15-explained",
     title: "1 Samuel 15 Explained: Saul's Rejection Over the Amalekites",
     description:

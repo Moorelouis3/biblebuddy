@@ -1045,10 +1045,11 @@ No `public/blog-banners/<slug>.jpg` exists yet for these chapters, so each
 uses the verse-breakdowns fallback (`/Whatisthebiblebanner.png`):
 1-samuel-9-explained, 1-samuel-10-explained,
 1-samuel-11-explained, 1-samuel-12-explained, 1-samuel-13-explained,
-1-samuel-14-explained, 1-samuel-15-explained. (Ruth 1-4 and 1 Samuel 1-8
-got their real banners from Louis on 2026-11-21.) Updating
-this one line going forward (per the routine's own doc) rather than adding a new block each
-time a chapter lands without a custom banner.
+1-samuel-14-explained, 1-samuel-15-explained, 1-samuel-16-explained.
+(Ruth 1-4 and 1 Samuel 1-8 got their real banners from Louis on
+2026-11-21.) Updating this one line going forward (per the routine's own
+doc) rather than adding a new block each time a chapter lands without a
+custom banner.
 
 ## Stale local main / detached HEAD recurrence: 29 commits including 3 overdue [deploy] tags found unpushed, now fixed
 This run's checkout started HEAD detached from main, 29 commits ahead of
