@@ -20,18 +20,29 @@ export async function GET(request: Request) {
   const admin = clueAdmin();
   const user = await clueUserFrom(request, admin);
   if (!user) return NextResponse.json({ error: "Sign in to play." }, { status: 401 });
-  const [{ data: mine }, { data: a }, { data: b }] = await Promise.all([
+  // Start from the people who have played (a few hundred at most) and keep
+  // the ones who are this person's Buddies. The other way round (every Buddy,
+  // then their progress) capped at 500 Buddies a side, and Louis has ~2,000:
+  // Jessica, Vickie and Mike never showed on his map (2026-11-23).
+  const [{ data: mine }, { data: played }] = await Promise.all([
     admin.from("match_progress").select("user_id, unlocked, done, best").eq("user_id", user.id).maybeSingle(),
-    admin.from("buddies").select("user_id_2").eq("user_id_1", user.id).limit(500),
-    admin.from("buddies").select("user_id_1").eq("user_id_2", user.id).limit(500),
+    admin.from("match_progress").select("user_id, unlocked, done").neq("user_id", user.id).order("updated_at", { ascending: false }).limit(1000),
   ]);
-  const ids = [...new Set([...(a || []).map((r) => r.user_id_2 as string), ...(b || []).map((r) => r.user_id_1 as string)])].filter((id) => id && id !== user.id);
+  const playerIds = ((played || []) as Row[]).map((r) => r.user_id);
   let buddies: Array<{ id: string; name: string; avatar: string | null; unlocked: number; done: number }> = [];
-  if (ids.length) {
-    const [{ data: rows }, { data: profiles }] = await Promise.all([
-      admin.from("match_progress").select("user_id, unlocked, done").in("user_id", ids),
-      admin.from("profile_stats").select("user_id, display_name, username, profile_image_url").in("user_id", ids),
+  const ids: string[] = [];
+  for (let i = 0; i < playerIds.length; i += 200) {
+    const chunk = playerIds.slice(i, i + 200);
+    const [{ data: a }, { data: b }] = await Promise.all([
+      admin.from("buddies").select("user_id_2").eq("user_id_1", user.id).in("user_id_2", chunk),
+      admin.from("buddies").select("user_id_1").eq("user_id_2", user.id).in("user_id_1", chunk),
     ]);
+    ids.push(...(a || []).map((r) => r.user_id_2 as string), ...(b || []).map((r) => r.user_id_1 as string));
+  }
+  if (ids.length) {
+    const want = new Set(ids);
+    const rows = ((played || []) as Row[]).filter((r) => want.has(r.user_id));
+    const { data: profiles } = await admin.from("profile_stats").select("user_id, display_name, username, profile_image_url").in("user_id", [...want]);
     const prof = new Map((profiles || []).map((p) => [p.user_id as string, p]));
     buddies = ((rows || []) as Row[]).map((r) => {
       const p = prof.get(r.user_id);
