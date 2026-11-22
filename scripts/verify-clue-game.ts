@@ -158,6 +158,19 @@ ok("two guesses a round, so one card costs at most 9; with no guesses left at th
   assert.equal(m.round!.outcome?.kind, "missed");
 });
 
+ok("Skip: solo moves straight to the next clue, 0 points, listed as the full clue time", () => {
+  let m = start();
+  const at0 = m.round!.clueStartedAt + 2000;
+  m = reduceClueMatch(m, { type: "wait", now: at0, playerId: "me" }, cards);
+  assert.equal(m.round!.clueIndex, 1, "next clue at once");
+  assert.equal(m.scores.me ?? 0, 0);
+  const v = publicView(m, cards, at0);
+  const skip = v.roundAnswers.find((a) => a.skipped);
+  assert.ok(skip, "the skip is listed");
+  assert.equal(skip!.seconds, DEFAULT_CLUE_SETTINGS.clueSeconds);
+  assert.equal(skip!.points, 0);
+});
+
 ok("the round ends after 10 cards; highest score wins", () => {
   let m = start(9);
   for (let i = 0; i < 10; i += 1) {

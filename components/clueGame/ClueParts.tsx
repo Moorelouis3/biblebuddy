@@ -9,7 +9,7 @@
  * utilities the Bible Covers repaint.
  */
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import type { PublicCard } from "@/lib/clueGame/engine";
 import type { ClueCategory, ClueRef } from "@/lib/clueGame/types";
@@ -17,7 +17,7 @@ import { kjvStaticUrl } from "@/lib/chapterStaticData";
 import { ref as parseRef } from "@/lib/clueGame/ref";
 import { clueSound, primeClueSound, setSoundOn, soundOn } from "@/lib/clueGame/sound";
 
-export const CATEGORY_LABEL: Record<ClueCategory, string> = { person: "Person", place: "Place", keyword: "Keyword" };
+export const CATEGORY_LABEL: Record<ClueCategory, string> = { person: "Person", place: "Place", keyword: "Thing" }; // on a card a keyword reads "Thing" (Louis, 2026-11-22)
 
 export function initials(name: string) {
   const parts = String(name || "?").trim().split(/\s+/);
@@ -268,6 +268,13 @@ export function SoundToggle() {
 
 export function ClueRoomFrame({ children }: { children: ReactNode }) {
   useEffect(() => primeClueSound(), []);
+  // Every Bible Clue screen is the game: the app menu, top bar, Bible Lock
+  // strip and Report a Problem step aside (Louis, 2026-11-22). The board adds
+  // its own class too (bb-in-game), so each can leave without undoing the other.
+  useLayoutEffect(() => {
+    document.documentElement.classList.add("bb-game-screen");
+    return () => document.documentElement.classList.remove("bb-game-screen");
+  }, []);
   return (
     <div className="bb-clue-room">
       <style>{CLUE_CSS}</style>
@@ -347,9 +354,9 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-clue-logo-text { font-size:22px; font-weight:700; color:#fff1c9; text-shadow: 0 2px 0 #7a4a12, 0 3px 8px rgba(0,0,0,.5); }
 .bb-clue-logo-pill { margin-top:4px; padding:3px 14px; border-radius:999px; background:#1f5a34; color:#fff1c9; font-size:12px; font-weight:800; box-shadow: 0 0 0 2px #d8a84a; }
 .bb-clue-logo-badge { margin-top:4px; padding:2px 12px; border-radius:999px; background:#f3e2b8; color:#4a2c12; font-size:11px; font-weight:900; box-shadow: 0 0 0 1px #b8863a; }
-.bb-clue-banner { margin: 4px auto 0; width: min(94vw, 520px); aspect-ratio: 1600/400; display:grid; place-items:center; padding: 0 17% 1.5%; text-align:center; color:#fff3c8;
+.bb-clue-banner { margin: 4px auto 0; width: min(94vw, 520px); aspect-ratio: 1600/400; display:flex; align-items:center; justify-content:center; padding: 0 15% 1.5%; text-align:center; color:#fff3c8;
   background: url(/games/clue/ui/banner.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 6px 12px rgba(0,0,0,.45)); }
-.bb-clue-banner h1 { font-size: clamp(20px, 6vw, 32px); font-weight:700; line-height:1.05; white-space:nowrap; text-shadow: 0 2px 0 rgba(0,0,0,.35); }
+.bb-clue-banner h1 { font-size: clamp(18px, 5.4vw, 29px); flex:none; font-weight:700; line-height:1.05; white-space:nowrap; text-shadow: 0 2px 0 rgba(0,0,0,.35); }
 .bb-clue-ribbon { display:inline-block; margin-top:2px; padding:7px 26px; white-space:nowrap; color:#3b2412; font-size:13px; font-weight:700; font-family: Georgia, serif;
   background: url(/games/clue/ui/name-shield.webp) center / 100% 100% no-repeat; }
 .bb-clue-parchment { position:relative; padding:6px; color:#3b2412;
@@ -507,7 +514,7 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 /* ---------- the board (ClueTable): the Genesis four-player layout ---------- */
 .bb-cb { position:relative; width: min(100%, 760px); margin: 0 auto; padding: 0 12px 6px; display:flex; flex-direction:column;
   height: calc(100dvh - var(--cb-top, 60px) - env(safe-area-inset-bottom)); }
-html.bb-in-game .bb-bottom-pill, html.bb-in-game .bb-safe-top-header, html.bb-in-game .bb-report-problem { display:none !important; }
+html:is(.bb-in-game, .bb-game-screen) :is(.bb-bottom-pill, .bb-safe-top-header, .bb-report-problem, section[aria-labelledby="home-bible-lock-heading"]) { display:none !important; }
 .bb-cb > * { flex-shrink: 0; }
 .bb-cb-scene { position:fixed; inset:0; z-index:-1; pointer-events:none; background: var(--scene-phone) center bottom / cover no-repeat #d9a55e; }
 @media (min-aspect-ratio: 1/1) { .bb-cb-scene { background-image: var(--scene-desktop); background-position: center; } }
@@ -540,8 +547,10 @@ html.bb-in-game .bb-bottom-pill, html.bb-in-game .bb-safe-top-header, html.bb-in
 .bb-cb-gap { flex: 1 1 0; min-height: 0; display:flex; flex-direction:column; justify-content:flex-end; padding-bottom: 8px; }
 .bb-cb-answers { margin: 0 auto; width: min(100%, 460px); padding: 6px 8px !important; border-top:0 !important; border-radius:14px; background: rgba(255,248,232,.92); box-shadow: 0 0 0 1.5px #d9a843, 0 8px 18px rgba(0,0,0,.25); color:#2a1a0c; }
 .bb-cb-answers li { font-size: 13px !important; padding: 3px 6px !important; }
-.bb-cb-play { display:grid; grid-template-columns: minmax(0, 19fr) minmax(0, 60fr) minmax(0, 21fr); align-items:center; gap: clamp(6px, 2vw, 14px); position:relative; z-index:4; }
-.bb-cb-pileslot { display:flex; justify-content:center; }
+.bb-cb-play { display:grid; grid-template-columns: minmax(0, 21fr) minmax(0, 60fr) minmax(0, 19fr); align-items:center; gap: clamp(6px, 2vw, 14px); position:relative; z-index:4; }
+/* The card in play on the left, the deck on the right (Louis, 2026-11-22). */
+.bb-cb-pileslot { display:flex; justify-content:center; order: 3; }
+.bb-cb-panel { order: 2; }
 .bb-cb-pile { position:relative; width: 100%; max-width: min(120px, 15vh); aspect-ratio: 5/7; }
 .bb-cb-pile.is-empty { opacity:.35; }
 .bb-cb-pilecard { position:absolute; inset:0; border-radius:9px; overflow:hidden; box-shadow: 0 0 0 1.5px #c99a46, 0 6px 12px rgba(0,0,0,.35); }
@@ -566,11 +575,21 @@ html.bb-in-game .bb-bottom-pill, html.bb-in-game .bb-safe-top-header, html.bb-in
 .bb-cb-panel-row { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap: 4px 10px; margin-top:6px; }
 .bb-cb-ref { padding: 2px 12px 3px; font-family: Georgia, serif; font-weight:800; font-size: 13px; background: url(/games/clue/ui/cream-pill.webp) center / 100% 100% no-repeat; }
 .bb-cb-outcome { margin-top:6px; text-align:center; font-weight:900; font-size: clamp(12px, 3.3vw, 14px); }
-.bb-cb-slot { display:flex; justify-content:center; }
-.bb-cb-cardwrap { position:relative; width:100%; max-width: min(140px, 17vh); }
+.bb-cb-slot { display:flex; justify-content:center; order: 1; }
+.bb-cb-cardwrap { position:relative; z-index:6; width:100%; max-width: min(140px, 17vh); }
+/* Dealt from the deck on the right, across to the card spot on the left. */
+.bb-cb-cardwrap.bb-clue-deal { animation: bb-cb-deal .6s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes bb-cb-deal { from { transform: translate(min(78vw, 560px), 0) rotate(-10deg) scale(.9); } to { transform:none; } }
+.bb-cb-cardwrap.bb-clue-deal.bb-clue-award { animation: bb-clue-award .75s cubic-bezier(.5,0,.75,0) forwards; }
+/* The opening: each card drops onto the deck. */
+.bb-cb-pile .bb-clue-intro-fly { animation: bb-cb-onto-pile .2s ease-out both; }
+@keyframes bb-cb-onto-pile { from { transform: translate(-60%, -30%) rotate(-12deg); } to { transform:none; } }
 .bb-cb-card { position:relative; width:100%; max-width: min(140px, 17vh); aspect-ratio: 5/7; border-radius:10px; overflow:hidden; display:flex; align-items:center; justify-content:center; padding: 10%;
   background: url(/games/clue/ui/mystery-card.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 8px 12px rgba(0,0,0,.35)); color:#123d24; }
+.bb-cb-card { flex-direction:column; gap: 4%; }
+.bb-cb-card-art { flex: 1 1 0; min-height:0; width:100%; display:flex; align-items:center; justify-content:center; }
 .bb-cb-card .bb-clue-art { width:100%; height:100%; object-fit:contain; }
+.bb-cb-card-cat { flex:none; font-family: Georgia, serif; font-weight:800; font-size: clamp(9px, 2.6vw, 13px); letter-spacing:.14em; text-transform:uppercase; color:#5a3a16 !important; }
 .bb-cb-card.is-revealed { padding: 6%; }
 .bb-cb-card.is-revealed .bb-clue-art { object-fit:cover; border-radius:6px; }
 .bb-cb-card.is-empty { opacity:.55; }
@@ -582,7 +601,7 @@ html.bb-in-game .bb-bottom-pill, html.bb-in-game .bb-safe-top-header, html.bb-in
 .bb-cb-creampill { display:inline-flex; align-items:center; gap:6px; padding: 6px 16px 7px; font-family: Georgia, serif; font-weight:800; font-size: clamp(14px, 4vw, 18px); color:#3b2412 !important; white-space:nowrap;
   background: url(/games/clue/ui/cream-pill.webp) center / 100% 100% no-repeat; }
 .bb-cb-creampill img { width: 1.4em; height: 1.4em; }
-.bb-cb-stripwrap { position:relative; margin-top: clamp(4px, 1vh, 10px); display:flex; align-items:center; gap:4px; flex: 0 0 clamp(110px, 22vh, 210px) !important; min-height: 0; overflow:hidden; }
+.bb-cb-stripwrap { position:relative; margin-top: clamp(4px, 1vh, 10px); display:flex; align-items:center; gap:4px; flex: 0 1 clamp(110px, 22vh, 210px) !important; min-height: 64px; overflow:hidden; }
 .bb-cb-strip { flex:1; min-width:0; height:100%; min-height:0; display:flex; align-items:stretch; gap: 10px; overflow-x:auto; overflow-y:hidden; scroll-snap-type: x mandatory; padding: 2px 2px 6px; scrollbar-width:none; }
 .bb-cb-strip::-webkit-scrollbar { display:none; }
 .bb-cb-strip-empty { align-self:center; margin: 0 auto; padding: 4px 14px; border-radius:999px; background: rgba(255,248,232,.85); color:#6a4a22 !important; font-weight:800; font-size:13px; }

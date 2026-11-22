@@ -8,6 +8,7 @@ import chapterProgress from "@/data/chapter-blog/progress.json";
 import { isOpenNow, startLabelFrom } from "@/lib/studyLibrary";
 import { WELCOME_SEQUENCE } from "@/lib/email/welcomeSequence";
 import { computeNewFeatures, type NewFeaturesReport } from "@/lib/newFeaturesReport";
+import { computeClueGameReport, type ClueGameReport } from "@/lib/clueGameReport";
 import { POPUP_CATALOG } from "@/lib/popups/catalog";
 import { getCommunityEvent } from "@/lib/communityEvents";
 
@@ -1021,6 +1022,12 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   // says so and every other number on the page still loads.
   const newFeatures: NewFeaturesReport | null = await computeNewFeatures(admin, current).catch((error) => {
     console.error("[DASHBOARD] new features report failed:", error);
+    return null;
+  });
+
+  // ----- Bible Clue Game (its own tab, lib/clueGameReport.ts) -----
+  const clueGame: ClueGameReport | null = await computeClueGameReport(admin, current).catch((error) => {
+    console.error("[DASHBOARD] clue game report failed:", error);
     return null;
   });
 
@@ -2141,6 +2148,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     appStore,
     content,
     newFeatures,
+    clueGame,
   };
 }
 

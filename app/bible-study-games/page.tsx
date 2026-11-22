@@ -17,7 +17,7 @@ export default function BibleStudyGamesPage() {
 
       {/* Bible Clue Game, 2026-11-22. The last feature planned for 1.0, so it leads. */}
       <Link
-        href="/bible-study-games/clue"
+        href="/bible-study-games/clue?from=games"
         className="flex items-center gap-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
       >
         <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-2xl" style={{ backgroundColor: "#1d5a37" }} aria-hidden="true">

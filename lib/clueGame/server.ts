@@ -234,6 +234,33 @@ export async function viewRoom(admin: SupabaseClient, rawCode: string, user: Clu
   };
 }
 
+/**
+ * What an invite link may show to anyone, signed in or not (the /play/<code>
+ * page): who is hosting (first name and photo only), the deck, how many seats
+ * are taken, and whether the room can still be joined. Nothing about the
+ * other players, and nothing from the game itself.
+ */
+export async function roomInvite(admin: SupabaseClient, rawCode: string) {
+  const code = normalizeCode(rawCode);
+  const room = await loadRoom(admin, code);
+  if (!room) return { code, found: false as const };
+  const players = await loadPlayers(admin, code);
+  const host = players.find((p) => p.user_id === room.host_id);
+  const closed = room.status === "closed" || Date.parse(room.expires_at) < Date.now();
+  const joinable = !closed && room.status === "lobby" && players.length < MAX_ROOM_PLAYERS;
+  return {
+    code,
+    found: true as const,
+    hostName: (host?.display_name || "A friend").split(/\s+/)[0],
+    hostAvatar: host?.avatar_url ?? null,
+    deckName: deckLabel(room.deck_ids),
+    players: players.length,
+    maxPlayers: MAX_ROOM_PLAYERS,
+    joinable,
+    reason: joinable ? null : closed ? "closed" : room.status !== "lobby" ? "started" : "full",
+  };
+}
+
 /* ---------- challenges ---------- */
 
 const challengeId = () => newCode(8);

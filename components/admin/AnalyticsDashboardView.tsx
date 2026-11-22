@@ -28,6 +28,7 @@ export const TABS = [
   { key: "books", label: "Books" },
   { key: "app", label: "App" },
   { key: "features", label: "Features" },
+  { key: "clue", label: "Bible Clue" },
   { key: "popups", label: "Popups" },
 ] as const;
 
@@ -2223,6 +2224,97 @@ export default function AnalyticsDashboardView({
                 and returned to. One block per recently launched feature, all
                 asking the same questions in the same order. The numbers come
                 from lib/newFeaturesReport.ts. */}
+            {/* Bible Clue (2026-11-22): the game in full - who opens it, solo,
+                multiplayer, invites and the accounts they bring in, Feed
+                challenges, coming back. Numbers from lib/clueGameReport.ts; the
+                Features tab keeps its short summary beside the other games. */}
+            {tab === "clue" ? (
+              d.clueGame ? (
+                <>
+                  <p className="px-1 text-sm font-semibold text-[#64748b]">
+                    Live since {d.clueGame.launched}. &ldquo;Since launch&rdquo; is all time; the second column follows the period
+                    chosen above.{" "}
+                    <Link href="/bible-study-games/clue" className="font-bold text-[#2563eb]">
+                      Open the game →
+                    </Link>
+                  </p>
+                  {d.clueGame.sections.map((section) => (
+                    <Section key={section.key} summary={<SectionSummary icon={section.icon} title={section.title} line={section.line} />}>
+                      <div className="hidden lg:block">
+                        <CardTitle icon={section.icon}>{section.title}</CardTitle>
+                      </div>
+                      <div className="overflow-x-auto">
+                        <table className="w-full min-w-[420px] border-separate border-spacing-y-1.5 text-sm">
+                          <thead>
+                            <tr className="text-left text-xs font-bold text-[#64748b]">
+                              <th className="pb-1 font-bold">What</th>
+                              <th className="pb-1 text-right font-bold">Since launch</th>
+                              <th className="pb-1 text-right font-bold">This period</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {section.figures.map((f) => {
+                              const show = (n: number) => (f.unit === "percent" ? pct(n) : f.unit === "average" ? String(n) : fmt(n));
+                              return (
+                                <tr key={f.label} title={f.hint}>
+                                  <td className="pr-3 align-middle">
+                                    <p className="font-black text-[#0b1633]">{f.label}</p>
+                                    <p className="text-[11px] font-semibold leading-snug text-[#8a94a6]">{f.hint}</p>
+                                  </td>
+                                  <td className="whitespace-nowrap pl-3 text-right align-middle text-lg font-black">{show(f.allTime)}</td>
+                                  <td className="whitespace-nowrap pl-3 text-right align-middle text-lg font-black">{show(f.period)}</td>
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    </Section>
+                  ))}
+                  {d.clueGame.breakdowns.map((b) => {
+                    const widest = Math.max(1, ...b.rows.map((r) => r.allTime));
+                    return (
+                      <Section key={b.title} summary={<SectionSummary icon="📊" title={b.title} line={b.rows.length ? b.rows.slice(0, 2).map((r) => `${r.label} ${fmt(r.allTime)}`).join(" · ") : "Nothing yet"} />}>
+                        <div className="hidden lg:block">
+                          <CardTitle icon="📊">{b.title}</CardTitle>
+                        </div>
+                        {b.rows.length ? (
+                          <table className="w-full border-separate border-spacing-y-1.5 text-sm">
+                            <thead>
+                              <tr className="text-left text-xs font-bold text-[#64748b]">
+                                <th className="pb-1 font-bold" />
+                                <th className="w-[38%] pb-1" aria-hidden="true" />
+                                <th className="pb-1 text-right font-bold">Since launch</th>
+                                <th className="pb-1 text-right font-bold">This period</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {b.rows.map((r) => (
+                                <tr key={r.label}>
+                                  <td className="pr-3 font-black text-[#0b1633]">{r.label}</td>
+                                  <td>
+                                    <Bar value={r.allTime} max={widest} />
+                                  </td>
+                                  <td className="pl-3 text-right font-black">{fmt(r.allTime)}</td>
+                                  <td className="pl-3 text-right font-black">{fmt(r.period)}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        ) : (
+                          <p className="text-sm font-semibold text-[#64748b]">Nothing recorded yet.</p>
+                        )}
+                      </Section>
+                    );
+                  })}
+                </>
+              ) : (
+                <Card>
+                  <p className="text-sm font-semibold text-[#64748b]">The Bible Clue numbers did not load this time. Every other tab is unaffected.</p>
+                </Card>
+              )
+            ) : null}
+
             {tab === "features" ? (
               <>
                 {d.newFeatures ? (

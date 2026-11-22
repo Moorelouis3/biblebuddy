@@ -66,6 +66,8 @@ export type ClueEvent =
   | { type: "wrong"; at: number; cardId: string; clueIndex: number; playerId: string; sideId: string; guess: string; points: number }
   | { type: "correct"; at: number; cardId: string; clueIndex: number; playerId: string; sideId: string; guess: string; points: number }
   | { type: "missed"; at: number; cardId: string }
+  /** Skip (the old Wait): no points either way, and it counts as the clue's full time. */
+  | { type: "skip"; at: number; cardId: string; clueIndex: number; playerId: string }
   | { type: "over"; at: number; winnerSideIds: string[] };
 
 export type ClueRound = {
@@ -342,8 +344,13 @@ export function reduceClueMatch(match: ClueMatch, action: ClueAction, cards: Map
       const r = match.round;
       if (action.now < r.clueStartedAt) return match; // still dealing
       if (r.waiting.includes(action.playerId) || !match.players.some((p) => p.id === action.playerId)) return match;
-      const m = { ...match, round: { ...r, waiting: [...r.waiting, action.playerId] } };
-      // Everyone is waiting or out of guesses: no reason to sit out the timer.
+      const m = {
+        ...match,
+        round: { ...r, waiting: [...r.waiting, action.playerId] },
+        log: [...match.log, { type: "skip" as const, at: action.now, cardId: r.cardId, clueIndex: r.clueIndex, playerId: action.playerId }],
+      };
+      // Everyone has skipped or is out of guesses: no reason to sit out the timer
+      // (in solo, Skip moves straight on to the next clue).
       return everyoneDone(m) ? nextClueOrMiss(m, action.now) : m;
     }
     case "guess": {
@@ -427,7 +434,7 @@ export type PublicMatch = Omit<ClueMatch, "deck" | "topClue" | "log" | "round"> 
    * and ends the round. A right answer is only ever in here once the round
    * is revealed, so this never gives the card away.
    */
-  roundAnswers: Array<{ playerId: string; guess: string; clueIndex: number; seconds: number; right: boolean; points: number }>;
+  roundAnswers: Array<{ playerId: string; guess: string; clueIndex: number; seconds: number; right: boolean; points: number; skipped?: boolean }>;
 };
 
 function fullPublicCard(card: ClueCard, topClue: number): PublicCard {
@@ -484,6 +491,10 @@ export function publicView(match: ClueMatch, cards: Map<string, ClueCard>, now: 
     const clueStart = new Map<number, number>();
     for (const e of log) {
       if (e.type === "clue" && e.cardId === round.cardId) clueStart.set(e.clueIndex, e.at);
+      // A skip is 0 points and the whole clue's time (Louis, 2026-11-22).
+      if (e.type === "skip" && e.cardId === round.cardId) {
+        roundAnswers.push({ playerId: e.playerId, guess: "Skipped", clueIndex: e.clueIndex, seconds: match.settings.clueSeconds, right: false, points: 0, skipped: true });
+      }
       if ((e.type === "wrong" || e.type === "correct") && e.cardId === round.cardId) {
         const started = clueStart.get(e.clueIndex) ?? e.at;
         roundAnswers.push({

@@ -367,8 +367,8 @@ export default function ClueTable({
                 <li key={`${a.playerId}-${a.clueIndex}-${i}`} className={a.right ? "is-right" : "is-wrong"}>
                   <span className="bb-clue-answers-name">{nameOf(a.playerId)}</span>
                   <span className="bb-clue-answers-time">{a.seconds.toFixed(1)}s</span>
-                  <span className="bb-clue-answers-guess">“{a.guess}”</span>
-                  <span className="bb-clue-answers-result">{a.right ? `✓ +${a.points}` : `✗ −${a.points}`}</span>
+                  <span className="bb-clue-answers-guess">{a.skipped ? "Skipped" : `“${a.guess}”`}</span>
+                  <span className="bb-clue-answers-result">{a.skipped ? "0" : a.right ? `✓ +${a.points}` : `✗ −${a.points}`}</span>
                 </li>
               ))}
             </ol>
@@ -460,7 +460,11 @@ export default function ClueTable({
                     <img className="bb-clue-sparkle" src={`${UI}/sparkle.webp`} alt="" aria-hidden="true" />
                   ) : null}
                   <div className={`bb-cb-card ${revealed ? "is-revealed" : "bb-clue-flipin"}`}>
-                    <SubjectArt card={card} mode={revealed ? "reveal" : "mystery"} />
+                    <span className="bb-cb-card-art">
+                      <SubjectArt card={card} mode={revealed ? "reveal" : "mystery"} />
+                    </span>
+                    {/* Person, place or thing (Louis, 2026-11-22: keywords say "Thing"). */}
+                    {!revealed ? <span className="bb-cb-card-cat">{card.category === "person" ? "Person" : card.category === "place" ? "Place" : "Thing"}</span> : null}
                     {!revealed && uncovered !== view.dealt ? (
                       <div className="bb-cb-cardcover" aria-hidden="true">
                         <CardBack src={cardBack} />
@@ -529,7 +533,7 @@ export default function ClueTable({
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
             disabled={!canGuess}
-            placeholder={inIntro ? "Get ready…" : canGuess ? (roundLeft === 1 ? "Last guess this round…" : `Your guess… (${roundLeft} left)`) : view.phase === "clue" && roundLeft <= 0 ? "No guesses left this round" : view.phase === "reveal" ? "Next round coming…" : waiting ? "Waiting for the next clue…" : "Next clue coming…"}
+            placeholder={inIntro ? "Get ready…" : canGuess ? (roundLeft === 1 ? "Last guess this round…" : `Your guess… (${roundLeft} left)`) : view.phase === "clue" && roundLeft <= 0 ? "No guesses left this round" : view.phase === "reveal" ? "Next round coming…" : waiting ? "Skipped. Waiting for the others…" : "Next clue coming…"}
             className="bb-cb-input"
             autoComplete="off"
             autoCorrect="off"
@@ -538,12 +542,18 @@ export default function ClueTable({
             enterKeyHint="go"
             aria-label="Your guess"
           />
-          <button type="submit" className="bb-cb-guess" disabled={!guess.trim() || !canGuess}>
-            Guess
-          </button>
-          <button type="button" onClick={onWait} className="bb-cb-wait" disabled={waiting || !canGuess} title="Wait for the next clue (free)">
-            {round && round.clueIndex >= 4 ? "Pass" : "Wait"}
-          </button>
+          {/* One button (Louis, 2026-11-22: the Wait button goes away): with
+              something typed it guesses; with the box empty it skips this clue
+              for 0 points, counted as the clue's full time. */}
+          {guess.trim() ? (
+            <button type="submit" className="bb-cb-guess" disabled={!canGuess}>
+              Guess
+            </button>
+          ) : (
+            <button type="button" onClick={onWait} className="bb-cb-guess is-skip" disabled={waiting || !canGuess} title="Skip this clue (0 points)">
+              Skip
+            </button>
+          )}
         </form>
       ) : null}
     </div>

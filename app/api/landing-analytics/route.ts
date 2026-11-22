@@ -73,6 +73,10 @@ const ALLOWED_EVENTS = new Set([
   "clue_game_challenge_started",
   "clue_game_challenge_finished",
   "clue_game_feedback",
+  // Room invites (2026-11-22): sent from a room, and the /play/<code> link
+  // opened - often by someone with no account yet, so user_id can be null.
+  "clue_game_invite_shared",
+  "clue_game_invite_opened",
   // One-time "It starts today" popup for members who have not started (Oct 1+).
   "proverbs_launch_popup_impression",
   "proverbs_launch_popup_dismissed",

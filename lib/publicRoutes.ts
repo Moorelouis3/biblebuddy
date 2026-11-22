@@ -72,6 +72,10 @@ const PUBLIC_PREFIXES = [
   // action behind an account of their own.
   "/events",
   "/books",
+  // Bible Clue room invites (2026-11-22): /play/<code> shows who invited you
+  // and sends you to sign up, then into the room. The room itself stays
+  // behind an account; the invite page only reads roomInvite().
+  "/play",
 ];
 
 /**

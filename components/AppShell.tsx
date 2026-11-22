@@ -3920,7 +3920,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           userId={userId}
           pathname={pathname}
           blocked={Boolean(
-            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
+            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen ||
+              // No popup in the middle of a Bible Clue round (Louis, 2026-11-22).
+              pathname?.startsWith("/bible-study-games/clue"),
           )}
         />
       ) : null}

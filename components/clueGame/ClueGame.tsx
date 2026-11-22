@@ -60,7 +60,7 @@ function HowToPlay({ onBack }: { onBack: () => void }) {
     ["5️⃣", "Clues come one at a time, from 5 points down to 1. Each clue stays up for 15 seconds."],
     ["✅", "The fastest right answer wins that clue’s points and the card."],
     ["❌", "Guess wrong and you lose that many points. One guess per clue, two per round."],
-    ["⏳", "Not sure? Wait for the next clue. Waiting is free."],
+    ["⏳", "Not sure? Tap Skip for the next clue. Skipping costs nothing."],
     ["🔁", "The next round deals itself. Most points after 10 rounds wins."],
     ["📖", "After each card, tap Study This Card for its Scripture and a short teaching note."],
   ];
@@ -321,7 +321,10 @@ export default function ClueGame() {
   const [playKey, setPlayKey] = useState(0);
 
   useEffect(() => {
-    trackClue("clue_game_opened", { deck: "genesis" });
+    // Where they came from, for the Bible Clue analytics tab: the Games page
+    // link says so in the URL; anything else is "direct".
+    const from = new URLSearchParams(window.location.search).get("from") || "direct";
+    trackClue("clue_game_opened", { deck: "genesis", from });
   }, []);
 
   const back = screen === "menu" ? undefined : () => setScreen(screen === "play" ? "decks" : "menu");

@@ -8,8 +8,9 @@
  * the player does. It refreshes when the server pings the room's Realtime
  * channel, when a local timer reaches a clue or deal boundary, and every few
  * seconds as a fallback, so a dropped ping or a reconnect recovers the table.
- * The share link is /bible-study-games/clue/room/<CODE>: signed-out players
- * are sent through sign-up and back (proxy.ts keeps ?next=).
+ * Invites go out as /play/<CODE> (components/clueGame/InviteSheet.tsx), which
+ * sends signed-out people through sign-up and back here. The room path itself
+ * still works as a link: proxy.ts keeps ?next= through sign-up.
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -17,7 +18,7 @@ import Link from "next/link";
 import type { PublicCard, PublicMatch } from "@/lib/clueGame/engine";
 import type { ClueRef } from "@/lib/clueGame/types";
 import { clueApi, trackClue } from "@/lib/clueGame/track";
-import { shareContent } from "@/lib/nativeShare";
+import InviteSheet from "./InviteSheet";
 import { supabase } from "@/lib/supabaseClient";
 import ClueTable from "./ClueTable";
 import ClueResults, { ReviewList } from "./ClueResults";
@@ -44,7 +45,8 @@ export default function ClueRoom({ code }: { code: string }) {
   const [scripture, setScripture] = useState<ClueRef | null>(null);
   const [review, setReview] = useState(false);
   const [flash, setFlash] = useState<{ text: string; key: number } | null>(null);
-  const [shared, setShared] = useState(false);
+  const [inviting, setInviting] = useState(false);
+  const autoInvited = useRef(false);
   const inflight = useRef(false);
 
   const apply = useCallback((data: RoomView, sentAt: number) => {
@@ -139,11 +141,16 @@ export default function ClueRoom({ code }: { code: string }) {
     return () => window.clearTimeout(id);
   }, [flash]);
 
-  const shareUrl = `https://www.mybiblebuddy.net/bible-study-games/clue/room/${code}`;
-  const share = async () => {
-    await shareContent({ title: "Bible Clue Game", text: `Play the Bible Clue Game with me! Room code ${code}`, url: shareUrl });
-    setShared(true);
-  };
+  // The invite pops up by itself for a host alone in a new room.
+  useEffect(() => {
+    if (!room || autoInvited.current) return;
+    if (room.status !== "lobby" || room.hostId !== room.you || room.players.length !== 1) return;
+    const id = window.setTimeout(() => {
+      autoInvited.current = true;
+      setInviting(true);
+    }, 300);
+    return () => window.clearTimeout(id);
+  }, [room]);
   const openStudy = (card: PublicCard) => {
     setStudy(card);
     trackClue("clue_game_study_opened", { mode: "room", card: card.id });
@@ -165,20 +172,10 @@ export default function ClueRoom({ code }: { code: string }) {
           <div className="bb-clue-panel bb-clue-parchment text-center">
             <p className="text-[13px] font-black uppercase tracking-[0.14em] opacity-70">Room code</p>
             <p className="bb-clue-code">{code}</p>
-            <div className="mt-3 flex gap-2">
-              <button type="button" className="bb-clue-btn bb-clue-btn-green flex-1" onClick={share}>🔗 Share Link</button>
-              <button
-                type="button"
-                className="bb-clue-btn flex-1"
-                onClick={() => {
-                  void navigator.clipboard?.writeText(shareUrl).catch(() => {});
-                  setFlash({ text: "Link copied", key: Date.now() });
-                }}
-              >
-                Copy
-              </button>
-            </div>
-            {shared ? <p className="mt-2 text-[13px] font-bold">Send it by DM, text, or read the code aloud.</p> : null}
+            <button type="button" className="bb-clue-btn bb-clue-btn-green mt-3 w-full" onClick={() => setInviting(true)}>
+              📨 Invite friends
+            </button>
+            <p className="mt-2 text-[13px] font-bold">Or read them the code to type in.</p>
             <h3 className="bb-clue-serif mt-5 text-lg font-bold">Players ({room.players.length})</h3>
             <ul className="mt-2 flex flex-wrap justify-center gap-4">
               {room.players.map((p) => (
@@ -250,6 +247,7 @@ export default function ClueRoom({ code }: { code: string }) {
         )}
       </div>
       {flash ? <div key={flash.key} className="bb-clue-flash is-wrong" role="status">{flash.text}</div> : null}
+      {inviting ? <InviteSheet code={code} onClose={() => setInviting(false)} /> : null}
       {study ? <StudyCard card={study} onClose={() => setStudy(null)} onOpenRef={setScripture} /> : null}
       {scripture ? <ScriptureSheet target={scripture} onClose={() => setScripture(null)} /> : null}
     </ClueRoomFrame>
