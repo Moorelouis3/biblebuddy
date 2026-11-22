@@ -24,7 +24,8 @@
 
 import BOARD_CONFIGS from "./boards.generated.json";
 
-export type Power = "light" | "orb";
+/** light: sweeps its row. pillar: its column. blast: the 3x3 around it. orb: every tile of one kind. */
+export type Power = "light" | "pillar" | "blast" | "orb";
 export type Tile = { id: number; type: string; power?: Power };
 export type Cell = Tile | null;
 export type Board = Cell[][];
@@ -116,6 +117,8 @@ export function swapWorks(board: Board, a: Pos, b: Pos): boolean {
   const tb = board[b.r]?.[b.c];
   if (!ta || !tb) return false;
   if (ta.type === ORB || tb.type === ORB) return true;
+  // Two power-ups side by side can always be swapped: both go off.
+  if (ta.power && tb.power) return true;
   return findRuns(swapped(board, a, b)).length > 0;
 }
 
@@ -179,15 +182,18 @@ export function reshuffle(b: Board, rng: Rng): Board {
 
 // ---------- resolving a swap ----------
 
-export type Beam = { row: number };
+/** A power-up going off: a row or column swept, or a 3x3 blast. */
+export type Beam = { row?: number; col?: number; blast?: Pos };
 
 export type Step = {
   /** Cells that clear (each counted once). */
   cleared: Pos[];
-  /** Rows swept by a Light Burst. */
+  /** Power-ups that went off: rows, columns, blasts. */
   beams: Beam[];
-  /** The kind an All Match orb cleared, if one was used. */
+  /** The kind an All Match orb cleared, if one was used ("all" for two orbs). */
   orbType: string | null;
+  /** Where that orb was, for the beams it sends to each tile it takes. */
+  orbAt: Pos | null;
   /** Power-ups earned this step (they drop in from the top with the new tiles). */
   made: Array<Pos & { tile: Tile }>;
   /** The longest run this step, for the sound. */
@@ -243,41 +249,68 @@ function fall(b: Board, types: string[], rng: Rng, ids: IdSource): { board: Boar
   return { board: next, dropFrom };
 }
 
+type Earned = { c: number; power: Power; type: string };
+
+/** The kind there is most of on the board (what an orb caught in a blast takes). */
+function commonest(board: Board): string | null {
+  const n: Record<string, number> = {};
+  for (const row of board) for (const t of row) if (t && t.type !== ORB) n[t.type] = (n[t.type] || 0) + 1;
+  return Object.entries(n).sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
+}
+
 /**
- * Clear a set of cells (plus the rows of any Light Bursts caught in it), let
- * the tiles fall, and drop in the power-ups earned.
+ * Clear a set of cells, plus whatever the power-ups caught in it set off
+ * (rows, columns, blasts, an orb's kind; each fires once, and one can set
+ * off another), let the tiles fall, and drop in the power-ups earned.
  */
 function clearStep(
   board: Board,
   start: Set<string>,
-  earned: Array<{ c: number; power: Power; type: string }>,
-  orbType: string | null,
+  earned: Earned[],
+  orb: { type: string; at: Pos } | null,
   longest: number,
   chain: number,
   types: string[],
   rng: Rng,
   ids: IdSource,
 ): Step {
+  const rows = board.length;
   const cols = board[0].length;
   const clear = new Set(start);
-  // Light Bursts caught in the clear sweep their row, once each; a sweep can
-  // catch another Light Burst, which sweeps its own row.
   const fired = new Set<number>();
   const beams: Beam[] = [];
+  let orbType = orb?.type ?? null;
+  let orbAt = orb?.at ?? null;
+  const add = (r: number, c: number) => {
+    if (r < 0 || c < 0 || r >= rows || c >= cols) return false;
+    if (clear.has(key(r, c))) return false;
+    clear.add(key(r, c));
+    return true;
+  };
   let grew = true;
   while (grew) {
     grew = false;
     for (const k of [...clear]) {
       const [r, c] = k.split(",").map(Number);
       const t = board[r][c];
-      if (t?.power === "light" && !fired.has(t.id)) {
-        fired.add(t.id);
+      if (!t?.power || fired.has(t.id)) continue;
+      fired.add(t.id);
+      if (t.power === "light") {
         beams.push({ row: r });
-        for (let cc = 0; cc < cols; cc += 1) {
-          if (!clear.has(key(r, cc))) {
-            clear.add(key(r, cc));
-            grew = true;
-          }
+        for (let cc = 0; cc < cols; cc += 1) grew = add(r, cc) || grew;
+      } else if (t.power === "pillar") {
+        beams.push({ col: c });
+        for (let rr = 0; rr < rows; rr += 1) grew = add(rr, c) || grew;
+      } else if (t.power === "blast") {
+        beams.push({ blast: { r, c } });
+        for (let dr = -1; dr <= 1; dr += 1) for (let dc = -1; dc <= 1; dc += 1) grew = add(r + dr, c + dc) || grew;
+      } else if (t.power === "orb" && !orbType) {
+        // An orb caught in a clear takes the kind there is most of.
+        const kind = commonest(board);
+        if (kind) {
+          orbType = kind;
+          orbAt = { r, c };
+          board.forEach((row, rr) => row.forEach((x, cc) => x && x.type === kind && (grew = add(rr, cc) || grew)));
         }
       }
     }
@@ -304,29 +337,47 @@ function clearStep(
     usedCols.add(c);
     const top = afterFill[0][c];
     if (!top) continue;
-    const tile: Tile = e.power === "orb" ? { id: top.id, type: ORB, power: "orb" } : { id: top.id, type: e.type, power: "light" };
+    const tile: Tile = e.power === "orb" ? { id: top.id, type: ORB, power: "orb" } : { id: top.id, type: e.type, power: e.power };
     afterFill[0][c] = tile;
     made.push({ r: 0, c, tile });
   }
   // Chains are worth more: x1, x2, x3...
   const points = (cleared.length * 10 + made.length * 40 + beams.length * 30 + (orbType ? 60 : 0)) * chain;
-  return { cleared, beams, orbType, made, longest, before: board, afterClear, afterFill, dropFrom, removed, points };
+  return { cleared, beams, orbType, orbAt, made, longest, before: board, afterClear, afterFill, dropFrom, removed, points };
 }
 
-/** The runs on a board as one clear: their cells, and the power-ups they earn (4 = Light Burst, 5+ = orb). */
+/**
+ * The runs on a board as one clear: their cells, and the power-ups they earn:
+ * 4 across a Light Burst (row), 4 down a Pillar of Fire (column), an L or T
+ * (a row and a column crossing) a Trumpet Blast (3x3), 5 or more an All
+ * Match orb.
+ */
 function runsToClear(board: Board, runs: Pos[][], prefer: Pos[]) {
   const start = new Set<string>();
-  const earned: Array<{ c: number; power: Power; type: string }> = [];
+  const earned: Earned[] = [];
   let longest = 0;
-  for (const run of runs) {
-    for (const p of run) start.add(key(p.r, p.c));
-    longest = Math.max(longest, run.length);
-    if (run.length >= LIGHT_AT) {
-      // Where the swap landed in this run, else its middle: that column gets the power-up.
-      const at = run.find((p) => prefer.some((q) => samePos(p, q))) ?? run[Math.floor(run.length / 2)];
-      earned.push({ c: at.c, power: run.length >= ORB_AT ? "orb" : "light", type: board[at.r][at.c]!.type });
+  const across = (run: Pos[]) => run.length > 1 && run[0].r === run[1].r;
+  const used = new Set<number>(); // runs already rewarded through a crossing
+  for (let i = 0; i < runs.length; i += 1) {
+    for (let j = i + 1; j < runs.length; j += 1) {
+      if (across(runs[i]) === across(runs[j])) continue;
+      const cross = runs[i].find((p) => runs[j].some((q) => samePos(p, q)));
+      if (!cross || runs[i].length >= ORB_AT || runs[j].length >= ORB_AT) continue;
+      if (used.has(i) || used.has(j)) continue;
+      used.add(i);
+      used.add(j);
+      earned.push({ c: cross.c, power: "blast", type: board[cross.r][cross.c]!.type });
     }
   }
+  runs.forEach((run, i) => {
+    for (const p of run) start.add(key(p.r, p.c));
+    longest = Math.max(longest, run.length);
+    if (used.has(i) || run.length < LIGHT_AT) return;
+    // Where the swap landed in this run, else its middle: that column gets the power-up.
+    const at = run.find((p) => prefer.some((q) => samePos(p, q))) ?? run[Math.floor(run.length / 2)];
+    const power: Power = run.length >= ORB_AT ? "orb" : across(run) ? "light" : "pillar";
+    earned.push({ c: at.c, power, type: board[at.r][at.c]!.type });
+  });
   return { start, earned, longest };
 }
 
@@ -334,7 +385,7 @@ function runsToClear(board: Board, runs: Pos[][], prefer: Pos[]) {
  * Swap two neighbouring tiles. A swap that lines nothing up is not a move:
  * the tiles go back and no move is used. Otherwise everything lined up
  * clears, tiles fall, and any new lines clear too (a chain), until the board
- * settles.
+ * settles. Swapping an orb, or two power-ups together, sets them off.
  */
 export function playSwap(board: Board, a: Pos, b: Pos, types: string[], rng: Rng, ids: IdSource): Resolution {
   const none: Resolution = { valid: false, swap: null, afterSwap: board, steps: [], final: board, removed: {}, points: 0, reshuffled: false };
@@ -345,21 +396,26 @@ export function playSwap(board: Board, a: Pos, b: Pos, types: string[], rng: Rng
   const ta = board[a.r][a.c]!;
   const tb = board[b.r][b.c]!;
 
-  // An orb swapped with a tile takes every tile of that kind (and itself).
   if (ta.type === ORB || tb.type === ORB) {
+    // An orb swapped with a tile takes every tile of that kind (and itself).
     const orbAt = ta.type === ORB ? b : a; // where the orb is now
     const other = ta.type === ORB ? tb : ta;
     const start = new Set<string>([key(orbAt.r, orbAt.c)]);
-    let orbType: string | null = null;
+    let kind: string;
     if (other.type === ORB) {
       // Two orbs: the whole board.
       current.forEach((row, r) => row.forEach((_, c) => start.add(key(r, c))));
-      orbType = "all";
+      kind = "all";
     } else {
-      orbType = other.type;
+      kind = other.type;
       current.forEach((row, r) => row.forEach((t, c) => t && t.type === other.type && start.add(key(r, c))));
     }
-    const step = clearStep(current, start, [], orbType, 0, 1, types, rng, ids);
+    const step = clearStep(current, start, [], { type: kind, at: orbAt }, 0, 1, types, rng, ids);
+    steps.push(step);
+    current = step.afterFill;
+  } else if (ta.power && tb.power) {
+    // Two power-ups swapped together both go off.
+    const step = clearStep(current, new Set([key(a.r, a.c), key(b.r, b.c)]), [], null, 0, 1, types, rng, ids);
     steps.push(step);
     current = step.afterFill;
   }

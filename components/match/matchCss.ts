@@ -302,6 +302,30 @@ html.bb-native.bb-game-screen body::before { display:none !important; }
    there. Every notched or island iPhone needs at least ~50px, so that is the
    floor. The website and Android keep the reported inset. */
 .bbm-board-title.is-xlong h1 { font-size: clamp(15px, calc(var(--w) * .045), 26px) !important; }
+/* ---- power-ups (Louis, 2026-11-22: "real power-ups, like Candy Crush") ---- */
+/* Pillar of Fire: a column of light top to bottom. */
+.bbm-beam.is-col { left: calc(var(--c) * var(--cell)); right:auto; top:0; bottom:0; width: var(--cell); height:auto;
+  background: linear-gradient(180deg, rgba(255,200,120,0), rgba(255,170,80,.95) 30%, #fff4d0 50%, rgba(255,170,80,.95) 70%, rgba(255,200,120,0)); animation-name: bbm-beam-col; }
+@keyframes bbm-beam-col { from { transform: scaleY(0); opacity:.4; } to { transform: scaleY(1); opacity:1; } }
+/* Trumpet Blast: a ring bursting out over the 3x3. */
+.bbm-blast { position:absolute; z-index:5; pointer-events:none; left: calc((var(--c) - 1) * var(--cell)); top: calc((var(--r) - 1) * var(--cell)); width: calc(3 * var(--cell)); height: calc(3 * var(--cell)); border-radius:999px;
+  background: radial-gradient(circle, rgba(255,255,255,.95) 0%, rgba(255,220,120,.85) 35%, rgba(255,160,60,.35) 60%, transparent 70%); animation: bbm-blast .45s ease-out both; }
+@keyframes bbm-blast { from { transform: scale(.2); opacity:1; } to { transform: scale(1.25); opacity:.15; } }
+/* All Match orb: a ray from the orb to every tile it takes. */
+.bbm-rays { position:absolute; inset:0; width:100%; height:100%; z-index:6; pointer-events:none; overflow:visible; }
+.bbm-rays line { stroke: #fff6c8; stroke-width: .09; stroke-linecap: round; filter: drop-shadow(0 0 .12px #ffd36b); stroke-dasharray: 12; stroke-dashoffset: 12; animation: bbm-ray .28s ease-out forwards; }
+@keyframes bbm-ray { to { stroke-dashoffset: 0; } }
+/* The badges on power-up tiles: a flame for a pillar, a trumpet for a blast. */
+.bbm-power-badge { position:absolute; right:0; top:0; width:46%; height:46%; display:grid; place-items:center; font-size: calc(var(--cell) * .3); line-height:1; filter: drop-shadow(0 0 4px rgba(255,220,120,.9)); }
+.bbm-tile.is-pillar::before { box-shadow: 0 0 0 3px #ff9a3c, 0 0 14px 4px rgba(255,140,60,.75) !important; }
+.bbm-tile.is-blast::before { box-shadow: 0 0 0 3px #b98cff, 0 0 14px 4px rgba(170,120,255,.7) !important; }
+/* The hint: the two tiles to swap bob and glow. */
+.bbm-tile.is-hint::after { content:""; position:absolute; inset:4%; border-radius:12px; box-shadow: 0 0 0 3px rgba(255,255,255,.95), 0 0 16px 4px rgba(255,236,150,.85); animation: bbm-hint-ring .7s ease-in-out infinite alternate; pointer-events:none; }
+@keyframes bbm-hint-ring { from { opacity:.35; } to { opacity:1; } }
+.bbm-grid.is-reduced .bbm-blast, .bbm-grid.is-reduced .bbm-rays line, .bbm-grid.is-reduced .bbm-tile.is-hint::after { animation: none; }
+/* The whole board marker on the map opens it: coin, name, anywhere (Louis: "clicking a level is always an issue"). */
+.bbm-medal { padding: 8px 12px !important; }
+.bbm-medal > * { pointer-events:none; }
 /* A locked board: its number, greyed, with a padlock on the coin. */
 .bbm-medal.is-locked .bbm-medal-coin { color: #e9e1d2 !important; }
 .bbm-medal-lock { position:absolute; right: -4px; bottom: 14%; font-size: 22px; line-height:1; filter: drop-shadow(0 2px 3px rgba(0,0,0,.5)); }

@@ -124,6 +124,45 @@ ok("a Light Burst caught in a clear sweeps its whole row; every tile counted onc
   assert.equal(total(s.removed), 6);
 });
 
+ok("a run of 4 down earns a Pillar of Fire, which sweeps its whole column", () => {
+  const b = board(["axbc", "aqcd", "xade", "aefg"]);
+  const res = playSwap(b, p(2, 0), p(2, 1), FILL, rng(), { next: 100 });
+  assert.equal(res.steps[0].made[0].tile.power, "pillar");
+  // A Pillar of Fire caught in a row of 3 clears its whole column.
+  const col = board(["bcd", "xde", "cef", "def"]);
+  col[1][0] = { id: 999, type: "a", power: "pillar" } as Tile;
+  col[1][1] = { id: 998, type: "a" } as Tile;
+  col[0][2] = { id: 997, type: "a" } as Tile;
+  const s2 = playSwap(col, p(0, 2), p(1, 2), FILL, rng(), { next: 100 }).steps[0];
+  assert.deepEqual(s2.beams, [{ col: 0 }]);
+  for (let r = 0; r < 4; r += 1) assert.ok(s2.cleared.some((q) => q.r === r && q.c === 0));
+});
+
+ok("an L or T earns a Trumpet Blast; going off clears the 3x3 around it", () => {
+  // Row a a _ a, and a column of a below the gap: swapping the a in makes an L.
+  const b = board(["aaxa", "bcae", "fgah"]);
+  const res = playSwap(b, p(0, 2), p(0, 3), FILL, rng(), { next: 100 });
+  // (0,0)(0,1)(0,2) across and (0,2)(1,2)(2,2) down cross at (0,2).
+  assert.equal(res.steps[0].made[0].tile.power, "blast");
+  const blast = board(["bcdef", "cdefb", "deAfc", "efbcd", "fbcde"]);
+  blast[2][2] = { id: 999, type: "a", power: "blast" } as Tile;
+  blast[2][3] = { id: 998, type: "a" } as Tile;
+  blast[1][4] = { id: 997, type: "a" } as Tile;
+  blast[2][4] = { id: 996, type: "x" } as Tile;
+  const s = playSwap(blast, p(2, 4), p(1, 4), FILL, rng(), { next: 100 }).steps[0];
+  assert.deepEqual(s.beams.find((x) => x.blast)?.blast, { r: 2, c: 2 });
+  for (let r = 1; r <= 3; r += 1) for (let c = 1; c <= 3; c += 1) assert.ok(s.cleared.some((q) => q.r === r && q.c === c), "in the blast");
+});
+
+ok("two power-ups side by side can be swapped, and both go off", () => {
+  const b = board(["bcdef", "cdefb", "deAfc", "efbcd"]);
+  b[2][3] = { id: 999, type: "f", power: "pillar" } as Tile;
+  const res = playSwap(b, p(2, 2), p(2, 3), FILL, rng(), { next: 100 });
+  assert.ok(res.valid);
+  const kinds = res.steps[0].beams.map((x) => (x.col !== undefined ? "col" : x.row !== undefined ? "row" : "blast")).sort();
+  assert.deepEqual(kinds, ["col", "row"]);
+});
+
 ok("swap an orb with a tile: every tile of that kind clears; two orbs clear the board", () => {
   const b = board(["*abc", "dbae", "aefa"]);
   const res = playSwap(b, p(0, 0), p(0, 1), FILL, rng(), { next: 100 });

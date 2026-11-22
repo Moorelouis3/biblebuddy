@@ -26,9 +26,18 @@ import {
   tileArt,
   type Board,
   type MatchLevel,
+  type Beam,
   type Pos,
   type Tile,
 } from "@/lib/match/engine";
+
+/** The power-ups by name, for the moment one is earned or goes off. */
+const POWER_NAMES: Record<string, string> = {
+  light: "Light Burst!",
+  pillar: "Pillar of Fire!",
+  blast: "Trumpet Blast!",
+  orb: "All Match orb!",
+};
 import { matchSound } from "@/lib/match/sound";
 
 const sleep = (ms: number) => new Promise<void>((r) => window.setTimeout(r, ms));
@@ -75,7 +84,8 @@ export default function MatchBoard({
   const [selected, setSelected] = useState<Pos | null>(null);
   const [flash, setFlash] = useState<Set<number>>(new Set());
   const [popping, setPopping] = useState<Set<number>>(new Set());
-  const [beams, setBeams] = useState<number[]>([]);
+  const [beams, setBeams] = useState<Beam[]>([]);
+  const [rays, setRays] = useState<{ from: Pos; to: Pos[] } | null>(null);
   const [drops, setDrops] = useState<Record<number, number>>({});
   const [dark, setDark] = useState(!!level.startsDark);
   const [hint, setHint] = useState<Pos[] | null>(null);
@@ -98,6 +108,7 @@ export default function MatchBoard({
     setFlash(new Set());
     setPopping(new Set());
     setBeams([]);
+    setRays(null);
     setDrops({});
     setDark(!!level.startsDark);
     setOutcome(null);
@@ -135,9 +146,19 @@ export default function MatchBoard({
     for (const [i, step] of res.steps.entries()) {
       const clearedIds = new Set(step.cleared.map((p) => step.before[p.r][p.c]?.id).filter((id): id is number => typeof id === "number"));
       setFlash(clearedIds);
-      setBeams(step.beams.map((x) => x.row));
+      setBeams(step.beams);
+      if (step.orbType && step.orbAt) {
+        // The orb sends a ray to every tile it takes, then they all go together.
+        setRays({ from: step.orbAt, to: step.cleared.filter((q) => !(q.r === step.orbAt!.r && q.c === step.orbAt!.c)) });
+      }
       if (step.orbType) matchSound.orb();
       else if (step.beams.length) matchSound.beam();
+      const fired = step.beams.map((b) => (b.blast ? "blast" : b.col !== undefined ? "pillar" : "light"));
+      const shout = step.orbType ? POWER_NAMES.orb : fired.length ? POWER_NAMES[fired[0]] : null;
+      if (shout && !reduced) {
+        setToast(shout);
+        window.setTimeout(() => setToast((t) => (t === shout ? null : t)), 900);
+      }
       // Higher with longer runs and with each link of a chain.
       else matchSound.match(Math.min(6, Math.max(0, step.longest - 3) + i));
       matchSound.crack();
@@ -148,10 +169,18 @@ export default function MatchBoard({
       total += step.points;
       setCollected(got);
       setScore(total);
-      if (step.made.length) matchSound.power();
+      if (step.made.length) {
+        matchSound.power();
+        const name = POWER_NAMES[step.made[0].tile.power || "light"];
+        if (name && !reduced) {
+          setToast(`You made a ${name.replace("!", "")}!`);
+          window.setTimeout(() => setToast(null), 1300);
+        }
+      }
       setFlash(new Set());
       setPopping(new Set());
       setBeams([]);
+      setRays(null);
       setBoard(step.afterClear);
       // The first light: Creation's dark lifts on the first clear.
       if (dark) setDark(false);
@@ -235,6 +264,18 @@ export default function MatchBoard({
     }
   };
 
+  // Stuck? After 6 seconds without a move, a swap that works pulses until the
+  // next move (Jessica, via Louis, 2026-11-22: "if you take too long, a
+  // suggestion should flash on the board").
+  useEffect(() => {
+    if (busy || outcome || hint || selected) return;
+    const id = window.setTimeout(() => {
+      const found = findMove(boardRef.current);
+      if (found) setHint(found);
+    }, 6000);
+    return () => window.clearTimeout(id);
+  }, [board, busy, outcome, hint, selected]);
+
   // The sun button shows a swap that works, for a moment.
   const showHint = () => {
     if (busy || outcome) return;
@@ -309,9 +350,22 @@ export default function MatchBoard({
           {Array.from({ length: ROWS * COLS }).map((_, i) => (
             <span key={`s${i}`} className="bbm-socket" style={{ ["--r" as string]: Math.floor(i / COLS), ["--c" as string]: i % COLS } as React.CSSProperties} />
           ))}
-          {beams.map((row) => (
-            <span key={`beam${row}`} className="bbm-beam" style={{ ["--r" as string]: row } as React.CSSProperties} aria-hidden="true" />
-          ))}
+          {beams.map((b, i) =>
+            b.blast ? (
+              <span key={`blast${i}`} className="bbm-blast" style={{ ["--r" as string]: b.blast.r, ["--c" as string]: b.blast.c } as React.CSSProperties} aria-hidden="true" />
+            ) : b.col !== undefined ? (
+              <span key={`col${i}`} className="bbm-beam is-col" style={{ ["--c" as string]: b.col } as React.CSSProperties} aria-hidden="true" />
+            ) : (
+              <span key={`row${i}`} className="bbm-beam" style={{ ["--r" as string]: b.row } as React.CSSProperties} aria-hidden="true" />
+            ),
+          )}
+          {rays ? (
+            <svg className="bbm-rays" viewBox={`0 0 ${COLS} ${ROWS}`} aria-hidden="true">
+              {rays.to.map((q, i) => (
+                <line key={i} x1={rays.from.c + 0.5} y1={rays.from.r + 0.5} x2={q.c + 0.5} y2={q.r + 0.5} style={{ animationDelay: `${i * 18}ms` }} />
+              ))}
+            </svg>
+          ) : null}
           {tiles.map(({ tile, r, c }) => {
             const drop = drops[tile.id];
             return (
@@ -320,6 +374,8 @@ export default function MatchBoard({
                 className={[
                   "bbm-tile",
                   tile.power === "light" ? "is-light" : "",
+                  tile.power === "pillar" ? "is-light is-pillar" : "",
+                  tile.power === "blast" ? "is-light is-blast" : "",
                   tile.type === ORB ? "is-orb" : "",
                   selected && selected.r === r && selected.c === c ? "is-linked" : "",
                   flash.has(tile.id) ? "is-flash" : "",
@@ -328,7 +384,7 @@ export default function MatchBoard({
                   inList(hint, r, c) ? "is-hint" : "",
                 ].join(" ")}
                 style={{ ["--r" as string]: r, ["--c" as string]: c, ["--d" as string]: drop ?? 0 } as React.CSSProperties}
-                aria-label={tile.type === ORB ? "All Match orb" : tile.power === "light" ? `${tile.type}, Light Burst` : tile.type}
+                aria-label={tile.type === ORB ? "All Match orb" : tile.power ? `${tile.type}, ${POWER_NAMES[tile.power].replace("!", "")}` : tile.type}
               >
                 {tile.type === ORB ? (
                   <span className="bbm-orb" />
@@ -358,6 +414,10 @@ export default function MatchBoard({
                     {tile.power === "light" ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img className="bbm-light-badge" src={tileArt("light-power-up")} alt="" draggable={false} />
+                    ) : tile.power === "pillar" ? (
+                      <span className="bbm-power-badge is-pillar" aria-hidden="true">🔥</span>
+                    ) : tile.power === "blast" ? (
+                      <span className="bbm-power-badge is-blast" aria-hidden="true">📯</span>
                     ) : null}
                   </>
                 )}
