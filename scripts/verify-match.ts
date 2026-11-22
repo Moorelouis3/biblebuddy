@@ -48,8 +48,8 @@ ok("a new board always has a line to make, for both boards", () => {
   for (const level of MATCH_LEVELS) {
     for (let seed = 1; seed <= 30; seed += 1) {
       const b = createBoard(level.types, seededRng(seed), { next: 1 });
-      assert.equal(b.length, 7);
-      assert.equal(b[0].length, 7);
+      assert.equal(b.length, 9, "9 rows");
+      assert.equal(b[0].length, 7, "7 columns");
       assert.ok(findLine(b));
     }
   }
@@ -83,7 +83,7 @@ ok("a line of 3 clears those 3, counts them once, and new tiles drop in", () => 
   assert.equal(res.final.flat().filter(Boolean).length, 9);
 });
 
-ok("a line of 5 leaves a Light Burst on its last tile, which is not counted", () => {
+ok("a line of 5 clears all 5 (every tile counted), and a Light Burst drops in at the top of the last tile's column", () => {
   const b = board(["aaaaa", "bcdef", "cdefb"]);
   const line = [p(0, 0), p(0, 1), p(0, 2), p(0, 3), p(0, 4)];
   const s = playLine(b, line, FILL, rng(), { next: 100 }).steps[0];
@@ -91,7 +91,10 @@ ok("a line of 5 leaves a Light Burst on its last tile, which is not counted", ()
   assert.equal(s.made[0].tile.power, "light");
   assert.equal(s.made[0].tile.type, "a");
   assert.deepEqual({ r: s.made[0].r, c: s.made[0].c }, { r: 0, c: 4 });
-  assert.equal(s.removed.a, 4);
+  assert.equal(s.removed.a, 5);
+  assert.equal(s.cleared.length, 5, "the last tile goes too");
+  for (const q of line) assert.equal(s.afterClear[q.r][q.c], null);
+  assert.equal(s.afterFill[0][4]!.power, "light");
 });
 
 ok("a Light Burst in a line sweeps its whole row; every tile counted once", () => {
@@ -107,7 +110,7 @@ ok("a line of 7 leaves an All Match orb instead", () => {
   const line = Array.from({ length: 7 }, (_, c) => p(0, c));
   const s = playLine(b, line, FILL, rng(), { next: 100 }).steps[0];
   assert.equal(s.made[0].tile.type, ORB);
-  assert.equal(s.removed.a, 6);
+  assert.equal(s.removed.a, 7);
 });
 
 ok("an orb joins any line and clears every tile of that line's kind", () => {
@@ -165,9 +168,9 @@ ok("a long random game never breaks the board (always full, always a line, ids u
       const res = playLine(b, line, level.types, r, ids);
       assert.ok(res.valid);
       b = res.final;
-      assert.equal(b.flat().filter(Boolean).length, 49);
+      assert.equal(b.flat().filter(Boolean).length, 63);
       assert.ok(findLine(b));
-      assert.equal(new Set(b.flat().map((t) => t!.id)).size, 49);
+      assert.equal(new Set(b.flat().map((t) => t!.id)).size, 63);
     }
   }
 });

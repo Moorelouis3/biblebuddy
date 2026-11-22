@@ -30,6 +30,9 @@ export type Pos = { r: number; c: number };
 
 export const ORB = "orb";
 export const SIZE = 7;
+/** The board: 7 across, 9 down (Louis, 2026-11-22: the 7x7 left the top of the screen empty). */
+export const COLS = 7;
+export const ROWS = 9;
 /** Shortest line that clears. */
 export const MIN_LINE = 3;
 /** Line lengths that leave a power-up behind. */
@@ -113,7 +116,7 @@ export function findLine(board: Board): Pos[] | null {
 }
 
 /** A fresh board with at least one line to make. */
-export function createBoard(types: string[], rng: Rng, ids: IdSource, rows = SIZE, cols = SIZE): Board {
+export function createBoard(types: string[], rng: Rng, ids: IdSource, rows = ROWS, cols = COLS): Board {
   for (let attempt = 0; attempt < 200; attempt += 1) {
     const b: Board = Array.from({ length: rows }, () => Array.from({ length: cols }, () => ({ id: ids.next++, type: pick(types, rng) }) as Cell));
     if (findLine(b)) return b;
@@ -216,18 +219,13 @@ export function playLine(board: Board, line: Pos[], types: string[], rng: Rng, i
   const hasOrb = line.some((p) => board[p.r][p.c]?.type === ORB);
   if (hasOrb) board.forEach((row, r) => row.forEach((t, c) => t && t.type === kind && clear.add(key(r, c))));
 
-  // The power-up the line leaves: on its last tile that is not already a power-up.
+  // Every tile of the line clears (Louis, 2026-11-22: "if I select six, all
+  // six need to be gone"). The power-up a long line earns drops in from the
+  // top of the last tile's column with the new tiles.
   const made: Array<Pos & { tile: Tile }> = [];
-  if (line.length >= LIGHT_AT) {
-    const spot = [...line].reverse().find((p) => !board[p.r][p.c]?.power);
-    if (spot) {
-      const base = board[spot.r][spot.c]!;
-      const tile: Tile = line.length >= ORB_AT ? { id: base.id, type: ORB, power: "orb" } : { id: base.id, type: base.type, power: "light" };
-      made.push({ ...spot, tile });
-      clear.delete(key(spot.r, spot.c));
-    }
-  }
-  const keep = new Set(made.map((m) => key(m.r, m.c)));
+  const last = line[line.length - 1];
+  const earned: Tile["power"] | null = line.length >= ORB_AT ? "orb" : line.length >= LIGHT_AT ? "light" : null;
+  const keep = new Set<string>();
 
   // Light Bursts caught in the clear sweep their row, once each; a sweep can
   // catch another Light Burst, which sweeps its own row.
@@ -264,11 +262,17 @@ export function playLine(board: Board, line: Pos[], types: string[], rng: Rng, i
     if (t.type !== ORB) removed[t.type] = (removed[t.type] || 0) + 1;
     afterClear[r][c] = null;
   }
-  for (const m of made) afterClear[m.r][m.c] = m.tile;
   void rows;
   // Longer lines are worth more per tile.
-  const points = cleared.length * (10 + Math.max(0, line.length - MIN_LINE) * 2) + made.length * 40 + beams.length * 30 + (hasOrb ? 60 : 0);
+  const points = cleared.length * (10 + Math.max(0, line.length - MIN_LINE) * 2) + (earned ? 40 : 0) + beams.length * 30 + (hasOrb ? 60 : 0);
   const { board: afterFill, dropFrom } = fall(afterClear, types, rng, ids);
+  if (earned) {
+    // The top tile of that column is always new (the column lost at least one tile).
+    const top = afterFill[0][last.c]!;
+    const tile: Tile = earned === "orb" ? { id: top.id, type: ORB, power: "orb" } : { id: top.id, type: kind === ORB ? top.type : kind, power: "light" };
+    afterFill[0][last.c] = tile;
+    made.push({ r: 0, c: last.c, tile });
+  }
   const step: Step = { cleared, beams, orbType: hasOrb ? kind : null, made, afterClear, afterFill, dropFrom, removed, points };
 
   let final = afterFill;

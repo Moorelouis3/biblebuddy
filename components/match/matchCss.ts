@@ -244,6 +244,16 @@ html.bb-game-screen :is(.bb-bottom-pill, .bb-safe-top-header, .bb-report-problem
 .bbm-gridframe { padding: 5px; border-radius: 16px; background: linear-gradient(160deg, #ffe9a6, #d9a23a 40%, #f6d27a 60%, #b07a20); box-shadow: 0 10px 22px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.5); }
 .bbm-board { --size: min(100vw - 34px, 100dvh - 285px, 560px); --w: calc(var(--size) + 10px); }
 .bbm-grid { border-radius: 12px; background: #13214a; }
+/* 7 across, 9 down (Louis, 2026-11-22: fill the screen). --size is the width; a cell fits both ways. */
+.bbm-board { --cellw: min((100vw - 34px) / 7, (100dvh - 270px) / 9, 64px); --size: calc(var(--cellw) * 7); }
+.bbm-grid { --cell: var(--cellw); width: calc(var(--cellw) * 7); height: calc(var(--cellw) * 9); }
+.bbm-board-title { padding: 0 calc(var(--w) * .13) !important; }
+.bbm-board-title.is-long h1 { font-size: clamp(18px, calc(var(--w) * .058), 32px) !important; }
+/* Inside the phone app a light strip sits behind the clock for ordinary
+   pages; on the dark game it showed as a bar over the top (Louis,
+   2026-11-22). The game pays for the status bar itself. */
+html.bb-native.bb-game-screen body { padding-top: 0 !important; }
+html.bb-native.bb-game-screen body::before { display:none !important; }
 .bbm-board[data-level="eden"] .bbm-grid { background: #0f2a17; }
 .bbm-socket::before { background: #1e2f60; border-radius: 12%; box-shadow: inset 0 2px 6px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.05); }
 .bbm-board[data-level="eden"] .bbm-socket::before { background: #234f2a; }
