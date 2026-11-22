@@ -27,6 +27,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Eden was the garden God planted for the first people, watered by a river that split into four. Adam was put there to work it and keep it, and God walked with him there. After Adam and Eve ate the forbidden fruit they were sent out, but the prophets kept hoping God would make the wilderness like Eden again. See Genesis 2:8–15; 3:23–24; Isaiah 51:3.",
+    quiz: {
+      question: "Adam and Eve hid among the trees here when they heard God walking. Where is this?",
+      choices: ["Goshen", "Land of Nod", "The Garden of Eden", "The City of Enoch"],
+      answer: 2,
+      explanation: "Adam and his wife hid from the LORD God among the trees of the garden.",
+      ref: ref("Genesis 3:8"),
+    },
     study: { label: "Explore the Garden of Eden", href: "/blog/garden-of-eden-four-rivers" },
   }),
   card({
@@ -45,6 +52,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "When the world was full of violence, God told Noah to build a great boat of gopher wood, sealed with pitch inside and out. Noah, his family and the animals went in, and God kept them safe through the flood. Peter says eight people were saved through the water, a picture of God rescuing those who trust him. See Genesis 6:13–22; 7:1–16; 1 Peter 3:20.",
+    quiz: {
+      question: "Noah sent a dove out of here, and it came back with an olive leaf. Which place is this?",
+      choices: ["Noah’s Ark", "Mountains of Ararat", "Beersheba", "Babel"],
+      answer: 0,
+      explanation: "The dove came back in to Noah in the ark in the evening with an olive leaf in its mouth.",
+      ref: ref("Genesis 8:8–11"),
+    },
     study: { label: "Explore Noah’s Ark", href: "/blog/genesis-6-explained" },
   }),
   card({
@@ -63,6 +77,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "After the flood, the ark came to rest in the seventh month on the mountains of Ararat, far to the north of Canaan. Weeks later the mountaintops appeared as the water went down. Ararat was also a real kingdom in later Bible times, and Jeremiah named it among the nations God would gather against Babylon. See Genesis 8:3–5; Jeremiah 51:27.",
+    quiz: {
+      question: "Noah’s ark came to rest here after the flood. Where is this?",
+      choices: ["Goshen", "Moriah", "Babel", "Mountains of Ararat"],
+      answer: 3,
+      explanation: "In the seventh month the ark rested upon the mountains of Ararat.",
+      ref: ref("Genesis 8:4"),
+    },
     study: { label: "Explore the Mountains of Ararat", href: "/blog/have-they-found-noahs-ark" },
   }),
   card({
@@ -81,6 +102,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "After the flood, people settled on a plain in Shinar and decided to build a city and a tower reaching to heaven, to make a name for themselves. God came down, confused their language, and scattered them across the earth. Babel shows that pride cannot build its way up to God. See Genesis 11:1–9.",
+    quiz: {
+      question: "People baked bricks here to build a tower that would reach to heaven. Which place is this?",
+      choices: ["Ur", "Babel", "Bethel", "Nineveh"],
+      answer: 1,
+      explanation: "In the land of Shinar, people made bricks to build a city and a tower whose top would reach to heaven.",
+      ref: ref("Genesis 11:2–4"),
+    },
     study: { label: "Explore Babel", href: "/blog/genesis-11-explained" },
   }),
   card({
@@ -99,6 +127,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Ur of the Chaldees was Abram’s first home, a city in southern Mesopotamia. His family left it heading for Canaan and stopped at Haran on the way. Years later God reminded Abram that he was the one who had brought him out of Ur, to give him a land of his own. See Genesis 11:27–31; 15:7; Nehemiah 9:7.",
+    quiz: {
+      question: "Terah led Abram, Sarai and Lot out of this city, heading for Canaan. Which place is this?",
+      choices: ["Goshen", "Ur", "Haran", "Canaan"],
+      answer: 1,
+      explanation: "Terah took Abram, Sarai and Lot out of Ur of the Chaldees to go into the land of Canaan.",
+      ref: ref("Genesis 11:31"),
+    },
     study: { label: "Explore Ur", href: "/blog/genesis-11-explained" },
   }),
   card({
@@ -117,6 +152,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Haran was the town where Abram’s family stopped on the way from Ur to Canaan, and where his father Terah died. Abram left it at seventy-five when God called him on. Two generations later Jacob ran back to Haran to escape Esau, and found Rachel and her father Laban there. See Genesis 11:31–12:4; 27:43; 29:4–6.",
+    quiz: {
+      question: "Rebekah told Jacob to run from Esau to her brother Laban here. Which place is this?",
+      choices: ["Beersheba", "Sodom", "Bethel", "Haran"],
+      answer: 3,
+      explanation: "Rebekah told Jacob to flee to her brother Laban in Haran until Esau’s fury turned away.",
+      ref: ref("Genesis 27:43–44"),
+    },
     study: { label: "Explore Haran", href: "/blog/genesis-12-explained" },
   }),
   card({
@@ -135,6 +177,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Canaan was the land God promised to Abraham and his family forever. Abraham, Isaac and Jacob lived in it as strangers, owning almost none of it, yet trusting the promise. Centuries later Moses sent spies who found it flowing with milk and honey. See Genesis 12:5–7; 17:8; Numbers 13:27.",
+    quiz: {
+      question: "God promised to give this whole land to Abraham’s family forever. Which place is this?",
+      choices: ["Canaan", "Land of Nod", "Egypt", "Haran"],
+      answer: 0,
+      explanation: "God promised Abraham and his seed all the land of Canaan for an everlasting possession.",
+      ref: ref("Genesis 17:8"),
+    },
     study: { label: "Explore Canaan", href: "/blog/genesis-12-explained" },
   }),
   card({
@@ -153,6 +202,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Egypt shows up again and again in Genesis, often as the place people go when there is famine. Abram went down there, and so did Jacob’s sons to buy grain. God sent Joseph ahead of them as a slave, then raised him up to rule the land, so that the whole family would be kept alive. See Genesis 12:10; 41:41; 45:5–8.",
+    quiz: {
+      question: "When famine came, Joseph’s ten brothers went here to buy grain. Which place is this?",
+      choices: ["Canaan", "Babel", "Egypt", "Haran"],
+      answer: 2,
+      explanation: "Jacob heard there was corn in Egypt, so Joseph’s ten brothers went down there to buy it.",
+      ref: ref("Genesis 42:1–3"),
+    },
     study: { label: "Explore Egypt", href: "/blog/genesis-41-explained" },
   }),
   card({
@@ -171,6 +227,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Goshen was the region of Egypt where Jacob’s family settled, the best grazing land Pharaoh could give them. It was there that Joseph finally hugged his father again. Generations later, when God sent the plagues, Goshen was spared, so Egypt could see that the Lord was with his people. See Genesis 46:28–34; 47:6; Exodus 8:22; 9:26.",
+    quiz: {
+      question: "Pharaoh let Jacob’s family live here, in the best of the land. Which place is this?",
+      choices: ["The Garden of Eden", "Hebron", "Beersheba", "Goshen"],
+      answer: 3,
+      explanation: "Pharaoh told Joseph to settle his father and brothers in the best of the land, in the land of Goshen.",
+      ref: ref("Genesis 47:6"),
+    },
     study: { label: "Explore Goshen", href: "/blog/genesis-47-explained" },
   }),
   card({
@@ -189,6 +252,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Bethel means house of God. Jacob gave the place that name after his dream of the stairway to heaven, when God promised to be with him. Years later God sent Jacob back to Bethel to build an altar. Sadly, centuries after that, King Jeroboam set up a golden calf there. See Genesis 28:16–19; 35:1–7; 1 Kings 12:28–29.",
+    quiz: {
+      question: "Jacob dreamed of a ladder to heaven here and set up his stone as a pillar. Where is this?",
+      choices: ["Beersheba", "Bethel", "Sodom", "Haran"],
+      answer: 1,
+      explanation: "After his dream, Jacob set up the stone he slept on as a pillar and called the place Bethel.",
+      ref: ref("Genesis 28:12–19"),
+    },
     study: { label: "Explore Bethel", href: "/blog/genesis-35-explained" },
   }),
   card({
@@ -207,6 +277,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Beersheba sat at the southern edge of the land, so Israel spoke of the whole country as from Dan to Beersheba. Abraham swore an oath with Abimelech there over a well, and the name means well of the oath. Abraham, Isaac and Jacob all worshipped God at Beersheba. See Genesis 21:30–33; 26:23–25; 46:1.",
+    quiz: {
+      question: "Abraham and King Abimelech swore an oath here over a well. Which place is this?",
+      choices: ["Mountains of Ararat", "Gerar", "Beersheba", "Hebron"],
+      answer: 2,
+      explanation: "Abraham gave Abimelech seven ewe lambs as witness that he dug the well, and the place was named for the oath they both swore.",
+      ref: ref("Genesis 21:30–31"),
+    },
     study: { label: "Explore Beersheba", href: "/blog/genesis-21-explained" },
   }),
   card({
@@ -225,6 +302,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Sodom was a rich city near the Jordan where Lot chose to live. Its people grew proud and cruel. Abraham pleaded with God to spare it for the sake of the righteous, but not even ten could be found. God rescued Lot and destroyed the city with fire, and Sodom became a lasting warning about sin. See Genesis 13:10–13; 18:23–33; 19:24–26.",
+    quiz: {
+      question: "Two angels came to this city at evening, and Lot took them home. Which place is this?",
+      choices: ["Sodom", "Zoar", "Goshen", "Hebron"],
+      answer: 0,
+      explanation: "Two angels came to Sodom in the evening, and Lot pressed them to stay in his house.",
+      ref: ref("Genesis 19:1–3"),
+    },
     study: { label: "Explore Sodom", href: "/blog/genesis-19-explained" },
   }),
   card({
@@ -243,6 +327,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Hebron, once called Kirjath-arba, was where Abraham lived by the oaks of Mamre and built an altar to God. When Sarah died, Abraham bought the cave of Machpelah there, and the family was buried in it. Later Caleb received Hebron, and David was first crowned king there. See Genesis 13:18; 23:2–19; 2 Samuel 5:5.",
+    quiz: {
+      question: "Sarah died here, and Abraham mourned and wept for her. Which place is this?",
+      choices: ["Hebron", "Babel", "Beersheba", "Shechem"],
+      answer: 0,
+      explanation: "Sarah died in Kirjath-arba, which is Hebron, and Abraham came to mourn and weep for her.",
+      ref: ref("Genesis 23:2"),
+    },
     study: { label: "Explore Hebron", href: "/blog/genesis-23-explained" },
   }),
   card({
@@ -261,6 +352,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Shechem was Abram’s first stop in Canaan, where God promised him the land. Jacob later bought a field there, and his sons Simeon and Levi took violent revenge on the city after their sister Dinah was wronged. Joshua renewed the covenant at Shechem, and Joseph’s bones were buried there. See Genesis 12:6–7; 33:18–20; 34:25–26; Joshua 24:25–32.",
+    quiz: {
+      question: "Abram’s first stop in Canaan, where God promised him the land. Which place is this?",
+      choices: ["Bethel", "Goshen", "Shechem", "Hebron"],
+      answer: 2,
+      explanation: "Abram passed through the land to Sichem, and there the LORD appeared and promised the land to his seed.",
+      ref: ref("Genesis 12:6–7"),
+    },
     study: { label: "Explore Shechem", href: "/blog/genesis-34-explained" },
   }),
   card({
@@ -279,6 +377,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "The first city in the Bible was built by Cain, who named it after his son Enoch. God had told Cain he would be a wanderer after he killed Abel, yet Cain settled in the land of Nod and built walls around himself. This Enoch is not the Enoch who walked with God. See Genesis 4:8–18; 5:21–24.",
+    quiz: {
+      question: "Cain built this city and named it after his son. Which place is this?",
+      choices: ["Goshen", "The City of Enoch", "Babel", "Nineveh"],
+      answer: 1,
+      explanation: "Cain built a city and called it Enoch, after the name of his son.",
+      ref: ref("Genesis 4:17"),
+    },
     study: { label: "Explore the City of Enoch", href: "/blog/genesis-4-explained" },
   }),
 
@@ -299,6 +404,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "As a teenager Joseph dreamed that his brothers’ sheaves bowed to his, and that the sun, moon and eleven stars bowed to him. His brothers hated him for it and sold him as a slave. Years later, when they bowed before him in Egypt, Joseph remembered the dreams. God had been working the whole time. See Genesis 37:5–11; 42:6–9.",
+    quiz: {
+      question: "In these, grain bundles and then the sun, moon and stars bowed to Joseph. What is this?",
+      choices: ["Pharaoh’s Dreams", "The Rainbow", "Jacob’s Ladder", "Joseph’s Dreams"],
+      answer: 3,
+      explanation: "Joseph dreamed his brothers’ sheaves bowed to his sheaf, then that the sun, moon and eleven stars bowed to him.",
+      ref: ref("Genesis 37:7–9"),
+    },
     study: { label: "Explore Joseph’s Dreams", href: "/blog/genesis-37-explained" },
   }),
   card({
@@ -317,6 +429,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Egypt’s king dreamed of seven thin cows eating seven fat ones, and seven thin ears of grain swallowing seven full ones. None of his wise men could explain it. Joseph, brought up from prison, said God was showing seven years of plenty followed by seven of famine, and Pharaoh put him in charge. See Genesis 41:1–41.",
+    quiz: {
+      question: "In one of these, seven thin cows ate up seven fat cows. What is this?",
+      choices: ["Noah’s Ark", "Joseph’s Dreams", "Pharaoh’s Dreams", "The Butler’s Dream"],
+      answer: 2,
+      explanation: "Pharaoh dreamed that seven lean cows came up and ate the seven fat cows.",
+      ref: ref("Genesis 41:1–4"),
+    },
     study: { label: "Explore Pharaoh’s Dreams", href: "/blog/genesis-41-explained" },
   }),
   card({
@@ -346,6 +465,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Jacob loved Joseph more than his other sons and gave him a special coat of many colours. It made his brothers hate him. They stripped it off him, threw him in a pit, sold him, and dipped the coat in goat’s blood so their father would think he was dead. See Genesis 37:3–4, 23–35.",
+    quiz: {
+      question: "Joseph’s brothers dipped this in goat’s blood and showed it to Jacob. What is this?",
+      choices: ["Joseph’s Silver Cup", "The Rainbow", "Pharaoh’s Ring", "Joseph’s Coat"],
+      answer: 3,
+      explanation: "The brothers killed a young goat, dipped Joseph’s coat in the blood, and brought it to their father.",
+      ref: ref("Genesis 37:31–32"),
+    },
     study: { label: "Explore Joseph’s Coat", href: "/blog/genesis-37-explained" },
   }),
   card({
@@ -376,6 +502,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "When Jacob left Laban, Rachel secretly took her father’s household idols. Laban chased them down and searched every tent, but Rachel had hidden them in her camel’s saddle and sat on them. Jacob did not know. Later he told his family to put away their foreign gods before going to Bethel. See Genesis 31:19–35; 35:2–4.",
+    quiz: {
+      question: "Rachel stole these from Laban and hid them in a camel’s saddle. What is this?",
+      choices: ["Rachel’s Household Idols", "Noah’s Ark", "Leah’s Mandrakes", "Jacob’s Spotted Flock"],
+      answer: 0,
+      explanation: "Rachel had taken her father’s images, put them in the camel’s furniture, and sat on them.",
+      ref: ref("Genesis 31:34"),
+    },
     study: { label: "Explore Rachel’s Household Idols", href: "/blog/genesis-31-explained" },
   }),
   card({
@@ -394,6 +527,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "God tested Abraham by asking him to offer Isaac. On the mountain, just as Abraham raised the knife, the angel stopped him. Abraham looked up and saw a ram caught by its horns, and offered it in Isaac’s place. He named the place The LORD Will Provide, a picture of the substitute God would one day give. See Genesis 22:1–14.",
+    quiz: {
+      question: "Abraham found this caught by its horns and offered it instead of Isaac. What is this?",
+      choices: ["Abram’s Heifer", "The Ram in the Thicket", "Joseph’s Coat", "The Wood for the Fire"],
+      answer: 1,
+      explanation: "Abraham saw a ram caught in a thicket by its horns and offered it in place of his son.",
+      ref: ref("Genesis 22:13"),
+    },
     study: { label: "Explore the Ram in the Thicket", href: "/blog/genesis-22-explained" },
   }),
   card({
@@ -420,6 +560,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "God made a binding promise to Abraham: many descendants, the land of Canaan, and a blessing for every family on earth. God sealed it by passing between the pieces of the sacrifice himself, renamed Abram as Abraham, and gave circumcision as its sign. Paul says the promise still stands in Christ. See Genesis 15:5–18; 17:1–11; Galatians 3:16–17.",
+    quiz: {
+      question: "Through this, God changed Abram’s name to Abraham. What is this?",
+      choices: ["Joseph’s Silver Cup", "The Rainbow", "Jacob’s Blessing", "God’s Covenant with Abraham"],
+      answer: 3,
+      explanation: "As part of his covenant, God said Abram would now be Abraham, a father of many nations.",
+      ref: ref("Genesis 17:4–5"),
+    },
     study: { label: "Explore God’s Covenant with Abraham", href: "/blog/genesis-15-explained" },
   }),
   card({
@@ -448,6 +595,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Judah promised Tamar a young goat and left his signet, cord and staff with her as a pledge. When she was later accused, she sent them back with a message: the owner of these is the father. Judah recognised them and admitted she was more righteous than he was. See Genesis 38:13–26.",
+    quiz: {
+      question: "Judah left these with Tamar until he could send her a young goat. What is this?",
+      choices: ["Judah’s Pledge", "Tamar’s Veil", "Noah’s Ark", "The Scarlet Thread"],
+      answer: 0,
+      explanation: "Judah gave Tamar his signet, bracelets and staff as a pledge until he sent the young goat.",
+      ref: ref("Genesis 38:17–18"),
+    },
     study: { label: "Explore Judah’s Pledge", href: "/blog/who-was-tamar" },
   }),
   card({
@@ -466,6 +620,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "An altar was a raised place of stone or earth where people offered sacrifices and worshipped. Noah built one after the flood. Abraham, Isaac and Jacob built them wherever God met them, marking the land with worship long before they owned it. Each altar said: God is here, and we belong to him. See Genesis 8:20; 12:7–8; 26:25; 35:7.",
+    quiz: {
+      question: "Noah built this after the flood and offered animals on it. What is this?",
+      choices: ["Joseph’s Silver Cup", "Altar", "Noah’s Ark", "The Rainbow"],
+      answer: 1,
+      explanation: "After the flood Noah built an altar to the LORD and offered burnt offerings on it.",
+      ref: ref("Genesis 8:20"),
+    },
     study: { label: "Explore the altars of Genesis", href: "/blog/genesis-12-explained" },
   }),
   card({
@@ -484,6 +645,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "After the flood, God made a covenant with Noah and every living creature never to destroy the earth by flood again. He set his bow in the clouds as the sign. Whenever it appears, God says he will remember his promise. Ezekiel and John later saw the same colours around God’s throne. See Genesis 9:8–17; Ezekiel 1:28; Revelation 4:3.",
+    quiz: {
+      question: "God set this in the clouds as a promise never to flood the earth again. What is this?",
+      choices: ["Noah’s Ark", "Joseph’s Coat", "The Rainbow", "The Olive Leaf"],
+      answer: 2,
+      explanation: "God set his bow in the cloud as a sign that the waters would never again become a flood to destroy all flesh.",
+      ref: ref("Genesis 9:13–15"),
+    },
     study: { label: "Explore the Rainbow", href: "/blog/genesis-9-explained" },
   }),
   card({
@@ -502,6 +670,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "In the middle of Eden stood the tree of life. After Adam and Eve sinned, God sent them out and set cherubim to guard the way to it. The Bible ends where it began: in the new Jerusalem the tree of life stands by the river again, its leaves for the healing of the nations. See Genesis 2:9; 3:22–24; Revelation 22:2.",
+    quiz: {
+      question: "God set cherubim and a flaming sword to guard the way to this. What is this?",
+      choices: ["Jacob’s Ladder", "The Tree of Life", "Tree of Knowledge", "Coats of Skins"],
+      answer: 1,
+      explanation: "God placed cherubim and a flaming sword east of Eden to keep the way of the tree of life.",
+      ref: ref("Genesis 3:24"),
+    },
     study: { label: "Explore the Tree of Life", href: "/blog/genesis-3-explained" },
   }),
   card({
@@ -520,6 +695,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "Running from Esau, Jacob slept on the ground with a stone for a pillow and dreamed of a stairway reaching to heaven, with angels going up and down. God stood above it and promised to be with him. Jesus later told Nathanael that he himself is the true way between heaven and earth. See Genesis 28:10–19; John 1:51.",
+    quiz: {
+      question: "Jacob dreamed of this reaching to heaven, with angels going up and down. What is this?",
+      choices: ["Jacob’s Ladder", "Tower of Babel", "Noah’s Ark", "Jacob’s Stone Pillar"],
+      answer: 0,
+      explanation: "Jacob dreamed of a ladder whose top reached to heaven, with God’s angels going up and down on it.",
+      ref: ref("Genesis 28:12"),
+    },
     study: { label: "Explore Jacob’s Ladder", href: "/blog/genesis-28-explained" },
   }),
   card({
@@ -538,6 +720,13 @@ export const GENESIS_PLACES_KEYWORDS: ClueCard[] = [
     ],
     teaching:
       "To test his brothers, Joseph had his silver cup hidden in Benjamin’s sack. When it was found, Joseph said Benjamin must stay as his slave. Judah, who once helped sell Joseph, now offered himself in Benjamin’s place. That changed heart moved Joseph to reveal who he was. See Genesis 44:1–34; 45:1–3.",
+    quiz: {
+      question: "Joseph had this hidden in Benjamin’s sack of grain. What is this?",
+      choices: ["The Rainbow", "Pharaoh’s Ring", "Joseph’s Coat", "Joseph’s Silver Cup"],
+      answer: 3,
+      explanation: "Joseph had his silver cup put in the youngest brother’s sack, and it was found in Benjamin’s sack.",
+      ref: ref("Genesis 44:2–12"),
+    },
     study: { label: "Explore Joseph’s Silver Cup", href: "/blog/genesis-44-explained" },
   }),
 ];

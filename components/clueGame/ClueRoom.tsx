@@ -18,6 +18,7 @@ import Link from "next/link";
 import type { PublicCard, PublicMatch } from "@/lib/clueGame/engine";
 import type { ClueRef } from "@/lib/clueGame/types";
 import { clueApi, trackClue } from "@/lib/clueGame/track";
+import { HOW_TO_PLAY } from "./ClueTable";
 import InviteSheet from "./InviteSheet";
 import { supabase } from "@/lib/supabaseClient";
 import ClueTable from "./ClueTable";
@@ -69,9 +70,9 @@ export default function ClueRoom({ code }: { code: string }) {
   }, [code, apply]);
 
   const send = useCallback(
-    async (op: string, text?: string) => {
+    async (op: string, choice?: number) => {
       const sentAt = Date.now();
-      const res = await clueApi<RoomView>(`/api/clue-game/rooms/${code}`, { method: "POST", body: { op, text } });
+      const res = await clueApi<RoomView>(`/api/clue-game/rooms/${code}`, { method: "POST", body: { op, choice } });
       if (res.ok) apply(res.data, sentAt);
       else setFlash({ text: res.data.error || "That didn’t go through.", key: Date.now() });
     },
@@ -103,7 +104,7 @@ export default function ClueRoom({ code }: { code: string }) {
     };
   }, [code, refresh]);
 
-  // The local clock, corrected to the server's. At a clue or deal boundary,
+  // The local clock, corrected to the server's. When a question closes or the next one is due,
   // ask the server (it moves the game on; nobody's device decides).
   useEffect(() => {
     const id = window.setInterval(() => setNow(Date.now() + offset), 150);
@@ -112,8 +113,8 @@ export default function ClueRoom({ code }: { code: string }) {
   const m = room?.match;
   const boundary =
     m && m.round && m.pausedAt === null
-      ? m.phase === "clue"
-        ? m.round.clueStartedAt + m.settings.clueSeconds * 1000
+      ? m.phase === "question"
+        ? m.round.closesAt
         : m.phase === "reveal" && m.round.revealedAt
           ? m.round.revealedAt + m.settings.revealSeconds * 1000
           : null
@@ -125,16 +126,6 @@ export default function ClueRoom({ code }: { code: string }) {
     return () => window.clearTimeout(id);
   }, [due, refresh]);
 
-  // "Not it" feedback for my own wrong guesses.
-  const seenWrong = useRef(0);
-  useEffect(() => {
-    const mine = (m?.recentWrong || []).filter((w) => w.playerId === room?.you && w.at > seenWrong.current);
-    const last = mine[mine.length - 1];
-    if (last) {
-      seenWrong.current = last.at;
-      setFlash({ text: `“${last.guess}” isn’t it. −${last.points}`, key: last.at });
-    }
-  }, [m?.recentWrong, room?.you]);
   useEffect(() => {
     if (!flash) return;
     const id = window.setTimeout(() => setFlash(null), 2200);
@@ -176,7 +167,11 @@ export default function ClueRoom({ code }: { code: string }) {
               📨 Invite friends
             </button>
             <p className="mt-2 text-[13px] font-bold">Or read them the code to type in.</p>
-            <h3 className="bb-clue-serif mt-5 text-lg font-bold">Players ({room.players.length})</h3>
+            <p className="mt-4 rounded-xl px-3 py-2 text-[14px] font-bold" style={{ background: "rgba(255,255,255,.5)" }}>
+              {room.deckName} · 10 questions
+            </p>
+            <p className="mt-2 text-[13px] leading-snug">{HOW_TO_PLAY}</p>
+            <h3 className="bb-clue-serif mt-4 text-lg font-bold">Players ({room.players.length})</h3>
             <ul className="mt-2 flex flex-wrap justify-center gap-4">
               {room.players.map((p) => (
                 <li key={p.id} className="flex w-20 flex-col items-center gap-1">
@@ -201,10 +196,9 @@ export default function ClueRoom({ code }: { code: string }) {
             youId={room.you}
             now={now}
             cardBack="/games/clue/genesis/art/card-back.webp"
-            roundLabel={room.deckName}
+            roundLabel="Genesis"
             deckIds={room.deckIds}
-            onGuess={(text) => void send("guess", text)}
-            onWait={() => void send("wait")}
+            onAnswer={(choice) => void send("answer", choice)}
             onStudy={openStudy}
             isHost={isHost}
             onPause={() => void send("pause")}
@@ -212,8 +206,8 @@ export default function ClueRoom({ code }: { code: string }) {
             overlay={
               m.phase !== "over" ? undefined : review ? (
                 <div className="bb-clue-panel bb-clue-parchment">
-                  <h2 className="bb-clue-serif bb-clue-title" style={{ color: "#2a1a0c" }}>The 10 Rounds</h2>
-                  <div className="mt-4"><ReviewList cards={m.history} onStudy={openStudy} onOpenRef={setScripture} nameOf={(id) => (id === room.you ? "You" : room.players.find((p) => p.id === id)?.name || "A player")} /></div>
+                  <h2 className="bb-clue-serif bb-clue-title" style={{ color: "#2a1a0c" }}>The Questions</h2>
+                  <div className="mt-4"><ReviewList cards={m.history} youId={room.you} onStudy={openStudy} onOpenRef={setScripture} nameOf={(id) => (id === room.you ? "You" : room.players.find((p) => p.id === id)?.name || "A player")} /></div>
                   <button type="button" className="bb-clue-btn mt-5 w-full" onClick={() => setReview(false)}>Back to results</button>
                 </div>
               ) : (
@@ -222,9 +216,9 @@ export default function ClueRoom({ code }: { code: string }) {
                   heading={m.winnerSideIds.includes(room.you) ? (m.winnerSideIds.length > 1 ? "A Tie!" : "You Win!") : "Game Over"}
                   deckName={room.deckName}
                   score={m.scores[room.you] ?? 0}
-                  won={(m.piles[room.you] || []).length}
+                  won={m.history.filter((c) => !c.tiebreak && (c.points[room.you] ?? 0) > 0).length}
                   total={m.deckSize}
-                  wonCards={m.history.filter((c) => c.outcome === "won" && c.sideId === room.you)}
+                  wonCards={m.history.filter((c) => (c.tiebreak ? c.winnerId === room.you : (c.points[room.you] ?? 0) > 0))}
                   onReview={() => setReview(true)}
                   standings={
                     <ol className="space-y-1.5 text-left">
@@ -239,7 +233,18 @@ export default function ClueRoom({ code }: { code: string }) {
                         ))}
                     </ol>
                   }
-                  secondary={<Link href="/bible-study-games/clue" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big">Back to the game</Link>}
+                  secondary={
+                    <>
+                      {isHost ? (
+                        <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big" onClick={() => { setReview(false); void send("rematch"); }}>
+                          ▶ Rematch · new questions
+                        </button>
+                      ) : (
+                        <p className="text-[14px] font-bold">The host can start a rematch with new questions.</p>
+                      )}
+                      <Link href="/bible-study-games/clue" className="bb-clue-btn w-full">Leave the room</Link>
+                    </>
+                  }
                 />
               )
             }

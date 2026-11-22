@@ -1,19 +1,20 @@
 "use client";
 
 /**
- * Bible Clue Game, presented by Bible Buddy: the menu, How to Play, Choose
- * Your Deck, solo play and the doors into a private room.
+ * Bible Clue Game, presented by Bible Buddy: the menu, How to Play, the
+ * game setup (book, chapters, level), solo play and the doors into a room.
  *
  * Flow (Louis, 2026-11-22, Notion "Bible Clue Game — Presented by Bible
- * Buddy"): Play Solo → Choose Your Deck → a 10-card round → Round Complete
- * (Challenge, Play Again, Review Cards). Multiplayer → Host Room (Choose Your
- * Deck → a room code and link) or Join Room (enter the code).
+ * Buddy"): Play Solo → setup → 10 multiple-choice questions → Round Complete
+ * (Challenge, Play Again, Review). Multiplayer → Host Room (the host picks the
+ * setup → a room code and link) or Join Room (enter the code).
  */
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ALL_CLUE_CARDS, CLUE_DECKS, deckById, deckLabel, poolFor } from "@/lib/clueGame/catalog";
+import { ALL_CLUE_CARDS, deckById } from "@/lib/clueGame/catalog";
+import { BANK_ITEMS, DEFAULT_SELECTION, chaptersWithQuestions, cleanSelection, selectionLabel, selectionStatus, selectionToKeys } from "@/lib/clueGame/bank";
 
 /** The menu's card: Joseph, mystery then revealed (Louis's mockup). */
 const HERO_CARD = ALL_CLUE_CARDS.get("joseph");
@@ -37,7 +38,7 @@ function Laurel({ flip }: { flip?: boolean }) {
     </svg>
   );
 }
-import { createMatch, ROUND_INTRO_MS, soloSetup, type PublicCard } from "@/lib/clueGame/engine";
+import { createMatch, ROUND_INTRO_MS, soloSetup, type ClueMatch, type ClueSelection, type PublicCard } from "@/lib/clueGame/engine";
 import type { ClueRef } from "@/lib/clueGame/types";
 import { clueApi, clueUserId, trackClue } from "@/lib/clueGame/track";
 import { supabase } from "@/lib/supabaseClient";
@@ -48,6 +49,26 @@ import { useLocalMatch } from "./useLocalMatch";
 
 type Screen = "menu" | "how" | "decks" | "play" | "multi";
 
+const SETUP_KEY = "bb:clue-setup";
+const SEEN_KEY = "bb:clue-seen";
+const GENESIS_BACK = deckById("genesis")?.cardBack;
+
+function readJson<T>(key: string, fallback: T): T {
+  try {
+    const raw = window.localStorage.getItem(key);
+    return raw ? (JSON.parse(raw) as T) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+function writeJson(key: string, value: unknown) {
+  try {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  } catch {}
+}
+/** Every question a match used, so the next one can rotate in fresh ones. */
+const usedIn = (m: ClueMatch) => [...new Set([...m.deck, ...m.done.map((d) => d.cardId)])];
+
 const newSeed = () => Math.floor(Math.random() * 2147483647);
 const newRoundId = () =>
   typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
@@ -56,13 +77,12 @@ const newRoundId = () =>
 
 function HowToPlay({ onBack }: { onBack: () => void }) {
   const steps: Array<[string, string]> = [
-    ["🃏", "A game is 10 rounds. Each round, one card is dealt face down: you see only whether it is a Person, Place or Keyword, and its silhouette."],
-    ["5️⃣", "Clues come one at a time, from 5 points down to 1. Each clue stays up for 15 seconds."],
-    ["✅", "The fastest right answer wins that clue’s points and the card."],
-    ["❌", "Guess wrong and you lose that many points. One guess per clue, two per round."],
-    ["⏳", "Not sure? Tap Skip for the next clue. Skipping costs nothing."],
-    ["🔁", "The next round deals itself. Most points after 10 rounds wins."],
-    ["📖", "After each card, tap Study This Card for its Scripture and a short teaching note."],
+    ["📚", "Pick a book, all chapters or just the ones you want, and Beginner or Medium."],
+    ["❓", "A game is 10 questions. Each one has four choices, A to D."],
+    ["⏱️", "You have 10 seconds to pick an answer. The clock always runs the full 10 seconds."],
+    ["✅", "Right earns 1 point. Wrong costs 1 point. No answer is 0. Everyone can score on every question."],
+    ["📖", "Then the answer shows, with a short explanation and the verse."],
+    ["🏆", "Most points after 10 questions wins. A tie is settled by a tiebreaker: first right answer wins."],
   ];
   return (
     <div className="bb-clue-panel bb-clue-parchment">
@@ -82,50 +102,80 @@ function HowToPlay({ onBack }: { onBack: () => void }) {
   );
 }
 
-/* ---------- Choose Your Deck ---------- */
+/* ---------- Game setup: book, chapters, level ---------- */
 
-function DeckPicker({ onStart, startLabel, busy, error }: { onStart: (deckIds: string[]) => void; startLabel: string; busy?: boolean; error?: string | null }) {
-  const [tab, setTab] = useState<"old" | "new">("old");
-  const [selected, setSelected] = useState<string[]>(["genesis"]);
-  const decks = CLUE_DECKS.filter((d) => d.testament === tab);
-  const toggle = (id: string) => setSelected((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
+function SetupPicker({ onStart, startLabel, busy, error }: { onStart: (sel: ClueSelection) => void; startLabel: string; busy?: boolean; error?: string | null }) {
+  const [sel, setSel] = useState<ClueSelection>(DEFAULT_SELECTION);
+  const [picking, setPicking] = useState(false);
+  const [picked, setPicked] = useState<number[]>([]);
+  // The last setup comes back (it lives on this device only).
+  useEffect(() => {
+    const saved = cleanSelection(readJson(SETUP_KEY, DEFAULT_SELECTION));
+    const id = window.setTimeout(() => {
+      setSel(saved);
+      if (saved.chapters !== "all") {
+        setPicking(true);
+        setPicked(saved.chapters);
+      }
+    }, 0);
+    return () => window.clearTimeout(id);
+  }, []);
+  const chapters = chaptersWithQuestions(sel.book);
+  const current: ClueSelection = { ...sel, chapters: picking ? picked : "all" };
+  const status = picking && !picked.length ? null : selectionStatus(current);
+  const toggle = (n: number) => setPicked((list) => (list.includes(n) ? list.filter((x) => x !== n) : [...list, n].sort((a, b) => a - b)));
+  const start = () => {
+    if (!status?.enough) return;
+    writeJson(SETUP_KEY, current);
+    onStart(current);
+  };
   return (
-    <div className="bb-clue-panel bb-clue-parchment">
+    <div className="bb-clue-panel bb-clue-parchment bb-clue-setup">
+      <p className="bb-clue-setup-step">1 · Book</p>
       <div className="bb-clue-tabs">
-        <button type="button" className={tab === "old" ? "is-on" : ""} onClick={() => setTab("old")}>Old Testament</button>
-        <button type="button" className={tab === "new" ? "is-on" : ""} onClick={() => setTab("new")}>New Testament</button>
+        <button type="button" className="is-on" aria-pressed="true">Genesis</button>
+        <button type="button" disabled className="opacity-50">More soon</button>
       </div>
-      <div className="mt-4 grid max-h-[40vh] grid-cols-2 gap-3 overflow-y-auto p-1">
-        {decks.map((d) => {
-          const on = selected.includes(d.id);
-          return (
-            <button
-              key={d.id}
-              type="button"
-              disabled={!d.available}
-              onClick={() => toggle(d.id)}
-              className={`bb-clue-tile ${d.available ? (on ? "is-on" : "") : "is-off"}`}
-              style={{ background: `linear-gradient(180deg, ${d.color}, ${d.color}dd)` }}
-              aria-pressed={on}
-            >
-              <div className="bb-clue-tile-name">{d.name}</div>
-              <div className="bb-clue-tile-body">
-                {d.tile ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={d.tile} alt="" className="h-full w-full object-cover" />
-                ) : (
-                  <span aria-hidden="true">📖</span>
-                )}
-              </div>
-              <span className="bb-clue-tile-foot">{d.available ? `${d.cards.length} cards${on ? " ✓" : ""}` : "Coming Soon"}</span>
+
+      <p className="bb-clue-setup-step">2 · Chapters</p>
+      <div className="bb-clue-tabs">
+        <button type="button" className={!picking ? "is-on" : ""} onClick={() => setPicking(false)}>All Chapters</button>
+        <button type="button" className={picking ? "is-on" : ""} onClick={() => setPicking(true)}>Select Chapters</button>
+      </div>
+      {picking ? (
+        <div className="bb-clue-chapters" role="group" aria-label="Chapters">
+          {chapters.map((n) => (
+            <button key={n} type="button" className={picked.includes(n) ? "is-on" : ""} aria-pressed={picked.includes(n)} onClick={() => toggle(n)}>
+              {n}
             </button>
-          );
-        })}
+          ))}
+        </div>
+      ) : null}
+
+      <p className="bb-clue-setup-step">3 · Level</p>
+      <div className="bb-clue-tabs">
+        <button type="button" className={sel.level === "beginner" ? "is-on" : ""} onClick={() => setSel((s) => ({ ...s, level: "beginner" }))}>Beginner</button>
+        <button type="button" className={sel.level === "medium" ? "is-on" : ""} onClick={() => setSel((s) => ({ ...s, level: "medium" }))}>Medium</button>
       </div>
-      <p className="mt-3 text-center text-[13px] font-bold opacity-75">
-        {selected.length ? `${deckLabel(selected)} selected · 10 rounds a game` : "Pick a deck"}
+      <p className="mt-1 text-center text-[12.5px] font-bold opacity-75">
+        {sel.level === "beginner" ? "The main people and events of each chapter." : "Details you remember from reading closely."}
       </p>
-      <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big mt-3" disabled={!selected.length || busy} onClick={() => onStart(selected)}>
+
+      <div className="bb-clue-setup-summary" aria-live="polite">
+        {!status ? (
+          <p>Tap the chapters you want to play.</p>
+        ) : status.enough ? (
+          <>
+            <p className="font-black">{selectionLabel(current)}</p>
+            <p className="text-[13px]">10 questions from {status.count} · 10 seconds each</p>
+          </>
+        ) : (
+          <p className="font-bold" style={{ color: "#8a1f12" }}>
+            {selectionLabel(current)} has only {status.count} questions. A game needs {status.needed} (10 plus one for a tiebreaker). Add chapters or pick the other level.
+          </p>
+        )}
+      </div>
+      <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big mt-3" disabled={!status?.enough || busy} onClick={start}>
         {startLabel}
       </button>
       {error ? (
@@ -139,14 +189,22 @@ function DeckPicker({ onStart, startLabel, busy, error }: { onStart: (deckIds: s
 
 /* ---------- a solo round ---------- */
 
-function SoloRound({ deckIds, onExit }: { deckIds: string[]; onExit: () => void }) {
+function SoloRound({ selection, onExit }: { selection: ClueSelection; onExit: () => void }) {
   const [me, setMe] = useState<{ id: string; name: string; avatar: string | null }>({ id: "me", name: "You", avatar: null });
   const [roundId, setRoundId] = useState(newRoundId);
-  const pool = useMemo(() => poolFor(deckIds), [deckIds]);
-  const { match, view, now, act, reset } = useLocalMatch(() => createMatch({ cards: pool, ...soloSetup("me", "You"), seed: newSeed() }), {
-    mode: "solo",
-    deckIds,
-  });
+  const deckIds = selectionToKeys(selection);
+  // Questions from your last game come back only when the selection runs out of fresh ones.
+  const { match, view, now, act, reset } = useLocalMatch(
+    () => createMatch({ items: BANK_ITEMS, selection, ...soloSetup("me", "You"), seed: newSeed(), avoid: typeof window === "undefined" ? [] : readJson<string[]>(SEEN_KEY, []) }),
+    { mode: "solo", deckIds },
+  );
+  const saved = useRef(false);
+  useEffect(() => {
+    if (match.phase !== "over" || saved.current) return;
+    saved.current = true;
+    writeJson(SEEN_KEY, usedIn(match));
+  }, [match]);
+  const right = match.done.filter((d) => !d.tiebreak && (d.points.me ?? 0) > 0).length;
   const [study, setStudy] = useState<PublicCard | null>(null);
   const [scripture, setScripture] = useState<ClueRef | null>(null);
   const [review, setReview] = useState(false);
@@ -168,7 +226,8 @@ function SoloRound({ deckIds, onExit }: { deckIds: string[]; onExit: () => void 
   }, [match.phase, act]);
 
   const playAgain = () => {
-    reset(createMatch({ cards: pool, ...soloSetup("me", "You"), seed: newSeed() }));
+    reset(createMatch({ items: BANK_ITEMS, selection, ...soloSetup("me", "You"), seed: newSeed(), avoid: usedIn(match) }));
+    saved.current = false;
     setRoundId(newRoundId());
     setChallenge(null);
     setReview(false);
@@ -178,7 +237,7 @@ function SoloRound({ deckIds, onExit }: { deckIds: string[]; onExit: () => void 
     setChallenge("posting");
     const res = await clueApi<{ id?: string; alreadyPosted?: boolean; error?: string }>("/api/clue-game/challenges", {
       method: "POST",
-      body: { roundId, deckIds, cardIds: match.deck, topClue: match.topClue, score: match.scores.me ?? 0, won: (match.piles.me || []).length },
+      body: { roundId, selection, cardIds: match.deck, score: match.scores.me ?? 0, won: right },
     });
     if (res.ok && res.data.id) {
       setChallenge({ id: res.data.id, again: !!res.data.alreadyPosted });
@@ -198,11 +257,10 @@ function SoloRound({ deckIds, onExit }: { deckIds: string[]; onExit: () => void 
         players={[me]}
         youId="me"
         now={now}
-        cardBack={deckById(deckIds[0])?.cardBack}
+        cardBack={GENESIS_BACK}
         deckIds={deckIds}
-        roundLabel={deckLabel(deckIds)}
-        onGuess={(text) => act({ type: "guess", playerId: "me", text })}
-        onWait={() => act({ type: "wait", playerId: "me" })}
+        roundLabel="Genesis"
+        onAnswer={(choice) => act({ type: "answer", playerId: "me", choice })}
         // Solo can pause (Louis, 2026-11-22). Challenges cannot: they are ranked.
         isHost
         onPause={() => act({ type: "pause" })}
@@ -210,20 +268,20 @@ function SoloRound({ deckIds, onExit }: { deckIds: string[]; onExit: () => void 
         onStudy={openStudy}
         overlay={view.phase !== "over" ? undefined : review ? (
         <div className="bb-clue-panel bb-clue-parchment">
-          <h2 className="bb-clue-serif bb-clue-title" style={{ color: "#2a1a0c" }}>Your 10 Rounds</h2>
+          <h2 className="bb-clue-serif bb-clue-title" style={{ color: "#2a1a0c" }}>Your 10 Questions</h2>
           <div className="mt-4">
-            <ReviewList cards={view.history} onStudy={openStudy} onOpenRef={setScripture} />
+            <ReviewList cards={view.history} youId="me" onStudy={openStudy} onOpenRef={setScripture} />
           </div>
           <button type="button" className="bb-clue-btn mt-5 w-full" onClick={() => setReview(false)}>Back to results</button>
         </div>
         ) : (
         <ClueResults
           mode="solo"
-          deckName={deckLabel(deckIds)}
+          deckName={selectionLabel(selection)}
           score={match.scores.me ?? 0}
-          won={(match.piles.me || []).length}
+          won={right}
           total={match.deck.length}
-          wonCards={view.history.filter((c) => c.outcome === "won")}
+          wonCards={view.history.filter((c) => (c.points.me ?? 0) > 0)}
           onReview={() => {
             setReview(true);
             trackClue("clue_game_review_opened", { mode: "solo" });
@@ -246,8 +304,8 @@ function SoloRound({ deckIds, onExit }: { deckIds: string[]; onExit: () => void 
           }
           secondary={
             <div className="flex gap-3">
-              <button type="button" className="bb-clue-btn flex-1 whitespace-nowrap !px-3" onClick={playAgain}>▶ Play Again</button>
-              <button type="button" className="bb-clue-btn flex-1" onClick={onExit}>Menu</button>
+              <button type="button" className="bb-clue-btn min-w-0 flex-[3] whitespace-nowrap !px-2" onClick={playAgain}>▶ Play Again</button>
+              <button type="button" className="bb-clue-btn min-w-0 flex-[2] whitespace-nowrap !px-2" onClick={onExit}>Menu</button>
             </div>
           }
         />
@@ -274,18 +332,18 @@ function Multiplayer({ onBack }: { onBack: () => void }) {
    * sign-in is refreshed and tried once more, the reason is shown under the
    * button, and every failure is logged so it can be seen from the admin side.
    */
-  const host = async (deckIds: string[]) => {
+  const host = async (selection: ClueSelection) => {
     if (busy) return;
     setBusy(true);
     setError(null);
-    const create = () => clueApi<{ code?: string; error?: string }>("/api/clue-game/rooms", { method: "POST", body: { deckIds } });
+    const create = () => clueApi<{ code?: string; error?: string }>("/api/clue-game/rooms", { method: "POST", body: { selection } });
     let res = await create();
     if (res.status === 401) {
       await supabase.auth.refreshSession().catch(() => null);
       res = await create();
     }
     if (res.ok && res.data.code) {
-      trackClue("clue_game_room_created", { decks: deckIds });
+      trackClue("clue_game_room_created", { decks: selectionToKeys(selection) });
       router.push(`/bible-study-games/clue/room/${res.data.code}`);
       return;
     }
@@ -300,7 +358,7 @@ function Multiplayer({ onBack }: { onBack: () => void }) {
     setBusy(false);
   };
 
-  if (step === "host") return <DeckPicker startLabel={busy ? "Creating room…" : "Create Room"} onStart={host} busy={busy} error={error} />;
+  if (step === "host") return <SetupPicker startLabel={busy ? "Creating room…" : "Create Room"} onStart={host} busy={busy} error={error} />;
   return (
     <div className="bb-clue-panel bb-clue-parchment">
       {step === "choose" ? (
@@ -345,7 +403,7 @@ function Multiplayer({ onBack }: { onBack: () => void }) {
 
 export default function ClueGame() {
   const [screen, setScreen] = useState<Screen>("menu");
-  const [deckIds, setDeckIds] = useState<string[]>(["genesis"]);
+  const [selection, setSelection] = useState<ClueSelection>(DEFAULT_SELECTION);
   const [playKey, setPlayKey] = useState(0);
 
   useEffect(() => {
@@ -356,7 +414,7 @@ export default function ClueGame() {
   }, []);
 
   const back = screen === "menu" ? undefined : () => setScreen(screen === "play" ? "decks" : "menu");
-  const subtitle = screen === "play" ? deckLabel(deckIds) : undefined;
+  const subtitle = undefined;
   return (
     <ClueRoomFrame>
       <div className="pb-28">
@@ -373,7 +431,7 @@ export default function ClueGame() {
                 <Laurel flip />
               </div>
               <div className="bb-clue-herorule" />
-              <p className="bb-clue-herotag">Follow the clues. Guess the answer.</p>
+              <p className="bb-clue-herotag">Ten questions. Ten seconds each.</p>
               <div className="bb-clue-herotable">
                 <div className="bb-clue-herofelt" />
                 <div className="bb-clue-herocards">
@@ -409,11 +467,11 @@ export default function ClueGame() {
           <div className="px-0"><HowToPlay onBack={() => setScreen("menu")} /></div>
         ) : screen === "decks" ? (
           <>
-            <div className="bb-clue-banner"><h1 className="bb-clue-serif">Choose Your Deck</h1></div>
-            <DeckPicker
+            <div className="bb-clue-banner"><h1 className="bb-clue-serif">Set Up Your Game</h1></div>
+            <SetupPicker
               startLabel="Start Game"
-              onStart={(ids) => {
-                setDeckIds(ids);
+              onStart={(sel) => {
+                setSelection(sel);
                 setPlayKey((k) => k + 1);
                 setScreen("play");
               }}
@@ -425,7 +483,7 @@ export default function ClueGame() {
             <Multiplayer onBack={() => setScreen("menu")} />
           </>
         ) : (
-          <SoloRound key={playKey} deckIds={deckIds} onExit={() => setScreen("menu")} />
+          <SoloRound key={playKey} selection={selection} onExit={() => setScreen("menu")} />
         )}
       </div>
     </ClueRoomFrame>

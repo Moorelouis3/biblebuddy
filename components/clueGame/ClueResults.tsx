@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Round Complete (approved mockup): deck, points, cards won out of 10, a fan
+ * Round Complete (approved mockup): selection, points, right answers out of 10, a fan
  * of won cards, Challenge, Play Again, Review Cards. Plus the Beta question:
  * did you enjoy it, and do you want another book.
  */
@@ -15,66 +15,91 @@ import { SubjectArt } from "./ClueParts";
 import { trackClue } from "@/lib/clueGame/track";
 
 /**
- * The whole game, round by round, for after the last card (Louis: "a full
- * list of the rounds and all the clues with more info links"): the picture,
- * the answer, who won it, all five clues with their verses, and the link to
- * the Bible Buddy page about it. The table itself only ever shows the clue
- * in play.
+ * The whole game, question by question, for after the last round: the
+ * question, the four choices with the right one marked (and yours, when it
+ * was wrong), the explanation, the verse, and the Bible Buddy page about it.
  */
 export function ReviewList({
   cards,
   onStudy,
   onOpenRef,
   nameOf,
+  youId,
 }: {
   cards: PublicMatch["history"];
   onStudy: (card: PublicCard) => void;
   onOpenRef?: (ref: ClueRef) => void;
-  nameOf?: (sideId: string) => string;
+  nameOf?: (playerId: string) => string;
+  /** Whose answers to mark. */
+  youId?: string;
 }) {
+  const L = ["A", "B", "C", "D"];
   return (
     <ol className="space-y-4 text-left">
-      {cards.map((c, i) => (
-        <li key={`${c.id}-${i}`} className="bb-clue-review">
-          <div className="flex items-center gap-3">
-            <button type="button" onClick={() => onStudy(c)} className="bb-clue-thumb is-color" style={{ width: 64 }} aria-label={`Study ${c.answer}`}>
-              <SubjectArt card={c} mode="reveal" />
-            </button>
-            <div className="min-w-0 flex-1">
-              <div className="text-[11px] font-black uppercase tracking-[0.12em] opacity-60">Round {i + 1}</div>
-              <div className="bb-clue-serif text-[20px] font-bold leading-tight">{c.answer}</div>
-              <div className="text-[12px] font-black" style={{ color: c.outcome === "won" ? "#1d5a34" : "#8a5a1a" }}>
-                {c.outcome === "won" ? `${c.sideId && nameOf ? nameOf(c.sideId) : "Won"} · +${c.points}` : "Nobody got it"}
+      {cards.map((c, i) => {
+        const mine = youId ? c.answers[youId]?.choice : undefined;
+        const right = c.quiz.correct;
+        const result = c.tiebreak
+          ? c.winnerId
+            ? `Tiebreaker · ${nameOf ? nameOf(c.winnerId) : "Won"}`
+            : "Tiebreaker · nobody got it"
+          : mine === undefined
+            ? "No answer · 0"
+            : mine === right
+              ? "Right · +1"
+              : "Wrong · −1";
+        const color = mine !== undefined && mine === right ? "#1d5a34" : mine !== undefined ? "#a3261b" : "#8a5a1a";
+        return (
+          <li key={`${c.id}-${i}`} className="bb-clue-review">
+            <div className="flex items-center gap-3">
+              <button type="button" onClick={() => onStudy(c)} className="bb-clue-thumb is-color" style={{ width: 56 }} aria-label={`Study ${c.answer}`}>
+                <SubjectArt card={c} mode="reveal" />
+              </button>
+              <div className="min-w-0 flex-1">
+                <div className="text-[11px] font-black uppercase tracking-[0.12em] opacity-60">
+                  {c.tiebreak ? "Tiebreaker" : `Question ${i + 1}`} · Genesis {c.quiz.chapter}
+                </div>
+                <div className="bb-clue-serif text-[17px] font-bold leading-snug">{c.quiz.question}</div>
+                {youId ? <div className="text-[12px] font-black" style={{ color }}>{result}</div> : null}
               </div>
             </div>
-          </div>
-          <ol className="mt-2 space-y-1">
-            {(c.clues || []).map((clue, k) => (
-              <li key={k} className="bb-clue-studyclue">
-                <span className="bb-clue-pts">{5 - k}</span>
-                <span className="min-w-0">
-                  {clue.text}{" "}
-                  {onOpenRef ? (
-                    <button type="button" className="bb-clue-ref" onClick={() => onOpenRef(clue.ref)}>
-                      {clue.ref.label}
-                    </button>
-                  ) : (
-                    <span className="bb-clue-ref">{clue.ref.label}</span>
-                  )}
-                </span>
-              </li>
-            ))}
-          </ol>
-          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
-            <button type="button" className="bb-clue-link text-[14px]" onClick={() => onStudy(c)}>📖 Teaching note</button>
-            {c.study ? (
-              <Link className="bb-clue-link text-[14px]" href={c.study.href}>
-                {c.study.label} →
-              </Link>
-            ) : null}
-          </div>
-        </li>
-      ))}
+            <ol className="mt-2 grid grid-cols-2 gap-1.5">
+              {c.quiz.choices.map((ch, k) => (
+                <li
+                  key={k}
+                  className="rounded-lg px-2 py-1 text-[13px] font-bold"
+                  style={
+                    k === right
+                      ? { background: "#1d6a34", color: "#fff8de" }
+                      : k === mine
+                        ? { background: "#a3261b", color: "#ffe7df" }
+                        : { background: "rgba(255,255,255,.5)", color: "#5a4128" }
+                  }
+                >
+                  {L[k]}. {ch} {k === right ? "✓" : k === mine ? "✗" : ""}
+                </li>
+              ))}
+            </ol>
+            {c.quiz.explanation ? <p className="mt-2 text-[14px] leading-snug">{c.quiz.explanation}</p> : null}
+            <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1">
+              {c.quiz.ref ? (
+                onOpenRef ? (
+                  <button type="button" className="bb-clue-ref" onClick={() => onOpenRef(c.quiz.ref!)}>
+                    {c.quiz.ref.label}
+                  </button>
+                ) : (
+                  <span className="bb-clue-ref">{c.quiz.ref.label}</span>
+                )
+              ) : null}
+              {c.study ? (
+                <Link className="bb-clue-link text-[14px]" href={c.study.href}>
+                  {c.study.label} →
+                </Link>
+              ) : null}
+            </div>
+          </li>
+        );
+      })}
     </ol>
   );
 }
@@ -120,7 +145,7 @@ export default function ClueResults({
         <span className="bb-clue-pointsbadge" style={{ fontSize: 30, padding: "8px 26px" }}>⭐ {score} point{Math.abs(score) === 1 ? "" : "s"}</span>
       </div>
       <p className="bb-clue-serif mt-3 text-[22px] font-bold">
-        {won} of {total} rounds won
+        {won} of {total} right
       </p>
       {fan.length ? (
         <div className="mt-3 flex items-end justify-center">
@@ -140,7 +165,7 @@ export default function ClueResults({
         {primary}
         {secondary}
         <button type="button" onClick={onReview} className="bb-clue-link mx-auto text-[17px]">
-          📖 Review all 10 rounds
+          📖 Review all {total} questions
         </button>
       </div>
       <div className="mt-5 border-t pt-4" style={{ borderColor: "#d7b26b" }}>

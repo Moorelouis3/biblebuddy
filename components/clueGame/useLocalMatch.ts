@@ -10,7 +10,7 @@
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ALL_CLUE_CARDS } from "@/lib/clueGame/catalog";
+import { CLUE_BANK } from "@/lib/clueGame/bank";
 import { publicView, reduceClueMatch, type ClueAction, type ClueMatch } from "@/lib/clueGame/engine";
 import { trackClue } from "@/lib/clueGame/track";
 
@@ -24,7 +24,8 @@ export function useLocalMatch(initial: () => ClueMatch, opts: { persistKey?: str
         const saved = window.localStorage.getItem(opts.persistKey);
         if (saved) {
           const m = JSON.parse(saved) as ClueMatch;
-          if (m && m.phase !== "over") return reduceClueMatch(m, { type: "resume", now: Date.now() }, ALL_CLUE_CARDS);
+          // Only a saved game from this version (the five-clue version had no `done`).
+          if (m && m.phase !== "over" && Array.isArray(m.done)) return reduceClueMatch(m, { type: "resume", now: Date.now() }, CLUE_BANK);
         }
       } catch {}
     }
@@ -37,9 +38,9 @@ export function useLocalMatch(initial: () => ClueMatch, opts: { persistKey?: str
     latest.current = match;
   }, [match]);
 
-  // Omit applied to each kind of action, so guess and wait keep their playerId.
+  // Omit applied to each kind of action, so an answer keeps its playerId and choice.
   const act = useCallback((action: ClueActionInput) => {
-    setMatch((m) => reduceClueMatch(m, { ...action, now: action.now ?? Date.now() } as ClueAction, ALL_CLUE_CARDS));
+    setMatch((m) => reduceClueMatch(m, { ...action, now: action.now ?? Date.now() } as ClueAction, CLUE_BANK));
   }, []);
 
   // The clock.
@@ -48,7 +49,7 @@ export function useLocalMatch(initial: () => ClueMatch, opts: { persistKey?: str
     const id = window.setInterval(() => {
       const t = Date.now();
       setNow(t);
-      setMatch((m) => reduceClueMatch(m, { type: "tick", now: t }, ALL_CLUE_CARDS));
+      setMatch((m) => reduceClueMatch(m, { type: "tick", now: t }, CLUE_BANK));
     }, 150);
     return () => window.clearInterval(id);
   }, [match.phase]);
@@ -66,14 +67,14 @@ export function useLocalMatch(initial: () => ClueMatch, opts: { persistKey?: str
     const key = opts.persistKey;
     const onHide = () => {
       // Written straight away: a page that is closing may never run another render.
-      const paused = reduceClueMatch(latest.current, { type: "pause", now: Date.now() }, ALL_CLUE_CARDS);
+      const paused = reduceClueMatch(latest.current, { type: "pause", now: Date.now() }, CLUE_BANK);
       try {
         if (paused.phase !== "over" && paused.phase !== "ready") window.localStorage.setItem(key, JSON.stringify(paused));
       } catch {}
       latest.current = paused;
       setMatch(paused);
     };
-    const onShow = () => setMatch((m) => reduceClueMatch(m, { type: "resume", now: Date.now() }, ALL_CLUE_CARDS));
+    const onShow = () => setMatch((m) => reduceClueMatch(m, { type: "resume", now: Date.now() }, CLUE_BANK));
     const onVis = () => (document.visibilityState === "hidden" ? onHide() : onShow());
     document.addEventListener("visibilitychange", onVis);
     window.addEventListener("pagehide", onHide);
@@ -83,32 +84,31 @@ export function useLocalMatch(initial: () => ClueMatch, opts: { persistKey?: str
     };
   }, [opts.persistKey]);
 
-  // Measurement: a started round, each card's outcome, the finished round.
-  const logged = useRef(0);
+  // Measurement: a started match, each card's outcome, the finished match.
+  const logged = useRef({ started: false, done: 0, over: false });
   useEffect(() => {
-    const fresh = match.log.slice(logged.current);
-    logged.current = match.log.length;
-    for (const e of fresh) {
-      if (e.type === "deal" && match.dealt === 1) trackClue("clue_game_started", { mode: opts.mode, decks: opts.deckIds, cards: match.deck.length });
-      if (e.type === "correct" || e.type === "missed") {
-        trackClue("clue_game_card", {
-          mode: opts.mode,
-          card: e.cardId,
-          outcome: e.type === "correct" ? "won" : "missed",
-          points: e.type === "correct" ? e.points : 0,
-          wrong_guesses: match.log.filter((x) => x.type === "wrong" && x.cardId === e.cardId).length,
-        });
-      }
-      if (e.type === "over") {
-        const side = match.sides[0]?.id;
-        trackClue("clue_game_finished", { mode: opts.mode, decks: opts.deckIds, score: match.scores[side] ?? 0, won: (match.piles[side] || []).length, cards: match.deck.length });
-      }
+    const l = logged.current;
+    if (!l.started && match.phase !== "ready") {
+      l.started = true;
+      trackClue("clue_game_started", { mode: opts.mode, decks: opts.deckIds, cards: match.deck.length });
+    }
+    for (const d of match.done.slice(l.done)) {
+      const a = d.answers.me;
+      const pts = d.points.me ?? 0;
+      trackClue("clue_game_card", { mode: opts.mode, card: d.cardId, outcome: pts > 0 ? "won" : a ? "wrong" : "skipped", points: pts, tiebreak: d.tiebreak });
+    }
+    l.done = match.done.length;
+    if (!l.over && match.phase === "over") {
+      l.over = true;
+      const side = match.sides[0]?.id;
+      const right = match.done.filter((d) => !d.tiebreak && (d.points[side] ?? 0) > 0).length;
+      trackClue("clue_game_finished", { mode: opts.mode, decks: opts.deckIds, score: match.scores[side] ?? 0, won: right, cards: match.deck.length });
     }
   }, [match, opts.mode, opts.deckIds]);
 
-  const view = useMemo(() => publicView(match, ALL_CLUE_CARDS, now), [match, now]);
+  const view = useMemo(() => publicView(match, CLUE_BANK, now, "me"), [match, now]);
   const reset = useCallback((next: ClueMatch) => {
-    logged.current = 0;
+    logged.current = { started: false, done: 0, over: false };
     setMatch(next);
   }, []);
   return { match, view, now, act, reset };

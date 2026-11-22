@@ -1,16 +1,16 @@
 "use client";
 
 /**
- * A Feed challenge: the exact solo round someone finished (same 10 cards,
- * order, clues and timing), its leaderboard, and Play Challenge. The first
+ * A Feed challenge: the exact solo round someone finished (same 10
+ * questions, same order, same timing), its leaderboard, and Play Challenge. The first
  * finished attempt per person is ranked; later ones are practice. An
  * unfinished attempt survives a reload (useLocalMatch persistKey).
  */
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { poolFor } from "@/lib/clueGame/catalog";
-import { createMatch, ROUND_INTRO_MS, soloSetup, type PublicCard } from "@/lib/clueGame/engine";
+import { BANK_ITEMS } from "@/lib/clueGame/bank";
+import { createMatch, ROUND_INTRO_MS, soloSetup, type ClueSelection, type PublicCard } from "@/lib/clueGame/engine";
 import type { ClueRef } from "@/lib/clueGame/types";
 import { clueApi, trackClue } from "@/lib/clueGame/track";
 import ClueTable from "./ClueTable";
@@ -23,8 +23,10 @@ type Challenge = {
   creatorScore: number;
   deckIds: string[];
   deckName: string;
+  selection: ClueSelection;
   cardIds: string[];
-  topClue: Record<string, number>;
+  /** Made before the question bank: it cannot be replayed. */
+  outdated?: boolean;
   attempts: number;
   leaderboard: Array<{ rank: number; userId: string; name: string; score: number; won: number }>;
   yourRanked: { score: number; won: number } | null;
@@ -46,9 +48,8 @@ function Board({ c }: { c: Challenge }) {
 }
 
 function ChallengeRound({ c, onDone }: { c: Challenge; onDone: (c: Challenge, ranked: boolean) => void }) {
-  const pool = useMemo(() => poolFor(c.deckIds), [c.deckIds]);
   const { match, view, now, act } = useLocalMatch(
-    () => createMatch({ cards: pool, ...soloSetup("me", "You"), seed: 1, cardIds: c.cardIds, topClue: c.topClue }),
+    () => createMatch({ items: BANK_ITEMS, selection: c.selection, ...soloSetup("me", "You"), seed: 1, cardIds: c.cardIds }),
     { persistKey: `bb:clue-challenge:${c.id}`, mode: "challenge", deckIds: c.deckIds },
   );
   const [study, setStudy] = useState<PublicCard | null>(null);
@@ -64,7 +65,7 @@ function ChallengeRound({ c, onDone }: { c: Challenge; onDone: (c: Challenge, ra
     void (async () => {
       const res = await clueApi<{ ranked: boolean; challenge: Challenge }>(`/api/clue-game/challenges/${c.id}`, {
         method: "POST",
-        body: { score: match.scores.me ?? 0, won: (match.piles.me || []).length },
+        body: { score: match.scores.me ?? 0, won: match.done.filter((d) => !d.tiebreak && (d.points.me ?? 0) > 0).length },
       });
       trackClue("clue_game_challenge_finished", { challenge: c.id, score: match.scores.me ?? 0, ranked: res.data.ranked });
       onDone(res.ok ? res.data.challenge : c, !!res.data.ranked);
@@ -81,9 +82,8 @@ function ChallengeRound({ c, onDone }: { c: Challenge; onDone: (c: Challenge, ra
         now={now}
         cardBack="/games/clue/genesis/art/card-back.webp"
         deckIds={c.deckIds}
-        roundLabel={c.deckName}
-        onGuess={(text) => act({ type: "guess", playerId: "me", text })}
-        onWait={() => act({ type: "wait", playerId: "me" })}
+        roundLabel="Genesis"
+        onAnswer={(choice) => act({ type: "answer", playerId: "me", choice })}
         onStudy={(card) => {
           setStudy(card);
           trackClue("clue_game_study_opened", { mode: "challenge", card: card.id });
@@ -112,7 +112,7 @@ export default function ClueChallenge({ id }: { id: string }) {
         trackClue("clue_game_challenge_opened", { challenge: id });
         // An unfinished attempt goes straight back to the table.
         try {
-          if (window.localStorage.getItem(`bb:clue-challenge:${id}`)) setPlaying(true);
+          if (!res.data.outdated && window.localStorage.getItem(`bb:clue-challenge:${id}`)) setPlaying(true);
         } catch {}
       } else setError(res.data.error || "This challenge was not found.");
     })();
@@ -148,14 +148,18 @@ export default function ClueChallenge({ id }: { id: string }) {
                 ? finished.ranked
                   ? "Your first try is the one on the leaderboard."
                   : "Only your first try counts on the leaderboard."
-                : `in ${c.deckName}. Same 10 cards, same clues. Can you beat it?`}
+                : `in ${c.deckName}. Same 10 questions. Can you beat it?`}
             </p>
             {c.yourRanked && !finished ? <p className="mt-2 text-[14px] font-bold">Your score: ⭐ {c.yourRanked.score}. You can play again for practice.</p> : null}
             <div className="mt-4"><Board c={c} /></div>
             <p className="mt-2 text-[12px] font-bold opacity-70">{c.attempts} {c.attempts === 1 ? "Buddy has" : "Buddies have"} played</p>
-            <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big mt-4" onClick={() => setPlaying(true)}>
-              ▶ {c.yourRanked || finished ? "Play again (practice)" : "Play Challenge"}
-            </button>
+            {c.outdated ? (
+              <p className="mt-4 text-[14px] font-bold">This challenge was made in the old version of the game, so it can’t be replayed.</p>
+            ) : (
+              <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big mt-4" onClick={() => setPlaying(true)}>
+                ▶ {c.yourRanked || finished ? "Play again (practice)" : "Play Challenge"}
+              </button>
+            )}
             <Link href="/bible-study-games/clue" className="bb-clue-link mt-3 inline-flex">Play your own round</Link>
           </div>
         )}

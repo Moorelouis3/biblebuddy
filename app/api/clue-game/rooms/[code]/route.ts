@@ -16,7 +16,7 @@ export async function GET(request: Request, { params }: Ctx) {
   return NextResponse.json(view, { headers: { "Cache-Control": "no-store" } });
 }
 
-/** Body: { op: "join" | "start" | "guess" | "wait" | "pause" | "resume", text? }. */
+/** Body: { op: "join" | "start" | "rematch" | "answer" | "pause" | "resume", choice? (0-3) }. */
 export async function POST(request: Request, { params }: Ctx) {
   const { code: raw } = await params;
   const code = normalizeCode(raw);
@@ -29,10 +29,10 @@ export async function POST(request: Request, { params }: Ctx) {
   if (op === "join") {
     const joined = await joinRoom(admin, code, user);
     result = joined.ok ? { ok: true } : { error: joined.reason };
-  } else if (op === "start") {
-    result = await startRoom(admin, code, user);
-  } else if (["guess", "wait", "pause", "resume"].includes(op)) {
-    result = await actInRoom(admin, code, user, { type: op, text: body.text });
+  } else if (op === "start" || op === "rematch") {
+    result = await startRoom(admin, code, user, { rematch: op === "rematch" });
+  } else if (["answer", "pause", "resume"].includes(op)) {
+    result = await actInRoom(admin, code, user, { type: op, choice: body.choice });
   } else {
     return NextResponse.json({ error: "Unknown action." }, { status: 400 });
   }
