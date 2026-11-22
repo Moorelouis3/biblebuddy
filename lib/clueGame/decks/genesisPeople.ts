@@ -4,7 +4,8 @@ import { genesisArt, ref } from "../ref";
 /**
  * Genesis deck, People 1-25 (Notion roster order). Cards 1-5 keep the clues
  * transcribed from Louis's mockups, except Adam (revised by Louis
- * 2026-11-22). Only Joseph has art so far; every other card shows the
+ * 2026-11-22). Louis, 2026-11-22: every clue comes from Genesis itself, never
+ * another book. Only Joseph has art so far; every other card shows the
  * neutral fallback until its art exists. Every reference was checked against
  * public/kjv/<book>/<chapter>.json.
  */
@@ -19,15 +20,15 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     accepted: ["the lord", "lord", "lord god", "yahweh", "jehovah", "god almighty", "the lord god", "i am", "elohim"],
     art: genesisArt("god"),
     clues: [
-      { text: "I asked a man whether he had entered the storehouses of the snow.", ref: ref("Job 38:22") },
-      { text: "I told a prophet to take a scroll and write on it again after a king burned the first one.", ref: ref("Jeremiah 36:27–28") },
-      { text: "When a man asked to see my glory, I covered him with my hand in a cleft in the rock.", ref: ref("Exodus 33:18–23") },
-      { text: "I told Moses, “I AM WHO I AM.”", ref: ref("Exodus 3:14") },
+      { text: "I came to King Abimelech in a dream and told him he was as good as dead for taking another man’s wife.", ref: ref("Genesis 20:3") },
+      { text: "I set a mark on a murderer so that no one who found him would kill him.", ref: ref("Genesis 4:15") },
+      { text: "I made coats of skins and clothed the first man and his wife.", ref: ref("Genesis 3:21") },
+      { text: "I set my bow in the cloud as the sign of my covenant with the earth.", ref: ref("Genesis 9:13") },
       { text: "In the beginning, I created the heavens and the earth.", ref: ref("Genesis 1:1") },
     ],
     altTopClues: [
-      { text: "I told a discouraged prophet I had kept seven thousand who never bowed to Baal.", ref: ref("1 Kings 19:18") },
-      { text: "I asked an angry prophet whether he did well to be angry about a plant.", ref: ref("Jonah 4:9–10") },
+      { text: "A man walked with me, and then he was gone, because I took him.", ref: ref("Genesis 5:24") },
+      { text: "I placed cherubim and a flaming sword east of Eden to guard the way to the tree of life.", ref: ref("Genesis 3:24") },
     ],
     teaching:
       "God is the Creator of everything. Genesis opens with him making the heavens and the earth. He revealed his name to Moses as I AM, showed Moses his glory from a cleft in the rock, and answered Job out of the whirlwind. Through every story in Genesis, he is the one who speaks, promises and keeps his word. See Genesis 1:1; Exodus 3:14; 33:18–23; Job 38.",
@@ -40,14 +41,14 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     art: genesisArt("adam"),
     clues: [
       { text: "After my son was born, I lived another 800 years.", ref: ref("Genesis 5:4") },
-      { text: "Luke traces Jesus’ family line all the way back to me.", ref: ref("Luke 3:23–38") },
+      { text: "Because I listened to my wife, the ground was cursed and I would eat bread by the sweat of my face.", ref: ref("Genesis 3:17–19") },
       { text: "I hid among the trees when I heard God in the garden.", ref: ref("Genesis 3:8–10") },
       { text: "God brought the animals to me to see what I would call them.", ref: ref("Genesis 2:19–20") },
       { text: "God formed me from the dust and breathed life into me.", ref: ref("Genesis 2:7") },
     ],
     altTopClues: [
-      { text: "Jude describes Enoch as the seventh from me.", ref: ref("Jude 1:14") },
-      { text: "Paul said death reigned from my time to Moses.", ref: ref("Romans 5:14") },
+      { text: "I was 130 years old when my son Seth was born.", ref: ref("Genesis 5:3") },
+      { text: "I said, “This is now bone of my bones, and flesh of my flesh.”", ref: ref("Genesis 2:23") },
       { text: "I lived 930 years in all, and then I died.", ref: ref("Genesis 5:5") },
     ],
     teaching:
@@ -62,7 +63,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     art: genesisArt("eve"),
     clues: [
       { text: "After Abel died, I said God had given me another child in his place.", ref: ref("Genesis 4:25") },
-      { text: "Paul worried the Corinthians could be led astray the way I was.", ref: ref("2 Corinthians 11:3") },
+      { text: "When my first son was born, I said I had gotten a man from the Lord.", ref: ref("Genesis 4:1") },
       { text: "My husband named me because I would be the mother of all the living.", ref: ref("Genesis 3:20") },
       { text: "I gave my husband fruit from the tree after I ate it.", ref: ref("Genesis 3:6") },
       { text: "God made me from one of Adam’s ribs.", ref: ref("Genesis 2:21–22") },
@@ -79,7 +80,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     art: genesisArt("cain"),
     clues: [
       { text: "I built a city and named it after my son.", ref: ref("Genesis 4:17") },
-      { text: "Jude warned about people who followed my way.", ref: ref("Jude 1:11") },
+      { text: "God warned me that sin was lying at the door and I must rule over it.", ref: ref("Genesis 4:7") },
       { text: "I brought God an offering from the ground I worked.", ref: ref("Genesis 4:2–3") },
       { text: "I asked God whether I was my brother’s keeper.", ref: ref("Genesis 4:9") },
       { text: "I killed my brother Abel.", ref: ref("Genesis 4:8") },
@@ -96,14 +97,14 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     clues: [
       // Louis, 2026-11-22: "ark" and "flood" are saved for the 1-point clue.
       { text: "God found me righteous in a world of unrighteousness.", ref: ref("Genesis 7:1") },
-      { text: "Ezekiel named me alongside Daniel and Job.", ref: ref("Ezekiel 14:14") },
-      { text: "Peter called me a preacher of righteousness.", ref: ref("2 Peter 2:5") },
+      { text: "I cursed my grandson Canaan and said he would be a servant of servants.", ref: ref("Genesis 9:24–25") },
+      { text: "I sent out a raven that kept flying to and fro.", ref: ref("Genesis 8:7") },
       { text: "I sent out a dove that came back with an olive leaf.", ref: ref("Genesis 8:10–11") },
       { text: "God told me to build an ark before the flood.", ref: ref("Genesis 6:13–18") },
     ],
     altTopClues: [
       { text: "My father hoped I would bring comfort from the hard work of our hands.", ref: ref("Genesis 5:29") },
-      { text: "Jesus said the days before his return would be like my days.", ref: ref("Luke 17:26") },
+      { text: "I was 500 years old when I became the father of Shem, Ham and Japheth.", ref: ref("Genesis 5:32") },
       { text: "I planted a vineyard and drank too much of its wine.", ref: ref("Genesis 9:20–21") },
     ],
     teaching:
@@ -117,7 +118,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     art: genesisArt("abraham"),
     clues: [
       { text: "Melchizedek blessed me, and I gave him a tenth of everything.", ref: ref("Genesis 14:18–20") },
-      { text: "James says I was called the friend of God.", ref: ref("James 2:23") },
+      { text: "I asked God to spare a city if only ten righteous people could be found in it.", ref: ref("Genesis 18:32") },
       { text: "God changed my name and said I would be the father of many nations.", ref: ref("Genesis 17:5") },
       { text: "God told me to leave my country and go to a land he would show me.", ref: ref("Genesis 12:1") },
       { text: "God tested me by asking me to offer my son Isaac.", ref: ref("Genesis 22:1–2") },
@@ -125,7 +126,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     altTopClues: [
       { text: "I buried my wife in the cave of Machpelah.", ref: ref("Genesis 23:19") },
       { text: "I armed my servants and rescued my nephew from four kings.", ref: ref("Genesis 14:14–16") },
-      { text: "Paul says I believed God, and it was counted to me as righteousness.", ref: ref("Romans 4:3") },
+      { text: "I believed the Lord, and he counted it to me as righteousness.", ref: ref("Genesis 15:6") },
     ],
     teaching:
       "Abraham, first called Abram, left his home when God called him and went to Canaan. God promised him a land and more descendants than the stars, and renamed him the father of many nations. In old age he and Sarah had Isaac, and Abraham trusted God even when he was asked to offer his son. See Genesis 12:1–3; 15:5–6; 17:5; 21:1–5; 22.",
@@ -138,7 +139,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     accepted: ["sarai", "sara"],
     art: genesisArt("sarah"),
     clues: [
-      { text: "Peter tells wives to follow my example, since I called my husband lord.", ref: ref("1 Peter 3:6") },
+      { text: "A king told me he had given my “brother” a thousand pieces of silver.", ref: ref("Genesis 20:16") },
       { text: "I died in Hebron when I was 127 years old.", ref: ref("Genesis 23:1–2") },
       { text: "I gave my servant Hagar to my husband so I could have children through her.", ref: ref("Genesis 16:1–3") },
       { text: "I laughed when I heard I would have a son in my old age.", ref: ref("Genesis 18:10–12") },
@@ -155,7 +156,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     accepted: ["lott"],
     art: genesisArt("lot"),
     clues: [
-      { text: "Peter calls me a righteous man, troubled by the wicked people around me.", ref: ref("2 Peter 2:7–8") },
+      { text: "I begged to escape to a little city nearby because I could not flee to the mountain.", ref: ref("Genesis 19:19–20") },
       { text: "When my uncle let me choose, I picked the well-watered plain of the Jordan.", ref: ref("Genesis 13:10–11") },
       { text: "My uncle Abram rescued me after kings carried me off as a captive.", ref: ref("Genesis 14:12–16") },
       { text: "Angels took me by the hand and led me out of Sodom.", ref: ref("Genesis 19:16") },
@@ -171,7 +172,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     accepted: ["agar", "haggar"],
     art: genesisArt("hagar"),
     clues: [
-      { text: "Paul uses me as a picture of Mount Sinai in Arabia.", ref: ref("Galatians 4:24–25") },
+      { text: "I sat down a bowshot away so I would not have to watch my child die.", ref: ref("Genesis 21:16") },
       { text: "An angel found me by a spring on the way to Shur.", ref: ref("Genesis 16:7") },
       { text: "I called the Lord “the God who sees me.”", ref: ref("Genesis 16:13") },
       { text: "I was Sarai’s Egyptian servant, and she gave me to Abram as a wife.", ref: ref("Genesis 16:1–3") },
@@ -220,7 +221,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     accepted: ["rebecca", "rebeca", "rebekka", "rebeka", "rebecka", "rebekah"],
     art: genesisArt("rebekah"),
     clues: [
-      { text: "Paul says I was told the older would serve the younger before my sons were born.", ref: ref("Romans 9:10–12") },
+      { text: "I told my husband the Hittite women made me weary of my life.", ref: ref("Genesis 27:46") },
       { text: "I gave a stranger a drink at the well and watered his camels too.", ref: ref("Genesis 24:18–20") },
       { text: "My brother Laban ran out to meet the servant who came for me.", ref: ref("Genesis 24:29") },
       { text: "I had twins, and they struggled together inside me.", ref: ref("Genesis 25:22–24") },
@@ -237,7 +238,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     accepted: ["edom", "esaw"],
     art: genesisArt("esau"),
     clues: [
-      { text: "Hebrews warns us not to be godless like me.", ref: ref("Hebrews 12:16") },
+      { text: "I went to Ishmael and married his daughter Mahalath.", ref: ref("Genesis 28:9") },
       { text: "I married two Hittite women, and it grieved my parents.", ref: ref("Genesis 26:34–35") },
       { text: "I was a skilful hunter, a man of the field.", ref: ref("Genesis 25:27") },
       { text: "I was born red and hairy all over.", ref: ref("Genesis 25:25") },
@@ -254,7 +255,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     art: genesisArt("jacob"),
     clues: [
       { text: "I told my father-in-law I had served him twenty years, fourteen for his daughters.", ref: ref("Genesis 31:41") },
-      { text: "Hosea says I took my brother by the heel in the womb.", ref: ref("Hosea 12:3") },
+      { text: "I was born holding on to my twin brother’s heel.", ref: ref("Genesis 25:26") },
       { text: "I dreamed of a ladder reaching up to heaven.", ref: ref("Genesis 28:12") },
       { text: "I wrestled with God, and he changed my name to Israel.", ref: ref("Genesis 32:24–28") },
       { text: "I tricked my father Isaac and took my brother Esau’s blessing.", ref: ref("Genesis 27:18–29") },
@@ -307,7 +308,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     accepted: ["rahel", "rachael", "rachelle"],
     art: genesisArt("rachel"),
     clues: [
-      { text: "Jeremiah heard me weeping for my children in Ramah.", ref: ref("Jeremiah 31:15") },
+      { text: "I let my sister have our husband for a night in exchange for her son’s mandrakes.", ref: ref("Genesis 30:14–15") },
       { text: "I hid my father’s household gods under a camel saddle and sat on them.", ref: ref("Genesis 31:34") },
       { text: "I died giving birth on the way to Bethlehem.", ref: ref("Genesis 35:16–19") },
       { text: "Jacob worked seven years for me, and they felt like a few days.", ref: ref("Genesis 29:20") },
@@ -324,9 +325,9 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     accepted: ["ruben", "rueben", "reubin"],
     art: genesisArt("reuben"),
     clues: [
-      { text: "Moses prayed that my tribe would live and not die.", ref: ref("Deuteronomy 33:6") },
+      { text: "I told my father he could kill my two sons if I did not bring Benjamin back.", ref: ref("Genesis 42:37") },
       { text: "I found mandrakes in the field and brought them to my mother.", ref: ref("Genesis 30:14") },
-      { text: "I lost my birthright because I dishonoured my father’s bed.", ref: ref("1 Chronicles 5:1") },
+      { text: "My father said I was as unstable as water and would not excel.", ref: ref("Genesis 49:3–4") },
       { text: "I talked my brothers out of killing Joseph and planned to rescue him.", ref: ref("Genesis 37:21–22") },
       { text: "I was Jacob’s firstborn son, born to Leah.", ref: ref("Genesis 29:32") },
     ],
@@ -340,8 +341,8 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     accepted: ["symeon", "simon of jacob", "shimon"],
     art: genesisArt("simeon"),
     clues: [
-      { text: "When the tribes were counted in Moab, my families numbered 22,200.", ref: ref("Numbers 26:14") },
-      { text: "My tribe’s land lay inside the land of Judah.", ref: ref("Joshua 19:1") },
+      { text: "One of my sons, Shaul, was the son of a Canaanite woman.", ref: ref("Genesis 46:10") },
+      { text: "My father cursed my fierce anger and said my brother and I would be scattered in Israel.", ref: ref("Genesis 49:7") },
       { text: "Leah named me because the Lord heard that she was unloved.", ref: ref("Genesis 29:33") },
       { text: "With my brother Levi, I killed the men of Shechem.", ref: ref("Genesis 34:25") },
       { text: "Joseph had me bound and kept in Egypt while my brothers went home.", ref: ref("Genesis 42:24") },
@@ -356,11 +357,11 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     accepted: ["levy", "leevi"],
     art: genesisArt("levi"),
     clues: [
-      { text: "My sons were Gershon, Kohath and Merari.", ref: ref("Exodus 6:16") },
+      { text: "My sons were Gershon, Kohath and Merari.", ref: ref("Genesis 46:11") },
       { text: "Leah named me hoping her husband would now be joined to her.", ref: ref("Genesis 29:34") },
-      { text: "Both of Moses’ parents came from my family.", ref: ref("Exodus 2:1") },
+      { text: "When my father scolded us, I asked whether our sister should be treated like a harlot.", ref: ref("Genesis 34:30–31") },
+      { text: "My father said my brother and I were instruments of cruelty.", ref: ref("Genesis 49:5") },
       { text: "With my brother Simeon, I took revenge on Shechem.", ref: ref("Genesis 34:25–26") },
-      { text: "God gave my tribe the work of carrying and caring for the tabernacle.", ref: ref("Numbers 1:50") },
     ],
     teaching:
       "Levi was Jacob’s third son, born to Leah. With Simeon, he took revenge on Shechem, and Jacob rebuked them both. Moses and Aaron came from Levi’s family, and God set apart his tribe to serve at the tabernacle. The Levites received no land of their own, because the Lord was their inheritance. See Genesis 29:34; 34; Exodus 2:1; Numbers 1:50; Joshua 13:33.",
@@ -376,7 +377,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
       { text: "My father called me a lion’s cub.", ref: ref("Genesis 49:9") },
       { text: "I suggested selling Joseph to the Ishmaelites instead of killing him.", ref: ref("Genesis 37:26–27") },
       { text: "I offered to stay as a slave in Egypt in Benjamin’s place.", ref: ref("Genesis 44:33") },
-      { text: "Revelation calls Jesus the Lion of my tribe.", ref: ref("Revelation 5:5") },
+      { text: "My father said the sceptre would not depart from me until Shiloh came.", ref: ref("Genesis 49:10") },
     ],
     teaching:
       "Judah was Jacob’s fourth son, born to Leah. He suggested selling Joseph instead of killing him, but years later he offered his own life in place of Benjamin. Jacob called him a lion’s cub and said the sceptre would not leave Judah. King David and Jesus came from his tribe. See Genesis 29:35; 37:26–27; 44:18–34; 49:8–10; Revelation 5:5.",
@@ -389,14 +390,14 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     art: genesisArt("joseph"),
     clues: [
       { text: "I married Asenath, the daughter of a priest of On.", ref: ref("Genesis 41:45") },
-      { text: "Hebrews says that by faith I gave instructions about my bones.", ref: ref("Hebrews 11:22") },
+      { text: "I made the children of Israel swear to carry my bones up out of Egypt.", ref: ref("Genesis 50:25") },
       { text: "I dreamed my brothers’ sheaves bowed down to my sheaf.", ref: ref("Genesis 37:7") },
       { text: "I explained Pharaoh’s dreams of seven fat cows and seven thin cows.", ref: ref("Genesis 41:25–27") },
       { text: "My father gave me a coat of many colours.", ref: ref("Genesis 37:3") },
     ],
     altTopClues: [
-      { text: "A psalm says my feet were hurt with chains after I was sold as a servant.", ref: ref("Psalms 105:17–18") },
-      { text: "My bones were buried at Shechem in the ground my father bought.", ref: ref("Joshua 24:32") },
+      { text: "I was thirty years old when I stood before Pharaoh.", ref: ref("Genesis 41:46") },
+      { text: "I died at 110 and was embalmed and laid in a coffin in Egypt.", ref: ref("Genesis 50:26") },
       { text: "I named my firstborn son because God made me forget my trouble.", ref: ref("Genesis 41:51") },
     ],
     teaching:
@@ -411,7 +412,7 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     art: genesisArt("benjamin"),
     clues: [
       { text: "My father said I would tear like a wolf.", ref: ref("Genesis 49:27") },
-      { text: "Paul said he came from my tribe.", ref: ref("Romans 11:1") },
+      { text: "At a feast in Egypt, my portion was five times bigger than any of my brothers’.", ref: ref("Genesis 43:34") },
       { text: "My dying mother named me Ben-oni, but my father gave me another name.", ref: ref("Genesis 35:18") },
       { text: "Joseph’s silver cup was found in my sack.", ref: ref("Genesis 44:12") },
       { text: "I was Rachel’s second son and Joseph’s only full brother.", ref: ref("Genesis 35:24") },

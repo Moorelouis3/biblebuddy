@@ -15,7 +15,7 @@ import type { PublicCard } from "@/lib/clueGame/engine";
 import type { ClueCategory, ClueRef } from "@/lib/clueGame/types";
 import { kjvStaticUrl } from "@/lib/chapterStaticData";
 import { ref as parseRef } from "@/lib/clueGame/ref";
-import { clueSound, primeClueSound, setSoundOn, soundOn } from "@/lib/clueGame/sound";
+import { CLUE_MUSIC_TRACKS, clueSound, musicOn, musicTrack, musicVolume, primeClueSound, setMusicOn, setMusicTrack, setMusicVolume, setSoundOn, soundOn } from "@/lib/clueGame/sound";
 
 export const CATEGORY_LABEL: Record<ClueCategory, string> = { person: "Person", place: "Place", keyword: "Thing" }; // on a card a keyword reads "Thing" (Louis, 2026-11-22)
 
@@ -240,29 +240,107 @@ export function StudyCard({ card, onClose, onOpenRef }: { card: PublicCard; onCl
 /* ---------- the room ---------- */
 
 /** The speaker button: sound on or off, kept on this device. */
+/**
+ * The sound button opens a small menu (Louis, 2026-11-22): music on/off with
+ * a volume slider and a choice of track, and the sound effects on/off on
+ * their own. Every choice is kept on the device.
+ */
 export function SoundToggle() {
-  const [on, setOn] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [fx, setFx] = useState(true);
+  const [mOn, setMOn] = useState(true);
+  const [vol, setVol] = useState(0.5);
+  const [track, setTrack] = useState(0);
   useEffect(() => {
-    // Read the saved choice after mount (localStorage is not there on the server).
-    const id = window.setTimeout(() => setOn(soundOn()), 0);
+    // Read the saved choices after mount (localStorage is not there on the server).
+    const id = window.setTimeout(() => {
+      setFx(soundOn());
+      setMOn(musicOn());
+      setVol(musicVolume());
+      setTrack(musicTrack());
+    }, 0);
     return () => window.clearTimeout(id);
   }, []);
+  const silent = !fx && !mOn;
   return (
-    <button
-      type="button"
-      className="bb-clue-round"
-      aria-label={on ? "Turn sound off" : "Turn sound on"}
-      aria-pressed={on}
-      onClick={() => {
-        setSoundOn(!on);
-        setOn(!on);
-        if (!on) clueSound.tap();
-      }}
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/games/clue/ui/icon-sound.webp" alt="" className={on ? "" : "is-off"} />
-      {on ? null : <span className="bb-clue-mute-slash" aria-hidden="true" />}
-    </button>
+    <div className="bb-sound">
+      <button type="button" className="bb-clue-round" aria-label="Sound and music" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/games/clue/ui/icon-sound.webp" alt="" className={silent ? "is-off" : ""} />
+        {silent ? <span className="bb-clue-mute-slash" aria-hidden="true" /> : null}
+      </button>
+      {open ? (
+        <>
+          <div className="bb-sound-backdrop" onClick={() => setOpen(false)} aria-hidden="true" />
+          <div className="bb-sound-menu" role="dialog" aria-label="Sound and music">
+            <div className="bb-sound-row">
+              <span className="bb-sound-title">🎵 Music</span>
+              <button
+                type="button"
+                className={`bb-sound-switch ${mOn ? "is-on" : ""}`}
+                aria-pressed={mOn}
+                onClick={() => {
+                  setMusicOn(!mOn);
+                  setMOn(!mOn);
+                }}
+              >
+                {mOn ? "On" : "Off"}
+              </button>
+            </div>
+            <label className="bb-sound-slider">
+              <span>Volume</span>
+              <input
+                type="range"
+                min={0}
+                max={1}
+                step={0.05}
+                value={vol}
+                disabled={!mOn}
+                onChange={(e) => {
+                  const v = Number(e.target.value);
+                  setVol(v);
+                  setMusicVolume(v);
+                }}
+                aria-label="Music volume"
+              />
+            </label>
+            <div className="bb-sound-tracks" role="radiogroup" aria-label="Music track">
+              {CLUE_MUSIC_TRACKS.map((t, i) => (
+                <button
+                  key={t.src}
+                  type="button"
+                  role="radio"
+                  aria-checked={track === i}
+                  className={track === i ? "is-on" : ""}
+                  disabled={!mOn}
+                  onClick={() => {
+                    setTrack(i);
+                    setMusicTrack(i);
+                  }}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+            <div className="bb-sound-row is-split">
+              <span className="bb-sound-title">🔔 Sound effects</span>
+              <button
+                type="button"
+                className={`bb-sound-switch ${fx ? "is-on" : ""}`}
+                aria-pressed={fx}
+                onClick={() => {
+                  setSoundOn(!fx);
+                  setFx(!fx);
+                  if (!fx) clueSound.tap();
+                }}
+              >
+                {fx ? "On" : "Off"}
+              </button>
+            </div>
+          </div>
+        </>
+      ) : null}
+    </div>
   );
 }
 
@@ -511,6 +589,23 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-clue-fancard .bb-clue-card-art { flex:1; padding:6% 6% 0; }
 .bb-clue-fancard .bb-clue-art { border-radius:6px; }
 .bb-clue-fancard .bb-clue-card-name { font-size: clamp(9px, 2.4vw, 12px); padding: 3px 2px 5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.bb-sound { position:relative; }
+.bb-sound-backdrop { position:fixed; inset:0; z-index:60; }
+.bb-sound-menu { position:absolute; right:0; top: calc(100% + 8px); z-index:61; width: 250px; padding: 14px; border-radius:16px; color:#2a1a0c; text-align:left;
+  background: linear-gradient(180deg,#fff8e6,#f1ddb0); box-shadow: 0 0 0 2px #c99a46, 0 12px 26px rgba(0,0,0,.45); animation: bb-clue-fadein .15s ease-out both; }
+.bb-sound-menu :is(span,label) { color:#2a1a0c !important; }
+.bb-sound-row { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.bb-sound-row.is-split { margin-top: 12px; padding-top: 12px; border-top: 1.5px dashed #c99a46; }
+.bb-sound-title { font-family: Georgia, serif; font-weight:800; font-size:16px; }
+.bb-sound-switch { min-width: 58px; height: 32px; border-radius: 999px; font-weight:900; font-size:14px; color:#6a4a22 !important; background:#e8d6ad; box-shadow: inset 0 0 0 1.5px #c99a46; }
+.bb-sound-switch.is-on { color:#fff6d8 !important; background: linear-gradient(180deg,#2f8a4f,#1d6a34); box-shadow:none; }
+.bb-sound-slider { display:flex; align-items:center; gap:10px; margin-top:10px; font-size:13px; font-weight:800; }
+.bb-sound-slider input { flex:1; accent-color:#1d6a34; }
+.bb-sound-slider input:disabled { opacity:.4; }
+.bb-sound-tracks { display:flex; gap:6px; margin-top:10px; }
+.bb-sound-tracks button { flex:1; height:32px; border-radius:10px; font-weight:900; font-size:14px; color:#6a4a22 !important; background:#f8ecd0; box-shadow: inset 0 0 0 1.5px #c99a46; }
+.bb-sound-tracks button.is-on { color:#fff6d8 !important; background: linear-gradient(180deg,#2f8a4f,#1d6a34); box-shadow:none; }
+.bb-sound-tracks button:disabled { opacity:.45; }
 /* ---------- the board (ClueTable): the Genesis four-player layout ---------- */
 .bb-cb { position:relative; width: min(100%, 760px); margin: 0 auto; padding: 0 12px 6px; display:flex; flex-direction:column;
   height: calc(var(--vvh, 100dvh) - var(--cb-top, 60px) - env(safe-area-inset-bottom)); }
