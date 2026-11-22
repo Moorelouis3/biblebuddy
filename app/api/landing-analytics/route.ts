@@ -62,6 +62,17 @@ const ALLOWED_EVENTS = new Set([
   "clue_game_started",
   "clue_game_card",
   "clue_game_finished",
+  // Bible Clue Game Beta, 90-day evaluation: study opens, rooms, Feed
+  // challenges, and the "enjoyed it / want more" answer.
+  "clue_game_study_opened",
+  "clue_game_review_opened",
+  "clue_game_room_created",
+  "clue_game_room_joined",
+  "clue_game_challenge_shared",
+  "clue_game_challenge_opened",
+  "clue_game_challenge_started",
+  "clue_game_challenge_finished",
+  "clue_game_feedback",
   // One-time "It starts today" popup for members who have not started (Oct 1+).
   "proverbs_launch_popup_impression",
   "proverbs_launch_popup_dismissed",

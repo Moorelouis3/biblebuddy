@@ -336,6 +336,13 @@ export function summariseNewFeatures(input: NewFeaturesInput, range: FeatureRang
         rows: [
           { label: "Cards played", value: clueCards.length },
           { label: "Games finished", value: clueFinished.length },
+          { label: "Study This Card opened", value: input.events.filter((r) => r.event_name === "clue_game_study_opened").length },
+          { label: "Challenges shared to the Feed", value: input.events.filter((r) => r.event_name === "clue_game_challenge_shared").length },
+          { label: "Challenge attempts finished", value: input.events.filter((r) => r.event_name === "clue_game_challenge_finished").length },
+          { label: "Rooms created", value: input.events.filter((r) => r.event_name === "clue_game_room_created").length },
+          { label: "Said they enjoyed it", value: input.events.filter((r) => r.event_name === "clue_game_feedback" && r.metadata?.enjoyed === true).length },
+          { label: "Said they did not", value: input.events.filter((r) => r.event_name === "clue_game_feedback" && r.metadata?.enjoyed === false).length },
+          { label: "Want more books", value: input.events.filter((r) => r.event_name === "clue_game_feedback" && r.metadata?.want_more_decks === true).length },
         ],
       },
     ],
@@ -427,6 +434,11 @@ export const FEATURE_EVENT_NAMES = [
   "clue_game_started",
   "clue_game_card",
   "clue_game_finished",
+  "clue_game_study_opened",
+  "clue_game_challenge_shared",
+  "clue_game_challenge_finished",
+  "clue_game_room_created",
+  "clue_game_feedback",
 ];
 
 const FEATURE_ACTION_TYPES = [

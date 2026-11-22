@@ -152,7 +152,7 @@ check("every event the report reads is sent by the app and accepted by the analy
   const route = read("app/api/landing-analytics/route.ts");
   // The two-games popup is shown by the popup coordinator since 2026-11-15,
   // which sends these under their old names as well as its own.
-  const senders = ["components/popups/PopupCoordinator.tsx", "lib/featureEvents.ts", "lib/bibleMemory.ts", "components/memory/BibleMemoryHome.tsx", "components/wordsearch/WordSearchBooks.tsx", "components/clueGame/ClueGame.tsx"]
+  const senders = ["components/popups/PopupCoordinator.tsx", "lib/featureEvents.ts", "lib/bibleMemory.ts", "components/memory/BibleMemoryHome.tsx", "components/wordsearch/WordSearchBooks.tsx", "components/clueGame/ClueGame.tsx", "components/clueGame/useLocalMatch.ts", "components/clueGame/ClueResults.tsx", "components/clueGame/ClueChallenge.tsx"]
     .map(read)
     .join("\n");
   for (const name of FEATURE_EVENT_NAMES) {

@@ -26,7 +26,16 @@ export type FeatureEventName =
   | "clue_game_opened"
   | "clue_game_started"
   | "clue_game_card"
-  | "clue_game_finished";
+  | "clue_game_finished"
+  | "clue_game_study_opened"
+  | "clue_game_review_opened"
+  | "clue_game_room_created"
+  | "clue_game_room_joined"
+  | "clue_game_challenge_shared"
+  | "clue_game_challenge_opened"
+  | "clue_game_challenge_started"
+  | "clue_game_challenge_finished"
+  | "clue_game_feedback";
 
 /** Where "Add to Bible Memory" was tapped. */
 export type MemorySaveSource = "daily_verse_card" | "daily_verse_popup" | "reader" | "picker" | "word_search";
