@@ -64,7 +64,8 @@ export default function MatchBoard({
   isLastLevel: boolean;
 }) {
   const reduced = useReducedMotion();
-  const ids = useRef({ next: 1 });
+  // Tile ids for this board: one object, only ever read and bumped in handlers.
+  const [ids] = useState(() => ({ current: { next: 1 } }));
   const [seed, setSeed] = useState(0); // bumps on retry
   const [board, setBoard] = useState<Board>(() => createBoard(level.types, Math.random, ids.current));
   const [moves, setMoves] = useState(level.moves);
@@ -89,7 +90,6 @@ export default function MatchBoard({
   const T = useMemo(() => (reduced ? { flash: 120, pop: 60, fall: 80, between: 40 } : { flash: 240, pop: 220, fall: 340, between: 60 }), [reduced]);
 
   const restart = useCallback(() => {
-    ids.current = { next: 1 };
     setBoard(createBoard(level.types, Math.random, ids.current));
     setMoves(level.moves);
     setCollected({});
@@ -165,7 +165,7 @@ export default function MatchBoard({
         setOutcome({ won: false, score: total, movesLeft: 0 });
       }
     },
-    [busy, outcome, level, moves, collected, score, dark, T, reduced, onWin],
+    [busy, outcome, level, moves, collected, score, dark, T, reduced, onWin, ids],
   );
 
   // ---- input: drag a line (finger or mouse) ----
