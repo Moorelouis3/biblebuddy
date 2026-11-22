@@ -24,7 +24,7 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode }
 import { INTRO_DEAL_EACH_MS, INTRO_SHUFFLE_MS, ROUND_INTRO_MS, type PublicCard, type PublicMatch } from "@/lib/clueGame/engine";
 import { sceneFor } from "@/lib/clueGame/catalog";
 import { CardBack, SubjectArt } from "./ClueParts";
-import { clueSound } from "@/lib/clueGame/sound";
+import { clueSound, startClueMusic } from "@/lib/clueGame/sound";
 
 export type TablePlayer = { id: string; name: string; avatar?: string | null };
 
@@ -168,11 +168,16 @@ export default function ClueTable({
     };
   }, []);
 
-  // Keep the guess box in focus as clues change.
+  // Quiet music while you are at the table (stops when you leave it).
+  useEffect(() => startClueMusic(), []);
+
+  // The keyboard only opens when you tap the box (Louis, 2026-11-22: it
+  // popping up on every clue and round "throws off the game"). When a round
+  // ends it closes.
   const clueKey = round ? `${view.dealt}:${round.clueIndex}` : "";
   useEffect(() => {
-    if (canGuess) inputRef.current?.focus({ preventScroll: true });
-  }, [clueKey, canGuess]);
+    if (view.phase !== "clue") inputRef.current?.blur();
+  }, [view.phase]);
 
   // The face-down cover on a newly dealt card is taken away after its flip,
   // even if a device never runs the animation, so the silhouette always shows.
@@ -288,7 +293,32 @@ export default function ClueTable({
     if (!guess.trim() || !canGuess) return;
     onGuess(guess.trim());
     setGuess("");
+    // Close the keyboard after a guess; tap the box to guess again.
+    inputRef.current?.blur();
   };
+
+  /**
+   * Nothing scrolls (Louis: "when I tap on your guess I don't need the whole
+   * thing to scroll away"). Phones scroll the page to show a focused box; the
+   * board instead takes the height that is left above the keyboard and the
+   * page is put straight back at the top.
+   */
+  useLayoutEffect(() => {
+    const vv = window.visualViewport;
+    const el = boardRef.current;
+    if (!vv || !el) return;
+    const fit = () => {
+      el.style.setProperty("--vvh", `${Math.round(vv.height)}px`);
+      if (window.scrollY !== 0 || document.documentElement.scrollTop !== 0) window.scrollTo(0, 0);
+    };
+    fit();
+    vv.addEventListener("resize", fit);
+    vv.addEventListener("scroll", fit);
+    return () => {
+      vv.removeEventListener("resize", fit);
+      vv.removeEventListener("scroll", fit);
+    };
+  }, []);
 
   const currentClue = round && view.phase === "clue" ? round.shownClues[round.clueIndex] : "";
   const keyRef = card?.clues?.[4]?.ref ?? card?.clues?.[0]?.ref;
@@ -360,7 +390,9 @@ export default function ClueTable({
 
       {/* The scenery stays visible here; the answers float over it */}
       {overlay ? null : <div className="bb-cb-gap">
-        {view.roundAnswers.length && !inIntro && !overlay ? (
+        {/* Everyone's answers, with times: only with other players (Louis:
+            on your own "it don't need to show each try"). */}
+        {view.roundAnswers.length && !inIntro && !overlay && players.length > 1 ? (
           <div className="bb-cb-answers bb-clue-answers">
             <ol>
               {view.roundAnswers.slice(-3).map((a, i) => (
@@ -412,7 +444,7 @@ export default function ClueTable({
               {inIntro ? (
                 <p className="bb-cb-panel-big">{shuffling ? "Shuffling the deck…" : dealingDone ? "Round 1. Here we go!" : `Dealing ${view.deckSize} cards…`}</p>
               ) : paused ? (
-                <p className="bb-cb-panel-big">Paused by the host. Talk it over!</p>
+                <p className="bb-cb-panel-big">{players.length > 1 ? "Paused by the host. Talk it over!" : "Paused. Tap Resume when you are ready."}</p>
               ) : view.phase === "clue" && card ? (
                 <>
                   <div className="bb-cb-panel-head">
@@ -425,9 +457,6 @@ export default function ClueTable({
                       <img src={`${UI}/icon-stopwatch.webp`} alt="" />
                       0:{String(seconds).padStart(2, "0")}
                     </span>
-                  </div>
-                  <div className="bb-cb-timebar">
-                    <span style={{ transform: `scaleX(${clueMsLeft / (view.settings.clueSeconds * 1000)})` }} className={seconds <= 3 ? "is-final" : ""} />
                   </div>
                   <p key={clueKey} className="bb-cb-clue bb-clue-fadein">{currentClue}</p>
                 </>

@@ -513,7 +513,7 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-clue-fancard .bb-clue-card-name { font-size: clamp(9px, 2.4vw, 12px); padding: 3px 2px 5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 /* ---------- the board (ClueTable): the Genesis four-player layout ---------- */
 .bb-cb { position:relative; width: min(100%, 760px); margin: 0 auto; padding: 0 12px 6px; display:flex; flex-direction:column;
-  height: calc(100dvh - var(--cb-top, 60px) - env(safe-area-inset-bottom)); }
+  height: calc(var(--vvh, 100dvh) - var(--cb-top, 60px) - env(safe-area-inset-bottom)); }
 html:is(.bb-in-game, .bb-game-screen) :is(.bb-bottom-pill, .bb-safe-top-header, .bb-report-problem, section[aria-labelledby="home-bible-lock-heading"]) { display:none !important; }
 .bb-cb > * { flex-shrink: 0; }
 .bb-cb-scene { position:fixed; inset:0; z-index:-1; pointer-events:none; background: var(--scene-phone) center bottom / cover no-repeat #d9a55e; }
@@ -538,7 +538,7 @@ html:is(.bb-in-game, .bb-game-screen) :is(.bb-bottom-pill, .bb-safe-top-header, 
 .bb-cb-pts { flex:none; }
 .bb-cb-fan { position:relative; display:flex; justify-content:center; align-items:flex-end; min-height: 40px; margin-top: 6px; max-width:100%; }
 .bb-cb-fancard { position:relative; width: min(12.5vw, 9vh, 70px); aspect-ratio: 5/6.4; margin: 0 -5px; border-radius:6px; overflow:hidden; background:#fbf1d8; box-shadow: 0 0 0 1.5px #d9a843, 0 4px 8px rgba(0,0,0,.35); transform-origin: 50% 110%; }
-.bb-cb-fancard .bb-clue-art { width:100%; height:100%; object-fit:cover; }
+.bb-cb-fancard .bb-clue-art { width:100%; height:100%; object-fit:cover; object-position: 50% 8%; }
 .bb-cb-fanmore { position:absolute; right: 2px; bottom:-6px; z-index:5; min-width:22px; height:22px; padding:0 5px; border-radius:999px; display:grid; place-items:center; background:#f6d36b; color:#3b2412; font-weight:900; font-size:11px; box-shadow: 0 0 0 1.5px #8a5a1a; }
 .bb-cb-crown { position:absolute; top:-18px; left:50%; transform:translateX(-50%); font-size:20px; z-index:3; }
 .bb-cb-other.is-scored .bb-cb-ring, .bb-cb-mechip.is-scored .bb-cb-ring { animation: bb-clue-glow 1.4s ease-out .8s both; border-radius:999px; }
@@ -591,7 +591,7 @@ html:is(.bb-in-game, .bb-game-screen) :is(.bb-bottom-pill, .bb-safe-top-header, 
 .bb-cb-card .bb-clue-art { width:100%; height:100%; object-fit:contain; }
 .bb-cb-card-cat { flex:none; font-family: Georgia, serif; font-weight:800; font-size: clamp(9px, 2.6vw, 13px); letter-spacing:.14em; text-transform:uppercase; color:#5a3a16 !important; }
 .bb-cb-card.is-revealed { padding: 6%; }
-.bb-cb-card.is-revealed .bb-clue-art { object-fit:cover; border-radius:6px; }
+.bb-cb-card.is-revealed .bb-clue-art { object-fit:cover; object-position: 50% 8%; border-radius:6px; }
 .bb-cb-card.is-empty { opacity:.55; }
 .bb-cb-cardcover { position:absolute; inset:0; z-index:2; animation: bb-clue-uncover .5s steps(1, end) .5s both; }
 .bb-cb-me { display:flex; align-items:center; justify-content:center; gap: 10px; margin-top: clamp(6px, 1.6vh, 14px); position:relative; z-index:3; }
@@ -607,7 +607,7 @@ html:is(.bb-in-game, .bb-game-screen) :is(.bb-bottom-pill, .bb-safe-top-header, 
 .bb-cb-strip-empty { align-self:center; margin: 0 auto; padding: 4px 14px; border-radius:999px; background: rgba(255,248,232,.85); color:#6a4a22 !important; font-weight:800; font-size:13px; }
 .bb-cb-won { position:relative; isolation:isolate; flex: 0 0 auto; height:100%; aspect-ratio: 6/7; scroll-snap-align:start; background: url(/games/clue/ui/won-card-frame.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 6px 10px rgba(0,0,0,.3)); }
 .bb-cb-won-art { position:absolute; left:4.5%; right:4.5%; top:4%; height:64%; border-radius:9px; overflow:hidden; z-index:-1; background:#f3e3bd; }
-.bb-cb-won-art .bb-clue-art { width:100%; height:100%; object-fit:cover; }
+.bb-cb-won-art .bb-clue-art { width:100%; height:100%; object-fit:cover; object-position: 50% 8%; }
 .bb-cb-won-name { position:absolute; left:5%; right:5%; top:63%; line-height:1.15; letter-spacing:-.01em; text-align:center; font-family: Georgia, serif; font-weight:800; font-size: clamp(11px, 2.1vh, 17px); color:#2a1a0c !important; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding-top:2px; background: rgba(251,241,216,.96); border-radius: 8px 8px 0 0; }
 .bb-cb-won-pts { position:absolute; left:50%; bottom:3%; transform:translateX(-50%); min-width: 52%; padding: 0 10px 1px; line-height:1.3; text-align:center; font-weight:900; font-size: clamp(11px, 3.2vw, 16px); color:#fff3cf !important; background: url(/games/clue/ui/win-ribbon.webp) center / 100% 100% no-repeat; text-shadow: 0 1px 2px rgba(0,0,0,.5); }
 .bb-cb-arrow { flex:none; width: 34px; height:34px; padding:0; background:none; filter: drop-shadow(0 3px 5px rgba(0,0,0,.35)); }
