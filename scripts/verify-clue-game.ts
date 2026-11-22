@@ -107,10 +107,11 @@ ok("right on the first clue: +5 and the card; the next card deals itself after t
   assert.equal(m.dealt, 2);
 });
 
-ok("wrong costs the clue's points (negative allowed); waiting is free; 12 seconds a clue", () => {
+ok("wrong costs the clue's points (negative allowed); waiting is free; 15 seconds a clue", () => {
   const m = reduceClueMatch(start(), { type: "guess", now: 1000, playerId: "me", text: "Goliath" }, cards);
   assert.equal(m.scores.me, -5);
   assert.equal(m.round!.clueIndex, 1);
+  assert.equal(DEFAULT_CLUE_SETTINGS.clueSeconds, 15, "15 seconds a clue (Louis, 2026-11-22: 12 was too short to read and type)");
   let w = reduceClueMatch(start(), { type: "tick", now: S - 1 }, cards);
   assert.equal(w.round!.clueIndex, 0);
   w = reduceClueMatch(w, { type: "tick", now: S }, cards);

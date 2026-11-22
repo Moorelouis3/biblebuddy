@@ -9,7 +9,7 @@
  *
  * A round (Louis, 2026-11-22, "Version 2"): 10 distinct cards. Each card is
  * dealt face down with its category and a silhouette; clues come one at a time
- * from 5 points down to 1, 12 seconds each. A correct guess wins the current
+ * from 5 points down to 1, 15 seconds each. A correct guess wins the current
  * points and the card at once. A wrong guess costs the guessing side the
  * current points, and that player is done for this clue. Waiting is free. If
  * the 1-point clue runs out nobody gets the card. After a short reveal the next
@@ -47,7 +47,7 @@ export type ClueSettings = {
  * playtesting.
  */
 export const DEFAULT_CLUE_SETTINGS: ClueSettings = {
-  clueSeconds: 12,
+  clueSeconds: 15,
   roundSize: 10,
   revealSeconds: 5,
   targetScore: null,

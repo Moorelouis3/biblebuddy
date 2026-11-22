@@ -57,7 +57,7 @@ const newRoundId = () =>
 function HowToPlay({ onBack }: { onBack: () => void }) {
   const steps: Array<[string, string]> = [
     ["🃏", "A game is 10 rounds. Each round, one card is dealt face down: you see only whether it is a Person, Place or Keyword, and its silhouette."],
-    ["5️⃣", "Clues come one at a time, from 5 points down to 1. Each clue stays up for 12 seconds."],
+    ["5️⃣", "Clues come one at a time, from 5 points down to 1. Each clue stays up for 15 seconds."],
     ["✅", "The fastest right answer wins that clue’s points and the card."],
     ["❌", "Guess wrong and you lose that many points. One guess per clue, two per round."],
     ["⏳", "Not sure? Wait for the next clue. Waiting is free."],
