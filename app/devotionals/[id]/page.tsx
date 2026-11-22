@@ -90,6 +90,7 @@ function getPreviewDescription(title: string, fallback: string): string {
   return descriptions[title] ?? fallback;
 }
 import { claimDevotionalDayCompletion } from "@/lib/devotionalDayClaim";
+import { studyDayMayComplete } from "@/lib/studyDayPace";
 import { useEffect, useRef, useState } from "react";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -1672,7 +1673,10 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         .eq("devotional_id", devotionalId)
         .eq("day_number", dayNumber)
         .maybeSingle();
-      
+
+      // Two days back to back, then a 7-minute wait (lib/studyDayPace.ts).
+      if (existingProgressData?.is_completed !== true && !(await studyDayMayComplete(supabase, userId))) return;
+
       // Only one tap, tab or phone can be the first completion (lib/devotionalDayClaim.ts).
       const { firstTime } = existingProgressData?.is_completed === true
         ? { firstTime: false }
@@ -1928,6 +1932,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         .maybeSingle();
 
       const wasAlreadyCompleted = existingProgressData?.is_completed === true;
+      // Two days back to back, then a 7-minute wait (lib/studyDayPace.ts).
+      if (!wasAlreadyCompleted && !(await studyDayMayComplete(supabase, userId))) return;
 
       const { error } = await supabase
         .from("devotional_progress")

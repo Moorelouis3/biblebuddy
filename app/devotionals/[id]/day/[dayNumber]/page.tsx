@@ -1,6 +1,7 @@
 "use client";
 
 import { claimDevotionalDayCompletion } from "@/lib/devotionalDayClaim";
+import { studyDayMayComplete } from "@/lib/studyDayPace";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -853,6 +854,8 @@ export default function ProverbsStudyDayPage() {
       .eq("devotional_id", devotionalId)
       .eq("day_number", dayNumber)
       .maybeSingle();
+    // Two days back to back, then a 7-minute wait (lib/studyDayPace.ts).
+    if (existingProgress?.is_completed !== true && !(await studyDayMayComplete(supabase, userId))) return;
     // Only one tap, tab or phone can be the first completion (lib/devotionalDayClaim.ts).
     const { firstTime } = await claimDevotionalDayCompletion(supabase, { userId, devotionalId, dayNumber }, existingProgress?.completed_at || now);
     const wasAlreadyCompleted = !firstTime;

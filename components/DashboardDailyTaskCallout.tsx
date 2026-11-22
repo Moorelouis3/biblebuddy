@@ -1,6 +1,7 @@
 "use client";
 
 import { claimDevotionalDayCompletion } from "@/lib/devotionalDayClaim";
+import { studyDayMayComplete } from "@/lib/studyDayPace";
 import { Component, type MouseEvent, type ReactNode, type RefObject, useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
@@ -1087,6 +1088,9 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
   }
 
   async function closeIntroAndRefresh() {
+    // Two days back to back, then a 7-minute wait (lib/studyDayPace.ts). Asked
+    // before closing, so the task is not shown as done when it was not saved.
+    if (userId && dayProgress?.is_completed !== true && !(await studyDayMayComplete(supabase, userId))) return;
     closeAndRefresh(true);
     void handleDevotionalIntroComplete().catch((error) => {
       console.warn("[DASHBOARD_TASK] Intro completion sync failed:", error);
