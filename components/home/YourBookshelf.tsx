@@ -436,6 +436,27 @@ export default function YourBookshelf({
     };
   }, [liveEvent, communityDay]);
 
+  /**
+   * Buddies in every study on the shelf, keyed by study id (and the Bible in
+   * One Year shelf id). The Library's own batched count, /api/library/counts,
+   * so a cover here never disagrees with the same cover there (Louis,
+   * 2026-11-22: "every study should have the buddy count"). One request for
+   * the whole row; a study missing from it, or at zero, just shows no line.
+   */
+  const [buddyCounts, setBuddyCounts] = useState<Record<string, number>>({});
+  useEffect(() => {
+    let cancelled = false;
+    void fetch(`${window.location.origin}/api/library/counts`)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((body: { counts?: Record<string, number> } | null) => {
+        if (!cancelled && body?.counts) setBuddyCounts(body.counts);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   /** Try Again: back to the skeleton, then run the load once more. */
   function retryLoad() {
     setFailed(false);
@@ -566,6 +587,11 @@ export default function YourBookshelf({
               const groupPercent = live ? safePercent((live.communityDay / Math.max(1, book.totalDays)) * 100) : 0;
               // What this seat is, for a Bible Cover to style (bb-cv-* hooks,
               // app/bible-covers.css). Has no effect without a cover.
+              // The buddy count. The live seat keeps its own sign-up count
+              // too and shows whichever is larger, which is the rule the
+              // Library count already follows for community studies.
+              const buddies = Math.max(buddyCounts[book.key] ?? 0, live ? liveCount ?? 0 : 0);
+              const buddiesLabel = buddies > 0 ? new Intl.NumberFormat().format(buddies) : null;
               const tone = isUpcoming ? "upcoming" : live ? "live" : comingSoon ? "soon" : book.isComplete ? "done" : book.role === "current" ? "current" : "other";
 
               // Where a tap goes, and what the button says.
@@ -676,7 +702,7 @@ export default function YourBookshelf({
                           </p>
                         ) : null}
                         <p className="mt-1 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
-                          <span aria-hidden>👥</span> {book.totalDays}-day group study
+                          <span aria-hidden>👥</span> {buddiesLabel ? `${buddiesLabel} joined` : `${book.totalDays}-day group study`}
                         </p>
                       </>
                     ) : live ? (
@@ -702,7 +728,7 @@ export default function YourBookshelf({
                         </p>
                         <p className="mt-1 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
                           <span aria-hidden>👥</span>{" "}
-                          {liveCount ? `${new Intl.NumberFormat().format(liveCount)} studying together` : "Study with your Bible Buddies"}
+                          {buddiesLabel ? `${buddiesLabel} studying together` : "Study with your Bible Buddies"}
                         </p>
                         {live.participating && book.currentDay !== null ? (
                           <p className="mt-1 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
@@ -766,6 +792,14 @@ export default function YourBookshelf({
                         </p>
                       </>
                     )}
+
+                    {/* The buddy count on every other card: the community
+                        seats already say it in their own words above. */}
+                    {buddiesLabel && !isUpcoming && !live ? (
+                      <p className="mt-1.5 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
+                        <span aria-hidden>👥</span> {buddiesLabel} studying together
+                      </p>
+                    ) : null}
 
                     {/* Last READ, not last opened. Hidden on the community
                         seats, which speak for the group, and on a finished

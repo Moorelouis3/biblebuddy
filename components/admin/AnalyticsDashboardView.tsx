@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode, Fragment } from "react";
 import type { DashboardData, DashboardWindow } from "@/lib/adminDashboard";
 import AndroidBetaTracker from "./AndroidBetaTracker";
 
@@ -302,11 +302,17 @@ const SOURCE_ICON: Record<string, string> = {
   Threads: "@",
   Facebook: "f",
   Instagram: "◎",
-  Google: "G",
+  Search: "🔍",
+  "AI chat": "✦",
   Pinterest: "P",
   Email: "✉",
   YouTube: "▶",
-  "Direct / unknown": "·",
+  "Other websites": "↗",
+  "App Store": "📱",
+  "Apple or Google sign-in": "🔑",
+  "Link from another app": "✎",
+  "Typed in or bookmark": "⌨",
+  "Returning members": "↺",
 };
 
 /** On a phone the lower panels fold into rows; on desktop they are always open. */
@@ -1236,17 +1242,28 @@ export default function AnalyticsDashboardView({
                   </thead>
                   <tbody>
                     {d.trafficSources.map((s) => (
-                      <tr key={s.source} className="border-t border-[#f1f4f9]">
-                        <td className="py-1.5 font-semibold">
-                          <span className="mr-2 inline-flex h-5 w-5 items-center justify-center rounded bg-[#f1f5fb] text-[11px] font-black text-[#475569]">
-                            {SOURCE_ICON[s.source] || "·"}
-                          </span>
-                          {s.source}
-                        </td>
-                        <td className="py-1.5 text-right">{fmt(s.visitors)}</td>
-                        <td className="py-1.5 text-right font-bold">{fmt(s.newUsers)}</td>
-                        <td className="py-1.5 text-right text-[#64748b]">{s.rate === null ? "—" : pct(s.rate)}</td>
-                      </tr>
+                      <Fragment key={s.source}>
+                        <tr className="border-t border-[#f1f4f9]">
+                          <td className="py-1.5 font-semibold">
+                            <span className="mr-2 inline-flex h-5 w-5 items-center justify-center rounded bg-[#f1f5fb] text-[11px] font-black text-[#475569]">
+                              {SOURCE_ICON[s.source] || "·"}
+                            </span>
+                            {s.source}
+                          </td>
+                          <td className="py-1.5 text-right">{fmt(s.visitors)}</td>
+                          <td className="py-1.5 text-right font-bold">{fmt(s.newUsers)}</td>
+                          <td className="py-1.5 text-right text-[#64748b]">{s.rate === null ? "—" : pct(s.rate)}</td>
+                        </tr>
+                        {/* Search by engine, AI chat by assistant, Other websites by site. */}
+                        {(s.breakdown || []).map((b) => (
+                          <tr key={`${s.source}:${b.label}`} className="text-xs text-[#64748b]">
+                            <td className="py-1 pl-9">{b.label}</td>
+                            <td className="py-1 text-right">{fmt(b.visitors)}</td>
+                            <td className="py-1 text-right font-bold">{fmt(b.newUsers)}</td>
+                            <td className="py-1 text-right">{b.rate === null ? "—" : pct(b.rate)}</td>
+                          </tr>
+                        ))}
+                      </Fragment>
                     ))}
                   </tbody>
                 </table>

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { channelOf } from "@/lib/trafficSource";
 import { createClient } from "@supabase/supabase-js";
 import { resolveUserBadge } from "@/lib/userBadges";
 
@@ -321,15 +322,10 @@ function channelFromText(text: string): string | null {
   if (!x.trim()) return null;
   // A Closer comment reply, when the tag was stripped and only the r= code
   // survived. Less precise than the platform, but true.
-  if (/closer/.test(x) && !/closer-/.test(x)) return "Closer (comment reply)";
-  if (x.includes("threads")) return "Threads";
-  if (/facebook|fbclid|fb|fb./.test(x)) return "Facebook";
-  if (/instagram|igshid|ig|closer-ig/.test(x)) return "Instagram";
-  if (/pinterest|pin.it/.test(x)) return "Pinterest";
-  if (/youtube|youtu.be/.test(x)) return "YouTube";
-  if (/utm_source=email|[?&]sc=|mail.google|outlook.|mail.yahoo|email|newsletter|systeme/.test(x)) return "Email";
-  if (/google|bing|duckduckgo|yahoo|gclid/.test(x)) return "Google";
-  return null;
+  if (/closer/.test(x) && !/closer-/.test(x)) return "Closer (comment reply)";
+  const hit = channelOf(x);
+  if (!hit) return null;
+  return hit.detail ? `${hit.source} · ${hit.detail}` : hit.source;
 }
 
 function signupSource(row: MasterActionRow | undefined) {

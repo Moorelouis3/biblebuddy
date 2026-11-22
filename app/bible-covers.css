@@ -58,6 +58,35 @@ html[data-bb-cover] body[class] {
   will-change: transform;
 }
 
+/* The soft fill behind the picture. Only seen on screens wider than tall. */
+.bb-cover-art-fill {
+  position: absolute;
+  inset: -8%;
+  width: 116%;
+  height: 116%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  /* Already blurred and darkened in the file: no live filter. */
+  display: none;
+}
+/* Wider than tall (a laptop, a monitor, a phone on its side): the whole tall
+   picture, full height and sharp, in the middle; the blurred copy fills the
+   sides so there is never a hard edge. */
+@media (min-aspect-ratio: 1/1) {
+  .bb-cover-art-fill { display: block; }
+  .bb-cover-art {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    -webkit-mask-image: linear-gradient(90deg, transparent calc(50% - 23vh), #000 calc(50% - 13vh), #000 calc(50% + 13vh), transparent calc(50% + 23vh));
+    mask-image: linear-gradient(90deg, transparent calc(50% - 23vh), #000 calc(50% - 13vh), #000 calc(50% + 13vh), transparent calc(50% + 23vh));
+  }
+}
+
 .bb-cover-shade {
   position: absolute;
   inset: 0;
@@ -132,7 +161,7 @@ html[data-bb-app-hidden="true"] .bb-cover-snow {
    starts at, so the artwork reads as one background from the top of the
    screen down: a touch darker under the clock for the white status icons,
    then the header fades it out. */
-html.bb-native[data-bb-cover] body::before {
+html[data-bb-cover].bb-native body::before {
   background: linear-gradient(180deg, color-mix(in srgb, var(--bb-cover-base) 78%, transparent), color-mix(in srgb, var(--bb-cover-base) 60%, transparent)) !important;
 }
 

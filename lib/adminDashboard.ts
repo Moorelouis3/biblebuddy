@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { readAnalyticsSnapshot, writeAnalyticsSnapshot } from "@/lib/adminAnalyticsSnapshots";
 import { BLOG_ARTICLES } from "@/lib/blogContent";
+import { channelOf, sessionSource, SOURCE_ORDER, userSource, type SourceName } from "@/lib/trafficSource";
 import { isQualifyingAction, isMeaningfulAction } from "@/lib/activityDefinitions";
 import { TOTAL_BIBLE_CHAPTERS } from "@/lib/bibleBookChapters";
 import chapterProgress from "@/data/chapter-blog/progress.json";
@@ -144,51 +145,10 @@ function change(current: number, previous: number) {
 }
 
 // ---------- classification ----------
+// The rules live in lib/trafficSource.ts, shared with the drilldown.
 
-export type SourceName =
-  | "Threads"
-  | "Facebook"
-  | "Instagram"
-  | "Google"
-  | "Pinterest"
-  | "Email"
-  | "YouTube"
-  | "Direct / unknown";
-export const SOURCE_ORDER: SourceName[] = ["Threads", "Facebook", "Instagram", "Google", "Pinterest", "Email", "YouTube", "Direct / unknown"];
-
-function sourceFromText(text: string): SourceName {
-  const x = text.toLowerCase();
-  if (x.includes("threads")) return "Threads";
-  if (/facebook|fbclid|\bfb\b|fb\./.test(x)) return "Facebook";
-  if (/instagram|igshid|\big\b|closer-ig/.test(x)) return "Instagram";
-  if (/pinterest|pin\.it/.test(x)) return "Pinterest";
-  if (/youtube|youtu\.be/.test(x)) return "YouTube";
-  if (/utm_source=email|[?&]sc=|mail\.google|outlook\.|mail\.yahoo|\bemail\b|newsletter|systeme/.test(x)) return "Email";
-  if (/google|bing|duckduckgo|yahoo|gclid/.test(x)) return "Google";
-  return "Direct / unknown";
-}
-
-function sessionSource(e: { referrer?: string | null; page_path?: string | null; source?: string | null }): SourceName {
-  // Campaign tags on the link beat the referrer: a Threads link opened inside
-  // Facebook's browser is still a Threads click.
-  const path = (e.page_path || "").toLowerCase();
-  const tagged = path.match(/utm_source=([^&]+)/)?.[1] || path.match(/[?&]src=([^&]+)/)?.[1] || "";
-  if (tagged) {
-    const s = sourceFromText(tagged);
-    if (s !== "Direct / unknown") return s;
-  }
-  const byRef = sourceFromText(`${e.referrer || ""}`);
-  if (byRef !== "Direct / unknown") return byRef;
-  return sourceFromText(`${e.source || ""} ${path}`);
-}
-
-function userSource(p: ProfileRow): SourceName {
-  const direct = sourceFromText(`${p.signup_source || ""} ${p.signup_utm_source || ""}`);
-  if (direct !== "Direct / unknown") return direct;
-  // "Blog" is where they converted, not where they came from.
-  const first = sourceFromText(`${p.signup_first_touch_source || ""} ${p.signup_referrer_url || ""} ${p.signup_source_detail || ""}`);
-  return first;
-}
+export type { SourceName } from "@/lib/trafficSource";
+export { SOURCE_ORDER } from "@/lib/trafficSource";
 
 // Threads links land on the homepage with a tag, so they count as Homepage.
 type LandingKind = "Homepage" | "Blog post" | "Proverbs page" | "Bible reader" | "Other page";
@@ -636,16 +596,46 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     ...blogCur.map((v) => ({ s: v.session_id, referrer: v.referrer, page_path: `/blog/${v.article_slug.replace(/^\/?blog\//, "").replace(/^\//, "")}`, source: null, created_at: v.created_at })),
   ].sort((a, b) => (a.created_at < b.created_at ? -1 : 1));
   for (const e of sessionEvents) if (e.s && !firstEventBySession.has(e.s)) firstEventBySession.set(e.s, e);
-  const sourceRows = new Map<SourceName, { visitors: number; newUsers: number }>();
-  SOURCE_ORDER.forEach((s) => sourceRows.set(s, { visitors: 0, newUsers: 0 }));
-  for (const e of firstEventBySession.values()) sourceRows.get(sessionSource(e))!.visitors += 1;
-  for (const p of newCur) sourceRows.get(userSource(p))!.newUsers += 1;
+  // A signup with no trail at all is placed by its iPhone push token
+  // (lib/trafficSource.ts userSource).
+  const untraced = newCur.filter((p) => !p.signup_source && !p.signup_source_detail).map((p) => p.user_id);
+  const iosAppUsers = new Set<string>();
+  if (untraced.length) {
+    const { data: tokens } = await admin.from("native_push_tokens").select("user_id").eq("platform", "ios").in("user_id", untraced);
+    for (const t of tokens || []) iosAppUsers.add((t as { user_id: string }).user_id);
+  }
+  type SourceTally = { visitors: number; newUsers: number; detail: Map<string, { visitors: number; newUsers: number }> };
+  const sourceRows = new Map<SourceName, SourceTally>();
+  SOURCE_ORDER.forEach((s) => sourceRows.set(s, { visitors: 0, newUsers: 0, detail: new Map() }));
+  const tally = (hit: { source: SourceName; detail?: string }, key: "visitors" | "newUsers") => {
+    const row = sourceRows.get(hit.source)!;
+    row[key] += 1;
+    if (hit.detail) {
+      const d = row.detail.get(hit.detail) || { visitors: 0, newUsers: 0 };
+      d[key] += 1;
+      row.detail.set(hit.detail, d);
+    }
+  };
+  for (const e of firstEventBySession.values()) tally(sessionSource(e), "visitors");
+  for (const p of newCur) tally(userSource(p, iosAppUsers.has(p.user_id)), "newUsers");
+  // Email and search clicks often arrive without a referrer, so their visits
+  // are undercounted; a rate over 100% would be nonsense, so show none.
+  const rateOrDash = (n: number, v: number) => (n > v ? null : rate(n, v));
   const trafficSources = SOURCE_ORDER.map((name) => {
     const r = sourceRows.get(name)!;
-    // Email and search clicks often arrive without a referrer, so their visits
-    // are undercounted; a rate over 100% would be nonsense, so show none.
-    return { source: name, visitors: r.visitors, newUsers: r.newUsers, rate: r.newUsers > r.visitors ? null : rate(r.newUsers, r.visitors) };
-  }).sort((a, b) => b.newUsers - a.newUsers || b.visitors - a.visitors);
+    return {
+      source: name,
+      visitors: r.visitors,
+      newUsers: r.newUsers,
+      rate: rateOrDash(r.newUsers, r.visitors),
+      // Search, AI chat and Other websites break down by engine / site.
+      breakdown: [...r.detail.entries()]
+        .map(([label, d]) => ({ label, visitors: d.visitors, newUsers: d.newUsers, rate: rateOrDash(d.newUsers, d.visitors) }))
+        .sort((a, b) => b.newUsers - a.newUsers || b.visitors - a.visitors),
+    };
+  })
+    .filter((row) => row.visitors > 0 || row.newUsers > 0)
+    .sort((a, b) => b.newUsers - a.newUsers || b.visitors - a.visitors);
 
   // First landing page, by new users.
   const landingBySession = new Map<string, string | null>();
@@ -750,8 +740,10 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     .slice(0, 10);
   const blogSourceCounts: Record<string, number> = {};
   for (const v of blogCur) {
-    const s = sourceFromText(v.referrer || "");
-    const label = s === "Direct / unknown" ? (/(mybiblebuddy)/.test(v.referrer || "") ? "Inside the site" : "Direct / unknown") : s;
+    const hit = channelOf(v.referrer);
+    const label = hit
+      ? hit.source === "Search" || hit.source === "AI chat" ? `${hit.source} · ${hit.detail}` : hit.source
+      : /(mybiblebuddy)/.test(v.referrer || "") ? "Inside the site" : "Link from another app (no referrer)";
     blogSourceCounts[label] = (blogSourceCounts[label] || 0) + 1;
   }
   const blogSources = Object.entries(blogSourceCounts)
@@ -855,7 +847,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       opens: lastEmail.opens || 0,
       clicks: lastEmail.clicks || 0,
       newUsers: (emailSignups || []).filter((p: { signup_source: string | null; signup_utm_source: string | null; signup_source_detail: string | null }) =>
-        sourceFromText(`${p.signup_source || ""} ${p.signup_utm_source || ""} ${p.signup_source_detail || ""}`) === "Email",
+        channelOf(`${p.signup_source || ""} ${p.signup_utm_source || ""} ${p.signup_source_detail || ""}`)?.source === "Email",
       ).length,
     };
   }
@@ -1067,7 +1059,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       e.source === "proverbs_event_page" ? "Proverbs event page"
       : e.source === "book_popup" ? "Book popup"
       : e.source && e.source !== "Direct" ? e.source
-      : "Direct / unknown";
+      : "No referrer (typed in, bookmark or app)";
     bookSourceCounts.set(label, (bookSourceCounts.get(label) || 0) + 1);
   }
   const books = {
