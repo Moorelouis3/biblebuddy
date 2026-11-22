@@ -14,6 +14,9 @@ import { ALL_CLUE_CARDS } from "@/lib/clueGame/catalog";
 import { publicView, reduceClueMatch, type ClueAction, type ClueMatch } from "@/lib/clueGame/engine";
 import { trackClue } from "@/lib/clueGame/track";
 
+/** An action without its time: the hook stamps it. */
+type ClueActionInput = ClueAction extends infer A ? (A extends ClueAction ? Omit<A, "now"> & { now?: number } : never) : never;
+
 export function useLocalMatch(initial: () => ClueMatch, opts: { persistKey?: string; mode: "solo" | "challenge"; deckIds: string[] }) {
   const [match, setMatch] = useState<ClueMatch>(() => {
     if (opts.persistKey && typeof window !== "undefined") {
@@ -34,7 +37,8 @@ export function useLocalMatch(initial: () => ClueMatch, opts: { persistKey?: str
     latest.current = match;
   }, [match]);
 
-  const act = useCallback((action: Omit<ClueAction, "now"> & { now?: number }) => {
+  // Omit applied to each kind of action, so guess and wait keep their playerId.
+  const act = useCallback((action: ClueActionInput) => {
     setMatch((m) => reduceClueMatch(m, { ...action, now: action.now ?? Date.now() } as ClueAction, ALL_CLUE_CARDS));
   }, []);
 
