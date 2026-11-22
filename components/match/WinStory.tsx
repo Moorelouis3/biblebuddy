@@ -11,9 +11,15 @@
 
 import { useState } from "react";
 
-/** The story screens there are, by book and board number. */
-export function winStoryFor(book: string, number: number): string | null {
+/**
+ * The story screens there are: Genesis boards 1-11 by board number, and the
+ * Exodus boards by their own number (exodus-01 to exodus-12; the last one
+ * leads on to Leviticus).
+ */
+export function winStoryFor(book: string, number: number, id = ""): string | null {
   if (book === "Genesis" && number >= 1 && number <= 11) return `/games/match/transitions/genesis-${String(number).padStart(2, "0")}.webp`;
+  const ex = /^exodus-(\d\d)$/.exec(id);
+  if (ex && Number(ex[1]) >= 1 && Number(ex[1]) <= 12) return `/games/match/transitions/exodus-${ex[1]}.webp`;
   return null;
 }
 

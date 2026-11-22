@@ -502,8 +502,8 @@ export default function MatchBoard({
       </div>
 
       {/* A Genesis board won: its story screen (WinStory); other boards: the scroll. */}
-      {outcome?.won && winStoryFor(level.book, level.number) ? (
-        <WinStory src={winStoryFor(level.book, level.number)!} alt={`Well done! ${level.title} complete`} onContinue={onExit} />
+      {outcome?.won && winStoryFor(level.book, level.number, level.id) ? (
+        <WinStory src={winStoryFor(level.book, level.number, level.id)!} alt={`Well done! ${level.title} complete`} onContinue={onExit} />
       ) : outcome ? (
         <div className="bbm-panelwrap" role="dialog" aria-modal="true">
           <div className="bbm-panel">
