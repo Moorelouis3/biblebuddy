@@ -323,7 +323,7 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-clue-room::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
   background: linear-gradient(180deg, rgba(20,10,4,.25), rgba(20,10,4,.1) 40%, rgba(20,10,4,.45)), url(/games/clue/ui/room-phone.webp) center top / cover no-repeat; }
 @media (min-aspect-ratio: 3/4) { .bb-clue-room::before { background: linear-gradient(180deg, rgba(20,10,4,.25), rgba(20,10,4,.1) 40%, rgba(20,10,4,.45)), url(/games/clue/ui/room-wide.webp) center / cover no-repeat; } }
-.bb-clue-logo-img { height: 46px; width:auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,.45)); }
+.bb-clue-logo-img { height: clamp(64px, 19vw, 104px); width:auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,.45)); }
 .bb-clue-btnicon { display:inline-block; width:34px; height:34px; margin-right:4px; vertical-align:middle; }
 .bb-clue-avatarwrap { position:relative; display:inline-block; flex:none; }
 .bb-clue-avatarring { position:absolute; inset:-9%; width:118%; height:118%; pointer-events:none; filter: drop-shadow(0 3px 6px rgba(0,0,0,.45)); }
@@ -437,6 +437,57 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-clue-answers-result { font-weight:900; white-space:nowrap; }
 .bb-clue-answers li.is-right .bb-clue-answers-result { color:#1d6a34 !important; }
 .bb-clue-answers li.is-wrong .bb-clue-answers-result { color:#a3291b !important; }
+/* ---------- the one-screen table (ClueTable) ---------- */
+.bb-ct { display:flex; flex-direction:column; align-items:center; }
+.bb-ct-stage { position:relative; width: min(100% - 8px, 620px); height: clamp(400px, calc(100dvh - 318px), 820px); container-type: size; }
+.bb-ct { padding-bottom: 90px; }
+.bb-ct-felt { position:absolute; left:50%; top:50%; width: 112cqh; height: 112cqw; transform: translate(-50%,-50%) rotate(90deg);
+  background: url(/games/clue/ui/table.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 18px 26px rgba(0,0,0,.5)); }
+@container (min-aspect-ratio: 1/1) { .bb-ct-felt { width: 112cqw; height: 112cqh; transform: translate(-50%,-50%); } }
+.bb-ct-topbar { position:absolute; left:50%; top: 15%; transform: translateX(-50%); z-index:6; display:flex; gap:6px; align-items:center; white-space:nowrap; }
+.bb-ct-roundpill { padding:4px 14px; font-family: Georgia, serif; font-weight:800; font-size:13px; color:#3b2412;
+  background: url(/games/clue/ui/name-shield.webp) center / 100% 100% no-repeat; }
+.bb-ct-roundpill.is-button { cursor:pointer; }
+.bb-ct-decklabel { font-size:11px; font-weight:900; letter-spacing:.12em; text-transform:uppercase; color:#e9d9a6; text-shadow: 0 1px 2px rgba(0,0,0,.6); }
+.bb-ct-middle { position:absolute; left:50%; top: 20%; bottom: 19%; width: 70%; transform: translateX(-50%); z-index:5; display:flex; flex-direction:column; align-items:center; gap: 2.2cqh; }
+.bb-ct-middle .bb-clue-card { width: min(25cqw, 19cqh, 124px); }
+.bb-ct-middle .bb-clue-drawpile { width: min(18cqw, 14cqh, 88px); }
+.bb-ct-middle .bb-clue-shuffle { width: min(28cqw, 23cqh, 128px); }
+.bb-ct-cards { display:flex; align-items:center; justify-content:center; gap: 6cqw; }
+.bb-ct-slip { width:100%; max-height: 100%; overflow-y:auto; color:#2a1a0c; padding: 4px 8px;
+  border: 14px solid transparent; border-image: url(/games/clue/ui/parchment.webp) 70 fill / 14px stretch; filter: drop-shadow(0 8px 14px rgba(0,0,0,.4)); }
+.bb-ct-slip .bb-clue-cluetext { font-size: clamp(15px, 4.3vw, 20px); line-height:1.25; margin-top:6px; }
+.bb-ct-slip-big { font-family: Georgia, serif; font-weight:700; font-size: clamp(17px, 4.8vw, 22px); text-align:center; padding: 6px 0; }
+.bb-ct-slip-row { display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:nowrap; }
+.bb-ct-slip .bb-clue-pointsbadge, .bb-ct-slip .bb-clue-timerpill { font-size:14px; padding:3px 14px; }
+.bb-ct-cat { font-size:11px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; opacity:.7; }
+.bb-ct-timebar { height:6px; margin-top:6px; border-radius:999px; background: rgba(59,36,18,.15); overflow:hidden; }
+.bb-ct-timebar span { display:block; height:100%; transform-origin:left; background: linear-gradient(90deg,#2f8a4f,#56b36f); transition: transform .15s linear; }
+.bb-ct-timebar span.is-final { background: linear-gradient(90deg,#d8572e,#f0a43a); }
+.bb-ct-earlier { margin-top:6px; font-size:12px; line-height:1.35; opacity:.62; }
+.bb-ct-earlier b { display:inline-grid; place-items:center; width:16px; height:16px; margin-right:2px; border-radius:5px; background:#1f5a34; color:#fff3c8; font-size:10px; }
+.bb-ct-answer { font-family: Georgia, serif; font-weight:700; font-size: clamp(22px, 6.4vw, 30px); text-align:center; color:#173b23; line-height:1.1; margin-bottom:4px; }
+.bb-ct-slip .bb-clue-answers { margin-top:6px; }
+.bb-ct-slip .bb-clue-answers li { font-size:12.5px; padding:3px 6px; }
+.bb-ct-overlay { width: 100%; max-height: 100%; overflow-y:auto; border-radius:18px; }
+.bb-ct-overlay .bb-clue-panel { margin:0; width:100%; }
+.bb-ct-overlay .bb-clue-title { font-size: clamp(24px, 7vw, 32px); }
+.bb-ct-hand { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(90px + env(safe-area-inset-bottom)); z-index: 40; width: min(100% - 16px, 560px); margin: 0;
+  display:flex; gap:6px; align-items:center; padding: 4px;
+  border: 12px solid transparent; border-image: url(/games/clue/ui/parchment.webp) 70 fill / 12px stretch; filter: drop-shadow(0 8px 16px rgba(0,0,0,.5)); }
+.bb-ct-hand .bb-clue-input { height:46px; }
+.bb-ct-hand .bb-clue-btn { min-height:46px; padding: 0 14px; font-size:16px; }
+.bb-ct-wait { flex:none; height:46px; padding:0 10px; border-radius:12px; font-weight:800; font-size:13px; color:#6a4a22; background: rgba(255,255,255,.4); box-shadow: inset 0 0 0 1.5px #c99a46; }
+.bb-ct-wait:disabled { opacity:.45; }
+.bb-ct-crown { position:absolute; top:-22px; left:50%; transform: translateX(-50%); font-size:22px; z-index:2; filter: drop-shadow(0 2px 3px rgba(0,0,0,.5)); }
+.bb-clue-seat.is-winner .bb-clue-avatarwrap { filter: drop-shadow(0 0 16px rgba(255,214,90,.95)); }
+.bb-clue-review { padding-bottom: 14px; border-bottom: 1.5px dashed #c99a46; }
+.bb-clue-review:last-child { border-bottom: 0; }
+.bb-clue-fancard { position:relative; flex:none; width: min(19vw, 108px); aspect-ratio:5/7; margin: 0 -9px; border-radius:10px; overflow:hidden; display:flex; flex-direction:column;
+  background: url(/games/clue/ui/card-face.webp) center / 100% 100% no-repeat; box-shadow: 0 10px 22px rgba(0,0,0,.45); transform-origin: 50% 120%; }
+.bb-clue-fancard .bb-clue-card-art { flex:1; padding:6% 6% 0; }
+.bb-clue-fancard .bb-clue-art { border-radius:6px; }
+.bb-clue-fancard .bb-clue-card-name { font-size: clamp(9px, 2.4vw, 12px); padding: 3px 2px 5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .bb-clue-fallback { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:10px; text-align:center;
   background: radial-gradient(circle at 50% 35%, #fff8e6, #ead6a6); }
 .bb-clue-fallback-icon { font-size: 2.2em; }
@@ -489,7 +540,7 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-clue-deal { animation: bb-clue-deal .55s cubic-bezier(.2,.8,.2,1) both; }
 @keyframes bb-clue-fadein { from { opacity:.45; transform: translateY(4px); } to { opacity:1; transform:none; } }
 .bb-clue-fadein { animation: bb-clue-fadein .35s ease-out both; }
-@keyframes bb-clue-deal { from { transform: translate(90%, 0) rotate(8deg) scale(.9); opacity:.6; } to { transform:none; opacity:1; } }
+@keyframes bb-clue-deal { from { transform: translate(90%, 0) rotate(8deg) scale(.9); opacity:1; } to { transform:none; opacity:1; } }
 .bb-clue-award { animation: bb-clue-award .75s cubic-bezier(.5,0,.75,0) forwards; }
 @keyframes bb-clue-award { 0% { transform:none; } 100% { transform: translate(var(--dx,0px), var(--dy,-120px)) scale(.25) rotate(-12deg); opacity:.15; } }
 .bb-clue-tile { position:relative; border-radius:16px; padding:6px; text-align:center; color:#fff3c8; box-shadow: 0 0 0 2px #d8a84a, 0 6px 14px rgba(0,0,0,.3); }

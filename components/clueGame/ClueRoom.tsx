@@ -197,52 +197,54 @@ export default function ClueRoom({ code }: { code: string }) {
               <p className="bb-clue-serif mt-5 text-lg italic">Waiting for the host to start…</p>
             )}
           </div>
-        ) : m.phase !== "over" ? (
+        ) : (
           <ClueTable
             view={m}
             players={room.players}
             youId={room.you}
             now={now}
             cardBack="/games/clue/genesis/art/card-back.webp"
+            roundLabel={room.deckName}
             onGuess={(text) => void send("guess", text)}
             onWait={() => void send("wait")}
             onStudy={openStudy}
             isHost={isHost}
             onPause={() => void send("pause")}
             onResume={() => void send("resume")}
-          />
-        ) : review ? (
-          <div className="bb-clue-panel bb-clue-parchment">
-            <h2 className="bb-clue-serif bb-clue-title" style={{ color: "#2a1a0c" }}>Review Cards</h2>
-            <div className="mt-4"><ReviewList cards={m.history} onStudy={openStudy} /></div>
-            <button type="button" className="bb-clue-btn mt-5 w-full" onClick={() => setReview(false)}>Back to results</button>
-          </div>
-        ) : (
-          <ClueResults
-            mode="room"
-            heading={m.winnerSideIds.includes(room.you) ? (m.winnerSideIds.length > 1 ? "A Tie!" : "You Win!") : "Game Over"}
-            deckName={room.deckName}
-            score={m.scores[room.you] ?? 0}
-            won={(m.piles[room.you] || []).length}
-            total={m.deckSize}
-            wonCards={m.history.filter((c) => c.outcome === "won" && c.sideId === room.you)}
-            onReview={() => setReview(true)}
-            standings={
-              <ol className="space-y-2 text-left">
-                {[...room.players]
-                  .sort((a, b) => (m.scores[b.id] ?? 0) - (m.scores[a.id] ?? 0))
-                  .map((p, i) => (
-                    <li key={p.id} className="flex items-center gap-3 rounded-2xl px-3 py-2" style={{ background: m.winnerSideIds.includes(p.id) ? "#f6e7c1" : "rgba(255,255,255,.4)" }}>
-                      <span className="w-5 text-center font-black">{i + 1}</span>
-                      <Avatar name={p.name} src={p.avatar} size={36} />
-                      <span className="min-w-0 flex-1 truncate font-bold">{p.id === room.you ? "You" : p.name}</span>
-                      <span className="font-black">⭐ {m.scores[p.id] ?? 0}</span>
-                      <span className="bb-clue-pilecount">{m.piles[p.id]?.length ?? 0}</span>
-                    </li>
-                  ))}
-              </ol>
+            overlay={
+              m.phase !== "over" ? undefined : review ? (
+                <div className="bb-clue-panel bb-clue-parchment">
+                  <h2 className="bb-clue-serif bb-clue-title" style={{ color: "#2a1a0c" }}>The 10 Rounds</h2>
+                  <div className="mt-4"><ReviewList cards={m.history} onStudy={openStudy} onOpenRef={setScripture} nameOf={(id) => (id === room.you ? "You" : room.players.find((p) => p.id === id)?.name || "A player")} /></div>
+                  <button type="button" className="bb-clue-btn mt-5 w-full" onClick={() => setReview(false)}>Back to results</button>
+                </div>
+              ) : (
+                <ClueResults
+                  mode="room"
+                  heading={m.winnerSideIds.includes(room.you) ? (m.winnerSideIds.length > 1 ? "A Tie!" : "You Win!") : "Game Over"}
+                  deckName={room.deckName}
+                  score={m.scores[room.you] ?? 0}
+                  won={(m.piles[room.you] || []).length}
+                  total={m.deckSize}
+                  wonCards={m.history.filter((c) => c.outcome === "won" && c.sideId === room.you)}
+                  onReview={() => setReview(true)}
+                  standings={
+                    <ol className="space-y-1.5 text-left">
+                      {[...room.players]
+                        .sort((x, y) => (m.scores[y.id] ?? 0) - (m.scores[x.id] ?? 0))
+                        .map((p, i) => (
+                          <li key={p.id} className="flex items-center gap-3 rounded-2xl px-3 py-1.5" style={{ background: m.winnerSideIds.includes(p.id) ? "#f6e7c1" : "rgba(255,255,255,.4)" }}>
+                            <span className="w-5 text-center font-black">{i + 1}</span>
+                            <span className="min-w-0 flex-1 truncate font-bold">{p.id === room.you ? "You" : p.name}</span>
+                            <span className="font-black">⭐ {m.scores[p.id] ?? 0}</span>
+                          </li>
+                        ))}
+                    </ol>
+                  }
+                  secondary={<Link href="/bible-study-games/clue" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big">Back to the game</Link>}
+                />
+              )
             }
-            secondary={<Link href="/bible-study-games/clue" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big">Back to the game</Link>}
           />
         )}
       </div>

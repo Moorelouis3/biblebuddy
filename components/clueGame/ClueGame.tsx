@@ -13,7 +13,10 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { CLUE_DECKS, deckById, deckLabel, poolFor } from "@/lib/clueGame/catalog";
+import { ALL_CLUE_CARDS, CLUE_DECKS, deckById, deckLabel, poolFor } from "@/lib/clueGame/catalog";
+
+/** The menu's fan of face-up cards. */
+const MENU_FAN = ["noahs-ark", "abraham", "joseph", "rainbow", "jacobs-ladder"];
 import { createMatch, ROUND_INTRO_MS, soloSetup, type PublicCard } from "@/lib/clueGame/engine";
 import type { ClueRef } from "@/lib/clueGame/types";
 import { clueApi, clueUserId, trackClue } from "@/lib/clueGame/track";
@@ -165,17 +168,25 @@ function SoloRound({ deckIds, onExit }: { deckIds: string[]; onExit: () => void 
 
   return (
     <>
-      {view.phase !== "over" ? (
-        <ClueTable view={view} players={[me]} youId="me" now={now} cardBack={deckById(deckIds[0])?.cardBack} onGuess={(text) => act({ type: "guess", playerId: "me", text })} onWait={() => act({ type: "wait", playerId: "me" })} onStudy={openStudy} />
-      ) : review ? (
+      <ClueTable
+        view={view}
+        players={[me]}
+        youId="me"
+        now={now}
+        cardBack={deckById(deckIds[0])?.cardBack}
+        roundLabel={deckLabel(deckIds)}
+        onGuess={(text) => act({ type: "guess", playerId: "me", text })}
+        onWait={() => act({ type: "wait", playerId: "me" })}
+        onStudy={openStudy}
+        overlay={view.phase !== "over" ? undefined : review ? (
         <div className="bb-clue-panel bb-clue-parchment">
-          <h2 className="bb-clue-serif bb-clue-title" style={{ color: "#2a1a0c" }}>Review Cards</h2>
+          <h2 className="bb-clue-serif bb-clue-title" style={{ color: "#2a1a0c" }}>Your 10 Rounds</h2>
           <div className="mt-4">
-            <ReviewList cards={view.history} onStudy={openStudy} />
+            <ReviewList cards={view.history} onStudy={openStudy} onOpenRef={setScripture} />
           </div>
           <button type="button" className="bb-clue-btn mt-5 w-full" onClick={() => setReview(false)}>Back to results</button>
         </div>
-      ) : (
+        ) : (
         <ClueResults
           mode="solo"
           deckName={deckLabel(deckIds)}
@@ -210,7 +221,8 @@ function SoloRound({ deckIds, onExit }: { deckIds: string[]; onExit: () => void 
             </div>
           }
         />
-      )}
+        )}
+      />
       {study ? <StudyCard card={study} onClose={() => setStudy(null)} onOpenRef={setScripture} /> : null}
       {scripture ? <ScriptureSheet target={scripture} onClose={() => setScripture(null)} /> : null}
     </>
@@ -296,7 +308,7 @@ export default function ClueGame() {
   return (
     <ClueRoomFrame>
       <div className="pb-28">
-        <ClueHeader backHref={screen === "menu" ? "/bible-study-games" : undefined} onBack={back} subtitle={subtitle} badge={screen === "play" ? "Solo" : screen === "decks" ? "Beta" : undefined} />
+        <ClueHeader backHref={screen === "menu" ? "/bible-study-games" : undefined} onBack={back} subtitle={screen === "play" ? undefined : subtitle} badge={screen === "decks" ? "Beta" : undefined} />
         {screen === "menu" ? (
           <div className="px-4">
             <div className="bb-clue-banner w-fit">
@@ -305,14 +317,22 @@ export default function ClueGame() {
             </div>
             <div className="bb-clue-felt mt-6" style={{ aspectRatio: "2/1" }}>
               <div className="bb-clue-center" style={{ gap: 0 }}>
-                {[-16, -8, 0, 8, 16].map((r, i) => (
-                  <div key={r} className="bb-clue-drawpile" style={{ transform: `rotate(${r}deg) translateY(${Math.abs(r) / 2}px)`, margin: "0 -14px", zIndex: i === 2 ? 2 : 1 }}>
-                    <div>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src="/games/clue/genesis/art/card-back.webp" alt="" className="bb-clue-back-img" />
+                {/* Five of the finished cards, face up (Louis: "the revealed versions
+                    of some of the best ones, not the plain back"). Joseph in the middle. */}
+                {MENU_FAN.map((id, i) => {
+                  const c = ALL_CLUE_CARDS.get(id);
+                  const r = [-16, -8, 0, 8, 16][i];
+                  if (!c) return null;
+                  return (
+                    <div key={id} className="bb-clue-fancard" style={{ transform: `rotate(${r}deg) translateY(${Math.abs(r) / 1.6}px)`, zIndex: i === 2 ? 3 : i === 1 || i === 3 ? 2 : 1 }}>
+                      <div className="bb-clue-card-art is-color">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={c.art.reveal} alt={c.answer} className="bb-clue-art" />
+                      </div>
+                      <div className="bb-clue-card-name">{c.answer}</div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
             <div className="bb-clue-panel bb-clue-parchment flex flex-col gap-3">

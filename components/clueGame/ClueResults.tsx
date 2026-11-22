@@ -7,30 +7,75 @@
  */
 
 import { useEffect, useState, type ReactNode } from "react";
+import Link from "next/link";
+import type { ClueRef } from "@/lib/clueGame/types";
 import { clueSound } from "@/lib/clueGame/sound";
 import type { PublicCard, PublicMatch } from "@/lib/clueGame/engine";
 import { SubjectArt } from "./ClueParts";
 import { trackClue } from "@/lib/clueGame/track";
 
-export function ReviewList({ cards, onStudy }: { cards: PublicMatch["history"]; onStudy: (card: PublicCard) => void }) {
+/**
+ * The whole game, round by round, for after the last card (Louis: "a full
+ * list of the rounds and all the clues with more info links"): the picture,
+ * the answer, who won it, all five clues with their verses, and the link to
+ * the Bible Buddy page about it. The table itself only ever shows the clue
+ * in play.
+ */
+export function ReviewList({
+  cards,
+  onStudy,
+  onOpenRef,
+  nameOf,
+}: {
+  cards: PublicMatch["history"];
+  onStudy: (card: PublicCard) => void;
+  onOpenRef?: (ref: ClueRef) => void;
+  nameOf?: (sideId: string) => string;
+}) {
   return (
-    <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+    <ol className="space-y-4 text-left">
       {cards.map((c, i) => (
-        <li key={`${c.id}-${i}`}>
-          <button type="button" onClick={() => onStudy(c)} className="w-full text-left">
-            <div className="bb-clue-thumb is-color" style={{ width: "100%" }}>
+        <li key={`${c.id}-${i}`} className="bb-clue-review">
+          <div className="flex items-center gap-3">
+            <button type="button" onClick={() => onStudy(c)} className="bb-clue-thumb is-color" style={{ width: 64 }} aria-label={`Study ${c.answer}`}>
               <SubjectArt card={c} mode="reveal" />
-            </div>
-            <div className="mt-1 text-center">
-              <div className="bb-clue-serif text-[15px] font-bold leading-tight">{c.answer}</div>
-              <div className="text-[11px] font-black" style={{ color: c.outcome === "won" ? "#1d5a34" : "#8a5a1a" }}>
-                {c.outcome === "won" ? `Won · +${c.points}` : "Missed"}
+            </button>
+            <div className="min-w-0 flex-1">
+              <div className="text-[11px] font-black uppercase tracking-[0.12em] opacity-60">Round {i + 1}</div>
+              <div className="bb-clue-serif text-[20px] font-bold leading-tight">{c.answer}</div>
+              <div className="text-[12px] font-black" style={{ color: c.outcome === "won" ? "#1d5a34" : "#8a5a1a" }}>
+                {c.outcome === "won" ? `${c.sideId && nameOf ? nameOf(c.sideId) : "Won"} · +${c.points}` : "Nobody got it"}
               </div>
             </div>
-          </button>
+          </div>
+          <ol className="mt-2 space-y-1">
+            {(c.clues || []).map((clue, k) => (
+              <li key={k} className="bb-clue-studyclue">
+                <span className="bb-clue-pts">{5 - k}</span>
+                <span className="min-w-0">
+                  {clue.text}{" "}
+                  {onOpenRef ? (
+                    <button type="button" className="bb-clue-ref" onClick={() => onOpenRef(clue.ref)}>
+                      {clue.ref.label}
+                    </button>
+                  ) : (
+                    <span className="bb-clue-ref">{clue.ref.label}</span>
+                  )}
+                </span>
+              </li>
+            ))}
+          </ol>
+          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+            <button type="button" className="bb-clue-link text-[14px]" onClick={() => onStudy(c)}>📖 Teaching note</button>
+            {c.study ? (
+              <Link className="bb-clue-link text-[14px]" href={c.study.href}>
+                {c.study.label} →
+              </Link>
+            ) : null}
+          </div>
         </li>
       ))}
-    </ul>
+    </ol>
   );
 }
 
@@ -95,7 +140,7 @@ export default function ClueResults({
         {primary}
         {secondary}
         <button type="button" onClick={onReview} className="bb-clue-link mx-auto text-[17px]">
-          📖 Review Cards
+          📖 Review all 10 rounds
         </button>
       </div>
       <div className="mt-5 border-t pt-4" style={{ borderColor: "#d7b26b" }}>
