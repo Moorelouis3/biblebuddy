@@ -177,6 +177,23 @@ rarely appears at all.
 **Worth confirming on a phone:** that offline reading in the Play app actually
 works. We believe it on the strength of a commit message.
 
+### 4. Verse and streak pictures in the share sheet (both apps) — not started
+**Needs code and a build.** Written 2026-11-22.
+
+Sharing a verse (Bible reader, Verse of the Day) now makes a picture of it on
+the sharer's Bible Cover, and tapping the streak on Home opens the streak share
+card (`lib/verseShareImage.ts`, `components/StreakShareCard.tsx`). Both share
+the picture through the Web Share API with a file (`shareImage` in
+`lib/nativeShare.ts`). That works on the website. In the apps it only works
+where the webview supports sharing files: Android's WebView does not, and the
+iOS WKWebView is unconfirmed. Where it does not, the app shares the verse as
+text through the native sheet, as before — nothing breaks, there is just no
+picture.
+
+To get the picture into the native sheet: add `@capacitor/filesystem`, write
+the PNG to the cache directory, and pass its URI to `Share.share({ files })`
+in `shareImage`. That is a new plugin, so it needs an iOS and an Android build.
+
 ---
 
 ## Before an iOS release can be submitted at all

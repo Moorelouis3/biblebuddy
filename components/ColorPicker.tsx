@@ -17,6 +17,14 @@ interface ColorPickerProps {
     failed: boolean;
     onToggle: () => void;
   } | null;
+  /**
+   * Share this verse as a picture (lib/verseShareImage.ts). Left out, there
+   * is no share row.
+   */
+  share?: {
+    busy: boolean;
+    onShare: () => void;
+  } | null;
 }
 
 const COLORS = [
@@ -27,7 +35,7 @@ const COLORS = [
   { name: "orange", code: "#FFE0B2" },
 ];
 
-export const ColorPicker: React.FC<ColorPickerProps> = ({ anchor, selectedColor, onSelect, onClose, memory }) => {
+export const ColorPicker: React.FC<ColorPickerProps> = ({ anchor, selectedColor, onSelect, onClose, memory, share }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -51,8 +59,9 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ anchor, selectedColor,
 
   // Wider and taller when the Bible Memory row is there, so it never opens
   // half off the edge of a phone.
-  const width = memory ? 224 : 172;
-  const height = memory ? 112 : 64;
+  const rows = (memory ? 1 : 0) + (share ? 1 : 0);
+  const width = rows ? 224 : 172;
+  const height = 64 + rows * 48;
   const left = Math.min(Math.max(anchor.x - 80, 12), window.innerWidth - width);
   const top = Math.min(Math.max(anchor.y, 12), window.innerHeight - height);
 
@@ -84,6 +93,16 @@ export const ColorPicker: React.FC<ColorPickerProps> = ({ anchor, selectedColor,
           }`}
         >
           {memory.failed ? "Did not save. Tap to retry" : memory.saved ? "✓ In Bible Memory" : "🧠 Add to Bible Memory"}
+        </button>
+      ) : null}
+      {share ? (
+        <button
+          type="button"
+          onClick={share.onShare}
+          disabled={share.busy}
+          className="whitespace-nowrap rounded-lg border border-gray-200 bg-white px-3 py-2 text-left text-sm font-bold text-gray-900 transition hover:bg-gray-50 disabled:opacity-60"
+        >
+          {share.busy ? "Preparing…" : "↗ Share verse"}
         </button>
       ) : null}
     </div>,

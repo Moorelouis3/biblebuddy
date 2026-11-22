@@ -15,6 +15,7 @@ import { useAccountGate } from "./AccountRequiredModal";
 import { useDailyVerseBookmark, type DailyVerseSource } from "../lib/useDailyVerseBookmark";
 import { useMemoryVerse } from "../lib/useMemoryVerse";
 import ShareToFeed from "./feed/ShareToFeed";
+import { shareVerseImage, warmVerseShareImage } from "../lib/verseShareImage";
 import {
   getVotdBackground,
   getVotdShareUrl,
@@ -270,6 +271,11 @@ export default function VerseOfTheDayBreakdown({
     source,
   };
 
+  // The share picture draws on the cover art; load it before the tap.
+  useEffect(() => {
+    warmVerseShareImage();
+  }, []);
+
   // Opening the breakdown counts as reading it starting - saved per user so
   // the card can show "read", plus the analytics event per surface.
   useEffect(() => {
@@ -309,13 +315,18 @@ export default function VerseOfTheDayBreakdown({
 
   async function handleShare() {
     const url = getVotdShareUrl(entry.scheduled_date);
-    const text = `"${entry.verse_text}" - ${entry.reference} (${entry.translation})`;
     trackVotdEvent("votd_share", meta);
     if (userId) void upsertVotdEngagement(userId, entry.id, { shared_at: new Date().toISOString() });
     try {
-      // Native sheet in the app, Web Share on the web, clipboard last.
-      const { shareContent } = await import("@/lib/nativeShare");
-      const outcome = await shareContent({ title: "Verse of the Day - Bible Buddy", text, url });
+      // The verse as a picture (lib/verseShareImage.ts), as text where a
+      // file cannot be shared, clipboard last.
+      const outcome = await shareVerseImage({
+        text: entry.verse_text,
+        reference: entry.reference,
+        translation: entry.translation,
+        url,
+        title: "Verse of the Day - Bible Buddy",
+      });
       if (outcome === "copied") {
         setShareState("copied");
         setTimeout(() => setShareState("idle"), 2000);

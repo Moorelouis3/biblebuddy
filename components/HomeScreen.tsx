@@ -27,9 +27,10 @@ import YourBookshelf from "./home/YourBookshelf";
 import TodaysGroupStudy from "./home/TodaysGroupStudy";
 import { trackVotdEvent as trackHomeEvent } from "../lib/verseOfTheDayContent";
 import { BLOG_ARTICLES } from "../lib/blogContent";
-import { calculateBibleYearPosition } from "../lib/bibleYearProgress";
+import { bibleYearPercent, calculateBibleYearPosition } from "../lib/bibleYearProgress";
 import { BIBLE_STUDY_GROUP_ID } from "../lib/bibleStudiesCatalog";
 import StreakFlameEmoji from "./StreakFlameEmoji";
+import StreakShareModal from "./StreakShareModal";
 import LevelProgressCard from "./LevelProgressCard";
 import BibleReferenceCard from "./BibleReferenceCard";
 import { updateWidgets } from "../lib/nativeWidgets";
@@ -60,6 +61,8 @@ type HomeStats = {
   planDay: number | null;
   planFinished: boolean;
   lastCompletedDay: number | null;
+  /** Bible in One Year days actually finished, for the streak share card. */
+  planCompletedDays: number;
   displayName: string | null;
   flameId: string | null;
 };
@@ -124,6 +127,7 @@ export default function HomeScreen() {
     url.searchParams.delete("edit");
     window.history.replaceState(window.history.state, "", url.pathname + (url.search || "") + url.hash);
   }, []);
+  const [streakShareOpen, setStreakShareOpen] = useState(false);
   const [stats, setStats] = useState<HomeStats>({
     loaded: false,
     streak: null,
@@ -131,6 +135,7 @@ export default function HomeScreen() {
     planDay: null,
     planFinished: false,
     lastCompletedDay: null,
+    planCompletedDays: 0,
     displayName: null,
     flameId: null,
   });
@@ -189,7 +194,7 @@ export default function HomeScreen() {
       const profile = profileResult.status === "fulfilled" ? (profileResult.value.data as any) : null;
       const chapterCount = chapterResult.status === "fulfilled" ? chapterResult.value.count : null;
       // One shared rule now - see lib/bibleYearProgress.ts for why.
-      const { planDay, planFinished, highestReadDay } = calculateBibleYearPosition(
+      const { planDay, planFinished, highestReadDay, completedDays } = calculateBibleYearPosition(
         planResult.status === "fulfilled" ? (planResult.value.data as any) : null,
       );
 
@@ -202,6 +207,7 @@ export default function HomeScreen() {
         // The furthest day actually finished, not "the day before the next
         // one" - those differ for anyone who skipped a day.
         lastCompletedDay: planDay !== null ? highestReadDay : null,
+        planCompletedDays: completedDays,
         displayName: profile?.display_name || profile?.username || null,
         flameId: profile?.selected_streak_flame ?? null,
       });
@@ -342,9 +348,13 @@ export default function HomeScreen() {
         return (
           <>
           {stats.streak !== null ? (
-            // Peach, same family as the Bible Trivia card below
-            <div
-              className="bb-cv-stat flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#f4dcc8] px-2.5 py-2.5 shadow-sm sm:gap-2.5 sm:px-4 sm:py-3"
+            // Peach, same family as the Bible Trivia card below. Tapping it
+            // opens the streak share card (components/StreakShareModal.tsx).
+            <button
+              type="button"
+              onClick={() => setStreakShareOpen(true)}
+              aria-label={`${stats.streak} day streak. Share your streak`}
+              className="bb-cv-stat flex w-full min-w-0 items-center gap-1.5 rounded-2xl border border-[#f4dcc8] px-2.5 py-2.5 text-left shadow-sm transition active:scale-[0.98] sm:gap-2.5 sm:px-4 sm:py-3"
               style={{
                 backgroundColor: "var(--bb-cv-light-bg, #fff3e6)",
                 backgroundImage: "url(/home-cards/bg-trivia.jpg)",
@@ -363,7 +373,7 @@ export default function HomeScreen() {
                 <p className="text-base font-black leading-tight text-[#3d2417] sm:text-xl">{stats.streak}</p>
                 <p className="text-[10px] font-bold text-[#8a5c40] sm:text-[11px]">Day Streak</p>
               </div>
-            </div>
+            </button>
           ) : !stats.loaded && userId ? (
             <div className="h-[64px] min-w-0 animate-pulse rounded-2xl bg-[var(--bb-surface-soft,#eef2f7)]" />
           ) : null}
@@ -668,6 +678,19 @@ export default function HomeScreen() {
         onSave={homeLayout.save}
         onReset={homeLayout.reset}
         renderWidget={renderWidget}
+      />
+
+      {/* Tap the streak: the share card (Louis, 2026-11-22). The Bible in One
+          Year block shows only for someone who has read a day of the plan. */}
+      <StreakShareModal
+        isOpen={streakShareOpen}
+        onClose={() => setStreakShareOpen(false)}
+        streakDays={stats.streak ?? 0}
+        bibleYear={
+          stats.planDay !== null && (stats.lastCompletedDay ?? 0) > 0
+            ? { currentDay: stats.planDay, overallPercent: bibleYearPercent(stats.planCompletedDays) }
+            : null
+        }
       />
     </div>
   );

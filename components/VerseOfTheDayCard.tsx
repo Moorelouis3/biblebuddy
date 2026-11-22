@@ -18,6 +18,7 @@ import { useDailyVerseBookmark } from "../lib/useDailyVerseBookmark";
 import { useMemoryVerse } from "../lib/useMemoryVerse";
 import { getVerseOfTheDay } from "../lib/verseOfTheDay";
 import { updateWidgets } from "../lib/nativeWidgets";
+import { shareVerseImage, warmVerseShareImage } from "../lib/verseShareImage";
 import {
   fetchVotdEngagement,
   fetchVotdEntryByDate,
@@ -55,6 +56,11 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
   );
 
   const legacyVerse = useMemo(() => getVerseOfTheDay(), []);
+
+  // The share picture draws on the cover art; load it before the tap.
+  useEffect(() => {
+    warmVerseShareImage();
+  }, []);
 
   useEffect(() => {
     void (async () => {
@@ -115,15 +121,19 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
     event.stopPropagation();
     if (!entry) return;
     const url = getVotdShareUrl(entry.scheduled_date);
-    const text = `"${entry.verse_text}" - ${entry.reference} (${entry.translation})`;
     trackVotdEvent("votd_share", meta);
     if (userId) void upsertVotdEngagement(userId, entry.id, { shared_at: new Date().toISOString() });
     try {
-      // Native share sheet in the app, Web Share on the web, clipboard last.
-      // "Copied" is only shown when something really was copied - inside the
-      // app this used to claim a copy after the real sheet failed to open.
-      const { shareContent } = await import("@/lib/nativeShare");
-      const outcome = await shareContent({ title: "Verse of the Day - Bible Buddy", text, url });
+      // The verse as a picture on the sharer's Bible Cover
+      // (lib/verseShareImage.ts), as text where the device cannot share a
+      // file. "Copied" is only shown when something really was copied.
+      const outcome = await shareVerseImage({
+        text: entry.verse_text,
+        reference: entry.reference,
+        translation: entry.translation,
+        url,
+        title: "Verse of the Day - Bible Buddy",
+      });
       if (outcome === "copied") {
         setShareCopied(true);
         setTimeout(() => setShareCopied(false), 2000);

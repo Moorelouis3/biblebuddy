@@ -8,6 +8,7 @@ import { createPortal } from "react-dom";
 const BibleStudySectionsLoader = dynamic(() => import("./BibleStudySectionsLoader"), { ssr: false });
 import { ColorPicker } from "./ColorPicker";
 import { useMemoryVerse } from "../lib/useMemoryVerse";
+import { formatVerseReference, shareVerseImage, warmVerseShareImage } from "../lib/verseShareImage";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import { loadChapterStudySections } from "../lib/chapterStaticData";
 import {
@@ -1409,13 +1410,32 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   const [openInsightCard, setOpenInsightCard] = useState<string | null>(null);
   // How far down the chapter the Insight Cards have been mounted so far.
   const [insightCardCeiling, setInsightCardCeiling] = useState(6);
-  const shareVerse = null as { number: number; text: string } | null;
-  const shareContent = "";
-  const shareSubmitting = false;
-  const shareSuccess = false;
-  const setShareVerse = (_value: null) => {};
-  const setShareContent = (_value: string) => {};
-  const handleShareSubmit = () => {};
+  // Share a verse as a picture (Louis, 2026-11-22). The old "Share to Feed"
+  // modal that lived here went with the community system and left blank
+  // stubs behind, so the reader had no working share at all.
+  const [verseSharing, setVerseSharing] = useState(false);
+  useEffect(() => {
+    if (picker?.mode === "verse") warmVerseShareImage();
+  }, [picker]);
+  async function handleShareVerse(verseNumber: number) {
+    const raw = verses.find((entry) => entry.number === verseNumber)?.text;
+    if (!raw || verseSharing) return;
+    const text = raw.replace(/<[^>]*>/g, " ").replace(/&nbsp;/gi, " ").replace(/\s+/g, " ").trim();
+    setVerseSharing(true);
+    try {
+      await shareVerseImage({
+        text,
+        reference: formatVerseReference(book, chapter, verseNumber),
+        translation: translation || null,
+        url: typeof window !== "undefined" ? `${window.location.origin}/bible/${encodeURIComponent(book)}/${chapter}` : undefined,
+      });
+    } catch {
+      // Nothing shared; the menu just closes.
+    } finally {
+      setVerseSharing(false);
+      setPicker(null);
+    }
+  }
 
   useEffect(() => {
     (async () => {
@@ -2537,6 +2557,11 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
             ? { saved: memoryVerse.saved, busy: memoryVerse.busy, failed: memoryVerse.failed, onToggle: () => void memoryVerse.toggle() }
             : null
         }
+        share={
+          picker?.mode === "verse" && !plainTextMode
+            ? { busy: verseSharing, onShare: () => void handleShareVerse(picker.verse) }
+            : null
+        }
       />
       <HighlightActionMenu
         anchor={picker?.mode === "range" && !rangeColorPickerOpen ? picker.anchor : null}
@@ -2576,57 +2601,6 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
         userId={user?.id || null}
         onClose={() => setCreditBlocked(false)}
       />
-
-      {/* ── Share Verse to Feed Modal ─────────────────────────────────── */}
-      {false && shareVerse && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-5">
-            {shareSuccess ? (
-              <div className="text-center py-6">
-                <p className="text-3xl mb-2">✅</p>
-                <p className="font-semibold text-gray-900">Shared to your Feed!</p>
-              </div>
-            ) : (
-              <>
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-bold text-gray-900 text-sm">Share to Bible Buddy Feed</h3>
-                  <button onClick={() => setShareVerse(null)} className="text-gray-400 hover:text-gray-600 transition text-lg leading-none">×</button>
-                </div>
-
-                {/* Verse preview */}
-                <div className="bg-green-50 border border-green-200 rounded-xl px-4 py-3 mb-3">
-                  <p className="text-xs font-semibold text-green-700 mb-1">
-                    {book.charAt(0).toUpperCase() + book.slice(1)} {chapter}:{shareVerse!.number}
-                  </p>
-                  <p className="text-sm text-gray-700 italic leading-relaxed">"{shareVerse!.text}"</p>
-                </div>
-
-                {/* Thought textarea */}
-                <textarea
-                  value={shareContent}
-                  onChange={(e) => setShareContent(e.target.value)}
-                  placeholder="What does this verse mean to you? (optional)"
-                  rows={3}
-                  autoFocus
-                  className="w-full text-sm px-3 py-2 border border-gray-200 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-green-400 mb-3"
-                />
-
-                {/* Submit */}
-                <div className="flex justify-end">
-                  <button
-                    onClick={handleShareSubmit}
-                    disabled={shareSubmitting}
-                    className="px-4 py-2 rounded-xl text-xs font-bold text-white transition disabled:opacity-40"
-                    style={{ backgroundColor: "var(--bb-cv-action-bg, #4a9b6f)" }}
-                  >
-                    {shareSubmitting ? "Sharing..." : "Share"}
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

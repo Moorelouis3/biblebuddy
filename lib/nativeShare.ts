@@ -71,6 +71,65 @@ export async function shareContent(payload: SharePayload): Promise<ShareOutcome>
   }
 }
 
+export type ImageSharePayload = SharePayload & {
+  /**
+   * The picture, or a function that makes it. A function is only called on
+   * devices that can share files, so nothing is drawn for a text-only share.
+   */
+  file: File | (() => Promise<File>);
+};
+
+/** Web Share Level 2: can this browser (or webview) hand a file to the sheet? */
+function canShareFiles(): boolean {
+  if (typeof navigator === "undefined" || typeof navigator.share !== "function") return false;
+  if (typeof navigator.canShare !== "function") return false;
+  try {
+    const probe = new File([new Uint8Array([0])], "probe.png", { type: "image/png" });
+    return navigator.canShare({ files: [probe] });
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Share a picture (a verse image, the streak card), with text alongside.
+ *
+ * Order: the Web Share API with the file - the web, and the app's WKWebView
+ * where the OS supports it - then the text share above (native sheet, Web
+ * Share, clipboard). The native Capacitor plugin cannot send a file without
+ * @capacitor/filesystem, which is not in the app, so in an app build where the
+ * webview cannot share files the reader still gets the verse as text.
+ */
+export async function shareImage(payload: ImageSharePayload): Promise<ShareOutcome> {
+  const { title, text, url, file } = payload;
+
+  if (canShareFiles()) {
+    let resolved: File | null = null;
+    try {
+      resolved = typeof file === "function" ? await file() : file;
+    } catch {
+      resolved = null;
+    }
+    if (resolved) {
+      try {
+        if (navigator.canShare({ files: [resolved] })) {
+          // The link goes in the text: several share targets drop `url` when
+          // a file is attached.
+          await navigator.share({ title, text: url ? `${text}\n${url}` : text, files: [resolved] });
+          return "shared";
+        }
+      } catch (error) {
+        // Tapping away is a decision, not a fault.
+        if (error instanceof DOMException && error.name === "AbortError") return "dismissed";
+        // NotAllowedError (the gesture expired while the picture was drawn)
+        // and anything else: fall through to sharing the words instead.
+      }
+    }
+  }
+
+  return shareContent({ title, text, url });
+}
+
 /**
  * A short tap of feedback, for moments worth feeling: a chapter finished, a
  * streak extended, a day of the plan completed.
