@@ -241,7 +241,7 @@ function SoloRound({ deckIds, onExit }: { deckIds: string[]; onExit: () => void 
           }
           secondary={
             <div className="flex gap-3">
-              <button type="button" className="bb-clue-btn flex-1" onClick={playAgain}>▶ Play Again</button>
+              <button type="button" className="bb-clue-btn flex-1 whitespace-nowrap !px-3" onClick={playAgain}>▶ Play Again</button>
               <button type="button" className="bb-clue-btn flex-1" onClick={onExit}>Menu</button>
             </div>
           }

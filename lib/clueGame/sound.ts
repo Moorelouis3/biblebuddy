@@ -31,7 +31,6 @@ export function setSoundOn(on: boolean) {
     window.localStorage.setItem(KEY, on ? "on" : "off");
   } catch {}
   if (master) master.gain.value = on ? 0.55 : 0;
-  syncClueMusic();
 }
 
 function audio(): AudioContext | null {
@@ -253,18 +252,60 @@ export const clueSound = {
  * (browsers block audio before one) and stops when the table closes.
  */
 const MUSIC_LIFT = 2.5;
+const MUSIC_ON = "bb:clue-music";
+const MUSIC_VOL = "bb:clue-music-volume";
+const MUSIC_TRACK = "bb:clue-music-track";
+
+/** The tracks to pick from in the sound menu. */
+export const CLUE_MUSIC_TRACKS = BIBLE_READING_BACKGROUND_TRACKS.map((src, i) => ({ src, name: `Track ${i + 1}` }));
+
+const read = (k: string) => {
+  try {
+    return window.localStorage.getItem(k);
+  } catch {
+    return null;
+  }
+};
+const write = (k: string, v: string) => {
+  try {
+    window.localStorage.setItem(k, v);
+  } catch {}
+};
+
+/** Music has its own switch, separate from the sound effects (Louis, 2026-11-22). */
+export function musicOn(): boolean {
+  return read(MUSIC_ON) !== "off";
+}
+/** 0..1 on the slider; the default sits at the measured quiet level. */
+export function musicVolume(): number {
+  const v = Number(read(MUSIC_VOL));
+  return Number.isFinite(v) && read(MUSIC_VOL) !== null ? Math.min(1, Math.max(0, v)) : 0.5;
+}
+export function musicTrack(): number {
+  const n = Number(read(MUSIC_TRACK));
+  return Number.isInteger(n) && n >= 0 && n < CLUE_MUSIC_TRACKS.length ? n : 0;
+}
+
 let music: HTMLAudioElement | null = null;
+let musicSrc = "";
 let musicWanted = false;
 
+/** Slider at 0.5 = the measured quiet level; 1 = twice that (still capped low). */
+function levelFor(src: string) {
+  return Math.min(0.35, bibleReadingBackgroundVolumeFor(src) * MUSIC_LIFT * musicVolume() * 2);
+}
+
 function startTrack() {
-  if (typeof window === "undefined" || !musicWanted || !soundOn()) return;
-  if (!music) {
-    const src = BIBLE_READING_BACKGROUND_TRACKS[Math.floor(Math.random() * BIBLE_READING_BACKGROUND_TRACKS.length)];
+  if (typeof window === "undefined" || !musicWanted || !musicOn()) return;
+  const src = CLUE_MUSIC_TRACKS[musicTrack()].src;
+  if (!music || musicSrc !== src) {
+    music?.pause();
     music = new Audio(src);
+    musicSrc = src;
     music.loop = true;
     music.preload = "auto";
-    music.volume = Math.min(0.25, bibleReadingBackgroundVolumeFor(src) * MUSIC_LIFT);
   }
+  music.volume = levelFor(src);
   void music.play().catch(() => {
     // Not allowed yet (no tap): the next tap tries again.
   });
@@ -285,9 +326,24 @@ export function startClueMusic() {
   };
 }
 
-/** The mute switch turns the music off and on too. */
+export function setMusicOn(on: boolean) {
+  write(MUSIC_ON, on ? "on" : "off");
+  syncClueMusic();
+}
+export function setMusicVolume(v: number) {
+  write(MUSIC_VOL, String(v));
+  if (music) music.volume = levelFor(musicSrc);
+}
+export function setMusicTrack(i: number) {
+  write(MUSIC_TRACK, String(i));
+  syncClueMusic();
+}
+
+/** Apply the current music settings to what is playing. */
 export function syncClueMusic() {
-  if (!music) return startTrack();
-  if (soundOn() && musicWanted) void music.play().catch(() => {});
-  else music.pause();
+  if (!musicOn() || !musicWanted) {
+    music?.pause();
+    return;
+  }
+  startTrack();
 }

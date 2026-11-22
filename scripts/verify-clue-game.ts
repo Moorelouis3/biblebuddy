@@ -52,9 +52,11 @@ ok("approved clues: Noah's 5-point, Adam's revised set; giveaways stay low", () 
   const noah = cards.get("noah")!;
   assert.equal(noah.clues[0].text, "God found me righteous in a world of unrighteousness.");
   for (const clue of noah.clues.slice(0, 3)) assert.ok(!/\b(ark|flood)\b/i.test(clue.text), clue.text);
-  const adam = cards.get("adam")!;
-  assert.equal(adam.clues[1].ref.label, "Luke 3:23–38");
-  assert.equal(adam.clues[4].ref.label, "Genesis 2:7");
+  assert.equal(cards.get("adam")!.clues[4].ref.label, "Genesis 2:7");
+  // Louis, 2026-11-22: a Genesis deck's clues come only from Genesis.
+  for (const c of GENESIS_CARDS) {
+    for (const clue of [...c.clues, ...(c.altTopClues || [])]) assert.equal(clue.ref.book, "Genesis", `${c.id}: ${clue.ref.label}`);
+  }
 });
 
 ok("art file names do not spell the answer (the silhouette is shown to every player)", () => {
