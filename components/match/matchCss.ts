@@ -302,28 +302,25 @@ html.bb-native.bb-game-screen body::before { display:none !important; }
    there. Every notched or island iPhone needs at least ~50px, so that is the
    floor. The website and Android keep the reported inset. */
 .bbm-board-title.is-xlong h1 { font-size: clamp(15px, calc(var(--w) * .045), 26px) !important; }
-/* ---- the story screen after a win (WinStory) ---- */
-.bbm-story { position:fixed; inset:0; z-index:40; display:grid; place-items:center; background:#120c06; overflow:hidden; animation: bbm-story-in .45s ease-out both; }
-@keyframes bbm-story-in { from { opacity:0; } }
-.bbm-story-blur { position:absolute; inset:-40px; background-size:cover; background-position:center; filter: blur(24px) brightness(.75); }
+/* ---- the story screen after a win (WinStory): one picture, popping in and playing out ---- */
+.bbm-story { position:fixed; inset:0; z-index:40; display:grid; place-items:center; background:#120c06; overflow:hidden; animation: bbm-story-bg .35s ease-out both; }
+@keyframes bbm-story-bg { from { background-color: rgba(18,12,6,0); } }
+.bbm-story-blur { position:absolute; inset:-40px; background-size:cover; background-position:center; filter: blur(24px) brightness(.7); animation: bbm-story-fade .4s ease-out both; }
+@keyframes bbm-story-fade { from { opacity:0; } }
 /* The picture fills the phone (a little trimmed at the edges if the phone is wider or taller), whole on a computer. */
-.bbm-story-art { position:relative; height: max(100dvh, 217.3vw); aspect-ratio: 851 / 1849; }
+.bbm-story-art { position:relative; height: max(100dvh, 217.3vw); aspect-ratio: 851 / 1849; animation: bbm-story-pop .55s cubic-bezier(.2,.9,.3,1.15) both; }
 @media (min-aspect-ratio: 3/5) { .bbm-story-art { height: 100dvh; } }
+@keyframes bbm-story-pop { from { opacity:0; transform: scale(.88); } }
 .bbm-story-art > img { position:absolute; inset:0; width:100%; height:100%; display:block; user-select:none; -webkit-user-drag:none; }
-.bbm-story-hide { filter: blur(14px) brightness(.92) saturate(.9); }
-.bbm-story-plaque { transform-origin: 50% 15%; animation: bbm-story-pop .7s .25s cubic-bezier(.2,.9,.3,1.35) both; }
-@keyframes bbm-story-pop { from { transform: scale(.75); opacity:0; } }
-.bbm-story-text { animation: bbm-story-fade 1s 1.3s ease-out both; }
-@keyframes bbm-story-fade { from { opacity:0; filter: blur(6px); } }
-.bbm-story-button { animation: bbm-story-rise .6s 2.4s cubic-bezier(.2,.9,.3,1.2) both; }
-@keyframes bbm-story-rise { from { opacity:0; transform: translateY(18px); } }
-.bbm-story.is-all .bbm-story-plaque, .bbm-story.is-all .bbm-story-text, .bbm-story.is-all .bbm-story-button { animation: none; opacity:1; }
+/* Tapping the button: the whole screen plays out, then the map. */
+.bbm-story.is-leaving { animation: bbm-story-out .42s ease-in forwards; }
+.bbm-story.is-leaving .bbm-story-art { animation: bbm-story-zoom .42s ease-in forwards; }
+@keyframes bbm-story-out { to { opacity:0; } }
+@keyframes bbm-story-zoom { from { transform:none; } to { transform: scale(1.08); } }
 /* The tap spot over the painted green button. */
-.bbm-story-go { position:absolute; left:10%; right:10%; top:80%; height:9.5%; border:0; padding:0; background:transparent; border-radius:999px; cursor:pointer; animation: bbm-story-wait 2.4s steps(1, end) both; }
-@keyframes bbm-story-wait { from { visibility:hidden; } to { visibility:visible; } }
-.bbm-story.is-all .bbm-story-go { animation:none; }
+.bbm-story-go { position:absolute; left:10%; right:10%; top:80%; height:9.5%; border:0; padding:0; background:transparent; border-radius:999px; cursor:pointer; }
 .bbm-story-go:active { background: rgba(255,255,255,.15); }
-@media (prefers-reduced-motion: reduce) { .bbm-story-plaque, .bbm-story-text, .bbm-story-button, .bbm-story-go { animation:none !important; } }
+@media (prefers-reduced-motion: reduce) { .bbm-story, .bbm-story-art, .bbm-story-blur { animation:none !important; } }
 /* ---- power-ups (Louis, 2026-11-22: "real power-ups, like Candy Crush") ---- */
 /* Pillar of Fire: a column of light top to bottom. */
 .bbm-beam.is-col { left: calc(var(--c) * var(--cell)); right:auto; top:0; bottom:0; width: var(--cell); height:auto;
