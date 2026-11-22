@@ -24,6 +24,7 @@ import MatchBoard, { readSavedBoard } from "./MatchBoard";
 import { trackMatch } from "@/lib/match/track";
 import { matchMusicOn, playMatchMusic, setMatchMusicOn, stopMatchMusic } from "@/lib/match/sound";
 import { MATCH_CSS } from "./matchCss";
+import { MAP_PREVIEWS } from "@/lib/match/mapPreviews";
 import { clueApi } from "@/lib/clueGame/track";
 
 type Progress = { unlocked: number; done: string[]; best: Record<string, number>; travel: boolean };
@@ -196,6 +197,13 @@ export default function MatchGame() {
  */
 function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; ready: boolean }) {
   const [settings, setSettings] = useState(false);
+  // The map pictures start downloading while the home screen is up, so the map opens ready.
+  useEffect(() => {
+    for (const src of ["/games/match/ui/map-phone.webp", "/games/match/ui/map-exodus-phone.webp"]) {
+      const img = new Image();
+      img.src = src;
+    }
+  }, []);
   const [sound, setSound] = useState(true);
   const [music, setMusic] = useState(true);
   useEffect(() => {
@@ -496,7 +504,13 @@ function GenesisMap({
             <img
               key={i}
               className={`bbm-map-art bbm-map-section ${i > 0 ? "is-blended" : ""}`}
-              style={{ top: `${((SEGMENTS - 1 - i) * 100) / SEGMENTS}%`, height: `${(100 / SEGMENTS) * (i > 0 ? BLEND : 1)}%`, zIndex: i + 1 }}
+              style={{
+                top: `${((SEGMENTS - 1 - i) * 100) / SEGMENTS}%`,
+                height: `${(100 / SEGMENTS) * (i > 0 ? BLEND : 1)}%`,
+                zIndex: i + 1,
+                // A tiny blurred preview shows at once while the full picture loads.
+                backgroundImage: `url(${MAP_PREVIEWS[s.fx]})`,
+              }}
               src={s.src}
               alt={i === 0 ? "The Bible Buddy trail through Genesis and Exodus" : ""}
               draggable={false}

@@ -358,7 +358,7 @@ html.bb-native.bb-game-screen body::before { display:none !important; }
 .bbm-buddy.is-more { font-size:11px; }
 .bbm-buddy-name { margin-left:6px; padding: 2px 8px; border-radius:999px; background: rgba(40,24,8,.72); color:#fff3d2 !important; font-size:12px; font-weight:800; }
 /* The map sections: stacked, each over the one below, its bottom fading into it. */
-.bbm-map-section { position:absolute; left:0; width:100%; object-fit:fill; }
+.bbm-map-section { position:absolute; left:0; width:100%; object-fit:fill; background-size:100% 100%; background-repeat:no-repeat; }
 .bbm-map-section.is-blended { -webkit-mask-image: linear-gradient(180deg, #000 calc(100% - 6%), transparent 100%); mask-image: linear-gradient(180deg, #000 calc(100% - 6%), transparent 100%); }
 .bbm-map-trail { z-index: 30; }
 .bbm-medal { z-index: 40; }
@@ -416,7 +416,10 @@ html.bb-native.bb-ios .bbm-home2 { --safe-top: max(env(safe-area-inset-top), 50p
 @media (max-aspect-ratio: 1/1) {
   .bbm-home2 { place-items: start center; }
   /* The full width of the phone, right up under the clock; a short screen trims the bottom. */
-  .bbm-home2-art.is-phone { transform:none !important; height: max(100dvh, 216.67vw) !important; max-width: none !important; }
+  /* Exactly the phone's width, never wider (Louis: a grey bar showed when it came out a hair wider). */
+  .bbm-home2-art.is-phone { transform:none !important; width:100vw !important; height: max(100dvh, 216.67vw) !important; max-width:100vw !important; aspect-ratio:auto !important; }
+  .bbm-home2-art.is-phone > img { object-fit:cover; object-position: top center; }
+  .bbm-home2 { overflow:hidden; width:100vw; }
   .bbm-home2-art.is-phone .bbm-hot:not(.is-play) { display:none; }
   .bbm-home2-top { display:flex !important; }
 }
