@@ -3,21 +3,17 @@
 /**
  * The Bible Clue Game board. One component for solo, private rooms and
  * challenges: it draws a PublicMatch (lib/clueGame/engine.ts publicView),
- * which never holds the current card's answer before the reveal, and calls
- * back with what the player did. Solo makes the PublicMatch on the device;
- * a room gets it from the server.
+ * which never holds the right answer, or anyone else's choice, before the
+ * question closes, and calls back with what the player did.
  *
- * Layout: Louis's Genesis four-player board (Drive "Genesis Beersheba",
- * 2026-11-22), the same on phones and desktop. The book's scene fills the
- * screen and the UI floats over it:
+ * Multiple choice since 2026-11-22 (Louis: the five moving clues were too
+ * fast to follow, Jessica quit, and typing made the iPhone flash). Layout:
  *   - the deck and round in the header;
- *   - the other players in equal columns across the top, each with a small
- *     fan of the cards they have won (none in solo);
- *   - one stable play row: the draw pile, the clue panel, the card in play
- *     (its mystery picture, swapped for the reveal in the same slot);
- *   - you: photo, round points, cards collected, then your won cards in a
- *     swipeable strip, each with the points that win actually earned;
- *   - the guess bar docked at the bottom.
+ *   - the other players across the top: points, whether they have locked in
+ *     (never what), and after the reveal what they chose;
+ *   - one play row: the card in play, the question panel, the draw pile;
+ *   - four answer buttons A-D, 2 by 2;
+ *   - you: photo, points, how many you got right, and those cards in a strip.
  */
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
@@ -29,6 +25,8 @@ import { clueSound, startClueMusic } from "@/lib/clueGame/sound";
 export type TablePlayer = { id: string; name: string; avatar?: string | null };
 
 const UI = "/games/clue/ui";
+const LETTERS = ["A", "B", "C", "D"];
+export const HOW_TO_PLAY = "You have 10 seconds to pick an answer. Right earns 1 point. Wrong costs 1 point. Skip for 0.";
 
 function initials(name: string) {
   return (
@@ -60,7 +58,12 @@ function RingPhoto({ name, src, size, seat }: { name: string; src?: string | nul
   );
 }
 
-type Won = PublicMatch["history"][number];
+type Done = PublicMatch["history"][number];
+
+/** Did this player get this round right? */
+function gotRight(c: Done, id: string) {
+  return c.tiebreak ? c.winnerId === id : (c.points[id] ?? 0) > 0;
+}
 
 export default function ClueTable({
   view,
@@ -69,8 +72,7 @@ export default function ClueTable({
   now,
   cardBack,
   deckIds,
-  onGuess,
-  onWait,
+  onAnswer,
   onStudy,
   isHost,
   onPause,
@@ -86,63 +88,66 @@ export default function ClueTable({
   cardBack?: string;
   /** The decks in play: they choose the scene. */
   deckIds?: string[];
-  onGuess: (text: string) => void;
-  onWait: () => void;
+  /** Lock in a choice (display index 0-3). */
+  onAnswer: (choice: number) => void;
   onStudy: (card: PublicCard) => void;
   isHost?: boolean;
   onPause?: () => void;
   onResume?: () => void;
   /** Shown in place of the play row (the final results); the players stay in view. */
   overlay?: ReactNode;
-  /** The deck name in the header pill. */
+  /** The selection in the header pill. */
   roundLabel?: string;
 }) {
-  const [guess, setGuess] = useState("");
-  const inputRef = useRef<HTMLInputElement | null>(null);
   const boardRef = useRef<HTMLDivElement | null>(null);
   const slotRef = useRef<HTMLDivElement | null>(null);
   const stripRef = useRef<HTMLDivElement | null>(null);
   const round = view.round;
   const card = round?.card ?? null;
-  const revealed = (view.phase === "reveal" || view.phase === "over") && !!round?.outcome;
+  const quiz = round?.quiz ?? null;
+  const revealed = !!round && round.revealedAt !== null;
   const paused = view.pausedAt !== null;
   const scene = sceneFor(deckIds);
+  const over = view.phase === "over";
 
   const me = players.find((p) => p.id === youId) || { id: youId, name: "You" };
   const others = useMemo(() => players.filter((p) => p.id !== youId).slice(0, 3), [players, youId]);
+  const nameOf = (id: string) => (id === youId ? "You" : players.find((p) => p.id === id)?.name || "A player");
 
-  // Wins, newest last, from resolved public history only.
-  const winsBy = useMemo(() => {
-    const map = new Map<string, Won[]>();
+  // Cards each player got right, oldest first.
+  const rightBy = useMemo(() => {
+    const map = new Map<string, Done[]>();
     for (const c of view.history) {
-      if (c.outcome !== "won" || !c.sideId) continue;
-      map.set(c.sideId, [...(map.get(c.sideId) || []), c]);
+      for (const p of view.players) if (gotRight(c, p.id)) map.set(p.id, [...(map.get(p.id) || []), c]);
     }
     return map;
-  }, [view.history]);
-  const myWins = winsBy.get(youId) || [];
+  }, [view.history, view.players]);
+  const myRight = rightBy.get(youId) || [];
 
   const at = paused && view.pausedAt ? view.pausedAt : now;
-  const clueMsLeft = round && view.phase === "clue" ? Math.max(0, round.clueStartedAt + view.settings.clueSeconds * 1000 - at) : 0;
-  const dealMsLeft = round?.revealedAt && view.phase === "reveal" ? Math.max(0, round.revealedAt + view.settings.revealSeconds * 1000 - at) : 0;
-  const seconds = Math.min(view.settings.clueSeconds, Math.ceil(clueMsLeft / 1000));
-  // The game's opening: shuffle, then the game's cards dealt onto the pile.
-  const introLeft = view.dealt === 1 && round && view.phase === "clue" && !paused ? round.clueStartedAt - at : 0;
+  // The opening: the instruction, while the deck is shuffled and dealt.
+  const introLeft = view.dealt === 1 && round && view.phase === "question" && !paused ? round.openAt - at : 0;
   const inIntro = introLeft > 0;
   const introElapsed = ROUND_INTRO_MS - introLeft;
   const shuffling = inIntro && introElapsed < INTRO_SHUFFLE_MS;
   const introPile = inIntro && !shuffling ? Math.min(view.deckSize, Math.floor((introElapsed - INTRO_SHUFFLE_MS) / INTRO_DEAL_EACH_MS) + 1) : 0;
   const dealingDone = inIntro && introPile >= view.deckSize;
-  const myGuesses = round?.guesses?.[youId] || 0;
-  const maxRoundGuesses = view.settings.guessesPerRound ?? 2;
-  const roundLeft = Math.max(0, maxRoundGuesses - (round?.roundGuesses?.[youId] || 0));
-  const canGuess = view.phase === "clue" && !paused && !inIntro && myGuesses < view.settings.guessesPerClue && roundLeft > 0 && clueMsLeft > 0;
-  const waiting = !!round?.waiting?.includes(youId);
-  const points = round ? 5 - round.clueIndex : 0;
+  const msLeft = round && view.phase === "question" ? Math.max(0, round.closesAt - Math.max(at, round.openAt)) : 0;
+  const seconds = Math.min(view.settings.answerSeconds, Math.ceil(msLeft / 1000));
+  const dealMsLeft = round?.revealedAt != null && view.phase === "reveal" ? Math.max(0, round.revealedAt + view.settings.revealSeconds * 1000 - at) : 0;
+  const tiebreak = !!round?.tiebreak;
+  const inTiebreak = tiebreak && view.tiebreakers.includes(youId);
+  const roundKey = round ? `${view.dealt}:${view.history.length}` : "";
 
-  // The game screen is locked (Louis: "ain't no scrolling on a game"): the
-  // page cannot scroll while the board is up, the app menu is hidden, and the
-  // board fills exactly the screen below where it starts.
+  // My choice, shown at once (a room's server confirms it on the next view).
+  const [picked, setPicked] = useState<{ key: string; choice: number } | null>(null);
+  const mine = round?.mine ?? (picked && picked.key === roundKey ? picked.choice : null);
+  const canAnswer = view.phase === "question" && !!round && !paused && !inIntro && msLeft > 0 && mine === null && (!tiebreak || inTiebreak);
+  const correct = revealed ? quiz?.correct ?? null : null;
+  const myPoints = revealed && round?.points ? round.points[youId] ?? 0 : 0;
+
+  // The game screen is locked: the page cannot scroll while the board is up,
+  // the app menu is hidden, and the board fills exactly the screen below where it starts.
   const [top, setTop] = useState(0);
   useLayoutEffect(() => {
     const html = document.documentElement;
@@ -151,7 +156,6 @@ export default function ClueTable({
     html.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
     html.style.overscrollBehavior = "none";
-    // The app menu and top bar step aside while a game is on (Louis, 2026-11-22).
     html.classList.add("bb-in-game");
     const measure = () => {
       const el = boardRef.current;
@@ -168,54 +172,22 @@ export default function ClueTable({
     };
   }, []);
 
-  // New answers float up for a few seconds, then fade.
-  const [answerToasts, setAnswerToasts] = useState<Array<{ key: string; a: PublicMatch["roundAnswers"][number] }>>([]);
-  const seenAnswers = useRef({ dealt: view.dealt, count: view.roundAnswers.length });
-  useEffect(() => {
-    const seen = seenAnswers.current;
-    if (seen.dealt !== view.dealt) {
-      seen.dealt = view.dealt;
-      seen.count = 0;
-    }
-    const fresh = view.roundAnswers.slice(seen.count);
-    seen.count = view.roundAnswers.length;
-    if (!fresh.length) return;
-    const items = fresh.map((a, i) => ({ key: `${view.dealt}-${a.playerId}-${a.clueIndex}-${seen.count + i}`, a }));
-    const id = window.setTimeout(() => setAnswerToasts((list) => [...list, ...items].slice(-3)), 0);
-    const gone = window.setTimeout(() => setAnswerToasts((list) => list.filter((t) => !items.some((n) => n.key === t.key))), 3200);
-    return () => {
-      window.clearTimeout(id);
-      // Let the fade finish even when the view refreshes.
-      void gone;
-    };
-  }, [view.roundAnswers, view.dealt]);
-
   // Quiet music while you are at the table (stops when you leave it).
   useEffect(() => startClueMusic(), []);
 
-  // The keyboard only opens when you tap the box (Louis, 2026-11-22: it
-  // popping up on every clue and round "throws off the game"). When a round
-  // ends it closes.
-  const clueKey = round ? `${view.dealt}:${round.clueIndex}` : "";
+  // The face-down cover on a newly dealt card is taken away after its flip.
+  const [uncovered, setUncovered] = useState("");
   useEffect(() => {
-    if (view.phase !== "clue") inputRef.current?.blur();
-  }, [view.phase]);
-
-  // The face-down cover on a newly dealt card is taken away after its flip,
-  // even if a device never runs the animation, so the silhouette always shows.
-  const [uncovered, setUncovered] = useState(0);
-  const hasRound = !!round;
-  useEffect(() => {
-    if (inIntro || !hasRound) return;
-    const id = window.setTimeout(() => setUncovered(view.dealt), 1100);
+    if (inIntro || !roundKey) return;
+    const id = window.setTimeout(() => setUncovered(roundKey), 1100);
     return () => window.clearTimeout(id);
-  }, [view.dealt, inIntro, hasRound]);
+  }, [roundKey, inIntro]);
 
-  // New wins slide into your strip: keep the newest in view.
+  // New right cards slide into your strip: keep the newest in view.
   useEffect(() => {
     const el = stripRef.current;
     if (el) el.scrollTo({ left: el.scrollWidth, behavior: "smooth" });
-  }, [myWins.length]);
+  }, [myRight.length]);
 
   /** From the card in play to a player's photo, in px. */
   const vectorTo = (playerId: string) => {
@@ -229,20 +201,21 @@ export default function ClueTable({
     return { x, y, dx: seat.left + seat.width / 2 - (slot.left + slot.width / 2), dy: seat.top + seat.height / 2 - (slot.top + slot.height / 2) };
   };
 
-  // Send the won card flying to the winner, just before the next deal.
+  // A card you got right flies to you just before the next question.
   const [award, setAward] = useState<{ dx: number; dy: number } | null>(null);
-  const winnerId = round?.outcome?.kind === "won" ? round.outcome.sideId : null;
-  const flyNow = view.phase === "reveal" && !!winnerId && dealMsLeft > 0 && dealMsLeft < 900;
+  const flyTo = revealed ? (tiebreak ? round?.winnerId ?? null : myPoints > 0 ? youId : null) : null;
+  const flyNow = view.phase === "reveal" && !!flyTo && dealMsLeft > 0 && dealMsLeft < 900;
   useLayoutEffect(() => {
-    if (!flyNow || !winnerId) {
+    if (!flyNow || !flyTo) {
       setAward(null);
       return;
     }
-    const v = vectorTo(winnerId);
+    const v = vectorTo(flyTo);
     if (v) setAward({ dx: v.dx, dy: v.dy });
-  }, [flyNow, winnerId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [flyNow, flyTo]);
 
-  // Points popping out of the card and flying to a player.
+  // Points popping out of the card and flying to each player.
   const [pops, setPops] = useState<Array<{ id: number; text: string; kind: "win" | "lose"; x: number; y: number; dx: number; dy: number; seat: string }>>([]);
   const popId = useRef(0);
   const pop = (text: string, kind: "win" | "lose", playerId: string) => {
@@ -253,42 +226,35 @@ export default function ClueTable({
     window.setTimeout(() => setPops((list) => list.filter((p) => p.id !== id)), 1900);
   };
 
-  // Sounds, from what changed on the board (the same for solo and rooms).
-  // Wrong guesses already on the board when it first draws are old news.
-  const heard = useRef({ dealt: view.dealt, clue: round?.clueIndex ?? -1, phase: view.phase, tick: 0, wrongAt: view.recentWrong.length ? view.recentWrong[view.recentWrong.length - 1].at : 0 });
+  // Sounds and points, from what changed on the board (the same for solo and rooms).
+  const heard = useRef({ key: roundKey, phase: view.phase, tick: "" });
   useEffect(() => {
     const h = heard.current;
-    if (view.dealt !== h.dealt && view.phase === "clue" && !(view.dealt === 1 && inIntro)) clueSound.deal();
-    else if (view.phase === "clue" && round && round.clueIndex > h.clue && view.dealt === h.dealt) clueSound.clue();
-    if (view.phase === "reveal" && h.phase !== "reveal" && round?.outcome) {
+    if (roundKey && roundKey !== h.key && view.phase === "question" && !inIntro) clueSound.deal();
+    if (view.phase === "reveal" && h.phase !== "reveal" && round) {
       clueSound.flip();
-      if (round.outcome.kind === "won") {
-        if (round.outcome.sideId === youId) {
+      if (round.tiebreak) {
+        if (round.winnerId === youId) {
           clueSound.correct();
           window.setTimeout(() => clueSound.cheer(), 250);
-        } else clueSound.otherWon();
-        pop(`+${round.outcome.points}`, "win", round.outcome.sideId);
+        } else if (round.winnerId) clueSound.otherWon();
+        else clueSound.missed();
       } else {
-        clueSound.missed();
-        window.setTimeout(() => clueSound.aww(), 150);
+        const pts = round.points?.[youId] ?? 0;
+        if (pts > 0) {
+          clueSound.correct();
+          window.setTimeout(() => clueSound.cheer(), 250);
+        } else if (pts < 0) {
+          clueSound.wrong();
+          window.setTimeout(() => clueSound.aww(), 180);
+        } else clueSound.missed();
+        for (const [id, p] of Object.entries(round.points || {})) if (p) pop(p > 0 ? `+${p}` : `−${-p}`, p > 0 ? "win" : "lose", id);
       }
     }
-    const fresh = view.recentWrong.filter((w) => w.at > h.wrongAt);
-    if (fresh.length) {
-      for (const w of fresh) pop(`−${w.points}`, "lose", w.playerId);
-      if (fresh.some((w) => w.playerId === youId)) {
-        clueSound.wrong();
-        window.setTimeout(() => clueSound.aww(), 180);
-      }
-      h.wrongAt = fresh[fresh.length - 1].at;
-    }
-    h.dealt = view.dealt;
-    h.clue = round?.clueIndex ?? -1;
+    h.key = inIntro ? "" : roundKey;
     h.phase = view.phase;
-    // The first card's deal sound waits for the opening to finish.
-    if (view.dealt === 1 && inIntro) h.dealt = 0;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [view.dealt, view.phase, round, view.recentWrong, youId, inIntro]);
+  }, [roundKey, view.phase, round?.revealedAt, youId, inIntro]);
   // Opening sounds: one riffle, then a flick per card onto the pile.
   const introHeard = useRef({ shuffled: false, pile: 0 });
   useEffect(() => {
@@ -304,65 +270,59 @@ export default function ClueTable({
     }
   }, [inIntro, shuffling, introPile]);
   useEffect(() => {
-    if (view.phase !== "clue" || paused || inIntro || seconds > 3 || seconds < 1) return;
-    if (heard.current.tick === seconds + (round?.clueIndex ?? 0) * 100 + view.dealt * 1000) return;
-    heard.current.tick = seconds + (round?.clueIndex ?? 0) * 100 + view.dealt * 1000;
+    if (view.phase !== "question" || paused || inIntro || seconds > 3 || seconds < 1) return;
+    const k = `${roundKey}:${seconds}`;
+    if (heard.current.tick === k) return;
+    heard.current.tick = k;
     clueSound.tick(seconds === 1);
-  }, [seconds, view.phase, paused, inIntro, round?.clueIndex, view.dealt]);
+  }, [seconds, view.phase, paused, inIntro, roundKey]);
 
-  const submit = (e?: React.FormEvent) => {
-    e?.preventDefault();
-    if (!guess.trim() || !canGuess) return;
-    onGuess(guess.trim());
-    setGuess("");
-    // Close the keyboard after a guess; tap the box to guess again.
-    inputRef.current?.blur();
+  const choose = (i: number) => {
+    if (!canAnswer) return;
+    setPicked({ key: roundKey, choice: i });
+    clueSound.tap();
+    onAnswer(i);
   };
 
-  /**
-   * Nothing scrolls (Louis: "when I tap on your guess I don't need the whole
-   * thing to scroll away"). Phones scroll the page to show a focused box; the
-   * board instead takes the height that is left above the keyboard and the
-   * page is put straight back at the top.
-   */
-  useLayoutEffect(() => {
-    const vv = window.visualViewport;
-    const el = boardRef.current;
-    if (!vv || !el) return;
-    // Only when the keyboard opens or closes (the visible height really
-    // changes). Reacting to every scroll made the iPhone flash on each key
-    // press (Louis, 2026-11-22): iOS nudges the page as you type and the two
-    // fought. The page goes back to the top only when the keyboard closes.
-    let last = 0;
-    const fit = () => {
-      const h = Math.round(vv.height);
-      if (Math.abs(h - last) < 40) return;
-      const closed = h > last;
-      last = h;
-      el.style.setProperty("--vvh", `${h}px`);
-      if (closed && window.scrollY !== 0) window.scrollTo(0, 0);
-    };
-    fit();
-    vv.addEventListener("resize", fit);
-    return () => vv.removeEventListener("resize", fit);
-  }, []);
-
-  const currentClue = round && view.phase === "clue" ? round.shownClues[round.clueIndex] : "";
-  const keyRef = card?.clues?.[4]?.ref ?? card?.clues?.[0]?.ref;
-  const winnerName = winnerId ? players.find((p) => p.id === winnerId)?.name : null;
   const pileLeft = inIntro ? (shuffling ? 0 : introPile) : Math.max(0, view.deckSize - view.dealt);
-  const over = view.phase === "over";
   const scrollStrip = (dir: 1 | -1) => stripRef.current?.scrollBy({ left: dir * (stripRef.current.clientWidth * 0.7), behavior: "smooth" });
-  const nameOf = (id: string) => (id === youId ? "You" : players.find((p) => p.id === id)?.name || "Buddy");
+  const lastRegular = view.dealt >= view.deckSize;
+
+  /** What another player is doing, without giving away their choice. */
+  const statusOf = (id: string) => {
+    if (!round || over) return null;
+    if (tiebreak && !view.tiebreakers.includes(id)) return { text: "Watching", kind: "" };
+    if (revealed) {
+      const a = round.answers?.[id];
+      if (!a) return { text: "No answer", kind: "" };
+      const right = a.choice === correct;
+      return { text: `Chose ${LETTERS[a.choice]} ${right ? "✓" : "✗"}`, kind: right ? "is-right" : "is-wrong" };
+    }
+    if (inIntro) return null;
+    return round.locked.includes(id) ? { text: "✓ Locked in", kind: "is-locked" } : { text: "Thinking…", kind: "" };
+  };
+
+  let outcome = "";
+  let outcomeColor = "#1d5a34";
+  if (revealed && round) {
+    if (tiebreak) {
+      outcome = round.winnerId ? `${nameOf(round.winnerId)} ${round.winnerId === youId ? "win" : "wins"} the tiebreaker!` : "Nobody got it. A fresh question…";
+      outcomeColor = round.winnerId === youId ? "#1d5a34" : "#8a5a1a";
+    } else {
+      outcome = myPoints > 0 ? "Right! +1" : myPoints < 0 ? "Wrong · −1" : "No answer · 0";
+      outcomeColor = myPoints > 0 ? "#1d5a34" : myPoints < 0 ? "#a3261b" : "#8a5a1a";
+      if (view.phase === "reveal") outcome += lastRegular ? " · Last round!" : ` · Round ${view.dealt + 1} in ${Math.max(1, Math.ceil(dealMsLeft / 1000))}…`;
+    }
+  }
 
   return (
-    <div ref={boardRef} className="bb-cb" style={{ ["--cb-top" as string]: `${top}px`, ["--scene-phone" as string]: `url(${scene.phone})`, ["--scene-desktop" as string]: `url(${scene.desktop})` } as React.CSSProperties}>
+    <div ref={boardRef} className="bb-cb is-quiz" style={{ ["--cb-top" as string]: `${top}px`, ["--scene-phone" as string]: `url(${scene.phone})`, ["--scene-desktop" as string]: `url(${scene.desktop})` } as React.CSSProperties}>
       <div className="bb-cb-scene" aria-hidden="true" />
 
-      {/* Deck and round, in the header between Back and Sound */}
+      {/* Selection and round, in the header between Back and Sound */}
       <div className="bb-cb-titles">
         <span className="bb-cb-deckpill">{roundLabel || "Genesis"}</span>
-        <span className="bb-cb-roundpill">{over ? "Game over" : `Round ${Math.max(1, view.dealt)} of ${view.deckSize}`}</span>
+        <span className="bb-cb-roundpill">{over ? "Game over" : tiebreak ? "Tiebreaker" : `Round ${Math.max(1, view.dealt)} of ${view.deckSize}`}</span>
         {isHost && !over ? (
           <button type="button" className="bb-cb-roundpill is-button" onClick={paused ? onResume : onPause}>
             {paused ? "▶ Resume" : "⏸ Pause"}
@@ -370,14 +330,14 @@ export default function ClueTable({
         ) : null}
       </div>
 
-      {/* The other players across the top, each with their won cards */}
+      {/* The other players across the top */}
       {others.length ? (
         <div className="bb-cb-others" style={{ gridTemplateColumns: `repeat(${others.length}, minmax(0, 1fr))` }}>
           {others.map((p) => {
-            const wins = winsBy.get(p.id) || [];
+            const wins = rightBy.get(p.id) || [];
             const fan = wins.slice(-3);
-            const total = view.piles[p.id]?.length ?? wins.length;
             const leading = over && view.winnerSideIds.includes(p.id);
+            const status = statusOf(p.id);
             return (
               <div
                 key={p.id}
@@ -390,13 +350,14 @@ export default function ClueTable({
                   <span className="bb-cb-dot">·</span>
                   <span className="bb-cb-pts">{view.scores[p.id] ?? 0} pts</span>
                 </span>
-                <div className="bb-cb-fan" aria-label={`${total} cards won`}>
+                {status ? <span className={`bb-cb-status ${status.kind}`}>{status.text}</span> : null}
+                <div className="bb-cb-fan" aria-label={`${wins.length} right`}>
                   {fan.map((c, i) => (
                     <span key={`${c.id}-${i}`} className="bb-cb-fancard" style={{ transform: `rotate(${(i - (fan.length - 1) / 2) * 8}deg)`, zIndex: i }}>
                       <SubjectArt card={c} mode="reveal" />
                     </span>
                   ))}
-                  {total > fan.length ? <span className="bb-cb-fanmore">+{total - fan.length}</span> : null}
+                  {wins.length > fan.length ? <span className="bb-cb-fanmore">+{wins.length - fan.length}</span> : null}
                 </div>
               </div>
             );
@@ -415,31 +376,13 @@ export default function ClueTable({
         </span>
       ))}
 
-      {/* The scenery stays visible here; the answers float over it */}
-      {overlay ? null : <div className="bb-cb-gap">
-        {/* Each answer pops up for a moment and fades away (Louis, 2026-11-22:
-            "floating, and disappear, not sit there"). Only with other players. */}
-        {answerToasts.length && !inIntro && !overlay && players.length > 1 ? (
-          <div className="bb-cb-answers bb-clue-answers is-floating" aria-live="polite">
-            <ol>
-              {answerToasts.map(({ key, a }) => (
-                <li key={key} className={a.right ? "is-right" : "is-wrong"}>
-                  <span className="bb-clue-answers-name">{nameOf(a.playerId)}</span>
-                  <span className="bb-clue-answers-time">{a.seconds.toFixed(1)}s</span>
-                  <span className="bb-clue-answers-guess">{a.skipped ? "Skipped" : `“${a.guess}”`}</span>
-                  <span className="bb-clue-answers-result">{a.skipped ? "0" : a.right ? `✓ +${a.points}` : `✗ −${a.points}`}</span>
-                </li>
-              ))}
-            </ol>
-          </div>
-        ) : null}
-      </div>}
+      {overlay ? null : <div className="bb-cb-gap" />}
 
       {overlay ? (
         <div className="bb-cb-overlay">{overlay}</div>
       ) : (
         <>
-          {/* Draw pile · clue · the card in play */}
+          {/* The card in play · the question · the draw pile */}
           <div className="bb-cb-play">
             <div className="bb-cb-pileslot">
               {shuffling ? (
@@ -475,15 +418,21 @@ export default function ClueTable({
 
             <div className="bb-cb-panel">
               {inIntro ? (
-                <p className="bb-cb-panel-big">{shuffling ? "Shuffling the deck…" : dealingDone ? "Round 1. Here we go!" : `Dealing ${view.deckSize} cards…`}</p>
+                <div className="bb-cb-howto">
+                  <p className="bb-cb-howto-title">How to play</p>
+                  <p className="bb-cb-howto-text">{HOW_TO_PLAY}</p>
+                  <p className="bb-cb-howto-deal">{shuffling ? "Shuffling the deck…" : dealingDone ? "Round 1. Here we go!" : `Dealing ${view.deckSize} cards…`}</p>
+                </div>
               ) : paused ? (
                 <p className="bb-cb-panel-big">{players.length > 1 ? "Paused by the host. Talk it over!" : "Paused. Tap Resume when you are ready."}</p>
-              ) : view.phase === "clue" && card ? (
+              ) : view.phase === "question" && quiz ? (
                 <>
                   <div className="bb-cb-panel-head">
-                    <span>
-                      Clue {(round?.clueIndex ?? 0) + 1} of 5 <span className="bb-cb-worth">· {points} pts</span>
-                    </span>
+                    {tiebreak ? (
+                      <span className="bb-cb-tb">Tiebreaker · First correct answer wins</span>
+                    ) : (
+                      <span>Genesis {quiz.chapter}</span>
+                    )}
                     <span className="bb-cb-sep" />
                     <span className={`bb-cb-timer ${seconds <= 3 ? "is-final" : ""}`} aria-live="polite">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -491,33 +440,36 @@ export default function ClueTable({
                       0:{String(seconds).padStart(2, "0")}
                     </span>
                   </div>
-                  <p key={clueKey} className="bb-cb-clue bb-clue-fadein">{currentClue}</p>
+                  <div className="bb-cb-timebar">
+                    <span className={seconds <= 3 ? "is-final" : ""} style={{ transform: `scaleX(${msLeft / (view.settings.answerSeconds * 1000)})` }} />
+                  </div>
+                  <p key={roundKey} className="bb-cb-clue bb-cb-question bb-clue-fadein">{quiz.question}</p>
                 </>
-              ) : revealed && card ? (
-                <>
-                  <p className="bb-cb-answer">{card.answer}</p>
+              ) : revealed && quiz && card ? (
+                <div className="bb-cb-reveal">
+                  <p className="bb-cb-answer">{correct !== null ? quiz.choices[correct] : card.answer}</p>
+                  {quiz.explanation ? <p className="bb-cb-explain">{quiz.explanation}</p> : null}
                   <div className="bb-cb-panel-row">
-                    {keyRef ? <span className="bb-cb-ref">{keyRef.label}</span> : null}
-                    <button type="button" className="bb-clue-link text-[14px]" onClick={() => onStudy(card)}>
+                    {quiz.ref ? <span className="bb-cb-ref">{quiz.ref.label}</span> : null}
+                    <button type="button" className="bb-clue-link text-[14px]" onClick={() => onStudy({ ...card, quiz })}>
                       📖 Study
                     </button>
                   </div>
-                  <p className="bb-cb-outcome" style={{ color: round?.outcome?.kind === "won" ? "#1d5a34" : "#8a5a1a" }}>
-                    {round?.outcome?.kind === "won" ? `${winnerId === youId ? "You" : winnerName || "A player"} won it · +${round.outcome.points}` : "Nobody got this one."}
-                    {view.phase === "reveal" ? (view.dealt >= view.deckSize ? " · Last round!" : ` · Round ${view.dealt + 1} in ${Math.max(1, Math.ceil(dealMsLeft / 1000))}…`) : ""}
+                  <p className="bb-cb-outcome" style={{ color: outcomeColor }}>
+                    {outcome}
                   </p>
-                </>
+                </div>
               ) : null}
             </div>
 
             <div ref={slotRef} className="bb-cb-slot">
               {card && !inIntro ? (
                 <div
-                  key={view.dealt}
+                  key={roundKey}
                   className={`bb-cb-cardwrap bb-clue-deal ${award ? "bb-clue-award" : ""}`}
                   style={award ? ({ ["--dx" as string]: `${award.dx}px`, ["--dy" as string]: `${award.dy}px` } as React.CSSProperties) : undefined}
                 >
-                  {revealed && round?.outcome?.kind === "won" ? (
+                  {revealed && flyTo ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img className="bb-clue-sparkle" src={`${UI}/sparkle.webp`} alt="" aria-hidden="true" />
                   ) : null}
@@ -525,9 +477,8 @@ export default function ClueTable({
                     <span className="bb-cb-card-art">
                       <SubjectArt card={card} mode={revealed ? "reveal" : "mystery"} />
                     </span>
-                    {/* Person, place or thing (Louis, 2026-11-22: keywords say "Thing"). */}
                     {!revealed ? <span className="bb-cb-card-cat">{card.category === "person" ? "Person" : card.category === "place" ? "Place" : "Thing"}</span> : null}
-                    {!revealed && uncovered !== view.dealt ? (
+                    {!revealed && uncovered !== roundKey ? (
                       <div className="bb-cb-cardcover" aria-hidden="true">
                         <CardBack src={cardBack} />
                       </div>
@@ -540,6 +491,54 @@ export default function ClueTable({
             </div>
           </div>
 
+          {/* The four choices */}
+          {!over ? (
+            <div className="bb-cb-choices" role="group" aria-label="Choose an answer">
+              {[0, 1, 2, 3].map((i) => {
+                const text = !inIntro && quiz ? quiz.choices[i] : "";
+                const isMine = mine === i;
+                const isRight = correct === i;
+                const isWrong = revealed && isMine && correct !== i;
+                const faded = (revealed && !isRight && !isMine) || (!revealed && mine !== null && !isMine);
+                return (
+                  <button
+                    key={`${roundKey}-${i}`}
+                    type="button"
+                    className={`bb-cb-choice ${isMine ? "is-mine" : ""} ${isRight ? "is-right" : ""} ${isWrong ? "is-wrong" : ""} ${faded ? "is-faded" : ""}`}
+                    disabled={!canAnswer}
+                    onClick={() => choose(i)}
+                    aria-pressed={isMine}
+                  >
+                    <span className="bb-cb-letter">{LETTERS[i]}</span>
+                    <span className="bb-cb-choice-text">{text}</span>
+                    {revealed && isRight ? <span className="bb-cb-mark">✓</span> : isWrong ? <span className="bb-cb-mark">✗</span> : null}
+                  </button>
+                );
+              })}
+              <p className="bb-cb-hint" aria-live="polite">
+                {inIntro
+                  ? "Get ready…"
+                  : paused
+                    ? "Paused"
+                    : view.phase === "question"
+                      ? tiebreak && !inTiebreak
+                        ? "Watching the tiebreaker…"
+                        : mine !== null
+                          ? tiebreak
+                            ? "Locked in. Waiting…"
+                            : "Locked in. The answer shows when time is up."
+                          : tiebreak
+                            ? "One try. First right answer wins!"
+                            : "Pick one, or let it run out for 0."
+                      : view.phase === "reveal"
+                        ? lastRegular && !tiebreak
+                          ? "That was the last question."
+                          : "Next question coming…"
+                        : ""}
+              </p>
+            </div>
+          ) : null}
+
           {/* You */}
           <div className="bb-cb-me">
             <span className={`bb-cb-mechip ${pops.some((x) => x.seat === youId && x.kind === "win") ? "is-scored" : ""} ${pops.some((x) => x.seat === youId && x.kind === "lose") ? "is-docked" : ""}`}>
@@ -550,34 +549,34 @@ export default function ClueTable({
             <span className="bb-cb-creampill bb-cb-collected">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={`${UI}/icon-trophy.webp`} alt="" />
-              {view.piles[youId]?.length ?? myWins.length} collected
+              {myRight.length} right
             </span>
           </div>
 
-          {/* Your won cards */}
+          {/* The cards you got right */}
           <div className="bb-cb-stripwrap">
-            {myWins.length > 2 ? (
+            {myRight.length > 2 ? (
               <button type="button" className="bb-cb-arrow is-left" aria-label="Earlier cards" onClick={() => scrollStrip(-1)}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={`${UI}/icon-arrow.webp`} alt="" />
               </button>
             ) : null}
             <div ref={stripRef} className="bb-cb-strip">
-              {myWins.length ? (
-                myWins.map((c, i) => (
+              {myRight.length ? (
+                myRight.map((c, i) => (
                   <button key={`${c.id}-${i}`} type="button" className="bb-cb-won" onClick={() => onStudy(c)} aria-label={`Review ${c.answer}`}>
                     <span className="bb-cb-won-art">
                       <SubjectArt card={c} mode="reveal" />
                     </span>
                     <span className="bb-cb-won-name">{c.answer}</span>
-                    <span className="bb-cb-won-pts">+{c.points ?? 0}</span>
+                    <span className="bb-cb-won-pts">{c.tiebreak ? "Win" : "+1"}</span>
                   </button>
                 ))
               ) : (
-                <p className="bb-cb-strip-empty">Cards you win land here.</p>
+                <p className="bb-cb-strip-empty">Cards you get right land here.</p>
               )}
             </div>
-            {myWins.length > 2 ? (
+            {myRight.length > 2 ? (
               <button type="button" className="bb-cb-arrow is-right" aria-label="Later cards" onClick={() => scrollStrip(1)}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={`${UI}/icon-arrow.webp`} alt="" />
@@ -586,40 +585,6 @@ export default function ClueTable({
           </div>
         </>
       )}
-
-      {/* The guess bar, docked at the bottom */}
-      {!over && !overlay ? (
-        <form onSubmit={submit} className="bb-cb-hand">
-          <input
-            ref={inputRef}
-            value={guess}
-            onChange={(e) => setGuess(e.target.value)}
-            disabled={!canGuess}
-            placeholder={inIntro ? "Get ready…" : canGuess ? (roundLeft === 1 ? "Last guess this round…" : `Your guess… (${roundLeft} left)`) : view.phase === "clue" && roundLeft <= 0 ? "No guesses left this round" : view.phase === "reveal" ? "Next round coming…" : waiting ? "Skipped. Waiting for the others…" : "Next clue coming…"}
-            className="bb-cb-input"
-            autoComplete="off"
-            autoCorrect="off"
-            autoCapitalize="words"
-            spellCheck={false}
-            enterKeyHint="go"
-            aria-label="Your guess"
-          />
-          {/* One button (Louis, 2026-11-22: the Wait button goes away): with
-              something typed it guesses; with the box empty it skips this clue
-              for 0 points, counted as the clue's full time. */}
-          {/* Multiplayer has no Skip (Louis, 2026-11-22): it only made you wait
-              for everyone else. Solo keeps it. */}
-          {guess.trim() || players.length > 1 ? (
-            <button type="submit" className="bb-cb-guess" disabled={!canGuess || !guess.trim()}>
-              Guess
-            </button>
-          ) : (
-            <button type="button" onClick={onWait} className="bb-cb-guess is-skip" disabled={waiting || !canGuess} title="Skip this clue (0 points)">
-              Skip
-            </button>
-          )}
-        </form>
-      ) : null}
     </div>
   );
 }

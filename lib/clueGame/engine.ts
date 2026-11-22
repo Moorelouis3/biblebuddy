@@ -4,125 +4,124 @@
  * Solo play runs it in the browser. Private rooms run this SAME module on the
  * server (app/api/clue-game/rooms): every action carries the time it happened
  * (`now`) and the deal is seeded, so the server is the one clock and the one
- * judge, and every player sees the same timers, guesses, penalties and awards.
- * Nothing in here reads the clock, the network or Math.random.
+ * judge. Nothing in here reads the clock, the network or Math.random.
  *
- * A round (Louis, 2026-11-22, "Version 2"): 10 distinct cards. Each card is
- * dealt face down with its category and a silhouette; clues come one at a time
- * from 5 points down to 1, 15 seconds each. A correct guess wins the current
- * points and the card at once. A wrong guess costs the guessing side the
- * current points, and that player is done for this clue. Waiting is free. If
- * the 1-point clue runs out nobody gets the card. After a short reveal the next
- * card is dealt automatically (no Next button). Highest score after the last
- * card wins.
+ * How it plays (Louis, 2026-11-22, after playing it with Jessica: the five
+ * moving clues were too fast to follow and she quit):
+ *  - Setup picks a book, all or some chapters, and Beginner or Medium. A match
+ *    draws 10 distinct questions from that selection only (lib/clueGame/bank),
+ *    spread across the chosen chapters, avoiding ones the players just saw.
+ *  - Each round deals a mystery card with ONE short question and four choices
+ *    A-D. A single 10-second countdown runs its full time, even when everyone
+ *    has answered.
+ *  - Each player may lock in one answer, private until the reveal, or let the
+ *    time run out. At zero: right +1, wrong -1, no answer 0, for every player
+ *    independently. Speed does not matter here.
+ *  - The reveal shows the answer, a short explanation and the verse, then the
+ *    next countdown starts by itself.
+ *  - After ten rounds the highest score wins. Tied leaders, and only they,
+ *    play a tiebreaker from unused questions of the same selection: one
+ *    attempt each, the first right answer received wins at once; if nobody
+ *    gets it, a fresh question. If the selection runs out: a shared win.
  */
 
-import { isCorrectGuess } from "./answer";
-import type { Clue, ClueCard } from "./types";
+import type { ClueCategory, ClueLevel, ClueRef } from "./types";
+
+/** A playable question with its art resolved (lib/clueGame/bank builds these). */
+export type BankItem = {
+  id: string;
+  book: string;
+  chapter: number;
+  level: ClueLevel;
+  category: ClueCategory;
+  question: string;
+  choices: [string, string, string, string];
+  answer: number;
+  explanation: string;
+  ref: ClueRef;
+  /** The right answer as text. */
+  answerText: string;
+  /** Card art when the answer is one of the deck's cards. */
+  mystery?: string;
+  reveal?: string;
+  teaching?: string;
+  study?: { label: string; href: string };
+};
+
+export type ClueSelection = { book: string; chapters: number[] | "all"; level: ClueLevel };
 
 export type ClueSettings = {
-  /** Seconds each clue stays up before the next one. */
-  clueSeconds: number;
-  /** Cards per round. */
-  roundSize: number;
-  /** How long the reveal stays before the next card is dealt. */
+  /** Seconds a question stays open. */
+  answerSeconds: number;
+  /** Seconds the reveal stays before the next question. */
   revealSeconds: number;
-  /** A side reaching this ends the round early; null = play every card. */
-  targetScore: number | null;
-  /** Playtest default true: a wrong guess can take a score below zero. */
-  allowNegative: boolean;
-  /** Playtest default 1: official guesses per player per clue. */
-  guessesPerClue: number;
-  /**
-   * Guesses per player per round (Louis, 2026-11-22: one guess a clue let a
-   * player lose 15 points on one card; two a round still lets you take a
-   * shot early and another when you know it).
-   */
-  guessesPerRound: number;
+  /** Questions (rounds) per match. */
+  roundSize: number;
+  pointsRight: number;
+  pointsWrong: number;
 };
 
-/**
- * The playtest defaults (Louis, 2026-11-22). Change them here: negative
- * scores and one guess per player per clue are the two to revisit after
- * playtesting.
- */
 export const DEFAULT_CLUE_SETTINGS: ClueSettings = {
-  clueSeconds: 15,
+  answerSeconds: 10,
+  revealSeconds: 7,
   roundSize: 10,
-  revealSeconds: 5,
-  targetScore: null,
-  allowNegative: true,
-  guessesPerClue: 1,
-  guessesPerRound: 2,
+  pointsRight: 1,
+  pointsWrong: -1,
 };
 
-/** A player or a team. Points and won cards belong to the side. */
+/** A player (rooms are one player per side; sides stay for the shared types). */
 export type ClueSide = { id: string; name: string };
 export type CluePlayer = { id: string; name: string; sideId: string };
 
-export type ClueEvent =
-  | { type: "deal"; at: number; cardId: string }
-  | { type: "clue"; at: number; cardId: string; clueIndex: number }
-  | { type: "wrong"; at: number; cardId: string; clueIndex: number; playerId: string; sideId: string; guess: string; points: number }
-  | { type: "correct"; at: number; cardId: string; clueIndex: number; playerId: string; sideId: string; guess: string; points: number }
-  | { type: "missed"; at: number; cardId: string }
-  /** Skip (the old Wait): no points either way, and it counts as the clue's full time. */
-  | { type: "skip"; at: number; cardId: string; clueIndex: number; playerId: string }
-  | { type: "over"; at: number; winnerSideIds: string[] };
+/**
+ * The match's opening: the deck is shuffled and dealt onto the pile while the
+ * instruction is on screen. The first question opens after it.
+ */
+export const ROUND_INTRO_MS = 6500;
+export const INTRO_SHUFFLE_MS = 1500;
+export const INTRO_DEAL_EACH_MS = 220;
+
+export type ClueAnswer = { choice: number; at: number };
 
 export type ClueRound = {
+  /** The question's id. */
   cardId: string;
-  /** 0 is the 5-point clue, 4 the 1-point clue. */
-  clueIndex: number;
-  clueStartedAt: number;
-  /** Official guesses this clue, by player. */
-  guesses: Record<string, number>;
-  /** Players who chose to wait for the next clue. */
-  waiting: string[];
-  /** Official guesses this round (all clues), by player. Older saved matches lack it. */
-  roundGuesses?: Record<string, number>;
-  outcome: null | { kind: "won"; sideId: string; playerId: string; points: number; guess: string } | { kind: "missed" };
+  /** Display order of the four choices: order[i] is the question's choice index shown as letter i. */
+  order: [number, number, number, number];
+  openAt: number;
+  closesAt: number;
+  /** Locked answers by player (choice = display index 0-3). */
+  answers: Record<string, ClueAnswer>;
+  tiebreak: boolean;
   revealedAt: number | null;
+  /** Points each player got for this question (regular rounds). */
+  points: Record<string, number>;
+  /** Tiebreak only: who answered right first. */
+  winnerId: string | null;
 };
 
 export type ClueMatch = {
   settings: ClueSettings;
+  selection: ClueSelection;
   sides: ClueSide[];
   players: CluePlayer[];
-  /** Card ids in deal order: the whole round, fixed at the start. */
+  /** The ten question ids in deal order, fixed at the start. */
   deck: string[];
-  /**
-   * Which 5-point clue each card uses: 0 = the card's own clues[0], n =
-   * altTopClues[n-1]. Fixed at the start, so a challenge replays the exact
-   * clues everybody saw.
-   */
-  topClue: Record<string, number>;
-  /** How many cards have been dealt. */
+  /** Unused questions from the same selection, for tiebreaks, in order. */
+  spare: string[];
+  seed: number;
   dealt: number;
-  phase: "ready" | "clue" | "reveal" | "over";
+  phase: "ready" | "question" | "reveal" | "over";
   round: ClueRound | null;
-  /** A host pause (same-room discussion). Timers stand still while set. */
+  /** Rounds already revealed, oldest first. */
+  done: ClueRound[];
+  /** Solo / host pause: timers stand still while set. */
   pausedAt: number | null;
   scores: Record<string, number>;
-  /** Won cards, by side, oldest first. */
-  piles: Record<string, string[]>;
-  /** Cards nobody guessed. */
-  missed: string[];
+  /** Tied leaders playing the tiebreaker (empty outside it). */
+  tiebreakers: string[];
   winnerSideIds: string[];
-  log: ClueEvent[];
 };
-
-export const pointsForClue = (clueIndex: number) => 5 - clueIndex;
-
-/**
- * The round's opening (Louis, 2026-11-22): the deck is shuffled, the round's
- * cards are dealt onto the draw pile one by one, then the first card comes
- * off it. Callers deal the first card at now + ROUND_INTRO_MS, so its first
- * clue's clock starts after the show; nobody can guess or wait before then.
- */
-export const ROUND_INTRO_MS = 4200;
-export const INTRO_SHUFFLE_MS = 1500;
-export const INTRO_DEAL_EACH_MS = 220;
 
 /** A seeded random stream (mulberry32). */
 function seeded(seed: number) {
@@ -137,7 +136,7 @@ function seeded(seed: number) {
 }
 
 /** A seeded shuffle, so a server and a replay deal the same order. */
-export function shuffleCards(ids: string[], seed: number): string[] {
+export function shuffleCards<T>(ids: T[], seed: number): T[] {
   const rand = seeded(seed);
   const out = ids.slice();
   for (let i = out.length - 1; i > 0; i -= 1) {
@@ -147,97 +146,135 @@ export function shuffleCards(ids: string[], seed: number): string[] {
   return out;
 }
 
-/** The clue a player sees for this card at this index, honouring the chosen 5-point variant. */
-export function clueFor(card: ClueCard, clueIndex: number, topClue = 0): Clue {
-  if (clueIndex === 0 && topClue > 0 && card.altTopClues?.[topClue - 1]) return card.altTopClues[topClue - 1];
-  return card.clues[clueIndex];
+/** The choice order for a question in this match: shuffled, the same for every player. */
+function choiceOrder(seed: number, id: string, salt: number): [number, number, number, number] {
+  let h = (seed ^ salt) >>> 0;
+  for (const ch of id) h = Math.imul(h ^ ch.charCodeAt(0), 0x01000193) >>> 0;
+  return shuffleCards([0, 1, 2, 3], h) as [number, number, number, number];
+}
+
+/** The questions a selection may use. */
+export function poolForSelection(items: BankItem[], sel: ClueSelection): BankItem[] {
+  return items.filter(
+    (q) => q.book === sel.book && q.level === sel.level && (sel.chapters === "all" || sel.chapters.includes(q.chapter)),
+  );
+}
+
+/** A match needs 10 questions plus at least one fresh one for a tiebreak. */
+export const neededForMatch = (settings: ClueSettings = DEFAULT_CLUE_SETTINGS) => settings.roundSize + 1;
+
+/**
+ * Pick the match's questions: spread across the chosen chapters (round-robin
+ * over shuffled chapters), never the same question twice, and questions in
+ * `avoid` (seen in the last match) only when the pool needs them.
+ */
+export function drawQuestions(pool: BankItem[], seed: number, count: number, avoid: string[] = []): { deck: string[]; spare: string[] } {
+  const avoidSet = new Set(avoid);
+  const shuffled = shuffleCards(pool, seed);
+  // Fresh questions first, then the ones seen last time.
+  const ordered = [...shuffled.filter((q) => !avoidSet.has(q.id)), ...shuffled.filter((q) => avoidSet.has(q.id))];
+  const byChapter = new Map<number, BankItem[]>();
+  for (const q of ordered) byChapter.set(q.chapter, [...(byChapter.get(q.chapter) || []), q]);
+  const chapters = shuffleCards([...byChapter.keys()], seed ^ 0x9e3779b9);
+  const deck: string[] = [];
+  // Round-robin, taking fresh questions before seen ones across all chapters.
+  for (const pass of [false, true]) {
+    let added = true;
+    while (deck.length < count && added) {
+      added = false;
+      for (const ch of chapters) {
+        if (deck.length >= count) break;
+        const next = (byChapter.get(ch) || []).find((q) => !deck.includes(q.id) && avoidSet.has(q.id) === pass);
+        if (next) {
+          deck.push(next.id);
+          added = true;
+        }
+      }
+    }
+  }
+  const spare = ordered.map((q) => q.id).filter((id) => !deck.includes(id));
+  return { deck, spare };
 }
 
 export function createMatch(input: {
-  /** The playable pool (one deck, or several books). */
-  cards: ClueCard[];
+  /** The whole bank (or just the selection's pool). */
+  items: BankItem[];
+  selection: ClueSelection;
   sides: ClueSide[];
   players: CluePlayer[];
   seed: number;
   settings?: Partial<ClueSettings>;
-  /** A frozen round (a challenge): exactly these cards, in this order. */
+  /** A frozen match (a challenge): exactly these questions, in this order. */
   cardIds?: string[];
-  topClue?: Record<string, number>;
+  /** Questions seen in the last match: used only if the pool needs them. */
+  avoid?: string[];
 }): ClueMatch {
   const settings = { ...DEFAULT_CLUE_SETTINGS, ...(input.settings || {}) };
-  const deck = input.cardIds?.length
-    ? input.cardIds.slice()
-    : shuffleCards(input.cards.map((c) => c.id), input.seed).slice(0, settings.roundSize);
-  let topClue = input.topClue;
-  if (!topClue) {
-    const rand = seeded(input.seed ^ 0x5bd1e995);
-    topClue = {};
-    for (const id of deck) {
-      const card = input.cards.find((c) => c.id === id);
-      const options = 1 + (card?.altTopClues?.length ?? 0);
-      topClue[id] = options > 1 ? Math.floor(rand() * options) : 0;
-    }
+  const pool = poolForSelection(input.items, input.selection);
+  let deck: string[];
+  let spare: string[];
+  if (input.cardIds?.length) {
+    deck = input.cardIds.slice();
+    spare = shuffleCards(pool.map((q) => q.id), input.seed).filter((id) => !deck.includes(id));
+  } else {
+    ({ deck, spare } = drawQuestions(pool, input.seed, settings.roundSize, input.avoid));
   }
   return {
     settings,
+    selection: input.selection,
     sides: input.sides,
     players: input.players,
     deck,
-    topClue,
+    spare,
+    seed: input.seed,
     dealt: 0,
     phase: "ready",
     round: null,
+    done: [],
     pausedAt: null,
     scores: Object.fromEntries(input.sides.map((s) => [s.id, 0])),
-    piles: Object.fromEntries(input.sides.map((s) => [s.id, [] as string[]])),
-    missed: [],
+    tiebreakers: [],
     winnerSideIds: [],
-    log: [],
   };
 }
 
 export type ClueAction =
   | { type: "deal"; now: number }
   | { type: "tick"; now: number }
-  | { type: "guess"; now: number; playerId: string; text: string }
-  | { type: "wait"; now: number; playerId: string }
+  | { type: "answer"; now: number; playerId: string; choice: number }
   | { type: "pause"; now: number }
   | { type: "resume"; now: number };
 
-/** Can this player still make an official guess on the current clue? */
-export function canGuess(match: ClueMatch, playerId: string): boolean {
+export type ClueBank = Map<string, BankItem>;
+
+function openRound(match: ClueMatch, id: string, openAt: number, tiebreak: boolean): ClueRound {
+  return {
+    cardId: id,
+    order: choiceOrder(match.seed, id, tiebreak ? 0x7f4a7c15 : 0x2545f491),
+    openAt,
+    closesAt: openAt + match.settings.answerSeconds * 1000,
+    answers: {},
+    tiebreak,
+    revealedAt: null,
+    points: {},
+    winnerId: null,
+  };
+}
+
+/** Is this display choice the right one? */
+export function isRightChoice(item: BankItem, round: Pick<ClueRound, "order">, choice: number): boolean {
+  return round.order[choice] === item.answer;
+}
+
+/** Can this player answer the open question right now? */
+export function canAnswer(match: ClueMatch, playerId: string, now: number): boolean {
   const r = match.round;
-  if (match.phase !== "clue" || !r || r.outcome || match.pausedAt !== null) return false;
+  if (match.phase !== "question" || !r || match.pausedAt !== null) return false;
+  if (now < r.openAt || now >= r.closesAt) return false; // not open yet, or closed (late)
+  if (r.answers[playerId]) return false; // one answer per question
   if (!match.players.some((p) => p.id === playerId)) return false;
-  if (roundGuessesLeft(match, playerId) <= 0) return false;
-  return (r.guesses[playerId] || 0) < match.settings.guessesPerClue;
-}
-
-/** Guesses this player has left on the card in play. */
-export function roundGuessesLeft(match: Pick<ClueMatch, "settings" | "round">, playerId: string): number {
-  const max = match.settings.guessesPerRound ?? DEFAULT_CLUE_SETTINGS.guessesPerRound;
-  return Math.max(0, max - (match.round?.roundGuesses?.[playerId] || 0));
-}
-
-/** Nobody at the table has a guess left on this card. */
-function nobodyCanGuessThisRound(match: ClueMatch): boolean {
-  return match.players.every((p) => roundGuessesLeft(match, p.id) <= 0);
-}
-
-/** Milliseconds left on the current clue (0 outside a clue). Frozen while paused. */
-export function msLeft(match: ClueMatch, now: number): number {
-  const r = match.round;
-  if (match.phase !== "clue" || !r) return 0;
-  const at = match.pausedAt ?? now;
-  return Math.max(0, r.clueStartedAt + match.settings.clueSeconds * 1000 - at);
-}
-
-/** Milliseconds until the next card is dealt after a reveal. */
-export function msUntilDeal(match: ClueMatch, now: number): number {
-  const r = match.round;
-  if (match.phase !== "reveal" || !r?.revealedAt) return 0;
-  const at = match.pausedAt ?? now;
-  return Math.max(0, r.revealedAt + match.settings.revealSeconds * 1000 - at);
+  if (r.tiebreak && !match.tiebreakers.includes(playerId)) return false;
+  return true;
 }
 
 function leaders(match: ClueMatch): string[] {
@@ -245,153 +282,106 @@ function leaders(match: ClueMatch): string[] {
   return match.sides.filter((s) => (match.scores[s.id] ?? 0) === best).map((s) => s.id);
 }
 
-/** Over when the round's cards are all played, or a side reached a set target. */
-export function roundIsDone(match: ClueMatch): boolean {
-  const target = match.settings.targetScore;
-  const reached = target !== null && match.sides.some((s) => (match.scores[s.id] ?? 0) >= target);
-  return reached || match.dealt >= match.deck.length;
-}
-
-function finish(match: ClueMatch, now: number): ClueMatch {
-  const winnerSideIds = leaders(match);
-  return { ...match, phase: "over", winnerSideIds, log: [...match.log, { type: "over", at: now, winnerSideIds }] };
-}
-
-function reveal(match: ClueMatch, at: number, outcome: ClueRound["outcome"]): ClueMatch["round"] {
-  return { ...match.round!, outcome, revealedAt: at };
-}
-
-function nextClueOrMiss(match: ClueMatch, now: number): ClueMatch {
+/** Close the open question: score it (regular rounds) and show the reveal. */
+function close(match: ClueMatch, at: number, bank: ClueBank): ClueMatch {
   const r = match.round!;
-  if (r.clueIndex >= 4 || nobodyCanGuessThisRound(match)) {
-    return {
-      ...match,
-      phase: "reveal",
-      round: reveal(match, now, { kind: "missed" }),
-      missed: [...match.missed, r.cardId],
-      log: [...match.log, { type: "missed", at: now, cardId: r.cardId }],
-    };
+  const item = bank.get(r.cardId);
+  const points: Record<string, number> = {};
+  const scores = { ...match.scores };
+  if (!r.tiebreak && item) {
+    for (const p of match.players) {
+      const a = r.answers[p.id];
+      const pts = !a ? 0 : isRightChoice(item, r, a.choice) ? match.settings.pointsRight : match.settings.pointsWrong;
+      points[p.id] = pts;
+      scores[p.sideId] = (scores[p.sideId] ?? 0) + pts;
+    }
   }
-  const clueIndex = r.clueIndex + 1;
-  return {
-    ...match,
-    round: { ...r, clueIndex, clueStartedAt: now, guesses: {}, waiting: [] },
-    log: [...match.log, { type: "clue", at: now, cardId: r.cardId, clueIndex }],
-  };
+  return { ...match, scores, phase: "reveal", round: { ...r, revealedAt: at, points } };
 }
 
-/** True when nobody left on this clue can still guess or is still thinking. */
-function everyoneDone(match: ClueMatch): boolean {
-  const r = match.round!;
-  return match.players.every((p) => r.waiting.includes(p.id) || (r.guesses[p.id] || 0) >= match.settings.guessesPerClue || roundGuessesLeft(match, p.id) <= 0);
+/** After a reveal: the next regular question, the end, or a (fresh) tiebreak question. */
+function advance(match: ClueMatch, at: number): ClueMatch {
+  const finished = match.round ? [...match.done, match.round] : match.done;
+  const base = { ...match, done: finished };
+  if (match.round?.tiebreak && match.round.winnerId) {
+    return { ...base, phase: "over", round: null, winnerSideIds: [match.round.winnerId], tiebreakers: [] };
+  }
+  if (!match.round?.tiebreak && match.dealt < match.deck.length) {
+    return { ...base, dealt: match.dealt + 1, phase: "question", round: openRound(match, match.deck[match.dealt], at, false) };
+  }
+  const top = match.tiebreakers.length ? match.tiebreakers : leaders(match);
+  if (top.length <= 1 || match.players.length <= 1) {
+    return { ...base, phase: "over", round: null, winnerSideIds: top, tiebreakers: [] };
+  }
+  // A fresh question the players have not seen in this match.
+  const used = new Set(finished.map((r) => r.cardId));
+  const next = match.spare.find((id) => !used.has(id));
+  if (!next) return { ...base, phase: "over", round: null, winnerSideIds: top, tiebreakers: [] }; // the selection ran out: a shared win
+  return { ...base, phase: "question", tiebreakers: top, round: openRound(match, next, at, true) };
 }
 
-function dealNext(match: ClueMatch, now: number): ClueMatch {
-  if (roundIsDone(match)) return finish(match, now);
-  const cardId = match.deck[match.dealt];
-  return {
-    ...match,
-    dealt: match.dealt + 1,
-    phase: "clue",
-    round: { cardId, clueIndex: 0, clueStartedAt: now, guesses: {}, waiting: [], roundGuesses: {}, outcome: null, revealedAt: null },
-    log: [...match.log, { type: "deal", at: now, cardId }, { type: "clue", at: now, cardId, clueIndex: 0 }],
-  };
-}
-
-export function reduceClueMatch(match: ClueMatch, action: ClueAction, cards: Map<string, ClueCard>): ClueMatch {
+export function reduceClueMatch(match: ClueMatch, action: ClueAction, bank: ClueBank): ClueMatch {
   if (match.phase === "over") return match;
   switch (action.type) {
+    case "deal": {
+      if (match.phase !== "ready" || match.deck.length === 0) return match;
+      return { ...match, dealt: 1, phase: "question", round: openRound(match, match.deck[0], action.now, false) };
+    }
     case "pause": {
       if (match.pausedAt !== null || match.phase === "ready") return match;
       return { ...match, pausedAt: action.now };
     }
     case "resume": {
       if (match.pausedAt === null) return match;
+      if (!match.round) return { ...match, pausedAt: null };
       const shift = action.now - match.pausedAt;
       const r = match.round;
       return {
         ...match,
         pausedAt: null,
-        round: r ? { ...r, clueStartedAt: r.clueStartedAt + shift, revealedAt: r.revealedAt === null ? null : r.revealedAt + shift } : r,
+        round: { ...r, openAt: r.openAt + shift, closesAt: r.closesAt + shift, revealedAt: r.revealedAt === null ? null : r.revealedAt + shift },
       };
     }
-    case "deal": {
-      // The first deal starts the round; after that, dealing is automatic
-      // (tick) but an early deal from the reveal is allowed (solo "skip").
-      if (match.phase === "ready" || match.phase === "reveal") return dealNext(match, action.now);
-      return match;
-    }
     case "tick": {
-      if (match.pausedAt !== null) return match;
       let m = match;
-      // A late tick can owe several steps (a backgrounded tab): catch up, each
-      // step at the moment it was due, so the shared timeline stays exact.
-      for (let guard = 0; guard < 20; guard += 1) {
-        if (m.phase === "clue" && m.round && action.now >= m.round.clueStartedAt + m.settings.clueSeconds * 1000) {
-          m = nextClueOrMiss(m, m.round.clueStartedAt + m.settings.clueSeconds * 1000);
+      // Catch up on everything that came due (a device that slept, a server poll).
+      for (let guard = 0; guard < 40 && m.phase !== "over" && m.pausedAt === null && m.round; guard += 1) {
+        const r = m.round;
+        if (m.phase === "question" && action.now >= r.closesAt) {
+          m = close(m, r.closesAt, bank);
           continue;
         }
-        if (m.phase === "reveal" && m.round?.revealedAt && action.now >= m.round.revealedAt + m.settings.revealSeconds * 1000) {
-          m = dealNext(m, m.round.revealedAt + m.settings.revealSeconds * 1000);
+        if (m.phase === "reveal" && r.revealedAt !== null && action.now >= r.revealedAt + m.settings.revealSeconds * 1000) {
+          m = advance(m, r.revealedAt + m.settings.revealSeconds * 1000);
           continue;
         }
         break;
       }
       return m;
     }
-    case "wait": {
-      if (match.phase !== "clue" || !match.round || match.pausedAt !== null) return match;
-      const r = match.round;
-      if (action.now < r.clueStartedAt) return match; // still dealing
-      if (r.waiting.includes(action.playerId) || !match.players.some((p) => p.id === action.playerId)) return match;
-      const m = {
-        ...match,
-        round: { ...r, waiting: [...r.waiting, action.playerId] },
-        log: [...match.log, { type: "skip" as const, at: action.now, cardId: r.cardId, clueIndex: r.clueIndex, playerId: action.playerId }],
-      };
-      // Everyone has skipped or is out of guesses: no reason to sit out the timer
-      // (in solo, Skip moves straight on to the next clue).
-      return everyoneDone(m) ? nextClueOrMiss(m, action.now) : m;
-    }
-    case "guess": {
-      if (!canGuess(match, action.playerId) || !match.round) return match;
-      if (action.now < match.round.clueStartedAt) return match; // still dealing
-      // The clock is the judge: a guess that arrives after its clue ran out
-      // belongs to no clue.
-      if (action.now >= match.round.clueStartedAt + match.settings.clueSeconds * 1000) return match;
-      const text = action.text.trim().slice(0, 80);
-      if (!text) return match;
-      const player = match.players.find((p) => p.id === action.playerId)!;
-      const r = match.round;
-      const card = cards.get(r.cardId);
-      if (!card) return match;
-      const points = pointsForClue(r.clueIndex);
-      const guesses = { ...r.guesses, [player.id]: (r.guesses[player.id] || 0) + 1 };
-      const roundGuesses = { ...(r.roundGuesses || {}), [player.id]: (r.roundGuesses?.[player.id] || 0) + 1 };
-      if (isCorrectGuess(card, text)) {
-        return {
-          ...match,
-          phase: "reveal",
-          round: { ...r, guesses, roundGuesses, outcome: { kind: "won", sideId: player.sideId, playerId: player.id, points, guess: text }, revealedAt: action.now },
-          scores: { ...match.scores, [player.sideId]: (match.scores[player.sideId] ?? 0) + points },
-          piles: { ...match.piles, [player.sideId]: [...(match.piles[player.sideId] || []), r.cardId] },
-          log: [...match.log, { type: "correct", at: action.now, cardId: r.cardId, clueIndex: r.clueIndex, playerId: player.id, sideId: player.sideId, guess: text, points }],
-        };
+    case "answer": {
+      if (!canAnswer(match, action.playerId, action.now)) return match;
+      const choice = Math.floor(Number(action.choice));
+      if (!(choice >= 0 && choice <= 3)) return match;
+      const r = match.round!;
+      const answers = { ...r.answers, [action.playerId]: { choice, at: action.now } };
+      let m: ClueMatch = { ...match, round: { ...r, answers } };
+      if (r.tiebreak) {
+        const item = bank.get(r.cardId);
+        // The first right answer the server receives wins the tiebreak at once.
+        if (item && isRightChoice(item, r, choice)) {
+          m = { ...m, round: { ...m.round!, winnerId: action.playerId } };
+          return close(m, action.now, bank);
+        }
+        // Everyone has used their attempt without a right answer: show it, then a fresh question.
+        if (m.tiebreakers.every((id) => answers[id])) return close(m, action.now, bank);
       }
-      const before = match.scores[player.sideId] ?? 0;
-      const after = match.settings.allowNegative ? before - points : Math.max(0, before - points);
-      const m: ClueMatch = {
-        ...match,
-        round: { ...r, guesses, roundGuesses },
-        scores: { ...match.scores, [player.sideId]: after },
-        log: [...match.log, { type: "wrong", at: action.now, cardId: r.cardId, clueIndex: r.clueIndex, playerId: player.id, sideId: player.sideId, guess: text, points }],
-      };
-      return everyoneDone(m) ? nextClueOrMiss(m, action.now) : m;
+      // Regular questions stay open the full time, even when everyone has answered.
+      return m;
     }
   }
 }
 
-/** One player on one side: the solo table. */
 export function soloSetup(id = "me", name = "You") {
   return {
     sides: [{ id, name }],
@@ -403,110 +393,126 @@ export function soloSetup(id = "me", name = "You") {
 
 export type PublicCard = {
   id: string;
-  category: ClueCard["category"];
+  category: ClueCategory;
   mystery?: string;
   /** Present only once revealed. */
   answer?: string;
   reveal?: string;
-  clues?: Clue[];
   teaching?: string;
-  study?: ClueCard["study"];
+  study?: { label: string; href: string };
+  /** The question it came with, once revealed (for Study). */
+  quiz?: PublicQuestion;
 };
 
-export type PublicMatch = Omit<ClueMatch, "deck" | "topClue" | "log" | "round"> & {
+export type PublicQuestion = {
+  question: string;
+  chapter: number;
+  /** The four choices in display order (A-D). */
+  choices: string[];
+  /** Present only once revealed. */
+  correct?: number;
+  explanation?: string;
+  ref?: ClueRef;
+};
+
+export type PublicRound = {
+  card: PublicCard;
+  quiz: PublicQuestion;
+  openAt: number;
+  closesAt: number;
+  revealedAt: number | null;
+  tiebreak: boolean;
+  /** Who has locked an answer (not what) while the question is open. */
+  locked: string[];
+  /** Your own locked answer, if any. */
+  mine: number | null;
+  /** After the reveal: everyone's answer and points. */
+  answers?: Record<string, ClueAnswer>;
+  points?: Record<string, number>;
+  winnerId?: string | null;
+};
+
+export type PublicHistory = PublicCard & {
+  quiz: PublicQuestion;
+  tiebreak: boolean;
+  answers: Record<string, ClueAnswer>;
+  points: Record<string, number>;
+  winnerId: string | null;
+};
+
+export type PublicMatch = {
+  settings: ClueSettings;
+  selection: ClueSelection;
+  sides: ClueSide[];
+  players: CluePlayer[];
+  phase: ClueMatch["phase"];
+  dealt: number;
   deckSize: number;
-  round: null | (Omit<ClueRound, "cardId"> & {
-    card: PublicCard;
-    /** Only the clues shown so far, text only until the reveal (no references: they give it away). */
-    shownClues: string[];
-  });
-  /** Cards already revealed this round, in order, for Review Cards. */
-  history: Array<PublicCard & { outcome: "won" | "missed"; sideId?: string; points?: number }>;
+  pausedAt: number | null;
+  scores: Record<string, number>;
+  tiebreakers: string[];
+  winnerSideIds: string[];
+  round: PublicRound | null;
+  /** Rounds already played, oldest first, with their answers (for the review). */
+  history: PublicHistory[];
   /** Server clock at the time of this view, for a client clock offset. */
   serverNow: number;
-  /** The last wrong guesses, for the "not it" feedback (no answers in them). */
-  recentWrong: Array<{ at: number; playerId: string; guess: string; points: number }>;
-  /**
-   * Every answer given this round, in the order the server judged them
-   * (fastest first): who, what, how many seconds into its clue, and whether
-   * it was right. Answers are judged one by one: a wrong one loses that
-   * clue's points and the next answer is judged; the first right one wins
-   * and ends the round. A right answer is only ever in here once the round
-   * is revealed, so this never gives the card away.
-   */
-  roundAnswers: Array<{ playerId: string; guess: string; clueIndex: number; seconds: number; right: boolean; points: number; skipped?: boolean }>;
 };
 
-function fullPublicCard(card: ClueCard, topClue: number): PublicCard {
-  return {
-    id: card.id,
-    category: card.category,
-    mystery: card.art.mystery,
-    answer: card.answer,
-    reveal: card.art.reveal,
-    clues: card.clues.map((_, i) => clueFor(card, i, topClue)),
-    teaching: card.teaching,
-    study: card.study,
-  };
+function revealCard(item: BankItem): PublicCard {
+  return { id: item.id, category: item.category, mystery: item.mystery, answer: item.answerText, reveal: item.reveal, teaching: item.teaching, study: item.study };
+}
+
+function questionFor(item: BankItem, order: ClueRound["order"], revealed: boolean): PublicQuestion {
+  const choices = order.map((i) => item.choices[i]);
+  if (!revealed) return { question: item.question, chapter: item.chapter, choices };
+  return { question: item.question, chapter: item.chapter, choices, correct: order.indexOf(item.answer as 0), explanation: item.explanation, ref: item.ref };
 }
 
 /**
- * The match as a player may see it: the current card's answer, art,
- * references and later clues are left out until it is revealed. The server
- * sends only this; the full match never leaves it.
+ * The match as one player may see it. Before a question closes: no answer,
+ * no reveal art, and nobody else's choice (only that they have locked one).
+ * The server sends only this; the full match never leaves it.
  */
-export function publicView(match: ClueMatch, cards: Map<string, ClueCard>, now: number): PublicMatch {
-  const { deck, topClue, log, round, ...rest } = match;
-  let publicRound: PublicMatch["round"] = null;
-  if (round) {
-    const card = cards.get(round.cardId)!;
-    const revealed = match.phase === "reveal" || match.phase === "over";
-    const { cardId: _cardId, ...roundRest } = round;
-    void _cardId;
-    publicRound = {
-      ...roundRest,
-      card: revealed ? fullPublicCard(card, topClue[card.id] ?? 0) : { id: `hidden-${match.dealt}`, category: card.category, mystery: card.art.mystery },
-      shownClues: card.clues.slice(0, revealed ? 5 : round.clueIndex + 1).map((_, i) => clueFor(card, i, topClue[card.id] ?? 0).text),
+export function publicView(match: ClueMatch, bank: ClueBank, now: number, viewerId?: string): PublicMatch {
+  let round: PublicRound | null = null;
+  const r = match.round;
+  if (r) {
+    const item = bank.get(r.cardId)!;
+    const revealed = r.revealedAt !== null;
+    round = {
+      card: revealed ? revealCard(item) : { id: `hidden-${match.dealt}-${match.done.length}`, category: item.category, mystery: item.mystery },
+      quiz: questionFor(item, r.order, revealed),
+      openAt: r.openAt,
+      closesAt: r.closesAt,
+      revealedAt: r.revealedAt,
+      tiebreak: r.tiebreak,
+      locked: Object.keys(r.answers),
+      mine: viewerId && r.answers[viewerId] ? r.answers[viewerId].choice : null,
+      ...(revealed ? { answers: r.answers, points: r.points, winnerId: r.winnerId } : {}),
     };
   }
-  const history: PublicMatch["history"] = [];
-  for (const e of log) {
-    if (e.type !== "correct" && e.type !== "missed") continue;
-    // The current card joins the history once revealed.
-    const card = cards.get(e.cardId);
-    if (!card) continue;
-    history.push({
-      ...fullPublicCard(card, topClue[card.id] ?? 0),
-      outcome: e.type === "correct" ? "won" : "missed",
-      sideId: e.type === "correct" ? e.sideId : undefined,
-      points: e.type === "correct" ? e.points : undefined,
-    });
-  }
-  const recentWrong = log
-    .filter((e): e is Extract<ClueEvent, { type: "wrong" }> => e.type === "wrong")
-    .slice(-6)
-    .map((e) => ({ at: e.at, playerId: e.playerId, guess: e.guess, points: e.points }));
-  const roundAnswers: PublicMatch["roundAnswers"] = [];
-  if (round) {
-    const clueStart = new Map<number, number>();
-    for (const e of log) {
-      if (e.type === "clue" && e.cardId === round.cardId) clueStart.set(e.clueIndex, e.at);
-      // A skip is 0 points and the whole clue's time (Louis, 2026-11-22).
-      if (e.type === "skip" && e.cardId === round.cardId) {
-        roundAnswers.push({ playerId: e.playerId, guess: "Skipped", clueIndex: e.clueIndex, seconds: match.settings.clueSeconds, right: false, points: 0, skipped: true });
-      }
-      if ((e.type === "wrong" || e.type === "correct") && e.cardId === round.cardId) {
-        const started = clueStart.get(e.clueIndex) ?? e.at;
-        roundAnswers.push({
-          playerId: e.playerId,
-          guess: e.guess,
-          clueIndex: e.clueIndex,
-          seconds: Math.max(0, Math.round((e.at - started) / 100) / 10),
-          right: e.type === "correct",
-          points: e.points,
-        });
-      }
-    }
-  }
-  return { ...rest, deckSize: deck.length, round: publicRound, history, serverNow: now, recentWrong, roundAnswers };
+  const history: PublicHistory[] = match.done
+    .map((d) => {
+      const item = bank.get(d.cardId);
+      if (!item) return null;
+      return { ...revealCard(item), quiz: questionFor(item, d.order, true), tiebreak: d.tiebreak, answers: d.answers, points: d.points, winnerId: d.winnerId };
+    })
+    .filter((x): x is PublicHistory => !!x);
+  return {
+    settings: match.settings,
+    selection: match.selection,
+    sides: match.sides,
+    players: match.players,
+    phase: match.phase,
+    dealt: match.dealt,
+    deckSize: match.deck.length,
+    pausedAt: match.pausedAt,
+    scores: match.scores,
+    tiebreakers: match.tiebreakers,
+    winnerSideIds: match.winnerSideIds,
+    round,
+    history,
+    serverNow: now,
+  };
 }

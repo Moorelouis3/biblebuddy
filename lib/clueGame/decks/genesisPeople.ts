@@ -32,6 +32,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "God is the Creator of everything. Genesis opens with him making the heavens and the earth. He revealed his name to Moses as I AM, showed Moses his glory from a cleft in the rock, and answered Job out of the whirlwind. Through every story in Genesis, he is the one who speaks, promises and keeps his word. See Genesis 1:1; Exodus 3:14; 33:18–23; Job 38.",
+    quiz: {
+      question: "In the beginning, I created the heaven and the earth. Who am I?",
+      choices: ["God", "Adam", "Eve", "Joseph"],
+      answer: 0,
+      explanation: "Genesis opens with God creating the heaven and the earth.",
+      ref: ref("Genesis 1:1"),
+    },
   }),
   person({
     id: "adam",
@@ -53,6 +60,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Adam was the first man. God formed him from the dust, breathed life into him, and placed him in the garden of Eden. Adam named the animals, and God made Eve to be his wife. After they ate from the forbidden tree, they hid from God and were sent out of the garden. Luke’s family line of Jesus reaches back to him. See Genesis 2–3; 5:1–5; Luke 3:38.",
+    quiz: {
+      question: "God brought the animals to me to see what I would name them. Who am I?",
+      choices: ["Eve", "Cain", "Adam", "Pharaoh"],
+      answer: 2,
+      explanation: "God brought every beast and bird to Adam, and whatever Adam called each one became its name.",
+      ref: ref("Genesis 2:19–20"),
+    },
     study: { label: "Explore Adam’s Story", href: "/blog/who-was-adam" },
   }),
   person({
@@ -70,6 +84,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Eve was the first woman. God made her from Adam’s rib, and Adam named her because she would be the mother of all the living. The serpent deceived her, and she ate the forbidden fruit and gave some to Adam. Later she became the mother of Cain, Abel and Seth. See Genesis 2:21–25; 3; 4:1–2, 25.",
+    quiz: {
+      question: "God made me from a rib taken from the first man. Who am I?",
+      choices: ["Adam", "Eve", "Adah", "Rachel"],
+      answer: 1,
+      explanation: "God put Adam into a deep sleep, took one of his ribs, and made a woman from it.",
+      ref: ref("Genesis 2:21–22"),
+    },
     study: { label: "Explore Eve’s Story", href: "/blog/who-was-eve" },
   }),
   person({
@@ -87,6 +108,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Cain was the firstborn son of Adam and Eve. He worked the ground, and when God accepted Abel’s offering but not his, Cain grew angry and killed his brother. When God asked where Abel was, Cain asked if he was his brother’s keeper. God sent him away as a wanderer, and he built a city named after his son Enoch. See Genesis 4:1–17; Jude 1:11.",
+    quiz: {
+      question: "God set a mark on me so no one who found me would kill me. Who am I?",
+      choices: ["Abel", "Seth", "Joseph", "Cain"],
+      answer: 3,
+      explanation: "The LORD set a mark upon Cain so that no one finding him would kill him.",
+      ref: ref("Genesis 4:15"),
+    },
   }),
   person({
     id: "noah",
@@ -109,6 +137,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Noah lived when the earth was full of violence, yet God found him righteous. God told him to build an ark for his family and the animals before the flood. When the waters went down, a dove brought back an olive leaf, and God set a rainbow in the sky as a promise never to flood the earth again. See Genesis 6–9; 2 Peter 2:5.",
+    quiz: {
+      question: "I sent out a dove, and it came back with an olive leaf. Who am I?",
+      choices: ["Noah", "Shem", "Ham", "Jacob"],
+      answer: 0,
+      explanation: "The dove came back to Noah with an olive leaf, so Noah knew the waters had gone down.",
+      ref: ref("Genesis 8:11"),
+    },
   }),
   person({
     id: "abraham",
@@ -130,6 +165,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Abraham, first called Abram, left his home when God called him and went to Canaan. God promised him a land and more descendants than the stars, and renamed him the father of many nations. In old age he and Sarah had Isaac, and Abraham trusted God even when he was asked to offer his son. See Genesis 12:1–3; 15:5–6; 17:5; 21:1–5; 22.",
+    quiz: {
+      question: "God told me to leave my country and go to a land he would show me. Who am I?",
+      choices: ["Lot", "Abraham", "Terah", "Esau"],
+      answer: 1,
+      explanation: "The LORD told Abram to leave his country, his family and his father’s house for a land he would show him.",
+      ref: ref("Genesis 12:1"),
+    },
     study: { label: "Explore Abraham’s Story", href: "/bible-buddies/abraham" },
   }),
   person({
@@ -147,6 +189,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Sarah, first called Sarai, was Abraham’s wife. For years she had no children, so she gave her servant Hagar to Abraham. When God promised her a son in her old age, she laughed. Then God kept his word, and she gave birth to Isaac. She died at 127 and was buried at Machpelah. See Genesis 16; 18:10–15; 21:1–7; 23:1–2, 19.",
+    quiz: {
+      question: "I laughed when I heard I would have a son in my old age. Who am I?",
+      choices: ["Hagar", "Rebekah", "Sarah", "Eve"],
+      answer: 2,
+      explanation: "When the LORD promised her a son, Sarah laughed to herself because she and Abraham were old.",
+      ref: ref("Genesis 18:10–12"),
+    },
     study: { label: "Explore Sarah’s Story", href: "/blog/who-was-sarah" },
   }),
   person({
@@ -164,6 +213,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Lot was Abraham’s nephew. He travelled with Abraham to Canaan, then chose the well-watered land near Sodom. Abraham rescued him when he was taken captive. Before God destroyed Sodom, angels led Lot and his family out, but his wife looked back and became a pillar of salt. Peter calls Lot a righteous man. See Genesis 13; 14:12–16; 19; 2 Peter 2:7–8.",
+    quiz: {
+      question: "My wife looked back at Sodom and became a pillar of salt. Who am I?",
+      choices: ["Abraham", "Isaac", "Pharaoh", "Lot"],
+      answer: 3,
+      explanation: "Lot’s wife looked back from behind him and became a pillar of salt.",
+      ref: ref("Genesis 19:26"),
+    },
   }),
   person({
     id: "hagar",
@@ -180,6 +236,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Hagar was Sarah’s Egyptian servant. Sarah gave her to Abraham, and she became the mother of Ishmael. When she ran away, an angel met her by a spring, and she called the Lord the God who sees her. Later she and Ishmael were sent away, and God cared for them in the wilderness. See Genesis 16; 21:9–21; Galatians 4:24–25.",
+    quiz: {
+      question: "I called the LORD “Thou God seest me.” Who am I?",
+      choices: ["Hagar", "Sarah", "Keturah", "Rachel"],
+      answer: 0,
+      explanation: "Hagar called the LORD who spoke to her “Thou God seest me.”",
+      ref: ref("Genesis 16:13"),
+    },
     study: { label: "Explore Hagar’s Story", href: "/blog/who-was-hagar" },
   }),
   person({
@@ -197,6 +260,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Ishmael was Abraham’s first son, born to Sarah’s servant Hagar. Before he was born, an angel told Hagar to name him Ishmael. After Isaac was born, Ishmael and Hagar were sent away, but God was with the boy, and he grew up in the wilderness as an archer. God made him the father of twelve princes. See Genesis 16; 21:9–21; 25:12–17.",
+    quiz: {
+      question: "I grew up in the wilderness and became an archer. Who am I?",
+      choices: ["Esau", "Ishmael", "Isaac", "Benjamin"],
+      answer: 1,
+      explanation: "God was with Ishmael, and he grew, lived in the wilderness, and became an archer.",
+      ref: ref("Genesis 21:20"),
+    },
   }),
   person({
     id: "isaac",
@@ -213,6 +283,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Isaac was the son God promised to Abraham and Sarah, born when they were old. When God tested Abraham, Isaac was laid on the altar, and God provided a ram instead. Isaac married Rebekah and became the father of twins, Esau and Jacob. When he was old and could not see, Jacob tricked him into giving the blessing. See Genesis 21:1–7; 22; 24; 25:19–26; 27.",
+    quiz: {
+      question: "My father laid me on an altar, but God provided a ram instead. Who am I?",
+      choices: ["Jacob", "Ishmael", "Isaac", "Pharaoh"],
+      answer: 2,
+      explanation: "Abraham bound Isaac on the altar, then offered a ram caught in a thicket in his son’s place.",
+      ref: ref("Genesis 22:9–13"),
+    },
   }),
   person({
     id: "rebekah",
@@ -229,6 +306,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Rebekah was the woman Abraham’s servant found at a well when she offered water to him and his camels. She married Isaac and became the mother of twins, Esau and Jacob, who struggled before they were born. God told her the older would serve the younger, and she later helped Jacob receive Isaac’s blessing. See Genesis 24; 25:20–26; 27.",
+    quiz: {
+      question: "I gave Abraham’s servant a drink and watered all his camels. Who am I?",
+      choices: ["Rachel", "Sarah", "Eve", "Rebekah"],
+      answer: 3,
+      explanation: "At the well, Rebekah gave Abraham’s servant a drink and then drew water for all his camels.",
+      ref: ref("Genesis 24:18–20"),
+    },
     study: { label: "Explore Rebekah’s Story", href: "/blog/who-was-rebekah" },
   }),
   person({
@@ -246,6 +330,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Esau was the older twin son of Isaac and Rebekah. He was born red and hairy and grew up a hunter. One day he came in hungry and sold his birthright to Jacob for stew, and later Jacob received the blessing Esau expected. Years later, Esau ran to meet Jacob and embraced him. See Genesis 25:24–34; 27; 33:1–4.",
+    quiz: {
+      question: "I sold my birthright to my brother for bread and lentil stew. Who am I?",
+      choices: ["Esau", "Jacob", "Ishmael", "Potiphar"],
+      answer: 0,
+      explanation: "Esau swore to Jacob and sold his birthright, and Jacob gave him bread and pottage of lentils.",
+      ref: ref("Genesis 25:33–34"),
+    },
   }),
   person({
     id: "jacob",
@@ -267,6 +358,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Jacob was the younger twin son of Isaac and Rebekah. He took Esau’s birthright and blessing, then fled and dreamed of a ladder to heaven. He worked for Laban for Leah and Rachel, and had twelve sons. After he wrestled with God, his name became Israel, and his sons became the twelve tribes. See Genesis 25:26; 27–29; 32:24–28; 35:22–26.",
+    quiz: {
+      question: "I dreamed of a ladder to heaven with angels going up and down. Who am I?",
+      choices: ["Isaac", "Jacob", "Esau", "Noah"],
+      answer: 1,
+      explanation: "Jacob dreamed of a ladder reaching to heaven, with the angels of God ascending and descending on it.",
+      ref: ref("Genesis 28:12"),
+    },
   }),
   person({
     id: "laban",
@@ -283,6 +381,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Laban was Rebekah’s brother and the father of Leah and Rachel. Jacob worked for him seven years for Rachel, but Laban gave him Leah first and made him work seven more. Laban kept changing Jacob’s wages. When Jacob left, Laban chased him, and they made a covenant with a heap of stones. See Genesis 24:29–31; 29:15–30; 31.",
+    quiz: {
+      question: "I gave Jacob my daughter Leah instead of Rachel on his wedding night. Who am I?",
+      choices: ["Jacob", "Bethuel", "Laban", "Pharaoh"],
+      answer: 2,
+      explanation: "Laban brought Leah to Jacob in the evening, and in the morning Jacob asked why Laban had tricked him.",
+      ref: ref("Genesis 29:23–25"),
+    },
   }),
   person({
     id: "leah",
@@ -299,6 +404,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Leah was Laban’s older daughter. Jacob loved her sister Rachel, but Laban gave Leah to him first. Though Jacob loved Rachel more, God saw Leah and gave her children, including Reuben, Levi and Judah. Jesus came from Judah’s line. Jacob buried her in the family tomb with Abraham and Sarah. See Genesis 29:16–35; 49:31.",
+    quiz: {
+      question: "I named my first son Reuben, hoping my husband would love me now. Who am I?",
+      choices: ["Rachel", "Bilhah", "Eve", "Leah"],
+      answer: 3,
+      explanation: "Leah named her son Reuben and said, “Now therefore my husband will love me.”",
+      ref: ref("Genesis 29:32"),
+    },
     study: { label: "Explore Leah’s Story", href: "/blog/who-is-leah" },
   }),
   person({
@@ -316,6 +428,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Rachel was Laban’s younger daughter and Jacob’s beloved wife. Jacob worked seven years for her, but was tricked into marrying Leah first. For a long time Rachel had no children, then God gave her Joseph. She died giving birth to Benjamin near Bethlehem, and Jeremiah pictures her weeping for her children. See Genesis 29; 30:22–24; 35:16–20; Jeremiah 31:15.",
+    quiz: {
+      question: "I died giving birth to Benjamin on the way to Bethlehem. Who am I?",
+      choices: ["Rachel", "Leah", "Rebekah", "Hagar"],
+      answer: 0,
+      explanation: "Rachel had hard labour, named her son Ben-oni as she died, and was buried on the way to Bethlehem.",
+      ref: ref("Genesis 35:16–19"),
+    },
     study: { label: "Explore Rachel’s Story", href: "/blog/who-was-rachel" },
   }),
   person({
@@ -333,6 +452,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Reuben was Jacob’s firstborn son, born to Leah. When his brothers wanted to kill Joseph, Reuben talked them into throwing him in a pit, hoping to rescue him later. Because he sinned with his father’s concubine, he lost the rights of the firstborn. Still, his tribe received land in Israel. See Genesis 29:32; 35:22; 37:21–30; 49:3–4; 1 Chronicles 5:1.",
+    quiz: {
+      question: "I went back to the pit, found Joseph gone, and tore my clothes. Who am I?",
+      choices: ["Judah", "Reuben", "Simeon", "Noah"],
+      answer: 1,
+      explanation: "Reuben returned to the pit, saw that Joseph was not in it, and tore his clothes.",
+      ref: ref("Genesis 37:29"),
+    },
   }),
   person({
     id: "simeon",
@@ -349,6 +475,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Simeon was Jacob’s second son, born to Leah. With his brother Levi, he attacked the city of Shechem after their sister Dinah was mistreated. When the brothers went to Egypt for grain, Joseph kept Simeon bound until they came back with Benjamin. His tribe later lived within Judah’s land. See Genesis 29:33; 34; 42:24; 43:23; Joshua 19:1.",
+    quiz: {
+      question: "Joseph had me bound and kept in Egypt while my brothers went home. Who am I?",
+      choices: ["Reuben", "Levi", "Simeon", "Abel"],
+      answer: 2,
+      explanation: "Joseph took Simeon from his brothers and bound him before their eyes.",
+      ref: ref("Genesis 42:24"),
+    },
   }),
   person({
     id: "levi",
@@ -365,6 +498,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Levi was Jacob’s third son, born to Leah. With Simeon, he took revenge on Shechem, and Jacob rebuked them both. Moses and Aaron came from Levi’s family, and God set apart his tribe to serve at the tabernacle. The Levites received no land of their own, because the Lord was their inheritance. See Genesis 29:34; 34; Exodus 2:1; Numbers 1:50; Joshua 13:33.",
+    quiz: {
+      question: "With Simeon, I attacked Shechem to avenge our sister Dinah. Who am I?",
+      choices: ["Judah", "Reuben", "Isaac", "Levi"],
+      answer: 3,
+      explanation: "Simeon and Levi, Dinah’s brothers, took their swords and came upon the city of Shechem.",
+      ref: ref("Genesis 34:25"),
+    },
   }),
   person({
     id: "judah",
@@ -381,6 +521,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Judah was Jacob’s fourth son, born to Leah. He suggested selling Joseph instead of killing him, but years later he offered his own life in place of Benjamin. Jacob called him a lion’s cub and said the sceptre would not leave Judah. King David and Jesus came from his tribe. See Genesis 29:35; 37:26–27; 44:18–34; 49:8–10; Revelation 5:5.",
+    quiz: {
+      question: "I offered to stay as a slave in Egypt in Benjamin’s place. Who am I?",
+      choices: ["Judah", "Reuben", "Joseph", "Noah"],
+      answer: 0,
+      explanation: "Judah asked to stay as a bondman in place of the boy and let Benjamin go home with his brothers.",
+      ref: ref("Genesis 44:33"),
+    },
   }),
   person({
     id: "joseph",
@@ -402,6 +549,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Joseph was the first son of Jacob and Rachel. Jacob gave him a special coat, and his brothers sold him into slavery. In Egypt, Joseph interpreted Pharaoh’s dreams and helped store food before a famine. Years later, he forgave his brothers and provided for his family. See Genesis 30:22–24; 37; 41; 45.",
+    quiz: {
+      question: "My father gave me a coat of many colours. Who am I?",
+      choices: ["Benjamin", "Joseph", "Reuben", "Adam"],
+      answer: 1,
+      explanation: "Israel loved Joseph more than all his children and made him a coat of many colours.",
+      ref: ref("Genesis 37:3"),
+    },
     study: { label: "Explore Joseph’s Story", href: "/blog/who-was-joseph" },
   }),
   person({
@@ -419,6 +573,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Benjamin was Jacob’s youngest son and Rachel’s second, born as she died near Bethlehem. After Joseph was lost, Jacob held Benjamin close. In Egypt, Joseph tested his brothers by hiding his silver cup in Benjamin’s sack. Benjamin’s tribe later gave Israel King Saul and the apostle Paul. See Genesis 35:16–18; 42–45; 49:27; Romans 11:1.",
+    quiz: {
+      question: "Joseph’s silver cup was found in my sack. Who am I?",
+      choices: ["Simeon", "Judah", "Benjamin", "Seth"],
+      answer: 2,
+      explanation: "The search began with the eldest and ended with the youngest, and the cup was found in Benjamin’s sack.",
+      ref: ref("Genesis 44:12"),
+    },
   }),
   person({
     id: "potiphar",
@@ -435,6 +596,13 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "Potiphar was an Egyptian officer of Pharaoh, the captain of the guard. He bought Joseph from the Ishmaelites and saw that the Lord made everything Joseph did succeed, so he put Joseph over his whole house. When Potiphar’s wife falsely accused Joseph, Potiphar had him thrown into prison. See Genesis 37:36; 39; 40:3.",
+    quiz: {
+      question: "I bought Joseph and put him in charge of everything in my house. Who am I?",
+      choices: ["Pharaoh", "Abimelech", "Noah", "Potiphar"],
+      answer: 3,
+      explanation: "Potiphar bought Joseph from the Ishmeelites and made him overseer over his house and all he had.",
+      ref: ref("Genesis 39:1–4"),
+    },
   }),
   person({
     id: "pharaoh",
@@ -451,5 +619,12 @@ export const GENESIS_PEOPLE: ClueCard[] = [
     ],
     teaching:
       "This Pharaoh was the king of Egypt in Joseph’s day. He had two troubling dreams about cows and grain, and Joseph explained them as seven years of plenty followed by seven of famine. Pharaoh made Joseph ruler over Egypt, then welcomed Jacob’s family and gave them land in Goshen. See Genesis 40:20–22; 41; 47:1–10.",
+    quiz: {
+      question: "I dreamed that seven thin cows ate up seven fat cows. Who am I?",
+      choices: ["Pharaoh", "Potiphar", "Abimelech", "Cain"],
+      answer: 0,
+      explanation: "Pharaoh dreamed that seven lean cows came out of the river and ate up the seven fat ones.",
+      ref: ref("Genesis 41:1–4"),
+    },
   }),
 ];

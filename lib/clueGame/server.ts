@@ -16,8 +16,8 @@
  */
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { ALL_CLUE_CARDS, deckLabel, poolFor } from "./catalog";
-import { createMatch, publicView, reduceClueMatch, type ClueAction, type ClueMatch, DEFAULT_CLUE_SETTINGS, ROUND_INTRO_MS } from "./engine";
+import { BANK_ITEMS, CLUE_BANK, cleanSelection, selectionFromKeys, selectionLabel, selectionStatus, selectionToKeys } from "./bank";
+import { createMatch, publicView, reduceClueMatch, type ClueAction, type ClueMatch, type ClueSelection, DEFAULT_CLUE_SETTINGS, ROUND_INTRO_MS } from "./engine";
 
 export type ClueUser = { id: string; name: string; avatar: string | null };
 
@@ -118,9 +118,12 @@ async function saveRoom(admin: SupabaseClient, room: RoomRow, patch: Partial<Roo
   return Array.isArray(data) && data.length === 1;
 }
 
-export async function createRoom(admin: SupabaseClient, host: ClueUser, deckIds: string[]) {
-  const decks = deckIds.filter((id) => poolFor([id]).length > 0);
-  if (decks.length === 0) throw new Error("Pick a deck that is ready to play.");
+/** The host's pick (book, chapters, level), kept in deck_ids. */
+export async function createRoom(admin: SupabaseClient, host: ClueUser, rawSelection: unknown) {
+  const selection = cleanSelection(rawSelection);
+  const status = selectionStatus(selection);
+  if (!status.enough) throw new Error(`${selectionLabel(selection)} has ${status.count} questions. A game needs ${status.needed}. Add chapters or pick the other level.`);
+  const decks = selectionToKeys(selection);
   for (let attempt = 0; attempt < 6; attempt += 1) {
     const code = newCode();
     const { error } = await admin.from("clue_rooms").insert({ code, host_id: host.id, deck_ids: decks });
@@ -174,38 +177,54 @@ async function mutate(
   return { error: "The table was busy. Try again." };
 }
 
-export function startRoom(admin: SupabaseClient, code: string, user: ClueUser) {
+/**
+ * Start the game, or (rematch) a new one with the same players after it
+ * ended: the questions of the last game are used only if the selection
+ * runs out of fresh ones.
+ */
+export function startRoom(admin: SupabaseClient, code: string, user: ClueUser, opts: { rematch?: boolean } = {}) {
   return mutate(admin, code, (room, players, now) => {
     if (room.host_id !== user.id) return { error: "Only the host can start the game." };
-    if (room.status !== "lobby") return null;
-    const pool = poolFor(room.deck_ids);
+    if (opts.rematch ? room.status !== "over" : room.status !== "lobby") return null;
+    const selection = selectionFromKeys(room.deck_ids);
+    const last = room.state && isCurrent(room.state) ? [...room.state.deck, ...room.state.done.map((d) => d.cardId)] : [];
     const match = reduceClueMatch(
       createMatch({
-        cards: pool,
+        items: BANK_ITEMS,
+        selection,
+        avoid: last,
         sides: players.map((p) => ({ id: p.user_id, name: p.display_name || "Buddy" })),
         players: players.map((p) => ({ id: p.user_id, name: p.display_name || "Buddy", sideId: p.user_id })),
         seed: Math.floor(Math.random() * 2147483647),
       }),
-      // The shuffle-and-deal opening plays first; the first clock starts after it.
+      // The shuffle-and-deal opening and the instruction play first; the first
+      // question's 10 seconds start after them.
       { type: "deal", now: now + ROUND_INTRO_MS },
-      ALL_CLUE_CARDS,
+      CLUE_BANK,
     );
     return { status: "playing", state: match };
   });
 }
 
-export function actInRoom(admin: SupabaseClient, code: string, user: ClueUser, action: { type: string; text?: string }) {
+/** A room saved by an older version (the five clues, or the cards before the question bank): it cannot be played on. */
+const isCurrent = (state: ClueMatch | null): state is ClueMatch =>
+  !!state && Array.isArray((state as { done?: unknown }).done) && !!(state as { selection?: unknown }).selection && state.deck.every((id) => CLUE_BANK.has(id));
+
+export function actInRoom(admin: SupabaseClient, code: string, user: ClueUser, action: { type: string; choice?: number }) {
   return mutate(admin, code, (room, _players, now) => {
     if (!room.state || room.status !== "playing") return null;
-    let next: ClueMatch = reduceClueMatch(room.state, { type: "tick", now }, ALL_CLUE_CARDS);
+    if (!isCurrent(room.state)) return { error: "This game was started on the old version. Start a new room." };
+    let next: ClueMatch = reduceClueMatch(room.state, { type: "tick", now }, CLUE_BANK);
     let engineAction: ClueAction | null = null;
-    if (action.type === "guess") engineAction = { type: "guess", now, playerId: user.id, text: String(action.text || "") };
-    else if (action.type === "wait") engineAction = { type: "wait", now, playerId: user.id };
-    else if (action.type === "pause" || action.type === "resume") {
+    if (action.type === "answer") {
+      // One answer per player per question, only while it is open; a late or
+      // second answer simply changes nothing (the server's clock decides).
+      engineAction = { type: "answer", now, playerId: user.id, choice: Number(action.choice) };
+    } else if (action.type === "pause" || action.type === "resume") {
       if (room.host_id !== user.id) return { error: "Only the host can pause." };
       engineAction = { type: action.type, now };
     }
-    if (engineAction) next = reduceClueMatch(next, engineAction, ALL_CLUE_CARDS);
+    if (engineAction) next = reduceClueMatch(next, engineAction, CLUE_BANK);
     if (next === room.state) return null;
     return { state: next, status: next.phase === "over" ? "over" : "playing" };
   });
@@ -215,8 +234,8 @@ export function actInRoom(admin: SupabaseClient, code: string, user: ClueUser, a
 export async function viewRoom(admin: SupabaseClient, rawCode: string, user: ClueUser) {
   const code = normalizeCode(rawCode);
   await mutate(admin, code, (room, _players, now) => {
-    if (!room.state || room.status !== "playing") return null;
-    const next = reduceClueMatch(room.state, { type: "tick", now }, ALL_CLUE_CARDS);
+    if (!room.state || room.status !== "playing" || !isCurrent(room.state)) return null;
+    const next = reduceClueMatch(room.state, { type: "tick", now }, CLUE_BANK);
     if (next === room.state) return null;
     return { state: next, status: next.phase === "over" ? "over" : "playing" };
   });
@@ -229,10 +248,12 @@ export async function viewRoom(admin: SupabaseClient, rawCode: string, user: Clu
     hostId: room.host_id,
     status: room.status,
     deckIds: room.deck_ids,
-    deckName: deckLabel(room.deck_ids),
+    selection: selectionFromKeys(room.deck_ids),
+    deckName: selectionLabel(selectionFromKeys(room.deck_ids)),
     you: user.id,
     players: players.map((p) => ({ id: p.user_id, name: p.display_name || "Buddy", avatar: p.avatar_url })),
-    match: room.state ? publicView(room.state, ALL_CLUE_CARDS, Date.now()) : null,
+    match: room.state && isCurrent(room.state) ? publicView(room.state, CLUE_BANK, Date.now(), user.id) : null,
+    outdated: !!room.state && !isCurrent(room.state),
     settings: room.state?.settings ?? DEFAULT_CLUE_SETTINGS,
   };
 }
@@ -256,7 +277,7 @@ export async function roomInvite(admin: SupabaseClient, rawCode: string) {
     found: true as const,
     hostName: (host?.display_name || "A friend").split(/\s+/)[0],
     hostAvatar: host?.avatar_url ?? null,
-    deckName: deckLabel(room.deck_ids),
+    deckName: selectionLabel(selectionFromKeys(room.deck_ids)),
     players: players.length,
     maxPlayers: MAX_ROOM_PLAYERS,
     joinable,
@@ -288,9 +309,9 @@ function challengePostText(c: {
 
 export type ChallengeInput = {
   roundId: string;
-  deckIds: string[];
+  selection: ClueSelection;
+  /** The ten question ids, in order. */
   cardIds: string[];
-  topClue: Record<string, number>;
   score: number;
   won: number;
 };
@@ -301,27 +322,23 @@ export async function createChallenge(admin: SupabaseClient, user: ClueUser, inp
   const existing = await admin.from("clue_challenges").select("id, feed_post_id").eq("source_round_id", roundId).maybeSingle();
   if (existing.data) return { id: existing.data.id as string, alreadyPosted: true };
 
-  const cardIds = (input.cardIds || []).filter((id) => ALL_CLUE_CARDS.has(id));
+  const cardIds = (input.cardIds || []).filter((id) => CLUE_BANK.has(id));
   if (cardIds.length !== DEFAULT_CLUE_SETTINGS.roundSize || new Set(cardIds).size !== cardIds.length) {
     return { error: "That round can't be shared." };
   }
-  const topClue: Record<string, number> = {};
-  for (const id of cardIds) {
-    const n = Math.max(0, Math.floor(Number(input.topClue?.[id] ?? 0)));
-    topClue[id] = n <= (ALL_CLUE_CARDS.get(id)?.altTopClues?.length ?? 0) ? n : 0;
-  }
   const score = Math.max(-50, Math.min(50, Math.round(Number(input.score) || 0)));
   const won = Math.max(0, Math.min(cardIds.length, Math.round(Number(input.won) || 0)));
-  const deckIds = (input.deckIds || []).filter((d) => poolFor([d]).length > 0);
+  const selection = cleanSelection(input.selection);
+  const deckIds = selectionToKeys(selection);
   const id = challengeId();
   const { error } = await admin.from("clue_challenges").insert({
     id,
     creator_id: user.id,
     source_round_id: roundId,
-    deck_ids: deckIds.length ? deckIds : ["genesis"],
+    deck_ids: deckIds,
     card_ids: cardIds,
-    top_clue: topClue,
-    settings: { clueSeconds: DEFAULT_CLUE_SETTINGS.clueSeconds, revealSeconds: DEFAULT_CLUE_SETTINGS.revealSeconds },
+    top_clue: {},
+    settings: { answerSeconds: DEFAULT_CLUE_SETTINGS.answerSeconds, revealSeconds: DEFAULT_CLUE_SETTINGS.revealSeconds },
     creator_score: score,
     creator_won: won,
     attempts: 1,
@@ -342,7 +359,7 @@ export async function createChallenge(admin: SupabaseClient, user: ClueUser, inp
     id,
     creatorName: user.name,
     creatorScore: score,
-    deckName: deckLabel(deckIds),
+    deckName: selectionLabel(selection),
     attempts: 1,
     leaderName: user.name,
     leaderScore: score,
@@ -376,9 +393,11 @@ export async function getChallenge(admin: SupabaseClient, rawId: string, user: C
     creatorName: (creator?.display_name as string | null) || (c.leader_name as string | null) || "A Buddy",
     creatorScore: c.creator_score as number,
     deckIds: c.deck_ids as string[],
-    deckName: deckLabel(c.deck_ids as string[]),
+    deckName: selectionLabel(selectionFromKeys(c.deck_ids as string[])),
+    selection: selectionFromKeys(c.deck_ids as string[]),
     cardIds: c.card_ids as string[],
-    topClue: c.top_clue as Record<string, number>,
+    /** Made before the question bank (2026-11-22): its cards cannot be replayed. */
+    outdated: !(c.card_ids as string[]).every((id) => CLUE_BANK.has(id)),
     attempts: c.attempts as number,
     leaderboard: (board || []).map((row, i) => ({ rank: i + 1, userId: row.user_id, name: row.display_name || "Buddy", score: row.score, won: row.won })),
     yourRanked: mine ? { score: mine.score, won: mine.won } : null,
@@ -422,7 +441,7 @@ export async function submitChallengeAttempt(admin: SupabaseClient, rawId: strin
       id,
       creatorName: (creator?.display_name as string | null) || "A Buddy",
       creatorScore: c.creator_score as number,
-      deckName: deckLabel(c.deck_ids as string[]),
+      deckName: selectionLabel(selectionFromKeys(c.deck_ids as string[])),
       attempts,
       leaderName: (top?.display_name as string | null) ?? null,
       leaderScore: (top?.score as number | null) ?? null,

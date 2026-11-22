@@ -59,6 +59,11 @@ export type ClueCard = {
   altTopClues?: Clue[];
   /** One short paragraph for Study This Card, ending with its references. */
   teaching: string;
+  /**
+   * The card's multiple-choice question (Louis, 2026-11-22: one short clue,
+   * four choices, 10 seconds). Optional only while the deck is being filled.
+   */
+  quiz?: ClueQuiz;
   /** A verified existing Bible Buddy page for "Explore X's Story". */
   study?: { label: string; href: string };
 };
@@ -82,3 +87,49 @@ export type ClueDeck = {
 };
 
 export type ClueScene = { phone: string; desktop: string };
+
+/**
+ * One multiple-choice question: a short clue, four short choices (exactly one
+ * right), and the reveal (a one-sentence explanation and the exact verse).
+ * Written to be read on a phone in 10 seconds.
+ */
+export type ClueQuiz = {
+  /** e.g. "I was Leah’s second son. Who am I?" (under ~90 characters). */
+  question: string;
+  /** Four choices, short (under ~24 characters each). */
+  choices: [string, string, string, string];
+  /** Index of the right choice in `choices` (the game shuffles the order). */
+  answer: 0 | 1 | 2 | 3;
+  /** One plain sentence shown at the reveal. */
+  explanation: string;
+  /** The exact verse(s) the question comes from. */
+  ref: ClueRef;
+};
+
+/**
+ * The question bank (Louis, 2026-11-22): about 24 questions per chapter, split
+ * Beginner / Medium, so players can pick a book, chapters and a difficulty.
+ * Each question can point at one of the deck's cards for its art (the mystery
+ * silhouette and the reveal); questions without a card show a plain card.
+ */
+export type ClueLevel = "beginner" | "medium";
+export type ClueQuestion = {
+  /** Stable id, e.g. "gen29-m-03". Never reuse one for a different question. */
+  id: string;
+  book: string;
+  chapter: number;
+  level: ClueLevel;
+  /** What the right answer is: shown on the mystery card before the reveal. */
+  category: ClueCategory;
+  /** Short enough to read on a phone with the choices in 10 seconds. */
+  question: string;
+  choices: [string, string, string, string];
+  /** Index of the right choice (the game shuffles the display order). */
+  answer: 0 | 1 | 2 | 3;
+  /** One plain sentence shown at the reveal. */
+  explanation: string;
+  /** The exact verse(s). */
+  ref: ClueRef;
+  /** A deck card whose art shows this answer, when there is one. */
+  cardId?: string;
+};

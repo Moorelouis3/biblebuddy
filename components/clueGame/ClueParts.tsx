@@ -214,19 +214,18 @@ export function StudyCard({ card, onClose, onOpenRef }: { card: PublicCard; onCl
             <p>{card.teaching}</p>
           </div>
         ) : null}
-        <ol className="mt-3 space-y-1.5 text-left">
-          {(card.clues || []).map((c, i) => (
-            <li key={i} className="bb-clue-studyclue">
-              <span className="bb-clue-pts">{5 - i}</span>
-              <span className="min-w-0">
-                {c.text}{" "}
-                <button type="button" className="bb-clue-ref" onClick={() => onOpenRef(c.ref)}>
-                  {c.ref.label}
-                </button>
-              </span>
-            </li>
-          ))}
-        </ol>
+        {card.quiz ? (
+          <div className="mt-3 text-left">
+            <p className="bb-clue-serif text-[17px] font-bold leading-snug">{card.quiz.question}</p>
+            {card.quiz.correct !== undefined ? <p className="mt-1 text-[15px] font-black" style={{ color: "#1d5a34" }}>✓ {card.quiz.choices[card.quiz.correct]}</p> : null}
+            {card.quiz.explanation ? <p className="mt-1 text-[15px] leading-snug">{card.quiz.explanation}</p> : null}
+            {card.quiz.ref ? (
+              <button type="button" className="bb-clue-ref mt-2" onClick={() => onOpenRef(card.quiz!.ref!)}>
+                Read {card.quiz.ref.label}
+              </button>
+            ) : null}
+          </div>
+        ) : null}
         {card.study ? (
           <Link href={card.study.href} className="bb-clue-btn bb-clue-btn-green mt-4 w-full">
             {card.study.label}
@@ -724,6 +723,51 @@ html:is(.bb-in-game, .bb-game-screen) :is(.bb-bottom-pill, .bb-safe-top-header, 
 .bb-cb-guess { flex:none; height:50px; padding: 0 22px; font-family: Georgia, serif; font-weight:800; font-size:19px; color:#fff3cf !important; background: url(/games/clue/ui/guess-button.webp) center / 100% 100% no-repeat; text-shadow: 0 1px 2px rgba(0,0,0,.5); }
 .bb-cb-wait { flex:none; height:50px; padding: 0 16px; font-family: Georgia, serif; font-weight:800; font-size:17px; color:#3b2412 !important; background: url(/games/clue/ui/wait-button.webp) center / 100% 100% no-repeat; }
 .bb-cb-guess:disabled, .bb-cb-wait:disabled { opacity:.55; }
+/* ---------- setup: book, chapters, level ---------- */
+.bb-clue-setup-step { margin: 14px 0 6px; font-family: Georgia, serif; font-weight:800; font-size:15px; color:#173b23 !important; }
+.bb-clue-setup-step:first-child { margin-top:0; }
+.bb-clue-chapters { margin-top:8px; display:grid; grid-template-columns: repeat(auto-fill, minmax(38px, 1fr)); gap:5px; max-height: 30vh; overflow-y:auto; padding:2px; }
+.bb-clue-chapters button { height:36px; border-radius:10px; font-weight:900; font-size:14px; color:#3b2412 !important; background:#f8ecd0; box-shadow: inset 0 0 0 1.5px #c99a46; }
+.bb-clue-chapters button.is-on { color:#fff6d8 !important; background: linear-gradient(180deg,#2f8a4f,#1d6a34); box-shadow:none; }
+.bb-clue-setup-summary { margin-top:14px; padding: 10px 12px; border-radius:14px; text-align:center; background: rgba(255,255,255,.5); box-shadow: inset 0 0 0 1.5px #d7b26b; font-size:15px; }
+/* ---------- multiple choice (2026-11-22) ---------- */
+.bb-cb-status { margin-top:3px; padding: 1px 9px; border-radius:999px; background: rgba(255,248,232,.9); color:#6a4a22 !important; font-weight:800; font-size: 11.5px; white-space:nowrap; box-shadow: 0 0 0 1px #d9a843; }
+.bb-cb-status.is-locked { background:#e4f2df; color:#1d5a34 !important; box-shadow: 0 0 0 1px #5fa36f; }
+.bb-cb-status.is-right { background:#1d6a34; color:#fff3cf !important; box-shadow:none; }
+.bb-cb-status.is-wrong { background:#a3261b; color:#ffe7df !important; box-shadow:none; }
+.bb-cb-question { font-size: clamp(15px, min(4.4vw, 3vh), 24px) !important; }
+.bb-cb-tb { color:#a3261b !important; font-size: clamp(11px, 3.1vw, 14px); white-space:normal; text-align:center; }
+.bb-cb.is-quiz .bb-cb-panel-head { white-space:normal; }
+.bb-cb-howto { text-align:center; }
+.bb-cb-howto-title { font-family: Georgia, serif; font-weight:800; font-size: clamp(15px, 4.2vw, 20px); color:#173b23 !important; }
+.bb-cb-howto-text { margin-top:4px; font-family: Georgia, serif; font-weight:700; font-size: clamp(13px, 3.7vw, 17px); line-height:1.3; }
+.bb-cb-howto-deal { margin-top:6px; font-weight:800; font-size: 12px; opacity:.65; }
+.bb-cb-reveal { text-align:center; }
+.bb-cb.is-quiz .bb-cb-answer { font-size: clamp(18px, 5.2vw, 28px); }
+.bb-cb-explain { margin-top:4px; font-family: Georgia, serif; font-size: clamp(12px, 3.4vw, 15px); line-height:1.3; font-weight:600; }
+.bb-cb-choices { position:relative; z-index:20; width: min(100%, 620px); margin: 10px auto 0; display:grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.bb-cb-choice { display:flex; align-items:center; gap:8px; min-height: 54px; padding: 6px 10px 6px 7px; border-radius:16px; text-align:left; cursor:pointer;
+  background: linear-gradient(180deg,#fffaf0,#f3e1b8); color:#2a1a0c !important; box-shadow: inset 0 0 0 2px #d9a843, 0 5px 10px rgba(0,0,0,.28); transition: transform .12s, opacity .25s, filter .25s; }
+.bb-cb-choice:not(:disabled):active { transform: scale(.97); }
+.bb-cb-choice:disabled { cursor: default; }
+.bb-cb-letter { flex:none; display:grid; place-items:center; width:32px; height:32px; border-radius:10px; background: linear-gradient(180deg,#2f8a4f,#1d6a34); color:#fff3cf !important; font-family: Georgia, serif; font-weight:900; font-size:17px; }
+.bb-cb-choice-text { flex:1; min-width:0; font-family: Georgia, serif; font-weight:700; font-size: clamp(13.5px, 3.8vw, 17px); line-height:1.15; overflow-wrap:anywhere; }
+.bb-cb-mark { flex:none; font-weight:900; font-size:20px; }
+.bb-cb-choice.is-mine { background: linear-gradient(180deg,#fff1b8,#f2cf63); box-shadow: inset 0 0 0 3px #a8741f, 0 5px 10px rgba(0,0,0,.28); }
+.bb-cb-choice.is-faded { opacity:.45; filter: grayscale(.4); }
+.bb-cb-choice.is-right { opacity:1; filter:none; background: linear-gradient(180deg,#3c9c5c,#1d6a34); color:#fff8de !important; box-shadow: inset 0 0 0 3px #f6d36b, 0 0 18px rgba(246,211,107,.55); animation: bb-clue-bump .5s ease-out both; }
+.bb-cb-choice.is-right .bb-cb-letter { background:#f6d36b; color:#2a1a0c !important; }
+.bb-cb-choice.is-wrong { opacity:1; filter:none; background: linear-gradient(180deg,#c2473a,#8a2418); color:#ffe7df !important; box-shadow: inset 0 0 0 3px #f2a596; animation: bb-clue-shake .45s ease-in-out both; }
+.bb-cb-choice.is-wrong .bb-cb-letter { background:#ffe7df; color:#8a2418 !important; }
+.bb-cb-hint { grid-column: 1 / -1; text-align:center; margin-top:2px; font-weight:800; font-size: 12.5px; color:#fff3d2 !important; text-shadow: 0 1px 3px rgba(0,0,0,.85); }
+.bb-cb-card .bb-clue-fallback-note { display:none; }
+.bb-cb-card .bb-clue-fallback { font-size: clamp(10px, 2.8vw, 14px); padding:4px; }
+.bb-cb.is-quiz .bb-cb-stripwrap { flex-basis: clamp(70px, 14vh, 150px) !important; min-height: 56px; }
+@media (max-height: 760px) {
+  .bb-cb-choice { min-height: 46px; padding-top:4px; padding-bottom:4px; }
+  .bb-cb-letter { width:28px; height:28px; font-size:15px; }
+  .bb-cb.is-quiz .bb-cb-fan { display:none; }
+}
 @media (max-height: 760px) {
   .bb-cb-others .bb-cb-ring { width:46px !important; height:46px !important; }
   .bb-cb-me .bb-cb-ring { width:50px !important; height:50px !important; }
