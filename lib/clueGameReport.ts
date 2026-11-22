@@ -25,6 +25,7 @@
  */
 
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { headlineRow, people, type MatchHeadline } from "./matchGameReport";
 
 export type ClueRange = { start: Date; end: Date };
 
@@ -49,6 +50,8 @@ export type ClueFigure = { label: string; hint: string; allTime: number; period:
 
 export type ClueGameReport = {
   launched: string;
+  /** The simple view (Louis, 2026-11-22: the full tab was "too hard to understand"): today, 7 days, 30 days, since launch. */
+  headline: MatchHeadline[];
   sections: Array<{ key: string; icon: string; title: string; line: string; figures: ClueFigure[] }>;
   breakdowns: Array<{ title: string; rows: Array<{ label: string; allTime: number; period: number }> }>;
 };
@@ -234,8 +237,18 @@ export function summariseClueGame(input: ClueGameInput, range: ClueRange): ClueG
     return [...map.entries()].map(([k, v]) => ({ label: names[k] || k, ...v })).sort((a, b) => b.allTime - a.allTime);
   };
 
+  const ofEvent = (name: string) => input.events.filter((r) => r.event_name === name);
+  const headline: MatchHeadline[] = [
+    headlineRow("Different players", "People who opened or played Bible Clue.", input.events, (x) => people(x as ClueEventRow[])),
+    headlineRow("Solo games played", "Solo games started.", ofEvent("clue_game_started"), (x) => x.length),
+    headlineRow("Games finished", "Played to the end (solo and challenges).", ofEvent("clue_game_finished"), (x) => x.length),
+    headlineRow("Rooms played", "Multiplayer rooms where the game was started.", input.rooms.filter((r) => (r.state?.dealt ?? 0) > 0), (x) => x.length),
+    headlineRow("Challenge games", "Feed and buddy challenges played to the end.", input.attempts.map((a) => ({ created_at: a.finished_at })), (x) => x.length),
+  ];
+
   return {
     launched: LAUNCHED,
+    headline,
     sections: [
       {
         key: "reach",

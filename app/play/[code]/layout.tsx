@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { redirect } from "next/navigation";
 import { clueAdmin, roomInvite } from "@/lib/clueGame/server";
 
 /**
@@ -36,7 +35,5 @@ export async function generateMetadata({ params }: { params: Promise<{ code: str
 }
 
 export default function PlayInviteLayout({ children }: { children: ReactNode }) {
-  // Bible Clue is off the live site for now (see app/bible-study-games/clue/layout.tsx).
-  if (process.env.NODE_ENV === "production") redirect("/bible-study-games");
   return children;
 }

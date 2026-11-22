@@ -118,6 +118,26 @@ export default function MatchGame() {
     return () => window.clearTimeout(id);
   }, []);
 
+  // Time played: each stretch with Match open on screen is one visit, sent
+  // when the player leaves the game or the app goes to the background.
+  useEffect(() => {
+    let start = document.visibilityState === "visible" ? Date.now() : 0;
+    const send = () => {
+      if (!start) return;
+      const seconds = Math.round((Date.now() - start) / 1000);
+      start = 0;
+      if (seconds >= 5) trackMatch("match_session", { seconds });
+    };
+    const onVis = () => (document.visibilityState === "hidden" ? send() : (start = Date.now()));
+    document.addEventListener("visibilitychange", onVis);
+    window.addEventListener("pagehide", send);
+    return () => {
+      send();
+      document.removeEventListener("visibilitychange", onVis);
+      window.removeEventListener("pagehide", send);
+    };
+  }, []);
+
   // The game owns the screen: the app's menu and top bar step aside.
   useLayoutEffect(() => {
     const html = document.documentElement;
@@ -167,6 +187,7 @@ export default function MatchGame() {
           key={screen.level.id}
           level={screen.level}
           isLastLevel={screen.level.number === MATCH_LEVELS.length}
+          alreadyWon={progress.done.includes(screen.level.id)}
           onWin={(score) =>
             update((p) => {
               const first = !p.done.includes(screen.level.id);

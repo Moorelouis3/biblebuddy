@@ -28,6 +28,7 @@ export const TABS = [
   { key: "books", label: "Books" },
   { key: "app", label: "App" },
   { key: "features", label: "Features" },
+  { key: "match", label: "Bible Buddy Match" },
   { key: "clue", label: "Bible Clue" },
   { key: "popups", label: "Popups" },
 ] as const;
@@ -420,6 +421,114 @@ type CampaignDetail = {
   links: Array<{ url: string; clicks: number }> | null;
   arrivals: number | null;
 };
+
+/**
+ * The simple game view (Louis, 2026-11-22: "simple: how many different people
+ * are playing a day, 7 days, 30 days, how many boards are finished"): one row
+ * per number, four fixed windows, nothing else.
+ */
+function HeadlineTable({ rows }: { rows: Array<{ label: string; hint: string; today: number; week: number; month: number; allTime: number }> }) {
+  return (
+    <Card>
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[480px] border-separate border-spacing-y-2 text-sm">
+          <thead>
+            <tr className="text-right text-xs font-bold text-[#64748b]">
+              <th className="pb-1 text-left font-bold" />
+              <th className="pb-1 font-bold">Today</th>
+              <th className="pb-1 font-bold">7 days</th>
+              <th className="pb-1 font-bold">30 days</th>
+              <th className="pb-1 font-bold">Since launch</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r.label} title={r.hint}>
+                <td className="pr-3 align-middle">
+                  <p className="font-black text-[#0b1633]">{r.label}</p>
+                  <p className="text-[11px] font-semibold leading-snug text-[#8a94a6]">{r.hint}</p>
+                </td>
+                <td className="pl-3 text-right align-middle text-2xl font-black text-[#0b1633]">{fmt(r.today)}</td>
+                <td className="pl-3 text-right align-middle text-2xl font-black text-[#0b1633]">{fmt(r.week)}</td>
+                <td className="pl-3 text-right align-middle text-2xl font-black text-[#0b1633]">{fmt(r.month)}</td>
+                <td className="pl-3 text-right align-middle text-lg font-black text-[#64748b]">{fmt(r.allTime)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </Card>
+  );
+}
+
+/** The "More detail" half of a game tab: figure tables and breakdown bars, since launch and for the period. */
+function GameDetail({
+  sections,
+  breakdowns,
+}: {
+  sections: Array<{ key: string; icon: string; title: string; figures: Array<{ label: string; hint: string; allTime: number; period: number; unit?: string }> }>;
+  breakdowns: Array<{ title: string; rows: Array<{ label: string; allTime: number; period: number }> }>;
+}) {
+  return (
+    <div className="space-y-4">
+      {sections.map((section) => (
+        <Card key={section.key}>
+          <CardTitle icon={section.icon}>{section.title}</CardTitle>
+          <table className="w-full border-separate border-spacing-y-1.5 text-sm">
+            <thead>
+              <tr className="text-left text-xs font-bold text-[#64748b]">
+                <th className="pb-1 font-bold">What</th>
+                <th className="pb-1 text-right font-bold">Since launch</th>
+                <th className="pb-1 text-right font-bold">This period</th>
+              </tr>
+            </thead>
+            <tbody>
+              {section.figures.map((f) => {
+                const show = (n: number) => (f.unit === "percent" ? `${n}%` : fmt(n));
+                return (
+                  <tr key={f.label} title={f.hint}>
+                    <td className="pr-3">
+                      <p className="font-black text-[#0b1633]">{f.label}</p>
+                      {f.hint ? <p className="text-[11px] font-semibold text-[#8a94a6]">{f.hint}</p> : null}
+                    </td>
+                    <td className="pl-3 text-right font-black">{show(f.allTime)}</td>
+                    <td className="pl-3 text-right font-black">{show(f.period)}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </Card>
+      ))}
+      {breakdowns.map((b) => {
+        const widest = Math.max(1, ...b.rows.map((r) => r.allTime));
+        return (
+          <Card key={b.title}>
+            <CardTitle icon="📊">{b.title}</CardTitle>
+            {b.rows.length ? (
+              <table className="w-full border-separate border-spacing-y-1.5 text-sm">
+                <tbody>
+                  {b.rows.map((r) => (
+                    <tr key={r.label}>
+                      <td className="pr-3 font-bold text-[#0b1633]">{r.label}</td>
+                      <td className="w-[30%]">
+                        <Bar value={r.allTime} max={widest} />
+                      </td>
+                      <td className="pl-3 text-right font-black">{fmt(r.allTime)}</td>
+                      <td className="pl-3 text-right font-black text-[#64748b]">{fmt(r.period)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p className="text-sm font-semibold text-[#64748b]">Nothing recorded yet.</p>
+            )}
+          </Card>
+        );
+      })}
+    </div>
+  );
+}
 
 function Stat({ label, value, note }: { label: string; value: string; note?: string }) {
   return (
@@ -2228,6 +2337,56 @@ export default function AnalyticsDashboardView({
                 multiplayer, invites and the accounts they bring in, Feed
                 challenges, coming back. Numbers from lib/clueGameReport.ts; the
                 Features tab keeps its short summary beside the other games. */}
+            {/* Bible Buddy Match (2026-11-22): the simple numbers first (players and
+                boards finished: today, 7 days, 30 days, since launch), where players
+                are on the trail, then everything else folded under More detail.
+                Numbers from lib/matchGameReport.ts. */}
+            {tab === "match" ? (
+              d.matchGame ? (
+                <>
+                  <p className="px-1 text-sm font-semibold text-[#64748b]">
+                    Live since {d.matchGame.launched}.{" "}
+                    <Link href="/bible-study-games/match" className="font-bold text-[#2563eb]">
+                      Open the game →
+                    </Link>
+                  </p>
+                  <HeadlineTable rows={d.matchGame.headline} />
+                  <Card>
+                    <CardTitle icon="🗺️" right={<span className="text-xs font-bold text-[#64748b]">{fmt(d.matchGame.finishedEverything)} finished every board</span>}>
+                      Where players are now
+                    </CardTitle>
+                    {d.matchGame.onBoard.some((b) => b.players) ? (
+                      <table className="w-full border-separate border-spacing-y-1 text-sm">
+                        <tbody>
+                          {d.matchGame.onBoard.map((b) => (
+                            <tr key={b.label}>
+                              <td className="pr-3 font-bold text-[#0b1633]">{b.label}</td>
+                              <td className="w-[45%]">
+                                <Bar value={b.players} max={Math.max(1, ...d.matchGame!.onBoard.map((x) => x.players))} color="#16a34a" />
+                              </td>
+                              <td className="pl-3 text-right font-black">{fmt(b.players)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    ) : (
+                      <p className="text-sm font-semibold text-[#64748b]">Nobody yet: players appear here once they open the latest version of the game.</p>
+                    )}
+                  </Card>
+                  <details className="rounded-2xl">
+                    <summary className="cursor-pointer px-1 py-2 text-sm font-black text-[#2563eb]">More detail (every board, where they play, power-ups, time)</summary>
+                    <div className="mt-2">
+                      <GameDetail sections={d.matchGame.sections} breakdowns={d.matchGame.breakdowns} />
+                    </div>
+                  </details>
+                </>
+              ) : (
+                <Card>
+                  <p className="text-sm font-semibold text-[#64748b]">The Bible Buddy Match numbers did not load this time. Every other tab is unaffected.</p>
+                </Card>
+              )
+            ) : null}
+
             {tab === "clue" ? (
               d.clueGame ? (
                 <>
@@ -2238,6 +2397,10 @@ export default function AnalyticsDashboardView({
                       Open the game →
                     </Link>
                   </p>
+                  <HeadlineTable rows={d.clueGame.headline} />
+                  <details className="rounded-2xl">
+                    <summary className="cursor-pointer px-1 py-2 text-sm font-black text-[#2563eb]">More detail</summary>
+                    <div className="mt-2 space-y-4">
                   {d.clueGame.sections.map((section) => (
                     <Section key={section.key} summary={<SectionSummary icon={section.icon} title={section.title} line={section.line} />}>
                       <div className="hidden lg:block">
@@ -2307,6 +2470,8 @@ export default function AnalyticsDashboardView({
                       </Section>
                     );
                   })}
+                    </div>
+                  </details>
                 </>
               ) : (
                 <Card>

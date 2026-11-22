@@ -9,6 +9,7 @@ import { isOpenNow, startLabelFrom } from "@/lib/studyLibrary";
 import { WELCOME_SEQUENCE } from "@/lib/email/welcomeSequence";
 import { computeNewFeatures, type NewFeaturesReport } from "@/lib/newFeaturesReport";
 import { computeClueGameReport, type ClueGameReport } from "@/lib/clueGameReport";
+import { computeMatchGameReport, type MatchGameReport } from "@/lib/matchGameReport";
 import { POPUP_CATALOG } from "@/lib/popups/catalog";
 import { getCommunityEvent } from "@/lib/communityEvents";
 
@@ -1022,6 +1023,12 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   // says so and every other number on the page still loads.
   const newFeatures: NewFeaturesReport | null = await computeNewFeatures(admin, current).catch((error) => {
     console.error("[DASHBOARD] new features report failed:", error);
+    return null;
+  });
+
+  // ----- Bible Buddy Match (its own tab, lib/matchGameReport.ts) -----
+  const matchGame: MatchGameReport | null = await computeMatchGameReport(admin, current).catch((error) => {
+    console.error("[DASHBOARD] match game report failed:", error);
     return null;
   });
 
@@ -2149,6 +2156,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     content,
     newFeatures,
     clueGame,
+    matchGame,
   };
 }
 

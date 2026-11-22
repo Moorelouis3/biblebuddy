@@ -46,7 +46,8 @@ export type FeatureEventName =
   | "match_board_left"
   | "match_power_made"
   | "match_power_used"
-  | "match_hint";
+  | "match_hint"
+  | "match_session";
 
 /** Where "Add to Bible Memory" was tapped. */
 export type MemorySaveSource = "daily_verse_card" | "daily_verse_popup" | "reader" | "picker" | "word_search";

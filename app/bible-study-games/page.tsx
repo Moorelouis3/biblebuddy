@@ -15,7 +15,6 @@ export default function BibleStudyGamesPage() {
         </p>
       </header>
 
-      {/* Bible Clue is off the live site for now (Louis, 2026-11-22: focus on Bible Buddy Match first; the new Clue will later replace Bible Trivia). Its pages redirect here: app/bible-study-games/clue/layout.tsx. */}
 
       {/* Bible Buddy Match, 2026-11-22: on the page so Louis can test it on different phones. */}
       <Link
@@ -34,6 +33,22 @@ export default function BibleStudyGamesPage() {
           </span>
           <span className="mt-0.5 block text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
             Connect the tiles and walk through Genesis, board by board.
+          </span>
+        </span>
+      </Link>
+
+      {/* Bible Clue (2026-11-22): back on the Games page (Louis: "good enough to have it there"). Trivia, ten questions, ten seconds each. */}
+      <Link
+        href="/bible-study-games/clue?from=games"
+        className="flex items-center gap-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+      >
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-2xl" style={{ backgroundColor: "#1d5a37" }} aria-hidden="true">
+          🃏
+        </span>
+        <span className="min-w-0">
+          <span className="block text-lg font-black text-[var(--bb-text-primary,#111827)]">Bible Clue</span>
+          <span className="mt-0.5 block text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+            Ten questions, ten seconds each. Play solo or with friends.
           </span>
         </span>
       </Link>

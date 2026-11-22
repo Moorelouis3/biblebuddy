@@ -90,6 +90,7 @@ export default function MatchBoard({
   onExit,
   onWin,
   isLastLevel,
+  alreadyWon = false,
 }: {
   level: MatchLevel;
   /** Back to the map (also Continue after a win). */
@@ -97,6 +98,8 @@ export default function MatchBoard({
   /** Called once when the board is won, before the panel shows. */
   onWin: (score: number) => void;
   isLastLevel: boolean;
+  /** This player has won this board before: a win now is a replay (analytics). */
+  alreadyWon?: boolean;
 }) {
   const reduced = useReducedMotion();
   // Tile ids for this board: one object, only ever read and bumped in handlers.
@@ -253,7 +256,7 @@ export default function MatchBoard({
       setScore(finalScore);
       onWin(finalScore);
       writeSavedBoard(null);
-      trackMatch("match_board_won", { board: level.id, number: level.number, title: level.title, score: finalScore, movesLeft });
+      trackMatch("match_board_won", { board: level.id, number: level.number, title: level.title, score: finalScore, movesLeft, movesUsed: level.moves - movesLeft, replay: alreadyWon });
       matchSound.win();
       setOutcome({ won: true, score: finalScore, movesLeft });
     } else if (movesLeft <= 0) {

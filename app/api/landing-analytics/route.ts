@@ -68,6 +68,7 @@ const ALLOWED_EVENTS = new Set([
   "match_power_made",
   "match_power_used",
   "match_hint",
+  "match_session",
   "clue_game_opened",
   "clue_game_started",
   "clue_game_card",
