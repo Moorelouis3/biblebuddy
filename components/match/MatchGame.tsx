@@ -23,6 +23,7 @@ import { supabase } from "@/lib/supabaseClient";
 import MatchBoard from "./MatchBoard";
 import { matchMusicOn, playMatchMusic, setMatchMusicOn, stopMatchMusic } from "@/lib/match/sound";
 import { MATCH_CSS } from "./matchCss";
+import { clueApi } from "@/lib/clueGame/track";
 
 type Progress = { unlocked: number; done: string[]; best: Record<string, number>; travel: boolean };
 const KEY = "bb:match:progress";
@@ -48,17 +49,47 @@ function save(p: Progress) {
 
 type Screen = { name: "home" } | { name: "map" } | { name: "board"; level: MatchLevel };
 
+/** A Bible Buddy on the map: where they are on the trail. */
+export type MapBuddy = { id: string; name: string; avatar: string | null; unlocked: number };
+type Saved = { unlocked: number; done: string[]; best: Record<string, number> };
+
+/** Two saves of the same player, merged so neither goes backwards. */
+function merge(p: Progress, s: Saved | null): Progress {
+  if (!s) return p;
+  const best = { ...p.best };
+  for (const [k, v] of Object.entries(s.best || {})) best[k] = Math.max(best[k] || 0, Number(v) || 0);
+  return { ...p, unlocked: Math.max(p.unlocked, s.unlocked || 1), done: [...new Set([...p.done, ...(s.done || [])])], best };
+}
+
+/** Send progress up (match_progress), so buddies can see where you are. */
+function upload(p: Progress) {
+  void clueApi("/api/match/progress", { method: "POST", body: { unlocked: p.unlocked, done: p.done, best: p.best } });
+}
+
 export default function MatchGame() {
   const [progress, setProgress] = useState<Progress>(START);
   const [ready, setReady] = useState(false);
   const [screen, setScreen] = useState<Screen>({ name: "home" });
   const [avatar, setAvatar] = useState<string | null>(null);
+  const [buddies, setBuddies] = useState<MapBuddy[]>([]);
 
   useEffect(() => {
     const id = window.setTimeout(() => {
       setProgress(load());
       setReady(true);
     }, 0);
+    // The server copy (another phone may be further on), then your buddies'
+    // boards. This phone's own progress goes up too, so an older player who
+    // only ever played on this phone appears to their buddies.
+    void (async () => {
+      const res = await clueApi<{ me: Saved | null; buddies: MapBuddy[] }>("/api/match/progress");
+      if (!res.ok) return;
+      setBuddies(res.data.buddies || []);
+      const merged = merge(load(), res.data.me);
+      save(merged);
+      setProgress((p) => merge(merge(p, res.data.me), { unlocked: merged.unlocked, done: merged.done, best: merged.best }));
+      upload(merged);
+    })();
     void (async () => {
       const { data } = await supabase.auth.getUser();
       const uid = data.user?.id;
@@ -82,10 +113,11 @@ export default function MatchGame() {
     };
   }, []);
 
-  const update = useCallback((fn: (p: Progress) => Progress) => {
+  const update = useCallback((fn: (p: Progress) => Progress, sync = false) => {
     setProgress((p) => {
       const next = fn(p);
       save(next);
+      if (sync) upload(next);
       return next;
     });
   }, []);
@@ -107,6 +139,7 @@ export default function MatchGame() {
         <GenesisMap
           progress={progress}
           avatar={avatar}
+          buddies={buddies}
           onBack={() => setScreen({ name: "home" })}
           onOpen={(level) => setScreen({ name: "board", level })}
           onTravelled={() => update((p) => ({ ...p, travel: false }))}
@@ -127,7 +160,7 @@ export default function MatchGame() {
                 unlocked: unlockNext ? screen.level.number + 1 : p.unlocked,
                 travel: unlockNext ? true : p.travel,
               };
-            })
+            }, true)
           }
           onExit={() => setScreen({ name: "map" })}
         />
@@ -282,12 +315,14 @@ const TRAIL = (() => {
 function GenesisMap({
   progress,
   avatar,
+  buddies,
   onBack,
   onOpen,
   onTravelled,
 }: {
   progress: Progress;
   avatar: string | null;
+  buddies: MapBuddy[];
   onBack: () => void;
   onOpen: (level: MatchLevel) => void;
   onTravelled: () => void;
@@ -402,6 +437,11 @@ function GenesisMap({
               draggable={false}
             />
           ))}
+          {/* Living map (Louis, 2026-11-22): water runs, the sea moves, and the
+              weather changes up the trail: storm, snow, fireflies in turn. */}
+          {Array.from({ length: SEGMENTS }).map((_, i) => (
+            <MapFx key={`fx${i}`} seg={i} />
+          ))}
           {/* The painted path, traced: invisible, the marker walks along it. */}
           <svg className="bbm-map-trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
             <path ref={pathRef} d={TRAIL} fill="none" stroke="none" />
@@ -438,6 +478,27 @@ function GenesisMap({
                   ) : null}
                 </span>
                 {next ? <span className="bbm-playme">Play me!</span> : null}
+                {/* Your Bible Buddies on the board they have reached (Louis: "Jessica finished day 2, we are buddies, I should see her"). */}
+                {(() => {
+                  const here = buddies.filter((b) => Math.min(b.unlocked, MATCH_LEVELS.length) === level.number);
+                  if (!here.length) return null;
+                  return (
+                    <span className="bbm-buddies" aria-label={`${here.map((b) => b.name).join(", ")} ${here.length === 1 ? "is" : "are"} here`}>
+                      {here.slice(0, 3).map((b) => (
+                        <span key={b.id} className="bbm-buddy" title={b.name}>
+                          {b.avatar ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={b.avatar} alt="" />
+                          ) : (
+                            <span>{b.name.charAt(0).toUpperCase()}</span>
+                          )}
+                        </span>
+                      ))}
+                      {here.length > 3 ? <span className="bbm-buddy is-more">+{here.length - 3}</span> : null}
+                      <span className="bbm-buddy-name">{here.length === 1 ? here[0].name : `${here[0].name} +${here.length - 1}`}</span>
+                    </span>
+                  );
+                })()}
                 <span className="bbm-medal-name">{level.title}</span>
                 {progress.best[level.id] ? <span className="bbm-medal-best">Best {progress.best[level.id]}</span> : null}
               </button>
@@ -468,6 +529,36 @@ function GenesisMap({
           <span>Replay any board any time. More boards are coming.</span>
         </div>
       ) : null}
+    </div>
+  );
+}
+
+/**
+ * Motion over one copy of the painted map (positions in percent of that
+ * copy, read off map-phone.webp): the waterfall and the cascade under the
+ * bridge fall, the stream and the sea shimmer, and each stretch of trail has
+ * its own weather in turn (seg 0 is the bottom copy): a storm with rain and
+ * lightning over the clouds, then snow, then fireflies in the garden.
+ * Decoration only: no taps, and nothing moves with reduced motion.
+ */
+function MapFx({ seg }: { seg: number }) {
+  const weather = (["storm", "snow", "fireflies"] as const)[seg % 3];
+  return (
+    <div className="bbm-fx" style={{ top: `${((SEGMENTS - 1 - seg) * 100) / SEGMENTS}%`, height: `${100 / SEGMENTS}%` }} aria-hidden="true">
+      <span className="bbm-fx-fall" style={{ left: "75%", top: "4.2%", width: "11%", height: "8%" }} />
+      <span className="bbm-fx-fall is-small" style={{ left: "58%", top: "42.5%", width: "18%", height: "4.5%" }} />
+      <span className="bbm-fx-shimmer" style={{ left: "55%", top: "48%", width: "40%", height: "11%" }} />
+      <span className="bbm-fx-sea" style={{ left: "18%", top: "81%", width: "82%", height: "13%" }} />
+      {weather === "storm" ? (
+        <>
+          <span className="bbm-fx-rain" style={{ left: "45%", top: "62%", width: "55%", height: "22%" }} />
+          <span className="bbm-fx-bolt" style={{ left: "55%", top: "62%", width: "45%", height: "16%", animationDelay: `${seg * 1.7}s` }} />
+        </>
+      ) : weather === "snow" ? (
+        <span className="bbm-fx-snow" />
+      ) : (
+        <span className="bbm-fx-flies" />
+      )}
     </div>
   );
 }

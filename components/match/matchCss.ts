@@ -297,6 +297,51 @@ html.bb-native.bb-game-screen body::before { display:none !important; }
    there. Every notched or island iPhone needs at least ~50px, so that is the
    floor. The website and Android keep the reported inset. */
 .bbm-board-title.is-xlong h1 { font-size: clamp(15px, calc(var(--w) * .045), 26px) !important; }
+/* Bible Buddies standing at the board they have reached: faces to the right of the coin. */
+.bbm-buddies { position:absolute; left: calc(100% - 6px); top: 4px; display:flex; align-items:center; pointer-events:none; white-space:nowrap; }
+.bbm-buddy { width: 34px; height: 34px; margin-left: -8px; border-radius:999px; overflow:hidden; display:grid; place-items:center; background:#fbeccb; color:#4a2a10 !important; font-weight:900; font-size:14px;
+  box-shadow: 0 0 0 2.5px #fff, 0 0 0 4px #e0a93a, 0 4px 8px rgba(0,0,0,.4); }
+.bbm-buddy:first-child { margin-left:0; }
+.bbm-buddy img { width:100%; height:100%; object-fit:cover; }
+.bbm-buddy.is-more { font-size:11px; }
+.bbm-buddy-name { margin-left:6px; padding: 2px 8px; border-radius:999px; background: rgba(40,24,8,.72); color:#fff3d2 !important; font-size:12px; font-weight:800; }
+/* ---- the living map (MapFx): water, sea, storm, snow, fireflies ---- */
+.bbm-fx { position:absolute; left:0; right:0; z-index:2; pointer-events:none; overflow:hidden; }
+.bbm-fx > span { position:absolute; display:block; pointer-events:none; }
+/* Falling water: bright streaks sliding down, soft at the edges. */
+.bbm-fx-fall { background: repeating-linear-gradient(180deg, rgba(255,255,255,0) 0 9px, rgba(235,250,255,.7) 9px 13px, rgba(255,255,255,0) 13px 24px);
+  background-size: 100% 48px; animation: bbm-fall .55s linear infinite; mix-blend-mode: screen; opacity:.75;
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 55%, transparent 100%); mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 55%, transparent 100%); }
+.bbm-fx-fall.is-small { background-size: 100% 30px; animation-duration: .45s; opacity:.6; }
+@keyframes bbm-fall { from { background-position: 0 0; } to { background-position: 0 48px; } }
+/* The stream and the sea: a light band drifting across the water. */
+.bbm-fx-shimmer, .bbm-fx-sea { background: linear-gradient(100deg, transparent 0 35%, rgba(255,255,255,.35) 45%, transparent 55% 100%); background-size: 250% 100%;
+  mix-blend-mode: screen; animation: bbm-shimmer 4.5s ease-in-out infinite;
+  -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 40%, transparent 100%); mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 40%, transparent 100%); }
+.bbm-fx-sea { animation-duration: 6s; background: linear-gradient(95deg, transparent 0 30%, rgba(255,240,210,.32) 42%, rgba(255,255,255,.4) 48%, transparent 60% 100%); background-size: 220% 100%; }
+@keyframes bbm-shimmer { from { background-position: 120% 0; } to { background-position: -20% 0; } }
+/* Rain from the storm clouds, and now and then a lightning flash. */
+.bbm-fx-rain { background: repeating-linear-gradient(105deg, transparent 0 14px, rgba(210,225,255,.55) 14px 15px, transparent 15px 28px); background-size: 56px 56px;
+  animation: bbm-rain .35s linear infinite; opacity:.7;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 25%, #000 70%, transparent); mask-image: linear-gradient(180deg, transparent, #000 25%, #000 70%, transparent); }
+@keyframes bbm-rain { from { background-position: 0 0; } to { background-position: -15px 56px; } }
+.bbm-fx-bolt { background: radial-gradient(ellipse 45% 55% at 55% 40%, rgba(255,255,255,.95), rgba(200,220,255,.5) 40%, transparent 70%); mix-blend-mode: screen; opacity:0; animation: bbm-bolt 7s linear infinite; }
+@keyframes bbm-bolt { 0%, 88%, 100% { opacity:0; } 89% { opacity:.9; } 90% { opacity:.15; } 91% { opacity:.75; } 93% { opacity:0; } }
+/* Snow over the whole stretch. */
+.bbm-fx-snow { inset:0; background-image:
+    radial-gradient(2.5px 2.5px at 10% 20%, #fff 60%, transparent), radial-gradient(2px 2px at 30% 60%, #fff 60%, transparent),
+    radial-gradient(3px 3px at 55% 35%, #fff 60%, transparent), radial-gradient(2px 2px at 75% 75%, #fff 60%, transparent),
+    radial-gradient(2.5px 2.5px at 90% 15%, #fff 60%, transparent), radial-gradient(2px 2px at 45% 90%, #fff 60%, transparent);
+  background-size: 160px 220px; animation: bbm-snow 9s linear infinite; opacity:.85; }
+@keyframes bbm-snow { from { background-position: 0 0; } to { background-position: 40px 220px; } }
+/* Fireflies: warm dots drifting and blinking. */
+.bbm-fx-flies { inset:0; background-image:
+    radial-gradient(3px 3px at 15% 30%, #fff3a0, rgba(255,220,90,.6) 50%, transparent), radial-gradient(3px 3px at 62% 18%, #fff3a0, rgba(255,220,90,.6) 50%, transparent),
+    radial-gradient(2.5px 2.5px at 40% 70%, #fff3a0, rgba(255,220,90,.6) 50%, transparent), radial-gradient(3px 3px at 85% 55%, #fff3a0, rgba(255,220,90,.6) 50%, transparent);
+  background-size: 190px 240px; animation: bbm-flies 7s ease-in-out infinite alternate, bbm-blink 2.2s ease-in-out infinite alternate; }
+@keyframes bbm-flies { from { background-position: 0 0; } to { background-position: 30px -40px; } }
+@keyframes bbm-blink { from { opacity:.35; } to { opacity:1; } }
+@media (prefers-reduced-motion: reduce) { .bbm-fx > span { animation: none !important; } .bbm-fx-bolt { display:none; } }
 /* Boards from the Drive board folders bring their own phone and desktop art. */
 .bbm-board.has-art .bbm-board-bg { background-image: var(--bg-phone); background-color:#1a1410; }
 @media (min-aspect-ratio: 1/1) { .bbm-board.has-art .bbm-board-bg { background-image: var(--bg-desktop); } }
