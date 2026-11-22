@@ -124,7 +124,10 @@ export async function createRoom(admin: SupabaseClient, host: ClueUser, deckIds:
   for (let attempt = 0; attempt < 6; attempt += 1) {
     const code = newCode();
     const { error } = await admin.from("clue_rooms").insert({ code, host_id: host.id, deck_ids: decks });
-    if (error) continue; // code taken: try another
+    if (error) {
+      if (error.code === "23505") continue; // code taken: try another
+      throw new Error(`Could not create a room (${error.message}).`);
+    }
     await admin.from("clue_room_players").insert({ room_code: code, user_id: host.id, display_name: host.name, avatar_url: host.avatar });
     return code;
   }

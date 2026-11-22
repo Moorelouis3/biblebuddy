@@ -27,12 +27,18 @@ export async function clueAuthHeaders(): Promise<Record<string, string>> {
 }
 
 export async function clueApi<T>(path: string, init: { method?: string; body?: unknown } = {}): Promise<{ ok: boolean; status: number; data: T }> {
-  const res = await fetch(`${window.location.origin}${path}`, {
-    method: init.method || "GET",
-    headers: await clueAuthHeaders(),
-    body: init.body === undefined ? undefined : JSON.stringify(init.body),
-    cache: "no-store",
-  });
+  let res: Response;
+  try {
+    res = await fetch(`${window.location.origin}${path}`, {
+      method: init.method || "GET",
+      headers: await clueAuthHeaders(),
+      body: init.body === undefined ? undefined : JSON.stringify(init.body),
+      cache: "no-store",
+    });
+  } catch {
+    // Offline or the request never left the phone: say so instead of hanging.
+    return { ok: false, status: 0, data: { error: "No connection." } as T };
+  }
   const data = (await res.json().catch(() => ({}))) as T;
   return { ok: res.ok, status: res.status, data };
 }

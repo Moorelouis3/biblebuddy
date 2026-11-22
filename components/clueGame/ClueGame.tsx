@@ -84,7 +84,7 @@ function HowToPlay({ onBack }: { onBack: () => void }) {
 
 /* ---------- Choose Your Deck ---------- */
 
-function DeckPicker({ onStart, startLabel }: { onStart: (deckIds: string[]) => void; startLabel: string }) {
+function DeckPicker({ onStart, startLabel, busy, error }: { onStart: (deckIds: string[]) => void; startLabel: string; busy?: boolean; error?: string | null }) {
   const [tab, setTab] = useState<"old" | "new">("old");
   const [selected, setSelected] = useState<string[]>(["genesis"]);
   const decks = CLUE_DECKS.filter((d) => d.testament === tab);
@@ -125,9 +125,14 @@ function DeckPicker({ onStart, startLabel }: { onStart: (deckIds: string[]) => v
       <p className="mt-3 text-center text-[13px] font-bold opacity-75">
         {selected.length ? `${deckLabel(selected)} selected · 10 rounds a game` : "Pick a deck"}
       </p>
-      <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big mt-3" disabled={!selected.length} onClick={() => onStart(selected)}>
+      <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big mt-3" disabled={!selected.length || busy} onClick={() => onStart(selected)}>
         {startLabel}
       </button>
+      {error ? (
+        <p className="mt-3 rounded-xl px-3 py-2 text-center text-[14px] font-bold" style={{ background: "#fde2dc", color: "#8a1f12" }} role="alert">
+          {error}
+        </p>
+      ) : null}
     </div>
   );
 }
@@ -263,20 +268,39 @@ function Multiplayer({ onBack }: { onBack: () => void }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  /**
+   * Create the room. A failure used to leave the button looking dead (the
+   * error was never shown on this screen; Louis, 2026-11-22). Now: an expired
+   * sign-in is refreshed and tried once more, the reason is shown under the
+   * button, and every failure is logged so it can be seen from the admin side.
+   */
   const host = async (deckIds: string[]) => {
+    if (busy) return;
     setBusy(true);
     setError(null);
-    const res = await clueApi<{ code?: string; error?: string }>("/api/clue-game/rooms", { method: "POST", body: { deckIds } });
+    const create = () => clueApi<{ code?: string; error?: string }>("/api/clue-game/rooms", { method: "POST", body: { deckIds } });
+    let res = await create();
+    if (res.status === 401) {
+      await supabase.auth.refreshSession().catch(() => null);
+      res = await create();
+    }
     if (res.ok && res.data.code) {
       trackClue("clue_game_room_created", { decks: deckIds });
       router.push(`/bible-study-games/clue/room/${res.data.code}`);
-    } else {
-      setError(res.data.error || "Could not create a room.");
-      setBusy(false);
+      return;
     }
+    const message =
+      res.status === 401
+        ? "You are signed out. Sign in again, then tap Create Room."
+        : res.status === 0
+          ? "No connection. Check your internet and tap Create Room again."
+          : res.data.error || "Could not create a room. Tap Create Room to try again.";
+    trackClue("clue_game_room_failed", { status: res.status, error: String(res.data.error || "").slice(0, 160) });
+    setError(message);
+    setBusy(false);
   };
 
-  if (step === "host") return <DeckPicker startLabel={busy ? "Creating room…" : "Create Room"} onStart={host} />;
+  if (step === "host") return <DeckPicker startLabel={busy ? "Creating room…" : "Create Room"} onStart={host} busy={busy} error={error} />;
   return (
     <div className="bb-clue-panel bb-clue-parchment">
       {step === "choose" ? (
