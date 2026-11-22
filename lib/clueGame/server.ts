@@ -54,10 +54,10 @@ export async function clueUserFrom(request: Request, admin = clueAdmin()): Promi
 
 /**
  * Players per room (Louis, 2026-11-22: "I don't want it to be too many
- * people where it's so much chaos"). Six fits round the table and keeps the
- * answer list readable on a phone. One number to change.
+ * people where it's so much chaos"). Four for now: you at the bottom, three
+ * across the top. One number to change.
  */
-export const MAX_ROOM_PLAYERS = 6;
+export const MAX_ROOM_PLAYERS = 4;
 
 // No 0/O, 1/I/L: a code read aloud across a room has to survive.
 const CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
