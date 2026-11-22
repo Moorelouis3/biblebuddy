@@ -10,7 +10,7 @@
  * motion the same order runs with short pauses and no movement.
  */
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import {
   canExtend,
@@ -89,7 +89,7 @@ export default function MatchBoard({
   // Timings (ms). Reduced motion keeps the order and drops the movement.
   const T = useMemo(() => (reduced ? { flash: 120, pop: 60, fall: 80, between: 40 } : { flash: 240, pop: 220, fall: 340, between: 60 }), [reduced]);
 
-  const restart = useCallback(() => {
+  const restart = () => {
     setBoard(createBoard(level.types, Math.random, ids.current));
     setMoves(level.moves);
     setCollected({});
@@ -102,10 +102,9 @@ export default function MatchBoard({
     setDark(!!level.startsDark);
     setOutcome(null);
     setSeed((s) => s + 1);
-  }, [level]);
+  };
 
-  const play = useCallback(
-    async (drawn: Pos[]) => {
+  const play = async (drawn: Pos[]) => {
       if (busy || outcome) return;
       const before = boardRef.current;
       const res = playLine(before, drawn, level.types, Math.random, ids.current);
@@ -164,9 +163,7 @@ export default function MatchBoard({
         matchSound.lose();
         setOutcome({ won: false, score: total, movesLeft: 0 });
       }
-    },
-    [busy, outcome, level, moves, collected, score, dark, T, reduced, onWin, ids],
-  );
+  };
 
   // ---- input: drag a line (finger or mouse) ----
   const gridRef = useRef<HTMLDivElement | null>(null);
