@@ -234,18 +234,19 @@ html.bb-game-screen :is(.bb-bottom-pill, .bb-safe-top-header, .bb-report-problem
   .bbm-board[data-level="creation"] .bbm-board-bg { background-image: url(/games/match/ui/creation-desktop.webp); }
   .bbm-board[data-level="eden"] .bbm-board-bg { background-image: url(/games/match/ui/eden-desktop.webp); }
 }
-.bbm-board-title { box-shadow:none; border-radius:0; padding: 0 18%; aspect-ratio: 1000 / 280; display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box;
+.bbm-board-title { box-shadow:none; border-radius:0; padding: 0 20%; aspect-ratio: 1000 / 280; width: calc(var(--w) * .82) !important; display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box;
   background: url(/games/match/ui/board-title-plaque.webp) center / 100% 100% no-repeat; width: calc(var(--w) * .86); }
-.bbm-board-title h1 { color:#4a2a10 !important; text-shadow: 0 1px 0 rgba(255,240,200,.6); }
-.bbm-hud { box-shadow:none; border-radius:0; aspect-ratio: 1200 / 220; padding: 0 15%; background: url(/games/match/ui/goal-bar.webp) center / 100% 100% no-repeat; }
+.bbm-board-title h1 { color:#4a2a10 !important; text-shadow: 0 1px 0 rgba(255,240,200,.6); white-space:nowrap; font-size: clamp(22px, calc(var(--w) * .075), 40px) !important; }
+.bbm-board-title p { white-space:nowrap; font-size: clamp(11px, calc(var(--w) * .03), 16px) !important; }
+.bbm-hud { box-shadow:none; border-radius:0; aspect-ratio: 1200 / 220; padding: 0 13%; justify-content:center; background: url(/games/match/ui/goal-bar.webp) center / 100% 100% no-repeat; }
 .bbm-hud-sep { background: rgba(160,110,40,.55); margin: 14% 0; }
 /* A thin gold rim, one piece with the board (Louis: the heavy frame looked separate). */
 .bbm-gridframe { padding: 5px; border-radius: 16px; background: linear-gradient(160deg, #ffe9a6, #d9a23a 40%, #f6d27a 60%, #b07a20); box-shadow: 0 10px 22px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.5); }
-.bbm-board { --size: min(100vw - 34px, 100dvh - 300px, 520px); --w: calc(var(--size) + 10px); }
-.bbm-grid { border-radius: 12px; background: #0e1834; }
+.bbm-board { --size: min(100vw - 34px, 100dvh - 285px, 560px); --w: calc(var(--size) + 10px); }
+.bbm-grid { border-radius: 12px; background: #13214a; }
 .bbm-board[data-level="eden"] .bbm-grid { background: #0f2a17; }
-.bbm-socket::before { background: url(/games/match/ui/tile-socket-navy.webp) center / 100% 100% no-repeat; box-shadow:none; border-radius:0; }
-.bbm-board[data-level="eden"] .bbm-socket::before { background-image: url(/games/match/ui/tile-socket-green.webp); }
+.bbm-socket::before { background: #1e2f60; border-radius: 12%; box-shadow: inset 0 2px 6px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.05); }
+.bbm-board[data-level="eden"] .bbm-socket::before { background: #234f2a; }
 .bbm-mapbtn { width: calc(var(--w) * .34); aspect-ratio: 500 / 170; padding:0; border-radius:0; box-shadow:none; font-size:0; color: transparent !important; filter: drop-shadow(0 6px 10px rgba(0,0,0,.35));
   background: url(/games/match/ui/map-button.webp) center / 100% 100% no-repeat; }
 .bbm-mapbtn span { display:none; }
@@ -261,4 +262,29 @@ html.bb-game-screen :is(.bb-bottom-pill, .bb-safe-top-header, .bb-report-problem
 @media (prefers-reduced-motion: reduce) {
   .bbm-home-buddy, .bbm-marker.is-walking, .bbm-medal.is-arrived .bbm-medal-coin, .bbm-hud-count.is-low { animation: none !important; }
 }
+
+/* goal bar fit (Louis, 2026-11-22): every goal readable, nothing overlapping */
+.bbm-hud { width: calc(var(--w) * 1.16) !important; max-width: 98vw; padding: 0 calc(var(--w) * .19) !important; gap: 10px !important; box-sizing: border-box; }
+.bbm-hud-goals { flex: 1 1 auto; min-width: 0; }
+.bbm-hud-goalrow { justify-content: space-evenly !important; gap: 4px !important; }
+.bbm-goal { gap: 1px !important; font-size: clamp(13px, calc(var(--w) * .036), 20px) !important; white-space: nowrap; }
+.bbm-goal img { width: clamp(22px, calc(var(--w) * .058), 34px) !important; height: clamp(22px, calc(var(--w) * .058), 34px) !important; }
+.bbm-hud-count { font-size: clamp(18px, calc(var(--w) * .05), 26px) !important; min-width: 0 !important; padding: 0 10px !important; }
+.bbm-hud-label { font-size: clamp(10px, calc(var(--w) * .026), 14px) !important; }
+.bbm-board { padding-top: calc(16px + env(safe-area-inset-top)) !important; }
+
+/* Tiles break apart when cleared (Louis, 2026-11-22) */
+.bbm-shard { position:absolute; inset: calc(var(--cell) * 0.05); pointer-events:none; z-index:7; }
+.bbm-shard img { width:100%; height:100%; object-fit:contain; }
+.bbm-shard.s0 { clip-path: polygon(0 0, 55% 0, 45% 50%, 0 60%); --tx: -60%; --ty: -70%; --rot: -40deg; }
+.bbm-shard.s1 { clip-path: polygon(55% 0, 100% 0, 100% 55%, 45% 50%); --tx: 65%; --ty: -60%; --rot: 35deg; }
+.bbm-shard.s2 { clip-path: polygon(0 60%, 45% 50%, 50% 100%, 0 100%); --tx: -55%; --ty: 75%; --rot: 30deg; }
+.bbm-shard.s3 { clip-path: polygon(45% 50%, 100% 55%, 100% 100%, 50% 100%); --tx: 60%; --ty: 70%; --rot: -35deg; }
+.bbm-tile.is-pop .bbm-shard { animation: bbm-shatter .42s cubic-bezier(.2,.7,.4,1) forwards; }
+@keyframes bbm-shatter { 0% { transform: none; opacity:1; } 25% { opacity:1; } 100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(.55); opacity:0; } }
+.bbm-tile.is-pop > img, .bbm-tile.is-pop > .bbm-orb { animation: none !important; opacity: 0; }
+.bbm-spark { position:absolute; left:50%; top:50%; width: 6px; height: 6px; margin:-3px; border-radius:999px; background:#fff4b8; box-shadow: 0 0 8px 2px rgba(255,214,90,.9); pointer-events:none; z-index:8;
+  animation: bbm-spark-fly .45s ease-out forwards; }
+@keyframes bbm-spark-fly { from { transform: translate(0,0) scale(1); opacity:1; } to { transform: translate(var(--sx), var(--sy)) scale(.2); opacity:0; } }
+.bbm-grid.is-reduced .bbm-shard, .bbm-grid.is-reduced .bbm-spark { display:none; }
 `;

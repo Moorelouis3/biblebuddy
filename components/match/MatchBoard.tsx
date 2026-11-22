@@ -125,6 +125,7 @@ export default function MatchBoard({
         if (step.orbType) matchSound.orb();
         else if (step.beams.length) matchSound.beam();
         else matchSound.match(Math.min(6, drawn.length - MIN_LINE));
+        matchSound.crack();
         await sleep(T.flash);
         setPopping(clearedIds);
         await sleep(T.pop);
@@ -326,6 +327,25 @@ export default function MatchBoard({
                   <>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={tileArt(tile.type)} alt="" draggable={false} />
+                    {/* Clearing: the tile breaks into four pieces that fly off, with sparks. */}
+                    {popping.has(tile.id) ? (
+                      <>
+                        {[0, 1, 2, 3].map((k) => (
+                          <span key={`s${k}`} className={`bbm-shard s${k}`} aria-hidden="true">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={tileArt(tile.type)} alt="" draggable={false} />
+                          </span>
+                        ))}
+                        {[0, 1, 2, 3, 4, 5].map((k) => (
+                          <span
+                            key={`p${k}`}
+                            className="bbm-spark"
+                            style={{ ["--sx" as string]: `${Math.round(Math.cos((k / 6) * Math.PI * 2 + tile.id) * 34)}px`, ["--sy" as string]: `${Math.round(Math.sin((k / 6) * Math.PI * 2 + tile.id) * 34)}px` } as React.CSSProperties}
+                            aria-hidden="true"
+                          />
+                        ))}
+                      </>
+                    ) : null}
                     {tile.power === "light" ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img className="bbm-light-badge" src={tileArt("light-power-up")} alt="" draggable={false} />

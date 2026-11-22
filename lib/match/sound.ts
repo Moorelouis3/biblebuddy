@@ -78,6 +78,24 @@ export const matchSound = {
     tone(196, 0.09, 0.12, "square", 0.04);
   },
   /** Each clear in a cascade climbs a note. */
+  /** The tiles breaking apart: a short bright crackle. */
+  crack: () => {
+    const a = audio();
+    if (!a) return;
+    const len = Math.floor(a.sampleRate * 0.18);
+    const buf = a.createBuffer(1, len, a.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let i = 0; i < len; i += 1) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3);
+    const src = a.createBufferSource();
+    src.buffer = buf;
+    const hp = a.createBiquadFilter();
+    hp.type = "highpass";
+    hp.frequency.value = 1800;
+    const g = a.createGain();
+    g.gain.value = 0.18;
+    src.connect(hp).connect(g).connect(a.destination);
+    src.start();
+  },
   match: (step: number) => {
     const n = SCALE[Math.min(step, SCALE.length - 1)];
     tone(n, 0, 0.18, "sine", 0.1);
