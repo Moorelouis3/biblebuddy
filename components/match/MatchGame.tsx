@@ -21,6 +21,7 @@ import Link from "next/link";
 import { MATCH_LEVELS, type MatchLevel } from "@/lib/match/engine";
 import { supabase } from "@/lib/supabaseClient";
 import MatchBoard from "./MatchBoard";
+import { matchMusicOn, playMatchMusic, setMatchMusicOn, stopMatchMusic } from "@/lib/match/sound";
 import { MATCH_CSS } from "./matchCss";
 
 type Progress = { unlocked: number; done: string[]; best: Record<string, number>; travel: boolean };
@@ -82,6 +83,11 @@ export default function MatchGame() {
     });
   }, []);
 
+  // A different song for each place: the trail (home and map), Creation, Eden.
+  const scene = screen.name === "board" ? screen.level.id : "trail";
+  useEffect(() => playMatchMusic(scene), [scene]);
+  useEffect(() => () => stopMatchMusic(), []);
+
   const latest = MATCH_LEVELS[Math.min(progress.unlocked, MATCH_LEVELS.length) - 1];
   const allDone = MATCH_LEVELS.every((l) => progress.done.includes(l.id));
 
@@ -134,10 +140,12 @@ export default function MatchGame() {
 function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; ready: boolean }) {
   const [settings, setSettings] = useState(false);
   const [sound, setSound] = useState(true);
+  const [music, setMusic] = useState(true);
   useEffect(() => {
     const id = window.setTimeout(() => {
       try {
         setSound(window.localStorage.getItem("bb:clue-sound") !== "off");
+        setMusic(matchMusicOn());
       } catch {}
     }, 0);
     return () => window.clearTimeout(id);
@@ -189,8 +197,18 @@ function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; rea
         <div className="bbm-panelwrap" role="dialog" aria-modal="true" onClick={() => setSettings(false)}>
           <div className="bbm-panel" onClick={(e) => e.stopPropagation()}>
             <h2>Settings</h2>
+            <button
+              type="button"
+              className="bbm-btn-cream"
+              onClick={() => {
+                setMatchMusicOn(!music);
+                setMusic(!music);
+              }}
+            >
+              Music: {music ? "On" : "Off"}
+            </button>
             <button type="button" className="bbm-btn-cream" onClick={toggleSound}>
-              Sound: {sound ? "On" : "Off"}
+              Sound effects: {sound ? "On" : "Off"}
             </button>
             <button type="button" className="bbm-btn-green" onClick={() => setSettings(false)}>
               Done

@@ -1,5 +1,7 @@
 "use client";
 
+import { BIBLE_READING_BACKGROUND_TRACKS, bibleReadingBackgroundVolumeFor } from "@/lib/bibleReadingBackgroundMusic";
+
 /**
  * Bible Buddy Match sounds, synthesised with Web Audio (no files to load):
  * a soft swap, a "nope" for a swap that does nothing, rising chimes for each
@@ -95,3 +97,71 @@ export const matchSound = {
   /** Each tile added to a line plays the next note up. */
   link: (n: number) => tone(SCALE[Math.min(n, SCALE.length - 1)] * (n >= SCALE.length ? 1.5 : 1), 0, 0.09, "sine", 0.06),
 };
+
+/* ---------- music: a different song per board ---------- */
+
+/**
+ * Louis, 2026-11-22: "we need music on this game also, different songs for
+ * different boards". The same five calm tracks the Bible in One Year
+ * narration uses, one per place: the trail (home and map), Creation, Eden.
+ * Each at its own measured gain (lib/bibleReadingBackgroundMusic.ts), lifted
+ * a little because there is no narrator. Music has its own switch
+ * (bb:clue-music, shared with Bible Clue) and starts on the first tap.
+ */
+const SCENE_TRACK: Record<string, string> = {
+  trail: BIBLE_READING_BACKGROUND_TRACKS[1],
+  creation: BIBLE_READING_BACKGROUND_TRACKS[0],
+  eden: BIBLE_READING_BACKGROUND_TRACKS[2],
+};
+let musicEl: HTMLAudioElement | null = null;
+let musicScene = "";
+
+export function matchMusicOn(): boolean {
+  try {
+    return window.localStorage.getItem("bb:clue-music") !== "off";
+  } catch {
+    return true;
+  }
+}
+
+function startScene() {
+  if (typeof window === "undefined" || !musicScene || !matchMusicOn()) return;
+  const src = SCENE_TRACK[musicScene] || SCENE_TRACK.trail;
+  if (!musicEl || !musicEl.src.endsWith(src)) {
+    musicEl?.pause();
+    musicEl = new Audio(src);
+    musicEl.loop = true;
+    musicEl.volume = Math.min(0.3, bibleReadingBackgroundVolumeFor(src) * 2.5);
+  }
+  void musicEl.play().catch(() => {
+    // Waiting for the first tap.
+  });
+}
+
+/** Play the song for a place ("trail", "creation", "eden"); returns a stop function. */
+export function playMatchMusic(scene: string) {
+  if (typeof window === "undefined") return () => {};
+  musicScene = scene;
+  startScene();
+  const onTap = () => startScene();
+  window.addEventListener("pointerdown", onTap);
+  return () => {
+    window.removeEventListener("pointerdown", onTap);
+    if (musicScene === scene) musicScene = "";
+    // Leave it to the next scene to switch tracks; stop only when leaving the game.
+  };
+}
+
+export function stopMatchMusic() {
+  musicScene = "";
+  musicEl?.pause();
+  musicEl = null;
+}
+
+export function setMatchMusicOn(on: boolean) {
+  try {
+    window.localStorage.setItem("bb:clue-music", on ? "on" : "off");
+  } catch {}
+  if (on) startScene();
+  else musicEl?.pause();
+}
