@@ -168,6 +168,28 @@ export default function ClueTable({
     };
   }, []);
 
+  // New answers float up for a few seconds, then fade.
+  const [answerToasts, setAnswerToasts] = useState<Array<{ key: string; a: PublicMatch["roundAnswers"][number] }>>([]);
+  const seenAnswers = useRef({ dealt: view.dealt, count: view.roundAnswers.length });
+  useEffect(() => {
+    const seen = seenAnswers.current;
+    if (seen.dealt !== view.dealt) {
+      seen.dealt = view.dealt;
+      seen.count = 0;
+    }
+    const fresh = view.roundAnswers.slice(seen.count);
+    seen.count = view.roundAnswers.length;
+    if (!fresh.length) return;
+    const items = fresh.map((a, i) => ({ key: `${view.dealt}-${a.playerId}-${a.clueIndex}-${seen.count + i}`, a }));
+    const id = window.setTimeout(() => setAnswerToasts((list) => [...list, ...items].slice(-3)), 0);
+    const gone = window.setTimeout(() => setAnswerToasts((list) => list.filter((t) => !items.some((n) => n.key === t.key))), 3200);
+    return () => {
+      window.clearTimeout(id);
+      // Let the fade finish even when the view refreshes.
+      void gone;
+    };
+  }, [view.roundAnswers, view.dealt]);
+
   // Quiet music while you are at the table (stops when you leave it).
   useEffect(() => startClueMusic(), []);
 
@@ -307,17 +329,22 @@ export default function ClueTable({
     const vv = window.visualViewport;
     const el = boardRef.current;
     if (!vv || !el) return;
+    // Only when the keyboard opens or closes (the visible height really
+    // changes). Reacting to every scroll made the iPhone flash on each key
+    // press (Louis, 2026-11-22): iOS nudges the page as you type and the two
+    // fought. The page goes back to the top only when the keyboard closes.
+    let last = 0;
     const fit = () => {
-      el.style.setProperty("--vvh", `${Math.round(vv.height)}px`);
-      if (window.scrollY !== 0 || document.documentElement.scrollTop !== 0) window.scrollTo(0, 0);
+      const h = Math.round(vv.height);
+      if (Math.abs(h - last) < 40) return;
+      const closed = h > last;
+      last = h;
+      el.style.setProperty("--vvh", `${h}px`);
+      if (closed && window.scrollY !== 0) window.scrollTo(0, 0);
     };
     fit();
     vv.addEventListener("resize", fit);
-    vv.addEventListener("scroll", fit);
-    return () => {
-      vv.removeEventListener("resize", fit);
-      vv.removeEventListener("scroll", fit);
-    };
+    return () => vv.removeEventListener("resize", fit);
   }, []);
 
   const currentClue = round && view.phase === "clue" ? round.shownClues[round.clueIndex] : "";
@@ -390,13 +417,13 @@ export default function ClueTable({
 
       {/* The scenery stays visible here; the answers float over it */}
       {overlay ? null : <div className="bb-cb-gap">
-        {/* Everyone's answers, with times: only with other players (Louis:
-            on your own "it don't need to show each try"). */}
-        {view.roundAnswers.length && !inIntro && !overlay && players.length > 1 ? (
-          <div className="bb-cb-answers bb-clue-answers">
+        {/* Each answer pops up for a moment and fades away (Louis, 2026-11-22:
+            "floating, and disappear, not sit there"). Only with other players. */}
+        {answerToasts.length && !inIntro && !overlay && players.length > 1 ? (
+          <div className="bb-cb-answers bb-clue-answers is-floating" aria-live="polite">
             <ol>
-              {view.roundAnswers.slice(-3).map((a, i) => (
-                <li key={`${a.playerId}-${a.clueIndex}-${i}`} className={a.right ? "is-right" : "is-wrong"}>
+              {answerToasts.map(({ key, a }) => (
+                <li key={key} className={a.right ? "is-right" : "is-wrong"}>
                   <span className="bb-clue-answers-name">{nameOf(a.playerId)}</span>
                   <span className="bb-clue-answers-time">{a.seconds.toFixed(1)}s</span>
                   <span className="bb-clue-answers-guess">{a.skipped ? "Skipped" : `“${a.guess}”`}</span>
@@ -580,8 +607,10 @@ export default function ClueTable({
           {/* One button (Louis, 2026-11-22: the Wait button goes away): with
               something typed it guesses; with the box empty it skips this clue
               for 0 points, counted as the clue's full time. */}
-          {guess.trim() ? (
-            <button type="submit" className="bb-cb-guess" disabled={!canGuess}>
+          {/* Multiplayer has no Skip (Louis, 2026-11-22): it only made you wait
+              for everyone else. Solo keeps it. */}
+          {guess.trim() || players.length > 1 ? (
+            <button type="submit" className="bb-cb-guess" disabled={!canGuess || !guess.trim()}>
               Guess
             </button>
           ) : (

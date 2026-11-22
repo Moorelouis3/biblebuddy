@@ -641,6 +641,11 @@ html:is(.bb-in-game, .bb-game-screen) :is(.bb-bottom-pill, .bb-safe-top-header, 
 .bb-cb-other.is-docked .bb-cb-namepill, .bb-cb-mechip.is-docked .bb-cb-mepill { animation: bb-clue-shake .5s ease-in-out both; }
 .bb-cb-gap { flex: 1 1 0; min-height: 0; display:flex; flex-direction:column; justify-content:flex-end; padding-bottom: 8px; }
 .bb-cb-answers { margin: 0 auto; width: min(100%, 460px); padding: 6px 8px !important; border-top:0 !important; border-radius:14px; background: rgba(255,248,232,.92); box-shadow: 0 0 0 1.5px #d9a843, 0 8px 18px rgba(0,0,0,.25); color:#2a1a0c; }
+.bb-cb-answers.is-floating { position:absolute; left:50%; top: 22%; transform: translateX(-50%); z-index:9; width: min(92%, 440px); pointer-events:none; background: none !important; box-shadow:none !important; padding:0 !important; }
+.bb-cb-answers.is-floating ol { gap:6px; max-height:none; overflow:visible; }
+.bb-cb-answers.is-floating li { border-radius:999px; background:#fff8e8 !important; box-shadow: 0 0 0 1.5px #d9a843, 0 8px 16px rgba(0,0,0,.25); padding: 5px 12px !important; }
+.bb-cb-answers.is-floating li { animation: bb-ans-float 3.2s ease-out forwards; }
+@keyframes bb-ans-float { 0% { opacity:0; transform: translateY(14px) scale(.96); } 10% { opacity:1; transform:none; } 75% { opacity:1; transform: translateY(-4px); } 100% { opacity:0; transform: translateY(-16px); } }
 .bb-cb-answers li { font-size: 13px !important; padding: 3px 6px !important; }
 .bb-cb-play { display:grid; grid-template-columns: minmax(0, 21fr) minmax(0, 60fr) minmax(0, 19fr); align-items:center; gap: clamp(6px, 2vw, 14px); position:relative; z-index:4; }
 /* The card in play on the left, the deck on the right (Louis, 2026-11-22). */

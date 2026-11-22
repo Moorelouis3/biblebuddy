@@ -77,6 +77,8 @@ const ALLOWED_EVENTS = new Set([
   // opened - often by someone with no account yet, so user_id can be null.
   "clue_game_invite_shared",
   "clue_game_invite_opened",
+  // A Create Room that failed, with the status and reason, so it can be diagnosed.
+  "clue_game_room_failed",
   // One-time "It starts today" popup for members who have not started (Oct 1+).
   "proverbs_launch_popup_impression",
   "proverbs_launch_popup_dismissed",
