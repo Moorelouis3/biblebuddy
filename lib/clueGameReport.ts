@@ -25,7 +25,7 @@
  */
 
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { headlineRow, people, type MatchHeadline } from "./matchGameReport";
+import { headlineRow, people, rankPlayers, withNames, type ActivePlayer, type MatchHeadline } from "./matchGameReport";
 
 export type ClueRange = { start: Date; end: Date };
 
@@ -52,6 +52,8 @@ export type ClueGameReport = {
   launched: string;
   /** The simple view (Louis, 2026-11-22: the full tab was "too hard to understand"): today, 7 days, 30 days, since launch. */
   headline: MatchHeadline[];
+  /** Most active first: a = games finished, b = games played. */
+  players: ActivePlayer[];
   sections: Array<{ key: string; icon: string; title: string; line: string; figures: ClueFigure[] }>;
   breakdowns: Array<{ title: string; rows: Array<{ label: string; allTime: number; period: number }> }>;
 };
@@ -249,6 +251,7 @@ export function summariseClueGame(input: ClueGameInput, range: ClueRange): ClueG
   return {
     launched: LAUNCHED,
     headline,
+    players: rankPlayers(input.events, { a: "clue_game_finished", b: "clue_game_started" }),
     sections: [
       {
         key: "reach",
@@ -356,5 +359,7 @@ export async function computeClueGameReport(admin: SupabaseClient, range: ClueRa
       "user_id",
     ),
   ]);
-  return summariseClueGame({ events, rooms, roomPlayers, challenges, attempts, inviteSignups }, range);
+  const report = summariseClueGame({ events, rooms, roomPlayers, challenges, attempts, inviteSignups }, range);
+  report.players = await withNames(admin, report.players);
+  return report;
 }

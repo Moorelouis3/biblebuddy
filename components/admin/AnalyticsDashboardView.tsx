@@ -461,6 +461,45 @@ function HeadlineTable({ rows }: { rows: Array<{ label: string; hint: string; to
   );
 }
 
+/** Players, most active first (Louis, 2026-11-22: "the people who have played, with how much they played, in order of most active"). */
+function ActivePlayers({ players, columns }: { players: Array<{ userId: string; name: string; a: number; b: number; c: number; last: string }>; columns: [string, string, string?] }) {
+  return (
+    <Card>
+      <CardTitle icon="🏆">Most active players</CardTitle>
+      {players.length ? (
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[440px] border-separate border-spacing-y-1 text-sm">
+            <thead>
+              <tr className="text-right text-xs font-bold text-[#64748b]">
+                <th className="pb-1 text-left font-bold">#</th>
+                <th className="pb-1 text-left font-bold">Player</th>
+                <th className="pb-1 font-bold">{columns[0]}</th>
+                <th className="pb-1 font-bold">{columns[1]}</th>
+                {columns[2] ? <th className="pb-1 font-bold">{columns[2]}</th> : null}
+                <th className="pb-1 font-bold">Last played</th>
+              </tr>
+            </thead>
+            <tbody>
+              {players.map((p, i) => (
+                <tr key={p.userId}>
+                  <td className="pr-2 font-black text-[#94a3b8]">{i + 1}</td>
+                  <td className="pr-3 font-black text-[#0b1633]">{p.name}</td>
+                  <td className="pl-3 text-right font-black">{fmt(p.a)}</td>
+                  <td className="pl-3 text-right font-black">{fmt(p.b)}</td>
+                  {columns[2] ? <td className="pl-3 text-right font-black">{fmt(p.c)}</td> : null}
+                  <td className="pl-3 text-right text-xs font-bold text-[#64748b]">{new Date(p.last).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p className="text-sm font-semibold text-[#64748b]">Nobody yet.</p>
+      )}
+    </Card>
+  );
+}
+
 /** The "More detail" half of a game tab: figure tables and breakdown bars, since launch and for the period. */
 function GameDetail({
   sections,
@@ -2351,6 +2390,7 @@ export default function AnalyticsDashboardView({
                     </Link>
                   </p>
                   <HeadlineTable rows={d.matchGame.headline} />
+                  <ActivePlayers players={d.matchGame.players} columns={["Boards won", "Boards played", "Minutes"]} />
                   <Card>
                     <CardTitle icon="🗺️" right={<span className="text-xs font-bold text-[#64748b]">{fmt(d.matchGame.finishedEverything)} finished every board</span>}>
                       Where players are now
@@ -2398,6 +2438,7 @@ export default function AnalyticsDashboardView({
                     </Link>
                   </p>
                   <HeadlineTable rows={d.clueGame.headline} />
+                  <ActivePlayers players={d.clueGame.players} columns={["Games finished", "Games played"]} />
                   <details className="rounded-2xl">
                     <summary className="cursor-pointer px-1 py-2 text-sm font-black text-[#2563eb]">More detail</summary>
                     <div className="mt-2 space-y-4">

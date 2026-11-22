@@ -38,9 +38,35 @@ export const MATCH_REPORT_EVENTS = [
 
 export type MatchHeadline = { label: string; today: number; week: number; month: number; allTime: number; hint: string };
 export type MatchFigure = { label: string; hint: string; allTime: number; period: number; unit?: "people" | "times" | "percent" | "minutes" };
+/** One player, for the most-active list (Louis, 2026-11-22). */
+export type ActivePlayer = { userId: string; name: string; a: number; b: number; c: number; last: string };
+
+/**
+ * Players ranked by how much they have played: for Match a = boards won,
+ * b = boards played, c = minutes. Names filled in by the loader.
+ */
+export function rankPlayers(
+  rows: Array<{ event_name: string; user_id: string | null; metadata: Record<string, unknown> | null; created_at: string }>,
+  score: { a: string; b: string; c?: { event: string; key: string; per?: number } },
+): ActivePlayer[] {
+  const by = new Map<string, ActivePlayer>();
+  for (const r of rows) {
+    if (!r.user_id) continue;
+    const p = by.get(r.user_id) || { userId: r.user_id, name: "", a: 0, b: 0, c: 0, last: r.created_at };
+    if (r.event_name === score.a) p.a += 1;
+    if (r.event_name === score.b) p.b += 1;
+    if (score.c && r.event_name === score.c.event) p.c += (Number(r.metadata?.[score.c.key]) || 0) / (score.c.per || 1);
+    if (r.created_at > p.last) p.last = r.created_at;
+    by.set(r.user_id, p);
+  }
+  return [...by.values()].map((p) => ({ ...p, c: Math.round(p.c) })).sort((x, y) => y.a - x.a || y.b - x.b || y.c - x.c || (y.last > x.last ? 1 : -1));
+}
+
 export type MatchGameReport = {
   launched: string;
   headline: MatchHeadline[];
+  /** Most active first: a = boards won, b = boards played, c = minutes. */
+  players: ActivePlayer[];
   /** Players whose furthest board is each board, now (match_progress). */
   onBoard: Array<{ label: string; players: number }>;
   finishedEverything: number;
@@ -237,7 +263,17 @@ export function summariseMatchGame(
     { title: "Power-ups set off (times)", rows: tally(named("match_power_used"), (r) => POWER[str(meta(r, "power"))] || str(meta(r, "power")), false) },
   ];
 
-  return { launched: LAUNCHED, headline, onBoard, finishedEverything, sections, breakdowns };
+  const players = rankPlayers(ev, { a: "match_board_won", b: "match_board_started", c: { event: "match_session", key: "seconds", per: 60 } });
+  return { launched: LAUNCHED, headline, players, onBoard, finishedEverything, sections, breakdowns };
+}
+
+/** First names for the most-active list (profile_stats). */
+export async function withNames(admin: SupabaseClient, players: ActivePlayer[]): Promise<ActivePlayer[]> {
+  const top = players.slice(0, 50);
+  if (!top.length) return top;
+  const { data } = await admin.from("profile_stats").select("user_id, display_name, username").in("user_id", top.map((p) => p.userId));
+  const names = new Map((data || []).map((r) => [r.user_id as string, String((r.display_name as string) || (r.username as string) || "").trim()]));
+  return top.map((p) => ({ ...p, name: names.get(p.userId) || "A Buddy" }));
 }
 
 async function everyRow<T>(
@@ -265,5 +301,7 @@ export async function computeMatchGameReport(admin: SupabaseClient, range: Match
     everyRow<MatchEventRow>(admin, "landing_page_events", "event_name, user_id, metadata, created_at", (q) => q.in("event_name", MATCH_REPORT_EVENTS), "created_at"),
     everyRow<MatchProgressRow>(admin, "match_progress", "user_id, unlocked, done", (q) => q, "user_id").catch(() => [] as MatchProgressRow[]),
   ]);
-  return summariseMatchGame({ events, progress, boards: MATCH_LEVELS.map((l) => ({ id: l.id, number: l.number, title: l.title })) }, range);
+  const report = summariseMatchGame({ events, progress, boards: MATCH_LEVELS.map((l) => ({ id: l.id, number: l.number, title: l.title })) }, range);
+  report.players = await withNames(admin, report.players);
+  return report;
 }
