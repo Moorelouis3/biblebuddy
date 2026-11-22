@@ -14173,3 +14173,11 @@ Next: next scheduled run picks up the oldest 5 of the 20 remaining, starting wit
 Article: Who Was Job? The Man Who Lost Everything | Words: ~4,487 | Category: Character Studies | Status: pass
 Not live yet: no [deploy] tag on this commit (Louis removed the blog exception 2026-10-10) - goes live at the next scheduled deploy, 08:05 Berlin.
 Queue remaining: 36
+
+## 2026-11-22 (Bug Fixer run)
+Marching orders: work through open bug reports per docs/BUG_FIXER_AGENT.md.
+Today: fetched the open queue (25 open, not paused, nothing stale sitting in needs_louis/awaiting_approval), worked the oldest 5 - all auto-logged telemetry, no reporters.
+Done: 4 of the 5 (notifications select on /bb-feed and /bible/genesis/2, auth check on a devotionals page, notifications update on a Bible in One Year day) were ordinary one-off or twice-seen connection drops, each already self-healing on the app's next check - closed `new` with a diagnosis, no code touched (one of them is an auth call, left alone on purpose). The 5th (profile_stats insert failing on /plan) led to a real find: the bug-reporting tool itself was mislabeling every failed `upsert` as an `insert`, because Supabase sends both as a plain POST - fixed that labeling bug (lib/supabaseFailureReporter.ts, lib/supabaseClient.ts), added a regression check, `tsc` clean, committed and pushed to main untagged. That report closed `not_a_bug` (the original failure was just a dropped connection) with the fix noted.
+Not live yet: commit 93686de ("Bug fix: stop mislabeling upsert writes as insert in failure reports") - waiting on the next scheduled deploy, Sun 10:05 Berlin (`npm run pending`).
+Still open: 20 more reports in the queue, left for the next run under the 5-bug cap.
+Next: next scheduled run (14:30 UTC) picks up the oldest 5 of the remaining 20, including the 6 duplicate "Failed to load chunk" crash reports from a Facebook crawler bot hitting stale deploy chunks - not a real-user issue, but worth folding into one `duplicate` group.
