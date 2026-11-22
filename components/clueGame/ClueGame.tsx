@@ -87,9 +87,9 @@ function DeckPicker({ onStart, startLabel }: { onStart: (deckIds: string[]) => v
             >
               <div className="bb-clue-tile-name">{d.name}</div>
               <div className="bb-clue-tile-body">
-                {d.cardBack ? (
+                {d.tile ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={d.cardBack} alt="" className="h-full w-full object-cover" />
+                  <img src={d.tile} alt="" className="h-full w-full object-cover" />
                 ) : (
                   <span aria-hidden="true">📖</span>
                 )}
@@ -317,7 +317,7 @@ export default function ClueGame() {
             </div>
             <div className="bb-clue-panel bb-clue-parchment flex flex-col gap-3">
               <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big" onClick={() => setScreen("decks")}>▶ Play Solo</button>
-              <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big" onClick={() => setScreen("multi")}>👥 Multiplayer</button>
+              <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big" onClick={() => setScreen("multi")}><img src="/games/clue/ui/icon-players.webp" alt="" className="bb-clue-btnicon" /> Multiplayer</button>
               <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big" onClick={() => setScreen("how")}>📖 How to Play</button>
             </div>
           </div>

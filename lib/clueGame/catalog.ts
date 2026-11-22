@@ -25,6 +25,8 @@ const COLORS = ["#1d5a37", "#1d3f7a", "#7a1f24", "#4a2a7a", "#7a5a1d", "#1d6a6a"
 
 const slug = (book: string) => book.toLowerCase().replace(/\s+/g, "-");
 
+const TILE_ART = new Set(["genesis", "exodus", "leviticus", "numbers", "deuteronomy", "joshua"]);
+
 const PLAYABLE: Record<string, ClueCard[]> = { genesis: GENESIS_CARDS };
 
 export const CLUE_DECKS: ClueDeck[] = [...OLD.map((b) => [b, "old"] as const), ...NEW.map((b) => [b, "new"] as const)].map(
@@ -39,6 +41,8 @@ export const CLUE_DECKS: ClueDeck[] = [...OLD.map((b) => [b, "old"] as const), .
       color: id === "genesis" ? "#1d5a37" : COLORS[i % COLORS.length],
       cards,
       cardBack: id === "genesis" ? "/games/clue/genesis/art/card-back.webp" : undefined,
+      // Tile pictures made so far (Drive "Bible Clue Game → UI"); others show a book.
+      tile: TILE_ART.has(id) ? `/games/clue/ui/deck-${id}.webp` : undefined,
     };
   },
 );

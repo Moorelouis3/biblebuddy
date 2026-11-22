@@ -75,4 +75,6 @@ export type ClueDeck = {
   cards: ClueCard[];
   /** The shared face-down back for the draw pile. */
   cardBack?: string;
+  /** The picture on its Choose Your Deck tile. */
+  tile?: string;
 };

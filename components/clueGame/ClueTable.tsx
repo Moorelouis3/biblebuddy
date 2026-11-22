@@ -101,11 +101,12 @@ export default function ClueTable({
   // The face-down cover on a newly dealt card is taken away after its flip,
   // even if a device never runs the animation, so the silhouette always shows.
   const [uncovered, setUncovered] = useState(0);
+  const hasRound = !!round;
   useEffect(() => {
-    if (inIntro || !round) return;
+    if (inIntro || !hasRound) return;
     const id = window.setTimeout(() => setUncovered(view.dealt), 1100);
     return () => window.clearTimeout(id);
-  }, [view.dealt, inIntro, round]);
+  }, [view.dealt, inIntro, hasRound]);
 
   // Send the won card flying to the winner's seat, just before the next deal.
   const [award, setAward] = useState<{ dx: number; dy: number } | null>(null);
@@ -224,6 +225,10 @@ export default function ClueTable({
               className={`bb-clue-deal ${award ? "bb-clue-award" : ""}`}
               style={award ? ({ ["--dx" as string]: `${award.dx}px`, ["--dy" as string]: `${award.dy}px` } as React.CSSProperties) : undefined}
             >
+              {revealed && round?.outcome?.kind === "won" ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img className="bb-clue-sparkle" src="/games/clue/ui/sparkle.webp" alt="" aria-hidden="true" />
+              ) : null}
               <div className={revealed ? "" : "bb-clue-flipin"}>
                 <PlayingCard card={card} face={revealed ? "reveal" : "mystery"} back={cardBack} />
                 {!revealed && uncovered !== view.dealt ? (
@@ -278,15 +283,15 @@ export default function ClueTable({
           ) : view.phase === "clue" ? (
             <>
               <div className="flex items-center gap-3">
-                <div className="bb-clue-thumb" style={{ width: 64 }}>
+                <div className="bb-clue-thumb" style={{ width: 52 }}>
                   <SubjectArt card={card} mode="mystery" />
                 </div>
-                <div className="flex min-w-0 flex-1 flex-col items-center gap-1.5">
+                <div className="flex min-w-0 flex-1 flex-wrap items-center justify-center gap-x-2 gap-y-1">
                   <span className="bb-clue-pointsbadge">⭐ {points} point{points === 1 ? "" : "s"}</span>
                   <span className={`bb-clue-timerpill ${seconds <= 3 ? "is-final" : ""}`} aria-live="polite">
                     ⏱ 0:{String(seconds).padStart(2, "0")}
                   </span>
-                  <span className="text-[11px] font-black uppercase tracking-[0.14em] opacity-70">{CATEGORY_LABEL[card.category]}</span>
+                  <span className="w-full text-center text-[11px] font-black uppercase tracking-[0.14em] opacity-70">{CATEGORY_LABEL[card.category]}</span>
                 </div>
               </div>
               {previous.length ? (
