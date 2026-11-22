@@ -1,3 +1,4 @@
+import { BIBLE_READING_BACKGROUND_TRACKS, bibleReadingBackgroundVolumeFor } from "@/lib/bibleReadingBackgroundMusic";
 /**
  * Bible Clue Game sounds (Louis, 2026-11-22: "yes i want sounds of course
  * this is a real game"). Synthesised with Web Audio, so there are no files
@@ -30,6 +31,7 @@ export function setSoundOn(on: boolean) {
     window.localStorage.setItem(KEY, on ? "on" : "off");
   } catch {}
   if (master) master.gain.value = on ? 0.55 : 0;
+  syncClueMusic();
 }
 
 function audio(): AudioContext | null {
@@ -238,3 +240,54 @@ export const clueSound = {
     tone(740, 0, 0.05, { type: "triangle", vol: 0.08 });
   },
 };
+
+/* ---------- background music ---------- */
+
+/**
+ * Quiet music under the game (Louis, 2026-11-22: "use the music that we played
+ * inside of Bible in One Year, put it really low"). The same five tracks as
+ * the Bible in One Year narration bed (lib/bibleReadingBackgroundMusic.ts),
+ * each at its own measured gain times MUSIC_LIFT: there is no narrator here,
+ * so a little above the bed level, still well under the game's sounds.
+ * Follows the same mute switch as the sounds. Starts on the first tap
+ * (browsers block audio before one) and stops when the table closes.
+ */
+const MUSIC_LIFT = 2.5;
+let music: HTMLAudioElement | null = null;
+let musicWanted = false;
+
+function startTrack() {
+  if (typeof window === "undefined" || !musicWanted || !soundOn()) return;
+  if (!music) {
+    const src = BIBLE_READING_BACKGROUND_TRACKS[Math.floor(Math.random() * BIBLE_READING_BACKGROUND_TRACKS.length)];
+    music = new Audio(src);
+    music.loop = true;
+    music.preload = "auto";
+    music.volume = Math.min(0.25, bibleReadingBackgroundVolumeFor(src) * MUSIC_LIFT);
+  }
+  void music.play().catch(() => {
+    // Not allowed yet (no tap): the next tap tries again.
+  });
+}
+
+export function startClueMusic() {
+  if (typeof window === "undefined") return () => {};
+  musicWanted = true;
+  startTrack();
+  const onTap = () => startTrack();
+  window.addEventListener("pointerdown", onTap);
+  window.addEventListener("keydown", onTap);
+  return () => {
+    musicWanted = false;
+    window.removeEventListener("pointerdown", onTap);
+    window.removeEventListener("keydown", onTap);
+    music?.pause();
+  };
+}
+
+/** The mute switch turns the music off and on too. */
+export function syncClueMusic() {
+  if (!music) return startTrack();
+  if (soundOn() && musicWanted) void music.play().catch(() => {});
+  else music.pause();
+}

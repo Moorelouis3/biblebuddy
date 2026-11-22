@@ -198,6 +198,10 @@ function SoloRound({ deckIds, onExit }: { deckIds: string[]; onExit: () => void 
         roundLabel={deckLabel(deckIds)}
         onGuess={(text) => act({ type: "guess", playerId: "me", text })}
         onWait={() => act({ type: "wait", playerId: "me" })}
+        // Solo can pause (Louis, 2026-11-22). Challenges cannot: they are ranked.
+        isHost
+        onPause={() => act({ type: "pause" })}
+        onResume={() => act({ type: "resume" })}
         onStudy={openStudy}
         overlay={view.phase !== "over" ? undefined : review ? (
         <div className="bb-clue-panel bb-clue-parchment">
