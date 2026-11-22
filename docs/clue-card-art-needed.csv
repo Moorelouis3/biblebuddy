@@ -1,0 +1,550 @@
+chapter,category,answer,file,mystery_file,reveal_file,questions
+1,Thing,"Earth",earth,earth-mystery.webp,earth-reveal.webp,2
+1,Thing,"Fish and birds",fish-and-birds,fish-and-birds-mystery.webp,fish-and-birds-reveal.webp,1
+1,Thing,"Great whales",great-whales,great-whales-mystery.webp,great-whales-reveal.webp,1
+1,Thing,"Heaven",heaven,heaven-mystery.webp,heaven-reveal.webp,2
+1,Thing,"Heaven and earth",heaven-and-earth,heaven-and-earth-mystery.webp,heaven-and-earth-reveal.webp,2
+1,Thing,"Light",light,light-mystery.webp,light-reveal.webp,1
+1,Thing,"Man",man,man-mystery.webp,man-reveal.webp,1
+1,Thing,"Night",night,night-mystery.webp,night-reveal.webp,1
+1,Thing,"Seas",seas,seas-mystery.webp,seas-reveal.webp,1
+1,Thing,"Seeds and fruit",seeds-and-fruit,seeds-and-fruit-mystery.webp,seeds-and-fruit-reveal.webp,1
+1,Thing,"Signs and seasons",signs-and-seasons,signs-and-seasons-mystery.webp,signs-and-seasons-reveal.webp,1
+1,Thing,"The stars",stars,stars-mystery.webp,stars-reveal.webp,2
+1,Thing,"Waters from waters",waters-from-waters,waters-from-waters-mystery.webp,waters-from-waters-reveal.webp,1
+1,Person,"The Spirit of God",spirit-of-god,spirit-of-god-mystery.webp,spirit-of-god-reveal.webp,1
+1,Chapter card,"Genesis 1 scene",chapter-01,chapter-01-mystery.webp,chapter-01-reveal.webp,10
+2,Thing,"A deep sleep",deep-sleep,deep-sleep-mystery.webp,deep-sleep-reveal.webp,2
+2,Thing,"A living soul",living-soul,living-soul-mystery.webp,living-soul-reveal.webp,1
+2,Thing,"A mist",mist,mist-mystery.webp,mist-reveal.webp,1
+2,Thing,"Father and mother",father-and-mother,father-and-mother-mystery.webp,father-and-mother-reveal.webp,1
+2,Thing,"Gold",gold,gold-mystery.webp,gold-reveal.webp,1
+2,Thing,"Man being alone",man-being-alone,man-being-alone-mystery.webp,man-being-alone-reveal.webp,1
+2,Thing,"Woman",woman,woman-mystery.webp,woman-reveal.webp,1
+2,Place,"Euphrates",euphrates,euphrates-mystery.webp,euphrates-reveal.webp,2
+2,Chapter card,"Genesis 2 scene",chapter-02,chapter-02-mystery.webp,chapter-02-reveal.webp,13
+3,Thing,"Coats of skins",coats-of-skins,coats-of-skins-mystery.webp,coats-of-skins-reveal.webp,1
+3,Thing,"Dust",dust,dust-mystery.webp,dust-reveal.webp,1
+3,Thing,"Fig leaves",fig-leaves,fig-leaves-mystery.webp,fig-leaves-reveal.webp,1
+3,Thing,"Head",head,head-mystery.webp,head-reveal.webp,1
+3,Thing,"Thorns and thistles",thorns-and-thistles,thorns-and-thistles-mystery.webp,thorns-and-thistles-reveal.webp,1
+3,Thing,"Touch it",touch-it,touch-it-mystery.webp,touch-it-reveal.webp,1
+3,Thing,"Wise",wise,wise-mystery.webp,wise-reveal.webp,1
+3,Person,"The serpent",serpent,serpent-mystery.webp,serpent-reveal.webp,2
+3,Place,"Among the trees",among-the-trees,among-the-trees-mystery.webp,among-the-trees-reveal.webp,1
+3,Chapter card,"Genesis 3 scene",chapter-03,chapter-03-mystery.webp,chapter-03-reveal.webp,11
+4,Thing,"A mark",mark,mark-mystery.webp,mark-reveal.webp,1
+4,Thing,"Abel’s blood",abels-blood,abels-blood-mystery.webp,abels-blood-reveal.webp,1
+4,Thing,"Fugitive and vagabond",fugitive-and-vagabond,fugitive-and-vagabond-mystery.webp,fugitive-and-vagabond-reveal.webp,1
+4,Thing,"Keeper of sheep",keeper-of-sheep,keeper-of-sheep-mystery.webp,keeper-of-sheep-reveal.webp,1
+4,Thing,"Killed him",killed-him,killed-him-mystery.webp,killed-him-reveal.webp,1
+4,Thing,"Sevenfold vengeance",sevenfold-vengeance,sevenfold-vengeance-mystery.webp,sevenfold-vengeance-reveal.webp,1
+4,Thing,"Sin",sin,sin-mystery.webp,sin-reveal.webp,1
+4,Thing,"Very angry",very-angry,very-angry-mystery.webp,very-angry-reveal.webp,2
+4,Person,"Abel’s",abels,abels-mystery.webp,abels-reveal.webp,1
+4,Person,"Adah and Zillah",adah-and-zillah,adah-and-zillah-mystery.webp,adah-and-zillah-reveal.webp,1
+4,Person,"His son Enoch",his-son-enoch,his-son-enoch-mystery.webp,his-son-enoch-reveal.webp,1
+4,Person,"Jubal",jubal,jubal-mystery.webp,jubal-reveal.webp,1
+4,Person,"Lamech",lamech,lamech-mystery.webp,lamech-reveal.webp,2
+4,Person,"Seth",seth,seth-mystery.webp,seth-reveal.webp,2
+4,Place,"East",east,east-mystery.webp,east-reveal.webp,2
+4,Place,"In the field",in-the-field,in-the-field-mystery.webp,in-the-field-reveal.webp,1
+4,Place,"The land of Nod",land-of-nod,land-of-nod-mystery.webp,land-of-nod-reveal.webp,1
+4,Chapter card,"Genesis 4 scene",chapter-04,chapter-04-mystery.webp,chapter-04-reveal.webp,4
+5,Thing,"Blessed them",blessed-them,blessed-them-mystery.webp,blessed-them-reveal.webp,1
+5,Thing,"God took him",god-took-him,god-took-him-mystery.webp,god-took-him-reveal.webp,1
+5,Thing,"Sons and daughters",sons-and-daughters,sons-and-daughters-mystery.webp,sons-and-daughters-reveal.webp,1
+5,Thing,"The ground",ground,ground-mystery.webp,ground-reveal.webp,1
+5,Person,"Abel",abel,abel-mystery.webp,abel-reveal.webp,1
+5,Person,"Adam",adam,adam-mystery.webp,adam-reveal.webp,1
+5,Person,"Cainan",cainan,cainan-mystery.webp,cainan-reveal.webp,1
+5,Person,"Enoch",enoch,enoch-mystery.webp,enoch-reveal.webp,1
+5,Person,"Enos",enos,enos-mystery.webp,enos-reveal.webp,1
+5,Person,"Jared",jared,jared-mystery.webp,jared-reveal.webp,1
+5,Person,"Methuselah",methuselah,methuselah-mystery.webp,methuselah-reveal.webp,3
+5,Chapter card,"Genesis 5 scene",chapter-05,chapter-05-mystery.webp,chapter-05-reveal.webp,3
+6,Thing,"A window",window,window-mystery.webp,window-reveal.webp,2
+6,Thing,"Destroy man",destroy-man,destroy-man-mystery.webp,destroy-man-reveal.webp,1
+6,Thing,"Food",food,food-mystery.webp,food-reveal.webp,1
+6,Thing,"Gopher wood",gopher-wood,gopher-wood-mystery.webp,gopher-wood-reveal.webp,1
+6,Thing,"Male and female",male-and-female,male-and-female-mystery.webp,male-and-female-reveal.webp,1
+6,Thing,"My covenant",my-covenant,my-covenant-mystery.webp,my-covenant-reveal.webp,1
+6,Thing,"My spirit",my-spirit,my-spirit-mystery.webp,my-spirit-reveal.webp,1
+6,Thing,"Only evil",only-evil,only-evil-mystery.webp,only-evil-reveal.webp,1
+6,Thing,"Perfect",perfect,perfect-mystery.webp,perfect-reveal.webp,2
+6,Thing,"Pitch",pitch,pitch-mystery.webp,pitch-reveal.webp,1
+6,Thing,"Violence",violence,violence-mystery.webp,violence-reveal.webp,1
+6,Person,"Giants",giants,giants-mystery.webp,giants-reveal.webp,1
+6,Person,"Japheth",japheth,japheth-mystery.webp,japheth-reveal.webp,2
+6,Person,"The sons of God",sons-of-god,sons-of-god-mystery.webp,sons-of-god-reveal.webp,1
+6,Chapter card,"Genesis 6 scene",chapter-06,chapter-06-mystery.webp,chapter-06-reveal.webp,7
+7,Thing,"Clean beasts",clean-beasts,clean-beasts-mystery.webp,clean-beasts-reveal.webp,1
+7,Thing,"Creeping things",creeping-things,creeping-things-mystery.webp,creeping-things-reveal.webp,1
+7,Thing,"Lifted it up",lifted-it-up,lifted-it-up-mystery.webp,lifted-it-up-reveal.webp,1
+7,Thing,"Over the mountains",over-the-mountains,over-the-mountains-mystery.webp,over-the-mountains-reveal.webp,1
+7,Person,"Ham",ham,ham-mystery.webp,ham-reveal.webp,2
+7,Person,"His family",his-family,his-family-mystery.webp,his-family-reveal.webp,1
+7,Chapter card,"Genesis 7 scene",chapter-07,chapter-07-mystery.webp,chapter-07-reveal.webp,14
+8,Thing,"A raven",raven,raven-mystery.webp,raven-reveal.webp,1
+8,Thing,"A sweet savour",sweet-savour,sweet-savour-mystery.webp,sweet-savour-reveal.webp,1
+8,Thing,"A wind",wind,wind-mystery.webp,wind-reveal.webp,1
+8,Thing,"An olive leaf",olive-leaf,olive-leaf-mystery.webp,olive-leaf-reveal.webp,1
+8,Thing,"Mountain tops",mountain-tops,mountain-tops-mystery.webp,mountain-tops-reveal.webp,1
+8,Thing,"Seedtime and harvest",seedtime-and-harvest,seedtime-and-harvest-mystery.webp,seedtime-and-harvest-reveal.webp,1
+8,Thing,"Went down",went-down,went-down-mystery.webp,went-down-reveal.webp,1
+8,Thing,"Windows of heaven",windows-of-heaven,windows-of-heaven-mystery.webp,windows-of-heaven-reveal.webp,1
+8,Chapter card,"Genesis 8 scene",chapter-08,chapter-08-mystery.webp,chapter-08-reveal.webp,12
+9,Thing,"A farmer",farmer,farmer-mystery.webp,farmer-reveal.webp,1
+9,Thing,"A vineyard",vineyard,vineyard-mystery.webp,vineyard-reveal.webp,1
+9,Thing,"Flood",flood,flood-mystery.webp,flood-reveal.webp,1
+9,Thing,"God’s image",gods-image,gods-image-mystery.webp,gods-image-reveal.webp,1
+9,Thing,"Remembers His covenant",remembers-his-covenant,remembers-his-covenant-mystery.webp,remembers-his-covenant-reveal.webp,1
+9,Thing,"The blood",blood,blood-mystery.webp,blood-reveal.webp,1
+9,Thing,"When he awoke",when-he-awoke,when-he-awoke-mystery.webp,when-he-awoke-reveal.webp,1
+9,Person,"Canaan",canaan,canaan-mystery.webp,canaan-reveal.webp,2
+9,Person,"Shem",shem,shem-mystery.webp,shem-reveal.webp,2
+9,Person,"Shem and Japheth",shem-and-japheth,shem-and-japheth-mystery.webp,shem-and-japheth-reveal.webp,1
+9,Chapter card,"Genesis 9 scene",chapter-09,chapter-09-mystery.webp,chapter-09-reveal.webp,11
+10,Thing,"Tongue",tongue,tongue-mystery.webp,tongue-reveal.webp,1
+10,Person,"Aram",aram,aram-mystery.webp,aram-reveal.webp,1
+10,Person,"Cush",cush,cush-mystery.webp,cush-reveal.webp,2
+10,Person,"Eber",eber,eber-mystery.webp,eber-reveal.webp,1
+10,Person,"Japheth’s",japheths,japheths-mystery.webp,japheths-reveal.webp,1
+10,Person,"Joktan",joktan,joktan-mystery.webp,joktan-reveal.webp,1
+10,Person,"Magog",magog,magog-mystery.webp,magog-reveal.webp,1
+10,Person,"Nimrod",nimrod,nimrod-mystery.webp,nimrod-reveal.webp,1
+10,Person,"Sidon",sidon,sidon-mystery.webp,sidon-reveal.webp,1
+10,Person,"The Amorites",amorites,amorites-mystery.webp,amorites-reveal.webp,2
+10,Person,"The Philistines",philistines,philistines-mystery.webp,philistines-reveal.webp,1
+10,Place,"Accad",accad,accad-mystery.webp,accad-reveal.webp,1
+10,Place,"Gaza",gaza,gaza-mystery.webp,gaza-reveal.webp,1
+10,Place,"Nineveh",nineveh,nineveh-mystery.webp,nineveh-reveal.webp,1
+10,Place,"Shinar",shinar,shinar-mystery.webp,shinar-reveal.webp,2
+10,Place,"Sodom and Gomorrah",sodom-and-gomorrah,sodom-and-gomorrah-mystery.webp,sodom-and-gomorrah-reveal.webp,1
+10,Chapter card,"Genesis 10 scene",chapter-10,chapter-10-mystery.webp,chapter-10-reveal.webp,3
+11,Thing,"Brick",brick,brick-mystery.webp,brick-reveal.webp,1
+11,Thing,"Confounded it",confounded-it,confounded-it-mystery.webp,confounded-it-reveal.webp,1
+11,Thing,"Nahor and Haran",nahor-and-haran,nahor-and-haran-mystery.webp,nahor-and-haran-reveal.webp,1
+11,Thing,"Slime",slime,slime-mystery.webp,slime-reveal.webp,1
+11,Person,"Haran",haran,haran-mystery.webp,haran-reveal.webp,1
+11,Person,"Milcah",milcah,milcah-mystery.webp,milcah-reveal.webp,2
+11,Person,"Terah",terah,terah-mystery.webp,terah-reveal.webp,1
+11,Chapter card,"Genesis 11 scene",chapter-11,chapter-11-mystery.webp,chapter-11-reveal.webp,7
+12,Thing,"A famine",famine,famine-mystery.webp,famine-reveal.webp,1
+12,Thing,"Curse him",curse-him,curse-him-mystery.webp,curse-him-reveal.webp,1
+12,Thing,"Flocks and camels",flocks-and-camels,flocks-and-camels-mystery.webp,flocks-and-camels-reveal.webp,1
+12,Thing,"Leave his country",leave-his-country,leave-his-country-mystery.webp,leave-his-country-reveal.webp,1
+12,Thing,"People from Haran",people-from-haran,people-from-haran-mystery.webp,people-from-haran-reveal.webp,1
+12,Thing,"Sent him away",sent-him-away,sent-him-away-mystery.webp,sent-him-away-reveal.webp,1
+12,Thing,"This land",this-land,this-land-mystery.webp,this-land-reveal.webp,1
+12,Thing,"Toward the south",toward-the-south,toward-the-south-mystery.webp,toward-the-south-reveal.webp,1
+12,Person,"Pharaoh’s princes",pharaohs-princes,pharaohs-princes-mystery.webp,pharaohs-princes-reveal.webp,1
+12,Person,"The Canaanite",canaanite,canaanite-mystery.webp,canaanite-reveal.webp,1
+12,Place,"Hai",hai,hai-mystery.webp,hai-reveal.webp,1
+12,Chapter card,"Genesis 12 scene",chapter-12,chapter-12-mystery.webp,chapter-12-reveal.webp,6
+13,Thing,"The whole land",whole-land,whole-land-mystery.webp,whole-land-reveal.webp,1
+13,Thing,"Too much livestock",too-much-livestock,too-much-livestock-mystery.webp,too-much-livestock-reveal.webp,1
+13,Person,"The Perizzite",perizzite,perizzite-mystery.webp,perizzite-reveal.webp,1
+13,Place,"Mamre",mamre,mamre-mystery.webp,mamre-reveal.webp,2
+13,Place,"The plain of Jordan",plain-of-jordan,plain-of-jordan-mystery.webp,plain-of-jordan-reveal.webp,1
+13,Chapter card,"Genesis 13 scene",chapter-13,chapter-13-mystery.webp,chapter-13-reveal.webp,12
+14,Thing,"A thread",thread,thread-mystery.webp,thread-reveal.webp,1
+14,Thing,"Armed his servants",armed-his-servants,armed-his-servants-mystery.webp,armed-his-servants-reveal.webp,1
+14,Thing,"Bread and wine",bread-and-wine,bread-and-wine-mystery.webp,bread-and-wine-reveal.webp,1
+14,Thing,"Slimepits",slimepits,slimepits-mystery.webp,slimepits-reveal.webp,1
+14,Thing,"The Hebrew",hebrew,hebrew-mystery.webp,hebrew-reveal.webp,2
+14,Thing,"The people",people,people-mystery.webp,people-reveal.webp,1
+14,Person,"Chedorlaomer",chedorlaomer,chedorlaomer-mystery.webp,chedorlaomer-reveal.webp,1
+14,Person,"Melchizedek",melchizedek,melchizedek-mystery.webp,melchizedek-reveal.webp,1
+14,Person,"One who escaped",one-who-escaped,one-who-escaped-mystery.webp,one-who-escaped-reveal.webp,1
+14,Person,"The king of Sodom",king-of-sodom,king-of-sodom-mystery.webp,king-of-sodom-reveal.webp,1
+14,Place,"Salem",salem,salem-mystery.webp,salem-reveal.webp,1
+14,Place,"Shaveh",shaveh,shaveh-mystery.webp,shaveh-reveal.webp,1
+14,Place,"The plain of Mamre",plain-of-mamre,plain-of-mamre-mystery.webp,plain-of-mamre-reveal.webp,1
+14,Place,"The salt sea",salt-sea,salt-sea-mystery.webp,salt-sea-reveal.webp,1
+14,Place,"Unto Dan",unto-dan,unto-dan-mystery.webp,unto-dan-reveal.webp,1
+14,Chapter card,"Genesis 14 scene",chapter-14,chapter-14-mystery.webp,chapter-14-reveal.webp,5
+15,Thing,"A smoking furnace",smoking-furnace,smoking-furnace-mystery.webp,smoking-furnace-reveal.webp,1
+15,Thing,"Believed the LORD",believed-the-lord,believed-the-lord-mystery.webp,believed-the-lord-reveal.webp,1
+15,Thing,"Birds",birds,birds-mystery.webp,birds-reveal.webp,3
+15,Thing,"Judge it",judge-it,judge-it-mystery.webp,judge-it-reveal.webp,1
+15,Thing,"Shield",shield,shield-mystery.webp,shield-reveal.webp,1
+15,Thing,"Turtledove and pigeon",turtledove-and-pigeon,turtledove-and-pigeon-mystery.webp,turtledove-and-pigeon-reveal.webp,1
+15,Person,"Eliezer",eliezer,eliezer-mystery.webp,eliezer-reveal.webp,1
+15,Person,"His own son",his-own-son,his-own-son-mystery.webp,his-own-son-reveal.webp,1
+15,Chapter card,"Genesis 15 scene",chapter-15,chapter-15-mystery.webp,chapter-15-reveal.webp,9
+16,Thing,"A wild man",wild-man,wild-man-mystery.webp,wild-man-reveal.webp,1
+16,Thing,"Fleeing from Sarai",fleeing-from-sarai,fleeing-from-sarai-mystery.webp,fleeing-from-sarai-reveal.webp,1
+16,Thing,"Return to Sarai",return-to-sarai,return-to-sarai-mystery.webp,return-to-sarai-reveal.webp,1
+16,Thing,"Sarai’s maid",sarais-maid,sarais-maid-mystery.webp,sarais-maid-reveal.webp,1
+16,Place,"Beer-lahai-roi",beer-lahai-roi,beer-lahai-roi-mystery.webp,beer-lahai-roi-reveal.webp,1
+16,Place,"Shur",shur,shur-mystery.webp,shur-reveal.webp,2
+16,Chapter card,"Genesis 16 scene",chapter-16,chapter-16-mystery.webp,chapter-16-reveal.webp,10
+17,Thing,"Bought servants",bought-servants,bought-servants-mystery.webp,bought-servants-reveal.webp,1
+17,Thing,"Circumcised every male",circumcised-every-male,circumcised-every-male-mystery.webp,circumcised-every-male-reveal.webp,1
+17,Thing,"Forever",forever,forever-mystery.webp,forever-reveal.webp,1
+17,Thing,"Fruitful",fruitful,fruitful-mystery.webp,fruitful-reveal.webp,1
+17,Thing,"Kings",kings,kings-mystery.webp,kings-reveal.webp,2
+17,Thing,"Many nations",many-nations,many-nations-mystery.webp,many-nations-reveal.webp,1
+17,Thing,"The Almighty God",almighty-god,almighty-god-mystery.webp,almighty-god-reveal.webp,1
+17,Thing,"Very old",very-old,very-old-mystery.webp,very-old-reveal.webp,1
+17,Chapter card,"Genesis 17 scene",chapter-17,chapter-17-mystery.webp,chapter-17-reveal.webp,7
+18,Thing,"A calf",calf,calf-mystery.webp,calf-reveal.webp,1
+18,Thing,"A son",son,son-mystery.webp,son-reveal.webp,1
+18,Thing,"Cakes",cakes,cakes-mystery.webp,cakes-reveal.webp,1
+18,Thing,"Dust and ashes",dust-and-ashes,dust-and-ashes-mystery.webp,dust-and-ashes-reveal.webp,1
+18,Thing,"Hard",hard,hard-mystery.webp,hard-reveal.webp,1
+18,Thing,"Right",right,right-mystery.webp,right-reveal.webp,1
+18,Place,"Gomorrah",gomorrah,gomorrah-mystery.webp,gomorrah-reveal.webp,1
+18,Place,"In his tent door",in-his-tent-door,in-his-tent-door-mystery.webp,in-his-tent-door-reveal.webp,1
+18,Place,"In the tent",in-the-tent,in-the-tent-mystery.webp,in-the-tent-reveal.webp,1
+18,Place,"The plains of Mamre",plains-of-mamre,plains-of-mamre-mystery.webp,plains-of-mamre-reveal.webp,1
+18,Place,"Under the tree",under-the-tree,under-the-tree-mystery.webp,under-the-tree-reveal.webp,1
+18,Chapter card,"Genesis 18 scene",chapter-18,chapter-18-mystery.webp,chapter-18-reveal.webp,12
+19,Thing,"Brimstone and fire",brimstone-and-fire,brimstone-and-fire-mystery.webp,brimstone-and-fire-reveal.webp,1
+19,Thing,"Look behind them",look-behind-them,look-behind-them-mystery.webp,look-behind-them-reveal.webp,1
+19,Thing,"Lot’s door",lots-door,lots-door-mystery.webp,lots-door-reveal.webp,1
+19,Thing,"Struck them blind",struck-them-blind,struck-them-blind-mystery.webp,struck-them-blind-reveal.webp,1
+19,Thing,"Sunrise",sunrise,sunrise-mystery.webp,sunrise-reveal.webp,1
+19,Thing,"Unleavened bread",unleavened-bread,unleavened-bread-mystery.webp,unleavened-bread-reveal.webp,1
+19,Thing,"Wine",wine,wine-mystery.webp,wine-reveal.webp,1
+19,Person,"Moab",moab,moab-mystery.webp,moab-reveal.webp,1
+19,Place,"In a cave",in-a-cave,in-a-cave-mystery.webp,in-a-cave-reveal.webp,1
+19,Place,"In the street",in-the-street,in-the-street-mystery.webp,in-the-street-reveal.webp,1
+19,Place,"The gate of Sodom",gate-of-sodom,gate-of-sodom-mystery.webp,gate-of-sodom-reveal.webp,1
+19,Place,"The mountain",mountain,mountain-mystery.webp,mountain-reveal.webp,1
+19,Place,"Zoar",zoar,zoar-mystery.webp,zoar-reveal.webp,1
+19,Chapter card,"Genesis 19 scene",chapter-19,chapter-19-mystery.webp,chapter-19-reveal.webp,10
+20,Thing,"A dead man",dead-man,dead-man-mystery.webp,dead-man-reveal.webp,1
+20,Thing,"A great sin",great-sin,great-sin-mystery.webp,great-sin-reveal.webp,1
+20,Thing,"A prophet",prophet,prophet-mystery.webp,prophet-reveal.webp,1
+20,Thing,"Gave her back",gave-her-back,gave-her-back-mystery.webp,gave-her-back-reveal.webp,1
+20,Thing,"Healed Abimelech’s house",healed-abimelechs-house,healed-abimelechs-house-mystery.webp,healed-abimelechs-house-reveal.webp,1
+20,Thing,"Heart",heart,heart-mystery.webp,heart-reveal.webp,1
+20,Thing,"His sister",his-sister,his-sister-mystery.webp,his-sister-reveal.webp,2
+20,Thing,"Sheep and oxen",sheep-and-oxen,sheep-and-oxen-mystery.webp,sheep-and-oxen-reveal.webp,2
+20,Thing,"Silver",silver,silver-mystery.webp,silver-reveal.webp,2
+20,Thing,"Sore afraid",sore-afraid,sore-afraid-mystery.webp,sore-afraid-reveal.webp,1
+20,Thing,"The wombs",wombs,wombs-mystery.webp,wombs-reveal.webp,1
+20,Thing,"Told his servants",told-his-servants,told-his-servants-mystery.webp,told-his-servants-reveal.webp,1
+20,Person,"Abimelech",abimelech,abimelech-mystery.webp,abimelech-reveal.webp,3
+20,Place,"Gerar",gerar,gerar-mystery.webp,gerar-reveal.webp,1
+20,Chapter card,"Genesis 20 scene",chapter-20,chapter-20-mystery.webp,chapter-20-reveal.webp,8
+21,Thing,"A great feast",great-feast,great-feast-mystery.webp,great-feast-reveal.webp,1
+21,Thing,"A grove",grove,grove-mystery.webp,grove-reveal.webp,1
+21,Thing,"An archer",archer,archer-mystery.webp,archer-reveal.webp,1
+21,Thing,"Bread and water",bread-and-water,bread-and-water-mystery.webp,bread-and-water-reveal.webp,1
+21,Thing,"Laugh",laugh,laugh-mystery.webp,laugh-reveal.webp,1
+21,Thing,"The everlasting God",everlasting-god,everlasting-god-mystery.webp,everlasting-god-reveal.webp,1
+21,Person,"Phichol",phichol,phichol-mystery.webp,phichol-reveal.webp,2
+21,Person,"The angel of God",angel-of-god,angel-of-god-mystery.webp,angel-of-god-reveal.webp,2
+21,Place,"Paran",paran,paran-mystery.webp,paran-reveal.webp,1
+21,Place,"The Philistines’ land",philistines-land,philistines-land-mystery.webp,philistines-land-reveal.webp,1
+21,Chapter card,"Genesis 21 scene",chapter-21,chapter-21-mystery.webp,chapter-21-reveal.webp,5
+22,Thing,"A lamb",lamb,lamb-mystery.webp,lamb-reveal.webp,1
+22,Thing,"Abraham feared God",abraham-feared-god,abraham-feared-god-mystery.webp,abraham-feared-god-reveal.webp,1
+22,Thing,"Bound him",bound-him,bound-him-mystery.webp,bound-him-reveal.webp,1
+22,Thing,"Here am I",here-am-i,here-am-i-mystery.webp,here-am-i-reveal.webp,1
+22,Thing,"His ass",his-ass,his-ass-mystery.webp,his-ass-reveal.webp,1
+22,Thing,"Stars of heaven",stars-of-heaven,stars-of-heaven-mystery.webp,stars-of-heaven-reveal.webp,1
+22,Thing,"The enemies’ gate",enemies-gate,enemies-gate-mystery.webp,enemies-gate-reveal.webp,1
+22,Place,"Jehovah-jireh",jehovah-jireh,jehovah-jireh-mystery.webp,jehovah-jireh-reveal.webp,1
+22,Place,"Moriah",moriah,moriah-mystery.webp,moriah-reveal.webp,1
+22,Chapter card,"Genesis 22 scene",chapter-22,chapter-22-mystery.webp,chapter-22-reveal.webp,8
+23,Thing,"A burying place",burying-place,burying-place-mystery.webp,burying-place-reveal.webp,1
+23,Thing,"A mighty prince",mighty-prince,mighty-prince-mystery.webp,mighty-prince-reveal.webp,1
+23,Thing,"A stranger",stranger,stranger-mystery.webp,stranger-reveal.webp,1
+23,Thing,"Bowed himself",bowed-himself,bowed-himself-mystery.webp,bowed-himself-reveal.webp,1
+23,Thing,"Buried Sarah",buried-sarah,buried-sarah-mystery.webp,buried-sarah-reveal.webp,1
+23,Thing,"His sepulchre",his-sepulchre,his-sepulchre-mystery.webp,his-sepulchre-reveal.webp,1
+23,Thing,"Mourned and wept",mourned-and-wept,mourned-and-wept-mystery.webp,mourned-and-wept-reveal.webp,1
+23,Thing,"Paid for it",paid-for-it,paid-for-it-mystery.webp,paid-for-it-reveal.webp,1
+23,Thing,"The Hittites",hittites,hittites-mystery.webp,hittites-reveal.webp,1
+23,Person,"Ephron",ephron,ephron-mystery.webp,ephron-reveal.webp,1
+23,Person,"Zohar",zohar,zohar-mystery.webp,zohar-reveal.webp,1
+23,Place,"Cave of Machpelah",cave-of-machpelah,cave-of-machpelah-mystery.webp,cave-of-machpelah-reveal.webp,2
+23,Chapter card,"Genesis 23 scene",chapter-23,chapter-23-mystery.webp,chapter-23-reveal.webp,7
+24,Thing,"A vail",vail,vail-mystery.webp,vail-reveal.webp,1
+24,Thing,"Camels",camels,camels-mystery.webp,camels-reveal.webp,1
+24,Thing,"Earring and bracelets",earring-and-bracelets,earring-and-bracelets-mystery.webp,earring-and-bracelets-reveal.webp,1
+24,Thing,"Eat",eat,eat-mystery.webp,eat-reveal.webp,1
+24,Thing,"His mother’s death",his-mothers-death,his-mothers-death-mystery.webp,his-mothers-death-reveal.webp,1
+24,Thing,"Mother of millions",mother-of-millions,mother-of-millions-mystery.webp,mother-of-millions-reveal.webp,1
+24,Thing,"The Canaanites",canaanites,canaanites-mystery.webp,canaanites-reveal.webp,1
+24,Thing,"Under his thigh",under-his-thigh,under-his-thigh-mystery.webp,under-his-thigh-reveal.webp,1
+24,Person,"Bethuel",bethuel,bethuel-mystery.webp,bethuel-reveal.webp,2
+24,Person,"Her nurse",her-nurse,her-nurse-mystery.webp,her-nurse-reveal.webp,1
+24,Person,"His eldest servant",his-eldest-servant,his-eldest-servant-mystery.webp,his-eldest-servant-reveal.webp,1
+24,Person,"Laban and Bethuel",laban-and-bethuel,laban-and-bethuel-mystery.webp,laban-and-bethuel-reveal.webp,1
+24,Place,"Lahai-roi",lahai-roi,lahai-roi-mystery.webp,lahai-roi-reveal.webp,1
+24,Place,"The city of Nahor",city-of-nahor,city-of-nahor-mystery.webp,city-of-nahor-reveal.webp,1
+24,Chapter card,"Genesis 24 scene",chapter-24,chapter-24-mystery.webp,chapter-24-reveal.webp,8
+25,Thing,"A cunning hunter",cunning-hunter,cunning-hunter-mystery.webp,cunning-hunter-reveal.webp,1
+25,Thing,"Elder serves younger",elder-serves-younger,elder-serves-younger-mystery.webp,elder-serves-younger-reveal.webp,1
+25,Thing,"His birthright",his-birthright,his-birthright-mystery.webp,his-birthright-reveal.webp,2
+25,Thing,"Red pottage",red-pottage,red-pottage-mystery.webp,red-pottage-reveal.webp,1
+25,Thing,"Struggled together",struggled-together,struggled-together-mystery.webp,struggled-together-reveal.webp,1
+25,Thing,"Swear to him",swear-to-him,swear-to-him-mystery.webp,swear-to-him-reveal.webp,1
+25,Person,"Edom",edom,edom-mystery.webp,edom-reveal.webp,2
+25,Person,"Esau and Jacob",esau-and-jacob,esau-and-jacob-mystery.webp,esau-and-jacob-reveal.webp,1
+25,Person,"Isaac and Ishmael",isaac-and-ishmael,isaac-and-ishmael-mystery.webp,isaac-and-ishmael-reveal.webp,1
+25,Person,"Keturah",keturah,keturah-mystery.webp,keturah-reveal.webp,1
+25,Place,"The east country",east-country,east-country-mystery.webp,east-country-reveal.webp,1
+25,Chapter card,"Genesis 25 scene",chapter-25,chapter-25-mystery.webp,chapter-25-reveal.webp,5
+26,Thing,"A peace covenant",peace-covenant,peace-covenant-mystery.webp,peace-covenant-reveal.webp,1
+26,Thing,"Abraham’s wells",abrahams-wells,abrahams-wells-mystery.webp,abrahams-wells-reveal.webp,1
+26,Thing,"His father’s names",his-fathers-names,his-fathers-names-mystery.webp,his-fathers-names-reveal.webp,1
+26,Person,"Esau’s Hittite wives",esaus-hittite-wives,esaus-hittite-wives-mystery.webp,esaus-hittite-wives-reveal.webp,1
+26,Person,"The herdmen of Gerar",herdmen-of-gerar,herdmen-of-gerar-mystery.webp,herdmen-of-gerar-reveal.webp,1
+26,Place,"Rehoboth",rehoboth,rehoboth-mystery.webp,rehoboth-reveal.webp,1
+26,Chapter card,"Genesis 26 scene",chapter-26,chapter-26-mystery.webp,chapter-26-reveal.webp,11
+27,Thing,"Goat skins",goat-skins,goat-skins-mystery.webp,goat-skins-reveal.webp,1
+27,Thing,"His sword",his-sword,his-sword-mystery.webp,his-sword-reveal.webp,1
+27,Thing,"Savoury meat",savoury-meat,savoury-meat-mystery.webp,savoury-meat-reveal.webp,1
+27,Thing,"See",see,see-mystery.webp,see-reveal.webp,1
+27,Person,"The daughters of Heth",daughters-of-heth,daughters-of-heth-mystery.webp,daughters-of-heth-reveal.webp,1
+27,Chapter card,"Genesis 27 scene",chapter-27,chapter-27-mystery.webp,chapter-27-reveal.webp,11
+28,Thing,"Afraid",afraid,afraid-mystery.webp,afraid-reveal.webp,2
+28,Thing,"Clothes to wear",clothes-to-wear,clothes-to-wear-mystery.webp,clothes-to-wear-reveal.webp,1
+28,Thing,"God’s house",gods-house,gods-house-mystery.webp,gods-house-reveal.webp,1
+28,Thing,"Keep him",keep-him,keep-him-mystery.webp,keep-him-reveal.webp,1
+28,Thing,"Oil",oil,oil-mystery.webp,oil-reveal.webp,1
+28,Thing,"Stones",stones,stones-mystery.webp,stones-reveal.webp,1
+28,Person,"All families of earth",all-families-of-earth,all-families-of-earth-mystery.webp,all-families-of-earth-reveal.webp,1
+28,Place,"Luz",luz,luz-mystery.webp,luz-reveal.webp,3
+28,Place,"Padan-aram",padan-aram,padan-aram-mystery.webp,padan-aram-reveal.webp,2
+28,Chapter card,"Genesis 28 scene",chapter-28,chapter-28-mystery.webp,chapter-28-reveal.webp,7
+29,Thing,"A great stone",great-stone,great-stone-mystery.webp,great-stone-reveal.webp,1
+29,Thing,"A well",well,well-mystery.webp,well-reveal.webp,1
+29,Thing,"Leah’s week",leahs-week,leahs-week-mystery.webp,leahs-week-reveal.webp,1
+29,Thing,"Tender",tender,tender-mystery.webp,tender-reveal.webp,1
+29,Person,"Zilpah",zilpah,zilpah-mystery.webp,zilpah-reveal.webp,1
+29,Chapter card,"Genesis 29 scene",chapter-29,chapter-29-mystery.webp,chapter-29-reveal.webp,8
+30,Thing,"Nothing at all",nothing-at-all,nothing-at-all-mystery.webp,nothing-at-all-reveal.webp,1
+30,Thing,"Rods of wood",rods-of-wood,rods-of-wood-mystery.webp,rods-of-wood-reveal.webp,1
+30,Thing,"The stronger ones",stronger-ones,stronger-ones-mystery.webp,stronger-ones-reveal.webp,1
+30,Thing,"Very rich",very-rich,very-rich-mystery.webp,very-rich-reveal.webp,1
+30,Person,"Bilhah",bilhah,bilhah-mystery.webp,bilhah-reveal.webp,2
+30,Person,"Dan",dan,dan-mystery.webp,dan-reveal.webp,2
+30,Person,"Dinah",dinah,dinah-mystery.webp,dinah-reveal.webp,4
+30,Person,"Gad",gad,gad-mystery.webp,gad-reveal.webp,1
+30,Person,"His sons",his-sons,his-sons-mystery.webp,his-sons-reveal.webp,1
+30,Person,"Issachar",issachar,issachar-mystery.webp,issachar-reveal.webp,2
+30,Person,"Zebulun",zebulun,zebulun-mystery.webp,zebulun-reveal.webp,2
+30,Place,"The watering troughs",watering-troughs,watering-troughs-mystery.webp,watering-troughs-reveal.webp,1
+30,Chapter card,"Genesis 30 scene",chapter-30,chapter-30-mystery.webp,chapter-30-reveal.webp,6
+31,Thing,"A covenant",covenant,covenant-mystery.webp,covenant-reveal.webp,1
+31,Thing,"A stone",stone,stone-mystery.webp,stone-reveal.webp,1
+31,Thing,"Rachel’s",rachels,rachels-mystery.webp,rachels-reveal.webp,1
+31,Thing,"Sold them",sold-them,sold-them-mystery.webp,sold-them-reveal.webp,1
+31,Thing,"Songs and harp",songs-and-harp,songs-and-harp-mystery.webp,songs-and-harp-reveal.webp,1
+31,Person,"Laban’s sons",labans-sons,labans-sons-mystery.webp,labans-sons-reveal.webp,1
+31,Person,"Rachel and Leah",rachel-and-leah,rachel-and-leah-mystery.webp,rachel-and-leah-reveal.webp,1
+31,Place,"Galeed",galeed,galeed-mystery.webp,galeed-reveal.webp,1
+31,Place,"Mizpah",mizpah,mizpah-mystery.webp,mizpah-reveal.webp,1
+31,Place,"Mount Gilead",mount-gilead,mount-gilead-mystery.webp,mount-gilead-reveal.webp,1
+31,Chapter card,"Genesis 31 scene",chapter-31,chapter-31-mystery.webp,chapter-31-reveal.webp,8
+32,Thing,"Calm Esau’s anger",calm-esaus-anger,calm-esaus-anger-mystery.webp,calm-esaus-anger-reveal.webp,1
+32,Thing,"Esau’s servant",esaus-servant,esaus-servant-mystery.webp,esaus-servant-reveal.webp,1
+32,Thing,"Herds of animals",herds-of-animals,herds-of-animals-mystery.webp,herds-of-animals-reveal.webp,1
+32,Thing,"His name",his-name,his-name-mystery.webp,his-name-reveal.webp,1
+32,Thing,"His staff",his-staff,his-staff-mystery.webp,his-staff-reveal.webp,1
+32,Thing,"His thigh",his-thigh,his-thigh-mystery.webp,his-thigh-reveal.webp,1
+32,Thing,"Israel",israel,israel-mystery.webp,israel-reveal.webp,2
+32,Thing,"The thigh sinew",thigh-sinew,thigh-sinew-mystery.webp,thigh-sinew-reveal.webp,1
+32,Thing,"Thou bless me",thou-bless-me,thou-bless-me-mystery.webp,thou-bless-me-reveal.webp,1
+32,Thing,"Until daybreak",until-daybreak,until-daybreak-mystery.webp,until-daybreak-reveal.webp,1
+32,Person,"The angels of God",angels-of-god,angels-of-god-mystery.webp,angels-of-god-reveal.webp,1
+32,Place,"Mahanaim",mahanaim,mahanaim-mystery.webp,mahanaim-reveal.webp,1
+32,Place,"The Jabbok",jabbok,jabbok-mystery.webp,jabbok-reveal.webp,1
+32,Chapter card,"Genesis 32 scene",chapter-32,chapter-32-mystery.webp,chapter-32-reveal.webp,10
+33,Thing,"Booths",booths,booths-mystery.webp,booths-reveal.webp,1
+33,Person,"Hamor’s sons",hamors-sons,hamors-sons-mystery.webp,hamors-sons-reveal.webp,1
+33,Person,"Leah and her children",leah-and-her-children,leah-and-her-children-mystery.webp,leah-and-her-children-reveal.webp,1
+33,Person,"Rachel and Joseph",rachel-and-joseph,rachel-and-joseph-mystery.webp,rachel-and-joseph-reveal.webp,1
+33,Person,"The handmaids",handmaids,handmaids-mystery.webp,handmaids-reveal.webp,1
+33,Place,"Seir",seir,seir-mystery.webp,seir-reveal.webp,1
+33,Place,"Succoth",succoth,succoth-mystery.webp,succoth-reveal.webp,1
+33,Chapter card,"Genesis 33 scene",chapter-33,chapter-33-mystery.webp,chapter-33-reveal.webp,11
+34,Thing,"A harlot",harlot,harlot-mystery.webp,harlot-reveal.webp,1
+34,Thing,"Brothers",brothers,brothers-mystery.webp,brothers-reveal.webp,1
+34,Thing,"Peaceable",peaceable,peaceable-mystery.webp,peaceable-reveal.webp,1
+34,Thing,"The Hivites",hivites,hivites-mystery.webp,hivites-reveal.webp,1
+34,Thing,"Troubled him",troubled-him,troubled-him-mystery.webp,troubled-him-reveal.webp,1
+34,Person,"Hamor",hamor,hamor-mystery.webp,hamor-reveal.webp,1
+34,Person,"Hamor and Shechem",hamor-and-shechem,hamor-and-shechem-mystery.webp,hamor-and-shechem-reveal.webp,1
+34,Person,"Shechem",shechem,shechem-mystery.webp,shechem-reveal.webp,1
+34,Person,"Simeon and Levi",simeon-and-levi,simeon-and-levi-mystery.webp,simeon-and-levi-reveal.webp,2
+34,Place,"At the city gate",at-the-city-gate,at-the-city-gate-mystery.webp,at-the-city-gate-reveal.webp,1
+34,Chapter card,"Genesis 34 scene",chapter-34,chapter-34-mystery.webp,chapter-34-reveal.webp,11
+35,Thing,"A pillar",pillar,pillar-mystery.webp,pillar-reveal.webp,1
+35,Thing,"Ben-oni",ben-oni,ben-oni-mystery.webp,ben-oni-reveal.webp,1
+35,Thing,"Earrings",earrings,earrings-mystery.webp,earrings-reveal.webp,1
+35,Thing,"Strange gods",strange-gods,strange-gods-mystery.webp,strange-gods-reveal.webp,1
+35,Person,"Deborah",deborah,deborah-mystery.webp,deborah-reveal.webp,1
+35,Person,"Joseph and Benjamin",joseph-and-benjamin,joseph-and-benjamin-mystery.webp,joseph-and-benjamin-reveal.webp,2
+35,Person,"The midwife",midwife,midwife-mystery.webp,midwife-reveal.webp,2
+35,Place,"Bethlehem",bethlehem,bethlehem-mystery.webp,bethlehem-reveal.webp,2
+35,Place,"El-beth-el",el-beth-el,el-beth-el-mystery.webp,el-beth-el-reveal.webp,1
+35,Chapter card,"Genesis 35 scene",chapter-35,chapter-35-mystery.webp,chapter-35-reveal.webp,5
+36,Thing,"Dukes",dukes,dukes-mystery.webp,dukes-reveal.webp,1
+36,Thing,"His whole household",his-whole-household,his-whole-household-mystery.webp,his-whole-household-reveal.webp,1
+36,Thing,"Midian",midian,midian-mystery.webp,midian-reveal.webp,1
+36,Thing,"Mules",mules,mules-mystery.webp,mules-reveal.webp,1
+36,Thing,"The Edomites",edomites,edomites-mystery.webp,edomites-reveal.webp,1
+36,Thing,"The Horites",horites,horites-mystery.webp,horites-reveal.webp,1
+36,Thing,"Too many cattle",too-many-cattle,too-many-cattle-mystery.webp,too-many-cattle-reveal.webp,1
+36,Person,"Adah",adah,adah-mystery.webp,adah-reveal.webp,1
+36,Person,"Amalek",amalek,amalek-mystery.webp,amalek-reveal.webp,1
+36,Person,"Anah",anah,anah-mystery.webp,anah-reveal.webp,1
+36,Person,"Bela",bela,bela-mystery.webp,bela-reveal.webp,1
+36,Person,"Eliphaz",eliphaz,eliphaz-mystery.webp,eliphaz-reveal.webp,1
+36,Person,"Korah",korah,korah-mystery.webp,korah-reveal.webp,1
+36,Person,"Reuel",reuel,reuel-mystery.webp,reuel-reveal.webp,1
+36,Person,"Saul",saul,saul-mystery.webp,saul-reveal.webp,1
+36,Person,"Wife of king Hadar",wife-of-king-hadar,wife-of-king-hadar-mystery.webp,wife-of-king-hadar-reveal.webp,1
+36,Place,"Mount Seir",mount-seir,mount-seir-mystery.webp,mount-seir-reveal.webp,1
+36,Chapter card,"Genesis 36 scene",chapter-36,chapter-36-mystery.webp,chapter-36-reveal.webp,2
+37,Thing,"A goat’s blood",goats-blood,goats-blood-mystery.webp,goats-blood-reveal.webp,1
+37,Thing,"His brothers’ sheaves",his-brothers-sheaves,his-brothers-sheaves-mystery.webp,his-brothers-sheaves-reveal.webp,1
+37,Thing,"Into a pit",into-a-pit,into-a-pit-mystery.webp,into-a-pit-reveal.webp,1
+37,Thing,"Ishmeelites",ishmeelites,ishmeelites-mystery.webp,ishmeelites-reveal.webp,1
+37,Thing,"Sackcloth",sackcloth,sackcloth-mystery.webp,sackcloth-reveal.webp,1
+37,Thing,"This dreamer",this-dreamer,this-dreamer-mystery.webp,this-dreamer-reveal.webp,1
+37,Person,"Bilhah and Zilpah",bilhah-and-zilpah,bilhah-and-zilpah-mystery.webp,bilhah-and-zilpah-reveal.webp,1
+37,Chapter card,"Genesis 37 scene",chapter-37,chapter-37-mystery.webp,chapter-37-reveal.webp,8
+38,Thing,"A scarlet thread",scarlet-thread,scarlet-thread-mystery.webp,scarlet-thread-reveal.webp,1
+38,Thing,"A young goat",young-goat,young-goat-mystery.webp,young-goat-reveal.webp,1
+38,Thing,"Her widow’s garments",her-widows-garments,her-widows-garments-mystery.webp,her-widows-garments-reveal.webp,1
+38,Thing,"Twins",twins,twins-mystery.webp,twins-reveal.webp,1
+38,Person,"Er",er,er-mystery.webp,er-reveal.webp,1
+38,Person,"Hirah",hirah,hirah-mystery.webp,hirah-reveal.webp,1
+38,Person,"Onan",onan,onan-mystery.webp,onan-reveal.webp,1
+38,Person,"Pharez",pharez,pharez-mystery.webp,pharez-reveal.webp,1
+38,Person,"Shelah",shelah,shelah-mystery.webp,shelah-reveal.webp,1
+38,Person,"Shuah",shuah,shuah-mystery.webp,shuah-reveal.webp,1
+38,Person,"Tamar",tamar,tamar-mystery.webp,tamar-reveal.webp,1
+38,Person,"Zarah",zarah,zarah-mystery.webp,zarah-reveal.webp,1
+38,Place,"Her father’s house",her-fathers-house,her-fathers-house-mystery.webp,her-fathers-house-reveal.webp,1
+38,Place,"Timnath",timnath,timnath-mystery.webp,timnath-reveal.webp,1
+38,Chapter card,"Genesis 38 scene",chapter-38,chapter-38-mystery.webp,chapter-38-reveal.webp,7
+39,Thing,"His garment",his-garment,his-garment-mystery.webp,his-garment-reveal.webp,1
+39,Thing,"Mercy",mercy,mercy-mystery.webp,mercy-reveal.webp,1
+39,Thing,"Potiphar’s house",potiphars-house,potiphars-house-mystery.webp,potiphars-house-reveal.webp,1
+39,Person,"His wife",his-wife,his-wife-mystery.webp,his-wife-reveal.webp,1
+39,Person,"Potiphar’s wife",potiphars-wife,potiphars-wife-mystery.webp,potiphars-wife-reveal.webp,1
+39,Person,"The prison keeper",prison-keeper,prison-keeper-mystery.webp,prison-keeper-reveal.webp,1
+39,Place,"For the king’s prisoners",for-the-kings-prisoners,for-the-kings-prisoners-mystery.webp,for-the-kings-prisoners-reveal.webp,1
+39,Chapter card,"Genesis 39 scene",chapter-39,chapter-39-mystery.webp,chapter-39-reveal.webp,13
+40,Thing,"A tree",tree,tree-mystery.webp,tree-reveal.webp,1
+40,Thing,"A vine",vine,vine-mystery.webp,vine-reveal.webp,1
+40,Thing,"Butler and baker",butler-and-baker,butler-and-baker-mystery.webp,butler-and-baker-reveal.webp,1
+40,Thing,"Pharaoh’s birthday",pharaohs-birthday,pharaohs-birthday-mystery.webp,pharaohs-birthday-reveal.webp,1
+40,Thing,"Pharaoh’s cup",pharaohs-cup,pharaohs-cup-mystery.webp,pharaohs-cup-reveal.webp,1
+40,Person,"Captain of the guard",captain-of-the-guard,captain-of-the-guard-mystery.webp,captain-of-the-guard-reveal.webp,1
+40,Person,"The chief butler",chief-butler,chief-butler-mystery.webp,chief-butler-reveal.webp,2
+40,Place,"Land of the Hebrews",land-of-the-hebrews,land-of-the-hebrews-mystery.webp,land-of-the-hebrews-reveal.webp,1
+40,Place,"The prison with Joseph",prison-with-joseph,prison-with-joseph-mystery.webp,prison-with-joseph-reveal.webp,1
+40,Chapter card,"Genesis 40 scene",chapter-40,chapter-40-mystery.webp,chapter-40-reveal.webp,12
+41,Thing,"Ate them up",ate-them-up,ate-them-up-mystery.webp,ate-them-up-reveal.webp,1
+41,Thing,"Corn",corn,corn-mystery.webp,corn-reveal.webp,1
+41,Thing,"Food and corn",food-and-corn,food-and-corn-mystery.webp,food-and-corn-reveal.webp,1
+41,Thing,"Plenty",plenty,plenty-mystery.webp,plenty-reveal.webp,1
+41,Thing,"The storehouses",storehouses,storehouses-mystery.webp,storehouses-reveal.webp,1
+41,Person,"Asenath",asenath,asenath-mystery.webp,asenath-reveal.webp,2
+41,Person,"Egypt’s magicians",egypts-magicians,egypts-magicians-mystery.webp,egypts-magicians-reveal.webp,1
+41,Person,"Ephraim",ephraim,ephraim-mystery.webp,ephraim-reveal.webp,2
+41,Person,"God",god,god-mystery.webp,god-reveal.webp,4
+41,Person,"Manasseh",manasseh,manasseh-mystery.webp,manasseh-reveal.webp,3
+41,Person,"The chief baker",chief-baker,chief-baker-mystery.webp,chief-baker-reveal.webp,1
+41,Place,"On",on,on-mystery.webp,on-reveal.webp,1
+41,Place,"The dungeon",dungeon,dungeon-mystery.webp,dungeon-reveal.webp,1
+41,Chapter card,"Genesis 41 scene",chapter-41,chapter-41-mystery.webp,chapter-41-reveal.webp,6
+42,Thing,"Donkeys",donkeys,donkeys-mystery.webp,donkeys-reveal.webp,1
+42,Thing,"His money",his-money,his-money-mystery.webp,his-money-reveal.webp,2
+42,Thing,"Joseph and Simeon",joseph-and-simeon,joseph-and-simeon-mystery.webp,joseph-and-simeon-reveal.webp,1
+42,Thing,"Spies",spies,spies-mystery.webp,spies-reveal.webp,1
+42,Person,"Their youngest brother",their-youngest-brother,their-youngest-brother-mystery.webp,their-youngest-brother-reveal.webp,2
+42,Place,"At the inn",at-the-inn,at-the-inn-mystery.webp,at-the-inn-reveal.webp,1
+42,Chapter card,"Genesis 42 scene",chapter-42,chapter-42-mystery.webp,chapter-42-reveal.webp,9
+43,Thing,"An oversight",oversight,oversight-mystery.webp,oversight-reveal.webp,1
+43,Thing,"Double money",double-money,double-money-mystery.webp,double-money-reveal.webp,1
+43,Thing,"Honey and nuts",honey-and-nuts,honey-and-nuts-mystery.webp,honey-and-nuts-reveal.webp,1
+43,Thing,"Oldest to youngest",oldest-to-youngest,oldest-to-youngest-mystery.webp,oldest-to-youngest-reveal.webp,1
+43,Thing,"Set on bread",set-on-bread,set-on-bread-mystery.webp,set-on-bread-reveal.webp,1
+43,Person,"God Almighty",god-almighty,god-almighty-mystery.webp,god-almighty-reveal.webp,1
+43,Person,"Joseph’s steward",josephs-steward,josephs-steward-mystery.webp,josephs-steward-reveal.webp,1
+43,Person,"Their God",their-god,their-god-mystery.webp,their-god-reveal.webp,1
+43,Person,"Their old father",their-old-father,their-old-father-mystery.webp,their-old-father-reveal.webp,1
+43,Place,"His chamber",his-chamber,his-chamber-mystery.webp,his-chamber-reveal.webp,1
+43,Place,"His own house",his-own-house,his-own-house-mystery.webp,his-own-house-reveal.webp,1
+43,Chapter card,"Genesis 43 scene",chapter-43,chapter-43-mystery.webp,chapter-43-reveal.webp,7
+44,Thing,"Die",die,die-mystery.webp,die-reveal.webp,1
+44,Thing,"Evil",evil,evil-mystery.webp,evil-reveal.webp,1
+44,Thing,"His servant",his-servant,his-servant-mystery.webp,his-servant-reveal.webp,1
+44,Thing,"Returning the money",returning-the-money,returning-the-money-mystery.webp,returning-the-money-reveal.webp,1
+44,Thing,"Tore their clothes",tore-their-clothes,tore-their-clothes-mystery.webp,tore-their-clothes-reveal.webp,1
+44,Thing,"Torn in pieces",torn-in-pieces,torn-in-pieces-mystery.webp,torn-in-pieces-reveal.webp,1
+44,Person,"His steward",his-steward,his-steward-mystery.webp,his-steward-reveal.webp,1
+44,Person,"The youngest",youngest,youngest-mystery.webp,youngest-reveal.webp,1
+44,Place,"Back to Joseph’s house",back-to-josephs-house,back-to-josephs-house-mystery.webp,back-to-josephs-house-reveal.webp,1
+44,Chapter card,"Genesis 44 scene",chapter-44,chapter-44-mystery.webp,chapter-44-reveal.webp,5
+45,Thing,"Glory in Egypt",glory-in-egypt,glory-in-egypt-mystery.webp,glory-in-egypt-reveal.webp,1
+45,Thing,"Joseph is alive",joseph-is-alive,joseph-is-alive-mystery.webp,joseph-is-alive-reveal.webp,1
+45,Thing,"Sold into Egypt",sold-into-egypt,sold-into-egypt-mystery.webp,sold-into-egypt-reveal.webp,1
+45,Thing,"Talked with him",talked-with-him,talked-with-him-mystery.webp,talked-with-him-reveal.webp,1
+45,Thing,"The wagons",wagons,wagons-mystery.webp,wagons-reveal.webp,2
+45,Thing,"Their stuff",their-stuff,their-stuff-mystery.webp,their-stuff-reveal.webp,1
+45,Person,"Every other man",every-other-man,every-other-man-mystery.webp,every-other-man-reveal.webp,1
+45,Person,"The Egyptians",egyptians,egyptians-mystery.webp,egyptians-reveal.webp,3
+45,Chapter card,"Genesis 45 scene",chapter-45,chapter-45-mystery.webp,chapter-45-reveal.webp,11
+46,Thing,"Shepherds",shepherds,shepherds-mystery.webp,shepherds-reveal.webp,2
+46,Thing,"Their work",their-work,their-work-mystery.webp,their-work-reveal.webp,1
+46,Person,"Er and Onan",er-and-onan,er-and-onan-mystery.webp,er-and-onan-reveal.webp,1
+46,Chapter card,"Genesis 46 scene",chapter-46,chapter-46-mystery.webp,chapter-46-reveal.webp,8
+47,Thing,"Blessed Pharaoh",blessed-pharaoh,blessed-pharaoh-mystery.webp,blessed-pharaoh-reveal.webp,1
+47,Thing,"Bread",bread,bread-mystery.webp,bread-reveal.webp,1
+47,Thing,"Famine in Canaan",famine-in-canaan,famine-in-canaan-mystery.webp,famine-in-canaan-reveal.webp,1
+47,Thing,"Few and evil",few-and-evil,few-and-evil-mystery.webp,few-and-evil-reveal.webp,1
+47,Thing,"His cattle",his-cattle,his-cattle-mystery.webp,his-cattle-reveal.webp,1
+47,Thing,"His hand",his-hand,his-hand-mystery.webp,his-hand-reveal.webp,1
+47,Thing,"Into cities",into-cities,into-cities-mystery.webp,into-cities-reveal.webp,1
+47,Thing,"Saved their lives",saved-their-lives,saved-their-lives-mystery.webp,saved-their-lives-reveal.webp,1
+47,Thing,"The money",money,money-mystery.webp,money-reveal.webp,1
+47,Thing,"Their cattle",their-cattle,their-cattle-mystery.webp,their-cattle-reveal.webp,1
+47,Thing,"Themselves and land",themselves-and-land,themselves-and-land-mystery.webp,themselves-and-land-reveal.webp,1
+47,Person,"Pharaoh’s",pharaohs,pharaohs-mystery.webp,pharaohs-reveal.webp,1
+47,Person,"The priests’",priests,priests-mystery.webp,priests-reveal.webp,1
+47,Place,"Rameses",rameses,rameses-mystery.webp,rameses-reveal.webp,1
+47,Chapter card,"Genesis 47 scene",chapter-47,chapter-47-mystery.webp,chapter-47-reveal.webp,6
+48,Thing,"Fed him",fed-him,fed-him-mystery.webp,fed-him-reveal.webp,1
+48,Thing,"Joseph’s face",josephs-face,josephs-face-mystery.webp,josephs-face-reveal.webp,1
+48,Thing,"Sword and bow",sword-and-bow,sword-and-bow-mystery.webp,sword-and-bow-reveal.webp,1
+48,Thing,"Their fathers’ land",their-fathers-land,their-fathers-land-mystery.webp,their-fathers-land-reveal.webp,1
+48,Person,"Abraham and Isaac",abraham-and-isaac,abraham-and-isaac-mystery.webp,abraham-and-isaac-reveal.webp,1
+48,Person,"Manasseh and Ephraim",manasseh-and-ephraim,manasseh-and-ephraim-mystery.webp,manasseh-and-ephraim-reveal.webp,1
+48,Person,"Reuben and Simeon",reuben-and-simeon,reuben-and-simeon-mystery.webp,reuben-and-simeon-reveal.webp,1
+48,Person,"The Amorite",amorite,amorite-mystery.webp,amorite-reveal.webp,1
+48,Person,"The Angel",angel,angel-mystery.webp,angel-reveal.webp,1
+48,Chapter card,"Genesis 48 scene",chapter-48,chapter-48-mystery.webp,chapter-48-reveal.webp,9
+49,Thing,"A wolf",wolf,wolf-mystery.webp,wolf-reveal.webp,1
+49,Thing,"His fathers",his-fathers,his-fathers-mystery.webp,his-fathers-reveal.webp,1
+49,Thing,"Scatter them",scatter-them,scatter-them-mystery.webp,scatter-them-reveal.webp,1
+49,Thing,"The sceptre",sceptre,sceptre-mystery.webp,sceptre-reveal.webp,1
+49,Thing,"Water",water,water-mystery.webp,water-reveal.webp,1
+49,Person,"Asher",asher,asher-mystery.webp,asher-reveal.webp,1
+49,Person,"Ephron the Hittite",ephron-the-hittite,ephron-the-hittite-mystery.webp,ephron-the-hittite-reveal.webp,1
+49,Person,"Naphtali",naphtali,naphtali-mystery.webp,naphtali-reveal.webp,1
+49,Person,"The archers",archers,archers-mystery.webp,archers-reveal.webp,1
+49,Place,"Machpelah",machpelah,machpelah-mystery.webp,machpelah-reveal.webp,1
+49,Chapter card,"Genesis 49 scene",chapter-49,chapter-49-mystery.webp,chapter-49-reveal.webp,4
+50,Thing,"Chariots and horsemen",chariots-and-horsemen,chariots-and-horsemen-mystery.webp,chariots-and-horsemen-reveal.webp,1
+50,Thing,"His bones",his-bones,his-bones-mystery.webp,his-bones-reveal.webp,1
+50,Thing,"His grave",his-grave,his-grave-mystery.webp,his-grave-reveal.webp,1
+50,Thing,"Joseph forgive them",joseph-forgive-them,joseph-forgive-them-mystery.webp,joseph-forgive-them-reveal.webp,1
+50,Thing,"Joseph’s revenge",josephs-revenge,josephs-revenge-mystery.webp,josephs-revenge-reveal.webp,1
+50,Thing,"Nourish them",nourish-them,nourish-them-mystery.webp,nourish-them-reveal.webp,1
+50,Person,"Pharaoh’s house",pharaohs-house,pharaohs-house-mystery.webp,pharaohs-house-reveal.webp,1
+50,Person,"The physicians",physicians,physicians-mystery.webp,physicians-reveal.webp,1
+50,Place,"Atad",atad,atad-mystery.webp,atad-reveal.webp,1
+50,Chapter card,"Genesis 50 scene",chapter-50,chapter-50-mystery.webp,chapter-50-reveal.webp,9
