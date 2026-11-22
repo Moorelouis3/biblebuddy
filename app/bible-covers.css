@@ -58,35 +58,6 @@ html[data-bb-cover] body[class] {
   will-change: transform;
 }
 
-/* The soft fill behind the picture. Only seen on screens wider than tall. */
-.bb-cover-art-fill {
-  position: absolute;
-  inset: -8%;
-  width: 116%;
-  height: 116%;
-  max-width: none;
-  max-height: none;
-  object-fit: cover;
-  /* Already blurred and darkened in the file: no live filter. */
-  display: none;
-}
-/* Wider than tall (a laptop, a monitor, a phone on its side): the whole tall
-   picture, full height and sharp, in the middle; the blurred copy fills the
-   sides so there is never a hard edge. */
-@media (min-aspect-ratio: 1/1) {
-  .bb-cover-art-fill { display: block; }
-  .bb-cover-art {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center center;
-    -webkit-mask-image: linear-gradient(90deg, transparent calc(50% - 23vh), #000 calc(50% - 13vh), #000 calc(50% + 13vh), transparent calc(50% + 23vh));
-    mask-image: linear-gradient(90deg, transparent calc(50% - 23vh), #000 calc(50% - 13vh), #000 calc(50% + 13vh), transparent calc(50% + 23vh));
-  }
-}
-
 .bb-cover-shade {
   position: absolute;
   inset: 0;

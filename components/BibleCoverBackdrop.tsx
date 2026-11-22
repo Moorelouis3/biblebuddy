@@ -170,16 +170,11 @@ export default function BibleCoverBackdrop() {
       {/* Dark has no picture: the backdrop is just its base colour. */}
       {cover.art ? (
         <>
-          {/* Every cover is painted as a tall phone picture. On a wide screen it
-              used to be blown up 2x and cropped to a thin middle band, which
-              looked stretched and lost the best part (Louis, 2026-11-22). Now
-              the whole picture stands sharp in the middle, and a soft, darker
-              copy of it (pre-blurred, scripts/generate-cover-fills.mjs) fills the sides (app/bible-covers.css). On a phone the
-              fill sits hidden under the picture. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="bb-cover-art-fill" src={cover.art.fill} alt="" decoding="async" />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="bb-cover-art" src={cover.art.mobile} alt="" decoding="async" />
+          <picture>
+            <source media="(min-width: 900px)" srcSet={cover.art.desktop} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="bb-cover-art" src={cover.art.mobile} alt="" decoding="async" />
+          </picture>
           <div className="bb-cover-shade" />
         </>
       ) : null}

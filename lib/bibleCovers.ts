@@ -77,7 +77,7 @@ export type BibleCover = {
   theme: AppThemeTokens;
   cover: BibleCoverTokens;
   /** null: a plain cover with no picture (Dark). */
-  art: { mobile: string; desktop: string; thumb: string; /** Pre-blurred side fill for wide screens (scripts/generate-cover-fills.mjs). */ fill: string } | null;
+  art: { mobile: string; desktop: string; thumb: string } | null;
   /** Base colour under the art while it loads, and the still fallback tint. */
   base: string;
   /**
@@ -136,7 +136,6 @@ function makeCover(spec: CoverSpec): BibleCover {
           mobile: `/skins/optimized/${spec.art}-mobile.webp`,
           desktop: `/skins/optimized/${spec.art}-desktop.webp`,
           thumb: `/skins/optimized/${spec.art}-thumb.webp`,
-          fill: `/skins/optimized/${spec.art}-fill.webp`,
         }
       : null,
     motion: spec.motion ?? "drift",
@@ -264,7 +263,6 @@ export const BIBLE_COVERS: Record<BibleCoverId, BibleCover> = {
       mobile: "/covers/winter-cabin-mobile.webp",
       desktop: "/covers/winter-cabin-desktop.webp",
       thumb: "/covers/winter-cabin-thumb.webp",
-      fill: "/covers/winter-cabin-fill.webp",
     },
     motion: "snow",
     theme: {
