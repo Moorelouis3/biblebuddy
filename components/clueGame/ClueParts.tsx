@@ -379,13 +379,13 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-clue-card-face { position:absolute; inset:0; border-radius:10px; overflow:hidden; backface-visibility:hidden; -webkit-backface-visibility:hidden;
   background: url(/games/clue/ui/card-face.webp) center / 100% 100% no-repeat; box-shadow: 0 10px 22px rgba(0,0,0,.45); display:flex; flex-direction:column; }
 .bb-clue-card-reveal { transform: rotateY(180deg); }
-.bb-clue-card-art { flex:1; display:grid; place-items:center; overflow:hidden; padding:8%; }
+.bb-clue-card-art { flex:1 1 0; min-height:0; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:10% 9% 2%; }
 .bb-clue-card-art.is-color { padding:0; }
-.bb-clue-art { width:100%; height:100%; object-fit:contain; }
+.bb-clue-art { display:block; width:100%; height:100%; max-width:100%; max-height:100%; object-fit:contain; }
 .bb-clue-card-art.is-color .bb-clue-art { object-fit:cover; }
 .bb-clue-art.is-mystery { filter: drop-shadow(0 2px 0 rgba(255,255,255,.35)); }
 .bb-clue-sil { width:78%; color:#3a2815; }
-.bb-clue-card-cat, .bb-clue-card-name { padding:5px 2px 6px; text-align:center; font-family: Georgia, serif; font-weight:700; color:#3b2412; font-size: clamp(10px, 2.6vw, 13px); letter-spacing:.08em; }
+.bb-clue-card-cat, .bb-clue-card-name { flex:none; padding:3px 4px 8%; text-align:center; font-family: Georgia, serif; font-weight:700; color:#3b2412; font-size: clamp(8px, 2.3vw, 12px); letter-spacing:.04em; white-space:nowrap; overflow:hidden; text-overflow:clip; }
 .bb-clue-card-name { letter-spacing:0; font-size: clamp(11px, 3vw, 15px); font-style:italic; }
 .bb-clue-back-img { width:100%; height:100%; object-fit:cover; }
 .bb-clue-back-plain { width:100%; height:100%; background: radial-gradient(circle,#2f7a47,#123a22); }
