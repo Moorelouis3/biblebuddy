@@ -601,11 +601,17 @@ function GenesisMap({
                 {next ? <span className="bbm-playme">Play me!</span> : null}
                 {/* Your Bible Buddies on the board they have reached (Louis: "Jessica finished day 2, we are buddies, I should see her"). */}
                 {(() => {
-                  const here = buddies.filter((b) => Math.min(b.unlocked, MATCH_LEVELS.length) === level.number);
+                  // At most 3 a board, the most active first (most boards finished;
+                  // the server lists the most recently played first, so a tie goes
+                  // to whoever played last). Louis: "see like 3 people, not all".
+                  const here = buddies
+                    .filter((b) => Math.min(b.unlocked, MATCH_LEVELS.length) === level.number)
+                    .sort((a, b) => b.done - a.done)
+                    .slice(0, 3);
                   if (!here.length) return null;
                   return (
                     <span className="bbm-buddies" aria-label={`${here.map((b) => b.name).join(", ")} ${here.length === 1 ? "is" : "are"} here`}>
-                      {here.slice(0, 3).map((b) => (
+                      {here.map((b) => (
                         <span key={b.id} className="bbm-buddy" title={b.name}>
                           {b.avatar ? (
                             // eslint-disable-next-line @next/next/no-img-element
@@ -615,7 +621,6 @@ function GenesisMap({
                           )}
                         </span>
                       ))}
-                      {here.length > 3 ? <span className="bbm-buddy is-more">+{here.length - 3}</span> : null}
                       <span className="bbm-buddy-name">{here.length === 1 ? here[0].name : `${here[0].name} +${here.length - 1}`}</span>
                     </span>
                   );
