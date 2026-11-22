@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * One Bible Buddy Match board: the 7x7 grid, the parchment HUD (moves and
+ * One Bible Buddy Match board: the 7x9 grid, the parchment HUD (moves and
  * goals), and the win / out-of-moves panels. The rules are lib/match/engine.ts;
  * this file draws the line you drag and animates what letting go resolves to:
  *   flash, beams, pop, the power-up left behind, tiles fall, new tiles drop in,
@@ -15,6 +15,8 @@ import Link from "next/link";
 import {
   canExtend,
   createBoard,
+  COLS,
+  ROWS,
   findLine,
   goalsMet,
   lineType,
@@ -182,12 +184,12 @@ export default function MatchBoard({
     const el = gridRef.current;
     if (!el) return null;
     const rect = el.getBoundingClientRect();
-    const size = rect.width / 7;
+    const size = rect.width / COLS;
     const fx = (clientX - rect.left) / size;
     const fy = (clientY - rect.top) / size;
     const c = Math.floor(fx);
     const r = Math.floor(fy);
-    if (r < 0 || r > 6 || c < 0 || c > 6) return null;
+    if (r < 0 || r >= ROWS || c < 0 || c >= COLS) return null;
     if (strict) {
       const dx = fx - c - 0.5;
       const dy = fy - r - 0.5;
@@ -256,7 +258,7 @@ export default function MatchBoard({
     <div className="bbm-board" style={{ ["--bg" as string]: `url(${level.background})`, ["--socket" as string]: level.socket } as React.CSSProperties} data-level={level.id}>
       <div className="bbm-board-bg" aria-hidden="true" />
 
-      <div className="bbm-plaque bbm-board-title">
+      <div className={`bbm-plaque bbm-board-title ${level.title.length > 10 ? "is-long" : ""}`}>
         <h1>{level.title}</h1>
         <p>— {level.reference} —</p>
       </div>
@@ -296,8 +298,8 @@ export default function MatchBoard({
           role="grid"
           aria-label={`${level.title} board: drag across matching tiles`}
         >
-          {Array.from({ length: 49 }).map((_, i) => (
-            <span key={`s${i}`} className="bbm-socket" style={{ ["--r" as string]: Math.floor(i / 7), ["--c" as string]: i % 7 } as React.CSSProperties} />
+          {Array.from({ length: ROWS * COLS }).map((_, i) => (
+            <span key={`s${i}`} className="bbm-socket" style={{ ["--r" as string]: Math.floor(i / COLS), ["--c" as string]: i % COLS } as React.CSSProperties} />
           ))}
           {beams.map((row) => (
             <span key={`beam${row}`} className="bbm-beam" style={{ ["--r" as string]: row } as React.CSSProperties} aria-hidden="true" />
@@ -357,7 +359,7 @@ export default function MatchBoard({
           })}
           {/* The line being drawn, through the middles of the linked tiles. */}
           {line.length > 1 ? (
-            <svg className="bbm-linksvg" viewBox="0 0 7 7" aria-hidden="true">
+            <svg className="bbm-linksvg" viewBox={`0 0 ${COLS} ${ROWS}`} aria-hidden="true">
               <polyline className="bbm-link-glow" points={line.map((p) => `${p.c + 0.5},${p.r + 0.5}`).join(" ")} />
               <polyline className="bbm-link" points={line.map((p) => `${p.c + 0.5},${p.r + 0.5}`).join(" ")} />
             </svg>
