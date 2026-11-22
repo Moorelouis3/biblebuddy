@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-11-22T06:42:06.836Z",
-  "nextChapter": "1 Samuel 17",
+  "updatedAt": "2026-11-22T10:34:21.161Z",
+  "nextChapter": "1 Samuel 18",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -1962,21 +1962,29 @@
     },
     "1-samuel-14-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-22T02:34:46.166Z",
-      "committedAt": "2026-11-22T02:41:55.406Z"
+      "committedAt": "2026-11-22T02:41:55.406Z",
+      "publishedAt": "2026-11-22T10:34:20.842Z"
     },
     "1-samuel-15-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-22T04:34:09.646Z",
-      "committedAt": "2026-11-22T04:42:36.581Z"
+      "committedAt": "2026-11-22T04:42:36.581Z",
+      "publishedAt": "2026-11-22T10:34:21.001Z"
     },
     "1-samuel-16-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-22T06:34:44.359Z",
-      "committedAt": "2026-11-22T06:42:06.836Z"
+      "committedAt": "2026-11-22T06:42:06.836Z",
+      "publishedAt": "2026-11-22T10:34:21.161Z"
+    },
+    "1-samuel-17-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-22T10:34:07.072Z"
     }
   },
   "priorityBooks": [
