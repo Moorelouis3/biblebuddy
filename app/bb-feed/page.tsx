@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef, type ReactNode } from "react";
+import ClueChallengePost, { readClueChallenge } from "@/components/feed/ClueChallengePost";
 import { checkContent } from "@/lib/contentFilter";
 import { useRouter, useSearchParams } from "next/navigation";
 import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
@@ -1846,6 +1847,8 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
   // this changes is the quiet label under the name and the study's title
   // being set in bold.
   const studyActivity = readStudyActivity(post.content);
+  // A Bible Clue challenge is drawn as a game card (components/feed/ClueChallengePost.tsx).
+  const clueChallenge = readClueChallenge(post.content);
 
   /**
    * "Completed Day 9!" - taken from the post, never composed.
@@ -1972,7 +1975,9 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
       {post.verse_text && (
         <p className="text-sm italic text-gray-600 mb-2 border-l-2 border-green-400 pl-3">&ldquo;{post.verse_text}&rdquo;</p>
       )}
-      {studyActivity ? (
+      {clueChallenge ? (
+        <ClueChallengePost info={clueChallenge} />
+      ) : studyActivity ? (
         /**
          * A finished day, as a milestone rather than a sentence (Louis's
          * mockup, 2026-10-25).
