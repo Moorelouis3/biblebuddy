@@ -6,6 +6,10 @@ export const runtime = "nodejs";
 export const maxDuration = 30;
 
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
+// Rewritten 2026-11-22 (Louis: "this dm message is very old"). It used to say
+// the app was in beta, not in either store, and walked through Add to Home
+// Screen. iOS has been live since 1 Nov 2026 and Android since 22 Nov 2026, so
+// it now points at the short store links, the same wording as lib/dmFaq.
 const WELCOME_MESSAGE = `Hey, welcome to Bible Buddy 👋
 
 My name is Louis, and I'm the one who built the app.
@@ -22,30 +26,17 @@ The goal isn't just to help you read through the Bible.
 
 The goal is to help you actually understand what you're reading while building a daily Bible habit that lasts.
 
-Bible Buddy is currently in beta, which means we're still actively improving the app and adding new features.
+Bible Buddy is completely free, and I'm still improving it and adding new features every week.
 
-Right now, Bible Buddy is not available in the App Store or Google Play Store.
+If you don't have the app on your phone yet, it's in both stores now.
 
-However, you can save Bible Buddy directly to your phone and use it just like a normal app.
+On iPhone: search for Bible Buddy in the App Store, or open mybiblebuddy.net/iphone on your phone.
 
-How To Save Bible Buddy On iPhone
+On Android: search for Bible Buddy in the Play Store, or open mybiblebuddy.net/android on your phone.
 
-1. Open Safari
-2. Go to mybiblebuddy.net
-3. Tap the three dots at the bottom of the screen
-4. Tap Share
-5. Tap Add to Home Screen
-6. Bible Buddy will now appear on your home screen like a normal app
+Sign in with the same account and everything you've done comes with you.
 
-How To Save Bible Buddy On Android
-
-1. Open Chrome
-2. Go to mybiblebuddy.net
-3. Tap the three dots in the top right corner
-4. Tap Add to Home Screen or Install App
-5. Bible Buddy will now appear on your home screen like a normal app
-
-Once you've installed Bible Buddy, I encourage you to start Day 1 of the Bible in One Year journey.
+Once you're in, I encourage you to start Day 1 of the Bible in One Year journey.
 
 The entire app is built around helping you understand Scripture one day at a time while building a consistent Bible reading habit.
 
