@@ -282,12 +282,15 @@ export function ClueHeader({
   subtitle,
   badge,
   right,
+  hideLogo,
 }: {
   onBack?: () => void;
   backHref?: string;
   subtitle?: string;
   badge?: string;
   right?: ReactNode;
+  /** The menu has its own title banner, so no logo there. */
+  hideLogo?: boolean;
 }) {
   return (
     <header className="bb-clue-header">
@@ -306,7 +309,7 @@ export function ClueHeader({
       </div>
       <div className="bb-clue-logo">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="bb-clue-logo-img" src="/games/clue/ui/logo.webp" alt="Bible Buddy" />
+        {hideLogo ? null : <img className="bb-clue-logo-img" src="/games/clue/ui/logo.webp" alt="Bible Buddy" />}
         {subtitle ? <span className="bb-clue-logo-pill">{subtitle}</span> : null}
         {badge ? <span className="bb-clue-logo-badge">{badge}</span> : null}
       </div>
@@ -488,6 +491,13 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-clue-fancard .bb-clue-card-art { flex:1; padding:6% 6% 0; }
 .bb-clue-fancard .bb-clue-art { border-radius:6px; }
 .bb-clue-fancard .bb-clue-card-name { font-size: clamp(9px, 2.4vw, 12px); padding: 3px 2px 5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.bb-clue-titlegroup { position:relative; margin-top: 10px; }
+.bb-clue-titlegroup .bb-clue-banner { margin-top:0; }
+.bb-clue-titlegroup .bb-clue-ribbon { position:relative; z-index:2; margin-top: -3.2%; }
+.bb-clue-menutable { position:relative; margin: 14px auto 0; width: min(100% - 8px, 560px); aspect-ratio: 2000/1200;
+  background: url(/games/clue/ui/table.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 18px 26px rgba(0,0,0,.5)); }
+.bb-clue-menutable .bb-clue-menufan { position:absolute; left:50%; top:50%; transform: translate(-50%,-46%); display:flex; justify-content:center; align-items:flex-end; }
+.bb-clue-menutable .bb-clue-fancard { width: min(15.5vw, 86px); margin: 0 -7px; }
 .bb-clue-fallback { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:10px; text-align:center;
   background: radial-gradient(circle at 50% 35%, #fff8e6, #ead6a6); }
 .bb-clue-fallback-icon { font-size: 2.2em; }

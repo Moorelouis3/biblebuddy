@@ -308,17 +308,17 @@ export default function ClueGame() {
   return (
     <ClueRoomFrame>
       <div className="pb-28">
-        <ClueHeader backHref={screen === "menu" ? "/bible-study-games" : undefined} onBack={back} subtitle={screen === "play" ? undefined : subtitle} badge={screen === "decks" ? "Beta" : undefined} />
+        <ClueHeader backHref={screen === "menu" ? "/bible-study-games" : undefined} onBack={back} subtitle={screen === "play" ? undefined : subtitle} badge={screen === "decks" ? "Beta" : undefined} hideLogo={screen === "menu"} />
         {screen === "menu" ? (
           <div className="px-4">
-            <div className="bb-clue-banner">
-              <h1 className="bb-clue-serif">Bible Clue Game</h1>
-            </div>
-            <div className="text-center">
+            <div className="bb-clue-titlegroup text-center">
+              <div className="bb-clue-banner">
+                <h1 className="bb-clue-serif">Bible Clue Game</h1>
+              </div>
               <span className="bb-clue-ribbon">A fun way to test your Bible knowledge</span>
             </div>
-            <div className="bb-clue-felt mt-6" style={{ aspectRatio: "2/1" }}>
-              <div className="bb-clue-center" style={{ gap: 0 }}>
+            <div className="bb-clue-menutable">
+              <div className="bb-clue-menufan">
                 {/* Five of the finished cards, face up (Louis: "the revealed versions
                     of some of the best ones, not the plain back"). Joseph in the middle. */}
                 {MENU_FAN.map((id, i) => {
