@@ -425,6 +425,12 @@ export default function ClueTable({
                 </div>
               ) : (
                 <div className={`bb-cb-pile ${pileLeft === 0 ? "is-empty" : ""}`} aria-label={`${pileLeft} cards left`}>
+                  {/* The last round: the deck is used up, but its place stays on the table (faded, 0). */}
+                  {pileLeft === 0 && !inIntro ? (
+                    <div className="bb-cb-pilecard is-ghost">
+                      <CardBack src={cardBack} />
+                    </div>
+                  ) : null}
                   {Array.from({ length: Math.min(pileLeft, 4) }).map((_, i) => (
                     <div key={i} className="bb-cb-pilecard" style={{ transform: `translate(${-i * 2.5}px, ${i * 2.5}px)`, zIndex: 4 - i }}>
                       <CardBack src={cardBack} />
@@ -435,7 +441,7 @@ export default function ClueTable({
                       <CardBack src={cardBack} />
                     </div>
                   ) : null}
-                  {pileLeft > 0 ? <span className="bb-cb-pilebadge">{pileLeft}</span> : null}
+                  {pileLeft > 0 || !inIntro ? <span className="bb-cb-pilebadge">{pileLeft}</span> : null}
                 </div>
               )}
             </div>
