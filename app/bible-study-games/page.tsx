@@ -19,7 +19,7 @@ export default function BibleStudyGamesPage() {
 
       {/* Bible Buddy Match, 2026-11-22: on the page so Louis can test it on different phones. */}
       <Link
-        href="/bible-study-games/match"
+        href="/bible-study-games/match?from=games"
         className="flex items-center gap-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
       >
         <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-2xl" style={{ backgroundColor: "#0056FD" }} aria-hidden="true">

@@ -38,7 +38,15 @@ export type FeatureEventName =
   | "clue_game_feedback"
   | "clue_game_invite_shared"
   | "clue_game_invite_opened"
-  | "clue_game_room_failed";
+  | "clue_game_room_failed"
+  | "match_opened"
+  | "match_board_started"
+  | "match_board_won"
+  | "match_board_lost"
+  | "match_board_left"
+  | "match_power_made"
+  | "match_power_used"
+  | "match_hint";
 
 /** Where "Add to Bible Memory" was tapped. */
 export type MemorySaveSource = "daily_verse_card" | "daily_verse_popup" | "reader" | "picker" | "word_search";

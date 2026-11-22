@@ -58,6 +58,16 @@ const ALLOWED_EVENTS = new Set([
   "word_search_opened",
   // Bible Clue Game (2026-11-22): opened, a game dealt, each card's outcome,
   // and the finished game. Read by lib/newFeaturesReport.ts.
+  // Bible Buddy Match (2026-11-22): opened, each board started / won / lost /
+  // left, power-ups made and set off, hints. Read by lib/newFeaturesReport.ts.
+  "match_opened",
+  "match_board_started",
+  "match_board_won",
+  "match_board_lost",
+  "match_board_left",
+  "match_power_made",
+  "match_power_used",
+  "match_hint",
   "clue_game_opened",
   "clue_game_started",
   "clue_game_card",

@@ -20,7 +20,8 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import Link from "next/link";
 import { MATCH_LEVELS, type MatchLevel } from "@/lib/match/engine";
 import { supabase } from "@/lib/supabaseClient";
-import MatchBoard from "./MatchBoard";
+import MatchBoard, { readSavedBoard } from "./MatchBoard";
+import { trackMatch } from "@/lib/match/track";
 import { matchMusicOn, playMatchMusic, setMatchMusicOn, stopMatchMusic } from "@/lib/match/sound";
 import { MATCH_CSS } from "./matchCss";
 import { clueApi } from "@/lib/clueGame/track";
@@ -87,6 +88,11 @@ export default function MatchGame() {
   useEffect(() => {
     const id = window.setTimeout(() => {
       setProgress(load());
+      // A board left halfway when the app closed opens again where it was.
+      const saved = readSavedBoard();
+      const level = saved ? MATCH_LEVELS.find((l) => l.id === saved.levelId) : undefined;
+      if (level) setScreen({ name: "board", level });
+      trackMatch("match_opened", { from: new URLSearchParams(window.location.search).get("from") || "direct", resumedBoard: level?.id ?? null });
       setReady(true);
     }, 0);
     // The server copy (another phone may be further on), then your buddies'
@@ -211,13 +217,24 @@ function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; rea
   return (
     <div className="bbm-home2">
       <div className="bbm-home2-blur" aria-hidden="true" />
+      <div className="bbm-home2-top">
+        <Link href="/bible-study-games" className="bbm-roundbtn" aria-label="Back to Bible Buddy">
+          ←
+        </Link>
+        <button type="button" className="bbm-roundbtn" aria-label="Settings" onClick={() => setSettings(true)}>
+          ⚙
+        </button>
+      </div>
       {/* Phone art (1080x2340) on tall screens, desktop art (1920x1080) on wide
           ones. The tap spots and the label sit on each picture's own buttons. */}
       {(
         [
           {
             kind: "phone",
-            src: "/games/match/ui/home-phone.webp",
+            // The same picture with its painted Back and Settings removed: on a phone
+            // it runs right up under the clock, and real buttons sit below it
+            // (Louis, 2026-11-22: no bar at the top).
+            src: "/games/match/ui/home-phone-clean.webp",
             back: { left: "4%", top: "2%", width: "11%", height: "5%" },
             gear: { left: "85%", top: "2%", width: "11%", height: "5%" },
             play: { left: "18%", top: "61%", width: "62%", height: "10.5%" },
@@ -395,7 +412,17 @@ function GenesisMap({
   const current = Math.min(progress.unlocked, MATCH_LEVELS.length);
   const travel = progress.travel && current >= 2;
   const allDone = MATCH_LEVELS.every((l) => progress.done.includes(l.id));
-  const book = MATCH_LEVELS[current - 1]?.book || "Genesis";
+  // The banner names the map in view as you scroll (Louis: "it should change to Exodus when we get there").
+  const [book, setBook] = useState(MATCH_LEVELS[current - 1]?.book || "Genesis");
+  const onScroll = () => {
+    const el = scroller.current;
+    if (!el) return;
+    const mid = ((el.scrollTop + el.clientHeight / 2) / el.scrollHeight) * 100;
+    const seg = Math.min(SEGMENTS - 1, Math.max(0, SEGMENTS - 1 - Math.floor((mid / 100) * SEGMENTS)));
+    const s = SECTIONS[seg];
+    const name = s.fx === "exodus" ? "Exodus" : "Genesis";
+    setBook((b) => (b === name ? b : name));
+  };
 
   const scrollToY = (yUnits: number, smooth: boolean) => {
     const el = scroller.current;
@@ -459,7 +486,7 @@ function GenesisMap({
         <div className="bbm-ribbon">{book}</div>
         <span className="bbm-roundbtn is-spacer" />
       </div>
-      <div ref={scroller} className="bbm-map-scroll">
+      <div ref={scroller} className="bbm-map-scroll" onScroll={onScroll}>
         <div className="bbm-map-world" style={{ aspectRatio: `1080 / ${4680 * SEGMENTS}` }}>
           {/* Each section's own picture. Every one but the bottom reaches a
               little below its place and fades out there over the one beneath,

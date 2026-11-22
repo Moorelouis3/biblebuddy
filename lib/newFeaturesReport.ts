@@ -289,6 +289,78 @@ export function summariseNewFeatures(input: NewFeaturesInput, range: FeatureRang
     ],
   };
 
+  // ----- Bible Buddy Match (2026-11-22) -----
+  const matchOpened = eventTouches("match_opened");
+  const matchStarted = eventTouches("match_board_started");
+  const matchWon = eventTouches("match_board_won");
+  const matchPastTwo = eventTouches("match_board_won", (row) => Number(row.metadata?.number || 0) >= 3);
+  const matchActivity = [...matchOpened, ...matchStarted, ...matchWon];
+  const ev = (name: string) => input.events.filter((r) => r.event_name === name);
+  const boardRows = new Map<string, { started: number; won: number; lost: number; left: number }>();
+  for (const name of ["match_board_started", "match_board_won", "match_board_lost", "match_board_left"]) {
+    for (const row of ev(name)) {
+      const id = `${String(row.metadata?.number ?? "?").padStart(2, "0")} ${meta(row, "title") || meta(row, "board") || "?"}`;
+      const e = boardRows.get(id) || { started: 0, won: 0, lost: 0, left: 0 };
+      if (name === "match_board_started") e.started += 1;
+      else if (name === "match_board_won") e.won += 1;
+      else if (name === "match_board_lost") e.lost += 1;
+      else e.left += 1;
+      boardRows.set(id, e);
+    }
+  }
+  const match: FeatureReport = {
+    key: "match",
+    icon: "💎",
+    title: "Bible Buddy Match",
+    href: "/bible-study-games/match",
+    launched: "22 Nov 2026",
+    steps: [
+      step("Opened it", "People who opened Bible Buddy Match.", matchOpened, range),
+      step("Started a board", "People who began playing a board.", matchStarted, range),
+      step("Won a board", "People who finished at least one board.", matchWon, range),
+      step("Got past Eden", "People who won board 3 or later.", matchPastTwo, range),
+      {
+        label: "Came back another day",
+        hint: "People who opened or played on two or more different days.",
+        allTime: cameBack(matchActivity),
+        period: cameBack(matchActivity, range),
+      },
+    ],
+    breakdowns: [
+      {
+        title: "Where they play",
+        unit: "people",
+        rows: tally([...ev("match_opened"), ...ev("match_board_started")].map((r) => meta(r, "platform") || "unknown"), {}),
+      },
+      {
+        title: "Opened from",
+        unit: "people",
+        rows: tally(ev("match_opened").map((r) => meta(r, "from") || "direct"), {}),
+      },
+      {
+        title: "Boards: started / won / lost / left halfway",
+        unit: "",
+        rows: [...boardRows.entries()]
+          .sort((a, b) => a[0].localeCompare(b[0]))
+          .map(([board, c]) => ({ label: `${board} (${c.won} won, ${c.lost} lost, ${c.left} left)`, value: c.started })),
+      },
+      {
+        title: "Totals",
+        unit: "",
+        rows: [
+          { label: "Boards started", value: ev("match_board_started").length },
+          { label: "Boards won", value: ev("match_board_won").length },
+          { label: "Boards lost (out of moves)", value: ev("match_board_lost").length },
+          { label: "Boards left halfway", value: ev("match_board_left").length },
+          { label: "Power-ups made", value: ev("match_power_made").length },
+          { label: "Power-ups set off", value: ev("match_power_used").length },
+          { label: "Hints shown (waited too long)", value: ev("match_hint").filter((r) => meta(r, "how") === "idle").length },
+          { label: "Hints asked for (sun button)", value: ev("match_hint").filter((r) => meta(r, "how") === "button").length },
+        ],
+      },
+    ],
+  };
+
   // ----- Bible Clue Game (2026-11-22) -----
   const clueOpened = eventTouches("clue_game_opened");
   const clueStarted = eventTouches("clue_game_started");
@@ -417,7 +489,7 @@ export function summariseNewFeatures(input: NewFeaturesInput, range: FeatureRang
     ],
   };
 
-  return { features: [clueGame, trivia, scrambled, memory, wordSearch, popup] };
+  return { features: [match, clueGame, trivia, scrambled, memory, wordSearch, popup] };
 }
 
 // ---------- loading ----------
@@ -439,6 +511,14 @@ export const FEATURE_EVENT_NAMES = [
   "clue_game_challenge_finished",
   "clue_game_room_created",
   "clue_game_feedback",
+  "match_opened",
+  "match_board_started",
+  "match_board_won",
+  "match_board_lost",
+  "match_board_left",
+  "match_power_made",
+  "match_power_used",
+  "match_hint",
 ];
 
 const FEATURE_ACTION_TYPES = [

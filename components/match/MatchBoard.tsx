@@ -39,6 +39,31 @@ const POWER_NAMES: Record<string, string> = {
   orb: "All Match orb!",
 };
 import { matchSound } from "@/lib/match/sound";
+import { trackMatch } from "@/lib/match/track";
+
+/**
+ * A board in progress, kept on the device so closing the app does not start
+ * it over (Louis, 2026-11-22: "if the game closes it should stay on the same
+ * progress"). Saved after every move; cleared when the board is won, lost or
+ * restarted. MatchGame reopens straight into it.
+ */
+export const BOARD_KEY = "bb:match:board";
+export type SavedBoard = { levelId: string; board: Board; moves: number; collected: Record<string, number>; score: number; dark: boolean; nextId: number };
+export function readSavedBoard(): SavedBoard | null {
+  try {
+    const raw = window.localStorage.getItem(BOARD_KEY);
+    const s = raw ? (JSON.parse(raw) as SavedBoard) : null;
+    return s && Array.isArray(s.board) && typeof s.moves === "number" ? s : null;
+  } catch {
+    return null;
+  }
+}
+function writeSavedBoard(s: SavedBoard | null) {
+  try {
+    if (s) window.localStorage.setItem(BOARD_KEY, JSON.stringify(s));
+    else window.localStorage.removeItem(BOARD_KEY);
+  } catch {}
+}
 
 const sleep = (ms: number) => new Promise<void>((r) => window.setTimeout(r, ms));
 
@@ -74,12 +99,17 @@ export default function MatchBoard({
 }) {
   const reduced = useReducedMotion();
   // Tile ids for this board: one object, only ever read and bumped in handlers.
-  const [ids] = useState(() => ({ current: { next: 1 } }));
+  // A board this player left halfway (the app closed) picks up where it was.
+  const [resume] = useState(() => {
+    const s = typeof window === "undefined" ? null : readSavedBoard();
+    return s && s.levelId === level.id ? s : null;
+  });
+  const [ids] = useState(() => ({ current: { next: resume?.nextId ?? 1 } }));
   const [seed, setSeed] = useState(0); // bumps on retry
-  const [board, setBoard] = useState<Board>(() => createBoard(level.types, Math.random, ids.current));
-  const [moves, setMoves] = useState(level.moves);
-  const [collected, setCollected] = useState<Record<string, number>>({});
-  const [score, setScore] = useState(0);
+  const [board, setBoard] = useState<Board>(() => resume?.board ?? createBoard(level.types, Math.random, ids.current));
+  const [moves, setMoves] = useState(resume?.moves ?? level.moves);
+  const [collected, setCollected] = useState<Record<string, number>>(resume?.collected ?? {});
+  const [score, setScore] = useState(resume?.score ?? 0);
   const [busy, setBusy] = useState(false);
   const [selected, setSelected] = useState<Pos | null>(null);
   const [flash, setFlash] = useState<Set<number>>(new Set());
@@ -87,7 +117,7 @@ export default function MatchBoard({
   const [beams, setBeams] = useState<Beam[]>([]);
   const [rays, setRays] = useState<{ from: Pos; to: Pos[] } | null>(null);
   const [drops, setDrops] = useState<Record<number, number>>({});
-  const [dark, setDark] = useState(!!level.startsDark);
+  const [dark, setDark] = useState(resume ? resume.dark : !!level.startsDark);
   const [hint, setHint] = useState<Pos[] | null>(null);
   const [toast, setToast] = useState<string | null>(null);
   const [outcome, setOutcome] = useState<Outcome>(null);
@@ -99,7 +129,19 @@ export default function MatchBoard({
   // Timings (ms). Reduced motion keeps the order and drops the movement.
   const T = useMemo(() => (reduced ? { swap: 60, flash: 120, pop: 60, fall: 80, between: 40 } : { swap: 200, flash: 220, pop: 220, fall: 340, between: 60 }), [reduced]);
 
+  // Measurement: a board started (or picked up again), and left halfway.
+  useEffect(() => {
+    trackMatch("match_board_started", { board: level.id, number: level.number, title: level.title, resumed: !!resume });
+    // Once per board opening.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [seed]);
+  const exit = () => {
+    if (!outcome && moves < level.moves) trackMatch("match_board_left", { board: level.id, number: level.number, title: level.title, movesUsed: level.moves - moves });
+    onExit();
+  };
+
   const restart = () => {
+    writeSavedBoard(null);
     setBoard(createBoard(level.types, Math.random, ids.current));
     setMoves(level.moves);
     setCollected({});
@@ -169,6 +211,9 @@ export default function MatchBoard({
       total += step.points;
       setCollected(got);
       setScore(total);
+      for (const b of step.beams) trackMatch("match_power_used", { board: level.id, power: b.blast ? "blast" : b.col !== undefined ? "pillar" : "light" });
+      if (step.orbType) trackMatch("match_power_used", { board: level.id, power: "orb" });
+      for (const m of step.made) trackMatch("match_power_made", { board: level.id, power: m.tile.power });
       if (step.made.length) {
         matchSound.power();
         const name = POWER_NAMES[step.made[0].tile.power || "light"];
@@ -206,11 +251,22 @@ export default function MatchBoard({
       const finalScore = total + movesLeft * 25;
       setScore(finalScore);
       onWin(finalScore);
+      writeSavedBoard(null);
+      trackMatch("match_board_won", { board: level.id, number: level.number, title: level.title, score: finalScore, movesLeft });
       matchSound.win();
       setOutcome({ won: true, score: finalScore, movesLeft });
     } else if (movesLeft <= 0) {
       matchSound.lose();
       setOutcome({ won: false, score: total, movesLeft: 0 });
+      writeSavedBoard(null);
+      trackMatch("match_board_lost", {
+        board: level.id,
+        number: level.number,
+        title: level.title,
+        goalsLeft: level.goals.reduce((n, g) => n + Math.max(0, g.count - (got[g.type] || 0)), 0),
+      });
+    } else {
+      writeSavedBoard({ levelId: level.id, board: res.final, moves: movesLeft, collected: got, score: total, dark: false, nextId: ids.current.next });
     }
   };
 
@@ -271,7 +327,10 @@ export default function MatchBoard({
     if (busy || outcome || hint || selected) return;
     const id = window.setTimeout(() => {
       const found = findMove(boardRef.current);
-      if (found) setHint(found);
+      if (found) {
+        setHint(found);
+        trackMatch("match_hint", { board: level.id, how: "idle" });
+      }
     }, 10000);
     return () => window.clearTimeout(id);
   }, [board, busy, outcome, hint, selected]);
@@ -282,6 +341,7 @@ export default function MatchBoard({
     const found = findMove(boardRef.current);
     if (!found) return;
     setHint(found);
+    trackMatch("match_hint", { board: level.id, how: "button" });
     window.setTimeout(() => setHint(null), 2400);
   };
 
@@ -430,7 +490,7 @@ export default function MatchBoard({
       </div>
 
       <div className="bbm-board-foot">
-        <button type="button" className="bbm-mapbtn" onClick={onExit}>
+        <button type="button" className="bbm-mapbtn" onClick={exit}>
           <span aria-hidden="true">🗺️</span> Map
         </button>
         <span className="bbm-score">Score {score}</span>
