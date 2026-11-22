@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-15-explained",
+    title: "1 Samuel 15 Explained: Saul's Rejection Over the Amalekites",
+    description:
+      "1 Samuel 15 explained verse by verse: the command against Amalek, Saul's partial obedience, the sheep that gave him away, and the verdict that ends his dynasty.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-15-explained",
+    publishedAt: "2026-11-22",
+    readTime: "16 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 15 Explained 📖",
+      content:
+        "A king comes home sure he obeyed completely.\n\nThen Samuel hears sheep.\n\n📌 Saul kept the best and called it finished.\n\n📖 One clear command, down to the last detail.\n📖 Saul spares what looked valuable, destroys the rest.\n📖 A confession that still blames someone else.\n\nNew article on:\n🟢 why **to obey is better than sacrifice** still lands hard\n🟢 the two verses about God **repenting** that are not a contradiction\n🟢 why **Samuel** finishes what Saul would not\n\nHave you ever called partial obedience a finished job? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-14-explained",
     title: "1 Samuel 14 Explained: Jonathan's Raid and Saul's Rash Oath",
     description:
