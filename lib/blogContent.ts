@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-14-explained",
+    title: "1 Samuel 14 Explained: Jonathan's Raid and Saul's Rash Oath",
+    description:
+      "1 Samuel 14 explained verse by verse: Jonathan's secret raid, the panic that spreads through the Philistine camp, Saul's rash oath, and the lot that falls on his own son.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-14-explained",
+    publishedAt: "2026-11-22",
+    readTime: "13 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 14 Explained 📖",
+      content:
+        "Two men climb a cliff into enemy territory.\n\nNo army. No orders from the king.\n\n📌 Jonathan trusts God, not a guarantee.\n\n📖 A whole garrison panics and the earth shakes.\n📖 Saul joins late and swears a reckless oath.\n📖 A lot falls on Jonathan, and the army has to save him.\n\nNew article on:\n🟢 why Jonathan's **sign** only worked one way\n🟢 the oath that **cost Saul's own army**\n🟢 why **God stayed silent** when Saul finally asked\n\nHave you ever almost undone a win with one rushed decision? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-13-explained",
     title: "1 Samuel 13 Explained: Saul's Unlawful Sacrifice at Gilgal",
     description:

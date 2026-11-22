@@ -1044,7 +1044,8 @@ wrong signal from it.
 No `public/blog-banners/<slug>.jpg` exists yet for these chapters, so each
 uses the verse-breakdowns fallback (`/Whatisthebiblebanner.png`):
 1-samuel-9-explained, 1-samuel-10-explained,
-1-samuel-11-explained, 1-samuel-12-explained, 1-samuel-13-explained. (Ruth 1-4 and 1 Samuel 1-8
+1-samuel-11-explained, 1-samuel-12-explained, 1-samuel-13-explained,
+1-samuel-14-explained. (Ruth 1-4 and 1 Samuel 1-8
 got their real banners from Louis on 2026-11-21.) Updating
 this one line going forward (per the routine's own doc) rather than adding a new block each
 time a chapter lands without a custom banner.
