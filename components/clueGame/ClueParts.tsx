@@ -552,7 +552,7 @@ html:is(.bb-in-game, .bb-game-screen) :is(.bb-bottom-pill, .bb-safe-top-header, 
 .bb-cb-pileslot { display:flex; justify-content:center; order: 3; }
 .bb-cb-panel { order: 2; }
 .bb-cb-pile { position:relative; width: 100%; max-width: min(120px, 15vh); aspect-ratio: 5/7; }
-.bb-cb-pile.is-empty { opacity:.35; }
+.bb-cb-pile.is-empty .bb-cb-pilecard.is-ghost { opacity:.4; filter: grayscale(.5); }
 .bb-cb-pilecard { position:absolute; inset:0; border-radius:9px; overflow:hidden; box-shadow: 0 0 0 1.5px #c99a46, 0 6px 12px rgba(0,0,0,.35); }
 .bb-cb-pilebadge { position:absolute; right:-6px; bottom:-8px; z-index:8; min-width:28px; height:28px; padding:0 6px; border-radius:999px; display:grid; place-items:center; background: radial-gradient(circle at 40% 35%, #fff2b8, #f2c95a); color:#3b2412; font-weight:900; font-size:14px; box-shadow: 0 0 0 2px #a8741f, 0 3px 6px rgba(0,0,0,.35); }
 .bb-cb-shuffle { width: 100% !important; max-width: min(120px, 15vh); }
