@@ -314,47 +314,111 @@ export type ChallengeInput = {
   cardIds: string[];
   score: number;
   won: number;
+  /**
+   * A private challenge (Louis, 2026-11-22): these Bible Buddies get it as a
+   * notification instead of a Feed post. Without it: an open challenge on
+   * the Feed.
+   */
+  buddyIds?: string[];
 };
+
+/** The player's Bible Buddies (the buddies table, either side): id, first name, photo. */
+export async function listBuddies(admin: SupabaseClient, userId: string) {
+  const [{ data: a }, { data: b }] = await Promise.all([
+    admin.from("buddies").select("user_id_2").eq("user_id_1", userId).limit(500),
+    admin.from("buddies").select("user_id_1").eq("user_id_2", userId).limit(500),
+  ]);
+  const ids = [...new Set([...(a || []).map((r) => r.user_id_2 as string), ...(b || []).map((r) => r.user_id_1 as string)])].filter((id) => id && id !== userId);
+  if (!ids.length) return [];
+  const { data: profiles } = await admin.from("profile_stats").select("user_id, display_name, username, profile_image_url").in("user_id", ids);
+  const prof = new Map((profiles || []).map((p) => [p.user_id as string, p]));
+  return ids
+    .map((id) => {
+      const p = prof.get(id);
+      return { id, name: String((p?.display_name as string) || (p?.username as string) || "Buddy").trim(), avatar: (p?.profile_image_url as string | null) ?? null };
+    })
+    .sort((x, y) => x.name.localeCompare(y.name));
+}
 
 export async function createChallenge(admin: SupabaseClient, user: ClueUser, input: ChallengeInput, opts: { postToFeed?: boolean } = {}) {
   const roundId = String(input.roundId || "").slice(0, 64);
   if (!roundId) return { error: "Missing round." };
-  const existing = await admin.from("clue_challenges").select("id, feed_post_id").eq("source_round_id", roundId).maybeSingle();
-  if (existing.data) return { id: existing.data.id as string, alreadyPosted: true };
-
-  const cardIds = (input.cardIds || []).filter((id) => CLUE_BANK.has(id));
-  if (cardIds.length !== DEFAULT_CLUE_SETTINGS.roundSize || new Set(cardIds).size !== cardIds.length) {
-    return { error: "That round can't be shared." };
-  }
   const score = Math.max(-50, Math.min(50, Math.round(Number(input.score) || 0)));
-  const won = Math.max(0, Math.min(cardIds.length, Math.round(Number(input.won) || 0)));
-  const selection = cleanSelection(input.selection);
-  const deckIds = selectionToKeys(selection);
-  const id = challengeId();
-  const { error } = await admin.from("clue_challenges").insert({
-    id,
-    creator_id: user.id,
-    source_round_id: roundId,
-    deck_ids: deckIds,
-    card_ids: cardIds,
-    top_clue: {},
-    settings: { answerSeconds: DEFAULT_CLUE_SETTINGS.answerSeconds, revealSeconds: DEFAULT_CLUE_SETTINGS.revealSeconds },
-    creator_score: score,
-    creator_won: won,
-    attempts: 1,
-    leader_id: user.id,
-    leader_name: user.name,
-    leader_score: score,
-  });
-  if (error) {
-    // Two taps raced: the other one made it.
-    const again = await admin.from("clue_challenges").select("id").eq("source_round_id", roundId).maybeSingle();
-    if (again.data) return { id: again.data.id as string, alreadyPosted: true };
-    return { error: "Could not save the challenge." };
+  const wantBuddies = Array.isArray(input.buddyIds) && input.buddyIds.length > 0;
+
+  // One challenge per finished round: an open challenge and a buddy challenge
+  // of the same round are the same challenge (one leaderboard).
+  let id: string;
+  let feedPostId: string | null = null;
+  const existing = await admin.from("clue_challenges").select("id, feed_post_id").eq("source_round_id", roundId).maybeSingle();
+  if (existing.data) {
+    id = existing.data.id as string;
+    feedPostId = (existing.data.feed_post_id as string | null) ?? null;
+  } else {
+    const cardIds = (input.cardIds || []).filter((cid) => CLUE_BANK.has(cid));
+    if (cardIds.length !== DEFAULT_CLUE_SETTINGS.roundSize || new Set(cardIds).size !== cardIds.length) {
+      return { error: "That round can't be shared." };
+    }
+    const won = Math.max(0, Math.min(cardIds.length, Math.round(Number(input.won) || 0)));
+    const selection = cleanSelection(input.selection);
+    id = challengeId();
+    const { error } = await admin.from("clue_challenges").insert({
+      id,
+      creator_id: user.id,
+      source_round_id: roundId,
+      deck_ids: selectionToKeys(selection),
+      card_ids: cardIds,
+      top_clue: {},
+      settings: { answerSeconds: DEFAULT_CLUE_SETTINGS.answerSeconds, revealSeconds: DEFAULT_CLUE_SETTINGS.revealSeconds },
+      creator_score: score,
+      creator_won: won,
+      attempts: 1,
+      leader_id: user.id,
+      leader_name: user.name,
+      leader_score: score,
+    });
+    if (error) {
+      // Two taps raced: the other one made it.
+      const again = await admin.from("clue_challenges").select("id, feed_post_id").eq("source_round_id", roundId).maybeSingle();
+      if (!again.data) return { error: "Could not save the challenge." };
+      id = again.data.id as string;
+      feedPostId = (again.data.feed_post_id as string | null) ?? null;
+    } else {
+      await admin.from("clue_challenge_attempts").insert({ challenge_id: id, user_id: user.id, display_name: user.name, score, won, ranked: true, shared: true });
+    }
   }
-  await admin.from("clue_challenge_attempts").insert({ challenge_id: id, user_id: user.id, display_name: user.name, score, won, ranked: true, shared: true });
+
+  if (wantBuddies) {
+    // Only real Bible Buddies, and each one once per challenge.
+    const mine = new Map((await listBuddies(admin, user.id)).map((b) => [b.id, b]));
+    const to = [...new Set(input.buddyIds!.map(String))].filter((bid) => mine.has(bid)).slice(0, 50);
+    if (!to.length) return { error: "Pick at least one of your Bible Buddies." };
+    const link = `/bible-study-games/clue/challenge/${id}`;
+    const { data: already } = await admin.from("notifications").select("user_id").eq("type", "clue_challenge").eq("article_slug", link).in("user_id", to);
+    const skip = new Set((already || []).map((r) => r.user_id as string));
+    const first = user.name.split(/\s+/)[0];
+    const rows = to
+      .filter((bid) => !skip.has(bid))
+      .map((bid) => ({
+        user_id: bid,
+        type: "clue_challenge",
+        from_user_id: user.id,
+        from_user_name: first,
+        article_slug: link,
+        message: `${first} challenged you to Bible Clue! Beat ${score} point${Math.abs(score) === 1 ? "" : "s"}.`,
+        is_read: false,
+      }));
+    if (rows.length) {
+      const { error } = await admin.from("notifications").insert(rows);
+      if (error) return { error: "Could not send the challenge." };
+    }
+    return { id, alreadyPosted: false, sentTo: to.map((bid) => mine.get(bid)!.name.split(/\s+/)[0]) };
+  }
+
+  if (feedPostId) return { id, alreadyPosted: true };
   // Tests leave the Feed alone.
   if (opts.postToFeed === false) return { id, alreadyPosted: false };
+  const selection = cleanSelection(input.selection);
   const content = challengePostText({
     id,
     creatorName: user.name,
@@ -385,12 +449,13 @@ export async function getChallenge(admin: SupabaseClient, rawId: string, user: C
     .order("score", { ascending: false })
     .order("finished_at", { ascending: true })
     .limit(25);
-  const { data: creator } = await admin.from("profile_stats").select("display_name").eq("user_id", c.creator_id).maybeSingle();
+  const { data: creator } = await admin.from("profile_stats").select("display_name, profile_image_url").eq("user_id", c.creator_id).maybeSingle();
   const mine = user ? (board || []).find((row) => row.user_id === user.id) ?? null : null;
   return {
     id,
     creatorId: c.creator_id as string,
     creatorName: (creator?.display_name as string | null) || (c.leader_name as string | null) || "A Buddy",
+    creatorAvatar: ((creator as { profile_image_url?: string | null } | null)?.profile_image_url as string | null) ?? null,
     creatorScore: c.creator_score as number,
     deckIds: c.deck_ids as string[],
     deckName: selectionLabel(selectionFromKeys(c.deck_ids as string[])),

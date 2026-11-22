@@ -12,15 +12,17 @@ import Link from "next/link";
 import { BANK_ITEMS } from "@/lib/clueGame/bank";
 import { createMatch, ROUND_INTRO_MS, soloSetup, type ClueSelection, type PublicCard } from "@/lib/clueGame/engine";
 import type { ClueRef } from "@/lib/clueGame/types";
-import { clueApi, trackClue } from "@/lib/clueGame/track";
+import { clueApi, clueUserId, trackClue } from "@/lib/clueGame/track";
+import { supabase } from "@/lib/supabaseClient";
 import ClueTable from "./ClueTable";
-import { ClueHeader, ClueRoomFrame, ScriptureSheet, StudyCard } from "./ClueParts";
+import { Avatar, ClueHeader, ClueRoomFrame, ScriptureSheet, StudyCard } from "./ClueParts";
 import { useLocalMatch } from "./useLocalMatch";
 
 type Challenge = {
   id: string;
   creatorName: string;
   creatorScore: number;
+  creatorAvatar?: string | null;
   deckIds: string[];
   deckName: string;
   selection: ClueSelection;
@@ -103,6 +105,17 @@ export default function ClueChallenge({ id }: { id: string }) {
   const [finished, setFinished] = useState<null | { ranked: boolean }>(null);
   const [review, setReview] = useState<PublicCard | null>(null);
   const [scripture, setScripture] = useState<ClueRef | null>(null);
+  const [me, setMe] = useState<string | null>(null);
+
+  // Your photo for the "vs" intro.
+  useEffect(() => {
+    void (async () => {
+      const id = await clueUserId();
+      if (!id) return;
+      const { data } = await supabase.from("profile_stats").select("profile_image_url").eq("user_id", id).maybeSingle();
+      if (data?.profile_image_url) setMe(data.profile_image_url as string);
+    })();
+  }, []);
 
   useEffect(() => {
     void (async () => {
@@ -140,6 +153,21 @@ export default function ClueChallenge({ id }: { id: string }) {
           />
         ) : (
           <div className="bb-clue-panel bb-clue-parchment text-center">
+            {/* You vs the challenger (Louis, 2026-11-22: "a challenge vs little intro"). */}
+            {!finished ? (
+              <div className="bb-clue-vs" aria-label={`You versus ${c.creatorName}`}>
+                <span className="bb-clue-vs-side is-left">
+                  <Avatar name="You" src={me} size={78} />
+                  <b>You</b>
+                </span>
+                <span className="bb-clue-vs-mid">VS</span>
+                <span className="bb-clue-vs-side is-right">
+                  <Avatar name={c.creatorName} src={c.creatorAvatar ?? null} size={78} />
+                  <b>{c.creatorName.split(/s+/)[0]}</b>
+                  <em>⭐ {c.creatorScore}</em>
+                </span>
+              </div>
+            ) : null}
             <h2 className="bb-clue-serif bb-clue-title" style={{ color: "#2a1a0c", fontSize: 30 }}>
               {finished ? (finished.ranked ? "Your score is in!" : "Practice round done") : `${c.creatorName} scored ${c.creatorScore}`}
             </h2>

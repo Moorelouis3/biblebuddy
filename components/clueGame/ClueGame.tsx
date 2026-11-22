@@ -11,7 +11,6 @@
  */
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ALL_CLUE_CARDS, deckById } from "@/lib/clueGame/catalog";
 import { BANK_ITEMS, DEFAULT_SELECTION, chaptersWithQuestions, cleanSelection, selectionLabel, selectionStatus, selectionToKeys } from "@/lib/clueGame/bank";
@@ -44,6 +43,7 @@ import { clueApi, clueUserId, trackClue } from "@/lib/clueGame/track";
 import { supabase } from "@/lib/supabaseClient";
 import ClueTable from "./ClueTable";
 import ClueResults, { ReviewList } from "./ClueResults";
+import ChallengeChoices from "./BuddyChallenge";
 import { ClueHeader, ClueRoomFrame, ScriptureSheet, StudyCard } from "./ClueParts";
 import { useLocalMatch } from "./useLocalMatch";
 
@@ -208,7 +208,6 @@ function SoloRound({ selection, onExit }: { selection: ClueSelection; onExit: ()
   const [study, setStudy] = useState<PublicCard | null>(null);
   const [scripture, setScripture] = useState<ClueRef | null>(null);
   const [review, setReview] = useState(false);
-  const [challenge, setChallenge] = useState<null | "posting" | { id: string; again: boolean } | { error: string }>(null);
 
   // Your seat: your Bible Buddy photo and name.
   useEffect(() => {
@@ -229,21 +228,9 @@ function SoloRound({ selection, onExit }: { selection: ClueSelection; onExit: ()
     reset(createMatch({ items: BANK_ITEMS, selection, ...soloSetup("me", "You"), seed: newSeed(), avoid: usedIn(match) }));
     saved.current = false;
     setRoundId(newRoundId());
-    setChallenge(null);
     setReview(false);
   };
 
-  const postChallenge = async () => {
-    setChallenge("posting");
-    const res = await clueApi<{ id?: string; alreadyPosted?: boolean; error?: string }>("/api/clue-game/challenges", {
-      method: "POST",
-      body: { roundId, selection, cardIds: match.deck, score: match.scores.me ?? 0, won: right },
-    });
-    if (res.ok && res.data.id) {
-      setChallenge({ id: res.data.id, again: !!res.data.alreadyPosted });
-      if (!res.data.alreadyPosted) trackClue("clue_game_challenge_shared", { challenge: res.data.id, score: match.scores.me ?? 0 });
-    } else setChallenge({ error: res.data.error || "Could not post the challenge." });
-  };
 
   const openStudy = (card: PublicCard) => {
     setStudy(card);
@@ -286,22 +273,7 @@ function SoloRound({ selection, onExit }: { selection: ClueSelection; onExit: ()
             setReview(true);
             trackClue("clue_game_review_opened", { mode: "solo" });
           }}
-          primary={
-            challenge && typeof challenge === "object" && "id" in challenge ? (
-              <div className="rounded-2xl p-3 text-[15px] font-bold" style={{ background: "#e9f1dc", color: "#1d5a34" }}>
-                {challenge.again ? "Already on your Feed." : "Posted to your Bible Buddy Feed!"}{" "}
-                <Link className="bb-clue-link" href={`/bible-study-games/clue/challenge/${challenge.id}`}>See the leaderboard</Link>
-              </div>
-            ) : (
-              <>
-                <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big" disabled={challenge === "posting"} onClick={postChallenge}>
-                  👥 {challenge === "posting" ? "Posting…" : "Challenge"}
-                </button>
-                <p className="-mt-1 text-[14px] italic">Share this round to your Bible Buddy Feed</p>
-                {challenge && typeof challenge === "object" && "error" in challenge ? <p className="text-[13px] font-bold text-[#8a2418]">{challenge.error}</p> : null}
-              </>
-            )
-          }
+          primary={<ChallengeChoices key={roundId} body={{ roundId, selection, cardIds: match.deck, score: match.scores.me ?? 0, won: right }} />}
           secondary={
             <div className="flex gap-3">
               <button type="button" className="bb-clue-btn min-w-0 flex-[3] whitespace-nowrap !px-2" onClick={playAgain}>▶ Play Again</button>

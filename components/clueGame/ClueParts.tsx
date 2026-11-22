@@ -763,6 +763,16 @@ html:is(.bb-in-game, .bb-game-screen) :is(.bb-bottom-pill, .bb-safe-top-header, 
 .bb-cb-choice.is-wrong .bb-cb-letter { background:#ffe7df; color:#8a2418 !important; }
 .bb-cb-hint { grid-column: 1 / -1; text-align:center; margin-top:2px; font-weight:800; font-size: 12.5px; color:#fff3d2 !important; text-shadow: 0 1px 3px rgba(0,0,0,.85); }
 .bb-cb-card .bb-clue-fallback-note { display:none; }
+/* A buddy challenge: you vs the challenger. */
+.bb-clue-vs { display:flex; align-items:center; justify-content:center; gap: 14px; margin: 2px 0 12px; }
+.bb-clue-vs-side { display:flex; flex-direction:column; align-items:center; gap:4px; animation: bb-vs-in .5s cubic-bezier(.2,.9,.3,1.2) both; }
+.bb-clue-vs-side.is-right { animation-name: bb-vs-in-r; }
+.bb-clue-vs-side b { font-family: Georgia, serif; font-size:17px; }
+.bb-clue-vs-side em { font-style:normal; font-weight:900; font-size:14px; color:#8a5a1a; }
+.bb-clue-vs-mid { font-family: Georgia, serif; font-weight:900; font-size: 34px; color:#b3261e; text-shadow: 0 2px 0 #fff3cf; animation: bb-vs-pop .5s .35s ease-out both; }
+@keyframes bb-vs-in { from { opacity:0; transform: translateX(-40px); } }
+@keyframes bb-vs-in-r { from { opacity:0; transform: translateX(40px); } }
+@keyframes bb-vs-pop { from { opacity:0; transform: scale(2.2); } }
 /* Trivia only (no cards): one big question panel in the middle of the table. */
 .bb-cb.is-trivia .bb-cb-gap { flex: 1 1 0; min-height: 8px; }
 .bb-cb.is-trivia .bb-cb-bottomgap { flex: .6 1 0; min-height: 6px; }

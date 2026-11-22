@@ -29,12 +29,23 @@ type Progress = { unlocked: number; done: string[]; best: Record<string, number>
 const KEY = "bb:match:progress";
 const START: Progress = { unlocked: 1, done: [], best: {}, travel: false };
 
+/**
+ * The board after your furthest finished one is always open. The two-board
+ * version never unlocked a third board when Eden was won (there was none),
+ * so players who finished both were left with board 3 locked (Louis,
+ * 2026-11-22: "I did 1 and 2, so only 3 should have the play me badge").
+ */
+function normalize(p: Progress): Progress {
+  const furthest = Math.max(0, ...p.done.map((id) => MATCH_LEVELS.find((l) => l.id === id)?.number || 0));
+  return { ...p, unlocked: Math.max(1, Math.min(MATCH_LEVELS.length, Math.max(p.unlocked, furthest + 1))) };
+}
+
 function load(): Progress {
   try {
     const raw = window.localStorage.getItem(KEY);
     if (!raw) return START;
     const p = JSON.parse(raw) as Partial<Progress>;
-    return { ...START, ...p, done: Array.isArray(p.done) ? p.done : [], best: p.best || {} };
+    return normalize({ ...START, ...p, done: Array.isArray(p.done) ? p.done : [], best: p.best || {} });
   } catch {
     return START;
   }
@@ -58,7 +69,7 @@ function merge(p: Progress, s: Saved | null): Progress {
   if (!s) return p;
   const best = { ...p.best };
   for (const [k, v] of Object.entries(s.best || {})) best[k] = Math.max(best[k] || 0, Number(v) || 0);
-  return { ...p, unlocked: Math.max(p.unlocked, s.unlocked || 1), done: [...new Set([...p.done, ...(s.done || [])])], best };
+  return normalize({ ...p, unlocked: Math.max(p.unlocked, s.unlocked || 1), done: [...new Set([...p.done, ...(s.done || [])])], best });
 }
 
 /** Send progress up (match_progress), so buddies can see where you are. */
@@ -497,13 +508,13 @@ function GenesisMap({
             const unlocked = level.number <= progress.unlocked;
             const done = progress.done.includes(level.id);
             // The board to play next pulses and says so; finished boards stay tappable for replays.
-            const next = unlocked && !done && !walking;
+            const next = level.number === current && !done && !walking;
             return (
               <button
                 key={level.id}
                 type="button"
                 className={`bbm-medal ${unlocked ? "" : "is-locked"} ${done ? "is-done" : ""} ${next ? "is-next" : ""} ${arrived?.id === level.id ? "is-arrived" : ""}`}
-                style={{ left: `${spot.x}%`, top: `${spot.y}%` }}
+                style={{ left: `${Math.min(76, Math.max(24, spot.x))}%`, top: `${spot.y}%`, zIndex: next ? 60 : unlocked ? 50 : 45 }}
                 disabled={!unlocked || walking}
                 onClick={() => onOpen(level)}
                 aria-label={`${level.number}: ${level.title}${done ? ", complete" : unlocked ? "" : ", locked"}`}
@@ -521,6 +532,11 @@ function GenesisMap({
                     </span>
                   ) : unlocked && !done ? (
                     level.number
+                  ) : !unlocked ? (
+                    <>
+                      {level.number}
+                      <span className="bbm-medal-lock" aria-hidden="true">🔒</span>
+                    </>
                   ) : null}
                 </span>
                 {next ? <span className="bbm-playme">Play me!</span> : null}

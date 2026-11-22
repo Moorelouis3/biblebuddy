@@ -299,6 +299,10 @@ html.bb-native.bb-game-screen body::before { display:none !important; }
    there. Every notched or island iPhone needs at least ~50px, so that is the
    floor. The website and Android keep the reported inset. */
 .bbm-board-title.is-xlong h1 { font-size: clamp(15px, calc(var(--w) * .045), 26px) !important; }
+/* A locked board: its number, greyed, with a padlock on the coin. */
+.bbm-medal.is-locked .bbm-medal-coin { color: #e9e1d2 !important; }
+.bbm-medal-lock { position:absolute; right: -4px; bottom: 14%; font-size: 22px; line-height:1; filter: drop-shadow(0 2px 3px rgba(0,0,0,.5)); }
+.bbm-medal.is-locked .bbm-medal-name { opacity:.75; }
 /* Bible Buddies standing at the board they have reached: faces to the right of the coin. */
 .bbm-buddies { position:absolute; left: calc(100% - 6px); top: 4px; display:flex; align-items:center; pointer-events:none; white-space:nowrap; }
 .bbm-buddy { width: 34px; height: 34px; margin-left: -8px; border-radius:999px; overflow:hidden; display:grid; place-items:center; background:#fbeccb; color:#4a2a10 !important; font-weight:900; font-size:14px;
@@ -311,7 +315,12 @@ html.bb-native.bb-game-screen body::before { display:none !important; }
 .bbm-map-section { position:absolute; left:0; width:100%; object-fit:fill; }
 .bbm-map-section.is-blended { -webkit-mask-image: linear-gradient(180deg, #000 calc(100% - 6%), transparent 100%); mask-image: linear-gradient(180deg, #000 calc(100% - 6%), transparent 100%); }
 .bbm-map-trail { z-index: 30; }
-.bbm-medal, .bbm-marker { z-index: 40 !important; }
+.bbm-medal { z-index: 40; }
+.bbm-marker { z-index: 70 !important; }
+/* Up to 12 boards a map (Louis, 2026-11-22): smaller coins and names so neighbours do not cover each other. */
+.bbm-map .bbm-medal-coin { width: 70px !important; height: 70px !important; font-size: 26px !important; }
+.bbm-map .bbm-medal-name { min-width: 0 !important; padding: 5px 14px 6px !important; font-size: 13.5px !important; white-space: nowrap; }
+.bbm-map .bbm-playme { z-index: 5; }
 /* ---- the living map (MapFx): water, sea, storm, snow, fireflies ---- */
 .bbm-fx { position:absolute; left:0; right:0; z-index:20; pointer-events:none; overflow:hidden; }
 .bbm-fx > span { position:absolute; display:block; pointer-events:none; }

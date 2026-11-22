@@ -3373,6 +3373,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               const path = (notif.article_slug || "").split(/[?#]/)[0];
                               if (!path || path === "/") return "";
                               if (path.startsWith("/bb-feed")) return "Feed";
+                              if (path.startsWith("/bible-study-games/clue")) return "Bible Clue";
                               if (path.startsWith("/dashboard") || path.startsWith("/study-groups")) return "Study Group";
                               if (path.startsWith("/messages")) return "";
                               const last = path.split("/").filter(Boolean).pop() || "";
