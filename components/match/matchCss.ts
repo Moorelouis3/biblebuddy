@@ -1,6 +1,9 @@
 /** All of Bible Buddy Match's styling: plaques, parchment, the grid and its effects. */
 export const MATCH_CSS = `
 html.bb-game-screen :is(.bb-bottom-pill, .bb-safe-top-header, .bb-report-problem, section[aria-labelledby="home-bible-lock-heading"]) { display:none !important; }
+/* Match never scrolls the page (Louis, 2026-11-22: "no need for scrolling, everything fits"); only the map scrolls, inside its own box. */
+html.bb-game-screen, html.bb-game-screen body { overflow:hidden !important; overscroll-behavior:none; }
+.bbm-board { height:100dvh; min-height:0 !important; overflow:hidden; box-sizing:border-box; }
 .bbm-root { position:relative; min-height:100dvh; overflow:hidden; color:#3b2412; font-family: Georgia, "Times New Roman", serif; background:#123; isolation:isolate; }
 .bbm-root :is(h1,h2,h3,p,span,b,li,button,a) { color: inherit; }
 .bbm-root button { font-family: inherit; }
