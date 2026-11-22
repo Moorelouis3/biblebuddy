@@ -156,7 +156,8 @@ function startScene() {
     musicEl?.pause();
     musicEl = new Audio(src);
     musicEl.loop = true;
-    musicEl.volume = Math.min(0.3, bibleReadingBackgroundVolumeFor(src) * 2.5);
+    // Halved (Louis, 2026-11-22: "cut it in half").
+    musicEl.volume = Math.min(0.15, bibleReadingBackgroundVolumeFor(src) * 1.25);
   }
   void musicEl.play().catch(() => {
     // Waiting for the first tap.
@@ -169,9 +170,20 @@ export function playMatchMusic(scene: string) {
   musicScene = scene;
   startScene();
   const onTap = () => startScene();
+  // Leaving the app stops the music; coming back starts it again.
+  const onVis = () => (document.visibilityState === "hidden" ? musicEl?.pause() : startScene());
+  const onHide = () => musicEl?.pause();
   window.addEventListener("pointerdown", onTap);
+  document.addEventListener("visibilitychange", onVis);
+  window.addEventListener("pagehide", onHide);
+  window.addEventListener("blur", onHide);
+  window.addEventListener("focus", onTap);
   return () => {
     window.removeEventListener("pointerdown", onTap);
+    document.removeEventListener("visibilitychange", onVis);
+    window.removeEventListener("pagehide", onHide);
+    window.removeEventListener("blur", onHide);
+    window.removeEventListener("focus", onTap);
     if (musicScene === scene) musicScene = "";
     // Leave it to the next scene to switch tracks; stop only when leaving the game.
   };

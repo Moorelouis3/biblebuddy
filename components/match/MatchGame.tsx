@@ -134,7 +134,7 @@ export default function MatchGame() {
     <div className="bbm-root">
       <style>{MATCH_CSS}</style>
       {screen.name === "home" ? (
-        <Home label={allDone ? `All ${MATCH_LEVELS.length} boards ✓` : `${latest.book} · ${latest.title}`} onPlay={() => setScreen({ name: "map" })} ready={ready} />
+        <Home label={allDone ? `All ${MATCH_LEVELS.length} boards ✓` : `${latest.book} · ${latest.title}`.length <= 22 ? `${latest.book} · ${latest.title}` : latest.title} onPlay={() => setScreen({ name: "map" })} ready={ready} />
       ) : screen.name === "map" ? (
         <GenesisMap
           progress={progress}
@@ -228,7 +228,7 @@ function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; rea
           <Link href="/bible-study-games" className="bbm-hot" style={art.back} aria-label="Back to Bible Buddy" />
           <button type="button" className="bbm-hot" style={art.gear} aria-label="Settings" onClick={() => setSettings(true)} />
           <button type="button" className="bbm-hot is-play" style={art.play} aria-label="Play" onClick={onPlay} disabled={!ready} />
-          <span className="bbm-home2-label" style={art.label}>
+          <span className={`bbm-home2-label ${label.length > 20 ? "is-long" : ""}`} style={art.label}>
             {label}
           </span>
         </div>
@@ -270,37 +270,74 @@ function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; rea
  * the marker walks along them. Creation sits at the coast, Eden one screen up
  * past the stone bridge.
  */
-const PATH_POINTS: Array<[number, number]> = [
+/** The Genesis map's painted path (map-phone.webp), bottom to top, in percent of the picture. */
+const GENESIS_PATH: Array<[number, number]> = [
   [38, 99], [37, 95], [30, 91], [21, 87], [14, 82], [12, 78], [14, 74], [25, 71], [26, 68], [21, 65], [24, 62],
   [30, 59], [40, 57], [47, 55], [44, 52.5], [38, 50], [30, 48.5], [36, 46], [44, 44], [50, 42], [60, 40], [66, 37.5],
   [64, 35], [67, 32.5], [66, 30], [61, 27.5], [55, 25], [53, 22.5], [48, 20], [33, 17.5], [36, 15], [31, 12.5],
   [35, 10], [41, 7.5], [47, 5], [50, 2],
 ];
-/** Where the two boards of one map picture sit, in that picture's percent. */
-const SEGMENT_SPOTS = [
-  { x: 21, y: 87 },
-  { x: 61, y: 27.5 },
+/**
+ * The Exodus map's painted path (Drive 00-Exodus-Map, map-exodus-phone.webp):
+ * the Nile and Egypt at the bottom, the parted Red Sea, the camp and the
+ * oasis, Mount Sinai in the storm, the Tabernacle at the top.
+ */
+const EXODUS_PATH: Array<[number, number]> = [
+  [38, 99.5], [42, 95], [47, 90], [52, 87], [50, 84], [40, 80], [39, 77], [50, 74.5], [62, 72], [65, 70], [60, 67],
+  [55, 65], [47, 62], [42, 60], [40, 57], [42, 55], [47, 52], [55, 49], [55, 47], [52, 45], [50, 42], [47, 40],
+  [40, 38], [35, 36], [33, 34], [37, 32], [45, 30], [55, 28], [65, 26], [70, 24.5], [66, 22], [55, 18.5], [45, 15.5],
+  [33, 12.5], [27, 9.5], [33, 6.5], [45, 4], [52, 1],
 ];
 
+type Section = { src: string; path: Array<[number, number]>; fx: "genesis" | "exodus"; levels: MatchLevel[]; spots: Array<{ x: number; y: number }> };
+
+/** Evenly along a path: n spots at (i + .5) / slots of its length, measured as straight pieces. */
+function spaced(path: Array<[number, number]>, n: number, slots = n) {
+  const len: number[] = [0];
+  for (let i = 1; i < path.length; i += 1) len.push(len[i - 1] + Math.hypot(path[i][0] - path[i - 1][0], (path[i][1] - path[i - 1][1]) * 4.33));
+  const total = len[len.length - 1];
+  return Array.from({ length: n }, (_, k) => {
+    const at = ((k + 0.5) / slots) * total;
+    const i = Math.max(1, len.findIndex((l) => l >= at));
+    const t = (at - len[i - 1]) / (len[i] - len[i - 1] || 1);
+    return { x: path[i - 1][0] + (path[i][0] - path[i - 1][0]) * t, y: path[i - 1][1] + (path[i][1] - path[i - 1][1]) * t };
+  });
+}
+
 /**
- * 20 boards (Louis, 2026-11-22): the painted map holds two, so the picture
- * repeats up the screen, one copy per two boards, with the first two at the
- * bottom. Everything below is in percent of the whole world: x of its width,
- * y of its height.
+ * The map, bottom to top (Louis, 2026-11-22: "I gave you maps for every
+ * level"). Each picture is a section of one tall world: the Genesis map
+ * holds Creation and Eden; the Exodus map holds the Exodus boards, spread
+ * along its path (12 slots, the whole of Exodus). Genesis boards 3-11 have
+ * no map art yet, so they sit on copies of the Genesis map until it comes.
  */
-const SEGMENTS = Math.max(1, Math.ceil(MATCH_LEVELS.length / 2));
-const toWorld = (seg: number, x: number, y: number) => ({ x, y: ((SEGMENTS - 1 - seg) * 100 + y) / SEGMENTS });
-const SPOTS = MATCH_LEVELS.map((_, i) => {
-  const s = SEGMENT_SPOTS[i % 2];
-  return toWorld(Math.floor(i / 2), s.x, s.y);
-});
-/** A smooth curve through the points (Catmull-Rom, as cubic Beziers), every picture's path joined bottom to top. */
+const SECTIONS: Section[] = (() => {
+  const genesis = MATCH_LEVELS.filter((l) => l.book === "Genesis");
+  const exodus = MATCH_LEVELS.filter((l) => l.book === "Exodus");
+  const out: Section[] = [];
+  const GEN_SPOTS = [{ x: 21, y: 87 }, { x: 61, y: 27.5 }];
+  for (let i = 0; i < genesis.length; i += 2) {
+    const levels = genesis.slice(i, i + 2);
+    out.push({ src: "/games/match/ui/map-phone.webp", path: GENESIS_PATH, fx: "genesis", levels, spots: GEN_SPOTS.slice(0, levels.length) });
+  }
+  if (exodus.length) out.push({ src: "/games/match/ui/map-exodus-phone.webp", path: EXODUS_PATH, fx: "exodus", levels: exodus, spots: spaced(EXODUS_PATH, exodus.length, 12) });
+  return out;
+})();
+const SEGMENTS = SECTIONS.length;
+/** Every section but the bottom is drawn 6% taller, its bottom fading over the one below (see the img). */
+const BLEND = 1.06;
+const toWorld = (seg: number, x: number, y: number) => ({ x, y: ((SEGMENTS - 1 - seg) * 100 + y * (seg > 0 ? BLEND : 1)) / SEGMENTS });
+/** Each board's spot, in percent of the whole world, in board order. */
+const SPOTS = SECTIONS.flatMap((s, seg) => s.spots.map((p) => toWorld(seg, p.x, p.y)));
+/** A smooth curve through every section's path, bottom to top (Catmull-Rom, as cubic Beziers). */
 const TRAIL = (() => {
   const p: Array<[number, number]> = [];
-  for (let seg = 0; seg < SEGMENTS; seg += 1) for (const [x, y] of PATH_POINTS) {
-    const w = toWorld(seg, x, y);
-    p.push([w.x, w.y]);
-  }
+  SECTIONS.forEach((s, seg) => {
+    for (const [x, y] of s.path) {
+      const w = toWorld(seg, x, y);
+      p.push([w.x, w.y]);
+    }
+  });
   let d = `M ${p[0][0]} ${p[0][1]}`;
   for (let i = 0; i < p.length - 1; i += 1) {
     const [x0, y0] = p[Math.max(0, i - 1)];
@@ -426,21 +463,24 @@ function GenesisMap({
       </div>
       <div ref={scroller} className="bbm-map-scroll">
         <div className="bbm-map-world" style={{ aspectRatio: `1080 / ${4680 * SEGMENTS}` }}>
-          {Array.from({ length: SEGMENTS }).map((_, i) => (
+          {/* Each section's own picture. Every one but the bottom reaches a
+              little below its place and fades out there over the one beneath,
+              so the joins blend instead of cutting (Louis: "it cuts rough"). */}
+          {SECTIONS.map((s, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={i}
-              className="bbm-map-art"
-              style={{ height: `${100 / SEGMENTS}%` }}
-              src="/games/match/ui/map-phone.webp"
-              alt={i === SEGMENTS - 1 ? "The Bible Buddy trail, from Creation upward" : ""}
+              className={`bbm-map-art bbm-map-section ${i > 0 ? "is-blended" : ""}`}
+              style={{ top: `${((SEGMENTS - 1 - i) * 100) / SEGMENTS}%`, height: `${(100 / SEGMENTS) * (i > 0 ? BLEND : 1)}%`, zIndex: i + 1 }}
+              src={s.src}
+              alt={i === 0 ? "The Bible Buddy trail through Genesis and Exodus" : ""}
               draggable={false}
             />
           ))}
           {/* Living map (Louis, 2026-11-22): water runs, the sea moves, and the
-              weather changes up the trail: storm, snow, fireflies in turn. */}
-          {Array.from({ length: SEGMENTS }).map((_, i) => (
-            <MapFx key={`fx${i}`} seg={i} />
+              weather changes up the trail. */}
+          {SECTIONS.map((s, i) => (
+            <MapFx key={`fx${i}`} seg={i} kind={s.fx} />
           ))}
           {/* The painted path, traced: invisible, the marker walks along it. */}
           <svg className="bbm-map-trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
@@ -541,10 +581,25 @@ function GenesisMap({
  * lightning over the clouds, then snow, then fireflies in the garden.
  * Decoration only: no taps, and nothing moves with reduced motion.
  */
-function MapFx({ seg }: { seg: number }) {
+function MapFx({ seg, kind }: { seg: number; kind: "genesis" | "exodus" }) {
+  const box = { top: `${((SEGMENTS - 1 - seg) * 100) / SEGMENTS}%`, height: `${(100 / SEGMENTS) * (seg > 0 ? BLEND : 1)}%` };
+  if (kind === "exodus") {
+    // The Exodus map: the Nile, the walls of the Red Sea, the oasis waterfall, and Sinai's storm.
+    return (
+      <div className="bbm-fx" style={box} aria-hidden="true">
+        <span className="bbm-fx-sea" style={{ left: "0%", top: "88%", width: "100%", height: "12%" }} />
+        <span className="bbm-fx-sea" style={{ left: "0%", top: "44%", width: "40%", height: "16%", animationDelay: "-2s" }} />
+        <span className="bbm-fx-sea" style={{ left: "62%", top: "44%", width: "38%", height: "16%", animationDelay: "-4s" }} />
+        <span className="bbm-fx-fall" style={{ left: "74%", top: "34.5%", width: "7%", height: "4%" }} />
+        <span className="bbm-fx-shimmer" style={{ left: "68%", top: "37.5%", width: "22%", height: "3%" }} />
+        <span className="bbm-fx-rain" style={{ left: "28%", top: "11%", width: "72%", height: "12%" }} />
+        <span className="bbm-fx-bolt" style={{ left: "40%", top: "10%", width: "60%", height: "12%", animationDelay: `${seg * 1.3}s` }} />
+      </div>
+    );
+  }
   const weather = (["storm", "snow", "fireflies"] as const)[seg % 3];
   return (
-    <div className="bbm-fx" style={{ top: `${((SEGMENTS - 1 - seg) * 100) / SEGMENTS}%`, height: `${100 / SEGMENTS}%` }} aria-hidden="true">
+    <div className="bbm-fx" style={box} aria-hidden="true">
       <span className="bbm-fx-fall" style={{ left: "75%", top: "4.2%", width: "11%", height: "8%" }} />
       <span className="bbm-fx-fall is-small" style={{ left: "58%", top: "42.5%", width: "18%", height: "4.5%" }} />
       <span className="bbm-fx-shimmer" style={{ left: "55%", top: "48%", width: "40%", height: "11%" }} />

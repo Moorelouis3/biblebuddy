@@ -251,7 +251,8 @@ export const clueSound = {
  * Follows the same mute switch as the sounds. Starts on the first tap
  * (browsers block audio before one) and stops when the table closes.
  */
-const MUSIC_LIFT = 2.5;
+// Halved (Louis, 2026-11-22: "the music is too loud, cut it in half").
+const MUSIC_LIFT = 1.25;
 const MUSIC_ON = "bb:clue-music";
 const MUSIC_VOL = "bb:clue-music-volume";
 const MUSIC_TRACK = "bb:clue-music-track";
@@ -292,7 +293,7 @@ let musicWanted = false;
 
 /** Slider at 0.5 = the measured quiet level; 1 = twice that (still capped low). */
 function levelFor(src: string) {
-  return Math.min(0.35, bibleReadingBackgroundVolumeFor(src) * MUSIC_LIFT * musicVolume() * 2);
+  return Math.min(0.18, bibleReadingBackgroundVolumeFor(src) * MUSIC_LIFT * musicVolume() * 2);
 }
 
 function startTrack() {
@@ -316,12 +317,24 @@ export function startClueMusic() {
   musicWanted = true;
   startTrack();
   const onTap = () => startTrack();
+  // Leaving the app (home screen, another app, locking the phone) stops the
+  // music; coming back to the game starts it again (Louis, 2026-11-22).
+  const onVis = () => (document.visibilityState === "hidden" ? music?.pause() : startTrack());
+  const onHide = () => music?.pause();
   window.addEventListener("pointerdown", onTap);
   window.addEventListener("keydown", onTap);
+  document.addEventListener("visibilitychange", onVis);
+  window.addEventListener("pagehide", onHide);
+  window.addEventListener("blur", onHide);
+  window.addEventListener("focus", onTap);
   return () => {
     musicWanted = false;
     window.removeEventListener("pointerdown", onTap);
     window.removeEventListener("keydown", onTap);
+    document.removeEventListener("visibilitychange", onVis);
+    window.removeEventListener("pagehide", onHide);
+    window.removeEventListener("blur", onHide);
+    window.removeEventListener("focus", onTap);
     music?.pause();
   };
 }

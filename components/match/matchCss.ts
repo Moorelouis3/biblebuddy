@@ -198,6 +198,8 @@ html.bb-game-screen :is(.bb-bottom-pill, .bb-safe-top-header, .bb-report-problem
 }
 .bbm-home2-label { background:none; font-family: Georgia, serif; }
 .bbm-home2-art.is-phone .bbm-home2-label { font-size: min(5vw, 2.3dvh); }
+.bbm-home2-art.is-phone .bbm-home2-label.is-long { font-size: min(3.9vw, 1.8dvh); }
+.bbm-home2-art.is-desktop .bbm-home2-label.is-long { font-size: min(1.5vw, 2.7dvh) !important; }
 .bbm-home2-art.is-desktop .bbm-home2-label { font-size: min(1.9vw, 3.4dvh); }
 
 /* map: the painted trail, one column, blurred art either side on wide screens */
@@ -305,8 +307,13 @@ html.bb-native.bb-game-screen body::before { display:none !important; }
 .bbm-buddy img { width:100%; height:100%; object-fit:cover; }
 .bbm-buddy.is-more { font-size:11px; }
 .bbm-buddy-name { margin-left:6px; padding: 2px 8px; border-radius:999px; background: rgba(40,24,8,.72); color:#fff3d2 !important; font-size:12px; font-weight:800; }
+/* The map sections: stacked, each over the one below, its bottom fading into it. */
+.bbm-map-section { position:absolute; left:0; width:100%; object-fit:fill; }
+.bbm-map-section.is-blended { -webkit-mask-image: linear-gradient(180deg, #000 calc(100% - 6%), transparent 100%); mask-image: linear-gradient(180deg, #000 calc(100% - 6%), transparent 100%); }
+.bbm-map-trail { z-index: 30; }
+.bbm-medal, .bbm-marker { z-index: 40 !important; }
 /* ---- the living map (MapFx): water, sea, storm, snow, fireflies ---- */
-.bbm-fx { position:absolute; left:0; right:0; z-index:2; pointer-events:none; overflow:hidden; }
+.bbm-fx { position:absolute; left:0; right:0; z-index:20; pointer-events:none; overflow:hidden; }
 .bbm-fx > span { position:absolute; display:block; pointer-events:none; }
 /* Falling water: bright streaks sliding down, soft at the edges. */
 .bbm-fx-fall { background: repeating-linear-gradient(180deg, rgba(255,255,255,0) 0 9px, rgba(235,250,255,.7) 9px 13px, rgba(255,255,255,0) 13px 24px);
@@ -345,10 +352,13 @@ html.bb-native.bb-game-screen body::before { display:none !important; }
 /* Boards from the Drive board folders bring their own phone and desktop art. */
 .bbm-board.has-art .bbm-board-bg { background-image: var(--bg-phone); background-color:#1a1410; }
 @media (min-aspect-ratio: 1/1) { .bbm-board.has-art .bbm-board-bg { background-image: var(--bg-desktop); } }
-/* The home picture has Back and settings drawn into it near the top: start it below the clock. */
-.bbm-home2 { --safe-top: env(safe-area-inset-top); padding-top: var(--safe-top); box-sizing:border-box; }
+/* The home picture has Back and settings drawn into it near the top: it keeps
+   its full size (Louis: shrinking it to fit looked "messed up and shrunken")
+   and moves down below the clock; the flowers at its bottom edge get trimmed. */
+.bbm-home2 { --safe-top: env(safe-area-inset-top); overflow:hidden; }
 html.bb-native.bb-ios .bbm-home2 { --safe-top: max(env(safe-area-inset-top), 50px); }
-.bbm-home2-art.is-phone { height: min(100dvh - var(--safe-top), 216.67vw) !important; }
+.bbm-home2-art.is-phone { transform: translateY(calc(var(--safe-top) / 2)); }
+@media (max-aspect-ratio: 1/1) { .bbm-home2 { place-items: start center; } .bbm-home2-art.is-phone { transform: translateY(var(--safe-top)); } }
 html.bb-native.bb-ios .bbm-topbar { padding-top: calc(10px + max(env(safe-area-inset-top), 50px)) !important; }
 html.bb-native.bb-ios .bbm-board { padding-top: calc(12px + max(env(safe-area-inset-top), 50px)) !important; --cellw: min((100vw - 34px) / 7, (100dvh - 320px) / 9, 64px); }
 
