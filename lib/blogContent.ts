@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-17-explained",
+    title: "1 Samuel 17 Explained: David and Goliath in the Valley of Elah",
+    description:
+      "1 Samuel 17 explained verse by verse: Goliath's forty day challenge, David's refused armor, his famous answer to the giant, and the sling that ended it.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-17-explained",
+    publishedAt: "2026-11-22",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 17 Explained 📖",
+      content:
+        "A giant shouts the same challenge for forty days.\n\nNobody answers. Then a shepherd boy shows up with food.\n\n📌 The battle is the Lord's, not the sword's.\n\n📖 Goliath stood over nine feet tall in armor.\n📖 David turns down the king's own armor.\n📖 Five stones, one sling, no sword in his hand.\n\nNew article on:\n🟢 why David refuses **Saul's armor**\n🟢 the famous line about the **battle** belonging to God\n🟢 why **Saul** still does not know David's name after\n\nWhat is the giant shouting at you right now? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-16-explained",
     title: "1 Samuel 16 Explained: David Anointed King in Secret",
     description:
