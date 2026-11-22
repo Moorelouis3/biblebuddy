@@ -6,7 +6,8 @@
  * did you enjoy it, and do you want another book.
  */
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { clueSound } from "@/lib/clueGame/sound";
 import type { PublicCard, PublicMatch } from "@/lib/clueGame/engine";
 import { SubjectArt } from "./ClueParts";
 import { trackClue } from "@/lib/clueGame/track";
@@ -61,6 +62,11 @@ export default function ClueResults({
   const [feedback, setFeedback] = useState<null | "up" | "down">(null);
   const [wantMore, setWantMore] = useState(false);
   const fan = wonCards.slice(-3);
+  useEffect(() => {
+    clueSound.fanfare(heading !== "Game Over" && score > 0);
+    // Once, when the results appear.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="bb-clue-parchment bb-clue-panel text-center">
       <h2 className="bb-clue-serif bb-clue-title" style={{ color: "#2a1a0c" }}>{heading}</h2>

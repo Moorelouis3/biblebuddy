@@ -17,6 +17,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { PublicCard, PublicMatch } from "@/lib/clueGame/engine";
 import { Avatar, CardBack, CATEGORY_LABEL, PlayingCard, SubjectArt } from "./ClueParts";
+import { clueSound } from "@/lib/clueGame/sound";
 
 export type TablePlayer = { id: string; name: string; avatar?: string | null };
 
@@ -106,6 +107,33 @@ export default function ClueTable({
     // spots is derived from seated; winnerSeat/flyNow are the triggers.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [flyNow, winnerSeat]);
+
+  // Sounds, from what changed on the table (the same for solo and rooms).
+  const heard = useRef({ dealt: view.dealt, clue: round?.clueIndex ?? -1, phase: view.phase, tick: 0, wrongAt: 0 });
+  useEffect(() => {
+    const h = heard.current;
+    if (view.dealt !== h.dealt && view.phase === "clue") clueSound.deal();
+    else if (view.phase === "clue" && round && round.clueIndex > h.clue && view.dealt === h.dealt) clueSound.clue();
+    if (view.phase === "reveal" && h.phase !== "reveal" && round?.outcome) {
+      clueSound.flip();
+      if (round.outcome.kind === "won") (round.outcome.sideId === youId ? clueSound.correct : clueSound.otherWon)();
+      else clueSound.missed();
+    }
+    const mine = view.recentWrong.filter((w) => w.playerId === youId && w.at > h.wrongAt);
+    if (mine.length) {
+      clueSound.wrong();
+      h.wrongAt = mine[mine.length - 1].at;
+    }
+    h.dealt = view.dealt;
+    h.clue = round?.clueIndex ?? -1;
+    h.phase = view.phase;
+  }, [view.dealt, view.phase, round, view.recentWrong, youId]);
+  useEffect(() => {
+    if (view.phase !== "clue" || paused || seconds > 3 || seconds < 1) return;
+    if (heard.current.tick === seconds + (round?.clueIndex ?? 0) * 100 + view.dealt * 1000) return;
+    heard.current.tick = seconds + (round?.clueIndex ?? 0) * 100 + view.dealt * 1000;
+    clueSound.tick(seconds === 1);
+  }, [seconds, view.phase, paused, round?.clueIndex, view.dealt]);
 
   const submit = (e?: React.FormEvent) => {
     e?.preventDefault();

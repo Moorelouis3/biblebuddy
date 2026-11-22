@@ -15,6 +15,7 @@ import type { PublicCard } from "@/lib/clueGame/engine";
 import type { ClueCategory, ClueRef } from "@/lib/clueGame/types";
 import { kjvStaticUrl } from "@/lib/chapterStaticData";
 import { ref as parseRef } from "@/lib/clueGame/ref";
+import { clueSound, primeClueSound, setSoundOn, soundOn } from "@/lib/clueGame/sound";
 
 export const CATEGORY_LABEL: Record<ClueCategory, string> = { person: "Person", place: "Place", keyword: "Keyword" };
 
@@ -234,7 +235,33 @@ export function StudyCard({ card, onClose, onOpenRef }: { card: PublicCard; onCl
 
 /* ---------- the room ---------- */
 
+/** The speaker button: sound on or off, kept on this device. */
+export function SoundToggle() {
+  const [on, setOn] = useState(true);
+  useEffect(() => {
+    // Read the saved choice after mount (localStorage is not there on the server).
+    const id = window.setTimeout(() => setOn(soundOn()), 0);
+    return () => window.clearTimeout(id);
+  }, []);
+  return (
+    <button
+      type="button"
+      className="bb-clue-round"
+      aria-label={on ? "Turn sound off" : "Turn sound on"}
+      aria-pressed={on}
+      onClick={() => {
+        setSoundOn(!on);
+        setOn(!on);
+        if (!on) clueSound.tap();
+      }}
+    >
+      {on ? "🔊" : "🔇"}
+    </button>
+  );
+}
+
 export function ClueRoomFrame({ children }: { children: ReactNode }) {
+  useEffect(() => primeClueSound(), []);
   return (
     <div className="bb-clue-room">
       <style>{CLUE_CSS}</style>
@@ -271,7 +298,7 @@ export function ClueHeader({
         {subtitle ? <span className="bb-clue-logo-pill">{subtitle}</span> : null}
         {badge ? <span className="bb-clue-logo-badge">{badge}</span> : null}
       </div>
-      <div className="bb-clue-header-side is-right">{right}</div>
+      <div className="bb-clue-header-side is-right">{right ?? <SoundToggle />}</div>
     </header>
   );
 }
