@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-18-explained",
+    title: "1 Samuel 18 Explained: Jonathan's Covenant, Saul's Jealousy",
+    description:
+      "1 Samuel 18 explained verse by verse: Jonathan's covenant with David, the song that sparks Saul's jealousy, a thrown javelin, and the dowry meant to kill him.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-18-explained",
+    publishedAt: "2026-11-22",
+    readTime: "15 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 18 Explained 📖",
+      content:
+        "One victory. Two completely different reactions.\n\nOne man gives David his own robe. The other starts plotting against him.\n\n📌 Saul was afraid because the Lord was with David.\n\n📖 Jonathan's soul was knit with David's.\n📖 A javelin gets thrown inside the king's own house.\n📖 Saul plots a deadly dowry of a hundred foreskins.\n\nNew article on:\n🟢 why **Jonathan** gives away his robe and sword\n🟢 the song that sparks **Saul's jealousy**\n🟢 the **dowry** meant to get David killed\n\nHow do you usually react to someone else's success? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-17-explained",
     title: "1 Samuel 17 Explained: David and Goliath in the Valley of Elah",
     description:
