@@ -1284,8 +1284,8 @@ export default function AnalyticsDashboardView({
                     <p className="mt-1 text-2xl font-black sm:text-3xl">{pctOrNA(d.returning.nextDayReturn)}</p>
                     <p className="mt-1 text-[10px] font-semibold text-[#94a3b8]">
                       {d.returning.nextDayEligible > 0
-                        ? `${fmt(d.returning.nextDayReturned)} of ${fmt(d.returning.nextDayEligible)} came back`
-                        : "nobody's next day has passed yet"}
+                        ? `${fmt(d.returning.nextDayReturned)} of ${fmt(d.returning.nextDayEligible)} ${windowKey === "today" ? "from yesterday came back today" : windowKey === "yesterday" ? "from the day before came back" : "came back the next day"}`
+                        : "no signups the day before"}
                     </p>
                   </div>
                   <div className="px-2">

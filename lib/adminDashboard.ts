@@ -565,7 +565,19 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
 
   // ----- activity (for next-day return and retention) -----
   const cohort = profiles.filter((p) => new Date(p.created_at) >= cohortStart && new Date(p.created_at) < berlinMidnight(addDays(today, -7)));
-  const activityUserIds = Array.from(new Set([...newCur.map((p) => p.user_id), ...cohort.map((p) => p.user_id)]));
+  /**
+   * The Returning card's next-day cohort (Louis, 2026-11-22: "it should be
+   * based on the people yesterday that came back today"). Everyone whose day
+   * after signing up falls inside the window: on Today that is yesterday's
+   * signups and whether they came back today; on Yesterday, the day before's
+   * signups; on 7 and 30 days, every signup whose next day is in the window.
+   * Today counts as it stands, so the figure can still rise until midnight.
+   */
+  const nextDayCohort = profiles.filter((p) => {
+    const nextDay = addDays(berlinDay(p.created_at), 1);
+    return nextDay <= today && within(berlinMidnight(nextDay).toISOString(), current);
+  });
+  const activityUserIds = Array.from(new Set([...newCur.map((p) => p.user_id), ...cohort.map((p) => p.user_id), ...nextDayCohort.map((p) => p.user_id)]));
   const activityFrom = new Date(Math.min(current.start.getTime(), cohortStart.getTime())).toISOString();
   const actions = await inBatches<ActionRow>(activityUserIds, async (chunk) =>
     fetchAll<ActionRow>(admin, "master_actions", "user_id, action_type, action_label, created_at", (q) => q.in("user_id", chunk).gte("created_at", activityFrom)),
@@ -586,6 +598,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   // Only users whose "next day" has already happened can count.
   const eligibleNextDay = newCur.filter((p) => addDays(berlinDay(p.created_at), 1) <= today);
   const returnedNextDay = eligibleNextDay.filter(cameBackNextDay).length;
+  const nextDayCohortReturned = nextDayCohort.filter(cameBackNextDay).length;
 
   // ----- funnel -----
   const funnel = [
@@ -2098,9 +2111,9 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       activeToday: activeToday.size,
       studiedToday: studiedToday.size,
       // null, not 0, when nobody is eligible yet. See rateOrNull.
-      nextDayReturn: rateOrNull(returnedNextDay, eligibleNextDay.length),
-      nextDayEligible: eligibleNextDay.length,
-      nextDayReturned: returnedNextDay,
+      nextDayReturn: rateOrNull(nextDayCohortReturned, nextDayCohort.length),
+      nextDayEligible: nextDayCohort.length,
+      nextDayReturned: nextDayCohortReturned,
       activeAfter7: rateOrNull(stillHereAfter7, cohort.length),
       onDay7: rateOrNull(onDay7, cohort.length),
       retention,
