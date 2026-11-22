@@ -145,6 +145,7 @@ const TONE_BY_PREVIEW: Record<PopupPreview, keyof typeof TONES> = {
   covers: "brand",
   birthday: "brand",
   home_widgets: "brand",
+  match: "lavender",
 };
 
 /**
@@ -1038,6 +1039,26 @@ function Preview({ kind }: { kind: PopupPreview }) {
           </span>
         </div>
       );
+    case "match": {
+      // Bible Buddy Match (2026-11-22): a little board of the real Creation tiles
+      // over the Garden, with a row of three lambs lit up as a match.
+      const grid = ["sun", "moon", "tree", "star", "lamb", "lamb", "lamb", "globe", "star", "tree", "moon", "sun", "globe", "tree", "star", "globe"];
+      return (
+        <div className="relative overflow-hidden rounded-2xl bg-cover bg-center p-3" style={{ backgroundImage: "url(/games/match/ui/eden-phone.webp)" }} aria-hidden="true">
+          <div className="mx-auto grid w-[62%] grid-cols-4 gap-1 rounded-xl bg-white/45 p-1.5 shadow-[0_8px_20px_-8px_rgba(14,26,58,.5)] backdrop-blur-[2px]">
+            {grid.map((t, i) => (
+              <span
+                key={i}
+                className={`grid aspect-square place-items-center rounded-lg ${i >= 4 && i <= 6 ? "bg-[#d6f5dd] shadow-[0_0_0_2px_#3ccf6e,0_0_12px_rgba(60,207,110,.7)]" : "bg-white/70"}`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`/games/match/tiles/${t}.webp`} alt="" className="h-[80%] w-[80%] object-contain" />
+              </span>
+            ))}
+          </div>
+        </div>
+      );
+    }
     case "covers":
       // A little shelf of the real covers, Winter Cabin first.
       return (

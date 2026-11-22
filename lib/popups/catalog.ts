@@ -70,7 +70,9 @@ export type PopupPreview =
   /** The first birthday: the party hat and a big 1. */
   | "birthday"
   /** The widget Home: a little grid of widget tiles. */
-  | "home_widgets";
+  | "home_widgets"
+  /** Bible Buddy Match: a little board of real tiles over the Garden. */
+  | "match";
 
 /**
  * Makes a popup a sign-up for a community study (lib/communityEvents.ts).
@@ -129,7 +131,7 @@ export type PopupStep = { title: string; detail: string };
  * master_actions (PopupCoordinator sets them). bible_cover_chosen: a Bible
  * Cover or Dark mode is on.
  */
-export const LOCAL_POPUP_SIGNALS = ["bible_cover_chosen", "home_customized"] as const;
+export const LOCAL_POPUP_SIGNALS = ["bible_cover_chosen", "home_customized", "match_played"] as const;
 export type LocalPopupSignal = (typeof LOCAL_POPUP_SIGNALS)[number];
 
 export type PopupDefinition = {
@@ -652,6 +654,32 @@ export const POPUP_CATALOG: PopupDefinition[] = [
     device: "bible_lock_ready",
     custom: "bible_lock",
     seenBeforeIsFinal: true,
+  },
+  // Bible Buddy Match (Louis, 2026-11-22: "add this popup to get people
+  // playing it"). A headline: chosen before anything else that is eligible.
+  {
+    id: "bible_buddy_match_2026_11",
+    version: 1,
+    kind: "announcement",
+    priority: 70,
+    level: "headline",
+    sections: ["/bible-study-games/match"],
+    pill: "New in Bible Buddy",
+    headline: "Bible Buddy Match",
+    headlineAccent: "Match",
+    description: "Match your way through Genesis.",
+    cardTitle: "Bible Buddy Match",
+    cardLine: "Swap tiles, clear each board, and walk the Bible story from Creation.",
+    cardIcon: "💎",
+    preview: "match",
+    steps: [],
+    cta: { label: "Play Bible Buddy Match →", href: "/bible-study-games/match?from=popup" },
+    ctaInSection: "Got it",
+    footnote: "",
+    // Somebody who has played it on this device is never told about it.
+    usedWhen: ["match_played"],
+    minAccountAgeDays: 0,
+    expiresAt: null,
   },
   // The two new games (2026-11-13). Its own component until 2026-11-15.
   {

@@ -370,6 +370,14 @@ async function load(userId: string, catalog: PopupDefinition[]): Promise<Loaded 
   // the server: a cover is on or it is not (lib/bibleCovers.ts).
   const LOCAL_SIGNALS: Record<string, () => boolean> = {
     bible_cover_chosen: () => Boolean(readBibleCover()),
+    // Bible Buddy Match has been played on this device (components/match keeps its progress there).
+    match_played: () => {
+      try {
+        return Boolean(window.localStorage.getItem("bb:match:progress"));
+      } catch {
+        return false;
+      }
+    },
     // Home has been arranged on this device (lib/homeLayoutStore.ts keeps a
     // copy of the reader's own layout; none means the default).
     home_customized: () => {

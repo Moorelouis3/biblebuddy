@@ -40,6 +40,7 @@ const POWER_NAMES: Record<string, string> = {
 };
 import { matchSound } from "@/lib/match/sound";
 import { trackMatch } from "@/lib/match/track";
+import WinStory, { winStoryFor } from "./WinStory";
 
 /**
  * A board in progress, kept on the device so closing the app does not start
@@ -500,7 +501,10 @@ export default function MatchBoard({
         </button>
       </div>
 
-      {outcome ? (
+      {/* A Genesis board won: its story screen (WinStory); other boards: the scroll. */}
+      {outcome?.won && winStoryFor(level.book, level.number) ? (
+        <WinStory src={winStoryFor(level.book, level.number)!} alt={`Well done! ${level.title} complete`} onContinue={onExit} />
+      ) : outcome ? (
         <div className="bbm-panelwrap" role="dialog" aria-modal="true">
           <div className="bbm-panel">
             {outcome.won ? (

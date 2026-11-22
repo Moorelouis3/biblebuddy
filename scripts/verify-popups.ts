@@ -48,7 +48,8 @@ const base = (over: Partial<DecideInput> & { [NO_COVER]?: true; [NO_HOME]?: true
   devices: new Set(),
   // Has a Bible Cover on, so the covers headline is out of the way of the
   // ordinary rules below; the headline has its own checks at the end.
-  usedActions: new Set<string>(["bible_cover_chosen"]),
+  // Has played Bible Buddy Match, so its headline popup is out of the way too.
+  usedActions: new Set<string>(["bible_cover_chosen", "match_played"]),
   // Already in the study that is recruiting, so the checks written before the
   // sign-up popup existed still describe what they always did. The sign-up's
   // own checks are at the end and hand in an empty set.
@@ -71,6 +72,7 @@ const base = (over: Partial<DecideInput> & { [NO_COVER]?: true; [NO_HOME]?: true
           ...(over.usedActions ?? []),
           ...(NO_COVER in over ? [] : ["bible_cover_chosen"]),
           "home_customized",
+          "match_played",
         ]),
       }),
 });
