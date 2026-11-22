@@ -1622,7 +1622,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
 
           <section id="about" className="mt-14 rounded-[24px] border border-[#dce7f5] bg-[#f7fbff] p-6 text-center sm:p-8">
             <p className="text-sm font-semibold leading-7 text-[#40516b] sm:text-base">
-              Bible Buddy is currently in beta &bull; a free {inNativeApp ? "app" : "web app"} built by one person with one mission: helping people understand God&apos;s Word. New features are added every week.
+              Bible Buddy is a free app built by one person with one mission: helping people understand God&apos;s Word. New features are added every week.
             </p>
             <p className="mt-3 text-sm font-black text-[#07162f]">&mdash; Louis, founder of Bible Buddy</p>
           </section>
