@@ -64,6 +64,9 @@ const nextConfig: NextConfig = {
       // them) now goes straight to the listing. Not permanent, so the path
       // can come back. app/android/page.tsx redirects too, as a fallback.
       { source: "/android", destination: "https://play.google.com/store/apps/details?id=net.mybiblebuddy.app", permanent: false },
+      // The same short door for iPhone (Louis, 2026-11-22): mybiblebuddy.net/ios.
+      { source: "/ios", destination: "https://apps.apple.com/app/id6822155944", permanent: false },
+      { source: "/iphone", destination: "https://apps.apple.com/app/id6822155944", permanent: false },
       // The Bible reader lives at lowercase /bible. Capital /Bible was a
       // half-finished rename: ecc877d17 renamed the index route in git,
       // core.ignorecase made the directory rename a no-op on Windows, and later
