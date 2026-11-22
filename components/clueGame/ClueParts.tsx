@@ -344,10 +344,10 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-clue-logo-text { font-size:22px; font-weight:700; color:#fff1c9; text-shadow: 0 2px 0 #7a4a12, 0 3px 8px rgba(0,0,0,.5); }
 .bb-clue-logo-pill { margin-top:4px; padding:3px 14px; border-radius:999px; background:#1f5a34; color:#fff1c9; font-size:12px; font-weight:800; box-shadow: 0 0 0 2px #d8a84a; }
 .bb-clue-logo-badge { margin-top:4px; padding:2px 12px; border-radius:999px; background:#f3e2b8; color:#4a2c12; font-size:11px; font-weight:900; box-shadow: 0 0 0 1px #b8863a; }
-.bb-clue-banner { margin: 6px auto 0; padding: 14px 64px 16px; min-width: min(92vw, 420px); text-align:center; color:#fff3c8;
+.bb-clue-banner { margin: 4px auto 0; width: min(94vw, 520px); aspect-ratio: 1600/400; display:grid; place-items:center; padding: 0 17% 1.5%; text-align:center; color:#fff3c8;
   background: url(/games/clue/ui/banner.webp) center / 100% 100% no-repeat; filter: drop-shadow(0 6px 12px rgba(0,0,0,.45)); }
-.bb-clue-banner h1 { font-size: clamp(22px, 6.6vw, 34px); font-weight:700; line-height:1.05; white-space:nowrap; text-shadow: 0 2px 0 rgba(0,0,0,.35); }
-.bb-clue-ribbon { display:inline-block; margin-top:6px; padding:7px 22px; color:#3b2412; font-size:13px; font-weight:700; font-family: Georgia, serif;
+.bb-clue-banner h1 { font-size: clamp(20px, 6vw, 32px); font-weight:700; line-height:1.05; white-space:nowrap; text-shadow: 0 2px 0 rgba(0,0,0,.35); }
+.bb-clue-ribbon { display:inline-block; margin-top:2px; padding:7px 26px; white-space:nowrap; color:#3b2412; font-size:13px; font-weight:700; font-family: Georgia, serif;
   background: url(/games/clue/ui/name-shield.webp) center / 100% 100% no-repeat; }
 .bb-clue-parchment { position:relative; padding:6px; color:#3b2412;
   border: 20px solid transparent; border-image: url(/games/clue/ui/parchment.webp) 70 fill / 20px stretch;

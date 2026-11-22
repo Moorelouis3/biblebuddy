@@ -311,8 +311,10 @@ export default function ClueGame() {
         <ClueHeader backHref={screen === "menu" ? "/bible-study-games" : undefined} onBack={back} subtitle={screen === "play" ? undefined : subtitle} badge={screen === "decks" ? "Beta" : undefined} />
         {screen === "menu" ? (
           <div className="px-4">
-            <div className="bb-clue-banner w-fit">
+            <div className="bb-clue-banner">
               <h1 className="bb-clue-serif">Bible Clue Game</h1>
+            </div>
+            <div className="text-center">
               <span className="bb-clue-ribbon">A fun way to test your Bible knowledge</span>
             </div>
             <div className="bb-clue-felt mt-6" style={{ aspectRatio: "2/1" }}>
@@ -345,7 +347,7 @@ export default function ClueGame() {
           <div className="px-0"><HowToPlay onBack={() => setScreen("menu")} /></div>
         ) : screen === "decks" ? (
           <>
-            <div className="bb-clue-banner w-fit"><h1 className="bb-clue-serif" style={{ fontSize: 26 }}>Choose Your Deck</h1></div>
+            <div className="bb-clue-banner"><h1 className="bb-clue-serif">Choose Your Deck</h1></div>
             <DeckPicker
               startLabel="Start Game"
               onStart={(ids) => {
@@ -357,7 +359,7 @@ export default function ClueGame() {
           </>
         ) : screen === "multi" ? (
           <>
-            <div className="bb-clue-banner w-fit"><h1 className="bb-clue-serif" style={{ fontSize: 26 }}>Multiplayer</h1></div>
+            <div className="bb-clue-banner"><h1 className="bb-clue-serif">Multiplayer</h1></div>
             <Multiplayer onBack={() => setScreen("menu")} />
           </>
         ) : (
