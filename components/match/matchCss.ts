@@ -292,6 +292,16 @@ html.bb-native.bb-game-screen body::before { display:none !important; }
 .bbm-hud-count { font-size: clamp(18px, calc(var(--w) * .05), 26px) !important; min-width: 0 !important; padding: 0 10px !important; }
 .bbm-hud-label { font-size: clamp(10px, calc(var(--w) * .026), 14px) !important; }
 .bbm-board { padding-top: calc(16px + env(safe-area-inset-top)) !important; }
+/* In the iPhone app the Back and settings buttons sat up in the clock and
+   battery (Louis, 2026-11-22): the inset the phone reports can come back 0
+   there. Every notched or island iPhone needs at least ~50px, so that is the
+   floor. The website and Android keep the reported inset. */
+/* The home picture has Back and settings drawn into it near the top: start it below the clock. */
+.bbm-home2 { --safe-top: env(safe-area-inset-top); padding-top: var(--safe-top); box-sizing:border-box; }
+html.bb-native.bb-ios .bbm-home2 { --safe-top: max(env(safe-area-inset-top), 50px); }
+.bbm-home2-art.is-phone { height: min(100dvh - var(--safe-top), 216.67vw) !important; }
+html.bb-native.bb-ios .bbm-topbar { padding-top: calc(10px + max(env(safe-area-inset-top), 50px)) !important; }
+html.bb-native.bb-ios .bbm-board { padding-top: calc(12px + max(env(safe-area-inset-top), 50px)) !important; --cellw: min((100vw - 34px) / 7, (100dvh - 320px) / 9, 64px); }
 
 /* Tiles break apart when cleared (Louis, 2026-11-22) */
 .bbm-shard { position:absolute; inset: calc(var(--cell) * 0.05); pointer-events:none; z-index:7; }

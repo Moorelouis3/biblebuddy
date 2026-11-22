@@ -71,8 +71,15 @@ export default function MatchGame() {
 
   // The game owns the screen: the app's menu and top bar step aside.
   useLayoutEffect(() => {
-    document.documentElement.classList.add("bb-game-screen");
-    return () => document.documentElement.classList.remove("bb-game-screen");
+    const html = document.documentElement;
+    html.classList.add("bb-game-screen");
+    // iPhone/iPad: the status bar gets a fixed minimum gap too (matchCss).
+    const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    if (ios) html.classList.add("bb-ios");
+    return () => {
+      html.classList.remove("bb-game-screen");
+      html.classList.remove("bb-ios");
+    };
   }, []);
 
   const update = useCallback((fn: (p: Progress) => Progress) => {
