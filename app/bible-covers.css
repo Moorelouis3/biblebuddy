@@ -760,3 +760,24 @@ html[data-bb-cover] {
   --bb-cv-done-ink: var(--bb-cover-done);
   --bb-cv-accent-ink: var(--bb-cover-cool);
 }
+
+/* ---------- admin Analytics (Louis, 2026-11-22: "the analytics page needs to
+ * be in the cover design also") ----------
+ * The root is bb-cv-page, so the scene shows through; its own light greys
+ * (written as hex, not the Tailwind names the shared rules know) become the
+ * cover's tiles and frames. Coloured status pills keep their colours. */
+html[data-bb-cover] .bb-analytics-page :is(.bg-\[\#f5f8fc\], .bg-\[\#f8fafc\], .bg-\[\#fbfcfe\], .bg-\[\#f1f5fb\], .bg-\[\#eef2f8\]) {
+  background-color: var(--bb-cover-tile) !important;
+}
+html[data-bb-cover] .bb-analytics-page :is(.bg-\[\#f1f5f9\], .bg-\[\#e2e8f0\], .bg-\[\#eef4ff\], .bg-\[\#eef2ff\]) {
+  background-color: var(--bb-cover-tile-strong) !important;
+}
+html[data-bb-cover] .bb-analytics-page :is(.hover\:bg-\[\#f8fafc\], .hover\:bg-\[\#f1f5f9\], .hover\:bg-\[\#e2e8f0\]):hover {
+  background-color: var(--bb-cover-cool-soft) !important;
+}
+html[data-bb-cover] .bb-analytics-page :is(.border-\[\#e2e8f0\], .border-\[\#eef2f8\], .border-\[\#e3e9f2\], .border-\[\#eef2f7\], .border-\[\#dbe3ee\], .border-\[\#e8eef7\], .border-\[\#f1f5f9\], .border-\[\#f1f4f9\], .border-\[\#cbd5e1\]) {
+  border-color: var(--bb-cover-frame) !important;
+}
+html[data-bb-cover] .bb-analytics-page :is(.text-\[\#0b1633\], .text-\[\#0f172a\]) {
+  text-shadow: none;
+}

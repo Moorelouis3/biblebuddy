@@ -993,7 +993,7 @@ export default function AnalyticsDashboardView({
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f8fc] px-4 pb-28 pt-5 text-[#0b1633] sm:px-6 lg:px-8">
+    <div className="bb-cv-page bb-analytics-page min-h-screen bg-[#f5f8fc] px-4 pb-28 pt-5 text-[#0b1633] sm:px-6 lg:px-8">
       <div className="mx-auto max-w-[1440px]">
         {/* Header */}
         <header className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">

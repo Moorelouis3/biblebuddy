@@ -3151,7 +3151,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   <div className="relative text-sm font-bold text-[var(--bb-text-primary,#f9fafb)] tracking-tight">
                     Bible Buddy
                     {/* First birthday, 21-30 Nov 2026 Berlin (lib/birthday.ts):
-                        a small static party hat on the first B, sparkles to
+                        a small static party hat perched on the top-left corner of
+                        the first B (Louis, 2026-11-22: "on the corner of the
+                        B", not over it), sparkles to
                         its left. Absolutely placed over the wordmark, so the
                         header never moves or grows, and aria-hidden so the
                         link still reads "Bible Buddy". */}
@@ -3163,7 +3165,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                         aria-hidden="true"
                         width={17}
                         height={18}
-                        className="pointer-events-none absolute -left-[6px] -top-[9px] h-[18px] w-auto select-none"
+                        className="pointer-events-none absolute -left-[11px] -top-[14px] h-[18px] w-auto origin-bottom -rotate-[14deg] select-none"
                       />
                     ) : null}
                   </div>
