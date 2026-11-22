@@ -40,7 +40,7 @@ export default function ClueResults({
   won,
   total,
   wonCards,
-  heading = "Round Complete",
+  heading = "Game Complete",
   standings,
   primary,
   secondary,
@@ -75,7 +75,7 @@ export default function ClueResults({
         <span className="bb-clue-pointsbadge" style={{ fontSize: 30, padding: "8px 26px" }}>⭐ {score} point{Math.abs(score) === 1 ? "" : "s"}</span>
       </div>
       <p className="bb-clue-serif mt-3 text-[22px] font-bold">
-        {won} of {total} cards won
+        {won} of {total} rounds won
       </p>
       {fan.length ? (
         <div className="mt-3 flex items-end justify-center">

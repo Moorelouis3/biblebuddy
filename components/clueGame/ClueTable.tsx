@@ -125,21 +125,51 @@ export default function ClueTable({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [flyNow, winnerSeat]);
 
+  // Points popping out of the table and flying to a seat, and the seat's
+  // score plate bouncing when it changes.
+  const [pops, setPops] = useState<Array<{ id: number; text: string; kind: "win" | "lose"; dx: number; dy: number; seat: string }>>([]);
+  const popId = useRef(0);
+  const pop = (text: string, kind: "win" | "lose", playerId: string) => {
+    const felt = feltRef.current?.getBoundingClientRect();
+    const index = seated.findIndex((p) => p.id === playerId);
+    const spot = spots[index];
+    if (!felt || !spot) return;
+    const id = (popId.current += 1);
+    const item = { id, text, kind, seat: playerId, dx: ((spot.x - 50) / 100) * felt.width, dy: ((spot.y - 50) / 100) * felt.height };
+    setPops((list) => [...list, item]);
+    window.setTimeout(() => setPops((list) => list.filter((p) => p.id !== id)), 1900);
+  };
+
   // Sounds, from what changed on the table (the same for solo and rooms).
-  const heard = useRef({ dealt: view.dealt, clue: round?.clueIndex ?? -1, phase: view.phase, tick: 0, wrongAt: 0 });
+  // Wrong guesses already on the table when it first draws are old news.
+  const heard = useRef({ dealt: view.dealt, clue: round?.clueIndex ?? -1, phase: view.phase, tick: 0, wrongAt: view.recentWrong.length ? view.recentWrong[view.recentWrong.length - 1].at : 0 });
   useEffect(() => {
     const h = heard.current;
     if (view.dealt !== h.dealt && view.phase === "clue" && !(view.dealt === 1 && inIntro)) clueSound.deal();
     else if (view.phase === "clue" && round && round.clueIndex > h.clue && view.dealt === h.dealt) clueSound.clue();
     if (view.phase === "reveal" && h.phase !== "reveal" && round?.outcome) {
       clueSound.flip();
-      if (round.outcome.kind === "won") (round.outcome.sideId === youId ? clueSound.correct : clueSound.otherWon)();
-      else clueSound.missed();
+      if (round.outcome.kind === "won") {
+        if (round.outcome.sideId === youId) {
+          clueSound.correct();
+          window.setTimeout(() => clueSound.cheer(), 250);
+        } else clueSound.otherWon();
+        pop(`+${round.outcome.points}`, "win", round.outcome.sideId);
+      } else {
+        clueSound.missed();
+        window.setTimeout(() => clueSound.aww(), 150);
+      }
     }
-    const mine = view.recentWrong.filter((w) => w.playerId === youId && w.at > h.wrongAt);
-    if (mine.length) {
-      clueSound.wrong();
-      h.wrongAt = mine[mine.length - 1].at;
+    // Wrong guesses from anyone at the table: the minus pops at their seat;
+    // your own also buzzes and the room groans.
+    const fresh = view.recentWrong.filter((w) => w.at > h.wrongAt);
+    if (fresh.length) {
+      for (const w of fresh) pop(`−${w.points}`, "lose", w.playerId);
+      if (fresh.some((w) => w.playerId === youId)) {
+        clueSound.wrong();
+        window.setTimeout(() => clueSound.aww(), 180);
+      }
+      h.wrongAt = fresh[fresh.length - 1].at;
     }
     h.dealt = view.dealt;
     h.clue = round?.clueIndex ?? -1;
@@ -189,7 +219,11 @@ export default function ClueTable({
           const score = view.scores[p.id] ?? 0;
           const pile = view.piles[p.id]?.length ?? 0;
           return (
-            <div key={p.id} className={`bb-clue-seat ${p.id === youId ? "is-you" : ""}`} style={{ left: `${spot.x}%`, top: `${spot.y}%` }}>
+            <div
+              key={p.id}
+              className={`bb-clue-seat ${p.id === youId ? "is-you" : ""} ${pops.some((x) => x.seat === p.id && x.kind === "win") ? "is-scored" : ""} ${pops.some((x) => x.seat === p.id && x.kind === "lose") ? "is-docked" : ""}`}
+              style={{ left: `${spot.x}%`, top: `${spot.y}%` }}
+            >
               <Avatar name={p.name} src={p.avatar} size={seated.length > 4 ? 40 : 48} />
               <div className="bb-clue-seatplate">
                 <span className="max-w-[84px] truncate">{p.id === youId && seated.length > 1 ? "You" : p.name}</span>
@@ -200,6 +234,16 @@ export default function ClueTable({
           );
         })}
 
+        {pops.map((p) => (
+          <span
+            key={p.id}
+            className={`bb-clue-pop ${p.kind === "win" ? "is-win" : "is-lose"}`}
+            style={{ ["--dx" as string]: `${p.dx}px`, ["--dy" as string]: `${p.dy}px` } as React.CSSProperties}
+            aria-hidden="true"
+          >
+            {p.text}
+          </span>
+        ))}
         <div className="bb-clue-center">
           {inIntro ? (
             shuffling ? (
@@ -259,7 +303,7 @@ export default function ClueTable({
 
       <div className="mt-9 flex items-center justify-center gap-2 text-[13px] font-black" style={{ color: "#fff1c9" }}>
         <span className="bb-clue-logo-badge" style={{ marginTop: 0 }}>
-          Card {Math.max(1, view.dealt)} of {view.deckSize}
+          Round {Math.max(1, view.dealt)} of {view.deckSize}
         </span>
         {isHost && view.phase !== "over" ? (
           <button type="button" className="bb-clue-logo-badge" style={{ marginTop: 0 }} onClick={paused ? onResume : onPause}>
@@ -273,9 +317,9 @@ export default function ClueTable({
         <div className="bb-clue-panel bb-clue-parchment">
           {inIntro ? (
             <div className="py-5 text-center">
-              <p className="bb-clue-serif text-[22px] font-bold">{shuffling ? "Shuffling the deck…" : dealingDone ? "Here we go!" : `Dealing ${view.deckSize} cards…`}</p>
+              <p className="bb-clue-serif text-[22px] font-bold">{shuffling ? "Shuffling the deck…" : dealingDone ? "Round 1. Here we go!" : `Dealing ${view.deckSize} cards…`}</p>
               <p className="mt-1 text-[14px] font-semibold opacity-75">
-                {view.deckSize} cards, 5 clues each, {view.settings.clueSeconds} seconds a clue.
+                {view.deckSize} rounds, 5 clues each, {view.settings.clueSeconds} seconds a clue. Fastest right answer wins.
               </p>
             </div>
           ) : paused ? (
@@ -352,7 +396,7 @@ export default function ClueTable({
           {view.phase === "reveal" && !paused ? (
             <div className="mt-3">
               <p className="bb-clue-serif text-center text-[15px] italic">
-                {view.dealt >= view.deckSize ? "Last card!" : `Dealing in ${Math.max(1, Math.ceil(dealMsLeft / 1000))}…`}
+                {view.dealt >= view.deckSize ? "That was the last round!" : `Round ${view.dealt + 1} in ${Math.max(1, Math.ceil(dealMsLeft / 1000))}…`}
               </p>
               <div className="bb-clue-progress mt-1.5">
                 <span style={{ transform: `scaleX(${1 - dealMsLeft / (view.settings.revealSeconds * 1000)})` }} />

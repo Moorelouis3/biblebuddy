@@ -33,12 +33,12 @@ const newRoundId = () =>
 
 function HowToPlay({ onBack }: { onBack: () => void }) {
   const steps: Array<[string, string]> = [
-    ["🃏", "A card is dealt face down. You see only whether it is a Person, Place or Keyword, and its silhouette."],
+    ["🃏", "A game is 10 rounds. Each round, one card is dealt face down: you see only whether it is a Person, Place or Keyword, and its silhouette."],
     ["5️⃣", "Clues come one at a time, from 5 points down to 1. Each clue stays up for 12 seconds."],
-    ["✅", "Guess right and you win that clue’s points and the card."],
+    ["✅", "The fastest right answer wins that clue’s points and the card."],
     ["❌", "Guess wrong and you lose that many points. One guess per clue."],
     ["⏳", "Not sure? Wait for the next clue. Waiting is free."],
-    ["🔁", "The next card deals itself. A round is 10 cards. Most points wins."],
+    ["🔁", "The next round deals itself. Most points after 10 rounds wins."],
     ["📖", "After each card, tap Study This Card for its Scripture and a short teaching note."],
   ];
   return (
@@ -100,7 +100,7 @@ function DeckPicker({ onStart, startLabel }: { onStart: (deckIds: string[]) => v
         })}
       </div>
       <p className="mt-3 text-center text-[13px] font-bold opacity-75">
-        {selected.length ? `${deckLabel(selected)} selected · 10 cards a round` : "Pick a deck"}
+        {selected.length ? `${deckLabel(selected)} selected · 10 rounds a game` : "Pick a deck"}
       </p>
       <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big mt-3" disabled={!selected.length} onClick={() => onStart(selected)}>
         {startLabel}

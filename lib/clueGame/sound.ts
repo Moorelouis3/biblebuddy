@@ -102,7 +102,79 @@ function swish(start: number, dur: number, from: number, to: number, vol = 0.25)
   src.stop(t + dur + 0.02);
 }
 
+/**
+ * A crowd, roughly: several voices slightly out of tune, shaped by vowel
+ * formants. "Awww" slides down on an "ah" vowel; a cheer is bright noise
+ * with whoops sliding up.
+ */
+function crowd(kind: "aww" | "cheer") {
+  const a = audio();
+  if (!a || !master || !noise || !soundOn()) return;
+  const t0 = a.currentTime;
+  const dur = kind === "aww" ? 1.25 : 1.4;
+  const bus = a.createGain();
+  bus.gain.setValueAtTime(0.0001, t0);
+  bus.gain.exponentialRampToValueAtTime(kind === "aww" ? 0.5 : 0.42, t0 + 0.12);
+  bus.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+  // Vowel formants: "ah" for the aww, a brighter "ay" for the cheer.
+  const formants = kind === "aww" ? [[730, 6], [1090, 8], [2440, 10]] : [[800, 4], [1800, 5], [2800, 6]];
+  const shaped = a.createGain();
+  for (const [f, q] of formants) {
+    const bp = a.createBiquadFilter();
+    bp.type = "bandpass";
+    bp.frequency.value = f;
+    bp.Q.value = q;
+    shaped.connect(bp).connect(bus);
+  }
+  bus.connect(master);
+  const voices = kind === "aww" ? 9 : 7;
+  for (let i = 0; i < voices; i += 1) {
+    const osc = a.createOscillator();
+    osc.type = "sawtooth";
+    const start = t0 + Math.random() * 0.08;
+    if (kind === "aww") {
+      const base = 210 + Math.random() * 120;
+      osc.frequency.setValueAtTime(base * 1.12, start);
+      osc.frequency.exponentialRampToValueAtTime(base * 0.72, start + dur);
+    } else {
+      const base = 260 + Math.random() * 220;
+      osc.frequency.setValueAtTime(base, start);
+      osc.frequency.exponentialRampToValueAtTime(base * (1.3 + Math.random() * 0.5), start + 0.35);
+      osc.frequency.exponentialRampToValueAtTime(base * 1.05, start + dur);
+    }
+    const g = a.createGain();
+    g.gain.value = 0.18;
+    osc.connect(g).connect(shaped);
+    osc.start(start);
+    osc.stop(t0 + dur + 0.05);
+  }
+  if (kind === "cheer") {
+    // Applause-like hiss under the voices.
+    const src = a.createBufferSource();
+    src.buffer = noise;
+    src.loop = true;
+    const hp = a.createBiquadFilter();
+    hp.type = "highpass";
+    hp.frequency.value = 1800;
+    const g = a.createGain();
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(0.22, t0 + 0.15);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    src.connect(hp).connect(g).connect(master);
+    src.start(t0);
+    src.stop(t0 + dur + 0.05);
+  }
+}
+
 export const clueSound = {
+  /** The room groans: a wrong guess, or nobody got the round. */
+  aww() {
+    crowd("aww");
+  },
+  /** The room cheers: you won the round. */
+  cheer() {
+    crowd("cheer");
+  },
   /** A riffle shuffle: two halves of the deck flicking together, twice. */
   shuffle() {
     for (let pass = 0; pass < 2; pass += 1) {

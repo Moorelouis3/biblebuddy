@@ -402,6 +402,29 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 @keyframes bb-clue-flipin { 0% { transform: scaleX(1); } 50% { transform: scaleX(0.02); } 100% { transform: scaleX(1); } }
 .bb-clue-flipcover { position:absolute; inset:0; border-radius:10px; overflow:hidden; z-index:2; box-shadow: 0 0 0 2px #c99a46; animation: bb-clue-uncover .5s steps(1, end) .5s both; }
 @keyframes bb-clue-uncover { 0% { opacity:1; } 50% { opacity:0; } 100% { opacity:0; } }
+.bb-clue-pop { position:absolute; left:50%; top:46%; z-index:8; pointer-events:none; font-family: Georgia, serif; font-weight:900; font-size: clamp(34px, 11vw, 56px);
+  transform: translate(-50%,-50%); animation: bb-clue-pop 1.8s cubic-bezier(.2,.8,.25,1) forwards; }
+.bb-clue-pop.is-win { color:#ffe27a; -webkit-text-stroke: 2px #7a4a12; text-shadow: 0 0 18px rgba(255,214,90,.9), 0 4px 0 #7a4a12; }
+.bb-clue-pop.is-lose { color:#ff8a78; -webkit-text-stroke: 2px #5a140c; text-shadow: 0 0 14px rgba(255,90,70,.7), 0 4px 0 #5a140c; font-size: clamp(28px, 9vw, 44px); }
+@keyframes bb-clue-pop {
+  0% { transform: translate(-50%,-50%) scale(.2); opacity:0; }
+  18% { transform: translate(-50%,-60%) scale(1.35); opacity:1; }
+  40% { transform: translate(-50%,-62%) scale(1); opacity:1; }
+  100% { transform: translate(calc(-50% + var(--dx,0px)), calc(-50% + var(--dy,0px))) scale(.45); opacity:0; }
+}
+.bb-clue-pop.is-lose { animation-name: bb-clue-pop-lose; }
+@keyframes bb-clue-pop-lose {
+  0% { transform: translate(calc(-50% + var(--dx,0px)), calc(-50% + var(--dy,0px) - 10px)) scale(.4); opacity:0; }
+  20% { transform: translate(calc(-50% + var(--dx,0px)), calc(-50% + var(--dy,0px) - 46px)) scale(1.2); opacity:1; }
+  70% { transform: translate(calc(-50% + var(--dx,0px)), calc(-50% + var(--dy,0px) - 60px)) scale(1); opacity:1; }
+  100% { transform: translate(calc(-50% + var(--dx,0px)), calc(-50% + var(--dy,0px) - 80px)) scale(.9); opacity:0; }
+}
+.bb-clue-seat.is-scored .bb-clue-seatplate { animation: bb-clue-bump .6s ease-out .9s both; }
+.bb-clue-seat.is-scored .bb-clue-avatarwrap { animation: bb-clue-glow 1.4s ease-out .8s both; }
+.bb-clue-seat.is-docked .bb-clue-seatplate { animation: bb-clue-shake .5s ease-in-out both; }
+@keyframes bb-clue-bump { 0% { transform: scale(1); } 40% { transform: scale(1.3); } 100% { transform: scale(1); } }
+@keyframes bb-clue-glow { 0% { filter: drop-shadow(0 0 0 rgba(255,214,90,0)); } 30% { filter: drop-shadow(0 0 22px rgba(255,214,90,1)); } 100% { filter: drop-shadow(0 0 0 rgba(255,214,90,0)); } }
+@keyframes bb-clue-shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
 .bb-clue-fallback { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:10px; text-align:center;
   background: radial-gradient(circle at 50% 35%, #fff8e6, #ead6a6); }
 .bb-clue-fallback-icon { font-size: 2.2em; }
@@ -469,6 +492,6 @@ html[data-bb-cover] .bb-clue-sheet, html[data-bb-cover] .bb-clue-sheet :is(p,h3)
 .bb-clue-tabs button.is-on { background: linear-gradient(180deg,#2f8a4f,#1a5a33); color:#fff3c8; }
 .bb-clue-code { font-family: ui-monospace, Menlo, monospace; font-size: clamp(34px, 11vw, 52px); font-weight:900; letter-spacing:.18em; color:#173b23; }
 @media (prefers-reduced-motion: reduce) {
-  .bb-clue-card-inner, .bb-clue-deal, .bb-clue-fadein, .bb-clue-shuffle-card, .bb-clue-intro-fly, .bb-clue-flipin, .bb-clue-flipcover, .bb-clue-award, .bb-clue-flash, .bb-clue-timerpill { animation:none !important; transition:none !important; }
+  .bb-clue-card-inner, .bb-clue-deal, .bb-clue-fadein, .bb-clue-pop, .bb-clue-seatplate, .bb-clue-avatarwrap, .bb-clue-shuffle-card, .bb-clue-intro-fly, .bb-clue-flipin, .bb-clue-flipcover, .bb-clue-award, .bb-clue-flash, .bb-clue-timerpill { animation:none !important; transition:none !important; }
 }
 `;
