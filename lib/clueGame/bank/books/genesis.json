@@ -11184,6 +11184,294 @@
   "ref": "Genesis 33:20"
  },
  {
+  "id": "genesis-33-m-01",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jacob say Esau's acceptance showed about him?",
+  "choices": [
+   "He was angry",
+   "He was poor",
+   "He was pleased with Jacob",
+   "He feared Jacob"
+  ],
+  "answer": 2,
+  "explanation": "Jacob said, I have seen thy face, as though I had seen the face of God, and thou wast pleased with me.",
+  "ref": "Genesis 33:10"
+ },
+ {
+  "id": "genesis-33-m-02",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jacob say he had because God dealt graciously with him?",
+  "choices": [
+   "Many wives",
+   "Two bands",
+   "Enough",
+   "A kingdom"
+  ],
+  "answer": 2,
+  "explanation": "Jacob said, God hath dealt graciously with me, and because I have enough.",
+  "ref": "Genesis 33:11"
+ },
+ {
+  "id": "genesis-33-m-03",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jacob say would happen if men overdrove the flock one day?",
+  "choices": [
+   "The children would cry",
+   "Esau would be angry",
+   "All the flock would die",
+   "They would be robbed"
+  ],
+  "answer": 2,
+  "explanation": "If men should overdrive them one day, all the flock will die.",
+  "ref": "Genesis 33:13"
+ },
+ {
+  "id": "genesis-33-h-01",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When Esau and Jacob met, what did they both do?",
+  "choices": [
+   "They prayed",
+   "They sacrificed",
+   "They wept",
+   "They feasted"
+  ],
+  "answer": 2,
+  "explanation": "Esau kissed him: and they wept.",
+  "ref": "Genesis 33:4"
+ },
+ {
+  "id": "genesis-33-h-02",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jacob refer to Esau in his speech to him?",
+  "choices": [
+   "My brother only",
+   "The firstborn",
+   "My lord",
+   "The king"
+  ],
+  "answer": 2,
+  "explanation": "Jacob asked to find grace in the sight of my lord, and spoke of my lord Esau.",
+  "ref": "Genesis 33:8"
+ },
+ {
+  "id": "genesis-33-h-03",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob promise to do when Esau said let us take our journey?",
+  "choices": [
+   "Run ahead",
+   "Lead on softly",
+   "Follow behind in silence",
+   "Stay at Succoth"
+  ],
+  "answer": 1,
+  "explanation": "Jacob said he would lead on softly, according as the cattle and the children were able to endure.",
+  "ref": "Genesis 33:14"
+ },
+ {
+  "id": "genesis-33-h-04",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "To which place did Jacob say he would come unto Esau?",
+  "choices": [
+   "Hebron",
+   "Bethel",
+   "Gilead",
+   "Seir"
+  ],
+  "answer": 3,
+  "explanation": "Jacob said he would lead on softly until he came unto his lord unto Seir.",
+  "ref": "Genesis 33:14"
+ },
+ {
+  "id": "genesis-33-h-05",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why is Succoth called by that name?",
+  "choices": [
+   "Esau camped there",
+   "A well was dug",
+   "Jacob made booths for his cattle",
+   "A feast was held"
+  ],
+  "answer": 2,
+  "explanation": "Jacob built him an house, and made booths for his cattle: therefore the name of the place is called Succoth.",
+  "ref": "Genesis 33:17"
+ },
+ {
+  "id": "genesis-33-h-06",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much did Jacob pay for the parcel of a field?",
+  "choices": [
+   "Twenty pieces of silver",
+   "An hundred pieces of money",
+   "Ten talents",
+   "Four hundred shekels"
+  ],
+  "answer": 1,
+  "explanation": "He bought a parcel of a field at the hand of the children of Hamor for an hundred pieces of money.",
+  "ref": "Genesis 33:19"
+ },
+ {
+  "id": "genesis-33-h-07",
+  "chapter": 33,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Shechem's father in this chapter?",
+  "choices": [
+   "Esau",
+   "Laban",
+   "Hirah",
+   "Hamor"
+  ],
+  "answer": 3,
+  "explanation": "Jacob bought the field from the children of Hamor, Shechem’s father.",
+  "ref": "Genesis 33:19"
+ },
+ {
+  "id": "genesis-33-h-08",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob call the altar he erected at Shalem?",
+  "choices": [
+   "El-elohe-Israel",
+   "El-beth-el",
+   "Peniel",
+   "Mahanaim"
+  ],
+  "answer": 0,
+  "explanation": "He erected there an altar, and called it El-elohe-Israel.",
+  "ref": "Genesis 33:20"
+ },
+ {
+  "id": "genesis-33-h-09",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esau ask Jacob the meaning of?",
+  "choices": [
+   "The altar at Bethel",
+   "All this drove which he met",
+   "The wrestling",
+   "The bowing of the handmaids"
+  ],
+  "answer": 1,
+  "explanation": "Esau said, What meanest thou by all this drove which I met?",
+  "ref": "Genesis 33:8"
+ },
+ {
+  "id": "genesis-33-h-10",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which animals did Jacob say were with young?",
+  "choices": [
+   "The camels",
+   "The flocks and herds",
+   "The asses",
+   "The goats only"
+  ],
+  "answer": 1,
+  "explanation": "The flocks and herds with young are with me.",
+  "ref": "Genesis 33:13"
+ },
+ {
+  "id": "genesis-33-h-11",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jacob answer when Esau offered to leave some of his folk?",
+  "choices": [
+   "Yes, leave all of them",
+   "What needeth it? Let me find grace in my lord's sight",
+   "Send them to Laban",
+   "I will take them to Bethel"
+  ],
+  "answer": 1,
+  "explanation": "He said, What needeth it? let me find grace in the sight of my lord.",
+  "ref": "Genesis 33:15"
+ },
+ {
+  "id": "genesis-33-h-12",
+  "chapter": 33,
+  "level": "hard",
+  "category": "person",
+  "question": "In the last company, who came near and bowed before Rachel?",
+  "choices": [
+   "Reuben",
+   "Benjamin",
+   "Joseph",
+   "Dan"
+  ],
+  "answer": 2,
+  "explanation": "After came Joseph near and Rachel, and they bowed themselves.",
+  "ref": "Genesis 33:7"
+ },
+ {
+  "id": "genesis-33-h-13",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob build for himself at Succoth?",
+  "choices": [
+   "A house",
+   "A tower",
+   "An altar",
+   "A wall"
+  ],
+  "answer": 0,
+  "explanation": "Jacob journeyed to Succoth, and built him an house.",
+  "ref": "Genesis 33:17"
+ },
+ {
+  "id": "genesis-33-h-14",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Esau return on his way to Seir?",
+  "choices": [
+   "That day",
+   "The next morning",
+   "After three days",
+   "After a feast"
+  ],
+  "answer": 0,
+  "explanation": "So Esau returned that day on his way unto Seir.",
+  "ref": "Genesis 33:16"
+ },
+ {
+  "id": "genesis-33-h-15",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When Esau lifted his eyes, whom did he see with Jacob?",
+  "choices": [
+   "Laban's servants",
+   "Only the flocks",
+   "The women and the children",
+   "Isaac"
+  ],
+  "answer": 2,
+  "explanation": "Esau lifted up his eyes, and saw the women and the children.",
+  "ref": "Genesis 33:5"
+ },
+ {
   "id": "old-genesis-34-1",
   "chapter": 34,
   "level": "beginner",
@@ -11246,6 +11534,294 @@
   "answer": 3,
   "explanation": "Jacob was troubled by the danger their violence had brought on the family.",
   "ref": "Genesis 34:30"
+ },
+ {
+  "id": "genesis-34-m-01",
+  "chapter": 34,
+  "level": "medium",
+  "category": "person",
+  "question": "What was Hamor's title for his son Shechem in the land?",
+  "choices": [
+   "Prince of the country",
+   "Judge of the city",
+   "King of Salem",
+   "Captain of the host"
+  ],
+  "answer": 0,
+  "explanation": "Shechem the son of Hamor the Hivite was prince of the country.",
+  "ref": "Genesis 34:2"
+ },
+ {
+  "id": "genesis-34-m-02",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Shechem's soul do toward Dinah, and how did he speak to her?",
+  "choices": [
+   "Turned from her; spake coldly",
+   "Feared her; stayed silent",
+   "Hated her; spake harshly",
+   "Clave unto her; spake kindly"
+  ],
+  "answer": 3,
+  "explanation": "His soul clave unto Dinah, and he loved the damsel, and spake kindly unto the damsel.",
+  "ref": "Genesis 34:3"
+ },
+ {
+  "id": "genesis-34-m-03",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jacob's sons say the circumcision condition was needed to avoid?",
+  "choices": [
+   "A famine",
+   "A war",
+   "A curse",
+   "A reproach"
+  ],
+  "answer": 3,
+  "explanation": "They said, We cannot give our sister to one that is uncircumcised; for that were a reproach unto us.",
+  "ref": "Genesis 34:14"
+ },
+ {
+  "id": "genesis-34-h-01",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Dinah go out to see?",
+  "choices": [
+   "The flocks",
+   "A feast",
+   "The daughters of the land",
+   "Her brothers"
+  ],
+  "answer": 2,
+  "explanation": "Dinah went out to see the daughters of the land.",
+  "ref": "Genesis 34:1"
+ },
+ {
+  "id": "genesis-34-h-02",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Jacob hold his peace after hearing what happened?",
+  "choices": [
+   "One year",
+   "Three days",
+   "Until Hamor came",
+   "Until his sons came"
+  ],
+  "answer": 3,
+  "explanation": "Jacob held his peace until they were come.",
+  "ref": "Genesis 34:5"
+ },
+ {
+  "id": "genesis-34-h-03",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the sons of Jacob say Shechem had wrought in Israel?",
+  "choices": [
+   "Treason",
+   "Idolatry",
+   "Folly",
+   "Theft"
+  ],
+  "answer": 2,
+  "explanation": "The men were very wroth, because he had wrought folly in Israel.",
+  "ref": "Genesis 34:7"
+ },
+ {
+  "id": "genesis-34-h-04",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hamor say Shechem's soul did for Dinah?",
+  "choices": [
+   "Mourned for her",
+   "Feared her",
+   "Longeth for her",
+   "Forgot her"
+  ],
+  "answer": 2,
+  "explanation": "Hamor said, The soul of my son Shechem longeth for your daughter.",
+  "ref": "Genesis 34:8"
+ },
+ {
+  "id": "genesis-34-h-05",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides dwelling in the land, what did Hamor say Jacob's family could do there?",
+  "choices": [
+   "Rule the city",
+   "Trade and get possessions",
+   "Build a temple",
+   "Pay no tax"
+  ],
+  "answer": 1,
+  "explanation": "Hamor said, dwell and trade ye therein, and get you possessions therein.",
+  "ref": "Genesis 34:10"
+ },
+ {
+  "id": "genesis-34-h-06",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Shechem say he would give in order to have Dinah?",
+  "choices": [
+   "His father's house",
+   "Half the city",
+   "All his sheep only",
+   "Dowry and gift as much as they asked"
+  ],
+  "answer": 3,
+  "explanation": "Ask me never so much dowry and gift, and I will give according as ye shall say unto me.",
+  "ref": "Genesis 34:12"
+ },
+ {
+  "id": "genesis-34-h-07",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob's sons threaten if the men would not be circumcised?",
+  "choices": [
+   "Burn the city",
+   "Take their daughter and be gone",
+   "Call on Esau",
+   "Stay and fight"
+  ],
+  "answer": 1,
+  "explanation": "If ye will not hearken, then will we take our daughter, and we will be gone.",
+  "ref": "Genesis 34:17"
+ },
+ {
+  "id": "genesis-34-h-08",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob's sons say would become of the two peoples if the men were circumcised?",
+  "choices": [
+   "Two kingdoms",
+   "One people",
+   "Allies at war",
+   "Servants of Hamor"
+  ],
+  "answer": 1,
+  "explanation": "We will dwell with you, and we will become one people.",
+  "ref": "Genesis 34:16"
+ },
+ {
+  "id": "genesis-34-h-09",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob fear would happen if the peoples gathered against him?",
+  "choices": [
+   "His flocks would die",
+   "He and his house would be destroyed",
+   "Esau would return",
+   "Dinah would be lost"
+  ],
+  "answer": 1,
+  "explanation": "Jacob said, they shall gather against me, and slay me; and I shall be destroyed, I and my house.",
+  "ref": "Genesis 34:30"
+ },
+ {
+  "id": "genesis-34-h-10",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob say he was in number?",
+  "choices": [
+   "Few",
+   "Many",
+   "Twelve only",
+   "Countless"
+  ],
+  "answer": 0,
+  "explanation": "Jacob said, I being few in number, they shall gather themselves together against me.",
+  "ref": "Genesis 34:30"
+ },
+ {
+  "id": "genesis-34-h-11",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Who went out to commune with Jacob after Shechem asked for Dinah?",
+  "choices": [
+   "Simeon",
+   "Esau",
+   "Laban",
+   "Hamor"
+  ],
+  "answer": 3,
+  "explanation": "Hamor the father of Shechem went out unto Jacob to commune with him.",
+  "ref": "Genesis 34:6"
+ },
+ {
+  "id": "genesis-34-h-12",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the sons' proposal do to Hamor and Shechem?",
+  "choices": [
+   "It pleased them",
+   "It angered them",
+   "It frightened them",
+   "It shamed them"
+  ],
+  "answer": 0,
+  "explanation": "Their words pleased Hamor, and Shechem Hamor’s son.",
+  "ref": "Genesis 34:18"
+ },
+ {
+  "id": "genesis-34-h-13",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the young man act once the terms were set?",
+  "choices": [
+   "He waited a year",
+   "He deferred not to do the thing",
+   "He asked Jacob first",
+   "He went to Esau"
+  ],
+  "answer": 1,
+  "explanation": "The young man deferred not to do the thing, because he had delight in Jacob’s daughter.",
+  "ref": "Genesis 34:19"
+ },
+ {
+  "id": "genesis-34-h-14",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did the sons of Jacob take captive besides the wealth?",
+  "choices": [
+   "Only the elders",
+   "Little ones and wives",
+   "The priests",
+   "The shepherds"
+  ],
+  "answer": 1,
+  "explanation": "All their wealth, and all their little ones, and their wives took they captive.",
+  "ref": "Genesis 34:29"
+ },
+ {
+  "id": "genesis-34-h-15",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which animals did the sons of Jacob take from the city?",
+  "choices": [
+   "Camels and goats",
+   "Doves and lambs",
+   "Horses and mules",
+   "Sheep, oxen and asses"
+  ],
+  "answer": 3,
+  "explanation": "They took their sheep, and their oxen, and their asses.",
+  "ref": "Genesis 34:28"
  },
  {
   "id": "old-genesis-35-2",
