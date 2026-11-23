@@ -14000,6 +14000,294 @@
   "ref": "Genesis 41:50–52"
  },
  {
+  "id": "genesis-41-m-01",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long after the butler's restoration did Pharaoh have his dreams?",
+  "choices": [
+   "Two full years",
+   "Seven days",
+   "Forty days",
+   "One full year"
+  ],
+  "answer": 0,
+  "explanation": "It came to pass at the end of two full years, that Pharaoh dreamed.",
+  "ref": "Genesis 41:1"
+ },
+ {
+  "id": "genesis-41-m-02",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joseph do before he came in to Pharaoh?",
+  "choices": [
+   "Prayed and fasted",
+   "Shaved himself and changed his raiment",
+   "Sent a gift",
+   "Bowed to the butler"
+  ],
+  "answer": 1,
+  "explanation": "They brought him hastily out of the dungeon: and he shaved himself, and changed his raiment, and came in unto Pharaoh.",
+  "ref": "Genesis 41:14"
+ },
+ {
+  "id": "genesis-41-m-03",
+  "chapter": 41,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What part of the land did Joseph say to take up in the seven plenteous years?",
+  "choices": [
+   "The tenth part",
+   "The seventh part",
+   "The fifth part",
+   "The third part"
+  ],
+  "answer": 2,
+  "explanation": "Let him appoint officers over the land, and take up the fifth part of the land of Egypt in the seven plenteous years.",
+  "ref": "Genesis 41:34"
+ },
+ {
+  "id": "genesis-41-h-01",
+  "chapter": 41,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Pharaoh stand in his dream?",
+  "choices": [
+   "By the river",
+   "On a mountain",
+   "In a meadow",
+   "In the field"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh dreamed: and, behold, he stood by the river.",
+  "ref": "Genesis 41:1"
+ },
+ {
+  "id": "genesis-41-h-02",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had blasted the seven thin ears of corn?",
+  "choices": [
+   "The locusts",
+   "The east wind",
+   "The hail",
+   "The frost"
+  ],
+  "answer": 1,
+  "explanation": "Seven thin ears and blasted with the east wind sprung up after them.",
+  "ref": "Genesis 41:6"
+ },
+ {
+  "id": "genesis-41-h-03",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was Pharaoh's spirit in the morning after the dreams?",
+  "choices": [
+   "Troubled",
+   "Glad",
+   "Fearless",
+   "Sleepy"
+  ],
+  "answer": 0,
+  "explanation": "It came to pass in the morning that his spirit was troubled.",
+  "ref": "Genesis 41:8"
+ },
+ {
+  "id": "genesis-41-h-04",
+  "chapter": 41,
+  "level": "hard",
+  "category": "person",
+  "question": "How did the chief butler describe Joseph to Pharaoh?",
+  "choices": [
+   "An old priest of On",
+   "A young man, an Hebrew, servant to the captain of the guard",
+   "A wise man of the east",
+   "A shepherd from Canaan"
+  ],
+  "answer": 1,
+  "explanation": "There was there with us a young man, an Hebrew, servant to the captain of the guard.",
+  "ref": "Genesis 41:12"
+ },
+ {
+  "id": "genesis-41-h-05",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joseph said God would give Pharaoh an answer of what?",
+  "choices": [
+   "Judgement",
+   "Peace",
+   "Wealth",
+   "Wrath"
+  ],
+  "answer": 1,
+  "explanation": "Joseph answered Pharaoh, It is not in me: God shall give Pharaoh an answer of peace.",
+  "ref": "Genesis 41:16"
+ },
+ {
+  "id": "genesis-41-h-06",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After the thin cows ate the fat ones, how did they look?",
+  "choices": [
+   "Still ill favoured",
+   "Fat and well favoured",
+   "Weak and dying",
+   "Gone from sight"
+  ],
+  "answer": 0,
+  "explanation": "When they had eaten them up, it could not be known that they had eaten them; but they were still ill favoured, as at the beginning.",
+  "ref": "Genesis 41:21"
+ },
+ {
+  "id": "genesis-41-h-07",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joseph said that in the famine all the plenty would be what?",
+  "choices": [
+   "Counted",
+   "Sold",
+   "Forgotten",
+   "Shared"
+  ],
+  "answer": 2,
+  "explanation": "There shall arise after them seven years of famine; and all the plenty shall be forgotten in the land of Egypt.",
+  "ref": "Genesis 41:30"
+ },
+ {
+  "id": "genesis-41-h-08",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh put about Joseph's neck?",
+  "choices": [
+   "A gold chain",
+   "A linen cloth",
+   "A silver cup",
+   "A leather cord"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh arrayed him in vestures of fine linen, and put a gold chain about his neck.",
+  "ref": "Genesis 41:42"
+ },
+ {
+  "id": "genesis-41-h-09",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh array Joseph in?",
+  "choices": [
+   "Purple wool",
+   "Fine linen",
+   "Gold armour",
+   "A coat of many colours"
+  ],
+  "answer": 1,
+  "explanation": "Pharaoh arrayed him in vestures of fine linen.",
+  "ref": "Genesis 41:42"
+ },
+ {
+  "id": "genesis-41-h-10",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they cry before Joseph as he rode in the chariot?",
+  "choices": [
+   "Hail the king",
+   "Bow the knee",
+   "Make way",
+   "Peace be unto you"
+  ],
+  "answer": 1,
+  "explanation": "They cried before him, Bow the knee: and he made him ruler over all the land of Egypt.",
+  "ref": "Genesis 41:43"
+ },
+ {
+  "id": "genesis-41-h-11",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Pharaoh told Joseph that only in what would he be greater?",
+  "choices": [
+   "The throne",
+   "The army",
+   "The temple",
+   "The palace"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh said, Thou shalt be over my house: only in the throne will I be greater than thou.",
+  "ref": "Genesis 41:40"
+ },
+ {
+  "id": "genesis-41-h-12",
+  "chapter": 41,
+  "level": "hard",
+  "category": "person",
+  "question": "What name did Pharaoh give Joseph?",
+  "choices": [
+   "Zaphnath-paaneah",
+   "Asenath",
+   "Poti-pherah",
+   "Manasseh"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh called Joseph's name Zaphnath-paaneah.",
+  "ref": "Genesis 41:45"
+ },
+ {
+  "id": "genesis-41-h-13",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Joseph when he stood before Pharaoh?",
+  "choices": [
+   "Seventeen",
+   "Twenty-five",
+   "Thirty",
+   "Forty"
+  ],
+  "answer": 2,
+  "explanation": "Joseph was thirty years old when he stood before Pharaoh king of Egypt.",
+  "ref": "Genesis 41:46"
+ },
+ {
+  "id": "genesis-41-h-14",
+  "chapter": 41,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Asenath's father?",
+  "choices": [
+   "Potiphar",
+   "Poti-pherah",
+   "Pharaoh",
+   "Jacob"
+  ],
+  "answer": 1,
+  "explanation": "Joseph's wife Asenath was the daughter of Poti-pherah priest of On.",
+  "ref": "Genesis 41:45"
+ },
+ {
+  "id": "genesis-41-h-15",
+  "chapter": 41,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Joseph name his firstborn Manasseh?",
+  "choices": [
+   "God made him forget his toil and his father's house",
+   "God gave him a son in Egypt",
+   "God had freed him from prison",
+   "God had made him ruler"
+  ],
+  "answer": 0,
+  "explanation": "Joseph said, God hath made me forget all my toil, and all my father's house.",
+  "ref": "Genesis 41:51"
+ },
+ {
   "id": "old-genesis-42-1",
   "chapter": 42,
   "level": "beginner",
