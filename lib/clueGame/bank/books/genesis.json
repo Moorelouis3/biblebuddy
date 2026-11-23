@@ -3520,6 +3520,310 @@
   "ref": "Genesis 11:7–8"
  },
  {
+  "id": "genesis-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Terah’s family do when they came to Haran?",
+  "choices": [
+   "They dwelt there",
+   "They built a tower",
+   "They turned back to Ur",
+   "They sailed away"
+  ],
+  "answer": 0,
+  "explanation": "Terah’s family came unto Haran, and dwelt there.",
+  "ref": "Genesis 11:31"
+ },
+ {
+  "id": "genesis-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD say He would confound the builders’ language?",
+  "choices": [
+   "So they would not understand one another",
+   "So they would sing together",
+   "So they would stop eating",
+   "So they would sail the sea"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Let us confound their language, that they may not understand one another’s speech.",
+  "ref": "Genesis 11:7"
+ },
+ {
+  "id": "genesis-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who does the chapter say built the city and the tower?",
+  "choices": [
+   "The children of men",
+   "The sons of Shem",
+   "The people of Egypt",
+   "The servants of Terah"
+  ],
+  "answer": 0,
+  "explanation": "The LORD came down to see the city and the tower, which the children of men builded.",
+  "ref": "Genesis 11:5"
+ },
+ {
+  "id": "genesis-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "I was Abram’s brother, and Lot was my son. Who am I?",
+  "choices": [
+   "Haran",
+   "Nahor",
+   "Terah",
+   "Shem"
+  ],
+  "answer": 0,
+  "explanation": "Terah begat Abram, Nahor, and Haran; and Haran begat Lot.",
+  "ref": "Genesis 11:27"
+ },
+ {
+  "id": "genesis-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long after the flood did Shem father Arphaxad?",
+  "choices": [
+   "Two years",
+   "Ten years",
+   "Forty years",
+   "One hundred years"
+  ],
+  "answer": 0,
+  "explanation": "Shem was an hundred years old, and begat Arphaxad two years after the flood.",
+  "ref": "Genesis 11:10"
+ },
+ {
+  "id": "genesis-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the son of Arphaxad?",
+  "choices": [
+   "Salah",
+   "Eber",
+   "Peleg",
+   "Reu"
+  ],
+  "answer": 0,
+  "explanation": "Arphaxad lived five and thirty years, and begat Salah.",
+  "ref": "Genesis 11:12"
+ },
+ {
+  "id": "genesis-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the father of Peleg?",
+  "choices": [
+   "Salah",
+   "Eber",
+   "Reu",
+   "Serug"
+  ],
+  "answer": 1,
+  "explanation": "Eber lived four and thirty years, and begat Peleg.",
+  "ref": "Genesis 11:16"
+ },
+ {
+  "id": "genesis-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man begat Terah?",
+  "choices": [
+   "Serug",
+   "Peleg",
+   "Haran",
+   "Nahor"
+  ],
+  "answer": 3,
+  "explanation": "Nahor lived nine and twenty years, and begat Terah.",
+  "ref": "Genesis 11:24"
+ },
+ {
+  "id": "genesis-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Terah when he begat Abram, Nahor, and Haran?",
+  "choices": [
+   "Seventy",
+   "Thirty",
+   "One hundred",
+   "Two hundred and five"
+  ],
+  "answer": 0,
+  "explanation": "Terah lived seventy years, and begat Abram, Nahor, and Haran.",
+  "ref": "Genesis 11:26"
+ },
+ {
+  "id": "genesis-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Terah live?",
+  "choices": [
+   "One hundred and nineteen",
+   "Four hundred and three",
+   "Two hundred and five",
+   "Seventy"
+  ],
+  "answer": 2,
+  "explanation": "The days of Terah were two hundred and five years: and Terah died in Haran.",
+  "ref": "Genesis 11:32"
+ },
+ {
+  "id": "genesis-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the builders say to do with the brick?",
+  "choices": [
+   "Burn it throughly",
+   "Paint it",
+   "Carve it",
+   "Sell it"
+  ],
+  "answer": 0,
+  "explanation": "They said, Let us make brick, and burn them throughly.",
+  "ref": "Genesis 11:3"
+ },
+ {
+  "id": "genesis-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the people had that made nothing impossible for them?",
+  "choices": [
+   "One people and one language",
+   "Great armies",
+   "Much gold",
+   "A strong king"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, the people is one, and they have all one language; nothing will be restrained from them.",
+  "ref": "Genesis 11:6"
+ },
+ {
+  "id": "genesis-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose daughter was Milcah?",
+  "choices": [
+   "Haran’s",
+   "Terah’s",
+   "Nahor’s",
+   "Lot’s"
+  ],
+  "answer": 0,
+  "explanation": "Nahor’s wife was Milcah, the daughter of Haran.",
+  "ref": "Genesis 11:29"
+ },
+ {
+  "id": "genesis-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Haran was the father of Milcah and which other daughter?",
+  "choices": [
+   "Iscah",
+   "Sarai",
+   "Hagar",
+   "Rebekah"
+  ],
+  "answer": 0,
+  "explanation": "Haran was the father of Milcah, and the father of Iscah.",
+  "ref": "Genesis 11:29"
+ },
+ {
+  "id": "genesis-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is Sarai described as being related to Terah?",
+  "choices": [
+   "His daughter",
+   "His daughter in law",
+   "His sister",
+   "His granddaughter"
+  ],
+  "answer": 1,
+  "explanation": "Terah took Sarai his daughter in law, his son Abram’s wife.",
+  "ref": "Genesis 11:31"
+ },
+ {
+  "id": "genesis-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do to the people after He confounded their language?",
+  "choices": [
+   "Scattered them over the earth",
+   "Sent a flood",
+   "Brought them to Canaan",
+   "Made them one again"
+  ],
+  "answer": 0,
+  "explanation": "The LORD scattered them abroad from thence upon the face of all the earth.",
+  "ref": "Genesis 11:8"
+ },
+ {
+  "id": "genesis-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was the city named Babel?",
+  "choices": [
+   "The LORD confounded the language of all the earth there",
+   "A tower fell down there",
+   "A king named Babel built it",
+   "The people prayed there"
+  ],
+  "answer": 0,
+  "explanation": "It is called Babel because the LORD did there confound the language of all the earth.",
+  "ref": "Genesis 11:9"
+ },
+ {
+  "id": "genesis-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Shem live after he begat Arphaxad?",
+  "choices": [
+   "Four hundred and three",
+   "Two hundred",
+   "One hundred",
+   "Five hundred"
+  ],
+  "answer": 3,
+  "explanation": "Shem lived after he begat Arphaxad five hundred years, and begat sons and daughters.",
+  "ref": "Genesis 11:11"
+ },
+ {
+  "id": "genesis-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Eber live after he begat Peleg?",
+  "choices": [
+   "Four hundred and thirty",
+   "Two hundred and nine",
+   "Two hundred and seven",
+   "Two hundred"
+  ],
+  "answer": 0,
+  "explanation": "Eber lived after he begat Peleg four hundred and thirty years.",
+  "ref": "Genesis 11:17"
+ },
+ {
   "id": "old-genesis-12-1",
   "chapter": 12,
   "level": "beginner",
