@@ -8720,22 +8720,6 @@
   "ref": "Genesis 25:30"
  },
  {
-  "id": "old-genesis-26-1",
-  "chapter": 26,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "Why did Isaac go to Gerar?",
-  "choices": [
-   "To visit Abraham's grave",
-   "Because there was a famine in the land",
-   "To find a wife",
-   "To escape war"
-  ],
-  "answer": 1,
-  "explanation": "A famine drove Isaac toward Gerar in the land of the Philistines.",
-  "ref": "Genesis 26:1"
- },
- {
   "id": "old-genesis-26-2",
   "chapter": 26,
   "level": "beginner",
@@ -8752,20 +8736,324 @@
   "ref": "Genesis 26:7"
  },
  {
-  "id": "old-genesis-26-3",
+  "id": "genesis-26-m-01",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Isaac receive in the year he sowed in Gerar?",
+  "choices": [
+   "Twofold",
+   "An hundredfold",
+   "Tenfold",
+   "Nothing"
+  ],
+  "answer": 1,
+  "explanation": "Isaac sowed in that land, and received in the same year an hundredfold: and the LORD blessed him.",
+  "ref": "Genesis 26:12"
+ },
+ {
+  "id": "genesis-26-m-02",
+  "chapter": 26,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the LORD tell Isaac not to go in the famine?",
+  "choices": [
+   "Haran",
+   "Canaan",
+   "Egypt",
+   "Beer-sheba"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said, Go not down into Egypt; dwell in the land which I shall tell thee of.",
+  "ref": "Genesis 26:2"
+ },
+ {
+  "id": "genesis-26-m-03",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Abimelech tell Isaac to go from them?",
+  "choices": [
+   "Isaac had lied about Rebekah",
+   "The famine had come",
+   "Isaac dug too many wells",
+   "Isaac was much mightier than they"
+  ],
+  "answer": 3,
+  "explanation": "Abimelech said, Go from us; for thou art much mightier than we.",
+  "ref": "Genesis 26:16"
+ },
+ {
+  "id": "genesis-26-h-01",
+  "chapter": 26,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Abimelech when he saw Isaac sporting with Rebekah?",
+  "choices": [
+   "At a window",
+   "On the city wall",
+   "In the field",
+   "By the well"
+  ],
+  "answer": 0,
+  "explanation": "Abimelech king of the Philistines looked out at a window, and saw Isaac sporting with Rebekah his wife.",
+  "ref": "Genesis 26:8"
+ },
+ {
+  "id": "genesis-26-h-02",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Abimelech said Isaac might have brought what upon them?",
+  "choices": [
+   "Famine",
+   "Guiltiness",
+   "War",
+   "A curse of drought"
+  ],
+  "answer": 1,
+  "explanation": "Abimelech said one of the people might lightly have lien with thy wife, and thou shouldest have brought guiltiness upon us.",
+  "ref": "Genesis 26:10"
+ },
+ {
+  "id": "genesis-26-h-03",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the Philistines filled Abraham’s wells with?",
+  "choices": [
+   "Stones",
+   "Sand",
+   "Earth",
+   "Thorns"
+  ],
+  "answer": 2,
+  "explanation": "The Philistines had stopped the wells, and filled them with earth.",
+  "ref": "Genesis 26:15"
+ },
+ {
+  "id": "genesis-26-h-04",
+  "chapter": 26,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Isaac pitch his tent after Abimelech sent him away?",
+  "choices": [
+   "The hill of Mamre",
+   "The land of Egypt",
+   "Beer-sheba",
+   "The valley of Gerar"
+  ],
+  "answer": 3,
+  "explanation": "Isaac departed thence, and pitched his tent in the valley of Gerar, and dwelt there.",
+  "ref": "Genesis 26:17"
+ },
+ {
+  "id": "genesis-26-h-05",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of well did Isaac’s servants find in the valley?",
+  "choices": [
+   "A well of springing water",
+   "A well full of stones",
+   "A dry well",
+   "A well beside an altar"
+  ],
+  "answer": 0,
+  "explanation": "Isaac’s servants digged in the valley, and found there a well of springing water.",
+  "ref": "Genesis 26:19"
+ },
+ {
+  "id": "genesis-26-h-06",
+  "chapter": 26,
+  "level": "hard",
+  "category": "place",
+  "question": "Which well did Isaac call Esek because the herdmen strove with him?",
+  "choices": [
+   "Sitnah",
+   "Esek",
+   "Rehoboth",
+   "Shebah"
+  ],
+  "answer": 1,
+  "explanation": "He called the name of the well Esek; because they strove with him.",
+  "ref": "Genesis 26:20"
+ },
+ {
+  "id": "genesis-26-h-07",
+  "chapter": 26,
+  "level": "hard",
+  "category": "place",
+  "question": "What name did Isaac give the second well, which they also strove over?",
+  "choices": [
+   "Esek",
+   "Rehoboth",
+   "Sitnah",
+   "Shebah"
+  ],
+  "answer": 2,
+  "explanation": "They digged another well, and strove for that also: and he called the name of it Sitnah.",
+  "ref": "Genesis 26:21"
+ },
+ {
+  "id": "genesis-26-h-08",
+  "chapter": 26,
+  "level": "hard",
+  "category": "place",
+  "question": "After Rehoboth, to which place did Isaac go up?",
+  "choices": [
+   "Gerar",
+   "Mamre",
+   "Hebron",
+   "Beer-sheba"
+  ],
+  "answer": 3,
+  "explanation": "He went up from thence to Beer-sheba.",
+  "ref": "Genesis 26:23"
+ },
+ {
+  "id": "genesis-26-h-10",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Who came with Abimelech and Phichol to meet Isaac?",
+  "choices": [
+   "Eliezer",
+   "Ahuzzath",
+   "Beeri",
+   "Elon"
+  ],
+  "answer": 1,
+  "explanation": "Abimelech went to him from Gerar, and Ahuzzath one of his friends, and Phichol the chief captain of his army.",
+  "ref": "Genesis 26:26"
+ },
+ {
+  "id": "genesis-26-h-11",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Isaac call the well his servants found the day of the covenant?",
+  "choices": [
+   "Esek",
+   "Rehoboth",
+   "Shebah",
+   "Sitnah"
+  ],
+  "answer": 2,
+  "explanation": "He called it Shebah: therefore the name of the city is Beer-sheba unto this day.",
+  "ref": "Genesis 26:33"
+ },
+ {
+  "id": "genesis-26-h-12",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Esau when he took his Hittite wives?",
+  "choices": [
+   "Thirty years",
+   "Sixty years",
+   "Twenty years",
+   "Forty years"
+  ],
+  "answer": 3,
+  "explanation": "Esau was forty years old when he took to wife Judith the daughter of Beeri the Hittite, and Bashemath.",
+  "ref": "Genesis 26:34"
+ },
+ {
+  "id": "genesis-26-h-13",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Judith, Esau’s wife, was the daughter of whom?",
+  "choices": [
+   "Beeri",
+   "Elon",
+   "Ishmael",
+   "Laban"
+  ],
+  "answer": 0,
+  "explanation": "Esau took to wife Judith the daughter of Beeri the Hittite.",
+  "ref": "Genesis 26:34"
+ },
+ {
+  "id": "genesis-26-h-14",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What reason did the LORD give for blessing Isaac’s seed?",
+  "choices": [
+   "Isaac built an altar",
+   "Abraham obeyed His voice",
+   "Isaac was the firstborn",
+   "Abraham dug wells"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said, Abraham obeyed my voice, and kept my charge, my commandments, my statutes, and my laws.",
+  "ref": "Genesis 26:5"
+ },
+ {
+  "id": "genesis-26-h-15",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Isaac say to Abimelech when he came to Beer-sheba?",
+  "choices": [
+   "Ye have stopped my wells",
+   "Ye are my brethren",
+   "Ye hate me, and have sent me away",
+   "Ye have stolen my flocks"
+  ],
+  "answer": 2,
+  "explanation": "Isaac said, Wherefore come ye to me, seeing ye hate me, and have sent me away from you?",
+  "ref": "Genesis 26:27"
+ },
+ {
+  "id": "genesis-26-e-01",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was king of the Philistines in Gerar?",
+  "choices": [
+   "Phichol",
+   "Ahuzzath",
+   "Abimelech",
+   "Pharaoh"
+  ],
+  "answer": 2,
+  "explanation": "Isaac went unto Abimelech king of the Philistines unto Gerar.",
+  "ref": "Genesis 26:1"
+ },
+ {
+  "id": "genesis-26-e-02",
   "chapter": 26,
   "level": "beginner",
   "category": "keyword",
-  "question": "Why did the Philistines envy Isaac?",
+  "question": "What did Isaac dig again, as in the days of Abraham?",
   "choices": [
-   "He ruled over them",
-   "He had become very prosperous",
-   "He married Rebekah",
-   "He built an altar"
+   "Graves",
+   "An altar",
+   "Fields",
+   "Wells of water"
   ],
-  "answer": 1,
-  "explanation": "Isaac became very great, and the Philistines envied his prosperity.",
-  "ref": "Genesis 26:13–14"
+  "answer": 3,
+  "explanation": "Isaac digged again the wells of water, which they had digged in the days of Abraham his father.",
+  "ref": "Genesis 26:18"
+ },
+ {
+  "id": "genesis-26-h-09",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "At Beer-sheba, the LORD said He was the God of whom?",
+  "choices": [
+   "Abraham thy father",
+   "Noah thy fathers",
+   "Ishmael thy brother",
+   "Laban thy kin"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, I am the God of Abraham thy father: fear not, for I am with thee.",
+  "ref": "Genesis 26:24"
  },
  {
   "id": "old-genesis-27-3",
