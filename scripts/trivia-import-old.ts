@@ -1,8 +1,12 @@
 /**
  * Bible Trivia question store builder (2026-11-23).
  *
- *   npx tsx scripts/trivia-import-old.ts            bring the old Bible Trivia questions over, then rebuild
- *   npx tsx scripts/trivia-import-old.ts --index    only rebuild the index and loaders (after adding questions)
+ *   npx tsx scripts/trivia-import-old.ts --index        rebuild the index and loaders (after adding questions)
+ *   npx tsx scripts/trivia-import-old.ts --import-old   bring the old Bible Trivia questions over again, then rebuild
+ *
+ * Only ever run --index after the import was done (2026-11-23): --import-old
+ * puts back every old-* question, including ones the question writer
+ * replaced because they were weak.
  *
  * The old Bible Trivia game (lib/triviaGameData.ts: 5 questions for every one
  * of the 1,189 chapters) was replaced by the Bible Clue game, renamed Bible
@@ -49,7 +53,8 @@ const ROOT = path.resolve(__dirname, "..");
 const BANK = path.join(ROOT, "lib/clueGame/bank");
 const BOOKS = path.join(BANK, "books");
 const LEVELS: ClueLevel[] = ["beginner", "medium", "hard"];
-const indexOnly = process.argv.includes("--index");
+// Importing is opt-in: plain runs only rebuild the index (see the header).
+const indexOnly = !process.argv.includes("--import-old");
 
 const slugOf = (name: string) => name.toLowerCase().replace(/\s+/g, "-");
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
