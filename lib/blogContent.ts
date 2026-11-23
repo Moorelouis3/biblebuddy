@@ -110,6 +110,40 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-20-explained",
+    title: "1 Samuel 20 Explained: Jonathan's Arrows and the Last Goodbye",
+    description:
+      "1 Samuel 20 explained verse by verse: the new moon test, the arrow signal, Saul's javelin at his own son, and David and Jonathan's last goodbye.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-20-explained",
+    publishedAt: "2026-11-23",
+    readTime: "15 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 20 Explained 📖",
+      content:
+        "A missed seat at a feast. A javelin thrown at his own son.\n\nJonathan finds out how dangerous things really are.\n\n📌 A promise renewed costs Jonathan everything.\n\n📖 David tests Saul with an empty seat.\n📖 Saul throws his javelin at Jonathan.\n📖 The two friends say a tearful goodbye.\n\nNew article on:\n🟢 the strange **arrow signal** Jonathan sets up\n🟢 why **Saul** turns on his own son\n🟢 the covenant that outlives them both\n\nWho has stayed loyal to you at a real cost? 🙏",
+    },
+  },
+  {
+    slug: "1-samuel-19-explained",
+    title: "1 Samuel 19 Explained: David's Narrow Escapes From Saul",
+    description:
+      "1 Samuel 19 explained verse by verse: Jonathan's plea, a second javelin, Michal's window rescue, and Saul prophesying naked at Naioth.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-19-explained",
+    publishedAt: "2026-11-23",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 19 Explained 📖",
+      content:
+        "A javelin. A window. A king stripped naked on the ground.\n\nAll three happen in one chapter.\n\n📌 Every rescue belongs to someone other than David.\n\n📖 Jonathan talks Saul down from a kill order.\n📖 Michal lowers David through a window.\n📖 God's Spirit stops Saul before he can.\n\nNew article on:\n🟢 why **Jonathan** pleads for David's life\n🟢 the strange **image** Michal hides in the bed\n🟢 why **Saul** ends up prophesying naked\n\nWho has risked something to protect you lately? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-18-explained",
     title: "1 Samuel 18 Explained: Jonathan's Covenant, Saul's Jealousy",
     description:

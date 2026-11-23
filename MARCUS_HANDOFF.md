@@ -1,3 +1,20 @@
+## tsc --noEmit fails project-wide: components/match/MatchGame.tsx(626), unrelated to the chapter blog writer's work (2026-11-23)
+This run (1 Samuel 20) confirmed `npx tsc --noEmit` on a clean `main` (no
+changes of mine applied) already reports two errors, both the same line:
+`components/match/MatchGame.tsx(626,39)` and `(626,48)`: "Property 'done'
+does not exist on type 'MapBuddy'." Stashed this run's own changes and
+reran `tsc` to verify it was pre-existing, not something this chapter
+introduced — confirmed, same two errors on main with nothing of mine
+applied. The chapter blog writer's hard limits only allow touching
+`app/blog/<slug>/`, `lib/blogContent.ts`,
+`data/chapter-blog/progress.json`, and this file, so it could not fix
+`MatchGame.tsx` even though it is otherwise ready to. Shipped this run's
+own chapter anyway since it introduces zero new tsc errors and its own
+file passes `eslint` and the quality gate clean; worth someone fixing
+`MapBuddy`'s `done` property (or wherever it's actually missing from) so
+the project-wide `tsc` check is clean again for whichever routine or
+person relies on it next.
+
 ## Bug Fixer Agent: bug-reports API hangs on authenticated GET, times out every attempt (2026-10-01)
 This run could not fetch the open bug queue. `GET https://www.mybiblebuddy.net/api/bug-reports/agent` with the real agent token times out with zero bytes received every time (tried with 20s, 30s, and 60s timeouts — all hung the full duration, no response at all). This is not a general network or proxy problem: the same host, same path, with a deliberately wrong token returns a fast, normal `401 Unauthorized` in under a second. So the connection and TLS work fine, and the route itself isn't totally broken; it's specifically the authenticated path that never responds, which smells like the real token triggering a slow or hung query (or some infinite loop) in the endpoint's bug-report-fetching code rather than a network issue on this agent's side. Per the Bug Fixer's own instructions, stopping here without touching any code since step 2 (fetch open bugs) could not complete. Worth having someone check the `/api/bug-reports/agent` route's server logs for what happens on a real authenticated request.
 
@@ -1046,7 +1063,8 @@ uses the verse-breakdowns fallback (`/Whatisthebiblebanner.png`):
 1-samuel-9-explained, 1-samuel-10-explained,
 1-samuel-11-explained, 1-samuel-12-explained, 1-samuel-13-explained,
 1-samuel-14-explained, 1-samuel-15-explained, 1-samuel-16-explained,
-1-samuel-17-explained, 1-samuel-18-explained.
+1-samuel-17-explained, 1-samuel-18-explained, 1-samuel-19-explained,
+1-samuel-20-explained.
 (Ruth 1-4 and 1 Samuel 1-8 got their real banners from Louis on
 2026-11-21.) Updating this one line going forward (per the routine's own
 doc) rather than adding a new block each time a chapter lands without a
