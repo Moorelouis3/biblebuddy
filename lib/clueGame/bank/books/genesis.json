@@ -9104,6 +9104,294 @@
   "ref": "Genesis 27:43"
  },
  {
+  "id": "genesis-27-m-01",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Rebekah put upon Jacob’s hands and neck?",
+  "choices": [
+   "Wool from the flock",
+   "A hairy garment",
+   "Skins of the kids of the goats",
+   "Oil and perfume"
+  ],
+  "answer": 2,
+  "explanation": "She put the skins of the kids of the goats upon his hands, and upon the smooth of his neck.",
+  "ref": "Genesis 27:16"
+ },
+ {
+  "id": "genesis-27-m-02",
+  "chapter": 27,
+  "level": "medium",
+  "category": "place",
+  "question": "To whom did Rebekah tell Jacob to flee?",
+  "choices": [
+   "Ishmael in Shur",
+   "Abimelech in Gerar",
+   "Lot in Sodom",
+   "Laban in Haran"
+  ],
+  "answer": 3,
+  "explanation": "Rebekah said, Arise, flee thou to Laban my brother to Haran.",
+  "ref": "Genesis 27:43"
+ },
+ {
+  "id": "genesis-27-m-03",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jacob say when Isaac asked who he was?",
+  "choices": [
+   "I am Esau thy firstborn",
+   "I am Jacob thy son",
+   "I am thy servant",
+   "I am thy brother"
+  ],
+  "answer": 0,
+  "explanation": "Jacob said unto his father, I am Esau thy firstborn; I have done according as thou badest me.",
+  "ref": "Genesis 27:19"
+ },
+ {
+  "id": "genesis-27-h-01",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Isaac ask Jacob to do to find out if he was Esau?",
+  "choices": [
+   "Speak his brother’s name",
+   "Come near so he could feel him",
+   "Show his bow and quiver",
+   "Swear an oath"
+  ],
+  "answer": 1,
+  "explanation": "Isaac said, Come near, I pray thee, that I may feel thee, my son, whether thou be my very son Esau or not.",
+  "ref": "Genesis 27:21"
+ },
+ {
+  "id": "genesis-27-h-02",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose voice did Isaac say he heard?",
+  "choices": [
+   "Esau’s",
+   "Laban’s",
+   "Jacob’s",
+   "Abraham’s"
+  ],
+  "answer": 2,
+  "explanation": "Isaac said, The voice is Jacob’s voice, but the hands are the hands of Esau.",
+  "ref": "Genesis 27:22"
+ },
+ {
+  "id": "genesis-27-h-03",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob bring Isaac to drink along with the meat?",
+  "choices": [
+   "Milk",
+   "Water",
+   "Oil",
+   "Wine"
+  ],
+  "answer": 3,
+  "explanation": "Jacob brought it near to him, and he did eat: and he brought him wine, and he drank.",
+  "ref": "Genesis 27:25"
+ },
+ {
+  "id": "genesis-27-h-04",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Isaac ask Jacob to do before blessing him?",
+  "choices": [
+   "Come near and kiss him",
+   "Kneel before him",
+   "Pray with him",
+   "Sing a song"
+  ],
+  "answer": 0,
+  "explanation": "His father Isaac said unto him, Come near now, and kiss me, my son.",
+  "ref": "Genesis 27:26"
+ },
+ {
+  "id": "genesis-27-h-05",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In Isaac’s blessing, what did he ask God to give Jacob from heaven?",
+  "choices": [
+   "The rain of the morning",
+   "The dew of heaven",
+   "The light of heaven",
+   "The bread of heaven"
+  ],
+  "answer": 1,
+  "explanation": "Therefore God give thee of the dew of heaven, and the fatness of the earth, and plenty of corn and wine.",
+  "ref": "Genesis 27:28"
+ },
+ {
+  "id": "genesis-27-h-06",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In the blessing, Jacob was to be lord over whom?",
+  "choices": [
+   "The Philistines",
+   "The Egyptians",
+   "His brethren",
+   "The Hittites"
+  ],
+  "answer": 2,
+  "explanation": "Isaac said, Be lord over thy brethren, and let thy mother’s sons bow down to thee.",
+  "ref": "Genesis 27:29"
+ },
+ {
+  "id": "genesis-27-h-07",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esau cry to his father when he learned of the blessing?",
+  "choices": [
+   "Curse my brother",
+   "Give me the birthright",
+   "Call back Jacob",
+   "Bless me, even me also"
+  ],
+  "answer": 3,
+  "explanation": "Esau cried, Bless me, even me also, O my father.",
+  "ref": "Genesis 27:34"
+ },
+ {
+  "id": "genesis-27-h-08",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times did Esau say Jacob had supplanted him?",
+  "choices": [
+   "Two times",
+   "Three times",
+   "Seven times",
+   "Once"
+  ],
+  "answer": 0,
+  "explanation": "Esau said, He hath supplanted me these two times: he took away my birthright; and now he hath taken away my blessing.",
+  "ref": "Genesis 27:36"
+ },
+ {
+  "id": "genesis-27-h-09",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esau ask Isaac about blessings?",
+  "choices": [
+   "Hast thou no birthright?",
+   "Hast thou but one blessing?",
+   "Hast thou a curse for Jacob?",
+   "Hast thou two sons?"
+  ],
+  "answer": 1,
+  "explanation": "Esau said unto his father, Hast thou but one blessing, my father?",
+  "ref": "Genesis 27:38"
+ },
+ {
+  "id": "genesis-27-h-10",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Isaac say he had made Jacob over Esau?",
+  "choices": [
+   "His servant",
+   "His heir only",
+   "His lord",
+   "His shepherd"
+  ],
+  "answer": 2,
+  "explanation": "Isaac answered, Behold, I have made him thy lord, and all his brethren have I given to him for servants.",
+  "ref": "Genesis 27:37"
+ },
+ {
+  "id": "genesis-27-h-11",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Isaac said Esau would break what from off his neck?",
+  "choices": [
+   "A chain",
+   "His bow",
+   "A burden of wood",
+   "Jacob’s yoke"
+  ],
+  "answer": 3,
+  "explanation": "When thou shalt have the dominion, thou shalt break his yoke from off thy neck.",
+  "ref": "Genesis 27:40"
+ },
+ {
+  "id": "genesis-27-h-12",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Esau say in his heart he would slay Jacob?",
+  "choices": [
+   "When the days of mourning for his father were at hand",
+   "When Jacob left for Haran",
+   "When Rebekah died",
+   "After the next harvest"
+  ],
+  "answer": 0,
+  "explanation": "Esau said in his heart, The days of mourning for my father are at hand; then will I slay my brother Jacob.",
+  "ref": "Genesis 27:41"
+ },
+ {
+  "id": "genesis-27-h-13",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Rebekah asked why she should be deprived of what in one day?",
+  "choices": [
+   "Her husband",
+   "Both her sons",
+   "Her flocks",
+   "Her home"
+  ],
+  "answer": 1,
+  "explanation": "Rebekah said, Why should I be deprived also of you both in one day?",
+  "ref": "Genesis 27:45"
+ },
+ {
+  "id": "genesis-27-h-14",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jacob describe himself compared with Esau?",
+  "choices": [
+   "A cunning hunter",
+   "A man of the field",
+   "A smooth man",
+   "A plain man"
+  ],
+  "answer": 2,
+  "explanation": "Jacob said, Esau my brother is a hairy man, and I am a smooth man.",
+  "ref": "Genesis 27:11"
+ },
+ {
+  "id": "genesis-27-h-15",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Isaac say he did not know?",
+  "choices": [
+   "The name of his son",
+   "The way to the field",
+   "The hour of the feast",
+   "The day of his death"
+  ],
+  "answer": 3,
+  "explanation": "Isaac said, Behold now, I am old, I know not the day of my death.",
+  "ref": "Genesis 27:2"
+ },
+ {
   "id": "old-genesis-28-2",
   "chapter": 28,
   "level": "beginner",
