@@ -26912,6 +26912,646 @@
   "ref": "Exodus 38:9–18"
  },
  {
+  "id": "exodus-38-e-01",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who made all that the LORD commanded Moses for the tabernacle?",
+  "choices": [
+   "Bezaleel",
+   "Aholiab",
+   "Ithamar",
+   "Hur"
+  ],
+  "answer": 0,
+  "explanation": "Bezaleel the son of Uri, the son of Hur, of the tribe of Judah, made all that the LORD commanded Moses.",
+  "ref": "Exodus 38:22"
+ },
+ {
+  "id": "exodus-38-e-02",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who worked alongside Bezaleel?",
+  "choices": [
+   "Ithamar",
+   "Hur",
+   "Uri",
+   "Aholiab"
+  ],
+  "answer": 3,
+  "explanation": "With Bezaleel was Aholiab, son of Ahisamach, of the tribe of Dan.",
+  "ref": "Exodus 38:23"
+ },
+ {
+  "id": "exodus-38-e-03",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What wood was the altar of burnt offering made of?",
+  "choices": [
+   "Cedar",
+   "Olive wood",
+   "Shittim wood",
+   "Cypress"
+  ],
+  "answer": 2,
+  "explanation": "He made the altar of burnt offering of shittim wood.",
+  "ref": "Exodus 38:1"
+ },
+ {
+  "id": "exodus-38-e-04",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were all the vessels of the altar made of?",
+  "choices": [
+   "Gold",
+   "Brass",
+   "Silver",
+   "Iron"
+  ],
+  "answer": 1,
+  "explanation": "All the vessels of the altar, the pots, shovels, basons, fleshhooks and firepans, were made of brass.",
+  "ref": "Exodus 38:3"
+ },
+ {
+  "id": "exodus-38-e-05",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On how many corners of the altar were horns made?",
+  "choices": [
+   "Two",
+   "Four",
+   "Three",
+   "Six"
+  ],
+  "answer": 1,
+  "explanation": "He made the horns of the altar on the four corners of it.",
+  "ref": "Exodus 38:2"
+ },
+ {
+  "id": "exodus-38-e-06",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were put into the rings so the altar could be carried?",
+  "choices": [
+   "The staves",
+   "The cords",
+   "The poles of iron",
+   "The wheels"
+  ],
+  "answer": 0,
+  "explanation": "He put the staves into the rings on the sides of the altar, to bear it withal.",
+  "ref": "Exodus 38:7"
+ },
+ {
+  "id": "exodus-38-e-07",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the women assemble whose looking glasses were used for the laver?",
+  "choices": [
+   "At the well",
+   "At the river",
+   "At the gate of the court",
+   "At the door of the tabernacle"
+  ],
+  "answer": 3,
+  "explanation": "The laver was made of the lookingglasses of the women assembling at the door of the tabernacle of the congregation.",
+  "ref": "Exodus 38:8"
+ },
+ {
+  "id": "exodus-38-e-08",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shape was the altar of burnt offering?",
+  "choices": [
+   "Round",
+   "Three-cornered",
+   "Foursquare",
+   "Oval"
+  ],
+  "answer": 2,
+  "explanation": "The altar was foursquare: five cubits long, five broad, and three high.",
+  "ref": "Exodus 38:1"
+ },
+ {
+  "id": "exodus-38-e-09",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the sockets for the pillars of the court made of?",
+  "choices": [
+   "Silver",
+   "Gold",
+   "Brass",
+   "Wood"
+  ],
+  "answer": 2,
+  "explanation": "The sockets for the pillars were of brass; the hooks of the pillars and their fillets were of silver.",
+  "ref": "Exodus 38:17"
+ },
+ {
+  "id": "exodus-38-e-10",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe was Bezaleel of?",
+  "choices": [
+   "Dan",
+   "Levi",
+   "Judah",
+   "Reuben"
+  ],
+  "answer": 2,
+  "explanation": "Bezaleel the son of Uri, the son of Hur, was of the tribe of Judah.",
+  "ref": "Exodus 38:22"
+ },
+ {
+  "id": "exodus-38-m-01",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which tribe was Aholiab of?",
+  "choices": [
+   "Dan",
+   "Judah",
+   "Levi",
+   "Reuben"
+  ],
+  "answer": 0,
+  "explanation": "Aholiab, son of Ahisamach, was of the tribe of Dan.",
+  "ref": "Exodus 38:23"
+ },
+ {
+  "id": "exodus-38-m-02",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cubits long was the altar of burnt offering?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Ten",
+   "Five"
+  ],
+  "answer": 3,
+  "explanation": "Five cubits was the length thereof, and five cubits the breadth thereof.",
+  "ref": "Exodus 38:1"
+ },
+ {
+  "id": "exodus-38-m-03",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did he make for the altar under its compass, beneath unto the midst of it?",
+  "choices": [
+   "A water basin",
+   "A golden crown",
+   "A cover of skins",
+   "A brasen grate of network"
+  ],
+  "answer": 3,
+  "explanation": "He made for the altar a brasen grate of network under the compass thereof beneath unto the midst of it.",
+  "ref": "Exodus 38:4"
+ },
+ {
+  "id": "exodus-38-m-04",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many rings did he cast for the grate of brass?",
+  "choices": [
+   "Two",
+   "Six",
+   "Four",
+   "Eight"
+  ],
+  "answer": 2,
+  "explanation": "He cast four rings for the four ends of the grate of brass, to be places for the staves.",
+  "ref": "Exodus 38:5"
+ },
+ {
+  "id": "exodus-38-m-05",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much silver was given for every man who was numbered?",
+  "choices": [
+   "A whole shekel",
+   "Half a shekel",
+   "A talent",
+   "Ten shekels"
+  ],
+  "answer": 1,
+  "explanation": "A bekah for every man, that is, half a shekel, after the shekel of the sanctuary.",
+  "ref": "Exodus 38:26"
+ },
+ {
+  "id": "exodus-38-m-06",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How old did a man have to be to be numbered?",
+  "choices": [
+   "Twenty years old and upward",
+   "Thirty and upward",
+   "Twelve and upward",
+   "Fifty and upward"
+  ],
+  "answer": 0,
+  "explanation": "Half a shekel was for every one that went to be numbered, from twenty years old and upward.",
+  "ref": "Exodus 38:26"
+ },
+ {
+  "id": "exodus-38-m-07",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long were the hangings on the south side of the court?",
+  "choices": [
+   "An hundred cubits",
+   "Fifty cubits",
+   "Twenty cubits",
+   "Two hundred cubits"
+  ],
+  "answer": 0,
+  "explanation": "On the south side southward the hangings of the court were of fine twined linen, an hundred cubits.",
+  "ref": "Exodus 38:9"
+ },
+ {
+  "id": "exodus-38-m-08",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long were the hangings on the west side of the court?",
+  "choices": [
+   "One hundred cubits",
+   "Fifteen cubits",
+   "Twenty cubits",
+   "Fifty cubits"
+  ],
+  "answer": 3,
+  "explanation": "For the west side were hangings of fifty cubits.",
+  "ref": "Exodus 38:12"
+ },
+ {
+  "id": "exodus-38-m-09",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many pillars stood on the south side of the court?",
+  "choices": [
+   "Ten",
+   "Fifteen",
+   "Twenty",
+   "Forty"
+  ],
+  "answer": 2,
+  "explanation": "Their pillars were twenty, and their brasen sockets twenty.",
+  "ref": "Exodus 38:10"
+ },
+ {
+  "id": "exodus-38-m-10",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the hooks of the pillars and their fillets made of?",
+  "choices": [
+   "Brass",
+   "Silver",
+   "Gold",
+   "Iron"
+  ],
+  "answer": 1,
+  "explanation": "The hooks of the pillars and their fillets were of silver.",
+  "ref": "Exodus 38:10"
+ },
+ {
+  "id": "exodus-38-m-11",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which colours were in the needlework hanging for the court gate, with fine twined linen?",
+  "choices": [
+   "Red, white and green",
+   "Blue, purple and scarlet",
+   "Gold, blue and white",
+   "Purple, black and red"
+  ],
+  "answer": 1,
+  "explanation": "The hanging for the gate was needlework, of blue, and purple, and scarlet, and fine twined linen.",
+  "ref": "Exodus 38:18"
+ },
+ {
+  "id": "exodus-38-m-12",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were all the pins of the tabernacle and of the court made of?",
+  "choices": [
+   "Brass",
+   "Silver",
+   "Wood",
+   "Gold"
+  ],
+  "answer": 0,
+  "explanation": "All the pins of the tabernacle, and of the court round about, were of brass.",
+  "ref": "Exodus 38:20"
+ },
+ {
+  "id": "exodus-38-m-13",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the altar made, with boards, so that it could be carried?",
+  "choices": [
+   "Solid",
+   "Double",
+   "Overlaid with gold",
+   "Hollow"
+  ],
+  "answer": 3,
+  "explanation": "He made the altar hollow with boards.",
+  "ref": "Exodus 38:7"
+ },
+ {
+  "id": "exodus-38-m-14",
+  "chapter": 38,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Ithamar, who counted the tabernacle?",
+  "choices": [
+   "Moses",
+   "Hur",
+   "Aaron the priest",
+   "Uri"
+  ],
+  "answer": 2,
+  "explanation": "The sum of the tabernacle was counted by the hand of Ithamar, son to Aaron the priest.",
+  "ref": "Exodus 38:21"
+ },
+ {
+  "id": "exodus-38-m-15",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whose service was the sum of the tabernacle counted?",
+  "choices": [
+   "The elders",
+   "The priests only",
+   "The Levites",
+   "The twelve tribes"
+  ],
+  "answer": 2,
+  "explanation": "It was counted according to the commandment of Moses, for the service of the Levites.",
+  "ref": "Exodus 38:21"
+ },
+ {
+  "id": "exodus-38-h-01",
+  "chapter": 38,
+  "level": "hard",
+  "category": "person",
+  "question": "Bezaleel was the son of Uri, the son of whom?",
+  "choices": [
+   "Judah",
+   "Hur",
+   "Aaron",
+   "Caleb"
+  ],
+  "answer": 1,
+  "explanation": "Bezaleel the son of Uri, the son of Hur, of the tribe of Judah.",
+  "ref": "Exodus 38:22"
+ },
+ {
+  "id": "exodus-38-h-02",
+  "chapter": 38,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Aholiab's father?",
+  "choices": [
+   "Ahisamach",
+   "Uri",
+   "Hur",
+   "Ithamar"
+  ],
+  "answer": 0,
+  "explanation": "Aholiab was the son of Ahisamach, of the tribe of Dan.",
+  "ref": "Exodus 38:23"
+ },
+ {
+  "id": "exodus-38-h-03",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits high was the altar of burnt offering?",
+  "choices": [
+   "Five",
+   "Two",
+   "Ten",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "It was foursquare; and three cubits the height thereof.",
+  "ref": "Exodus 38:1"
+ },
+ {
+  "id": "exodus-38-h-04",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of gold were used in the work of the holy place?",
+  "choices": [
+   "Seventy",
+   "Twelve",
+   "One hundred",
+   "Twenty and nine"
+  ],
+  "answer": 3,
+  "explanation": "The gold was twenty and nine talents, and seven hundred and thirty shekels.",
+  "ref": "Exodus 38:24"
+ },
+ {
+  "id": "exodus-38-h-05",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of brass were in the offering?",
+  "choices": [
+   "Twenty and nine",
+   "One hundred",
+   "Seventy",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "The brass of the offering was seventy talents, and two thousand and four hundred shekels.",
+  "ref": "Exodus 38:29"
+ },
+ {
+  "id": "exodus-38-h-06",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men were numbered, from twenty years old and upward?",
+  "choices": [
+   "6,000",
+   "603,550",
+   "60,355",
+   "3,550,000"
+  ],
+  "answer": 1,
+  "explanation": "For six hundred thousand and three thousand and five hundred and fifty men.",
+  "ref": "Exodus 38:26"
+ },
+ {
+  "id": "exodus-38-h-07",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits long was the hanging for the gate of the court?",
+  "choices": [
+   "Twenty",
+   "Fifteen",
+   "Fifty",
+   "Five"
+  ],
+  "answer": 0,
+  "explanation": "The hanging for the gate was twenty cubits in length.",
+  "ref": "Exodus 38:18"
+ },
+ {
+  "id": "exodus-38-h-08",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits high was the gate hanging?",
+  "choices": [
+   "Five",
+   "Three",
+   "Twenty",
+   "Fifteen"
+  ],
+  "answer": 0,
+  "explanation": "The height in the breadth was five cubits, answerable to the hangings of the court.",
+  "ref": "Exodus 38:18"
+ },
+ {
+  "id": "exodus-38-h-09",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many pillars were there for the hanging of the court gate?",
+  "choices": [
+   "Three",
+   "Six",
+   "Ten",
+   "Four"
+  ],
+  "answer": 3,
+  "explanation": "Their pillars were four, and their sockets of brass four.",
+  "ref": "Exodus 38:19"
+ },
+ {
+  "id": "exodus-38-h-10",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits of hangings stood on each side of the court gate?",
+  "choices": [
+   "Ten",
+   "Twenty",
+   "Fifteen",
+   "Fifty"
+  ],
+  "answer": 2,
+  "explanation": "The hangings of the one side of the gate were fifteen cubits, and the other side likewise.",
+  "ref": "Exodus 38:14"
+ },
+ {
+  "id": "exodus-38-h-11",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many pillars stood on the west side of the court?",
+  "choices": [
+   "Twenty",
+   "Ten",
+   "Five",
+   "Fifteen"
+  ],
+  "answer": 1,
+  "explanation": "For the west side were hangings of fifty cubits, their pillars ten, and their sockets ten.",
+  "ref": "Exodus 38:12"
+ },
+ {
+  "id": "exodus-38-h-12",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was made of the thousand seven hundred seventy and five shekels of silver?",
+  "choices": [
+   "The altar grate",
+   "Hooks for the pillars and overlaying of their chapiters",
+   "The laver",
+   "The cloths of service"
+  ],
+  "answer": 1,
+  "explanation": "Of the 1,775 shekels he made hooks for the pillars, overlaid their chapiters, and filleted them.",
+  "ref": "Exodus 38:28"
+ },
+ {
+  "id": "exodus-38-h-13",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides an engraver and a cunning workman, what was Aholiab?",
+  "choices": [
+   "An embroiderer",
+   "A goldsmith",
+   "A carpenter",
+   "A weaver of goats' hair"
+  ],
+  "answer": 0,
+  "explanation": "Aholiab was an engraver, a cunning workman, and an embroiderer in blue, purple, scarlet and fine linen.",
+  "ref": "Exodus 38:23"
+ },
+ {
+  "id": "exodus-38-h-14",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The brass of the offering made the sockets to the door of what?",
+  "choices": [
+   "The court gate",
+   "The holy place",
+   "The ark",
+   "The tabernacle of the congregation"
+  ],
+  "answer": 3,
+  "explanation": "Therewith he made the sockets to the door of the tabernacle of the congregation, and the brasen altar.",
+  "ref": "Exodus 38:30"
+ },
+ {
+  "id": "exodus-38-h-15",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After whose shekel were the gold and silver weighed?",
+  "choices": [
+   "The king",
+   "Egypt",
+   "The sanctuary",
+   "The priest"
+  ],
+  "answer": 2,
+  "explanation": "The gold and silver were counted after the shekel of the sanctuary.",
+  "ref": "Exodus 38:24"
+ },
+ {
   "id": "old-exodus-39-1",
   "chapter": 39,
   "level": "beginner",
