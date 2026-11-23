@@ -1492,15 +1492,15 @@
   "chapter": 3,
   "level": "beginner",
   "category": "keyword",
-  "question": "If the peace offering was from the flock, what animal could it be?",
+  "question": "If the peace offering was from the flock, what animals are named?",
   "choices": [
    "A dove or pigeon",
-   "A sheep or a goat",
+   "A lamb or a goat",
    "An ox only",
    "A deer only"
   ],
   "answer": 1,
-  "explanation": "The peace offering from the flock could be either a sheep or a goat.",
+  "explanation": "If it was of the flock, he could offer a lamb or a goat, male or female without blemish.",
   "ref": "Leviticus 3:6–12"
  },
  {
@@ -1518,6 +1518,646 @@
   "answer": 3,
   "explanation": "The statute declares that Israel is not to eat fat or blood.",
   "ref": "Leviticus 3:17"
+ },
+ {
+  "id": "leviticus-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of offering is this chapter about?",
+  "choices": [
+   "The peace offering",
+   "The burnt offering",
+   "The meat offering",
+   "The sin offering"
+  ],
+  "answer": 0,
+  "explanation": "If his oblation be a sacrifice of peace offering, if he offer it of the herd.",
+  "ref": "Leviticus 3:1"
+ },
+ {
+  "id": "leviticus-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the man lay on the head of his offering?",
+  "choices": [
+   "His staff",
+   "Oil",
+   "Salt",
+   "His hand"
+  ],
+  "answer": 3,
+  "explanation": "He shall lay his hand upon the head of his offering, and kill it.",
+  "ref": "Leviticus 3:2"
+ },
+ {
+  "id": "leviticus-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was an offering from the herd killed?",
+  "choices": [
+   "On the mount",
+   "Outside the camp",
+   "At the door of the tabernacle of the congregation",
+   "In the court gate only"
+  ],
+  "answer": 2,
+  "explanation": "He shall kill it at the door of the tabernacle of the congregation.",
+  "ref": "Leviticus 3:2"
+ },
+ {
+  "id": "leviticus-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sprinkled the blood upon the altar round about?",
+  "choices": [
+   "The offerer",
+   "Aaron's sons the priests",
+   "The Levites",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Aaron's sons the priests shall sprinkle the blood upon the altar round about.",
+  "ref": "Leviticus 3:2"
+ },
+ {
+  "id": "leviticus-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was burned upon the altar from the peace offering?",
+  "choices": [
+   "The hide",
+   "The fat",
+   "The head",
+   "The flour"
+  ],
+  "answer": 1,
+  "explanation": "The fat that covereth the inwards, and all the fat upon the inwards, was burned.",
+  "ref": "Leviticus 3:3"
+ },
+ {
+  "id": "leviticus-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which young animal of the flock is named for the peace offering?",
+  "choices": [
+   "A lamb",
+   "A kid",
+   "A calf",
+   "A young ox"
+  ],
+  "answer": 0,
+  "explanation": "If he offer a lamb for his offering, then shall he offer it before the LORD.",
+  "ref": "Leviticus 3:7"
+ },
+ {
+  "id": "leviticus-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides a lamb, which other animal of the flock could be offered?",
+  "choices": [
+   "A bullock",
+   "A dove",
+   "A ram",
+   "A goat"
+  ],
+  "answer": 3,
+  "explanation": "If his offering be a goat, then he shall offer it before the LORD.",
+  "ref": "Leviticus 3:12"
+ },
+ {
+  "id": "leviticus-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sort of offering was the peace offering unto the LORD?",
+  "choices": [
+   "A drink offering",
+   "A free gift only",
+   "An offering made by fire",
+   "A wave offering"
+  ],
+  "answer": 2,
+  "explanation": "He shall offer of the sacrifice of the peace offering an offering made by fire unto the LORD.",
+  "ref": "Leviticus 3:3"
+ },
+ {
+  "id": "leviticus-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who burned the fat upon the altar?",
+  "choices": [
+   "The offerer",
+   "The elders",
+   "The priest",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "The priest shall burn it upon the altar: it is the food of the offering made by fire unto the LORD.",
+  "ref": "Leviticus 3:11"
+ },
+ {
+  "id": "leviticus-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many kidneys were taken away with the fat?",
+  "choices": [
+   "One",
+   "Two",
+   "Three",
+   "Four"
+  ],
+  "answer": 1,
+  "explanation": "The two kidneys, and the fat that is on them, he shall take away.",
+  "ref": "Leviticus 3:4"
+ },
+ {
+  "id": "leviticus-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be burned that covereth the inwards?",
+  "choices": [
+   "The fat",
+   "The skin",
+   "The hair",
+   "The blood"
+  ],
+  "answer": 0,
+  "explanation": "The fat that covereth the inwards, and all the fat that is upon the inwards.",
+  "ref": "Leviticus 3:3"
+ },
+ {
+  "id": "leviticus-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the fat on the kidneys found?",
+  "choices": [
+   "By the heart",
+   "By the head",
+   "By the shoulder",
+   "By the flanks"
+  ],
+  "answer": 3,
+  "explanation": "The two kidneys, and the fat that is on them, which is by the flanks.",
+  "ref": "Leviticus 3:4"
+ },
+ {
+  "id": "leviticus-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was above the liver and taken away with the kidneys?",
+  "choices": [
+   "The tail",
+   "The rump",
+   "The skin",
+   "The caul"
+  ],
+  "answer": 3,
+  "explanation": "The caul above the liver, with the kidneys, it shall he take away.",
+  "ref": "Leviticus 3:4"
+ },
+ {
+  "id": "leviticus-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Upon what did Aaron's sons burn the fat on the altar?",
+  "choices": [
+   "Upon the salt",
+   "Upon the shewbread",
+   "Upon the burnt sacrifice",
+   "Upon the ashes"
+  ],
+  "answer": 2,
+  "explanation": "Aaron's sons shall burn it on the altar upon the burnt sacrifice, which is upon the wood on the fire.",
+  "ref": "Leviticus 3:5"
+ },
+ {
+  "id": "leviticus-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the lamb killed?",
+  "choices": [
+   "At the court gate",
+   "Before the tabernacle of the congregation",
+   "Beside the laver",
+   "On the east side"
+  ],
+  "answer": 1,
+  "explanation": "He shall lay his hand upon the head of his offering, and kill it before the tabernacle of the congregation.",
+  "ref": "Leviticus 3:8"
+ },
+ {
+  "id": "leviticus-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the burned fat called?",
+  "choices": [
+   "The food of the offering made by fire",
+   "A heave offering",
+   "A memorial of grain",
+   "A feast for the priests"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall burn it upon the altar: it is the food of the offering made by fire unto the LORD.",
+  "ref": "Leviticus 3:11"
+ },
+ {
+  "id": "leviticus-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was required of a flock offering, male or female?",
+  "choices": [
+   "It must be without blemish",
+   "It must be a year old",
+   "It must be white",
+   "It must be a firstborn"
+  ],
+  "answer": 0,
+  "explanation": "If his offering be of the flock; male or female, he shall offer it without blemish.",
+  "ref": "Leviticus 3:6"
+ },
+ {
+  "id": "leviticus-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long would the statute against eating fat and blood last?",
+  "choices": [
+   "For one year",
+   "Until the land",
+   "Until the priests agreed",
+   "It would be perpetual"
+  ],
+  "answer": 3,
+  "explanation": "It shall be a perpetual statute for your generations.",
+  "ref": "Leviticus 3:17"
+ },
+ {
+  "id": "leviticus-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the statute about fat and blood apply?",
+  "choices": [
+   "Only at the tabernacle",
+   "Only in the camp",
+   "Throughout all your dwellings",
+   "Only in the land of Canaan"
+  ],
+  "answer": 2,
+  "explanation": "It shall be a perpetual statute throughout all your dwellings.",
+  "ref": "Leviticus 3:17"
+ },
+ {
+  "id": "leviticus-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the blood of the goat sprinkled?",
+  "choices": [
+   "On the door of the tent",
+   "Upon the altar round about",
+   "Upon the vail",
+   "On the horns only"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Aaron shall sprinkle the blood thereof upon the altar round about.",
+  "ref": "Leviticus 3:13"
+ },
+ {
+  "id": "leviticus-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the man do to the head of the goat before killing it?",
+  "choices": [
+   "Wash it",
+   "Lay his hand upon it",
+   "Anoint it",
+   "Cover it"
+  ],
+  "answer": 1,
+  "explanation": "He shall lay his hand upon the head of it, and kill it before the tabernacle of the congregation.",
+  "ref": "Leviticus 3:13"
+ },
+ {
+  "id": "leviticus-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose is all the fat, according to the chapter?",
+  "choices": [
+   "The LORD'S",
+   "The priest's",
+   "The offerer's",
+   "Aaron's"
+  ],
+  "answer": 0,
+  "explanation": "All the fat is the LORD'S.",
+  "ref": "Leviticus 3:16"
+ },
+ {
+  "id": "leviticus-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What could the man offer from the herd, besides a male?",
+  "choices": [
+   "A dove",
+   "A pigeon",
+   "A goat",
+   "A female"
+  ],
+  "answer": 3,
+  "explanation": "Whether it be a male or female, he shall offer it without blemish before the LORD.",
+  "ref": "Leviticus 3:1"
+ },
+ {
+  "id": "leviticus-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the fat that was burned smell like to the LORD?",
+  "choices": [
+   "A trouble",
+   "A burden",
+   "A sweet savour",
+   "A fragrance of spice only"
+  ],
+  "answer": 2,
+  "explanation": "It is an offering made by fire, of a sweet savour unto the LORD.",
+  "ref": "Leviticus 3:5"
+ },
+ {
+  "id": "leviticus-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "For whose generations was the statute given?",
+  "choices": [
+   "The priests'",
+   "The Levites'",
+   "Israel's",
+   "The elders'"
+  ],
+  "answer": 2,
+  "explanation": "It shall be a perpetual statute for your generations.",
+  "ref": "Leviticus 3:17"
+ },
+ {
+  "id": "leviticus-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What else was taken off hard by the backbone with the fat of the lamb?",
+  "choices": [
+   "The shoulder",
+   "The whole rump",
+   "The liver",
+   "The tongue"
+  ],
+  "answer": 1,
+  "explanation": "The fat thereof, and the whole rump, it shall he take off hard by the backbone.",
+  "ref": "Leviticus 3:9"
+ },
+ {
+  "id": "leviticus-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The rump was taken off hard by what?",
+  "choices": [
+   "The backbone",
+   "The flank",
+   "The kidneys",
+   "The caul"
+  ],
+  "answer": 0,
+  "explanation": "The whole rump, it shall he take off hard by the backbone.",
+  "ref": "Leviticus 3:9"
+ },
+ {
+  "id": "leviticus-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the fat on the inwards, what two things were taken away?",
+  "choices": [
+   "The heart and lungs",
+   "The head and the legs",
+   "The tongue and the tail",
+   "The two kidneys and the caul above the liver"
+  ],
+  "answer": 3,
+  "explanation": "He shall take away the two kidneys, and the fat on them, and the caul above the liver.",
+  "ref": "Leviticus 3:4"
+ },
+ {
+  "id": "leviticus-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Upon what was the peace offering's fat burned on the altar?",
+  "choices": [
+   "The shewbread",
+   "The incense",
+   "The meat offering",
+   "The burnt sacrifice on the wood"
+  ],
+  "answer": 3,
+  "explanation": "Aaron's sons shall burn it on the altar upon the burnt sacrifice.",
+  "ref": "Leviticus 3:5"
+ },
+ {
+  "id": "leviticus-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In the offering from the herd, what might the male or female not have?",
+  "choices": [
+   "Horns",
+   "Wool",
+   "A blemish",
+   "A name"
+  ],
+  "answer": 2,
+  "explanation": "Whether it be a male or female, he shall offer it without blemish.",
+  "ref": "Leviticus 3:1"
+ },
+ {
+  "id": "leviticus-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who sprinkled the blood of the goat?",
+  "choices": [
+   "The offerer",
+   "The sons of Aaron",
+   "The Levites",
+   "Moses"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Aaron shall sprinkle the blood thereof upon the altar round about.",
+  "ref": "Leviticus 3:13"
+ },
+ {
+  "id": "leviticus-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the goat killed?",
+  "choices": [
+   "Before the tabernacle of the congregation",
+   "At the altar horns",
+   "By the laver",
+   "Outside the camp"
+  ],
+  "answer": 0,
+  "explanation": "He shall kill it before the tabernacle of the congregation.",
+  "ref": "Leviticus 3:13"
+ },
+ {
+  "id": "leviticus-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which animal's offering has the chapter say the whole rump to be taken off?",
+  "choices": [
+   "The lamb",
+   "The bullock",
+   "The goat",
+   "The heifer"
+  ],
+  "answer": 0,
+  "explanation": "If he offer a lamb, the fat thereof and the whole rump he shall take off.",
+  "ref": "Leviticus 3:7–9"
+ },
+ {
+  "id": "leviticus-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the fat of the goat called when burned for a sweet savour?",
+  "choices": [
+   "A holy bread",
+   "A memorial",
+   "A drink offering",
+   "The food of the offering made by fire"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall burn them upon the altar: it is the food of the offering made by fire for a sweet savour.",
+  "ref": "Leviticus 3:16"
+ },
+ {
+  "id": "leviticus-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two things were forbidden to be eaten forever?",
+  "choices": [
+   "Leaven and honey",
+   "Flesh and bread",
+   "Fat and blood",
+   "Fat and flour"
+  ],
+  "answer": 2,
+  "explanation": "It shall be a perpetual statute that ye eat neither fat nor blood.",
+  "ref": "Leviticus 3:17"
+ },
+ {
+  "id": "leviticus-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was done to the kidneys, their fat and the caul above the liver?",
+  "choices": [
+   "They were taken away",
+   "They were eaten by the priest",
+   "They were buried",
+   "They were given to the poor"
+  ],
+  "answer": 0,
+  "explanation": "The two kidneys, the fat on them, and the caul above the liver, he shall take away.",
+  "ref": "Leviticus 3:4"
+ },
+ {
+  "id": "leviticus-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The man killed the offering after doing what?",
+  "choices": [
+   "Washing his feet",
+   "Laying his hand upon its head",
+   "Pouring oil",
+   "Sprinkling the blood"
+  ],
+  "answer": 1,
+  "explanation": "He shall lay his hand upon the head of his offering, and kill it.",
+  "ref": "Leviticus 3:2"
+ },
+ {
+  "id": "leviticus-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the offering of the herd to be offered before?",
+  "choices": [
+   "The LORD",
+   "The priest",
+   "Moses",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "He shall offer it without blemish before the LORD.",
+  "ref": "Leviticus 3:1"
+ },
+ {
+  "id": "leviticus-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After the fat and rump of the lamb, what was also burned with the fat on the inwards?",
+  "choices": [
+   "The heart",
+   "The liver",
+   "The tongue",
+   "The two kidneys"
+  ],
+  "answer": 3,
+  "explanation": "The two kidneys, and the fat that is upon them, he shall take away.",
+  "ref": "Leviticus 3:10"
+ },
+ {
+  "id": "leviticus-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the fat that covers the inwards found, according to the chapter's repeated list?",
+  "choices": [
+   "Upon the inwards",
+   "Upon the head",
+   "Beside the heart",
+   "Under the skin"
+  ],
+  "answer": 0,
+  "explanation": "The fat that covereth the inwards, and all the fat that is upon the inwards, was burned.",
+  "ref": "Leviticus 3:3"
  },
  {
   "id": "old-leviticus-4-1",
