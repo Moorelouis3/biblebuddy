@@ -25472,6 +25472,646 @@
   "ref": "Exodus 36:8"
  },
  {
+  "id": "exodus-36-e-01",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who wrought the work of the sanctuary with every wise hearted man?",
+  "choices": [
+   "Nadab and Abihu",
+   "Aaron and Hur",
+   "Joshua and Caleb",
+   "Bezaleel and Aholiab"
+  ],
+  "answer": 3,
+  "explanation": "Then wrought Bezaleel and Aholiab, and every wise hearted man.",
+  "ref": "Exodus 36:1"
+ },
+ {
+  "id": "exodus-36-e-02",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who put wisdom and understanding in the workmen?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Pharaoh",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "In whom the LORD put wisdom and understanding to know how to work all manner of work.",
+  "ref": "Exodus 36:1"
+ },
+ {
+  "id": "exodus-36-e-03",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Moses call to the work?",
+  "choices": [
+   "Bezaleel, Aholiab and every wise hearted man",
+   "Only the Levites",
+   "The elders of Israel",
+   "Only the priests"
+  ],
+  "answer": 0,
+  "explanation": "Moses called Bezaleel and Aholiab, and every wise hearted man.",
+  "ref": "Exodus 36:2"
+ },
+ {
+  "id": "exodus-36-e-04",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people keep bringing every morning?",
+  "choices": [
+   "Free offerings",
+   "Water",
+   "Fire",
+   "Sacrifices of lambs"
+  ],
+  "answer": 0,
+  "explanation": "They brought yet unto him free offerings every morning.",
+  "ref": "Exodus 36:3"
+ },
+ {
+  "id": "exodus-36-e-05",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people bring more than enough of?",
+  "choices": [
+   "Food for the journey",
+   "Gold crowns",
+   "Weapons",
+   "The stuff for the service of the work"
+  ],
+  "answer": 3,
+  "explanation": "The people bring much more than enough for the service of the work.",
+  "ref": "Exodus 36:5"
+ },
+ {
+  "id": "exodus-36-e-06",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses order to be proclaimed throughout the camp?",
+  "choices": [
+   "A fast",
+   "A march",
+   "No more work for the offering of the sanctuary",
+   "A feast"
+  ],
+  "answer": 2,
+  "explanation": "Let neither man nor woman make any more work for the offering of the sanctuary.",
+  "ref": "Exodus 36:6"
+ },
+ {
+  "id": "exodus-36-e-07",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was woven into the curtains with cunning work?",
+  "choices": [
+   "Palm trees",
+   "Cherubims",
+   "Lions",
+   "Eagles"
+  ],
+  "answer": 1,
+  "explanation": "With cherubims of cunning work made he them.",
+  "ref": "Exodus 36:8"
+ },
+ {
+  "id": "exodus-36-e-08",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Of what wood were the boards of the tabernacle made?",
+  "choices": [
+   "Cedar",
+   "Olive wood",
+   "Shittim wood",
+   "Cypress"
+  ],
+  "answer": 2,
+  "explanation": "He made boards for the tabernacle of shittim wood, standing up.",
+  "ref": "Exodus 36:20"
+ },
+ {
+  "id": "exodus-36-e-09",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Bezaleel make for the tabernacle door?",
+  "choices": [
+   "A gate of iron",
+   "A wall of stone",
+   "A hanging",
+   "A curtain of wool"
+  ],
+  "answer": 2,
+  "explanation": "He made an hanging for the tabernacle door.",
+  "ref": "Exodus 36:37"
+ },
+ {
+  "id": "exodus-36-e-10",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did he overlay the boards with?",
+  "choices": [
+   "Brass",
+   "Silver",
+   "Gold",
+   "Bronze"
+  ],
+  "answer": 2,
+  "explanation": "He overlaid the boards with gold.",
+  "ref": "Exodus 36:34"
+ },
+ {
+  "id": "exodus-36-m-01",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people do when they were restrained from bringing?",
+  "choices": [
+   "They stopped bringing offerings",
+   "They took it back",
+   "They left the camp",
+   "They kept bringing more"
+  ],
+  "answer": 0,
+  "explanation": "So the people were restrained from bringing.",
+  "ref": "Exodus 36:6"
+ },
+ {
+  "id": "exodus-36-m-02",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cubits long was one of the fine linen curtains?",
+  "choices": [
+   "Thirty",
+   "Twenty and eight",
+   "Fifty",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "The length of one curtain was twenty and eight cubits.",
+  "ref": "Exodus 36:9"
+ },
+ {
+  "id": "exodus-36-m-03",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cubits wide was each of the first curtains?",
+  "choices": [
+   "Thirty",
+   "Four",
+   "Two",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "The breadth of one curtain four cubits.",
+  "ref": "Exodus 36:9"
+ },
+ {
+  "id": "exodus-36-m-04",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many loops were made in each curtain?",
+  "choices": [
+   "Fifty",
+   "Seventy",
+   "Ten",
+   "Twenty"
+  ],
+  "answer": 0,
+  "explanation": "Fifty loops made he in one curtain.",
+  "ref": "Exodus 36:12"
+ },
+ {
+  "id": "exodus-36-m-05",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the taches that coupled the linen curtains made of?",
+  "choices": [
+   "Wood",
+   "Gold",
+   "Silver",
+   "Brass"
+  ],
+  "answer": 1,
+  "explanation": "He made fifty taches of gold, and coupled the curtains one unto another.",
+  "ref": "Exodus 36:13"
+ },
+ {
+  "id": "exodus-36-m-06",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many curtains of goats' hair made the tent over the tabernacle?",
+  "choices": [
+   "Eleven",
+   "Ten",
+   "Twelve",
+   "Five"
+  ],
+  "answer": 0,
+  "explanation": "He made curtains of goats' hair for the tent: eleven curtains.",
+  "ref": "Exodus 36:14"
+ },
+ {
+  "id": "exodus-36-m-07",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cubits long was each goats' hair curtain?",
+  "choices": [
+   "Twenty-eight",
+   "Forty",
+   "Ten",
+   "Thirty"
+  ],
+  "answer": 3,
+  "explanation": "The length of one curtain was thirty cubits.",
+  "ref": "Exodus 36:15"
+ },
+ {
+  "id": "exodus-36-m-08",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the taches for the goats' hair tent made of?",
+  "choices": [
+   "Gold",
+   "Brass",
+   "Silver",
+   "Iron"
+  ],
+  "answer": 1,
+  "explanation": "He made fifty taches of brass to couple the tent together.",
+  "ref": "Exodus 36:18"
+ },
+ {
+  "id": "exodus-36-m-09",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the covering for the tent made of?",
+  "choices": [
+   "Gold plates",
+   "Goats' hair only",
+   "Linen",
+   "Rams' skins dyed red"
+  ],
+  "answer": 3,
+  "explanation": "He made a covering for the tent of rams' skins dyed red.",
+  "ref": "Exodus 36:19"
+ },
+ {
+  "id": "exodus-36-m-10",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was each board of the tabernacle?",
+  "choices": [
+   "Ten cubits",
+   "Thirty cubits",
+   "Five cubits",
+   "Twenty cubits"
+  ],
+  "answer": 0,
+  "explanation": "The length of a board was ten cubits.",
+  "ref": "Exodus 36:21"
+ },
+ {
+  "id": "exodus-36-m-11",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the sockets under the boards made of?",
+  "choices": [
+   "Wood",
+   "Silver",
+   "Gold",
+   "Brass"
+  ],
+  "answer": 1,
+  "explanation": "Forty sockets of silver he made under the twenty boards.",
+  "ref": "Exodus 36:24"
+ },
+ {
+  "id": "exodus-36-m-12",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many boards were made for the south side?",
+  "choices": [
+   "Ten",
+   "Six",
+   "Twenty",
+   "Eight"
+  ],
+  "answer": 2,
+  "explanation": "He made twenty boards for the south side southward.",
+  "ref": "Exodus 36:23"
+ },
+ {
+  "id": "exodus-36-m-13",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many boards were made for the west side?",
+  "choices": [
+   "Two",
+   "Six",
+   "Eight",
+   "Twenty"
+  ],
+  "answer": 1,
+  "explanation": "For the sides of the tabernacle westward he made six boards.",
+  "ref": "Exodus 36:27"
+ },
+ {
+  "id": "exodus-36-m-14",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What colors were the vail of the tabernacle?",
+  "choices": [
+   "Blue, purple and scarlet with fine linen",
+   "White and black",
+   "Red and yellow",
+   "Green and gold"
+  ],
+  "answer": 0,
+  "explanation": "He made a vail of blue, and purple, and scarlet, and fine twined linen.",
+  "ref": "Exodus 36:35"
+ },
+ {
+  "id": "exodus-36-m-15",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many pillars of shittim wood were made for the vail?",
+  "choices": [
+   "Four",
+   "Six",
+   "Five",
+   "Two"
+  ],
+  "answer": 0,
+  "explanation": "He made thereunto four pillars of shittim wood.",
+  "ref": "Exodus 36:36"
+ },
+ {
+  "id": "exodus-36-h-01",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits wide was each board?",
+  "choices": [
+   "Two",
+   "One",
+   "One and a half",
+   "Three"
+  ],
+  "answer": 2,
+  "explanation": "The breadth of a board one cubit and a half.",
+  "ref": "Exodus 36:21"
+ },
+ {
+  "id": "exodus-36-h-02",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many tenons did each board have?",
+  "choices": [
+   "Three",
+   "One",
+   "Four",
+   "Two"
+  ],
+  "answer": 3,
+  "explanation": "One board had two tenons, equally distant one from another.",
+  "ref": "Exodus 36:22"
+ },
+ {
+  "id": "exodus-36-h-03",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many silver sockets were under the eight west boards altogether?",
+  "choices": [
+   "Eight",
+   "Twenty",
+   "Twelve",
+   "Sixteen"
+  ],
+  "answer": 3,
+  "explanation": "There were eight boards; and their sockets were sixteen sockets of silver.",
+  "ref": "Exodus 36:30"
+ },
+ {
+  "id": "exodus-36-h-04",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many bars of shittim wood were made for each side?",
+  "choices": [
+   "Ten",
+   "Five",
+   "Three",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "He made bars of shittim wood; five for the boards of the one side.",
+  "ref": "Exodus 36:31"
+ },
+ {
+  "id": "exodus-36-h-05",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the middle bar do?",
+  "choices": [
+   "Seal the door",
+   "Carry the ark",
+   "Shoot through the boards from end to end",
+   "Hold the vail"
+  ],
+  "answer": 2,
+  "explanation": "He made the middle bar to shoot through the boards from the one end to the other.",
+  "ref": "Exodus 36:33"
+ },
+ {
+  "id": "exodus-36-h-06",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the rings of the boards made of?",
+  "choices": [
+   "Silver",
+   "Iron",
+   "Brass",
+   "Gold"
+  ],
+  "answer": 3,
+  "explanation": "He made their rings of gold to be places for the bars.",
+  "ref": "Exodus 36:34"
+ },
+ {
+  "id": "exodus-36-h-07",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many pillars did the door hanging have?",
+  "choices": [
+   "Three",
+   "Four",
+   "Six",
+   "Five"
+  ],
+  "answer": 3,
+  "explanation": "And the five pillars of it with their hooks.",
+  "ref": "Exodus 36:38"
+ },
+ {
+  "id": "exodus-36-h-08",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the five sockets of the door pillars made of?",
+  "choices": [
+   "Wood",
+   "Silver",
+   "Brass",
+   "Gold"
+  ],
+  "answer": 2,
+  "explanation": "But their five sockets were of brass.",
+  "ref": "Exodus 36:38"
+ },
+ {
+  "id": "exodus-36-h-09",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the curtains grouped when coupled?",
+  "choices": [
+   "Four and six",
+   "Three and seven",
+   "Two and eight",
+   "Five and five"
+  ],
+  "answer": 3,
+  "explanation": "He coupled the five curtains one unto another: and the other five curtains one unto another.",
+  "ref": "Exodus 36:10"
+ },
+ {
+  "id": "exodus-36-h-10",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the eleven goats' hair curtains coupled?",
+  "choices": [
+   "Five by themselves and six by themselves",
+   "Four and seven",
+   "All together",
+   "Three and eight"
+  ],
+  "answer": 0,
+  "explanation": "He coupled five curtains by themselves, and six curtains by themselves.",
+  "ref": "Exodus 36:16"
+ },
+ {
+  "id": "exodus-36-h-11",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What color were the loops on the curtain edge?",
+  "choices": [
+   "Purple",
+   "Gold",
+   "Red",
+   "Blue"
+  ],
+  "answer": 3,
+  "explanation": "He made loops of blue on the edge of one curtain.",
+  "ref": "Exodus 36:11"
+ },
+ {
+  "id": "exodus-36-h-12",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many silver sockets were under the twenty north boards?",
+  "choices": [
+   "Eighty",
+   "Sixty",
+   "Twenty",
+   "Forty"
+  ],
+  "answer": 3,
+  "explanation": "And their forty sockets of silver; two sockets under one board.",
+  "ref": "Exodus 36:26"
+ },
+ {
+  "id": "exodus-36-h-13",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What covering lay above the rams' skins?",
+  "choices": [
+   "Goats' hair",
+   "Gold",
+   "Badgers' skins",
+   "Linen"
+  ],
+  "answer": 2,
+  "explanation": "And a covering of badgers' skins above that.",
+  "ref": "Exodus 36:19"
+ },
+ {
+  "id": "exodus-36-h-15",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the hooks of the vail pillars made of?",
+  "choices": [
+   "Gold",
+   "Silver",
+   "Brass",
+   "Wood"
+  ],
+  "answer": 0,
+  "explanation": "Their hooks were of gold; and he cast for them four sockets of silver.",
+  "ref": "Exodus 36:36"
+ },
+ {
+  "id": "exodus-36-h-16",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the door pillars' chapiters and fillets overlaid with?",
+  "choices": [
+   "Gold",
+   "Silver",
+   "Bronze",
+   "Brass"
+  ],
+  "answer": 0,
+  "explanation": "He overlaid their chapiters and their fillets with gold.",
+  "ref": "Exodus 36:38"
+ },
+ {
   "id": "old-exodus-37-1",
   "chapter": 37,
   "level": "beginner",
