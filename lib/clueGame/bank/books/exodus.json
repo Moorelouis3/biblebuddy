@@ -16752,6 +16752,646 @@
   "ref": "Exodus 24:18"
  },
  {
+  "id": "exodus-24-e-01",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who wrote down all the words of the LORD?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Joshua",
+   "Hur"
+  ],
+  "answer": 1,
+  "explanation": "Moses wrote all the words of the LORD.",
+  "ref": "Exodus 24:4"
+ },
+ {
+  "id": "exodus-24-e-02",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses build under the hill?",
+  "choices": [
+   "An altar",
+   "A tower",
+   "A tent",
+   "A wall"
+  ],
+  "answer": 0,
+  "explanation": "Moses builded an altar under the hill.",
+  "ref": "Exodus 24:4"
+ },
+ {
+  "id": "exodus-24-e-03",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who alone was to come near the LORD?",
+  "choices": [
+   "Aaron",
+   "Joshua",
+   "The elders",
+   "Moses"
+  ],
+  "answer": 3,
+  "explanation": "Moses alone shall come near the LORD.",
+  "ref": "Exodus 24:2"
+ },
+ {
+  "id": "exodus-24-e-04",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the glory of the LORD look like to Israel on the mountain top?",
+  "choices": [
+   "A rainbow",
+   "A thick darkness",
+   "Devouring fire",
+   "A pillar of smoke"
+  ],
+  "answer": 2,
+  "explanation": "The sight of the glory of the LORD was like devouring fire on the top of the mount.",
+  "ref": "Exodus 24:17"
+ },
+ {
+  "id": "exodus-24-e-05",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What covered the mount when Moses went up?",
+  "choices": [
+   "Smoke only",
+   "A cloud",
+   "Darkness",
+   "A storm of hail"
+  ],
+  "answer": 1,
+  "explanation": "Moses went up into the mount, and a cloud covered the mount.",
+  "ref": "Exodus 24:15"
+ },
+ {
+  "id": "exodus-24-e-06",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say He would give Moses on the mountain?",
+  "choices": [
+   "Tables of stone",
+   "A golden ark",
+   "A new staff",
+   "A written scroll"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, I will give thee tables of stone, and a law, and commandments.",
+  "ref": "Exodus 24:12"
+ },
+ {
+  "id": "exodus-24-e-07",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which mountain did the glory of the LORD rest upon?",
+  "choices": [
+   "Mount Horeb alone",
+   "Mount Nebo",
+   "Mount Carmel",
+   "Mount Sinai"
+  ],
+  "answer": 3,
+  "explanation": "The glory of the LORD abode upon mount Sinai.",
+  "ref": "Exodus 24:16"
+ },
+ {
+  "id": "exodus-24-e-08",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the nobles of Israel do after they saw God?",
+  "choices": [
+   "Fall asleep",
+   "Offer incense",
+   "Eat and drink",
+   "Sing a song"
+  ],
+  "answer": 2,
+  "explanation": "They saw God, and did eat and drink.",
+  "ref": "Exodus 24:11"
+ },
+ {
+  "id": "exodus-24-e-09",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animals were sacrificed as peace offerings to the LORD?",
+  "choices": [
+   "Lambs",
+   "Oxen",
+   "Doves",
+   "Goats"
+  ],
+  "answer": 1,
+  "explanation": "The young men sacrificed peace offerings of oxen unto the LORD.",
+  "ref": "Exodus 24:5"
+ },
+ {
+  "id": "exodus-24-e-10",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did Moses tell all the words of the LORD?",
+  "choices": [
+   "The people",
+   "Only the elders",
+   "Only Aaron",
+   "Only Joshua"
+  ],
+  "answer": 0,
+  "explanation": "Moses came and told the people all the words of the LORD, and all the judgments.",
+  "ref": "Exodus 24:3"
+ },
+ {
+  "id": "exodus-24-m-01",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many pillars did Moses build with the altar?",
+  "choices": [
+   "Seven",
+   "Ten",
+   "Three",
+   "Twelve"
+  ],
+  "answer": 3,
+  "explanation": "He builded an altar, and twelve pillars, according to the twelve tribes of Israel.",
+  "ref": "Exodus 24:4"
+ },
+ {
+  "id": "exodus-24-m-02",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the twelve pillars stand for?",
+  "choices": [
+   "The twelve elders",
+   "The twelve spies",
+   "The twelve tribes of Israel",
+   "The twelve plagues"
+  ],
+  "answer": 2,
+  "explanation": "The twelve pillars were according to the twelve tribes of Israel.",
+  "ref": "Exodus 24:4"
+ },
+ {
+  "id": "exodus-24-m-03",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Moses sprinkle half of the blood?",
+  "choices": [
+   "On the pillars",
+   "On the altar",
+   "On the book",
+   "On the ground"
+  ],
+  "answer": 1,
+  "explanation": "Half of the blood he sprinkled on the altar.",
+  "ref": "Exodus 24:6"
+ },
+ {
+  "id": "exodus-24-m-04",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses read in the audience of the people?",
+  "choices": [
+   "The book of the covenant",
+   "The Ten Words only",
+   "The law of the priests",
+   "The names of the tribes"
+  ],
+  "answer": 0,
+  "explanation": "He took the book of the covenant, and read in the audience of the people.",
+  "ref": "Exodus 24:7"
+ },
+ {
+  "id": "exodus-24-m-05",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say as he sprinkled the blood on the people?",
+  "choices": [
+   "Behold the Lamb of God",
+   "Behold the blood of Passover",
+   "Behold the blood of cleansing",
+   "Behold the blood of the covenant"
+  ],
+  "answer": 3,
+  "explanation": "Moses said, Behold the blood of the covenant, which the LORD hath made with you.",
+  "ref": "Exodus 24:8"
+ },
+ {
+  "id": "exodus-24-m-06",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Who offered the burnt offerings and peace offerings?",
+  "choices": [
+   "Aaron and his sons",
+   "The seventy elders",
+   "Young men of the children of Israel",
+   "The Levites"
+  ],
+  "answer": 2,
+  "explanation": "Moses sent young men of the children of Israel, which offered burnt offerings.",
+  "ref": "Exodus 24:5"
+ },
+ {
+  "id": "exodus-24-m-07",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides \"we will do,\" what did the people promise to be?",
+  "choices": [
+   "Faithful",
+   "Obedient",
+   "Patient",
+   "Holy"
+  ],
+  "answer": 1,
+  "explanation": "They said, All that the LORD hath said will we do, and be obedient.",
+  "ref": "Exodus 24:7"
+ },
+ {
+  "id": "exodus-24-m-08",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was under the feet of the God of Israel?",
+  "choices": [
+   "A paved work of sapphire stone",
+   "A golden floor",
+   "A sea of glass",
+   "A bed of fire"
+  ],
+  "answer": 0,
+  "explanation": "There was under his feet as it were a paved work of a sapphire stone.",
+  "ref": "Exodus 24:10"
+ },
+ {
+  "id": "exodus-24-m-09",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say Moses was to do with the law and commandments He wrote?",
+  "choices": [
+   "Hide them",
+   "Read them once",
+   "Carry them to Egypt",
+   "Teach them"
+  ],
+  "answer": 3,
+  "explanation": "I will give thee tables of stone, and a law, and commandments which I have written; that thou mayest teach them.",
+  "ref": "Exodus 24:12"
+ },
+ {
+  "id": "exodus-24-m-10",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD not do to the nobles of Israel?",
+  "choices": [
+   "Show Himself to them",
+   "Let them eat",
+   "Lay His hand on them",
+   "Let them worship"
+  ],
+  "answer": 2,
+  "explanation": "Upon the nobles of the children of Israel he laid not his hand.",
+  "ref": "Exodus 24:11"
+ },
+ {
+  "id": "exodus-24-m-11",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the elders told to do while Moses went up?",
+  "choices": [
+   "Return to their tents",
+   "Tarry until Moses and Joshua came again",
+   "Build another altar",
+   "Follow Moses up"
+  ],
+  "answer": 1,
+  "explanation": "Moses said to the elders, Tarry ye here for us, until we come again unto you.",
+  "ref": "Exodus 24:14"
+ },
+ {
+  "id": "exodus-24-m-12",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who were not to go up with Moses?",
+  "choices": [
+   "The people",
+   "The elders",
+   "Joshua",
+   "Aaron"
+  ],
+  "answer": 0,
+  "explanation": "Moses alone shall come near the LORD: neither shall the people go up with him.",
+  "ref": "Exodus 24:2"
+ },
+ {
+  "id": "exodus-24-m-13",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into what did Moses put half of the blood?",
+  "choices": [
+   "Jars",
+   "Skins",
+   "Cups of gold",
+   "Basons"
+  ],
+  "answer": 3,
+  "explanation": "Moses took half of the blood, and put it in basons.",
+  "ref": "Exodus 24:6"
+ },
+ {
+  "id": "exodus-24-m-14",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "What is Joshua called when he rose up with Moses?",
+  "choices": [
+   "His scribe",
+   "His brother",
+   "His minister",
+   "His servant boy"
+  ],
+  "answer": 2,
+  "explanation": "Moses rose up, and his minister Joshua.",
+  "ref": "Exodus 24:13"
+ },
+ {
+  "id": "exodus-24-m-15",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Moses rise to build the altar?",
+  "choices": [
+   "At midnight",
+   "Early in the morning",
+   "At evening",
+   "At noon"
+  ],
+  "answer": 1,
+  "explanation": "Moses wrote all the words, and rose up early in the morning, and builded an altar.",
+  "ref": "Exodus 24:4"
+ },
+ {
+  "id": "exodus-24-h-01",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many days did the cloud cover Mount Sinai before the LORD called Moses?",
+  "choices": [
+   "Six days",
+   "Three days",
+   "Seven days",
+   "Forty days"
+  ],
+  "answer": 0,
+  "explanation": "The cloud covered it six days: and the seventh day he called unto Moses.",
+  "ref": "Exodus 24:16"
+ },
+ {
+  "id": "exodus-24-h-02",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the paved work under God's feet like in its clearness?",
+  "choices": [
+   "Fire",
+   "Crystal water",
+   "Fine gold",
+   "The body of heaven"
+  ],
+  "answer": 3,
+  "explanation": "It was as it were the body of heaven in his clearness.",
+  "ref": "Exodus 24:10"
+ },
+ {
+  "id": "exodus-24-h-03",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was left with the elders to handle any matters while Moses was gone?",
+  "choices": [
+   "Nadab and Abihu",
+   "Joshua and Caleb",
+   "Aaron and Hur",
+   "Eleazar and Ithamar"
+  ],
+  "answer": 2,
+  "explanation": "Moses said, Behold, Aaron and Hur are with you: if any man have any matters to do, let him come unto them.",
+  "ref": "Exodus 24:14"
+ },
+ {
+  "id": "exodus-24-h-04",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two kinds of offerings did the young men give?",
+  "choices": [
+   "Sin and trespass offerings",
+   "Burnt offerings and peace offerings",
+   "Meat and drink offerings",
+   "Wave and heave offerings"
+  ],
+  "answer": 1,
+  "explanation": "The young men offered burnt offerings, and sacrificed peace offerings of oxen unto the LORD.",
+  "ref": "Exodus 24:5"
+ },
+ {
+  "id": "exodus-24-h-05",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were Aaron, Nadab, Abihu and the elders told to worship?",
+  "choices": [
+   "Afar off",
+   "With their faces to the ground",
+   "At the altar",
+   "In silence"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Come up unto the LORD... and worship ye afar off.",
+  "ref": "Exodus 24:1"
+ },
+ {
+  "id": "exodus-24-h-06",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the LORD call to Moses from on the seventh day?",
+  "choices": [
+   "From the burning bush",
+   "From the altar",
+   "From the top of the mountain",
+   "Out of the midst of the cloud"
+  ],
+  "answer": 3,
+  "explanation": "The seventh day he called unto Moses out of the midst of the cloud.",
+  "ref": "Exodus 24:16"
+ },
+ {
+  "id": "exodus-24-h-07",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did all the people answer when Moses told them the words of the LORD?",
+  "choices": [
+   "With silence",
+   "With weeping",
+   "With one voice",
+   "With a shout of praise"
+  ],
+  "answer": 2,
+  "explanation": "All the people answered with one voice, and said, All the words which the LORD hath said will we do.",
+  "ref": "Exodus 24:3"
+ },
+ {
+  "id": "exodus-24-h-08",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to do once he came up into the mount?",
+  "choices": [
+   "Fast seven days",
+   "Be there",
+   "Build a tent",
+   "Wait for Aaron"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said, Come up to me into the mount, and be there.",
+  "ref": "Exodus 24:12"
+ },
+ {
+  "id": "exodus-24-h-09",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did Moses read the book of the covenant aloud?",
+  "choices": [
+   "The people of Israel",
+   "The seventy elders only",
+   "Aaron and his sons",
+   "The young men only"
+  ],
+  "answer": 0,
+  "explanation": "He read in the audience of the people.",
+  "ref": "Exodus 24:7"
+ },
+ {
+  "id": "exodus-24-h-10",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses do once he had written all the words of the LORD?",
+  "choices": [
+   "Went up the mountain",
+   "Read them to Joshua",
+   "Offered a lamb",
+   "Rose early and built an altar"
+  ],
+  "answer": 3,
+  "explanation": "Moses wrote all the words of the LORD, and rose up early in the morning, and builded an altar.",
+  "ref": "Exodus 24:4"
+ },
+ {
+  "id": "exodus-24-h-11",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He had written on the stone tables?",
+  "choices": [
+   "The names of the tribes",
+   "The words of the covenant book",
+   "A law and commandments",
+   "Moses' name"
+  ],
+  "answer": 2,
+  "explanation": "I will give thee tables of stone, and a law, and commandments which I have written.",
+  "ref": "Exodus 24:12"
+ },
+ {
+  "id": "exodus-24-h-12",
+  "chapter": 24,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Moses go as he went up with his minister Joshua?",
+  "choices": [
+   "Into Egypt",
+   "Into the mount of God",
+   "Into the tabernacle",
+   "Into the valley"
+  ],
+  "answer": 1,
+  "explanation": "Moses rose up, and his minister Joshua: and Moses went up into the mount of God.",
+  "ref": "Exodus 24:13"
+ },
+ {
+  "id": "exodus-24-h-13",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of the elders of Israel went up with Moses, Aaron, Nadab and Abihu?",
+  "choices": [
+   "Seventy",
+   "Twelve",
+   "Forty",
+   "Seventy-two"
+  ],
+  "answer": 0,
+  "explanation": "Then went up Moses, and Aaron, Nadab, and Abihu, and seventy of the elders of Israel.",
+  "ref": "Exodus 24:9"
+ },
+ {
+  "id": "exodus-24-h-14",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is named as going up with Moses besides Aaron, Nadab and the seventy elders?",
+  "choices": [
+   "Hur",
+   "Eleazar",
+   "Joshua",
+   "Abihu"
+  ],
+  "answer": 3,
+  "explanation": "Then went up Moses, and Aaron, Nadab, and Abihu, and seventy of the elders of Israel.",
+  "ref": "Exodus 24:9"
+ },
+ {
+  "id": "exodus-24-h-15",
+  "chapter": 24,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Moses go when he went up into the mount?",
+  "choices": [
+   "Into a cave",
+   "Into the tabernacle",
+   "Into the midst of the cloud",
+   "Into a valley"
+  ],
+  "answer": 2,
+  "explanation": "Moses went into the midst of the cloud, and gat him up into the mount.",
+  "ref": "Exodus 24:18"
+ },
+ {
   "id": "old-exodus-25-1",
   "chapter": 25,
   "level": "beginner",
