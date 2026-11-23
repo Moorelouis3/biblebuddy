@@ -6336,38 +6336,6 @@
   "ref": "Genesis 19:5"
  },
  {
-  "id": "old-genesis-19-3",
-  "chapter": 19,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What happened to Lot's wife as they fled?",
-  "choices": [
-   "She became blind",
-   "She ran back to the city",
-   "She disappeared in the storm",
-   "She became a pillar of salt"
-  ],
-  "answer": 3,
-  "explanation": "Lot's wife looked back and became a pillar of salt.",
-  "ref": "Genesis 19:26"
- },
- {
-  "id": "old-genesis-19-4",
-  "chapter": 19,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What destroyed Sodom and Gomorrah?",
-  "choices": [
-   "Brimstone and fire from the Lord",
-   "A flood",
-   "An earthquake",
-   "A foreign army"
-  ],
-  "answer": 0,
-  "explanation": "The Lord rained brimstone and fire on Sodom and Gomorrah.",
-  "ref": "Genesis 19:24"
- },
- {
   "id": "old-genesis-19-5",
   "chapter": 19,
   "level": "beginner",
@@ -6382,6 +6350,326 @@
   "answer": 1,
   "explanation": "Lot was delivered when God overthrew the cities of the plain.",
   "ref": "Genesis 19:29"
+ },
+ {
+  "id": "genesis-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose house did the two angels enter in Sodom?",
+  "choices": [
+   "Abraham's",
+   "Lot's",
+   "Zoar's",
+   "A judge's"
+  ],
+  "answer": 1,
+  "explanation": "The angels turned in unto Lot and entered into his house.",
+  "ref": "Genesis 19:3"
+ },
+ {
+  "id": "genesis-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did God send out of the overthrow of the cities of the plain?",
+  "choices": [
+   "Lot",
+   "Isaac",
+   "Ishmael",
+   "Abimelech"
+  ],
+  "answer": 0,
+  "explanation": "God remembered Abraham, and sent Lot out of the midst of the overthrow.",
+  "ref": "Genesis 19:29"
+ },
+ {
+  "id": "genesis-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "person",
+  "question": "What did Lot offer to bring out to the men of Sodom instead of his guests?",
+  "choices": [
+   "His servants",
+   "His sons-in-law",
+   "His cattle",
+   "His two daughters"
+  ],
+  "answer": 3,
+  "explanation": "Lot said, I have two daughters which have not known man; let me bring them out unto you.",
+  "ref": "Genesis 19:8"
+ },
+ {
+  "id": "genesis-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Lot say the men of Sodom must do nothing to, since they had come under the shadow of his roof?",
+  "choices": [
+   "His servants",
+   "His herds",
+   "The two men",
+   "His house"
+  ],
+  "answer": 2,
+  "explanation": "Only unto these men do nothing; for therefore came they under the shadow of my roof.",
+  "ref": "Genesis 19:8"
+ },
+ {
+  "id": "genesis-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Lot ask not to flee to the mountain?",
+  "choices": [
+   "Some evil would take him",
+   "It was too far for his wife",
+   "Abraham lived there",
+   "It had no water"
+  ],
+  "answer": 0,
+  "explanation": "Lot said, I cannot escape to the mountain, lest some evil take me, and I die.",
+  "ref": "Genesis 19:19"
+ },
+ {
+  "id": "genesis-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men of Sodom say Lot had come to Sodom to do?",
+  "choices": [
+   "Sojourn",
+   "Rule",
+   "Trade",
+   "Teach"
+  ],
+  "answer": 0,
+  "explanation": "They said, This one fellow came in to sojourn, and he will needs be a judge.",
+  "ref": "Genesis 19:9"
+ },
+ {
+  "id": "genesis-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Who pulled Lot into the house and shut the door?",
+  "choices": [
+   "His wife",
+   "His sons-in-law",
+   "His servants",
+   "The two men (angels)"
+  ],
+  "answer": 3,
+  "explanation": "The men put forth their hand, and pulled Lot into the house to them, and shut to the door.",
+  "ref": "Genesis 19:10"
+ },
+ {
+  "id": "genesis-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which people at the door did the angels strike with blindness?",
+  "choices": [
+   "Only the old men",
+   "Only the young men",
+   "Both small and great",
+   "Only the leaders"
+  ],
+  "answer": 2,
+  "explanation": "They smote the men that were at the door with blindness, both small and great.",
+  "ref": "Genesis 19:11"
+ },
+ {
+  "id": "genesis-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Who did the angels ask Lot to bring out of the city besides his daughters?",
+  "choices": [
+   "His brothers",
+   "His sons-in-law",
+   "His servants",
+   "Abraham"
+  ],
+  "answer": 1,
+  "explanation": "The men said, Hast thou here any besides? son in law, and thy sons, and thy daughters.",
+  "ref": "Genesis 19:12"
+ },
+ {
+  "id": "genesis-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the angels say had waxed great before the face of the LORD?",
+  "choices": [
+   "The cry of Sodom",
+   "The pride of Lot",
+   "The wealth of the plain",
+   "The wind"
+  ],
+  "answer": 0,
+  "explanation": "The cry of them is waxen great before the face of the LORD; and the LORD hath sent us to destroy it.",
+  "ref": "Genesis 19:13"
+ },
+ {
+  "id": "genesis-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Lot seem to his sons-in-law when he warned them?",
+  "choices": [
+   "As one that wept",
+   "As one that was drunk",
+   "As one that was mad",
+   "As one that mocked"
+  ],
+  "answer": 3,
+  "explanation": "He seemed as one that mocked unto his sons in law.",
+  "ref": "Genesis 19:14"
+ },
+ {
+  "id": "genesis-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the men lay hold of the hands of Lot and his family?",
+  "choices": [
+   "Lot asked to be led",
+   "They were blind",
+   "The LORD was merciful to him",
+   "Lot's wife was afraid"
+  ],
+  "answer": 2,
+  "explanation": "The men laid hold upon his hand; the LORD being merciful unto him.",
+  "ref": "Genesis 19:16"
+ },
+ {
+  "id": "genesis-19-h-08",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many daughters of Lot went out with him from the city?",
+  "choices": [
+   "Three",
+   "Two",
+   "One",
+   "Four"
+  ],
+  "answer": 1,
+  "explanation": "The men laid hold upon the hand of his wife, and upon the hand of his two daughters.",
+  "ref": "Genesis 19:16"
+ },
+ {
+  "id": "genesis-19-h-09",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD promise Lot about the little city?",
+  "choices": [
+   "Not to overthrow it",
+   "To fill it with grain",
+   "To make it a fortress",
+   "To leave it empty"
+  ],
+  "answer": 0,
+  "explanation": "I have accepted thee concerning this thing also, that I will not overthrow this city.",
+  "ref": "Genesis 19:21"
+ },
+ {
+  "id": "genesis-19-h-10",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Who said he could not do any thing until Lot came to Zoar?",
+  "choices": [
+   "The angel who spoke with Lot",
+   "Abraham",
+   "Lot's wife",
+   "The king of Sodom"
+  ],
+  "answer": 0,
+  "explanation": "Haste thee, escape thither; for I cannot do any thing till thou be come thither.",
+  "ref": "Genesis 19:22"
+ },
+ {
+  "id": "genesis-19-h-11",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "The sun was risen upon the earth when Lot entered which place?",
+  "choices": [
+   "Sodom",
+   "Gomorrah",
+   "Zoar",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "The sun was risen upon the earth when Lot entered into Zoar.",
+  "ref": "Genesis 19:23"
+ },
+ {
+  "id": "genesis-19-h-12",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where did Lot's wife look back before she became a pillar of salt?",
+  "choices": [
+   "From behind him",
+   "From the gate of Sodom",
+   "From the door of the house",
+   "From Zoar"
+  ],
+  "answer": 0,
+  "explanation": "His wife looked back from behind him, and she became a pillar of salt.",
+  "ref": "Genesis 19:26"
+ },
+ {
+  "id": "genesis-19-h-13",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "What did the firstborn daughter name her son?",
+  "choices": [
+   "Moab",
+   "Ammon",
+   "Benammi",
+   "Zoar"
+  ],
+  "answer": 0,
+  "explanation": "The firstborn bare a son, and called his name Moab: the same is the father of the Moabites unto this day.",
+  "ref": "Genesis 19:37"
+ },
+ {
+  "id": "genesis-19-h-14",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "What did the younger daughter name her son?",
+  "choices": [
+   "Moab",
+   "Ammon",
+   "Lot",
+   "Benammi"
+  ],
+  "answer": 3,
+  "explanation": "The younger bare a son, and called his name Benammi: the father of the children of Ammon unto this day.",
+  "ref": "Genesis 19:38"
+ },
+ {
+  "id": "genesis-19-h-15",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Abraham go early in the morning after the cities fell?",
+  "choices": [
+   "Down to Sodom",
+   "To Zoar",
+   "To the place where he stood before the LORD",
+   "To Gerar"
+  ],
+  "answer": 2,
+  "explanation": "Abraham gat up early in the morning to the place where he stood before the LORD.",
+  "ref": "Genesis 19:27"
  },
  {
   "id": "old-genesis-20-2",
