@@ -80,6 +80,646 @@
   "ref": "Exodus 1:22"
  },
  {
+  "id": "exodus-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who arose over Egypt who knew not Joseph?",
+  "choices": [
+   "Joseph’s son",
+   "A new king",
+   "The priests",
+   "Potiphar"
+  ],
+  "answer": 1,
+  "explanation": "Now there arose up a new king over Egypt, which knew not Joseph.",
+  "ref": "Exodus 1:8"
+ },
+ {
+  "id": "exodus-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "What happened to Joseph, his brethren and all that generation?",
+  "choices": [
+   "They died",
+   "They left Egypt",
+   "They were made slaves",
+   "They became kings"
+  ],
+  "answer": 0,
+  "explanation": "And Joseph died, and all his brethren, and all that generation.",
+  "ref": "Exodus 1:6"
+ },
+ {
+  "id": "exodus-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many souls came out of the loins of Jacob?",
+  "choices": [
+   "Twelve",
+   "Forty",
+   "One hundred",
+   "Seventy"
+  ],
+  "answer": 3,
+  "explanation": "All the souls that came out of the loins of Jacob were seventy souls: for Joseph was in Egypt already.",
+  "ref": "Exodus 1:5"
+ },
+ {
+  "id": "exodus-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who did the Egyptians set over Israel to afflict them?",
+  "choices": [
+   "Priests",
+   "Soldiers",
+   "Taskmasters",
+   "Judges"
+  ],
+  "answer": 2,
+  "explanation": "They did set over them taskmasters to afflict them with their burdens.",
+  "ref": "Exodus 1:11"
+ },
+ {
+  "id": "exodus-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Hebrew midwives do with the men children?",
+  "choices": [
+   "Hid them in Goshen",
+   "Saved them alive",
+   "Sent them to Pharaoh",
+   "Named them"
+  ],
+  "answer": 1,
+  "explanation": "The midwives feared God, and did not as the king of Egypt commanded them, but saved the men children alive.",
+  "ref": "Exodus 1:17"
+ },
+ {
+  "id": "exodus-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king say should happen to a Hebrew daughter?",
+  "choices": [
+   "She should live",
+   "She should serve Pharaoh",
+   "She should be sold",
+   "She should go to Canaan"
+  ],
+  "answer": 0,
+  "explanation": "If it be a son, then ye shall kill him: but if it be a daughter, then she shall live.",
+  "ref": "Exodus 1:16"
+ },
+ {
+  "id": "exodus-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did God treat the midwives?",
+  "choices": [
+   "He punished them",
+   "He sent them away",
+   "He ignored them",
+   "He dealt well with them"
+  ],
+  "answer": 3,
+  "explanation": "Therefore God dealt well with the midwives.",
+  "ref": "Exodus 1:20"
+ },
+ {
+  "id": "exodus-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Egyptians make the Israelites work in?",
+  "choices": [
+   "Gold and silver",
+   "Wood and iron",
+   "Morter and brick",
+   "Wool and flax"
+  ],
+  "answer": 2,
+  "explanation": "They made their lives bitter with hard bondage, in morter, and in brick.",
+  "ref": "Exodus 1:14"
+ },
+ {
+  "id": "exodus-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the king call for to ask why the boys were alive?",
+  "choices": [
+   "Joseph’s sons",
+   "The midwives",
+   "The taskmasters",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "And the king of Egypt called for the midwives, and said unto them, Why have ye done this thing?",
+  "ref": "Exodus 1:18"
+ },
+ {
+  "id": "exodus-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the number of Israelites after Joseph died?",
+  "choices": [
+   "They multiplied",
+   "They shrank",
+   "They left Egypt",
+   "They stayed the same"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel were fruitful, and increased abundantly, and multiplied, and waxed exceeding mighty.",
+  "ref": "Exodus 1:7"
+ },
+ {
+  "id": "exodus-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Which two treasure cities did Israel build for Pharaoh?",
+  "choices": [
+   "Goshen and On",
+   "Zoan and Memphis",
+   "Babel and Nineveh",
+   "Pithom and Raamses"
+  ],
+  "answer": 3,
+  "explanation": "They built for Pharaoh treasure cities, Pithom and Raamses.",
+  "ref": "Exodus 1:11"
+ },
+ {
+  "id": "exodus-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Pharaoh feared that in a war Israel would do what?",
+  "choices": [
+   "Hide in Goshen",
+   "Ask for a king",
+   "Join his enemies",
+   "Refuse to pay tribute"
+  ],
+  "answer": 2,
+  "explanation": "Lest… when there falleth out any war, they join also unto our enemies, and fight against us.",
+  "ref": "Exodus 1:10"
+ },
+ {
+  "id": "exodus-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the new king say about Israel compared to the Egyptians?",
+  "choices": [
+   "They were poorer",
+   "They were more and mightier",
+   "They were fewer",
+   "They were wiser"
+  ],
+  "answer": 1,
+  "explanation": "Behold, the people of the children of Israel are more and mightier than we.",
+  "ref": "Exodus 1:9"
+ },
+ {
+  "id": "exodus-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did the Egyptians make Israel serve?",
+  "choices": [
+   "Rigour",
+   "Joy",
+   "Wages",
+   "Mercy"
+  ],
+  "answer": 0,
+  "explanation": "The Egyptians made the children of Israel to serve with rigour.",
+  "ref": "Exodus 1:13"
+ },
+ {
+  "id": "exodus-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the midwives say about the Hebrew women?",
+  "choices": [
+   "They were weak",
+   "They were hidden",
+   "They were afraid",
+   "They were lively"
+  ],
+  "answer": 3,
+  "explanation": "The Hebrew women are not as the Egyptian women; for they are lively.",
+  "ref": "Exodus 1:19"
+ },
+ {
+  "id": "exodus-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh command the midwives to do to a son?",
+  "choices": [
+   "Send him to the palace",
+   "Train him as a soldier",
+   "Kill him",
+   "Name him Egyptian"
+  ],
+  "answer": 2,
+  "explanation": "If it be a son, then ye shall kill him.",
+  "ref": "Exodus 1:16"
+ },
+ {
+  "id": "exodus-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the Egyptians make Israel’s lives?",
+  "choices": [
+   "Short",
+   "Bitter",
+   "Easy",
+   "Rich"
+  ],
+  "answer": 1,
+  "explanation": "They made their lives bitter with hard bondage.",
+  "ref": "Exodus 1:14"
+ },
+ {
+  "id": "exodus-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which son of Jacob is named first in the list?",
+  "choices": [
+   "Reuben",
+   "Judah",
+   "Levi",
+   "Benjamin"
+  ],
+  "answer": 0,
+  "explanation": "Now these are the names of the children of Israel… Reuben, Simeon, Levi, and Judah.",
+  "ref": "Exodus 1:1–2"
+ },
+ {
+  "id": "exodus-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is Joseph not in the list of names?",
+  "choices": [
+   "He had died",
+   "He refused to come",
+   "He was a king",
+   "He was in Egypt already"
+  ],
+  "answer": 3,
+  "explanation": "All the souls… were seventy souls: for Joseph was in Egypt already.",
+  "ref": "Exodus 1:5"
+ },
+ {
+  "id": "exodus-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Pharaoh say they should deal with Israel?",
+  "choices": [
+   "Gently",
+   "Quickly",
+   "Wisely",
+   "Openly"
+  ],
+  "answer": 2,
+  "explanation": "Come on, let us deal wisely with them.",
+  "ref": "Exodus 1:10"
+ },
+ {
+  "id": "exodus-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Pharaoh charge to cast every son into the river?",
+  "choices": [
+   "The midwives",
+   "All his people",
+   "His soldiers",
+   "The taskmasters"
+  ],
+  "answer": 1,
+  "explanation": "Pharaoh charged all his people, saying, Every son that is born ye shall cast into the river.",
+  "ref": "Exodus 1:22"
+ },
+ {
+  "id": "exodus-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Because the midwives feared God, what did He make them?",
+  "choices": [
+   "Houses",
+   "Princes",
+   "Priests",
+   "Wells"
+  ],
+  "answer": 0,
+  "explanation": "Because the midwives feared God… he made them houses.",
+  "ref": "Exodus 1:21"
+ },
+ {
+  "id": "exodus-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The more the Egyptians afflicted Israel, the more they did what?",
+  "choices": [
+   "Left Egypt",
+   "Prayed",
+   "Rebelled",
+   "Multiplied and grew"
+  ],
+  "answer": 3,
+  "explanation": "But the more they afflicted them, the more they multiplied and grew.",
+  "ref": "Exodus 1:12"
+ },
+ {
+  "id": "exodus-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who spoke to the Hebrew midwives?",
+  "choices": [
+   "Joseph",
+   "The taskmasters",
+   "The king of Egypt",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "And the king of Egypt spake to the Hebrew midwives.",
+  "ref": "Exodus 1:15"
+ },
+ {
+  "id": "exodus-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The Egyptians were grieved because of whom?",
+  "choices": [
+   "The midwives",
+   "The children of Israel",
+   "Their own king",
+   "The Canaanites"
+  ],
+  "answer": 1,
+  "explanation": "And they were grieved because of the children of Israel.",
+  "ref": "Exodus 1:12"
+ },
+ {
+  "id": "exodus-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son of Jacob is named right after Zebulun?",
+  "choices": [
+   "Benjamin",
+   "Dan",
+   "Gad",
+   "Joseph"
+  ],
+  "answer": 0,
+  "explanation": "Issachar, Zebulun, and Benjamin.",
+  "ref": "Exodus 1:3"
+ },
+ {
+  "id": "exodus-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son of Jacob is named last in the list?",
+  "choices": [
+   "Gad",
+   "Dan",
+   "Naphtali",
+   "Asher"
+  ],
+  "answer": 3,
+  "explanation": "Dan, and Naphtali, Gad, and Asher.",
+  "ref": "Exodus 1:4"
+ },
+ {
+  "id": "exodus-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son of Jacob is named right after Dan?",
+  "choices": [
+   "Gad",
+   "Asher",
+   "Naphtali",
+   "Issachar"
+  ],
+  "answer": 2,
+  "explanation": "Dan, and Naphtali, Gad, and Asher.",
+  "ref": "Exodus 1:4"
+ },
+ {
+  "id": "exodus-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son of Jacob is named right after Levi?",
+  "choices": [
+   "Issachar",
+   "Judah",
+   "Reuben",
+   "Dan"
+  ],
+  "answer": 1,
+  "explanation": "Reuben, Simeon, Levi, and Judah.",
+  "ref": "Exodus 1:2"
+ },
+ {
+  "id": "exodus-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the taskmasters afflict Israel with?",
+  "choices": [
+   "Their burdens",
+   "Whips of iron",
+   "Hunger",
+   "Taxes of silver"
+  ],
+  "answer": 0,
+  "explanation": "They did set over them taskmasters to afflict them with their burdens.",
+  "ref": "Exodus 1:11"
+ },
+ {
+  "id": "exodus-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides morter and brick, where did Israel serve with rigour?",
+  "choices": [
+   "On the river",
+   "In the palace",
+   "At the temple",
+   "In the field"
+  ],
+  "answer": 3,
+  "explanation": "In morter, and in brick, and in all manner of service in the field.",
+  "ref": "Exodus 1:14"
+ },
+ {
+  "id": "exodus-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The midwives said the Hebrew women were delivered before what?",
+  "choices": [
+   "The sun rose",
+   "The king knew",
+   "The midwives came in",
+   "The river flooded"
+  ],
+  "answer": 2,
+  "explanation": "They are lively, and are delivered ere the midwives come in unto them.",
+  "ref": "Exodus 1:19"
+ },
+ {
+  "id": "exodus-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The midwives said the Hebrew women were not as which women?",
+  "choices": [
+   "Canaanite women",
+   "Egyptian women",
+   "Hittite women",
+   "Midianite women"
+  ],
+  "answer": 1,
+  "explanation": "Because the Hebrew women are not as the Egyptian women.",
+  "ref": "Exodus 1:19"
+ },
+ {
+  "id": "exodus-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king ask the midwives?",
+  "choices": [
+   "Why they had saved the men children",
+   "Where the boys were hidden",
+   "Who had sent them",
+   "How many were born"
+  ],
+  "answer": 0,
+  "explanation": "Why have ye done this thing, and have saved the men children alive?",
+  "ref": "Exodus 1:18"
+ },
+ {
+  "id": "exodus-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh say the midwives would see the women upon?",
+  "choices": [
+   "Beds",
+   "Mats",
+   "Carts",
+   "Stools"
+  ],
+  "answer": 3,
+  "explanation": "When ye do the office of a midwife… and see them upon the stools.",
+  "ref": "Exodus 1:16"
+ },
+ {
+  "id": "exodus-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the land become as Israel multiplied?",
+  "choices": [
+   "Barren",
+   "Rich in corn",
+   "Filled with them",
+   "Divided"
+  ],
+  "answer": 2,
+  "explanation": "The land was filled with them.",
+  "ref": "Exodus 1:7"
+ },
+ {
+  "id": "exodus-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Each man came into Egypt with his household, along with whom?",
+  "choices": [
+   "Joseph",
+   "Jacob",
+   "Pharaoh",
+   "Judah"
+  ],
+  "answer": 1,
+  "explanation": "Every man and his household came with Jacob.",
+  "ref": "Exodus 1:1"
+ },
+ {
+  "id": "exodus-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which Hebrew midwife is named first?",
+  "choices": [
+   "Shiphrah",
+   "Puah",
+   "Miriam",
+   "Jochebed"
+  ],
+  "answer": 0,
+  "explanation": "The name of the one was Shiphrah, and the name of the other Puah.",
+  "ref": "Exodus 1:15"
+ },
+ {
+  "id": "exodus-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "What was the name of the second Hebrew midwife?",
+  "choices": [
+   "Shiphrah",
+   "Deborah",
+   "Zipporah",
+   "Puah"
+  ],
+  "answer": 3,
+  "explanation": "The name of the one was Shiphrah, and the name of the other Puah.",
+  "ref": "Exodus 1:15"
+ },
+ {
+  "id": "exodus-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Pharaoh feared Israel might fight against Egypt and do what else?",
+  "choices": [
+   "Take Pharaoh’s throne",
+   "Burn the treasure cities",
+   "Get up out of the land",
+   "Stop the river"
+  ],
+  "answer": 2,
+  "explanation": "They join also unto our enemies, and fight against us, and so get them up out of the land.",
+  "ref": "Exodus 1:10"
+ },
+ {
   "id": "old-exodus-2-1",
   "chapter": 2,
   "level": "beginner",
