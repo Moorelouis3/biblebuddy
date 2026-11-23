@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-22-explained",
+    title: "1 Samuel 22 Explained: The Cave of Adullam and the Massacre at Nob",
+    description:
+      "1 Samuel 22 explained verse by verse: the cave of Adullam, David's parents in Moab, the prophet Gad, Doeg's report, and the massacre of the priests of Nob.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-22-explained",
+    publishedAt: "2026-11-23",
+    readTime: "16 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 22 Explained 📖",
+      content:
+        "A cave full of broken men. A king who finally says the quiet part out loud.\n\n📌 Saul finds someone willing to do what his own soldiers would not.\n\n📖 David's ragtag army starts in a cave.\n📖 His parents hide in Moab.\n📖 Eighty five priests die for helping him.\n\nNew article on:\n🟢 the men who gathered at **Adullam**\n🟢 why Saul's own soldiers **refused** his order\n🟢 what David admits he **saw coming**\n\nHave you ever watched one person's panic set off consequences nobody saw coming? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-21-explained",
     title: "1 Samuel 21 Explained: David's Bread, Sword, and Flight to Gath",
     description:
