@@ -7,6 +7,8 @@
  * entry in lib/clueGame/decks/, never a change to the game.
  */
 
+import { TRIVIA_PROGRESS } from "./progress";
+
 /** Player-facing: Person, Place, Keyword ("Things" was renamed 2026-11-22). */
 export type ClueCategory = "person" | "place" | "keyword";
 
@@ -121,12 +123,13 @@ export type ClueLevel = "beginner" | "medium" | "hard";
 export const LEVEL_LABEL: Record<ClueLevel, string> = { beginner: "Easy", medium: "Medium", hard: "Hard" };
 export const CLUE_LEVELS: ClueLevel[] = ["beginner", "medium", "hard"];
 /**
- * false = no Easy/Medium/Hard choice: every game draws from all levels mixed
- * (Louis, 2026-11-23: "remove the easy hard medium option for now until they
- * are all done"). Turn it back on once the Question Writer has filled every
- * chapter with 15/15/15 (scripts/trivia-writer.ts).
+ * The Easy/Medium/Hard choice. Off (every game mixes all levels) until the
+ * Question Writer has filled every chapter with 15/15/15, then it comes back
+ * by itself with the build that carries the last chapter (Louis, 2026-11-23:
+ * "remove the easy hard medium option for now until they are all done" and
+ * "can u automatically add back the difficulty option when its done").
  */
-export const LEVEL_PICKER = false;
+export const LEVEL_PICKER = TRIVIA_PROGRESS.complete;
 export type ClueQuestion = {
   /** Stable id, e.g. "gen29-m-03". Never reuse one for a different question. */
   id: string;

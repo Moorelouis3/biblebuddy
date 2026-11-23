@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { TRIVIA_PROGRESS } from "@/lib/clueGame/progress";
 import { useEffect, useState, type ReactNode, Fragment } from "react";
 import type { DashboardData, DashboardWindow } from "@/lib/adminDashboard";
 import AndroidBetaTracker from "./AndroidBetaTracker";
@@ -2427,6 +2428,25 @@ export default function AnalyticsDashboardView({
               )
             ) : null}
 
+            {/* The Question Writer's progress (Louis, 2026-11-23: "how can i track this"). */}
+            {tab === "clue" ? (
+              <div className="rounded-2xl border border-[#e2e8f0] bg-white p-4">
+                <p className="text-sm font-black text-[#0f172a]">Question Writer: 15 Easy / 15 Medium / 15 Hard per chapter</p>
+                <p className="mt-1 text-2xl font-black text-[#0f172a]">
+                  {TRIVIA_PROGRESS.done.toLocaleString()} of {TRIVIA_PROGRESS.total.toLocaleString()} chapters done
+                  <span className="ml-2 text-base text-[#64748b]">({Math.floor((TRIVIA_PROGRESS.done / TRIVIA_PROGRESS.total) * 100)}%)</span>
+                </p>
+                <div className="mt-2 h-3 overflow-hidden rounded-full bg-[#e2e8f0]">
+                  <div className="h-full rounded-full bg-[#0056FD]" style={{ width: `${(TRIVIA_PROGRESS.done / TRIVIA_PROGRESS.total) * 100}%` }} />
+                </div>
+                <p className="mt-2 text-sm font-semibold text-[#64748b]">
+                  {TRIVIA_PROGRESS.complete
+                    ? "Every chapter is done. The Easy / Medium / Hard choice is back on in the game."
+                    : `Next: ${TRIVIA_PROGRESS.next}. Runs every hour, 7 chapters a run. Until every chapter is done, games mix all levels; the Easy / Medium / Hard choice comes back by itself after the last one.`}
+                </p>
+                <p className="mt-1 text-xs font-semibold text-[#94a3b8]">As of the last build. Books finished: {TRIVIA_PROGRESS.booksDone.length ? TRIVIA_PROGRESS.booksDone.join(", ") : "none yet"}.</p>
+              </div>
+            ) : null}
             {tab === "clue" ? (
               d.clueGame ? (
                 <>
