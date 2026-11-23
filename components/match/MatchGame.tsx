@@ -22,7 +22,8 @@ import { MATCH_LEVELS, type MatchLevel } from "@/lib/match/engine";
 import { supabase } from "@/lib/supabaseClient";
 import MatchBoard, { readSavedBoard } from "./MatchBoard";
 import { trackMatch } from "@/lib/match/track";
-import { matchMusicOn, playMatchMusic, setMatchMusicOn, stopMatchMusic } from "@/lib/match/sound";
+import { playMatchMusic, stopMatchMusic } from "@/lib/match/sound";
+import MatchSettings from "./MatchSettings";
 import { MATCH_CSS } from "./matchCss";
 import { MAP_PREVIEWS } from "@/lib/match/mapPreviews";
 import { clueApi } from "@/lib/clueGame/track";
@@ -62,8 +63,11 @@ function save(p: Progress) {
 
 type Screen = { name: "home" } | { name: "map" } | { name: "board"; level: MatchLevel };
 
+/** Test mode (?board=…) exists on a local dev server only, never on the live site. */
+const TEST_MODE = process.env.NODE_ENV === "development";
+
 /** A Bible Buddy on the map: where they are on the trail. */
-export type MapBuddy = { id: string; name: string; avatar: string | null; unlocked: number };
+export type MapBuddy = { id: string; name: string; avatar: string | null; unlocked: number; done: number };
 type Saved = { unlocked: number; done: string[]; best: Record<string, number> };
 
 /** Two saves of the same player, merged so neither goes backwards. */
@@ -85,6 +89,7 @@ export default function MatchGame() {
   const [screen, setScreen] = useState<Screen>({ name: "home" });
   const [avatar, setAvatar] = useState<string | null>(null);
   const [buddies, setBuddies] = useState<MapBuddy[]>([]);
+  const testing = useRef(false);
 
   useEffect(() => {
     const id = window.setTimeout(() => {
@@ -93,6 +98,16 @@ export default function MatchGame() {
       const saved = readSavedBoard();
       const level = saved ? MATCH_LEVELS.find((l) => l.id === saved.levelId) : undefined;
       if (level) setScreen({ name: "board", level });
+      // Test mode, local dev server only: ?board=numbers-03 opens any board,
+      // locked or not, and a win there changes nobody's progress (progress
+      // only ever goes forward on the server, so unlocking for a test would
+      // stick for good). Louis, 2026-11-23: "unlock the boards, test them".
+      const testId = TEST_MODE ? new URLSearchParams(window.location.search).get("board") : null;
+      const testLevel = testId ? MATCH_LEVELS.find((l) => l.id === testId || String(l.number) === testId) : undefined;
+      if (testLevel) {
+        testing.current = true;
+        setScreen({ name: "board", level: testLevel });
+      }
       trackMatch("match_opened", { from: new URLSearchParams(window.location.search).get("from") || "direct", resumedBoard: level?.id ?? null });
       setReady(true);
     }, 0);
@@ -189,7 +204,9 @@ export default function MatchGame() {
           isLastLevel={screen.level.number === MATCH_LEVELS.length}
           alreadyWon={progress.done.includes(screen.level.id)}
           onWin={(score) =>
-            update((p) => {
+            testing.current
+              ? undefined
+              : update((p) => {
               const first = !p.done.includes(screen.level.id);
               const unlockNext = screen.level.number >= p.unlocked && screen.level.number < MATCH_LEVELS.length;
               return {
@@ -225,24 +242,6 @@ function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; rea
       img.src = src;
     }
   }, []);
-  const [sound, setSound] = useState(true);
-  const [music, setMusic] = useState(true);
-  useEffect(() => {
-    const id = window.setTimeout(() => {
-      try {
-        setSound(window.localStorage.getItem("bb:clue-sound") !== "off");
-        setMusic(matchMusicOn());
-      } catch {}
-    }, 0);
-    return () => window.clearTimeout(id);
-  }, []);
-  const toggleSound = () => {
-    const next = !sound;
-    setSound(next);
-    try {
-      window.localStorage.setItem("bb:clue-sound", next ? "on" : "off");
-    } catch {}
-  };
   return (
     <div className="bbm-home2">
       <div className="bbm-home2-blur" aria-hidden="true" />
@@ -290,29 +289,7 @@ function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; rea
           </span>
         </div>
       ))}
-      {settings ? (
-        <div className="bbm-panelwrap" role="dialog" aria-modal="true" onClick={() => setSettings(false)}>
-          <div className="bbm-panel" onClick={(e) => e.stopPropagation()}>
-            <h2>Settings</h2>
-            <button
-              type="button"
-              className="bbm-btn-cream"
-              onClick={() => {
-                setMatchMusicOn(!music);
-                setMusic(!music);
-              }}
-            >
-              Music: {music ? "On" : "Off"}
-            </button>
-            <button type="button" className="bbm-btn-cream" onClick={toggleSound}>
-              Sound effects: {sound ? "On" : "Off"}
-            </button>
-            <button type="button" className="bbm-btn-green" onClick={() => setSettings(false)}>
-              Done
-            </button>
-          </div>
-        </div>
-      ) : null}
+      {settings ? <MatchSettings onClose={() => setSettings(false)} /> : null}
     </div>
   );
 }

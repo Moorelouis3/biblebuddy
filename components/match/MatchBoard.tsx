@@ -13,6 +13,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import MatchSettings from "./MatchSettings";
 import {
   adjacent,
   cloneBoard,
@@ -124,6 +125,7 @@ export default function MatchBoard({
   const [dark, setDark] = useState(resume ? resume.dark : !!level.startsDark);
   const [hint, setHint] = useState<Pos[] | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  const [settings, setSettings] = useState(false);
   const [outcome, setOutcome] = useState<Outcome>(null);
   const boardRef = useRef(board);
   useEffect(() => {
@@ -339,16 +341,6 @@ export default function MatchBoard({
     return () => window.clearTimeout(id);
   }, [board, busy, outcome, hint, selected]);
 
-  // The sun button shows a swap that works, for a moment.
-  const showHint = () => {
-    if (busy || outcome) return;
-    const found = findMove(boardRef.current);
-    if (!found) return;
-    setHint(found);
-    trackMatch("match_hint", { board: level.id, how: "button" });
-    window.setTimeout(() => setHint(null), 2400);
-  };
-
   const tiles = useMemo(() => {
     const list: Array<{ tile: Tile; r: number; c: number }> = [];
     board.forEach((row, r) => row.forEach((tile, c) => tile && list.push({ tile, r, c })));
@@ -383,7 +375,6 @@ export default function MatchBoard({
         </div>
         <span className="bbm-hud-sep" />
         <div className="bbm-hud-goals">
-          <span className="bbm-hud-label">Goal</span>
           <div className="bbm-hud-goalrow">
             {level.goals.map((g) => {
               const left = leftFor(g.type, g.count);
@@ -494,15 +485,18 @@ export default function MatchBoard({
       </div>
 
       <div className="bbm-board-foot">
-        <button type="button" className="bbm-mapbtn" onClick={exit}>
-          <span aria-hidden="true">🗺️</span> Map
+        {/* Back to the map, and Settings (music and sounds). Louis, 2026-11-23:
+            "the map button should be a back button, and the other one a settings
+            button". A hint still shows by itself after 10 seconds without a move. */}
+        <button type="button" className="bbm-backbtn" onClick={exit} aria-label="Back to the map">
+          <span aria-hidden="true">←</span> Back
         </button>
         <span className="bbm-score">Score {score}</span>
-        <button type="button" className="bbm-hintbtn" onClick={showHint} aria-label="Show a swap" title="Show a swap">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={tileArt("light-power-up")} alt="" />
+        <button type="button" className="bbm-gearbtn" onClick={() => setSettings(true)} aria-label="Settings: music and sounds" title="Settings">
+          <span aria-hidden="true">⚙</span>
         </button>
       </div>
+      {settings ? <MatchSettings onClose={() => setSettings(false)} /> : null}
 
       {/* A Genesis board won: its story screen (WinStory); other boards: the scroll. */}
       {outcome?.won && winStoryFor(level.book, level.number, level.id) ? (

@@ -29,5 +29,7 @@ export function matchPlatform(): string {
 }
 
 export function trackMatch(event: FeatureEventName, metadata: Record<string, unknown> = {}) {
+  // Plays on a local dev server (tests) never count in the live numbers.
+  if (process.env.NODE_ENV === "development") return;
   void userId().then((id) => trackFeatureEvent(event, id, { platform: matchPlatform(), ...metadata }));
 }

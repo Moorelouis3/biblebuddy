@@ -450,6 +450,21 @@ html.bb-native.bb-ios .bbm-board { padding-top: calc(12px + max(env(safe-area-in
   -webkit-text-stroke: 1.5px #3a1d06; paint-order: stroke fill;
   text-shadow: 0 2px 0 #3a1d06, 0 0 2px #3a1d06, 0 3px 8px rgba(0,0,0,.85); }
 .bbm-medal.is-locked .bbm-medal-num { font-size: 30px; }
+/* The board's bottom buttons: Back (to the map) on the cream plank, Settings as a gold gear. */
+.bbm-backbtn { width: calc(var(--w) * .34); aspect-ratio: 500 / 170; display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:0 0 4px; border:0; cursor:pointer;
+  font-size: calc(var(--w) * .055); font-weight:900; color:#4a2a10 !important; filter: drop-shadow(0 6px 10px rgba(0,0,0,.35));
+  background: url(/games/match/ui/button-cream.webp) center / 100% 100% no-repeat; }
+.bbm-backbtn span { font-size: 1.15em; line-height:1; }
+.bbm-gearbtn { width: calc(var(--w) * .16); aspect-ratio:1; border-radius:999px; border:0; padding:0; cursor:pointer; display:grid; place-items:center;
+  font-size: calc(var(--w) * .095); line-height:1; color:#5a3208 !important;
+  background: radial-gradient(circle at 45% 40%, #fff5c8, #f2b33a 60%, #b8741a);
+  box-shadow: inset 0 0 0 3px #ffe08a, 0 0 14px 3px rgba(255,214,90,.5), 0 6px 12px rgba(0,0,0,.35); }
+.bbm-gearbtn span { transform: translateY(-1px); text-shadow: 0 1px 0 #ffe9a8; }
+/* The goals without the word "Goal": the pictures and counts take its room and
+   are bigger (Louis, 2026-11-23: "remove the word Goal, make the items bigger"). */
+.bbm-hud-goalrow { margin-top: 0 !important; }
+.bbm-goal { gap: 2px !important; font-size: clamp(16px, calc(var(--w) * .05), 24px) !important; }
+.bbm-goal img { width: clamp(32px, calc(var(--w) * .095), 48px) !important; height: clamp(32px, calc(var(--w) * .095), 48px) !important; filter: drop-shadow(0 2px 2px rgba(0,0,0,.25)); }
 /* Long book names (Leviticus, Deuteronomy) get a wider ribbon and smaller type so the word fits. */
 .bbm-ribbon.is-long { width: 270px; font-size: 20px; letter-spacing: 0; }
 `;

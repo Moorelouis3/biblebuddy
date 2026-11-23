@@ -552,6 +552,21 @@ const SOCKETS = ["#1b2b57", "#1d4a2a", "#4a2a14", "#1f3b4d", "#3b2350"];
  */
 export const MAX_MATCH_LEVELS = process.env.NODE_ENV === "development" ? 500 : 22;
 const BOOK_ORDER = ["genesis", "exodus", "leviticus", "numbers", "deuteronomy"];
+/**
+ * Every board asks for three things (Louis, 2026-11-23: "only 2 things people
+ * need to get... it should be 3 not 2"). A board whose config names two goals
+ * gets a third: the first of its own tiles that is not a goal yet, at the same
+ * count, so it still belongs to that board's story.
+ */
+function threeGoals(c: BoardConfig): Goal[] {
+  const goals = Object.entries(c.goals).map(([type, count]) => ({ type, count }));
+  for (const t of c.tiles) {
+    if (goals.length >= 3) break;
+    if (!goals.some((g) => g.type === t)) goals.push({ type: t, count: goals[0]?.count || 8 });
+  }
+  return goals;
+}
+
 function fromConfigs(configs: BoardConfig[]): MatchLevel[] {
   const book = (c: BoardConfig) => (c.chapter || c.slug.split("-")[0]).replace(/^\w/, (x) => x.toUpperCase());
   const order = (c: BoardConfig) => {
@@ -571,7 +586,7 @@ function fromConfigs(configs: BoardConfig[]): MatchLevel[] {
     reference: c.scripture,
     chapter: chapterOf(c.scripture),
     types: c.tiles,
-    goals: Object.entries(c.goals).map(([type, count]) => ({ type, count })),
+    goals: threeGoals(c),
     moves: c.moveLimit || 28,
     background: `/games/match/boards/${c.slug}/background-phone.webp`,
     backgrounds: { phone: `/games/match/boards/${c.slug}/background-phone.webp`, desktop: `/games/match/boards/${c.slug}/background-desktop.webp` },
