@@ -5840,6 +5840,646 @@
   "ref": "Exodus 9:27"
  },
  {
+  "id": "exodus-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which animals did the LORD say the murrain would fall on?",
+  "choices": [
+   "Only oxen",
+   "Horses, asses, camels, oxen and sheep",
+   "Only sheep",
+   "Fish and birds"
+  ],
+  "answer": 1,
+  "explanation": "The hand of the LORD is upon thy cattle: horses, asses, camels, oxen and sheep.",
+  "ref": "Exodus 9:3"
+ },
+ {
+  "id": "exodus-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses and Aaron to take for the plague of boils?",
+  "choices": [
+   "A stone",
+   "A handful of straw",
+   "Water from the river",
+   "Handfuls of ashes of the furnace"
+  ],
+  "answer": 3,
+  "explanation": "Take to you handfuls of ashes of the furnace.",
+  "ref": "Exodus 9:8"
+ },
+ {
+  "id": "exodus-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the ashes become when sprinkled toward heaven?",
+  "choices": [
+   "Frogs",
+   "A boil breaking forth with blains",
+   "Lice",
+   "Dark clouds"
+  ],
+  "answer": 1,
+  "explanation": "It became a boil breaking forth with blains upon man, and upon beast.",
+  "ref": "Exodus 9:10"
+ },
+ {
+  "id": "exodus-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who could not stand before Moses because of the boils?",
+  "choices": [
+   "The taskmasters",
+   "The elders",
+   "The Israelites",
+   "The magicians"
+  ],
+  "answer": 3,
+  "explanation": "The magicians could not stand before Moses because of the boils.",
+  "ref": "Exodus 9:11"
+ },
+ {
+  "id": "exodus-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say He would cause to rain on Egypt?",
+  "choices": [
+   "A very grievous hail",
+   "Fire only",
+   "Blood",
+   "Frogs"
+  ],
+  "answer": 0,
+  "explanation": "To morrow about this time I will cause it to rain a very grievous hail.",
+  "ref": "Exodus 9:18"
+ },
+ {
+  "id": "exodus-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Pharaoh to gather out of the field?",
+  "choices": [
+   "His cattle and all he had",
+   "His army",
+   "His servants only",
+   "His magicians"
+  ],
+  "answer": 0,
+  "explanation": "Send therefore now, and gather thy cattle, and all that thou hast in the field.",
+  "ref": "Exodus 9:19"
+ },
+ {
+  "id": "exodus-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which land had no hail?",
+  "choices": [
+   "Moab",
+   "Canaan",
+   "Goshen",
+   "Midian"
+  ],
+  "answer": 2,
+  "explanation": "Only in the land of Goshen, where the children of Israel were, was there no hail.",
+  "ref": "Exodus 9:26"
+ },
+ {
+  "id": "exodus-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides hail, what ran along upon the ground?",
+  "choices": [
+   "Frogs",
+   "Snakes",
+   "Fire",
+   "Water"
+  ],
+  "answer": 2,
+  "explanation": "The LORD sent thunder and hail, and the fire ran along upon the ground.",
+  "ref": "Exodus 9:23"
+ },
+ {
+  "id": "exodus-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Pharaoh send for after the hail?",
+  "choices": [
+   "Jethro",
+   "The elders",
+   "Moses and Aaron",
+   "The magicians"
+  ],
+  "answer": 2,
+  "explanation": "Pharaoh sent, and called for Moses and Aaron.",
+  "ref": "Exodus 9:27"
+ },
+ {
+  "id": "exodus-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses do to make the thunder and hail stop?",
+  "choices": [
+   "Struck the river",
+   "Spread abroad his hands unto the LORD",
+   "Cast ashes",
+   "Prayed in Pharaoh's house"
+  ],
+  "answer": 1,
+  "explanation": "Moses went out of the city, and spread abroad his hands unto the LORD: and the thunders and hail ceased.",
+  "ref": "Exodus 9:33"
+ },
+ {
+  "id": "exodus-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD set before the murrain began?",
+  "choices": [
+   "A mourning",
+   "A sign on the river",
+   "A feast",
+   "A set time"
+  ],
+  "answer": 3,
+  "explanation": "The LORD appointed a set time, saying, To morrow the LORD shall do this thing.",
+  "ref": "Exodus 9:5"
+ },
+ {
+  "id": "exodus-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about the cattle of Israel and Egypt?",
+  "choices": [
+   "He would count them",
+   "He would move them",
+   "He would sever between them",
+   "He would bless both"
+  ],
+  "answer": 2,
+  "explanation": "The LORD shall sever between the cattle of Israel and the cattle of Egypt.",
+  "ref": "Exodus 9:4"
+ },
+ {
+  "id": "exodus-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who sent to check on Israel's cattle?",
+  "choices": [
+   "The magicians",
+   "Moses",
+   "Pharaoh",
+   "Aaron"
+  ],
+  "answer": 2,
+  "explanation": "Pharaoh sent, and, behold, there was not one of the cattle of the Israelites dead.",
+  "ref": "Exodus 9:7"
+ },
+ {
+  "id": "exodus-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh's heart do after the cattle died?",
+  "choices": [
+   "Failed",
+   "Was hardened",
+   "Softened",
+   "Repented"
+  ],
+  "answer": 1,
+  "explanation": "The heart of Pharaoh was hardened, and he did not let the people go.",
+  "ref": "Exodus 9:7"
+ },
+ {
+  "id": "exodus-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would send upon Pharaoh's heart, his servants and his people?",
+  "choices": [
+   "An army",
+   "A famine",
+   "Only hail",
+   "All His plagues"
+  ],
+  "answer": 3,
+  "explanation": "I will at this time send all my plagues upon thine heart.",
+  "ref": "Exodus 9:14"
+ },
+ {
+  "id": "exodus-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD say He had raised Pharaoh up?",
+  "choices": [
+   "To feed the poor",
+   "To punish the Hebrews",
+   "To rule Egypt",
+   "To show His power and declare His name"
+  ],
+  "answer": 3,
+  "explanation": "For this cause have I raised thee up, for to shew in thee my power.",
+  "ref": "Exodus 9:16"
+ },
+ {
+  "id": "exodus-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the hail do to the man or beast found in the field?",
+  "choices": [
+   "They would flee",
+   "They would die",
+   "They would be frightened",
+   "They would be sick"
+  ],
+  "answer": 1,
+  "explanation": "Upon every man and beast which shall be found in the field, the hail shall come down upon them, and they shall die.",
+  "ref": "Exodus 9:19"
+ },
+ {
+  "id": "exodus-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the servant who feared the word of the LORD do?",
+  "choices": [
+   "Told Pharaoh",
+   "Prayed",
+   "Fled to Goshen",
+   "Made his servants and cattle flee into the houses"
+  ],
+  "answer": 3,
+  "explanation": "He that feared the word of the LORD made his servants and his cattle flee into the houses.",
+  "ref": "Exodus 9:20"
+ },
+ {
+  "id": "exodus-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the one who regarded not the word of the LORD do?",
+  "choices": [
+   "Slew them",
+   "Fled",
+   "Brought them in",
+   "Left his servants and cattle in the field"
+  ],
+  "answer": 3,
+  "explanation": "He that regarded not the word of the LORD left his servants and his cattle in the field.",
+  "ref": "Exodus 9:21"
+ },
+ {
+  "id": "exodus-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the hail break?",
+  "choices": [
+   "The river",
+   "Every tree of the field",
+   "Pharaoh's house",
+   "The city gate"
+  ],
+  "answer": 1,
+  "explanation": "The hail smote every herb of the field, and brake every tree of the field.",
+  "ref": "Exodus 9:25"
+ },
+ {
+  "id": "exodus-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh say about the LORD and himself in his confession?",
+  "choices": [
+   "The LORD is angry",
+   "Moses is a god",
+   "The LORD is righteous; he and his people are wicked",
+   "Egypt is blessed"
+  ],
+  "answer": 2,
+  "explanation": "I have sinned this time: the LORD is righteous, and I and my people are wicked.",
+  "ref": "Exodus 9:27"
+ },
+ {
+  "id": "exodus-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh promise Moses if the hail stopped?",
+  "choices": [
+   "He would give gold",
+   "He would bow to Moses",
+   "He would let them go and they would stay no longer",
+   "He would send the army home"
+  ],
+  "answer": 2,
+  "explanation": "I will let you go, and ye shall stay no longer.",
+  "ref": "Exodus 9:28"
+ },
+ {
+  "id": "exodus-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say would show that the earth is the LORD's?",
+  "choices": [
+   "The thunder and hail would cease",
+   "The cattle would live",
+   "The flax would grow",
+   "The river would dry"
+  ],
+  "answer": 0,
+  "explanation": "The thunder shall cease, that thou mayest know how that the earth is the LORD'S.",
+  "ref": "Exodus 9:29"
+ },
+ {
+  "id": "exodus-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was smitten among the crops?",
+  "choices": [
+   "Grapes",
+   "Flax and barley",
+   "Wheat and rye",
+   "Figs"
+  ],
+  "answer": 1,
+  "explanation": "The flax and the barley was smitten.",
+  "ref": "Exodus 9:31"
+ },
+ {
+  "id": "exodus-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh do when he saw the thunder and hail had ceased?",
+  "choices": [
+   "Fell down",
+   "Sinned yet more and hardened his heart",
+   "Fled",
+   "Let Israel go"
+  ],
+  "answer": 1,
+  "explanation": "He sinned yet more, and hardened his heart, he and his servants.",
+  "ref": "Exodus 9:34"
+ },
+ {
+  "id": "exodus-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of the cattle of the children of Israel died?",
+  "choices": [
+   "All",
+   "A few",
+   "Half",
+   "Not one"
+  ],
+  "answer": 3,
+  "explanation": "Of the cattle of the children of Israel died not one.",
+  "ref": "Exodus 9:6"
+ },
+ {
+  "id": "exodus-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the ashes become in all the land of Egypt before the boils?",
+  "choices": [
+   "Smoke",
+   "Red sand",
+   "Mud",
+   "Small dust"
+  ],
+  "answer": 3,
+  "explanation": "It shall become small dust in all the land of Egypt.",
+  "ref": "Exodus 9:9"
+ },
+ {
+  "id": "exodus-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On whom was the boil besides the Egyptians generally?",
+  "choices": [
+   "The elders",
+   "Pharaoh's wife",
+   "Moses",
+   "The magicians"
+  ],
+  "answer": 3,
+  "explanation": "The boil was upon the magicians, and upon all the Egyptians.",
+  "ref": "Exodus 9:11"
+ },
+ {
+  "id": "exodus-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who hardened Pharaoh's heart at the plague of boils?",
+  "choices": [
+   "His servants",
+   "Pharaoh himself",
+   "The LORD",
+   "The magicians"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hardened the heart of Pharaoh.",
+  "ref": "Exodus 9:12"
+ },
+ {
+  "id": "exodus-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which plague did the LORD say would cut Pharaoh off from the earth?",
+  "choices": [
+   "Famine",
+   "Hail",
+   "Fire",
+   "Pestilence"
+  ],
+  "answer": 3,
+  "explanation": "I may smite thee and thy people with pestilence, and thou shalt be cut off from the earth.",
+  "ref": "Exodus 9:15"
+ },
+ {
+  "id": "exodus-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had never been like the hail since the foundation of Egypt?",
+  "choices": [
+   "It was common",
+   "It had been seen once before",
+   "It lasted a day",
+   "It had no like in Egypt since it became a nation"
+  ],
+  "answer": 3,
+  "explanation": "Such as there was none like it in all the land of Egypt since it became a nation.",
+  "ref": "Exodus 9:24"
+ },
+ {
+  "id": "exodus-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Moses go to pray when the hail stopped?",
+  "choices": [
+   "To the river",
+   "Out of the city",
+   "Into the palace",
+   "To Goshen"
+  ],
+  "answer": 1,
+  "explanation": "As soon as I am gone out of the city, I will spread abroad my hands unto the LORD.",
+  "ref": "Exodus 9:29"
+ },
+ {
+  "id": "exodus-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say he knew about Pharaoh and his servants?",
+  "choices": [
+   "They would obey",
+   "They would not yet fear the LORD God",
+   "They would flee",
+   "They feared Egypt's gods"
+  ],
+  "answer": 1,
+  "explanation": "As for thee and thy servants, I know that ye will not yet fear the LORD God.",
+  "ref": "Exodus 9:30"
+ },
+ {
+  "id": "exodus-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the state of the barley when the hail struck?",
+  "choices": [
+   "In the ear",
+   "Cut down",
+   "Planted",
+   "Ripe in barns"
+  ],
+  "answer": 0,
+  "explanation": "The barley was in the ear, and the flax was bolled.",
+  "ref": "Exodus 9:31"
+ },
+ {
+  "id": "exodus-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the state of the flax when the hail struck?",
+  "choices": [
+   "Not planted",
+   "Bolled",
+   "Gathered",
+   "In the ear"
+  ],
+  "answer": 1,
+  "explanation": "The flax was bolled.",
+  "ref": "Exodus 9:31"
+ },
+ {
+  "id": "exodus-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Pharaoh still did against His people?",
+  "choices": [
+   "Hid from them",
+   "Exalted himself",
+   "Ignored them",
+   "Befriended them"
+  ],
+  "answer": 1,
+  "explanation": "As yet exaltest thou thyself against my people, that thou wilt not let them go?",
+  "ref": "Exodus 9:17"
+ },
+ {
+  "id": "exodus-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "In whose sight did Moses sprinkle the ashes toward heaven?",
+  "choices": [
+   "The elders'",
+   "The people's",
+   "Pharaoh's",
+   "The magicians'"
+  ],
+  "answer": 2,
+  "explanation": "Moses sprinkled it toward the heaven in the sight of Pharaoh.",
+  "ref": "Exodus 9:8"
+ },
+ {
+  "id": "exodus-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Toward what did Moses stretch his rod for the hail?",
+  "choices": [
+   "Toward the river",
+   "Toward Goshen",
+   "Toward heaven",
+   "Toward Pharaoh"
+  ],
+  "answer": 2,
+  "explanation": "Moses stretched forth his rod toward heaven.",
+  "ref": "Exodus 9:23"
+ },
+ {
+  "id": "exodus-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the LORD say the hail would come?",
+  "choices": [
+   "That night",
+   "In a week",
+   "To morrow about this time",
+   "At the feast"
+  ],
+  "answer": 2,
+  "explanation": "To morrow about this time I will cause it to rain a very grievous hail.",
+  "ref": "Exodus 9:18"
+ },
+ {
+  "id": "exodus-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh say was enough?",
+  "choices": [
+   "The darkness",
+   "The cattle's death",
+   "That there be no more mighty thunderings and hail",
+   "The boils"
+  ],
+  "answer": 2,
+  "explanation": "Intreat the LORD (for it is enough) that there be no more mighty thunderings and hail.",
+  "ref": "Exodus 9:28"
+ },
+ {
   "id": "old-exodus-10-1",
   "chapter": 10,
   "level": "beginner",
