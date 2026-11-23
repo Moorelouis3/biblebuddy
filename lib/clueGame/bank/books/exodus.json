@@ -6560,6 +6560,646 @@
   "ref": "Exodus 10:28"
  },
  {
+  "id": "exodus-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went in to Pharaoh and said, \"Let my people go, that they may serve me\"?",
+  "choices": [
+   "Moses and Aaron",
+   "Joshua and Caleb",
+   "Aaron and Hur",
+   "Moses and Jethro"
+  ],
+  "answer": 0,
+  "explanation": "Moses and Aaron came in unto Pharaoh and said, Thus saith the LORD God of the Hebrews... let my people go.",
+  "ref": "Exodus 10:3"
+ },
+ {
+  "id": "exodus-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses stretch over Egypt to bring the locusts?",
+  "choices": [
+   "His cloak",
+   "His rod",
+   "A censer",
+   "His staff of brass"
+  ],
+  "answer": 1,
+  "explanation": "Moses stretched forth his rod over the land of Egypt, and the LORD brought an east wind.",
+  "ref": "Exodus 10:13"
+ },
+ {
+  "id": "exodus-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of wind took the locusts away?",
+  "choices": [
+   "A strong east wind",
+   "A cold north wind",
+   "A mighty strong west wind",
+   "A hot south wind"
+  ],
+  "answer": 2,
+  "explanation": "The LORD turned a mighty strong west wind, which took away the locusts.",
+  "ref": "Exodus 10:19"
+ },
+ {
+  "id": "exodus-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the west wind cast the locusts?",
+  "choices": [
+   "Into the Nile",
+   "Into the wilderness",
+   "Into the land of Goshen",
+   "Into the Red sea"
+  ],
+  "answer": 3,
+  "explanation": "The wind took away the locusts and cast them into the Red sea.",
+  "ref": "Exodus 10:19"
+ },
+ {
+  "id": "exodus-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did the thick darkness cover Egypt?",
+  "choices": [
+   "Three days",
+   "One day",
+   "Seven days",
+   "Forty days"
+  ],
+  "answer": 0,
+  "explanation": "There was a thick darkness in all the land of Egypt three days.",
+  "ref": "Exodus 10:22"
+ },
+ {
+  "id": "exodus-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose heart did the LORD harden so he would not let Israel go?",
+  "choices": [
+   "Aaron's",
+   "Pharaoh's",
+   "Moses'",
+   "The servants'"
+  ],
+  "answer": 1,
+  "explanation": "The LORD hardened Pharaoh's heart, so that he would not let the children of Israel go.",
+  "ref": "Exodus 10:20"
+ },
+ {
+  "id": "exodus-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who asked Pharaoh, \"How long shall this man be a snare unto us?\"",
+  "choices": [
+   "The priests",
+   "The Israelites",
+   "Pharaoh's servants",
+   "Aaron"
+  ],
+  "answer": 2,
+  "explanation": "Pharaoh's servants said, How long shall this man be a snare unto us? let the men go.",
+  "ref": "Exodus 10:7"
+ },
+ {
+  "id": "exodus-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses say Israel must hold unto the LORD?",
+  "choices": [
+   "A fast",
+   "A war",
+   "A marriage",
+   "A feast"
+  ],
+  "answer": 3,
+  "explanation": "Moses said, We must hold a feast unto the LORD.",
+  "ref": "Exodus 10:9"
+ },
+ {
+  "id": "exodus-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the darkness over Egypt feel, according to the LORD?",
+  "choices": [
+   "Darkness which may be felt",
+   "Darkness like smoke",
+   "Darkness like fire",
+   "Darkness like a mist"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Stretch out thine hand toward heaven, that there may be darkness... even darkness which may be felt.",
+  "ref": "Exodus 10:21"
+ },
+ {
+  "id": "exodus-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Pharaoh say after the locusts covered Egypt?",
+  "choices": [
+   "I will let you go forever",
+   "I have sinned against the LORD your God",
+   "The LORD is mighty",
+   "I have done nothing wrong"
+  ],
+  "answer": 1,
+  "explanation": "Pharaoh called for Moses and Aaron in haste and said, I have sinned against the LORD your God, and against you.",
+  "ref": "Exodus 10:16"
+ },
+ {
+  "id": "exodus-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD ask Pharaoh, through Moses, how long he would refuse to do?",
+  "choices": [
+   "Hear the elders",
+   "Let the men rest",
+   "Humble himself before him",
+   "Obey his officers"
+  ],
+  "answer": 2,
+  "explanation": "Moses and Aaron said, How long wilt thou refuse to humble thyself before me?",
+  "ref": "Exodus 10:3"
+ },
+ {
+  "id": "exodus-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD bring into Pharaoh's coast the next day if he refused?",
+  "choices": [
+   "Hail",
+   "Boils",
+   "Darkness",
+   "Locusts"
+  ],
+  "answer": 3,
+  "explanation": "If thou refuse to let my people go, to morrow will I bring the locusts into thy coast.",
+  "ref": "Exodus 10:4"
+ },
+ {
+  "id": "exodus-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the LORD want Israel to tell about the signs He had wrought in Egypt?",
+  "choices": [
+   "Their son and their son's son",
+   "Only the priests",
+   "The Egyptians",
+   "Their neighbours"
+  ],
+  "answer": 0,
+  "explanation": "That thou mayest tell in the ears of thy son, and of thy son's son, what things I have wrought in Egypt.",
+  "ref": "Exodus 10:2"
+ },
+ {
+  "id": "exodus-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "When Pharaoh asked who would go, who did Moses say would go?",
+  "choices": [
+   "Only the men",
+   "Young and old, sons and daughters",
+   "Only the elders",
+   "Only the firstborn"
+  ],
+  "answer": 1,
+  "explanation": "Moses said, We will go with our young and with our old, with our sons and with our daughters.",
+  "ref": "Exodus 10:9"
+ },
+ {
+  "id": "exodus-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Pharaoh agree to let go to serve the LORD in the end of that talk?",
+  "choices": [
+   "Only the women",
+   "Only the children",
+   "Only the men",
+   "Only the elders"
+  ],
+  "answer": 2,
+  "explanation": "Pharaoh said, Go now ye that are men, and serve the LORD.",
+  "ref": "Exodus 10:11"
+ },
+ {
+  "id": "exodus-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh say was before Moses and Aaron when they asked to take everyone?",
+  "choices": [
+   "Peace",
+   "The sea",
+   "A famine",
+   "Evil"
+  ],
+  "answer": 3,
+  "explanation": "Pharaoh said, Look to it; for evil is before you.",
+  "ref": "Exodus 10:10"
+ },
+ {
+  "id": "exodus-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the land when the locusts covered it?",
+  "choices": [
+   "The land was darkened",
+   "It was burned",
+   "It was flooded",
+   "It was frozen"
+  ],
+  "answer": 0,
+  "explanation": "They covered the face of the whole earth, so that the land was darkened.",
+  "ref": "Exodus 10:15"
+ },
+ {
+  "id": "exodus-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Pharaoh call for Moses and Aaron after the locusts came?",
+  "choices": [
+   "In anger",
+   "In haste",
+   "In the night",
+   "In secret"
+  ],
+  "answer": 1,
+  "explanation": "Then Pharaoh called for Moses and Aaron in haste.",
+  "ref": "Exodus 10:16"
+ },
+ {
+  "id": "exodus-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh ask Moses to take away from him \"only this once\"?",
+  "choices": [
+   "This darkness",
+   "This hail",
+   "This death",
+   "This sickness"
+  ],
+  "answer": 2,
+  "explanation": "Intreat the LORD your God, that he may take away from me this death only.",
+  "ref": "Exodus 10:17"
+ },
+ {
+  "id": "exodus-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh ask Moses to do after he admitted his sin?",
+  "choices": [
+   "Offer a sacrifice",
+   "Leave Egypt",
+   "Bless his house",
+   "Forgive his sin and intreat the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Forgive, I pray thee, my sin only this once, and intreat the LORD your God.",
+  "ref": "Exodus 10:17"
+ },
+ {
+  "id": "exodus-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh want kept back when he let the people go after the darkness?",
+  "choices": [
+   "Their flocks and herds",
+   "Their children",
+   "Their gold",
+   "Their tents"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh said, only let your flocks and your herds be stayed: let your little ones also go with you.",
+  "ref": "Exodus 10:24"
+ },
+ {
+  "id": "exodus-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say Pharaoh must give them to offer to the LORD?",
+  "choices": [
+   "Gold and silver",
+   "Sacrifices and burnt offerings",
+   "Wheat and wine",
+   "Oil and incense"
+  ],
+  "answer": 1,
+  "explanation": "Moses said, Thou must give us also sacrifices and burnt offerings, that we may sacrifice unto the LORD our God.",
+  "ref": "Exodus 10:25"
+ },
+ {
+  "id": "exodus-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What could the Egyptians not do in the thick darkness?",
+  "choices": [
+   "Light a fire",
+   "Speak to one another",
+   "See one another",
+   "Drink water"
+  ],
+  "answer": 2,
+  "explanation": "They saw not one another, neither rose any from his place for three days.",
+  "ref": "Exodus 10:23"
+ },
+ {
+  "id": "exodus-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh say would happen if Moses saw his face again?",
+  "choices": [
+   "Israel would be freed",
+   "He would repent",
+   "He would give gifts",
+   "Moses would die"
+  ],
+  "answer": 3,
+  "explanation": "In that day thou seest my face thou shalt die.",
+  "ref": "Exodus 10:28"
+ },
+ {
+  "id": "exodus-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Moses answer Pharaoh when told to see his face no more?",
+  "choices": [
+   "Thou hast spoken well",
+   "I will return tomorrow",
+   "The LORD will judge you",
+   "Peace be with you"
+  ],
+  "answer": 0,
+  "explanation": "Moses said, Thou hast spoken well, I will see thy face again no more.",
+  "ref": "Exodus 10:29"
+ },
+ {
+  "id": "exodus-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the residue of the hail, what did the LORD say the locusts would eat that grew in the field?",
+  "choices": [
+   "Every vine",
+   "Every tree",
+   "Every flock",
+   "Every well"
+  ],
+  "answer": 1,
+  "explanation": "They shall eat every tree which groweth for you out of the field.",
+  "ref": "Exodus 10:5"
+ },
+ {
+  "id": "exodus-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Toward what did Moses stretch his hand to bring the darkness?",
+  "choices": [
+   "The sea",
+   "The river",
+   "Heaven",
+   "The east"
+  ],
+  "answer": 2,
+  "explanation": "Stretch out thine hand toward heaven, that there may be darkness.",
+  "ref": "Exodus 10:21"
+ },
+ {
+  "id": "exodus-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did the east wind blow before the locusts came?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "One hour",
+   "All that day and all that night"
+  ],
+  "answer": 3,
+  "explanation": "The LORD brought an east wind all that day, and all that night; and when it was morning, the east wind brought the locusts.",
+  "ref": "Exodus 10:13"
+ },
+ {
+  "id": "exodus-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many locusts remained in Egypt after the west wind?",
+  "choices": [
+   "Not one",
+   "A few",
+   "A swarm",
+   "Half of them"
+  ],
+  "answer": 0,
+  "explanation": "There remained not one locust in all the coasts of Egypt.",
+  "ref": "Exodus 10:19"
+ },
+ {
+  "id": "exodus-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was left green in the trees or herbs after the locusts?",
+  "choices": [
+   "Only the palms",
+   "Nothing",
+   "Only the grass",
+   "Only the vines"
+  ],
+  "answer": 1,
+  "explanation": "There remained not any green thing in the trees, or in the herbs of the field.",
+  "ref": "Exodus 10:15"
+ },
+ {
+  "id": "exodus-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say they did not know until they came to serve the LORD?",
+  "choices": [
+   "Where they would camp",
+   "How long they would stay",
+   "What they must serve Him with",
+   "Who would lead them"
+  ],
+  "answer": 2,
+  "explanation": "We know not with what we must serve the LORD, until we come thither.",
+  "ref": "Exodus 10:26"
+ },
+ {
+  "id": "exodus-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say would not be left behind?",
+  "choices": [
+   "A child",
+   "A tent",
+   "A sheep",
+   "A hoof"
+  ],
+  "answer": 3,
+  "explanation": "There shall not an hoof be left behind.",
+  "ref": "Exodus 10:26"
+ },
+ {
+  "id": "exodus-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose houses did Moses say the locusts would fill?",
+  "choices": [
+   "Pharaoh's, his servants' and all the Egyptians'",
+   "Only Pharaoh's",
+   "Only the Israelites'",
+   "Only the priests'"
+  ],
+  "answer": 0,
+  "explanation": "They shall fill thy houses, and the houses of all thy servants, and the houses of all the Egyptians.",
+  "ref": "Exodus 10:6"
+ },
+ {
+  "id": "exodus-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses do after warning Pharaoh about the locusts?",
+  "choices": [
+   "Fell on his face",
+   "Turned and went out from Pharaoh",
+   "Sat down",
+   "Called Aaron"
+  ],
+  "answer": 1,
+  "explanation": "He turned himself, and went out from Pharaoh.",
+  "ref": "Exodus 10:6"
+ },
+ {
+  "id": "exodus-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh ask when Moses and Aaron were brought back to him?",
+  "choices": [
+   "Where is the LORD?",
+   "How many are they?",
+   "Who are they that shall go?",
+   "When will you return?"
+  ],
+  "answer": 2,
+  "explanation": "Go, serve the LORD your God: but who are they that shall go?",
+  "ref": "Exodus 10:8"
+ },
+ {
+  "id": "exodus-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to Moses and Aaron when Pharaoh refused to let the families go?",
+  "choices": [
+   "They were bound",
+   "They were beaten",
+   "They were imprisoned",
+   "They were driven out of his presence"
+  ],
+  "answer": 3,
+  "explanation": "And they were driven out from Pharaoh's presence.",
+  "ref": "Exodus 10:11"
+ },
+ {
+  "id": "exodus-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Against whom did Pharaoh say he had sinned?",
+  "choices": [
+   "The LORD and Moses and Aaron",
+   "Only Moses",
+   "Only the LORD",
+   "His servants"
+  ],
+  "answer": 0,
+  "explanation": "I have sinned against the LORD your God, and against you.",
+  "ref": "Exodus 10:16"
+ },
+ {
+  "id": "exodus-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses was the reason for hardening Pharaoh's heart?",
+  "choices": [
+   "To destroy Egypt",
+   "That He might shew these His signs before him",
+   "To hide Israel",
+   "To test the servants"
+  ],
+  "answer": 1,
+  "explanation": "I have hardened his heart... that I might shew these my signs before him.",
+  "ref": "Exodus 10:1"
+ },
+ {
+  "id": "exodus-10-h-14",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh's servants say Egypt was?",
+  "choices": [
+   "Starving",
+   "Dry",
+   "Destroyed",
+   "Blessed"
+  ],
+  "answer": 2,
+  "explanation": "Knowest thou not yet that Egypt is destroyed?",
+  "ref": "Exodus 10:7"
+ },
+ {
+  "id": "exodus-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the locusts said to be compared to others that came before or after?",
+  "choices": [
+   "The same as in Joseph's day",
+   "Fewer than expected",
+   "Smaller than before",
+   "None like them before or after"
+  ],
+  "answer": 3,
+  "explanation": "Before them there were no such locusts as they, neither after them shall be such.",
+  "ref": "Exodus 10:14"
+ },
+ {
   "id": "old-exodus-11-1",
   "chapter": 11,
   "level": "beginner",
