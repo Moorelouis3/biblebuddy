@@ -24016,6 +24016,662 @@
   "ref": "Exodus 34:29–30"
  },
  {
+  "id": "exodus-34-e-01",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to write on the new tables?",
+  "choices": [
+   "The laws of the feasts",
+   "The words of Aaron",
+   "The words that were in the first tables",
+   "The names of the tribes"
+  ],
+  "answer": 2,
+  "explanation": "I will write upon these tables the words that were in the first tables, which thou brakest.",
+  "ref": "Exodus 34:1"
+ },
+ {
+  "id": "exodus-34-e-02",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did Moses go up Mount Sinai with the tables?",
+  "choices": [
+   "Early in the morning",
+   "After seven days",
+   "At evening",
+   "At midnight"
+  ],
+  "answer": 0,
+  "explanation": "Moses rose up early in the morning, and went up unto mount Sinai.",
+  "ref": "Exodus 34:4"
+ },
+ {
+  "id": "exodus-34-e-03",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the LORD come down to Moses on the mount?",
+  "choices": [
+   "In a chariot",
+   "In the cloud",
+   "In a flame of fire",
+   "In a whirlwind"
+  ],
+  "answer": 1,
+  "explanation": "The LORD descended in the cloud, and stood with him there.",
+  "ref": "Exodus 34:5"
+ },
+ {
+  "id": "exodus-34-e-04",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses do when the LORD passed by?",
+  "choices": [
+   "He ran away",
+   "He bowed his head and worshipped",
+   "He hid in a cave",
+   "He sang"
+  ],
+  "answer": 1,
+  "explanation": "Moses made haste, and bowed his head toward the earth, and worshipped.",
+  "ref": "Exodus 34:8"
+ },
+ {
+  "id": "exodus-34-e-05",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was afraid to come near Moses after he came down?",
+  "choices": [
+   "Pharaoh",
+   "Only Joshua",
+   "Aaron and all the children of Israel",
+   "Only the elders"
+  ],
+  "answer": 2,
+  "explanation": "When Aaron and all the children of Israel saw Moses, the skin of his face shone; and they were afraid to come nigh him.",
+  "ref": "Exodus 34:30"
+ },
+ {
+  "id": "exodus-34-e-06",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses put on his face when he spoke to the people?",
+  "choices": [
+   "A helmet",
+   "A mask of gold",
+   "A vail",
+   "A cloth of blue"
+  ],
+  "answer": 2,
+  "explanation": "Till Moses had done speaking with them, he put a vail on his face.",
+  "ref": "Exodus 34:33"
+ },
+ {
+  "id": "exodus-34-e-07",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses write on the tables?",
+  "choices": [
+   "The feast days",
+   "The ten commandments",
+   "The song of Moses",
+   "The names of the tribes"
+  ],
+  "answer": 1,
+  "explanation": "He wrote upon the tables the words of the covenant, the ten commandments.",
+  "ref": "Exodus 34:28"
+ },
+ {
+  "id": "exodus-34-e-08",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say about worshipping other gods?",
+  "choices": [
+   "Thou shalt worship no other god",
+   "Worship them at feasts",
+   "Worship them seven days",
+   "Worship them in secret"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt worship no other god: for the LORD is a jealous God.",
+  "ref": "Exodus 34:14"
+ },
+ {
+  "id": "exodus-34-e-09",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say His name is, as a jealous God?",
+  "choices": [
+   "Faithful",
+   "Jealous",
+   "Holy",
+   "Mighty"
+  ],
+  "answer": 1,
+  "explanation": "The LORD, whose name is Jealous, is a jealous God.",
+  "ref": "Exodus 34:14"
+ },
+ {
+  "id": "exodus-34-e-10",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say Israel must not make?",
+  "choices": [
+   "Stone altars",
+   "Clay pots",
+   "Molten gods",
+   "Wooden chests"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt make thee no molten gods.",
+  "ref": "Exodus 34:17"
+ },
+ {
+  "id": "exodus-34-m-01",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not to feed before the mount while Moses was there?",
+  "choices": [
+   "Camels",
+   "Birds",
+   "Flocks and herds",
+   "Horses"
+  ],
+  "answer": 2,
+  "explanation": "Neither let the flocks nor herds feed before that mount.",
+  "ref": "Exodus 34:3"
+ },
+ {
+  "id": "exodus-34-m-02",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Moses to present himself to the LORD?",
+  "choices": [
+   "At the tabernacle",
+   "At the foot of the mount",
+   "In the top of the mount",
+   "In the camp"
+  ],
+  "answer": 2,
+  "explanation": "Present thyself there to me in the top of the mount.",
+  "ref": "Exodus 34:2"
+ },
+ {
+  "id": "exodus-34-m-03",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To how many generations does the LORD visit the iniquity of the fathers?",
+  "choices": [
+   "The first and second",
+   "The tenth",
+   "The third and fourth",
+   "The seventh"
+  ],
+  "answer": 2,
+  "explanation": "Visiting the iniquity of the fathers upon the children, unto the third and to the fourth generation.",
+  "ref": "Exodus 34:7"
+ },
+ {
+  "id": "exodus-34-m-04",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses ask the LORD to do in the midst of Israel?",
+  "choices": [
+   "Judge them",
+   "Go among them",
+   "Send an angel",
+   "Leave them"
+  ],
+  "answer": 1,
+  "explanation": "Let my Lord, I pray thee, go among us.",
+  "ref": "Exodus 34:9"
+ },
+ {
+  "id": "exodus-34-m-05",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which people did the LORD say He would drive out?",
+  "choices": [
+   "The Hivite",
+   "The Philistine",
+   "The Edomite",
+   "The Moabite"
+  ],
+  "answer": 0,
+  "explanation": "I drive out before thee the Amorite, and the Canaanite, and the Hittite, and the Perizzite, the Hivite, and the Jebusite.",
+  "ref": "Exodus 34:11"
+ },
+ {
+  "id": "exodus-34-m-06",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel to do to the altars and images of the land?",
+  "choices": [
+   "Move them",
+   "Destroy altars, break images, cut down groves",
+   "Cover them",
+   "Use them"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall destroy their altars, break their images, and cut down their groves.",
+  "ref": "Exodus 34:13"
+ },
+ {
+  "id": "exodus-34-m-07",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month did Israel come out of Egypt?",
+  "choices": [
+   "Ethanim",
+   "Abib",
+   "Tishri",
+   "Nisan"
+  ],
+  "answer": 1,
+  "explanation": "In the month Abib thou camest out from Egypt.",
+  "ref": "Exodus 34:18"
+ },
+ {
+  "id": "exodus-34-m-08",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the firstling of an ass to be redeemed with?",
+  "choices": [
+   "An ox",
+   "A lamb",
+   "A goat",
+   "Silver"
+  ],
+  "answer": 1,
+  "explanation": "The firstling of an ass thou shalt redeem with a lamb.",
+  "ref": "Exodus 34:20"
+ },
+ {
+  "id": "exodus-34-m-09",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many times a year were the men to appear before the LORD?",
+  "choices": [
+   "Once",
+   "Thrice",
+   "Four times",
+   "Twice"
+  ],
+  "answer": 1,
+  "explanation": "Thrice in the year shall all your men children appear before the Lord GOD.",
+  "ref": "Exodus 34:23"
+ },
+ {
+  "id": "exodus-34-m-10",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the feast of weeks of?",
+  "choices": [
+   "The barley harvest",
+   "The grape harvest",
+   "The firstfruits of wheat harvest",
+   "The olive harvest"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt observe the feast of weeks, of the firstfruits of wheat harvest.",
+  "ref": "Exodus 34:22"
+ },
+ {
+  "id": "exodus-34-m-11",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the feast at the year's end called?",
+  "choices": [
+   "The feast of lights",
+   "The feast of trumpets",
+   "The feast of ingathering",
+   "The feast of passover"
+  ],
+  "answer": 2,
+  "explanation": "The feast of ingathering at the year's end.",
+  "ref": "Exodus 34:22"
+ },
+ {
+  "id": "exodus-34-m-12",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not to be seethed in its mother's milk?",
+  "choices": [
+   "A calf",
+   "A lamb",
+   "A kid",
+   "A bull"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt not seethe a kid in his mother's milk.",
+  "ref": "Exodus 34:26"
+ },
+ {
+  "id": "exodus-34-m-13",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD make with Moses and Israel after these words?",
+  "choices": [
+   "A new tabernacle",
+   "A treaty with Egypt",
+   "A king",
+   "A covenant"
+  ],
+  "answer": 3,
+  "explanation": "After the tenor of these words I have made a covenant with thee and with Israel.",
+  "ref": "Exodus 34:27"
+ },
+ {
+  "id": "exodus-34-m-14",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen if the firstling ass was not redeemed?",
+  "choices": [
+   "It would be sold",
+   "Its neck would be broken",
+   "It would be freed",
+   "It would be sacrificed at the gate"
+  ],
+  "answer": 1,
+  "explanation": "If thou redeem him not, then shalt thou break his neck.",
+  "ref": "Exodus 34:20"
+ },
+ {
+  "id": "exodus-34-m-15",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would do that had not been done in all the earth?",
+  "choices": [
+   "Marvels before all the people",
+   "A flood",
+   "A famine",
+   "A plague on Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Before all thy people I will do marvels, such as have not been done in all the earth.",
+  "ref": "Exodus 34:10"
+ },
+ {
+  "id": "exodus-34-h-01",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many days was Israel to eat unleavened bread?",
+  "choices": [
+   "Seven days",
+   "Three days",
+   "Ten days",
+   "Forty days"
+  ],
+  "answer": 0,
+  "explanation": "Seven days thou shalt eat unleavened bread.",
+  "ref": "Exodus 34:18"
+ },
+ {
+  "id": "exodus-34-h-02",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When was Israel to rest, even in earing time and harvest?",
+  "choices": [
+   "Once a year",
+   "On the first day",
+   "On the seventh day",
+   "Every month"
+  ],
+  "answer": 2,
+  "explanation": "Six days thou shalt work, but on the seventh day thou shalt rest.",
+  "ref": "Exodus 34:21"
+ },
+ {
+  "id": "exodus-34-h-03",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the first of the firstfruits to be brought?",
+  "choices": [
+   "To the camp",
+   "To the house of the LORD thy God",
+   "To the king",
+   "To Aaron's tent"
+  ],
+  "answer": 1,
+  "explanation": "The first of the firstfruits of thy land thou shalt bring unto the house of the LORD thy God.",
+  "ref": "Exodus 34:26"
+ },
+ {
+  "id": "exodus-34-h-04",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was not to be offered with the blood of the sacrifice?",
+  "choices": [
+   "Leaven",
+   "Oil",
+   "Wine",
+   "Salt"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not offer the blood of my sacrifice with leaven.",
+  "ref": "Exodus 34:25"
+ },
+ {
+  "id": "exodus-34-h-05",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was not to be left until the morning?",
+  "choices": [
+   "The firstfruits",
+   "The incense",
+   "The sabbath bread",
+   "The sacrifice of the feast of the passover"
+  ],
+  "answer": 3,
+  "explanation": "Neither shall the sacrifice of the feast of the passover be left unto the morning.",
+  "ref": "Exodus 34:25"
+ },
+ {
+  "id": "exodus-34-h-06",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Who returned to Moses when he called to them?",
+  "choices": [
+   "Only the Levites",
+   "The elders of Midian",
+   "Joshua and Caleb",
+   "Aaron and all the rulers of the congregation"
+  ],
+  "answer": 3,
+  "explanation": "Aaron and all the rulers of the congregation returned unto him.",
+  "ref": "Exodus 34:31"
+ },
+ {
+  "id": "exodus-34-h-07",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses do with the vail when he went in before the LORD?",
+  "choices": [
+   "Burned it",
+   "Took it off",
+   "Hung it on the ark",
+   "Wore it"
+  ],
+  "answer": 1,
+  "explanation": "When Moses went in before the LORD to speak with him, he took the vail off.",
+  "ref": "Exodus 34:34"
+ },
+ {
+  "id": "exodus-34-h-08",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses not know when he came down from the mount?",
+  "choices": [
+   "That Aaron had died",
+   "That tables were written on both sides",
+   "That the skin of his face shone",
+   "That the calf was burned"
+  ],
+  "answer": 2,
+  "explanation": "Moses wist not that the skin of his face shone while he talked with him.",
+  "ref": "Exodus 34:29"
+ },
+ {
+  "id": "exodus-34-h-09",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say He keeps for thousands?",
+  "choices": [
+   "Anger",
+   "Gold",
+   "Mercy",
+   "Land"
+  ],
+  "answer": 2,
+  "explanation": "Keeping mercy for thousands, forgiving iniquity and transgression and sin.",
+  "ref": "Exodus 34:7"
+ },
+ {
+  "id": "exodus-34-h-10",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say about the guilty?",
+  "choices": [
+   "He will clear them at once",
+   "He will ignore them",
+   "He will bless them",
+   "He will by no means clear them"
+  ],
+  "answer": 3,
+  "explanation": "That will by no means clear the guilty.",
+  "ref": "Exodus 34:7"
+ },
+ {
+  "id": "exodus-34-h-11",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say no man would do to Israel's land when they went up?",
+  "choices": [
+   "Sell it",
+   "Divide it",
+   "Desire it",
+   "Burn it"
+  ],
+  "answer": 2,
+  "explanation": "Neither shall any man desire thy land, when thou shalt go up to appear before the LORD.",
+  "ref": "Exodus 34:24"
+ },
+ {
+  "id": "exodus-34-h-12",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say none should do when appearing before Him?",
+  "choices": [
+   "Appear late",
+   "Appear armed",
+   "Appear empty",
+   "Appear alone"
+  ],
+  "answer": 2,
+  "explanation": "None shall appear before me empty.",
+  "ref": "Exodus 34:20"
+ },
+ {
+  "id": "exodus-34-h-13",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What belongs to the LORD among cattle?",
+  "choices": [
+   "Every female",
+   "The best cow",
+   "Every male firstling",
+   "Every second calf"
+  ],
+  "answer": 2,
+  "explanation": "Every firstling among thy cattle, whether ox or sheep, that is male.",
+  "ref": "Exodus 34:19"
+ },
+ {
+  "id": "exodus-34-h-14",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Moses put the vail on his face again after the people saw it shine?",
+  "choices": [
+   "Until the camp moved",
+   "Until sunset",
+   "Until he went in to speak with the LORD",
+   "Until Aaron spoke"
+  ],
+  "answer": 2,
+  "explanation": "Moses put the vail upon his face again, until he went in to speak with him.",
+  "ref": "Exodus 34:35"
+ },
+ {
+  "id": "exodus-34-h-15",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD warn Israel not to make with the inhabitants of the land?",
+  "choices": [
+   "A feast",
+   "A sacrifice",
+   "A covenant",
+   "A journey"
+  ],
+  "answer": 2,
+  "explanation": "Take heed lest thou make a covenant with the inhabitants of the land.",
+  "ref": "Exodus 34:12"
+ },
+ {
+  "id": "exodus-34-h-16",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the covenant with the land be for Israel, said the LORD?",
+  "choices": [
+   "A fortress",
+   "A blessing",
+   "A crown",
+   "A snare in the midst of them"
+  ],
+  "answer": 3,
+  "explanation": "Lest it be for a snare in the midst of thee.",
+  "ref": "Exodus 34:12"
+ },
+ {
   "id": "old-exodus-35-1",
   "chapter": 35,
   "level": "beginner",
