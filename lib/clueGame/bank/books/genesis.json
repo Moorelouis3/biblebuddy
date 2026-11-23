@@ -1456,6 +1456,342 @@
   "ref": "Genesis 5:1–3"
  },
  {
+  "id": "genesis-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God make in the likeness of God?",
+  "choices": [
+   "The animals",
+   "Man",
+   "The angels",
+   "The stars"
+  ],
+  "answer": 1,
+  "explanation": "In the day that God created man, in the likeness of God made he him.",
+  "ref": "Genesis 5:1"
+ },
+ {
+  "id": "genesis-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "What name did Lamech give to his son?",
+  "choices": [
+   "Noah",
+   "Seth",
+   "Shem",
+   "Enoch"
+  ],
+  "answer": 0,
+  "explanation": "He called his name Noah, saying, This same shall comfort us.",
+  "ref": "Genesis 5:29"
+ },
+ {
+  "id": "genesis-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Adam live in all?",
+  "choices": [
+   "Nine hundred and twelve",
+   "Nine hundred and sixty-nine",
+   "Eight hundred",
+   "Nine hundred and thirty"
+  ],
+  "answer": 3,
+  "explanation": "All the days that Adam lived were nine hundred and thirty years: and he died.",
+  "ref": "Genesis 5:5"
+ },
+ {
+  "id": "genesis-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Enoch live in all?",
+  "choices": [
+   "Nine hundred and five",
+   "Seven hundred seventy and seven",
+   "Three hundred sixty and five",
+   "Eight hundred ninety and five"
+  ],
+  "answer": 2,
+  "explanation": "All the days of Enoch were three hundred sixty and five years.",
+  "ref": "Genesis 5:23"
+ },
+ {
+  "id": "genesis-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How old was Noah when he begat Shem, Ham, and Japheth?",
+  "choices": [
+   "One hundred and five years",
+   "Five hundred years",
+   "Six hundred years",
+   "Three hundred years"
+  ],
+  "answer": 1,
+  "explanation": "Noah was five hundred years old: and Noah begat Shem, Ham, and Japheth.",
+  "ref": "Genesis 5:32"
+ },
+ {
+  "id": "genesis-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Mahalaleel’s son?",
+  "choices": [
+   "Jared",
+   "Enoch",
+   "Cainan",
+   "Methuselah"
+  ],
+  "answer": 0,
+  "explanation": "Mahalaleel lived sixty and five years, and begat Jared.",
+  "ref": "Genesis 5:15"
+ },
+ {
+  "id": "genesis-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Adam when he begat Seth?",
+  "choices": [
+   "Sixty and five",
+   "One hundred and five",
+   "One hundred sixty and two",
+   "One hundred and thirty"
+  ],
+  "answer": 3,
+  "explanation": "Adam lived an hundred and thirty years, and begat a son in his own likeness, and called his name Seth.",
+  "ref": "Genesis 5:3"
+ },
+ {
+  "id": "genesis-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Seth when he begat Enos?",
+  "choices": [
+   "One hundred and thirty",
+   "Ninety",
+   "One hundred and five",
+   "Sixty and five"
+  ],
+  "answer": 2,
+  "explanation": "Seth lived an hundred and five years, and begat Enos.",
+  "ref": "Genesis 5:6"
+ },
+ {
+  "id": "genesis-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Enos when he begat Cainan?",
+  "choices": [
+   "Seventy",
+   "Ninety",
+   "Sixty and five",
+   "One hundred and five"
+  ],
+  "answer": 1,
+  "explanation": "Enos lived ninety years, and begat Cainan.",
+  "ref": "Genesis 5:9"
+ },
+ {
+  "id": "genesis-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Cainan when he begat Mahalaleel?",
+  "choices": [
+   "Seventy",
+   "Ninety",
+   "Sixty and five",
+   "One hundred and five"
+  ],
+  "answer": 0,
+  "explanation": "Cainan lived seventy years, and begat Mahalaleel.",
+  "ref": "Genesis 5:12"
+ },
+ {
+  "id": "genesis-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Mahalaleel when he begat Jared?",
+  "choices": [
+   "Seventy",
+   "Ninety",
+   "One hundred sixty and two",
+   "Sixty and five"
+  ],
+  "answer": 3,
+  "explanation": "Mahalaleel lived sixty and five years, and begat Jared.",
+  "ref": "Genesis 5:15"
+ },
+ {
+  "id": "genesis-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Jared when he begat Enoch?",
+  "choices": [
+   "One hundred eighty and two",
+   "One hundred eighty and seven",
+   "One hundred sixty and two",
+   "Sixty and five"
+  ],
+  "answer": 2,
+  "explanation": "Jared lived an hundred sixty and two years, and he begat Enoch.",
+  "ref": "Genesis 5:18"
+ },
+ {
+  "id": "genesis-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Enoch when he begat Methuselah?",
+  "choices": [
+   "Seventy",
+   "Sixty and five",
+   "One hundred and five",
+   "One hundred sixty and two"
+  ],
+  "answer": 1,
+  "explanation": "Enoch lived sixty and five years, and begat Methuselah.",
+  "ref": "Genesis 5:21"
+ },
+ {
+  "id": "genesis-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Enoch walk with God after he begat Methuselah?",
+  "choices": [
+   "Three hundred",
+   "Eight hundred",
+   "Three hundred sixty and five",
+   "Sixty and five"
+  ],
+  "answer": 0,
+  "explanation": "Enoch walked with God after he begat Methuselah three hundred years.",
+  "ref": "Genesis 5:22"
+ },
+ {
+  "id": "genesis-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Methuselah when he begat Lamech?",
+  "choices": [
+   "One hundred eighty and two",
+   "One hundred sixty and two",
+   "Nine hundred sixty and nine",
+   "One hundred eighty and seven"
+  ],
+  "answer": 3,
+  "explanation": "Methuselah lived an hundred eighty and seven years, and begat Lamech.",
+  "ref": "Genesis 5:25"
+ },
+ {
+  "id": "genesis-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Lamech when he begat Noah?",
+  "choices": [
+   "One hundred eighty and seven",
+   "One hundred sixty and two",
+   "One hundred eighty and two",
+   "Five hundred"
+  ],
+  "answer": 2,
+  "explanation": "Lamech lived an hundred eighty and two years, and begat a son, and called his name Noah.",
+  "ref": "Genesis 5:28–29"
+ },
+ {
+  "id": "genesis-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Seth live in all?",
+  "choices": [
+   "Nine hundred and five",
+   "Nine hundred and twelve",
+   "Nine hundred and ten",
+   "Nine hundred and thirty"
+  ],
+  "answer": 1,
+  "explanation": "All the days of Seth were nine hundred and twelve years: and he died.",
+  "ref": "Genesis 5:8"
+ },
+ {
+  "id": "genesis-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Enos live in all?",
+  "choices": [
+   "Nine hundred and five",
+   "Nine hundred and twelve",
+   "Nine hundred and ten",
+   "Eight hundred ninety and five"
+  ],
+  "answer": 0,
+  "explanation": "All the days of Enos were nine hundred and five years: and he died.",
+  "ref": "Genesis 5:11"
+ },
+ {
+  "id": "genesis-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Jared live in all?",
+  "choices": [
+   "Nine hundred sixty and nine",
+   "Eight hundred ninety and five",
+   "Nine hundred and thirty",
+   "Nine hundred sixty and two"
+  ],
+  "answer": 3,
+  "explanation": "All the days of Jared were nine hundred sixty and two years: and he died.",
+  "ref": "Genesis 5:20"
+ },
+ {
+  "id": "genesis-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Lamech, Noah’s father, live in all?",
+  "choices": [
+   "Nine hundred sixty and nine",
+   "Eight hundred ninety and five",
+   "Seven hundred seventy and seven",
+   "Three hundred sixty and five"
+  ],
+  "answer": 2,
+  "explanation": "All the days of Lamech were seven hundred seventy and seven years: and he died.",
+  "ref": "Genesis 5:31"
+ },
+ {
+  "id": "genesis-5-h-15",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Cainan live in all?",
+  "choices": [
+   "Nine hundred and five",
+   "Nine hundred and ten",
+   "Nine hundred and twelve",
+   "Eight hundred ninety and five"
+  ],
+  "answer": 1,
+  "explanation": "All the days of Cainan were nine hundred and ten years: and he died.",
+  "ref": "Genesis 5:14"
+ },
+ {
   "id": "old-genesis-6-1",
   "chapter": 6,
   "level": "beginner",
