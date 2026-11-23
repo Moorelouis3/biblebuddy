@@ -347,15 +347,18 @@ const EXODUS_PATH: Array<[number, number]> = [
 ];
 
 /**
- * The Leviticus map (Drive 00-Leviticus-Map, map-leviticus-phone.webp): the
- * Tabernacle court and the altar fire at the bottom, the camp, the scapegoat
- * led out, the harvest with gleaners, the booths of branches, and the ram's
- * horn on the hill at the top.
+ * The Leviticus map (Drive 00-Leviticus-Map, map-leviticus-phone.webp; the
+ * second version, 2026-11-23, painted to match the Genesis and Exodus maps):
+ * the Tabernacle and the altar at the bottom, Sinai in the storm, the camp,
+ * the altar fire and the stream, the harvest with gleaners, the booths of
+ * branches and the vineyard, and the ram's horn on the hill at the top.
+ * Traced from the sand colour of the path, row by row.
  */
 const LEVITICUS_PATH: Array<[number, number]> = [
-  [37, 99.5], [39, 95], [47, 90], [59, 85], [69, 80], [74, 75], [72, 70], [68, 65], [63, 60], [55, 55], [42, 51],
-  [31, 47.5], [31, 45], [35, 42.5], [41, 40], [48, 37.5], [56, 35], [60, 32], [61, 28.5], [58, 25], [51, 22.5],
-  [43, 20], [37, 17.5], [33, 15], [32, 12.5], [34, 10], [40, 7.5], [47, 5], [50, 2.5], [50, 0.5],
+  [50, 99.5], [50, 97], [43, 94.5], [36, 92], [34, 89.5], [40, 87], [45, 84.5], [45, 82], [41, 79.5], [29, 77],
+  [18, 74.5], [12, 72], [14, 69.5], [24, 67], [41, 64.5], [51, 62], [49, 59.5], [34, 57], [20, 54.5], [22, 52],
+  [36, 49.5], [46, 47], [54, 44.5], [48, 42], [30, 39.5], [21, 37], [26, 34.5], [47, 32], [56, 29.5], [48, 27],
+  [31, 24.5], [24, 22], [29, 19.5], [44, 17], [54, 14.5], [51, 12], [42, 9.5], [44, 7], [52, 4.5], [56, 2], [55, 0.5],
 ];
 
 type Section = { src: string; fx: "genesis" | "exodus" | "leviticus"; path: Array<[number, number]>; levels: MatchLevel[] };
