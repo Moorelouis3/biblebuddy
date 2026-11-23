@@ -11872,6 +11872,294 @@
   "ref": "Genesis 35:29"
  },
  {
+  "id": "genesis-35-m-01",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides putting away strange gods, what else did Jacob tell his household to do?",
+  "choices": [
+   "Fast for three days",
+   "Pay a tithe",
+   "Sacrifice a kid",
+   "Be clean and change their garments"
+  ],
+  "answer": 3,
+  "explanation": "Jacob said, Put away the strange gods, and be clean, and change your garments.",
+  "ref": "Genesis 35:2"
+ },
+ {
+  "id": "genesis-35-m-02",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did God name Himself when He blessed Jacob again?",
+  "choices": [
+   "The Most High",
+   "God Almighty",
+   "The God of Bethel",
+   "The God of my father"
+  ],
+  "answer": 1,
+  "explanation": "God said unto him, I am God Almighty: be fruitful and multiply.",
+  "ref": "Genesis 35:11"
+ },
+ {
+  "id": "genesis-35-m-03",
+  "chapter": 35,
+  "level": "medium",
+  "category": "person",
+  "question": "God said He would give Jacob the land He gave to whom?",
+  "choices": [
+   "Isaac and Esau",
+   "Noah and Abraham",
+   "Abraham and Isaac",
+   "Laban and Isaac"
+  ],
+  "answer": 2,
+  "explanation": "The land which I gave Abraham and Isaac, to thee I will give it.",
+  "ref": "Genesis 35:12"
+ },
+ {
+  "id": "genesis-35-h-01",
+  "chapter": 35,
+  "level": "hard",
+  "category": "person",
+  "question": "God told Jacob to build an altar to the God who appeared when he fled from whom?",
+  "choices": [
+   "Esau",
+   "Laban",
+   "Isaac",
+   "Hamor"
+  ],
+  "answer": 0,
+  "explanation": "God said, make there an altar unto God, that appeared unto thee when thou fleddest from the face of Esau thy brother.",
+  "ref": "Genesis 35:1"
+ },
+ {
+  "id": "genesis-35-h-02",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob say God had done for him in the day of his distress?",
+  "choices": [
+   "Fed him",
+   "Hid him",
+   "Answered him",
+   "Healed him"
+  ],
+  "answer": 2,
+  "explanation": "Jacob said, God, who answered me in the day of my distress, and was with me in the way which I went.",
+  "ref": "Genesis 35:3"
+ },
+ {
+  "id": "genesis-35-h-03",
+  "chapter": 35,
+  "level": "hard",
+  "category": "place",
+  "question": "By which city did Jacob hide the strange gods under an oak?",
+  "choices": [
+   "Hebron",
+   "Bethel",
+   "Shechem",
+   "Luz"
+  ],
+  "answer": 2,
+  "explanation": "Jacob hid them under the oak which was by Shechem.",
+  "ref": "Genesis 35:4"
+ },
+ {
+  "id": "genesis-35-h-04",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the name of the oak where Deborah was buried?",
+  "choices": [
+   "El-beth-el",
+   "Mamre",
+   "Ephrath",
+   "Allon-bachuth"
+  ],
+  "answer": 3,
+  "explanation": "She was buried beneath Bethel under an oak: and the name of it was called Allon-bachuth.",
+  "ref": "Genesis 35:8"
+ },
+ {
+  "id": "genesis-35-h-05",
+  "chapter": 35,
+  "level": "hard",
+  "category": "place",
+  "question": "Beneath which place was Rebekah's nurse buried?",
+  "choices": [
+   "Hebron",
+   "Bethel",
+   "Ephrath",
+   "Shechem"
+  ],
+  "answer": 1,
+  "explanation": "Deborah Rebekah’s nurse died, and she was buried beneath Bethel under an oak.",
+  "ref": "Genesis 35:8"
+ },
+ {
+  "id": "genesis-35-h-06",
+  "chapter": 35,
+  "level": "hard",
+  "category": "place",
+  "question": "God appeared to Jacob again when he came out of which land?",
+  "choices": [
+   "Egypt",
+   "Padan-aram",
+   "Seir",
+   "Gilead"
+  ],
+  "answer": 1,
+  "explanation": "God appeared unto Jacob again, when he came out of Padan-aram, and blessed him.",
+  "ref": "Genesis 35:9"
+ },
+ {
+  "id": "genesis-35-h-07",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say would be of Jacob besides a nation?",
+  "choices": [
+   "Twelve judges",
+   "A great sea",
+   "A company of nations",
+   "Many cities"
+  ],
+  "answer": 2,
+  "explanation": "A nation and a company of nations shall be of thee, and kings shall come out of thy loins.",
+  "ref": "Genesis 35:11"
+ },
+ {
+  "id": "genesis-35-h-08",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob call the place where God spake with him?",
+  "choices": [
+   "Bethel",
+   "Peniel",
+   "Mahanaim",
+   "Succoth"
+  ],
+  "answer": 0,
+  "explanation": "Jacob called the name of the place where God spake with him, Bethel.",
+  "ref": "Genesis 35:15"
+ },
+ {
+  "id": "genesis-35-h-09",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How far was it to Ephrath when Rachel travailed?",
+  "choices": [
+   "Three days",
+   "Forty miles",
+   "A little way",
+   "A day's journey"
+  ],
+  "answer": 2,
+  "explanation": "There was but a little way to come to Ephrath: and Rachel travailed, and she had hard labour.",
+  "ref": "Genesis 35:16"
+ },
+ {
+  "id": "genesis-35-h-10",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Beyond what did Israel spread his tent after Rachel's burial?",
+  "choices": [
+   "The oak of Mamre",
+   "The tower of Edar",
+   "The brook Jabbok",
+   "The wall of Bethel"
+  ],
+  "answer": 1,
+  "explanation": "Israel journeyed, and spread his tent beyond the tower of Edar.",
+  "ref": "Genesis 35:21"
+ },
+ {
+  "id": "genesis-35-h-11",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened after Reuben lay with Bilhah?",
+  "choices": [
+   "He was driven out",
+   "Israel heard it",
+   "Jacob cursed him at once",
+   "Esau came"
+  ],
+  "answer": 1,
+  "explanation": "Reuben went and lay with Bilhah his father’s concubine: and Israel heard it.",
+  "ref": "Genesis 35:22"
+ },
+ {
+  "id": "genesis-35-h-12",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons of Leah are listed in this chapter?",
+  "choices": [
+   "Four",
+   "Seven",
+   "Five",
+   "Six"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Leah: Reuben, Simeon, Levi, Judah, Issachar, and Zebulun.",
+  "ref": "Genesis 35:23"
+ },
+ {
+  "id": "genesis-35-h-13",
+  "chapter": 35,
+  "level": "hard",
+  "category": "person",
+  "question": "Who were the sons of Zilpah, Leah's handmaid?",
+  "choices": [
+   "Dan and Naphtali",
+   "Joseph and Benjamin",
+   "Issachar and Zebulun",
+   "Gad and Asher"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Zilpah, Leah’s handmaid: Gad, and Asher.",
+  "ref": "Genesis 35:26"
+ },
+ {
+  "id": "genesis-35-h-14",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Isaac when he died?",
+  "choices": [
+   "An hundred and twenty",
+   "An hundred and fourscore years",
+   "An hundred and forty-seven",
+   "Two hundred years"
+  ],
+  "answer": 1,
+  "explanation": "The days of Isaac were an hundred and fourscore years.",
+  "ref": "Genesis 35:28"
+ },
+ {
+  "id": "genesis-35-h-15",
+  "chapter": 35,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose handmaid was Bilhah, the mother of Dan and Naphtali?",
+  "choices": [
+   "Leah's",
+   "Rebekah's",
+   "Rachel's",
+   "Sarah's"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Bilhah, Rachel’s handmaid; Dan, and Naphtali.",
+  "ref": "Genesis 35:25"
+ },
+ {
   "id": "old-genesis-36-2",
   "chapter": 36,
   "level": "beginner",
@@ -11902,6 +12190,310 @@
   "answer": 1,
   "explanation": "The chapter mainly records the family line, dukes, and kings connected to Esau.",
   "ref": "Genesis 36:1"
+ },
+ {
+  "id": "genesis-36-e-01",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which land were Esau's first sons born?",
+  "choices": [
+   "Egypt",
+   "Seir",
+   "Haran",
+   "Canaan"
+  ],
+  "answer": 3,
+  "explanation": "These are the sons of Esau, which were born unto him in the land of Canaan.",
+  "ref": "Genesis 36:5"
+ },
+ {
+  "id": "genesis-36-m-01",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who reigned in Edom after Bela died?",
+  "choices": [
+   "Hadad",
+   "Husham",
+   "Samlah",
+   "Jobab"
+  ],
+  "answer": 3,
+  "explanation": "Bela died, and Jobab the son of Zerah of Bozrah reigned in his stead.",
+  "ref": "Genesis 36:33"
+ },
+ {
+  "id": "genesis-36-m-02",
+  "chapter": 36,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Lotan's sister?",
+  "choices": [
+   "Aholibamah",
+   "Adah",
+   "Timna",
+   "Mehetabel"
+  ],
+  "answer": 2,
+  "explanation": "Lotan’s sister was Timna.",
+  "ref": "Genesis 36:22"
+ },
+ {
+  "id": "genesis-36-m-03",
+  "chapter": 36,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were the children of Dishan?",
+  "choices": [
+   "Hori and Hemam",
+   "Teman and Omar",
+   "Uz and Aran",
+   "Nahath and Zerah"
+  ],
+  "answer": 2,
+  "explanation": "The children of Dishan are these: Uz, and Aran.",
+  "ref": "Genesis 36:28"
+ },
+ {
+  "id": "genesis-36-h-01",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Eliphaz?",
+  "choices": [
+   "Nahath",
+   "Zerah",
+   "Teman",
+   "Jeush"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Eliphaz were Teman, Omar, Zepho, and Gatam, and Kenaz.",
+  "ref": "Genesis 36:11"
+ },
+ {
+  "id": "genesis-36-h-02",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Reuel?",
+  "choices": [
+   "Omar",
+   "Kenaz",
+   "Shammah",
+   "Korah"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Reuel: Nahath, and Zerah, Shammah, and Mizzah.",
+  "ref": "Genesis 36:13"
+ },
+ {
+  "id": "genesis-36-h-03",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Which wife of Esau bare Jeush, Jaalam and Korah?",
+  "choices": [
+   "Adah",
+   "Bashemath",
+   "Timna",
+   "Aholibamah"
+  ],
+  "answer": 3,
+  "explanation": "Aholibamah bare Jeush, and Jaalam, and Korah.",
+  "ref": "Genesis 36:5"
+ },
+ {
+  "id": "genesis-36-h-04",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose sister was Esau's wife Bashemath?",
+  "choices": [
+   "Ishmael",
+   "Reuel",
+   "Nebajoth",
+   "Zibeon"
+  ],
+  "answer": 2,
+  "explanation": "Bashemath Ishmael’s daughter, sister of Nebajoth.",
+  "ref": "Genesis 36:3"
+ },
+ {
+  "id": "genesis-36-h-05",
+  "chapter": 36,
+  "level": "hard",
+  "category": "place",
+  "question": "What was the name of Bela's city in Edom?",
+  "choices": [
+   "Dinhabah",
+   "Avith",
+   "Pau",
+   "Bozrah"
+  ],
+  "answer": 0,
+  "explanation": "Bela the son of Beor reigned in Edom: and the name of his city was Dinhabah.",
+  "ref": "Genesis 36:32"
+ },
+ {
+  "id": "genesis-36-h-06",
+  "chapter": 36,
+  "level": "hard",
+  "category": "place",
+  "question": "What was the name of King Hadad's city?",
+  "choices": [
+   "Dinhabah",
+   "Pau",
+   "Rehoboth",
+   "Avith"
+  ],
+  "answer": 3,
+  "explanation": "Hadad the son of Bedad reigned: and the name of his city was Avith.",
+  "ref": "Genesis 36:35"
+ },
+ {
+  "id": "genesis-36-h-07",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was King Hadad, who smote Midian in the field of Moab?",
+  "choices": [
+   "Beor",
+   "Achbor",
+   "Zerah",
+   "Bedad"
+  ],
+  "answer": 3,
+  "explanation": "Hadad the son of Bedad, who smote Midian in the field of Moab, reigned.",
+  "ref": "Genesis 36:35"
+ },
+ {
+  "id": "genesis-36-h-08",
+  "chapter": 36,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city did King Jobab come from?",
+  "choices": [
+   "Masrekah",
+   "Rehoboth",
+   "Temani",
+   "Bozrah"
+  ],
+  "answer": 3,
+  "explanation": "Jobab the son of Zerah of Bozrah reigned in his stead.",
+  "ref": "Genesis 36:33"
+ },
+ {
+  "id": "genesis-36-h-09",
+  "chapter": 36,
+  "level": "hard",
+  "category": "place",
+  "question": "Husham, a king of Edom, came from which land?",
+  "choices": [
+   "Masrekah",
+   "Temani",
+   "Moab",
+   "Seir"
+  ],
+  "answer": 1,
+  "explanation": "Husham of the land of Temani reigned in his stead.",
+  "ref": "Genesis 36:34"
+ },
+ {
+  "id": "genesis-36-h-10",
+  "chapter": 36,
+  "level": "hard",
+  "category": "place",
+  "question": "Samlah, a king of Edom, came from which city?",
+  "choices": [
+   "Bozrah",
+   "Dinhabah",
+   "Pau",
+   "Masrekah"
+  ],
+  "answer": 3,
+  "explanation": "Samlah of Masrekah reigned in his stead.",
+  "ref": "Genesis 36:36"
+ },
+ {
+  "id": "genesis-36-h-11",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Baal-hanan, a king of Edom, was the son of whom?",
+  "choices": [
+   "Bedad",
+   "Beor",
+   "Achbor",
+   "Zerah"
+  ],
+  "answer": 2,
+  "explanation": "Baal-hanan the son of Achbor reigned in his stead.",
+  "ref": "Genesis 36:38"
+ },
+ {
+  "id": "genesis-36-h-12",
+  "chapter": 36,
+  "level": "hard",
+  "category": "place",
+  "question": "What was the name of King Hadar's city?",
+  "choices": [
+   "Avith",
+   "Pau",
+   "Dinhabah",
+   "Temani"
+  ],
+  "answer": 1,
+  "explanation": "Hadar reigned in his stead: and the name of his city was Pau.",
+  "ref": "Genesis 36:39"
+ },
+ {
+  "id": "genesis-36-h-13",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose asses was Anah feeding when he found the mules?",
+  "choices": [
+   "Esau's",
+   "Seir's",
+   "Lotan's",
+   "Zibeon his father's"
+  ],
+  "answer": 3,
+  "explanation": "Anah found the mules in the wilderness, as he fed the asses of Zibeon his father.",
+  "ref": "Genesis 36:24"
+ },
+ {
+  "id": "genesis-36-h-14",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a duke of the sons of Eliphaz?",
+  "choices": [
+   "Kenaz",
+   "Nahath",
+   "Mizzah",
+   "Jaalam"
+  ],
+  "answer": 0,
+  "explanation": "These were dukes of the sons of Eliphaz: duke Teman, duke Omar, duke Zepho, duke Kenaz.",
+  "ref": "Genesis 36:15"
+ },
+ {
+  "id": "genesis-36-h-15",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a child of Lotan the Horite?",
+  "choices": [
+   "Uz",
+   "Aran",
+   "Akan",
+   "Hemam"
+  ],
+  "answer": 3,
+  "explanation": "The children of Lotan were Hori and Hemam.",
+  "ref": "Genesis 36:22"
  },
  {
   "id": "old-genesis-37-1",
