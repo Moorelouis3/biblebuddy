@@ -443,4 +443,13 @@ html.bb-native.bb-ios .bbm-board { padding-top: calc(12px + max(env(safe-area-in
   animation: bbm-spark-fly .45s ease-out forwards; }
 @keyframes bbm-spark-fly { from { transform: translate(0,0) scale(1); opacity:1; } to { transform: translate(var(--sx), var(--sy)) scale(.2); opacity:0; } }
 .bbm-grid.is-reduced .bbm-shard, .bbm-grid.is-reduced .bbm-spark { display:none; }
+/* Board numbers on the map coins: in front, bold, with a dark outline and a
+   drop shadow so they read over the coin art and the padlock (Louis,
+   2026-11-23: "the numbers on top of the boards are hard to read"). */
+.bbm-medal-num { position:relative; z-index:2; font-size: 34px; font-weight: 900; line-height: 1; color:#fff8e1 !important;
+  -webkit-text-stroke: 1.5px #3a1d06; paint-order: stroke fill;
+  text-shadow: 0 2px 0 #3a1d06, 0 0 2px #3a1d06, 0 3px 8px rgba(0,0,0,.85); }
+.bbm-medal.is-locked .bbm-medal-num { font-size: 30px; }
+/* Long book names (Leviticus, Deuteronomy) get a wider ribbon and smaller type so the word fits. */
+.bbm-ribbon.is-long { width: 270px; font-size: 20px; letter-spacing: 0; }
 `;

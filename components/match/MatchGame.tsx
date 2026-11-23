@@ -570,7 +570,7 @@ function GenesisMap({
         <button type="button" className="bbm-roundbtn" onClick={onBack} aria-label="Back">
           ←
         </button>
-        <div className="bbm-ribbon">{book}</div>
+        <div className={`bbm-ribbon ${book.length > 8 ? "is-long" : ""}`}>{book}</div>
         <span className="bbm-roundbtn is-spacer" />
       </div>
       <div ref={scroller} className="bbm-map-scroll" onScroll={onScroll}>
@@ -628,10 +628,10 @@ function GenesisMap({
                       )}
                     </span>
                   ) : unlocked && !done ? (
-                    level.number
+                    <span className="bbm-medal-num">{level.number}</span>
                   ) : !unlocked ? (
                     <>
-                      {level.number}
+                      <span className="bbm-medal-num">{level.number}</span>
                       <span className="bbm-medal-lock" aria-hidden="true">🔒</span>
                     </>
                   ) : null}
