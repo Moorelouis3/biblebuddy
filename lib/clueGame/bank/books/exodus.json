@@ -10976,6 +10976,662 @@
   "ref": "Exodus 16:22–26"
  },
  {
+  "id": "exodus-16-e-01",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which wilderness did Israel come to after Elim?",
+  "choices": [
+   "Sin",
+   "Shur",
+   "Paran",
+   "Zin"
+  ],
+  "answer": 0,
+  "explanation": "They came unto the wilderness of Sin, which is between Elim and Sinai.",
+  "ref": "Exodus 16:1"
+ },
+ {
+  "id": "exodus-16-e-02",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Against whom did the whole congregation murmur?",
+  "choices": [
+   "Joshua and Caleb",
+   "Moses and Aaron",
+   "Aaron and Hur",
+   "Moses and Jethro"
+  ],
+  "answer": 1,
+  "explanation": "The whole congregation murmured against Moses and Aaron in the wilderness.",
+  "ref": "Exodus 16:2"
+ },
+ {
+  "id": "exodus-16-e-03",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say they sat by in Egypt?",
+  "choices": [
+   "The river",
+   "The pyramids",
+   "The flesh pots",
+   "The brick kilns"
+  ],
+  "answer": 2,
+  "explanation": "Would to God we had died... when we sat by the flesh pots, and when we did eat bread to the full.",
+  "ref": "Exodus 16:3"
+ },
+ {
+  "id": "exodus-16-e-04",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people call the small round thing on the ground?",
+  "choices": [
+   "Quail",
+   "Dew",
+   "Honey",
+   "Manna"
+  ],
+  "answer": 3,
+  "explanation": "The house of Israel called the name thereof Manna.",
+  "ref": "Exodus 16:31"
+ },
+ {
+  "id": "exodus-16-e-05",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the manna like in colour?",
+  "choices": [
+   "White",
+   "Red",
+   "Brown",
+   "Golden"
+  ],
+  "answer": 0,
+  "explanation": "It was like coriander seed, white.",
+  "ref": "Exodus 16:31"
+ },
+ {
+  "id": "exodus-16-e-06",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the manna taste like?",
+  "choices": [
+   "Salted fish",
+   "Wafers made with honey",
+   "Ripe figs",
+   "Fresh milk"
+  ],
+  "answer": 1,
+  "explanation": "The taste of it was like wafers made with honey.",
+  "ref": "Exodus 16:31"
+ },
+ {
+  "id": "exodus-16-e-07",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the manna when the sun waxed hot?",
+  "choices": [
+   "It hardened",
+   "It turned to dust",
+   "It melted",
+   "It burned"
+  ],
+  "answer": 2,
+  "explanation": "When the sun waxed hot, it melted.",
+  "ref": "Exodus 16:21"
+ },
+ {
+  "id": "exodus-16-e-08",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the leftover manna bring forth when kept until morning?",
+  "choices": [
+   "Flies",
+   "Ants",
+   "Honey",
+   "Worms"
+  ],
+  "answer": 3,
+  "explanation": "Some of them left of it until the morning, and it bred worms, and stank.",
+  "ref": "Exodus 16:20"
+ },
+ {
+  "id": "exodus-16-e-09",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On which day did they gather twice as much?",
+  "choices": [
+   "The sixth day",
+   "The third day",
+   "The fourth day",
+   "The seventh day"
+  ],
+  "answer": 0,
+  "explanation": "On the sixth day they gathered twice as much bread, two omers for one man.",
+  "ref": "Exodus 16:22"
+ },
+ {
+  "id": "exodus-16-e-10",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What day did the LORD say was the holy sabbath?",
+  "choices": [
+   "The sixth day",
+   "The seventh day",
+   "The first day",
+   "The third day"
+  ],
+  "answer": 1,
+  "explanation": "On the seventh day, which is the sabbath, in it there shall be none.",
+  "ref": "Exodus 16:26"
+ },
+ {
+  "id": "exodus-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the LORD say the people would see His glory and eat?",
+  "choices": [
+   "At noon, bread only",
+   "At night, honey",
+   "At even, flesh; in the morning, bread",
+   "At dawn, water"
+  ],
+  "answer": 2,
+  "explanation": "At even ye shall eat flesh, and in the morning ye shall be filled with bread.",
+  "ref": "Exodus 16:12"
+ },
+ {
+  "id": "exodus-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD say He would rain bread from heaven?",
+  "choices": [
+   "To honour Moses",
+   "To punish Egypt",
+   "To fill the camp",
+   "To prove whether they would walk in His law"
+  ],
+  "answer": 3,
+  "explanation": "That I may prove them, whether they will walk in my law, or no.",
+  "ref": "Exodus 16:4"
+ },
+ {
+  "id": "exodus-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the glory of the LORD appear?",
+  "choices": [
+   "In the cloud",
+   "In the fire",
+   "On the mountain",
+   "In the tent"
+  ],
+  "answer": 0,
+  "explanation": "They looked toward the wilderness, and, behold, the glory of the LORD appeared in the cloud.",
+  "ref": "Exodus 16:10"
+ },
+ {
+  "id": "exodus-16-m-04",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What covered the camp at even?",
+  "choices": [
+   "The locusts",
+   "The quails",
+   "The manna",
+   "The dew"
+  ],
+  "answer": 1,
+  "explanation": "At even the quails came up, and covered the camp.",
+  "ref": "Exodus 16:13"
+ },
+ {
+  "id": "exodus-16-m-05",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What lay round about the host in the morning?",
+  "choices": [
+   "The frost",
+   "The hail",
+   "The dew",
+   "The dust"
+  ],
+  "answer": 2,
+  "explanation": "In the morning the dew lay round about the host.",
+  "ref": "Exodus 16:13"
+ },
+ {
+  "id": "exodus-16-m-06",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How small was the thing on the face of the wilderness?",
+  "choices": [
+   "As large as hail",
+   "As round as pearls",
+   "As long as reeds",
+   "As small as the hoar frost"
+  ],
+  "answer": 3,
+  "explanation": "A small round thing, as small as the hoar frost on the ground.",
+  "ref": "Exodus 16:14"
+ },
+ {
+  "id": "exodus-16-m-07",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people say when they saw it?",
+  "choices": [
+   "It is manna, for they wist not what it was",
+   "It is honey",
+   "It is snow",
+   "It is bread"
+  ],
+  "answer": 0,
+  "explanation": "They said one to another, It is manna: for they wist not what it was.",
+  "ref": "Exodus 16:15"
+ },
+ {
+  "id": "exodus-16-m-08",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much was each person to gather?",
+  "choices": [
+   "An ephah",
+   "An omer",
+   "A hin",
+   "A cubit"
+  ],
+  "answer": 1,
+  "explanation": "Gather of it every man according to his eating, an omer for every man.",
+  "ref": "Exodus 16:16"
+ },
+ {
+  "id": "exodus-16-m-09",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was said of those who gathered much and those who gathered little?",
+  "choices": [
+   "The rich had more",
+   "The strong had more",
+   "None had too much or too little",
+   "Women had less"
+  ],
+  "answer": 2,
+  "explanation": "He that gathered much had nothing over, and he that gathered little had no lack.",
+  "ref": "Exodus 16:18"
+ },
+ {
+  "id": "exodus-16-m-10",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Moses react when some left manna until morning?",
+  "choices": [
+   "He prayed for them",
+   "He laughed",
+   "He took the manna",
+   "He was wroth with them"
+  ],
+  "answer": 3,
+  "explanation": "It bred worms, and stank: and Moses was wroth with them.",
+  "ref": "Exodus 16:20"
+ },
+ {
+  "id": "exodus-16-m-11",
+  "chapter": 16,
+  "level": "medium",
+  "category": "person",
+  "question": "Who came and told Moses of the double gathering on the sixth day?",
+  "choices": [
+   "The rulers of the congregation",
+   "The priests",
+   "The elders of Egypt",
+   "The women"
+  ],
+  "answer": 0,
+  "explanation": "All the rulers of the congregation came and told Moses.",
+  "ref": "Exodus 16:22"
+ },
+ {
+  "id": "exodus-16-m-12",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say to bake or seethe on the sixth day?",
+  "choices": [
+   "Nothing at all",
+   "That which they would bake and seethe that day",
+   "Only quail",
+   "Only barley"
+  ],
+  "answer": 1,
+  "explanation": "Bake that which ye will bake to day, and seethe that ye will seethe.",
+  "ref": "Exodus 16:23"
+ },
+ {
+  "id": "exodus-16-m-13",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the manna kept for the sabbath?",
+  "choices": [
+   "It melted",
+   "It turned sweet",
+   "It did not stink or breed worms",
+   "It disappeared"
+  ],
+  "answer": 2,
+  "explanation": "They laid it up till the morning, as Moses bade: and it did not stink, neither was there any worm therein.",
+  "ref": "Exodus 16:24"
+ },
+ {
+  "id": "exodus-16-m-14",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did some people find on the seventh day?",
+  "choices": [
+   "Quails",
+   "Double portion",
+   "Honey",
+   "None"
+  ],
+  "answer": 3,
+  "explanation": "There went out some of the people on the seventh day for to gather, and they found none.",
+  "ref": "Exodus 16:27"
+ },
+ {
+  "id": "exodus-16-m-15",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Aaron lay up before the Testimony?",
+  "choices": [
+   "A pot of manna",
+   "A rod",
+   "The tablets",
+   "A lamb"
+  ],
+  "answer": 0,
+  "explanation": "As the LORD commanded Moses, so Aaron laid it up before the Testimony, to be kept.",
+  "ref": "Exodus 16:34"
+ },
+ {
+  "id": "exodus-16-m-16",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did Israel eat manna?",
+  "choices": [
+   "Seven years",
+   "Forty years",
+   "Twelve years",
+   "One year"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel did eat manna forty years.",
+  "ref": "Exodus 16:35"
+ },
+ {
+  "id": "exodus-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Between which two places was the wilderness of Sin?",
+  "choices": [
+   "Marah and Shur",
+   "Egypt and Etham",
+   "Elim and Sinai",
+   "Rephidim and Horeb"
+  ],
+  "answer": 2,
+  "explanation": "The wilderness of Sin, which is between Elim and Sinai.",
+  "ref": "Exodus 16:1"
+ },
+ {
+  "id": "exodus-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day of which month did they come to the wilderness of Sin?",
+  "choices": [
+   "The tenth of the first month",
+   "The first of the third month",
+   "The seventh of the fifth month",
+   "The fifteenth day of the second month"
+  ],
+  "answer": 3,
+  "explanation": "On the fifteenth day of the second month after their departing out of the land of Egypt.",
+  "ref": "Exodus 16:1"
+ },
+ {
+  "id": "exodus-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people say Moses and Aaron brought them forth to do?",
+  "choices": [
+   "Kill the assembly with hunger",
+   "Fight in battle",
+   "Build a city",
+   "Worship idols"
+  ],
+  "answer": 0,
+  "explanation": "Ye have brought us forth into this wilderness, to kill this whole assembly with hunger.",
+  "ref": "Exodus 16:3"
+ },
+ {
+  "id": "exodus-16-h-04",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say their murmurings were not against?",
+  "choices": [
+   "The elders",
+   "Moses and Aaron, but the LORD",
+   "The rulers",
+   "The wilderness"
+  ],
+  "answer": 1,
+  "explanation": "Your murmurings are not against us, but against the LORD.",
+  "ref": "Exodus 16:8"
+ },
+ {
+  "id": "exodus-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses ask, \"what are we?\"",
+  "choices": [
+   "Who were the elders",
+   "Who would be king",
+   "Why did they murmur against them",
+   "Where were they going"
+  ],
+  "answer": 2,
+  "explanation": "And what are we, that ye murmur against us?",
+  "ref": "Exodus 16:7"
+ },
+ {
+  "id": "exodus-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much manna did each person gather on the sixth day?",
+  "choices": [
+   "One omer",
+   "Three omers",
+   "Four omers",
+   "Two omers"
+  ],
+  "answer": 3,
+  "explanation": "They gathered twice as much bread, two omers for one man.",
+  "ref": "Exodus 16:22"
+ },
+ {
+  "id": "exodus-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say about the sabbath and the sixth day?",
+  "choices": [
+   "He gave bread of two days on the sixth day",
+   "He gave quail on the seventh",
+   "He sent rain",
+   "He sent no bread"
+  ],
+  "answer": 0,
+  "explanation": "He giveth you on the sixth day the bread of two days.",
+  "ref": "Exodus 16:29"
+ },
+ {
+  "id": "exodus-16-h-08",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say they must do on the seventh day?",
+  "choices": [
+   "Gather in the field",
+   "Abide every man in his place",
+   "Journey on",
+   "Offer sacrifices"
+  ],
+  "answer": 1,
+  "explanation": "Abide ye every man in his place, let no man go out of his place on the seventh day.",
+  "ref": "Exodus 16:29"
+ },
+ {
+  "id": "exodus-16-h-09",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD ask Moses about their refusal?",
+  "choices": [
+   "Why do you cry?",
+   "Where is the manna?",
+   "How long refuse ye to keep my commandments?",
+   "Who gathered extra?"
+  ],
+  "answer": 2,
+  "explanation": "How long refuse ye to keep my commandments and my laws?",
+  "ref": "Exodus 16:28"
+ },
+ {
+  "id": "exodus-16-h-10",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was an omer, according to the chapter?",
+  "choices": [
+   "Half of a hin",
+   "A cubit",
+   "A tenth of a shekel",
+   "The tenth part of an ephah"
+  ],
+  "answer": 3,
+  "explanation": "Now an omer is the tenth part of an ephah.",
+  "ref": "Exodus 16:36"
+ },
+ {
+  "id": "exodus-16-h-11",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was an omer full of manna kept for?",
+  "choices": [
+   "Their generations to see the bread",
+   "A sacrifice",
+   "The priests' meal",
+   "A gift for Pharaoh"
+  ],
+  "answer": 0,
+  "explanation": "Fill an omer of it to be kept for your generations; that they may see the bread wherewith I have fed you.",
+  "ref": "Exodus 16:32"
+ },
+ {
+  "id": "exodus-16-h-12",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when did Israel eat manna?",
+  "choices": [
+   "Until Sinai",
+   "Until they came to a land inhabited",
+   "Until Jordan",
+   "Until a feast"
+  ],
+  "answer": 1,
+  "explanation": "They did eat manna, until they came unto the borders of the land of Canaan.",
+  "ref": "Exodus 16:35"
+ },
+ {
+  "id": "exodus-16-h-13",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say Aaron should take for the manna?",
+  "choices": [
+   "A basket",
+   "A cloth",
+   "A pot",
+   "A jar of oil"
+  ],
+  "answer": 2,
+  "explanation": "Take a pot, and put an omer full of manna therein.",
+  "ref": "Exodus 16:33"
+ },
+ {
+  "id": "exodus-16-h-14",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the manna compared to in size and shape?",
+  "choices": [
+   "Barley kernels",
+   "Mustard seed",
+   "Pearls",
+   "Coriander seed"
+  ],
+  "answer": 3,
+  "explanation": "It was like coriander seed, white.",
+  "ref": "Exodus 16:31"
+ },
+ {
+  "id": "exodus-16-h-15",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to say on the sixth day to prepare?",
+  "choices": [
+   "Prepare what they bring in, twice as much",
+   "Gather nothing",
+   "Bake a loaf",
+   "Sacrifice a lamb"
+  ],
+  "answer": 0,
+  "explanation": "On the sixth day they shall prepare that which they bring in; and it shall be twice as much as they gather daily.",
+  "ref": "Exodus 16:5"
+ },
+ {
   "id": "old-exodus-17-1",
   "chapter": 17,
   "level": "beginner",
