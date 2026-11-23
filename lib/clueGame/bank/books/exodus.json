@@ -4400,6 +4400,646 @@
   "ref": "Exodus 7:25"
  },
  {
+  "id": "exodus-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which brother of Moses went in with him to Pharaoh?",
+  "choices": [
+   "Joshua",
+   "Eleazar",
+   "Aaron",
+   "Hur"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said, Aaron thy brother shall speak unto Pharaoh.",
+  "ref": "Exodus 7:2"
+ },
+ {
+  "id": "exodus-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Before whom did Aaron cast down his rod?",
+  "choices": [
+   "The people of Goshen",
+   "The elders of Israel",
+   "Jethro",
+   "Pharaoh and his servants"
+  ],
+  "answer": 3,
+  "explanation": "Aaron cast down his rod before Pharaoh, and before his servants, and it became a serpent.",
+  "ref": "Exodus 7:10"
+ },
+ {
+  "id": "exodus-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Moses when he and Aaron spoke to Pharaoh?",
+  "choices": [
+   "Sixty",
+   "Forty",
+   "Eighty",
+   "A hundred"
+  ],
+  "answer": 2,
+  "explanation": "Moses was fourscore years old.",
+  "ref": "Exodus 7:7"
+ },
+ {
+  "id": "exodus-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the same with their enchantments?",
+  "choices": [
+   "Pharaoh's sons",
+   "The priests of Midian",
+   "The elders of Israel",
+   "The magicians of Egypt"
+  ],
+  "answer": 3,
+  "explanation": "The magicians of Egypt, they also did in like manner with their enchantments.",
+  "ref": "Exodus 7:11"
+ },
+ {
+  "id": "exodus-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the fish in the river do after the plague?",
+  "choices": [
+   "Swam away",
+   "Leapt out",
+   "Died",
+   "Turned red"
+  ],
+  "answer": 2,
+  "explanation": "The fish that was in the river died; and the river stank.",
+  "ref": "Exodus 7:21"
+ },
+ {
+  "id": "exodus-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "To where did Pharaoh go out in the morning?",
+  "choices": [
+   "The water",
+   "The palace of Goshen",
+   "The field",
+   "The temple"
+  ],
+  "answer": 0,
+  "explanation": "Lo, he goeth out unto the water; and thou shalt stand by the river's brink.",
+  "ref": "Exodus 7:15"
+ },
+ {
+  "id": "exodus-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What could the Egyptians not do with the river water?",
+  "choices": [
+   "Cross it",
+   "Wash in it",
+   "Drink it",
+   "Fish in it"
+  ],
+  "answer": 2,
+  "explanation": "The Egyptians could not drink of the water of the river.",
+  "ref": "Exodus 7:21"
+ },
+ {
+  "id": "exodus-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Egyptians dig round about the river for?",
+  "choices": [
+   "Fish",
+   "Water to drink",
+   "Clay",
+   "Bricks"
+  ],
+  "answer": 1,
+  "explanation": "All the Egyptians digged round about the river for water to drink.",
+  "ref": "Exodus 7:24"
+ },
+ {
+  "id": "exodus-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Pharaoh do after the magicians also turned water to blood?",
+  "choices": [
+   "Let Israel go",
+   "Called his army",
+   "Fell on his face",
+   "Turned and went into his house"
+  ],
+  "answer": 3,
+  "explanation": "Pharaoh turned and went into his house, neither did he set his heart to this also.",
+  "ref": "Exodus 7:23"
+ },
+ {
+  "id": "exodus-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say He would do with the rod in His hand upon the river?",
+  "choices": [
+   "Freeze them",
+   "Smite the waters",
+   "Dry them",
+   "Divide them"
+  ],
+  "answer": 1,
+  "explanation": "I will smite with the rod that is in mine hand upon the waters which are in the river.",
+  "ref": "Exodus 7:17"
+ },
+ {
+  "id": "exodus-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How old was Aaron when he and Moses spoke to Pharaoh?",
+  "choices": [
+   "Seventy-three",
+   "Eighty",
+   "Ninety",
+   "Eighty-three"
+  ],
+  "answer": 3,
+  "explanation": "Moses was fourscore years old, and Aaron fourscore and three years old.",
+  "ref": "Exodus 7:7"
+ },
+ {
+  "id": "exodus-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Pharaoh call besides the magicians?",
+  "choices": [
+   "The wise men and the sorcerers",
+   "His army captains",
+   "His sons",
+   "The elders of Israel"
+  ],
+  "answer": 0,
+  "explanation": "Then Pharaoh also called the wise men and the sorcerers.",
+  "ref": "Exodus 7:11"
+ },
+ {
+  "id": "exodus-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would do to Pharaoh's heart?",
+  "choices": [
+   "Soften it",
+   "Fill it with fear",
+   "Harden it",
+   "Break it"
+  ],
+  "answer": 2,
+  "explanation": "I will harden Pharaoh's heart, and multiply my signs and my wonders in the land of Egypt.",
+  "ref": "Exodus 7:3"
+ },
+ {
+  "id": "exodus-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD multiply in Egypt?",
+  "choices": [
+   "His armies only",
+   "His signs and wonders",
+   "His blessings",
+   "His judges"
+  ],
+  "answer": 1,
+  "explanation": "I will multiply my signs and my wonders in the land of Egypt.",
+  "ref": "Exodus 7:3"
+ },
+ {
+  "id": "exodus-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who would know that He is the LORD when He stretched out His hand on Egypt?",
+  "choices": [
+   "The Egyptians",
+   "The elders",
+   "The Midianites",
+   "Pharaoh's sons only"
+  ],
+  "answer": 0,
+  "explanation": "The Egyptians shall know that I am the LORD.",
+  "ref": "Exodus 7:5"
+ },
+ {
+  "id": "exodus-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Moses to stand to meet Pharaoh?",
+  "choices": [
+   "By the river's brink",
+   "On the hill",
+   "In Goshen",
+   "At the palace gate"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt stand by the river's brink against he come.",
+  "ref": "Exodus 7:15"
+ },
+ {
+  "id": "exodus-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Moses to take in his hand to meet Pharaoh?",
+  "choices": [
+   "Bread",
+   "The rod which was turned to a serpent",
+   "A golden staff",
+   "A scroll"
+  ],
+  "answer": 1,
+  "explanation": "The rod which was turned to a serpent shalt thou take in thine hand.",
+  "ref": "Exodus 7:15"
+ },
+ {
+  "id": "exodus-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where were they to serve the LORD, according to the message?",
+  "choices": [
+   "In Goshen",
+   "On the river",
+   "In the wilderness",
+   "In Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Let my people go, that they may serve me in the wilderness.",
+  "ref": "Exodus 7:16"
+ },
+ {
+  "id": "exodus-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the river do besides turn to blood?",
+  "choices": [
+   "Freeze",
+   "Overflow",
+   "Dry up",
+   "Stink"
+  ],
+  "answer": 3,
+  "explanation": "The fish that is in the river shall die, and the river shall stink.",
+  "ref": "Exodus 7:18"
+ },
+ {
+  "id": "exodus-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what two kinds of vessels was there blood?",
+  "choices": [
+   "Gold and silver",
+   "Wood and stone",
+   "Skin and iron",
+   "Clay and bronze"
+  ],
+  "answer": 1,
+  "explanation": "There may be blood throughout all the land of Egypt, both in vessels of wood and in vessels of stone.",
+  "ref": "Exodus 7:19"
+ },
+ {
+  "id": "exodus-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the magicians do after the waters turned to blood?",
+  "choices": [
+   "Did so with their enchantments",
+   "Fled",
+   "Confessed God's power",
+   "Fell down"
+  ],
+  "answer": 0,
+  "explanation": "The magicians of Egypt did so with their enchantments.",
+  "ref": "Exodus 7:22"
+ },
+ {
+  "id": "exodus-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to say to Aaron about the waters?",
+  "choices": [
+   "Take thy rod and stretch out thine hand",
+   "Pour out the river",
+   "Strike the river with a stone",
+   "Pray at the river"
+  ],
+  "answer": 0,
+  "explanation": "Say unto Aaron, Take thy rod, and stretch out thine hand upon the waters of Egypt.",
+  "ref": "Exodus 7:19"
+ },
+ {
+  "id": "exodus-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh refuse to do, the LORD said?",
+  "choices": [
+   "Meet Moses",
+   "Build a house",
+   "Call the magicians",
+   "Let the people go"
+  ],
+  "answer": 3,
+  "explanation": "Pharaoh's heart is hardened, he refuseth to let the people go.",
+  "ref": "Exodus 7:14"
+ },
+ {
+  "id": "exodus-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the LORD say Moses would be to Pharaoh?",
+  "choices": [
+   "A servant",
+   "A priest",
+   "A prophet",
+   "A god"
+  ],
+  "answer": 3,
+  "explanation": "See, I have made thee a god to Pharaoh.",
+  "ref": "Exodus 7:1"
+ },
+ {
+  "id": "exodus-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was to speak all that the LORD commanded?",
+  "choices": [
+   "Moses",
+   "Pharaoh",
+   "Aaron",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt speak all that I command thee: and Aaron thy brother shall speak unto Pharaoh.",
+  "ref": "Exodus 7:2"
+ },
+ {
+  "id": "exodus-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Pharaoh say to Moses and Aaron before the first rod sign?",
+  "choices": [
+   "Leave Egypt",
+   "Bow down",
+   "Bring gifts",
+   "Shew a miracle"
+  ],
+  "answer": 3,
+  "explanation": "When Pharaoh shall speak unto you, saying, Shew a miracle for you.",
+  "ref": "Exodus 7:9"
+ },
+ {
+  "id": "exodus-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who cast down every man his rod?",
+  "choices": [
+   "Egypt's priests",
+   "The magicians",
+   "The elders",
+   "Pharaoh's sons"
+  ],
+  "answer": 1,
+  "explanation": "They cast down every man his rod, and they became serpents.",
+  "ref": "Exodus 7:12"
+ },
+ {
+  "id": "exodus-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD bring forth out of Egypt by great judgments?",
+  "choices": [
+   "Pharaoh's gold",
+   "The magicians",
+   "The cattle",
+   "His armies and His people"
+  ],
+  "answer": 3,
+  "explanation": "Bring forth mine armies, and my people the children of Israel, out of the land of Egypt by great judgments.",
+  "ref": "Exodus 7:4"
+ },
+ {
+  "id": "exodus-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At what time of day was Moses to meet Pharaoh at the river?",
+  "choices": [
+   "At noon",
+   "At night",
+   "In the morning",
+   "In the evening"
+  ],
+  "answer": 2,
+  "explanation": "Get thee unto Pharaoh in the morning.",
+  "ref": "Exodus 7:15"
+ },
+ {
+  "id": "exodus-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years older was Aaron than Moses?",
+  "choices": [
+   "Five",
+   "Three",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "Moses was fourscore years old, and Aaron fourscore and three.",
+  "ref": "Exodus 7:7"
+ },
+ {
+  "id": "exodus-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Egyptians loathe to do?",
+  "choices": [
+   "Eat fish",
+   "Drink the river water",
+   "Look upon Moses",
+   "Touch the rod"
+  ],
+  "answer": 1,
+  "explanation": "The Egyptians shall lothe to drink of the water of the river.",
+  "ref": "Exodus 7:18"
+ },
+ {
+  "id": "exodus-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Pharaoh know by the water turning to blood?",
+  "choices": [
+   "That the magicians were weak",
+   "That Egypt was cursed forever",
+   "That the LORD is the LORD",
+   "That Moses was king"
+  ],
+  "answer": 2,
+  "explanation": "In this thou shalt know that I am the LORD.",
+  "ref": "Exodus 7:17"
+ },
+ {
+  "id": "exodus-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses and Aaron do about the LORD's commands?",
+  "choices": [
+   "Refused at first",
+   "Asked for a sign",
+   "Hesitated",
+   "Did as the LORD commanded them"
+  ],
+  "answer": 3,
+  "explanation": "Moses and Aaron did as the LORD commanded them, so did they.",
+  "ref": "Exodus 7:6"
+ },
+ {
+  "id": "exodus-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Pharaoh would not do, so He could lay His hand on Egypt?",
+  "choices": [
+   "Sit down with them",
+   "Hearken unto them",
+   "Meet them",
+   "Pay them"
+  ],
+  "answer": 1,
+  "explanation": "Pharaoh shall not hearken unto you, that I may lay my hand upon Egypt.",
+  "ref": "Exodus 7:4"
+ },
+ {
+  "id": "exodus-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD God of the Hebrews say Pharaoh had not done hitherto?",
+  "choices": [
+   "Meet Moses",
+   "Hear",
+   "Obey in Egypt",
+   "See"
+  ],
+  "answer": 1,
+  "explanation": "Behold, hitherto thou wouldest not hear.",
+  "ref": "Exodus 7:16"
+ },
+ {
+  "id": "exodus-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh not set his heart to?",
+  "choices": [
+   "This also",
+   "The rod",
+   "The plague of frogs",
+   "The river"
+  ],
+  "answer": 0,
+  "explanation": "Neither did he set his heart to this also.",
+  "ref": "Exodus 7:23"
+ },
+ {
+  "id": "exodus-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose sight did Moses and Aaron smite the river?",
+  "choices": [
+   "The magicians",
+   "Pharaoh and his servants",
+   "The elders",
+   "Pharaoh's army"
+  ],
+  "answer": 1,
+  "explanation": "In the sight of Pharaoh, and in the sight of his servants.",
+  "ref": "Exodus 7:20"
+ },
+ {
+  "id": "exodus-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which waters did the LORD say to stretch the hand over, besides rivers?",
+  "choices": [
+   "Springs on mountains",
+   "The sea",
+   "Wells only",
+   "Streams, ponds and pools"
+  ],
+  "answer": 3,
+  "explanation": "Upon their streams, and upon their rivers, and upon their ponds, and upon all their pools of water.",
+  "ref": "Exodus 7:19"
+ },
+ {
+  "id": "exodus-7-h-20",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom was Moses to tell to take his rod and cast it before Pharaoh?",
+  "choices": [
+   "Aaron",
+   "Pharaoh’s servants",
+   "The elders",
+   "Joshua"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt say unto Aaron, Take thy rod, and cast it before Pharaoh, and it shall become a serpent.",
+  "ref": "Exodus 7:9"
+ },
+ {
+  "id": "exodus-7-h-21",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the text say about Pharaoh’s not hearkening after the magicians?",
+  "choices": [
+   "It surprised Moses",
+   "It was Aaron’s fault",
+   "It lasted a day",
+   "It was as the LORD had said"
+  ],
+  "answer": 3,
+  "explanation": "Pharaoh’s heart was hardened, neither did he hearken unto them; as the LORD had said.",
+  "ref": "Exodus 7:22"
+ },
+ {
   "id": "old-exodus-8-1",
   "chapter": 8,
   "level": "beginner",
