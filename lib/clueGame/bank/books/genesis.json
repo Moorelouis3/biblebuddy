@@ -5283,17 +5283,17 @@
   "id": "old-genesis-16-1",
   "chapter": 16,
   "level": "beginner",
-  "category": "keyword",
-  "question": "Why did Sarai give Hagar to Abram?",
+  "category": "person",
+  "question": "Whom did the angel of the LORD speak to by the fountain?",
   "choices": [
-   "Because Hagar was widowed",
-   "Because Sarai had no children and tried to obtain a family through her",
-   "Because God commanded it",
-   "Because Abram asked for another wife"
+   "Sarai",
+   "Hagar",
+   "Abram",
+   "Lot"
   ],
   "answer": 1,
-  "explanation": "Sarai tried to solve her barrenness by giving Hagar to Abram.",
-  "ref": "Genesis 16:1–2"
+  "explanation": "The angel of the LORD found Hagar by a fountain of water in the wilderness and spoke to her.",
+  "ref": "Genesis 16:7–8"
  },
  {
   "id": "old-genesis-16-2",
@@ -5342,6 +5342,294 @@
   "answer": 1,
   "explanation": "Abram was 86 years old when Hagar bore Ishmael.",
   "ref": "Genesis 16:16"
+ },
+ {
+  "id": "genesis-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Sarai do to Hagar after Abram said to do as she pleased?",
+  "choices": [
+   "Dealt hardly with her",
+   "Sent her to Egypt",
+   "Gave her land",
+   "Made her a queen"
+  ],
+  "answer": 0,
+  "explanation": "When Sarai dealt hardly with her, she fled from her face.",
+  "ref": "Genesis 16:6"
+ },
+ {
+  "id": "genesis-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Sarai ask Abram to do?",
+  "choices": [
+   "Go in unto her maid",
+   "Take another wife from Egypt",
+   "Send Hagar away",
+   "Build an altar"
+  ],
+  "answer": 0,
+  "explanation": "Sarai said, I pray thee, go in unto my maid; it may be that I may obtain children by her.",
+  "ref": "Genesis 16:2"
+ },
+ {
+  "id": "genesis-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose voice did Abram obey when Sarai made her request?",
+  "choices": [
+   "Sarai’s",
+   "Hagar’s",
+   "Lot’s",
+   "The LORD’s"
+  ],
+  "answer": 0,
+  "explanation": "Abram hearkened to the voice of Sarai.",
+  "ref": "Genesis 16:2"
+ },
+ {
+  "id": "genesis-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Sarai said, “My wrong be upon...” whom?",
+  "choices": [
+   "Abram",
+   "Hagar",
+   "The LORD",
+   "Lot"
+  ],
+  "answer": 0,
+  "explanation": "Sarai said unto Abram, My wrong be upon thee.",
+  "ref": "Genesis 16:5"
+ },
+ {
+  "id": "genesis-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Sarai gave Hagar to Abram to be his what?",
+  "choices": [
+   "Wife",
+   "Servant",
+   "Sister",
+   "Shepherd"
+  ],
+  "answer": 0,
+  "explanation": "Sarai gave her to her husband Abram to be his wife.",
+  "ref": "Genesis 16:3"
+ },
+ {
+  "id": "genesis-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two questions did the angel ask Hagar?",
+  "choices": [
+   "Where she came from and where she was going",
+   "Who her father was and why she wept",
+   "Whose servant she was and what she ate",
+   "Where Sarai was and why she hid"
+  ],
+  "answer": 0,
+  "explanation": "The angel said, Hagar, Sarai’s maid, whence camest thou? and whither wilt thou go?",
+  "ref": "Genesis 16:8"
+ },
+ {
+  "id": "genesis-16-h-04",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the angel tell Hagar to do beside returning to Sarai?",
+  "choices": [
+   "Submit herself under her hands",
+   "Build an altar",
+   "Take Ishmael to Egypt",
+   "Say nothing"
+  ],
+  "answer": 0,
+  "explanation": "Return to thy mistress, and submit thyself under her hands.",
+  "ref": "Genesis 16:9"
+ },
+ {
+  "id": "genesis-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the angel say about Ishmael’s hand?",
+  "choices": [
+   "It would be against every man",
+   "It would build cities",
+   "It would heal many",
+   "It would hold a sceptre"
+  ],
+  "answer": 0,
+  "explanation": "His hand will be against every man, and every man’s hand against him.",
+  "ref": "Genesis 16:12"
+ },
+ {
+  "id": "genesis-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "The well Beer-lahai-roi lay between which two places?",
+  "choices": [
+   "Kadesh and Bered",
+   "Shur and Egypt",
+   "Haran and Ur",
+   "Bethel and Hai"
+  ],
+  "answer": 0,
+  "explanation": "Behold, it is between Kadesh and Bered.",
+  "ref": "Genesis 16:14"
+ },
+ {
+  "id": "genesis-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hagar ask after the angel spoke to her?",
+  "choices": [
+   "Have I also here looked after him that seeth me?",
+   "Who will care for my son?",
+   "Where can I find water?",
+   "Why have I been sent away?"
+  ],
+  "answer": 0,
+  "explanation": "She said, Have I also here looked after him that seeth me?",
+  "ref": "Genesis 16:13"
+ },
+ {
+  "id": "genesis-16-h-08",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the angel tell Hagar she would bear?",
+  "choices": [
+   "A son",
+   "Twins",
+   "A daughter",
+   "A king"
+  ],
+  "answer": 0,
+  "explanation": "Behold, thou art with child, and shalt bear a son.",
+  "ref": "Genesis 16:11"
+ },
+ {
+  "id": "genesis-16-h-09",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Sarai said she had given her maid into Abram’s what?",
+  "choices": [
+   "Bosom",
+   "Hand",
+   "House",
+   "Care"
+  ],
+  "answer": 0,
+  "explanation": "I have given my maid into thy bosom.",
+  "ref": "Genesis 16:5"
+ },
+ {
+  "id": "genesis-16-h-10",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Hagar describe Sarai when the angel asked where she was going?",
+  "choices": [
+   "My mistress",
+   "My sister",
+   "My queen",
+   "My judge"
+  ],
+  "answer": 0,
+  "explanation": "She said, I flee from the face of my mistress Sarai.",
+  "ref": "Genesis 16:8"
+ },
+ {
+  "id": "genesis-16-h-11",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Hagar’s work in Sarai’s house?",
+  "choices": [
+   "Handmaid",
+   "Shepherd",
+   "Cook",
+   "Weaver"
+  ],
+  "answer": 0,
+  "explanation": "She had an handmaid, an Egyptian, whose name was Hagar.",
+  "ref": "Genesis 16:1"
+ },
+ {
+  "id": "genesis-16-h-12",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Who took Hagar and gave her to Abram?",
+  "choices": [
+   "Sarai",
+   "Lot",
+   "The angel",
+   "Pharaoh"
+  ],
+  "answer": 0,
+  "explanation": "Sarai Abram’s wife took Hagar her maid the Egyptian.",
+  "ref": "Genesis 16:3"
+ },
+ {
+  "id": "genesis-16-h-13",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Sarai said she was despised in whose eyes?",
+  "choices": [
+   "Hagar’s",
+   "Abram’s",
+   "The angel’s",
+   "Pharaoh’s"
+  ],
+  "answer": 0,
+  "explanation": "When she saw that she had conceived, I was despised in her eyes.",
+  "ref": "Genesis 16:5"
+ },
+ {
+  "id": "genesis-16-h-14",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what kind of place did the angel find Hagar by the fountain?",
+  "choices": [
+   "The wilderness",
+   "A city",
+   "A garden",
+   "A cave"
+  ],
+  "answer": 0,
+  "explanation": "The angel of the LORD found her by a fountain of water in the wilderness.",
+  "ref": "Genesis 16:7"
+ },
+ {
+  "id": "genesis-16-h-15",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Sarai ask to judge between her and Abram?",
+  "choices": [
+   "The LORD",
+   "Hagar",
+   "Pharaoh",
+   "The angel"
+  ],
+  "answer": 0,
+  "explanation": "Sarai said, the LORD judge between me and thee.",
+  "ref": "Genesis 16:5"
  },
  {
   "id": "old-genesis-17-5",
