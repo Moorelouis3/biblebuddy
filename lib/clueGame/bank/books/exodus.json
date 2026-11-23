@@ -21104,6 +21104,662 @@
   "ref": "Exodus 30:32–33"
  },
  {
+  "id": "exodus-30-e-01",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the altar of incense overlaid with?",
+  "choices": [
+   "Brass",
+   "Pure gold",
+   "Silver",
+   "Bronze"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt overlay it with pure gold, the top thereof, and the sides thereof round about.",
+  "ref": "Exodus 30:3"
+ },
+ {
+  "id": "exodus-30-e-02",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the altar of incense to be put?",
+  "choices": [
+   "Before the veil by the ark of the testimony",
+   "In the court",
+   "Beside the laver",
+   "Outside the camp"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt put it before the vail that is by the ark of the testimony.",
+  "ref": "Exodus 30:6"
+ },
+ {
+  "id": "exodus-30-e-03",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was to burn sweet incense on the altar?",
+  "choices": [
+   "Moses",
+   "Joshua",
+   "The elders",
+   "Aaron"
+  ],
+  "answer": 3,
+  "explanation": "Aaron shall burn thereon sweet incense every morning.",
+  "ref": "Exodus 30:7"
+ },
+ {
+  "id": "exodus-30-e-04",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the laver made of?",
+  "choices": [
+   "Gold",
+   "Silver",
+   "Brass",
+   "Iron"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt also make a laver of brass, and his foot also of brass.",
+  "ref": "Exodus 30:18"
+ },
+ {
+  "id": "exodus-30-e-05",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the laver to be put?",
+  "choices": [
+   "Inside the holy place",
+   "Between the tabernacle and the altar",
+   "Behind the veil",
+   "At the gate of the court"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt put it between the tabernacle of the congregation and the altar.",
+  "ref": "Exodus 30:18"
+ },
+ {
+  "id": "exodus-30-e-06",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was put in the laver?",
+  "choices": [
+   "Water",
+   "Oil",
+   "Wine",
+   "Blood"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt put water therein.",
+  "ref": "Exodus 30:18"
+ },
+ {
+  "id": "exodus-30-e-07",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the ransom money keep from coming on Israel when they were numbered?",
+  "choices": [
+   "A famine",
+   "A war",
+   "A drought",
+   "A plague"
+  ],
+  "answer": 3,
+  "explanation": "That there be no plague among them, when thou numberest them.",
+  "ref": "Exodus 30:12"
+ },
+ {
+  "id": "exodus-30-e-08",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was to be anointed with the holy oil besides the tabernacle?",
+  "choices": [
+   "The elders",
+   "The Levites",
+   "Aaron and his sons",
+   "All Israel"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt anoint Aaron and his sons, and consecrate them.",
+  "ref": "Exodus 30:30"
+ },
+ {
+  "id": "exodus-30-e-09",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to anyone who made oil like the holy anointing oil?",
+  "choices": [
+   "He was fined",
+   "He was cut off from his people",
+   "He was stoned at once",
+   "He was exiled to Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever compoundeth any like it... shall even be cut off from his people.",
+  "ref": "Exodus 30:33"
+ },
+ {
+  "id": "exodus-30-e-10",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what age were men numbered and giving the offering?",
+  "choices": [
+   "Twenty years old and above",
+   "Thirteen",
+   "Thirty",
+   "Forty"
+  ],
+  "answer": 0,
+  "explanation": "Every one that passeth among them that are numbered, from twenty years old and above.",
+  "ref": "Exodus 30:14"
+ },
+ {
+  "id": "exodus-30-m-01",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How high was the altar of incense to be?",
+  "choices": [
+   "One cubit",
+   "Three cubits",
+   "Five cubits",
+   "Two cubits"
+  ],
+  "answer": 3,
+  "explanation": "A cubit the length, a cubit the breadth; and two cubits the height.",
+  "ref": "Exodus 30:2"
+ },
+ {
+  "id": "exodus-30-m-02",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long and broad was the altar of incense?",
+  "choices": [
+   "Two cubits",
+   "Three cubits",
+   "One cubit",
+   "Five cubits"
+  ],
+  "answer": 2,
+  "explanation": "A cubit shall be the length thereof, and a cubit the breadth thereof; foursquare shall it be.",
+  "ref": "Exodus 30:2"
+ },
+ {
+  "id": "exodus-30-m-03",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many golden rings were under the crown of the incense altar?",
+  "choices": [
+   "Four",
+   "Two",
+   "Six",
+   "One"
+  ],
+  "answer": 1,
+  "explanation": "Two golden rings shalt thou make to it under the crown of it.",
+  "ref": "Exodus 30:4"
+ },
+ {
+  "id": "exodus-30-m-04",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not to be offered on the incense altar?",
+  "choices": [
+   "Strange incense, burnt sacrifice, meat or drink offering",
+   "Frankincense",
+   "Pure gold",
+   "Oil"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall offer no strange incense thereon, nor burnt sacrifice, nor meat offering.",
+  "ref": "Exodus 30:9"
+ },
+ {
+  "id": "exodus-30-m-05",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How often was atonement made on the horns of the incense altar?",
+  "choices": [
+   "Every day",
+   "Every month",
+   "Every seven years",
+   "Once a year"
+  ],
+  "answer": 3,
+  "explanation": "Once in the year shall he make atonement upon it throughout your generations.",
+  "ref": "Exodus 30:10"
+ },
+ {
+  "id": "exodus-30-m-06",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much did a rich man give compared with a poor man when numbered?",
+  "choices": [
+   "The rich gave more",
+   "The poor gave nothing",
+   "The same: half a shekel each",
+   "The rich gave double"
+  ],
+  "answer": 2,
+  "explanation": "The rich shall not give more, and the poor shall not give less than half a shekel.",
+  "ref": "Exodus 30:15"
+ },
+ {
+  "id": "exodus-30-m-07",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many gerahs made a shekel?",
+  "choices": [
+   "Ten",
+   "Twenty",
+   "Thirty",
+   "Fifty"
+  ],
+  "answer": 1,
+  "explanation": "A shekel is twenty gerahs.",
+  "ref": "Exodus 30:13"
+ },
+ {
+  "id": "exodus-30-m-08",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the atonement money used for?",
+  "choices": [
+   "The service of the tabernacle",
+   "Feeding the priests",
+   "Building the altar",
+   "Buying oxen"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt appoint it for the service of the tabernacle of the congregation.",
+  "ref": "Exodus 30:16"
+ },
+ {
+  "id": "exodus-30-m-09",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much pure myrrh was in the holy anointing oil?",
+  "choices": [
+   "Two hundred and fifty shekels",
+   "One hundred shekels",
+   "One thousand shekels",
+   "Five hundred shekels"
+  ],
+  "answer": 3,
+  "explanation": "Of pure myrrh five hundred shekels.",
+  "ref": "Exodus 30:23"
+ },
+ {
+  "id": "exodus-30-m-10",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much sweet cinnamon was to be used?",
+  "choices": [
+   "Five hundred shekels",
+   "One hundred shekels",
+   "Two hundred and fifty shekels",
+   "Fifty shekels"
+  ],
+  "answer": 2,
+  "explanation": "Of sweet cinnamon half so much, even two hundred and fifty shekels.",
+  "ref": "Exodus 30:23"
+ },
+ {
+  "id": "exodus-30-m-11",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much cassia was in the anointing oil?",
+  "choices": [
+   "Two hundred and fifty shekels",
+   "Five hundred shekels",
+   "One hundred shekels",
+   "One hundred and fifty shekels"
+  ],
+  "answer": 1,
+  "explanation": "And of cassia five hundred shekels, after the shekel of the sanctuary.",
+  "ref": "Exodus 30:24"
+ },
+ {
+  "id": "exodus-30-m-12",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What oil was mixed with the spices for the anointing oil?",
+  "choices": [
+   "An hin of olive oil",
+   "A talent of olive oil",
+   "A cubit of oil",
+   "A shekel of oil"
+  ],
+  "answer": 0,
+  "explanation": "And of oil olive an hin.",
+  "ref": "Exodus 30:24"
+ },
+ {
+  "id": "exodus-30-m-13",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which sweet spices were to be used with pure frankincense for the perfume?",
+  "choices": [
+   "Myrrh, cassia and calamus",
+   "Cinnamon, calamus and balm",
+   "Spikenard, saffron and aloes",
+   "Stacte, onycha and galbanum"
+  ],
+  "answer": 3,
+  "explanation": "Take unto thee sweet spices, stacte, and onycha, and galbanum; these sweet spices with pure frankincense.",
+  "ref": "Exodus 30:34"
+ },
+ {
+  "id": "exodus-30-m-14",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much sweet calamus was to be used in the anointing oil?",
+  "choices": [
+   "Five hundred shekels",
+   "One hundred shekels",
+   "Two hundred and fifty shekels",
+   "Fifty shekels"
+  ],
+  "answer": 2,
+  "explanation": "And of sweet calamus two hundred and fifty shekels.",
+  "ref": "Exodus 30:23"
+ },
+ {
+  "id": "exodus-30-h-01",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were Aaron and his sons to wash at the laver?",
+  "choices": [
+   "Their faces",
+   "Their hands and their feet",
+   "Their garments",
+   "Their heads"
+  ],
+  "answer": 1,
+  "explanation": "Aaron and his sons shall wash their hands and their feet thereat.",
+  "ref": "Exodus 30:19"
+ },
+ {
+  "id": "exodus-30-h-02",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these was anointed with the holy oil?",
+  "choices": [
+   "The ark of the testimony",
+   "The court gate",
+   "The curtains",
+   "The priests' tents"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt anoint the tabernacle of the congregation therewith, and the ark of the testimony.",
+  "ref": "Exodus 30:26"
+ },
+ {
+  "id": "exodus-30-h-03",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to whatever touches the anointed furniture?",
+  "choices": [
+   "It is cut off",
+   "It is burned",
+   "It is washed",
+   "It becomes holy"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt sanctify them, that they may be most holy: whatsoever toucheth them shall be holy.",
+  "ref": "Exodus 30:29"
+ },
+ {
+  "id": "exodus-30-h-04",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On whom was the holy anointing oil not to be poured?",
+  "choices": [
+   "Aaron's sons",
+   "The altar",
+   "Man's flesh",
+   "The laver"
+  ],
+  "answer": 2,
+  "explanation": "Upon man's flesh shall it not be poured.",
+  "ref": "Exodus 30:32"
+ },
+ {
+  "id": "exodus-30-h-05",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After whose art was the ointment to be compounded?",
+  "choices": [
+   "The goldsmith",
+   "The apothecary",
+   "The weaver",
+   "The baker"
+  ],
+  "answer": 1,
+  "explanation": "An ointment compound after the art of the apothecary.",
+  "ref": "Exodus 30:25"
+ },
+ {
+  "id": "exodus-30-h-06",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much of each spice was to be used in the perfume?",
+  "choices": [
+   "A like weight of each",
+   "Double of the first",
+   "A shekel each",
+   "A hin each"
+  ],
+  "answer": 0,
+  "explanation": "Of each shall there be a like weight.",
+  "ref": "Exodus 30:34"
+ },
+ {
+  "id": "exodus-30-h-07",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was to be done with some of the perfume?",
+  "choices": [
+   "Burn it in the court",
+   "Pour it on the altar",
+   "Give it to the priests",
+   "Beat it very small and put it before the testimony"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt beat some of it very small, and put of it before the testimony.",
+  "ref": "Exodus 30:36"
+ },
+ {
+  "id": "exodus-30-h-08",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would happen to one who made the perfume to smell it?",
+  "choices": [
+   "He would be fined",
+   "He would wash",
+   "He would be cut off from his people",
+   "He would die at once"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever shall make like unto that, to smell thereto, shall even be cut off from his people.",
+  "ref": "Exodus 30:38"
+ },
+ {
+  "id": "exodus-30-h-09",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Aaron doing when he was to burn incense each morning?",
+  "choices": [
+   "Washing at the laver",
+   "Dressing the lamps",
+   "Offering lambs",
+   "Anointing the altar"
+  ],
+  "answer": 1,
+  "explanation": "Every morning: when he dresseth the lamps, he shall burn incense upon it.",
+  "ref": "Exodus 30:7"
+ },
+ {
+  "id": "exodus-30-h-10",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When was incense burned in the evening?",
+  "choices": [
+   "When Aaron lighted the lamps at even",
+   "At midnight",
+   "At sunrise",
+   "When the people prayed"
+  ],
+  "answer": 0,
+  "explanation": "When Aaron lighteth the lamps at even, he shall burn incense upon it.",
+  "ref": "Exodus 30:8"
+ },
+ {
+  "id": "exodus-30-h-11",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose shekel was used as the measure for the half shekel?",
+  "choices": [
+   "The shekel of the merchants",
+   "The shekel of Egypt",
+   "The shekel of the king",
+   "The shekel of the sanctuary"
+  ],
+  "answer": 3,
+  "explanation": "Half a shekel after the shekel of the sanctuary.",
+  "ref": "Exodus 30:13"
+ },
+ {
+  "id": "exodus-30-h-12",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the staves of the incense altar made of?",
+  "choices": [
+   "Pure gold",
+   "Brass",
+   "Shittim wood overlaid with gold",
+   "Silver"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt make the staves of shittim wood, and overlay them with gold.",
+  "ref": "Exodus 30:5"
+ },
+ {
+  "id": "exodus-30-h-13",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what blood was atonement made on the incense altar's horns?",
+  "choices": [
+   "The blood of lambs",
+   "The blood of the sin offering of atonements",
+   "The blood of oxen",
+   "The blood of doves"
+  ],
+  "answer": 1,
+  "explanation": "Aaron shall make an atonement upon the horns of it once in a year with the blood of the sin offering of atonements.",
+  "ref": "Exodus 30:10"
+ },
+ {
+  "id": "exodus-30-h-14",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priests wash in order not to die?",
+  "choices": [
+   "When they went in to the tabernacle or came near the altar",
+   "When they rested",
+   "When they ate",
+   "When they slept"
+  ],
+  "answer": 0,
+  "explanation": "When they go into the tabernacle... or when they come near to the altar to minister, they shall wash with water, that they die not.",
+  "ref": "Exodus 30:20"
+ },
+ {
+  "id": "exodus-30-h-15",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how long was the washing at the laver a statute?",
+  "choices": [
+   "Until Canaan",
+   "Seven years",
+   "Until the tabernacle was moved",
+   "For ever to Aaron and his seed"
+  ],
+  "answer": 3,
+  "explanation": "It shall be a statute for ever to them, even to him and to his seed throughout their generations.",
+  "ref": "Exodus 30:21"
+ },
+ {
+  "id": "exodus-30-h-16",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the ransom money make for the souls of Israel?",
+  "choices": [
+   "Peace",
+   "A covenant",
+   "Atonement",
+   "A memorial for the king"
+  ],
+  "answer": 2,
+  "explanation": "To make an atonement for your souls.",
+  "ref": "Exodus 30:15"
+ },
+ {
+  "id": "exodus-30-m-15",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of incense did Aaron burn on the altar every morning and evening?",
+  "choices": [
+   "Strange incense",
+   "Sweet incense",
+   "Common incense",
+   "Frankincense alone"
+  ],
+  "answer": 1,
+  "explanation": "Aaron shall burn thereon sweet incense every morning, a perpetual incense before the LORD.",
+  "ref": "Exodus 30:7–8"
+ },
+ {
   "id": "old-exodus-31-1",
   "chapter": 31,
   "level": "beginner",
