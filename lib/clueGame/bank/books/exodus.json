@@ -11712,6 +11712,646 @@
   "ref": "Exodus 17:15"
  },
  {
+  "id": "exodus-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the people chide, asking for water to drink?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Hur",
+   "Joshua"
+  ],
+  "answer": 1,
+  "explanation": "The people did chide with Moses, and said, Give us water that we may drink.",
+  "ref": "Exodus 17:2"
+ },
+ {
+  "id": "exodus-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came and fought with Israel at Rephidim?",
+  "choices": [
+   "Pharaoh",
+   "Edom",
+   "Midian",
+   "Amalek"
+  ],
+  "answer": 3,
+  "explanation": "Then came Amalek, and fought with Israel in Rephidim.",
+  "ref": "Exodus 17:8"
+ },
+ {
+  "id": "exodus-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses hold in his hand on top of the hill?",
+  "choices": [
+   "A banner",
+   "The rod of God",
+   "A sword",
+   "A trumpet"
+  ],
+  "answer": 1,
+  "explanation": "Moses said he would stand on the top of the hill with the rod of God in his hand.",
+  "ref": "Exodus 17:9"
+ },
+ {
+  "id": "exodus-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when Moses held up his hand?",
+  "choices": [
+   "Fire came down",
+   "Rain fell",
+   "Israel prevailed",
+   "Amalek fled"
+  ],
+  "answer": 2,
+  "explanation": "When Moses held up his hand, Israel prevailed.",
+  "ref": "Exodus 17:11"
+ },
+ {
+  "id": "exodus-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Aaron and Hur put under Moses so he could sit?",
+  "choices": [
+   "A stone",
+   "A rod",
+   "A bench of wood",
+   "A cloak"
+  ],
+  "answer": 0,
+  "explanation": "They took a stone, and put it under him, and he sat thereon.",
+  "ref": "Exodus 17:12"
+ },
+ {
+  "id": "exodus-17-e-06",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Joshua defeat Amalek?",
+  "choices": [
+   "With chariots",
+   "With the edge of the sword",
+   "With arrows",
+   "With a flood"
+  ],
+  "answer": 1,
+  "explanation": "Joshua discomfited Amalek and his people with the edge of the sword.",
+  "ref": "Exodus 17:13"
+ },
+ {
+  "id": "exodus-17-e-07",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Moses, Aaron and Hur go while Joshua fought?",
+  "choices": [
+   "A cave",
+   "The river bank",
+   "The tabernacle",
+   "The top of the hill"
+  ],
+  "answer": 3,
+  "explanation": "Moses, Aaron, and Hur went up to the top of the hill.",
+  "ref": "Exodus 17:10"
+ },
+ {
+  "id": "exodus-17-e-08",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "What name did Moses give the place where he struck the rock?",
+  "choices": [
+   "Horeb and Sinai",
+   "Rephidim and Sin",
+   "Massah and Meribah",
+   "Marah and Elim"
+  ],
+  "answer": 2,
+  "explanation": "He called the name of the place Massah, and Meribah.",
+  "ref": "Exodus 17:7"
+ },
+ {
+  "id": "exodus-17-e-09",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did the LORD tell Moses to write about Amalek?",
+  "choices": [
+   "On a stone",
+   "In a book",
+   "On the altar",
+   "On a wall"
+  ],
+  "answer": 1,
+  "explanation": "Write this for a memorial in a book.",
+  "ref": "Exodus 17:14"
+ },
+ {
+  "id": "exodus-17-e-10",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say the thirst would do to their children and cattle?",
+  "choices": [
+   "Sicken them",
+   "Scatter them",
+   "Kill them",
+   "Sell them"
+  ],
+  "answer": 2,
+  "explanation": "They asked if Moses brought them out of Egypt to kill them and their children and cattle with thirst.",
+  "ref": "Exodus 17:3"
+ },
+ {
+  "id": "exodus-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From which wilderness did Israel journey to Rephidim?",
+  "choices": [
+   "The wilderness of Shur",
+   "The wilderness of Sin",
+   "The wilderness of Paran",
+   "The wilderness of Zin"
+  ],
+  "answer": 1,
+  "explanation": "The congregation journeyed from the wilderness of Sin and pitched in Rephidim.",
+  "ref": "Exodus 17:1"
+ },
+ {
+  "id": "exodus-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the people were doing to the LORD by chiding?",
+  "choices": [
+   "Tempting Him",
+   "Forgetting Him",
+   "Mocking Him",
+   "Fearing Him"
+  ],
+  "answer": 0,
+  "explanation": "Moses asked, Why chide ye with me? wherefore do ye tempt the LORD?",
+  "ref": "Exodus 17:2"
+ },
+ {
+  "id": "exodus-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the people were almost ready to do to him?",
+  "choices": [
+   "Stone him",
+   "Crown him",
+   "Leave him",
+   "Bind him"
+  ],
+  "answer": 0,
+  "explanation": "Moses said, they be almost ready to stone me.",
+  "ref": "Exodus 17:4"
+ },
+ {
+  "id": "exodus-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the LORD tell Moses to take with him?",
+  "choices": [
+   "Joshua and Caleb",
+   "The elders of Israel",
+   "The firstborn",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "Take with thee of the elders of Israel.",
+  "ref": "Exodus 17:5"
+ },
+ {
+  "id": "exodus-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to take in his hand to go?",
+  "choices": [
+   "The ark",
+   "A staff of Aaron",
+   "A censer",
+   "His rod"
+  ],
+  "answer": 3,
+  "explanation": "Take thy rod, wherewith thou smotest the river, in thine hand, and go.",
+  "ref": "Exodus 17:5"
+ },
+ {
+  "id": "exodus-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the LORD say He would stand before Moses?",
+  "choices": [
+   "By the altar",
+   "At the river",
+   "Upon the rock in Horeb",
+   "On the hill of Amalek"
+  ],
+  "answer": 2,
+  "explanation": "I will stand before thee there upon the rock in Horeb.",
+  "ref": "Exodus 17:6"
+ },
+ {
+  "id": "exodus-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "In whose sight did Moses strike the rock?",
+  "choices": [
+   "Amalek",
+   "The priests",
+   "The elders of Israel",
+   "Pharaoh's army"
+  ],
+  "answer": 2,
+  "explanation": "Moses did so in the sight of the elders of Israel.",
+  "ref": "Exodus 17:6"
+ },
+ {
+  "id": "exodus-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question did the people ask that gave the place its names?",
+  "choices": [
+   "Is the LORD among us, or not?",
+   "Who made thee a judge?",
+   "Why hast thou led us here?",
+   "Where is our bread?"
+  ],
+  "answer": 0,
+  "explanation": "They tempted the LORD, saying, Is the LORD among us, or not?",
+  "ref": "Exodus 17:7"
+ },
+ {
+  "id": "exodus-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Moses tell Joshua he would stand on the hill?",
+  "choices": [
+   "That night",
+   "To morrow",
+   "After the battle",
+   "At sunrise"
+  ],
+  "answer": 1,
+  "explanation": "Moses said, to morrow I will stand on the top of the hill.",
+  "ref": "Exodus 17:9"
+ },
+ {
+  "id": "exodus-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened when Moses let down his hand?",
+  "choices": [
+   "Israel fled",
+   "Night fell",
+   "The rod broke",
+   "Amalek prevailed"
+  ],
+  "answer": 3,
+  "explanation": "When he let down his hand, Amalek prevailed.",
+  "ref": "Exodus 17:11"
+ },
+ {
+  "id": "exodus-17-m-11",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would do to the remembrance of Amalek?",
+  "choices": [
+   "Utterly put it out",
+   "Write it in stone",
+   "Keep it forever",
+   "Pass it to Israel"
+  ],
+  "answer": 0,
+  "explanation": "I will utterly put out the remembrance of Amalek from under heaven.",
+  "ref": "Exodus 17:14"
+ },
+ {
+  "id": "exodus-17-m-12",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "In whose ears was the memorial to be rehearsed?",
+  "choices": [
+   "Caleb",
+   "Aaron",
+   "Joshua",
+   "Hur"
+  ],
+  "answer": 2,
+  "explanation": "Rehearse it in the ears of Joshua.",
+  "ref": "Exodus 17:14"
+ },
+ {
+  "id": "exodus-17-m-13",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Moses call the altar Jehovah-nissi?",
+  "choices": [
+   "Israel won the hill",
+   "The LORD gave water",
+   "The LORD would war with Amalek",
+   "The LORD gave manna"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hath sworn that the LORD will have war with Amalek from generation to generation.",
+  "ref": "Exodus 17:15–16"
+ },
+ {
+  "id": "exodus-17-m-14",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people accuse Moses of bringing them out of Egypt to do?",
+  "choices": [
+   "Wander forever",
+   "Make them slaves",
+   "Kill them with thirst",
+   "Fight Amalek"
+  ],
+  "answer": 2,
+  "explanation": "Wherefore is this that thou hast brought us up out of Egypt, to kill us with thirst?",
+  "ref": "Exodus 17:3"
+ },
+ {
+  "id": "exodus-17-m-15",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Moses told to go on before?",
+  "choices": [
+   "The elders",
+   "The people",
+   "Joshua",
+   "Amalek"
+  ],
+  "answer": 1,
+  "explanation": "Go on before the people.",
+  "ref": "Exodus 17:5"
+ },
+ {
+  "id": "exodus-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were Aaron and Hur positioned as they held up Moses' hands?",
+  "choices": [
+   "One on the stone",
+   "Both in front",
+   "Both behind him",
+   "One on each side"
+  ],
+  "answer": 3,
+  "explanation": "Aaron and Hur stayed up his hands, the one on the one side, and the other on the other side.",
+  "ref": "Exodus 17:12"
+ },
+ {
+  "id": "exodus-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when were Moses' hands steady?",
+  "choices": [
+   "The end of the battle",
+   "Midday",
+   "The next morning",
+   "The going down of the sun"
+  ],
+  "answer": 3,
+  "explanation": "His hands were steady until the going down of the sun.",
+  "ref": "Exodus 17:12"
+ },
+ {
+  "id": "exodus-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Aaron and Hur hold up Moses' hands?",
+  "choices": [
+   "He was praying aloud",
+   "He was wounded",
+   "They were heavy",
+   "He was asleep"
+  ],
+  "answer": 2,
+  "explanation": "Moses' hands were heavy, so Aaron and Hur stayed them up.",
+  "ref": "Exodus 17:12"
+ },
+ {
+  "id": "exodus-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the people and their children, what did they say thirst would kill?",
+  "choices": [
+   "Flocks of Midian",
+   "Cattle",
+   "Camels",
+   "Servants"
+  ],
+  "answer": 1,
+  "explanation": "To kill us and our children and our cattle with thirst.",
+  "ref": "Exodus 17:3"
+ },
+ {
+  "id": "exodus-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Moses once smitten with the rod before this?",
+  "choices": [
+   "The sea",
+   "The river",
+   "The sand",
+   "A rock"
+  ],
+  "answer": 1,
+  "explanation": "The rod wherewith thou smotest the river.",
+  "ref": "Exodus 17:5"
+ },
+ {
+  "id": "exodus-17-h-06",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses tell Joshua to choose out?",
+  "choices": [
+   "Men",
+   "Captains",
+   "Horses",
+   "Elders"
+  ],
+  "answer": 0,
+  "explanation": "Choose us out men, and go out, fight with Amalek.",
+  "ref": "Exodus 17:9"
+ },
+ {
+  "id": "exodus-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did the LORD say He would have war with Amalek?",
+  "choices": [
+   "Seven years",
+   "From generation to generation",
+   "Until Canaan",
+   "Forty years"
+  ],
+  "answer": 1,
+  "explanation": "The LORD will have war with Amalek from generation to generation.",
+  "ref": "Exodus 17:16"
+ },
+ {
+  "id": "exodus-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men went up the hill together?",
+  "choices": [
+   "Four",
+   "Seven",
+   "Three",
+   "Two"
+  ],
+  "answer": 2,
+  "explanation": "Moses, Aaron, and Hur went up to the top of the hill.",
+  "ref": "Exodus 17:10"
+ },
+ {
+  "id": "exodus-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many names did Moses give the place of the rock?",
+  "choices": [
+   "One",
+   "Four",
+   "Two",
+   "Three"
+  ],
+  "answer": 2,
+  "explanation": "He called the name of the place Massah, and Meribah.",
+  "ref": "Exodus 17:7"
+ },
+ {
+  "id": "exodus-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Under what will the LORD put out Amalek's remembrance?",
+  "choices": [
+   "The sun",
+   "The sea",
+   "Heaven",
+   "The earth"
+  ],
+  "answer": 2,
+  "explanation": "I will utterly put out the remembrance of Amalek from under heaven.",
+  "ref": "Exodus 17:14"
+ },
+ {
+  "id": "exodus-17-h-11",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to do with the record besides write it?",
+  "choices": [
+   "Bury it",
+   "Read it to Pharaoh",
+   "Seal it in the ark",
+   "Rehearse it to Joshua"
+  ],
+  "answer": 3,
+  "explanation": "Write this for a memorial in a book, and rehearse it in the ears of Joshua.",
+  "ref": "Exodus 17:14"
+ },
+ {
+  "id": "exodus-17-h-12",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which name does the text give first for the place of the rock?",
+  "choices": [
+   "Massah",
+   "Meribah",
+   "Horeb",
+   "Rephidim"
+  ],
+  "answer": 0,
+  "explanation": "He called the name of the place Massah, and Meribah.",
+  "ref": "Exodus 17:7"
+ },
+ {
+  "id": "exodus-17-h-13",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "At whose commandment did Israel journey to Rephidim?",
+  "choices": [
+   "Aaron's",
+   "The elders'",
+   "The LORD's",
+   "Moses'"
+  ],
+  "answer": 2,
+  "explanation": "They journeyed according to the commandment of the LORD.",
+  "ref": "Exodus 17:1"
+ },
+ {
+  "id": "exodus-17-h-14",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses do after Amalek was defeated?",
+  "choices": [
+   "Offered a lamb",
+   "Struck the rock",
+   "Crossed the river",
+   "Built an altar"
+  ],
+  "answer": 3,
+  "explanation": "Moses built an altar, and called the name of it Jehovah-nissi.",
+  "ref": "Exodus 17:15"
+ },
+ {
+  "id": "exodus-17-h-15",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Because of what did Moses name the place Massah and Meribah?",
+  "choices": [
+   "The bitter water",
+   "Their chiding and tempting the LORD",
+   "The lack of bread",
+   "The battle with Amalek"
+  ],
+  "answer": 1,
+  "explanation": "Because of the chiding of the children of Israel, and because they tempted the LORD.",
+  "ref": "Exodus 17:7"
+ },
+ {
   "id": "old-exodus-18-1",
   "chapter": 18,
   "level": "beginner",
