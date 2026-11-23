@@ -20368,6 +20368,662 @@
   "ref": "Exodus 29:42–43"
  },
  {
+  "id": "exodus-29-e-01",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many rams were to be taken for the consecration?",
+  "choices": [
+   "One",
+   "Two",
+   "Three",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "Take one young bullock, and two rams without blemish.",
+  "ref": "Exodus 29:1"
+ },
+ {
+  "id": "exodus-29-e-02",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses pour on Aaron's head to anoint him?",
+  "choices": [
+   "The anointing oil",
+   "Water",
+   "Wine",
+   "Blood"
+  ],
+  "answer": 0,
+  "explanation": "Then shalt thou take the anointing oil, and pour it upon his head, and anoint him.",
+  "ref": "Exodus 29:7"
+ },
+ {
+  "id": "exodus-29-e-03",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was put upon the mitre of Aaron's head?",
+  "choices": [
+   "A plate of silver",
+   "A veil",
+   "A cord of scarlet",
+   "The holy crown"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt put the mitre upon his head, and put the holy crown upon the mitre.",
+  "ref": "Exodus 29:6"
+ },
+ {
+  "id": "exodus-29-e-04",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Aaron and his sons do to the head of the bullock?",
+  "choices": [
+   "Anoint it with oil",
+   "Wash it with water",
+   "Put their hands upon it",
+   "Bind it with cords"
+  ],
+  "answer": 2,
+  "explanation": "Aaron and his sons shall put their hands upon the head of the bullock.",
+  "ref": "Exodus 29:10"
+ },
+ {
+  "id": "exodus-29-e-05",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the bullock to be killed?",
+  "choices": [
+   "Outside the camp",
+   "By the door of the tabernacle of the congregation",
+   "On top of the altar",
+   "In the holy place"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt kill the bullock before the LORD, by the door of the tabernacle of the congregation.",
+  "ref": "Exodus 29:11"
+ },
+ {
+  "id": "exodus-29-e-06",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days were Aaron and his sons to be consecrated?",
+  "choices": [
+   "Seven days",
+   "One day",
+   "Three days",
+   "Forty days"
+  ],
+  "answer": 0,
+  "explanation": "Seven days shalt thou consecrate them.",
+  "ref": "Exodus 29:35"
+ },
+ {
+  "id": "exodus-29-e-07",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of bread was included in the consecration offering?",
+  "choices": [
+   "Leavened bread",
+   "Honey bread",
+   "Barley loaves",
+   "Unleavened bread"
+  ],
+  "answer": 3,
+  "explanation": "And unleavened bread, and cakes unleavened tempered with oil.",
+  "ref": "Exodus 29:2"
+ },
+ {
+  "id": "exodus-29-e-08",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was burned outside the camp from the bullock?",
+  "choices": [
+   "Its blood",
+   "Its fat",
+   "Its flesh, skin and dung",
+   "Its horns"
+  ],
+  "answer": 2,
+  "explanation": "The flesh of the bullock, and his skin, and his dung, shalt thou burn with fire without the camp.",
+  "ref": "Exodus 29:14"
+ },
+ {
+  "id": "exodus-29-e-09",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God promise to do among the children of Israel?",
+  "choices": [
+   "Leave them in the wilderness",
+   "Dwell among them and be their God",
+   "Send them an angel only",
+   "Give them a king"
+  ],
+  "answer": 1,
+  "explanation": "I will dwell among the children of Israel, and will be their God.",
+  "ref": "Exodus 29:45"
+ },
+ {
+  "id": "exodus-29-e-10",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of offering was the bullock?",
+  "choices": [
+   "A sin offering",
+   "A peace offering",
+   "A meat offering",
+   "A drink offering"
+  ],
+  "answer": 0,
+  "explanation": "It is a sin offering.",
+  "ref": "Exodus 29:14"
+ },
+ {
+  "id": "exodus-29-m-01",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What condition did the two rams have to meet?",
+  "choices": [
+   "Born that year",
+   "From the firstborn",
+   "Pure white",
+   "Without blemish"
+  ],
+  "answer": 3,
+  "explanation": "Take one young bullock, and two rams without blemish.",
+  "ref": "Exodus 29:1"
+ },
+ {
+  "id": "exodus-29-m-02",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the unleavened bread made from?",
+  "choices": [
+   "Barley flour",
+   "Ground nuts",
+   "Wheaten flour",
+   "Rice"
+  ],
+  "answer": 2,
+  "explanation": "Of wheaten flour shalt thou make them.",
+  "ref": "Exodus 29:2"
+ },
+ {
+  "id": "exodus-29-m-03",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Moses to do with the bullock's blood on the altar?",
+  "choices": [
+   "Pour it on the ground",
+   "Put it on the horns with his finger",
+   "Sprinkle it on the people",
+   "Keep it in a basin"
+  ],
+  "answer": 1,
+  "explanation": "Take of the blood of the bullock, and put it upon the horns of the altar with thy finger.",
+  "ref": "Exodus 29:12"
+ },
+ {
+  "id": "exodus-29-m-04",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done with the first ram?",
+  "choices": [
+   "The whole ram was burned as a burnt offering",
+   "It was eaten by the priests",
+   "It was sent outside the camp",
+   "It was waved"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt burn the whole ram upon the altar: it is a burnt offering unto the LORD.",
+  "ref": "Exodus 29:18"
+ },
+ {
+  "id": "exodus-29-m-05",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the second ram called?",
+  "choices": [
+   "The ram of peace",
+   "The ram of atonement",
+   "The ram of the covenant",
+   "The ram of consecration"
+  ],
+  "answer": 3,
+  "explanation": "It is a ram of consecration.",
+  "ref": "Exodus 29:22"
+ },
+ {
+  "id": "exodus-29-m-06",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which part of the ram of Aaron's consecration was Moses' share?",
+  "choices": [
+   "The shoulder",
+   "The liver",
+   "The breast",
+   "The head"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt take the breast of the ram of Aaron's consecration, and wave it for a wave offering: it shall be thy part.",
+  "ref": "Exodus 29:26"
+ },
+ {
+  "id": "exodus-29-m-07",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who were to eat the flesh of the ram of consecration?",
+  "choices": [
+   "All Israel",
+   "Aaron and his sons",
+   "Moses alone",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "Aaron and his sons shall eat the flesh of the ram, and the bread that is in the basket.",
+  "ref": "Exodus 29:32"
+ },
+ {
+  "id": "exodus-29-m-08",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where were Aaron and his sons to eat the ram and the bread?",
+  "choices": [
+   "By the door of the tabernacle",
+   "In the court",
+   "In their tents",
+   "Outside the camp"
+  ],
+  "answer": 0,
+  "explanation": "By the door of the tabernacle of the congregation.",
+  "ref": "Exodus 29:32"
+ },
+ {
+  "id": "exodus-29-m-09",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why could a stranger not eat the consecration offerings?",
+  "choices": [
+   "Because they were unclean",
+   "Because they were burned",
+   "Because they were scarce",
+   "Because they are holy"
+  ],
+  "answer": 3,
+  "explanation": "A stranger shall not eat thereof, because they are holy.",
+  "ref": "Exodus 29:33"
+ },
+ {
+  "id": "exodus-29-m-10",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done with leftover flesh or bread of the consecration in the morning?",
+  "choices": [
+   "It was eaten",
+   "It was given to the poor",
+   "It was burned with fire",
+   "It was buried"
+  ],
+  "answer": 2,
+  "explanation": "If ought remain unto the morning, then thou shalt burn the remainder with fire.",
+  "ref": "Exodus 29:34"
+ },
+ {
+  "id": "exodus-29-m-11",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How old were the two lambs offered each day?",
+  "choices": [
+   "Eight days old",
+   "Of the first year",
+   "Three years old",
+   "Newborn"
+  ],
+  "answer": 1,
+  "explanation": "Two lambs of the first year day by day continually.",
+  "ref": "Exodus 29:38"
+ },
+ {
+  "id": "exodus-29-m-12",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much wine was the drink offering with each lamb?",
+  "choices": [
+   "The fourth part of a hin",
+   "A tenth part",
+   "A whole hin",
+   "Half a hin"
+  ],
+  "answer": 0,
+  "explanation": "The fourth part of an hin of wine for a drink offering.",
+  "ref": "Exodus 29:40"
+ },
+ {
+  "id": "exodus-29-m-13",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the altar to be when atonement had been made seven days?",
+  "choices": [
+   "Common",
+   "Covered",
+   "Cleansed only",
+   "Most holy"
+  ],
+  "answer": 3,
+  "explanation": "It shall be an altar most holy: whatsoever toucheth the altar shall be holy.",
+  "ref": "Exodus 29:37"
+ },
+ {
+  "id": "exodus-29-m-14",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was washing for in the consecration before the garments?",
+  "choices": [
+   "To cleanse the altar",
+   "To clean the bullock",
+   "To prepare Aaron and his sons at the tabernacle door",
+   "To wash the court"
+  ],
+  "answer": 2,
+  "explanation": "Aaron and his sons thou shalt bring unto the door of the tabernacle, and shalt wash them with water.",
+  "ref": "Exodus 29:4"
+ },
+ {
+  "id": "exodus-29-h-01",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which garment was put on Aaron first in the list of his garments?",
+  "choices": [
+   "The ephod",
+   "The coat",
+   "The breastplate",
+   "The mitre"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt take the garments, and put upon Aaron the coat, and the robe of the ephod.",
+  "ref": "Exodus 29:5"
+ },
+ {
+  "id": "exodus-29-h-02",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Aaron's son to wear besides coats when consecrated?",
+  "choices": [
+   "Girdles and bonnets",
+   "Crowns and plates",
+   "Breastplates and ephods",
+   "Mitres and robes"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt gird them with girdles... and put the bonnets on them.",
+  "ref": "Exodus 29:9"
+ },
+ {
+  "id": "exodus-29-h-03",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much flour was mingled with the oil for each lamb?",
+  "choices": [
+   "A fourth deal",
+   "A whole deal",
+   "A half deal",
+   "A tenth deal"
+  ],
+  "answer": 3,
+  "explanation": "A tenth deal of flour mingled with the fourth part of an hin of beaten oil.",
+  "ref": "Exodus 29:40"
+ },
+ {
+  "id": "exodus-29-h-04",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much beaten oil was with each lamb?",
+  "choices": [
+   "A tenth of an hin",
+   "A whole hin",
+   "The fourth part of a hin",
+   "A handful"
+  ],
+  "answer": 2,
+  "explanation": "A tenth deal of flour mingled with the fourth part of an hin of beaten oil.",
+  "ref": "Exodus 29:40"
+ },
+ {
+  "id": "exodus-29-h-05",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these was taken from the ram of consecration to be waved?",
+  "choices": [
+   "The head and hooves",
+   "The fat, the rump and the right shoulder",
+   "The skin and horns",
+   "The kidneys only"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt take of the ram the fat and the rump... and the right shoulder.",
+  "ref": "Exodus 29:22"
+ },
+ {
+  "id": "exodus-29-h-06",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was sprinkled on Aaron and his garments?",
+  "choices": [
+   "Blood from the altar mixed with the anointing oil",
+   "Water from the laver",
+   "Wine and oil",
+   "Only oil"
+  ],
+  "answer": 0,
+  "explanation": "Take of the blood upon the altar, and of the anointing oil, and sprinkle it upon Aaron.",
+  "ref": "Exodus 29:21"
+ },
+ {
+  "id": "exodus-29-h-07",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many loaves, cakes and wafers were taken from the basket?",
+  "choices": [
+   "Two of each",
+   "Seven of each",
+   "Twelve of each",
+   "One of each"
+  ],
+  "answer": 3,
+  "explanation": "One loaf of bread, and one cake of oiled bread, and one wafer.",
+  "ref": "Exodus 29:23"
+ },
+ {
+  "id": "exodus-29-h-08",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was offered every day for seven days to make atonement for the altar?",
+  "choices": [
+   "A lamb",
+   "A ram",
+   "A bullock for a sin offering",
+   "A dove"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt offer every day a bullock for a sin offering for atonement.",
+  "ref": "Exodus 29:36"
+ },
+ {
+  "id": "exodus-29-h-09",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who would wear Aaron's holy garments after him?",
+  "choices": [
+   "The Levites",
+   "His sons",
+   "The elders",
+   "Any priest"
+  ],
+  "answer": 1,
+  "explanation": "The holy garments of Aaron shall be his sons' after him.",
+  "ref": "Exodus 29:29"
+ },
+ {
+  "id": "exodus-29-h-10",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how many days was the priest in Aaron's stead to wear the garments?",
+  "choices": [
+   "Seven days",
+   "Three days",
+   "Forty days",
+   "One day"
+  ],
+  "answer": 0,
+  "explanation": "That son that is priest in his stead shall put them on seven days.",
+  "ref": "Exodus 29:30"
+ },
+ {
+  "id": "exodus-29-h-11",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would sanctify the tabernacle?",
+  "choices": [
+   "Blood",
+   "Oil",
+   "Fire",
+   "The LORD's glory"
+  ],
+  "answer": 3,
+  "explanation": "The tabernacle shall be sanctified by my glory.",
+  "ref": "Exodus 29:43"
+ },
+ {
+  "id": "exodus-29-h-12",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the ram of consecration's flesh to be boiled?",
+  "choices": [
+   "In the court",
+   "Outside the camp",
+   "In the holy place",
+   "By the laver"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt take the ram of the consecration, and seethe his flesh in the holy place.",
+  "ref": "Exodus 29:31"
+ },
+ {
+  "id": "exodus-29-h-13",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the people know when God dwelt among them?",
+  "choices": [
+   "That He was a warrior",
+   "That He is the LORD who brought them out of Egypt",
+   "That He was a king",
+   "That He sent manna"
+  ],
+  "answer": 1,
+  "explanation": "They shall know that I am the LORD their God, that brought them forth out of the land of Egypt.",
+  "ref": "Exodus 29:46"
+ },
+ {
+  "id": "exodus-29-h-14",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the breast of the ram of consecration to be done with?",
+  "choices": [
+   "Waved as a wave offering before the LORD",
+   "Burned on the altar",
+   "Buried",
+   "Given to the people"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt take the breast... and wave it for a wave offering before the LORD.",
+  "ref": "Exodus 29:26"
+ },
+ {
+  "id": "exodus-29-h-15",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the blood of the second ram also sprinkled on?",
+  "choices": [
+   "The people",
+   "The door",
+   "The veil",
+   "The altar round about"
+  ],
+  "answer": 3,
+  "explanation": "Sprinkle the blood upon the altar round about.",
+  "ref": "Exodus 29:20"
+ },
+ {
+  "id": "exodus-29-h-16",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the fat that covereth the inwards, the caul and the two kidneys do on the altar?",
+  "choices": [
+   "They were waved",
+   "They were eaten",
+   "They were burned",
+   "They were buried"
+  ],
+  "answer": 2,
+  "explanation": "Take all the fat that covereth the inwards... and burn them upon the altar.",
+  "ref": "Exodus 29:13"
+ },
+ {
+  "id": "exodus-29-m-15",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what were the unleavened bread, cakes and wafers brought?",
+  "choices": [
+   "Two baskets",
+   "One basket",
+   "A bowl of brass",
+   "A cart"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt put them into one basket, and bring them in the basket, with the bullock and the two rams.",
+  "ref": "Exodus 29:3"
+ },
+ {
   "id": "old-exodus-30-1",
   "chapter": 30,
   "level": "beginner",
