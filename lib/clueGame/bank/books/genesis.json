@@ -3184,6 +3184,310 @@
   "ref": "Genesis 10:5"
  },
  {
+  "id": "genesis-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nimrod begin to be in the earth?",
+  "choices": [
+   "A priest",
+   "A mighty one",
+   "A shepherd",
+   "A builder of the ark"
+  ],
+  "answer": 1,
+  "explanation": "Cush begat Nimrod: he began to be a mighty one in the earth.",
+  "ref": "Genesis 10:8"
+ },
+ {
+  "id": "genesis-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Gomer?",
+  "choices": [
+   "Ashkenaz",
+   "Elishah",
+   "Sheba",
+   "Uz"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Gomer; Ashkenaz, and Riphath, and Togarmah.",
+  "ref": "Genesis 10:3"
+ },
+ {
+  "id": "genesis-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Aram?",
+  "choices": [
+   "Ashkenaz",
+   "Seba",
+   "Peleg",
+   "Uz"
+  ],
+  "answer": 3,
+  "explanation": "The children of Aram; Uz, and Hul, and Gether, and Mash.",
+  "ref": "Genesis 10:23"
+ },
+ {
+  "id": "genesis-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who begat Salah?",
+  "choices": [
+   "Eber",
+   "Shem",
+   "Arphaxad",
+   "Aram"
+  ],
+  "answer": 2,
+  "explanation": "Arphaxad begat Salah; and Salah begat Eber.",
+  "ref": "Genesis 10:24"
+ },
+ {
+  "id": "genesis-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "How many sons of Japheth are listed?",
+  "choices": [
+   "Four",
+   "Seven",
+   "Five",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Gomer, Magog, Madai, Javan, Tubal, Meshech, and Tiras are the sons of Japheth.",
+  "ref": "Genesis 10:2"
+ },
+ {
+  "id": "genesis-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Javan?",
+  "choices": [
+   "Kittim",
+   "Gomer",
+   "Havilah",
+   "Seba"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Javan; Elishah, and Tarshish, Kittim, and Dodanim.",
+  "ref": "Genesis 10:4"
+ },
+ {
+  "id": "genesis-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides Cush, Mizraim and Canaan, who was Ham’s fourth son?",
+  "choices": [
+   "Madai",
+   "Elam",
+   "Lud",
+   "Phut"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Ham; Cush, and Mizraim, and Phut, and Canaan.",
+  "ref": "Genesis 10:6"
+ },
+ {
+  "id": "genesis-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Cush?",
+  "choices": [
+   "Gomer",
+   "Ludim",
+   "Raamah",
+   "Aram"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Cush; Seba, and Havilah, and Sabtah, and Raamah, and Sabtechah.",
+  "ref": "Genesis 10:7"
+ },
+ {
+  "id": "genesis-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Raamah?",
+  "choices": [
+   "Seba",
+   "Dedan",
+   "Ludim",
+   "Hul"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Raamah; Sheba, and Dedan.",
+  "ref": "Genesis 10:7"
+ },
+ {
+  "id": "genesis-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Out of whom did the Philistim come?",
+  "choices": [
+   "Casluhim",
+   "Ludim",
+   "Lehabim",
+   "Pathrusim"
+  ],
+  "answer": 0,
+  "explanation": "Casluhim, out of whom came Philistim.",
+  "ref": "Genesis 10:14"
+ },
+ {
+  "id": "genesis-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city lay between Nineveh and Calah?",
+  "choices": [
+   "Babel",
+   "Erech",
+   "Rehoboth",
+   "Resen"
+  ],
+  "answer": 3,
+  "explanation": "Resen between Nineveh and Calah: the same is a great city.",
+  "ref": "Genesis 10:12"
+ },
+ {
+  "id": "genesis-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities did Asshur also build?",
+  "choices": [
+   "Accad",
+   "Calneh",
+   "Calah",
+   "Erech"
+  ],
+  "answer": 2,
+  "explanation": "Asshur builded Nineveh, and the city Rehoboth, and Calah.",
+  "ref": "Genesis 10:11"
+ },
+ {
+  "id": "genesis-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these was part of the beginning of Nimrod’s kingdom?",
+  "choices": [
+   "Nineveh",
+   "Erech",
+   "Calah",
+   "Resen"
+  ],
+  "answer": 1,
+  "explanation": "The beginning of his kingdom was Babel, and Erech, and Accad, and Calneh.",
+  "ref": "Genesis 10:10"
+ },
+ {
+  "id": "genesis-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Mizraim?",
+  "choices": [
+   "Ludim",
+   "Seba",
+   "Elam",
+   "Hul"
+  ],
+  "answer": 0,
+  "explanation": "Mizraim begat Ludim, and Anamim, and Lehabim, and Naphtuhim.",
+  "ref": "Genesis 10:13"
+ },
+ {
+  "id": "genesis-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who begat Eber?",
+  "choices": [
+   "Arphaxad",
+   "Peleg",
+   "Aram",
+   "Salah"
+  ],
+  "answer": 3,
+  "explanation": "Arphaxad begat Salah; and Salah begat Eber.",
+  "ref": "Genesis 10:24"
+ },
+ {
+  "id": "genesis-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Joktan?",
+  "choices": [
+   "Phut",
+   "Peleg",
+   "Ophir",
+   "Nimrod"
+  ],
+  "answer": 2,
+  "explanation": "Joktan begat Almodad, and Sheleph, and Hazar-maveth, and Jerah… and Ophir.",
+  "ref": "Genesis 10:26–29"
+ },
+ {
+  "id": "genesis-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides Elam, Asshur, Lud and Aram, who was a child of Shem?",
+  "choices": [
+   "Mizraim",
+   "Arphaxad",
+   "Gomer",
+   "Cush"
+  ],
+  "answer": 1,
+  "explanation": "The children of Shem; Elam, and Asshur, and Arphaxad, and Lud, and Aram.",
+  "ref": "Genesis 10:22"
+ },
+ {
+  "id": "genesis-10-h-14",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Joktan’s sons dwelt from Mesha unto which mount of the east?",
+  "choices": [
+   "Sephar",
+   "Ararat",
+   "Moriah",
+   "Sinai"
+  ],
+  "answer": 0,
+  "explanation": "Their dwelling was from Mesha, as thou goest unto Sephar a mount of the east.",
+  "ref": "Genesis 10:30"
+ },
+ {
+  "id": "genesis-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "The border of the Canaanites reached unto which place?",
+  "choices": [
+   "Babel",
+   "Nineveh",
+   "Ararat",
+   "Lasha"
+  ],
+  "answer": 3,
+  "explanation": "The border of the Canaanites was… unto Sodom, and Gomorrah, and Admah, and Zeboim, even unto Lasha.",
+  "ref": "Genesis 10:19"
+ },
+ {
   "id": "old-genesis-11-1",
   "chapter": 11,
   "level": "beginner",
