@@ -16000,68 +16000,324 @@
   "ref": "Genesis 50:3"
  },
  {
-  "id": "old-genesis-50-2",
+  "id": "genesis-50-e-01",
   "chapter": 50,
   "level": "beginner",
-  "category": "place",
-  "question": "Where was Jacob buried?",
+  "category": "keyword",
+  "question": "How old was Joseph when he died?",
   "choices": [
-   "At Bethel",
-   "In Goshen",
-   "In the cave of Machpelah",
-   "By the Nile"
+   "70 years",
+   "110 years",
+   "120 years",
+   "147 years"
+  ],
+  "answer": 1,
+  "explanation": "So Joseph died, being an hundred and ten years old.",
+  "ref": "Genesis 50:26"
+ },
+ {
+  "id": "genesis-50-e-02",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Joseph speak to his brothers after he comforted them?",
+  "choices": [
+   "Kindly",
+   "Sternly",
+   "In anger",
+   "Not at all"
+  ],
+  "answer": 0,
+  "explanation": "And he comforted them, and spake kindly unto them.",
+  "ref": "Genesis 50:21"
+ },
+ {
+  "id": "genesis-50-h-01",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides Joseph’s family, who went up to bury Jacob?",
+  "choices": [
+   "Only Pharaoh’s army",
+   "The priests of On",
+   "The Canaanites",
+   "The elders of the land of Egypt"
+  ],
+  "answer": 3,
+  "explanation": "With him went up all the servants of Pharaoh, the elders of his house, and all the elders of the land of Egypt.",
+  "ref": "Genesis 50:7"
+ },
+ {
+  "id": "genesis-50-h-02",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how many days did Joseph make a mourning at Atad?",
+  "choices": [
+   "Forty",
+   "Seventy",
+   "Seven",
+   "Three"
   ],
   "answer": 2,
-  "explanation": "Jacob was buried in the cave of Machpelah in the land of Canaan.",
+  "explanation": "And he made a mourning for his father seven days.",
+  "ref": "Genesis 50:10"
+ },
+ {
+  "id": "genesis-50-h-03",
+  "chapter": 50,
+  "level": "hard",
+  "category": "place",
+  "question": "What name was given to the place of the great mourning?",
+  "choices": [
+   "Machpelah",
+   "Abel-mizraim",
+   "Mamre",
+   "Goshen"
+  ],
+  "answer": 1,
+  "explanation": "The name of it was called Abel-mizraim, which is beyond Jordan.",
+  "ref": "Genesis 50:11"
+ },
+ {
+  "id": "genesis-50-h-04",
+  "chapter": 50,
+  "level": "hard",
+  "category": "person",
+  "question": "Who said, “This is a grievous mourning to the Egyptians”?",
+  "choices": [
+   "The Canaanites",
+   "The Hittites",
+   "Pharaoh’s servants",
+   "Joseph’s brothers"
+  ],
+  "answer": 0,
+  "explanation": "The inhabitants of the land, the Canaanites, saw the mourning… they said, This is a grievous mourning to the Egyptians.",
+  "ref": "Genesis 50:11"
+ },
+ {
+  "id": "genesis-50-h-05",
+  "chapter": 50,
+  "level": "hard",
+  "category": "place",
+  "question": "Atad was beyond which river?",
+  "choices": [
+   "Nile",
+   "Euphrates",
+   "Jabbok",
+   "Jordan"
+  ],
+  "answer": 3,
+  "explanation": "They came to the threshingfloor of Atad, which is beyond Jordan.",
+  "ref": "Genesis 50:10"
+ },
+ {
+  "id": "genesis-50-h-06",
+  "chapter": 50,
+  "level": "hard",
+  "category": "person",
+  "question": "Who carried Jacob into Canaan and buried him?",
+  "choices": [
+   "Pharaoh’s servants",
+   "The Canaanites",
+   "His sons",
+   "The physicians"
+  ],
+  "answer": 2,
+  "explanation": "His sons carried him into the land of Canaan, and buried him in the cave of the field of Machpelah.",
   "ref": "Genesis 50:13"
  },
  {
-  "id": "old-genesis-50-3",
+  "id": "genesis-50-h-07",
   "chapter": 50,
-  "level": "beginner",
+  "level": "hard",
   "category": "keyword",
-  "question": "Why were Joseph's brothers afraid after Jacob died?",
+  "question": "Joseph said God meant it for good to bring to pass what?",
   "choices": [
-   "They feared famine",
-   "They feared Pharaoh",
-   "They feared Esau",
-   "They feared Joseph would repay them for selling him"
-  ],
-  "answer": 3,
-  "explanation": "The brothers worried Joseph would finally avenge himself after their father's death.",
-  "ref": "Genesis 50:15"
- },
- {
-  "id": "old-genesis-50-4",
-  "chapter": 50,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What famous words did Joseph say about the evil his brothers had done?",
-  "choices": [
-   "You meant it for good",
-   "You meant evil against me, but God meant it for good",
-   "The Lord has forgotten it",
-   "Justice has been delayed"
+   "To make him a ruler",
+   "To save much people alive",
+   "To scatter his brothers",
+   "To end the famine at once"
   ],
   "answer": 1,
-  "explanation": "Joseph declared that God had overruled their evil for good.",
+  "explanation": "God meant it unto good, to bring to pass, as it is this day, to save much people alive.",
   "ref": "Genesis 50:20"
  },
  {
-  "id": "old-genesis-50-5",
+  "id": "genesis-50-h-08",
   "chapter": 50,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What did Joseph ask to be done with his bones when God visited Israel?",
+  "level": "hard",
+  "category": "person",
+  "question": "Whose children of the third generation did Joseph see?",
   "choices": [
-   "Bury them in Egypt",
-   "Carry them up out of Egypt",
-   "Burn them on an altar",
-   "Place them by Pharaoh"
+   "Ephraim’s",
+   "Benjamin’s",
+   "Reuben’s",
+   "Pharaoh’s"
+  ],
+  "answer": 0,
+  "explanation": "And Joseph saw Ephraim’s children of the third generation.",
+  "ref": "Genesis 50:23"
+ },
+ {
+  "id": "genesis-50-h-09",
+  "chapter": 50,
+  "level": "hard",
+  "category": "person",
+  "question": "Of whom did Joseph take an oath about his bones?",
+  "choices": [
+   "Pharaoh",
+   "The Egyptians",
+   "His physicians",
+   "The children of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Joseph took an oath of the children of Israel, saying, God will surely visit you, and ye shall carry up my bones from hence.",
+  "ref": "Genesis 50:25"
+ },
+ {
+  "id": "genesis-50-h-10",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The brothers called themselves servants of whose God?",
+  "choices": [
+   "The God of Egypt",
+   "The God of Esau",
+   "The God of thy father",
+   "The God of Pharaoh"
+  ],
+  "answer": 2,
+  "explanation": "Forgive the trespass of the servants of the God of thy father.",
+  "ref": "Genesis 50:17"
+ },
+ {
+  "id": "genesis-50-h-11",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph do when his brothers’ message was spoken to him?",
+  "choices": [
+   "Laughed",
+   "Wept",
+   "Refused to answer",
+   "Called Pharaoh"
   ],
   "answer": 1,
-  "explanation": "Joseph made the children of Israel swear to carry his bones out of Egypt.",
-  "ref": "Genesis 50:25"
+  "explanation": "And Joseph wept when they spake unto him.",
+  "ref": "Genesis 50:17"
+ },
+ {
+  "id": "genesis-50-h-12",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Joseph put in after he was embalmed?",
+  "choices": [
+   "A coffin",
+   "A tomb of stone",
+   "An ark",
+   "A cave at Goshen"
+  ],
+  "answer": 0,
+  "explanation": "They embalmed him, and he was put in a coffin in Egypt.",
+  "ref": "Genesis 50:26"
+ },
+ {
+  "id": "genesis-50-h-13",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph promise Pharaoh’s house about going up to Canaan?",
+  "choices": [
+   "“I will stay there”",
+   "“I will bring Pharaoh”",
+   "“I will send servants”",
+   "“I will come again”"
+  ],
+  "answer": 3,
+  "explanation": "Let me go up, I pray thee, and bury my father, and I will come again.",
+  "ref": "Genesis 50:5"
+ },
+ {
+  "id": "genesis-50-h-14",
+  "chapter": 50,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides his brothers, whom did Joseph promise to nourish?",
+  "choices": [
+   "Pharaoh’s priests",
+   "The Egyptians",
+   "Their little ones",
+   "The Canaanites"
+  ],
+  "answer": 2,
+  "explanation": "I will nourish you, and your little ones.",
+  "ref": "Genesis 50:21"
+ },
+ {
+  "id": "genesis-50-h-15",
+  "chapter": 50,
+  "level": "hard",
+  "category": "person",
+  "question": "Who sold the cave field to Abraham for a burying place?",
+  "choices": [
+   "Abimelech",
+   "Ephron the Hittite",
+   "Heth",
+   "Mamre"
+  ],
+  "answer": 1,
+  "explanation": "The cave… which Abraham bought with the field… of Ephron the Hittite, before Mamre.",
+  "ref": "Genesis 50:13"
+ },
+ {
+  "id": "genesis-50-m-01",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the brothers send to Joseph with their father’s supposed words?",
+  "choices": [
+   "A gift of silver",
+   "A messenger",
+   "A coat",
+   "A written letter from Pharaoh"
+  ],
+  "answer": 1,
+  "explanation": "And they sent a messenger unto Joseph, saying, Thy father did command before he died.",
+  "ref": "Genesis 50:16"
+ },
+ {
+  "id": "genesis-50-m-02",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The brothers asked Joseph to forgive their trespass and what else?",
+  "choices": [
+   "Their sin",
+   "Their theft",
+   "Their journey",
+   "Their silence"
+  ],
+  "answer": 0,
+  "explanation": "Forgive, I pray thee now, the trespass of thy brethren, and their sin.",
+  "ref": "Genesis 50:17"
+ },
+ {
+  "id": "genesis-50-m-03",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The brothers feared Joseph would do what to them for the evil they did?",
+  "choices": [
+   "Sell them",
+   "Send them to Canaan",
+   "Give them land",
+   "Requite them"
+  ],
+  "answer": 3,
+  "explanation": "Joseph will peradventure hate us, and will certainly requite us all the evil which we did unto him.",
+  "ref": "Genesis 50:15"
  },
  {
   "id": "genesis-46-e-01",
