@@ -15312,6 +15312,646 @@
   "ref": "Exodus 22:28"
  },
  {
+  "id": "exodus-22-e-01",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sheep must a thief restore for a sheep stolen and killed or sold?",
+  "choices": [
+   "Two",
+   "Four",
+   "Five",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "He shall restore five oxen for an ox, and four sheep for a sheep.",
+  "ref": "Exodus 22:1"
+ },
+ {
+  "id": "exodus-22-e-02",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much must a thief restore if the stolen animal is found alive in his hand?",
+  "choices": [
+   "Half",
+   "Five times",
+   "Nothing",
+   "Double"
+  ],
+  "answer": 3,
+  "explanation": "If the theft be certainly found in his hand alive, he shall restore double.",
+  "ref": "Exodus 22:4"
+ },
+ {
+  "id": "exodus-22-e-03",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who must make restitution if a fire burns another's standing corn?",
+  "choices": [
+   "The elders",
+   "The judges",
+   "He that kindled the fire",
+   "The owner of the field"
+  ],
+  "answer": 2,
+  "explanation": "He that kindled the fire shall surely make restitution.",
+  "ref": "Exodus 22:6"
+ },
+ {
+  "id": "exodus-22-e-04",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Before whom shall a dispute about a lost thing come?",
+  "choices": [
+   "The elders of Egypt",
+   "The judges",
+   "Moses alone",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "The cause of both parties shall come before the judges.",
+  "ref": "Exodus 22:9"
+ },
+ {
+  "id": "exodus-22-e-05",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must a man not do to a stranger?",
+  "choices": [
+   "Vex or oppress him",
+   "Teach him",
+   "Trade with him",
+   "Feed him"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt neither vex a stranger, nor oppress him.",
+  "ref": "Exodus 22:21"
+ },
+ {
+  "id": "exodus-22-e-06",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were the Israelites not to vex a stranger?",
+  "choices": [
+   "They were priests",
+   "They were strangers in Egypt",
+   "They were rich",
+   "They were judges"
+  ],
+  "answer": 1,
+  "explanation": "For ye were strangers in the land of Egypt.",
+  "ref": "Exodus 22:21"
+ },
+ {
+  "id": "exodus-22-e-07",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD do when the afflicted cry to Him?",
+  "choices": [
+   "Hear their cry",
+   "Forget it",
+   "Wait seven years",
+   "Send them away"
+  ],
+  "answer": 0,
+  "explanation": "I will surely hear their cry.",
+  "ref": "Exodus 22:23"
+ },
+ {
+  "id": "exodus-22-e-08",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom were the firstborn of sons to be given?",
+  "choices": [
+   "The priests of Midian",
+   "The elders",
+   "The LORD",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "The firstborn of thy sons shalt thou give unto me.",
+  "ref": "Exodus 22:29"
+ },
+ {
+  "id": "exodus-22-e-09",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What could the Israelites not eat?",
+  "choices": [
+   "Bread of the first fruits",
+   "Peace offerings",
+   "Flesh torn of beasts in the field",
+   "Unleavened bread"
+  ],
+  "answer": 2,
+  "explanation": "Neither shall ye eat any flesh that is torn of beasts in the field; ye shall cast it to the dogs.",
+  "ref": "Exodus 22:31"
+ },
+ {
+  "id": "exodus-22-e-10",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom was torn flesh to be cast?",
+  "choices": [
+   "The fire",
+   "The poor",
+   "The priests",
+   "The dogs"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall cast it to the dogs.",
+  "ref": "Exodus 22:31"
+ },
+ {
+  "id": "exodus-22-m-01",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What if a thief is found breaking in and is struck so that he dies?",
+  "choices": [
+   "He pays an ox",
+   "The striker dies",
+   "He is exiled",
+   "No blood shed for him"
+  ],
+  "answer": 3,
+  "explanation": "If a thief be found breaking up, and be smitten that he die, there shall no blood be shed for him.",
+  "ref": "Exodus 22:2"
+ },
+ {
+  "id": "exodus-22-m-02",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to a thief who has nothing to pay restitution?",
+  "choices": [
+   "He is freed",
+   "He serves the priest",
+   "He is stoned",
+   "He is sold for his theft"
+  ],
+  "answer": 3,
+  "explanation": "If he have nothing, then he shall be sold for his theft.",
+  "ref": "Exodus 22:3"
+ },
+ {
+  "id": "exodus-22-m-03",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must a man give who lets his beast eat another man's field?",
+  "choices": [
+   "Double the grain",
+   "Silver",
+   "The best of his own field",
+   "An ox"
+  ],
+  "answer": 2,
+  "explanation": "Of the best of his own field, and of the best of his own vineyard, shall he make restitution.",
+  "ref": "Exodus 22:5"
+ },
+ {
+  "id": "exodus-22-m-04",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was burned in the fire kindled in thorns?",
+  "choices": [
+   "A tent",
+   "Stacks of corn or standing corn",
+   "An altar",
+   "An ox"
+  ],
+  "answer": 1,
+  "explanation": "If fire break out, and catch in thorns, so that the stacks of corn, or the standing corn, or the field, be consumed.",
+  "ref": "Exodus 22:6"
+ },
+ {
+  "id": "exodus-22-m-05",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If goods left with a neighbour are stolen and the thief is found, what does he pay?",
+  "choices": [
+   "Nothing",
+   "Double",
+   "Five times",
+   "Half"
+  ],
+  "answer": 1,
+  "explanation": "If the thief be found, let him pay double.",
+  "ref": "Exodus 22:7"
+ },
+ {
+  "id": "exodus-22-m-06",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If a beast left with a neighbour dies and no man sees it, what settles it?",
+  "choices": [
+   "A fine",
+   "An oath of the LORD",
+   "A lot",
+   "A witness"
+  ],
+  "answer": 1,
+  "explanation": "Then shall an oath of the LORD be between them both.",
+  "ref": "Exodus 22:11"
+ },
+ {
+  "id": "exodus-22-m-07",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must the keeper do if the beast is torn in pieces?",
+  "choices": [
+   "Offer it",
+   "Bury it",
+   "Pay double",
+   "Bring it for witness"
+  ],
+  "answer": 3,
+  "explanation": "If it be torn in pieces, then let him bring it for witness.",
+  "ref": "Exodus 22:13"
+ },
+ {
+  "id": "exodus-22-m-08",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If a borrowed thing is hurt while its owner is with it, what must the borrower do?",
+  "choices": [
+   "He pays double",
+   "He is sold",
+   "He pays five times",
+   "He shall not make it good"
+  ],
+  "answer": 3,
+  "explanation": "If the owner thereof be with it, he shall not make it good.",
+  "ref": "Exodus 22:15"
+ },
+ {
+  "id": "exodus-22-m-09",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must the man do who entices a maid not betrothed?",
+  "choices": [
+   "Be stoned",
+   "Pay double",
+   "Be exiled",
+   "Endow her to be his wife"
+  ],
+  "answer": 3,
+  "explanation": "He shall surely endow her to be his wife.",
+  "ref": "Exodus 22:16"
+ },
+ {
+  "id": "exodus-22-m-10",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must he do if her father refuses?",
+  "choices": [
+   "Be sold",
+   "Pay money according to the dowry of virgins",
+   "Leave Israel",
+   "Pay an ox"
+  ],
+  "answer": 1,
+  "explanation": "If her father utterly refuse, he shall pay money according to the dowry of virgins.",
+  "ref": "Exodus 22:17"
+ },
+ {
+  "id": "exodus-22-m-11",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to one who sacrifices to any god but the LORD?",
+  "choices": [
+   "He is fined",
+   "He is sent away",
+   "He is utterly destroyed",
+   "He is flogged"
+  ],
+  "answer": 2,
+  "explanation": "He that sacrificeth unto any god, save unto the LORD only, he shall be utterly destroyed.",
+  "ref": "Exodus 22:20"
+ },
+ {
+  "id": "exodus-22-m-12",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would do if widows and fatherless cry to Him?",
+  "choices": [
+   "Raise judges",
+   "Plague Egypt",
+   "Kill them with the sword who afflicted them",
+   "Send manna"
+  ],
+  "answer": 2,
+  "explanation": "My wrath shall wax hot, and I will kill you with the sword; and your wives shall be widows.",
+  "ref": "Exodus 22:24"
+ },
+ {
+  "id": "exodus-22-m-13",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must not be done to a poor man in lending money?",
+  "choices": [
+   "Feed him",
+   "Judge him",
+   "Visit him",
+   "Lay usury on him"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not be to him as an usurer, neither shalt thou lay upon him usury.",
+  "ref": "Exodus 22:25"
+ },
+ {
+  "id": "exodus-22-m-14",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By when must a pledged garment be returned?",
+  "choices": [
+   "By morning",
+   "In a year",
+   "In seven days",
+   "By sunset"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt deliver it unto him by that the sun goeth down.",
+  "ref": "Exodus 22:26"
+ },
+ {
+  "id": "exodus-22-m-15",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day must a firstborn ox or sheep be given to the LORD?",
+  "choices": [
+   "The tenth",
+   "The eighth",
+   "The third",
+   "The seventh"
+  ],
+  "answer": 1,
+  "explanation": "Seven days it shall be with his dam; on the eighth day thou shalt give it me.",
+  "ref": "Exodus 22:30"
+ },
+ {
+  "id": "exodus-22-h-01",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say of Himself when the poor man cries over his garment?",
+  "choices": [
+   "I am silent",
+   "I am gracious",
+   "I am angry",
+   "I am jealous"
+  ],
+  "answer": 1,
+  "explanation": "When he crieth unto me, that I will hear; for I am gracious.",
+  "ref": "Exodus 22:27"
+ },
+ {
+  "id": "exodus-22-h-02",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was the garment a poor man's only covering?",
+  "choices": [
+   "It was his coat of honour",
+   "It was his tent",
+   "It was his bed",
+   "It was his raiment for his skin"
+  ],
+  "answer": 3,
+  "explanation": "It is his covering only, it is his raiment for his skin: wherein shall he sleep?",
+  "ref": "Exodus 22:27"
+ },
+ {
+  "id": "exodus-22-h-03",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the Israelites should be unto Him?",
+  "choices": [
+   "Wise men",
+   "Rich men",
+   "Holy men",
+   "Mighty men"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall be holy men unto me.",
+  "ref": "Exodus 22:31"
+ },
+ {
+  "id": "exodus-22-h-04",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the Israelites not to delay offering?",
+  "choices": [
+   "Their gold",
+   "Their sheep",
+   "The first of their ripe fruits and liquors",
+   "Their incense"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt not delay to offer the first of thy ripe fruits, and of thy liquors.",
+  "ref": "Exodus 22:29"
+ },
+ {
+  "id": "exodus-22-h-05",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom are they told not to revile?",
+  "choices": [
+   "The poor",
+   "The gods",
+   "The strangers",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not revile the gods, nor curse the ruler of thy people.",
+  "ref": "Exodus 22:28"
+ },
+ {
+  "id": "exodus-22-h-06",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who shall judge whether a keeper put his hand to a neighbour's goods?",
+  "choices": [
+   "Moses",
+   "The priests",
+   "The judges",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "The master of the house shall be brought unto the judges.",
+  "ref": "Exodus 22:8"
+ },
+ {
+  "id": "exodus-22-h-07",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said about the sun in the case of the thief found breaking in?",
+  "choices": [
+   "If it is set, he is free",
+   "If it is risen, blood is shed for him",
+   "It does not matter",
+   "If it is high, he pays double"
+  ],
+  "answer": 1,
+  "explanation": "If the sun be risen upon him, there shall be blood shed for him.",
+  "ref": "Exodus 22:3"
+ },
+ {
+  "id": "exodus-22-h-08",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If it is an hired thing that is hurt, why does the borrower not pay?",
+  "choices": [
+   "It came for his hire",
+   "It was holy",
+   "It was a gift",
+   "It was old"
+  ],
+  "answer": 0,
+  "explanation": "If it be an hired thing, it came for his hire.",
+  "ref": "Exodus 22:15"
+ },
+ {
+  "id": "exodus-22-h-09",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does a man owe if a borrowed thing is hurt while the owner is not with it?",
+  "choices": [
+   "He shall surely make it good",
+   "Double",
+   "Nothing",
+   "Five times"
+  ],
+  "answer": 0,
+  "explanation": "If a man borrow ought of his neighbour, and it be hurt, or die, the owner thereof being not with it, he shall surely make it good.",
+  "ref": "Exodus 22:14"
+ },
+ {
+  "id": "exodus-22-h-10",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be left behind if the LORD killed the afflicters with the sword?",
+  "choices": [
+   "Empty tents",
+   "Broken altars",
+   "Orphan flocks",
+   "Widows and fatherless children"
+  ],
+  "answer": 3,
+  "explanation": "Your wives shall be widows, and your children fatherless.",
+  "ref": "Exodus 22:24"
+ },
+ {
+  "id": "exodus-22-h-11",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say to do with the firstborn of oxen and sheep, besides waiting seven days?",
+  "choices": [
+   "Offer it at once",
+   "Give it to Him on the eighth day",
+   "Sell it",
+   "Keep it in the field"
+  ],
+  "answer": 1,
+  "explanation": "Seven days it shall be with his dam; on the eighth day thou shalt give it me.",
+  "ref": "Exodus 22:30"
+ },
+ {
+  "id": "exodus-22-h-12",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the owner do if the keeper swore the oath?",
+  "choices": [
+   "Burn the animal",
+   "Demand double",
+   "Take him to the judges",
+   "Accept it and not require payment"
+  ],
+  "answer": 3,
+  "explanation": "The owner of it shall accept thereof, and he shall not make it good.",
+  "ref": "Exodus 22:11"
+ },
+ {
+  "id": "exodus-22-h-13",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is brought to the judges if the thief is not found?",
+  "choices": [
+   "The stranger",
+   "The elders",
+   "The master of the house",
+   "The neighbour"
+  ],
+  "answer": 2,
+  "explanation": "The master of the house shall be brought unto the judges, to see whether he have put his hand unto his neighbour's goods.",
+  "ref": "Exodus 22:8"
+ },
+ {
+  "id": "exodus-22-h-14",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man deliver to his neighbour to keep in the case of theft?",
+  "choices": [
+   "An ox only",
+   "Money or stuff",
+   "Wine",
+   "Seed"
+  ],
+  "answer": 1,
+  "explanation": "If a man shall deliver unto his neighbour money or stuff to keep, and it be stolen.",
+  "ref": "Exodus 22:7"
+ },
+ {
+  "id": "exodus-22-h-15",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides oxen, which animal is named in the keeping case?",
+  "choices": [
+   "A goat",
+   "A horse",
+   "An ass",
+   "A camel"
+  ],
+  "answer": 2,
+  "explanation": "If a man deliver unto his neighbour an ass, or an ox, or a sheep, or any beast, to keep.",
+  "ref": "Exodus 22:10"
+ },
+ {
   "id": "old-exodus-23-1",
   "chapter": 23,
   "level": "beginner",
