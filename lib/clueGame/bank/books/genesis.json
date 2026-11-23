@@ -9392,22 +9392,6 @@
   "ref": "Genesis 27:2"
  },
  {
-  "id": "old-genesis-28-2",
-  "chapter": 28,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What did Jacob see in his dream at Bethel?",
-  "choices": [
-   "A burning bush",
-   "A rainbow over the city",
-   "A river of fire",
-   "A ladder reaching to heaven with angels ascending and descending"
-  ],
-  "answer": 3,
-  "explanation": "Jacob saw a ladder set up on the earth reaching to heaven.",
-  "ref": "Genesis 28:12"
- },
- {
   "id": "old-genesis-28-3",
   "chapter": 28,
   "level": "beginner",
@@ -9440,20 +9424,308 @@
   "ref": "Genesis 28:18"
  },
  {
-  "id": "old-genesis-29-2",
-  "chapter": 29,
+  "id": "genesis-28-e-01",
+  "chapter": 28,
   "level": "beginner",
-  "category": "keyword",
-  "question": "How many years did Jacob agree to serve for Rachel?",
+  "category": "person",
+  "question": "Who blessed Jacob and charged him not to take a Canaanite wife?",
   "choices": [
-   "3",
-   "5",
-   "7",
-   "14"
+   "Laban",
+   "Abraham",
+   "Esau",
+   "Isaac"
+  ],
+  "answer": 3,
+  "explanation": "Isaac called Jacob, and blessed him, and charged him, Thou shalt not take a wife of the daughters of Canaan.",
+  "ref": "Genesis 28:1"
+ },
+ {
+  "id": "genesis-28-m-01",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "God told Jacob he would spread abroad in which directions?",
+  "choices": [
+   "West, east, north and south",
+   "East and west only",
+   "North only",
+   "Toward Egypt and Haran"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt spread abroad to the west, and to the east, and to the north, and to the south.",
+  "ref": "Genesis 28:14"
+ },
+ {
+  "id": "genesis-28-m-02",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In Jacob’s dream, where did the LORD stand?",
+  "choices": [
+   "At the foot of the ladder",
+   "Above the ladder",
+   "Beside the stone",
+   "Upon the mountain"
+  ],
+  "answer": 1,
+  "explanation": "Behold, the LORD stood above it, and said, I am the LORD God of Abraham thy father.",
+  "ref": "Genesis 28:13"
+ },
+ {
+  "id": "genesis-28-m-03",
+  "chapter": 28,
+  "level": "medium",
+  "category": "place",
+  "question": "Jacob vowed that he would come again to where in peace?",
+  "choices": [
+   "Beer-sheba",
+   "Haran",
+   "His father’s house",
+   "Egypt"
   ],
   "answer": 2,
-  "explanation": "Jacob agreed to serve Laban seven years for Rachel.",
-  "ref": "Genesis 29:18"
+  "explanation": "Jacob vowed that he would come again to his father’s house in peace.",
+  "ref": "Genesis 28:21"
+ },
+ {
+  "id": "genesis-28-h-01",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what name did Isaac ask that God bless Jacob?",
+  "choices": [
+   "God Most High",
+   "The Lord of hosts",
+   "The God of Bethel",
+   "God Almighty"
+  ],
+  "answer": 3,
+  "explanation": "Isaac said, And God Almighty bless thee, and make thee fruitful, and multiply thee.",
+  "ref": "Genesis 28:3"
+ },
+ {
+  "id": "genesis-28-h-02",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Isaac asked God to multiply Jacob that he might be what?",
+  "choices": [
+   "A multitude of people",
+   "A king over Canaan",
+   "A prince of Egypt",
+   "A great nation of shepherds"
+  ],
+  "answer": 0,
+  "explanation": "God Almighty bless thee, and multiply thee, that thou mayest be a multitude of people.",
+  "ref": "Genesis 28:3"
+ },
+ {
+  "id": "genesis-28-h-03",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Isaac said Jacob would inherit the land in which he was what?",
+  "choices": [
+   "A servant",
+   "A stranger",
+   "A traveller",
+   "A king"
+  ],
+  "answer": 1,
+  "explanation": "That thou mayest inherit the land wherein thou art a stranger, which God gave unto Abraham.",
+  "ref": "Genesis 28:4"
+ },
+ {
+  "id": "genesis-28-h-04",
+  "chapter": 28,
+  "level": "hard",
+  "category": "person",
+  "question": "Esau took which daughter of Ishmael as a wife?",
+  "choices": [
+   "Bashemath",
+   "Judith",
+   "Mahalath",
+   "Keturah"
+  ],
+  "answer": 2,
+  "explanation": "Esau took Mahalath the daughter of Ishmael Abraham’s son, the sister of Nebajoth, to be his wife.",
+  "ref": "Genesis 28:9"
+ },
+ {
+  "id": "genesis-28-h-05",
+  "chapter": 28,
+  "level": "hard",
+  "category": "person",
+  "question": "Mahalath was the sister of which man?",
+  "choices": [
+   "Kedar",
+   "Laban",
+   "Bethuel",
+   "Nebajoth"
+  ],
+  "answer": 3,
+  "explanation": "Mahalath was the daughter of Ishmael, the sister of Nebajoth.",
+  "ref": "Genesis 28:9"
+ },
+ {
+  "id": "genesis-28-h-06",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Jacob obey in going to Padan-aram?",
+  "choices": [
+   "His father and his mother",
+   "His brother Esau",
+   "Laban",
+   "Only his father"
+  ],
+  "answer": 0,
+  "explanation": "Jacob obeyed his father and his mother, and was gone to Padan-aram.",
+  "ref": "Genesis 28:7"
+ },
+ {
+  "id": "genesis-28-h-07",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Esau saw that the daughters of Canaan did what to Isaac?",
+  "choices": [
+   "Troubled his sleep",
+   "Pleased him not",
+   "Made him weep",
+   "Took his flocks"
+  ],
+  "answer": 1,
+  "explanation": "Esau seeing that the daughters of Canaan pleased not Isaac his father.",
+  "ref": "Genesis 28:8"
+ },
+ {
+  "id": "genesis-28-h-08",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How far did the top of Jacob’s ladder reach?",
+  "choices": [
+   "To the clouds",
+   "To the mountain",
+   "To heaven",
+   "To Bethel"
+  ],
+  "answer": 2,
+  "explanation": "Behold a ladder set up on the earth, and the top of it reached to heaven.",
+  "ref": "Genesis 28:12"
+ },
+ {
+  "id": "genesis-28-h-09",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob say he had not known when he awoke?",
+  "choices": [
+   "That Esau followed him",
+   "That the stone was a pillar",
+   "That Laban was near",
+   "That the LORD was in that place"
+  ],
+  "answer": 3,
+  "explanation": "Jacob said, Surely the LORD is in this place; and I knew it not.",
+  "ref": "Genesis 28:16"
+ },
+ {
+  "id": "genesis-28-h-10",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob say of the place when he was afraid?",
+  "choices": [
+   "How dreadful is this place!",
+   "How lonely is this place!",
+   "How barren is this place!",
+   "How holy is this city!"
+  ],
+  "answer": 0,
+  "explanation": "He was afraid, and said, How dreadful is this place! this is none other but the house of God.",
+  "ref": "Genesis 28:17"
+ },
+ {
+  "id": "genesis-28-h-11",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Jacob set up the stone as a pillar?",
+  "choices": [
+   "At midnight",
+   "Early in the morning",
+   "At noon",
+   "At evening"
+  ],
+  "answer": 1,
+  "explanation": "Jacob rose up early in the morning, and took the stone that he had put for his pillows, and set it up for a pillar.",
+  "ref": "Genesis 28:18"
+ },
+ {
+  "id": "genesis-28-h-12",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jacob vowed that if God kept him, then who would be his God?",
+  "choices": [
+   "The God of Esau",
+   "Laban’s God",
+   "The LORD",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "Jacob vowed that if God would be with him, then shall the LORD be my God.",
+  "ref": "Genesis 28:20"
+ },
+ {
+  "id": "genesis-28-h-13",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God said He would not leave Jacob until He had done what?",
+  "choices": [
+   "Brought Esau to him",
+   "Built an altar",
+   "Given him Laban’s flocks",
+   "That which He had spoken"
+  ],
+  "answer": 3,
+  "explanation": "I will not leave thee, until I have done that which I have spoken to thee of.",
+  "ref": "Genesis 28:15"
+ },
+ {
+  "id": "genesis-28-h-14",
+  "chapter": 28,
+  "level": "hard",
+  "category": "place",
+  "question": "God promised to bring Jacob again into what?",
+  "choices": [
+   "This land",
+   "Haran",
+   "Egypt",
+   "His father’s tent"
+  ],
+  "answer": 0,
+  "explanation": "I will keep thee in all places whither thou goest, and will bring thee again into this land.",
+  "ref": "Genesis 28:15"
+ },
+ {
+  "id": "genesis-28-h-15",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was Jacob’s ladder set up?",
+  "choices": [
+   "On a mountain top",
+   "On the earth",
+   "In Bethel’s gate",
+   "By the well"
+  ],
+  "answer": 1,
+  "explanation": "Behold a ladder set up on the earth, and the top of it reached to heaven.",
+  "ref": "Genesis 28:12"
  },
  {
   "id": "old-genesis-29-4",
@@ -9486,6 +9758,310 @@
   "answer": 2,
   "explanation": "Leah gave birth to Reuben, Simeon, Levi, and Judah in this chapter.",
   "ref": "Genesis 29:32–35"
+ },
+ {
+  "id": "genesis-29-e-01",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who were Laban’s two daughters?",
+  "choices": [
+   "Leah and Rachel",
+   "Rachel and Rebekah",
+   "Leah and Zilpah",
+   "Rachel and Bilhah"
+  ],
+  "answer": 0,
+  "explanation": "Laban had two daughters: the name of the elder was Leah, and the name of the younger was Rachel.",
+  "ref": "Genesis 29:16"
+ },
+ {
+  "id": "genesis-29-m-01",
+  "chapter": 29,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Laban give Rachel as her maid?",
+  "choices": [
+   "Zilpah",
+   "Bilhah",
+   "Hagar",
+   "Keturah"
+  ],
+  "answer": 1,
+  "explanation": "Laban gave to Rachel his daughter Bilhah his handmaid to be her maid.",
+  "ref": "Genesis 29:29"
+ },
+ {
+  "id": "genesis-29-m-02",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Laban say to Jacob when he heard the tidings?",
+  "choices": [
+   "Thou art a stranger to me",
+   "Thou art a thief",
+   "Surely thou art my bone and my flesh",
+   "Thou art my master"
+  ],
+  "answer": 2,
+  "explanation": "Laban said to him, Surely thou art my bone and my flesh.",
+  "ref": "Genesis 29:14"
+ },
+ {
+  "id": "genesis-29-m-03",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Rachel’s condition when the LORD opened Leah’s womb?",
+  "choices": [
+   "Sick",
+   "Away from home",
+   "Pregnant",
+   "Barren"
+  ],
+  "answer": 3,
+  "explanation": "When the LORD saw that Leah was hated, he opened her womb: but Rachel was barren.",
+  "ref": "Genesis 29:31"
+ },
+ {
+  "id": "genesis-29-h-01",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many flocks of sheep lay by the well?",
+  "choices": [
+   "Three",
+   "Two",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "Behold a well in the field, and, lo, there were three flocks of sheep lying by it.",
+  "ref": "Genesis 29:2"
+ },
+ {
+  "id": "genesis-29-h-02",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "Jacob asked the shepherds if they knew Laban, the son of whom?",
+  "choices": [
+   "Bethuel",
+   "Nahor",
+   "Terah",
+   "Abraham"
+  ],
+  "answer": 1,
+  "explanation": "Jacob said, Know ye Laban the son of Nahor? And they said, We know him.",
+  "ref": "Genesis 29:5"
+ },
+ {
+  "id": "genesis-29-h-03",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jacob told the shepherds that it was yet what time of day?",
+  "choices": [
+   "Evening",
+   "Dawn",
+   "High day",
+   "Midnight"
+  ],
+  "answer": 2,
+  "explanation": "Jacob said, Lo, it is yet high day, neither is it time that the cattle should be gathered together.",
+  "ref": "Genesis 29:7"
+ },
+ {
+  "id": "genesis-29-h-04",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Rachel come to the well with her father’s sheep?",
+  "choices": [
+   "Laban was ill",
+   "Leah sent her",
+   "She was lost",
+   "She kept them"
+  ],
+  "answer": 3,
+  "explanation": "Rachel came with her father’s sheep: for she kept them.",
+  "ref": "Genesis 29:9"
+ },
+ {
+  "id": "genesis-29-h-05",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Laban greet Jacob when he heard the tidings?",
+  "choices": [
+   "He ran to meet him and embraced him",
+   "He sent a servant",
+   "He refused to see him",
+   "He blessed him from afar"
+  ],
+  "answer": 0,
+  "explanation": "Laban ran to meet him, and embraced him, and kissed him, and brought him to his house.",
+  "ref": "Genesis 29:13"
+ },
+ {
+  "id": "genesis-29-h-06",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the text describe Rachel?",
+  "choices": [
+   "Tender eyed",
+   "Beautiful and well favoured",
+   "Strong and wise",
+   "Quiet and meek"
+  ],
+  "answer": 1,
+  "explanation": "Leah was tender eyed; but Rachel was beautiful and well favoured.",
+  "ref": "Genesis 29:17"
+ },
+ {
+  "id": "genesis-29-h-07",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Laban ask Jacob about serving him?",
+  "choices": [
+   "Would he stay a year",
+   "Would he guard the flocks",
+   "Should he serve for nought",
+   "Would he leave in peace"
+  ],
+  "answer": 2,
+  "explanation": "Laban said, Because thou art my brother, shouldest thou therefore serve me for nought? tell me, what shall thy wages be?",
+  "ref": "Genesis 29:15"
+ },
+ {
+  "id": "genesis-29-h-08",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Laban say when Jacob asked for Rachel?",
+  "choices": [
+   "She is not yet of age",
+   "She will serve thee",
+   "Give seven years first",
+   "It is better that I give her to thee than to another man"
+  ],
+  "answer": 3,
+  "explanation": "Laban said, It is better that I give her to thee, than that I should give her to another man.",
+  "ref": "Genesis 29:19"
+ },
+ {
+  "id": "genesis-29-h-09",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Laban gather together at the wedding?",
+  "choices": [
+   "All the men of the place for a feast",
+   "His servants for a sacrifice",
+   "His elders to judge",
+   "His flocks to the well"
+  ],
+  "answer": 0,
+  "explanation": "Laban gathered together all the men of the place, and made a feast.",
+  "ref": "Genesis 29:22"
+ },
+ {
+  "id": "genesis-29-h-10",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Laban bring Leah to Jacob?",
+  "choices": [
+   "In the morning",
+   "In the evening",
+   "At noon",
+   "At the feast’s end"
+  ],
+  "answer": 1,
+  "explanation": "It came to pass in the evening, that he took Leah his daughter, and brought her to him.",
+  "ref": "Genesis 29:23"
+ },
+ {
+  "id": "genesis-29-h-11",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What word did Jacob use for what Laban had done to him?",
+  "choices": [
+   "Robbed",
+   "Cursed",
+   "Beguiled",
+   "Forgotten"
+  ],
+  "answer": 2,
+  "explanation": "Jacob said, What is this thou hast done unto me? wherefore then hast thou beguiled me?",
+  "ref": "Genesis 29:25"
+ },
+ {
+  "id": "genesis-29-h-12",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob ask Laban for when his days were fulfilled?",
+  "choices": [
+   "His wages",
+   "His flocks",
+   "Leave to go home",
+   "His wife"
+  ],
+  "answer": 3,
+  "explanation": "Jacob said unto Laban, Give me my wife, for my days are fulfilled.",
+  "ref": "Genesis 29:21"
+ },
+ {
+  "id": "genesis-29-h-13",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Leah name her second son Simeon?",
+  "choices": [
+   "The LORD had heard that she was hated",
+   "Her husband had come to her",
+   "She asked for water",
+   "She had no husband"
+  ],
+  "answer": 0,
+  "explanation": "Because the LORD hath heard that I was hated, he hath therefore given me this son also: and she called his name Simeon.",
+  "ref": "Genesis 29:33"
+ },
+ {
+  "id": "genesis-29-h-14",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Leah named Levi because she had borne her husband how many sons?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Five"
+  ],
+  "answer": 1,
+  "explanation": "Now this time will my husband be joined unto me, because I have born him three sons.",
+  "ref": "Genesis 29:34"
+ },
+ {
+  "id": "genesis-29-h-15",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Leah do after Judah was born?",
+  "choices": [
+   "Wept for Rachel",
+   "Returned to Haran",
+   "Left bearing",
+   "Fell sick"
+  ],
+  "answer": 2,
+  "explanation": "She called his name Judah; and left bearing.",
+  "ref": "Genesis 29:35"
  },
  {
   "id": "old-genesis-30-1",
