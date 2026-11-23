@@ -220,7 +220,7 @@ function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; rea
   const [settings, setSettings] = useState(false);
   // The map pictures start downloading while the home screen is up, so the map opens ready.
   useEffect(() => {
-    for (const src of ["/games/match/ui/map-phone.webp", "/games/match/ui/map-exodus-phone.webp", "/games/match/ui/map-leviticus-phone.webp"]) {
+    for (const src of ["/games/match/ui/map-phone.webp", "/games/match/ui/map-exodus-phone.webp", "/games/match/ui/map-leviticus-phone.webp", "/games/match/ui/map-numbers-phone.webp"]) {
       const img = new Image();
       img.src = src;
     }
@@ -361,13 +361,27 @@ const LEVITICUS_PATH: Array<[number, number]> = [
   [31, 24.5], [24, 22], [29, 19.5], [44, 17], [54, 14.5], [51, 12], [42, 9.5], [44, 7], [52, 4.5], [56, 2], [55, 0.5],
 ];
 
-type Section = { src: string; fx: "genesis" | "exodus" | "leviticus"; path: Array<[number, number]>; levels: MatchLevel[] };
+/**
+ * The Numbers map (Drive Numbers/00-Numbers-Map, map-numbers-phone.webp):
+ * Sinai and the camp at the bottom, the almond tree, the rock spring, the
+ * bronze serpent, the spies' grapes, and the walled city across the Jordan at
+ * the top. Traced from the sand colour of the path, row by row.
+ */
+const NUMBERS_PATH: Array<[number, number]> = [
+  [50, 99.5], [49, 97], [43, 94.5], [38, 92], [37, 89.5], [41, 87], [45, 84.5], [46, 82], [43, 79.5], [35, 77],
+  [26, 74.5], [23, 72], [25, 69.5], [34, 67], [45, 64.5], [51, 62], [46, 59.5], [34, 57], [29, 54.5], [33, 52],
+  [43, 49.5], [51, 47], [51, 44.5], [41, 42], [31, 39.5], [29, 37], [36, 34.5], [45, 32], [53, 29.5], [46, 27],
+  [36, 24.5], [31, 22], [35, 19.5], [46, 17], [53, 14.5], [50, 12], [44, 9.5], [46, 7], [52, 4.5], [55, 2], [55, 0.5],
+];
+
+type Section = { src: string; fx: "genesis" | "exodus" | "leviticus" | "numbers"; path: Array<[number, number]>; levels: MatchLevel[] };
 
 /** The painted maps, by book; a book without its own map yet uses the last one. */
 const BOOK_MAPS: Record<string, { src: string; path: Array<[number, number]>; fx: Section["fx"] }> = {
   Genesis: { src: "/games/match/ui/map-phone.webp", path: GENESIS_PATH, fx: "genesis" },
   Exodus: { src: "/games/match/ui/map-exodus-phone.webp", path: EXODUS_PATH, fx: "exodus" },
   Leviticus: { src: "/games/match/ui/map-leviticus-phone.webp", path: LEVITICUS_PATH, fx: "leviticus" },
+  Numbers: { src: "/games/match/ui/map-numbers-phone.webp", path: NUMBERS_PATH, fx: "numbers" },
 };
 
 /**
@@ -472,7 +486,7 @@ function GenesisMap({
     const mid = ((el.scrollTop + el.clientHeight / 2) / el.scrollHeight) * 100;
     const seg = Math.min(SEGMENTS - 1, Math.max(0, SEGMENTS - 1 - Math.floor((mid / 100) * SEGMENTS)));
     const s = SECTIONS[seg];
-    const name = s.fx === "leviticus" ? "Leviticus" : s.fx === "exodus" ? "Exodus" : "Genesis";
+    const name = s.fx === "numbers" ? "Numbers" : s.fx === "leviticus" ? "Leviticus" : s.fx === "exodus" ? "Exodus" : "Genesis";
     setBook((b) => (b === name ? b : name));
   };
 
@@ -673,7 +687,7 @@ function GenesisMap({
  */
 function MapFx({ seg, kind }: { seg: number; kind: Section["fx"] }) {
   const box = { top: `${((SEGMENTS - 1 - seg) * 100) / SEGMENTS}%`, height: `${(100 / SEGMENTS) * (seg > 0 ? BLEND : 1)}%` };
-  if (kind === "leviticus") {
+  if (kind === "leviticus" || kind === "numbers") {
     // The Leviticus map: the altar fire glowing by the Tabernacle, and fireflies over the harvest and the booths.
     return (
       <div className="bbm-fx" style={box} aria-hidden="true">

@@ -1,0 +1,30 @@
+{
+  "level": 3,
+  "name": "Manna and Quail",
+  "scripture": "Numbers 11",
+  "chapter": "Numbers",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "manna",
+    "quail",
+    "basket",
+    "water-jar",
+    "tent",
+    "cloud",
+    "stone"
+  ],
+  "goals": {
+    "manna": 8,
+    "quail": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Gather manna and quail.",
+  "storyEffect": "Gather manna and quail."
+}

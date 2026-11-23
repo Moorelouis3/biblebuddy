@@ -1,0 +1,30 @@
+{
+  "level": 2,
+  "name": "Follow the Cloud",
+  "scripture": "Numbers 9:15–23, 10:1–36",
+  "chapter": "Numbers",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "cloud",
+    "trumpet",
+    "tent",
+    "tabernacle",
+    "staff",
+    "banner",
+    "stone"
+  ],
+  "goals": {
+    "cloud": 8,
+    "trumpet": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match clouds and silver trumpets.",
+  "storyEffect": "Match clouds and silver trumpets."
+}

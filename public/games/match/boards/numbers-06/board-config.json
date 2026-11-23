@@ -1,0 +1,30 @@
+{
+  "level": 6,
+  "name": "Water from the Rock",
+  "scripture": "Numbers 20:1–13",
+  "chapter": "Numbers",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "water-drop",
+    "water-jar",
+    "stone",
+    "staff",
+    "moses",
+    "aaron",
+    "tent"
+  ],
+  "goals": {
+    "water-drop": 8,
+    "water-jar": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Collect water drops and jars.",
+  "storyEffect": "Collect water drops and jars."
+}

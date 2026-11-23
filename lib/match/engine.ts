@@ -550,7 +550,7 @@ const SOCKETS = ["#1b2b57", "#1d4a2a", "#4a2a14", "#1f3b4d", "#3b2350"];
  * On a local dev server every board shows (33), so new art can be looked at
  * on the map before it goes live (Louis, 2026-11-23: "I don't see it on local").
  */
-export const MAX_MATCH_LEVELS = process.env.NODE_ENV === "development" ? 33 : 22;
+export const MAX_MATCH_LEVELS = process.env.NODE_ENV === "development" ? 500 : 22;
 const BOOK_ORDER = ["genesis", "exodus", "leviticus", "numbers", "deuteronomy"];
 function fromConfigs(configs: BoardConfig[]): MatchLevel[] {
   const book = (c: BoardConfig) => (c.chapter || c.slug.split("-")[0]).replace(/^\w/, (x) => x.toUpperCase());

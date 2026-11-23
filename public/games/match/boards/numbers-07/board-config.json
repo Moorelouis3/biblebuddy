@@ -1,0 +1,30 @@
+{
+  "level": 7,
+  "name": "The Bronze Serpent",
+  "scripture": "Numbers 21:4–9",
+  "chapter": "Numbers",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "bronze-serpent",
+    "staff",
+    "tent",
+    "cloud",
+    "stone",
+    "bronze-altar",
+    "water-drop"
+  ],
+  "goals": {
+    "bronze-serpent": 8,
+    "staff": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match bronze serpents and staffs.",
+  "storyEffect": "Match bronze serpents and staffs."
+}

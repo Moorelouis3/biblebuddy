@@ -1,0 +1,31 @@
+{
+  "level": 10,
+  "name": "At the Edge of the Jordan",
+  "scripture": "Numbers 33:48–56, 34:1–12",
+  "chapter": "Numbers",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "water-drop",
+    "tent",
+    "stone",
+    "joshua",
+    "banner",
+    "scroll",
+    "tree"
+  ],
+  "goals": {
+    "water-drop": 8,
+    "tent": 8,
+    "stone": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Gather water drops, tents, and stones.",
+  "storyEffect": "Gather water drops, tents, and stones."
+}

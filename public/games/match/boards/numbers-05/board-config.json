@@ -1,0 +1,30 @@
+{
+  "level": 5,
+  "name": "Aaron’s Budding Staff",
+  "scripture": "Numbers 16–17",
+  "chapter": "Numbers",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "budding-staff",
+    "almond-blossom",
+    "almond",
+    "aaron",
+    "tabernacle",
+    "staff",
+    "tent"
+  ],
+  "goals": {
+    "budding-staff": 8,
+    "almond": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match the budding staff and almonds.",
+  "storyEffect": "Match the budding staff and almonds."
+}

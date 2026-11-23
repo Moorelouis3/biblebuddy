@@ -201,10 +201,10 @@ ok("goals are met exactly at the target", () => {
   assert.equal(goalsMet(goals, { sun: 9, globe: 8, tree: 8 }), true);
 });
 
-ok("the boards: Creation and Eden first, up to 33, numbered in order, every tile has art", () => {
+ok("the boards: Creation and Eden first, numbered in order, numbered in order, every tile has art", () => {
   assert.equal(MATCH_LEVELS[0].id, "creation");
   assert.equal(MATCH_LEVELS[1].id, "eden");
-  assert.ok(MATCH_LEVELS.length <= 33);
+  assert.ok(MATCH_LEVELS.length <= 500);
   MATCH_LEVELS.forEach((l, i) => {
     assert.equal(l.number, i + 1);
     assert.ok(l.types.length >= 4, l.id);

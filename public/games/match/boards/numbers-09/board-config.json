@@ -1,0 +1,30 @@
+{
+  "level": 9,
+  "name": "Joshua Chosen to Lead",
+  "scripture": "Numbers 27:12–23",
+  "chapter": "Numbers",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "joshua",
+    "moses",
+    "tabernacle",
+    "staff",
+    "banner",
+    "tent",
+    "scroll"
+  ],
+  "goals": {
+    "joshua": 8,
+    "banner": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Gather Joshua and the banners.",
+  "storyEffect": "Gather Joshua and the banners."
+}

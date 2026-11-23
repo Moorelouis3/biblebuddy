@@ -1003,5 +1003,326 @@
     },
     "goalText": "Gather rain, wheat, and grapes.",
     "storyEffect": "Gather rain, wheat, and grapes."
+  },
+  {
+    "slug": "numbers-01",
+    "folderTitle": "01-Count-the-Tribes",
+    "level": 1,
+    "name": "Count the Tribes",
+    "scripture": "Numbers 1–2",
+    "chapter": "Numbers",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "banner",
+      "tent",
+      "moses",
+      "aaron",
+      "tabernacle",
+      "basket",
+      "stone"
+    ],
+    "goals": {
+      "banner": 8,
+      "tent": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather banners and tents for the camp.",
+    "storyEffect": "Gather banners and tents for the camp."
+  },
+  {
+    "slug": "numbers-02",
+    "folderTitle": "02-Follow-the-Cloud",
+    "level": 2,
+    "name": "Follow the Cloud",
+    "scripture": "Numbers 9:15–23, 10:1–36",
+    "chapter": "Numbers",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "cloud",
+      "trumpet",
+      "tent",
+      "tabernacle",
+      "staff",
+      "banner",
+      "stone"
+    ],
+    "goals": {
+      "cloud": 8,
+      "trumpet": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match clouds and silver trumpets.",
+    "storyEffect": "Match clouds and silver trumpets."
+  },
+  {
+    "slug": "numbers-03",
+    "folderTitle": "03-Manna-and-Quail",
+    "level": 3,
+    "name": "Manna and Quail",
+    "scripture": "Numbers 11",
+    "chapter": "Numbers",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "manna",
+      "quail",
+      "basket",
+      "water-jar",
+      "tent",
+      "cloud",
+      "stone"
+    ],
+    "goals": {
+      "manna": 8,
+      "quail": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather manna and quail.",
+    "storyEffect": "Gather manna and quail."
+  },
+  {
+    "slug": "numbers-04",
+    "folderTitle": "04-The-Twelve-Spies",
+    "level": 4,
+    "name": "The Twelve Spies",
+    "scripture": "Numbers 13–14",
+    "chapter": "Numbers",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "grape",
+      "fig",
+      "staff",
+      "basket",
+      "tree",
+      "stone",
+      "banner"
+    ],
+    "goals": {
+      "grape": 8,
+      "fig": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather grapes and figs from Canaan.",
+    "storyEffect": "Gather grapes and figs from Canaan."
+  },
+  {
+    "slug": "numbers-05",
+    "folderTitle": "05-Aarons-Budding-Staff",
+    "level": 5,
+    "name": "Aaron’s Budding Staff",
+    "scripture": "Numbers 16–17",
+    "chapter": "Numbers",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "budding-staff",
+      "almond-blossom",
+      "almond",
+      "aaron",
+      "tabernacle",
+      "staff",
+      "tent"
+    ],
+    "goals": {
+      "budding-staff": 8,
+      "almond": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match the budding staff and almonds.",
+    "storyEffect": "Match the budding staff and almonds."
+  },
+  {
+    "slug": "numbers-06",
+    "folderTitle": "06-Water-from-the-Rock",
+    "level": 6,
+    "name": "Water from the Rock",
+    "scripture": "Numbers 20:1–13",
+    "chapter": "Numbers",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "water-drop",
+      "water-jar",
+      "stone",
+      "staff",
+      "moses",
+      "aaron",
+      "tent"
+    ],
+    "goals": {
+      "water-drop": 8,
+      "water-jar": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Collect water drops and jars.",
+    "storyEffect": "Collect water drops and jars."
+  },
+  {
+    "slug": "numbers-07",
+    "folderTitle": "07-The-Bronze-Serpent",
+    "level": 7,
+    "name": "The Bronze Serpent",
+    "scripture": "Numbers 21:4–9",
+    "chapter": "Numbers",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "bronze-serpent",
+      "staff",
+      "tent",
+      "cloud",
+      "stone",
+      "bronze-altar",
+      "water-drop"
+    ],
+    "goals": {
+      "bronze-serpent": 8,
+      "staff": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match bronze serpents and staffs.",
+    "storyEffect": "Match bronze serpents and staffs."
+  },
+  {
+    "slug": "numbers-08",
+    "folderTitle": "08-Balaam-and-the-Donkey",
+    "level": 8,
+    "name": "Balaam and the Donkey",
+    "scripture": "Numbers 22–24",
+    "chapter": "Numbers",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "donkey",
+      "grape",
+      "staff",
+      "stone",
+      "banner",
+      "cloud",
+      "water-jar"
+    ],
+    "goals": {
+      "donkey": 8,
+      "grape": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather donkey and grape tiles.",
+    "storyEffect": "Gather donkey and grape tiles."
+  },
+  {
+    "slug": "numbers-09",
+    "folderTitle": "09-Joshua-Chosen-to-Lead",
+    "level": 9,
+    "name": "Joshua Chosen to Lead",
+    "scripture": "Numbers 27:12–23",
+    "chapter": "Numbers",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "joshua",
+      "moses",
+      "tabernacle",
+      "staff",
+      "banner",
+      "tent",
+      "scroll"
+    ],
+    "goals": {
+      "joshua": 8,
+      "banner": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather Joshua and the banners.",
+    "storyEffect": "Gather Joshua and the banners."
+  },
+  {
+    "slug": "numbers-10",
+    "folderTitle": "10-At-the-Edge-of-the-Jordan",
+    "level": 10,
+    "name": "At the Edge of the Jordan",
+    "scripture": "Numbers 33:48–56, 34:1–12",
+    "chapter": "Numbers",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "water-drop",
+      "tent",
+      "stone",
+      "joshua",
+      "banner",
+      "scroll",
+      "tree"
+    ],
+    "goals": {
+      "water-drop": 8,
+      "tent": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather water drops, tents, and stones.",
+    "storyEffect": "Gather water drops, tents, and stones."
   }
 ]
