@@ -1520,6 +1520,646 @@
   "ref": "Exodus 3:12"
  },
  {
+  "id": "exodus-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose flock did Moses keep in the desert?",
+  "choices": [
+   "Pharaoh",
+   "Jethro his father in law",
+   "Laban his uncle",
+   "Aaron his brother"
+  ],
+  "answer": 1,
+  "explanation": "Moses kept the flock of Jethro his father in law, the priest of Midian.",
+  "ref": "Exodus 3:1"
+ },
+ {
+  "id": "exodus-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which mountain did Moses come with the flock?",
+  "choices": [
+   "Zion",
+   "Horeb",
+   "Carmel",
+   "Ararat"
+  ],
+  "answer": 1,
+  "explanation": "Moses led the flock to the backside of the desert, and came to the mountain of God, even to Horeb.",
+  "ref": "Exodus 3:1"
+ },
+ {
+  "id": "exodus-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who appeared to Moses in a flame of fire out of the bush?",
+  "choices": [
+   "Pharaoh's daughter",
+   "Jethro",
+   "The angel of the LORD",
+   "Aaron"
+  ],
+  "answer": 2,
+  "explanation": "The angel of the LORD appeared unto him in a flame of fire out of the midst of a bush.",
+  "ref": "Exodus 3:2"
+ },
+ {
+  "id": "exodus-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses answer when God called his name from the bush?",
+  "choices": [
+   "Speak, Lord",
+   "I will go",
+   "Here am I",
+   "Who art thou"
+  ],
+  "answer": 2,
+  "explanation": "God called, Moses, Moses. And he said, Here am I.",
+  "ref": "Exodus 3:4"
+ },
+ {
+  "id": "exodus-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which three fathers did God say He was the God of?",
+  "choices": [
+   "Isaac, Jacob and Levi",
+   "Noah, Abraham and Isaac",
+   "Abraham, Isaac and Jacob",
+   "Abraham, Jacob and Joseph"
+  ],
+  "answer": 2,
+  "explanation": "I am the God of thy father, the God of Abraham, the God of Isaac, and the God of Jacob.",
+  "ref": "Exodus 3:6"
+ },
+ {
+  "id": "exodus-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say He had come down to do for His people?",
+  "choices": [
+   "Teach them the law",
+   "Give them a king",
+   "Punish them",
+   "Deliver them from the Egyptians"
+  ],
+  "answer": 3,
+  "explanation": "I am come down to deliver them out of the hand of the Egyptians.",
+  "ref": "Exodus 3:8"
+ },
+ {
+  "id": "exodus-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of land did God promise to bring Israel to?",
+  "choices": [
+   "A land flowing with milk and honey",
+   "A land of cedars",
+   "A land without enemies",
+   "A land of silver mines"
+  ],
+  "answer": 0,
+  "explanation": "God promised a good land and a large, a land flowing with milk and honey.",
+  "ref": "Exodus 3:8"
+ },
+ {
+  "id": "exodus-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Moses first answer when God sent him to Pharaoh?",
+  "choices": [
+   "I am too old",
+   "Who am I, that I should go?",
+   "Send my brother instead",
+   "I will go at once"
+  ],
+  "answer": 1,
+  "explanation": "Moses said, Who am I, that I should go unto Pharaoh, and that I should bring forth the children of Israel out of Egypt?",
+  "ref": "Exodus 3:11"
+ },
+ {
+  "id": "exodus-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had God seen in Egypt?",
+  "choices": [
+   "The affliction of His people",
+   "A great river flood",
+   "A famine",
+   "Pharaoh's army"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, I have surely seen the affliction of my people which are in Egypt.",
+  "ref": "Exodus 3:7"
+ },
+ {
+  "id": "exodus-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom was Moses sent to bring out of Egypt?",
+  "choices": [
+   "The Midianites",
+   "The Hittites",
+   "The children of Israel",
+   "The Egyptians"
+  ],
+  "answer": 2,
+  "explanation": "God would send Moses unto Pharaoh to bring forth his people the children of Israel out of Egypt.",
+  "ref": "Exodus 3:10"
+ },
+ {
+  "id": "exodus-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "Of which land was Jethro the priest?",
+  "choices": [
+   "Egypt",
+   "Midian",
+   "Moab",
+   "Canaan"
+  ],
+  "answer": 1,
+  "explanation": "Moses kept the flock of Jethro his father in law, the priest of Midian.",
+  "ref": "Exodus 3:1"
+ },
+ {
+  "id": "exodus-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Moses say he would turn aside?",
+  "choices": [
+   "To pray",
+   "To rest the flock",
+   "To see why the bush was not burnt",
+   "To hide from God"
+  ],
+  "answer": 2,
+  "explanation": "Moses said, I will now turn aside, and see this great sight, why the bush is not burnt.",
+  "ref": "Exodus 3:3"
+ },
+ {
+  "id": "exodus-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why had Israel cried out, according to God?",
+  "choices": [
+   "Because of a famine",
+   "Because of their taskmasters",
+   "Because of Pharaoh's army",
+   "Because of a plague"
+  ],
+  "answer": 1,
+  "explanation": "God had heard their cry by reason of their taskmasters.",
+  "ref": "Exodus 3:7"
+ },
+ {
+  "id": "exodus-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Which people is named among those living in the promised land?",
+  "choices": [
+   "Ammonites",
+   "Jebusites",
+   "Philistines",
+   "Moabites"
+  ],
+  "answer": 1,
+  "explanation": "God named the Canaanites, Hittites, Amorites, Perizzites, Hivites and Jebusites.",
+  "ref": "Exodus 3:8"
+ },
+ {
+  "id": "exodus-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did God tell Moses to gather together first?",
+  "choices": [
+   "The elders of Israel",
+   "The priests of Egypt",
+   "Pharaoh's servants",
+   "The sons of Levi"
+  ],
+  "answer": 0,
+  "explanation": "Go, and gather the elders of Israel together.",
+  "ref": "Exodus 3:16"
+ },
+ {
+  "id": "exodus-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what name were Moses and the elders to call God before Pharaoh?",
+  "choices": [
+   "The God of Egypt",
+   "The LORD God of the Hebrews",
+   "The Almighty of Midian",
+   "The King of Israel"
+  ],
+  "answer": 1,
+  "explanation": "They were to say, The LORD God of the Hebrews hath met with us.",
+  "ref": "Exodus 3:18"
+ },
+ {
+  "id": "exodus-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say the king of Egypt would not do, even by a mighty hand?",
+  "choices": [
+   "Let them go",
+   "Meet the elders",
+   "Fear the LORD",
+   "Hear Moses speak"
+  ],
+  "answer": 0,
+  "explanation": "I am sure that the king of Egypt will not let you go, no, not by a mighty hand.",
+  "ref": "Exodus 3:19"
+ },
+ {
+  "id": "exodus-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say He would smite Egypt with?",
+  "choices": [
+   "All His wonders",
+   "Hail only",
+   "Darkness only",
+   "Famine alone"
+  ],
+  "answer": 0,
+  "explanation": "I will stretch out my hand, and smite Egypt with all my wonders.",
+  "ref": "Exodus 3:20"
+ },
+ {
+  "id": "exodus-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say He would give the people in the sight of the Egyptians?",
+  "choices": [
+   "Fear",
+   "Weapons",
+   "Favour",
+   "Land"
+  ],
+  "answer": 2,
+  "explanation": "I will give this people favour in the sight of the Egyptians.",
+  "ref": "Exodus 3:21"
+ },
+ {
+  "id": "exodus-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was to borrow jewels and raiment from her neighbour?",
+  "choices": [
+   "Every priest",
+   "Every firstborn",
+   "Every elder",
+   "Every woman"
+  ],
+  "answer": 3,
+  "explanation": "Every woman shall borrow of her neighbour jewels of silver, and jewels of gold, and raiment.",
+  "ref": "Exodus 3:22"
+ },
+ {
+  "id": "exodus-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God promise when Moses asked, Who am I?",
+  "choices": [
+   "You will be king",
+   "I will send an army",
+   "Certainly I will be with thee",
+   "I will choose another"
+  ],
+  "answer": 2,
+  "explanation": "And he said, Certainly I will be with thee.",
+  "ref": "Exodus 3:12"
+ },
+ {
+  "id": "exodus-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Moses lead the flock before he came to Horeb?",
+  "choices": [
+   "To the backside of the desert",
+   "Along the Nile",
+   "Into Egypt",
+   "To a city of Midian"
+  ],
+  "answer": 0,
+  "explanation": "He led the flock to the backside of the desert, and came to the mountain of God.",
+  "ref": "Exodus 3:1"
+ },
+ {
+  "id": "exodus-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God do when He saw Moses turn aside?",
+  "choices": [
+   "Struck him down",
+   "Called to him out of the bush",
+   "Put out the fire",
+   "Sent him away"
+  ],
+  "answer": 1,
+  "explanation": "When the LORD saw that he turned aside to see, God called unto him out of the midst of the bush.",
+  "ref": "Exodus 3:4"
+ },
+ {
+  "id": "exodus-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "On whom were the Israelites to put the silver, gold and raiment?",
+  "choices": [
+   "Their sons and daughters",
+   "The elders",
+   "Pharaoh's servants",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall put them upon your sons, and upon your daughters.",
+  "ref": "Exodus 3:22"
+ },
+ {
+  "id": "exodus-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say He knew about His people?",
+  "choices": [
+   "Their sins",
+   "Their names",
+   "Their sorrows",
+   "Their number"
+  ],
+  "answer": 2,
+  "explanation": "I have surely seen the affliction of my people, and heard their cry; for I know their sorrows.",
+  "ref": "Exodus 3:7"
+ },
+ {
+  "id": "exodus-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses do because he was afraid to look upon God?",
+  "choices": [
+   "Hid his face",
+   "Ran away",
+   "Fell asleep",
+   "Took off his staff"
+  ],
+  "answer": 0,
+  "explanation": "Moses hid his face; for he was afraid to look upon God.",
+  "ref": "Exodus 3:6"
+ },
+ {
+  "id": "exodus-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many days' journey into the wilderness were they to ask Pharaoh for?",
+  "choices": [
+   "Ten",
+   "Seven",
+   "Three",
+   "Forty"
+  ],
+  "answer": 2,
+  "explanation": "Let us go, we beseech thee, three days' journey into the wilderness.",
+  "ref": "Exodus 3:18"
+ },
+ {
+  "id": "exodus-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Which people is listed first among the peoples of the land?",
+  "choices": [
+   "Jebusites",
+   "Hittites",
+   "Canaanites",
+   "Amorites"
+  ],
+  "answer": 2,
+  "explanation": "God named the Canaanites first, then the Hittites, Amorites, Perizzites, Hivites and Jebusites.",
+  "ref": "Exodus 3:8"
+ },
+ {
+  "id": "exodus-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times did God call Moses' name from the bush?",
+  "choices": [
+   "Seven times",
+   "Three times",
+   "Twice",
+   "Once"
+  ],
+  "answer": 2,
+  "explanation": "God called unto him out of the midst of the bush, and said, Moses, Moses.",
+  "ref": "Exodus 3:4"
+ },
+ {
+  "id": "exodus-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say the elders of Israel would do?",
+  "choices": [
+   "Make Moses their king",
+   "Refuse Moses",
+   "Hearken to Moses' voice",
+   "Flee to Midian"
+  ],
+  "answer": 2,
+  "explanation": "They shall hearken to thy voice.",
+  "ref": "Exodus 3:18"
+ },
+ {
+  "id": "exodus-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was to go with Moses to the king of Egypt?",
+  "choices": [
+   "Aaron and Miriam",
+   "The priests of Midian",
+   "Jethro",
+   "The elders of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt come, thou and the elders of Israel, unto the king of Egypt.",
+  "ref": "Exodus 3:18"
+ },
+ {
+  "id": "exodus-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say the people might ask him about God?",
+  "choices": [
+   "Where is he?",
+   "What is his name?",
+   "Why has he waited?",
+   "Who is his prophet?"
+  ],
+  "answer": 1,
+  "explanation": "Moses asked what to say if they ask, What is his name?",
+  "ref": "Exodus 3:13"
+ },
+ {
+  "id": "exodus-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides silver and gold, what were the women to borrow?",
+  "choices": [
+   "Spices",
+   "Raiment",
+   "Bread",
+   "Cattle"
+  ],
+  "answer": 1,
+  "explanation": "They would borrow jewels of silver, and jewels of gold, and raiment.",
+  "ref": "Exodus 3:22"
+ },
+ {
+  "id": "exodus-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say Israel would not do when they went out?",
+  "choices": [
+   "Go divided",
+   "Go empty",
+   "Go by night",
+   "Go in fear"
+  ],
+  "answer": 1,
+  "explanation": "When ye go, ye shall not go empty.",
+  "ref": "Exodus 3:21"
+ },
+ {
+  "id": "exodus-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say Israel would do to the Egyptians?",
+  "choices": [
+   "Spoil them",
+   "Fight them",
+   "Serve them",
+   "Teach them"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall spoil the Egyptians.",
+  "ref": "Exodus 3:22"
+ },
+ {
+  "id": "exodus-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses and the elders say they wanted to do in the wilderness?",
+  "choices": [
+   "Build a city",
+   "Hide from Pharaoh",
+   "Sacrifice to the LORD",
+   "Pasture flocks"
+  ],
+  "answer": 2,
+  "explanation": "Let us go three days' journey into the wilderness, that we may sacrifice to the LORD our God.",
+  "ref": "Exodus 3:18"
+ },
+ {
+  "id": "exodus-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say would happen after He smote Egypt with wonders?",
+  "choices": [
+   "Pharaoh would let them go",
+   "Egypt would be left empty",
+   "Pharaoh would repent and rule alone",
+   "Israel would be scattered"
+  ],
+  "answer": 0,
+  "explanation": "After that he will let you go.",
+  "ref": "Exodus 3:20"
+ },
+ {
+  "id": "exodus-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God first tell Moses not to do?",
+  "choices": [
+   "Draw nigh",
+   "Turn aside",
+   "Speak",
+   "Look back"
+  ],
+  "answer": 0,
+  "explanation": "He said, Draw not nigh hither: put off thy shoes.",
+  "ref": "Exodus 3:5"
+ },
+ {
+  "id": "exodus-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose God did the LORD first say He was to Moses?",
+  "choices": [
+   "His father's",
+   "Aaron's",
+   "Jethro's",
+   "Pharaoh's"
+  ],
+  "answer": 0,
+  "explanation": "I am the God of thy father.",
+  "ref": "Exodus 3:6"
+ },
+ {
+  "id": "exodus-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD God of your what hath sent Moses, he was to tell Israel?",
+  "choices": [
+   "Kings",
+   "Fathers",
+   "Priests",
+   "Prophets"
+  ],
+  "answer": 1,
+  "explanation": "The LORD God of your fathers hath sent me unto you.",
+  "ref": "Exodus 3:15"
+ },
+ {
   "id": "old-exodus-4-1",
   "chapter": 4,
   "level": "beginner",
