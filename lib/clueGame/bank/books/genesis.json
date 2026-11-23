@@ -14336,6 +14336,294 @@
   "ref": "Genesis 42:27–28"
  },
  {
+  "id": "genesis-42-m-01",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jacob not send Benjamin with his brothers?",
+  "choices": [
+   "He was too young to travel",
+   "Lest mischief befall him",
+   "He was sick",
+   "Joseph had forbidden it"
+  ],
+  "answer": 1,
+  "explanation": "Jacob sent not Benjamin with his brethren; for he said, Lest peradventure mischief befall him.",
+  "ref": "Genesis 42:4"
+ },
+ {
+  "id": "genesis-42-m-02",
+  "chapter": 42,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was governor over the land and sold to all the people of the land?",
+  "choices": [
+   "Joseph",
+   "Pharaoh",
+   "Reuben",
+   "Potiphar"
+  ],
+  "answer": 0,
+  "explanation": "Joseph was the governor over the land, and he it was that sold to all the people of the land.",
+  "ref": "Genesis 42:6"
+ },
+ {
+  "id": "genesis-42-m-03",
+  "chapter": 42,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jacob say would happen if mischief befell Benjamin on the way?",
+  "choices": [
+   "His gray hairs would go to the grave with sorrow",
+   "The famine would end",
+   "Simeon would be freed",
+   "The sons would be cursed"
+  ],
+  "answer": 0,
+  "explanation": "If mischief befall him, then shall ye bring down my gray hairs with sorrow to the grave.",
+  "ref": "Genesis 42:38"
+ },
+ {
+  "id": "genesis-42-h-01",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob ask his sons when he saw there was corn in Egypt?",
+  "choices": [
+   "Who will go with you?",
+   "Why do ye look one upon another?",
+   "Where is Benjamin?",
+   "How much will it cost?"
+  ],
+  "answer": 1,
+  "explanation": "Jacob said unto his sons, Why do ye look one upon another?",
+  "ref": "Genesis 42:1"
+ },
+ {
+  "id": "genesis-42-h-02",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of Joseph's brethren went down to buy corn?",
+  "choices": [
+   "Twelve",
+   "Eleven",
+   "Ten",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "Joseph's ten brethren went down to buy corn in Egypt.",
+  "ref": "Genesis 42:3"
+ },
+ {
+  "id": "genesis-42-h-03",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jacob said to go and buy corn so that they might do what?",
+  "choices": [
+   "Live, and not die",
+   "Find Joseph",
+   "Serve Pharaoh",
+   "Return rich"
+  ],
+  "answer": 0,
+  "explanation": "Get you down thither, and buy for us from thence; that we may live, and not die.",
+  "ref": "Genesis 42:2"
+ },
+ {
+  "id": "genesis-42-h-04",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the brothers bow before Joseph?",
+  "choices": [
+   "With their faces to the earth",
+   "On one knee",
+   "With hands raised",
+   "Before the chariot"
+  ],
+  "answer": 0,
+  "explanation": "Joseph's brethren came, and bowed down themselves before him with their faces to the earth.",
+  "ref": "Genesis 42:6"
+ },
+ {
+  "id": "genesis-42-h-05",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph say the brothers had come to see?",
+  "choices": [
+   "The nakedness of the land",
+   "The storehouses",
+   "Pharaoh's court",
+   "The river"
+  ],
+  "answer": 0,
+  "explanation": "Joseph said, Ye are spies; to see the nakedness of the land ye are come.",
+  "ref": "Genesis 42:9"
+ },
+ {
+  "id": "genesis-42-h-06",
+  "chapter": 42,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the brothers say their youngest brother was?",
+  "choices": [
+   "In prison",
+   "With their father",
+   "In Egypt",
+   "With Reuben"
+  ],
+  "answer": 1,
+  "explanation": "They said, The youngest is this day with our father, and one is not.",
+  "ref": "Genesis 42:13"
+ },
+ {
+  "id": "genesis-42-h-07",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many brothers did Joseph say must be sent to fetch the youngest?",
+  "choices": [
+   "One",
+   "Two",
+   "Three",
+   "Nine"
+  ],
+  "answer": 0,
+  "explanation": "Send one of you, and let him fetch your brother, and ye shall be kept in prison.",
+  "ref": "Genesis 42:16"
+ },
+ {
+  "id": "genesis-42-h-08",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day did Joseph speak to his brothers in ward and say he feared God?",
+  "choices": [
+   "The first day",
+   "The second day",
+   "The third day",
+   "The seventh day"
+  ],
+  "answer": 2,
+  "explanation": "Joseph said unto them the third day, This do, and live; for I fear God.",
+  "ref": "Genesis 42:18"
+ },
+ {
+  "id": "genesis-42-h-09",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Reuben say was required?",
+  "choices": [
+   "The child's blood",
+   "Simeon's ransom",
+   "Their father's blessing",
+   "A sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "Reuben said, Do not sin against the child; and ye would not hear? therefore, behold, also his blood is required.",
+  "ref": "Genesis 42:22"
+ },
+ {
+  "id": "genesis-42-h-10",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides corn and their money, what did Joseph command to give them?",
+  "choices": [
+   "Silver cups",
+   "Garments",
+   "Provision for the way",
+   "Pharaoh's ring"
+  ],
+  "answer": 2,
+  "explanation": "Joseph commanded to fill their sacks with corn, and to restore every man's money, and to give them provision for the way.",
+  "ref": "Genesis 42:25"
+ },
+ {
+  "id": "genesis-42-h-11",
+  "chapter": 42,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the money in the sack when one brother found it?",
+  "choices": [
+   "In the sack's mouth",
+   "At the bottom",
+   "In a bag of grain",
+   "In his cloak"
+  ],
+  "answer": 0,
+  "explanation": "He espied his money; for, behold, it was in his sack's mouth.",
+  "ref": "Genesis 42:27"
+ },
+ {
+  "id": "genesis-42-h-12",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What failed the brothers when they found the money?",
+  "choices": [
+   "Their strength",
+   "Their heart",
+   "Their sight",
+   "Their words"
+  ],
+  "answer": 1,
+  "explanation": "Their heart failed them, and they were afraid, saying one to another, What is this that God hath done unto us?",
+  "ref": "Genesis 42:28"
+ },
+ {
+  "id": "genesis-42-h-13",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob say the brothers had done to him?",
+  "choices": [
+   "Bereaved him of his children",
+   "Brought shame on his house",
+   "Robbed his sons",
+   "Stolen from Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Jacob said unto them, Me have ye bereaved of my children.",
+  "ref": "Genesis 42:36"
+ },
+ {
+  "id": "genesis-42-h-14",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jacob say Benjamin was left alone?",
+  "choices": [
+   "His brother was dead",
+   "His mother was dead",
+   "His brothers hated him",
+   "His brother was in Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Jacob said, My son shall not go down with you; for his brother is dead, and he is left alone.",
+  "ref": "Genesis 42:38"
+ },
+ {
+  "id": "genesis-42-h-15",
+  "chapter": 42,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The brothers said Joseph promised they could do what in the land once Benjamin came?",
+  "choices": [
+   "Dwell in Goshen",
+   "Traffick in the land",
+   "Serve Pharaoh",
+   "Rule the city"
+  ],
+  "answer": 1,
+  "explanation": "Joseph said, Bring your youngest brother unto me: so will I deliver you your brother, and ye shall traffick in the land.",
+  "ref": "Genesis 42:34"
+ },
+ {
   "id": "old-genesis-43-1",
   "chapter": 43,
   "level": "beginner",
