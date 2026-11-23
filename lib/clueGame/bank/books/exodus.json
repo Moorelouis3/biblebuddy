@@ -24752,6 +24752,646 @@
   "ref": "Exodus 35:30–35"
  },
  {
+  "id": "exodus-35-e-01",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Moses gather together to give God's words?",
+  "choices": [
+   "All the congregation of Israel",
+   "Only the Levites",
+   "Only the elders",
+   "Only Aaron's sons"
+  ],
+  "answer": 0,
+  "explanation": "Moses gathered all the congregation of the children of Israel together.",
+  "ref": "Exodus 35:1"
+ },
+ {
+  "id": "exodus-35-e-02",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What holy day did Moses remind Israel to keep?",
+  "choices": [
+   "The day of atonement",
+   "The sabbath of rest",
+   "The new moon",
+   "The feast of trumpets"
+  ],
+  "answer": 1,
+  "explanation": "On the seventh day there shall be to you an holy day, a sabbath of rest to the LORD.",
+  "ref": "Exodus 35:2"
+ },
+ {
+  "id": "exodus-35-e-03",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of heart was needed to bring an offering?",
+  "choices": [
+   "A fearful heart",
+   "A wealthy heart",
+   "A willing heart",
+   "A proud heart"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever is of a willing heart, let him bring it, an offering of the LORD.",
+  "ref": "Exodus 35:5"
+ },
+ {
+  "id": "exodus-35-e-04",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which metals were part of the offering?",
+  "choices": [
+   "Gold, silver and brass",
+   "Iron, tin and lead",
+   "Gold, iron and tin",
+   "Silver, lead and steel"
+  ],
+  "answer": 0,
+  "explanation": "An offering of the LORD; gold, and silver, and brass.",
+  "ref": "Exodus 35:5"
+ },
+ {
+  "id": "exodus-35-e-05",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What wood was brought for the work?",
+  "choices": [
+   "Cedar wood",
+   "Oak wood",
+   "Olive wood",
+   "Shittim wood"
+  ],
+  "answer": 3,
+  "explanation": "Rams' skins dyed red, and badgers' skins, and shittim wood.",
+  "ref": "Exodus 35:7"
+ },
+ {
+  "id": "exodus-35-e-06",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who spun and brought blue, purple, scarlet and fine linen?",
+  "choices": [
+   "The elders",
+   "The wise hearted women",
+   "The priests",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "All the women that were wise hearted did spin with their hands.",
+  "ref": "Exodus 35:25"
+ },
+ {
+  "id": "exodus-35-e-07",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who brought onyx stones and stones to be set?",
+  "choices": [
+   "The priests",
+   "The rulers",
+   "The children",
+   "The women"
+  ],
+  "answer": 1,
+  "explanation": "The rulers brought onyx stones, and stones to be set, for the ephod, and for the breastplate.",
+  "ref": "Exodus 35:27"
+ },
+ {
+  "id": "exodus-35-e-08",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people bring to the LORD for all the work?",
+  "choices": [
+   "Spoil from Egypt",
+   "A willing offering",
+   "A heavy tax",
+   "A forced tribute"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel brought a willing offering unto the LORD.",
+  "ref": "Exodus 35:29"
+ },
+ {
+  "id": "exodus-35-e-09",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which man did Moses say the LORD had called by name?",
+  "choices": [
+   "Caleb",
+   "Bezaleel",
+   "Aaron",
+   "Hur"
+  ],
+  "answer": 1,
+  "explanation": "The LORD hath called by name Bezaleel the son of Uri.",
+  "ref": "Exodus 35:30"
+ },
+ {
+  "id": "exodus-35-e-10",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What penalty was given for working on the sabbath?",
+  "choices": [
+   "A flogging",
+   "A fine",
+   "Death",
+   "Exile"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever doeth work therein shall be put to death.",
+  "ref": "Exodus 35:2"
+ },
+ {
+  "id": "exodus-35-m-01",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel told not to kindle on the sabbath?",
+  "choices": [
+   "Any fire in their habitations",
+   "Cooking fires in the field",
+   "Candles in the tabernacle",
+   "Incense"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall kindle no fire throughout your habitations upon the sabbath day.",
+  "ref": "Exodus 35:3"
+ },
+ {
+  "id": "exodus-35-m-02",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What colours of thread were named in the offering?",
+  "choices": [
+   "Black, red and yellow",
+   "Pink, blue and green",
+   "Blue, purple and scarlet",
+   "Green, white and gold"
+  ],
+  "answer": 2,
+  "explanation": "And blue, and purple, and scarlet, and fine linen, and goats' hair.",
+  "ref": "Exodus 35:6"
+ },
+ {
+  "id": "exodus-35-m-03",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the rams' skins coloured?",
+  "choices": [
+   "Dyed red",
+   "Dyed purple",
+   "Left white",
+   "Dyed blue"
+  ],
+  "answer": 0,
+  "explanation": "And rams' skins dyed red, and badgers' skins, and shittim wood.",
+  "ref": "Exodus 35:7"
+ },
+ {
+  "id": "exodus-35-m-04",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the oil in the offering for?",
+  "choices": [
+   "The light",
+   "The ark",
+   "The altar of burnt offering",
+   "The laver"
+  ],
+  "answer": 0,
+  "explanation": "And oil for the light, and spices for anointing oil.",
+  "ref": "Exodus 35:8"
+ },
+ {
+  "id": "exodus-35-m-05",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What stones were to be set for the ephod and the breastplate?",
+  "choices": [
+   "Onyx stones",
+   "Diamonds",
+   "Emeralds",
+   "Rubies"
+  ],
+  "answer": 0,
+  "explanation": "And onyx stones, and stones to be set for the ephod, and for the breastplate.",
+  "ref": "Exodus 35:9"
+ },
+ {
+  "id": "exodus-35-m-06",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who were to come and make all that the LORD had commanded?",
+  "choices": [
+   "Only the priests",
+   "Every wise hearted among them",
+   "Only the rulers",
+   "Only the tribe of Judah"
+  ],
+  "answer": 1,
+  "explanation": "Every wise hearted among you shall come, and make all that the LORD hath commanded.",
+  "ref": "Exodus 35:10"
+ },
+ {
+  "id": "exodus-35-m-07",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men and women bring made of gold?",
+  "choices": [
+   "Bracelets, earrings, rings and tablets",
+   "Cups and plates",
+   "Chains and rods",
+   "Crowns and swords"
+  ],
+  "answer": 0,
+  "explanation": "They brought bracelets, and earrings, and rings, and tablets, all jewels of gold.",
+  "ref": "Exodus 35:22"
+ },
+ {
+  "id": "exodus-35-m-08",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the women whose hearts stirred them spin?",
+  "choices": [
+   "Goats' hair",
+   "Cotton",
+   "Flax thread",
+   "Silk"
+  ],
+  "answer": 0,
+  "explanation": "All the women whose heart stirred them up in wisdom spun goats' hair.",
+  "ref": "Exodus 35:26"
+ },
+ {
+  "id": "exodus-35-m-09",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the rulers bring besides onyx stones?",
+  "choices": [
+   "Rams and bulls",
+   "Spice and oil",
+   "Silver cups",
+   "Cedar planks"
+  ],
+  "answer": 1,
+  "explanation": "And the rulers brought spice, and oil for the light, and for the anointing oil.",
+  "ref": "Exodus 35:27–28"
+ },
+ {
+  "id": "exodus-35-m-10",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the LORD had put in the heart of Bezaleel?",
+  "choices": [
+   "That he may war",
+   "That he may sing",
+   "That he may rule",
+   "That he may teach"
+  ],
+  "answer": 3,
+  "explanation": "He hath put in his heart that he may teach, both he, and Aholiab.",
+  "ref": "Exodus 35:34"
+ },
+ {
+  "id": "exodus-35-m-11",
+  "chapter": 35,
+  "level": "medium",
+  "category": "person",
+  "question": "Who is named with Bezaleel as a teacher?",
+  "choices": [
+   "Aholiab",
+   "Eleazar",
+   "Hur",
+   "Nadab"
+  ],
+  "answer": 0,
+  "explanation": "He may teach, both he, and Aholiab, the son of Ahisamach.",
+  "ref": "Exodus 35:34"
+ },
+ {
+  "id": "exodus-35-m-12",
+  "chapter": 35,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Aholiab?",
+  "choices": [
+   "Nun",
+   "Uri",
+   "Hur",
+   "Ahisamach"
+  ],
+  "answer": 3,
+  "explanation": "Aholiab, the son of Ahisamach, of the tribe of Dan.",
+  "ref": "Exodus 35:34"
+ },
+ {
+  "id": "exodus-35-m-13",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did all the congregation do after Moses spoke?",
+  "choices": [
+   "Marched out",
+   "Sang a song",
+   "Slept",
+   "Departed from his presence"
+  ],
+  "answer": 3,
+  "explanation": "All the congregation of the children of Israel departed from the presence of Moses.",
+  "ref": "Exodus 35:20"
+ },
+ {
+  "id": "exodus-35-m-14",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men with silver and brass bring?",
+  "choices": [
+   "Only wood",
+   "The LORD'S offering",
+   "Nothing",
+   "A tax"
+  ],
+  "answer": 1,
+  "explanation": "Every one that did offer an offering of silver and brass brought the LORD'S offering.",
+  "ref": "Exodus 35:24"
+ },
+ {
+  "id": "exodus-35-h-01",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kinds of workmen are named among those filled with wisdom of heart?",
+  "choices": [
+   "Shepherd, farmer, hunter and fisher",
+   "Engraver, cunning workman, embroiderer and weaver",
+   "Potter, smith, builder and cook",
+   "Priest, scribe, judge and king"
+  ],
+  "answer": 1,
+  "explanation": "Of the engraver, and of the cunning workman, and of the embroiderer, and of the weaver.",
+  "ref": "Exodus 35:35"
+ },
+ {
+  "id": "exodus-35-h-02",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who brought the offering \"whose heart stirred him up\"?",
+  "choices": [
+   "Every one whose spirit made him willing",
+   "Only the old",
+   "Only the rich",
+   "Only the priests"
+  ],
+  "answer": 0,
+  "explanation": "They came, every one whose heart stirred him up, and every one whom his spirit made willing.",
+  "ref": "Exodus 35:21"
+ },
+ {
+  "id": "exodus-35-h-03",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the sabbath to be for the LORD?",
+  "choices": [
+   "A day of trading",
+   "A day of battle",
+   "A day of mourning",
+   "A sabbath of rest"
+  ],
+  "answer": 3,
+  "explanation": "A sabbath of rest to the LORD.",
+  "ref": "Exodus 35:2"
+ },
+ {
+  "id": "exodus-35-h-04",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was listed beside the table, its staves and vessels?",
+  "choices": [
+   "The laver",
+   "The shewbread",
+   "The ephod",
+   "The mercy seat"
+  ],
+  "answer": 1,
+  "explanation": "The table, and his staves, and all his vessels, and the shewbread.",
+  "ref": "Exodus 35:13"
+ },
+ {
+  "id": "exodus-35-h-05",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What came with the incense altar in the list?",
+  "choices": [
+   "Its crown of silver",
+   "The ephod",
+   "His staves, the anointing oil and sweet incense",
+   "The brazen sea"
+  ],
+  "answer": 2,
+  "explanation": "The incense altar, and his staves, and the anointing oil, and the sweet incense.",
+  "ref": "Exodus 35:15"
+ },
+ {
+  "id": "exodus-35-h-06",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What went with the altar of burnt offering in the list?",
+  "choices": [
+   "A silver grate",
+   "A golden grate",
+   "A cedar grate",
+   "A brasen grate"
+  ],
+  "answer": 3,
+  "explanation": "The altar of burnt offering, with his brasen grate, his staves, and all his vessels.",
+  "ref": "Exodus 35:16"
+ },
+ {
+  "id": "exodus-35-h-07",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the \"pins\" for, in the list of things to make?",
+  "choices": [
+   "The table",
+   "The garments",
+   "The tabernacle and the court",
+   "The ark"
+  ],
+  "answer": 2,
+  "explanation": "The pins of the tabernacle, and the pins of the court, and their cords.",
+  "ref": "Exodus 35:18"
+ },
+ {
+  "id": "exodus-35-h-08",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who brought goats' hair, red skins of rams and badgers' skins?",
+  "choices": [
+   "Every man with whom they were found",
+   "Only the Levites",
+   "Only the women",
+   "Only Moses"
+  ],
+  "answer": 0,
+  "explanation": "Every man, with whom was found blue, and purple, scarlet, brought them.",
+  "ref": "Exodus 35:23"
+ },
+ {
+  "id": "exodus-35-h-09",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In carving wood, Bezaleel was to make any manner of what kind of work?",
+  "choices": [
+   "Plain work",
+   "Rough work",
+   "Cunning work",
+   "Quick work"
+  ],
+  "answer": 2,
+  "explanation": "And in carving of wood, to make any manner of cunning work.",
+  "ref": "Exodus 35:33"
+ },
+ {
+  "id": "exodus-35-h-10",
+  "chapter": 35,
+  "level": "hard",
+  "category": "person",
+  "question": "What was Bezaleel's father's father?",
+  "choices": [
+   "Hur",
+   "Nun",
+   "Ahisamach",
+   "Uri"
+  ],
+  "answer": 0,
+  "explanation": "Bezaleel the son of Uri, the son of Hur, of the tribe of Judah.",
+  "ref": "Exodus 35:30"
+ },
+ {
+  "id": "exodus-35-h-11",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was to be done with the willing offering after it was brought?",
+  "choices": [
+   "Buried",
+   "Held for the Levites",
+   "Sent to Egypt",
+   "Used for all manner of work Moses commanded"
+  ],
+  "answer": 3,
+  "explanation": "For all manner of work, which the LORD had commanded to be made by the hand of Moses.",
+  "ref": "Exodus 35:29"
+ },
+ {
+  "id": "exodus-35-h-12",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What tent covering was named with its taches and boards?",
+  "choices": [
+   "The ark cover",
+   "The court gate",
+   "The altar cloth",
+   "The tabernacle's covering"
+  ],
+  "answer": 3,
+  "explanation": "The tabernacle, his tent, and his covering, his taches, and his boards.",
+  "ref": "Exodus 35:11"
+ },
+ {
+  "id": "exodus-35-h-13",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What hanging was listed at the entering in of the tabernacle?",
+  "choices": [
+   "The hanging for the court wall",
+   "The hanging for the altar",
+   "The hanging for the ark",
+   "The hanging for the door"
+  ],
+  "answer": 3,
+  "explanation": "The hanging for the door at the entering in of the tabernacle.",
+  "ref": "Exodus 35:15"
+ },
+ {
+  "id": "exodus-35-h-14",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many days of work were allowed before the holy sabbath day?",
+  "choices": [
+   "Five",
+   "Seven",
+   "Four",
+   "Six"
+  ],
+  "answer": 3,
+  "explanation": "Six days shall work be done, but on the seventh day there shall be an holy day.",
+  "ref": "Exodus 35:2"
+ },
+ {
+  "id": "exodus-35-h-15",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Moses introduce his words in the opening?",
+  "choices": [
+   "Behold the wonders",
+   "Thus saith Pharaoh",
+   "Hear, O Israel",
+   "These are the words the LORD hath commanded"
+  ],
+  "answer": 3,
+  "explanation": "These are the words which the LORD hath commanded, that ye should do them.",
+  "ref": "Exodus 35:1"
+ },
+ {
+  "id": "exodus-35-m-16",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the tabernacle work, what else were the offerings brought for?",
+  "choices": [
+   "The golden calf",
+   "A royal palace",
+   "The ark of Dagon",
+   "The holy garments"
+  ],
+  "answer": 3,
+  "explanation": "They brought the LORD'S offering to the work of the tabernacle, and for the holy garments.",
+  "ref": "Exodus 35:21"
+ },
+ {
   "id": "old-exodus-36-1",
   "chapter": 36,
   "level": "beginner",
