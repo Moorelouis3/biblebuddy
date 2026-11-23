@@ -4,16 +4,16 @@
   "chapter": 1,
   "level": "beginner",
   "category": "keyword",
-  "question": "On which day did God create the greater and lesser lights?",
+  "question": "What did God call the light?",
   "choices": [
-   "Day two",
-   "Day three",
-   "Day six",
-   "Day four"
+   "Night",
+   "Evening",
+   "Heaven",
+   "Day"
   ],
   "answer": 3,
-  "explanation": "The sun, moon, and stars were placed in the heavens on the fourth day.",
-  "ref": "Genesis 1:14–19"
+  "explanation": "God called the light Day, and the darkness he called Night.",
+  "ref": "Genesis 1:5"
  },
  {
   "id": "old-genesis-1-3",
@@ -64,6 +64,294 @@
   "ref": "Genesis 1:28"
  },
  {
+  "id": "genesis-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God tell the creatures of the sea and the fowl to do?",
+  "choices": [
+   "Rule over the day",
+   "Subdue the earth",
+   "Be fruitful and multiply",
+   "Eat every green herb"
+  ],
+  "answer": 2,
+  "explanation": "God blessed them, saying, Be fruitful, and multiply, and fill the waters in the seas, and let fowl multiply in the earth.",
+  "ref": "Genesis 1:22"
+ },
+ {
+  "id": "genesis-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides replenishing the earth, what did God tell man to do to it?",
+  "choices": [
+   "Plant it",
+   "Divide it",
+   "Rest upon it",
+   "Subdue it"
+  ],
+  "answer": 3,
+  "explanation": "God said unto them, Be fruitful, and multiply, and replenish the earth, and subdue it.",
+  "ref": "Genesis 1:28"
+ },
+ {
+  "id": "genesis-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides cattle and beasts, what did the earth bring forth on the sixth day?",
+  "choices": [
+   "Every creeping thing",
+   "Great whales",
+   "Every winged fowl",
+   "Fruit trees"
+  ],
+  "answer": 0,
+  "explanation": "God made the beast of the earth after his kind, and cattle, and every thing that creepeth upon the earth.",
+  "ref": "Genesis 1:24–25"
+ },
+ {
+  "id": "genesis-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was upon the face of the deep before God said, Let there be light?",
+  "choices": [
+   "Water",
+   "Fire",
+   "Darkness",
+   "Mist"
+  ],
+  "answer": 2,
+  "explanation": "The earth was without form, and void; and darkness was upon the face of the deep.",
+  "ref": "Genesis 1:2"
+ },
+ {
+  "id": "genesis-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two things together made up each of the days in the chapter?",
+  "choices": [
+   "Light and darkness",
+   "Sun and moon",
+   "Heaven and earth",
+   "Evening and morning"
+  ],
+  "answer": 3,
+  "explanation": "Each day closes with the words, the evening and the morning were the day.",
+  "ref": "Genesis 1:5"
+ },
+ {
+  "id": "genesis-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God do right after he saw that the light was good?",
+  "choices": [
+   "Divided it from the darkness",
+   "Called it Heaven",
+   "Made the stars",
+   "Gathered it together"
+  ],
+  "answer": 0,
+  "explanation": "God saw the light, that it was good: and God divided the light from the darkness.",
+  "ref": "Genesis 1:4"
+ },
+ {
+  "id": "genesis-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides signs and seasons, what did God say the lights were for?",
+  "choices": [
+   "Rain and snow",
+   "Days and years",
+   "Kings and judges",
+   "Feasts and fasts"
+  ],
+  "answer": 1,
+  "explanation": "God said, Let them be for signs, and for seasons, and for days, and years.",
+  "ref": "Genesis 1:14"
+ },
+ {
+  "id": "genesis-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did God set the lights to give light upon the earth?",
+  "choices": [
+   "In the deep",
+   "Upon the dry land",
+   "In the firmament of the heaven",
+   "Among the seas"
+  ],
+  "answer": 2,
+  "explanation": "God set them in the firmament of the heaven to give light upon the earth.",
+  "ref": "Genesis 1:17"
+ },
+ {
+  "id": "genesis-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many great lights did God make?",
+  "choices": [
+   "One",
+   "Three",
+   "Seven",
+   "Two"
+  ],
+  "answer": 3,
+  "explanation": "God made two great lights; the greater light to rule the day, and the lesser light to rule the night.",
+  "ref": "Genesis 1:16"
+ },
+ {
+  "id": "genesis-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which light was made to rule the night?",
+  "choices": [
+   "The lesser light",
+   "The greater light",
+   "The stars alone",
+   "The firmament"
+  ],
+  "answer": 0,
+  "explanation": "The greater light was to rule the day, and the lesser light to rule the night.",
+  "ref": "Genesis 1:16"
+ },
+ {
+  "id": "genesis-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On the third day, what did God do with the waters under the heaven?",
+  "choices": [
+   "Divided them from the light",
+   "Gathered them into one place",
+   "Filled the firmament",
+   "Made them bring forth fish"
+  ],
+  "answer": 1,
+  "explanation": "God said, Let the waters under the heaven be gathered together unto one place, and let the dry land appear.",
+  "ref": "Genesis 1:9"
+ },
+ {
+  "id": "genesis-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On the third day, what happened before the earth brought forth grass?",
+  "choices": [
+   "The lights were set",
+   "The fowl were made",
+   "The dry land appeared",
+   "Man was formed"
+  ],
+  "answer": 2,
+  "explanation": "The waters were gathered and the dry land appeared; then God said, Let the earth bring forth grass.",
+  "ref": "Genesis 1:9–11"
+ },
+ {
+  "id": "genesis-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the earth bring forth grass, herb and fruit tree?",
+  "choices": [
+   "In one day only",
+   "By the sea",
+   "Without seed",
+   "After his kind"
+  ],
+  "answer": 3,
+  "explanation": "The earth brought forth grass, and herb yielding seed after his kind, and the tree yielding fruit, after his kind.",
+  "ref": "Genesis 1:12"
+ },
+ {
+  "id": "genesis-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say should bring forth abundantly the moving creature that hath life?",
+  "choices": [
+   "The waters",
+   "The earth",
+   "The firmament",
+   "The dry land"
+  ],
+  "answer": 0,
+  "explanation": "God said, Let the waters bring forth abundantly the moving creature that hath life.",
+  "ref": "Genesis 1:20"
+ },
+ {
+  "id": "genesis-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God tell the sea creatures and the fowl to fill?",
+  "choices": [
+   "The firmament",
+   "The waters in the seas",
+   "The dry land",
+   "The garden"
+  ],
+  "answer": 1,
+  "explanation": "God blessed them, saying, Be fruitful, and multiply, and fill the waters in the seas.",
+  "ref": "Genesis 1:22"
+ },
+ {
+  "id": "genesis-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God said, Let us make man in our image, after our what?",
+  "choices": [
+   "Name",
+   "Wisdom",
+   "Likeness",
+   "Glory"
+  ],
+  "answer": 2,
+  "explanation": "God said, Let us make man in our image, after our likeness.",
+  "ref": "Genesis 1:26"
+ },
+ {
+  "id": "genesis-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In God’s list, over which creatures was man first given dominion?",
+  "choices": [
+   "The fowl of the air",
+   "The cattle",
+   "Every beast of the field",
+   "The fish of the sea"
+  ],
+  "answer": 3,
+  "explanation": "Let them have dominion over the fish of the sea, and over the fowl of the air, and over the cattle.",
+  "ref": "Genesis 1:26"
+ },
+ {
+  "id": "genesis-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God give to every beast, fowl and creeping thing for meat?",
+  "choices": [
+   "Every green herb",
+   "Every fish of the sea",
+   "Seed of the cattle",
+   "Fruit of the sea"
+  ],
+  "answer": 0,
+  "explanation": "To every beast of the earth, and to every fowl of the air, I have given every green herb for meat.",
+  "ref": "Genesis 1:30"
+ },
+ {
   "id": "old-genesis-2-2",
   "chapter": 2,
   "level": "beginner",
@@ -84,16 +372,16 @@
   "chapter": 2,
   "level": "beginner",
   "category": "keyword",
-  "question": "Which tree did God forbid the man to eat from?",
+  "question": "What did God bring to Adam to see what he would call them?",
   "choices": [
-   "The tree of life",
-   "The tree of the knowledge of good and evil",
-   "The cedar of Lebanon",
-   "The fig tree"
+   "Every fish of the sea",
+   "The four rivers",
+   "Every tree of the garden",
+   "Every beast and every fowl"
   ],
-  "answer": 1,
-  "explanation": "God gave the man one boundary in the garden: he was not to eat of the tree of the knowledge of good and evil.",
-  "ref": "Genesis 2:16–17"
+  "answer": 3,
+  "explanation": "God formed every beast of the field and every fowl of the air, and brought them unto Adam to see what he would call them.",
+  "ref": "Genesis 2:19"
  },
  {
   "id": "old-genesis-2-4",
@@ -115,33 +403,321 @@
   "id": "old-genesis-2-5",
   "chapter": 2,
   "level": "beginner",
-  "category": "keyword",
-  "question": "How did God make the woman?",
+  "category": "person",
+  "question": "Who did God bring the woman to after he made her?",
   "choices": [
-   "From one of Adam's ribs",
-   "From clay",
-   "From a tree",
-   "From water"
+   "The serpent",
+   "The beasts of the field",
+   "The angels",
+   "The man"
+  ],
+  "answer": 3,
+  "explanation": "The rib, which the LORD God had taken from man, made he a woman, and brought her unto the man.",
+  "ref": "Genesis 2:22"
+ },
+ {
+  "id": "genesis-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Out of what did the LORD God form every beast and fowl?",
+  "choices": [
+   "The sea",
+   "The mist",
+   "A deep sleep",
+   "The ground"
+  ],
+  "answer": 3,
+  "explanation": "Out of the ground the LORD God formed every beast of the field, and every fowl of the air.",
+  "ref": "Genesis 2:19"
+ },
+ {
+  "id": "genesis-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was true of every tree the LORD God made grow out of the ground?",
+  "choices": [
+   "Pleasant to the sight and good for food",
+   "Tall as the heavens",
+   "Bearing gold",
+   "Planted by the river only"
   ],
   "answer": 0,
-  "explanation": "God caused Adam to sleep and made Eve from his rib.",
-  "ref": "Genesis 2:21–22"
+  "explanation": "God made to grow every tree that is pleasant to the sight, and good for food.",
+  "ref": "Genesis 2:9"
+ },
+ {
+  "id": "genesis-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did God bless the seventh day and sanctify it?",
+  "choices": [
+   "It was the day of the mist",
+   "He had rested from all his work",
+   "Man had been named",
+   "A garden was planted"
+  ],
+  "answer": 1,
+  "explanation": "God blessed the seventh day, and sanctified it: because that in it he had rested from all his work.",
+  "ref": "Genesis 2:3"
+ },
+ {
+  "id": "genesis-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which river compasseth the whole land of Havilah?",
+  "choices": [
+   "Gihon",
+   "Hiddekel",
+   "Euphrates",
+   "Pison"
+  ],
+  "answer": 3,
+  "explanation": "The name of the first is Pison: that is it which compasseth the whole land of Havilah.",
+  "ref": "Genesis 2:11"
+ },
+ {
+  "id": "genesis-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which river compasseth the whole land of Ethiopia?",
+  "choices": [
+   "Gihon",
+   "Pison",
+   "Hiddekel",
+   "Euphrates"
+  ],
+  "answer": 0,
+  "explanation": "The name of the second river is Gihon: the same is it that compasseth the whole land of Ethiopia.",
+  "ref": "Genesis 2:13"
+ },
+ {
+  "id": "genesis-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which river goeth toward the east of Assyria?",
+  "choices": [
+   "Pison",
+   "Hiddekel",
+   "Gihon",
+   "Euphrates"
+  ],
+  "answer": 1,
+  "explanation": "The third river is Hiddekel: that is it which goeth toward the east of Assyria.",
+  "ref": "Genesis 2:14"
+ },
+ {
+  "id": "genesis-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into how many heads was the river from Eden parted?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "A river went out of Eden to water the garden; and from thence it was parted, and became into four heads.",
+  "ref": "Genesis 2:10"
+ },
+ {
+  "id": "genesis-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides gold, which stone was found in the land of Havilah?",
+  "choices": [
+   "The sapphire",
+   "The ruby",
+   "The diamond",
+   "The onyx stone"
+  ],
+  "answer": 3,
+  "explanation": "The gold of that land is good: there is bdellium and the onyx stone.",
+  "ref": "Genesis 2:12"
+ },
+ {
+  "id": "genesis-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was missing before any plant grew, besides rain?",
+  "choices": [
+   "A man to till the ground",
+   "A river to water it",
+   "Light from the sun",
+   "Seed in the earth"
+  ],
+  "answer": 0,
+  "explanation": "The LORD God had not caused it to rain upon the earth, and there was not a man to till the ground.",
+  "ref": "Genesis 2:5"
+ },
+ {
+  "id": "genesis-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the mist that went up from the earth water?",
+  "choices": [
+   "The garden only",
+   "The whole face of the ground",
+   "The four rivers",
+   "The tree of life"
+  ],
+  "answer": 1,
+  "explanation": "There went up a mist from the earth, and watered the whole face of the ground.",
+  "ref": "Genesis 2:6"
+ },
+ {
+  "id": "genesis-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God do with the flesh after taking one of Adam’s ribs?",
+  "choices": [
+   "Made it a deep sleep",
+   "Gave it to the beasts",
+   "Closed it up in its place",
+   "Formed a tree from it"
+  ],
+  "answer": 2,
+  "explanation": "God took one of his ribs, and closed up the flesh instead thereof.",
+  "ref": "Genesis 2:21"
+ },
+ {
+  "id": "genesis-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was the woman called Woman?",
+  "choices": [
+   "She was made last",
+   "She was given a garden",
+   "She named the beasts",
+   "She was taken out of Man"
+  ],
+  "answer": 3,
+  "explanation": "She shall be called Woman, because she was taken out of Man.",
+  "ref": "Genesis 2:23"
+ },
+ {
+  "id": "genesis-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will a man and his wife be after he cleaves unto her?",
+  "choices": [
+   "One flesh",
+   "One house",
+   "One tribe",
+   "One spirit"
+  ],
+  "answer": 0,
+  "explanation": "A man shall cleave unto his wife: and they shall be one flesh.",
+  "ref": "Genesis 2:24"
+ },
+ {
+  "id": "genesis-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say the man could do with every tree of the garden, except one?",
+  "choices": [
+   "Dress it only",
+   "Freely eat",
+   "Name it",
+   "Pass by it"
+  ],
+  "answer": 1,
+  "explanation": "Of every tree of the garden thou mayest freely eat.",
+  "ref": "Genesis 2:16"
+ },
+ {
+  "id": "genesis-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the river that watered the garden go out from?",
+  "choices": [
+   "Havilah",
+   "Assyria",
+   "Eden",
+   "Ethiopia"
+  ],
+  "answer": 2,
+  "explanation": "A river went out of Eden to water the garden.",
+  "ref": "Genesis 2:10"
+ },
+ {
+  "id": "genesis-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Adam gave names to cattle, the fowl of the air, and every what?",
+  "choices": [
+   "Fish of the sea",
+   "Creeping thing",
+   "Tree of the garden",
+   "Beast of the field"
+  ],
+  "answer": 3,
+  "explanation": "Adam gave names to all cattle, and to the fowl of the air, and to every beast of the field.",
+  "ref": "Genesis 2:20"
+ },
+ {
+  "id": "genesis-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On the seventh day, God ended what?",
+  "choices": [
+   "His work which he had made",
+   "The garden in Eden",
+   "The naming of the beasts",
+   "The four rivers"
+  ],
+  "answer": 0,
+  "explanation": "On the seventh day God ended his work which he had made.",
+  "ref": "Genesis 2:2"
+ },
+ {
+  "id": "genesis-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD God plant eastward in Eden?",
+  "choices": [
+   "A vineyard",
+   "A garden",
+   "A forest",
+   "A field of wheat"
+  ],
+  "answer": 1,
+  "explanation": "The LORD God planted a garden eastward in Eden.",
+  "ref": "Genesis 2:8"
  },
  {
   "id": "old-genesis-3-1",
   "chapter": 3,
   "level": "beginner",
-  "category": "person",
-  "question": "Who tempted Eve in the garden?",
+  "category": "keyword",
+  "question": "What did the LORD God ask the woman when he found out about the fruit?",
   "choices": [
-   "Adam",
-   "An angel",
-   "A serpent",
-   "Cain"
+   "Who told thee that thou wast naked?",
+   "Where art thou?",
+   "Hast thou eaten of the tree?",
+   "What is this that thou hast done?"
   ],
-  "answer": 2,
-  "explanation": "The serpent questioned God's word and tempted Eve.",
-  "ref": "Genesis 3:1"
+  "answer": 3,
+  "explanation": "The LORD God said unto the woman, What is this that thou hast done?",
+  "ref": "Genesis 3:13"
  },
  {
   "id": "old-genesis-3-2",
@@ -163,17 +739,17 @@
   "id": "old-genesis-3-3",
   "chapter": 3,
   "level": "beginner",
-  "category": "keyword",
-  "question": "What did Adam and Eve make for themselves by sewing fig leaves together?",
+  "category": "person",
+  "question": "Who did God question first after the fall?",
   "choices": [
-   "Coats of skins",
-   "Aprons",
-   "Branches",
-   "Baskets"
+   "The woman",
+   "The serpent",
+   "Cain",
+   "Adam"
   ],
-  "answer": 1,
-  "explanation": "They sewed fig leaves together and made themselves aprons.",
-  "ref": "Genesis 3:7"
+  "answer": 3,
+  "explanation": "The LORD God called unto Adam, and said unto him, Where art thou?",
+  "ref": "Genesis 3:9"
  },
  {
   "id": "old-genesis-3-4",
@@ -206,6 +782,294 @@
   "answer": 1,
   "explanation": "God drove them out after sin so they would not eat from the tree of life in that fallen state.",
   "ref": "Genesis 3:22–24"
+ },
+ {
+  "id": "genesis-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the serpent say when the woman spoke of dying?",
+  "choices": [
+   "Ye shall not surely die",
+   "Ye shall surely die",
+   "Ye shall live a thousand years",
+   "Ye shall be cast out"
+  ],
+  "answer": 0,
+  "explanation": "The serpent said unto the woman, Ye shall not surely die.",
+  "ref": "Genesis 3:4"
+ },
+ {
+  "id": "genesis-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God ask Adam about his nakedness?",
+  "choices": [
+   "Why art thou wroth?",
+   "Who told thee that thou wast naked?",
+   "Who made thee naked?",
+   "Where is thy wife?"
+  ],
+  "answer": 1,
+  "explanation": "He said, Who told thee that thou wast naked? Hast thou eaten of the tree?",
+  "ref": "Genesis 3:11"
+ },
+ {
+  "id": "genesis-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say the serpent would eat all the days of his life?",
+  "choices": [
+   "Thorns",
+   "Fruit",
+   "Dust",
+   "Herbs"
+  ],
+  "answer": 2,
+  "explanation": "Upon thy belly shalt thou go, and dust shalt thou eat all the days of thy life.",
+  "ref": "Genesis 3:14"
+ },
+ {
+  "id": "genesis-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The serpent was more subtil than any what?",
+  "choices": [
+   "Beast of the field",
+   "Fowl of the air",
+   "Creeping thing",
+   "Man"
+  ],
+  "answer": 0,
+  "explanation": "The serpent was more subtil than any beast of the field which the LORD God had made.",
+  "ref": "Genesis 3:1"
+ },
+ {
+  "id": "genesis-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the woman say the forbidden tree stood?",
+  "choices": [
+   "By the river",
+   "In the midst of the garden",
+   "Beside the gate",
+   "At the east of Eden"
+  ],
+  "answer": 1,
+  "explanation": "Of the fruit of the tree which is in the midst of the garden, God hath said, Ye shall not eat of it.",
+  "ref": "Genesis 3:3"
+ },
+ {
+  "id": "genesis-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the serpent say they would be as, knowing good and evil?",
+  "choices": [
+   "Angels",
+   "Beasts",
+   "Gods",
+   "Kings"
+  ],
+  "answer": 2,
+  "explanation": "In the day ye eat thereof, your eyes shall be opened, and ye shall be as gods, knowing good and evil.",
+  "ref": "Genesis 3:5"
+ },
+ {
+  "id": "genesis-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides good for food, what did the woman see in the tree?",
+  "choices": [
+   "It was hung with gold",
+   "It was guarded",
+   "It was watered by a river",
+   "It was pleasant to the eyes"
+  ],
+  "answer": 3,
+  "explanation": "The woman saw that the tree was good for food, and that it was pleasant to the eyes.",
+  "ref": "Genesis 3:6"
+ },
+ {
+  "id": "genesis-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Adam say he heard in the garden?",
+  "choices": [
+   "The LORD’s voice",
+   "A great wind",
+   "The serpent",
+   "Footsteps of the woman"
+  ],
+  "answer": 0,
+  "explanation": "He said, I heard thy voice in the garden, and I was afraid.",
+  "ref": "Genesis 3:10"
+ },
+ {
+  "id": "genesis-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Above what was the serpent cursed?",
+  "choices": [
+   "Every fowl of the air",
+   "All cattle and every beast of the field",
+   "The woman",
+   "Every tree of the garden"
+  ],
+  "answer": 1,
+  "explanation": "Thou art cursed above all cattle, and above every beast of the field.",
+  "ref": "Genesis 3:14"
+ },
+ {
+  "id": "genesis-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say he would greatly multiply for the woman?",
+  "choices": [
+   "Her flocks",
+   "Her days",
+   "Her sorrow and conception",
+   "Her sons only"
+  ],
+  "answer": 2,
+  "explanation": "I will greatly multiply thy sorrow and thy conception; in sorrow thou shalt bring forth children.",
+  "ref": "Genesis 3:16"
+ },
+ {
+  "id": "genesis-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God told the woman her desire would be to whom?",
+  "choices": [
+   "The serpent",
+   "Her children",
+   "The LORD",
+   "Her husband"
+  ],
+  "answer": 3,
+  "explanation": "Thy desire shall be to thy husband, and he shall rule over thee.",
+  "ref": "Genesis 3:16"
+ },
+ {
+  "id": "genesis-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did God say Adam would eat bread?",
+  "choices": [
+   "The sweat of his face",
+   "The cool of the day",
+   "The midst of the garden",
+   "The shadow of the trees"
+  ],
+  "answer": 0,
+  "explanation": "In the sweat of thy face shalt thou eat bread, till thou return unto the ground.",
+  "ref": "Genesis 3:19"
+ },
+ {
+  "id": "genesis-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when did God say Adam would eat bread in the sweat of his face?",
+  "choices": [
+   "Till the flood came",
+   "Till he returned to the ground",
+   "Till the serpent died",
+   "Till he found the tree"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt eat bread, till thou return unto the ground; for out of it wast thou taken.",
+  "ref": "Genesis 3:19"
+ },
+ {
+  "id": "genesis-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say the man had become as one of us?",
+  "choices": [
+   "Lord of the garden",
+   "Wise above the angels",
+   "Knowing good and evil",
+   "Keeper of the tree of life"
+  ],
+  "answer": 2,
+  "explanation": "The man is become as one of us, to know good and evil.",
+  "ref": "Genesis 3:22"
+ },
+ {
+  "id": "genesis-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God send Adam forth from Eden to do?",
+  "choices": [
+   "Keep the garden",
+   "Name the beasts",
+   "Build a city",
+   "Till the ground"
+  ],
+  "answer": 3,
+  "explanation": "The LORD God sent him forth from the garden of Eden, to till the ground from whence he was taken.",
+  "ref": "Genesis 3:23"
+ },
+ {
+  "id": "genesis-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which side of the garden did God place the Cherubim?",
+  "choices": [
+   "The east",
+   "The west",
+   "The north",
+   "The south"
+  ],
+  "answer": 0,
+  "explanation": "He placed at the east of the garden of Eden Cherubim, and a flaming sword.",
+  "ref": "Genesis 3:24"
+ },
+ {
+  "id": "genesis-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the flaming sword move?",
+  "choices": [
+   "Only eastward",
+   "Every way",
+   "Up and down",
+   "Round the tree"
+  ],
+  "answer": 1,
+  "explanation": "A flaming sword which turned every way, to keep the way of the tree of life.",
+  "ref": "Genesis 3:24"
+ },
+ {
+  "id": "genesis-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the woman say the serpent had done to her?",
+  "choices": [
+   "Carried her away",
+   "Cursed her",
+   "Beguiled her",
+   "Taught her"
+  ],
+  "answer": 2,
+  "explanation": "The woman said, The serpent beguiled me, and I did eat.",
+  "ref": "Genesis 3:13"
  },
  {
   "id": "old-genesis-4-1",
