@@ -7280,6 +7280,646 @@
   "ref": "Exodus 11:8"
  },
  {
+  "id": "exodus-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many more plagues did the LORD say He would bring on Pharaoh and Egypt?",
+  "choices": [
+   "One more",
+   "Three more",
+   "Seven more",
+   "Ten more"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Yet will I bring one plague more upon Pharaoh, and upon Egypt.",
+  "ref": "Exodus 11:1"
+ },
+ {
+  "id": "exodus-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell the people to borrow from their neighbours?",
+  "choices": [
+   "Sheep and goats",
+   "Jewels of silver and gold",
+   "Oil and wine",
+   "Swords and shields"
+  ],
+  "answer": 1,
+  "explanation": "Let every man borrow of his neighbour... jewels of silver, and jewels of gold.",
+  "ref": "Exodus 11:2"
+ },
+ {
+  "id": "exodus-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was very great in the land of Egypt in the sight of Pharaoh's servants?",
+  "choices": [
+   "Aaron",
+   "Joshua",
+   "Moses",
+   "Jethro"
+  ],
+  "answer": 2,
+  "explanation": "The man Moses was very great in the land of Egypt, in the sight of Pharaoh's servants.",
+  "ref": "Exodus 11:3"
+ },
+ {
+  "id": "exodus-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose firstborn, who sat upon the throne, would die?",
+  "choices": [
+   "Moses'",
+   "Aaron's",
+   "The servants'",
+   "Pharaoh's"
+  ],
+  "answer": 3,
+  "explanation": "All the firstborn in the land of Egypt shall die, from the firstborn of Pharaoh that sitteth upon his throne.",
+  "ref": "Exodus 11:5"
+ },
+ {
+  "id": "exodus-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides people, what firstborn would also die?",
+  "choices": [
+   "The firstborn of beasts",
+   "The firstborn of birds",
+   "The firstborn of fish",
+   "The firstborn of trees"
+  ],
+  "answer": 0,
+  "explanation": "Even unto the firstborn of the maidservant... and all the firstborn of beasts.",
+  "ref": "Exodus 11:5"
+ },
+ {
+  "id": "exodus-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said, \"Thus saith the LORD, About midnight will I go out into the midst of Egypt\"?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Pharaoh",
+   "Joshua"
+  ],
+  "answer": 1,
+  "explanation": "And Moses said, Thus saith the LORD, About midnight will I go out into the midst of Egypt.",
+  "ref": "Exodus 11:4"
+ },
+ {
+  "id": "exodus-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who would not hearken unto Moses and Aaron?",
+  "choices": [
+   "The elders",
+   "The priests",
+   "Pharaoh",
+   "The Egyptian people"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said, Pharaoh shall not hearken unto you.",
+  "ref": "Exodus 11:9"
+ },
+ {
+  "id": "exodus-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say would be multiplied in Egypt?",
+  "choices": [
+   "Egypt's armies",
+   "Israel's flocks",
+   "The Nile's waters",
+   "His wonders"
+  ],
+  "answer": 3,
+  "explanation": "Pharaoh shall not hearken unto you; that my wonders may be multiplied in the land of Egypt.",
+  "ref": "Exodus 11:9"
+ },
+ {
+  "id": "exodus-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who put a difference between the Egyptians and Israel?",
+  "choices": [
+   "The LORD",
+   "Pharaoh",
+   "Moses",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "That ye may know how that the LORD doth put a difference between the Egyptians and Israel.",
+  "ref": "Exodus 11:7"
+ },
+ {
+  "id": "exodus-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did all the wonders before Pharaoh?",
+  "choices": [
+   "Moses and Joshua",
+   "Moses and Aaron",
+   "Aaron and Hur",
+   "Moses alone"
+  ],
+  "answer": 1,
+  "explanation": "Moses and Aaron did all these wonders before Pharaoh.",
+  "ref": "Exodus 11:10"
+ },
+ {
+  "id": "exodus-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say Pharaoh would do when he finally let Israel go?",
+  "choices": [
+   "Follow them",
+   "Give them chariots",
+   "Surely thrust them out altogether",
+   "Send soldiers with them"
+  ],
+  "answer": 2,
+  "explanation": "When he shall let you go, he shall surely thrust you out hence altogether.",
+  "ref": "Exodus 11:1"
+ },
+ {
+  "id": "exodus-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD give the people in the sight of the Egyptians?",
+  "choices": [
+   "Fear",
+   "Gold",
+   "Armies",
+   "Favour"
+  ],
+  "answer": 3,
+  "explanation": "And the LORD gave the people favour in the sight of the Egyptians.",
+  "ref": "Exodus 11:3"
+ },
+ {
+  "id": "exodus-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Pharaoh's firstborn sit?",
+  "choices": [
+   "Upon his throne",
+   "At the mill",
+   "In the dungeon",
+   "In the field"
+  ],
+  "answer": 0,
+  "explanation": "From the firstborn of Pharaoh that sitteth upon his throne.",
+  "ref": "Exodus 11:5"
+ },
+ {
+  "id": "exodus-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was told to borrow jewels of their neighbours?",
+  "choices": [
+   "Only the elders",
+   "Every man and every woman",
+   "Only the men",
+   "Only the priests"
+  ],
+  "answer": 1,
+  "explanation": "Let every man borrow of his neighbour, and every woman of her neighbour.",
+  "ref": "Exodus 11:2"
+ },
+ {
+  "id": "exodus-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Moses say would bow down to him?",
+  "choices": [
+   "The Israelites",
+   "The priests",
+   "Pharaoh's servants",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "All these thy servants shall come down unto me, and bow down themselves unto me.",
+  "ref": "Exodus 11:8"
+ },
+ {
+  "id": "exodus-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the servants would say to him?",
+  "choices": [
+   "Stay and pray for us",
+   "Speak to Pharaoh again",
+   "Bring us the rod",
+   "Get thee out, and all the people that follow thee"
+  ],
+  "answer": 3,
+  "explanation": "Saying, Get thee out, and all the people that follow thee.",
+  "ref": "Exodus 11:8"
+ },
+ {
+  "id": "exodus-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say he would do after the servants begged him to leave?",
+  "choices": [
+   "Go out",
+   "Stay in Egypt",
+   "Call the elders",
+   "Pray for them"
+  ],
+  "answer": 0,
+  "explanation": "And after that I will go out.",
+  "ref": "Exodus 11:8"
+ },
+ {
+  "id": "exodus-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Against whom would not a dog move his tongue?",
+  "choices": [
+   "Any Egyptian",
+   "Any of the children of Israel",
+   "Pharaoh",
+   "The servants"
+  ],
+  "answer": 1,
+  "explanation": "Against any of the children of Israel shall not a dog move his tongue, against man or beast.",
+  "ref": "Exodus 11:7"
+ },
+ {
+  "id": "exodus-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say Israel would know from the difference He made?",
+  "choices": [
+   "That Pharaoh was weak",
+   "That Moses was a prophet",
+   "That the LORD puts a difference between Egypt and Israel",
+   "That the sea would part"
+  ],
+  "answer": 2,
+  "explanation": "That ye may know how that the LORD doth put a difference between the Egyptians and Israel.",
+  "ref": "Exodus 11:7"
+ },
+ {
+  "id": "exodus-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Moses describe the cry that would come over Egypt?",
+  "choices": [
+   "It would last a year",
+   "It would be quiet",
+   "It would be a song",
+   "None like it before or after"
+  ],
+  "answer": 3,
+  "explanation": "A great cry... such as there was none like it, nor shall be like it any more.",
+  "ref": "Exodus 11:6"
+ },
+ {
+  "id": "exodus-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "In whose sight was Moses very great?",
+  "choices": [
+   "Pharaoh's servants and the people",
+   "Only Pharaoh's",
+   "Only Israel's",
+   "Only the elders'"
+  ],
+  "answer": 0,
+  "explanation": "Moses was very great in the land of Egypt, in the sight of Pharaoh's servants, and in the sight of the people.",
+  "ref": "Exodus 11:3"
+ },
+ {
+  "id": "exodus-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD say Pharaoh would not hearken?",
+  "choices": [
+   "To test Israel",
+   "That His wonders be multiplied in Egypt",
+   "To feed the poor",
+   "To free the captives"
+  ],
+  "answer": 1,
+  "explanation": "Pharaoh shall not hearken unto you; that my wonders may be multiplied in the land of Egypt.",
+  "ref": "Exodus 11:9"
+ },
+ {
+  "id": "exodus-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would follow the one plague more?",
+  "choices": [
+   "The sea would part",
+   "Israel would build a temple",
+   "Pharaoh would let Israel go",
+   "The Nile would run red"
+  ],
+  "answer": 2,
+  "explanation": "Yet will I bring one plague more... afterwards he will let you go hence.",
+  "ref": "Exodus 11:1"
+ },
+ {
+  "id": "exodus-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom was Moses to speak in the ears about borrowing?",
+  "choices": [
+   "Pharaoh",
+   "The priests",
+   "The servants",
+   "The people"
+  ],
+  "answer": 3,
+  "explanation": "Speak now in the ears of the people, and let every man borrow of his neighbour.",
+  "ref": "Exodus 11:2"
+ },
+ {
+  "id": "exodus-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the LORD say He would go out at midnight?",
+  "choices": [
+   "Into the midst of Egypt",
+   "Into Goshen",
+   "Into the wilderness",
+   "Into the Red sea"
+  ],
+  "answer": 0,
+  "explanation": "About midnight will I go out into the midst of Egypt.",
+  "ref": "Exodus 11:4"
+ },
+ {
+  "id": "exodus-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose firstborn was \"behind the mill\"?",
+  "choices": [
+   "The captive's",
+   "The maidservant's",
+   "The shepherd's",
+   "The queen's"
+  ],
+  "answer": 1,
+  "explanation": "Even unto the firstborn of the maidservant that is behind the mill.",
+  "ref": "Exodus 11:5"
+ },
+ {
+  "id": "exodus-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides man, against what else would a dog not move his tongue?",
+  "choices": [
+   "Houses",
+   "Fields",
+   "Beast",
+   "Birds"
+  ],
+  "answer": 2,
+  "explanation": "Against man or beast.",
+  "ref": "Exodus 11:7"
+ },
+ {
+  "id": "exodus-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was done to Pharaoh's heart so that he would not let Israel go out?",
+  "choices": [
+   "Moses softened it",
+   "His servants hardened it",
+   "It grew cold",
+   "The LORD hardened it"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hardened Pharaoh's heart, so that he would not let the children of Israel go out of his land.",
+  "ref": "Exodus 11:10"
+ },
+ {
+  "id": "exodus-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two metals were the jewels the people borrowed made of?",
+  "choices": [
+   "Silver and gold",
+   "Brass and iron",
+   "Gold and copper",
+   "Silver and tin"
+  ],
+  "answer": 0,
+  "explanation": "Jewels of silver, and jewels of gold.",
+  "ref": "Exodus 11:2"
+ },
+ {
+  "id": "exodus-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the great cry be, in Moses' words, after that night?",
+  "choices": [
+   "Heard again each year",
+   "Never like it any more",
+   "Heard only in Goshen",
+   "Soon forgotten"
+  ],
+  "answer": 1,
+  "explanation": "Such as there was none like it, nor shall be like it any more.",
+  "ref": "Exodus 11:6"
+ },
+ {
+  "id": "exodus-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses do when he finished speaking to Pharaoh?",
+  "choices": [
+   "Bowed down",
+   "Sat down",
+   "Went out in a great anger",
+   "Prayed aloud"
+  ],
+  "answer": 2,
+  "explanation": "And he went out from Pharaoh in a great anger.",
+  "ref": "Exodus 11:8"
+ },
+ {
+  "id": "exodus-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say the servants would do before saying \"Get thee out\"?",
+  "choices": [
+   "Bring gifts",
+   "Fall silent",
+   "Send a messenger",
+   "Come down and bow themselves to him"
+  ],
+  "answer": 3,
+  "explanation": "All these thy servants shall come down unto me, and bow down themselves unto me.",
+  "ref": "Exodus 11:8"
+ },
+ {
+  "id": "exodus-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the LORD describe the one plague He would still bring?",
+  "choices": [
+   "One plague more",
+   "The worst plague",
+   "A plague of fire",
+   "A plague of famine"
+  ],
+  "answer": 0,
+  "explanation": "Yet will I bring one plague more upon Pharaoh, and upon Egypt.",
+  "ref": "Exodus 11:1"
+ },
+ {
+  "id": "exodus-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Israel's neighbours' jewels be borrowed from?",
+  "choices": [
+   "The Egyptian priests",
+   "Their neighbours (Egyptians)",
+   "The Egyptian army",
+   "Pharaoh's house only"
+  ],
+  "answer": 1,
+  "explanation": "Let every man borrow of his neighbour.",
+  "ref": "Exodus 11:2"
+ },
+ {
+  "id": "exodus-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which level of Egyptian household did the death reach, \"unto\" the maidservant?",
+  "choices": [
+   "Only the palace",
+   "Only the army",
+   "From Pharaoh down to the maidservant",
+   "Only the priests"
+  ],
+  "answer": 2,
+  "explanation": "From the firstborn of Pharaoh that sitteth upon his throne, even unto the firstborn of the maidservant.",
+  "ref": "Exodus 11:5"
+ },
+ {
+  "id": "exodus-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say about Pharaoh's servants coming to him?",
+  "choices": [
+   "They would send gold",
+   "They would fight him",
+   "They would flee",
+   "They would come down to him"
+  ],
+  "answer": 3,
+  "explanation": "All these thy servants shall come down unto me.",
+  "ref": "Exodus 11:8"
+ },
+ {
+  "id": "exodus-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose favour did the people receive?",
+  "choices": [
+   "The Egyptians'",
+   "The priests' only",
+   "Pharaoh's only",
+   "The soldiers'"
+  ],
+  "answer": 0,
+  "explanation": "The LORD gave the people favour in the sight of the Egyptians.",
+  "ref": "Exodus 11:3"
+ },
+ {
+  "id": "exodus-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD call the signs done through Moses and Aaron in the last verse?",
+  "choices": [
+   "Plagues",
+   "Wonders",
+   "Judgments",
+   "Miracles of rest"
+  ],
+  "answer": 1,
+  "explanation": "Moses and Aaron did all these wonders before Pharaoh.",
+  "ref": "Exodus 11:10"
+ },
+ {
+  "id": "exodus-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the LORD said Pharaoh would do at last, rather than let them go gently?",
+  "choices": [
+   "Chase them",
+   "Bless them",
+   "Thrust them out altogether",
+   "Count them"
+  ],
+  "answer": 2,
+  "explanation": "He shall surely thrust you out hence altogether.",
+  "ref": "Exodus 11:1"
+ },
+ {
+  "id": "exodus-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to do first, before the people borrowed?",
+  "choices": [
+   "Strike the Nile",
+   "Lift his rod",
+   "Gather the elders",
+   "Speak in the ears of the people"
+  ],
+  "answer": 3,
+  "explanation": "Speak now in the ears of the people, and let every man borrow of his neighbour.",
+  "ref": "Exodus 11:2"
+ },
+ {
   "id": "old-exodus-12-1",
   "chapter": 12,
   "level": "beginner",
