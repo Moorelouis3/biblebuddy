@@ -13152,6 +13152,646 @@
   "ref": "Exodus 19:16"
  },
  {
+  "id": "exodus-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went up to God on the mountain at the start of the chapter?",
+  "choices": [
+   "Moses",
+   "Hur",
+   "Joshua",
+   "Aaron"
+  ],
+  "answer": 0,
+  "explanation": "Moses went up unto God, and the LORD called unto him out of the mountain.",
+  "ref": "Exodus 19:3"
+ },
+ {
+  "id": "exodus-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did all the people answer the LORD's words?",
+  "choices": [
+   "We will send elders",
+   "All that the LORD hath spoken we will do",
+   "We will think on it",
+   "We will wait for a sign"
+  ],
+  "answer": 1,
+  "explanation": "All the people answered together, All that the LORD hath spoken we will do.",
+  "ref": "Exodus 19:8"
+ },
+ {
+  "id": "exodus-19-e-03",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people have to wash before the third day?",
+  "choices": [
+   "Their flocks",
+   "Their tents",
+   "Their clothes",
+   "Their feet"
+  ],
+  "answer": 2,
+  "explanation": "Let them wash their clothes.",
+  "ref": "Exodus 19:10"
+ },
+ {
+  "id": "exodus-19-e-04",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would happen to whoever touched the mount?",
+  "choices": [
+   "He would be sent away",
+   "He would be blessed",
+   "He would be fined",
+   "He would be put to death"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever toucheth the mount shall be surely put to death.",
+  "ref": "Exodus 19:12"
+ },
+ {
+  "id": "exodus-19-e-05",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did mount Sinai look when the LORD came down in fire?",
+  "choices": [
+   "Bright as the sun only",
+   "Altogether on a smoke",
+   "Dark and silent",
+   "Covered in snow"
+  ],
+  "answer": 1,
+  "explanation": "Mount Sinai was altogether on a smoke, because the LORD descended upon it in fire.",
+  "ref": "Exodus 19:18"
+ },
+ {
+  "id": "exodus-19-e-06",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the whole mount do?",
+  "choices": [
+   "Burned to ash",
+   "Sank low",
+   "Split in two",
+   "Quaked greatly"
+  ],
+  "answer": 3,
+  "explanation": "The whole mount quaked greatly.",
+  "ref": "Exodus 19:18"
+ },
+ {
+  "id": "exodus-19-e-07",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the LORD say should come up with Moses?",
+  "choices": [
+   "Nadab",
+   "Aaron",
+   "Joshua",
+   "Hur"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt come up, thou, and Aaron with thee.",
+  "ref": "Exodus 19:24"
+ },
+ {
+  "id": "exodus-19-e-08",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what did the LORD say He would come to Moses?",
+  "choices": [
+   "A still voice",
+   "A burning bush",
+   "A thick cloud",
+   "A chariot"
+  ],
+  "answer": 2,
+  "explanation": "Lo, I come unto thee in a thick cloud.",
+  "ref": "Exodus 19:9"
+ },
+ {
+  "id": "exodus-19-e-09",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of kingdom would Israel be to the LORD?",
+  "choices": [
+   "A kingdom of priests",
+   "A kingdom of kings",
+   "A kingdom of judges",
+   "A kingdom of warriors"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall be unto me a kingdom of priests, and an holy nation.",
+  "ref": "Exodus 19:6"
+ },
+ {
+  "id": "exodus-19-e-10",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the people stand to meet with God?",
+  "choices": [
+   "The top of the mount",
+   "Beside the river",
+   "In their tents",
+   "The nether part of the mount"
+  ],
+  "answer": 3,
+  "explanation": "They stood at the nether part of the mount.",
+  "ref": "Exodus 19:17"
+ },
+ {
+  "id": "exodus-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom did the LORD tell Moses to speak His message?",
+  "choices": [
+   "The house of Jacob",
+   "The elders of Egypt",
+   "The house of Levi",
+   "The priests of Midian"
+  ],
+  "answer": 0,
+  "explanation": "Thus shalt thou say to the house of Jacob, and tell the children of Israel.",
+  "ref": "Exodus 19:3"
+ },
+ {
+  "id": "exodus-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about all the earth?",
+  "choices": [
+   "It is cursed",
+   "It is empty",
+   "It is Israel's",
+   "It is mine"
+  ],
+  "answer": 3,
+  "explanation": "For all the earth is mine.",
+  "ref": "Exodus 19:5"
+ },
+ {
+  "id": "exodus-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What two things did the LORD ask of Israel?",
+  "choices": [
+   "Offer firstfruits and a lamb",
+   "Build an altar and a tent",
+   "Obey His voice and keep His covenant",
+   "Fast and pray"
+  ],
+  "answer": 2,
+  "explanation": "If ye will obey my voice indeed, and keep my covenant.",
+  "ref": "Exodus 19:5"
+ },
+ {
+  "id": "exodus-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Moses call to lay the LORD's words before?",
+  "choices": [
+   "The elders of the people",
+   "The tribe of Levi",
+   "Aaron's sons",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "Moses called for the elders of the people, and laid before their faces all these words.",
+  "ref": "Exodus 19:7"
+ },
+ {
+  "id": "exodus-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the LORD come in a thick cloud?",
+  "choices": [
+   "To hide from Pharaoh",
+   "To give light",
+   "To protect Moses",
+   "So the people would hear and believe Moses forever"
+  ],
+  "answer": 3,
+  "explanation": "That the people may hear when I speak with thee, and believe thee for ever.",
+  "ref": "Exodus 19:9"
+ },
+ {
+  "id": "exodus-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For how long were the people to sanctify themselves before the third day?",
+  "choices": [
+   "Seven days",
+   "One night",
+   "Three days",
+   "Today and tomorrow"
+  ],
+  "answer": 3,
+  "explanation": "Sanctify them to day and to morrow.",
+  "ref": "Exodus 19:10"
+ },
+ {
+  "id": "exodus-19-m-07",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day would the LORD come down on mount Sinai?",
+  "choices": [
+   "The first day",
+   "The tenth day",
+   "The third day",
+   "The seventh day"
+  ],
+  "answer": 2,
+  "explanation": "The third day the LORD will come down in the sight of all the people.",
+  "ref": "Exodus 19:11"
+ },
+ {
+  "id": "exodus-19-m-08",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to set round about the people?",
+  "choices": [
+   "Guards",
+   "Stones of witness",
+   "Tents",
+   "Bounds"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt set bounds unto the people round about.",
+  "ref": "Exodus 19:12"
+ },
+ {
+  "id": "exodus-19-m-09",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to a beast that touched the mount?",
+  "choices": [
+   "Nothing",
+   "It would be sacrificed",
+   "It would be driven out",
+   "It would be stoned or shot through"
+  ],
+  "answer": 3,
+  "explanation": "He shall surely be stoned, or shot through; whether it be beast or man.",
+  "ref": "Exodus 19:13"
+ },
+ {
+  "id": "exodus-19-m-10",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would allow the people to come up to the mount?",
+  "choices": [
+   "The trumpet sounding long",
+   "A cloud lifting",
+   "A signal from Aaron",
+   "The morning light"
+  ],
+  "answer": 0,
+  "explanation": "When the trumpet soundeth long, they shall come up to the mount.",
+  "ref": "Exodus 19:13"
+ },
+ {
+  "id": "exodus-19-m-11",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses tell the people about their wives?",
+  "choices": [
+   "Wash them",
+   "Bring them to the mount",
+   "Send them away",
+   "Come not at your wives"
+  ],
+  "answer": 3,
+  "explanation": "Be ready against the third day: come not at your wives.",
+  "ref": "Exodus 19:15"
+ },
+ {
+  "id": "exodus-19-m-12",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened in the camp on the third day morning?",
+  "choices": [
+   "Thunders, lightnings and a loud trumpet",
+   "A burning bush",
+   "An earthquake only",
+   "A great rain"
+  ],
+  "answer": 0,
+  "explanation": "There were thunders and lightnings, and a thick cloud upon the mount, and the voice of the trumpet exceeding loud.",
+  "ref": "Exodus 19:16"
+ },
+ {
+  "id": "exodus-19-m-13",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the people in the camp react?",
+  "choices": [
+   "They knelt in silence",
+   "They sang",
+   "They fled",
+   "They trembled"
+  ],
+  "answer": 3,
+  "explanation": "All the people that was in the camp trembled.",
+  "ref": "Exodus 19:16"
+ },
+ {
+  "id": "exodus-19-m-14",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD tell Moses to charge the people?",
+  "choices": [
+   "Lest they fall asleep",
+   "Lest they leave Sinai",
+   "Lest they break through to gaze and perish",
+   "Lest they fight Amalek"
+  ],
+  "answer": 2,
+  "explanation": "Charge the people, lest they break through unto the LORD to gaze, and many of them perish.",
+  "ref": "Exodus 19:21"
+ },
+ {
+  "id": "exodus-19-m-15",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Moses say the people could not come up?",
+  "choices": [
+   "They had no priests",
+   "They were unclean",
+   "The LORD had charged them to set bounds",
+   "They were afraid"
+  ],
+  "answer": 2,
+  "explanation": "Thou chargedst us, saying, Set bounds about the mount, and sanctify it.",
+  "ref": "Exodus 19:23"
+ },
+ {
+  "id": "exodus-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month did Israel come to the wilderness of Sinai?",
+  "choices": [
+   "The tenth month",
+   "The seventh month",
+   "The first month",
+   "The third month"
+  ],
+  "answer": 3,
+  "explanation": "In the third month, when the children of Israel were gone forth out of Egypt, the same day came they into the wilderness of Sinai.",
+  "ref": "Exodus 19:1"
+ },
+ {
+  "id": "exodus-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "From where had Israel departed before reaching Sinai?",
+  "choices": [
+   "Elim",
+   "Rephidim",
+   "Sin",
+   "Marah"
+  ],
+  "answer": 1,
+  "explanation": "They were departed from Rephidim, and were come to the desert of Sinai.",
+  "ref": "Exodus 19:2"
+ },
+ {
+  "id": "exodus-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD remind Israel they had seen Him do?",
+  "choices": [
+   "What He did unto the Egyptians",
+   "Manna in the morning",
+   "The sea divided only",
+   "The rock struck"
+  ],
+  "answer": 0,
+  "explanation": "Ye have seen what I did unto the Egyptians.",
+  "ref": "Exodus 19:4"
+ },
+ {
+  "id": "exodus-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Israel would be besides a kingdom of priests?",
+  "choices": [
+   "A tribe of kings",
+   "A free people",
+   "A great army",
+   "An holy nation"
+  ],
+  "answer": 3,
+  "explanation": "A kingdom of priests, and an holy nation.",
+  "ref": "Exodus 19:6"
+ },
+ {
+  "id": "exodus-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Who else were told to sanctify themselves?",
+  "choices": [
+   "The firstborn",
+   "Joshua and Hur",
+   "The priests who come near to the LORD",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "Let the priests also, which come near to the LORD, sanctify themselves.",
+  "ref": "Exodus 19:22"
+ },
+ {
+  "id": "exodus-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why were the priests to sanctify themselves?",
+  "choices": [
+   "Lest Moses be angry",
+   "Lest the LORD break forth upon them",
+   "Lest they miss the feast",
+   "Lest the people see them"
+  ],
+  "answer": 1,
+  "explanation": "Lest the LORD break forth upon them.",
+  "ref": "Exodus 19:22"
+ },
+ {
+  "id": "exodus-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The smoke of Sinai ascended like the smoke of what?",
+  "choices": [
+   "A furnace",
+   "An altar",
+   "A forest",
+   "A city"
+  ],
+  "answer": 0,
+  "explanation": "The smoke thereof ascended as the smoke of a furnace.",
+  "ref": "Exodus 19:18"
+ },
+ {
+  "id": "exodus-19-h-08",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did God answer Moses?",
+  "choices": [
+   "By a sign",
+   "By a dream",
+   "By a voice",
+   "By fire"
+  ],
+  "answer": 2,
+  "explanation": "Moses spake, and God answered him by a voice.",
+  "ref": "Exodus 19:19"
+ },
+ {
+  "id": "exodus-19-h-09",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the LORD call Moses up to?",
+  "choices": [
+   "The foot of the mount",
+   "The tent of meeting",
+   "The top of the mount",
+   "The wilderness of Sin"
+  ],
+  "answer": 2,
+  "explanation": "The LORD called Moses up to the top of the mount; and Moses went up.",
+  "ref": "Exodus 19:20"
+ },
+ {
+  "id": "exodus-19-h-10",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the trumpet do as it sounded long?",
+  "choices": [
+   "Waxed louder and louder",
+   "Grew faint",
+   "Stopped suddenly",
+   "Changed its tune"
+  ],
+  "answer": 0,
+  "explanation": "The voice of the trumpet sounded long, and waxed louder and louder.",
+  "ref": "Exodus 19:19"
+ },
+ {
+  "id": "exodus-19-h-11",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses do with the people's words?",
+  "choices": [
+   "Wrote them in a book",
+   "Told Aaron only",
+   "Kept them secret",
+   "Returned them to the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Moses returned the words of the people unto the LORD.",
+  "ref": "Exodus 19:8"
+ },
+ {
+  "id": "exodus-19-h-12",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did Moses first lay the LORD's words, before the whole people?",
+  "choices": [
+   "The priests",
+   "Joshua",
+   "Aaron",
+   "The elders"
+  ],
+  "answer": 3,
+  "explanation": "Moses called for the elders and laid before their faces all these words.",
+  "ref": "Exodus 19:7"
+ },
+ {
+  "id": "exodus-19-h-13",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to do when the people said they cannot come up?",
+  "choices": [
+   "Send Aaron alone",
+   "Wait for the trumpet",
+   "Bring the elders",
+   "Go down, then come up with Aaron"
+  ],
+  "answer": 3,
+  "explanation": "Away, get thee down, and thou shalt come up, thou, and Aaron with thee.",
+  "ref": "Exodus 19:24"
+ },
+ {
+  "id": "exodus-19-h-14",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the people, who else must not break through to the LORD?",
+  "choices": [
+   "Joshua",
+   "Moses",
+   "The priests",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "Let not the priests and the people break through to come up unto the LORD.",
+  "ref": "Exodus 19:24"
+ },
+ {
+  "id": "exodus-19-h-15",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say about the way He brought Israel to Himself?",
+  "choices": [
+   "He led them by a cloud",
+   "He sent them by sea",
+   "He carried them on chariots",
+   "He bare them on eagles' wings"
+  ],
+  "answer": 3,
+  "explanation": "I bare you on eagles' wings, and brought you unto myself.",
+  "ref": "Exodus 19:4"
+ },
+ {
   "id": "old-exodus-20-1",
   "chapter": 20,
   "level": "beginner",
