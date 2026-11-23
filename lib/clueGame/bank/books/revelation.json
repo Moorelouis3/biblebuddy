@@ -1,0 +1,1762 @@
+[
+ {
+  "id": "old-revelation-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was John when he received the visions?",
+  "choices": [
+   "Crete",
+   "Cyprus",
+   "Malta",
+   "Patmos"
+  ],
+  "answer": 3,
+  "explanation": "John says he was on the island called Patmos.",
+  "ref": "Revelation 1:9"
+ },
+ {
+  "id": "old-revelation-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many churches is John told to write to?",
+  "choices": [
+   "Five",
+   "Seven",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "The messages are addressed to seven churches in Asia.",
+  "ref": "Revelation 1:11"
+ },
+ {
+  "id": "old-revelation-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John see that represents the seven churches?",
+  "choices": [
+   "Seven thrones",
+   "Seven trumpets",
+   "Seven crowns",
+   "Seven golden candlesticks"
+  ],
+  "answer": 3,
+  "explanation": "The seven candlesticks are the seven churches.",
+  "ref": "Revelation 1:12"
+ },
+ {
+  "id": "old-revelation-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus hold in His right hand?",
+  "choices": [
+   "Seven stars",
+   "Seven scrolls",
+   "Seven keys",
+   "Seven bowls"
+  ],
+  "answer": 0,
+  "explanation": "The seven stars are the angels of the seven churches.",
+  "ref": "Revelation 1:16"
+ },
+ {
+  "id": "old-revelation-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title does Jesus use?",
+  "choices": [
+   "The Bread of Life",
+   "The First and the Last",
+   "The Lion of Judah",
+   "The Great Shepherd"
+  ],
+  "answer": 1,
+  "explanation": "Jesus says, 'I am the first and the last.'",
+  "ref": "Revelation 1:17"
+ },
+ {
+  "id": "old-revelation-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which church is rebuked for leaving its first love?",
+  "choices": [
+   "Smyrna",
+   "Ephesus",
+   "Pergamum",
+   "Thyatira"
+  ],
+  "answer": 1,
+  "explanation": "Ephesus is warned for abandoning its first love.",
+  "ref": "Revelation 2:4"
+ },
+ {
+  "id": "old-revelation-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which church is told it will have tribulation ten days?",
+  "choices": [
+   "Smyrna",
+   "Ephesus",
+   "Pergamum",
+   "Thyatira"
+  ],
+  "answer": 0,
+  "explanation": "Smyrna is exhorted to be faithful unto death.",
+  "ref": "Revelation 2:10"
+ },
+ {
+  "id": "old-revelation-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which church is said to dwell where Satan's seat is?",
+  "choices": [
+   "Ephesus",
+   "Smyrna",
+   "Pergamum",
+   "Thyatira"
+  ],
+  "answer": 2,
+  "explanation": "The church in Pergamos is said to dwell where Satan's seat is.",
+  "ref": "Revelation 2:13"
+ },
+ {
+  "id": "old-revelation-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which church is warned about tolerating Jezebel?",
+  "choices": [
+   "Smyrna",
+   "Pergamum",
+   "Ephesus",
+   "Thyatira"
+  ],
+  "answer": 3,
+  "explanation": "Thyatira is rebuked for tolerating false teaching linked to Jezebel.",
+  "ref": "Revelation 2:20"
+ },
+ {
+  "id": "old-revelation-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is promised to the overcomer at Ephesus?",
+  "choices": [
+   "Hidden manna",
+   "A white stone",
+   "To eat of the tree of life",
+   "A crown of life"
+  ],
+  "answer": 2,
+  "explanation": "Ephesus is promised access to the tree of life.",
+  "ref": "Revelation 2:7"
+ },
+ {
+  "id": "old-revelation-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which church has a name that it lives but is dead?",
+  "choices": [
+   "Philadelphia",
+   "Laodicea",
+   "Sardis",
+   "Pergamum"
+  ],
+  "answer": 2,
+  "explanation": "Sardis is warned about spiritual deadness.",
+  "ref": "Revelation 3:1"
+ },
+ {
+  "id": "old-revelation-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus set before Philadelphia?",
+  "choices": [
+   "A closed gate",
+   "A golden crown",
+   "A flaming sword",
+   "An open door"
+  ],
+  "answer": 3,
+  "explanation": "Philadelphia is told Jesus set before it an open door.",
+  "ref": "Revelation 3:8"
+ },
+ {
+  "id": "old-revelation-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which church is described as lukewarm?",
+  "choices": [
+   "Ephesus",
+   "Laodicea",
+   "Sardis",
+   "Smyrna"
+  ],
+  "answer": 1,
+  "explanation": "Laodicea is rebuked for being neither cold nor hot.",
+  "ref": "Revelation 3:16"
+ },
+ {
+  "id": "old-revelation-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus say He is standing at?",
+  "choices": [
+   "The altar",
+   "The door",
+   "The gate",
+   "The throne"
+  ],
+  "answer": 1,
+  "explanation": "Jesus says He stands at the door and knocks.",
+  "ref": "Revelation 3:20"
+ },
+ {
+  "id": "old-revelation-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is promised to the overcomer in the message to the Laodiceans?",
+  "choices": [
+   "To sit with Christ on His throne",
+   "To receive hidden manna",
+   "To avoid the second death",
+   "To rule the nations immediately"
+  ],
+  "answer": 0,
+  "explanation": "The overcomer is promised a seat with Christ on His throne.",
+  "ref": "Revelation 3:21"
+ },
+ {
+  "id": "old-revelation-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John see set in heaven?",
+  "choices": [
+   "A temple",
+   "A city",
+   "A throne",
+   "An altar"
+  ],
+  "answer": 2,
+  "explanation": "John sees a throne set in heaven.",
+  "ref": "Revelation 4:2"
+ },
+ {
+  "id": "old-revelation-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many elders are around the throne?",
+  "choices": [
+   "Twelve",
+   "Seven",
+   "Seventy",
+   "Twenty-four"
+  ],
+  "answer": 3,
+  "explanation": "There are twenty-four elders around the throne.",
+  "ref": "Revelation 4:4"
+ },
+ {
+  "id": "old-revelation-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What surrounds the throne?",
+  "choices": [
+   "A sea of fire",
+   "A wall of jasper",
+   "A rainbow",
+   "A cloud of smoke"
+  ],
+  "answer": 2,
+  "explanation": "A rainbow is round about the throne.",
+  "ref": "Revelation 4:3"
+ },
+ {
+  "id": "old-revelation-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many living creatures are described?",
+  "choices": [
+   "Two",
+   "Four",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "John sees four living creatures.",
+  "ref": "Revelation 4:6"
+ },
+ {
+  "id": "old-revelation-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the elders cast before the throne?",
+  "choices": [
+   "Their swords",
+   "Their garments",
+   "Their trumpets",
+   "Their crowns"
+  ],
+  "answer": 3,
+  "explanation": "They cast their crowns before the throne in worship.",
+  "ref": "Revelation 4:10"
+ },
+ {
+  "id": "old-revelation-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John see in the right hand of the One who sat on the throne?",
+  "choices": [
+   "A sword",
+   "A golden bowl",
+   "A crown",
+   "A book sealed with seven seals"
+  ],
+  "answer": 3,
+  "explanation": "John sees a book written within and on the backside, sealed with seven seals.",
+  "ref": "Revelation 5:1"
+ },
+ {
+  "id": "old-revelation-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is worthy to open the book?",
+  "choices": [
+   "Michael",
+   "An elder",
+   "John",
+   "The Lion of the tribe of Judah (the Lamb)"
+  ],
+  "answer": 3,
+  "explanation": "The Lion of the tribe of Juda, seen as a Lamb, prevailed to open the book and its seven seals.",
+  "ref": "Revelation 5:5–6"
+ },
+ {
+  "id": "old-revelation-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did John weep much?",
+  "choices": [
+   "Because the throne was empty",
+   "Because the elders fell silent",
+   "Because no man was found worthy to open the book",
+   "Because the Lamb had been slain"
+  ],
+  "answer": 2,
+  "explanation": "John wept much because no man was found worthy to open and to read the book.",
+  "ref": "Revelation 5:4"
+ },
+ {
+  "id": "old-revelation-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many horns does the Lamb have?",
+  "choices": [
+   "Two",
+   "Seven",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "The Lamb is described as having seven horns.",
+  "ref": "Revelation 5:6"
+ },
+ {
+  "id": "old-revelation-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the living creatures and elders hold?",
+  "choices": [
+   "Swords and shields",
+   "Harps and golden bowls of incense",
+   "Trumpets and scrolls",
+   "Lamps and staffs"
+  ],
+  "answer": 1,
+  "explanation": "They hold harps and golden bowls full of incense.",
+  "ref": "Revelation 5:8"
+ },
+ {
+  "id": "old-revelation-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What appears when the first seal is opened?",
+  "choices": [
+   "A red dragon",
+   "A white horse",
+   "A golden altar",
+   "A trumpet"
+  ],
+  "answer": 1,
+  "explanation": "The first rider is on a white horse.",
+  "ref": "Revelation 6:2"
+ },
+ {
+  "id": "old-revelation-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What color is the horse whose rider was given power to take peace from the earth?",
+  "choices": [
+   "White",
+   "Red",
+   "Black",
+   "Pale"
+  ],
+  "answer": 1,
+  "explanation": "The red horse is associated with war and violence.",
+  "ref": "Revelation 6:4"
+ },
+ {
+  "id": "old-revelation-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the rider on the black horse hold?",
+  "choices": [
+   "A pair of balances",
+   "A sword",
+   "A trumpet",
+   "A crown"
+  ],
+  "answer": 0,
+  "explanation": "The black horse rider holds scales for measuring.",
+  "ref": "Revelation 6:5"
+ },
+ {
+  "id": "old-revelation-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the name of the rider on the pale horse?",
+  "choices": [
+   "Death",
+   "Conquest",
+   "Plague",
+   "Judgment"
+  ],
+  "answer": 0,
+  "explanation": "The rider on the pale horse is named Death, and Hell followed with him.",
+  "ref": "Revelation 6:8"
+ },
+ {
+  "id": "old-revelation-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where are the souls of the slain seen under the fifth seal?",
+  "choices": [
+   "Under the altar",
+   "Under the throne",
+   "At the sea",
+   "At the gate"
+  ],
+  "answer": 0,
+  "explanation": "John sees them under the altar.",
+  "ref": "Revelation 6:9"
+ },
+ {
+  "id": "old-revelation-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many are sealed in all, out of all the tribes of the children of Israel?",
+  "choices": [
+   "12,000",
+   "72,000",
+   "144,000",
+   "1,000,000"
+  ],
+  "answer": 2,
+  "explanation": "John hears the number of the sealed: 144,000.",
+  "ref": "Revelation 7:4"
+ },
+ {
+  "id": "old-revelation-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where is the seal placed on God's servants?",
+  "choices": [
+   "Their foreheads",
+   "Their hands",
+   "Their feet",
+   "Their hearts"
+  ],
+  "answer": 0,
+  "explanation": "They are sealed in their foreheads.",
+  "ref": "Revelation 7:3"
+ },
+ {
+  "id": "old-revelation-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the great multitude hold in their hands?",
+  "choices": [
+   "Swords",
+   "Trumpets",
+   "Scrolls",
+   "Palm branches"
+  ],
+  "answer": 3,
+  "explanation": "They hold palms and wear white robes.",
+  "ref": "Revelation 7:9"
+ },
+ {
+  "id": "old-revelation-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what did the great multitude make their robes white?",
+  "choices": [
+   "The blood of the Lamb",
+   "The water of life",
+   "The river Jordan",
+   "Holy oil"
+  ],
+  "answer": 0,
+  "explanation": "Their robes are made white in the Lamb's blood.",
+  "ref": "Revelation 7:14"
+ },
+ {
+  "id": "old-revelation-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will God wipe away from their eyes?",
+  "choices": [
+   "Dust",
+   "Sweat",
+   "Tears",
+   "Ashes"
+  ],
+  "answer": 2,
+  "explanation": "God will wipe away all tears.",
+  "ref": "Revelation 7:17"
+ },
+ {
+  "id": "old-revelation-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens in heaven when the seventh seal is opened?",
+  "choices": [
+   "A new song begins",
+   "A great earthquake",
+   "The sea turns to blood",
+   "Silence about half an hour"
+  ],
+  "answer": 3,
+  "explanation": "There is silence in heaven about the space of half an hour.",
+  "ref": "Revelation 8:1"
+ },
+ {
+  "id": "old-revelation-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many angels are given trumpets?",
+  "choices": [
+   "Four",
+   "Seven",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Seven angels are given seven trumpets.",
+  "ref": "Revelation 8:2"
+ },
+ {
+  "id": "old-revelation-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is mixed with blood and hurled to the earth at the first trumpet?",
+  "choices": [
+   "Sand",
+   "Oil and smoke",
+   "Water and ash",
+   "Hail and fire"
+  ],
+  "answer": 3,
+  "explanation": "Hail and fire mingled with blood are cast upon the earth.",
+  "ref": "Revelation 8:7"
+ },
+ {
+  "id": "old-revelation-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What falls from heaven when the third angel sounds?",
+  "choices": [
+   "A great star",
+   "A mountain",
+   "A golden crown",
+   "An eagle"
+  ],
+  "answer": 0,
+  "explanation": "A great star falls, burning like a lamp.",
+  "ref": "Revelation 8:10"
+ },
+ {
+  "id": "old-revelation-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the name of the great star that falls when the third angel sounds?",
+  "choices": [
+   "Abaddon",
+   "Apollyon",
+   "Gog",
+   "Wormwood"
+  ],
+  "answer": 3,
+  "explanation": "The star is called Wormwood.",
+  "ref": "Revelation 8:11"
+ },
+ {
+  "id": "old-revelation-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is opened when the fifth trumpet sounds?",
+  "choices": [
+   "The bottomless pit",
+   "The temple",
+   "The sea",
+   "The scroll"
+  ],
+  "answer": 0,
+  "explanation": "The key opens the bottomless pit.",
+  "ref": "Revelation 9:2"
+ },
+ {
+  "id": "old-revelation-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What comes out of the pit to torment people?",
+  "choices": [
+   "Lions",
+   "Serpents",
+   "Locusts",
+   "Bears"
+  ],
+  "answer": 2,
+  "explanation": "Locust-like beings torment those without God's seal.",
+  "ref": "Revelation 9:3–5"
+ },
+ {
+  "id": "old-revelation-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long is the torment described?",
+  "choices": [
+   "Seven days",
+   "Ten days",
+   "Five months",
+   "One year"
+  ],
+  "answer": 2,
+  "explanation": "The torment lasts five months.",
+  "ref": "Revelation 9:5"
+ },
+ {
+  "id": "old-revelation-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the name of the king over the locusts?",
+  "choices": [
+   "Wormwood",
+   "Beelzebub",
+   "Leviathan",
+   "Abaddon/Apollyon"
+  ],
+  "answer": 3,
+  "explanation": "He is called Abaddon in Hebrew and Apollyon in Greek.",
+  "ref": "Revelation 9:11"
+ },
+ {
+  "id": "old-revelation-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How large is the army of horsemen at the sixth trumpet?",
+  "choices": [
+   "Two hundred million",
+   "Two million",
+   "Twelve thousand",
+   "One hundred forty-four thousand"
+  ],
+  "answer": 0,
+  "explanation": "John hears the number: two hundred thousand thousand, which is 200,000,000.",
+  "ref": "Revelation 9:16"
+ },
+ {
+  "id": "old-revelation-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the mighty angel hold?",
+  "choices": [
+   "A little book open",
+   "A sword",
+   "A trumpet",
+   "A seal"
+  ],
+  "answer": 0,
+  "explanation": "The angel holds an open little book.",
+  "ref": "Revelation 10:2"
+ },
+ {
+  "id": "old-revelation-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does the angel place his feet?",
+  "choices": [
+   "On the sea and on the earth",
+   "On the altar",
+   "On the mountains",
+   "On the temple steps"
+  ],
+  "answer": 0,
+  "explanation": "One foot on the sea and the other on the land.",
+  "ref": "Revelation 10:2"
+ },
+ {
+  "id": "old-revelation-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many thunders utter their voices?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Seven thunders speak.",
+  "ref": "Revelation 10:3"
+ },
+ {
+  "id": "old-revelation-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is John told to do with what the seven thunders said?",
+  "choices": [
+   "Publish it",
+   "Teach it publicly",
+   "Seal it up",
+   "Write it on stone"
+  ],
+  "answer": 2,
+  "explanation": "He is told to seal up those sayings.",
+  "ref": "Revelation 10:4"
+ },
+ {
+  "id": "old-revelation-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the little book taste to John?",
+  "choices": [
+   "Bitter then sweet",
+   "Sweet then bitter",
+   "Only bitter",
+   "Only sweet"
+  ],
+  "answer": 1,
+  "explanation": "It is sweet in his mouth but bitter in his belly.",
+  "ref": "Revelation 10:9–10"
+ },
+ {
+  "id": "old-revelation-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long do the two witnesses prophesy?",
+  "choices": [
+   "3 days",
+   "1,260 days",
+   "40 days",
+   "70 weeks"
+  ],
+  "answer": 1,
+  "explanation": "They prophesy 1,260 days.",
+  "ref": "Revelation 11:3"
+ },
+ {
+  "id": "old-revelation-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the witnesses after their testimony?",
+  "choices": [
+   "They flee",
+   "They are killed by the beast",
+   "They are crowned",
+   "They are hidden"
+  ],
+  "answer": 1,
+  "explanation": "The beast makes war and kills them.",
+  "ref": "Revelation 11:7"
+ },
+ {
+  "id": "old-revelation-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long do the dead bodies of the two witnesses lie in the street?",
+  "choices": [
+   "One day",
+   "Three and a half days",
+   "Seven days",
+   "Ten days"
+  ],
+  "answer": 1,
+  "explanation": "Their bodies remain unburied for 3.5 days.",
+  "ref": "Revelation 11:9"
+ },
+ {
+  "id": "old-revelation-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the two witnesses after three days and a half?",
+  "choices": [
+   "They vanish",
+   "The Spirit of life enters them and they stand",
+   "They are buried",
+   "They become angels"
+  ],
+  "answer": 1,
+  "explanation": "They are raised and stand on their feet.",
+  "ref": "Revelation 11:11"
+ },
+ {
+  "id": "old-revelation-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is proclaimed at the seventh trumpet?",
+  "choices": [
+   "The kingdoms of this world are become the kingdoms of our Lord",
+   "The end has come",
+   "The sea is no more",
+   "Babylon has fallen"
+  ],
+  "answer": 0,
+  "explanation": "It announces God's kingdom and reign.",
+  "ref": "Revelation 11:15"
+ },
+ {
+  "id": "old-revelation-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign appears in heaven?",
+  "choices": [
+   "A city",
+   "A white horse",
+   "A golden altar",
+   "A woman clothed with the sun"
+  ],
+  "answer": 3,
+  "explanation": "John sees a woman clothed with the sun.",
+  "ref": "Revelation 12:1"
+ },
+ {
+  "id": "old-revelation-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many stars are in the woman's crown?",
+  "choices": [
+   "Seven",
+   "Ten",
+   "Twenty-four",
+   "Twelve"
+  ],
+  "answer": 3,
+  "explanation": "She has a crown of twelve stars.",
+  "ref": "Revelation 12:1"
+ },
+ {
+  "id": "old-revelation-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What creature appears?",
+  "choices": [
+   "A leopard",
+   "A lion",
+   "A great red dragon",
+   "A serpent of brass"
+  ],
+  "answer": 2,
+  "explanation": "A great red dragon appears.",
+  "ref": "Revelation 12:3"
+ },
+ {
+  "id": "old-revelation-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who fights the dragon in heaven?",
+  "choices": [
+   "Gabriel",
+   "Raphael",
+   "Michael",
+   "An unnamed elder"
+  ],
+  "answer": 2,
+  "explanation": "Michael and his angels fight the dragon.",
+  "ref": "Revelation 12:7"
+ },
+ {
+  "id": "old-revelation-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How do believers overcome the accuser?",
+  "choices": [
+   "By strength",
+   "By the blood of the Lamb and the word of their testimony",
+   "By riches",
+   "By hiding"
+  ],
+  "answer": 1,
+  "explanation": "They overcome through Christ and faithful testimony.",
+  "ref": "Revelation 12:11"
+ },
+ {
+  "id": "old-revelation-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where does the first beast rise?",
+  "choices": [
+   "The desert",
+   "The sea",
+   "The abyss",
+   "The sky"
+  ],
+  "answer": 1,
+  "explanation": "John sees a beast rising out of the sea.",
+  "ref": "Revelation 13:1"
+ },
+ {
+  "id": "old-revelation-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal is the beast likened to?",
+  "choices": [
+   "A lamb",
+   "A dove",
+   "A bull",
+   "A leopard"
+  ],
+  "answer": 3,
+  "explanation": "It is like a leopard (with other features described).",
+  "ref": "Revelation 13:2"
+ },
+ {
+  "id": "old-revelation-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long is authority given to the beast?",
+  "choices": [
+   "40 days",
+   "42 months",
+   "7 years",
+   "10 days"
+  ],
+  "answer": 1,
+  "explanation": "Authority continues forty-two months.",
+  "ref": "Revelation 13:5"
+ },
+ {
+  "id": "old-revelation-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the second beast cause people to receive?",
+  "choices": [
+   "A crown",
+   "A mark",
+   "A scroll",
+   "A trumpet"
+  ],
+  "answer": 1,
+  "explanation": "It causes all to receive a mark.",
+  "ref": "Revelation 13:16"
+ },
+ {
+  "id": "old-revelation-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What number is associated with the beast?",
+  "choices": [
+   "144,000",
+   "666",
+   "777",
+   "1,000"
+  ],
+  "answer": 1,
+  "explanation": "The number of the beast is 666.",
+  "ref": "Revelation 13:18"
+ },
+ {
+  "id": "old-revelation-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does John see the Lamb standing?",
+  "choices": [
+   "The sea",
+   "Mount Zion",
+   "The wilderness",
+   "Jerusalem's gate"
+  ],
+  "answer": 1,
+  "explanation": "The Lamb stands on Mount Zion.",
+  "ref": "Revelation 14:1"
+ },
+ {
+  "id": "old-revelation-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is on the foreheads of the 144,000?",
+  "choices": [
+   "A crown",
+   "A mark",
+   "A star",
+   "His Father's name"
+  ],
+  "answer": 3,
+  "explanation": "They have His Father's name written on their foreheads.",
+  "ref": "Revelation 14:1"
+ },
+ {
+  "id": "old-revelation-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What message does the angel proclaim?",
+  "choices": [
+   "A new law",
+   "A call to war",
+   "A secret teaching",
+   "The everlasting gospel"
+  ],
+  "answer": 3,
+  "explanation": "The angel has the everlasting gospel to preach.",
+  "ref": "Revelation 14:6"
+ },
+ {
+  "id": "old-revelation-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What announcement is made?",
+  "choices": [
+   "The sea is no more",
+   "The temple is rebuilt",
+   "Babylon is fallen",
+   "The dragon is bound"
+  ],
+  "answer": 2,
+  "explanation": "Babylon's fall is proclaimed.",
+  "ref": "Revelation 14:8"
+ },
+ {
+  "id": "old-revelation-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Revelation 14:13 say about those who die in the Lord?",
+  "choices": [
+   "They are forgotten",
+   "They are judged first",
+   "They are blessed",
+   "They are cast out"
+  ],
+  "answer": 2,
+  "explanation": "Blessed are the dead which die in the Lord from henceforth.",
+  "ref": "Revelation 14:13"
+ },
+ {
+  "id": "old-revelation-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the seven angels carry?",
+  "choices": [
+   "Seven last plagues",
+   "Seven seals",
+   "Seven trumpets",
+   "Seven scrolls"
+  ],
+  "answer": 0,
+  "explanation": "They have the seven last plagues that complete God's wrath.",
+  "ref": "Revelation 15:1"
+ },
+ {
+  "id": "old-revelation-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do those who had victory over the beast have?",
+  "choices": [
+   "Harps of God",
+   "Swords",
+   "Crowns",
+   "Trumpets"
+  ],
+  "answer": 0,
+  "explanation": "They stand with harps of God.",
+  "ref": "Revelation 15:2"
+ },
+ {
+  "id": "old-revelation-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What song do those who had victory over the beast sing?",
+  "choices": [
+   "The song of Moses and of the Lamb",
+   "The song of David",
+   "The song of Zion",
+   "The song of the prophets"
+  ],
+  "answer": 0,
+  "explanation": "They sing the song of Moses and the Lamb.",
+  "ref": "Revelation 15:3"
+ },
+ {
+  "id": "old-revelation-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What fills the temple so no one can enter?",
+  "choices": [
+   "Water",
+   "Smoke",
+   "Fire",
+   "Light"
+  ],
+  "answer": 1,
+  "explanation": "The temple is filled with smoke from God's glory and power.",
+  "ref": "Revelation 15:8"
+ },
+ {
+  "id": "old-revelation-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many bowls are given to the angels?",
+  "choices": [
+   "Four",
+   "Seven",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Seven golden bowls are given.",
+  "ref": "Revelation 15:7"
+ },
+ {
+  "id": "old-revelation-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens when the first bowl is poured out?",
+  "choices": [
+   "The sea becomes blood",
+   "A grievous sore falls on beast worshipers",
+   "Darkness covers the sun",
+   "A great earthquake"
+  ],
+  "answer": 1,
+  "explanation": "Painful sores come upon those who had the mark of the beast.",
+  "ref": "Revelation 16:2"
+ },
+ {
+  "id": "old-revelation-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the sea at the second bowl?",
+  "choices": [
+   "It dries up",
+   "It becomes as blood of a dead man",
+   "It turns to fire",
+   "It freezes"
+  ],
+  "answer": 1,
+  "explanation": "The sea becomes like blood and every living soul dies in it.",
+  "ref": "Revelation 16:3"
+ },
+ {
+  "id": "old-revelation-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name is given to the gathering place?",
+  "choices": [
+   "Armageddon",
+   "Babylon",
+   "Zion",
+   "Nineveh"
+  ],
+  "answer": 0,
+  "explanation": "They are gathered to Armageddon.",
+  "ref": "Revelation 16:16"
+ },
+ {
+  "id": "old-revelation-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens when the seventh bowl is poured out?",
+  "choices": [
+   "A great earthquake occurs",
+   "A flood covers the earth",
+   "The stars fall",
+   "The sea disappears"
+  ],
+  "answer": 0,
+  "explanation": "A mighty earthquake shakes the earth.",
+  "ref": "Revelation 16:18"
+ },
+ {
+  "id": "old-revelation-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What falls out of heaven upon men, with stones about the weight of a talent?",
+  "choices": [
+   "Snow",
+   "Fire stones",
+   "Great hail",
+   "Dust"
+  ],
+  "answer": 2,
+  "explanation": "Great hail falls and men blaspheme God.",
+  "ref": "Revelation 16:21"
+ },
+ {
+  "id": "old-revelation-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the woman sit upon?",
+  "choices": [
+   "Many waters",
+   "Mount Zion",
+   "A golden throne",
+   "A sea of glass"
+  ],
+  "answer": 0,
+  "explanation": "She sits upon many waters.",
+  "ref": "Revelation 17:1"
+ },
+ {
+  "id": "old-revelation-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is written on the woman's forehead?",
+  "choices": [
+   "A new name",
+   "Mystery, Babylon the Great",
+   "Holy to the Lord",
+   "King of kings"
+  ],
+  "answer": 1,
+  "explanation": "Her name identifies Babylon the Great.",
+  "ref": "Revelation 17:5"
+ },
+ {
+  "id": "old-revelation-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What color is the beast the woman rides?",
+  "choices": [
+   "White",
+   "Black",
+   "Green",
+   "Scarlet"
+  ],
+  "answer": 3,
+  "explanation": "She rides a scarlet-colored beast.",
+  "ref": "Revelation 17:3"
+ },
+ {
+  "id": "old-revelation-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what is the woman described as being drunken?",
+  "choices": [
+   "Wine only",
+   "The blood of the saints",
+   "Water of the sea",
+   "The wrath of kings"
+  ],
+  "answer": 1,
+  "explanation": "She is drunk with the blood of the saints and martyrs of Jesus.",
+  "ref": "Revelation 17:6"
+ },
+ {
+  "id": "old-revelation-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the seven heads represent?",
+  "choices": [
+   "Seven mountains",
+   "Seven trumpets",
+   "Seven churches",
+   "Seven seals"
+  ],
+  "answer": 0,
+  "explanation": "They are described as seven mountains.",
+  "ref": "Revelation 17:9"
+ },
+ {
+  "id": "old-revelation-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What proclamation is made about Babylon?",
+  "choices": [
+   "Babylon is rebuilt",
+   "Babylon is crowned",
+   "Babylon is fallen",
+   "Babylon is forgiven"
+  ],
+  "answer": 2,
+  "explanation": "An angel cries that Babylon is fallen.",
+  "ref": "Revelation 18:2"
+ },
+ {
+  "id": "old-revelation-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does a voice from heaven tell God's people?",
+  "choices": [
+   "Stay and fight",
+   "Come out of her",
+   "Make peace with her",
+   "Trust in her"
+  ],
+  "answer": 1,
+  "explanation": "God's people are told to come out to avoid sharing in her sins and plagues.",
+  "ref": "Revelation 18:4"
+ },
+ {
+  "id": "old-revelation-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How quickly is Babylon said to be destroyed?",
+  "choices": [
+   "In one year",
+   "In seven days",
+   "In forty-two months",
+   "In one hour"
+  ],
+  "answer": 3,
+  "explanation": "Her judgment is said to come in one hour.",
+  "ref": "Revelation 18:10"
+ },
+ {
+  "id": "old-revelation-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the merchants do because no one buys their merchandise?",
+  "choices": [
+   "Rejoice",
+   "Fight",
+   "Mourn",
+   "Travel"
+  ],
+  "answer": 2,
+  "explanation": "Merchants mourn because trade collapses.",
+  "ref": "Revelation 18:11"
+ },
+ {
+  "id": "old-revelation-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is thrown into the sea as a sign of Babylon's downfall?",
+  "choices": [
+   "A crown",
+   "A scroll",
+   "A trumpet",
+   "A great millstone"
+  ],
+  "answer": 3,
+  "explanation": "A mighty angel casts a millstone into the sea.",
+  "ref": "Revelation 18:21"
+ },
+ {
+  "id": "old-revelation-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What event is announced?",
+  "choices": [
+   "The opening of the seals",
+   "The rebuilding of Babylon",
+   "The marriage of the Lamb",
+   "The rise of the beast"
+  ],
+  "answer": 2,
+  "explanation": "The marriage of the Lamb has come.",
+  "ref": "Revelation 19:7"
+ },
+ {
+  "id": "old-revelation-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the bride granted to wear?",
+  "choices": [
+   "Fine linen, clean and white",
+   "Scarlet robe",
+   "Purple garments",
+   "Golden armor"
+  ],
+  "answer": 0,
+  "explanation": "The fine linen represents the righteous acts of saints.",
+  "ref": "Revelation 19:8"
+ },
+ {
+  "id": "old-revelation-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the angel say about those called to the marriage supper of the Lamb?",
+  "choices": [
+   "They are blessed",
+   "They are mighty",
+   "They are few",
+   "They are hidden"
+  ],
+  "answer": 0,
+  "explanation": "Blessed are those called to the marriage supper of the Lamb.",
+  "ref": "Revelation 19:9"
+ },
+ {
+  "id": "old-revelation-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John try to do?",
+  "choices": [
+   "Argue with the angel",
+   "Run away",
+   "Worship the angel",
+   "Write on stone"
+  ],
+  "answer": 2,
+  "explanation": "He falls to worship, but the angel forbids it.",
+  "ref": "Revelation 19:10"
+ },
+ {
+  "id": "old-revelation-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title is written on Christ?",
+  "choices": [
+   "King of kings and Lord of lords",
+   "Prince of Peace",
+   "Only Shepherd",
+   "Son of David"
+  ],
+  "answer": 0,
+  "explanation": "He is called King of kings and Lord of lords.",
+  "ref": "Revelation 19:16"
+ },
+ {
+  "id": "old-revelation-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For how long is Satan bound?",
+  "choices": [
+   "40 days",
+   "7 years",
+   "1,000 years",
+   "42 months"
+  ],
+  "answer": 2,
+  "explanation": "Satan is bound for a thousand years.",
+  "ref": "Revelation 20:2"
+ },
+ {
+  "id": "old-revelation-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where is Satan cast?",
+  "choices": [
+   "The sea",
+   "The bottomless pit",
+   "Babylon",
+   "The temple"
+  ],
+  "answer": 1,
+  "explanation": "He is cast into the pit and shut up.",
+  "ref": "Revelation 20:3"
+ },
+ {
+  "id": "old-revelation-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What throne is seen for final judgment?",
+  "choices": [
+   "David's throne",
+   "Solomon's throne",
+   "The beast's throne",
+   "A great white throne"
+  ],
+  "answer": 3,
+  "explanation": "John sees a great white throne.",
+  "ref": "Revelation 20:11"
+ },
+ {
+  "id": "old-revelation-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the lake of fire called?",
+  "choices": [
+   "The second death",
+   "The first death",
+   "The last plague",
+   "The eternal pit"
+  ],
+  "answer": 0,
+  "explanation": "The lake of fire is the second death.",
+  "ref": "Revelation 20:14"
+ },
+ {
+  "id": "old-revelation-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is thrown into the lake of fire?",
+  "choices": [
+   "The angel of the Lord",
+   "The devil",
+   "John",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "The devil is cast into the lake of fire.",
+  "ref": "Revelation 20:10"
+ },
+ {
+  "id": "old-revelation-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John see?",
+  "choices": [
+   "A new heaven and a new earth",
+   "A rebuilt Babylon",
+   "A new temple only",
+   "A new sea"
+  ],
+  "answer": 0,
+  "explanation": "John sees a new heaven and a new earth.",
+  "ref": "Revelation 21:1"
+ },
+ {
+  "id": "old-revelation-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "What city does John see coming down from God?",
+  "choices": [
+   "New Jerusalem",
+   "Jericho",
+   "Nineveh",
+   "Bethlehem"
+  ],
+  "answer": 0,
+  "explanation": "He sees the holy city, New Jerusalem.",
+  "ref": "Revelation 21:2"
+ },
+ {
+  "id": "old-revelation-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will God wipe away?",
+  "choices": [
+   "Tears",
+   "Dust",
+   "Sweat",
+   "Ashes"
+  ],
+  "answer": 0,
+  "explanation": "God will wipe away all tears; there will be no more death.",
+  "ref": "Revelation 21:4"
+ },
+ {
+  "id": "old-revelation-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many gates does the city have?",
+  "choices": [
+   "Seven",
+   "Three",
+   "Twelve",
+   "Ten"
+  ],
+  "answer": 2,
+  "explanation": "The city is described as having twelve gates.",
+  "ref": "Revelation 21:12"
+ },
+ {
+  "id": "old-revelation-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the city have no need of to shine in it?",
+  "choices": [
+   "Stars",
+   "Candles",
+   "Lamps",
+   "The sun and moon"
+  ],
+  "answer": 3,
+  "explanation": "The city needs no sun or moon because God's glory gives it light.",
+  "ref": "Revelation 21:23"
+ },
+ {
+  "id": "old-revelation-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John see proceeding out of the throne of God and of the Lamb?",
+  "choices": [
+   "A sea of glass",
+   "A stream of fire",
+   "A pure river of water of life",
+   "A cloud of incense"
+  ],
+  "answer": 2,
+  "explanation": "John sees the river of the water of life.",
+  "ref": "Revelation 22:1"
+ },
+ {
+  "id": "old-revelation-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What tree is described as bearing twelve fruits?",
+  "choices": [
+   "The tree of knowledge",
+   "The cedar of Lebanon",
+   "The tree of life",
+   "The olive tree"
+  ],
+  "answer": 2,
+  "explanation": "The tree of life bears twelve manner of fruits.",
+  "ref": "Revelation 22:2"
+ },
+ {
+  "id": "old-revelation-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What final invitation is given?",
+  "choices": [
+   "Come to Babylon",
+   "Come to the temple",
+   "Come to war",
+   "Come and take the water of life freely"
+  ],
+  "answer": 3,
+  "explanation": "Whoever will may take the water of life freely.",
+  "ref": "Revelation 22:17"
+ },
+ {
+  "id": "old-revelation-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning is given about the words of the prophecy of this book?",
+  "choices": [
+   "Do not add to them or take away from them",
+   "They are only symbolic",
+   "They must be hidden",
+   "They are for angels only"
+  ],
+  "answer": 0,
+  "explanation": "Adding or removing brings judgment and loss.",
+  "ref": "Revelation 22:18–19"
+ },
+ {
+  "id": "old-revelation-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus say more than once near the end of the book?",
+  "choices": [
+   "I have overcome",
+   "I come quickly",
+   "I am the shepherd",
+   "I will rebuild"
+  ],
+  "answer": 1,
+  "explanation": "Jesus repeatedly promises, 'I come quickly.'",
+  "ref": "Revelation 22:7"
+ }
+]

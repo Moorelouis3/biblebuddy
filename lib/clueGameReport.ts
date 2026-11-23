@@ -121,7 +121,7 @@ export function summariseClueGame(input: ClueGameInput, range: ClueRange): ClueG
 
   // ---- reach ----
   const opened = ev("clue_game_opened");
-  const openedPeople = figure("Opened the game", "People who opened Bible Clue.", opened, at, range, user);
+  const openedPeople = figure("Opened the game", "People who opened Bible Trivia.", opened, at, range, user);
 
   // ---- solo ----
   const started = ev("clue_game_started");
@@ -241,7 +241,7 @@ export function summariseClueGame(input: ClueGameInput, range: ClueRange): ClueG
 
   const ofEvent = (name: string) => input.events.filter((r) => r.event_name === name);
   const headline: MatchHeadline[] = [
-    headlineRow("Different players", "People who opened or played Bible Clue.", input.events, (x) => people(x as ClueEventRow[])),
+    headlineRow("Different players", "People who opened or played Bible Trivia.", input.events, (x) => people(x as ClueEventRow[])),
     headlineRow("Solo games played", "Solo games started.", ofEvent("clue_game_started"), (x) => x.length),
     headlineRow("Games finished", "Played to the end (solo and challenges).", ofEvent("clue_game_finished"), (x) => x.length),
     headlineRow("Rooms played", "Multiplayer rooms where the game was started.", input.rooms.filter((r) => (r.state?.dealt ?? 0) > 0), (x) => x.length),

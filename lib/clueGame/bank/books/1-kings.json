@@ -1,0 +1,1762 @@
+[
+ {
+  "id": "old-1-kings-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who cared for King David in his old age by lying in his bosom to keep him warm?",
+  "choices": [
+   "Bathsheba",
+   "Abishag the Shunammite",
+   "Abigail",
+   "Michal"
+  ],
+  "answer": 1,
+  "explanation": "Abishag the Shunammite ministered to David in his old age.",
+  "ref": "1 Kings 1:3–4"
+ },
+ {
+  "id": "old-1-kings-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which son of David exalted himself saying, 'I will be king'?",
+  "choices": [
+   "Solomon",
+   "Adonijah",
+   "Absalom",
+   "Amnon"
+  ],
+  "answer": 1,
+  "explanation": "Adonijah attempted to seize the throne.",
+  "ref": "1 Kings 1:5"
+ },
+ {
+  "id": "old-1-kings-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reminded David of his promise that Solomon would reign after him?",
+  "choices": [
+   "Joab and Abiathar",
+   "Abishag and Zadok",
+   "Jonathan and Benaiah",
+   "Nathan and Bathsheba"
+  ],
+  "answer": 3,
+  "explanation": "Nathan and Bathsheba acted together to secure Solomon's succession.",
+  "ref": "1 Kings 1:11–17"
+ },
+ {
+  "id": "old-1-kings-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what location was Solomon anointed king by Zadok the priest?",
+  "choices": [
+   "Hebron",
+   "Gihon",
+   "Bethel",
+   "Jerusalem gate"
+  ],
+  "answer": 1,
+  "explanation": "Solomon was anointed at Gihon.",
+  "ref": "1 Kings 1:38–39"
+ },
+ {
+  "id": "old-1-kings-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Adonijah respond when he learned Solomon had been made king?",
+  "choices": [
+   "He attacked",
+   "He fled to Egypt",
+   "He crowned himself anyway",
+   "He feared and caught hold on the horns of the altar"
+  ],
+  "answer": 3,
+  "explanation": "Adonijah fled to the altar in fear.",
+  "ref": "1 Kings 1:50"
+ },
+ {
+  "id": "old-1-kings-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David charge Solomon to do as his death drew near?",
+  "choices": [
+   "Become rich and famous",
+   "Keep silent",
+   "Be strong and show himself a man",
+   "Become a priest"
+  ],
+  "answer": 2,
+  "explanation": "David urged Solomon to be strong and faithful.",
+  "ref": "1 Kings 2:2"
+ },
+ {
+  "id": "old-1-kings-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say Solomon must keep to prosper?",
+  "choices": [
+   "The charge of the Lord and His commandments",
+   "Only the army",
+   "Trade with Tyre",
+   "The horses of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "David stressed covenant obedience.",
+  "ref": "1 Kings 2:3"
+ },
+ {
+  "id": "old-1-kings-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Adonijah executed?",
+  "choices": [
+   "He asked for Abishag as wife",
+   "He rebelled with Egypt",
+   "He stole the ark",
+   "He cursed Solomon"
+  ],
+  "answer": 0,
+  "explanation": "Asking for Abishag was treated as a renewed grasp at the throne.",
+  "ref": "1 Kings 2:13–25"
+ },
+ {
+  "id": "old-1-kings-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Solomon remove from the priesthood, fulfilling the word against Eli's house?",
+  "choices": [
+   "Zadok",
+   "Abiathar",
+   "Ahimelech",
+   "Nathan"
+  ],
+  "answer": 1,
+  "explanation": "Abiathar was thrust out from being priest.",
+  "ref": "1 Kings 2:26–27"
+ },
+ {
+  "id": "old-1-kings-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Shimei after he violated Solomon's command about leaving Jerusalem?",
+  "choices": [
+   "He was put to death",
+   "He was pardoned",
+   "He became a priest",
+   "He fled to Moab"
+  ],
+  "answer": 0,
+  "explanation": "Shimei's disobedience brought his execution.",
+  "ref": "1 Kings 2:36–46"
+ },
+ {
+  "id": "old-1-kings-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With which foreign king did Solomon make a marriage alliance early in his reign?",
+  "choices": [
+   "The king of Moab",
+   "The king of Tyre",
+   "The king of Edom",
+   "Pharaoh king of Egypt"
+  ],
+  "answer": 3,
+  "explanation": "Solomon made affinity with Pharaoh king of Egypt and married Pharaoh's daughter.",
+  "ref": "1 Kings 3:1"
+ },
+ {
+  "id": "old-1-kings-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "At what place did Solomon offer a great sacrifice of a thousand burnt offerings?",
+  "choices": [
+   "Gibeon",
+   "Jerusalem",
+   "Hebron",
+   "Bethel"
+  ],
+  "answer": 0,
+  "explanation": "Solomon worshiped at the great high place at Gibeon.",
+  "ref": "1 Kings 3:4"
+ },
+ {
+  "id": "old-1-kings-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon ask God for in his dream?",
+  "choices": [
+   "Long life",
+   "Victory over Egypt",
+   "An understanding heart to judge the people",
+   "Riches only"
+  ],
+  "answer": 2,
+  "explanation": "Solomon requested wisdom to discern judgment.",
+  "ref": "1 Kings 3:9"
+ },
+ {
+  "id": "old-1-kings-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famous case showed Solomon's wisdom soon after?",
+  "choices": [
+   "A land dispute",
+   "A question about the temple",
+   "Two women claiming one living child",
+   "A rebellion in Judah"
+  ],
+  "answer": 2,
+  "explanation": "Solomon's ruling between the two mothers revealed his God-given wisdom.",
+  "ref": "1 Kings 3:16–28"
+ },
+ {
+  "id": "old-1-kings-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God give Solomon in addition to wisdom because he had not asked selfishly?",
+  "choices": [
+   "Riches and honor",
+   "Only peace",
+   "A larger army",
+   "A new covenant"
+  ],
+  "answer": 0,
+  "explanation": "God added riches and honor to the wisdom Solomon requested.",
+  "ref": "1 Kings 3:13"
+ },
+ {
+  "id": "old-1-kings-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who served as priest alongside Zadok in Solomon's administration?",
+  "choices": [
+   "Abiathar",
+   "Azariah",
+   "Nathan",
+   "Benaiah"
+  ],
+  "answer": 0,
+  "explanation": "Zadok and Abiathar are listed among Solomon's officials.",
+  "ref": "1 Kings 4:4"
+ },
+ {
+  "id": "old-1-kings-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many officers provided victuals for Solomon's household, each serving one month?",
+  "choices": [
+   "7",
+   "12",
+   "24",
+   "40"
+  ],
+  "answer": 1,
+  "explanation": "Twelve officers each provided provisions one month per year.",
+  "ref": "1 Kings 4:7"
+ },
+ {
+  "id": "old-1-kings-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are Judah and Israel described under Solomon's reign?",
+  "choices": [
+   "Scattered and fearful",
+   "Exiled",
+   "Without cities",
+   "As many as the sand which is by the sea in multitude"
+  ],
+  "answer": 3,
+  "explanation": "The kingdom is described as flourishing and numerous.",
+  "ref": "1 Kings 4:20"
+ },
+ {
+  "id": "old-1-kings-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What natural-world subjects is Solomon said to have spoken about?",
+  "choices": [
+   "Trees, beasts, fowl, creeping things, and fishes",
+   "Only stars",
+   "Only rivers",
+   "Only mountains"
+  ],
+  "answer": 0,
+  "explanation": "The text highlights Solomon's broad wisdom about creation.",
+  "ref": "1 Kings 4:33"
+ },
+ {
+  "id": "old-1-kings-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where did people come to hear Solomon's wisdom?",
+  "choices": [
+   "Out of all people and kings of the earth",
+   "Only Judah",
+   "Only Egypt",
+   "Only Tyre"
+  ],
+  "answer": 0,
+  "explanation": "His reputation drew people from many nations.",
+  "ref": "1 Kings 4:34"
+ },
+ {
+  "id": "old-1-kings-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which king sent servants to Solomon because he had heard he was anointed king?",
+  "choices": [
+   "Pharaoh",
+   "Balak",
+   "Hadadezer",
+   "Hiram king of Tyre"
+  ],
+  "answer": 3,
+  "explanation": "Hiram of Tyre initiated contact with Solomon.",
+  "ref": "1 Kings 5:1"
+ },
+ {
+  "id": "old-1-kings-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why had David not built the house for the Lord according to Solomon?",
+  "choices": [
+   "He lacked money",
+   "Wars were on every side",
+   "He was too young",
+   "He forgot"
+  ],
+  "answer": 1,
+  "explanation": "David's wars prevented him from building the temple.",
+  "ref": "1 Kings 5:3"
+ },
+ {
+  "id": "old-1-kings-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What material from Lebanon did Solomon request from Hiram?",
+  "choices": [
+   "Gold",
+   "Silver",
+   "Cedars",
+   "Marble"
+  ],
+  "answer": 2,
+  "explanation": "Solomon requested cedar trees from Lebanon.",
+  "ref": "1 Kings 5:6"
+ },
+ {
+  "id": "old-1-kings-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men did Solomon raise as a levy from Israel for the work?",
+  "choices": [
+   "3,000",
+   "30,000",
+   "70,000",
+   "80,000"
+  ],
+  "answer": 1,
+  "explanation": "Solomon raised a levy of thirty thousand men.",
+  "ref": "1 Kings 5:13"
+ },
+ {
+  "id": "old-1-kings-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon give Hiram year by year as food for his household?",
+  "choices": [
+   "Gold and silver",
+   "Horses and chariots",
+   "Wheat and pure oil",
+   "Sheep and oxen"
+  ],
+  "answer": 2,
+  "explanation": "Solomon gave Hiram twenty thousand measures of wheat and twenty measures of pure oil year by year.",
+  "ref": "1 Kings 5:11"
+ },
+ {
+  "id": "old-1-kings-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what year of Solomon's reign did he begin to build the house of the Lord?",
+  "choices": [
+   "Fourth",
+   "Second",
+   "Seventh",
+   "Twentieth"
+  ],
+  "answer": 0,
+  "explanation": "The temple began in Solomon's fourth year.",
+  "ref": "1 Kings 6:1"
+ },
+ {
+  "id": "old-1-kings-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What material lined the inside of the temple walls?",
+  "choices": [
+   "Stone only",
+   "Iron",
+   "Cedar",
+   "Clay"
+  ],
+  "answer": 2,
+  "explanation": "Cedar lined the inner walls and ceiling.",
+  "ref": "1 Kings 6:15–18"
+ },
+ {
+  "id": "old-1-kings-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what did Solomon overlay the inside of the house?",
+  "choices": [
+   "Silver",
+   "Gold",
+   "Bronze",
+   "Ivory"
+  ],
+  "answer": 1,
+  "explanation": "The temple interior was richly overlaid with gold.",
+  "ref": "1 Kings 6:20–22"
+ },
+ {
+  "id": "old-1-kings-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did it take Solomon to build the temple?",
+  "choices": [
+   "3",
+   "7",
+   "13",
+   "20"
+  ],
+  "answer": 1,
+  "explanation": "The temple was finished in seven years.",
+  "ref": "1 Kings 6:38"
+ },
+ {
+  "id": "old-1-kings-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What promise did the Lord give Solomon during the building if he walked in His statutes?",
+  "choices": [
+   "No enemies ever",
+   "Unlimited riches",
+   "I will dwell among the children of Israel and not forsake my people",
+   "A larger kingdom"
+  ],
+  "answer": 2,
+  "explanation": "God promised His dwelling presence conditioned on obedience.",
+  "ref": "1 Kings 6:11–13"
+ },
+ {
+  "id": "old-1-kings-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did Solomon spend building his own house?",
+  "choices": [
+   "7",
+   "13",
+   "20",
+   "40"
+  ],
+  "answer": 1,
+  "explanation": "Solomon spent thirteen years building his own house.",
+  "ref": "1 Kings 7:1"
+ },
+ {
+  "id": "old-1-kings-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the names of the two bronze pillars at the temple entrance?",
+  "choices": [
+   "Hophni and Phinehas",
+   "Uriah and Ahaz",
+   "Boaz and Jachin",
+   "Nadab and Abihu"
+  ],
+  "answer": 2,
+  "explanation": "The pillars were named Jachin and Boaz.",
+  "ref": "1 Kings 7:21"
+ },
+ {
+  "id": "old-1-kings-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the skilled craftsman from Tyre who worked on the temple furnishings?",
+  "choices": [
+   "Adoniram",
+   "Nathan",
+   "Benaiah",
+   "Hiram"
+  ],
+  "answer": 3,
+  "explanation": "Hiram of Tyre was filled with wisdom to work in brass.",
+  "ref": "1 Kings 7:13–14"
+ },
+ {
+  "id": "old-1-kings-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What large bronze object rested on twelve oxen?",
+  "choices": [
+   "The altar",
+   "The molten sea",
+   "The laver",
+   "The mercy seat"
+  ],
+  "answer": 1,
+  "explanation": "The molten sea stood upon twelve oxen.",
+  "ref": "1 Kings 7:23–25"
+ },
+ {
+  "id": "old-1-kings-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon bring into the house of the Lord after the work was completed?",
+  "choices": [
+   "Only cedar wood",
+   "The things which David his father had dedicated",
+   "The ark",
+   "The tabernacle curtains from Shiloh"
+  ],
+  "answer": 1,
+  "explanation": "Solomon brought in the dedicated silver, gold, and vessels of David.",
+  "ref": "1 Kings 7:51"
+ },
+ {
+  "id": "old-1-kings-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priests bring into the most holy place of the temple?",
+  "choices": [
+   "The ark of the covenant",
+   "The brazen altar",
+   "The laver",
+   "The pillars"
+  ],
+  "answer": 0,
+  "explanation": "The ark was brought into the oracle under the wings of the cherubim.",
+  "ref": "1 Kings 8:6"
+ },
+ {
+  "id": "old-1-kings-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when the priests came out of the holy place?",
+  "choices": [
+   "Fire consumed the altar",
+   "A cloud filled the house of the Lord",
+   "The walls shook",
+   "The ark disappeared"
+  ],
+  "answer": 1,
+  "explanation": "The glory-cloud filled the house so the priests could not stand to minister.",
+  "ref": "1 Kings 8:10–11"
+ },
+ {
+  "id": "old-1-kings-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon say heaven and the heaven of heavens cannot do?",
+  "choices": [
+   "Contain God",
+   "Sing forever",
+   "Rule the nations",
+   "Hold the ark"
+  ],
+  "answer": 0,
+  "explanation": "Solomon marveled that even heaven could not contain God, much less the house he built.",
+  "ref": "1 Kings 8:27"
+ },
+ {
+  "id": "old-1-kings-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated phrase marks Solomon's prayer for various future situations?",
+  "choices": [
+   "Hear us now",
+   "Remember David",
+   "Bless this house",
+   "Hear thou in heaven"
+  ],
+  "answer": 3,
+  "explanation": "Solomon repeatedly asks God to hear in heaven and act.",
+  "ref": "1 Kings 8:30–34"
+ },
+ {
+  "id": "old-1-kings-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many oxen did Solomon offer as peace offerings when the house of the Lord was dedicated?",
+  "choices": [
+   "1,000",
+   "22,000",
+   "120",
+   "12,000"
+  ],
+  "answer": 1,
+  "explanation": "Solomon offered 22,000 oxen and 120,000 sheep as peace offerings at the dedication.",
+  "ref": "1 Kings 8:63"
+ },
+ {
+  "id": "old-1-kings-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times had the Lord appeared to Solomon by this point?",
+  "choices": [
+   "Once",
+   "Three times",
+   "Twice",
+   "Seven times"
+  ],
+  "answer": 2,
+  "explanation": "The Lord appeared to Solomon the second time.",
+  "ref": "1 Kings 9:2"
+ },
+ {
+  "id": "old-1-kings-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning did God give if Solomon or his children turned from following Him?",
+  "choices": [
+   "Only famine would come",
+   "The ark would vanish",
+   "Israel would be cut off and the house become a proverb and byword",
+   "The kingdom would immediately double"
+  ],
+  "answer": 2,
+  "explanation": "God warned of severe covenant judgment for apostasy.",
+  "ref": "1 Kings 9:6–9"
+ },
+ {
+  "id": "old-1-kings-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had Solomon given Hiram in return for cedar and gold, though Hiram was displeased?",
+  "choices": [
+   "Twelve cities",
+   "Twenty cities in Galilee",
+   "A palace in Jerusalem",
+   "The port of Joppa"
+  ],
+  "answer": 1,
+  "explanation": "Hiram called them the land of Cabul.",
+  "ref": "1 Kings 9:11–13"
+ },
+ {
+  "id": "old-1-kings-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who built the house that Pharaoh's daughter moved into when she left the city of David?",
+  "choices": [
+   "Joab",
+   "Solomon",
+   "Benaiah",
+   "Nathan"
+  ],
+  "answer": 1,
+  "explanation": "Pharaoh's daughter came up out of the city of David to her house, which Solomon had built for her.",
+  "ref": "1 Kings 9:24"
+ },
+ {
+  "id": "old-1-kings-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What seafaring venture is described at the end of the chapter?",
+  "choices": [
+   "A fleet on the Nile",
+   "A navy at Ezion-geber with Hiram's servants",
+   "Ships to Tarshish from Joppa only",
+   "A war navy against Tyre"
+  ],
+  "answer": 1,
+  "explanation": "Solomon built a navy at Ezion-geber in partnership with Hiram.",
+  "ref": "1 Kings 9:26–28"
+ },
+ {
+  "id": "old-1-kings-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the queen of Sheba come to Solomon?",
+  "choices": [
+   "To ask military help",
+   "To bring him a crown",
+   "To seek marriage",
+   "To prove him with hard questions"
+  ],
+  "answer": 3,
+  "explanation": "She came because of his fame and to test his wisdom.",
+  "ref": "1 Kings 10:1"
+ },
+ {
+  "id": "old-1-kings-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What precious gift is highlighted among the queen's offerings?",
+  "choices": [
+   "Iron",
+   "Wheat",
+   "Spices in very great store",
+   "Cedars"
+  ],
+  "answer": 2,
+  "explanation": "The queen brought abundant spices, gold, and precious stones.",
+  "ref": "1 Kings 10:10"
+ },
+ {
+  "id": "old-1-kings-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the queen react after seeing Solomon's wisdom and household order?",
+  "choices": [
+   "There was no more spirit in her",
+   "She fled in fear",
+   "She became angry",
+   "She challenged him again"
+  ],
+  "answer": 0,
+  "explanation": "She was overwhelmed by what she saw.",
+  "ref": "1 Kings 10:5"
+ },
+ {
+  "id": "old-1-kings-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many targets of beaten gold did Solomon make according to the chapter?",
+  "choices": [
+   "100",
+   "200",
+   "300",
+   "500"
+  ],
+  "answer": 1,
+  "explanation": "Solomon made two hundred targets of beaten gold. He also made three hundred shields.",
+  "ref": "1 Kings 10:16"
+ },
+ {
+  "id": "old-1-kings-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what country did Solomon have horses brought?",
+  "choices": [
+   "Syria",
+   "Tyre",
+   "Sheba",
+   "Egypt"
+  ],
+  "answer": 3,
+  "explanation": "Solomon had horses brought out of Egypt.",
+  "ref": "1 Kings 10:28"
+ },
+ {
+  "id": "old-1-kings-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What turned Solomon's heart away in his old age?",
+  "choices": [
+   "Wars",
+   "Famine",
+   "Illness",
+   "Many strange wives"
+  ],
+  "answer": 3,
+  "explanation": "His foreign wives turned his heart after other gods.",
+  "ref": "1 Kings 11:1–4"
+ },
+ {
+  "id": "old-1-kings-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two false gods does the chapter say Solomon went after?",
+  "choices": [
+   "Dagon and Rimmon",
+   "Ashtoreth and Milcom",
+   "Baal and Bel",
+   "Nebo and Tammuz"
+  ],
+  "answer": 1,
+  "explanation": "Solomon went after Ashtoreth the goddess of the Zidonians and Milcom the abomination of the Ammonites.",
+  "ref": "1 Kings 11:5"
+ },
+ {
+  "id": "old-1-kings-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What judgment did God declare because of Solomon's unfaithfulness?",
+  "choices": [
+   "His house would burn",
+   "The kingdom would be rent from him and given to his servant",
+   "Jerusalem would fall immediately",
+   "The priesthood would end"
+  ],
+  "answer": 1,
+  "explanation": "God announced that the kingdom would be torn away.",
+  "ref": "1 Kings 11:11"
+ },
+ {
+  "id": "old-1-kings-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why would Solomon's son still retain part of the kingdom?",
+  "choices": [
+   "For Jonathan's sake",
+   "For David's sake and for Jerusalem's sake",
+   "Because of Egypt",
+   "Because Rehoboam was wise"
+  ],
+  "answer": 1,
+  "explanation": "God delayed and limited judgment because of His promise to David and choice of Jerusalem.",
+  "ref": "1 Kings 11:12–13"
+ },
+ {
+  "id": "old-1-kings-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What symbolic act did Ahijah perform when meeting Jeroboam?",
+  "choices": [
+   "Burned an altar",
+   "Rent a new garment into twelve pieces",
+   "Anointed him with oil",
+   "Cut off his hair"
+  ],
+  "answer": 1,
+  "explanation": "Ahijah tore the garment into twelve pieces to symbolize the divided kingdom.",
+  "ref": "1 Kings 11:29–31"
+ },
+ {
+  "id": "old-1-kings-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did all Israel come to make Rehoboam king?",
+  "choices": [
+   "Shechem",
+   "Hebron",
+   "Jerusalem",
+   "Bethel"
+  ],
+  "answer": 0,
+  "explanation": "The assembly to confirm Rehoboam was at Shechem.",
+  "ref": "1 Kings 12:1"
+ },
+ {
+  "id": "old-1-kings-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people ask Rehoboam to do regarding Solomon's rule?",
+  "choices": [
+   "Increase taxes",
+   "Fight Egypt",
+   "Build a new temple",
+   "Make the grievous service lighter"
+  ],
+  "answer": 3,
+  "explanation": "They asked for relief from Solomon's heavy yoke.",
+  "ref": "1 Kings 12:4"
+ },
+ {
+  "id": "old-1-kings-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose counsel did Rehoboam follow?",
+  "choices": [
+   "The old men",
+   "The young men that grew up with him",
+   "Only the priests",
+   "Jeroboam's"
+  ],
+  "answer": 1,
+  "explanation": "He rejected the elders' counsel and followed the younger men.",
+  "ref": "1 Kings 12:8"
+ },
+ {
+  "id": "old-1-kings-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What cry did the northern tribes raise after rejecting the house of David?",
+  "choices": [
+   "Long live Rehoboam",
+   "The Lord reigneth",
+   "Jerusalem forever",
+   "To your tents, O Israel"
+  ],
+  "answer": 3,
+  "explanation": "This cry marked the split of the kingdom.",
+  "ref": "1 Kings 12:16"
+ },
+ {
+  "id": "old-1-kings-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jeroboam set up his two calves of gold?",
+  "choices": [
+   "Bethel and Dan",
+   "Hebron and Shiloh",
+   "Gibeon and Gilgal",
+   "Samaria and Jezreel"
+  ],
+  "answer": 0,
+  "explanation": "Jeroboam set golden calves at Bethel and Dan.",
+  "ref": "1 Kings 12:28–29"
+ },
+ {
+  "id": "old-1-kings-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where did the man of God come to Bethel?",
+  "choices": [
+   "Israel",
+   "Moab",
+   "Judah",
+   "Tyre"
+  ],
+  "answer": 2,
+  "explanation": "The prophet came out of Judah by the word of the Lord.",
+  "ref": "1 Kings 13:1"
+ },
+ {
+  "id": "old-1-kings-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which future king did the man of God name who would defile the altar at Bethel?",
+  "choices": [
+   "Hezekiah",
+   "Jehu",
+   "Jeroboam II",
+   "Josiah"
+  ],
+  "answer": 3,
+  "explanation": "He specifically named Josiah long before his time.",
+  "ref": "1 Kings 13:2"
+ },
+ {
+  "id": "old-1-kings-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign happened to Jeroboam's altar immediately?",
+  "choices": [
+   "It was rent and the ashes poured out",
+   "Fire fell",
+   "It vanished",
+   "It turned to gold"
+  ],
+  "answer": 0,
+  "explanation": "The altar split apart as a confirming sign.",
+  "ref": "1 Kings 13:5"
+ },
+ {
+  "id": "old-1-kings-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the man of God die later on the road?",
+  "choices": [
+   "He disobeyed God's command after listening to an old prophet",
+   "Jeroboam killed him",
+   "He fought a lion",
+   "He stole from Bethel"
+  ],
+  "answer": 0,
+  "explanation": "He died because he disobeyed the word of the Lord.",
+  "ref": "1 Kings 13:21–24"
+ },
+ {
+  "id": "old-1-kings-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What strange detail marked the scene where the man of God died?",
+  "choices": [
+   "The lion stood by the body and the ass",
+   "The lion devoured the body",
+   "The altar burned him",
+   "The river carried him away"
+  ],
+  "answer": 0,
+  "explanation": "The lion did not devour the body but stood by it.",
+  "ref": "1 Kings 13:28"
+ },
+ {
+  "id": "old-1-kings-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which son of Jeroboam fell sick, prompting his wife to visit the prophet?",
+  "choices": [
+   "Abijah",
+   "Nadab",
+   "Ahab",
+   "Baasha"
+  ],
+  "answer": 0,
+  "explanation": "Jeroboam's son Abijah became sick.",
+  "ref": "1 Kings 14:1"
+ },
+ {
+  "id": "old-1-kings-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did Jeroboam's wife go in disguise?",
+  "choices": [
+   "Nathan",
+   "Elijah",
+   "Jehu",
+   "Ahijah the prophet"
+  ],
+  "answer": 3,
+  "explanation": "She went to Ahijah in disguise to ask about the child.",
+  "ref": "1 Kings 14:2"
+ },
+ {
+  "id": "old-1-kings-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ahijah say would happen when Jeroboam's wife entered the city?",
+  "choices": [
+   "The child would recover",
+   "The child would die",
+   "Jeroboam would repent",
+   "Israel would unite"
+  ],
+  "answer": 1,
+  "explanation": "Ahijah foretold the boy's death upon her arrival.",
+  "ref": "1 Kings 14:12"
+ },
+ {
+  "id": "old-1-kings-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What lasting judgment was pronounced on Jeroboam's house?",
+  "choices": [
+   "It would prosper",
+   "It would rule Judah too",
+   "It would be cut off",
+   "It would serve Levi"
+  ],
+  "answer": 2,
+  "explanation": "God pronounced destruction on Jeroboam's house.",
+  "ref": "1 Kings 14:10"
+ },
+ {
+  "id": "old-1-kings-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came up against Jerusalem in Rehoboam's days and took treasures from the house of the Lord?",
+  "choices": [
+   "Ben-hadad",
+   "Shishak king of Egypt",
+   "Hiram",
+   "Hadad"
+  ],
+  "answer": 1,
+  "explanation": "Shishak invaded and took away temple treasures.",
+  "ref": "1 Kings 14:25–26"
+ },
+ {
+  "id": "old-1-kings-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Abijam's heart described compared to David's?",
+  "choices": [
+   "Not perfect with the Lord his God",
+   "Perfect",
+   "Stronger than David's",
+   "Without sin"
+  ],
+  "answer": 0,
+  "explanation": "Abijam did not walk with a perfect heart like David.",
+  "ref": "1 Kings 15:3"
+ },
+ {
+  "id": "old-1-kings-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What reforming king of Judah is commended for doing right in the eyes of the Lord?",
+  "choices": [
+   "Rehoboam",
+   "Abijam",
+   "Jehoshaphat",
+   "Asa"
+  ],
+  "answer": 3,
+  "explanation": "Asa is praised for doing what was right like David.",
+  "ref": "1 Kings 15:11"
+ },
+ {
+  "id": "old-1-kings-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Asa remove from the land as part of reform?",
+  "choices": [
+   "The Levites",
+   "Sodomites and idols",
+   "The ark",
+   "The city walls"
+  ],
+  "answer": 1,
+  "explanation": "Asa removed idolatry and sodomites from the land.",
+  "ref": "1 Kings 15:12"
+ },
+ {
+  "id": "old-1-kings-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who smote Nadab and reigned in his stead over Israel?",
+  "choices": [
+   "Ahab",
+   "Omri",
+   "Baasha",
+   "Elah"
+  ],
+  "answer": 2,
+  "explanation": "Baasha killed Nadab and took the throne.",
+  "ref": "1 Kings 15:27–28"
+ },
+ {
+  "id": "old-1-kings-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sin of David is specifically excepted from his otherwise faithful life?",
+  "choices": [
+   "Numbering Israel",
+   "Taking Saul's spear",
+   "Building altars",
+   "The matter of Uriah the Hittite"
+  ],
+  "answer": 3,
+  "explanation": "The text singles out the matter of Uriah.",
+  "ref": "1 Kings 15:5"
+ },
+ {
+  "id": "old-1-kings-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which prophet brought the word of judgment against Baasha?",
+  "choices": [
+   "Ahijah",
+   "Jehu son of Hanani",
+   "Elijah",
+   "Micaiah"
+  ],
+  "answer": 1,
+  "explanation": "Jehu son of Hanani pronounced judgment on Baasha.",
+  "ref": "1 Kings 16:1"
+ },
+ {
+  "id": "old-1-kings-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who killed Elah while he was drinking himself drunk in Tirzah?",
+  "choices": [
+   "Omri",
+   "Ahab",
+   "Jeroboam",
+   "Zimri"
+  ],
+  "answer": 3,
+  "explanation": "Zimri slew Elah and reigned in his stead.",
+  "ref": "1 Kings 16:9–10"
+ },
+ {
+  "id": "old-1-kings-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Zimri reign in Tirzah?",
+  "choices": [
+   "7 months",
+   "2 years",
+   "7 days",
+   "12 years"
+  ],
+  "answer": 2,
+  "explanation": "Zimri's reign lasted only seven days.",
+  "ref": "1 Kings 16:15"
+ },
+ {
+  "id": "old-1-kings-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Zimri do when the city was taken and his position lost?",
+  "choices": [
+   "Fled to Egypt",
+   "Surrendered",
+   "Burned the king's house over himself and died",
+   "Joined Omri"
+  ],
+  "answer": 2,
+  "explanation": "Zimri died by burning the palace over himself.",
+  "ref": "1 Kings 16:18"
+ },
+ {
+  "id": "old-1-kings-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which king bought the hill Samaria and built a city there?",
+  "choices": [
+   "Omri",
+   "Jeroboam",
+   "Ahab",
+   "Baasha"
+  ],
+  "answer": 0,
+  "explanation": "Omri bought the hill and built Samaria.",
+  "ref": "1 Kings 16:24"
+ },
+ {
+  "id": "old-1-kings-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elijah declare before Ahab regarding dew and rain?",
+  "choices": [
+   "Rain would fall in three days",
+   "A flood was coming",
+   "Only snow would fall",
+   "There would be neither dew nor rain but according to his word"
+  ],
+  "answer": 3,
+  "explanation": "Elijah announced a drought at the word of the Lord.",
+  "ref": "1 Kings 17:1"
+ },
+ {
+  "id": "old-1-kings-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was Elijah fed by the brook Cherith?",
+  "choices": [
+   "By ravens",
+   "By angels",
+   "By the king",
+   "By shepherds"
+  ],
+  "answer": 0,
+  "explanation": "Ravens brought him bread and flesh.",
+  "ref": "1 Kings 17:4–6"
+ },
+ {
+  "id": "old-1-kings-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what widow was Elijah sent during the famine?",
+  "choices": [
+   "A widow of Bethel",
+   "A widow of Jerusalem",
+   "A widow of Zarephath",
+   "A widow of Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "Elijah was sent to the widow of Zarephath.",
+  "ref": "1 Kings 17:9"
+ },
+ {
+  "id": "old-1-kings-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What miracle sustained the widow's household?",
+  "choices": [
+   "A spring appeared",
+   "Manna fell",
+   "A flock multiplied",
+   "The barrel of meal wasted not and the cruse of oil failed not"
+  ],
+  "answer": 3,
+  "explanation": "God provided a continuing supply of meal and oil.",
+  "ref": "1 Kings 17:14–16"
+ },
+ {
+  "id": "old-1-kings-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened after Elijah stretched himself upon the widow's child three times?",
+  "choices": [
+   "Nothing",
+   "Fire fell from heaven",
+   "The child's soul came into him again",
+   "The house shook"
+  ],
+  "answer": 2,
+  "explanation": "The child was restored to life.",
+  "ref": "1 Kings 17:21–22"
+ },
+ {
+  "id": "old-1-kings-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who feared the Lord greatly and hid a hundred prophets by fifties in caves?",
+  "choices": [
+   "Jehu",
+   "Micaiah",
+   "Hiel",
+   "Obadiah"
+  ],
+  "answer": 3,
+  "explanation": "Obadiah protected prophets during Jezebel's persecution.",
+  "ref": "1 Kings 18:3–4"
+ },
+ {
+  "id": "old-1-kings-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What challenge did Elijah propose on Mount Carmel?",
+  "choices": [
+   "A sword fight",
+   "The God who answers by fire, let him be God",
+   "A race to Jezreel",
+   "A famine test"
+  ],
+  "answer": 1,
+  "explanation": "Elijah's challenge centered on divine fire.",
+  "ref": "1 Kings 18:24"
+ },
+ {
+  "id": "old-1-kings-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many prophets of Baal were present at Carmel?",
+  "choices": [
+   "70",
+   "400",
+   "450",
+   "850"
+  ],
+  "answer": 2,
+  "explanation": "There were 450 prophets of Baal.",
+  "ref": "1 Kings 18:22"
+ },
+ {
+  "id": "old-1-kings-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elijah do to the altar before praying for fire?",
+  "choices": [
+   "Covered it with gold",
+   "Moved it to Jezreel",
+   "Poured water on the sacrifice and filled the trench",
+   "Burned incense"
+  ],
+  "answer": 2,
+  "explanation": "He soaked the offering to make the miracle unmistakable.",
+  "ref": "1 Kings 18:33–35"
+ },
+ {
+  "id": "old-1-kings-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What small sign preceded the return of rain?",
+  "choices": [
+   "A dove",
+   "A little cloud like a man's hand",
+   "Thunder at noon",
+   "A rainbow"
+  ],
+  "answer": 1,
+  "explanation": "A tiny cloud appeared before the heavens grew black with rain.",
+  "ref": "1 Kings 18:44"
+ },
+ {
+  "id": "old-1-kings-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What threat from Jezebel caused Elijah to flee?",
+  "choices": [
+   "Imprisonment",
+   "Exile to Tyre",
+   "Loss of food",
+   "That she would make his life as one of Baal's prophets by the next day"
+  ],
+  "answer": 3,
+  "explanation": "Jezebel threatened Elijah's life.",
+  "ref": "1 Kings 19:2"
+ },
+ {
+  "id": "old-1-kings-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Under what tree did Elijah sit and ask that he might die?",
+  "choices": [
+   "Oak",
+   "Juniper tree",
+   "Olive tree",
+   "Fig tree"
+  ],
+  "answer": 1,
+  "explanation": "Elijah sat under a juniper tree in despair.",
+  "ref": "1 Kings 19:4"
+ },
+ {
+  "id": "old-1-kings-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days and nights did Elijah travel to Horeb in the strength of the angel's food?",
+  "choices": [
+   "7",
+   "14",
+   "40",
+   "70"
+  ],
+  "answer": 2,
+  "explanation": "He traveled forty days and forty nights to Horeb.",
+  "ref": "1 Kings 19:8"
+ },
+ {
+  "id": "old-1-kings-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which three things was the Lord not in, before the still small voice came?",
+  "choices": [
+   "Cloud and fire only",
+   "Rain and hail",
+   "Light and darkness",
+   "Wind, earthquake, and fire"
+  ],
+  "answer": 3,
+  "explanation": "The Lord was not in the wind, earthquake, or fire before the still small voice.",
+  "ref": "1 Kings 19:11–12"
+ },
+ {
+  "id": "old-1-kings-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom was Elijah told to anoint as prophet in his room?",
+  "choices": [
+   "Micaiah",
+   "Elisha",
+   "Jehu",
+   "Obadiah"
+  ],
+  "answer": 1,
+  "explanation": "Elisha was called to succeed Elijah.",
+  "ref": "1 Kings 19:16"
+ },
+ {
+  "id": "old-1-kings-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which Syrian king came up against Samaria with a great host?",
+  "choices": [
+   "Hazael",
+   "Rezin",
+   "Ben-hadad",
+   "Hadadezer"
+  ],
+  "answer": 2,
+  "explanation": "Ben-hadad besieged Samaria.",
+  "ref": "1 Kings 20:1"
+ },
+ {
+  "id": "old-1-kings-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went out first from Samaria against the Syrians?",
+  "choices": [
+   "The Levites",
+   "The captains of thousands",
+   "The scribes",
+   "The young men of the princes of the provinces"
+  ],
+  "answer": 3,
+  "explanation": "The young men of the princes of the provinces went out first, and the army followed them.",
+  "ref": "1 Kings 20:17"
+ },
+ {
+  "id": "old-1-kings-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What mistaken theological assumption did the Syrians make about Israel's God?",
+  "choices": [
+   "He was weak",
+   "He loved Syria",
+   "He ruled the sea only",
+   "He was a god of the hills only"
+  ],
+  "answer": 3,
+  "explanation": "They wrongly assumed Israel's God was limited to the hills.",
+  "ref": "1 Kings 20:23"
+ },
+ {
+  "id": "old-1-kings-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Ahab spare Ben-hadad after the second victory?",
+  "choices": [
+   "He made a covenant with him and let him go",
+   "He set him free without condition",
+   "He hid him",
+   "He sent him to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Ahab made a covenant with Ben-hadad and released him.",
+  "ref": "1 Kings 20:34"
+ },
+ {
+  "id": "old-1-kings-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What message of judgment did the prophet give Ahab for sparing Ben-hadad?",
+  "choices": [
+   "He would be richer",
+   "He would rule Syria",
+   "Thy life shall go for his life, and thy people for his people",
+   "Nothing would happen"
+  ],
+  "answer": 2,
+  "explanation": "Ahab was condemned for letting go the man God had devoted to destruction.",
+  "ref": "1 Kings 20:42"
+ },
+ {
+  "id": "old-1-kings-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ahab want from Naboth?",
+  "choices": [
+   "His vineyard",
+   "His house",
+   "His oxen",
+   "His silver"
+  ],
+  "answer": 0,
+  "explanation": "Ahab wanted Naboth's vineyard for a garden of herbs.",
+  "ref": "1 Kings 21:2"
+ },
+ {
+  "id": "old-1-kings-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Naboth refuse to sell the vineyard?",
+  "choices": [
+   "He disliked Ahab",
+   "He planned to move",
+   "It was the inheritance of his fathers",
+   "It was not fertile"
+  ],
+  "answer": 2,
+  "explanation": "Naboth refused because it was ancestral inheritance.",
+  "ref": "1 Kings 21:3"
+ },
+ {
+  "id": "old-1-kings-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What evil scheme did Jezebel use to take Naboth's vineyard?",
+  "choices": [
+   "She arranged false witnesses so Naboth would be stoned",
+   "She bought it secretly",
+   "She burned his field",
+   "She sent Syrians"
+  ],
+  "answer": 0,
+  "explanation": "Jezebel orchestrated a false accusation of blasphemy.",
+  "ref": "1 Kings 21:8–13"
+ },
+ {
+  "id": "old-1-kings-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elijah say dogs would do in the place where Naboth was slain?",
+  "choices": [
+   "Guard the gate",
+   "Eat the vines",
+   "Lick Ahab's blood",
+   "Howl every night"
+  ],
+  "answer": 2,
+  "explanation": "Elijah pronounced a judgment fitting the crime.",
+  "ref": "1 Kings 21:19"
+ },
+ {
+  "id": "old-1-kings-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Ahab respond to Elijah's word of judgment?",
+  "choices": [
+   "He mocked it",
+   "He fled Samaria",
+   "He humbled himself with sackcloth and fasting",
+   "He killed Elijah"
+  ],
+  "answer": 2,
+  "explanation": "Ahab humbled himself, and God delayed some judgment.",
+  "ref": "1 Kings 21:27"
+ },
+ {
+  "id": "old-1-kings-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "place",
+  "question": "What city did Ahab and Jehoshaphat plan to recover from Syria?",
+  "choices": [
+   "Ramoth-gilead",
+   "Jericho",
+   "Damascus",
+   "Samaria"
+  ],
+  "answer": 0,
+  "explanation": "They planned to go to battle for Ramoth-gilead.",
+  "ref": "1 Kings 22:3–4"
+ },
+ {
+  "id": "old-1-kings-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many prophets did Ahab gather who encouraged the campaign?",
+  "choices": [
+   "70",
+   "200",
+   "400",
+   "850"
+  ],
+  "answer": 2,
+  "explanation": "Ahab gathered about four hundred prophets.",
+  "ref": "1 Kings 22:6"
+ },
+ {
+  "id": "old-1-kings-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which prophet insisted that Ahab would fall if he went to battle?",
+  "choices": [
+   "Micaiah",
+   "Elijah",
+   "Obadiah",
+   "Ahijah"
+  ],
+  "answer": 0,
+  "explanation": "Micaiah saw Israel scattered like sheep without a shepherd.",
+  "ref": "1 Kings 22:17"
+ },
+ {
+  "id": "old-1-kings-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Ahab try to avoid Micaiah's prophecy in battle?",
+  "choices": [
+   "He stayed home",
+   "He disguised himself",
+   "He made peace",
+   "He hid in the temple"
+  ],
+  "answer": 1,
+  "explanation": "Ahab disguised himself while Jehoshaphat wore his robes.",
+  "ref": "1 Kings 22:30"
+ },
+ {
+  "id": "old-1-kings-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when a certain man drew a bow at a venture?",
+  "choices": [
+   "He hit Jehoshaphat",
+   "He killed Ben-hadad",
+   "He missed entirely",
+   "He struck the king of Israel between the joints of the harness"
+  ],
+  "answer": 3,
+  "explanation": "The random shot mortally wounded Ahab.",
+  "ref": "1 Kings 22:34"
+ }
+]

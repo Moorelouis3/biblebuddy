@@ -1,0 +1,2242 @@
+[
+ {
+  "id": "old-acts-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus tell the apostles to wait for the promise of the Father?",
+  "choices": [
+   "Galilee",
+   "Bethany",
+   "Samaria",
+   "Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "Jesus told them to wait in Jerusalem.",
+  "ref": "Acts 1:4"
+ },
+ {
+  "id": "old-acts-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say the disciples would receive when the Holy Ghost came upon them?",
+  "choices": [
+   "Rest",
+   "Gold",
+   "Power",
+   "Crowns"
+  ],
+  "answer": 2,
+  "explanation": "Jesus promised power for witness through the Holy Ghost.",
+  "ref": "Acts 1:8"
+ },
+ {
+  "id": "old-acts-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Jesus while the apostles watched?",
+  "choices": [
+   "He disappeared in the temple",
+   "He entered Jerusalem",
+   "He crossed the sea",
+   "He was taken up"
+  ],
+  "answer": 3,
+  "explanation": "Jesus was taken up and a cloud received Him.",
+  "ref": "Acts 1:9"
+ },
+ {
+  "id": "old-acts-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was chosen to take Judas's place among the apostles?",
+  "choices": [
+   "Barnabas",
+   "Stephen",
+   "Silas",
+   "Matthias"
+  ],
+  "answer": 3,
+  "explanation": "The lot fell upon Matthias.",
+  "ref": "Acts 1:26"
+ },
+ {
+  "id": "old-acts-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was Matthias selected?",
+  "choices": [
+   "By Peter alone",
+   "By the Sanhedrin",
+   "By the church in Antioch",
+   "By casting lots"
+  ],
+  "answer": 3,
+  "explanation": "The apostles prayed and cast lots.",
+  "ref": "Acts 1:26"
+ },
+ {
+  "id": "old-acts-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What feast day had fully come when the disciples were all with one accord?",
+  "choices": [
+   "Passover",
+   "Tabernacles",
+   "Purim",
+   "Pentecost"
+  ],
+  "answer": 3,
+  "explanation": "The Spirit came on the day of Pentecost.",
+  "ref": "Acts 2:1"
+ },
+ {
+  "id": "old-acts-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What appeared to the disciples on the day of Pentecost?",
+  "choices": [
+   "Cloven tongues like as of fire",
+   "A bright cloud",
+   "A rainbow",
+   "A dove"
+  ],
+  "answer": 0,
+  "explanation": "Tongues like fire sat upon each of them.",
+  "ref": "Acts 2:3"
+ },
+ {
+  "id": "old-acts-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when they were filled with the Holy Ghost?",
+  "choices": [
+   "They hid in fear",
+   "They spoke with other tongues",
+   "They fell asleep",
+   "They went home"
+  ],
+  "answer": 1,
+  "explanation": "They spoke as the Spirit gave them utterance.",
+  "ref": "Acts 2:4"
+ },
+ {
+  "id": "old-acts-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stood up and preached to the crowd?",
+  "choices": [
+   "John",
+   "Peter",
+   "James",
+   "Matthias"
+  ],
+  "answer": 1,
+  "explanation": "Peter lifted up his voice with the eleven.",
+  "ref": "Acts 2:14"
+ },
+ {
+  "id": "old-acts-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many souls were added in that day?",
+  "choices": [
+   "About three thousand",
+   "Twelve hundred",
+   "About five thousand",
+   "One hundred twenty"
+  ],
+  "answer": 0,
+  "explanation": "About three thousand souls were added.",
+  "ref": "Acts 2:41"
+ },
+ {
+  "id": "old-acts-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what gate was the lame man laid daily?",
+  "choices": [
+   "East Gate",
+   "Sheep Gate",
+   "Beautiful Gate",
+   "Golden Gate"
+  ],
+  "answer": 2,
+  "explanation": "He was laid at the gate of the temple which is called Beautiful.",
+  "ref": "Acts 3:2"
+ },
+ {
+  "id": "old-acts-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter say he did not have?",
+  "choices": [
+   "Bread and water",
+   "Time and strength",
+   "Faith and hope",
+   "Silver and gold"
+  ],
+  "answer": 3,
+  "explanation": "Peter said, 'Silver and gold have I none.'",
+  "ref": "Acts 3:6"
+ },
+ {
+  "id": "old-acts-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In whose name did Peter command the lame man to rise and walk?",
+  "choices": [
+   "Jesus Christ of Nazareth",
+   "Moses",
+   "Abraham",
+   "David"
+  ],
+  "answer": 0,
+  "explanation": "Healing came through Jesus' name.",
+  "ref": "Acts 3:6"
+ },
+ {
+  "id": "old-acts-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the healed man do after receiving strength?",
+  "choices": [
+   "Ran home silently",
+   "Offered money",
+   "Entered the city",
+   "Walked and leaped and praised God"
+  ],
+  "answer": 3,
+  "explanation": "He entered the temple walking, leaping, and praising God.",
+  "ref": "Acts 3:8"
+ },
+ {
+  "id": "old-acts-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter call Jesus?",
+  "choices": [
+   "The Prince of life",
+   "The son of David",
+   "The prophet of Nazareth",
+   "The teacher of Israel"
+  ],
+  "answer": 0,
+  "explanation": "Peter said they killed the Prince of life.",
+  "ref": "Acts 3:15"
+ },
+ {
+  "id": "old-acts-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were Peter and John arrested?",
+  "choices": [
+   "For healing on the Sabbath",
+   "For refusing taxes",
+   "For preaching through Jesus the resurrection",
+   "For breaking the temple gate"
+  ],
+  "answer": 2,
+  "explanation": "They were arrested for preaching the resurrection in Jesus.",
+  "ref": "Acts 4:2–3"
+ },
+ {
+  "id": "old-acts-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter say about salvation?",
+  "choices": [
+   "It is in Moses alone",
+   "Every nation has its own path",
+   "The law is enough",
+   "There is none other name under heaven whereby we must be saved"
+  ],
+  "answer": 3,
+  "explanation": "Peter proclaimed salvation only in Jesus.",
+  "ref": "Acts 4:12"
+ },
+ {
+  "id": "old-acts-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the rulers marvel at when they saw Peter and John?",
+  "choices": [
+   "Their clothing",
+   "Their wealth",
+   "Their age",
+   "Their boldness"
+  ],
+  "answer": 3,
+  "explanation": "They marveled at their boldness.",
+  "ref": "Acts 4:13"
+ },
+ {
+  "id": "old-acts-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the believers pray for after being threatened?",
+  "choices": [
+   "Safety and escape",
+   "More money",
+   "Freedom from Rome",
+   "Boldness to speak thy word"
+  ],
+  "answer": 3,
+  "explanation": "They asked God for boldness to speak His word.",
+  "ref": "Acts 4:29"
+ },
+ {
+  "id": "old-acts-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the place where they were assembled after they prayed?",
+  "choices": [
+   "It was filled with smoke",
+   "It was shaken",
+   "It collapsed",
+   "It was locked"
+  ],
+  "answer": 1,
+  "explanation": "The place was shaken as God answered.",
+  "ref": "Acts 4:31"
+ },
+ {
+  "id": "old-acts-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sin did Ananias and Sapphira commit regarding the land?",
+  "choices": [
+   "They stole it",
+   "They lied to the Holy Ghost",
+   "They refused to sell it",
+   "They gave it to Rome"
+  ],
+  "answer": 1,
+  "explanation": "Peter said they lied to the Holy Ghost.",
+  "ref": "Acts 5:3–4"
+ },
+ {
+  "id": "old-acts-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Ananias after Peter confronted him?",
+  "choices": [
+   "He repented immediately",
+   "He fell down and gave up the ghost",
+   "He fled the city",
+   "He was imprisoned"
+  ],
+  "answer": 1,
+  "explanation": "Ananias fell down dead.",
+  "ref": "Acts 5:5"
+ },
+ {
+  "id": "old-acts-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who opened the prison doors for the apostles?",
+  "choices": [
+   "A temple guard",
+   "The angel of the Lord",
+   "Gamaliel",
+   "Peter"
+  ],
+  "answer": 1,
+  "explanation": "The angel of the Lord opened the prison doors.",
+  "ref": "Acts 5:19"
+ },
+ {
+  "id": "old-acts-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the apostles say when commanded not to teach in Jesus' name?",
+  "choices": [
+   "We must obey Rome",
+   "We will be silent",
+   "We will wait",
+   "We ought to obey God rather than men"
+  ],
+  "answer": 3,
+  "explanation": "They put obedience to God above men.",
+  "ref": "Acts 5:29"
+ },
+ {
+  "id": "old-acts-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who advised the council to refrain from fighting against the apostles?",
+  "choices": [
+   "Gamaliel",
+   "Caiaphas",
+   "Annas",
+   "Festus"
+  ],
+  "answer": 0,
+  "explanation": "Gamaliel urged caution.",
+  "ref": "Acts 5:34–39"
+ },
+ {
+  "id": "old-acts-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was a complaint raised among the disciples?",
+  "choices": [
+   "The widows were neglected in the daily ministration",
+   "The apostles left the city",
+   "The temple was closed",
+   "The Romans taxed them"
+  ],
+  "answer": 0,
+  "explanation": "The Grecian widows were neglected.",
+  "ref": "Acts 6:1"
+ },
+ {
+  "id": "old-acts-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men were chosen to care for the neglected widows?",
+  "choices": [
+   "Five",
+   "Twelve",
+   "Seventy",
+   "Seven"
+  ],
+  "answer": 3,
+  "explanation": "Seven men were selected.",
+  "ref": "Acts 6:3"
+ },
+ {
+  "id": "old-acts-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things did the apostles say they would continue in?",
+  "choices": [
+   "Teaching and healing",
+   "Travel and preaching",
+   "Fasting and singing",
+   "Prayer and the ministry of the word"
+  ],
+  "answer": 3,
+  "explanation": "They devoted themselves to prayer and the ministry of the word.",
+  "ref": "Acts 6:4"
+ },
+ {
+  "id": "old-acts-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who among the seven is described as full of faith and power?",
+  "choices": [
+   "Philip",
+   "Stephen",
+   "Prochorus",
+   "Nicanor"
+  ],
+  "answer": 1,
+  "explanation": "Stephen did great wonders and miracles among the people.",
+  "ref": "Acts 6:8"
+ },
+ {
+  "id": "old-acts-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Stephen's face described before the council?",
+  "choices": [
+   "Darkened with sorrow",
+   "As it had been the face of an angel",
+   "Hidden by a veil",
+   "Covered in dust"
+  ],
+  "answer": 1,
+  "explanation": "His face appeared like the face of an angel.",
+  "ref": "Acts 6:15"
+ },
+ {
+  "id": "old-acts-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Stephen say God called out of Mesopotamia?",
+  "choices": [
+   "Abraham",
+   "Moses",
+   "Joseph",
+   "David"
+  ],
+  "answer": 0,
+  "explanation": "Stephen began with Abraham's call.",
+  "ref": "Acts 7:2–3"
+ },
+ {
+  "id": "old-acts-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was sold into Egypt by his brothers?",
+  "choices": [
+   "Isaac",
+   "Joseph",
+   "Moses",
+   "Aaron"
+  ],
+  "answer": 1,
+  "explanation": "The patriarchs sold Joseph into Egypt.",
+  "ref": "Acts 7:9"
+ },
+ {
+  "id": "old-acts-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who saw the burning bush in the wilderness?",
+  "choices": [
+   "Moses",
+   "Joshua",
+   "Samuel",
+   "Elijah"
+  ],
+  "answer": 0,
+  "explanation": "Moses saw the bush that burned with fire.",
+  "ref": "Acts 7:30"
+ },
+ {
+  "id": "old-acts-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What accusation did Stephen make against the council?",
+  "choices": [
+   "They broke the Sabbath",
+   "They resisted the Holy Ghost",
+   "They served Caesar",
+   "They neglected the poor"
+  ],
+  "answer": 1,
+  "explanation": "Stephen said they always resisted the Holy Ghost.",
+  "ref": "Acts 7:51"
+ },
+ {
+  "id": "old-acts-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At whose feet did the witnesses lay their clothes when Stephen was stoned?",
+  "choices": [
+   "Barnabas",
+   "Saul",
+   "Gamaliel",
+   "Philip"
+  ],
+  "answer": 1,
+  "explanation": "The witnesses laid down their clothes at Saul's feet.",
+  "ref": "Acts 7:58"
+ },
+ {
+  "id": "old-acts-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who made havoc of the church after Stephen's death?",
+  "choices": [
+   "Saul",
+   "Herod",
+   "Pilate",
+   "Festus"
+  ],
+  "answer": 0,
+  "explanation": "Saul entered houses and dragged believers away.",
+  "ref": "Acts 8:3"
+ },
+ {
+  "id": "old-acts-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Philip go down and preach Christ?",
+  "choices": [
+   "Jerusalem",
+   "Antioch",
+   "Damascus",
+   "Samaria"
+  ],
+  "answer": 3,
+  "explanation": "Philip preached Christ in the city of Samaria.",
+  "ref": "Acts 8:5"
+ },
+ {
+  "id": "old-acts-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What former practice made Simon famous before believing?",
+  "choices": [
+   "He was a high priest",
+   "He led the temple choir",
+   "He copied scrolls",
+   "He used sorcery"
+  ],
+  "answer": 3,
+  "explanation": "Simon previously bewitched the people with sorcery.",
+  "ref": "Acts 8:9–11"
+ },
+ {
+  "id": "old-acts-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom was Philip sent to meet on the desert road?",
+  "choices": [
+   "A Roman soldier",
+   "A Pharisee",
+   "A merchant from Tyre",
+   "The Ethiopian eunuch"
+  ],
+  "answer": 3,
+  "explanation": "Philip was sent to the Ethiopian eunuch.",
+  "ref": "Acts 8:26–29"
+ },
+ {
+  "id": "old-acts-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What book of Scripture was the eunuch reading?",
+  "choices": [
+   "Psalms",
+   "Genesis",
+   "Isaiah",
+   "Daniel"
+  ],
+  "answer": 2,
+  "explanation": "He was reading the prophet Esaias, which is the King James spelling of Isaiah.",
+  "ref": "Acts 8:28–32"
+ },
+ {
+  "id": "old-acts-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "To what city was Saul traveling when the light from heaven shone around him?",
+  "choices": [
+   "Jerusalem",
+   "Antioch",
+   "Tarsus",
+   "Damascus"
+  ],
+  "answer": 3,
+  "explanation": "Saul was near Damascus when the Lord confronted him.",
+  "ref": "Acts 9:3"
+ },
+ {
+  "id": "old-acts-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question did Saul ask after hearing the Lord's voice?",
+  "choices": [
+   "Who art thou, Lord?",
+   "Why are these men here?",
+   "Where is Stephen?",
+   "What is truth?"
+  ],
+  "answer": 0,
+  "explanation": "Saul asked, 'Who art thou, Lord?'",
+  "ref": "Acts 9:5"
+ },
+ {
+  "id": "old-acts-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For how many days was Saul without sight?",
+  "choices": [
+   "One",
+   "Three",
+   "Seven",
+   "Forty"
+  ],
+  "answer": 1,
+  "explanation": "He was three days without sight.",
+  "ref": "Acts 9:9"
+ },
+ {
+  "id": "old-acts-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was sent to Saul to lay hands on him?",
+  "choices": [
+   "Barnabas",
+   "Ananias",
+   "Philip",
+   "Peter"
+  ],
+  "answer": 1,
+  "explanation": "The Lord sent Ananias to Saul.",
+  "ref": "Acts 9:10–17"
+ },
+ {
+  "id": "old-acts-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul immediately begin to preach in the synagogues?",
+  "choices": [
+   "The law of Moses",
+   "That Jesus is the Son of God",
+   "The kingdom of David",
+   "John's baptism"
+  ],
+  "answer": 1,
+  "explanation": "Saul straightway preached Christ in the synagogues.",
+  "ref": "Acts 9:20"
+ },
+ {
+  "id": "old-acts-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Cornelius by occupation?",
+  "choices": [
+   "A fisherman",
+   "A centurion",
+   "A tax collector",
+   "A priest"
+  ],
+  "answer": 1,
+  "explanation": "Cornelius was a centurion of the Italian band.",
+  "ref": "Acts 10:1"
+ },
+ {
+  "id": "old-acts-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter see descending from heaven in his vision?",
+  "choices": [
+   "A golden lampstand",
+   "A fiery sword",
+   "A great sheet",
+   "A cloud of doves"
+  ],
+  "answer": 2,
+  "explanation": "Peter saw a great sheet let down from heaven.",
+  "ref": "Acts 10:11"
+ },
+ {
+  "id": "old-acts-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command came with the sheet vision?",
+  "choices": [
+   "Take and build",
+   "Rise, Peter; kill, and eat",
+   "Wash and be clean",
+   "Speak and prophesy"
+  ],
+  "answer": 1,
+  "explanation": "Peter was told to rise, kill, and eat.",
+  "ref": "Acts 10:13"
+ },
+ {
+  "id": "old-acts-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter say God had shown him not to call any man?",
+  "choices": [
+   "Blind",
+   "A sinner",
+   "A prophet",
+   "Common or unclean"
+  ],
+  "answer": 3,
+  "explanation": "Peter understood the vision as applying to people.",
+  "ref": "Acts 10:28"
+ },
+ {
+  "id": "old-acts-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Cornelius and his household as Peter preached?",
+  "choices": [
+   "They fell asleep",
+   "They fled the house",
+   "The Holy Ghost fell on them",
+   "They were arrested"
+  ],
+  "answer": 2,
+  "explanation": "The Holy Ghost fell on all who heard the word.",
+  "ref": "Acts 10:44"
+ },
+ {
+  "id": "old-acts-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What criticism did Peter receive from believers in Judea?",
+  "choices": [
+   "He had stopped preaching",
+   "He went in to uncircumcised men and ate with them",
+   "He left Jerusalem",
+   "He would not baptize"
+  ],
+  "answer": 1,
+  "explanation": "They criticized him for eating with uncircumcised men.",
+  "ref": "Acts 11:2–3"
+ },
+ {
+  "id": "old-acts-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name were the disciples first called at Antioch?",
+  "choices": [
+   "Nazarenes",
+   "Christians",
+   "Brethren",
+   "Followers of the Way"
+  ],
+  "answer": 1,
+  "explanation": "The disciples were first called Christians in Antioch.",
+  "ref": "Acts 11:26"
+ },
+ {
+  "id": "old-acts-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who brought Saul from Tarsus to Antioch?",
+  "choices": [
+   "Peter",
+   "Barnabas",
+   "Agabus",
+   "James"
+  ],
+  "answer": 1,
+  "explanation": "Barnabas went to seek Saul.",
+  "ref": "Acts 11:25–26"
+ },
+ {
+  "id": "old-acts-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who predicted a great famine in the days of Claudius Caesar?",
+  "choices": [
+   "Agabus",
+   "Silas",
+   "Stephen",
+   "Philip"
+  ],
+  "answer": 0,
+  "explanation": "Agabus foretold the famine.",
+  "ref": "Acts 11:28"
+ },
+ {
+  "id": "old-acts-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did the disciples send relief from Antioch?",
+  "choices": [
+   "The church at Rome",
+   "The Samaritans",
+   "The Galatians",
+   "The brethren in Judea"
+  ],
+  "answer": 3,
+  "explanation": "They sent relief to the brethren dwelling in Judea.",
+  "ref": "Acts 11:29"
+ },
+ {
+  "id": "old-acts-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which apostle did Herod kill with the sword?",
+  "choices": [
+   "John",
+   "Andrew",
+   "Philip",
+   "James the brother of John"
+  ],
+  "answer": 3,
+  "explanation": "Herod killed James the brother of John.",
+  "ref": "Acts 12:2"
+ },
+ {
+  "id": "old-acts-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was imprisoned during the days of unleavened bread?",
+  "choices": [
+   "Barnabas",
+   "Saul",
+   "Stephen",
+   "Peter"
+  ],
+  "answer": 3,
+  "explanation": "Herod put Peter in prison.",
+  "ref": "Acts 12:3–4"
+ },
+ {
+  "id": "old-acts-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who led Peter past the guards and out of prison?",
+  "choices": [
+   "John Mark",
+   "James",
+   "Cornelius",
+   "An angel of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "An angel of the Lord delivered Peter.",
+  "ref": "Acts 12:7–10"
+ },
+ {
+  "id": "old-acts-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the name of the maid who recognized Peter's voice at the gate?",
+  "choices": [
+   "Dorcas",
+   "Lydia",
+   "Rhoda",
+   "Martha"
+  ],
+  "answer": 2,
+  "explanation": "Rhoda recognized Peter's voice.",
+  "ref": "Acts 12:13–14"
+ },
+ {
+  "id": "old-acts-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Herod struck by the angel of the Lord?",
+  "choices": [
+   "He gave not God the glory",
+   "He blasphemed Moses",
+   "He imprisoned Peter",
+   "He killed James"
+  ],
+  "answer": 0,
+  "explanation": "Herod was judged because he did not give God the glory.",
+  "ref": "Acts 12:23"
+ },
+ {
+  "id": "old-acts-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said, 'Separate me Barnabas and Saul for the work whereunto I have called them'?",
+  "choices": [
+   "Peter",
+   "James",
+   "An angel",
+   "The Holy Ghost"
+  ],
+  "answer": 3,
+  "explanation": "The Holy Ghost set apart Barnabas and Saul.",
+  "ref": "Acts 13:2"
+ },
+ {
+  "id": "old-acts-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Elymas the sorcerer after opposing the gospel?",
+  "choices": [
+   "He fled the island",
+   "He was struck blind for a season",
+   "He was imprisoned",
+   "He believed at once"
+  ],
+  "answer": 1,
+  "explanation": "Paul pronounced temporary blindness on Elymas.",
+  "ref": "Acts 13:11"
+ },
+ {
+  "id": "old-acts-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Saul also called?",
+  "choices": [
+   "Silas",
+   "Matthias",
+   "Justus",
+   "Paul"
+  ],
+  "answer": 3,
+  "explanation": "Saul is also called Paul.",
+  "ref": "Acts 13:9"
+ },
+ {
+  "id": "old-acts-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who departed from Paul and Barnabas and returned to Jerusalem?",
+  "choices": [
+   "Titus",
+   "Timothy",
+   "Apollos",
+   "John Mark"
+  ],
+  "answer": 3,
+  "explanation": "John departed from them and returned to Jerusalem.",
+  "ref": "Acts 13:13"
+ },
+ {
+  "id": "old-acts-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did Paul say, 'Lo, we turn to the Gentiles'?",
+  "choices": [
+   "The Samaritans",
+   "The Romans",
+   "The Athenians",
+   "Those in Pisidian Antioch who rejected the word"
+  ],
+  "answer": 3,
+  "explanation": "Paul turned to the Gentiles after Jewish rejection.",
+  "ref": "Acts 13:46"
+ },
+ {
+  "id": "old-acts-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the man at Lystra who had been crippled from birth?",
+  "choices": [
+   "He remained seated",
+   "He leaped and walked",
+   "He became blind",
+   "He was carried home"
+  ],
+  "answer": 1,
+  "explanation": "Paul commanded him to stand upright, and he leaped and walked.",
+  "ref": "Acts 14:8–10"
+ },
+ {
+  "id": "old-acts-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name did the people of Lystra give Barnabas?",
+  "choices": [
+   "Jupiter",
+   "Mercurius",
+   "Apollo",
+   "Mars"
+  ],
+  "answer": 0,
+  "explanation": "They called Barnabas Jupiter.",
+  "ref": "Acts 14:12"
+ },
+ {
+  "id": "old-acts-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the people of Lystra call Mercurius?",
+  "choices": [
+   "Silas",
+   "Titus",
+   "Mark",
+   "Paul"
+  ],
+  "answer": 3,
+  "explanation": "They called Paul Mercurius because he was the chief speaker.",
+  "ref": "Acts 14:12"
+ },
+ {
+  "id": "old-acts-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did hostile Jews persuade the people to do to Paul?",
+  "choices": [
+   "Stone him",
+   "Crown him",
+   "Imprison him",
+   "Escort him away"
+  ],
+  "answer": 0,
+  "explanation": "Paul was stoned and dragged out of the city.",
+  "ref": "Acts 14:19"
+ },
+ {
+  "id": "old-acts-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul and Barnabas appoint in every church on the return journey?",
+  "choices": [
+   "Kings",
+   "Scribes",
+   "Elders",
+   "Centurions"
+  ],
+  "answer": 2,
+  "explanation": "They ordained elders in every church.",
+  "ref": "Acts 14:23"
+ },
+ {
+  "id": "old-acts-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What issue caused the dispute at Antioch?",
+  "choices": [
+   "Whether believers could eat bread",
+   "Who should lead Jerusalem",
+   "Whether Gentiles must be circumcised to be saved",
+   "Whether Paul should travel"
+  ],
+  "answer": 2,
+  "explanation": "Some taught that Gentiles must be circumcised to be saved.",
+  "ref": "Acts 15:1"
+ },
+ {
+  "id": "old-acts-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who testified that God had purified Gentile hearts by faith?",
+  "choices": [
+   "Peter",
+   "James",
+   "Barnabas",
+   "Silas"
+  ],
+  "answer": 0,
+  "explanation": "Peter testified about God's work among the Gentiles.",
+  "ref": "Acts 15:7–9"
+ },
+ {
+  "id": "old-acts-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter call the law when arguing against placing it on Gentile believers?",
+  "choices": [
+   "A light yoke",
+   "A yoke our fathers could not bear",
+   "A covenant sign",
+   "A temporary shadow"
+  ],
+  "answer": 1,
+  "explanation": "Peter said neither they nor their fathers could bear that yoke.",
+  "ref": "Acts 15:10"
+ },
+ {
+  "id": "old-acts-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who gave the final judgment at the council?",
+  "choices": [
+   "Paul",
+   "Peter",
+   "James",
+   "John Mark"
+  ],
+  "answer": 2,
+  "explanation": "James gave the concluding judgment.",
+  "ref": "Acts 15:13–19"
+ },
+ {
+  "id": "old-acts-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two men were sent with Paul and Barnabas back to Antioch?",
+  "choices": [
+   "Titus and Timothy",
+   "Judas Barsabas and Silas",
+   "Peter and John",
+   "Apollos and Luke"
+  ],
+  "answer": 1,
+  "explanation": "Judas Barsabas and Silas were sent with them.",
+  "ref": "Acts 15:22"
+ },
+ {
+  "id": "old-acts-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Paul take and circumcise because of the Jews in those quarters?",
+  "choices": [
+   "Silas",
+   "Titus",
+   "Timothy",
+   "Luke"
+  ],
+  "answer": 2,
+  "explanation": "Paul took Timothy with him.",
+  "ref": "Acts 16:1–3"
+ },
+ {
+  "id": "old-acts-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What vision directed Paul toward Europe?",
+  "choices": [
+   "An angel with a sword",
+   "A burning bush",
+   "A voice from Jerusalem",
+   "A man of Macedonia saying, 'Come over and help us'"
+  ],
+  "answer": 3,
+  "explanation": "Paul saw a man of Macedonia pleading for help.",
+  "ref": "Acts 16:9"
+ },
+ {
+  "id": "old-acts-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the first named convert in Philippi?",
+  "choices": [
+   "Lydia",
+   "The jailer",
+   "Rhoda",
+   "Priscilla"
+  ],
+  "answer": 0,
+  "explanation": "The Lord opened Lydia's heart.",
+  "ref": "Acts 16:14"
+ },
+ {
+  "id": "old-acts-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What spirit was cast out of the damsel who followed Paul?",
+  "choices": [
+   "A dumb spirit",
+   "An unclean spirit from the tombs",
+   "A spirit of divination",
+   "A lying spirit"
+  ],
+  "answer": 2,
+  "explanation": "She had a spirit of divination.",
+  "ref": "Acts 16:16–18"
+ },
+ {
+  "id": "old-acts-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question did the jailer ask after the earthquake?",
+  "choices": [
+   "Why are you here?",
+   "Who opened the doors?",
+   "What must I do to be saved?",
+   "Will Rome punish me?"
+  ],
+  "answer": 2,
+  "explanation": "The jailer asked how to be saved.",
+  "ref": "Acts 16:30"
+ },
+ {
+  "id": "old-acts-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city was described as more noble because they searched the Scriptures daily?",
+  "choices": [
+   "Berea",
+   "Athens",
+   "Corinth",
+   "Ephesus"
+  ],
+  "answer": 0,
+  "explanation": "The Bereans searched the Scriptures daily.",
+  "ref": "Acts 17:11"
+ },
+ {
+  "id": "old-acts-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What inscription did Paul use as a starting point in Athens?",
+  "choices": [
+   "To Zeus",
+   "To Caesar",
+   "To the Unknown God",
+   "To Apollo"
+  ],
+  "answer": 2,
+  "explanation": "Paul preached the true God from their altar to the unknown god.",
+  "ref": "Acts 17:23"
+ },
+ {
+  "id": "old-acts-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command did Paul say God now gives to all men everywhere?",
+  "choices": [
+   "Build temples",
+   "Fast every Sabbath",
+   "Repent",
+   "Travel to Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "God now commands all men everywhere to repent.",
+  "ref": "Acts 17:30"
+ },
+ {
+  "id": "old-acts-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What truth caused some Athenians to mock?",
+  "choices": [
+   "The resurrection of the dead",
+   "The judgment of God",
+   "The flood",
+   "Circumcision"
+  ],
+  "answer": 0,
+  "explanation": "Some mocked when they heard of the resurrection.",
+  "ref": "Acts 17:32"
+ },
+ {
+  "id": "old-acts-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named as one who believed at Athens?",
+  "choices": [
+   "Gamaliel",
+   "Dionysius the Areopagite",
+   "Lydia",
+   "Cornelius"
+  ],
+  "answer": 1,
+  "explanation": "Dionysius is specifically named among the believers.",
+  "ref": "Acts 17:34"
+ },
+ {
+  "id": "old-acts-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What trade did Paul share with Aquila and Priscilla?",
+  "choices": [
+   "Fishing",
+   "Tentmaking",
+   "Carpentry",
+   "Scribing"
+  ],
+  "answer": 1,
+  "explanation": "They worked together because they were tentmakers.",
+  "ref": "Acts 18:3"
+ },
+ {
+  "id": "old-acts-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord say to Paul in the night by a vision in Corinth?",
+  "choices": [
+   "Leave the city",
+   "Go to Rome",
+   "Be not afraid, but speak",
+   "Fast and pray"
+  ],
+  "answer": 2,
+  "explanation": "The Lord encouraged Paul to keep speaking.",
+  "ref": "Acts 18:9"
+ },
+ {
+  "id": "old-acts-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Paul remain teaching the word of God in Corinth?",
+  "choices": [
+   "Three months",
+   "A year and six months",
+   "Two years",
+   "Forty days"
+  ],
+  "answer": 1,
+  "explanation": "Paul stayed there for eighteen months.",
+  "ref": "Acts 18:11"
+ },
+ {
+  "id": "old-acts-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the eloquent man mighty in the Scriptures from Alexandria?",
+  "choices": [
+   "Silas",
+   "Apollos",
+   "Barnabas",
+   "Tertullus"
+  ],
+  "answer": 1,
+  "explanation": "Apollos was an eloquent man and mighty in the Scriptures.",
+  "ref": "Acts 18:24"
+ },
+ {
+  "id": "old-acts-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took Apollos aside and explained the way of God more perfectly?",
+  "choices": [
+   "Peter and John",
+   "Paul and Silas",
+   "James and Jude",
+   "Aquila and Priscilla"
+  ],
+  "answer": 3,
+  "explanation": "Aquila and Priscilla instructed Apollos more accurately.",
+  "ref": "Acts 18:26"
+ },
+ {
+  "id": "old-acts-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many disciples in Ephesus received the Holy Ghost after Paul laid hands on them?",
+  "choices": [
+   "About twelve",
+   "Seventy",
+   "Three thousand",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "There were about twelve men.",
+  "ref": "Acts 19:7"
+ },
+ {
+  "id": "old-acts-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For how long did Paul dispute daily in the school of Tyrannus?",
+  "choices": [
+   "Six months",
+   "Five years",
+   "Forty days",
+   "Two years"
+  ],
+  "answer": 3,
+  "explanation": "Paul reasoned there for two years.",
+  "ref": "Acts 19:9–10"
+ },
+ {
+  "id": "old-acts-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the sons of Sceva when they tried to cast out a spirit by using Jesus' name?",
+  "choices": [
+   "They succeeded",
+   "The evil spirit overcame them",
+   "They were praised",
+   "They became apostles"
+  ],
+  "answer": 1,
+  "explanation": "The possessed man leaped on them and overcame them.",
+  "ref": "Acts 19:13–16"
+ },
+ {
+  "id": "old-acts-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did many new believers in Ephesus burn publicly?",
+  "choices": [
+   "Their magic books",
+   "Idols of silver",
+   "Roman banners",
+   "Temple curtains"
+  ],
+  "answer": 0,
+  "explanation": "They burned their occult books.",
+  "ref": "Acts 19:19"
+ },
+ {
+  "id": "old-acts-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stirred up the riot over the threat to Diana's worship?",
+  "choices": [
+   "Demetrius",
+   "Alexander",
+   "Apollos",
+   "Gaius"
+  ],
+  "answer": 0,
+  "explanation": "Demetrius the silversmith stirred the crowd.",
+  "ref": "Acts 19:24"
+ },
+ {
+  "id": "old-acts-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who fell from the third loft while Paul preached long into the night?",
+  "choices": [
+   "Trophimus",
+   "Eutychus",
+   "Aristarchus",
+   "Sopater"
+  ],
+  "answer": 1,
+  "explanation": "Eutychus fell down from the third loft.",
+  "ref": "Acts 20:9"
+ },
+ {
+  "id": "old-acts-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul say he had not shunned to declare?",
+  "choices": [
+   "The words of Moses",
+   "All the counsel of God",
+   "Only grace",
+   "The wisdom of Greece"
+  ],
+  "answer": 1,
+  "explanation": "Paul declared the whole counsel of God.",
+  "ref": "Acts 20:27"
+ },
+ {
+  "id": "old-acts-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Over whom did Paul tell the elders the Holy Ghost had made them overseers?",
+  "choices": [
+   "The church of God",
+   "The temple treasury",
+   "The Roman roads",
+   "The council hall"
+  ],
+  "answer": 0,
+  "explanation": "They were overseers of the church of God.",
+  "ref": "Acts 20:28"
+ },
+ {
+  "id": "old-acts-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What danger did Paul warn would enter after his departing?",
+  "choices": [
+   "Grievous wolves",
+   "Famine",
+   "Roman soldiers",
+   "False miracles"
+  ],
+  "answer": 0,
+  "explanation": "He warned that grievous wolves would enter the flock.",
+  "ref": "Acts 20:29"
+ },
+ {
+  "id": "old-acts-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What saying of the Lord Jesus did Paul quote?",
+  "choices": [
+   "Love your enemies",
+   "It is more blessed to give than to receive",
+   "The laborer is worthy",
+   "Fear not little flock"
+  ],
+  "answer": 1,
+  "explanation": "Paul quoted Jesus on giving.",
+  "ref": "Acts 20:35"
+ },
+ {
+  "id": "old-acts-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took Paul's girdle and bound his own hands and feet as a sign?",
+  "choices": [
+   "Agabus",
+   "Philip",
+   "Silas",
+   "Luke"
+  ],
+  "answer": 0,
+  "explanation": "Agabus used Paul's girdle as a prophetic sign.",
+  "ref": "Acts 21:10–11"
+ },
+ {
+  "id": "old-acts-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the believers plead with Paul not to do?",
+  "choices": [
+   "Go to Rome",
+   "Return to Tarsus",
+   "Preach in the temple",
+   "Go up to Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "They pleaded with Paul not to go to Jerusalem.",
+  "ref": "Acts 21:12"
+ },
+ {
+  "id": "old-acts-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul say he was ready for at Jerusalem?",
+  "choices": [
+   "To be bound and to die for Jesus' name",
+   "Only to preach",
+   "To become king",
+   "To rebuild the temple"
+  ],
+  "answer": 0,
+  "explanation": "Paul was ready to be bound and even die for the Lord Jesus.",
+  "ref": "Acts 21:13"
+ },
+ {
+  "id": "old-acts-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the mob accuse Paul of bringing into the temple?",
+  "choices": [
+   "Trophimus the Ephesian",
+   "Cornelius",
+   "Silas",
+   "Timothy"
+  ],
+  "answer": 0,
+  "explanation": "They thought Paul had brought Trophimus into the temple.",
+  "ref": "Acts 21:29"
+ },
+ {
+  "id": "old-acts-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who rescued Paul from being killed by the crowd?",
+  "choices": [
+   "The chief captain",
+   "The high priest",
+   "Peter",
+   "James"
+  ],
+  "answer": 0,
+  "explanation": "The chief captain came down with soldiers and rescued him.",
+  "ref": "Acts 21:31–32"
+ },
+ {
+  "id": "old-acts-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At whose feet had Paul been brought up according to his testimony?",
+  "choices": [
+   "Gamaliel",
+   "Caiaphas",
+   "Annas",
+   "Nicodemus"
+  ],
+  "answer": 0,
+  "explanation": "Paul said he was brought up at the feet of Gamaliel.",
+  "ref": "Acts 22:3"
+ },
+ {
+  "id": "old-acts-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Paul say appeared to him on the road to Damascus?",
+  "choices": [
+   "An angel",
+   "Jesus of Nazareth",
+   "Moses",
+   "Stephen"
+  ],
+  "answer": 1,
+  "explanation": "Paul identified the speaker as Jesus of Nazareth.",
+  "ref": "Acts 22:8"
+ },
+ {
+  "id": "old-acts-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Paul to arise, be baptized, and wash away his sins?",
+  "choices": [
+   "Peter",
+   "Barnabas",
+   "Silas",
+   "Ananias"
+  ],
+  "answer": 3,
+  "explanation": "Ananias spoke those words to Paul.",
+  "ref": "Acts 22:16"
+ },
+ {
+  "id": "old-acts-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What word in Paul's speech caused the crowd to lift up their voices again?",
+  "choices": [
+   "Resurrection",
+   "Gentiles",
+   "Temple",
+   "Caesar"
+  ],
+  "answer": 1,
+  "explanation": "The crowd erupted when Paul mentioned being sent to the Gentiles.",
+  "ref": "Acts 22:21–22"
+ },
+ {
+  "id": "old-acts-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What citizenship did Paul reveal that stopped the scourging?",
+  "choices": [
+   "Greek",
+   "Hebrew",
+   "Egyptian",
+   "Roman"
+  ],
+  "answer": 3,
+  "explanation": "Paul was a Roman citizen.",
+  "ref": "Acts 22:25–29"
+ },
+ {
+  "id": "old-acts-23-1",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul say he had lived in before God?",
+  "choices": [
+   "Great riches",
+   "Hidden fear",
+   "Temple service only",
+   "All good conscience"
+  ],
+  "answer": 3,
+  "explanation": "Paul said he had lived in all good conscience.",
+  "ref": "Acts 23:1"
+ },
+ {
+  "id": "old-acts-23-2",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command did the high priest Ananias give regarding Paul?",
+  "choices": [
+   "Release him",
+   "Hear him out",
+   "Take him to the temple",
+   "Smite him on the mouth"
+  ],
+  "answer": 3,
+  "explanation": "Ananias commanded those standing by to strike Paul.",
+  "ref": "Acts 23:2"
+ },
+ {
+  "id": "old-acts-23-3",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What subject did Paul raise that divided the council?",
+  "choices": [
+   "Resurrection",
+   "Temple taxes",
+   "Circumcision",
+   "Roman rule"
+  ],
+  "answer": 0,
+  "explanation": "Paul cried out concerning the hope and resurrection.",
+  "ref": "Acts 23:6–8"
+ },
+ {
+  "id": "old-acts-23-4",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who learned of the ambush against Paul and told the chief captain?",
+  "choices": [
+   "Paul's sister's son",
+   "Timothy",
+   "Barnabas",
+   "Silas"
+  ],
+  "answer": 0,
+  "explanation": "Paul's nephew uncovered the plot.",
+  "ref": "Acts 23:16–22"
+ },
+ {
+  "id": "old-acts-23-5",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom was Paul sent by night with a large guard?",
+  "choices": [
+   "Festus",
+   "Agrippa",
+   "Gallio",
+   "Felix"
+  ],
+  "answer": 3,
+  "explanation": "Paul was sent safely to Felix the governor.",
+  "ref": "Acts 23:23–24"
+ },
+ {
+  "id": "old-acts-24-1",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who presented the case against Paul before Felix?",
+  "choices": [
+   "Agrippa",
+   "Ananias alone",
+   "Tertullus",
+   "Claudius Lysias"
+  ],
+  "answer": 2,
+  "explanation": "Tertullus began to accuse Paul.",
+  "ref": "Acts 24:1–2"
+ },
+ {
+  "id": "old-acts-24-2",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul say he believed concerning the law and the prophets?",
+  "choices": [
+   "Only some parts",
+   "Nothing beyond Moses",
+   "All things written therein",
+   "Only the psalms"
+  ],
+  "answer": 2,
+  "explanation": "Paul believed all things written in the law and prophets.",
+  "ref": "Acts 24:14"
+ },
+ {
+  "id": "old-acts-24-3",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What hope did Paul say he had toward God?",
+  "choices": [
+   "That Rome would fall",
+   "That there shall be a resurrection of the dead",
+   "That he would escape chains",
+   "That the temple would be rebuilt"
+  ],
+  "answer": 1,
+  "explanation": "Paul affirmed the resurrection of the just and unjust.",
+  "ref": "Acts 24:15"
+ },
+ {
+  "id": "old-acts-24-4",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What subjects made Felix tremble when Paul reasoned with him?",
+  "choices": [
+   "Prophecy and miracles",
+   "Temple worship and fasting",
+   "Righteousness, temperance, and judgment to come",
+   "Circumcision and Sabbaths"
+  ],
+  "answer": 2,
+  "explanation": "Felix trembled when Paul reasoned of these things.",
+  "ref": "Acts 24:25"
+ },
+ {
+  "id": "old-acts-24-5",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Felix often send for Paul?",
+  "choices": [
+   "In hope that Paul would give him money",
+   "To make him a judge",
+   "To teach his household Greek",
+   "To free him quickly"
+  ],
+  "answer": 0,
+  "explanation": "Felix hoped that money would be given him by Paul, so he sent for him the oftener.",
+  "ref": "Acts 24:26"
+ },
+ {
+  "id": "old-acts-25-1",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the chief priests request Festus to do with Paul?",
+  "choices": [
+   "Release him",
+   "Send him to Rome at once",
+   "Bring him to Jerusalem",
+   "Make him high priest"
+  ],
+  "answer": 2,
+  "explanation": "They requested that Paul be brought to Jerusalem.",
+  "ref": "Acts 25:2–3"
+ },
+ {
+  "id": "old-acts-25-2",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did Paul appeal when Festus asked if he would be judged at Jerusalem?",
+  "choices": [
+   "The high priest",
+   "King Agrippa",
+   "Caesar",
+   "Felix"
+  ],
+  "answer": 2,
+  "explanation": "Paul said, 'I appeal unto Caesar,' and Festus answered that unto Caesar he would go.",
+  "ref": "Acts 25:11–12"
+ },
+ {
+  "id": "old-acts-25-3",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Festus tell Agrippa the dispute with Paul was about?",
+  "choices": [
+   "Only Caesar",
+   "One Jesus, which was dead, whom Paul affirmed to be alive",
+   "Moses and Elijah",
+   "The prophets of Baal"
+  ],
+  "answer": 1,
+  "explanation": "Festus told Agrippa the accusers had questions about one Jesus, which was dead, whom Paul affirmed to be alive.",
+  "ref": "Acts 25:19"
+ },
+ {
+  "id": "old-acts-25-4",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came with Bernice to hear Paul?",
+  "choices": [
+   "Agrippa",
+   "Festus",
+   "Felix",
+   "Lysias"
+  ],
+  "answer": 0,
+  "explanation": "Agrippa and Bernice came to hear Paul.",
+  "ref": "Acts 25:23"
+ },
+ {
+  "id": "old-acts-25-5",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Festus want Agrippa to hear Paul?",
+  "choices": [
+   "To learn Hebrew",
+   "To condemn him publicly",
+   "To appoint him governor",
+   "To have something certain to write to Caesar"
+  ],
+  "answer": 3,
+  "explanation": "Festus needed a clear report to send with Paul.",
+  "ref": "Acts 25:26–27"
+ },
+ {
+  "id": "old-acts-26-1",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Before whom did Paul stretch forth the hand and answer for himself?",
+  "choices": [
+   "Felix",
+   "Tertullus",
+   "Lysias",
+   "Agrippa"
+  ],
+  "answer": 3,
+  "explanation": "Paul answered before King Agrippa.",
+  "ref": "Acts 26:1"
+ },
+ {
+  "id": "old-acts-26-2",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had Jesus told Paul on the Damascus road about his calling?",
+  "choices": [
+   "Build synagogues",
+   "Return to Tarsus",
+   "To be a minister and witness",
+   "Rule Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Jesus appointed Paul as a minister and witness.",
+  "ref": "Acts 26:16"
+ },
+ {
+  "id": "old-acts-26-3",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul say he preached that people should do?",
+  "choices": [
+   "Fight Rome",
+   "Offer more sacrifices",
+   "Repent and turn to God",
+   "Keep every feast"
+  ],
+  "answer": 2,
+  "explanation": "Paul preached repentance and turning to God.",
+  "ref": "Acts 26:20"
+ },
+ {
+  "id": "old-acts-26-4",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Festus say with a loud voice during Paul's defense?",
+  "choices": [
+   "You are innocent",
+   "Speak more softly",
+   "You must leave at once",
+   "Paul, thou art beside thyself"
+  ],
+  "answer": 3,
+  "explanation": "Festus accused Paul of being mad.",
+  "ref": "Acts 26:24"
+ },
+ {
+  "id": "old-acts-26-5",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Agrippa respond to Paul's appeal?",
+  "choices": [
+   "I fully believe",
+   "You are free",
+   "Be silent",
+   "Almost thou persuadest me to be a Christian"
+  ],
+  "answer": 3,
+  "explanation": "Agrippa said Paul almost persuaded him.",
+  "ref": "Acts 26:28"
+ },
+ {
+  "id": "old-acts-27-1",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the centurion in charge of Paul during the voyage?",
+  "choices": [
+   "Cornelius",
+   "Claudius",
+   "Lysias",
+   "Julius"
+  ],
+  "answer": 3,
+  "explanation": "Julius, a centurion of Augustus' band, had charge of Paul.",
+  "ref": "Acts 27:1"
+ },
+ {
+  "id": "old-acts-27-2",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning did Paul give before the dangerous sailing continued?",
+  "choices": [
+   "There would be mutiny",
+   "The voyage would be with hurt and much damage",
+   "The ship would arrive early",
+   "Pirates would attack"
+  ],
+  "answer": 1,
+  "explanation": "Paul warned of hurt and much damage.",
+  "ref": "Acts 27:10"
+ },
+ {
+  "id": "old-acts-27-3",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the name of the violent storm that struck the ship?",
+  "choices": [
+   "Sirocco",
+   "Levanter",
+   "Euroclydon",
+   "Tempestus"
+  ],
+  "answer": 2,
+  "explanation": "Luke calls the storm Euroclydon.",
+  "ref": "Acts 27:14"
+ },
+ {
+  "id": "old-acts-27-4",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many souls were on the ship?",
+  "choices": [
+   "One hundred twenty",
+   "Two hundred seventy-six",
+   "Seventy",
+   "Three hundred"
+  ],
+  "answer": 1,
+  "explanation": "There were 276 people aboard.",
+  "ref": "Acts 27:37"
+ },
+ {
+  "id": "old-acts-27-5",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the ship do after striking a place where two seas met?",
+  "choices": [
+   "Turned back",
+   "Sailed smoothly",
+   "Began to break apart",
+   "Caught fire"
+  ],
+  "answer": 2,
+  "explanation": "The hinder part was broken with the violence of the waves.",
+  "ref": "Acts 27:41"
+ },
+ {
+  "id": "old-acts-28-1",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What island did they learn they had escaped to?",
+  "choices": [
+   "Crete",
+   "Cyprus",
+   "Patmos",
+   "Melita"
+  ],
+  "answer": 3,
+  "explanation": "The island was called Melita.",
+  "ref": "Acts 28:1"
+ },
+ {
+  "id": "old-acts-28-2",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What fastened on Paul's hand as he gathered sticks?",
+  "choices": [
+   "A scorpion",
+   "A viper",
+   "A leech",
+   "A spider"
+  ],
+  "answer": 1,
+  "explanation": "A viper came out of the heat and fastened on his hand.",
+  "ref": "Acts 28:3"
+ },
+ {
+  "id": "old-acts-28-3",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose father did Paul heal on the island?",
+  "choices": [
+   "Julius's",
+   "Festus's",
+   "Publius's",
+   "Agrippa's"
+  ],
+  "answer": 2,
+  "explanation": "Paul healed the father of Publius.",
+  "ref": "Acts 28:7–8"
+ },
+ {
+  "id": "old-acts-28-4",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For how long did Paul dwell in his own hired house in Rome?",
+  "choices": [
+   "Two whole years",
+   "Six months",
+   "Five years",
+   "Forty days"
+  ],
+  "answer": 0,
+  "explanation": "Paul lived there two whole years.",
+  "ref": "Acts 28:30"
+ },
+ {
+  "id": "old-acts-28-5",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Paul doing in Rome at the end of Acts?",
+  "choices": [
+   "Working as a tentmaker only",
+   "Serving in the temple",
+   "Preaching the kingdom of God",
+   "Waiting in silence"
+  ],
+  "answer": 2,
+  "explanation": "Acts ends with Paul preaching the kingdom of God.",
+  "ref": "Acts 28:31"
+ }
+]

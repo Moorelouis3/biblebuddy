@@ -525,7 +525,7 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
     { match: /\b(profile)\b/, href: "/profile", reply: "Okay.\n\nI’m taking you to your profile now." },
     { match: /\b(settings?)\b/, href: "/settings", reply: "Okay.\n\nI’m opening settings now." },
     { match: /\b(study tools?|guided studies?)\b/, href: "/guided-studies", reply: "Okay.\n\nI’m taking you to the study tools now." },
-    { match: /\b(trivia)\b/, href: "/bible-trivia", reply: "Okay.\n\nI’m opening Bible Trivia now." },
+    { match: /\b(trivia)\b/, href: "/bible-study-games/clue", reply: "Okay.\n\nI’m opening Bible Trivia now." },
     { match: /\b(scrambled)\b/, href: "/bible-study-games/scrambled", reply: "Okay.\n\nI’m opening Scrambled now." },
   ];
 

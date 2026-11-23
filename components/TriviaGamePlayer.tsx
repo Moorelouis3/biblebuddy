@@ -1,21 +1,40 @@
 "use client";
 
-import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
-import { LouisAvatar } from "@/components/LouisAvatar";
-import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
+/**
+ * Chapter trivia, wherever the app offers it: after a chapter in the Bible
+ * reader, as a study-guide day's task, on the dashboard and in Bible in One
+ * Year.
+ *
+ * Since 2026-11-23 this plays the new Bible Trivia game (the Bible Clue game,
+ * renamed; components/clueGame/ChapterTrivia.tsx) on that chapter's
+ * questions, full screen, Easy, Medium or Hard. The old five-question quiz is
+ * gone; its questions live on in the new game's bank
+ * (scripts/trivia-import-old.ts).
+ *
+ * What stays exactly as it was, because other screens read it:
+ *  - the props, so every caller is unchanged;
+ *  - trivia_chapter_completed, label "{Book} {chapter} - {right}/{total}",
+ *    deduped per book and chapter: study-guide days count as done on it, and
+ *    Bible in One Year, badges and the admin reports read it;
+ *  - every answer to /api/trivia-answer (trivia_question_answered /
+ *    trivia_question_correct, the XP per first right answer, profile_stats);
+ *  - trivia_started through /api/consume-credit when a game starts;
+ *  - the XP pop and Louis's Scrambled suggestion afterwards;
+ *  - onComplete once the completion is saved, then onClose.
+ */
+
+import { useCallback, useRef, useState } from "react";
 import { triggerPoints } from "@/components/PointsPop";
 import { TASK_XP } from "@/lib/progressionRewards";
 import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import type { TriviaChapterPack } from "@/lib/triviaGameData";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "@/lib/triviaCatalog";
-import { FREE_TRIVIA_BOOK_KEYS } from "@/lib/bibleStudyGameCatalog";
-import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 import { dispatchLouisMoment } from "@/lib/louisMoments";
-import ShareToFeed from "@/components/feed/ShareToFeed";
+import { BOOK_INDEX, MIN_ROUND } from "@/lib/clueGame/bank";
+import { CLUE_LEVELS, LEVEL_LABEL, type ClueLevel } from "@/lib/clueGame/types";
+import ChapterTrivia, { type ChapterTriviaResult } from "@/components/clueGame/ChapterTrivia";
 
 type TriviaGamePlayerProps = {
   bookName: string;
@@ -23,602 +42,152 @@ type TriviaGamePlayerProps = {
   chapter: TriviaChapterPack;
   onClose?: () => void;
   onComplete?: () => void;
+  /** Kept for callers; trivia is free for everyone. */
   skipUpgradeGate?: boolean;
   compact?: boolean;
   enableDashboardSkip?: boolean;
   hideSkipButton?: boolean;
 };
 
-async function fetchVerseText(reference: string) {
-  try {
-    const primaryRef = reference.split(/[;,]/)[0]?.trim() ?? reference.trim();
-    const singleVerseRef = primaryRef.replace(/:(\d+)\s*-\s*\d+\b/, ":$1");
-    const normalizedRef = encodeURIComponent(singleVerseRef);
-    const response = await fetch(`https://bible-api.com/${normalizedRef}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch verse");
-    }
+/** The old trivia's route slug → the game's book id (only Song of Songs differs). */
+const gameBook = (routeSlug: string) => (routeSlug === "song-of-songs" ? "song-of-solomon" : routeSlug);
 
-    const data = await response.json();
-    return data.text || "";
-  } catch (error) {
-    console.error("Error fetching verse:", error);
-    return "";
-  }
-}
+export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose, onComplete, compact = false }: TriviaGamePlayerProps) {
+  const chapterNumber = chapter?.chapter ?? 1;
+  const book = gameBook(bookSlug);
+  const bookKey = CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.routeSlug === bookSlug)?.key ?? bookSlug;
+  const counts = BOOK_INDEX[book]?.chapters?.[chapterNumber] ?? [0, 0, 0];
+  const [playing, setPlaying] = useState<ClueLevel | null>(null);
+  const [last, setLast] = useState<ChapterTriviaResult | null>(null);
+  const completed = useRef(false);
 
-export default function TriviaGamePlayer({
-  bookName,
-  bookSlug,
-  chapter,
-  onClose,
-  onComplete,
-  skipUpgradeGate = false,
-  compact = false,
-  enableDashboardSkip = false,
-  hideSkipButton = false,
-}: TriviaGamePlayerProps) {
-  const router = useRouter();
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  // The result panel (and its Next button) appears BELOW the options, off
-  // screen on phones - a reader reported not being able to continue. Bring
-  // the button into view the moment an answer lands.
-  const nextButtonRef = useRef<HTMLButtonElement | null>(null);
-  useEffect(() => {
-    if (!selectedAnswer) return;
-    window.setTimeout(() => {
-      nextButtonRef.current?.scrollIntoView({
-        block: "end",
-      });
-    }, 80);
-  }, [selectedAnswer]);
-  const [correctCount, setCorrectCount] = useState(0);
-  const [earnedCorrectCount, setEarnedCorrectCount] = useState(0);
-  const [showResults, setShowResults] = useState(false);
-  const [verseText, setVerseText] = useState("");
-  const [loadingVerseText, setLoadingVerseText] = useState(false);
-  const [userId, setUserId] = useState<string | null>(null);
-  const [userEmail, setUserEmail] = useState<string | null>(null);
-  const [isPaid, setIsPaid] = useState<boolean | null>(null);
-  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
-  const completionNotifiedRef = useRef(false);
-  const completionPersistedRef = useRef(false);
+  const start = (level: ClueLevel) => {
+    setPlaying(level);
+    // The same "trivia started" record the old quiz made.
+    void fetch("/api/consume-credit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ actionType: ACTION_TYPE.trivia_started }),
+    }).catch(() => null);
+  };
 
-  const bookKey = useMemo(() => {
-    return CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.routeSlug === bookSlug)?.key ?? bookSlug;
-  }, [bookSlug]);
-
-  const isFreeBook = FREE_TRIVIA_BOOK_KEYS.has(bookKey);
-  // All trivia books are free for everyone.
-  const shouldGateUpgrade = !CORE_STUDY_IS_FREE && !skipUpgradeGate && !isFreeBook;
-
-  const questions = chapter?.questions ?? [];
-  const currentQuestion = questions[currentQuestionIndex] ?? null;
-  const isCorrect = Boolean(currentQuestion && selectedAnswer === currentQuestion.correctAnswer);
-  const showOwnerDashboardSkip = compact && !hideSkipButton && (enableDashboardSkip || userEmail?.toLowerCase() === "moorelouis3@gmail.com");
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function loadUser() {
+  const finish = useCallback(
+    async (r: ChapterTriviaResult) => {
+      setLast(r);
       const {
         data: { user },
       } = await supabase.auth.getUser();
+      if (!user) return;
+      const meta = (user.user_metadata ?? {}) as Record<string, string | undefined>;
+      const username = meta.firstName || meta.first_name || (user.email ? user.email.split("@")[0] : null) || "User";
 
-      if (cancelled) {
-        return;
+      // Every answer, as the old quiz recorded them (XP for a first right answer).
+      let earned = 0;
+      for (const a of r.answers) {
+        try {
+          const res = await fetch("/api/trivia-answer", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId: user.id, questionId: a.id, username, isCorrect: a.correct, book: chapter?.progressKey ?? `${bookKey}:${chapterNumber}` }),
+          });
+          const payload = (await res.json().catch(() => ({}))) as { awardedPoint?: boolean };
+          if (payload.awardedPoint) earned += 1;
+        } catch {}
       }
 
-      if (!user) {
-        setIsPaid(false);
-        if (shouldGateUpgrade) {
-          setShowUpgradeModal(true);
+      if (!completed.current) {
+        try {
+          const logged = await trackNavigationActionOnce({
+            userId: user.id,
+            actionType: ACTION_TYPE.trivia_chapter_completed,
+            actionLabel: `${bookName} ${chapterNumber} - ${r.right}/${r.total}`,
+            dedupeKey: `trivia-chapter-completed:${bookKey}:${chapterNumber}`,
+          });
+          completed.current = true;
+          if (logged) triggerPoints(Math.round(earned * (TASK_XP.triviaPerfect / Math.max(r.total, 1))));
+          onComplete?.();
+        } catch (error) {
+          console.error("[NAV] Failed to track Trivia chapter completion:", error);
         }
-        return;
       }
 
-      setUserId(user.id);
-      setUserEmail(user.email ?? null);
-
-      const { data: profileStats } = await supabase
-        .from("profile_stats")
-        .select("is_paid")
-        .eq("user_id", user.id)
-        .maybeSingle();
-
-      const paid = profileStats?.is_paid === true;
-      setIsPaid(paid);
-
-      if (!paid && shouldGateUpgrade) {
-        setShowUpgradeModal(true);
-        return;
-      }
-
-      const creditResponse = await fetch("/api/consume-credit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          actionType: ACTION_TYPE.trivia_started,
-        }),
+      dispatchLouisMoment({
+        message:
+          r.right === r.total
+            ? `Nice work. You just finished trivia for ${bookName} ${chapterNumber} and got a perfect score.\n\nIf you want to lock this chapter in even more, Scrambled is the best next move.\n\nDo you want to play it now?`
+            : `Nice work. You just finished trivia for ${bookName} ${chapterNumber} and got ${r.right} out of ${r.total}.\n\nIf you want to keep the momentum going, Scrambled is the best next move.\n\nDo you want to play it now?`,
+        replies: [
+          { id: `trivia-scrambled-${bookKey}-${chapterNumber}`, label: "Yes", href: `/bible-study-games/scrambled/${bookKey}/${chapterNumber}` },
+          { id: `trivia-scrambled-no-${bookKey}-${chapterNumber}`, label: "No", message: "No problem.\n\nIf you want to come back to Scrambled later, I will be here." },
+        ],
       });
-
-      if (!creditResponse.ok || cancelled) {
-        return;
-      }
-
-      const creditResult = (await creditResponse.json()) as { ok: boolean };
-      if (!creditResult.ok || cancelled) {
-        return;
-      }
-    }
-
-    void loadUser();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [shouldGateUpgrade]);
-
-  if (isPaid === false && shouldGateUpgrade) {
-    return (
-      <div className={`${compact ? "bg-white px-3 py-4" : "min-h-screen bg-gray-50 px-4 py-10"}`}>
-        <div className="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
-          <h1 className="text-2xl font-bold text-gray-900">Trivia Pro Feature</h1>
-          <p className="mt-3 text-gray-700">
-            This chapter quiz unlocks with Pro.
-          </p>
-          <div className="mt-8 space-y-3">
-            <button
-              type="button"
-              onClick={() => setShowUpgradeModal(true)}
-              className="block w-full rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700"
-            >
-              Upgrade to Pro
-            </button>
-            <button
-              type="button"
-              onClick={() => onClose ? onClose() : router.back()}
-              className="block w-full rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200"
-            >
-              Go back
-            </button>
-          </div>
-        </div>
-
-        <UpgradeRequiredModal isOpen={showUpgradeModal} onClose={() => setShowUpgradeModal(false)} />
-      </div>
-    );
-  }
-
-  async function handleAnswerSelect(answer: string) {
-    if (selectedAnswer || !currentQuestion) {
-      return;
-    }
-
-    const answerIsCorrect = answer === currentQuestion.correctAnswer;
-    setSelectedAnswer(answer);
-
-    if (answerIsCorrect) {
-      setCorrectCount((current) => current + 1);
-    }
-
-    if (userId) {
-      try {
-        const {
-          data: { user },
-        } = await supabase.auth.getUser();
-
-        const meta = (user?.user_metadata ?? {}) as Record<string, string | undefined>;
-        const username =
-          meta.firstName || meta.first_name || (user?.email ? user.email.split("@")[0] : null) || "User";
-
-        const response = await fetch("/api/trivia-answer", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId,
-            questionId: currentQuestion.id,
-            username,
-            isCorrect: answerIsCorrect,
-            book: chapter.progressKey,
-          }),
-        });
-
-        const payload = (await response.json().catch(() => ({}))) as { awardedPoint?: boolean };
-        if (payload.awardedPoint) {
-          setEarnedCorrectCount((current) => current + 1);
-        }
-      } catch (error) {
-        console.error("Error recording trivia answer:", error);
-      }
-    }
-
-    setLoadingVerseText(true);
-    const nextVerseText = await fetchVerseText(currentQuestion.verse);
-    setVerseText(nextVerseText);
-    setLoadingVerseText(false);
-  }
-
-  function handleNext() {
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex((current) => current + 1);
-      setSelectedAnswer(null);
-      setVerseText("");
-      return;
-    }
-
-    setShowResults(true);
-  }
-
-  function handleOwnerSkip() {
-    setCorrectCount(questions.length);
-    setEarnedCorrectCount(0);
-    setSelectedAnswer(null);
-    setVerseText("");
-    setCurrentQuestionIndex(Math.max(0, questions.length - 1));
-    setShowResults(true);
-  }
-
-  function handleRetakeQuiz() {
-    setCurrentQuestionIndex(0);
-    setSelectedAnswer(null);
-    setCorrectCount(0);
-    setEarnedCorrectCount(0);
-    setVerseText("");
-    setLoadingVerseText(false);
-    setShowResults(false);
-  }
-
-  const recordTriviaCompletion = useCallback(
-    async (score: number, pointsToAward: number) => {
-      if (completionPersistedRef.current) return true;
-
-      let currentUserId = userId;
-      if (!currentUserId) {
-        const {
-          data: { user },
-        } = await supabase.auth.getUser();
-        currentUserId = user?.id ?? null;
-        if (user?.email) setUserEmail(user.email);
-        if (user?.id) setUserId(user.id);
-      }
-
-      if (!currentUserId) return false;
-
-      try {
-        const logged = await trackNavigationActionOnce({
-          userId: currentUserId,
-          actionType: ACTION_TYPE.trivia_chapter_completed,
-          actionLabel: `${bookName} ${chapter.chapter} - ${score}/${questions.length}`,
-          dedupeKey: `trivia-chapter-completed:${bookKey}:${chapter.chapter}`,
-        });
-
-        completionPersistedRef.current = true;
-        if (logged) {
-          triggerPoints(Math.round(pointsToAward * (TASK_XP.triviaPerfect / Math.max(questions.length, 1))));
-        }
-        return true;
-      } catch (error) {
-        console.error("[NAV] Failed to track Trivia chapter completion:", error);
-        return false;
-      }
     },
-    [bookKey, bookName, chapter.chapter, questions.length, userId],
+    [bookKey, bookName, chapter?.progressKey, chapterNumber, onComplete],
   );
 
-  useEffect(() => {
-    if (!showResults || completionNotifiedRef.current) return;
-    let cancelled = false;
-
-    async function persistThenNotify() {
-      const saved = await recordTriviaCompletion(correctCount, earnedCorrectCount);
-      if (cancelled || !saved) return;
-      completionNotifiedRef.current = true;
-      onComplete?.();
-    }
-
-    void persistThenNotify();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [showResults, correctCount, earnedCorrectCount, onComplete, recordTriviaCompletion]);
-
-  useEffect(() => {
-    if (!showResults) return;
-
-    const scrambledHref = `/bible-study-games/scrambled/${bookKey}/${chapter.chapter}`;
-    const chapterHref = `/bible-trivia/${bookSlug}`;
-
-    dispatchLouisMoment({
-      message:
-        correctCount === questions.length
-          ? `Nice work. You just finished trivia for ${bookName} ${chapter.chapter} and got a perfect score.\n\nIf you want to lock this chapter in even more, Scrambled is the best next move.\n\nDo you want to play it now?`
-          : `Nice work. You just finished trivia for ${bookName} ${chapter.chapter} and got ${correctCount} out of ${questions.length}.\n\nIf you want to keep the momentum going, Scrambled is the best next move.\n\nDo you want to play it now?`,
-      replies: [
-        {
-          id: `trivia-scrambled-${bookKey}-${chapter.chapter}`,
-          label: "Yes",
-          href: scrambledHref,
-        },
-        {
-          id: `trivia-scrambled-no-${bookKey}-${chapter.chapter}`,
-          label: "No",
-          message: "No problem.\n\nIf you want to come back to Scrambled later, I will be here.",
-        },
-      ],
-    });
-  }, [showResults, correctCount, questions.length, chapter.chapter, bookName, bookKey, bookSlug]);
-
-  async function handleResultsClose() {
-    if (showResults && !completionNotifiedRef.current) {
-      const saved = await recordTriviaCompletion(correctCount, earnedCorrectCount);
-      if (saved) {
-        completionNotifiedRef.current = true;
-        onComplete?.();
-      }
-    }
-    onClose?.();
-  }
-
-  if (!currentQuestion && !showResults) {
-    return (
-      <div className="bg-gray-50 px-4 py-8">
-        <div className="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-8 text-center shadow-sm">
-          <h1 className="text-2xl font-bold text-gray-900">Trivia unavailable</h1>
-          <p className="mt-3 text-gray-700">
-            Louis could not find the questions for this chapter yet.
-          </p>
-          <button
-            type="button"
-            onClick={() => onClose ? onClose() : router.back()}
-            className="mt-8 block w-full rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  if (showResults) {
-    const scrambledHref = `/bible-study-games/scrambled/${bookKey}/${chapter.chapter}`;
-    const isEmbedded = Boolean(onClose);
-    const perfectScore = correctCount === questions.length;
-    const strongScore = correctCount >= Math.max(4, questions.length - 1);
-    const encouragement = perfectScore
-      ? "That was clean. You really paid attention to this chapter."
-      : strongScore
-        ? "Strong work. The chapter is starting to stick."
-        : correctCount >= Math.ceil(questions.length / 2)
-          ? "Good progress. Keep going and this chapter will get clearer."
-          : "You finished the round, and that still counts. Review it once more and the chapter will land better.";
-    return (
-      <div className={`${isEmbedded || compact ? "bg-white px-0 py-2" : "min-h-screen bg-[#f5f7fb] px-4 py-8"}`}>
-        <div
-          className={`relative mx-auto max-w-xl text-center ${
-            isEmbedded || compact
-              ? "px-2 py-4"
-              : "rounded-[32px] border border-gray-200 bg-white p-6 shadow-xl shadow-gray-200/70 sm:p-8"
-          }`}
-        >
-          {onClose && !compact ? (
-            <button
-              type="button"
-              onClick={() => void handleResultsClose()}
-              className="absolute right-1 top-1 z-10 grid h-9 w-9 place-items-center rounded-full border border-gray-200 bg-white text-2xl font-light leading-none text-gray-700 shadow-sm transition hover:bg-gray-50 hover:text-gray-950 sm:right-3 sm:top-3"
-              aria-label="Close trivia results"
-            >
-              ×
-            </button>
-          ) : null}
-          {!compact ? (
-            <>
-              <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-gray-200 bg-white shadow-lg shadow-gray-200/80">
-                <LouisAvatar mood="stareyes" size={112} />
-              </div>
-              <p className="mt-4 text-xs font-black uppercase tracking-[0.22em] text-gray-950">Bible Buddy</p>
-            </>
-          ) : null}
-          <p className={`${compact ? "mt-1" : "mt-1"} text-base font-black text-gray-950`}>{perfectScore ? "Perfect round." : "Nice work finishing."}</p>
-          <h1 className={`mx-auto max-w-md font-black leading-tight text-gray-950 ${compact ? "mt-4 text-2xl" : "mt-8 text-3xl"}`}>
-            {compact ? `${bookName} ${chapter.chapter} Trivia Results` : `Trivia Results for ${bookName} ${chapter.chapter}`}
-          </h1>
-          <p className={`${compact ? "mt-5" : "mt-8"} text-sm font-black uppercase tracking-[0.16em] text-gray-950`}>Score</p>
-          <p className={`${compact ? "mt-1 text-5xl" : "mt-2 text-6xl"} font-black leading-none text-gray-950`}>
-            {correctCount}/{questions.length}
-          </p>
-          <p className="mx-auto mt-4 max-w-md text-base font-bold leading-7 text-gray-950">{encouragement}</p>
-          <p className="mt-5 text-base font-black leading-7 text-gray-950">
-            Your trivia progress was saved.
-          </p>
-
-          {/* A score is the easiest thing anybody has to say on the wall, and
-              trivia rounds are not posted automatically - 15 a day would be a
-              log, not a feed. So the offer is here, at the moment there is
-              something to say, prefilled and one tap from done. */}
-          <div className="mt-5 flex justify-center">
-            <ShareToFeed
-              defaultText={`Got ${correctCount} out of ${questions.length} on ${bookName} ${chapter.chapter} trivia.`}
-              label="Share your score"
-            />
-          </div>
-          {onClose ? (
-            <button
-              type="button"
-              onClick={() => void handleResultsClose()}
-              className="mt-8 rounded-full bg-[var(--bb-button)] px-6 py-3 text-sm font-black text-[var(--bb-button-text)] shadow-sm transition hover:brightness-95"
-            >
-              Mark as Completed
-            </button>
-          ) : null}
-          {compact ? (
-            <div className="mt-8">
-              <button
-                type="button"
-                onClick={handleRetakeQuiz}
-                className="block w-full rounded-xl border border-gray-200 bg-white px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-50"
-              >
-                Retake quiz
-              </button>
-            </div>
-          ) : !onClose ? (
-            <div className="mt-8 space-y-3">
-              <Link
-                href={`/bible-trivia/${bookSlug}`}
-                className="block rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200" style={{ color: "var(--bb-cv-ink, #1f2937)" }}
-              >
-                Back to chapters
-              </Link>
-              <Link
-                href={`/bible-trivia/${bookSlug}/${chapter.chapter}`}
-                className="block rounded-xl border border-gray-200 bg-white px-4 py-3 font-semibold text-gray-700 transition hover:bg-gray-50" style={{ color: "var(--bb-cv-ink, #374151)" }}
-              >
-                Play trivia again
-              </Link>
-            </div>
-          ) : null}
-        </div>
-      </div>
-    );
-  }
+  const playable = CLUE_LEVELS.filter((lv, i) => (counts[i] || 0) >= MIN_ROUND);
 
   return (
-    <div className={`${compact ? "bg-white px-0 py-0" : "min-h-screen bg-gray-50 px-4 py-8"}`}>
-      <div className={`${compact ? "mx-auto max-w-none" : "mx-auto max-w-2xl"}`}>
-        <div className={`${compact ? "hidden" : "mb-6 justify-between"} flex items-center gap-4`}>
-          {onClose ? (
-            <button type="button" onClick={onClose} className="text-sm text-gray-600 transition hover:text-gray-900">
-              ← Close
-            </button>
-          ) : !onClose ? (
-            <Link href={`/bible-trivia/${bookSlug}`} className="text-sm text-gray-600 transition hover:text-gray-900">
-              Back to chapters
-            </Link>
+    <div className={compact ? "px-1 py-2" : "px-4 py-6"}>
+      <div
+        className="mx-auto max-w-xl overflow-hidden rounded-2xl border border-[#d9a843] text-center shadow-[0_10px_24px_-12px_rgba(60,30,5,0.55)]"
+        style={{ background: "linear-gradient(180deg, #2a170b, #3b2412)" }}
+      >
+        <div className="px-5 pb-5 pt-4">
+          <p className="inline-flex items-center gap-1.5 rounded-full bg-[#1d5a37] px-3 py-1 text-[11px] font-black uppercase tracking-wide text-[#fff3cf]">
+            <span aria-hidden>❓</span> Bible Trivia
+          </p>
+          <h2 className="mt-2 font-serif text-[24px] font-black leading-tight" style={{ color: "#fff1c9" }}>
+            {bookName} {chapterNumber}
+          </h2>
+          <p className="mt-1 text-[14px] font-semibold" style={{ color: "#f3e6cc" }}>
+            How well do you know this chapter? Up to 10 questions, 10 seconds each.
+          </p>
+          {last ? (
+            <p className="mt-3 rounded-xl px-3 py-2 text-[15px] font-black" style={{ background: "rgba(29,90,55,.85)", color: "#fff3cf" }}>
+              {last.right === last.total ? `Perfect! ${last.right}/${last.total}` : `You got ${last.right} of ${last.total} right`}. Play again or try a harder level.
+            </p>
           ) : null}
-          <div className={`flex items-center gap-3 ${compact ? "ml-auto" : ""}`}>
-            <p className="text-sm font-medium text-gray-600">
-              Question {currentQuestionIndex + 1} of {questions.length}
-            </p>
-            {showOwnerDashboardSkip ? (
-              <button
-                type="button"
-                onClick={handleOwnerSkip}
-                className="rounded-full bg-blue-50 px-3 py-1.5 text-xs font-black uppercase tracking-[0.14em] text-blue-700 transition hover:bg-blue-100 hover:text-blue-900"
-              >
-                Skip
-              </button>
-            ) : null}
-          </div>
-        </div>
-
-        <div className={`${compact ? "hidden" : "mb-4"} flex items-start gap-3`}>
-          <LouisAvatar mood="bible" size={48} />
-          <div className="relative w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-800 shadow-sm">
-            <div className="absolute -left-2 top-5 h-3 w-3 rotate-45 border-b border-l border-gray-200 bg-white" />
-            <p>{chapter.description}</p>
-          </div>
-        </div>
-
-        <div className={`${compact ? "rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-white p-4" : "rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"}`}>
-          <div className="flex items-start justify-between gap-3">
-            <p className="text-sm font-semibold uppercase tracking-wide text-blue-700">
-              {bookName} {chapter.chapter}
-            </p>
-            {compact ? (
-              <div className="flex shrink-0 items-center gap-2">
-                <p className="rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-3 py-1 text-xs font-black text-[var(--bb-accent,#2f7fe8)]">
-                  Question {currentQuestionIndex + 1} of {questions.length}
-                </p>
-                {showOwnerDashboardSkip ? (
+          {playable.length ? (
+            <div className="mt-4 grid gap-2">
+              {CLUE_LEVELS.map((lv, i) => {
+                const ok = (counts[i] || 0) >= MIN_ROUND;
+                return (
                   <button
+                    key={lv}
                     type="button"
-                    onClick={handleOwnerSkip}
-                    className="rounded-full bg-blue-50 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-blue-700 transition hover:bg-blue-100 hover:text-blue-900"
+                    disabled={!ok}
+                    onClick={() => start(lv)}
+                    className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full text-[17px] font-black transition active:scale-[0.98] disabled:opacity-45"
+                    style={{ color: "#fff7dd", background: ok ? "linear-gradient(180deg, #34a35a, #1d6a34)" : "#5a4630", boxShadow: "inset 0 0 0 2px #f6d36b" }}
                   >
-                    Skip
+                    {ok ? `▶ ${LEVEL_LABEL[lv]}` : `${LEVEL_LABEL[lv]} · coming soon`}
                   </button>
-                ) : null}
-              </div>
-            ) : null}
-          </div>
-          <h1 className="mt-3 text-2xl font-bold text-gray-900">{currentQuestion.question}</h1>
-
-          <div className="mt-6 space-y-3">
-            {currentQuestion.options.map((option) => {
-              const isSelected = selectedAnswer === option.label;
-              const isRightOption = !!selectedAnswer && option.label === currentQuestion.correctAnswer;
-              const isWrongSelection = isSelected && option.label !== currentQuestion.correctAnswer;
-              const answerStyle = isRightOption
-                ? {
-                    backgroundColor: "var(--bb-cv-done-bg, #BBF7D0)",
-                    borderColor: "#16A34A",
-                    boxShadow: "0 0 0 2px rgba(22, 163, 74, 0.14)",
-                  }
-                : isWrongSelection
-                  ? {
-                      backgroundColor: "#FECACA",
-                      borderColor: "#DC2626",
-                      boxShadow: "0 0 0 2px rgba(220, 38, 38, 0.12)",
-                    }
-                  : isSelected
-                    ? {
-                        backgroundColor: "#F1F5F9",
-                        borderColor: "#64748B",
-                      }
-                    : undefined;
-
-              return (
-                <button
-                  key={option.label}
-                  type="button"
-                  onClick={() => void handleAnswerSelect(option.label)}
-                  disabled={!!selectedAnswer}
-                  style={answerStyle}
-                  className={`w-full rounded-xl border px-4 py-3 text-left transition ${
-                    isRightOption
-                      ? "border-green-600 bg-green-200 disabled:opacity-100"
-                      : isWrongSelection
-                        ? "border-red-600 bg-red-200 disabled:opacity-100"
-                        : "border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50 disabled:opacity-100"
-                  }`}
-                >
-                  <span className="font-semibold text-gray-900">{option.label}.</span>{" "}
-                  <span className="text-gray-800">{option.text}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {selectedAnswer ? (
-            <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50 p-5">
-              <p className={`text-sm font-semibold ${isCorrect ? "text-green-700" : "text-red-700"}`}>
-                {isCorrect ? "Correct" : "Not quite"}
-              </p>
-              <p className="mt-3 text-sm font-semibold text-gray-900">{currentQuestion.verse}</p>
-              {loadingVerseText ? (
-                <p className="mt-2 text-sm text-gray-500">Loading verse...</p>
-              ) : verseText ? (
-                <p className="mt-2 text-sm italic leading-6 text-gray-700">{verseText}</p>
-              ) : null}
-              <p className="mt-3 text-sm leading-6 text-gray-700">{currentQuestion.explanation}</p>
-              <button
-                type="button"
-                ref={nextButtonRef}
-                onClick={handleNext}
-                className="mt-5 rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700"
-              >
-                {currentQuestionIndex < questions.length - 1 ? "Next question" : "See results"}
-              </button>
+                );
+              })}
             </div>
+          ) : (
+            <p className="mt-4 text-[15px] font-bold" style={{ color: "#f3e6cc" }}>
+              Questions for this chapter are being written. Check back soon.
+            </p>
+          )}
+          {onClose ? (
+            <button type="button" onClick={onClose} className="mt-3 text-[14px] font-bold underline" style={{ color: "#f3e6cc" }}>
+              {last ? "Done" : "Not now"}
+            </button>
           ) : null}
         </div>
       </div>
+      {playing ? (
+        <ChapterTrivia
+          book={book}
+          bookName={bookName}
+          chapter={chapterNumber}
+          level={playing}
+          onFinish={(r) => void finish(r)}
+          onExit={() => setPlaying(null)}
+        />
+      ) : null}
     </div>
   );
 }

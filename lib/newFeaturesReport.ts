@@ -379,7 +379,7 @@ export function summariseNewFeatures(input: NewFeaturesInput, range: FeatureRang
   const clueGame: FeatureReport = {
     key: "clue_game",
     icon: "🃏",
-    title: "Bible Clue Game",
+    title: "Bible Trivia (was Bible Clue)",
     href: "/bible-study-games/clue",
     launched: "22 Nov 2026",
     steps: [

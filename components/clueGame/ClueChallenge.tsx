@@ -9,7 +9,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { BANK_ITEMS } from "@/lib/clueGame/bank";
+import { bookItems, loadBook } from "@/lib/clueGame/bank";
 import { createMatch, ROUND_INTRO_MS, soloSetup, type ClueSelection, type PublicCard } from "@/lib/clueGame/engine";
 import type { ClueRef } from "@/lib/clueGame/types";
 import { clueApi, clueUserId, trackClue } from "@/lib/clueGame/track";
@@ -55,7 +55,7 @@ function Board({ c }: { c: Challenge }) {
 
 function ChallengeRound({ c, from, onDone }: { c: Challenge; from: string | null; onDone: (c: Challenge, ranked: boolean, post: string | null) => void }) {
   const { match, view, now, act } = useLocalMatch(
-    () => createMatch({ items: BANK_ITEMS, selection: c.selection, ...soloSetup("me", "You"), seed: 1, cardIds: c.cardIds }),
+    () => createMatch({ items: bookItems(c.selection.book), selection: c.selection, ...soloSetup("me", "You"), seed: 1, cardIds: c.cardIds }),
     { persistKey: `bb:clue-challenge:${c.id}`, mode: "challenge", deckIds: c.deckIds },
   );
   const [study, setStudy] = useState<PublicCard | null>(null);
@@ -134,6 +134,8 @@ export default function ClueChallenge({ id }: { id: string }) {
     void (async () => {
       const res = await clueApi<Challenge>(`/api/clue-game/challenges/${id}`);
       if (res.ok) {
+        // The challenge's book has to be loaded before its questions can play.
+        await loadBook(res.data.selection?.book || "genesis").catch(() => null);
         setC(res.data);
         trackClue("clue_game_challenge_opened", { challenge: id });
         // An unfinished attempt goes straight back to the table.
@@ -192,7 +194,7 @@ export default function ClueChallenge({ id }: { id: string }) {
                     ? "Your score is on the Feed and you are in the chain. Pass it on!"
                     : "Your first try is the one on the leaderboard."
                   : "Only your first try counts on the leaderboard."
-                : `in ${c.deckName}. Same 10 questions. Can you beat it?`}
+                : `in ${c.deckName}. Same ${c.cardIds.length} questions. Can you beat it?`}
             </p>
             {c.yourRanked && !finished ? <p className="mt-2 text-[14px] font-bold">Your score: ⭐ {c.yourRanked.score}. You can play again for practice.</p> : null}
             {c.chain && c.chain.length > 1 ? (

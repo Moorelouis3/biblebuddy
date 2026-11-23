@@ -22,7 +22,7 @@ type Channel = "sms" | "whatsapp" | "messenger" | "email" | "copy" | "more";
 
 export const inviteLink = (code: string, ch: Channel) => `https://www.mybiblebuddy.net/play/${code}?ch=${ch}`;
 
-const message = (code: string, ch: Channel) => `Play Bible Clue with me! Guess the Bible person, place or thing from the clues. Join my room: ${inviteLink(code, ch)}`;
+const message = (code: string, ch: Channel) => `Play Bible Trivia with me! Ten questions, ten seconds each, fastest right answer wins. Join my room: ${inviteLink(code, ch)}`;
 
 /** Leave the page for another app (text, WhatsApp, mail) without losing the room. */
 function openOutside(url: string) {
@@ -40,7 +40,7 @@ export default function InviteSheet({ code, onClose }: { code: string; onClose: 
     if (ch === "sms") openOutside(`sms:?&body=${encodeURIComponent(text)}`);
     else if (ch === "whatsapp") openOutside(`https://wa.me/?text=${encodeURIComponent(text)}`);
     else if (ch === "messenger") openOutside(`fb-messenger://share/?link=${encodeURIComponent(inviteLink(code, ch))}`);
-    else if (ch === "email") openOutside(`mailto:?subject=${encodeURIComponent("Play Bible Clue with me")}&body=${encodeURIComponent(text)}`);
+    else if (ch === "email") openOutside(`mailto:?subject=${encodeURIComponent("Play Bible Trivia with me")}&body=${encodeURIComponent(text)}`);
     else if (ch === "copy") {
       try {
         await navigator.clipboard.writeText(inviteLink(code, ch));
@@ -48,9 +48,9 @@ export default function InviteSheet({ code, onClose }: { code: string; onClose: 
         window.setTimeout(() => setCopied(false), 2000);
       } catch {
         // Some webviews refuse the clipboard: the phone's own share menu always works.
-        await shareContent({ title: "Bible Clue", text: message(code, "more"), url: inviteLink(code, "more") });
+        await shareContent({ title: "Bible Trivia", text: message(code, "more"), url: inviteLink(code, "more") });
       }
-    } else await shareContent({ title: "Bible Clue", text: message(code, ch), url: inviteLink(code, ch) });
+    } else await shareContent({ title: "Bible Trivia", text: message(code, ch), url: inviteLink(code, ch) });
   };
 
   const options: Array<{ ch: Channel; icon: string; label: string; show: boolean }> = [

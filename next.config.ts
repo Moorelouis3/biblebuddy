@@ -59,6 +59,21 @@ const nextConfig: NextConfig = {
       { source: "/biblebuddy-tv/:path*", destination: "/", permanent: false },
       { source: "/study-groups", destination: "/bb-feed", permanent: false },
       { source: "/study-groups/:path*", destination: "/bb-feed", permanent: false },
+      // The old Bible Trivia game was replaced by the new one (Bible Clue,
+      // renamed Bible Trivia, 2026-11-23). Its hub, book list, book pages and
+      // topic quizzes open the new game with the book picked. Chapter pages
+      // (/bible-trivia/<book>/<chapter>) stay: they play the new game on that
+      // chapter and still log trivia_chapter_completed for daily tasks.
+      { source: "/bible-trivia", destination: "/bible-study-games/clue", permanent: false },
+      { source: "/bible-trivia/books", destination: "/bible-study-games/clue", permanent: false },
+      { source: "/bible-trivia/people", destination: "/bible-study-games/clue", permanent: false },
+      { source: "/bible-trivia/people/:path*", destination: "/bible-study-games/clue", permanent: false },
+      { source: "/bible-trivia/abraham", destination: "/bible-study-games/clue?book=genesis&chapters=12,13,14,15,16,17,18,19,20,21,22", permanent: false },
+      { source: "/bible-trivia/moses", destination: "/bible-study-games/clue?book=exodus", permanent: false },
+      { source: "/bible-trivia/jesus", destination: "/bible-study-games/clue?book=matthew", permanent: false },
+      { source: "/bible-trivia/god", destination: "/bible-study-games/clue?book=genesis", permanent: false },
+      { source: "/bible-trivia/song-of-songs", destination: "/bible-study-games/clue?book=song-of-solomon", permanent: false },
+      { source: "/bible-trivia/:book", destination: "/bible-study-games/clue?book=:book", permanent: false },
       // Android is public on Google Play since 2026-11-22. /android was the
       // two-step tester page; every link to it (the welcome emails among
       // them) now goes straight to the listing. Not permanent, so the path

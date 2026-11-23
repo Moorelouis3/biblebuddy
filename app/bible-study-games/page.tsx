@@ -37,7 +37,7 @@ export default function BibleStudyGamesPage() {
         </span>
       </Link>
 
-      {/* Bible Clue (2026-11-22): back on the Games page (Louis: "good enough to have it there"). Trivia, ten questions, ten seconds each. */}
+      {/* Bible Trivia (2026-11-23): the Bible Clue game, renamed, replaced the old Bible Trivia card and game. */}
       <Link
         href="/bible-study-games/clue?from=games"
         className="flex items-center gap-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
@@ -46,24 +46,9 @@ export default function BibleStudyGamesPage() {
           🃏
         </span>
         <span className="min-w-0">
-          <span className="block text-lg font-black text-[var(--bb-text-primary,#111827)]">Bible Clue</span>
-          <span className="mt-0.5 block text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-            Ten questions, ten seconds each. Play solo or with friends.
-          </span>
-        </span>
-      </Link>
-
-      <Link
-        href="/bible-trivia"
-        className="flex items-center gap-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-      >
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#ede9fe] text-2xl" aria-hidden="true">
-          ❓
-        </span>
-        <span className="min-w-0">
           <span className="block text-lg font-black text-[var(--bb-text-primary,#111827)]">Bible Trivia</span>
           <span className="mt-0.5 block text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-            How well do you know the books and people of the Bible?
+            Any book, Easy to Hard, ten seconds each. Play solo, with friends, or take a challenge.
           </span>
         </span>
       </Link>

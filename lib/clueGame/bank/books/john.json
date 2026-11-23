@@ -1,0 +1,1682 @@
+[
+ {
+  "id": "old-john-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does John describe Jesus in the opening verse?",
+  "choices": [
+   "The Word",
+   "The son of David",
+   "The great prophet",
+   "The king of Israel"
+  ],
+  "answer": 0,
+  "explanation": "John begins by identifying Jesus as the eternal Word.",
+  "ref": "John 1:1"
+ },
+ {
+  "id": "old-john-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did John the Baptist call Jesus?",
+  "choices": [
+   "The bread of life",
+   "The Son of David",
+   "The Lamb of God",
+   "The good shepherd"
+  ],
+  "answer": 2,
+  "explanation": "John the Baptist pointed to Jesus as the Lamb of God.",
+  "ref": "John 1:29"
+ },
+ {
+  "id": "old-john-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who brought Simon to Jesus?",
+  "choices": [
+   "Philip",
+   "Nathanael",
+   "Andrew",
+   "John"
+  ],
+  "answer": 2,
+  "explanation": "Andrew found his brother Simon and brought him to Jesus.",
+  "ref": "John 1:41–42"
+ },
+ {
+  "id": "old-john-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What new name did Jesus give Simon?",
+  "choices": [
+   "John",
+   "Boanerges",
+   "Thomas",
+   "Cephas"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said Simon would be called Cephas, which means a stone.",
+  "ref": "John 1:42"
+ },
+ {
+  "id": "old-john-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who asked, 'Can there any good thing come out of Nazareth?'",
+  "choices": [
+   "Peter",
+   "Nathanael",
+   "Philip",
+   "Thomas"
+  ],
+  "answer": 1,
+  "explanation": "Nathanael said this before meeting Jesus.",
+  "ref": "John 1:46"
+ },
+ {
+  "id": "old-john-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what event did Jesus perform His first miracle in John?",
+  "choices": [
+   "A funeral",
+   "A wedding",
+   "A feast of booths",
+   "A synagogue service"
+  ],
+  "answer": 1,
+  "explanation": "Jesus' first sign in John took place at a wedding in Cana.",
+  "ref": "John 2:1–11"
+ },
+ {
+  "id": "old-john-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus turn into wine?",
+  "choices": [
+   "Water",
+   "Oil",
+   "Milk",
+   "Honey"
+  ],
+  "answer": 0,
+  "explanation": "Jesus changed water into wine.",
+  "ref": "John 2:9"
+ },
+ {
+  "id": "old-john-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus show by His first miracle at Cana?",
+  "choices": [
+   "His glory",
+   "His anger",
+   "His earthly power",
+   "His priesthood"
+  ],
+  "answer": 0,
+  "explanation": "John says Jesus manifested forth His glory.",
+  "ref": "John 2:11"
+ },
+ {
+  "id": "old-john-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus drive out of the temple?",
+  "choices": [
+   "Only Roman guards",
+   "The priests",
+   "The disciples",
+   "Those who sold oxen, sheep, and doves"
+  ],
+  "answer": 3,
+  "explanation": "Jesus cleansed the temple of commercial corruption.",
+  "ref": "John 2:14–16"
+ },
+ {
+  "id": "old-john-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What temple was Jesus speaking about when He said, 'Destroy this temple'?",
+  "choices": [
+   "Herod's temple",
+   "His body",
+   "The heavenly temple",
+   "Solomon's temple"
+  ],
+  "answer": 1,
+  "explanation": "John explains that Jesus was speaking of the temple of His body.",
+  "ref": "John 2:19–21"
+ },
+ {
+  "id": "old-john-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to Jesus by night?",
+  "choices": [
+   "Nicodemus",
+   "Joseph of Arimathaea",
+   "Pilate",
+   "Lazarus"
+  ],
+  "answer": 0,
+  "explanation": "Nicodemus came by night to speak with Jesus.",
+  "ref": "John 3:1–2"
+ },
+ {
+  "id": "old-john-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say a man must be to see the kingdom of God?",
+  "choices": [
+   "Born again",
+   "Circumcised",
+   "Baptized by John",
+   "Perfect in the law"
+  ],
+  "answer": 0,
+  "explanation": "Jesus said a man must be born again.",
+  "ref": "John 3:3"
+ },
+ {
+  "id": "old-john-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What Old Testament event did Jesus compare to His being lifted up?",
+  "choices": [
+   "The flood",
+   "David defeating Goliath",
+   "The crossing of the Jordan",
+   "Moses lifting the serpent"
+  ],
+  "answer": 3,
+  "explanation": "Jesus compared His lifting up to the serpent in the wilderness.",
+  "ref": "John 3:14"
+ },
+ {
+  "id": "old-john-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did God give His only begotten Son?",
+  "choices": [
+   "Because He loved the world",
+   "To condemn the world",
+   "To restore the temple",
+   "To defeat Rome"
+  ],
+  "answer": 0,
+  "explanation": "God's gift of His Son is grounded in His love for the world.",
+  "ref": "John 3:16"
+ },
+ {
+  "id": "old-john-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said, 'He must increase, but I must decrease'?",
+  "choices": [
+   "Peter",
+   "Nicodemus",
+   "John the Baptist",
+   "Andrew"
+  ],
+  "answer": 2,
+  "explanation": "John the Baptist gladly pointed away from himself and toward Christ.",
+  "ref": "John 3:30"
+ },
+ {
+  "id": "old-john-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what well did Jesus speak with the Samaritan woman?",
+  "choices": [
+   "Jacob's well",
+   "Abraham's well",
+   "Elijah's well",
+   "Moses' well"
+  ],
+  "answer": 0,
+  "explanation": "Jesus sat by Jacob's well in Samaria.",
+  "ref": "John 4:6"
+ },
+ {
+  "id": "old-john-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of water did Jesus offer the woman?",
+  "choices": [
+   "Living water",
+   "River water",
+   "Bitter water",
+   "Ceremonial water"
+  ],
+  "answer": 0,
+  "explanation": "Jesus spoke of living water that satisfies forever.",
+  "ref": "John 4:10"
+ },
+ {
+  "id": "old-john-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many husbands had the Samaritan woman had?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Five",
+   "Two"
+  ],
+  "answer": 2,
+  "explanation": "Jesus told her she had had five husbands.",
+  "ref": "John 4:18"
+ },
+ {
+  "id": "old-john-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the woman say she knew Messiah would do when He came?",
+  "choices": [
+   "Rule Jerusalem",
+   "Tell us all things",
+   "Destroy Rome",
+   "Gather armies"
+  ],
+  "answer": 1,
+  "explanation": "She said Messiah would tell them all things.",
+  "ref": "John 4:25"
+ },
+ {
+  "id": "old-john-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus heal at the end of the chapter?",
+  "choices": [
+   "A lame man",
+   "A blind beggar",
+   "Peter's mother-in-law",
+   "A nobleman's son"
+  ],
+  "answer": 3,
+  "explanation": "Jesus healed the nobleman's son from a distance.",
+  "ref": "John 4:46–53"
+ },
+ {
+  "id": "old-john-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long had the man at the pool been infirm?",
+  "choices": [
+   "Twelve years",
+   "Forty years",
+   "Thirty-eight years",
+   "Eighteen years"
+  ],
+  "answer": 2,
+  "explanation": "The man had suffered his infirmity for thirty-eight years.",
+  "ref": "John 5:5"
+ },
+ {
+  "id": "old-john-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell the man at the pool to do?",
+  "choices": [
+   "Offer a sacrifice",
+   "Rise, take up thy bed, and walk",
+   "Wash in Jordan",
+   "Return home and rest"
+  ],
+  "answer": 1,
+  "explanation": "Jesus told him to rise, take up his bed, and walk, and immediately the man was made whole.",
+  "ref": "John 5:8"
+ },
+ {
+  "id": "old-john-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what day did Jesus heal the man at the pool?",
+  "choices": [
+   "Passover",
+   "The Sabbath",
+   "Pentecost",
+   "A fast day"
+  ],
+  "answer": 1,
+  "explanation": "The healing happened on the Sabbath, and the Jews objected to the man carrying his bed.",
+  "ref": "John 5:9–10"
+ },
+ {
+  "id": "old-john-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say the Father had given Him authority to do?",
+  "choices": [
+   "Collect the temple tax",
+   "Execute judgment",
+   "Rule Rome",
+   "Offer sacrifices"
+  ],
+  "answer": 1,
+  "explanation": "The Father gave the Son authority to execute judgment.",
+  "ref": "John 5:27"
+ },
+ {
+  "id": "old-john-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose writings did Jesus say testified of Him?",
+  "choices": [
+   "Moses'",
+   "Isaiah's only",
+   "David's only",
+   "John the Baptist's"
+  ],
+  "answer": 0,
+  "explanation": "Jesus said Moses wrote of Him.",
+  "ref": "John 5:46"
+ },
+ {
+  "id": "old-john-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many loaves were used to feed the five thousand?",
+  "choices": [
+   "Three",
+   "Five",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "A boy had five barley loaves and two small fishes.",
+  "ref": "John 6:9"
+ },
+ {
+  "id": "old-john-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many baskets of fragments were gathered after the feeding?",
+  "choices": [
+   "Seven",
+   "Five",
+   "Twelve",
+   "Ten"
+  ],
+  "answer": 2,
+  "explanation": "Twelve baskets of fragments remained.",
+  "ref": "John 6:13"
+ },
+ {
+  "id": "old-john-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What miracle happened when the disciples were on the sea?",
+  "choices": [
+   "A whale carried the boat",
+   "The net filled with fish",
+   "Jesus walked on the water",
+   "Fire appeared"
+  ],
+  "answer": 2,
+  "explanation": "Jesus came to them walking on the sea.",
+  "ref": "John 6:19"
+ },
+ {
+  "id": "old-john-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus call Himself in this chapter?",
+  "choices": [
+   "The true vine",
+   "The resurrection",
+   "The door",
+   "The bread of life"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said, 'I am the bread of life.'",
+  "ref": "John 6:35"
+ },
+ {
+  "id": "old-john-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After Jesus taught about eating His flesh and drinking His blood, what did many of His disciples do?",
+  "choices": [
+   "They worshiped Him",
+   "They went back and walked no more with Him",
+   "They asked for more bread",
+   "They entered Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "Many called it a hard saying, went back, and walked no more with Him.",
+  "ref": "John 6:66"
+ },
+ {
+  "id": "old-john-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what feast did Jesus go up to Jerusalem?",
+  "choices": [
+   "Passover",
+   "Feast of weeks",
+   "Day of atonement",
+   "Feast of tabernacles"
+  ],
+  "answer": 3,
+  "explanation": "John identifies it as the Jews' feast of tabernacles.",
+  "ref": "John 7:2"
+ },
+ {
+  "id": "old-john-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jesus go to the feast at first?",
+  "choices": [
+   "With a large crowd",
+   "On a chariot",
+   "With the rulers",
+   "As it were in secret"
+  ],
+  "answer": 3,
+  "explanation": "Jesus went up privately rather than openly at first.",
+  "ref": "John 7:10"
+ },
+ {
+  "id": "old-john-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus cry on the last day of the feast?",
+  "choices": [
+   "Come unto me, and I will judge",
+   "Destroy this temple",
+   "If any man thirst, let him come unto me, and drink",
+   "Take up thy cross"
+  ],
+  "answer": 2,
+  "explanation": "Jesus invited the thirsty to come to Him and drink.",
+  "ref": "John 7:37"
+ },
+ {
+  "id": "old-john-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say would flow from the belly of the one who believes on Him?",
+  "choices": [
+   "Rivers of living water",
+   "Oil and wine",
+   "Milk and honey",
+   "Fire and light"
+  ],
+  "answer": 0,
+  "explanation": "Jesus described the Spirit with the image of living water.",
+  "ref": "John 7:38"
+ },
+ {
+  "id": "old-john-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the officers sent to arrest Jesus say when they returned empty-handed?",
+  "choices": [
+   "He escaped us",
+   "The crowd was too strong",
+   "Never man spake like this man",
+   "We lost Him in the city"
+  ],
+  "answer": 2,
+  "explanation": "They were struck by Jesus' words.",
+  "ref": "John 7:46"
+ },
+ {
+  "id": "old-john-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to the woman taken in adultery after her accusers left?",
+  "choices": [
+   "Offer a sacrifice",
+   "Go, and sin no more",
+   "Tell no one",
+   "Return to your husband"
+  ],
+  "answer": 1,
+  "explanation": "Jesus showed mercy while calling her to leave sin.",
+  "ref": "John 8:11"
+ },
+ {
+  "id": "old-john-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title did Jesus use for Himself?",
+  "choices": [
+   "Bread of life",
+   "True vine",
+   "Good shepherd",
+   "Light of the world"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said He is the light of the world.",
+  "ref": "John 8:12"
+ },
+ {
+  "id": "old-john-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "According to Jesus, who would know the truth and be made free?",
+  "choices": [
+   "The scribes",
+   "Only Abraham's children",
+   "Those who continue in His word",
+   "The temple priests"
+  ],
+  "answer": 2,
+  "explanation": "Jesus tied freedom to abiding in His word.",
+  "ref": "John 8:31–32"
+ },
+ {
+  "id": "old-john-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jesus finish the statement that begins 'Before Abraham was'?",
+  "choices": [
+   "I came",
+   "I am",
+   "I was chosen",
+   "I was hidden"
+  ],
+  "answer": 1,
+  "explanation": "Jesus used the divine name 'I am.'",
+  "ref": "John 8:58"
+ },
+ {
+  "id": "old-john-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the crowd respond when Jesus said He was before Abraham?",
+  "choices": [
+   "They worshiped Him",
+   "They asked more questions",
+   "They took up stones",
+   "They followed Him"
+  ],
+  "answer": 2,
+  "explanation": "They took up stones to cast at Him, but Jesus hid Himself and went out of the temple.",
+  "ref": "John 8:59"
+ },
+ {
+  "id": "old-john-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What condition did the man in this chapter have from birth?",
+  "choices": [
+   "He was lame",
+   "He was deaf",
+   "He was mute",
+   "He was blind"
+  ],
+  "answer": 3,
+  "explanation": "Jesus met a man who had been blind from birth.",
+  "ref": "John 9:1"
+ },
+ {
+  "id": "old-john-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus use along with saliva in the healing?",
+  "choices": [
+   "Oil",
+   "Clay",
+   "Water only",
+   "Dust from the altar"
+  ],
+  "answer": 1,
+  "explanation": "Jesus made clay and anointed the man's eyes.",
+  "ref": "John 9:6"
+ },
+ {
+  "id": "old-john-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus tell the man to wash?",
+  "choices": [
+   "Jordan",
+   "Bethesda",
+   "Kidron",
+   "Pool of Siloam"
+  ],
+  "answer": 3,
+  "explanation": "The man washed in Siloam and came back seeing.",
+  "ref": "John 9:7"
+ },
+ {
+  "id": "old-john-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the healed man answer when asked who Jesus was?",
+  "choices": [
+   "Only a teacher",
+   "A prophet",
+   "An angel",
+   "A sinner"
+  ],
+  "answer": 1,
+  "explanation": "The healed man said Jesus was a prophet.",
+  "ref": "John 9:17"
+ },
+ {
+  "id": "old-john-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say of Himself again in this chapter?",
+  "choices": [
+   "I am the resurrection",
+   "I am the vine",
+   "I am the door",
+   "I am the light of the world"
+  ],
+  "answer": 3,
+  "explanation": "Jesus repeated that He is the light of the world.",
+  "ref": "John 9:5"
+ },
+ {
+  "id": "old-john-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus call Himself?",
+  "choices": [
+   "The true vine",
+   "The good shepherd",
+   "The resurrection and the life",
+   "The bread of life"
+  ],
+  "answer": 1,
+  "explanation": "Jesus said, 'I am the good shepherd.'",
+  "ref": "John 10:11"
+ },
+ {
+  "id": "old-john-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the good shepherd do for the sheep?",
+  "choices": [
+   "Trades them",
+   "Hides them from the world",
+   "Sends them away",
+   "Gives his life for the sheep"
+  ],
+  "answer": 3,
+  "explanation": "The good shepherd lays down His life for the sheep.",
+  "ref": "John 10:11"
+ },
+ {
+  "id": "old-john-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the sheep know?",
+  "choices": [
+   "The names of strangers",
+   "The way to Jerusalem",
+   "The law of Moses only",
+   "The shepherd's voice"
+  ],
+  "answer": 3,
+  "explanation": "The sheep know their shepherd's voice.",
+  "ref": "John 10:4"
+ },
+ {
+  "id": "old-john-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say no man would do to His sheep?",
+  "choices": [
+   "Teach them",
+   "Feed them",
+   "See them",
+   "Pluck them out of His hand"
+  ],
+  "answer": 3,
+  "explanation": "Jesus promised security for His sheep.",
+  "ref": "John 10:28"
+ },
+ {
+  "id": "old-john-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What statement caused the Jews to take up stones again?",
+  "choices": [
+   "I am the bread of life",
+   "I and my Father are one",
+   "The truth shall make you free",
+   "Destroy this temple"
+  ],
+  "answer": 1,
+  "explanation": "They reacted strongly when Jesus declared His unity with the Father.",
+  "ref": "John 10:30–31"
+ },
+ {
+  "id": "old-john-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was sick in Bethany?",
+  "choices": [
+   "Nicodemus",
+   "Bartimaeus",
+   "Lazarus",
+   "Jairus"
+  ],
+  "answer": 2,
+  "explanation": "Lazarus of Bethany was sick.",
+  "ref": "John 11:1"
+ },
+ {
+  "id": "old-john-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say He is?",
+  "choices": [
+   "The good shepherd",
+   "The resurrection and the life",
+   "The bread of life",
+   "The true vine"
+  ],
+  "answer": 1,
+  "explanation": "Jesus declared Himself the resurrection and the life.",
+  "ref": "John 11:25"
+ },
+ {
+  "id": "old-john-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the shortest verse in the chapter and the Bible?",
+  "choices": [
+   "Lazarus, come forth",
+   "Jesus wept",
+   "Fear not",
+   "I am he"
+  ],
+  "answer": 1,
+  "explanation": "John simply says, 'Jesus wept.'",
+  "ref": "John 11:35"
+ },
+ {
+  "id": "old-john-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus cry with a loud voice at the tomb?",
+  "choices": [
+   "Lazarus, come forth",
+   "Rise and shine",
+   "Peace, be still",
+   "Awake, O sleeper"
+  ],
+  "answer": 0,
+  "explanation": "Jesus called Lazarus out of the tomb.",
+  "ref": "John 11:43"
+ },
+ {
+  "id": "old-john-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Caiaphas say was expedient?",
+  "choices": [
+   "That the temple be cleansed",
+   "That Jesus leave Judea",
+   "That one man should die for the people",
+   "That Lazarus be hidden"
+  ],
+  "answer": 2,
+  "explanation": "Caiaphas argued it was expedient for one man to die for the people.",
+  "ref": "John 11:50"
+ },
+ {
+  "id": "old-john-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who anointed Jesus' feet with ointment and wiped them with her hair?",
+  "choices": [
+   "Martha",
+   "Salome",
+   "Mary",
+   "Joanna"
+  ],
+  "answer": 2,
+  "explanation": "Mary anointed Jesus' feet with costly ointment.",
+  "ref": "John 12:3"
+ },
+ {
+  "id": "old-john-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who objected to the cost of the ointment?",
+  "choices": [
+   "Judas Iscariot",
+   "Peter",
+   "Thomas",
+   "Philip"
+  ],
+  "answer": 0,
+  "explanation": "Judas complained about the ointment's value.",
+  "ref": "John 12:4–5"
+ },
+ {
+  "id": "old-john-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the crowd carry when Jesus entered Jerusalem?",
+  "choices": [
+   "Olive branches",
+   "Torches",
+   "Trumpets",
+   "Palm branches"
+  ],
+  "answer": 3,
+  "explanation": "They took branches of palm trees to meet Him.",
+  "ref": "John 12:13"
+ },
+ {
+  "id": "old-john-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What heavenly response came when Jesus prayed, 'Father, glorify thy name'?",
+  "choices": [
+   "Silence",
+   "An earthquake",
+   "A voice from heaven",
+   "A bright cloud"
+  ],
+  "answer": 2,
+  "explanation": "A voice answered from heaven.",
+  "ref": "John 12:28"
+ },
+ {
+  "id": "old-john-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When Jesus said, 'And I, if I be lifted up from the earth,' what was He signifying?",
+  "choices": [
+   "His ascension only",
+   "His resurrection morning",
+   "His kingship in Jerusalem",
+   "What death He should die"
+  ],
+  "answer": 3,
+  "explanation": "John explains Jesus was signifying the manner of His death.",
+  "ref": "John 12:32–33"
+ },
+ {
+  "id": "old-john-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What humble act did Jesus perform for His disciples?",
+  "choices": [
+   "Cooked them a meal",
+   "Carried their bags",
+   "Washed their feet",
+   "Sang a hymn"
+  ],
+  "answer": 2,
+  "explanation": "Jesus washed the disciples' feet.",
+  "ref": "John 13:4–5"
+ },
+ {
+  "id": "old-john-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who at first refused to let Jesus wash his feet?",
+  "choices": [
+   "John",
+   "Peter",
+   "Thomas",
+   "Philip"
+  ],
+  "answer": 1,
+  "explanation": "Peter resisted until Jesus explained its importance.",
+  "ref": "John 13:8"
+ },
+ {
+  "id": "old-john-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did Jesus say would betray Him?",
+  "choices": [
+   "The one to whom He gave the sop",
+   "The one who sat nearest the door",
+   "The one who asked first",
+   "The one who spoke last"
+  ],
+  "answer": 0,
+  "explanation": "Jesus identified the betrayer by giving him the sop.",
+  "ref": "John 13:26"
+ },
+ {
+  "id": "old-john-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What new commandment did Jesus give?",
+  "choices": [
+   "Build the kingdom",
+   "Keep every feast",
+   "Judge righteously",
+   "Love one another"
+  ],
+  "answer": 3,
+  "explanation": "Jesus commanded His disciples to love one another as He loved them.",
+  "ref": "John 13:34"
+ },
+ {
+  "id": "old-john-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times did Jesus say Peter would deny Him before the rooster crowed?",
+  "choices": [
+   "Once",
+   "Twice",
+   "Three times",
+   "Seven times"
+  ],
+  "answer": 2,
+  "explanation": "Jesus foretold Peter's three denials.",
+  "ref": "John 13:38"
+ },
+ {
+  "id": "old-john-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say was in His Father's house?",
+  "choices": [
+   "Many treasures",
+   "Many altars",
+   "Many mansions",
+   "Many thrones"
+  ],
+  "answer": 2,
+  "explanation": "Jesus said in His Father's house are many mansions.",
+  "ref": "John 14:2"
+ },
+ {
+  "id": "old-john-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who asked, 'How can we know the way?'",
+  "choices": [
+   "Thomas",
+   "Peter",
+   "Andrew",
+   "Philip"
+  ],
+  "answer": 0,
+  "explanation": "Thomas voiced the disciples' confusion.",
+  "ref": "John 14:5"
+ },
+ {
+  "id": "old-john-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say He is?",
+  "choices": [
+   "The shepherd and the king",
+   "The way, the truth, and the life",
+   "The bread and the vine",
+   "The alpha and omega"
+  ],
+  "answer": 1,
+  "explanation": "Jesus said no one comes to the Father but by Him.",
+  "ref": "John 14:6"
+ },
+ {
+  "id": "old-john-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus promise the Father would send as Comforter?",
+  "choices": [
+   "Michael",
+   "The Holy Ghost",
+   "Elijah",
+   "John the Baptist"
+  ],
+  "answer": 1,
+  "explanation": "Jesus promised the Holy Ghost as the Comforter.",
+  "ref": "John 14:26"
+ },
+ {
+  "id": "old-john-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus leave with His disciples?",
+  "choices": [
+   "A sword",
+   "A temple",
+   "A kingdom seat",
+   "Peace"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said, 'Peace I leave with you.'",
+  "ref": "John 14:27"
+ },
+ {
+  "id": "old-john-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus call Himself?",
+  "choices": [
+   "The true vine",
+   "The bread of life",
+   "The light of the world",
+   "The good shepherd"
+  ],
+  "answer": 0,
+  "explanation": "Jesus said, 'I am the true vine.'",
+  "ref": "John 15:1"
+ },
+ {
+  "id": "old-john-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did Jesus say is the husbandman?",
+  "choices": [
+   "My Father",
+   "Moses",
+   "The angels",
+   "Peter"
+  ],
+  "answer": 0,
+  "explanation": "The Father is the husbandman of the vine.",
+  "ref": "John 15:1"
+ },
+ {
+  "id": "old-john-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must branches do to bear fruit?",
+  "choices": [
+   "Travel farther",
+   "Grow alone",
+   "Abide in the vine",
+   "Hide from the world"
+  ],
+  "answer": 2,
+  "explanation": "Fruit comes from abiding in Christ.",
+  "ref": "John 15:4"
+ },
+ {
+  "id": "old-john-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus call His disciples?",
+  "choices": [
+   "Servants only",
+   "Kings",
+   "Priests",
+   "Friends"
+  ],
+  "answer": 3,
+  "explanation": "Jesus called them friends because He had made known the Father's things to them.",
+  "ref": "John 15:15"
+ },
+ {
+  "id": "old-john-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What new standard of love did Jesus set?",
+  "choices": [
+   "Love your neighbor as yourself",
+   "Love your family first",
+   "Love one another as I have loved you",
+   "Love only believers"
+  ],
+  "answer": 2,
+  "explanation": "Jesus grounded love in His own example.",
+  "ref": "John 15:12"
+ },
+ {
+  "id": "old-john-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jesus say He told these things beforehand?",
+  "choices": [
+   "So they would be offended",
+   "So they could teach the rulers",
+   "So they should not be offended",
+   "So they would leave Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Jesus spoke ahead of time to keep them from stumbling.",
+  "ref": "John 16:1"
+ },
+ {
+  "id": "old-john-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus say He would send after departing?",
+  "choices": [
+   "The Comforter",
+   "Moses",
+   "John the Baptist",
+   "An angel"
+  ],
+  "answer": 0,
+  "explanation": "Jesus said He would send the Comforter.",
+  "ref": "John 16:7"
+ },
+ {
+  "id": "old-john-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Of what would the Spirit convict the world?",
+  "choices": [
+   "Only judgment",
+   "Sin, righteousness, and judgment",
+   "Law and sacrifice",
+   "Peace and harvest"
+  ],
+  "answer": 1,
+  "explanation": "Jesus described the Spirit's convicting ministry.",
+  "ref": "John 16:8"
+ },
+ {
+  "id": "old-john-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say the disciples' sorrow would become?",
+  "choices": [
+   "Silence",
+   "Joy",
+   "Fear",
+   "Confusion"
+  ],
+  "answer": 1,
+  "explanation": "Their sorrow would be turned into joy.",
+  "ref": "John 16:20"
+ },
+ {
+  "id": "old-john-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say about the world at the end of the chapter?",
+  "choices": [
+   "It will honor you",
+   "It will be destroyed now",
+   "I have overcome the world",
+   "It will understand"
+  ],
+  "answer": 2,
+  "explanation": "Jesus declared His victory over the world.",
+  "ref": "John 16:33"
+ },
+ {
+  "id": "old-john-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus ask the Father to do in the opening of this prayer?",
+  "choices": [
+   "Glorify thy Son",
+   "Destroy the enemy",
+   "Send Elijah",
+   "Raise Lazarus again"
+  ],
+  "answer": 0,
+  "explanation": "Jesus asked the Father to glorify the Son.",
+  "ref": "John 17:1"
+ },
+ {
+  "id": "old-john-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jesus define eternal life?",
+  "choices": [
+   "Knowing the one true God and Jesus Christ",
+   "Living forever on earth",
+   "Obeying every feast",
+   "Building the temple"
+  ],
+  "answer": 0,
+  "explanation": "Jesus defined eternal life relationally.",
+  "ref": "John 17:3"
+ },
+ {
+  "id": "old-john-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus pray concerning His disciples in the world?",
+  "choices": [
+   "Keep them from the evil",
+   "Take them out immediately",
+   "Make them rulers",
+   "Hide them from all people"
+  ],
+  "answer": 0,
+  "explanation": "Jesus prayed for their protection from evil.",
+  "ref": "John 17:15"
+ },
+ {
+  "id": "old-john-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Through what did Jesus ask the Father to sanctify His disciples?",
+  "choices": [
+   "Oil",
+   "The temple",
+   "Thy truth",
+   "Miracles"
+  ],
+  "answer": 2,
+  "explanation": "Jesus prayed, 'Sanctify them through thy truth: thy word is truth.'",
+  "ref": "John 17:17"
+ },
+ {
+  "id": "old-john-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whom else did Jesus pray beyond the apostles?",
+  "choices": [
+   "Only Israel",
+   "Only the seventy",
+   "Those who would believe through their word",
+   "The Roman rulers"
+  ],
+  "answer": 2,
+  "explanation": "Jesus prayed for future believers too.",
+  "ref": "John 17:20"
+ },
+ {
+  "id": "old-john-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus go with His disciples before His arrest?",
+  "choices": [
+   "Nazareth",
+   "Bethany",
+   "A garden across the brook Cedron",
+   "The temple court"
+  ],
+  "answer": 2,
+  "explanation": "Jesus went into a garden with His disciples.",
+  "ref": "John 18:1"
+ },
+ {
+  "id": "old-john-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who led the band and officers to arrest Jesus?",
+  "choices": [
+   "Judas",
+   "Peter",
+   "Pilate",
+   "Nicodemus"
+  ],
+  "answer": 0,
+  "explanation": "Judas came guiding those who came to arrest Jesus.",
+  "ref": "John 18:3"
+ },
+ {
+  "id": "old-john-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when Jesus said, 'I am he'?",
+  "choices": [
+   "They worshiped",
+   "They fled the garden",
+   "They drew swords",
+   "They went backward and fell to the ground"
+  ],
+  "answer": 3,
+  "explanation": "The arresting party fell back when Jesus identified Himself.",
+  "ref": "John 18:6"
+ },
+ {
+  "id": "old-john-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose ear did Peter cut off?",
+  "choices": [
+   "Caiaphas's",
+   "Pilate's",
+   "Annas's",
+   "Malchus's"
+  ],
+  "answer": 3,
+  "explanation": "Peter struck Malchus, the high priest's servant.",
+  "ref": "John 18:10"
+ },
+ {
+  "id": "old-john-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jesus answer Pilate when asked if He was a king?",
+  "choices": [
+   "I deny it",
+   "I have no kingdom",
+   "Ask the priests",
+   "My kingdom is not of this world"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said His kingdom is not of this world.",
+  "ref": "John 18:36"
+ },
+ {
+  "id": "old-john-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the soldiers place on Jesus' head?",
+  "choices": [
+   "A crown of thorns",
+   "A golden crown",
+   "A priestly mitre",
+   "A linen veil"
+  ],
+  "answer": 0,
+  "explanation": "The soldiers plaited a crown of thorns.",
+  "ref": "John 19:2"
+ },
+ {
+  "id": "old-john-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title did Pilate write and place on the cross?",
+  "choices": [
+   "Jesus of Nazareth the King of the Jews",
+   "The Son of David",
+   "The Messiah of Israel",
+   "King of Galilee"
+  ],
+  "answer": 0,
+  "explanation": "Pilate wrote, 'Jesus of Nazareth the King of the Jews.'",
+  "ref": "John 19:19"
+ },
+ {
+  "id": "old-john-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say from the cross to His mother?",
+  "choices": [
+   "It is finished",
+   "Woman, behold thy son",
+   "Father, forgive them",
+   "I thirst"
+  ],
+  "answer": 1,
+  "explanation": "Jesus said to His mother, 'Woman, behold thy son!' and to the disciple, 'Behold thy mother!'",
+  "ref": "John 19:26–27"
+ },
+ {
+  "id": "old-john-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus declare just before bowing His head?",
+  "choices": [
+   "Peace be with you",
+   "My God, why?",
+   "It is finished",
+   "Father into thy hands"
+  ],
+  "answer": 2,
+  "explanation": "Jesus declared the work finished.",
+  "ref": "John 19:30"
+ },
+ {
+  "id": "old-john-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who brought a mixture of myrrh and aloes for Jesus' burial?",
+  "choices": [
+   "Nicodemus",
+   "Peter",
+   "Thomas",
+   "John"
+  ],
+  "answer": 0,
+  "explanation": "Nicodemus came with myrrh and aloes.",
+  "ref": "John 19:39"
+ },
+ {
+  "id": "old-john-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came early to the sepulchre while it was yet dark?",
+  "choices": [
+   "Martha",
+   "Mary Magdalene",
+   "Salome",
+   "Joanna"
+  ],
+  "answer": 1,
+  "explanation": "Mary Magdalene came early to the tomb.",
+  "ref": "John 20:1"
+ },
+ {
+  "id": "old-john-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who ran together to the sepulchre after hearing Mary's report?",
+  "choices": [
+   "Andrew and Philip",
+   "Thomas and Nathanael",
+   "James and John the Baptist",
+   "Peter and the other disciple"
+  ],
+  "answer": 3,
+  "explanation": "Peter and the other disciple ran to the tomb.",
+  "ref": "John 20:3–4"
+ },
+ {
+  "id": "old-john-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to Mary when she recognized Him?",
+  "choices": [
+   "Go tell the rulers",
+   "Stay here",
+   "Touch me not",
+   "Bring the disciples"
+  ],
+  "answer": 2,
+  "explanation": "Jesus told Mary not to cling to Him.",
+  "ref": "John 20:17"
+ },
+ {
+  "id": "old-john-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Thomas say he needed in order to believe?",
+  "choices": [
+   "A sign in heaven",
+   "To see and touch the wounds",
+   "The testimony of Peter only",
+   "A voice from heaven"
+  ],
+  "answer": 1,
+  "explanation": "Thomas said he needed to see and touch the wounds.",
+  "ref": "John 20:25"
+ },
+ {
+  "id": "old-john-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus call blessed when He spoke to Thomas?",
+  "choices": [
+   "Those who see angels",
+   "Those who have not seen, and yet have believed",
+   "Those who ask for proof",
+   "Those who were in the room"
+  ],
+  "answer": 1,
+  "explanation": "Jesus said, 'Blessed are they that have not seen, and yet have believed.'",
+  "ref": "John 20:29"
+ },
+ {
+  "id": "old-john-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "At what sea did Jesus show Himself again to the disciples?",
+  "choices": [
+   "The sea of Tiberias",
+   "The Dead Sea",
+   "The Red Sea",
+   "The Mediterranean"
+  ],
+  "answer": 0,
+  "explanation": "John says Jesus showed Himself again at the sea of Tiberias.",
+  "ref": "John 21:1"
+ },
+ {
+  "id": "old-john-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when the disciples obeyed Jesus and cast the net on the right side?",
+  "choices": [
+   "The net broke empty",
+   "They caught a great multitude of fishes",
+   "The boat sank",
+   "A storm rose"
+  ],
+  "answer": 1,
+  "explanation": "They enclosed a great number of fishes.",
+  "ref": "John 21:6"
+ },
+ {
+  "id": "old-john-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question did Jesus ask Peter three times?",
+  "choices": [
+   "Wilt thou follow me?",
+   "Why didst thou deny me?",
+   "Where is thy faith?",
+   "Lovest thou me?"
+  ],
+  "answer": 3,
+  "explanation": "Jesus asked Peter three times, 'Lovest thou me?'",
+  "ref": "John 21:15–17"
+ },
+ {
+  "id": "old-john-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What charge did Jesus give Peter after Peter said he loved Him?",
+  "choices": [
+   "Build my temple",
+   "Feed my sheep",
+   "Rule my people",
+   "Count the flock"
+  ],
+  "answer": 1,
+  "explanation": "Jesus charged Peter to care for His flock.",
+  "ref": "John 21:16–17"
+ },
+ {
+  "id": "old-john-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What simple command did Jesus give Peter after speaking of his future?",
+  "choices": [
+   "Return to Galilee",
+   "Follow me",
+   "Tell no one",
+   "Feed the poor"
+  ],
+  "answer": 1,
+  "explanation": "Jesus ended by telling Peter, 'Follow me.'",
+  "ref": "John 21:19"
+ }
+]

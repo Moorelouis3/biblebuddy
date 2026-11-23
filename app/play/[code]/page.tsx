@@ -98,7 +98,7 @@ export default function PlayInvitePage() {
         ) : (
           <>
             <div className="bb-invite-title">
-              <h1>Bible Clue</h1>
+              <h1>Bible Trivia</h1>
               <p>Follow the clues. Guess the answer.</p>
             </div>
 
@@ -151,7 +151,7 @@ export default function PlayInvitePage() {
                       : invite.reason === "full"
                         ? "That room is full."
                         : "That room has closed."}{" "}
-                    You can still play Bible Clue on your own or start your own room.
+                    You can still play Bible Trivia on your own or start your own room.
                   </p>
                   <Link href={signupFallback} className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big">
                     Sign up free to play

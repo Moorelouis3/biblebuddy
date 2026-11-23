@@ -1,0 +1,642 @@
+[
+ {
+  "id": "old-song-of-solomon-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the book introduced?",
+  "choices": [
+   "The prophecy of Solomon",
+   "The wisdom of the king",
+   "The song of songs, which is Solomon's",
+   "The lament of Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "The book opens by calling itself the song of songs, associated with Solomon.",
+  "ref": "Song of Solomon 1:1"
+ },
+ {
+  "id": "old-song-of-solomon-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the woman say is better than wine?",
+  "choices": [
+   "Thy love",
+   "His wisdom",
+   "The king's feast",
+   "The fragrance of Lebanon"
+  ],
+  "answer": 0,
+  "explanation": "She praises his love as more delightful than wine.",
+  "ref": "Song of Solomon 1:2"
+ },
+ {
+  "id": "old-song-of-solomon-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is compared to ointment poured forth?",
+  "choices": [
+   "The city's beauty",
+   "The vineyards",
+   "The daughters of Jerusalem",
+   "Thy name"
+  ],
+  "answer": 3,
+  "explanation": "His name is described as precious and fragrant.",
+  "ref": "Song of Solomon 1:3"
+ },
+ {
+  "id": "old-song-of-solomon-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the woman describe herself?",
+  "choices": [
+   "Fair as the moon",
+   "A rose in winter",
+   "Hidden in the garden",
+   "Black, but comely"
+  ],
+  "answer": 3,
+  "explanation": "She describes herself as darkened by labor yet lovely.",
+  "ref": "Song of Solomon 1:5"
+ },
+ {
+  "id": "old-song-of-solomon-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does she say she is dark?",
+  "choices": [
+   "Because she mourns daily",
+   "Because she lives in the wilderness",
+   "Because she wears mourning clothes",
+   "Because the sun hath looked upon me"
+  ],
+  "answer": 3,
+  "explanation": "She explains that the sun has darkened her.",
+  "ref": "Song of Solomon 1:6"
+ },
+ {
+  "id": "old-song-of-solomon-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What flower image does the woman use?",
+  "choices": [
+   "Rose of Sharon",
+   "Lily of Lebanon",
+   "Olive branch",
+   "Palm tree"
+  ],
+  "answer": 0,
+  "explanation": "She describes herself as the rose of Sharon and lily of the valleys.",
+  "ref": "Song of Solomon 2:1"
+ },
+ {
+  "id": "old-song-of-solomon-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the beloved describe his love among daughters?",
+  "choices": [
+   "As a cedar among shrubs",
+   "As a lily among thorns",
+   "As a dove among ravens",
+   "As a lamp in darkness"
+  ],
+  "answer": 1,
+  "explanation": "He compares her to a lily among thorns.",
+  "ref": "Song of Solomon 2:2"
+ },
+ {
+  "id": "old-song-of-solomon-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the woman describe her beloved among the sons?",
+  "choices": [
+   "As a lion among lambs",
+   "As a king upon his throne",
+   "As an apple tree among the trees of the wood",
+   "As a spring in drought"
+  ],
+  "answer": 2,
+  "explanation": "She pictures him as especially refreshing and desirable.",
+  "ref": "Song of Solomon 2:3"
+ },
+ {
+  "id": "old-song-of-solomon-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was his banner over her?",
+  "choices": [
+   "Love",
+   "Peace",
+   "Joy",
+   "Strength"
+  ],
+  "answer": 0,
+  "explanation": "The famous phrase says, 'his banner over me was love.'",
+  "ref": "Song of Solomon 2:4"
+ },
+ {
+  "id": "old-song-of-solomon-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which little animals are said to spoil the vines?",
+  "choices": [
+   "Foxes",
+   "Birds",
+   "Wolves",
+   "Thorns"
+  ],
+  "answer": 0,
+  "explanation": "The verse speaks of the foxes, the little foxes, that spoil the vines.",
+  "ref": "Song of Solomon 2:15"
+ },
+ {
+  "id": "old-song-of-solomon-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does the woman seek by night on her bed?",
+  "choices": [
+   "Her brother",
+   "The watchmen",
+   "The daughters of Zion",
+   "Him whom my soul loveth"
+  ],
+  "answer": 3,
+  "explanation": "She longs for the one whom her soul loves.",
+  "ref": "Song of Solomon 3:1"
+ },
+ {
+  "id": "old-song-of-solomon-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does she go to seek him?",
+  "choices": [
+   "The temple courts",
+   "The city streets and broad ways",
+   "The king's palace",
+   "The vineyards of En-gedi"
+  ],
+  "answer": 1,
+  "explanation": "She rises and searches the city for him.",
+  "ref": "Song of Solomon 3:2"
+ },
+ {
+  "id": "old-song-of-solomon-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does she meet while searching?",
+  "choices": [
+   "Priests",
+   "Her brothers",
+   "The watchmen",
+   "Royal servants"
+  ],
+  "answer": 2,
+  "explanation": "The city watchmen encounter her during the search.",
+  "ref": "Song of Solomon 3:3"
+ },
+ {
+  "id": "old-song-of-solomon-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does she do when she finds him?",
+  "choices": [
+   "She holds him, and will not let him go",
+   "She hides from him",
+   "She rebukes him",
+   "She returns home alone"
+  ],
+  "answer": 0,
+  "explanation": "She clings to him once she finds him.",
+  "ref": "Song of Solomon 3:4"
+ },
+ {
+  "id": "old-song-of-solomon-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What royal figure is highlighted later in the chapter?",
+  "choices": [
+   "David",
+   "Solomon",
+   "Absalom",
+   "Samuel"
+  ],
+  "answer": 1,
+  "explanation": "The chapter shifts to imagery around Solomon and his procession.",
+  "ref": "Song of Solomon 3:7"
+ },
+ {
+  "id": "old-song-of-solomon-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated compliment opens the chapter?",
+  "choices": [
+   "Thou art wise",
+   "Thou art strong",
+   "Thou art fair",
+   "Thou art faithful"
+  ],
+  "answer": 2,
+  "explanation": "The beloved begins by declaring her beauty.",
+  "ref": "Song of Solomon 4:1"
+ },
+ {
+  "id": "old-song-of-solomon-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal image is used for her hair?",
+  "choices": [
+   "A flight of doves",
+   "A flock of goats",
+   "A herd of deer",
+   "A line of horses"
+  ],
+  "answer": 1,
+  "explanation": "Her hair is poetically compared to a flock of goats.",
+  "ref": "Song of Solomon 4:1"
+ },
+ {
+  "id": "old-song-of-solomon-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are her lips compared to?",
+  "choices": [
+   "A scarlet thread",
+   "Fine gold",
+   "A fountain",
+   "A pomegranate"
+  ],
+  "answer": 0,
+  "explanation": "Her lips are compared to a thread of scarlet.",
+  "ref": "Song of Solomon 4:3"
+ },
+ {
+  "id": "old-song-of-solomon-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the beloved say after calling his bride all fair?",
+  "choices": [
+   "There is no fear in thee",
+   "There is no pride in thee",
+   "There is no spot in thee",
+   "There is no sorrow in thee"
+  ],
+  "answer": 2,
+  "explanation": "He says, Thou art all fair, my love; there is no spot in thee.",
+  "ref": "Song of Solomon 4:7"
+ },
+ {
+  "id": "old-song-of-solomon-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the bride described?",
+  "choices": [
+   "A garden enclosed",
+   "A city set on a hill",
+   "A cedar of Lebanon",
+   "A dove in flight"
+  ],
+  "answer": 0,
+  "explanation": "The image of a sealed garden emphasizes beauty, exclusiveness, and delight.",
+  "ref": "Song of Solomon 4:12"
+ },
+ {
+  "id": "old-song-of-solomon-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the beloved say he has come into?",
+  "choices": [
+   "My city",
+   "My house",
+   "My garden",
+   "My vineyard"
+  ],
+  "answer": 2,
+  "explanation": "He enters the garden imagery established earlier.",
+  "ref": "Song of Solomon 5:1"
+ },
+ {
+  "id": "old-song-of-solomon-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the woman doing when she hears her beloved knock?",
+  "choices": [
+   "Running through the city",
+   "Sleeping, but her heart waketh",
+   "Working in the vineyard",
+   "Standing with the daughters of Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "She is resting but inwardly alert when he comes.",
+  "ref": "Song of Solomon 5:2"
+ },
+ {
+  "id": "old-song-of-solomon-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens when she opens to her beloved?",
+  "choices": [
+   "He had withdrawn himself and was gone",
+   "He enters immediately",
+   "The watchmen bring him in",
+   "He speaks again from the garden"
+  ],
+  "answer": 0,
+  "explanation": "Her delayed response leads to painful separation.",
+  "ref": "Song of Solomon 5:6"
+ },
+ {
+  "id": "old-song-of-solomon-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who wounds her?",
+  "choices": [
+   "The watchmen",
+   "Her brothers",
+   "The daughters of Jerusalem",
+   "The king's guards"
+  ],
+  "answer": 0,
+  "explanation": "The watchmen strike and wound her during the search.",
+  "ref": "Song of Solomon 5:7"
+ },
+ {
+  "id": "old-song-of-solomon-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the chapter summarize the beloved?",
+  "choices": [
+   "Altogether lovely",
+   "Chief among shepherds",
+   "Strong as a tower",
+   "Like a lion in battle"
+  ],
+  "answer": 0,
+  "explanation": "She closes by declaring him altogether lovely.",
+  "ref": "Song of Solomon 5:16"
+ },
+ {
+  "id": "old-song-of-solomon-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the daughters of Jerusalem ask?",
+  "choices": [
+   "Why art thou dark?",
+   "Who is this king?",
+   "Where is thy beloved gone?",
+   "Whither has the spring gone?"
+  ],
+  "answer": 2,
+  "explanation": "They ask where the beloved has turned so they may help seek him.",
+  "ref": "Song of Solomon 6:1"
+ },
+ {
+  "id": "old-song-of-solomon-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where has the beloved gone?",
+  "choices": [
+   "To the city gates",
+   "Into his garden",
+   "To the mountains of Bether",
+   "To the king's palace"
+  ],
+  "answer": 1,
+  "explanation": "He is said to have gone down into his garden.",
+  "ref": "Song of Solomon 6:2"
+ },
+ {
+  "id": "old-song-of-solomon-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What mutual statement appears?",
+  "choices": [
+   "Love is stronger than death",
+   "I am my beloved's, and my beloved is mine",
+   "Set me as a seal upon thine heart",
+   "His banner over me was love"
+  ],
+  "answer": 1,
+  "explanation": "The verse emphasizes mutual belonging.",
+  "ref": "Song of Solomon 6:3"
+ },
+ {
+  "id": "old-song-of-solomon-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The woman is called comely as Jerusalem. To which other city is her beauty compared?",
+  "choices": [
+   "Damascus",
+   "Tirzah",
+   "Hebron",
+   "Bethlehem"
+  ],
+  "answer": 1,
+  "explanation": "She is described as beautiful as Tirzah and comely as Jerusalem.",
+  "ref": "Song of Solomon 6:4"
+ },
+ {
+  "id": "old-song-of-solomon-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said to overcome the beloved?",
+  "choices": [
+   "Thine eyes",
+   "Her voice",
+   "Her hands",
+   "Her song"
+  ],
+  "answer": 0,
+  "explanation": "He says her eyes have overcome him.",
+  "ref": "Song of Solomon 6:5"
+ },
+ {
+  "id": "old-song-of-solomon-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are the woman's feet described?",
+  "choices": [
+   "Beautiful in shoes",
+   "Swift in dance",
+   "Like silver pillars",
+   "As lilies in the valley"
+  ],
+  "answer": 0,
+  "explanation": "The beloved begins by praising how beautiful her feet are in shoes.",
+  "ref": "Song of Solomon 7:1"
+ },
+ {
+  "id": "old-song-of-solomon-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is compared to a round goblet?",
+  "choices": [
+   "Her eyes",
+   "Her navel",
+   "Her lips",
+   "Her neck"
+  ],
+  "answer": 1,
+  "explanation": "The imagery continues with poetic praise of her form.",
+  "ref": "Song of Solomon 7:2"
+ },
+ {
+  "id": "old-song-of-solomon-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are compared to two young roes that are twins?",
+  "choices": [
+   "Her hands",
+   "Her eyes",
+   "Her cheeks",
+   "Her breasts"
+  ],
+  "answer": 3,
+  "explanation": "The same imagery from earlier returns here.",
+  "ref": "Song of Solomon 7:3"
+ },
+ {
+  "id": "old-song-of-solomon-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the woman say about herself and her beloved?",
+  "choices": [
+   "His banner over me was love",
+   "I am my beloved's, and his desire is toward me",
+   "Many waters cannot quench love",
+   "I sought him, but found him not"
+  ],
+  "answer": 1,
+  "explanation": "The verse expresses mutual affection and belonging.",
+  "ref": "Song of Solomon 7:10"
+ },
+ {
+  "id": "old-song-of-solomon-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does she invite the beloved to go?",
+  "choices": [
+   "Into the field",
+   "Into the cities",
+   "To Jerusalem",
+   "To the watchmen"
+  ],
+  "answer": 0,
+  "explanation": "She invites him to go forth into the field and lodge in the villages.",
+  "ref": "Song of Solomon 7:11"
+ },
+ {
+  "id": "old-song-of-solomon-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the woman wish concerning her beloved?",
+  "choices": [
+   "That he were king over all",
+   "That he were as my brother",
+   "That he would hide in the garden",
+   "That he would never leave the city"
+  ],
+  "answer": 1,
+  "explanation": "She expresses a desire for open, unhindered affection.",
+  "ref": "Song of Solomon 8:1"
+ },
+ {
+  "id": "old-song-of-solomon-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would she cause him to drink?",
+  "choices": [
+   "Water from the well",
+   "Spiced wine",
+   "Milk and honey",
+   "Oil from the olives"
+  ],
+  "answer": 1,
+  "explanation": "The imagery continues the language of sweet love and delight.",
+  "ref": "Song of Solomon 8:2"
+ },
+ {
+  "id": "old-song-of-solomon-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does she charge the daughters of Jerusalem not to stir up or awake?",
+  "choices": [
+   "Her love",
+   "The city watch",
+   "The harvest",
+   "The feast"
+  ],
+  "answer": 0,
+  "explanation": "She again charges the daughters of Jerusalem not to stir up nor awake her love, until he please.",
+  "ref": "Song of Solomon 8:4"
+ },
+ {
+  "id": "old-song-of-solomon-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is love described?",
+  "choices": [
+   "Gentle as the morning",
+   "Strong as death",
+   "Swift as an eagle",
+   "Deep as the sea"
+  ],
+  "answer": 1,
+  "explanation": "The chapter uses some of the book's strongest language for love's power.",
+  "ref": "Song of Solomon 8:6"
+ },
+ {
+  "id": "old-song-of-solomon-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What cannot quench love?",
+  "choices": [
+   "Strong winds",
+   "The sun's heat",
+   "Many waters",
+   "The tongues of men"
+  ],
+  "answer": 2,
+  "explanation": "The closing poetry says many waters cannot quench love.",
+  "ref": "Song of Solomon 8:7"
+ }
+]

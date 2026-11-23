@@ -1,0 +1,82 @@
+[
+ {
+  "id": "old-philemon-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what basis does Paul appeal to Philemon?",
+  "choices": [
+   "His apostolic authority",
+   "Roman law",
+   "Church tradition",
+   "Love"
+  ],
+  "answer": 3,
+  "explanation": "Paul says that although he could command what is proper, he appeals instead for love's sake.",
+  "ref": "Philemon 1:9"
+ },
+ {
+  "id": "old-philemon-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Paul call his son, begotten in his bonds?",
+  "choices": [
+   "Archippus",
+   "Epaphras",
+   "Onesimus",
+   "Timothy"
+  ],
+  "answer": 2,
+  "explanation": "Paul refers to Onesimus as his spiritual son, born during Paul's imprisonment.",
+  "ref": "Philemon 1:10"
+ },
+ {
+  "id": "old-philemon-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul say Philemon should receive Onesimus?",
+  "choices": [
+   "As a hired servant",
+   "As a guest only",
+   "As a church messenger",
+   "As a beloved brother"
+  ],
+  "answer": 3,
+  "explanation": "Paul urges Philemon to receive Onesimus no longer merely as a servant, but above a servant, a brother beloved.",
+  "ref": "Philemon 1:16"
+ },
+ {
+  "id": "old-philemon-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul tell Philemon to do if Onesimus owes him anything?",
+  "choices": [
+   "Forget it completely",
+   "Bring it before the church",
+   "Ask Onesimus to repay immediately",
+   "Charge that to Paul's account"
+  ],
+  "answer": 3,
+  "explanation": "Paul personally offers to take responsibility for any wrong or debt Onesimus may owe.",
+  "ref": "Philemon 1:18"
+ },
+ {
+  "id": "old-philemon-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say he is confident Philemon will do?",
+  "choices": [
+   "Do even more than Paul says",
+   "Refuse the request",
+   "Delay his answer",
+   "Send Onesimus back to prison"
+  ],
+  "answer": 0,
+  "explanation": "Paul expresses confidence in Philemon's obedience and says he will do even more than requested.",
+  "ref": "Philemon 1:21"
+ }
+]

@@ -1,0 +1,1682 @@
+[
+ {
+  "id": "old-judges-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe did the Lord say should go up first against the Canaanites?",
+  "choices": [
+   "Judah",
+   "Benjamin",
+   "Ephraim",
+   "Dan"
+  ],
+  "answer": 0,
+  "explanation": "The Lord said Judah should go up first.",
+  "ref": "Judges 1:2"
+ },
+ {
+  "id": "old-judges-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe went with Judah at the beginning of the campaign?",
+  "choices": [
+   "Simeon",
+   "Levi",
+   "Reuben",
+   "Naphtali"
+  ],
+  "answer": 0,
+  "explanation": "Judah invited Simeon to go up with them.",
+  "ref": "Judges 1:3"
+ },
+ {
+  "id": "old-judges-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Adoni-bezek after he was captured?",
+  "choices": [
+   "He was made king over Judah",
+   "He escaped to Egypt",
+   "His thumbs and great toes were cut off",
+   "He was hanged immediately"
+  ],
+  "answer": 2,
+  "explanation": "Adoni-bezek received the same treatment he had given others.",
+  "ref": "Judges 1:6–7"
+ },
+ {
+  "id": "old-judges-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who captured Kirjath-sepher and received Achsah as wife?",
+  "choices": [
+   "Othniel",
+   "Joshua",
+   "Caleb",
+   "Ehud"
+  ],
+  "answer": 0,
+  "explanation": "Othniel took the city and received Achsah.",
+  "ref": "Judges 1:12–13"
+ },
+ {
+  "id": "old-judges-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated problem is seen throughout the chapter?",
+  "choices": [
+   "Israel built no cities",
+   "Several tribes did not drive out the Canaanites",
+   "The ark was lost",
+   "The priests stopped serving"
+  ],
+  "answer": 1,
+  "explanation": "Many tribes left the Canaanites in the land instead of fully driving them out.",
+  "ref": "Judges 1:27–36"
+ },
+ {
+  "id": "old-judges-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the angel of the Lord say Israel had done wrong regarding the inhabitants of the land?",
+  "choices": [
+   "They fought too much",
+   "They crossed Jordan too soon",
+   "They made leagues and did not throw down their altars",
+   "They forgot the Passover"
+  ],
+  "answer": 2,
+  "explanation": "Israel disobeyed by making agreements and leaving pagan worship in place.",
+  "ref": "Judges 2:2"
+ },
+ {
+  "id": "old-judges-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name was given to the place where the people wept after the rebuke?",
+  "choices": [
+   "Gilgal",
+   "Bochim",
+   "Shiloh",
+   "Mizpeh"
+  ],
+  "answer": 1,
+  "explanation": "The place was called Bochim because the people wept there.",
+  "ref": "Judges 2:5"
+ },
+ {
+  "id": "old-judges-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened after that generation who knew Joshua died?",
+  "choices": [
+   "Israel built the temple",
+   "Moab submitted",
+   "The land was fully at rest",
+   "Another generation arose which knew not the Lord"
+  ],
+  "answer": 3,
+  "explanation": "A new generation arose that did not know the Lord or His works.",
+  "ref": "Judges 2:10"
+ },
+ {
+  "id": "old-judges-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord raise up when Israel was oppressed because of sin?",
+  "choices": [
+   "Kings",
+   "Prophets only",
+   "Priests only",
+   "Judges"
+  ],
+  "answer": 3,
+  "explanation": "The Lord raised judges to deliver Israel from oppressors.",
+  "ref": "Judges 2:16"
+ },
+ {
+  "id": "old-judges-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What pattern did Israel repeat after each judge died?",
+  "choices": [
+   "They stayed faithful",
+   "They moved east of Jordan",
+   "They returned and corrupted themselves more than their fathers",
+   "They destroyed all idols"
+  ],
+  "answer": 2,
+  "explanation": "After each judge, Israel turned back into deeper corruption.",
+  "ref": "Judges 2:19"
+ },
+ {
+  "id": "old-judges-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were certain nations left in the land according to the chapter?",
+  "choices": [
+   "To enrich Israel",
+   "To prove Israel and teach later generations war",
+   "To replace the Levites",
+   "To guard Jericho"
+  ],
+  "answer": 1,
+  "explanation": "The remaining nations tested Israel and taught warfare to later generations.",
+  "ref": "Judges 3:1–4"
+ },
+ {
+  "id": "old-judges-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the first judge named as delivering Israel in this chapter?",
+  "choices": [
+   "Ehud",
+   "Othniel",
+   "Shamgar",
+   "Deborah"
+  ],
+  "answer": 1,
+  "explanation": "Othniel was the first named deliverer in Judges 3.",
+  "ref": "Judges 3:9"
+ },
+ {
+  "id": "old-judges-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What trait of Ehud is mentioned?",
+  "choices": [
+   "He was blind",
+   "He was lame",
+   "He was left-handed",
+   "He was a priest"
+  ],
+  "answer": 2,
+  "explanation": "Ehud is described as a man lefthanded.",
+  "ref": "Judges 3:15"
+ },
+ {
+  "id": "old-judges-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Ehud kill Eglon king of Moab?",
+  "choices": [
+   "With a spear in battle",
+   "By poison",
+   "With a dagger while alone with him",
+   "By stoning"
+  ],
+  "answer": 2,
+  "explanation": "Ehud used a concealed dagger when he met Eglon privately.",
+  "ref": "Judges 3:20–22"
+ },
+ {
+  "id": "old-judges-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What weapon is associated with Shamgar?",
+  "choices": [
+   "A bow",
+   "An ox goad",
+   "A sling",
+   "A sword of iron"
+  ],
+  "answer": 1,
+  "explanation": "Shamgar killed six hundred Philistines with an ox goad.",
+  "ref": "Judges 3:31"
+ },
+ {
+  "id": "old-judges-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who oppressed Israel with nine hundred chariots of iron?",
+  "choices": [
+   "Eglon",
+   "Midian",
+   "Ammon",
+   "Jabin king of Canaan"
+  ],
+  "answer": 3,
+  "explanation": "Jabin's captain Sisera oppressed Israel with a powerful chariot force.",
+  "ref": "Judges 4:2–3"
+ },
+ {
+  "id": "old-judges-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who judged Israel under a palm tree at this time?",
+  "choices": [
+   "Jael",
+   "Deborah",
+   "Hannah",
+   "Miriam"
+  ],
+  "answer": 1,
+  "explanation": "Deborah judged Israel under the palm of Deborah.",
+  "ref": "Judges 4:4–5"
+ },
+ {
+  "id": "old-judges-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Deborah call to lead ten thousand men from Naphtali and Zebulun?",
+  "choices": [
+   "Gideon",
+   "Barak",
+   "Jephthah",
+   "Samson"
+  ],
+  "answer": 1,
+  "explanation": "Deborah summoned Barak to lead the battle.",
+  "ref": "Judges 4:6"
+ },
+ {
+  "id": "old-judges-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Deborah say the honor of the final victory would not belong to Barak alone?",
+  "choices": [
+   "He was too young",
+   "The Lord would sell Sisera into the hand of a woman",
+   "He refused to fight",
+   "Judah went first"
+  ],
+  "answer": 1,
+  "explanation": "Because Barak insisted Deborah go with him, Deborah foretold the honor would go to a woman.",
+  "ref": "Judges 4:9"
+ },
+ {
+  "id": "old-judges-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jael kill Sisera?",
+  "choices": [
+   "With a sword in open battle",
+   "By poison in milk",
+   "With a tent nail while he slept",
+   "By pushing him off a wall"
+  ],
+  "answer": 2,
+  "explanation": "Jael struck a tent nail through Sisera's temples while he slept.",
+  "ref": "Judges 4:21"
+ },
+ {
+  "id": "old-judges-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sang this song together after the victory?",
+  "choices": [
+   "Deborah and Jael",
+   "Barak and Sisera",
+   "Deborah and Barak",
+   "Deborah and Samuel"
+  ],
+  "answer": 2,
+  "explanation": "Deborah and Barak sang the victory song together.",
+  "ref": "Judges 5:1"
+ },
+ {
+  "id": "old-judges-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the song praise in Israel?",
+  "choices": [
+   "That the people willingly offered themselves",
+   "Its wealth",
+   "Its chariots",
+   "Its large cities"
+  ],
+  "answer": 0,
+  "explanation": "The song praises those who willingly offered themselves.",
+  "ref": "Judges 5:2"
+ },
+ {
+  "id": "old-judges-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe is rebuked for staying with the sheepfolds instead of joining the battle?",
+  "choices": [
+   "Reuben",
+   "Judah",
+   "Benjamin",
+   "Naphtali"
+  ],
+  "answer": 0,
+  "explanation": "Reuben is questioned for remaining among the sheepfolds.",
+  "ref": "Judges 5:15–16"
+ },
+ {
+  "id": "old-judges-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What star-related image appears in the battle song?",
+  "choices": [
+   "Stars fell to earth",
+   "The stars in their courses fought against Sisera",
+   "The moon turned red",
+   "A star led Barak"
+  ],
+  "answer": 1,
+  "explanation": "The song poetically says the stars fought from heaven against Sisera.",
+  "ref": "Judges 5:20"
+ },
+ {
+  "id": "old-judges-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Jael described in the song?",
+  "choices": [
+   "Cursed above women",
+   "Blessed above women",
+   "Queen of Israel",
+   "Prophetess of war"
+  ],
+  "answer": 1,
+  "explanation": "Jael is called blessed above women in the tent.",
+  "ref": "Judges 5:24"
+ },
+ {
+  "id": "old-judges-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did the Midianites oppress Israel?",
+  "choices": [
+   "3 years",
+   "7 years",
+   "20 years",
+   "40 years"
+  ],
+  "answer": 1,
+  "explanation": "Midian oppressed Israel for seven years.",
+  "ref": "Judges 6:1"
+ },
+ {
+  "id": "old-judges-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Israel hide because of Midian's oppression?",
+  "choices": [
+   "In Egypt",
+   "Inside the tabernacle",
+   "At the Jordan",
+   "In caves and dens in the mountains"
+  ],
+  "answer": 3,
+  "explanation": "The oppression drove Israel into dens and caves.",
+  "ref": "Judges 6:2"
+ },
+ {
+  "id": "old-judges-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title did the angel of the Lord use for Gideon?",
+  "choices": [
+   "Prince of Israel",
+   "Judge of Ephraim",
+   "Captain of Judah",
+   "Thou mighty man of valour"
+  ],
+  "answer": 3,
+  "explanation": "The angel greeted Gideon as a mighty man of valor.",
+  "ref": "Judges 6:12"
+ },
+ {
+  "id": "old-judges-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What altar did Gideon tear down by night?",
+  "choices": [
+   "The altar of the Lord",
+   "The altar at Shiloh",
+   "The altar of Baal",
+   "The altar of Moab"
+  ],
+  "answer": 2,
+  "explanation": "Gideon tore down his father's altar of Baal.",
+  "ref": "Judges 6:25–27"
+ },
+ {
+  "id": "old-judges-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign with fleece did Gideon request?",
+  "choices": [
+   "That it would catch fire",
+   "That it would become wool of gold",
+   "That it would blow in the wind",
+   "That dew would be on the fleece and not the ground, then vice versa"
+  ],
+  "answer": 3,
+  "explanation": "Gideon asked for two fleece signs involving dew.",
+  "ref": "Judges 6:36–40"
+ },
+ {
+  "id": "old-judges-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the Lord reduce Gideon's army dramatically?",
+  "choices": [
+   "There was not enough food",
+   "The men were too old",
+   "Only Judah could fight",
+   "Lest Israel boast that their own hand saved them"
+  ],
+  "answer": 3,
+  "explanation": "God reduced the army so the glory would clearly belong to Him.",
+  "ref": "Judges 7:2"
+ },
+ {
+  "id": "old-judges-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men remained after the final test at the water?",
+  "choices": [
+   "300",
+   "1,000",
+   "3,000",
+   "10,000"
+  ],
+  "answer": 0,
+  "explanation": "Only three hundred men remained.",
+  "ref": "Judges 7:6–7"
+ },
+ {
+  "id": "old-judges-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Gideon overhear in the Midianite camp that encouraged him?",
+  "choices": [
+   "A prophecy from a priest",
+   "Sisera's song",
+   "A trumpet blast",
+   "A dream about a barley cake overturning a tent"
+  ],
+  "answer": 3,
+  "explanation": "A Midianite soldier related a dream about a barley cake overturning the camp.",
+  "ref": "Judges 7:13–14"
+ },
+ {
+  "id": "old-judges-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What three items did Gideon's men carry into battle?",
+  "choices": [
+   "Swords, shields, and spears",
+   "Bows, arrows, and torches",
+   "Rams' horns, bells, and staffs",
+   "Trumpets, pitchers, and lamps"
+  ],
+  "answer": 3,
+  "explanation": "Each man carried a trumpet, an empty pitcher, and a lamp within the pitcher.",
+  "ref": "Judges 7:16"
+ },
+ {
+  "id": "old-judges-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened in the Midianite camp when Gideon's men shouted?",
+  "choices": [
+   "They surrendered peacefully",
+   "Fire consumed the camp",
+   "The Lord set every man's sword against his fellow",
+   "The Jordan flooded"
+  ],
+  "answer": 2,
+  "explanation": "The Lord caused confusion so the Midianites turned on one another.",
+  "ref": "Judges 7:22"
+ },
+ {
+  "id": "old-judges-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe complained that Gideon had not called them earlier to the battle against Midian?",
+  "choices": [
+   "Judah",
+   "Benjamin",
+   "Asher",
+   "Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "The men of Ephraim contended sharply with Gideon.",
+  "ref": "Judges 8:1"
+ },
+ {
+  "id": "old-judges-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two Midianite kings did Gideon pursue and capture?",
+  "choices": [
+   "Sisera and Jabin",
+   "Oreb and Zeeb",
+   "Sihon and Og",
+   "Zebah and Zalmunna"
+  ],
+  "answer": 3,
+  "explanation": "Gideon captured Zebah and Zalmunna after the pursuit.",
+  "ref": "Judges 8:5"
+ },
+ {
+  "id": "old-judges-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Gideon answer when the men of Israel asked him to rule over them?",
+  "choices": [
+   "I will rule over you",
+   "The Lord shall rule over you",
+   "My son shall rule over you",
+   "Choose a king from Judah"
+  ],
+  "answer": 1,
+  "explanation": "Gideon refused to rule, for himself and for his son, and said the Lord would rule over them.",
+  "ref": "Judges 8:22–23"
+ },
+ {
+  "id": "old-judges-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Gideon make from the gold earrings taken as spoil?",
+  "choices": [
+   "An ephod",
+   "A sword",
+   "A tabernacle veil",
+   "A crown"
+  ],
+  "answer": 0,
+  "explanation": "Gideon made an ephod from the gold, and it became a snare.",
+  "ref": "Judges 8:27"
+ },
+ {
+  "id": "old-judges-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did the land have rest in the days of Gideon?",
+  "choices": [
+   "20",
+   "40",
+   "60",
+   "80"
+  ],
+  "answer": 1,
+  "explanation": "The land was in quietness forty years in Gideon's days.",
+  "ref": "Judges 8:28"
+ },
+ {
+  "id": "old-judges-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many of Gideon's sons did Abimelech kill on one stone?",
+  "choices": [
+   "12",
+   "40",
+   "70",
+   "100"
+  ],
+  "answer": 2,
+  "explanation": "Abimelech slew seventy of his brothers on one stone.",
+  "ref": "Judges 9:5"
+ },
+ {
+  "id": "old-judges-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which son of Gideon escaped the massacre and later spoke from Mount Gerizim?",
+  "choices": [
+   "Tola",
+   "Jephthah",
+   "Samson",
+   "Jotham"
+  ],
+  "answer": 3,
+  "explanation": "Jotham escaped and delivered the parable of the trees.",
+  "ref": "Judges 9:5"
+ },
+ {
+  "id": "old-judges-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jotham's parable say the trees chose to reign over them?",
+  "choices": [
+   "An olive tree",
+   "A fig tree",
+   "A bramble",
+   "A cedar"
+  ],
+  "answer": 2,
+  "explanation": "The bramble became the symbol of Abimelech's destructive rule.",
+  "ref": "Judges 9:14–15"
+ },
+ {
+  "id": "old-judges-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was Abimelech mortally wounded?",
+  "choices": [
+   "By a spear in battle",
+   "By fire from heaven",
+   "A woman cast a piece of a millstone upon his head",
+   "By poison"
+  ],
+  "answer": 2,
+  "explanation": "A woman dropped a millstone fragment on Abimelech's head.",
+  "ref": "Judges 9:53"
+ },
+ {
+  "id": "old-judges-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Abimelech ask his armourbearer to kill him quickly?",
+  "choices": [
+   "He was afraid of fire",
+   "Lest men say a woman slew him",
+   "He wanted a faster death",
+   "He was fleeing"
+  ],
+  "answer": 1,
+  "explanation": "He feared the shame of being remembered as slain by a woman.",
+  "ref": "Judges 9:54"
+ },
+ {
+  "id": "old-judges-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which judge arose after Abimelech and judged Israel twenty and three years?",
+  "choices": [
+   "Tola",
+   "Jair",
+   "Jephthah",
+   "Ibzan"
+  ],
+  "answer": 0,
+  "explanation": "Tola judged Israel for twenty-three years.",
+  "ref": "Judges 10:1–2"
+ },
+ {
+  "id": "old-judges-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sons did Jair have who rode on thirty ass colts?",
+  "choices": [
+   "12",
+   "20",
+   "30",
+   "40"
+  ],
+  "answer": 2,
+  "explanation": "Jair had thirty sons riding on thirty ass colts.",
+  "ref": "Judges 10:4"
+ },
+ {
+  "id": "old-judges-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which peoples are named as oppressing Israel for eighteen years in this chapter?",
+  "choices": [
+   "Moabites and Midianites",
+   "Philistines and Ammonites",
+   "Edomites and Egyptians",
+   "Assyrians and Canaanites"
+  ],
+  "answer": 1,
+  "explanation": "The Philistines and Ammonites vexed Israel.",
+  "ref": "Judges 10:7–8"
+ },
+ {
+  "id": "old-judges-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the Lord first answer Israel when they cried out in this chapter?",
+  "choices": [
+   "He raised a judge immediately",
+   "He sent manna",
+   "Go and cry unto the gods which ye have chosen",
+   "He told them to cross Jordan"
+  ],
+  "answer": 2,
+  "explanation": "The Lord rebuked them by telling them to cry to their chosen gods.",
+  "ref": "Judges 10:14"
+ },
+ {
+  "id": "old-judges-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel put away when they repented?",
+  "choices": [
+   "The strange gods from among them",
+   "Their swords",
+   "Their tents",
+   "Their cattle"
+  ],
+  "answer": 0,
+  "explanation": "Israel removed the foreign gods and served the Lord.",
+  "ref": "Judges 10:16"
+ },
+ {
+  "id": "old-judges-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why had Jephthah previously fled from his brethren?",
+  "choices": [
+   "He was the son of a strange woman and was driven out",
+   "He lost a battle",
+   "He wanted to trade with Ammon",
+   "He was a priest"
+  ],
+  "answer": 0,
+  "explanation": "Jephthah was driven away because he was the son of a harlot.",
+  "ref": "Judges 11:1–3"
+ },
+ {
+  "id": "old-judges-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the elders of Gilead later seek Jephthah?",
+  "choices": [
+   "To become priest",
+   "To judge Ephraim",
+   "To build a city",
+   "To fight against the Ammonites"
+  ],
+  "answer": 3,
+  "explanation": "They wanted Jephthah to lead them against Ammon.",
+  "ref": "Judges 11:5–6"
+ },
+ {
+  "id": "old-judges-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What argument did Jephthah make to the king of Ammon about the land dispute?",
+  "choices": [
+   "Israel took it from the Amorites, not from Ammon",
+   "Israel stole the land from Egypt",
+   "Moab gave it to Israel",
+   "It belonged to Levi"
+  ],
+  "answer": 0,
+  "explanation": "Jephthah argued that Israel had taken the land from Sihon the Amorite.",
+  "ref": "Judges 11:13–27"
+ },
+ {
+  "id": "old-judges-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What rash vow did Jephthah make before battle?",
+  "choices": [
+   "To rule forever",
+   "To offer whatever first came out of his house to meet him",
+   "To destroy Gilead",
+   "To become priest"
+  ],
+  "answer": 1,
+  "explanation": "Jephthah vowed to offer whatever came out of his house first if victorious.",
+  "ref": "Judges 11:30–31"
+ },
+ {
+  "id": "old-judges-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came out first to meet Jephthah after his victory?",
+  "choices": [
+   "His daughter",
+   "His wife",
+   "His servant",
+   "His brother"
+  ],
+  "answer": 0,
+  "explanation": "His only child, his daughter, came out to meet him with timbrels and dances.",
+  "ref": "Judges 11:34"
+ },
+ {
+  "id": "old-judges-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the men of Ephraim confront Jephthah angrily?",
+  "choices": [
+   "He would not share spoil",
+   "He had not called them to go fight against Ammon",
+   "He judged too harshly",
+   "He built an altar"
+  ],
+  "answer": 1,
+  "explanation": "Ephraim was angry at not being called to the Ammonite war.",
+  "ref": "Judges 12:1"
+ },
+ {
+  "id": "old-judges-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What word was used to identify fleeing Ephraimites at the Jordan fords?",
+  "choices": [
+   "Jericho",
+   "Mizpeh",
+   "Gilgal",
+   "Shibboleth"
+  ],
+  "answer": 3,
+  "explanation": "Their inability to pronounce 'Shibboleth' revealed them.",
+  "ref": "Judges 12:6"
+ },
+ {
+  "id": "old-judges-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Jephthah judge Israel?",
+  "choices": [
+   "4 years",
+   "6 years",
+   "8 years",
+   "10 years"
+  ],
+  "answer": 1,
+  "explanation": "Jephthah judged Israel six years.",
+  "ref": "Judges 12:7"
+ },
+ {
+  "id": "old-judges-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which minor judge had thirty sons and thirty daughters and sent the daughters abroad?",
+  "choices": [
+   "Elon",
+   "Abdon",
+   "Ibzan",
+   "Tola"
+  ],
+  "answer": 2,
+  "explanation": "Ibzan of Bethlehem had thirty sons and thirty daughters.",
+  "ref": "Judges 12:8–10"
+ },
+ {
+  "id": "old-judges-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which judge had forty sons and thirty nephews that rode on seventy ass colts?",
+  "choices": [
+   "Elon",
+   "Abdon",
+   "Jair",
+   "Tola"
+  ],
+  "answer": 1,
+  "explanation": "Abdon had a large family and seventy riding descendants.",
+  "ref": "Judges 12:13–15"
+ },
+ {
+  "id": "old-judges-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did the Philistines oppress Israel at this stage?",
+  "choices": [
+   "18 years",
+   "20 years",
+   "40 years",
+   "80 years"
+  ],
+  "answer": 2,
+  "explanation": "The Philistines oppressed Israel forty years.",
+  "ref": "Judges 13:1"
+ },
+ {
+  "id": "old-judges-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the condition of Manoah's wife before the angel appeared?",
+  "choices": [
+   "She was blind",
+   "She was barren",
+   "She was widowed",
+   "She was ill"
+  ],
+  "answer": 1,
+  "explanation": "Manoah's wife was barren and had not borne children.",
+  "ref": "Judges 13:2–3"
+ },
+ {
+  "id": "old-judges-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What special status was the promised child to have from the womb?",
+  "choices": [
+   "High priest",
+   "King of Israel",
+   "Nazarite unto God",
+   "Levite singer"
+  ],
+  "answer": 2,
+  "explanation": "Samson was to be a Nazarite to God from the womb.",
+  "ref": "Judges 13:5"
+ },
+ {
+  "id": "old-judges-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign confirmed to Manoah and his wife that the messenger was from God?",
+  "choices": [
+   "The angel ascended in the flame of the altar",
+   "A thunderstorm",
+   "The child spoke",
+   "The house shook"
+  ],
+  "answer": 0,
+  "explanation": "The angel went up in the flame of the altar.",
+  "ref": "Judges 13:20"
+ },
+ {
+  "id": "old-judges-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name was given to the promised son?",
+  "choices": [
+   "Samson",
+   "Samuel",
+   "Saul",
+   "Shamgar"
+  ],
+  "answer": 0,
+  "explanation": "The woman bore a son and called his name Samson.",
+  "ref": "Judges 13:24"
+ },
+ {
+  "id": "old-judges-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what Philistine city did Samson want a wife?",
+  "choices": [
+   "Timnath",
+   "Gaza",
+   "Ashdod",
+   "Ekron"
+  ],
+  "answer": 0,
+  "explanation": "Samson desired a woman from Timnath.",
+  "ref": "Judges 14:1–2"
+ },
+ {
+  "id": "old-judges-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal did Samson kill on the way to Timnath?",
+  "choices": [
+   "A young lion",
+   "A bear",
+   "A wolf",
+   "An ox"
+  ],
+  "answer": 0,
+  "explanation": "The Spirit of the Lord came on Samson and he tore a young lion.",
+  "ref": "Judges 14:5–6"
+ },
+ {
+  "id": "old-judges-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What unusual thing did Samson later find in the lion's carcass?",
+  "choices": [
+   "A sword",
+   "A scroll",
+   "A silver cup",
+   "A swarm of bees and honey"
+  ],
+  "answer": 3,
+  "explanation": "He found bees and honey in the lion's carcass.",
+  "ref": "Judges 14:8"
+ },
+ {
+  "id": "old-judges-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What challenge did Samson present at the feast?",
+  "choices": [
+   "A prophecy",
+   "A riddle",
+   "A song of Deborah",
+   "A vow"
+  ],
+  "answer": 1,
+  "explanation": "Samson gave the Philistines a riddle to solve.",
+  "ref": "Judges 14:12"
+ },
+ {
+  "id": "old-judges-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the Philistines get the answer to Samson's riddle?",
+  "choices": [
+   "They guessed it",
+   "They saw the lion",
+   "They asked Manoah",
+   "They pressured his wife to entice him"
+  ],
+  "answer": 3,
+  "explanation": "They threatened Samson's wife until she coaxed the answer from him.",
+  "ref": "Judges 14:15–17"
+ },
+ {
+  "id": "old-judges-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samson use to burn the Philistines' corn and vineyards?",
+  "choices": [
+   "Torches and foxes",
+   "A sword and firebrands",
+   "Boiling oil",
+   "A trumpet signal"
+  ],
+  "answer": 0,
+  "explanation": "Samson tied torches to foxes and sent them into the fields.",
+  "ref": "Judges 15:4–5"
+ },
+ {
+  "id": "old-judges-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the Philistines burn Samson's wife and her father?",
+  "choices": [
+   "They rebelled",
+   "They hid Gideon",
+   "They stole silver",
+   "They blamed them for Samson's actions"
+  ],
+  "answer": 3,
+  "explanation": "The Philistines burned them because they connected them to Samson's revenge.",
+  "ref": "Judges 15:6"
+ },
+ {
+  "id": "old-judges-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samson use to kill a thousand Philistines?",
+  "choices": [
+   "A spear",
+   "A stone",
+   "A bow",
+   "The jawbone of an ass"
+  ],
+  "answer": 3,
+  "explanation": "Samson slew a thousand men with a fresh jawbone of a donkey.",
+  "ref": "Judges 15:15"
+ },
+ {
+  "id": "old-judges-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the name of the place where Samson cried for water?",
+  "choices": [
+   "Gilgal",
+   "Lehi",
+   "Timnath",
+   "Mizpeh"
+  ],
+  "answer": 1,
+  "explanation": "The battle and Samson's thirst are centered at Lehi.",
+  "ref": "Judges 15:18–19"
+ },
+ {
+  "id": "old-judges-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did God provide water for Samson after the battle?",
+  "choices": [
+   "A river flowed from Jordan",
+   "He clave a hollow place in the jaw, and water came out",
+   "Rain fell suddenly",
+   "Philistines gave him drink"
+  ],
+  "answer": 1,
+  "explanation": "God miraculously brought water from the hollow place.",
+  "ref": "Judges 15:18–19"
+ },
+ {
+  "id": "old-judges-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What woman tried repeatedly to learn the secret of Samson's strength?",
+  "choices": [
+   "Jael",
+   "Achsah",
+   "Deborah",
+   "Delilah"
+  ],
+  "answer": 3,
+  "explanation": "Delilah was used by the Philistine lords to uncover Samson's secret.",
+  "ref": "Judges 16:4–6"
+ },
+ {
+  "id": "old-judges-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the true sign of Samson's separation and strength?",
+  "choices": [
+   "A belt of leather",
+   "His uncut hair as a Nazarite",
+   "A hidden sword",
+   "A golden bracelet"
+  ],
+  "answer": 1,
+  "explanation": "His strength was connected to his Nazarite separation symbolized by his uncut hair.",
+  "ref": "Judges 16:17"
+ },
+ {
+  "id": "old-judges-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Philistines do to Samson after capturing him?",
+  "choices": [
+   "Put out his eyes",
+   "Crowned him",
+   "Sent him to Egypt",
+   "Made him priest"
+  ],
+  "answer": 0,
+  "explanation": "They blinded Samson and made him grind in prison.",
+  "ref": "Judges 16:21"
+ },
+ {
+  "id": "old-judges-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What began to happen to Samson's hair while he was in prison?",
+  "choices": [
+   "It turned white",
+   "It fell out",
+   "It was braided",
+   "It began to grow again"
+  ],
+  "answer": 3,
+  "explanation": "The chapter notes that Samson's hair began to grow again.",
+  "ref": "Judges 16:22"
+ },
+ {
+  "id": "old-judges-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Samson die?",
+  "choices": [
+   "By pulling down the temple pillars on himself and the Philistines",
+   "In battle with a sword",
+   "By poison",
+   "Of old age"
+  ],
+  "answer": 0,
+  "explanation": "Samson died when he pulled down the temple of Dagon on the crowd.",
+  "ref": "Judges 16:29–30"
+ },
+ {
+  "id": "old-judges-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much silver did Micah return to his mother?",
+  "choices": [
+   "200 shekels",
+   "1,100 shekels",
+   "300 shekels",
+   "70 shekels"
+  ],
+  "answer": 1,
+  "explanation": "Micah returned the eleven hundred shekels of silver.",
+  "ref": "Judges 17:2"
+ },
+ {
+  "id": "old-judges-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Micah's mother dedicate the silver for?",
+  "choices": [
+   "A graven image and a molten image",
+   "A sword",
+   "A city gate",
+   "A field"
+  ],
+  "answer": 0,
+  "explanation": "The silver was used for an idol, showing Israel's corruption.",
+  "ref": "Judges 17:3–4"
+ },
+ {
+  "id": "old-judges-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Micah consecrate first before hiring a Levite?",
+  "choices": [
+   "One of his sons",
+   "His servant",
+   "A judge",
+   "A Philistine"
+  ],
+  "answer": 0,
+  "explanation": "Micah first consecrated one of his sons to be his priest.",
+  "ref": "Judges 17:5"
+ },
+ {
+  "id": "old-judges-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what town was the young Levite who came to Micah?",
+  "choices": [
+   "Bethlehemjudah",
+   "Shiloh",
+   "Jericho",
+   "Gibeah"
+  ],
+  "answer": 0,
+  "explanation": "The Levite came from Bethlehemjudah.",
+  "ref": "Judges 17:7"
+ },
+ {
+  "id": "old-judges-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What refrain about Israel appears in this chapter?",
+  "choices": [
+   "Every man did that which was right in his own eyes",
+   "The land had rest",
+   "The Lord fought for Israel",
+   "The ark remained at Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "The chapter highlights the chaos of life without a king.",
+  "ref": "Judges 17:6"
+ },
+ {
+  "id": "old-judges-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the tribe of Dan seek another inheritance?",
+  "choices": [
+   "They lacked warriors",
+   "Their full inheritance had not fallen unto them",
+   "They left Egypt late",
+   "They lost a battle to Moab"
+  ],
+  "answer": 1,
+  "explanation": "Dan sought land because they had not secured their inheritance.",
+  "ref": "Judges 18:1"
+ },
+ {
+  "id": "old-judges-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "What city did the Danite spies find dwelling carelessly and securely?",
+  "choices": [
+   "Jericho",
+   "Laish",
+   "Hazor",
+   "Mizpeh"
+  ],
+  "answer": 1,
+  "explanation": "They found Laish quiet, secure, and vulnerable.",
+  "ref": "Judges 18:7"
+ },
+ {
+  "id": "old-judges-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Danites take from Micah's house?",
+  "choices": [
+   "Only silver",
+   "The graven image, ephod, teraphim, and molten image",
+   "Only the priest's robe",
+   "Only food"
+  ],
+  "answer": 1,
+  "explanation": "They took Micah's religious objects and his priest.",
+  "ref": "Judges 18:17"
+ },
+ {
+  "id": "old-judges-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Levite choose to do when invited by the Danites?",
+  "choices": [
+   "Return to Bethlehem",
+   "Go with them and become priest to a tribe",
+   "Destroy the idol",
+   "Call for Joshua"
+  ],
+  "answer": 1,
+  "explanation": "He gladly went with Dan to serve a whole tribe.",
+  "ref": "Judges 18:19–20"
+ },
+ {
+  "id": "old-judges-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What new name did the Danites give to the city they captured?",
+  "choices": [
+   "Shiloh",
+   "Dan",
+   "Gibeah",
+   "Ephraim"
+  ],
+  "answer": 1,
+  "explanation": "They renamed Laish as Dan after their ancestor.",
+  "ref": "Judges 18:29"
+ },
+ {
+  "id": "old-judges-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what town was the Levite's concubine?",
+  "choices": [
+   "Jerusalem",
+   "Shiloh",
+   "Bethlehemjudah",
+   "Ramah"
+  ],
+  "answer": 2,
+  "explanation": "The concubine was from Bethlehemjudah.",
+  "ref": "Judges 19:1–2"
+ },
+ {
+  "id": "old-judges-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "In what city did the Levite finally choose to stay the night instead of Jebus?",
+  "choices": [
+   "Gilgal",
+   "Jericho",
+   "Gibeah",
+   "Laish"
+  ],
+  "answer": 2,
+  "explanation": "He chose to lodge in Gibeah of Benjamin.",
+  "ref": "Judges 19:12–15"
+ },
+ {
+  "id": "old-judges-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the men of the city behave toward the household at Gibeah?",
+  "choices": [
+   "They offered protection",
+   "They surrounded the house wickedly",
+   "They invited them to worship",
+   "They brought food and drink"
+  ],
+  "answer": 1,
+  "explanation": "The men of Gibeah acted wickedly and violently.",
+  "ref": "Judges 19:22"
+ },
+ {
+  "id": "old-judges-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the Levite's concubine by morning?",
+  "choices": [
+   "She died at the door of the house",
+   "She escaped safely",
+   "She returned home",
+   "She hid in the field"
+  ],
+  "answer": 0,
+  "explanation": "She collapsed at the door and was found dead in the morning.",
+  "ref": "Judges 19:26–28"
+ },
+ {
+  "id": "old-judges-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shocking act did the Levite do with her body to stir Israel?",
+  "choices": [
+   "Cut it into twelve pieces and sent it throughout Israel",
+   "Burned it",
+   "Buried it at Gibeah",
+   "Displayed it at Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "He divided her body into twelve pieces to summon national response.",
+  "ref": "Judges 19:29"
+ },
+ {
+  "id": "old-judges-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the congregation gather together as one man to seek justice?",
+  "choices": [
+   "Hebron",
+   "Gilgal",
+   "Mizpeh",
+   "Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "Israel assembled at Mizpeh to address the outrage.",
+  "ref": "Judges 20:1"
+ },
+ {
+  "id": "old-judges-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What tribe refused to deliver the men of Gibeah and instead prepared for war?",
+  "choices": [
+   "Dan",
+   "Benjamin",
+   "Reuben",
+   "Judah"
+  ],
+  "answer": 1,
+  "explanation": "Benjamin protected the guilty men and gathered for battle.",
+  "ref": "Judges 20:13–14"
+ },
+ {
+  "id": "old-judges-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe did the Lord say should go up first to battle against Benjamin?",
+  "choices": [
+   "Ephraim",
+   "Naphtali",
+   "Judah",
+   "Levi"
+  ],
+  "answer": 2,
+  "explanation": "The Lord said Judah should go up first.",
+  "ref": "Judges 20:18"
+ },
+ {
+  "id": "old-judges-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times did Benjamin defeat Israel before Israel's final victory?",
+  "choices": [
+   "None",
+   "Once",
+   "Twice",
+   "Three times"
+  ],
+  "answer": 2,
+  "explanation": "Israel suffered two defeats before the final successful battle.",
+  "ref": "Judges 20:21"
+ },
+ {
+  "id": "old-judges-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men of Benjamin escaped to the rock Rimmon after the battle?",
+  "choices": [
+   "70",
+   "200",
+   "600",
+   "1,000"
+  ],
+  "answer": 2,
+  "explanation": "Six hundred Benjamites fled to the rock Rimmon.",
+  "ref": "Judges 20:47"
+ },
+ {
+  "id": "old-judges-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What vow had Israel made at Mizpeh concerning Benjamin?",
+  "choices": [
+   "Never to trade with them",
+   "To destroy all their cities",
+   "No one would give his daughter to Benjamin for a wife",
+   "To crown a king"
+  ],
+  "answer": 2,
+  "explanation": "Israel had sworn not to give their daughters to Benjamin.",
+  "ref": "Judges 21:1"
+ },
+ {
+  "id": "old-judges-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city was struck because it had not come up to the assembly before the Lord?",
+  "choices": [
+   "Jericho",
+   "Laish",
+   "Jabesh-gilead",
+   "Bethlehem"
+  ],
+  "answer": 2,
+  "explanation": "Jabesh-gilead was attacked because it had not joined the assembly.",
+  "ref": "Judges 21:8–10"
+ },
+ {
+  "id": "old-judges-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What solution was used first to provide wives for Benjamin?",
+  "choices": [
+   "Virgins from Jabesh-gilead",
+   "Women from Moab",
+   "Philistine captives",
+   "Daughters of Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "Virgins from Jabesh-gilead were given first.",
+  "ref": "Judges 21:12"
+ },
+ {
+  "id": "old-judges-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What second plan was suggested when not enough wives were found?",
+  "choices": [
+   "Take women from Egypt",
+   "Cancel the oath",
+   "Let Benjamites catch the daughters of Shiloh at the feast",
+   "Adopt Philistine women"
+  ],
+  "answer": 2,
+  "explanation": "The Benjamites were told to seize dancing daughters of Shiloh.",
+  "ref": "Judges 21:19–21"
+ },
+ {
+  "id": "old-judges-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What final refrain closes the book of Judges?",
+  "choices": [
+   "The land had rest",
+   "Every man did that which was right in his own eyes",
+   "The Lord saved by many",
+   "Shiloh was established"
+  ],
+  "answer": 1,
+  "explanation": "The book ends by stressing Israel's moral chaos without a king.",
+  "ref": "Judges 21:25"
+ }
+]

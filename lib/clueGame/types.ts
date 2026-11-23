@@ -111,8 +111,15 @@ export type ClueQuiz = {
  * Beginner / Medium, so players can pick a book, chapters and a difficulty.
  * Each question can point at one of the deck's cards for its art (the mystery
  * silhouette and the reveal); questions without a card show a plain card.
+ *
+ * Levels (2026-11-23): "beginner" is shown as Easy (the id stays, it is in
+ * saved challenges and rooms), then Medium, then Hard ("not super hard":
+ * details a careful reader remembers, never trick questions). The target is
+ * 15 of each per chapter.
  */
-export type ClueLevel = "beginner" | "medium";
+export type ClueLevel = "beginner" | "medium" | "hard";
+export const LEVEL_LABEL: Record<ClueLevel, string> = { beginner: "Easy", medium: "Medium", hard: "Hard" };
+export const CLUE_LEVELS: ClueLevel[] = ["beginner", "medium", "hard"];
 export type ClueQuestion = {
   /** Stable id, e.g. "gen29-m-03". Never reuse one for a different question. */
   id: string;

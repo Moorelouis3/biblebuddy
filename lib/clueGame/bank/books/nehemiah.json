@@ -1,0 +1,1042 @@
+[
+ {
+  "id": "old-nehemiah-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who brought Nehemiah news about Jerusalem's condition?",
+  "choices": [
+   "Ezra",
+   "Zerubbabel",
+   "Mordecai",
+   "Hanani"
+  ],
+  "answer": 3,
+  "explanation": "Hanani and certain men from Judah reported the city's distress.",
+  "ref": "Nehemiah 1:2"
+ },
+ {
+  "id": "old-nehemiah-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were the wall and gates of Jerusalem described?",
+  "choices": [
+   "Strong and newly repaired",
+   "Covered in gold",
+   "Guarded by Persia",
+   "Broken down and burned with fire"
+  ],
+  "answer": 3,
+  "explanation": "The wall was broken down and the gates had been burned.",
+  "ref": "Nehemiah 1:3"
+ },
+ {
+  "id": "old-nehemiah-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nehemiah do when he heard the news about Jerusalem?",
+  "choices": [
+   "He marched to Jerusalem",
+   "He sent soldiers",
+   "He blamed Ezra",
+   "He sat down, wept, mourned, fasted, and prayed"
+  ],
+  "answer": 3,
+  "explanation": "Nehemiah responded with grief and prayer.",
+  "ref": "Nehemiah 1:4"
+ },
+ {
+  "id": "old-nehemiah-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which earlier promise of God did Nehemiah appeal to in prayer?",
+  "choices": [
+   "That David would never sin",
+   "That God would gather His people if they returned to Him",
+   "That Persia would fall immediately",
+   "That no wall would be needed"
+  ],
+  "answer": 1,
+  "explanation": "He asked God to remember His promise to regather repentant Israel.",
+  "ref": "Nehemiah 1:8–9"
+ },
+ {
+  "id": "old-nehemiah-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What position did Nehemiah hold at the end of the chapter?",
+  "choices": [
+   "Governor of Judah",
+   "High priest",
+   "Cupbearer to the king",
+   "Captain of the guard"
+  ],
+  "answer": 2,
+  "explanation": "Nehemiah identifies himself as the king's cupbearer.",
+  "ref": "Nehemiah 1:11"
+ },
+ {
+  "id": "old-nehemiah-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which Persian king noticed Nehemiah's sadness?",
+  "choices": [
+   "Artaxerxes",
+   "Cyrus",
+   "Darius",
+   "Ahasuerus"
+  ],
+  "answer": 0,
+  "explanation": "Artaxerxes saw Nehemiah's sorrow and questioned him.",
+  "ref": "Nehemiah 2:1–2"
+ },
+ {
+  "id": "old-nehemiah-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What request did Nehemiah make of the king?",
+  "choices": [
+   "To return to Babylon",
+   "To go rebuild Jerusalem",
+   "To lead the Persian army",
+   "To become a priest"
+  ],
+  "answer": 1,
+  "explanation": "Nehemiah asked to be sent to Judah to rebuild the city.",
+  "ref": "Nehemiah 2:5"
+ },
+ {
+  "id": "old-nehemiah-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What else did Nehemiah ask the king to provide for the journey and work?",
+  "choices": [
+   "Temple singers",
+   "Letters and timber from Asaph",
+   "Gold crowns",
+   "Egyptian horses only"
+  ],
+  "answer": 1,
+  "explanation": "He requested official letters and timber from the king's forest.",
+  "ref": "Nehemiah 2:7–8"
+ },
+ {
+  "id": "old-nehemiah-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two enemies were grieved that someone had come to seek the welfare of Israel?",
+  "choices": [
+   "Haman and Mordecai",
+   "Sanballat and Tobiah",
+   "Tatnai and Shethar-boznai",
+   "Darius and Cyrus"
+  ],
+  "answer": 1,
+  "explanation": "Sanballat and Tobiah opposed the effort from the start.",
+  "ref": "Nehemiah 2:10"
+ },
+ {
+  "id": "old-nehemiah-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When Nehemiah inspected the walls, how did he first examine the city?",
+  "choices": [
+   "In daylight with trumpets",
+   "By sending priests only",
+   "At night with a few men",
+   "From Persia on a map"
+  ],
+  "answer": 2,
+  "explanation": "He quietly surveyed the damage at night.",
+  "ref": "Nehemiah 2:12–15"
+ },
+ {
+  "id": "old-nehemiah-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which gate did Eliashib the high priest and his brethren rebuild first?",
+  "choices": [
+   "Sheep Gate",
+   "Fish Gate",
+   "Valley Gate",
+   "Water Gate"
+  ],
+  "answer": 0,
+  "explanation": "The chapter begins with the rebuilding of the Sheep Gate.",
+  "ref": "Nehemiah 3:1"
+ },
+ {
+  "id": "old-nehemiah-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated phrase shows how the work was organized?",
+  "choices": [
+   "And they rested",
+   "Then Persia paid",
+   "Next unto him",
+   "The wall vanished"
+  ],
+  "answer": 2,
+  "explanation": "The chapter repeatedly notes workers building beside one another.",
+  "ref": "Nehemiah 3:2"
+ },
+ {
+  "id": "old-nehemiah-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which group is criticized for not putting their necks to the work of the Lord?",
+  "choices": [
+   "The priests of Jericho",
+   "The nobles of the Tekoites",
+   "The men of Gibeon",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "The Tekoite nobles are singled out for refusing the labor.",
+  "ref": "Nehemiah 3:5"
+ },
+ {
+  "id": "old-nehemiah-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which builder repaired the wall over against his own house?",
+  "choices": [
+   "Sanballat",
+   "Jedaiah",
+   "Tobiah",
+   "Geshem"
+  ],
+  "answer": 1,
+  "explanation": "Jedaiah the son of Harumaph repaired the section over against his house.",
+  "ref": "Nehemiah 3:10"
+ },
+ {
+  "id": "old-nehemiah-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does this chapter mainly emphasize about rebuilding the wall?",
+  "choices": [
+   "One hero did everything",
+   "Many people shared the work section by section",
+   "The project failed completely",
+   "Persia forbade all repairs"
+  ],
+  "answer": 1,
+  "explanation": "The chapter highlights cooperative rebuilding across the city.",
+  "ref": "Nehemiah 3:1–32"
+ },
+ {
+  "id": "old-nehemiah-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who mocked the Jews and grew angry when he heard the wall was being built?",
+  "choices": [
+   "Ezra",
+   "Cyrus",
+   "Hanani",
+   "Sanballat"
+  ],
+  "answer": 3,
+  "explanation": "Sanballat publicly mocked the rebuilding effort.",
+  "ref": "Nehemiah 4:1"
+ },
+ {
+  "id": "old-nehemiah-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal did Tobiah say could break down their stone wall?",
+  "choices": [
+   "Lion",
+   "Camel",
+   "Fox",
+   "Wolf"
+  ],
+  "answer": 2,
+  "explanation": "Tobiah sneered that even a fox could knock it down.",
+  "ref": "Nehemiah 4:3"
+ },
+ {
+  "id": "old-nehemiah-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How far had the wall advanced when the people had a mind to work?",
+  "choices": [
+   "Not at all",
+   "Fully completed",
+   "All of it was joined together to the half of it",
+   "Only one gate"
+  ],
+  "answer": 2,
+  "explanation": "All the wall was joined together unto the half thereof, for the people had a mind to work.",
+  "ref": "Nehemiah 4:6"
+ },
+ {
+  "id": "old-nehemiah-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What practical response did Nehemiah make after hearing of plots against the builders?",
+  "choices": [
+   "He stopped the work entirely",
+   "He fled to Persia",
+   "He set a watch against them day and night",
+   "He surrendered the city"
+  ],
+  "answer": 2,
+  "explanation": "Prayer was joined with practical vigilance.",
+  "ref": "Nehemiah 4:9"
+ },
+ {
+  "id": "old-nehemiah-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did many of the workers labor from that point forward?",
+  "choices": [
+   "With one hand working and the other holding a weapon",
+   "With both hands free",
+   "Only at night",
+   "Only on the Sabbath"
+  ],
+  "answer": 0,
+  "explanation": "They built while remaining ready for attack.",
+  "ref": "Nehemiah 4:17"
+ },
+ {
+  "id": "old-nehemiah-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What complaint did the poorer Jews raise against their brethren?",
+  "choices": [
+   "That they were being forced into debt and bondage",
+   "That the wall was too high",
+   "That no feasts were kept",
+   "That the gates were too narrow"
+  ],
+  "answer": 0,
+  "explanation": "They cried out over famine, mortgages, and debt slavery.",
+  "ref": "Nehemiah 5:1–5"
+ },
+ {
+  "id": "old-nehemiah-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Nehemiah react when he heard the outcry?",
+  "choices": [
+   "He laughed",
+   "He ignored it",
+   "He was very angry",
+   "He left Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Nehemiah was deeply angered by the injustice.",
+  "ref": "Nehemiah 5:6"
+ },
+ {
+  "id": "old-nehemiah-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nehemiah tell the nobles and rulers to restore?",
+  "choices": [
+   "Only the temple vessels",
+   "Persian weapons",
+   "The king's tax records",
+   "Lands, vineyards, houses, and the money and grain exacted"
+  ],
+  "answer": 3,
+  "explanation": "He commanded full restoration and the end of usury.",
+  "ref": "Nehemiah 5:11"
+ },
+ {
+  "id": "old-nehemiah-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the rulers respond to Nehemiah's rebuke?",
+  "choices": [
+   "They refused",
+   "They imprisoned him",
+   "They promised to restore and require nothing of them",
+   "They appealed to Persia"
+  ],
+  "answer": 2,
+  "explanation": "They agreed to make restitution.",
+  "ref": "Nehemiah 5:12"
+ },
+ {
+  "id": "old-nehemiah-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What example did Nehemiah set regarding the governor's allowance?",
+  "choices": [
+   "He doubled it",
+   "He sent it to Babylon",
+   "He did not demand the bread of the governor",
+   "He sold it for profit"
+  ],
+  "answer": 2,
+  "explanation": "Nehemiah refused to burden the people with the governor's provision.",
+  "ref": "Nehemiah 5:14–18"
+ },
+ {
+  "id": "old-nehemiah-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "To what place did Sanballat and Geshem repeatedly try to lure Nehemiah?",
+  "choices": [
+   "Jericho",
+   "Babylon",
+   "Ono",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "They invited him to meet in the plain of Ono to harm him.",
+  "ref": "Nehemiah 6:2"
+ },
+ {
+  "id": "old-nehemiah-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Nehemiah answer when Sanballat and Geshem asked him to meet them?",
+  "choices": [
+   "He said he was doing a great work and could not come down",
+   "He accepted at once",
+   "He sent soldiers instead",
+   "He hid in the temple"
+  ],
+  "answer": 0,
+  "explanation": "Nehemiah refused to abandon the work.",
+  "ref": "Nehemiah 6:3"
+ },
+ {
+  "id": "old-nehemiah-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What false accusation was spread in the open letter?",
+  "choices": [
+   "That Nehemiah stole the treasury",
+   "That Ezra had left the law",
+   "That Nehemiah intended to rebel and make himself king",
+   "That the wall had fallen"
+  ],
+  "answer": 2,
+  "explanation": "His enemies accused him of planning a revolt.",
+  "ref": "Nehemiah 6:6–7"
+ },
+ {
+  "id": "old-nehemiah-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Nehemiah refuse Shemaiah's advice to hide in the temple?",
+  "choices": [
+   "The temple was closed",
+   "He could not find the key",
+   "He said a man like him should not flee or go into the temple to save his life",
+   "The king forbade it"
+  ],
+  "answer": 2,
+  "explanation": "Nehemiah discerned the counsel as fear-driven and improper.",
+  "ref": "Nehemiah 6:11"
+ },
+ {
+  "id": "old-nehemiah-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did it take to finish the wall?",
+  "choices": [
+   "52 days",
+   "7 days",
+   "70 years",
+   "3 months"
+  ],
+  "answer": 0,
+  "explanation": "The wall was completed in fifty-two days.",
+  "ref": "Nehemiah 6:15"
+ },
+ {
+  "id": "old-nehemiah-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Nehemiah put in charge of Jerusalem?",
+  "choices": [
+   "Hanani and Hananiah",
+   "Ezra",
+   "Tobiah",
+   "Mordecai"
+  ],
+  "answer": 0,
+  "explanation": "Hanani and Hananiah were given responsibility over Jerusalem.",
+  "ref": "Nehemiah 7:2"
+ },
+ {
+  "id": "old-nehemiah-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What instruction did Nehemiah give about opening Jerusalem's gates?",
+  "choices": [
+   "Do not open them until the sun is hot",
+   "Keep them open all night",
+   "Open only on Sabbaths",
+   "Seal them for a month"
+  ],
+  "answer": 0,
+  "explanation": "The gates were to remain shut until the day was well established.",
+  "ref": "Nehemiah 7:3"
+ },
+ {
+  "id": "old-nehemiah-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the city described after the wall was completed?",
+  "choices": [
+   "Crowded and overflowing",
+   "Destroyed again",
+   "Moved to Persia",
+   "Large and great, but with few people and houses not yet built"
+  ],
+  "answer": 3,
+  "explanation": "Jerusalem still needed population and development.",
+  "ref": "Nehemiah 7:4"
+ },
+ {
+  "id": "old-nehemiah-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God put into Nehemiah's heart to do?",
+  "choices": [
+   "Lead an army against Samaria",
+   "Gather the nobles and people to be reckoned by genealogy",
+   "Build another temple",
+   "Crown a king"
+  ],
+  "answer": 1,
+  "explanation": "He gathered the people and found the genealogical register.",
+  "ref": "Nehemiah 7:5"
+ },
+ {
+  "id": "old-nehemiah-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of record fills most of this chapter?",
+  "choices": [
+   "A register of those who returned from captivity",
+   "A battle report",
+   "A psalm collection",
+   "A list of judges"
+  ],
+  "answer": 0,
+  "explanation": "The chapter preserves the returnees' genealogical record.",
+  "ref": "Nehemiah 7:6–73"
+ },
+ {
+  "id": "old-nehemiah-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what gate did the people gather to hear Ezra read the law?",
+  "choices": [
+   "Water Gate",
+   "Sheep Gate",
+   "Fish Gate",
+   "Dung Gate"
+  ],
+  "answer": 0,
+  "explanation": "The assembly met in the broad place before the Water Gate.",
+  "ref": "Nehemiah 8:1"
+ },
+ {
+  "id": "old-nehemiah-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra stand upon when he read the law to the people?",
+  "choices": [
+   "A city wall",
+   "The altar",
+   "A pulpit of wood",
+   "The king's throne"
+  ],
+  "answer": 2,
+  "explanation": "A wooden platform was made for the public reading.",
+  "ref": "Nehemiah 8:4"
+ },
+ {
+  "id": "old-nehemiah-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the Levites help the people during the reading?",
+  "choices": [
+   "They sang only",
+   "They dismissed the crowd",
+   "They caused the people to understand the law",
+   "They rebuilt the gate"
+  ],
+  "answer": 2,
+  "explanation": "They explained the sense so the people understood what was read.",
+  "ref": "Nehemiah 8:7–8"
+ },
+ {
+  "id": "old-nehemiah-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famous statement did Nehemiah and Ezra give to a mourning people?",
+  "choices": [
+   "War is strength",
+   "Silence is wisdom",
+   "The wall is your refuge",
+   "The joy of the Lord is your strength"
+  ],
+  "answer": 3,
+  "explanation": "They urged the people to rejoice in the Lord.",
+  "ref": "Nehemiah 8:10"
+ },
+ {
+  "id": "old-nehemiah-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which feast did the people keep after discovering its command in the law?",
+  "choices": [
+   "Passover",
+   "Purim",
+   "Day of Atonement",
+   "Feast of Tabernacles"
+  ],
+  "answer": 3,
+  "explanation": "They kept the Feast of Booths with great gladness.",
+  "ref": "Nehemiah 8:14–17"
+ },
+ {
+  "id": "old-nehemiah-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What outward signs accompanied the people's confession in this chapter?",
+  "choices": [
+   "Fasting, sackcloth, and earth upon them",
+   "Crowns and fine robes",
+   "Dancing with tambourines",
+   "Trumpets alone"
+  ],
+  "answer": 0,
+  "explanation": "The people humbled themselves with fasting and sackcloth.",
+  "ref": "Nehemiah 9:1"
+ },
+ {
+  "id": "old-nehemiah-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things did the separated Israelites do before the Lord?",
+  "choices": [
+   "Built gates and towers",
+   "Confessed their sins and the iniquities of their fathers",
+   "Asked for a king and an army",
+   "Offered incense to idols"
+  ],
+  "answer": 1,
+  "explanation": "They confessed both personal and national sin.",
+  "ref": "Nehemiah 9:2"
+ },
+ {
+  "id": "old-nehemiah-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much of the day was spent reading the law and confessing?",
+  "choices": [
+   "One hour total",
+   "All night in silence",
+   "Only at noon",
+   "A quarter reading and a quarter confession and worship"
+  ],
+  "answer": 3,
+  "explanation": "The day was divided between hearing the law and responding to God.",
+  "ref": "Nehemiah 9:3"
+ },
+ {
+  "id": "old-nehemiah-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which major acts of God are rehearsed in the long prayer?",
+  "choices": [
+   "Only David's kingship",
+   "Only the exile",
+   "Only temple rituals",
+   "Creation, covenant with Abraham, exodus, wilderness care, and conquest"
+  ],
+  "answer": 3,
+  "explanation": "The prayer reviews God's works from creation through settlement in the land.",
+  "ref": "Nehemiah 9:6–25"
+ },
+ {
+  "id": "old-nehemiah-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is God repeatedly described despite Israel's rebellion?",
+  "choices": [
+   "Ready to pardon, gracious and merciful",
+   "Uninterested",
+   "Slow to hear",
+   "Bound by Persia"
+  ],
+  "answer": 0,
+  "explanation": "The prayer highlights God's mercy even when the people rebelled.",
+  "ref": "Nehemiah 9:17"
+ },
+ {
+  "id": "old-nehemiah-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named first among those who sealed the covenant?",
+  "choices": [
+   "Ezra",
+   "Eliashib",
+   "Mordecai",
+   "Nehemiah"
+  ],
+  "answer": 3,
+  "explanation": "Nehemiah the governor is listed first among the signers.",
+  "ref": "Nehemiah 10:1"
+ },
+ {
+  "id": "old-nehemiah-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What marriage commitment did the people make?",
+  "choices": [
+   "To marry only Persians",
+   "To end all households",
+   "Not to give their daughters to the peoples of the land",
+   "To send all wives away"
+  ],
+  "answer": 2,
+  "explanation": "They covenanted not to intermarry with surrounding peoples.",
+  "ref": "Nehemiah 10:30"
+ },
+ {
+  "id": "old-nehemiah-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What Sabbath-related promise did they make?",
+  "choices": [
+   "To trade more on holy days",
+   "To work only at night",
+   "To move the Sabbath to another day",
+   "Not to buy from the peoples of the land on the Sabbath"
+  ],
+  "answer": 3,
+  "explanation": "They promised to stop commercial buying on the Sabbath.",
+  "ref": "Nehemiah 10:31"
+ },
+ {
+  "id": "old-nehemiah-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What yearly contribution did they appoint for the service of the house of God?",
+  "choices": [
+   "One talent of silver",
+   "Ten oxen",
+   "A Persian tax only",
+   "A third part of a shekel"
+  ],
+  "answer": 3,
+  "explanation": "They imposed a set contribution for temple service.",
+  "ref": "Nehemiah 10:32"
+ },
+ {
+  "id": "old-nehemiah-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What summary promise closes the covenant responsibilities?",
+  "choices": [
+   "We will build another palace",
+   "We will return to Babylon",
+   "We will not forsake the house of our God",
+   "We will crown a king"
+  ],
+  "answer": 2,
+  "explanation": "They pledged not to neglect God's house.",
+  "ref": "Nehemiah 10:39"
+ },
+ {
+  "id": "old-nehemiah-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was the population of Jerusalem increased?",
+  "choices": [
+   "By conquering nearby towns",
+   "By Persian decree alone",
+   "By moving the temple",
+   "One out of ten was chosen by lot to dwell there"
+  ],
+  "answer": 3,
+  "explanation": "A tithe of the people was chosen by lot to live in Jerusalem.",
+  "ref": "Nehemiah 11:1"
+ },
+ {
+  "id": "old-nehemiah-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people respond to those who willingly offered themselves to live in Jerusalem?",
+  "choices": [
+   "They mocked them",
+   "They fined them",
+   "They blessed them",
+   "They ignored them"
+  ],
+  "answer": 2,
+  "explanation": "The volunteers were blessed for their willingness.",
+  "ref": "Nehemiah 11:2"
+ },
+ {
+  "id": "old-nehemiah-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two tribes are especially listed among those dwelling in Jerusalem?",
+  "choices": [
+   "Ephraim and Manasseh",
+   "Dan and Naphtali",
+   "Reuben and Gad",
+   "Judah and Benjamin"
+  ],
+  "answer": 3,
+  "explanation": "The chapter details residents from Judah and Benjamin.",
+  "ref": "Nehemiah 11:4–9"
+ },
+ {
+  "id": "old-nehemiah-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kinds of temple-related workers are also named in this chapter?",
+  "choices": [
+   "Priests, Levites, porters, and singers",
+   "Prophets only",
+   "Soldiers only",
+   "Merchants only"
+  ],
+  "answer": 0,
+  "explanation": "The chapter includes several groups serving around the temple.",
+  "ref": "Nehemiah 11:10–24"
+ },
+ {
+  "id": "old-nehemiah-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did many of the rest of Israel, the priests, and Levites live?",
+  "choices": [
+   "Only in Persia",
+   "Inside the temple",
+   "In the cities of Judah, everyone in his inheritance",
+   "In Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Many others remained distributed in Judah's towns.",
+  "ref": "Nehemiah 11:20"
+ },
+ {
+  "id": "old-nehemiah-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of names fill much of the first half of this chapter?",
+  "choices": [
+   "Priests and Levites",
+   "Persian generals",
+   "Foreign kings",
+   "Builders from Tyre"
+  ],
+  "answer": 0,
+  "explanation": "The chapter begins with records of priests and Levites.",
+  "ref": "Nehemiah 12:1–26"
+ },
+ {
+  "id": "old-nehemiah-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What joyful event does Nehemiah organize later in the chapter?",
+  "choices": [
+   "A coronation",
+   "The destruction of idols in Persia",
+   "The dedication of the wall of Jerusalem",
+   "A military parade"
+  ],
+  "answer": 2,
+  "explanation": "The wall dedication is the centerpiece of the chapter.",
+  "ref": "Nehemiah 12:27"
+ },
+ {
+  "id": "old-nehemiah-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many great companies of thanksgiving went upon the wall?",
+  "choices": [
+   "One",
+   "Two",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Two large thanksgiving choirs/processions were appointed.",
+  "ref": "Nehemiah 12:31"
+ },
+ {
+  "id": "old-nehemiah-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was heard from Jerusalem during the dedication celebration?",
+  "choices": [
+   "Only mourning",
+   "Thunder from heaven",
+   "A Persian decree",
+   "The joy of Jerusalem afar off"
+  ],
+  "answer": 3,
+  "explanation": "The city's rejoicing was heard far away.",
+  "ref": "Nehemiah 12:43"
+ },
+ {
+  "id": "old-nehemiah-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was done for the priests and Levites after the celebration?",
+  "choices": [
+   "They were dismissed",
+   "Portions were gathered for them according to the law",
+   "They were sent to Babylon",
+   "They built another wall"
+  ],
+  "answer": 1,
+  "explanation": "Provision for temple workers was organized faithfully.",
+  "ref": "Nehemiah 12:44–47"
+ },
+ {
+  "id": "old-nehemiah-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which foreign peoples were specifically excluded from the congregation after the law was read?",
+  "choices": [
+   "Ammonites and Moabites",
+   "Egyptians and Babylonians",
+   "Persians and Medes",
+   "Philistines and Tyrians"
+  ],
+  "answer": 0,
+  "explanation": "The law reminded them of the exclusion of Ammonites and Moabites.",
+  "ref": "Nehemiah 13:1"
+ },
+ {
+  "id": "old-nehemiah-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shocking misuse of temple space had Eliashib allowed for Tobiah?",
+  "choices": [
+   "A great chamber in the courts of the house of God",
+   "A throne room",
+   "A stable",
+   "A prison"
+  ],
+  "answer": 0,
+  "explanation": "Tobiah had been given a chamber in the temple complex.",
+  "ref": "Nehemiah 13:4–5"
+ },
+ {
+  "id": "old-nehemiah-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Nehemiah respond to Tobiah's household goods in that chamber?",
+  "choices": [
+   "He blessed them",
+   "He cast them out",
+   "He sold them",
+   "He moved in beside them"
+  ],
+  "answer": 1,
+  "explanation": "Nehemiah threw Tobiah's goods out and cleansed the chambers.",
+  "ref": "Nehemiah 13:8"
+ },
+ {
+  "id": "old-nehemiah-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What recurring violation did Nehemiah rebuke at Jerusalem's gates?",
+  "choices": [
+   "Ignoring Passover",
+   "Refusing to rebuild walls",
+   "Buying and selling on the Sabbath",
+   "Leaving the city"
+  ],
+  "answer": 2,
+  "explanation": "He shut down Sabbath commerce at the gates.",
+  "ref": "Nehemiah 13:15–22"
+ },
+ {
+  "id": "old-nehemiah-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which example did Nehemiah use to warn against marriages with foreign women?",
+  "choices": [
+   "Solomon",
+   "Joseph",
+   "Boaz",
+   "Moses"
+  ],
+  "answer": 0,
+  "explanation": "He cited Solomon's downfall through foreign wives as a warning.",
+  "ref": "Nehemiah 13:26"
+ }
+]

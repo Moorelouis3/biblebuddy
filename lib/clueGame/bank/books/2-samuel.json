@@ -1,0 +1,1922 @@
+[
+ {
+  "id": "old-2-samuel-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who brought David news of Saul's death?",
+  "choices": [
+   "A Philistine captain",
+   "Abner",
+   "A young Amalekite",
+   "Jonathan's armourbearer"
+  ],
+  "answer": 2,
+  "explanation": "A young Amalekite came from the camp with news for David.",
+  "ref": "2 Samuel 1:2"
+ },
+ {
+  "id": "old-2-samuel-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Amalekite claim he had done for Saul?",
+  "choices": [
+   "Hidden him",
+   "Buried him",
+   "Slain him at Saul's request",
+   "Taken him to Gath"
+  ],
+  "answer": 2,
+  "explanation": "The Amalekite claimed he killed Saul and took his crown and bracelet.",
+  "ref": "2 Samuel 1:9–10"
+ },
+ {
+  "id": "old-2-samuel-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David respond to the news of Saul and Jonathan?",
+  "choices": [
+   "He mourned, wept, and fasted",
+   "He celebrated",
+   "He marched on Jerusalem",
+   "He crowned himself"
+  ],
+  "answer": 0,
+  "explanation": "David and his men mourned and fasted until evening.",
+  "ref": "2 Samuel 1:11–12"
+ },
+ {
+  "id": "old-2-samuel-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David order done to the Amalekite messenger?",
+  "choices": [
+   "He had him slain",
+   "He rewarded him",
+   "He sent him to Hebron",
+   "He made him a captain"
+  ],
+  "answer": 0,
+  "explanation": "David judged him for claiming to kill the Lord's anointed.",
+  "ref": "2 Samuel 1:15–16"
+ },
+ {
+  "id": "old-2-samuel-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say the children of Judah should be taught after this loss?",
+  "choices": [
+   "The law of Moses",
+   "The use of the sling",
+   "The words of Samuel",
+   "The use of the bow"
+  ],
+  "answer": 3,
+  "explanation": "David bade them teach the children of Judah the use of the bow, as written in the book of Jasher.",
+  "ref": "2 Samuel 1:18"
+ },
+ {
+  "id": "old-2-samuel-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "To what city did the Lord tell David to go after Saul's death?",
+  "choices": [
+   "Jerusalem",
+   "Bethlehem",
+   "Shiloh",
+   "Hebron"
+  ],
+  "answer": 3,
+  "explanation": "The Lord directed David to go up to Hebron.",
+  "ref": "2 Samuel 2:1"
+ },
+ {
+  "id": "old-2-samuel-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Over which tribe was David first anointed king in Hebron?",
+  "choices": [
+   "Benjamin",
+   "Levi",
+   "All Israel",
+   "Judah"
+  ],
+  "answer": 3,
+  "explanation": "The men of Judah anointed David king over Judah.",
+  "ref": "2 Samuel 2:4"
+ },
+ {
+  "id": "old-2-samuel-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Abner set up as king over the northern tribes?",
+  "choices": [
+   "Jonathan",
+   "Mephibosheth",
+   "Joab",
+   "Ishbosheth"
+  ],
+  "answer": 3,
+  "explanation": "Abner made Ishbosheth, Saul's son, king over Israel.",
+  "ref": "2 Samuel 2:8–10"
+ },
+ {
+  "id": "old-2-samuel-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the servants of David and the servants of Ishbosheth first meet in conflict?",
+  "choices": [
+   "The pool of Gibeon",
+   "Hebron",
+   "Gilgal",
+   "Bethlehem"
+  ],
+  "answer": 0,
+  "explanation": "The confrontation took place by the pool of Gibeon.",
+  "ref": "2 Samuel 2:13"
+ },
+ {
+  "id": "old-2-samuel-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who killed Asahel after Asahel pursued him persistently?",
+  "choices": [
+   "Abner",
+   "Joab",
+   "Ishbosheth",
+   "David"
+  ],
+  "answer": 0,
+  "explanation": "Abner slew Asahel with the hinder end of the spear.",
+  "ref": "2 Samuel 2:23"
+ },
+ {
+  "id": "old-2-samuel-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the chapter summarize the struggle between Saul's house and David's house?",
+  "choices": [
+   "Saul's house grew stronger",
+   "They became one",
+   "David waxed stronger and Saul's house waxed weaker",
+   "They made peace immediately"
+  ],
+  "answer": 2,
+  "explanation": "David's house grew stronger while Saul's weakened.",
+  "ref": "2 Samuel 3:1"
+ },
+ {
+  "id": "old-2-samuel-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who accused Abner of taking Rizpah, Saul's concubine?",
+  "choices": [
+   "Ishbosheth",
+   "David",
+   "Joab",
+   "Michal"
+  ],
+  "answer": 0,
+  "explanation": "Ishbosheth's accusation angered Abner.",
+  "ref": "2 Samuel 3:7"
+ },
+ {
+  "id": "old-2-samuel-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Abner promise to do after breaking with Ishbosheth?",
+  "choices": [
+   "Go to Philistia",
+   "Crown Joab",
+   "Transfer the kingdom to David",
+   "Destroy Hebron"
+  ],
+  "answer": 2,
+  "explanation": "Abner promised to help move the kingdom to David.",
+  "ref": "2 Samuel 3:9–10"
+ },
+ {
+  "id": "old-2-samuel-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What woman was restored to David as part of negotiations?",
+  "choices": [
+   "Abigail",
+   "Bathsheba",
+   "Tamar",
+   "Michal"
+  ],
+  "answer": 3,
+  "explanation": "David required the return of Michal.",
+  "ref": "2 Samuel 3:13–16"
+ },
+ {
+  "id": "old-2-samuel-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who killed Abner at the gate of Hebron?",
+  "choices": [
+   "David",
+   "Ishbosheth",
+   "Joab",
+   "Benaiah"
+  ],
+  "answer": 2,
+  "explanation": "Joab slew Abner in revenge for Asahel.",
+  "ref": "2 Samuel 3:27"
+ },
+ {
+  "id": "old-2-samuel-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Ishbosheth react when he heard Abner was dead in Hebron?",
+  "choices": [
+   "He rejoiced",
+   "He fled to Gibeon",
+   "His hands were feeble",
+   "He sought David"
+  ],
+  "answer": 2,
+  "explanation": "Ishbosheth was weakened and Israel troubled.",
+  "ref": "2 Samuel 4:1"
+ },
+ {
+  "id": "old-2-samuel-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the name of Jonathan's son who was lame in his feet?",
+  "choices": [
+   "Mephibosheth",
+   "Abner",
+   "Ishbosheth",
+   "Asahel"
+  ],
+  "answer": 0,
+  "explanation": "The chapter introduces Mephibosheth as lame.",
+  "ref": "2 Samuel 4:4"
+ },
+ {
+  "id": "old-2-samuel-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who killed Ishbosheth while he lay on a bed at noon?",
+  "choices": [
+   "Joab and Abishai",
+   "David and Jonathan",
+   "Baanah and Rechab",
+   "Abner's servants"
+  ],
+  "answer": 2,
+  "explanation": "Baanah and Rechab murdered Ishbosheth.",
+  "ref": "2 Samuel 4:5–7"
+ },
+ {
+  "id": "old-2-samuel-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the murderers bring to David?",
+  "choices": [
+   "Saul's spear",
+   "Ishbosheth's head",
+   "A crown",
+   "The ark"
+  ],
+  "answer": 1,
+  "explanation": "They brought Ishbosheth's head expecting reward.",
+  "ref": "2 Samuel 4:8"
+ },
+ {
+  "id": "old-2-samuel-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David judge the men who killed Ishbosheth?",
+  "choices": [
+   "He rewarded them",
+   "He made them captains",
+   "He had them slain and hung up",
+   "He sent them to Judah"
+  ],
+  "answer": 2,
+  "explanation": "David executed them for murdering a righteous man in his house.",
+  "ref": "2 Samuel 4:12"
+ },
+ {
+  "id": "old-2-samuel-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did all the tribes of Israel come to anoint David king over all Israel?",
+  "choices": [
+   "Hebron",
+   "Jerusalem",
+   "Bethlehem",
+   "Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "The tribes came to Hebron and anointed David king.",
+  "ref": "2 Samuel 5:1–3"
+ },
+ {
+  "id": "old-2-samuel-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "What city did David capture from the Jebusites and make his capital?",
+  "choices": [
+   "Hebron",
+   "Shiloh",
+   "Gibeah",
+   "Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "David took the stronghold of Zion, the city of David.",
+  "ref": "2 Samuel 5:6–9"
+ },
+ {
+  "id": "old-2-samuel-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hiram king of Tyre send to David?",
+  "choices": [
+   "Cedars, carpenters, and masons",
+   "Chariots and horses",
+   "Priests and singers",
+   "Gold shields"
+  ],
+  "answer": 0,
+  "explanation": "Hiram helped build David a house.",
+  "ref": "2 Samuel 5:11"
+ },
+ {
+  "id": "old-2-samuel-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was David when he began to reign?",
+  "choices": [
+   "20",
+   "30",
+   "40",
+   "50"
+  ],
+  "answer": 1,
+  "explanation": "David was thirty years old when he began to reign.",
+  "ref": "2 Samuel 5:4"
+ },
+ {
+  "id": "old-2-samuel-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After inquiring of the Lord, what did David do against the Philistines at Baal-perazim?",
+  "choices": [
+   "Retreated",
+   "Smote them there",
+   "Made peace",
+   "Built an altar only"
+  ],
+  "answer": 1,
+  "explanation": "David defeated them after asking the Lord.",
+  "ref": "2 Samuel 5:19–20"
+ },
+ {
+  "id": "old-2-samuel-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sacred object did David gather the people to bring up?",
+  "choices": [
+   "The ephod",
+   "The altar",
+   "The ark of God",
+   "The tabernacle curtains"
+  ],
+  "answer": 2,
+  "explanation": "David gathered Israel to bring up the ark.",
+  "ref": "2 Samuel 6:2"
+ },
+ {
+  "id": "old-2-samuel-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Uzzah struck dead?",
+  "choices": [
+   "He offered strange fire",
+   "He spoke against David",
+   "He entered the holy of holies",
+   "He put forth his hand to steady the ark"
+  ],
+  "answer": 3,
+  "explanation": "Uzzah was struck for irreverently touching the ark.",
+  "ref": "2 Samuel 6:6–7"
+ },
+ {
+  "id": "old-2-samuel-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At whose house did the ark remain for three months after this event?",
+  "choices": [
+   "Abiathar's",
+   "Uriah's",
+   "Obed-edom's",
+   "Joab's"
+  ],
+  "answer": 2,
+  "explanation": "The ark stayed in the house of Obed-edom.",
+  "ref": "2 Samuel 6:10–11"
+ },
+ {
+  "id": "old-2-samuel-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do before the Lord as the ark was brought up successfully?",
+  "choices": [
+   "Sat in silence",
+   "Danced with all his might",
+   "Offered only incense",
+   "Wore armor"
+  ],
+  "answer": 1,
+  "explanation": "David danced before the Lord with all his might.",
+  "ref": "2 Samuel 6:14"
+ },
+ {
+  "id": "old-2-samuel-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who despised David in her heart when she saw him dancing?",
+  "choices": [
+   "Abigail",
+   "Michal",
+   "Bathsheba",
+   "Tamar"
+  ],
+  "answer": 1,
+  "explanation": "Michal despised David when she saw him leaping and dancing.",
+  "ref": "2 Samuel 6:16"
+ },
+ {
+  "id": "old-2-samuel-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What desire did David express to Nathan when he was at rest in his house?",
+  "choices": [
+   "To build a house for the ark",
+   "To fight Philistines",
+   "To crown Solomon",
+   "To divide the land"
+  ],
+  "answer": 0,
+  "explanation": "David wanted to build a house for the ark of God.",
+  "ref": "2 Samuel 7:2"
+ },
+ {
+  "id": "old-2-samuel-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord remind David through Nathan about the kind of dwelling He had used up to that point?",
+  "choices": [
+   "A tent and a tabernacle",
+   "A palace",
+   "A stone temple",
+   "A mountain cave"
+  ],
+  "answer": 0,
+  "explanation": "God had walked in a tent and tabernacle, not a house of cedar.",
+  "ref": "2 Samuel 7:6"
+ },
+ {
+  "id": "old-2-samuel-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the Lord say would build a house for His name?",
+  "choices": [
+   "David",
+   "Nathan",
+   "David's son",
+   "Abner"
+  ],
+  "answer": 2,
+  "explanation": "The promise pointed to David's offspring building the house.",
+  "ref": "2 Samuel 7:12–13"
+ },
+ {
+  "id": "old-2-samuel-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What everlasting promise did God make concerning David's house and kingdom?",
+  "choices": [
+   "It would last one generation",
+   "Judah would divide",
+   "His throne would be established forever",
+   "The ark would depart"
+  ],
+  "answer": 2,
+  "explanation": "God promised David an enduring dynasty.",
+  "ref": "2 Samuel 7:16"
+ },
+ {
+  "id": "old-2-samuel-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David respond to this covenant promise?",
+  "choices": [
+   "By going to war",
+   "By counting the people",
+   "By sitting before the Lord in humble prayer",
+   "By rebuking Nathan"
+  ],
+  "answer": 2,
+  "explanation": "David sat before the Lord and prayed in humility and gratitude.",
+  "ref": "2 Samuel 7:18"
+ },
+ {
+  "id": "old-2-samuel-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "What place did David take out of the hand of the Philistines?",
+  "choices": [
+   "Metheg-ammah",
+   "Gath",
+   "Ashdod",
+   "Ekron"
+  ],
+  "answer": 0,
+  "explanation": "David took Metheg-ammah from the hand of the Philistines.",
+  "ref": "2 Samuel 8:1"
+ },
+ {
+  "id": "old-2-samuel-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do to Moab after smiting them?",
+  "choices": [
+   "Made them priests",
+   "Left them untouched",
+   "Moved them to Judah",
+   "Measured them with a line, sparing some and putting some to death"
+  ],
+  "answer": 3,
+  "explanation": "David subdued Moab decisively.",
+  "ref": "2 Samuel 8:2"
+ },
+ {
+  "id": "old-2-samuel-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which king of Zobah did David smite?",
+  "choices": [
+   "Ben-hadad",
+   "Hadadezer",
+   "Rezin",
+   "Jabin"
+  ],
+  "answer": 1,
+  "explanation": "David smote Hadadezer king of Zobah. When the Syrians of Damascus came to help him, David defeated them too.",
+  "ref": "2 Samuel 8:3"
+ },
+ {
+  "id": "old-2-samuel-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated statement explains David's success?",
+  "choices": [
+   "The Lord preserved David whithersoever he went",
+   "David was mighty",
+   "Judah followed him",
+   "Joab fought bravely"
+  ],
+  "answer": 0,
+  "explanation": "The chapter says twice that the Lord preserved David whithersoever he went.",
+  "ref": "2 Samuel 8:14"
+ },
+ {
+  "id": "old-2-samuel-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is listed as recorder among David's chief officials?",
+  "choices": [
+   "Abiathar",
+   "Jehoshaphat",
+   "Nathan",
+   "Benaiah"
+  ],
+  "answer": 1,
+  "explanation": "Jehoshaphat the son of Ahilud served as recorder.",
+  "ref": "2 Samuel 8:16"
+ },
+ {
+  "id": "old-2-samuel-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whose sake did David seek to show kindness to Saul's house?",
+  "choices": [
+   "Saul's",
+   "Jonathan's",
+   "Abner's",
+   "Samuel's"
+  ],
+  "answer": 1,
+  "explanation": "David wanted to show kindness for Jonathan's sake.",
+  "ref": "2 Samuel 9:1"
+ },
+ {
+  "id": "old-2-samuel-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the name of Saul's former servant who was called to David?",
+  "choices": [
+   "Doeg",
+   "Ahimelech",
+   "Shimei",
+   "Ziba"
+  ],
+  "answer": 3,
+  "explanation": "Ziba informed David about Mephibosheth.",
+  "ref": "2 Samuel 9:2"
+ },
+ {
+  "id": "old-2-samuel-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Mephibosheth living when David sent for him?",
+  "choices": [
+   "Hebron",
+   "Shiloh",
+   "Lo-debar",
+   "Bethlehem"
+  ],
+  "answer": 2,
+  "explanation": "Mephibosheth was in Lo-debar in the house of Machir.",
+  "ref": "2 Samuel 9:4–5"
+ },
+ {
+  "id": "old-2-samuel-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What physical condition did Mephibosheth have?",
+  "choices": [
+   "He was lame on both his feet",
+   "Blindness",
+   "He was deaf",
+   "He was leprous"
+  ],
+  "answer": 0,
+  "explanation": "The chapter repeatedly notes that Mephibosheth was lame on both feet.",
+  "ref": "2 Samuel 9:13"
+ },
+ {
+  "id": "old-2-samuel-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What privilege did David give Mephibosheth?",
+  "choices": [
+   "A place in the army",
+   "He would eat continually at the king's table",
+   "The throne",
+   "The priesthood"
+  ],
+  "answer": 1,
+  "explanation": "David gave Mephibosheth a permanent place at the royal table.",
+  "ref": "2 Samuel 9:7"
+ },
+ {
+  "id": "old-2-samuel-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose death prompted David to send comforters to Ammon?",
+  "choices": [
+   "Saul's",
+   "Nahash king of the children of Ammon",
+   "Abner's",
+   "Hadadezer's"
+  ],
+  "answer": 1,
+  "explanation": "David sent comforters after Nahash died.",
+  "ref": "2 Samuel 10:1–2"
+ },
+ {
+  "id": "old-2-samuel-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Hanun's princes interpret David's messengers?",
+  "choices": [
+   "As true comforters",
+   "As spies sent to search the city",
+   "As traders",
+   "As prophets"
+  ],
+  "answer": 1,
+  "explanation": "They suspected the messengers were spies.",
+  "ref": "2 Samuel 10:3"
+ },
+ {
+  "id": "old-2-samuel-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shameful act did Hanun commit against David's servants?",
+  "choices": [
+   "Imprisoned them",
+   "Stoned them",
+   "Sold them",
+   "Shaved half their beards and cut off their garments"
+  ],
+  "answer": 3,
+  "explanation": "Hanun humiliated the messengers publicly.",
+  "ref": "2 Samuel 10:4"
+ },
+ {
+  "id": "old-2-samuel-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who led David's forces against Ammon and Syria?",
+  "choices": [
+   "Nathan",
+   "Joab",
+   "Jonathan",
+   "Benaiah"
+  ],
+  "answer": 1,
+  "explanation": "Joab led the forces and arranged the battle lines.",
+  "ref": "2 Samuel 10:7–9"
+ },
+ {
+  "id": "old-2-samuel-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened after David defeated the Syrians?",
+  "choices": [
+   "They strengthened Ammon",
+   "They captured Jerusalem",
+   "They made peace with Israel and feared to help Ammon anymore",
+   "They crowned Hanun"
+  ],
+  "answer": 2,
+  "explanation": "The Syrians submitted and would help Ammon no more.",
+  "ref": "2 Samuel 10:19"
+ },
+ {
+  "id": "old-2-samuel-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was David doing while kings went forth to battle?",
+  "choices": [
+   "Leading the army",
+   "Worshiping at Shiloh",
+   "Counting the people",
+   "He tarried still at Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "David remained in Jerusalem while Joab led the campaign.",
+  "ref": "2 Samuel 11:1"
+ },
+ {
+  "id": "old-2-samuel-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David see washing from his rooftop?",
+  "choices": [
+   "Michal",
+   "Bathsheba",
+   "Abigail",
+   "Tamar"
+  ],
+  "answer": 1,
+  "explanation": "David saw Bathsheba and desired her.",
+  "ref": "2 Samuel 11:2"
+ },
+ {
+  "id": "old-2-samuel-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Bathsheba's husband?",
+  "choices": [
+   "Joab",
+   "Absalom",
+   "Ziba",
+   "Uriah the Hittite"
+  ],
+  "answer": 3,
+  "explanation": "Bathsheba was the wife of Uriah the Hittite.",
+  "ref": "2 Samuel 11:3"
+ },
+ {
+  "id": "old-2-samuel-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What instructions did David send to Joab regarding Uriah?",
+  "choices": [
+   "Set him in the forefront and withdraw from him",
+   "Honor him publicly",
+   "Return him home",
+   "Make him captain"
+  ],
+  "answer": 0,
+  "explanation": "David arranged for Uriah to be exposed to death in battle.",
+  "ref": "2 Samuel 11:15"
+ },
+ {
+  "id": "old-2-samuel-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At the end of the chapter, how did the Lord view what David had done?",
+  "choices": [
+   "The Lord blessed it",
+   "It was overlooked",
+   "Nathan approved",
+   "The thing that David had done displeased the Lord"
+  ],
+  "answer": 3,
+  "explanation": "The Lord was displeased with David's sin.",
+  "ref": "2 Samuel 11:27"
+ },
+ {
+  "id": "old-2-samuel-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Nathan confront David at first?",
+  "choices": [
+   "By public rebuke only",
+   "With a parable about a rich man taking a poor man's ewe lamb",
+   "With a dream",
+   "With a psalm"
+  ],
+  "answer": 1,
+  "explanation": "Nathan used a parable to expose David's guilt.",
+  "ref": "2 Samuel 12:1–4"
+ },
+ {
+  "id": "old-2-samuel-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nathan say after David judged the man in the parable?",
+  "choices": [
+   "The Lord forgives thee fully",
+   "Saul was the man",
+   "Absalom will reign",
+   "Thou art the man"
+  ],
+  "answer": 3,
+  "explanation": "Nathan directly identified David as the guilty man.",
+  "ref": "2 Samuel 12:7"
+ },
+ {
+  "id": "old-2-samuel-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What consequence did Nathan declare would not depart from David's house?",
+  "choices": [
+   "Famine",
+   "Leprosy",
+   "The sword",
+   "Exile"
+  ],
+  "answer": 2,
+  "explanation": "Nathan said the sword would not depart from David's house.",
+  "ref": "2 Samuel 12:10"
+ },
+ {
+  "id": "old-2-samuel-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David respond to Nathan's rebuke?",
+  "choices": [
+   "He denied it",
+   "He blamed Bathsheba",
+   "He confessed, 'I have sinned against the LORD'",
+   "He fled Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "David confessed his sin.",
+  "ref": "2 Samuel 12:13"
+ },
+ {
+  "id": "old-2-samuel-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What son was later born to David and Bathsheba whom the Lord loved?",
+  "choices": [
+   "Solomon",
+   "Absalom",
+   "Amnon",
+   "Adonijah"
+  ],
+  "answer": 0,
+  "explanation": "Solomon was born afterward and loved by the Lord.",
+  "ref": "2 Samuel 12:24"
+ },
+ {
+  "id": "old-2-samuel-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who lusted after his half-sister Tamar?",
+  "choices": [
+   "Absalom",
+   "Amnon",
+   "Adonijah",
+   "Joab"
+  ],
+  "answer": 1,
+  "explanation": "Amnon desired Tamar, the sister of Absalom.",
+  "ref": "2 Samuel 13:1"
+ },
+ {
+  "id": "old-2-samuel-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who gave Amnon the crafty plan to get Tamar alone?",
+  "choices": [
+   "Nathan",
+   "Joab",
+   "Jonadab",
+   "Shimei"
+  ],
+  "answer": 2,
+  "explanation": "Jonadab advised Amnon to feign sickness.",
+  "ref": "2 Samuel 13:3–5"
+ },
+ {
+  "id": "old-2-samuel-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Tamar plead with Amnon not to do?",
+  "choices": [
+   "Send her away",
+   "Tell David",
+   "Force her",
+   "Leave Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Tamar begged him not to commit the shameful act.",
+  "ref": "2 Samuel 13:12"
+ },
+ {
+  "id": "old-2-samuel-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Absalom wait before avenging Tamar?",
+  "choices": [
+   "One month",
+   "Two full years",
+   "Seven years",
+   "Ten years"
+  ],
+  "answer": 1,
+  "explanation": "Absalom waited two full years before acting.",
+  "ref": "2 Samuel 13:23"
+ },
+ {
+  "id": "old-2-samuel-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Absalom's servants kill Amnon?",
+  "choices": [
+   "At the city gate",
+   "In the king's house",
+   "At Absalom's sheep-shearing feast",
+   "On the battlefield"
+  ],
+  "answer": 2,
+  "explanation": "Amnon was killed at the feast when Absalom gave the signal.",
+  "ref": "2 Samuel 13:28–29"
+ },
+ {
+  "id": "old-2-samuel-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what city did Joab bring a wise woman to speak to the king?",
+  "choices": [
+   "Bethlehem",
+   "Tekoa",
+   "Hebron",
+   "Shiloh"
+  ],
+  "answer": 1,
+  "explanation": "Joab brought a wise woman from Tekoa.",
+  "ref": "2 Samuel 14:2"
+ },
+ {
+  "id": "old-2-samuel-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Joab's hidden purpose in sending the woman to David?",
+  "choices": [
+   "To condemn Absalom permanently",
+   "To count the people",
+   "To persuade David to bring Absalom back",
+   "To rebuke Tamar"
+  ],
+  "answer": 2,
+  "explanation": "Joab's aim was to move David toward restoring Absalom.",
+  "ref": "2 Samuel 14:13–21"
+ },
+ {
+  "id": "old-2-samuel-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where was Absalom brought back?",
+  "choices": [
+   "Geshur",
+   "Gath",
+   "Moab",
+   "Ammon"
+  ],
+  "answer": 0,
+  "explanation": "Joab fetched Absalom from Geshur.",
+  "ref": "2 Samuel 14:23"
+ },
+ {
+  "id": "old-2-samuel-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Absalom dwell in Jerusalem without seeing the king's face?",
+  "choices": [
+   "Six months",
+   "Three years",
+   "Two full years",
+   "Seven years"
+  ],
+  "answer": 2,
+  "explanation": "Absalom lived two full years without seeing David.",
+  "ref": "2 Samuel 14:28"
+ },
+ {
+  "id": "old-2-samuel-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Absalom finally force Joab to come to him?",
+  "choices": [
+   "By public appeal",
+   "By seizing his servants",
+   "By setting Joab's barley field on fire",
+   "By going to the gate"
+  ],
+  "answer": 2,
+  "explanation": "Absalom burned Joab's field to get his attention.",
+  "ref": "2 Samuel 14:30"
+ },
+ {
+  "id": "old-2-samuel-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What display did Absalom use to impress people and gain favor?",
+  "choices": [
+   "A linen ephod",
+   "Chariots, horses, and fifty men to run before him",
+   "A prophet's school",
+   "A royal feast"
+  ],
+  "answer": 1,
+  "explanation": "Absalom used royal-style display to build influence.",
+  "ref": "2 Samuel 15:1"
+ },
+ {
+  "id": "old-2-samuel-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Absalom steal the hearts of the men of Israel?",
+  "choices": [
+   "By force",
+   "By raising taxes",
+   "By winning battles",
+   "By meeting them at the gate and flattering them"
+  ],
+  "answer": 3,
+  "explanation": "He intercepted people seeking justice and charmed them.",
+  "ref": "2 Samuel 15:2–6"
+ },
+ {
+  "id": "old-2-samuel-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what city did Absalom begin his open rebellion after asking leave to go there?",
+  "choices": [
+   "Shiloh",
+   "Hebron",
+   "Jericho",
+   "Gibeah"
+  ],
+  "answer": 1,
+  "explanation": "Absalom used Hebron as the starting point of his conspiracy.",
+  "ref": "2 Samuel 15:7–10"
+ },
+ {
+  "id": "old-2-samuel-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which counselor's support greatly strengthened Absalom's conspiracy?",
+  "choices": [
+   "Nathan",
+   "Abiathar",
+   "Benaiah",
+   "Ahithophel"
+  ],
+  "answer": 3,
+  "explanation": "Ahithophel's counsel made the rebellion more dangerous.",
+  "ref": "2 Samuel 15:12"
+ },
+ {
+  "id": "old-2-samuel-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do when he heard that the hearts of the men of Israel were after Absalom?",
+  "choices": [
+   "He fled Jerusalem",
+   "He fought immediately",
+   "He crowned Solomon",
+   "He sent Abner"
+  ],
+  "answer": 0,
+  "explanation": "David chose to flee to spare the city.",
+  "ref": "2 Samuel 15:13–14"
+ },
+ {
+  "id": "old-2-samuel-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who met David with asses, bread, fruits, and wine as he fled?",
+  "choices": [
+   "Shimei",
+   "Ziba",
+   "Ahithophel",
+   "Joab"
+  ],
+  "answer": 1,
+  "explanation": "Ziba met David with supplies.",
+  "ref": "2 Samuel 16:1–2"
+ },
+ {
+  "id": "old-2-samuel-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ziba claim about Mephibosheth?",
+  "choices": [
+   "He was dead",
+   "He was with the priests",
+   "He remained in Jerusalem hoping to recover Saul's kingdom",
+   "He fled to Gath"
+  ],
+  "answer": 2,
+  "explanation": "Ziba claimed Mephibosheth stayed behind for political reasons.",
+  "ref": "2 Samuel 16:3"
+ },
+ {
+  "id": "old-2-samuel-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who cursed David and cast stones at him on the road?",
+  "choices": [
+   "Doeg",
+   "Shimei",
+   "Ittai",
+   "Hushai"
+  ],
+  "answer": 1,
+  "explanation": "Shimei of the house of Saul cursed and threw stones at David.",
+  "ref": "2 Samuel 16:5–6"
+ },
+ {
+  "id": "old-2-samuel-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David refuse to let Abishai do to Shimei?",
+  "choices": [
+   "Arrest him",
+   "Take his land",
+   "Cut off his head",
+   "Stone him"
+  ],
+  "answer": 2,
+  "explanation": "David restrained Abishai from killing Shimei.",
+  "ref": "2 Samuel 16:9–10"
+ },
+ {
+  "id": "old-2-samuel-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What counsel of Ahithophel did Absalom follow to signal a complete break with David?",
+  "choices": [
+   "Burn Jerusalem",
+   "Go in unto his father's concubines",
+   "Kill Joab",
+   "Destroy the ark"
+  ],
+  "answer": 1,
+  "explanation": "Absalom publicly took David's concubines on the rooftop.",
+  "ref": "2 Samuel 16:21–22"
+ },
+ {
+  "id": "old-2-samuel-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What immediate plan did Ahithophel propose against David?",
+  "choices": [
+   "Wait seven days",
+   "Take twelve thousand men and pursue him that night",
+   "Burn Jerusalem",
+   "Crown Absalom first"
+  ],
+  "answer": 1,
+  "explanation": "Ahithophel urged a quick strike while David was weary.",
+  "ref": "2 Samuel 17:1–2"
+ },
+ {
+  "id": "old-2-samuel-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose good counsel did the Lord appoint to defeat?",
+  "choices": [
+   "Joab's",
+   "Ahithophel's",
+   "Abner's",
+   "Abiathar's"
+  ],
+  "answer": 1,
+  "explanation": "The Lord appointed to defeat Ahithophel's good counsel.",
+  "ref": "2 Samuel 17:14"
+ },
+ {
+  "id": "old-2-samuel-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who pretended loyalty to Absalom while actually helping David?",
+  "choices": [
+   "Ziba",
+   "Ittai",
+   "Benaiah",
+   "Hushai"
+  ],
+  "answer": 3,
+  "explanation": "Hushai's counter-counsel delayed Absalom and helped David.",
+  "ref": "2 Samuel 17:5–14"
+ },
+ {
+  "id": "old-2-samuel-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were David's messengers hidden from Absalom's servants?",
+  "choices": [
+   "In the temple",
+   "In a cave",
+   "Across Jordan immediately",
+   "In a well, covered by a woman"
+  ],
+  "answer": 3,
+  "explanation": "The messengers were hidden in a well and concealed.",
+  "ref": "2 Samuel 17:18–20"
+ },
+ {
+  "id": "old-2-samuel-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ahithophel do when his counsel was not followed?",
+  "choices": [
+   "Joined David",
+   "Killed Absalom",
+   "Went home and hanged himself",
+   "Fled to Philistia"
+  ],
+  "answer": 2,
+  "explanation": "Ahithophel took his own life after his counsel was rejected.",
+  "ref": "2 Samuel 17:23"
+ },
+ {
+  "id": "old-2-samuel-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command did David give his commanders concerning Absalom before the battle?",
+  "choices": [
+   "Kill him quickly",
+   "Capture him for public trial",
+   "Deal gently for my sake with the young man",
+   "Let Joab handle him"
+  ],
+  "answer": 2,
+  "explanation": "David publicly ordered that Absalom be dealt with gently.",
+  "ref": "2 Samuel 18:5"
+ },
+ {
+  "id": "old-2-samuel-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the battle in which the wood devoured more people than the sword?",
+  "choices": [
+   "Mount Gilboa",
+   "The valley of Elah",
+   "The wood of Ephraim",
+   "Hebron"
+  ],
+  "answer": 2,
+  "explanation": "The battle was in the wood of Ephraim, where the forest itself took many lives.",
+  "ref": "2 Samuel 18:6–8"
+ },
+ {
+  "id": "old-2-samuel-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was Absalom caught while riding his mule?",
+  "choices": [
+   "His head caught in an oak",
+   "By soldiers",
+   "He fell into a pit",
+   "His mule collapsed"
+  ],
+  "answer": 0,
+  "explanation": "Absalom was left hanging between heaven and earth by the oak.",
+  "ref": "2 Samuel 18:9"
+ },
+ {
+  "id": "old-2-samuel-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who killed Absalom despite David's command?",
+  "choices": [
+   "Abishai",
+   "Ittai",
+   "Hushai",
+   "Joab"
+  ],
+  "answer": 3,
+  "explanation": "Joab thrust darts through Absalom.",
+  "ref": "2 Samuel 18:14"
+ },
+ {
+  "id": "old-2-samuel-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David react when he heard Absalom was dead?",
+  "choices": [
+   "He celebrated victory",
+   "He called a feast",
+   "He blamed Joab publicly",
+   "He wept, crying 'O my son Absalom'"
+  ],
+  "answer": 3,
+  "explanation": "David mourned intensely for Absalom.",
+  "ref": "2 Samuel 18:33"
+ },
+ {
+  "id": "old-2-samuel-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Joab rebuke David after the victory over Absalom?",
+  "choices": [
+   "His mourning shamed those who had saved his life",
+   "He spared Saul",
+   "He left Jerusalem",
+   "He refused to judge Israel"
+  ],
+  "answer": 0,
+  "explanation": "Joab told David his mourning was discouraging and dishonoring the army.",
+  "ref": "2 Samuel 19:5–7"
+ },
+ {
+  "id": "old-2-samuel-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe came to Gilgal to meet the king and conduct him over Jordan?",
+  "choices": [
+   "Reuben",
+   "Levi",
+   "Judah",
+   "Dan"
+  ],
+  "answer": 2,
+  "explanation": "David asked the elders of Judah why they were the last to bring him back. Then Judah came to Gilgal to conduct the king over Jordan.",
+  "ref": "2 Samuel 19:15"
+ },
+ {
+  "id": "old-2-samuel-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Shimei do when David returned?",
+  "choices": [
+   "Fled to Gath",
+   "Attacked Abner",
+   "Joined Sheba",
+   "Came down and asked forgiveness"
+  ],
+  "answer": 3,
+  "explanation": "Shimei humbled himself before David.",
+  "ref": "2 Samuel 19:16–20"
+ },
+ {
+  "id": "old-2-samuel-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Mephibosheth tell David that his servant Ziba had done?",
+  "choices": [
+   "Stolen his silver",
+   "Deceived him and slandered him to the king",
+   "Struck him on the road",
+   "Sold his land"
+  ],
+  "answer": 1,
+  "explanation": "Mephibosheth said his servant deceived him and slandered him to the king.",
+  "ref": "2 Samuel 19:26–27"
+ },
+ {
+  "id": "old-2-samuel-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What elderly ally declined to cross Jordan permanently with David and recommended his servant instead?",
+  "choices": [
+   "Ittai",
+   "Hushai",
+   "Barzillai",
+   "Abishai"
+  ],
+  "answer": 2,
+  "explanation": "Barzillai declined but asked favor for Chimham.",
+  "ref": "2 Samuel 19:31–37"
+ },
+ {
+  "id": "old-2-samuel-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What rebellious Benjamite blew the trumpet and said, 'We have no part in David'?",
+  "choices": [
+   "Sheba",
+   "Shimei",
+   "Ishbosheth",
+   "Absalom"
+  ],
+  "answer": 0,
+  "explanation": "Sheba son of Bichri began a new revolt.",
+  "ref": "2 Samuel 20:1"
+ },
+ {
+  "id": "old-2-samuel-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David first order to gather Judah quickly against Sheba?",
+  "choices": [
+   "Amasa",
+   "Joab",
+   "Abishai",
+   "Benaiah"
+  ],
+  "answer": 0,
+  "explanation": "David assigned Amasa to gather Judah.",
+  "ref": "2 Samuel 20:4"
+ },
+ {
+  "id": "old-2-samuel-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joab do to Amasa on the road?",
+  "choices": [
+   "He promoted him",
+   "He sent him to Hebron",
+   "He captured him",
+   "He killed him with the sword"
+  ],
+  "answer": 3,
+  "explanation": "Joab murdered Amasa while greeting him.",
+  "ref": "2 Samuel 20:9–10"
+ },
+ {
+  "id": "old-2-samuel-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "In what city did Sheba take refuge behind a wall?",
+  "choices": [
+   "Bethlehem",
+   "Gibeah",
+   "Jericho",
+   "Abel of Beth-maachah"
+  ],
+  "answer": 3,
+  "explanation": "Sheba hid in Abel of Beth-maachah.",
+  "ref": "2 Samuel 20:14–15"
+ },
+ {
+  "id": "old-2-samuel-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was the city saved from destruction?",
+  "choices": [
+   "A wise woman persuaded the city to throw Sheba's head over the wall",
+   "David called off the siege",
+   "Joab withdrew in fear",
+   "Sheba escaped"
+  ],
+  "answer": 0,
+  "explanation": "The wise woman's intervention ended the revolt and spared the city.",
+  "ref": "2 Samuel 20:16–22"
+ },
+ {
+  "id": "old-2-samuel-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What national crisis prompted David to seek the Lord at the beginning of the chapter?",
+  "choices": [
+   "Plague",
+   "Philistine invasion",
+   "Civil war",
+   "Three years of famine"
+  ],
+  "answer": 3,
+  "explanation": "There was a famine for three years in David's days.",
+  "ref": "2 Samuel 21:1"
+ },
+ {
+  "id": "old-2-samuel-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the Lord say the famine had come?",
+  "choices": [
+   "Israel broke the Sabbath",
+   "Saul had sought to slay the Gibeonites",
+   "David numbered the people",
+   "Absalom rebelled"
+  ],
+  "answer": 1,
+  "explanation": "The famine came because Saul violated Israel's oath to the Gibeonites.",
+  "ref": "2 Samuel 21:1–2"
+ },
+ {
+  "id": "old-2-samuel-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many of Saul's descendants were handed over to the Gibeonites?",
+  "choices": [
+   "3",
+   "5",
+   "7",
+   "12"
+  ],
+  "answer": 2,
+  "explanation": "Seven of Saul's descendants were given up.",
+  "ref": "2 Samuel 21:6–9"
+ },
+ {
+  "id": "old-2-samuel-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who protected the bodies from birds and beasts until rain fell?",
+  "choices": [
+   "Michal",
+   "Rizpah",
+   "Bathsheba",
+   "Tamar"
+  ],
+  "answer": 1,
+  "explanation": "Rizpah watched over the bodies in devoted grief.",
+  "ref": "2 Samuel 21:10"
+ },
+ {
+  "id": "old-2-samuel-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who slew the brother of Goliath the Gittite, whose spear staff was like a weaver's beam?",
+  "choices": [
+   "David",
+   "Elhanan",
+   "Jonathan son of Shimea",
+   "Abishai"
+  ],
+  "answer": 1,
+  "explanation": "Elhanan, a Bethlehemite, slew the brother of Goliath in a battle at Gob.",
+  "ref": "2 Samuel 21:19"
+ },
+ {
+  "id": "old-2-samuel-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does David address the Lord at the beginning of this song?",
+  "choices": [
+   "My king and judge",
+   "My shepherd and keeper",
+   "The God of Abraham",
+   "The Lord is my rock, and my fortress, and my deliverer"
+  ],
+  "answer": 3,
+  "explanation": "David begins by calling the Lord his rock and deliverer.",
+  "ref": "2 Samuel 22:2"
+ },
+ {
+  "id": "old-2-samuel-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What image describes God's dramatic intervention on David's behalf?",
+  "choices": [
+   "A still breeze",
+   "A quiet sunrise",
+   "The earth shook and the heavens bowed",
+   "A ladder from heaven"
+  ],
+  "answer": 2,
+  "explanation": "The song uses earthquake and storm imagery for divine intervention.",
+  "ref": "2 Samuel 22:8–10"
+ },
+ {
+  "id": "old-2-samuel-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does David say about the Lord's way?",
+  "choices": [
+   "It is hidden",
+   "It is perfect",
+   "It is uncertain",
+   "It is for priests only"
+  ],
+  "answer": 1,
+  "explanation": "David declares the way of God is perfect.",
+  "ref": "2 Samuel 22:31"
+ },
+ {
+  "id": "old-2-samuel-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God do to David's feet in the song's imagery?",
+  "choices": [
+   "Made them stumble",
+   "Bound them in chains",
+   "Made them like hinds' feet",
+   "Washed them in oil"
+  ],
+  "answer": 2,
+  "explanation": "David says God made his feet like hinds' feet.",
+  "ref": "2 Samuel 22:34"
+ },
+ {
+  "id": "old-2-samuel-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the song end in relation to David's house?",
+  "choices": [
+   "By celebrating mercy to David and his seed forevermore",
+   "With silence",
+   "With lament only",
+   "With a call for sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "The song closes with covenant mercy to David and his seed.",
+  "ref": "2 Samuel 22:51"
+ },
+ {
+  "id": "old-2-samuel-23-1",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is David described at the opening of his last words?",
+  "choices": [
+   "The king of Jericho",
+   "The son of Abner",
+   "The sweet psalmist of Israel",
+   "The priest of Judah"
+  ],
+  "answer": 2,
+  "explanation": "David is called the sweet psalmist of Israel.",
+  "ref": "2 Samuel 23:1"
+ },
+ {
+  "id": "old-2-samuel-23-2",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say spoke by him?",
+  "choices": [
+   "His sword",
+   "Nathan's counsel",
+   "The people",
+   "The Spirit of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "David said the Spirit of the Lord spoke by him.",
+  "ref": "2 Samuel 23:2"
+ },
+ {
+  "id": "old-2-samuel-23-3",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the mighty men remembered for bringing David from Bethlehem?",
+  "choices": [
+   "Water from the well by the gate",
+   "A harp",
+   "A crown",
+   "Goliath's sword"
+  ],
+  "answer": 0,
+  "explanation": "Three mighty men broke through to bring David water from Bethlehem.",
+  "ref": "2 Samuel 23:15–16"
+ },
+ {
+  "id": "old-2-samuel-23-4",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David respond to the water brought at such risk?",
+  "choices": [
+   "He drank it eagerly",
+   "He poured it out unto the Lord",
+   "He stored it",
+   "He gave it to Joab"
+  ],
+  "answer": 1,
+  "explanation": "David would not drink it but poured it out unto the Lord.",
+  "ref": "2 Samuel 23:16"
+ },
+ {
+  "id": "old-2-samuel-23-5",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named among the mighty men as the son of Jehoiada who slew two lionlike men of Moab?",
+  "choices": [
+   "Abishai",
+   "Asahel",
+   "Benaiah",
+   "Amasa"
+  ],
+  "answer": 2,
+  "explanation": "Benaiah is praised for notable feats of valor.",
+  "ref": "2 Samuel 23:20"
+ },
+ {
+  "id": "old-2-samuel-24-1",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What act of David brought judgment at the start of the chapter?",
+  "choices": [
+   "Taking another wife",
+   "Sparing Agag",
+   "Moving the ark",
+   "Numbering Israel and Judah"
+  ],
+  "answer": 3,
+  "explanation": "David ordered a census of the fighting men.",
+  "ref": "2 Samuel 24:1–2"
+ },
+ {
+  "id": "old-2-samuel-24-2",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who objected to the census but carried it out anyway?",
+  "choices": [
+   "Joab",
+   "Nathan",
+   "Abiathar",
+   "Benaiah"
+  ],
+  "answer": 0,
+  "explanation": "Joab questioned the order but obeyed the king.",
+  "ref": "2 Samuel 24:3–4"
+ },
+ {
+  "id": "old-2-samuel-24-3",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What choices of judgment did Gad present to David?",
+  "choices": [
+   "Exile, darkness, or drought",
+   "Famine, fleeing before his enemies, or pestilence",
+   "Fire, flood, or earthquake",
+   "Captivity, hail, or locusts"
+  ],
+  "answer": 1,
+  "explanation": "Gad set before David three options: famine, fleeing before enemies, or pestilence.",
+  "ref": "2 Samuel 24:13"
+ },
+ {
+  "id": "old-2-samuel-24-4",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the angel of the Lord when the Lord said, 'It is enough'?",
+  "choices": [
+   "By the threshingfloor of Araunah the Jebusite",
+   "At Shiloh",
+   "In Bethlehem",
+   "On Mount Gilboa"
+  ],
+  "answer": 0,
+  "explanation": "The angel was by Araunah's threshingfloor.",
+  "ref": "2 Samuel 24:16"
+ },
+ {
+  "id": "old-2-samuel-24-5",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did David insist on buying the threshingfloor instead of taking it freely?",
+  "choices": [
+   "He needed a deed",
+   "Araunah refused to help",
+   "The law required silver",
+   "He would not offer burnt offerings unto the Lord of that which cost him nothing"
+  ],
+  "answer": 3,
+  "explanation": "David insisted on paying because sacrifice should cost him something.",
+  "ref": "2 Samuel 24:24"
+ }
+]

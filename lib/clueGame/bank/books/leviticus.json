@@ -1,0 +1,2162 @@
+[
+ {
+  "id": "old-leviticus-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the Lord call to Moses from at the start of Leviticus?",
+  "choices": [
+   "The tabernacle of the congregation",
+   "Mount Sinai",
+   "The brazen altar",
+   "Aaron's tent"
+  ],
+  "answer": 0,
+  "explanation": "The Lord spoke to Moses out of the tabernacle of the congregation.",
+  "ref": "Leviticus 1:1"
+ },
+ {
+  "id": "old-leviticus-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of animal could be brought for a burnt offering from the herd?",
+  "choices": [
+   "Any female",
+   "A male without blemish",
+   "A firstborn only",
+   "A lame ox"
+  ],
+  "answer": 1,
+  "explanation": "The burnt offering from the herd had to be a male without blemish.",
+  "ref": "Leviticus 1:3"
+ },
+ {
+  "id": "old-leviticus-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the worshiper to do before the animal was slain?",
+  "choices": [
+   "Wash the altar",
+   "Burn incense",
+   "Lay his hand on the head of the offering",
+   "Sound a trumpet"
+  ],
+  "answer": 2,
+  "explanation": "The worshiper laid his hand on the offering as it was accepted for atonement.",
+  "ref": "Leviticus 1:4"
+ },
+ {
+  "id": "old-leviticus-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What part of the burnt offering was not placed on the altar until after it was washed?",
+  "choices": [
+   "The hide",
+   "The horns",
+   "The inward parts and the legs",
+   "The blood"
+  ],
+  "answer": 2,
+  "explanation": "The inwards and legs were washed in water before being burned.",
+  "ref": "Leviticus 1:9"
+ },
+ {
+  "id": "old-leviticus-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the burnt offering described?",
+  "choices": [
+   "A memorial forever",
+   "A sin payment only",
+   "A sweet savour",
+   "A feast of joy"
+  ],
+  "answer": 2,
+  "explanation": "The burnt offering is repeatedly called an offering made by fire of a sweet savour unto the Lord.",
+  "ref": "Leviticus 1:9"
+ },
+ {
+  "id": "old-leviticus-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What ingredient was poured on the fine flour of the meat offering?",
+  "choices": [
+   "Blood",
+   "Water",
+   "Vinegar",
+   "Oil"
+  ],
+  "answer": 3,
+  "explanation": "Oil was poured on the fine flour, and frankincense was put on it.",
+  "ref": "Leviticus 2:1"
+ },
+ {
+  "id": "old-leviticus-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the priest to burn as the memorial of the meat offering?",
+  "choices": [
+   "All of it",
+   "Only the salt",
+   "Only the grain",
+   "A handful with the oil and frankincense"
+  ],
+  "answer": 3,
+  "explanation": "The priest burned a memorial portion and the rest belonged to Aaron and his sons.",
+  "ref": "Leviticus 2:2"
+ },
+ {
+  "id": "old-leviticus-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things were never to be burned in an offering made by fire to the Lord?",
+  "choices": [
+   "Salt and oil",
+   "Flour and incense",
+   "Leaven and honey",
+   "Corn and wine"
+  ],
+  "answer": 2,
+  "explanation": "No meat offering made to the Lord by fire was to be made with leaven or honey.",
+  "ref": "Leviticus 2:11"
+ },
+ {
+  "id": "old-leviticus-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was never to be lacking from the meat offering?",
+  "choices": [
+   "Water",
+   "Frankincense",
+   "Wine",
+   "The salt of the covenant"
+  ],
+  "answer": 3,
+  "explanation": "Every offering was to be seasoned with salt, called the salt of the covenant.",
+  "ref": "Leviticus 2:13"
+ },
+ {
+  "id": "old-leviticus-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was done with the firstfruits of green ears of corn?",
+  "choices": [
+   "They were buried",
+   "They were dried by the fire and beaten out",
+   "They were eaten raw",
+   "They were given to the poor only"
+  ],
+  "answer": 1,
+  "explanation": "The oblation of firstfruits could be green ears dried by the fire and beaten out of full ears.",
+  "ref": "Leviticus 2:14"
+ },
+ {
+  "id": "old-leviticus-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What could be offered for a sacrifice of peace offering from the herd?",
+  "choices": [
+   "Only a male",
+   "A male or female without blemish",
+   "Only a firstborn",
+   "Only a bird"
+  ],
+  "answer": 1,
+  "explanation": "A peace offering from the herd could be male or female, but it had to be without blemish.",
+  "ref": "Leviticus 3:1"
+ },
+ {
+  "id": "old-leviticus-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What part of the peace offering does the chapter say is the Lord's?",
+  "choices": [
+   "All the fat",
+   "The hide",
+   "The shoulder only",
+   "The flour"
+  ],
+  "answer": 0,
+  "explanation": "The fat was burned on the altar, and the chapter says, 'all the fat is the LORD'S.'",
+  "ref": "Leviticus 3:16"
+ },
+ {
+  "id": "old-leviticus-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What internal part is repeatedly mentioned to be removed with the fat?",
+  "choices": [
+   "The heart",
+   "The tongue",
+   "The lungs",
+   "The kidneys"
+  ],
+  "answer": 3,
+  "explanation": "The kidneys and the fat that was on them were removed and offered.",
+  "ref": "Leviticus 3:4"
+ },
+ {
+  "id": "old-leviticus-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If the peace offering was from the flock, what animal could it be?",
+  "choices": [
+   "A dove or pigeon",
+   "A sheep or a goat",
+   "An ox only",
+   "A deer only"
+  ],
+  "answer": 1,
+  "explanation": "The peace offering from the flock could be either a sheep or a goat.",
+  "ref": "Leviticus 3:6–12"
+ },
+ {
+  "id": "old-leviticus-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What lasting rule closes the chapter?",
+  "choices": [
+   "Do not eat birds",
+   "Offer every animal twice",
+   "Only priests may offer",
+   "Eat no fat nor blood"
+  ],
+  "answer": 3,
+  "explanation": "The statute declares that Israel is not to eat fat or blood.",
+  "ref": "Leviticus 3:17"
+ },
+ {
+  "id": "old-leviticus-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of sin is the sin offering in this chapter for?",
+  "choices": [
+   "Open rebellion",
+   "Sins in war",
+   "Only vows",
+   "Sins through ignorance"
+  ],
+  "answer": 3,
+  "explanation": "The chapter deals with sins committed through ignorance against the commandments of the Lord.",
+  "ref": "Leviticus 4:2"
+ },
+ {
+  "id": "old-leviticus-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What offering was required if the anointed priest sinned?",
+  "choices": [
+   "A male goat",
+   "Two doves",
+   "A ram",
+   "A young bullock"
+  ],
+  "answer": 3,
+  "explanation": "The anointed priest was to bring a young bullock for a sin offering.",
+  "ref": "Leviticus 4:3"
+ },
+ {
+  "id": "old-leviticus-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was some of the blood of the priest's sin offering sprinkled?",
+  "choices": [
+   "On the mercy seat",
+   "On the laver",
+   "Outside the camp only",
+   "Before the veil of the sanctuary"
+  ],
+  "answer": 3,
+  "explanation": "The priest sprinkled the blood seven times before the veil of the sanctuary.",
+  "ref": "Leviticus 4:6"
+ },
+ {
+  "id": "old-leviticus-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What offering did a ruler bring when he sinned through ignorance?",
+  "choices": [
+   "A female lamb",
+   "A male goat",
+   "A bullock",
+   "Two pigeons"
+  ],
+  "answer": 1,
+  "explanation": "A ruler was to bring a kid of the goats, a male without blemish.",
+  "ref": "Leviticus 4:22–23"
+ },
+ {
+  "id": "old-leviticus-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What could one of the common people bring for a sin offering?",
+  "choices": [
+   "A bull only",
+   "A female goat or lamb",
+   "A male dove only",
+   "Bread and oil"
+  ],
+  "answer": 1,
+  "explanation": "One of the common people could bring a female goat or a female lamb without blemish.",
+  "ref": "Leviticus 4:27–32"
+ },
+ {
+  "id": "old-leviticus-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to a witness who heard the voice of swearing but did not tell what he knew?",
+  "choices": [
+   "He went free",
+   "He left the camp",
+   "He bore his iniquity",
+   "He brought a peace offering"
+  ],
+  "answer": 2,
+  "explanation": "If someone knew and failed to testify, he bore his iniquity.",
+  "ref": "Leviticus 5:1"
+ },
+ {
+  "id": "old-leviticus-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What could make a person unclean even if he was unaware at first?",
+  "choices": [
+   "Touching an unclean thing",
+   "Missing a feast",
+   "Losing a garment",
+   "Eating salt"
+  ],
+  "answer": 0,
+  "explanation": "Touching an unclean beast, carcass, or uncleanness brought guilt once it became known.",
+  "ref": "Leviticus 5:2–3"
+ },
+ {
+  "id": "old-leviticus-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If a person could not afford a lamb for his trespass, what could he bring?",
+  "choices": [
+   "A bullock",
+   "Two turtledoves or two young pigeons",
+   "A goat and a dove",
+   "Only fine flour with oil"
+  ],
+  "answer": 1,
+  "explanation": "God allowed two birds as a lower-cost offering for those who could not bring a lamb.",
+  "ref": "Leviticus 5:7"
+ },
+ {
+  "id": "old-leviticus-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If a person could not afford two birds for his sin offering, what could he bring?",
+  "choices": [
+   "A cake with leaven",
+   "Fine flour without oil or frankincense",
+   "A ram",
+   "A peace offering"
+  ],
+  "answer": 1,
+  "explanation": "The poorest person could bring fine flour, but without oil or frankincense because it was a sin offering.",
+  "ref": "Leviticus 5:11"
+ },
+ {
+  "id": "old-leviticus-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of animal was required for a trespass in the holy things of the Lord?",
+  "choices": [
+   "A female lamb",
+   "A ram without blemish",
+   "A turtle dove",
+   "A he-goat"
+  ],
+  "answer": 1,
+  "explanation": "For trespass in the holy things, a ram without blemish was required.",
+  "ref": "Leviticus 5:15"
+ },
+ {
+  "id": "old-leviticus-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had to be done in addition to the trespass offering when someone wronged his neighbor?",
+  "choices": [
+   "He fasted seven days",
+   "He restored it in full and added a fifth part",
+   "He brought two lambs",
+   "He moved outside the camp"
+  ],
+  "answer": 1,
+  "explanation": "The guilty person had to restore what was taken and add one fifth to it.",
+  "ref": "Leviticus 6:4–5"
+ },
+ {
+  "id": "old-leviticus-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was the fire on the altar to be kept burning?",
+  "choices": [
+   "Continually",
+   "Only during feasts",
+   "Until evening",
+   "For seven days only"
+  ],
+  "answer": 0,
+  "explanation": "The fire was to burn continually on the altar and never go out.",
+  "ref": "Leviticus 6:13"
+ },
+ {
+  "id": "old-leviticus-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the priest to do with the ashes of the burnt offering each morning?",
+  "choices": [
+   "Scatter them in the camp",
+   "Put them beside the altar and then carry them outside the camp",
+   "Bury them in the holy place",
+   "Mix them with oil"
+  ],
+  "answer": 1,
+  "explanation": "The priest first placed the ashes beside the altar, then carried them to a clean place outside the camp.",
+  "ref": "Leviticus 6:10–11"
+ },
+ {
+  "id": "old-leviticus-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What rule is given about the meat offering of Aaron and his sons?",
+  "choices": [
+   "It was to be eaten with leaven",
+   "It was to be wholly burnt",
+   "It was shared with the people",
+   "It was offered once a year"
+  ],
+  "answer": 1,
+  "explanation": "Every meat offering for the priest was to be wholly burnt and not eaten.",
+  "ref": "Leviticus 6:23"
+ },
+ {
+  "id": "old-leviticus-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the flesh of the sin offering to be eaten?",
+  "choices": [
+   "Anywhere in the camp",
+   "In the holy place",
+   "Outside the tabernacle only",
+   "By the door of the city"
+  ],
+  "answer": 1,
+  "explanation": "The priest who offered the sin offering was to eat it in the holy place.",
+  "ref": "Leviticus 6:26"
+ },
+ {
+  "id": "old-leviticus-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the trespass offering described at the start of the chapter?",
+  "choices": [
+   "Optional",
+   "Common food",
+   "Most holy",
+   "For kings only"
+  ],
+  "answer": 2,
+  "explanation": "The trespass offering is declared to be most holy.",
+  "ref": "Leviticus 7:1"
+ },
+ {
+  "id": "old-leviticus-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What portion of the peace offering was waved before the Lord?",
+  "choices": [
+   "The head",
+   "The kidneys",
+   "The breast",
+   "The skin"
+  ],
+  "answer": 2,
+  "explanation": "The breast was waved as a wave offering before the Lord.",
+  "ref": "Leviticus 7:30"
+ },
+ {
+  "id": "old-leviticus-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which part of the peace offering was given to the priest as a heave offering?",
+  "choices": [
+   "The left shoulder",
+   "The right shoulder",
+   "The head",
+   "The skin"
+  ],
+  "answer": 1,
+  "explanation": "The right shoulder was given to the priest as a heave offering.",
+  "ref": "Leviticus 7:32–34"
+ },
+ {
+  "id": "old-leviticus-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How soon was the thanksgiving peace offering to be eaten?",
+  "choices": [
+   "Within three days",
+   "After seven days",
+   "The same day it was offered",
+   "On the Sabbath only"
+  ],
+  "answer": 2,
+  "explanation": "The flesh of the thanksgiving offering had to be eaten on the day it was offered.",
+  "ref": "Leviticus 7:15"
+ },
+ {
+  "id": "old-leviticus-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would happen to a person who ate the fat or blood?",
+  "choices": [
+   "He paid silver only",
+   "He was cut off from his people",
+   "He fasted one day",
+   "He became a priest"
+  ],
+  "answer": 1,
+  "explanation": "Eating fat or blood brought the penalty of being cut off from the people.",
+  "ref": "Leviticus 7:25–27"
+ },
+ {
+  "id": "old-leviticus-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Moses gather at the door of the tabernacle for the consecration?",
+  "choices": [
+   "Only Aaron",
+   "The elders only",
+   "Aaron, his sons, and all the congregation",
+   "Joshua and Caleb"
+  ],
+  "answer": 2,
+  "explanation": "Moses gathered Aaron, his sons, and the congregation at the door of the tabernacle.",
+  "ref": "Leviticus 8:1–4"
+ },
+ {
+  "id": "old-leviticus-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses do to Aaron and his sons before clothing them?",
+  "choices": [
+   "Anointed them with oil",
+   "Gave them bread",
+   "Washed them with water",
+   "Sent them outside the camp"
+  ],
+  "answer": 2,
+  "explanation": "Moses washed Aaron and his sons with water first.",
+  "ref": "Leviticus 8:6"
+ },
+ {
+  "id": "old-leviticus-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was placed in the breastplate?",
+  "choices": [
+   "Stones from Sinai",
+   "The tablets of the covenant",
+   "Manna",
+   "The Urim and the Thummim"
+  ],
+  "answer": 3,
+  "explanation": "Moses put the Urim and the Thummim in the breastplate.",
+  "ref": "Leviticus 8:8"
+ },
+ {
+  "id": "old-leviticus-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the blood of the ram of consecration put on Aaron and his sons?",
+  "choices": [
+   "On the right ear, thumb, and great toe",
+   "On the forehead",
+   "On the robe only",
+   "On the left hand"
+  ],
+  "answer": 0,
+  "explanation": "Moses put the blood on the right ear, thumb, and great toe of Aaron and his sons.",
+  "ref": "Leviticus 8:23–24"
+ },
+ {
+  "id": "old-leviticus-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days were Aaron and his sons to stay at the door of the tabernacle to complete their consecration?",
+  "choices": [
+   "Three days",
+   "Ten days",
+   "Seven days",
+   "Forty days"
+  ],
+  "answer": 2,
+  "explanation": "Their consecration was completed over seven days.",
+  "ref": "Leviticus 8:33"
+ },
+ {
+  "id": "old-leviticus-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what day did Moses call Aaron, his sons, and the elders together to begin the priestly service?",
+  "choices": [
+   "The eighth day",
+   "The first day",
+   "The seventh month",
+   "The fortieth day"
+  ],
+  "answer": 0,
+  "explanation": "Moses called them together on the eighth day.",
+  "ref": "Leviticus 9:1"
+ },
+ {
+  "id": "old-leviticus-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Aaron told to offer first for himself?",
+  "choices": [
+   "A peace offering",
+   "A wave offering",
+   "A sin offering and a burnt offering",
+   "A vow offering"
+  ],
+  "answer": 2,
+  "explanation": "Aaron first had to offer a sin offering and a burnt offering for himself.",
+  "ref": "Leviticus 9:2"
+ },
+ {
+  "id": "old-leviticus-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses say would appear to the people if they obeyed the Lord's command?",
+  "choices": [
+   "A rainbow",
+   "A new law",
+   "An angelic army",
+   "The glory of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Moses told the people that the glory of the Lord would appear to them.",
+  "ref": "Leviticus 9:6"
+ },
+ {
+  "id": "old-leviticus-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What came out from before the Lord after Aaron blessed the people?",
+  "choices": [
+   "A cloud only",
+   "A voice of thunder",
+   "Fire that consumed the offering",
+   "A river of water"
+  ],
+  "answer": 2,
+  "explanation": "Fire came out from before the Lord and consumed the offering on the altar.",
+  "ref": "Leviticus 9:24"
+ },
+ {
+  "id": "old-leviticus-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people respond when they saw the fire?",
+  "choices": [
+   "They fled",
+   "They shouted and fell on their faces",
+   "They remained silent",
+   "They built another altar"
+  ],
+  "answer": 1,
+  "explanation": "The people shouted and fell on their faces in response to the Lord's fire.",
+  "ref": "Leviticus 9:24"
+ },
+ {
+  "id": "old-leviticus-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nadab and Abihu offer before the Lord?",
+  "choices": [
+   "Burnt offerings",
+   "Strange fire",
+   "Peace offerings",
+   "The morning incense commanded"
+  ],
+  "answer": 1,
+  "explanation": "They offered strange fire, which the Lord had not commanded.",
+  "ref": "Leviticus 10:1"
+ },
+ {
+  "id": "old-leviticus-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Nadab and Abihu for their disobedience?",
+  "choices": [
+   "They were removed from office",
+   "They were put outside the camp alive",
+   "Fire from the Lord devoured them",
+   "They became unclean for seven days"
+  ],
+  "answer": 2,
+  "explanation": "Fire went out from the Lord and devoured them.",
+  "ref": "Leviticus 10:2"
+ },
+ {
+  "id": "old-leviticus-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord say He would be among those who come near Him?",
+  "choices": [
+   "Sanctified",
+   "Feared only",
+   "Silent",
+   "Questioned"
+  ],
+  "answer": 0,
+  "explanation": "God said He would be sanctified in those who come near Him.",
+  "ref": "Leviticus 10:3"
+ },
+ {
+  "id": "old-leviticus-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were Aaron and his remaining sons told not to drink when going into the tabernacle?",
+  "choices": [
+   "Wine or strong drink",
+   "Milk",
+   "Water",
+   "Oil"
+  ],
+  "answer": 0,
+  "explanation": "Priests were forbidden to drink wine or strong drink when entering the tabernacle.",
+  "ref": "Leviticus 10:9"
+ },
+ {
+  "id": "old-leviticus-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Moses angry with Eleazar and Ithamar later in the chapter?",
+  "choices": [
+   "They left the camp",
+   "They drank wine",
+   "They refused to wash",
+   "They burned the sin offering instead of eating it"
+  ],
+  "answer": 3,
+  "explanation": "Moses was upset because the goat of the sin offering had been burned rather than eaten in the holy place.",
+  "ref": "Leviticus 10:16–18"
+ },
+ {
+  "id": "old-leviticus-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two features made a land animal clean to eat?",
+  "choices": [
+   "It had horns and hooves",
+   "It was male and unblemished",
+   "It lived in the field",
+   "It parted the hoof and chewed the cud"
+  ],
+  "answer": 3,
+  "explanation": "Clean land animals were to divide the hoof and chew the cud.",
+  "ref": "Leviticus 11:3"
+ },
+ {
+  "id": "old-leviticus-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was the camel considered unclean?",
+  "choices": [
+   "It had no hair",
+   "It chewed the cud but did not divide the hoof",
+   "It divided the hoof but did not chew the cud",
+   "It lived in the desert"
+  ],
+  "answer": 1,
+  "explanation": "The camel chewed the cud but did not have a parted hoof.",
+  "ref": "Leviticus 11:4"
+ },
+ {
+  "id": "old-leviticus-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What made fish clean to eat in the waters?",
+  "choices": [
+   "They had fins and scales",
+   "They were large",
+   "They lived in rivers only",
+   "They were caught by priests"
+  ],
+  "answer": 0,
+  "explanation": "Water creatures needed fins and scales to be clean.",
+  "ref": "Leviticus 11:9"
+ },
+ {
+  "id": "old-leviticus-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What general command is given at the end of the chapter?",
+  "choices": [
+   "Multiply greatly",
+   "Keep the feasts yearly",
+   "Build no more altars",
+   "Be holy, for I am holy"
+  ],
+  "answer": 3,
+  "explanation": "God called His people to holiness because He is holy.",
+  "ref": "Leviticus 11:44–45"
+ },
+ {
+  "id": "old-leviticus-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened if someone touched the carcass of an unclean animal?",
+  "choices": [
+   "He died immediately",
+   "He became unclean until the even",
+   "He was fined silver",
+   "He had to leave the land"
+  ],
+  "answer": 1,
+  "explanation": "Touching the carcass of an unclean animal made a person unclean until evening.",
+  "ref": "Leviticus 11:24–28"
+ },
+ {
+  "id": "old-leviticus-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days was a woman unclean after bearing a man child?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Fourteen days",
+   "Thirty days"
+  ],
+  "answer": 1,
+  "explanation": "After bearing a son, a woman was unclean for seven days.",
+  "ref": "Leviticus 12:2"
+ },
+ {
+  "id": "old-leviticus-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what day was the flesh of a male child to be circumcised?",
+  "choices": [
+   "First day",
+   "Seventh day",
+   "Twelfth day",
+   "Eighth day"
+  ],
+  "answer": 3,
+  "explanation": "A male child was to be circumcised on the eighth day.",
+  "ref": "Leviticus 12:3"
+ },
+ {
+  "id": "old-leviticus-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did a woman continue in the blood of her purifying after bearing a son?",
+  "choices": [
+   "Thirty-three days",
+   "Seven days",
+   "Forty days",
+   "Eighty days"
+  ],
+  "answer": 0,
+  "explanation": "After the initial seven days, she continued in purification for thirty-three more days.",
+  "ref": "Leviticus 12:4"
+ },
+ {
+  "id": "old-leviticus-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If a woman bore a maid child, how long was her separation of uncleanness?",
+  "choices": [
+   "Seven days",
+   "Thirty days",
+   "Fourteen days",
+   "Forty days"
+  ],
+  "answer": 2,
+  "explanation": "For a daughter, the period of uncleanness was fourteen days.",
+  "ref": "Leviticus 12:5"
+ },
+ {
+  "id": "old-leviticus-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What could a poorer mother bring if she could not afford a lamb for her offering?",
+  "choices": [
+   "Two turtledoves or two young pigeons",
+   "A goat and flour",
+   "Only oil",
+   "A ram"
+  ],
+  "answer": 0,
+  "explanation": "If she could not bring a lamb, she could bring two birds instead.",
+  "ref": "Leviticus 12:8"
+ },
+ {
+  "id": "old-leviticus-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who examined a person for the plague of leprosy?",
+  "choices": [
+   "The elders",
+   "The family head",
+   "The priest",
+   "The judge"
+  ],
+  "answer": 2,
+  "explanation": "Those with a suspected plague were brought to Aaron or one of his sons the priests.",
+  "ref": "Leviticus 13:2"
+ },
+ {
+  "id": "old-leviticus-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was one sign that the plague in the skin might be leprosy?",
+  "choices": [
+   "It was warm",
+   "It bled freely",
+   "The hair in the sore turned white",
+   "It smelled sweet"
+  ],
+  "answer": 2,
+  "explanation": "White hair in the plague and a deeper appearance than the skin were signs of leprosy.",
+  "ref": "Leviticus 13:3"
+ },
+ {
+  "id": "old-leviticus-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If the priest was unsure, how long might the person be shut up for observation?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Fourteen days",
+   "Thirty days"
+  ],
+  "answer": 1,
+  "explanation": "The person could be shut up for seven days and then reexamined.",
+  "ref": "Leviticus 13:4–5"
+ },
+ {
+  "id": "old-leviticus-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a leper to cry out while he was unclean?",
+  "choices": [
+   "Unclean, unclean",
+   "Mercy",
+   "Help me",
+   "Depart from me"
+  ],
+  "answer": 0,
+  "explanation": "The leper had to announce his uncleanness by crying, 'Unclean, unclean.'",
+  "ref": "Leviticus 13:45"
+ },
+ {
+  "id": "old-leviticus-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the unclean leper to dwell?",
+  "choices": [
+   "Alone outside the camp",
+   "In the holy place",
+   "With the priests",
+   "In Pharaoh's cities"
+  ],
+  "answer": 0,
+  "explanation": "The leper's dwelling was to be outside the camp.",
+  "ref": "Leviticus 13:46"
+ },
+ {
+  "id": "old-leviticus-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the priest go to look at the leper on the day of his cleansing?",
+  "choices": [
+   "Inside the holy of holies",
+   "To the city gate",
+   "Outside the camp",
+   "To the mountain"
+  ],
+  "answer": 2,
+  "explanation": "The priest went forth out of the camp to see whether the leper was healed.",
+  "ref": "Leviticus 14:3"
+ },
+ {
+  "id": "old-leviticus-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many live clean birds were used in the cleansing of a leper?",
+  "choices": [
+   "One",
+   "Two",
+   "Three",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "Two live clean birds were taken for the cleansing ceremony.",
+  "ref": "Leviticus 14:4"
+ },
+ {
+  "id": "old-leviticus-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priest command to be done with one of the two birds before the other was set free?",
+  "choices": [
+   "It was released immediately",
+   "It was burned on the altar",
+   "It was killed over running water",
+   "It was given to the poor"
+  ],
+  "answer": 2,
+  "explanation": "One bird was killed in an earthen vessel over running water.",
+  "ref": "Leviticus 14:5"
+ },
+ {
+  "id": "old-leviticus-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times was the blood sprinkled on the one to be cleansed?",
+  "choices": [
+   "Three",
+   "Five",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 2,
+  "explanation": "The priest sprinkled the blood seven times on the person to be cleansed.",
+  "ref": "Leviticus 14:7"
+ },
+ {
+  "id": "old-leviticus-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If a house plague kept spreading after stones and plaster were removed, what was to happen to the house?",
+  "choices": [
+   "It was pulled down",
+   "It was repainted",
+   "It was washed again",
+   "It was sold"
+  ],
+  "answer": 0,
+  "explanation": "A persistently plagued house was to be broken down and removed outside the city.",
+  "ref": "Leviticus 14:45"
+ },
+ {
+  "id": "old-leviticus-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did a running issue from the flesh make a man?",
+  "choices": [
+   "Unclean",
+   "Blessed",
+   "A priest",
+   "Separated forever"
+  ],
+  "answer": 0,
+  "explanation": "A bodily issue made a man ceremonially unclean.",
+  "ref": "Leviticus 15:2"
+ },
+ {
+  "id": "old-leviticus-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was true of every bed that a man with a running issue lay on?",
+  "choices": [
+   "It was holy",
+   "It had to be burned",
+   "It was given to the priest",
+   "It was unclean"
+  ],
+  "answer": 3,
+  "explanation": "Every bed on which the man with the issue lay was unclean.",
+  "ref": "Leviticus 15:4"
+ },
+ {
+  "id": "old-leviticus-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was required after an issue stopped before the person was considered clean?",
+  "choices": [
+   "One day only",
+   "Forty days",
+   "A vow of silence",
+   "Seven days of counting"
+  ],
+  "answer": 3,
+  "explanation": "The healed person was to count seven days for purification.",
+  "ref": "Leviticus 15:13"
+ },
+ {
+  "id": "old-leviticus-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What offering was brought on the eighth day after cleansing from an issue?",
+  "choices": [
+   "Two turtledoves or two young pigeons",
+   "A bullock and ram",
+   "Fine flour only",
+   "A peace offering"
+  ],
+  "answer": 0,
+  "explanation": "Two birds were offered for cleansing from a bodily issue.",
+  "ref": "Leviticus 15:14–15"
+ },
+ {
+  "id": "old-leviticus-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were the children of Israel to be separated from their uncleanness?",
+  "choices": [
+   "To become wealthy",
+   "So they would not die in their uncleanness by defiling God's tabernacle",
+   "To impress the nations",
+   "To win battles"
+  ],
+  "answer": 1,
+  "explanation": "Uncleanness could defile the tabernacle and bring death, so separation was necessary.",
+  "ref": "Leviticus 15:31"
+ },
+ {
+  "id": "old-leviticus-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After whose death did the Lord speak to Moses about entering the holy place?",
+  "choices": [
+   "Eleazar and Ithamar",
+   "Miriam and Aaron",
+   "Korah and Dathan",
+   "Nadab and Abihu"
+  ],
+  "answer": 3,
+  "explanation": "The instructions came after the death of Nadab and Abihu.",
+  "ref": "Leviticus 16:1"
+ },
+ {
+  "id": "old-leviticus-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How often was Aaron allowed to enter the holy place within the veil?",
+  "choices": [
+   "Every day",
+   "Every Sabbath",
+   "Once a year",
+   "At each new moon"
+  ],
+  "answer": 2,
+  "explanation": "The Day of Atonement entrance into the most holy place was once each year.",
+  "ref": "Leviticus 16:2"
+ },
+ {
+  "id": "old-leviticus-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many goats were taken from the congregation for the sin offering?",
+  "choices": [
+   "One",
+   "Two",
+   "Three",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "Two kids of the goats were taken for a sin offering.",
+  "ref": "Leviticus 16:5"
+ },
+ {
+  "id": "old-leviticus-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was done with the live goat after Aaron confessed Israel's sins over it?",
+  "choices": [
+   "It was burned on the altar",
+   "It was sent away into the wilderness",
+   "It was eaten by the priests",
+   "It was kept in the camp"
+  ],
+  "answer": 1,
+  "explanation": "The scapegoat bore the sins away into a land not inhabited.",
+  "ref": "Leviticus 16:21–22"
+ },
+ {
+  "id": "old-leviticus-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the people commanded to do on the Day of Atonement?",
+  "choices": [
+   "Eat a feast",
+   "March around the camp",
+   "Afflict their souls",
+   "Bring leavened bread"
+  ],
+  "answer": 2,
+  "explanation": "The people were to afflict their souls and do no work on that day.",
+  "ref": "Leviticus 16:29–31"
+ },
+ {
+  "id": "old-leviticus-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were Israelites to bring their animal sacrifices?",
+  "choices": [
+   "Anywhere in the land",
+   "To the door of the tabernacle",
+   "Only on mountains",
+   "At their family tents"
+  ],
+  "answer": 1,
+  "explanation": "Sacrifices were to be brought to the door of the tabernacle unto the priest.",
+  "ref": "Leviticus 17:3–5"
+ },
+ {
+  "id": "old-leviticus-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the people warned not to sacrifice to anymore?",
+  "choices": [
+   "Kings",
+   "The stars",
+   "Their fathers",
+   "Devils"
+  ],
+  "answer": 3,
+  "explanation": "Israel was forbidden to offer sacrifices to devils anymore.",
+  "ref": "Leviticus 17:7"
+ },
+ {
+  "id": "old-leviticus-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was eating blood forbidden?",
+  "choices": [
+   "The life of the flesh is in the blood",
+   "It was expensive",
+   "It was an Egyptian custom",
+   "Only priests liked it"
+  ],
+  "answer": 0,
+  "explanation": "Blood was reserved because the life is in it and it was given for atonement.",
+  "ref": "Leviticus 17:11"
+ },
+ {
+  "id": "old-leviticus-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a hunter to do with the blood of an animal or bird taken in hunting?",
+  "choices": [
+   "Pour it out and cover it with dust",
+   "Drink it",
+   "Burn it with fire",
+   "Bring it to the priest only"
+  ],
+  "answer": 0,
+  "explanation": "The blood was to be poured out and covered with dust.",
+  "ref": "Leviticus 17:13"
+ },
+ {
+  "id": "old-leviticus-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to a person who ate blood?",
+  "choices": [
+   "He became a priest",
+   "He paid one shekel",
+   "Nothing happened",
+   "God would set His face against that soul"
+  ],
+  "answer": 3,
+  "explanation": "The Lord said He would set His face against the soul that ate blood.",
+  "ref": "Leviticus 17:10"
+ },
+ {
+  "id": "old-leviticus-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose customs were Israel told not to follow?",
+  "choices": [
+   "Only Egypt's",
+   "Moab's only",
+   "Babylon's only",
+   "Egypt's and Canaan's"
+  ],
+  "answer": 3,
+  "explanation": "Israel was warned against following the doings of Egypt and Canaan.",
+  "ref": "Leviticus 18:3"
+ },
+ {
+  "id": "old-leviticus-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord say about His judgments and statutes?",
+  "choices": [
+   "A man shall live in them",
+   "They were optional",
+   "They were for priests only",
+   "They ended in the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "Keeping God's statutes and judgments is tied to life.",
+  "ref": "Leviticus 18:5"
+ },
+ {
+  "id": "old-leviticus-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated phrase introduces many forbidden sexual relationships in the chapter?",
+  "choices": [
+   "Thou shalt not uncover the nakedness of...",
+   "Thou shalt not steal",
+   "Remember the Sabbath",
+   "Bring a ram"
+  ],
+  "answer": 0,
+  "explanation": "The chapter repeatedly says not to uncover the nakedness of close relations.",
+  "ref": "Leviticus 18:7–17"
+ },
+ {
+  "id": "old-leviticus-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What child sacrifice practice is specifically forbidden?",
+  "choices": [
+   "Offering to Molech",
+   "Burning incense to Baal",
+   "Pouring blood in the field",
+   "Sacrificing firstfruits"
+  ],
+  "answer": 0,
+  "explanation": "Israel was forbidden to let any of their seed pass through the fire to Molech.",
+  "ref": "Leviticus 18:21"
+ },
+ {
+  "id": "old-leviticus-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the land vomit out the nations before Israel?",
+  "choices": [
+   "Because of abominations that defiled it",
+   "Because of famine",
+   "Because of war",
+   "Because of drought"
+  ],
+  "answer": 0,
+  "explanation": "The land was defiled by the abominations of the nations and therefore vomited them out.",
+  "ref": "Leviticus 18:24–28"
+ },
+ {
+  "id": "old-leviticus-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What reason does God give for Israel to be holy?",
+  "choices": [
+   "They were numerous",
+   "They had the tabernacle",
+   "I the Lord your God am holy",
+   "They were stronger than nations"
+  ],
+  "answer": 2,
+  "explanation": "God's holiness is the basis for Israel's call to holiness.",
+  "ref": "Leviticus 19:2"
+ },
+ {
+  "id": "old-leviticus-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command is paired near the start with fearing mother and father?",
+  "choices": [
+   "Build altars",
+   "Offer incense daily",
+   "Conquer Canaan",
+   "Keep my sabbaths"
+  ],
+  "answer": 3,
+  "explanation": "The verse pairs reverence for parents with keeping God's Sabbaths.",
+  "ref": "Leviticus 19:3"
+ },
+ {
+  "id": "old-leviticus-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the people to leave in the corners of their fields?",
+  "choices": [
+   "Altars",
+   "Boundaries only",
+   "Gleanings for the poor and stranger",
+   "Every tenth sheaf"
+  ],
+  "answer": 2,
+  "explanation": "Israel was to leave the corners and gleanings for the poor and the stranger.",
+  "ref": "Leviticus 19:9–10"
+ },
+ {
+  "id": "old-leviticus-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the chapter summarize the attitude Israel should have toward a neighbor?",
+  "choices": [
+   "Compete with him",
+   "Love thy neighbour as thyself",
+   "Judge him daily",
+   "Avoid him"
+  ],
+  "answer": 1,
+  "explanation": "The famous command is to love one's neighbor as oneself.",
+  "ref": "Leviticus 19:18"
+ },
+ {
+  "id": "old-leviticus-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were strangers to be treated in the land?",
+  "choices": [
+   "As servants only",
+   "As temporary guests without rights",
+   "As one born among them",
+   "As enemies"
+  ],
+  "answer": 2,
+  "explanation": "The stranger was to be as one born among them, and Israel was to love him, because they had been strangers in Egypt.",
+  "ref": "Leviticus 19:33–34"
+ },
+ {
+  "id": "old-leviticus-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What punishment is named for giving one's seed to Molech?",
+  "choices": [
+   "A warning",
+   "Stoning",
+   "A fine",
+   "Exile to Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Those who gave their children to Molech were to be put to death by stoning.",
+  "ref": "Leviticus 20:2"
+ },
+ {
+  "id": "old-leviticus-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say He would do if the people hid their eyes from a Molech offender?",
+  "choices": [
+   "Nothing",
+   "Forgive immediately",
+   "Set His face against that man and his family",
+   "Send more priests"
+  ],
+  "answer": 2,
+  "explanation": "If the people ignored the sin, God Himself would set His face against the offender.",
+  "ref": "Leviticus 20:4–5"
+ },
+ {
+  "id": "old-leviticus-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command is repeated as the proper response to God's holiness?",
+  "choices": [
+   "Make more sacrifices",
+   "March around the camp",
+   "Take Egypt's wealth",
+   "Sanctify yourselves and be holy"
+  ],
+  "answer": 3,
+  "explanation": "God again commands His people to sanctify themselves and be holy.",
+  "ref": "Leviticus 20:7"
+ },
+ {
+  "id": "old-leviticus-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel told not to do with the customs of the nations God cast out before them?",
+  "choices": [
+   "Study them",
+   "Walk in them",
+   "Trade with them",
+   "Write them down"
+  ],
+  "answer": 1,
+  "explanation": "Israel was not to walk in the manners of the nations cast out before them.",
+  "ref": "Leviticus 20:23"
+ },
+ {
+  "id": "old-leviticus-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why had God separated Israel from other people?",
+  "choices": [
+   "That they should be His",
+   "To make them famous",
+   "To give them Egypt",
+   "To end all sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "God says He severed Israel from other people that they should be His.",
+  "ref": "Leviticus 20:26"
+ },
+ {
+  "id": "old-leviticus-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whom are the opening commands of Leviticus 21 specifically given?",
+  "choices": [
+   "The priests, the sons of Aaron",
+   "All Israel",
+   "The Levites only",
+   "The rulers"
+  ],
+  "answer": 0,
+  "explanation": "The chapter begins with commands directed to the priests, Aaron's sons.",
+  "ref": "Leviticus 21:1"
+ },
+ {
+  "id": "old-leviticus-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For which close relatives could a priest be defiled when they died?",
+  "choices": [
+   "A distant cousin",
+   "A foreign king",
+   "Anyone in the camp",
+   "His mother, father, son, daughter, brother, or unmarried sister"
+  ],
+  "answer": 3,
+  "explanation": "Priests could be defiled for certain close family members.",
+  "ref": "Leviticus 21:2–3"
+ },
+ {
+  "id": "old-leviticus-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of wife was the high priest required to take?",
+  "choices": [
+   "Any woman of Israel",
+   "A virgin of his own people",
+   "A widow from another tribe",
+   "A foreign princess"
+  ],
+  "answer": 1,
+  "explanation": "The high priest was required to marry a virgin of his own people.",
+  "ref": "Leviticus 21:13–14"
+ },
+ {
+  "id": "old-leviticus-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What physical condition could disqualify a priest from offering the bread of his God?",
+  "choices": [
+   "Old age",
+   "Left-handedness",
+   "A blemish",
+   "Poverty"
+  ],
+  "answer": 2,
+  "explanation": "A priest with a blemish could not approach to offer the bread of his God.",
+  "ref": "Leviticus 21:17–21"
+ },
+ {
+  "id": "old-leviticus-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Could a priest with a blemish still eat the bread of his God?",
+  "choices": [
+   "No",
+   "Only once a year",
+   "Yes",
+   "Only outside the camp"
+  ],
+  "answer": 2,
+  "explanation": "Though he could not serve at the altar, he could still eat the holy bread.",
+  "ref": "Leviticus 21:22"
+ },
+ {
+  "id": "old-leviticus-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the priests to avoid doing with the holy things of Israel?",
+  "choices": [
+   "Counting them",
+   "Storing them",
+   "Naming them",
+   "Profaning them"
+  ],
+  "answer": 3,
+  "explanation": "The priests were to separate themselves from the holy things lest they profane God's holy name.",
+  "ref": "Leviticus 22:2"
+ },
+ {
+  "id": "old-leviticus-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would happen to a priest who went unto the holy things while he was unclean?",
+  "choices": [
+   "He paid a fine",
+   "He fasted a day",
+   "He lost his garments",
+   "That soul would be cut off from God's presence"
+  ],
+  "answer": 3,
+  "explanation": "An unclean priest who approached holy things would be cut off from before the Lord.",
+  "ref": "Leviticus 22:3"
+ },
+ {
+  "id": "old-leviticus-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who among the priest's household could eat of his meat?",
+  "choices": [
+   "Only male children",
+   "Only his wife",
+   "Only visiting Levites",
+   "Those born in his house or bought with his money"
+  ],
+  "answer": 3,
+  "explanation": "Those born in the priest's house or bought with his money could eat of his food.",
+  "ref": "Leviticus 22:11"
+ },
+ {
+  "id": "old-leviticus-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What quality had to mark an offering to be accepted for a vow or freewill offering?",
+  "choices": [
+   "It had to be without blemish",
+   "It had to be old",
+   "It had to be female",
+   "It had to be from a foreign herd"
+  ],
+  "answer": 0,
+  "explanation": "Offerings had to be perfect to be accepted.",
+  "ref": "Leviticus 22:21"
+ },
+ {
+  "id": "old-leviticus-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old did an ox, sheep, or goat have to be before it could be offered?",
+  "choices": [
+   "Eight days old or more",
+   "Seven days old",
+   "One month old",
+   "One year old exactly"
+  ],
+  "answer": 0,
+  "explanation": "After seven days with its dam, from the eighth day onward it could be accepted for an offering.",
+  "ref": "Leviticus 22:27"
+ },
+ {
+  "id": "old-leviticus-23-1",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What regular holy convocation is listed before the yearly feasts?",
+  "choices": [
+   "The Sabbath",
+   "Passover",
+   "The new moon",
+   "Pentecost"
+  ],
+  "answer": 0,
+  "explanation": "The weekly Sabbath is presented first among the appointed times of the Lord.",
+  "ref": "Leviticus 23:3"
+ },
+ {
+  "id": "old-leviticus-23-2",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what month and day is the Lord's Passover?",
+  "choices": [
+   "First month, fourteenth day at even",
+   "Seventh month, first day",
+   "Third month, fiftieth day",
+   "First month, first day"
+  ],
+  "answer": 0,
+  "explanation": "The Passover is on the fourteenth day of the first month at even.",
+  "ref": "Leviticus 23:5"
+ },
+ {
+  "id": "old-leviticus-23-3",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What feast begins on the fifteenth day of the first month?",
+  "choices": [
+   "Feast of Trumpets",
+   "Feast of Tabernacles",
+   "Feast of Unleavened Bread",
+   "Day of Atonement"
+  ],
+  "answer": 2,
+  "explanation": "The Feast of Unleavened Bread begins the day after Passover.",
+  "ref": "Leviticus 23:6"
+ },
+ {
+  "id": "old-leviticus-23-4",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days after the wave sheaf were the people to count for the new meat offering?",
+  "choices": [
+   "Seven",
+   "Forty",
+   "Seventy",
+   "Fifty"
+  ],
+  "answer": 3,
+  "explanation": "They were to count fifty days to the offering associated with weeks.",
+  "ref": "Leviticus 23:15–16"
+ },
+ {
+  "id": "old-leviticus-23-5",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what day of the seventh month is the Day of Atonement?",
+  "choices": [
+   "First day",
+   "Tenth day",
+   "Fifteenth day",
+   "Twenty-third day"
+  ],
+  "answer": 1,
+  "explanation": "The Day of Atonement falls on the tenth day of the seventh month.",
+  "ref": "Leviticus 23:27"
+ },
+ {
+  "id": "old-leviticus-24-1",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of oil were the children of Israel to bring for the lamp?",
+  "choices": [
+   "Sesame oil",
+   "Animal fat",
+   "Pure oil olive beaten",
+   "Spiced oil"
+  ],
+  "answer": 2,
+  "explanation": "Pure olive oil beaten was required to keep the lamps burning continually.",
+  "ref": "Leviticus 24:2"
+ },
+ {
+  "id": "old-leviticus-24-2",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many cakes of shewbread were set in order on the pure table?",
+  "choices": [
+   "Six",
+   "Ten",
+   "Twenty-four",
+   "Twelve"
+  ],
+  "answer": 3,
+  "explanation": "Twelve cakes were arranged in two rows on the table before the Lord.",
+  "ref": "Leviticus 24:5–6"
+ },
+ {
+  "id": "old-leviticus-24-3",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was allowed to eat the shewbread in the holy place?",
+  "choices": [
+   "Aaron and his sons",
+   "Any Levite",
+   "Only the high priest",
+   "The whole congregation"
+  ],
+  "answer": 0,
+  "explanation": "The shewbread belonged to Aaron and his sons and was eaten in the holy place.",
+  "ref": "Leviticus 24:9"
+ },
+ {
+  "id": "old-leviticus-24-4",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sin led to the judgment case later in the chapter?",
+  "choices": [
+   "Blaspheming the name of the Lord",
+   "Theft",
+   "Breaking the Sabbath",
+   "Offering strange fire"
+  ],
+  "answer": 0,
+  "explanation": "The son of the Israelitish woman blasphemed the name of the Lord and cursed.",
+  "ref": "Leviticus 24:11"
+ },
+ {
+  "id": "old-leviticus-24-5",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What principle of justice is repeated in this chapter?",
+  "choices": [
+   "A tithe for a tithe",
+   "Eye for eye, tooth for tooth",
+   "Seven times over",
+   "Mercy instead of judgment"
+  ],
+  "answer": 1,
+  "explanation": "The chapter repeats the principle of proportionate justice: breach for breach, eye for eye, tooth for tooth.",
+  "ref": "Leviticus 24:19–20"
+ },
+ {
+  "id": "old-leviticus-25-1",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How often was the land to keep a sabbath unto the Lord?",
+  "choices": [
+   "Every seventh year",
+   "Every third year",
+   "Every tenth year",
+   "Every fiftieth year only"
+  ],
+  "answer": 0,
+  "explanation": "The seventh year was to be a sabbath of rest for the land.",
+  "ref": "Leviticus 25:4"
+ },
+ {
+  "id": "old-leviticus-25-2",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After how many sabbath years was the Jubilee proclaimed?",
+  "choices": [
+   "After seven sabbaths of years",
+   "After one",
+   "After ten sabbaths of years",
+   "After forty years exactly"
+  ],
+  "answer": 0,
+  "explanation": "Seven sabbaths of years, or forty-nine years, were counted before the Jubilee.",
+  "ref": "Leviticus 25:8"
+ },
+ {
+  "id": "old-leviticus-25-3",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What instrument announced the Jubilee in the seventh month?",
+  "choices": [
+   "A silver trumpet",
+   "A harp",
+   "The trumpet of jubilee",
+   "A cymbal"
+  ],
+  "answer": 2,
+  "explanation": "The Jubilee was proclaimed with the sound of the trumpet on the Day of Atonement.",
+  "ref": "Leviticus 25:9"
+ },
+ {
+  "id": "old-leviticus-25-4",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What liberty was proclaimed in the Year of Jubilee?",
+  "choices": [
+   "Freedom only for priests",
+   "End of all sacrifice",
+   "Return of every man to his possession and family",
+   "Permanent sale of land"
+  ],
+  "answer": 2,
+  "explanation": "The Jubilee restored people to their family holdings and freedom.",
+  "ref": "Leviticus 25:10"
+ },
+ {
+  "id": "old-leviticus-25-5",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why could the land not be sold forever?",
+  "choices": [
+   "Because the priests owned it",
+   "Because Egypt might take it",
+   "Because it was cursed",
+   "Because the land is the Lord's"
+  ],
+  "answer": 3,
+  "explanation": "The land belonged to the Lord, and Israel lived as strangers and sojourners with Him.",
+  "ref": "Leviticus 25:23"
+ },
+ {
+  "id": "old-leviticus-26-1",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two idol-related practices are forbidden at the start of the chapter?",
+  "choices": [
+   "False prophecy and witchcraft",
+   "Offering incense and feasting",
+   "Making idols and setting up graven images",
+   "Building houses and planting vineyards"
+  ],
+  "answer": 2,
+  "explanation": "Israel was forbidden to make idols, graven images, or standing images.",
+  "ref": "Leviticus 26:1"
+ },
+ {
+  "id": "old-leviticus-26-2",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two positive commands immediately follow the warning against idols?",
+  "choices": [
+   "Keep my sabbaths and reverence my sanctuary",
+   "Pray and fast",
+   "Conquer Canaan and tithe",
+   "Build the temple and appoint judges"
+  ],
+  "answer": 0,
+  "explanation": "God pairs Sabbath observance with reverence for His sanctuary.",
+  "ref": "Leviticus 26:2"
+ },
+ {
+  "id": "old-leviticus-26-3",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What blessing is promised if Israel walks in God's statutes?",
+  "choices": [
+   "Rain in due season",
+   "No enemies at all",
+   "Never leaving the wilderness",
+   "A king immediately"
+  ],
+  "answer": 0,
+  "explanation": "Rain in due season is one of the first blessings promised for obedience.",
+  "ref": "Leviticus 26:3–4"
+ },
+ {
+  "id": "old-leviticus-26-4",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does God describe His intensified judgment if Israel will not be corrected?",
+  "choices": [
+   "Seven times more for your sins",
+   "Ten times more",
+   "Until the next feast",
+   "For one generation only"
+  ],
+  "answer": 0,
+  "explanation": "The chapter repeatedly warns of punishment seven times more if they remain stubborn.",
+  "ref": "Leviticus 26:18"
+ },
+ {
+  "id": "old-leviticus-26-5",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If Israel confessed their iniquity in exile, what did God promise to remember?",
+  "choices": [
+   "His covenant with Jacob, Isaac, and Abraham",
+   "Egypt",
+   "Their kings",
+   "The tabernacle furniture"
+  ],
+  "answer": 0,
+  "explanation": "God promised to remember His covenant if they confessed their iniquity.",
+  "ref": "Leviticus 26:40–42"
+ },
+ {
+  "id": "old-leviticus-27-1",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What subject opens the final chapter of Leviticus?",
+  "choices": [
+   "The feasts",
+   "The Day of Atonement",
+   "Singular vows",
+   "Clean and unclean foods"
+  ],
+  "answer": 2,
+  "explanation": "The chapter begins with valuations connected to vows.",
+  "ref": "Leviticus 27:2"
+ },
+ {
+  "id": "old-leviticus-27-2",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had to be added if someone redeemed a dedicated thing or tithe?",
+  "choices": [
+   "One tenth",
+   "Two fifths",
+   "One fifth",
+   "Seven shekels"
+  ],
+  "answer": 2,
+  "explanation": "If a person redeemed it, he had to add a fifth part to its valuation.",
+  "ref": "Leviticus 27:13"
+ },
+ {
+  "id": "old-leviticus-27-3",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Could the firstling of a beast, which already belonged to the Lord, be specially sanctified by man?",
+  "choices": [
+   "Yes",
+   "Only on feast days",
+   "No",
+   "Only by priests"
+  ],
+  "answer": 2,
+  "explanation": "The firstling already belonged to the Lord and could not be specially vowed as though it did not.",
+  "ref": "Leviticus 27:26"
+ },
+ {
+  "id": "old-leviticus-27-4",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What portion of the land's seed and the fruit of the tree is declared the Lord's?",
+  "choices": [
+   "A fifth",
+   "Half",
+   "All of it",
+   "A tenth"
+  ],
+  "answer": 3,
+  "explanation": "The tithe, or tenth, of the land belonged to the Lord.",
+  "ref": "Leviticus 27:30"
+ },
+ {
+  "id": "old-leviticus-27-5",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were these commandments given to Moses for the children of Israel?",
+  "choices": [
+   "In mount Sinai",
+   "At Kadesh",
+   "At Shiloh",
+   "In the plains of Moab"
+  ],
+  "answer": 0,
+  "explanation": "The book closes by saying these commandments were given in Mount Sinai.",
+  "ref": "Leviticus 27:34"
+ }
+]

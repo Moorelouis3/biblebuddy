@@ -53,7 +53,7 @@ export function ReviewList({
 
               <div className="min-w-0 flex-1">
                 <div className="text-[11px] font-black uppercase tracking-[0.12em] opacity-60">
-                  {c.tiebreak ? "Tiebreaker" : `Question ${i + 1}`} · Genesis {c.quiz.chapter}
+                  {c.tiebreak ? "Tiebreaker" : `Question ${i + 1}`} · {c.quiz.ref?.book ?? "Genesis"} {c.quiz.chapter}
                 </div>
                 <div className="bb-clue-serif text-[17px] font-bold leading-snug">{c.quiz.question}</div>
                 {youId ? <div className="text-[12px] font-black" style={{ color }}>{result}</div> : null}
@@ -162,10 +162,10 @@ export default function ClueResults({
           </div>
         )}
         {wantMore ? (
-          <p className="mt-2 text-[13px] font-bold">Noted. More books are on the way.</p>
+          <p className="mt-2 text-[13px] font-bold">Noted. More questions are being written.</p>
         ) : (
           <button type="button" className="mt-2 text-[13px] font-bold underline" onClick={() => { setWantMore(true); trackClue("clue_game_feedback", { mode, want_more_decks: true }); }}>
-            I want more books like this
+            I want more questions like this
           </button>
         )}
       </div>

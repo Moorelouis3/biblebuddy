@@ -442,7 +442,7 @@ export const POPUP_CATALOG: PopupDefinition[] = [
     headlineAccent: "stick?",
     description: "Trivia is a quick way to check you followed what you read. It is not a test you have to pass.",
     cardTitle: "Bible Trivia",
-    cardLine: "Questions on Bible stories, chapters and topics.",
+    cardLine: "Any book or chapter, Easy, Medium or Hard.",
     cardIcon: "🎯",
     preview: "trivia",
     steps: [
@@ -450,7 +450,7 @@ export const POPUP_CATALOG: PopupDefinition[] = [
       { title: "Check your understanding", detail: "See what you remember and what to read again." },
       { title: "Learn something new", detail: "A question can show you something you missed." },
     ],
-    cta: { label: "Play Bible Trivia", href: "/bible-trivia" },
+    cta: { label: "Play Bible Trivia", href: "/bible-study-games/clue" },
     ctaInSection: "Got it",
     footnote: "Find this again in Tips",
     usedWhen: ["trivia_chapter_completed"],

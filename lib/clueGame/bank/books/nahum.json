@@ -1,0 +1,242 @@
+[
+ {
+  "id": "old-nahum-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Against which city is Nahum's burden directed?",
+  "choices": [
+   "Nineveh",
+   "Babylon",
+   "Jerusalem",
+   "Samaria"
+  ],
+  "answer": 0,
+  "explanation": "Nahum's prophecy is specifically a burden against Nineveh.",
+  "ref": "Nahum 1:1"
+ },
+ {
+  "id": "old-nahum-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the Lord described?",
+  "choices": [
+   "Silent and distant",
+   "Weak and patient only",
+   "Fearful before nations",
+   "Jealous and avenging"
+  ],
+  "answer": 3,
+  "explanation": "Nahum emphasizes that the Lord is jealous and avenges evil.",
+  "ref": "Nahum 1:2"
+ },
+ {
+  "id": "old-nahum-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What balance about God's character is stated?",
+  "choices": [
+   "He is quick to anger and leaves the guilty unpunished",
+   "He never judges",
+   "He only blesses Judah",
+   "He is slow to anger and will not acquit the wicked"
+  ],
+  "answer": 3,
+  "explanation": "God is patient, yet His justice against the guilty is certain.",
+  "ref": "Nahum 1:3"
+ },
+ {
+  "id": "old-nahum-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the Lord described toward those who trust Him?",
+  "choices": [
+   "A consuming fire only",
+   "A distant judge",
+   "A hidden king",
+   "A stronghold in the day of trouble"
+  ],
+  "answer": 3,
+  "explanation": "Though terrible to His enemies, the Lord is a refuge for His people.",
+  "ref": "Nahum 1:7"
+ },
+ {
+  "id": "old-nahum-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What good news is announced to Judah?",
+  "choices": [
+   "The wicked will no more pass through Judah",
+   "Assyria will be crowned",
+   "Nineveh will remain forever",
+   "Judah must flee to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "A messenger brings good tidings and publishes peace: the wicked shall no more pass through Judah, for he is utterly cut off.",
+  "ref": "Nahum 1:15"
+ },
+ {
+  "id": "old-nahum-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Nineveh told to do as the attacker approaches?",
+  "choices": [
+   "Flee to Egypt",
+   "Offer sacrifices",
+   "Send gifts to Judah",
+   "Keep the fortress and watch the way"
+  ],
+  "answer": 3,
+  "explanation": "The city is ironically told to strengthen itself even though its fall is certain.",
+  "ref": "Nahum 2:1"
+ },
+ {
+  "id": "old-nahum-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What color imagery marks the attackers?",
+  "choices": [
+   "Blue shields and white garments",
+   "Red shields and scarlet soldiers",
+   "Black horses and gold armor",
+   "Green banners and silver chariots"
+  ],
+  "answer": 1,
+  "explanation": "The attackers are pictured with red shields and men clothed in scarlet.",
+  "ref": "Nahum 2:3"
+ },
+ {
+  "id": "old-nahum-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are the chariots described in the streets?",
+  "choices": [
+   "Still and silent",
+   "Hidden in the gates",
+   "Broken and abandoned",
+   "Raging and rushing like torches"
+  ],
+  "answer": 3,
+  "explanation": "Nahum paints the city's destruction with vivid, fast-moving battle imagery.",
+  "ref": "Nahum 2:4"
+ },
+ {
+  "id": "old-nahum-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What spoil is taken from Nineveh?",
+  "choices": [
+   "Prophets and priests",
+   "Altars and sacrifices",
+   "Horses and camels",
+   "Silver and gold"
+  ],
+  "answer": 3,
+  "explanation": "The once-rich city is plundered of its treasure.",
+  "ref": "Nahum 2:9"
+ },
+ {
+  "id": "old-nahum-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal image is used for Nineveh?",
+  "choices": [
+   "A bear",
+   "A serpent's nest",
+   "A ravenous wolf",
+   "A lion's den"
+  ],
+  "answer": 3,
+  "explanation": "Nineveh is compared to a lion's den that will now be destroyed by the Lord.",
+  "ref": "Nahum 2:11–13"
+ },
+ {
+  "id": "old-nahum-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Nineveh described at the start of the chapter?",
+  "choices": [
+   "A faithful city",
+   "The bloody city",
+   "The city of peace",
+   "The holy mountain"
+  ],
+  "answer": 1,
+  "explanation": "Nahum calls Nineveh the bloody city because of its violence and cruelty.",
+  "ref": "Nahum 3:1"
+ },
+ {
+  "id": "old-nahum-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What battle sounds fill the chapter?",
+  "choices": [
+   "Songs and trumpets of worship",
+   "Rain and thunder only",
+   "Silence before dawn",
+   "Whips, rattling wheels, and galloping horses"
+  ],
+  "answer": 3,
+  "explanation": "The verse piles up noisy battle imagery to portray Nineveh's collapse.",
+  "ref": "Nahum 3:2"
+ },
+ {
+  "id": "old-nahum-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For what seductive sin is Nineveh condemned?",
+  "choices": [
+   "Famine",
+   "Sabbath breaking",
+   "Whoredoms and witchcrafts",
+   "Cowardice"
+  ],
+  "answer": 2,
+  "explanation": "Nineveh is condemned for seductive, deceitful domination over nations.",
+  "ref": "Nahum 3:4"
+ },
+ {
+  "id": "old-nahum-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which earlier city is given as an example that Nineveh could not surpass?",
+  "choices": [
+   "Populous No",
+   "Jerusalem",
+   "Damascus",
+   "Babylon"
+  ],
+  "answer": 0,
+  "explanation": "Nahum points to populous No, a strong city among the rivers that was still carried away into captivity.",
+  "ref": "Nahum 3:8"
+ },
+ {
+  "id": "old-nahum-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What final verdict is spoken over Nineveh?",
+  "choices": [
+   "There is peace for your wound",
+   "Your throne shall endure",
+   "There is no healing of thy bruise",
+   "Your enemies shall fear you"
+  ],
+  "answer": 2,
+  "explanation": "The book ends by declaring Nineveh's wound incurable and its ruin final.",
+  "ref": "Nahum 3:19"
+ }
+]

@@ -1,0 +1,2322 @@
+[
+ {
+  "id": "old-1-chronicles-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With whom does the genealogy of 1 Chronicles begin?",
+  "choices": [
+   "Noah",
+   "Adam",
+   "Abraham",
+   "Seth"
+  ],
+  "answer": 1,
+  "explanation": "The chronicler starts at the very beginning with Adam.",
+  "ref": "1 Chronicles 1:1"
+ },
+ {
+  "id": "old-1-chronicles-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which three sons of Noah are listed in this chapter?",
+  "choices": [
+   "Abel, Seth, Cain",
+   "Shem, Ham, and Japheth",
+   "Isaac, Ishmael, Jacob",
+   "Perez, Hezron, Carmi"
+  ],
+  "answer": 1,
+  "explanation": "The genealogy moves from Adam down through Noah's sons.",
+  "ref": "1 Chronicles 1:4"
+ },
+ {
+  "id": "old-1-chronicles-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two sons of Abraham are named in the genealogy?",
+  "choices": [
+   "Jacob and Esau",
+   "Joseph and Benjamin",
+   "Isaac and Ishmael",
+   "Moses and Aaron"
+  ],
+  "answer": 2,
+  "explanation": "Abraham's line is traced through Isaac and Ishmael.",
+  "ref": "1 Chronicles 1:28"
+ },
+ {
+  "id": "old-1-chronicles-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What nation is emphasized through the genealogy of Esau in this chapter?",
+  "choices": [
+   "Egypt",
+   "Moab",
+   "Assyria",
+   "Edom"
+  ],
+  "answer": 3,
+  "explanation": "The descendants of Esau are listed as the chiefs of Edom.",
+  "ref": "1 Chronicles 1:35–54"
+ },
+ {
+  "id": "old-1-chronicles-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "According to this chapter, what happened in the days of Peleg?",
+  "choices": [
+   "A great flood came",
+   "A tower was built",
+   "The earth was divided",
+   "A famine struck"
+  ],
+  "answer": 2,
+  "explanation": "Eber named one son Peleg, because in his days the earth was divided.",
+  "ref": "1 Chronicles 1:19"
+ },
+ {
+  "id": "old-1-chronicles-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose twelve sons are named at the beginning of the chapter?",
+  "choices": [
+   "Abraham's",
+   "Esau's",
+   "Moses'",
+   "Israel's"
+  ],
+  "answer": 3,
+  "explanation": "The chapter begins with the sons of Israel, from Reuben to Asher.",
+  "ref": "1 Chronicles 2:1–2"
+ },
+ {
+  "id": "old-1-chronicles-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe receives special attention in this chapter's genealogy?",
+  "choices": [
+   "Benjamin",
+   "Judah",
+   "Levi",
+   "Dan"
+  ],
+  "answer": 1,
+  "explanation": "The chapter focuses heavily on Judah's line.",
+  "ref": "1 Chronicles 2:1"
+ },
+ {
+  "id": "old-1-chronicles-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named as the father of Jesse?",
+  "choices": [
+   "Obed",
+   "Nahshon",
+   "Boaz",
+   "Perez"
+  ],
+  "answer": 0,
+  "explanation": "Obed begat Jesse in the genealogy leading to David.",
+  "ref": "1 Chronicles 2:12"
+ },
+ {
+  "id": "old-1-chronicles-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which famous king appears at the end of Jesse's line in this chapter?",
+  "choices": [
+   "David",
+   "Saul",
+   "Solomon",
+   "Rehoboam"
+  ],
+  "answer": 0,
+  "explanation": "David is the key destination of this genealogical line.",
+  "ref": "1 Chronicles 2:15"
+ },
+ {
+  "id": "old-1-chronicles-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which son of Judah is linked with the line that leads to David?",
+  "choices": [
+   "Er",
+   "Pharez",
+   "Shelah",
+   "Zerah"
+  ],
+  "answer": 1,
+  "explanation": "The line runs from Pharez through Hezron and Ram down to David.",
+  "ref": "1 Chronicles 2:4–5"
+ },
+ {
+  "id": "old-1-chronicles-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "In what city were David's first sons listed in this chapter born?",
+  "choices": [
+   "Jerusalem",
+   "Hebron",
+   "Bethlehem",
+   "Shiloh"
+  ],
+  "answer": 1,
+  "explanation": "The first group of David's sons were born in Hebron.",
+  "ref": "1 Chronicles 3:1–4"
+ },
+ {
+  "id": "old-1-chronicles-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which son of David and Bath-shua is named among those born in Jerusalem?",
+  "choices": [
+   "Absalom",
+   "Amnon",
+   "Solomon",
+   "Adonijah"
+  ],
+  "answer": 2,
+  "explanation": "Solomon is listed among the four sons Bath-shua bore to David in Jerusalem.",
+  "ref": "1 Chronicles 3:5"
+ },
+ {
+  "id": "old-1-chronicles-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of line is traced through the later part of this chapter?",
+  "choices": [
+   "The royal descendants after David",
+   "Priestly line only",
+   "The Philistine line",
+   "The judges of Israel"
+  ],
+  "answer": 0,
+  "explanation": "The chapter tracks the Davidic royal line after Solomon.",
+  "ref": "1 Chronicles 3:10–24"
+ },
+ {
+  "id": "old-1-chronicles-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which son of Jehoiakim is named first in the royal line?",
+  "choices": [
+   "Johanan",
+   "Uzziah",
+   "Jeconiah",
+   "Amon"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Jehoiakim are listed as Jeconiah and then Zedekiah.",
+  "ref": "1 Chronicles 3:16"
+ },
+ {
+  "id": "old-1-chronicles-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why is this chapter especially important in Chronicles?",
+  "choices": [
+   "It proves Moses was king",
+   "It lists all Levites",
+   "It preserves the Davidic line",
+   "It explains the tabernacle"
+  ],
+  "answer": 2,
+  "explanation": "The chapter safeguards the royal genealogy central to the chronicler's message.",
+  "ref": "1 Chronicles 3:1"
+ },
+ {
+  "id": "old-1-chronicles-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What prayer made Jabez especially remembered in this chapter?",
+  "choices": [
+   "Lord, send fire",
+   "Take away the kingdom",
+   "Oh that thou wouldest bless me indeed and enlarge my coast",
+   "Give me wisdom"
+  ],
+  "answer": 2,
+  "explanation": "Jabez prayed for blessing, enlargement, God's hand, and protection from evil.",
+  "ref": "1 Chronicles 4:10"
+ },
+ {
+  "id": "old-1-chronicles-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Jabez described compared with his brethren?",
+  "choices": [
+   "Weaker",
+   "Older",
+   "Poorer",
+   "More honourable"
+  ],
+  "answer": 3,
+  "explanation": "Jabez was more honorable than his brothers.",
+  "ref": "1 Chronicles 4:9"
+ },
+ {
+  "id": "old-1-chronicles-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe besides Judah is specially traced later in this chapter?",
+  "choices": [
+   "Levi",
+   "Benjamin",
+   "Issachar",
+   "Simeon"
+  ],
+  "answer": 3,
+  "explanation": "The latter part of the chapter includes Simeon's descendants.",
+  "ref": "1 Chronicles 4:24"
+ },
+ {
+  "id": "old-1-chronicles-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did some Simeonite families go to the entrance of Gedor?",
+  "choices": [
+   "To escape a famine",
+   "To seek pasture for their flocks",
+   "To join Judah's army",
+   "To build the temple"
+  ],
+  "answer": 1,
+  "explanation": "They went to seek pasture for their flocks and found fat and good pasture there.",
+  "ref": "1 Chronicles 4:39–41"
+ },
+ {
+  "id": "old-1-chronicles-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does God answer Jabez's prayer according to the text?",
+  "choices": [
+   "He delays it",
+   "God granted him that which he requested",
+   "He rebukes him",
+   "He sends a prophet only"
+  ],
+  "answer": 1,
+  "explanation": "The chapter plainly says God granted Jabez's request.",
+  "ref": "1 Chronicles 4:10"
+ },
+ {
+  "id": "old-1-chronicles-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Reuben's birthright given to the sons of Joseph?",
+  "choices": [
+   "Reuben defiled his father's bed",
+   "Reuben was youngest",
+   "Joseph bought it",
+   "Judah refused it"
+  ],
+  "answer": 0,
+  "explanation": "Reuben lost the birthright because of his sin with his father's bed.",
+  "ref": "1 Chronicles 5:1"
+ },
+ {
+  "id": "old-1-chronicles-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which son of Israel prevailed above his brethren, so that the chief ruler came from him?",
+  "choices": [
+   "Reuben",
+   "Levi",
+   "Benjamin",
+   "Judah"
+  ],
+  "answer": 3,
+  "explanation": "Judah prevailed and the chief ruler came from him.",
+  "ref": "1 Chronicles 5:2"
+ },
+ {
+  "id": "old-1-chronicles-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against whom did Reuben, Gad, and half the tribe of Manasseh cry to God and prevail in battle?",
+  "choices": [
+   "Philistines",
+   "Moabites",
+   "Hagarites",
+   "Egyptians"
+  ],
+  "answer": 2,
+  "explanation": "They fought the Hagarites and were helped because they cried to God and trusted in him.",
+  "ref": "1 Chronicles 5:19–20"
+ },
+ {
+  "id": "old-1-chronicles-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What eventually happened to the Reubenites, the Gadites, and the half tribe of Manasseh?",
+  "choices": [
+   "They ruled Jerusalem",
+   "They joined Judah permanently",
+   "They were carried away by Assyria",
+   "They built Samaria"
+  ],
+  "answer": 2,
+  "explanation": "The Assyrian kings carried them away.",
+  "ref": "1 Chronicles 5:26"
+ },
+ {
+  "id": "old-1-chronicles-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What explains both the victory and the later exile of Reuben, Gad, and half of Manasseh?",
+  "choices": [
+   "Agriculture",
+   "Trade alliances",
+   "Royal marriages",
+   "Trust in God brought victory, unfaithfulness brought exile"
+  ],
+  "answer": 3,
+  "explanation": "The chapter ties victory to trust in God and exile to trespass.",
+  "ref": "1 Chronicles 5:20"
+ },
+ {
+  "id": "old-1-chronicles-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe is the main focus of this chapter?",
+  "choices": [
+   "Judah",
+   "Benjamin",
+   "Ephraim",
+   "Levi"
+  ],
+  "answer": 3,
+  "explanation": "This chapter centers on the tribe of Levi.",
+  "ref": "1 Chronicles 6:1"
+ },
+ {
+  "id": "old-1-chronicles-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two priestly names appear prominently in the line from Levi?",
+  "choices": [
+   "Joshua and Caleb",
+   "Aaron and Eleazar",
+   "Saul and Jonathan",
+   "Boaz and Obed"
+  ],
+  "answer": 1,
+  "explanation": "Aaron and Eleazar are key links in the priestly line.",
+  "ref": "1 Chronicles 6:3–4"
+ },
+ {
+  "id": "old-1-chronicles-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What service group is described later in the chapter besides priests?",
+  "choices": [
+   "Kings",
+   "Judges",
+   "Captains",
+   "Singers appointed in the house of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "The chapter includes musicians appointed for temple service.",
+  "ref": "1 Chronicles 6:31–32"
+ },
+ {
+  "id": "old-1-chronicles-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which singer stood on the right hand of Heman?",
+  "choices": [
+   "Ethan",
+   "Zadok",
+   "Phinehas",
+   "Asaph"
+  ],
+  "answer": 3,
+  "explanation": "Heman's brother Asaph stood on his right hand. Ethan and the sons of Merari stood on the left.",
+  "ref": "1 Chronicles 6:39"
+ },
+ {
+  "id": "old-1-chronicles-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What geographical provision for Levi is recorded at the end of the chapter?",
+  "choices": [
+   "A kingdom",
+   "An inheritance east of Jordan only",
+   "Cities and suburbs among the tribes",
+   "A palace in Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Levi received cities and surrounding pasturelands rather than one territorial allotment.",
+  "ref": "1 Chronicles 6:54–81"
+ },
+ {
+  "id": "old-1-chronicles-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribes are represented in this chapter's genealogy set?",
+  "choices": [
+   "Issachar, Benjamin, Naphtali, Manasseh, Ephraim, and Asher",
+   "Only Judah and Levi",
+   "Only Benjamin and Judah",
+   "Only Dan and Simeon"
+  ],
+  "answer": 0,
+  "explanation": "The chapter surveys multiple tribes, especially in northern and central Israel.",
+  "ref": "1 Chronicles 7:1"
+ },
+ {
+  "id": "old-1-chronicles-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated feature appears in many of these tribal notices?",
+  "choices": [
+   "Temple blueprints",
+   "Valiant men of might and genealogical numbers",
+   "Laws of sacrifice",
+   "Prophetic oracles"
+  ],
+  "answer": 1,
+  "explanation": "The chronicler often notes the number of mighty men within the tribes.",
+  "ref": "1 Chronicles 7:2"
+ },
+ {
+  "id": "old-1-chronicles-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe's genealogy includes the sorrowful note about sons slain by the men of Gath?",
+  "choices": [
+   "Ephraim",
+   "Judah",
+   "Levi",
+   "Dan"
+  ],
+  "answer": 0,
+  "explanation": "Ephraim mourned because his sons were slain by the men of Gath.",
+  "ref": "1 Chronicles 7:20–22"
+ },
+ {
+  "id": "old-1-chronicles-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What female builder is noted in Ephraim's line?",
+  "choices": [
+   "Deborah",
+   "Sherah",
+   "Huldah",
+   "Achsah"
+  ],
+  "answer": 1,
+  "explanation": "Sherah is noted for building Beth-horon and Uzzen-sherah.",
+  "ref": "1 Chronicles 7:24"
+ },
+ {
+  "id": "old-1-chronicles-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What overall purpose do these genealogies serve in Chronicles?",
+  "choices": [
+   "To entertain only",
+   "To preserve tribal identity and continuity",
+   "To replace the law",
+   "To deny the exile"
+  ],
+  "answer": 1,
+  "explanation": "These lists preserve the structure and memory of Israel's tribes.",
+  "ref": "1 Chronicles 7:1"
+ },
+ {
+  "id": "old-1-chronicles-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe is the focus of 1 Chronicles 8?",
+  "choices": [
+   "Judah",
+   "Benjamin",
+   "Levi",
+   "Ephraim"
+  ],
+  "answer": 1,
+  "explanation": "The chapter centers on Benjamin's descendants.",
+  "ref": "1 Chronicles 8:1"
+ },
+ {
+  "id": "old-1-chronicles-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which king's family line appears at the end of this chapter?",
+  "choices": [
+   "David",
+   "Solomon",
+   "Rehoboam",
+   "Saul"
+  ],
+  "answer": 3,
+  "explanation": "The genealogy concludes with Saul's family.",
+  "ref": "1 Chronicles 8:33"
+ },
+ {
+  "id": "old-1-chronicles-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named as Saul's father in this chapter?",
+  "choices": [
+   "Abner",
+   "Jonathan",
+   "Kish",
+   "Ner"
+  ],
+  "answer": 2,
+  "explanation": "Saul is listed as the son of Kish.",
+  "ref": "1 Chronicles 8:33"
+ },
+ {
+  "id": "old-1-chronicles-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which son of Saul is specifically named in the genealogy?",
+  "choices": [
+   "Absalom",
+   "Adonijah",
+   "Amnon",
+   "Jonathan"
+  ],
+  "answer": 3,
+  "explanation": "Jonathan appears among Saul's sons.",
+  "ref": "1 Chronicles 8:33"
+ },
+ {
+  "id": "old-1-chronicles-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does Chronicles give such attention to Benjamin here?",
+  "choices": [
+   "To preserve the line of Israel's first king",
+   "To explain the exile of Judah",
+   "To teach temple worship",
+   "To describe foreign nations"
+  ],
+  "answer": 0,
+  "explanation": "Benjamin's line matters because Saul came from that tribe.",
+  "ref": "1 Chronicles 8:1"
+ },
+ {
+  "id": "old-1-chronicles-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does the chapter say Judah was carried away to Babylon?",
+  "choices": [
+   "For their transgression",
+   "Because of famine",
+   "Because of Egypt",
+   "For lack of kings"
+  ],
+  "answer": 0,
+  "explanation": "The exile is explained as the result of unfaithfulness.",
+  "ref": "1 Chronicles 9:1"
+ },
+ {
+  "id": "old-1-chronicles-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which groups are named along with the Israelites as the first inhabitants who dwelt in their possessions?",
+  "choices": [
+   "Prophets, kings, and captains",
+   "Only soldiers",
+   "Priests, Levites, and Nethinims",
+   "Only merchants"
+  ],
+  "answer": 2,
+  "explanation": "The first inhabitants were the Israelites, the priests, Levites, and the Nethinims.",
+  "ref": "1 Chronicles 9:2"
+ },
+ {
+  "id": "old-1-chronicles-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What responsibility is especially associated with the porters or gatekeepers?",
+  "choices": [
+   "Leading the army",
+   "Writing the law",
+   "Keeping the gates of the house of the Lord",
+   "Collecting tribute"
+  ],
+  "answer": 2,
+  "explanation": "The gatekeepers were entrusted with the entrances of God's house.",
+  "ref": "1 Chronicles 9:17–27"
+ },
+ {
+  "id": "old-1-chronicles-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose genealogy is repeated again near the end of the chapter?",
+  "choices": [
+   "David's",
+   "Aaron's",
+   "Moses'",
+   "Saul's"
+  ],
+  "answer": 3,
+  "explanation": "Saul's family line is repeated from the previous chapter.",
+  "ref": "1 Chronicles 9:35–44"
+ },
+ {
+  "id": "old-1-chronicles-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What major theme does this chapter emphasize after the exile?",
+  "choices": [
+   "Trade expansion",
+   "Foreign alliances",
+   "Royal conquest",
+   "Restored worship and ordered service"
+  ],
+  "answer": 3,
+  "explanation": "The chronicler shows restored life centered on God's house.",
+  "ref": "1 Chronicles 9:1"
+ },
+ {
+  "id": "old-1-chronicles-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against whom did Saul and Israel fight in this chapter?",
+  "choices": [
+   "Philistines",
+   "Moabites",
+   "Assyrians",
+   "Ammonites"
+  ],
+  "answer": 0,
+  "explanation": "Saul fell in battle against the Philistines.",
+  "ref": "1 Chronicles 10:1"
+ },
+ {
+  "id": "old-1-chronicles-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "On what mountain were Saul and his sons slain?",
+  "choices": [
+   "Carmel",
+   "Zion",
+   "Sinai",
+   "Gilboa"
+  ],
+  "answer": 3,
+  "explanation": "The battle ended disastrously on Mount Gilboa.",
+  "ref": "1 Chronicles 10:1"
+ },
+ {
+  "id": "old-1-chronicles-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul ask his armourbearer to do when he was badly wounded?",
+  "choices": [
+   "Call Samuel",
+   "Draw his sword and thrust him through",
+   "Take him home",
+   "Blow the trumpet"
+  ],
+  "answer": 1,
+  "explanation": "Saul wanted to avoid abuse by the uncircumcised.",
+  "ref": "1 Chronicles 10:4"
+ },
+ {
+  "id": "old-1-chronicles-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What reason does Chronicles give for Saul's death?",
+  "choices": [
+   "He was too old",
+   "David betrayed him",
+   "He consulted a familiar spirit and sought not the Lord",
+   "The priests abandoned him"
+  ],
+  "answer": 2,
+  "explanation": "The chapter explicitly ties Saul's end to unfaithfulness.",
+  "ref": "1 Chronicles 10:13–14"
+ },
+ {
+  "id": "old-1-chronicles-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did the Lord turn the kingdom after Saul's death?",
+  "choices": [
+   "David",
+   "Jonathan",
+   "Abner",
+   "Ishbosheth"
+  ],
+  "answer": 0,
+  "explanation": "The chronicler points forward to David's reign.",
+  "ref": "1 Chronicles 10:14"
+ },
+ {
+  "id": "old-1-chronicles-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did all Israel gather to make David king?",
+  "choices": [
+   "Hebron",
+   "Jerusalem",
+   "Bethlehem",
+   "Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "The tribes assembled at Hebron to make David king.",
+  "ref": "1 Chronicles 11:1–3"
+ },
+ {
+  "id": "old-1-chronicles-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What stronghold did David capture from the Jebusites?",
+  "choices": [
+   "Bethel",
+   "The castle of Zion",
+   "Shiloh",
+   "Ramah"
+  ],
+  "answer": 1,
+  "explanation": "David took Zion, which became the city of David.",
+  "ref": "1 Chronicles 11:4–5"
+ },
+ {
+  "id": "old-1-chronicles-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who first went up against the Jebusites and became chief?",
+  "choices": [
+   "Abishai",
+   "Joab",
+   "Benaiah",
+   "Asahel"
+  ],
+  "answer": 1,
+  "explanation": "Joab's action earned him leadership.",
+  "ref": "1 Chronicles 11:6"
+ },
+ {
+  "id": "old-1-chronicles-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title is given to David's famous warriors later in the chapter?",
+  "choices": [
+   "Priests of valor",
+   "Captains of Judah",
+   "Watchmen",
+   "Mighty men"
+  ],
+  "answer": 3,
+  "explanation": "The chapter honors David's mighty men.",
+  "ref": "1 Chronicles 11:10"
+ },
+ {
+  "id": "old-1-chronicles-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did David refuse to drink the water brought from Bethlehem?",
+  "choices": [
+   "It was polluted",
+   "It was too warm",
+   "He was fasting",
+   "It had been obtained at the risk of men's lives"
+  ],
+  "answer": 3,
+  "explanation": "David poured it out to the Lord because it represented their blood.",
+  "ref": "1 Chronicles 11:17–19"
+ },
+ {
+  "id": "old-1-chronicles-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did mighty men come at Ziklag while he was still hiding because of Saul?",
+  "choices": [
+   "David",
+   "Samuel",
+   "Jonathan",
+   "Abner"
+  ],
+  "answer": 0,
+  "explanation": "The chapter lists the men who came to David.",
+  "ref": "1 Chronicles 12:1"
+ },
+ {
+  "id": "old-1-chronicles-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe's men are said to use both the right hand and the left with bows and stones?",
+  "choices": [
+   "Judah",
+   "Levi",
+   "Benjamin",
+   "Issachar"
+  ],
+  "answer": 2,
+  "explanation": "These Benjamites were skilled with either hand.",
+  "ref": "1 Chronicles 12:2"
+ },
+ {
+  "id": "old-1-chronicles-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are the Gadites who joined David in the wilderness described?",
+  "choices": [
+   "Slow and cautious",
+   "Only priests",
+   "Like lions and swift as roes on the mountains",
+   "Builders of cities"
+  ],
+  "answer": 2,
+  "explanation": "The Gadites are described as fierce and swift.",
+  "ref": "1 Chronicles 12:8"
+ },
+ {
+  "id": "old-1-chronicles-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe is praised for men that had understanding of the times?",
+  "choices": [
+   "Issachar",
+   "Zebulun",
+   "Naphtali",
+   "Simeon"
+  ],
+  "answer": 0,
+  "explanation": "Issachar's men understood what Israel ought to do.",
+  "ref": "1 Chronicles 12:32"
+ },
+ {
+  "id": "old-1-chronicles-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the overall mood in Israel when the people came to Hebron to make David king?",
+  "choices": [
+   "Fear",
+   "Division",
+   "Mourning",
+   "Joy and one heart"
+  ],
+  "answer": 3,
+  "explanation": "The tribes came with a perfect heart and there was joy in Israel.",
+  "ref": "1 Chronicles 12:38–40"
+ },
+ {
+  "id": "old-1-chronicles-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sacred object did David propose to bring again to Israel?",
+  "choices": [
+   "The altar",
+   "The tabernacle",
+   "The ephod",
+   "The ark of God"
+  ],
+  "answer": 3,
+  "explanation": "David wanted to bring back the ark.",
+  "ref": "1 Chronicles 13:3"
+ },
+ {
+  "id": "old-1-chronicles-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was the ark transported on this attempt?",
+  "choices": [
+   "By Levites on their shoulders",
+   "On a new cart",
+   "By priests in procession",
+   "In Solomon's chariot"
+  ],
+  "answer": 1,
+  "explanation": "The ark was placed on a new cart.",
+  "ref": "1 Chronicles 13:7"
+ },
+ {
+  "id": "old-1-chronicles-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Uzza struck down?",
+  "choices": [
+   "He touched the ark",
+   "He mocked David",
+   "He stole the offerings",
+   "He fought the Levites"
+  ],
+  "answer": 0,
+  "explanation": "Uzza put forth his hand to steady the ark and was struck.",
+  "ref": "1 Chronicles 13:9–10"
+ },
+ {
+  "id": "old-1-chronicles-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In whose house did the ark remain after this event?",
+  "choices": [
+   "Abiathar's",
+   "Nathan's",
+   "Obededom's",
+   "Joab's"
+  ],
+  "answer": 2,
+  "explanation": "The ark stayed with Obededom for three months.",
+  "ref": "1 Chronicles 13:14"
+ },
+ {
+  "id": "old-1-chronicles-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What feeling did David express after the Lord broke forth upon Uzza?",
+  "choices": [
+   "Fear",
+   "Rejoicing",
+   "Indifference",
+   "Laughter"
+  ],
+  "answer": 0,
+  "explanation": "David was afraid of God that day.",
+  "ref": "1 Chronicles 13:12"
+ },
+ {
+  "id": "old-1-chronicles-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which king sent cedar trees, masons, and carpenters to David?",
+  "choices": [
+   "Hiram king of Tyre",
+   "Shishak king of Egypt",
+   "Benhadad king of Syria",
+   "Cyrus king of Persia"
+  ],
+  "answer": 0,
+  "explanation": "Hiram supported David's house-building.",
+  "ref": "1 Chronicles 14:1"
+ },
+ {
+  "id": "old-1-chronicles-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David perceive after the Lord confirmed him king over Israel?",
+  "choices": [
+   "That he should flee",
+   "That his kingdom was lifted up for Israel's sake",
+   "That Saul would return",
+   "That the ark should stay hidden"
+  ],
+  "answer": 1,
+  "explanation": "David recognized God's purpose for the nation.",
+  "ref": "1 Chronicles 14:2"
+ },
+ {
+  "id": "old-1-chronicles-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do before going up against the Philistines?",
+  "choices": [
+   "Counted the people",
+   "Enquired of God",
+   "Sent for Samuel",
+   "Built an altar to Dagon"
+  ],
+  "answer": 1,
+  "explanation": "David sought God's direction before battle.",
+  "ref": "1 Chronicles 14:10"
+ },
+ {
+  "id": "old-1-chronicles-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the place called where David said God had broken in upon his enemies?",
+  "choices": [
+   "Ebenezer",
+   "Gilboa",
+   "Mahanaim",
+   "Baal-perazim"
+  ],
+  "answer": 3,
+  "explanation": "David said God had broken in upon his enemies like the breaking forth of waters, so the place was called Baal-perazim.",
+  "ref": "1 Chronicles 14:11"
+ },
+ {
+  "id": "old-1-chronicles-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign was David told to wait for before attacking the Philistines the second time?",
+  "choices": [
+   "A trumpet blast",
+   "Fire from heaven",
+   "The moon turning red",
+   "A sound in the tops of the mulberry trees"
+  ],
+  "answer": 3,
+  "explanation": "That sound signaled that God had gone out before him.",
+  "ref": "1 Chronicles 14:15"
+ },
+ {
+  "id": "old-1-chronicles-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did David say ought to carry the ark of God?",
+  "choices": [
+   "The soldiers",
+   "The Levites",
+   "The elders of Judah",
+   "The sons of Saul"
+  ],
+  "answer": 1,
+  "explanation": "David learned that the ark was to be borne by Levites.",
+  "ref": "1 Chronicles 15:2"
+ },
+ {
+  "id": "old-1-chronicles-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why had the Lord made a breach upon Israel earlier?",
+  "choices": [
+   "They fought the wrong enemy",
+   "The Philistines were stronger",
+   "The priests were absent",
+   "They sought him not after the due order"
+  ],
+  "answer": 3,
+  "explanation": "The first attempt failed because God's order was ignored.",
+  "ref": "1 Chronicles 15:13"
+ },
+ {
+  "id": "old-1-chronicles-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of ministry accompanied the ark's procession?",
+  "choices": [
+   "Singing with instruments",
+   "Silence only",
+   "Military drills",
+   "Burning of cities"
+  ],
+  "answer": 0,
+  "explanation": "The Levites were appointed as singers and musicians.",
+  "ref": "1 Chronicles 15:16"
+ },
+ {
+  "id": "old-1-chronicles-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was David doing as the ark came into the city?",
+  "choices": [
+   "Dancing and celebrating",
+   "Hiding in his palace",
+   "Offering foreign incense",
+   "Riding in a chariot"
+  ],
+  "answer": 0,
+  "explanation": "As the ark came to the city of David, Michal saw king David dancing and playing.",
+  "ref": "1 Chronicles 15:28–29"
+ },
+ {
+  "id": "old-1-chronicles-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who despised David in her heart when she saw him rejoicing?",
+  "choices": [
+   "Bathsheba",
+   "Michal",
+   "Abigail",
+   "Tamar"
+  ],
+  "answer": 1,
+  "explanation": "Michal, Saul's daughter, looked from a window and despised him.",
+  "ref": "1 Chronicles 15:29"
+ },
+ {
+  "id": "old-1-chronicles-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do after they brought the ark and set it in the tent?",
+  "choices": [
+   "Dismissed the Levites",
+   "Sent it back to Shiloh",
+   "Offered burnt offerings and peace offerings",
+   "Numbered the tribes"
+  ],
+  "answer": 2,
+  "explanation": "David worshiped with offerings before God.",
+  "ref": "1 Chronicles 16:1"
+ },
+ {
+  "id": "old-1-chronicles-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David distribute to every man and woman of Israel?",
+  "choices": [
+   "Only silver",
+   "Bread, flesh, and a flagon of wine",
+   "Weapons and shields",
+   "New garments only"
+  ],
+  "answer": 1,
+  "explanation": "The people were blessed and provided for.",
+  "ref": "1 Chronicles 16:3"
+ },
+ {
+  "id": "old-1-chronicles-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into whose hand did David first deliver this psalm to thank the Lord?",
+  "choices": [
+   "Asaph",
+   "Heman",
+   "Zadok",
+   "Nathan"
+  ],
+  "answer": 0,
+  "explanation": "Asaph is singled out in the thanksgiving ministry.",
+  "ref": "1 Chronicles 16:7"
+ },
+ {
+  "id": "old-1-chronicles-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated command opens the song of thanks?",
+  "choices": [
+   "Fear not",
+   "Build the temple",
+   "Remember Saul",
+   "Give thanks unto the Lord"
+  ],
+  "answer": 3,
+  "explanation": "The song begins with thanksgiving and making God's deeds known.",
+  "ref": "1 Chronicles 16:8"
+ },
+ {
+  "id": "old-1-chronicles-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What ongoing pattern did David establish before the ark?",
+  "choices": [
+   "Weekly battles",
+   "Monthly census taking",
+   "Daily thanksgiving and ministry",
+   "Only annual feasts"
+  ],
+  "answer": 2,
+  "explanation": "He appointed Levites to minister continually before the ark.",
+  "ref": "1 Chronicles 16:37"
+ },
+ {
+  "id": "old-1-chronicles-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David desire to build for the Lord?",
+  "choices": [
+   "A palace",
+   "A city wall",
+   "A new ark",
+   "A house of cedar"
+  ],
+  "answer": 3,
+  "explanation": "David wanted to build a permanent house for God.",
+  "ref": "1 Chronicles 17:1"
+ },
+ {
+  "id": "old-1-chronicles-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which prophet first responded to David about this desire?",
+  "choices": [
+   "Samuel",
+   "Gad",
+   "Ahijah",
+   "Nathan"
+  ],
+  "answer": 3,
+  "explanation": "Nathan first encouraged David before receiving God's word.",
+  "ref": "1 Chronicles 17:1–2"
+ },
+ {
+  "id": "old-1-chronicles-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did God say he had dwelt since the day he brought up Israel?",
+  "choices": [
+   "In a house of stone",
+   "In tents, going from tent to tent",
+   "In the temple of Solomon",
+   "In the city of David"
+  ],
+  "answer": 1,
+  "explanation": "God said he had not dwelt in a house but had gone from tent to tent.",
+  "ref": "1 Chronicles 17:5"
+ },
+ {
+  "id": "old-1-chronicles-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God promise to build for David instead?",
+  "choices": [
+   "A fortress",
+   "A greater army",
+   "A new tabernacle",
+   "A house"
+  ],
+  "answer": 3,
+  "explanation": "God promised David a dynastic house.",
+  "ref": "1 Chronicles 17:10"
+ },
+ {
+  "id": "old-1-chronicles-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which son of David is in view when God says, 'He shall build me an house'?",
+  "choices": [
+   "Absalom",
+   "Adonijah",
+   "Amnon",
+   "Solomon"
+  ],
+  "answer": 3,
+  "explanation": "The immediate fulfillment points to Solomon.",
+  "ref": "1 Chronicles 17:11–12"
+ },
+ {
+  "id": "old-1-chronicles-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which people are mentioned first among those David smote?",
+  "choices": [
+   "Philistines",
+   "Moabites",
+   "Assyrians",
+   "Ammonites"
+  ],
+  "answer": 0,
+  "explanation": "The Philistines are named first in the list of victories.",
+  "ref": "1 Chronicles 18:1"
+ },
+ {
+  "id": "old-1-chronicles-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Moabites become to David after he defeated them?",
+  "choices": [
+   "Kings over Israel",
+   "Priests in Jerusalem",
+   "Servants bringing gifts",
+   "Allies of Saul"
+  ],
+  "answer": 2,
+  "explanation": "Moab became subject and brought tribute.",
+  "ref": "1 Chronicles 18:2"
+ },
+ {
+  "id": "old-1-chronicles-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which king of Zobah did David strike as he went to establish his dominion by the river Euphrates?",
+  "choices": [
+   "Hazael",
+   "Rezin",
+   "Hadarezer",
+   "Benhadad"
+  ],
+  "answer": 2,
+  "explanation": "David defeated Hadarezer of Zobah.",
+  "ref": "1 Chronicles 18:3"
+ },
+ {
+  "id": "old-1-chronicles-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which nation did Abishai strike in the Valley of Salt?",
+  "choices": [
+   "Edomites",
+   "Egyptians",
+   "Amalekites",
+   "Midianites"
+  ],
+  "answer": 0,
+  "explanation": "Abishai slew eighteen thousand Edomites.",
+  "ref": "1 Chronicles 18:12"
+ },
+ {
+  "id": "old-1-chronicles-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the chapter summarize David's rule over Israel?",
+  "choices": [
+   "He grew proud",
+   "He stopped worship",
+   "He withdrew from battle",
+   "He executed judgment and justice"
+  ],
+  "answer": 3,
+  "explanation": "David's reign is summarized as just and righteous.",
+  "ref": "1 Chronicles 18:14"
+ },
+ {
+  "id": "old-1-chronicles-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose death prompted David to show kindness to the Ammonites?",
+  "choices": [
+   "Hanun",
+   "Hadarezer",
+   "Saul",
+   "Nahash"
+  ],
+  "answer": 3,
+  "explanation": "David remembered Nahash's kindness.",
+  "ref": "1 Chronicles 19:1–2"
+ },
+ {
+  "id": "old-1-chronicles-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What humiliating act did Hanun commit against David's servants?",
+  "choices": [
+   "Blinded them",
+   "Shaved them and cut off their garments",
+   "Imprisoned them for years",
+   "Burned their chariots"
+  ],
+  "answer": 1,
+  "explanation": "Hanun publicly shamed David's servants.",
+  "ref": "1 Chronicles 19:4"
+ },
+ {
+  "id": "old-1-chronicles-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David tell the shamed men to remain until their beards grew again?",
+  "choices": [
+   "Hebron",
+   "Jericho",
+   "Jerusalem",
+   "Gibeon"
+  ],
+  "answer": 1,
+  "explanation": "David told them to tarry at Jericho.",
+  "ref": "1 Chronicles 19:5"
+ },
+ {
+  "id": "old-1-chronicles-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the Ammonites hire to help them fight David?",
+  "choices": [
+   "Egyptians",
+   "Philistines",
+   "Syrians",
+   "Edomites"
+  ],
+  "answer": 2,
+  "explanation": "They hired Syrian forces with chariots and horsemen.",
+  "ref": "1 Chronicles 19:6"
+ },
+ {
+  "id": "old-1-chronicles-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What encouragement did Joab give before battle?",
+  "choices": [
+   "Trust in Egypt",
+   "Retreat and hide",
+   "Spare every city",
+   "Let us behave ourselves valiantly, and let the Lord do that which is good"
+  ],
+  "answer": 3,
+  "explanation": "Joab called for courage and trust in God's will.",
+  "ref": "1 Chronicles 19:13"
+ },
+ {
+  "id": "old-1-chronicles-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "While Joab besieged Rabbah, where did David remain?",
+  "choices": [
+   "Jerusalem",
+   "Hebron",
+   "Bethlehem",
+   "Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "David tarried at Jerusalem while Joab fought.",
+  "ref": "1 Chronicles 20:1"
+ },
+ {
+  "id": "old-1-chronicles-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David take from the head of the Ammonite king at Rabbah?",
+  "choices": [
+   "A silver helmet",
+   "A linen ephod",
+   "A crown weighing a talent of gold",
+   "A scroll of the law"
+  ],
+  "answer": 2,
+  "explanation": "David took the king's crown, which weighed a talent of gold and had precious stones in it, and it was set on David's head.",
+  "ref": "1 Chronicles 20:2"
+ },
+ {
+  "id": "old-1-chronicles-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "At which place is a giant named Sippai defeated?",
+  "choices": [
+   "Gibeon",
+   "Gilgal",
+   "Ai",
+   "Gezer"
+  ],
+  "answer": 3,
+  "explanation": "Sibbecai smote Sippai at Gezer.",
+  "ref": "1 Chronicles 20:4"
+ },
+ {
+  "id": "old-1-chronicles-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who killed the brother of Goliath the Gittite?",
+  "choices": [
+   "Joab",
+   "Elhanan",
+   "Abishai",
+   "Jonathan son of Shimea"
+  ],
+  "answer": 1,
+  "explanation": "Elhanan killed Lahmi the brother of Goliath.",
+  "ref": "1 Chronicles 20:5"
+ },
+ {
+  "id": "old-1-chronicles-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What pattern is emphasized by the end of the chapter?",
+  "choices": [
+   "Israel feared the giants",
+   "The ark was lost",
+   "Saul returned to power",
+   "David's servants kept striking down giants"
+  ],
+  "answer": 3,
+  "explanation": "The chapter highlights repeated victories over giant enemies.",
+  "ref": "1 Chronicles 20:4–8"
+ },
+ {
+  "id": "old-1-chronicles-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stood up against Israel and provoked David to number the people?",
+  "choices": [
+   "Absalom",
+   "Joab",
+   "Satan",
+   "Saul"
+  ],
+  "answer": 2,
+  "explanation": "The chapter opens with Satan provoking the census.",
+  "ref": "1 Chronicles 21:1"
+ },
+ {
+  "id": "old-1-chronicles-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who objected to David's command to number the people?",
+  "choices": [
+   "Nathan",
+   "Joab",
+   "Zadok",
+   "Benaiah"
+  ],
+  "answer": 1,
+  "explanation": "Joab recognized that the census was wrong.",
+  "ref": "1 Chronicles 21:3"
+ },
+ {
+  "id": "old-1-chronicles-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What three judgments was David offered by the prophet Gad?",
+  "choices": [
+   "Captivity, famine, and flood",
+   "Plague, war, and exile for forty years",
+   "Three years of famine, three months before enemies, or three days of the sword of the Lord",
+   "Loss of the ark, drought, and defeat"
+  ],
+  "answer": 2,
+  "explanation": "Gad gave David three sobering options.",
+  "ref": "1 Chronicles 21:11–12"
+ },
+ {
+  "id": "old-1-chronicles-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David see the angel of the Lord standing with a drawn sword?",
+  "choices": [
+   "At Gilgal",
+   "At Hebron",
+   "At the threshing floor of Ornan",
+   "At Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "The angel stood at Ornan's threshing floor.",
+  "ref": "1 Chronicles 21:15–16"
+ },
+ {
+  "id": "old-1-chronicles-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why would David not offer a burnt offering using Ornan's land and oxen for free?",
+  "choices": [
+   "It belonged to Saul",
+   "The priest forbade it",
+   "The plague had already ended",
+   "He would not offer to the Lord that which cost him nothing"
+  ],
+  "answer": 3,
+  "explanation": "David insisted on paying the full price.",
+  "ref": "1 Chronicles 21:24"
+ },
+ {
+  "id": "old-1-chronicles-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David declare after the altar site was established?",
+  "choices": [
+   "This shall be Saul's memorial",
+   "This is the valley of judgment",
+   "This is the house of the Lord God",
+   "This belongs to Ornan alone"
+  ],
+  "answer": 2,
+  "explanation": "David recognized the future temple site.",
+  "ref": "1 Chronicles 22:1"
+ },
+ {
+  "id": "old-1-chronicles-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the Lord say David could not build the house himself?",
+  "choices": [
+   "He was too old",
+   "The people refused",
+   "The ark was missing",
+   "He had shed much blood and made great wars"
+  ],
+  "answer": 3,
+  "explanation": "The word of the Lord told David he had shed much blood, so his son Solomon, a man of rest, would build the house.",
+  "ref": "1 Chronicles 22:8"
+ },
+ {
+  "id": "old-1-chronicles-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does David describe Solomon in this chapter?",
+  "choices": [
+   "Young and tender",
+   "Old and hardened",
+   "A mighty warrior",
+   "A priest only"
+  ],
+  "answer": 0,
+  "explanation": "David says Solomon is young and inexperienced.",
+  "ref": "1 Chronicles 22:5"
+ },
+ {
+  "id": "old-1-chronicles-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do before Solomon began building?",
+  "choices": [
+   "Destroyed the altar",
+   "Prepared abundantly for the house of the Lord",
+   "Sent everyone to Egypt",
+   "Ended temple worship"
+  ],
+  "answer": 1,
+  "explanation": "David gathered materials in advance.",
+  "ref": "1 Chronicles 22:5"
+ },
+ {
+  "id": "old-1-chronicles-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command did David give Israel's leaders concerning Solomon?",
+  "choices": [
+   "Help Solomon my son",
+   "Hide him from enemies",
+   "Make him king immediately over Egypt",
+   "Teach him war first"
+  ],
+  "answer": 0,
+  "explanation": "David ordered the princes to support Solomon in the work.",
+  "ref": "1 Chronicles 22:17"
+ },
+ {
+  "id": "old-1-chronicles-23-1",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David make king over Israel when he was old and full of days?",
+  "choices": [
+   "Absalom",
+   "Solomon",
+   "Joab",
+   "Adonijah"
+  ],
+  "answer": 1,
+  "explanation": "David publicly established Solomon.",
+  "ref": "1 Chronicles 23:1"
+ },
+ {
+  "id": "old-1-chronicles-23-2",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By the last words of David, from what age were the Levites numbered?",
+  "choices": [
+   "Twenty-five years",
+   "Twenty years",
+   "Thirty years",
+   "Fifty years"
+  ],
+  "answer": 1,
+  "explanation": "By the last words of David the Levites were numbered from twenty years old and above.",
+  "ref": "1 Chronicles 23:27"
+ },
+ {
+  "id": "old-1-chronicles-23-3",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was one of the Levites' major responsibilities according to David's order?",
+  "choices": [
+   "Praising the Lord with instruments",
+   "Commanding chariots",
+   "Ruling Egypt",
+   "Guarding Philistine borders"
+  ],
+  "answer": 0,
+  "explanation": "The Levites were assigned to praise and assist temple worship.",
+  "ref": "1 Chronicles 23:5"
+ },
+ {
+  "id": "old-1-chronicles-23-4",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What change did David announce for the Levites because the Lord had given rest to his people?",
+  "choices": [
+   "They would no longer carry the tabernacle",
+   "They would stop serving",
+   "They would move to Egypt",
+   "They would stop singing"
+  ],
+  "answer": 0,
+  "explanation": "A settled sanctuary changed their duties.",
+  "ref": "1 Chronicles 23:25–26"
+ },
+ {
+  "id": "old-1-chronicles-23-5",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many Levites were appointed to praise the Lord with instruments David made?",
+  "choices": [
+   "4,000",
+   "400",
+   "40,000",
+   "24,000"
+  ],
+  "answer": 0,
+  "explanation": "Four thousand were appointed for praise with instruments.",
+  "ref": "1 Chronicles 23:5"
+ },
+ {
+  "id": "old-1-chronicles-24-1",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose descendants are organized in this chapter?",
+  "choices": [
+   "Samuel's",
+   "Aaron's",
+   "Saul's",
+   "Judah's"
+  ],
+  "answer": 1,
+  "explanation": "The chapter organizes the priestly descendants of Aaron.",
+  "ref": "1 Chronicles 24:1"
+ },
+ {
+  "id": "old-1-chronicles-24-2",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many chief men were found among the sons of Eleazar?",
+  "choices": [
+   "8",
+   "16",
+   "20",
+   "32"
+  ],
+  "answer": 1,
+  "explanation": "There were sixteen chief men among the sons of Eleazar and eight among the sons of Ithamar.",
+  "ref": "1 Chronicles 24:4"
+ },
+ {
+  "id": "old-1-chronicles-24-3",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many priestly courses were established?",
+  "choices": [
+   "12",
+   "18",
+   "24",
+   "30"
+  ],
+  "answer": 2,
+  "explanation": "The lots produced twenty-four divisions.",
+  "ref": "1 Chronicles 24:7–18"
+ },
+ {
+  "id": "old-1-chronicles-24-4",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were these courses assigned?",
+  "choices": [
+   "By birth order only",
+   "By military rank",
+   "By the king's preference",
+   "By lot"
+  ],
+  "answer": 3,
+  "explanation": "The courses were arranged by sacred lot.",
+  "ref": "1 Chronicles 24:5"
+ },
+ {
+  "id": "old-1-chronicles-24-5",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does this chapter mainly show about worship?",
+  "choices": [
+   "It was random",
+   "It was ordered and carefully structured",
+   "It belonged only to kings",
+   "It had ended"
+  ],
+  "answer": 1,
+  "explanation": "The chronicler emphasizes ordered service before God.",
+  "ref": "1 Chronicles 24:1"
+ },
+ {
+  "id": "old-1-chronicles-25-1",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which three men are highlighted over the musical ministry?",
+  "choices": [
+   "Aaron, Moses, and Miriam",
+   "Samuel, Saul, and David",
+   "Asaph, Heman, and Jeduthun",
+   "Zadok, Abiathar, and Nathan"
+  ],
+  "answer": 2,
+  "explanation": "These men oversaw the music ministry.",
+  "ref": "1 Chronicles 25:1"
+ },
+ {
+  "id": "old-1-chronicles-25-2",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what kinds of instruments did they prophesy?",
+  "choices": [
+   "Trumpets only",
+   "Harps, psalteries, and cymbals",
+   "Flutes and drums only",
+   "Swords and shields"
+  ],
+  "answer": 1,
+  "explanation": "The chapter links music with prophetic praise.",
+  "ref": "1 Chronicles 25:1"
+ },
+ {
+  "id": "old-1-chronicles-25-3",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What activity is associated with Jeduthun and his sons?",
+  "choices": [
+   "Giving thanks and praise to the Lord",
+   "Teaching warfare",
+   "Building the temple walls",
+   "Judging the tribes"
+  ],
+  "answer": 0,
+  "explanation": "Jeduthun's house is tied especially to thanksgiving.",
+  "ref": "1 Chronicles 25:3"
+ },
+ {
+  "id": "old-1-chronicles-25-4",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were the courses of singers arranged?",
+  "choices": [
+   "By lot",
+   "By conquest",
+   "By age only",
+   "By tribe only"
+  ],
+  "answer": 0,
+  "explanation": "The singers' orders were assigned by lot.",
+  "ref": "1 Chronicles 25:8–31"
+ },
+ {
+  "id": "old-1-chronicles-25-5",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does this chapter reveal about worship in David's kingdom?",
+  "choices": [
+   "Music was unimportant",
+   "Only kings could sing",
+   "Priests never used instruments",
+   "Musical praise was an organized, sacred ministry"
+  ],
+  "answer": 3,
+  "explanation": "Music was a formal part of worship, not an afterthought.",
+  "ref": "1 Chronicles 25:1"
+ },
+ {
+  "id": "old-1-chronicles-26-1",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which group is first organized in this chapter?",
+  "choices": [
+   "Singers",
+   "Kings",
+   "Porters or gatekeepers",
+   "Prophets"
+  ],
+  "answer": 2,
+  "explanation": "The chapter begins with the divisions of the porters.",
+  "ref": "1 Chronicles 26:1"
+ },
+ {
+  "id": "old-1-chronicles-26-2",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are the sons of Shemaiah, the firstborn of Obed-edom, described?",
+  "choices": [
+   "They were weak",
+   "They were mighty men of valour",
+   "They all became priests",
+   "They fled Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "The sons born to Shemaiah ruled in the house of their father, for they were mighty men of valour.",
+  "ref": "1 Chronicles 26:6"
+ },
+ {
+  "id": "old-1-chronicles-26-3",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were the gate assignments made?",
+  "choices": [
+   "By royal decree only",
+   "By military conquest",
+   "By lot",
+   "By tribal elders alone"
+  ],
+  "answer": 2,
+  "explanation": "The gates were assigned by lot.",
+  "ref": "1 Chronicles 26:13"
+ },
+ {
+  "id": "old-1-chronicles-26-4",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides gatekeeping, what other responsibility appears later in the chapter?",
+  "choices": [
+   "Foreign diplomacy",
+   "Treasuries and dedicated things",
+   "Captaining chariots",
+   "Ruling Philistia"
+  ],
+  "answer": 1,
+  "explanation": "Treasurers were appointed over the treasures of God's house.",
+  "ref": "1 Chronicles 26:20–28"
+ },
+ {
+  "id": "old-1-chronicles-26-5",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does this detailed chapter emphasize about the house of God?",
+  "choices": [
+   "It ran without planning",
+   "Even practical duties were sacred and ordered",
+   "Only priests mattered",
+   "No one guarded it"
+  ],
+  "answer": 1,
+  "explanation": "The chronicler shows careful structure in every aspect of service.",
+  "ref": "1 Chronicles 26:1"
+ },
+ {
+  "id": "old-1-chronicles-27-1",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men served in each monthly military course?",
+  "choices": [
+   "12,000",
+   "24,000",
+   "40,000",
+   "70,000"
+  ],
+  "answer": 1,
+  "explanation": "Each monthly division consisted of twenty-four thousand.",
+  "ref": "1 Chronicles 27:1"
+ },
+ {
+  "id": "old-1-chronicles-27-2",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many monthly courses of the army are described?",
+  "choices": [
+   "6",
+   "10",
+   "12",
+   "24"
+  ],
+  "answer": 2,
+  "explanation": "There was a rotating course for each month of the year.",
+  "ref": "1 Chronicles 27:1–15"
+ },
+ {
+  "id": "old-1-chronicles-27-3",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which relative of David is named as a counselor near the end of the chapter?",
+  "choices": [
+   "Jonathan",
+   "Absalom",
+   "Amnon",
+   "Ithream"
+  ],
+  "answer": 0,
+  "explanation": "Jonathan, David's uncle, was a counsellor, a wise man, and a scribe.",
+  "ref": "1 Chronicles 27:32"
+ },
+ {
+  "id": "old-1-chronicles-27-4",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Joab not finish numbering the people?",
+  "choices": [
+   "The people had moved away",
+   "Wrath fell against Israel for it",
+   "The tribes refused to be counted",
+   "He fell sick"
+  ],
+  "answer": 1,
+  "explanation": "Joab began to number but did not finish, because wrath fell against Israel for it.",
+  "ref": "1 Chronicles 27:24"
+ },
+ {
+  "id": "old-1-chronicles-27-5",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What broader picture of David's reign does this chapter give?",
+  "choices": [
+   "Disorder and confusion",
+   "A carefully administered kingdom",
+   "A kingdom without officers",
+   "A kingdom ruled only by prophets"
+  ],
+  "answer": 1,
+  "explanation": "The chapter displays organized civil and military administration.",
+  "ref": "1 Chronicles 27:1"
+ },
+ {
+  "id": "old-1-chronicles-28-1",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David gather at Jerusalem at the start of the chapter?",
+  "choices": [
+   "Only the priests",
+   "Only Judah",
+   "Only the singers",
+   "All the princes and leaders of Israel"
+  ],
+  "answer": 3,
+  "explanation": "David assembled Israel's officials for his final charge.",
+  "ref": "1 Chronicles 28:1"
+ },
+ {
+  "id": "old-1-chronicles-28-2",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had been in David's heart to build?",
+  "choices": [
+   "A palace for himself",
+   "A house of rest for the ark",
+   "A wall around Bethlehem",
+   "A throne in Hebron"
+  ],
+  "answer": 1,
+  "explanation": "David longed to build a resting place for the ark.",
+  "ref": "1 Chronicles 28:2"
+ },
+ {
+  "id": "old-1-chronicles-28-3",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did God say David would not build the house?",
+  "choices": [
+   "He was too poor",
+   "He was not from Levi",
+   "He was too old",
+   "He had been a man of war and had shed blood"
+  ],
+  "answer": 3,
+  "explanation": "David's warfare disqualified him from the temple project.",
+  "ref": "1 Chronicles 28:3"
+ },
+ {
+  "id": "old-1-chronicles-28-4",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David say the Lord had chosen to sit on the throne of the kingdom of the Lord over Israel?",
+  "choices": [
+   "Absalom",
+   "Joab",
+   "Nathan",
+   "Solomon"
+  ],
+  "answer": 3,
+  "explanation": "David declares Solomon the chosen successor.",
+  "ref": "1 Chronicles 28:5"
+ },
+ {
+  "id": "old-1-chronicles-28-5",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What encouragement did David give Solomon at the end of the chapter?",
+  "choices": [
+   "Hide from the work",
+   "Wait for Egypt's help",
+   "Build only if the people agree",
+   "Be strong and do it; fear not"
+  ],
+  "answer": 3,
+  "explanation": "David called Solomon to courage because God would be with him.",
+  "ref": "1 Chronicles 28:20"
+ },
+ {
+  "id": "old-1-chronicles-29-1",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does David describe Solomon when asking the people to support the temple work?",
+  "choices": [
+   "Old and experienced",
+   "Young and tender",
+   "A mighty warrior",
+   "Already priest and king"
+  ],
+  "answer": 1,
+  "explanation": "David again notes Solomon's youth and inexperience.",
+  "ref": "1 Chronicles 29:1"
+ },
+ {
+  "id": "old-1-chronicles-29-2",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the leaders and people respond to David's appeal for offerings?",
+  "choices": [
+   "They refused",
+   "They delayed for years",
+   "They offered willingly",
+   "They gave only silver"
+  ],
+  "answer": 2,
+  "explanation": "The people rejoiced because they gave with a perfect heart.",
+  "ref": "1 Chronicles 29:6–9"
+ },
+ {
+  "id": "old-1-chronicles-29-3",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does David say belongs to the Lord in his prayer of praise?",
+  "choices": [
+   "Only Israel",
+   "The greatness, power, glory, victory, and majesty",
+   "The temple furniture only",
+   "Only the throne"
+  ],
+  "answer": 1,
+  "explanation": "David exalts God's total sovereignty.",
+  "ref": "1 Chronicles 29:11"
+ },
+ {
+  "id": "old-1-chronicles-29-4",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What request does David make for the people after their generous giving?",
+  "choices": [
+   "That they conquer Egypt",
+   "That the Lord keep this forever in the imagination of their hearts",
+   "That Saul's line return",
+   "That the ark be moved again"
+  ],
+  "answer": 1,
+  "explanation": "David prays that their willing heart would be preserved.",
+  "ref": "1 Chronicles 29:18"
+ },
+ {
+  "id": "old-1-chronicles-29-5",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Solomon by the close of the chapter?",
+  "choices": [
+   "He fled from Jerusalem",
+   "He became only a priest",
+   "He was taken captive",
+   "He was made king the second time and the Lord magnified him"
+  ],
+  "answer": 3,
+  "explanation": "The chapter ends with Solomon firmly established.",
+  "ref": "1 Chronicles 29:22–25"
+ }
+]

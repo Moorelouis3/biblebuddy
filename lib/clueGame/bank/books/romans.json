@@ -1,0 +1,1282 @@
+[
+ {
+  "id": "old-romans-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say he is separated unto?",
+  "choices": [
+   "The law of Moses",
+   "The gospel of God",
+   "The church in Jerusalem",
+   "The tribe of Benjamin"
+  ],
+  "answer": 1,
+  "explanation": "Paul says he was separated unto the gospel of God.",
+  "ref": "Romans 1:1"
+ },
+ {
+  "id": "old-romans-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "According to Romans 1:4, what declared Jesus to be the Son of God with power?",
+  "choices": [
+   "His miracles",
+   "His resurrection from the dead",
+   "His birth in Bethlehem",
+   "His sermon on the mount"
+  ],
+  "answer": 1,
+  "explanation": "Paul says Jesus was declared the Son of God with power by the resurrection from the dead.",
+  "ref": "Romans 1:4"
+ },
+ {
+  "id": "old-romans-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the gospel called?",
+  "choices": [
+   "The power of God unto salvation",
+   "The wisdom of God",
+   "The new covenant of Israel",
+   "The hope of the prophets"
+  ],
+  "answer": 0,
+  "explanation": "Paul says the gospel is the power of God unto salvation to everyone that believeth.",
+  "ref": "Romans 1:16"
+ },
+ {
+  "id": "old-romans-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Romans 1:17 say the just shall live?",
+  "choices": [
+   "By obedience",
+   "By sacrifice",
+   "By wisdom",
+   "By faith"
+  ],
+  "answer": 3,
+  "explanation": "Paul quotes that the just shall live by faith.",
+  "ref": "Romans 1:17"
+ },
+ {
+  "id": "old-romans-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did people change when they worshipped the creature more than the Creator?",
+  "choices": [
+   "The covenant into tradition",
+   "The truth of God into a lie",
+   "Mercy into judgment",
+   "Faith into sight"
+  ],
+  "answer": 1,
+  "explanation": "Paul says people changed the truth of God into a lie and worshiped the creature more than the Creator.",
+  "ref": "Romans 1:25"
+ },
+ {
+  "id": "old-romans-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the goodness of God lead people to?",
+  "choices": [
+   "Patience",
+   "Prosperity",
+   "Knowledge",
+   "Repentance"
+  ],
+  "answer": 3,
+  "explanation": "Paul says the goodness of God leads people to repentance.",
+  "ref": "Romans 2:4"
+ },
+ {
+  "id": "old-romans-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Romans 2:6 say God will render to every man according to?",
+  "choices": [
+   "His deeds",
+   "His words",
+   "His tribe",
+   "His feelings"
+  ],
+  "answer": 0,
+  "explanation": "God will render to every man according to his deeds.",
+  "ref": "Romans 2:6"
+ },
+ {
+  "id": "old-romans-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much respect of persons is there with God?",
+  "choices": [
+   "None",
+   "Some",
+   "Only for Israel",
+   "Only for the righteous"
+  ],
+  "answer": 0,
+  "explanation": "Romans 2:11 says there is no respect of persons with God.",
+  "ref": "Romans 2:11"
+ },
+ {
+  "id": "old-romans-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do Gentiles show when they do by nature the things contained in the law?",
+  "choices": [
+   "That they are sinless",
+   "That they no longer need grace",
+   "That they are all Jews",
+   "That the work of the law is written in their hearts"
+  ],
+  "answer": 3,
+  "explanation": "Paul says they show the work of the law written in their hearts.",
+  "ref": "Romans 2:14–15"
+ },
+ {
+  "id": "old-romans-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "According to Romans 2:29, true circumcision is of what?",
+  "choices": [
+   "The flesh",
+   "The heart",
+   "The nation",
+   "The temple"
+  ],
+  "answer": 1,
+  "explanation": "Paul says true circumcision is that of the heart, in the spirit.",
+  "ref": "Romans 2:29"
+ },
+ {
+  "id": "old-romans-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the Jews chiefly been entrusted with?",
+  "choices": [
+   "The priesthood of Aaron",
+   "The throne of David",
+   "The temple treasury",
+   "The oracles of God"
+  ],
+  "answer": 3,
+  "explanation": "Paul says unto them were committed the oracles of God.",
+  "ref": "Romans 3:2"
+ },
+ {
+  "id": "old-romans-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In the scripture Paul quotes, how many people are righteous?",
+  "choices": [
+   "A few",
+   "None",
+   "Only the prophets",
+   "Only the faithful Jews"
+  ],
+  "answer": 1,
+  "explanation": "Paul writes, 'There is none righteous, no, not one.'",
+  "ref": "Romans 3:10"
+ },
+ {
+  "id": "old-romans-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say all people have done?",
+  "choices": [
+   "Sinned",
+   "Doubted",
+   "Fallen asleep",
+   "Strayed from Israel"
+  ],
+  "answer": 0,
+  "explanation": "All have sinned and come short of the glory of God.",
+  "ref": "Romans 3:23"
+ },
+ {
+  "id": "old-romans-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are believers justified?",
+  "choices": [
+   "Freely by God's grace",
+   "By the works of the law",
+   "By national covenant",
+   "Through temple offerings"
+  ],
+  "answer": 0,
+  "explanation": "Paul says people are justified freely by God's grace through the redemption in Christ.",
+  "ref": "Romans 3:24"
+ },
+ {
+  "id": "old-romans-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to boasting?",
+  "choices": [
+   "It is rewarded",
+   "It is ignored",
+   "It is excluded",
+   "It is commanded"
+  ],
+  "answer": 2,
+  "explanation": "Boasting is excluded because justification is by faith, not by works.",
+  "ref": "Romans 3:27"
+ },
+ {
+  "id": "old-romans-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose example does Paul use to explain justification by faith?",
+  "choices": [
+   "Moses",
+   "Abraham",
+   "Joshua",
+   "Samuel"
+  ],
+  "answer": 1,
+  "explanation": "Paul points to Abraham as the example of faith counted for righteousness.",
+  "ref": "Romans 4:1–3"
+ },
+ {
+  "id": "old-romans-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was counted to Abraham for righteousness?",
+  "choices": [
+   "His faith",
+   "His obedience",
+   "His sacrifice",
+   "His circumcision"
+  ],
+  "answer": 0,
+  "explanation": "Abraham believed God, and it was counted unto him for righteousness.",
+  "ref": "Romans 4:3"
+ },
+ {
+  "id": "old-romans-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Before or after circumcision was righteousness counted to Abraham?",
+  "choices": [
+   "After circumcision",
+   "During circumcision",
+   "Before circumcision",
+   "On Mount Sinai"
+  ],
+  "answer": 2,
+  "explanation": "Paul emphasizes that Abraham was counted righteous before circumcision.",
+  "ref": "Romans 4:10"
+ },
+ {
+  "id": "old-romans-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Romans 4 say Abraham became the father of?",
+  "choices": [
+   "Only the circumcised",
+   "Only Israel",
+   "Only those under the law",
+   "All them that believe"
+  ],
+  "answer": 3,
+  "explanation": "Abraham is called the father of all them that believe.",
+  "ref": "Romans 4:11"
+ },
+ {
+  "id": "old-romans-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Abraham persuaded God was able to do?",
+  "choices": [
+   "Destroy Sodom",
+   "Perform what He had promised",
+   "Give another law",
+   "Restore the temple"
+  ],
+  "answer": 1,
+  "explanation": "Abraham was fully persuaded that what God had promised, He was able also to perform.",
+  "ref": "Romans 4:21"
+ },
+ {
+  "id": "old-romans-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Being justified by faith, what do believers have?",
+  "choices": [
+   "Rule over nations",
+   "Freedom from suffering",
+   "Riches in this life",
+   "Peace with God"
+  ],
+  "answer": 3,
+  "explanation": "Romans 5:1 says being justified by faith, we have peace with God.",
+  "ref": "Romans 5:1"
+ },
+ {
+  "id": "old-romans-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say tribulation produces?",
+  "choices": [
+   "Fear",
+   "Wealth",
+   "Silence",
+   "Patience"
+  ],
+  "answer": 3,
+  "explanation": "Paul says tribulation works patience.",
+  "ref": "Romans 5:3"
+ },
+ {
+  "id": "old-romans-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "While we were yet sinners, who died for us?",
+  "choices": [
+   "Christ",
+   "Moses",
+   "An angel",
+   "Abraham"
+  ],
+  "answer": 0,
+  "explanation": "God commended His love toward us in that Christ died for us while we were yet sinners.",
+  "ref": "Romans 5:8"
+ },
+ {
+  "id": "old-romans-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By one man, what entered into the world?",
+  "choices": [
+   "The law",
+   "Sin",
+   "Prophecy",
+   "Mercy"
+  ],
+  "answer": 1,
+  "explanation": "By one man sin entered into the world, and death by sin.",
+  "ref": "Romans 5:12"
+ },
+ {
+  "id": "old-romans-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By whose obedience shall many be made righteous?",
+  "choices": [
+   "One man, Jesus Christ",
+   "Moses",
+   "David",
+   "Abraham"
+  ],
+  "answer": 0,
+  "explanation": "Paul contrasts Adam's disobedience with Christ's obedience.",
+  "ref": "Romans 5:19"
+ },
+ {
+  "id": "old-romans-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question does Paul ask at the start of Romans 6?",
+  "choices": [
+   "Shall we deny the prophets?",
+   "Shall we continue in sin, that grace may abound?",
+   "Shall we return to the law?",
+   "Shall we seek signs from heaven?"
+  ],
+  "answer": 1,
+  "explanation": "Paul rejects the idea that grace should encourage continued sin.",
+  "ref": "Romans 6:1"
+ },
+ {
+  "id": "old-romans-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into whom are believers baptized?",
+  "choices": [
+   "Jesus Christ",
+   "Moses",
+   "Abraham",
+   "John only"
+  ],
+  "answer": 0,
+  "explanation": "Believers are baptized into Jesus Christ and into His death.",
+  "ref": "Romans 6:3"
+ },
+ {
+  "id": "old-romans-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is crucified with Christ?",
+  "choices": [
+   "The law",
+   "The temple",
+   "Our memory",
+   "Our old man"
+  ],
+  "answer": 3,
+  "explanation": "Paul says our old man is crucified with Him.",
+  "ref": "Romans 6:6"
+ },
+ {
+  "id": "old-romans-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall not have dominion over believers?",
+  "choices": [
+   "Death",
+   "Rome",
+   "Sin",
+   "Fear"
+  ],
+  "answer": 2,
+  "explanation": "Sin shall not have dominion over believers because they are under grace.",
+  "ref": "Romans 6:14"
+ },
+ {
+  "id": "old-romans-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the gift of God?",
+  "choices": [
+   "Earthly success",
+   "Long life in Canaan",
+   "Eternal life through Jesus Christ",
+   "Freedom from hardship"
+  ],
+  "answer": 2,
+  "explanation": "The wages of sin is death, but the gift of God is eternal life through Jesus Christ our Lord.",
+  "ref": "Romans 6:23"
+ },
+ {
+  "id": "old-romans-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What illustration does Paul use to show how a person is released from the law?",
+  "choices": [
+   "A shepherd and sheep",
+   "A husband and wife",
+   "A king and servant",
+   "A farmer and vineyard"
+  ],
+  "answer": 1,
+  "explanation": "Paul uses marriage to illustrate release from the law through death.",
+  "ref": "Romans 7:2–3"
+ },
+ {
+  "id": "old-romans-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By what have believers become dead to the law?",
+  "choices": [
+   "Circumcision",
+   "The body of Christ",
+   "Temple sacrifice",
+   "The wisdom of Solomon"
+  ],
+  "answer": 1,
+  "explanation": "Paul says believers are become dead to the law by the body of Christ.",
+  "ref": "Romans 7:4"
+ },
+ {
+  "id": "old-romans-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul describe the law?",
+  "choices": [
+   "Holy, just, and good",
+   "Temporary and weak",
+   "Harsh and impossible",
+   "Only for Israel"
+  ],
+  "answer": 0,
+  "explanation": "Paul says the law is holy, just, and good.",
+  "ref": "Romans 7:12"
+ },
+ {
+  "id": "old-romans-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say he often found himself doing?",
+  "choices": [
+   "What he hated",
+   "The good he wanted",
+   "Only what the law required",
+   "Nothing at all"
+  ],
+  "answer": 0,
+  "explanation": "Paul describes the conflict of doing what he hates.",
+  "ref": "Romans 7:15"
+ },
+ {
+  "id": "old-romans-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Paul thank for deliverance?",
+  "choices": [
+   "The priests",
+   "God, through Jesus Christ our Lord",
+   "The law of Moses",
+   "The church at Rome"
+  ],
+  "answer": 1,
+  "explanation": "Paul thanks God through Jesus Christ our Lord.",
+  "ref": "Romans 7:25"
+ },
+ {
+  "id": "old-romans-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For those who are in Christ Jesus, what does Paul say there is now none of?",
+  "choices": [
+   "Temptation",
+   "Condemnation",
+   "Suffering",
+   "Weakness"
+  ],
+  "answer": 1,
+  "explanation": "There is therefore now no condemnation to them which are in Christ Jesus.",
+  "ref": "Romans 8:1"
+ },
+ {
+  "id": "old-romans-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say it is to be spiritually minded?",
+  "choices": [
+   "Judgment",
+   "Life and peace",
+   "Power and fear",
+   "Silence and wisdom"
+  ],
+  "answer": 1,
+  "explanation": "To be spiritually minded is life and peace.",
+  "ref": "Romans 8:6"
+ },
+ {
+  "id": "old-romans-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By the Spirit of adoption, what do believers cry?",
+  "choices": [
+   "Abba, Father",
+   "Lord of hosts",
+   "Holy, holy, holy",
+   "Come quickly"
+  ],
+  "answer": 0,
+  "explanation": "Believers received the Spirit of adoption whereby they cry, Abba, Father.",
+  "ref": "Romans 8:15"
+ },
+ {
+  "id": "old-romans-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What works together for good?",
+  "choices": [
+   "Only victories",
+   "Only spiritual gifts",
+   "Only suffering",
+   "All things"
+  ],
+  "answer": 3,
+  "explanation": "Paul says all things work together for good to them that love God.",
+  "ref": "Romans 8:28"
+ },
+ {
+  "id": "old-romans-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say can separate believers from the love of God?",
+  "choices": [
+   "Persecution",
+   "Nothing",
+   "Death",
+   "Angels"
+  ],
+  "answer": 1,
+  "explanation": "Paul concludes that nothing can separate believers from the love of God in Christ.",
+  "ref": "Romans 8:39"
+ },
+ {
+  "id": "old-romans-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whom does Paul say he has great heaviness and continual sorrow?",
+  "choices": [
+   "The Romans",
+   "The Gentile churches",
+   "His brethren according to the flesh",
+   "The rulers in Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Paul grieves deeply for Israel, his kinsmen according to the flesh.",
+  "ref": "Romans 9:2–3"
+ },
+ {
+  "id": "old-romans-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two sons does Paul name to show God's choice before birth?",
+  "choices": [
+   "Joseph and Benjamin",
+   "Cain and Abel",
+   "Esau and Jacob",
+   "Isaac and Ishmael"
+  ],
+  "answer": 2,
+  "explanation": "Paul points to Jacob and Esau to discuss God's purpose according to election.",
+  "ref": "Romans 9:10–13"
+ },
+ {
+  "id": "old-romans-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did God say, 'I will have mercy on whom I will have mercy'?",
+  "choices": [
+   "Abraham",
+   "David",
+   "Moses",
+   "Elijah"
+  ],
+  "answer": 2,
+  "explanation": "Paul quotes what God said to Moses.",
+  "ref": "Romans 9:15"
+ },
+ {
+  "id": "old-romans-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named as one whom God raised up to show His power?",
+  "choices": [
+   "Saul",
+   "Nebuchadnezzar",
+   "Ahab",
+   "Pharaoh"
+  ],
+  "answer": 3,
+  "explanation": "Paul cites Pharaoh as an example in God's dealings.",
+  "ref": "Romans 9:17"
+ },
+ {
+  "id": "old-romans-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel fail to attain because they sought it not by faith?",
+  "choices": [
+   "The promise to Abraham",
+   "The temple service",
+   "The priesthood",
+   "The law of righteousness"
+  ],
+  "answer": 3,
+  "explanation": "Israel followed after the law of righteousness but did not attain it because they sought it not by faith.",
+  "ref": "Romans 9:31–32"
+ },
+ {
+  "id": "old-romans-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Paul's heart's desire and prayer to God for Israel?",
+  "choices": [
+   "That they may prosper",
+   "That they might rule",
+   "That they might return to Egypt",
+   "That they might be saved"
+  ],
+  "answer": 3,
+  "explanation": "Paul's desire and prayer for Israel is that they might be saved.",
+  "ref": "Romans 10:1"
+ },
+ {
+  "id": "old-romans-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel have, but not according to knowledge?",
+  "choices": [
+   "A zeal of God",
+   "Boldness",
+   "Temple access",
+   "Perfect obedience"
+  ],
+  "answer": 0,
+  "explanation": "Paul says they had a zeal of God, but not according to knowledge.",
+  "ref": "Romans 10:2"
+ },
+ {
+  "id": "old-romans-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must a person confess with the mouth?",
+  "choices": [
+   "That Moses was faithful",
+   "The temple is holy",
+   "That Abraham was chosen",
+   "The Lord Jesus"
+  ],
+  "answer": 3,
+  "explanation": "If you confess with your mouth the Lord Jesus and believe in your heart, you shall be saved.",
+  "ref": "Romans 10:9"
+ },
+ {
+  "id": "old-romans-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say people cannot hear without?",
+  "choices": [
+   "A preacher",
+   "A vision",
+   "The law",
+   "Temple service"
+  ],
+  "answer": 0,
+  "explanation": "Paul asks, 'How shall they hear without a preacher?'",
+  "ref": "Romans 10:14"
+ },
+ {
+  "id": "old-romans-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are the feet of those who preach the gospel described?",
+  "choices": [
+   "Swift",
+   "Dusty",
+   "Strong",
+   "Beautiful"
+  ],
+  "answer": 3,
+  "explanation": "Paul says, 'How beautiful are the feet of them that preach the gospel of peace.'",
+  "ref": "Romans 10:15"
+ },
+ {
+  "id": "old-romans-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Paul mention as proof that God has not cast away His people?",
+  "choices": [
+   "Peter",
+   "Himself",
+   "John",
+   "Barnabas"
+  ],
+  "answer": 1,
+  "explanation": "Paul says he himself is an Israelite, of the seed of Abraham, of the tribe of Benjamin.",
+  "ref": "Romans 11:1"
+ },
+ {
+  "id": "old-romans-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men had God reserved in Elijah's day?",
+  "choices": [
+   "Twelve thousand",
+   "Seventy",
+   "Seven thousand",
+   "Five hundred"
+  ],
+  "answer": 2,
+  "explanation": "God had reserved seven thousand men who had not bowed to Baal.",
+  "ref": "Romans 11:4"
+ },
+ {
+  "id": "old-romans-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What tree does Paul use to describe Jews and Gentiles?",
+  "choices": [
+   "Fig tree",
+   "Olive tree",
+   "Cedar tree",
+   "Vine"
+  ],
+  "answer": 1,
+  "explanation": "Paul uses the image of an olive tree with natural and wild branches.",
+  "ref": "Romans 11:17–24"
+ },
+ {
+  "id": "old-romans-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should Gentile believers not do against the branches?",
+  "choices": [
+   "Prune them",
+   "Ignore them",
+   "Fear them",
+   "Boast"
+  ],
+  "answer": 3,
+  "explanation": "Paul warns the Gentiles not to boast against the branches.",
+  "ref": "Romans 11:18"
+ },
+ {
+  "id": "old-romans-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Romans 11:33 describe the judgments and ways of God?",
+  "choices": [
+   "Simple and predictable",
+   "Harsh but temporary",
+   "Only for prophets",
+   "Unsearchable and past finding out"
+  ],
+  "answer": 3,
+  "explanation": "Paul ends the chapter praising the depth of God's wisdom and knowledge.",
+  "ref": "Romans 11:33"
+ },
+ {
+  "id": "old-romans-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul urge believers to present as a living sacrifice?",
+  "choices": [
+   "Their possessions",
+   "Their words only",
+   "Their bodies",
+   "Their plans"
+  ],
+  "answer": 2,
+  "explanation": "Paul urges believers to present their bodies a living sacrifice.",
+  "ref": "Romans 12:1"
+ },
+ {
+  "id": "old-romans-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Instead of being conformed to this world, what should believers be?",
+  "choices": [
+   "Transformed by the renewing of their mind",
+   "Exalted",
+   "Hidden from men",
+   "Separated from all people"
+  ],
+  "answer": 0,
+  "explanation": "Believers are to be transformed by the renewing of their mind.",
+  "ref": "Romans 12:2"
+ },
+ {
+  "id": "old-romans-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How should a person think of himself?",
+  "choices": [
+   "Soberly",
+   "More highly than he ought",
+   "As low as possible",
+   "Only through tradition"
+  ],
+  "answer": 0,
+  "explanation": "Paul says to think soberly, according as God has dealt the measure of faith.",
+  "ref": "Romans 12:3"
+ },
+ {
+  "id": "old-romans-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of love does Romans 12:9 command?",
+  "choices": [
+   "Public love only",
+   "Love for family first",
+   "Love with rewards",
+   "Love without dissimulation"
+  ],
+  "answer": 3,
+  "explanation": "Love is to be genuine, without dissimulation.",
+  "ref": "Romans 12:9"
+ },
+ {
+  "id": "old-romans-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Romans 12:21 tell believers to overcome evil?",
+  "choices": [
+   "By judgment",
+   "With good",
+   "By silence",
+   "By separation"
+  ],
+  "answer": 1,
+  "explanation": "Paul says, 'Be not overcome of evil, but overcome evil with good.'",
+  "ref": "Romans 12:21"
+ },
+ {
+  "id": "old-romans-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom should every soul be subject?",
+  "choices": [
+   "Only church elders",
+   "The higher powers",
+   "Only Jewish rulers",
+   "Prophets and apostles"
+  ],
+  "answer": 1,
+  "explanation": "Paul says every soul should be subject unto the higher powers.",
+  "ref": "Romans 13:1"
+ },
+ {
+  "id": "old-romans-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the fulfilling of the law?",
+  "choices": [
+   "Sacrifice",
+   "Circumcision",
+   "Knowledge",
+   "Love"
+  ],
+  "answer": 3,
+  "explanation": "Love works no ill to his neighbor, therefore love is the fulfilling of the law.",
+  "ref": "Romans 13:10"
+ },
+ {
+  "id": "old-romans-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say believers should cast off?",
+  "choices": [
+   "The old temple",
+   "All earthly ties",
+   "Every authority",
+   "The works of darkness"
+  ],
+  "answer": 3,
+  "explanation": "Paul tells believers to cast off the works of darkness.",
+  "ref": "Romans 13:12"
+ },
+ {
+  "id": "old-romans-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should believers put on?",
+  "choices": [
+   "The breastplate of Aaron",
+   "A garment of mourning",
+   "The armor of light",
+   "A crown of wisdom"
+  ],
+  "answer": 2,
+  "explanation": "Paul says to put on the armor of light.",
+  "ref": "Romans 13:12"
+ },
+ {
+  "id": "old-romans-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom are believers told to put on?",
+  "choices": [
+   "Moses",
+   "The Lord Jesus Christ",
+   "The new man",
+   "The church"
+  ],
+  "answer": 1,
+  "explanation": "Paul says to put on the Lord Jesus Christ and make no provision for the flesh.",
+  "ref": "Romans 13:14"
+ },
+ {
+  "id": "old-romans-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul say to receive a person who is weak in the faith?",
+  "choices": [
+   "With fear",
+   "Only after testing him",
+   "As a servant",
+   "Without arguing over doubtful things"
+  ],
+  "answer": 3,
+  "explanation": "Paul says to receive him that is weak in the faith, but not to doubtful disputations.",
+  "ref": "Romans 14:1"
+ },
+ {
+  "id": "old-romans-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Paul say is able to make another man's servant stand?",
+  "choices": [
+   "The church",
+   "God",
+   "His own discipline",
+   "The law"
+  ],
+  "answer": 1,
+  "explanation": "Paul says he shall be holden up, for God is able to make him stand.",
+  "ref": "Romans 14:4"
+ },
+ {
+  "id": "old-romans-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the kingdom of God not?",
+  "choices": [
+   "Grace and truth",
+   "Meat and drink",
+   "Prayer and praise",
+   "Law and prophecy"
+  ],
+  "answer": 1,
+  "explanation": "The kingdom of God is not meat and drink; but righteousness, peace, and joy in the Holy Ghost.",
+  "ref": "Romans 14:17"
+ },
+ {
+  "id": "old-romans-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should believers follow after?",
+  "choices": [
+   "Signs and wonders",
+   "Silence and fasting",
+   "Judgment and zeal",
+   "Peace and things that edify"
+  ],
+  "answer": 3,
+  "explanation": "Paul says to follow after things which make for peace and mutual edification.",
+  "ref": "Romans 14:19"
+ },
+ {
+  "id": "old-romans-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whatsoever is not of faith is what?",
+  "choices": [
+   "Weakness",
+   "Sin",
+   "Tradition",
+   "A stumbling block"
+  ],
+  "answer": 1,
+  "explanation": "Paul concludes that whatsoever is not of faith is sin.",
+  "ref": "Romans 14:23"
+ },
+ {
+  "id": "old-romans-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should the strong do?",
+  "choices": [
+   "Teach the weak",
+   "Separate from the weak",
+   "Bear the infirmities of the weak",
+   "Rule the weak"
+  ],
+  "answer": 2,
+  "explanation": "The strong ought to bear the infirmities of the weak and not please themselves.",
+  "ref": "Romans 15:1"
+ },
+ {
+  "id": "old-romans-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were the scriptures written aforetime?",
+  "choices": [
+   "To preserve Israel's history only",
+   "To judge the nations",
+   "To replace the prophets",
+   "For our learning"
+  ],
+  "answer": 3,
+  "explanation": "They were written for our learning, that we through patience and comfort of the scriptures might have hope.",
+  "ref": "Romans 15:4"
+ },
+ {
+  "id": "old-romans-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title does Paul use for Christ?",
+  "choices": [
+   "King of the Jews",
+   "Minister of the circumcision",
+   "Bread of life",
+   "Chief Shepherd"
+  ],
+  "answer": 1,
+  "explanation": "Paul says Jesus Christ was a minister of the circumcision for the truth of God.",
+  "ref": "Romans 15:8"
+ },
+ {
+  "id": "old-romans-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which place did Paul say he hoped to journey after seeing Rome?",
+  "choices": [
+   "Antioch",
+   "Spain",
+   "Jerusalem",
+   "Alexandria"
+  ],
+  "answer": 1,
+  "explanation": "Paul hoped to travel to Spain and see the Romans on the way.",
+  "ref": "Romans 15:24"
+ },
+ {
+  "id": "old-romans-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For what practical purpose was Paul going to Jerusalem?",
+  "choices": [
+   "To appeal to Caesar",
+   "To rebuild the walls",
+   "To minister to the saints with a contribution",
+   "To attend a feast only"
+  ],
+  "answer": 2,
+  "explanation": "Paul was going to Jerusalem to minister to the poor saints there.",
+  "ref": "Romans 15:25–26"
+ },
+ {
+  "id": "old-romans-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Paul commend to the Romans at the start of chapter 16?",
+  "choices": [
+   "Priscilla",
+   "Phoebe",
+   "Junia",
+   "Mary"
+  ],
+  "answer": 1,
+  "explanation": "Paul commends Phoebe, a servant of the church at Cenchrea.",
+  "ref": "Romans 16:1"
+ },
+ {
+  "id": "old-romans-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which couple does Paul call his helpers in Christ Jesus?",
+  "choices": [
+   "Andronicus and Junia",
+   "Mary and Martha",
+   "Priscilla and Aquila",
+   "Narcissus and Rufus"
+  ],
+  "answer": 2,
+  "explanation": "Paul greets Priscilla and Aquila as his helpers in Christ Jesus.",
+  "ref": "Romans 16:3"
+ },
+ {
+  "id": "old-romans-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul tell the Romans to mark and avoid?",
+  "choices": [
+   "False signs",
+   "Those causing divisions and offenses contrary to the doctrine",
+   "All civil rulers",
+   "The weak in faith"
+  ],
+  "answer": 1,
+  "explanation": "Paul warns believers to mark and avoid those who cause divisions and offenses contrary to sound teaching.",
+  "ref": "Romans 16:17"
+ },
+ {
+  "id": "old-romans-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will God bruise under the believers' feet shortly?",
+  "choices": [
+   "Satan",
+   "Death",
+   "The serpent",
+   "The nations"
+  ],
+  "answer": 0,
+  "explanation": "Paul says the God of peace shall bruise Satan under your feet shortly.",
+  "ref": "Romans 16:20"
+ },
+ {
+  "id": "old-romans-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Through what does Paul say God is able to establish believers?",
+  "choices": [
+   "The temple law",
+   "The wisdom of the Greeks",
+   "Paul's gospel and the preaching of Jesus Christ",
+   "The traditions of the elders"
+  ],
+  "answer": 2,
+  "explanation": "God establishes believers according to Paul's gospel and the preaching of Jesus Christ.",
+  "ref": "Romans 16:25"
+ }
+]

@@ -1,0 +1,2002 @@
+[
+ {
+  "id": "old-2-kings-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After Ahab's death, what nation rebelled against Israel?",
+  "choices": [
+   "Edom",
+   "Syria",
+   "Egypt",
+   "Moab"
+  ],
+  "answer": 3,
+  "explanation": "Moab rebelled after Ahab's death.",
+  "ref": "2 Kings 1:1"
+ },
+ {
+  "id": "old-2-kings-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which false god did Ahaziah send to inquire of after falling through a lattice?",
+  "choices": [
+   "Baal-peor",
+   "Dagon of Ashdod",
+   "Chemosh of Moab",
+   "Baalzebub god of Ekron"
+  ],
+  "answer": 3,
+  "explanation": "Ahaziah sent messengers to Baalzebub instead of seeking the Lord.",
+  "ref": "2 Kings 1:2"
+ },
+ {
+  "id": "old-2-kings-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question did the Lord tell Elijah to ask the king's messengers?",
+  "choices": [
+   "Who is king in Samaria?",
+   "Where is the ark?",
+   "Is it not because there is not a God in Israel?",
+   "Why seek ye David?"
+  ],
+  "answer": 2,
+  "explanation": "The rebuke exposed Ahaziah's unbelief.",
+  "ref": "2 Kings 1:3"
+ },
+ {
+  "id": "old-2-kings-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the first two captains of fifty sent to Elijah?",
+  "choices": [
+   "Fire came down from heaven and consumed them",
+   "They became prophets",
+   "They fled to Judah",
+   "They arrested him"
+  ],
+  "answer": 0,
+  "explanation": "Fire from heaven consumed the first two captains and their fifties.",
+  "ref": "2 Kings 1:10–12"
+ },
+ {
+  "id": "old-2-kings-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elijah say would happen to Ahaziah?",
+  "choices": [
+   "He would recover",
+   "He would reign forty years",
+   "He would defeat Moab",
+   "He would not come down from his bed but surely die"
+  ],
+  "answer": 3,
+  "explanation": "Elijah announced that Ahaziah would die from his injury.",
+  "ref": "2 Kings 1:4"
+ },
+ {
+  "id": "old-2-kings-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what place did Elijah and Elisha first go when the Lord would take Elijah up?",
+  "choices": [
+   "Jerusalem",
+   "Gilgal",
+   "Samaria",
+   "Hebron"
+  ],
+  "answer": 1,
+  "explanation": "Elijah and Elisha went from Gilgal.",
+  "ref": "2 Kings 2:1"
+ },
+ {
+  "id": "old-2-kings-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha ask of Elijah before he was taken away?",
+  "choices": [
+   "Elijah's sandals",
+   "A double portion of Elijah's spirit",
+   "A kingdom",
+   "A sword"
+  ],
+  "answer": 1,
+  "explanation": "Elisha requested a double portion of Elijah's spirit.",
+  "ref": "2 Kings 2:9"
+ },
+ {
+  "id": "old-2-kings-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was Elijah taken from Elisha's sight?",
+  "choices": [
+   "By a cloud only",
+   "By a boat on Jordan",
+   "By a chariot of fire and horses of fire in a whirlwind",
+   "By a ladder"
+  ],
+  "answer": 2,
+  "explanation": "Elijah went up by a whirlwind after the fiery chariot separated them.",
+  "ref": "2 Kings 2:11"
+ },
+ {
+  "id": "old-2-kings-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha use to part the Jordan after Elijah was taken?",
+  "choices": [
+   "His rod",
+   "Elijah's mantle",
+   "A trumpet",
+   "The ark"
+  ],
+  "answer": 1,
+  "explanation": "Elisha struck the waters with Elijah's mantle.",
+  "ref": "2 Kings 2:13–14"
+ },
+ {
+  "id": "old-2-kings-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What miracle did Elisha do for the water of Jericho?",
+  "choices": [
+   "Healed it with salt",
+   "Turned it to blood",
+   "Dried it up",
+   "Made it bitter"
+  ],
+  "answer": 0,
+  "explanation": "Elisha healed the bad water by casting salt into the spring.",
+  "ref": "2 Kings 2:19–22"
+ },
+ {
+  "id": "old-2-kings-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who became king of Israel after Ahaziah?",
+  "choices": [
+   "Ahab",
+   "Jehu",
+   "Hazael",
+   "Jehoram son of Ahab"
+  ],
+  "answer": 3,
+  "explanation": "Jehoram, son of Ahab, reigned after Ahaziah.",
+  "ref": "2 Kings 3:1"
+ },
+ {
+  "id": "old-2-kings-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What idolatrous object of his father did Jehoram remove?",
+  "choices": [
+   "The golden calf at Dan",
+   "The altar at Bethel",
+   "The image of Baal that his father made",
+   "A grove in Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Jehoram removed Ahab's image of Baal, though he still followed Jeroboam's sins.",
+  "ref": "2 Kings 3:2"
+ },
+ {
+  "id": "old-2-kings-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which king of Judah went with Israel against Moab?",
+  "choices": [
+   "Asa",
+   "Joash",
+   "Jehoshaphat",
+   "Hezekiah"
+  ],
+  "answer": 2,
+  "explanation": "Jehoshaphat allied with Israel in the campaign.",
+  "ref": "2 Kings 3:7"
+ },
+ {
+  "id": "old-2-kings-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when the minstrel played for Elisha?",
+  "choices": [
+   "The kings fell asleep",
+   "The Moabites fled",
+   "The horses grew calm",
+   "The hand of the Lord came upon him"
+  ],
+  "answer": 3,
+  "explanation": "As the minstrel played, the hand of the Lord came upon Elisha.",
+  "ref": "2 Kings 3:15"
+ },
+ {
+  "id": "old-2-kings-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Moabites think the water was when the morning sun made it look red?",
+  "choices": [
+   "Wine",
+   "Fire",
+   "Blood",
+   "Copper"
+  ],
+  "answer": 2,
+  "explanation": "They mistook the water for blood and assumed the kings had slaughtered one another.",
+  "ref": "2 Kings 3:22–23"
+ },
+ {
+  "id": "old-2-kings-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What miracle provided for the indebted widow of a son of the prophets?",
+  "choices": [
+   "Gold in a fish",
+   "Oil multiplied in borrowed vessels",
+   "Manna from heaven",
+   "A field of barley"
+  ],
+  "answer": 1,
+  "explanation": "Elisha told her to borrow vessels, and God filled them with oil.",
+  "ref": "2 Kings 4:1–7"
+ },
+ {
+  "id": "old-2-kings-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who made a little chamber on the wall for Elisha?",
+  "choices": [
+   "The widow of Zarephath",
+   "Naaman's wife",
+   "Jezebel",
+   "A great woman of Shunem"
+  ],
+  "answer": 3,
+  "explanation": "The Shunammite woman prepared a room for Elisha.",
+  "ref": "2 Kings 4:8–10"
+ },
+ {
+  "id": "old-2-kings-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha promise the Shunammite woman?",
+  "choices": [
+   "A vineyard",
+   "A royal office",
+   "A healing from leprosy",
+   "A son"
+  ],
+  "answer": 3,
+  "explanation": "Elisha promised she would embrace a son.",
+  "ref": "2 Kings 4:16–17"
+ },
+ {
+  "id": "old-2-kings-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the sons of the prophets cry when poison was discovered in the pot?",
+  "choices": [
+   "No bread!",
+   "O thou man of God, there is death in the pot",
+   "Where is Elijah?",
+   "The water is bitter"
+  ],
+  "answer": 1,
+  "explanation": "As they ate the pottage they cried out, O thou man of God, there is death in the pot. Elisha then cast meal into the pot and there was no harm in it.",
+  "ref": "2 Kings 4:40"
+ },
+ {
+  "id": "old-2-kings-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what small provision did Elisha feed a hundred men?",
+  "choices": [
+   "Five loaves and two fish",
+   "One jar of oil",
+   "Seven cakes",
+   "Twenty barley loaves and full ears of corn"
+  ],
+  "answer": 3,
+  "explanation": "The men ate and left food over according to the Lord's word.",
+  "ref": "2 Kings 4:42–44"
+ },
+ {
+  "id": "old-2-kings-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Naaman's position?",
+  "choices": [
+   "Captain of the host of the king of Syria",
+   "King of Syria",
+   "Priest of Baal",
+   "King of Israel"
+  ],
+  "answer": 0,
+  "explanation": "Naaman was a great Syrian commander, but he was leprous.",
+  "ref": "2 Kings 5:1"
+ },
+ {
+  "id": "old-2-kings-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who suggested that Naaman seek the prophet in Samaria?",
+  "choices": [
+   "His wife",
+   "A little captive maid from Israel",
+   "Gehazi",
+   "The king of Israel"
+  ],
+  "answer": 1,
+  "explanation": "A young Israelite servant girl pointed him toward Elisha.",
+  "ref": "2 Kings 5:2–3"
+ },
+ {
+  "id": "old-2-kings-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha tell Naaman to do to be clean?",
+  "choices": [
+   "Offer a bull",
+   "Fast forty days",
+   "Wash in Jordan seven times",
+   "Touch the ark"
+  ],
+  "answer": 2,
+  "explanation": "The prophet instructed him to wash seven times in Jordan.",
+  "ref": "2 Kings 5:10"
+ },
+ {
+  "id": "old-2-kings-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Naaman confess after his healing?",
+  "choices": [
+   "Syria's gods healed him",
+   "There is no God in all the earth, but in Israel",
+   "Jordan is magic",
+   "Elisha is king"
+  ],
+  "answer": 1,
+  "explanation": "Naaman acknowledged the God of Israel.",
+  "ref": "2 Kings 5:15"
+ },
+ {
+  "id": "old-2-kings-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What judgment came on Gehazi for pursuing Naaman's gifts and lying?",
+  "choices": [
+   "Blindness",
+   "Naaman's leprosy clave to him",
+   "Exile to Syria",
+   "Death"
+  ],
+  "answer": 1,
+  "explanation": "Gehazi was struck with Naaman's leprosy.",
+  "ref": "2 Kings 5:27"
+ },
+ {
+  "id": "old-2-kings-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What borrowed tool fell into the Jordan while the prophets were building?",
+  "choices": [
+   "An axe head",
+   "A hammer",
+   "A saw",
+   "A spear"
+  ],
+  "answer": 0,
+  "explanation": "A borrowed axe head fell into the water.",
+  "ref": "2 Kings 6:5"
+ },
+ {
+  "id": "old-2-kings-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Elisha recover the axe head?",
+  "choices": [
+   "He dived for it",
+   "He cast in a stick and made the iron swim",
+   "He drained the river",
+   "He bought another"
+  ],
+  "answer": 1,
+  "explanation": "The iron axe head miraculously floated.",
+  "ref": "2 Kings 6:6"
+ },
+ {
+  "id": "old-2-kings-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha's servant see after Elisha prayed for his eyes to be opened?",
+  "choices": [
+   "A secret tunnel",
+   "The ark",
+   "Ravens bringing food",
+   "The mountain full of horses and chariots of fire"
+  ],
+  "answer": 3,
+  "explanation": "God revealed the heavenly army surrounding Elisha.",
+  "ref": "2 Kings 6:17"
+ },
+ {
+  "id": "old-2-kings-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha do to the Syrian band that came to capture him?",
+  "choices": [
+   "Killed them all",
+   "Asked God to strike them with blindness and led them to Samaria",
+   "Surrendered",
+   "Called fire from heaven"
+  ],
+  "answer": 1,
+  "explanation": "The blinded Syrians were led into Samaria and then spared.",
+  "ref": "2 Kings 6:18–20"
+ },
+ {
+  "id": "old-2-kings-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What desperate condition is described during Samaria's later siege?",
+  "choices": [
+   "No water only",
+   "Severe famine and even cannibalism",
+   "A plague of frogs",
+   "A locust cloud"
+  ],
+  "answer": 1,
+  "explanation": "The siege brought horrific famine to Samaria.",
+  "ref": "2 Kings 6:25–29"
+ },
+ {
+  "id": "old-2-kings-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What impossible-sounding promise did Elisha make about food in Samaria?",
+  "choices": [
+   "Fine flour and barley would be sold cheaply tomorrow",
+   "Rain would fall that night",
+   "The king would die immediately",
+   "Jerusalem would send bread"
+  ],
+  "answer": 0,
+  "explanation": "Elisha said that by the next day fine flour and barley would be sold for a shekel in the gate of Samaria.",
+  "ref": "2 Kings 7:1"
+ },
+ {
+  "id": "old-2-kings-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the skeptical lord say in response to Elisha's prophecy?",
+  "choices": [
+   "I believe",
+   "Let us surrender",
+   "Where is the king?",
+   "If the Lord would make windows in heaven, might this thing be?"
+  ],
+  "answer": 3,
+  "explanation": "He mocked the promise of immediate provision.",
+  "ref": "2 Kings 7:2"
+ },
+ {
+  "id": "old-2-kings-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who first discovered the Syrian camp was abandoned?",
+  "choices": [
+   "Four leprous men at the gate",
+   "The king's guard",
+   "Elisha's servant",
+   "Syrian deserters"
+  ],
+  "answer": 0,
+  "explanation": "Four lepers went to the camp and found it empty.",
+  "ref": "2 Kings 7:3–8"
+ },
+ {
+  "id": "old-2-kings-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sound had the Lord caused the Syrians to hear?",
+  "choices": [
+   "A trumpet only",
+   "A rushing river",
+   "The noise of chariots, horses, and a great host",
+   "Thunder from Carmel"
+  ],
+  "answer": 2,
+  "explanation": "The Syrians thought hired armies were coming against them.",
+  "ref": "2 Kings 7:6"
+ },
+ {
+  "id": "old-2-kings-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the skeptical lord who doubted Elisha's prophecy?",
+  "choices": [
+   "He ate first",
+   "He saw the plenty but was trampled in the gate",
+   "He became king",
+   "He fled with Syria"
+  ],
+  "answer": 1,
+  "explanation": "The word was fulfilled: he saw the abundance but did not eat of it.",
+  "ref": "2 Kings 7:17–20"
+ },
+ {
+  "id": "old-2-kings-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Elisha tell the Shunammite woman to leave her land for seven years?",
+  "choices": [
+   "A war was coming",
+   "She was unclean",
+   "The Lord had called for a famine",
+   "Her son needed school"
+  ],
+  "answer": 2,
+  "explanation": "Elisha warned her of a seven-year famine.",
+  "ref": "2 Kings 8:1"
+ },
+ {
+  "id": "old-2-kings-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was telling the king about Elisha's miracles when the Shunammite came to request her land?",
+  "choices": [
+   "Naaman",
+   "Hazael",
+   "Gehazi",
+   "Jehu"
+  ],
+  "answer": 2,
+  "explanation": "Gehazi was recounting Elisha's works when she appeared.",
+  "ref": "2 Kings 8:4–5"
+ },
+ {
+  "id": "old-2-kings-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha foresee when looking at Hazael?",
+  "choices": [
+   "Hazael would repent",
+   "Hazael would heal Naaman",
+   "Hazael would build the temple",
+   "The evil Hazael would do to Israel"
+  ],
+  "answer": 3,
+  "explanation": "Elisha wept because he foresaw Hazael's violence against Israel.",
+  "ref": "2 Kings 8:11–13"
+ },
+ {
+  "id": "old-2-kings-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Hazael become king of Syria?",
+  "choices": [
+   "Ben-hadad crowned him",
+   "Israel appointed him",
+   "He smothered Ben-hadad with a wet cloth and reigned",
+   "Elijah anointed him publicly"
+  ],
+  "answer": 2,
+  "explanation": "Hazael murdered Ben-hadad and seized the throne.",
+  "ref": "2 Kings 8:15"
+ },
+ {
+  "id": "old-2-kings-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the Lord not destroy Judah despite Jehoram's evil?",
+  "choices": [
+   "Judah had many horses",
+   "Because Ahab asked",
+   "For David his servant's sake",
+   "Because Hazael helped"
+  ],
+  "answer": 2,
+  "explanation": "God remembered His covenant promise to David.",
+  "ref": "2 Kings 8:19"
+ },
+ {
+  "id": "old-2-kings-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sent a son of the prophets to anoint Jehu?",
+  "choices": [
+   "Elijah",
+   "Micaiah",
+   "Elisha",
+   "Isaiah"
+  ],
+  "answer": 2,
+  "explanation": "Elisha sent a young prophet to anoint Jehu privately.",
+  "ref": "2 Kings 9:1–6"
+ },
+ {
+  "id": "old-2-kings-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What mission was Jehu given regarding Ahab's house?",
+  "choices": [
+   "Protect it",
+   "Marry into it",
+   "Restore Naboth's vineyard",
+   "Smite the house of Ahab"
+  ],
+  "answer": 3,
+  "explanation": "Jehu was commissioned to execute judgment on Ahab's house.",
+  "ref": "2 Kings 9:7–10"
+ },
+ {
+  "id": "old-2-kings-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jehu kill Joram king of Israel?",
+  "choices": [
+   "Samaria's gate",
+   "Jerusalem",
+   "Mount Carmel",
+   "The portion of Naboth the Jezreelite"
+  ],
+  "answer": 3,
+  "explanation": "Joram's body was cast into Naboth's field, fulfilling judgment.",
+  "ref": "2 Kings 9:21–26"
+ },
+ {
+  "id": "old-2-kings-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the watchman recognize Jehu as his chariot approached?",
+  "choices": [
+   "By his crown",
+   "By his furious driving",
+   "By a trumpet song",
+   "By a white horse"
+  ],
+  "answer": 1,
+  "explanation": "The watchman recognized Jehu's furious driving.",
+  "ref": "2 Kings 9:20"
+ },
+ {
+  "id": "old-2-kings-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Jezebel in Jezreel?",
+  "choices": [
+   "She repented",
+   "She fled to Tyre",
+   "She was thrown down, trampled, and eaten by dogs",
+   "She became queen of Judah"
+  ],
+  "answer": 2,
+  "explanation": "Jezebel's death fulfilled Elijah's word about dogs.",
+  "ref": "2 Kings 9:33–37"
+ },
+ {
+  "id": "old-2-kings-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sons of Ahab are mentioned in Samaria?",
+  "choices": [
+   "12",
+   "40",
+   "70",
+   "100"
+  ],
+  "answer": 2,
+  "explanation": "Seventy sons of Ahab were in Samaria.",
+  "ref": "2 Kings 10:1"
+ },
+ {
+  "id": "old-2-kings-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the rulers of Samaria send to Jehu in baskets?",
+  "choices": [
+   "The heads of Ahab's sons",
+   "Gold",
+   "Bread",
+   "Baal's images"
+  ],
+  "answer": 0,
+  "explanation": "They beheaded Ahab's sons and sent their heads to Jehu.",
+  "ref": "2 Kings 10:7"
+ },
+ {
+  "id": "old-2-kings-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jehu meet and take into his chariot, saying, 'Come with me, and see my zeal for the Lord'?",
+  "choices": [
+   "Elisha",
+   "Hazael",
+   "Jehonadab son of Rechab",
+   "Joash"
+  ],
+  "answer": 2,
+  "explanation": "Jehonadab joined Jehu in the chariot.",
+  "ref": "2 Kings 10:15–16"
+ },
+ {
+  "id": "old-2-kings-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jehu gather the worshipers of Baal?",
+  "choices": [
+   "By warning them",
+   "By calling a fast to the Lord",
+   "By sending Elijah",
+   "By pretending he would serve Baal much"
+  ],
+  "answer": 3,
+  "explanation": "Jehu used deception to gather Baal's servants for judgment.",
+  "ref": "2 Kings 10:18–24"
+ },
+ {
+  "id": "old-2-kings-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sin did Jehu refuse to depart from?",
+  "choices": [
+   "Building the temple",
+   "Worshiping Dagon",
+   "The golden calves at Bethel and Dan",
+   "Seeking Baalzebub"
+  ],
+  "answer": 2,
+  "explanation": "Jehu destroyed Baal but continued Jeroboam's calf worship.",
+  "ref": "2 Kings 10:29–31"
+ },
+ {
+  "id": "old-2-kings-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who destroyed the royal seed after Ahaziah's death?",
+  "choices": [
+   "Jezebel",
+   "Huldah",
+   "Athaliah",
+   "Maachah"
+  ],
+  "answer": 2,
+  "explanation": "Athaliah tried to eliminate the royal line.",
+  "ref": "2 Kings 11:1"
+ },
+ {
+  "id": "old-2-kings-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was rescued and hidden in the house of the Lord for six years?",
+  "choices": [
+   "Joash",
+   "Uzziah",
+   "Hezekiah",
+   "Josiah"
+  ],
+  "answer": 0,
+  "explanation": "Joash was hidden from Athaliah.",
+  "ref": "2 Kings 11:2–3"
+ },
+ {
+  "id": "old-2-kings-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which priest arranged Joash's public coronation?",
+  "choices": [
+   "Zadok",
+   "Abiathar",
+   "Jehoiada",
+   "Azariah"
+  ],
+  "answer": 2,
+  "explanation": "Jehoiada organized the guards and crowned Joash.",
+  "ref": "2 Kings 11:4–12"
+ },
+ {
+  "id": "old-2-kings-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Athaliah cry when she saw Joash crowned?",
+  "choices": [
+   "Peace!",
+   "The Lord reigns",
+   "Where is Jehu?",
+   "Treason, Treason"
+  ],
+  "answer": 3,
+  "explanation": "Athaliah cried 'Treason' at the coronation.",
+  "ref": "2 Kings 11:14"
+ },
+ {
+  "id": "old-2-kings-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people break down after Jehoiada made a covenant between the Lord, the king, and the people?",
+  "choices": [
+   "The house and altar of Baal",
+   "Jerusalem's wall",
+   "The temple doors",
+   "Solomon's throne"
+  ],
+  "answer": 0,
+  "explanation": "The people destroyed Baal's house and altar.",
+  "ref": "2 Kings 11:17–18"
+ },
+ {
+  "id": "old-2-kings-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did Joash reign in Jerusalem?",
+  "choices": [
+   "40",
+   "7",
+   "12",
+   "20"
+  ],
+  "answer": 0,
+  "explanation": "Jehoash, also called Joash, reigned forty years in Jerusalem.",
+  "ref": "2 Kings 12:1"
+ },
+ {
+  "id": "old-2-kings-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Joash's early reign described?",
+  "choices": [
+   "He did evil all his days",
+   "He did right while Jehoiada instructed him",
+   "He served Baal openly",
+   "He ruled from Samaria"
+  ],
+  "answer": 1,
+  "explanation": "Joash followed the Lord under Jehoiada's guidance.",
+  "ref": "2 Kings 12:2"
+ },
+ {
+  "id": "old-2-kings-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What problem was Joash concerned about in the house of the Lord?",
+  "choices": [
+   "The ark was lost",
+   "No incense remained",
+   "The breaches of the house were not repaired",
+   "The priests left"
+  ],
+  "answer": 2,
+  "explanation": "Joash ordered temple money to be used for repairing the house.",
+  "ref": "2 Kings 12:4–8"
+ },
+ {
+  "id": "old-2-kings-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was repair money collected after the new arrangement?",
+  "choices": [
+   "By a temple tax from Tyre",
+   "Through tribute from Moab",
+   "In a chest with a hole in the lid by the altar",
+   "By selling vessels"
+  ],
+  "answer": 2,
+  "explanation": "Jehoiada placed a chest by the altar to receive offerings.",
+  "ref": "2 Kings 12:9"
+ },
+ {
+  "id": "old-2-kings-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joash give Hazael to turn him away from Jerusalem?",
+  "choices": [
+   "The ark",
+   "The city gates",
+   "His crown only",
+   "Sacred treasures and gold from the temple and palace"
+  ],
+  "answer": 3,
+  "explanation": "Joash sent the dedicated treasures and gold to Hazael.",
+  "ref": "2 Kings 12:17–18"
+ },
+ {
+  "id": "old-2-kings-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Under whose oppression did Israel suffer during Jehoahaz's reign?",
+  "choices": [
+   "Moab",
+   "Egypt",
+   "Assyria",
+   "Hazael and Ben-hadad of Syria"
+  ],
+  "answer": 3,
+  "explanation": "The Lord delivered Israel into the hand of Hazael and Ben-hadad.",
+  "ref": "2 Kings 13:3"
+ },
+ {
+  "id": "old-2-kings-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord provide when Jehoahaz besought Him?",
+  "choices": [
+   "A temple",
+   "A saviour for Israel",
+   "A new priesthood",
+   "A flood"
+  ],
+  "answer": 1,
+  "explanation": "The Lord gave Israel a deliverer because He saw their oppression.",
+  "ref": "2 Kings 13:4–5"
+ },
+ {
+  "id": "old-2-kings-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joash king of Israel call Elisha when Elisha was sick unto death?",
+  "choices": [
+   "My lord king",
+   "My father, the chariot of Israel, and the horsemen thereof",
+   "Troubler of Israel",
+   "Servant of Ahab"
+  ],
+  "answer": 1,
+  "explanation": "Joash used the same kind of phrase Elisha used for Elijah.",
+  "ref": "2 Kings 13:14"
+ },
+ {
+  "id": "old-2-kings-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha tell Joash to do with the arrows, which Joash did only three times?",
+  "choices": [
+   "Burn them",
+   "Throw them into Jordan",
+   "Smite upon the ground",
+   "Break them"
+  ],
+  "answer": 2,
+  "explanation": "Joash struck the ground only three times and limited the victories.",
+  "ref": "2 Kings 13:18–19"
+ },
+ {
+  "id": "old-2-kings-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when a dead man touched Elisha's bones?",
+  "choices": [
+   "He turned to dust",
+   "He remained dead",
+   "The grave shut",
+   "He revived and stood on his feet"
+  ],
+  "answer": 3,
+  "explanation": "The corpse revived when it touched Elisha's bones.",
+  "ref": "2 Kings 13:21"
+ },
+ {
+  "id": "old-2-kings-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which king of Judah executed the servants who had slain his father?",
+  "choices": [
+   "Uzziah",
+   "Ahaz",
+   "Manasseh",
+   "Amaziah"
+  ],
+  "answer": 3,
+  "explanation": "Amaziah executed the men who murdered his father Joash.",
+  "ref": "2 Kings 14:5"
+ },
+ {
+  "id": "old-2-kings-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Amaziah not kill the children of his father's murderers?",
+  "choices": [
+   "They escaped",
+   "The law of Moses forbade it",
+   "They were priests",
+   "He forgot"
+  ],
+  "answer": 1,
+  "explanation": "He obeyed the law that children should not die for fathers' sins.",
+  "ref": "2 Kings 14:6"
+ },
+ {
+  "id": "old-2-kings-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What challenge did Amaziah send to Jehoash king of Israel?",
+  "choices": [
+   "Make a covenant",
+   "Return the ark",
+   "Serve me",
+   "Come, let us look one another in the face"
+  ],
+  "answer": 3,
+  "explanation": "Amaziah challenged Israel's king after defeating Edom.",
+  "ref": "2 Kings 14:8"
+ },
+ {
+  "id": "old-2-kings-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when Amaziah fought Jehoash?",
+  "choices": [
+   "Judah was defeated and Jerusalem's wall was broken",
+   "Judah won",
+   "Both kings died",
+   "Edom intervened"
+  ],
+  "answer": 0,
+  "explanation": "Israel defeated Judah, broke Jerusalem's wall, and took treasures.",
+  "ref": "2 Kings 14:11–14"
+ },
+ {
+  "id": "old-2-kings-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What prophet had spoken of the restoration of Israel's coast under Jeroboam son of Joash?",
+  "choices": [
+   "Elijah",
+   "Jonah son of Amittai",
+   "Isaiah",
+   "Hosea"
+  ],
+  "answer": 1,
+  "explanation": "The restoration fulfilled the word spoken by Jonah.",
+  "ref": "2 Kings 14:25"
+ },
+ {
+  "id": "old-2-kings-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What other name is used for Azariah king of Judah in Scripture?",
+  "choices": [
+   "Uzziah",
+   "Amaziah",
+   "Hezekiah",
+   "Josiah"
+  ],
+  "answer": 0,
+  "explanation": "Azariah is also known as Uzziah.",
+  "ref": "2 Kings 15:13"
+ },
+ {
+  "id": "old-2-kings-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What condition did the Lord strike Azariah with until his death?",
+  "choices": [
+   "Blindness",
+   "Lameness",
+   "Madness",
+   "Leprosy"
+  ],
+  "answer": 3,
+  "explanation": "Azariah was a leper until the day of his death.",
+  "ref": "2 Kings 15:5"
+ },
+ {
+  "id": "old-2-kings-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who killed Shallum and reigned in Samaria in his place?",
+  "choices": [
+   "Menahem",
+   "Pekah",
+   "Hoshea",
+   "Zachariah"
+  ],
+  "answer": 0,
+  "explanation": "Menahem killed Shallum and became king.",
+  "ref": "2 Kings 15:14"
+ },
+ {
+  "id": "old-2-kings-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did Menahem give silver so that his hand might be with him to confirm the kingdom?",
+  "choices": [
+   "Pharaoh",
+   "Hiram",
+   "Pul king of Assyria",
+   "Ben-hadad"
+  ],
+  "answer": 2,
+  "explanation": "Menahem paid tribute to Pul of Assyria.",
+  "ref": "2 Kings 15:19–20"
+ },
+ {
+  "id": "old-2-kings-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who assassinated Pekah and reigned in his stead?",
+  "choices": [
+   "Shallum",
+   "Menahem",
+   "Hoshea son of Elah",
+   "Rezin"
+  ],
+  "answer": 2,
+  "explanation": "Hoshea conspired against Pekah and took the throne.",
+  "ref": "2 Kings 15:30"
+ },
+ {
+  "id": "old-2-kings-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which king of Judah made his son pass through the fire?",
+  "choices": [
+   "Jotham",
+   "Ahaz",
+   "Hezekiah",
+   "Amaziah"
+  ],
+  "answer": 1,
+  "explanation": "Ahaz walked in the ways of Israel's kings and practiced child sacrifice.",
+  "ref": "2 Kings 16:2–3"
+ },
+ {
+  "id": "old-2-kings-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which kings came up to war against Jerusalem during Ahaz's reign?",
+  "choices": [
+   "Hiram and Pharaoh",
+   "Rezin king of Syria and Pekah king of Israel",
+   "Sennacherib and Nebuchadnezzar",
+   "Moab and Edom"
+  ],
+  "answer": 1,
+  "explanation": "Rezin and Pekah attacked Ahaz.",
+  "ref": "2 Kings 16:5"
+ },
+ {
+  "id": "old-2-kings-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To which Assyrian king did Ahaz send for help?",
+  "choices": [
+   "Pul",
+   "Tiglath-pileser",
+   "Shalmaneser",
+   "Sennacherib"
+  ],
+  "answer": 1,
+  "explanation": "Ahaz appealed to Tiglath-pileser of Assyria.",
+  "ref": "2 Kings 16:7"
+ },
+ {
+  "id": "old-2-kings-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ahaz send to Assyria as a present?",
+  "choices": [
+   "The ark",
+   "Solomon's throne",
+   "All the priests",
+   "Temple and palace silver and gold"
+  ],
+  "answer": 3,
+  "explanation": "Ahaz took silver and gold from the house of the Lord and the king's house.",
+  "ref": "2 Kings 16:8"
+ },
+ {
+  "id": "old-2-kings-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ahaz have Urijah the priest copy from Damascus?",
+  "choices": [
+   "A chariot",
+   "A palace wall",
+   "A golden calf",
+   "An altar pattern"
+  ],
+  "answer": 3,
+  "explanation": "Ahaz sent the fashion of the Damascus altar to Urijah.",
+  "ref": "2 Kings 16:10–11"
+ },
+ {
+  "id": "old-2-kings-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Israel's last king before the Assyrian captivity?",
+  "choices": [
+   "Pekah",
+   "Hoshea",
+   "Menahem",
+   "Zedekiah"
+  ],
+  "answer": 1,
+  "explanation": "Hoshea was king when Samaria fell.",
+  "ref": "2 Kings 17:1–6"
+ },
+ {
+  "id": "old-2-kings-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which Assyrian king came up against Hoshea and made him his servant?",
+  "choices": [
+   "Shalmaneser",
+   "Pul",
+   "Sennacherib",
+   "Esarhaddon"
+  ],
+  "answer": 0,
+  "explanation": "Shalmaneser king of Assyria came up against Hoshea, and Hoshea became his servant and gave him presents.",
+  "ref": "2 Kings 17:3"
+ },
+ {
+  "id": "old-2-kings-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Assyria carry Israel after taking Samaria?",
+  "choices": [
+   "Assyria, including Halah, Habor, and cities of the Medes",
+   "Egypt",
+   "Babylon only",
+   "Edom"
+  ],
+  "answer": 0,
+  "explanation": "Israel was carried away into Assyrian territories.",
+  "ref": "2 Kings 17:6"
+ },
+ {
+  "id": "old-2-kings-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What reason does the chapter give for Israel's exile?",
+  "choices": [
+   "They feared other gods and rejected the Lord's statutes",
+   "Lack of soldiers",
+   "A drought only",
+   "Judah betrayed them"
+  ],
+  "answer": 0,
+  "explanation": "The chapter explains the exile as covenant judgment for idolatry and disobedience.",
+  "ref": "2 Kings 17:7–18"
+ },
+ {
+  "id": "old-2-kings-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What mixed religious practice describes the new peoples settled in Samaria?",
+  "choices": [
+   "They served the Lord only",
+   "They feared the Lord and served their own gods",
+   "They had no priests",
+   "They moved to Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "The resettled peoples mixed fear of the Lord with service to their former gods.",
+  "ref": "2 Kings 17:33"
+ },
+ {
+  "id": "old-2-kings-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What bronze object did Hezekiah break in pieces because Israel burned incense to it?",
+  "choices": [
+   "The brasen serpent Moses had made",
+   "The altar",
+   "A golden calf",
+   "A bronze shield"
+  ],
+  "answer": 0,
+  "explanation": "Hezekiah called it Nehushtan and destroyed it.",
+  "ref": "2 Kings 18:4"
+ },
+ {
+  "id": "old-2-kings-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Hezekiah's trust in the Lord described?",
+  "choices": [
+   "Weak",
+   "None like him among all the kings of Judah after him or before him",
+   "Only temporary",
+   "Less than Ahaz"
+  ],
+  "answer": 1,
+  "explanation": "Hezekiah is uniquely commended for trusting the Lord.",
+  "ref": "2 Kings 18:5"
+ },
+ {
+  "id": "old-2-kings-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which Assyrian king came against Judah's fenced cities?",
+  "choices": [
+   "Shalmaneser",
+   "Sennacherib",
+   "Nebuchadnezzar",
+   "Pul"
+  ],
+  "answer": 1,
+  "explanation": "Sennacherib invaded Judah in Hezekiah's fourteenth year.",
+  "ref": "2 Kings 18:13"
+ },
+ {
+  "id": "old-2-kings-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which Assyrian spokesman mocked Hezekiah and the Lord near Jerusalem?",
+  "choices": [
+   "Tartan",
+   "Rabsaris",
+   "Nergal-sharezer",
+   "Rabshakeh"
+  ],
+  "answer": 3,
+  "explanation": "Rabshakeh delivered the Assyrian threats.",
+  "ref": "2 Kings 18:17–19"
+ },
+ {
+  "id": "old-2-kings-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Judah's officials ask Rab-shakeh to speak in the Syrian language instead of the Jews' language?",
+  "choices": [
+   "They did not understand Hebrew",
+   "To honor Assyria",
+   "So the people on the wall would not understand the threats",
+   "To hide from Hezekiah"
+  ],
+  "answer": 2,
+  "explanation": "They wanted to keep Rabshakeh's propaganda from frightening the people.",
+  "ref": "2 Kings 18:26"
+ },
+ {
+  "id": "old-2-kings-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah do when he heard Rabshakeh's words?",
+  "choices": [
+   "Surrendered",
+   "Fled Jerusalem",
+   "Killed the messengers",
+   "Rent his clothes, covered himself with sackcloth, and went into the house of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Hezekiah responded with humility and prayerful seeking.",
+  "ref": "2 Kings 19:1"
+ },
+ {
+  "id": "old-2-kings-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which prophet sent the Lord's answer to Hezekiah?",
+  "choices": [
+   "Jeremiah",
+   "Elisha",
+   "Huldah",
+   "Isaiah son of Amoz"
+  ],
+  "answer": 3,
+  "explanation": "Isaiah spoke God's word of reassurance.",
+  "ref": "2 Kings 19:2–7"
+ },
+ {
+  "id": "old-2-kings-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah do with Sennacherib's threatening letter?",
+  "choices": [
+   "Burned it",
+   "Sent it to Egypt",
+   "Gave it to Rabshakeh",
+   "Spread it before the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Hezekiah brought the letter into the temple and laid it before God.",
+  "ref": "2 Kings 19:14"
+ },
+ {
+  "id": "old-2-kings-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign did God give that Judah would survive and take root again?",
+  "choices": [
+   "They would eat what grows of itself, then sow and reap in the third year",
+   "Three days of darkness",
+   "A river would split",
+   "The sun would stand still"
+  ],
+  "answer": 0,
+  "explanation": "The sign promised preservation and renewed agriculture.",
+  "ref": "2 Kings 19:29–31"
+ },
+ {
+  "id": "old-2-kings-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many Assyrians did the angel of the Lord smite in one night?",
+  "choices": [
+   "18,500",
+   "85,000",
+   "185,000",
+   "300,000"
+  ],
+  "answer": 2,
+  "explanation": "The angel of the Lord struck 185,000 in the Assyrian camp.",
+  "ref": "2 Kings 19:35"
+ },
+ {
+  "id": "old-2-kings-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What message did Isaiah initially bring when Hezekiah was sick?",
+  "choices": [
+   "You will recover immediately",
+   "Go to Babylon",
+   "Set thine house in order; for thou shalt die",
+   "Build an altar"
+  ],
+  "answer": 2,
+  "explanation": "Isaiah first told Hezekiah to prepare for death.",
+  "ref": "2 Kings 20:1"
+ },
+ {
+  "id": "old-2-kings-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did the Lord add to Hezekiah's life?",
+  "choices": [
+   "5",
+   "10",
+   "15",
+   "20"
+  ],
+  "answer": 2,
+  "explanation": "God promised to add fifteen years.",
+  "ref": "2 Kings 20:6"
+ },
+ {
+  "id": "old-2-kings-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What remedy did Isaiah command to be placed on Hezekiah's boil?",
+  "choices": [
+   "A lump of figs",
+   "Oil",
+   "Clay",
+   "Hyssop"
+  ],
+  "answer": 0,
+  "explanation": "A lump of figs was laid on the boil.",
+  "ref": "2 Kings 20:7"
+ },
+ {
+  "id": "old-2-kings-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign did Hezekiah choose regarding the shadow?",
+  "choices": [
+   "The sun stopped",
+   "The shadow returned backward ten degrees",
+   "A cloud covered the city",
+   "The moon turned red"
+  ],
+  "answer": 1,
+  "explanation": "The shadow on Ahaz's dial went backward ten degrees.",
+  "ref": "2 Kings 20:9–11"
+ },
+ {
+  "id": "old-2-kings-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah show to the ambassadors from Babylon?",
+  "choices": [
+   "Only the temple court",
+   "The ark inside the most holy place",
+   "All his treasure house and precious things",
+   "Only his garden"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah displayed his treasures, leading to Isaiah's prophecy of Babylonian captivity.",
+  "ref": "2 Kings 20:12–15"
+ },
+ {
+  "id": "old-2-kings-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Manasseh when he began to reign?",
+  "choices": [
+   "7",
+   "12",
+   "20",
+   "25"
+  ],
+  "answer": 1,
+  "explanation": "Manasseh began reigning at twelve years old.",
+  "ref": "2 Kings 21:1"
+ },
+ {
+  "id": "old-2-kings-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Manasseh rebuild that Hezekiah had destroyed?",
+  "choices": [
+   "Jerusalem's wall",
+   "The palace",
+   "The altar of burnt offering",
+   "The high places"
+  ],
+  "answer": 3,
+  "explanation": "Manasseh rebuilt the high places removed by Hezekiah.",
+  "ref": "2 Kings 21:3"
+ },
+ {
+  "id": "old-2-kings-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shocking abomination did Manasseh set in the house of the Lord?",
+  "choices": [
+   "A horse of the sun",
+   "A golden throne",
+   "A Syrian altar only",
+   "A graven image of the grove"
+  ],
+  "answer": 3,
+  "explanation": "Manasseh placed a carved image in God's house.",
+  "ref": "2 Kings 21:7"
+ },
+ {
+  "id": "old-2-kings-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What vivid image did God use for the judgment coming on Jerusalem?",
+  "choices": [
+   "A broken bow",
+   "A dried vine",
+   "A cracked jar only",
+   "Wiping Jerusalem as a man wipeth a dish"
+  ],
+  "answer": 3,
+  "explanation": "The Lord said He would wipe Jerusalem like a dish and turn it upside down.",
+  "ref": "2 Kings 21:13"
+ },
+ {
+  "id": "old-2-kings-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned after Manasseh and was killed by his servants?",
+  "choices": [
+   "Josiah",
+   "Jehoiakim",
+   "Amon",
+   "Zedekiah"
+  ],
+  "answer": 2,
+  "explanation": "Amon followed Manasseh in evil and was assassinated by his servants.",
+  "ref": "2 Kings 21:19–23"
+ },
+ {
+  "id": "old-2-kings-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Josiah when he began to reign?",
+  "choices": [
+   "7",
+   "8",
+   "12",
+   "20"
+  ],
+  "answer": 1,
+  "explanation": "Josiah was eight years old when he became king.",
+  "ref": "2 Kings 22:1"
+ },
+ {
+  "id": "old-2-kings-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Josiah's walk described?",
+  "choices": [
+   "He followed Jeroboam",
+   "He walked in all the way of David and turned not aside",
+   "He served Baal",
+   "He obeyed Assyria"
+  ],
+  "answer": 1,
+  "explanation": "Josiah is commended for walking in David's way.",
+  "ref": "2 Kings 22:2"
+ },
+ {
+  "id": "old-2-kings-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hilkiah the high priest find in the house of the Lord?",
+  "choices": [
+   "The ark",
+   "The book of the law",
+   "Elijah's mantle",
+   "David's crown"
+  ],
+  "answer": 1,
+  "explanation": "Hilkiah found the book of the law.",
+  "ref": "2 Kings 22:8"
+ },
+ {
+  "id": "old-2-kings-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Josiah do when he heard the words of the law?",
+  "choices": [
+   "He laughed",
+   "He burned the book",
+   "He rent his clothes",
+   "He fled"
+  ],
+  "answer": 2,
+  "explanation": "Josiah tore his garments in grief and fear.",
+  "ref": "2 Kings 22:11"
+ },
+ {
+  "id": "old-2-kings-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which prophetess gave the Lord's message to Josiah's delegation?",
+  "choices": [
+   "Deborah",
+   "Huldah",
+   "Miriam",
+   "Anna"
+  ],
+  "answer": 1,
+  "explanation": "Huldah the prophetess delivered God's word.",
+  "ref": "2 Kings 22:14"
+ },
+ {
+  "id": "old-2-kings-23-1",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Josiah read before the people in the house of the Lord?",
+  "choices": [
+   "The chronicles of Israel",
+   "Solomon's letters",
+   "Assyrian tribute records",
+   "All the words of the book of the covenant"
+  ],
+  "answer": 3,
+  "explanation": "Josiah publicly read the book of the covenant.",
+  "ref": "2 Kings 23:2"
+ },
+ {
+  "id": "old-2-kings-23-2",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Josiah do with the vessels made for Baal, the grove, and the host of heaven?",
+  "choices": [
+   "Stored them",
+   "Sold them",
+   "Burned them outside Jerusalem",
+   "Gave them to Babylon"
+  ],
+  "answer": 2,
+  "explanation": "Josiah removed and burned idolatrous vessels.",
+  "ref": "2 Kings 23:4"
+ },
+ {
+  "id": "old-2-kings-23-3",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what northern altar did Josiah fulfill the old prophecy of the man of God from Judah?",
+  "choices": [
+   "Bethel",
+   "Dan",
+   "Gilgal",
+   "Samaria"
+  ],
+  "answer": 0,
+  "explanation": "Josiah defiled the Bethel altar and spared the prophet's tomb.",
+  "ref": "2 Kings 23:15–18"
+ },
+ {
+  "id": "old-2-kings-23-4",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What feast did Josiah command the people to keep according to the book of the covenant?",
+  "choices": [
+   "Tabernacles",
+   "Passover",
+   "Weeks",
+   "Trumpets"
+  ],
+  "answer": 1,
+  "explanation": "Josiah kept a Passover unlike any since the judges.",
+  "ref": "2 Kings 23:21–23"
+ },
+ {
+  "id": "old-2-kings-23-5",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Josiah killed when he went against Pharaoh-nechoh king of Egypt?",
+  "choices": [
+   "Jerusalem",
+   "Riblah",
+   "Megiddo",
+   "Samaria"
+  ],
+  "answer": 2,
+  "explanation": "Pharaoh-nechoh slew Josiah at Megiddo, and his servants carried him dead to Jerusalem.",
+  "ref": "2 Kings 23:29–30"
+ },
+ {
+  "id": "old-2-kings-24-1",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which Babylonian king came up against Jehoiakim?",
+  "choices": [
+   "Cyrus",
+   "Nebuchadnezzar",
+   "Belshazzar",
+   "Merodach-baladan"
+  ],
+  "answer": 1,
+  "explanation": "Nebuchadnezzar came against Judah.",
+  "ref": "2 Kings 24:1"
+ },
+ {
+  "id": "old-2-kings-24-2",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the Lord send bands of raiders against Judah in the days of Jehoiakim?",
+  "choices": [
+   "For Josiah's passover",
+   "To remove Judah because of Manasseh's sins and innocent blood",
+   "Because Hezekiah prayed",
+   "To reward Babylon"
+  ],
+  "answer": 1,
+  "explanation": "The judgment was connected to Manasseh's bloodshed and sins.",
+  "ref": "2 Kings 24:2–4"
+ },
+ {
+  "id": "old-2-kings-24-3",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Jehoiachin when he began to reign, according to 2 Kings?",
+  "choices": [
+   "8",
+   "18",
+   "25",
+   "35"
+  ],
+  "answer": 1,
+  "explanation": "2 Kings states Jehoiachin was eighteen years old when he began to reign.",
+  "ref": "2 Kings 24:8"
+ },
+ {
+  "id": "old-2-kings-24-4",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nebuchadnezzar carry away during Jehoiachin's surrender?",
+  "choices": [
+   "Only livestock",
+   "Treasures, vessels, princes, craftsmen, and mighty people",
+   "The city walls only",
+   "No captives"
+  ],
+  "answer": 1,
+  "explanation": "Babylon carried away treasure and many leading citizens.",
+  "ref": "2 Kings 24:13–16"
+ },
+ {
+  "id": "old-2-kings-24-5",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What new name did the king of Babylon give Mattaniah?",
+  "choices": [
+   "Jehoiakim",
+   "Gedaliah",
+   "Jehoahaz",
+   "Zedekiah"
+  ],
+  "answer": 3,
+  "explanation": "Nebuchadnezzar changed Mattaniah's name to Zedekiah.",
+  "ref": "2 Kings 24:17"
+ },
+ {
+  "id": "old-2-kings-25-1",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In whose reign did Nebuchadnezzar begin the final siege of Jerusalem?",
+  "choices": [
+   "Jehoiachin's",
+   "Josiah's",
+   "Zedekiah's",
+   "Manasseh's"
+  ],
+  "answer": 2,
+  "explanation": "The final siege began in Zedekiah's ninth year.",
+  "ref": "2 Kings 25:1–2"
+ },
+ {
+  "id": "old-2-kings-25-2",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Zedekiah captured after fleeing the broken city?",
+  "choices": [
+   "Megiddo",
+   "In the plains of Jericho",
+   "Egypt",
+   "Samaria"
+  ],
+  "answer": 1,
+  "explanation": "The Chaldean army overtook Zedekiah in the plains of Jericho.",
+  "ref": "2 Kings 25:5"
+ },
+ {
+  "id": "old-2-kings-25-3",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Zedekiah's eyes after he saw his sons slain?",
+  "choices": [
+   "They were healed",
+   "They were put out",
+   "They were covered",
+   "They were spared"
+  ],
+  "answer": 1,
+  "explanation": "After seeing his sons killed, Zedekiah was blinded and bound for Babylon.",
+  "ref": "2 Kings 25:7"
+ },
+ {
+  "id": "old-2-kings-25-4",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who burned the house of the Lord, the king's house, and Jerusalem's great houses?",
+  "choices": [
+   "Gedaliah",
+   "Ishmael",
+   "Nebuzaradan captain of the guard",
+   "Evil-merodach"
+  ],
+  "answer": 2,
+  "explanation": "Nebuzaradan led the destruction of Jerusalem.",
+  "ref": "2 Kings 25:8–10"
+ },
+ {
+  "id": "old-2-kings-25-5",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What mercy was shown to Jehoiachin in Babylon at the end of the book?",
+  "choices": [
+   "He became king of Judah again",
+   "He was released from prison and ate continually before the king",
+   "He rebuilt Jerusalem",
+   "He returned the ark"
+  ],
+  "answer": 1,
+  "explanation": "Evil-merodach lifted Jehoiachin out of prison and gave him a regular allowance.",
+  "ref": "2 Kings 25:27–30"
+ }
+]

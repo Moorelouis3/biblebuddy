@@ -1,0 +1,1922 @@
+[
+ {
+  "id": "old-luke-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did Luke address his orderly account?",
+  "choices": [
+   "Timothy",
+   "Caesar",
+   "Theophilus",
+   "Herod"
+  ],
+  "answer": 2,
+  "explanation": "Luke wrote to Theophilus so he would know the certainty of these things.",
+  "ref": "Luke 1:3"
+ },
+ {
+  "id": "old-luke-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What priest was told he and Elizabeth would have a son?",
+  "choices": [
+   "Zechariah",
+   "Simeon",
+   "Joseph",
+   "Annas"
+  ],
+  "answer": 0,
+  "explanation": "The angel appeared to Zechariah while he ministered in the temple.",
+  "ref": "Luke 1:5–13"
+ },
+ {
+  "id": "old-luke-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name was Zechariah told to give his son?",
+  "choices": [
+   "John",
+   "Jesus",
+   "Samuel",
+   "Elijah"
+  ],
+  "answer": 0,
+  "explanation": "The promised child would be named John.",
+  "ref": "Luke 1:13"
+ },
+ {
+  "id": "old-luke-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was told she would conceive Jesus by the Holy Ghost?",
+  "choices": [
+   "Elizabeth",
+   "Mary",
+   "Anna",
+   "Martha"
+  ],
+  "answer": 1,
+  "explanation": "Gabriel announced to Mary that she would bear the Son of God.",
+  "ref": "Luke 1:26–35"
+ },
+ {
+  "id": "old-luke-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Zechariah until John's birth because he did not believe the angel?",
+  "choices": [
+   "He went blind",
+   "He became mute",
+   "He left the temple",
+   "He lost his priesthood"
+  ],
+  "answer": 1,
+  "explanation": "Zechariah was unable to speak until the promise was fulfilled.",
+  "ref": "Luke 1:20"
+ },
+ {
+  "id": "old-luke-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Joseph and Mary travel to Bethlehem?",
+  "choices": [
+   "To be taxed",
+   "To attend Passover",
+   "To visit relatives",
+   "To flee Herod"
+  ],
+  "answer": 0,
+  "explanation": "Caesar Augustus decreed that all the world should be taxed, and everyone went to his own city. Joseph went to Bethlehem because he was of the house of David.",
+  "ref": "Luke 2:1–5"
+ },
+ {
+  "id": "old-luke-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Jesus laid after He was born?",
+  "choices": [
+   "A cradle",
+   "A palace bed",
+   "A manger",
+   "A basket"
+  ],
+  "answer": 2,
+  "explanation": "Mary wrapped Him in swaddling clothes and laid Him in a manger, because there was no room for them in the inn.",
+  "ref": "Luke 2:7"
+ },
+ {
+  "id": "old-luke-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who first heard the angelic birth announcement in Luke?",
+  "choices": [
+   "Wise men",
+   "Priests",
+   "Shepherds",
+   "Scribes"
+  ],
+  "answer": 2,
+  "explanation": "The angel appeared to shepherds in the field.",
+  "ref": "Luke 2:8–11"
+ },
+ {
+  "id": "old-luke-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who recognized Jesus in the temple and called Him a light to lighten the Gentiles?",
+  "choices": [
+   "Joseph",
+   "John",
+   "Zacharias",
+   "Simeon"
+  ],
+  "answer": 3,
+  "explanation": "Simeon blessed God after seeing the Lord's Christ.",
+  "ref": "Luke 2:25–32"
+ },
+ {
+  "id": "old-luke-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Jesus when He was found speaking with the teachers in the temple?",
+  "choices": [
+   "Ten",
+   "Fifteen",
+   "Twelve",
+   "Eighteen"
+  ],
+  "answer": 2,
+  "explanation": "At age twelve Jesus amazed them with His understanding.",
+  "ref": "Luke 2:42–47"
+ },
+ {
+  "id": "old-luke-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did John the Baptist preach in the region around Jordan?",
+  "choices": [
+   "Prosperity",
+   "The baptism of repentance",
+   "Temple sacrifice",
+   "Military reform"
+  ],
+  "answer": 1,
+  "explanation": "John preached repentance for the remission of sins.",
+  "ref": "Luke 3:3"
+ },
+ {
+  "id": "old-luke-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did John call the crowd that came to him?",
+  "choices": [
+   "Lost sheep",
+   "Chosen people",
+   "Children of light",
+   "Generation of vipers"
+  ],
+  "answer": 3,
+  "explanation": "John called the multitude a generation of vipers and told them to bring forth fruits worthy of repentance.",
+  "ref": "Luke 3:7"
+ },
+ {
+  "id": "old-luke-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did John tell tax collectors to do?",
+  "choices": [
+   "Quit their work",
+   "Move to Jerusalem",
+   "Collect no more than appointed",
+   "Give half to the poor"
+  ],
+  "answer": 2,
+  "explanation": "Repentance included honest conduct.",
+  "ref": "Luke 3:13"
+ },
+ {
+  "id": "old-luke-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What descended on Jesus when He was baptized?",
+  "choices": [
+   "Fire",
+   "A crown",
+   "The Holy Ghost in a bodily shape like a dove",
+   "A scroll"
+  ],
+  "answer": 2,
+  "explanation": "The Spirit descended on Jesus as the Father spoke from heaven.",
+  "ref": "Luke 3:22"
+ },
+ {
+  "id": "old-luke-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Luke trace Jesus' line back to at the end of the chapter?",
+  "choices": [
+   "Adam",
+   "Abraham only",
+   "David only",
+   "Moses"
+  ],
+  "answer": 0,
+  "explanation": "Luke traces the genealogy all the way back to Adam.",
+  "ref": "Luke 3:38"
+ },
+ {
+  "id": "old-luke-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who tempted Jesus in the wilderness?",
+  "choices": [
+   "A scribe",
+   "Herod",
+   "The devil",
+   "A Roman guard"
+  ],
+  "answer": 2,
+  "explanation": "Jesus was tempted by the devil for forty days.",
+  "ref": "Luke 4:2"
+ },
+ {
+  "id": "old-luke-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the devil urge Jesus to make from a stone?",
+  "choices": [
+   "Gold",
+   "Bread",
+   "Water",
+   "Oil"
+  ],
+  "answer": 1,
+  "explanation": "The devil told Jesus to command a stone to be made bread.",
+  "ref": "Luke 4:3"
+ },
+ {
+  "id": "old-luke-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What prophecy did Jesus read in the synagogue at Nazareth?",
+  "choices": [
+   "Isaiah about the Spirit of the Lord upon me",
+   "Jeremiah about the new covenant",
+   "Ezekiel about dry bones",
+   "Daniel about the kingdoms"
+  ],
+  "answer": 0,
+  "explanation": "Jesus read from Isaiah and declared the Scripture fulfilled.",
+  "ref": "Luke 4:17–21"
+ },
+ {
+  "id": "old-luke-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people of Nazareth react when Jesus spoke of God's mercy to Gentiles?",
+  "choices": [
+   "They worshiped Him",
+   "They crowned Him king",
+   "They tried to throw Him down a hill",
+   "They followed Him to Capernaum"
+  ],
+  "answer": 2,
+  "explanation": "They were filled with wrath and sought to kill Him.",
+  "ref": "Luke 4:28–29"
+ },
+ {
+  "id": "old-luke-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose fever did Jesus heal in Capernaum?",
+  "choices": [
+   "Mary's",
+   "Joanna's",
+   "Simon's mother-in-law's",
+   "Martha's"
+  ],
+  "answer": 2,
+  "explanation": "Jesus rebuked the fever and she arose to minister.",
+  "ref": "Luke 4:38–39"
+ },
+ {
+  "id": "old-luke-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell Simon to do before the miraculous catch of fish?",
+  "choices": [
+   "Launch out into the deep",
+   "Cast on the shore",
+   "Leave the boat",
+   "Mend the nets"
+  ],
+  "answer": 0,
+  "explanation": "Jesus directed Simon to let down the nets for a draught.",
+  "ref": "Luke 5:4"
+ },
+ {
+  "id": "old-luke-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Simon Peter say after witnessing the great catch?",
+  "choices": [
+   "Depart from me; for I am a sinful man",
+   "Make me a ruler",
+   "Let us build an altar",
+   "We should stay here"
+  ],
+  "answer": 0,
+  "explanation": "Peter was overwhelmed by Jesus' holiness and power.",
+  "ref": "Luke 5:8"
+ },
+ {
+  "id": "old-luke-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the leper's request to Jesus?",
+  "choices": [
+   "Teach me to pray",
+   "Heal my servant",
+   "Lord, if thou wilt, thou canst make me clean",
+   "Give me bread"
+  ],
+  "answer": 2,
+  "explanation": "The leper came in humble faith to Jesus.",
+  "ref": "Luke 5:12"
+ },
+ {
+  "id": "old-luke-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was the paralyzed man brought to Jesus?",
+  "choices": [
+   "On horseback",
+   "Through the roof",
+   "By the synagogue door",
+   "By a Roman cart"
+  ],
+  "answer": 1,
+  "explanation": "His friends let him down through the tiling with his couch.",
+  "ref": "Luke 5:19"
+ },
+ {
+  "id": "old-luke-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus call from the receipt of custom?",
+  "choices": [
+   "Zacchaeus",
+   "Levi",
+   "Andrew",
+   "Jairus"
+  ],
+  "answer": 1,
+  "explanation": "Jesus called Levi to leave his tax booth and follow Him.",
+  "ref": "Luke 5:27"
+ },
+ {
+  "id": "old-luke-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the disciples doing on the Sabbath that the Pharisees criticized?",
+  "choices": [
+   "Plucking ears of corn",
+   "Healing the sick",
+   "Building a fire",
+   "Traveling to Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "The disciples rubbed grain in their hands and ate it.",
+  "ref": "Luke 6:1–2"
+ },
+ {
+  "id": "old-luke-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus heal in the synagogue on another Sabbath?",
+  "choices": [
+   "A blind eye",
+   "A withered right hand",
+   "A lame foot",
+   "A fever"
+  ],
+  "answer": 1,
+  "explanation": "Jesus restored the man's hand in the synagogue.",
+  "ref": "Luke 6:6–10"
+ },
+ {
+  "id": "old-luke-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many apostles did Jesus choose after praying all night?",
+  "choices": [
+   "Seven",
+   "Twelve",
+   "Ten",
+   "Seventy"
+  ],
+  "answer": 1,
+  "explanation": "Jesus appointed twelve apostles.",
+  "ref": "Luke 6:12–13"
+ },
+ {
+  "id": "old-luke-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Jesus say are blessed in the opening of His sermon?",
+  "choices": [
+   "The powerful",
+   "The poor",
+   "The rulers",
+   "The learned"
+  ],
+  "answer": 1,
+  "explanation": "Jesus pronounced blessing on the poor, hungry, and weeping.",
+  "ref": "Luke 6:20"
+ },
+ {
+  "id": "old-luke-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what did the man who hears and does Jesus' sayings lay his foundation?",
+  "choices": [
+   "Sand",
+   "Rock",
+   "Wood",
+   "Clay"
+  ],
+  "answer": 1,
+  "explanation": "Jesus said the one who hears His sayings and does them is like a man who dug deep and laid the foundation on a rock.",
+  "ref": "Luke 6:48"
+ },
+ {
+  "id": "old-luke-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose servant did Jesus heal from a distance?",
+  "choices": [
+   "A Pharisee's",
+   "A centurion's",
+   "A priest's",
+   "Herod's"
+  ],
+  "answer": 1,
+  "explanation": "Jesus marveled at the centurion's faith.",
+  "ref": "Luke 7:2–10"
+ },
+ {
+  "id": "old-luke-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus raise at Nain?",
+  "choices": [
+   "Jairus's daughter",
+   "Lazarus",
+   "A widow's only son",
+   "Tabitha"
+  ],
+  "answer": 2,
+  "explanation": "Jesus had compassion on the widow and raised her son.",
+  "ref": "Luke 7:12–15"
+ },
+ {
+  "id": "old-luke-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sent messengers asking Jesus, 'Art thou he that should come?'",
+  "choices": [
+   "John the Baptist",
+   "Peter",
+   "Joseph",
+   "Nicodemus"
+  ],
+  "answer": 0,
+  "explanation": "John called two of his disciples and sent them to Jesus with this question.",
+  "ref": "Luke 7:19"
+ },
+ {
+  "id": "old-luke-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say about John among those born of women?",
+  "choices": [
+   "He was the richest",
+   "He was least of all",
+   "None is greater",
+   "He would build the church"
+  ],
+  "answer": 2,
+  "explanation": "Jesus highly honored John the Baptist.",
+  "ref": "Luke 7:28"
+ },
+ {
+  "id": "old-luke-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the sinful woman do in Simon the Pharisee's house?",
+  "choices": [
+   "Debated with Jesus",
+   "Brought bread",
+   "Asked for healing",
+   "Anointed His feet and washed them with tears"
+  ],
+  "answer": 3,
+  "explanation": "Her love flowed from knowing she had been forgiven much.",
+  "ref": "Luke 7:37–38"
+ },
+ {
+  "id": "old-luke-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What parable opens this chapter?",
+  "choices": [
+   "The sower",
+   "The prodigal son",
+   "The talents",
+   "The unjust steward"
+  ],
+  "answer": 0,
+  "explanation": "Jesus begins with the parable of the sower.",
+  "ref": "Luke 8:5"
+ },
+ {
+  "id": "old-luke-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "According to Jesus, what is the seed in the parable?",
+  "choices": [
+   "Faith",
+   "Israel",
+   "The kingdom",
+   "The word of God"
+  ],
+  "answer": 3,
+  "explanation": "Jesus explained that the seed is the word of God.",
+  "ref": "Luke 8:11"
+ },
+ {
+  "id": "old-luke-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus rebuke during the storm on the lake?",
+  "choices": [
+   "The disciples",
+   "The boat",
+   "The wind and the raging of the water",
+   "The crowd"
+  ],
+  "answer": 2,
+  "explanation": "Jesus calmed the storm with a rebuke.",
+  "ref": "Luke 8:24"
+ },
+ {
+  "id": "old-luke-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name did the demons give when Jesus asked?",
+  "choices": [
+   "Abaddon",
+   "Belial",
+   "Mammon",
+   "Legion"
+  ],
+  "answer": 3,
+  "explanation": "The man had many demons, so they answered 'Legion.'",
+  "ref": "Luke 8:30"
+ },
+ {
+  "id": "old-luke-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long had the woman with the issue of blood suffered?",
+  "choices": [
+   "Seven years",
+   "Twelve years",
+   "Thirty years",
+   "Forty years"
+  ],
+  "answer": 1,
+  "explanation": "She had spent all her living on physicians over twelve years.",
+  "ref": "Luke 8:43"
+ },
+ {
+  "id": "old-luke-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus give the twelve before sending them out?",
+  "choices": [
+   "Power and authority over devils and diseases",
+   "Money and food",
+   "A written law",
+   "Roman protection"
+  ],
+  "answer": 0,
+  "explanation": "Jesus equipped the apostles with authority to heal and cast out demons.",
+  "ref": "Luke 9:1"
+ },
+ {
+  "id": "old-luke-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many loaves were used to feed the five thousand?",
+  "choices": [
+   "Three",
+   "Five",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Jesus multiplied five loaves and two fishes.",
+  "ref": "Luke 9:13"
+ },
+ {
+  "id": "old-luke-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Peter answer when Jesus asked who He was?",
+  "choices": [
+   "The Christ of God",
+   "A great prophet",
+   "John risen again",
+   "Elijah"
+  ],
+  "answer": 0,
+  "explanation": "Peter confessed Jesus as the Christ of God.",
+  "ref": "Luke 9:20"
+ },
+ {
+  "id": "old-luke-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who appeared with Jesus on the mount of transfiguration?",
+  "choices": [
+   "Isaiah and Jeremiah",
+   "David and Samuel",
+   "Moses and Elias",
+   "Abraham and Isaac"
+  ],
+  "answer": 2,
+  "explanation": "Moses and Elias appeared in glory and spoke with Jesus.",
+  "ref": "Luke 9:30"
+ },
+ {
+  "id": "old-luke-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say a person must do daily to follow Him?",
+  "choices": [
+   "Fast",
+   "Give tithes",
+   "Pray in the temple",
+   "Take up his cross"
+  ],
+  "answer": 3,
+  "explanation": "Discipleship includes daily self-denial and cross-bearing.",
+  "ref": "Luke 9:23"
+ },
+ {
+  "id": "old-luke-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many others did the Lord appoint and send ahead two by two?",
+  "choices": [
+   "Seventy",
+   "Twelve",
+   "One hundred twenty",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "Jesus appointed seventy to go before Him into towns and places.",
+  "ref": "Luke 10:1"
+ },
+ {
+  "id": "old-luke-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say was plentiful but lacked workers?",
+  "choices": [
+   "The treasure",
+   "The temple service",
+   "The vineyard walls",
+   "The harvest"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said the harvest was great but the laborers were few.",
+  "ref": "Luke 10:2"
+ },
+ {
+  "id": "old-luke-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who proved neighbor to the man who fell among thieves?",
+  "choices": [
+   "The priest",
+   "The Samaritan",
+   "The Levite",
+   "The innkeeper"
+  ],
+  "answer": 1,
+  "explanation": "The Samaritan showed mercy and so fulfilled the command to love one's neighbor.",
+  "ref": "Luke 10:36–37"
+ },
+ {
+  "id": "old-luke-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the wounded man traveling when he fell among thieves?",
+  "choices": [
+   "From Nazareth to Jerusalem",
+   "From Bethany to Capernaum",
+   "From Jerusalem to Jericho",
+   "From Galilee to Samaria"
+  ],
+  "answer": 2,
+  "explanation": "Jesus set the parable on the road from Jerusalem to Jericho.",
+  "ref": "Luke 10:30"
+ },
+ {
+  "id": "old-luke-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say Mary had chosen while Martha was troubled?",
+  "choices": [
+   "The richer portion",
+   "That good part",
+   "The easier way",
+   "The priestly role"
+  ],
+  "answer": 1,
+  "explanation": "Mary chose the good part by sitting at Jesus' feet and hearing His word.",
+  "ref": "Luke 10:42"
+ },
+ {
+  "id": "old-luke-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the disciples ask Jesus to teach them?",
+  "choices": [
+   "How to heal",
+   "How to preach",
+   "How to pray",
+   "How to fast"
+  ],
+  "answer": 2,
+  "explanation": "They asked Jesus to teach them to pray.",
+  "ref": "Luke 11:1"
+ },
+ {
+  "id": "old-luke-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What request in the Lord's Prayer asks for daily provision?",
+  "choices": [
+   "Forgive us our sins",
+   "Lead us not into temptation",
+   "Give us day by day our daily bread",
+   "Hallowed be thy name"
+  ],
+  "answer": 2,
+  "explanation": "Jesus taught them to depend on God day by day.",
+  "ref": "Luke 11:3"
+ },
+ {
+  "id": "old-luke-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Through whom did some people say Jesus cast out devils?",
+  "choices": [
+   "The Spirit of God",
+   "Beelzebub",
+   "Moses",
+   "Herod"
+  ],
+  "answer": 1,
+  "explanation": "Some said He cast out devils through Beelzebub.",
+  "ref": "Luke 11:15"
+ },
+ {
+  "id": "old-luke-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign did Jesus say would be given to that evil generation?",
+  "choices": [
+   "The sign of David",
+   "The sign of Jonas",
+   "The sign of Moses",
+   "The sign of Elijah"
+  ],
+  "answer": 1,
+  "explanation": "Jesus pointed to the sign of Jonah.",
+  "ref": "Luke 11:29"
+ },
+ {
+  "id": "old-luke-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say about the inward condition of the Pharisees while they cleansed the outside?",
+  "choices": [
+   "They were full of wisdom",
+   "They were righteous",
+   "They were full of ravening and wickedness",
+   "They were pure in heart"
+  ],
+  "answer": 2,
+  "explanation": "Jesus exposed their hypocrisy and inner corruption.",
+  "ref": "Luke 11:39"
+ },
+ {
+  "id": "old-luke-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Of what did Jesus tell His disciples to beware?",
+  "choices": [
+   "The sword of Rome",
+   "The leaven of the Pharisees, which is hypocrisy",
+   "The sea of Galilee",
+   "The scribes' books"
+  ],
+  "answer": 1,
+  "explanation": "Jesus warned them against hypocrisy.",
+  "ref": "Luke 12:1"
+ },
+ {
+  "id": "old-luke-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the rich fool decide to build after his fields yielded plentifully?",
+  "choices": [
+   "A larger house",
+   "A new temple",
+   "Greater barns",
+   "A vineyard wall"
+  ],
+  "answer": 2,
+  "explanation": "He planned to tear down his barns and build bigger ones.",
+  "ref": "Luke 12:18"
+ },
+ {
+  "id": "old-luke-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God call the rich man who laid up treasure for himself?",
+  "choices": [
+   "Wise",
+   "Prosperous",
+   "Fool",
+   "Blessed"
+  ],
+  "answer": 2,
+  "explanation": "God called him a fool because his soul would be required that night.",
+  "ref": "Luke 12:20"
+ },
+ {
+  "id": "old-luke-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which birds did Jesus say neither sow nor reap, yet God feeds them?",
+  "choices": [
+   "Doves",
+   "Sparrows",
+   "Eagles",
+   "Ravens"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said to consider the ravens: they neither sow nor reap, and God feeds them.",
+  "ref": "Luke 12:24"
+ },
+ {
+  "id": "old-luke-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus command His servants to do while waiting for their lord?",
+  "choices": [
+   "Watch and be ready",
+   "Sleep peacefully",
+   "Hide in the house",
+   "Return to Galilee"
+  ],
+  "answer": 0,
+  "explanation": "He urged them to keep their loins girded and lamps burning.",
+  "ref": "Luke 12:35–40"
+ },
+ {
+  "id": "old-luke-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning did Jesus give about those who died tragically?",
+  "choices": [
+   "They were the worst sinners",
+   "Except ye repent, ye shall all likewise perish",
+   "They were martyrs",
+   "They would rise first"
+  ],
+  "answer": 1,
+  "explanation": "Jesus used the events to call everyone to repentance.",
+  "ref": "Luke 13:3"
+ },
+ {
+  "id": "old-luke-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long had the woman whom Jesus healed on the Sabbath been bowed together?",
+  "choices": [
+   "Eighteen years",
+   "Twelve years",
+   "Seven years",
+   "Forty years"
+  ],
+  "answer": 0,
+  "explanation": "She had a spirit of infirmity for eighteen years.",
+  "ref": "Luke 13:11"
+ },
+ {
+  "id": "old-luke-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what seed did Jesus compare the kingdom of God?",
+  "choices": [
+   "Olive seed",
+   "Mustard seed",
+   "Barley seed",
+   "Fig seed"
+  ],
+  "answer": 1,
+  "explanation": "The kingdom starts small like a mustard seed.",
+  "ref": "Luke 13:19"
+ },
+ {
+  "id": "old-luke-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say people should strive to enter?",
+  "choices": [
+   "The broad road",
+   "The temple court",
+   "The upper room",
+   "The strait gate"
+  ],
+  "answer": 3,
+  "explanation": "Jesus urged them to strive to enter through the narrow gate.",
+  "ref": "Luke 13:24"
+ },
+ {
+  "id": "old-luke-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "Over what city did Jesus lament?",
+  "choices": [
+   "Bethlehem",
+   "Jericho",
+   "Jerusalem",
+   "Nazareth"
+  ],
+  "answer": 2,
+  "explanation": "Jesus sorrowed over Jerusalem's refusal to come to Him.",
+  "ref": "Luke 13:34"
+ },
+ {
+  "id": "old-luke-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus heal in the house of a chief Pharisee?",
+  "choices": [
+   "A man with dropsy",
+   "A blind man",
+   "A leper",
+   "A centurion's servant"
+  ],
+  "answer": 0,
+  "explanation": "Jesus healed the man with dropsy on the Sabbath.",
+  "ref": "Luke 14:2–4"
+ },
+ {
+  "id": "old-luke-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "place",
+  "question": "What place did Jesus tell guests not to seek at a feast?",
+  "choices": [
+   "The highest room",
+   "The lowest room",
+   "The outer gate",
+   "The servants' table"
+  ],
+  "answer": 0,
+  "explanation": "Jesus warned against exalting oneself.",
+  "ref": "Luke 14:8"
+ },
+ {
+  "id": "old-luke-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus say to invite when making a feast?",
+  "choices": [
+   "Only relatives",
+   "The rulers",
+   "The poor, maimed, lame, and blind",
+   "The rich neighbors"
+  ],
+  "answer": 2,
+  "explanation": "True generosity seeks no earthly repayment.",
+  "ref": "Luke 14:13"
+ },
+ {
+  "id": "old-luke-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In the great supper parable, what excuses did the invited guests make?",
+  "choices": [
+   "They were sick",
+   "Land, oxen, and marriage",
+   "Travel and famine",
+   "Prison and debt"
+  ],
+  "answer": 1,
+  "explanation": "They all began to make excuse.",
+  "ref": "Luke 14:18–20"
+ },
+ {
+  "id": "old-luke-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say a disciple must bear?",
+  "choices": [
+   "A sword",
+   "A lamp",
+   "His cross",
+   "A branch"
+  ],
+  "answer": 2,
+  "explanation": "He who does not bear his cross cannot be His disciple.",
+  "ref": "Luke 14:27"
+ },
+ {
+  "id": "old-luke-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the shepherd do after finding the lost sheep?",
+  "choices": [
+   "Sold it",
+   "Laid it on his shoulders rejoicing",
+   "Left it in the field",
+   "Gave it to another"
+  ],
+  "answer": 1,
+  "explanation": "He joyfully carried the sheep home.",
+  "ref": "Luke 15:5"
+ },
+ {
+  "id": "old-luke-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many silver pieces did the woman have before one was lost?",
+  "choices": [
+   "Five",
+   "Ten",
+   "Twelve",
+   "Twenty"
+  ],
+  "answer": 1,
+  "explanation": "She had ten pieces of silver and lost one.",
+  "ref": "Luke 15:8"
+ },
+ {
+  "id": "old-luke-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the prodigal son ask his father for?",
+  "choices": [
+   "A servant's place",
+   "A blessing only",
+   "A field",
+   "The portion of goods that fell to him"
+  ],
+  "answer": 3,
+  "explanation": "He asked for his inheritance before his father's death.",
+  "ref": "Luke 15:12"
+ },
+ {
+  "id": "old-luke-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the father do when he saw the prodigal son returning?",
+  "choices": [
+   "Turned away",
+   "Ran and fell on his neck",
+   "Sent a servant",
+   "Questioned him first"
+  ],
+  "answer": 1,
+  "explanation": "The father's compassion moved him to run to his son.",
+  "ref": "Luke 15:20"
+ },
+ {
+  "id": "old-luke-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What complaint did the elder brother make?",
+  "choices": [
+   "His father had not divided enough land",
+   "His father celebrated the return of his brother",
+   "The servants were lazy",
+   "The fields were barren"
+  ],
+  "answer": 1,
+  "explanation": "He resented the feast for the repentant son.",
+  "ref": "Luke 15:28–30"
+ },
+ {
+  "id": "old-luke-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the lord praise the unjust steward?",
+  "choices": [
+   "Because he was honest",
+   "Because he was rich",
+   "Because he repaid all debts",
+   "Because he had done wisely"
+  ],
+  "answer": 3,
+  "explanation": "He was commended for acting shrewdly about the future.",
+  "ref": "Luke 16:8"
+ },
+ {
+  "id": "old-luke-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say no servant can serve?",
+  "choices": [
+   "Two kings",
+   "Two temples",
+   "Two masters",
+   "Two nations"
+  ],
+  "answer": 2,
+  "explanation": "A person cannot serve both God and mammon.",
+  "ref": "Luke 16:13"
+ },
+ {
+  "id": "old-luke-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What luxury did the rich man wear?",
+  "choices": [
+   "Camel's hair",
+   "Purple and fine linen",
+   "Royal armor",
+   "Sackcloth"
+  ],
+  "answer": 1,
+  "explanation": "The rich man was clothed in purple and fine linen.",
+  "ref": "Luke 16:19"
+ },
+ {
+  "id": "old-luke-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the name of the beggar laid at the rich man's gate?",
+  "choices": [
+   "Bartimaeus",
+   "Levi",
+   "Zacchaeus",
+   "Lazarus"
+  ],
+  "answer": 3,
+  "explanation": "Lazarus was full of sores and laid at the gate.",
+  "ref": "Luke 16:20"
+ },
+ {
+  "id": "old-luke-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Abraham say would be enough witness for the rich man's brothers?",
+  "choices": [
+   "An angel",
+   "A sign from heaven",
+   "A dream",
+   "Moses and the prophets"
+  ],
+  "answer": 3,
+  "explanation": "If they would not hear Scripture, neither would they be persuaded by a resurrection.",
+  "ref": "Luke 16:29"
+ },
+ {
+  "id": "old-luke-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How often did Jesus say a brother should be forgiven if he repented?",
+  "choices": [
+   "Once",
+   "Three times",
+   "Seventy times in a month",
+   "Seven times in a day"
+  ],
+  "answer": 3,
+  "explanation": "Jesus called for repeated forgiveness when there is repentance.",
+  "ref": "Luke 17:4"
+ },
+ {
+  "id": "old-luke-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say faith as a grain of mustard seed could do?",
+  "choices": [
+   "Open prison doors",
+   "Move a sycamine tree",
+   "Calm the sea",
+   "Raise the dead"
+  ],
+  "answer": 1,
+  "explanation": "Jesus used the uprooted sycamine tree to illustrate faith.",
+  "ref": "Luke 17:6"
+ },
+ {
+  "id": "old-luke-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many lepers were cleansed?",
+  "choices": [
+   "Five",
+   "Twelve",
+   "Ten",
+   "Seventy"
+  ],
+  "answer": 2,
+  "explanation": "Jesus sent ten lepers to show themselves to the priests.",
+  "ref": "Luke 17:12–14"
+ },
+ {
+  "id": "old-luke-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many of the cleansed lepers returned to give thanks?",
+  "choices": [
+   "One",
+   "Two",
+   "Five",
+   "Ten"
+  ],
+  "answer": 0,
+  "explanation": "Only one returned, and he was a Samaritan.",
+  "ref": "Luke 17:15–16"
+ },
+ {
+  "id": "old-luke-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what days did Jesus compare the coming of the Son of man?",
+  "choices": [
+   "Moses and Joshua",
+   "David and Solomon",
+   "Elijah and Elisha",
+   "Noah and Lot"
+  ],
+  "answer": 3,
+  "explanation": "He compared it to the days of Noah and Lot.",
+  "ref": "Luke 17:26–29"
+ },
+ {
+  "id": "old-luke-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jesus tell the parable of the unjust judge?",
+  "choices": [
+   "To explain the law",
+   "To teach fasting",
+   "To honor judges",
+   "To show men ought always to pray"
+  ],
+  "answer": 3,
+  "explanation": "Jesus taught persistence in prayer.",
+  "ref": "Luke 18:1"
+ },
+ {
+  "id": "old-luke-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which man went down to his house justified in the parable of the Pharisee and the publican?",
+  "choices": [
+   "The Pharisee",
+   "The publican",
+   "Both",
+   "Neither"
+  ],
+  "answer": 1,
+  "explanation": "The humble publican was justified rather than the self-righteous Pharisee.",
+  "ref": "Luke 18:14"
+ },
+ {
+  "id": "old-luke-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say about little children?",
+  "choices": [
+   "They must wait to grow up",
+   "They cannot understand truth",
+   "Of such is the kingdom of God",
+   "They should stay away from teachers"
+  ],
+  "answer": 2,
+  "explanation": "Jesus welcomed children and used them as examples of receiving the kingdom.",
+  "ref": "Luke 18:16"
+ },
+ {
+  "id": "old-luke-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was the ruler very sorrowful when Jesus told him to sell all that he had?",
+  "choices": [
+   "Because he lacked friends",
+   "Because he feared Rome",
+   "Because he was very rich",
+   "Because he was sick"
+  ],
+  "answer": 2,
+  "explanation": "When he heard Jesus' words he was very sorrowful, for he was very rich.",
+  "ref": "Luke 18:23"
+ },
+ {
+  "id": "old-luke-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the blind man near Jericho ask Jesus for?",
+  "choices": [
+   "That he might receive his sight",
+   "Bread",
+   "A place among the twelve",
+   "To see Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "He asked to receive his sight, and Jesus healed him.",
+  "ref": "Luke 18:41"
+ },
+ {
+  "id": "old-luke-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Zacchaeus climb a sycamore tree?",
+  "choices": [
+   "To see Jesus",
+   "To hide from soldiers",
+   "To gather fruit",
+   "To meet his friends"
+  ],
+  "answer": 0,
+  "explanation": "Being small of stature, he climbed the tree to see Jesus.",
+  "ref": "Luke 19:3–4"
+ },
+ {
+  "id": "old-luke-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Zacchaeus promise to do after meeting Jesus?",
+  "choices": [
+   "Leave Jericho",
+   "Build a synagogue",
+   "Restore fourfold and give half to the poor",
+   "Follow the disciples to Galilee"
+  ],
+  "answer": 2,
+  "explanation": "His repentance showed itself in generosity and restitution.",
+  "ref": "Luke 19:8"
+ },
+ {
+  "id": "old-luke-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the nobleman give his servants in the parable?",
+  "choices": [
+   "Talents",
+   "Vineyards",
+   "Pounds",
+   "Oil"
+  ],
+  "answer": 2,
+  "explanation": "Each servant received a pound to occupy with.",
+  "ref": "Luke 19:13"
+ },
+ {
+  "id": "old-luke-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the crowd cry when Jesus approached Jerusalem?",
+  "choices": [
+   "Long live Caesar",
+   "Peace in Nazareth",
+   "Open the gates",
+   "Blessed be the King that cometh in the name of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "They praised God for the mighty works they had seen.",
+  "ref": "Luke 19:38"
+ },
+ {
+  "id": "old-luke-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jesus weep over Jerusalem?",
+  "choices": [
+   "It did not know the things that belonged to its peace",
+   "It was poor",
+   "Its walls were too small",
+   "The Romans ruled it"
+  ],
+  "answer": 0,
+  "explanation": "Jerusalem had missed the time of divine visitation.",
+  "ref": "Luke 19:41–42"
+ },
+ {
+  "id": "old-luke-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the chief priests and scribes ask Jesus about?",
+  "choices": [
+   "His birthplace",
+   "His family",
+   "His money",
+   "His authority"
+  ],
+  "answer": 3,
+  "explanation": "They asked by what authority He acted.",
+  "ref": "Luke 20:2"
+ },
+ {
+  "id": "old-luke-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question did Jesus ask the chief priests and scribes in return?",
+  "choices": [
+   "Whom do men say that I am?",
+   "Which commandment is greatest?",
+   "Was John's baptism from heaven or of men?",
+   "Who touched me?"
+  ],
+  "answer": 2,
+  "explanation": "He answered their question with one of His own about John.",
+  "ref": "Luke 20:4"
+ },
+ {
+  "id": "old-luke-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In the parable, what did the husbandmen do to the beloved son?",
+  "choices": [
+   "Made him king",
+   "Killed him",
+   "Honored him",
+   "Paid him rent"
+  ],
+  "answer": 1,
+  "explanation": "They cast him out of the vineyard and killed him.",
+  "ref": "Luke 20:15"
+ },
+ {
+  "id": "old-luke-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say should be rendered to Caesar?",
+  "choices": [
+   "Only silver",
+   "Nothing",
+   "The things which be Caesar's",
+   "Temple offerings"
+  ],
+  "answer": 2,
+  "explanation": "He distinguished duties to Caesar and to God.",
+  "ref": "Luke 20:25"
+ },
+ {
+  "id": "old-luke-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "According to Jesus' question, whose son did they say the Christ is?",
+  "choices": [
+   "David's",
+   "Abraham's",
+   "Moses'",
+   "Aaron's"
+  ],
+  "answer": 0,
+  "explanation": "Jesus asked, 'How say they that Christ is David's son?' and pointed out that David himself calls Him Lord.",
+  "ref": "Luke 20:41–44"
+ },
+ {
+  "id": "old-luke-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the poor widow cast into the treasury?",
+  "choices": [
+   "Two mites",
+   "Two talents",
+   "One denarius",
+   "A loaf"
+  ],
+  "answer": 0,
+  "explanation": "The widow cast in two mites, all her living.",
+  "ref": "Luke 21:2"
+ },
+ {
+  "id": "old-luke-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jesus say the widow gave more than the rich?",
+  "choices": [
+   "She gave out of her need",
+   "Her coins were heavier",
+   "She gave at the temple door",
+   "She was a widow"
+  ],
+  "answer": 0,
+  "explanation": "She gave all she had, unlike those who gave from abundance.",
+  "ref": "Luke 21:3–4"
+ },
+ {
+  "id": "old-luke-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say would happen to the temple stones?",
+  "choices": [
+   "They would be polished",
+   "They would be moved to Galilee",
+   "Not one would be left upon another",
+   "They would be hidden"
+  ],
+  "answer": 2,
+  "explanation": "Jesus foretold the destruction of the temple.",
+  "ref": "Luke 21:6"
+ },
+ {
+  "id": "old-luke-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell His followers to do so they would be accounted worthy to escape the things to come?",
+  "choices": [
+   "Watch and pray always",
+   "Hide in the mountains",
+   "Leave Jerusalem at once",
+   "Fast every Sabbath"
+  ],
+  "answer": 0,
+  "explanation": "Jesus said, 'Watch ye therefore, and pray always, that ye may be accounted worthy to escape all these things.'",
+  "ref": "Luke 21:34–36"
+ },
+ {
+  "id": "old-luke-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say would come upon the nations when there are signs in the sun, moon and stars?",
+  "choices": [
+   "Only peace",
+   "A new temple",
+   "No more storms",
+   "Distress and perplexity"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said there would be signs in the sun, moon and stars, and upon the earth distress of nations, with perplexity.",
+  "ref": "Luke 21:25"
+ },
+ {
+  "id": "old-luke-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into whom did Satan enter before the betrayal?",
+  "choices": [
+   "Peter",
+   "Judas",
+   "Thomas",
+   "Pilate"
+  ],
+  "answer": 1,
+  "explanation": "Satan entered Judas Iscariot, who went to the chief priests.",
+  "ref": "Luke 22:3"
+ },
+ {
+  "id": "old-luke-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What memorial meal did Jesus share with His disciples?",
+  "choices": [
+   "The Feast of Weeks",
+   "The Day of Atonement",
+   "The Passover",
+   "The Feast of Trumpets"
+  ],
+  "answer": 2,
+  "explanation": "Jesus earnestly desired to eat this Passover with them.",
+  "ref": "Luke 22:15"
+ },
+ {
+  "id": "old-luke-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say the cup after supper is?",
+  "choices": [
+   "The water of cleansing",
+   "The joy of the kingdom",
+   "The new testament in His blood",
+   "The wrath of Rome"
+  ],
+  "answer": 2,
+  "explanation": "Jesus said, 'This cup is the new testament in my blood, which is shed for you.'",
+  "ref": "Luke 22:20"
+ },
+ {
+  "id": "old-luke-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Jesus' sweat as He prayed on the Mount of Olives?",
+  "choices": [
+   "It was as great drops of blood",
+   "It ceased completely",
+   "It shone like light",
+   "It fell on the disciples"
+  ],
+  "answer": 0,
+  "explanation": "Luke records the intensity of Jesus' agony in prayer.",
+  "ref": "Luke 22:44"
+ },
+ {
+  "id": "old-luke-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus do to the servant's ear after it was struck?",
+  "choices": [
+   "Healed it",
+   "Ignored it",
+   "Bound it with cloth",
+   "Told him to leave"
+  ],
+  "answer": 0,
+  "explanation": "Jesus touched the servant's ear and healed him.",
+  "ref": "Luke 22:51"
+ },
+ {
+  "id": "old-luke-23-1",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did Pilate send Jesus because He belonged to that ruler's jurisdiction?",
+  "choices": [
+   "Herod",
+   "Caesar",
+   "Annas",
+   "Gamaliel"
+  ],
+  "answer": 0,
+  "explanation": "Pilate sent Jesus to Herod, who was in Jerusalem.",
+  "ref": "Luke 23:7"
+ },
+ {
+  "id": "old-luke-23-2",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the people cry out for Pilate to release instead of Jesus?",
+  "choices": [
+   "Zacchaeus",
+   "Nicodemus",
+   "Joseph",
+   "Barabbas"
+  ],
+  "answer": 3,
+  "explanation": "They demanded the release of Barabbas.",
+  "ref": "Luke 23:18–25"
+ },
+ {
+  "id": "old-luke-23-3",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "One of the two malefactors crucified with Jesus rebuked the other. What did he then ask Jesus?",
+  "choices": [
+   "Take us down",
+   "Remember me when thou comest into thy kingdom",
+   "Call Elijah",
+   "Destroy our enemies"
+  ],
+  "answer": 1,
+  "explanation": "The malefactor who admitted his own guilt asked Jesus to remember him when He came into His kingdom.",
+  "ref": "Luke 23:42"
+ },
+ {
+  "id": "old-luke-23-4",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What promise did Jesus give the malefactor who asked to be remembered?",
+  "choices": [
+   "He would return home",
+   "Today shalt thou be with me in paradise",
+   "He would escape death",
+   "He would be made an apostle"
+  ],
+  "answer": 1,
+  "explanation": "Jesus told him, 'To day shalt thou be with me in paradise.'",
+  "ref": "Luke 23:43"
+ },
+ {
+  "id": "old-luke-23-5",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who laid Jesus' body in a sepulchre where never man before was laid?",
+  "choices": [
+   "Peter",
+   "John",
+   "Nicodemus",
+   "Joseph of Arimathaea"
+  ],
+  "answer": 3,
+  "explanation": "Joseph asked for the body and buried Jesus in a new tomb.",
+  "ref": "Luke 23:50–53"
+ },
+ {
+  "id": "old-luke-24-1",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went to the sepulchre early with spices?",
+  "choices": [
+   "The women who came with Him from Galilee",
+   "Only Mary Magdalene",
+   "The twelve",
+   "Joseph and Nicodemus"
+  ],
+  "answer": 0,
+  "explanation": "The women came early to the tomb with prepared spices.",
+  "ref": "Luke 24:1"
+ },
+ {
+  "id": "old-luke-24-2",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had happened to the stone at the tomb?",
+  "choices": [
+   "It was rolled away",
+   "It was sealed tighter",
+   "It was broken apart",
+   "It was hidden"
+  ],
+  "answer": 0,
+  "explanation": "They found the stone rolled away from the sepulchre.",
+  "ref": "Luke 24:2"
+ },
+ {
+  "id": "old-luke-24-3",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On the road to Emmaus, what prevented the two disciples from recognizing Jesus at first?",
+  "choices": [
+   "Nightfall",
+   "Their eyes were holden",
+   "The crowd",
+   "Fear of soldiers"
+  ],
+  "answer": 1,
+  "explanation": "They were kept from recognizing Him until later.",
+  "ref": "Luke 24:16"
+ },
+ {
+  "id": "old-luke-24-4",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When were the Emmaus disciples' eyes opened to know Jesus?",
+  "choices": [
+   "When He read Isaiah",
+   "In the breaking of bread",
+   "At the gate of Jerusalem",
+   "When Peter arrived"
+  ],
+  "answer": 1,
+  "explanation": "They recognized Him as He broke bread.",
+  "ref": "Luke 24:30–31"
+ },
+ {
+  "id": "old-luke-24-5",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell His disciples to wait for in Jerusalem?",
+  "choices": [
+   "A new king",
+   "A rebuilt temple",
+   "The next feast",
+   "The promise of my Father"
+  ],
+  "answer": 3,
+  "explanation": "They were to wait until they were endued with power from on high.",
+  "ref": "Luke 24:49"
+ }
+]

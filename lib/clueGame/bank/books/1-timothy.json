@@ -1,0 +1,482 @@
+[
+ {
+  "id": "old-1-timothy-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Paul urge Timothy to stay at Ephesus?",
+  "choices": [
+   "To collect an offering",
+   "To charge some that they teach no other doctrine",
+   "To appoint Roman officials",
+   "To prepare for Paul's visit"
+  ],
+  "answer": 1,
+  "explanation": "Paul left Timothy in Ephesus to command certain men not to teach different doctrine.",
+  "ref": "1 Timothy 1:3"
+ },
+ {
+  "id": "old-1-timothy-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say is the goal of the commandment?",
+  "choices": [
+   "Outward conformity",
+   "Careful knowledge of the law",
+   "Love from a pure heart, a good conscience, and sincere faith",
+   "Debate against false teachers"
+  ],
+  "answer": 2,
+  "explanation": "Paul says the goal is love flowing from a pure heart, a good conscience, and faith unfeigned.",
+  "ref": "1 Timothy 1:5"
+ },
+ {
+  "id": "old-1-timothy-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul describe the proper use of the law?",
+  "choices": [
+   "It is always binding for righteousness",
+   "It should be ignored by believers",
+   "It is only for teachers",
+   "It is good if a man uses it lawfully"
+  ],
+  "answer": 3,
+  "explanation": "Paul says the law is good when it is used lawfully.",
+  "ref": "1 Timothy 1:8"
+ },
+ {
+  "id": "old-1-timothy-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What faithful saying does Paul repeat?",
+  "choices": [
+   "The just shall live by faith",
+   "Christ Jesus came into the world to save sinners",
+   "God is love",
+   "The Lord is my shepherd"
+  ],
+  "answer": 1,
+  "explanation": "Paul says this is a faithful saying: Christ Jesus came into the world to save sinners.",
+  "ref": "1 Timothy 1:15"
+ },
+ {
+  "id": "old-1-timothy-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul tell Timothy to hold onto?",
+  "choices": [
+   "Faith and a good conscience",
+   "His apostolic office",
+   "The traditions of the elders",
+   "His reputation"
+  ],
+  "answer": 0,
+  "explanation": "Timothy is told to hold faith and a good conscience.",
+  "ref": "1 Timothy 1:19"
+ },
+ {
+  "id": "old-1-timothy-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whom does Paul urge prayers, intercessions, and thanksgivings to be made?",
+  "choices": [
+   "Only for believers",
+   "Only for rulers",
+   "For widows and orphans only",
+   "For all men"
+  ],
+  "answer": 3,
+  "explanation": "Paul urges that prayers be made for all people.",
+  "ref": "1 Timothy 2:1"
+ },
+ {
+  "id": "old-1-timothy-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why should believers pray for kings and all those with authority?",
+  "choices": [
+   "So rulers will favor the church",
+   "So wars will end immediately",
+   "That believers may hold office",
+   "That we may lead a quiet and peaceable life in all godliness and honesty"
+  ],
+  "answer": 3,
+  "explanation": "Paul says this helps believers live quiet and peaceable lives in godliness and honesty.",
+  "ref": "1 Timothy 2:2"
+ },
+ {
+  "id": "old-1-timothy-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Paul say is the one mediator between God and men?",
+  "choices": [
+   "Moses",
+   "The man Christ Jesus",
+   "The prophets",
+   "The angels"
+  ],
+  "answer": 1,
+  "explanation": "Paul says there is one mediator between God and men, the man Christ Jesus.",
+  "ref": "1 Timothy 2:5"
+ },
+ {
+  "id": "old-1-timothy-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are men to pray?",
+  "choices": [
+   "Lifting up holy hands, without wrath and doubting",
+   "Only in private",
+   "With loud public displays",
+   "Only at set times"
+  ],
+  "answer": 0,
+  "explanation": "Paul says men should pray lifting holy hands without wrath and doubting.",
+  "ref": "1 Timothy 2:8"
+ },
+ {
+  "id": "old-1-timothy-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what should women chiefly adorn themselves?",
+  "choices": [
+   "Gold and pearls",
+   "Fine clothing",
+   "Public influence",
+   "Good works, as becomes women professing godliness"
+  ],
+  "answer": 3,
+  "explanation": "Paul says women professing godliness should be adorned with good works.",
+  "ref": "1 Timothy 2:10"
+ },
+ {
+  "id": "old-1-timothy-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul call the desire to be a bishop?",
+  "choices": [
+   "A difficult calling",
+   "A burden to bear",
+   "A high honor from men",
+   "A good work"
+  ],
+  "answer": 3,
+  "explanation": "Paul says that desiring the office of a bishop means desiring a good work.",
+  "ref": "1 Timothy 3:1"
+ },
+ {
+  "id": "old-1-timothy-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What ability must a bishop have?",
+  "choices": [
+   "Skill in debate",
+   "Gift of healing",
+   "Ability to teach",
+   "Public influence"
+  ],
+  "answer": 2,
+  "explanation": "A bishop must be apt to teach.",
+  "ref": "1 Timothy 3:2"
+ },
+ {
+  "id": "old-1-timothy-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must a bishop manage well?",
+  "choices": [
+   "His business affairs",
+   "His political relationships",
+   "His travel plans",
+   "His own house"
+  ],
+  "answer": 3,
+  "explanation": "A bishop must rule his own house well.",
+  "ref": "1 Timothy 3:4–5"
+ },
+ {
+  "id": "old-1-timothy-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are deacons to hold?",
+  "choices": [
+   "The traditions of the rabbis",
+   "The power of miracles",
+   "The office of apostle",
+   "The mystery of the faith in a pure conscience"
+  ],
+  "answer": 3,
+  "explanation": "Deacons must hold the mystery of the faith in a pure conscience.",
+  "ref": "1 Timothy 3:9"
+ },
+ {
+  "id": "old-1-timothy-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul describe the church?",
+  "choices": [
+   "The pillar and ground of the truth",
+   "The light of the nations",
+   "The ark of the covenant",
+   "The bride of Abraham"
+  ],
+  "answer": 0,
+  "explanation": "Paul calls the church the pillar and ground of the truth.",
+  "ref": "1 Timothy 3:15"
+ },
+ {
+  "id": "old-1-timothy-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Spirit say will happen in the latter times?",
+  "choices": [
+   "All nations will turn to God",
+   "Some shall depart from the faith",
+   "The law will be restored",
+   "Prophets will cease"
+  ],
+  "answer": 1,
+  "explanation": "Paul says some will depart from the faith in the latter times.",
+  "ref": "1 Timothy 4:1"
+ },
+ {
+  "id": "old-1-timothy-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kinds of things will deceiving teachers forbid?",
+  "choices": [
+   "Prayer and worship",
+   "Marriage and certain foods",
+   "Teaching and preaching",
+   "Giving and fasting"
+  ],
+  "answer": 1,
+  "explanation": "Paul says they will forbid marriage and command abstinence from meats.",
+  "ref": "1 Timothy 4:3"
+ },
+ {
+  "id": "old-1-timothy-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is profitable for all things?",
+  "choices": [
+   "Physical exercise only",
+   "Godliness",
+   "Wealth",
+   "Knowledge"
+  ],
+  "answer": 1,
+  "explanation": "Paul says godliness is profitable unto all things.",
+  "ref": "1 Timothy 4:8"
+ },
+ {
+  "id": "old-1-timothy-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Timothy told to be?",
+  "choices": [
+   "A ruler over the elders",
+   "A judge in disputes",
+   "An example of the believers",
+   "A keeper of traditions"
+  ],
+  "answer": 2,
+  "explanation": "Timothy is to be an example in word, conduct, love, spirit, faith, and purity.",
+  "ref": "1 Timothy 4:12"
+ },
+ {
+  "id": "old-1-timothy-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what should Timothy give attendance?",
+  "choices": [
+   "Travel and oversight",
+   "Fundraising and care",
+   "Church discipline only",
+   "Reading, exhortation, and doctrine"
+  ],
+  "answer": 3,
+  "explanation": "Timothy is told to give attention to reading, exhortation, and doctrine.",
+  "ref": "1 Timothy 4:13"
+ },
+ {
+  "id": "old-1-timothy-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Timothy told to address an older man?",
+  "choices": [
+   "As a father",
+   "With sharp rebuke",
+   "As an overseer only",
+   "As a stranger"
+  ],
+  "answer": 0,
+  "explanation": "Timothy is to entreat an older man as a father.",
+  "ref": "1 Timothy 5:1"
+ },
+ {
+  "id": "old-1-timothy-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say a true widow who is left alone does?",
+  "choices": [
+   "Seek public recognition",
+   "Work in the marketplace",
+   "Trust in God and continue in prayers",
+   "Depend on younger relatives only"
+  ],
+  "answer": 2,
+  "explanation": "A widow indeed trusts in God and continues in supplications and prayers.",
+  "ref": "1 Timothy 5:5"
+ },
+ {
+  "id": "old-1-timothy-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say about someone who does not provide for his own?",
+  "choices": [
+   "He has denied the faith",
+   "He is spiritually weak",
+   "He should not teach",
+   "He must step down from church"
+  ],
+  "answer": 0,
+  "explanation": "Paul says such a person has denied the faith and is worse than an infidel.",
+  "ref": "1 Timothy 5:8"
+ },
+ {
+  "id": "old-1-timothy-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are elders who rule well worthy of?",
+  "choices": [
+   "Public office",
+   "Double honor",
+   "A higher title",
+   "A larger family inheritance"
+  ],
+  "answer": 1,
+  "explanation": "Elders who rule well are counted worthy of double honor.",
+  "ref": "1 Timothy 5:17"
+ },
+ {
+  "id": "old-1-timothy-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many witnesses are required before receiving an accusation against an elder?",
+  "choices": [
+   "One",
+   "Four",
+   "Two or three",
+   "Any number"
+  ],
+  "answer": 2,
+  "explanation": "An accusation against an elder should not be received except before two or three witnesses.",
+  "ref": "1 Timothy 5:19"
+ },
+ {
+  "id": "old-1-timothy-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say about godliness with contentment?",
+  "choices": [
+   "It is difficult to keep",
+   "It is only for leaders",
+   "It requires poverty",
+   "It is great gain"
+  ],
+  "answer": 3,
+  "explanation": "Paul says godliness with contentment is great gain.",
+  "ref": "1 Timothy 6:6"
+ },
+ {
+  "id": "old-1-timothy-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul call the love of money?",
+  "choices": [
+   "The greatest evil",
+   "The root of all evil",
+   "A dangerous temptation",
+   "A worldly distraction"
+  ],
+  "answer": 1,
+  "explanation": "Paul says the love of money is the root of all evil.",
+  "ref": "1 Timothy 6:10"
+ },
+ {
+  "id": "old-1-timothy-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Timothy, as a man of God, told to follow after?",
+  "choices": [
+   "Wealth and honor",
+   "The traditions of men",
+   "Righteousness, godliness, faith, love, patience and meekness",
+   "Questions and strifes of words"
+  ],
+  "answer": 2,
+  "explanation": "Timothy is told to flee these things and follow after righteousness, godliness, faith, love, patience, meekness.",
+  "ref": "1 Timothy 6:11"
+ },
+ {
+  "id": "old-1-timothy-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What fight is Timothy commanded to fight?",
+  "choices": [
+   "The fight against Rome",
+   "The battle for influence",
+   "The struggle for wealth",
+   "The good fight of faith"
+  ],
+  "answer": 3,
+  "explanation": "Timothy is commanded to fight the good fight of faith.",
+  "ref": "1 Timothy 6:12"
+ },
+ {
+  "id": "old-1-timothy-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where are the rich told to place their hope?",
+  "choices": [
+   "In their abundance",
+   "In wise investments",
+   "In the living God",
+   "In church honor"
+  ],
+  "answer": 2,
+  "explanation": "Paul says the rich should trust in the living God, not uncertain riches.",
+  "ref": "1 Timothy 6:17"
+ }
+]

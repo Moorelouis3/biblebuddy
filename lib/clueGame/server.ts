@@ -16,7 +16,9 @@
  */
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { BANK_ITEMS, CLUE_BANK, cleanSelection, selectionFromKeys, selectionLabel, selectionStatus, selectionToKeys } from "./bank";
+import { CLUE_BANK, MIN_ROUND, bookItems, cleanSelection, selectionFromKeys, selectionLabel, selectionStatus, selectionToKeys } from "./bank";
+// Every book's questions in the registry: rooms and challenges can use any book.
+import "./bank/all";
 import { createMatch, publicView, reduceClueMatch, type ClueAction, type ClueMatch, type ClueSelection, DEFAULT_CLUE_SETTINGS, ROUND_INTRO_MS } from "./engine";
 
 export type ClueUser = { id: string; name: string; avatar: string | null };
@@ -122,7 +124,7 @@ async function saveRoom(admin: SupabaseClient, room: RoomRow, patch: Partial<Roo
 export async function createRoom(admin: SupabaseClient, host: ClueUser, rawSelection: unknown) {
   const selection = cleanSelection(rawSelection);
   const status = selectionStatus(selection);
-  if (!status.enough) throw new Error(`${selectionLabel(selection)} has ${status.count} questions. A game needs ${status.needed}. Add chapters or pick the other level.`);
+  if (!status.enough) throw new Error(`${selectionLabel(selection)} has ${status.count} questions. A game needs ${status.needed}. Add chapters or pick another level.`);
   const decks = selectionToKeys(selection);
   for (let attempt = 0; attempt < 6; attempt += 1) {
     const code = newCode();
@@ -190,7 +192,7 @@ export function startRoom(admin: SupabaseClient, code: string, user: ClueUser, o
     const last = room.state && isCurrent(room.state) ? [...room.state.deck, ...room.state.done.map((d) => d.cardId)] : [];
     const match = reduceClueMatch(
       createMatch({
-        items: BANK_ITEMS,
+        items: bookItems(selection.book),
         selection,
         avoid: last,
         sides: players.map((p) => ({ id: p.user_id, name: p.display_name || "Buddy" })),
@@ -394,7 +396,7 @@ export async function createChallenge(admin: SupabaseClient, user: ClueUser, inp
     feedPostId = (existing.data.feed_post_id as string | null) ?? null;
   } else {
     const cardIds = (input.cardIds || []).filter((cid) => CLUE_BANK.has(cid));
-    if (cardIds.length !== DEFAULT_CLUE_SETTINGS.roundSize || new Set(cardIds).size !== cardIds.length) {
+    if (cardIds.length < MIN_ROUND || cardIds.length > DEFAULT_CLUE_SETTINGS.roundSize || new Set(cardIds).size !== cardIds.length) {
       return { error: "That round can't be shared." };
     }
     const won = Math.max(0, Math.min(cardIds.length, Math.round(Number(input.won) || 0)));

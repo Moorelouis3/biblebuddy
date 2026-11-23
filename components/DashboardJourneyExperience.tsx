@@ -6696,7 +6696,7 @@ export default function DashboardJourneyExperience({
                     {selectedGame.button}
                   </Link>
                   <Link
-                    href="/bible-trivia/books"
+                    href="/bible-study-games/clue"
                     className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-center text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
                   >
                     Choose A Book

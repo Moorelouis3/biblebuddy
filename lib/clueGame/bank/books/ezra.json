@@ -1,0 +1,802 @@
+[
+ {
+  "id": "old-ezra-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which Persian king proclaimed that the Lord had charged him to build a house at Jerusalem?",
+  "choices": [
+   "Cyrus",
+   "Darius",
+   "Artaxerxes",
+   "Ahasuerus"
+  ],
+  "answer": 0,
+  "explanation": "Cyrus issued the opening decree of Ezra.",
+  "ref": "Ezra 1:1–2"
+ },
+ {
+  "id": "old-ezra-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Cyrus invite the people of God to do?",
+  "choices": [
+   "Settle in Babylon permanently",
+   "Join the Persian army",
+   "Go up to Jerusalem and build the house of the Lord",
+   "Repair Egypt's cities"
+  ],
+  "answer": 2,
+  "explanation": "He called them to return and rebuild the temple.",
+  "ref": "Ezra 1:3"
+ },
+ {
+  "id": "old-ezra-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were the returning exiles supported by their neighbors?",
+  "choices": [
+   "With horses only",
+   "With farmland in Persia",
+   "With silver, gold, goods, beasts, and freewill offerings",
+   "With Roman protection"
+  ],
+  "answer": 2,
+  "explanation": "Their neighbors strengthened them with gifts and offerings.",
+  "ref": "Ezra 1:4–6"
+ },
+ {
+  "id": "old-ezra-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom were the temple vessels counted out to be taken back to Jerusalem?",
+  "choices": [
+   "Zerubbabel",
+   "Sheshbazzar",
+   "Ezra",
+   "Jeshua"
+  ],
+  "answer": 1,
+  "explanation": "Cyrus brought out the vessels and they were numbered to Sheshbazzar, the prince of Judah.",
+  "ref": "Ezra 1:8"
+ },
+ {
+  "id": "old-ezra-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many gold and silver vessels were counted out in all?",
+  "choices": [
+   "1,000",
+   "2,400",
+   "5,400",
+   "7,000"
+  ],
+  "answer": 2,
+  "explanation": "The chapter totals the restored vessels at 5,400.",
+  "ref": "Ezra 1:11"
+ },
+ {
+  "id": "old-ezra-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is listed throughout this chapter?",
+  "choices": [
+   "Only Persian officials",
+   "Only priests in Jerusalem",
+   "The people who returned from captivity",
+   "The tribes living in Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Ezra 2 records those who returned from Babylon to Judah.",
+  "ref": "Ezra 2:1"
+ },
+ {
+  "id": "old-ezra-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which leader is named first among those who came with Zerubbabel?",
+  "choices": [
+   "Ezra",
+   "Mordecai",
+   "Daniel",
+   "Jeshua"
+  ],
+  "answer": 3,
+  "explanation": "Jeshua is the first name in the list of those who came with Zerubbabel.",
+  "ref": "Ezra 2:2"
+ },
+ {
+  "id": "old-ezra-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What group besides priests and Levites is repeatedly listed in the register?",
+  "choices": [
+   "Prophets",
+   "Kings",
+   "Nethinims",
+   "Soldiers"
+  ],
+  "answer": 2,
+  "explanation": "The Nethinims, temple servants, are carefully counted.",
+  "ref": "Ezra 2:43"
+ },
+ {
+  "id": "old-ezra-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were some priestly families excluded from the priesthood?",
+  "choices": [
+   "They could not find their genealogy",
+   "They refused to return",
+   "They were too young",
+   "They married Persians"
+  ],
+  "answer": 0,
+  "explanation": "Their register could not be found, so they were treated as polluted.",
+  "ref": "Ezra 2:62"
+ },
+ {
+  "id": "old-ezra-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the governor say should happen before those excluded priests could eat of the most holy things?",
+  "choices": [
+   "They must offer a ram",
+   "They must wait for a priest with Urim and Thummim",
+   "They must return to Babylon",
+   "They must bathe in the Jordan"
+  ],
+  "answer": 1,
+  "explanation": "The matter was deferred until a priest could inquire with Urim and Thummim.",
+  "ref": "Ezra 2:63"
+ },
+ {
+  "id": "old-ezra-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jeshua and Zerubbabel rebuild before the temple foundation was laid?",
+  "choices": [
+   "Jerusalem's wall",
+   "The king's palace",
+   "The altar of the God of Israel",
+   "The city gates"
+  ],
+  "answer": 2,
+  "explanation": "They first rebuilt the altar so offerings could begin again.",
+  "ref": "Ezra 3:2"
+ },
+ {
+  "id": "old-ezra-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the returned exiles set the altar on its bases quickly?",
+  "choices": [
+   "They wanted to impress Persia",
+   "They had too much gold",
+   "Fear was upon them because of the surrounding peoples",
+   "Winter was coming"
+  ],
+  "answer": 2,
+  "explanation": "Hostile neighbors made them eager to restore worship promptly.",
+  "ref": "Ezra 3:3"
+ },
+ {
+  "id": "old-ezra-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which feast is specifically mentioned as being kept in this chapter?",
+  "choices": [
+   "Passover",
+   "Feast of Tabernacles",
+   "Day of Atonement",
+   "Purim"
+  ],
+  "answer": 1,
+  "explanation": "They observed the Feast of Tabernacles according to the law.",
+  "ref": "Ezra 3:4"
+ },
+ {
+  "id": "old-ezra-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shouted with a great shout when the temple foundation was laid?",
+  "choices": [
+   "The Babylonians",
+   "Only the king",
+   "No one",
+   "All the people"
+  ],
+  "answer": 3,
+  "explanation": "All the people shouted and praised the Lord because the foundation was laid.",
+  "ref": "Ezra 3:11"
+ },
+ {
+  "id": "old-ezra-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did many older priests, Levites, and chief fathers weep aloud?",
+  "choices": [
+   "They were hungry",
+   "The altar fell",
+   "The Persians stopped the work",
+   "They had seen the first house"
+  ],
+  "answer": 3,
+  "explanation": "Those who remembered Solomon's temple wept at the contrast.",
+  "ref": "Ezra 3:12"
+ },
+ {
+  "id": "old-ezra-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What offer did the adversaries make to Zerubbabel and the leaders of Judah?",
+  "choices": [
+   "To fund the walls of Jericho",
+   "To help build the temple",
+   "To surrender their lands",
+   "To train Levites"
+  ],
+  "answer": 1,
+  "explanation": "The adversaries asked to join the rebuilding effort.",
+  "ref": "Ezra 4:2"
+ },
+ {
+  "id": "old-ezra-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the leaders refuse the adversaries' offer?",
+  "choices": [
+   "Cyrus had commanded only them to build the house of God",
+   "They had no building tools",
+   "The temple was already finished",
+   "They feared rain"
+  ],
+  "answer": 0,
+  "explanation": "The returned exiles kept the work distinct according to the king's decree.",
+  "ref": "Ezra 4:3"
+ },
+ {
+  "id": "old-ezra-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people of the land try to stop the work after being refused?",
+  "choices": [
+   "They joined the sacrifices",
+   "They moved to Egypt",
+   "They rebuilt the altar themselves",
+   "They weakened the hands of the people and hired counselors against them"
+  ],
+  "answer": 3,
+  "explanation": "They used intimidation and political opposition to hinder the work.",
+  "ref": "Ezra 4:4–5"
+ },
+ {
+  "id": "old-ezra-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which king ordered the rebuilding in Jerusalem to stop after receiving accusations?",
+  "choices": [
+   "Cyrus",
+   "Darius",
+   "Artaxerxes",
+   "Belshazzar"
+  ],
+  "answer": 2,
+  "explanation": "Artaxerxes commanded the work to cease.",
+  "ref": "Ezra 4:23–24"
+ },
+ {
+  "id": "old-ezra-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the letter to King Artaxerxes accuse the Jews of doing?",
+  "choices": [
+   "Rebuilding a rebellious city and its walls",
+   "Stealing the temple vessels",
+   "Causing a famine in Judah",
+   "Changing the Levites' genealogy"
+  ],
+  "answer": 0,
+  "explanation": "The letter called Jerusalem a rebellious city and warned the king about its walls being set up.",
+  "ref": "Ezra 4:12–13"
+ },
+ {
+  "id": "old-ezra-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two prophets prophesied to the Jews in Judah and Jerusalem?",
+  "choices": [
+   "Jeremiah and Ezekiel",
+   "Isaiah and Micah",
+   "Haggai and Zechariah",
+   "Joel and Amos"
+  ],
+  "answer": 2,
+  "explanation": "Haggai and Zechariah stirred the people to resume the work.",
+  "ref": "Ezra 5:1"
+ },
+ {
+  "id": "old-ezra-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who rose up to begin building the house of God again?",
+  "choices": [
+   "Ezra and Nehemiah",
+   "Zerubbabel and Jeshua",
+   "Cyrus and Darius",
+   "Mordecai and Esther"
+  ],
+  "answer": 1,
+  "explanation": "Zerubbabel and Jeshua led the renewed effort.",
+  "ref": "Ezra 5:2"
+ },
+ {
+  "id": "old-ezra-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which Persian official questioned who had commanded the builders?",
+  "choices": [
+   "Sanballat",
+   "Tatnai",
+   "Haman",
+   "Nebuzaradan"
+  ],
+  "answer": 1,
+  "explanation": "Tatnai, governor on this side the river, asked who had commanded them to build.",
+  "ref": "Ezra 5:3"
+ },
+ {
+  "id": "old-ezra-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What reason did the Jews give for rebuilding the temple?",
+  "choices": [
+   "They wanted a market",
+   "They were hiding from Persia",
+   "They were servants of the God of heaven and earth, rebuilding a former great house",
+   "They were preparing for war"
+  ],
+  "answer": 2,
+  "explanation": "They testified that they were restoring God's house.",
+  "ref": "Ezra 5:11"
+ },
+ {
+  "id": "old-ezra-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were the builders not forced to stop while the inquiry went to Darius?",
+  "choices": [
+   "Tatnai supported idolatry",
+   "The eye of their God was upon the elders of the Jews",
+   "The city walls were too strong",
+   "Babylon had fallen again"
+  ],
+  "answer": 1,
+  "explanation": "God watched over the elders so the work continued pending the decision.",
+  "ref": "Ezra 5:5"
+ },
+ {
+  "id": "old-ezra-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "In what place was Cyrus's decree found during Darius's search?",
+  "choices": [
+   "Jerusalem",
+   "Babylon's riverbank",
+   "Susa's gate",
+   "Achmetha, in the palace in the province of the Medes"
+  ],
+  "answer": 3,
+  "explanation": "The roll was found at Achmetha, in the palace in the province of the Medes.",
+  "ref": "Ezra 6:2"
+ },
+ {
+  "id": "old-ezra-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Darius command Tatnai and his companions to do after the decree was found?",
+  "choices": [
+   "Destroy the altar",
+   "Let the work of this house of God alone",
+   "Tax the priests heavily",
+   "Move the temple to Samaria"
+  ],
+  "answer": 1,
+  "explanation": "Darius ordered the officials not to hinder the work.",
+  "ref": "Ezra 6:6–7"
+ },
+ {
+  "id": "old-ezra-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where were the expenses for rebuilding to be paid?",
+  "choices": [
+   "From Egypt",
+   "From the temple storehouse in Babylon",
+   "From the king's goods, the tribute beyond the river",
+   "From Tyre alone"
+  ],
+  "answer": 2,
+  "explanation": "The project was funded from the king's revenues.",
+  "ref": "Ezra 6:8"
+ },
+ {
+  "id": "old-ezra-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "During whose reign was the temple finished?",
+  "choices": [
+   "Artaxerxes",
+   "Cyrus",
+   "Xerxes",
+   "Darius"
+  ],
+  "answer": 3,
+  "explanation": "The temple was completed in the sixth year of Darius.",
+  "ref": "Ezra 6:15"
+ },
+ {
+  "id": "old-ezra-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which feast did the returned exiles keep after dedicating the temple?",
+  "choices": [
+   "Purim",
+   "Weeks",
+   "Trumpets",
+   "Passover"
+  ],
+  "answer": 3,
+  "explanation": "They kept the Passover after the temple was completed.",
+  "ref": "Ezra 6:19"
+ },
+ {
+  "id": "old-ezra-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Ezra described in relation to the law of Moses?",
+  "choices": [
+   "A ready scribe in the law of Moses",
+   "A warrior",
+   "A palace servant",
+   "A singer"
+  ],
+  "answer": 0,
+  "explanation": "Ezra is presented as a skilled scribe in God's law.",
+  "ref": "Ezra 7:6"
+ },
+ {
+  "id": "old-ezra-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the king grant Ezra all his request?",
+  "choices": [
+   "The hand of the Lord his God was upon him",
+   "Ezra bribed the court",
+   "Judah demanded it",
+   "He married into royalty"
+  ],
+  "answer": 0,
+  "explanation": "God's favor on Ezra explains the king's support.",
+  "ref": "Ezra 7:6"
+ },
+ {
+  "id": "old-ezra-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had Ezra prepared his heart to do?",
+  "choices": [
+   "Lead an army",
+   "Seek the law of the Lord, do it, and teach it",
+   "Build city walls",
+   "Collect Persian taxes"
+  ],
+  "answer": 1,
+  "explanation": "Ezra's famous threefold devotion was to study, practice, and teach the law.",
+  "ref": "Ezra 7:10"
+ },
+ {
+  "id": "old-ezra-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What authority did Artaxerxes give Ezra regarding judges?",
+  "choices": [
+   "None",
+   "To appoint magistrates and judges who knew God's laws",
+   "To replace the high priest",
+   "To crown a king"
+  ],
+  "answer": 1,
+  "explanation": "Ezra was empowered to appoint civil and religious judges.",
+  "ref": "Ezra 7:25"
+ },
+ {
+  "id": "old-ezra-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra say strengthened him?",
+  "choices": [
+   "Persian gold",
+   "Military allies",
+   "The fame of Jerusalem",
+   "The hand of the Lord his God upon him"
+  ],
+  "answer": 3,
+  "explanation": "Ezra praised God for giving him courage and favor.",
+  "ref": "Ezra 7:28"
+ },
+ {
+  "id": "old-ezra-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "At what river did Ezra gather the people before the journey to Jerusalem?",
+  "choices": [
+   "Jordan",
+   "Chebar",
+   "Euphrates",
+   "Ahava"
+  ],
+  "answer": 3,
+  "explanation": "Ezra assembled the company by the river Ahava.",
+  "ref": "Ezra 8:15"
+ },
+ {
+  "id": "old-ezra-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What important group did Ezra find missing at first from the company?",
+  "choices": [
+   "Princes",
+   "Levites",
+   "Singers",
+   "Women"
+  ],
+  "answer": 1,
+  "explanation": "Ezra noticed there were no Levites present initially.",
+  "ref": "Ezra 8:15"
+ },
+ {
+  "id": "old-ezra-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Ezra proclaim a fast at the river Ahava?",
+  "choices": [
+   "To celebrate harvest",
+   "To mourn Cyrus",
+   "To prepare for war",
+   "To seek from God a right way for them, their children, and their goods"
+  ],
+  "answer": 3,
+  "explanation": "The fast was for humility and divine protection on the journey.",
+  "ref": "Ezra 8:21"
+ },
+ {
+  "id": "old-ezra-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Ezra ashamed to ask the king for soldiers and horsemen?",
+  "choices": [
+   "He had no audience with the king",
+   "The roads were closed",
+   "Persia had no army left",
+   "He had already testified that God's hand is on those who seek Him"
+  ],
+  "answer": 3,
+  "explanation": "Ezra trusted God after publicly declaring God's protecting hand.",
+  "ref": "Ezra 8:22"
+ },
+ {
+  "id": "old-ezra-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priests do with the silver, gold, and vessels after arriving in Jerusalem?",
+  "choices": [
+   "Sold them",
+   "Weighed and delivered them in the house of God",
+   "Buried them",
+   "Sent them back to Persia"
+  ],
+  "answer": 1,
+  "explanation": "The treasures were carefully weighed into the temple's custody.",
+  "ref": "Ezra 8:33–34"
+ },
+ {
+  "id": "old-ezra-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sin of the people and leaders was reported to Ezra?",
+  "choices": [
+   "Neglecting Passover",
+   "Refusing to rebuild the temple",
+   "Marrying people of the lands around them",
+   "Stealing the temple vessels"
+  ],
+  "answer": 2,
+  "explanation": "The chief issue was intermarriage with surrounding peoples.",
+  "ref": "Ezra 9:1–2"
+ },
+ {
+  "id": "old-ezra-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Ezra respond when he heard that the people had married people of the lands?",
+  "choices": [
+   "He rent his garment and mantle and pulled hair from his head and beard",
+   "He celebrated",
+   "He fled to Persia",
+   "He crowned a judge"
+  ],
+  "answer": 0,
+  "explanation": "Ezra responded with visible grief and shock.",
+  "ref": "Ezra 9:3"
+ },
+ {
+  "id": "old-ezra-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what time did Ezra rise from his heaviness to pray?",
+  "choices": [
+   "At midnight",
+   "At sunrise",
+   "During the feast of booths",
+   "At the evening sacrifice"
+  ],
+  "answer": 3,
+  "explanation": "He rose at the evening sacrifice and fell upon his knees.",
+  "ref": "Ezra 9:5"
+ },
+ {
+  "id": "old-ezra-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Ezra describe the recent mercy God had shown them?",
+  "choices": [
+   "A strong wall in Persia",
+   "A new king in Babylon",
+   "A little space of grace and a nail in His holy place",
+   "A river of gold"
+  ],
+  "answer": 2,
+  "explanation": "Ezra spoke of a small reviving and secure place given by God.",
+  "ref": "Ezra 9:8"
+ },
+ {
+  "id": "old-ezra-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra confess about Judah's guilt?",
+  "choices": [
+   "It was small",
+   "It belonged only to the priests",
+   "It had grown up unto the heavens",
+   "It began that day"
+  ],
+  "answer": 2,
+  "explanation": "Ezra confessed that their iniquities had risen over their heads.",
+  "ref": "Ezra 9:6"
+ },
+ {
+  "id": "old-ezra-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Ezra there was still hope in Israel, even though the people had trespassed?",
+  "choices": [
+   "Jeshua",
+   "Shechaniah",
+   "Zerubbabel",
+   "Nehemiah"
+  ],
+  "answer": 1,
+  "explanation": "Shechaniah urged Ezra that repentance and action were still possible.",
+  "ref": "Ezra 10:2"
+ },
+ {
+  "id": "old-ezra-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What covenant did the people propose to make?",
+  "choices": [
+   "To rebuild Babylon",
+   "To stop all sacrifices",
+   "To put away the foreign wives and those born of them",
+   "To move to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "They covenanted to separate from these unlawful marriages.",
+  "ref": "Ezra 10:3"
+ },
+ {
+  "id": "old-ezra-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra make the chief priests, Levites, and all Israel do?",
+  "choices": [
+   "Swear that they would do according to this word",
+   "Fight the Samaritans",
+   "Crown a king",
+   "Return the altar to Babylon"
+  ],
+  "answer": 0,
+  "explanation": "Ezra required an oath to follow through on the reform.",
+  "ref": "Ezra 10:5"
+ },
+ {
+  "id": "old-ezra-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What unusual condition marked the great assembly in Jerusalem?",
+  "choices": [
+   "Snow",
+   "A drought",
+   "A plague of locusts",
+   "The people sat trembling because of the matter and for the great rain"
+  ],
+  "answer": 3,
+  "explanation": "The assembly took place in heavy rain and deep trembling.",
+  "ref": "Ezra 10:9"
+ },
+ {
+  "id": "old-ezra-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the investigation of the offenders proceed?",
+  "choices": [
+   "In one afternoon",
+   "By casting lots only",
+   "By sending all cases to Persia",
+   "By appointed men sitting over several months"
+  ],
+  "answer": 3,
+  "explanation": "The matter was examined carefully over time by appointed leaders.",
+  "ref": "Ezra 10:16–17"
+ }
+]

@@ -36,8 +36,8 @@ export const APP_NAV_ITEMS: AppNavItem[] = [
   },
   {
     label: "Bible Trivia",
-    href: "/bible-trivia",
-    activePrefixes: ["/bible-trivia"],
+    href: "/bible-study-games/clue",
+    activePrefixes: ["/bible-trivia", "/bible-study-games/clue"],
     activeClasses: "bg-emerald-50 text-emerald-700 font-medium cursor-not-allowed",
     hoverClasses: "text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 active:scale-[0.98]",
   },

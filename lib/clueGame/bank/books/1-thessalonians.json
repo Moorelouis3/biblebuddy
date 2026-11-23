@@ -1,0 +1,402 @@
+[
+ {
+  "id": "old-1-thessalonians-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What three virtues does Paul remember?",
+  "choices": [
+   "Mercy, peace, and grace",
+   "Faith, love, and hope",
+   "Wisdom, knowledge, and power",
+   "Joy, patience, and truth"
+  ],
+  "answer": 1,
+  "explanation": "Paul remembers their work of faith, labor of love, and patience of hope in Jesus Christ.",
+  "ref": "1 Thessalonians 1:3"
+ },
+ {
+  "id": "old-1-thessalonians-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the Thessalonians receive the word?",
+  "choices": [
+   "With fear and trembling only",
+   "With doubt and questions",
+   "With signs and wonders",
+   "With joy of the Holy Ghost"
+  ],
+  "answer": 3,
+  "explanation": "They received the word in much affliction, with joy of the Holy Ghost.",
+  "ref": "1 Thessalonians 1:6"
+ },
+ {
+  "id": "old-1-thessalonians-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what regions did their example spread?",
+  "choices": [
+   "Judea and Samaria",
+   "Asia and Bithynia",
+   "Rome and Spain",
+   "Macedonia and Achaia"
+  ],
+  "answer": 3,
+  "explanation": "They became examples to all that believe in Macedonia and Achaia.",
+  "ref": "1 Thessalonians 1:7"
+ },
+ {
+  "id": "old-1-thessalonians-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what did the Thessalonians turn?",
+  "choices": [
+   "Old traditions",
+   "Roman rulers",
+   "Idols",
+   "False teachers"
+  ],
+  "answer": 2,
+  "explanation": "They turned to God from idols to serve the living and true God.",
+  "ref": "1 Thessalonians 1:9"
+ },
+ {
+  "id": "old-1-thessalonians-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom were the Thessalonians waiting for from heaven?",
+  "choices": [
+   "Moses",
+   "The archangel Michael",
+   "The prophets",
+   "God's Son, Jesus"
+  ],
+  "answer": 3,
+  "explanation": "They were waiting for God's Son from heaven, even Jesus.",
+  "ref": "1 Thessalonians 1:10"
+ },
+ {
+  "id": "old-1-thessalonians-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul describe his entrance among the Thessalonians?",
+  "choices": [
+   "As uncertain",
+   "Very short",
+   "Not in vain",
+   "Full of signs"
+  ],
+  "answer": 2,
+  "explanation": "Paul says his coming to them was not in vain.",
+  "ref": "1 Thessalonians 2:1"
+ },
+ {
+  "id": "old-1-thessalonians-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where had Paul and his companions suffered before coming to Thessalonica?",
+  "choices": [
+   "Philippi",
+   "Athens",
+   "Corinth",
+   "Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Paul says they had suffered and been shamefully treated at Philippi.",
+  "ref": "1 Thessalonians 2:2"
+ },
+ {
+  "id": "old-1-thessalonians-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul describe his care for the believers?",
+  "choices": [
+   "Like a nurse cherishing her children",
+   "Like a soldier",
+   "Like a ruler over subjects",
+   "Like a prophet over Israel"
+  ],
+  "answer": 0,
+  "explanation": "Paul says they were gentle among them, like a nurse cherishing her children.",
+  "ref": "1 Thessalonians 2:7"
+ },
+ {
+  "id": "old-1-thessalonians-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul say they were entrusted with?",
+  "choices": [
+   "The temple service",
+   "The gospel",
+   "The care of widows",
+   "The law"
+  ],
+  "answer": 1,
+  "explanation": "They had been entrusted with the gospel and spoke to please God, not men.",
+  "ref": "1 Thessalonians 2:4"
+ },
+ {
+  "id": "old-1-thessalonians-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who hindered Paul from coming back to the Thessalonians?",
+  "choices": [
+   "Roman guards",
+   "The weather",
+   "False brothers",
+   "Satan"
+  ],
+  "answer": 3,
+  "explanation": "Paul says Satan hindered them.",
+  "ref": "1 Thessalonians 2:18"
+ },
+ {
+  "id": "old-1-thessalonians-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Paul send to establish and comfort the Thessalonians concerning their faith?",
+  "choices": [
+   "Timothy",
+   "Titus",
+   "Silas",
+   "Luke"
+  ],
+  "answer": 0,
+  "explanation": "Paul sent Timothy to establish and comfort them concerning their faith.",
+  "ref": "1 Thessalonians 3:2"
+ },
+ {
+  "id": "old-1-thessalonians-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Paul send Timothy?",
+  "choices": [
+   "To collect an offering",
+   "To appoint elders",
+   "To rebuke them",
+   "To know their faith"
+  ],
+  "answer": 3,
+  "explanation": "Paul sent Timothy to know their faith, fearing the tempter had tempted them.",
+  "ref": "1 Thessalonians 3:5"
+ },
+ {
+  "id": "old-1-thessalonians-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What good news did Timothy bring back?",
+  "choices": [
+   "Their new building plans",
+   "Their growth in numbers",
+   "Their favor with rulers",
+   "Their faith and love"
+  ],
+  "answer": 3,
+  "explanation": "Timothy brought good news of their faith and love.",
+  "ref": "1 Thessalonians 3:6"
+ },
+ {
+  "id": "old-1-thessalonians-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul writes, 'For now we live, if ye' do what?",
+  "choices": [
+   "Stand fast in the Lord",
+   "Pray for us",
+   "Send us help",
+   "Come to us quickly"
+  ],
+  "answer": 0,
+  "explanation": "Paul says, 'Now we live, if ye stand fast in the Lord.'",
+  "ref": "1 Thessalonians 3:8"
+ },
+ {
+  "id": "old-1-thessalonians-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what does Paul pray the Lord would establish their hearts unblameable?",
+  "choices": [
+   "Wisdom and power",
+   "Boldness before rulers",
+   "Patience in labor",
+   "Holiness before God"
+  ],
+  "answer": 3,
+  "explanation": "Paul prays their hearts would be established unblameable in holiness before God.",
+  "ref": "1 Thessalonians 3:13"
+ },
+ {
+  "id": "old-1-thessalonians-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say is the will of God?",
+  "choices": [
+   "Their sanctification",
+   "Their prosperity",
+   "Their leadership",
+   "Their reputation"
+  ],
+  "answer": 0,
+  "explanation": "Paul says this is the will of God, even their sanctification.",
+  "ref": "1 Thessalonians 4:3"
+ },
+ {
+  "id": "old-1-thessalonians-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sin does Paul specifically tell them to avoid?",
+  "choices": [
+   "Covetousness",
+   "False teaching",
+   "Idolatry",
+   "Sexual immorality"
+  ],
+  "answer": 3,
+  "explanation": "Paul says they should abstain from fornication.",
+  "ref": "1 Thessalonians 4:3"
+ },
+ {
+  "id": "old-1-thessalonians-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul tell believers to study to be?",
+  "choices": [
+   "Hidden",
+   "Well known",
+   "Wealthy",
+   "Quiet"
+  ],
+  "answer": 3,
+  "explanation": "They are urged to study to be quiet, do their own business, and work with their hands.",
+  "ref": "1 Thessalonians 4:11"
+ },
+ {
+  "id": "old-1-thessalonians-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul not want believers to be ignorant about?",
+  "choices": [
+   "The gifts of the Spirit",
+   "Those who are asleep",
+   "The end of Rome",
+   "Church leadership"
+  ],
+  "answer": 1,
+  "explanation": "Paul teaches them about believers who have died, described as asleep.",
+  "ref": "1 Thessalonians 4:13"
+ },
+ {
+  "id": "old-1-thessalonians-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who will rise first when the Lord descends from heaven?",
+  "choices": [
+   "The dead in Christ",
+   "The apostles",
+   "Living believers",
+   "The angels"
+  ],
+  "answer": 0,
+  "explanation": "The dead in Christ shall rise first.",
+  "ref": "1 Thessalonians 4:16"
+ },
+ {
+  "id": "old-1-thessalonians-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the day of the Lord come?",
+  "choices": [
+   "Like a sudden storm",
+   "With a trumpet first",
+   "As a thief in the night",
+   "Only after many signs"
+  ],
+  "answer": 2,
+  "explanation": "Paul says the day of the Lord comes as a thief in the night.",
+  "ref": "1 Thessalonians 5:2"
+ },
+ {
+  "id": "old-1-thessalonians-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are believers called?",
+  "choices": [
+   "Children of light and of the day",
+   "Children of wisdom",
+   "Children of Abraham",
+   "Children of promise"
+  ],
+  "answer": 0,
+  "explanation": "Believers are children of light and children of the day.",
+  "ref": "1 Thessalonians 5:5"
+ },
+ {
+  "id": "old-1-thessalonians-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which three short commands does Paul give one after another?",
+  "choices": [
+   "Rejoice evermore, pray without ceasing, in every thing give thanks",
+   "Work hard, wait patiently, speak boldly",
+   "Watch, teach, and endure",
+   "Love, serve, and sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "Paul commands them to rejoice always, pray without ceasing, and give thanks in everything.",
+  "ref": "1 Thessalonians 5:16–18"
+ },
+ {
+  "id": "old-1-thessalonians-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say believers should not quench?",
+  "choices": [
+   "Their zeal",
+   "Their courage",
+   "The Spirit",
+   "Their gifts"
+  ],
+  "answer": 2,
+  "explanation": "He tells them not to quench the Spirit.",
+  "ref": "1 Thessalonians 5:19"
+ },
+ {
+  "id": "old-1-thessalonians-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul pray God would preserve blameless unto the coming of Christ?",
+  "choices": [
+   "Only their works",
+   "Their families and homes",
+   "Their whole spirit and soul and body",
+   "Their minds and hearts only"
+  ],
+  "answer": 2,
+  "explanation": "Paul prays for the preservation of their whole spirit, soul, and body.",
+  "ref": "1 Thessalonians 5:23"
+ }
+]

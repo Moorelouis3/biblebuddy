@@ -1,0 +1,5282 @@
+[
+ {
+  "id": "old-isaiah-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kings of Judah are named?",
+  "choices": [
+   "Uzziah, Jotham, Ahaz, and Hezekiah",
+   "Saul, David, and Solomon",
+   "Jehoiakim, Jehoiachin, and Zedekiah",
+   "Rehoboam, Abijah, and Asa"
+  ],
+  "answer": 0,
+  "explanation": "The opening verse dates Isaiah's vision to the reigns of four Judahite kings.",
+  "ref": "Isaiah 1:1"
+ },
+ {
+  "id": "old-isaiah-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What creatures are used to shame Israel's lack of understanding?",
+  "choices": [
+   "Lions and bears",
+   "Eagles and doves",
+   "Sheep and goats",
+   "The ox and the ass"
+  ],
+  "answer": 3,
+  "explanation": "Even the ox and donkey know their master, but Israel does not know the Lord.",
+  "ref": "Isaiah 1:3"
+ },
+ {
+  "id": "old-isaiah-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say He is full of concerning sacrifices?",
+  "choices": [
+   "The burnt offerings of rams",
+   "Mercy",
+   "Patience",
+   "Songs of praise"
+  ],
+  "answer": 0,
+  "explanation": "God rejects hypocritical worship that lacks righteousness.",
+  "ref": "Isaiah 1:11"
+ },
+ {
+  "id": "old-isaiah-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What invitation does the Lord give?",
+  "choices": [
+   "Ask, and it shall be given you",
+   "Come now, and let us reason together",
+   "Return unto me with all your heart",
+   "Seek ye first the kingdom"
+  ],
+  "answer": 1,
+  "explanation": "God graciously invites repentance and cleansing.",
+  "ref": "Isaiah 1:18"
+ },
+ {
+  "id": "old-isaiah-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are scarlet sins described if forgiven?",
+  "choices": [
+   "They become hidden",
+   "They shall be forgotten by men",
+   "They turn into strength",
+   "They shall be as white as snow"
+  ],
+  "answer": 3,
+  "explanation": "God promises complete cleansing for repentant sinners.",
+  "ref": "Isaiah 1:18"
+ },
+ {
+  "id": "old-isaiah-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "What mountain is exalted in the last days?",
+  "choices": [
+   "Mount Carmel",
+   "The mountain of the Lord's house",
+   "Mount Nebo",
+   "Mount Ebal"
+  ],
+  "answer": 1,
+  "explanation": "Isaiah sees the Lord's house established above the hills.",
+  "ref": "Isaiah 2:2"
+ },
+ {
+  "id": "old-isaiah-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will many nations say?",
+  "choices": [
+   "Let us go up to the mountain of the Lord",
+   "Let us return to Egypt",
+   "Let us choose a king",
+   "Let us hide in the rocks"
+  ],
+  "answer": 0,
+  "explanation": "The nations will seek the Lord's teaching from Zion.",
+  "ref": "Isaiah 2:3"
+ },
+ {
+  "id": "old-isaiah-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are swords beaten into?",
+  "choices": [
+   "Crowns",
+   "Spears",
+   "Plowshares",
+   "Chains"
+  ],
+  "answer": 2,
+  "explanation": "The chapter envisions a future peace under God's rule.",
+  "ref": "Isaiah 2:4"
+ },
+ {
+  "id": "old-isaiah-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who alone shall be exalted in that day?",
+  "choices": [
+   "The king of Judah",
+   "The mighty man",
+   "The captain of the host",
+   "The Lord"
+  ],
+  "answer": 3,
+  "explanation": "Human pride will be humbled, and the Lord alone exalted.",
+  "ref": "Isaiah 2:11"
+ },
+ {
+  "id": "old-isaiah-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where do people try to hide?",
+  "choices": [
+   "In the holes of the rocks",
+   "In the tents of Kedar",
+   "In the king's house",
+   "By the river"
+  ],
+  "answer": 0,
+  "explanation": "They flee before the terror of the Lord into caves and rocks.",
+  "ref": "Isaiah 2:19"
+ },
+ {
+  "id": "old-isaiah-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Lord remove from Jerusalem and Judah?",
+  "choices": [
+   "Only their wealth",
+   "The stay and the staff",
+   "Their temple",
+   "Their language"
+  ],
+  "answer": 1,
+  "explanation": "God removes every kind of support and stability.",
+  "ref": "Isaiah 3:1"
+ },
+ {
+  "id": "old-isaiah-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kinds of people are removed?",
+  "choices": [
+   "The mighty man, judge, prophet, and elder",
+   "Only soldiers",
+   "Only priests",
+   "Only merchants"
+  ],
+  "answer": 0,
+  "explanation": "Leadership at every level is taken away.",
+  "ref": "Isaiah 3:2–3"
+ },
+ {
+  "id": "old-isaiah-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall rule over them?",
+  "choices": [
+   "Wise counselors",
+   "Foreign kings",
+   "The priests",
+   "Children"
+  ],
+  "answer": 3,
+  "explanation": "Immature rulers symbolize Judah's judgment and disorder.",
+  "ref": "Isaiah 3:4"
+ },
+ {
+  "id": "old-isaiah-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sin of Jerusalem is highlighted?",
+  "choices": [
+   "Its fields are barren",
+   "Its speech and deeds are against the Lord",
+   "Its walls are broken",
+   "Its people are silent"
+  ],
+  "answer": 1,
+  "explanation": "The city openly rebels in word and deed against God.",
+  "ref": "Isaiah 3:8"
+ },
+ {
+  "id": "old-isaiah-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the daughters of Zion's beauty?",
+  "choices": [
+   "It is multiplied",
+   "It becomes royal glory",
+   "It is hidden in the temple",
+   "Instead of beauty there is burning"
+  ],
+  "answer": 3,
+  "explanation": "Their outward pride is replaced with shame and humiliation.",
+  "ref": "Isaiah 3:24"
+ },
+ {
+  "id": "old-isaiah-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many women take hold of one man?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "The verse pictures the severe aftermath of judgment.",
+  "ref": "Isaiah 4:1"
+ },
+ {
+  "id": "old-isaiah-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is called beautiful and glorious?",
+  "choices": [
+   "The temple",
+   "The throne of David",
+   "The river Jordan",
+   "The branch of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "The Branch becomes a hopeful picture of restored glory.",
+  "ref": "Isaiah 4:2"
+ },
+ {
+  "id": "old-isaiah-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall be called holy?",
+  "choices": [
+   "Everyone in Israel",
+   "The kings of Judah",
+   "He that is left in Zion",
+   "All the nations"
+  ],
+  "answer": 2,
+  "explanation": "The remnant in Jerusalem is described as holy.",
+  "ref": "Isaiah 4:3"
+ },
+ {
+  "id": "old-isaiah-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the Lord wash away Zion's filth?",
+  "choices": [
+   "By the spirit of judgment and burning",
+   "By the river of Jordan",
+   "By priestly sacrifice alone",
+   "By royal decree"
+  ],
+  "answer": 0,
+  "explanation": "God cleanses His people through judgment and purging.",
+  "ref": "Isaiah 4:4"
+ },
+ {
+  "id": "old-isaiah-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What protective signs appear over Zion?",
+  "choices": [
+   "Rain and thunder",
+   "Angels with swords",
+   "Cloud and smoke by day, flaming fire by night",
+   "Walls of bronze"
+  ],
+  "answer": 2,
+  "explanation": "The imagery recalls God's wilderness presence over His people.",
+  "ref": "Isaiah 4:5"
+ },
+ {
+  "id": "old-isaiah-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the owner expect his vineyard to bring forth?",
+  "choices": [
+   "Good grapes",
+   "Wild grapes",
+   "Olives",
+   "Figs"
+  ],
+  "answer": 0,
+  "explanation": "The vineyard was carefully prepared to yield good fruit.",
+  "ref": "Isaiah 5:2"
+ },
+ {
+  "id": "old-isaiah-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the vineyard actually bring forth?",
+  "choices": [
+   "Thorns",
+   "No fruit at all",
+   "Wild grapes",
+   "Bitter water"
+  ],
+  "answer": 2,
+  "explanation": "Judah failed to produce the righteousness God expected.",
+  "ref": "Isaiah 5:2"
+ },
+ {
+  "id": "old-isaiah-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is the vineyard?",
+  "choices": [
+   "The nations",
+   "The priests only",
+   "Assyria",
+   "The house of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Isaiah directly identifies the vineyard as Israel and Judah.",
+  "ref": "Isaiah 5:7"
+ },
+ {
+  "id": "old-isaiah-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Lord look for but find the opposite of?",
+  "choices": [
+   "Judgment and righteousness",
+   "Wealth and power",
+   "Sacrifice and song",
+   "Temple and priesthood"
+  ],
+  "answer": 0,
+  "explanation": "He looked for justice but found oppression and cries.",
+  "ref": "Isaiah 5:7"
+ },
+ {
+  "id": "old-isaiah-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times does the chapter repeat the word 'Woe' in its warnings?",
+  "choices": [
+   "Two",
+   "Four",
+   "Six",
+   "Ten"
+  ],
+  "answer": 2,
+  "explanation": "The chapter contains six prophetic woes.",
+  "ref": "Isaiah 5:8–23"
+ },
+ {
+  "id": "old-isaiah-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In whose death year did Isaiah see the Lord?",
+  "choices": [
+   "Ahaz",
+   "Uzziah",
+   "Hezekiah",
+   "Jotham"
+  ],
+  "answer": 1,
+  "explanation": "Isaiah dates his temple vision to the year King Uzziah died.",
+  "ref": "Isaiah 6:1"
+ },
+ {
+  "id": "old-isaiah-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What beings stood above the Lord?",
+  "choices": [
+   "Cherubim",
+   "Angels of war",
+   "Elders",
+   "Seraphim"
+  ],
+  "answer": 3,
+  "explanation": "The seraphim cry out around God's throne.",
+  "ref": "Isaiah 6:2"
+ },
+ {
+  "id": "old-isaiah-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the seraphims cry one to another?",
+  "choices": [
+   "The Lord reigneth for ever",
+   "Mercy endureth for ever",
+   "Blessed be Zion",
+   "Holy, holy, holy, is the Lord of hosts"
+  ],
+  "answer": 3,
+  "explanation": "The triple declaration emphasizes God's holiness.",
+  "ref": "Isaiah 6:3"
+ },
+ {
+  "id": "old-isaiah-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What touched Isaiah's lips to cleanse him?",
+  "choices": [
+   "A live coal",
+   "Oil",
+   "Water from the altar",
+   "The hem of the robe"
+  ],
+  "answer": 0,
+  "explanation": "A live coal from the altar signifies purification.",
+  "ref": "Isaiah 6:6–7"
+ },
+ {
+  "id": "old-isaiah-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Isaiah's response to the Lord's question 'Whom shall I send?'",
+  "choices": [
+   "I am unclean",
+   "Here am I; send me",
+   "Send another",
+   "I cannot speak"
+  ],
+  "answer": 1,
+  "explanation": "Isaiah responds with willing submission to God's call.",
+  "ref": "Isaiah 6:8"
+ },
+ {
+  "id": "old-isaiah-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two kings come up against Jerusalem?",
+  "choices": [
+   "Pharaoh and Sennacherib",
+   "David and Solomon",
+   "Rezin and Pekah",
+   "Jotham and Hezekiah"
+  ],
+  "answer": 2,
+  "explanation": "Rezin of Syria and Pekah of Israel threaten Judah.",
+  "ref": "Isaiah 7:1"
+ },
+ {
+  "id": "old-isaiah-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Isaiah tell Ahaz?",
+  "choices": [
+   "Take heed, and be quiet; fear not",
+   "Flee to Egypt",
+   "Gather a larger army",
+   "Offer more sacrifices"
+  ],
+  "answer": 0,
+  "explanation": "Isaiah urges Ahaz not to fear the enemy coalition.",
+  "ref": "Isaiah 7:4"
+ },
+ {
+  "id": "old-isaiah-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famous promise is given?",
+  "choices": [
+   "A voice crying in the wilderness",
+   "The mountains shall melt",
+   "The dead shall rise",
+   "A virgin shall conceive, and bear a son"
+  ],
+  "answer": 3,
+  "explanation": "The sign of Immanuel stands at the center of the chapter.",
+  "ref": "Isaiah 7:14"
+ },
+ {
+  "id": "old-isaiah-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name shall be given to the son the virgin shall bear?",
+  "choices": [
+   "Maher-shalal-hash-baz",
+   "Immanuel",
+   "Shear-jashub",
+   "Eliakim"
+  ],
+  "answer": 1,
+  "explanation": "The promised child's name means 'God with us.'",
+  "ref": "Isaiah 7:14"
+ },
+ {
+  "id": "old-isaiah-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Isaiah say will happen to Ephraim within sixty-five years?",
+  "choices": [
+   "It will become king",
+   "It will be broken, that it be not a people",
+   "It will rule Jerusalem",
+   "It will build the temple"
+  ],
+  "answer": 1,
+  "explanation": "Isaiah foretells Ephraim's collapse as a people.",
+  "ref": "Isaiah 7:8"
+ },
+ {
+  "id": "old-isaiah-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name is Isaiah told to write on a great roll?",
+  "choices": [
+   "Immanuel",
+   "Shear-jashub",
+   "Wonderful",
+   "Maher-shalal-hash-baz"
+  ],
+  "answer": 3,
+  "explanation": "The symbolic name announces coming swift spoil and plunder.",
+  "ref": "Isaiah 8:1"
+ },
+ {
+  "id": "old-isaiah-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the child's name mean in effect?",
+  "choices": [
+   "Swift to the spoil, speedy to the prey",
+   "God is with us",
+   "A remnant shall return",
+   "Prince of peace"
+  ],
+  "answer": 0,
+  "explanation": "The name signals Assyria's fast-coming judgment.",
+  "ref": "Isaiah 8:1–4"
+ },
+ {
+  "id": "old-isaiah-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does the Lord say Judah should sanctify and fear?",
+  "choices": [
+   "The king of Assyria",
+   "The prophets",
+   "The priests",
+   "The Lord of hosts"
+  ],
+  "answer": 3,
+  "explanation": "God alone, not human threats, is to be feared.",
+  "ref": "Isaiah 8:13"
+ },
+ {
+  "id": "old-isaiah-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the people told to seek instead of wizards and familiar spirits?",
+  "choices": [
+   "The law and the testimony",
+   "The king's counselors",
+   "The armies of Egypt",
+   "The high places"
+  ],
+  "answer": 0,
+  "explanation": "Isaiah directs the people back to God's revealed word.",
+  "ref": "Isaiah 8:19–20"
+ },
+ {
+  "id": "old-isaiah-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The chapter ends with people in trouble and anguish. What shall happen to them?",
+  "choices": [
+   "They will see only light",
+   "They shall be driven to darkness",
+   "They will reign with Judah",
+   "They will prosper in battle"
+  ],
+  "answer": 1,
+  "explanation": "The chapter ends with distress, darkness, and dimness of anguish.",
+  "ref": "Isaiah 8:22"
+ },
+ {
+  "id": "old-isaiah-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which region is named along with the lands of Zebulun and Naphtali?",
+  "choices": [
+   "Galilee of the nations",
+   "Judah and Benjamin",
+   "Moab and Edom",
+   "Babylon and Assyria"
+  ],
+  "answer": 0,
+  "explanation": "The prophecy highlights the region later associated with Christ's ministry.",
+  "ref": "Isaiah 9:1"
+ },
+ {
+  "id": "old-isaiah-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What have the people that walked in darkness seen?",
+  "choices": [
+   "A mighty army",
+   "A fiery mountain",
+   "A royal procession",
+   "A great light"
+  ],
+  "answer": 3,
+  "explanation": "Isaiah announces hope breaking into deep darkness.",
+  "ref": "Isaiah 9:2"
+ },
+ {
+  "id": "old-isaiah-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famous child promise appears?",
+  "choices": [
+   "A virgin shall conceive",
+   "Comfort ye my people",
+   "The desert shall blossom",
+   "Unto us a child is born, unto us a son is given"
+  ],
+  "answer": 3,
+  "explanation": "This verse announces the royal child and his government.",
+  "ref": "Isaiah 9:6"
+ },
+ {
+  "id": "old-isaiah-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which title is included among the child's names?",
+  "choices": [
+   "The Son of Aaron",
+   "The Mighty God",
+   "The King of Tyre",
+   "The Branch of Jesse only"
+  ],
+  "answer": 1,
+  "explanation": "The chapter attributes exalted divine and royal titles to the child.",
+  "ref": "Isaiah 9:6"
+ },
+ {
+  "id": "old-isaiah-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated refrain closes several judgments in this chapter?",
+  "choices": [
+   "For all this his anger is not turned away",
+   "His mercy endureth for ever",
+   "The Lord reigneth",
+   "Comfort ye my people"
+  ],
+  "answer": 0,
+  "explanation": "The refrain underscores continuing judgment on unrepentant Israel.",
+  "ref": "Isaiah 9:12"
+ },
+ {
+  "id": "old-isaiah-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against whom is the opening 'Woe' directed?",
+  "choices": [
+   "The kings of Egypt",
+   "Those that decree unrighteous decrees",
+   "The prophets of Samaria",
+   "The daughters of Zion"
+  ],
+  "answer": 1,
+  "explanation": "The chapter begins by condemning corrupt lawmakers and oppressors.",
+  "ref": "Isaiah 10:1"
+ },
+ {
+  "id": "old-isaiah-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What nation is called the rod of God's anger?",
+  "choices": [
+   "Babylon",
+   "Egypt",
+   "Moab",
+   "Assyria"
+  ],
+  "answer": 3,
+  "explanation": "Assyria is used as God's instrument of chastisement.",
+  "ref": "Isaiah 10:5"
+ },
+ {
+  "id": "old-isaiah-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sin of Assyria is exposed?",
+  "choices": [
+   "Its weakness",
+   "Its pride and self-glory",
+   "Its silence",
+   "Its poverty"
+  ],
+  "answer": 1,
+  "explanation": "Assyria arrogantly credits itself instead of the Lord.",
+  "ref": "Isaiah 10:13–15"
+ },
+ {
+  "id": "old-isaiah-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the remnant of Israel do?",
+  "choices": [
+   "Flee to Egypt",
+   "Join Assyria",
+   "Hide in caves",
+   "Return unto the Mighty God"
+  ],
+  "answer": 3,
+  "explanation": "A key promise of remnant return appears here.",
+  "ref": "Isaiah 10:21"
+ },
+ {
+  "id": "old-isaiah-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What image is used to show the absurdity of Assyria boasting against God?",
+  "choices": [
+   "A river boasting against the sea",
+   "A crown boasting over a king",
+   "An axe boasting against him that heweth therewith",
+   "A wall boasting against its builder"
+  ],
+  "answer": 2,
+  "explanation": "The tool cannot magnify itself over the one using it.",
+  "ref": "Isaiah 10:15"
+ },
+ {
+  "id": "old-isaiah-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From whose stem does the rod come forth?",
+  "choices": [
+   "Aaron",
+   "David only",
+   "Jesse",
+   "Levi"
+  ],
+  "answer": 2,
+  "explanation": "The messianic king is pictured as a shoot from Jesse's line.",
+  "ref": "Isaiah 11:1"
+ },
+ {
+  "id": "old-isaiah-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall rest upon the Branch that grows out of Jesse's roots?",
+  "choices": [
+   "The armies of heaven",
+   "The wealth of nations",
+   "The fear of man",
+   "The Spirit of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "The chapter emphasizes the Spirit-anointed character of the coming ruler.",
+  "ref": "Isaiah 11:2"
+ },
+ {
+  "id": "old-isaiah-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By what will the Branch from Jesse's roots not judge?",
+  "choices": [
+   "The sight of his eyes",
+   "The law of Moses",
+   "Righteousness",
+   "Equity"
+  ],
+  "answer": 0,
+  "explanation": "His judgment is deeper and truer than mere outward appearance.",
+  "ref": "Isaiah 11:3"
+ },
+ {
+  "id": "old-isaiah-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famous picture appears?",
+  "choices": [
+   "The lion and eagle together",
+   "The wolf also shall dwell with the lamb",
+   "The sea becoming dry land",
+   "The mountains melting"
+  ],
+  "answer": 1,
+  "explanation": "The chapter envisions peace transforming creation itself.",
+  "ref": "Isaiah 11:6"
+ },
+ {
+  "id": "old-isaiah-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What fills the earth?",
+  "choices": [
+   "The armies of the Lord",
+   "The fear of Assyria",
+   "The wealth of kings",
+   "The knowledge of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "The messianic kingdom brings universal knowledge of the Lord.",
+  "ref": "Isaiah 11:9"
+ },
+ {
+  "id": "old-isaiah-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the singer say God has become?",
+  "choices": [
+   "My palace",
+   "My salvation",
+   "My enemy",
+   "My vineyard"
+  ],
+  "answer": 1,
+  "explanation": "The chapter rejoices in God as salvation, strength, and song.",
+  "ref": "Isaiah 12:2"
+ },
+ {
+  "id": "old-isaiah-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What well-known phrase appears?",
+  "choices": [
+   "The Lord is my shepherd",
+   "The fear of the Lord is wisdom",
+   "The Lord Jehovah is my strength and my song",
+   "The Lord reigneth for ever"
+  ],
+  "answer": 2,
+  "explanation": "The verse echoes the language of Exodus-style deliverance.",
+  "ref": "Isaiah 12:2"
+ },
+ {
+  "id": "old-isaiah-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what will people draw water with joy?",
+  "choices": [
+   "The rivers of Eden",
+   "The wells of salvation",
+   "The brook Kidron",
+   "The sea of Galilee"
+  ],
+  "answer": 1,
+  "explanation": "Salvation is pictured as life-giving water.",
+  "ref": "Isaiah 12:3"
+ },
+ {
+  "id": "old-isaiah-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are people told to make known among the people?",
+  "choices": [
+   "Their suffering",
+   "Their wisdom",
+   "The king's laws",
+   "His doings"
+  ],
+  "answer": 3,
+  "explanation": "The song calls the redeemed to testify publicly to God's deeds.",
+  "ref": "Isaiah 12:4"
+ },
+ {
+  "id": "old-isaiah-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why should Zion shout?",
+  "choices": [
+   "Because great is the Holy One of Israel in the midst of her",
+   "Because the harvest is full",
+   "Because Assyria has fallen",
+   "Because the temple is rebuilt"
+  ],
+  "answer": 0,
+  "explanation": "The presence of the Holy One is the reason for Zion's joy.",
+  "ref": "Isaiah 12:6"
+ },
+ {
+  "id": "old-isaiah-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What nation is the burden of chapter 13?",
+  "choices": [
+   "Egypt",
+   "Moab",
+   "Babylon",
+   "Tyre"
+  ],
+  "answer": 2,
+  "explanation": "The chapter opens with the burden against Babylon.",
+  "ref": "Isaiah 13:1"
+ },
+ {
+  "id": "old-isaiah-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What great theme dominates the chapter?",
+  "choices": [
+   "The day of the Lord",
+   "The wisdom of Solomon",
+   "The rebuilding of Zion",
+   "The reign of Hezekiah"
+  ],
+  "answer": 0,
+  "explanation": "The coming day of the Lord is described in terrifying terms.",
+  "ref": "Isaiah 13:6"
+ },
+ {
+  "id": "old-isaiah-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does God say He has commanded?",
+  "choices": [
+   "The sons of David",
+   "The priests of Levi",
+   "My sanctified ones",
+   "The daughters of Zion"
+  ],
+  "answer": 2,
+  "explanation": "God summons His instruments for judgment.",
+  "ref": "Isaiah 13:3"
+ },
+ {
+  "id": "old-isaiah-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the heavenly lights?",
+  "choices": [
+   "They shine more brightly",
+   "They are darkened",
+   "They fall into the sea",
+   "They sing for joy"
+  ],
+  "answer": 1,
+  "explanation": "Cosmic darkening accompanies the description of judgment.",
+  "ref": "Isaiah 13:10"
+ },
+ {
+  "id": "old-isaiah-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said of Babylon's future?",
+  "choices": [
+   "It will become everlasting peace",
+   "It will rule the nations forever",
+   "It will be restored by Persia",
+   "It shall be as when God overthrew Sodom and Gomorrah"
+  ],
+  "answer": 3,
+  "explanation": "Babylon's downfall is compared to Sodom's destruction.",
+  "ref": "Isaiah 13:19"
+ },
+ {
+  "id": "old-isaiah-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the Lord do for Jacob?",
+  "choices": [
+   "Choose Israel, and set them in their own land",
+   "Forget him",
+   "Send them to Assyria",
+   "Make them serve Babylon forever"
+  ],
+  "answer": 0,
+  "explanation": "The chapter begins with promised compassion and restoration for Israel.",
+  "ref": "Isaiah 14:1"
+ },
+ {
+  "id": "old-isaiah-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the whole earth do when the oppressor falls?",
+  "choices": [
+   "Trembles",
+   "Mourns without hope",
+   "Is at rest, and is quiet",
+   "Runs to battle"
+  ],
+  "answer": 2,
+  "explanation": "The fall of the tyrant brings rest and song.",
+  "ref": "Isaiah 14:7"
+ },
+ {
+  "id": "old-isaiah-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By what name is the one fallen from heaven addressed?",
+  "choices": [
+   "Prince of Tyre",
+   "Lucifer, son of the morning",
+   "Man of sorrows",
+   "Branch of Jesse"
+  ],
+  "answer": 1,
+  "explanation": "The taunt uses the famous expression about the fallen one.",
+  "ref": "Isaiah 14:12"
+ },
+ {
+  "id": "old-isaiah-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What proud aspiration is voiced?",
+  "choices": [
+   "I will build Jerusalem",
+   "I will restore the temple",
+   "I will rule in peace",
+   "I will ascend into heaven"
+  ],
+  "answer": 3,
+  "explanation": "The speaker's pride reaches upward in rebellion.",
+  "ref": "Isaiah 14:13"
+ },
+ {
+  "id": "old-isaiah-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What nation is addressed at the end of the chapter?",
+  "choices": [
+   "Edom",
+   "Egypt",
+   "Palestina",
+   "Moab"
+  ],
+  "answer": 2,
+  "explanation": "The chapter closes with a warning to the whole of Palestina, the land of the Philistines.",
+  "ref": "Isaiah 14:29"
+ },
+ {
+  "id": "old-isaiah-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which nation is the burden of chapter 15?",
+  "choices": [
+   "Ethiopia",
+   "Damascus",
+   "Moab",
+   "Arabia"
+  ],
+  "answer": 2,
+  "explanation": "Isaiah announces judgment against Moab.",
+  "ref": "Isaiah 15:1"
+ },
+ {
+  "id": "old-isaiah-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What signs of mourning are seen in Moab?",
+  "choices": [
+   "Baldness and weeping",
+   "Joy and feasting",
+   "Victory and shouting",
+   "Silence and peace"
+  ],
+  "answer": 0,
+  "explanation": "The chapter is full of mourning imagery.",
+  "ref": "Isaiah 15:2"
+ },
+ {
+  "id": "old-isaiah-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the people wear?",
+  "choices": [
+   "Royal garments",
+   "White linen",
+   "Sackcloth",
+   "Armor"
+  ],
+  "answer": 2,
+  "explanation": "Sackcloth marks public grief and lamentation.",
+  "ref": "Isaiah 15:3"
+ },
+ {
+  "id": "old-isaiah-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the waters of Nimrim?",
+  "choices": [
+   "They shall be desolate",
+   "They overflow with blessing",
+   "They turn to blood",
+   "They heal the land"
+  ],
+  "answer": 0,
+  "explanation": "The land's devastation is pictured even in its waters and grass.",
+  "ref": "Isaiah 15:6"
+ },
+ {
+  "id": "old-isaiah-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Isaiah's own response?",
+  "choices": [
+   "I will rejoice over Moab",
+   "I will not speak anymore",
+   "My heart is hardened",
+   "My heart shall cry out for Moab"
+  ],
+  "answer": 3,
+  "explanation": "The prophet speaks with compassion even while announcing judgment.",
+  "ref": "Isaiah 15:5"
+ },
+ {
+  "id": "old-isaiah-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom are lambs to be sent?",
+  "choices": [
+   "The king of Egypt",
+   "The priests of Moab",
+   "The watchmen of Jerusalem",
+   "The ruler of the land"
+  ],
+  "answer": 3,
+  "explanation": "The chapter begins with an appeal involving tribute to Zion's ruler.",
+  "ref": "Isaiah 16:1"
+ },
+ {
+  "id": "old-isaiah-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are the daughters of Moab pictured?",
+  "choices": [
+   "As birds cast out of the nest",
+   "As lions in the field",
+   "As lilies among thorns",
+   "As stars in darkness"
+  ],
+  "answer": 0,
+  "explanation": "Their vulnerability is compared to scattered birds.",
+  "ref": "Isaiah 16:2"
+ },
+ {
+  "id": "old-isaiah-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What throne shall be established in mercy?",
+  "choices": [
+   "The palace of Babylon",
+   "The seat of Moab",
+   "The throne of Assyria",
+   "The throne of David"
+  ],
+  "answer": 3,
+  "explanation": "A faithful ruler from David's line is held out as hope.",
+  "ref": "Isaiah 16:5"
+ },
+ {
+  "id": "old-isaiah-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What trait of Moab is singled out?",
+  "choices": [
+   "Its wisdom",
+   "Its humility",
+   "Its pride",
+   "Its patience"
+  ],
+  "answer": 2,
+  "explanation": "Moab's pride is directly named as its downfall.",
+  "ref": "Isaiah 16:6"
+ },
+ {
+  "id": "old-isaiah-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Within how many years is Moab's glory to be contemned?",
+  "choices": [
+   "One year",
+   "Seven years",
+   "Forty years",
+   "Three years"
+  ],
+  "answer": 3,
+  "explanation": "Isaiah gives a near-term timeframe for Moab's humiliation.",
+  "ref": "Isaiah 16:14"
+ },
+ {
+  "id": "old-isaiah-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "What city is singled out?",
+  "choices": [
+   "Jerusalem",
+   "Nineveh",
+   "Samaria",
+   "Damascus"
+  ],
+  "answer": 3,
+  "explanation": "The chapter opens with a burden against Damascus.",
+  "ref": "Isaiah 17:1"
+ },
+ {
+  "id": "old-isaiah-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said will happen to Damascus?",
+  "choices": [
+   "It shall cease from being a city",
+   "It will become a peaceful capital",
+   "It will rule Judah",
+   "It will be rebuilt in glory"
+  ],
+  "answer": 0,
+  "explanation": "Its destruction is announced plainly.",
+  "ref": "Isaiah 17:1"
+ },
+ {
+  "id": "old-isaiah-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will happen to the fortress from Ephraim?",
+  "choices": [
+   "It shall cease",
+   "It shall remain forever",
+   "It shall move to Judah",
+   "It shall become stronger"
+  ],
+  "answer": 0,
+  "explanation": "The northern kingdom's strength is also cut down.",
+  "ref": "Isaiah 17:3"
+ },
+ {
+  "id": "old-isaiah-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What image is used for the remnant?",
+  "choices": [
+   "A lion left in the valley",
+   "A lamp in the house",
+   "A river in drought",
+   "Two or three berries in the top of the uppermost bough"
+  ],
+  "answer": 3,
+  "explanation": "Only a tiny remnant remains, like a few olives or berries.",
+  "ref": "Isaiah 17:6"
+ },
+ {
+  "id": "old-isaiah-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom shall a man look in that day?",
+  "choices": [
+   "The king of Assyria",
+   "His carved images",
+   "His Maker",
+   "His own hands"
+  ],
+  "answer": 2,
+  "explanation": "Judgment turns the remnant's eyes back to God.",
+  "ref": "Isaiah 17:7"
+ },
+ {
+  "id": "old-isaiah-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "What land is addressed?",
+  "choices": [
+   "The land of Babylon",
+   "The land of Moab",
+   "The land shadowing with wings",
+   "The land of Philistia"
+  ],
+  "answer": 2,
+  "explanation": "The chapter begins with a mysterious address to a distant land.",
+  "ref": "Isaiah 18:1"
+ },
+ {
+  "id": "old-isaiah-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of vessels are mentioned?",
+  "choices": [
+   "Ships of Tarshish",
+   "Chariots of iron",
+   "Carts of cedar",
+   "Vessels of bulrushes"
+  ],
+  "answer": 3,
+  "explanation": "Messengers travel in vessels of bulrushes on the waters.",
+  "ref": "Isaiah 18:2"
+ },
+ {
+  "id": "old-isaiah-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who are called to attention?",
+  "choices": [
+   "Only Judah",
+   "All ye inhabitants of the world",
+   "The priests alone",
+   "The kings of Assyria"
+  ],
+  "answer": 1,
+  "explanation": "The scope suddenly widens to the whole world.",
+  "ref": "Isaiah 18:3"
+ },
+ {
+  "id": "old-isaiah-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what does the Lord compare the way He will consider from His dwelling place?",
+  "choices": [
+   "A clear heat upon herbs",
+   "A storm upon the sea",
+   "A fire in the forest",
+   "A flood in the valley"
+  ],
+  "answer": 0,
+  "explanation": "The Lord says He will take His rest and consider in His dwelling place like a clear heat upon herbs.",
+  "ref": "Isaiah 18:4"
+ },
+ {
+  "id": "old-isaiah-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is brought to the Lord?",
+  "choices": [
+   "The treasures of Egypt",
+   "A present from a people scattered and peeled",
+   "The armies of Judah",
+   "The idols of the nations"
+  ],
+  "answer": 1,
+  "explanation": "The chapter ends with tribute coming to the Lord's place in Zion.",
+  "ref": "Isaiah 18:7"
+ },
+ {
+  "id": "old-isaiah-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Upon what does the Lord ride?",
+  "choices": [
+   "A chariot of fire",
+   "A swift cloud",
+   "A white horse",
+   "The wings of angels"
+  ],
+  "answer": 1,
+  "explanation": "The Lord comes swiftly in judgment against Egypt.",
+  "ref": "Isaiah 19:1"
+ },
+ {
+  "id": "old-isaiah-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens among the Egyptians?",
+  "choices": [
+   "Peace and unity",
+   "Harvest abundance",
+   "Civil conflict",
+   "National repentance immediately"
+  ],
+  "answer": 2,
+  "explanation": "The chapter begins with internal strife and collapse.",
+  "ref": "Isaiah 19:2"
+ },
+ {
+  "id": "old-isaiah-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the Egyptians said to seek?",
+  "choices": [
+   "The law and testimony",
+   "Idols, charmers, and wizards",
+   "The temple in Jerusalem",
+   "The king of Assyria"
+  ],
+  "answer": 1,
+  "explanation": "They turn to false spiritual sources in their distress.",
+  "ref": "Isaiah 19:3"
+ },
+ {
+  "id": "old-isaiah-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the waters and rivers?",
+  "choices": [
+   "They overflow with blessing",
+   "They turn to wine",
+   "They move toward Zion",
+   "They fail and dry up"
+  ],
+  "answer": 3,
+  "explanation": "The Nile and waterways become symbols of Egypt's judgment.",
+  "ref": "Isaiah 19:5–6"
+ },
+ {
+  "id": "old-isaiah-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What astonishing title is given to Egypt?",
+  "choices": [
+   "My enemy",
+   "My vineyard",
+   "My servant nation",
+   "My people"
+  ],
+  "answer": 3,
+  "explanation": "The chapter ends with extraordinary mercy toward Egypt, Assyria, and Israel.",
+  "ref": "Isaiah 19:25"
+ },
+ {
+  "id": "old-isaiah-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came unto Ashdod?",
+  "choices": [
+   "Tartan, sent by Sargon king of Assyria",
+   "Sennacherib",
+   "Nebuchadnezzar",
+   "Pharaoh-necho"
+  ],
+  "answer": 0,
+  "explanation": "The chapter is set in the context of Assyria's military action.",
+  "ref": "Isaiah 20:1"
+ },
+ {
+  "id": "old-isaiah-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What unusual command was Isaiah given?",
+  "choices": [
+   "To walk naked and barefoot",
+   "To shave his head",
+   "To burn a scroll",
+   "To flee Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Isaiah's sign-act dramatically portrays coming shame.",
+  "ref": "Isaiah 20:2"
+ },
+ {
+  "id": "old-isaiah-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long is Isaiah's action said to be a sign?",
+  "choices": [
+   "One year",
+   "Seven years",
+   "Forty days",
+   "Three years"
+  ],
+  "answer": 3,
+  "explanation": "The sign was to warn about the fate of Egypt and Ethiopia.",
+  "ref": "Isaiah 20:3"
+ },
+ {
+  "id": "old-isaiah-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom will the king of Assyria lead away captive?",
+  "choices": [
+   "Only Judah",
+   "Only Babylon",
+   "The Egyptians and Ethiopians",
+   "The Philistines"
+  ],
+  "answer": 2,
+  "explanation": "The sign foretells Assyria's conquest and humiliation of these nations.",
+  "ref": "Isaiah 20:4"
+ },
+ {
+  "id": "old-isaiah-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How shall the people feel about Ethiopia their expectation and Egypt their glory?",
+  "choices": [
+   "Afraid and ashamed",
+   "Comforted",
+   "Exalted",
+   "Victorious"
+  ],
+  "answer": 0,
+  "explanation": "They shall be afraid and ashamed of Ethiopia their expectation, and of Egypt their glory.",
+  "ref": "Isaiah 20:5"
+ },
+ {
+  "id": "old-isaiah-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the first burden in the chapter about?",
+  "choices": [
+   "Egypt",
+   "Edom",
+   "Tyre",
+   "The desert of the sea"
+  ],
+  "answer": 3,
+  "explanation": "The opening burden points toward Babylon through symbolic language.",
+  "ref": "Isaiah 21:1"
+ },
+ {
+  "id": "old-isaiah-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famous cry does the watchman announce?",
+  "choices": [
+   "Peace, peace",
+   "The Lord reigneth",
+   "Babylon is fallen, is fallen",
+   "Judah is delivered"
+  ],
+  "answer": 2,
+  "explanation": "The watchman proclaims Babylon's collapse.",
+  "ref": "Isaiah 21:9"
+ },
+ {
+  "id": "old-isaiah-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which place has a short burden that begins with a call out of Seir?",
+  "choices": [
+   "Moab",
+   "Tarshish",
+   "Gaza",
+   "Dumah"
+  ],
+  "answer": 3,
+  "explanation": "The chapter next turns briefly to the burden of Dumah.",
+  "ref": "Isaiah 21:11"
+ },
+ {
+  "id": "old-isaiah-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question is asked repeatedly to the watchman?",
+  "choices": [
+   "Who is the king?",
+   "Where is the altar?",
+   "How long till harvest?",
+   "Watchman, what of the night?"
+  ],
+  "answer": 3,
+  "explanation": "The anxious question presses for news through the dark.",
+  "ref": "Isaiah 21:11"
+ },
+ {
+  "id": "old-isaiah-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Within how long shall all the glory of Kedar fail?",
+  "choices": [
+   "One year",
+   "Three years",
+   "Seven months",
+   "Ten years"
+  ],
+  "answer": 0,
+  "explanation": "Arabia's burden includes a near-term judgment on Kedar.",
+  "ref": "Isaiah 21:16"
+ },
+ {
+  "id": "old-isaiah-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "place",
+  "question": "What valley is named in the opening burden?",
+  "choices": [
+   "The valley of dry bones",
+   "The valley of Achor",
+   "The valley of vision",
+   "The valley of Jehoshaphat"
+  ],
+  "answer": 2,
+  "explanation": "Jerusalem is addressed under the title 'the valley of vision.'",
+  "ref": "Isaiah 22:1"
+ },
+ {
+  "id": "old-isaiah-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where have the people of the city all gone up?",
+  "choices": [
+   "To the temple",
+   "To the mountains",
+   "To the towers",
+   "To the housetops"
+  ],
+  "answer": 3,
+  "explanation": "The prophet asks what ails the city, that it is wholly gone up to the housetops.",
+  "ref": "Isaiah 22:1"
+ },
+ {
+  "id": "old-isaiah-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was God's call?",
+  "choices": [
+   "To feasting and joy",
+   "To flee to Babylon",
+   "To crown a new king",
+   "To weeping, mourning, and sackcloth"
+  ],
+  "answer": 3,
+  "explanation": "The Lord called for repentance, not self-indulgence.",
+  "ref": "Isaiah 22:12"
+ },
+ {
+  "id": "old-isaiah-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What office does Shebna hold?",
+  "choices": [
+   "Treasurer over the house",
+   "Chief priest",
+   "Captain of the host",
+   "Prophet of the court"
+  ],
+  "answer": 0,
+  "explanation": "Shebna is confronted for his pride and misuse of office.",
+  "ref": "Isaiah 22:15"
+ },
+ {
+  "id": "old-isaiah-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is laid upon Eliakim's shoulder?",
+  "choices": [
+   "The key of the house of David",
+   "A sword of judgment",
+   "The crown of Assyria",
+   "The scroll of Moses"
+  ],
+  "answer": 0,
+  "explanation": "Eliakim receives authority symbolized by David's key.",
+  "ref": "Isaiah 22:22"
+ },
+ {
+  "id": "old-isaiah-23-1",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city is the burden of this chapter about?",
+  "choices": [
+   "Sidon",
+   "Tyre",
+   "Damascus",
+   "Memphis"
+  ],
+  "answer": 1,
+  "explanation": "The chapter focuses on Tyre, the famed trading city.",
+  "ref": "Isaiah 23:1"
+ },
+ {
+  "id": "old-isaiah-23-2",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the ships of Tarshish told to do?",
+  "choices": [
+   "Howl",
+   "Sing for joy",
+   "Flee to Egypt",
+   "Bring silver"
+  ],
+  "answer": 0,
+  "explanation": "The seafaring traders are called to lament Tyre's fall.",
+  "ref": "Isaiah 23:1"
+ },
+ {
+  "id": "old-isaiah-23-3",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of city is Tyre called?",
+  "choices": [
+   "The joyful city",
+   "The city of righteousness",
+   "The city of refuge",
+   "The city of Zion"
+  ],
+  "answer": 0,
+  "explanation": "Its former prosperity and exultation are emphasized.",
+  "ref": "Isaiah 23:7"
+ },
+ {
+  "id": "old-isaiah-23-4",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who purposed this against Tyre?",
+  "choices": [
+   "The king of Assyria",
+   "The princes of Egypt",
+   "The merchants of Sidon",
+   "The Lord of hosts"
+  ],
+  "answer": 3,
+  "explanation": "The Lord humbles Tyre's pride and worldly glory.",
+  "ref": "Isaiah 23:9"
+ },
+ {
+  "id": "old-isaiah-23-5",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long shall Tyre be forgotten?",
+  "choices": [
+   "Forty years",
+   "Three years",
+   "One generation",
+   "Seventy years"
+  ],
+  "answer": 3,
+  "explanation": "Tyre is forgotten for seventy years before renewed activity.",
+  "ref": "Isaiah 23:15"
+ },
+ {
+  "id": "old-isaiah-24-1",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the earth?",
+  "choices": [
+   "The Lord maketh the earth empty",
+   "It blossoms like a rose",
+   "It becomes a kingdom of peace",
+   "It is hidden from nations"
+  ],
+  "answer": 0,
+  "explanation": "The chapter opens with global judgment and desolation.",
+  "ref": "Isaiah 24:1"
+ },
+ {
+  "id": "old-isaiah-24-2",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which phrase shows that the judgment falls on everyone alike?",
+  "choices": [
+   "As with the rich, so with the wise",
+   "As with the young, so with the old",
+   "As with the people, so with the priest",
+   "As with the king, so with the shepherd"
+  ],
+  "answer": 2,
+  "explanation": "The judgment falls across every social level.",
+  "ref": "Isaiah 24:2"
+ },
+ {
+  "id": "old-isaiah-24-3",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why is the earth defiled?",
+  "choices": [
+   "Because of drought only",
+   "Because Tyre has fallen",
+   "Because they have transgressed the laws and broken the everlasting covenant",
+   "Because Assyria rules"
+  ],
+  "answer": 2,
+  "explanation": "Human rebellion brings the world's defilement.",
+  "ref": "Isaiah 24:5"
+ },
+ {
+  "id": "old-isaiah-24-4",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the mirth of tabrets?",
+  "choices": [
+   "It increases",
+   "It ceases",
+   "It moves to Zion",
+   "It is hidden in caves"
+  ],
+  "answer": 1,
+  "explanation": "Festive joy is silenced under judgment.",
+  "ref": "Isaiah 24:8"
+ },
+ {
+  "id": "old-isaiah-24-5",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall reign in mount Zion and in Jerusalem?",
+  "choices": [
+   "Hezekiah",
+   "The remnant alone",
+   "The kings of the earth",
+   "The Lord of hosts"
+  ],
+  "answer": 3,
+  "explanation": "The chapter ends with the Lord reigning in glory.",
+  "ref": "Isaiah 24:23"
+ },
+ {
+  "id": "old-isaiah-25-1",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Isaiah begin the chapter?",
+  "choices": [
+   "Woe unto the nations",
+   "Hear, O heavens",
+   "O Lord, thou art my God",
+   "Comfort ye my people"
+  ],
+  "answer": 2,
+  "explanation": "The chapter opens with praise to God for His wonderful works.",
+  "ref": "Isaiah 25:1"
+ },
+ {
+  "id": "old-isaiah-25-2",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has God made of the city?",
+  "choices": [
+   "An heap",
+   "A royal palace",
+   "A refuge",
+   "A mountain sanctuary"
+  ],
+  "answer": 0,
+  "explanation": "Proud strongholds are reduced to ruin by God's judgment.",
+  "ref": "Isaiah 25:2"
+ },
+ {
+  "id": "old-isaiah-25-3",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the Lord of hosts make unto all people?",
+  "choices": [
+   "A feast of fat things",
+   "A wall of fire",
+   "A new kingdom",
+   "A river in the desert"
+  ],
+  "answer": 0,
+  "explanation": "The chapter looks ahead to a lavish divine feast.",
+  "ref": "Isaiah 25:6"
+ },
+ {
+  "id": "old-isaiah-25-4",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will God swallow up in victory?",
+  "choices": [
+   "Death",
+   "The sea",
+   "The nations",
+   "The temple veil"
+  ],
+  "answer": 0,
+  "explanation": "One of Isaiah's greatest promises is that the Lord will swallow up death in victory.",
+  "ref": "Isaiah 25:8"
+ },
+ {
+  "id": "old-isaiah-25-5",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What people is especially brought low?",
+  "choices": [
+   "Assyria",
+   "Moab",
+   "Philistia",
+   "Edom"
+  ],
+  "answer": 1,
+  "explanation": "Moab is singled out for humiliation under God's hand.",
+  "ref": "Isaiah 25:10"
+ },
+ {
+  "id": "old-isaiah-26-1",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God appoint for walls and bulwarks?",
+  "choices": [
+   "Peace",
+   "Fire",
+   "Salvation",
+   "Righteousness"
+  ],
+  "answer": 2,
+  "explanation": "The strong city is protected by salvation itself.",
+  "ref": "Isaiah 26:1"
+ },
+ {
+  "id": "old-isaiah-26-2",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of nation may enter the gates?",
+  "choices": [
+   "A wealthy nation",
+   "The nation of Assyria",
+   "The righteous nation which keepeth the truth",
+   "The strongest nation"
+  ],
+  "answer": 2,
+  "explanation": "Truth and righteousness characterize those admitted.",
+  "ref": "Isaiah 26:2"
+ },
+ {
+  "id": "old-isaiah-26-3",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom will God keep in perfect peace?",
+  "choices": [
+   "The one whose mind is stayed on Him",
+   "The one who guards the city walls",
+   "The one who leads the armies of Israel",
+   "The one who rules as king of Judah"
+  ],
+  "answer": 0,
+  "explanation": "Perfect peace belongs to the one whose mind is fixed on God.",
+  "ref": "Isaiah 26:3"
+ },
+ {
+  "id": "old-isaiah-26-4",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What resurrection promise appears?",
+  "choices": [
+   "The sea shall give up her dead",
+   "Thy dead men shall live",
+   "The bones shall return to dust forever",
+   "The nations shall rise"
+  ],
+  "answer": 1,
+  "explanation": "The chapter contains a striking promise of life from the dead.",
+  "ref": "Isaiah 26:19"
+ },
+ {
+  "id": "old-isaiah-26-5",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are God's people told to do?",
+  "choices": [
+   "March against the nations",
+   "Build the city walls",
+   "Fast and mourn forever",
+   "Hide thyself for a little moment"
+  ],
+  "answer": 3,
+  "explanation": "They are told to enter their chambers while indignation passes.",
+  "ref": "Isaiah 26:20"
+ },
+ {
+  "id": "old-isaiah-27-1",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What creature is punished?",
+  "choices": [
+   "Behemoth",
+   "The serpent in Eden",
+   "The lion of Judah",
+   "Leviathan"
+  ],
+  "answer": 3,
+  "explanation": "The chapter opens with the Lord's victory over Leviathan.",
+  "ref": "Isaiah 27:1"
+ },
+ {
+  "id": "old-isaiah-27-2",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of vineyard is sung of?",
+  "choices": [
+   "A vineyard of red wine",
+   "A barren vineyard",
+   "A hidden vineyard",
+   "A wild vineyard"
+  ],
+  "answer": 0,
+  "explanation": "In contrast to Isaiah 5, this vineyard is preserved by the Lord.",
+  "ref": "Isaiah 27:2"
+ },
+ {
+  "id": "old-isaiah-27-3",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How often does the Lord say He waters His vineyard?",
+  "choices": [
+   "Morning only",
+   "On feast days",
+   "At harvest",
+   "Every moment"
+  ],
+  "answer": 3,
+  "explanation": "God Himself guards and waters His people continually.",
+  "ref": "Isaiah 27:3"
+ },
+ {
+  "id": "old-isaiah-27-4",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the Lord do if briars and thorns opposed Him in battle?",
+  "choices": [
+   "Burn them together",
+   "Hide from them",
+   "Make them rulers",
+   "Turn them into vines"
+  ],
+  "answer": 0,
+  "explanation": "Briars and thorns are pictured as doomed before Him.",
+  "ref": "Isaiah 27:4"
+ },
+ {
+  "id": "old-isaiah-27-5",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will happen to the outcasts and dispersed of Israel?",
+  "choices": [
+   "They will perish in Assyria",
+   "They will return to Egypt permanently",
+   "They shall worship the Lord in the holy mount at Jerusalem",
+   "They will build new altars"
+  ],
+  "answer": 2,
+  "explanation": "A great trumpet gathers them back to worship in Jerusalem.",
+  "ref": "Isaiah 27:13"
+ },
+ {
+  "id": "old-isaiah-28-1",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against whom is the opening woe directed?",
+  "choices": [
+   "The kings of Tyre",
+   "The daughters of Jerusalem",
+   "The crown of pride, the drunkards of Ephraim",
+   "The princes of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "The chapter begins with judgment on proud, drunken Ephraim.",
+  "ref": "Isaiah 28:1"
+ },
+ {
+  "id": "old-isaiah-28-2",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What precious stone does God lay in Zion?",
+  "choices": [
+   "A jasper on the wall",
+   "A tried stone, a precious corner stone",
+   "A ruby in the temple",
+   "A stone from Sinai"
+  ],
+  "answer": 1,
+  "explanation": "The cornerstone promise becomes one of Isaiah's great messianic texts.",
+  "ref": "Isaiah 28:16"
+ },
+ {
+  "id": "old-isaiah-28-3",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What covenant do Judah's leaders boast of?",
+  "choices": [
+   "A covenant with Moses",
+   "A covenant with Assyria",
+   "A covenant with David",
+   "A covenant with death"
+  ],
+  "answer": 3,
+  "explanation": "Their false security is described as a covenant with death and hell.",
+  "ref": "Isaiah 28:15"
+ },
+ {
+  "id": "old-isaiah-28-4",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the chapter say teaching must be given?",
+  "choices": [
+   "All at once, in a single day",
+   "Only by signs and wonders",
+   "Precept upon precept, line upon line",
+   "Only to kings and priests"
+  ],
+  "answer": 2,
+  "explanation": "The chapter says precept must be upon precept, line upon line, here a little, and there a little.",
+  "ref": "Isaiah 28:10"
+ },
+ {
+  "id": "old-isaiah-28-5",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the chapter call the work the Lord shall rise up to do?",
+  "choices": [
+   "His daily work",
+   "His strange work",
+   "His final work",
+   "His small work"
+  ],
+  "answer": 1,
+  "explanation": "The Lord shall rise up to do his work, his strange work, and bring to pass his strange act.",
+  "ref": "Isaiah 28:21"
+ },
+ {
+  "id": "old-isaiah-29-1",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What symbolic name is used for Jerusalem?",
+  "choices": [
+   "Ariel",
+   "Zion",
+   "Tirzah",
+   "Immanuel"
+  ],
+  "answer": 0,
+  "explanation": "Jerusalem is called Ariel, the city where David dwelt.",
+  "ref": "Isaiah 29:1"
+ },
+ {
+  "id": "old-isaiah-29-2",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will happen to Ariel?",
+  "choices": [
+   "It will become a place of everlasting peace",
+   "It will rule the nations",
+   "It will escape all war",
+   "There shall be heaviness and sorrow"
+  ],
+  "answer": 3,
+  "explanation": "The city will be brought low and distressed.",
+  "ref": "Isaiah 29:2"
+ },
+ {
+  "id": "old-isaiah-29-3",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the chapter describe the people's worship?",
+  "choices": [
+   "With truth and holiness",
+   "With tears and repentance",
+   "With lips only, while the heart is far away",
+   "With great joy"
+  ],
+  "answer": 2,
+  "explanation": "Their worship is outward while their hearts are distant from God.",
+  "ref": "Isaiah 29:13"
+ },
+ {
+  "id": "old-isaiah-29-4",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Lord promise to do?",
+  "choices": [
+   "Build a new palace",
+   "Silence all prophets",
+   "Proceed to do a marvellous work",
+   "Give them horses"
+  ],
+  "answer": 2,
+  "explanation": "God answers human hypocrisy with astonishing action.",
+  "ref": "Isaiah 29:14"
+ },
+ {
+  "id": "old-isaiah-29-5",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall increase their joy in the Lord?",
+  "choices": [
+   "The princes",
+   "The meek",
+   "The drunkards of Ephraim",
+   "The merchants of Tyre"
+  ],
+  "answer": 1,
+  "explanation": "The meek and poor are singled out for future joy.",
+  "ref": "Isaiah 29:19"
+ },
+ {
+  "id": "old-isaiah-30-1",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against what alliance does Isaiah warn?",
+  "choices": [
+   "Joining Babylon",
+   "Making peace with Assyria",
+   "Going down to Egypt for help",
+   "Trusting Tyre's ships"
+  ],
+  "answer": 2,
+  "explanation": "Judah seeks security from Egypt instead of from the Lord.",
+  "ref": "Isaiah 30:2"
+ },
+ {
+  "id": "old-isaiah-30-2",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the strength of Pharaoh become to Judah?",
+  "choices": [
+   "A crown of honor",
+   "Your shame",
+   "Your salvation",
+   "Your refuge"
+  ],
+  "answer": 1,
+  "explanation": "Trust in Egypt brings humiliation, not safety.",
+  "ref": "Isaiah 30:3"
+ },
+ {
+  "id": "old-isaiah-30-3",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the rebellious people say to the seers?",
+  "choices": [
+   "Speak unto us smooth things",
+   "Tell us the law plainly",
+   "Warn us of judgment",
+   "Teach us to fear God"
+  ],
+  "answer": 0,
+  "explanation": "They prefer flattering lies to truth.",
+  "ref": "Isaiah 30:10"
+ },
+ {
+  "id": "old-isaiah-30-4",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What promise of guidance does God give His people?",
+  "choices": [
+   "The king shall lead thee in peace",
+   "The priests shall never fail thee",
+   "Thine ears shall hear a word behind thee, saying, This is the way",
+   "The nations shall teach thee"
+  ],
+  "answer": 2,
+  "explanation": "God promises direct guidance to His restored people.",
+  "ref": "Isaiah 30:21"
+ },
+ {
+  "id": "old-isaiah-30-5",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Tophet prepared for?",
+  "choices": [
+   "The remnant of Judah",
+   "The priests of Zion",
+   "The daughters of Jerusalem",
+   "The king"
+  ],
+  "answer": 3,
+  "explanation": "The chapter ends with fiery judgment prepared for the king.",
+  "ref": "Isaiah 30:33"
+ },
+ {
+  "id": "old-isaiah-31-1",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who are rebuked at the start of the chapter?",
+  "choices": [
+   "Those who seek help from Egypt",
+   "Those who rebuild the temple",
+   "Those who flee to Babylon",
+   "Those who sing in Zion"
+  ],
+  "answer": 0,
+  "explanation": "The woe is against those trusting horses and chariots from Egypt instead of the Lord.",
+  "ref": "Isaiah 31:1"
+ },
+ {
+  "id": "old-isaiah-31-2",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Isaiah say about the Lord?",
+  "choices": [
+   "He will not act",
+   "He also is wise",
+   "He changes His mind often",
+   "He cannot judge nations"
+  ],
+  "answer": 1,
+  "explanation": "God is not helpless or uninformed; He is wise and active in judgment.",
+  "ref": "Isaiah 31:2"
+ },
+ {
+  "id": "old-isaiah-31-3",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What contrast is made between Egypt and the Lord?",
+  "choices": [
+   "Egypt is man and not God",
+   "Egypt is spirit and God is flesh",
+   "Egypt is holy and God is distant",
+   "Egypt is eternal and God is hidden"
+  ],
+  "answer": 0,
+  "explanation": "Egypt's strength is human, while the Lord's power is divine.",
+  "ref": "Isaiah 31:3"
+ },
+ {
+  "id": "old-isaiah-31-4",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the Lord pictured over Zion?",
+  "choices": [
+   "As a shepherd afraid of noise",
+   "As a lion not dismayed by shepherds",
+   "As a river flowing away",
+   "As a dove leaving the nest"
+  ],
+  "answer": 1,
+  "explanation": "God is pictured as fearless and determined in His defense.",
+  "ref": "Isaiah 31:4"
+ },
+ {
+  "id": "old-isaiah-31-5",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will happen to Assyria?",
+  "choices": [
+   "It will become Judah's ally",
+   "It will rule Jerusalem forever",
+   "It will rebuild Zion",
+   "It shall fall by a sword not of man"
+  ],
+  "answer": 3,
+  "explanation": "Assyria's defeat will come by God's power, not by ordinary human force.",
+  "ref": "Isaiah 31:8"
+ },
+ {
+  "id": "old-isaiah-32-1",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How will the promised king reign?",
+  "choices": [
+   "In terror",
+   "In righteousness",
+   "In secret",
+   "In exile"
+  ],
+  "answer": 1,
+  "explanation": "The chapter opens with the promise of righteous rule.",
+  "ref": "Isaiah 32:1"
+ },
+ {
+  "id": "old-isaiah-32-2",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is each man compared to?",
+  "choices": [
+   "A vine in the desert",
+   "A hiding place from the wind",
+   "A sword in battle",
+   "A tower in Babylon"
+  ],
+  "answer": 1,
+  "explanation": "Godly leadership is pictured as shelter and refreshment.",
+  "ref": "Isaiah 32:2"
+ },
+ {
+  "id": "old-isaiah-32-3",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will happen to the eyes and ears of God's people?",
+  "choices": [
+   "They will remain blind and dull",
+   "They will be closed forever",
+   "They shall see and hear",
+   "They will only hear kings"
+  ],
+  "answer": 2,
+  "explanation": "Spiritual clarity is part of the promised restoration.",
+  "ref": "Isaiah 32:3"
+ },
+ {
+  "id": "old-isaiah-32-4",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will be poured upon the people from on high?",
+  "choices": [
+   "The Spirit",
+   "Oil",
+   "Judgment only",
+   "Fire"
+  ],
+  "answer": 0,
+  "explanation": "The Spirit changes the wilderness into a fruitful field.",
+  "ref": "Isaiah 32:15"
+ },
+ {
+  "id": "old-isaiah-32-5",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall the work of righteousness be?",
+  "choices": [
+   "Peace",
+   "Fear and confusion",
+   "Exile",
+   "Sorrow"
+  ],
+  "answer": 0,
+  "explanation": "The work of righteousness is peace, and its effect is quietness and assurance for ever.",
+  "ref": "Isaiah 32:17"
+ },
+ {
+  "id": "old-isaiah-33-1",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against whom is the opening woe pronounced?",
+  "choices": [
+   "The remnant of Judah",
+   "The priests",
+   "The poor",
+   "The destroyer"
+  ],
+  "answer": 3,
+  "explanation": "The chapter opens against one who destroys and deals treacherously.",
+  "ref": "Isaiah 33:1"
+ },
+ {
+  "id": "old-isaiah-33-2",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Isaiah ask the Lord to be?",
+  "choices": [
+   "Our river",
+   "Our enemy in battle",
+   "Our silence",
+   "Our arm every morning"
+  ],
+  "answer": 3,
+  "explanation": "The prayer asks God for daily strength and salvation.",
+  "ref": "Isaiah 33:2"
+ },
+ {
+  "id": "old-isaiah-33-3",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question is asked about Zion?",
+  "choices": [
+   "Who among us shall dwell with the devouring fire?",
+   "Who will rebuild the walls?",
+   "Who shall cross the sea?",
+   "Who shall rule Egypt?"
+  ],
+  "answer": 0,
+  "explanation": "The question points to God's consuming holiness.",
+  "ref": "Isaiah 33:14"
+ },
+ {
+  "id": "old-isaiah-33-4",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is fit to dwell safely?",
+  "choices": [
+   "He that trusteth horses",
+   "He that gathereth gold",
+   "He that flatters kings",
+   "He that walketh righteously"
+  ],
+  "answer": 3,
+  "explanation": "The righteous are described as those who will stand secure.",
+  "ref": "Isaiah 33:15–16"
+ },
+ {
+  "id": "old-isaiah-33-5",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What three titles are given to the Lord?",
+  "choices": [
+   "Priest, prophet, and shepherd",
+   "Creator, vine, and tower",
+   "Judge, lawgiver, and king",
+   "Father, son, and servant"
+  ],
+  "answer": 2,
+  "explanation": "The Lord Himself is presented as Judah's ultimate ruler and savior.",
+  "ref": "Isaiah 33:22"
+ },
+ {
+  "id": "old-isaiah-34-1",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is called to listen at the start of the chapter?",
+  "choices": [
+   "Judah alone",
+   "All nations",
+   "Egypt only",
+   "The priests of Zion"
+  ],
+  "answer": 1,
+  "explanation": "The summons is worldwide, because the judgment is universal in scope.",
+  "ref": "Isaiah 34:1"
+ },
+ {
+  "id": "old-isaiah-34-2",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Upon whom is the indignation of the Lord?",
+  "choices": [
+   "The house of David only",
+   "The poor in Zion",
+   "The prophets",
+   "All nations"
+  ],
+  "answer": 3,
+  "explanation": "God's wrath is announced against the nations and their armies.",
+  "ref": "Isaiah 34:2"
+ },
+ {
+  "id": "old-isaiah-34-3",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what nation is God's sword specifically said to fall?",
+  "choices": [
+   "Idumea (Edom)",
+   "Moab",
+   "Tyre",
+   "Babylon"
+  ],
+  "answer": 0,
+  "explanation": "The sword comes down upon Idumea, the KJV name for Edom, as an example of judgment.",
+  "ref": "Isaiah 34:5"
+ },
+ {
+  "id": "old-isaiah-34-4",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What cosmic sign appears?",
+  "choices": [
+   "The sea dries up",
+   "The Jordan overflows",
+   "The heavens are rolled together as a scroll",
+   "The temple is rebuilt"
+  ],
+  "answer": 2,
+  "explanation": "Creation itself reflects the scale of God's judgment.",
+  "ref": "Isaiah 34:4"
+ },
+ {
+  "id": "old-isaiah-34-5",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the chapter say about the creatures of the desolate land?",
+  "choices": [
+   "They were forgotten",
+   "None shall want her mate",
+   "They shall all be healed",
+   "They shall serve Judah"
+  ],
+  "answer": 1,
+  "explanation": "Not one of the creatures shall fail and none shall lack her mate, because the Lord's mouth has commanded it.",
+  "ref": "Isaiah 34:16"
+ },
+ {
+  "id": "old-isaiah-35-1",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the wilderness do?",
+  "choices": [
+   "Remain barren forever",
+   "Blossom as the rose",
+   "Be burned with fire",
+   "Turn into a sea"
+  ],
+  "answer": 1,
+  "explanation": "Restoration is pictured through flourishing wilderness imagery.",
+  "ref": "Isaiah 35:1"
+ },
+ {
+  "id": "old-isaiah-35-2",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the fearful told?",
+  "choices": [
+   "Be strong, fear not",
+   "Hide in caves",
+   "Trust in Egypt",
+   "Wait for Babylon"
+  ],
+  "answer": 0,
+  "explanation": "God's coming salvation is meant to strengthen the fearful.",
+  "ref": "Isaiah 35:4"
+ },
+ {
+  "id": "old-isaiah-35-3",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What physical changes are promised?",
+  "choices": [
+   "The blind see and the lame leap",
+   "Kings lose their crowns",
+   "Mountains fall into the sea",
+   "The temple vanishes"
+  ],
+  "answer": 0,
+  "explanation": "Healing and restoration mark God's saving work.",
+  "ref": "Isaiah 35:5–6"
+ },
+ {
+  "id": "old-isaiah-35-4",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What road is mentioned?",
+  "choices": [
+   "The king's highway",
+   "The road to Egypt",
+   "The broad path",
+   "The way of holiness"
+  ],
+  "answer": 3,
+  "explanation": "A holy way is prepared for God's redeemed people.",
+  "ref": "Isaiah 35:8"
+ },
+ {
+  "id": "old-isaiah-35-5",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who will walk on the highway called The way of holiness?",
+  "choices": [
+   "The ravenous beast",
+   "Assyria's armies",
+   "The redeemed",
+   "The mocking nations"
+  ],
+  "answer": 2,
+  "explanation": "It is reserved for those whom the Lord has redeemed.",
+  "ref": "Isaiah 35:9"
+ },
+ {
+  "id": "old-isaiah-36-1",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which Assyrian king comes against Judah?",
+  "choices": [
+   "Shalmaneser",
+   "Sennacherib",
+   "Tiglath-pileser",
+   "Nebuchadnezzar"
+  ],
+  "answer": 1,
+  "explanation": "Sennacherib invades the fenced cities of Judah.",
+  "ref": "Isaiah 36:1"
+ },
+ {
+  "id": "old-isaiah-36-2",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which Assyrian spokesman confronts Jerusalem?",
+  "choices": [
+   "Belshazzar",
+   "Rabshakeh",
+   "Haman",
+   "Neco"
+  ],
+  "answer": 1,
+  "explanation": "Rabshakeh is sent to intimidate Hezekiah and the city.",
+  "ref": "Isaiah 36:2"
+ },
+ {
+  "id": "old-isaiah-36-3",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Rabshakeh say about trusting Egypt?",
+  "choices": [
+   "It is like leaning on a broken reed",
+   "It is wise",
+   "It will bring peace",
+   "It guarantees victory"
+  ],
+  "answer": 0,
+  "explanation": "He mocks Egypt as unreliable and dangerous support.",
+  "ref": "Isaiah 36:6"
+ },
+ {
+  "id": "old-isaiah-36-4",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what language do Judah's officials ask Rabshakeh to speak?",
+  "choices": [
+   "Hebrew",
+   "Latin",
+   "Persian",
+   "Syrian"
+  ],
+  "answer": 3,
+  "explanation": "They do not want the common people alarmed by his threats.",
+  "ref": "Isaiah 36:11"
+ },
+ {
+  "id": "old-isaiah-36-5",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How do the people respond to Rabshakeh?",
+  "choices": [
+   "They mocked him",
+   "They answered him not a word",
+   "They surrendered at once",
+   "They threw stones"
+  ],
+  "answer": 1,
+  "explanation": "Hezekiah had commanded them to remain silent.",
+  "ref": "Isaiah 36:21"
+ },
+ {
+  "id": "old-isaiah-37-1",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Hezekiah do when he hears Rabshakeh's words?",
+  "choices": [
+   "He flees to Egypt",
+   "He rends his clothes and goes to the house of the Lord",
+   "He surrenders immediately",
+   "He sends gifts to Babylon"
+  ],
+  "answer": 1,
+  "explanation": "Hezekiah responds with grief, humility, and prayer.",
+  "ref": "Isaiah 37:1"
+ },
+ {
+  "id": "old-isaiah-37-2",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom does Hezekiah send word for counsel and prayer?",
+  "choices": [
+   "Jeremiah",
+   "Ezekiel",
+   "Daniel",
+   "Isaiah"
+  ],
+  "answer": 3,
+  "explanation": "He seeks the prophet Isaiah in the crisis.",
+  "ref": "Isaiah 37:2"
+ },
+ {
+  "id": "old-isaiah-37-3",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What message does Isaiah give about the king of Assyria?",
+  "choices": [
+   "He will enter Jerusalem",
+   "He will reign over Judah",
+   "He shall hear a rumor and return to his land",
+   "He will make peace with Egypt"
+  ],
+  "answer": 2,
+  "explanation": "God promises to turn Sennacherib back.",
+  "ref": "Isaiah 37:7"
+ },
+ {
+  "id": "old-isaiah-37-4",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign is given to Judah?",
+  "choices": [
+   "They will eat what grows of itself and later sow and reap",
+   "The sun will stand still",
+   "The Jordan will part",
+   "The temple fire will return"
+  ],
+  "answer": 0,
+  "explanation": "The sign assures survival, recovery, and rooted restoration.",
+  "ref": "Isaiah 37:30"
+ },
+ {
+  "id": "old-isaiah-37-5",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many Assyrians are struck by the angel of the Lord?",
+  "choices": [
+   "70,000",
+   "10,000",
+   "144,000",
+   "185,000"
+  ],
+  "answer": 3,
+  "explanation": "God dramatically delivers Jerusalem by striking the Assyrian camp.",
+  "ref": "Isaiah 37:36"
+ },
+ {
+  "id": "old-isaiah-38-1",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What message does Isaiah first bring to Hezekiah?",
+  "choices": [
+   "Prepare for war",
+   "Go down to Egypt",
+   "Set thine house in order: for thou shalt die",
+   "Build a new altar"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah is initially told that his illness will be fatal.",
+  "ref": "Isaiah 38:1"
+ },
+ {
+  "id": "old-isaiah-38-2",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Hezekiah respond when he is told he will die?",
+  "choices": [
+   "He laughs",
+   "He blames Isaiah",
+   "He turns his face toward the wall and prays",
+   "He calls for Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah pleads with the Lord in private prayer.",
+  "ref": "Isaiah 38:2"
+ },
+ {
+  "id": "old-isaiah-38-3",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years are added to Hezekiah's life?",
+  "choices": [
+   "5",
+   "10",
+   "15",
+   "20"
+  ],
+  "answer": 2,
+  "explanation": "The Lord graciously grants Hezekiah fifteen more years.",
+  "ref": "Isaiah 38:5"
+ },
+ {
+  "id": "old-isaiah-38-4",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign confirms God's promise?",
+  "choices": [
+   "The shadow goes backward",
+   "Fire from heaven",
+   "The sea parts",
+   "An angel appears"
+  ],
+  "answer": 0,
+  "explanation": "The backward movement of the shadow confirms the healing promise.",
+  "ref": "Isaiah 38:8"
+ },
+ {
+  "id": "old-isaiah-38-5",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What simple remedy is applied?",
+  "choices": [
+   "A lump of figs",
+   "Oil on the head",
+   "Salt and water",
+   "A branch of hyssop"
+  ],
+  "answer": 0,
+  "explanation": "A lump of figs is laid on the boil as part of the healing.",
+  "ref": "Isaiah 38:21"
+ },
+ {
+  "id": "old-isaiah-39-1",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sends letters and a present to Hezekiah?",
+  "choices": [
+   "Cyrus",
+   "Pharaoh Neco",
+   "Merodach-baladan king of Babylon",
+   "The king of Tyre"
+  ],
+  "answer": 2,
+  "explanation": "The Babylonian ruler hears of Hezekiah's illness and recovery.",
+  "ref": "Isaiah 39:1"
+ },
+ {
+  "id": "old-isaiah-39-2",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Hezekiah show the Babylonian envoys?",
+  "choices": [
+   "Only the temple courts",
+   "The city's poor",
+   "All his treasures and armory",
+   "Nothing at all"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah shows them everything in his house and kingdom.",
+  "ref": "Isaiah 39:2"
+ },
+ {
+  "id": "old-isaiah-39-3",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Isaiah ask after the envoys leave?",
+  "choices": [
+   "What said these men? and from whence came they unto thee?",
+   "Will you flee?",
+   "Why did you fast?",
+   "Did you trust the Lord?"
+  ],
+  "answer": 0,
+  "explanation": "Isaiah confronts the king about what has happened.",
+  "ref": "Isaiah 39:3"
+ },
+ {
+  "id": "old-isaiah-39-4",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What future judgment is announced?",
+  "choices": [
+   "Jerusalem will conquer Babylon",
+   "Egypt will rule Zion",
+   "Assyria will rebuild the temple",
+   "All in his house shall be carried to Babylon"
+  ],
+  "answer": 3,
+  "explanation": "The treasures and descendants of Judah will one day go to Babylon.",
+  "ref": "Isaiah 39:6"
+ },
+ {
+  "id": "old-isaiah-39-5",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Hezekiah say in response to Isaiah's word?",
+  "choices": [
+   "This word is evil",
+   "I will resist Babylon",
+   "Good is the word of the Lord",
+   "Surely this cannot happen"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah acknowledges the Lord's word, though with troubling self-interest.",
+  "ref": "Isaiah 39:8"
+ },
+ {
+  "id": "old-isaiah-40-1",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated word opens the chapter?",
+  "choices": [
+   "Awake",
+   "Comfort",
+   "Repent",
+   "Hear"
+  ],
+  "answer": 1,
+  "explanation": "The new section begins with a call to comfort God's people.",
+  "ref": "Isaiah 40:1"
+ },
+ {
+  "id": "old-isaiah-40-2",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the voice crying in the wilderness say?",
+  "choices": [
+   "Prepare ye the way of the Lord",
+   "Make a king for us",
+   "Build again the temple",
+   "Flee to the mountains"
+  ],
+  "answer": 0,
+  "explanation": "A highway is prepared for the coming of the Lord.",
+  "ref": "Isaiah 40:3"
+ },
+ {
+  "id": "old-isaiah-40-3",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is all flesh described?",
+  "choices": [
+   "As iron",
+   "As cedar",
+   "As grass",
+   "As water"
+  ],
+  "answer": 2,
+  "explanation": "Human frailty is contrasted with God's enduring word.",
+  "ref": "Isaiah 40:6"
+ },
+ {
+  "id": "old-isaiah-40-4",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the word of our God do?",
+  "choices": [
+   "Stand for ever",
+   "Pass away quickly",
+   "Change with the times",
+   "Return void"
+  ],
+  "answer": 0,
+  "explanation": "God's word endures even while human life fades.",
+  "ref": "Isaiah 40:8"
+ },
+ {
+  "id": "old-isaiah-40-5",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to those who wait upon the Lord?",
+  "choices": [
+   "They renew their strength",
+   "They fall into despair",
+   "They become kings",
+   "They escape all suffering"
+  ],
+  "answer": 0,
+  "explanation": "The chapter ends with the famous promise of renewed strength.",
+  "ref": "Isaiah 40:31"
+ },
+ {
+  "id": "old-isaiah-41-1",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does God address at the start of the chapter?",
+  "choices": [
+   "The priests of Judah only",
+   "Assyria alone",
+   "Babylon's wise men",
+   "The islands and the people"
+  ],
+  "answer": 3,
+  "explanation": "The Lord calls the islands and the people to come near together to judgment.",
+  "ref": "Isaiah 41:1"
+ },
+ {
+  "id": "old-isaiah-41-2",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title does God give Israel?",
+  "choices": [
+   "My army",
+   "My city",
+   "My vineyard",
+   "My servant"
+  ],
+  "answer": 3,
+  "explanation": "Israel is addressed tenderly as God's chosen servant.",
+  "ref": "Isaiah 41:8"
+ },
+ {
+  "id": "old-isaiah-41-3",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What comforting command is repeated?",
+  "choices": [
+   "Be silent",
+   "Go to Egypt",
+   "Hide thyself",
+   "Fear thou not"
+  ],
+  "answer": 3,
+  "explanation": "God urges His people not to fear because He is with them.",
+  "ref": "Isaiah 41:10"
+ },
+ {
+  "id": "old-isaiah-41-4",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does God describe Himself?",
+  "choices": [
+   "A hidden power",
+   "The first, and with the last",
+   "One among many gods",
+   "Only the God of Judah"
+  ],
+  "answer": 1,
+  "explanation": "The Lord declares His uniqueness over all history.",
+  "ref": "Isaiah 41:4"
+ },
+ {
+  "id": "old-isaiah-41-5",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are idols called?",
+  "choices": [
+   "Glorious",
+   "Precious",
+   "Vanity",
+   "Helpful"
+  ],
+  "answer": 2,
+  "explanation": "The chapter ends by exposing idols as empty and worthless.",
+  "ref": "Isaiah 41:29"
+ },
+ {
+  "id": "old-isaiah-42-1",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is introduced as upheld and chosen by God?",
+  "choices": [
+   "My servant",
+   "Cyrus",
+   "Hezekiah",
+   "Eliakim"
+  ],
+  "answer": 0,
+  "explanation": "The servant is the focus of this great prophetic portrait.",
+  "ref": "Isaiah 42:1"
+ },
+ {
+  "id": "old-isaiah-42-2",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the servant described?",
+  "choices": [
+   "He will cry loudly in the streets",
+   "He will destroy the poor",
+   "He shall not cry, nor lift up",
+   "He will trust in Egypt"
+  ],
+  "answer": 2,
+  "explanation": "The servant carries out God's mission with gentleness, not noisy self-promotion.",
+  "ref": "Isaiah 42:2"
+ },
+ {
+  "id": "old-isaiah-42-3",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the Lord's servant not break?",
+  "choices": [
+   "A brazen gate",
+   "A bruised reed",
+   "A covenant stone",
+   "A cedar tree"
+  ],
+  "answer": 1,
+  "explanation": "His ministry is marked by tenderness toward the weak.",
+  "ref": "Isaiah 42:3"
+ },
+ {
+  "id": "old-isaiah-42-4",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the servant establish in the earth?",
+  "choices": [
+   "A new temple",
+   "Judgment",
+   "Assyria's throne",
+   "Babylon's peace"
+  ],
+  "answer": 1,
+  "explanation": "He faithfully brings God's justice to the nations.",
+  "ref": "Isaiah 42:4"
+ },
+ {
+  "id": "old-isaiah-42-5",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Israel described at the end of the chapter?",
+  "choices": [
+   "Victorious and seeing clearly",
+   "Ruling the nations",
+   "Without sin",
+   "Blind and deaf"
+  ],
+  "answer": 3,
+  "explanation": "The chapter exposes Israel's failure to see and hear.",
+  "ref": "Isaiah 42:18–20"
+ },
+ {
+  "id": "old-isaiah-43-1",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What comforting statement follows 'Fear not'?",
+  "choices": [
+   "I have forgotten thee",
+   "I have hidden from thee",
+   "I have redeemed thee",
+   "I have sold thee"
+  ],
+  "answer": 2,
+  "explanation": "God assures His people that they belong to Him.",
+  "ref": "Isaiah 43:1"
+ },
+ {
+  "id": "old-isaiah-43-2",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What promise is given about passing through waters and fire?",
+  "choices": [
+   "They will certainly perish",
+   "They must avoid them entirely",
+   "Egypt will rescue them",
+   "God will be with them"
+  ],
+  "answer": 3,
+  "explanation": "The Lord promises His presence through severe trials.",
+  "ref": "Isaiah 43:2"
+ },
+ {
+  "id": "old-isaiah-43-3",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What exclusive claim does God make?",
+  "choices": [
+   "I alone am judge",
+   "I dwell only in Zion",
+   "I speak only through kings",
+   "Beside me there is no saviour"
+  ],
+  "answer": 3,
+  "explanation": "God declares that salvation belongs to Him alone.",
+  "ref": "Isaiah 43:11"
+ },
+ {
+  "id": "old-isaiah-43-4",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the people told not to remember?",
+  "choices": [
+   "The law",
+   "The psalms",
+   "Former things",
+   "The kings"
+  ],
+  "answer": 2,
+  "explanation": "God is preparing His people to notice His new work.",
+  "ref": "Isaiah 43:18"
+ },
+ {
+  "id": "old-isaiah-43-5",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say He will do?",
+  "choices": [
+   "Build Babylon",
+   "Destroy Zion",
+   "Hide His word",
+   "Make a way in the wilderness"
+  ],
+  "answer": 3,
+  "explanation": "The Lord promises a new redemptive act like a path through barren places.",
+  "ref": "Isaiah 43:19"
+ },
+ {
+  "id": "old-isaiah-44-1",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God promise to pour?",
+  "choices": [
+   "Only rain",
+   "Fire upon Zion",
+   "Judgment upon the remnant",
+   "Water upon the thirsty and His Spirit"
+  ],
+  "answer": 3,
+  "explanation": "Physical refreshment and spiritual renewal are linked together.",
+  "ref": "Isaiah 44:3"
+ },
+ {
+  "id": "old-isaiah-44-2",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does God describe Himself?",
+  "choices": [
+   "The god of Judah only",
+   "The first and the last",
+   "A servant of Zion",
+   "A king made by men"
+  ],
+  "answer": 1,
+  "explanation": "The Lord again declares His uniqueness and eternal sovereignty.",
+  "ref": "Isaiah 44:6"
+ },
+ {
+  "id": "old-isaiah-44-3",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do idol makers do with the same wood?",
+  "choices": [
+   "Only build temples",
+   "Partly warm themselves and partly make a god",
+   "Burn it all",
+   "Use it only for war"
+  ],
+  "answer": 1,
+  "explanation": "The satire exposes the foolishness of making idols from ordinary fuel.",
+  "ref": "Isaiah 44:14–17"
+ },
+ {
+  "id": "old-isaiah-44-4",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say He has done to Israel's sins?",
+  "choices": [
+   "Stored them away",
+   "Forgotten to judge them",
+   "Written them in stone",
+   "Blotted them out"
+  ],
+  "answer": 3,
+  "explanation": "God graciously declares forgiveness and calls His people to return.",
+  "ref": "Isaiah 44:22"
+ },
+ {
+  "id": "old-isaiah-44-5",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does God name as the one who will perform His pleasure?",
+  "choices": [
+   "Darius",
+   "Nebuchadnezzar",
+   "Artaxerxes",
+   "Cyrus"
+  ],
+  "answer": 3,
+  "explanation": "Cyrus is named as God's shepherd long before his rise.",
+  "ref": "Isaiah 44:28"
+ },
+ {
+  "id": "old-isaiah-45-1",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose right hand does the Lord hold?",
+  "choices": [
+   "Hezekiah's",
+   "Isaiah's",
+   "Cyrus's",
+   "David's"
+  ],
+  "answer": 2,
+  "explanation": "Cyrus is called and empowered by God for His purposes.",
+  "ref": "Isaiah 45:1"
+ },
+ {
+  "id": "old-isaiah-45-2",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whose sake does God call Cyrus by name?",
+  "choices": [
+   "For the sake of Babylon",
+   "For the sake of Jacob and Israel",
+   "For the sake of Egypt",
+   "For the sake of Assyria"
+  ],
+  "answer": 1,
+  "explanation": "God acts for the sake of Jacob and Israel.",
+  "ref": "Isaiah 45:4"
+ },
+ {
+  "id": "old-isaiah-45-3",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Lord declare about Himself?",
+  "choices": [
+   "There is no war",
+   "There is no hope for Israel",
+   "There is none else, there is no God beside me",
+   "There is no king in Zion"
+  ],
+  "answer": 2,
+  "explanation": "The chapter strongly emphasizes the Lord's uniqueness.",
+  "ref": "Isaiah 45:5"
+ },
+ {
+  "id": "old-isaiah-45-4",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What invitation is given?",
+  "choices": [
+   "Hide yourselves in Egypt",
+   "Offer more sacrifices",
+   "Trust in princes",
+   "Look unto me, and be ye saved"
+  ],
+  "answer": 3,
+  "explanation": "The Lord calls the ends of the earth to salvation in Him.",
+  "ref": "Isaiah 45:22"
+ },
+ {
+  "id": "old-isaiah-45-5",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What universal confession is foretold?",
+  "choices": [
+   "Every nation will deny Him",
+   "Every king will perish unnamed",
+   "Every knee shall bow",
+   "Every idol will speak"
+  ],
+  "answer": 2,
+  "explanation": "The chapter points to the universal acknowledgment of God's lordship.",
+  "ref": "Isaiah 45:23"
+ },
+ {
+  "id": "old-isaiah-46-1",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two idols are named?",
+  "choices": [
+   "Baal and Asherah",
+   "Dagon and Chemosh",
+   "Bel and Nebo",
+   "Molech and Rimmon"
+  ],
+  "answer": 2,
+  "explanation": "Babylon's famous idols are pictured stooping and falling.",
+  "ref": "Isaiah 46:1"
+ },
+ {
+  "id": "old-isaiah-46-2",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does God contrast Himself with idols?",
+  "choices": [
+   "He must be carried too",
+   "He cannot speak",
+   "He carries His people",
+   "He grows old and weak"
+  ],
+  "answer": 2,
+  "explanation": "Unlike idols that burden their worshipers, God bears and delivers His people.",
+  "ref": "Isaiah 46:3–4"
+ },
+ {
+  "id": "old-isaiah-46-3",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God declare?",
+  "choices": [
+   "There are many gods",
+   "Israel must save itself",
+   "I am God, and there is none else",
+   "Cyrus is the true king"
+  ],
+  "answer": 2,
+  "explanation": "God calls His people to remember His uniqueness.",
+  "ref": "Isaiah 46:9"
+ },
+ {
+  "id": "old-isaiah-46-4",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say He declares from the beginning?",
+  "choices": [
+   "The exile only",
+   "The names of kings",
+   "The building of the temple",
+   "The end"
+  ],
+  "answer": 3,
+  "explanation": "God's sovereign foreknowledge proves His deity.",
+  "ref": "Isaiah 46:10"
+ },
+ {
+  "id": "old-isaiah-46-5",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of bird does God call from the east?",
+  "choices": [
+   "A dove",
+   "A ravenous bird",
+   "An eagle of Assyria",
+   "A sparrow"
+  ],
+  "answer": 1,
+  "explanation": "God summons His chosen instrument to fulfill His counsel.",
+  "ref": "Isaiah 46:11"
+ },
+ {
+  "id": "old-isaiah-47-1",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Babylon addressed?",
+  "choices": [
+   "Daughter of Zion",
+   "Queen of Judah",
+   "City of David",
+   "Virgin daughter of Babylon"
+  ],
+  "answer": 3,
+  "explanation": "Babylon is personified as a proud woman brought low.",
+  "ref": "Isaiah 47:1"
+ },
+ {
+  "id": "old-isaiah-47-2",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What humiliating command is given to Babylon?",
+  "choices": [
+   "Take the millstones, and grind meal",
+   "Climb the throne again",
+   "Crown thyself with gold",
+   "Gather the armies"
+  ],
+  "answer": 0,
+  "explanation": "The imagery portrays Babylon's fall from royal luxury to shameful labor.",
+  "ref": "Isaiah 47:2"
+ },
+ {
+  "id": "old-isaiah-47-3",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had Babylon said about herself?",
+  "choices": [
+   "I am forgotten",
+   "I am Judah's servant",
+   "I am, and none else beside me",
+   "I shall never rule"
+  ],
+  "answer": 2,
+  "explanation": "Her arrogant self-confidence is at the heart of the rebuke.",
+  "ref": "Isaiah 47:8"
+ },
+ {
+  "id": "old-isaiah-47-4",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has Babylon put her trust in?",
+  "choices": [
+   "The Lord's covenant",
+   "The temple",
+   "Her wickedness",
+   "The remnant"
+  ],
+  "answer": 2,
+  "explanation": "Babylon's false security rests in evil and pride.",
+  "ref": "Isaiah 47:10"
+ },
+ {
+  "id": "old-isaiah-47-5",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who will not be able to save Babylon?",
+  "choices": [
+   "Her astrologers and sorcerers",
+   "The prophets of Judah",
+   "The priests of Zion",
+   "The poor of the land"
+  ],
+  "answer": 0,
+  "explanation": "Her occult practices and wise men prove helpless before judgment.",
+  "ref": "Isaiah 47:12–15"
+ },
+ {
+  "id": "old-isaiah-48-1",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does God describe Israel?",
+  "choices": [
+   "Stubborn, with an iron sinew",
+   "Tender and obedient",
+   "Fearless and righteous",
+   "Without transgression"
+  ],
+  "answer": 0,
+  "explanation": "The Lord explains why He foretold events in advance.",
+  "ref": "Isaiah 48:4"
+ },
+ {
+  "id": "old-isaiah-48-2",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does God say He has chosen His people?",
+  "choices": [
+   "In the furnace of affliction",
+   "In a palace of silver",
+   "In the temple courts",
+   "In Babylon's palace"
+  ],
+  "answer": 0,
+  "explanation": "God says He has refined them, but not with silver, and has chosen them in the furnace of affliction.",
+  "ref": "Isaiah 48:10"
+ },
+ {
+  "id": "old-isaiah-48-3",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does God identify Himself?",
+  "choices": [
+   "Only the God of Abraham",
+   "The God of Egypt",
+   "I am he; I am the first, I also am the last",
+   "The servant of Cyrus"
+  ],
+  "answer": 2,
+  "explanation": "The Lord again affirms His eternal sovereignty.",
+  "ref": "Isaiah 48:12"
+ },
+ {
+  "id": "old-isaiah-48-4",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command is given about Babylon?",
+  "choices": [
+   "Dwell ye in Babylon",
+   "Build ye up Babylon",
+   "Bow ye down to Babylon",
+   "Go ye forth of Babylon"
+  ],
+  "answer": 3,
+  "explanation": "The people are told to leave Babylon with a song of redemption.",
+  "ref": "Isaiah 48:20"
+ },
+ {
+  "id": "old-isaiah-48-5",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What solemn statement closes the chapter?",
+  "choices": [
+   "There is no peace unto the wicked",
+   "All shall prosper in Babylon",
+   "The idols shall save",
+   "Judah shall never return"
+  ],
+  "answer": 0,
+  "explanation": "The chapter ends by warning that rebellion blocks true peace.",
+  "ref": "Isaiah 48:22"
+ },
+ {
+  "id": "old-isaiah-49-1",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the servant say his mouth was made like?",
+  "choices": [
+   "A lamp",
+   "A sharp sword",
+   "A burning coal",
+   "A trumpet"
+  ],
+  "answer": 1,
+  "explanation": "The servant is equipped by God for a powerful speaking mission.",
+  "ref": "Isaiah 49:2"
+ },
+ {
+  "id": "old-isaiah-49-2",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is too light a thing for the servant?",
+  "choices": [
+   "Only to raise up the tribes of Jacob",
+   "To judge Babylon",
+   "To rebuild Jerusalem",
+   "To serve in the temple"
+  ],
+  "answer": 0,
+  "explanation": "His mission reaches beyond Israel to become a light to the Gentiles.",
+  "ref": "Isaiah 49:6"
+ },
+ {
+  "id": "old-isaiah-49-3",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Zion say?",
+  "choices": [
+   "The Lord has crowned me",
+   "The Lord hath forgotten me",
+   "The Lord has hidden Babylon",
+   "The Lord has destroyed Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Zion voices the fear that she has been abandoned.",
+  "ref": "Isaiah 49:14"
+ },
+ {
+  "id": "old-isaiah-49-4",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does God answer Zion's fear that He has forgotten her?",
+  "choices": [
+   "By threatening Zion",
+   "By sending horses",
+   "By asking if a woman can forget her sucking child",
+   "By rebuilding the palace"
+  ],
+  "answer": 2,
+  "explanation": "God uses the image of a mother to show His stronger compassion.",
+  "ref": "Isaiah 49:15"
+ },
+ {
+  "id": "old-isaiah-49-5",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where has God engraved Zion?",
+  "choices": [
+   "On temple stones",
+   "On Babylon's walls",
+   "On the king's crown",
+   "On the palms of His hands"
+  ],
+  "answer": 3,
+  "explanation": "The image powerfully declares God's constant remembrance of His people.",
+  "ref": "Isaiah 49:16"
+ },
+ {
+  "id": "old-isaiah-50-1",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question does God ask to show He has not truly abandoned His people?",
+  "choices": [
+   "Where is your king?",
+   "Where is the temple?",
+   "Where is your army?",
+   "Where is the bill of your mother's divorcement?"
+  ],
+  "answer": 3,
+  "explanation": "God denies that exile means He lacks power or has forgotten His covenant.",
+  "ref": "Isaiah 50:1"
+ },
+ {
+  "id": "old-isaiah-50-2",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question does God ask about His power to save?",
+  "choices": [
+   "Is the sea too deep?",
+   "Is my hand shortened at all, that it cannot redeem?",
+   "Is the temple too small?",
+   "Is Babylon too strong?"
+  ],
+  "answer": 1,
+  "explanation": "The Lord challenges any doubt about His saving power.",
+  "ref": "Isaiah 50:2"
+ },
+ {
+  "id": "old-isaiah-50-3",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the servant say God has given him?",
+  "choices": [
+   "A sword of iron",
+   "The crown of Judah",
+   "The wisdom of Egypt",
+   "The tongue of the learned"
+  ],
+  "answer": 3,
+  "explanation": "The servant is equipped to sustain the weary with a word.",
+  "ref": "Isaiah 50:4"
+ },
+ {
+  "id": "old-isaiah-50-4",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the servant respond to suffering?",
+  "choices": [
+   "He flees from it",
+   "He gives his back to the smiters",
+   "He calls for armies",
+   "He hides in silence"
+  ],
+  "answer": 1,
+  "explanation": "The servant submits faithfully even to shameful abuse.",
+  "ref": "Isaiah 50:6"
+ },
+ {
+  "id": "old-isaiah-50-5",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are those who walk in darkness and have no light told to do?",
+  "choices": [
+   "Trust in Egypt",
+   "Light their own salvation",
+   "Trust in the name of the Lord",
+   "Bow to idols"
+  ],
+  "answer": 2,
+  "explanation": "The right response to darkness is trusting the Lord.",
+  "ref": "Isaiah 50:10"
+ },
+ {
+  "id": "old-isaiah-51-1",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom does God tell the people to look?",
+  "choices": [
+   "Moses and Aaron",
+   "David and Solomon",
+   "Abraham and Sarah",
+   "Elijah and Elisha"
+  ],
+  "answer": 2,
+  "explanation": "God points them to their small beginning in Abraham and Sarah.",
+  "ref": "Isaiah 51:2"
+ },
+ {
+  "id": "old-isaiah-51-2",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What comparison is made about creation and salvation?",
+  "choices": [
+   "The heavens shall vanish, but my salvation shall be forever",
+   "The heavens are eternal, but salvation fades",
+   "Creation will save the people",
+   "The earth is more faithful than God"
+  ],
+  "answer": 0,
+  "explanation": "The Lord contrasts temporary creation with His everlasting salvation.",
+  "ref": "Isaiah 51:6"
+ },
+ {
+  "id": "old-isaiah-51-3",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the chapter ask to awake?",
+  "choices": [
+   "The temple lamp",
+   "The throne of David",
+   "The arm of the Lord",
+   "The priests of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "The prayer recalls God's mighty past acts as grounds for present help.",
+  "ref": "Isaiah 51:9"
+ },
+ {
+  "id": "old-isaiah-51-4",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What cup has Jerusalem drunk?",
+  "choices": [
+   "The cup of blessing",
+   "The cup of Egypt",
+   "The cup of healing",
+   "The cup of God's fury"
+  ],
+  "answer": 3,
+  "explanation": "Jerusalem is pictured as staggering under divine wrath.",
+  "ref": "Isaiah 51:17"
+ },
+ {
+  "id": "old-isaiah-51-5",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God promise to do with the cup of His fury?",
+  "choices": [
+   "Take it out of Jerusalem's hand",
+   "Fill it again",
+   "Give it to Abraham",
+   "Hide it in the temple"
+  ],
+  "answer": 0,
+  "explanation": "The Lord promises relief by removing the cup from Zion.",
+  "ref": "Isaiah 51:22"
+ },
+ {
+  "id": "old-isaiah-52-1",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command is repeated to Zion?",
+  "choices": [
+   "Flee to Egypt",
+   "Be silent",
+   "Mourn without ceasing",
+   "Awake, awake"
+  ],
+  "answer": 3,
+  "explanation": "Zion is summoned to rise into renewed dignity and hope.",
+  "ref": "Isaiah 52:1"
+ },
+ {
+  "id": "old-isaiah-52-2",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of news is celebrated?",
+  "choices": [
+   "News of war",
+   "Good tidings of peace",
+   "News of tribute",
+   "News of famine"
+  ],
+  "answer": 1,
+  "explanation": "The beautiful feet image celebrates the announcement of salvation.",
+  "ref": "Isaiah 52:7"
+ },
+ {
+  "id": "old-isaiah-52-3",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Lord say He has made bare before the nations?",
+  "choices": [
+   "His hidden face",
+   "His temple courts",
+   "His holy arm",
+   "His sword only"
+  ],
+  "answer": 2,
+  "explanation": "God reveals His saving power openly before the world.",
+  "ref": "Isaiah 52:10"
+ },
+ {
+  "id": "old-isaiah-52-4",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say about His servant near the end of the chapter?",
+  "choices": [
+   "My servant shall flee",
+   "My servant shall build Babylon",
+   "My servant shall deal prudently and be exalted",
+   "My servant shall fail"
+  ],
+  "answer": 2,
+  "explanation": "God says His servant shall deal prudently and be exalted and extolled, and be very high.",
+  "ref": "Isaiah 52:13"
+ },
+ {
+  "id": "old-isaiah-52-5",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the servant's appearance described?",
+  "choices": [
+   "Marred more than any man",
+   "More beautiful than all kings",
+   "Like a lion in battle",
+   "Like the sun at noon"
+  ],
+  "answer": 0,
+  "explanation": "His suffering is portrayed as shockingly severe.",
+  "ref": "Isaiah 52:14"
+ },
+ {
+  "id": "old-isaiah-53-1",
+  "chapter": 53,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famous question opens the chapter?",
+  "choices": [
+   "Who hath believed our report?",
+   "Who shall ascend the hill?",
+   "Who is worthy to reign?",
+   "Who can save Babylon?"
+  ],
+  "answer": 0,
+  "explanation": "The chapter begins by lamenting unbelief toward God's revelation.",
+  "ref": "Isaiah 53:1"
+ },
+ {
+  "id": "old-isaiah-53-2",
+  "chapter": 53,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the servant described?",
+  "choices": [
+   "Honored by every nation",
+   "Despised and rejected of men",
+   "Crowned in Jerusalem",
+   "Exalted by princes"
+  ],
+  "answer": 1,
+  "explanation": "The servant's suffering includes rejection and sorrow.",
+  "ref": "Isaiah 53:3"
+ },
+ {
+  "id": "old-isaiah-53-3",
+  "chapter": 53,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has the servant borne?",
+  "choices": [
+   "Only his own burdens",
+   "Our griefs",
+   "The treasures of kings",
+   "The strength of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "He carries the sorrows and griefs of others.",
+  "ref": "Isaiah 53:4"
+ },
+ {
+  "id": "old-isaiah-53-4",
+  "chapter": 53,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does verse 5 say made us whole?",
+  "choices": [
+   "His armies",
+   "His stripes",
+   "His silence",
+   "His throne"
+  ],
+  "answer": 1,
+  "explanation": "The chapter teaches that healing comes through his suffering.",
+  "ref": "Isaiah 53:5"
+ },
+ {
+  "id": "old-isaiah-53-5",
+  "chapter": 53,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was laid on the servant?",
+  "choices": [
+   "The iniquity of us all",
+   "The crown of Judah",
+   "The law of Moses",
+   "The wealth of nations"
+  ],
+  "answer": 0,
+  "explanation": "The Lord places the guilt of many upon the servant.",
+  "ref": "Isaiah 53:6"
+ },
+ {
+  "id": "old-isaiah-54-1",
+  "chapter": 54,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is told to sing at the start of the chapter?",
+  "choices": [
+   "The queen of Babylon",
+   "The barren woman",
+   "The daughters of Egypt",
+   "The priests of Assyria"
+  ],
+  "answer": 1,
+  "explanation": "The barren woman symbolizes formerly desolate Zion now promised fruitfulness.",
+  "ref": "Isaiah 54:1"
+ },
+ {
+  "id": "old-isaiah-54-2",
+  "chapter": 54,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Zion told to do with the cords and stakes?",
+  "choices": [
+   "Cut them all down",
+   "Lengthen and strengthen them",
+   "Hide them in the field",
+   "Sell them for silver"
+  ],
+  "answer": 1,
+  "explanation": "The imagery points to expansion and coming growth.",
+  "ref": "Isaiah 54:2"
+ },
+ {
+  "id": "old-isaiah-54-3",
+  "chapter": 54,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is God identified?",
+  "choices": [
+   "Thy judge is thy husband",
+   "Thy king is thy enemy",
+   "Thy prophet is thy maker",
+   "Thy Maker is thine husband"
+  ],
+  "answer": 3,
+  "explanation": "The Lord reassures Zion with covenantal marital language.",
+  "ref": "Isaiah 54:5"
+ },
+ {
+  "id": "old-isaiah-54-4",
+  "chapter": 54,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what event does God compare His oath?",
+  "choices": [
+   "The Exodus",
+   "The waters of Noah",
+   "The fall of Jericho",
+   "The call of Abraham"
+  ],
+  "answer": 1,
+  "explanation": "God compares His covenant promise to His oath after the flood.",
+  "ref": "Isaiah 54:9"
+ },
+ {
+  "id": "old-isaiah-54-5",
+  "chapter": 54,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will not depart?",
+  "choices": [
+   "My kindness",
+   "The mountains",
+   "The nations",
+   "The old exile"
+  ],
+  "answer": 0,
+  "explanation": "Even if mountains depart, God's covenant mercy remains.",
+  "ref": "Isaiah 54:10"
+ },
+ {
+  "id": "old-isaiah-55-1",
+  "chapter": 55,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is invited to come to the waters?",
+  "choices": [
+   "Only kings",
+   "Only priests",
+   "Every one that thirsteth",
+   "Only the remnant"
+  ],
+  "answer": 2,
+  "explanation": "The invitation is wonderfully broad and free.",
+  "ref": "Isaiah 55:1"
+ },
+ {
+  "id": "old-isaiah-55-2",
+  "chapter": 55,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the people rebuked for doing?",
+  "choices": [
+   "Building too many altars",
+   "Trusting the prophets",
+   "Spending money for that which is not bread",
+   "Praying in secret"
+  ],
+  "answer": 2,
+  "explanation": "They are warned against chasing what cannot truly satisfy.",
+  "ref": "Isaiah 55:2"
+ },
+ {
+  "id": "old-isaiah-55-3",
+  "chapter": 55,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are God's thoughts and ways like compared to ours?",
+  "choices": [
+   "Exactly the same",
+   "Lower than ours",
+   "Impossible to know at all",
+   "Higher than ours"
+  ],
+  "answer": 3,
+  "explanation": "God's wisdom and purposes far exceed human perspective.",
+  "ref": "Isaiah 55:8–9"
+ },
+ {
+  "id": "old-isaiah-55-4",
+  "chapter": 55,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will God's word not do?",
+  "choices": [
+   "Speak truth",
+   "Judge nations",
+   "Bring rain",
+   "Return unto him void"
+  ],
+  "answer": 3,
+  "explanation": "God's word always accomplishes His intention.",
+  "ref": "Isaiah 55:11"
+ },
+ {
+  "id": "old-isaiah-55-5",
+  "chapter": 55,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What replaces the thorn?",
+  "choices": [
+   "A briar",
+   "The fir tree",
+   "The burning coal",
+   "The broken reed"
+  ],
+  "answer": 1,
+  "explanation": "The chapter ends with transformed creation as a sign of blessing.",
+  "ref": "Isaiah 55:13"
+ },
+ {
+  "id": "old-isaiah-56-1",
+  "chapter": 56,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things does the Lord tell His people to keep and do?",
+  "choices": [
+   "Strength and victory",
+   "Wealth and honor",
+   "Silence and mourning",
+   "Judgment and justice"
+  ],
+  "answer": 3,
+  "explanation": "God calls His people to keep judgment and do justice because His salvation is near.",
+  "ref": "Isaiah 56:1"
+ },
+ {
+  "id": "old-isaiah-56-2",
+  "chapter": 56,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What day does the chapter say to keep from polluting?",
+  "choices": [
+   "The sabbath",
+   "Passover",
+   "Day of Atonement",
+   "The new moon"
+  ],
+  "answer": 0,
+  "explanation": "The chapter blesses the one who keeps the sabbath from polluting it.",
+  "ref": "Isaiah 56:2"
+ },
+ {
+  "id": "old-isaiah-56-3",
+  "chapter": 56,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God promise the eunuch?",
+  "choices": [
+   "A throne in Babylon",
+   "Many horses",
+   "A name better than of sons and daughters",
+   "A vineyard in Samaria"
+  ],
+  "answer": 2,
+  "explanation": "Those once excluded are promised lasting honor in God's house.",
+  "ref": "Isaiah 56:5"
+ },
+ {
+  "id": "old-isaiah-56-4",
+  "chapter": 56,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say His house shall be called?",
+  "choices": [
+   "A house of cedar",
+   "A fortress against Egypt",
+   "A palace of kings",
+   "A house of prayer for all people"
+  ],
+  "answer": 3,
+  "explanation": "The temple is presented as open to all nations who truly seek God.",
+  "ref": "Isaiah 56:7"
+ },
+ {
+  "id": "old-isaiah-56-5",
+  "chapter": 56,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are Israel's watchmen described?",
+  "choices": [
+   "Blind and dumb dogs",
+   "Wise and awake",
+   "Strong and faithful",
+   "Humble and patient"
+  ],
+  "answer": 0,
+  "explanation": "The chapter ends by condemning corrupt, self-serving leaders.",
+  "ref": "Isaiah 56:10"
+ },
+ {
+  "id": "old-isaiah-57-1",
+  "chapter": 57,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the righteous?",
+  "choices": [
+   "They are forgotten by God",
+   "They reign in Babylon",
+   "They are taken away from the evil to come",
+   "They lose all reward"
+  ],
+  "answer": 2,
+  "explanation": "The chapter notes that the righteous may be removed mercifully before judgment.",
+  "ref": "Isaiah 57:1"
+ },
+ {
+  "id": "old-isaiah-57-2",
+  "chapter": 57,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is God described?",
+  "choices": [
+   "High and lofty",
+   "Hidden and powerless",
+   "Changeable and distant",
+   "Only near to kings"
+  ],
+  "answer": 0,
+  "explanation": "The Lord is both exalted and near to the humble.",
+  "ref": "Isaiah 57:15"
+ },
+ {
+  "id": "old-isaiah-57-3",
+  "chapter": 57,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With whom does God say He dwells?",
+  "choices": [
+   "The proud and mighty",
+   "Only priests",
+   "The contrite and humble spirit",
+   "Only kings"
+  ],
+  "answer": 2,
+  "explanation": "God revives the humble even while dwelling in eternity.",
+  "ref": "Isaiah 57:15"
+ },
+ {
+  "id": "old-isaiah-57-4",
+  "chapter": 57,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say He creates?",
+  "choices": [
+   "A new kingdom",
+   "A river in Egypt",
+   "The fruit of the lips",
+   "A sword for battle"
+  ],
+  "answer": 2,
+  "explanation": "God says He creates the fruit of the lips, and speaks peace to him that is far off and to him that is near.",
+  "ref": "Isaiah 57:19"
+ },
+ {
+  "id": "old-isaiah-57-5",
+  "chapter": 57,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are the wicked described?",
+  "choices": [
+   "Like a calm river",
+   "Like a planted cedar",
+   "Like the troubled sea",
+   "Like stars in heaven"
+  ],
+  "answer": 2,
+  "explanation": "The wicked have no rest and remain in turmoil.",
+  "ref": "Isaiah 57:20"
+ },
+ {
+  "id": "old-isaiah-58-1",
+  "chapter": 58,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Isaiah told to cry out?",
+  "choices": [
+   "Softly like a whisper",
+   "Only before kings",
+   "Spare not; lift up thy voice like a trumpet",
+   "Only in secret"
+  ],
+  "answer": 2,
+  "explanation": "The prophet must boldly expose the people's sin.",
+  "ref": "Isaiah 58:1"
+ },
+ {
+  "id": "old-isaiah-58-2",
+  "chapter": 58,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is wrong with the people's fasting?",
+  "choices": [
+   "They fast too quietly",
+   "They fast while oppressing and fighting",
+   "They never fast at all",
+   "They fast only once a year"
+  ],
+  "answer": 1,
+  "explanation": "Their religious acts are contradicted by injustice and strife.",
+  "ref": "Isaiah 58:3–4"
+ },
+ {
+  "id": "old-isaiah-58-3",
+  "chapter": 58,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of fast does God choose?",
+  "choices": [
+   "To loose the bands of wickedness",
+   "A fast of public mourning only",
+   "A fast of silence alone",
+   "A fast of animal sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "True fasting is tied to justice, liberation, and mercy.",
+  "ref": "Isaiah 58:6"
+ },
+ {
+  "id": "old-isaiah-58-4",
+  "chapter": 58,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What promise is given to those who obey?",
+  "choices": [
+   "Thy light shall break forth as the morning",
+   "Babylon shall praise thee",
+   "Thy sword shall rule nations",
+   "The temple shall vanish"
+  ],
+  "answer": 0,
+  "explanation": "Obedience brings healing, light, and divine favor.",
+  "ref": "Isaiah 58:8"
+ },
+ {
+  "id": "old-isaiah-58-5",
+  "chapter": 58,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What day is honored at the end of the chapter?",
+  "choices": [
+   "Passover",
+   "The feast of trumpets",
+   "The day of war",
+   "The sabbath"
+  ],
+  "answer": 3,
+  "explanation": "Delighting in the Sabbath is tied to delighting in the Lord.",
+  "ref": "Isaiah 58:13"
+ },
+ {
+  "id": "old-isaiah-59-1",
+  "chapter": 59,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is not shortened?",
+  "choices": [
+   "The temple",
+   "The prophet's life",
+   "The Lord's hand",
+   "The king's sword"
+  ],
+  "answer": 2,
+  "explanation": "The Lord's hand is not shortened and can still save. The problem is not God's power but the people's sin.",
+  "ref": "Isaiah 59:1"
+ },
+ {
+  "id": "old-isaiah-59-2",
+  "chapter": 59,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has separated the people from their God?",
+  "choices": [
+   "Their iniquities",
+   "Their enemies",
+   "Their exile only",
+   "Their weakness"
+  ],
+  "answer": 0,
+  "explanation": "Sin creates the breach between God and the people.",
+  "ref": "Isaiah 59:2"
+ },
+ {
+  "id": "old-isaiah-59-3",
+  "chapter": 59,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the chapter say about justice?",
+  "choices": [
+   "It standeth afar off",
+   "It rules the city",
+   "It dwells in every heart",
+   "It has filled the land"
+  ],
+  "answer": 0,
+  "explanation": "Truth and justice are pictured as fallen in the street.",
+  "ref": "Isaiah 59:14"
+ },
+ {
+  "id": "old-isaiah-59-4",
+  "chapter": 59,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What armor does the Lord put on?",
+  "choices": [
+   "Only a crown",
+   "Righteousness as a breastplate",
+   "A garment of linen only",
+   "The shield of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "The Lord Himself arms for intervention and salvation.",
+  "ref": "Isaiah 59:17"
+ },
+ {
+  "id": "old-isaiah-59-5",
+  "chapter": 59,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who comes to Zion?",
+  "choices": [
+   "The Redeemer",
+   "A new king from Egypt",
+   "The prince of Babylon",
+   "An angel without a message"
+  ],
+  "answer": 0,
+  "explanation": "The chapter climaxes with the promise of the Redeemer coming to Zion.",
+  "ref": "Isaiah 59:20"
+ },
+ {
+  "id": "old-isaiah-60-1",
+  "chapter": 60,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command begins the chapter?",
+  "choices": [
+   "Arise, shine",
+   "Hide and wait",
+   "Return to Egypt",
+   "Mourn and fast"
+  ],
+  "answer": 0,
+  "explanation": "Zion is summoned to respond to the Lord's dawning glory.",
+  "ref": "Isaiah 60:1"
+ },
+ {
+  "id": "old-isaiah-60-2",
+  "chapter": 60,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What covers the earth?",
+  "choices": [
+   "Peace",
+   "Darkness",
+   "The temple",
+   "The sea"
+  ],
+  "answer": 1,
+  "explanation": "Darkness covers the nations, but the Lord rises upon Zion.",
+  "ref": "Isaiah 60:2"
+ },
+ {
+  "id": "old-isaiah-60-3",
+  "chapter": 60,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall come to Zion's light?",
+  "choices": [
+   "Only Judah",
+   "Only priests",
+   "Gentiles and kings",
+   "Only exiles from Babylon"
+  ],
+  "answer": 2,
+  "explanation": "The nations are drawn by the visible glory of God on Zion.",
+  "ref": "Isaiah 60:3"
+ },
+ {
+  "id": "old-isaiah-60-4",
+  "chapter": 60,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What maritime wealth is mentioned?",
+  "choices": [
+   "The ships of Egypt only",
+   "Hidden gold of Assyria",
+   "The abundance of the sea",
+   "The rivers of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "The sea's abundance symbolizes the wealth of the nations coming in.",
+  "ref": "Isaiah 60:5"
+ },
+ {
+  "id": "old-isaiah-60-5",
+  "chapter": 60,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the Lord be to Zion?",
+  "choices": [
+   "Its army",
+   "Its everlasting light",
+   "Its hidden judge",
+   "Its river"
+  ],
+  "answer": 1,
+  "explanation": "The chapter ends with the Lord replacing ordinary sources of light.",
+  "ref": "Isaiah 60:19"
+ },
+ {
+  "id": "old-isaiah-61-1",
+  "chapter": 61,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What rests upon the speaker?",
+  "choices": [
+   "The crown of David",
+   "The Spirit of the Lord God",
+   "The wisdom of Egypt",
+   "The armies of Zion"
+  ],
+  "answer": 1,
+  "explanation": "The chapter begins with the Spirit-anointed mission of the servant.",
+  "ref": "Isaiah 61:1"
+ },
+ {
+  "id": "old-isaiah-61-2",
+  "chapter": 61,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom is good news brought?",
+  "choices": [
+   "The proud",
+   "The nations of war",
+   "The idol makers",
+   "The meek"
+  ],
+  "answer": 3,
+  "explanation": "The servant is sent with good tidings especially for the needy and broken.",
+  "ref": "Isaiah 61:1"
+ },
+ {
+  "id": "old-isaiah-61-3",
+  "chapter": 61,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is given instead of the spirit of heaviness?",
+  "choices": [
+   "A crown of iron",
+   "The rod of judgment",
+   "The garment of praise",
+   "The fire of jealousy"
+  ],
+  "answer": 2,
+  "explanation": "God exchanges mourning for beauty and praise.",
+  "ref": "Isaiah 61:3"
+ },
+ {
+  "id": "old-isaiah-61-4",
+  "chapter": 61,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will God's people be called?",
+  "choices": [
+   "Captives forever",
+   "Kings of Egypt",
+   "Builders of idols",
+   "Priests of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "The restored people share in a priestly calling before the nations.",
+  "ref": "Isaiah 61:6"
+ },
+ {
+  "id": "old-isaiah-61-5",
+  "chapter": 61,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What agricultural image closes the chapter?",
+  "choices": [
+   "A garden causing things to spring forth",
+   "The sea covering the earth",
+   "A mountain melting",
+   "A vine cut down"
+  ],
+  "answer": 0,
+  "explanation": "Righteousness and praise spring up like a well-watered garden.",
+  "ref": "Isaiah 61:11"
+ },
+ {
+  "id": "old-isaiah-62-1",
+  "chapter": 62,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whose sake will the speaker not hold his peace?",
+  "choices": [
+   "Zion",
+   "Babylon",
+   "Egypt",
+   "Assyria"
+  ],
+  "answer": 0,
+  "explanation": "The chapter is driven by zeal for Zion's vindication.",
+  "ref": "Isaiah 62:1"
+ },
+ {
+  "id": "old-isaiah-62-2",
+  "chapter": 62,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will happen to Zion's identity?",
+  "choices": [
+   "It will be hidden forever",
+   "It will return to Ariel",
+   "She will be nameless",
+   "She shall be called by a new name"
+  ],
+  "answer": 3,
+  "explanation": "A new name signifies renewed status and relationship.",
+  "ref": "Isaiah 62:2"
+ },
+ {
+  "id": "old-isaiah-62-3",
+  "chapter": 62,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Zion described?",
+  "choices": [
+   "A crown of glory in the hand of the Lord",
+   "A broken reed",
+   "A cup of wrath",
+   "A sealed grave"
+  ],
+  "answer": 0,
+  "explanation": "The city is portrayed as precious and honored by God.",
+  "ref": "Isaiah 62:3"
+ },
+ {
+  "id": "old-isaiah-62-4",
+  "chapter": 62,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name replaces Forsaken?",
+  "choices": [
+   "Ichabod",
+   "Mara",
+   "Hephzibah",
+   "Ariel"
+  ],
+  "answer": 2,
+  "explanation": "Hephzibah means 'My delight is in her.'",
+  "ref": "Isaiah 62:4"
+ },
+ {
+  "id": "old-isaiah-62-5",
+  "chapter": 62,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are watchmen told to do?",
+  "choices": [
+   "Sleep at night",
+   "Give God no rest until He establishes Jerusalem",
+   "Leave the walls",
+   "Guard only the gates"
+  ],
+  "answer": 1,
+  "explanation": "Their task is persistent intercession for Zion's restoration.",
+  "ref": "Isaiah 62:6–7"
+ },
+ {
+  "id": "old-isaiah-63-1",
+  "chapter": 63,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what place does the majestic figure come?",
+  "choices": [
+   "Edom, from Bozrah",
+   "Babylon",
+   "Jerusalem",
+   "Egypt"
+  ],
+  "answer": 0,
+  "explanation": "The chapter opens with the Lord returning in victorious judgment.",
+  "ref": "Isaiah 63:1"
+ },
+ {
+  "id": "old-isaiah-63-2",
+  "chapter": 63,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why are his garments red?",
+  "choices": [
+   "He has trodden the winepress",
+   "He has been crowned",
+   "He passed through fire",
+   "He was wounded by Egypt"
+  ],
+  "answer": 0,
+  "explanation": "The imagery portrays judgment like treading grapes in a winepress.",
+  "ref": "Isaiah 63:2–3"
+ },
+ {
+  "id": "old-isaiah-63-3",
+  "chapter": 63,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What quality of God does the prophet recall?",
+  "choices": [
+   "His forgetfulness",
+   "His weakness",
+   "His silence",
+   "The lovingkindnesses of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "The chapter turns to rehearsing God's past mercies.",
+  "ref": "Isaiah 63:7"
+ },
+ {
+  "id": "old-isaiah-63-4",
+  "chapter": 63,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people respond to God?",
+  "choices": [
+   "They rejoiced always",
+   "They built more altars",
+   "They returned to Egypt",
+   "They rebelled and vexed His Holy Spirit"
+  ],
+  "answer": 3,
+  "explanation": "Their rebellion changed the relationship from comfort to discipline.",
+  "ref": "Isaiah 63:10"
+ },
+ {
+  "id": "old-isaiah-63-5",
+  "chapter": 63,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the prayer ask?",
+  "choices": [
+   "Where is Babylon's army?",
+   "Where is Moses' rod?",
+   "Where is Egypt's river?",
+   "Where is thy zeal and thy strength?"
+  ],
+  "answer": 3,
+  "explanation": "The prophet pleads for God to look down again with compassion.",
+  "ref": "Isaiah 63:15"
+ },
+ {
+  "id": "old-isaiah-64-1",
+  "chapter": 64,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What dramatic request opens the chapter?",
+  "choices": [
+   "Oh that Babylon would fall",
+   "Oh that Egypt would help",
+   "Oh that thou wouldest rend the heavens",
+   "Oh that Zion would hide"
+  ],
+  "answer": 2,
+  "explanation": "The prayer longs for a fresh, powerful intervention from God.",
+  "ref": "Isaiah 64:1"
+ },
+ {
+  "id": "old-isaiah-64-2",
+  "chapter": 64,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What image describes God's coming?",
+  "choices": [
+   "As waters freezing",
+   "As fire that causes the waters to boil",
+   "As a gentle dew only",
+   "As a silent wind"
+  ],
+  "answer": 1,
+  "explanation": "The imagery conveys God's overwhelming manifest presence.",
+  "ref": "Isaiah 64:2"
+ },
+ {
+  "id": "old-isaiah-64-3",
+  "chapter": 64,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are human acts of righteousness described?",
+  "choices": [
+   "As pure gold",
+   "As filthy rags",
+   "As cedar wood",
+   "As holy incense"
+  ],
+  "answer": 1,
+  "explanation": "The confession emphasizes the inadequacy of human righteousness before God.",
+  "ref": "Isaiah 64:6"
+ },
+ {
+  "id": "old-isaiah-64-4",
+  "chapter": 64,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is God addressed?",
+  "choices": [
+   "Our captain",
+   "Our exile",
+   "Our mountain",
+   "Our Father"
+  ],
+  "answer": 3,
+  "explanation": "The people appeal to God as their Father and potter.",
+  "ref": "Isaiah 64:8"
+ },
+ {
+  "id": "old-isaiah-64-5",
+  "chapter": 64,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What craft image is used for God's relationship to His people?",
+  "choices": [
+   "Shepherd and sheep",
+   "Builder and stone",
+   "Potter and clay",
+   "Sower and seed"
+  ],
+  "answer": 2,
+  "explanation": "The people confess their dependence on God's shaping hand.",
+  "ref": "Isaiah 64:8"
+ },
+ {
+  "id": "old-isaiah-65-1",
+  "chapter": 65,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What startling statement does God make?",
+  "choices": [
+   "I hid myself from all nations",
+   "I saved Egypt first",
+   "I forgot Zion",
+   "I am found of them that sought me not"
+  ],
+  "answer": 3,
+  "explanation": "God speaks of making Himself known even beyond the expected people.",
+  "ref": "Isaiah 65:1"
+ },
+ {
+  "id": "old-isaiah-65-2",
+  "chapter": 65,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does God describe rebellious Israel?",
+  "choices": [
+   "A people perfect and upright",
+   "A people that walketh in a way that was not good",
+   "A people hidden in caves",
+   "A people beloved without fault"
+  ],
+  "answer": 1,
+  "explanation": "Israel is portrayed as stubbornly following its own thoughts.",
+  "ref": "Isaiah 65:2"
+ },
+ {
+  "id": "old-isaiah-65-3",
+  "chapter": 65,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What metaphor is used to show a remnant will be preserved?",
+  "choices": [
+   "A shepherd's rod",
+   "A cedar on a mountain",
+   "A river in the desert",
+   "New wine found in a cluster"
+  ],
+  "answer": 3,
+  "explanation": "God will not destroy all, because blessing remains within the cluster.",
+  "ref": "Isaiah 65:8"
+ },
+ {
+  "id": "old-isaiah-65-4",
+  "chapter": 65,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say He creates?",
+  "choices": [
+   "A new temple only",
+   "A new monarchy",
+   "A new exile",
+   "New heavens and a new earth"
+  ],
+  "answer": 3,
+  "explanation": "The chapter points beyond restoration to a renewed creation.",
+  "ref": "Isaiah 65:17"
+ },
+ {
+  "id": "old-isaiah-65-5",
+  "chapter": 65,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famous peace image appears?",
+  "choices": [
+   "The sea will vanish",
+   "The stars will fall",
+   "The wolf and the lamb shall feed together",
+   "The lion will destroy the lamb"
+  ],
+  "answer": 2,
+  "explanation": "The chapter closes with imagery of profound harmony under God's rule.",
+  "ref": "Isaiah 65:25"
+ },
+ {
+  "id": "old-isaiah-66-1",
+  "chapter": 66,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God call His throne?",
+  "choices": [
+   "Jerusalem",
+   "Heaven",
+   "The temple",
+   "Zion"
+  ],
+  "answer": 1,
+  "explanation": "God declares His supremacy beyond any merely human house.",
+  "ref": "Isaiah 66:1"
+ },
+ {
+  "id": "old-isaiah-66-2",
+  "chapter": 66,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom does God look?",
+  "choices": [
+   "The poor and contrite in spirit",
+   "The proud and wealthy",
+   "The strongest warriors",
+   "The most gifted speakers"
+  ],
+  "answer": 0,
+  "explanation": "The Lord favors humble people who tremble at His word.",
+  "ref": "Isaiah 66:2"
+ },
+ {
+  "id": "old-isaiah-66-3",
+  "chapter": 66,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is wrong with the sacrifices described?",
+  "choices": [
+   "They are too small",
+   "They come from people who choose their own ways",
+   "They are offered at night",
+   "They are brought by foreigners"
+  ],
+  "answer": 1,
+  "explanation": "The issue is hypocrisy and rebellion, not merely the ritual itself.",
+  "ref": "Isaiah 66:3"
+ },
+ {
+  "id": "old-isaiah-66-4",
+  "chapter": 66,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What astonishing image is used of Zion?",
+  "choices": [
+   "A mountain melts away",
+   "A nation is born at once",
+   "A river turns to blood",
+   "A temple falls in silence"
+  ],
+  "answer": 1,
+  "explanation": "Zion's restoration is pictured as sudden and miraculous birth.",
+  "ref": "Isaiah 66:8"
+ },
+ {
+  "id": "old-isaiah-66-5",
+  "chapter": 66,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What enduring worship pattern appears?",
+  "choices": [
+   "Only kings will worship",
+   "Only Judah will keep feast days",
+   "No one will worship again",
+   "All flesh shall come to worship before me"
+  ],
+  "answer": 3,
+  "explanation": "The book ends with a global vision of ongoing worship before the Lord.",
+  "ref": "Isaiah 66:23"
+ }
+]

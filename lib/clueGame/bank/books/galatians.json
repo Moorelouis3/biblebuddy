@@ -1,0 +1,482 @@
+[
+ {
+  "id": "old-galatians-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul describe the source of his apostleship?",
+  "choices": [
+   "From Jerusalem only",
+   "From Peter and James",
+   "Not of men, neither by man, but by Jesus Christ",
+   "By the churches of Galatia"
+  ],
+  "answer": 2,
+  "explanation": "Paul says his apostleship came through Jesus Christ and God the Father.",
+  "ref": "Galatians 1:1"
+ },
+ {
+  "id": "old-galatians-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What astonished Paul about the Galatians?",
+  "choices": [
+   "They were so soon removed unto another gospel",
+   "They were slow to give",
+   "They rejected Paul entirely",
+   "They stopped gathering"
+  ],
+  "answer": 0,
+  "explanation": "Paul marveled that they were turning so quickly to another gospel.",
+  "ref": "Galatians 1:6"
+ },
+ {
+  "id": "old-galatians-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say about anyone preaching another gospel?",
+  "choices": [
+   "Let him be accursed",
+   "He should be debated",
+   "He should be ignored",
+   "He should be welcomed"
+  ],
+  "answer": 0,
+  "explanation": "Paul gives a severe warning against anyone preaching a different gospel.",
+  "ref": "Galatians 1:8"
+ },
+ {
+  "id": "old-galatians-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Paul receive the gospel he preached?",
+  "choices": [
+   "By tradition",
+   "By revelation of Jesus Christ",
+   "By synagogue training",
+   "By the Jerusalem council"
+  ],
+  "answer": 1,
+  "explanation": "Paul says he received it through the revelation of Jesus Christ.",
+  "ref": "Galatians 1:12"
+ },
+ {
+  "id": "old-galatians-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After his conversion, where does Paul say he first went?",
+  "choices": [
+   "Jerusalem",
+   "Rome",
+   "Corinth",
+   "Arabia"
+  ],
+  "answer": 3,
+  "explanation": "Paul says he went into Arabia before returning to Damascus.",
+  "ref": "Galatians 1:17"
+ },
+ {
+  "id": "old-galatians-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was not compelled to be circumcised?",
+  "choices": [
+   "Titus",
+   "Timothy",
+   "Silas",
+   "Barnabas"
+  ],
+  "answer": 0,
+  "explanation": "Titus, being Greek, was not compelled to be circumcised.",
+  "ref": "Galatians 2:3"
+ },
+ {
+  "id": "old-galatians-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why had false brethren come in secretly?",
+  "choices": [
+   "To teach mercy",
+   "To help the poor",
+   "To spy out Christian liberty",
+   "To test Paul's memory"
+  ],
+  "answer": 2,
+  "explanation": "They came in to spy out liberty and bring believers into bondage.",
+  "ref": "Galatians 2:4"
+ },
+ {
+  "id": "old-galatians-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Paul withstand to the face at Antioch?",
+  "choices": [
+   "James",
+   "John",
+   "Peter",
+   "Barnabas"
+  ],
+  "answer": 2,
+  "explanation": "Paul opposed Peter publicly because he was to be blamed.",
+  "ref": "Galatians 2:11"
+ },
+ {
+  "id": "old-galatians-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "According to Galatians 2:16, how is a person justified?",
+  "choices": [
+   "By works of the law",
+   "By faith of Jesus Christ",
+   "By circumcision",
+   "By the traditions of Moses"
+  ],
+  "answer": 1,
+  "explanation": "Paul says a man is justified by faith in Jesus Christ, not by works of the law.",
+  "ref": "Galatians 2:16"
+ },
+ {
+  "id": "old-galatians-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say he has been crucified with?",
+  "choices": [
+   "The law",
+   "Christ",
+   "The world",
+   "Sin only"
+  ],
+  "answer": 1,
+  "explanation": "Paul says, 'I am crucified with Christ.'",
+  "ref": "Galatians 2:20"
+ },
+ {
+  "id": "old-galatians-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question does Paul ask about how the Galatians received the Spirit?",
+  "choices": [
+   "By fasting or by prayer",
+   "By prophecy or by teaching",
+   "By works of the law or by hearing of faith",
+   "By tradition or by sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "Paul asks whether they received the Spirit by works or by hearing with faith.",
+  "ref": "Galatians 3:2"
+ },
+ {
+  "id": "old-galatians-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose faith is used as the example?",
+  "choices": [
+   "Moses",
+   "Abraham",
+   "David",
+   "Isaac"
+  ],
+  "answer": 1,
+  "explanation": "Abraham believed God, and it was accounted to him for righteousness.",
+  "ref": "Galatians 3:6"
+ },
+ {
+  "id": "old-galatians-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what did Christ redeem us?",
+  "choices": [
+   "The power of Rome",
+   "The curse of the law",
+   "The judgment of angels",
+   "The weakness of the flesh"
+  ],
+  "answer": 1,
+  "explanation": "Christ redeemed believers from the curse of the law.",
+  "ref": "Galatians 3:13"
+ },
+ {
+  "id": "old-galatians-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was the law added?",
+  "choices": [
+   "To replace the promise",
+   "To save the Gentiles",
+   "To remove faith",
+   "Because of transgressions"
+  ],
+  "answer": 3,
+  "explanation": "Paul says the law was added because of transgressions.",
+  "ref": "Galatians 3:19"
+ },
+ {
+  "id": "old-galatians-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say the law was for believers before faith came?",
+  "choices": [
+   "A crown",
+   "A final covenant",
+   "A throne of wisdom",
+   "A schoolmaster to bring us unto Christ"
+  ],
+  "answer": 3,
+  "explanation": "The law was our schoolmaster to bring us to Christ.",
+  "ref": "Galatians 3:24"
+ },
+ {
+  "id": "old-galatians-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When the fullness of the time was come, what did God send forth?",
+  "choices": [
+   "A prophet",
+   "A new law",
+   "An angelic host",
+   "His Son"
+  ],
+  "answer": 3,
+  "explanation": "God sent forth His Son when the fullness of time had come.",
+  "ref": "Galatians 4:4"
+ },
+ {
+  "id": "old-galatians-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "God sent the Spirit of his Son into believers' hearts, crying what?",
+  "choices": [
+   "Holy, holy",
+   "Abba, Father",
+   "Come quickly",
+   "Lord of hosts"
+  ],
+  "answer": 1,
+  "explanation": "God sent the Spirit of his Son into their hearts, crying, 'Abba, Father.'",
+  "ref": "Galatians 4:6"
+ },
+ {
+  "id": "old-galatians-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Paul afraid might happen because the Galatians were turning back to weak elements?",
+  "choices": [
+   "They would lose Rome's favor",
+   "He had bestowed labor upon them in vain",
+   "They would never gather again",
+   "They would reject Titus"
+  ],
+  "answer": 1,
+  "explanation": "Paul feared his labor among them might be in vain.",
+  "ref": "Galatians 4:11"
+ },
+ {
+  "id": "old-galatians-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which woman corresponds to bondage in Paul's allegory?",
+  "choices": [
+   "Sarah",
+   "Rebecca",
+   "Rachel",
+   "Hagar"
+  ],
+  "answer": 3,
+  "explanation": "Hagar is associated with bondage.",
+  "ref": "Galatians 4:24–25"
+ },
+ {
+  "id": "old-galatians-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "According to Galatians 4:28, believers are children of whom or what?",
+  "choices": [
+   "The law",
+   "Promise",
+   "Circumcision",
+   "Jerusalem below"
+  ],
+  "answer": 1,
+  "explanation": "Believers, like Isaac, are children of promise.",
+  "ref": "Galatians 4:28"
+ },
+ {
+  "id": "old-galatians-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what does Paul tell believers to stand fast?",
+  "choices": [
+   "Power",
+   "Honor",
+   "Authority",
+   "Liberty"
+  ],
+  "answer": 3,
+  "explanation": "Paul says to stand fast in the liberty wherewith Christ has made us free.",
+  "ref": "Galatians 5:1"
+ },
+ {
+  "id": "old-galatians-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say faith works by?",
+  "choices": [
+   "Power",
+   "Signs",
+   "Love",
+   "Discipline"
+  ],
+  "answer": 2,
+  "explanation": "Faith works by love.",
+  "ref": "Galatians 5:6"
+ },
+ {
+  "id": "old-galatians-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say to do so that you will not fulfil the lust of the flesh?",
+  "choices": [
+   "Seek wisdom",
+   "Obey the law",
+   "Return to the fathers",
+   "Walk in the Spirit"
+  ],
+  "answer": 3,
+  "explanation": "Paul says to walk in the Spirit and not fulfill the lust of the flesh.",
+  "ref": "Galatians 5:16"
+ },
+ {
+  "id": "old-galatians-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which of these is part of the fruit of the Spirit?",
+  "choices": [
+   "Longsuffering",
+   "Wrath",
+   "Envyings",
+   "Seditions"
+  ],
+  "answer": 0,
+  "explanation": "Longsuffering is one of the fruit of the Spirit.",
+  "ref": "Galatians 5:22–23"
+ },
+ {
+  "id": "old-galatians-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What have those who are Christ's done with the flesh?",
+  "choices": [
+   "Perfected it",
+   "Crucified it with the affections and lusts",
+   "Disciplined it by law",
+   "Ignored it"
+  ],
+  "answer": 1,
+  "explanation": "Those who belong to Christ have crucified the flesh.",
+  "ref": "Galatians 5:24"
+ },
+ {
+  "id": "old-galatians-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How should spiritual believers restore someone overtaken in a fault?",
+  "choices": [
+   "With public rebuke only",
+   "With strict punishment",
+   "By removing him immediately",
+   "In the spirit of meekness"
+  ],
+  "answer": 3,
+  "explanation": "Restoration should be done in a spirit of meekness.",
+  "ref": "Galatians 6:1"
+ },
+ {
+  "id": "old-galatians-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are believers told to bear?",
+  "choices": [
+   "One another's burdens",
+   "Their own crowns",
+   "Only their own griefs",
+   "The burden of the law"
+  ],
+  "answer": 0,
+  "explanation": "Bearing one another's burdens fulfills the law of Christ.",
+  "ref": "Galatians 6:2"
+ },
+ {
+  "id": "old-galatians-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say God is not?",
+  "choices": [
+   "Silent",
+   "Hidden",
+   "Mocked",
+   "Weak"
+  ],
+  "answer": 2,
+  "explanation": "God is not mocked.",
+  "ref": "Galatians 6:7"
+ },
+ {
+  "id": "old-galatians-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will a person reap if he sows to the Spirit?",
+  "choices": [
+   "Honor from men",
+   "Freedom from work",
+   "Life everlasting",
+   "Earthly riches"
+  ],
+  "answer": 2,
+  "explanation": "He that sows to the Spirit shall reap life everlasting.",
+  "ref": "Galatians 6:8"
+ },
+ {
+  "id": "old-galatians-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what does Paul say he will glory?",
+  "choices": [
+   "His ministry",
+   "The cross of our Lord Jesus Christ",
+   "His sufferings only",
+   "His knowledge"
+  ],
+  "answer": 1,
+  "explanation": "Paul says he will glory only in the cross of Christ.",
+  "ref": "Galatians 6:14"
+ }
+]

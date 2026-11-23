@@ -1,0 +1,562 @@
+[
+ {
+  "id": "old-micah-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two cities was Micah's vision about?",
+  "choices": [
+   "Samaria and Jerusalem",
+   "Bethlehem and Hebron",
+   "Nineveh and Babylon",
+   "Bethel and Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "Micah's message is directed toward both Samaria and Jerusalem.",
+  "ref": "Micah 1:1"
+ },
+ {
+  "id": "old-micah-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where does the Lord come forth in judgment?",
+  "choices": [
+   "From Egypt",
+   "Out of his holy temple",
+   "From the sea",
+   "From the mountains of Edom"
+  ],
+  "answer": 1,
+  "explanation": "Micah pictures the Lord coming from His holy temple as witness and judge.",
+  "ref": "Micah 1:2–3"
+ },
+ {
+  "id": "old-micah-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the mountains under the Lord?",
+  "choices": [
+   "They melt",
+   "They flourish",
+   "They become iron",
+   "They are hidden"
+  ],
+  "answer": 0,
+  "explanation": "Creation itself trembles and melts before God's holy presence.",
+  "ref": "Micah 1:4"
+ },
+ {
+  "id": "old-micah-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Micah identify as the transgression of Jacob?",
+  "choices": [
+   "Babylon",
+   "Samaria",
+   "Nineveh",
+   "Tekoa"
+  ],
+  "answer": 1,
+  "explanation": "Samaria represents the northern kingdom's rebellion and sin.",
+  "ref": "Micah 1:5"
+ },
+ {
+  "id": "old-micah-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does Micah say he will wail and howl?",
+  "choices": [
+   "Because the harvest failed",
+   "Because Assyria has fallen",
+   "Because Jerusalem repented too late",
+   "Because Samaria's wound is incurable and has reached Judah"
+  ],
+  "answer": 3,
+  "explanation": "Micah mourns because the judgment on Samaria has spread all the way to Judah.",
+  "ref": "Micah 1:8–9"
+ },
+ {
+  "id": "old-micah-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where do the wicked devise iniquity?",
+  "choices": [
+   "Upon their beds",
+   "At the city gate",
+   "At the altar",
+   "In the marketplace"
+  ],
+  "answer": 0,
+  "explanation": "Their oppression is premeditated as they plan evil on their beds.",
+  "ref": "Micah 2:1"
+ },
+ {
+  "id": "old-micah-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do they covet and violently take?",
+  "choices": [
+   "Crowns and armies",
+   "Temples and altars",
+   "Fields and houses",
+   "Cisterns and wells"
+  ],
+  "answer": 2,
+  "explanation": "Micah condemns the seizure of homes and inherited land.",
+  "ref": "Micah 2:2"
+ },
+ {
+  "id": "old-micah-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God plan against these oppressors?",
+  "choices": [
+   "A disaster they cannot remove from their necks",
+   "Immediate peace",
+   "A new kingdom for them",
+   "A famine in Egypt"
+  ],
+  "answer": 0,
+  "explanation": "The Lord answers their evil schemes with a fitting judgment they cannot escape.",
+  "ref": "Micah 2:3"
+ },
+ {
+  "id": "old-micah-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the people say has been divided up and taken away?",
+  "choices": [
+   "The temple treasury",
+   "Their fields",
+   "Their armies",
+   "Their prophets"
+  ],
+  "answer": 1,
+  "explanation": "The same land they stole from others is pictured as taken from them in judgment.",
+  "ref": "Micah 2:4"
+ },
+ {
+  "id": "old-micah-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What hope appears near the end of the chapter?",
+  "choices": [
+   "Only one family survives",
+   "The Lord will surely gather the remnant of Israel",
+   "Judah will escape to Egypt",
+   "A new temple will be built in Samaria"
+  ],
+  "answer": 1,
+  "explanation": "Even after judgment, God promises to gather His remnant and go before them.",
+  "ref": "Micah 2:12–13"
+ },
+ {
+  "id": "old-micah-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should the heads of Jacob and rulers of Israel have known?",
+  "choices": [
+   "Judgment",
+   "Military strategy",
+   "Foreign languages",
+   "Temple songs"
+  ],
+  "answer": 0,
+  "explanation": "Those in leadership were supposed to know and practice justice.",
+  "ref": "Micah 3:1"
+ },
+ {
+  "id": "old-micah-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shocking image describes the leaders' treatment of the people?",
+  "choices": [
+   "They fed them as shepherds",
+   "They tear off skin and eat flesh",
+   "They healed their wounds",
+   "They gave them bread"
+  ],
+  "answer": 1,
+  "explanation": "Micah uses graphic imagery to portray their exploitative cruelty.",
+  "ref": "Micah 3:2–3"
+ },
+ {
+  "id": "old-micah-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens when these corrupt leaders cry to the Lord?",
+  "choices": [
+   "He answers them quickly",
+   "He sends them prosperity",
+   "He makes them kings",
+   "He hides his face from them"
+  ],
+  "answer": 3,
+  "explanation": "Because they practiced evil, God would not answer them in their time of distress.",
+  "ref": "Micah 3:4"
+ },
+ {
+  "id": "old-micah-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do false prophets cry when they have something to bite with their teeth?",
+  "choices": [
+   "War",
+   "Repentance",
+   "Peace",
+   "Victory"
+  ],
+  "answer": 2,
+  "explanation": "Their message is driven by self-interest rather than truth.",
+  "ref": "Micah 3:5"
+ },
+ {
+  "id": "old-micah-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What final judgment does Micah announce for Zion?",
+  "choices": [
+   "It will reign forever untouched",
+   "It will move to Babylon",
+   "It will be plowed like a field",
+   "It will swallow its enemies"
+  ],
+  "answer": 2,
+  "explanation": "Micah warns that even Zion will be devastated because of corrupt leadership.",
+  "ref": "Micah 3:12"
+ },
+ {
+  "id": "old-micah-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will be established in the top of the mountains in the last days?",
+  "choices": [
+   "The palace of David",
+   "The altar of Bethel",
+   "The mountain of the house of the Lord",
+   "The throne of Samaria"
+  ],
+  "answer": 2,
+  "explanation": "Micah sees the Lord's mountain exalted above the hills in the latter days.",
+  "ref": "Micah 4:1"
+ },
+ {
+  "id": "old-micah-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will many nations say?",
+  "choices": [
+   "Let us learn war",
+   "Let us flee from Zion",
+   "Come, and let us go up to the mountain of the Lord",
+   "Let us build our own altars"
+  ],
+  "answer": 2,
+  "explanation": "The nations are drawn to Zion to learn the Lord's ways.",
+  "ref": "Micah 4:2"
+ },
+ {
+  "id": "old-micah-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will swords be beaten into?",
+  "choices": [
+   "Helmets",
+   "Plowshares",
+   "Spears",
+   "Altars"
+  ],
+  "answer": 1,
+  "explanation": "The rule of God brings peace so complete that weapons become farming tools.",
+  "ref": "Micah 4:3"
+ },
+ {
+  "id": "old-micah-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What peaceful image does Micah use?",
+  "choices": [
+   "Lions lying with lambs",
+   "Every man under his vine and fig tree",
+   "The sea made glass",
+   "A city without gates"
+  ],
+  "answer": 1,
+  "explanation": "The image pictures secure and restful peace under God's blessing.",
+  "ref": "Micah 4:4"
+ },
+ {
+  "id": "old-micah-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where would Zion go before being redeemed?",
+  "choices": [
+   "Nineveh",
+   "Egypt",
+   "Babylon",
+   "Damascus"
+  ],
+  "answer": 2,
+  "explanation": "Micah foretells exile to Babylon before eventual redemption by the Lord.",
+  "ref": "Micah 4:10"
+ },
+ {
+  "id": "old-micah-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what small town would the ruler in Israel come forth?",
+  "choices": [
+   "Jericho",
+   "Bethlehem Ephratah",
+   "Nazareth",
+   "Hebron"
+  ],
+  "answer": 1,
+  "explanation": "Micah foretells that the ruler will come from Bethlehem Ephratah.",
+  "ref": "Micah 5:2"
+ },
+ {
+  "id": "old-micah-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are the goings forth of the ruler from Bethlehem described?",
+  "choices": [
+   "From the kings of Israel",
+   "From the priests of Judah",
+   "From of old, from everlasting",
+   "From Babylon"
+  ],
+  "answer": 2,
+  "explanation": "The ruler's origins are described in terms of ancient and eternal significance.",
+  "ref": "Micah 5:2"
+ },
+ {
+  "id": "old-micah-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the ruler from Bethlehem do?",
+  "choices": [
+   "Hide in the wilderness",
+   "Build the temple immediately",
+   "Rule by fear",
+   "Stand and feed in the strength of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "He will shepherd God's people in the Lord's strength.",
+  "ref": "Micah 5:4"
+ },
+ {
+  "id": "old-micah-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What phrase describes the ruler from Bethlehem?",
+  "choices": [
+   "He shall be the judge",
+   "This man shall be the peace",
+   "He shall be the sword",
+   "He shall be the remnant"
+  ],
+  "answer": 1,
+  "explanation": "The chapter emphasizes the ruler himself as the peace of God's people.",
+  "ref": "Micah 5:5"
+ },
+ {
+  "id": "old-micah-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say He will cut off from His people?",
+  "choices": [
+   "Their Scriptures",
+   "Their vineyards",
+   "Their priests",
+   "Horses, chariots, images, and idols"
+  ],
+  "answer": 3,
+  "explanation": "God promises to remove military pride and idolatry so His people rely on Him alone.",
+  "ref": "Micah 5:10–14"
+ },
+ {
+  "id": "old-micah-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does the Lord call to hear His controversy with Israel?",
+  "choices": [
+   "The angels",
+   "The priests of Samaria",
+   "Only the king",
+   "The mountains and strong foundations of the earth"
+  ],
+  "answer": 3,
+  "explanation": "Micah pictures creation as witness in God's covenant lawsuit.",
+  "ref": "Micah 6:1–2"
+ },
+ {
+  "id": "old-micah-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What past act of grace does God remind Israel of?",
+  "choices": [
+   "Defeating Babylon",
+   "Bringing them out of Egypt",
+   "Giving them the monarchy",
+   "Building the temple"
+  ],
+  "answer": 1,
+  "explanation": "God recalls redeeming Israel from Egypt and giving faithful leaders.",
+  "ref": "Micah 6:4"
+ },
+ {
+  "id": "old-micah-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question is asked about worship?",
+  "choices": [
+   "Wherewith shall I come before the Lord?",
+   "How can we build a better temple?",
+   "Who will lead us to battle?",
+   "How can Samaria be restored?"
+  ],
+  "answer": 0,
+  "explanation": "The people ask what kind of offering would please the Lord.",
+  "ref": "Micah 6:6"
+ },
+ {
+  "id": "old-micah-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Lord require of man?",
+  "choices": [
+   "Sacrifices, fasting, and mourning",
+   "A thousand rams and rivers of oil",
+   "Pilgrimage to Jerusalem",
+   "To do justly, love mercy, and walk humbly with thy God"
+  ],
+  "answer": 3,
+  "explanation": "Micah gives one of Scripture's clearest summaries of faithful living before God.",
+  "ref": "Micah 6:8"
+ },
+ {
+  "id": "old-micah-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What corrupt practice is specifically condemned?",
+  "choices": [
+   "Failing to keep the Passover",
+   "Building houses of cedar",
+   "False weights and a wicked balance",
+   "Having too many priests"
+  ],
+  "answer": 2,
+  "explanation": "Micah condemns dishonest commerce as part of the nation's injustice.",
+  "ref": "Micah 6:10–11"
+ },
+ {
+  "id": "old-micah-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Micah lament he cannot find?",
+  "choices": [
+   "A strong king",
+   "A fruitful vineyard",
+   "A faithful priest in Bethel",
+   "A godly man in the land"
+  ],
+  "answer": 3,
+  "explanation": "Micah laments the collapse of faithful, upright people in society.",
+  "ref": "Micah 7:2"
+ },
+ {
+  "id": "old-micah-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Micah say not to trust?",
+  "choices": [
+   "A friend, a guide, or even those of one's own house",
+   "Only foreign nations",
+   "The prophets of Jerusalem",
+   "The armies of Assyria"
+  ],
+  "answer": 0,
+  "explanation": "The chapter describes a society so corrupt that even close relationships cannot be trusted.",
+  "ref": "Micah 7:5–6"
+ },
+ {
+  "id": "old-micah-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does Micah place his hope?",
+  "choices": [
+   "In the king of Judah",
+   "In the Lord",
+   "In the wisdom of the elders",
+   "In the walls of Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "Micah resolves to watch and wait for the God of his salvation.",
+  "ref": "Micah 7:7"
+ },
+ {
+  "id": "old-micah-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What confidence does Micah express when he falls?",
+  "choices": [
+   "When I fall, I shall arise",
+   "I am finished forever",
+   "I will flee to Babylon",
+   "No one can save me"
+  ],
+  "answer": 0,
+  "explanation": "Micah trusts that the Lord will raise him up even after darkness and judgment.",
+  "ref": "Micah 7:8"
+ },
+ {
+  "id": "old-micah-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Micah describe God at the close of the book?",
+  "choices": [
+   "A God who pardons iniquity and casts sins into the depths of the sea",
+   "A God who keeps anger forever",
+   "A God who remembers every trespass forever",
+   "A God who helps only the powerful"
+  ],
+  "answer": 0,
+  "explanation": "Micah closes by celebrating God's unmatched mercy and forgiveness.",
+  "ref": "Micah 7:18–19"
+ }
+]

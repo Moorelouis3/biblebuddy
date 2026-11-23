@@ -1,0 +1,402 @@
+[
+ {
+  "id": "old-1-john-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John say was from the beginning?",
+  "choices": [
+   "The law",
+   "The covenant",
+   "The Word of life",
+   "The kingdom"
+  ],
+  "answer": 2,
+  "explanation": "John begins by testifying about the Word of life made known in Christ.",
+  "ref": "1 John 1:1"
+ },
+ {
+  "id": "old-1-john-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With whom does John say believers can have fellowship?",
+  "choices": [
+   "Only the apostles",
+   "The angels in heaven",
+   "The church in Jerusalem",
+   "The Father and His Son Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "John says true fellowship is with the Father and with His Son Jesus Christ.",
+  "ref": "1 John 1:3"
+ },
+ {
+  "id": "old-1-john-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is God described?",
+  "choices": [
+   "God is light",
+   "God is truth",
+   "God is fire",
+   "God is power"
+  ],
+  "answer": 0,
+  "explanation": "John says God is light and in Him is no darkness at all.",
+  "ref": "1 John 1:5"
+ },
+ {
+  "id": "old-1-john-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John say the blood of Jesus Christ does?",
+  "choices": [
+   "Gives wealth",
+   "Removes all suffering",
+   "Cleanses from all sin",
+   "Ends all temptation"
+  ],
+  "answer": 2,
+  "explanation": "Walking in the light brings cleansing through Jesus' blood.",
+  "ref": "1 John 1:7"
+ },
+ {
+  "id": "old-1-john-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God do when believers confess their sins?",
+  "choices": [
+   "Delays judgment",
+   "Tests their faith",
+   "Reminds them of the law",
+   "Forgives and cleanses them"
+  ],
+  "answer": 3,
+  "explanation": "God is faithful and just to forgive sins and cleanse from all unrighteousness.",
+  "ref": "1 John 1:9"
+ },
+ {
+  "id": "old-1-john-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does John say believers have as an advocate with the Father?",
+  "choices": [
+   "Peter the apostle",
+   "Jesus Christ the righteous",
+   "The Holy Spirit only",
+   "Moses the lawgiver"
+  ],
+  "answer": 1,
+  "explanation": "John says Jesus Christ the righteous is our advocate with the Father.",
+  "ref": "1 John 2:1"
+ },
+ {
+  "id": "old-1-john-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John say is evidence that we know Him?",
+  "choices": [
+   "Speaking in tongues",
+   "Having many friends",
+   "Keeping His commandments",
+   "Seeing visions"
+  ],
+  "answer": 2,
+  "explanation": "John ties knowing God to obedience to His commands.",
+  "ref": "1 John 2:3"
+ },
+ {
+  "id": "old-1-john-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are believers told not to love?",
+  "choices": [
+   "The world",
+   "The nations",
+   "Their own family",
+   "The temple"
+  ],
+  "answer": 0,
+  "explanation": "John warns believers not to love the world or the things in the world.",
+  "ref": "1 John 2:15"
+ },
+ {
+  "id": "old-1-john-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John say there are many of, showing that it is the last time?",
+  "choices": [
+   "Antichrists",
+   "Mockers",
+   "False priests",
+   "Roman rulers"
+  ],
+  "answer": 0,
+  "explanation": "John says even now there are many antichrists, and by this we know it is the last time.",
+  "ref": "1 John 2:18"
+ },
+ {
+  "id": "old-1-john-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What promise does John mention?",
+  "choices": [
+   "Victory over Rome",
+   "Eternal life",
+   "A rebuilt temple",
+   "A long earthly kingdom"
+  ],
+  "answer": 1,
+  "explanation": "John says this is the promise Christ promised us: eternal life.",
+  "ref": "1 John 2:25"
+ },
+ {
+  "id": "old-1-john-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What identity does John say believers have?",
+  "choices": [
+   "Children of God",
+   "Servants of the prophets",
+   "Citizens of Israel only",
+   "Guardians of the law"
+  ],
+  "answer": 0,
+  "explanation": "John marvels that the Father has called believers the children of God.",
+  "ref": "1 John 3:1"
+ },
+ {
+  "id": "old-1-john-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John say about believers when Christ appears?",
+  "choices": [
+   "They will become angels",
+   "They shall be like Him",
+   "They will never be tested again",
+   "They will immediately rule nations"
+  ],
+  "answer": 1,
+  "explanation": "John says we shall be like Christ, for we shall see Him as He is.",
+  "ref": "1 John 3:2"
+ },
+ {
+  "id": "old-1-john-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose example does John use as the opposite of brotherly love?",
+  "choices": [
+   "Saul",
+   "Pharaoh",
+   "Cain",
+   "Judas"
+  ],
+  "answer": 2,
+  "explanation": "John warns believers not to be like Cain, who murdered his brother.",
+  "ref": "1 John 3:12"
+ },
+ {
+  "id": "old-1-john-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does John say we know love?",
+  "choices": [
+   "By miracles",
+   "By keeping traditions",
+   "By avoiding hardship",
+   "Because Christ laid down His life for us"
+  ],
+  "answer": 3,
+  "explanation": "John defines love by Christ's sacrificial death.",
+  "ref": "1 John 3:16"
+ },
+ {
+  "id": "old-1-john-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are believers told to love?",
+  "choices": [
+   "In word only",
+   "In deed and in truth",
+   "In secret only",
+   "With great speeches"
+  ],
+  "answer": 1,
+  "explanation": "John urges love that is practical and sincere.",
+  "ref": "1 John 3:18"
+ },
+ {
+  "id": "old-1-john-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are believers told to do with the spirits?",
+  "choices": [
+   "Avoid them all",
+   "Follow the strongest one",
+   "Ignore them",
+   "Test them"
+  ],
+  "answer": 3,
+  "explanation": "John says believers must test the spirits because many false prophets have gone out into the world.",
+  "ref": "1 John 4:1"
+ },
+ {
+  "id": "old-1-john-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What confession marks the Spirit of God?",
+  "choices": [
+   "That Jesus Christ has come in the flesh",
+   "That Jesus will soon return",
+   "That the law still saves",
+   "That Jerusalem is the holy city"
+  ],
+  "answer": 0,
+  "explanation": "John says every spirit that confesses Jesus Christ has come in the flesh is of God.",
+  "ref": "1 John 4:2"
+ },
+ {
+  "id": "old-1-john-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does John describe God's nature?",
+  "choices": [
+   "God is just",
+   "God is love",
+   "God is mighty",
+   "God is jealous"
+  ],
+  "answer": 1,
+  "explanation": "John plainly says that God is love.",
+  "ref": "1 John 4:8"
+ },
+ {
+  "id": "old-1-john-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does perfect love cast out?",
+  "choices": [
+   "Sorrow",
+   "Temptation",
+   "Fear",
+   "Pride"
+  ],
+  "answer": 2,
+  "explanation": "John says perfect love casts out fear because fear involves torment.",
+  "ref": "1 John 4:18"
+ },
+ {
+  "id": "old-1-john-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why do believers love?",
+  "choices": [
+   "Because they chose God first",
+   "Because He first loved us",
+   "Because they fear judgment",
+   "Because love is commanded by Moses"
+  ],
+  "answer": 1,
+  "explanation": "John says we love because God first loved us.",
+  "ref": "1 John 4:19"
+ },
+ {
+  "id": "old-1-john-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does John say is born of God?",
+  "choices": [
+   "Everyone who keeps the feast days",
+   "Everyone who believes Jesus is the Christ",
+   "Everyone who fears judgment",
+   "Everyone who studies the prophets"
+  ],
+  "answer": 1,
+  "explanation": "John says everyone who believes that Jesus is the Christ is born of God.",
+  "ref": "1 John 5:1"
+ },
+ {
+  "id": "old-1-john-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John say overcomes the world?",
+  "choices": [
+   "Discipline",
+   "Wisdom",
+   "Suffering",
+   "Faith"
+  ],
+  "answer": 3,
+  "explanation": "John says the victory that overcomes the world is our faith.",
+  "ref": "1 John 5:4"
+ },
+ {
+  "id": "old-1-john-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which three does John say bear witness in earth?",
+  "choices": [
+   "The church, the word, and the apostles",
+   "The Spirit, the water, and the blood",
+   "The angels, the elders, and the saints",
+   "The prophets, the law, and grace"
+  ],
+  "answer": 1,
+  "explanation": "John says three bear witness in earth: the spirit, the water, and the blood, and these three agree in one.",
+  "ref": "1 John 5:8"
+ },
+ {
+  "id": "old-1-john-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does John say eternal life is found?",
+  "choices": [
+   "In His Son",
+   "In the law",
+   "In obedience alone",
+   "In the temple"
+  ],
+  "answer": 0,
+  "explanation": "John says eternal life is in God's Son.",
+  "ref": "1 John 5:11"
+ },
+ {
+  "id": "old-1-john-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What final warning does John give?",
+  "choices": [
+   "Beware of Rome",
+   "Keep yourselves from idols",
+   "Remember the apostles",
+   "Test every prophet"
+  ],
+  "answer": 1,
+  "explanation": "John closes the letter by warning believers to keep themselves from idols.",
+  "ref": "1 John 5:21"
+ }
+]

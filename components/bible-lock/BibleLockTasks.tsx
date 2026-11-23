@@ -44,7 +44,7 @@ type Task = {
 };
 
 const LOADING: Task[] = [
-  { key: "trivia", icon: "🎯", title: "Bible Trivia", detail: "Finding your next game…", href: "/bible-trivia", ready: true },
+  { key: "trivia", icon: "🎯", title: "Bible Trivia", detail: "Finding your next game…", href: "/bible-study-games/clue", ready: true },
   { key: "devotional", icon: "📖", title: "Continue Devotional", detail: "Finding your place…", href: "/plan?view=bible_studies", ready: true },
   { key: "reading", icon: "📅", title: "Continue Bible Reading", detail: "Finding your place…", href: "/reading", ready: true },
   { key: "notes", icon: "✍🏾", title: "Write Bible Notes", detail: "Write what today's passage gave you", href: "/notes/grow", ready: true },

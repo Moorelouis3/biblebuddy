@@ -1,0 +1,162 @@
+[
+ {
+  "id": "old-haggai-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What excuse were the people giving about rebuilding the temple?",
+  "choices": [
+   "The materials were missing",
+   "The time is not come to build the Lord's house",
+   "The priests refused to help",
+   "The king had forbidden it"
+  ],
+  "answer": 1,
+  "explanation": "The people delayed obedience by claiming it was not yet the right time to rebuild the temple.",
+  "ref": "Haggai 1:2"
+ },
+ {
+  "id": "old-haggai-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What contrast does Haggai make?",
+  "choices": [
+   "The people lived in paneled houses while the Lord's house lay waste",
+   "The city walls were strong but the gates were weak",
+   "The priests were rich but the king was poor",
+   "The altar was built but the temple was full"
+  ],
+  "answer": 0,
+  "explanation": "Haggai exposes their misplaced priorities by comparing their comfortable homes with God's neglected house.",
+  "ref": "Haggai 1:4"
+ },
+ {
+  "id": "old-haggai-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated command does Haggai give to make the people reflect?",
+  "choices": [
+   "Consider your ways",
+   "Return to your tents",
+   "Wait for the Lord",
+   "Fear the nations"
+  ],
+  "answer": 0,
+  "explanation": "The prophet calls the people to stop and think honestly about why things have gone wrong.",
+  "ref": "Haggai 1:5"
+ },
+ {
+  "id": "old-haggai-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord tell the people to do?",
+  "choices": [
+   "Fast for seven days",
+   "Send messengers to Persia",
+   "Offer more sacrifices first",
+   "Go up to the mountain, bring wood, and build the house"
+  ],
+  "answer": 3,
+  "explanation": "God directly commands them to gather materials and resume rebuilding His house.",
+  "ref": "Haggai 1:8"
+ },
+ {
+  "id": "old-haggai-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What encouraging message did the Lord give after the people obeyed?",
+  "choices": [
+   "I am with you",
+   "I will make you kings",
+   "You will never suffer again",
+   "The work will be easy"
+  ],
+  "answer": 0,
+  "explanation": "Once the people responded in obedience, God reassured them with His presence.",
+  "ref": "Haggai 1:13"
+ },
+ {
+  "id": "old-haggai-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What comparison was discouraging some of the people in the opening of chapter 2?",
+  "choices": [
+   "They compared Judah to Babylon",
+   "They envied the wealth of Samaria",
+   "They feared the armies of Persia",
+   "They remembered the former glory of the earlier temple"
+  ],
+  "answer": 3,
+  "explanation": "Some who had seen the earlier temple were discouraged because the new work seemed small by comparison.",
+  "ref": "Haggai 2:3"
+ },
+ {
+  "id": "old-haggai-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command does the Lord repeat to Zerubbabel, Joshua, and the people?",
+  "choices": [
+   "Be strong",
+   "Be silent",
+   "Be ready to flee",
+   "Count the cost"
+  ],
+  "answer": 0,
+  "explanation": "God answers discouragement by calling His people to courage and continued work.",
+  "ref": "Haggai 2:4"
+ },
+ {
+  "id": "old-haggai-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Lord promise about the glory of this latter house?",
+  "choices": [
+   "It shall be greater than the former",
+   "It will be less than the former",
+   "It will remain unfinished",
+   "It will be hidden from the nations"
+  ],
+  "answer": 0,
+  "explanation": "God promises that the future glory connected to His house will surpass what came before.",
+  "ref": "Haggai 2:9"
+ },
+ {
+  "id": "old-haggai-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What lesson does Haggai teach through the priests about holiness and uncleanness?",
+  "choices": [
+   "Holiness spreads easily but uncleanness does not",
+   "Both spread equally",
+   "Uncleanness spreads, but holiness is not transferred the same way",
+   "Neither affects anything else"
+  ],
+  "answer": 2,
+  "explanation": "The point is that the people's defilement had affected their work and offerings before God.",
+  "ref": "Haggai 2:11–14"
+ },
+ {
+  "id": "old-haggai-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What special promise does God give Zerubbabel at the end of the book?",
+  "choices": [
+   "He will become high priest",
+   "He will rule in Egypt",
+   "He will be made like a signet ring",
+   "He will never face trouble"
+  ],
+  "answer": 2,
+  "explanation": "God sets Zerubbabel apart as a chosen servant, using the image of a signet ring to show honor and purpose.",
+  "ref": "Haggai 2:23"
+ }
+]

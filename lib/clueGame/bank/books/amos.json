@@ -1,0 +1,722 @@
+[
+ {
+  "id": "old-amos-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Amos's occupation according to the opening verse?",
+  "choices": [
+   "Herdman of Tekoa",
+   "Priest",
+   "Royal advisor",
+   "Temple singer"
+  ],
+  "answer": 0,
+  "explanation": "Amos identifies himself as one of the herdmen of Tekoa.",
+  "ref": "Amos 1:1"
+ },
+ {
+  "id": "old-amos-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where does the Lord roar?",
+  "choices": [
+   "Zion",
+   "Bethel",
+   "Samaria",
+   "Tekoa"
+  ],
+  "answer": 0,
+  "explanation": "The Lord roars from Zion, showing that the message of judgment comes from His sovereign rule.",
+  "ref": "Amos 1:2"
+ },
+ {
+  "id": "old-amos-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated formula introduces the judgments in this chapter?",
+  "choices": [
+   "For one sin and for two",
+   "Thus says the shepherd",
+   "Woe to the proud city",
+   "For three transgressions and for four"
+  ],
+  "answer": 3,
+  "explanation": "Amos repeatedly says, 'For three transgressions... and for four,' to stress overflowing guilt.",
+  "ref": "Amos 1:3"
+ },
+ {
+  "id": "old-amos-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which nation is condemned for threshing Gilead with instruments of iron?",
+  "choices": [
+   "Tyre",
+   "Edom",
+   "Damascus",
+   "Moab"
+  ],
+  "answer": 2,
+  "explanation": "Damascus is judged first for brutal warfare against Gilead.",
+  "ref": "Amos 1:3"
+ },
+ {
+  "id": "old-amos-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sin is Tyre condemned for?",
+  "choices": [
+   "Delivering the whole captivity to Edom",
+   "Idolatry in the temple",
+   "Refusing to pay tribute",
+   "Breaking Sabbath laws"
+  ],
+  "answer": 0,
+  "explanation": "Tyre is condemned for slave-trading and violating brotherly covenant loyalty.",
+  "ref": "Amos 1:9"
+ },
+ {
+  "id": "old-amos-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why is Moab judged at the start of this chapter?",
+  "choices": [
+   "For worshiping Baal",
+   "For refusing tribute to Israel",
+   "For burning the bones of the king of Edom into lime",
+   "For enslaving Judah"
+  ],
+  "answer": 2,
+  "explanation": "Moab is judged for desecrating the bones of Edom's king.",
+  "ref": "Amos 2:1"
+ },
+ {
+  "id": "old-amos-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why is Judah judged?",
+  "choices": [
+   "Because Judah lost a battle",
+   "Because they trusted Egypt",
+   "Because they despised the law of the Lord",
+   "Because they closed the temple"
+  ],
+  "answer": 2,
+  "explanation": "Judah is condemned for rejecting God's law and following lies.",
+  "ref": "Amos 2:4"
+ },
+ {
+  "id": "old-amos-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What social evil of Israel is highlighted?",
+  "choices": [
+   "Selling the righteous for silver and the poor for a pair of shoes",
+   "Failing to build walls",
+   "Refusing to tithe",
+   "Breaking military treaties"
+  ],
+  "answer": 0,
+  "explanation": "Israel's injustice is especially shown in exploiting the poor and vulnerable.",
+  "ref": "Amos 2:6"
+ },
+ {
+  "id": "old-amos-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does God remind Israel that He destroyed before them?",
+  "choices": [
+   "Philistines",
+   "Assyrians",
+   "Amorites",
+   "Babylonians"
+  ],
+  "answer": 2,
+  "explanation": "God reminds Israel of His past salvation by defeating the Amorites.",
+  "ref": "Amos 2:9"
+ },
+ {
+  "id": "old-amos-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had Israel done to the prophets?",
+  "choices": [
+   "Honored them",
+   "Made them priests",
+   "Commanded them not to prophesy",
+   "Sent them to Judah"
+  ],
+  "answer": 2,
+  "explanation": "Instead of receiving God's messengers, Israel tried to silence them.",
+  "ref": "Amos 2:12"
+ },
+ {
+  "id": "old-amos-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Amos address as the family God brought up from Egypt?",
+  "choices": [
+   "Assyria",
+   "The whole family of Israel",
+   "Only Judah",
+   "The nations around Samaria"
+  ],
+  "answer": 1,
+  "explanation": "Amos speaks to the whole covenant family that God brought out of Egypt.",
+  "ref": "Amos 3:1"
+ },
+ {
+  "id": "old-amos-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does God say He will punish Israel?",
+  "choices": [
+   "Because He had known them uniquely among the families of the earth",
+   "Because they are weaker than the nations",
+   "Because Judah defeated them",
+   "Because they lacked a king"
+  ],
+  "answer": 0,
+  "explanation": "Israel's special covenant privilege brings greater accountability.",
+  "ref": "Amos 3:2"
+ },
+ {
+  "id": "old-amos-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What series of rhetorical questions fills the chapter?",
+  "choices": [
+   "Questions about harvest only",
+   "Questions about temple furniture",
+   "Questions about kings",
+   "Questions showing that effects have causes"
+  ],
+  "answer": 3,
+  "explanation": "Amos uses cause-and-effect questions to show that coming judgment is not random.",
+  "ref": "Amos 3:3–6"
+ },
+ {
+  "id": "old-amos-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Amos say the lion's roar indicates?",
+  "choices": [
+   "That it is lonely",
+   "That it is asleep",
+   "That it is wounded",
+   "That it has prey"
+  ],
+  "answer": 3,
+  "explanation": "The roaring lion image illustrates that the coming judgment has a real cause.",
+  "ref": "Amos 3:4"
+ },
+ {
+  "id": "old-amos-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What altars would God visit in judgment?",
+  "choices": [
+   "The altars of Jerusalem",
+   "The altars of Bethel",
+   "The altars of Damascus",
+   "The altars of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Bethel, the center of false worship, would be judged and its horns cut off.",
+  "ref": "Amos 3:14"
+ },
+ {
+  "id": "old-amos-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title does Amos use for the wealthy women of Samaria?",
+  "choices": [
+   "Kine of Bashan",
+   "Daughters of Zion",
+   "Queens of Israel",
+   "Women of Tekoa"
+  ],
+  "answer": 0,
+  "explanation": "The phrase 'kine of Bashan' portrays indulgent, oppressive luxury.",
+  "ref": "Amos 4:1"
+ },
+ {
+  "id": "old-amos-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How would these proud oppressors be taken away?",
+  "choices": [
+   "With crowns",
+   "With chariots",
+   "With silver chains",
+   "With hooks"
+  ],
+  "answer": 3,
+  "explanation": "Their coming humiliation is pictured as being led away with hooks.",
+  "ref": "Amos 4:2"
+ },
+ {
+  "id": "old-amos-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what false worship centers does Amos ironically tell them to come and transgress?",
+  "choices": [
+   "Jerusalem and Hebron",
+   "Samaria and Tekoa",
+   "Bethel and Gilgal",
+   "Shiloh and Carmel"
+  ],
+  "answer": 2,
+  "explanation": "Amos mocks their empty religion by telling them to keep sinning at Bethel and Gilgal.",
+  "ref": "Amos 4:4"
+ },
+ {
+  "id": "old-amos-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What refrain repeats after the list of judgments in this chapter?",
+  "choices": [
+   "And the land was healed",
+   "Yet have ye not returned unto me",
+   "The king heard and repented",
+   "Peace, peace"
+  ],
+  "answer": 1,
+  "explanation": "Despite famine, drought, blight, and plague, the people still refused to return to God.",
+  "ref": "Amos 4:6–11"
+ },
+ {
+  "id": "old-amos-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sobering command does God give Israel near the end of the chapter?",
+  "choices": [
+   "Prepare for battle",
+   "Prepare to meet thy God",
+   "Return to Egypt",
+   "Anoint a new king"
+  ],
+  "answer": 1,
+  "explanation": "Because they refused repeated warnings, Israel must now prepare to meet God in judgment.",
+  "ref": "Amos 4:12"
+ },
+ {
+  "id": "old-amos-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What form does Amos say he is taking up over Israel at the start of this chapter?",
+  "choices": [
+   "A battle cry",
+   "A covenant oath",
+   "A lamentation",
+   "A harvest song"
+  ],
+  "answer": 2,
+  "explanation": "The chapter begins as a funeral lament over Israel's fall.",
+  "ref": "Amos 5:1"
+ },
+ {
+  "id": "old-amos-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Israel described?",
+  "choices": [
+   "A mighty queen",
+   "A fallen virgin",
+   "A righteous remnant",
+   "A roaring lion"
+  ],
+  "answer": 1,
+  "explanation": "Israel is pictured as a fallen virgin with no one to raise her up.",
+  "ref": "Amos 5:2"
+ },
+ {
+  "id": "old-amos-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated invitation offers life in this chapter?",
+  "choices": [
+   "Seek the king and live",
+   "Offer sacrifices and live",
+   "Seek me, and ye shall live",
+   "Build the temple and live"
+  ],
+  "answer": 2,
+  "explanation": "God calls Israel not to ritual but to seek Him personally and live.",
+  "ref": "Amos 5:4"
+ },
+ {
+  "id": "old-amos-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say He hates and despises?",
+  "choices": [
+   "Just measures",
+   "The songs of Zion",
+   "Their feast days",
+   "The vineyards of Samaria"
+  ],
+  "answer": 2,
+  "explanation": "God rejects their festivals because worship without righteousness is hateful to Him.",
+  "ref": "Amos 5:21"
+ },
+ {
+  "id": "old-amos-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should roll down like waters?",
+  "choices": [
+   "Justice",
+   "Rain",
+   "Mercy alone",
+   "The river Jordan"
+  ],
+  "answer": 0,
+  "explanation": "The chapter's great climax is the call for justice and righteousness to flow abundantly.",
+  "ref": "Amos 5:24"
+ },
+ {
+  "id": "old-amos-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who are denounced at the start of the chapter?",
+  "choices": [
+   "Those at ease in Zion and secure in Samaria",
+   "The poor in the land",
+   "The prophets in Judah",
+   "The priests in Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Amos warns the self-satisfied leaders who feel secure while ignoring judgment.",
+  "ref": "Amos 6:1"
+ },
+ {
+  "id": "old-amos-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why are Calneh, Hamath, and Gath mentioned?",
+  "choices": [
+   "As cities to imitate",
+   "As allies of Judah",
+   "As examples meant to humble Israel's pride",
+   "As places of refuge"
+  ],
+  "answer": 2,
+  "explanation": "These cities show that strong places can also fall under judgment.",
+  "ref": "Amos 6:2"
+ },
+ {
+  "id": "old-amos-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What luxury is condemned?",
+  "choices": [
+   "Living in tents",
+   "Giving food to the poor",
+   "Working in the vineyards",
+   "Reclining on ivory beds and feasting carelessly"
+  ],
+  "answer": 3,
+  "explanation": "Amos rebukes the elite for indulgence while the nation decays.",
+  "ref": "Amos 6:4–6"
+ },
+ {
+  "id": "old-amos-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did they not grieve over?",
+  "choices": [
+   "The affliction of Joseph",
+   "The temple tax",
+   "The weather",
+   "The fall of Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Their luxury was especially sinful because they ignored the ruin of God's people.",
+  "ref": "Amos 6:6"
+ },
+ {
+  "id": "old-amos-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What judgment does Amos announce?",
+  "choices": [
+   "Immediate prosperity",
+   "A new king will arise",
+   "They will go captive with the first that go captive",
+   "Their enemies will fear them"
+  ],
+  "answer": 2,
+  "explanation": "The complacent leaders will be first to experience exile.",
+  "ref": "Amos 6:7"
+ },
+ {
+  "id": "old-amos-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the first vision Amos sees in this chapter?",
+  "choices": [
+   "A plumb line",
+   "A basket of fruit",
+   "A broken altar",
+   "Grasshoppers"
+  ],
+  "answer": 3,
+  "explanation": "In the first vision the Lord forms grasshoppers that eat the grass of the land.",
+  "ref": "Amos 7:1"
+ },
+ {
+  "id": "old-amos-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Amos respond to the vision of the grasshoppers?",
+  "choices": [
+   "He intercedes, asking the Lord to forgive",
+   "He rejoices",
+   "He flees to Judah",
+   "He calls the king"
+  ],
+  "answer": 0,
+  "explanation": "Amos pleads for Israel, asking how Jacob can stand since he is small.",
+  "ref": "Amos 7:2"
+ },
+ {
+  "id": "old-amos-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the third vision that shows judgment will no longer be delayed?",
+  "choices": [
+   "A plumb line",
+   "A burning altar",
+   "A scroll",
+   "A sword from heaven"
+  ],
+  "answer": 0,
+  "explanation": "The plumb line shows that Israel does not measure up and will be judged.",
+  "ref": "Amos 7:7–8"
+ },
+ {
+  "id": "old-amos-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who opposed Amos and told him to flee to Judah?",
+  "choices": [
+   "Jeroboam",
+   "Amaziah the priest of Bethel",
+   "Hosea the prophet",
+   "Zechariah the king"
+  ],
+  "answer": 1,
+  "explanation": "Amaziah treated Amos as a threat and told him to leave Bethel.",
+  "ref": "Amos 7:10–12"
+ },
+ {
+  "id": "old-amos-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Amos describe himself?",
+  "choices": [
+   "A prophet's son only",
+   "A Levite from Jerusalem",
+   "No prophet, but a herdman and gatherer of sycamore fruit",
+   "A prince of Tekoa"
+  ],
+  "answer": 2,
+  "explanation": "Amos stresses that he was called directly by God from ordinary work.",
+  "ref": "Amos 7:14"
+ },
+ {
+  "id": "old-amos-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What object does Amos see in the opening vision of this chapter?",
+  "choices": [
+   "A golden lamp",
+   "A plumb line",
+   "A sheaf of barley",
+   "A basket of summer fruit"
+  ],
+  "answer": 3,
+  "explanation": "The basket of summer fruit symbolizes that Israel is ripe for judgment.",
+  "ref": "Amos 8:1"
+ },
+ {
+  "id": "old-amos-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Lord say the fruit vision means?",
+  "choices": [
+   "The end is come upon my people",
+   "The harvest is blessed",
+   "The nations will repent",
+   "The temple will be rebuilt"
+  ],
+  "answer": 0,
+  "explanation": "The wordplay between summer fruit and end underscores that judgment is near.",
+  "ref": "Amos 8:2"
+ },
+ {
+  "id": "old-amos-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the songs of the temple become in that day?",
+  "choices": [
+   "Howlings",
+   "Songs of triumph",
+   "Songs of David",
+   "Silent meditation"
+  ],
+  "answer": 0,
+  "explanation": "Joyful worship will turn into wailing under judgment.",
+  "ref": "Amos 8:3"
+ },
+ {
+  "id": "old-amos-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What commercial sin is condemned?",
+  "choices": [
+   "Refusing to trade internationally",
+   "Selling too much grain",
+   "Closing the markets too early",
+   "Cheating the poor with false measures"
+  ],
+  "answer": 3,
+  "explanation": "The merchants longed for worship to end so they could exploit the needy dishonestly.",
+  "ref": "Amos 8:4–6"
+ },
+ {
+  "id": "old-amos-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famine does God promise?",
+  "choices": [
+   "A famine of bread only",
+   "A famine of rain",
+   "A famine of hearing the words of the Lord",
+   "A famine of kings"
+  ],
+  "answer": 2,
+  "explanation": "The most terrible judgment in the chapter is spiritual famine: no word from the Lord.",
+  "ref": "Amos 8:11"
+ },
+ {
+  "id": "old-amos-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does Amos see the Lord standing at the start of the chapter?",
+  "choices": [
+   "At the city gate",
+   "By the river Jordan",
+   "On Mount Carmel",
+   "Upon the altar"
+  ],
+  "answer": 3,
+  "explanation": "The final vision begins with the Lord standing upon the altar to command judgment.",
+  "ref": "Amos 9:1"
+ },
+ {
+  "id": "old-amos-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the chapter emphasize about escape from God?",
+  "choices": [
+   "Only kings can escape",
+   "The righteous can flee to Egypt",
+   "No one can hide from His hand",
+   "The prophets are beyond His reach"
+  ],
+  "answer": 2,
+  "explanation": "Amos shows that no depth, height, or hiding place can remove people from God's reach.",
+  "ref": "Amos 9:2–4"
+ },
+ {
+  "id": "old-amos-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What fallen thing does God promise to raise up?",
+  "choices": [
+   "The walls of Samaria",
+   "The altar at Bethel",
+   "The throne of Jeroboam",
+   "The tabernacle of David"
+  ],
+  "answer": 3,
+  "explanation": "After judgment, God promises to restore David's fallen shelter.",
+  "ref": "Amos 9:11"
+ },
+ {
+  "id": "old-amos-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What picture of abundance appears?",
+  "choices": [
+   "The plowman overtaking the reaper",
+   "Snow in summer",
+   "Rivers drying up",
+   "The moon turning to blood"
+  ],
+  "answer": 0,
+  "explanation": "The restoration is so abundant that harvest and sowing overlap.",
+  "ref": "Amos 9:13"
+ },
+ {
+  "id": "old-amos-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What final security does God promise?",
+  "choices": [
+   "They will never need rain again",
+   "They shall no more be pulled up out of their land",
+   "They will rule every nation",
+   "They will rebuild Bethel"
+  ],
+  "answer": 1,
+  "explanation": "The book ends with a promise of secure restoration in the land God has given.",
+  "ref": "Amos 9:15"
+ }
+]

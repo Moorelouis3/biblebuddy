@@ -1,0 +1,962 @@
+[
+ {
+  "id": "old-daniel-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Under which Babylonian king was Daniel taken to Babylon?",
+  "choices": [
+   "Nebuchadnezzar",
+   "Belshazzar",
+   "Darius",
+   "Cyrus"
+  ],
+  "answer": 0,
+  "explanation": "Daniel 1 opens during the reign of Nebuchadnezzar king of Babylon.",
+  "ref": "Daniel 1:1"
+ },
+ {
+  "id": "old-daniel-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Daniel purpose in his heart not to do?",
+  "choices": [
+   "Serve in the palace",
+   "Stop praying",
+   "Return to Judah",
+   "Defile himself with the king's meat and wine"
+  ],
+  "answer": 3,
+  "explanation": "Daniel resolved not to defile himself with the king's provisions.",
+  "ref": "Daniel 1:8"
+ },
+ {
+  "id": "old-daniel-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was the test Daniel proposed?",
+  "choices": [
+   "3 days",
+   "7 days",
+   "10 days",
+   "40 days"
+  ],
+  "answer": 2,
+  "explanation": "Daniel asked for a ten-day test of vegetables and water.",
+  "ref": "Daniel 1:12"
+ },
+ {
+  "id": "old-daniel-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Daniel and his friends appear after the test?",
+  "choices": [
+   "Worse and weaker",
+   "Exactly the same",
+   "Too thin to serve",
+   "Fairer and fatter in flesh"
+  ],
+  "answer": 3,
+  "explanation": "At the end of the test they looked healthier than those eating the king's food.",
+  "ref": "Daniel 1:15"
+ },
+ {
+  "id": "old-daniel-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What special gift did God give Daniel?",
+  "choices": [
+   "Military skill",
+   "A royal title",
+   "The power to heal",
+   "Understanding in all visions and dreams"
+  ],
+  "answer": 3,
+  "explanation": "Daniel was uniquely gifted to understand visions and dreams.",
+  "ref": "Daniel 1:17"
+ },
+ {
+  "id": "old-daniel-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What impossible demand did Nebuchadnezzar make of his wise men?",
+  "choices": [
+   "Name a new god",
+   "Tell the dream and its interpretation",
+   "Build a new palace",
+   "Predict the weather"
+  ],
+  "answer": 1,
+  "explanation": "The king demanded that the wise men both recount the dream and interpret it.",
+  "ref": "Daniel 2:5"
+ },
+ {
+  "id": "old-daniel-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who revealed the king's dream to Daniel?",
+  "choices": [
+   "Arioch",
+   "The chief magician",
+   "An unnamed priest",
+   "The God of heaven"
+  ],
+  "answer": 3,
+  "explanation": "The secret was revealed to Daniel in a night vision by God.",
+  "ref": "Daniel 2:19"
+ },
+ {
+  "id": "old-daniel-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What metal was the head of the statue made of?",
+  "choices": [
+   "Silver",
+   "Gold",
+   "Bronze",
+   "Iron"
+  ],
+  "answer": 1,
+  "explanation": "The head of gold represented the first kingdom.",
+  "ref": "Daniel 2:32"
+ },
+ {
+  "id": "old-daniel-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What struck the image and broke it to pieces?",
+  "choices": [
+   "A sword from heaven",
+   "A flood",
+   "Fire from the altar",
+   "A stone cut without hands"
+  ],
+  "answer": 3,
+  "explanation": "A divinely cut stone shattered the statue and its kingdoms.",
+  "ref": "Daniel 2:34"
+ },
+ {
+  "id": "old-daniel-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What becomes of the stone after it strikes the image?",
+  "choices": [
+   "It melts away",
+   "It returns to heaven",
+   "It turns into gold",
+   "It becomes a great mountain and fills the whole earth"
+  ],
+  "answer": 3,
+  "explanation": "The stone becomes a mountain, symbolizing God's kingdom filling the earth.",
+  "ref": "Daniel 2:35"
+ },
+ {
+  "id": "old-daniel-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nebuchadnezzar set up on the plain of Dura?",
+  "choices": [
+   "A bronze altar",
+   "A city wall",
+   "A royal throne",
+   "A golden image"
+  ],
+  "answer": 3,
+  "explanation": "The king erected a golden image for all to worship.",
+  "ref": "Daniel 3:1"
+ },
+ {
+  "id": "old-daniel-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were people commanded to do when they heard the music?",
+  "choices": [
+   "Pray toward Jerusalem",
+   "Shout the king's name",
+   "Bow and worship the image",
+   "Leave the city"
+  ],
+  "answer": 2,
+  "explanation": "The musical signal called the people to bow before the image.",
+  "ref": "Daniel 3:5"
+ },
+ {
+  "id": "old-daniel-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who refused to worship the image?",
+  "choices": [
+   "Shadrach, Meshach, and Abednego",
+   "Daniel, Ezra, and Nehemiah",
+   "The magicians of Babylon",
+   "The king's guards"
+  ],
+  "answer": 0,
+  "explanation": "The three Jewish men refused to commit idolatry.",
+  "ref": "Daniel 3:12"
+ },
+ {
+  "id": "old-daniel-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much hotter was the furnace heated?",
+  "choices": [
+   "Seven times hotter",
+   "Twice as hot",
+   "Ten times hotter",
+   "As hot as possible with no number given"
+  ],
+  "answer": 0,
+  "explanation": "Nebuchadnezzar ordered the furnace to be heated seven times more than usual.",
+  "ref": "Daniel 3:19"
+ },
+ {
+  "id": "old-daniel-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What amazed Nebuchadnezzar when he looked into the furnace?",
+  "choices": [
+   "The image had fallen",
+   "The fire went out",
+   "Daniel was standing there",
+   "He saw four men loose and unharmed"
+  ],
+  "answer": 3,
+  "explanation": "The king saw a fourth figure with the three men in the flames.",
+  "ref": "Daniel 3:25"
+ },
+ {
+  "id": "old-daniel-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nebuchadnezzar see cut down in his dream?",
+  "choices": [
+   "A mountain",
+   "A tower",
+   "A great tree",
+   "A statue"
+  ],
+  "answer": 2,
+  "explanation": "The dream centered on a great tree that was cut down at heaven's command.",
+  "ref": "Daniel 4:14"
+ },
+ {
+  "id": "old-daniel-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Daniel say the tree represented?",
+  "choices": [
+   "Nebuchadnezzar",
+   "Belshazzar",
+   "Daniel",
+   "Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Daniel told the king plainly that the tree symbolized him.",
+  "ref": "Daniel 4:22"
+ },
+ {
+  "id": "old-daniel-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Nebuchadnezzar after the judgment came?",
+  "choices": [
+   "He lost his throne to Daniel",
+   "He was exiled to Egypt",
+   "He died immediately",
+   "He lived like an animal"
+  ],
+  "answer": 3,
+  "explanation": "The king was driven from men and ate grass like oxen.",
+  "ref": "Daniel 4:33"
+ },
+ {
+  "id": "old-daniel-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was the judgment described as lasting?",
+  "choices": [
+   "Forty days",
+   "Three years",
+   "Seventy weeks",
+   "Seven times"
+  ],
+  "answer": 3,
+  "explanation": "The prophecy said that seven times would pass over him.",
+  "ref": "Daniel 4:32"
+ },
+ {
+  "id": "old-daniel-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nebuchadnezzar do when his understanding returned?",
+  "choices": [
+   "He built another image",
+   "He punished Daniel",
+   "He fled Babylon",
+   "He blessed and praised the Most High"
+  ],
+  "answer": 3,
+  "explanation": "When his reason returned, he honored God instead of himself.",
+  "ref": "Daniel 4:34"
+ },
+ {
+  "id": "old-daniel-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sacred objects did Belshazzar use at his feast?",
+  "choices": [
+   "The ark of the covenant",
+   "Aaron's rod",
+   "The altar of incense",
+   "The vessels from the temple in Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "He used the temple vessels in a blasphemous feast.",
+  "ref": "Daniel 5:2–3"
+ },
+ {
+  "id": "old-daniel-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What suddenly appeared during the banquet?",
+  "choices": [
+   "A fiery furnace",
+   "An angel with a sword",
+   "A flood in the hall",
+   "Fingers of a man's hand writing on the wall"
+  ],
+  "answer": 3,
+  "explanation": "A hand wrote a message of judgment on the palace wall.",
+  "ref": "Daniel 5:5"
+ },
+ {
+  "id": "old-daniel-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was able to interpret the writing?",
+  "choices": [
+   "The astrologers",
+   "Daniel",
+   "The queen",
+   "Darius"
+  ],
+  "answer": 1,
+  "explanation": "Daniel was brought in because the others could not interpret the message.",
+  "ref": "Daniel 5:13–17"
+ },
+ {
+  "id": "old-daniel-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did 'Tekel' mean in Daniel's interpretation?",
+  "choices": [
+   "Weighed and found wanting",
+   "Exalted",
+   "Numbered",
+   "Divided among friends"
+  ],
+  "answer": 0,
+  "explanation": "Tekel meant Belshazzar had been weighed in the balances and found wanting.",
+  "ref": "Daniel 5:27"
+ },
+ {
+  "id": "old-daniel-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Belshazzar that night?",
+  "choices": [
+   "He repented and lived",
+   "He escaped Babylon",
+   "He was slain",
+   "He became Daniel's servant"
+  ],
+  "answer": 2,
+  "explanation": "Belshazzar was killed the very night the writing was interpreted.",
+  "ref": "Daniel 5:30"
+ },
+ {
+  "id": "old-daniel-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What trap did Daniel's enemies use against him?",
+  "choices": [
+   "They accused him of theft",
+   "They created a law against praying to anyone but the king",
+   "They claimed he was a foreign spy",
+   "They bribed his servants"
+  ],
+  "answer": 1,
+  "explanation": "Knowing Daniel's devotion, they used a law about prayer to trap him.",
+  "ref": "Daniel 6:7"
+ },
+ {
+  "id": "old-daniel-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How often did Daniel pray after the decree was signed?",
+  "choices": [
+   "Once a day",
+   "Twice a day",
+   "Three times a day",
+   "Only in secret at night"
+  ],
+  "answer": 2,
+  "explanation": "Daniel continued praying three times daily as before.",
+  "ref": "Daniel 6:10"
+ },
+ {
+  "id": "old-daniel-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Daniel cast for breaking the decree?",
+  "choices": [
+   "A fiery furnace",
+   "A prison dungeon",
+   "A pit of snakes",
+   "A lions' den"
+  ],
+  "answer": 3,
+  "explanation": "The unchangeable law of the Medes and Persians sent Daniel to the lions.",
+  "ref": "Daniel 6:16"
+ },
+ {
+  "id": "old-daniel-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was Daniel preserved in the den?",
+  "choices": [
+   "An angel shut the lions' mouths",
+   "He fought off the lions",
+   "The lions were asleep",
+   "The den was empty"
+  ],
+  "answer": 0,
+  "explanation": "Daniel said God sent His angel to shut the lions' mouths.",
+  "ref": "Daniel 6:22"
+ },
+ {
+  "id": "old-daniel-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What decree did Darius make after Daniel was delivered?",
+  "choices": [
+   "That no one could ever pray again",
+   "That men should tremble and fear before Daniel's God",
+   "That Daniel become king",
+   "That Babylon be rebuilt"
+  ],
+  "answer": 1,
+  "explanation": "Darius publicly honored the living God after Daniel's rescue.",
+  "ref": "Daniel 6:26"
+ },
+ {
+  "id": "old-daniel-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many great beasts came up from the sea in Daniel's vision?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "The vision begins with four great beasts rising from the sea.",
+  "ref": "Daniel 7:3"
+ },
+ {
+  "id": "old-daniel-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sat in judgment in Daniel's vision?",
+  "choices": [
+   "The Ancient of Days",
+   "Nebuchadnezzar",
+   "Michael",
+   "Belshazzar"
+  ],
+  "answer": 0,
+  "explanation": "Daniel saw the Ancient of Days seated in heavenly judgment.",
+  "ref": "Daniel 7:9"
+ },
+ {
+  "id": "old-daniel-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came with the clouds of heaven?",
+  "choices": [
+   "An archangel",
+   "One like the Son of man",
+   "The king of Babylon",
+   "A lion with wings"
+  ],
+  "answer": 1,
+  "explanation": "Daniel saw one like the Son of man coming with the clouds.",
+  "ref": "Daniel 7:13"
+ },
+ {
+  "id": "old-daniel-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was given to the Son of man?",
+  "choices": [
+   "A sword and shield",
+   "Dominion, glory, and a kingdom",
+   "The temple vessels",
+   "The throne of Babylon"
+  ],
+  "answer": 1,
+  "explanation": "He received an everlasting dominion and kingdom from the Ancient of Days.",
+  "ref": "Daniel 7:14"
+ },
+ {
+  "id": "old-daniel-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the four beasts represent according to the interpretation?",
+  "choices": [
+   "Four prophets",
+   "Four kings or kingdoms",
+   "Four angels",
+   "Four temples"
+  ],
+  "answer": 1,
+  "explanation": "The interpretation explains that the beasts symbolize successive kingdoms.",
+  "ref": "Daniel 7:17"
+ },
+ {
+  "id": "old-daniel-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal did Daniel first see standing by the river?",
+  "choices": [
+   "A lion",
+   "A goat",
+   "An eagle",
+   "A ram"
+  ],
+  "answer": 3,
+  "explanation": "The vision begins with a ram by the river.",
+  "ref": "Daniel 8:3"
+ },
+ {
+  "id": "old-daniel-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal came from the west and struck the ram?",
+  "choices": [
+   "A bear",
+   "A goat",
+   "A leopard",
+   "A dragon"
+  ],
+  "answer": 1,
+  "explanation": "A male goat from the west defeated the ram.",
+  "ref": "Daniel 8:5–7"
+ },
+ {
+  "id": "old-daniel-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the goat's great horn?",
+  "choices": [
+   "It grew stronger",
+   "It turned to iron",
+   "It was broken",
+   "It was given to the ram"
+  ],
+  "answer": 2,
+  "explanation": "The great horn was broken and replaced by four notable ones.",
+  "ref": "Daniel 8:8"
+ },
+ {
+  "id": "old-daniel-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was commanded to make Daniel understand the vision?",
+  "choices": [
+   "Michael",
+   "Raphael",
+   "Jeremiah",
+   "Gabriel"
+  ],
+  "answer": 3,
+  "explanation": "Gabriel was sent to explain the vision.",
+  "ref": "Daniel 8:16"
+ },
+ {
+  "id": "old-daniel-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kingdoms did the ram represent?",
+  "choices": [
+   "Babylon and Assyria",
+   "Media and Persia",
+   "Greece and Rome",
+   "Israel and Judah"
+  ],
+  "answer": 1,
+  "explanation": "Gabriel identifies the ram's two horns as the kings of Media and Persia.",
+  "ref": "Daniel 8:20"
+ },
+ {
+  "id": "old-daniel-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which prophet's writings was Daniel studying?",
+  "choices": [
+   "Jeremiah",
+   "Isaiah",
+   "Ezekiel",
+   "Hosea"
+  ],
+  "answer": 0,
+  "explanation": "Daniel understood from Jeremiah that Jerusalem's desolations would last seventy years.",
+  "ref": "Daniel 9:2"
+ },
+ {
+  "id": "old-daniel-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Daniel seek God?",
+  "choices": [
+   "With sacrifices and music",
+   "By going to the temple",
+   "By asking the king",
+   "With prayer, supplications, fasting, sackcloth, and ashes"
+  ],
+  "answer": 3,
+  "explanation": "Daniel humbled himself before God in prayer and fasting.",
+  "ref": "Daniel 9:3"
+ },
+ {
+  "id": "old-daniel-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Daniel confess that he and his people have done?",
+  "choices": [
+   "Kept God's law",
+   "Obeyed the prophets",
+   "Sinned and rebelled",
+   "Rebuilt the temple"
+  ],
+  "answer": 2,
+  "explanation": "Daniel confesses, We have sinned, and have committed iniquity, and have done wickedly, and have rebelled.",
+  "ref": "Daniel 9:5"
+ },
+ {
+  "id": "old-daniel-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to Daniel while he was speaking in prayer?",
+  "choices": [
+   "Michael",
+   "Gabriel",
+   "Nebuchadnezzar",
+   "Darius"
+  ],
+  "answer": 1,
+  "explanation": "Gabriel was sent swiftly to give Daniel understanding.",
+  "ref": "Daniel 9:21"
+ },
+ {
+  "id": "old-daniel-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many weeks were determined upon Daniel's people and holy city?",
+  "choices": [
+   "Forty",
+   "Seventy",
+   "One hundred and twenty",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Gabriel's message centers on the prophecy of seventy weeks.",
+  "ref": "Daniel 9:24"
+ },
+ {
+  "id": "old-daniel-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Daniel mourn before the vision came?",
+  "choices": [
+   "3 days",
+   "7 days",
+   "21 days",
+   "40 days"
+  ],
+  "answer": 2,
+  "explanation": "Daniel had been mourning for three full weeks.",
+  "ref": "Daniel 10:2–3"
+ },
+ {
+  "id": "old-daniel-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "By which river was Daniel standing when he saw the vision?",
+  "choices": [
+   "Jordan",
+   "Chebar",
+   "Nile",
+   "Hiddekel"
+  ],
+  "answer": 3,
+  "explanation": "Daniel was by the river Hiddekel, another name for the Tigris.",
+  "ref": "Daniel 10:4"
+ },
+ {
+  "id": "old-daniel-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Daniel's companions respond to the vision though they did not see it?",
+  "choices": [
+   "They fled in fear",
+   "They rejoiced",
+   "They fell asleep",
+   "They began to sing"
+  ],
+  "answer": 0,
+  "explanation": "A great quaking fell on them and they fled to hide themselves.",
+  "ref": "Daniel 10:7"
+ },
+ {
+  "id": "old-daniel-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which prince withstood the messenger for twenty-one days?",
+  "choices": [
+   "The prince of Greece",
+   "The prince of Persia",
+   "The prince of Babylon",
+   "The prince of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "The messenger said the prince of Persia resisted him for twenty-one days.",
+  "ref": "Daniel 10:13"
+ },
+ {
+  "id": "old-daniel-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to help the messenger?",
+  "choices": [
+   "Gabriel",
+   "Darius",
+   "Michael",
+   "Cyrus"
+  ],
+  "answer": 2,
+  "explanation": "Michael came to help in the spiritual conflict.",
+  "ref": "Daniel 10:13"
+ },
+ {
+  "id": "old-daniel-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which of the Persian kings would be far richer than all the others?",
+  "choices": [
+   "The first",
+   "The fourth",
+   "The second",
+   "The seventh"
+  ],
+  "answer": 1,
+  "explanation": "Three more kings would stand up in Persia, and the fourth would be far richer than they all.",
+  "ref": "Daniel 11:2"
+ },
+ {
+  "id": "old-daniel-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the kingdom of the mighty king?",
+  "choices": [
+   "It lasts forever",
+   "It is divided toward the four winds",
+   "It is given entirely to Israel",
+   "It becomes Babylon again"
+  ],
+  "answer": 1,
+  "explanation": "His kingdom would be broken and divided in multiple directions.",
+  "ref": "Daniel 11:4"
+ },
+ {
+  "id": "old-daniel-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title is often used in this chapter for the rival rulers?",
+  "choices": [
+   "Kings of fire and water",
+   "Kings of Zion and Babylon",
+   "Kings of east and west",
+   "Kings of the north and south"
+  ],
+  "answer": 3,
+  "explanation": "The chapter repeatedly refers to the king of the north and the king of the south.",
+  "ref": "Daniel 11:5–6"
+ },
+ {
+  "id": "old-daniel-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who exalts and magnifies himself above every god?",
+  "choices": [
+   "A humble priest",
+   "A faithful prophet",
+   "A wise counselor",
+   "A king who does according to his will"
+  ],
+  "answer": 3,
+  "explanation": "The prophecy describes a king who magnifies himself above every god.",
+  "ref": "Daniel 11:36"
+ },
+ {
+  "id": "old-daniel-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will those who understand among the people do?",
+  "choices": [
+   "Flee into the desert",
+   "Build a new temple",
+   "Crown a prince",
+   "Instruct many"
+  ],
+  "answer": 3,
+  "explanation": "They that understand among the people shall instruct many, even though they suffer for it.",
+  "ref": "Daniel 11:33"
+ },
+ {
+  "id": "old-daniel-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stands up for Daniel's people at the start of the chapter?",
+  "choices": [
+   "Gabriel",
+   "Michael",
+   "Nebuchadnezzar",
+   "Belshazzar"
+  ],
+  "answer": 1,
+  "explanation": "Michael stands up as the great prince for Daniel's people.",
+  "ref": "Daniel 12:1"
+ },
+ {
+  "id": "old-daniel-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to many who sleep in the dust of the earth?",
+  "choices": [
+   "They remain asleep forever",
+   "They awake, some to everlasting life and some to shame",
+   "They return to Babylon",
+   "They become angels"
+  ],
+  "answer": 1,
+  "explanation": "Daniel 12 includes one of the clearest Old Testament resurrection promises.",
+  "ref": "Daniel 12:2"
+ },
+ {
+  "id": "old-daniel-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are those who turn many to righteousness described?",
+  "choices": [
+   "Like the stars for ever and ever",
+   "Like mighty cedars",
+   "Like lions in battle",
+   "Like chariots of fire"
+  ],
+  "answer": 0,
+  "explanation": "Those who turn many to righteousness shall shine as the stars for ever and ever.",
+  "ref": "Daniel 12:3"
+ },
+ {
+  "id": "old-daniel-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Daniel told to do with the words of the prophecy?",
+  "choices": [
+   "Publish them immediately to every nation",
+   "Shut up the words and seal the book",
+   "Burn the scroll after reading",
+   "Hide them in the temple"
+  ],
+  "answer": 1,
+  "explanation": "Daniel is told to seal the book until the time of the end.",
+  "ref": "Daniel 12:4"
+ },
+ {
+  "id": "old-daniel-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What final promise is given to Daniel?",
+  "choices": [
+   "You will rule the nations",
+   "You will return to Jerusalem at once",
+   "You shall rest and stand in your lot at the end of the days",
+   "You will never die"
+  ],
+  "answer": 2,
+  "explanation": "Daniel is told he shall rest, and stand in his lot at the end of the days.",
+  "ref": "Daniel 12:13"
+ }
+]

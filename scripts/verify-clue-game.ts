@@ -7,7 +7,9 @@ import { isCorrectGuess } from "../lib/clueGame/answer";
 import { artKey } from "../lib/clueGame/ref";
 import { kjvStaticUrl } from "../lib/chapterStaticData";
 import { createMatch, reduceClueMatch, soloSetup, publicView, poolForSelection, neededForMatch, DEFAULT_CLUE_SETTINGS, ROUND_INTRO_MS, type ClueMatch, type ClueSelection } from "../lib/clueGame/engine";
-import { BANK_ITEMS, CLUE_BANK, chaptersWithQuestions, cleanSelection, selectionFromKeys, selectionStatus, selectionToKeys } from "../lib/clueGame/bank";
+import { BANK_ITEMS, BOOK_INDEX, CLUE_BANK, MIN_ROUND, bookItems, booksWithQuestions, chaptersWithQuestions, cleanSelection, selectionFromKeys, selectionLabel, selectionStatus, selectionToKeys } from "../lib/clueGame/bank";
+// Every book file in the registry, as the server has it.
+import "../lib/clueGame/bank/all";
 
 let n = 0;
 const ok = (name: string, fn: () => void) => {
@@ -174,7 +176,9 @@ ok("rematch: the next game rotates in fresh questions (none repeated while the s
 
 ok("selection round trip through a room's deck_ids, and bad input is cleaned", () => {
   for (const s of [sel("all"), sel([5], "medium"), sel([1, 2, 50])]) assert.deepEqual(selectionFromKeys(selectionToKeys(s)), s);
-  assert.deepEqual(cleanSelection({ book: "x", chapters: [0, 99, 4, 4], level: "hard" }), sel([4]));
+  assert.deepEqual(cleanSelection({ book: "x", chapters: [0, 99, 4, 4], level: "expert" }), sel([4]));
+  // Hard is a level since 2026-11-23.
+  assert.deepEqual(cleanSelection({ book: "genesis", chapters: [4], level: "hard" }), sel([4], "hard"));
   assert.deepEqual(cleanSelection(null), sel("all"));
 });
 
@@ -332,6 +336,64 @@ ok("a challenge replays the exact questions in the exact order", () => {
   const original = createMatch({ items: BANK_ITEMS, selection: sel([30, 31], "medium"), ...soloSetup(), seed: 99 });
   const replay = createMatch({ items: BANK_ITEMS, selection: sel([30, 31], "medium"), ...soloSetup(), seed: 1, cardIds: original.deck });
   assert.deepEqual(replay.deck, original.deck);
+});
+
+/* ---------- Bible Trivia: every book (2026-11-23) ---------- */
+
+ok("store: all 66 books, every question sound (four different choices, a level, a real verse in its own chapter)", () => {
+  assert.equal(booksWithQuestions().length, 66);
+  const LEVELS = ["beginner", "medium", "hard"];
+  let total = 0;
+  for (const { id } of booksWithQuestions()) {
+    const items = bookItems(id);
+    assert.ok(items.length > 0, `${id} has questions`);
+    for (const q of items) {
+      total += 1;
+      assert.ok(LEVELS.includes(q.level), `${q.id} level`);
+      assert.equal(new Set(q.choices.map((c) => c.trim().toLowerCase())).size, 4, `${q.id} choices repeat`);
+      assert.ok(q.answer >= 0 && q.answer <= 3, q.id);
+      assert.ok(q.question.trim(), `${q.id} question`);
+      assert.equal(q.ref.chapter, q.chapter, `${q.id} ref chapter`);
+      const file = `public${kjvStaticUrl(q.ref.book, q.ref.chapter)}`;
+      assert.ok(existsSync(file), `${q.id}: ${file}`);
+    }
+  }
+  assert.ok(total >= 7000, `questions: ${total}`);
+});
+
+ok("store: the index matches the questions (the setup screen counts from it)", () => {
+  for (const { id } of booksWithQuestions()) {
+    const counts = new Map<string, number>();
+    for (const q of bookItems(id)) counts.set(`${q.chapter}:${q.level}`, (counts.get(`${q.chapter}:${q.level}`) || 0) + 1);
+    for (const [ch, row] of Object.entries(BOOK_INDEX[id].chapters)) {
+      ["beginner", "medium", "hard"].forEach((lv, i) => assert.equal(row[i], counts.get(`${ch}:${lv}`) || 0, `${id} ${ch} ${lv}`));
+    }
+  }
+  // Every chapter of every book can be played at Easy (the old trivia had 5 per chapter).
+  for (const { id } of booksWithQuestions()) {
+    for (const ch of chaptersWithQuestions(id)) assert.ok(selectionStatus({ book: id, chapters: [ch], level: "beginner" }).enough, `${id} ${ch}`);
+  }
+});
+
+ok("short round: a chapter with 5 questions plays 5, ends without a tiebreak question, and a challenge replays it", () => {
+  const s: ClueSelection = { book: "exodus", chapters: [3], level: "beginner" };
+  const st = selectionStatus(s);
+  assert.ok(st.count >= MIN_ROUND && st.round === Math.min(10, st.count));
+  let m = createMatch({ items: bookItems("exodus"), selection: s, ...soloSetup(), seed: 5 });
+  assert.equal(m.deck.length, st.round);
+  assert.equal(m.settings.roundSize, m.deck.length);
+  m = reduceClueMatch(m, { type: "deal", now: 1000 }, CLUE_BANK);
+  for (let q = 0; q < m.deck.length; q += 1) m = reduceClueMatch(m, { type: "tick", now: m.round!.openAt + A + R }, CLUE_BANK);
+  assert.equal(m.phase, "over");
+  assert.equal(m.done.length, st.round);
+  const replay = createMatch({ items: bookItems("exodus"), selection: s, ...soloSetup(), seed: 1, cardIds: m.deck });
+  assert.deepEqual(replay.deck, m.deck);
+});
+
+ok("labels: Easy / Medium / Hard, real book names, chapter runs", () => {
+  assert.equal(selectionLabel({ book: "genesis", chapters: [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36], level: "medium" }), "Genesis 25–36 · Medium");
+  assert.equal(selectionLabel({ book: "1-samuel", chapters: "all", level: "beginner" }), "1 Samuel · All chapters · Easy");
+  assert.equal(selectionLabel({ book: "song-of-solomon", chapters: [2], level: "hard" }), "Song of Solomon 2 · Hard");
 });
 
 console.log(`\n${n} checks passed.`);

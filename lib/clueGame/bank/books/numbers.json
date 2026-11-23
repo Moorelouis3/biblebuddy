@@ -1,0 +1,2882 @@
+[
+ {
+  "id": "old-numbers-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the Lord speak to Moses when commanding the census?",
+  "choices": [
+   "In Egypt",
+   "In Moab",
+   "In the wilderness of Sinai",
+   "At Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "The census command came in the wilderness of Sinai at the tabernacle.",
+  "ref": "Numbers 1:1"
+ },
+ {
+  "id": "old-numbers-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was included in the military census?",
+  "choices": [
+   "All males",
+   "Males from twenty years old and upward able to go to war",
+   "Only Levites",
+   "Only firstborn sons"
+  ],
+  "answer": 1,
+  "explanation": "The numbering focused on men twenty and older fit for war.",
+  "ref": "Numbers 1:3"
+ },
+ {
+  "id": "old-numbers-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe was not counted with the other tribes in the census?",
+  "choices": [
+   "Judah",
+   "Benjamin",
+   "Ephraim",
+   "Levi"
+  ],
+  "answer": 3,
+  "explanation": "The Levites were set apart and not numbered with the fighting men.",
+  "ref": "Numbers 1:47–49"
+ },
+ {
+  "id": "old-numbers-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What responsibility was given to the Levites?",
+  "choices": [
+   "Leading battles",
+   "Collecting taxes",
+   "Farming the land",
+   "Keeping charge of the tabernacle"
+  ],
+  "answer": 3,
+  "explanation": "The Levites were appointed over the tabernacle and its vessels.",
+  "ref": "Numbers 1:50"
+ },
+ {
+  "id": "old-numbers-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the total number of the non-Levite men counted?",
+  "choices": [
+   "603,550",
+   "550,000",
+   "700,000",
+   "430,000"
+  ],
+  "answer": 0,
+  "explanation": "The total number counted for Israel's armies was 603,550.",
+  "ref": "Numbers 1:46"
+ },
+ {
+  "id": "old-numbers-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was placed in the center of Israel's camp arrangement?",
+  "choices": [
+   "The tabernacle",
+   "Moses' tent",
+   "Judah's standard",
+   "The brazen altar"
+  ],
+  "answer": 0,
+  "explanation": "The tabernacle stood at the center of the camp.",
+  "ref": "Numbers 2:17"
+ },
+ {
+  "id": "old-numbers-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe camped on the east side, toward the rising of the sun?",
+  "choices": [
+   "Reuben",
+   "Dan",
+   "Judah",
+   "Ephraim"
+  ],
+  "answer": 2,
+  "explanation": "Judah camped on the east side toward the rising of the sun.",
+  "ref": "Numbers 2:3"
+ },
+ {
+  "id": "old-numbers-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribes camped with Judah?",
+  "choices": [
+   "Gad and Simeon",
+   "Asher and Naphtali",
+   "Manasseh and Benjamin",
+   "Issachar and Zebulun"
+  ],
+  "answer": 3,
+  "explanation": "Issachar and Zebulun camped with Judah on the east.",
+  "ref": "Numbers 2:5–9"
+ },
+ {
+  "id": "old-numbers-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe's camp set forward second?",
+  "choices": [
+   "Reuben",
+   "Judah",
+   "Dan",
+   "Ephraim"
+  ],
+  "answer": 0,
+  "explanation": "The camp of Reuben set forward second.",
+  "ref": "Numbers 2:16"
+ },
+ {
+  "id": "old-numbers-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were the children of Israel commanded to camp?",
+  "choices": [
+   "Randomly by families",
+   "Only by birth order",
+   "By height",
+   "Every man by his own standard and ensign"
+  ],
+  "answer": 3,
+  "explanation": "Each tribe camped by its own standard around the tabernacle.",
+  "ref": "Numbers 2:2"
+ },
+ {
+  "id": "old-numbers-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose generations are listed at the beginning of the chapter?",
+  "choices": [
+   "Joshua and Caleb",
+   "Moses and Aaron",
+   "Abraham and Isaac",
+   "Reuben and Judah"
+  ],
+  "answer": 1,
+  "explanation": "The chapter begins with the generations of Aaron and Moses.",
+  "ref": "Numbers 3:1"
+ },
+ {
+  "id": "old-numbers-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Nadab and Abihu?",
+  "choices": [
+   "They died before the Lord",
+   "They became judges",
+   "They entered Canaan",
+   "They led the Levites"
+  ],
+  "answer": 0,
+  "explanation": "Nadab and Abihu died when they offered strange fire.",
+  "ref": "Numbers 3:4"
+ },
+ {
+  "id": "old-numbers-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did God take instead of all the firstborn of Israel?",
+  "choices": [
+   "The Levites",
+   "The priests",
+   "The elders",
+   "The tribe of Judah"
+  ],
+  "answer": 0,
+  "explanation": "The Levites were taken in place of Israel's firstborn.",
+  "ref": "Numbers 3:12"
+ },
+ {
+  "id": "old-numbers-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was appointed over the chief of the Levites?",
+  "choices": [
+   "Eleazar",
+   "Aaron",
+   "Ithamar",
+   "Moses"
+  ],
+  "answer": 0,
+  "explanation": "Eleazar oversaw the chief of the Levites and those who kept the sanctuary.",
+  "ref": "Numbers 3:32"
+ },
+ {
+  "id": "old-numbers-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was done for the extra firstborn beyond the number of Levites?",
+  "choices": [
+   "They were ignored",
+   "They became priests",
+   "They were redeemed with money",
+   "They were sent away"
+  ],
+  "answer": 2,
+  "explanation": "The surplus firstborn were redeemed with five shekels each.",
+  "ref": "Numbers 3:46–48"
+ },
+ {
+  "id": "old-numbers-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What age range was counted for Levite service in this chapter?",
+  "choices": [
+   "20 to 50",
+   "25 to 60",
+   "18 to 40",
+   "30 to 50"
+  ],
+  "answer": 3,
+  "explanation": "The service census counted Levites from thirty to fifty years old.",
+  "ref": "Numbers 4:3"
+ },
+ {
+  "id": "old-numbers-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which family carried the most holy things?",
+  "choices": [
+   "Gershon",
+   "Merari",
+   "Judah",
+   "Kohath"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Kohath carried the most holy things.",
+  "ref": "Numbers 4:4"
+ },
+ {
+  "id": "old-numbers-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who covered the sanctuary objects before the Kohathites carried them?",
+  "choices": [
+   "The princes",
+   "The elders",
+   "Aaron and his sons",
+   "The Gershonites"
+  ],
+  "answer": 2,
+  "explanation": "Aaron and his sons covered the holy objects first.",
+  "ref": "Numbers 4:5–15"
+ },
+ {
+  "id": "old-numbers-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What family was responsible for curtains, hangings, and coverings?",
+  "choices": [
+   "Kohath",
+   "Merari",
+   "Ephraim",
+   "Gershon"
+  ],
+  "answer": 3,
+  "explanation": "The Gershonites carried the curtains and coverings.",
+  "ref": "Numbers 4:24–26"
+ },
+ {
+  "id": "old-numbers-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What family carried the boards, bars, pillars, and sockets?",
+  "choices": [
+   "Kohath",
+   "Levi's firstborn",
+   "Benjamin",
+   "Merari"
+  ],
+  "answer": 3,
+  "explanation": "The Merarites were responsible for the structural parts of the tabernacle.",
+  "ref": "Numbers 4:31–32"
+ },
+ {
+  "id": "old-numbers-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was to be put out of the camp for uncleanness?",
+  "choices": [
+   "Only foreigners",
+   "Only Levites",
+   "Only soldiers",
+   "Lepers, those with an issue, and those defiled by the dead"
+  ],
+  "answer": 3,
+  "explanation": "Those with serious ceremonial uncleanness were put outside the camp.",
+  "ref": "Numbers 5:2"
+ },
+ {
+  "id": "old-numbers-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had to be added when making restitution for a trespass?",
+  "choices": [
+   "A fifth part",
+   "A tenth",
+   "Two lambs",
+   "Nothing"
+  ],
+  "answer": 0,
+  "explanation": "The offender restored the principal and added a fifth part.",
+  "ref": "Numbers 5:7"
+ },
+ {
+  "id": "old-numbers-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If a man had no kinsman to receive restitution, to whom did it belong?",
+  "choices": [
+   "The ruler",
+   "The poor",
+   "The priest",
+   "The judge"
+  ],
+  "answer": 2,
+  "explanation": "When no near kinsman existed, the restitution belonged to the priest.",
+  "ref": "Numbers 5:8"
+ },
+ {
+  "id": "old-numbers-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What offering accompanied the law of jealousy?",
+  "choices": [
+   "A meal offering of barley without oil or frankincense",
+   "A lamb with oil",
+   "Two doves",
+   "A peace offering"
+  ],
+  "answer": 0,
+  "explanation": "The jealousy offering was barley meal without oil or frankincense.",
+  "ref": "Numbers 5:15"
+ },
+ {
+  "id": "old-numbers-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What water did the priest prepare for the jealousy test?",
+  "choices": [
+   "Living water",
+   "Water of cleansing only",
+   "Holy water mixed with dust",
+   "Sweet water"
+  ],
+  "answer": 2,
+  "explanation": "The priest took holy water and mixed it with dust from the tabernacle floor.",
+  "ref": "Numbers 5:17"
+ },
+ {
+  "id": "old-numbers-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What special vow is described in this chapter?",
+  "choices": [
+   "The Jubilee vow",
+   "The vow of a Nazarite",
+   "The king's vow",
+   "The peace vow"
+  ],
+  "answer": 1,
+  "explanation": "The chapter explains the vow of a Nazarite, separating unto the Lord.",
+  "ref": "Numbers 6:2"
+ },
+ {
+  "id": "old-numbers-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a Nazarite forbidden to drink?",
+  "choices": [
+   "Milk",
+   "Water from the rock",
+   "Oil",
+   "Wine and strong drink"
+  ],
+  "answer": 3,
+  "explanation": "A Nazarite was to abstain from wine, strong drink, and grape products.",
+  "ref": "Numbers 6:3"
+ },
+ {
+  "id": "old-numbers-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What visible sign marked the Nazarite during the days of separation?",
+  "choices": [
+   "A linen robe",
+   "A golden chain",
+   "He walked barefoot",
+   "No razor came upon his head"
+  ],
+  "answer": 3,
+  "explanation": "The hair of the Nazarite's head grew during the separation.",
+  "ref": "Numbers 6:5"
+ },
+ {
+  "id": "old-numbers-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a Nazarite not to come near during the days of separation?",
+  "choices": [
+   "A leper",
+   "A foreigner",
+   "Any dead body",
+   "The altar"
+  ],
+  "answer": 2,
+  "explanation": "The Nazarite was not to be defiled by coming near the dead.",
+  "ref": "Numbers 6:6"
+ },
+ {
+  "id": "old-numbers-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the priestly blessing begin?",
+  "choices": [
+   "Hear, O Israel",
+   "The Lord bless thee, and keep thee",
+   "Let my people go",
+   "Peace be multiplied"
+  ],
+  "answer": 1,
+  "explanation": "The priestly blessing begins with 'The Lord bless thee, and keep thee.'",
+  "ref": "Numbers 6:24"
+ },
+ {
+  "id": "old-numbers-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was anointed and sanctified when Moses had fully set up the tabernacle?",
+  "choices": [
+   "Only the ark",
+   "Only the altar",
+   "The camp walls",
+   "The tabernacle and all its instruments"
+  ],
+  "answer": 3,
+  "explanation": "Moses anointed and sanctified the tabernacle, its instruments, and the altar.",
+  "ref": "Numbers 7:1"
+ },
+ {
+  "id": "old-numbers-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the princes first bring for the service of the tabernacle?",
+  "choices": [
+   "Silver trumpets",
+   "Gold crowns",
+   "Six covered wagons and twelve oxen",
+   "Barley cakes"
+  ],
+  "answer": 2,
+  "explanation": "The princes brought wagons and oxen for the Levites' service.",
+  "ref": "Numbers 7:3"
+ },
+ {
+  "id": "old-numbers-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which family received no wagons because they carried holy things on their shoulders?",
+  "choices": [
+   "Merari",
+   "Kohath",
+   "Gershon",
+   "Judah"
+  ],
+  "answer": 1,
+  "explanation": "The Kohathites received none because their service involved carrying holy things on the shoulder.",
+  "ref": "Numbers 7:9"
+ },
+ {
+  "id": "old-numbers-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days did the princes take to present their altar offerings?",
+  "choices": [
+   "Twelve",
+   "Seven",
+   "Ten",
+   "Forty"
+  ],
+  "answer": 0,
+  "explanation": "One prince offered each day for twelve days.",
+  "ref": "Numbers 7:11"
+ },
+ {
+  "id": "old-numbers-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where did Moses hear the Lord speaking to him?",
+  "choices": [
+   "Between the two cherubims above the mercy seat",
+   "From the pillar of fire",
+   "From Mount Sinai only",
+   "From the camp gate"
+  ],
+  "answer": 0,
+  "explanation": "Moses heard the voice from above the mercy seat between the cherubim.",
+  "ref": "Numbers 7:89"
+ },
+ {
+  "id": "old-numbers-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Aaron told to do with the lamps?",
+  "choices": [
+   "Hide them",
+   "Move them outside",
+   "Polish them only",
+   "Light them so they gave light over against the candlestick"
+  ],
+  "answer": 3,
+  "explanation": "The lamps were to be lit to shine over against the candlestick.",
+  "ref": "Numbers 8:2"
+ },
+ {
+  "id": "old-numbers-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were the Levites cleansed?",
+  "choices": [
+   "With oil only",
+   "By water of purifying, shaving, and washing their clothes",
+   "By fire",
+   "By fasting three days"
+  ],
+  "answer": 1,
+  "explanation": "Their cleansing included sprinkling water, shaving, and washing clothes.",
+  "ref": "Numbers 8:7"
+ },
+ {
+  "id": "old-numbers-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who laid their hands on the Levites?",
+  "choices": [
+   "The priests",
+   "Moses only",
+   "The children of Israel",
+   "The princes"
+  ],
+  "answer": 2,
+  "explanation": "The children of Israel laid hands on the Levites as they were presented.",
+  "ref": "Numbers 8:10"
+ },
+ {
+  "id": "old-numbers-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In place of whom did God take the Levites for Himself?",
+  "choices": [
+   "All the firstborn among the children of Israel",
+   "The tribal princes",
+   "All the warriors",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "God took the Levites instead of all the firstborn of Israel, and then gave them as a gift to Aaron and his sons.",
+  "ref": "Numbers 8:16"
+ },
+ {
+  "id": "old-numbers-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what age did a Levite begin the service of the tabernacle in this chapter?",
+  "choices": [
+   "Twenty",
+   "Thirty",
+   "Fifty",
+   "Twenty-five"
+  ],
+  "answer": 3,
+  "explanation": "This chapter says Levites entered service from twenty-five years old upward.",
+  "ref": "Numbers 8:24"
+ },
+ {
+  "id": "old-numbers-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What feast were the children of Israel told to keep in the wilderness of Sinai?",
+  "choices": [
+   "Trumpets",
+   "Tabernacles",
+   "Pentecost",
+   "Passover"
+  ],
+  "answer": 3,
+  "explanation": "The Lord commanded Israel to keep the Passover at its appointed season.",
+  "ref": "Numbers 9:2"
+ },
+ {
+  "id": "old-numbers-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why could some men not keep the Passover on the appointed day?",
+  "choices": [
+   "They were traveling",
+   "They were defiled by a dead body",
+   "They forgot the date",
+   "They had no lamb"
+  ],
+  "answer": 1,
+  "explanation": "They were unclean because of a dead body, so they came to Moses and asked why they were kept back.",
+  "ref": "Numbers 9:6–7"
+ },
+ {
+  "id": "old-numbers-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When was the second Passover to be kept for the unclean or distant traveler?",
+  "choices": [
+   "Seventh month",
+   "The next Sabbath",
+   "Second month on the fourteenth day",
+   "After harvest"
+  ],
+  "answer": 2,
+  "explanation": "The second Passover was kept in the second month on the fourteenth day at even.",
+  "ref": "Numbers 9:11"
+ },
+ {
+  "id": "old-numbers-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What covered the tabernacle by day after it was reared up?",
+  "choices": [
+   "A cloud",
+   "Smoke only",
+   "A rainbow",
+   "A curtain"
+  ],
+  "answer": 0,
+  "explanation": "A cloud covered the tabernacle by day.",
+  "ref": "Numbers 9:15–16"
+ },
+ {
+  "id": "old-numbers-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What determined when Israel journeyed and when they stayed?",
+  "choices": [
+   "Moses' staff",
+   "The moon phases",
+   "The movement of the cloud",
+   "The tribal princes"
+  ],
+  "answer": 2,
+  "explanation": "Israel moved or camped according to whether the cloud was taken up or remained.",
+  "ref": "Numbers 9:17–23"
+ },
+ {
+  "id": "old-numbers-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many silver trumpets was Moses told to make?",
+  "choices": [
+   "One",
+   "Two",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Two silver trumpets were made for calling the assembly and directing the camps.",
+  "ref": "Numbers 10:2"
+ },
+ {
+  "id": "old-numbers-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was one purpose of the trumpets?",
+  "choices": [
+   "Calling the assembly and signaling the camps to set out",
+   "Cooking offerings",
+   "Measuring land",
+   "Anointing priests"
+  ],
+  "answer": 0,
+  "explanation": "The trumpets were used to gather the people and signal movement.",
+  "ref": "Numbers 10:2"
+ },
+ {
+  "id": "old-numbers-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what month did the cloud lift and Israel depart from Sinai?",
+  "choices": [
+   "First month",
+   "Seventh month",
+   "Twelfth month",
+   "Second month"
+  ],
+  "answer": 3,
+  "explanation": "The cloud lifted in the second month of the second year.",
+  "ref": "Numbers 10:11"
+ },
+ {
+  "id": "old-numbers-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was invited by Moses to journey with Israel because he knew the wilderness?",
+  "choices": [
+   "Jethro",
+   "Balak",
+   "Balaam",
+   "Hobab"
+  ],
+  "answer": 3,
+  "explanation": "Moses invited Hobab to travel with Israel and be to them instead of eyes.",
+  "ref": "Numbers 10:29"
+ },
+ {
+  "id": "old-numbers-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses say when the ark set forward?",
+  "choices": [
+   "Let there be light",
+   "Hear, O Israel",
+   "Peace be within thy walls",
+   "Rise up, Lord, and let thine enemies be scattered"
+  ],
+  "answer": 3,
+  "explanation": "Moses prayed for the Lord to rise up and scatter His enemies when the ark set forward.",
+  "ref": "Numbers 10:35"
+ },
+ {
+  "id": "old-numbers-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when the people complained at the beginning of the chapter?",
+  "choices": [
+   "Moses rebuked them only",
+   "The fire of the Lord burned among them",
+   "They received more manna",
+   "The cloud departed"
+  ],
+  "answer": 1,
+  "explanation": "The Lord's anger was kindled and fire burned in the uttermost parts of the camp.",
+  "ref": "Numbers 11:1"
+ },
+ {
+  "id": "old-numbers-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name was given to the place where the fire burned?",
+  "choices": [
+   "Meribah",
+   "Kadesh",
+   "Taberah",
+   "Hormah"
+  ],
+  "answer": 2,
+  "explanation": "The place was called Taberah because the fire of the Lord burned there.",
+  "ref": "Numbers 11:3"
+ },
+ {
+  "id": "old-numbers-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What food did the mixed multitude and Israel begin to lust for?",
+  "choices": [
+   "Bread",
+   "Grapes",
+   "Milk",
+   "Flesh"
+  ],
+  "answer": 3,
+  "explanation": "They lusted for meat and complained about manna.",
+  "ref": "Numbers 11:4"
+ },
+ {
+  "id": "old-numbers-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many elders did God appoint to help bear the burden with Moses?",
+  "choices": [
+   "12",
+   "40",
+   "70",
+   "120"
+  ],
+  "answer": 2,
+  "explanation": "Seventy elders were chosen to share the burden of the people.",
+  "ref": "Numbers 11:16–17"
+ },
+ {
+  "id": "old-numbers-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "What place was named because there they buried the people that lusted?",
+  "choices": [
+   "Kibroth-hattaavah",
+   "Taberah",
+   "Pisgah",
+   "Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "The place was called Kibroth-hattaavah, meaning graves of lust.",
+  "ref": "Numbers 11:34"
+ },
+ {
+  "id": "old-numbers-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Miriam and Aaron first speak against Moses?",
+  "choices": [
+   "Because he struck the rock",
+   "Because he appointed Joshua",
+   "Because of the Ethiopian woman he had married",
+   "Because he left Sinai"
+  ],
+  "answer": 2,
+  "explanation": "They spoke against Moses because of the Ethiopian woman he had married.",
+  "ref": "Numbers 12:1"
+ },
+ {
+  "id": "old-numbers-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Moses described in the chapter?",
+  "choices": [
+   "Mighty in war",
+   "Very meek",
+   "Slow to obey",
+   "Younger than Aaron"
+  ],
+  "answer": 1,
+  "explanation": "Moses is described as very meek, above all the men upon the earth.",
+  "ref": "Numbers 12:3"
+ },
+ {
+  "id": "old-numbers-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did God say He spoke with Moses, unlike other prophets?",
+  "choices": [
+   "In dreams only",
+   "Mouth to mouth",
+   "By fire only",
+   "By handwriting"
+  ],
+  "answer": 1,
+  "explanation": "God said He spoke with Moses directly, mouth to mouth.",
+  "ref": "Numbers 12:8"
+ },
+ {
+  "id": "old-numbers-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What judgment came upon Miriam?",
+  "choices": [
+   "Leprosy",
+   "Blindness",
+   "Death",
+   "Exile"
+  ],
+  "answer": 0,
+  "explanation": "Miriam became leprous, white as snow.",
+  "ref": "Numbers 12:10"
+ },
+ {
+  "id": "old-numbers-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was Miriam shut out of the camp?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Twelve days",
+   "Forty days"
+  ],
+  "answer": 1,
+  "explanation": "Miriam was shut out of the camp seven days.",
+  "ref": "Numbers 12:14–15"
+ },
+ {
+  "id": "old-numbers-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men were sent to spy out the land of Canaan?",
+  "choices": [
+   "10",
+   "12",
+   "40",
+   "70"
+  ],
+  "answer": 1,
+  "explanation": "Moses sent one leader from each tribe, making twelve spies.",
+  "ref": "Numbers 13:2"
+ },
+ {
+  "id": "old-numbers-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What new name did Moses give Oshea the son of Nun?",
+  "choices": [
+   "Caleb",
+   "Phinehas",
+   "Eleazar",
+   "Jehoshua (Joshua)"
+  ],
+  "answer": 3,
+  "explanation": "Moses called Oshea the son of Nun Jehoshua, the name we know as Joshua.",
+  "ref": "Numbers 13:16"
+ },
+ {
+  "id": "old-numbers-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did the spies search the land?",
+  "choices": [
+   "7 days",
+   "12 days",
+   "40 days",
+   "70 days"
+  ],
+  "answer": 2,
+  "explanation": "The spies returned after forty days.",
+  "ref": "Numbers 13:25"
+ },
+ {
+  "id": "old-numbers-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What huge evidence of the land's fruitfulness did they carry back?",
+  "choices": [
+   "A sheaf of wheat",
+   "A cluster of grapes on a staff",
+   "Olive branches",
+   "Pomegranates only"
+  ],
+  "answer": 1,
+  "explanation": "They cut down a cluster of grapes so large it had to be carried on a staff between two men.",
+  "ref": "Numbers 13:23"
+ },
+ {
+  "id": "old-numbers-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who urged the people to go up at once and possess the land?",
+  "choices": [
+   "Aaron",
+   "Joshua's father",
+   "Eleazar",
+   "Caleb"
+  ],
+  "answer": 3,
+  "explanation": "Caleb stilled the people and urged immediate faith and action.",
+  "ref": "Numbers 13:30"
+ },
+ {
+  "id": "old-numbers-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the congregation react to the spies' fearful report?",
+  "choices": [
+   "They rejoiced",
+   "They attacked immediately",
+   "They fasted",
+   "They murmured and wept"
+  ],
+  "answer": 3,
+  "explanation": "The people lifted up their voices, cried, and murmured against Moses and Aaron.",
+  "ref": "Numbers 14:1–2"
+ },
+ {
+  "id": "old-numbers-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua and Caleb do with their clothes when speaking to the people?",
+  "choices": [
+   "Rent them",
+   "Anointed them",
+   "Burned them",
+   "Changed them"
+  ],
+  "answer": 0,
+  "explanation": "Joshua and Caleb rent their clothes in grief at the people's unbelief.",
+  "ref": "Numbers 14:6"
+ },
+ {
+  "id": "old-numbers-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people propose to do instead of going forward in faith?",
+  "choices": [
+   "Build the tabernacle",
+   "Crown Joshua",
+   "Make a captain and return to Egypt",
+   "Fight the Amalekites"
+  ],
+  "answer": 2,
+  "explanation": "In unbelief they wanted a leader to take them back to Egypt.",
+  "ref": "Numbers 14:4"
+ },
+ {
+  "id": "old-numbers-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years would Israel bear its iniquities in the wilderness?",
+  "choices": [
+   "12",
+   "20",
+   "40",
+   "70"
+  ],
+  "answer": 2,
+  "explanation": "They would wander forty years, according to the forty days the spies searched the land.",
+  "ref": "Numbers 14:33–34"
+ },
+ {
+  "id": "old-numbers-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when the people tried to go up presumptuously after God's judgment?",
+  "choices": [
+   "They conquered the hill country",
+   "The ark led them to victory",
+   "They were smitten by the Amalekites and Canaanites",
+   "They returned safely"
+  ],
+  "answer": 2,
+  "explanation": "Going up without the Lord's presence led to defeat.",
+  "ref": "Numbers 14:44–45"
+ },
+ {
+  "id": "old-numbers-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When were the offerings described at the start of the chapter to be made?",
+  "choices": [
+   "Only while in the wilderness",
+   "When they came into the land God was giving them",
+   "After a king was crowned",
+   "Only after exile"
+  ],
+  "answer": 1,
+  "explanation": "God gave these laws for the time when Israel came into the land He was giving them.",
+  "ref": "Numbers 15:2"
+ },
+ {
+  "id": "old-numbers-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What offering often accompanied burnt offerings and sacrifices in this chapter?",
+  "choices": [
+   "Water only",
+   "Incense only",
+   "Meal and drink offerings",
+   "Peace offerings only"
+  ],
+  "answer": 2,
+  "explanation": "The chapter details accompanying flour and drink offerings.",
+  "ref": "Numbers 15:4–5"
+ },
+ {
+  "id": "old-numbers-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the rule for one who sinned presumptuously?",
+  "choices": [
+   "He brought a dove",
+   "He waited seven days",
+   "That soul would be cut off",
+   "He paid double"
+  ],
+  "answer": 2,
+  "explanation": "High-handed sin brought the penalty of being cut off.",
+  "ref": "Numbers 15:30"
+ },
+ {
+  "id": "old-numbers-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a man found doing on the Sabbath, for which he was put to death?",
+  "choices": [
+   "Gathering sticks",
+   "Gathering grapes",
+   "Plowing",
+   "Fishing"
+  ],
+  "answer": 0,
+  "explanation": "The man was found gathering sticks on the Sabbath.",
+  "ref": "Numbers 15:32–36"
+ },
+ {
+  "id": "old-numbers-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the children of Israel to wear on the borders of their garments?",
+  "choices": [
+   "Chains of gold",
+   "Silver bells",
+   "Fringes with a ribbon of blue",
+   "Scarlet cords"
+  ],
+  "answer": 2,
+  "explanation": "The fringe and blue cord were to remind them of the Lord's commandments.",
+  "ref": "Numbers 15:38"
+ },
+ {
+  "id": "old-numbers-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who led the rebellion against Moses and Aaron?",
+  "choices": [
+   "Joshua and Caleb",
+   "Korah, Dathan, and Abiram",
+   "Nadab and Abihu",
+   "Miriam and Hur"
+  ],
+  "answer": 1,
+  "explanation": "Korah joined with Dathan and Abiram in rebellion.",
+  "ref": "Numbers 16:1"
+ },
+ {
+  "id": "old-numbers-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the rebels accuse Moses and Aaron of?",
+  "choices": [
+   "Stealing gold",
+   "Taking too much upon themselves",
+   "Leaving Egypt too soon",
+   "Breaking the covenant"
+  ],
+  "answer": 1,
+  "explanation": "They said Moses and Aaron exalted themselves above the congregation.",
+  "ref": "Numbers 16:3"
+ },
+ {
+  "id": "old-numbers-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What unusual judgment came upon Dathan and Abiram and their households?",
+  "choices": [
+   "Fire from heaven only",
+   "Leprosy",
+   "Flood waters",
+   "The earth opened and swallowed them"
+  ],
+  "answer": 3,
+  "explanation": "The ground split open and swallowed them alive.",
+  "ref": "Numbers 16:31–33"
+ },
+ {
+  "id": "old-numbers-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the 250 men who offered incense?",
+  "choices": [
+   "They were imprisoned",
+   "They fled",
+   "They became priests",
+   "Fire came out from the Lord and consumed them"
+  ],
+  "answer": 3,
+  "explanation": "Fire from the Lord consumed the 250 men offering incense.",
+  "ref": "Numbers 16:35"
+ },
+ {
+  "id": "old-numbers-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was a plague stopped when wrath went out against the congregation?",
+  "choices": [
+   "Aaron ran with incense and stood between the dead and the living",
+   "Joshua sounded the trumpet",
+   "Moses struck the rock",
+   "The cloud covered the camp"
+  ],
+  "answer": 0,
+  "explanation": "Aaron made atonement with incense and the plague was stayed.",
+  "ref": "Numbers 16:46–48"
+ },
+ {
+  "id": "old-numbers-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many rods were taken from the leaders of Israel?",
+  "choices": [
+   "10",
+   "12",
+   "40",
+   "70"
+  ],
+  "answer": 1,
+  "explanation": "One rod was taken for each of the twelve tribes.",
+  "ref": "Numbers 17:2"
+ },
+ {
+  "id": "old-numbers-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose name was written on the rod for the tribe of Levi?",
+  "choices": [
+   "Moses",
+   "Eleazar",
+   "Korah",
+   "Aaron"
+  ],
+  "answer": 3,
+  "explanation": "Aaron's name was written on Levi's rod.",
+  "ref": "Numbers 17:3"
+ },
+ {
+  "id": "old-numbers-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the rods laid up?",
+  "choices": [
+   "At the camp gate",
+   "Before the testimony",
+   "In Moses' tent",
+   "On the altar"
+  ],
+  "answer": 1,
+  "explanation": "The rods were laid up before the testimony in the tabernacle.",
+  "ref": "Numbers 17:4"
+ },
+ {
+  "id": "old-numbers-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Aaron's rod?",
+  "choices": [
+   "It split in two",
+   "It budded, blossomed, and yielded almonds",
+   "It turned to gold",
+   "It burned with fire"
+  ],
+  "answer": 1,
+  "explanation": "Aaron's rod uniquely budded, blossomed, and bore almonds.",
+  "ref": "Numbers 17:8"
+ },
+ {
+  "id": "old-numbers-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Aaron's rod kept before the testimony afterward?",
+  "choices": [
+   "As decoration",
+   "For future battles",
+   "To measure the sanctuary",
+   "For a token against rebels"
+  ],
+  "answer": 3,
+  "explanation": "The rod served as a sign against murmuring and rebellion.",
+  "ref": "Numbers 17:10"
+ },
+ {
+  "id": "old-numbers-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who would bear the iniquity of the sanctuary and priesthood?",
+  "choices": [
+   "All Israel",
+   "The princes",
+   "Aaron and his sons",
+   "The judges"
+  ],
+  "answer": 2,
+  "explanation": "Aaron and his sons were responsible for the priesthood and sanctuary.",
+  "ref": "Numbers 18:1"
+ },
+ {
+  "id": "old-numbers-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was joined to Aaron to minister for the tabernacle service?",
+  "choices": [
+   "Judah",
+   "The elders",
+   "The firstborn",
+   "The Levites"
+  ],
+  "answer": 3,
+  "explanation": "The Levites were joined to Aaron to assist in tabernacle service.",
+  "ref": "Numbers 18:2"
+ },
+ {
+  "id": "old-numbers-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning was given if a stranger came near the sanctuary service?",
+  "choices": [
+   "He would become a priest",
+   "He would be fined",
+   "He would be exiled",
+   "He would be put to death"
+  ],
+  "answer": 3,
+  "explanation": "A stranger approaching the priestly service would die.",
+  "ref": "Numbers 18:7"
+ },
+ {
+  "id": "old-numbers-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What inheritance did the Levites receive in the land?",
+  "choices": [
+   "A double portion",
+   "Judah's cities",
+   "None; the Lord gave them tithes instead",
+   "Only vineyards"
+  ],
+  "answer": 2,
+  "explanation": "The Levites had no land inheritance; their portion was the tithe.",
+  "ref": "Numbers 18:20–24"
+ },
+ {
+  "id": "old-numbers-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the Levites required to do with the tithes they received?",
+  "choices": [
+   "Store all of them",
+   "Give them to Judah",
+   "Offer a tithe of the tithe to the Lord",
+   "Use them for war"
+  ],
+  "answer": 2,
+  "explanation": "The Levites themselves had to present a tithe from the tithe.",
+  "ref": "Numbers 18:26"
+ },
+ {
+  "id": "old-numbers-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of animal was required for this ordinance?",
+  "choices": [
+   "A spotless ram",
+   "A white goat",
+   "A dove",
+   "A red heifer without blemish"
+  ],
+  "answer": 3,
+  "explanation": "The ordinance required a red heifer without blemish, on which never came yoke.",
+  "ref": "Numbers 19:2"
+ },
+ {
+  "id": "old-numbers-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was to bring the red heifer forth outside the camp?",
+  "choices": [
+   "Aaron",
+   "Joshua",
+   "Moses",
+   "Eleazar the priest"
+  ],
+  "answer": 3,
+  "explanation": "Eleazar the priest oversaw the red heifer sacrifice outside the camp.",
+  "ref": "Numbers 19:3"
+ },
+ {
+  "id": "old-numbers-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was to be done with cedar wood, hyssop, and scarlet?",
+  "choices": [
+   "Cast into the burning of the heifer",
+   "Stored in the ark",
+   "Used for the veil",
+   "Placed on the altar"
+  ],
+  "answer": 0,
+  "explanation": "These items were cast into the midst of the burning heifer.",
+  "ref": "Numbers 19:6"
+ },
+ {
+  "id": "old-numbers-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did touching a dead body make a person?",
+  "choices": [
+   "Clean",
+   "A Nazarite",
+   "Unclean seven days",
+   "A Levite"
+  ],
+  "answer": 2,
+  "explanation": "Anyone touching a dead body became unclean for seven days.",
+  "ref": "Numbers 19:11"
+ },
+ {
+  "id": "old-numbers-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what days was the unclean person to be purified with the water of separation?",
+  "choices": [
+   "First and seventh",
+   "Seventh only",
+   "Second and eighth",
+   "Third and seventh"
+  ],
+  "answer": 3,
+  "explanation": "The cleansing water was applied on the third and seventh days.",
+  "ref": "Numbers 19:12"
+ },
+ {
+  "id": "old-numbers-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Miriam die?",
+  "choices": [
+   "Sinai",
+   "Moab",
+   "Gilgal",
+   "Kadesh"
+  ],
+  "answer": 3,
+  "explanation": "Miriam died and was buried at Kadesh.",
+  "ref": "Numbers 20:1"
+ },
+ {
+  "id": "old-numbers-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord tell Moses to do to bring water from the rock?",
+  "choices": [
+   "Strike it twice",
+   "Dig around it",
+   "Pour oil on it",
+   "Speak unto the rock"
+  ],
+  "answer": 3,
+  "explanation": "God told Moses to speak to the rock before their eyes.",
+  "ref": "Numbers 20:8"
+ },
+ {
+  "id": "old-numbers-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Instead of speaking to the rock, what did Moses do?",
+  "choices": [
+   "Ignored the people",
+   "Struck the rock twice",
+   "Left the camp",
+   "Broke his rod"
+  ],
+  "answer": 1,
+  "explanation": "Instead of speaking to the rock, Moses struck it twice.",
+  "ref": "Numbers 20:11"
+ },
+ {
+  "id": "old-numbers-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why would Moses and Aaron not bring the congregation into the promised land?",
+  "choices": [
+   "They did not believe God, to sanctify Him before the people",
+   "They were too old",
+   "They refused to go",
+   "They lacked a census"
+  ],
+  "answer": 0,
+  "explanation": "Their failure to honor God at the waters of Meribah brought this judgment.",
+  "ref": "Numbers 20:12"
+ },
+ {
+  "id": "old-numbers-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who became high priest after Aaron died on Mount Hor?",
+  "choices": [
+   "Moses",
+   "Eleazar",
+   "Joshua",
+   "Phinehas"
+  ],
+  "answer": 1,
+  "explanation": "Aaron's garments were placed on Eleazar, who succeeded him.",
+  "ref": "Numbers 20:28"
+ },
+ {
+  "id": "old-numbers-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel vow if the Lord delivered the Canaanites into their hand?",
+  "choices": [
+   "To build a city",
+   "To spare them",
+   "To utterly destroy their cities",
+   "To return to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Israel vowed to utterly destroy the Canaanite cities if God delivered them.",
+  "ref": "Numbers 21:2"
+ },
+ {
+  "id": "old-numbers-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the Lord send fiery serpents among the people?",
+  "choices": [
+   "They neglected the Passover",
+   "They spoke against God and Moses",
+   "They stole manna",
+   "They worshiped Baal"
+  ],
+  "answer": 1,
+  "explanation": "The people sinned by complaining against God and Moses.",
+  "ref": "Numbers 21:5–6"
+ },
+ {
+  "id": "old-numbers-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God tell Moses to make for the healing of the serpent-bitten people?",
+  "choices": [
+   "A silver trumpet",
+   "A golden calf",
+   "A fiery serpent of brass",
+   "A laver"
+  ],
+  "answer": 2,
+  "explanation": "Moses made a bronze serpent and lifted it up for healing.",
+  "ref": "Numbers 21:8–9"
+ },
+ {
+  "id": "old-numbers-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when a bitten person looked at the bronze serpent?",
+  "choices": [
+   "He died slower",
+   "He became unclean",
+   "He lived",
+   "He was sent outside the camp"
+  ],
+  "answer": 2,
+  "explanation": "Looking at the bronze serpent brought life.",
+  "ref": "Numbers 21:9"
+ },
+ {
+  "id": "old-numbers-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two kings came out to fight Israel and were defeated?",
+  "choices": [
+   "Sihon and Og",
+   "Balak and Balaam",
+   "Saul and David",
+   "Jabin and Sisera"
+  ],
+  "answer": 0,
+  "explanation": "Israel defeated Sihon king of the Amorites and Og king of Bashan.",
+  "ref": "Numbers 21:21–35"
+ },
+ {
+  "id": "old-numbers-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who feared Israel and sent for Balaam?",
+  "choices": [
+   "Sihon",
+   "Og king of Bashan",
+   "Balak king of Moab",
+   "Jethro"
+  ],
+  "answer": 2,
+  "explanation": "Balak king of Moab sent messengers to Balaam because he feared Israel.",
+  "ref": "Numbers 22:2–6"
+ },
+ {
+  "id": "old-numbers-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At first, what did God tell Balaam about going with Balak's messengers?",
+  "choices": [
+   "Go quickly",
+   "Thou shalt not go with them",
+   "Take an offering first",
+   "Wait seven days"
+  ],
+  "answer": 1,
+  "explanation": "God initially forbade Balaam to go and to curse Israel.",
+  "ref": "Numbers 22:12"
+ },
+ {
+  "id": "old-numbers-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balaam's donkey see that Balaam did not at first?",
+  "choices": [
+   "The angel of the Lord",
+   "A lion",
+   "A river",
+   "Balak's army"
+  ],
+  "answer": 0,
+  "explanation": "The donkey saw the angel of the Lord standing in the way.",
+  "ref": "Numbers 22:23"
+ },
+ {
+  "id": "old-numbers-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did God rebuke Balaam through the donkey?",
+  "choices": [
+   "By making it run away",
+   "By opening its mouth to speak",
+   "By causing it to die",
+   "By turning it into a serpent"
+  ],
+  "answer": 1,
+  "explanation": "The Lord opened the donkey's mouth, and it spoke to Balaam.",
+  "ref": "Numbers 22:28"
+ },
+ {
+  "id": "old-numbers-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Balaam finally told he could speak?",
+  "choices": [
+   "Whatever Balak wanted",
+   "Only the word that God should speak unto him",
+   "Only curses",
+   "Nothing at all"
+  ],
+  "answer": 1,
+  "explanation": "Balaam was constrained to say only what God put in his mouth.",
+  "ref": "Numbers 22:35"
+ },
+ {
+  "id": "old-numbers-23-1",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many altars did Balaam tell Balak to build in each place?",
+  "choices": [
+   "3",
+   "7",
+   "10",
+   "12"
+  ],
+  "answer": 1,
+  "explanation": "Balaam asked for seven altars.",
+  "ref": "Numbers 23:1"
+ },
+ {
+  "id": "old-numbers-23-2",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balaam say about cursing whom God had not cursed?",
+  "choices": [
+   "It was easy",
+   "Balak should do it",
+   "He could not do it",
+   "It required more altars"
+  ],
+  "answer": 2,
+  "explanation": "Balaam acknowledged he could not curse what God had blessed.",
+  "ref": "Numbers 23:8"
+ },
+ {
+  "id": "old-numbers-23-3",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Balaam describe Israel's unique standing among the nations?",
+  "choices": [
+   "A weak people",
+   "A nation like Egypt",
+   "A wandering tribe only",
+   "A people dwelling alone and not reckoned among the nations"
+  ],
+  "answer": 3,
+  "explanation": "Israel is described as a distinct people set apart.",
+  "ref": "Numbers 23:9"
+ },
+ {
+  "id": "old-numbers-23-4",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balaam say God is not like?",
+  "choices": [
+   "A man, that he should lie",
+   "A shepherd",
+   "A king",
+   "A priest"
+  ],
+  "answer": 0,
+  "explanation": "Balaam declared God's unchanging truthfulness.",
+  "ref": "Numbers 23:19"
+ },
+ {
+  "id": "old-numbers-23-5",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balak complain Balaam had done instead of cursing Israel?",
+  "choices": [
+   "Stayed silent",
+   "Left the mountain",
+   "Altogether blessed them",
+   "Praised Moab"
+  ],
+  "answer": 2,
+  "explanation": "Balak was frustrated that Balaam kept blessing Israel instead of cursing them.",
+  "ref": "Numbers 23:11"
+ },
+ {
+  "id": "old-numbers-24-1",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What came upon Balaam when he lifted up his eyes toward Israel?",
+  "choices": [
+   "Fear of Balak",
+   "A deep sleep",
+   "A plague",
+   "The Spirit of God"
+  ],
+  "answer": 3,
+  "explanation": "The Spirit of God came upon Balaam as he prophesied.",
+  "ref": "Numbers 24:2"
+ },
+ {
+  "id": "old-numbers-24-2",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Balaam describe Israel's tents and tabernacles?",
+  "choices": [
+   "As weak and broken",
+   "As hidden in caves",
+   "As few in number",
+   "As goodly and beautiful"
+  ],
+  "answer": 3,
+  "explanation": "He admired the beauty and order of Israel's tents.",
+  "ref": "Numbers 24:5"
+ },
+ {
+  "id": "old-numbers-24-3",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What future ruler does Balaam foresee with the words 'There shall come a Star out of Jacob'?",
+  "choices": [
+   "Balak",
+   "Aaron's son only",
+   "A coming king from Israel",
+   "A Moabite prince"
+  ],
+  "answer": 2,
+  "explanation": "Balaam foretells a royal figure arising from Jacob.",
+  "ref": "Numbers 24:17"
+ },
+ {
+  "id": "old-numbers-24-4",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which nation did Balaam call the first of the nations, whose end would be to perish for ever?",
+  "choices": [
+   "Egypt",
+   "Assyria",
+   "Amalek",
+   "Edom"
+  ],
+  "answer": 2,
+  "explanation": "He prophesied judgment on Amalek.",
+  "ref": "Numbers 24:20"
+ },
+ {
+  "id": "old-numbers-24-5",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Balak react after Balaam's final prophecies?",
+  "choices": [
+   "He crowned him",
+   "He worshiped with him",
+   "He gave him gold",
+   "He sent him away in anger"
+  ],
+  "answer": 3,
+  "explanation": "Balak's anger was kindled and the two parted ways.",
+  "ref": "Numbers 24:10–11"
+ },
+ {
+  "id": "old-numbers-25-1",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With whom did the people begin to commit whoredom at Shittim?",
+  "choices": [
+   "Daughters of Moab",
+   "Egyptians",
+   "Philistines",
+   "Midianite merchants"
+  ],
+  "answer": 0,
+  "explanation": "The people began immoral relations with the daughters of Moab.",
+  "ref": "Numbers 25:1"
+ },
+ {
+  "id": "old-numbers-25-2",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what false god did Israel join itself?",
+  "choices": [
+   "Dagon",
+   "Baal-peor",
+   "Molech",
+   "Chemosh"
+  ],
+  "answer": 1,
+  "explanation": "Israel joined itself unto Baal-peor.",
+  "ref": "Numbers 25:3"
+ },
+ {
+  "id": "old-numbers-25-3",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who turned away God's wrath by executing judgment zealously?",
+  "choices": [
+   "Joshua",
+   "Eleazar",
+   "Phinehas",
+   "Caleb"
+  ],
+  "answer": 2,
+  "explanation": "Phinehas acted zealously and the plague was stopped.",
+  "ref": "Numbers 25:7–8"
+ },
+ {
+  "id": "old-numbers-25-4",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What covenant did God give Phinehas?",
+  "choices": [
+   "Covenant of kingship",
+   "Covenant of land",
+   "Covenant of prophecy",
+   "Covenant of peace"
+  ],
+  "answer": 3,
+  "explanation": "God gave Phinehas His covenant of peace.",
+  "ref": "Numbers 25:12"
+ },
+ {
+  "id": "old-numbers-25-5",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many died in the plague before it was stayed?",
+  "choices": [
+   "7,000",
+   "12,000",
+   "24,000",
+   "40,000"
+  ],
+  "answer": 2,
+  "explanation": "Twenty-four thousand died in the plague.",
+  "ref": "Numbers 25:9"
+ },
+ {
+  "id": "old-numbers-26-1",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When was this census taken?",
+  "choices": [
+   "After the plague",
+   "Before leaving Egypt",
+   "After entering Canaan",
+   "During David's reign"
+  ],
+  "answer": 0,
+  "explanation": "The second census came after the plague.",
+  "ref": "Numbers 26:1"
+ },
+ {
+  "id": "old-numbers-26-2",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was to be numbered in this census?",
+  "choices": [
+   "All males",
+   "Only Levites",
+   "Those from twenty years old and upward able to go to war",
+   "Only firstborn sons"
+  ],
+  "answer": 2,
+  "explanation": "As before, the census counted fighting men twenty years and older.",
+  "ref": "Numbers 26:2"
+ },
+ {
+  "id": "old-numbers-26-3",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who were the two sons of Joseph whose families were numbered in this census?",
+  "choices": [
+   "Er and Onan",
+   "Nadab and Abihu",
+   "Dathan and Abiram",
+   "Manasseh and Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Joseph after their families were Manasseh and Ephraim.",
+  "ref": "Numbers 26:28"
+ },
+ {
+  "id": "old-numbers-26-4",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was the land to be divided among the tribes?",
+  "choices": [
+   "By age",
+   "By lot according to the number of names",
+   "By military strength only",
+   "By the priests alone"
+  ],
+  "answer": 1,
+  "explanation": "The inheritance was distributed by lot according to tribal size.",
+  "ref": "Numbers 26:52–56"
+ },
+ {
+  "id": "old-numbers-26-5",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two men counted in the first census at Sinai were still alive at this census?",
+  "choices": [
+   "Joshua and Caleb",
+   "Eleazar and Ithamar",
+   "Moses and Aaron",
+   "Phinehas and Hur"
+  ],
+  "answer": 0,
+  "explanation": "Of those numbered at Sinai, not a man was left except Caleb the son of Jephunneh and Joshua the son of Nun.",
+  "ref": "Numbers 26:64–65"
+ },
+ {
+  "id": "old-numbers-27-1",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose daughters came to ask for an inheritance because their father had no sons?",
+  "choices": [
+   "Zelophehad's",
+   "Korah's",
+   "Aaron's",
+   "Caleb's"
+  ],
+  "answer": 0,
+  "explanation": "The daughters of Zelophehad requested their father's inheritance.",
+  "ref": "Numbers 27:1"
+ },
+ {
+  "id": "old-numbers-27-2",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the Lord rule in the case of Zelophehad's daughters?",
+  "choices": [
+   "They should receive nothing",
+   "They should inherit their father's possession",
+   "They should marry priests only",
+   "They should wait for Joshua"
+  ],
+  "answer": 1,
+  "explanation": "God said the daughters spoke rightly and should receive an inheritance.",
+  "ref": "Numbers 27:7"
+ },
+ {
+  "id": "old-numbers-27-3",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Moses told he would see the land but not enter it?",
+  "choices": [
+   "He was too old",
+   "He chose not to",
+   "He rebelled at the waters of Meribah",
+   "He was from Levi"
+  ],
+  "answer": 2,
+  "explanation": "Moses would not enter because of his failure to sanctify God at Meribah.",
+  "ref": "Numbers 27:12–14"
+ },
+ {
+  "id": "old-numbers-27-4",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did God choose to follow Moses as leader?",
+  "choices": [
+   "Eleazar",
+   "Phinehas",
+   "Caleb",
+   "Joshua the son of Nun"
+  ],
+  "answer": 3,
+  "explanation": "Joshua was chosen as Moses' successor.",
+  "ref": "Numbers 27:18"
+ },
+ {
+  "id": "old-numbers-27-5",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Before whom was Joshua set so that he might receive a charge?",
+  "choices": [
+   "Balak",
+   "Eleazar the priest and all the congregation",
+   "The elders only",
+   "Aaron's sons only"
+  ],
+  "answer": 1,
+  "explanation": "Joshua was set before Eleazar and all the congregation.",
+  "ref": "Numbers 27:19"
+ },
+ {
+  "id": "old-numbers-28-1",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many lambs were offered daily as a continual burnt offering?",
+  "choices": [
+   "One",
+   "Two",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "One lamb was offered in the morning and one at even.",
+  "ref": "Numbers 28:3–4"
+ },
+ {
+  "id": "old-numbers-28-2",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On which day were two more lambs offered beside the continual burnt offering?",
+  "choices": [
+   "The Sabbath",
+   "Passover",
+   "The new moon",
+   "Trumpets"
+  ],
+  "answer": 0,
+  "explanation": "The Sabbath offering added two lambs besides the daily offering.",
+  "ref": "Numbers 28:9–10"
+ },
+ {
+  "id": "old-numbers-28-3",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was offered at the beginning of each month?",
+  "choices": [
+   "Only incense",
+   "Burnt offerings for the new moon",
+   "Only a wave sheaf",
+   "No sacrifices"
+  ],
+  "answer": 1,
+  "explanation": "New moon offerings included bullocks, a ram, lambs, and related offerings.",
+  "ref": "Numbers 28:11"
+ },
+ {
+  "id": "old-numbers-28-4",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what day of the first month was the Lord's Passover?",
+  "choices": [
+   "First",
+   "Tenth",
+   "Fourteenth",
+   "Fifteenth"
+  ],
+  "answer": 2,
+  "explanation": "The Passover was on the fourteenth day of the first month.",
+  "ref": "Numbers 28:16"
+ },
+ {
+  "id": "old-numbers-28-5",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which feast is the day of the firstfruits, held when the weeks were out?",
+  "choices": [
+   "Trumpets",
+   "Tabernacles",
+   "Weeks",
+   "Atonement"
+  ],
+  "answer": 2,
+  "explanation": "The feast of weeks was linked with the day of firstfruits.",
+  "ref": "Numbers 28:26"
+ },
+ {
+  "id": "old-numbers-29-1",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What special observance occurred on the first day of the seventh month?",
+  "choices": [
+   "Passover",
+   "A day of blowing the trumpets",
+   "The Jubilee",
+   "Dedication"
+  ],
+  "answer": 1,
+  "explanation": "The first day of the seventh month was a memorial of blowing trumpets.",
+  "ref": "Numbers 29:1"
+ },
+ {
+  "id": "old-numbers-29-2",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what day of the seventh month was the Day of Atonement observed?",
+  "choices": [
+   "First",
+   "Fifteenth",
+   "Twenty-second",
+   "Tenth"
+  ],
+  "answer": 3,
+  "explanation": "The Day of Atonement fell on the tenth day of the seventh month.",
+  "ref": "Numbers 29:7"
+ },
+ {
+  "id": "old-numbers-29-3",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What feast began on the fifteenth day of the seventh month?",
+  "choices": [
+   "Weeks",
+   "Passover",
+   "Tabernacles",
+   "Firstfruits"
+  ],
+  "answer": 2,
+  "explanation": "The Feast of Tabernacles began on the fifteenth day of the seventh month.",
+  "ref": "Numbers 29:12"
+ },
+ {
+  "id": "old-numbers-29-4",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did the Feast of Tabernacles last before the solemn assembly?",
+  "choices": [
+   "Three days",
+   "Five days",
+   "Seven days",
+   "Forty days"
+  ],
+  "answer": 2,
+  "explanation": "The feast lasted seven days followed by a solemn assembly on the eighth day.",
+  "ref": "Numbers 29:12"
+ },
+ {
+  "id": "old-numbers-29-5",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was held on the eighth day after the seven days of Tabernacles?",
+  "choices": [
+   "No meeting",
+   "The Passover",
+   "A census",
+   "A solemn assembly"
+  ],
+  "answer": 3,
+  "explanation": "The eighth day was a solemn assembly.",
+  "ref": "Numbers 29:35"
+ },
+ {
+  "id": "old-numbers-30-1",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a man required to do if he vowed a vow unto the Lord?",
+  "choices": [
+   "Forget it after seven days",
+   "Ask the priest to change it",
+   "Not break his word",
+   "Pay silver instead"
+  ],
+  "answer": 2,
+  "explanation": "A man's vow had to be kept according to all that proceeded out of his mouth.",
+  "ref": "Numbers 30:2"
+ },
+ {
+  "id": "old-numbers-30-2",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When could a father disallow his daughter's vow?",
+  "choices": [
+   "Any time years later",
+   "Only before the priest",
+   "Never",
+   "On the day he heard it"
+  ],
+  "answer": 3,
+  "explanation": "A father could disallow it on the day he heard it.",
+  "ref": "Numbers 30:5"
+ },
+ {
+  "id": "old-numbers-30-3",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When could a husband make his wife's vow void?",
+  "choices": [
+   "Only at Jubilee",
+   "After seven months",
+   "Never",
+   "On the day he heard it"
+  ],
+  "answer": 3,
+  "explanation": "A husband could disallow it on the day he heard it.",
+  "ref": "Numbers 30:8"
+ },
+ {
+  "id": "old-numbers-30-4",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose vows stood automatically without a husband's or father's authority over them?",
+  "choices": [
+   "Only daughters",
+   "Only priest's wives",
+   "All married women",
+   "Widows and divorced women"
+  ],
+  "answer": 3,
+  "explanation": "A widow's or divorced woman's vows stood against her.",
+  "ref": "Numbers 30:9"
+ },
+ {
+  "id": "old-numbers-30-5",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened if a husband kept silent from day to day about his wife's vows?",
+  "choices": [
+   "They vanished",
+   "They transferred to the priest",
+   "They became optional",
+   "He established them"
+  ],
+  "answer": 3,
+  "explanation": "His silence confirmed and established her vows.",
+  "ref": "Numbers 30:14"
+ },
+ {
+  "id": "old-numbers-31-1",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against which people was Moses told to avenge the children of Israel?",
+  "choices": [
+   "Moab",
+   "Midian",
+   "Egypt",
+   "Edom"
+  ],
+  "answer": 1,
+  "explanation": "The Lord commanded vengeance against the Midianites.",
+  "ref": "Numbers 31:2"
+ },
+ {
+  "id": "old-numbers-31-2",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men from each tribe were sent to the war?",
+  "choices": [
+   "100",
+   "1,000",
+   "10,000",
+   "12,000"
+  ],
+  "answer": 1,
+  "explanation": "A thousand from each tribe were sent, totaling twelve thousand.",
+  "ref": "Numbers 31:4"
+ },
+ {
+  "id": "old-numbers-31-3",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went to the battle with the holy instruments and trumpets?",
+  "choices": [
+   "Eleazar",
+   "Joshua",
+   "Caleb",
+   "Phinehas"
+  ],
+  "answer": 3,
+  "explanation": "Phinehas went with the holy instruments and the trumpets.",
+  "ref": "Numbers 31:6"
+ },
+ {
+  "id": "old-numbers-31-4",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which son of Beor was slain with the sword along with the kings of Midian?",
+  "choices": [
+   "Balak",
+   "Hobab",
+   "Og",
+   "Balaam"
+  ],
+  "answer": 3,
+  "explanation": "Balaam son of Beor was slain with the sword.",
+  "ref": "Numbers 31:8"
+ },
+ {
+  "id": "old-numbers-31-5",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the officers report to Moses after counting the men of war?",
+  "choices": [
+   "The spoil was small",
+   "Moses fought alone",
+   "Not one man of Israel was missing",
+   "Midian surrendered"
+  ],
+  "answer": 2,
+  "explanation": "The officers reported that not one Israelite soldier was missing.",
+  "ref": "Numbers 31:49"
+ },
+ {
+  "id": "old-numbers-32-1",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the children of Reuben and Gad ask for the land of Jazer and Gilead?",
+  "choices": [
+   "It had many cities",
+   "It was near Egypt",
+   "It was a place for cattle",
+   "It had gold mines"
+  ],
+  "answer": 2,
+  "explanation": "They had much cattle and saw the land was suitable for livestock.",
+  "ref": "Numbers 32:1–4"
+ },
+ {
+  "id": "old-numbers-32-2",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses fear their request would do to the hearts of the other Israelites?",
+  "choices": [
+   "Make them richer",
+   "Cause them to fight Midian",
+   "Turn them into Levites",
+   "Discourage them from going over Jordan"
+  ],
+  "answer": 3,
+  "explanation": "Moses feared they would discourage the rest from entering the land.",
+  "ref": "Numbers 32:7"
+ },
+ {
+  "id": "old-numbers-32-3",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did these tribes promise to do before settling east of Jordan?",
+  "choices": [
+   "Return to Egypt",
+   "Give all their cattle away",
+   "Build the tabernacle",
+   "Go armed before Israel until the land was subdued"
+  ],
+  "answer": 3,
+  "explanation": "They promised to go armed with Israel until Canaan was secured.",
+  "ref": "Numbers 32:17–18"
+ },
+ {
+  "id": "old-numbers-32-4",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning did Moses give if they failed to keep their word?",
+  "choices": [
+   "They would lose all cattle",
+   "They would become Levites",
+   "Their sin would find them out",
+   "They would be exiled immediately"
+  ],
+  "answer": 2,
+  "explanation": "Moses warned that if they broke their promise, their sin would find them out.",
+  "ref": "Numbers 32:23"
+ },
+ {
+  "id": "old-numbers-32-5",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which half tribe joined Reuben and Gad in receiving land east of Jordan?",
+  "choices": [
+   "Benjamin",
+   "Naphtali",
+   "Simeon",
+   "Manasseh"
+  ],
+  "answer": 3,
+  "explanation": "Half the tribe of Manasseh also received territory east of Jordan.",
+  "ref": "Numbers 32:33"
+ },
+ {
+  "id": "old-numbers-33-1",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who wrote the journeys of Israel according to their goings out?",
+  "choices": [
+   "Joshua",
+   "Eleazar",
+   "Phinehas",
+   "Moses"
+  ],
+  "answer": 3,
+  "explanation": "Moses wrote their goings out according to their journeys by the commandment of the Lord.",
+  "ref": "Numbers 33:2"
+ },
+ {
+  "id": "old-numbers-33-2",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what place did Israel depart after the Passover?",
+  "choices": [
+   "Kadesh",
+   "Sinai",
+   "Shittim",
+   "Rameses"
+  ],
+  "answer": 3,
+  "explanation": "They departed from Rameses on the fifteenth day of the first month.",
+  "ref": "Numbers 33:3"
+ },
+ {
+  "id": "old-numbers-33-3",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the people commanded to do to the inhabitants of the land when they entered Canaan?",
+  "choices": [
+   "Live among them peacefully without change",
+   "Marry them",
+   "Make them priests",
+   "Drive them out and destroy their pictures and molten images"
+  ],
+  "answer": 3,
+  "explanation": "Israel was to drive out the inhabitants and destroy their idolatrous objects.",
+  "ref": "Numbers 33:52"
+ },
+ {
+  "id": "old-numbers-33-4",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was the land to be divided?",
+  "choices": [
+   "By the eldest tribe",
+   "By military rank",
+   "By lot",
+   "By priestly decree alone"
+  ],
+  "answer": 2,
+  "explanation": "The land was to be divided by lot among the tribes.",
+  "ref": "Numbers 33:54"
+ },
+ {
+  "id": "old-numbers-33-5",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the remaining inhabitants become if Israel failed to drive them out?",
+  "choices": [
+   "Allies",
+   "Pricks in the eyes and thorns in the sides",
+   "Priests",
+   "Tribute workers only"
+  ],
+  "answer": 1,
+  "explanation": "The remaining peoples would trouble Israel like thorns and pricks.",
+  "ref": "Numbers 33:55"
+ },
+ {
+  "id": "old-numbers-34-1",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "place",
+  "question": "What land's borders are described in this chapter?",
+  "choices": [
+   "Egypt",
+   "Moab",
+   "Canaan",
+   "Edom"
+  ],
+  "answer": 2,
+  "explanation": "The chapter defines the borders of the land of Canaan for inheritance.",
+  "ref": "Numbers 34:2"
+ },
+ {
+  "id": "old-numbers-34-2",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "place",
+  "question": "What sea formed the western border?",
+  "choices": [
+   "The Red Sea",
+   "The Sea of Galilee",
+   "The Dead Sea",
+   "The Great Sea"
+  ],
+  "answer": 3,
+  "explanation": "The Great Sea served as the western border.",
+  "ref": "Numbers 34:6"
+ },
+ {
+  "id": "old-numbers-34-3",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who along with Eleazar was appointed to divide the land?",
+  "choices": [
+   "Moses",
+   "Caleb",
+   "Joshua",
+   "Phinehas"
+  ],
+  "answer": 2,
+  "explanation": "Eleazar the priest and Joshua the son of Nun were appointed to divide the land.",
+  "ref": "Numbers 34:17"
+ },
+ {
+  "id": "old-numbers-34-4",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many princes, one from each tribe west of Jordan, were named to help divide the land?",
+  "choices": [
+   "6",
+   "10",
+   "12",
+   "14"
+  ],
+  "answer": 1,
+  "explanation": "Ten tribal leaders were named to assist with the western tribes' inheritance.",
+  "ref": "Numbers 34:18–29"
+ },
+ {
+  "id": "old-numbers-34-5",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which river is mentioned near the southern boundary line?",
+  "choices": [
+   "River of Egypt",
+   "Jordan",
+   "Euphrates",
+   "Jabbok"
+  ],
+  "answer": 0,
+  "explanation": "The river of Egypt is mentioned in the southern border description.",
+  "ref": "Numbers 34:5"
+ },
+ {
+  "id": "old-numbers-35-1",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the children of Israel to give the Levites out of their inheritance?",
+  "choices": [
+   "Only gold",
+   "Cities to dwell in with suburbs",
+   "A king",
+   "Half the land"
+  ],
+  "answer": 1,
+  "explanation": "The Levites were given cities and surrounding pasturelands.",
+  "ref": "Numbers 35:2"
+ },
+ {
+  "id": "old-numbers-35-2",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many cities of refuge were to be appointed?",
+  "choices": [
+   "3",
+   "6",
+   "12",
+   "48"
+  ],
+  "answer": 1,
+  "explanation": "Six cities of refuge were appointed.",
+  "ref": "Numbers 35:6"
+ },
+ {
+  "id": "old-numbers-35-3",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who could flee to a city of refuge?",
+  "choices": [
+   "One who killed a person unawares",
+   "Only priests",
+   "Every criminal",
+   "Only Levites"
+  ],
+  "answer": 0,
+  "explanation": "The refuge cities were for manslayers who killed unintentionally.",
+  "ref": "Numbers 35:11"
+ },
+ {
+  "id": "old-numbers-35-4",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many witnesses were required to put a murderer to death?",
+  "choices": [
+   "One",
+   "Two or more",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "A murderer could be executed only on the testimony of multiple witnesses.",
+  "ref": "Numbers 35:30"
+ },
+ {
+  "id": "old-numbers-35-5",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Could ransom be taken for a murderer worthy of death?",
+  "choices": [
+   "No",
+   "Yes, always",
+   "Only in war",
+   "Only from strangers"
+  ],
+  "answer": 0,
+  "explanation": "No ransom could be accepted for a murderer deserving death.",
+  "ref": "Numbers 35:31"
+ },
+ {
+  "id": "old-numbers-36-1",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What concern did the heads of Joseph's tribe raise about Zelophehad's daughters?",
+  "choices": [
+   "They were too young",
+   "They wanted more land",
+   "Their inheritance might pass to another tribe through marriage",
+   "They refused marriage"
+  ],
+  "answer": 2,
+  "explanation": "Their concern was that the inheritance would move to another tribe if the daughters married outside the tribe.",
+  "ref": "Numbers 36:3"
+ },
+ {
+  "id": "old-numbers-36-2",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses command concerning the daughters of Zelophehad?",
+  "choices": [
+   "They could not marry",
+   "They must marry priests",
+   "They could marry whom they thought best only within their father's tribe",
+   "They must remain in Moab"
+  ],
+  "answer": 2,
+  "explanation": "They were free to marry, but only within the family of their father's tribe.",
+  "ref": "Numbers 36:6"
+ },
+ {
+  "id": "old-numbers-36-3",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was this marriage rule given?",
+  "choices": [
+   "So every tribe would keep its inheritance",
+   "To keep peace with Moab",
+   "To increase the priesthood",
+   "To end the Jubilee"
+  ],
+  "answer": 0,
+  "explanation": "The inheritance of each tribe was to remain attached to that tribe.",
+  "ref": "Numbers 36:7"
+ },
+ {
+  "id": "old-numbers-36-4",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Did the daughters of Zelophehad obey this command?",
+  "choices": [
+   "Yes",
+   "No",
+   "Only partly",
+   "The text does not say"
+  ],
+  "answer": 0,
+  "explanation": "The daughters obeyed and married within the family of Manasseh.",
+  "ref": "Numbers 36:10–12"
+ },
+ {
+  "id": "old-numbers-36-5",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were these commandments given?",
+  "choices": [
+   "At Sinai",
+   "In the plains of Moab by Jordan near Jericho",
+   "At Kadesh",
+   "At Hebron"
+  ],
+  "answer": 1,
+  "explanation": "The book closes in the plains of Moab by Jordan near Jericho.",
+  "ref": "Numbers 36:13"
+ }
+]

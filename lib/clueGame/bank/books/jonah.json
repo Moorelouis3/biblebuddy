@@ -1,0 +1,322 @@
+[
+ {
+  "id": "old-jonah-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "To what city did the word of the Lord send Jonah?",
+  "choices": [
+   "Jerusalem",
+   "Babylon",
+   "Tyre",
+   "Nineveh"
+  ],
+  "answer": 3,
+  "explanation": "God sent Jonah to Nineveh to cry against its wickedness.",
+  "ref": "Jonah 1:2"
+ },
+ {
+  "id": "old-jonah-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jonah try to flee instead of obeying God's call?",
+  "choices": [
+   "Tarshish",
+   "Egypt",
+   "Damascus",
+   "Moab"
+  ],
+  "answer": 0,
+  "explanation": "Jonah went down to Joppa seeking passage to Tarshish, away from the Lord's commission.",
+  "ref": "Jonah 1:3"
+ },
+ {
+  "id": "old-jonah-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord send after Jonah boarded the ship?",
+  "choices": [
+   "A great wind and mighty tempest",
+   "A calm wind",
+   "An earthquake",
+   "A plague"
+  ],
+  "answer": 0,
+  "explanation": "God sent a powerful storm to stop Jonah's flight.",
+  "ref": "Jonah 1:4"
+ },
+ {
+  "id": "old-jonah-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was the storm calmed?",
+  "choices": [
+   "Jonah was cast into the sea",
+   "The sailors rowed to shore",
+   "The captain prayed",
+   "The ship found a harbor"
+  ],
+  "answer": 0,
+  "explanation": "When Jonah was thrown into the sea, the raging storm stopped.",
+  "ref": "Jonah 1:15"
+ },
+ {
+  "id": "old-jonah-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord prepare to swallow up Jonah?",
+  "choices": [
+   "A great fish",
+   "An angel",
+   "A floating beam",
+   "Another ship"
+  ],
+  "answer": 0,
+  "explanation": "The LORD had prepared a great fish to swallow Jonah, and Jonah was in its belly three days and three nights.",
+  "ref": "Jonah 1:17"
+ },
+ {
+  "id": "old-jonah-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where did Jonah pray to the Lord?",
+  "choices": [
+   "Out of the fish's belly",
+   "From the ship",
+   "From Nineveh",
+   "From Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Jonah's prayer rises to God from within the fish.",
+  "ref": "Jonah 2:1"
+ },
+ {
+  "id": "old-jonah-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jonah say happened when he cried by reason of his affliction?",
+  "choices": [
+   "The Lord heard him",
+   "No one answered",
+   "The sailors mocked him",
+   "The fish spoke"
+  ],
+  "answer": 0,
+  "explanation": "Jonah testified that God heard him from the belly of hell.",
+  "ref": "Jonah 2:2"
+ },
+ {
+  "id": "old-jonah-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was wrapped around Jonah's head?",
+  "choices": [
+   "Ropes",
+   "A crown",
+   "A net",
+   "Seaweed"
+  ],
+  "answer": 3,
+  "explanation": "Jonah describes the weeds wrapping around his head in the depths.",
+  "ref": "Jonah 2:5"
+ },
+ {
+  "id": "old-jonah-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What great truth does Jonah declare?",
+  "choices": [
+   "Judgment belongs to the Lord",
+   "The sea belongs to the Lord",
+   "Nineveh belongs to the Lord",
+   "Salvation is of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Jonah confesses that salvation belongs wholly to God.",
+  "ref": "Jonah 2:9"
+ },
+ {
+  "id": "old-jonah-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened after Jonah finished praying?",
+  "choices": [
+   "The fish died",
+   "The fish vomited Jonah onto dry land",
+   "The storm returned",
+   "Jonah remained there forty days"
+  ],
+  "answer": 1,
+  "explanation": "God commanded the fish, and Jonah was delivered onto dry land.",
+  "ref": "Jonah 2:10"
+ },
+ {
+  "id": "old-jonah-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Nineveh was an exceeding great city of how many days' journey?",
+  "choices": [
+   "One",
+   "Seven",
+   "Forty",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "Nineveh is described as an exceeding great city of three days' journey.",
+  "ref": "Jonah 3:3"
+ },
+ {
+  "id": "old-jonah-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What simple warning did Jonah preach in the city?",
+  "choices": [
+   "Peace will come to Nineveh",
+   "Yet forty days, and Nineveh shall be overthrown",
+   "Assyria will conquer Judah",
+   "Build an altar to the Lord"
+  ],
+  "answer": 1,
+  "explanation": "Jonah's message was a short but urgent warning of coming judgment.",
+  "ref": "Jonah 3:4"
+ },
+ {
+  "id": "old-jonah-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people of Nineveh respond to Jonah's preaching?",
+  "choices": [
+   "They believed God and proclaimed a fast",
+   "They laughed at him",
+   "They threw him out of the city",
+   "They asked for a king"
+  ],
+  "answer": 0,
+  "explanation": "The people responded with belief, fasting, and sackcloth.",
+  "ref": "Jonah 3:5"
+ },
+ {
+  "id": "old-jonah-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king of Nineveh do when he heard the warning?",
+  "choices": [
+   "He gathered an army",
+   "He ordered Jonah arrested",
+   "He arose from his throne and covered himself with sackcloth",
+   "He ignored the message"
+  ],
+  "answer": 2,
+  "explanation": "The king humbled himself publicly in repentance.",
+  "ref": "Jonah 3:6"
+ },
+ {
+  "id": "old-jonah-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God do when He saw Nineveh's repentance?",
+  "choices": [
+   "He destroyed the city anyway",
+   "He delayed only one day",
+   "He repented of the evil that He had said He would do",
+   "He crowned Jonah"
+  ],
+  "answer": 2,
+  "explanation": "God relented from the announced disaster when the city turned from its evil way.",
+  "ref": "Jonah 3:10"
+ },
+ {
+  "id": "old-jonah-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jonah react when God spared Nineveh?",
+  "choices": [
+   "He was very displeased and angry",
+   "He rejoiced greatly",
+   "He returned home quietly",
+   "He praised the sailors"
+  ],
+  "answer": 0,
+  "explanation": "Jonah was angry that God showed mercy to Nineveh.",
+  "ref": "Jonah 4:1"
+ },
+ {
+  "id": "old-jonah-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What gracious character of God does Jonah quote in his complaint?",
+  "choices": [
+   "That God is swift to destroy",
+   "That God forgets sin",
+   "That God is gracious, merciful, and slow to anger",
+   "That God favors Israel only"
+  ],
+  "answer": 2,
+  "explanation": "Jonah knew God's merciful character and that is exactly what upset him.",
+  "ref": "Jonah 4:2"
+ },
+ {
+  "id": "old-jonah-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord prepare to give Jonah shade?",
+  "choices": [
+   "A cloud",
+   "A tent from heaven",
+   "A gourd",
+   "A palm branch"
+  ],
+  "answer": 2,
+  "explanation": "The LORD God prepared a gourd to be a shadow over Jonah's head.",
+  "ref": "Jonah 4:6"
+ },
+ {
+  "id": "old-jonah-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the gourd the next day?",
+  "choices": [
+   "A worm smote it and it withered",
+   "It flourished more",
+   "Jonah replanted it",
+   "The sailors carried it away"
+  ],
+  "answer": 0,
+  "explanation": "God prepared a worm that smote the gourd so that it withered.",
+  "ref": "Jonah 4:7"
+ },
+ {
+  "id": "old-jonah-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What closing question does God ask Jonah?",
+  "choices": [
+   "Should not I spare Nineveh, that great city?",
+   "Will you now go back to Joppa?",
+   "Do you still fear the sea?",
+   "Where is your faith?"
+  ],
+  "answer": 0,
+  "explanation": "The book ends with God's searching question about His compassion for Nineveh.",
+  "ref": "Jonah 4:11"
+ }
+]

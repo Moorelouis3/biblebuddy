@@ -168,7 +168,7 @@ export default function ClueRoom({ code }: { code: string }) {
             </button>
             <p className="mt-2 text-[13px] font-bold">Or read them the code to type in.</p>
             <p className="mt-4 rounded-xl px-3 py-2 text-[14px] font-bold" style={{ background: "rgba(255,255,255,.5)" }}>
-              {room.deckName} · 10 questions
+              {room.deckName} · up to 10 questions
             </p>
             <p className="mt-2 text-[13px] leading-snug">{HOW_TO_PLAY}</p>
             <h3 className="bb-clue-serif mt-4 text-lg font-bold">Players ({room.players.length})</h3>
@@ -196,7 +196,7 @@ export default function ClueRoom({ code }: { code: string }) {
             youId={room.you}
             now={now}
             cardBack="/games/clue/genesis/art/card-back.webp"
-            roundLabel="Genesis"
+            roundLabel={room.deckName.split(" · ")[0]}
             deckIds={room.deckIds}
             onAnswer={(choice) => void send("answer", choice)}
             onStudy={openStudy}

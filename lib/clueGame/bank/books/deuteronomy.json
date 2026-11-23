@@ -1,0 +1,2722 @@
+[
+ {
+  "id": "old-deuteronomy-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does Moses speak these words to all Israel?",
+  "choices": [
+   "At Sinai",
+   "In Jerusalem",
+   "On this side Jordan in the wilderness",
+   "At Hebron"
+  ],
+  "answer": 2,
+  "explanation": "Deuteronomy opens with Moses speaking to Israel east of the Jordan.",
+  "ref": "Deuteronomy 1:1"
+ },
+ {
+  "id": "old-deuteronomy-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days' journey is it from Horeb to Kadesh-barnea by Mount Seir?",
+  "choices": [
+   "3",
+   "11",
+   "40",
+   "70"
+  ],
+  "answer": 1,
+  "explanation": "Moses notes that the trip from Horeb to Kadesh-barnea was eleven days.",
+  "ref": "Deuteronomy 1:2"
+ },
+ {
+  "id": "old-deuteronomy-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Moses say he could not bear Israel by himself?",
+  "choices": [
+   "He was too old",
+   "He was ill",
+   "They were too numerous and burdensome for one man",
+   "Aaron had left"
+  ],
+  "answer": 2,
+  "explanation": "Moses recalled needing leaders because the people were too many for him alone.",
+  "ref": "Deuteronomy 1:9–12"
+ },
+ {
+  "id": "old-deuteronomy-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the spies bring back from the land?",
+  "choices": [
+   "Golden idols",
+   "Stone tablets",
+   "Wagons",
+   "Fruit of the land"
+  ],
+  "answer": 3,
+  "explanation": "The spies brought fruit from the land to show it was good.",
+  "ref": "Deuteronomy 1:25"
+ },
+ {
+  "id": "old-deuteronomy-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did that generation fail to enter the promised land?",
+  "choices": [
+   "They rebelled and did not believe the Lord",
+   "They lacked weapons",
+   "They were too few",
+   "The river was too high"
+  ],
+  "answer": 0,
+  "explanation": "Moses reminds them that unbelief and rebellion kept that generation out.",
+  "ref": "Deuteronomy 1:26–32"
+ },
+ {
+  "id": "old-deuteronomy-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Around what mountain did Israel compass many days?",
+  "choices": [
+   "Carmel",
+   "Hermon",
+   "Zion",
+   "Seir"
+  ],
+  "answer": 3,
+  "explanation": "Israel wandered around Mount Seir many days.",
+  "ref": "Deuteronomy 2:1"
+ },
+ {
+  "id": "old-deuteronomy-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which relatives of Israel were not to be troubled because God had given them land?",
+  "choices": [
+   "Egyptians",
+   "Philistines",
+   "Edom, Moab, and Ammon",
+   "Canaanites"
+  ],
+  "answer": 2,
+  "explanation": "Israel was not to trouble the children of Esau in Seir, or Moab and Ammon, the children of Lot, because God had given them their lands.",
+  "ref": "Deuteronomy 2:4–5"
+ },
+ {
+  "id": "old-deuteronomy-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What king of Heshbon came out against Israel and was defeated?",
+  "choices": [
+   "Og",
+   "Balak",
+   "Sihon",
+   "Balaam"
+  ],
+  "answer": 2,
+  "explanation": "Sihon king of Heshbon resisted Israel and was defeated.",
+  "ref": "Deuteronomy 2:24–33"
+ },
+ {
+  "id": "old-deuteronomy-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say He would begin to put upon the nations that day?",
+  "choices": [
+   "Their tribute",
+   "The dread and fear of thee",
+   "A famine",
+   "A plague"
+  ],
+  "answer": 1,
+  "explanation": "God said, \"This day will I begin to put the dread of thee and the fear of thee upon the nations.\"",
+  "ref": "Deuteronomy 2:25"
+ },
+ {
+  "id": "old-deuteronomy-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the generation of warriors that came out of Egypt?",
+  "choices": [
+   "They entered the land",
+   "They became Levites",
+   "They settled in Moab",
+   "They were consumed from among the host"
+  ],
+  "answer": 3,
+  "explanation": "The men of war from that generation were consumed in the wilderness.",
+  "ref": "Deuteronomy 2:14–16"
+ },
+ {
+  "id": "old-deuteronomy-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What king of Bashan came out against Israel at Edrei?",
+  "choices": [
+   "Sihon",
+   "Balak",
+   "Og",
+   "Jabin"
+  ],
+  "answer": 2,
+  "explanation": "Og king of Bashan came out to battle at Edrei.",
+  "ref": "Deuteronomy 3:1"
+ },
+ {
+  "id": "old-deuteronomy-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Moses describe the cities of Og's kingdom that Israel took?",
+  "choices": [
+   "Without walls",
+   "Hidden in caves",
+   "By the sea",
+   "Fenced with high walls, gates, and bars"
+  ],
+  "answer": 3,
+  "explanation": "The cities of Bashan were strongly fortified.",
+  "ref": "Deuteronomy 3:5"
+ },
+ {
+  "id": "old-deuteronomy-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To which tribes was the land east of Jordan given?",
+  "choices": [
+   "Judah and Benjamin",
+   "Reuben, Gad, and half Manasseh",
+   "Ephraim and Manasseh",
+   "Levi and Simeon"
+  ],
+  "answer": 1,
+  "explanation": "Moses recalls giving this land to Reuben, Gad, and half the tribe of Manasseh.",
+  "ref": "Deuteronomy 3:12–13"
+ },
+ {
+  "id": "old-deuteronomy-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Moses encourage with the reminder that the Lord would fight for Israel?",
+  "choices": [
+   "Caleb",
+   "Joshua",
+   "Aaron",
+   "Phinehas"
+  ],
+  "answer": 1,
+  "explanation": "Moses charged Joshua not to fear because the Lord would fight for them.",
+  "ref": "Deuteronomy 3:21–22"
+ },
+ {
+  "id": "old-deuteronomy-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what mountain did Moses view the land he would not enter?",
+  "choices": [
+   "Sinai",
+   "Pisgah",
+   "Carmel",
+   "Tabor"
+  ],
+  "answer": 1,
+  "explanation": "God told Moses to go up into Pisgah and behold the land.",
+  "ref": "Deuteronomy 3:27"
+ },
+ {
+  "id": "old-deuteronomy-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses say Israel must not do to God's word?",
+  "choices": [
+   "Add unto it or diminish from it",
+   "Read it aloud",
+   "Write it down",
+   "Teach it to children"
+  ],
+  "answer": 0,
+  "explanation": "They were forbidden to add to or take away from God's commandments.",
+  "ref": "Deuteronomy 4:2"
+ },
+ {
+  "id": "old-deuteronomy-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses say the nations would notice about Israel's law?",
+  "choices": [
+   "It showed wisdom and understanding",
+   "It was too strict",
+   "It was hidden",
+   "It was only for priests"
+  ],
+  "answer": 0,
+  "explanation": "The nations would see Israel's wisdom in obeying God's statutes.",
+  "ref": "Deuteronomy 4:6"
+ },
+ {
+  "id": "old-deuteronomy-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What image or form did Israel see when the Lord spoke from the fire at Horeb?",
+  "choices": [
+   "A man",
+   "A throne",
+   "An angel",
+   "No similitude"
+  ],
+  "answer": 3,
+  "explanation": "Israel saw no form when God spoke, which is part of the warning against idols.",
+  "ref": "Deuteronomy 4:15"
+ },
+ {
+  "id": "old-deuteronomy-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses warn would happen if Israel made graven images and corrupted themselves?",
+  "choices": [
+   "They would prosper",
+   "They would become kings",
+   "They would be scattered among the nations",
+   "Nothing"
+  ],
+  "answer": 2,
+  "explanation": "Moses warned that idolatry would bring scattering among the nations.",
+  "ref": "Deuteronomy 4:25–27"
+ },
+ {
+  "id": "old-deuteronomy-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What three cities did Moses set apart on this side Jordan?",
+  "choices": [
+   "Bezer, Ramoth, and Golan",
+   "Hebron, Jerusalem, Shiloh",
+   "Ai, Bethel, Jericho",
+   "Dan, Beersheba, Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "Moses set apart Bezer, Ramoth, and Golan as cities of refuge east of Jordan.",
+  "ref": "Deuteronomy 4:41–43"
+ },
+ {
+  "id": "old-deuteronomy-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With whom does Moses say the Lord made the covenant at Horeb?",
+  "choices": [
+   "Only the fathers",
+   "With us, even us, who are all alive this day",
+   "Only the Levites",
+   "Only Joshua"
+  ],
+  "answer": 1,
+  "explanation": "Moses emphasizes the covenant's relevance to the present generation.",
+  "ref": "Deuteronomy 5:3"
+ },
+ {
+  "id": "old-deuteronomy-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did all Israel hear the Ten Commandments at the mount?",
+  "choices": [
+   "Through a dream in the night",
+   "By the Lord's voice out of the midst of the fire",
+   "Through the priests only",
+   "Through a letter from Moses"
+  ],
+  "answer": 1,
+  "explanation": "The Lord spoke these words to all the assembly out of the midst of the fire with a great voice.",
+  "ref": "Deuteronomy 5:22"
+ },
+ {
+  "id": "old-deuteronomy-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What reason is given here for keeping the Sabbath day?",
+  "choices": [
+   "Creation only",
+   "Remembering deliverance from Egypt",
+   "Harvest cycles",
+   "Joshua's leadership"
+  ],
+  "answer": 1,
+  "explanation": "Deuteronomy ties Sabbath observance to Israel's redemption from Egypt.",
+  "ref": "Deuteronomy 5:15"
+ },
+ {
+  "id": "old-deuteronomy-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people ask Moses to do after hearing God's voice?",
+  "choices": [
+   "Lead them into war",
+   "Build an altar",
+   "Count the tribes",
+   "Speak with God for them"
+  ],
+  "answer": 3,
+  "explanation": "The people asked Moses to hear God's words and then speak them to Israel.",
+  "ref": "Deuteronomy 5:27"
+ },
+ {
+  "id": "old-deuteronomy-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God wish for the people after they promised to hear and do His words?",
+  "choices": [
+   "That they would build Him a house",
+   "That they would go back to Egypt",
+   "That they would ask for a king",
+   "That they had a heart to fear Him and keep His commandments always"
+  ],
+  "answer": 3,
+  "explanation": "God said, \"O that there were such an heart in them, that they would fear me, and keep all my commandments always.\"",
+  "ref": "Deuteronomy 5:29"
+ },
+ {
+  "id": "old-deuteronomy-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the great commandment stated in this chapter?",
+  "choices": [
+   "Love thy neighbour as thyself",
+   "Honor the priests",
+   "Remember the Jubilee",
+   "Love the Lord thy God with all thine heart, soul, and might"
+  ],
+  "answer": 3,
+  "explanation": "The chapter centers on wholehearted love for the Lord.",
+  "ref": "Deuteronomy 6:5"
+ },
+ {
+  "id": "old-deuteronomy-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were God's words to be taught within Israel's households?",
+  "choices": [
+   "Only at feast days",
+   "By the princes only",
+   "Once a year",
+   "Diligently unto the children"
+  ],
+  "answer": 3,
+  "explanation": "Parents were to teach God's words diligently to their children.",
+  "ref": "Deuteronomy 6:7"
+ },
+ {
+  "id": "old-deuteronomy-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What short confession begins 'Hear, O Israel'?",
+  "choices": [
+   "The Lord is my shepherd",
+   "Blessed be the Lord forever",
+   "The earth is the Lord's",
+   "The Lord our God is one Lord"
+  ],
+  "answer": 3,
+  "explanation": "The Shema begins with the confession that the Lord is one.",
+  "ref": "Deuteronomy 6:4"
+ },
+ {
+  "id": "old-deuteronomy-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What danger did Moses warn about when Israel lived in good houses and had plenty?",
+  "choices": [
+   "Leaving the land",
+   "Running out of grain",
+   "Fear of Midian",
+   "Forgetting the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Prosperity could tempt them to forget the Lord who brought them out of Egypt.",
+  "ref": "Deuteronomy 6:10–12"
+ },
+ {
+  "id": "old-deuteronomy-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were future children to be answered when they asked the meaning of the testimonies and statutes?",
+  "choices": [
+   "By telling the story of deliverance from Egypt and God's commands",
+   "With silence",
+   "By sending them to the Levites only",
+   "By reading Numbers only"
+  ],
+  "answer": 0,
+  "explanation": "Parents were to answer by recounting redemption and covenant obedience.",
+  "ref": "Deuteronomy 6:20–25"
+ },
+ {
+  "id": "old-deuteronomy-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many nations are listed as greater and mightier than Israel in the land?",
+  "choices": [
+   "3",
+   "5",
+   "7",
+   "12"
+  ],
+  "answer": 2,
+  "explanation": "Seven nations are listed as being driven out before Israel.",
+  "ref": "Deuteronomy 7:1"
+ },
+ {
+  "id": "old-deuteronomy-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel commanded not to make with those nations?",
+  "choices": [
+   "Trade routes",
+   "Roads",
+   "Cities of refuge",
+   "Covenants or marriages"
+  ],
+  "answer": 3,
+  "explanation": "Israel was forbidden to make covenants with them or intermarry with them.",
+  "ref": "Deuteronomy 7:2–3"
+ },
+ {
+  "id": "old-deuteronomy-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why had the Lord chosen Israel?",
+  "choices": [
+   "Because they were the greatest nation",
+   "Because they were wealthy",
+   "Because He loved them and would keep His oath",
+   "Because they were sinless"
+  ],
+  "answer": 2,
+  "explanation": "God says He chose them out of love and faithfulness to His promise.",
+  "ref": "Deuteronomy 7:7–8"
+ },
+ {
+  "id": "old-deuteronomy-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How would the Lord drive out the nations before Israel?",
+  "choices": [
+   "All at once in one day",
+   "By Egypt's help",
+   "Only by famine",
+   "Little by little"
+  ],
+  "answer": 3,
+  "explanation": "God said He would put out the nations little by little.",
+  "ref": "Deuteronomy 7:22"
+ },
+ {
+  "id": "old-deuteronomy-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to do with graven images of the nations' gods?",
+  "choices": [
+   "Burn them with fire",
+   "Store them",
+   "Sell them",
+   "Cover them"
+  ],
+  "answer": 0,
+  "explanation": "They were to burn the carved images and not desire the silver or gold on them.",
+  "ref": "Deuteronomy 7:25"
+ },
+ {
+  "id": "old-deuteronomy-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the Lord humble and prove Israel in the wilderness?",
+  "choices": [
+   "To destroy them",
+   "To make them farmers",
+   "To teach them war only",
+   "To know what was in their heart"
+  ],
+  "answer": 3,
+  "explanation": "The wilderness testing revealed what was in their hearts.",
+  "ref": "Deuteronomy 8:2"
+ },
+ {
+  "id": "old-deuteronomy-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What lesson came from manna?",
+  "choices": [
+   "Man doth not live by bread only",
+   "Man liveth by bread only",
+   "Gold is life",
+   "Sacrifice ends hunger"
+  ],
+  "answer": 0,
+  "explanation": "Manna taught that life depends on every word from God's mouth.",
+  "ref": "Deuteronomy 8:3"
+ },
+ {
+  "id": "old-deuteronomy-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Moses say about Israel's clothing and feet during the forty years in the wilderness?",
+  "choices": [
+   "Their clothing did not wear out and their feet did not swell",
+   "Their clothing wore out and their feet swelled",
+   "Their clothing was stolen by enemies",
+   "They had no clothing or shoes at all"
+  ],
+  "answer": 0,
+  "explanation": "God preserved both their clothing and their feet during the wilderness years.",
+  "ref": "Deuteronomy 8:4"
+ },
+ {
+  "id": "old-deuteronomy-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What danger does Moses connect with eating and being full in the good land?",
+  "choices": [
+   "Forgetting the Lord",
+   "War with Egypt",
+   "Losing the ark",
+   "No harvest"
+  ],
+  "answer": 0,
+  "explanation": "He warns that fullness and prosperity could lead to pride and forgetting God.",
+  "ref": "Deuteronomy 8:10–14"
+ },
+ {
+  "id": "old-deuteronomy-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who gives power to get wealth?",
+  "choices": [
+   "The king",
+   "The priests",
+   "The elders",
+   "The Lord"
+  ],
+  "answer": 3,
+  "explanation": "Moses reminds Israel that it is the Lord who gives power to gain wealth.",
+  "ref": "Deuteronomy 8:18"
+ },
+ {
+  "id": "old-deuteronomy-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Moses describe the nations Israel will face across Jordan?",
+  "choices": [
+   "Greater and mightier than thyself",
+   "Small and weak",
+   "Peaceful and friendly",
+   "Few in number"
+  ],
+  "answer": 0,
+  "explanation": "The nations were stronger than Israel, but God would go before them.",
+  "ref": "Deuteronomy 9:1"
+ },
+ {
+  "id": "old-deuteronomy-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does Moses say Israel will inherit the land?",
+  "choices": [
+   "Because of their righteousness",
+   "Because of their military skill",
+   "Because Pharaoh granted it",
+   "Because of the wickedness of the nations and God's oath"
+  ],
+  "answer": 3,
+  "explanation": "The land was given because of God's promise and the nations' wickedness, not Israel's merit.",
+  "ref": "Deuteronomy 9:4–5"
+ },
+ {
+  "id": "old-deuteronomy-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of people does Moses more than once say Israel is?",
+  "choices": [
+   "A gentle people",
+   "A people of holy priests",
+   "A stiffnecked people",
+   "A people of brave warriors"
+  ],
+  "answer": 2,
+  "explanation": "Moses says more than once that Israel is a stiffnecked people.",
+  "ref": "Deuteronomy 9:6"
+ },
+ {
+  "id": "old-deuteronomy-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses do with the two tables of stone when he saw the molten calf?",
+  "choices": [
+   "Hid them",
+   "Gave them to Aaron",
+   "Broke them before their eyes",
+   "Laid them on the altar"
+  ],
+  "answer": 2,
+  "explanation": "Moses cast the tables out of his hands and broke them.",
+  "ref": "Deuteronomy 9:17"
+ },
+ {
+  "id": "old-deuteronomy-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Moses fast before the Lord after Israel's sin with the calf?",
+  "choices": [
+   "7 days",
+   "14 days",
+   "40 days and 40 nights",
+   "70 days"
+  ],
+  "answer": 2,
+  "explanation": "Moses fell down before the Lord forty days and nights interceding for Israel.",
+  "ref": "Deuteronomy 9:18"
+ },
+ {
+  "id": "old-deuteronomy-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Moses told to make after the first tablets were broken?",
+  "choices": [
+   "A new altar",
+   "A golden lamp",
+   "A silver trumpet",
+   "Two tables of stone and an ark of wood"
+  ],
+  "answer": 3,
+  "explanation": "Moses was told to hew two new stone tables and make an ark of wood.",
+  "ref": "Deuteronomy 10:1"
+ },
+ {
+  "id": "old-deuteronomy-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the second tablets placed?",
+  "choices": [
+   "In the tabernacle curtain",
+   "In the ark",
+   "At the altar",
+   "On the mountain"
+  ],
+  "answer": 1,
+  "explanation": "Moses put the second tablets in the ark as God commanded.",
+  "ref": "Deuteronomy 10:5"
+ },
+ {
+  "id": "old-deuteronomy-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What tribe did the Lord separate to bear the ark and minister before Him?",
+  "choices": [
+   "Levi",
+   "Judah",
+   "Benjamin",
+   "Joseph"
+  ],
+  "answer": 0,
+  "explanation": "Levi was set apart for service related to the ark and blessing in the Lord's name.",
+  "ref": "Deuteronomy 10:8"
+ },
+ {
+  "id": "old-deuteronomy-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Lord require of Israel in summary?",
+  "choices": [
+   "More cities",
+   "Only sacrifices",
+   "To fear, love, serve, and keep His commandments",
+   "A king"
+  ],
+  "answer": 2,
+  "explanation": "Moses summarizes God's requirement in terms of fear, love, service, and obedience.",
+  "ref": "Deuteronomy 10:12–13"
+ },
+ {
+  "id": "old-deuteronomy-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Moses describe God's concern for the stranger?",
+  "choices": [
+   "He ignores him",
+   "He loves the stranger, giving him food and raiment",
+   "He fears him",
+   "He taxes him"
+  ],
+  "answer": 1,
+  "explanation": "God loves the stranger, and Israel is told to do the same.",
+  "ref": "Deuteronomy 10:18–19"
+ },
+ {
+  "id": "old-deuteronomy-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What contrast does Moses make between Egypt and the promised land?",
+  "choices": [
+   "Egypt had mountains, Canaan did not",
+   "Egypt was watered by foot, but Canaan drinks water of the rain of heaven",
+   "Egypt lacked rivers",
+   "Canaan had no crops"
+  ],
+  "answer": 1,
+  "explanation": "The land ahead depended on God's rain rather than Egypt's irrigation patterns.",
+  "ref": "Deuteronomy 11:10–11"
+ },
+ {
+  "id": "old-deuteronomy-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would God give in due season if Israel obeyed Him?",
+  "choices": [
+   "Silver and gold",
+   "Rain, corn, wine, and oil",
+   "Horses",
+   "Walls"
+  ],
+  "answer": 1,
+  "explanation": "Obedience would bring timely rain and agricultural blessing.",
+  "ref": "Deuteronomy 11:13–15"
+ },
+ {
+  "id": "old-deuteronomy-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses warn would happen if Israel turned aside to serve other gods?",
+  "choices": [
+   "They would lose Aaron's rod",
+   "The Lord would shut up the heaven so there was no rain",
+   "They would forget the census",
+   "They would cross Jordan too late"
+  ],
+  "answer": 1,
+  "explanation": "If they served other gods, the Lord's wrath would be kindled and He would shut up the heaven so there was no rain.",
+  "ref": "Deuteronomy 11:16–17"
+ },
+ {
+  "id": "old-deuteronomy-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the blessing and the curse to be proclaimed?",
+  "choices": [
+   "At Sinai and Horeb",
+   "At Jericho and Ai",
+   "At Gerizim and Ebal",
+   "At Hebron and Beersheba"
+  ],
+  "answer": 2,
+  "explanation": "The blessing was associated with Gerizim and the curse with Ebal.",
+  "ref": "Deuteronomy 11:29"
+ },
+ {
+  "id": "old-deuteronomy-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the people to do with God's words as a continual reminder?",
+  "choices": [
+   "Lay them up in heart and soul and teach them to children",
+   "Hide them in caves",
+   "Read them yearly only",
+   "Give them to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "The words were to be treasured inwardly and taught continually.",
+  "ref": "Deuteronomy 11:18–19"
+ },
+ {
+  "id": "old-deuteronomy-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to do with all the places where the nations served their gods?",
+  "choices": [
+   "Utterly destroy them",
+   "Study them",
+   "Preserve them",
+   "Tax them"
+  ],
+  "answer": 0,
+  "explanation": "They were to destroy pagan worship sites completely.",
+  "ref": "Deuteronomy 12:2–3"
+ },
+ {
+  "id": "old-deuteronomy-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Israel to bring burnt offerings and sacrifices?",
+  "choices": [
+   "Anywhere they wished",
+   "Only in Egypt",
+   "To the place which the Lord would choose",
+   "To family altars"
+  ],
+  "answer": 2,
+  "explanation": "Worship was to be centralized in the place God chose.",
+  "ref": "Deuteronomy 12:5–6"
+ },
+ {
+  "id": "old-deuteronomy-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the people specifically forbidden to eat with the flesh?",
+  "choices": [
+   "Salt",
+   "The blood",
+   "Bread",
+   "Oil"
+  ],
+  "answer": 1,
+  "explanation": "Blood was not to be eaten but poured upon the earth like water.",
+  "ref": "Deuteronomy 12:16"
+ },
+ {
+  "id": "old-deuteronomy-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why must Israel not worship the Lord in the way the nations served their gods?",
+  "choices": [
+   "It was too expensive",
+   "It required too many priests",
+   "The nations did abominable things, even burning sons and daughters",
+   "It was only for kings"
+  ],
+  "answer": 2,
+  "explanation": "Pagan worship included abominations like child sacrifice and was not to be imitated.",
+  "ref": "Deuteronomy 12:31"
+ },
+ {
+  "id": "old-deuteronomy-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What final caution closes the chapter about God's commands?",
+  "choices": [
+   "Add to them freely",
+   "Observe to do it; thou shalt not add thereto, nor diminish from it",
+   "Keep them only in famine",
+   "Teach them only to Levites"
+  ],
+  "answer": 1,
+  "explanation": "Israel was forbidden to add to or diminish from God's commands.",
+  "ref": "Deuteronomy 12:32"
+ },
+ {
+  "id": "old-deuteronomy-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to do if a prophet's sign came to pass but he said, 'Let us go after other gods'?",
+  "choices": [
+   "Hear him because the sign worked",
+   "Crown him",
+   "Do not hearken unto him",
+   "Ask for another sign"
+  ],
+  "answer": 2,
+  "explanation": "Even a sign-working prophet was to be rejected if he led Israel to other gods.",
+  "ref": "Deuteronomy 13:1–3"
+ },
+ {
+  "id": "old-deuteronomy-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does Moses say the Lord tests Israel when a prophet or dreamer calls them to other gods?",
+  "choices": [
+   "To increase confusion",
+   "To teach astronomy",
+   "To bless the nations",
+   "To know whether they loved Him with all their heart"
+  ],
+  "answer": 3,
+  "explanation": "The test revealed whether Israel truly loved the Lord with all their heart.",
+  "ref": "Deuteronomy 13:3"
+ },
+ {
+  "id": "old-deuteronomy-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a person to do if a close relative secretly enticed him to serve other gods?",
+  "choices": [
+   "Keep it secret",
+   "Offer a peace offering",
+   "Refuse to consent and not conceal him",
+   "Move away"
+  ],
+  "answer": 2,
+  "explanation": "Even close family could not be spared if they enticed Israel to idolatry.",
+  "ref": "Deuteronomy 13:6–9"
+ },
+ {
+  "id": "old-deuteronomy-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was to happen to a city found turned wholly to idolatry?",
+  "choices": [
+   "It was to be utterly destroyed",
+   "It became a free city",
+   "It paid extra tribute",
+   "It was given to Levi"
+  ],
+  "answer": 0,
+  "explanation": "An apostate city was to be put under complete destruction.",
+  "ref": "Deuteronomy 13:12–16"
+ },
+ {
+  "id": "old-deuteronomy-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to put away by obeying these judgments?",
+  "choices": [
+   "All sorrow",
+   "All trade",
+   "Their vineyards",
+   "The evil from the midst of thee"
+  ],
+  "answer": 3,
+  "explanation": "These commands were meant to remove evil from among the people.",
+  "ref": "Deuteronomy 13:5"
+ },
+ {
+  "id": "old-deuteronomy-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were the children of Israel not to cut themselves for the dead like the nations?",
+  "choices": [
+   "They were warriors",
+   "They were a holy people unto the Lord",
+   "They were rich",
+   "They were too few"
+  ],
+  "answer": 1,
+  "explanation": "Their holy calling meant they were not to imitate pagan mourning customs.",
+  "ref": "Deuteronomy 14:1–2"
+ },
+ {
+  "id": "old-deuteronomy-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which water creatures were clean to eat?",
+  "choices": [
+   "Those with fins and scales",
+   "Any caught in rivers",
+   "Only large fish",
+   "Only salted fish"
+  ],
+  "answer": 0,
+  "explanation": "Clean fish had to have fins and scales.",
+  "ref": "Deuteronomy 14:9"
+ },
+ {
+  "id": "old-deuteronomy-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What unusual food prohibition closes the dietary section?",
+  "choices": [
+   "Do not eat honey",
+   "Thou shalt not seethe a kid in his mother's milk",
+   "Do not eat grapes",
+   "Do not eat after sunset"
+  ],
+  "answer": 1,
+  "explanation": "The food laws end with the command not to seethe (boil) a kid in his mother's milk.",
+  "ref": "Deuteronomy 14:21"
+ },
+ {
+  "id": "old-deuteronomy-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to do with the tithe of all increase year by year?",
+  "choices": [
+   "Hide it",
+   "Give it to the king",
+   "Burn it",
+   "Eat it before the Lord in the place He chose"
+  ],
+  "answer": 3,
+  "explanation": "The tithe was part of worshipful rejoicing before the Lord.",
+  "ref": "Deuteronomy 14:22–23"
+ },
+ {
+  "id": "old-deuteronomy-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was to come and eat of the tithe laid up at the end of three years?",
+  "choices": [
+   "Only soldiers",
+   "The king and princes",
+   "The Levite, stranger, fatherless, and widow",
+   "Only the priests"
+  ],
+  "answer": 2,
+  "explanation": "The tithe laid up at the end of three years was for the Levite, the stranger, the fatherless, and the widow.",
+  "ref": "Deuteronomy 14:28–29"
+ },
+ {
+  "id": "old-deuteronomy-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was to happen at the end of every seven years?",
+  "choices": [
+   "A census",
+   "A new king",
+   "A war against Moab",
+   "A release of debts"
+  ],
+  "answer": 3,
+  "explanation": "Every seventh year brought a release in lending among God's people.",
+  "ref": "Deuteronomy 15:1–2"
+ },
+ {
+  "id": "old-deuteronomy-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was Israel to treat the poor brother in the land?",
+  "choices": [
+   "Ignore him",
+   "Open thine hand wide unto him",
+   "Lend nothing near the seventh year",
+   "Send him away"
+  ],
+  "answer": 1,
+  "explanation": "They were called to generosity rather than hardness of heart.",
+  "ref": "Deuteronomy 15:7–8"
+ },
+ {
+  "id": "old-deuteronomy-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was a Hebrew servant to serve before going free?",
+  "choices": [
+   "Three years",
+   "Six years",
+   "Seven years",
+   "Ten years"
+  ],
+  "answer": 1,
+  "explanation": "A Hebrew servant served six years and went free in the seventh.",
+  "ref": "Deuteronomy 15:12"
+ },
+ {
+  "id": "old-deuteronomy-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were masters told to do when sending a servant away free?",
+  "choices": [
+   "Send him empty",
+   "Sell him again",
+   "Keep his family",
+   "Furnish him liberally"
+  ],
+  "answer": 3,
+  "explanation": "The servant was not to be sent away empty-handed.",
+  "ref": "Deuteronomy 15:13–14"
+ },
+ {
+  "id": "old-deuteronomy-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If a servant loved his master and chose to remain, what was done?",
+  "choices": [
+   "He became king",
+   "He was anointed with oil",
+   "His ear was bored through with an awl",
+   "He moved to Judah"
+  ],
+  "answer": 2,
+  "explanation": "The awl through the ear marked permanent service.",
+  "ref": "Deuteronomy 15:16–17"
+ },
+ {
+  "id": "old-deuteronomy-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What month was to be observed for keeping the Passover?",
+  "choices": [
+   "Tishri",
+   "Kislev",
+   "Abib",
+   "Adar"
+  ],
+  "answer": 2,
+  "explanation": "Passover was kept in the month of Abib because that was when Israel came out of Egypt.",
+  "ref": "Deuteronomy 16:1"
+ },
+ {
+  "id": "old-deuteronomy-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times a year were all Israel's males to appear before the Lord?",
+  "choices": [
+   "Three times",
+   "Once",
+   "Twice",
+   "Seven times"
+  ],
+  "answer": 0,
+  "explanation": "Males were to appear before the Lord at three major feasts each year.",
+  "ref": "Deuteronomy 16:16"
+ },
+ {
+  "id": "old-deuteronomy-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What feast is associated with rejoicing after the harvest and winepress?",
+  "choices": [
+   "Passover",
+   "Trumpets",
+   "Tabernacles",
+   "Atonement"
+  ],
+  "answer": 2,
+  "explanation": "The Feast of Tabernacles is connected with harvest rejoicing.",
+  "ref": "Deuteronomy 16:13–15"
+ },
+ {
+  "id": "old-deuteronomy-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were judges and officers told not to do in judgment?",
+  "choices": [
+   "Wrest judgment or respect persons or take gifts",
+   "Write laws",
+   "Count Levites",
+   "Keep feasts"
+  ],
+  "answer": 0,
+  "explanation": "Justice was to be impartial and free from bribery.",
+  "ref": "Deuteronomy 16:18–19"
+ },
+ {
+  "id": "old-deuteronomy-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel forbidden to plant near the altar of the Lord?",
+  "choices": [
+   "Vines",
+   "Barley",
+   "A grove of any trees",
+   "Olives"
+  ],
+  "answer": 2,
+  "explanation": "They were not to plant a grove by the altar.",
+  "ref": "Deuteronomy 16:21"
+ },
+ {
+  "id": "old-deuteronomy-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of animal was forbidden as a sacrifice to the Lord?",
+  "choices": [
+   "A firstborn",
+   "A male lamb",
+   "Anything with blemish or evilfavouredness",
+   "A dove"
+  ],
+  "answer": 2,
+  "explanation": "Sacrifices had to be without blemish.",
+  "ref": "Deuteronomy 17:1"
+ },
+ {
+  "id": "old-deuteronomy-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many witnesses were required before putting an idolater to death?",
+  "choices": [
+   "One",
+   "Two or three",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Two or three witnesses were required; one witness was not enough.",
+  "ref": "Deuteronomy 17:6"
+ },
+ {
+  "id": "old-deuteronomy-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were difficult cases to be brought?",
+  "choices": [
+   "To Egypt",
+   "To the place which the Lord shall choose",
+   "To the nearest city gate only",
+   "To the tribal army"
+  ],
+  "answer": 1,
+  "explanation": "Hard cases were to go to the priests and judge at the chosen place.",
+  "ref": "Deuteronomy 17:8–9"
+ },
+ {
+  "id": "old-deuteronomy-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a future king forbidden to multiply for himself?",
+  "choices": [
+   "Priests only",
+   "Horses, wives, and silver and gold",
+   "Cities and vineyards",
+   "Servants and oxen"
+  ],
+  "answer": 1,
+  "explanation": "The king was warned against multiplying horses, wives, and wealth.",
+  "ref": "Deuteronomy 17:16–17"
+ },
+ {
+  "id": "old-deuteronomy-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the king commanded to write for himself?",
+  "choices": [
+   "A battle plan",
+   "A family tree",
+   "A copy of this law in a book",
+   "A census scroll"
+  ],
+  "answer": 2,
+  "explanation": "The king was to write and read a copy of the law so he would fear the Lord.",
+  "ref": "Deuteronomy 17:18"
+ },
+ {
+  "id": "old-deuteronomy-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What inheritance did the priests and Levites have with Israel?",
+  "choices": [
+   "Large fields",
+   "Cities only",
+   "A double portion",
+   "They had no inheritance; the Lord was their inheritance"
+  ],
+  "answer": 3,
+  "explanation": "The Lord Himself was the inheritance of the priests and Levites.",
+  "ref": "Deuteronomy 18:1–2"
+ },
+ {
+  "id": "old-deuteronomy-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What pagan practices were forbidden when Israel entered the land?",
+  "choices": [
+   "Harvest feasts",
+   "Divination, witchcraft, and passing children through the fire",
+   "Music",
+   "Shepherding"
+  ],
+  "answer": 1,
+  "explanation": "Occult practices and child sacrifice were declared abominations.",
+  "ref": "Deuteronomy 18:10–11"
+ },
+ {
+  "id": "old-deuteronomy-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What prophet did the Lord promise to raise up for Israel?",
+  "choices": [
+   "A prophet from Egypt",
+   "A prophet from among their brethren, like unto Moses",
+   "Only Aaron again",
+   "A king-priest"
+  ],
+  "answer": 1,
+  "explanation": "God promised a prophet from among Israel like Moses.",
+  "ref": "Deuteronomy 18:15"
+ },
+ {
+  "id": "old-deuteronomy-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel commanded to do with that promised prophet?",
+  "choices": [
+   "Ignore him",
+   "Test him by war",
+   "Crown him king",
+   "Hearken unto him"
+  ],
+  "answer": 3,
+  "explanation": "Israel was commanded to listen to the prophet God would raise up.",
+  "ref": "Deuteronomy 18:15"
+ },
+ {
+  "id": "old-deuteronomy-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How could Israel know when a prophet had not spoken from the Lord?",
+  "choices": [
+   "He spoke loudly",
+   "He wore linen",
+   "He asked for food",
+   "If the thing followed not nor came to pass"
+  ],
+  "answer": 3,
+  "explanation": "Failure of the word to come to pass marked a false prophet.",
+  "ref": "Deuteronomy 18:22"
+ },
+ {
+  "id": "old-deuteronomy-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to prepare in the land for the manslayer?",
+  "choices": [
+   "Armies",
+   "Granaries",
+   "Cities of refuge",
+   "Palaces"
+  ],
+  "answer": 2,
+  "explanation": "The way was to be prepared to cities of refuge for one who killed unintentionally.",
+  "ref": "Deuteronomy 19:2–3"
+ },
+ {
+  "id": "old-deuteronomy-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What example of accidental killing is given?",
+  "choices": [
+   "Falling from a wall",
+   "A stone from a sling",
+   "An axe head slipping from the helve",
+   "A horse trampling"
+  ],
+  "answer": 2,
+  "explanation": "The classic example is the axe head flying off while cutting wood.",
+  "ref": "Deuteronomy 19:5"
+ },
+ {
+  "id": "old-deuteronomy-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was not to be removed from a neighbor's property?",
+  "choices": [
+   "The landmark",
+   "His flock",
+   "His tools",
+   "His tithe"
+  ],
+  "answer": 0,
+  "explanation": "Removing a neighbor's landmark was forbidden.",
+  "ref": "Deuteronomy 19:14"
+ },
+ {
+  "id": "old-deuteronomy-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many witnesses were required to establish a matter?",
+  "choices": [
+   "One",
+   "Two or three",
+   "Five",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "A matter had to be established by two or three witnesses.",
+  "ref": "Deuteronomy 19:15"
+ },
+ {
+  "id": "old-deuteronomy-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was to be done to a false witness who sought to harm his brother?",
+  "choices": [
+   "Ignored",
+   "Exiled only",
+   "Fined lightly",
+   "Done unto him as he had thought to do"
+  ],
+  "answer": 3,
+  "explanation": "The false witness faced the punishment he intended for another.",
+  "ref": "Deuteronomy 19:19"
+ },
+ {
+  "id": "old-deuteronomy-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Israel not to be afraid when they saw horses, chariots, and a people more than they?",
+  "choices": [
+   "Because the Lord their God was with them",
+   "Because Moab would help them",
+   "Because the priests would fight",
+   "Because the Jordan protected them"
+  ],
+  "answer": 0,
+  "explanation": "They were not to fear because the Lord who brought them out of Egypt was with them.",
+  "ref": "Deuteronomy 20:1"
+ },
+ {
+  "id": "old-deuteronomy-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was to speak to the people before battle and encourage them?",
+  "choices": [
+   "The king",
+   "The priest",
+   "The eldest captain",
+   "The prophet"
+  ],
+  "answer": 1,
+  "explanation": "The priest was to encourage the people before battle.",
+  "ref": "Deuteronomy 20:2–4"
+ },
+ {
+  "id": "old-deuteronomy-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which men were told to go home before the battle?",
+  "choices": [
+   "Only Levites",
+   "Only the youngest men",
+   "Only foreigners",
+   "Those who built a house, planted a vineyard, betrothed a wife, or were fearful"
+  ],
+  "answer": 3,
+  "explanation": "Several classes of men, including the fearful, were permitted to return home.",
+  "ref": "Deuteronomy 20:5–8"
+ },
+ {
+  "id": "old-deuteronomy-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to offer distant cities before attacking?",
+  "choices": [
+   "A curse",
+   "Tribute immediately",
+   "Peace",
+   "Silence"
+  ],
+  "answer": 2,
+  "explanation": "They were first to proclaim peace to cities far away.",
+  "ref": "Deuteronomy 20:10"
+ },
+ {
+  "id": "old-deuteronomy-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were fruit trees not to be destroyed in siege warfare?",
+  "choices": [
+   "They belonged to the priests",
+   "The people could eat of them",
+   "They were sacred objects",
+   "They were too hard to cut"
+  ],
+  "answer": 1,
+  "explanation": "Trees that gave food were not to be cut down, \"for thou mayest eat of them.\"",
+  "ref": "Deuteronomy 20:19–20"
+ },
+ {
+  "id": "old-deuteronomy-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If a slain man was found and the killer unknown, what was to be measured?",
+  "choices": [
+   "The river depth",
+   "The victim's age",
+   "The harvest",
+   "The distance to the surrounding cities"
+  ],
+  "answer": 3,
+  "explanation": "The elders measured to determine the nearest city.",
+  "ref": "Deuteronomy 21:2"
+ },
+ {
+  "id": "old-deuteronomy-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal was used in the atonement ceremony for an unsolved murder?",
+  "choices": [
+   "A heifer",
+   "A ram",
+   "A dove",
+   "A goat"
+  ],
+  "answer": 0,
+  "explanation": "A heifer was used in the valley ceremony for the unknown murder case.",
+  "ref": "Deuteronomy 21:3–4"
+ },
+ {
+  "id": "old-deuteronomy-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What right of the firstborn was protected even if he belonged to the less-loved wife?",
+  "choices": [
+   "A throne",
+   "Priesthood",
+   "A double portion",
+   "A special city"
+  ],
+  "answer": 2,
+  "explanation": "The firstborn's double portion could not be denied because of favoritism.",
+  "ref": "Deuteronomy 21:17"
+ },
+ {
+  "id": "old-deuteronomy-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was to happen to a stubborn and rebellious son who would not obey?",
+  "choices": [
+   "He inherited the house",
+   "He became a servant",
+   "The men of his city were to stone him",
+   "He was sent to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "The law prescribed severe judgment for the persistently rebellious son.",
+  "ref": "Deuteronomy 21:18–21"
+ },
+ {
+  "id": "old-deuteronomy-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What rule is given about a man hanged on a tree?",
+  "choices": [
+   "Leave him all week",
+   "Do not let his body remain all night upon the tree",
+   "Bury him in a foreign land",
+   "Burn him immediately"
+  ],
+  "answer": 1,
+  "explanation": "The body was to be buried the same day, for he that is hanged is accursed of God.",
+  "ref": "Deuteronomy 21:22–23"
+ },
+ {
+  "id": "old-deuteronomy-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should someone do when seeing a brother's ox or sheep going astray?",
+  "choices": [
+   "Ignore it",
+   "Bring it back again",
+   "Sell it",
+   "Drive it away"
+  ],
+  "answer": 1,
+  "explanation": "Lost animals were to be restored to their owner.",
+  "ref": "Deuteronomy 22:1"
+ },
+ {
+  "id": "old-deuteronomy-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was to be done if the owner of the lost thing was unknown or far away?",
+  "choices": [
+   "Bring it home and keep it until the owner seeks it",
+   "Leave it in the field",
+   "Trade it",
+   "Burn it"
+  ],
+  "answer": 0,
+  "explanation": "The finder was to keep it safely until it could be returned.",
+  "ref": "Deuteronomy 22:2"
+ },
+ {
+  "id": "old-deuteronomy-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What simple safety feature was required for a new house?",
+  "choices": [
+   "A second door",
+   "A painted sign",
+   "A battlement for the roof",
+   "A tower"
+  ],
+  "answer": 2,
+  "explanation": "A roof parapet was required to prevent bloodguilt from a fall.",
+  "ref": "Deuteronomy 22:8"
+ },
+ {
+  "id": "old-deuteronomy-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the people told to make upon the four quarters of their vesture, the garment they covered themselves with?",
+  "choices": [
+   "Bells",
+   "Pockets",
+   "Fringes",
+   "Jewels"
+  ],
+  "answer": 2,
+  "explanation": "Israel was told to make fringes upon the four quarters of the vesture.",
+  "ref": "Deuteronomy 22:12"
+ },
+ {
+  "id": "old-deuteronomy-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which rule about mixing two kinds together is given in this chapter?",
+  "choices": [
+   "Do not wear a garment of woollen and linen together",
+   "Never mix flocks",
+   "Do not eat bread and oil together",
+   "Do not plant vineyards"
+  ],
+  "answer": 0,
+  "explanation": "The chapter forbids wearing a garment woven of wool and linen together.",
+  "ref": "Deuteronomy 22:11"
+ },
+ {
+  "id": "old-deuteronomy-23-1",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was not to enter into the congregation of the Lord to the tenth generation?",
+  "choices": [
+   "Egyptians and Edomites",
+   "Ammonites and Moabites",
+   "Levites and priests",
+   "Widows and strangers"
+  ],
+  "answer": 1,
+  "explanation": "Ammonites and Moabites were excluded because of their hostility toward Israel.",
+  "ref": "Deuteronomy 23:3"
+ },
+ {
+  "id": "old-deuteronomy-23-2",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were Ammon and Moab especially condemned in this passage?",
+  "choices": [
+   "They took Israel's oxen",
+   "They broke the Sabbath",
+   "They stole the ark",
+   "They met not Israel with bread and water and hired Balaam"
+  ],
+  "answer": 3,
+  "explanation": "They failed to help Israel and hired Balaam against them.",
+  "ref": "Deuteronomy 23:4"
+ },
+ {
+  "id": "old-deuteronomy-23-3",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was the camp to be kept holy?",
+  "choices": [
+   "Because it held treasure",
+   "Because Moses slept there",
+   "Because of the census",
+   "Because the Lord walked in the midst of the camp"
+  ],
+  "answer": 3,
+  "explanation": "The camp had to be holy because the Lord walked in its midst.",
+  "ref": "Deuteronomy 23:14"
+ },
+ {
+  "id": "old-deuteronomy-23-4",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel not to do with a servant escaped from his master?",
+  "choices": [
+   "Give him bread and water",
+   "Deliver him unto his master",
+   "Hide him in the tabernacle",
+   "Count him in the army"
+  ],
+  "answer": 1,
+  "explanation": "An escaped servant was not to be handed back to his master. He was to dwell among them and not be oppressed.",
+  "ref": "Deuteronomy 23:15"
+ },
+ {
+  "id": "old-deuteronomy-23-5",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was forbidden in lending to a brother?",
+  "choices": [
+   "Bread",
+   "Raiment",
+   "Witnesses",
+   "Usury"
+  ],
+  "answer": 3,
+  "explanation": "Israel was not to charge interest to a brother.",
+  "ref": "Deuteronomy 23:19"
+ },
+ {
+  "id": "old-deuteronomy-24-1",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What document is mentioned if a man sends away his wife?",
+  "choices": [
+   "A covenant scroll",
+   "A census note",
+   "A priestly blessing",
+   "A bill of divorcement"
+  ],
+  "answer": 3,
+  "explanation": "The text speaks of a bill of divorcement.",
+  "ref": "Deuteronomy 24:1"
+ },
+ {
+  "id": "old-deuteronomy-24-2",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was forbidden if the first husband divorced his wife and she married another?",
+  "choices": [
+   "Taking her again after she had been another man's wife",
+   "Paying her dowry",
+   "Giving her land",
+   "Leaving the city"
+  ],
+  "answer": 0,
+  "explanation": "The first husband could not take her again after she had been another man's wife.",
+  "ref": "Deuteronomy 24:4"
+ },
+ {
+  "id": "old-deuteronomy-24-3",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a newly married man excused from for one year?",
+  "choices": [
+   "War and any business",
+   "Harvest and feasts",
+   "Priesthood and tithes",
+   "Travel and trade"
+  ],
+  "answer": 0,
+  "explanation": "A man who had taken a new wife was not to go out to war or be charged with any business for one year.",
+  "ref": "Deuteronomy 24:5"
+ },
+ {
+  "id": "old-deuteronomy-24-4",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How quickly was a poor hired servant to be paid?",
+  "choices": [
+   "At the end of the month",
+   "Every Sabbath",
+   "The same day before sunset",
+   "At the feast"
+  ],
+  "answer": 2,
+  "explanation": "The servant's wages were to be paid promptly that same day.",
+  "ref": "Deuteronomy 24:14–15"
+ },
+ {
+  "id": "old-deuteronomy-24-5",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was to be left in field, oliveyard, and vineyard?",
+  "choices": [
+   "Nothing",
+   "Only firstfruits",
+   "Only damaged fruit",
+   "Gleanings for the stranger, fatherless, and widow"
+  ],
+  "answer": 3,
+  "explanation": "Forgotten or remaining produce was to be left for the vulnerable.",
+  "ref": "Deuteronomy 24:19–21"
+ },
+ {
+  "id": "old-deuteronomy-25-1",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were judges to do in a controversy between men?",
+  "choices": [
+   "Delay judgment",
+   "Justify the righteous and condemn the wicked",
+   "Punish both",
+   "Ask the king"
+  ],
+  "answer": 1,
+  "explanation": "Judges were to distinguish rightly between the righteous and the wicked.",
+  "ref": "Deuteronomy 25:1"
+ },
+ {
+  "id": "old-deuteronomy-25-2",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal was not to be muzzled when it treadeth out the corn?",
+  "choices": [
+   "The ox",
+   "The ass",
+   "The horse",
+   "The goat"
+  ],
+  "answer": 0,
+  "explanation": "The ox was not to be muzzled while working.",
+  "ref": "Deuteronomy 25:4"
+ },
+ {
+  "id": "old-deuteronomy-25-3",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What duty arose if brothers dwelt together and one died childless?",
+  "choices": [
+   "The widow returned to her father",
+   "The surviving brother was to raise up seed unto his brother",
+   "The land went to Levi",
+   "No duty was required"
+  ],
+  "answer": 1,
+  "explanation": "The surviving brother was to continue his brother's name.",
+  "ref": "Deuteronomy 25:5–6"
+ },
+ {
+  "id": "old-deuteronomy-25-4",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What commercial dishonesty is condemned?",
+  "choices": [
+   "Late harvest",
+   "Divers weights and measures",
+   "Foreign trade",
+   "Overuse of oxen"
+  ],
+  "answer": 1,
+  "explanation": "Unequal weights and measures were an abomination.",
+  "ref": "Deuteronomy 25:13–16"
+ },
+ {
+  "id": "old-deuteronomy-25-5",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which enemy was Israel told to remember and blot out?",
+  "choices": [
+   "Amalek",
+   "Midian",
+   "Edom",
+   "Moab"
+  ],
+  "answer": 0,
+  "explanation": "Israel was commanded to blot out the remembrance of Amalek.",
+  "ref": "Deuteronomy 25:17–19"
+ },
+ {
+  "id": "old-deuteronomy-26-1",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to bring when they came into the land and possessed it?",
+  "choices": [
+   "The first of all the fruit of the earth",
+   "A war offering",
+   "A new census",
+   "Temple silver"
+  ],
+  "answer": 0,
+  "explanation": "They were to bring the firstfruits in a basket to the Lord's chosen place.",
+  "ref": "Deuteronomy 26:1–2"
+ },
+ {
+  "id": "old-deuteronomy-26-2",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After the priest set the basket of firstfruits before the altar, how did the worshiper's words before the Lord begin?",
+  "choices": [
+   "A Syrian ready to perish was my father",
+   "The Lord is my shepherd",
+   "Hear, O Israel",
+   "The Lord bless thee"
+  ],
+  "answer": 0,
+  "explanation": "The worshiper began, \"A Syrian ready to perish was my father,\" and went on to tell how God brought Israel out of Egypt.",
+  "ref": "Deuteronomy 26:5"
+ },
+ {
+  "id": "old-deuteronomy-26-3",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who benefited from the third-year tithe?",
+  "choices": [
+   "Only priests",
+   "Only the army",
+   "The Levite, stranger, fatherless, and widow",
+   "Only the king"
+  ],
+  "answer": 2,
+  "explanation": "The third-year tithe was for those without regular inheritance or support.",
+  "ref": "Deuteronomy 26:12"
+ },
+ {
+  "id": "old-deuteronomy-26-4",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the worshiper confess he had not done with the holy things?",
+  "choices": [
+   "Sold them in the market",
+   "Offered them at Passover",
+   "Given them to the king",
+   "Eaten thereof in mourning or given thereof for the dead"
+  ],
+  "answer": 3,
+  "explanation": "He confessed proper handling of the hallowed things.",
+  "ref": "Deuteronomy 26:14"
+ },
+ {
+  "id": "old-deuteronomy-26-5",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Israel described at the chapter's end?",
+  "choices": [
+   "A mighty empire",
+   "A wandering tribe only",
+   "A peculiar people unto the Lord",
+   "A nation without law"
+  ],
+  "answer": 2,
+  "explanation": "The covenant language describes Israel as the Lord's special people.",
+  "ref": "Deuteronomy 26:18–19"
+ },
+ {
+  "id": "old-deuteronomy-27-1",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was to be written plainly on great plastered stones after crossing Jordan?",
+  "choices": [
+   "The census",
+   "The names of the tribes",
+   "The journey list",
+   "The words of this law"
+  ],
+  "answer": 3,
+  "explanation": "The law was to be written very plainly on the stones.",
+  "ref": "Deuteronomy 27:2–3"
+ },
+ {
+  "id": "old-deuteronomy-27-2",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which mountain was the altar to be built?",
+  "choices": [
+   "Gerizim",
+   "Ebal",
+   "Nebo",
+   "Sinai"
+  ],
+  "answer": 1,
+  "explanation": "The altar of stones was to be built on Mount Ebal.",
+  "ref": "Deuteronomy 27:4–5"
+ },
+ {
+  "id": "old-deuteronomy-27-3",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What tool was not to be used on the altar stones?",
+  "choices": [
+   "Bronze chisel",
+   "Iron tool",
+   "Measuring rod",
+   "Rope"
+  ],
+  "answer": 1,
+  "explanation": "No iron tool was to be lifted upon the altar stones.",
+  "ref": "Deuteronomy 27:5"
+ },
+ {
+  "id": "old-deuteronomy-27-4",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were the people to respond to the curses spoken by the Levites?",
+  "choices": [
+   "Silence",
+   "Trumpets",
+   "Amen",
+   "Sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "The people were to answer 'Amen' to each curse.",
+  "ref": "Deuteronomy 27:15–26"
+ },
+ {
+  "id": "old-deuteronomy-27-5",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which mountain was associated with blessing in this ceremony?",
+  "choices": [
+   "Ebal",
+   "Gerizim",
+   "Nebo",
+   "Hor"
+  ],
+  "answer": 1,
+  "explanation": "Mount Gerizim was associated with blessing.",
+  "ref": "Deuteronomy 27:12"
+ },
+ {
+  "id": "old-deuteronomy-28-1",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What condition is attached to the great blessings at the chapter's start?",
+  "choices": [
+   "Military strength",
+   "Royal power",
+   "Hearkening diligently unto the voice of the Lord",
+   "Large harvest only"
+  ],
+  "answer": 2,
+  "explanation": "The blessings depend on diligent obedience.",
+  "ref": "Deuteronomy 28:1"
+ },
+ {
+  "id": "old-deuteronomy-28-2",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are the blessings described as coming upon obedient Israel?",
+  "choices": [
+   "Slowly",
+   "Only at harvest",
+   "Only in war",
+   "They shall come on thee and overtake thee"
+  ],
+  "answer": 3,
+  "explanation": "Blessings are pictured as overtaking the obedient.",
+  "ref": "Deuteronomy 28:2"
+ },
+ {
+  "id": "old-deuteronomy-28-3",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated word marks the start of the judgment section?",
+  "choices": [
+   "Holy",
+   "Peace",
+   "Strong",
+   "Cursed"
+  ],
+  "answer": 3,
+  "explanation": "The curse section repeatedly begins 'Cursed shalt thou be.'",
+  "ref": "Deuteronomy 28:16"
+ },
+ {
+  "id": "old-deuteronomy-28-4",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What agricultural judgment is mentioned if Israel disobeys?",
+  "choices": [
+   "Rivers of oil",
+   "Heaven over thy head shall be brass and the earth iron",
+   "Grapes all year",
+   "Snow in Egypt"
+  ],
+  "answer": 1,
+  "explanation": "The imagery of brass heaven and iron earth describes severe drought and judgment.",
+  "ref": "Deuteronomy 28:23"
+ },
+ {
+  "id": "old-deuteronomy-28-5",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Moses warn that the Lord would scatter Israel if they did not obey?",
+  "choices": [
+   "Only to Moab",
+   "Only to Egypt",
+   "Only to Assyria",
+   "Among all people from one end of the earth to the other"
+  ],
+  "answer": 3,
+  "explanation": "The chapter warns of worldwide scattering because of covenant unfaithfulness.",
+  "ref": "Deuteronomy 28:64"
+ },
+ {
+  "id": "old-deuteronomy-29-1",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "place",
+  "question": "In what land was this covenant made, beside the covenant made in Horeb?",
+  "choices": [
+   "Jericho",
+   "Sinai",
+   "The land of Moab",
+   "Hebron"
+  ],
+  "answer": 2,
+  "explanation": "These words of the covenant were made with Israel in the land of Moab.",
+  "ref": "Deuteronomy 29:1"
+ },
+ {
+  "id": "old-deuteronomy-29-2",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Moses say the Lord had not given Israel unto that day, even after all they had seen?",
+  "choices": [
+   "A king",
+   "A heart to perceive, eyes to see, and ears to hear",
+   "Cities",
+   "Victories"
+  ],
+  "answer": 1,
+  "explanation": "Moses says the Lord had not given them a heart to perceive, eyes to see, and ears to hear, unto that day.",
+  "ref": "Deuteronomy 29:4"
+ },
+ {
+  "id": "old-deuteronomy-29-3",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What dangerous self-talk is described in the stubborn person?",
+  "choices": [
+   "I will obey perfectly",
+   "I will return to Egypt",
+   "I shall hide in the camp",
+   "I shall have peace, though I walk in the imagination of mine heart"
+  ],
+  "answer": 3,
+  "explanation": "The stubborn person wrongly imagines peace while persisting in rebellion.",
+  "ref": "Deuteronomy 29:19"
+ },
+ {
+  "id": "old-deuteronomy-29-4",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How would future generations describe the land under covenant curse?",
+  "choices": [
+   "Brimstone, salt, and burning",
+   "Fruitful and green",
+   "Like Eden",
+   "Like Egypt"
+  ],
+  "answer": 0,
+  "explanation": "The land under judgment is described as burned and desolate.",
+  "ref": "Deuteronomy 29:23"
+ },
+ {
+  "id": "old-deuteronomy-29-5",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom does Moses say the secret things belong?",
+  "choices": [
+   "The priests",
+   "The fathers",
+   "The prophets",
+   "The Lord our God"
+  ],
+  "answer": 3,
+  "explanation": "Secret things belong to God, but revealed things belong to His people to do them.",
+  "ref": "Deuteronomy 29:29"
+ },
+ {
+  "id": "old-deuteronomy-30-1",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the Lord do if Israel returned to Him after exile and judgment?",
+  "choices": [
+   "Forget them",
+   "Leave them scattered forever",
+   "Turn their captivity and gather them",
+   "Destroy the land only"
+  ],
+  "answer": 2,
+  "explanation": "God promised restoration and gathering upon repentance.",
+  "ref": "Deuteronomy 30:3–4"
+ },
+ {
+  "id": "old-deuteronomy-30-2",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does Moses say the commandment is not?",
+  "choices": [
+   "In the camp",
+   "In heaven or beyond the sea",
+   "In the law book",
+   "In the priesthood"
+  ],
+  "answer": 1,
+  "explanation": "The commandment is near, not far off in heaven or across the sea.",
+  "ref": "Deuteronomy 30:12–13"
+ },
+ {
+  "id": "old-deuteronomy-30-3",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two alternatives does Moses set before Israel?",
+  "choices": [
+   "War and peace",
+   "Wealth and poverty",
+   "Rain and drought",
+   "Life and death"
+  ],
+  "answer": 3,
+  "explanation": "He sets before them life and good, death and evil.",
+  "ref": "Deuteronomy 30:15"
+ },
+ {
+  "id": "old-deuteronomy-30-4",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What witnesses does Moses call concerning Israel's choice?",
+  "choices": [
+   "The priests",
+   "Heaven and earth",
+   "The tribes",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Heaven and earth are called to witness the choice.",
+  "ref": "Deuteronomy 30:19"
+ },
+ {
+  "id": "old-deuteronomy-30-5",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When Israel returned to the Lord, on whom would He put all these curses?",
+  "choices": [
+   "On their enemies who hated and persecuted them",
+   "On the Levites",
+   "On their children",
+   "On the land of Canaan"
+  ],
+  "answer": 0,
+  "explanation": "The Lord would put all these curses upon their enemies, on them that hated and persecuted them.",
+  "ref": "Deuteronomy 30:7"
+ },
+ {
+  "id": "old-deuteronomy-31-1",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Moses when he said he could no more go out and come in?",
+  "choices": [
+   "100",
+   "110",
+   "120",
+   "130"
+  ],
+  "answer": 2,
+  "explanation": "Moses says he is 120 years old.",
+  "ref": "Deuteronomy 31:2"
+ },
+ {
+  "id": "old-deuteronomy-31-2",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Moses publicly charge to be strong and of a good courage?",
+  "choices": [
+   "Caleb",
+   "Joshua",
+   "Eleazar",
+   "Phinehas"
+  ],
+  "answer": 1,
+  "explanation": "Joshua received the public charge to lead Israel.",
+  "ref": "Deuteronomy 31:7"
+ },
+ {
+  "id": "old-deuteronomy-31-3",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How often was the law to be read before all Israel at the feast of tabernacles?",
+  "choices": [
+   "Every year",
+   "Every fifty years",
+   "Only once",
+   "Every seven years"
+  ],
+  "answer": 3,
+  "explanation": "The law was to be read publicly every seven years.",
+  "ref": "Deuteronomy 31:10–11"
+ },
+ {
+  "id": "old-deuteronomy-31-4",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the book of the law placed as a witness?",
+  "choices": [
+   "In Joshua's tent",
+   "At the altar",
+   "In Moses' tent",
+   "In the side of the ark"
+  ],
+  "answer": 3,
+  "explanation": "The Levites were told to put the book of the law in the side of the ark of the covenant.",
+  "ref": "Deuteronomy 31:26"
+ },
+ {
+  "id": "old-deuteronomy-31-5",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Moses told to write and teach Israel as a witness against them?",
+  "choices": [
+   "A genealogy",
+   "A proverb",
+   "A song",
+   "A psalm of David"
+  ],
+  "answer": 2,
+  "explanation": "Moses was commanded to write and teach a song as a witness.",
+  "ref": "Deuteronomy 31:19"
+ },
+ {
+  "id": "old-deuteronomy-32-1",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the song of Moses begin?",
+  "choices": [
+   "Hear, O Israel",
+   "Bless the Lord",
+   "Give ear, O ye heavens, and I will speak",
+   "The Lord is my shepherd"
+  ],
+  "answer": 2,
+  "explanation": "The song opens by calling heaven and earth to hear.",
+  "ref": "Deuteronomy 32:1"
+ },
+ {
+  "id": "old-deuteronomy-32-2",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what is Moses' doctrine compared in his song?",
+  "choices": [
+   "To fire and smoke",
+   "To gold and silver",
+   "To rain and dew",
+   "To thunder"
+  ],
+  "answer": 2,
+  "explanation": "His teaching is likened to rain and dew.",
+  "ref": "Deuteronomy 32:2"
+ },
+ {
+  "id": "old-deuteronomy-32-3",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Moses call God when he says, 'his work is perfect'?",
+  "choices": [
+   "The Shepherd",
+   "The King",
+   "The Judge",
+   "The Rock"
+  ],
+  "answer": 3,
+  "explanation": "God is called the Rock whose work is perfect.",
+  "ref": "Deuteronomy 32:4"
+ },
+ {
+  "id": "old-deuteronomy-32-4",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jeshurun do after waxing fat?",
+  "choices": [
+   "Built altars",
+   "Kicked and forsook God",
+   "Crossed Jordan",
+   "Defeated Egypt"
+  ],
+  "answer": 1,
+  "explanation": "The song warns that prosperity led Jeshurun to forsake God.",
+  "ref": "Deuteronomy 32:15"
+ },
+ {
+  "id": "old-deuteronomy-32-5",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After the song, what did Moses tell Israel about the words of this law?",
+  "choices": [
+   "They were poetic only",
+   "They were for Levites only",
+   "They were temporary",
+   "It is not a vain thing for you; because it is your life"
+  ],
+  "answer": 3,
+  "explanation": "Moses said the words of the law were not a vain thing for them, because it was their life.",
+  "ref": "Deuteronomy 32:46–47"
+ },
+ {
+  "id": "old-deuteronomy-33-1",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Moses described at the beginning of the chapter?",
+  "choices": [
+   "The singer",
+   "The man of God",
+   "The king",
+   "The prophet of Moab"
+  ],
+  "answer": 1,
+  "explanation": "The blessing begins with Moses described as the man of God.",
+  "ref": "Deuteronomy 33:1"
+ },
+ {
+  "id": "old-deuteronomy-33-2",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where is the Lord poetically described as coming and shining forth?",
+  "choices": [
+   "Egypt and Moab",
+   "Jericho and Ai",
+   "Zion and Hebron",
+   "Sinai, Seir, and Paran"
+  ],
+  "answer": 3,
+  "explanation": "The blessing recalls the Lord's majestic appearing from Sinai, Seir, and Paran.",
+  "ref": "Deuteronomy 33:2"
+ },
+ {
+  "id": "old-deuteronomy-33-3",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What poetic name is used for Israel in this chapter?",
+  "choices": [
+   "Jeshurun",
+   "Zion",
+   "Ephraim",
+   "Salem"
+  ],
+  "answer": 0,
+  "explanation": "Jeshurun is used poetically for Israel.",
+  "ref": "Deuteronomy 33:5"
+ },
+ {
+  "id": "old-deuteronomy-33-4",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe is especially blessed for teaching Jacob God's judgments and Israel His law?",
+  "choices": [
+   "Levi",
+   "Judah",
+   "Joseph",
+   "Benjamin"
+  ],
+  "answer": 0,
+  "explanation": "Levi is linked with teaching God's judgments and law.",
+  "ref": "Deuteronomy 33:10"
+ },
+ {
+  "id": "old-deuteronomy-33-5",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the chapter close in praise of Israel?",
+  "choices": [
+   "Cursed art thou",
+   "Weep, O Israel",
+   "Happy art thou, O Israel",
+   "Remember Egypt"
+  ],
+  "answer": 2,
+  "explanation": "The blessing ends by declaring Israel happy in the Lord's salvation.",
+  "ref": "Deuteronomy 33:29"
+ },
+ {
+  "id": "old-deuteronomy-34-1",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what mountain did Moses go up to view the land?",
+  "choices": [
+   "Sinai",
+   "Nebo",
+   "Ebal",
+   "Carmel"
+  ],
+  "answer": 1,
+  "explanation": "Moses went up to Mount Nebo to view the land.",
+  "ref": "Deuteronomy 34:1"
+ },
+ {
+  "id": "old-deuteronomy-34-2",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who showed Moses all the land he would not enter?",
+  "choices": [
+   "Joshua",
+   "Eleazar",
+   "The Lord",
+   "The angel of the Lord"
+  ],
+  "answer": 2,
+  "explanation": "The Lord Himself showed Moses the land.",
+  "ref": "Deuteronomy 34:1–4"
+ },
+ {
+  "id": "old-deuteronomy-34-3",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Moses when he died?",
+  "choices": [
+   "100",
+   "110",
+   "120",
+   "130"
+  ],
+  "answer": 2,
+  "explanation": "Moses died at the age of 120.",
+  "ref": "Deuteronomy 34:7"
+ },
+ {
+  "id": "old-deuteronomy-34-4",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Israel weep for Moses in the plains of Moab?",
+  "choices": [
+   "7 days",
+   "30 days",
+   "40 days",
+   "70 days"
+  ],
+  "answer": 1,
+  "explanation": "Israel wept for Moses thirty days.",
+  "ref": "Deuteronomy 34:8"
+ },
+ {
+  "id": "old-deuteronomy-34-5",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said about prophets in Israel after Moses?",
+  "choices": [
+   "Many equaled him",
+   "Joshua surpassed him",
+   "Aaron was greater",
+   "There arose not a prophet since in Israel like unto Moses"
+  ],
+  "answer": 3,
+  "explanation": "The book closes by stating no prophet arose in Israel like Moses.",
+  "ref": "Deuteronomy 34:10"
+ }
+]

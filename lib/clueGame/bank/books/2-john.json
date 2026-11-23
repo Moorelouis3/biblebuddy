@@ -1,0 +1,82 @@
+[
+ {
+  "id": "old-2-john-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the writer identify himself?",
+  "choices": [
+   "The elder",
+   "The apostle",
+   "The servant",
+   "The pastor"
+  ],
+  "answer": 0,
+  "explanation": "The author calls himself 'the elder.'",
+  "ref": "2 John 1:1"
+ },
+ {
+  "id": "old-2-john-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom is 2 John addressed?",
+  "choices": [
+   "The church in Rome",
+   "Timothy and the elders",
+   "The saints in Ephesus",
+   "The chosen lady and her children"
+  ],
+  "answer": 3,
+  "explanation": "John writes to 'the elect lady and her children.'",
+  "ref": "2 John 1:1"
+ },
+ {
+  "id": "old-2-john-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "John rejoiced to find some of the lady's children walking in what?",
+  "choices": [
+   "Power",
+   "Truth",
+   "Signs",
+   "Freedom"
+  ],
+  "answer": 1,
+  "explanation": "John rejoiced greatly that he found some of her children walking in truth.",
+  "ref": "2 John 1:4"
+ },
+ {
+  "id": "old-2-john-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What commandment does John say we had from the beginning?",
+  "choices": [
+   "To love one another",
+   "To fast often",
+   "To keep the feasts",
+   "To seek visions"
+  ],
+  "answer": 0,
+  "explanation": "John urges believers to love one another as they have heard from the beginning.",
+  "ref": "2 John 1:5"
+ },
+ {
+  "id": "old-2-john-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does John call a deceiver and an antichrist?",
+  "choices": [
+   "Anyone who doubts",
+   "Anyone who denies Jesus Christ is come in the flesh",
+   "Anyone who refuses hospitality",
+   "Anyone who avoids the law"
+  ],
+  "answer": 1,
+  "explanation": "John warns that deceivers deny that Jesus Christ has come in the flesh.",
+  "ref": "2 John 1:7"
+ }
+]

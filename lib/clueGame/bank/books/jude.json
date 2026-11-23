@@ -1,0 +1,82 @@
+[
+ {
+  "id": "old-jude-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Jude identify himself?",
+  "choices": [
+   "An apostle of Jesus Christ",
+   "A servant of Jesus Christ and brother of James",
+   "A prophet to the nations",
+   "A teacher in Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "Jude calls himself a servant of Jesus Christ and brother of James.",
+  "ref": "Jude 1:1"
+ },
+ {
+  "id": "old-jude-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jude urge believers to do?",
+  "choices": [
+   "Seek signs and wonders",
+   "Withdraw from the world",
+   "Keep the ceremonial law",
+   "Contend earnestly for the faith"
+  ],
+  "answer": 3,
+  "explanation": "Jude urges believers to contend for the faith once delivered to the saints.",
+  "ref": "Jude 1:3"
+ },
+ {
+  "id": "old-jude-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had certain people turned the grace of God into?",
+  "choices": [
+   "A license for immorality",
+   "Legalism",
+   "A political movement",
+   "A new priesthood"
+  ],
+  "answer": 0,
+  "explanation": "Jude warns that ungodly people pervert grace into sensual living.",
+  "ref": "Jude 1:4"
+ },
+ {
+  "id": "old-jude-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose error does Jude say the ungodly ran greedily after for reward?",
+  "choices": [
+   "Korah",
+   "Cain",
+   "Achan",
+   "Balaam"
+  ],
+  "answer": 3,
+  "explanation": "Jude says they ran greedily after the error of Balaam for reward.",
+  "ref": "Jude 1:11"
+ },
+ {
+  "id": "old-jude-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are believers told to do as they wait for the mercy of Jesus Christ?",
+  "choices": [
+   "Hide from false teachers",
+   "Seek perfect knowledge",
+   "Keep themselves in the love of God",
+   "Travel to Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Jude urges believers to keep themselves in God's love while waiting for Christ's mercy.",
+  "ref": "Jude 1:21"
+ }
+]

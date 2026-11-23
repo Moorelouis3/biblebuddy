@@ -1,0 +1,3842 @@
+[
+ {
+  "id": "old-ezekiel-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Ezekiel when the heavens were opened?",
+  "choices": [
+   "Jerusalem",
+   "Bethel",
+   "Egypt",
+   "By the river Chebar"
+  ],
+  "answer": 3,
+  "explanation": "Ezekiel received his inaugural vision among the exiles by the river Chebar.",
+  "ref": "Ezekiel 1:1"
+ },
+ {
+  "id": "old-ezekiel-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many living creatures did Ezekiel see?",
+  "choices": [
+   "Two",
+   "Four",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "The vision included four living creatures around God's throne-chariot.",
+  "ref": "Ezekiel 1:5"
+ },
+ {
+  "id": "old-ezekiel-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many faces did each living creature have?",
+  "choices": [
+   "One",
+   "Two",
+   "Three",
+   "Four"
+  ],
+  "answer": 3,
+  "explanation": "Each creature had four faces: man, lion, ox, and eagle.",
+  "ref": "Ezekiel 1:6"
+ },
+ {
+  "id": "old-ezekiel-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was beside the living creatures?",
+  "choices": [
+   "Altars",
+   "Cherubim without wings",
+   "Priests",
+   "Wheels"
+  ],
+  "answer": 3,
+  "explanation": "The mysterious wheels moved in harmony with the living creatures.",
+  "ref": "Ezekiel 1:15"
+ },
+ {
+  "id": "old-ezekiel-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezekiel do when he saw the likeness of the glory of the Lord?",
+  "choices": [
+   "He shouted aloud",
+   "He ran away",
+   "He hid in a cave",
+   "He fell upon his face"
+  ],
+  "answer": 3,
+  "explanation": "The sight of God's glory caused Ezekiel to fall on his face in awe.",
+  "ref": "Ezekiel 1:28"
+ },
+ {
+  "id": "old-ezekiel-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does God repeatedly address Ezekiel in this chapter?",
+  "choices": [
+   "Son of man",
+   "King of Judah",
+   "Priest of Zion",
+   "Watchman"
+  ],
+  "answer": 0,
+  "explanation": "God's title for Ezekiel emphasizes his humanity before divine glory.",
+  "ref": "Ezekiel 2:1"
+ },
+ {
+  "id": "old-ezekiel-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What entered into Ezekiel and set him upon his feet?",
+  "choices": [
+   "A great wind",
+   "An angel",
+   "The Spirit",
+   "A coal from the altar"
+  ],
+  "answer": 2,
+  "explanation": "The Spirit empowered Ezekiel to stand and listen to God's commission.",
+  "ref": "Ezekiel 2:2"
+ },
+ {
+  "id": "old-ezekiel-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom was Ezekiel sent?",
+  "choices": [
+   "A righteous remnant only",
+   "A rebellious house of Israel",
+   "The Philistines",
+   "The priests of Babylon"
+  ],
+  "answer": 1,
+  "explanation": "God openly describes Israel as a rebellious nation.",
+  "ref": "Ezekiel 2:3–4"
+ },
+ {
+  "id": "old-ezekiel-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Ezekiel told not to fear?",
+  "choices": [
+   "The sword of Babylon",
+   "His own weakness",
+   "The river flood",
+   "Their words and looks"
+  ],
+  "answer": 3,
+  "explanation": "He was warned not to fear their hostility or stubborn expressions.",
+  "ref": "Ezekiel 2:6"
+ },
+ {
+  "id": "old-ezekiel-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was written on the scroll shown to Ezekiel?",
+  "choices": [
+   "Lamentations, mourning, and woe",
+   "Songs and psalms",
+   "A new covenant",
+   "A genealogy"
+  ],
+  "answer": 0,
+  "explanation": "The scroll's contents matched the heavy message Ezekiel would preach.",
+  "ref": "Ezekiel 2:9–10"
+ },
+ {
+  "id": "old-ezekiel-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the scroll taste when Ezekiel ate it?",
+  "choices": [
+   "Bitter as gall",
+   "Sweet as honey",
+   "Like ash",
+   "Like water"
+  ],
+  "answer": 1,
+  "explanation": "Though full of lament, the scroll tasted sweet because it was God's word.",
+  "ref": "Ezekiel 3:3"
+ },
+ {
+  "id": "old-ezekiel-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what role is Ezekiel appointed?",
+  "choices": [
+   "Judge",
+   "King",
+   "Watchman",
+   "Temple singer"
+  ],
+  "answer": 2,
+  "explanation": "Ezekiel's duty was to hear God's word and warn the people.",
+  "ref": "Ezekiel 3:17"
+ },
+ {
+  "id": "old-ezekiel-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must Ezekiel do when God warns the wicked?",
+  "choices": [
+   "Keep silent",
+   "Ask the king first",
+   "Write it only on a scroll",
+   "Warn him"
+  ],
+  "answer": 3,
+  "explanation": "If he fails to warn, the wicked man's blood will be required at Ezekiel's hand.",
+  "ref": "Ezekiel 3:18"
+ },
+ {
+  "id": "old-ezekiel-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Ezekiel when the Spirit lifted him?",
+  "choices": [
+   "He heard a great rushing",
+   "He was left in the temple",
+   "He fell asleep",
+   "He was crowned"
+  ],
+  "answer": 0,
+  "explanation": "The movement of the Spirit and living creatures came with a loud rushing sound.",
+  "ref": "Ezekiel 3:12–13"
+ },
+ {
+  "id": "old-ezekiel-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign of restraint did God place on Ezekiel?",
+  "choices": [
+   "He was made king",
+   "He was made dumb except when God opened his mouth",
+   "He was sent to Egypt",
+   "He was given a sword"
+  ],
+  "answer": 1,
+  "explanation": "His silence itself became part of the prophetic sign.",
+  "ref": "Ezekiel 3:26–27"
+ },
+ {
+  "id": "old-ezekiel-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezekiel draw on a tile?",
+  "choices": [
+   "The temple",
+   "Babylon",
+   "Jerusalem",
+   "The river Chebar"
+  ],
+  "answer": 2,
+  "explanation": "He portrayed Jerusalem on a tile as part of the acted-out siege.",
+  "ref": "Ezekiel 4:1"
+ },
+ {
+  "id": "old-ezekiel-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On which side was Ezekiel to lie for Israel's iniquity?",
+  "choices": [
+   "Left side",
+   "Right side",
+   "Face down",
+   "Standing"
+  ],
+  "answer": 0,
+  "explanation": "His left-side lying symbolized bearing the iniquity of the house of Israel.",
+  "ref": "Ezekiel 4:4"
+ },
+ {
+  "id": "old-ezekiel-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days was Ezekiel to lie on his right side for Judah?",
+  "choices": [
+   "40",
+   "70",
+   "90",
+   "390"
+  ],
+  "answer": 0,
+  "explanation": "Forty days on the right side symbolized Judah's iniquity.",
+  "ref": "Ezekiel 4:6"
+ },
+ {
+  "id": "old-ezekiel-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign was Ezekiel told to act out with his food?",
+  "choices": [
+   "To fast entirely",
+   "To eat his food by weight",
+   "To drink wine only",
+   "To feast before the elders"
+  ],
+  "answer": 1,
+  "explanation": "The measured food and water symbolized siege scarcity.",
+  "ref": "Ezekiel 4:10–11"
+ },
+ {
+  "id": "old-ezekiel-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God allow Ezekiel to use instead of human dung?",
+  "choices": [
+   "Olive wood",
+   "Charcoal",
+   "Cow's dung",
+   "Dry reeds"
+  ],
+  "answer": 2,
+  "explanation": "God permitted cow's dung as a concession when Ezekiel objected.",
+  "ref": "Ezekiel 4:15"
+ },
+ {
+  "id": "old-ezekiel-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What unusual act was Ezekiel told to do with a sharp knife?",
+  "choices": [
+   "Shave his head and beard",
+   "Cut down a tree",
+   "Carve a scroll",
+   "Slaughter a lamb"
+  ],
+  "answer": 0,
+  "explanation": "The shaving signified Jerusalem's disgrace and coming judgment.",
+  "ref": "Ezekiel 5:1"
+ },
+ {
+  "id": "old-ezekiel-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to one third of the hair?",
+  "choices": [
+   "It was hidden in a cave",
+   "It was sent to Babylon",
+   "It was burned in the fire",
+   "It was thrown into the sea"
+  ],
+  "answer": 2,
+  "explanation": "Different portions of the hair symbolized different forms of judgment.",
+  "ref": "Ezekiel 5:2"
+ },
+ {
+  "id": "old-ezekiel-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Ezekiel told to do with a few of the hairs?",
+  "choices": [
+   "Bury them in the field",
+   "Give them to the elders",
+   "Bind them in his skirts",
+   "Throw them into the river"
+  ],
+  "answer": 2,
+  "explanation": "Ezekiel was to take a few hairs in number and bind them in his skirts.",
+  "ref": "Ezekiel 5:3"
+ },
+ {
+  "id": "old-ezekiel-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Jerusalem singled out for judgment?",
+  "choices": [
+   "She had no walls",
+   "She lacked prophets",
+   "She was too small",
+   "She had changed God's judgments into wickedness"
+  ],
+  "answer": 3,
+  "explanation": "Jerusalem rebelled more than the surrounding nations.",
+  "ref": "Ezekiel 5:6"
+ },
+ {
+  "id": "old-ezekiel-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What three judgments are emphasized?",
+  "choices": [
+   "Fire, hail, and flood",
+   "Captivity, plague, and drought",
+   "Sword, famine, and pestilence",
+   "Silence, sorrow, and fear"
+  ],
+  "answer": 2,
+  "explanation": "The city's population would be consumed by famine, pestilence, and the sword.",
+  "ref": "Ezekiel 5:12"
+ },
+ {
+  "id": "old-ezekiel-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against what locations is Ezekiel told to prophesy?",
+  "choices": [
+   "Only Jerusalem's gates",
+   "The mountains of Israel",
+   "The rivers of Babylon",
+   "Egypt's cities"
+  ],
+  "answer": 1,
+  "explanation": "The prophecy is directed against the high places and mountains where idolatry flourished.",
+  "ref": "Ezekiel 6:2"
+ },
+ {
+  "id": "old-ezekiel-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would happen to the altars and images?",
+  "choices": [
+   "They would be enlarged",
+   "They would be hidden",
+   "They would be desolate and broken",
+   "They would be taken to Babylon intact"
+  ],
+  "answer": 2,
+  "explanation": "God promises to shatter Israel's idolatrous worship sites.",
+  "ref": "Ezekiel 6:4–6"
+ },
+ {
+  "id": "old-ezekiel-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God promise to leave?",
+  "choices": [
+   "A mighty army",
+   "A remnant",
+   "A king in Jerusalem",
+   "The high places"
+  ],
+  "answer": 1,
+  "explanation": "Even in judgment, God preserves a remnant.",
+  "ref": "Ezekiel 6:8"
+ },
+ {
+  "id": "old-ezekiel-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How would those who escaped respond among the nations?",
+  "choices": [
+   "They would forget God",
+   "They would remember the Lord",
+   "They would crown a new king",
+   "They would return immediately"
+  ],
+  "answer": 1,
+  "explanation": "Exile would lead some to remember the Lord and loathe their sins.",
+  "ref": "Ezekiel 6:9"
+ },
+ {
+  "id": "old-ezekiel-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What refrain closes the chapter's sections?",
+  "choices": [
+   "And ye shall know that I am the Lord",
+   "Peace, peace",
+   "Return unto Zion",
+   "The city shall stand"
+  ],
+  "answer": 0,
+  "explanation": "The recognition formula shows that judgment reveals God's identity and holiness.",
+  "ref": "Ezekiel 6:7"
+ },
+ {
+  "id": "old-ezekiel-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated announcement dominates this chapter?",
+  "choices": [
+   "Peace is near",
+   "The temple is safe",
+   "Egypt will help",
+   "An end is come"
+  ],
+  "answer": 3,
+  "explanation": "The chapter hammers home the nearness and certainty of the end.",
+  "ref": "Ezekiel 7:2–6"
+ },
+ {
+  "id": "old-ezekiel-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had budded?",
+  "choices": [
+   "Hope",
+   "Pride",
+   "Mercy",
+   "The branch of David"
+  ],
+  "answer": 1,
+  "explanation": "The verse says the rod hath blossomed and pride hath budded.",
+  "ref": "Ezekiel 7:10"
+ },
+ {
+  "id": "old-ezekiel-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are silver and gold described?",
+  "choices": [
+   "They shall deliver them",
+   "They will buy peace",
+   "They shall not be able to deliver them",
+   "They will rebuild the city"
+  ],
+  "answer": 2,
+  "explanation": "Wealth will be powerless in the day of the Lord's wrath.",
+  "ref": "Ezekiel 7:19"
+ },
+ {
+  "id": "old-ezekiel-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said to cease from the prophet, priest, and elders?",
+  "choices": [
+   "The feast days",
+   "The sword",
+   "The law, vision, and counsel",
+   "The harvest"
+  ],
+  "answer": 2,
+  "explanation": "Normal sources of guidance and leadership would fail under judgment.",
+  "ref": "Ezekiel 7:26"
+ },
+ {
+  "id": "old-ezekiel-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would cover the people?",
+  "choices": [
+   "Joy and singing",
+   "Confidence and strength",
+   "Horror and shame",
+   "Laughter"
+  ],
+  "answer": 2,
+  "explanation": "Horror shall cover them, and shame shall be upon all faces.",
+  "ref": "Ezekiel 7:18"
+ },
+ {
+  "id": "old-ezekiel-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Ezekiel sitting when the hand of the Lord fell on him in this vision?",
+  "choices": [
+   "In his house with the elders of Judah",
+   "At the temple gate",
+   "On a mountain in Israel",
+   "By the sea"
+  ],
+  "answer": 0,
+  "explanation": "The vision begins while Ezekiel sits among elders in exile.",
+  "ref": "Ezekiel 8:1"
+ },
+ {
+  "id": "old-ezekiel-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezekiel see in the entry at the gate of the altar?",
+  "choices": [
+   "The image of jealousy",
+   "An altar of incense",
+   "A brazen sea",
+   "A wooden yoke"
+  ],
+  "answer": 0,
+  "explanation": "The idol at the gate provoked God's jealousy.",
+  "ref": "Ezekiel 8:5"
+ },
+ {
+  "id": "old-ezekiel-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the seventy elders doing?",
+  "choices": [
+   "Praying to the Lord openly",
+   "Reading the law",
+   "Offering incense before images",
+   "Building the wall"
+  ],
+  "answer": 2,
+  "explanation": "The elders secretly practiced idolatry in the dark.",
+  "ref": "Ezekiel 8:11"
+ },
+ {
+  "id": "old-ezekiel-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the women at the gate of the Lord's house doing?",
+  "choices": [
+   "Weeping for Tammuz",
+   "Building the altar",
+   "Singing psalms",
+   "Grinding meal"
+  ],
+  "answer": 0,
+  "explanation": "Even the women at the temple were involved in pagan mourning rites.",
+  "ref": "Ezekiel 8:14"
+ },
+ {
+  "id": "old-ezekiel-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the men in the inner court of the Lord's house worshipping?",
+  "choices": [
+   "The altar",
+   "The ark",
+   "The mountain of Zion",
+   "The sun toward the east"
+  ],
+  "answer": 3,
+  "explanation": "Sun worship in the temple courts showed extreme apostasy.",
+  "ref": "Ezekiel 8:16"
+ },
+ {
+  "id": "old-ezekiel-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men with slaughter weapons appeared in the vision?",
+  "choices": [
+   "Five",
+   "Six",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Six executioners appear along with one clothed in linen.",
+  "ref": "Ezekiel 9:2"
+ },
+ {
+  "id": "old-ezekiel-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the man clothed in linen carry?",
+  "choices": [
+   "A writer's inkhorn",
+   "A sword",
+   "A censer of fire",
+   "A trumpet"
+  ],
+  "answer": 0,
+  "explanation": "He carried an inkhorn to mark those who grieved over the abominations.",
+  "ref": "Ezekiel 9:2"
+ },
+ {
+  "id": "old-ezekiel-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was to receive a mark on the forehead?",
+  "choices": [
+   "All the priests",
+   "Only the king's sons",
+   "Every child in Jerusalem",
+   "Those who sighed and cried for the abominations"
+  ],
+  "answer": 3,
+  "explanation": "The spared remnant are those who mourn the city's wickedness.",
+  "ref": "Ezekiel 9:4"
+ },
+ {
+  "id": "old-ezekiel-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was judgment to begin?",
+  "choices": [
+   "At the palace",
+   "At the city wall",
+   "At the river gate",
+   "At my sanctuary"
+  ],
+  "answer": 3,
+  "explanation": "Judgment began at the sanctuary, highlighting the seriousness of sacred corruption.",
+  "ref": "Ezekiel 9:6"
+ },
+ {
+  "id": "old-ezekiel-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Ezekiel respond while the people of the city are being slain?",
+  "choices": [
+   "He falls on his face and cries out",
+   "He rejoices",
+   "He hides",
+   "He calls for Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Ezekiel intercedes in anguish as he sees the severity of the judgment.",
+  "ref": "Ezekiel 9:8"
+ },
+ {
+  "id": "old-ezekiel-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was above the cherubim?",
+  "choices": [
+   "A golden lampstand",
+   "A mountain of fire",
+   "A throne like sapphire",
+   "A bronze altar"
+  ],
+  "answer": 2,
+  "explanation": "The throne-like appearance above the cherubim underscores God's sovereign rule.",
+  "ref": "Ezekiel 10:1"
+ },
+ {
+  "id": "old-ezekiel-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the man clothed in linen told to do?",
+  "choices": [
+   "Seal the priests",
+   "Take coals of fire from between the cherubim and scatter them over the city",
+   "Burn the temple immediately",
+   "Read the law aloud"
+  ],
+  "answer": 1,
+  "explanation": "The scattered coals symbolize judgment upon Jerusalem.",
+  "ref": "Ezekiel 10:2"
+ },
+ {
+  "id": "old-ezekiel-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name does Ezekiel now explicitly give the living creatures?",
+  "choices": [
+   "Seraphim",
+   "Angels",
+   "Cherubim",
+   "Watchers"
+  ],
+  "answer": 2,
+  "explanation": "Ezekiel identifies the living creatures of chapter 1 as cherubim.",
+  "ref": "Ezekiel 10:20"
+ },
+ {
+  "id": "old-ezekiel-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the glory of the Lord move?",
+  "choices": [
+   "Back to the holy of holies",
+   "To the threshold of the house and then above the cherubim",
+   "To Mount Sinai",
+   "Into Babylon"
+  ],
+  "answer": 1,
+  "explanation": "The movement of the glory signals the temple's abandonment.",
+  "ref": "Ezekiel 10:18–19"
+ },
+ {
+  "id": "old-ezekiel-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What feature of the cherubim matched the vision of chapter 1?",
+  "choices": [
+   "Each carried a scroll",
+   "Each held a sword",
+   "Each wore linen",
+   "Each had four faces"
+  ],
+  "answer": 3,
+  "explanation": "The repeated details connect this vision directly with Ezekiel's inaugural vision.",
+  "ref": "Ezekiel 10:14"
+ },
+ {
+  "id": "old-ezekiel-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men are seen at the east gate?",
+  "choices": [
+   "Twelve",
+   "Seventy",
+   "Six",
+   "Twenty-five"
+  ],
+  "answer": 3,
+  "explanation": "Twenty-five men are named among the city's corrupt leaders.",
+  "ref": "Ezekiel 11:1"
+ },
+ {
+  "id": "old-ezekiel-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the twenty-five men at the east gate doing?",
+  "choices": [
+   "Teaching the law faithfully",
+   "Guarding the altar",
+   "Devising mischief and giving wicked counsel",
+   "Preparing sacrifices"
+  ],
+  "answer": 2,
+  "explanation": "They are condemned as leaders who give wicked counsel in the city.",
+  "ref": "Ezekiel 11:2"
+ },
+ {
+  "id": "old-ezekiel-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What hopeful promise does God give the exiles?",
+  "choices": [
+   "I will make them kings over Babylon",
+   "I will return them without repentance",
+   "I will hide my law from them",
+   "I will give them one heart and a new spirit"
+  ],
+  "answer": 3,
+  "explanation": "God promises inward transformation to the scattered remnant.",
+  "ref": "Ezekiel 11:19"
+ },
+ {
+  "id": "old-ezekiel-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the glory of the Lord do?",
+  "choices": [
+   "Went up from the city and stood on the mountain east of the city",
+   "Returned to the altar",
+   "Entered the king's house",
+   "Descended into the river"
+  ],
+  "answer": 0,
+  "explanation": "The glory's departure to the mountain east marks Jerusalem's deep spiritual crisis.",
+  "ref": "Ezekiel 11:23"
+ },
+ {
+  "id": "old-ezekiel-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Pelatiah when Ezekiel prophesied?",
+  "choices": [
+   "He died",
+   "He fled to Egypt",
+   "He became king",
+   "He repented immediately"
+  ],
+  "answer": 0,
+  "explanation": "Pelatiah's death confirmed the seriousness of the prophetic word.",
+  "ref": "Ezekiel 11:13"
+ },
+ {
+  "id": "old-ezekiel-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign-act was Ezekiel told to perform by day and night?",
+  "choices": [
+   "Build a new altar",
+   "Prepare baggage for removing and dig through the wall",
+   "Burn the scroll",
+   "Shave his head again"
+  ],
+  "answer": 1,
+  "explanation": "His acted parable represented exile and escape under judgment.",
+  "ref": "Ezekiel 12:3–7"
+ },
+ {
+  "id": "old-ezekiel-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did God say the sign chiefly concerned?",
+  "choices": [
+   "The prince in Jerusalem",
+   "The priests only",
+   "The Babylonians",
+   "The Egyptian envoys"
+  ],
+  "answer": 0,
+  "explanation": "The prince, Zedekiah, would try to flee but still be captured.",
+  "ref": "Ezekiel 12:10"
+ },
+ {
+  "id": "old-ezekiel-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What ironic statement is made about the prince?",
+  "choices": [
+   "He shall die in Jerusalem",
+   "He will rule in Egypt",
+   "He will escape all nets",
+   "He shall not see Babylon though he shall die there"
+  ],
+  "answer": 3,
+  "explanation": "Zedekiah's blinding after capture fulfills this unusual prophecy.",
+  "ref": "Ezekiel 12:13"
+ },
+ {
+  "id": "old-ezekiel-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Ezekiel told to eat and drink with trembling?",
+  "choices": [
+   "To honor the elders",
+   "To celebrate deliverance",
+   "To copy Babylonian customs",
+   "To symbolize the people's anxious condition"
+  ],
+  "answer": 3,
+  "explanation": "The trembling meal dramatized fear and scarcity in the land.",
+  "ref": "Ezekiel 12:18–19"
+ },
+ {
+  "id": "old-ezekiel-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What proverb did God say would cease?",
+  "choices": [
+   "The fathers have eaten sour grapes",
+   "The days are prolonged, and every vision faileth",
+   "Peace, peace",
+   "The temple of the Lord"
+  ],
+  "answer": 1,
+  "explanation": "The people would no longer be able to dismiss prophecy as endlessly delayed.",
+  "ref": "Ezekiel 12:22–23"
+ },
+ {
+  "id": "old-ezekiel-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against whom is Ezekiel told to prophesy at the start of the chapter?",
+  "choices": [
+   "The watchmen only",
+   "The kings of Egypt",
+   "The priests in Babylon",
+   "The prophets that prophesy out of their own hearts"
+  ],
+  "answer": 3,
+  "explanation": "The chapter focuses on self-appointed prophets speaking from themselves, not from God.",
+  "ref": "Ezekiel 13:2"
+ },
+ {
+  "id": "old-ezekiel-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what are Israel's foolish prophets compared?",
+  "choices": [
+   "Lions in the forest",
+   "Sheep without a shepherd",
+   "Cedars in Lebanon",
+   "Foxes in the deserts"
+  ],
+  "answer": 3,
+  "explanation": "They are crafty and destructive rather than protective.",
+  "ref": "Ezekiel 13:4"
+ },
+ {
+  "id": "old-ezekiel-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of wall were the false prophets daubing?",
+  "choices": [
+   "A city wall of cedar",
+   "A weak wall with untempered mortar",
+   "The temple wall",
+   "A wall of bronze"
+  ],
+  "answer": 1,
+  "explanation": "Their false message of peace was like whitewashing a flimsy wall.",
+  "ref": "Ezekiel 13:10–11"
+ },
+ {
+  "id": "old-ezekiel-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the women who prophesied out of their own heart make?",
+  "choices": [
+   "Bibles and scrolls",
+   "Swords and shields",
+   "Oil and incense",
+   "Pillows and kerchiefs to hunt souls"
+  ],
+  "answer": 3,
+  "explanation": "They practiced deceptive spiritual manipulation rather than true prophecy.",
+  "ref": "Ezekiel 13:18"
+ },
+ {
+  "id": "old-ezekiel-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the false prophets done to the righteous and wicked?",
+  "choices": [
+   "Strengthened the righteous and warned the wicked",
+   "Made the righteous sad and strengthened the hands of the wicked",
+   "Converted the city",
+   "Destroyed the idols"
+  ],
+  "answer": 1,
+  "explanation": "Their lies reversed God's moral order and harmed the people.",
+  "ref": "Ezekiel 13:22"
+ },
+ {
+  "id": "old-ezekiel-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the elders set up in their heart?",
+  "choices": [
+   "The law",
+   "The throne of David",
+   "The ark",
+   "Their idols"
+  ],
+  "answer": 3,
+  "explanation": "Their inward idolatry made their inquiry hypocritical.",
+  "ref": "Ezekiel 14:3"
+ },
+ {
+  "id": "old-ezekiel-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How would God answer a man who came to the prophet with idols set up in his heart?",
+  "choices": [
+   "According to the multitude of their idols",
+   "By giving them peace",
+   "By remaining silent forever",
+   "By sending them to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "God would answer them in judgment consistent with their idolatry.",
+  "ref": "Ezekiel 14:4"
+ },
+ {
+  "id": "old-ezekiel-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which three righteous men are named?",
+  "choices": [
+   "Noah, Daniel, and Job",
+   "Abraham, Isaac, and Jacob",
+   "Moses, Aaron, and Samuel",
+   "David, Solomon, and Elijah"
+  ],
+  "answer": 0,
+  "explanation": "These three exemplify personal righteousness amid general corruption.",
+  "ref": "Ezekiel 14:14"
+ },
+ {
+  "id": "old-ezekiel-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What could Noah, Daniel, and Job deliver if they were in the land?",
+  "choices": [
+   "Their own souls by their righteousness",
+   "The whole city",
+   "The temple vessels",
+   "The king and his sons"
+  ],
+  "answer": 0,
+  "explanation": "Their righteousness would not spare the land, only themselves.",
+  "ref": "Ezekiel 14:14"
+ },
+ {
+  "id": "old-ezekiel-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What four severe judgments are listed in this chapter?",
+  "choices": [
+   "Sword, famine, wild beasts, and pestilence",
+   "Flood, hail, fire, and drought",
+   "Captivity, fear, and silence",
+   "Darkness, fire, and exile"
+  ],
+  "answer": 0,
+  "explanation": "These repeated covenant judgments show the seriousness of Jerusalem's sin.",
+  "ref": "Ezekiel 14:21"
+ },
+ {
+  "id": "old-ezekiel-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what kind of wood is Jerusalem compared in this chapter?",
+  "choices": [
+   "Cedar wood",
+   "Olive wood",
+   "Vine wood",
+   "Acacia wood"
+  ],
+  "answer": 2,
+  "explanation": "Jerusalem is compared to vine wood, not for fruitfulness but uselessness.",
+  "ref": "Ezekiel 15:2"
+ },
+ {
+  "id": "old-ezekiel-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What useful thing can be made from the wood of the vine?",
+  "choices": [
+   "A throne",
+   "A spear",
+   "Nothing useful",
+   "A table"
+  ],
+  "answer": 2,
+  "explanation": "The questions expect the answer no. Vine wood is not taken for any work, not even for a pin to hang a vessel on.",
+  "ref": "Ezekiel 15:3"
+ },
+ {
+  "id": "old-ezekiel-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens when the vine branch is cast into the fire?",
+  "choices": [
+   "It is consumed",
+   "It becomes stronger",
+   "It turns to gold",
+   "It is hidden"
+  ],
+  "answer": 0,
+  "explanation": "The image emphasizes complete vulnerability to judgment.",
+  "ref": "Ezekiel 15:4"
+ },
+ {
+  "id": "old-ezekiel-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How would the inhabitants of Jerusalem be treated?",
+  "choices": [
+   "They would go out from one fire and another fire would devour them",
+   "They would be exalted",
+   "They would flee untouched",
+   "They would rebuild quickly"
+  ],
+  "answer": 0,
+  "explanation": "Escaping one disaster would not spare them from the next.",
+  "ref": "Ezekiel 15:7"
+ },
+ {
+  "id": "old-ezekiel-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does God say He will make the land desolate?",
+  "choices": [
+   "Because they are weak",
+   "Because Egypt is strong",
+   "Because they have trespassed",
+   "Because Babylon demanded it"
+  ],
+  "answer": 2,
+  "explanation": "God says He will make the land desolate because they have committed a trespass.",
+  "ref": "Ezekiel 15:8"
+ },
+ {
+  "id": "old-ezekiel-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Jerusalem pictured at the beginning of the chapter?",
+  "choices": [
+   "As a crowned queen",
+   "As a fruitful vine",
+   "As a mighty lion",
+   "As an abandoned newborn infant"
+  ],
+  "answer": 3,
+  "explanation": "The city is portrayed as a helpless infant whom God mercifully raised.",
+  "ref": "Ezekiel 16:4–6"
+ },
+ {
+  "id": "old-ezekiel-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say over the infant?",
+  "choices": [
+   "Return to thy mother",
+   "Live",
+   "Hide thyself",
+   "Become a nation"
+  ],
+  "answer": 1,
+  "explanation": "God's life-giving word rescued the abandoned child.",
+  "ref": "Ezekiel 16:6"
+ },
+ {
+  "id": "old-ezekiel-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What relationship did God enter into with Jerusalem?",
+  "choices": [
+   "A covenant marriage",
+   "A military alliance",
+   "A trade treaty",
+   "A priestly contract"
+  ],
+  "answer": 0,
+  "explanation": "God describes covering and covenanting with Jerusalem like a marriage.",
+  "ref": "Ezekiel 16:8"
+ },
+ {
+  "id": "old-ezekiel-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jerusalem do with the beauty God gave her?",
+  "choices": [
+   "Used it to glorify God",
+   "Trusted in it and played the harlot",
+   "Shared it with the poor",
+   "Hid it in the temple"
+  ],
+  "answer": 1,
+  "explanation": "Her gifted beauty became the basis of her unfaithfulness.",
+  "ref": "Ezekiel 16:15"
+ },
+ {
+  "id": "old-ezekiel-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What future promise appears?",
+  "choices": [
+   "I will forget Jerusalem forever",
+   "I will remember my covenant with thee",
+   "I will destroy every remnant",
+   "Egypt shall save thee"
+  ],
+  "answer": 1,
+  "explanation": "Despite the shocking sin, the chapter ends with a promise of remembered covenant mercy.",
+  "ref": "Ezekiel 16:60"
+ },
+ {
+  "id": "old-ezekiel-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What dominates the opening of this chapter?",
+  "choices": [
+   "A funeral song",
+   "A riddle and parable",
+   "A census",
+   "A temple blueprint"
+  ],
+  "answer": 1,
+  "explanation": "The message is delivered through symbolic imagery rather than direct prose.",
+  "ref": "Ezekiel 17:2"
+ },
+ {
+  "id": "old-ezekiel-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the first great eagle represent?",
+  "choices": [
+   "Babylon",
+   "Egypt",
+   "Assyria",
+   "Tyre"
+  ],
+  "answer": 0,
+  "explanation": "The first eagle is explained as the king of Babylon.",
+  "ref": "Ezekiel 17:3"
+ },
+ {
+  "id": "old-ezekiel-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the vine do wrong?",
+  "choices": [
+   "It bore no leaves",
+   "It grew too high",
+   "It hid in the wilderness",
+   "It bent its roots toward the other eagle"
+  ],
+  "answer": 3,
+  "explanation": "The vine's turning toward another eagle symbolizes treacherous alliance with Egypt.",
+  "ref": "Ezekiel 17:7"
+ },
+ {
+  "id": "old-ezekiel-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sin of the king whom Babylon set up in Jerusalem is highlighted?",
+  "choices": [
+   "Idolatry in secret",
+   "Breaking the oath and covenant",
+   "Murdering prophets",
+   "Refusing temple sacrifices"
+  ],
+  "answer": 1,
+  "explanation": "He despised the oath and broke the covenant, and God calls it His own oath and covenant.",
+  "ref": "Ezekiel 17:15–19"
+ },
+ {
+  "id": "old-ezekiel-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What hopeful image closes the chapter?",
+  "choices": [
+   "A river from the temple",
+   "Dry bones rising",
+   "A tender twig planted on a high mountain becoming a cedar",
+   "A city of peace"
+  ],
+  "answer": 2,
+  "explanation": "God promises to plant and exalt a tender twig into a majestic tree.",
+  "ref": "Ezekiel 17:22–24"
+ },
+ {
+  "id": "old-ezekiel-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What proverb does God forbid in Israel?",
+  "choices": [
+   "The temple of the Lord",
+   "The fathers have eaten sour grapes, and the children's teeth are set on edge",
+   "Peace, peace",
+   "The days are prolonged"
+  ],
+  "answer": 1,
+  "explanation": "God rejects the proverb that blames children for their fathers' guilt.",
+  "ref": "Ezekiel 18:2–3"
+ },
+ {
+  "id": "old-ezekiel-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What principle does God declare?",
+  "choices": [
+   "Only priests are mine",
+   "Only kings are mine",
+   "Only Judah belongs to me",
+   "All souls are mine"
+  ],
+  "answer": 3,
+  "explanation": "The chapter emphasizes God's direct claim over each individual soul.",
+  "ref": "Ezekiel 18:4"
+ },
+ {
+  "id": "old-ezekiel-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens if a wicked man turns from all his sins?",
+  "choices": [
+   "He must still die for his fathers",
+   "He becomes king",
+   "He is ignored",
+   "He shall surely live"
+  ],
+  "answer": 3,
+  "explanation": "Repentance brings life because God does not delight in death.",
+  "ref": "Ezekiel 18:21"
+ },
+ {
+  "id": "old-ezekiel-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens if a righteous man turns away from his righteousness and commits iniquity?",
+  "choices": [
+   "His former righteousness will guarantee life",
+   "He remains safe forever",
+   "He becomes a prophet",
+   "He shall die in his iniquity"
+  ],
+  "answer": 3,
+  "explanation": "Past righteousness does not excuse present rebellion.",
+  "ref": "Ezekiel 18:24"
+ },
+ {
+  "id": "old-ezekiel-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What appeal does God make?",
+  "choices": [
+   "Trust the fathers",
+   "Seek Egypt for safety",
+   "Wait without repentance",
+   "Cast away your transgressions and make you a new heart"
+  ],
+  "answer": 3,
+  "explanation": "God ends the chapter by calling the people to turn and live.",
+  "ref": "Ezekiel 18:31–32"
+ },
+ {
+  "id": "old-ezekiel-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal imagery is used for Israel's princes in the first part of the chapter?",
+  "choices": [
+   "Eagles",
+   "Sheep",
+   "Lions",
+   "Serpents"
+  ],
+  "answer": 2,
+  "explanation": "The princes are pictured as lion cubs raised by a lioness.",
+  "ref": "Ezekiel 19:2–3"
+ },
+ {
+  "id": "old-ezekiel-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the first lion whelp?",
+  "choices": [
+   "He escaped to Egypt",
+   "He became king forever",
+   "He repented",
+   "He was taken with chains into Egypt"
+  ],
+  "answer": 3,
+  "explanation": "The first prince is captured and taken away to Egypt.",
+  "ref": "Ezekiel 19:4"
+ },
+ {
+  "id": "old-ezekiel-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the second lion?",
+  "choices": [
+   "He was crowned in Jerusalem",
+   "He returned to his den",
+   "He led the people to peace",
+   "He was brought to the king of Babylon"
+  ],
+  "answer": 3,
+  "explanation": "The second prince is caged and taken to Babylon.",
+  "ref": "Ezekiel 19:9"
+ },
+ {
+  "id": "old-ezekiel-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What plant imagery is used for Israel?",
+  "choices": [
+   "An olive tree",
+   "A cedar",
+   "A fig tree",
+   "A vine"
+  ],
+  "answer": 3,
+  "explanation": "Israel is also lamented as a once-fruitful vine.",
+  "ref": "Ezekiel 19:10"
+ },
+ {
+  "id": "old-ezekiel-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the strong rods of the vine?",
+  "choices": [
+   "They became thrones",
+   "They were hidden in the river",
+   "Fire consumed them",
+   "They were used in the temple"
+  ],
+  "answer": 2,
+  "explanation": "The vine's royal strength is destroyed by fire in the lament.",
+  "ref": "Ezekiel 19:12"
+ },
+ {
+  "id": "old-ezekiel-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did certain elders come to Ezekiel?",
+  "choices": [
+   "To arrest him",
+   "To build the temple",
+   "To flee to Egypt",
+   "To ask counsel of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "The elders came to inquire of the Lord, but God responded by exposing their history.",
+  "ref": "Ezekiel 20:1"
+ },
+ {
+  "id": "old-ezekiel-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What historical pattern does God recount from Egypt onward?",
+  "choices": [
+   "Repeated rebellion and idolatry",
+   "Faithful obedience",
+   "Military victories",
+   "Temple reform"
+  ],
+  "answer": 0,
+  "explanation": "The chapter surveys Israel's long history of rebellion in Egypt and the wilderness.",
+  "ref": "Ezekiel 20:5–26"
+ },
+ {
+  "id": "old-ezekiel-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did God hold back His wrath from Israel again and again?",
+  "choices": [
+   "For my name's sake",
+   "For Pharaoh's sake",
+   "Because of their righteousness",
+   "For the temple vessels"
+  ],
+  "answer": 0,
+  "explanation": "God acted to protect the honor of His name before the nations.",
+  "ref": "Ezekiel 20:9"
+ },
+ {
+  "id": "old-ezekiel-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God give Israel to be a sign between Him and them?",
+  "choices": [
+   "Circumcision",
+   "Passover",
+   "The ark",
+   "The Sabbaths"
+  ],
+  "answer": 3,
+  "explanation": "The Sabbaths were given as a sign between God and His people.",
+  "ref": "Ezekiel 20:12"
+ },
+ {
+  "id": "old-ezekiel-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What future work does God promise?",
+  "choices": [
+   "I will leave you forever in exile",
+   "I will cause you to pass under the rod",
+   "I will destroy every remnant",
+   "I will restore your kings"
+  ],
+  "answer": 1,
+  "explanation": "Passing under the rod pictures covenant purification and renewed belonging.",
+  "ref": "Ezekiel 20:37"
+ },
+ {
+  "id": "old-ezekiel-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What symbol dominates this chapter?",
+  "choices": [
+   "A sword",
+   "A river",
+   "A yoke",
+   "A measuring reed"
+  ],
+  "answer": 0,
+  "explanation": "The sword of the Lord symbolizes imminent judgment.",
+  "ref": "Ezekiel 21:3–5"
+ },
+ {
+  "id": "old-ezekiel-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against whom is the sword drawn?",
+  "choices": [
+   "Only the wicked",
+   "Egypt alone",
+   "Both righteous and wicked in the land",
+   "The Philistines only"
+  ],
+  "answer": 2,
+  "explanation": "The sweeping judgment would affect the whole land.",
+  "ref": "Ezekiel 21:3–4"
+ },
+ {
+  "id": "old-ezekiel-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two roads are set before the king of Babylon?",
+  "choices": [
+   "To Tyre and Sidon",
+   "To Egypt and Cush",
+   "To Samaria and Galilee",
+   "To Rabbath of the Ammonites and to Judah in Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "Babylon stands at a crossroads deciding where to strike first.",
+  "ref": "Ezekiel 21:19–20"
+ },
+ {
+  "id": "old-ezekiel-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said about the profane wicked prince of Israel?",
+  "choices": [
+   "He shall reign in peace",
+   "His day is come",
+   "He is God's servant",
+   "He shall build the wall"
+  ],
+  "answer": 1,
+  "explanation": "The chapter announces the end of the current ruler's wicked reign.",
+  "ref": "Ezekiel 21:25"
+ },
+ {
+  "id": "old-ezekiel-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What hopeful statement appears?",
+  "choices": [
+   "The city shall stand forever",
+   "I will overturn it, until he come whose right it is",
+   "Egypt shall save Zion",
+   "The sword shall never return"
+  ],
+  "answer": 1,
+  "explanation": "The overturned crown looks ahead to the rightful ruler to come.",
+  "ref": "Ezekiel 21:27"
+ },
+ {
+  "id": "old-ezekiel-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title is given to Jerusalem?",
+  "choices": [
+   "The bloody city",
+   "City of peace",
+   "The holy mountain",
+   "The daughter of Zion"
+  ],
+  "answer": 0,
+  "explanation": "Jerusalem is condemned as a city marked by bloodshed and guilt.",
+  "ref": "Ezekiel 22:2"
+ },
+ {
+  "id": "old-ezekiel-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sins are listed among the people?",
+  "choices": [
+   "Only neglect of sacrifice",
+   "Military weakness",
+   "Violence, oppression, sexual sin, and bribery",
+   "Silence in worship"
+  ],
+  "answer": 2,
+  "explanation": "The chapter catalogs social, moral, and spiritual corruption at every level.",
+  "ref": "Ezekiel 22:6–12"
+ },
+ {
+  "id": "old-ezekiel-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are the prophets described?",
+  "choices": [
+   "Faithful shepherds",
+   "A gentle stream",
+   "A wall of defense",
+   "A roaring lion ravening the prey"
+  ],
+  "answer": 3,
+  "explanation": "The prophets are pictured as predatory and destructive.",
+  "ref": "Ezekiel 22:25"
+ },
+ {
+  "id": "old-ezekiel-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the priests done?",
+  "choices": [
+   "Taught the law faithfully",
+   "Put no difference between holy and profane",
+   "Destroyed idols only",
+   "Built strong walls"
+  ],
+  "answer": 1,
+  "explanation": "The priests failed to distinguish the holy from the common.",
+  "ref": "Ezekiel 22:26"
+ },
+ {
+  "id": "old-ezekiel-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God seek but fail to find?",
+  "choices": [
+   "A king for the throne",
+   "A man to make up the hedge and stand in the gap",
+   "A temple singer",
+   "A foreign ally"
+  ],
+  "answer": 1,
+  "explanation": "No one was found to intercede or stand in covenant faithfulness for the land.",
+  "ref": "Ezekiel 22:30"
+ },
+ {
+  "id": "old-ezekiel-23-1",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the names of the two sisters in this allegory?",
+  "choices": [
+   "Aholah and Aholibah",
+   "Leah and Rachel",
+   "Judah and Tamar",
+   "Naomi and Ruth"
+  ],
+  "answer": 0,
+  "explanation": "The sisters represent Samaria and Jerusalem.",
+  "ref": "Ezekiel 23:4"
+ },
+ {
+  "id": "old-ezekiel-23-2",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "What city does Aholah represent?",
+  "choices": [
+   "Samaria",
+   "Jerusalem",
+   "Babylon",
+   "Tyre"
+  ],
+  "answer": 0,
+  "explanation": "Aholah is the symbolic name for Samaria.",
+  "ref": "Ezekiel 23:4"
+ },
+ {
+  "id": "old-ezekiel-23-3",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "What city does Aholibah represent?",
+  "choices": [
+   "Damascus",
+   "Egypt",
+   "Jerusalem",
+   "Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "Aholibah is the symbolic name for Jerusalem.",
+  "ref": "Ezekiel 23:4"
+ },
+ {
+  "id": "old-ezekiel-23-4",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What recurring sin do both sisters commit?",
+  "choices": [
+   "They forget the Sabbath only",
+   "They play the harlot with foreign nations and idols",
+   "They refuse temple music",
+   "They neglect the harvest"
+  ],
+  "answer": 1,
+  "explanation": "The allegory highlights political and spiritual adultery.",
+  "ref": "Ezekiel 23:5–21"
+ },
+ {
+  "id": "old-ezekiel-23-5",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the outcome for Aholibah?",
+  "choices": [
+   "Her former lovers will come against her in judgment",
+   "She will be honored",
+   "She will reign over Egypt",
+   "She will rebuild Samaria"
+  ],
+  "answer": 0,
+  "explanation": "The very nations she courted will become instruments of her punishment.",
+  "ref": "Ezekiel 23:22–29"
+ },
+ {
+  "id": "old-ezekiel-24-1",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What historical event begins on the exact day named?",
+  "choices": [
+   "The siege of Jerusalem begins",
+   "The temple is rebuilt",
+   "Babylon falls",
+   "Ezekiel returns home"
+  ],
+  "answer": 0,
+  "explanation": "God marks the exact day Nebuchadnezzar set himself against Jerusalem.",
+  "ref": "Ezekiel 24:1–2"
+ },
+ {
+  "id": "old-ezekiel-24-2",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What cooking image is used for Jerusalem?",
+  "choices": [
+   "A vineyard",
+   "A boiling pot",
+   "A broken cistern",
+   "A threshing floor"
+  ],
+  "answer": 1,
+  "explanation": "Jerusalem is pictured as a pot full of choice flesh set on the fire.",
+  "ref": "Ezekiel 24:3–5"
+ },
+ {
+  "id": "old-ezekiel-24-3",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the scum in the pot represent?",
+  "choices": [
+   "Temple gold",
+   "The armies of Babylon",
+   "The exiles in Egypt",
+   "The filthiness and bloodguilt of the city"
+  ],
+  "answer": 3,
+  "explanation": "The scum that would not go out of the pot pictures the filthiness of the bloody city.",
+  "ref": "Ezekiel 24:6–13"
+ },
+ {
+  "id": "old-ezekiel-24-4",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does God call 'the desire of thine eyes'?",
+  "choices": [
+   "Jerusalem",
+   "The temple",
+   "The prince",
+   "Ezekiel's wife"
+  ],
+  "answer": 3,
+  "explanation": "God tells Ezekiel his wife will die suddenly as part of a sign-act.",
+  "ref": "Ezekiel 24:16"
+ },
+ {
+  "id": "old-ezekiel-24-5",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was Ezekiel to respond outwardly to his wife's death?",
+  "choices": [
+   "Without customary mourning rites",
+   "With public mourning",
+   "By fleeing to Egypt",
+   "By tearing the temple veil"
+  ],
+  "answer": 0,
+  "explanation": "His restrained grief symbolized how the people would be stunned by Jerusalem's fall.",
+  "ref": "Ezekiel 24:17"
+ },
+ {
+  "id": "old-ezekiel-25-1",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which nation is addressed first in this chapter?",
+  "choices": [
+   "Moab",
+   "Ammon",
+   "Edom",
+   "Tyre"
+  ],
+  "answer": 1,
+  "explanation": "The first oracle in this section is directed against Ammon.",
+  "ref": "Ezekiel 25:2"
+ },
+ {
+  "id": "old-ezekiel-25-2",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Ammon judged?",
+  "choices": [
+   "Because it helped Babylon",
+   "Because it feared Egypt",
+   "Because thou saidst, Aha, against my sanctuary",
+   "Because it built idols in Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Ammon rejoiced over Judah's profanation and fall.",
+  "ref": "Ezekiel 25:3"
+ },
+ {
+  "id": "old-ezekiel-25-3",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had Moab said?",
+  "choices": [
+   "The temple shall stand",
+   "Babylon is weak",
+   "Egypt will save us",
+   "Judah is like all the heathen"
+  ],
+  "answer": 3,
+  "explanation": "Moab minimized Judah's distinct covenant identity.",
+  "ref": "Ezekiel 25:8"
+ },
+ {
+  "id": "old-ezekiel-25-4",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What nation is said to have dealt against the house of Judah by taking vengeance?",
+  "choices": [
+   "Egypt",
+   "Ammon",
+   "Edom",
+   "Tyre"
+  ],
+  "answer": 2,
+  "explanation": "Edom's revengeful hostility brought its own judgment.",
+  "ref": "Ezekiel 25:12"
+ },
+ {
+  "id": "old-ezekiel-25-5",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What recurring result appears in these oracles?",
+  "choices": [
+   "They shall rebuild Jerusalem",
+   "They shall go to Egypt",
+   "They shall become priests",
+   "They shall know that I am the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Each nation's judgment reveals the Lord's sovereignty.",
+  "ref": "Ezekiel 25:5"
+ },
+ {
+  "id": "old-ezekiel-26-1",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Tyre rejoice over Jerusalem?",
+  "choices": [
+   "Because the gate of the people was broken and trade opportunity opened",
+   "Because the city was strengthened",
+   "Because the temple was rebuilt",
+   "Because Egypt arrived"
+  ],
+  "answer": 0,
+  "explanation": "Tyre saw Jerusalem's fall as economic advantage for itself.",
+  "ref": "Ezekiel 26:2"
+ },
+ {
+  "id": "old-ezekiel-26-2",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What image does God use for attacking nations against Tyre?",
+  "choices": [
+   "A lion in the forest",
+   "A vineyard in bloom",
+   "The sea causing its waves to come up",
+   "A plumb line"
+  ],
+  "answer": 2,
+  "explanation": "Many nations would come against Tyre like repeated waves.",
+  "ref": "Ezekiel 26:3"
+ },
+ {
+  "id": "old-ezekiel-26-3",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which king is specifically named as coming against Tyre?",
+  "choices": [
+   "Cyrus",
+   "Nebuchadnezzar",
+   "Sennacherib",
+   "Darius"
+  ],
+  "answer": 1,
+  "explanation": "Babylon's king is identified as the leading instrument of judgment.",
+  "ref": "Ezekiel 26:7"
+ },
+ {
+  "id": "old-ezekiel-26-4",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would happen to Tyre's dust?",
+  "choices": [
+   "It would be hidden",
+   "It would become fertile soil",
+   "It would be scraped from her and she would be made like the top of a rock",
+   "It would build new walls"
+  ],
+  "answer": 2,
+  "explanation": "Tyre's destruction is pictured as total stripping and barrenness.",
+  "ref": "Ezekiel 26:4"
+ },
+ {
+  "id": "old-ezekiel-26-5",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would Tyre become?",
+  "choices": [
+   "A city of priests",
+   "A royal fortress",
+   "A refuge for Judah",
+   "A place for the spreading of nets"
+  ],
+  "answer": 3,
+  "explanation": "The once-proud city would become a humble fishing place.",
+  "ref": "Ezekiel 26:5"
+ },
+ {
+  "id": "old-ezekiel-27-1",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What extended metaphor pictures Tyre in this chapter?",
+  "choices": [
+   "A lion",
+   "A vineyard",
+   "A crown",
+   "A magnificent ship"
+  ],
+  "answer": 3,
+  "explanation": "Tyre is portrayed as a beautiful ship built for trade and glory.",
+  "ref": "Ezekiel 27:3–4"
+ },
+ {
+  "id": "old-ezekiel-27-2",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What characterized Tyre's commercial life in the chapter?",
+  "choices": [
+   "Extensive trade with many nations",
+   "Simple local farming",
+   "Only temple worship",
+   "Complete poverty"
+  ],
+  "answer": 0,
+  "explanation": "The chapter catalogs Tyre's vast international trade network.",
+  "ref": "Ezekiel 27:12–25"
+ },
+ {
+  "id": "old-ezekiel-27-3",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the ship in the heart of the seas?",
+  "choices": [
+   "It conquers the nations",
+   "It is broken by the east wind",
+   "It reaches safety",
+   "It becomes a temple"
+  ],
+  "answer": 1,
+  "explanation": "Tyre's commercial empire is shattered suddenly and completely.",
+  "ref": "Ezekiel 27:26"
+ },
+ {
+  "id": "old-ezekiel-27-4",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How do the mariners and pilots respond to Tyre's fall?",
+  "choices": [
+   "They celebrate",
+   "They rebuild it at once",
+   "They ignore it",
+   "They lament and cry bitterly"
+  ],
+  "answer": 3,
+  "explanation": "The mariners and pilots come down from their ships, cry bitterly and take up a lamentation for Tyre.",
+  "ref": "Ezekiel 27:30–32"
+ },
+ {
+  "id": "old-ezekiel-27-5",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question captures the lament?",
+  "choices": [
+   "Who will rule Egypt?",
+   "Who shall stand in the gap?",
+   "What city is like Tyrus, like the destroyed in the midst of the sea?",
+   "Who has believed our report?"
+  ],
+  "answer": 2,
+  "explanation": "Tyre's uniqueness made her downfall especially shocking.",
+  "ref": "Ezekiel 27:32"
+ },
+ {
+  "id": "old-ezekiel-28-1",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What arrogant claim had the prince of Tyre made?",
+  "choices": [
+   "I am Judah's shepherd",
+   "I am the son of David",
+   "I am Egypt's ally",
+   "I am a god"
+  ],
+  "answer": 3,
+  "explanation": "The prince exalted himself as if divine.",
+  "ref": "Ezekiel 28:2"
+ },
+ {
+  "id": "old-ezekiel-28-2",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does God answer the prince of Tyre's claim to be a god?",
+  "choices": [
+   "Thou shalt reign for ever",
+   "Thou art my servant",
+   "Thou shalt rebuild Zion",
+   "Thou art a man, and not God"
+  ],
+  "answer": 3,
+  "explanation": "God cuts down his pride by reminding him of his mortality.",
+  "ref": "Ezekiel 28:2"
+ },
+ {
+  "id": "old-ezekiel-28-3",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where is the king of Tyre poetically said to have been?",
+  "choices": [
+   "In Eden, the garden of God",
+   "In Babylon",
+   "In Jerusalem's temple",
+   "On Sinai"
+  ],
+  "answer": 0,
+  "explanation": "The lament uses exalted imagery to describe former splendor and fall.",
+  "ref": "Ezekiel 28:13"
+ },
+ {
+  "id": "old-ezekiel-28-4",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What caused the downfall of the king of Tyre?",
+  "choices": [
+   "Thine heart was lifted up because of thy beauty",
+   "A famine in the land",
+   "The priests rebelled",
+   "The river dried up"
+  ],
+  "answer": 0,
+  "explanation": "Beauty and glory became the basis of pride and corruption.",
+  "ref": "Ezekiel 28:17"
+ },
+ {
+  "id": "old-ezekiel-28-5",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "place",
+  "question": "What city is judged after Tyre?",
+  "choices": [
+   "Damascus",
+   "Jerusalem",
+   "Tarshish",
+   "Sidon"
+  ],
+  "answer": 3,
+  "explanation": "Sidon also receives a judgment oracle in this chapter.",
+  "ref": "Ezekiel 28:20–24"
+ },
+ {
+  "id": "old-ezekiel-29-1",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what nation is this oracle directed?",
+  "choices": [
+   "Assyria",
+   "Egypt",
+   "Moab",
+   "Edom"
+  ],
+  "answer": 1,
+  "explanation": "The chapter opens the long judgment section against Egypt.",
+  "ref": "Ezekiel 29:2"
+ },
+ {
+  "id": "old-ezekiel-29-2",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Pharaoh described?",
+  "choices": [
+   "A lion of Judah",
+   "A shepherd of Israel",
+   "A great dragon in the rivers",
+   "A cedar of Lebanon"
+  ],
+  "answer": 2,
+  "explanation": "Pharaoh is portrayed as a monstrous river creature boasting over the Nile.",
+  "ref": "Ezekiel 29:3"
+ },
+ {
+  "id": "old-ezekiel-29-3",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What boast did Pharaoh make?",
+  "choices": [
+   "I built Jerusalem",
+   "I am the son of David",
+   "My river is mine own",
+   "I have conquered Babylon"
+  ],
+  "answer": 2,
+  "explanation": "His pride lay in claiming ownership and self-creation.",
+  "ref": "Ezekiel 29:3"
+ },
+ {
+  "id": "old-ezekiel-29-4",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long would Egypt be desolate?",
+  "choices": [
+   "Forty years",
+   "Seven years",
+   "Seventy years",
+   "Three years"
+  ],
+  "answer": 0,
+  "explanation": "Egypt's judgment is marked by a forty-year desolation.",
+  "ref": "Ezekiel 29:11–12"
+ },
+ {
+  "id": "old-ezekiel-29-5",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would Egypt no longer be to Israel?",
+  "choices": [
+   "The confidence of the house of Israel",
+   "A great kingdom",
+   "A holy nation",
+   "A place of refuge forever"
+  ],
+  "answer": 0,
+  "explanation": "Egypt would no longer lure Israel into misplaced trust.",
+  "ref": "Ezekiel 29:16"
+ },
+ {
+  "id": "old-ezekiel-30-1",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What phrase dominates the opening of the chapter?",
+  "choices": [
+   "Peace is at hand",
+   "Jerusalem shall stand",
+   "The exile is over",
+   "The day of the Lord is near"
+  ],
+  "answer": 3,
+  "explanation": "The coming judgment on Egypt is framed as part of the day of the Lord.",
+  "ref": "Ezekiel 30:3"
+ },
+ {
+  "id": "old-ezekiel-30-2",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would happen to the pride of Egypt?",
+  "choices": [
+   "It shall come down",
+   "It would flourish",
+   "It would save the nations",
+   "It would rebuild Tyre"
+  ],
+  "answer": 0,
+  "explanation": "Egypt's strength and pride would be brought low.",
+  "ref": "Ezekiel 30:6"
+ },
+ {
+  "id": "old-ezekiel-30-3",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what Egyptian city would God cause the images to cease?",
+  "choices": [
+   "Noph (Memphis)",
+   "Jerusalem",
+   "Babylon",
+   "Sidon"
+  ],
+  "answer": 0,
+  "explanation": "God said He would destroy the idols and cause their images to cease out of Noph.",
+  "ref": "Ezekiel 30:13"
+ },
+ {
+  "id": "old-ezekiel-30-4",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose arm would God break?",
+  "choices": [
+   "Nebuchadnezzar's",
+   "Zedekiah's",
+   "Tyre's prince",
+   "Pharaoh's"
+  ],
+  "answer": 3,
+  "explanation": "Pharaoh's broken arm symbolizes military collapse.",
+  "ref": "Ezekiel 30:22"
+ },
+ {
+  "id": "old-ezekiel-30-5",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose arms would God strengthen in contrast to Pharaoh's?",
+  "choices": [
+   "Israel's",
+   "The king of Babylon's",
+   "Tyre's",
+   "Moab's"
+  ],
+  "answer": 1,
+  "explanation": "Babylon is strengthened as the instrument of judgment against Egypt.",
+  "ref": "Ezekiel 30:24"
+ },
+ {
+  "id": "old-ezekiel-31-1",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kingdom is used as the comparison in this chapter?",
+  "choices": [
+   "Babylon",
+   "Judah",
+   "Assyria",
+   "Edom"
+  ],
+  "answer": 2,
+  "explanation": "Assyria's past greatness becomes a warning example for Egypt.",
+  "ref": "Ezekiel 31:3"
+ },
+ {
+  "id": "old-ezekiel-31-2",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what tree is Assyria compared?",
+  "choices": [
+   "An olive tree",
+   "A cedar in Lebanon",
+   "A fig tree",
+   "A palm tree"
+  ],
+  "answer": 1,
+  "explanation": "Assyria is portrayed as a towering cedar over the nations.",
+  "ref": "Ezekiel 31:3"
+ },
+ {
+  "id": "old-ezekiel-31-3",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was the tree cut down?",
+  "choices": [
+   "Because his heart was lifted up in his height",
+   "Because it bore no fruit",
+   "Because the river dried up",
+   "Because Egypt attacked it"
+  ],
+  "answer": 0,
+  "explanation": "Pride was the reason for its downfall.",
+  "ref": "Ezekiel 31:10"
+ },
+ {
+  "id": "old-ezekiel-31-4",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What nourished the great tree?",
+  "choices": [
+   "Rain only",
+   "Fire from heaven",
+   "The waters",
+   "Human wisdom"
+  ],
+  "answer": 2,
+  "explanation": "Deep waters symbolize the abundance that fed Assyria's greatness.",
+  "ref": "Ezekiel 31:4"
+ },
+ {
+  "id": "old-ezekiel-31-5",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning does this image give Pharaoh?",
+  "choices": [
+   "He will reign forever",
+   "He will rebuild Assyria",
+   "He will escape to Egypt",
+   "He too will be brought down among the trees of Eden"
+  ],
+  "answer": 3,
+  "explanation": "Pharaoh is warned that Egypt will share the same humiliating descent.",
+  "ref": "Ezekiel 31:18"
+ },
+ {
+  "id": "old-ezekiel-32-1",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two animal images are used for Pharaoh?",
+  "choices": [
+   "A young lion and a whale",
+   "A lamb and a dove",
+   "A fox and a wolf",
+   "An ox and an eagle"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh is likened to a young lion of the nations and to a whale in the seas.",
+  "ref": "Ezekiel 32:2"
+ },
+ {
+  "id": "old-ezekiel-32-2",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens in the sky when Pharaoh falls?",
+  "choices": [
+   "The sea turns to blood",
+   "The mountains melt",
+   "The stars and lights are darkened",
+   "The temple is rebuilt"
+  ],
+  "answer": 2,
+  "explanation": "God says He will make the stars dark, cover the sun with a cloud, and the moon shall not give her light.",
+  "ref": "Ezekiel 32:7–8"
+ },
+ {
+  "id": "old-ezekiel-32-3",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does Pharaoh finally lie in the second part of the chapter?",
+  "choices": [
+   "In the pit among the slain",
+   "On Zion's hill",
+   "At the temple gate",
+   "On the throne of David"
+  ],
+  "answer": 0,
+  "explanation": "Egypt joins the uncircumcised dead in the grave.",
+  "ref": "Ezekiel 32:18–32"
+ },
+ {
+  "id": "old-ezekiel-32-4",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which nations are named as already lying in the pit where Pharaoh will go?",
+  "choices": [
+   "Judah, Benjamin and Levi",
+   "Babylon, Persia and Greece",
+   "Moab, Ammon and Philistia",
+   "Asshur, Elam, Meshech, Tubal and Edom"
+  ],
+  "answer": 3,
+  "explanation": "The grave scene lists Asshur, Elam, Meshech, Tubal, Edom and others who were slain by the sword.",
+  "ref": "Ezekiel 32:22–30"
+ },
+ {
+  "id": "old-ezekiel-32-5",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will Pharaoh see in the pit that comforts him?",
+  "choices": [
+   "The other nations slain by the sword",
+   "A way to rise again at once",
+   "A throne prepared for him",
+   "An escape from judgment"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh shall see the other fallen nations and be comforted over all his multitude.",
+  "ref": "Ezekiel 32:31"
+ },
+ {
+  "id": "old-ezekiel-33-1",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What role is emphasized again at the start of the chapter?",
+  "choices": [
+   "King",
+   "Watchman",
+   "Priest",
+   "Scribe"
+  ],
+  "answer": 1,
+  "explanation": "Ezekiel is reminded of his watchman responsibility.",
+  "ref": "Ezekiel 33:7"
+ },
+ {
+  "id": "old-ezekiel-33-2",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When does the watchman incur bloodguilt?",
+  "choices": [
+   "If he sees the sword and does not warn",
+   "If he blows the trumpet too soon",
+   "If he flees the city",
+   "If he mourns publicly"
+  ],
+  "answer": 0,
+  "explanation": "Silence in the face of warning makes the watchman accountable.",
+  "ref": "Ezekiel 33:6–8"
+ },
+ {
+  "id": "old-ezekiel-33-3",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What news reaches Ezekiel?",
+  "choices": [
+   "Babylon has fallen",
+   "Egypt is restored",
+   "The city is smitten",
+   "The temple is rebuilt"
+  ],
+  "answer": 2,
+  "explanation": "A fugitive confirms Jerusalem's fall to Ezekiel.",
+  "ref": "Ezekiel 33:21"
+ },
+ {
+  "id": "old-ezekiel-33-4",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What complaint of the people does God answer?",
+  "choices": [
+   "Why has Egypt failed?",
+   "Where is the prince?",
+   "Can the temple stand?",
+   "Our transgressions are upon us... how should we then live?"
+  ],
+  "answer": 3,
+  "explanation": "God answers despair with a call to repentance.",
+  "ref": "Ezekiel 33:10"
+ },
+ {
+  "id": "old-ezekiel-33-5",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How do the people treat Ezekiel?",
+  "choices": [
+   "They obey him fully",
+   "They hear his words but do them not",
+   "They imprison him",
+   "They crown him"
+  ],
+  "answer": 1,
+  "explanation": "They treated him like a pleasant singer rather than obeying his message.",
+  "ref": "Ezekiel 33:31–32"
+ },
+ {
+  "id": "old-ezekiel-34-1",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against whom is the prophecy directed at the start of the chapter?",
+  "choices": [
+   "The mountains of Israel",
+   "The kings of Egypt",
+   "The shepherds of Israel",
+   "The merchants of Tyre"
+  ],
+  "answer": 2,
+  "explanation": "Israel's leaders are condemned as false shepherds.",
+  "ref": "Ezekiel 34:2"
+ },
+ {
+  "id": "old-ezekiel-34-2",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the shepherds done wrong?",
+  "choices": [
+   "Built too many cities",
+   "Fed themselves and not the flock",
+   "Destroyed Babylon",
+   "Ignored Egypt"
+  ],
+  "answer": 1,
+  "explanation": "They used the flock for gain and failed to strengthen the weak.",
+  "ref": "Ezekiel 34:3–4"
+ },
+ {
+  "id": "old-ezekiel-34-3",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who says He will seek and deliver the sheep?",
+  "choices": [
+   "David",
+   "The priests",
+   "A foreign king",
+   "The Lord Himself"
+  ],
+  "answer": 3,
+  "explanation": "God promises to personally search for and rescue His scattered flock.",
+  "ref": "Ezekiel 34:11–12"
+ },
+ {
+  "id": "old-ezekiel-34-4",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is the one shepherd God promises to set over His flock?",
+  "choices": [
+   "Moses",
+   "His servant David",
+   "Eli the priest",
+   "Zedekiah restored"
+  ],
+  "answer": 1,
+  "explanation": "God says He will set up one shepherd over them, His servant David, who shall feed them.",
+  "ref": "Ezekiel 34:23"
+ },
+ {
+  "id": "old-ezekiel-34-5",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of covenant does God promise to make with His flock?",
+  "choices": [
+   "A covenant of famine",
+   "A covenant of peace",
+   "A covenant of exile",
+   "A covenant of silence"
+  ],
+  "answer": 1,
+  "explanation": "God promises a covenant of peace, so that His people shall dwell safely.",
+  "ref": "Ezekiel 34:25"
+ },
+ {
+  "id": "old-ezekiel-35-1",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "place",
+  "question": "Against what mountain does Ezekiel prophesy?",
+  "choices": [
+   "Mount Seir",
+   "Mount Zion",
+   "Mount Carmel",
+   "Mount Hermon"
+  ],
+  "answer": 0,
+  "explanation": "Mount Seir stands for Edom in this oracle.",
+  "ref": "Ezekiel 35:2"
+ },
+ {
+  "id": "old-ezekiel-35-2",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What long-standing attitude of Edom is condemned?",
+  "choices": [
+   "Perpetual hatred",
+   "Great compassion",
+   "Faithful worship",
+   "Fear of the Lord"
+  ],
+  "answer": 0,
+  "explanation": "Edom is judged for its enduring enmity toward Israel.",
+  "ref": "Ezekiel 35:5"
+ },
+ {
+  "id": "old-ezekiel-35-3",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had Edom said about Israel's land?",
+  "choices": [
+   "It belongs to the Lord",
+   "These two nations and countries shall be mine",
+   "It will be restored to Judah",
+   "It must remain desolate"
+  ],
+  "answer": 1,
+  "explanation": "Edom arrogantly claimed land that belonged to God.",
+  "ref": "Ezekiel 35:10"
+ },
+ {
+  "id": "old-ezekiel-35-4",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God promise to make Mount Seir?",
+  "choices": [
+   "A fruitful garden",
+   "Most desolate",
+   "A refuge city",
+   "A royal highway"
+  ],
+  "answer": 1,
+  "explanation": "The judgment on Edom is described as severe and enduring desolation.",
+  "ref": "Ezekiel 35:3–4"
+ },
+ {
+  "id": "old-ezekiel-35-5",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was it wrong for Edom to say the two nations and two countries would be theirs?",
+  "choices": [
+   "Because Babylon said it first",
+   "Because Egypt owned the rivers",
+   "Because Zion was empty",
+   "Because the Lord was there"
+  ],
+  "answer": 3,
+  "explanation": "Edom claimed the land for itself, whereas the Lord was there.",
+  "ref": "Ezekiel 35:10"
+ },
+ {
+  "id": "old-ezekiel-36-1",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what does Ezekiel prophesy in this chapter?",
+  "choices": [
+   "The dry bones",
+   "The kings of Babylon",
+   "The river of Egypt",
+   "The mountains of Israel"
+  ],
+  "answer": 3,
+  "explanation": "The land itself is addressed with promises of renewal.",
+  "ref": "Ezekiel 36:1"
+ },
+ {
+  "id": "old-ezekiel-36-2",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the enemy say about the ancient high places of Israel?",
+  "choices": [
+   "They belong to the Lord",
+   "They will never fall",
+   "They are ours in possession",
+   "They must be rebuilt"
+  ],
+  "answer": 2,
+  "explanation": "The enemy said, Aha, even the ancient high places are ours in possession.",
+  "ref": "Ezekiel 36:2"
+ },
+ {
+  "id": "old-ezekiel-36-3",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whose sake does God act?",
+  "choices": [
+   "For your sakes",
+   "For Babylon's sake",
+   "For mine holy name's sake",
+   "For Egypt's sake"
+  ],
+  "answer": 2,
+  "explanation": "God's restoration of Israel is tied first to the sanctification of His name.",
+  "ref": "Ezekiel 36:22"
+ },
+ {
+  "id": "old-ezekiel-36-4",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What inner transformation is promised?",
+  "choices": [
+   "A new king",
+   "A new temple immediately",
+   "A new language",
+   "A new heart and a new spirit"
+  ],
+  "answer": 3,
+  "explanation": "God promises inward renewal, not just outward restoration.",
+  "ref": "Ezekiel 36:26"
+ },
+ {
+  "id": "old-ezekiel-36-5",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God promise to put within His people so that they walk in His statutes?",
+  "choices": [
+   "A sword",
+   "A yoke",
+   "His Spirit",
+   "A crown"
+  ],
+  "answer": 2,
+  "explanation": "His Spirit will enable them to walk in His statutes.",
+  "ref": "Ezekiel 36:27"
+ },
+ {
+  "id": "old-ezekiel-37-1",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What filled the valley in Ezekiel's vision?",
+  "choices": [
+   "Dry bones",
+   "Water",
+   "Fire",
+   "Chariots"
+  ],
+  "answer": 0,
+  "explanation": "The vision opens with a valley full of very dry bones.",
+  "ref": "Ezekiel 37:1–2"
+ },
+ {
+  "id": "old-ezekiel-37-2",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question does God ask Ezekiel?",
+  "choices": [
+   "Will Jerusalem stand?",
+   "Who shall feed the flock?",
+   "Can the river rise?",
+   "Can these bones live?"
+  ],
+  "answer": 3,
+  "explanation": "The question sets up the impossible-seeming promise of restoration.",
+  "ref": "Ezekiel 37:3"
+ },
+ {
+  "id": "old-ezekiel-37-3",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What came into the bones when Ezekiel prophesied to the wind?",
+  "choices": [
+   "Breath",
+   "Fire",
+   "Water",
+   "Oil"
+  ],
+  "answer": 0,
+  "explanation": "The breath brought the bones to life as a great army.",
+  "ref": "Ezekiel 37:9–10"
+ },
+ {
+  "id": "old-ezekiel-37-4",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the two sticks represent?",
+  "choices": [
+   "Egypt and Babylon",
+   "Priest and king",
+   "Heaven and earth",
+   "Judah and Joseph/Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "The joined sticks symbolize the reunification of the divided nation.",
+  "ref": "Ezekiel 37:16–19"
+ },
+ {
+  "id": "old-ezekiel-37-5",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is promised as one shepherd over them?",
+  "choices": [
+   "Moses",
+   "Zedekiah",
+   "Elijah",
+   "My servant David"
+  ],
+  "answer": 3,
+  "explanation": "The restored people will be gathered under one Davidic shepherd.",
+  "ref": "Ezekiel 37:24"
+ },
+ {
+  "id": "old-ezekiel-38-1",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against whom is Ezekiel told to set his face?",
+  "choices": [
+   "Pharaoh",
+   "Gog of the land of Magog",
+   "The prince of Tyre",
+   "Nebuchadnezzar"
+  ],
+  "answer": 1,
+  "explanation": "Gog is the central hostile figure in this apocalyptic invasion oracle.",
+  "ref": "Ezekiel 38:2"
+ },
+ {
+  "id": "old-ezekiel-38-2",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of land is Gog coming against?",
+  "choices": [
+   "The land brought back from the sword",
+   "A land forever desolate",
+   "Egypt's delta",
+   "Assyria's mountains"
+  ],
+  "answer": 0,
+  "explanation": "The attack comes against a restored people dwelling again in the land.",
+  "ref": "Ezekiel 38:8"
+ },
+ {
+  "id": "old-ezekiel-38-3",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Israel described before the attack?",
+  "choices": [
+   "As hiding in caves",
+   "As armed for world conquest",
+   "As servants in Babylon",
+   "As dwelling safely without walls"
+  ],
+  "answer": 3,
+  "explanation": "The people are pictured in vulnerable peace before Gog's invasion.",
+  "ref": "Ezekiel 38:11"
+ },
+ {
+  "id": "old-ezekiel-38-4",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does God bring Gog against His land?",
+  "choices": [
+   "To destroy Israel utterly",
+   "To strengthen Egypt",
+   "That the heathen may know me",
+   "To rebuild the temple"
+  ],
+  "answer": 2,
+  "explanation": "God uses the invasion to reveal His holiness before the nations.",
+  "ref": "Ezekiel 38:16"
+ },
+ {
+  "id": "old-ezekiel-38-5",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say will happen in the land of Israel when Gog comes against it?",
+  "choices": [
+   "A treaty of peace",
+   "A great shaking",
+   "A new exile",
+   "A long drought"
+  ],
+  "answer": 1,
+  "explanation": "God says that in that day there shall be a great shaking in the land of Israel.",
+  "ref": "Ezekiel 38:19"
+ },
+ {
+  "id": "old-ezekiel-39-1",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to Gog's armies?",
+  "choices": [
+   "They build Jerusalem",
+   "They fall upon the mountains of Israel",
+   "They conquer the land",
+   "They flee safely to Egypt"
+  ],
+  "answer": 1,
+  "explanation": "God defeats Gog decisively on the mountains of Israel.",
+  "ref": "Ezekiel 39:4"
+ },
+ {
+  "id": "old-ezekiel-39-2",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will Israel use for fuel?",
+  "choices": [
+   "Temple cedar only",
+   "Babylonian idols",
+   "The vines of the land",
+   "The weapons of the enemy"
+  ],
+  "answer": 3,
+  "explanation": "The abundance of enemy weapons becomes fuel for years.",
+  "ref": "Ezekiel 39:9"
+ },
+ {
+  "id": "old-ezekiel-39-3",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long will the house of Israel be burying them?",
+  "choices": [
+   "7 months",
+   "7 days",
+   "7 years",
+   "40 days"
+  ],
+  "answer": 0,
+  "explanation": "The burial process itself underscores the scale of the defeat.",
+  "ref": "Ezekiel 39:12"
+ },
+ {
+  "id": "old-ezekiel-39-4",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say He will set among the heathen?",
+  "choices": [
+   "His altar",
+   "His glory",
+   "His throne",
+   "His temple"
+  ],
+  "answer": 1,
+  "explanation": "God says He will set His glory among the heathen, and all the heathen shall see His judgment.",
+  "ref": "Ezekiel 39:21"
+ },
+ {
+  "id": "old-ezekiel-39-5",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What promise closes the chapter?",
+  "choices": [
+   "I will scatter them again",
+   "They shall seek Babylon",
+   "I will remove my Spirit",
+   "Neither will I hide my face any more from them"
+  ],
+  "answer": 3,
+  "explanation": "The chapter ends with lasting restoration and the outpoured Spirit.",
+  "ref": "Ezekiel 39:29"
+ },
+ {
+  "id": "old-ezekiel-40-1",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When does Ezekiel receive this temple vision?",
+  "choices": [
+   "During Josiah's reign",
+   "In the fourteenth year after the city was smitten",
+   "At the Exodus",
+   "When Babylon fell"
+  ],
+  "answer": 1,
+  "explanation": "The vision comes fourteen years after Jerusalem's fall.",
+  "ref": "Ezekiel 40:1"
+ },
+ {
+  "id": "old-ezekiel-40-2",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Ezekiel set in the visions of God?",
+  "choices": [
+   "A desert plain",
+   "The river Euphrates",
+   "A very high mountain",
+   "Mount Sinai"
+  ],
+  "answer": 2,
+  "explanation": "From a very high mountain Ezekiel sees the temple structure.",
+  "ref": "Ezekiel 40:2"
+ },
+ {
+  "id": "old-ezekiel-40-3",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What measuring tools did the man in the vision carry?",
+  "choices": [
+   "A plumb line only",
+   "A sword and shield",
+   "A line of flax and a measuring reed",
+   "An inkhorn"
+  ],
+  "answer": 2,
+  "explanation": "The heavenly guide measures the vision precisely.",
+  "ref": "Ezekiel 40:3"
+ },
+ {
+  "id": "old-ezekiel-40-4",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Ezekiel told to do regarding what he saw?",
+  "choices": [
+   "Hide it from Israel",
+   "Write only to the priests",
+   "Declare all that thou seest to the house of Israel",
+   "Seal the vision for later"
+  ],
+  "answer": 2,
+  "explanation": "The vision is meant to be reported to Israel.",
+  "ref": "Ezekiel 40:4"
+ },
+ {
+  "id": "old-ezekiel-40-5",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What major feature dominates the rest of the chapter?",
+  "choices": [
+   "Battle scenes",
+   "Measured gates and courts",
+   "Dry bones rising",
+   "A river flowing"
+  ],
+  "answer": 1,
+  "explanation": "The chapter carefully details the outer structures of the future temple.",
+  "ref": "Ezekiel 40:1"
+ },
+ {
+  "id": "old-ezekiel-41-1",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the man bring Ezekiel at the start of this chapter?",
+  "choices": [
+   "To the temple",
+   "To the altar of incense",
+   "To the city wall",
+   "To the river gate"
+  ],
+  "answer": 0,
+  "explanation": "The man brought Ezekiel to the temple and began to measure its posts.",
+  "ref": "Ezekiel 41:1"
+ },
+ {
+  "id": "old-ezekiel-41-2",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the innermost room described?",
+  "choices": [
+   "The most holy place",
+   "The holy mountain",
+   "The king's chamber",
+   "The priests' court"
+  ],
+  "answer": 0,
+  "explanation": "The inner room is identified as the most holy place.",
+  "ref": "Ezekiel 41:4"
+ },
+ {
+  "id": "old-ezekiel-41-3",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What decorative figures are mentioned on the walls?",
+  "choices": [
+   "Stars and moons",
+   "Cherubim and palm trees",
+   "Lions and chariots",
+   "Crowns and thrones"
+  ],
+  "answer": 1,
+  "explanation": "The carved cherubim and palm trees decorate the temple interior.",
+  "ref": "Ezekiel 41:18–19"
+ },
+ {
+  "id": "old-ezekiel-41-4",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the altar made of that the man called the table before the Lord?",
+  "choices": [
+   "Wood",
+   "Hewn stone",
+   "Pure gold",
+   "Brass"
+  ],
+  "answer": 0,
+  "explanation": "The altar was of wood, and the man said, This is the table that is before the Lord.",
+  "ref": "Ezekiel 41:22"
+ },
+ {
+  "id": "old-ezekiel-41-5",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated emphasis governs the whole chapter?",
+  "choices": [
+   "War against Gog",
+   "Judgment on Egypt",
+   "Temple measurements and structure",
+   "The dry bones vision"
+  ],
+  "answer": 2,
+  "explanation": "The chapter continues the detailed architectural revelation of the temple.",
+  "ref": "Ezekiel 41:1"
+ },
+ {
+  "id": "old-ezekiel-42-1",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who uses the chambers described in this chapter?",
+  "choices": [
+   "Foreign merchants",
+   "The priests",
+   "The king's army",
+   "The exiles from Egypt"
+  ],
+  "answer": 1,
+  "explanation": "These chambers are for priests who eat the most holy things and store garments.",
+  "ref": "Ezekiel 42:13–14"
+ },
+ {
+  "id": "old-ezekiel-42-2",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the priests do in the holy chambers?",
+  "choices": [
+   "Sleep there only",
+   "Eat the most holy things",
+   "Store weapons",
+   "Receive tribute"
+  ],
+  "answer": 1,
+  "explanation": "The chambers serve the priests in handling holy offerings.",
+  "ref": "Ezekiel 42:13"
+ },
+ {
+  "id": "old-ezekiel-42-3",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must the priests do before going out to the outer court?",
+  "choices": [
+   "Sound a trumpet",
+   "Carry coals",
+   "Change their garments",
+   "Wash in the river"
+  ],
+  "answer": 2,
+  "explanation": "Holy garments are not to be worn casually into the common areas.",
+  "ref": "Ezekiel 42:14"
+ },
+ {
+  "id": "old-ezekiel-42-4",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What large structure encloses the whole complex at the end of the chapter?",
+  "choices": [
+   "A moat",
+   "A river",
+   "A wall round about",
+   "A row of cedars"
+  ],
+  "answer": 2,
+  "explanation": "The wall separates the holy place from the common.",
+  "ref": "Ezekiel 42:20"
+ },
+ {
+  "id": "old-ezekiel-42-5",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the purpose of the wall around the temple area?",
+  "choices": [
+   "To stop Babylon",
+   "To store grain",
+   "To make a separation between the sanctuary and the profane place",
+   "To keep out animals only"
+  ],
+  "answer": 2,
+  "explanation": "The final emphasis is the distinction between holy and common.",
+  "ref": "Ezekiel 42:20"
+ },
+ {
+  "id": "old-ezekiel-43-1",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what direction does the glory of the God of Israel come?",
+  "choices": [
+   "North",
+   "East",
+   "South",
+   "West"
+  ],
+  "answer": 1,
+  "explanation": "The glory returns from the east, where it had departed in earlier visions.",
+  "ref": "Ezekiel 43:2"
+ },
+ {
+  "id": "old-ezekiel-43-2",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to Ezekiel when he sees the glory return?",
+  "choices": [
+   "He shouts in triumph",
+   "He flees the city",
+   "He measures the gate",
+   "He falls upon his face"
+  ],
+  "answer": 3,
+  "explanation": "The return of glory produces the same awe as earlier appearances.",
+  "ref": "Ezekiel 43:3"
+ },
+ {
+  "id": "old-ezekiel-43-3",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What fills the house?",
+  "choices": [
+   "Smoke only",
+   "The priests",
+   "A river",
+   "The glory of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "The temple is filled with divine glory.",
+  "ref": "Ezekiel 43:5"
+ },
+ {
+  "id": "old-ezekiel-43-4",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say the house of Israel must put away?",
+  "choices": [
+   "Their trading",
+   "Their vineyards",
+   "Their whoredom and carcasses of kings",
+   "Their language"
+  ],
+  "answer": 2,
+  "explanation": "Holiness in the restored temple requires the removal of former defilement.",
+  "ref": "Ezekiel 43:9"
+ },
+ {
+  "id": "old-ezekiel-43-5",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What section closes the chapter?",
+  "choices": [
+   "Instructions for the altar's purification",
+   "The fall of Babylon",
+   "A lament for Tyre",
+   "The dry bones"
+  ],
+  "answer": 0,
+  "explanation": "The altar is consecrated through a sequence of offerings over several days.",
+  "ref": "Ezekiel 43:18–27"
+ },
+ {
+  "id": "old-ezekiel-44-1",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is special about the east gate?",
+  "choices": [
+   "It is torn down",
+   "It remains shut",
+   "It is opened only at night",
+   "It leads to Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Because the Lord entered by it, the east gate is to remain shut.",
+  "ref": "Ezekiel 44:2"
+ },
+ {
+  "id": "old-ezekiel-44-2",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who may sit in the east gate to eat bread before the Lord?",
+  "choices": [
+   "The prince",
+   "Any Levite",
+   "The whole nation",
+   "Foreigners"
+  ],
+  "answer": 0,
+  "explanation": "The shut gate is for the prince, who shall sit in it to eat bread before the Lord.",
+  "ref": "Ezekiel 44:3"
+ },
+ {
+  "id": "old-ezekiel-44-3",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which group is barred from doing the office of a priest?",
+  "choices": [
+   "The sons of Zadok",
+   "The remnant from Babylon",
+   "The Levites who went astray after idols",
+   "The king's sons"
+  ],
+  "answer": 2,
+  "explanation": "These Levites still keep charge of the house, but they may not come near to do the office of a priest.",
+  "ref": "Ezekiel 44:10–14"
+ },
+ {
+  "id": "old-ezekiel-44-4",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which priestly line is allowed to come near to minister before the Lord?",
+  "choices": [
+   "The house of Eli",
+   "The sons of Korah",
+   "The sons of Zadok",
+   "The sons of Aaron generally"
+  ],
+  "answer": 2,
+  "explanation": "The faithful sons of Zadok retain the privilege of near ministry.",
+  "ref": "Ezekiel 44:15"
+ },
+ {
+  "id": "old-ezekiel-44-5",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What teaching duty is given to the priests?",
+  "choices": [
+   "To train soldiers",
+   "To teach the people the difference between holy and profane",
+   "To count the money",
+   "To survey the land"
+  ],
+  "answer": 1,
+  "explanation": "A chief priestly task is restoring right discernment about holiness.",
+  "ref": "Ezekiel 44:23"
+ },
+ {
+  "id": "old-ezekiel-45-1",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When the land is divided by lot, what must be offered to the Lord?",
+  "choices": [
+   "The whole kingdom",
+   "Only the riverbank",
+   "The high places",
+   "A holy portion of the land"
+  ],
+  "answer": 3,
+  "explanation": "When the land is divided, a holy portion of it is to be offered as an oblation to the Lord.",
+  "ref": "Ezekiel 45:1"
+ },
+ {
+  "id": "old-ezekiel-45-2",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning is given to the princes?",
+  "choices": [
+   "Remove violence and spoil and execute judgment and justice",
+   "Offer more incense",
+   "Flee Babylon",
+   "Build larger walls"
+  ],
+  "answer": 0,
+  "explanation": "The restored order includes justice and the end of oppression.",
+  "ref": "Ezekiel 45:9"
+ },
+ {
+  "id": "old-ezekiel-45-3",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command is given about weights and measures?",
+  "choices": [
+   "Use only gold weights",
+   "Store all the grain",
+   "Have just balances",
+   "Measure no offerings"
+  ],
+  "answer": 2,
+  "explanation": "The people are told to have just balances, a just ephah, and a just bath.",
+  "ref": "Ezekiel 45:10"
+ },
+ {
+  "id": "old-ezekiel-45-4",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is responsible for the public offerings?",
+  "choices": [
+   "The prince",
+   "The high priest alone",
+   "Foreigners",
+   "Every family equally"
+  ],
+  "answer": 0,
+  "explanation": "The prince provides the offerings for appointed worship.",
+  "ref": "Ezekiel 45:17"
+ },
+ {
+  "id": "old-ezekiel-45-5",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which feast is to be kept on the fourteenth day of the first month?",
+  "choices": [
+   "Pentecost",
+   "Tabernacles",
+   "Passover",
+   "Purim"
+  ],
+  "answer": 2,
+  "explanation": "In the first month, on the fourteenth day, they shall have the passover, a feast of seven days.",
+  "ref": "Ezekiel 45:21"
+ },
+ {
+  "id": "old-ezekiel-46-1",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When is the inner east gate opened?",
+  "choices": [
+   "Every day",
+   "On the sabbath and in the day of the new moon",
+   "Only at Passover",
+   "Never"
+  ],
+  "answer": 1,
+  "explanation": "The gate's opening is tied to sacred times of worship.",
+  "ref": "Ezekiel 46:1"
+ },
+ {
+  "id": "old-ezekiel-46-2",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does the prince worship?",
+  "choices": [
+   "In the holy of holies",
+   "On the outer wall",
+   "Beside the river",
+   "At the threshold of the gate"
+  ],
+  "answer": 3,
+  "explanation": "The prince stands by the post of the gate and worships at the threshold of the gate.",
+  "ref": "Ezekiel 46:2"
+ },
+ {
+  "id": "old-ezekiel-46-3",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the chapter regulate besides offerings?",
+  "choices": [
+   "Temple music only",
+   "The prince's inheritance and gifts",
+   "Foreign treaties",
+   "Military campaigns"
+  ],
+  "answer": 1,
+  "explanation": "The prince is warned not to oppress by taking the people's inheritance.",
+  "ref": "Ezekiel 46:16–18"
+ },
+ {
+  "id": "old-ezekiel-46-4",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to a gift the prince gives to one of his sons?",
+  "choices": [
+   "It belongs to his sons by inheritance",
+   "It must be returned each year",
+   "It is lost in the year of liberty",
+   "It belongs to the priests"
+  ],
+  "answer": 0,
+  "explanation": "A gift to his sons remains theirs as an inheritance.",
+  "ref": "Ezekiel 46:16"
+ },
+ {
+  "id": "old-ezekiel-46-5",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What practical temple feature is shown at the end of the chapter?",
+  "choices": [
+   "A hidden treasury",
+   "Cooking places for the ministers",
+   "A second altar",
+   "A royal throne room"
+  ],
+  "answer": 1,
+  "explanation": "The vision includes designated places where offerings are prepared.",
+  "ref": "Ezekiel 46:19–24"
+ },
+ {
+  "id": "old-ezekiel-47-1",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where do the waters issue?",
+  "choices": [
+   "Under the threshold of the house eastward",
+   "The Mount of Olives",
+   "The city wall",
+   "The prince's gate"
+  ],
+  "answer": 0,
+  "explanation": "The healing river flows from the temple itself.",
+  "ref": "Ezekiel 47:1"
+ },
+ {
+  "id": "old-ezekiel-47-2",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the river deepen as Ezekiel measures it?",
+  "choices": [
+   "It remains shallow",
+   "From the ankles to the knees to the loins, then deep enough to swim in",
+   "It dries up",
+   "It becomes blood"
+  ],
+  "answer": 1,
+  "explanation": "The waters rose from the ankles to the knees to the loins, and then became a river that could not be passed over.",
+  "ref": "Ezekiel 47:3–5"
+ },
+ {
+  "id": "old-ezekiel-47-3",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens when the waters reach the sea?",
+  "choices": [
+   "The sea turns to fire",
+   "The fish all die",
+   "The waters are healed",
+   "The shore collapses"
+  ],
+  "answer": 2,
+  "explanation": "The river transforms even the dead sea-like waters into life.",
+  "ref": "Ezekiel 47:8"
+ },
+ {
+  "id": "old-ezekiel-47-4",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What grows on the river's banks?",
+  "choices": [
+   "Only reeds",
+   "Trees whose leaf shall not fade and fruit shall not fail",
+   "Thorns and briars",
+   "Cedars for ships"
+  ],
+  "answer": 1,
+  "explanation": "The river brings constant fruitfulness and healing.",
+  "ref": "Ezekiel 47:12"
+ },
+ {
+  "id": "old-ezekiel-47-5",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who else receives an inheritance among the tribes of Israel?",
+  "choices": [
+   "The strangers who sojourn among them",
+   "The merchants of Tyre",
+   "The princes of Egypt",
+   "The armies of Gog"
+  ],
+  "answer": 0,
+  "explanation": "Strangers who sojourn among Israel and have children there receive an inheritance with the tribes.",
+  "ref": "Ezekiel 47:22–23"
+ },
+ {
+  "id": "old-ezekiel-48-1",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What takes up most of this final chapter?",
+  "choices": [
+   "A battle plan",
+   "A lament over Babylon",
+   "The dry bones vision again",
+   "The tribal allotments of the land"
+  ],
+  "answer": 3,
+  "explanation": "The final chapter arranges the land among the tribes and the holy portions.",
+  "ref": "Ezekiel 48:1"
+ },
+ {
+  "id": "old-ezekiel-48-2",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What special portion lies in the center of the tribal allotments?",
+  "choices": [
+   "Egypt's territory",
+   "The old kingdom of Saul",
+   "The oblation for the sanctuary, priests, city, and prince",
+   "The forest of Lebanon"
+  ],
+  "answer": 2,
+  "explanation": "The heart of the land remains centered on the Lord's holy district.",
+  "ref": "Ezekiel 48:8–22"
+ },
+ {
+  "id": "old-ezekiel-48-3",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many gates does the city have?",
+  "choices": [
+   "Twelve",
+   "Four",
+   "Eight",
+   "Twenty-four"
+  ],
+  "answer": 0,
+  "explanation": "The city has twelve gates named for the tribes of Israel.",
+  "ref": "Ezekiel 48:30–34"
+ },
+ {
+  "id": "old-ezekiel-48-4",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the new name of the city from that day?",
+  "choices": [
+   "The Lord is there",
+   "Jerusalem the holy",
+   "City of David",
+   "Zion renewed"
+  ],
+  "answer": 0,
+  "explanation": "The book ends with the climactic assurance of God's abiding presence.",
+  "ref": "Ezekiel 48:35"
+ },
+ {
+  "id": "old-ezekiel-48-5",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe receives the first portion at the north end of the land?",
+  "choices": [
+   "Dan",
+   "Judah",
+   "Levi",
+   "Benjamin"
+  ],
+  "answer": 0,
+  "explanation": "The list of tribes begins at the north end with a portion for Dan.",
+  "ref": "Ezekiel 48:1"
+ }
+]

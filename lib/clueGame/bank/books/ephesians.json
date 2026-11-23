@@ -1,0 +1,482 @@
+[
+ {
+  "id": "old-ephesians-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "According to Ephesians 1:3, where are believers blessed with all spiritual blessings?",
+  "choices": [
+   "In the temple",
+   "In Jerusalem",
+   "In Christ",
+   "In the law"
+  ],
+  "answer": 2,
+  "explanation": "Paul says believers are blessed with all spiritual blessings in heavenly places in Christ.",
+  "ref": "Ephesians 1:3"
+ },
+ {
+  "id": "old-ephesians-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When were believers chosen?",
+  "choices": [
+   "After the resurrection",
+   "Before the foundation of the world",
+   "At Pentecost",
+   "When they first believed"
+  ],
+  "answer": 1,
+  "explanation": "God chose believers in Christ before the foundation of the world.",
+  "ref": "Ephesians 1:4"
+ },
+ {
+  "id": "old-ephesians-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Through what do believers have redemption?",
+  "choices": [
+   "Their obedience",
+   "Christ's blood",
+   "The law of Moses",
+   "The church"
+  ],
+  "answer": 1,
+  "explanation": "Redemption and forgiveness come through Christ's blood.",
+  "ref": "Ephesians 1:7"
+ },
+ {
+  "id": "old-ephesians-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were believers sealed with?",
+  "choices": [
+   "The Holy Spirit of promise",
+   "The covenant of Sinai",
+   "An angelic sign",
+   "Water baptism"
+  ],
+  "answer": 0,
+  "explanation": "Believers were sealed with the Holy Spirit of promise.",
+  "ref": "Ephesians 1:13"
+ },
+ {
+  "id": "old-ephesians-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where is Christ seated?",
+  "choices": [
+   "At the altar",
+   "At God's right hand in the heavenly places",
+   "In the temple courts",
+   "Among the apostles"
+  ],
+  "answer": 1,
+  "explanation": "God raised Christ and seated Him at His own right hand in the heavenly places.",
+  "ref": "Ephesians 1:20"
+ },
+ {
+  "id": "old-ephesians-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say believers were dead in before salvation?",
+  "choices": [
+   "Weakness and fear",
+   "Traditions and customs",
+   "Trespasses and sins",
+   "Poverty and sorrow"
+  ],
+  "answer": 2,
+  "explanation": "Believers were once dead in trespasses and sins.",
+  "ref": "Ephesians 2:1"
+ },
+ {
+  "id": "old-ephesians-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By what are believers saved?",
+  "choices": [
+   "Works",
+   "Circumcision",
+   "Temple sacrifice",
+   "Grace through faith"
+  ],
+  "answer": 3,
+  "explanation": "Paul says salvation is by grace through faith, not of yourselves.",
+  "ref": "Ephesians 2:8"
+ },
+ {
+  "id": "old-ephesians-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say believers are?",
+  "choices": [
+   "Judges of the world",
+   "Children of the law",
+   "God's workmanship",
+   "Servants of angels"
+  ],
+  "answer": 2,
+  "explanation": "Believers are God's workmanship, created in Christ Jesus unto good works.",
+  "ref": "Ephesians 2:10"
+ },
+ {
+  "id": "old-ephesians-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who has made both one?",
+  "choices": [
+   "Christ",
+   "Peter",
+   "Moses",
+   "The Spirit only"
+  ],
+  "answer": 0,
+  "explanation": "Christ is our peace and has made both one.",
+  "ref": "Ephesians 2:14"
+ },
+ {
+  "id": "old-ephesians-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are believers built together for?",
+  "choices": [
+   "A school of prophets",
+   "A kingdom of priests only",
+   "A house of kings",
+   "A habitation of God through the Spirit"
+  ],
+  "answer": 3,
+  "explanation": "Believers are built together for a habitation of God through the Spirit.",
+  "ref": "Ephesians 2:22"
+ },
+ {
+  "id": "old-ephesians-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What mystery does Paul say was revealed?",
+  "choices": [
+   "That Gentiles should be fellowheirs",
+   "That Rome would fall",
+   "That the temple would be rebuilt",
+   "That the law would return"
+  ],
+  "answer": 0,
+  "explanation": "The revealed mystery is that Gentiles are fellowheirs and of the same body.",
+  "ref": "Ephesians 3:6"
+ },
+ {
+  "id": "old-ephesians-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul call the riches of Christ?",
+  "choices": [
+   "Unsearchable riches",
+   "Hidden riches",
+   "Promised riches",
+   "Heavenly wages"
+  ],
+  "answer": 0,
+  "explanation": "Paul speaks of the unsearchable riches of Christ.",
+  "ref": "Ephesians 3:8"
+ },
+ {
+  "id": "old-ephesians-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Through what does God display His manifold wisdom?",
+  "choices": [
+   "The angels",
+   "The law",
+   "The church",
+   "The nations"
+  ],
+  "answer": 2,
+  "explanation": "God's manifold wisdom is made known by the church.",
+  "ref": "Ephesians 3:10"
+ },
+ {
+  "id": "old-ephesians-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul pray Christ may do in believers' hearts?",
+  "choices": [
+   "Rule by fear",
+   "Dwell by faith",
+   "Judge by truth",
+   "Speak by signs"
+  ],
+  "answer": 1,
+  "explanation": "Paul prays that Christ may dwell in their hearts by faith.",
+  "ref": "Ephesians 3:17"
+ },
+ {
+  "id": "old-ephesians-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "According to Ephesians 3:20, God is able to do what?",
+  "choices": [
+   "Only what believers deserve",
+   "Exceeding abundantly above all that we ask or think",
+   "Whatever the apostles alone ask",
+   "Only what the law promises"
+  ],
+  "answer": 1,
+  "explanation": "God is able to do exceeding abundantly above all that believers ask or think.",
+  "ref": "Ephesians 3:20"
+ },
+ {
+  "id": "old-ephesians-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should believers endeavor to keep?",
+  "choices": [
+   "The customs of Moses",
+   "The unity of the Spirit in the bond of peace",
+   "The temple offerings",
+   "The authority of Rome"
+  ],
+  "answer": 1,
+  "explanation": "Believers should keep the unity of the Spirit in the bond of peace.",
+  "ref": "Ephesians 4:3"
+ },
+ {
+  "id": "old-ephesians-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Christ give?",
+  "choices": [
+   "Crowns and thrones",
+   "Only miracles",
+   "Temple ordinances",
+   "Apostles, prophets, evangelists, pastors, and teachers"
+  ],
+  "answer": 3,
+  "explanation": "Christ gave leadership gifts to equip the saints.",
+  "ref": "Ephesians 4:11"
+ },
+ {
+  "id": "old-ephesians-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should believers put off?",
+  "choices": [
+   "The temple law",
+   "Their earthly houses",
+   "The old man",
+   "Every relationship"
+  ],
+  "answer": 2,
+  "explanation": "Believers are told to put off the old man, corrupted by deceitful lusts.",
+  "ref": "Ephesians 4:22"
+ },
+ {
+  "id": "old-ephesians-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should believers put on?",
+  "choices": [
+   "The whole armor",
+   "The new man",
+   "A robe of mourning",
+   "The yoke of the law"
+  ],
+  "answer": 1,
+  "explanation": "They are to put on the new man, created after God in righteousness and true holiness.",
+  "ref": "Ephesians 4:24"
+ },
+ {
+  "id": "old-ephesians-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Paul tells believers to be kind to one another and what else?",
+  "choices": [
+   "Strict and watchful",
+   "Tenderhearted and forgiving",
+   "Silent and separate",
+   "Firm and distant"
+  ],
+  "answer": 1,
+  "explanation": "Believers should be kind, tenderhearted, and forgiving one another.",
+  "ref": "Ephesians 4:32"
+ },
+ {
+  "id": "old-ephesians-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom are believers told to imitate?",
+  "choices": [
+   "Paul",
+   "The prophets",
+   "The angels",
+   "God"
+  ],
+  "answer": 3,
+  "explanation": "Believers are to be followers of God as dear children.",
+  "ref": "Ephesians 5:1"
+ },
+ {
+  "id": "old-ephesians-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what are believers told to walk?",
+  "choices": [
+   "Power",
+   "Love",
+   "Silence",
+   "Tradition"
+  ],
+  "answer": 1,
+  "explanation": "Believers are told to walk in love as Christ also loved them.",
+  "ref": "Ephesians 5:2"
+ },
+ {
+  "id": "old-ephesians-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should believers be filled with instead of wine?",
+  "choices": [
+   "Zeal",
+   "The Spirit",
+   "Wisdom only",
+   "Prophecy"
+  ],
+  "answer": 1,
+  "explanation": "They should be filled with the Spirit.",
+  "ref": "Ephesians 5:18"
+ },
+ {
+  "id": "old-ephesians-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are wives told to relate to their husbands?",
+  "choices": [
+   "As unto the Lord",
+   "As to the law",
+   "As servants to masters",
+   "As strangers"
+  ],
+  "answer": 0,
+  "explanation": "Wives are instructed to submit unto their own husbands as unto the Lord.",
+  "ref": "Ephesians 5:22"
+ },
+ {
+  "id": "old-ephesians-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are husbands commanded to love their wives?",
+  "choices": [
+   "As a master loves a servant",
+   "As Abraham loved Sarah",
+   "As a duty of the law",
+   "As Christ loved the church"
+  ],
+  "answer": 3,
+  "explanation": "Husbands are to love their wives as Christ loved the church.",
+  "ref": "Ephesians 5:25"
+ },
+ {
+  "id": "old-ephesians-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are children commanded to do?",
+  "choices": [
+   "Honor priests",
+   "Obey their parents in the Lord",
+   "Memorize the law",
+   "Serve their masters"
+  ],
+  "answer": 1,
+  "explanation": "Children are commanded to obey their parents in the Lord.",
+  "ref": "Ephesians 6:1"
+ },
+ {
+  "id": "old-ephesians-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are fathers told not to do?",
+  "choices": [
+   "Provoke their children to wrath",
+   "Teach the word",
+   "Correct disobedience",
+   "Work diligently"
+  ],
+  "answer": 0,
+  "explanation": "Fathers should not provoke their children to wrath.",
+  "ref": "Ephesians 6:4"
+ },
+ {
+  "id": "old-ephesians-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against what do believers wrestle?",
+  "choices": [
+   "Flesh and blood",
+   "Principalities, powers, and spiritual wickedness",
+   "Only the Roman empire",
+   "Only their own thoughts"
+  ],
+  "answer": 1,
+  "explanation": "Believers wrestle against spiritual powers, not flesh and blood.",
+  "ref": "Ephesians 6:12"
+ },
+ {
+  "id": "old-ephesians-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say the sword of the Spirit is?",
+  "choices": [
+   "Faith",
+   "Prayer",
+   "The word of God",
+   "Truth"
+  ],
+  "answer": 2,
+  "explanation": "The sword of the Spirit is the word of God.",
+  "ref": "Ephesians 6:17"
+ },
+ {
+  "id": "old-ephesians-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How should believers pray?",
+  "choices": [
+   "Only in trouble",
+   "Only in public worship",
+   "Only at night",
+   "Always with all prayer and supplication in the Spirit"
+  ],
+  "answer": 3,
+  "explanation": "Believers are to pray always with all prayer and supplication in the Spirit.",
+  "ref": "Ephesians 6:18"
+ }
+]

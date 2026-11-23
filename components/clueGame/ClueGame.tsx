@@ -1,8 +1,9 @@
 "use client";
 
 /**
- * Bible Clue Game, presented by Bible Buddy: the menu, How to Play, the
- * game setup (book, chapters, level), solo play and the doors into a room.
+ * Bible Trivia, presented by Bible Buddy (called Bible Clue until 2026-11-23,
+ * when it replaced the old Bible Trivia everywhere): the menu, How to Play,
+ * the game setup (book, chapters, level), solo play and the doors into a room.
  *
  * Flow (Louis, 2026-11-22, Notion "Bible Clue Game — Presented by Bible
  * Buddy"): Play Solo → setup → 10 multiple-choice questions → Round Complete
@@ -13,7 +14,26 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ALL_CLUE_CARDS, deckById } from "@/lib/clueGame/catalog";
-import { BANK_ITEMS, DEFAULT_SELECTION, chaptersWithQuestions, cleanSelection, selectionLabel, selectionStatus, selectionToKeys } from "@/lib/clueGame/bank";
+import {
+  DEFAULT_SELECTION,
+  bookItems,
+  bookName,
+  booksWithQuestions,
+  chaptersWithQuestions,
+  cleanSelection,
+  loadBook,
+  selectionLabel,
+  selectionStatus,
+  selectionToKeys,
+} from "@/lib/clueGame/bank";
+import { CLUE_LEVELS, LEVEL_LABEL, type ClueLevel } from "@/lib/clueGame/types";
+
+/** What each level asks (Louis, 2026-11-23: Hard, "but not super hard"). */
+const LEVEL_HINT: Record<ClueLevel, string> = {
+  beginner: "The main people and events of each chapter.",
+  medium: "Details you remember from reading it.",
+  hard: "Details a careful reader remembers. Never trick questions.",
+};
 
 /** The menu's card: Joseph, mystery then revealed (Louis's mockup). */
 const HERO_CARD = ALL_CLUE_CARDS.get("joseph");
@@ -77,12 +97,12 @@ const newRoundId = () =>
 
 function HowToPlay({ onBack }: { onBack: () => void }) {
   const steps: Array<[string, string]> = [
-    ["📚", "Pick a book, all chapters or just the ones you want, and Beginner or Medium."],
-    ["❓", "A game is 10 questions. Each one has four choices, A to D."],
+    ["📚", "Pick a book, all chapters or just the ones you want, and Easy, Medium or Hard."],
+    ["❓", "A game is up to 10 questions. Each one has four choices, A to D."],
     ["⏱️", "You have 10 seconds to pick an answer. The clock always runs the full 10 seconds."],
     ["✅", "The fastest right answer earns the point. Only one player scores each question. Wrong costs 1 point. No answer is 0."],
     ["📖", "Then the answer shows, with a short explanation and the verse."],
-    ["🏆", "Most points after 10 questions wins. A tie is settled by a tiebreaker: first right answer wins."],
+    ["🏆", "Most points at the end wins. A tie is settled by a tiebreaker: first right answer wins."],
   ];
   return (
     <div className="bb-clue-panel bb-clue-parchment">
@@ -104,13 +124,28 @@ function HowToPlay({ onBack }: { onBack: () => void }) {
 
 /* ---------- Game setup: book, chapters, level ---------- */
 
-function SetupPicker({ onStart, startLabel, busy, error }: { onStart: (sel: ClueSelection) => void; startLabel: string; busy?: boolean; error?: string | null }) {
+function SetupPicker({
+  onStart,
+  startLabel,
+  busy,
+  error,
+  initial,
+}: {
+  onStart: (sel: ClueSelection) => void;
+  startLabel: string;
+  busy?: boolean;
+  error?: string | null;
+  /** A preset (a link like ?book=exodus&chapters=3): it wins over the saved setup. */
+  initial?: ClueSelection | null;
+}) {
   const [sel, setSel] = useState<ClueSelection>(DEFAULT_SELECTION);
   const [picking, setPicking] = useState(false);
   const [picked, setPicked] = useState<number[]>([]);
+  const [loadingBook, setLoadingBook] = useState(false);
+  const books = booksWithQuestions();
   // The last setup comes back (it lives on this device only).
   useEffect(() => {
-    const saved = cleanSelection(readJson(SETUP_KEY, DEFAULT_SELECTION));
+    const saved = initial ?? cleanSelection(readJson(SETUP_KEY, DEFAULT_SELECTION));
     const id = window.setTimeout(() => {
       setSel(saved);
       if (saved.chapters !== "all") {
@@ -119,23 +154,40 @@ function SetupPicker({ onStart, startLabel, busy, error }: { onStart: (sel: Clue
       }
     }, 0);
     return () => window.clearTimeout(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const chapters = chaptersWithQuestions(sel.book);
   const current: ClueSelection = { ...sel, chapters: picking ? picked : "all" };
   const status = picking && !picked.length ? null : selectionStatus(current);
   const toggle = (n: number) => setPicked((list) => (list.includes(n) ? list.filter((x) => x !== n) : [...list, n].sort((a, b) => a - b)));
-  const start = () => {
-    if (!status?.enough) return;
+  const start = async () => {
+    if (!status?.enough || loadingBook) return;
     writeJson(SETUP_KEY, current);
+    // The book's questions load when a game starts (they are not all in the page).
+    setLoadingBook(true);
+    await loadBook(current.book).catch(() => null);
+    setLoadingBook(false);
     onStart(current);
   };
   return (
     <div className="bb-clue-panel bb-clue-parchment bb-clue-setup">
       <p className="bb-clue-setup-step">1 · Book</p>
-      <div className="bb-clue-tabs">
-        <button type="button" className="is-on" aria-pressed="true">Genesis</button>
-        <button type="button" disabled className="opacity-50">More soon</button>
-      </div>
+      <select
+        className="bb-clue-input w-full text-center font-bold"
+        style={{ height: 48, fontSize: 18 }}
+        value={sel.book}
+        aria-label="Book"
+        onChange={(e) => {
+          setSel((s) => ({ ...s, book: e.target.value }));
+          setPicked([]);
+        }}
+      >
+        {books.map((b) => (
+          <option key={b.id} value={b.id}>
+            {b.name}
+          </option>
+        ))}
+      </select>
 
       <p className="bb-clue-setup-step">2 · Chapters</p>
       <div className="bb-clue-tabs">
@@ -154,12 +206,13 @@ function SetupPicker({ onStart, startLabel, busy, error }: { onStart: (sel: Clue
 
       <p className="bb-clue-setup-step">3 · Level</p>
       <div className="bb-clue-tabs">
-        <button type="button" className={sel.level === "beginner" ? "is-on" : ""} onClick={() => setSel((s) => ({ ...s, level: "beginner" }))}>Beginner</button>
-        <button type="button" className={sel.level === "medium" ? "is-on" : ""} onClick={() => setSel((s) => ({ ...s, level: "medium" }))}>Medium</button>
+        {CLUE_LEVELS.map((lv) => (
+          <button key={lv} type="button" className={sel.level === lv ? "is-on" : ""} onClick={() => setSel((s) => ({ ...s, level: lv }))}>
+            {LEVEL_LABEL[lv]}
+          </button>
+        ))}
       </div>
-      <p className="mt-1 text-center text-[12.5px] font-bold opacity-75">
-        {sel.level === "beginner" ? "The main people and events of each chapter." : "Details you remember from reading closely."}
-      </p>
+      <p className="mt-1 text-center text-[12.5px] font-bold opacity-75">{LEVEL_HINT[sel.level]}</p>
 
       <div className="bb-clue-setup-summary" aria-live="polite">
         {!status ? (
@@ -167,16 +220,20 @@ function SetupPicker({ onStart, startLabel, busy, error }: { onStart: (sel: Clue
         ) : status.enough ? (
           <>
             <p className="font-black">{selectionLabel(current)}</p>
-            <p className="text-[13px]">10 questions from {status.count} · 10 seconds each</p>
+            <p className="text-[13px]">
+              {status.round} questions from {status.count} · 10 seconds each
+            </p>
           </>
         ) : (
           <p className="font-bold" style={{ color: "#8a1f12" }}>
-            {selectionLabel(current)} has only {status.count} questions. A game needs {status.needed} (10 plus one for a tiebreaker). Add chapters or pick the other level.
+            {status.count === 0
+              ? `${selectionLabel(current)} has no questions yet. Pick another level or more chapters.`
+              : `${selectionLabel(current)} has only ${status.count} questions. A game needs ${status.needed}. Add chapters or pick another level.`}
           </p>
         )}
       </div>
-      <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big mt-3" disabled={!status?.enough || busy} onClick={start}>
-        {startLabel}
+      <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big mt-3" disabled={!status?.enough || busy || loadingBook} onClick={() => void start()}>
+        {loadingBook ? "Loading questions…" : startLabel}
       </button>
       {error ? (
         <p className="mt-3 rounded-xl px-3 py-2 text-center text-[14px] font-bold" style={{ background: "#fde2dc", color: "#8a1f12" }} role="alert">
@@ -195,7 +252,7 @@ function SoloRound({ selection, onExit }: { selection: ClueSelection; onExit: ()
   const deckIds = selectionToKeys(selection);
   // Questions from your last game come back only when the selection runs out of fresh ones.
   const { match, view, now, act, reset } = useLocalMatch(
-    () => createMatch({ items: BANK_ITEMS, selection, ...soloSetup("me", "You"), seed: newSeed(), avoid: typeof window === "undefined" ? [] : readJson<string[]>(SEEN_KEY, []) }),
+    () => createMatch({ items: bookItems(selection.book), selection, ...soloSetup("me", "You"), seed: newSeed(), avoid: typeof window === "undefined" ? [] : readJson<string[]>(SEEN_KEY, []) }),
     { mode: "solo", deckIds },
   );
   const saved = useRef(false);
@@ -225,7 +282,7 @@ function SoloRound({ selection, onExit }: { selection: ClueSelection; onExit: ()
   }, [match.phase, act]);
 
   const playAgain = () => {
-    reset(createMatch({ items: BANK_ITEMS, selection, ...soloSetup("me", "You"), seed: newSeed(), avoid: usedIn(match) }));
+    reset(createMatch({ items: bookItems(selection.book), selection, ...soloSetup("me", "You"), seed: newSeed(), avoid: usedIn(match) }));
     saved.current = false;
     setRoundId(newRoundId());
     setReview(false);
@@ -246,7 +303,7 @@ function SoloRound({ selection, onExit }: { selection: ClueSelection; onExit: ()
         now={now}
         cardBack={GENESIS_BACK}
         deckIds={deckIds}
-        roundLabel="Genesis"
+        roundLabel={bookName(selection.book)}
         onAnswer={(choice) => act({ type: "answer", playerId: "me", choice })}
         // Solo can pause (Louis, 2026-11-22). Challenges cannot: they are ranked.
         isHost
@@ -255,7 +312,7 @@ function SoloRound({ selection, onExit }: { selection: ClueSelection; onExit: ()
         onStudy={openStudy}
         overlay={view.phase !== "over" ? undefined : review ? (
         <div className="bb-clue-panel bb-clue-parchment">
-          <h2 className="bb-clue-serif bb-clue-title" style={{ color: "#2a1a0c" }}>Your 10 Questions</h2>
+          <h2 className="bb-clue-serif bb-clue-title" style={{ color: "#2a1a0c" }}>Your {match.deck.length} Questions</h2>
           <div className="mt-4">
             <ReviewList cards={view.history} youId="me" onStudy={openStudy} onOpenRef={setScripture} />
           </div>
@@ -377,12 +434,26 @@ export default function ClueGame() {
   const [screen, setScreen] = useState<Screen>("menu");
   const [selection, setSelection] = useState<ClueSelection>(DEFAULT_SELECTION);
   const [playKey, setPlayKey] = useState(0);
+  // A link straight into a setup (?book=exodus&chapters=3&level=medium), e.g.
+  // from the old Bible Trivia pages, which now send people here.
+  const [preset, setPreset] = useState<ClueSelection | null>(null);
 
   useEffect(() => {
-    // Where they came from, for the Bible Clue analytics tab: the Games page
+    // Where they came from, for the Bible Trivia analytics tab: the Games page
     // link says so in the URL; anything else is "direct".
-    const from = new URLSearchParams(window.location.search).get("from") || "direct";
-    trackClue("clue_game_opened", { deck: "genesis", from });
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get("from") || "direct";
+    const book = params.get("book");
+    trackClue("clue_game_opened", { deck: book || "genesis", from });
+    if (book) {
+      const chapters = params.get("chapters");
+      const sel = cleanSelection({ book, level: params.get("level") || "beginner", chapters: chapters ? chapters.split(",") : "all" });
+      const id = window.setTimeout(() => {
+        setPreset(sel);
+        setScreen("decks");
+      }, 0);
+      return () => window.clearTimeout(id);
+    }
   }, []);
 
   const back = screen === "menu" ? undefined : () => setScreen(screen === "play" ? "decks" : "menu");
@@ -390,7 +461,7 @@ export default function ClueGame() {
   return (
     <ClueRoomFrame>
       <div className="pb-28">
-        <ClueHeader backHref={screen === "menu" ? "/bible-study-games" : undefined} onBack={back} subtitle={screen === "play" ? undefined : subtitle} badge={screen === "decks" ? "Beta" : undefined} hideLogo={screen === "menu" || screen === "play"} />
+        <ClueHeader backHref={screen === "menu" ? "/bible-study-games" : undefined} onBack={back} subtitle={screen === "play" ? undefined : subtitle} hideLogo={screen === "menu" || screen === "play"} />
         {screen === "menu" ? (
           <div className="px-4">
             {/* The menu, built to Louis's mockup (2026-11-22): gold title between
@@ -399,7 +470,7 @@ export default function ClueGame() {
             <div className="bb-clue-hero">
               <div className="bb-clue-herotitle">
                 <Laurel />
-                <h1 className="bb-clue-serif">Bible Clue</h1>
+                <h1 className="bb-clue-serif">Bible Trivia</h1>
                 <Laurel flip />
               </div>
               <div className="bb-clue-herorule" />
@@ -441,6 +512,8 @@ export default function ClueGame() {
           <>
             <div className="bb-clue-banner"><h1 className="bb-clue-serif">Set Up Your Game</h1></div>
             <SetupPicker
+              key={preset ? selectionToKeys(preset).join("|") : "saved"}
+              initial={preset}
               startLabel="Start Game"
               onStart={(sel) => {
                 setSelection(sel);

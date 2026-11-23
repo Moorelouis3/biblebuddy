@@ -1,0 +1,802 @@
+[
+ {
+  "id": "old-esther-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Ahasuerus show the riches of his kingdom to his princes and servants?",
+  "choices": [
+   "180 days",
+   "7 days",
+   "40 days",
+   "1 year"
+  ],
+  "answer": 0,
+  "explanation": "The king displayed his royal glory for 180 days.",
+  "ref": "Esther 1:4"
+ },
+ {
+  "id": "old-esther-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What request did Ahasuerus make of Queen Vashti during the feast?",
+  "choices": [
+   "To prepare more wine",
+   "To choose a new queen",
+   "To come before the guests wearing the royal crown",
+   "To read the law"
+  ],
+  "answer": 2,
+  "explanation": "He summoned Vashti to display her beauty before the people and princes.",
+  "ref": "Esther 1:11"
+ },
+ {
+  "id": "old-esther-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Queen Vashti respond to the king's command?",
+  "choices": [
+   "She refused to come",
+   "She obeyed immediately",
+   "She sent gifts instead",
+   "She fled the palace"
+  ],
+  "answer": 0,
+  "explanation": "Vashti refused the king's order.",
+  "ref": "Esther 1:12"
+ },
+ {
+  "id": "old-esther-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which counselor warned that Vashti's conduct could influence women throughout the empire?",
+  "choices": [
+   "Haman",
+   "Mordecai",
+   "Bigthan",
+   "Memucan"
+  ],
+  "answer": 3,
+  "explanation": "Memucan argued that Vashti's refusal would be widely imitated.",
+  "ref": "Esther 1:16"
+ },
+ {
+  "id": "old-esther-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was decreed about Vashti's future before the king?",
+  "choices": [
+   "She should come no more before King Ahasuerus",
+   "She could return after a year",
+   "She was to become governor",
+   "She would rule with Esther"
+  ],
+  "answer": 0,
+  "explanation": "The decree removed Vashti from her royal position.",
+  "ref": "Esther 1:19"
+ },
+ {
+  "id": "old-esther-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was Esther related to Mordecai?",
+  "choices": [
+   "She was his cousin whom he had raised as his daughter",
+   "She was his wife",
+   "She was his sister",
+   "She was unrelated"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai had brought up Hadassah, that is, Esther.",
+  "ref": "Esther 2:7"
+ },
+ {
+  "id": "old-esther-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name besides Esther is given for the young woman in this chapter?",
+  "choices": [
+   "Deborah",
+   "Bathsheba",
+   "Hadassah",
+   "Shulamith"
+  ],
+  "answer": 2,
+  "explanation": "Her Hebrew name was Hadassah.",
+  "ref": "Esther 2:7"
+ },
+ {
+  "id": "old-esther-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Mordecai tell Esther not to reveal?",
+  "choices": [
+   "Her age",
+   "Her people and kindred",
+   "Her language",
+   "Her dowry"
+  ],
+  "answer": 1,
+  "explanation": "Esther kept her Jewish identity hidden at Mordecai's instruction.",
+  "ref": "Esther 2:10"
+ },
+ {
+  "id": "old-esther-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In whose place was Esther made queen?",
+  "choices": [
+   "Vashti",
+   "Zeresh",
+   "Amestris",
+   "Athaliah"
+  ],
+  "answer": 0,
+  "explanation": "Esther was crowned queen in Vashti's place.",
+  "ref": "Esther 2:17"
+ },
+ {
+  "id": "old-esther-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What plot did Mordecai discover while sitting in the king's gate?",
+  "choices": [
+   "A plan to burn the palace",
+   "A conspiracy to assassinate the king",
+   "A revolt in Judah",
+   "A scheme to free Vashti"
+  ],
+  "answer": 1,
+  "explanation": "He uncovered the treason of Bigthan and Teresh.",
+  "ref": "Esther 2:21–23"
+ },
+ {
+  "id": "old-esther-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Haman angry with Mordecai?",
+  "choices": [
+   "Mordecai stole his office",
+   "Mordecai would not bow or reverence him",
+   "Mordecai exposed his debt",
+   "Mordecai left Persia"
+  ],
+  "answer": 1,
+  "explanation": "Mordecai refused to bow to Haman.",
+  "ref": "Esther 3:2–5"
+ },
+ {
+  "id": "old-esther-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What broader evil plan did Haman form because of Mordecai's refusal?",
+  "choices": [
+   "To exile Mordecai only",
+   "To destroy the temple in Jerusalem",
+   "To crown himself king",
+   "To kill all the Jews in the empire"
+  ],
+  "answer": 3,
+  "explanation": "Haman sought to destroy all of Mordecai's people.",
+  "ref": "Esther 3:6"
+ },
+ {
+  "id": "old-esther-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What lot was cast before Haman to choose a day for the destruction?",
+  "choices": [
+   "Urim",
+   "Shekel",
+   "Pur",
+   "Ephod"
+  ],
+  "answer": 2,
+  "explanation": "Pur, meaning lot, was cast to select the date.",
+  "ref": "Esther 3:7"
+ },
+ {
+  "id": "old-esther-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Haman describe the Jews to the king?",
+  "choices": [
+   "As the strongest warriors",
+   "As loyal Persian nobles",
+   "As temple builders",
+   "As a scattered people whose laws were different"
+  ],
+  "answer": 3,
+  "explanation": "He portrayed them as a separate people who did not keep the king's laws.",
+  "ref": "Esther 3:8"
+ },
+ {
+  "id": "old-esther-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign did the king give Haman to authorize the decree?",
+  "choices": [
+   "A scepter",
+   "A scroll from Babylon",
+   "A golden chain",
+   "His ring"
+  ],
+  "answer": 3,
+  "explanation": "The king gave Haman his ring to seal the decree.",
+  "ref": "Esther 3:10"
+ },
+ {
+  "id": "old-esther-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Mordecai react when he learned of the decree against the Jews?",
+  "choices": [
+   "He celebrated",
+   "He fled to Greece",
+   "He put on sackcloth with ashes and cried aloud",
+   "He armed the city"
+  ],
+  "answer": 2,
+  "explanation": "Mordecai mourned publicly in sackcloth and ashes.",
+  "ref": "Esther 4:1"
+ },
+ {
+  "id": "old-esther-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What request did Mordecai send Esther through Hatach?",
+  "choices": [
+   "To leave Persia",
+   "To reveal the conspiracy against Bigthan",
+   "To marry Haman",
+   "To go in unto the king and make supplication for her people"
+  ],
+  "answer": 3,
+  "explanation": "He urged Esther to intercede with the king.",
+  "ref": "Esther 4:8"
+ },
+ {
+  "id": "old-esther-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What danger did Esther mention about going uninvited to the king?",
+  "choices": [
+   "She would lose her crown only",
+   "She could be put to death unless the king held out the golden scepter",
+   "She would be exiled immediately",
+   "She would have to fast another year"
+  ],
+  "answer": 1,
+  "explanation": "Approaching unbidden could bring death.",
+  "ref": "Esther 4:11"
+ },
+ {
+  "id": "old-esther-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famous challenge did Mordecai give Esther about her position?",
+  "choices": [
+   "You must flee tonight",
+   "Who knoweth whether thou art come to the kingdom for such a time as this?",
+   "The wall is broken",
+   "Wisdom is better than wine"
+  ],
+  "answer": 1,
+  "explanation": "Mordecai suggested Esther may have become queen for this very moment.",
+  "ref": "Esther 4:14"
+ },
+ {
+  "id": "old-esther-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Esther ask the Jews in Shushan to do for her before she went to the king?",
+  "choices": [
+   "Send soldiers",
+   "Fast for three days",
+   "Offer lambs daily",
+   "Write to Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "She asked for a three-day fast before approaching the king.",
+  "ref": "Esther 4:16"
+ },
+ {
+  "id": "old-esther-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king do when he saw Esther standing in the inner court?",
+  "choices": [
+   "He held out the golden scepter",
+   "He turned away",
+   "He called the guards",
+   "He sent Haman"
+  ],
+  "answer": 0,
+  "explanation": "The king extended the golden scepter, sparing Esther.",
+  "ref": "Esther 5:2"
+ },
+ {
+  "id": "old-esther-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Esther invite to the banquet she had prepared?",
+  "choices": [
+   "The king and Haman",
+   "Only the king",
+   "Only Mordecai",
+   "The queen mothers"
+  ],
+  "answer": 0,
+  "explanation": "She invited both the king and Haman.",
+  "ref": "Esther 5:4"
+ },
+ {
+  "id": "old-esther-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Esther's request at the first banquet?",
+  "choices": [
+   "To reveal Haman immediately",
+   "To rebuild Jerusalem",
+   "To invite the king and Haman to another banquet the next day",
+   "To crown Mordecai"
+  ],
+  "answer": 2,
+  "explanation": "She delayed the request and invited them again.",
+  "ref": "Esther 5:8"
+ },
+ {
+  "id": "old-esther-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Haman become furious after leaving the first banquet?",
+  "choices": [
+   "The food was poor",
+   "The king rebuked him",
+   "Esther refused to speak",
+   "Mordecai did not stand up or move for him"
+  ],
+  "answer": 3,
+  "explanation": "Haman's pride was wounded by Mordecai's refusal to honor him.",
+  "ref": "Esther 5:9"
+ },
+ {
+  "id": "old-esther-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Zeresh and Haman's friends suggest he build for Mordecai?",
+  "choices": [
+   "A prison",
+   "A new gate",
+   "A banquet hall",
+   "A gallows fifty cubits high"
+  ],
+  "answer": 3,
+  "explanation": "They advised Haman to build a gallows for Mordecai.",
+  "ref": "Esther 5:14"
+ },
+ {
+  "id": "old-esther-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What caused the events of this chapter to begin?",
+  "choices": [
+   "A revolt in Shushan",
+   "Esther fainted",
+   "The king could not sleep",
+   "Haman arrived late"
+  ],
+  "answer": 2,
+  "explanation": "The king's sleepless night led to the chronicles being read.",
+  "ref": "Esther 6:1"
+ },
+ {
+  "id": "old-esther-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What unrewarded deed of Mordecai was read in the book of records?",
+  "choices": [
+   "He funded the temple",
+   "He defeated an army",
+   "He interpreted dreams",
+   "He revealed the plot of Bigthana and Teresh"
+  ],
+  "answer": 3,
+  "explanation": "The records reminded the king that Mordecai had saved his life.",
+  "ref": "Esther 6:2"
+ },
+ {
+  "id": "old-esther-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When the king asked Haman what should be done for the man whom the king delights to honor, whom did Haman think the king meant?",
+  "choices": [
+   "Himself",
+   "Mordecai",
+   "Esther",
+   "Ezra"
+  ],
+  "answer": 0,
+  "explanation": "Haman assumed he was the one to be honored.",
+  "ref": "Esther 6:6"
+ },
+ {
+  "id": "old-esther-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Haman have to honor Mordecai in public?",
+  "choices": [
+   "Royal apparel, the king's horse, and proclamation through the street",
+   "A military parade with elephants",
+   "A feast in Babylon",
+   "A new palace"
+  ],
+  "answer": 0,
+  "explanation": "Haman had to dress Mordecai and proclaim his honor publicly.",
+  "ref": "Esther 6:8–11"
+ },
+ {
+  "id": "old-esther-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning did Haman's wise men and Zeresh give after this humiliation?",
+  "choices": [
+   "If Mordecai was of the seed of the Jews, Haman would surely fall before him",
+   "He would recover quickly",
+   "The king would forget it",
+   "Esther would save him"
+  ],
+  "answer": 0,
+  "explanation": "They recognized that Haman's downfall had begun.",
+  "ref": "Esther 6:13"
+ },
+ {
+  "id": "old-esther-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What request did Esther finally present at the second banquet?",
+  "choices": [
+   "A new palace",
+   "Her life and the lives of her people",
+   "To return to Jerusalem",
+   "To make Haman governor"
+  ],
+  "answer": 1,
+  "explanation": "Esther pleaded for her own life and the deliverance of her people.",
+  "ref": "Esther 7:3"
+ },
+ {
+  "id": "old-esther-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Esther describe what had been decreed against her people?",
+  "choices": [
+   "A minor tax",
+   "A royal marriage",
+   "They had been sold to be destroyed, slain, and to perish",
+   "A move to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "She described the deadly decree in stark terms.",
+  "ref": "Esther 7:4"
+ },
+ {
+  "id": "old-esther-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Esther identify as the adversary and enemy?",
+  "choices": [
+   "Sanballat",
+   "Tobiah",
+   "Haman",
+   "Memucan"
+  ],
+  "answer": 2,
+  "explanation": "She directly named Haman before the king.",
+  "ref": "Esther 7:6"
+ },
+ {
+  "id": "old-esther-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Haman do when the king arose in wrath from the banquet?",
+  "choices": [
+   "He fled the city",
+   "He drew a sword",
+   "He blamed Mordecai",
+   "He begged Esther for his life"
+  ],
+  "answer": 3,
+  "explanation": "Haman stayed to plead with Esther for mercy.",
+  "ref": "Esther 7:7"
+ },
+ {
+  "id": "old-esther-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what was Haman hanged?",
+  "choices": [
+   "The palace gate",
+   "A city wall",
+   "A tree in the palace garden",
+   "The gallows he had prepared for Mordecai"
+  ],
+  "answer": 3,
+  "explanation": "Haman died on the gallows built for Mordecai.",
+  "ref": "Esther 7:10"
+ },
+ {
+  "id": "old-esther-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who received the house of Haman after his death?",
+  "choices": [
+   "Mordecai",
+   "Esther",
+   "The king's treasurer",
+   "Bigthana"
+  ],
+  "answer": 1,
+  "explanation": "The king gave Haman's house to Esther.",
+  "ref": "Esther 8:1"
+ },
+ {
+  "id": "old-esther-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king give to Mordecai?",
+  "choices": [
+   "A priest's robe",
+   "A golden sceptre",
+   "A sword of the guard",
+   "The ring he had taken from Haman"
+  ],
+  "answer": 3,
+  "explanation": "The king took off his ring, which he had taken from Haman, and gave it to Mordecai.",
+  "ref": "Esther 8:2"
+ },
+ {
+  "id": "old-esther-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was another decree needed even after Haman died?",
+  "choices": [
+   "The first decree had never been written",
+   "A writing sealed with the king's ring could not be reversed",
+   "The Jews refused to fight",
+   "Mordecai lost the ring"
+  ],
+  "answer": 1,
+  "explanation": "The original decree could not simply be canceled.",
+  "ref": "Esther 8:8"
+ },
+ {
+  "id": "old-esther-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the new letters allow the Jews to do?",
+  "choices": [
+   "Leave the empire",
+   "Rule Persia",
+   "Stop paying taxes",
+   "Gather and stand for their life against attackers"
+  ],
+  "answer": 3,
+  "explanation": "They were authorized to defend themselves against their enemies.",
+  "ref": "Esther 8:11"
+ },
+ {
+  "id": "old-esther-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did many people of the land respond when they saw the Jews' new standing?",
+  "choices": [
+   "They attacked immediately",
+   "They moved to Babylon",
+   "Many became Jews, for fear of the Jews fell upon them",
+   "They ignored it"
+  ],
+  "answer": 2,
+  "explanation": "Many identified with the Jews because fear of them had spread.",
+  "ref": "Esther 8:17"
+ },
+ {
+  "id": "old-esther-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On the appointed day, whose expectation was turned to the contrary?",
+  "choices": [
+   "The priests'",
+   "The enemies of the Jews",
+   "The king's",
+   "Mordecai's"
+  ],
+  "answer": 1,
+  "explanation": "The day intended for Jewish destruction became a day of Jewish victory.",
+  "ref": "Esther 9:1"
+ },
+ {
+  "id": "old-esther-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many of Haman's sons were slain?",
+  "choices": [
+   "3",
+   "7",
+   "10",
+   "12"
+  ],
+  "answer": 2,
+  "explanation": "All ten sons of Haman were killed.",
+  "ref": "Esther 9:7–10"
+ },
+ {
+  "id": "old-esther-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Jews refuse to take even after defeating their enemies?",
+  "choices": [
+   "The spoil",
+   "The king's horses",
+   "The city gates",
+   "The royal garments"
+  ],
+  "answer": 0,
+  "explanation": "The text repeatedly notes that they did not lay hands on the spoil.",
+  "ref": "Esther 9:10"
+ },
+ {
+  "id": "old-esther-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What annual celebration was established from these events?",
+  "choices": [
+   "Hanukkah",
+   "Purim",
+   "Passover",
+   "Trumpets"
+  ],
+  "answer": 1,
+  "explanation": "Purim was named after Pur, the lot.",
+  "ref": "Esther 9:26"
+ },
+ {
+  "id": "old-esther-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was the feast called Purim?",
+  "choices": [
+   "Because Haman had cast Pur, that is, the lot",
+   "Because of a Persian city",
+   "Because Esther fasted for purity",
+   "Because Mordecai wrote a psalm"
+  ],
+  "answer": 0,
+  "explanation": "The name recalls Haman's casting of the lot.",
+  "ref": "Esther 9:24–26"
+ },
+ {
+  "id": "old-esther-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did King Ahasuerus lay upon the land and the isles of the sea?",
+  "choices": [
+   "A wall",
+   "A temple law",
+   "A military ban",
+   "A tribute"
+  ],
+  "answer": 3,
+  "explanation": "The chapter opens by noting the king's tribute.",
+  "ref": "Esther 10:1"
+ },
+ {
+  "id": "old-esther-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the acts of Ahasuerus' power and Mordecai's greatness recorded?",
+  "choices": [
+   "In Ezra's scroll",
+   "On the temple wall",
+   "In the book of the chronicles of the kings of Media and Persia",
+   "In the book of Psalms"
+  ],
+  "answer": 2,
+  "explanation": "Their deeds were recorded in the Persian chronicles.",
+  "ref": "Esther 10:2"
+ },
+ {
+  "id": "old-esther-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What rank did Mordecai hold in the kingdom?",
+  "choices": [
+   "Second unto king Ahasuerus",
+   "High priest",
+   "Governor of Judah only",
+   "Captain of the host"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai was elevated to second in rank to the king.",
+  "ref": "Esther 10:3"
+ },
+ {
+  "id": "old-esther-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Mordecai described in relation to the Jews?",
+  "choices": [
+   "Despised by many",
+   "Exiled from Shushan",
+   "Forgotten after Purim",
+   "Great among the Jews and accepted by the multitude of his brethren"
+  ],
+  "answer": 3,
+  "explanation": "He was honored and well regarded among his people.",
+  "ref": "Esther 10:3"
+ },
+ {
+  "id": "old-esther-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Mordecai seek and speak as part of his leadership?",
+  "choices": [
+   "The wealth of his people and peace to all his seed",
+   "His own wealth and silence",
+   "War with Greece",
+   "A new royal palace"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai used his position for the good and peace of his people.",
+  "ref": "Esther 10:3"
+ }
+]

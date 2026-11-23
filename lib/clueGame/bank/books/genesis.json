@@ -1,0 +1,2770 @@
+[
+ {
+  "id": "old-genesis-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On which day did God create the greater and lesser lights?",
+  "choices": [
+   "Day two",
+   "Day three",
+   "Day six",
+   "Day four"
+  ],
+  "answer": 3,
+  "explanation": "The sun, moon, and stars were placed in the heavens on the fourth day.",
+  "ref": "Genesis 1:14–19"
+ },
+ {
+  "id": "old-genesis-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God create on the sixth day?",
+  "choices": [
+   "Birds and fish only",
+   "Trees and plants",
+   "The heavens",
+   "Land animals and mankind"
+  ],
+  "answer": 3,
+  "explanation": "Day six includes land animals and humanity made in the image of God.",
+  "ref": "Genesis 1:24–27"
+ },
+ {
+  "id": "old-genesis-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In whose image were human beings created?",
+  "choices": [
+   "The angels",
+   "The earth",
+   "God",
+   "Adam"
+  ],
+  "answer": 2,
+  "explanation": "Genesis 1 says mankind was created in God's image, giving human life unique dignity.",
+  "ref": "Genesis 1:26–27"
+ },
+ {
+  "id": "old-genesis-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God give humanity to rule over?",
+  "choices": [
+   "Only the Garden of Eden",
+   "The fish, birds, and living things on earth",
+   "Only the animals",
+   "Only the stars"
+  ],
+  "answer": 1,
+  "explanation": "God blessed mankind and gave them dominion over the creatures of the earth.",
+  "ref": "Genesis 1:28"
+ },
+ {
+  "id": "old-genesis-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did God place the man after forming him?",
+  "choices": [
+   "Mount Ararat",
+   "The land of Nod",
+   "The garden in Eden",
+   "Egypt"
+  ],
+  "answer": 2,
+  "explanation": "God placed Adam in the Garden of Eden to work it and keep it.",
+  "ref": "Genesis 2:8"
+ },
+ {
+  "id": "old-genesis-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tree did God forbid the man to eat from?",
+  "choices": [
+   "The tree of life",
+   "The tree of the knowledge of good and evil",
+   "The cedar of Lebanon",
+   "The fig tree"
+  ],
+  "answer": 1,
+  "explanation": "God gave the man one boundary in the garden: he was not to eat of the tree of the knowledge of good and evil.",
+  "ref": "Genesis 2:16–17"
+ },
+ {
+  "id": "old-genesis-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "God said it was not good for the man to be alone. What did He say He would make for him?",
+  "choices": [
+   "A larger garden",
+   "A guard against the animals",
+   "A helper suited to him",
+   "More work to do"
+  ],
+  "answer": 2,
+  "explanation": "God said, 'I will make him an help meet for him,' which means a helper suited to him.",
+  "ref": "Genesis 2:18"
+ },
+ {
+  "id": "old-genesis-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did God make the woman?",
+  "choices": [
+   "From one of Adam's ribs",
+   "From clay",
+   "From a tree",
+   "From water"
+  ],
+  "answer": 0,
+  "explanation": "God caused Adam to sleep and made Eve from his rib.",
+  "ref": "Genesis 2:21–22"
+ },
+ {
+  "id": "old-genesis-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who tempted Eve in the garden?",
+  "choices": [
+   "Adam",
+   "An angel",
+   "A serpent",
+   "Cain"
+  ],
+  "answer": 2,
+  "explanation": "The serpent questioned God's word and tempted Eve.",
+  "ref": "Genesis 3:1"
+ },
+ {
+  "id": "old-genesis-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Adam and Eve after they ate the fruit?",
+  "choices": [
+   "They immediately left Eden",
+   "They became kings",
+   "Their eyes were opened and they knew they were naked",
+   "They forgot God's command"
+  ],
+  "answer": 2,
+  "explanation": "Their eyes were opened, and shame entered the story.",
+  "ref": "Genesis 3:7"
+ },
+ {
+  "id": "old-genesis-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Adam and Eve make for themselves by sewing fig leaves together?",
+  "choices": [
+   "Coats of skins",
+   "Aprons",
+   "Branches",
+   "Baskets"
+  ],
+  "answer": 1,
+  "explanation": "They sewed fig leaves together and made themselves aprons.",
+  "ref": "Genesis 3:7"
+ },
+ {
+  "id": "old-genesis-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say the serpent would do to the seed of the woman?",
+  "choices": [
+   "Bruise his heel",
+   "Serve him forever",
+   "Build a city",
+   "Guard the garden"
+  ],
+  "answer": 0,
+  "explanation": "Genesis 3:15 points forward to conflict and ultimate victory over the serpent.",
+  "ref": "Genesis 3:15"
+ },
+ {
+  "id": "old-genesis-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were Adam and Eve driven out of the garden?",
+  "choices": [
+   "They wanted more land",
+   "They disobeyed God and were cut off from the tree of life",
+   "They feared the animals",
+   "They asked to leave"
+  ],
+  "answer": 1,
+  "explanation": "God drove them out after sin so they would not eat from the tree of life in that fallen state.",
+  "ref": "Genesis 3:22–24"
+ },
+ {
+  "id": "old-genesis-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the names of Adam and Eve's first two sons?",
+  "choices": [
+   "Seth and Enosh",
+   "Noah and Shem",
+   "Esau and Jacob",
+   "Cain and Abel"
+  ],
+  "answer": 3,
+  "explanation": "Genesis 4 introduces Cain and Abel as the first brothers.",
+  "ref": "Genesis 4:1–2"
+ },
+ {
+  "id": "old-genesis-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Abel bring as his offering to the Lord?",
+  "choices": [
+   "The fruit of the ground",
+   "Gold and silver",
+   "Bread and wine",
+   "The firstlings of his flock"
+  ],
+  "answer": 3,
+  "explanation": "Abel brought of the firstlings of his flock and of the fat thereof, and the Lord had respect unto Abel and to his offering.",
+  "ref": "Genesis 4:4"
+ },
+ {
+  "id": "old-genesis-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sin did Cain commit against Abel?",
+  "choices": [
+   "He lied to him",
+   "He stole from him",
+   "He banished him",
+   "He murdered him"
+  ],
+  "answer": 3,
+  "explanation": "Cain rose up against his brother Abel and killed him.",
+  "ref": "Genesis 4:8"
+ },
+ {
+  "id": "old-genesis-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Cain answer God when asked where Abel was?",
+  "choices": [
+   "He went into the field",
+   "He is with our father",
+   "I buried him",
+   "I do not know; am I my brother's keeper?"
+  ],
+  "answer": 3,
+  "explanation": "Cain answered with defiance after murdering his brother.",
+  "ref": "Genesis 4:9"
+ },
+ {
+  "id": "old-genesis-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of life did God say Cain would live after his judgment?",
+  "choices": [
+   "A king's life",
+   "A quiet life in Eden",
+   "A fugitive and wanderer",
+   "A priest's life"
+  ],
+  "answer": 2,
+  "explanation": "Cain's punishment was restless wandering away from the ground he had worked.",
+  "ref": "Genesis 4:12"
+ },
+ {
+  "id": "old-genesis-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose family line is recorded?",
+  "choices": [
+   "Adam's descendants through Seth",
+   "Cain's descendants",
+   "Noah's sons",
+   "Abraham's household"
+  ],
+  "answer": 0,
+  "explanation": "Genesis 5 traces the line from Adam through Seth down to Noah.",
+  "ref": "Genesis 5:1–3"
+ },
+ {
+  "id": "old-genesis-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did God describe the wickedness of mankind?",
+  "choices": [
+   "Occasional and minor",
+   "Great in the earth, with evil thoughts continually",
+   "Limited to one city",
+   "Only among kings"
+  ],
+  "answer": 1,
+  "explanation": "God saw that human wickedness was great and every intent of the heart was continually evil.",
+  "ref": "Genesis 6:5"
+ },
+ {
+  "id": "old-genesis-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Noah described?",
+  "choices": [
+   "A mighty hunter",
+   "King over the earth",
+   "Perfect in his generations and walking with God",
+   "The oldest man alive"
+  ],
+  "answer": 2,
+  "explanation": "Noah is described as righteous and blameless among his contemporaries.",
+  "ref": "Genesis 6:9"
+ },
+ {
+  "id": "old-genesis-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was God bringing a flood on the earth?",
+  "choices": [
+   "To water the crops",
+   "To help Noah travel",
+   "To reveal a new land",
+   "Because the earth was filled with violence and corruption"
+  ],
+  "answer": 3,
+  "explanation": "God announced judgment because the earth had become corrupt and full of violence.",
+  "ref": "Genesis 6:11–13"
+ },
+ {
+  "id": "old-genesis-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Noah when the flood began?",
+  "choices": [
+   "500",
+   "550",
+   "600",
+   "700"
+  ],
+  "answer": 2,
+  "explanation": "Genesis 7 states that Noah was 600 years old when the floodwaters came.",
+  "ref": "Genesis 7:6"
+ },
+ {
+  "id": "old-genesis-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days did it rain on the earth?",
+  "choices": [
+   "7",
+   "30",
+   "40",
+   "150"
+  ],
+  "answer": 2,
+  "explanation": "Rain fell for forty days and forty nights.",
+  "ref": "Genesis 7:12"
+ },
+ {
+  "id": "old-genesis-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to every living thing outside the ark?",
+  "choices": [
+   "They moved to higher ground",
+   "They survived in caves",
+   "They became birds",
+   "They died in the flood"
+  ],
+  "answer": 3,
+  "explanation": "Everything on the dry land outside the ark perished in the flood.",
+  "ref": "Genesis 7:21–23"
+ },
+ {
+  "id": "old-genesis-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How high did the waters rise over the mountains?",
+  "choices": [
+   "A little above them",
+   "Fifteen cubits upward",
+   "Seventy cubits",
+   "Exactly to the peak"
+  ],
+  "answer": 1,
+  "explanation": "The waters prevailed fifteen cubits upward over the mountains.",
+  "ref": "Genesis 7:20"
+ },
+ {
+  "id": "old-genesis-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God send over the earth as the floodwaters began to recede?",
+  "choices": [
+   "Lightning",
+   "An earthquake",
+   "Fire",
+   "A great wind"
+  ],
+  "answer": 3,
+  "explanation": "God caused a wind to pass over the earth, and the waters subsided.",
+  "ref": "Genesis 8:1"
+ },
+ {
+  "id": "old-genesis-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what mountains did the ark come to rest?",
+  "choices": [
+   "Sinai",
+   "Ararat",
+   "Moriah",
+   "Carmel"
+  ],
+  "answer": 1,
+  "explanation": "The ark rested on the mountains of Ararat.",
+  "ref": "Genesis 8:4"
+ },
+ {
+  "id": "old-genesis-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Noah do after leaving the ark?",
+  "choices": [
+   "Built a city",
+   "Planted a vineyard immediately",
+   "Offered burnt offerings to the Lord",
+   "Sent out more birds"
+  ],
+  "answer": 2,
+  "explanation": "Noah built an altar and offered burnt offerings after leaving the ark.",
+  "ref": "Genesis 8:20"
+ },
+ {
+  "id": "old-genesis-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command did God repeat to Noah and his sons after the flood?",
+  "choices": [
+   "Build another ark",
+   "Be fruitful and multiply",
+   "Return to Eden",
+   "Offer bread daily"
+  ],
+  "answer": 1,
+  "explanation": "God again told humanity to be fruitful and multiply.",
+  "ref": "Genesis 9:1"
+ },
+ {
+  "id": "old-genesis-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened after Noah drank the wine from his vineyard?",
+  "choices": [
+   "He became drunk",
+   "He fell asleep outside the ark",
+   "He sold the vineyard",
+   "He moved to another land"
+  ],
+  "answer": 0,
+  "explanation": "Noah became drunk and lay uncovered in his tent.",
+  "ref": "Genesis 9:21"
+ },
+ {
+  "id": "old-genesis-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose descendants are listed?",
+  "choices": [
+   "Abraham, Isaac, and Jacob",
+   "Noah's sons Shem, Ham, and Japheth",
+   "Adam, Seth, and Enosh",
+   "Moses, Aaron, and Miriam"
+  ],
+  "answer": 1,
+  "explanation": "Genesis 10 is often called the Table of Nations because it traces the families of Noah's sons.",
+  "ref": "Genesis 10:1"
+ },
+ {
+  "id": "old-genesis-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Genesis 10 describe the spread of the families after the flood?",
+  "choices": [
+   "Only by cities",
+   "Only by kings",
+   "Only by tribes of Israel",
+   "By clans, languages, lands, and nations"
+  ],
+  "answer": 3,
+  "explanation": "The chapter repeatedly describes the families spreading by clans, lands, and languages into nations.",
+  "ref": "Genesis 10:5"
+ },
+ {
+  "id": "old-genesis-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the people begin building the tower of Babel?",
+  "choices": [
+   "To worship God",
+   "To make a name for themselves",
+   "To escape a flood",
+   "To store grain"
+  ],
+  "answer": 1,
+  "explanation": "The builders wanted to make a name for themselves instead of humbly obeying God.",
+  "ref": "Genesis 11:4"
+ },
+ {
+  "id": "old-genesis-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God do to stop the building of Babel?",
+  "choices": [
+   "Sent a flood",
+   "Destroyed the city with fire",
+   "Confused their language",
+   "Raised up a king"
+  ],
+  "answer": 2,
+  "explanation": "God confused their language so they could no longer work together in pride.",
+  "ref": "Genesis 11:7–8"
+ },
+ {
+  "id": "old-genesis-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did God tell Abram to go?",
+  "choices": [
+   "Back to Ur",
+   "To Egypt",
+   "To Babylon",
+   "To a land God would show him"
+  ],
+  "answer": 3,
+  "explanation": "God called Abram to leave his country and go to the land He would reveal.",
+  "ref": "Genesis 12:1"
+ },
+ {
+  "id": "old-genesis-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What three things did God promise Abram when He called him?",
+  "choices": [
+   "A kingdom, a temple, and a law",
+   "Gold, armies, and servants",
+   "Rain, crops, and peace",
+   "A great nation, blessing, and a great name"
+  ],
+  "answer": 3,
+  "explanation": "God promised to make of Abram a great nation, to bless him, and to make his name great.",
+  "ref": "Genesis 12:2–3"
+ },
+ {
+  "id": "old-genesis-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Abram when he left Haran?",
+  "choices": [
+   "60",
+   "75",
+   "86",
+   "100"
+  ],
+  "answer": 1,
+  "explanation": "Abram was 75 years old when he departed from Haran.",
+  "ref": "Genesis 12:4"
+ },
+ {
+  "id": "old-genesis-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Abram go down into Egypt?",
+  "choices": [
+   "Because there was a famine",
+   "To visit family",
+   "Because of war in Canaan",
+   "To build an altar"
+  ],
+  "answer": 0,
+  "explanation": "Abram went to Egypt because the famine in the land was severe.",
+  "ref": "Genesis 12:10"
+ },
+ {
+  "id": "old-genesis-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Abram tell Sarai to say in Egypt?",
+  "choices": [
+   "That she was his servant",
+   "That she was his sister",
+   "That she was his daughter",
+   "That she was widowed"
+  ],
+  "answer": 1,
+  "explanation": "Abram asked Sarai to say she was his sister because he feared for his life.",
+  "ref": "Genesis 12:13"
+ },
+ {
+  "id": "old-genesis-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Abram and Lot separate?",
+  "choices": [
+   "They argued about worship",
+   "The land could not support both households together",
+   "Lot wanted Egypt",
+   "God commanded immediate separation"
+  ],
+  "answer": 1,
+  "explanation": "Their flocks and herds had become so large that the land could not support them living together.",
+  "ref": "Genesis 13:6"
+ },
+ {
+  "id": "old-genesis-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "What region did Lot choose for himself?",
+  "choices": [
+   "The plain of Jordan near Sodom",
+   "The mountains of Ararat",
+   "The Negev desert",
+   "The land of Goshen"
+  ],
+  "answer": 0,
+  "explanation": "Lot chose the well-watered plain of Jordan and moved his tents toward Sodom.",
+  "ref": "Genesis 13:10–12"
+ },
+ {
+  "id": "old-genesis-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Sodom described?",
+  "choices": [
+   "A city of peace",
+   "Wicked and sinful before the Lord",
+   "A city of wisdom",
+   "A place of refuge"
+  ],
+  "answer": 1,
+  "explanation": "Genesis says the men of Sodom were wicked and sinners before the Lord exceedingly.",
+  "ref": "Genesis 13:13"
+ },
+ {
+  "id": "old-genesis-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After Lot separated, what did God tell Abram to do?",
+  "choices": [
+   "Return to Haran",
+   "Build an ark",
+   "Lift up his eyes and look at the land",
+   "Go immediately to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "God told Abram to look north, south, east, and west at the land He was giving him.",
+  "ref": "Genesis 13:14–15"
+ },
+ {
+  "id": "old-genesis-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What image did God use for Abram's descendants?",
+  "choices": [
+   "Stars",
+   "Sand",
+   "Dust of the earth",
+   "Waves of the sea"
+  ],
+  "answer": 2,
+  "explanation": "God said Abram's descendants would be like the dust of the earth.",
+  "ref": "Genesis 13:16"
+ },
+ {
+  "id": "old-genesis-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Abram respond when he heard Lot had been taken?",
+  "choices": [
+   "He fled to Egypt",
+   "He made peace with the kings",
+   "He waited for an army",
+   "He armed his trained servants and pursued the captors"
+  ],
+  "answer": 3,
+  "explanation": "Abram armed the trained servants born in his house and went after the captors.",
+  "ref": "Genesis 14:14"
+ },
+ {
+  "id": "old-genesis-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who blessed Abram after the rescue?",
+  "choices": [
+   "The king of Egypt",
+   "Melchizedek king of Salem",
+   "Lot",
+   "Noah"
+  ],
+  "answer": 1,
+  "explanation": "Melchizedek, king of Salem and priest of the Most High God, blessed Abram.",
+  "ref": "Genesis 14:18–19"
+ },
+ {
+  "id": "old-genesis-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Abram give Melchizedek?",
+  "choices": [
+   "A tenth of everything",
+   "A sheep",
+   "His sword",
+   "The land of Sodom"
+  ],
+  "answer": 0,
+  "explanation": "Abram gave Melchizedek a tenth of all the spoils.",
+  "ref": "Genesis 14:20"
+ },
+ {
+  "id": "old-genesis-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Abram refuse the goods offered by the king of Sodom?",
+  "choices": [
+   "He had already lost them",
+   "He was required to tithe them",
+   "He did not want the king of Sodom to say he made Abram rich",
+   "Lot asked him not to take them"
+  ],
+  "answer": 2,
+  "explanation": "Abram refused so that no one but God would get credit for blessing him.",
+  "ref": "Genesis 14:22–23"
+ },
+ {
+  "id": "old-genesis-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did God tell Abram not to fear?",
+  "choices": [
+   "Because the famine was over",
+   "Because God said He was Abram's shield and exceeding great reward",
+   "Because the kings of the east were dead",
+   "Because Abram was still young"
+  ],
+  "answer": 1,
+  "explanation": "God reassured Abram by saying He Himself would be Abram's shield and exceeding great reward.",
+  "ref": "Genesis 15:1"
+ },
+ {
+  "id": "old-genesis-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did Abram say would be his heir if he remained childless?",
+  "choices": [
+   "Lot",
+   "Ishmael",
+   "Eliezer of Damascus",
+   "Isaac"
+  ],
+  "answer": 2,
+  "explanation": "Abram thought Eliezer of Damascus would become his heir.",
+  "ref": "Genesis 15:2–3"
+ },
+ {
+  "id": "old-genesis-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When God brought Abram outside, what did He compare Abram's descendants to?",
+  "choices": [
+   "The dust of the ground",
+   "The fish of the sea",
+   "The cedars of Lebanon",
+   "The stars of heaven"
+  ],
+  "answer": 3,
+  "explanation": "God brought Abram outside and told him to count the stars if he could.",
+  "ref": "Genesis 15:5"
+ },
+ {
+  "id": "old-genesis-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Genesis 15 describe Abram's response to God's promise?",
+  "choices": [
+   "He doubted and left",
+   "He believed the Lord",
+   "He demanded a sign first",
+   "He told Sarai to wait"
+  ],
+  "answer": 1,
+  "explanation": "Abram believed the Lord, and it was counted to him for righteousness.",
+  "ref": "Genesis 15:6"
+ },
+ {
+  "id": "old-genesis-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What passed between the divided pieces in Abram's covenant vision?",
+  "choices": [
+   "A mighty angel",
+   "A river of fire",
+   "A cloud of locusts",
+   "A smoking furnace and a burning lamp"
+  ],
+  "answer": 3,
+  "explanation": "The smoking furnace and burning lamp symbolized God's presence sealing the covenant.",
+  "ref": "Genesis 15:17"
+ },
+ {
+  "id": "old-genesis-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Sarai give Hagar to Abram?",
+  "choices": [
+   "Because Hagar was widowed",
+   "Because Sarai had no children and tried to obtain a family through her",
+   "Because God commanded it",
+   "Because Abram asked for another wife"
+  ],
+  "answer": 1,
+  "explanation": "Sarai tried to solve her barrenness by giving Hagar to Abram.",
+  "ref": "Genesis 16:1–2"
+ },
+ {
+  "id": "old-genesis-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened after Hagar conceived?",
+  "choices": [
+   "She returned to Egypt",
+   "She began to despise Sarai",
+   "Abram sent her away immediately",
+   "She had twins"
+  ],
+  "answer": 1,
+  "explanation": "Tension grew when Hagar looked down on Sarai after becoming pregnant.",
+  "ref": "Genesis 16:4"
+ },
+ {
+  "id": "old-genesis-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the angel of the Lord find Hagar?",
+  "choices": [
+   "At Abram's altar",
+   "By a well in the wilderness",
+   "Inside the tent",
+   "In Sodom"
+  ],
+  "answer": 1,
+  "explanation": "The angel found Hagar by a spring of water in the wilderness.",
+  "ref": "Genesis 16:7"
+ },
+ {
+  "id": "old-genesis-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Abram when Ishmael was born?",
+  "choices": [
+   "75",
+   "86",
+   "99",
+   "100"
+  ],
+  "answer": 1,
+  "explanation": "Abram was 86 years old when Hagar bore Ishmael.",
+  "ref": "Genesis 16:16"
+ },
+ {
+  "id": "old-genesis-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Abraham when he was circumcised?",
+  "choices": [
+   "86",
+   "90",
+   "99",
+   "100"
+  ],
+  "answer": 2,
+  "explanation": "Abraham was 99 years old when he was circumcised.",
+  "ref": "Genesis 17:24"
+ },
+ {
+  "id": "old-genesis-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question did the Lord ask after Sarah laughed?",
+  "choices": [
+   "Why did Abraham build this altar?",
+   "Who shall inherit the land?",
+   "Is anything too hard for the Lord?",
+   "Will the city stand forever?"
+  ],
+  "answer": 2,
+  "explanation": "The Lord asked, 'Is anything too hard for the Lord?'",
+  "ref": "Genesis 18:14"
+ },
+ {
+  "id": "old-genesis-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Abraham asked the Lord to spare Sodom for fewer and fewer righteous people. What was the last number he asked about?",
+  "choices": [
+   "50",
+   "25",
+   "10",
+   "1"
+  ],
+  "answer": 2,
+  "explanation": "Abraham kept interceding until he asked whether the city would be spared for ten righteous people.",
+  "ref": "Genesis 18:32"
+ },
+ {
+  "id": "old-genesis-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to Sodom and stayed with Lot?",
+  "choices": [
+   "Three kings",
+   "Abram's servants",
+   "Two angels",
+   "The sons of Noah"
+  ],
+  "answer": 2,
+  "explanation": "The two angels arrived at Sodom in the evening and Lot welcomed them.",
+  "ref": "Genesis 19:1"
+ },
+ {
+  "id": "old-genesis-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the men of Sodom demand regarding Lot's visitors?",
+  "choices": [
+   "That they join the feast",
+   "That they reveal their names",
+   "That they bless the city",
+   "That Lot send them out"
+  ],
+  "answer": 3,
+  "explanation": "The men of Sodom surrounded the house and demanded the visitors be brought out.",
+  "ref": "Genesis 19:5"
+ },
+ {
+  "id": "old-genesis-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Lot's wife as they fled?",
+  "choices": [
+   "She became blind",
+   "She ran back to the city",
+   "She disappeared in the storm",
+   "She became a pillar of salt"
+  ],
+  "answer": 3,
+  "explanation": "Lot's wife looked back and became a pillar of salt.",
+  "ref": "Genesis 19:26"
+ },
+ {
+  "id": "old-genesis-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What destroyed Sodom and Gomorrah?",
+  "choices": [
+   "Brimstone and fire from the Lord",
+   "A flood",
+   "An earthquake",
+   "A foreign army"
+  ],
+  "answer": 0,
+  "explanation": "The Lord rained brimstone and fire on Sodom and Gomorrah.",
+  "ref": "Genesis 19:24"
+ },
+ {
+  "id": "old-genesis-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was rescued from Sodom because God remembered Abraham?",
+  "choices": [
+   "Abimelech",
+   "Lot",
+   "Ishmael",
+   "Laban"
+  ],
+  "answer": 1,
+  "explanation": "Lot was delivered when God overthrew the cities of the plain.",
+  "ref": "Genesis 19:29"
+ },
+ {
+  "id": "old-genesis-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did God warn Abimelech about Sarah?",
+  "choices": [
+   "By an angel with a sword",
+   "Through a prophet in the city",
+   "By plague first",
+   "In a dream by night"
+  ],
+  "answer": 3,
+  "explanation": "God came to Abimelech in a dream and warned him that Sarah was Abraham's wife.",
+  "ref": "Genesis 20:3"
+ },
+ {
+  "id": "old-genesis-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had God done to Abimelech's household because of Sarah?",
+  "choices": [
+   "Closed the wombs of the women",
+   "Taken their wealth",
+   "Destroyed their crops",
+   "Sent them into exile"
+  ],
+  "answer": 0,
+  "explanation": "The Lord had fast closed all the wombs of Abimelech's household because of Sarah.",
+  "ref": "Genesis 20:18"
+ },
+ {
+  "id": "old-genesis-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened after Abraham prayed for Abimelech?",
+  "choices": [
+   "God healed Abimelech's household",
+   "His kingdom fell",
+   "Sarah left Abraham",
+   "Abraham moved away immediately"
+  ],
+  "answer": 0,
+  "explanation": "God healed Abimelech, his wife, and his female servants after Abraham prayed.",
+  "ref": "Genesis 20:17"
+ },
+ {
+  "id": "old-genesis-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Abraham when Isaac was born?",
+  "choices": [
+   "86",
+   "90",
+   "99",
+   "100"
+  ],
+  "answer": 3,
+  "explanation": "Abraham was 100 years old when Isaac was born.",
+  "ref": "Genesis 21:5"
+ },
+ {
+  "id": "old-genesis-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Sarah ask Abraham to send Hagar and Ishmael away?",
+  "choices": [
+   "They wanted to return to Egypt",
+   "She saw Hagar's son mocking",
+   "God told her to first",
+   "There was not enough food"
+  ],
+  "answer": 1,
+  "explanation": "Sarah saw the son of Hagar mocking and told Abraham to cast out the bondwoman and her son.",
+  "ref": "Genesis 21:9–10"
+ },
+ {
+  "id": "old-genesis-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "What place was named because of the oath between Abraham and Abimelech?",
+  "choices": [
+   "Beersheba",
+   "Hebron",
+   "Bethel",
+   "Gerar"
+  ],
+  "answer": 0,
+  "explanation": "The place was called Beersheba because there the two made an oath.",
+  "ref": "Genesis 21:31"
+ },
+ {
+  "id": "old-genesis-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question did Isaac ask Abraham on the way to the sacrifice?",
+  "choices": [
+   "Where are we going?",
+   "Why are the servants staying behind?",
+   "Where is the lamb for the burnt offering?",
+   "Will mother come too?"
+  ],
+  "answer": 2,
+  "explanation": "Isaac noticed the wood and fire and asked where the lamb was.",
+  "ref": "Genesis 22:7"
+ },
+ {
+  "id": "old-genesis-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Abraham say God would provide?",
+  "choices": [
+   "A lamb for the burnt offering",
+   "Another altar",
+   "A city",
+   "A priest"
+  ],
+  "answer": 0,
+  "explanation": "Abraham answered that God Himself would provide a lamb.",
+  "ref": "Genesis 22:8"
+ },
+ {
+  "id": "old-genesis-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Abraham offer instead of Isaac?",
+  "choices": [
+   "A bull",
+   "A dove",
+   "A goat from his flock",
+   "A ram caught in a thicket"
+  ],
+  "answer": 3,
+  "explanation": "God provided a ram caught in a thicket as the substitute.",
+  "ref": "Genesis 22:13"
+ },
+ {
+  "id": "old-genesis-23-2",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From whom did Abraham seek to buy a burial place?",
+  "choices": [
+   "The Egyptians",
+   "The Philistines",
+   "The sons of Heth",
+   "The Midianites"
+  ],
+  "answer": 2,
+  "explanation": "Abraham asked the sons of Heth for a burial possession.",
+  "ref": "Genesis 23:3–4"
+ },
+ {
+  "id": "old-genesis-23-3",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What specific field and cave did Abraham purchase?",
+  "choices": [
+   "The field of Gerar and cave of Zoar",
+   "The valley of Siddim and cave of Adullam",
+   "The field of Salem and cave of Horeb",
+   "The field of Ephron with the cave of Machpelah"
+  ],
+  "answer": 3,
+  "explanation": "Abraham bought the field of Ephron, including the cave of Machpelah.",
+  "ref": "Genesis 23:17–18"
+ },
+ {
+  "id": "old-genesis-23-4",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much silver did Abraham weigh out for the field?",
+  "choices": [
+   "100 shekels",
+   "200 shekels",
+   "400 shekels",
+   "600 shekels"
+  ],
+  "answer": 2,
+  "explanation": "Abraham weighed out 400 shekels of silver to Ephron.",
+  "ref": "Genesis 23:16"
+ },
+ {
+  "id": "old-genesis-23-5",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Sarah buried?",
+  "choices": [
+   "Near Beersheba",
+   "In Egypt",
+   "In the cave of Machpelah near Hebron",
+   "On Mount Moriah"
+  ],
+  "answer": 2,
+  "explanation": "Sarah was buried in the cave of Machpelah before Mamre, which is Hebron.",
+  "ref": "Genesis 23:19"
+ },
+ {
+  "id": "old-genesis-24-1",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Abraham send his servant to his own relatives?",
+  "choices": [
+   "To find a wife for Isaac",
+   "To find more servants",
+   "To buy land",
+   "To escape famine"
+  ],
+  "answer": 0,
+  "explanation": "Abraham wanted Isaac's wife to come from his own kindred rather than the Canaanites.",
+  "ref": "Genesis 24:2–4"
+ },
+ {
+  "id": "old-genesis-24-2",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign did the servant ask God to show him at the well?",
+  "choices": [
+   "The woman would offer water to him and his camels",
+   "The woman would sing",
+   "The woman would bring gold",
+   "The woman would know Isaac's name"
+  ],
+  "answer": 0,
+  "explanation": "The servant asked that the chosen woman would offer water to him and his camels.",
+  "ref": "Genesis 24:14"
+ },
+ {
+  "id": "old-genesis-24-4",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What relation was Rebekah to Abraham's family?",
+  "choices": [
+   "She was Lot's daughter",
+   "She was Bethuel's daughter and Nahor's granddaughter",
+   "She was Sarah's sister",
+   "She was Melchizedek's daughter"
+  ],
+  "answer": 1,
+  "explanation": "Rebekah was from Abraham's extended family through Nahor.",
+  "ref": "Genesis 24:24"
+ },
+ {
+  "id": "old-genesis-24-5",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Isaac respond when Rebekah became his wife?",
+  "choices": [
+   "He feared her",
+   "He sent her away",
+   "He loved her and was comforted after his mother's death",
+   "He built her a city"
+  ],
+  "answer": 2,
+  "explanation": "Isaac loved Rebekah and was comforted after Sarah's death.",
+  "ref": "Genesis 24:67"
+ },
+ {
+  "id": "old-genesis-25-3",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What struggle happened before Jacob and Esau were born?",
+  "choices": [
+   "The children struggled within Rebekah",
+   "A famine in the land",
+   "Isaac became blind",
+   "Abraham left Canaan"
+  ],
+  "answer": 0,
+  "explanation": "Rebekah felt the twins struggling within her and asked the Lord about it.",
+  "ref": "Genesis 25:22"
+ },
+ {
+  "id": "old-genesis-26-1",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Isaac go to Gerar?",
+  "choices": [
+   "To visit Abraham's grave",
+   "Because there was a famine in the land",
+   "To find a wife",
+   "To escape war"
+  ],
+  "answer": 1,
+  "explanation": "A famine drove Isaac toward Gerar in the land of the Philistines.",
+  "ref": "Genesis 26:1"
+ },
+ {
+  "id": "old-genesis-26-2",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Isaac say about Rebekah because he was afraid?",
+  "choices": [
+   "That she was his servant",
+   "That she was barren",
+   "That she was from Egypt",
+   "That she was his sister"
+  ],
+  "answer": 3,
+  "explanation": "Like Abraham before him, Isaac said Rebekah was his sister out of fear.",
+  "ref": "Genesis 26:7"
+ },
+ {
+  "id": "old-genesis-26-3",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the Philistines envy Isaac?",
+  "choices": [
+   "He ruled over them",
+   "He had become very prosperous",
+   "He married Rebekah",
+   "He built an altar"
+  ],
+  "answer": 1,
+  "explanation": "Isaac became very great, and the Philistines envied his prosperity.",
+  "ref": "Genesis 26:13–14"
+ },
+ {
+  "id": "old-genesis-27-3",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jacob make himself feel like Esau?",
+  "choices": [
+   "He changed clothes only",
+   "He put on armor",
+   "He used goat skins on his hands and neck",
+   "He anointed himself with oil"
+  ],
+  "answer": 2,
+  "explanation": "Goat skins made Jacob's skin feel like Esau's hairy skin.",
+  "ref": "Genesis 27:16"
+ },
+ {
+  "id": "old-genesis-27-4",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Esau plan to do after learning Jacob had taken the blessing?",
+  "choices": [
+   "Leave the land forever",
+   "Kill Jacob",
+   "Serve Jacob faithfully",
+   "Ask Isaac for another wife"
+  ],
+  "answer": 1,
+  "explanation": "Esau resolved to kill Jacob after the days of mourning for Isaac.",
+  "ref": "Genesis 27:41"
+ },
+ {
+  "id": "old-genesis-27-5",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Rebekah send Jacob to escape Esau's anger?",
+  "choices": [
+   "Egypt",
+   "Sodom",
+   "Bethel",
+   "Haran to Laban"
+  ],
+  "answer": 3,
+  "explanation": "Rebekah told Jacob to flee to her brother Laban in Haran.",
+  "ref": "Genesis 27:43"
+ },
+ {
+  "id": "old-genesis-28-2",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jacob see in his dream at Bethel?",
+  "choices": [
+   "A burning bush",
+   "A rainbow over the city",
+   "A river of fire",
+   "A ladder reaching to heaven with angels ascending and descending"
+  ],
+  "answer": 3,
+  "explanation": "Jacob saw a ladder set up on the earth reaching to heaven.",
+  "ref": "Genesis 28:12"
+ },
+ {
+  "id": "old-genesis-28-3",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What promise did God repeat to Jacob in the dream?",
+  "choices": [
+   "That the land would belong to him and his descendants",
+   "That he would never leave Canaan",
+   "That Esau would serve him immediately",
+   "That he would have no troubles"
+  ],
+  "answer": 0,
+  "explanation": "God repeated the land and descendants promises made to Abraham and Isaac.",
+  "ref": "Genesis 28:13–14"
+ },
+ {
+  "id": "old-genesis-28-5",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jacob set up as a pillar after the dream?",
+  "choices": [
+   "A branch",
+   "A stone from under his head",
+   "An altar of gold",
+   "A wooden post"
+  ],
+  "answer": 1,
+  "explanation": "Jacob took the stone he had used for his pillow and set it up as a pillar.",
+  "ref": "Genesis 28:18"
+ },
+ {
+  "id": "old-genesis-29-2",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did Jacob agree to serve for Rachel?",
+  "choices": [
+   "3",
+   "5",
+   "7",
+   "14"
+  ],
+  "answer": 2,
+  "explanation": "Jacob agreed to serve Laban seven years for Rachel.",
+  "ref": "Genesis 29:18"
+ },
+ {
+  "id": "old-genesis-29-4",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much longer did Jacob serve in order to marry Rachel?",
+  "choices": [
+   "1 year",
+   "3 years",
+   "7 more years",
+   "20 more years"
+  ],
+  "answer": 2,
+  "explanation": "Jacob served another seven years for Rachel.",
+  "ref": "Genesis 29:27–30"
+ },
+ {
+  "id": "old-genesis-29-5",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which four sons did Leah bear?",
+  "choices": [
+   "Dan, Naphtali, Gad, Asher",
+   "Issachar, Zebulun, Joseph, Benjamin",
+   "Reuben, Simeon, Levi, Judah",
+   "Esau, Jacob, Judah, Levi"
+  ],
+  "answer": 2,
+  "explanation": "Leah gave birth to Reuben, Simeon, Levi, and Judah in this chapter.",
+  "ref": "Genesis 29:32–35"
+ },
+ {
+  "id": "old-genesis-30-1",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Rachel say when she saw she had no children?",
+  "choices": [
+   "Give me a new home",
+   "Send me back to my father",
+   "Bless my flocks",
+   "Give me children, or else I die"
+  ],
+  "answer": 3,
+  "explanation": "Rachel cried out to Jacob because she was barren.",
+  "ref": "Genesis 30:1"
+ },
+ {
+  "id": "old-genesis-30-4",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What arrangement did Jacob make with Laban about the flocks?",
+  "choices": [
+   "The speckled and spotted animals would be his wages",
+   "He would keep only white sheep",
+   "He would take half the silver",
+   "He would leave empty-handed"
+  ],
+  "answer": 0,
+  "explanation": "Jacob agreed that the speckled and spotted animals would be his wages.",
+  "ref": "Genesis 30:32"
+ },
+ {
+  "id": "old-genesis-30-5",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Genesis 30 describe Jacob's prosperity?",
+  "choices": [
+   "He stayed poor",
+   "He lost all his animals",
+   "He moved back to Canaan immediately",
+   "He became exceedingly prosperous"
+  ],
+  "answer": 3,
+  "explanation": "Jacob increased greatly and had many flocks, servants, camels, and donkeys.",
+  "ref": "Genesis 30:43"
+ },
+ {
+  "id": "old-genesis-31-1",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jacob decide to leave Laban?",
+  "choices": [
+   "Because of famine",
+   "Because Rachel demanded it",
+   "Because Laban's attitude had changed and God told him to return",
+   "Because Esau invited him home"
+  ],
+  "answer": 2,
+  "explanation": "Jacob noticed Laban's changed attitude, and God told him to return to his own land.",
+  "ref": "Genesis 31:2–3"
+ },
+ {
+  "id": "old-genesis-31-2",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Rachel steal from her father when the family left?",
+  "choices": [
+   "Gold and silver",
+   "Laban's staff",
+   "The household idols",
+   "His sheep"
+  ],
+  "answer": 2,
+  "explanation": "Rachel stole her father's household idols.",
+  "ref": "Genesis 31:19"
+ },
+ {
+  "id": "old-genesis-31-3",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did God warn Laban before he confronted Jacob?",
+  "choices": [
+   "By a prophet",
+   "In a dream",
+   "By a pillar of fire",
+   "Through Rebekah"
+  ],
+  "answer": 1,
+  "explanation": "God came to Laban in a dream and told him not to speak either good or bad to Jacob.",
+  "ref": "Genesis 31:24"
+ },
+ {
+  "id": "old-genesis-31-4",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Rachel hide the household idols when Laban searched?",
+  "choices": [
+   "In a well",
+   "Under the tent curtain",
+   "In the camel's furniture",
+   "In Jacob's bag"
+  ],
+  "answer": 2,
+  "explanation": "Rachel hid the idols in the camel's furniture and sat on them.",
+  "ref": "Genesis 31:34"
+ },
+ {
+  "id": "old-genesis-31-5",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What memorial did Jacob and Laban set up after making peace?",
+  "choices": [
+   "A well",
+   "A heap of stones",
+   "A golden altar",
+   "A cedar tree"
+  ],
+  "answer": 1,
+  "explanation": "They set up a heap of stones as a witness between them.",
+  "ref": "Genesis 31:46–48"
+ },
+ {
+  "id": "old-genesis-32-1",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was Jacob afraid?",
+  "choices": [
+   "Laban was chasing him",
+   "Esau was coming with 400 men",
+   "A famine had begun",
+   "Rachel was missing"
+  ],
+  "answer": 1,
+  "explanation": "Jacob feared because Esau was coming to meet him with 400 men.",
+  "ref": "Genesis 32:6–7"
+ },
+ {
+  "id": "old-genesis-32-2",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jacob prepare to meet Esau?",
+  "choices": [
+   "He sent gifts ahead in droves",
+   "He hid alone in the hills",
+   "He returned to Laban",
+   "He built a city wall"
+  ],
+  "answer": 0,
+  "explanation": "Jacob sent a generous gift ahead to appease Esau.",
+  "ref": "Genesis 32:13–20"
+ },
+ {
+  "id": "old-genesis-32-3",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With whom did Jacob wrestle through the night?",
+  "choices": [
+   "Esau",
+   "Laban",
+   "Isaac",
+   "A man"
+  ],
+  "answer": 3,
+  "explanation": "Jacob was left alone, and a man wrestled with him until the breaking of the day.",
+  "ref": "Genesis 32:24"
+ },
+ {
+  "id": "old-genesis-32-5",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name did Jacob give the place where he said he had seen God face to face?",
+  "choices": [
+   "Bethel",
+   "Hebron",
+   "Beersheba",
+   "Peniel"
+  ],
+  "answer": 3,
+  "explanation": "Jacob called the place Peniel because he believed he had seen God face to face.",
+  "ref": "Genesis 32:30"
+ },
+ {
+  "id": "old-genesis-33-1",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jacob greet Esau when they met?",
+  "choices": [
+   "He hid behind the servants",
+   "He argued with him",
+   "He bowed himself to the ground seven times",
+   "He sent Joseph first"
+  ],
+  "answer": 2,
+  "explanation": "Jacob humbly bowed seven times as he approached Esau.",
+  "ref": "Genesis 33:3"
+ },
+ {
+  "id": "old-genesis-33-2",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Esau respond when he saw Jacob?",
+  "choices": [
+   "He attacked him",
+   "He ignored him",
+   "He ran to meet him and embraced him",
+   "He demanded payment"
+  ],
+  "answer": 2,
+  "explanation": "Esau ran to Jacob, embraced him, and they both wept.",
+  "ref": "Genesis 33:4"
+ },
+ {
+  "id": "old-genesis-33-3",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jacob urge Esau to accept?",
+  "choices": [
+   "His gift",
+   "His tents",
+   "His daughters",
+   "His birthright"
+  ],
+  "answer": 0,
+  "explanation": "Jacob urged Esau to accept the present he had sent.",
+  "ref": "Genesis 33:10–11"
+ },
+ {
+  "id": "old-genesis-33-5",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jacob do after he bought a field near Shalem, a city of Shechem?",
+  "choices": [
+   "Married again",
+   "Built an altar called El-elohe-Israel",
+   "Became king",
+   "Buried Rachel"
+  ],
+  "answer": 1,
+  "explanation": "Jacob erected an altar there and called it El-elohe-Israel.",
+  "ref": "Genesis 33:20"
+ },
+ {
+  "id": "old-genesis-34-1",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the mother of Dinah, Jacob's daughter?",
+  "choices": [
+   "Rachel",
+   "Sarah",
+   "Leah",
+   "Rebekah"
+  ],
+  "answer": 2,
+  "explanation": "Dinah is identified as the daughter Leah bore to Jacob.",
+  "ref": "Genesis 34:1"
+ },
+ {
+  "id": "old-genesis-34-2",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who defiled Dinah?",
+  "choices": [
+   "Laban",
+   "Esau",
+   "Abimelech",
+   "Shechem son of Hamor"
+  ],
+  "answer": 3,
+  "explanation": "Shechem, the son of Hamor the Hivite, violated Dinah.",
+  "ref": "Genesis 34:2"
+ },
+ {
+  "id": "old-genesis-34-3",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What condition did Jacob's sons require before agreeing to marriage with the men of the city?",
+  "choices": [
+   "All the males had to be circumcised",
+   "They had to leave the land",
+   "They had to pay silver only",
+   "They had to serve Jacob for seven years"
+  ],
+  "answer": 0,
+  "explanation": "Jacob's sons deceitfully required circumcision of all the males.",
+  "ref": "Genesis 34:15"
+ },
+ {
+  "id": "old-genesis-34-5",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jacob react to Simeon and Levi's violence?",
+  "choices": [
+   "He praised them",
+   "He moved to Egypt immediately",
+   "He crowned them as leaders",
+   "He feared they had made him stink among the inhabitants of the land"
+  ],
+  "answer": 3,
+  "explanation": "Jacob was troubled by the danger their violence had brought on the family.",
+  "ref": "Genesis 34:30"
+ },
+ {
+  "id": "old-genesis-35-2",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jacob command his household to do before going to Bethel?",
+  "choices": [
+   "Count the flocks",
+   "Gather food for the road",
+   "Put away foreign gods and be clean",
+   "Send gifts to Esau"
+  ],
+  "answer": 2,
+  "explanation": "Jacob told his household to put away foreign gods and purify themselves.",
+  "ref": "Genesis 35:2"
+ },
+ {
+  "id": "old-genesis-35-3",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Rachel as Benjamin was born?",
+  "choices": [
+   "She was healed immediately",
+   "She moved back to Laban",
+   "She had twins",
+   "She died in childbirth"
+  ],
+  "answer": 3,
+  "explanation": "Rachel died while giving birth to Benjamin.",
+  "ref": "Genesis 35:18–19"
+ },
+ {
+  "id": "old-genesis-35-5",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who buried Isaac at the end of Genesis 35?",
+  "choices": [
+   "Jacob only",
+   "Esau only",
+   "Jacob and Esau together",
+   "Joseph and Benjamin"
+  ],
+  "answer": 2,
+  "explanation": "Jacob and Esau buried Isaac together.",
+  "ref": "Genesis 35:29"
+ },
+ {
+  "id": "old-genesis-36-2",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jacob and Esau's households separate permanently?",
+  "choices": [
+   "They were fighting again",
+   "God divided the land equally",
+   "Their possessions were too great to dwell together",
+   "Esau was exiled"
+  ],
+  "answer": 2,
+  "explanation": "Their riches and possessions were too great for them to live together.",
+  "ref": "Genesis 36:6–7"
+ },
+ {
+  "id": "old-genesis-36-5",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does this chapter mainly record?",
+  "choices": [
+   "A story of war",
+   "The family line of Esau",
+   "A song of praise",
+   "A covenant renewal"
+  ],
+  "answer": 1,
+  "explanation": "The chapter mainly records the family line, dukes, and kings connected to Esau.",
+  "ref": "Genesis 36:1"
+ },
+ {
+  "id": "old-genesis-37-1",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which son did Jacob especially love?",
+  "choices": [
+   "Judah",
+   "Benjamin",
+   "Reuben",
+   "Joseph"
+  ],
+  "answer": 3,
+  "explanation": "Joseph was Jacob's beloved son, born to him in old age.",
+  "ref": "Genesis 37:3"
+ },
+ {
+  "id": "old-genesis-37-2",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What special gift did Jacob give Joseph?",
+  "choices": [
+   "A sword",
+   "A coat of many colors",
+   "A birthright document",
+   "A ring"
+  ],
+  "answer": 1,
+  "explanation": "Jacob gave Joseph a special coat that marked him out.",
+  "ref": "Genesis 37:3"
+ },
+ {
+  "id": "old-genesis-37-3",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joseph's dreams suggest about his future?",
+  "choices": [
+   "His family would bow down to him",
+   "He would leave the family",
+   "He would die young",
+   "He would become a priest"
+  ],
+  "answer": 0,
+  "explanation": "Joseph's dreams pointed to his family bowing before him.",
+  "ref": "Genesis 37:7–10"
+ },
+ {
+  "id": "old-genesis-37-4",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joseph's brothers do with him after throwing him into a pit?",
+  "choices": [
+   "They brought him home",
+   "They made him king",
+   "They sent him to Esau",
+   "They sold him to Ishmaelite traders"
+  ],
+  "answer": 3,
+  "explanation": "The brothers sold Joseph for twenty pieces of silver.",
+  "ref": "Genesis 37:28"
+ },
+ {
+  "id": "old-genesis-37-5",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the brothers convince Jacob that Joseph was dead?",
+  "choices": [
+   "They buried an empty coffin",
+   "They said he drowned",
+   "They sent his coat dipped in blood",
+   "They blamed wild men"
+  ],
+  "answer": 2,
+  "explanation": "They stained Joseph's coat with blood so Jacob would think a wild beast had killed him.",
+  "ref": "Genesis 37:31–33"
+ },
+ {
+  "id": "old-genesis-38-1",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Judah marry?",
+  "choices": [
+   "Rebekah's sister",
+   "An Egyptian woman",
+   "Tamar",
+   "A daughter of the Canaanites"
+  ],
+  "answer": 3,
+  "explanation": "Judah took the daughter of a certain Canaanite whose name was Shuah.",
+  "ref": "Genesis 38:2"
+ },
+ {
+  "id": "old-genesis-38-2",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Tamar remain childless after marrying Judah's sons?",
+  "choices": [
+   "Er and Onan both died",
+   "There was a famine",
+   "She returned home immediately",
+   "Judah forbade children"
+  ],
+  "answer": 0,
+  "explanation": "Er died for wickedness, and Onan also died after refusing to raise up offspring.",
+  "ref": "Genesis 38:7–10"
+ },
+ {
+  "id": "old-genesis-38-3",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Tamar disguise herself when Judah came by the road?",
+  "choices": [
+   "As a servant",
+   "As a widow in mourning",
+   "As a prostitute",
+   "As a foreign queen"
+  ],
+  "answer": 2,
+  "explanation": "Tamar veiled herself so Judah thought she was a prostitute.",
+  "ref": "Genesis 38:14–15"
+ },
+ {
+  "id": "old-genesis-38-4",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What pledge did Judah leave with Tamar?",
+  "choices": [
+   "His signet, bracelets, and staff",
+   "His tent and staff only",
+   "A flock of sheep",
+   "A written promise"
+  ],
+  "answer": 0,
+  "explanation": "Judah left his signet, his bracelets, and his staff as a pledge.",
+  "ref": "Genesis 38:18"
+ },
+ {
+  "id": "old-genesis-38-5",
+  "chapter": 38,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Judah say when Tamar's identity was revealed?",
+  "choices": [
+   "She has been more righteous than I",
+   "She has deceived me",
+   "She must leave the land",
+   "I do not know her"
+  ],
+  "answer": 0,
+  "explanation": "Judah admitted Tamar had been more righteous than he was.",
+  "ref": "Genesis 38:26"
+ },
+ {
+  "id": "old-genesis-39-2",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Potiphar trust Joseph with all that he had?",
+  "choices": [
+   "Joseph was the oldest servant",
+   "The Lord was with Joseph and he prospered",
+   "Joseph was Egyptian",
+   "Joseph had money"
+  ],
+  "answer": 1,
+  "explanation": "Potiphar saw that the Lord was with Joseph and made him overseer of his house.",
+  "ref": "Genesis 39:2–4"
+ },
+ {
+  "id": "old-genesis-39-3",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What temptation did Joseph resist repeatedly?",
+  "choices": [
+   "Stealing from Potiphar",
+   "Bowing to Egyptian gods",
+   "Running away from prison",
+   "Potiphar's wife asking him to lie with her"
+  ],
+  "answer": 3,
+  "explanation": "Joseph refused the advances of Potiphar's wife.",
+  "ref": "Genesis 39:7–10"
+ },
+ {
+  "id": "old-genesis-39-5",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Joseph sent after Potiphar's wife accused him?",
+  "choices": [
+   "Back to Canaan",
+   "Pharaoh's palace",
+   "A desert camp",
+   "Prison"
+  ],
+  "answer": 3,
+  "explanation": "Joseph was cast into the prison where the king's prisoners were kept.",
+  "ref": "Genesis 39:20"
+ },
+ {
+  "id": "old-genesis-40-1",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two officials of Pharaoh were put in prison with Joseph?",
+  "choices": [
+   "The captain and the scribe",
+   "The charioteer and the treasurer",
+   "The chief shepherd and the steward",
+   "The chief butler and the chief baker"
+  ],
+  "answer": 3,
+  "explanation": "Pharaoh's chief butler and chief baker were put in the prison where Joseph was. The butler was the man who gave the king his cup.",
+  "ref": "Genesis 40:1–3"
+ },
+ {
+  "id": "old-genesis-40-2",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said that interpretations belong to God?",
+  "choices": [
+   "Joseph",
+   "The butler",
+   "Potiphar",
+   "Pharaoh"
+  ],
+  "answer": 0,
+  "explanation": "Joseph told the prisoners that interpretations belong to God.",
+  "ref": "Genesis 40:8"
+ },
+ {
+  "id": "old-genesis-40-3",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joseph say would happen to the butler in three days?",
+  "choices": [
+   "He would die",
+   "He would escape to Canaan",
+   "He would be restored to his place",
+   "He would become a guard"
+  ],
+  "answer": 2,
+  "explanation": "Joseph said Pharaoh would restore the butler to his place within three days.",
+  "ref": "Genesis 40:13"
+ },
+ {
+  "id": "old-genesis-40-4",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joseph say would happen to the baker in three days?",
+  "choices": [
+   "He would return home",
+   "He would be promoted",
+   "He would be executed",
+   "He would escape prison"
+  ],
+  "answer": 2,
+  "explanation": "Joseph told the baker that within three days Pharaoh would lift up his head from off him and hang him on a tree.",
+  "ref": "Genesis 40:19"
+ },
+ {
+  "id": "old-genesis-41-1",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Pharaoh see in his first dream?",
+  "choices": [
+   "A ladder to heaven",
+   "A great flood",
+   "Seven fat cows and seven thin cows",
+   "Stars bowing down"
+  ],
+  "answer": 2,
+  "explanation": "Pharaoh dreamed of seven healthy cows and seven gaunt cows from the river.",
+  "ref": "Genesis 41:1–4"
+ },
+ {
+  "id": "old-genesis-41-2",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Pharaoh see in his second dream?",
+  "choices": [
+   "A burning bush",
+   "A ram in a thicket",
+   "An angel with a sword",
+   "Seven good ears of grain and seven thin ears"
+  ],
+  "answer": 3,
+  "explanation": "The second dream featured good ears of grain swallowed by thin ears.",
+  "ref": "Genesis 41:5–7"
+ },
+ {
+  "id": "old-genesis-41-3",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joseph say the seven good cows and the seven thin cows meant?",
+  "choices": [
+   "Seven years of war, then seven of peace",
+   "Seven years of flood, then seven of drought",
+   "Seven kings, then seven prophets",
+   "Seven years of plenty, then seven years of famine"
+  ],
+  "answer": 3,
+  "explanation": "Joseph said Egypt would have seven years of abundance followed by seven years of famine.",
+  "ref": "Genesis 41:29–30"
+ },
+ {
+  "id": "old-genesis-41-4",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What position did Pharaoh give Joseph?",
+  "choices": [
+   "Captain of the guard",
+   "Chief priest",
+   "Ruler over all Egypt under Pharaoh",
+   "Commander of the army only"
+  ],
+  "answer": 2,
+  "explanation": "Pharaoh set Joseph over all the land of Egypt.",
+  "ref": "Genesis 41:40–41"
+ },
+ {
+  "id": "old-genesis-41-5",
+  "chapter": 41,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the names of Joseph's two sons born in Egypt?",
+  "choices": [
+   "Perez and Zerah",
+   "Shem and Ham",
+   "Reuben and Simeon",
+   "Ephraim and Manasseh"
+  ],
+  "answer": 3,
+  "explanation": "Joseph's sons were Manasseh and Ephraim.",
+  "ref": "Genesis 41:50–52"
+ },
+ {
+  "id": "old-genesis-42-1",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jacob send his sons to Egypt?",
+  "choices": [
+   "To visit Joseph",
+   "To buy grain",
+   "To find wives",
+   "To make peace with Pharaoh"
+  ],
+  "answer": 1,
+  "explanation": "Jacob sent his sons to Egypt because there was grain there during the famine.",
+  "ref": "Genesis 42:1–2"
+ },
+ {
+  "id": "old-genesis-42-3",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Joseph treat his brothers when they arrived?",
+  "choices": [
+   "He immediately revealed himself",
+   "He turned them away hungry",
+   "He accused them of being spies",
+   "He bowed before them"
+  ],
+  "answer": 2,
+  "explanation": "Joseph recognized his brothers and accused them of being spies.",
+  "ref": "Genesis 42:9"
+ },
+ {
+  "id": "old-genesis-42-5",
+  "chapter": 42,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did one of the brothers find in his sack on the way home?",
+  "choices": [
+   "Extra grain",
+   "Jewels from Egypt",
+   "His money returned",
+   "A letter from Pharaoh"
+  ],
+  "answer": 2,
+  "explanation": "One brother opened his sack at the inn and found his money, and they were all afraid.",
+  "ref": "Genesis 42:27–28"
+ },
+ {
+  "id": "old-genesis-43-1",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jacob finally agree to send Benjamin to Egypt?",
+  "choices": [
+   "Benjamin wanted to go",
+   "Pharaoh demanded it in a letter",
+   "Esau forced the decision",
+   "The famine was severe and they needed food"
+  ],
+  "answer": 3,
+  "explanation": "The famine grew so severe that Jacob had to let Benjamin go for the family to survive.",
+  "ref": "Genesis 43:1–2"
+ },
+ {
+  "id": "old-genesis-43-3",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What gifts did Jacob send with his sons to Egypt?",
+  "choices": [
+   "Balm, honey, spices, myrrh, nuts, and almonds",
+   "Horses and chariots",
+   "Silver trumpets",
+   "A coat of many colors"
+  ],
+  "answer": 0,
+  "explanation": "Jacob sent choice gifts from the land along with double money.",
+  "ref": "Genesis 43:11"
+ },
+ {
+  "id": "old-genesis-43-4",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when Joseph saw Benjamin?",
+  "choices": [
+   "He sent him away",
+   "He accused him of theft",
+   "He crowned him",
+   "He was deeply moved and went to weep"
+  ],
+  "answer": 3,
+  "explanation": "Joseph's compassion stirred for Benjamin, and he went aside to weep.",
+  "ref": "Genesis 43:29–30"
+ },
+ {
+  "id": "old-genesis-43-5",
+  "chapter": 43,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much larger was Benjamin's portion at Joseph's table?",
+  "choices": [
+   "Twice as much",
+   "Three times as much",
+   "Five times as much",
+   "Ten times as much"
+  ],
+  "answer": 2,
+  "explanation": "Benjamin's portion was five times as much as the others'.",
+  "ref": "Genesis 43:34"
+ },
+ {
+  "id": "old-genesis-44-1",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What special item did Joseph hide in Benjamin's sack?",
+  "choices": [
+   "A silver cup",
+   "A gold ring",
+   "A royal scroll",
+   "His signet"
+  ],
+  "answer": 0,
+  "explanation": "Joseph commanded that his silver cup be placed in Benjamin's sack.",
+  "ref": "Genesis 44:2"
+ },
+ {
+  "id": "old-genesis-44-2",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the brothers' first reaction when they were accused of stealing the cup?",
+  "choices": [
+   "They ran away",
+   "They blamed Benjamin",
+   "They attacked the steward",
+   "They defended their innocence and offered death for the thief"
+  ],
+  "answer": 3,
+  "explanation": "They strongly denied the accusation and said the guilty one should die.",
+  "ref": "Genesis 44:7–9"
+ },
+ {
+  "id": "old-genesis-44-4",
+  "chapter": 44,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the brothers respond when the cup was found?",
+  "choices": [
+   "They abandoned Benjamin",
+   "They laughed",
+   "They attacked the steward",
+   "They tore their clothes and returned to the city"
+  ],
+  "answer": 3,
+  "explanation": "The brothers tore their clothes in grief and returned together.",
+  "ref": "Genesis 44:13"
+ },
+ {
+  "id": "old-genesis-45-2",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Joseph explain God's purpose in sending him to Egypt?",
+  "choices": [
+   "To make him wealthy",
+   "To punish the brothers immediately",
+   "To preserve life",
+   "To start a war"
+  ],
+  "answer": 2,
+  "explanation": "Joseph said God sent him before them to preserve life and save many people.",
+  "ref": "Genesis 45:5–7"
+ },
+ {
+  "id": "old-genesis-45-4",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Pharaoh respond when he heard that Joseph's brothers had come?",
+  "choices": [
+   "He was angry",
+   "He imprisoned the brothers",
+   "He approved and offered the best of the land",
+   "He demanded silver"
+  ],
+  "answer": 2,
+  "explanation": "Pharaoh was pleased and invited Joseph's family to take the best of Egypt.",
+  "ref": "Genesis 45:16–18"
+ },
+ {
+  "id": "old-genesis-45-5",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joseph tell his brothers not to do on the journey home?",
+  "choices": [
+   "Do not stop to rest",
+   "Do not tell Jacob the truth",
+   "Do not bring Benjamin back",
+   "Do not quarrel on the way"
+  ],
+  "answer": 3,
+  "explanation": "Joseph sent them away with the instruction not to fall out along the way.",
+  "ref": "Genesis 45:24"
+ },
+ {
+  "id": "old-genesis-46-1",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did God speak to Jacob before he went down to Egypt?",
+  "choices": [
+   "Bethel",
+   "Hebron",
+   "Gerar",
+   "Beersheba"
+  ],
+  "answer": 3,
+  "explanation": "Jacob offered sacrifices at Beersheba, and God spoke to him in visions of the night.",
+  "ref": "Genesis 46:1–2"
+ },
+ {
+  "id": "old-genesis-46-2",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God tell Jacob about going to Egypt?",
+  "choices": [
+   "Go down there, for I will make of you a great nation",
+   "Do not go there",
+   "Go only for a few days",
+   "Return immediately after seeing Joseph"
+  ],
+  "answer": 0,
+  "explanation": "God told Jacob not to fear going to Egypt because He would make him a great nation there.",
+  "ref": "Genesis 46:3"
+ },
+ {
+  "id": "old-genesis-46-4",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Joseph react when he met Jacob again?",
+  "choices": [
+   "He bowed silently",
+   "He accused him of waiting too long",
+   "He fell on his neck and wept",
+   "He sent him to Pharaoh first"
+  ],
+  "answer": 2,
+  "explanation": "Joseph embraced his father and wept on his neck for a good while.",
+  "ref": "Genesis 46:29"
+ },
+ {
+  "id": "old-genesis-47-2",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old did Jacob say he was when he stood before Pharaoh?",
+  "choices": [
+   "100",
+   "110",
+   "130",
+   "147"
+  ],
+  "answer": 2,
+  "explanation": "Jacob told Pharaoh the days of his pilgrimage were 130 years.",
+  "ref": "Genesis 47:9"
+ },
+ {
+  "id": "old-genesis-47-3",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Egyptians eventually give Joseph in exchange for food after their money was gone?",
+  "choices": [
+   "Only their gold",
+   "Their children",
+   "Their livestock and then their land",
+   "Their temples"
+  ],
+  "answer": 2,
+  "explanation": "Joseph accepted livestock first and later bought the land for Pharaoh during the famine.",
+  "ref": "Genesis 47:16–20"
+ },
+ {
+  "id": "old-genesis-47-5",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What request did Jacob make of Joseph before he died?",
+  "choices": [
+   "Make Benjamin ruler",
+   "Bury me in Egypt",
+   "Return the family to Canaan immediately",
+   "Do not bury me in Egypt"
+  ],
+  "answer": 3,
+  "explanation": "Jacob made Joseph swear to bury him with his fathers, not in Egypt.",
+  "ref": "Genesis 47:29–30"
+ },
+ {
+  "id": "old-genesis-48-1",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose two sons did Jacob bless?",
+  "choices": [
+   "Joseph's sons",
+   "Judah's sons",
+   "Benjamin's sons",
+   "Esau's sons"
+  ],
+  "answer": 0,
+  "explanation": "Jacob blessed Joseph's two sons, Manasseh and Ephraim.",
+  "ref": "Genesis 48:1–5"
+ },
+ {
+  "id": "old-genesis-48-2",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the names of Joseph's two sons?",
+  "choices": [
+   "Perez and Zerah",
+   "Ephraim and Manasseh",
+   "Reuben and Simeon",
+   "Dan and Naphtali"
+  ],
+  "answer": 1,
+  "explanation": "Joseph brought Manasseh and Ephraim to Jacob for blessing.",
+  "ref": "Genesis 48:1"
+ },
+ {
+  "id": "old-genesis-48-4",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jacob do with his hands when blessing the boys?",
+  "choices": [
+   "He kept them straight",
+   "He laid both on Manasseh",
+   "He crossed his hands",
+   "He refused to bless them"
+  ],
+  "answer": 2,
+  "explanation": "Jacob crossed his hands, placing his right hand on Ephraim.",
+  "ref": "Genesis 48:14"
+ },
+ {
+  "id": "old-genesis-49-3",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Joseph described in Jacob's blessing?",
+  "choices": [
+   "A fruitful bough",
+   "A barren branch",
+   "A ravening wolf",
+   "A royal lion"
+  ],
+  "answer": 0,
+  "explanation": "Jacob calls Joseph a fruitful bough by a well.",
+  "ref": "Genesis 49:22"
+ },
+ {
+  "id": "old-genesis-49-4",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal is Judah compared to in Jacob's blessing?",
+  "choices": [
+   "A lion's whelp",
+   "An eagle",
+   "A serpent",
+   "A deer"
+  ],
+  "answer": 0,
+  "explanation": "Judah is compared to a lion's whelp.",
+  "ref": "Genesis 49:9"
+ },
+ {
+  "id": "old-genesis-49-5",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jacob instruct his sons to bury him?",
+  "choices": [
+   "In the cave of Machpelah",
+   "In Egypt",
+   "At Bethel",
+   "At Beersheba"
+  ],
+  "answer": 0,
+  "explanation": "Jacob instructed his sons to bury him in the cave of Machpelah with his fathers.",
+  "ref": "Genesis 49:29–30"
+ },
+ {
+  "id": "old-genesis-50-1",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did the Egyptians mourn for Jacob?",
+  "choices": [
+   "7 days",
+   "30 days",
+   "40 days",
+   "70 days"
+  ],
+  "answer": 3,
+  "explanation": "The Egyptians mourned for Jacob seventy days.",
+  "ref": "Genesis 50:3"
+ },
+ {
+  "id": "old-genesis-50-2",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Jacob buried?",
+  "choices": [
+   "At Bethel",
+   "In Goshen",
+   "In the cave of Machpelah",
+   "By the Nile"
+  ],
+  "answer": 2,
+  "explanation": "Jacob was buried in the cave of Machpelah in the land of Canaan.",
+  "ref": "Genesis 50:13"
+ },
+ {
+  "id": "old-genesis-50-3",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were Joseph's brothers afraid after Jacob died?",
+  "choices": [
+   "They feared famine",
+   "They feared Pharaoh",
+   "They feared Esau",
+   "They feared Joseph would repay them for selling him"
+  ],
+  "answer": 3,
+  "explanation": "The brothers worried Joseph would finally avenge himself after their father's death.",
+  "ref": "Genesis 50:15"
+ },
+ {
+  "id": "old-genesis-50-4",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famous words did Joseph say about the evil his brothers had done?",
+  "choices": [
+   "You meant it for good",
+   "You meant evil against me, but God meant it for good",
+   "The Lord has forgotten it",
+   "Justice has been delayed"
+  ],
+  "answer": 1,
+  "explanation": "Joseph declared that God had overruled their evil for good.",
+  "ref": "Genesis 50:20"
+ },
+ {
+  "id": "old-genesis-50-5",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joseph ask to be done with his bones when God visited Israel?",
+  "choices": [
+   "Bury them in Egypt",
+   "Carry them up out of Egypt",
+   "Burn them on an altar",
+   "Place them by Pharaoh"
+  ],
+  "answer": 1,
+  "explanation": "Joseph made the children of Israel swear to carry his bones out of Egypt.",
+  "ref": "Genesis 50:25"
+ }
+]

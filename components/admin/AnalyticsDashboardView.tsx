@@ -29,7 +29,7 @@ export const TABS = [
   { key: "app", label: "App" },
   { key: "features", label: "Features" },
   { key: "match", label: "Bible Buddy Match" },
-  { key: "clue", label: "Bible Clue" },
+  { key: "clue", label: "Bible Trivia" },
   { key: "popups", label: "Popups" },
 ] as const;
 
@@ -2516,7 +2516,7 @@ export default function AnalyticsDashboardView({
                 </>
               ) : (
                 <Card>
-                  <p className="text-sm font-semibold text-[#64748b]">The Bible Clue numbers did not load this time. Every other tab is unaffected.</p>
+                  <p className="text-sm font-semibold text-[#64748b]">The Bible Trivia numbers did not load this time. Every other tab is unaffected.</p>
                 </Card>
               )
             ) : null}

@@ -219,6 +219,9 @@ export function createMatch(input: {
   } else {
     ({ deck, spare } = drawQuestions(pool, input.seed, settings.roundSize, input.avoid));
   }
+  // A small selection (one chapter with 5 questions) plays as many as it has
+  // (2026-11-23); a tie with no question left is a shared win (advance()).
+  settings.roundSize = deck.length;
   return {
     settings,
     selection: input.selection,

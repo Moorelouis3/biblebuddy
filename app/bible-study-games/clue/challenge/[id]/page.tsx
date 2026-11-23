@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ClueChallenge from "@/components/clueGame/ClueChallenge";
 
-export const metadata: Metadata = { title: "Bible Clue Game challenge | Bible Buddy", robots: { index: false } };
+export const metadata: Metadata = { title: "Bible Trivia challenge | Bible Buddy", robots: { index: false } };
 
 /** A Feed challenge: the same 10 cards for everyone, and a leaderboard. */
 export default async function ClueChallengePage({ params }: { params: Promise<{ id: string }> }) {

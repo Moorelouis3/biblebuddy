@@ -1,0 +1,2882 @@
+[
+ {
+  "id": "old-2-chronicles-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what high place did Solomon offer sacrifices at the start of the chapter?",
+  "choices": [
+   "Gibeon",
+   "Bethel",
+   "Jerusalem",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "Solomon went to the great high place at Gibeon.",
+  "ref": "2 Chronicles 1:3"
+ },
+ {
+  "id": "old-2-chronicles-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say to Solomon when he appeared to him by night?",
+  "choices": [
+   "Ask what I shall give thee",
+   "Build me a house",
+   "Go up against Egypt",
+   "Number the people"
+  ],
+  "answer": 0,
+  "explanation": "God invited Solomon to ask for what he desired.",
+  "ref": "2 Chronicles 1:7"
+ },
+ {
+  "id": "old-2-chronicles-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon request from God?",
+  "choices": [
+   "Victory over Egypt",
+   "Wisdom and knowledge",
+   "A larger palace",
+   "A longer reign"
+  ],
+  "answer": 1,
+  "explanation": "Solomon asked for wisdom and knowledge to lead the people.",
+  "ref": "2 Chronicles 1:10"
+ },
+ {
+  "id": "old-2-chronicles-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God give Solomon in addition to wisdom?",
+  "choices": [
+   "Only peace",
+   "Riches, wealth, and honour",
+   "Another son",
+   "The priesthood"
+  ],
+  "answer": 1,
+  "explanation": "God added riches, wealth, and honor beyond other kings.",
+  "ref": "2 Chronicles 1:11–12"
+ },
+ {
+  "id": "old-2-chronicles-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where had David brought the ark of God by this time?",
+  "choices": [
+   "Jerusalem",
+   "Shiloh",
+   "Gilgal",
+   "Bethlehem"
+  ],
+  "answer": 0,
+  "explanation": "The ark was in Jerusalem though the tabernacle altar was at Gibeon.",
+  "ref": "2 Chronicles 1:4"
+ },
+ {
+  "id": "old-2-chronicles-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two major building projects did Solomon determine to make?",
+  "choices": [
+   "A house for the Lord and a house for his kingdom",
+   "A wall and a fortress",
+   "Two altars",
+   "A palace and a tower"
+  ],
+  "answer": 0,
+  "explanation": "Solomon planned both the temple and his royal house.",
+  "ref": "2 Chronicles 2:1"
+ },
+ {
+  "id": "old-2-chronicles-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which foreign king did Solomon contact for cedar and craftsmen?",
+  "choices": [
+   "Pharaoh",
+   "Benhadad",
+   "Cyrus",
+   "Huram king of Tyre"
+  ],
+  "answer": 3,
+  "explanation": "Solomon sent to Huram king of Tyre for help with the building.",
+  "ref": "2 Chronicles 2:3"
+ },
+ {
+  "id": "old-2-chronicles-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Solomon describe the house he will build for the Lord?",
+  "choices": [
+   "A memorial only",
+   "Great, for great is our God",
+   "Small but holy",
+   "Temporary"
+  ],
+  "answer": 1,
+  "explanation": "Solomon says the house will be great because God is great.",
+  "ref": "2 Chronicles 2:5"
+ },
+ {
+  "id": "old-2-chronicles-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The skilled craftsman sent to Solomon was the son of a woman from which tribe?",
+  "choices": [
+   "Judah",
+   "Levi",
+   "Dan",
+   "Benjamin"
+  ],
+  "answer": 2,
+  "explanation": "The cunning man was the son of a woman of the daughters of Dan, and his father was a man of Tyre.",
+  "ref": "2 Chronicles 2:13–14"
+ },
+ {
+  "id": "old-2-chronicles-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Solomon number and set to work as burden bearers and stone cutters?",
+  "choices": [
+   "Only Levites",
+   "Philistine captives",
+   "The strangers in the land of Israel",
+   "Priests only"
+  ],
+  "answer": 2,
+  "explanation": "He counted the foreigners and assigned them to labor.",
+  "ref": "2 Chronicles 2:17–18"
+ },
+ {
+  "id": "old-2-chronicles-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "On what mountain did Solomon begin to build the house of the Lord?",
+  "choices": [
+   "Moriah",
+   "Sinai",
+   "Carmel",
+   "Zion"
+  ],
+  "answer": 0,
+  "explanation": "The temple was built on Mount Moriah in Jerusalem.",
+  "ref": "2 Chronicles 3:1"
+ },
+ {
+  "id": "old-2-chronicles-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On whose threshing floor was the temple site prepared?",
+  "choices": [
+   "Joab's",
+   "Saul's",
+   "Ornan's",
+   "Abner's"
+  ],
+  "answer": 2,
+  "explanation": "The site was where David had prepared in the threshing floor of Ornan.",
+  "ref": "2 Chronicles 3:1"
+ },
+ {
+  "id": "old-2-chronicles-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What precious metal covered much of the inside of the temple?",
+  "choices": [
+   "Silver",
+   "Bronze",
+   "Iron",
+   "Gold"
+  ],
+  "answer": 3,
+  "explanation": "Gold covered the house richly.",
+  "ref": "2 Chronicles 3:4–7"
+ },
+ {
+  "id": "old-2-chronicles-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What large figures stood in the most holy place?",
+  "choices": [
+   "Twelve oxen",
+   "Two cherubims",
+   "Two lions",
+   "Four priests"
+  ],
+  "answer": 1,
+  "explanation": "Two cherubim spread their wings in the most holy place.",
+  "ref": "2 Chronicles 3:10–13"
+ },
+ {
+  "id": "old-2-chronicles-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon make of blue, purple, crimson, and fine linen?",
+  "choices": [
+   "A tent",
+   "A priestly robe",
+   "A veil",
+   "A banner"
+  ],
+  "answer": 2,
+  "explanation": "He made the veil of blue, purple, crimson, and fine linen, with cherubims worked on it.",
+  "ref": "2 Chronicles 3:14"
+ },
+ {
+  "id": "old-2-chronicles-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What large square object for sacrifices is mentioned first in this chapter?",
+  "choices": [
+   "The laver",
+   "The ark",
+   "The brazen altar",
+   "The mercy seat"
+  ],
+  "answer": 2,
+  "explanation": "The chapter begins with the brazen altar.",
+  "ref": "2 Chronicles 4:1"
+ },
+ {
+  "id": "old-2-chronicles-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the great round vessel for priestly washing called?",
+  "choices": [
+   "The river",
+   "The laver of Moses",
+   "The sea",
+   "The pool of David"
+  ],
+  "answer": 2,
+  "explanation": "It was commonly called the molten sea.",
+  "ref": "2 Chronicles 4:2"
+ },
+ {
+  "id": "old-2-chronicles-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What supported the great sea underneath?",
+  "choices": [
+   "Twelve lions",
+   "Four pillars",
+   "Twelve oxen",
+   "Six wheels"
+  ],
+  "answer": 2,
+  "explanation": "The sea rested on twelve oxen.",
+  "ref": "2 Chronicles 4:4"
+ },
+ {
+  "id": "old-2-chronicles-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many golden lampstands did Solomon make according to the ordinance?",
+  "choices": [
+   "2",
+   "5",
+   "10",
+   "12"
+  ],
+  "answer": 2,
+  "explanation": "Ten lampstands of gold were made.",
+  "ref": "2 Chronicles 4:7"
+ },
+ {
+  "id": "old-2-chronicles-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who made the pots, the shovels, and the basons for the house of God?",
+  "choices": [
+   "Zadok",
+   "Nathan",
+   "Huram",
+   "Asaph"
+  ],
+  "answer": 2,
+  "explanation": "Huram made the pots, shovels, and basons and finished his work for king Solomon.",
+  "ref": "2 Chronicles 4:11"
+ },
+ {
+  "id": "old-2-chronicles-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon bring into the completed house of God from David's dedicated treasures?",
+  "choices": [
+   "Only swords",
+   "Only the ark",
+   "Silver, gold, and all the dedicated things",
+   "Only trumpets"
+  ],
+  "answer": 2,
+  "explanation": "Solomon placed the dedicated treasures in the house of God.",
+  "ref": "2 Chronicles 5:1"
+ },
+ {
+  "id": "old-2-chronicles-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sacred object was brought into the most holy place under the wings of the cherubims?",
+  "choices": [
+   "The brazen altar",
+   "The ark of the covenant",
+   "The ephod",
+   "The book of the law"
+  ],
+  "answer": 1,
+  "explanation": "The ark was brought into the oracle of the house.",
+  "ref": "2 Chronicles 5:7"
+ },
+ {
+  "id": "old-2-chronicles-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Levites and priests do musically at the dedication?",
+  "choices": [
+   "Stayed silent",
+   "Only played harps",
+   "Sang and sounded trumpets as one",
+   "Marched around the city"
+  ],
+  "answer": 2,
+  "explanation": "The musicians praised with one sound.",
+  "ref": "2 Chronicles 5:12–13"
+ },
+ {
+  "id": "old-2-chronicles-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What filled the house of the Lord after the praise rose up?",
+  "choices": [
+   "Smoke from sacrifices only",
+   "A cloud",
+   "Fire from heaven immediately",
+   "Darkness"
+  ],
+  "answer": 1,
+  "explanation": "A cloud filled the house, showing God's presence.",
+  "ref": "2 Chronicles 5:13"
+ },
+ {
+  "id": "old-2-chronicles-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why could the priests not continue ministering?",
+  "choices": [
+   "They were tired",
+   "The glory of the Lord filled the house",
+   "The people left",
+   "The ark was missing"
+  ],
+  "answer": 1,
+  "explanation": "The glory was so overwhelming they could not stand to minister.",
+  "ref": "2 Chronicles 5:14"
+ },
+ {
+  "id": "old-2-chronicles-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon say the Lord had chosen to dwell in?",
+  "choices": [
+   "The thick darkness",
+   "A strong city",
+   "A golden palace",
+   "A mountain cave"
+  ],
+  "answer": 0,
+  "explanation": "Solomon begins by speaking of God's dwelling in thick darkness.",
+  "ref": "2 Chronicles 6:1"
+ },
+ {
+  "id": "old-2-chronicles-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What promise to David did Solomon say the Lord had now fulfilled?",
+  "choices": [
+   "That Israel would never sin",
+   "That Saul would return",
+   "That Egypt would serve Israel",
+   "That his son would build the house"
+  ],
+  "answer": 3,
+  "explanation": "Solomon says he now sits on David's throne and has built the house.",
+  "ref": "2 Chronicles 6:10"
+ },
+ {
+  "id": "old-2-chronicles-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What posture did Solomon take when he prayed before all Israel?",
+  "choices": [
+   "He lay on the ground",
+   "He sat on the throne",
+   "He stood then kneeled upon his knees",
+   "He hid behind the veil"
+  ],
+  "answer": 2,
+  "explanation": "Solomon kneeled on a brazen scaffold and spread forth his hands.",
+  "ref": "2 Chronicles 6:12–13"
+ },
+ {
+  "id": "old-2-chronicles-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question does Solomon ask about God's greatness and the temple?",
+  "choices": [
+   "Will God in very deed dwell with men on the earth?",
+   "Can Egypt contain him?",
+   "Will the ark save us always?",
+   "Can priests forgive sins?"
+  ],
+  "answer": 0,
+  "explanation": "Solomon acknowledges that heaven cannot contain God.",
+  "ref": "2 Chronicles 6:18"
+ },
+ {
+  "id": "old-2-chronicles-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is included in Solomon's prayer when he asks God to hear from heaven?",
+  "choices": [
+   "Israel and even the stranger who comes for God's great name",
+   "Only kings",
+   "Only priests",
+   "Only Judah"
+  ],
+  "answer": 0,
+  "explanation": "Solomon prays that even foreigners who seek the Lord would be heard.",
+  "ref": "2 Chronicles 6:32–33"
+ },
+ {
+  "id": "old-2-chronicles-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened immediately when Solomon finished praying?",
+  "choices": [
+   "The people went home",
+   "The ark was removed",
+   "Fire came down from heaven",
+   "It began to rain"
+  ],
+  "answer": 2,
+  "explanation": "Fire fell and consumed the burnt offering and sacrifices.",
+  "ref": "2 Chronicles 7:1"
+ },
+ {
+  "id": "old-2-chronicles-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why could the priests not enter the house of the Lord?",
+  "choices": [
+   "The doors were shut",
+   "They were unclean",
+   "The altar blocked them",
+   "The glory of the Lord had filled the house"
+  ],
+  "answer": 3,
+  "explanation": "God's glory filled the temple.",
+  "ref": "2 Chronicles 7:2"
+ },
+ {
+  "id": "old-2-chronicles-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God promise to do if his people humbled themselves, prayed, sought his face, and turned from their wicked ways?",
+  "choices": [
+   "Make them reign forever",
+   "Hear from heaven, forgive their sin, and heal their land",
+   "Never judge them again",
+   "Give them victory over the Philistines"
+  ],
+  "answer": 1,
+  "explanation": "God promises forgiveness and healing upon repentance.",
+  "ref": "2 Chronicles 7:14"
+ },
+ {
+  "id": "old-2-chronicles-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Solomon keep the feast at the dedication?",
+  "choices": [
+   "3 days",
+   "7 days",
+   "14 days",
+   "40 days"
+  ],
+  "answer": 1,
+  "explanation": "He kept the feast seven days and the dedication seven days.",
+  "ref": "2 Chronicles 7:8–9"
+ },
+ {
+  "id": "old-2-chronicles-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning did God give if Israel turned away and served other gods?",
+  "choices": [
+   "Israel would be plucked up and the house cast out of his sight",
+   "The temple would stand forever",
+   "David's throne would grow stronger",
+   "Egypt would protect them"
+  ],
+  "answer": 0,
+  "explanation": "God warned of judgment and desolation for apostasy.",
+  "ref": "2 Chronicles 7:19–22"
+ },
+ {
+  "id": "old-2-chronicles-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did it take Solomon to build the house of the Lord and his own house?",
+  "choices": [
+   "7",
+   "13",
+   "20",
+   "40"
+  ],
+  "answer": 2,
+  "explanation": "The chapter opens after twenty years of building.",
+  "ref": "2 Chronicles 8:1"
+ },
+ {
+  "id": "old-2-chronicles-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon do with the cities Huram had restored to him?",
+  "choices": [
+   "Destroyed them",
+   "Built them and settled Israelites there",
+   "Gave them to Egypt",
+   "Made them priestly cities"
+  ],
+  "answer": 1,
+  "explanation": "Solomon rebuilt the cities and placed Israel there.",
+  "ref": "2 Chronicles 8:2"
+ },
+ {
+  "id": "old-2-chronicles-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who were not made bondservants but men of war and chief officers in Solomon's kingdom?",
+  "choices": [
+   "The children of Israel",
+   "The Canaanites",
+   "The Levites",
+   "The strangers"
+  ],
+  "answer": 0,
+  "explanation": "Israelites served as leaders and soldiers, not forced laborers.",
+  "ref": "2 Chronicles 8:9"
+ },
+ {
+  "id": "old-2-chronicles-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Solomon bring Pharaoh's daughter up out of the city of David?",
+  "choices": [
+   "Because she hated Jerusalem",
+   "Because the palace was unfinished",
+   "Because she asked to leave",
+   "Because the places where the ark had come were holy"
+  ],
+  "answer": 3,
+  "explanation": "Solomon said his wife should not dwell in the house of David, because the places where the ark had come were holy.",
+  "ref": "2 Chronicles 8:11"
+ },
+ {
+  "id": "old-2-chronicles-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With whom did Solomon's servants join for voyages that brought gold from Ophir?",
+  "choices": [
+   "Egyptians",
+   "Huram's servants",
+   "Philistines",
+   "Assyrians"
+  ],
+  "answer": 1,
+  "explanation": "Huram sent servants who had knowledge of the sea, and they went with Solomon's servants to Ophir.",
+  "ref": "2 Chronicles 8:18"
+ },
+ {
+  "id": "old-2-chronicles-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the queen of Sheba come to Jerusalem?",
+  "choices": [
+   "To prove Solomon with hard questions",
+   "To fight Solomon",
+   "To rebuild the temple",
+   "To crown Rehoboam"
+  ],
+  "answer": 0,
+  "explanation": "She came to test Solomon's wisdom.",
+  "ref": "2 Chronicles 9:1"
+ },
+ {
+  "id": "old-2-chronicles-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the queen of Sheba's reaction after seeing Solomon's wisdom and the house he had built?",
+  "choices": [
+   "She laughed",
+   "She doubted him",
+   "There was no more spirit in her",
+   "She left immediately"
+  ],
+  "answer": 2,
+  "explanation": "She was overwhelmed by what she saw.",
+  "ref": "2 Chronicles 9:4"
+ },
+ {
+  "id": "old-2-chronicles-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the queen say about the report she had heard of Solomon?",
+  "choices": [
+   "It was exaggerated",
+   "It was false",
+   "It was about war only",
+   "It was true, yet not even half had been told her"
+  ],
+  "answer": 3,
+  "explanation": "She said the reality exceeded the report.",
+  "ref": "2 Chronicles 9:6"
+ },
+ {
+  "id": "old-2-chronicles-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What material were many of Solomon's drinking vessels made from?",
+  "choices": [
+   "Silver",
+   "Gold",
+   "Bronze",
+   "Iron"
+  ],
+  "answer": 1,
+  "explanation": "All the drinking vessels were of gold.",
+  "ref": "2 Chronicles 9:20"
+ },
+ {
+  "id": "old-2-chronicles-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the chapter summarize Solomon's fame?",
+  "choices": [
+   "All the kings of the earth sought his presence to hear his wisdom",
+   "He was feared only in Judah",
+   "He hid from nations",
+   "Only Sheba knew him"
+  ],
+  "answer": 0,
+  "explanation": "His wisdom drew rulers from all the earth.",
+  "ref": "2 Chronicles 9:23"
+ },
+ {
+  "id": "old-2-chronicles-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "To what city did Rehoboam go for all Israel to make him king?",
+  "choices": [
+   "Jerusalem",
+   "Hebron",
+   "Shechem",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "Rehoboam went to Shechem for the coronation assembly.",
+  "ref": "2 Chronicles 10:1"
+ },
+ {
+  "id": "old-2-chronicles-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What request did the people make concerning Solomon's rule?",
+  "choices": [
+   "Lighten the grievous yoke",
+   "Increase taxes",
+   "Move the capital",
+   "Build another temple"
+  ],
+  "answer": 0,
+  "explanation": "They asked for relief from heavy burdens.",
+  "ref": "2 Chronicles 10:4"
+ },
+ {
+  "id": "old-2-chronicles-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose counsel did Rehoboam forsake?",
+  "choices": [
+   "The old men",
+   "The prophets",
+   "The priests",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "He rejected the counsel of the elders.",
+  "ref": "2 Chronicles 10:8"
+ },
+ {
+  "id": "old-2-chronicles-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What harsh phrase did the young men tell Rehoboam to answer with?",
+  "choices": [
+   "My father loved you",
+   "My little finger shall be thicker than my father's loins",
+   "I will serve you",
+   "Peace be unto you"
+  ],
+  "answer": 1,
+  "explanation": "The arrogant response deepened the rupture.",
+  "ref": "2 Chronicles 10:10"
+ },
+ {
+  "id": "old-2-chronicles-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the chapter say about why the king did not listen to the people?",
+  "choices": [
+   "The cause was of God",
+   "It was an accident",
+   "He feared the young men",
+   "It was a military mistake"
+  ],
+  "answer": 0,
+  "explanation": "The king did not listen because the cause was of God, so that the Lord's word by Ahijah would be performed.",
+  "ref": "2 Chronicles 10:15"
+ },
+ {
+  "id": "old-2-chronicles-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What prophet told Rehoboam not to fight against the northern tribes?",
+  "choices": [
+   "Shemaiah",
+   "Isaiah",
+   "Nathan",
+   "Azariah"
+  ],
+  "answer": 0,
+  "explanation": "Shemaiah delivered God's message not to make war.",
+  "ref": "2 Chronicles 11:2–4"
+ },
+ {
+  "id": "old-2-chronicles-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Rehoboam do instead of attacking Israel?",
+  "choices": [
+   "Fled to Egypt",
+   "Abdicated the throne",
+   "Built cities for defense in Judah",
+   "Burned the temple"
+  ],
+  "answer": 2,
+  "explanation": "He strengthened fortified cities in Judah.",
+  "ref": "2 Chronicles 11:5"
+ },
+ {
+  "id": "old-2-chronicles-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did priests and Levites leave their possessions in the north and come to Judah?",
+  "choices": [
+   "For more land",
+   "Because of famine",
+   "Jeroboam cast them off from executing the priest's office",
+   "Because they feared Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Jeroboam's false worship drove them south.",
+  "ref": "2 Chronicles 11:13–14"
+ },
+ {
+  "id": "old-2-chronicles-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of people from all the tribes came after the priests and Levites to Jerusalem?",
+  "choices": [
+   "Only soldiers",
+   "Those who set their hearts to seek the Lord",
+   "Only merchants",
+   "Only singers"
+  ],
+  "answer": 1,
+  "explanation": "Faithful worshipers came to sacrifice to the Lord.",
+  "ref": "2 Chronicles 11:16"
+ },
+ {
+  "id": "old-2-chronicles-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For how long did those who came to Jerusalem to seek the Lord make Rehoboam strong?",
+  "choices": [
+   "1 year",
+   "3 years",
+   "7 years",
+   "40 years"
+  ],
+  "answer": 1,
+  "explanation": "They made Rehoboam strong three years, for three years they walked in the way of David and Solomon.",
+  "ref": "2 Chronicles 11:17"
+ },
+ {
+  "id": "old-2-chronicles-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Shishak king of Egypt come up against Jerusalem?",
+  "choices": [
+   "Because Rehoboam and the people had forsaken the law of the Lord",
+   "Because Judah had become rich",
+   "Because Solomon offended him",
+   "Because of famine"
+  ],
+  "answer": 0,
+  "explanation": "The invasion came after Judah's unfaithfulness.",
+  "ref": "2 Chronicles 12:1–2"
+ },
+ {
+  "id": "old-2-chronicles-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which prophet explained the meaning of Shishak's invasion?",
+  "choices": [
+   "Shemaiah",
+   "Elijah",
+   "Nathan",
+   "Huldah"
+  ],
+  "answer": 0,
+  "explanation": "Shemaiah told them the Lord had left them to Shishak.",
+  "ref": "2 Chronicles 12:5"
+ },
+ {
+  "id": "old-2-chronicles-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Rehoboam and the princes respond to God's word?",
+  "choices": [
+   "They hardened their hearts",
+   "They fled to Moab",
+   "They humbled themselves",
+   "They mocked the prophet"
+  ],
+  "answer": 2,
+  "explanation": "Their humility brought partial mercy.",
+  "ref": "2 Chronicles 12:6"
+ },
+ {
+  "id": "old-2-chronicles-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famous items did Shishak take away from the temple and palace?",
+  "choices": [
+   "The ark and lampstands",
+   "The altar of incense",
+   "The priestly garments",
+   "The shields of gold"
+  ],
+  "answer": 3,
+  "explanation": "Shishak carried off the treasures including the gold shields.",
+  "ref": "2 Chronicles 12:9"
+ },
+ {
+  "id": "old-2-chronicles-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when Rehoboam humbled himself?",
+  "choices": [
+   "Shishak returned the treasures",
+   "The wrath of the Lord turned from him",
+   "He never sinned again",
+   "The temple was rebuilt"
+  ],
+  "answer": 1,
+  "explanation": "When he humbled himself, the wrath of the Lord turned from him so that he would not destroy him altogether, and things went well in Judah.",
+  "ref": "2 Chronicles 12:12"
+ },
+ {
+  "id": "old-2-chronicles-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against which northern king did Abijah go to war?",
+  "choices": [
+   "Jeroboam",
+   "Ahab",
+   "Baasha",
+   "Omri"
+  ],
+  "answer": 0,
+  "explanation": "The conflict was between Abijah and Jeroboam.",
+  "ref": "2 Chronicles 13:2"
+ },
+ {
+  "id": "old-2-chronicles-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of covenant does Abijah say gave the kingdom to David and his sons?",
+  "choices": [
+   "A covenant of salt",
+   "A blood covenant",
+   "A covenant of fire",
+   "A covenant of bronze"
+  ],
+  "answer": 0,
+  "explanation": "Abijah appeals to God's covenant of salt with David.",
+  "ref": "2 Chronicles 13:5"
+ },
+ {
+  "id": "old-2-chronicles-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Abijah say Judah still had that Israel had rejected?",
+  "choices": [
+   "The Lord as their God and the priests of the Lord",
+   "Egyptian allies",
+   "More chariots",
+   "Better walls"
+  ],
+  "answer": 0,
+  "explanation": "He contrasts Judah's worship with Jeroboam's false system.",
+  "ref": "2 Chronicles 13:10"
+ },
+ {
+  "id": "old-2-chronicles-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when Judah cried unto the Lord and the priests sounded with trumpets?",
+  "choices": [
+   "They fled immediately",
+   "Rain stopped the battle",
+   "God smote Jeroboam and Israel before Abijah and Judah",
+   "Abijah was defeated"
+  ],
+  "answer": 2,
+  "explanation": "The Lord gave Judah victory when they depended on him.",
+  "ref": "2 Chronicles 13:14–15"
+ },
+ {
+  "id": "old-2-chronicles-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What reason does the chapter give for Judah's victory?",
+  "choices": [
+   "Their swords were sharper",
+   "They relied upon the Lord God of their fathers",
+   "They were more numerous",
+   "Jeroboam grew sick"
+  ],
+  "answer": 1,
+  "explanation": "Dependence on God is presented as the cause of victory.",
+  "ref": "2 Chronicles 13:18"
+ },
+ {
+  "id": "old-2-chronicles-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Asa's early reign described?",
+  "choices": [
+   "He did evil",
+   "He copied Jeroboam",
+   "He did good and right in the eyes of the Lord",
+   "He ignored worship"
+  ],
+  "answer": 2,
+  "explanation": "Asa began well and sought reform.",
+  "ref": "2 Chronicles 14:2"
+ },
+ {
+  "id": "old-2-chronicles-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Asa remove from Judah?",
+  "choices": [
+   "Altars of strange gods and high places",
+   "Only city walls",
+   "The Levites",
+   "The ark"
+  ],
+  "answer": 0,
+  "explanation": "He removed idolatrous structures and images.",
+  "ref": "2 Chronicles 14:3–5"
+ },
+ {
+  "id": "old-2-chronicles-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What enemy came against Judah with a huge army?",
+  "choices": [
+   "Shishak the Egyptian",
+   "Hazael the Syrian",
+   "Zerah the Ethiopian",
+   "Sennacherib"
+  ],
+  "answer": 2,
+  "explanation": "Zerah the Ethiopian came with a vast force.",
+  "ref": "2 Chronicles 14:9"
+ },
+ {
+  "id": "old-2-chronicles-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Asa pray before battle?",
+  "choices": [
+   "By boasting in Judah's strength",
+   "By seeking Egypt",
+   "By remaining silent",
+   "By asking the Lord to help, for it was nothing with him to help"
+  ],
+  "answer": 3,
+  "explanation": "Asa confessed total dependence on the Lord.",
+  "ref": "2 Chronicles 14:11"
+ },
+ {
+  "id": "old-2-chronicles-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What result followed Asa's trust in God?",
+  "choices": [
+   "Judah lost Jerusalem",
+   "The Lord smote the Ethiopians",
+   "Asa was captured",
+   "The battle never happened"
+  ],
+  "answer": 1,
+  "explanation": "The Lord routed the Ethiopians before Asa and Judah.",
+  "ref": "2 Chronicles 14:12"
+ },
+ {
+  "id": "old-2-chronicles-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which prophet brought Asa a message of encouragement?",
+  "choices": [
+   "Shemaiah",
+   "Nathan",
+   "Azariah son of Oded",
+   "Hanani"
+  ],
+  "answer": 2,
+  "explanation": "Azariah came with the Spirit of God upon him.",
+  "ref": "2 Chronicles 15:1–2"
+ },
+ {
+  "id": "old-2-chronicles-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Azariah say about the Lord's relationship to his people?",
+  "choices": [
+   "He never judges",
+   "He only helps kings",
+   "He lives only in the temple",
+   "He is with you while ye be with him"
+  ],
+  "answer": 3,
+  "explanation": "The prophet tied God's favor to seeking him faithfully.",
+  "ref": "2 Chronicles 15:2"
+ },
+ {
+  "id": "old-2-chronicles-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Asa do after hearing the words of the prophet?",
+  "choices": [
+   "Took courage and put away the abominable idols",
+   "Sought Egypt",
+   "Stopped temple worship",
+   "Abdicated"
+  ],
+  "answer": 0,
+  "explanation": "Asa responded with reform and courage.",
+  "ref": "2 Chronicles 15:8"
+ },
+ {
+  "id": "old-2-chronicles-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What covenant did the people enter into?",
+  "choices": [
+   "To seek the Lord God of their fathers with all their heart and soul",
+   "To follow Egypt",
+   "To crown a new king",
+   "To rebuild Samaria"
+  ],
+  "answer": 0,
+  "explanation": "The people renewed covenant loyalty to the Lord.",
+  "ref": "2 Chronicles 15:12"
+ },
+ {
+  "id": "old-2-chronicles-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did all Judah respond to the oath they swore to the Lord?",
+  "choices": [
+   "With fear only",
+   "They rebelled",
+   "They went home in anger",
+   "They rejoiced"
+  ],
+  "answer": 3,
+  "explanation": "They rejoiced because they sought the Lord wholeheartedly.",
+  "ref": "2 Chronicles 15:15"
+ },
+ {
+  "id": "old-2-chronicles-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Asa bribe with silver and gold to oppose Baasha king of Israel?",
+  "choices": [
+   "Shishak",
+   "Benhadad king of Syria",
+   "Nebuchadnezzar",
+   "Hiram"
+  ],
+  "answer": 1,
+  "explanation": "Asa turned to Benhadad instead of trusting the Lord.",
+  "ref": "2 Chronicles 16:2–3"
+ },
+ {
+  "id": "old-2-chronicles-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which seer rebuked Asa for relying on Syria?",
+  "choices": [
+   "Gad",
+   "Nathan",
+   "Hanani",
+   "Micaiah"
+  ],
+  "answer": 2,
+  "explanation": "Hanani rebuked Asa for not relying on the Lord.",
+  "ref": "2 Chronicles 16:7"
+ },
+ {
+  "id": "old-2-chronicles-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famous truth did Hanani say about the Lord's eyes?",
+  "choices": [
+   "They see only Israel",
+   "They are closed in judgment",
+   "They overlook sin",
+   "They run to and fro throughout the whole earth"
+  ],
+  "answer": 3,
+  "explanation": "God looks everywhere to show himself strong for the loyal.",
+  "ref": "2 Chronicles 16:9"
+ },
+ {
+  "id": "old-2-chronicles-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Asa respond to the prophet's rebuke?",
+  "choices": [
+   "He was wroth and put him in prison",
+   "He repented immediately",
+   "He crowned Hanani",
+   "He fled to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Asa reacted angrily rather than humbly.",
+  "ref": "2 Chronicles 16:10"
+ },
+ {
+  "id": "old-2-chronicles-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In Asa's later disease, what fault does the chapter highlight?",
+  "choices": [
+   "He sought not to the Lord, but to the physicians",
+   "He refused food",
+   "He worshiped idols only",
+   "He left Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "The chronicler notes his failure to seek the Lord.",
+  "ref": "2 Chronicles 16:12"
+ },
+ {
+  "id": "old-2-chronicles-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Jehoshaphat's early walk described?",
+  "choices": [
+   "In the first ways of David his father",
+   "Like Ahab",
+   "Like Jeroboam",
+   "As indifferent"
+  ],
+  "answer": 0,
+  "explanation": "Jehoshaphat is commended for following faithful ways.",
+  "ref": "2 Chronicles 17:3"
+ },
+ {
+  "id": "old-2-chronicles-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jehoshaphat take away out of Judah?",
+  "choices": [
+   "The temple",
+   "Priests",
+   "Levites",
+   "High places and groves"
+  ],
+  "answer": 3,
+  "explanation": "He took away the high places and groves out of Judah.",
+  "ref": "2 Chronicles 17:6"
+ },
+ {
+  "id": "old-2-chronicles-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the princes, Levites, and priests have with them as they taught throughout Judah?",
+  "choices": [
+   "Weapons",
+   "The book of the law of the Lord",
+   "Gold shields",
+   "A royal tax decree"
+  ],
+  "answer": 1,
+  "explanation": "They had the book of the law of the Lord with them and taught the people in all the cities of Judah.",
+  "ref": "2 Chronicles 17:9"
+ },
+ {
+  "id": "old-2-chronicles-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What effect did this faithful reign have on surrounding kingdoms?",
+  "choices": [
+   "They attacked Judah",
+   "They made Asa king",
+   "The fear of the Lord fell upon them",
+   "They captured Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "The surrounding kingdoms feared because of God's hand on Judah.",
+  "ref": "2 Chronicles 17:10"
+ },
+ {
+  "id": "old-2-chronicles-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things did Jehoshaphat have in abundance according to the chapter?",
+  "choices": [
+   "Horses and idols",
+   "Priests and famine",
+   "Tribulation and exile",
+   "Riches and honour"
+  ],
+  "answer": 3,
+  "explanation": "The Lord established the kingdom and blessed him with riches and honor.",
+  "ref": "2 Chronicles 17:5"
+ },
+ {
+  "id": "old-2-chronicles-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With whom did Jehoshaphat join affinity?",
+  "choices": [
+   "Elijah",
+   "Benhadad",
+   "Jeroboam",
+   "Ahab"
+  ],
+  "answer": 3,
+  "explanation": "Jehoshaphat joined himself by marriage alliance with Ahab.",
+  "ref": "2 Chronicles 18:1"
+ },
+ {
+  "id": "old-2-chronicles-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did Ahab ask Jehoshaphat to go with him to war?",
+  "choices": [
+   "Megiddo",
+   "Jericho",
+   "Ramoth-gilead",
+   "Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Ahab asked Jehoshaphat to go with him to Ramoth-gilead.",
+  "ref": "2 Chronicles 18:3"
+ },
+ {
+  "id": "old-2-chronicles-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which prophet spoke the true word of the Lord despite Ahab's hatred?",
+  "choices": [
+   "Elijah",
+   "Nathan",
+   "Azariah",
+   "Micaiah"
+  ],
+  "answer": 3,
+  "explanation": "Micaiah alone told the truth Ahab did not want to hear.",
+  "ref": "2 Chronicles 18:7"
+ },
+ {
+  "id": "old-2-chronicles-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the two kings go into the battle?",
+  "choices": [
+   "Both wore their royal robes",
+   "Ahab disguised himself while Jehoshaphat wore his robes",
+   "Both disguised themselves",
+   "Jehoshaphat disguised himself while Ahab wore his robes"
+  ],
+  "answer": 1,
+  "explanation": "The king of Israel disguised himself and told Jehoshaphat to put on his robes.",
+  "ref": "2 Chronicles 18:29"
+ },
+ {
+  "id": "old-2-chronicles-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was Ahab killed?",
+  "choices": [
+   "By an arrow a man shot at a venture",
+   "By Jehoshaphat's sword",
+   "By Elijah's fire",
+   "By a fall from his chariot"
+  ],
+  "answer": 0,
+  "explanation": "A random arrow struck Ahab between the joints of his armor.",
+  "ref": "2 Chronicles 18:33"
+ },
+ {
+  "id": "old-2-chronicles-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who rebuked Jehoshaphat for helping the ungodly and loving those that hate the Lord?",
+  "choices": [
+   "Micaiah",
+   "Azariah",
+   "Jehu son of Hanani",
+   "Elijah"
+  ],
+  "answer": 2,
+  "explanation": "Jehu confronted Jehoshaphat upon his return.",
+  "ref": "2 Chronicles 19:2"
+ },
+ {
+  "id": "old-2-chronicles-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What good thing was still found in Jehoshaphat despite his alliance with Ahab?",
+  "choices": [
+   "He loved idols",
+   "He rebuilt Samaria",
+   "He conquered Syria",
+   "He had prepared his heart to seek God"
+  ],
+  "answer": 3,
+  "explanation": "The prophet notes Jehoshaphat's sincere desire to seek God.",
+  "ref": "2 Chronicles 19:3"
+ },
+ {
+  "id": "old-2-chronicles-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What civil action did Jehoshaphat take throughout the fenced cities of Judah?",
+  "choices": [
+   "He built more ships",
+   "He set judges in the land",
+   "He dismissed the Levites",
+   "He moved the capital"
+  ],
+  "answer": 1,
+  "explanation": "Jehoshaphat appointed judges in the fenced cities.",
+  "ref": "2 Chronicles 19:5"
+ },
+ {
+  "id": "old-2-chronicles-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning did Jehoshaphat give the judges about their work?",
+  "choices": [
+   "Judge for man only",
+   "Accept gifts",
+   "There is no iniquity with the Lord, nor respect of persons",
+   "Favor Judah over all"
+  ],
+  "answer": 2,
+  "explanation": "He urged them to judge in the fear of the Lord.",
+  "ref": "2 Chronicles 19:7"
+ },
+ {
+  "id": "old-2-chronicles-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two leaders are highlighted over matters of the Lord and the king in Jerusalem?",
+  "choices": [
+   "Ahab and Zedekiah",
+   "Amariah the chief priest and Zebadiah the ruler of Judah",
+   "Nathan and Gad",
+   "Asa and Hanani"
+  ],
+  "answer": 1,
+  "explanation": "These leaders were appointed over religious and royal matters.",
+  "ref": "2 Chronicles 19:11"
+ },
+ {
+  "id": "old-2-chronicles-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which peoples came against Jehoshaphat in this chapter?",
+  "choices": [
+   "Philistines and Syrians",
+   "Egyptians only",
+   "Moab, Ammon, and others from Mount Seir",
+   "Assyrians and Babylonians"
+  ],
+  "answer": 2,
+  "explanation": "A great confederacy came against Judah.",
+  "ref": "2 Chronicles 20:1"
+ },
+ {
+  "id": "old-2-chronicles-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jehoshaphat proclaim when he heard of the invasion?",
+  "choices": [
+   "A feast of wine",
+   "A census",
+   "A retreat",
+   "A fast throughout all Judah"
+  ],
+  "answer": 3,
+  "explanation": "He set himself to seek the Lord and proclaimed a fast.",
+  "ref": "2 Chronicles 20:3"
+ },
+ {
+  "id": "old-2-chronicles-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What word from the Lord did Jahaziel give to Judah?",
+  "choices": [
+   "Build more walls",
+   "The battle is not yours, but God's",
+   "Go to Egypt",
+   "Hide in caves"
+  ],
+  "answer": 1,
+  "explanation": "God told them the battle belonged to him.",
+  "ref": "2 Chronicles 20:15"
+ },
+ {
+  "id": "old-2-chronicles-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jehoshaphat appoint singers to do before the army?",
+  "choices": [
+   "Warn the enemy",
+   "Blow the retreat",
+   "Carry the ark",
+   "Praise the beauty of holiness"
+  ],
+  "answer": 3,
+  "explanation": "Singers went before the army praising the Lord.",
+  "ref": "2 Chronicles 20:21"
+ },
+ {
+  "id": "old-2-chronicles-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the invading armies?",
+  "choices": [
+   "They destroyed one another",
+   "They captured Jerusalem",
+   "They made peace",
+   "They escaped to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "The Lord caused the enemies to turn on each other.",
+  "ref": "2 Chronicles 20:23"
+ },
+ {
+  "id": "old-2-chronicles-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What evil act did Jehoram commit after strengthening himself?",
+  "choices": [
+   "He burned the law",
+   "He destroyed the temple",
+   "He slew all his brethren with the sword",
+   "He fled Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Jehoram killed his brothers and some princes of Israel.",
+  "ref": "2 Chronicles 21:4"
+ },
+ {
+  "id": "old-2-chronicles-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the Lord not destroy the house of David despite Jehoram's wickedness?",
+  "choices": [
+   "Because Jehoram repented",
+   "For the covenant he had made with David",
+   "Because Judah was strong",
+   "Because Elijah interceded"
+  ],
+  "answer": 1,
+  "explanation": "God preserved David's line because of his covenant.",
+  "ref": "2 Chronicles 21:7"
+ },
+ {
+  "id": "old-2-chronicles-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which prophet sent Jehoram a letter of judgment?",
+  "choices": [
+   "Isaiah",
+   "Elijah",
+   "Nathan",
+   "Micaiah"
+  ],
+  "answer": 1,
+  "explanation": "Elijah's written rebuke announced severe judgment.",
+  "ref": "2 Chronicles 21:12"
+ },
+ {
+  "id": "old-2-chronicles-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What affliction did the Lord strike Jehoram with?",
+  "choices": [
+   "Blindness",
+   "A disease in his bowels",
+   "Leprosy",
+   "Lameness"
+  ],
+  "answer": 1,
+  "explanation": "Jehoram suffered an incurable disease in his intestines.",
+  "ref": "2 Chronicles 21:18"
+ },
+ {
+  "id": "old-2-chronicles-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the chapter describe Jehoram's death in the eyes of the people?",
+  "choices": [
+   "With great burning",
+   "Without being desired",
+   "With national joy",
+   "With priestly honor"
+  ],
+  "answer": 1,
+  "explanation": "He departed without being desired by the people.",
+  "ref": "2 Chronicles 21:20"
+ },
+ {
+  "id": "old-2-chronicles-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the people of Jerusalem make Ahaziah king instead of his older brothers?",
+  "choices": [
+   "The priests chose him",
+   "He was wisest",
+   "David had named him",
+   "The band of men that came with the Arabians had slain all the eldest"
+  ],
+  "answer": 3,
+  "explanation": "His older brothers had been killed in a raid.",
+  "ref": "2 Chronicles 22:1"
+ },
+ {
+  "id": "old-2-chronicles-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What influence pushed Ahaziah into wickedness?",
+  "choices": [
+   "His mother and the house of Ahab",
+   "The Levites",
+   "Samuel's writings",
+   "A famine"
+  ],
+  "answer": 0,
+  "explanation": "Athaliah and Ahab's house influenced him to do evil.",
+  "ref": "2 Chronicles 22:3–4"
+ },
+ {
+  "id": "old-2-chronicles-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With whom did Ahaziah go to war against Hazael king of Syria?",
+  "choices": [
+   "Jeroboam",
+   "Joram son of Ahab",
+   "Jehoshaphat",
+   "Jehu"
+  ],
+  "answer": 1,
+  "explanation": "He went with Joram to Ramoth-gilead.",
+  "ref": "2 Chronicles 22:5"
+ },
+ {
+  "id": "old-2-chronicles-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who killed Ahaziah during Jehu's rise?",
+  "choices": [
+   "Hazael",
+   "Athaliah",
+   "Elijah",
+   "Jehu"
+  ],
+  "answer": 3,
+  "explanation": "Ahaziah was found and killed during Jehu's judgment.",
+  "ref": "2 Chronicles 22:8–9"
+ },
+ {
+  "id": "old-2-chronicles-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Athaliah do after seeing her son was dead?",
+  "choices": [
+   "She destroyed all the seed royal of Judah",
+   "She fled to Egypt",
+   "She rebuilt the temple",
+   "She crowned Jehu"
+  ],
+  "answer": 0,
+  "explanation": "Athaliah seized power by trying to wipe out the royal line.",
+  "ref": "2 Chronicles 22:10"
+ },
+ {
+  "id": "old-2-chronicles-23-1",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who led the movement to place Joash on the throne?",
+  "choices": [
+   "Nathan",
+   "Jehoiada the priest",
+   "Jehu",
+   "Azariah the prophet"
+  ],
+  "answer": 1,
+  "explanation": "Jehoiada organized the covenant and the coronation.",
+  "ref": "2 Chronicles 23:1"
+ },
+ {
+  "id": "old-2-chronicles-23-2",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did all the congregation make a covenant with the king?",
+  "choices": [
+   "In Egypt",
+   "In Hebron",
+   "In the wilderness",
+   "In the house of God"
+  ],
+  "answer": 3,
+  "explanation": "All the congregation made a covenant with the king in the house of God.",
+  "ref": "2 Chronicles 23:3"
+ },
+ {
+  "id": "old-2-chronicles-23-3",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was said when Joash was anointed king?",
+  "choices": [
+   "God save the king",
+   "Peace, peace",
+   "The Lord is one",
+   "Glory to Judah"
+  ],
+  "answer": 0,
+  "explanation": "Jehoiada and his sons anointed him and said, 'God save the king.'",
+  "ref": "2 Chronicles 23:11"
+ },
+ {
+  "id": "old-2-chronicles-23-4",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Athaliah cry out when she saw the coronation?",
+  "choices": [
+   "Mercy",
+   "Treason, Treason",
+   "Absalom lives",
+   "Woe is me"
+  ],
+  "answer": 1,
+  "explanation": "She recognized the coup and cried 'Treason.'",
+  "ref": "2 Chronicles 23:13"
+ },
+ {
+  "id": "old-2-chronicles-23-5",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What covenant was renewed after Athaliah's death?",
+  "choices": [
+   "With Egypt",
+   "With Assyria",
+   "With Tyre",
+   "That they should be the Lord's people"
+  ],
+  "answer": 3,
+  "explanation": "Jehoiada renewed covenant loyalty to the Lord.",
+  "ref": "2 Chronicles 23:16"
+ },
+ {
+  "id": "old-2-chronicles-24-1",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Joash's reign described while Jehoiada was alive?",
+  "choices": [
+   "He did that which was right in the sight of the Lord",
+   "He did evil continually",
+   "He sought Baal",
+   "He refused the temple"
+  ],
+  "answer": 0,
+  "explanation": "Joash did right under Jehoiada's guidance.",
+  "ref": "2 Chronicles 24:2"
+ },
+ {
+  "id": "old-2-chronicles-24-2",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What restoration work did Joash desire to carry out?",
+  "choices": [
+   "Jerusalem's wall",
+   "The house of the Lord",
+   "The palace gates",
+   "The army"
+  ],
+  "answer": 1,
+  "explanation": "Joash set his heart on repairing the temple.",
+  "ref": "2 Chronicles 24:4"
+ },
+ {
+  "id": "old-2-chronicles-24-3",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was set up to collect money for repairing the house of the Lord?",
+  "choices": [
+   "A royal tax in Egypt",
+   "Tribute from Moab",
+   "A census levy",
+   "A chest at the gate of the house of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "At the king's commandment a chest was made and set at the gate of the house of the Lord.",
+  "ref": "2 Chronicles 24:8"
+ },
+ {
+  "id": "old-2-chronicles-24-4",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who rebuked the people after Jehoiada died, and was then stoned at the king's command?",
+  "choices": [
+   "Zechariah son of Jehoiada",
+   "Micaiah",
+   "Isaiah",
+   "Azariah"
+  ],
+  "answer": 0,
+  "explanation": "Zechariah spoke by the Spirit and was killed.",
+  "ref": "2 Chronicles 24:20–21"
+ },
+ {
+  "id": "old-2-chronicles-24-5",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Joash ultimately die?",
+  "choices": [
+   "His own servants slew him on his bed",
+   "In battle with Syria",
+   "By leprosy",
+   "By a fall from the temple"
+  ],
+  "answer": 0,
+  "explanation": "His servants conspired against him and killed him.",
+  "ref": "2 Chronicles 24:25"
+ },
+ {
+  "id": "old-2-chronicles-25-1",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the chapter describe the way Amaziah served the Lord?",
+  "choices": [
+   "He was wholly faithful",
+   "He did right, but not with a perfect heart",
+   "He did evil only",
+   "He was too young"
+  ],
+  "answer": 1,
+  "explanation": "Amaziah's obedience was incomplete.",
+  "ref": "2 Chronicles 25:2"
+ },
+ {
+  "id": "old-2-chronicles-25-2",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Amaziah not kill the children of his father's murderers?",
+  "choices": [
+   "The law of Moses forbade it",
+   "He forgot them",
+   "They escaped to Egypt",
+   "He pitied them"
+  ],
+  "answer": 0,
+  "explanation": "He obeyed the law that children should not die for fathers.",
+  "ref": "2 Chronicles 25:4"
+ },
+ {
+  "id": "old-2-chronicles-25-3",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did a man of God tell Amaziah not to rely on Israelite soldiers?",
+  "choices": [
+   "The Lord was not with Israel",
+   "They were too weak",
+   "Judah had no money",
+   "They were already wounded"
+  ],
+  "answer": 0,
+  "explanation": "The prophet warned that God was not with Ephraim.",
+  "ref": "2 Chronicles 25:7"
+ },
+ {
+  "id": "old-2-chronicles-25-4",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sinful turn did Amaziah take after defeating Edom?",
+  "choices": [
+   "He fled Jerusalem",
+   "He burned the temple",
+   "He allied with Assyria",
+   "He worshiped the gods of Seir"
+  ],
+  "answer": 3,
+  "explanation": "Amaziah brought back Edom's gods and worshiped them.",
+  "ref": "2 Chronicles 25:14"
+ },
+ {
+  "id": "old-2-chronicles-25-5",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when Amaziah challenged Joash king of Israel?",
+  "choices": [
+   "Judah won easily",
+   "Both kings died",
+   "Jeroboam intervened",
+   "Judah was put to the worse"
+  ],
+  "answer": 3,
+  "explanation": "Amaziah's pride led to defeat by Israel.",
+  "ref": "2 Chronicles 25:22"
+ },
+ {
+  "id": "old-2-chronicles-26-1",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Uzziah when he began to reign?",
+  "choices": [
+   "8",
+   "16",
+   "25",
+   "40"
+  ],
+  "answer": 1,
+  "explanation": "Uzziah was sixteen years old when he became king.",
+  "ref": "2 Chronicles 26:3"
+ },
+ {
+  "id": "old-2-chronicles-26-2",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Uzziah do that led God to make him prosper?",
+  "choices": [
+   "He made allies in Egypt",
+   "He sought God in the days of Zechariah",
+   "He built a large cavalry",
+   "He claimed priestly ancestry"
+  ],
+  "answer": 1,
+  "explanation": "As long as he sought the Lord, God made him prosper.",
+  "ref": "2 Chronicles 26:5"
+ },
+ {
+  "id": "old-2-chronicles-26-3",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Uzziah strengthen Judah?",
+  "choices": [
+   "He ignored all building",
+   "He relied only on Syria",
+   "He disbanded the army",
+   "He built towers and prepared engines of war"
+  ],
+  "answer": 3,
+  "explanation": "Uzziah strengthened Judah with fortifications and weapons.",
+  "ref": "2 Chronicles 26:9–15"
+ },
+ {
+  "id": "old-2-chronicles-26-4",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What proud act brought judgment on Uzziah?",
+  "choices": [
+   "He crowned himself priest",
+   "He moved the ark",
+   "He went into the temple to burn incense",
+   "He worshiped Baal"
+  ],
+  "answer": 2,
+  "explanation": "Uzziah unlawfully entered priestly service.",
+  "ref": "2 Chronicles 26:16"
+ },
+ {
+  "id": "old-2-chronicles-26-5",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Uzziah when the priests opposed him?",
+  "choices": [
+   "Leprosy rose in his forehead",
+   "He fell dead",
+   "He repented and was healed",
+   "He fled to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "God struck him with leprosy for his pride.",
+  "ref": "2 Chronicles 26:19"
+ },
+ {
+  "id": "old-2-chronicles-27-1",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Jotham when he began to reign?",
+  "choices": [
+   "12",
+   "25",
+   "30",
+   "40"
+  ],
+  "answer": 1,
+  "explanation": "Jotham was twenty-five years old when he began to reign.",
+  "ref": "2 Chronicles 27:1"
+ },
+ {
+  "id": "old-2-chronicles-27-2",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What restraint is specifically noted about Jotham compared with his father Uzziah?",
+  "choices": [
+   "He avoided all worship",
+   "He refused battle",
+   "He did not enter into the temple of the Lord",
+   "He left Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Unlike Uzziah, Jotham did not intrude into the temple.",
+  "ref": "2 Chronicles 27:2"
+ },
+ {
+  "id": "old-2-chronicles-27-3",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of projects did Jotham undertake?",
+  "choices": [
+   "Only foreign trade",
+   "Temple destruction",
+   "Building and fortifying in Judah",
+   "Naval expansion"
+  ],
+  "answer": 2,
+  "explanation": "He built gates, walls, castles, and towers.",
+  "ref": "2 Chronicles 27:3–4"
+ },
+ {
+  "id": "old-2-chronicles-27-4",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which neighboring people paid tribute to Jotham?",
+  "choices": [
+   "Philistines",
+   "Edomites",
+   "Egyptians",
+   "Ammonites"
+  ],
+  "answer": 3,
+  "explanation": "The Ammonites paid silver and produce.",
+  "ref": "2 Chronicles 27:5"
+ },
+ {
+  "id": "old-2-chronicles-27-5",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jotham become mighty according to the chapter?",
+  "choices": [
+   "He trusted chariots",
+   "He prepared his ways before the Lord his God",
+   "He relied on Assyria",
+   "He copied Israel"
+  ],
+  "answer": 1,
+  "explanation": "His strength is tied to ordered, faithful walking before God.",
+  "ref": "2 Chronicles 27:6"
+ },
+ {
+  "id": "old-2-chronicles-28-1",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What evil pattern did Ahaz follow?",
+  "choices": [
+   "The ways of David",
+   "The ways of Jehoshaphat",
+   "The ways of Moses",
+   "The ways of the kings of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Ahaz copied the sinful pattern of Israel's kings.",
+  "ref": "2 Chronicles 28:2"
+ },
+ {
+  "id": "old-2-chronicles-28-2",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What terrible act did Ahaz commit with his children?",
+  "choices": [
+   "He sent them to Egypt",
+   "He made them priests",
+   "He hid them in Jerusalem",
+   "He burned them in the fire"
+  ],
+  "answer": 3,
+  "explanation": "Ahaz committed child sacrifice in imitation of the nations.",
+  "ref": "2 Chronicles 28:3"
+ },
+ {
+  "id": "old-2-chronicles-28-3",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which prophet rebuked Israel for carrying captive the people of Judah?",
+  "choices": [
+   "Isaiah",
+   "Micaiah",
+   "Oded",
+   "Hanani"
+  ],
+  "answer": 2,
+  "explanation": "Oded spoke against the northern army's cruelty.",
+  "ref": "2 Chronicles 28:9"
+ },
+ {
+  "id": "old-2-chronicles-28-4",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did some leaders of Ephraim respond after Oded's rebuke?",
+  "choices": [
+   "They ignored him",
+   "They killed the captives",
+   "They sold them",
+   "They clothed and cared for the captives, then returned them"
+  ],
+  "answer": 3,
+  "explanation": "They treated the captives mercifully and sent them back to Jericho.",
+  "ref": "2 Chronicles 28:15"
+ },
+ {
+  "id": "old-2-chronicles-28-5",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Did Assyria ultimately help Ahaz when he sought its support?",
+  "choices": [
+   "Yes, completely",
+   "Only for a little while",
+   "Only against Edom",
+   "No, Tiglath-pileser distressed him and strengthened him not"
+  ],
+  "answer": 3,
+  "explanation": "Ahaz's appeal to Assyria brought trouble, not true help.",
+  "ref": "2 Chronicles 28:20"
+ },
+ {
+  "id": "old-2-chronicles-29-1",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Hezekiah's reign introduced spiritually?",
+  "choices": [
+   "He did evil",
+   "He followed Ahaz exactly",
+   "He did that which was right in the sight of the Lord",
+   "He ignored the temple"
+  ],
+  "answer": 2,
+  "explanation": "Hezekiah is commended at the start of his reign.",
+  "ref": "2 Chronicles 29:2"
+ },
+ {
+  "id": "old-2-chronicles-29-2",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah first command concerning the house of the Lord?",
+  "choices": [
+   "Close it forever",
+   "Move it to Hebron",
+   "Sanctify and cleanse it",
+   "Sell its vessels"
+  ],
+  "answer": 2,
+  "explanation": "He prioritized cleansing the neglected temple.",
+  "ref": "2 Chronicles 29:5"
+ },
+ {
+  "id": "old-2-chronicles-29-3",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What reason did Hezekiah give for Judah's troubles?",
+  "choices": [
+   "The Lord had forgotten them",
+   "Their fathers had trespassed and forsaken the Lord",
+   "Israel was too strong",
+   "The priests were too many"
+  ],
+  "answer": 1,
+  "explanation": "He traces Judah's trouble to covenant unfaithfulness.",
+  "ref": "2 Chronicles 29:6"
+ },
+ {
+  "id": "old-2-chronicles-29-4",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did the cleansing and sanctifying of the temple take?",
+  "choices": [
+   "3 days",
+   "8 days",
+   "16 days",
+   "40 days"
+  ],
+  "answer": 2,
+  "explanation": "The work of cleansing and sanctifying took sixteen days total.",
+  "ref": "2 Chronicles 29:17"
+ },
+ {
+  "id": "old-2-chronicles-29-5",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when the burnt offering began at the restored service?",
+  "choices": [
+   "The people fled",
+   "The altar broke",
+   "The priests stopped",
+   "The song of the Lord began also with the trumpets"
+  ],
+  "answer": 3,
+  "explanation": "Sacrifice and praise resumed together.",
+  "ref": "2 Chronicles 29:27"
+ },
+ {
+  "id": "old-2-chronicles-30-1",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did Hezekiah send letters inviting them to keep Passover?",
+  "choices": [
+   "Only Judah",
+   "All Israel and Judah",
+   "Only Levites",
+   "Only Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "He invited both southern and northern remnants.",
+  "ref": "2 Chronicles 30:1"
+ },
+ {
+  "id": "old-2-chronicles-30-2",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was the Passover kept in the second month instead of the first?",
+  "choices": [
+   "The king was absent",
+   "It rained too much",
+   "The priests had not sanctified themselves sufficiently and the people were not gathered",
+   "Egypt invaded"
+  ],
+  "answer": 2,
+  "explanation": "Practical and ceremonial reasons delayed it to the second month.",
+  "ref": "2 Chronicles 30:2–3"
+ },
+ {
+  "id": "old-2-chronicles-30-3",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people of Ephraim, Manasseh and Zebulun react to the king's messengers?",
+  "choices": [
+   "They all obeyed",
+   "They imprisoned them",
+   "They killed them",
+   "They laughed them to scorn and mocked them"
+  ],
+  "answer": 3,
+  "explanation": "They mocked the messengers, though some humbled themselves and came to Jerusalem.",
+  "ref": "2 Chronicles 30:10"
+ },
+ {
+  "id": "old-2-chronicles-30-4",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah do for the people who ate the passover without being cleansed?",
+  "choices": [
+   "Prayed that the good Lord would pardon every one",
+   "Sent them home",
+   "Excluded them forever",
+   "Destroyed the feast"
+  ],
+  "answer": 0,
+  "explanation": "Hezekiah interceded for the sincere though ceremonially unprepared worshipers.",
+  "ref": "2 Chronicles 30:18–19"
+ },
+ {
+  "id": "old-2-chronicles-30-5",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the chapter describe the joy in Jerusalem at this Passover?",
+  "choices": [
+   "Small and hidden",
+   "There was great joy such as had not been since the days of Solomon",
+   "Only the priests rejoiced",
+   "It ended in mourning"
+  ],
+  "answer": 1,
+  "explanation": "The feast was marked by remarkable joy and unity.",
+  "ref": "2 Chronicles 30:26"
+ },
+ {
+  "id": "old-2-chronicles-31-1",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people do after the great feast ended?",
+  "choices": [
+   "Returned to idolatry",
+   "Built new altars to Baal",
+   "Fled from Jerusalem",
+   "Went out and destroyed images and high places"
+  ],
+  "answer": 3,
+  "explanation": "The people extended reform throughout the land.",
+  "ref": "2 Chronicles 31:1"
+ },
+ {
+  "id": "old-2-chronicles-31-2",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah appoint for the priests and Levites?",
+  "choices": [
+   "Courses according to their service",
+   "Military divisions",
+   "Foreign embassies",
+   "New crowns"
+  ],
+  "answer": 0,
+  "explanation": "He arranged the ministers in ordered courses for worship.",
+  "ref": "2 Chronicles 31:2"
+ },
+ {
+  "id": "old-2-chronicles-31-3",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people bring in abundance once the commandment spread?",
+  "choices": [
+   "Weapons only",
+   "Foreign gods",
+   "New shields",
+   "Firstfruits, tithes, and dedicated things"
+  ],
+  "answer": 3,
+  "explanation": "They responded generously with support for worship.",
+  "ref": "2 Chronicles 31:5–6"
+ },
+ {
+  "id": "old-2-chronicles-31-4",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the priest Azariah explain the great heaps of provision?",
+  "choices": [
+   "They were stolen",
+   "Egypt sent them",
+   "They were too small",
+   "Since the people began to bring offerings, the Lord hath blessed his people"
+  ],
+  "answer": 3,
+  "explanation": "Azariah says the abundance came from God's blessing.",
+  "ref": "2 Chronicles 31:10"
+ },
+ {
+  "id": "old-2-chronicles-31-5",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the chapter summarize Hezekiah's work?",
+  "choices": [
+   "He sought his own wealth",
+   "He feared Assyria only",
+   "He neglected the Levites",
+   "He wrought that which was good and right and truth before the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Hezekiah is praised for faithful reform and administration.",
+  "ref": "2 Chronicles 31:20"
+ },
+ {
+  "id": "old-2-chronicles-32-1",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which Assyrian king came against Judah's fenced cities?",
+  "choices": [
+   "Shalmaneser",
+   "Pul",
+   "Sennacherib",
+   "Esarhaddon"
+  ],
+  "answer": 2,
+  "explanation": "Sennacherib invaded Judah after Hezekiah's reforms.",
+  "ref": "2 Chronicles 32:1"
+ },
+ {
+  "id": "old-2-chronicles-32-2",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Hezekiah prepare Jerusalem militarily?",
+  "choices": [
+   "By stopping the waters and strengthening the walls",
+   "By surrendering",
+   "By fleeing to Egypt",
+   "By tearing down the city"
+  ],
+  "answer": 0,
+  "explanation": "He took defensive steps and stopped the water sources.",
+  "ref": "2 Chronicles 32:3–5"
+ },
+ {
+  "id": "old-2-chronicles-32-3",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What encouragement did Hezekiah give the people?",
+  "choices": [
+   "With us is the Lord our God to help us and fight our battles",
+   "Assyria is stronger",
+   "Run away quickly",
+   "Trust Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Hezekiah urged them to trust the Lord rather than fear Assyria.",
+  "ref": "2 Chronicles 32:7–8"
+ },
+ {
+  "id": "old-2-chronicles-32-4",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which prophet joined Hezekiah in crying to heaven about Sennacherib's threats?",
+  "choices": [
+   "Jeremiah",
+   "Isaiah",
+   "Micaiah",
+   "Oded"
+  ],
+  "answer": 1,
+  "explanation": "Isaiah and Hezekiah prayed together.",
+  "ref": "2 Chronicles 32:20"
+ },
+ {
+  "id": "old-2-chronicles-32-5",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did God save Jerusalem from Assyria?",
+  "choices": [
+   "By Egypt's army",
+   "By paying tribute only",
+   "By sending an angel who cut off the mighty men",
+   "By an earthquake"
+  ],
+  "answer": 2,
+  "explanation": "The Lord sent an angel who destroyed the Assyrian forces.",
+  "ref": "2 Chronicles 32:21"
+ },
+ {
+  "id": "old-2-chronicles-33-1",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Manasseh rebuild that Hezekiah had broken down?",
+  "choices": [
+   "The high places",
+   "Jerusalem's wall",
+   "The altar of incense",
+   "David's palace"
+  ],
+  "answer": 0,
+  "explanation": "Manasseh restored idolatrous worship sites.",
+  "ref": "2 Chronicles 33:3"
+ },
+ {
+  "id": "old-2-chronicles-33-2",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shocking practice did Manasseh engage in regarding his children?",
+  "choices": [
+   "He caused his children to pass through the fire",
+   "He made them priests",
+   "He hid them in Egypt",
+   "He crowned them all"
+  ],
+  "answer": 0,
+  "explanation": "Manasseh committed abominations including child sacrifice.",
+  "ref": "2 Chronicles 33:6"
+ },
+ {
+  "id": "old-2-chronicles-33-3",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened after the Lord brought the captains of Assyria against Manasseh?",
+  "choices": [
+   "He escaped to Egypt",
+   "He was bound with fetters and carried to Babylon",
+   "He died immediately",
+   "He conquered Assyria"
+  ],
+  "answer": 1,
+  "explanation": "Manasseh was bound with fetters and carried to Babylon.",
+  "ref": "2 Chronicles 33:11"
+ },
+ {
+  "id": "old-2-chronicles-33-4",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Manasseh respond in his affliction?",
+  "choices": [
+   "He cursed God",
+   "He worshiped idols more",
+   "He ignored the Lord",
+   "He humbled himself greatly and prayed"
+  ],
+  "answer": 3,
+  "explanation": "His affliction led to real humility and prayer.",
+  "ref": "2 Chronicles 33:12"
+ },
+ {
+  "id": "old-2-chronicles-33-5",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What contrast is made with Amon, who followed Manasseh?",
+  "choices": [
+   "Amon humbled himself more",
+   "Amon rebuilt the temple",
+   "Amon humbled not himself and trespassed more and more",
+   "Amon restored Passover"
+  ],
+  "answer": 2,
+  "explanation": "Amon did not learn from his father's repentance.",
+  "ref": "2 Chronicles 33:23"
+ },
+ {
+  "id": "old-2-chronicles-34-1",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Josiah when he began to reign?",
+  "choices": [
+   "7",
+   "8",
+   "12",
+   "20"
+  ],
+  "answer": 1,
+  "explanation": "Josiah was eight years old when he became king.",
+  "ref": "2 Chronicles 34:1"
+ },
+ {
+  "id": "old-2-chronicles-34-2",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Josiah begin to do in the eighth year of his reign while yet young?",
+  "choices": [
+   "Seek the God of David his father",
+   "Build ships",
+   "Fight Egypt",
+   "Marry Athaliah"
+  ],
+  "answer": 0,
+  "explanation": "Josiah began seeking the Lord early in life.",
+  "ref": "2 Chronicles 34:3"
+ },
+ {
+  "id": "old-2-chronicles-34-3",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What book was found in the house of the Lord during repairs?",
+  "choices": [
+   "The book of the law of the Lord by Moses",
+   "The book of Joshua",
+   "The chronicles of the kings",
+   "The book of Samuel"
+  ],
+  "answer": 0,
+  "explanation": "Hilkiah found the law in the temple.",
+  "ref": "2 Chronicles 34:14"
+ },
+ {
+  "id": "old-2-chronicles-34-4",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Josiah react when he heard the words of the law?",
+  "choices": [
+   "He rent his clothes",
+   "He laughed",
+   "He ignored them",
+   "He crowned the priest"
+  ],
+  "answer": 0,
+  "explanation": "He tore his clothes in grief and fear.",
+  "ref": "2 Chronicles 34:19"
+ },
+ {
+  "id": "old-2-chronicles-34-5",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What message did Huldah give specifically to Josiah because his heart was tender?",
+  "choices": [
+   "He would be gathered to his grave in peace",
+   "No judgment would ever come",
+   "He would conquer Assyria",
+   "He would build another temple"
+  ],
+  "answer": 0,
+  "explanation": "Judgment would come on Judah, but not in Josiah's lifetime.",
+  "ref": "2 Chronicles 34:27–28"
+ },
+ {
+  "id": "old-2-chronicles-35-1",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What major feast did Josiah keep unto the Lord in Jerusalem?",
+  "choices": [
+   "Tabernacles",
+   "Weeks",
+   "Trumpets",
+   "Passover"
+  ],
+  "answer": 3,
+  "explanation": "Josiah kept a remarkable Passover.",
+  "ref": "2 Chronicles 35:1"
+ },
+ {
+  "id": "old-2-chronicles-35-2",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the chapter describe this Passover in comparison with earlier times?",
+  "choices": [
+   "It was small",
+   "There was no passover like that kept in Israel from Samuel's days",
+   "It copied Egypt",
+   "It was only for priests"
+  ],
+  "answer": 1,
+  "explanation": "It was unparalleled since the days of Samuel.",
+  "ref": "2 Chronicles 35:18"
+ },
+ {
+  "id": "old-2-chronicles-35-3",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which Egyptian ruler did Josiah go out against at Megiddo?",
+  "choices": [
+   "Pharaoh-necho",
+   "Shishak",
+   "Hophra",
+   "Ramses"
+  ],
+  "answer": 0,
+  "explanation": "Josiah confronted Pharaoh-necho at Megiddo.",
+  "ref": "2 Chronicles 35:20"
+ },
+ {
+  "id": "old-2-chronicles-35-4",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning did Pharaoh-necho send to Josiah?",
+  "choices": [
+   "That he came only against another house and God had commanded him to make haste",
+   "That Egypt would worship in Jerusalem",
+   "That he wanted peace offerings",
+   "That Assyria had fallen"
+  ],
+  "answer": 0,
+  "explanation": "Necho warned Josiah not to oppose what God had permitted.",
+  "ref": "2 Chronicles 35:21"
+ },
+ {
+  "id": "old-2-chronicles-35-5",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Josiah in the battle?",
+  "choices": [
+   "He returned unharmed",
+   "He captured Necho",
+   "Archers shot him and he died",
+   "He fled to Babylon"
+  ],
+  "answer": 2,
+  "explanation": "Josiah was wounded by archers and died.",
+  "ref": "2 Chronicles 35:23–24"
+ },
+ {
+  "id": "old-2-chronicles-36-1",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was made king by the people after Josiah's death?",
+  "choices": [
+   "Jehoahaz",
+   "Jehoiakim",
+   "Jehoiachin",
+   "Zedekiah"
+  ],
+  "answer": 0,
+  "explanation": "Jehoahaz was first made king after Josiah.",
+  "ref": "2 Chronicles 36:1"
+ },
+ {
+  "id": "old-2-chronicles-36-2",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What pattern marked the remaining kings of Judah in this chapter?",
+  "choices": [
+   "They all sought the Lord",
+   "They rebuilt the high places of the Lord",
+   "They did evil in the sight of the Lord",
+   "They never faced Babylon"
+  ],
+  "answer": 2,
+  "explanation": "The final kings are repeatedly described as doing evil.",
+  "ref": "2 Chronicles 36:5–12"
+ },
+ {
+  "id": "old-2-chronicles-36-3",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did God send messengers to his people again and again before the fall?",
+  "choices": [
+   "He wanted tribute",
+   "He had compassion on his people and on his dwelling place",
+   "He feared Babylon",
+   "He lacked prophets"
+  ],
+  "answer": 1,
+  "explanation": "The Lord persistently warned them out of compassion.",
+  "ref": "2 Chronicles 36:15"
+ },
+ {
+  "id": "old-2-chronicles-36-4",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the house of God under Nebuchadnezzar's invasion?",
+  "choices": [
+   "It was burned, and Jerusalem's walls were broken down",
+   "It was enlarged",
+   "It was moved to Egypt",
+   "It became an Assyrian palace"
+  ],
+  "answer": 0,
+  "explanation": "Jerusalem and the temple were destroyed by Babylon.",
+  "ref": "2 Chronicles 36:19"
+ },
+ {
+  "id": "old-2-chronicles-36-5",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which Persian king issued the decree that the Lord had charged him to build a house in Jerusalem?",
+  "choices": [
+   "Cyrus",
+   "Darius",
+   "Artaxerxes",
+   "Xerxes"
+  ],
+  "answer": 0,
+  "explanation": "The book ends with Cyrus's decree of return and rebuilding.",
+  "ref": "2 Chronicles 36:22–23"
+ }
+]

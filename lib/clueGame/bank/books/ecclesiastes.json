@@ -1,0 +1,962 @@
+[
+ {
+  "id": "old-ecclesiastes-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Ecclesiastes identify its speaker?",
+  "choices": [
+   "A priest in Jerusalem",
+   "The Preacher, the son of David, king in Jerusalem",
+   "A prophet in exile",
+   "A judge in Israel"
+  ],
+  "answer": 1,
+  "explanation": "The book opens by naming the speaker as the Preacher, son of David and king in Jerusalem.",
+  "ref": "Ecclesiastes 1:1"
+ },
+ {
+  "id": "old-ecclesiastes-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Preacher declare at the start of the book?",
+  "choices": [
+   "The Lord reigneth",
+   "Vanity of vanities; all is vanity",
+   "Wisdom is better than silver",
+   "Fear God and keep his commandments"
+  ],
+  "answer": 1,
+  "explanation": "The theme of vanity is introduced immediately.",
+  "ref": "Ecclesiastes 1:2"
+ },
+ {
+  "id": "old-ecclesiastes-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question is asked about a man's labor?",
+  "choices": [
+   "What profit hath a man of all his labour which he taketh under the sun?",
+   "Who can number his days?",
+   "What king can understand wisdom?",
+   "Why is the earth so old?"
+  ],
+  "answer": 0,
+  "explanation": "The chapter asks what lasting gain human labor provides under the sun.",
+  "ref": "Ecclesiastes 1:3"
+ },
+ {
+  "id": "old-ecclesiastes-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the chapter say about the earth in contrast to generations?",
+  "choices": [
+   "It melts away",
+   "It abideth for ever",
+   "It waits for judgment only",
+   "It is renewed each year"
+  ],
+  "answer": 1,
+  "explanation": "Generations come and go, but the earth remains.",
+  "ref": "Ecclesiastes 1:4"
+ },
+ {
+  "id": "old-ecclesiastes-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does increased wisdom bring?",
+  "choices": [
+   "Long life only",
+   "Certain riches",
+   "Much grief",
+   "Military strength"
+  ],
+  "answer": 2,
+  "explanation": "The Preacher says increased wisdom also increases sorrow.",
+  "ref": "Ecclesiastes 1:18"
+ },
+ {
+  "id": "old-ecclesiastes-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Preacher first say he would test?",
+  "choices": [
+   "War",
+   "Prophecy",
+   "Mirth",
+   "Silence"
+  ],
+  "answer": 2,
+  "explanation": "He turned to pleasure and mirth to see if they could satisfy.",
+  "ref": "Ecclesiastes 2:1"
+ },
+ {
+  "id": "old-ecclesiastes-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Preacher say of laughter?",
+  "choices": [
+   "It is holy",
+   "It is wisdom",
+   "It is mad",
+   "It is eternal"
+  ],
+  "answer": 2,
+  "explanation": "The Preacher judged laughter alone to be insufficient and empty.",
+  "ref": "Ecclesiastes 2:2"
+ },
+ {
+  "id": "old-ecclesiastes-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Preacher build for himself as part of his great works?",
+  "choices": [
+   "Walls of Babylon",
+   "Houses and vineyards",
+   "Only a temple",
+   "Military towers"
+  ],
+  "answer": 1,
+  "explanation": "He lists houses, vineyards, gardens, orchards, and more.",
+  "ref": "Ecclesiastes 2:4"
+ },
+ {
+  "id": "old-ecclesiastes-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the Preacher describe all his works and labor?",
+  "choices": [
+   "Profitable forever",
+   "Vanity and vexation of spirit",
+   "A blessing without limit",
+   "Greater than all kings"
+  ],
+  "answer": 1,
+  "explanation": "Despite his achievements, he found no lasting profit under the sun.",
+  "ref": "Ecclesiastes 2:11"
+ },
+ {
+  "id": "old-ecclesiastes-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Preacher see was from the hand of God?",
+  "choices": [
+   "To conquer all enemies",
+   "To build lasting monuments",
+   "To avoid all sorrow",
+   "To eat and drink, and enjoy good in labor"
+  ],
+  "answer": 3,
+  "explanation": "Enjoying the fruit of labor is presented as coming from God's hand.",
+  "ref": "Ecclesiastes 2:24"
+ },
+ {
+  "id": "old-ecclesiastes-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is there to every thing?",
+  "choices": [
+   "A price",
+   "A mystery",
+   "A warning",
+   "A season"
+  ],
+  "answer": 3,
+  "explanation": "The chapter begins by saying every purpose has its proper season and time.",
+  "ref": "Ecclesiastes 3:1"
+ },
+ {
+  "id": "old-ecclesiastes-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What pair opens the famous list of times?",
+  "choices": [
+   "A time to reap and a time to rest",
+   "A time to laugh and a time to weep",
+   "A time to sing and a time to pray",
+   "A time to be born, and a time to die"
+  ],
+  "answer": 3,
+  "explanation": "The sequence begins with birth and death.",
+  "ref": "Ecclesiastes 3:2"
+ },
+ {
+  "id": "old-ecclesiastes-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does verse 11 say God hath made beautiful?",
+  "choices": [
+   "The city of Jerusalem",
+   "The strength of kings",
+   "The house of cedar",
+   "Every thing in his time"
+  ],
+  "answer": 3,
+  "explanation": "God's timing and ordering are described as beautiful.",
+  "ref": "Ecclesiastes 3:11"
+ },
+ {
+  "id": "old-ecclesiastes-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has God set in man's heart?",
+  "choices": [
+   "Pride",
+   "Fear only",
+   "All sorrow",
+   "The world"
+  ],
+  "answer": 3,
+  "explanation": "The verse says God has set the world in their heart, yet man cannot fully find out His work.",
+  "ref": "Ecclesiastes 3:11"
+ },
+ {
+  "id": "old-ecclesiastes-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Preacher say it is good for a man to do in his life?",
+  "choices": [
+   "Hide from labor",
+   "Seek war and conquest",
+   "Mourn always",
+   "Rejoice, and do good in their life"
+  ],
+  "answer": 3,
+  "explanation": "He says there is no good in them, but for a man to rejoice, and to do good in his life.",
+  "ref": "Ecclesiastes 3:12"
+ },
+ {
+  "id": "old-ecclesiastes-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sorrowful reality is observed at the start of the chapter?",
+  "choices": [
+   "The fall of kings",
+   "Oppressions that are done under the sun",
+   "The loss of harvest",
+   "The silence of prophets"
+  ],
+  "answer": 1,
+  "explanation": "The chapter begins with grief over oppression and lack of comforters.",
+  "ref": "Ecclesiastes 4:1"
+ },
+ {
+  "id": "old-ecclesiastes-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the Preacher praise more than the living?",
+  "choices": [
+   "The dead",
+   "The rich",
+   "The kings",
+   "The strong"
+  ],
+  "answer": 0,
+  "explanation": "After seeing the tears of the oppressed, he praised the dead more than the living.",
+  "ref": "Ecclesiastes 4:2"
+ },
+ {
+  "id": "old-ecclesiastes-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Preacher say a man's labour and right work bring him from his neighbour?",
+  "choices": [
+   "Envy",
+   "Mercy",
+   "Thanks",
+   "Help"
+  ],
+  "answer": 0,
+  "explanation": "He saw that for all travail and every right work a man is envied of his neighbour, and called this vanity.",
+  "ref": "Ecclesiastes 4:4"
+ },
+ {
+  "id": "old-ecclesiastes-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why are two better than one?",
+  "choices": [
+   "Because they speak more",
+   "Because they have a good reward for their labour",
+   "Because they are always kings",
+   "Because they never suffer"
+  ],
+  "answer": 1,
+  "explanation": "Shared labor and support make companionship valuable.",
+  "ref": "Ecclesiastes 4:9"
+ },
+ {
+  "id": "old-ecclesiastes-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is not quickly broken?",
+  "choices": [
+   "A threefold cord",
+   "A wooden staff",
+   "A city wall",
+   "A silver chain"
+  ],
+  "answer": 0,
+  "explanation": "The chapter says a threefold cord is not quickly broken, a picture of strength in companionship.",
+  "ref": "Ecclesiastes 4:12"
+ },
+ {
+  "id": "old-ecclesiastes-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should one do when going to the house of God?",
+  "choices": [
+   "Go in haste",
+   "Keep thy foot",
+   "Bring many gifts",
+   "Speak first"
+  ],
+  "answer": 1,
+  "explanation": "The chapter begins with a warning about reverent approach to worship.",
+  "ref": "Ecclesiastes 5:1"
+ },
+ {
+  "id": "old-ecclesiastes-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why should one not be rash with his mouth before God?",
+  "choices": [
+   "Because priests are watching",
+   "Because kings may hear",
+   "Because vows are forbidden",
+   "Because God is in heaven, and thou upon earth"
+  ],
+  "answer": 3,
+  "explanation": "The distance between God and man calls for humble, careful speech.",
+  "ref": "Ecclesiastes 5:2"
+ },
+ {
+  "id": "old-ecclesiastes-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What comes through a multitude of business?",
+  "choices": [
+   "Honor",
+   "A harvest",
+   "Wisdom",
+   "A dream"
+  ],
+  "answer": 3,
+  "explanation": "The verse compares busy activity to dream-filled restlessness.",
+  "ref": "Ecclesiastes 5:3"
+ },
+ {
+  "id": "old-ecclesiastes-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should be done if one vows unto God?",
+  "choices": [
+   "Forget it later",
+   "Ask a priest to cancel it",
+   "Pay that which thou hast vowed",
+   "Tell no one"
+  ],
+  "answer": 2,
+  "explanation": "The chapter stresses keeping vows seriously before God.",
+  "ref": "Ecclesiastes 5:4"
+ },
+ {
+  "id": "old-ecclesiastes-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the one who loves silver not be satisfied with?",
+  "choices": [
+   "Honor",
+   "Children",
+   "Wisdom",
+   "Silver"
+  ],
+  "answer": 3,
+  "explanation": "Love of money is described as never truly satisfying.",
+  "ref": "Ecclesiastes 5:10"
+ },
+ {
+  "id": "old-ecclesiastes-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the Preacher describe the evil he has seen under the sun?",
+  "choices": [
+   "It is hidden from men",
+   "It is quickly passing",
+   "It is common among men",
+   "It is a small thing"
+  ],
+  "answer": 2,
+  "explanation": "He says there is an evil he has seen under the sun, and it is common among men.",
+  "ref": "Ecclesiastes 6:1"
+ },
+ {
+  "id": "old-ecclesiastes-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What tragedy is described regarding a wealthy man?",
+  "choices": [
+   "He loses his house in war",
+   "God giveth him not power to eat thereof",
+   "He forgets his children",
+   "He cannot speak wisely"
+  ],
+  "answer": 1,
+  "explanation": "The man has riches and honor but lacks the ability to enjoy them.",
+  "ref": "Ecclesiastes 6:2"
+ },
+ {
+  "id": "old-ecclesiastes-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Preacher say is better than a man with many children and long life but no satisfaction?",
+  "choices": [
+   "A stillborn child",
+   "A poor wise son",
+   "A strong servant",
+   "A faithful friend"
+  ],
+  "answer": 0,
+  "explanation": "The chapter uses startling language to describe emptiness without enjoyment.",
+  "ref": "Ecclesiastes 6:3"
+ },
+ {
+  "id": "old-ecclesiastes-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is all the labor of man for?",
+  "choices": [
+   "His king",
+   "His children",
+   "His flocks",
+   "His mouth"
+  ],
+  "answer": 3,
+  "explanation": "Human labor feeds appetite, yet desire is still not fully satisfied.",
+  "ref": "Ecclesiastes 6:7"
+ },
+ {
+  "id": "old-ecclesiastes-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question is raised at the end of the chapter?",
+  "choices": [
+   "Who can number the stars?",
+   "Who can make the crooked straight?",
+   "Who knoweth what is good for man in this life?",
+   "Who can satisfy the dead?"
+  ],
+  "answer": 2,
+  "explanation": "The chapter ends by highlighting man's limited knowledge.",
+  "ref": "Ecclesiastes 6:12"
+ },
+ {
+  "id": "old-ecclesiastes-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said to be better than precious ointment?",
+  "choices": [
+   "A large inheritance",
+   "A pleasant feast",
+   "A golden crown",
+   "A good name"
+  ],
+  "answer": 3,
+  "explanation": "The chapter values character and reputation above luxury.",
+  "ref": "Ecclesiastes 7:1"
+ },
+ {
+  "id": "old-ecclesiastes-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is better than going to the house of feasting?",
+  "choices": [
+   "Going to war",
+   "Traveling in spring",
+   "Going to the house of mourning",
+   "Sleeping in peace"
+  ],
+  "answer": 2,
+  "explanation": "Mourning teaches sobering wisdom about life's end.",
+  "ref": "Ecclesiastes 7:2"
+ },
+ {
+  "id": "old-ecclesiastes-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said to be better than laughter?",
+  "choices": [
+   "Silence",
+   "Riches",
+   "Sorrow",
+   "Youth"
+  ],
+  "answer": 2,
+  "explanation": "The chapter says sorrow can improve the heart through reflection.",
+  "ref": "Ecclesiastes 7:3"
+ },
+ {
+  "id": "old-ecclesiastes-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should not be said?",
+  "choices": [
+   "Where is wisdom found?",
+   "What profit hath a man?",
+   "Why were the former days better than these?",
+   "Who knoweth the future?"
+  ],
+  "answer": 2,
+  "explanation": "The Preacher says that question does not arise from wisdom.",
+  "ref": "Ecclesiastes 7:10"
+ },
+ {
+  "id": "old-ecclesiastes-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does verse 20 say about righteous people on earth?",
+  "choices": [
+   "They always prosper",
+   "They never know sorrow",
+   "There is not a just man upon earth, that doeth good, and sinneth not",
+   "They are hidden from trouble"
+  ],
+  "answer": 2,
+  "explanation": "The verse emphasizes universal human imperfection.",
+  "ref": "Ecclesiastes 7:20"
+ },
+ {
+  "id": "old-ecclesiastes-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does wisdom do to a man's face?",
+  "choices": [
+   "Darken it",
+   "Hide it",
+   "Maketh his face to shine",
+   "Harden it"
+  ],
+  "answer": 2,
+  "explanation": "Wisdom is described as brightening the countenance.",
+  "ref": "Ecclesiastes 8:1"
+ },
+ {
+  "id": "old-ecclesiastes-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Preacher advise in relation to the king?",
+  "choices": [
+   "Keep the king's commandment",
+   "Defy his command",
+   "Avoid the palace",
+   "Speak rashly"
+  ],
+  "answer": 0,
+  "explanation": "The chapter counsels wise conduct under authority.",
+  "ref": "Ecclesiastes 8:2"
+ },
+ {
+  "id": "old-ecclesiastes-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does a wise man's heart discern?",
+  "choices": [
+   "The secrets of kings",
+   "The day of his death",
+   "The thoughts of fools",
+   "Both time and judgment"
+  ],
+  "answer": 3,
+  "explanation": "The verse says a wise man's heart discerneth both time and judgment.",
+  "ref": "Ecclesiastes 8:5"
+ },
+ {
+  "id": "old-ecclesiastes-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What concern is raised when judgment is not quickly executed?",
+  "choices": [
+   "The heart of men is fully set in them to do evil",
+   "The temple falls into ruin",
+   "The poor become kings",
+   "The wise hide themselves"
+  ],
+  "answer": 0,
+  "explanation": "Delayed judgment can encourage boldness in evil.",
+  "ref": "Ecclesiastes 8:11"
+ },
+ {
+  "id": "old-ecclesiastes-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Preacher commend?",
+  "choices": [
+   "Building monuments",
+   "Chasing hidden wisdom only",
+   "Merry enjoyment of life as God's gift",
+   "Silence before every trial"
+  ],
+  "answer": 2,
+  "explanation": "He commends receiving food, drink, and joy as part of God's gift in life.",
+  "ref": "Ecclesiastes 8:15"
+ },
+ {
+  "id": "old-ecclesiastes-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What common event does the Preacher say happens to all?",
+  "choices": [
+   "Victory",
+   "Death",
+   "Riches",
+   "Fame"
+  ],
+  "answer": 1,
+  "explanation": "He observes that death comes alike to the righteous and the wicked.",
+  "ref": "Ecclesiastes 9:2"
+ },
+ {
+  "id": "old-ecclesiastes-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the living know?",
+  "choices": [
+   "That they shall rule",
+   "That they shall die",
+   "That they shall prosper",
+   "That they are righteous"
+  ],
+  "answer": 1,
+  "explanation": "The living know they will die, while the dead no longer take part in earthly affairs.",
+  "ref": "Ecclesiastes 9:5"
+ },
+ {
+  "id": "old-ecclesiastes-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What joyful counsel is given?",
+  "choices": [
+   "Build thy house with cedar",
+   "Hide from sorrow",
+   "Gather silver while thou mayest",
+   "Go thy way, eat thy bread with joy"
+  ],
+  "answer": 3,
+  "explanation": "The chapter urges cheerful reception of God's gifts in daily life.",
+  "ref": "Ecclesiastes 9:7"
+ },
+ {
+  "id": "old-ecclesiastes-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should be done with one's might?",
+  "choices": [
+   "Whatsoever thy hand findeth to do",
+   "Whatever the king commands",
+   "Only what is easy",
+   "What brings riches fastest"
+  ],
+  "answer": 0,
+  "explanation": "The Preacher urges energetic diligence while life remains.",
+  "ref": "Ecclesiastes 9:10"
+ },
+ {
+  "id": "old-ecclesiastes-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the chapter say about the race?",
+  "choices": [
+   "It is always to the swift",
+   "It belongs only to kings",
+   "It is not to the swift",
+   "It rewards wisdom alone"
+  ],
+  "answer": 2,
+  "explanation": "Time and chance affect outcomes beyond human control.",
+  "ref": "Ecclesiastes 9:11"
+ },
+ {
+  "id": "old-ecclesiastes-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do dead flies cause to stink?",
+  "choices": [
+   "The king's house",
+   "The vineyards of Judah",
+   "The bread of the poor",
+   "The ointment of the apothecary"
+  ],
+  "answer": 3,
+  "explanation": "A little folly is shown to ruin what is otherwise esteemed and fragrant.",
+  "ref": "Ecclesiastes 10:1"
+ },
+ {
+  "id": "old-ecclesiastes-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where is a wise man's heart?",
+  "choices": [
+   "In the palace",
+   "At his right hand",
+   "Upon the sea",
+   "Toward the north"
+  ],
+  "answer": 1,
+  "explanation": "Wisdom is pictured as properly directed, unlike folly.",
+  "ref": "Ecclesiastes 10:2"
+ },
+ {
+  "id": "old-ecclesiastes-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the fool reveal when he walks by the way?",
+  "choices": [
+   "That he is a fool",
+   "His riches",
+   "His courage",
+   "His power"
+  ],
+  "answer": 0,
+  "explanation": "His conduct exposes his lack of sense.",
+  "ref": "Ecclesiastes 10:3"
+ },
+ {
+  "id": "old-ecclesiastes-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said to pacify great offences?",
+  "choices": [
+   "Yielding",
+   "A fierce answer",
+   "Silence alone",
+   "Quick judgment"
+  ],
+  "answer": 0,
+  "explanation": "Calm submission can prevent escalation in the face of authority.",
+  "ref": "Ecclesiastes 10:4"
+ },
+ {
+  "id": "old-ecclesiastes-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What practical warning is given?",
+  "choices": [
+   "Never speak to the poor",
+   "Do not plow in winter",
+   "Eat only in secret",
+   "Curse not the king, no not in thy thought"
+  ],
+  "answer": 3,
+  "explanation": "The chapter warns that even hidden speech may have consequences.",
+  "ref": "Ecclesiastes 10:20"
+ },
+ {
+  "id": "old-ecclesiastes-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should be cast upon the waters?",
+  "choices": [
+   "Silver",
+   "Oil",
+   "Thy bread",
+   "Seed only"
+  ],
+  "answer": 2,
+  "explanation": "The chapter begins with an image encouraging generous and venturesome action.",
+  "ref": "Ecclesiastes 11:1"
+ },
+ {
+  "id": "old-ecclesiastes-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To how many should a portion be given?",
+  "choices": [
+   "To seven, and also to eight",
+   "To one only",
+   "To twelve",
+   "To forty"
+  ],
+  "answer": 0,
+  "explanation": "The verse encourages generous distribution because trouble may come unexpectedly.",
+  "ref": "Ecclesiastes 11:2"
+ },
+ {
+  "id": "old-ecclesiastes-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the chapter say man cannot know?",
+  "choices": [
+   "The way of the spirit",
+   "The number of the stars",
+   "The speech of kings",
+   "The strength of horses"
+  ],
+  "answer": 0,
+  "explanation": "Human understanding is limited regarding God's hidden work.",
+  "ref": "Ecclesiastes 11:5"
+ },
+ {
+  "id": "old-ecclesiastes-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will he that observeth the wind not do?",
+  "choices": [
+   "Plant vineyards",
+   "Sow",
+   "Sleep",
+   "Speak"
+  ],
+  "answer": 1,
+  "explanation": "Waiting for perfect conditions keeps a person from acting.",
+  "ref": "Ecclesiastes 11:4"
+ },
+ {
+  "id": "old-ecclesiastes-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning is given to the young?",
+  "choices": [
+   "Never rejoice",
+   "Know thou, that for all these things God will bring thee into judgment",
+   "Build quickly while young",
+   "Despise sorrow"
+  ],
+  "answer": 1,
+  "explanation": "Joy in youth is allowed, but it must be lived under God's judgment.",
+  "ref": "Ecclesiastes 11:9"
+ },
+ {
+  "id": "old-ecclesiastes-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom should a person remember in the days of his youth?",
+  "choices": [
+   "His father only",
+   "The king",
+   "The teachers of wisdom",
+   "Thy Creator"
+  ],
+  "answer": 3,
+  "explanation": "The chapter begins with a call to remember the Creator before difficult days come.",
+  "ref": "Ecclesiastes 12:1"
+ },
+ {
+  "id": "old-ecclesiastes-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What poetic image is used for the end of life?",
+  "choices": [
+   "The city gates are shut",
+   "The sea is dried",
+   "The silver cord be loosed",
+   "The walls are broken"
+  ],
+  "answer": 2,
+  "explanation": "The loosening of the silver cord pictures life's final breaking point.",
+  "ref": "Ecclesiastes 12:6"
+ },
+ {
+  "id": "old-ecclesiastes-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What returns to God?",
+  "choices": [
+   "The body only",
+   "The spirit",
+   "The memory of man",
+   "The works of men"
+  ],
+  "answer": 1,
+  "explanation": "Dust returns to the earth, and the spirit returns unto God who gave it.",
+  "ref": "Ecclesiastes 12:7"
+ },
+ {
+  "id": "old-ecclesiastes-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How are the words of the wise described?",
+  "choices": [
+   "As goads",
+   "As rivers",
+   "As crowns",
+   "As walls"
+  ],
+  "answer": 0,
+  "explanation": "The words of the wise are compared to goads and fastened nails.",
+  "ref": "Ecclesiastes 12:11"
+ },
+ {
+  "id": "old-ecclesiastes-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the whole duty of man?",
+  "choices": [
+   "Seek riches and wisdom",
+   "Avoid sorrow and death",
+   "Fear God, and keep his commandments",
+   "Build a lasting name"
+  ],
+  "answer": 2,
+  "explanation": "The book closes by summarizing man's duty as fearing God and keeping His commandments.",
+  "ref": "Ecclesiastes 12:13"
+ }
+]

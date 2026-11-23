@@ -1,0 +1,1922 @@
+[
+ {
+  "id": "old-joshua-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After whose death did the Lord speak to Joshua at the start of the book?",
+  "choices": [
+   "Aaron's",
+   "Eleazar's",
+   "Moses'",
+   "Caleb's"
+  ],
+  "answer": 2,
+  "explanation": "The book opens after the death of Moses the servant of the Lord.",
+  "ref": "Joshua 1:1"
+ },
+ {
+  "id": "old-joshua-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "What river was Joshua told to lead the people across?",
+  "choices": [
+   "Jordan",
+   "Euphrates",
+   "Nile",
+   "Jabbok"
+  ],
+  "answer": 0,
+  "explanation": "Joshua was commissioned to lead Israel across the Jordan into the land.",
+  "ref": "Joshua 1:2"
+ },
+ {
+  "id": "old-joshua-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What repeated command did the Lord give Joshua?",
+  "choices": [
+   "Count the tribes",
+   "Be strong and of a good courage",
+   "Build a city",
+   "Wait at Sinai"
+  ],
+  "answer": 1,
+  "explanation": "God repeatedly told Joshua to be strong and courageous.",
+  "ref": "Joshua 1:6–9"
+ },
+ {
+  "id": "old-joshua-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Joshua told not to let depart out of his mouth?",
+  "choices": [
+   "The song of Moses",
+   "The book of the law",
+   "The tribal census",
+   "His own command"
+  ],
+  "answer": 1,
+  "explanation": "Joshua was to meditate on the book of the law day and night.",
+  "ref": "Joshua 1:8"
+ },
+ {
+  "id": "old-joshua-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribes were reminded to help their brothers before settling fully?",
+  "choices": [
+   "Judah and Benjamin",
+   "Levi and Simeon",
+   "Reuben, Gad, and half Manasseh",
+   "Ephraim and Dan"
+  ],
+  "answer": 2,
+  "explanation": "The eastern tribes were reminded of their promise to help Israel conquer the land.",
+  "ref": "Joshua 1:12–15"
+ },
+ {
+  "id": "old-joshua-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Joshua secretly send two men to spy?",
+  "choices": [
+   "Ai",
+   "Hebron",
+   "Jericho",
+   "Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "Joshua sent two spies secretly to view Jericho.",
+  "ref": "Joshua 2:1"
+ },
+ {
+  "id": "old-joshua-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who hid the spies in Jericho?",
+  "choices": [
+   "Deborah",
+   "Rahab",
+   "Miriam",
+   "Achsah"
+  ],
+  "answer": 1,
+  "explanation": "Rahab hid the spies from the king's men.",
+  "ref": "Joshua 2:1–4"
+ },
+ {
+  "id": "old-joshua-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What reason did Rahab give for fearing the God of Israel?",
+  "choices": [
+   "She saw Moses",
+   "She had heard of the Red Sea and the defeat of Sihon and Og",
+   "She had a dream",
+   "She found the law"
+  ],
+  "answer": 1,
+  "explanation": "Rahab testified that news of God's mighty acts had melted hearts in Canaan.",
+  "ref": "Joshua 2:10–11"
+ },
+ {
+  "id": "old-joshua-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign was Rahab told to display in her window?",
+  "choices": [
+   "A white cloth",
+   "An olive branch",
+   "A trumpet",
+   "A scarlet line"
+  ],
+  "answer": 3,
+  "explanation": "The scarlet cord marked Rahab's house for deliverance.",
+  "ref": "Joshua 2:18"
+ },
+ {
+  "id": "old-joshua-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the spies report to Joshua after returning?",
+  "choices": [
+   "Jericho was too strong",
+   "The Lord had delivered all the land into their hands",
+   "They should retreat",
+   "Only Ai could be taken"
+  ],
+  "answer": 1,
+  "explanation": "They reported that the land's inhabitants were melting with fear.",
+  "ref": "Joshua 2:24"
+ },
+ {
+  "id": "old-joshua-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sacred object did the people follow when preparing to cross Jordan?",
+  "choices": [
+   "The ark of the covenant",
+   "The altar",
+   "Moses' rod",
+   "The tabernacle curtains"
+  ],
+  "answer": 0,
+  "explanation": "The people were to follow the ark carried by the priests.",
+  "ref": "Joshua 3:3"
+ },
+ {
+  "id": "old-joshua-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What instruction was given about distance from the ark?",
+  "choices": [
+   "Keep about two thousand cubits away",
+   "Stay right beside it",
+   "Remain a day's journey behind",
+   "Walk in front of it"
+  ],
+  "answer": 0,
+  "explanation": "The distance allowed the people to see the way they should go.",
+  "ref": "Joshua 3:4"
+ },
+ {
+  "id": "old-joshua-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when the priests' feet touched the Jordan?",
+  "choices": [
+   "The river flooded more",
+   "The ark sank",
+   "A bridge appeared",
+   "The waters stood upon a heap"
+  ],
+  "answer": 3,
+  "explanation": "The Jordan stopped flowing and stood up in a heap as the priests entered.",
+  "ref": "Joshua 3:15–16"
+ },
+ {
+  "id": "old-joshua-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What season detail is given about the Jordan at this crossing?",
+  "choices": [
+   "It was dry season",
+   "It was frozen",
+   "It overflowed all its banks",
+   "It had no fish"
+  ],
+  "answer": 2,
+  "explanation": "The Jordan overflowed all its banks at the time of harvest.",
+  "ref": "Joshua 3:15"
+ },
+ {
+  "id": "old-joshua-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did all Israel cross the Jordan?",
+  "choices": [
+   "On rafts",
+   "In small groups through shallow water",
+   "On dry ground",
+   "By swimming"
+  ],
+  "answer": 2,
+  "explanation": "The people passed over on dry ground while the priests stood firm.",
+  "ref": "Joshua 3:17"
+ },
+ {
+  "id": "old-joshua-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men were chosen to take stones from the Jordan?",
+  "choices": [
+   "7",
+   "12",
+   "24",
+   "40"
+  ],
+  "answer": 1,
+  "explanation": "One man from each tribe was chosen, making twelve men.",
+  "ref": "Joshua 4:2–3"
+ },
+ {
+  "id": "old-joshua-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the twelve memorial stones taken from?",
+  "choices": [
+   "Jericho's wall",
+   "Mount Ebal",
+   "Rahab's house",
+   "The midst of Jordan where the priests stood"
+  ],
+  "answer": 3,
+  "explanation": "The stones came from the place where the priests' feet stood firm.",
+  "ref": "Joshua 4:3"
+ },
+ {
+  "id": "old-joshua-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the purpose of these stones?",
+  "choices": [
+   "To mark tribal borders",
+   "To build an altar at Jericho",
+   "To serve as a sign when children ask what they mean",
+   "To count the tribes"
+  ],
+  "answer": 2,
+  "explanation": "The stones were a memorial to teach future generations about God's act.",
+  "ref": "Joshua 4:6–7"
+ },
+ {
+  "id": "old-joshua-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "At what place did Israel lodge after crossing Jordan?",
+  "choices": [
+   "Ai",
+   "Gilgal",
+   "Bethel",
+   "Shiloh"
+  ],
+  "answer": 1,
+  "explanation": "The people camped at Gilgal after crossing.",
+  "ref": "Joshua 4:19"
+ },
+ {
+  "id": "old-joshua-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua say all the people of the earth might know through this miracle?",
+  "choices": [
+   "That the hand of the Lord is mighty",
+   "That Israel was strong",
+   "That Jericho was weak",
+   "That the priests were holy"
+  ],
+  "answer": 0,
+  "explanation": "The miracle testified to all peoples that the Lord's hand is mighty.",
+  "ref": "Joshua 4:24"
+ },
+ {
+  "id": "old-joshua-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the hearts of the kings of the land when they heard how Israel crossed the Jordan?",
+  "choices": [
+   "Their heart melted",
+   "They prepared a feast",
+   "They crossed the river",
+   "They sought peace immediately"
+  ],
+  "answer": 0,
+  "explanation": "The crossing caused the hearts of the kings to melt.",
+  "ref": "Joshua 5:1"
+ },
+ {
+  "id": "old-joshua-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua do at the hill of the foreskins?",
+  "choices": [
+   "Circumcised the children of Israel",
+   "Built an altar",
+   "Counted the army",
+   "Buried Moses"
+  ],
+  "answer": 0,
+  "explanation": "Joshua circumcised the generation born in the wilderness.",
+  "ref": "Joshua 5:2–3"
+ },
+ {
+  "id": "old-joshua-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What feast did Israel keep in the plains of Jericho?",
+  "choices": [
+   "Weeks",
+   "Trumpets",
+   "Passover",
+   "Tabernacles"
+  ],
+  "answer": 2,
+  "explanation": "Israel kept the Passover on the fourteenth day at even.",
+  "ref": "Joshua 5:10"
+ },
+ {
+  "id": "old-joshua-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the manna after Israel ate of the old corn of the land?",
+  "choices": [
+   "It doubled",
+   "It ceased",
+   "It turned bitter",
+   "It was stored in Gilgal"
+  ],
+  "answer": 1,
+  "explanation": "The manna ceased once they ate the produce of the land.",
+  "ref": "Joshua 5:12"
+ },
+ {
+  "id": "old-joshua-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who appeared to Joshua with a drawn sword?",
+  "choices": [
+   "An angel of Egypt",
+   "Moses",
+   "Eleazar",
+   "Captain of the host of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Joshua encountered the Captain of the Lord's host and was told the place was holy.",
+  "ref": "Joshua 5:13–15"
+ },
+ {
+  "id": "old-joshua-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days was Israel to march around Jericho once each day?",
+  "choices": [
+   "3",
+   "6",
+   "7",
+   "12"
+  ],
+  "answer": 1,
+  "explanation": "They marched once a day for six days.",
+  "ref": "Joshua 6:3–4"
+ },
+ {
+  "id": "old-joshua-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times were they to compass the city on the seventh day?",
+  "choices": [
+   "1",
+   "3",
+   "7",
+   "12"
+  ],
+  "answer": 2,
+  "explanation": "On the seventh day they marched around the city seven times.",
+  "ref": "Joshua 6:4"
+ },
+ {
+  "id": "old-joshua-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of horns did the priests blow?",
+  "choices": [
+   "Rams' horns",
+   "Silver trumpets",
+   "Golden horns",
+   "Ivory horns"
+  ],
+  "answer": 0,
+  "explanation": "The priests blew with trumpets of rams' horns.",
+  "ref": "Joshua 6:4"
+ },
+ {
+  "id": "old-joshua-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when the people shouted after the long trumpet blast?",
+  "choices": [
+   "The gate opened",
+   "The wall fell down flat",
+   "Fire consumed the city",
+   "Rahab ran out"
+  ],
+  "answer": 1,
+  "explanation": "The wall fell flat when the people shouted.",
+  "ref": "Joshua 6:20"
+ },
+ {
+  "id": "old-joshua-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was spared when Jericho was destroyed?",
+  "choices": [
+   "Rahab and all that were with her in the house",
+   "Only the king",
+   "The priests of Jericho",
+   "Everyone outside the walls"
+  ],
+  "answer": 0,
+  "explanation": "Rahab and her household were saved because she hid the spies.",
+  "ref": "Joshua 6:22–25"
+ },
+ {
+  "id": "old-joshua-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What man took of the accursed thing after Jericho?",
+  "choices": [
+   "Achan",
+   "Caleb",
+   "Phinehas",
+   "Eleazar"
+  ],
+  "answer": 0,
+  "explanation": "Achan took of the devoted things, bringing trouble on Israel.",
+  "ref": "Joshua 7:1"
+ },
+ {
+  "id": "old-joshua-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Israel suffer an unexpected defeat after Jericho?",
+  "choices": [
+   "Hebron",
+   "Gilgal",
+   "Ai",
+   "Gibeon"
+  ],
+  "answer": 2,
+  "explanation": "Israel was struck before the men of Ai.",
+  "ref": "Joshua 7:2–5"
+ },
+ {
+  "id": "old-joshua-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men did Joshua initially send against Ai?",
+  "choices": [
+   "300",
+   "About 3,000",
+   "12,000",
+   "36,000"
+  ],
+  "answer": 1,
+  "explanation": "Joshua sent about three thousand men at first.",
+  "ref": "Joshua 7:4"
+ },
+ {
+  "id": "old-joshua-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Achan confess taking?",
+  "choices": [
+   "Only silver",
+   "A Babylonish garment, silver, and a wedge of gold",
+   "A sword and a shield",
+   "Two oxen"
+  ],
+  "answer": 1,
+  "explanation": "Achan admitted taking a costly garment, silver, and gold.",
+  "ref": "Joshua 7:21"
+ },
+ {
+  "id": "old-joshua-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name was given to the place where Achan was judged?",
+  "choices": [
+   "Gilgal",
+   "Mount Ebal",
+   "Valley of Achor",
+   "Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "The place was called the Valley of Achor, meaning trouble.",
+  "ref": "Joshua 7:26"
+ },
+ {
+  "id": "old-joshua-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What strategy did God tell Joshua to use against Ai?",
+  "choices": [
+   "A frontal siege only",
+   "An ambush behind the city",
+   "Fire from heaven",
+   "Wait seven days"
+  ],
+  "answer": 1,
+  "explanation": "Joshua was instructed to set an ambush behind the city.",
+  "ref": "Joshua 8:2"
+ },
+ {
+  "id": "old-joshua-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Joshua signal the ambush to rise against Ai?",
+  "choices": [
+   "By stretching out his spear",
+   "By sounding a trumpet",
+   "By shouting",
+   "By lighting a fire"
+  ],
+  "answer": 0,
+  "explanation": "Joshua stretched out the spear in his hand toward the city as the signal.",
+  "ref": "Joshua 8:18"
+ },
+ {
+  "id": "old-joshua-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the king of Ai?",
+  "choices": [
+   "He was hanged on a tree",
+   "He escaped to Bethel",
+   "He became a servant",
+   "He made peace"
+  ],
+  "answer": 0,
+  "explanation": "Joshua hanged the king of Ai on a tree until evening.",
+  "ref": "Joshua 8:29"
+ },
+ {
+  "id": "old-joshua-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which mountain did Joshua build an altar to the Lord?",
+  "choices": [
+   "Ebal",
+   "Gerizim",
+   "Nebo",
+   "Sinai"
+  ],
+  "answer": 0,
+  "explanation": "Joshua built the altar on Mount Ebal as Moses had commanded.",
+  "ref": "Joshua 8:30"
+ },
+ {
+  "id": "old-joshua-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua read before all the congregation after this victory?",
+  "choices": [
+   "Only the blessings",
+   "All the words of the law, the blessings and curses",
+   "A battle plan",
+   "The genealogy of Levi"
+  ],
+  "answer": 1,
+  "explanation": "Joshua read all the words of the law to the whole assembly.",
+  "ref": "Joshua 8:34–35"
+ },
+ {
+  "id": "old-joshua-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the inhabitants of Gibeon pretend in order to make peace with Israel?",
+  "choices": [
+   "That they were priests",
+   "That they came from a far country",
+   "That they were Israelites",
+   "That Jericho still stood"
+  ],
+  "answer": 1,
+  "explanation": "The Gibeonites pretended to be from a distant land.",
+  "ref": "Joshua 9:4–6"
+ },
+ {
+  "id": "old-joshua-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What mistake did the men of Israel make when dealing with the Gibeonites?",
+  "choices": [
+   "They forgot the ark",
+   "They failed to count them",
+   "They asked not counsel at the mouth of the Lord",
+   "They attacked too soon"
+  ],
+  "answer": 2,
+  "explanation": "Israel accepted the Gibeonite story without seeking the Lord.",
+  "ref": "Joshua 9:14"
+ },
+ {
+  "id": "old-joshua-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How soon was the deception discovered?",
+  "choices": [
+   "The same day",
+   "After seven days",
+   "After three days",
+   "After one month"
+  ],
+  "answer": 2,
+  "explanation": "Three days later Israel learned they were neighbors.",
+  "ref": "Joshua 9:16"
+ },
+ {
+  "id": "old-joshua-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Israel not smite the Gibeonites after discovering the truth?",
+  "choices": [
+   "They were too strong",
+   "Joshua forgot",
+   "They fled",
+   "The princes had sworn unto them by the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Israel honored the oath made in the Lord's name.",
+  "ref": "Joshua 9:18–19"
+ },
+ {
+  "id": "old-joshua-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What service were the Gibeonites assigned?",
+  "choices": [
+   "Soldiers",
+   "Priests",
+   "Hewers of wood and drawers of water",
+   "Judges"
+  ],
+  "answer": 2,
+  "explanation": "They became servants for the congregation and the altar.",
+  "ref": "Joshua 9:21"
+ },
+ {
+  "id": "old-joshua-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had Gibeon done that alarmed the king of Jerusalem?",
+  "choices": [
+   "It had more gold",
+   "It had taken Jericho",
+   "It defeated Ai alone",
+   "It had made peace with Israel"
+  ],
+  "answer": 3,
+  "explanation": "Gibeon's alliance with Israel alarmed the Amorite kings.",
+  "ref": "Joshua 10:1–2"
+ },
+ {
+  "id": "old-joshua-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua say when asking the Lord to prolong the battle day?",
+  "choices": [
+   "Sun, stand thou still upon Gibeon; and thou, Moon, in the valley of Ajalon",
+   "Let the river stop",
+   "Rain, come down",
+   "Ark, move forward"
+  ],
+  "answer": 0,
+  "explanation": "Joshua asked for the sun and moon to stand still.",
+  "ref": "Joshua 10:12"
+ },
+ {
+  "id": "old-joshua-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What extraordinary weapon did the Lord use against Israel's enemies besides the sword?",
+  "choices": [
+   "Flood waters",
+   "Great hailstones from heaven",
+   "Fire from the altar",
+   "A plague of serpents"
+  ],
+  "answer": 1,
+  "explanation": "The Lord cast down great hailstones upon the fleeing enemies.",
+  "ref": "Joshua 10:11"
+ },
+ {
+  "id": "old-joshua-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the five Amorite kings found hiding?",
+  "choices": [
+   "In Jericho",
+   "In Gibeon",
+   "On Mount Ebal",
+   "In a cave at Makkedah"
+  ],
+  "answer": 3,
+  "explanation": "The five kings hid in a cave at Makkedah.",
+  "ref": "Joshua 10:16"
+ },
+ {
+  "id": "old-joshua-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua have Israel's captains do to the captured kings before they were executed?",
+  "choices": [
+   "Put their feet upon the necks of them",
+   "Take their crowns",
+   "Bind them with cords",
+   "Spare them"
+  ],
+  "answer": 0,
+  "explanation": "This act symbolized the Lord's victory over their enemies.",
+  "ref": "Joshua 10:24"
+ },
+ {
+  "id": "old-joshua-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city is named as the head of all those northern kingdoms?",
+  "choices": [
+   "Jericho",
+   "Hazor",
+   "Hebron",
+   "Ai"
+  ],
+  "answer": 1,
+  "explanation": "Hazor is described as the head of those kingdoms.",
+  "ref": "Joshua 11:10"
+ },
+ {
+  "id": "old-joshua-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What military strength especially marked the northern coalition?",
+  "choices": [
+   "Elephants",
+   "Ships",
+   "Archers only",
+   "Horses and chariots very many"
+  ],
+  "answer": 3,
+  "explanation": "The northern kings came with many horses and chariots.",
+  "ref": "Joshua 11:4"
+ },
+ {
+  "id": "old-joshua-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord tell Joshua to do to their horses and chariots?",
+  "choices": [
+   "Capture them",
+   "Sell them",
+   "Hough their horses and burn their chariots",
+   "Return them to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Joshua was instructed to disable the horses and burn the chariots.",
+  "ref": "Joshua 11:6"
+ },
+ {
+  "id": "old-joshua-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city did Joshua burn with fire after defeating the northern kings?",
+  "choices": [
+   "Gibeon",
+   "Makkedah",
+   "Gilgal",
+   "Hazor"
+  ],
+  "answer": 3,
+  "explanation": "Hazor was burned with fire.",
+  "ref": "Joshua 11:11"
+ },
+ {
+  "id": "old-joshua-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did no city except Gibeon make peace with Israel?",
+  "choices": [
+   "The Lord hardened their hearts to fight Israel",
+   "They had never heard of Israel",
+   "Israel refused every offer of peace",
+   "Their kings were away in Egypt"
+  ],
+  "answer": 0,
+  "explanation": "It was of the Lord to harden their hearts, so they came against Israel in battle and were destroyed.",
+  "ref": "Joshua 11:19–20"
+ },
+ {
+  "id": "old-joshua-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two kings were defeated by Moses on the east side of Jordan?",
+  "choices": [
+   "Sihon and Og",
+   "Adoni-zedek and Jabin",
+   "Balak and Balaam",
+   "Saul and David"
+  ],
+  "answer": 0,
+  "explanation": "The chapter first recalls Sihon king of the Amorites and Og king of Bashan.",
+  "ref": "Joshua 12:1–6"
+ },
+ {
+  "id": "old-joshua-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many kings are listed as defeated by Joshua west of Jordan?",
+  "choices": [
+   "12",
+   "21",
+   "31",
+   "40"
+  ],
+  "answer": 2,
+  "explanation": "The total listed west of Jordan is thirty-one kings.",
+  "ref": "Joshua 12:24"
+ },
+ {
+  "id": "old-joshua-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "What city is first named among Joshua's conquered kings west of Jordan?",
+  "choices": [
+   "Jericho",
+   "Ai",
+   "Hebron",
+   "Hazor"
+  ],
+  "answer": 0,
+  "explanation": "The list begins with the king of Jericho.",
+  "ref": "Joshua 12:9"
+ },
+ {
+  "id": "old-joshua-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does this long list of kings record?",
+  "choices": [
+   "The kings Israel defeated",
+   "The ancestors of Joshua",
+   "The kings who made peace with Israel",
+   "The priests of Israel"
+  ],
+  "answer": 0,
+  "explanation": "The chapter lists the kings Israel defeated, first under Moses east of Jordan, then under Joshua on the west.",
+  "ref": "Joshua 12:1–7"
+ },
+ {
+  "id": "old-joshua-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "According to the list, Ai is beside which city?",
+  "choices": [
+   "Jericho",
+   "Hebron",
+   "Bethel",
+   "Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "The list includes the king of Ai, which is beside Bethel.",
+  "ref": "Joshua 12:9"
+ },
+ {
+  "id": "old-joshua-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Joshua described at the start of the chapter?",
+  "choices": [
+   "A young man",
+   "Fearful",
+   "Old and stricken in years",
+   "Without strength"
+  ],
+  "answer": 2,
+  "explanation": "Joshua is described as old and advanced in years.",
+  "ref": "Joshua 13:1"
+ },
+ {
+  "id": "old-joshua-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord say still remained despite many victories?",
+  "choices": [
+   "Very much land to be possessed",
+   "Many priests",
+   "No enemies",
+   "Only one city"
+  ],
+  "answer": 0,
+  "explanation": "The Lord said much land still remained to be possessed.",
+  "ref": "Joshua 13:1"
+ },
+ {
+  "id": "old-joshua-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe received no inheritance among their brethren?",
+  "choices": [
+   "Judah",
+   "Benjamin",
+   "Dan",
+   "Levi"
+  ],
+  "answer": 3,
+  "explanation": "Levi received no land inheritance because the Lord was their inheritance.",
+  "ref": "Joshua 13:14"
+ },
+ {
+  "id": "old-joshua-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribes had already received land on the east side of Jordan?",
+  "choices": [
+   "Judah and Benjamin",
+   "Reuben, Gad, and half Manasseh",
+   "Ephraim and Dan",
+   "Simeon and Levi"
+  ],
+  "answer": 1,
+  "explanation": "These eastern tribes had already received their inheritance.",
+  "ref": "Joshua 13:8"
+ },
+ {
+  "id": "old-joshua-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which soothsayer did the children of Israel slay with the sword?",
+  "choices": [
+   "Balak",
+   "Jabin",
+   "Sisera",
+   "Balaam"
+  ],
+  "answer": 3,
+  "explanation": "Balaam is specifically named as having been slain with the sword.",
+  "ref": "Joshua 13:22"
+ },
+ {
+  "id": "old-joshua-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to Joshua to claim what Moses had promised him?",
+  "choices": [
+   "Phinehas",
+   "Othniel",
+   "Achan's son",
+   "Caleb"
+  ],
+  "answer": 3,
+  "explanation": "Caleb approached Joshua regarding Moses' promise.",
+  "ref": "Joshua 14:6"
+ },
+ {
+  "id": "old-joshua-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Caleb when Moses first sent him to spy the land?",
+  "choices": [
+   "20",
+   "30",
+   "40",
+   "60"
+  ],
+  "answer": 2,
+  "explanation": "Caleb was forty years old when sent as a spy.",
+  "ref": "Joshua 14:7"
+ },
+ {
+  "id": "old-joshua-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old did Caleb say he was when making this request?",
+  "choices": [
+   "65",
+   "75",
+   "85",
+   "95"
+  ],
+  "answer": 2,
+  "explanation": "Caleb says he is eighty-five years old.",
+  "ref": "Joshua 14:10"
+ },
+ {
+  "id": "old-joshua-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "place",
+  "question": "What mountain area did Caleb request as his inheritance?",
+  "choices": [
+   "Gilgal",
+   "Jericho",
+   "Hebron",
+   "Shechem"
+  ],
+  "answer": 2,
+  "explanation": "Caleb requested the mountain where the Anakims had been, centered on Hebron.",
+  "ref": "Joshua 14:12–13"
+ },
+ {
+  "id": "old-joshua-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Caleb say Moses had promised him this land?",
+  "choices": [
+   "Because he was oldest",
+   "Because he wholly followed the Lord",
+   "Because he was from Judah",
+   "Because he was wealthy"
+  ],
+  "answer": 1,
+  "explanation": "Caleb is repeatedly commended for wholly following the Lord.",
+  "ref": "Joshua 14:8–9"
+ },
+ {
+  "id": "old-joshua-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe's inheritance is described first among the western tribes?",
+  "choices": [
+   "Benjamin",
+   "Ephraim",
+   "Judah",
+   "Dan"
+  ],
+  "answer": 2,
+  "explanation": "Judah's allotment is described first.",
+  "ref": "Joshua 15:1"
+ },
+ {
+  "id": "old-joshua-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took Kirjath-sepher and received Achsah as wife?",
+  "choices": [
+   "Joshua",
+   "Caleb",
+   "Othniel",
+   "Phinehas"
+  ],
+  "answer": 2,
+  "explanation": "Othniel captured the city and married Achsah.",
+  "ref": "Joshua 15:16–17"
+ },
+ {
+  "id": "old-joshua-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Achsah ask from her father Caleb in addition to land in the south?",
+  "choices": [
+   "Springs of water",
+   "A city wall",
+   "A vineyard",
+   "A silver dowry"
+  ],
+  "answer": 0,
+  "explanation": "Achsah requested springs, and Caleb gave upper and lower springs.",
+  "ref": "Joshua 15:18–19"
+ },
+ {
+  "id": "old-joshua-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sons of Anak did Caleb drive out of Hebron?",
+  "choices": [
+   "2",
+   "3",
+   "5",
+   "7"
+  ],
+  "answer": 1,
+  "explanation": "Caleb drove out the three sons of Anak: Sheshai, Ahiman, and Talmai.",
+  "ref": "Joshua 15:14"
+ },
+ {
+  "id": "old-joshua-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What limitation is noted about Judah and the Jebusites?",
+  "choices": [
+   "Judah never saw them",
+   "Judah could not drive them out from Jerusalem",
+   "Judah made them priests",
+   "Judah left the land"
+  ],
+  "answer": 1,
+  "explanation": "The Jebusites remained in Jerusalem with the children of Judah.",
+  "ref": "Joshua 15:63"
+ },
+ {
+  "id": "old-joshua-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the lot of the children of Joseph begin?",
+  "choices": [
+   "Hebron in Judah",
+   "Shiloh",
+   "Jordan by Jericho",
+   "Mount Hermon"
+  ],
+  "answer": 2,
+  "explanation": "The lot of the children of Joseph fell from Jordan by Jericho.",
+  "ref": "Joshua 16:1"
+ },
+ {
+  "id": "old-joshua-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which branch of Joseph receives special attention in this chapter?",
+  "choices": [
+   "Manasseh",
+   "Levi",
+   "Ephraim",
+   "Benjamin"
+  ],
+  "answer": 2,
+  "explanation": "This chapter focuses especially on the inheritance of Ephraim.",
+  "ref": "Joshua 16:5"
+ },
+ {
+  "id": "old-joshua-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "What city is named in relation to the Canaanites Ephraim did not drive out?",
+  "choices": [
+   "Hazor",
+   "Gezer",
+   "Jericho",
+   "Hebron"
+  ],
+  "answer": 1,
+  "explanation": "Ephraim did not drive out the Canaanites dwelling in Gezer.",
+  "ref": "Joshua 16:10"
+ },
+ {
+  "id": "old-joshua-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the Canaanites remain among Ephraim?",
+  "choices": [
+   "As kings",
+   "As priests",
+   "As soldiers only",
+   "As tributaries"
+  ],
+  "answer": 3,
+  "explanation": "They dwelt among Ephraim and became tributaries.",
+  "ref": "Joshua 16:10"
+ },
+ {
+  "id": "old-joshua-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two tribes are named as the children of Joseph?",
+  "choices": [
+   "Judah and Benjamin",
+   "Manasseh and Ephraim",
+   "Reuben and Gad",
+   "Dan and Asher"
+  ],
+  "answer": 1,
+  "explanation": "The children of Joseph, Manasseh and Ephraim, took their inheritance.",
+  "ref": "Joshua 16:4"
+ },
+ {
+  "id": "old-joshua-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose daughters came to receive inheritance among the sons of Manasseh?",
+  "choices": [
+   "Achan's",
+   "Zelophehad's",
+   "Rahab's",
+   "Deborah's"
+  ],
+  "answer": 1,
+  "explanation": "Zelophehad's daughters received inheritance according to the Lord's command.",
+  "ref": "Joshua 17:3–4"
+ },
+ {
+  "id": "old-joshua-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What complaint did the children of Joseph bring to Joshua?",
+  "choices": [
+   "They lacked priests",
+   "They had no cities",
+   "They had no soldiers",
+   "They had only one lot and one portion"
+  ],
+  "answer": 3,
+  "explanation": "Joseph's descendants complained that their allotment seemed too small.",
+  "ref": "Joshua 17:14"
+ },
+ {
+  "id": "old-joshua-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua tell them to do in the forested hill country?",
+  "choices": [
+   "Leave it untouched",
+   "Cut it down and possess it",
+   "Burn it immediately",
+   "Give it to Judah"
+  ],
+  "answer": 1,
+  "explanation": "Joshua told them to clear the wooded hill country and make room.",
+  "ref": "Joshua 17:15"
+ },
+ {
+  "id": "old-joshua-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were Joseph's descendants hesitant about the Canaanites in the valleys?",
+  "choices": [
+   "They had many horses",
+   "They had giants only",
+   "They had chariots of iron",
+   "They held the ark"
+  ],
+  "answer": 2,
+  "explanation": "The iron chariots intimidated them.",
+  "ref": "Joshua 17:16"
+ },
+ {
+  "id": "old-joshua-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua promise the house of Joseph because they were a great people?",
+  "choices": [
+   "They would receive no more land",
+   "They would keep one lot only",
+   "They would move east of Jordan",
+   "They would have more than one lot and drive out the Canaanites"
+  ],
+  "answer": 3,
+  "explanation": "Joshua said they would not have one lot only. The mountain would be theirs, and they would drive out the Canaanites.",
+  "ref": "Joshua 17:17–18"
+ },
+ {
+  "id": "old-joshua-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the tabernacle of the congregation set up?",
+  "choices": [
+   "Gilgal",
+   "Shiloh",
+   "Jericho",
+   "Hebron"
+  ],
+  "answer": 1,
+  "explanation": "The tabernacle was set up at Shiloh.",
+  "ref": "Joshua 18:1"
+ },
+ {
+  "id": "old-joshua-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many tribes remained that had not yet received inheritance?",
+  "choices": [
+   "3",
+   "5",
+   "7",
+   "9"
+  ],
+  "answer": 2,
+  "explanation": "Seven tribes still had not received their inheritance.",
+  "ref": "Joshua 18:2"
+ },
+ {
+  "id": "old-joshua-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua rebuke the people for being?",
+  "choices": [
+   "Too proud",
+   "Too fearful of Jordan",
+   "Too busy building houses",
+   "Slack to go to possess the land"
+  ],
+  "answer": 3,
+  "explanation": "Joshua asked how long they would delay going in to possess the land.",
+  "ref": "Joshua 18:3"
+ },
+ {
+  "id": "old-joshua-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were selected men sent to do regarding the remaining land?",
+  "choices": [
+   "Describe and survey it",
+   "Fight the Philistines",
+   "Build cities",
+   "Count the Levites"
+  ],
+  "answer": 0,
+  "explanation": "Men were sent to go through the land and describe it.",
+  "ref": "Joshua 18:4–9"
+ },
+ {
+  "id": "old-joshua-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe's lot is described first after this survey?",
+  "choices": [
+   "Simeon",
+   "Benjamin",
+   "Dan",
+   "Asher"
+  ],
+  "answer": 1,
+  "explanation": "The lot of Benjamin is described first among the remaining tribes.",
+  "ref": "Joshua 18:11"
+ },
+ {
+  "id": "old-joshua-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Within whose inheritance did Simeon receive cities?",
+  "choices": [
+   "Benjamin's",
+   "Ephraim's",
+   "Dan's",
+   "Judah's"
+  ],
+  "answer": 3,
+  "explanation": "Simeon's inheritance lay within Judah's portion.",
+  "ref": "Joshua 19:1"
+ },
+ {
+  "id": "old-joshua-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe received the seventh lot?",
+  "choices": [
+   "Naphtali",
+   "Dan",
+   "Issachar",
+   "Asher"
+  ],
+  "answer": 1,
+  "explanation": "The seventh lot came out for the tribe of the children of Dan.",
+  "ref": "Joshua 19:40"
+ },
+ {
+  "id": "old-joshua-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "What city did the Danites take and rename after their father?",
+  "choices": [
+   "Leshem",
+   "Hazor",
+   "Gezer",
+   "Jericho"
+  ],
+  "answer": 0,
+  "explanation": "The Danites took Leshem and called it Dan.",
+  "ref": "Joshua 19:47"
+ },
+ {
+  "id": "old-joshua-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "What city was given to Joshua for his inheritance?",
+  "choices": [
+   "Shiloh",
+   "Hebron",
+   "Timnath-serah",
+   "Gilgal"
+  ],
+  "answer": 2,
+  "explanation": "Joshua received Timnath-serah in mount Ephraim.",
+  "ref": "Joshua 19:49–50"
+ },
+ {
+  "id": "old-joshua-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were these inheritances assigned?",
+  "choices": [
+   "By family preference",
+   "By military rank",
+   "By lot before the Lord at Shiloh",
+   "By age"
+  ],
+  "answer": 2,
+  "explanation": "The inheritances were distributed by lot before the Lord at Shiloh.",
+  "ref": "Joshua 19:51"
+ },
+ {
+  "id": "old-joshua-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What special cities did the Lord tell Joshua to appoint?",
+  "choices": [
+   "Royal cities",
+   "Store cities",
+   "Levitical suburbs",
+   "Cities of refuge"
+  ],
+  "answer": 3,
+  "explanation": "Joshua was commanded to appoint cities of refuge.",
+  "ref": "Joshua 20:2"
+ },
+ {
+  "id": "old-joshua-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whom were the cities of refuge intended?",
+  "choices": [
+   "Only priests",
+   "Foreign kings",
+   "Only Levites",
+   "The slayer who killed unawares"
+  ],
+  "answer": 3,
+  "explanation": "They were for manslayers who killed unintentionally.",
+  "ref": "Joshua 20:3"
+ },
+ {
+  "id": "old-joshua-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the manslayer to do upon reaching the city?",
+  "choices": [
+   "Hide silently",
+   "Declare his cause in the ears of the elders",
+   "Offer a burnt offering",
+   "Return home"
+  ],
+  "answer": 1,
+  "explanation": "He had to present his case to the elders at the city gate.",
+  "ref": "Joshua 20:4"
+ },
+ {
+  "id": "old-joshua-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Name one of the cities of refuge west of Jordan.",
+  "choices": [
+   "Bezer",
+   "Ramoth",
+   "Kedesh",
+   "Golan"
+  ],
+  "answer": 2,
+  "explanation": "Kedesh, Shechem, and Hebron were west of Jordan.",
+  "ref": "Joshua 20:7"
+ },
+ {
+  "id": "old-joshua-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was the manslayer to remain in the city of refuge?",
+  "choices": [
+   "Until the death of the high priest",
+   "Three years",
+   "Forever",
+   "Until the next Jubilee"
+  ],
+  "answer": 0,
+  "explanation": "He remained there until the death of the high priest.",
+  "ref": "Joshua 20:6"
+ },
+ {
+  "id": "old-joshua-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came near to request cities from the other tribes?",
+  "choices": [
+   "The judges",
+   "The princes of Judah",
+   "The sons of Joseph",
+   "The heads of the fathers of the Levites"
+  ],
+  "answer": 3,
+  "explanation": "The Levite leaders requested the cities Moses had commanded.",
+  "ref": "Joshua 21:1–2"
+ },
+ {
+  "id": "old-joshua-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many cities with suburbs did the Levites receive in all?",
+  "choices": [
+   "24",
+   "36",
+   "48",
+   "60"
+  ],
+  "answer": 2,
+  "explanation": "The total number of Levitical cities was forty-eight.",
+  "ref": "Joshua 21:41"
+ },
+ {
+  "id": "old-joshua-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which priestly family received Hebron as one of its cities?",
+  "choices": [
+   "The children of Aaron",
+   "The sons of Gershon",
+   "The Merarites",
+   "The sons of Joseph"
+  ],
+  "answer": 0,
+  "explanation": "Hebron was given to the children of Aaron the priest.",
+  "ref": "Joshua 21:13"
+ },
+ {
+  "id": "old-joshua-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What summary statement is made about the Lord's promise to Israel?",
+  "choices": [
+   "Some promises failed",
+   "The land remained unconquered",
+   "There failed not ought of any good thing which the Lord had spoken",
+   "Only Judah received peace"
+  ],
+  "answer": 2,
+  "explanation": "The chapter triumphantly states that none of God's good promises failed.",
+  "ref": "Joshua 21:45"
+ },
+ {
+  "id": "old-joshua-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord give Israel on every side according to this chapter?",
+  "choices": [
+   "More manna",
+   "A king",
+   "A temple",
+   "Rest"
+  ],
+  "answer": 3,
+  "explanation": "The Lord gave them rest round about.",
+  "ref": "Joshua 21:44"
+ },
+ {
+  "id": "old-joshua-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribes did Joshua send home after commending their faithfulness?",
+  "choices": [
+   "Judah and Benjamin",
+   "Simeon and Levi",
+   "Dan and Asher",
+   "Reuben, Gad, and half Manasseh"
+  ],
+  "answer": 3,
+  "explanation": "Joshua sent the eastern tribes home after they had fulfilled their duty.",
+  "ref": "Joshua 22:1–4"
+ },
+ {
+  "id": "old-joshua-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What alarmed the western tribes after these tribes returned home?",
+  "choices": [
+   "They crowned a king",
+   "They built a great altar by Jordan",
+   "They crossed back into Canaan",
+   "They took Jericho"
+  ],
+  "answer": 1,
+  "explanation": "The large altar caused fear of rebellion.",
+  "ref": "Joshua 22:10–12"
+ },
+ {
+  "id": "old-joshua-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who led the delegation to confront the eastern tribes?",
+  "choices": [
+   "Joshua",
+   "Phinehas",
+   "Caleb",
+   "Eleazar"
+  ],
+  "answer": 1,
+  "explanation": "Phinehas was sent with princes to investigate.",
+  "ref": "Joshua 22:13"
+ },
+ {
+  "id": "old-joshua-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the purpose of the altar according to the eastern tribes?",
+  "choices": [
+   "For burnt offerings",
+   "As a witness between them and the western tribes",
+   "To replace the tabernacle",
+   "To begin a new priesthood"
+  ],
+  "answer": 1,
+  "explanation": "They said the altar was a witness, not a rival worship site.",
+  "ref": "Joshua 22:26–28"
+ },
+ {
+  "id": "old-joshua-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name did the children of Reuben and Gad give the altar?",
+  "choices": [
+   "Ebenezer",
+   "Gilgal",
+   "Ed",
+   "Achor"
+  ],
+  "answer": 2,
+  "explanation": "They called the altar Ed, for it would be a witness between them that the Lord is God.",
+  "ref": "Joshua 22:34"
+ },
+ {
+  "id": "old-joshua-23-1",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Joshua described when he called Israel's leaders together for this farewell?",
+  "choices": [
+   "Young and strong",
+   "At Jericho",
+   "In battle armor",
+   "Old and stricken in age"
+  ],
+  "answer": 3,
+  "explanation": "Joshua gives his exhortation in old age.",
+  "ref": "Joshua 23:1–2"
+ },
+ {
+  "id": "old-joshua-23-2",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua say the Lord had done to all these nations before Israel?",
+  "choices": [
+   "Fought against them for Israel",
+   "Ignored them",
+   "Made peace with them",
+   "Taught them the law"
+  ],
+  "answer": 0,
+  "explanation": "Joshua reminded them that the Lord had fought for them.",
+  "ref": "Joshua 23:3"
+ },
+ {
+  "id": "old-joshua-23-3",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning did Joshua give about joining the remnant of the nations left among them?",
+  "choices": [
+   "It would make them rich",
+   "It would strengthen Levi",
+   "It would shorten the conquest",
+   "It would become a snare and trap"
+  ],
+  "answer": 3,
+  "explanation": "Compromise with the nations would become a snare and scourge.",
+  "ref": "Joshua 23:12–13"
+ },
+ {
+  "id": "old-joshua-23-4",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua say had happened to all the good things the Lord promised?",
+  "choices": [
+   "All had come to pass",
+   "Some had failed",
+   "Only half had come",
+   "They were delayed"
+  ],
+  "answer": 0,
+  "explanation": "Joshua testifies that all God's good promises had come to pass.",
+  "ref": "Joshua 23:14"
+ },
+ {
+  "id": "old-joshua-23-5",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would happen if Israel transgressed the covenant and served other gods?",
+  "choices": [
+   "They would gain peace",
+   "Nothing",
+   "The Lord's anger would be kindled and they would perish from off the good land",
+   "They would move east"
+  ],
+  "answer": 2,
+  "explanation": "Joshua ends with a solemn warning about covenant unfaithfulness.",
+  "ref": "Joshua 23:16"
+ },
+ {
+  "id": "old-joshua-24-1",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "place",
+  "question": "At what place did Joshua gather all the tribes of Israel for this covenant renewal?",
+  "choices": [
+   "Gilgal",
+   "Jericho",
+   "Shechem",
+   "Hebron"
+  ],
+  "answer": 2,
+  "explanation": "Joshua gathered the tribes at Shechem.",
+  "ref": "Joshua 24:1"
+ },
+ {
+  "id": "old-joshua-24-2",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose family history does Joshua recount, beginning beyond the flood?",
+  "choices": [
+   "Moses'",
+   "Aaron's",
+   "Caleb's",
+   "Abraham's"
+  ],
+  "answer": 3,
+  "explanation": "Joshua starts with Abraham's ancestors and the Lord's call of Abraham.",
+  "ref": "Joshua 24:2–3"
+ },
+ {
+  "id": "old-joshua-24-3",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famous choice does Joshua set before the people?",
+  "choices": [
+   "Choose a king",
+   "Choose your inheritance",
+   "Choose a priest",
+   "Choose you this day whom ye will serve"
+  ],
+  "answer": 3,
+  "explanation": "Joshua calls the people to decide whom they will serve.",
+  "ref": "Joshua 24:15"
+ },
+ {
+  "id": "old-joshua-24-4",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the people's repeated response to Joshua's challenge?",
+  "choices": [
+   "We will return to Egypt",
+   "The Lord our God will we serve",
+   "We need more time",
+   "We will follow the ark only"
+  ],
+  "answer": 1,
+  "explanation": "The people repeatedly declared their intention to serve the Lord.",
+  "ref": "Joshua 24:18"
+ },
+ {
+  "id": "old-joshua-24-5",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What memorial did Joshua set up under the oak by the sanctuary of the Lord?",
+  "choices": [
+   "A pillar of brass",
+   "A great stone as a witness",
+   "An altar of twelve stones",
+   "A written scroll only"
+  ],
+  "answer": 1,
+  "explanation": "Joshua set up a great stone as a witness to the covenant renewal.",
+  "ref": "Joshua 24:26–27"
+ }
+]

@@ -1,0 +1,2242 @@
+[
+ {
+  "id": "old-matthew-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Matthew describe Jesus in the opening verse?",
+  "choices": [
+   "The Lamb of God",
+   "The prophet of Nazareth",
+   "The son of David, the son of Abraham",
+   "The light of the world"
+  ],
+  "answer": 2,
+  "explanation": "Matthew begins by connecting Jesus to the royal and covenant lines of David and Abraham.",
+  "ref": "Matthew 1:1"
+ },
+ {
+  "id": "old-matthew-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many generations does Matthew say were from Abraham to David?",
+  "choices": [
+   "Twelve",
+   "Ten",
+   "Seven",
+   "Fourteen"
+  ],
+  "answer": 3,
+  "explanation": "Matthew arranges the genealogy into groups of fourteen generations.",
+  "ref": "Matthew 1:17"
+ },
+ {
+  "id": "old-matthew-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Joseph minded to do when he learned Mary was with child?",
+  "choices": [
+   "Accuse her publicly",
+   "Leave Bethlehem",
+   "Put her away privately",
+   "Ask Herod for help"
+  ],
+  "answer": 2,
+  "explanation": "Joseph planned a quiet separation because he was just and did not want to shame Mary.",
+  "ref": "Matthew 1:19"
+ },
+ {
+  "id": "old-matthew-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name did the angel tell Joseph to give the child?",
+  "choices": [
+   "Immanuel",
+   "John",
+   "Jesus",
+   "David"
+  ],
+  "answer": 2,
+  "explanation": "The angel says the child's name will be Jesus because He will save His people from their sins.",
+  "ref": "Matthew 1:21"
+ },
+ {
+  "id": "old-matthew-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does 'Emmanuel' mean?",
+  "choices": [
+   "King forever",
+   "God with us",
+   "Prince of peace",
+   "Holy one"
+  ],
+  "answer": 1,
+  "explanation": "Matthew explains the prophecy by saying Emmanuel means 'God with us.'",
+  "ref": "Matthew 1:23"
+ },
+ {
+  "id": "old-matthew-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came from the east seeking the young child Jesus?",
+  "choices": [
+   "Shepherds",
+   "Wise men",
+   "Priests",
+   "Roman soldiers"
+  ],
+  "answer": 1,
+  "explanation": "Magi from the east came to worship Jesus after following the star.",
+  "ref": "Matthew 2:1"
+ },
+ {
+  "id": "old-matthew-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign guided the wise men to Jesus?",
+  "choices": [
+   "A dream",
+   "A cloud",
+   "A scroll",
+   "A star"
+  ],
+  "answer": 3,
+  "explanation": "The wise men followed His star as a sign of the newborn king.",
+  "ref": "Matthew 2:2"
+ },
+ {
+  "id": "old-matthew-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "In what town did the chief priests say the Christ would be born?",
+  "choices": [
+   "Nazareth",
+   "Bethlehem",
+   "Jerusalem",
+   "Capernaum"
+  ],
+  "answer": 1,
+  "explanation": "They answer Herod by citing prophecy that Bethlehem would be the Messiah's birthplace.",
+  "ref": "Matthew 2:5–6"
+ },
+ {
+  "id": "old-matthew-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What gifts did the wise men present to Jesus?",
+  "choices": [
+   "Gold, frankincense, and myrrh",
+   "Silver, oil, and wheat",
+   "Bread, wine, and incense",
+   "Purple cloth, silver, and myrrh"
+  ],
+  "answer": 0,
+  "explanation": "Matthew names the famous gifts of gold, frankincense, and myrrh.",
+  "ref": "Matthew 2:11"
+ },
+ {
+  "id": "old-matthew-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Joseph take Mary and Jesus to escape Herod?",
+  "choices": [
+   "Syria",
+   "Galilee",
+   "Rome",
+   "Egypt"
+  ],
+  "answer": 3,
+  "explanation": "Joseph fled with his family to Egypt after being warned in a dream.",
+  "ref": "Matthew 2:13–14"
+ },
+ {
+  "id": "old-matthew-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was John the Baptist's main message?",
+  "choices": [
+   "The kingdom is delayed",
+   "Repent, for the kingdom of heaven is at hand",
+   "Build the temple",
+   "Follow Herod"
+  ],
+  "answer": 1,
+  "explanation": "John calls people to repentance because God's kingdom is near.",
+  "ref": "Matthew 3:2"
+ },
+ {
+  "id": "old-matthew-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was John preaching?",
+  "choices": [
+   "In the wilderness of Judea",
+   "In the temple courts",
+   "At the Sea of Galilee",
+   "In Nazareth"
+  ],
+  "answer": 0,
+  "explanation": "John begins his ministry in the wilderness of Judea.",
+  "ref": "Matthew 3:1"
+ },
+ {
+  "id": "old-matthew-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did John wear?",
+  "choices": [
+   "Fine linen",
+   "Camel's hair",
+   "Royal robes",
+   "Priestly garments"
+  ],
+  "answer": 1,
+  "explanation": "John's clothing reflected the rugged, prophetic nature of his ministry.",
+  "ref": "Matthew 3:4"
+ },
+ {
+  "id": "old-matthew-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to John to be baptized?",
+  "choices": [
+   "Only priests",
+   "Herod",
+   "Pilate",
+   "Jesus"
+  ],
+  "answer": 3,
+  "explanation": "Jesus came from Galilee to John at Jordan to be baptized.",
+  "ref": "Matthew 3:13"
+ },
+ {
+  "id": "old-matthew-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What descended like a dove after Jesus was baptized?",
+  "choices": [
+   "Fire",
+   "An angel",
+   "The Spirit of God",
+   "A cloud"
+  ],
+  "answer": 2,
+  "explanation": "The Spirit descends like a dove as the Father speaks from heaven.",
+  "ref": "Matthew 3:16"
+ },
+ {
+  "id": "old-matthew-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who led Jesus into the wilderness to be tempted?",
+  "choices": [
+   "The Spirit",
+   "John",
+   "An angel",
+   "Peter"
+  ],
+  "answer": 0,
+  "explanation": "Matthew says Jesus was led by the Spirit into the wilderness.",
+  "ref": "Matthew 4:1"
+ },
+ {
+  "id": "old-matthew-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Jesus fast before the tempter came?",
+  "choices": [
+   "Seven days",
+   "Twelve days",
+   "Forty days and forty nights",
+   "Three days"
+  ],
+  "answer": 2,
+  "explanation": "Jesus fasted forty days and forty nights before the temptations came.",
+  "ref": "Matthew 4:2"
+ },
+ {
+  "id": "old-matthew-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the first temptation?",
+  "choices": [
+   "Jump from the temple",
+   "Bow to Satan",
+   "Turn stones into bread",
+   "Call down angels"
+  ],
+  "answer": 2,
+  "explanation": "Satan first tempts Jesus to satisfy hunger by turning stones into bread.",
+  "ref": "Matthew 4:3"
+ },
+ {
+  "id": "old-matthew-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Jesus doing when He called Peter and Andrew?",
+  "choices": [
+   "Teaching in a synagogue",
+   "Praying on a mountain",
+   "Walking by the sea of Galilee",
+   "Eating with tax collectors"
+  ],
+  "answer": 2,
+  "explanation": "Jesus called Peter and Andrew while walking by the Sea of Galilee.",
+  "ref": "Matthew 4:18"
+ },
+ {
+  "id": "old-matthew-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say He would make Peter and Andrew?",
+  "choices": [
+   "Rulers of Israel",
+   "Teachers of the law",
+   "Builders of the temple",
+   "Fishers of men"
+  ],
+  "answer": 3,
+  "explanation": "Jesus called them to leave fishing and become fishers of men.",
+  "ref": "Matthew 4:19"
+ },
+ {
+  "id": "old-matthew-5-1",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What promise is given to the poor in spirit?",
+  "choices": [
+   "They shall inherit the earth",
+   "They shall laugh",
+   "Theirs is the kingdom of heaven",
+   "They shall rule nations"
+  ],
+  "answer": 2,
+  "explanation": "Jesus says the kingdom of heaven belongs to the poor in spirit.",
+  "ref": "Matthew 5:3"
+ },
+ {
+  "id": "old-matthew-5-2",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Jesus say will inherit the earth?",
+  "choices": [
+   "The strong",
+   "The meek",
+   "The wealthy",
+   "The learned"
+  ],
+  "answer": 1,
+  "explanation": "One of the Beatitudes promises the earth to the meek.",
+  "ref": "Matthew 5:5"
+ },
+ {
+  "id": "old-matthew-5-3",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus call His disciples?",
+  "choices": [
+   "Servants and witnesses",
+   "Priests and kings",
+   "Sheep and shepherds",
+   "Salt of the earth and light of the world"
+  ],
+  "answer": 3,
+  "explanation": "Jesus uses salt and light to describe the disciples' influence.",
+  "ref": "Matthew 5:13–14"
+ },
+ {
+  "id": "old-matthew-5-4",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Did Jesus say He came to destroy the law or the prophets?",
+  "choices": [
+   "Yes, to destroy them",
+   "Only to replace them",
+   "No, but to fulfill them",
+   "Only to ignore them"
+  ],
+  "answer": 2,
+  "explanation": "Jesus says He came not to destroy but to fulfill the law and prophets.",
+  "ref": "Matthew 5:17"
+ },
+ {
+  "id": "old-matthew-5-5",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus say about loving enemies?",
+  "choices": [
+   "Ignore them",
+   "Defeat them quickly",
+   "Avoid them completely",
+   "Love your enemies and pray for them"
+  ],
+  "answer": 3,
+  "explanation": "Jesus commands a radical love that includes enemies and persecutors.",
+  "ref": "Matthew 5:44"
+ },
+ {
+  "id": "old-matthew-6-1",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Jesus say we should give to the needy?",
+  "choices": [
+   "To be seen by others",
+   "In secret",
+   "Only in the temple",
+   "Only through priests"
+  ],
+  "answer": 1,
+  "explanation": "Jesus teaches hidden generosity rather than public display.",
+  "ref": "Matthew 6:3–4"
+ },
+ {
+  "id": "old-matthew-6-2",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What prayer begins with 'Our Father'?",
+  "choices": [
+   "The high priestly prayer",
+   "David's prayer",
+   "The prayer of Jabez",
+   "The Lord's Prayer"
+  ],
+  "answer": 3,
+  "explanation": "Jesus gives the Lord's Prayer as the pattern for prayer.",
+  "ref": "Matthew 6:9"
+ },
+ {
+  "id": "old-matthew-6-3",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus say no one can serve?",
+  "choices": [
+   "Two kingdoms",
+   "Two churches",
+   "Two masters",
+   "Two prophets"
+  ],
+  "answer": 2,
+  "explanation": "Jesus warns that divided loyalty between masters is impossible.",
+  "ref": "Matthew 6:24"
+ },
+ {
+  "id": "old-matthew-6-4",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus tell us to seek first?",
+  "choices": [
+   "Earthly success",
+   "Religious approval",
+   "Personal peace",
+   "The kingdom of God and his righteousness"
+  ],
+  "answer": 3,
+  "explanation": "Jesus teaches that God's kingdom and righteousness must come first.",
+  "ref": "Matthew 6:33"
+ },
+ {
+  "id": "old-matthew-6-5",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus say about tomorrow?",
+  "choices": [
+   "Plan it fully",
+   "Fear tomorrow",
+   "Control tomorrow",
+   "Take no thought for the morrow"
+  ],
+  "answer": 3,
+  "explanation": "Jesus teaches trust in God rather than anxiety about tomorrow.",
+  "ref": "Matthew 6:34"
+ },
+ {
+  "id": "old-matthew-7-1",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What warning opens Matthew 7?",
+  "choices": [
+   "Fear not",
+   "Pray always",
+   "Give cheerfully",
+   "Judge not"
+  ],
+  "answer": 3,
+  "explanation": "Jesus begins by warning against hypocritical judgment.",
+  "ref": "Matthew 7:1"
+ },
+ {
+  "id": "old-matthew-7-2",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus say to do, and it shall be given you?",
+  "choices": [
+   "Knock",
+   "Wait",
+   "Ask",
+   "Serve"
+  ],
+  "answer": 2,
+  "explanation": "Jesus teaches persistent prayer with asking, seeking, and knocking.",
+  "ref": "Matthew 7:7"
+ },
+ {
+  "id": "old-matthew-7-3",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What rule sums up the law and the prophets?",
+  "choices": [
+   "The law of sacrifice",
+   "Fast twice a week",
+   "Do unto others as you would have them do unto you",
+   "Honor the Sabbath"
+  ],
+  "answer": 2,
+  "explanation": "This is often called the Golden Rule.",
+  "ref": "Matthew 7:12"
+ },
+ {
+  "id": "old-matthew-7-4",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which gate leads to life?",
+  "choices": [
+   "The broad gate",
+   "The eastern gate",
+   "The temple gate",
+   "The strait or narrow gate"
+  ],
+  "answer": 3,
+  "explanation": "Jesus contrasts the narrow way of life with the broad way of destruction.",
+  "ref": "Matthew 7:14"
+ },
+ {
+  "id": "old-matthew-7-5",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Upon what foundation does the wise man build his house?",
+  "choices": [
+   "Sand",
+   "Clay",
+   "Wood",
+   "Rock"
+  ],
+  "answer": 3,
+  "explanation": "The wise man hears Jesus' words and does them, like building on rock.",
+  "ref": "Matthew 7:24–25"
+ },
+ {
+  "id": "old-matthew-8-1",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus heal first in this chapter?",
+  "choices": [
+   "A leper",
+   "A centurion's servant",
+   "Peter's mother-in-law",
+   "Two blind men"
+  ],
+  "answer": 0,
+  "explanation": "The first miracle Matthew records here is Jesus cleansing a leper.",
+  "ref": "Matthew 8:2–3"
+ },
+ {
+  "id": "old-matthew-8-2",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus praise in the centurion?",
+  "choices": [
+   "His rank",
+   "His wealth",
+   "His knowledge",
+   "His faith"
+  ],
+  "answer": 3,
+  "explanation": "Jesus marveled at the centurion's great faith.",
+  "ref": "Matthew 8:10"
+ },
+ {
+  "id": "old-matthew-8-3",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose fever did Jesus heal?",
+  "choices": [
+   "Peter's mother-in-law's",
+   "Mary's",
+   "Martha's",
+   "Salome's"
+  ],
+  "answer": 0,
+  "explanation": "Jesus healed Peter's mother-in-law of a fever.",
+  "ref": "Matthew 8:14–15"
+ },
+ {
+  "id": "old-matthew-8-4",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus rebuke on the sea of Galilee?",
+  "choices": [
+   "The disciples",
+   "The fishermen",
+   "The Pharisees",
+   "The winds and the sea"
+  ],
+  "answer": 3,
+  "explanation": "Jesus calmed the storm by rebuking the winds and sea.",
+  "ref": "Matthew 8:26"
+ },
+ {
+  "id": "old-matthew-8-5",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into what did the demons enter in the country of the Gergesenes?",
+  "choices": [
+   "Goats",
+   "A herd of swine",
+   "Cattle",
+   "Birds"
+  ],
+  "answer": 1,
+  "explanation": "Jesus cast the demons into a herd of swine that ran into the sea.",
+  "ref": "Matthew 8:32"
+ },
+ {
+  "id": "old-matthew-9-1",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to the man sick of the palsy before healing him?",
+  "choices": [
+   "Rise and follow me",
+   "Thy sins be forgiven thee",
+   "Go wash in Jordan",
+   "Fear not, only believe"
+  ],
+  "answer": 1,
+  "explanation": "Jesus first addressed the man's sins before healing his body.",
+  "ref": "Matthew 9:2"
+ },
+ {
+  "id": "old-matthew-9-2",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which man, sitting at the receipt of custom, did Jesus call to follow Him?",
+  "choices": [
+   "Matthew",
+   "Zacchaeus",
+   "Thomas",
+   "Philip"
+  ],
+  "answer": 0,
+  "explanation": "Matthew was called from his tax booth to follow Jesus.",
+  "ref": "Matthew 9:9"
+ },
+ {
+  "id": "old-matthew-9-3",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the woman with the issue of blood touch?",
+  "choices": [
+   "Jesus' hand",
+   "His sandal",
+   "The hem of his garment",
+   "His staff"
+  ],
+  "answer": 2,
+  "explanation": "She believed touching the hem of His garment would heal her.",
+  "ref": "Matthew 9:20–21"
+ },
+ {
+  "id": "old-matthew-9-4",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the ruler's daughter after Jesus took her by the hand?",
+  "choices": [
+   "She slept again",
+   "She spoke in a dream",
+   "She arose",
+   "She left the house"
+  ],
+  "answer": 2,
+  "explanation": "Jesus raised the girl by taking her hand.",
+  "ref": "Matthew 9:25"
+ },
+ {
+  "id": "old-matthew-9-5",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say about the harvest?",
+  "choices": [
+   "It was finished",
+   "It was delayed by drought",
+   "It belonged to Rome",
+   "It was plentiful, but the laborers were few"
+  ],
+  "answer": 3,
+  "explanation": "Jesus calls His followers to pray for laborers because the harvest is plentiful.",
+  "ref": "Matthew 9:37"
+ },
+ {
+  "id": "old-matthew-10-1",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many apostles did Jesus call and send?",
+  "choices": [
+   "Seven",
+   "Ten",
+   "Twelve",
+   "Seventy"
+  ],
+  "answer": 2,
+  "explanation": "Matthew lists the twelve apostles Jesus commissioned.",
+  "ref": "Matthew 10:1–2"
+ },
+ {
+  "id": "old-matthew-10-2",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What authority did Jesus give the apostles?",
+  "choices": [
+   "To rule cities",
+   "To cast out unclean spirits and heal sickness",
+   "To judge Rome",
+   "To collect taxes"
+  ],
+  "answer": 1,
+  "explanation": "Jesus gave them spiritual authority to cast out demons and heal disease.",
+  "ref": "Matthew 10:1"
+ },
+ {
+  "id": "old-matthew-10-3",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did Jesus send the twelve apostles?",
+  "choices": [
+   "The Gentiles",
+   "The lost sheep of the house of Israel",
+   "The Samaritans",
+   "All nations"
+  ],
+  "answer": 1,
+  "explanation": "Their first mission was focused on Israel.",
+  "ref": "Matthew 10:5–6"
+ },
+ {
+  "id": "old-matthew-10-4",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What message did Jesus tell the twelve apostles to preach?",
+  "choices": [
+   "The temple is restored",
+   "The kingdom of heaven is at hand",
+   "Rome will fall",
+   "Repay your enemies"
+  ],
+  "answer": 1,
+  "explanation": "The apostles were sent with the same kingdom message Jesus and John preached.",
+  "ref": "Matthew 10:7"
+ },
+ {
+  "id": "old-matthew-10-5",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Jesus sent the twelve out into the midst of wolves. What did He compare them to?",
+  "choices": [
+   "Lions",
+   "Sheep",
+   "Eagles",
+   "Kings"
+  ],
+  "answer": 1,
+  "explanation": "Jesus said He was sending them out as sheep in the midst of wolves.",
+  "ref": "Matthew 10:16"
+ },
+ {
+  "id": "old-matthew-11-1",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sent messengers to Jesus asking, 'Art thou he that should come?'",
+  "choices": [
+   "Peter",
+   "Herod",
+   "Joseph of Arimathea",
+   "John the Baptist"
+  ],
+  "answer": 3,
+  "explanation": "John sent his disciples from prison to ask Jesus if He was the expected one.",
+  "ref": "Matthew 11:2–3"
+ },
+ {
+  "id": "old-matthew-11-2",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus say was more than a prophet?",
+  "choices": [
+   "John the Baptist",
+   "Elijah",
+   "Moses",
+   "Isaiah"
+  ],
+  "answer": 0,
+  "explanation": "Jesus says John the Baptist was more than a prophet.",
+  "ref": "Matthew 11:9"
+ },
+ {
+  "id": "old-matthew-11-3",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which cities did Jesus rebuke for not repenting?",
+  "choices": [
+   "Chorazin and Bethsaida",
+   "Nazareth and Cana",
+   "Jericho and Samaria",
+   "Tyre and Sidon"
+  ],
+  "answer": 0,
+  "explanation": "Jesus rebukes cities that saw mighty works yet did not repent.",
+  "ref": "Matthew 11:21"
+ },
+ {
+  "id": "old-matthew-11-4",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What invitation does Jesus give?",
+  "choices": [
+   "Follow me and take the sword",
+   "Go into all the world",
+   "Come unto me, all ye that labour and are heavy laden",
+   "Ask and ye shall receive"
+  ],
+  "answer": 2,
+  "explanation": "Jesus invites the weary to come to Him for rest.",
+  "ref": "Matthew 11:28"
+ },
+ {
+  "id": "old-matthew-11-5",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus say is easy?",
+  "choices": [
+   "His law",
+   "His road",
+   "His discipline",
+   "His yoke"
+  ],
+  "answer": 3,
+  "explanation": "Jesus says His yoke is easy and His burden is light.",
+  "ref": "Matthew 11:30"
+ },
+ {
+  "id": "old-matthew-12-1",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the disciples doing on the Sabbath that angered the Pharisees?",
+  "choices": [
+   "Fishing",
+   "Carrying wood",
+   "Plucking ears of corn",
+   "Praying loudly"
+  ],
+  "answer": 2,
+  "explanation": "The Pharisees objected when the disciples plucked grain on the Sabbath.",
+  "ref": "Matthew 12:1–2"
+ },
+ {
+  "id": "old-matthew-12-2",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title did Jesus claim?",
+  "choices": [
+   "Son of Abraham",
+   "King of Israel",
+   "Master of the temple",
+   "Lord even of the sabbath day"
+  ],
+  "answer": 3,
+  "explanation": "Jesus declares Himself Lord of the Sabbath.",
+  "ref": "Matthew 12:8"
+ },
+ {
+  "id": "old-matthew-12-3",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Pharisees say Jesus cast out devils by?",
+  "choices": [
+   "The Spirit of God",
+   "Beelzebub",
+   "Moses",
+   "Their own power"
+  ],
+  "answer": 1,
+  "explanation": "They falsely accused Jesus of casting out demons by Beelzebub.",
+  "ref": "Matthew 12:24"
+ },
+ {
+  "id": "old-matthew-12-4",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sin does Jesus say shall not be forgiven?",
+  "choices": [
+   "Murder",
+   "Blasphemy against the Holy Ghost",
+   "Adultery",
+   "Theft"
+  ],
+  "answer": 1,
+  "explanation": "Jesus gives a solemn warning about blasphemy against the Holy Spirit.",
+  "ref": "Matthew 12:31"
+ },
+ {
+  "id": "old-matthew-12-5",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Jesus say are His brother, sister, and mother?",
+  "choices": [
+   "Those of His hometown",
+   "Whoever does the will of His Father",
+   "The twelve apostles only",
+   "The children of Israel"
+  ],
+  "answer": 1,
+  "explanation": "Jesus defines true family by obedience to the Father.",
+  "ref": "Matthew 12:50"
+ },
+ {
+  "id": "old-matthew-13-1",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What parable opens this chapter?",
+  "choices": [
+   "The lost sheep",
+   "The talents",
+   "The sower",
+   "The ten virgins"
+  ],
+  "answer": 2,
+  "explanation": "Jesus begins His kingdom parables with the parable of the sower.",
+  "ref": "Matthew 13:3"
+ },
+ {
+  "id": "old-matthew-13-2",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did some seed fall that was quickly devoured by birds?",
+  "choices": [
+   "By the wayside",
+   "Among thorns",
+   "On good ground",
+   "In the river"
+  ],
+  "answer": 0,
+  "explanation": "The birds devoured the seed that fell by the wayside.",
+  "ref": "Matthew 13:4"
+ },
+ {
+  "id": "old-matthew-13-3",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the good ground represent?",
+  "choices": [
+   "The temple in Jerusalem",
+   "The nation of Rome",
+   "Only the apostles",
+   "People who hear and understand the word"
+  ],
+  "answer": 3,
+  "explanation": "Good ground represents those who hear, understand, and bear fruit.",
+  "ref": "Matthew 13:23"
+ },
+ {
+  "id": "old-matthew-13-4",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What small seed grows into a tree in one parable?",
+  "choices": [
+   "Mustard seed",
+   "Wheat",
+   "Barley seed",
+   "Olive seed"
+  ],
+  "answer": 0,
+  "explanation": "Jesus compares the kingdom to a mustard seed that grows greatly.",
+  "ref": "Matthew 13:31–32"
+ },
+ {
+  "id": "old-matthew-13-5",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the man do after finding treasure hidden in a field?",
+  "choices": [
+   "He gave it away",
+   "He sold all that he had and bought the field",
+   "He carried it home at once",
+   "He told the Pharisees"
+  ],
+  "answer": 1,
+  "explanation": "The kingdom is worth everything, like a treasure worth selling all for.",
+  "ref": "Matthew 13:44"
+ },
+ {
+  "id": "old-matthew-14-1",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who had John the Baptist beheaded?",
+  "choices": [
+   "Herod",
+   "Pilate",
+   "Caesar",
+   "Caiaphas"
+  ],
+  "answer": 0,
+  "explanation": "Herod ordered John the Baptist to be beheaded in prison.",
+  "ref": "Matthew 14:10"
+ },
+ {
+  "id": "old-matthew-14-2",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many loaves did Jesus use to feed the five thousand?",
+  "choices": [
+   "Three",
+   "Five",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "The disciples had five loaves and two fishes.",
+  "ref": "Matthew 14:17"
+ },
+ {
+  "id": "old-matthew-14-3",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many baskets of fragments were taken up after the feeding?",
+  "choices": [
+   "Seven",
+   "Twelve",
+   "Five",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "Twelve baskets remained after everyone had eaten.",
+  "ref": "Matthew 14:20"
+ },
+ {
+  "id": "old-matthew-14-4",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus do on the sea during the night?",
+  "choices": [
+   "Sailed across in a boat",
+   "Called fish to the surface",
+   "Walked on the water",
+   "Stilled the waves from shore"
+  ],
+  "answer": 2,
+  "explanation": "Jesus came to the disciples walking on the sea.",
+  "ref": "Matthew 14:25"
+ },
+ {
+  "id": "old-matthew-14-5",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Peter begin to sink?",
+  "choices": [
+   "He forgot Jesus' name",
+   "The wind changed direction",
+   "The boat struck him",
+   "He was afraid"
+  ],
+  "answer": 3,
+  "explanation": "Peter sank when he became afraid and doubted.",
+  "ref": "Matthew 14:30"
+ },
+ {
+  "id": "old-matthew-15-1",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say makes a person unclean?",
+  "choices": [
+   "What comes out of the mouth from the heart",
+   "Not washing hands",
+   "Touching Gentiles",
+   "Traveling on the Sabbath"
+  ],
+  "answer": 0,
+  "explanation": "Jesus teaches that defilement comes from within, from the heart.",
+  "ref": "Matthew 15:11"
+ },
+ {
+  "id": "old-matthew-15-2",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came asking mercy for her daughter?",
+  "choices": [
+   "A Samaritan woman",
+   "Mary Magdalene",
+   "A woman of Canaan",
+   "Martha"
+  ],
+  "answer": 2,
+  "explanation": "A Canaanite woman pleaded for Jesus to heal her daughter.",
+  "ref": "Matthew 15:22"
+ },
+ {
+  "id": "old-matthew-15-3",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus praise in the woman of Canaan?",
+  "choices": [
+   "Her persistence in fasting",
+   "Her great faith",
+   "Her knowledge of Scripture",
+   "Her family line"
+  ],
+  "answer": 1,
+  "explanation": "Jesus commended her great faith before healing her daughter.",
+  "ref": "Matthew 15:28"
+ },
+ {
+  "id": "old-matthew-15-4",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many loaves were used to feed the four thousand?",
+  "choices": [
+   "Five",
+   "Three",
+   "Twelve",
+   "Seven"
+  ],
+  "answer": 3,
+  "explanation": "Jesus used seven loaves and a few little fishes.",
+  "ref": "Matthew 15:34"
+ },
+ {
+  "id": "old-matthew-15-5",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many baskets were taken up after the feeding of the four thousand?",
+  "choices": [
+   "Twelve",
+   "Ten",
+   "Seven",
+   "Five"
+  ],
+  "answer": 2,
+  "explanation": "Seven baskets of fragments remained after the miracle.",
+  "ref": "Matthew 15:37"
+ },
+ {
+  "id": "old-matthew-16-1",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sign did the Pharisees and Sadducees ask Jesus for?",
+  "choices": [
+   "A sign from Moses",
+   "A sign from heaven",
+   "A sign in the temple",
+   "A sign from David"
+  ],
+  "answer": 1,
+  "explanation": "They sought a sign from heaven to test Jesus.",
+  "ref": "Matthew 16:1"
+ },
+ {
+  "id": "old-matthew-16-2",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter confess Jesus to be?",
+  "choices": [
+   "The Christ, the Son of the living God",
+   "A great prophet",
+   "The son of Joseph",
+   "The king of Nazareth"
+  ],
+  "answer": 0,
+  "explanation": "Peter confessed that Jesus is the Christ, the Son of the living God.",
+  "ref": "Matthew 16:16"
+ },
+ {
+  "id": "old-matthew-16-3",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say He would give to Peter?",
+  "choices": [
+   "A sword",
+   "A crown",
+   "A new robe",
+   "The keys of the kingdom of heaven"
+  ],
+  "answer": 3,
+  "explanation": "Jesus speaks of giving Peter the keys of the kingdom.",
+  "ref": "Matthew 16:19"
+ },
+ {
+  "id": "old-matthew-16-4",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus begin to show His disciples?",
+  "choices": [
+   "How to rule Israel",
+   "How to overthrow Rome",
+   "When the kingdom would appear immediately",
+   "That He must suffer, die, and rise again"
+  ],
+  "answer": 3,
+  "explanation": "Jesus began clearly predicting His suffering, death, and resurrection.",
+  "ref": "Matthew 16:21"
+ },
+ {
+  "id": "old-matthew-16-5",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say a disciple must do to follow Him?",
+  "choices": [
+   "Return to Nazareth",
+   "Defeat his enemies",
+   "Build an altar",
+   "Take up his cross"
+  ],
+  "answer": 3,
+  "explanation": "Jesus taught that following Him requires self-denial and taking up one's cross.",
+  "ref": "Matthew 16:24"
+ },
+ {
+  "id": "old-matthew-17-1",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On the mountain, who appeared talking with Jesus?",
+  "choices": [
+   "Elijah and Isaiah",
+   "Moses and Elias",
+   "David and Solomon",
+   "Abraham and Jacob"
+  ],
+  "answer": 1,
+  "explanation": "Moses and Elias appeared speaking with Jesus in the transfiguration.",
+  "ref": "Matthew 17:3"
+ },
+ {
+  "id": "old-matthew-17-2",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the voice from the bright cloud say?",
+  "choices": [
+   "Prepare ye the way",
+   "Fear not",
+   "This is my beloved Son, hear ye him",
+   "I am the God of Abraham"
+  ],
+  "answer": 2,
+  "explanation": "The Father again identified Jesus as His beloved Son and commanded the disciples to hear Him.",
+  "ref": "Matthew 17:5"
+ },
+ {
+  "id": "old-matthew-17-3",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why could the disciples not cast out the demon from the boy?",
+  "choices": [
+   "They did not believe",
+   "They lacked authority",
+   "They were too tired",
+   "The crowd stopped them"
+  ],
+  "answer": 0,
+  "explanation": "Jesus said their failure came because of unbelief.",
+  "ref": "Matthew 17:20"
+ },
+ {
+  "id": "old-matthew-17-4",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What size of faith did Jesus mention?",
+  "choices": [
+   "As a grain of mustard seed",
+   "Like a cedar tree",
+   "As a mountain",
+   "As a river"
+  ],
+  "answer": 0,
+  "explanation": "Jesus used mustard seed faith to teach about trust in God.",
+  "ref": "Matthew 17:20"
+ },
+ {
+  "id": "old-matthew-17-5",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus tell Peter he would find the money to pay the tribute?",
+  "choices": [
+   "In the temple treasury",
+   "Inside his net",
+   "In the mouth of a fish",
+   "Under a stone"
+  ],
+  "answer": 2,
+  "explanation": "Jesus told Peter to find the needed coin in the fish's mouth.",
+  "ref": "Matthew 17:27"
+ },
+ {
+  "id": "old-matthew-18-1",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must one become to enter the kingdom?",
+  "choices": [
+   "Like a king",
+   "Like a priest",
+   "As little children",
+   "As a prophet"
+  ],
+  "answer": 2,
+  "explanation": "Jesus says we must be converted and become as little children.",
+  "ref": "Matthew 18:3"
+ },
+ {
+  "id": "old-matthew-18-2",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What parable shows the Father's care for one wandering sinner?",
+  "choices": [
+   "The talents",
+   "The lost sheep",
+   "The sower",
+   "The wicked husbandmen"
+  ],
+  "answer": 1,
+  "explanation": "The parable of the lost sheep shows God's care for one who goes astray.",
+  "ref": "Matthew 18:12–14"
+ },
+ {
+  "id": "old-matthew-18-3",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How often did Jesus tell Peter to forgive?",
+  "choices": [
+   "Seven times",
+   "Seventy times seven",
+   "Twelve times",
+   "Once only"
+  ],
+  "answer": 1,
+  "explanation": "Jesus called for radical, ongoing forgiveness.",
+  "ref": "Matthew 18:22"
+ },
+ {
+  "id": "old-matthew-18-4",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king forgive the servant in the parable?",
+  "choices": [
+   "A small tax",
+   "A great debt",
+   "A prison sentence",
+   "A field payment"
+  ],
+  "answer": 1,
+  "explanation": "The lord forgave the servant an enormous debt out of compassion.",
+  "ref": "Matthew 18:27"
+ },
+ {
+  "id": "old-matthew-18-5",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why was the unforgiving servant delivered to the tormentors?",
+  "choices": [
+   "He left the kingdom",
+   "He would not forgive his fellow servant",
+   "He stole from the king",
+   "He lied about the debt"
+  ],
+  "answer": 1,
+  "explanation": "He refused to show the same mercy he himself had received.",
+  "ref": "Matthew 18:28–34"
+ },
+ {
+  "id": "old-matthew-19-1",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What subject did the Pharisees test Jesus about?",
+  "choices": [
+   "Fasting",
+   "Tithing",
+   "Prayer",
+   "Divorce"
+  ],
+  "answer": 3,
+  "explanation": "They tested Jesus with a question about divorce.",
+  "ref": "Matthew 19:3"
+ },
+ {
+  "id": "old-matthew-19-2",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say God joined together?",
+  "choices": [
+   "Priests and kings",
+   "Parents and children",
+   "Israel and Judah",
+   "Man and wife"
+  ],
+  "answer": 3,
+  "explanation": "Jesus says what God has joined together, man should not put asunder.",
+  "ref": "Matthew 19:6"
+ },
+ {
+  "id": "old-matthew-19-3",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus tell not to forbid from coming to Him?",
+  "choices": [
+   "The Gentiles",
+   "The sick",
+   "Little children",
+   "The poor"
+  ],
+  "answer": 2,
+  "explanation": "Jesus welcomed little children and said the kingdom belongs to such as them.",
+  "ref": "Matthew 19:14"
+ },
+ {
+  "id": "old-matthew-19-4",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the rich young man ask Jesus?",
+  "choices": [
+   "How to become an apostle",
+   "When the kingdom would come",
+   "How to pray",
+   "What good thing shall I do to have eternal life?"
+  ],
+  "answer": 3,
+  "explanation": "He came asking what he must do to have eternal life.",
+  "ref": "Matthew 19:16"
+ },
+ {
+  "id": "old-matthew-19-5",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell the rich young man to do if he wanted to be perfect?",
+  "choices": [
+   "Serve in the temple",
+   "Sell what he had, give to the poor, and follow Him",
+   "Gain more knowledge",
+   "Fast for forty days"
+  ],
+  "answer": 1,
+  "explanation": "Jesus told him to sell what he had, give to the poor, and follow Him. The young man went away sorrowful, for he had great possessions.",
+  "ref": "Matthew 19:21"
+ },
+ {
+  "id": "old-matthew-20-1",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What parable opens this chapter?",
+  "choices": [
+   "The talents",
+   "The ten virgins",
+   "The great supper",
+   "The laborers in the vineyard"
+  ],
+  "answer": 3,
+  "explanation": "Jesus begins with the parable of laborers hired at different hours.",
+  "ref": "Matthew 20:1"
+ },
+ {
+  "id": "old-matthew-20-2",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much did the householder agree to pay the first laborers?",
+  "choices": [
+   "Half a talent",
+   "A penny a day",
+   "Ten coins",
+   "Two denarii"
+  ],
+  "answer": 1,
+  "explanation": "The first laborers agreed to work for a penny a day.",
+  "ref": "Matthew 20:2"
+ },
+ {
+  "id": "old-matthew-20-3",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What principle does Jesus state?",
+  "choices": [
+   "The strong survive",
+   "The last shall be first, and the first last",
+   "The rich are blessed",
+   "Only the chosen labor"
+  ],
+  "answer": 1,
+  "explanation": "The parable ends with Jesus overturning human expectations about reward.",
+  "ref": "Matthew 20:16"
+ },
+ {
+  "id": "old-matthew-20-4",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say He came to give?",
+  "choices": [
+   "A new law",
+   "An earthly kingdom",
+   "A temple offering",
+   "His life a ransom for many"
+  ],
+  "answer": 3,
+  "explanation": "Jesus defines His mission in terms of sacrificial service and ransom.",
+  "ref": "Matthew 20:28"
+ },
+ {
+  "id": "old-matthew-20-5",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the two blind men cry out by the road?",
+  "choices": [
+   "Lord, increase our faith",
+   "Have mercy on us, O Lord, thou Son of David",
+   "Rabbi, teach us",
+   "Show us the kingdom"
+  ],
+  "answer": 1,
+  "explanation": "They called Jesus the Son of David and pleaded for mercy.",
+  "ref": "Matthew 20:30"
+ },
+ {
+  "id": "old-matthew-21-1",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal did Jesus ride into Jerusalem?",
+  "choices": [
+   "A horse",
+   "A donkey",
+   "A camel",
+   "A mule"
+  ],
+  "answer": 1,
+  "explanation": "Jesus entered Jerusalem on a donkey in fulfillment of prophecy.",
+  "ref": "Matthew 21:5–7"
+ },
+ {
+  "id": "old-matthew-21-2",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the crowds cry as He entered the city?",
+  "choices": [
+   "Long live the king",
+   "Hosanna to the Son of David",
+   "Blessed is Rome",
+   "Peace to Herod"
+  ],
+  "answer": 1,
+  "explanation": "The crowds shouted Hosanna to the Son of David.",
+  "ref": "Matthew 21:9"
+ },
+ {
+  "id": "old-matthew-21-3",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus cast out of the temple?",
+  "choices": [
+   "Only Roman guards",
+   "Those who bought and sold",
+   "The Levites",
+   "The poor"
+  ],
+  "answer": 1,
+  "explanation": "Jesus cleansed the temple by driving out the buyers and sellers.",
+  "ref": "Matthew 21:12"
+ },
+ {
+  "id": "old-matthew-21-4",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the fig tree Jesus cursed?",
+  "choices": [
+   "It blossomed",
+   "It bore fruit later",
+   "It was transplanted",
+   "It withered away"
+  ],
+  "answer": 3,
+  "explanation": "The fig tree immediately withered after Jesus cursed it.",
+  "ref": "Matthew 21:19"
+ },
+ {
+  "id": "old-matthew-21-5",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In the parable of the wicked husbandmen, what did the husbandmen do to the son?",
+  "choices": [
+   "They crowned him",
+   "They welcomed him",
+   "They hid him",
+   "They killed him"
+  ],
+  "answer": 3,
+  "explanation": "The tenants cast the son out of the vineyard and killed him.",
+  "ref": "Matthew 21:39"
+ },
+ {
+  "id": "old-matthew-22-1",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What event is the kingdom of heaven compared to at the start of the chapter?",
+  "choices": [
+   "A harvest",
+   "A coronation",
+   "A wedding for a king's son",
+   "A vineyard feast"
+  ],
+  "answer": 2,
+  "explanation": "Jesus opens with the parable of a king who made a marriage for his son.",
+  "ref": "Matthew 22:2"
+ },
+ {
+  "id": "old-matthew-22-2",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say should be rendered to Caesar?",
+  "choices": [
+   "Only taxes from Gentiles",
+   "The things that are Caesar's",
+   "All worship",
+   "The temple treasury"
+  ],
+  "answer": 1,
+  "explanation": "Jesus distinguished between duties to Caesar and duties to God.",
+  "ref": "Matthew 22:21"
+ },
+ {
+  "id": "old-matthew-22-3",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose wife did the Sadducees ask about in the resurrection?",
+  "choices": [
+   "Herod's wife",
+   "Pilate's wife",
+   "A widow who had seven husbands",
+   "Mary of Bethany"
+  ],
+  "answer": 2,
+  "explanation": "The Sadducees asked about a woman who had been married to seven brothers.",
+  "ref": "Matthew 22:25–28"
+ },
+ {
+  "id": "old-matthew-22-4",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus name as the first and great commandment?",
+  "choices": [
+   "Love your neighbor as yourself",
+   "Honor your father and mother",
+   "Keep the Sabbath day",
+   "Love the Lord your God with all your heart"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said the greatest commandment is to love God fully.",
+  "ref": "Matthew 22:37–38"
+ },
+ {
+  "id": "old-matthew-22-5",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question did Jesus ask about the Christ at the end of the chapter?",
+  "choices": [
+   "Where will he be born?",
+   "How many followers will he have?",
+   "When will he reign?",
+   "Whose son is he?"
+  ],
+  "answer": 3,
+  "explanation": "Jesus asked whose son the Christ is, leading them to consider David's Lord.",
+  "ref": "Matthew 22:42"
+ },
+ {
+  "id": "old-matthew-23-1",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus say the scribes and Pharisees sit?",
+  "choices": [
+   "David's throne",
+   "The judgment seat",
+   "The temple gate",
+   "Moses' seat"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said the scribes and Pharisees sit in Moses' seat.",
+  "ref": "Matthew 23:2"
+ },
+ {
+  "id": "old-matthew-23-2",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say the Pharisees loved at feasts?",
+  "choices": [
+   "The cheapest seats",
+   "Hidden corners",
+   "The uppermost rooms",
+   "Outdoor tables"
+  ],
+  "answer": 2,
+  "explanation": "He said they loved the chief places at feasts.",
+  "ref": "Matthew 23:6"
+ },
+ {
+  "id": "old-matthew-23-3",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What image did Jesus use to describe the scribes and Pharisees?",
+  "choices": [
+   "Whited sepulchres",
+   "Broken cisterns",
+   "Fallen towers",
+   "Dry wells"
+  ],
+  "answer": 0,
+  "explanation": "Jesus compared them to whitewashed tombs that looked clean outside but were full of uncleanness inside.",
+  "ref": "Matthew 23:27"
+ },
+ {
+  "id": "old-matthew-23-4",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "What city did Jesus lament over at the end of the chapter?",
+  "choices": [
+   "Bethlehem",
+   "Nazareth",
+   "Jerusalem",
+   "Jericho"
+  ],
+  "answer": 2,
+  "explanation": "Jesus sorrowed over Jerusalem and its refusal to come to Him.",
+  "ref": "Matthew 23:37"
+ },
+ {
+  "id": "old-matthew-23-5",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jesus say Jerusalem's house would be left?",
+  "choices": [
+   "Full of worshipers",
+   "Rebuilt in glory",
+   "Hidden from Rome",
+   "Desolate"
+  ],
+  "answer": 3,
+  "explanation": "Jesus declared, 'Your house is left unto you desolate.'",
+  "ref": "Matthew 23:38"
+ },
+ {
+  "id": "old-matthew-24-1",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say would happen to the temple stones?",
+  "choices": [
+   "They would shine brighter",
+   "They would be covered with gold",
+   "Not one would be left upon another",
+   "They would be moved to Galilee"
+  ],
+  "answer": 2,
+  "explanation": "Jesus foretold the temple's destruction.",
+  "ref": "Matthew 24:2"
+ },
+ {
+  "id": "old-matthew-24-2",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say His disciples would hear of, though the end was not yet?",
+  "choices": [
+   "Only peace treaties",
+   "New kings in Jerusalem",
+   "The rebuilding of Babel",
+   "Wars and rumors of wars"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said they would hear of wars and rumours of wars, and told them not to be troubled, because the end is not yet.",
+  "ref": "Matthew 24:6"
+ },
+ {
+  "id": "old-matthew-24-3",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say must be preached in all the world before the end comes?",
+  "choices": [
+   "The law of Moses",
+   "This gospel of the kingdom",
+   "The history of Israel",
+   "The psalms of David"
+  ],
+  "answer": 1,
+  "explanation": "Jesus said the gospel of the kingdom would be preached in all the world.",
+  "ref": "Matthew 24:14"
+ },
+ {
+  "id": "old-matthew-24-4",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did Jesus say knows the day and hour?",
+  "choices": [
+   "Only the angels",
+   "The prophets",
+   "No man, but the Father only",
+   "The apostles"
+  ],
+  "answer": 2,
+  "explanation": "Jesus said no man knows the day or hour, but the Father only.",
+  "ref": "Matthew 24:36"
+ },
+ {
+  "id": "old-matthew-24-5",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command does Jesus repeat because His coming will be unexpected?",
+  "choices": [
+   "Go to Jerusalem",
+   "Build the temple",
+   "Watch",
+   "Number the people"
+  ],
+  "answer": 2,
+  "explanation": "Jesus calls His followers to watch because they do not know the hour.",
+  "ref": "Matthew 24:42"
+ },
+ {
+  "id": "old-matthew-25-1",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many of the virgins were wise?",
+  "choices": [
+   "Two",
+   "Five",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "Five were wise and five were foolish.",
+  "ref": "Matthew 25:2"
+ },
+ {
+  "id": "old-matthew-25-2",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the foolish virgins fail to bring with them?",
+  "choices": [
+   "Bread",
+   "Money",
+   "Oil",
+   "Garments"
+  ],
+  "answer": 2,
+  "explanation": "The foolish took their lamps but brought no oil.",
+  "ref": "Matthew 25:3"
+ },
+ {
+  "id": "old-matthew-25-3",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In the parable of the talents, what did the servant with one talent do?",
+  "choices": [
+   "Doubled it immediately",
+   "Gave it to the poor",
+   "Buried it in the earth",
+   "Lost it on the road"
+  ],
+  "answer": 2,
+  "explanation": "The servant hid his lord's money in the ground.",
+  "ref": "Matthew 25:18"
+ },
+ {
+  "id": "old-matthew-25-4",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the unprofitable servant?",
+  "choices": [
+   "He was promoted",
+   "He became ruler over cities",
+   "He was forgiven without rebuke",
+   "He was cast into outer darkness"
+  ],
+  "answer": 3,
+  "explanation": "The unprofitable servant was cast into outer darkness.",
+  "ref": "Matthew 25:30"
+ },
+ {
+  "id": "old-matthew-25-5",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were the righteous commended when the Son of man separated the nations?",
+  "choices": [
+   "They built great temples",
+   "They were born in Israel",
+   "They served the least of these",
+   "They memorized the law"
+  ],
+  "answer": 2,
+  "explanation": "Jesus said what they did to the least of His brethren, they did to Him.",
+  "ref": "Matthew 25:40"
+ },
+ {
+  "id": "old-matthew-26-1",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who agreed to betray Jesus for thirty pieces of silver?",
+  "choices": [
+   "Judas Iscariot",
+   "Peter",
+   "Caiaphas",
+   "Pilate"
+  ],
+  "answer": 0,
+  "explanation": "Judas covenanted to betray Jesus for thirty pieces of silver.",
+  "ref": "Matthew 26:14–15"
+ },
+ {
+  "id": "old-matthew-26-2",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the woman pour on Jesus' head at Bethany?",
+  "choices": [
+   "Very precious ointment",
+   "Water",
+   "Oil for lamps",
+   "Wine"
+  ],
+  "answer": 0,
+  "explanation": "A woman anointed Jesus with very precious ointment.",
+  "ref": "Matthew 26:7"
+ },
+ {
+  "id": "old-matthew-26-3",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "As Jesus gave the bread to His disciples at the supper, what did He call it?",
+  "choices": [
+   "The law",
+   "The kingdom",
+   "My body",
+   "Israel"
+  ],
+  "answer": 2,
+  "explanation": "Jesus broke the bread and said, 'This is my body.'",
+  "ref": "Matthew 26:26"
+ },
+ {
+  "id": "old-matthew-26-4",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What request did Jesus make in Gethsemane?",
+  "choices": [
+   "Let this cup pass from me",
+   "Send twelve legions immediately",
+   "Destroy the temple",
+   "Hide the disciples"
+  ],
+  "answer": 0,
+  "explanation": "Jesus prayed that the cup might pass, yet submitted to the Father's will.",
+  "ref": "Matthew 26:39"
+ },
+ {
+  "id": "old-matthew-26-5",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times did Peter deny Jesus before the rooster crowed?",
+  "choices": [
+   "Three times",
+   "Once",
+   "Twice",
+   "Seven times"
+  ],
+  "answer": 0,
+  "explanation": "Peter denied Jesus three times before the cock crowed.",
+  "ref": "Matthew 26:69–75"
+ },
+ {
+  "id": "old-matthew-27-1",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Pilate release to the crowd instead of Jesus?",
+  "choices": [
+   "Simon of Cyrene",
+   "Barabbas",
+   "Judas",
+   "John the Baptist"
+  ],
+  "answer": 1,
+  "explanation": "Pilate released Barabbas and delivered Jesus to be crucified.",
+  "ref": "Matthew 27:21–26"
+ },
+ {
+  "id": "old-matthew-27-2",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the soldiers place on Jesus' head?",
+  "choices": [
+   "A golden crown",
+   "A priestly turban",
+   "An olive wreath",
+   "A crown of thorns"
+  ],
+  "answer": 3,
+  "explanation": "The soldiers twisted a crown of thorns and put it on His head.",
+  "ref": "Matthew 27:29"
+ },
+ {
+  "id": "old-matthew-27-3",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title was written over Jesus on the cross?",
+  "choices": [
+   "King of the Jews",
+   "Lord of the Sabbath",
+   "Son of Joseph",
+   "Prince of Peace"
+  ],
+  "answer": 0,
+  "explanation": "The inscription read, 'This is Jesus the King of the Jews.'",
+  "ref": "Matthew 27:37"
+ },
+ {
+  "id": "old-matthew-27-4",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the veil of the temple when Jesus died?",
+  "choices": [
+   "It was torn in two",
+   "It was strengthened",
+   "It caught fire",
+   "It disappeared"
+  ],
+  "answer": 0,
+  "explanation": "The veil of the temple was rent in twain from top to bottom.",
+  "ref": "Matthew 27:51"
+ },
+ {
+  "id": "old-matthew-27-5",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who laid Jesus' body in his own new tomb?",
+  "choices": [
+   "Nicodemus",
+   "Simon Peter",
+   "Joseph of Arimathaea",
+   "Zacchaeus"
+  ],
+  "answer": 2,
+  "explanation": "Joseph of Arimathaea placed Jesus in his own new tomb.",
+  "ref": "Matthew 27:57–60"
+ },
+ {
+  "id": "old-matthew-28-1",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to see the sepulchre early on the first day of the week?",
+  "choices": [
+   "Martha and Mary",
+   "Joanna and Salome",
+   "Only Peter",
+   "Mary Magdalene and the other Mary"
+  ],
+  "answer": 3,
+  "explanation": "Mary Magdalene and the other Mary came to the tomb.",
+  "ref": "Matthew 28:1"
+ },
+ {
+  "id": "old-matthew-28-2",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the angel done to the stone at the tomb?",
+  "choices": [
+   "Hidden it",
+   "Broken it into pieces",
+   "Rolled it back",
+   "Sealed it again"
+  ],
+  "answer": 2,
+  "explanation": "The angel descended and rolled back the stone from the door.",
+  "ref": "Matthew 28:2"
+ },
+ {
+  "id": "old-matthew-28-3",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What message did the angel give the women about Jesus?",
+  "choices": [
+   "He is risen",
+   "He is sleeping",
+   "He is in Galilee already",
+   "He has gone to the temple"
+  ],
+  "answer": 0,
+  "explanation": "The angel announced that Jesus had risen from the dead.",
+  "ref": "Matthew 28:6"
+ },
+ {
+  "id": "old-matthew-28-4",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What false report were the guards told to spread?",
+  "choices": [
+   "That the women took the body",
+   "That Pilate moved the body",
+   "That Joseph buried Him elsewhere",
+   "That the disciples stole Him while they slept"
+  ],
+  "answer": 3,
+  "explanation": "The guards were bribed to say the disciples stole the body while they slept.",
+  "ref": "Matthew 28:13"
+ },
+ {
+  "id": "old-matthew-28-5",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What command did Jesus give in the Great Commission?",
+  "choices": [
+   "Build a temple in Galilee",
+   "Return to fishing",
+   "Wait silently in Jerusalem",
+   "Go and teach all nations"
+  ],
+  "answer": 3,
+  "explanation": "Jesus sent His disciples to make disciples of all nations.",
+  "ref": "Matthew 28:19"
+ }
+]

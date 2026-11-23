@@ -1,0 +1,322 @@
+[
+ {
+  "id": "old-ruth-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Elimelech go from Bethlehemjudah to sojourn in Moab?",
+  "choices": [
+   "There was a famine in the land",
+   "War in Judah",
+   "He was exiled",
+   "He sought a king"
+  ],
+  "answer": 0,
+  "explanation": "Elimelech moved his family to Moab because of famine.",
+  "ref": "Ruth 1:1"
+ },
+ {
+  "id": "old-ruth-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the names of Naomi's two sons?",
+  "choices": [
+   "Mahlon and Chilion",
+   "Boaz and Obed",
+   "Perez and Zerah",
+   "Jesse and Eliab"
+  ],
+  "answer": 0,
+  "explanation": "Naomi's sons were named Mahlon and Chilion.",
+  "ref": "Ruth 1:2"
+ },
+ {
+  "id": "old-ruth-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After Naomi's husband and sons died, what did she urge her daughters in law to do?",
+  "choices": [
+   "Go with her to Bethlehem",
+   "Marry in Israel immediately",
+   "Wait in the fields",
+   "Return each to her mother's house"
+  ],
+  "answer": 3,
+  "explanation": "Naomi urged Orpah and Ruth to return to their own people.",
+  "ref": "Ruth 1:8"
+ },
+ {
+  "id": "old-ruth-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said, 'Whither thou goest, I will go'?",
+  "choices": [
+   "Naomi",
+   "Ruth",
+   "Orpah",
+   "Boaz"
+  ],
+  "answer": 1,
+  "explanation": "Ruth's pledge of loyalty to Naomi is one of the book's key moments.",
+  "ref": "Ruth 1:16"
+ },
+ {
+  "id": "old-ruth-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Naomi ask to be called when she returned to Bethlehem?",
+  "choices": [
+   "Hannah",
+   "Mara",
+   "Deborah",
+   "Leah"
+  ],
+  "answer": 1,
+  "explanation": "Naomi said to call her Mara because the Almighty had dealt bitterly with her.",
+  "ref": "Ruth 1:20"
+ },
+ {
+  "id": "old-ruth-2-1",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Boaz's relationship to Naomi's family?",
+  "choices": [
+   "A mighty man of wealth of the family of Elimelech",
+   "Her son",
+   "A priest",
+   "A judge"
+  ],
+  "answer": 0,
+  "explanation": "Boaz is introduced as a wealthy relative of Elimelech.",
+  "ref": "Ruth 2:1"
+ },
+ {
+  "id": "old-ruth-2-2",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What humble work did Ruth ask to do to provide food?",
+  "choices": [
+   "Bake bread",
+   "Sell garments",
+   "Draw water",
+   "Glean ears of corn after the reapers"
+  ],
+  "answer": 3,
+  "explanation": "Ruth sought permission to glean after the reapers.",
+  "ref": "Ruth 2:2"
+ },
+ {
+  "id": "old-ruth-2-3",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In whose field did Ruth happen to glean?",
+  "choices": [
+   "Mahlon's",
+   "Boaz's",
+   "The king's",
+   "Jesse's"
+  ],
+  "answer": 1,
+  "explanation": "Ruth's 'hap' was to glean in the field belonging to Boaz.",
+  "ref": "Ruth 2:3"
+ },
+ {
+  "id": "old-ruth-2-4",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What blessing did Boaz speak over Ruth for her kindness to Naomi?",
+  "choices": [
+   "That she would become queen",
+   "That the Lord would recompense her work and reward her under His wings",
+   "That she would own the field",
+   "That she would return to Moab"
+  ],
+  "answer": 1,
+  "explanation": "Boaz praised Ruth for trusting under the wings of the Lord God of Israel.",
+  "ref": "Ruth 2:12"
+ },
+ {
+  "id": "old-ruth-2-5",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Naomi call Boaz when she learned whose field Ruth had gleaned in?",
+  "choices": [
+   "A stranger",
+   "The village elder",
+   "One of our near kinsmen",
+   "A prophet"
+  ],
+  "answer": 2,
+  "explanation": "Naomi recognized Boaz as a near kinsman and potential redeemer.",
+  "ref": "Ruth 2:20"
+ },
+ {
+  "id": "old-ruth-3-1",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Naomi seek for Ruth at the start of the chapter?",
+  "choices": [
+   "A larger field",
+   "A dowry from Moab",
+   "Rest, that it might be well with her",
+   "A place in the tabernacle"
+  ],
+  "answer": 2,
+  "explanation": "Naomi wanted security and rest for Ruth.",
+  "ref": "Ruth 3:1"
+ },
+ {
+  "id": "old-ruth-3-2",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Naomi tell Ruth Boaz would be that night?",
+  "choices": [
+   "At the city gate",
+   "At the threshingfloor",
+   "In Bethlehem's market",
+   "At Shiloh"
+  ],
+  "answer": 1,
+  "explanation": "Boaz was to be at the threshingfloor winnowing barley.",
+  "ref": "Ruth 3:2"
+ },
+ {
+  "id": "old-ruth-3-3",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ruth ask Boaz to do as a kinsman?",
+  "choices": [
+   "Spread his skirt over her",
+   "Give her money",
+   "Return her to Moab",
+   "Sell the field"
+  ],
+  "answer": 0,
+  "explanation": "Ruth asked Boaz to act as a near kinsman-redeemer.",
+  "ref": "Ruth 3:9"
+ },
+ {
+  "id": "old-ruth-3-4",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What obstacle did Boaz mention before he could redeem Ruth?",
+  "choices": [
+   "He was too poor",
+   "Naomi objected",
+   "Ruth was from another tribe",
+   "There was a nearer kinsman"
+  ],
+  "answer": 3,
+  "explanation": "Boaz explained that another kinsman had a prior claim.",
+  "ref": "Ruth 3:12"
+ },
+ {
+  "id": "old-ruth-3-5",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many measures of barley did Boaz give Ruth before she returned to Naomi?",
+  "choices": [
+   "Two",
+   "Six",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Boaz sent Ruth home with six measures of barley.",
+  "ref": "Ruth 3:15"
+ },
+ {
+  "id": "old-ruth-4-1",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Boaz go to settle the redemption matter with the nearer kinsman?",
+  "choices": [
+   "The threshingfloor",
+   "The field of barley",
+   "Moab",
+   "The gate"
+  ],
+  "answer": 3,
+  "explanation": "Boaz handled the matter publicly at the city gate.",
+  "ref": "Ruth 4:1"
+ },
+ {
+  "id": "old-ruth-4-2",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many elders of the city did Boaz call to witness the transaction?",
+  "choices": [
+   "5",
+   "10",
+   "12",
+   "70"
+  ],
+  "answer": 1,
+  "explanation": "Boaz called ten elders to witness the legal proceeding.",
+  "ref": "Ruth 4:2"
+ },
+ {
+  "id": "old-ruth-4-3",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the nearer kinsman decline to redeem Ruth?",
+  "choices": [
+   "He feared famine",
+   "He disliked Bethlehem",
+   "Lest he mar his own inheritance",
+   "He lacked silver"
+  ],
+  "answer": 2,
+  "explanation": "He declined because he feared harming his own inheritance.",
+  "ref": "Ruth 4:6"
+ },
+ {
+  "id": "old-ruth-4-4",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What object was removed and given as the customary sign of confirming the redemption transaction?",
+  "choices": [
+   "A ring",
+   "A shoe",
+   "A staff",
+   "A veil"
+  ],
+  "answer": 1,
+  "explanation": "The man drew off his shoe as the sign of the transaction.",
+  "ref": "Ruth 4:7–8"
+ },
+ {
+  "id": "old-ruth-4-5",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the son born to Boaz and Ruth, and why is he significant at the end of the book?",
+  "choices": [
+   "Jesse, father of Solomon",
+   "Perez, father of Judah",
+   "Mahlon, restored to life",
+   "Obed, father of Jesse and grandfather of David"
+  ],
+  "answer": 3,
+  "explanation": "Obed is named in the genealogy leading to David.",
+  "ref": "Ruth 4:17"
+ }
+]

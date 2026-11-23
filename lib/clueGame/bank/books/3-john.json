@@ -1,0 +1,82 @@
+[
+ {
+  "id": "old-3-john-1-1",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom is 3 John addressed?",
+  "choices": [
+   "Demetrius",
+   "Diotrephes",
+   "Titus",
+   "Gaius"
+  ],
+  "answer": 3,
+  "explanation": "John writes to Gaius, whom he loves in the truth.",
+  "ref": "3 John 1:1"
+ },
+ {
+  "id": "old-3-john-1-2",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John pray for Gaius?",
+  "choices": [
+   "That he would be rich",
+   "That he would travel to Jerusalem",
+   "That he would prosper and be in health as his soul prospers",
+   "That he would become an elder"
+  ],
+  "answer": 2,
+  "explanation": "John prays for Gaius's wellbeing, matching the prosperity of his soul.",
+  "ref": "3 John 1:2"
+ },
+ {
+  "id": "old-3-john-1-3",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What brought John great joy?",
+  "choices": [
+   "Hearing Gaius preach",
+   "Hearing that Gaius walked in the truth",
+   "Seeing many miracles",
+   "Receiving gifts from the church"
+  ],
+  "answer": 1,
+  "explanation": "John rejoices to hear that his spiritual children walk in truth.",
+  "ref": "3 John 1:3–4"
+ },
+ {
+  "id": "old-3-john-1-4",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does John commend Gaius for doing?",
+  "choices": [
+   "Writing letters",
+   "Correcting false teachers publicly",
+   "Building a new church",
+   "Faithfully helping and showing hospitality to brethren and strangers"
+  ],
+  "answer": 3,
+  "explanation": "John praises Gaius for supporting fellow believers, even those he did not know personally.",
+  "ref": "3 John 1:5–6"
+ },
+ {
+  "id": "old-3-john-1-5",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does John describe as loving to have the preeminence?",
+  "choices": [
+   "Demetrius",
+   "Diotrephes",
+   "Gaius",
+   "John Mark"
+  ],
+  "answer": 1,
+  "explanation": "John warns about Diotrephes, who sought prominence and rejected apostolic authority.",
+  "ref": "3 John 1:9"
+ }
+]
