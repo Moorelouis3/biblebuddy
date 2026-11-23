@@ -3526,12 +3526,12 @@
   "category": "keyword",
   "question": "What did Terah’s family do when they came to Haran?",
   "choices": [
-   "They dwelt there",
    "They built a tower",
+   "They dwelt there",
    "They turned back to Ur",
    "They sailed away"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Terah’s family came unto Haran, and dwelt there.",
   "ref": "Genesis 11:31"
  },
@@ -3542,12 +3542,12 @@
   "category": "keyword",
   "question": "Why did the LORD say He would confound the builders’ language?",
   "choices": [
-   "So they would not understand one another",
    "So they would sing together",
+   "So they would not understand one another",
    "So they would stop eating",
    "So they would sail the sea"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "The LORD said, Let us confound their language, that they may not understand one another’s speech.",
   "ref": "Genesis 11:7"
  },
@@ -3558,12 +3558,12 @@
   "category": "person",
   "question": "Who does the chapter say built the city and the tower?",
   "choices": [
-   "The children of men",
    "The sons of Shem",
    "The people of Egypt",
+   "The children of men",
    "The servants of Terah"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "The LORD came down to see the city and the tower, which the children of men builded.",
   "ref": "Genesis 11:5"
  },
@@ -3574,12 +3574,12 @@
   "category": "person",
   "question": "I was Abram’s brother, and Lot was my son. Who am I?",
   "choices": [
-   "Haran",
    "Nahor",
    "Terah",
-   "Shem"
+   "Shem",
+   "Haran"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Terah begat Abram, Nahor, and Haran; and Haran begat Lot.",
   "ref": "Genesis 11:27"
  },
@@ -3606,12 +3606,12 @@
   "category": "person",
   "question": "Who was the son of Arphaxad?",
   "choices": [
-   "Salah",
    "Eber",
+   "Salah",
    "Peleg",
    "Reu"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Arphaxad lived five and thirty years, and begat Salah.",
   "ref": "Genesis 11:12"
  },
@@ -3686,12 +3686,12 @@
   "category": "keyword",
   "question": "What did the builders say to do with the brick?",
   "choices": [
-   "Burn it throughly",
    "Paint it",
    "Carve it",
+   "Burn it throughly",
    "Sell it"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "They said, Let us make brick, and burn them throughly.",
   "ref": "Genesis 11:3"
  },
@@ -3702,12 +3702,12 @@
   "category": "keyword",
   "question": "What did the LORD say the people had that made nothing impossible for them?",
   "choices": [
-   "One people and one language",
    "Great armies",
    "Much gold",
-   "A strong king"
+   "A strong king",
+   "One people and one language"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "The LORD said, the people is one, and they have all one language; nothing will be restrained from them.",
   "ref": "Genesis 11:6"
  },
@@ -3734,12 +3734,12 @@
   "category": "person",
   "question": "Haran was the father of Milcah and which other daughter?",
   "choices": [
-   "Iscah",
    "Sarai",
+   "Iscah",
    "Hagar",
    "Rebekah"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Haran was the father of Milcah, and the father of Iscah.",
   "ref": "Genesis 11:29"
  },
@@ -3766,12 +3766,12 @@
   "category": "keyword",
   "question": "What did the LORD do to the people after He confounded their language?",
   "choices": [
-   "Scattered them over the earth",
    "Sent a flood",
    "Brought them to Canaan",
-   "Made them one again"
+   "Made them one again",
+   "Scattered them over the earth"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "The LORD scattered them abroad from thence upon the face of all the earth.",
   "ref": "Genesis 11:8"
  },
@@ -3814,12 +3814,12 @@
   "category": "keyword",
   "question": "How many years did Eber live after he begat Peleg?",
   "choices": [
-   "Four hundred and thirty",
    "Two hundred and nine",
    "Two hundred and seven",
+   "Four hundred and thirty",
    "Two hundred"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "Eber lived after he begat Peleg four hundred and thirty years.",
   "ref": "Genesis 11:17"
  },
@@ -3910,12 +3910,12 @@
   "category": "keyword",
   "question": "What did the LORD say He would do to those who bless Abram?",
   "choices": [
-   "Bless them",
    "Curse them",
    "Ignore them",
+   "Bless them",
    "Make them kings"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "The LORD said, I will bless them that bless thee.",
   "ref": "Genesis 12:3"
  },
@@ -3926,12 +3926,12 @@
   "category": "keyword",
   "question": "What did Pharaoh tell Abram to do with Sarai?",
   "choices": [
-   "Take her and go his way",
    "Leave her in Egypt",
    "Sell her",
-   "Give her to the princes"
+   "Give her to the princes",
+   "Take her and go his way"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Pharaoh said, Behold thy wife, take her, and go thy way.",
   "ref": "Genesis 12:19"
  },
@@ -3958,12 +3958,12 @@
   "category": "keyword",
   "question": "What did the LORD promise to do to Abram’s name?",
   "choices": [
-   "Make it great",
    "Change it",
+   "Make it great",
    "Write it in a book",
    "Hide it"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "The LORD said, I will make of thee a great nation, and make thy name great.",
   "ref": "Genesis 12:2"
  },
@@ -3974,12 +3974,12 @@
   "category": "keyword",
   "question": "God told Abram, “thou shalt be a...” what?",
   "choices": [
-   "Blessing",
    "Shepherd",
    "Judge",
+   "Blessing",
    "Priest"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "The LORD said, I will bless thee, and thou shalt be a blessing.",
   "ref": "Genesis 12:2"
  },
@@ -3990,12 +3990,12 @@
   "category": "keyword",
   "question": "Besides his country, what two things did the LORD tell Abram to leave?",
   "choices": [
-   "His kindred and his father’s house",
    "His flocks and his servants",
    "His wife and Lot",
-   "His altar and his tent"
+   "His altar and his tent",
+   "His kindred and his father’s house"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "The LORD said, Get thee out of thy country, and from thy kindred, and from thy father’s house.",
   "ref": "Genesis 12:1"
  },
@@ -4022,12 +4022,12 @@
   "category": "place",
   "question": "Abram passed through the land unto which plain?",
   "choices": [
-   "The plain of Moreh",
    "The plain of Mamre",
+   "The plain of Moreh",
    "The plain of Jordan",
    "The plain of Shinar"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Abram passed through the land unto the place of Sichem, unto the plain of Moreh.",
   "ref": "Genesis 12:6"
  },
@@ -4054,12 +4054,12 @@
   "category": "keyword",
   "question": "What did Abram say the Egyptians would do with Sarai?",
   "choices": [
-   "Save her alive",
    "Take her to Pharaoh’s house",
    "Send her away",
-   "Make her a servant"
+   "Make her a servant",
+   "Save her alive"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "They will kill me, but they will save thee alive.",
   "ref": "Genesis 12:12"
  },
@@ -4086,12 +4086,12 @@
   "category": "keyword",
   "question": "Why did the LORD plague Pharaoh and his house?",
   "choices": [
-   "Because of Sarai, Abram’s wife",
    "Because of Lot",
+   "Because of Sarai, Abram’s wife",
    "Because of Abram’s altar",
    "Because of the famine"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "The LORD plagued Pharaoh and his house with great plagues because of Sarai Abram’s wife.",
   "ref": "Genesis 12:17"
  },
@@ -4102,12 +4102,12 @@
   "category": "keyword",
   "question": "What did Pharaoh say he might have done if Abram had not said Sarai was his sister?",
   "choices": [
-   "Taken her to wife",
    "Sent her home",
    "Killed Abram",
+   "Taken her to wife",
    "Made her a servant"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "Pharaoh asked, Why saidst thou, She is my sister? so I might have taken her to me to wife.",
   "ref": "Genesis 12:19"
  },
@@ -4118,12 +4118,12 @@
   "category": "keyword",
   "question": "When did Abram tell Sarai to say she was his sister?",
   "choices": [
-   "When they drew near to enter Egypt",
    "After Pharaoh’s princes saw her",
    "In the plain of Moreh",
-   "After the plagues began"
+   "After the plagues began",
+   "When they drew near to enter Egypt"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "When he was come near to enter into Egypt, he said unto Sarai his wife, Behold now, I know that thou art a fair woman.",
   "ref": "Genesis 12:11"
  },
@@ -4150,12 +4150,12 @@
   "category": "keyword",
   "question": "What did Pharaoh ask Abram when he called him?",
   "choices": [
-   "What is this that thou hast done unto me?",
    "Who is thy God?",
+   "What is this that thou hast done unto me?",
    "Where is thy father’s house?",
    "Why art thou in my land?"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Pharaoh called Abram, and said, What is this that thou hast done unto me?",
   "ref": "Genesis 12:18"
  },
@@ -4166,12 +4166,12 @@
   "category": "keyword",
   "question": "How many altars did Abram build in Canaan in this chapter?",
   "choices": [
-   "Two",
    "One",
    "Three",
+   "Two",
    "Four"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "Abram built an altar at Sichem, and another near Bethel.",
   "ref": "Genesis 12:7–8"
  },
@@ -4182,12 +4182,12 @@
   "category": "keyword",
   "question": "Why did Abram depart from Haran?",
   "choices": [
-   "As the LORD had spoken to him",
    "Because of a famine",
    "Because Terah died",
-   "Because Lot asked him"
+   "Because Lot asked him",
+   "As the LORD had spoken to him"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Abram departed, as the LORD had spoken unto him.",
   "ref": "Genesis 12:4"
  },
@@ -4278,12 +4278,12 @@
   "category": "keyword",
   "question": "What did Lot see when he lifted up his eyes?",
   "choices": [
-   "The plain of Jordan, well watered",
    "A great city",
    "A mountain of fire",
-   "The sea of Egypt"
+   "The sea of Egypt",
+   "The plain of Jordan, well watered"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Lot beheld all the plain of Jordan, that it was well watered every where.",
   "ref": "Genesis 13:10"
  },
@@ -4310,12 +4310,12 @@
   "category": "person",
   "question": "Who spoke to Abram after Lot had separated from him?",
   "choices": [
-   "The LORD",
    "Melchizedek",
+   "The LORD",
    "An angel of Sodom",
    "Lot"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "The LORD said unto Abram, after that Lot was separated from him, Lift up now thine eyes.",
   "ref": "Genesis 13:14"
  },
@@ -4326,12 +4326,12 @@
   "category": "place",
   "question": "Where had Abram’s tent been at the beginning, before Egypt?",
   "choices": [
-   "Between Bethel and Hai",
    "Between Sodom and Zoar",
    "Between Hebron and Mamre",
+   "Between Bethel and Hai",
    "Between Haran and Ur"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "He went to the place where his tent had been at the beginning, between Bethel and Hai.",
   "ref": "Genesis 13:3"
  },
@@ -4342,12 +4342,12 @@
   "category": "place",
   "question": "The well-watered plain was like Egypt as thou comest unto which place?",
   "choices": [
-   "Zoar",
    "Hebron",
    "Bethel",
-   "Salem"
+   "Salem",
+   "Zoar"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "The plain was well watered, like the land of Egypt, as thou comest unto Zoar.",
   "ref": "Genesis 13:10"
  },
@@ -4374,12 +4374,12 @@
   "category": "keyword",
   "question": "How wicked does the chapter say the men of Sodom were?",
   "choices": [
-   "Exceedingly",
    "A little",
+   "Exceedingly",
    "Moderately",
    "Secretly"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "The men of Sodom were wicked and sinners before the LORD exceedingly.",
   "ref": "Genesis 13:13"
  },
@@ -4390,12 +4390,12 @@
   "category": "keyword",
   "question": "What did Abram say lay before Lot when he asked him to separate?",
   "choices": [
-   "The whole land",
    "A great river",
    "A walled city",
+   "The whole land",
    "The sea"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "Abram said, Is not the whole land before thee?",
   "ref": "Genesis 13:9"
  },
@@ -4406,12 +4406,12 @@
   "category": "keyword",
   "question": "What did Lot do before choosing the plain of Jordan?",
   "choices": [
-   "Lifted up his eyes and looked",
    "Prayed to the LORD",
    "Asked Abram’s advice",
-   "Sent his servants ahead"
+   "Sent his servants ahead",
+   "Lifted up his eyes and looked"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Lot lifted up his eyes, and beheld all the plain of Jordan.",
   "ref": "Genesis 13:10"
  },
@@ -4438,12 +4438,12 @@
   "category": "keyword",
   "question": "What did Abram find at Bethel that he had made at the first?",
   "choices": [
-   "An altar",
    "A well",
+   "An altar",
    "A tower",
    "A tent"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "He came unto the place of the altar, which he had made there at the first.",
   "ref": "Genesis 13:4"
  },
@@ -4454,12 +4454,12 @@
   "category": "keyword",
   "question": "What did Abram build in the plain of Mamre?",
   "choices": [
-   "An altar to the LORD",
    "A city",
    "A well",
+   "An altar to the LORD",
    "A house"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "Abram came and dwelt in the plain of Mamre, and built there an altar unto the LORD.",
   "ref": "Genesis 13:18"
  },
@@ -4470,12 +4470,12 @@
   "category": "keyword",
   "question": "Abram asked that there be no strife between his herdmen and whose?",
   "choices": [
-   "Lot’s herdmen",
    "Pharaoh’s herdmen",
    "The Perizzite’s herdmen",
-   "Mamre’s herdmen"
+   "Mamre’s herdmen",
+   "Lot’s herdmen"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Abram said, Let there be no strife between my herdmen and thy herdmen.",
   "ref": "Genesis 13:8"
  },
@@ -4502,12 +4502,12 @@
   "category": "place",
   "question": "Which city was destroyed along with Sodom, according to the chapter?",
   "choices": [
-   "Gomorrah",
    "Zoar",
+   "Gomorrah",
    "Bethel",
    "Hai"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "The plain was well watered before the LORD destroyed Sodom and Gomorrah.",
   "ref": "Genesis 13:10"
  },
@@ -4518,12 +4518,12 @@
   "category": "keyword",
   "question": "What did Abram do at the altar when he returned to Bethel?",
   "choices": [
-   "Called on the name of the LORD",
    "Offered a ram",
    "Buried a servant",
+   "Called on the name of the LORD",
    "Made a vow to Lot"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "There Abram called on the name of the LORD.",
   "ref": "Genesis 13:4"
  },
@@ -4534,12 +4534,12 @@
   "category": "keyword",
   "question": "In which direction did the LORD first tell Abram to look?",
   "choices": [
-   "Northward",
    "Southward",
    "Eastward",
-   "Westward"
+   "Westward",
+   "Northward"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "The LORD said, Look from the place where thou art northward, and southward, and eastward, and westward.",
   "ref": "Genesis 13:14"
  },
@@ -4646,12 +4646,12 @@
   "category": "person",
   "question": "How does the chapter describe Lot’s relation to Abram?",
   "choices": [
-   "His brother’s son",
    "His brother",
+   "His brother’s son",
    "His father",
    "His servant"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "They took Lot, Abram’s brother’s son, who dwelt in Sodom.",
   "ref": "Genesis 14:12"
  },
@@ -4662,12 +4662,12 @@
   "category": "keyword",
   "question": "Where did those who were left of Sodom’s army flee?",
   "choices": [
-   "To the mountain",
    "To Egypt",
    "To Salem",
+   "To the mountain",
    "To the sea"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "They that remained fled to the mountain.",
   "ref": "Genesis 14:10"
  },
@@ -4678,12 +4678,12 @@
   "category": "keyword",
   "question": "In which year did the kings rebel against Chedorlaomer?",
   "choices": [
-   "The thirteenth year",
    "The second year",
    "The twelfth year",
-   "The fourteenth year"
+   "The fourteenth year",
+   "The thirteenth year"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Twelve years they served Chedorlaomer, and in the thirteenth year they rebelled.",
   "ref": "Genesis 14:4"
  },
@@ -4710,12 +4710,12 @@
   "category": "person",
   "question": "Whom did Chedorlaomer smite in Ashteroth Karnaim?",
   "choices": [
-   "The Rephaims",
    "The Horites",
+   "The Rephaims",
    "The Amalekites",
    "The Emims"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "They smote the Rephaims in Ashteroth Karnaim.",
   "ref": "Genesis 14:5"
  },
@@ -4726,12 +4726,12 @@
   "category": "person",
   "question": "Whom did the four kings smite in their mount Seir?",
   "choices": [
-   "The Horites",
    "The Zuzims",
    "The Amorites",
+   "The Horites",
    "The Rephaims"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "They smote the Horites in their mount Seir.",
   "ref": "Genesis 14:6"
  },
@@ -4742,12 +4742,12 @@
   "category": "person",
   "question": "Who was king of Sodom in the war?",
   "choices": [
-   "Bera",
    "Birsha",
    "Shinab",
-   "Arioch"
+   "Arioch",
+   "Bera"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "They made war with Bera king of Sodom.",
   "ref": "Genesis 14:2"
  },
@@ -4774,12 +4774,12 @@
   "category": "keyword",
   "question": "Tidal was king of what?",
   "choices": [
-   "Nations",
    "Elam",
+   "Nations",
    "Shinar",
    "Salem"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Tidal king of nations.",
   "ref": "Genesis 14:1"
  },
@@ -4790,12 +4790,12 @@
   "category": "keyword",
   "question": "How many trained servants did Abram arm?",
   "choices": [
-   "Three hundred and eighteen",
    "Three hundred",
    "Three hundred and eighty",
+   "Three hundred and eighteen",
    "Eighteen"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "He armed his trained servants, born in his own house, three hundred and eighteen.",
   "ref": "Genesis 14:14"
  },
@@ -4806,12 +4806,12 @@
   "category": "place",
   "question": "Abram pursued the kings to Hobah, on the left hand of which city?",
   "choices": [
-   "Damascus",
    "Sodom",
    "Salem",
-   "Zoar"
+   "Zoar",
+   "Damascus"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "He pursued them unto Hobah, which is on the left hand of Damascus.",
   "ref": "Genesis 14:15"
  },
@@ -4838,12 +4838,12 @@
   "category": "keyword",
   "question": "What did Melchizedek say God had done to Abram’s enemies?",
   "choices": [
-   "Delivered them into his hand",
    "Scattered them",
+   "Delivered them into his hand",
    "Turned them to dust",
    "Sent them to Egypt"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Blessed be the most high God, which hath delivered thine enemies into thy hand.",
   "ref": "Genesis 14:20"
  },
@@ -4854,12 +4854,12 @@
   "category": "keyword",
   "question": "What did Abram say he had lifted up to the LORD?",
   "choices": [
-   "His hand",
    "His voice",
    "His sword",
+   "His hand",
    "His eyes"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "I have lift up mine hand unto the LORD, the most high God.",
   "ref": "Genesis 14:22"
  },
@@ -4870,12 +4870,12 @@
   "category": "keyword",
   "question": "What did Abram say the young men had taken from the spoil?",
   "choices": [
-   "What they had eaten",
    "Their tithes",
    "Half the goods",
-   "The sheep"
+   "The sheep",
+   "What they had eaten"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Save only that which the young men have eaten.",
   "ref": "Genesis 14:24"
  },
@@ -4902,12 +4902,12 @@
   "category": "place",
   "question": "The king of Bela was the same as the king of which city?",
   "choices": [
-   "Zoar",
    "Admah",
+   "Zoar",
    "Salem",
    "Hobah"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "The king of Bela (the same is Zoar).",
   "ref": "Genesis 14:8"
  },
@@ -4998,12 +4998,12 @@
   "category": "person",
   "question": "Who did Abram say would be his heir since he had no seed?",
   "choices": [
-   "One born in his house",
    "Lot",
+   "One born in his house",
    "Ishmael",
    "Pharaoh’s son"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Abram said, Behold, to me thou hast given no seed: and, lo, one born in my house is mine heir.",
   "ref": "Genesis 15:3"
  },
@@ -5014,12 +5014,12 @@
   "category": "keyword",
   "question": "Where did the LORD say Abram’s heir would come from?",
   "choices": [
-   "Out of his own body",
    "From his brother",
    "From Damascus",
+   "Out of his own body",
    "From his servants"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "He that shall come forth out of thine own bowels shall be thine heir.",
   "ref": "Genesis 15:4"
  },
@@ -5030,12 +5030,12 @@
   "category": "keyword",
   "question": "Besides a heifer and a she goat, which animal did the LORD ask Abram to bring?",
   "choices": [
-   "A ram",
    "A lamb",
    "An ox",
-   "A camel"
+   "A camel",
+   "A ram"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Take me an heifer of three years old, and a she goat of three years old, and a ram of three years old.",
   "ref": "Genesis 15:9"
  },
@@ -5062,12 +5062,12 @@
   "category": "keyword",
   "question": "How old were the heifer, the she goat and the ram?",
   "choices": [
-   "Three years old",
    "One year old",
+   "Three years old",
    "Seven years old",
    "Ten years old"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Take me an heifer of three years old, and a she goat of three years old, and a ram of three years old.",
   "ref": "Genesis 15:9"
  },
@@ -5078,12 +5078,12 @@
   "category": "keyword",
   "question": "What did Abram do with the animals he brought?",
   "choices": [
-   "Divided them in the midst",
    "Gave them to Eliezer",
    "Sent them to Lot",
+   "Divided them in the midst",
    "Let them go"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "He took all these, and divided them in the midst, and laid each piece one against another.",
   "ref": "Genesis 15:10"
  },
@@ -5094,12 +5094,12 @@
   "category": "keyword",
   "question": "What did the LORD say Abram’s seed would do in a land that was not theirs?",
   "choices": [
-   "Serve them and be afflicted",
    "Rule over them",
    "Hide from them",
-   "Build cities"
+   "Build cities",
+   "Serve them and be afflicted"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Thy seed shall be a stranger in a land that is not theirs, and shall serve them; and they shall afflict them.",
   "ref": "Genesis 15:13"
  },
@@ -5126,12 +5126,12 @@
   "category": "person",
   "question": "Which people are named among those whose land was given to Abram’s seed?",
   "choices": [
-   "The Kenites",
    "The Philistines",
+   "The Kenites",
    "The Egyptians",
    "The Moabites"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "The Kenites, and the Kenizzites, and the Kadmonites.",
   "ref": "Genesis 15:19"
  },
@@ -5142,12 +5142,12 @@
   "category": "person",
   "question": "Which people are named at the very end of the list of lands?",
   "choices": [
-   "The Jebusites",
    "The Philistines",
    "The Egyptians",
+   "The Jebusites",
    "The Moabites"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "The list ends: the Amorites, and the Canaanites, and the Girgashites, and the Jebusites.",
   "ref": "Genesis 15:21"
  },
@@ -5158,12 +5158,12 @@
   "category": "keyword",
   "question": "How many peoples are named in the list of lands at the end?",
   "choices": [
-   "Ten",
    "Three",
    "Seven",
-   "Twelve"
+   "Twelve",
+   "Ten"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "The Kenites, Kenizzites, Kadmonites, Hittites, Perizzites, Rephaims, Amorites, Canaanites, Girgashites and Jebusites are named.",
   "ref": "Genesis 15:19–21"
  },
@@ -5190,12 +5190,12 @@
   "category": "keyword",
   "question": "When did the smoking furnace and burning lamp pass between the pieces?",
   "choices": [
-   "After the sun went down and it was dark",
    "At noon",
+   "After the sun went down and it was dark",
    "At sunrise",
    "Before Abram slept"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "When the sun went down, and it was dark, behold a smoking furnace, and a burning lamp.",
   "ref": "Genesis 15:17"
  },
@@ -5206,12 +5206,12 @@
   "category": "keyword",
   "question": "What did Abram call the LORD when he asked what He would give?",
   "choices": [
-   "Lord GOD",
    "Most High",
    "Almighty",
+   "Lord GOD",
    "King of kings"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "Abram said, Lord GOD, what wilt thou give me.",
   "ref": "Genesis 15:2"
  },
@@ -5222,12 +5222,12 @@
   "category": "keyword",
   "question": "How many different kinds of animals and birds did the LORD tell Abram to bring?",
   "choices": [
-   "Five",
    "Two",
    "Three",
-   "Seven"
+   "Seven",
+   "Five"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Heifer, she goat, ram, turtledove and young pigeon.",
   "ref": "Genesis 15:9"
  },
@@ -5254,12 +5254,12 @@
   "category": "keyword",
   "question": "Besides a turtledove, which bird did the LORD ask Abram to bring?",
   "choices": [
-   "A young pigeon",
    "A dove",
+   "A young pigeon",
    "An eagle",
    "A raven"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "The LORD said, Take me a turtledove, and a young pigeon.",
   "ref": "Genesis 15:9"
  },
@@ -5270,12 +5270,12 @@
   "category": "keyword",
   "question": "What did the LORD count Abram’s belief as?",
   "choices": [
-   "Righteousness",
    "A sacrifice",
    "A blessing",
+   "Righteousness",
    "A covenant"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "He believed in the LORD; and he counted it to him for righteousness.",
   "ref": "Genesis 15:6"
  },
@@ -5350,12 +5350,12 @@
   "category": "keyword",
   "question": "What did Sarai do to Hagar after Abram said to do as she pleased?",
   "choices": [
-   "Dealt hardly with her",
    "Sent her to Egypt",
    "Gave her land",
+   "Dealt hardly with her",
    "Made her a queen"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "When Sarai dealt hardly with her, she fled from her face.",
   "ref": "Genesis 16:6"
  },
@@ -5366,12 +5366,12 @@
   "category": "keyword",
   "question": "What did Sarai ask Abram to do?",
   "choices": [
-   "Go in unto her maid",
    "Take another wife from Egypt",
    "Send Hagar away",
-   "Build an altar"
+   "Build an altar",
+   "Go in unto her maid"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Sarai said, I pray thee, go in unto my maid; it may be that I may obtain children by her.",
   "ref": "Genesis 16:2"
  },
@@ -5398,12 +5398,12 @@
   "category": "keyword",
   "question": "Sarai said, “My wrong be upon...” whom?",
   "choices": [
-   "Abram",
    "Hagar",
+   "Abram",
    "The LORD",
    "Lot"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Sarai said unto Abram, My wrong be upon thee.",
   "ref": "Genesis 16:5"
  },
@@ -5414,12 +5414,12 @@
   "category": "keyword",
   "question": "Sarai gave Hagar to Abram to be his what?",
   "choices": [
-   "Wife",
    "Servant",
    "Sister",
+   "Wife",
    "Shepherd"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "Sarai gave her to her husband Abram to be his wife.",
   "ref": "Genesis 16:3"
  },
@@ -5430,12 +5430,12 @@
   "category": "keyword",
   "question": "What two questions did the angel ask Hagar?",
   "choices": [
-   "Where she came from and where she was going",
    "Who her father was and why she wept",
    "Whose servant she was and what she ate",
-   "Where Sarai was and why she hid"
+   "Where Sarai was and why she hid",
+   "Where she came from and where she was going"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "The angel said, Hagar, Sarai’s maid, whence camest thou? and whither wilt thou go?",
   "ref": "Genesis 16:8"
  },
@@ -5462,12 +5462,12 @@
   "category": "keyword",
   "question": "What did the angel say about Ishmael’s hand?",
   "choices": [
-   "It would be against every man",
    "It would build cities",
+   "It would be against every man",
    "It would heal many",
    "It would hold a sceptre"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "His hand will be against every man, and every man’s hand against him.",
   "ref": "Genesis 16:12"
  },
@@ -5478,12 +5478,12 @@
   "category": "place",
   "question": "The well Beer-lahai-roi lay between which two places?",
   "choices": [
-   "Kadesh and Bered",
    "Shur and Egypt",
    "Haran and Ur",
+   "Kadesh and Bered",
    "Bethel and Hai"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "Behold, it is between Kadesh and Bered.",
   "ref": "Genesis 16:14"
  },
@@ -5494,12 +5494,12 @@
   "category": "keyword",
   "question": "What did Hagar ask after the angel spoke to her?",
   "choices": [
-   "Have I also here looked after him that seeth me?",
    "Who will care for my son?",
    "Where can I find water?",
-   "Why have I been sent away?"
+   "Why have I been sent away?",
+   "Have I also here looked after him that seeth me?"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "She said, Have I also here looked after him that seeth me?",
   "ref": "Genesis 16:13"
  },
@@ -5526,12 +5526,12 @@
   "category": "keyword",
   "question": "Sarai said she had given her maid into Abram’s what?",
   "choices": [
-   "Bosom",
    "Hand",
+   "Bosom",
    "House",
    "Care"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "I have given my maid into thy bosom.",
   "ref": "Genesis 16:5"
  },
@@ -5542,12 +5542,12 @@
   "category": "keyword",
   "question": "How did Hagar describe Sarai when the angel asked where she was going?",
   "choices": [
-   "My mistress",
    "My sister",
    "My queen",
+   "My mistress",
    "My judge"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "She said, I flee from the face of my mistress Sarai.",
   "ref": "Genesis 16:8"
  },
@@ -5558,12 +5558,12 @@
   "category": "keyword",
   "question": "What was Hagar’s work in Sarai’s house?",
   "choices": [
-   "Handmaid",
    "Shepherd",
    "Cook",
-   "Weaver"
+   "Weaver",
+   "Handmaid"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "She had an handmaid, an Egyptian, whose name was Hagar.",
   "ref": "Genesis 16:1"
  },
@@ -5590,12 +5590,12 @@
   "category": "keyword",
   "question": "Sarai said she was despised in whose eyes?",
   "choices": [
-   "Hagar’s",
    "Abram’s",
+   "Hagar’s",
    "The angel’s",
    "Pharaoh’s"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "When she saw that she had conceived, I was despised in her eyes.",
   "ref": "Genesis 16:5"
  },
@@ -5606,12 +5606,12 @@
   "category": "keyword",
   "question": "In what kind of place did the angel find Hagar by the fountain?",
   "choices": [
-   "The wilderness",
    "A city",
    "A garden",
+   "The wilderness",
    "A cave"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "The angel of the LORD found her by a fountain of water in the wilderness.",
   "ref": "Genesis 16:7"
  },
@@ -5622,12 +5622,12 @@
   "category": "keyword",
   "question": "Whom did Sarai ask to judge between her and Abram?",
   "choices": [
-   "The LORD",
    "Hagar",
    "Pharaoh",
-   "The angel"
+   "The angel",
+   "The LORD"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Sarai said, the LORD judge between me and thee.",
   "ref": "Genesis 16:5"
  },
@@ -5654,12 +5654,12 @@
   "category": "person",
   "question": "Who appeared to Abram when he was ninety-nine years old?",
   "choices": [
-   "The LORD",
    "An angel of Sodom",
    "Melchizedek",
-   "Pharaoh"
+   "Pharaoh",
+   "The LORD"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "When Abram was ninety years old and nine, the LORD appeared to Abram.",
   "ref": "Genesis 17:1"
  },
@@ -5686,12 +5686,12 @@
   "category": "person",
   "question": "Who did God say would bear the son named Isaac?",
   "choices": [
-   "Sarah",
    "Hagar",
    "Milcah",
-   "Sarai’s maid"
+   "Sarai’s maid",
+   "Sarah"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Sarah thy wife shall bear thee a son indeed; and thou shalt call his name Isaac.",
   "ref": "Genesis 17:19"
  },
@@ -5718,12 +5718,12 @@
   "category": "person",
   "question": "Whom did Abraham take first when he circumcised his household?",
   "choices": [
-   "Ishmael his son",
    "Isaac",
+   "Ishmael his son",
    "Lot",
    "Eliezer"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Abraham took Ishmael his son, and all that were born in his house, and circumcised them.",
   "ref": "Genesis 17:23"
  },
@@ -5734,12 +5734,12 @@
   "category": "keyword",
   "question": "On which day after birth was a boy to be circumcised?",
   "choices": [
-   "The eighth day",
    "The first day",
    "The seventh day",
+   "The eighth day",
    "The tenth day"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "He that is eight days old shall be circumcised among you.",
   "ref": "Genesis 17:12"
  },
@@ -5750,12 +5750,12 @@
   "category": "keyword",
   "question": "What did God call circumcision?",
   "choices": [
-   "A token of the covenant",
    "A burnt offering",
    "A new name",
-   "A feast"
+   "A feast",
+   "A token of the covenant"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Ye shall circumcise the flesh of your foreskin; and it shall be a token of the covenant betwixt me and you.",
   "ref": "Genesis 17:11"
  },
@@ -5782,12 +5782,12 @@
   "category": "keyword",
   "question": "Abraham asked if a child could be born to a man of what age?",
   "choices": [
-   "One hundred years",
    "Seventy years",
+   "One hundred years",
    "Eighty-six years",
    "Ninety years"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Shall a child be born unto him that is an hundred years old?",
   "ref": "Genesis 17:17"
  },
@@ -5798,12 +5798,12 @@
   "category": "keyword",
   "question": "How many princes did God say Ishmael would beget?",
   "choices": [
-   "Twelve",
    "Three",
    "Seven",
+   "Twelve",
    "Ten"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "Twelve princes shall he beget, and I will make him a great nation.",
   "ref": "Genesis 17:20"
  },
@@ -5814,12 +5814,12 @@
   "category": "keyword",
   "question": "How old was Ishmael when he was circumcised?",
   "choices": [
-   "Thirteen",
    "Eight days",
    "Seven",
-   "Twenty"
+   "Twenty",
+   "Thirteen"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Ishmael his son was thirteen years old, when he was circumcised.",
   "ref": "Genesis 17:25"
  },
@@ -5846,12 +5846,12 @@
   "category": "keyword",
   "question": "What did God say He would be to Abraham and his seed?",
   "choices": [
-   "Their God",
    "Their shield",
+   "Their God",
    "Their judge",
    "Their king"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "I will establish my covenant to be a God unto thee, and to thy seed after thee.",
   "ref": "Genesis 17:7"
  },
@@ -5862,12 +5862,12 @@
   "category": "keyword",
   "question": "Where did God say His covenant would be?",
   "choices": [
-   "In their flesh",
    "On a stone",
    "In a book",
+   "In their flesh",
    "On the altar"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "My covenant shall be in your flesh for an everlasting covenant.",
   "ref": "Genesis 17:13"
  },
@@ -5878,12 +5878,12 @@
   "category": "keyword",
   "question": "Which male children among Abraham’s household had to be circumcised?",
   "choices": [
-   "Every man child",
    "Only the firstborn",
    "Only those of age",
-   "Only Isaac"
+   "Only Isaac",
+   "Every man child"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Every man child among you shall be circumcised.",
   "ref": "Genesis 17:10"
  },
@@ -5910,12 +5910,12 @@
   "category": "keyword",
   "question": "What had the uncircumcised man done, according to God?",
   "choices": [
-   "Broken His covenant",
    "Offended the king",
+   "Broken His covenant",
    "Left the land",
    "Stolen the tithe"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "The uncircumcised man child… hath broken my covenant.",
   "ref": "Genesis 17:14"
  },
@@ -5926,12 +5926,12 @@
   "category": "keyword",
   "question": "What did God say to Abraham about Ishmael’s request?",
   "choices": [
-   "I have heard thee",
    "It cannot be",
    "Ishmael is the heir",
+   "I have heard thee",
    "He must leave"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "As for Ishmael, I have heard thee: Behold, I have blessed him.",
   "ref": "Genesis 17:20"
  },
@@ -5942,12 +5942,12 @@
   "category": "keyword",
   "question": "What did God say of His covenant with Isaac and his seed?",
   "choices": [
-   "An everlasting covenant",
    "A covenant of ten years",
    "A covenant of peace only",
-   "A covenant for kings alone"
+   "A covenant for kings alone",
+   "An everlasting covenant"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "I will establish my covenant with him for an everlasting covenant, and with his seed after him.",
   "ref": "Genesis 17:19"
  },
