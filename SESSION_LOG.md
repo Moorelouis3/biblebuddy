@@ -14189,3 +14189,8 @@ Done: 3 of the 5 (master_actions on the Scrambled game and the dashboard, a note
 Not live yet: commit bac5ddf ("Bug fix: stop blaming the wrong page for a failed request after navigation") - waiting on the next scheduled deploy, `npm run pending`.
 Still open: 13 more reports in the queue, left for the next run under the 5-bug cap. 1 report (community_event_day_posts, Admin Analytics) sitting in `awaiting_approval` needs Louis's yes/no at /admin/bugs.
 Next: next scheduled run picks up the oldest 5 of the remaining 13, including a same-second cluster on `/signup` (master_actions + auth) and another on `/dashboard` (devotional_days + community_event_members) worth folding into duplicate pairs.
+
+## 2026-11-23T22:14:13Z (blog writer run)
+Article: Who Was Judas? How Close You Can Get and Still Miss It | Words: ~3,017 | Category: Character Studies | Status: pass
+Not live yet: no [deploy] tag on this commit (Louis removed the blog exception 2026-10-10) - goes live at the next scheduled deploy, `npm run pending`.
+Queue remaining: 35

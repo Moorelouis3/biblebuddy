@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "who-was-judas",
+    title: "Who Was Judas? How Close You Can Get and Still Miss It",
+    description:
+      "Who was Judas? The disciple who walked with Jesus for three years, betrayed Him for thirty pieces of silver, and still could not find his way back.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-judas",
+    publishedAt: "2026-11-23",
+    readTime: "15 min read",
+    image: "/who-was-judas-banner.png",
+    groupPost: {
+      title: "Who Was Judas? How Close You Can Get and Still Miss It 📖",
+      content:
+        "Three years with Jesus. Front row for every miracle.\nStill walked away in the end.\n\n📌 Proximity to Jesus is not the same as surrender.\n\n📖 He carried the money bag and was already a thief.\n📖 Jesus still called him friend at the arrest.\n📖 His sorrow never led him back to Christ.\n\nNew article on:\n🟢 why **thirty pieces of silver** was the price of a slave\n🟢 the difference between Judas's sorrow and **Peter's repentance**\n🟢 what happened to the **empty place** he left behind\n\nHave you ever felt close to God but still far away? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-23-explained",
     title: "1 Samuel 23 Explained: Keilah's Rescue and the Ziphites' Betrayal",
     description:
