@@ -21878,12 +21878,12 @@
   "category": "place",
   "question": "On which mountain did God give Moses the tables of testimony?",
   "choices": [
+   "Mount Nebo",
    "Mount Sinai",
-   "Mount Carmel",
    "Mount Hor",
-   "Mount Nebo"
+   "Mount Carmel"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "He gave unto Moses upon mount Sinai two tables of testimony.",
   "ref": "Exodus 31:18"
  },
@@ -21942,12 +21942,12 @@
   "category": "keyword",
   "question": "What are the children of Israel told to do with the sabbath?",
   "choices": [
+   "Shorten it",
    "Keep it",
    "Forget it",
-   "Move it",
-   "Shorten it"
+   "Move it"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Verily my sabbaths ye shall keep: for it is a sign between me and you.",
   "ref": "Exodus 31:13"
  },
@@ -22039,9 +22039,9 @@
   "question": "Of which tribe was Aholiab?",
   "choices": [
    "Dan",
-   "Judah",
+   "Reuben",
    "Levi",
-   "Reuben"
+   "Judah"
   ],
   "answer": 0,
   "explanation": "Aholiab, the son of Ahisamach, was of the tribe of Dan.",
@@ -22086,12 +22086,12 @@
   "category": "keyword",
   "question": "What does God say the sabbath will let Israel know about Him?",
   "choices": [
-   "That He is the LORD that doth sanctify them",
-   "That He is a jealous God",
    "That He is the God of Abraham",
-   "That He is King of Egypt"
+   "That He is the LORD that doth sanctify them",
+   "That He is King of Egypt",
+   "That He is a jealous God"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "That ye may know that I am the LORD that doth sanctify you.",
   "ref": "Exodus 31:13"
  },
@@ -22102,12 +22102,12 @@
   "category": "keyword",
   "question": "What is listed with the ark of the testimony as something to be made?",
   "choices": [
-   "The mercy seat",
-   "The golden calf",
+   "The veil of Egypt",
    "The brazen sea",
-   "The veil of Egypt"
+   "The golden calf",
+   "The mercy seat"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "The ark of the testimony, and the mercy seat that is thereupon.",
   "ref": "Exodus 31:7"
  },
@@ -22134,12 +22134,12 @@
   "category": "keyword",
   "question": "Besides the anointing oil, what was made for the holy place?",
   "choices": [
-   "Sweet incense",
-   "Fine linen",
    "Silver trumpets",
+   "Fine linen",
+   "Sweet incense",
    "Goats hair"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "The anointing oil, and sweet incense for the holy place.",
   "ref": "Exodus 31:11"
  },
@@ -22150,12 +22150,12 @@
   "category": "keyword",
   "question": "How long is the sabbath to be kept by Israel?",
   "choices": [
-   "Throughout their generations",
-   "Until they enter Canaan",
    "For forty years",
-   "Until the tabernacle is built"
+   "Until they enter Canaan",
+   "Until the tabernacle is built",
+   "Throughout their generations"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "The children of Israel shall keep the sabbath throughout their generations.",
   "ref": "Exodus 31:16"
  },
@@ -22166,12 +22166,12 @@
   "category": "keyword",
   "question": "How does God describe the sabbath to Israel?",
   "choices": [
-   "Holy unto you",
    "A heavy burden",
    "A day of sorrow",
+   "Holy unto you",
    "A day of war"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "Ye shall keep the sabbath therefore; for it is holy unto you.",
   "ref": "Exodus 31:14"
  },
@@ -22198,12 +22198,12 @@
   "category": "keyword",
   "question": "What is the sabbath called between God and Israel for ever?",
   "choices": [
-   "A sign",
+   "A name",
    "A tax",
-   "A prayer",
-   "A name"
+   "A sign",
+   "A prayer"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "It is a sign between me and the children of Israel for ever.",
   "ref": "Exodus 31:17"
  },
@@ -22246,12 +22246,12 @@
   "category": "keyword",
   "question": "What was Bezaleel to cut and set, besides working in metals?",
   "choices": [
-   "Stones",
+   "Cloths",
    "Trees",
    "Bricks",
-   "Cloths"
+   "Stones"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "He was given skill in cutting of stones, to set them.",
   "ref": "Exodus 31:5"
  },
@@ -22278,12 +22278,12 @@
   "category": "keyword",
   "question": "What did Bezaleel carve to work all manner of workmanship?",
   "choices": [
-   "Timber",
-   "Ivory",
    "Marble",
-   "Clay"
+   "Clay",
+   "Timber",
+   "Ivory"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "He was to carve timber, to work in all manner of workmanship.",
   "ref": "Exodus 31:5"
  },
@@ -22294,12 +22294,12 @@
   "category": "keyword",
   "question": "Which item is listed right after the altar of burnt offering in God's list?",
   "choices": [
-   "The laver and his foot",
-   "The table",
    "The ark",
-   "The incense"
+   "The incense",
+   "The laver and his foot",
+   "The table"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "The altar of burnt offering with all his furniture, and the laver and his foot.",
   "ref": "Exodus 31:9"
  },
@@ -22310,12 +22310,12 @@
   "category": "keyword",
   "question": "Which holy things are listed before the garments for Aaron?",
   "choices": [
-   "The cloths of service",
    "The silver trumpets",
-   "The shewbread",
-   "The brazen sea"
+   "The cloths of service",
+   "The brazen sea",
+   "The shewbread"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "The altars, the laver, and the cloths of service, and the holy garments for Aaron the priest.",
   "ref": "Exodus 31:9–10"
  },
@@ -22326,12 +22326,12 @@
   "category": "keyword",
   "question": "What did the LORD make in six days, according to the sabbath law?",
   "choices": [
-   "Heaven and earth",
-   "Only the earth",
+   "The mountains only",
    "The tabernacle",
-   "The mountains only"
+   "Heaven and earth",
+   "Only the earth"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "In six days the LORD made heaven and earth, and on the seventh day he rested.",
   "ref": "Exodus 31:17"
  },
@@ -22342,12 +22342,12 @@
   "category": "keyword",
   "question": "What was the first thing God said wise hearted men would make?",
   "choices": [
-   "The tabernacle of the congregation",
-   "The ark",
    "The altar",
-   "The garments"
+   "The garments",
+   "The tabernacle of the congregation",
+   "The ark"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "That they may make all that I have commanded thee; the tabernacle of the congregation.",
   "ref": "Exodus 31:6–7"
  },
@@ -22358,12 +22358,12 @@
   "category": "keyword",
   "question": "What kind of works was Bezaleel to devise in gold, silver and brass?",
   "choices": [
-   "Cunning works",
    "Quick works",
-   "Secret works",
-   "Plain works"
+   "Cunning works",
+   "Plain works",
+   "Secret works"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Bezaleel was to devise cunning works, to work in gold, and in silver, and in brass.",
   "ref": "Exodus 31:4"
  },
@@ -22374,12 +22374,12 @@
   "category": "keyword",
   "question": "What was Moses doing with God when the tables were given?",
   "choices": [
-   "Communing",
-   "Fasting alone",
    "Offering",
-   "Sleeping"
+   "Fasting alone",
+   "Sleeping",
+   "Communing"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "When he had made an end of communing with him upon mount Sinai.",
   "ref": "Exodus 31:18"
  },
@@ -22390,12 +22390,12 @@
   "category": "keyword",
   "question": "A soul who works on the sabbath is to be cut off from whom?",
   "choices": [
-   "His people",
    "His tribe",
+   "His house",
    "The camp",
-   "His house"
+   "His people"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "That soul shall be cut off from among his people.",
   "ref": "Exodus 31:14"
  },
@@ -22407,9 +22407,9 @@
   "question": "Bezaleel was to work in what \"manner\" of workmanship?",
   "choices": [
    "All manner of workmanship",
-   "One manner only",
    "Only stone work",
-   "Only royal work"
+   "Only royal work",
+   "One manner only"
   ],
   "answer": 0,
   "explanation": "He was filled with knowledge, and in all manner of workmanship.",
@@ -22422,12 +22422,12 @@
   "category": "keyword",
   "question": "The sweet incense was made for which place?",
   "choices": [
-   "The holy place",
-   "The camp",
    "The court gate",
+   "The camp",
+   "The holy place",
    "The mountain"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "The anointing oil, and sweet incense for the holy place.",
   "ref": "Exodus 31:11"
  },
@@ -22438,12 +22438,12 @@
   "category": "keyword",
   "question": "What is the seventh day called, as opposed to the six days of work?",
   "choices": [
-   "The sabbath of rest",
    "The day of trumpets",
+   "The sabbath of rest",
    "The feast of weeks",
    "The day of atonement"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "In the seventh is the sabbath of rest, holy to the LORD.",
   "ref": "Exodus 31:15"
  },
@@ -22454,12 +22454,12 @@
   "category": "keyword",
   "question": "Which of these is named among the furniture to be made?",
   "choices": [
-   "The altar of incense",
    "The golden calf",
    "The brazen serpent",
-   "The ark of Dagon"
+   "The ark of Dagon",
+   "The altar of incense"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "God listed the table, the pure candlestick, and the altar of incense.",
   "ref": "Exodus 31:8"
  },
@@ -22471,8 +22471,8 @@
   "question": "Where did the LORD name the sabbath a sign \"throughout your generations\"?",
   "choices": [
    "Between me and you",
-   "In the camp of Dan",
    "Before Pharaoh",
+   "In the camp of Dan",
    "Beside the ark"
   ],
   "answer": 0,
@@ -22558,6 +22558,662 @@
   "answer": 3,
   "explanation": "All the sons of Levi gathered themselves to Moses.",
   "ref": "Exodus 32:26"
+ },
+ {
+  "id": "exodus-32-e-01",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the people gather around when Moses delayed on the mount?",
+  "choices": [
+   "Hur",
+   "Aaron",
+   "Caleb",
+   "Joshua"
+  ],
+  "answer": 1,
+  "explanation": "The people gathered themselves together unto Aaron.",
+  "ref": "Exodus 32:1"
+ },
+ {
+  "id": "exodus-32-e-02",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Aaron make out of the gold?",
+  "choices": [
+   "A molten calf",
+   "A brass serpent",
+   "A golden lamb",
+   "A silver ox-cart"
+  ],
+  "answer": 0,
+  "explanation": "He fashioned it with a graving tool, after he had made it a molten calf.",
+  "ref": "Exodus 32:4"
+ },
+ {
+  "id": "exodus-32-e-03",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Moses to go down because the people had corrupted themselves?",
+  "choices": [
+   "Joshua",
+   "Aaron",
+   "Hur",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said unto Moses, Go, get thee down; for thy people have corrupted themselves.",
+  "ref": "Exodus 32:7"
+ },
+ {
+  "id": "exodus-32-e-04",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said \"There is a noise of war in the camp\"?",
+  "choices": [
+   "Aaron",
+   "Caleb",
+   "Joshua",
+   "Hur"
+  ],
+  "answer": 2,
+  "explanation": "When Joshua heard the noise of the people he said unto Moses, There is a noise of war in the camp.",
+  "ref": "Exodus 32:17"
+ },
+ {
+  "id": "exodus-32-e-05",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who asked the LORD to turn from His wrath against the people?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Eleazar",
+   "Joshua"
+  ],
+  "answer": 1,
+  "explanation": "Moses besought the LORD his God and said, Turn from thy fierce wrath.",
+  "ref": "Exodus 32:11–12"
+ },
+ {
+  "id": "exodus-32-e-06",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people do after they offered burnt offerings and peace offerings?",
+  "choices": [
+   "They fasted",
+   "They built a wall",
+   "They went home",
+   "They sat down to eat and drink and rose up to play"
+  ],
+  "answer": 3,
+  "explanation": "The people sat down to eat and to drink, and rose up to play.",
+  "ref": "Exodus 32:6"
+ },
+ {
+  "id": "exodus-32-e-07",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD call the people of Israel?",
+  "choices": [
+   "A small people",
+   "A hidden people",
+   "A faithful people",
+   "A stiffnecked people"
+  ],
+  "answer": 3,
+  "explanation": "I have seen this people, and, behold, it is a stiffnecked people.",
+  "ref": "Exodus 32:9"
+ },
+ {
+  "id": "exodus-32-e-08",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses carry down the mountain?",
+  "choices": [
+   "A scroll of songs",
+   "Two tables of the testimony",
+   "A golden calf",
+   "A new tabernacle"
+  ],
+  "answer": 1,
+  "explanation": "Moses went down from the mount, and the two tables of the testimony were in his hand.",
+  "ref": "Exodus 32:15"
+ },
+ {
+  "id": "exodus-32-e-09",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Aaron build in front of the calf?",
+  "choices": [
+   "A tent",
+   "An altar",
+   "A wall",
+   "A tower"
+  ],
+  "answer": 1,
+  "explanation": "When Aaron saw it, he built an altar before it.",
+  "ref": "Exodus 32:5"
+ },
+ {
+  "id": "exodus-32-e-10",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Aaron proclaim for the next day?",
+  "choices": [
+   "A day of mourning",
+   "A feast to the LORD",
+   "A march to Canaan",
+   "A battle"
+  ],
+  "answer": 1,
+  "explanation": "Aaron made proclamation, and said, To morrow is a feast to the LORD.",
+  "ref": "Exodus 32:5"
+ },
+ {
+  "id": "exodus-32-m-01",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose golden earrings did Aaron ask for?",
+  "choices": [
+   "Only the elders",
+   "Wives, sons and daughters",
+   "Only the Egyptians",
+   "Only the priests"
+  ],
+  "answer": 1,
+  "explanation": "Break off the golden earrings, which are in the ears of your wives, of your sons, and of your daughters.",
+  "ref": "Exodus 32:2"
+ },
+ {
+  "id": "exodus-32-m-02",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What tool did Aaron use to shape the calf?",
+  "choices": [
+   "A graving tool",
+   "A chisel of iron",
+   "A potter's wheel",
+   "A hammer"
+  ],
+  "answer": 0,
+  "explanation": "He fashioned it with a graving tool, after he had made it a molten calf.",
+  "ref": "Exodus 32:4"
+ },
+ {
+  "id": "exodus-32-m-03",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people say about the calf?",
+  "choices": [
+   "It is the work of Bezaleel",
+   "It shall lead us to Canaan",
+   "It is a sign of the covenant",
+   "These be thy gods, O Israel"
+  ],
+  "answer": 3,
+  "explanation": "They said, These be thy gods, O Israel, which brought thee up out of the land of Egypt.",
+  "ref": "Exodus 32:4"
+ },
+ {
+  "id": "exodus-32-m-04",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What two kinds of offerings did the people bring to the calf?",
+  "choices": [
+   "Wave and heave offerings",
+   "Sin and trespass offerings",
+   "Meat and drink offerings",
+   "Burnt offerings and peace offerings"
+  ],
+  "answer": 3,
+  "explanation": "They offered burnt offerings, and brought peace offerings.",
+  "ref": "Exodus 32:6"
+ },
+ {
+  "id": "exodus-32-m-05",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD offer to make of Moses?",
+  "choices": [
+   "A king",
+   "A prophet to Egypt",
+   "A high priest",
+   "A great nation"
+  ],
+  "answer": 3,
+  "explanation": "I will make of thee a great nation.",
+  "ref": "Exodus 32:10"
+ },
+ {
+  "id": "exodus-32-m-06",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the Egyptians might say about the LORD?",
+  "choices": [
+   "He forgot them",
+   "For mischief did he bring them out",
+   "He is the God of Pharaoh",
+   "He is weak"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore should the Egyptians speak, and say, For mischief did he bring them out, to slay them?",
+  "ref": "Exodus 32:12"
+ },
+ {
+  "id": "exodus-32-m-07",
+  "chapter": 32,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Moses ask the LORD to remember?",
+  "choices": [
+   "Adam, Seth and Enoch",
+   "Joseph, Judah and Levi",
+   "Abraham, Isaac and Israel",
+   "Noah, Shem and Ham"
+  ],
+  "answer": 2,
+  "explanation": "Remember Abraham, Isaac, and Israel, thy servants.",
+  "ref": "Exodus 32:13"
+ },
+ {
+  "id": "exodus-32-m-08",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the two tables written?",
+  "choices": [
+   "On both their sides",
+   "On one side only",
+   "In red ink",
+   "On the back only"
+  ],
+  "answer": 0,
+  "explanation": "The tables were written on both their sides.",
+  "ref": "Exodus 32:15"
+ },
+ {
+  "id": "exodus-32-m-09",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the noise in the camp really was?",
+  "choices": [
+   "The noise of a flood",
+   "The noise of them that sing",
+   "The noise of war",
+   "The noise of lions"
+  ],
+  "answer": 1,
+  "explanation": "But the noise of them that sing do I hear.",
+  "ref": "Exodus 32:18"
+ },
+ {
+  "id": "exodus-32-m-10",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Aaron say the people were set on?",
+  "choices": [
+   "Journeying",
+   "Prayer",
+   "Mischief",
+   "Hunger"
+  ],
+  "answer": 2,
+  "explanation": "Thou knowest the people, that they are set on mischief.",
+  "ref": "Exodus 32:22"
+ },
+ {
+  "id": "exodus-32-m-11",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Aaron claim happened when he cast the gold into the fire?",
+  "choices": [
+   "The gold vanished",
+   "This calf came out",
+   "Fire came down",
+   "It became a serpent"
+  ],
+  "answer": 1,
+  "explanation": "I cast it into the fire, and there came out this calf.",
+  "ref": "Exodus 32:24"
+ },
+ {
+  "id": "exodus-32-m-12",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "About how many of the people fell that day?",
+  "choices": [
+   "Seven thousand",
+   "Twelve thousand",
+   "Three hundred",
+   "Three thousand"
+  ],
+  "answer": 3,
+  "explanation": "There fell of the people that day about three thousand men.",
+  "ref": "Exodus 32:28"
+ },
+ {
+  "id": "exodus-32-m-13",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From what did Moses ask to be blotted out if God would not forgive?",
+  "choices": [
+   "The camp",
+   "The land",
+   "The book God had written",
+   "The tribe of Levi"
+  ],
+  "answer": 2,
+  "explanation": "If not, blot me, I pray thee, out of thy book which thou hast written.",
+  "ref": "Exodus 32:32"
+ },
+ {
+  "id": "exodus-32-m-14",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would do to whoever had sinned against Him?",
+  "choices": [
+   "Send him to Egypt",
+   "Make him a servant",
+   "Give him rest",
+   "Blot him out of His book"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever hath sinned against me, him will I blot out of my book.",
+  "ref": "Exodus 32:33"
+ },
+ {
+  "id": "exodus-32-h-01",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses do with the powder from the calf?",
+  "choices": [
+   "Strawed it upon the water and made Israel drink it",
+   "Buried it",
+   "Gave it to Aaron",
+   "Put it in the ark"
+  ],
+  "answer": 0,
+  "explanation": "He ground it to powder, and strawed it upon the water, and made the children of Israel drink of it.",
+  "ref": "Exodus 32:20"
+ },
+ {
+  "id": "exodus-32-h-02",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses tell each Levite to put by his side?",
+  "choices": [
+   "His rod",
+   "His staff",
+   "His shield",
+   "His sword"
+  ],
+  "answer": 3,
+  "explanation": "Put every man his sword by his side.",
+  "ref": "Exodus 32:27"
+ },
+ {
+  "id": "exodus-32-h-03",
+  "chapter": 32,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Moses stand when he asked, \"Who is on the LORD'S side?\"",
+  "choices": [
+   "By the water",
+   "In the gate of the camp",
+   "On the mountain",
+   "At the tabernacle"
+  ],
+  "answer": 1,
+  "explanation": "Moses stood in the gate of the camp, and said, Who is on the LORD'S side?",
+  "ref": "Exodus 32:26"
+ },
+ {
+  "id": "exodus-32-h-04",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Moses go up again to the LORD after the slaying?",
+  "choices": [
+   "After seven days",
+   "After forty days",
+   "On the next day",
+   "That same night"
+  ],
+  "answer": 2,
+  "explanation": "It came to pass on the morrow, that Moses said unto the people, I will go up unto the LORD.",
+  "ref": "Exodus 32:30"
+ },
+ {
+  "id": "exodus-32-h-05",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did the LORD say would go before Moses as he led the people?",
+  "choices": [
+   "Aaron",
+   "Mine Angel",
+   "The cloud",
+   "Joshua"
+  ],
+  "answer": 1,
+  "explanation": "Go, lead the people unto the place of which I have spoken: behold, mine Angel shall go before thee.",
+  "ref": "Exodus 32:34"
+ },
+ {
+  "id": "exodus-32-h-06",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD finally do to the people because of the calf?",
+  "choices": [
+   "Sent them to Egypt",
+   "Plagued them",
+   "Took the tables",
+   "Closed the sea"
+  ],
+  "answer": 1,
+  "explanation": "The LORD plagued the people, because they made the calf, which Aaron made.",
+  "ref": "Exodus 32:35"
+ },
+ {
+  "id": "exodus-32-h-07",
+  "chapter": 32,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Moses say the Egyptians might say God slew His people?",
+  "choices": [
+   "In the desert",
+   "In the mountains",
+   "At the sea",
+   "In Goshen"
+  ],
+  "answer": 1,
+  "explanation": "For mischief did he bring them out, to slay them in the mountains.",
+  "ref": "Exodus 32:12"
+ },
+ {
+  "id": "exodus-32-h-08",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD ask Moses to do so that His wrath could grow hot?",
+  "choices": [
+   "Bring Aaron",
+   "Go down",
+   "Pray",
+   "Let Him alone"
+  ],
+  "answer": 3,
+  "explanation": "Now therefore let me alone, that my wrath may wax hot against them.",
+  "ref": "Exodus 32:10"
+ },
+ {
+  "id": "exodus-32-h-09",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the people rise to offer after Aaron's proclamation?",
+  "choices": [
+   "At midnight",
+   "After seven days",
+   "Early on the morrow",
+   "At evening"
+  ],
+  "answer": 2,
+  "explanation": "They rose up early on the morrow, and offered burnt offerings.",
+  "ref": "Exodus 32:6"
+ },
+ {
+  "id": "exodus-32-h-10",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What blessing did Moses say the Levites would receive that day?",
+  "choices": [
+   "A land of their own",
+   "A crown",
+   "A new tabernacle",
+   "A blessing bestowed on them"
+  ],
+  "answer": 3,
+  "explanation": "Consecrate yourselves to day to the LORD, that he may bestow upon you a blessing this day.",
+  "ref": "Exodus 32:29"
+ },
+ {
+  "id": "exodus-32-h-11",
+  "chapter": 32,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose writing was graven upon the tables?",
+  "choices": [
+   "The writing of Moses",
+   "The writing of Joshua",
+   "The writing of Aaron",
+   "The writing of God"
+  ],
+  "answer": 3,
+  "explanation": "The tables were the work of God, and the writing was the writing of God, graven upon the tables.",
+  "ref": "Exodus 32:16"
+ },
+ {
+  "id": "exodus-32-h-12",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses see when he came nigh the camp?",
+  "choices": [
+   "A cloud of fire",
+   "An empty camp",
+   "Egyptian chariots",
+   "The calf and the dancing"
+  ],
+  "answer": 3,
+  "explanation": "He saw the calf, and the dancing: and Moses' anger waxed hot.",
+  "ref": "Exodus 32:19"
+ },
+ {
+  "id": "exodus-32-h-13",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What word did the people use of Moses when they asked Aaron for gods?",
+  "choices": [
+   "The man that brought us up out of Egypt",
+   "The son of Pharaoh",
+   "Our king",
+   "The prophet of Midian"
+  ],
+  "answer": 0,
+  "explanation": "As for this Moses, the man that brought us up out of the land of Egypt, we wot not what is become of him.",
+  "ref": "Exodus 32:1"
+ },
+ {
+  "id": "exodus-32-h-14",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say to Aaron after burning the calf?",
+  "choices": [
+   "Why did you flee?",
+   "Where is the gold?",
+   "What did this people unto thee?",
+   "Who made the altar?"
+  ],
+  "answer": 2,
+  "explanation": "Moses said unto Aaron, What did this people unto thee, that thou hast brought so great a sin upon them?",
+  "ref": "Exodus 32:21"
+ },
+ {
+  "id": "exodus-32-h-15",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Moses describe the people's sin when he returns to the LORD?",
+  "choices": [
+   "A great sin of making gods of gold",
+   "A sin of silver",
+   "A sin of the tribes",
+   "A small mistake"
+  ],
+  "answer": 0,
+  "explanation": "This people have sinned a great sin, and have made them gods of gold.",
+  "ref": "Exodus 32:31"
+ },
+ {
+  "id": "exodus-32-h-16",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say about visiting sin in the day He visits?",
+  "choices": [
+   "He will visit their sin upon them",
+   "He will pass over it",
+   "He will hide it",
+   "He will forget it"
+  ],
+  "answer": 0,
+  "explanation": "In the day when I visit I will visit their sin upon them.",
+  "ref": "Exodus 32:34"
+ },
+ {
+  "id": "exodus-32-m-15",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people ask Aaron to make gods?",
+  "choices": [
+   "Pharaoh demanded it",
+   "An angel told them to",
+   "They had run out of food",
+   "They did not know what became of Moses"
+  ],
+  "answer": 3,
+  "explanation": "As for this Moses, we wot not what is become of him.",
+  "ref": "Exodus 32:1"
  },
  {
   "id": "old-exodus-33-1",
