@@ -10240,6 +10240,662 @@
   "ref": "Exodus 15:27"
  },
  {
+  "id": "exodus-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sang the song to the LORD with the children of Israel?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "Joshua",
+   "Caleb"
+  ],
+  "answer": 0,
+  "explanation": "Then sang Moses and the children of Israel this song unto the LORD.",
+  "ref": "Exodus 15:1"
+ },
+ {
+  "id": "exodus-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the song say the LORD threw into the sea?",
+  "choices": [
+   "The spear and shield",
+   "The horse and his rider",
+   "The ark and altar",
+   "The tent and staff"
+  ],
+  "answer": 1,
+  "explanation": "The horse and his rider hath he thrown into the sea.",
+  "ref": "Exodus 15:1"
+ },
+ {
+  "id": "exodus-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The song calls the LORD a man of what?",
+  "choices": [
+   "Peace",
+   "Wisdom",
+   "War",
+   "Sorrow"
+  ],
+  "answer": 2,
+  "explanation": "The LORD is a man of war: the LORD is his name.",
+  "ref": "Exodus 15:3"
+ },
+ {
+  "id": "exodus-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Pharaoh's army sink to the bottom like?",
+  "choices": [
+   "A feather",
+   "A reed",
+   "A leaf",
+   "A stone"
+  ],
+  "answer": 3,
+  "explanation": "The depths have covered them: they sank into the bottom as a stone.",
+  "ref": "Exodus 15:5"
+ },
+ {
+  "id": "exodus-15-e-05",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Miriam, according to the chapter?",
+  "choices": [
+   "The prophetess, sister of Aaron",
+   "The wife of Moses",
+   "The mother of Moses",
+   "The daughter of Pharaoh"
+  ],
+  "answer": 0,
+  "explanation": "Miriam the prophetess, the sister of Aaron, took a timbrel in her hand.",
+  "ref": "Exodus 15:20"
+ },
+ {
+  "id": "exodus-15-e-06",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the women carry when they went out after Miriam?",
+  "choices": [
+   "Harps",
+   "Timbrels",
+   "Trumpets",
+   "Palm branches"
+  ],
+  "answer": 1,
+  "explanation": "All the women went out after her with timbrels and with dances.",
+  "ref": "Exodus 15:20"
+ },
+ {
+  "id": "exodus-15-e-07",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "Into which wilderness did Moses bring Israel from the Red sea?",
+  "choices": [
+   "Sin",
+   "Zin",
+   "Shur",
+   "Paran"
+  ],
+  "answer": 2,
+  "explanation": "They went out into the wilderness of Shur.",
+  "ref": "Exodus 15:22"
+ },
+ {
+  "id": "exodus-15-e-08",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days did they go without finding water?",
+  "choices": [
+   "One day",
+   "Seven days",
+   "Ten days",
+   "Three days"
+  ],
+  "answer": 3,
+  "explanation": "They went three days in the wilderness, and found no water.",
+  "ref": "Exodus 15:22"
+ },
+ {
+  "id": "exodus-15-e-09",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "What was the place named for its bitter waters?",
+  "choices": [
+   "Marah",
+   "Elim",
+   "Shur",
+   "Sinai"
+  ],
+  "answer": 0,
+  "explanation": "When they came to Marah, they could not drink of the waters of Marah, for they were bitter.",
+  "ref": "Exodus 15:23"
+ },
+ {
+  "id": "exodus-15-e-10",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people ask at Marah?",
+  "choices": [
+   "Where is Pharaoh?",
+   "What shall we drink?",
+   "Who will lead us?",
+   "When do we eat?"
+  ],
+  "answer": 1,
+  "explanation": "The people murmured against Moses, saying, What shall we drink?",
+  "ref": "Exodus 15:24"
+ },
+ {
+  "id": "exodus-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the song say the LORD is to Israel, besides strength and song?",
+  "choices": [
+   "Shield",
+   "Rock",
+   "Salvation",
+   "King"
+  ],
+  "answer": 2,
+  "explanation": "The LORD is my strength and song, and he is become my salvation.",
+  "ref": "Exodus 15:2"
+ },
+ {
+  "id": "exodus-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the song say consumed the enemy like stubble?",
+  "choices": [
+   "Fire from heaven",
+   "The sea's waves",
+   "Pharaoh's pride",
+   "The LORD's wrath"
+  ],
+  "answer": 3,
+  "explanation": "Thou sentest forth thy wrath, which consumed them as stubble.",
+  "ref": "Exodus 15:7"
+ },
+ {
+  "id": "exodus-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the song describe the floods when the LORD blew?",
+  "choices": [
+   "They stood upright as an heap",
+   "They ran red",
+   "They fell as rain",
+   "They froze at once"
+  ],
+  "answer": 0,
+  "explanation": "With the blast of thy nostrils the waters were gathered together, the floods stood upright as an heap.",
+  "ref": "Exodus 15:8"
+ },
+ {
+  "id": "exodus-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the enemy say he would do with the spoil?",
+  "choices": [
+   "Burn it",
+   "Divide it",
+   "Hide it",
+   "Offer it"
+  ],
+  "answer": 1,
+  "explanation": "The enemy said, I will pursue, I will overtake, I will divide the spoil.",
+  "ref": "Exodus 15:9"
+ },
+ {
+  "id": "exodus-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the enemy sink in the mighty waters?",
+  "choices": [
+   "As a stone only",
+   "As a feather",
+   "As lead",
+   "As a boat"
+  ],
+  "answer": 2,
+  "explanation": "Thou didst blow with thy wind, the sea covered them: they sank as lead in the mighty waters.",
+  "ref": "Exodus 15:10"
+ },
+ {
+  "id": "exodus-15-m-06",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question about the LORD did the song ask among the gods?",
+  "choices": [
+   "Who will fight for us?",
+   "Where is the LORD?",
+   "Who gave the law?",
+   "Who is like unto thee?"
+  ],
+  "answer": 3,
+  "explanation": "Who is like unto thee, O LORD, among the gods?",
+  "ref": "Exodus 15:11"
+ },
+ {
+  "id": "exodus-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What swallowed the enemy when the LORD stretched out His right hand?",
+  "choices": [
+   "The earth",
+   "The sea",
+   "The wind",
+   "The sand"
+  ],
+  "answer": 0,
+  "explanation": "Thou stretchedst out thy right hand, the earth swallowed them.",
+  "ref": "Exodus 15:12"
+ },
+ {
+  "id": "exodus-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose inhabitants would be afraid, with sorrow taking hold?",
+  "choices": [
+   "Goshen",
+   "Palestina",
+   "Egypt",
+   "Midian"
+  ],
+  "answer": 1,
+  "explanation": "Sorrow shall take hold on the inhabitants of Palestina.",
+  "ref": "Exodus 15:14"
+ },
+ {
+  "id": "exodus-15-m-09",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who would be amazed, according to the song?",
+  "choices": [
+   "The kings of Egypt",
+   "The elders of Midian",
+   "The dukes of Edom",
+   "The priests of Moab"
+  ],
+  "answer": 2,
+  "explanation": "Then the dukes of Edom shall be amazed.",
+  "ref": "Exodus 15:15"
+ },
+ {
+  "id": "exodus-15-m-10",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the song say the LORD shall reign?",
+  "choices": [
+   "A thousand years",
+   "Until the land",
+   "Until the sea",
+   "For ever and ever"
+  ],
+  "answer": 3,
+  "explanation": "The LORD shall reign for ever and ever.",
+  "ref": "Exodus 15:18"
+ },
+ {
+  "id": "exodus-15-m-11",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Miriam say when the women answered?",
+  "choices": [
+   "Sing ye to the LORD, for he hath triumphed gloriously",
+   "Praise the king",
+   "Flee to the hills",
+   "Give thanks to Moses"
+  ],
+  "answer": 0,
+  "explanation": "Miriam answered them, Sing ye to the LORD, for he hath triumphed gloriously.",
+  "ref": "Exodus 15:21"
+ },
+ {
+  "id": "exodus-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD show Moses at Marah?",
+  "choices": [
+   "A rod",
+   "A tree",
+   "A spring",
+   "A rock"
+  ],
+  "answer": 1,
+  "explanation": "The LORD shewed him a tree, which when he had cast into the waters, the waters were made sweet.",
+  "ref": "Exodus 15:25"
+ },
+ {
+  "id": "exodus-15-m-13",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD make at Marah besides sweet water?",
+  "choices": [
+   "An altar",
+   "A covenant of salt",
+   "A statute and an ordinance",
+   "A feast"
+  ],
+  "answer": 2,
+  "explanation": "There he made for them a statute and an ordinance, and there he proved them.",
+  "ref": "Exodus 15:25"
+ },
+ {
+  "id": "exodus-15-m-14",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD not put on Israel if they hearkened?",
+  "choices": [
+   "Famine",
+   "Slavery",
+   "Wars",
+   "The diseases of the Egyptians"
+  ],
+  "answer": 3,
+  "explanation": "I will put none of these diseases upon thee, which I have brought upon the Egyptians.",
+  "ref": "Exodus 15:26"
+ },
+ {
+  "id": "exodus-15-m-15",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD describe Himself in the promise at Marah?",
+  "choices": [
+   "The LORD that healeth thee",
+   "The LORD thy shield",
+   "The LORD thy shepherd",
+   "The LORD thy Rock"
+  ],
+  "answer": 0,
+  "explanation": "I am the LORD that healeth thee.",
+  "ref": "Exodus 15:26"
+ },
+ {
+  "id": "exodus-15-m-16",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many palm trees were at Elim?",
+  "choices": [
+   "Twelve",
+   "Threescore and ten",
+   "Forty",
+   "Three hundred"
+  ],
+  "answer": 1,
+  "explanation": "Where were twelve wells of water, and threescore and ten palm trees.",
+  "ref": "Exodus 15:27"
+ },
+ {
+  "id": "exodus-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the song say Pharaoh's chosen captains were drowned?",
+  "choices": [
+   "In the Nile",
+   "In the Jordan",
+   "In the Red sea",
+   "In Marah"
+  ],
+  "answer": 2,
+  "explanation": "His chosen captains also are drowned in the Red sea.",
+  "ref": "Exodus 15:4"
+ },
+ {
+  "id": "exodus-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the song say the LORD's right hand did to the enemy?",
+  "choices": [
+   "Led away",
+   "Healed",
+   "Fed",
+   "Dashed in pieces"
+  ],
+  "answer": 3,
+  "explanation": "Thy right hand, O LORD, hath dashed in pieces the enemy.",
+  "ref": "Exodus 15:6"
+ },
+ {
+  "id": "exodus-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the song say the depths were in the heart of the sea?",
+  "choices": [
+   "Congealed",
+   "Opened",
+   "Boiling",
+   "Frozen over"
+  ],
+  "answer": 0,
+  "explanation": "The depths were congealed in the heart of the sea.",
+  "ref": "Exodus 15:8"
+ },
+ {
+  "id": "exodus-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the enemy say his lust would be?",
+  "choices": [
+   "Quenched by the sea",
+   "Satisfied upon them",
+   "Fed by spoil",
+   "Turned to peace"
+  ],
+  "answer": 1,
+  "explanation": "My lust shall be satisfied upon them; I will draw my sword.",
+  "ref": "Exodus 15:9"
+ },
+ {
+  "id": "exodus-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do in His mercy, per the song?",
+  "choices": [
+   "Fed the people",
+   "Hid the people",
+   "Led forth the people He redeemed",
+   "Taught the people"
+  ],
+  "answer": 2,
+  "explanation": "Thou in thy mercy hast led forth the people which thou hast redeemed.",
+  "ref": "Exodus 15:13"
+ },
+ {
+  "id": "exodus-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the inhabitants of Canaan do?",
+  "choices": [
+   "Run away",
+   "Be amazed",
+   "Bow down",
+   "Melt away"
+  ],
+  "answer": 3,
+  "explanation": "All the inhabitants of Canaan shall melt away.",
+  "ref": "Exodus 15:15"
+ },
+ {
+  "id": "exodus-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How would the peoples be until Israel passed over?",
+  "choices": [
+   "As still as a stone",
+   "As loud as thunder",
+   "As swift as wind",
+   "As dry as sand"
+  ],
+  "answer": 0,
+  "explanation": "By the greatness of thine arm they shall be as still as a stone; till thy people pass over.",
+  "ref": "Exodus 15:16"
+ },
+ {
+  "id": "exodus-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the song say the LORD would plant Israel?",
+  "choices": [
+   "In the land of Goshen",
+   "In the mountain of His inheritance",
+   "In the valley of Sinai",
+   "By the sea"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt bring them in, and plant them in the mountain of thine inheritance.",
+  "ref": "Exodus 15:17"
+ },
+ {
+  "id": "exodus-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Miriam do before the women followed her?",
+  "choices": [
+   "Sang alone",
+   "Stretched out her rod",
+   "Took a timbrel in her hand",
+   "Lifted a banner"
+  ],
+  "answer": 2,
+  "explanation": "Miriam the prophetess took a timbrel in her hand; and all the women went out after her.",
+  "ref": "Exodus 15:20"
+ },
+ {
+  "id": "exodus-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD prove the people at Marah by?",
+  "choices": [
+   "Giving them a feast",
+   "Taking away the sea",
+   "Sending a plague",
+   "A statute and an ordinance"
+  ],
+  "answer": 3,
+  "explanation": "There he made for them a statute and an ordinance, and there he proved them.",
+  "ref": "Exodus 15:25"
+ },
+ {
+  "id": "exodus-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What condition of hearkening did the LORD name at Marah?",
+  "choices": [
+   "Hearken, do right, give ear, keep His statutes",
+   "Offer a lamb",
+   "Pray three times",
+   "Build an altar"
+  ],
+  "answer": 0,
+  "explanation": "If thou wilt diligently hearken... do that which is right... give ear... keep all his statutes.",
+  "ref": "Exodus 15:26"
+ },
+ {
+  "id": "exodus-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Israel encamp after Marah?",
+  "choices": [
+   "By the sea of Shur",
+   "By the waters at Elim",
+   "On Mount Sinai",
+   "In the wilderness of Sin"
+  ],
+  "answer": 1,
+  "explanation": "They came to Elim... and they encamped there by the waters.",
+  "ref": "Exodus 15:27"
+ },
+ {
+  "id": "exodus-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the song say the LORD's name was?",
+  "choices": [
+   "Jehovah-jireh",
+   "Adonai",
+   "The LORD",
+   "The Most High"
+  ],
+  "answer": 2,
+  "explanation": "The LORD is a man of war: the LORD is his name.",
+  "ref": "Exodus 15:3"
+ },
+ {
+  "id": "exodus-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the song promise about the LORD's holy habitation?",
+  "choices": [
+   "He would destroy it",
+   "He would hide it",
+   "He would move it",
+   "He guided them in His strength to it"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast guided them in thy strength unto thy holy habitation.",
+  "ref": "Exodus 15:13"
+ },
+ {
+  "id": "exodus-15-h-15",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people do to Moses at Marah?",
+  "choices": [
+   "Murmured against him",
+   "Struck him",
+   "Fled from him",
+   "Praised him"
+  ],
+  "answer": 0,
+  "explanation": "The people murmured against Moses, saying, What shall we drink?",
+  "ref": "Exodus 15:24"
+ },
+ {
   "id": "old-exodus-16-1",
   "chapter": 16,
   "level": "beginner",
