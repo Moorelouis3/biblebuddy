@@ -120,6 +120,13 @@ export type ClueQuiz = {
 export type ClueLevel = "beginner" | "medium" | "hard";
 export const LEVEL_LABEL: Record<ClueLevel, string> = { beginner: "Easy", medium: "Medium", hard: "Hard" };
 export const CLUE_LEVELS: ClueLevel[] = ["beginner", "medium", "hard"];
+/**
+ * false = no Easy/Medium/Hard choice: every game draws from all levels mixed
+ * (Louis, 2026-11-23: "remove the easy hard medium option for now until they
+ * are all done"). Turn it back on once the Question Writer has filled every
+ * chapter with 15/15/15 (scripts/trivia-writer.ts).
+ */
+export const LEVEL_PICKER = false;
 export type ClueQuestion = {
   /** Stable id, e.g. "gen29-m-03". Never reuse one for a different question. */
   id: string;

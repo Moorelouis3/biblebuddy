@@ -26,7 +26,7 @@ import {
   selectionStatus,
   selectionToKeys,
 } from "@/lib/clueGame/bank";
-import { CLUE_LEVELS, LEVEL_LABEL, type ClueLevel } from "@/lib/clueGame/types";
+import { CLUE_LEVELS, LEVEL_LABEL, LEVEL_PICKER, type ClueLevel } from "@/lib/clueGame/types";
 
 /** What each level asks (Louis, 2026-11-23: Hard, "but not super hard"). */
 const LEVEL_HINT: Record<ClueLevel, string> = {
@@ -97,7 +97,7 @@ const newRoundId = () =>
 
 function HowToPlay({ onBack }: { onBack: () => void }) {
   const steps: Array<[string, string]> = [
-    ["📚", "Pick a book, all chapters or just the ones you want, and Easy, Medium or Hard."],
+    ["📚", LEVEL_PICKER ? "Pick a book, all chapters or just the ones you want, and Easy, Medium or Hard." : "Pick a book, and all chapters or just the ones you want."],
     ["❓", "A game is up to 10 questions. Each one has four choices, A to D."],
     ["⏱️", "You have 10 seconds to pick an answer. The clock always runs the full 10 seconds."],
     ["✅", "The fastest right answer earns the point. Only one player scores each question. Wrong costs 1 point. No answer is 0."],
@@ -204,15 +204,20 @@ function SetupPicker({
         </div>
       ) : null}
 
-      <p className="bb-clue-setup-step">3 · Level</p>
-      <div className="bb-clue-tabs">
-        {CLUE_LEVELS.map((lv) => (
-          <button key={lv} type="button" className={sel.level === lv ? "is-on" : ""} onClick={() => setSel((s) => ({ ...s, level: lv }))}>
-            {LEVEL_LABEL[lv]}
-          </button>
-        ))}
-      </div>
-      <p className="mt-1 text-center text-[12.5px] font-bold opacity-75">{LEVEL_HINT[sel.level]}</p>
+      {/* Hidden while the levels are being filled: every game mixes them (LEVEL_PICKER). */}
+      {LEVEL_PICKER ? (
+        <>
+          <p className="bb-clue-setup-step">3 · Level</p>
+          <div className="bb-clue-tabs">
+            {CLUE_LEVELS.map((lv) => (
+              <button key={lv} type="button" className={sel.level === lv ? "is-on" : ""} onClick={() => setSel((s) => ({ ...s, level: lv }))}>
+                {LEVEL_LABEL[lv]}
+              </button>
+            ))}
+          </div>
+          <p className="mt-1 text-center text-[12.5px] font-bold opacity-75">{LEVEL_HINT[sel.level]}</p>
+        </>
+      ) : null}
 
       <div className="bb-clue-setup-summary" aria-live="polite">
         {!status ? (
@@ -227,8 +232,8 @@ function SetupPicker({
         ) : (
           <p className="font-bold" style={{ color: "#8a1f12" }}>
             {status.count === 0
-              ? `${selectionLabel(current)} has no questions yet. Pick another level or more chapters.`
-              : `${selectionLabel(current)} has only ${status.count} questions. A game needs ${status.needed}. Add chapters or pick another level.`}
+              ? `${selectionLabel(current)} has no questions yet. Pick more chapters.`
+              : `${selectionLabel(current)} has only ${status.count} questions. A game needs ${status.needed}. Add chapters.`}
           </p>
         )}
       </div>

@@ -15,7 +15,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { bookItems, loadBook, selectionToKeys } from "@/lib/clueGame/bank";
 import { createMatch, ROUND_INTRO_MS, soloSetup, type ClueSelection, type PublicCard } from "@/lib/clueGame/engine";
-import { LEVEL_LABEL, type ClueLevel, type ClueRef } from "@/lib/clueGame/types";
+import { LEVEL_LABEL, LEVEL_PICKER, type ClueLevel, type ClueRef } from "@/lib/clueGame/types";
 import { trackClue } from "@/lib/clueGame/track";
 import ClueTable from "./ClueTable";
 import ClueResults, { ReviewList } from "./ClueResults";
@@ -115,7 +115,7 @@ function Round({
             <ClueResults
               mode="solo"
               heading={right === match.deck.length ? "Perfect!" : "Chapter Complete"}
-              deckName={`${label} · ${LEVEL_LABEL[selection.level]}`}
+              deckName={LEVEL_PICKER ? `${label} · ${LEVEL_LABEL[selection.level]}` : label}
               score={match.scores.me ?? 0}
               won={right}
               total={match.deck.length}

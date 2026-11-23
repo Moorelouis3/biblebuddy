@@ -11,6 +11,7 @@ import { BANK_ITEMS, BOOK_INDEX, CLUE_BANK, MIN_ROUND, bookItems, booksWithQuest
 // Every book file in the registry, as the server has it.
 import "../lib/clueGame/bank/all";
 import { chainPostText } from "../lib/clueGame/server";
+import { LEVEL_PICKER } from "../lib/clueGame/types";
 import { readClueChallenge } from "../components/feed/ClueChallengePost";
 
 let n = 0;
@@ -135,7 +136,8 @@ ok("setup: All Chapters, one chapter and several chapters, at both levels, draw 
         assert.equal(new Set(m.deck).size, 10);
         for (const id of [...m.deck, ...m.spare]) {
           const q = CLUE_BANK.get(id)!;
-          assert.equal(q.level, level, `${id} level`);
+          // With the level picker off (2026-11-23) a game mixes every level.
+          if (LEVEL_PICKER) assert.equal(q.level, level, `${id} level`);
           if (chapters !== "all") assert.ok(chapters.includes(q.chapter), `${id} outside ${chapters}`);
         }
         assert.ok(m.spare.length >= 1, "a fresh question is kept for a tiebreak");
@@ -170,10 +172,11 @@ ok("rematch: the next game rotates in fresh questions (none repeated while the s
   const seen = [...first.deck];
   const second = createMatch({ items: BANK_ITEMS, selection: s, ...soloSetup(), seed: 12, avoid: seen });
   assert.equal(second.deck.filter((id) => seen.includes(id)).length, 0);
-  // 24 in the pool: the third game has only 4 fresh ones, then reuses the least recent.
+  // The third game takes every fresh one left (pool minus 20, up to 10), then reuses the least recent.
+  const pool = poolForSelection(BANK_ITEMS, s).length;
   const third = createMatch({ items: BANK_ITEMS, selection: s, ...soloSetup(), seed: 13, avoid: [...seen, ...second.deck] });
   assert.equal(new Set(third.deck).size, 10);
-  assert.equal(third.deck.filter((id) => !seen.includes(id) && !second.deck.includes(id)).length, 4);
+  assert.equal(third.deck.filter((id) => !seen.includes(id) && !second.deck.includes(id)).length, Math.min(10, pool - 20));
 });
 
 ok("selection round trip through a room's deck_ids, and bad input is cleaned", () => {
@@ -259,7 +262,7 @@ ok("tie: only the tied leaders play a tiebreaker, on a question nobody has seen 
   assert.deepEqual(m.tiebreakers.sort(), ["a", "b"]);
   assert.ok(!m.deck.includes(m.round!.cardId));
   assert.ok(!m.done.some((d) => d.cardId === m.round!.cardId));
-  assert.equal(CLUE_BANK.get(m.round!.cardId)!.level, "beginner", "same selection");
+  if (LEVEL_PICKER) assert.equal(CLUE_BANK.get(m.round!.cardId)!.level, "beginner", "same selection");
   const v = publicView(m, CLUE_BANK, m.round!.openAt, "a");
   assert.equal(v.round!.quiz.correct, undefined);
 });
@@ -393,9 +396,10 @@ ok("short round: a chapter with 5 questions plays 5, ends without a tiebreak que
 });
 
 ok("labels: Easy / Medium / Hard, real book names, chapter runs", () => {
-  assert.equal(selectionLabel({ book: "genesis", chapters: [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36], level: "medium" }), "Genesis 25–36 · Medium");
-  assert.equal(selectionLabel({ book: "1-samuel", chapters: "all", level: "beginner" }), "1 Samuel · All chapters · Easy");
-  assert.equal(selectionLabel({ book: "song-of-solomon", chapters: [2], level: "hard" }), "Song of Solomon 2 · Hard");
+  const lv = (s: string) => (LEVEL_PICKER ? ` · ${s}` : "");
+  assert.equal(selectionLabel({ book: "genesis", chapters: [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36], level: "medium" }), `Genesis 25–36${lv("Medium")}`);
+  assert.equal(selectionLabel({ book: "1-samuel", chapters: "all", level: "beginner" }), `1 Samuel · All chapters${lv("Easy")}`);
+  assert.equal(selectionLabel({ book: "song-of-solomon", chapters: [2], level: "hard" }), `Song of Solomon 2${lv("Hard")}`);
 });
 
 ok("feed: chain posts, new challenge posts and old Bible Clue posts all read back as cards", () => {

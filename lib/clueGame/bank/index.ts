@@ -24,7 +24,7 @@ import type { BankItem, ClueSelection } from "../engine";
 import { DEFAULT_CLUE_SETTINGS } from "../engine";
 import { GENESIS_CARDS } from "../decks/genesis";
 import { ref } from "../ref";
-import { CLUE_LEVELS, LEVEL_LABEL, type ClueCategory, type ClueLevel, type ClueQuestion } from "../types";
+import { CLUE_LEVELS, LEVEL_LABEL, LEVEL_PICKER, type ClueCategory, type ClueLevel, type ClueQuestion } from "../types";
 import { BANK_FILES } from "./files";
 import { artFor } from "./art";
 import BOOK_INDEX_JSON from "./books/index.json";
@@ -142,7 +142,7 @@ export function selectionCount(sel: ClueSelection): number {
   const li = CLUE_LEVELS.indexOf(sel.level);
   return Object.entries(chapters)
     .filter(([n]) => sel.chapters === "all" || sel.chapters.includes(Number(n)))
-    .reduce((sum, [, counts]) => sum + (counts[li] || 0), 0);
+    .reduce((sum, [, counts]) => sum + (LEVEL_PICKER ? counts[li] || 0 : counts.reduce((a, b) => a + (b || 0), 0)), 0);
 }
 
 /**
@@ -207,5 +207,5 @@ function chapterList(chs: number[]) {
 export function selectionLabel(sel: ClueSelection) {
   const book = bookName(sel.book);
   const where = sel.chapters === "all" ? `${book} · All chapters` : `${book} ${chapterList(sel.chapters)}`;
-  return `${where} · ${LEVEL_LABEL[sel.level]}`;
+  return LEVEL_PICKER ? `${where} · ${LEVEL_LABEL[sel.level]}` : where;
 }

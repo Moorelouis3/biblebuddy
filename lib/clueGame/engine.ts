@@ -26,6 +26,7 @@
  */
 
 import type { ClueCategory, ClueLevel, ClueRef } from "./types";
+import { LEVEL_PICKER } from "./types";
 
 /** A playable question with its art resolved (lib/clueGame/bank builds these). */
 export type BankItem = {
@@ -156,7 +157,7 @@ function choiceOrder(seed: number, id: string, salt: number): [number, number, n
 /** The questions a selection may use. */
 export function poolForSelection(items: BankItem[], sel: ClueSelection): BankItem[] {
   return items.filter(
-    (q) => q.book === sel.book && q.level === sel.level && (sel.chapters === "all" || sel.chapters.includes(q.chapter)),
+    (q) => q.book === sel.book && (!LEVEL_PICKER || q.level === sel.level) && (sel.chapters === "all" || sel.chapters.includes(q.chapter)),
   );
 }
 

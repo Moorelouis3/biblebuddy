@@ -33,7 +33,7 @@ import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "@/lib/triviaCatalog";
 import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 import { dispatchLouisMoment } from "@/lib/louisMoments";
 import { BOOK_INDEX, MIN_ROUND } from "@/lib/clueGame/bank";
-import { CLUE_LEVELS, LEVEL_LABEL, type ClueLevel } from "@/lib/clueGame/types";
+import { CLUE_LEVELS, LEVEL_LABEL, LEVEL_PICKER, type ClueLevel } from "@/lib/clueGame/types";
 import ChapterTrivia, { type ChapterTriviaResult } from "@/components/clueGame/ChapterTrivia";
 
 type TriviaGamePlayerProps = {
@@ -125,7 +125,11 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
     [bookKey, bookName, chapter?.progressKey, chapterNumber, onComplete],
   );
 
-  const playable = CLUE_LEVELS.filter((lv, i) => (counts[i] || 0) >= MIN_ROUND);
+  // While the levels are being filled (LEVEL_PICKER off) one Play button mixes all of them.
+  const total = counts.reduce((a: number, b: number) => a + (b || 0), 0);
+  const levels = LEVEL_PICKER ? CLUE_LEVELS : (["beginner"] as const);
+  const okAt = (i: number) => (LEVEL_PICKER ? counts[i] || 0 : total) >= MIN_ROUND;
+  const playable = levels.filter((_, i) => okAt(i));
 
   return (
     <div className={compact ? "px-1 py-2" : "px-4 py-6"}>
@@ -145,13 +149,13 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
           </p>
           {last ? (
             <p className="mt-3 rounded-xl px-3 py-2 text-[15px] font-black" style={{ background: "rgba(29,90,55,.85)", color: "#fff3cf" }}>
-              {last.right === last.total ? `Perfect! ${last.right}/${last.total}` : `You got ${last.right} of ${last.total} right`}. Play again or try a harder level.
+              {last.right === last.total ? `Perfect! ${last.right}/${last.total}` : `You got ${last.right} of ${last.total} right`}{LEVEL_PICKER ? ". Play again or try a harder level." : ". Play again for new questions."}
             </p>
           ) : null}
           {playable.length ? (
             <div className="mt-4 grid gap-2">
-              {CLUE_LEVELS.map((lv, i) => {
-                const ok = (counts[i] || 0) >= MIN_ROUND;
+              {levels.map((lv, i) => {
+                const ok = okAt(i);
                 return (
                   <button
                     key={lv}
@@ -161,7 +165,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
                     className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full text-[17px] font-black transition active:scale-[0.98] disabled:opacity-45"
                     style={{ color: "#fff7dd", background: ok ? "linear-gradient(180deg, #34a35a, #1d6a34)" : "#5a4630", boxShadow: "inset 0 0 0 2px #f6d36b" }}
                   >
-                    {ok ? `▶ ${LEVEL_LABEL[lv]}` : `${LEVEL_LABEL[lv]} · coming soon`}
+                    {!LEVEL_PICKER ? "▶ Play" : ok ? `▶ ${LEVEL_LABEL[lv]}` : `${LEVEL_LABEL[lv]} · coming soon`}
                   </button>
                 );
               })}
