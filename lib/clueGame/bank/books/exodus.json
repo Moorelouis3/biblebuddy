@@ -26192,6 +26192,646 @@
   "ref": "Exodus 37:25"
  },
  {
+  "id": "exodus-37-e-01",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Bezaleel overlay the ark with?",
+  "choices": [
+   "Silver",
+   "Brass",
+   "Pure gold",
+   "Linen"
+  ],
+  "answer": 2,
+  "explanation": "He overlaid it with pure gold within and without.",
+  "ref": "Exodus 37:2"
+ },
+ {
+  "id": "exodus-37-e-02",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Bezaleel put on top of the ark, at its two ends?",
+  "choices": [
+   "Two lamps",
+   "Two cherubims of gold",
+   "Two lions",
+   "Two horns"
+  ],
+  "answer": 1,
+  "explanation": "He made two cherubims of gold on the two ends of the mercy seat.",
+  "ref": "Exodus 37:7"
+ },
+ {
+  "id": "exodus-37-e-03",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the cherubims spread out over the mercy seat?",
+  "choices": [
+   "Their wings",
+   "Their hands",
+   "Their crowns",
+   "Their swords"
+  ],
+  "answer": 0,
+  "explanation": "The cherubims spread out their wings on high, and covered the mercy seat.",
+  "ref": "Exodus 37:9"
+ },
+ {
+  "id": "exodus-37-e-04",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Bezaleel make for the shewbread?",
+  "choices": [
+   "The altar",
+   "The table",
+   "The laver",
+   "The ark"
+  ],
+  "answer": 1,
+  "explanation": "He made the table of shittim wood.",
+  "ref": "Exodus 37:10"
+ },
+ {
+  "id": "exodus-37-e-05",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the candlestick made of?",
+  "choices": [
+   "Brass",
+   "Shittim wood",
+   "Pure gold",
+   "Silver"
+  ],
+  "answer": 2,
+  "explanation": "He made the candlestick of pure gold: of beaten work.",
+  "ref": "Exodus 37:17"
+ },
+ {
+  "id": "exodus-37-e-06",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many lamps did the candlestick have?",
+  "choices": [
+   "Four",
+   "Twelve",
+   "Seven",
+   "Six"
+  ],
+  "answer": 2,
+  "explanation": "And he made his seven lamps.",
+  "ref": "Exodus 37:23"
+ },
+ {
+  "id": "exodus-37-e-07",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Of what wood was the incense altar made?",
+  "choices": [
+   "Olive",
+   "Shittim wood",
+   "Oak",
+   "Cedar"
+  ],
+  "answer": 1,
+  "explanation": "He made the incense altar of shittim wood.",
+  "ref": "Exodus 37:25"
+ },
+ {
+  "id": "exodus-37-e-08",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Bezaleel make from sweet spices?",
+  "choices": [
+   "The shewbread",
+   "The pure incense",
+   "Fine linen",
+   "The vail"
+  ],
+  "answer": 1,
+  "explanation": "He made the holy anointing oil, and the pure incense of sweet spices.",
+  "ref": "Exodus 37:29"
+ },
+ {
+  "id": "exodus-37-e-09",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the staves do for the ark?",
+  "choices": [
+   "Bear the ark",
+   "Cover the ark",
+   "Open the ark",
+   "Seal the ark"
+  ],
+  "answer": 0,
+  "explanation": "He put the staves into the rings by the sides of the ark, to bear the ark.",
+  "ref": "Exodus 37:5"
+ },
+ {
+  "id": "exodus-37-e-10",
+  "chapter": 37,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the mercy seat made of?",
+  "choices": [
+   "Wood",
+   "Pure gold",
+   "Silver",
+   "Brass"
+  ],
+  "answer": 1,
+  "explanation": "He made the mercy seat of pure gold.",
+  "ref": "Exodus 37:6"
+ },
+ {
+  "id": "exodus-37-m-01",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cubits long was the ark?",
+  "choices": [
+   "Three",
+   "Two and a half",
+   "Four",
+   "Five"
+  ],
+  "answer": 1,
+  "explanation": "Two cubits and a half was the length of it.",
+  "ref": "Exodus 37:1"
+ },
+ {
+  "id": "exodus-37-m-02",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many rings of gold were cast for the ark?",
+  "choices": [
+   "Eight",
+   "Four",
+   "Two",
+   "Six"
+  ],
+  "answer": 1,
+  "explanation": "He cast for it four rings of gold, to be set by the four corners of it.",
+  "ref": "Exodus 37:3"
+ },
+ {
+  "id": "exodus-37-m-03",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Bezaleel make round about the ark?",
+  "choices": [
+   "A crown of gold",
+   "A fence of wood",
+   "A border of brass",
+   "A wall of silver"
+  ],
+  "answer": 0,
+  "explanation": "He made a crown of gold to it round about.",
+  "ref": "Exodus 37:2"
+ },
+ {
+  "id": "exodus-37-m-04",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the cherubims beaten out of?",
+  "choices": [
+   "Two separate blocks",
+   "Brass sheets",
+   "One piece with the mercy seat",
+   "Wooden planks"
+  ],
+  "answer": 2,
+  "explanation": "Beaten out of one piece made he them.",
+  "ref": "Exodus 37:7"
+ },
+ {
+  "id": "exodus-37-m-05",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which way did the cherubims' faces look?",
+  "choices": [
+   "Toward the door",
+   "Toward the east",
+   "One to another, toward the mercy seat",
+   "Away from each other"
+  ],
+  "answer": 2,
+  "explanation": "With their faces one to another; even to the mercy seatward were the faces of the cherubims.",
+  "ref": "Exodus 37:9"
+ },
+ {
+  "id": "exodus-37-m-06",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cubits long was the table?",
+  "choices": [
+   "One",
+   "Three",
+   "Four",
+   "Two"
+  ],
+  "answer": 3,
+  "explanation": "Two cubits was the length thereof.",
+  "ref": "Exodus 37:10"
+ },
+ {
+  "id": "exodus-37-m-07",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How high was the table?",
+  "choices": [
+   "Three cubits",
+   "Two cubits",
+   "A cubit and a half",
+   "One cubit"
+  ],
+  "answer": 2,
+  "explanation": "A cubit and a half the height thereof.",
+  "ref": "Exodus 37:10"
+ },
+ {
+  "id": "exodus-37-m-08",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was made round about the table beside a crown?",
+  "choices": [
+   "A silver rail",
+   "A cloth",
+   "A brass band",
+   "A border of a handbreadth"
+  ],
+  "answer": 3,
+  "explanation": "He made thereunto a border of an handbreadth round about.",
+  "ref": "Exodus 37:12"
+ },
+ {
+  "id": "exodus-37-m-09",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which vessels of the table were of pure gold?",
+  "choices": [
+   "Cups and pots",
+   "Axes and saws",
+   "Spears and shields",
+   "Dishes, spoons, bowls and covers"
+  ],
+  "answer": 3,
+  "explanation": "His dishes, and his spoons, and his bowls, and his covers to cover withal, of pure gold.",
+  "ref": "Exodus 37:16"
+ },
+ {
+  "id": "exodus-37-m-10",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many branches went out of the candlestick sides?",
+  "choices": [
+   "Eight",
+   "Four",
+   "Six",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "And six branches going out of the sides thereof.",
+  "ref": "Exodus 37:18"
+ },
+ {
+  "id": "exodus-37-m-11",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the bowls of the candlestick like?",
+  "choices": [
+   "Olives",
+   "Almonds",
+   "Grapes",
+   "Pomegranates"
+  ],
+  "answer": 1,
+  "explanation": "Three bowls made after the fashion of almonds.",
+  "ref": "Exodus 37:19"
+ },
+ {
+  "id": "exodus-37-m-12",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much gold was the candlestick and its vessels made of?",
+  "choices": [
+   "A talent of pure gold",
+   "A shekel of gold",
+   "A hundred shekels",
+   "A cubit of gold"
+  ],
+  "answer": 0,
+  "explanation": "Of a talent of pure gold made he it, and all the vessels thereof.",
+  "ref": "Exodus 37:24"
+ },
+ {
+  "id": "exodus-37-m-13",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How tall was the incense altar?",
+  "choices": [
+   "Four cubits",
+   "Three cubits",
+   "Two cubits",
+   "One cubit"
+  ],
+  "answer": 2,
+  "explanation": "Two cubits was the height of it.",
+  "ref": "Exodus 37:25"
+ },
+ {
+  "id": "exodus-37-m-14",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the shape of the incense altar?",
+  "choices": [
+   "Oval",
+   "Round",
+   "Triangular",
+   "Foursquare"
+  ],
+  "answer": 3,
+  "explanation": "It was foursquare; and two cubits was the height of it.",
+  "ref": "Exodus 37:25"
+ },
+ {
+  "id": "exodus-37-m-15",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose work was the anointing oil made according to?",
+  "choices": [
+   "The potter",
+   "The apothecary",
+   "The weaver",
+   "The goldsmith"
+  ],
+  "answer": 1,
+  "explanation": "According to the work of the apothecary.",
+  "ref": "Exodus 37:29"
+ },
+ {
+  "id": "exodus-37-h-01",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits long was the mercy seat?",
+  "choices": [
+   "Four",
+   "Two and a half",
+   "Two",
+   "Three"
+  ],
+  "answer": 1,
+  "explanation": "Two cubits and a half was the length thereof.",
+  "ref": "Exodus 37:6"
+ },
+ {
+  "id": "exodus-37-h-02",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits wide was the ark?",
+  "choices": [
+   "One and a half",
+   "Two",
+   "One",
+   "Three"
+  ],
+  "answer": 0,
+  "explanation": "A cubit and a half the breadth of it.",
+  "ref": "Exodus 37:1"
+ },
+ {
+  "id": "exodus-37-h-03",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were the rings of the table placed?",
+  "choices": [
+   "On the top",
+   "On the sides only",
+   "On the four corners at the four feet",
+   "Under the table"
+  ],
+  "answer": 2,
+  "explanation": "Rings upon the four corners that were in the four feet thereof.",
+  "ref": "Exodus 37:13"
+ },
+ {
+  "id": "exodus-37-h-04",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Over against what were the table rings?",
+  "choices": [
+   "The staves",
+   "The border",
+   "The cherubims",
+   "The crown"
+  ],
+  "answer": 1,
+  "explanation": "Over against the border were the rings, the places for the staves.",
+  "ref": "Exodus 37:14"
+ },
+ {
+  "id": "exodus-37-h-05",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many bowls like almonds were in the candlestick itself?",
+  "choices": [
+   "Six",
+   "Four",
+   "Seven",
+   "Three"
+  ],
+  "answer": 1,
+  "explanation": "And in the candlestick were four bowls made like almonds.",
+  "ref": "Exodus 37:20"
+ },
+ {
+  "id": "exodus-37-h-06",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were beside the lamps made of pure gold?",
+  "choices": [
+   "Snuffers and snuffdishes",
+   "Tongs and rods",
+   "Pots and pans",
+   "Spoons and forks"
+  ],
+  "answer": 0,
+  "explanation": "His seven lamps, and his snuffers, and his snuffdishes, of pure gold.",
+  "ref": "Exodus 37:23"
+ },
+ {
+  "id": "exodus-37-h-07",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits long and wide was the incense altar?",
+  "choices": [
+   "One",
+   "Half",
+   "Three",
+   "Two"
+  ],
+  "answer": 0,
+  "explanation": "The length of it was a cubit, and the breadth of it a cubit.",
+  "ref": "Exodus 37:25"
+ },
+ {
+  "id": "exodus-37-h-08",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What part of the incense altar was of the same piece?",
+  "choices": [
+   "The rings",
+   "The crown",
+   "The horns",
+   "The legs"
+  ],
+  "answer": 2,
+  "explanation": "The horns thereof were of the same.",
+  "ref": "Exodus 37:25"
+ },
+ {
+  "id": "exodus-37-h-09",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were the two rings of the incense altar?",
+  "choices": [
+   "On the top",
+   "At the feet",
+   "At the horns",
+   "Under the crown on two sides"
+  ],
+  "answer": 3,
+  "explanation": "Two rings of gold for it under the crown thereof, by the two corners.",
+  "ref": "Exodus 37:27"
+ },
+ {
+  "id": "exodus-37-h-10",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many branches had three bowls like almonds each?",
+  "choices": [
+   "Six",
+   "Two",
+   "Three",
+   "Four"
+  ],
+  "answer": 0,
+  "explanation": "Three bowls made after the fashion of almonds in one branch.",
+  "ref": "Exodus 37:19"
+ },
+ {
+  "id": "exodus-37-h-11",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the candlestick wholly beaten from?",
+  "choices": [
+   "Brass",
+   "Iron",
+   "Pure gold",
+   "Silver"
+  ],
+  "answer": 2,
+  "explanation": "All of it was one beaten work of pure gold.",
+  "ref": "Exodus 37:22"
+ },
+ {
+  "id": "exodus-37-h-12",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the knops and flowers of the candlestick?",
+  "choices": [
+   "Of wood",
+   "Of ivory",
+   "Of silver",
+   "Of the same beaten work"
+  ],
+  "answer": 3,
+  "explanation": "Their knops and their branches were of the same.",
+  "ref": "Exodus 37:22"
+ },
+ {
+  "id": "exodus-37-h-13",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the staves of the table overlaid with?",
+  "choices": [
+   "Brass",
+   "Gold",
+   "Silver",
+   "Linen"
+  ],
+  "answer": 1,
+  "explanation": "He made the staves of shittim wood, and overlaid them with gold.",
+  "ref": "Exodus 37:15"
+ },
+ {
+  "id": "exodus-37-h-14",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the incense altar's staves bear?",
+  "choices": [
+   "The vail",
+   "The table",
+   "The altar",
+   "The ark"
+  ],
+  "answer": 2,
+  "explanation": "Places for the staves to bear it withal.",
+  "ref": "Exodus 37:27"
+ },
+ {
+  "id": "exodus-37-h-15",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How tall was the ark?",
+  "choices": [
+   "One cubit",
+   "Two and a half cubits",
+   "A cubit and a half",
+   "Two cubits"
+  ],
+  "answer": 2,
+  "explanation": "A cubit and a half the height of it.",
+  "ref": "Exodus 37:1"
+ },
+ {
   "id": "old-exodus-38-1",
   "chapter": 38,
   "level": "beginner",
