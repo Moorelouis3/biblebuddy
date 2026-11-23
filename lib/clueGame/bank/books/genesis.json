@@ -15984,54 +15984,6 @@
   "ref": "Genesis 47:4"
  },
  {
-  "id": "old-genesis-48-1",
-  "chapter": 48,
-  "level": "beginner",
-  "category": "person",
-  "question": "Whose two sons did Jacob bless?",
-  "choices": [
-   "Joseph's sons",
-   "Judah's sons",
-   "Benjamin's sons",
-   "Esau's sons"
-  ],
-  "answer": 0,
-  "explanation": "Jacob blessed Joseph's two sons, Manasseh and Ephraim.",
-  "ref": "Genesis 48:1–5"
- },
- {
-  "id": "old-genesis-48-2",
-  "chapter": 48,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What were the names of Joseph's two sons?",
-  "choices": [
-   "Perez and Zerah",
-   "Ephraim and Manasseh",
-   "Reuben and Simeon",
-   "Dan and Naphtali"
-  ],
-  "answer": 1,
-  "explanation": "Joseph brought Manasseh and Ephraim to Jacob for blessing.",
-  "ref": "Genesis 48:1"
- },
- {
-  "id": "old-genesis-48-4",
-  "chapter": 48,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What did Jacob do with his hands when blessing the boys?",
-  "choices": [
-   "He kept them straight",
-   "He laid both on Manasseh",
-   "He crossed his hands",
-   "He refused to bless them"
-  ],
-  "answer": 2,
-  "explanation": "Jacob crossed his hands, placing his right hand on Ephraim.",
-  "ref": "Genesis 48:14"
- },
- {
   "id": "old-genesis-49-3",
   "chapter": 49,
   "level": "beginner",
@@ -16494,5 +16446,341 @@
   "answer": 3,
   "explanation": "They have brought their flocks, and their herds, and all that they have.",
   "ref": "Genesis 46:32"
+ },
+ {
+  "id": "genesis-48-e-01",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel say to Joseph about himself near the end?",
+  "choices": [
+   "“I will go to Canaan”",
+   "“Behold, I die”",
+   "“I am well again”",
+   "“I will rule Egypt”"
+  ],
+  "answer": 1,
+  "explanation": "And Israel said unto Joseph, Behold, I die: but God shall be with you.",
+  "ref": "Genesis 48:21"
+ },
+ {
+  "id": "genesis-48-e-02",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides Joseph’s face, what had God shewed Israel?",
+  "choices": [
+   "Joseph’s seed",
+   "A new land",
+   "A ladder",
+   "A great famine"
+  ],
+  "answer": 0,
+  "explanation": "I had not thought to see thy face: and, lo, God hath shewed me also thy seed.",
+  "ref": "Genesis 48:11"
+ },
+ {
+  "id": "genesis-48-e-03",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who did Joseph say had given him his sons?",
+  "choices": [
+   "Pharaoh",
+   "Asenath’s father",
+   "Israel",
+   "God"
+  ],
+  "answer": 3,
+  "explanation": "They are my sons, whom God hath given me in this place.",
+  "ref": "Genesis 48:9"
+ },
+ {
+  "id": "genesis-48-m-01",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "God promised to make Jacob a multitude of what?",
+  "choices": [
+   "Kings",
+   "Flocks",
+   "People",
+   "Cities"
+  ],
+  "answer": 2,
+  "explanation": "I will make thee fruitful, and multiply thee, and I will make of thee a multitude of people.",
+  "ref": "Genesis 48:4"
+ },
+ {
+  "id": "genesis-48-m-02",
+  "chapter": 48,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of the boys did Israel say would also become a people and be great?",
+  "choices": [
+   "Ephraim",
+   "Manasseh",
+   "Benjamin",
+   "Reuben"
+  ],
+  "answer": 1,
+  "explanation": "He also shall become a people, and he also shall be great: but truly his younger brother shall be greater than he.",
+  "ref": "Genesis 48:19"
+ },
+ {
+  "id": "genesis-48-m-03",
+  "chapter": 48,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the younger of the two boys Israel blessed?",
+  "choices": [
+   "Ephraim",
+   "Manasseh",
+   "Reuben",
+   "Simeon"
+  ],
+  "answer": 0,
+  "explanation": "Israel laid his right hand upon Ephraim’s head, who was the younger.",
+  "ref": "Genesis 48:14"
+ },
+ {
+  "id": "genesis-48-h-01",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which hand did Israel lay on Ephraim’s head?",
+  "choices": [
+   "His left hand",
+   "Both hands",
+   "Neither hand",
+   "His right hand"
+  ],
+  "answer": 3,
+  "explanation": "Israel stretched out his right hand, and laid it upon Ephraim’s head, who was the younger.",
+  "ref": "Genesis 48:14"
+ },
+ {
+  "id": "genesis-48-h-02",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which hand did Israel lay on Manasseh’s head?",
+  "choices": [
+   "His right hand",
+   "Both hands",
+   "His left hand",
+   "Neither hand"
+  ],
+  "answer": 2,
+  "explanation": "And his left hand upon Manasseh’s head, guiding his hands wittingly.",
+  "ref": "Genesis 48:14"
+ },
+ {
+  "id": "genesis-48-h-03",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joseph set Ephraim toward which of Israel’s hands?",
+  "choices": [
+   "Israel’s right",
+   "Israel’s left",
+   "His own right",
+   "His own left"
+  ],
+  "answer": 1,
+  "explanation": "Joseph took them both, Ephraim in his right hand toward Israel’s left hand.",
+  "ref": "Genesis 48:13"
+ },
+ {
+  "id": "genesis-48-h-04",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel answer when Joseph said Manasseh was the firstborn?",
+  "choices": [
+   "“I know it, my son”",
+   "“I will change it”",
+   "“Ask God first”",
+   "“It was a mistake”"
+  ],
+  "answer": 0,
+  "explanation": "And his father refused, and said, I know it, my son, I know it.",
+  "ref": "Genesis 48:19"
+ },
+ {
+  "id": "genesis-48-h-05",
+  "chapter": 48,
+  "level": "hard",
+  "category": "person",
+  "question": "Joseph’s later children were to be called after the name of whom?",
+  "choices": [
+   "Their mother",
+   "Pharaoh",
+   "Their father Joseph",
+   "Their brethren"
+  ],
+  "answer": 3,
+  "explanation": "Thy issue shall be called after the name of their brethren in their inheritance.",
+  "ref": "Genesis 48:6"
+ },
+ {
+  "id": "genesis-48-h-06",
+  "chapter": 48,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Jacob coming from when Rachel died?",
+  "choices": [
+   "Haran",
+   "Egypt",
+   "Padan",
+   "Goshen"
+  ],
+  "answer": 2,
+  "explanation": "When I came from Padan, Rachel died by me in the land of Canaan in the way.",
+  "ref": "Genesis 48:7"
+ },
+ {
+  "id": "genesis-48-h-07",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Compared with Jacob’s coming, when were Ephraim and Manasseh born?",
+  "choices": [
+   "After he came into Egypt",
+   "Before he came into Egypt",
+   "On the way to Egypt",
+   "After he died"
+  ],
+  "answer": 1,
+  "explanation": "Thy two sons… which were born unto thee in the land of Egypt before I came unto thee into Egypt, are mine.",
+  "ref": "Genesis 48:5"
+ },
+ {
+  "id": "genesis-48-h-08",
+  "chapter": 48,
+  "level": "hard",
+  "category": "person",
+  "question": "Israel said, “God make thee as Ephraim and as…” whom?",
+  "choices": [
+   "Manasseh",
+   "Reuben",
+   "Benjamin",
+   "Judah"
+  ],
+  "answer": 0,
+  "explanation": "In thee shall Israel bless, saying, God make thee as Ephraim and as Manasseh.",
+  "ref": "Genesis 48:20"
+ },
+ {
+  "id": "genesis-48-h-09",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where did Joseph bring the boys out before bowing?",
+  "choices": [
+   "From the door",
+   "From the tent",
+   "From the bed",
+   "From between his knees"
+  ],
+  "answer": 3,
+  "explanation": "And Joseph brought them out from between his knees, and he bowed himself with his face to the earth.",
+  "ref": "Genesis 48:12"
+ },
+ {
+  "id": "genesis-48-h-10",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of possession did God promise the land would be?",
+  "choices": [
+   "Temporary",
+   "Shared",
+   "Everlasting",
+   "Bought"
+  ],
+  "answer": 2,
+  "explanation": "I will give this land to thy seed after thee for an everlasting possession.",
+  "ref": "Genesis 48:4"
+ },
+ {
+  "id": "genesis-48-h-11",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose name did Israel ask to be named on the lads, with his own?",
+  "choices": [
+   "Reuben and Simeon",
+   "Abraham and Isaac",
+   "Noah and Enoch",
+   "Laban and Nahor"
+  ],
+  "answer": 1,
+  "explanation": "Let my name be named on them, and the name of my fathers Abraham and Isaac.",
+  "ref": "Genesis 48:16"
+ },
+ {
+  "id": "genesis-48-h-12",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph do to try to move his father’s right hand?",
+  "choices": [
+   "He held it up",
+   "He spoke to Pharaoh",
+   "He pushed Ephraim aside",
+   "He called a servant"
+  ],
+  "answer": 0,
+  "explanation": "He held up his father’s hand, to remove it from Ephraim’s head unto Manasseh’s head.",
+  "ref": "Genesis 48:17"
+ },
+ {
+  "id": "genesis-48-h-13",
+  "chapter": 48,
+  "level": "hard",
+  "category": "person",
+  "question": "In the blessing, whom did Israel set before Manasseh?",
+  "choices": [
+   "Reuben",
+   "Ephraim",
+   "Benjamin",
+   "Simeon"
+  ],
+  "answer": 1,
+  "explanation": "And he blessed them that day… and he set Ephraim before Manasseh.",
+  "ref": "Genesis 48:20"
+ },
+ {
+  "id": "genesis-48-h-14",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose seed did Israel say would become a multitude of nations?",
+  "choices": [
+   "The younger brother’s",
+   "The firstborn’s",
+   "Reuben’s",
+   "Benjamin’s"
+  ],
+  "answer": 0,
+  "explanation": "His younger brother shall be greater than he, and his seed shall become a multitude of nations.",
+  "ref": "Genesis 48:19"
+ },
+ {
+  "id": "genesis-48-h-15",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God Almighty promised to make Jacob fruitful and do what else?",
+  "choices": [
+   "Make him a king",
+   "Give him Egypt",
+   "Make him rich in gold",
+   "Multiply him"
+  ],
+  "answer": 3,
+  "explanation": "Behold, I will make thee fruitful, and multiply thee.",
+  "ref": "Genesis 48:4"
  }
 ]
