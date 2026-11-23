@@ -28,6 +28,8 @@ import {
   findMove,
   goalsMet,
   ORB,
+  DOVE,
+  jubilee,
   playSwap,
   tileArt,
   type Board,
@@ -43,6 +45,7 @@ const POWER_NAMES: Record<string, string> = {
   pillar: "Pillar of Fire!",
   blast: "Trumpet Blast!",
   orb: "All Match orb!",
+  dove: "Dove!",
 };
 import { matchSound } from "@/lib/match/sound";
 import { trackMatch } from "@/lib/match/track";
@@ -131,6 +134,9 @@ export default function MatchBoard({
   const [hint, setHint] = useState<Pos[] | null>(null);
   const [toast, setToast] = useState<string | null>(null);
   const [settings, setSettings] = useState(false);
+  const [doves, setDoves] = useState<Array<{ from: Pos; to: Pos }>>([]);
+  // One free +5 moves per try, when the goals are close (2026-11-23).
+  const [extraUsed, setExtraUsed] = useState(false);
   const [celebrate, setCelebrate] = useState<{ xp: number } | null>(null);
   const [outcome, setOutcome] = useState<Outcome>(null);
   const boardRef = useRef(board);
@@ -154,6 +160,7 @@ export default function MatchBoard({
 
   const restart = () => {
     writeSavedBoard(null);
+    setExtraUsed(false);
     setBoard(createBoard(level.types, Math.random, ids.current));
     setMoves(level.moves);
     setCollected({});
@@ -174,7 +181,9 @@ export default function MatchBoard({
     const before = boardRef.current;
     setSelected(null);
     setHint(null);
-    const res = playSwap(before, a, b, level.types, Math.random, ids.current);
+    // The kinds the goals still need: where a Dove flies.
+    const want = level.goals.filter((g) => (collected[g.type] || 0) < g.count).map((g) => g.type);
+    const res = playSwap(before, a, b, level.types, Math.random, ids.current, want);
     setBusy(true);
     // The two tiles trade places either way.
     const traded = cloneBoard(before);
@@ -207,8 +216,18 @@ export default function MatchBoard({
       }
       if (step.orbType) matchSound.orb();
       else if (step.beams.length) matchSound.beam();
-      const fired = step.beams.map((b) => (b.blast ? "blast" : b.col !== undefined ? "pillar" : "light"));
-      const shout = step.orbType ? POWER_NAMES.orb : fired.length ? POWER_NAMES[fired[0]] : null;
+      const fired = step.beams.map((b) => (b.dove ? "dove" : b.blast ? "blast" : b.col !== undefined ? "pillar" : "light"));
+      // The combos get their own names (2026-11-23).
+      const combo =
+        step.orbType && step.beams.length > 1
+          ? "Mighty orb combo!"
+          : step.beams.some((b) => b.radius === 2)
+            ? "Great Trumpet Blast!"
+            : i === 0 && step.beams.filter((b) => b.row !== undefined).length >= 1 && step.beams.filter((b) => b.col !== undefined).length >= 1 && step.beams.length >= 4
+              ? "Cross of Light!"
+              : null;
+      const shout = combo ?? (step.orbType ? POWER_NAMES.orb : fired.length ? POWER_NAMES[fired[0]] : null);
+      if (step.beams.some((b) => b.dove)) setDoves(step.beams.filter((b) => b.dove).map((b) => b.dove!));
       if (shout && !reduced) {
         setToast(shout);
         window.setTimeout(() => setToast((t) => (t === shout ? null : t)), 900);
@@ -223,7 +242,7 @@ export default function MatchBoard({
       total += step.points;
       setCollected(got);
       setScore(total);
-      for (const b of step.beams) trackMatch("match_power_used", { board: level.id, power: b.blast ? "blast" : b.col !== undefined ? "pillar" : "light" });
+      for (const b of step.beams) trackMatch("match_power_used", { board: level.id, power: b.dove ? "dove" : b.blast ? (b.radius === 2 ? "blast-combo" : "blast") : b.col !== undefined ? "pillar" : "light" });
       if (step.orbType) trackMatch("match_power_used", { board: level.id, power: "orb" });
       for (const m of step.made) trackMatch("match_power_made", { board: level.id, power: m.tile.power });
       if (step.made.length) {
@@ -238,6 +257,7 @@ export default function MatchBoard({
       setPopping(new Set());
       setBeams([]);
       setRays(null);
+      setDoves([]);
       setBoard(step.afterClear);
       // The first light: Creation's dark lifts on the first clear.
       if (dark) setDark(false);
@@ -246,7 +266,8 @@ export default function MatchBoard({
       setBoard(step.afterFill);
       await sleep(T.fall);
       if (i > 0 && !reduced) {
-        setToast(i >= 3 ? "Amazing chain!" : i === 2 ? "Great chain!" : "Chain!");
+        // Chain callouts (2026-11-23): each link of a chain louder than the last.
+        setToast(i >= 3 ? "Glory!" : i === 2 ? "Hallelujah!" : "Amen!");
         window.setTimeout(() => setToast(null), 700);
       }
     }
@@ -260,6 +281,36 @@ export default function MatchBoard({
     }
     setBusy(false);
     if (goalsMet(level.goals, got)) {
+      // The Jubilee: spare moves (up to 8) become sweeps that all go off.
+      if (movesLeft > 0) {
+        const j = jubilee(res.final, movesLeft, level.types, Math.random, ids.current);
+        if (j.valid) {
+          setBusy(true);
+          if (!reduced) setToast(`Jubilee! ${Math.min(8, movesLeft)} moves to spare`);
+          for (const step of j.steps) {
+            const clearedIds = new Set(step.cleared.map((p) => step.before[p.r][p.c]?.id).filter((id): id is number => typeof id === "number"));
+            setBoard(step.before);
+            setFlash(clearedIds);
+            setBeams(step.beams);
+            matchSound.beam();
+            await sleep(T.flash);
+            setPopping(clearedIds);
+            await sleep(T.pop);
+            total += step.points;
+            setScore(total);
+            setFlash(new Set());
+            setPopping(new Set());
+            setBeams([]);
+            setBoard(step.afterClear);
+            await sleep(T.between);
+            setDrops(step.dropFrom);
+            setBoard(step.afterFill);
+            await sleep(T.fall);
+          }
+          setToast(null);
+          setBusy(false);
+        }
+      }
       const finalScore = total + movesLeft * 25;
       setScore(finalScore);
       onWin(finalScore);
@@ -379,6 +430,7 @@ export default function MatchBoard({
       <div className={`bbm-plaque bbm-board-title ${level.title.length > 16 ? "is-long is-xlong" : level.title.length > 10 ? "is-long" : ""}`}>
         <h1>{level.title}</h1>
         <p>— {level.reference} —</p>
+        {level.hard ? <span className="bbm-hardtag">Hard board</span> : null}
       </div>
 
       <div className="bbm-hud">
@@ -420,13 +472,27 @@ export default function MatchBoard({
           ))}
           {beams.map((b, i) =>
             b.blast ? (
-              <span key={`blast${i}`} className="bbm-blast" style={{ ["--r" as string]: b.blast.r, ["--c" as string]: b.blast.c } as React.CSSProperties} aria-hidden="true" />
+              <span key={`blast${i}`} className={`bbm-blast ${b.radius === 2 ? "is-big" : ""}`} style={{ ["--r" as string]: b.blast.r, ["--c" as string]: b.blast.c } as React.CSSProperties} aria-hidden="true" />
+            ) : b.dove ? (
+              <span key={`dove${i}`} hidden />
             ) : b.col !== undefined ? (
               <span key={`col${i}`} className="bbm-beam is-col" style={{ ["--c" as string]: b.col } as React.CSSProperties} aria-hidden="true" />
             ) : (
               <span key={`row${i}`} className="bbm-beam" style={{ ["--r" as string]: b.row } as React.CSSProperties} aria-hidden="true" />
             ),
           )}
+          {doves.map((d, i) => (
+            // The Dove's flight, from where it was to the tile it takes.
+            <span
+              key={`fly${i}`}
+              className="bbm-dovefly"
+              style={{ ["--r" as string]: d.from.r, ["--c" as string]: d.from.c, ["--tr" as string]: d.to.r, ["--tc" as string]: d.to.c } as React.CSSProperties}
+              aria-hidden="true"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={tileArt("dove")} alt="" />
+            </span>
+          ))}
           {rays ? (
             <svg className="bbm-rays" viewBox={`0 0 ${COLS} ${ROWS}`} aria-hidden="true">
               {rays.to.map((q, i) => (
@@ -445,6 +511,7 @@ export default function MatchBoard({
                   tile.power === "pillar" ? "is-light is-pillar" : "",
                   tile.power === "blast" ? "is-light is-blast" : "",
                   tile.type === ORB ? "is-orb" : "",
+                  tile.type === DOVE ? "is-light is-dove" : "",
                   selected && selected.r === r && selected.c === c ? "is-linked" : "",
                   flash.has(tile.id) ? "is-flash" : "",
                   popping.has(tile.id) ? "is-pop" : "",
@@ -452,7 +519,7 @@ export default function MatchBoard({
                   inList(hint, r, c) ? "is-hint" : "",
                 ].join(" ")}
                 style={{ ["--r" as string]: r, ["--c" as string]: c, ["--d" as string]: drop ?? 0 } as React.CSSProperties}
-                aria-label={tile.type === ORB ? "All Match orb" : tile.power ? `${tile.type}, ${POWER_NAMES[tile.power].replace("!", "")}` : tile.type}
+                aria-label={tile.type === ORB ? "All Match orb" : tile.type === DOVE ? "Dove" : tile.power ? `${tile.type}, ${POWER_NAMES[tile.power].replace("!", "")}` : tile.type}
               >
                 {tile.type === ORB ? (
                   <span className="bbm-orb" />
@@ -553,7 +620,22 @@ export default function MatchBoard({
                     </li>
                   ))}
                 </ul>
-                <button type="button" className="bbm-btn-green" onClick={restart}>
+{!extraUsed && level.goals.reduce((n, g) => n + Math.max(0, g.count - (collected[g.type] || 0)), 0) <= 8 ? (
+                  <button
+                    type="button"
+                    className="bbm-btn-green"
+                    onClick={() => {
+                      // So close: five more moves, once per try, free.
+                      setExtraUsed(true);
+                      setMoves(5);
+                      setOutcome(null);
+                      trackMatch("match_extra_moves", { board: level.id, number: level.number });
+                    }}
+                  >
+                    So close! +5 moves
+                  </button>
+                ) : null}
+                <button type="button" className={extraUsed || level.goals.reduce((n, g) => n + Math.max(0, g.count - (collected[g.type] || 0)), 0) > 8 ? "bbm-btn-green" : "bbm-btn-cream"} onClick={restart}>
                   Try again
                 </button>
                 <button type="button" className="bbm-btn-cream" onClick={onExit}>

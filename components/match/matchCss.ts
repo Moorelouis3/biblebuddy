@@ -480,6 +480,20 @@ html.bb-native.bb-ios .bbm-board { padding-top: calc(12px + max(env(safe-area-in
 @keyframes bbm-burst-pop { from { transform: scale(.3); opacity:0; } to { transform: scale(1); opacity:1; } }
 @keyframes bbm-xp-rise { 0%,55% { translate: 0 0; } 100% { translate: 0 -24px; } }
 @media (prefers-reduced-motion: reduce) { .bbm-winburst *, .bbm-winburst { animation: none !important; } }
+/* New power-ups and combos (2026-11-23). */
+.bbm-tile.is-dove { filter: drop-shadow(0 0 6px rgba(255,255,255,.95)) drop-shadow(0 0 12px rgba(140,200,255,.8)); }
+.bbm-tile.is-dove img { animation: bbm-dove-bob 1.4s ease-in-out infinite; }
+@keyframes bbm-dove-bob { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-8%) rotate(4deg); } }
+.bbm-dovefly { position:absolute; z-index:6; pointer-events:none; left:0; top:0; width: var(--cell); height: var(--cell);
+  animation: bbm-dovefly .42s cubic-bezier(.3,.1,.3,1) both; filter: drop-shadow(0 0 10px rgba(255,255,255,.95)); }
+.bbm-dovefly img { width:100%; height:100%; object-fit:contain; }
+@keyframes bbm-dovefly { from { transform: translate(calc(var(--c) * var(--cell)), calc(var(--r) * var(--cell))) scale(1); }
+  50% { transform: translate(calc((var(--c) + var(--tc)) / 2 * var(--cell)), calc(((var(--r) + var(--tr)) / 2 - 1.2) * var(--cell))) scale(1.35); }
+  to { transform: translate(calc(var(--tc) * var(--cell)), calc(var(--tr) * var(--cell))) scale(1); } }
+.bbm-blast.is-big { left: calc((var(--c) - 2) * var(--cell)); top: calc((var(--r) - 2) * var(--cell)); width: calc(5 * var(--cell)); height: calc(5 * var(--cell)); }
+.bbm-hardtag { display:inline-block; margin-top: 2px; padding: 1px 10px; border-radius: 999px; font-size: 11px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; color:#fff !important; background: linear-gradient(180deg,#d94b3d,#9b2018); box-shadow: 0 2px 6px rgba(0,0,0,.35); }
+.bbm-hardbadge { position:absolute; top: -6px; right: calc(50% - 46px); z-index:3; padding: 1px 7px; border-radius: 999px; font-size: 10px; font-weight: 900; letter-spacing:.05em; text-transform: uppercase; color:#fff !important; background: linear-gradient(180deg,#d94b3d,#9b2018); box-shadow: 0 2px 6px rgba(0,0,0,.4); }
+.bbm-grid.is-reduced .bbm-dovefly { animation-duration: .01s; }
 /* Long book names (Leviticus, Deuteronomy) get a wider ribbon and smaller type so the word fits. */
 .bbm-ribbon.is-long { width: 270px; font-size: 20px; letter-spacing: 0; }
 `;

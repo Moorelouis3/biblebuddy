@@ -24,14 +24,22 @@
 
 import BOARD_CONFIGS from "./boards.generated.json";
 
-/** light: sweeps its row. pillar: its column. blast: the 3x3 around it. orb: every tile of one kind. */
-export type Power = "light" | "pillar" | "blast" | "orb";
+/**
+ * light: sweeps its row. pillar: its column. blast: the 3x3 around it. orb:
+ * every tile of one kind. dove (2026-11-23, made from a 2x2 square): flies to
+ * a tile the board still needs for a goal and clears it and the four around it.
+ */
+export type Power = "light" | "pillar" | "blast" | "orb" | "dove";
 export type Tile = { id: number; type: string; power?: Power };
 export type Cell = Tile | null;
 export type Board = Cell[][];
 export type Pos = { r: number; c: number };
 
 export const ORB = "orb";
+/** The Dove's tile kind: like the orb, it never lines up with anything. */
+export const DOVE = "dove-power";
+/** Kinds that never make a run or a square. */
+const SPECIAL = (t: string | undefined) => t === ORB || t === DOVE;
 export const SIZE = 7;
 /** The board: 7 across, 9 down (Louis, 2026-11-22: the 7x7 left the top of the screen empty). */
 export const COLS = 7;
@@ -77,7 +85,7 @@ export function findRuns(board: Board): Pos[][] {
   const runs: Pos[][] = [];
   const typeAt = (r: number, c: number) => {
     const t = board[r]?.[c];
-    return t && t.type !== ORB ? t.type : null;
+    return t && !SPECIAL(t.type) ? t.type : null;
   };
   for (let r = 0; r < rows; r += 1) {
     let c = 0;
@@ -102,6 +110,29 @@ export function findRuns(board: Board): Pos[][] {
   return runs;
 }
 
+/**
+ * Every 2x2 square of one kind (2026-11-23): four tiles in a square clear like
+ * a run and make a Dove. A square whose tiles are part of a run already is
+ * left to the run.
+ */
+export function findSquares(board: Board, runs: Pos[][] = findRuns(board)): Pos[][] {
+  const inRun = new Set(runs.flat().map((p) => key(p.r, p.c)));
+  const out: Pos[][] = [];
+  const taken = new Set<string>();
+  for (let r = 0; r + 1 < board.length; r += 1) {
+    for (let c = 0; c + 1 < board[0].length; c += 1) {
+      const t = board[r][c]?.type;
+      if (!t || SPECIAL(t)) continue;
+      const cells = [{ r, c }, { r, c: c + 1 }, { r: r + 1, c }, { r: r + 1, c: c + 1 }];
+      if (!cells.every((p) => board[p.r][p.c]?.type === t)) continue;
+      if (cells.some((p) => inRun.has(key(p.r, p.c)) || taken.has(key(p.r, p.c)))) continue;
+      cells.forEach((p) => taken.add(key(p.r, p.c)));
+      out.push(cells);
+    }
+  }
+  return out;
+}
+
 function swapped(board: Board, a: Pos, b: Pos): Board {
   const next = cloneBoard(board);
   const t = next[a.r][a.c];
@@ -116,10 +147,11 @@ export function swapWorks(board: Board, a: Pos, b: Pos): boolean {
   const ta = board[a.r]?.[a.c];
   const tb = board[b.r]?.[b.c];
   if (!ta || !tb) return false;
-  if (ta.type === ORB || tb.type === ORB) return true;
+  if (SPECIAL(ta.type) || SPECIAL(tb.type)) return true;
   // Two power-ups side by side can always be swapped: both go off.
   if (ta.power && tb.power) return true;
-  return findRuns(swapped(board, a, b)).length > 0;
+  const after = swapped(board, a, b);
+  return findRuns(after).length > 0 || findSquares(after).length > 0;
 }
 
 /** A swap that works, for the hint (null when the board is stuck). */
@@ -158,7 +190,7 @@ export function createBoard(types: string[], rng: Rng, ids: IdSource, rows = ROW
         b[r][c] = { id: ids.next++, type };
       }
     }
-    if (findRuns(b).length === 0 && findMove(b)) return b;
+    if (findRuns(b).length === 0 && findSquares(b).length === 0 && findMove(b)) return b;
   }
   throw new Error("Could not deal a playable board.");
 }
@@ -175,7 +207,7 @@ export function reshuffle(b: Board, rng: Rng): Board {
       [bag[i], bag[j]] = [bag[j], bag[i]];
     }
     const next: Board = Array.from({ length: rows }, (_, r) => Array.from({ length: cols }, (_, c) => ({ ...bag[r * cols + c] })));
-    if (findRuns(next).length === 0 && findMove(next)) return next;
+    if (findRuns(next).length === 0 && findSquares(next).length === 0 && findMove(next)) return next;
   }
   return b;
 }
@@ -183,7 +215,15 @@ export function reshuffle(b: Board, rng: Rng): Board {
 // ---------- resolving a swap ----------
 
 /** A power-up going off: a row or column swept, or a 3x3 blast. */
-export type Beam = { row?: number; col?: number; blast?: Pos };
+export type Beam = {
+  row?: number;
+  col?: number;
+  blast?: Pos;
+  /** A blast's reach: 1 is the 3x3 (the default), 2 the 5x5 of two Trumpet Blasts. */
+  radius?: number;
+  /** A Dove's flight, from where it was to the tile it took. */
+  dove?: { from: Pos; to: Pos };
+};
 
 export type Step = {
   /** Cells that clear (each counted once). */
@@ -254,7 +294,7 @@ type Earned = { c: number; power: Power; type: string };
 /** The kind there is most of on the board (what an orb caught in a blast takes). */
 function commonest(board: Board): string | null {
   const n: Record<string, number> = {};
-  for (const row of board) for (const t of row) if (t && t.type !== ORB) n[t.type] = (n[t.type] || 0) + 1;
+  for (const row of board) for (const t of row) if (t && !SPECIAL(t.type)) n[t.type] = (n[t.type] || 0) + 1;
   return Object.entries(n).sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
 }
 
@@ -273,6 +313,10 @@ function clearStep(
   types: string[],
   rng: Rng,
   ids: IdSource,
+  /** The kinds the goals still need, so a Dove flies to one of them. */
+  want: string[] = [],
+  /** Sweeps a combo of two power-ups sets off on top of the cells in start. */
+  extra: Beam[] = [],
 ): Step {
   const rows = board.length;
   const cols = board[0].length;
@@ -287,6 +331,17 @@ function clearStep(
     clear.add(key(r, c));
     return true;
   };
+  const area = (r: number, c: number, radius: number) => {
+    let grew = false;
+    for (let dr = -radius; dr <= radius; dr += 1) for (let dc = -radius; dc <= radius; dc += 1) grew = add(r + dr, c + dc) || grew;
+    return grew;
+  };
+  for (const e of extra) {
+    beams.push(e);
+    if (e.row !== undefined) for (let cc = 0; cc < cols; cc += 1) add(e.row, cc);
+    if (e.col !== undefined) for (let rr = 0; rr < rows; rr += 1) add(rr, e.col);
+    if (e.blast) area(e.blast.r, e.blast.c, e.radius ?? 1);
+  }
   let grew = true;
   while (grew) {
     grew = false;
@@ -303,7 +358,26 @@ function clearStep(
         for (let rr = 0; rr < rows; rr += 1) grew = add(rr, c) || grew;
       } else if (t.power === "blast") {
         beams.push({ blast: { r, c } });
-        for (let dr = -1; dr <= 1; dr += 1) for (let dc = -1; dc <= 1; dc += 1) grew = add(r + dr, c + dc) || grew;
+        grew = area(r, c, 1) || grew;
+      } else if (t.power === "dove") {
+        // The Dove flies to a tile the goals still need (the nearest one
+        // still standing), else to the kind there is most of, and takes it
+        // and the four around it.
+        const targets: Pos[] = [];
+        board.forEach((row, rr) =>
+          row.forEach((x, cc) => {
+            if (x && !SPECIAL(x.type) && !clear.has(key(rr, cc)) && (want.length ? want.includes(x.type) : true)) targets.push({ r: rr, c: cc });
+          }),
+        );
+        if (!targets.length && want.length) {
+          const kind = commonest(board);
+          board.forEach((row, rr) => row.forEach((x, cc) => x && x.type === kind && !clear.has(key(rr, cc)) && targets.push({ r: rr, c: cc })));
+        }
+        const to = targets.length ? targets[Math.floor(rng() * targets.length)] : null;
+        if (to) {
+          beams.push({ dove: { from: { r, c }, to } });
+          for (const [dr, dc] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]]) grew = add(to.r + dr, to.c + dc) || grew;
+        }
       } else if (t.power === "orb" && !orbType) {
         // An orb caught in a clear takes the kind there is most of.
         const kind = commonest(board);
@@ -323,7 +397,7 @@ function clearStep(
     const t = board[r][c];
     if (!t) continue;
     cleared.push({ r, c });
-    if (t.type !== ORB) removed[t.type] = (removed[t.type] || 0) + 1;
+    if (!SPECIAL(t.type)) removed[t.type] = (removed[t.type] || 0) + 1;
     afterClear[r][c] = null;
   }
   const { board: afterFill, dropFrom } = fall(afterClear, types, rng, ids);
@@ -337,7 +411,8 @@ function clearStep(
     usedCols.add(c);
     const top = afterFill[0][c];
     if (!top) continue;
-    const tile: Tile = e.power === "orb" ? { id: top.id, type: ORB, power: "orb" } : { id: top.id, type: e.type, power: e.power };
+    const tile: Tile =
+      e.power === "orb" ? { id: top.id, type: ORB, power: "orb" } : e.power === "dove" ? { id: top.id, type: DOVE, power: "dove" } : { id: top.id, type: e.type, power: e.power };
     afterFill[0][c] = tile;
     made.push({ r: 0, c, tile });
   }
@@ -352,7 +427,7 @@ function clearStep(
  * (a row and a column crossing) a Trumpet Blast (3x3), 5 or more an All
  * Match orb.
  */
-function runsToClear(board: Board, runs: Pos[][], prefer: Pos[]) {
+function runsToClear(board: Board, runs: Pos[][], prefer: Pos[], squares: Pos[][] = []) {
   const start = new Set<string>();
   const earned: Earned[] = [];
   let longest = 0;
@@ -378,16 +453,49 @@ function runsToClear(board: Board, runs: Pos[][], prefer: Pos[]) {
     const power: Power = run.length >= ORB_AT ? "orb" : across(run) ? "light" : "pillar";
     earned.push({ c: at.c, power, type: board[at.r][at.c]!.type });
   });
+  // A 2x2 square clears its four and makes a Dove.
+  for (const sq of squares) {
+    for (const p of sq) start.add(key(p.r, p.c));
+    longest = Math.max(longest, 4);
+    const at = sq.find((p) => prefer.some((q) => samePos(p, q))) ?? sq[0];
+    earned.push({ c: at.c, power: "dove", type: DOVE });
+  }
   return { start, earned, longest };
+}
+
+/** The pair a combo is, by its two powers in any order. */
+const pair = (x?: Power, y?: Power) => [x, y].sort().join("+");
+
+/**
+ * Two power-ups swapped together (2026-11-23, from how the big match-3 games
+ * reward it): Light Burst or Pillar with either makes a cross; a Trumpet Blast
+ * with a Light Burst or Pillar sweeps three rows and three columns; two
+ * Trumpet Blasts make a 5x5 blast. Anything else (a Dove with another): both go off.
+ */
+function comboBeams(p: Power | undefined, q: Power | undefined, at: Pos, rows: number, cols: number): Beam[] {
+  const k = pair(p, q);
+  const line: Array<Power | undefined> = ["light", "pillar"];
+  if (line.includes(p) && line.includes(q)) return [{ row: at.r }, { col: at.c }];
+  if (k === "blast+light" || k === "blast+pillar") {
+    const out: Beam[] = [];
+    for (let d = -1; d <= 1; d += 1) {
+      if (at.r + d >= 0 && at.r + d < rows) out.push({ row: at.r + d });
+      if (at.c + d >= 0 && at.c + d < cols) out.push({ col: at.c + d });
+    }
+    return out;
+  }
+  if (k === "blast+blast") return [{ blast: at, radius: 2 }];
+  return [];
 }
 
 /**
  * Swap two neighbouring tiles. A swap that lines nothing up is not a move:
  * the tiles go back and no move is used. Otherwise everything lined up
  * clears, tiles fall, and any new lines clear too (a chain), until the board
- * settles. Swapping an orb, or two power-ups together, sets them off.
+ * settles. Swapping an orb or a Dove, or two power-ups together, sets them off.
+ * `want` is the kinds the goals still need (where a Dove flies).
  */
-export function playSwap(board: Board, a: Pos, b: Pos, types: string[], rng: Rng, ids: IdSource): Resolution {
+export function playSwap(board: Board, a: Pos, b: Pos, types: string[], rng: Rng, ids: IdSource, want: string[] = []): Resolution {
   const none: Resolution = { valid: false, swap: null, afterSwap: board, steps: [], final: board, removed: {}, points: 0, reshuffled: false };
   if (!swapWorks(board, a, b)) return none;
   const afterSwap = swapped(board, a, b);
@@ -395,10 +503,12 @@ export function playSwap(board: Board, a: Pos, b: Pos, types: string[], rng: Rng
   let current = afterSwap;
   const ta = board[a.r][a.c]!;
   const tb = board[b.r][b.c]!;
+  const rows = board.length;
+  const cols = board[0].length;
 
   if (ta.type === ORB || tb.type === ORB) {
-    // An orb swapped with a tile takes every tile of that kind (and itself).
     const orbAt = ta.type === ORB ? b : a; // where the orb is now
+    const otherAt = ta.type === ORB ? a : b;
     const other = ta.type === ORB ? tb : ta;
     const start = new Set<string>([key(orbAt.r, orbAt.c)]);
     let kind: string;
@@ -406,29 +516,55 @@ export function playSwap(board: Board, a: Pos, b: Pos, types: string[], rng: Rng
       // Two orbs: the whole board.
       current.forEach((row, r) => row.forEach((_, c) => start.add(key(r, c))));
       kind = "all";
+    } else if (other.type === DOVE) {
+      // An orb and a Dove: the orb takes the kind there is most of, and the Dove flies too.
+      kind = commonest(current) || "";
+      start.add(key(otherAt.r, otherAt.c));
+      current.forEach((row, r) => row.forEach((t, c) => t && t.type === kind && start.add(key(r, c))));
     } else {
       kind = other.type;
-      current.forEach((row, r) => row.forEach((t, c) => t && t.type === other.type && start.add(key(r, c))));
+      // An orb and a power-up: every tile of that kind becomes that power-up,
+      // and they all go off (Light Bursts and Pillars of Fire, mixed).
+      if (other.power && other.power !== "orb") {
+        current = cloneBoard(current);
+        current.forEach((row) =>
+          row.forEach((t) => {
+            if (t && t.type === kind && !t.power) t.power = other.power === "blast" ? "blast" : rng() < 0.5 ? "light" : "pillar";
+          }),
+        );
+      }
+      current.forEach((row, r) => row.forEach((t, c) => t && t.type === kind && start.add(key(r, c))));
     }
-    const step = clearStep(current, start, [], { type: kind, at: orbAt }, 0, 1, types, rng, ids);
+    const step = clearStep(current, start, [], { type: kind, at: orbAt }, 0, 1, types, rng, ids, want);
+    steps.push(step);
+    current = step.afterFill;
+  } else if (ta.type === DOVE || tb.type === DOVE) {
+    // A Dove swapped with anything flies (with the other, if it is a power-up too).
+    const step = clearStep(current, new Set([key(a.r, a.c), key(b.r, b.c)]), [], null, 0, 1, types, rng, ids, want);
     steps.push(step);
     current = step.afterFill;
   } else if (ta.power && tb.power) {
-    // Two power-ups swapped together both go off.
-    const step = clearStep(current, new Set([key(a.r, a.c), key(b.r, b.c)]), [], null, 0, 1, types, rng, ids);
+    // Two power-ups swapped together: a combo, centred where the moved one landed.
+    const extra = comboBeams(ta.power, tb.power, b, rows, cols);
+    const step = clearStep(current, new Set([key(a.r, a.c), key(b.r, b.c)]), [], null, 0, 1, types, rng, ids, want, extra);
     steps.push(step);
     current = step.afterFill;
   }
 
   for (let chain = steps.length + 1; chain <= 30; chain += 1) {
     const runs = findRuns(current);
-    if (!runs.length) break;
-    const { start, earned, longest } = runsToClear(current, runs, chain === 1 ? [a, b] : []);
-    const step = clearStep(current, start, earned, null, longest, chain, types, rng, ids);
+    const squares = findSquares(current, runs);
+    if (!runs.length && !squares.length) break;
+    const { start, earned, longest } = runsToClear(current, runs, chain === 1 ? [a, b] : [], squares);
+    const step = clearStep(current, start, earned, null, longest, chain, types, rng, ids, want);
     steps.push(step);
     current = step.afterFill;
   }
 
+  return settle([a, b], afterSwap, steps, current, rng);
+}
+
+function settle(swap: [Pos, Pos] | null, afterSwap: Board, steps: Step[], current: Board, rng: Rng): Resolution {
   const removed: Record<string, number> = {};
   let points = 0;
   for (const s of steps) {
@@ -441,7 +577,46 @@ export function playSwap(board: Board, a: Pos, b: Pos, types: string[], rng: Rng
     final = reshuffle(final, rng);
     reshuffled = true;
   }
-  return { valid: true, swap: [a, b], afterSwap, steps, final, removed, points, reshuffled };
+  return { valid: true, swap, afterSwap, steps, final, removed, points, reshuffled };
+}
+
+/**
+ * The Jubilee (2026-11-23): when a board is won with moves to spare, each
+ * spare move (up to 8) becomes a Light Burst or Pillar of Fire somewhere on
+ * the board and they all go off, with whatever chains follow, for points.
+ * The big match-3 games all end a won level this way; it is the most
+ * satisfying finish in the genre.
+ */
+export function jubilee(board: Board, movesLeft: number, types: string[], rng: Rng, ids: IdSource): Resolution {
+  const n = Math.min(8, Math.max(0, movesLeft));
+  if (!n) return { valid: false, swap: null, afterSwap: board, steps: [], final: board, removed: {}, points: 0, reshuffled: false };
+  const current = cloneBoard(board);
+  const cells: Pos[] = [];
+  current.forEach((row, r) => row.forEach((t, c) => t && !SPECIAL(t.type) && cells.push({ r, c })));
+  for (let i = cells.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(rng() * (i + 1));
+    [cells[i], cells[j]] = [cells[j], cells[i]];
+  }
+  const start = new Set<string>();
+  cells.slice(0, n).forEach((p, i) => {
+    current[p.r][p.c]!.power = i % 2 ? "pillar" : "light";
+    start.add(key(p.r, p.c));
+  });
+  const steps: Step[] = [];
+  let now = current;
+  const first = clearStep(now, start, [], null, 0, 2, types, rng, ids);
+  steps.push(first);
+  now = first.afterFill;
+  for (let chain = 3; chain <= 20; chain += 1) {
+    const runs = findRuns(now);
+    const squares = findSquares(now, runs);
+    if (!runs.length && !squares.length) break;
+    const { start: s, earned, longest } = runsToClear(now, runs, [], squares);
+    const step = clearStep(now, s, earned, null, longest, chain, types, rng, ids);
+    steps.push(step);
+    now = step.afterFill;
+  }
+  return settle(null, current, steps, now, rng);
 }
 
 // ---------- levels ----------
@@ -468,6 +643,8 @@ export type MatchLevel = {
   socket: string;
   /** Creation starts dark and the dark lifts on the first clear. */
   startsDark?: boolean;
+  /** A Hard board: fewer moves, marked on the map (2026-11-23). */
+  hard?: boolean;
 };
 
 /** Goals and moves are here so they can be tuned after playtesting. */
@@ -570,6 +747,19 @@ function threeGoals(c: BoardConfig): Goal[] {
   return goals;
 }
 
+/**
+ * How hard a board is (2026-11-23). On the first day 7 players won 58 of 59
+ * boards with 13 of 28 moves to spare, so every board was a sure thing. The
+ * first 6 keep their full moves (the welcome); after that a board has 25, and
+ * every 7th board is a Hard board with 22, marked on the map so a loss there
+ * reads as fair and the win as earned.
+ */
+function difficulty(number: number, moves: number): { moves: number; hard?: boolean } {
+  if (number <= 6) return { moves };
+  if (number % 7 === 0) return { moves: Math.min(moves, 22), hard: true };
+  return { moves: Math.min(moves, 25) };
+}
+
 function fromConfigs(configs: BoardConfig[]): MatchLevel[] {
   const book = (c: BoardConfig) => (c.chapter || c.slug.split("-")[0]).replace(/^\w/, (x) => x.toUpperCase());
   const order = (c: BoardConfig) => {
@@ -590,7 +780,7 @@ function fromConfigs(configs: BoardConfig[]): MatchLevel[] {
     chapter: chapterOf(c.scripture),
     types: c.tiles,
     goals: threeGoals(c),
-    moves: c.moveLimit || 28,
+    ...difficulty(FIRST_LEVELS.length + i + 1, c.moveLimit || 28),
     background: `/games/match/boards/${c.slug}/background-phone.webp`,
     backgrounds: { phone: `/games/match/boards/${c.slug}/background-phone.webp`, desktop: `/games/match/boards/${c.slug}/background-desktop.webp` },
     line: c.storyEffect || c.goalText,
@@ -600,7 +790,7 @@ function fromConfigs(configs: BoardConfig[]): MatchLevel[] {
 
 export const MATCH_LEVELS: MatchLevel[] = [...FIRST_LEVELS, ...fromConfigs(BOARD_CONFIGS as unknown as BoardConfig[])].slice(0, MAX_MATCH_LEVELS);
 
-export const tileArt = (type: string) => `/games/match/tiles/${type}.webp`;
+export const tileArt = (type: string) => `/games/match/tiles/${type === DOVE ? "dove" : type}.webp`;
 
 export function goalsMet(goals: Goal[], collected: Record<string, number>) {
   return goals.every((g) => (collected[g.type] || 0) >= g.count);

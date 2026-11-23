@@ -47,6 +47,7 @@ export type FeatureEventName =
   | "match_power_made"
   | "match_power_used"
   | "match_hint"
+  | "match_extra_moves"
   | "match_session";
 
 /** Where "Add to Bible Memory" was tapped. */

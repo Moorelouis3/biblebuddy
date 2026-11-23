@@ -670,6 +670,7 @@ function GenesisMap({
                 })()}
                 {/* The coin stays on the trail; a name near the edge slides inward so it is never cut off. */}
                 <span className="bbm-medal-name" style={{ transform: `translateX(calc(${Math.max(0, 24 - spot.x) - Math.max(0, spot.x - 76)} * min(1vw, 5.6px)))` }}>{level.title}</span>
+                {level.hard ? <span className="bbm-hardbadge">Hard</span> : null}
                 {progress.best[level.id] ? <span className="bbm-medal-best">Best {progress.best[level.id]}</span> : null}
               </button>
             );

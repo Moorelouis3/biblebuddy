@@ -77,6 +77,14 @@ async function trace(src) {
       await sharp(d + t + ".png").resize(256, 256, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).webp({ quality: 85 }).toFile(o);
       report.newTiles.push(t);
     }
+    // The scripture must name this book. ChatGPT once wrote "Numbers" on 46 boards of
+    // five other books (2026-11-23); the chapters were right, the book was not.
+    const firstWord = (cfg.scripture || "").match(/^(\d\s+)?[A-Za-z]+/)?.[0] || "";
+    if (firstWord && firstWord.toLowerCase().replace(/\s+/g, " ") !== BOOK.toLowerCase()) {
+      report.problems.push(slug + ": scripture said " + cfg.scripture + ", fixed to " + BOOK);
+      cfg.scripture = cfg.scripture.replace(firstWord, BOOK);
+      fs.writeFileSync(bdir + "board-config.json", JSON.stringify(cfg, null, 2) + "\n");
+    }
     out.push({ slug, folderTitle: folder, ...cfg, chapter: BOOK });
     report.boards.push(slug + " " + cfg.name + " | " + JSON.stringify(cfg.goals));
   }

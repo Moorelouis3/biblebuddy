@@ -14,6 +14,7 @@ import {
   MATCH_LEVELS,
   ORB,
   playSwap,
+  jubilee,
   reshuffle,
   ROWS,
   seededRng,
@@ -154,13 +155,67 @@ ok("an L or T earns a Trumpet Blast; going off clears the 3x3 around it", () => 
   for (let r = 1; r <= 3; r += 1) for (let c = 1; c <= 3; c += 1) assert.ok(s.cleared.some((q) => q.r === r && q.c === c), "in the blast");
 });
 
-ok("two power-ups side by side can be swapped, and both go off", () => {
+ok("combo: a Light Burst and a Pillar of Fire swapped together sweep a whole row and a whole column", () => {
   const b = board(["bcdef", "cdefb", "deAfc", "efbcd"]);
   b[2][3] = { id: 999, type: "f", power: "pillar" } as Tile;
   const res = playSwap(b, p(2, 2), p(2, 3), FILL, rng(), { next: 100 });
   assert.ok(res.valid);
-  const kinds = res.steps[0].beams.map((x) => (x.col !== undefined ? "col" : x.row !== undefined ? "row" : "blast")).sort();
-  assert.deepEqual(kinds, ["col", "row"]);
+  const cleared = new Set(res.steps[0].cleared.map((q) => `${q.r},${q.c}`));
+  for (let c = 0; c < 5; c += 1) assert.ok(cleared.has(`2,${c}`), "the row");
+  for (let r = 0; r < 4; r += 1) assert.ok(cleared.has(`${r},3`), "the column where it landed");
+});
+
+ok("combo: two Trumpet Blasts make a 5x5 blast; a Trumpet with a Light Burst sweeps 3 rows and 3 columns", () => {
+  const big = board(["bcdefbc", "cdefbcd", "defbcde", "efbcdef", "fbcdefb", "bcdefbc"]);
+  big[2][2] = { id: 900, type: "d", power: "blast" } as Tile;
+  big[2][3] = { id: 901, type: "e", power: "blast" } as Tile;
+  const five = playSwap(big, p(2, 2), p(2, 3), FILL, rng(), { next: 100 });
+  const cl = new Set(five.steps[0].cleared.map((q) => `${q.r},${q.c}`));
+  for (let r = 0; r <= 4; r += 1) for (let c = 1; c <= 5; c += 1) assert.ok(cl.has(`${r},${c}`), `5x5 missing ${r},${c}`);
+  const mix = board(["bcdefbc", "cdefbcd", "defbcde", "efbcdef", "fbcdefb", "bcdefbc"]);
+  mix[2][2] = { id: 900, type: "d", power: "blast" } as Tile;
+  mix[2][3] = { id: 901, type: "e", power: "light" } as Tile;
+  const wide = playSwap(mix, p(2, 2), p(2, 3), FILL, rng(), { next: 100 });
+  const rowsHit = new Set(wide.steps[0].beams.filter((x) => x.row !== undefined).map((x) => x.row));
+  const colsHit = new Set(wide.steps[0].beams.filter((x) => x.col !== undefined).map((x) => x.col));
+  assert.ok([1, 2, 3].every((r) => rowsHit.has(r)) && [2, 3, 4].every((c) => colsHit.has(c)), "3 rows and 3 columns");
+});
+
+ok("combo: an orb swapped with a power-up turns every tile of that kind into power-ups that all go off", () => {
+  const b = board(["*Abc", "dbae", "aefa", "bcde"]);
+  const res = playSwap(b, p(0, 0), p(0, 1), FILL, rng(), { next: 100 });
+  assert.ok(res.valid);
+  // Four a's become sweeps, so far more than the four a's clear.
+  assert.ok(res.steps[0].beams.length >= 4, "every a went off");
+  assert.ok(res.steps[0].cleared.length > 8, "the sweeps took more than the a's");
+});
+
+ok("a 2x2 square clears its four and earns a Dove; a Dove flies to a kind the goals still need", () => {
+  const b = board(["bbcd", "cbde", "bdef", "efgh"]);
+  // Swap (2,0) b up... the b at (2,0) moves to (1,0): b b / b b square at rows 0-1, cols 0-1.
+  const res = playSwap(b, p(1, 0), p(2, 0), FILL, rng(), { next: 100 });
+  assert.ok(res.valid, "a square is a move");
+  assert.equal(res.steps[0].removed.b, 4);
+  assert.ok(res.steps[0].made.some((m) => m.tile.power === "dove"), "made a Dove");
+  const withDove = board(["xcde", "cdex", "defc", "efcd"]);
+  withDove[0][0] = { id: 950, type: "dove-power", power: "dove" } as Tile;
+  const flew = playSwap(withDove, p(0, 0), p(0, 1), FILL, rng(), { next: 100 }, ["x"]);
+  assert.ok(flew.valid);
+  const flight = flew.steps[0].beams.find((x) => x.dove);
+  assert.ok(flight, "the Dove flew");
+  const to = flight!.dove!.to;
+  assert.equal(withDove[to.r][to.c]!.type, "x", "to a tile the goals need");
+});
+
+ok("the Jubilee: spare moves become sweeps that all go off on a won board (up to 8)", () => {
+  const level = MATCH_LEVELS[5];
+  const ids = { next: 1 };
+  const b = createBoard(level.types, seededRng(3), ids);
+  const res = jubilee(b, 12, level.types, seededRng(4), ids);
+  assert.ok(res.valid);
+  assert.equal(res.steps[0].beams.length, 8, "8 sweeps, not 12");
+  assert.ok(res.points > 0);
+  assert.equal(jubilee(b, 0, level.types, seededRng(4), ids).valid, false, "no spare moves, no Jubilee");
 });
 
 ok("swap an orb with a tile: every tile of that kind clears; two orbs clear the board", () => {
@@ -201,7 +256,7 @@ ok("goals are met exactly at the target", () => {
   assert.equal(goalsMet(goals, { sun: 9, globe: 8, tree: 8 }), true);
 });
 
-ok("the boards: Creation and Eden first, numbered in order, numbered in order, every tile has art", () => {
+ok("the boards: Creation and Eden first, numbered in order, every tile has art", () => {
   assert.equal(MATCH_LEVELS[0].id, "creation");
   assert.equal(MATCH_LEVELS[1].id, "eden");
   assert.ok(MATCH_LEVELS.length <= 500);

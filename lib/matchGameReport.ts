@@ -33,6 +33,7 @@ export const MATCH_REPORT_EVENTS = [
   "match_power_made",
   "match_power_used",
   "match_hint",
+  "match_extra_moves",
   "match_session",
 ];
 
