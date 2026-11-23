@@ -14,12 +14,16 @@ questions for every chapter of the Bible**, written in order from
 *"your mediums and your questions don't seem real. They should be based in it."*
 Every question must come straight out of the chapter's text.
 
-## The run (3 chapters per run)
+## The run (7 chapters per run)
+
+Hourly, 7 chapters a run, so every chapter is done in about a week (Louis,
+2026-11-23: "i need it done in a week"). Commit and push after EACH chapter, so
+a run that stops halfway keeps what it finished.
 
 ```
 npm install
 git checkout main && git pull --rebase origin main
-npx tsx scripts/trivia-writer.ts next 3
+npx tsx scripts/trivia-writer.ts next 7
 ```
 
 `next` prints the next chapters, in Bible order, that are still short, with
@@ -45,12 +49,12 @@ how many of each level to write. For each chapter, in order:
 6. `npx tsx scripts/trivia-writer.ts check <book> <chapter>` must say `ok`.
    Fix and repeat until it does.
 
-Then, once for the run:
+Then, after EACH chapter (so a run cut short by a usage limit keeps its work):
 
 ```
 npx tsx scripts/verify-clue-game.ts          # must end "N checks passed."
 git add lib/clueGame/bank
-git commit -m "Bible Trivia questions: Genesis 1-3 (15 Easy / 15 Medium / 15 Hard each)"
+git commit -m "Bible Trivia questions: Genesis 4 (15 Easy / 15 Medium / 15 Hard)"
 git pull --rebase origin main && git push origin main
 ```
 
@@ -137,4 +141,4 @@ game's id for it), `"medium"` or `"hard"`.
   question you replaced.
 - Never change game code, never add `[deploy]`, never touch another routine's
   files.
-- 3 chapters per run, in the order `next` gives. Do not skip ahead.
+- 7 chapters per run, in the order `next` gives. Do not skip ahead.
