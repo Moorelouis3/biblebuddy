@@ -421,6 +421,8 @@ export type PublicCard = {
 
 export type PublicQuestion = {
   question: string;
+  /** The book's name, e.g. "1 Samuel". */
+  book?: string;
   chapter: number;
   /** The four choices in display order (A-D). */
   choices: string[];
@@ -480,8 +482,10 @@ function revealCard(item: BankItem): PublicCard {
 
 function questionFor(item: BankItem, order: ClueRound["order"], revealed: boolean): PublicQuestion {
   const choices = order.map((i) => item.choices[i]);
-  if (!revealed) return { question: item.question, chapter: item.chapter, choices };
-  return { question: item.question, chapter: item.chapter, choices, correct: order.indexOf(item.answer as 0), explanation: item.explanation, ref: item.ref };
+  // The book's name (from the verse label) is shown on the card from the start: it gives nothing away.
+  const book = item.ref.book;
+  if (!revealed) return { question: item.question, book, chapter: item.chapter, choices };
+  return { question: item.question, book, chapter: item.chapter, choices, correct: order.indexOf(item.answer as 0), explanation: item.explanation, ref: item.ref };
 }
 
 /**

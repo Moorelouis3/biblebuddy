@@ -53,7 +53,7 @@ export function ReviewList({
 
               <div className="min-w-0 flex-1">
                 <div className="text-[11px] font-black uppercase tracking-[0.12em] opacity-60">
-                  {c.tiebreak ? "Tiebreaker" : `Question ${i + 1}`} · {c.quiz.ref?.book ?? "Genesis"} {c.quiz.chapter}
+                  {c.tiebreak ? "Tiebreaker" : `Question ${i + 1}`} · {c.quiz.book ?? c.quiz.ref?.book ?? "Genesis"} {c.quiz.chapter}
                 </div>
                 <div className="bb-clue-serif text-[17px] font-bold leading-snug">{c.quiz.question}</div>
                 {youId ? <div className="text-[12px] font-black" style={{ color }}>{result}</div> : null}

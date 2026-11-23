@@ -341,7 +341,7 @@ export default function ClueTable({
             ) : view.phase === "question" && quiz ? (
               <>
                 <div className="bb-cb-panel-head">
-                  {tiebreak ? <span className="bb-cb-tb">Tiebreaker · First correct answer wins</span> : <span>Genesis {quiz.chapter}</span>}
+                  {tiebreak ? <span className="bb-cb-tb">Tiebreaker · First correct answer wins</span> : <span>{quiz.book ?? "Genesis"} {quiz.chapter}</span>}
                   <span className="bb-cb-sep" />
                   <span className={`bb-cb-timer ${seconds <= 3 ? "is-final" : ""}`} aria-live="polite">
                     {/* eslint-disable-next-line @next/next/no-img-element */}

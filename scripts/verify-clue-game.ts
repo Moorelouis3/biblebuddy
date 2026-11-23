@@ -10,6 +10,8 @@ import { createMatch, reduceClueMatch, soloSetup, publicView, poolForSelection, 
 import { BANK_ITEMS, BOOK_INDEX, CLUE_BANK, MIN_ROUND, bookItems, booksWithQuestions, chaptersWithQuestions, cleanSelection, selectionFromKeys, selectionLabel, selectionStatus, selectionToKeys } from "../lib/clueGame/bank";
 // Every book file in the registry, as the server has it.
 import "../lib/clueGame/bank/all";
+import { chainPostText } from "../lib/clueGame/server";
+import { readClueChallenge } from "../components/feed/ClueChallengePost";
 
 let n = 0;
 const ok = (name: string, fn: () => void) => {
@@ -394,6 +396,34 @@ ok("labels: Easy / Medium / Hard, real book names, chapter runs", () => {
   assert.equal(selectionLabel({ book: "genesis", chapters: [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36], level: "medium" }), "Genesis 25–36 · Medium");
   assert.equal(selectionLabel({ book: "1-samuel", chapters: "all", level: "beginner" }), "1 Samuel · All chapters · Easy");
   assert.equal(selectionLabel({ book: "song-of-solomon", chapters: [2], level: "hard" }), "Song of Solomon 2 · Hard");
+});
+
+ok("feed: chain posts, new challenge posts and old Bible Clue posts all read back as cards", () => {
+  const uid = "0f8c2a3e-1111-4222-8333-944455556666";
+  const chain = chainPostText({
+    id: "AbC123xy",
+    name: "Mark Smith",
+    fromName: "Jess Brown",
+    fromId: "x",
+    userId: uid,
+    deckName: "Genesis 25–36 · Medium",
+    won: 10,
+    total: 10,
+    score: 10,
+    chain: ["Louis Moore", "Jess Brown", "Mark Smith"],
+  });
+  const c = readClueChallenge(chain)!;
+  assert.equal(c.id, "AbC123xy");
+  assert.equal(c.name, "Mark Smith");
+  assert.equal(c.selection, "Genesis 25–36 · Medium");
+  assert.deepEqual(c.chain, { from: "Jess", won: 10, total: 10, names: ["Louis", "Jess", "Mark"], fromId: uid });
+  assert.ok(chain.includes("A perfect round"));
+  const fresh = readClueChallenge("🃏 Ann scored 7 in Exodus · All chapters · Easy on Bible Trivia. Can you beat it?\n\n[Play the challenge](https://www.mybiblebuddy.net/bible-study-games/clue/challenge/Zz12Yy34)")!;
+  assert.equal(fresh.score, 7);
+  assert.equal(fresh.chain, undefined);
+  const old = readClueChallenge("🃏 Ann scored 5 in Genesis · All chapters · Beginner on the Bible Clue Game. Can you beat it?\n\n2 Buddies have played it. Bo leads with 6.\n\n[Play the challenge](https://www.mybiblebuddy.net/bible-study-games/clue/challenge/Zz12Yy34)")!;
+  assert.equal(old.leader, "Bo");
+  assert.equal(old.played, 2);
 });
 
 console.log(`\n${n} checks passed.`);
