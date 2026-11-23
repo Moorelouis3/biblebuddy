@@ -7344,22 +7344,6 @@
   "ref": "Genesis 21:26"
  },
  {
-  "id": "old-genesis-22-2",
-  "chapter": 22,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What question did Isaac ask Abraham on the way to the sacrifice?",
-  "choices": [
-   "Where are we going?",
-   "Why are the servants staying behind?",
-   "Where is the lamb for the burnt offering?",
-   "Will mother come too?"
-  ],
-  "answer": 2,
-  "explanation": "Isaac noticed the wood and fire and asked where the lamb was.",
-  "ref": "Genesis 22:7"
- },
- {
   "id": "old-genesis-22-3",
   "chapter": 22,
   "level": "beginner",
@@ -7376,20 +7360,324 @@
   "ref": "Genesis 22:8"
  },
  {
-  "id": "old-genesis-22-4",
+  "id": "genesis-22-e-01",
   "chapter": 22,
   "level": "beginner",
   "category": "keyword",
-  "question": "What did Abraham offer instead of Isaac?",
+  "question": "What kind of offering did God tell Abraham to make of Isaac?",
   "choices": [
-   "A bull",
-   "A dove",
-   "A goat from his flock",
-   "A ram caught in a thicket"
+   "A peace offering",
+   "A burnt offering",
+   "A sin offering",
+   "A drink offering"
+  ],
+  "answer": 1,
+  "explanation": "God said, Offer him there for a burnt offering upon one of the mountains which I will tell thee of.",
+  "ref": "Genesis 22:2"
+ },
+ {
+  "id": "genesis-22-e-02",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did Abraham get up to obey God's command?",
+  "choices": [
+   "Early in the morning",
+   "At evening",
+   "At midnight",
+   "After three days"
+  ],
+  "answer": 0,
+  "explanation": "Abraham rose up early in the morning, and saddled his ass.",
+  "ref": "Genesis 22:3"
+ },
+ {
+  "id": "genesis-22-m-01",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abraham do with the ram?",
+  "choices": [
+   "Gave it to the young men",
+   "Sent it back to Sarah",
+   "Kept it for the journey",
+   "Offered it as a burnt offering instead of his son"
   ],
   "answer": 3,
-  "explanation": "God provided a ram caught in a thicket as the substitute.",
+  "explanation": "Abraham took the ram, and offered him up for a burnt offering in the stead of his son.",
   "ref": "Genesis 22:13"
+ },
+ {
+  "id": "genesis-22-m-02",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "Who called to Abraham out of heaven the second time?",
+  "choices": [
+   "Isaac",
+   "Sarah",
+   "The angel of the LORD",
+   "The young men"
+  ],
+  "answer": 2,
+  "explanation": "The angel of the LORD called unto Abraham out of heaven the second time.",
+  "ref": "Genesis 22:15"
+ },
+ {
+  "id": "genesis-22-m-03",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "Abraham was told that Milcah had also borne children to whom?",
+  "choices": [
+   "Lot",
+   "Nahor, his brother",
+   "Haran's son",
+   "Bethuel"
+  ],
+  "answer": 1,
+  "explanation": "Behold, Milcah, she hath also born children unto thy brother Nahor.",
+  "ref": "Genesis 22:20"
+ },
+ {
+  "id": "genesis-22-h-01",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God called Isaac thine only son, whom thou what?",
+  "choices": [
+   "Lovest",
+   "Trustest",
+   "Teachest",
+   "Blessest"
+  ],
+  "answer": 0,
+  "explanation": "Take now thy son, thine only son Isaac, whom thou lovest.",
+  "ref": "Genesis 22:2"
+ },
+ {
+  "id": "genesis-22-h-02",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the text say God did to Abraham at the start of the chapter?",
+  "choices": [
+   "Visited him",
+   "Blessed him",
+   "Rebuked him",
+   "Tempted him"
+  ],
+  "answer": 3,
+  "explanation": "It came to pass after these things, that God did tempt Abraham.",
+  "ref": "Genesis 22:1"
+ },
+ {
+  "id": "genesis-22-h-03",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abraham do to the wood before he set out?",
+  "choices": [
+   "Counted it",
+   "Blessed it",
+   "Clave it",
+   "Soaked it"
+  ],
+  "answer": 2,
+  "explanation": "Abraham rose up early in the morning, and saddled his ass, and clave the wood for the burnt offering.",
+  "ref": "Genesis 22:3"
+ },
+ {
+  "id": "genesis-22-h-04",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abraham tell the young men to stay with?",
+  "choices": [
+   "The fire",
+   "The ass",
+   "The ram",
+   "Sarah"
+  ],
+  "answer": 1,
+  "explanation": "Abraham said unto his young men, Abide ye here with the ass.",
+  "ref": "Genesis 22:5"
+ },
+ {
+  "id": "genesis-22-h-05",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abraham answer when Isaac said, My father?",
+  "choices": [
+   "Here am I, my son",
+   "What troubles thee?",
+   "Follow me",
+   "Be still, my son"
+  ],
+  "answer": 0,
+  "explanation": "Isaac said, My father: and he said, Here am I, my son.",
+  "ref": "Genesis 22:7"
+ },
+ {
+  "id": "genesis-22-h-06",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abraham do with the wood once he built the altar?",
+  "choices": [
+   "Burned it",
+   "Gave it to Isaac",
+   "Hid it",
+   "Laid it in order"
+  ],
+  "answer": 3,
+  "explanation": "Abraham built an altar there, and laid the wood in order.",
+  "ref": "Genesis 22:9"
+ },
+ {
+  "id": "genesis-22-h-07",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the ram when Abraham saw it?",
+  "choices": [
+   "In front of the altar",
+   "Beside the young men",
+   "Behind him, caught in a thicket by his horns",
+   "Beneath the altar"
+  ],
+  "answer": 2,
+  "explanation": "Abraham looked, and behold behind him a ram caught in a thicket by his horns.",
+  "ref": "Genesis 22:13"
+ },
+ {
+  "id": "genesis-22-h-08",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is it said \"to this day\" about the mount of the LORD?",
+  "choices": [
+   "The mount of the LORD is high",
+   "In the mount of the LORD it shall be seen",
+   "The LORD dwells on the mount",
+   "Peace is in the mount"
+  ],
+  "answer": 1,
+  "explanation": "As it is said to this day, In the mount of the LORD it shall be seen.",
+  "ref": "Genesis 22:14"
+ },
+ {
+  "id": "genesis-22-h-09",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By whom did the LORD say He had sworn?",
+  "choices": [
+   "By Himself",
+   "By Isaac",
+   "By the altar",
+   "By the heaven"
+  ],
+  "answer": 0,
+  "explanation": "By myself have I sworn, saith the LORD.",
+  "ref": "Genesis 22:16"
+ },
+ {
+  "id": "genesis-22-h-10",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God said Abraham's seed would be as the stars of heaven and as what else?",
+  "choices": [
+   "The dust of the earth",
+   "The grass of the field",
+   "The drops of rain",
+   "The sand upon the sea shore"
+  ],
+  "answer": 3,
+  "explanation": "I will multiply thy seed as the stars of the heaven, and as the sand which is upon the sea shore.",
+  "ref": "Genesis 22:17"
+ },
+ {
+  "id": "genesis-22-h-11",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Milcah's firstborn son by Nahor?",
+  "choices": [
+   "Buz",
+   "Kemuel",
+   "Huz",
+   "Bethuel"
+  ],
+  "answer": 2,
+  "explanation": "Huz his firstborn, and Buz his brother, and Kemuel the father of Aram.",
+  "ref": "Genesis 22:21"
+ },
+ {
+  "id": "genesis-22-h-12",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Kemuel was the father of whom?",
+  "choices": [
+   "Huz",
+   "Aram",
+   "Chesed",
+   "Rebekah"
+  ],
+  "answer": 1,
+  "explanation": "Kemuel the father of Aram.",
+  "ref": "Genesis 22:21"
+ },
+ {
+  "id": "genesis-22-h-13",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons did Milcah bear to Nahor?",
+  "choices": [
+   "Eight",
+   "Seven",
+   "Twelve",
+   "Four"
+  ],
+  "answer": 0,
+  "explanation": "These eight Milcah did bear to Nahor, Abraham's brother.",
+  "ref": "Genesis 22:23"
+ },
+ {
+  "id": "genesis-22-h-14",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Reumah?",
+  "choices": [
+   "Nahor's sister",
+   "Milcah's daughter",
+   "Bethuel's wife",
+   "Nahor's concubine"
+  ],
+  "answer": 3,
+  "explanation": "His concubine, whose name was Reumah, she bare also Tebah, and Gaham, and Thahash, and Maachah.",
+  "ref": "Genesis 22:24"
+ },
+ {
+  "id": "genesis-22-h-15",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the angel say Abraham had not withheld from God?",
+  "choices": [
+   "His flocks",
+   "His son, his only son",
+   "His wife",
+   "His young men"
+  ],
+  "answer": 1,
+  "explanation": "Now I know that thou fearest God, seeing thou hast not withheld thy son, thine only son from me.",
+  "ref": "Genesis 22:12"
  },
  {
   "id": "old-genesis-23-2",
