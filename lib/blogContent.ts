@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-21-explained",
+    title: "1 Samuel 21 Explained: David's Bread, Sword, and Flight to Gath",
+    description:
+      "1 Samuel 21 explained verse by verse: the hallowed bread at Nob, Goliath's sword, Doeg the Edomite, and David feigning madness before Achish.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-21-explained",
+    publishedAt: "2026-11-23",
+    readTime: "13 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 21 Explained 📖",
+      content:
+        "No army. No weapon. Just a lie, a loaf of bread, and a dead giant's sword.\n\nDavid has never been lower than this chapter.\n\n📌 The man watching in the corner says nothing, but he will.\n\n📖 David lies to Ahimelech to get food.\n📖 He takes the sword of Goliath.\n📖 He fakes madness to escape a Philistine king.\n\nNew article on:\n🟢 the **hallowed bread** no one but priests could eat\n🟢 why **Doeg** watching quietly is so dangerous\n🟢 David's strange escape from **Gath**\n\nWhat's the most desperate thing fear ever talked you into? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-20-explained",
     title: "1 Samuel 20 Explained: Jonathan's Arrows and the Last Goodbye",
     description:
