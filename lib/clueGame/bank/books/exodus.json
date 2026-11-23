@@ -19632,6 +19632,662 @@
   "ref": "Exodus 28:36"
  },
  {
+  "id": "exodus-28-e-01",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Moses to take to minister in the priest's office?",
+  "choices": [
+   "Joshua",
+   "Aaron his brother",
+   "Hur",
+   "Caleb"
+  ],
+  "answer": 1,
+  "explanation": "Take thou unto thee Aaron thy brother, and his sons with him, that he may minister unto me in the priest's office.",
+  "ref": "Exodus 28:1"
+ },
+ {
+  "id": "exodus-28-e-02",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things were put in the breastplate of judgment, to be on Aaron's heart?",
+  "choices": [
+   "The Urim and the Thummim",
+   "Two silver trumpets",
+   "The tables of stone",
+   "The ephod and the girdle"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt put in the breastplate of judgment the Urim and the Thummim.",
+  "ref": "Exodus 28:30"
+ },
+ {
+  "id": "exodus-28-e-03",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What color was the robe of the ephod?",
+  "choices": [
+   "All scarlet",
+   "Pure white",
+   "Purple",
+   "All blue"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt make the robe of the ephod all of blue.",
+  "ref": "Exodus 28:31"
+ },
+ {
+  "id": "exodus-28-e-04",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On which part of Aaron was the gold plate to be?",
+  "choices": [
+   "His chest",
+   "His shoulder",
+   "His forehead",
+   "His hand"
+  ],
+  "answer": 2,
+  "explanation": "It shall be upon Aaron's forehead.",
+  "ref": "Exodus 28:38"
+ },
+ {
+  "id": "exodus-28-e-05",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For what purpose were the holy garments made?",
+  "choices": [
+   "For warmth",
+   "For glory and for beauty",
+   "For war",
+   "For travel"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt make holy garments for Aaron thy brother for glory and for beauty.",
+  "ref": "Exodus 28:2"
+ },
+ {
+  "id": "exodus-28-e-06",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many names were engraved on each onyx stone?",
+  "choices": [
+   "Six",
+   "Twelve",
+   "Three",
+   "Four"
+  ],
+  "answer": 0,
+  "explanation": "Six of their names on one stone, and the other six names on the other stone.",
+  "ref": "Exodus 28:10"
+ },
+ {
+  "id": "exodus-28-e-07",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Aaron bear before the LORD on his two shoulders?",
+  "choices": [
+   "The tables of stone",
+   "The Urim and Thummim",
+   "The holy oil",
+   "The names of the children of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Aaron shall bear their names before the LORD upon his two shoulders for a memorial.",
+  "ref": "Exodus 28:12"
+ },
+ {
+  "id": "exodus-28-e-08",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the priests to wear to cover their nakedness?",
+  "choices": [
+   "Goats' hair robes",
+   "Woolen girdles",
+   "Linen breeches",
+   "Scarlet cloaks"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt make them linen breeches to cover their nakedness.",
+  "ref": "Exodus 28:42"
+ },
+ {
+  "id": "exodus-28-e-09",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On the hem of the robe, what was between the pomegranates?",
+  "choices": [
+   "Chains of silver",
+   "Bells of gold",
+   "Stones of onyx",
+   "Cords of blue"
+  ],
+  "answer": 1,
+  "explanation": "Pomegranates... and bells of gold between them round about.",
+  "ref": "Exodus 28:33"
+ },
+ {
+  "id": "exodus-28-e-10",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did God say He had filled with the spirit of wisdom to make Aaron's garments?",
+  "choices": [
+   "Those who were wise hearted",
+   "The elders",
+   "The Levites",
+   "The firstborn"
+  ],
+  "answer": 0,
+  "explanation": "Speak unto all that are wise hearted, whom I have filled with the spirit of wisdom.",
+  "ref": "Exodus 28:3"
+ },
+ {
+  "id": "exodus-28-m-01",
+  "chapter": 28,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two of Aaron's sons are named besides Nadab and Abihu?",
+  "choices": [
+   "Gershon and Kohath",
+   "Hur and Joshua",
+   "Korah and Dathan",
+   "Eleazar and Ithamar"
+  ],
+  "answer": 3,
+  "explanation": "Aaron, Nadab and Abihu, Eleazar and Ithamar, Aaron's sons.",
+  "ref": "Exodus 28:1"
+ },
+ {
+  "id": "exodus-28-m-02",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what were the two onyx stones to be set?",
+  "choices": [
+   "Rings of brass",
+   "Bands of silver",
+   "Ouches of gold",
+   "Cords of linen"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt make them to be set in ouches of gold.",
+  "ref": "Exodus 28:11"
+ },
+ {
+  "id": "exodus-28-m-03",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How big was the breastplate?",
+  "choices": [
+   "A cubit long and broad",
+   "A span long and a span broad",
+   "A handbreadth",
+   "Two spans long"
+  ],
+  "answer": 1,
+  "explanation": "Foursquare it shall be being doubled; a span shall be the length thereof, and a span the breadth thereof.",
+  "ref": "Exodus 28:16"
+ },
+ {
+  "id": "exodus-28-m-04",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many rows of stones were set in the breastplate?",
+  "choices": [
+   "Four",
+   "Three",
+   "Six",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "Settings of stones, even four rows of stones.",
+  "ref": "Exodus 28:17"
+ },
+ {
+  "id": "exodus-28-m-05",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which stones were in the first row?",
+  "choices": [
+   "An emerald, a sapphire and a diamond",
+   "A ligure, an agate and an amethyst",
+   "A beryl, an onyx and a jasper",
+   "A sardius, a topaz and a carbuncle"
+  ],
+  "answer": 3,
+  "explanation": "The first row shall be a sardius, a topaz, and a carbuncle.",
+  "ref": "Exodus 28:17"
+ },
+ {
+  "id": "exodus-28-m-06",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was each stone of the breastplate engraved with?",
+  "choices": [
+   "A commandment",
+   "A date",
+   "A name of a tribe of Israel",
+   "A star"
+  ],
+  "answer": 2,
+  "explanation": "Every one with his name shall they be according to the twelve tribes.",
+  "ref": "Exodus 28:21"
+ },
+ {
+  "id": "exodus-28-m-07",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was used to bind the breastplate to the ephod?",
+  "choices": [
+   "A chain of silver",
+   "A lace of blue",
+   "A cord of scarlet",
+   "A band of linen"
+  ],
+  "answer": 1,
+  "explanation": "They shall bind the breastplate by the rings thereof unto the rings of the ephod with a lace of blue.",
+  "ref": "Exodus 28:28"
+ },
+ {
+  "id": "exodus-28-m-08",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Aaron bear the names of the children of Israel in the breastplate?",
+  "choices": [
+   "Upon his heart",
+   "On his head",
+   "On his hands",
+   "On his feet"
+  ],
+  "answer": 0,
+  "explanation": "Aaron shall bear the names of the children of Israel in the breastplate of judgment upon his heart.",
+  "ref": "Exodus 28:29"
+ },
+ {
+  "id": "exodus-28-m-09",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the gold plate to be engraved?",
+  "choices": [
+   "With a pen of iron",
+   "In raised gold",
+   "With a chisel of wood",
+   "Like the engravings of a signet"
+  ],
+  "answer": 3,
+  "explanation": "Grave upon it, like the engravings of a signet, HOLINESS TO THE LORD.",
+  "ref": "Exodus 28:36"
+ },
+ {
+  "id": "exodus-28-m-10",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what was the gold plate to be fastened to the mitre?",
+  "choices": [
+   "A gold chain",
+   "A scarlet cord",
+   "A blue lace",
+   "A linen band"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt put it on a blue lace, that it may be upon the mitre.",
+  "ref": "Exodus 28:37"
+ },
+ {
+  "id": "exodus-28-m-11",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the plate on Aaron's forehead let him bear?",
+  "choices": [
+   "The names of the tribes",
+   "The iniquity of the holy things",
+   "The judgment of the elders",
+   "The ashes of the altar"
+  ],
+  "answer": 1,
+  "explanation": "Aaron may bear the iniquity of the holy things, which the children of Israel shall hallow.",
+  "ref": "Exodus 28:38"
+ },
+ {
+  "id": "exodus-28-m-12",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What colors were the pomegranates on the hem of the robe?",
+  "choices": [
+   "Blue, purple and scarlet",
+   "Gold and silver",
+   "White and green",
+   "Red and black"
+  ],
+  "answer": 0,
+  "explanation": "Pomegranates of blue, and of purple, and of scarlet, round about the hem.",
+  "ref": "Exodus 28:33"
+ },
+ {
+  "id": "exodus-28-m-13",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How far did the linen breeches reach?",
+  "choices": [
+   "To the knees",
+   "To the ankles",
+   "To the waist only",
+   "From the loins to the thighs"
+  ],
+  "answer": 3,
+  "explanation": "From the loins even unto the thighs they shall reach.",
+  "ref": "Exodus 28:42"
+ },
+ {
+  "id": "exodus-28-m-14",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Aaron to do to his sons besides putting the garments on them?",
+  "choices": [
+   "Teach them the law",
+   "Crown them",
+   "Anoint, consecrate and sanctify them",
+   "Send them away"
+  ],
+  "answer": 2,
+  "explanation": "Shalt anoint them, and consecrate them, and sanctify them, that they may minister unto me.",
+  "ref": "Exodus 28:41"
+ },
+ {
+  "id": "exodus-28-h-01",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which stones were in the third row of the breastplate?",
+  "choices": [
+   "A sardius, a topaz and a carbuncle",
+   "A ligure, an agate and an amethyst",
+   "An emerald, a sapphire and a diamond",
+   "A beryl, an onyx and a jasper"
+  ],
+  "answer": 1,
+  "explanation": "The third row a ligure, an agate, and an amethyst.",
+  "ref": "Exodus 28:19"
+ },
+ {
+  "id": "exodus-28-h-02",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which stones were in the fourth row?",
+  "choices": [
+   "A beryl, an onyx and a jasper",
+   "A ligure, an agate and an amethyst",
+   "An emerald, a sapphire and a diamond",
+   "A sardius, a topaz and a carbuncle"
+  ],
+  "answer": 0,
+  "explanation": "The fourth row a beryl, and an onyx, and a jasper.",
+  "ref": "Exodus 28:20"
+ },
+ {
+  "id": "exodus-28-h-03",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which stones were in the second row?",
+  "choices": [
+   "A sardius, a topaz and a carbuncle",
+   "A beryl, an onyx and a jasper",
+   "A ligure, an agate and an amethyst",
+   "An emerald, a sapphire and a diamond"
+  ],
+  "answer": 3,
+  "explanation": "The second row an emerald, a sapphire, and a diamond.",
+  "ref": "Exodus 28:18"
+ },
+ {
+  "id": "exodus-28-h-04",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what order were the names to be engraved on the two onyx stones?",
+  "choices": [
+   "By alphabet",
+   "By size of tribe",
+   "According to their birth",
+   "By lot"
+  ],
+  "answer": 2,
+  "explanation": "Six of their names on one stone... according to their birth.",
+  "ref": "Exodus 28:10"
+ },
+ {
+  "id": "exodus-28-h-05",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was there a binding around the hole of the robe?",
+  "choices": [
+   "That it be warm",
+   "That it be not rent",
+   "That it be bright",
+   "That it be gathered"
+  ],
+  "answer": 1,
+  "explanation": "A binding of woven work round about the hole of it... that it be not rent.",
+  "ref": "Exodus 28:32"
+ },
+ {
+  "id": "exodus-28-h-06",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of work were the chains to be?",
+  "choices": [
+   "Wreathen work of pure gold",
+   "Beaten silver",
+   "Cast brass",
+   "Plain linen cord"
+  ],
+  "answer": 0,
+  "explanation": "Two chains of pure gold at the ends; of wreathen work shalt thou make them.",
+  "ref": "Exodus 28:14"
+ },
+ {
+  "id": "exodus-28-h-07",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was the sound of the bells to be heard when Aaron went in and out?",
+  "choices": [
+   "That the people pray",
+   "That the priests assemble",
+   "That the lamps be lit",
+   "That he die not"
+  ],
+  "answer": 3,
+  "explanation": "His sound shall be heard when he goeth in unto the holy place... that he die not.",
+  "ref": "Exodus 28:35"
+ },
+ {
+  "id": "exodus-28-h-08",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would happen if the priests did not wear linen breeches in the holy place?",
+  "choices": [
+   "They would be sent out",
+   "They would be cut off from the camp",
+   "They would bear iniquity and die",
+   "They would lose their office"
+  ],
+  "answer": 2,
+  "explanation": "That they bear not iniquity, and die: it shall be a statute for ever.",
+  "ref": "Exodus 28:43"
+ },
+ {
+  "id": "exodus-28-h-09",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the girdle of the ephod to be made like?",
+  "choices": [
+   "Like the robe",
+   "Like the ephod itself",
+   "Plain linen",
+   "Goats' hair"
+  ],
+  "answer": 1,
+  "explanation": "The curious girdle of the ephod shall be of the same, according to the work thereof.",
+  "ref": "Exodus 28:8"
+ },
+ {
+  "id": "exodus-28-h-10",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was to be put on Aaron's sons besides coats and girdles?",
+  "choices": [
+   "Bonnets",
+   "Crowns of gold",
+   "Plates of gold",
+   "Mitres of blue"
+  ],
+  "answer": 0,
+  "explanation": "For Aaron's sons thou shalt make coats, and girdles, and bonnets.",
+  "ref": "Exodus 28:40"
+ },
+ {
+  "id": "exodus-28-h-11",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of cloth was the mitre to be made of?",
+  "choices": [
+   "Goats' hair",
+   "Blue wool",
+   "Scarlet cloth",
+   "Fine linen"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt make the mitre of fine linen.",
+  "ref": "Exodus 28:39"
+ },
+ {
+  "id": "exodus-28-h-12",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the ephod's two shoulderpieces to do at the edges?",
+  "choices": [
+   "Hang free",
+   "Be bound with silver",
+   "Be joined together",
+   "Be set with stones"
+  ],
+  "answer": 2,
+  "explanation": "The two shoulderpieces thereof joined at the two edges thereof.",
+  "ref": "Exodus 28:7"
+ },
+ {
+  "id": "exodus-28-h-13",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Aaron bear upon his heart before the LORD continually, along with the names?",
+  "choices": [
+   "The sins of the priests",
+   "The judgment of the children of Israel",
+   "The holy oil",
+   "The mercy seat"
+  ],
+  "answer": 1,
+  "explanation": "Aaron shall bear the judgment of the children of Israel upon his heart before the LORD continually.",
+  "ref": "Exodus 28:30"
+ },
+ {
+  "id": "exodus-28-h-14",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was the rule of the linen breeches to last?",
+  "choices": [
+   "A statute for ever to Aaron and his seed",
+   "Until the tabernacle was built",
+   "Seven years",
+   "Until Canaan"
+  ],
+  "answer": 0,
+  "explanation": "It shall be a statute for ever unto him and his seed after him.",
+  "ref": "Exodus 28:43"
+ },
+ {
+  "id": "exodus-28-h-15",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many rings of gold were on the two ends of the breastplate for the chains?",
+  "choices": [
+   "Four",
+   "Six",
+   "Twelve",
+   "Two"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt make upon the breastplate two rings of gold.",
+  "ref": "Exodus 28:23"
+ },
+ {
+  "id": "exodus-28-h-16",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which garment was embroidered of fine linen?",
+  "choices": [
+   "The robe",
+   "The ephod",
+   "The coat",
+   "The girdle"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt embroider the coat of fine linen.",
+  "ref": "Exodus 28:39"
+ },
+ {
+  "id": "exodus-28-m-15",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the ephod to be made of?",
+  "choices": [
+   "Plain white linen only",
+   "Gold, blue, purple, scarlet and fine twined linen",
+   "Goats' hair and wool",
+   "Brass and blue cloth"
+  ],
+  "answer": 1,
+  "explanation": "They shall make the ephod of gold, of blue, and of purple, of scarlet, and fine twined linen, with cunning work.",
+  "ref": "Exodus 28:6"
+ },
+ {
   "id": "old-exodus-29-1",
   "chapter": 29,
   "level": "beginner",
