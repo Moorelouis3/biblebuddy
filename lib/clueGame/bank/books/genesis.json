@@ -10832,6 +10832,294 @@
   "ref": "Genesis 32:30"
  },
  {
+  "id": "genesis-32-m-01",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were Jacob's servants to say if Esau asked whose droves they led?",
+  "choices": [
+   "They are Laban's",
+   "They are for sale",
+   "They are Jacob's, a present for Esau",
+   "They belong to Isaac"
+  ],
+  "answer": 2,
+  "explanation": "They were to say, They be thy servant Jacob’s; it is a present sent unto my lord Esau.",
+  "ref": "Genesis 32:17–18"
+ },
+ {
+  "id": "genesis-32-m-02",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If Esau smote one company, what did Jacob hope would happen to the other?",
+  "choices": [
+   "It would fight back",
+   "It would return to Laban",
+   "It would escape",
+   "It would be taken"
+  ],
+  "answer": 2,
+  "explanation": "Jacob said, If Esau come to the one company, and smite it, then the other company which is left shall escape.",
+  "ref": "Genesis 32:8"
+ },
+ {
+  "id": "genesis-32-m-03",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jacob fear Esau would smite along with him?",
+  "choices": [
+   "The servants only",
+   "The camels",
+   "The elders",
+   "The mother with the children"
+  ],
+  "answer": 3,
+  "explanation": "Jacob prayed, lest he will come and smite me, and the mother with the children.",
+  "ref": "Genesis 32:11"
+ },
+ {
+  "id": "genesis-32-h-01",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many she goats were in Jacob's present for Esau?",
+  "choices": [
+   "One hundred",
+   "Two hundred",
+   "Two hundred twenty",
+   "Twenty"
+  ],
+  "answer": 1,
+  "explanation": "The present included two hundred she goats and twenty he goats.",
+  "ref": "Genesis 32:14"
+ },
+ {
+  "id": "genesis-32-h-02",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many rams were in Jacob's present for Esau?",
+  "choices": [
+   "Ten",
+   "Forty",
+   "Twenty",
+   "Two hundred"
+  ],
+  "answer": 2,
+  "explanation": "The present included two hundred ewes and twenty rams.",
+  "ref": "Genesis 32:14"
+ },
+ {
+  "id": "genesis-32-h-03",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many milch camels with their colts did Jacob send?",
+  "choices": [
+   "Ten",
+   "Forty",
+   "Twenty",
+   "Thirty"
+  ],
+  "answer": 3,
+  "explanation": "The present included thirty milch camels with their colts.",
+  "ref": "Genesis 32:15"
+ },
+ {
+  "id": "genesis-32-h-04",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many kine (cows) were in Jacob's present?",
+  "choices": [
+   "Thirty",
+   "Twenty",
+   "Forty",
+   "Ten"
+  ],
+  "answer": 2,
+  "explanation": "The present included forty kine and ten bulls.",
+  "ref": "Genesis 32:15"
+ },
+ {
+  "id": "genesis-32-h-05",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many bulls were in Jacob's present for Esau?",
+  "choices": [
+   "Twenty",
+   "Ten",
+   "Forty",
+   "Thirty"
+  ],
+  "answer": 1,
+  "explanation": "The present included forty kine and ten bulls.",
+  "ref": "Genesis 32:15"
+ },
+ {
+  "id": "genesis-32-h-06",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob tell his servants to put betwixt drove and drove?",
+  "choices": [
+   "A space",
+   "A rope",
+   "A guard",
+   "A banner"
+  ],
+  "answer": 0,
+  "explanation": "Jacob said, Pass over before me, and put a space betwixt drove and drove.",
+  "ref": "Genesis 32:16"
+ },
+ {
+  "id": "genesis-32-h-07",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons did Jacob have when he passed over the ford Jabbok?",
+  "choices": [
+   "Twelve",
+   "Eleven",
+   "Ten",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "He took his two wives, his two womenservants, and his eleven sons, and passed over the ford Jabbok.",
+  "ref": "Genesis 32:22"
+ },
+ {
+  "id": "genesis-32-h-08",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob tell Esau's messengers he wanted to find in Esau's sight?",
+  "choices": [
+   "Land",
+   "Peace",
+   "Grace",
+   "Silver"
+  ],
+  "answer": 2,
+  "explanation": "Jacob sent to tell his lord Esau, that I may find grace in thy sight.",
+  "ref": "Genesis 32:5"
+ },
+ {
+  "id": "genesis-32-h-09",
+  "chapter": 32,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two fathers did Jacob name when he prayed for deliverance?",
+  "choices": [
+   "Isaac and Esau",
+   "Abraham and Laban",
+   "Noah and Abraham",
+   "Abraham and Isaac"
+  ],
+  "answer": 3,
+  "explanation": "Jacob prayed, O God of my father Abraham, and God of my father Isaac.",
+  "ref": "Genesis 32:9"
+ },
+ {
+  "id": "genesis-32-h-10",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Jacob to return unto, according to his prayer?",
+  "choices": [
+   "Bethel",
+   "The land of Egypt",
+   "Isaac’s tent",
+   "His country and kindred"
+  ],
+  "answer": 3,
+  "explanation": "Jacob reminded God, Return unto thy country, and to thy kindred, and I will deal well with thee.",
+  "ref": "Genesis 32:9"
+ },
+ {
+  "id": "genesis-32-h-11",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What reason did the man give for asking Jacob to let him go?",
+  "choices": [
+   "He was weary",
+   "His friends waited",
+   "The brook was rising",
+   "The day breaketh"
+  ],
+  "answer": 3,
+  "explanation": "He said, Let me go, for the day breaketh.",
+  "ref": "Genesis 32:26"
+ },
+ {
+  "id": "genesis-32-h-12",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When Jacob asked the man's name, how did the man answer?",
+  "choices": [
+   "Wherefore is it that thou dost ask after my name?",
+   "It is Peniel",
+   "I am the angel of the LORD",
+   "Ask Esau"
+  ],
+  "answer": 0,
+  "explanation": "He said, Wherefore is it that thou dost ask after my name? And he blessed him there.",
+  "ref": "Genesis 32:29"
+ },
+ {
+  "id": "genesis-32-h-13",
+  "chapter": 32,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Jacob when the sun rose upon him as he limped?",
+  "choices": [
+   "Mahanaim",
+   "Seir",
+   "Penuel",
+   "Succoth"
+  ],
+  "answer": 2,
+  "explanation": "As he passed over Penuel the sun rose upon him, and he halted upon his thigh.",
+  "ref": "Genesis 32:31"
+ },
+ {
+  "id": "genesis-32-h-14",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Jacob lodge on the night he sent the present ahead?",
+  "choices": [
+   "In a cave",
+   "In the company",
+   "By the brook alone",
+   "In Esau's camp"
+  ],
+  "answer": 1,
+  "explanation": "So went the present over before him: and himself lodged that night in the company.",
+  "ref": "Genesis 32:21"
+ },
+ {
+  "id": "genesis-32-h-15",
+  "chapter": 32,
+  "level": "hard",
+  "category": "person",
+  "question": "With whom did Jacob tell Esau he had sojourned until now?",
+  "choices": [
+   "Laban",
+   "Isaac",
+   "Hamor",
+   "Abraham"
+  ],
+  "answer": 0,
+  "explanation": "Jacob said, I have sojourned with Laban, and stayed there until now.",
+  "ref": "Genesis 32:4"
+ },
+ {
   "id": "old-genesis-33-1",
   "chapter": 33,
   "level": "beginner",
