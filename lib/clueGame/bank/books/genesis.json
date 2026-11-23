@@ -6672,22 +6672,6 @@
   "ref": "Genesis 19:27"
  },
  {
-  "id": "old-genesis-20-2",
-  "chapter": 20,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How did God warn Abimelech about Sarah?",
-  "choices": [
-   "By an angel with a sword",
-   "Through a prophet in the city",
-   "By plague first",
-   "In a dream by night"
-  ],
-  "answer": 3,
-  "explanation": "God came to Abimelech in a dream and warned him that Sarah was Abraham's wife.",
-  "ref": "Genesis 20:3"
- },
- {
   "id": "old-genesis-20-4",
   "chapter": 20,
   "level": "beginner",
@@ -6704,20 +6688,324 @@
   "ref": "Genesis 20:18"
  },
  {
-  "id": "old-genesis-20-5",
+  "id": "genesis-20-e-01",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Gerar took Sarah, thinking she was Abraham's sister?",
+  "choices": [
+   "Pharaoh",
+   "Abimelech",
+   "The king of Sodom",
+   "Melchizedek"
+  ],
+  "answer": 1,
+  "explanation": "Abimelech king of Gerar sent, and took Sarah.",
+  "ref": "Genesis 20:2"
+ },
+ {
+  "id": "genesis-20-e-02",
   "chapter": 20,
   "level": "beginner",
   "category": "keyword",
-  "question": "What happened after Abraham prayed for Abimelech?",
+  "question": "What had the LORD closed up in Abimelech's house because of Sarah?",
   "choices": [
-   "God healed Abimelech's household",
-   "His kingdom fell",
-   "Sarah left Abraham",
-   "Abraham moved away immediately"
+   "All the wombs",
+   "All the wells",
+   "All the gates",
+   "All the stores"
   ],
   "answer": 0,
-  "explanation": "God healed Abimelech, his wife, and his female servants after Abraham prayed.",
+  "explanation": "The LORD had fast closed up all the wombs of the house of Abimelech, because of Sarah Abraham's wife.",
+  "ref": "Genesis 20:18"
+ },
+ {
+  "id": "genesis-20-m-01",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God tell Abimelech to do with Abraham's wife?",
+  "choices": [
+   "Send her to Egypt",
+   "Keep her as a guest",
+   "Give her silver",
+   "Restore her to Abraham"
+  ],
+  "answer": 3,
+  "explanation": "Now therefore restore the man his wife; for he is a prophet.",
+  "ref": "Genesis 20:7"
+ },
+ {
+  "id": "genesis-20-m-02",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Abimelech call and question after telling his servants?",
+  "choices": [
+   "Sarah",
+   "His priests",
+   "Abraham",
+   "Lot"
+  ],
+  "answer": 2,
+  "explanation": "Then Abimelech called Abraham, and said unto him, What hast thou done unto us?",
+  "ref": "Genesis 20:9"
+ },
+ {
+  "id": "genesis-20-m-03",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abraham say he feared the people of Gerar would do for his wife's sake?",
+  "choices": [
+   "Rob him",
+   "Slay him",
+   "Drive him out",
+   "Take his flocks"
+  ],
+  "answer": 1,
+  "explanation": "Because I thought, Surely the fear of God is not in this place; and they will slay me for my wife's sake.",
+  "ref": "Genesis 20:11"
+ },
+ {
+  "id": "genesis-20-h-01",
+  "chapter": 20,
+  "level": "hard",
+  "category": "place",
+  "question": "Toward which country did Abraham journey at the start of the chapter?",
+  "choices": [
+   "The south country",
+   "The north country",
+   "The east country",
+   "The land of Moriah"
+  ],
+  "answer": 0,
+  "explanation": "Abraham journeyed from thence toward the south country.",
+  "ref": "Genesis 20:1"
+ },
+ {
+  "id": "genesis-20-h-02",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides Abraham, who did Abimelech say had also said, He is my brother?",
+  "choices": [
+   "Lot",
+   "Abraham's servant",
+   "Abraham's father",
+   "Sarah herself"
+  ],
+  "answer": 3,
+  "explanation": "She, even she herself said, He is my brother.",
+  "ref": "Genesis 20:5"
+ },
+ {
+  "id": "genesis-20-h-03",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Abimelech said he had acted in the innocency of his what?",
+  "choices": [
+   "Eyes",
+   "Feet",
+   "Hands",
+   "Mouth"
+  ],
+  "answer": 2,
+  "explanation": "In the integrity of my heart and innocency of my hands have I done this.",
+  "ref": "Genesis 20:5"
+ },
+ {
+  "id": "genesis-20-h-04",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God said He also withheld Abimelech from doing what?",
+  "choices": [
+   "Leaving Gerar",
+   "Sinning against Him",
+   "Speaking to Abraham",
+   "Sending Sarah away"
+  ],
+  "answer": 1,
+  "explanation": "I also withheld thee from sinning against me: therefore suffered I thee not to touch her.",
+  "ref": "Genesis 20:6"
+ },
+ {
+  "id": "genesis-20-h-05",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say would happen if Abimelech did not restore Sarah?",
+  "choices": [
+   "He and all his would surely die",
+   "His land would flood",
+   "His flocks would be lost",
+   "His servants would flee"
+  ],
+  "answer": 0,
+  "explanation": "If thou restore her not, know thou that thou shalt surely die, thou, and all that are thine.",
+  "ref": "Genesis 20:7"
+ },
+ {
+  "id": "genesis-20-h-06",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Abraham say he asked Sarah to call him her brother?",
+  "choices": [
+   "When they reached Egypt",
+   "When Isaac was born",
+   "When they came to Gerar",
+   "When God caused him to wander from his father's house"
+  ],
+  "answer": 3,
+  "explanation": "When God caused me to wander from my father's house, I said unto her, at every place say of me, He is my brother.",
+  "ref": "Genesis 20:13"
+ },
+ {
+  "id": "genesis-20-h-07",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abraham call the favour he asked of Sarah at every place?",
+  "choices": [
+   "Her duty",
+   "Her wisdom",
+   "Her kindness",
+   "Her gift"
+  ],
+  "answer": 2,
+  "explanation": "This is thy kindness which thou shalt shew unto me; at every place whither we shall come, say of me, He is my brother.",
+  "ref": "Genesis 20:13"
+ },
+ {
+  "id": "genesis-20-h-08",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides sheep and oxen, what did Abimelech give to Abraham?",
+  "choices": [
+   "Camels and asses",
+   "Menservants and womenservants",
+   "Gold and jewels",
+   "Fields and vineyards"
+  ],
+  "answer": 1,
+  "explanation": "Abimelech took sheep, and oxen, and menservants, and womenservants, and gave them unto Abraham.",
+  "ref": "Genesis 20:14"
+ },
+ {
+  "id": "genesis-20-h-09",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abimelech tell Sarah the thousand pieces of silver would be to her?",
+  "choices": [
+   "A covering of the eyes",
+   "A dowry",
+   "A ransom",
+   "A gift for Isaac"
+  ],
+  "answer": 0,
+  "explanation": "Behold, I have given thy brother a thousand pieces of silver: behold, he is to thee a covering of the eyes.",
+  "ref": "Genesis 20:16"
+ },
+ {
+  "id": "genesis-20-h-10",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides Abimelech, who else did God heal when Abraham prayed?",
+  "choices": [
+   "His sons",
+   "His elders",
+   "His army",
+   "His wife and his maidservants"
+  ],
+  "answer": 3,
+  "explanation": "God healed Abimelech, and his wife, and his maidservants; and they bare children.",
   "ref": "Genesis 20:17"
+ },
+ {
+  "id": "genesis-20-h-11",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to Abimelech's household after God healed them?",
+  "choices": [
+   "They left Gerar",
+   "They worshipped God",
+   "They bare children",
+   "They gave Abraham a field"
+  ],
+  "answer": 2,
+  "explanation": "God healed Abimelech, and his wife, and his maidservants; and they bare children.",
+  "ref": "Genesis 20:17"
+ },
+ {
+  "id": "genesis-20-h-12",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Because of whom had the LORD closed the wombs of Abimelech's house?",
+  "choices": [
+   "Hagar",
+   "Sarah, Abraham's wife",
+   "Abimelech's wife",
+   "Lot's wife"
+  ],
+  "answer": 1,
+  "explanation": "The LORD had fast closed up all the wombs of the house of Abimelech, because of Sarah Abraham's wife.",
+  "ref": "Genesis 20:18"
+ },
+ {
+  "id": "genesis-20-h-13",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Abimelech had not come what to Sarah when God spoke to him in the dream?",
+  "choices": [
+   "Near her",
+   "To his house",
+   "To Abraham",
+   "Into Gerar"
+  ],
+  "answer": 0,
+  "explanation": "But Abimelech had not come near her.",
+  "ref": "Genesis 20:4"
+ },
+ {
+  "id": "genesis-20-h-14",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say would happen to Abimelech when Abraham prayed for him?",
+  "choices": [
+   "He would be king of many nations",
+   "He would live",
+   "He would have a son",
+   "He would be rich"
+  ],
+  "answer": 1,
+  "explanation": "He is a prophet, and he shall pray for thee, and thou shalt live.",
+  "ref": "Genesis 20:7"
+ },
+ {
+  "id": "genesis-20-h-15",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abimelech say about his land when he spoke to Abraham?",
+  "choices": [
+   "It was before him",
+   "It was far away",
+   "It was not for sale",
+   "It belonged to Sarah"
+  ],
+  "answer": 0,
+  "explanation": "Abimelech said, Behold, my land is before thee: dwell where it pleaseth thee.",
+  "ref": "Genesis 20:15"
  },
  {
   "id": "old-genesis-21-2",
