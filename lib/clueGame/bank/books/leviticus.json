@@ -2240,6 +2240,646 @@
   "ref": "Leviticus 4:27–32"
  },
  {
+  "id": "leviticus-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of offering is this chapter about?",
+  "choices": [
+   "The sin offering",
+   "The peace offering",
+   "The meat offering",
+   "The burnt offering"
+  ],
+  "answer": 0,
+  "explanation": "The offering for sins done through ignorance is called a sin offering.",
+  "ref": "Leviticus 4:3"
+ },
+ {
+  "id": "leviticus-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the whole congregation offer if they sinned through ignorance?",
+  "choices": [
+   "A lamb",
+   "A kid of the goats",
+   "Two turtledoves",
+   "A young bullock"
+  ],
+  "answer": 3,
+  "explanation": "The congregation shall offer a young bullock for the sin, and bring him before the tabernacle of the congregation.",
+  "ref": "Leviticus 4:14"
+ },
+ {
+  "id": "leviticus-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who laid their hands on the head of the congregation's bullock?",
+  "choices": [
+   "The priests",
+   "The Levites",
+   "The elders of the congregation",
+   "Aaron's sons"
+  ],
+  "answer": 2,
+  "explanation": "The elders of the congregation shall lay their hands upon the head of the bullock before the LORD.",
+  "ref": "Leviticus 4:15"
+ },
+ {
+  "id": "leviticus-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the bullock carried to be burned?",
+  "choices": [
+   "To the mount",
+   "Outside the camp",
+   "To the altar",
+   "Into the court"
+  ],
+  "answer": 1,
+  "explanation": "He shall carry forth the whole bullock without the camp unto a clean place.",
+  "ref": "Leviticus 4:12"
+ },
+ {
+  "id": "leviticus-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where was all the blood of the bullock poured out?",
+  "choices": [
+   "On the mercy seat",
+   "At the bottom of the altar of the burnt offering",
+   "Into the laver",
+   "At the vail"
+  ],
+  "answer": 1,
+  "explanation": "He shall pour all the blood of the bullock at the bottom of the altar of the burnt offering.",
+  "ref": "Leviticus 4:7"
+ },
+ {
+  "id": "leviticus-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times did the priest sprinkle the blood before the vail?",
+  "choices": [
+   "Seven",
+   "Three",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall sprinkle of the blood seven times before the LORD, before the vail of the sanctuary.",
+  "ref": "Leviticus 4:6"
+ },
+ {
+  "id": "leviticus-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what did the priest dip into the blood?",
+  "choices": [
+   "A bowl",
+   "A branch of hyssop",
+   "A brush",
+   "His finger"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall dip his finger in the blood.",
+  "ref": "Leviticus 4:6"
+ },
+ {
+  "id": "leviticus-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priest make for the sinner with the sin offering?",
+  "choices": [
+   "A feast",
+   "A covenant",
+   "Atonement",
+   "A vow"
+  ],
+  "answer": 2,
+  "explanation": "The priest shall make an atonement for him, and it shall be forgiven him.",
+  "ref": "Leviticus 4:26"
+ },
+ {
+  "id": "leviticus-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would happen to the sin after the atonement was made?",
+  "choices": [
+   "It would be remembered",
+   "It would be doubled",
+   "It would be forgiven",
+   "It would be hidden"
+  ],
+  "answer": 2,
+  "explanation": "The priest shall make an atonement for them, and it shall be forgiven them.",
+  "ref": "Leviticus 4:20"
+ },
+ {
+  "id": "leviticus-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was put upon the horns of the altar of burnt offering?",
+  "choices": [
+   "The fat",
+   "Some of the blood",
+   "Oil",
+   "Incense"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall put it upon the horns of the altar of burnt offering with his finger.",
+  "ref": "Leviticus 4:25"
+ },
+ {
+  "id": "leviticus-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "On the horns of which altar did the anointed priest put blood?",
+  "choices": [
+   "The altar of sweet incense",
+   "The altar of burnt offering",
+   "The table",
+   "The laver"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall put some of the blood upon the horns of the altar of sweet incense before the LORD.",
+  "ref": "Leviticus 4:7"
+ },
+ {
+  "id": "leviticus-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done with all the fat of the bullock?",
+  "choices": [
+   "It was eaten",
+   "It was buried",
+   "It was given away",
+   "It was burned on the altar"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall burn them upon the altar of the burnt offering.",
+  "ref": "Leviticus 4:8–10"
+ },
+ {
+  "id": "leviticus-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the whole bullock burned?",
+  "choices": [
+   "Beside the laver",
+   "In the court gate",
+   "Upon the horns",
+   "At a clean place where the ashes are poured out"
+  ],
+  "answer": 3,
+  "explanation": "He shall carry forth the whole bullock without the camp unto a clean place, where the ashes are poured out.",
+  "ref": "Leviticus 4:12"
+ },
+ {
+  "id": "leviticus-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the offerer bring the priest's young bullock?",
+  "choices": [
+   "To the mount",
+   "To the camp gate",
+   "Unto the door of the tabernacle of the congregation",
+   "Beyond the vail"
+  ],
+  "answer": 2,
+  "explanation": "He shall bring the bullock unto the door of the tabernacle of the congregation before the LORD.",
+  "ref": "Leviticus 4:4"
+ },
+ {
+  "id": "leviticus-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From whom might the congregation's sin be hid?",
+  "choices": [
+   "The priests",
+   "The eyes of the assembly",
+   "Moses",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "The thing be hid from the eyes of the assembly.",
+  "ref": "Leviticus 4:13"
+ },
+ {
+  "id": "leviticus-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the congregation bring the bullock?",
+  "choices": [
+   "When their sin was known",
+   "At the new moon",
+   "At the harvest",
+   "On the sabbath"
+  ],
+  "answer": 0,
+  "explanation": "When the sin is known, then the congregation shall offer a young bullock.",
+  "ref": "Leviticus 4:14"
+ },
+ {
+  "id": "leviticus-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the ruler's goat killed?",
+  "choices": [
+   "In the place where they kill the burnt offering",
+   "At the camp gate",
+   "Beside the laver",
+   "At the vail"
+  ],
+  "answer": 0,
+  "explanation": "He shall kill it in the place where they kill the burnt offering before the LORD.",
+  "ref": "Leviticus 4:24"
+ },
+ {
+  "id": "leviticus-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What sex was the goat brought by a common person?",
+  "choices": [
+   "Male",
+   "Either sex",
+   "A firstborn male",
+   "Female"
+  ],
+  "answer": 3,
+  "explanation": "A kid of the goats, a female without blemish.",
+  "ref": "Leviticus 4:28"
+ },
+ {
+  "id": "leviticus-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What sex was the lamb a common person brought for a sin offering?",
+  "choices": [
+   "Male",
+   "Either one",
+   "Female",
+   "A year-old male"
+  ],
+  "answer": 2,
+  "explanation": "If he bring a lamb for a sin offering, he shall bring it a female without blemish.",
+  "ref": "Leviticus 4:32"
+ },
+ {
+  "id": "leviticus-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the burned fat of a common person's offering smell like to the LORD?",
+  "choices": [
+   "A smoke of rebellion",
+   "A sweet savour",
+   "A cloud",
+   "A fresh bread"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall burn it upon the altar for a sweet savour unto the LORD.",
+  "ref": "Leviticus 4:31"
+ },
+ {
+  "id": "leviticus-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was carried forth whole outside the camp?",
+  "choices": [
+   "The goat",
+   "The bullock",
+   "The lamb",
+   "The ram"
+  ],
+  "answer": 1,
+  "explanation": "He shall carry forth the whole bullock without the camp.",
+  "ref": "Leviticus 4:12"
+ },
+ {
+  "id": "leviticus-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the sinner's offering have to be, whether bullock, goat or lamb?",
+  "choices": [
+   "Without blemish",
+   "With a mark",
+   "Full grown only",
+   "From the firstborn"
+  ],
+  "answer": 0,
+  "explanation": "A young bullock without blemish, a male without blemish, a female without blemish.",
+  "ref": "Leviticus 4:3"
+ },
+ {
+  "id": "leviticus-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the ruler's sin come to, before he brought his offering?",
+  "choices": [
+   "The camp's attention",
+   "Moses' ears",
+   "The altar",
+   "His knowledge"
+  ],
+  "answer": 3,
+  "explanation": "If his sin come to his knowledge, he shall bring his offering, a kid of the goats.",
+  "ref": "Leviticus 4:23"
+ },
+ {
+  "id": "leviticus-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest take of the blood to put upon the horns of the altar of burnt offering?",
+  "choices": [
+   "Oil and blood together",
+   "Water mixed with blood",
+   "Blood of the sin offering, with his finger",
+   "A bowl of blood"
+  ],
+  "answer": 2,
+  "explanation": "The priest shall take of the blood of the sin offering with his finger, and put it upon the horns of the altar of burnt offering.",
+  "ref": "Leviticus 4:25"
+ },
+ {
+  "id": "leviticus-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the sin to be done against?",
+  "choices": [
+   "The elders",
+   "The priests",
+   "The commandments of the LORD",
+   "The camp rules"
+  ],
+  "answer": 2,
+  "explanation": "If a soul shall sin through ignorance against any of the commandments of the LORD.",
+  "ref": "Leviticus 4:2"
+ },
+ {
+  "id": "leviticus-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The anointed priest's sin was said to be according to the sin of whom?",
+  "choices": [
+   "The elders",
+   "The people",
+   "The ruler",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "If the priest that is anointed do sin according to the sin of the people.",
+  "ref": "Leviticus 4:3"
+ },
+ {
+  "id": "leviticus-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the altar of sweet incense?",
+  "choices": [
+   "In the tabernacle of the congregation",
+   "At the court gate",
+   "Outside the camp",
+   "By the laver"
+  ],
+  "answer": 0,
+  "explanation": "The altar of sweet incense before the LORD, which is in the tabernacle of the congregation.",
+  "ref": "Leviticus 4:7"
+ },
+ {
+  "id": "leviticus-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the skin, flesh and inwards, what was burned with the bullock?",
+  "choices": [
+   "His horns",
+   "The wool",
+   "The caul only",
+   "His dung"
+  ],
+  "answer": 3,
+  "explanation": "The skin of the bullock, and all his flesh, with his head, and his legs, and his inwards, and his dung.",
+  "ref": "Leviticus 4:11"
+ },
+ {
+  "id": "leviticus-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The fat of the sin offering was taken off as from the bullock of which sacrifice?",
+  "choices": [
+   "The burnt offerings",
+   "The meat offerings",
+   "The firstfruits",
+   "The peace offerings"
+  ],
+  "answer": 3,
+  "explanation": "As it was taken off from the bullock of the sacrifice of peace offerings.",
+  "ref": "Leviticus 4:10"
+ },
+ {
+  "id": "leviticus-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "A ruler's sin was against the commandments of whom?",
+  "choices": [
+   "The elders",
+   "Moses",
+   "The LORD his God",
+   "The congregation"
+  ],
+  "answer": 2,
+  "explanation": "When a ruler hath sinned against any of the commandments of the LORD his God.",
+  "ref": "Leviticus 4:22"
+ },
+ {
+  "id": "leviticus-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many groups of people does the chapter list, beginning with the anointed priest?",
+  "choices": [
+   "Two",
+   "Four",
+   "Three",
+   "Five"
+  ],
+  "answer": 1,
+  "explanation": "The chapter names the anointed priest, the whole congregation, a ruler, and one of the common people.",
+  "ref": "Leviticus 4:27"
+ },
+ {
+  "id": "leviticus-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "After the priest, the congregation and the ruler, which group is named?",
+  "choices": [
+   "One of the common people",
+   "The Levites",
+   "The strangers",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "If any one of the common people sin through ignorance.",
+  "ref": "Leviticus 4:27"
+ },
+ {
+  "id": "leviticus-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "The altar of burnt offering was at the door of what?",
+  "choices": [
+   "The tabernacle of the congregation",
+   "The court",
+   "The holy of holies",
+   "The camp"
+  ],
+  "answer": 0,
+  "explanation": "The bottom of the altar of the burnt offering, which is at the door of the tabernacle of the congregation.",
+  "ref": "Leviticus 4:7"
+ },
+ {
+  "id": "leviticus-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The bullock was burnt on what, where the ashes are poured out?",
+  "choices": [
+   "The altar horns",
+   "The stones",
+   "A bed of salt",
+   "The wood with fire"
+  ],
+  "answer": 3,
+  "explanation": "Burn him on the wood with fire: where the ashes are poured out shall he be burnt.",
+  "ref": "Leviticus 4:12"
+ },
+ {
+  "id": "leviticus-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which animal did a ruler bring?",
+  "choices": [
+   "A young bullock",
+   "A female lamb",
+   "A kid of the goats",
+   "A turtledove"
+  ],
+  "answer": 2,
+  "explanation": "He shall bring his offering, a kid of the goats, a male without blemish.",
+  "ref": "Leviticus 4:23"
+ },
+ {
+  "id": "leviticus-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The priest took of the bullock's blood and brought it where?",
+  "choices": [
+   "To the camp",
+   "To the tabernacle of the congregation",
+   "To the laver",
+   "To the mount"
+  ],
+  "answer": 1,
+  "explanation": "The priest that is anointed shall take of the bullock's blood, and bring it to the tabernacle of the congregation.",
+  "ref": "Leviticus 4:5"
+ },
+ {
+  "id": "leviticus-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whom was the second bullock called a sin offering?",
+  "choices": [
+   "The priest",
+   "The congregation",
+   "The ruler",
+   "One of the people"
+  ],
+  "answer": 1,
+  "explanation": "He shall burn him as he burned the first bullock: it is a sin offering for the congregation.",
+  "ref": "Leviticus 4:21"
+ },
+ {
+  "id": "leviticus-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was done with all the fat of the ruler's goat?",
+  "choices": [
+   "It was burned upon the altar",
+   "It was eaten by the priests",
+   "It was poured out",
+   "It was carried outside the camp"
+  ],
+  "answer": 0,
+  "explanation": "He shall burn all his fat upon the altar, as the fat of the sacrifice of peace offerings.",
+  "ref": "Leviticus 4:26"
+ },
+ {
+  "id": "leviticus-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The fat of the lamb was taken away as from the sacrifice of what?",
+  "choices": [
+   "The burnt offerings",
+   "The meat offerings",
+   "The firstfruits",
+   "The peace offerings"
+  ],
+  "answer": 3,
+  "explanation": "The fat is taken away from the sacrifice of the peace offerings.",
+  "ref": "Leviticus 4:35"
+ },
+ {
+  "id": "leviticus-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the common man's lamb get killed?",
+  "choices": [
+   "At the vail",
+   "By the laver",
+   "In the place where they kill the burnt offering",
+   "Outside the camp"
+  ],
+  "answer": 2,
+  "explanation": "He shall slay it for a sin offering in the place where they kill the burnt offering.",
+  "ref": "Leviticus 4:33"
+ },
+ {
   "id": "old-leviticus-5-1",
   "chapter": 5,
   "level": "beginner",
