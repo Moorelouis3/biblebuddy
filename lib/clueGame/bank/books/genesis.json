@@ -4992,6 +4992,294 @@
   "ref": "Genesis 15:17"
  },
  {
+  "id": "genesis-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Abram say would be his heir since he had no seed?",
+  "choices": [
+   "One born in his house",
+   "Lot",
+   "Ishmael",
+   "Pharaoh’s son"
+  ],
+  "answer": 0,
+  "explanation": "Abram said, Behold, to me thou hast given no seed: and, lo, one born in my house is mine heir.",
+  "ref": "Genesis 15:3"
+ },
+ {
+  "id": "genesis-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the LORD say Abram’s heir would come from?",
+  "choices": [
+   "Out of his own body",
+   "From his brother",
+   "From Damascus",
+   "From his servants"
+  ],
+  "answer": 0,
+  "explanation": "He that shall come forth out of thine own bowels shall be thine heir.",
+  "ref": "Genesis 15:4"
+ },
+ {
+  "id": "genesis-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides a heifer and a she goat, which animal did the LORD ask Abram to bring?",
+  "choices": [
+   "A ram",
+   "A lamb",
+   "An ox",
+   "A camel"
+  ],
+  "answer": 0,
+  "explanation": "Take me an heifer of three years old, and a she goat of three years old, and a ram of three years old.",
+  "ref": "Genesis 15:9"
+ },
+ {
+  "id": "genesis-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Abram said the LORD had given him no what?",
+  "choices": [
+   "Seed",
+   "Land",
+   "Silver",
+   "Servants"
+  ],
+  "answer": 0,
+  "explanation": "Abram said, Behold, to me thou hast given no seed.",
+  "ref": "Genesis 15:3"
+ },
+ {
+  "id": "genesis-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old were the heifer, the she goat and the ram?",
+  "choices": [
+   "Three years old",
+   "One year old",
+   "Seven years old",
+   "Ten years old"
+  ],
+  "answer": 0,
+  "explanation": "Take me an heifer of three years old, and a she goat of three years old, and a ram of three years old.",
+  "ref": "Genesis 15:9"
+ },
+ {
+  "id": "genesis-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abram do with the animals he brought?",
+  "choices": [
+   "Divided them in the midst",
+   "Gave them to Eliezer",
+   "Sent them to Lot",
+   "Let them go"
+  ],
+  "answer": 0,
+  "explanation": "He took all these, and divided them in the midst, and laid each piece one against another.",
+  "ref": "Genesis 15:10"
+ },
+ {
+  "id": "genesis-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Abram’s seed would do in a land that was not theirs?",
+  "choices": [
+   "Serve them and be afflicted",
+   "Rule over them",
+   "Hide from them",
+   "Build cities"
+  ],
+  "answer": 0,
+  "explanation": "Thy seed shall be a stranger in a land that is not theirs, and shall serve them; and they shall afflict them.",
+  "ref": "Genesis 15:13"
+ },
+ {
+  "id": "genesis-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the LORD bring Abram to look at the stars?",
+  "choices": [
+   "Abroad, outside",
+   "To a high mountain",
+   "Into a cave",
+   "To the altar"
+  ],
+  "answer": 0,
+  "explanation": "He brought him forth abroad, and said, Look now toward heaven.",
+  "ref": "Genesis 15:5"
+ },
+ {
+  "id": "genesis-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Which people are named among those whose land was given to Abram’s seed?",
+  "choices": [
+   "The Kenites",
+   "The Philistines",
+   "The Egyptians",
+   "The Moabites"
+  ],
+  "answer": 0,
+  "explanation": "The Kenites, and the Kenizzites, and the Kadmonites.",
+  "ref": "Genesis 15:19"
+ },
+ {
+  "id": "genesis-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Which people are named at the very end of the list of lands?",
+  "choices": [
+   "The Jebusites",
+   "The Philistines",
+   "The Egyptians",
+   "The Moabites"
+  ],
+  "answer": 0,
+  "explanation": "The list ends: the Amorites, and the Canaanites, and the Girgashites, and the Jebusites.",
+  "ref": "Genesis 15:21"
+ },
+ {
+  "id": "genesis-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many peoples are named in the list of lands at the end?",
+  "choices": [
+   "Ten",
+   "Three",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "The Kenites, Kenizzites, Kadmonites, Hittites, Perizzites, Rephaims, Amorites, Canaanites, Girgashites and Jebusites are named.",
+  "ref": "Genesis 15:19–21"
+ },
+ {
+  "id": "genesis-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say about Eliezer as heir?",
+  "choices": [
+   "He should not be Abram’s heir",
+   "He would share the land",
+   "He would be the heir",
+   "He would be a king"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, This shall not be thine heir.",
+  "ref": "Genesis 15:4"
+ },
+ {
+  "id": "genesis-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the smoking furnace and burning lamp pass between the pieces?",
+  "choices": [
+   "After the sun went down and it was dark",
+   "At noon",
+   "At sunrise",
+   "Before Abram slept"
+  ],
+  "answer": 0,
+  "explanation": "When the sun went down, and it was dark, behold a smoking furnace, and a burning lamp.",
+  "ref": "Genesis 15:17"
+ },
+ {
+  "id": "genesis-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abram call the LORD when he asked what He would give?",
+  "choices": [
+   "Lord GOD",
+   "Most High",
+   "Almighty",
+   "King of kings"
+  ],
+  "answer": 0,
+  "explanation": "Abram said, Lord GOD, what wilt thou give me.",
+  "ref": "Genesis 15:2"
+ },
+ {
+  "id": "genesis-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many different kinds of animals and birds did the LORD tell Abram to bring?",
+  "choices": [
+   "Five",
+   "Two",
+   "Three",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "Heifer, she goat, ram, turtledove and young pigeon.",
+  "ref": "Genesis 15:9"
+ },
+ {
+  "id": "genesis-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "The land was promised from which river?",
+  "choices": [
+   "The river of Egypt",
+   "The Jordan",
+   "The Tigris",
+   "The Nile"
+  ],
+  "answer": 0,
+  "explanation": "From the river of Egypt unto the great river, the river Euphrates.",
+  "ref": "Genesis 15:18"
+ },
+ {
+  "id": "genesis-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides a turtledove, which bird did the LORD ask Abram to bring?",
+  "choices": [
+   "A young pigeon",
+   "A dove",
+   "An eagle",
+   "A raven"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Take me a turtledove, and a young pigeon.",
+  "ref": "Genesis 15:9"
+ },
+ {
+  "id": "genesis-15-h-15",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD count Abram’s belief as?",
+  "choices": [
+   "Righteousness",
+   "A sacrifice",
+   "A blessing",
+   "A covenant"
+  ],
+  "answer": 0,
+  "explanation": "He believed in the LORD; and he counted it to him for righteousness.",
+  "ref": "Genesis 15:6"
+ },
+ {
   "id": "old-genesis-16-1",
   "chapter": 16,
   "level": "beginner",
