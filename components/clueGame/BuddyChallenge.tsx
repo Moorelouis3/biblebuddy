@@ -16,8 +16,13 @@ import { Avatar } from "./ClueParts";
 type Buddy = { id: string; name: string; avatar: string | null };
 type Body = { roundId: string; selection: unknown; cardIds: string[]; score: number; won: number };
 
-export default function ChallengeChoices({ body }: { body: Body }) {
-  const [mode, setMode] = useState<"choose" | "buddies">("choose");
+/**
+ * `passId`: pass an existing challenge on (the chain letter, 2026-11-23)
+ * instead of making a new one. Only the Buddy picker shows; your Feed post
+ * already went up when you finished.
+ */
+export default function ChallengeChoices({ body, passId, exclude = [] }: { body?: Body; passId?: string; exclude?: string[] }) {
+  const [mode, setMode] = useState<"choose" | "buddies">(passId ? "buddies" : "choose");
   const [buddies, setBuddies] = useState<Buddy[] | null>(null);
   const [picked, setPicked] = useState<string[]>([]);
   const [busy, setBusy] = useState(false);
@@ -28,7 +33,7 @@ export default function ChallengeChoices({ body }: { body: Body }) {
     if (mode !== "buddies" || buddies) return;
     void (async () => {
       const res = await clueApi<{ buddies?: Buddy[]; error?: string }>("/api/clue-game/buddies");
-      if (res.ok) setBuddies(res.data.buddies || []);
+      if (res.ok) setBuddies((res.data.buddies || []).filter((b) => !exclude.includes(b.id)));
       else setError(res.data.error || "Could not load your Buddies.");
     })();
   }, [mode, buddies]);
@@ -36,10 +41,15 @@ export default function ChallengeChoices({ body }: { body: Body }) {
   const send = async (buddyIds?: string[]) => {
     setBusy(true);
     setError(null);
-    const res = await clueApi<{ id?: string; alreadyPosted?: boolean; sentTo?: string[]; error?: string }>("/api/clue-game/challenges", {
-      method: "POST",
-      body: { ...body, ...(buddyIds ? { buddyIds } : {}) },
-    });
+    const res = passId
+      ? await clueApi<{ id?: string; alreadyPosted?: boolean; sentTo?: string[]; error?: string }>(`/api/clue-game/challenges/${passId}`, {
+          method: "POST",
+          body: { op: "pass", buddyIds: buddyIds || [] },
+        })
+      : await clueApi<{ id?: string; alreadyPosted?: boolean; sentTo?: string[]; error?: string }>("/api/clue-game/challenges", {
+          method: "POST",
+          body: { ...body, ...(buddyIds ? { buddyIds } : {}) },
+        });
     setBusy(false);
     if (!res.ok || !res.data.id) {
       setError(res.data.error || "Could not send the challenge.");
@@ -47,11 +57,11 @@ export default function ChallengeChoices({ body }: { body: Body }) {
     }
     if (buddyIds) {
       const names = res.data.sentTo || [];
-      setDone({ id: res.data.id, text: `Challenge sent to ${names.length > 2 ? `${names.slice(0, 2).join(", ")} and ${names.length - 2} more` : names.join(" and ")}!` });
-      trackClue("clue_game_challenge_shared", { challenge: res.data.id, score: body.score, buddies: names.length });
+      setDone({ id: res.data.id, text: `${passId ? "Passed on" : "Challenge sent"} to ${names.length > 2 ? `${names.slice(0, 2).join(", ")} and ${names.length - 2} more` : names.join(" and ")}!` });
+      trackClue("clue_game_challenge_shared", { challenge: res.data.id, score: body?.score ?? null, buddies: names.length, passed: !!passId });
     } else {
       setDone({ id: res.data.id, text: res.data.alreadyPosted ? "Already on your Feed." : "Posted to your Bible Buddy Feed!" });
-      if (!res.data.alreadyPosted) trackClue("clue_game_challenge_shared", { challenge: res.data.id, score: body.score });
+      if (!res.data.alreadyPosted) trackClue("clue_game_challenge_shared", { challenge: res.data.id, score: body?.score ?? null });
     }
   };
 
@@ -75,11 +85,11 @@ export default function ChallengeChoices({ body }: { body: Body }) {
     const toggle = (id: string) => setPicked((list) => (list.includes(id) ? list.filter((x) => x !== id) : [...list, id]));
     return (
       <div className="rounded-2xl p-3 text-left" style={{ background: "rgba(255,255,255,.55)", boxShadow: "inset 0 0 0 1.5px #d7b26b" }}>
-        <p className="bb-clue-serif text-center text-[18px] font-bold">Who do you want to challenge?</p>
+        <p className="bb-clue-serif text-center text-[18px] font-bold">{passId ? "Pass it on: who's next in the chain?" : "Who do you want to challenge?"}</p>
         {!buddies ? (
           <p className="mt-3 text-center text-[14px] font-bold opacity-70">{error || "Loading your Buddies…"}</p>
         ) : buddies.length === 0 ? (
-          <p className="mt-3 text-center text-[14px]">You have no Bible Buddies yet. Add Buddies on the Feed, or post an open challenge instead.</p>
+          <p className="mt-3 text-center text-[14px]">{passId ? "Every one of your Buddies is already in this chain!" : "You have no Bible Buddies yet. Add Buddies on the Feed, or post an open challenge instead."}</p>
         ) : (
           <ul className="mt-3 max-h-[38vh] space-y-1.5 overflow-y-auto">
             {buddies.map((b) => {
@@ -108,9 +118,11 @@ export default function ChallengeChoices({ body }: { body: Body }) {
           {busy ? "Sending…" : picked.length ? `⚔️ Challenge ${picked.length} Buddy${picked.length > 1 ? "s" : ""}` : "Pick your Buddies"}
         </button>
         {error && buddies ? <p className="mt-2 text-center text-[13px] font-bold text-[#8a2418]">{error}</p> : null}
-        <button type="button" className="bb-clue-link mx-auto mt-2 block text-[14px]" onClick={() => setMode("choose")}>
-          Back
-        </button>
+        {passId ? null : (
+          <button type="button" className="bb-clue-link mx-auto mt-2 block text-[14px]" onClick={() => setMode("choose")}>
+            Back
+          </button>
+        )}
       </div>
     );
   }

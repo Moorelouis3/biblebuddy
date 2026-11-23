@@ -80,7 +80,7 @@ function HowToPlay({ onBack }: { onBack: () => void }) {
     ["📚", "Pick a book, all chapters or just the ones you want, and Beginner or Medium."],
     ["❓", "A game is 10 questions. Each one has four choices, A to D."],
     ["⏱️", "You have 10 seconds to pick an answer. The clock always runs the full 10 seconds."],
-    ["✅", "Right earns 1 point. Wrong costs 1 point. No answer is 0. Everyone can score on every question."],
+    ["✅", "The fastest right answer earns the point. Only one player scores each question. Wrong costs 1 point. No answer is 0."],
     ["📖", "Then the answer shows, with a short explanation and the verse."],
     ["🏆", "Most points after 10 questions wins. A tie is settled by a tiebreaker: first right answer wins."],
   ];

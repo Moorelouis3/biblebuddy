@@ -257,7 +257,16 @@ export default function ClueTable({
       outcome = round.winnerId ? `${nameOf(round.winnerId)} ${round.winnerId === youId ? "win" : "wins"} the tiebreaker!` : "Nobody got it. A fresh question…";
       outcomeColor = round.winnerId === youId ? "#1d5a34" : "#8a5a1a";
     } else {
-      outcome = myPoints > 0 ? "Right! +1" : myPoints < 0 ? "Wrong · −1" : "No answer · 0";
+      // Only the fastest right answer scores, so a right answer can be worth 0.
+      const scorer = Object.entries(round.points || {}).find(([, p]) => p > 0)?.[0];
+      outcome =
+        myPoints > 0
+          ? "Right! +1"
+          : myPoints < 0
+            ? "Wrong · −1"
+            : mine !== null && mine === correct
+              ? `Right, but ${scorer ? nameOf(scorer) : "someone"} was faster · 0`
+              : "No answer · 0";
       outcomeColor = myPoints > 0 ? "#1d5a34" : myPoints < 0 ? "#a3261b" : "#8a5a1a";
       if (view.phase === "reveal") outcome += lastRegular ? " · Last round!" : ` · Round ${view.dealt + 1} in ${Math.max(1, Math.ceil(dealMsLeft / 1000))}…`;
     }

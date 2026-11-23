@@ -212,7 +212,7 @@ ok("one answer per player per question; a second tap or a late answer changes no
   assert.equal(stranger, m, "only players in the match");
 });
 
-ok("two-player 10-question match: both can score on one question, wrong is −1, no answer is 0", () => {
+ok("two-player 10-question match: only the fastest right answer scores, wrong is −1, no answer is 0", () => {
   let m = start2(21);
   const expected = { a: 0, b: 0 };
   for (let q = 0; q < 10; q += 1) {
@@ -225,10 +225,11 @@ ok("two-player 10-question match: both can score on one question, wrong is −1,
     if (plan === 1) m = reduceClueMatch(m, { type: "answer", now: t0 + 1000, playerId: "a", choice: wrongIdx(m) }, CLUE_BANK);
     m = reduceClueMatch(m, { type: "answer", now: t0 + 9000, playerId: "b", choice: rightIdx(m) }, CLUE_BANK);
     expected.a += plan === 0 ? 1 : plan === 1 ? -1 : 0;
-    expected.b += 1;
+    // b is right but slower whenever a was right first: 0, not +1 (2026-11-23).
+    expected.b += plan === 0 ? 0 : 1;
     m = reduceClueMatch(m, { type: "tick", now: t0 + A }, CLUE_BANK);
     assert.equal(m.round!.points.a, plan === 0 ? 1 : plan === 1 ? -1 : 0);
-    assert.equal(m.round!.points.b, 1, "both score on the same question");
+    assert.equal(m.round!.points.b, plan === 0 ? 0 : 1, "only the first right answer scores");
     m = reduceClueMatch(m, { type: "tick", now: t0 + A + R }, CLUE_BANK);
   }
   assert.equal(m.phase, "over");

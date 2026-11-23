@@ -15,6 +15,7 @@ import type { ClueRef } from "@/lib/clueGame/types";
 import { clueApi, clueUserId, trackClue } from "@/lib/clueGame/track";
 import { supabase } from "@/lib/supabaseClient";
 import ClueTable from "./ClueTable";
+import ChallengeChoices from "./BuddyChallenge";
 import { Avatar, ClueHeader, ClueRoomFrame, ScriptureSheet, StudyCard } from "./ClueParts";
 import { useLocalMatch } from "./useLocalMatch";
 
@@ -29,7 +30,10 @@ type Challenge = {
   cardIds: string[];
   /** Made before the question bank: it cannot be replayed. */
   outdated?: boolean;
+  creatorId?: string;
   attempts: number;
+  /** Everyone who has finished it, in order: the chain letter. */
+  chain?: Array<{ userId: string; name: string }>;
   leaderboard: Array<{ rank: number; userId: string; name: string; score: number; won: number }>;
   yourRanked: { score: number; won: number } | null;
   error?: string;
@@ -49,7 +53,7 @@ function Board({ c }: { c: Challenge }) {
   );
 }
 
-function ChallengeRound({ c, onDone }: { c: Challenge; onDone: (c: Challenge, ranked: boolean) => void }) {
+function ChallengeRound({ c, from, onDone }: { c: Challenge; from: string | null; onDone: (c: Challenge, ranked: boolean, post: string | null) => void }) {
   const { match, view, now, act } = useLocalMatch(
     () => createMatch({ items: BANK_ITEMS, selection: c.selection, ...soloSetup("me", "You"), seed: 1, cardIds: c.cardIds }),
     { persistKey: `bb:clue-challenge:${c.id}`, mode: "challenge", deckIds: c.deckIds },
@@ -65,12 +69,12 @@ function ChallengeRound({ c, onDone }: { c: Challenge; onDone: (c: Challenge, ra
   useEffect(() => {
     if (match.phase !== "over") return;
     void (async () => {
-      const res = await clueApi<{ ranked: boolean; challenge: Challenge }>(`/api/clue-game/challenges/${c.id}`, {
+      const res = await clueApi<{ ranked: boolean; challenge: Challenge; chainPost?: string | null }>(`/api/clue-game/challenges/${c.id}`, {
         method: "POST",
-        body: { score: match.scores.me ?? 0, won: match.done.filter((d) => !d.tiebreak && (d.points.me ?? 0) > 0).length },
+        body: { score: match.scores.me ?? 0, won: match.done.filter((d) => !d.tiebreak && (d.points.me ?? 0) > 0).length, from },
       });
       trackClue("clue_game_challenge_finished", { challenge: c.id, score: match.scores.me ?? 0, ranked: res.data.ranked });
-      onDone(res.ok ? res.data.challenge : c, !!res.data.ranked);
+      onDone(res.ok ? res.data.challenge : c, !!res.data.ranked, res.data.chainPost ?? null);
     })();
     // Submit once, when the round ends.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -84,7 +88,7 @@ function ChallengeRound({ c, onDone }: { c: Challenge; onDone: (c: Challenge, ra
         now={now}
         cardBack="/games/clue/genesis/art/card-back.webp"
         deckIds={c.deckIds}
-        roundLabel="Genesis"
+        roundLabel={c.deckName}
         onAnswer={(choice) => act({ type: "answer", playerId: "me", choice })}
         onStudy={(card) => {
           setStudy(card);
@@ -102,7 +106,15 @@ export default function ClueChallenge({ id }: { id: string }) {
   const [c, setC] = useState<Challenge | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [playing, setPlaying] = useState(false);
-  const [finished, setFinished] = useState<null | { ranked: boolean }>(null);
+  const [finished, setFinished] = useState<null | { ranked: boolean; posted: boolean }>(null);
+  // Whose link you came in on (?from=), so your Feed post says whose challenge you took.
+  const [from, setFrom] = useState<string | null>(null);
+  const [myId, setMyId] = useState<string | null>(null);
+  useEffect(() => {
+    try {
+      setFrom(new URLSearchParams(window.location.search).get("from"));
+    } catch {}
+  }, []);
   const [review, setReview] = useState<PublicCard | null>(null);
   const [scripture, setScripture] = useState<ClueRef | null>(null);
   const [me, setMe] = useState<string | null>(null);
@@ -112,6 +124,7 @@ export default function ClueChallenge({ id }: { id: string }) {
     void (async () => {
       const id = await clueUserId();
       if (!id) return;
+      setMyId(id);
       const { data } = await supabase.from("profile_stats").select("profile_image_url").eq("user_id", id).maybeSingle();
       if (data?.profile_image_url) setMe(data.profile_image_url as string);
     })();
@@ -138,16 +151,17 @@ export default function ClueChallenge({ id }: { id: string }) {
         {error ? (
           <div className="bb-clue-panel bb-clue-parchment text-center">
             <p className="bb-clue-serif text-xl font-bold">{error}</p>
-            <Link href="/bible-study-games/clue" className="bb-clue-btn bb-clue-btn-green mt-4 w-full">Play the Bible Clue Game</Link>
+            <Link href="/bible-study-games/clue" className="bb-clue-btn bb-clue-btn-green mt-4 w-full">Play Bible Trivia</Link>
           </div>
         ) : !c ? (
           <p className="mt-10 text-center font-bold" style={{ color: "#fff1c9" }}>Loading the challenge…</p>
         ) : playing ? (
           <ChallengeRound
             c={c}
-            onDone={(next, ranked) => {
+            from={from}
+            onDone={(next, ranked, post) => {
               setC(next);
-              setFinished({ ranked });
+              setFinished({ ranked, posted: !!post });
               setPlaying(false);
             }}
           />
@@ -163,7 +177,7 @@ export default function ClueChallenge({ id }: { id: string }) {
                 <span className="bb-clue-vs-mid">VS</span>
                 <span className="bb-clue-vs-side is-right">
                   <Avatar name={c.creatorName} src={c.creatorAvatar ?? null} size={78} />
-                  <b>{c.creatorName.split(/s+/)[0]}</b>
+                  <b>{c.creatorName.split(/\s+/)[0]}</b>
                   <em>⭐ {c.creatorScore}</em>
                 </span>
               </div>
@@ -174,12 +188,25 @@ export default function ClueChallenge({ id }: { id: string }) {
             <p className="mt-1 text-[15px] font-bold">
               {finished
                 ? finished.ranked
-                  ? "Your first try is the one on the leaderboard."
+                  ? finished.posted
+                    ? "Your score is on the Feed and you are in the chain. Pass it on!"
+                    : "Your first try is the one on the leaderboard."
                   : "Only your first try counts on the leaderboard."
                 : `in ${c.deckName}. Same 10 questions. Can you beat it?`}
             </p>
             {c.yourRanked && !finished ? <p className="mt-2 text-[14px] font-bold">Your score: ⭐ {c.yourRanked.score}. You can play again for practice.</p> : null}
+            {c.chain && c.chain.length > 1 ? (
+              <p className="mt-3 rounded-xl px-3 py-2 text-[14px] font-bold" style={{ background: "rgba(255,255,255,.45)" }}>
+                🔗 The chain: {c.chain.map((r) => r.name.split(/\s+/)[0]).join(" → ")}
+              </p>
+            ) : null}
             <div className="mt-4"><Board c={c} /></div>
+            {/* Pass it on: anyone in the chain sends it to their own Buddies (2026-11-23). */}
+            {!c.outdated && myId && (c.creatorId === myId || c.chain?.some((r) => r.userId === myId)) ? (
+              <div className="mt-4 grid gap-2">
+                <ChallengeChoices passId={c.id} exclude={(c.chain || []).map((r) => r.userId).concat(c.creatorId ? [c.creatorId] : [])} />
+              </div>
+            ) : null}
             <p className="mt-2 text-[12px] font-bold opacity-70">{c.attempts} {c.attempts === 1 ? "Buddy has" : "Buddies have"} played</p>
             {c.outdated ? (
               <p className="mt-4 text-[14px] font-bold">This challenge was made in the old version of the game, so it can’t be replayed.</p>

@@ -299,12 +299,50 @@ function challengePostText(c: {
   leaderName: string | null;
   leaderScore: number | null;
 }) {
-  const head = `🃏 ${c.creatorName} scored ${c.creatorScore} in ${c.deckName} on the Bible Clue Game. Can you beat it?`;
+  const head = `🃏 ${c.creatorName} scored ${c.creatorScore} in ${c.deckName} on Bible Trivia. Can you beat it?`;
   const board =
     c.attempts > 1 && c.leaderName && c.leaderScore !== null
       ? `\n\n${c.attempts} Buddies have played it. ${c.leaderName} leads with ${c.leaderScore}.`
       : "";
   return `${head}${board}\n\n[Play the challenge](${SITE}/bible-study-games/clue/challenge/${c.id})`;
+}
+
+/**
+ * The chain letter (Louis, 2026-11-23): everyone who finishes a challenge for
+ * the first time gets their own Feed post saying whose challenge they took and
+ * how they did, with the whole chain so far, and their own link (?from=) so
+ * whoever plays from THEIR post took THEIR challenge. components/feed/
+ * ClueChallengePost.tsx reads this exact text.
+ */
+export function chainPostText(c: {
+  id: string;
+  name: string;
+  fromName: string;
+  fromId: string;
+  userId: string;
+  deckName: string;
+  won: number;
+  total: number;
+  score: number;
+  chain: string[];
+}) {
+  const from = c.fromName.split(/\s+/)[0];
+  const perfect = c.won >= c.total ? " A perfect round! Can you get a perfect one too?" : " Can you beat it?";
+  const head = `🔗 ${c.name} took ${from}’s Bible Trivia challenge on ${c.deckName} and got ${c.won}/${c.total} right (${c.score} point${Math.abs(c.score) === 1 ? "" : "s"}).${perfect}`;
+  const chain = c.chain.length > 1 ? `\n\nThe chain: ${c.chain.map((n) => n.split(/\s+/)[0]).join(" → ")}` : "";
+  return `${head}${chain}\n\n[Take the challenge](${SITE}/bible-study-games/clue/challenge/${c.id}?from=${c.userId})`;
+}
+
+/** Everyone who has finished this challenge (ranked), in the order they did: the chain. */
+async function challengeChain(admin: SupabaseClient, id: string) {
+  const { data } = await admin
+    .from("clue_challenge_attempts")
+    .select("user_id, display_name, finished_at")
+    .eq("challenge_id", id)
+    .eq("ranked", true)
+    .order("finished_at", { ascending: true })
+    .limit(200);
+  return (data || []).map((r) => ({ userId: r.user_id as string, name: String((r.display_name as string) || "Buddy") }));
 }
 
 export type ChallengeInput = {
@@ -405,7 +443,7 @@ export async function createChallenge(admin: SupabaseClient, user: ClueUser, inp
         from_user_id: user.id,
         from_user_name: first,
         article_slug: link,
-        message: `${first} challenged you to Bible Clue! Beat ${score} point${Math.abs(score) === 1 ? "" : "s"}.`,
+        message: `${first} challenged you to Bible Trivia! Beat ${score} point${Math.abs(score) === 1 ? "" : "s"}.`,
         is_read: false,
       }));
     if (rows.length) {
@@ -451,7 +489,9 @@ export async function getChallenge(admin: SupabaseClient, rawId: string, user: C
     .limit(25);
   const { data: creator } = await admin.from("profile_stats").select("display_name, profile_image_url").eq("user_id", c.creator_id).maybeSingle();
   const mine = user ? (board || []).find((row) => row.user_id === user.id) ?? null : null;
+  const chain = await challengeChain(admin, id);
   return {
+    chain: chain.map((r) => ({ userId: r.userId, name: r.name })),
     id,
     creatorId: c.creator_id as string,
     creatorName: (creator?.display_name as string | null) || (c.leader_name as string | null) || "A Buddy",
@@ -469,7 +509,13 @@ export async function getChallenge(admin: SupabaseClient, rawId: string, user: C
   };
 }
 
-export async function submitChallengeAttempt(admin: SupabaseClient, rawId: string, user: ClueUser, result: { score: number; won: number }) {
+export async function submitChallengeAttempt(
+  admin: SupabaseClient,
+  rawId: string,
+  user: ClueUser,
+  result: { score: number; won: number; from?: string },
+  opts: { postToFeed?: boolean } = {},
+) {
   const id = String(rawId || "").replace(/[^A-Za-z0-9]/g, "").slice(0, 12);
   const { data: c } = await admin.from("clue_challenges").select("*").eq("id", id).maybeSingle();
   if (!c) return { error: "This challenge was not found." };
@@ -513,5 +559,68 @@ export async function submitChallengeAttempt(admin: SupabaseClient, rawId: strin
     });
     await admin.from("feed_posts").update({ content }).eq("id", c.feed_post_id);
   }
-  return { ranked: true, tookLead: top?.user_id === user.id && attempts > 1 };
+
+  // The chain letter: your own Feed post, automatically, on your first finish.
+  // "From" is whoever's link you came in on, when they are in this chain;
+  // otherwise the person who started it.
+  let chainPost: string | null = null;
+  if (user.id !== c.creator_id) {
+    const chain = await challengeChain(admin, id);
+    const fromId = String(result.from || "");
+    const fromRow = chain.find((r) => r.userId === fromId && r.userId !== user.id);
+    const { data: creator } = await admin.from("profile_stats").select("display_name").eq("user_id", c.creator_id).maybeSingle();
+    const content = chainPostText({
+      id,
+      name: user.name,
+      fromName: fromRow?.name || (creator?.display_name as string | null) || (c.leader_name as string | null) || "a Buddy",
+      fromId: fromRow?.userId || (c.creator_id as string),
+      userId: user.id,
+      deckName: selectionLabel(selectionFromKeys(c.deck_ids as string[])),
+      won,
+      total: (c.card_ids as string[]).length || 10,
+      score,
+      chain: chain.map((r) => r.name),
+    });
+    chainPost = content;
+    if (opts.postToFeed !== false) {
+      await admin.from("feed_posts").insert({ user_id: user.id, post_type: "thought", content, visibility: "community", reaction_counts: {}, comment_count: 0 });
+    }
+  }
+  return { ranked: true, tookLead: top?.user_id === user.id && attempts > 1, chainPost };
+}
+
+/**
+ * Pass it on: anyone in the chain (or its starter) sends the same challenge to
+ * their own Bible Buddies, with their link, so the chain keeps growing.
+ */
+export async function passChallenge(admin: SupabaseClient, rawId: string, user: ClueUser, buddyIds: string[]) {
+  const id = String(rawId || "").replace(/[^A-Za-z0-9]/g, "").slice(0, 12);
+  const { data: c } = await admin.from("clue_challenges").select("id, creator_id").eq("id", id).maybeSingle();
+  if (!c) return { error: "This challenge was not found." };
+  const chain = await challengeChain(admin, id);
+  if (c.creator_id !== user.id && !chain.some((r) => r.userId === user.id)) return { error: "Finish the challenge first, then pass it on." };
+  const mine = new Map((await listBuddies(admin, user.id)).map((b) => [b.id, b]));
+  const inChain = new Set(chain.map((r) => r.userId));
+  const to = [...new Set((buddyIds || []).map(String))].filter((bid) => mine.has(bid) && !inChain.has(bid)).slice(0, 50);
+  if (!to.length) return { error: "Pick at least one Buddy who hasn't played it yet." };
+  const link = `/bible-study-games/clue/challenge/${id}?from=${user.id}`;
+  const { data: already } = await admin.from("notifications").select("user_id").eq("type", "clue_challenge").eq("article_slug", link).in("user_id", to);
+  const skip = new Set((already || []).map((r) => r.user_id as string));
+  const first = user.name.split(/\s+/)[0];
+  const rows = to
+    .filter((bid) => !skip.has(bid))
+    .map((bid) => ({
+      user_id: bid,
+      type: "clue_challenge",
+      from_user_id: user.id,
+      from_user_name: first,
+      article_slug: link,
+      message: `${first} passed you a Bible Trivia challenge! ${chain.length} ${chain.length === 1 ? "Buddy is" : "Buddies are"} in the chain. Can you beat them?`,
+      is_read: false,
+    }));
+  if (rows.length) {
+    const { error } = await admin.from("notifications").insert(rows);
+    if (error) return { error: "Could not send the challenge." };
+  }
+  return { id, sentTo: to.map((bid) => mine.get(bid)!.name.split(/\s+/)[0]) };
 }

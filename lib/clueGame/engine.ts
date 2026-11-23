@@ -15,8 +15,8 @@
  *    A-D. A single 10-second countdown runs its full time, even when everyone
  *    has answered.
  *  - Each player may lock in one answer, private until the reveal, or let the
- *    time run out. At zero: right +1, wrong -1, no answer 0, for every player
- *    independently. Speed does not matter here.
+ *    time run out. At zero: the FIRST right answer gets +1 (one scorer per
+ *    question, 2026-11-23), later right answers 0, wrong -1, no answer 0.
  *  - The reveal shows the answer, a short explanation and the verse, then the
  *    next countdown starts by itself.
  *  - After ten rounds the highest score wins. Tied leaders, and only they,
@@ -289,9 +289,21 @@ function close(match: ClueMatch, at: number, bank: ClueBank): ClueMatch {
   const points: Record<string, number> = {};
   const scores = { ...match.scores };
   if (!r.tiebreak && item) {
+    // One point per question: only the FIRST right answer received scores
+    // (Louis, 2026-11-23). Wrong is still -1, so a fast guess costs.
+    let firstRight: string | null = null;
+    let firstAt = Infinity;
     for (const p of match.players) {
       const a = r.answers[p.id];
-      const pts = !a ? 0 : isRightChoice(item, r, a.choice) ? match.settings.pointsRight : match.settings.pointsWrong;
+      if (a && isRightChoice(item, r, a.choice) && a.at < firstAt) {
+        firstAt = a.at;
+        firstRight = p.id;
+      }
+    }
+    for (const p of match.players) {
+      const a = r.answers[p.id];
+      const right = !!a && isRightChoice(item, r, a.choice);
+      const pts = !a ? 0 : right ? (p.id === firstRight ? match.settings.pointsRight : 0) : match.settings.pointsWrong;
       points[p.id] = pts;
       scores[p.sideId] = (scores[p.sideId] ?? 0) + pts;
     }
