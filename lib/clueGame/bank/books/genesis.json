@@ -13280,6 +13280,294 @@
   "ref": "Genesis 39:20"
  },
  {
+  "id": "genesis-39-m-01",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From whom did Potiphar buy Joseph?",
+  "choices": [
+   "The Midianites",
+   "The Ishmeelites",
+   "Pharaoh's servants",
+   "Joseph's brethren"
+  ],
+  "answer": 1,
+  "explanation": "Potiphar bought him of the hands of the Ishmeelites, which had brought him down thither.",
+  "ref": "Genesis 39:1"
+ },
+ {
+  "id": "genesis-39-m-02",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Potiphar's position under Pharaoh?",
+  "choices": [
+   "Chief butler",
+   "Chief baker",
+   "Captain of the guard",
+   "Keeper of the prison"
+  ],
+  "answer": 2,
+  "explanation": "Potiphar was an officer of Pharaoh, captain of the guard, an Egyptian.",
+  "ref": "Genesis 39:1"
+ },
+ {
+  "id": "genesis-39-m-03",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Potiphar see about Joseph?",
+  "choices": [
+   "That the LORD was with him",
+   "That he was a Hebrew",
+   "That he could read dreams",
+   "That he was Jacob's son"
+  ],
+  "answer": 0,
+  "explanation": "His master saw that the LORD was with him, and that the LORD made all that he did to prosper.",
+  "ref": "Genesis 39:3"
+ },
+ {
+  "id": "genesis-39-h-01",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Potiphar's nationality?",
+  "choices": [
+   "Hebrew",
+   "Canaanite",
+   "Egyptian",
+   "Ishmeelite"
+  ],
+  "answer": 2,
+  "explanation": "Potiphar is called an officer of Pharaoh, captain of the guard, an Egyptian.",
+  "ref": "Genesis 39:1"
+ },
+ {
+  "id": "genesis-39-h-02",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph find in Potiphar's sight?",
+  "choices": [
+   "Grace",
+   "Fear",
+   "Anger",
+   "Pity"
+  ],
+  "answer": 0,
+  "explanation": "Joseph found grace in his sight, and he served him.",
+  "ref": "Genesis 39:4"
+ },
+ {
+  "id": "genesis-39-h-03",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the LORD begin to bless Potiphar's house for Joseph's sake?",
+  "choices": [
+   "When Joseph was born",
+   "From the time Joseph was made overseer",
+   "When Joseph was put in prison",
+   "When Pharaoh heard of him"
+  ],
+  "answer": 1,
+  "explanation": "From the time that he had made him overseer in his house, the LORD blessed the Egyptian's house for Joseph's sake.",
+  "ref": "Genesis 39:5"
+ },
+ {
+  "id": "genesis-39-h-04",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides in the house, where was the blessing of the LORD upon all that Potiphar had?",
+  "choices": [
+   "In the field",
+   "In the storehouse",
+   "In the city",
+   "In the river"
+  ],
+  "answer": 0,
+  "explanation": "The blessing of the LORD was upon all that he had in the house, and in the field.",
+  "ref": "Genesis 39:5"
+ },
+ {
+  "id": "genesis-39-h-05",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph say Potiphar had committed to his hand?",
+  "choices": [
+   "The prisoners",
+   "All that he hath",
+   "Pharaoh's cup",
+   "The keys of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Joseph said, My master hath committed all that he hath to my hand.",
+  "ref": "Genesis 39:8"
+ },
+ {
+  "id": "genesis-39-h-06",
+  "chapter": 39,
+  "level": "hard",
+  "category": "person",
+  "question": "Joseph said there was none greater in the house than whom?",
+  "choices": [
+   "Joseph himself",
+   "Potiphar",
+   "Pharaoh",
+   "Potiphar's wife"
+  ],
+  "answer": 0,
+  "explanation": "Joseph said, There is none greater in this house than I.",
+  "ref": "Genesis 39:9"
+ },
+ {
+  "id": "genesis-39-h-07",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph call the thing she asked of him?",
+  "choices": [
+   "A small thing",
+   "A great wickedness",
+   "A hidden shame",
+   "A foolish word"
+  ],
+  "answer": 1,
+  "explanation": "Joseph said, How then can I do this great wickedness, and sin against God?",
+  "ref": "Genesis 39:9"
+ },
+ {
+  "id": "genesis-39-h-08",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When she spoke to him day by day, what did Joseph do?",
+  "choices": [
+   "He hearkened not unto her",
+   "He told Potiphar",
+   "He asked Pharaoh for help",
+   "He left the house"
+  ],
+  "answer": 0,
+  "explanation": "As she spake to Joseph day by day, he hearkened not unto her, to lie by her, or to be with her.",
+  "ref": "Genesis 39:10"
+ },
+ {
+  "id": "genesis-39-h-09",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Joseph go into the house on the day she caught him?",
+  "choices": [
+   "To do his business",
+   "To bring water",
+   "To serve Pharaoh",
+   "To find Potiphar"
+  ],
+  "answer": 0,
+  "explanation": "Joseph went into the house to do his business; and there was none of the men of the house there within.",
+  "ref": "Genesis 39:11"
+ },
+ {
+  "id": "genesis-39-h-10",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did she catch hold of when she said, Lie with me?",
+  "choices": [
+   "His hand",
+   "His garment",
+   "His hair",
+   "His staff"
+  ],
+  "answer": 1,
+  "explanation": "She caught him by his garment, saying, Lie with me: and he left his garment in her hand, and fled.",
+  "ref": "Genesis 39:12"
+ },
+ {
+  "id": "genesis-39-h-11",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did she claim she made Joseph leave his garment and flee?",
+  "choices": [
+   "She called the guards",
+   "She struck him",
+   "She cried with a loud voice",
+   "She locked the door"
+  ],
+  "answer": 2,
+  "explanation": "She said, He came in unto me to lie with me, and I cried with a loud voice.",
+  "ref": "Genesis 39:14–15"
+ },
+ {
+  "id": "genesis-39-h-12",
+  "chapter": 39,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did she blame for bringing the Hebrew servant into the house?",
+  "choices": [
+   "Her husband",
+   "Pharaoh",
+   "The Ishmeelites",
+   "Her father"
+  ],
+  "answer": 0,
+  "explanation": "She said unto him, The Hebrew servant, which thou hast brought unto us, came in unto me to mock me.",
+  "ref": "Genesis 39:17"
+ },
+ {
+  "id": "genesis-39-h-13",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the keeper of the prison say Joseph was in all that was done there?",
+  "choices": [
+   "The watcher",
+   "The doer of it",
+   "The teacher",
+   "The judge"
+  ],
+  "answer": 1,
+  "explanation": "Whatsoever they did there, he was the doer of it.",
+  "ref": "Genesis 39:22"
+ },
+ {
+  "id": "genesis-39-h-14",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of man was Joseph in his Egyptian master's house?",
+  "choices": [
+   "A fearful man",
+   "A prosperous man",
+   "A silent man",
+   "A lonely man"
+  ],
+  "answer": 1,
+  "explanation": "The LORD was with Joseph, and he was a prosperous man; and he was in the house of his master the Egyptian.",
+  "ref": "Genesis 39:2"
+ },
+ {
+  "id": "genesis-39-h-15",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After leaving his garment in her hand, what did Joseph do?",
+  "choices": [
+   "Fled and got out",
+   "Called Potiphar",
+   "Hid in a room",
+   "Struck her"
+  ],
+  "answer": 0,
+  "explanation": "He left his garment in her hand, and fled, and got him out.",
+  "ref": "Genesis 39:12"
+ },
+ {
   "id": "old-genesis-40-1",
   "chapter": 40,
   "level": "beginner",
