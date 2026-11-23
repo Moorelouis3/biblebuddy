@@ -5968,36 +5968,340 @@
   "ref": "Genesis 17:17"
  },
  {
-  "id": "old-genesis-18-4",
+  "id": "genesis-18-e-01",
   "chapter": 18,
   "level": "beginner",
   "category": "keyword",
-  "question": "What question did the Lord ask after Sarah laughed?",
+  "question": "What did Abraham do when he saw the three men standing by him?",
   "choices": [
-   "Why did Abraham build this altar?",
-   "Who shall inherit the land?",
-   "Is anything too hard for the Lord?",
-   "Will the city stand forever?"
+   "Hid in the tent",
+   "Ran to meet them",
+   "Called for his sons",
+   "Drew his sword"
   ],
-  "answer": 2,
-  "explanation": "The Lord asked, 'Is anything too hard for the Lord?'",
-  "ref": "Genesis 18:14"
+  "answer": 1,
+  "explanation": "He ran to meet them from the tent door and bowed himself toward the ground.",
+  "ref": "Genesis 18:2"
  },
  {
-  "id": "old-genesis-18-5",
+  "id": "genesis-18-e-02",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stood yet before the LORD when the men went toward Sodom?",
+  "choices": [
+   "Abraham",
+   "Lot",
+   "Sarah",
+   "Isaac"
+  ],
+  "answer": 0,
+  "explanation": "The men went toward Sodom, but Abraham stood yet before the LORD.",
+  "ref": "Genesis 18:22"
+ },
+ {
+  "id": "genesis-18-e-03",
   "chapter": 18,
   "level": "beginner",
   "category": "keyword",
-  "question": "Abraham asked the Lord to spare Sodom for fewer and fewer righteous people. What was the last number he asked about?",
+  "question": "What did the visitors do with the food Abraham set before them?",
   "choices": [
-   "50",
-   "25",
-   "10",
-   "1"
+   "They refused it",
+   "They carried it away",
+   "They gave it to the poor",
+   "They ate it"
+  ],
+  "answer": 3,
+  "explanation": "Abraham stood by them under the tree, and they did eat.",
+  "ref": "Genesis 18:8"
+ },
+ {
+  "id": "genesis-18-m-01",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abraham say he would fetch to comfort the hearts of the visitors?",
+  "choices": [
+   "A skin of wine",
+   "A basket of figs",
+   "A morsel of bread",
+   "A bowl of lentils"
   ],
   "answer": 2,
-  "explanation": "Abraham kept interceding until he asked whether the city would be spared for ten righteous people.",
-  "ref": "Genesis 18:32"
+  "explanation": "Abraham said, I will fetch a morsel of bread, and comfort ye your hearts.",
+  "ref": "Genesis 18:5"
+ },
+ {
+  "id": "genesis-18-m-02",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD say He would not hide His plans from Abraham?",
+  "choices": [
+   "Abraham had built an altar",
+   "Abraham would become a great and mighty nation",
+   "Abraham was Lot's uncle",
+   "Abraham had asked to know"
+  ],
+  "answer": 1,
+  "explanation": "Abraham shall surely become a great and mighty nation, and all the nations of the earth shall be blessed in him.",
+  "ref": "Genesis 18:17–18"
+ },
+ {
+  "id": "genesis-18-m-03",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would do if He found fifty righteous in Sodom?",
+  "choices": [
+   "Spare all the place for their sakes",
+   "Send them out of the city",
+   "Destroy only the wicked",
+   "Send fire the next day"
+  ],
+  "answer": 0,
+  "explanation": "If I find in Sodom fifty righteous within the city, then I will spare all the place for their sakes.",
+  "ref": "Genesis 18:26"
+ },
+ {
+  "id": "genesis-18-h-01",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many measures of fine meal did Abraham tell Sarah to make ready?",
+  "choices": [
+   "Two",
+   "Five",
+   "Ten",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "Abraham said, Make ready quickly three measures of fine meal, knead it, and make cakes upon the hearth.",
+  "ref": "Genesis 18:6"
+ },
+ {
+  "id": "genesis-18-h-02",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did Abraham give the tender calf to dress?",
+  "choices": [
+   "Sarah",
+   "Lot",
+   "A young man",
+   "His brother"
+  ],
+  "answer": 2,
+  "explanation": "Abraham fetched a calf tender and good, and gave it unto a young man; and he hasted to dress it.",
+  "ref": "Genesis 18:7"
+ },
+ {
+  "id": "genesis-18-h-03",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abraham set before the visitors along with the calf?",
+  "choices": [
+   "Honey and figs",
+   "Butter and milk",
+   "Wine and oil",
+   "Barley and olives"
+  ],
+  "answer": 1,
+  "explanation": "He took butter, and milk, and the calf which he had dressed, and set it before them.",
+  "ref": "Genesis 18:8"
+ },
+ {
+  "id": "genesis-18-h-04",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the tent door in relation to the visitor when Sarah heard his promise?",
+  "choices": [
+   "Behind him",
+   "Before him",
+   "Beside him",
+   "Under him"
+  ],
+  "answer": 0,
+  "explanation": "Sarah heard it in the tent door, which was behind him.",
+  "ref": "Genesis 18:10"
+ },
+ {
+  "id": "genesis-18-h-05",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Sarah say within herself about her husband when she laughed?",
+  "choices": [
+   "My lord is far away",
+   "My lord is wise",
+   "My lord will not believe",
+   "My lord being old also"
+  ],
+  "answer": 3,
+  "explanation": "Sarah laughed within herself, saying, After I am waxed old shall I have pleasure, my lord being old also?",
+  "ref": "Genesis 18:12"
+ },
+ {
+  "id": "genesis-18-h-06",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of nation did the LORD say Abraham would surely become?",
+  "choices": [
+   "A holy and quiet nation",
+   "A rich and peaceful nation",
+   "A great and mighty nation",
+   "A wandering nation"
+  ],
+  "answer": 2,
+  "explanation": "Abraham shall surely become a great and mighty nation.",
+  "ref": "Genesis 18:18"
+ },
+ {
+  "id": "genesis-18-h-07",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He knew Abraham would command his children and household to do?",
+  "choices": [
+   "Leave the plains of Mamre",
+   "Keep the way of the LORD",
+   "Build an altar each year",
+   "Fast every week"
+  ],
+  "answer": 1,
+  "explanation": "I know him, that he will command his children and his household after him, and they shall keep the way of the LORD.",
+  "ref": "Genesis 18:19"
+ },
+ {
+  "id": "genesis-18-h-08",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He would do to see whether Sodom had done according to its cry?",
+  "choices": [
+   "Go down and see",
+   "Send the three men back",
+   "Send an angel with a sword",
+   "Call Abraham to judge"
+  ],
+  "answer": 0,
+  "explanation": "I will go down now, and see whether they have done altogether according to the cry of it.",
+  "ref": "Genesis 18:21"
+ },
+ {
+  "id": "genesis-18-h-09",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Abraham asked whether the city would be destroyed for lack of how many righteous?",
+  "choices": [
+   "Ten",
+   "Three",
+   "Twenty",
+   "Five"
+  ],
+  "answer": 3,
+  "explanation": "Peradventure there shall lack five of the fifty righteous: wilt thou destroy all the city for lack of five?",
+  "ref": "Genesis 18:28"
+ },
+ {
+  "id": "genesis-18-h-10",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After forty-five, what number of righteous did Abraham ask about next?",
+  "choices": [
+   "Thirty",
+   "Twenty",
+   "Forty",
+   "Fifty"
+  ],
+  "answer": 2,
+  "explanation": "Abraham spoke yet again and asked about forty, and the LORD said, I will not do it for forty's sake.",
+  "ref": "Genesis 18:29"
+ },
+ {
+  "id": "genesis-18-h-11",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After forty, what number of righteous did Abraham ask about?",
+  "choices": [
+   "Twenty",
+   "Thirty",
+   "Twenty-five",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "Abraham said, Peradventure there shall thirty be found there. The LORD said, I will not do it, if I find thirty there.",
+  "ref": "Genesis 18:30"
+ },
+ {
+  "id": "genesis-18-h-12",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After thirty, what number of righteous did Abraham ask about?",
+  "choices": [
+   "Twenty",
+   "Fifteen",
+   "Ten",
+   "Twenty-five"
+  ],
+  "answer": 0,
+  "explanation": "Abraham said, Peradventure there shall be twenty found there, and the LORD said, I will not destroy it for twenty's sake.",
+  "ref": "Genesis 18:31"
+ },
+ {
+  "id": "genesis-18-h-13",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abraham do as the three men rose up and looked toward Sodom?",
+  "choices": [
+   "Stayed in his tent",
+   "Sent Sarah after them",
+   "Ran ahead to warn Lot",
+   "Went with them to bring them on the way"
+  ],
+  "answer": 3,
+  "explanation": "The men rose up from thence, and looked toward Sodom: and Abraham went with them to bring them on the way.",
+  "ref": "Genesis 18:16"
+ },
+ {
+  "id": "genesis-18-h-14",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abraham say he had taken upon him to do, being but dust and ashes?",
+  "choices": [
+   "Build an altar",
+   "Go to Sodom",
+   "Speak unto the Lord",
+   "Judge the city"
+  ],
+  "answer": 2,
+  "explanation": "Abraham said, I have taken upon me to speak unto the Lord, which am but dust and ashes.",
+  "ref": "Genesis 18:27"
+ },
+ {
+  "id": "genesis-18-h-15",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the LORD say He would go down to Sodom and Gomorrah?",
+  "choices": [
+   "They had attacked Abraham",
+   "Their cry was great and their sin very grievous",
+   "They had refused the visitors",
+   "They had broken a treaty"
+  ],
+  "answer": 1,
+  "explanation": "Because the cry of Sodom and Gomorrah is great, and because their sin is very grievous.",
+  "ref": "Genesis 18:20"
  },
  {
   "id": "old-genesis-19-1",
