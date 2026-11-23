@@ -12576,6 +12576,294 @@
   "ref": "Genesis 37:31–33"
  },
  {
+  "id": "genesis-37-m-01",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joseph bring to his father about his brothers?",
+  "choices": [
+   "Their evil report",
+   "A gift of fruit",
+   "A letter",
+   "A sheep"
+  ],
+  "answer": 0,
+  "explanation": "Joseph brought unto his father their evil report.",
+  "ref": "Genesis 37:2"
+ },
+ {
+  "id": "genesis-37-m-02",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "After the first dream, what did his brothers ask Joseph?",
+  "choices": [
+   "Where did you dream this?",
+   "Shalt thou indeed reign over us?",
+   "Who told you this?",
+   "Will you feed our flock?"
+  ],
+  "answer": 1,
+  "explanation": "His brethren said to him, Shalt thou indeed reign over us?",
+  "ref": "Genesis 37:8"
+ },
+ {
+  "id": "genesis-37-m-03",
+  "chapter": 37,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Reuben say to cast Joseph instead of killing him?",
+  "choices": [
+   "Into the river",
+   "Into a pit in the wilderness",
+   "Into a cave",
+   "Into a well in Hebron"
+  ],
+  "answer": 1,
+  "explanation": "Reuben said, Shed no blood, but cast him into this pit that is in the wilderness.",
+  "ref": "Genesis 37:22"
+ },
+ {
+  "id": "genesis-37-h-01",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Joseph when this chapter begins?",
+  "choices": [
+   "Twelve",
+   "Seventeen",
+   "Twenty",
+   "Thirty"
+  ],
+  "answer": 1,
+  "explanation": "Joseph, being seventeen years old, was feeding the flock with his brethren.",
+  "ref": "Genesis 37:2"
+ },
+ {
+  "id": "genesis-37-h-02",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were Joseph and his brothers doing in his first dream?",
+  "choices": [
+   "Binding sheaves in the field",
+   "Feeding the flock",
+   "Digging a well",
+   "Sailing a boat"
+  ],
+  "answer": 0,
+  "explanation": "We were binding sheaves in the field, and, lo, my sheaf arose, and also stood upright.",
+  "ref": "Genesis 37:7"
+ },
+ {
+  "id": "genesis-37-h-03",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob do with the saying about the second dream, while his brothers envied?",
+  "choices": [
+   "Observed it",
+   "Forgot it",
+   "Laughed at it",
+   "Wrote it down"
+  ],
+  "answer": 0,
+  "explanation": "His brethren envied him; but his father observed the saying.",
+  "ref": "Genesis 37:11"
+ },
+ {
+  "id": "genesis-37-h-04",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph answer when Israel said he would send him to his brothers?",
+  "choices": [
+   "Here am I",
+   "I will not go",
+   "Send Reuben",
+   "I am afraid"
+  ],
+  "answer": 0,
+  "explanation": "Israel said, come, and I will send thee unto them. And he said to him, Here am I.",
+  "ref": "Genesis 37:13"
+ },
+ {
+  "id": "genesis-37-h-05",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man in the field ask Joseph?",
+  "choices": [
+   "Who is thy father?",
+   "What seekest thou?",
+   "Where is thy coat?",
+   "Are you lost?"
+  ],
+  "answer": 1,
+  "explanation": "A certain man found him wandering in the field, and asked, What seekest thou?",
+  "ref": "Genesis 37:15"
+ },
+ {
+  "id": "genesis-37-h-06",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What story did the brothers plan to tell about Joseph?",
+  "choices": [
+   "He fell into a river",
+   "He ran away",
+   "Some evil beast hath devoured him",
+   "He was sold"
+  ],
+  "answer": 2,
+  "explanation": "We will say, Some evil beast hath devoured him.",
+  "ref": "Genesis 37:20"
+ },
+ {
+  "id": "genesis-37-h-07",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Reuben want to save Joseph from the others?",
+  "choices": [
+   "To deliver him to his father again",
+   "To sell him himself",
+   "To make him a servant",
+   "To please Judah"
+  ],
+  "answer": 0,
+  "explanation": "Reuben said this that he might rid him out of their hands, to deliver him to his father again.",
+  "ref": "Genesis 37:22"
+ },
+ {
+  "id": "genesis-37-h-08",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was in the pit where Joseph was cast?",
+  "choices": [
+   "A beast",
+   "No water",
+   "A serpent",
+   "Fire"
+  ],
+  "answer": 1,
+  "explanation": "The pit was empty, there was no water in it.",
+  "ref": "Genesis 37:24"
+ },
+ {
+  "id": "genesis-37-h-09",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Judah say they would gain by slaying Joseph?",
+  "choices": [
+   "No profit",
+   "Great wealth",
+   "Peace",
+   "Silver"
+  ],
+  "answer": 0,
+  "explanation": "Judah said, What profit is it if we slay our brother, and conceal his blood?",
+  "ref": "Genesis 37:26"
+ },
+ {
+  "id": "genesis-37-h-10",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Judah say they should not lay a hand on Joseph?",
+  "choices": [
+   "He was Jacob's favourite",
+   "He had a coat",
+   "He was a child",
+   "He is our brother and our flesh"
+  ],
+  "answer": 3,
+  "explanation": "Let not our hand be upon him; for he is our brother and our flesh.",
+  "ref": "Genesis 37:27"
+ },
+ {
+  "id": "genesis-37-h-11",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who drew Joseph up out of the pit?",
+  "choices": [
+   "Midianites merchantmen",
+   "Reuben",
+   "Ishmeelites",
+   "Judah"
+  ],
+  "answer": 0,
+  "explanation": "There passed by Midianites merchantmen; and they drew and lifted up Joseph out of the pit.",
+  "ref": "Genesis 37:28"
+ },
+ {
+  "id": "genesis-37-h-12",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Reuben say when he found Joseph gone?",
+  "choices": [
+   "I told you so",
+   "Let us find him",
+   "He has run away",
+   "The child is not; and I, whither shall I go?"
+  ],
+  "answer": 3,
+  "explanation": "Reuben said, The child is not; and I, whither shall I go?",
+  "ref": "Genesis 37:30"
+ },
+ {
+  "id": "genesis-37-h-13",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the brothers ask Jacob to know about the coat?",
+  "choices": [
+   "If it was torn",
+   "Whether it be his son's coat or no",
+   "Who made it",
+   "Where it was bought"
+  ],
+  "answer": 1,
+  "explanation": "They said, This have we found: know now whether it be thy son’s coat or no.",
+  "ref": "Genesis 37:32"
+ },
+ {
+  "id": "genesis-37-h-14",
+  "chapter": 37,
+  "level": "hard",
+  "category": "person",
+  "question": "Who rose up to comfort Jacob?",
+  "choices": [
+   "Only Reuben",
+   "Isaac",
+   "The Midianites",
+   "All his sons and daughters"
+  ],
+  "answer": 3,
+  "explanation": "All his sons and all his daughters rose up to comfort him; but he refused to be comforted.",
+  "ref": "Genesis 37:35"
+ },
+ {
+  "id": "genesis-37-h-15",
+  "chapter": 37,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Potiphar's position?",
+  "choices": [
+   "Captain of the guard",
+   "Chief baker",
+   "Governor of Egypt",
+   "Chief butler"
+  ],
+  "answer": 0,
+  "explanation": "Potiphar, an officer of Pharaoh’s, and captain of the guard.",
+  "ref": "Genesis 37:36"
+ },
+ {
   "id": "old-genesis-38-1",
   "chapter": 38,
   "level": "beginner",
@@ -12654,6 +12942,294 @@
   "answer": 0,
   "explanation": "Judah admitted Tamar had been more righteous than he was.",
   "ref": "Genesis 38:26"
+ },
+ {
+  "id": "genesis-38-m-01",
+  "chapter": 38,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Shelah when his mother bare him?",
+  "choices": [
+   "At Timnath",
+   "At Adullam",
+   "At Hebron",
+   "At Chezib"
+  ],
+  "answer": 3,
+  "explanation": "She yet again conceived, and bare a son; and he was at Chezib, when she bare him.",
+  "ref": "Genesis 38:5"
+ },
+ {
+  "id": "genesis-38-m-02",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Judah tell Onan to do for his brother?",
+  "choices": [
+   "Raise up seed to him",
+   "Give him sheep",
+   "Build him a house",
+   "Work his field"
+  ],
+  "answer": 0,
+  "explanation": "Judah said, Go in unto thy brother’s wife, and marry her, and raise up seed to thy brother.",
+  "ref": "Genesis 38:8"
+ },
+ {
+  "id": "genesis-38-m-03",
+  "chapter": 38,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD view the thing Onan did?",
+  "choices": [
+   "It pleased Him",
+   "He did not see it",
+   "He forgave it",
+   "It displeased Him"
+  ],
+  "answer": 3,
+  "explanation": "The thing which he did displeased the LORD: wherefore he slew him also.",
+  "ref": "Genesis 38:10"
+ },
+ {
+  "id": "genesis-38-h-01",
+  "chapter": 38,
+  "level": "hard",
+  "category": "person",
+  "question": "Who named Judah's second son Onan?",
+  "choices": [
+   "His mother",
+   "Judah",
+   "Hirah",
+   "Tamar"
+  ],
+  "answer": 0,
+  "explanation": "She conceived again, and bare a son; and she called his name Onan.",
+  "ref": "Genesis 38:4"
+ },
+ {
+  "id": "genesis-38-h-02",
+  "chapter": 38,
+  "level": "hard",
+  "category": "person",
+  "question": "Who named Judah's third son Shelah?",
+  "choices": [
+   "His mother",
+   "Judah",
+   "Hirah",
+   "Tamar"
+  ],
+  "answer": 0,
+  "explanation": "She yet again conceived, and bare a son; and called his name Shelah.",
+  "ref": "Genesis 38:5"
+ },
+ {
+  "id": "genesis-38-h-03",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Tamar sit by the way to Timnath?",
+  "choices": [
+   "Beside a well",
+   "In an open place",
+   "In a tent",
+   "On a hill"
+  ],
+  "answer": 1,
+  "explanation": "She wrapped herself, and sat in an open place, which is by the way to Timnath.",
+  "ref": "Genesis 38:14"
+ },
+ {
+  "id": "genesis-38-h-04",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Tamar act as she did on the way to Timnath?",
+  "choices": [
+   "Judah had cast her out",
+   "She saw Shelah was grown and she was not given to him",
+   "Her father was dead",
+   "She wished to leave"
+  ],
+  "answer": 1,
+  "explanation": "She saw that Shelah was grown, and she was not given unto him to wife.",
+  "ref": "Genesis 38:14"
+ },
+ {
+  "id": "genesis-38-h-05",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Judah think the woman was a harlot?",
+  "choices": [
+   "She was alone",
+   "She wore bright clothes",
+   "She called to him",
+   "She had covered her face"
+  ],
+  "answer": 3,
+  "explanation": "When Judah saw her, he thought her to be an harlot; because she had covered her face.",
+  "ref": "Genesis 38:15"
+ },
+ {
+  "id": "genesis-38-h-06",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question did Tamar ask when Judah promised a kid?",
+  "choices": [
+   "Where is thy flock?",
+   "Who is thy father?",
+   "Wilt thou give me a pledge, till thou send it?",
+   "Will you send it today?"
+  ],
+  "answer": 2,
+  "explanation": "She said, Wilt thou give me a pledge, till thou send it?",
+  "ref": "Genesis 38:17"
+ },
+ {
+  "id": "genesis-38-h-07",
+  "chapter": 38,
+  "level": "hard",
+  "category": "person",
+  "question": "Who did Judah send with the kid to receive his pledge?",
+  "choices": [
+   "His friend the Adullamite",
+   "Shelah",
+   "Onan",
+   "A servant of Shuah"
+  ],
+  "answer": 0,
+  "explanation": "Judah sent the kid by the hand of his friend the Adullamite, to receive his pledge.",
+  "ref": "Genesis 38:20"
+ },
+ {
+  "id": "genesis-38-h-08",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "About how long after was Judah told that Tamar was with child?",
+  "choices": [
+   "About nine days",
+   "About three months",
+   "About a year",
+   "About two weeks"
+  ],
+  "answer": 1,
+  "explanation": "It came to pass about three months after, that it was told Judah.",
+  "ref": "Genesis 38:24"
+ },
+ {
+  "id": "genesis-38-h-09",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Tamar say when she sent the signet, bracelets and staff?",
+  "choices": [
+   "I am innocent",
+   "By the man whose these are, am I with child",
+   "Send me away",
+   "Forgive me"
+  ],
+  "answer": 1,
+  "explanation": "By the man, whose these are, am I with child: Discern, I pray thee, whose are these.",
+  "ref": "Genesis 38:25"
+ },
+ {
+  "id": "genesis-38-h-10",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What reason did Judah give for calling Tamar more righteous?",
+  "choices": [
+   "She was older",
+   "She was kind",
+   "He gave her not to Shelah",
+   "She told the truth first"
+  ],
+  "answer": 2,
+  "explanation": "She hath been more righteous than I; because that I gave her not to Shelah my son.",
+  "ref": "Genesis 38:26"
+ },
+ {
+  "id": "genesis-38-h-11",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the midwife say when the first hand came out?",
+  "choices": [
+   "Push again",
+   "It is a girl",
+   "Stop",
+   "This came out first"
+  ],
+  "answer": 3,
+  "explanation": "The midwife took and bound upon his hand a scarlet thread, saying, This came out first.",
+  "ref": "Genesis 38:28"
+ },
+ {
+  "id": "genesis-38-h-12",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the midwife say when the second brother broke forth?",
+  "choices": [
+   "What a miracle",
+   "Thou art the first",
+   "How hast thou broken forth?",
+   "Fear not"
+  ],
+  "answer": 2,
+  "explanation": "She said, How hast thou broken forth? this breach be upon thee.",
+  "ref": "Genesis 38:29"
+ },
+ {
+  "id": "genesis-38-h-13",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Judah do after the daughter of Shuah died?",
+  "choices": [
+   "Went to Egypt",
+   "Left Hirah",
+   "Went up to his sheepshearers to Timnath",
+   "Built an altar"
+  ],
+  "answer": 2,
+  "explanation": "Judah was comforted, and went up unto his sheepshearers to Timnath.",
+  "ref": "Genesis 38:12"
+ },
+ {
+  "id": "genesis-38-h-14",
+  "chapter": 38,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Tamar do after Judah gave her the pledge and left?",
+  "choices": [
+   "Laid by her vail and put on her widowhood garments",
+   "Followed him home",
+   "Went to her father at night",
+   "Sold the staff"
+  ],
+  "answer": 0,
+  "explanation": "She arose, and went away, and laid by her vail from her, and put on the garments of her widowhood.",
+  "ref": "Genesis 38:19"
+ },
+ {
+  "id": "genesis-38-h-15",
+  "chapter": 38,
+  "level": "hard",
+  "category": "person",
+  "question": "Who named Judah's firstborn son Er?",
+  "choices": [
+   "Judah",
+   "His mother",
+   "Hirah",
+   "Tamar"
+  ],
+  "answer": 0,
+  "explanation": "Judah saw the daughter of Shuah, and she bare a son; and he called his name Er.",
+  "ref": "Genesis 38:3"
  },
  {
   "id": "old-genesis-39-2",
