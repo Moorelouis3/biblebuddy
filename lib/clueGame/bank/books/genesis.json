@@ -10064,52 +10064,340 @@
   "ref": "Genesis 29:35"
  },
  {
-  "id": "old-genesis-30-1",
+  "id": "genesis-30-e-01",
   "chapter": 30,
   "level": "beginner",
   "category": "keyword",
-  "question": "What did Rachel say when she saw she had no children?",
+  "question": "What did Reuben find in the field at wheat harvest?",
   "choices": [
-   "Give me a new home",
-   "Send me back to my father",
-   "Bless my flocks",
-   "Give me children, or else I die"
+   "Honey",
+   "Mandrakes",
+   "Figs",
+   "A well"
   ],
-  "answer": 3,
-  "explanation": "Rachel cried out to Jacob because she was barren.",
+  "answer": 1,
+  "explanation": "Reuben went in the days of wheat harvest, and found mandrakes in the field.",
+  "ref": "Genesis 30:14"
+ },
+ {
+  "id": "genesis-30-e-02",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which sister did Rachel envy?",
+  "choices": [
+   "Dinah",
+   "Bilhah",
+   "Leah",
+   "Zilpah"
+  ],
+  "answer": 2,
+  "explanation": "When Rachel saw that she bare Jacob no children, Rachel envied her sister.",
   "ref": "Genesis 30:1"
  },
  {
-  "id": "old-genesis-30-4",
+  "id": "genesis-30-e-03",
   "chapter": 30,
   "level": "beginner",
-  "category": "keyword",
-  "question": "What arrangement did Jacob make with Laban about the flocks?",
+  "category": "person",
+  "question": "Whose maid was Zilpah?",
   "choices": [
-   "The speckled and spotted animals would be his wages",
-   "He would keep only white sheep",
-   "He would take half the silver",
-   "He would leave empty-handed"
-  ],
-  "answer": 0,
-  "explanation": "Jacob agreed that the speckled and spotted animals would be his wages.",
-  "ref": "Genesis 30:32"
- },
- {
-  "id": "old-genesis-30-5",
-  "chapter": 30,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How does Genesis 30 describe Jacob's prosperity?",
-  "choices": [
-   "He stayed poor",
-   "He lost all his animals",
-   "He moved back to Canaan immediately",
-   "He became exceedingly prosperous"
+   "Rachel’s",
+   "Laban’s",
+   "Rebekah’s",
+   "Leah’s"
   ],
   "answer": 3,
-  "explanation": "Jacob increased greatly and had many flocks, servants, camels, and donkeys.",
+  "explanation": "Leah took Zilpah her maid, and gave her Jacob to wife.",
+  "ref": "Genesis 30:9"
+ },
+ {
+  "id": "genesis-30-m-01",
+  "chapter": 30,
+  "level": "medium",
+  "category": "person",
+  "question": "What did Rachel name Bilhah’s second son?",
+  "choices": [
+   "Naphtali",
+   "Dan",
+   "Gad",
+   "Asher"
+  ],
+  "answer": 0,
+  "explanation": "Rachel said, With great wrestlings have I wrestled with my sister: and she called his name Naphtali.",
+  "ref": "Genesis 30:7–8"
+ },
+ {
+  "id": "genesis-30-m-02",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Rachel give Leah in return for the mandrakes?",
+  "choices": [
+   "Her handmaid",
+   "A night with Jacob",
+   "A flock of sheep",
+   "Her blessing"
+  ],
+  "answer": 1,
+  "explanation": "Rachel said, Therefore he shall lie with thee to night for thy son’s mandrakes.",
+  "ref": "Genesis 30:15"
+ },
+ {
+  "id": "genesis-30-m-03",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Laban ask Jacob to appoint?",
+  "choices": [
+   "His portion of land",
+   "A day to leave",
+   "His wages",
+   "A sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "Laban said, Appoint me thy wages, and I will give it.",
+  "ref": "Genesis 30:28"
+ },
+ {
+  "id": "genesis-30-h-01",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Rachel said her maid would bear a child upon what?",
+  "choices": [
+   "Her lap",
+   "Her arm",
+   "Her shoulder",
+   "Her knees"
+  ],
+  "answer": 3,
+  "explanation": "Rachel said, Behold my maid Bilhah; and she shall bear upon my knees that I may also have children by her.",
+  "ref": "Genesis 30:3"
+ },
+ {
+  "id": "genesis-30-h-02",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Rachel say she had wrestled with her sister?",
+  "choices": [
+   "Great wrestlings",
+   "Sore tears",
+   "Many prayers",
+   "Hard words"
+  ],
+  "answer": 0,
+  "explanation": "Rachel said, With great wrestlings have I wrestled with my sister, and I have prevailed.",
+  "ref": "Genesis 30:8"
+ },
+ {
+  "id": "genesis-30-h-03",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which harvest did Reuben find the mandrakes?",
+  "choices": [
+   "Barley harvest",
+   "Wheat harvest",
+   "Grape harvest",
+   "Olive harvest"
+  ],
+  "answer": 1,
+  "explanation": "Reuben went in the days of wheat harvest, and found mandrakes in the field.",
+  "ref": "Genesis 30:14"
+ },
+ {
+  "id": "genesis-30-h-04",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Jacob come in from the field when Leah met him?",
+  "choices": [
+   "At noon",
+   "At daybreak",
+   "In the evening",
+   "At midnight"
+  ],
+  "answer": 2,
+  "explanation": "Jacob came out of the field in the evening, and Leah went out to meet him.",
+  "ref": "Genesis 30:16"
+ },
+ {
+  "id": "genesis-30-h-05",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Leah told Jacob she had hired him with what?",
+  "choices": [
+   "Her handmaid",
+   "Her wages",
+   "A flock",
+   "Her son’s mandrakes"
+  ],
+  "answer": 3,
+  "explanation": "Thou must come in unto me; for surely I have hired thee with my son’s mandrakes.",
+  "ref": "Genesis 30:16"
+ },
+ {
+  "id": "genesis-30-h-06",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jacob asked Laban to send him to what place?",
+  "choices": [
+   "His own place and country",
+   "The land of Egypt",
+   "The mount of Gilead",
+   "The house of Isaac only"
+  ],
+  "answer": 0,
+  "explanation": "Send me away, that I may go unto mine own place, and to my country.",
+  "ref": "Genesis 30:25"
+ },
+ {
+  "id": "genesis-30-h-07",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jacob asked when he would provide for what?",
+  "choices": [
+   "His brother Esau",
+   "His own house",
+   "His father Isaac",
+   "His sheep"
+  ],
+  "answer": 1,
+  "explanation": "And now when shall I provide for mine own house also?",
+  "ref": "Genesis 30:30"
+ },
+ {
+  "id": "genesis-30-h-08",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jacob said what would answer for him in time to come?",
+  "choices": [
+   "His servants",
+   "His wages",
+   "His righteousness",
+   "His oath"
+  ],
+  "answer": 2,
+  "explanation": "So shall my righteousness answer for me in time to come.",
+  "ref": "Genesis 30:33"
+ },
+ {
+  "id": "genesis-30-h-09",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How far did Laban set himself from Jacob?",
+  "choices": [
+   "Seven days’ journey",
+   "One day’s journey",
+   "Forty days’ journey",
+   "Three days’ journey"
+  ],
+  "answer": 3,
+  "explanation": "He set three days journey betwixt himself and Jacob.",
+  "ref": "Genesis 30:36"
+ },
+ {
+  "id": "genesis-30-h-10",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From which trees did Jacob take rods, according to the text?",
+  "choices": [
+   "Poplar, hazel and chesnut",
+   "Cedar, oak and fig",
+   "Olive, palm and willow",
+   "Cypress, pine and acacia"
+  ],
+  "answer": 0,
+  "explanation": "Jacob took him rods of green poplar, and of the hazel and chesnut tree.",
+  "ref": "Genesis 30:37"
+ },
+ {
+  "id": "genesis-30-h-11",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob do to the rods before setting them in the troughs?",
+  "choices": [
+   "Burned them",
+   "Pilled white strakes in them",
+   "Wrapped them in wool",
+   "Painted them red"
+  ],
+  "answer": 1,
+  "explanation": "He pilled white strakes in them, and made the white appear which was in the rods.",
+  "ref": "Genesis 30:37"
+ },
+ {
+  "id": "genesis-30-h-12",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the flocks bring forth after conceiving before the rods?",
+  "choices": [
+   "Only white lambs",
+   "Only brown lambs",
+   "Ringstraked, speckled and spotted",
+   "Strong and healthy twins"
+  ],
+  "answer": 2,
+  "explanation": "The flocks conceived before the rods, and brought forth cattle ringstraked, speckled, and spotted.",
+  "ref": "Genesis 30:39"
+ },
+ {
+  "id": "genesis-30-h-13",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Jacob put his own flocks?",
+  "choices": [
+   "In Laban’s fields",
+   "Beside the well",
+   "In the gutters",
+   "By themselves, apart from Laban’s"
+  ],
+  "answer": 3,
+  "explanation": "He put his own flocks by themselves, and put them not unto Laban’s cattle.",
+  "ref": "Genesis 30:40"
+ },
+ {
+  "id": "genesis-30-h-14",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides maidservants and menservants, what did Jacob have at the end?",
+  "choices": [
+   "Camels and asses",
+   "Horses and chariots",
+   "Oxen and plows",
+   "Doves and goats"
+  ],
+  "answer": 0,
+  "explanation": "The man increased exceedingly, and had much cattle, and maidservants, and menservants, and camels, and asses.",
   "ref": "Genesis 30:43"
+ },
+ {
+  "id": "genesis-30-h-15",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob ask Laban to give him, when asking to leave?",
+  "choices": [
+   "His flocks and herds",
+   "His wives and his children",
+   "His house and tent",
+   "His gods and images"
+  ],
+  "answer": 1,
+  "explanation": "Give me my wives and my children, for whom I have served thee, and let me go.",
+  "ref": "Genesis 30:26"
  },
  {
   "id": "old-genesis-31-1",
