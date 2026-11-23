@@ -18100,16 +18100,16 @@
   "chapter": 25,
   "level": "medium",
   "category": "keyword",
-  "question": "What was the LORD's reason for asking Israel to make a sanctuary?",
+  "question": "What was the tabernacle to be made according to?",
   "choices": [
-   "That He might guard the camp",
-   "That He might dwell among them",
-   "That He might be seen by the nations",
-   "That He might rest from His work"
+   "The pattern the LORD showed Moses",
+   "The designs of the Egyptians",
+   "The plans of the elders",
+   "The size of the camp"
   ],
-  "answer": 1,
-  "explanation": "Let them make me a sanctuary; that I may dwell among them.",
-  "ref": "Exodus 25:8"
+  "answer": 0,
+  "explanation": "According to all that I shew thee, after the pattern of the tabernacle, even so shall ye make it.",
+  "ref": "Exodus 25:9"
  },
  {
   "id": "old-exodus-26-1",
