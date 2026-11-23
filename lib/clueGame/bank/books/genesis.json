@@ -10416,54 +10416,6 @@
   "ref": "Genesis 31:2–3"
  },
  {
-  "id": "old-genesis-31-2",
-  "chapter": 31,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What did Rachel steal from her father when the family left?",
-  "choices": [
-   "Gold and silver",
-   "Laban's staff",
-   "The household idols",
-   "His sheep"
-  ],
-  "answer": 2,
-  "explanation": "Rachel stole her father's household idols.",
-  "ref": "Genesis 31:19"
- },
- {
-  "id": "old-genesis-31-3",
-  "chapter": 31,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How did God warn Laban before he confronted Jacob?",
-  "choices": [
-   "By a prophet",
-   "In a dream",
-   "By a pillar of fire",
-   "Through Rebekah"
-  ],
-  "answer": 1,
-  "explanation": "God came to Laban in a dream and told him not to speak either good or bad to Jacob.",
-  "ref": "Genesis 31:24"
- },
- {
-  "id": "old-genesis-31-4",
-  "chapter": 31,
-  "level": "beginner",
-  "category": "place",
-  "question": "Where did Rachel hide the household idols when Laban searched?",
-  "choices": [
-   "In a well",
-   "Under the tent curtain",
-   "In the camel's furniture",
-   "In Jacob's bag"
-  ],
-  "answer": 2,
-  "explanation": "Rachel hid the idols in the camel's furniture and sat on them.",
-  "ref": "Genesis 31:34"
- },
- {
   "id": "old-genesis-31-5",
   "chapter": 31,
   "level": "beginner",
@@ -10478,6 +10430,342 @@
   "answer": 1,
   "explanation": "They set up a heap of stones as a witness between them.",
   "ref": "Genesis 31:46–48"
+ },
+ {
+  "id": "genesis-31-e-01",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what animals did Jacob set his sons and wives?",
+  "choices": [
+   "Horses",
+   "Asses",
+   "Camels",
+   "Oxen"
+  ],
+  "answer": 2,
+  "explanation": "Jacob rose up, and set his sons and his wives upon camels.",
+  "ref": "Genesis 31:17"
+ },
+ {
+  "id": "genesis-31-e-02",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jacob do on the mount after the covenant?",
+  "choices": [
+   "Built a tower",
+   "Hid the images",
+   "Fasted three days",
+   "Offered sacrifice"
+  ],
+  "answer": 3,
+  "explanation": "Jacob offered sacrifice upon the mount, and called his brethren to eat bread.",
+  "ref": "Genesis 31:54"
+ },
+ {
+  "id": "genesis-31-e-03",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was told on the third day that Jacob had fled?",
+  "choices": [
+   "Laban",
+   "Isaac",
+   "Esau",
+   "Abimelech"
+  ],
+  "answer": 0,
+  "explanation": "It was told Laban on the third day that Jacob was fled.",
+  "ref": "Genesis 31:22"
+ },
+ {
+  "id": "genesis-31-m-01",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many times did Jacob say Laban had changed his wages?",
+  "choices": [
+   "Three times",
+   "Ten times",
+   "Seven times",
+   "Twelve times"
+  ],
+  "answer": 1,
+  "explanation": "Your father hath deceived me, and changed my wages ten times.",
+  "ref": "Genesis 31:7"
+ },
+ {
+  "id": "genesis-31-m-02",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many days’ journey did Laban pursue Jacob?",
+  "choices": [
+   "Three",
+   "Ten",
+   "Seven",
+   "Forty"
+  ],
+  "answer": 2,
+  "explanation": "Laban took his brethren with him, and pursued after him seven days’ journey.",
+  "ref": "Genesis 31:23"
+ },
+ {
+  "id": "genesis-31-m-03",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Jacob said he had been in Laban’s house how many years?",
+  "choices": [
+   "Seven",
+   "Fourteen",
+   "Forty",
+   "Twenty"
+  ],
+  "answer": 3,
+  "explanation": "Thus have I been twenty years in thy house.",
+  "ref": "Genesis 31:41"
+ },
+ {
+  "id": "genesis-31-h-01",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob see about Laban’s countenance?",
+  "choices": [
+   "It was not toward him as before",
+   "It was full of joy",
+   "It was hidden",
+   "It was toward him as before"
+  ],
+  "answer": 0,
+  "explanation": "Jacob beheld the countenance of Laban, and, behold, it was not toward him as before.",
+  "ref": "Genesis 31:2"
+ },
+ {
+  "id": "genesis-31-h-02",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jacob said God had not suffered Laban to do what?",
+  "choices": [
+   "Take his wives",
+   "Hurt him",
+   "Sell his flocks",
+   "Send him away"
+  ],
+  "answer": 1,
+  "explanation": "Your father hath deceived me, but God suffered him not to hurt me.",
+  "ref": "Genesis 31:7"
+ },
+ {
+  "id": "genesis-31-h-03",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Rachel and Leah ask about their father’s house?",
+  "choices": [
+   "Shall we ever return?",
+   "Who will keep the flocks?",
+   "Is there yet any portion or inheritance for us?",
+   "Will he bless us?"
+  ],
+  "answer": 2,
+  "explanation": "Is there yet any portion or inheritance for us in our father’s house?",
+  "ref": "Genesis 31:14"
+ },
+ {
+  "id": "genesis-31-h-04",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Laban doing when Rachel stole the images?",
+  "choices": [
+   "Hunting in the field",
+   "Feasting with friends",
+   "Praying at an altar",
+   "Going to shear his sheep"
+  ],
+  "answer": 3,
+  "explanation": "Laban went to shear his sheep: and Rachel had stolen the images that were her father’s.",
+  "ref": "Genesis 31:19"
+ },
+ {
+  "id": "genesis-31-h-05",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob pass over as he fled toward Gilead?",
+  "choices": [
+   "The river",
+   "The sea",
+   "A valley",
+   "A mountain pass"
+  ],
+  "answer": 0,
+  "explanation": "He passed over the river, and set his face toward the mount Gilead.",
+  "ref": "Genesis 31:21"
+ },
+ {
+  "id": "genesis-31-h-06",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Laban said Jacob carried off his daughters as what?",
+  "choices": [
+   "Servants for hire",
+   "Captives taken with the sword",
+   "Gifts for his flock",
+   "Strangers in a strange land"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast carried away my daughters, as captives taken with the sword.",
+  "ref": "Genesis 31:26"
+ },
+ {
+  "id": "genesis-31-h-07",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Laban said Jacob had not let him do what for his sons and daughters?",
+  "choices": [
+   "Bless them",
+   "Feast with them",
+   "Kiss them",
+   "Pray over them"
+  ],
+  "answer": 2,
+  "explanation": "Hast not suffered me to kiss my sons and my daughters?",
+  "ref": "Genesis 31:28"
+ },
+ {
+  "id": "genesis-31-h-08",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jacob say he had fled?",
+  "choices": [
+   "He wanted to avoid a feast",
+   "He feared a famine",
+   "He had lost the flocks",
+   "He was afraid Laban would take his daughters by force"
+  ],
+  "answer": 3,
+  "explanation": "Jacob said, Because I was afraid: for I said, Peradventure thou wouldest take by force thy daughters from me.",
+  "ref": "Genesis 31:31"
+ },
+ {
+  "id": "genesis-31-h-09",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What reason did Rachel give for not rising before her father?",
+  "choices": [
+   "The custom of women was upon her",
+   "She was weary from travel",
+   "She was ill with fever",
+   "She was afraid of him"
+  ],
+  "answer": 0,
+  "explanation": "Rachel said, Let it not displease my lord that I cannot rise up before thee; for the custom of women is upon me.",
+  "ref": "Genesis 31:35"
+ },
+ {
+  "id": "genesis-31-h-10",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jacob said he had not eaten what from Laban’s flock?",
+  "choices": [
+   "The ewes",
+   "The rams",
+   "The she goats",
+   "The lambs"
+  ],
+  "answer": 1,
+  "explanation": "Thy ewes and thy she goats have not cast their young, and the rams of thy flock have I not eaten.",
+  "ref": "Genesis 31:38"
+ },
+ {
+  "id": "genesis-31-h-11",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What consumed Jacob by day and by night?",
+  "choices": [
+   "Hunger by day, cold by night",
+   "Heat by day, wolves by night",
+   "Drought by day, frost by night",
+   "Work by day, fear by night"
+  ],
+  "answer": 2,
+  "explanation": "In the day the drought consumed me, and the frost by night.",
+  "ref": "Genesis 31:40"
+ },
+ {
+  "id": "genesis-31-h-12",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob swear by?",
+  "choices": [
+   "The God of Nahor",
+   "The heap of stones",
+   "The name of Bethel",
+   "The fear of his father Isaac"
+  ],
+  "answer": 3,
+  "explanation": "Jacob sware by the fear of his father Isaac.",
+  "ref": "Genesis 31:53"
+ },
+ {
+  "id": "genesis-31-h-13",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What name did Laban give the heap of witness?",
+  "choices": [
+   "Jegar-sahadutha",
+   "Galeed",
+   "Mizpah",
+   "Bethel"
+  ],
+  "answer": 0,
+  "explanation": "Laban called it Jegar-sahadutha: but Jacob called it Galeed.",
+  "ref": "Genesis 31:47"
+ },
+ {
+  "id": "genesis-31-h-14",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "Laban called on the God of Abraham and the God of whom else?",
+  "choices": [
+   "Isaac",
+   "Nahor",
+   "Bethuel",
+   "Terah"
+  ],
+  "answer": 1,
+  "explanation": "The God of Abraham, and the God of Nahor, the God of their father, judge betwixt us.",
+  "ref": "Genesis 31:53"
+ },
+ {
+  "id": "genesis-31-h-15",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob and his brethren do all night on the mount?",
+  "choices": [
+   "Kept watch",
+   "Journeyed on",
+   "Tarried there",
+   "Built an altar"
+  ],
+  "answer": 2,
+  "explanation": "They did eat bread, and tarried all night in the mount.",
+  "ref": "Genesis 31:54"
  },
  {
   "id": "old-genesis-32-1",
