@@ -13872,6 +13872,646 @@
   "ref": "Exodus 20:18–19"
  },
  {
+  "id": "exodus-20-e-01",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "Out of what land did God say He brought Israel?",
+  "choices": [
+   "Sinai",
+   "Egypt",
+   "Midian",
+   "Canaan"
+  ],
+  "answer": 1,
+  "explanation": "I am the LORD thy God, which have brought thee out of the land of Egypt, out of the house of bondage.",
+  "ref": "Exodus 20:2"
+ },
+ {
+  "id": "exodus-20-e-02",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which day are the people told to remember and keep holy?",
+  "choices": [
+   "The first day",
+   "The new moon",
+   "The sabbath day",
+   "The day of the feast"
+  ],
+  "answer": 2,
+  "explanation": "Remember the sabbath day, to keep it holy.",
+  "ref": "Exodus 20:8"
+ },
+ {
+  "id": "exodus-20-e-03",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days shall a person labour?",
+  "choices": [
+   "Seven",
+   "Three",
+   "Six",
+   "Five"
+  ],
+  "answer": 2,
+  "explanation": "Six days shalt thou labour, and do all thy work.",
+  "ref": "Exodus 20:9"
+ },
+ {
+  "id": "exodus-20-e-04",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which command comes right after 'Thou shalt not kill'?",
+  "choices": [
+   "Thou shalt not commit adultery",
+   "Remember the sabbath",
+   "Thou shalt not steal",
+   "Honour thy father"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not kill. Thou shalt not commit adultery.",
+  "ref": "Exodus 20:13–14"
+ },
+ {
+  "id": "exodus-20-e-05",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the people ask to speak with them instead of God?",
+  "choices": [
+   "Hur",
+   "Joshua",
+   "Aaron",
+   "Moses"
+  ],
+  "answer": 3,
+  "explanation": "They said unto Moses, Speak thou with us, and we will hear: but let not God speak with us.",
+  "ref": "Exodus 20:19"
+ },
+ {
+  "id": "exodus-20-e-06",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into what did Moses draw near where God was?",
+  "choices": [
+   "The thick darkness",
+   "A cave",
+   "A cloud of fire",
+   "A tent"
+  ],
+  "answer": 0,
+  "explanation": "Moses drew near unto the thick darkness where God was.",
+  "ref": "Exodus 20:21"
+ },
+ {
+  "id": "exodus-20-e-07",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the people told not to make of silver and gold?",
+  "choices": [
+   "Crowns",
+   "Altars",
+   "Gods",
+   "Vessels"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall not make with me gods of silver, neither shall ye make unto you gods of gold.",
+  "ref": "Exodus 20:23"
+ },
+ {
+  "id": "exodus-20-e-08",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of altar did God say to make first?",
+  "choices": [
+   "An altar of earth",
+   "An altar of wood",
+   "An altar of gold",
+   "An altar of brass"
+  ],
+  "answer": 0,
+  "explanation": "An altar of earth thou shalt make unto me.",
+  "ref": "Exodus 20:24"
+ },
+ {
+  "id": "exodus-20-e-09",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the mountain doing when the people saw it?",
+  "choices": [
+   "Burning gold",
+   "Smoking",
+   "Shining",
+   "Shaking snow"
+  ],
+  "answer": 1,
+  "explanation": "The people saw the thunderings, and the lightnings, and the noise of the trumpet, and the mountain smoking.",
+  "ref": "Exodus 20:18"
+ },
+ {
+  "id": "exodus-20-e-10",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say about taking His name in vain?",
+  "choices": [
+   "He will not hold him guiltless",
+   "He will forget it",
+   "He will bless him",
+   "He will forgive it"
+  ],
+  "answer": 0,
+  "explanation": "The LORD will not hold him guiltless that taketh his name in vain.",
+  "ref": "Exodus 20:7"
+ },
+ {
+  "id": "exodus-20-m-01",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of God does the LORD say He is?",
+  "choices": [
+   "A hidden God",
+   "A sleeping God",
+   "A jealous God",
+   "A distant God"
+  ],
+  "answer": 2,
+  "explanation": "I the LORD thy God am a jealous God.",
+  "ref": "Exodus 20:5"
+ },
+ {
+  "id": "exodus-20-m-02",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what generation does God visit the iniquity of fathers on those who hate Him?",
+  "choices": [
+   "The seventh",
+   "The tenth",
+   "The third and fourth",
+   "The second"
+  ],
+  "answer": 2,
+  "explanation": "Visiting the iniquity of the fathers upon the children unto the third and fourth generation of them that hate me.",
+  "ref": "Exodus 20:5"
+ },
+ {
+  "id": "exodus-20-m-03",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom does God show mercy unto thousands?",
+  "choices": [
+   "Them that fear Pharaoh",
+   "Them that offer gold",
+   "Them that love Him and keep His commandments",
+   "Them of the tribe of Levi"
+  ],
+  "answer": 2,
+  "explanation": "Shewing mercy unto thousands of them that love me, and keep my commandments.",
+  "ref": "Exodus 20:6"
+ },
+ {
+  "id": "exodus-20-m-04",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who besides family and servants must rest on the sabbath?",
+  "choices": [
+   "The king",
+   "The priest",
+   "The stranger within thy gates",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "Nor thy cattle, nor thy stranger that is within thy gates.",
+  "ref": "Exodus 20:10"
+ },
+ {
+  "id": "exodus-20-m-05",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD bless the sabbath day?",
+  "choices": [
+   "The manna fell on it",
+   "He rested the seventh day after making heaven and earth",
+   "The law was given on it",
+   "Israel was freed on it"
+  ],
+  "answer": 1,
+  "explanation": "In six days the LORD made heaven and earth, and rested the seventh day: wherefore the LORD blessed the sabbath day.",
+  "ref": "Exodus 20:11"
+ },
+ {
+  "id": "exodus-20-m-06",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the promise to those who honour father and mother?",
+  "choices": [
+   "Their days will be long upon the land",
+   "They will have many sons",
+   "They will be rich",
+   "They will be priests"
+  ],
+  "answer": 0,
+  "explanation": "Honour thy father and thy mother: that thy days may be long upon the land.",
+  "ref": "Exodus 20:12"
+ },
+ {
+  "id": "exodus-20-m-07",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people do when they saw the thunderings and lightnings?",
+  "choices": [
+   "Sang praises",
+   "Fell on their faces",
+   "Removed and stood afar off",
+   "Ran home"
+  ],
+  "answer": 2,
+  "explanation": "When the people saw it, they removed, and stood afar off.",
+  "ref": "Exodus 20:18"
+ },
+ {
+  "id": "exodus-20-m-08",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people say God should not speak with them?",
+  "choices": [
+   "Lest we fall asleep",
+   "Lest we sin",
+   "Lest we die",
+   "Lest we forget"
+  ],
+  "answer": 2,
+  "explanation": "Let not God speak with us, lest we die.",
+  "ref": "Exodus 20:19"
+ },
+ {
+  "id": "exodus-20-m-09",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say God had come to do?",
+  "choices": [
+   "Teach them songs",
+   "Punish them",
+   "Prove them",
+   "Feed them"
+  ],
+  "answer": 2,
+  "explanation": "Fear not: for God is come to prove you.",
+  "ref": "Exodus 20:20"
+ },
+ {
+  "id": "exodus-20-m-10",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would God's fear be before their faces?",
+  "choices": [
+   "That they sin not",
+   "That they build well",
+   "That they rest",
+   "That they fight"
+  ],
+  "answer": 0,
+  "explanation": "That his fear may be before your faces, that ye sin not.",
+  "ref": "Exodus 20:20"
+ },
+ {
+  "id": "exodus-20-m-11",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From where did the LORD say He had talked with Israel?",
+  "choices": [
+   "From the cloud only",
+   "From heaven",
+   "From the tent",
+   "From Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Ye have seen that I have talked with you from heaven.",
+  "ref": "Exodus 20:22"
+ },
+ {
+  "id": "exodus-20-m-12",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say an altar of stone must not be built of?",
+  "choices": [
+   "Field stone",
+   "River stone",
+   "Rough stone",
+   "Hewn stone"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not build it of hewn stone.",
+  "ref": "Exodus 20:25"
+ },
+ {
+  "id": "exodus-20-m-13",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What polluted an altar of stone?",
+  "choices": [
+   "Leaving it open",
+   "Touching it",
+   "Lifting a tool on it",
+   "Sacrificing on it"
+  ],
+  "answer": 2,
+  "explanation": "If thou lift up thy tool upon it, thou hast polluted it.",
+  "ref": "Exodus 20:25"
+ },
+ {
+  "id": "exodus-20-m-14",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were they not to go up by steps to the altar?",
+  "choices": [
+   "So the altar be low",
+   "So the ox be calm",
+   "So their nakedness not be discovered",
+   "So the priest be safe"
+  ],
+  "answer": 2,
+  "explanation": "Neither shalt thou go up by steps unto mine altar, that thy nakedness be not discovered thereon.",
+  "ref": "Exodus 20:26"
+ },
+ {
+  "id": "exodus-20-m-15",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God promise in all places where He records His name?",
+  "choices": [
+   "He would hide them",
+   "He would send manna",
+   "He would give land",
+   "He would come and bless them"
+  ],
+  "answer": 3,
+  "explanation": "In all places where I record my name I will come unto thee, and I will bless thee.",
+  "ref": "Exodus 20:24"
+ },
+ {
+  "id": "exodus-20-h-01",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which animal is listed among a neighbour's things not to covet?",
+  "choices": [
+   "His goat",
+   "His ass",
+   "His horse",
+   "His camel"
+  ],
+  "answer": 1,
+  "explanation": "Nor his ox, nor his ass, nor any thing that is thy neighbour's.",
+  "ref": "Exodus 20:17"
+ },
+ {
+  "id": "exodus-20-h-02",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the third place named for images, after heaven above and earth beneath?",
+  "choices": [
+   "The water under the earth",
+   "The house",
+   "The cave",
+   "The mountain top"
+  ],
+  "answer": 0,
+  "explanation": "Or that is in the water under the earth.",
+  "ref": "Exodus 20:4"
+ },
+ {
+  "id": "exodus-20-h-03",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God do on the seventh day?",
+  "choices": [
+   "Made man",
+   "Blessed Israel",
+   "Rested",
+   "Walked in the garden"
+  ],
+  "answer": 2,
+  "explanation": "The LORD made heaven and earth, and rested the seventh day.",
+  "ref": "Exodus 20:11"
+ },
+ {
+  "id": "exodus-20-h-04",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do to the sabbath day besides blessing it?",
+  "choices": [
+   "Hallowed it",
+   "Closed it",
+   "Named it Passover",
+   "Gave it to Levi"
+  ],
+  "answer": 0,
+  "explanation": "The LORD blessed the sabbath day, and hallowed it.",
+  "ref": "Exodus 20:11"
+ },
+ {
+  "id": "exodus-20-h-05",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does God describe Egypt in the first words He speaks?",
+  "choices": [
+   "The house of bondage",
+   "The place of gold",
+   "The land of death",
+   "The sea of reeds"
+  ],
+  "answer": 0,
+  "explanation": "Out of the land of Egypt, out of the house of bondage.",
+  "ref": "Exodus 20:2"
+ },
+ {
+  "id": "exodus-20-h-06",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which is listed among those who must not work on the sabbath?",
+  "choices": [
+   "Thy brother",
+   "Thy neighbour",
+   "Thy maidservant",
+   "Thy father"
+  ],
+  "answer": 2,
+  "explanation": "Thou, nor thy son, nor thy daughter, thy manservant, nor thy maidservant.",
+  "ref": "Exodus 20:10"
+ },
+ {
+  "id": "exodus-20-h-07",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which animals were to be sacrificed on the altar of earth?",
+  "choices": [
+   "Doves and lambs",
+   "Sheep and oxen",
+   "Goats and bulls",
+   "Rams and calves"
+  ],
+  "answer": 1,
+  "explanation": "Thy burnt offerings, and thy peace offerings, thy sheep, and thine oxen.",
+  "ref": "Exodus 20:24"
+ },
+ {
+  "id": "exodus-20-h-08",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people say they would do if Moses spoke with them?",
+  "choices": [
+   "Fast",
+   "Build an altar",
+   "Hear",
+   "Obey every word"
+  ],
+  "answer": 2,
+  "explanation": "Speak thou with us, and we will hear.",
+  "ref": "Exodus 20:19"
+ },
+ {
+  "id": "exodus-20-h-09",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the first words Moses spoke to the frightened people?",
+  "choices": [
+   "Go home",
+   "Be silent",
+   "Fear not",
+   "Sit down"
+  ],
+  "answer": 2,
+  "explanation": "Moses said unto the people, Fear not.",
+  "ref": "Exodus 20:20"
+ },
+ {
+  "id": "exodus-20-h-10",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD forbid bearing against a neighbour?",
+  "choices": [
+   "A stone",
+   "False witness",
+   "A sword",
+   "A grudge"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not bear false witness against thy neighbour.",
+  "ref": "Exodus 20:16"
+ },
+ {
+  "id": "exodus-20-h-11",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must you not do to graven images, besides bowing down to them?",
+  "choices": [
+   "Sell them",
+   "Burn them",
+   "Serve them",
+   "Carry them"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt not bow down thyself to them, nor serve them.",
+  "ref": "Exodus 20:5"
+ },
+ {
+  "id": "exodus-20-h-12",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides burnt offerings, what other offerings were sacrificed on the altar of earth?",
+  "choices": [
+   "Peace offerings",
+   "Meat offerings",
+   "Drink offerings",
+   "Sin offerings"
+  ],
+  "answer": 0,
+  "explanation": "Thy burnt offerings, and thy peace offerings.",
+  "ref": "Exodus 20:24"
+ },
+ {
+  "id": "exodus-20-h-13",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which word begins the command about the sabbath day?",
+  "choices": [
+   "Guard",
+   "Honour",
+   "Observe",
+   "Remember"
+  ],
+  "answer": 3,
+  "explanation": "Remember the sabbath day, to keep it holy.",
+  "ref": "Exodus 20:8"
+ },
+ {
+  "id": "exodus-20-h-14",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Who gives the land that those who honour parents will live long in?",
+  "choices": [
+   "Pharaoh",
+   "Moses",
+   "The LORD thy God",
+   "Joshua"
+  ],
+  "answer": 2,
+  "explanation": "That thy days may be long upon the land which the LORD thy God giveth thee.",
+  "ref": "Exodus 20:12"
+ },
+ {
+  "id": "exodus-20-h-15",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Upon whom does God visit the iniquity of the fathers?",
+  "choices": [
+   "The priests",
+   "The children",
+   "The strangers",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Visiting the iniquity of the fathers upon the children.",
+  "ref": "Exodus 20:5"
+ },
+ {
   "id": "old-exodus-21-1",
   "chapter": 21,
   "level": "beginner",
