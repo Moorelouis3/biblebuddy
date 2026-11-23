@@ -8048,22 +8048,6 @@
   "ref": "Genesis 24:2–4"
  },
  {
-  "id": "old-genesis-24-2",
-  "chapter": 24,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What sign did the servant ask God to show him at the well?",
-  "choices": [
-   "The woman would offer water to him and his camels",
-   "The woman would sing",
-   "The woman would bring gold",
-   "The woman would know Isaac's name"
-  ],
-  "answer": 0,
-  "explanation": "The servant asked that the chosen woman would offer water to him and his camels.",
-  "ref": "Genesis 24:14"
- },
- {
   "id": "old-genesis-24-4",
   "chapter": 24,
   "level": "beginner",
@@ -8094,6 +8078,310 @@
   "answer": 2,
   "explanation": "Isaac loved Rebekah and was comforted after Sarah's death.",
   "ref": "Genesis 24:67"
+ },
+ {
+  "id": "genesis-24-e-01",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who became Isaac's wife at the end of the chapter?",
+  "choices": [
+   "Rachel",
+   "Rebekah",
+   "Milcah",
+   "Leah"
+  ],
+  "answer": 1,
+  "explanation": "Isaac brought her into his mother Sarah's tent, and took Rebekah, and she became his wife; and he loved her.",
+  "ref": "Genesis 24:67"
+ },
+ {
+  "id": "genesis-24-m-01",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abraham say the LORD would send before his servant?",
+  "choices": [
+   "His angel",
+   "A cloud",
+   "A lamb",
+   "A messenger bird"
+  ],
+  "answer": 0,
+  "explanation": "He shall send his angel before thee, and thou shalt take a wife unto my son from thence.",
+  "ref": "Genesis 24:7"
+ },
+ {
+  "id": "genesis-24-m-02",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the servant first give Rebekah for her ear?",
+  "choices": [
+   "A silver ring",
+   "A jewel of gold",
+   "A pearl",
+   "A golden earring"
+  ],
+  "answer": 3,
+  "explanation": "The man took a golden earring of half a shekel weight, and two bracelets for her hands.",
+  "ref": "Genesis 24:22"
+ },
+ {
+  "id": "genesis-24-m-03",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "What did the servant say when he came into Laban's house and was asked to speak?",
+  "choices": [
+   "I am Isaac's brother",
+   "I am a king's messenger",
+   "I am Abraham's servant",
+   "I am of the house of Nahor"
+  ],
+  "answer": 2,
+  "explanation": "He said, I am Abraham's servant.",
+  "ref": "Genesis 24:34"
+ },
+ {
+  "id": "genesis-24-h-01",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many camels did the servant take with him?",
+  "choices": [
+   "Five",
+   "Ten",
+   "Twelve",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "The servant took ten camels of the camels of his master, and departed.",
+  "ref": "Genesis 24:10"
+ },
+ {
+  "id": "genesis-24-h-02",
+  "chapter": 24,
+  "level": "hard",
+  "category": "place",
+  "question": "To which region did the servant go to the city of Nahor?",
+  "choices": [
+   "Mesopotamia",
+   "Egypt",
+   "Moab",
+   "Gerar"
+  ],
+  "answer": 0,
+  "explanation": "He arose, and went to Mesopotamia, unto the city of Nahor.",
+  "ref": "Genesis 24:10"
+ },
+ {
+  "id": "genesis-24-h-03",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did the LORD bless Abraham, according to the chapter's first verse?",
+  "choices": [
+   "In his flocks only",
+   "In war",
+   "In his sons",
+   "In all things"
+  ],
+  "answer": 3,
+  "explanation": "Abraham was old, and well stricken in age: and the LORD had blessed Abraham in all things.",
+  "ref": "Genesis 24:1"
+ },
+ {
+  "id": "genesis-24-h-04",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was Rebekah's pitcher when she came out to the well?",
+  "choices": [
+   "On her head",
+   "In her hand",
+   "Upon her shoulder",
+   "On a camel"
+  ],
+  "answer": 2,
+  "explanation": "Rebekah came out, with her pitcher upon her shoulder.",
+  "ref": "Genesis 24:15"
+ },
+ {
+  "id": "genesis-24-h-05",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Rebekah say when the servant asked for a little water?",
+  "choices": [
+   "Wait, stranger",
+   "Drink, my lord",
+   "Who sent you?",
+   "Go to the well"
+  ],
+  "answer": 1,
+  "explanation": "She said, Drink, my lord: and she hasted, and let down her pitcher upon her hand, and gave him drink.",
+  "ref": "Genesis 24:18"
+ },
+ {
+  "id": "genesis-24-h-06",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into what did Rebekah empty her pitcher for the camels?",
+  "choices": [
+   "The trough",
+   "A basin",
+   "The well",
+   "A skin"
+  ],
+  "answer": 0,
+  "explanation": "She hasted, and emptied her pitcher into the trough, and ran again unto the well to draw water.",
+  "ref": "Genesis 24:20"
+ },
+ {
+  "id": "genesis-24-h-07",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shekels of gold did the two bracelets weigh?",
+  "choices": [
+   "Half",
+   "Two",
+   "Twenty",
+   "Ten"
+  ],
+  "answer": 3,
+  "explanation": "Two bracelets for her hands of ten shekels weight of gold.",
+  "ref": "Genesis 24:22"
+ },
+ {
+  "id": "genesis-24-h-08",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Rebekah say her father's house had enough of?",
+  "choices": [
+   "Bread and wine",
+   "Milk and honey",
+   "Straw and provender",
+   "Barley and oil"
+  ],
+  "answer": 2,
+  "explanation": "We have both straw and provender enough, and room to lodge in.",
+  "ref": "Genesis 24:25"
+ },
+ {
+  "id": "genesis-24-h-09",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Laban see that made him run out to the man at the well?",
+  "choices": [
+   "The camels at the well",
+   "The earring and bracelets on his sister's hands",
+   "Abraham's seal",
+   "A letter from Abraham"
+  ],
+  "answer": 1,
+  "explanation": "When he saw the earring and bracelets upon his sister's hands, he came unto the man.",
+  "ref": "Genesis 24:30"
+ },
+ {
+  "id": "genesis-24-h-10",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Laban call the servant when he invited him in?",
+  "choices": [
+   "Thou blessed of the LORD",
+   "Thou son of Abraham",
+   "Thou mighty prince",
+   "Thou faithful servant"
+  ],
+  "answer": 0,
+  "explanation": "He said, Come in, thou blessed of the LORD; wherefore standest thou without?",
+  "ref": "Genesis 24:31"
+ },
+ {
+  "id": "genesis-24-h-11",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At the least, how many days did Rebekah's brother and mother ask her to stay?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Thirty",
+   "Ten"
+  ],
+  "answer": 3,
+  "explanation": "Let the damsel abide with us a few days, at the least ten; after that she shall go.",
+  "ref": "Genesis 24:55"
+ },
+ {
+  "id": "genesis-24-h-12",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the servant say to Rebekah's family when they tried to delay him?",
+  "choices": [
+   "Give me time",
+   "Let me sleep",
+   "Hinder me not",
+   "Ask Abraham first"
+  ],
+  "answer": 2,
+  "explanation": "Hinder me not, seeing the LORD hath prospered my way; send me away that I may go to my master.",
+  "ref": "Genesis 24:56"
+ },
+ {
+  "id": "genesis-24-h-13",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Rebekah's family said her seed would possess the gate of whom?",
+  "choices": [
+   "The Canaanites",
+   "Those who hate them",
+   "Her brothers",
+   "The kings of the south"
+  ],
+  "answer": 1,
+  "explanation": "Let thy seed possess the gate of those which hate them.",
+  "ref": "Genesis 24:60"
+ },
+ {
+  "id": "genesis-24-h-14",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Into whose tent did Isaac bring Rebekah?",
+  "choices": [
+   "His mother Sarah's tent",
+   "Abraham's tent",
+   "Laban's tent",
+   "His own new house"
+  ],
+  "answer": 0,
+  "explanation": "Isaac brought her into his mother Sarah's tent, and took Rebekah, and she became his wife.",
+  "ref": "Genesis 24:67"
+ },
+ {
+  "id": "genesis-24-h-15",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the servant do when he met Isaac?",
+  "choices": [
+   "Gave him gold",
+   "Sent Rebekah away",
+   "Went back to Laban",
+   "Told him all things he had done"
+  ],
+  "answer": 3,
+  "explanation": "The servant told Isaac all things that he had done.",
+  "ref": "Genesis 24:66"
  },
  {
   "id": "old-genesis-25-3",
