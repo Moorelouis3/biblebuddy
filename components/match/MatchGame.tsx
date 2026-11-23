@@ -220,7 +220,7 @@ function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; rea
   const [settings, setSettings] = useState(false);
   // The map pictures start downloading while the home screen is up, so the map opens ready.
   useEffect(() => {
-    for (const src of ["/games/match/ui/map-phone.webp", "/games/match/ui/map-exodus-phone.webp", "/games/match/ui/map-leviticus-phone.webp", "/games/match/ui/map-numbers-phone.webp"]) {
+    for (const src of ["/games/match/ui/map-phone.webp", "/games/match/ui/map-exodus-phone.webp", "/games/match/ui/map-leviticus-phone.webp", "/games/match/ui/map-numbers-phone.webp", "/games/match/ui/map-deuteronomy-phone.webp"]) {
       const img = new Image();
       img.src = src;
     }
@@ -374,7 +374,20 @@ const NUMBERS_PATH: Array<[number, number]> = [
   [36, 24.5], [31, 22], [35, 19.5], [46, 17], [53, 14.5], [50, 12], [44, 9.5], [46, 7], [52, 4.5], [55, 2], [55, 0.5],
 ];
 
-type Section = { src: string; fx: "genesis" | "exodus" | "leviticus" | "numbers"; path: Array<[number, number]>; levels: MatchLevel[] };
+/**
+ * The Deuteronomy map (Drive Deuteronomy/00-Deuteronomy-Map,
+ * map-deuteronomy-phone.webp): the plains of Moab, the camp, Sinai and the
+ * tablets remembered, the good land of vines and wheat, and the Jordan in
+ * view at the top. Traced from the sand colour of the path, row by row.
+ */
+const DEUTERONOMY_PATH: Array<[number, number]> = [
+  [46, 99.5], [43, 97], [38, 94.5], [34, 92], [36, 89.5], [42, 87], [47, 84.5], [48, 82], [43, 79.5], [36, 77],
+  [28, 74.5], [25, 72], [29, 69.5], [36, 67], [46, 64.5], [51, 62], [49, 59.5], [39, 57], [32, 54.5], [32, 52],
+  [42, 49.5], [51, 47], [53, 44.5], [49, 42], [39, 39.5], [34, 37], [41, 34.5], [51, 32], [52, 29.5], [49, 27],
+  [40, 24.5], [39, 22], [45, 19.5], [52, 17], [55, 14.5], [45, 12], [43, 9.5], [48, 7], [53, 4.5], [55, 1],
+];
+
+type Section = { src: string; fx: "genesis" | "exodus" | "leviticus" | "numbers"; path: Array<[number, number]>; levels: MatchLevel[]; book: string };
 
 /** The painted maps, by book; a book without its own map yet uses the last one. */
 const BOOK_MAPS: Record<string, { src: string; path: Array<[number, number]>; fx: Section["fx"] }> = {
@@ -382,6 +395,8 @@ const BOOK_MAPS: Record<string, { src: string; path: Array<[number, number]>; fx
   Exodus: { src: "/games/match/ui/map-exodus-phone.webp", path: EXODUS_PATH, fx: "exodus" },
   Leviticus: { src: "/games/match/ui/map-leviticus-phone.webp", path: LEVITICUS_PATH, fx: "leviticus" },
   Numbers: { src: "/games/match/ui/map-numbers-phone.webp", path: NUMBERS_PATH, fx: "numbers" },
+  // Deuteronomy uses the Numbers weather (the same quiet fireflies).
+  Deuteronomy: { src: "/games/match/ui/map-deuteronomy-phone.webp", path: DEUTERONOMY_PATH, fx: "numbers" },
 };
 
 /**
@@ -400,9 +415,14 @@ const SECTIONS: Section[] = (() => {
   let lastMap = BOOK_MAPS.Genesis;
   for (let i = 0; i < MATCH_LEVELS.length; i += PER_MAP) {
     const levels = MATCH_LEVELS.slice(i, i + PER_MAP);
-    const m = BOOK_MAPS[levels[levels.length - 1].book] || lastMap;
+    // The map of the book with the most boards on it (Numbers 1-10 plus
+    // Deuteronomy 1 is the Numbers map, not a second Deuteronomy one).
+    const count = new Map<string, number>();
+    for (const l of levels) count.set(l.book, (count.get(l.book) || 0) + 1);
+    const book = [...count.entries()].sort((a, b) => b[1] - a[1])[0][0];
+    const m = BOOK_MAPS[book] || lastMap;
     lastMap = m;
-    out.push({ src: m.src, fx: m.fx, path: m.path, levels });
+    out.push({ src: m.src, fx: m.fx, path: m.path, levels, book });
   }
   return out;
 })();
@@ -486,7 +506,8 @@ function GenesisMap({
     const mid = ((el.scrollTop + el.clientHeight / 2) / el.scrollHeight) * 100;
     const seg = Math.min(SEGMENTS - 1, Math.max(0, SEGMENTS - 1 - Math.floor((mid / 100) * SEGMENTS)));
     const s = SECTIONS[seg];
-    const name = s.fx === "numbers" ? "Numbers" : s.fx === "leviticus" ? "Leviticus" : s.fx === "exodus" ? "Exodus" : "Genesis";
+    // Named for the book whose map it is.
+    const name = s.book || "Genesis";
     setBook((b) => (b === name ? b : name));
   };
 
@@ -567,7 +588,7 @@ function GenesisMap({
                 height: `${(100 / SEGMENTS) * (i > 0 ? BLEND : 1)}%`,
                 zIndex: i + 1,
                 // A tiny blurred preview shows at once while the full picture loads.
-                backgroundImage: `url(${MAP_PREVIEWS[s.fx]})`,
+                backgroundImage: `url(${(MAP_PREVIEWS[s.book.toLowerCase()] || MAP_PREVIEWS[s.fx])})`,
               }}
               src={s.src}
               alt={i === 0 ? "The Bible Buddy trail through Genesis, Exodus and Leviticus" : ""}

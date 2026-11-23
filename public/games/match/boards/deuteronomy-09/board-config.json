@@ -1,0 +1,30 @@
+{
+  "level": 9,
+  "name": "The Song of Moses",
+  "scripture": "Deuteronomy 32",
+  "chapter": "Deuteronomy",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "scroll",
+    "moses",
+    "manna",
+    "water-drop",
+    "cloud",
+    "basket",
+    "tent"
+  ],
+  "goals": {
+    "scroll": 8,
+    "moses": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match scroll and moses.",
+  "storyEffect": "Match scroll and moses."
+}

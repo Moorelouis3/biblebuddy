@@ -1,0 +1,30 @@
+{
+  "level": 5,
+  "name": "Remember the Manna",
+  "scripture": "Numbers 8:1–6, 11–20",
+  "chapter": "Deuteronomy",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "manna",
+    "water-drop",
+    "stone",
+    "basket",
+    "staff",
+    "wheat",
+    "grape"
+  ],
+  "goals": {
+    "manna": 8,
+    "water-drop": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match manna and water drop.",
+  "storyEffect": "Match manna and water drop."
+}

@@ -1,0 +1,30 @@
+{
+  "level": 10,
+  "name": "From Mount Nebo",
+  "scripture": "Deuteronomy 34",
+  "chapter": "Deuteronomy",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "moses",
+    "stone",
+    "tablets",
+    "water-jar",
+    "manna",
+    "grape",
+    "tree"
+  ],
+  "goals": {
+    "moses": 8,
+    "stone": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match moses and stone.",
+  "storyEffect": "Match moses and stone."
+}

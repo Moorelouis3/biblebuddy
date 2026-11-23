@@ -1,0 +1,30 @@
+{
+  "level": 1,
+  "name": "Remember the Wilderness",
+  "scripture": "Numbers 1–3",
+  "chapter": "Deuteronomy",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "staff",
+    "tent",
+    "tree",
+    "grape",
+    "banner",
+    "moses",
+    "wheat"
+  ],
+  "goals": {
+    "staff": 8,
+    "tent": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match staff and tent.",
+  "storyEffect": "Match staff and tent."
+}

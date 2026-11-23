@@ -1,0 +1,30 @@
+{
+  "level": 8,
+  "name": "Joshua Takes the Lead",
+  "scripture": "Deuteronomy 31",
+  "chapter": "Deuteronomy",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "joshua",
+    "staff",
+    "stone",
+    "cloud",
+    "wheat",
+    "tent",
+    "tree"
+  ],
+  "goals": {
+    "joshua": 8,
+    "staff": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match joshua and staff.",
+  "storyEffect": "Match joshua and staff."
+}

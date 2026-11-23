@@ -1,0 +1,30 @@
+{
+  "level": 2,
+  "name": "Remember Sinai",
+  "scripture": "Numbers 4–5",
+  "chapter": "Deuteronomy",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "tablets",
+    "stone",
+    "tent",
+    "joshua",
+    "staff",
+    "cloud",
+    "altar"
+  ],
+  "goals": {
+    "tablets": 8,
+    "stone": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match tablets and stone.",
+  "storyEffect": "Match tablets and stone."
+}

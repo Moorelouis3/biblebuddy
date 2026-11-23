@@ -1324,5 +1324,325 @@
     },
     "goalText": "Gather water drops, tents, and stones.",
     "storyEffect": "Gather water drops, tents, and stones."
+  },
+  {
+    "slug": "deuteronomy-01",
+    "folderTitle": "01-Remember-the-Wilderness",
+    "level": 1,
+    "name": "Remember the Wilderness",
+    "scripture": "Numbers 1–3",
+    "chapter": "Deuteronomy",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "staff",
+      "tent",
+      "tree",
+      "grape",
+      "banner",
+      "moses",
+      "wheat"
+    ],
+    "goals": {
+      "staff": 8,
+      "tent": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match staff and tent.",
+    "storyEffect": "Match staff and tent."
+  },
+  {
+    "slug": "deuteronomy-02",
+    "folderTitle": "02-Remember-Sinai",
+    "level": 2,
+    "name": "Remember Sinai",
+    "scripture": "Numbers 4–5",
+    "chapter": "Deuteronomy",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "tablets",
+      "stone",
+      "tent",
+      "joshua",
+      "staff",
+      "cloud",
+      "altar"
+    ],
+    "goals": {
+      "tablets": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match tablets and stone.",
+    "storyEffect": "Match tablets and stone."
+  },
+  {
+    "slug": "deuteronomy-03",
+    "folderTitle": "03-Hear-O-Israel",
+    "level": 3,
+    "name": "Hear, O Israel",
+    "scripture": "Numbers 6",
+    "chapter": "Deuteronomy",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "scroll",
+      "moses",
+      "tree",
+      "staff",
+      "tent",
+      "altar",
+      "wheat"
+    ],
+    "goals": {
+      "scroll": 8,
+      "moses": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match scroll and moses.",
+    "storyEffect": "Match scroll and moses."
+  },
+  {
+    "slug": "deuteronomy-04",
+    "folderTitle": "04-A-Good-Land",
+    "level": 4,
+    "name": "A Good Land",
+    "scripture": "Numbers 7; 8:7–10",
+    "chapter": "Deuteronomy",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "grape",
+      "wheat",
+      "stone",
+      "joshua",
+      "tablets",
+      "tent",
+      "cloud"
+    ],
+    "goals": {
+      "grape": 8,
+      "wheat": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match grape and wheat.",
+    "storyEffect": "Match grape and wheat."
+  },
+  {
+    "slug": "deuteronomy-05",
+    "folderTitle": "05-Remember-the-Manna",
+    "level": 5,
+    "name": "Remember the Manna",
+    "scripture": "Numbers 8:1–6, 11–20",
+    "chapter": "Deuteronomy",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "manna",
+      "water-drop",
+      "stone",
+      "basket",
+      "staff",
+      "wheat",
+      "grape"
+    ],
+    "goals": {
+      "manna": 8,
+      "water-drop": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match manna and water drop.",
+    "storyEffect": "Match manna and water drop."
+  },
+  {
+    "slug": "deuteronomy-06",
+    "folderTitle": "06-Bring-the-Firstfruits",
+    "level": 6,
+    "name": "Bring the Firstfruits",
+    "scripture": "Numbers 26",
+    "chapter": "Deuteronomy",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "basket",
+      "wheat",
+      "joshua",
+      "cloud",
+      "altar",
+      "manna",
+      "tablets"
+    ],
+    "goals": {
+      "basket": 8,
+      "wheat": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match basket and wheat.",
+    "storyEffect": "Match basket and wheat."
+  },
+  {
+    "slug": "deuteronomy-07",
+    "folderTitle": "07-Two-Mountains",
+    "level": 7,
+    "name": "Two Mountains",
+    "scripture": "Deuteronomy 27–30",
+    "chapter": "Deuteronomy",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "altar",
+      "stone",
+      "cloud",
+      "staff",
+      "wheat",
+      "tablets",
+      "moses"
+    ],
+    "goals": {
+      "altar": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match altar and stone.",
+    "storyEffect": "Match altar and stone."
+  },
+  {
+    "slug": "deuteronomy-08",
+    "folderTitle": "08-Joshua-Takes-the-Lead",
+    "level": 8,
+    "name": "Joshua Takes the Lead",
+    "scripture": "Deuteronomy 31",
+    "chapter": "Deuteronomy",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "joshua",
+      "staff",
+      "stone",
+      "cloud",
+      "wheat",
+      "tent",
+      "tree"
+    ],
+    "goals": {
+      "joshua": 8,
+      "staff": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match joshua and staff.",
+    "storyEffect": "Match joshua and staff."
+  },
+  {
+    "slug": "deuteronomy-09",
+    "folderTitle": "09-The-Song-of-Moses",
+    "level": 9,
+    "name": "The Song of Moses",
+    "scripture": "Deuteronomy 32",
+    "chapter": "Deuteronomy",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "scroll",
+      "moses",
+      "manna",
+      "water-drop",
+      "cloud",
+      "basket",
+      "tent"
+    ],
+    "goals": {
+      "scroll": 8,
+      "moses": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match scroll and moses.",
+    "storyEffect": "Match scroll and moses."
+  },
+  {
+    "slug": "deuteronomy-10",
+    "folderTitle": "10-From-Mount-Nebo",
+    "level": 10,
+    "name": "From Mount Nebo",
+    "scripture": "Deuteronomy 34",
+    "chapter": "Deuteronomy",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "moses",
+      "stone",
+      "tablets",
+      "water-jar",
+      "manna",
+      "grape",
+      "tree"
+    ],
+    "goals": {
+      "moses": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match moses and stone.",
+    "storyEffect": "Match moses and stone."
   }
 ]

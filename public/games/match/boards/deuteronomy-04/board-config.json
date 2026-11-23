@@ -1,0 +1,30 @@
+{
+  "level": 4,
+  "name": "A Good Land",
+  "scripture": "Numbers 7; 8:7–10",
+  "chapter": "Deuteronomy",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "grape",
+    "wheat",
+    "stone",
+    "joshua",
+    "tablets",
+    "tent",
+    "cloud"
+  ],
+  "goals": {
+    "grape": 8,
+    "wheat": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match grape and wheat.",
+  "storyEffect": "Match grape and wheat."
+}

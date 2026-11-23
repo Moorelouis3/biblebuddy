@@ -1,0 +1,30 @@
+{
+  "level": 6,
+  "name": "Bring the Firstfruits",
+  "scripture": "Numbers 26",
+  "chapter": "Deuteronomy",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "basket",
+    "wheat",
+    "joshua",
+    "cloud",
+    "altar",
+    "manna",
+    "tablets"
+  ],
+  "goals": {
+    "basket": 8,
+    "wheat": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match basket and wheat.",
+  "storyEffect": "Match basket and wheat."
+}

@@ -24,6 +24,8 @@ export function winStoryFor(book: string, number: number, id = ""): string | nul
   if (lv && Number(lv[1]) >= 1 && Number(lv[1]) <= 10) return `/games/match/transitions/leviticus-${lv[1]}.webp`;
   const nu = /^numbers-(\d\d)$/.exec(id);
   if (nu && Number(nu[1]) >= 1 && Number(nu[1]) <= 10) return `/games/match/transitions/numbers-${nu[1]}.webp`;
+  const de = /^deuteronomy-(\d\d)$/.exec(id);
+  if (de && Number(de[1]) >= 1 && Number(de[1]) <= 10) return `/games/match/transitions/deuteronomy-${de[1]}.webp`;
   return null;
 }
 
