@@ -717,17 +717,12 @@ function chapterOf(scripture: string): { book: string; chapter: number } {
 const SOCKETS = ["#1b2b57", "#1d4a2a", "#4a2a14", "#1f3b4d", "#3b2350"];
 
 /**
- * The playable order: Genesis boards after Eden, then Exodus, then Leviticus.
- * Held at 22 (Genesis 1-11 on the Genesis map, Exodus 1-11 on the Exodus map):
- * the first Leviticus art did not match the style of the others (Louis,
- * 2026-11-23), so Exodus 12 and Leviticus wait for the redrawn art. The
- * Leviticus boards, map and story screens are imported and wired; raise this
- * to 33 when the new art is in.
- *
- * On a local dev server every board shows (33), so new art can be looked at
- * on the map before it goes live (Louis, 2026-11-23: "I don't see it on local").
+ * The playable order: Genesis, Exodus, Leviticus, Numbers and on, in Bible
+ * order (BOOK_ORDER). Every imported board is live (Louis, 2026-11-23: "of
+ * course I want them all live"): 93 boards, Genesis to 1 Samuel. A book is
+ * only imported when its Drive folder is complete, so there is no cap here.
  */
-export const MAX_MATCH_LEVELS = process.env.NODE_ENV === "development" ? 500 : 22;
+export const MAX_MATCH_LEVELS = 500;
 const BOOK_ORDER = [
   "genesis", "exodus", "leviticus", "numbers", "deuteronomy", "joshua", "judges", "ruth", "1 samuel", "2 samuel",
   "1 kings", "2 kings", "1 chronicles", "2 chronicles", "ezra", "nehemiah", "esther", "job", "psalms", "proverbs",
