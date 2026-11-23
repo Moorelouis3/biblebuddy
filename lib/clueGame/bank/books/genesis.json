@@ -15648,54 +15648,6 @@
   "ref": "Genesis 45:28"
  },
  {
-  "id": "old-genesis-46-1",
-  "chapter": 46,
-  "level": "beginner",
-  "category": "place",
-  "question": "Where did God speak to Jacob before he went down to Egypt?",
-  "choices": [
-   "Bethel",
-   "Hebron",
-   "Gerar",
-   "Beersheba"
-  ],
-  "answer": 3,
-  "explanation": "Jacob offered sacrifices at Beersheba, and God spoke to him in visions of the night.",
-  "ref": "Genesis 46:1–2"
- },
- {
-  "id": "old-genesis-46-2",
-  "chapter": 46,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What did God tell Jacob about going to Egypt?",
-  "choices": [
-   "Go down there, for I will make of you a great nation",
-   "Do not go there",
-   "Go only for a few days",
-   "Return immediately after seeing Joseph"
-  ],
-  "answer": 0,
-  "explanation": "God told Jacob not to fear going to Egypt because He would make him a great nation there.",
-  "ref": "Genesis 46:3"
- },
- {
-  "id": "old-genesis-46-4",
-  "chapter": 46,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How did Joseph react when he met Jacob again?",
-  "choices": [
-   "He bowed silently",
-   "He accused him of waiting too long",
-   "He fell on his neck and wept",
-   "He sent him to Pharaoh first"
-  ],
-  "answer": 2,
-  "explanation": "Joseph embraced his father and wept on his neck for a good while.",
-  "ref": "Genesis 46:29"
- },
- {
   "id": "old-genesis-47-2",
   "chapter": 47,
   "level": "beginner",
@@ -15918,5 +15870,341 @@
   "answer": 1,
   "explanation": "Joseph made the children of Israel swear to carry his bones out of Egypt.",
   "ref": "Genesis 50:25"
+ },
+ {
+  "id": "genesis-46-e-01",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jacob take with him into Egypt besides his family?",
+  "choices": [
+   "Gold and silver",
+   "Cattle and goods",
+   "Wheat and wine",
+   "Tents and altars"
+  ],
+  "answer": 1,
+  "explanation": "They took their cattle and their goods, which they had gotten in the land of Canaan.",
+  "ref": "Genesis 46:6"
+ },
+ {
+  "id": "genesis-46-e-02",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of Jacob’s sons did he send ahead to Goshen?",
+  "choices": [
+   "Judah",
+   "Reuben",
+   "Levi",
+   "Dan"
+  ],
+  "answer": 0,
+  "explanation": "He sent Judah before him unto Joseph, to direct his face unto Goshen.",
+  "ref": "Genesis 46:28"
+ },
+ {
+  "id": "genesis-46-e-03",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God call Jacob in the visions of the night?",
+  "choices": [
+   "“Israel, arise”",
+   "“Abraham’s son”",
+   "“Servant, hear me”",
+   "“Jacob, Jacob”"
+  ],
+  "answer": 3,
+  "explanation": "God spake unto Israel in the visions of the night, and said, Jacob, Jacob.",
+  "ref": "Genesis 46:2"
+ },
+ {
+  "id": "genesis-46-m-01",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joseph say he would do first once his family had come to Goshen?",
+  "choices": [
+   "Give them chariots",
+   "Send them back to Canaan",
+   "Go up and tell Pharaoh",
+   "Divide his house among them"
+  ],
+  "answer": 2,
+  "explanation": "Joseph said, I will go up, and shew Pharaoh, and say unto him, My brethren, and my father’s house, are come unto me.",
+  "ref": "Genesis 46:31"
+ },
+ {
+  "id": "genesis-46-m-02",
+  "chapter": 46,
+  "level": "medium",
+  "category": "person",
+  "question": "Who carried Jacob, with the little ones and wives, in Pharaoh’s wagons?",
+  "choices": [
+   "Pharaoh’s servants",
+   "His sons",
+   "Joseph’s men",
+   "Egyptian soldiers"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Israel carried Jacob their father, and their little ones, and their wives, in the wagons which Pharaoh had sent.",
+  "ref": "Genesis 46:5"
+ },
+ {
+  "id": "genesis-46-m-03",
+  "chapter": 46,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two sons were born to Joseph in the land of Egypt?",
+  "choices": [
+   "Manasseh and Ephraim",
+   "Benjamin and Gera",
+   "Hanoch and Carmi",
+   "Er and Onan"
+  ],
+  "answer": 0,
+  "explanation": "Unto Joseph in the land of Egypt were born Manasseh and Ephraim.",
+  "ref": "Genesis 46:20"
+ },
+ {
+  "id": "genesis-46-h-01",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many souls came out of Jacob’s loins into Egypt, not counting his sons’ wives?",
+  "choices": [
+   "Seventy",
+   "Thirty-three",
+   "Sixteen",
+   "Sixty-six"
+  ],
+  "answer": 3,
+  "explanation": "All the souls that came with Jacob into Egypt, which came out of his loins, besides Jacob’s sons’ wives, were threescore and six.",
+  "ref": "Genesis 46:26"
+ },
+ {
+  "id": "genesis-46-h-02",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many souls are counted as Leah’s sons and daughter?",
+  "choices": [
+   "Sixteen",
+   "Fourteen",
+   "Thirty-three",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "These be the sons of Leah… all the souls of his sons and his daughters were thirty and three.",
+  "ref": "Genesis 46:15"
+ },
+ {
+  "id": "genesis-46-h-03",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many souls are counted as Zilpah’s children?",
+  "choices": [
+   "Seven",
+   "Sixteen",
+   "Fourteen",
+   "Thirty-three"
+  ],
+  "answer": 1,
+  "explanation": "These are the sons of Zilpah… even sixteen souls.",
+  "ref": "Genesis 46:18"
+ },
+ {
+  "id": "genesis-46-h-04",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many souls are counted as Rachel’s children?",
+  "choices": [
+   "Fourteen",
+   "Seven",
+   "Sixteen",
+   "Thirty-three"
+  ],
+  "answer": 0,
+  "explanation": "These are the sons of Rachel… all the souls were fourteen.",
+  "ref": "Genesis 46:22"
+ },
+ {
+  "id": "genesis-46-h-05",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many souls are counted as Bilhah’s children?",
+  "choices": [
+   "Fourteen",
+   "Sixteen",
+   "Twelve",
+   "Seven"
+  ],
+  "answer": 3,
+  "explanation": "These are the sons of Bilhah… all the souls were seven.",
+  "ref": "Genesis 46:25"
+ },
+ {
+  "id": "genesis-46-h-06",
+  "chapter": 46,
+  "level": "hard",
+  "category": "person",
+  "question": "Which woman is named as the sister of Asher’s sons?",
+  "choices": [
+   "Dinah",
+   "Asenath",
+   "Serah",
+   "Zilpah"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Asher: Jimnah, Ishuah, Isui, Beriah, and Serah their sister.",
+  "ref": "Genesis 46:17"
+ },
+ {
+  "id": "genesis-46-h-07",
+  "chapter": 46,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son of Simeon was the son of a Canaanitish woman?",
+  "choices": [
+   "Jemuel",
+   "Shaul",
+   "Zohar",
+   "Ohad"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Simeon… and Shaul the son of a Canaanitish woman.",
+  "ref": "Genesis 46:10"
+ },
+ {
+  "id": "genesis-46-h-08",
+  "chapter": 46,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Levi?",
+  "choices": [
+   "Kohath",
+   "Hanoch",
+   "Jemuel",
+   "Tola"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Levi; Gershon, Kohath, and Merari.",
+  "ref": "Genesis 46:11"
+ },
+ {
+  "id": "genesis-46-h-09",
+  "chapter": 46,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is the only son named for Dan?",
+  "choices": [
+   "Jahzeel",
+   "Guni",
+   "Jezer",
+   "Hushim"
+  ],
+  "answer": 3,
+  "explanation": "And the sons of Dan; Hushim.",
+  "ref": "Genesis 46:23"
+ },
+ {
+  "id": "genesis-46-h-10",
+  "chapter": 46,
+  "level": "hard",
+  "category": "place",
+  "question": "Asenath was the daughter of a priest of which place?",
+  "choices": [
+   "Goshen",
+   "Hebron",
+   "On",
+   "Haran"
+  ],
+  "answer": 2,
+  "explanation": "Asenath the daughter of Poti-pherah priest of On.",
+  "ref": "Genesis 46:20"
+ },
+ {
+  "id": "genesis-46-h-11",
+  "chapter": 46,
+  "level": "hard",
+  "category": "person",
+  "question": "Which maid did Laban give to Rachel?",
+  "choices": [
+   "Zilpah",
+   "Bilhah",
+   "Serah",
+   "Asenath"
+  ],
+  "answer": 1,
+  "explanation": "These are the sons of Bilhah, which Laban gave unto Rachel his daughter.",
+  "ref": "Genesis 46:25"
+ },
+ {
+  "id": "genesis-46-h-12",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Joseph tell his brothers to say their trade was cattle?",
+  "choices": [
+   "So they could dwell in Goshen",
+   "So Pharaoh would give them gold",
+   "So they could avoid the famine",
+   "So Pharaoh would free Simeon"
+  ],
+  "answer": 0,
+  "explanation": "Joseph said they should say this, that ye may dwell in the land of Goshen; for every shepherd is an abomination unto the Egyptians.",
+  "ref": "Genesis 46:34"
+ },
+ {
+  "id": "genesis-46-h-13",
+  "chapter": 46,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two sons of Pharez are named?",
+  "choices": [
+   "Er and Onan",
+   "Hezron and Hamul",
+   "Shelah and Zarah",
+   "Tola and Phuvah"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Pharez were Hezron and Hamul.",
+  "ref": "Genesis 46:12"
+ },
+ {
+  "id": "genesis-46-h-14",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Judah sent ahead to do?",
+  "choices": [
+   "Direct the way to Goshen",
+   "Ask Pharaoh for wagons",
+   "Bring Benjamin home",
+   "Buy corn in Egypt"
+  ],
+  "answer": 0,
+  "explanation": "He sent Judah before him unto Joseph, to direct his face unto Goshen.",
+  "ref": "Genesis 46:28"
+ },
+ {
+  "id": "genesis-46-h-15",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides their flocks and herds, what did Joseph say the brothers had brought?",
+  "choices": [
+   "Gifts for Pharaoh",
+   "Seed for sowing",
+   "Their idols",
+   "All that they had"
+  ],
+  "answer": 3,
+  "explanation": "They have brought their flocks, and their herds, and all that they have.",
+  "ref": "Genesis 46:32"
  }
 ]
