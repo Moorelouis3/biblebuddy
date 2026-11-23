@@ -307,9 +307,10 @@ html.bb-native.bb-game-screen body::before { display:none !important; }
 @keyframes bbm-story-bg { from { background-color: rgba(18,12,6,0); } }
 .bbm-story-blur { position:absolute; inset:-40px; background-size:cover; background-position:center; filter: blur(24px) brightness(.7); animation: bbm-story-fade .4s ease-out both; }
 @keyframes bbm-story-fade { from { opacity:0; } }
-/* The picture fills the phone (a little trimmed at the edges if the phone is wider or taller), whole on a computer. */
-.bbm-story-art { position:relative; height: max(100dvh, 217.3vw); aspect-ratio: 851 / 1849; animation: bbm-story-pop .55s cubic-bezier(.2,.9,.3,1.15) both; }
-@media (min-aspect-ratio: 3/5) { .bbm-story-art { height: 100dvh; } }
+/* The picture is always the full screen height, top to bottom, so the title and the button
+   at the bottom are never cut off (Louis, 2026-11-23: it was filled by width, which cropped
+   the bottom bar on most phones). Any leftover side strip shows the blurred picture. */
+.bbm-story-art { position:relative; height: 100dvh; aspect-ratio: 851 / 1849; animation: bbm-story-pop .55s cubic-bezier(.2,.9,.3,1.15) both; }
 @keyframes bbm-story-pop { from { opacity:0; transform: scale(.88); } }
 .bbm-story-art > img { position:absolute; inset:0; width:100%; height:100%; display:block; user-select:none; -webkit-user-drag:none; }
 /* Tapping the button: the whole screen plays out, then the map. */
