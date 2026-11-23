@@ -2960,6 +2960,646 @@
   "ref": "Leviticus 5:15"
  },
  {
+  "id": "leviticus-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did a guilty person do first, before bringing his offering?",
+  "choices": [
+   "He confessed that he had sinned",
+   "He fasted seven days",
+   "He tore his clothes",
+   "He left the camp"
+  ],
+  "answer": 0,
+  "explanation": "When guilty in one of these things, he shall confess that he hath sinned in that thing.",
+  "ref": "Leviticus 5:5"
+ },
+ {
+  "id": "leviticus-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was brought from the flock as a sin offering for a person who could afford it?",
+  "choices": [
+   "A he-goat",
+   "A ram",
+   "A bullock",
+   "A female lamb or a kid of the goats"
+  ],
+  "answer": 3,
+  "explanation": "He shall bring a female from the flock, a lamb or a kid of the goats, for a sin offering.",
+  "ref": "Leviticus 5:6"
+ },
+ {
+  "id": "leviticus-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who made atonement for the sinner?",
+  "choices": [
+   "The sinner's neighbour",
+   "The elders",
+   "The judge",
+   "The priest"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall make an atonement for him concerning his sin.",
+  "ref": "Leviticus 5:6"
+ },
+ {
+  "id": "leviticus-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the second bird offered as?",
+  "choices": [
+   "A drink offering",
+   "A burnt offering",
+   "A peace offering",
+   "A meat offering"
+  ],
+  "answer": 1,
+  "explanation": "One bird was for a sin offering, and the other for a burnt offering.",
+  "ref": "Leviticus 5:7"
+ },
+ {
+  "id": "leviticus-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would happen to the sin after the priest made atonement?",
+  "choices": [
+   "It would be remembered",
+   "It would be forgiven him",
+   "It would pass to his son",
+   "It would be put on the altar horns"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall make an atonement for him, and it shall be forgiven him.",
+  "ref": "Leviticus 5:10"
+ },
+ {
+  "id": "leviticus-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priest burn on the altar as a memorial from the flour offering?",
+  "choices": [
+   "The frankincense only",
+   "The oil",
+   "A handful of the flour",
+   "The whole ephah"
+  ],
+  "answer": 2,
+  "explanation": "The priest shall take his handful of it, even a memorial thereof, and burn it on the altar.",
+  "ref": "Leviticus 5:12"
+ },
+ {
+  "id": "leviticus-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the sinner bring his trespass offering for sins of ignorance?",
+  "choices": [
+   "The elders",
+   "The priest",
+   "Moses",
+   "Aaron's wife"
+  ],
+  "answer": 1,
+  "explanation": "He shall bring a ram without blemish out of the flock, with thy estimation, for a trespass offering, unto the priest.",
+  "ref": "Leviticus 5:18"
+ },
+ {
+  "id": "leviticus-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priest make for the ignorant sinner with the ram?",
+  "choices": [
+   "A feast",
+   "A vow",
+   "Atonement",
+   "A covenant"
+  ],
+  "answer": 2,
+  "explanation": "The priest shall make an atonement for him concerning his ignorance wherein he erred and wist it not.",
+  "ref": "Leviticus 5:18"
+ },
+ {
+  "id": "leviticus-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Against whom does the chapter say the sinner has certainly trespassed?",
+  "choices": [
+   "The LORD",
+   "The priest",
+   "His neighbour",
+   "Pharaoh"
+  ],
+  "answer": 0,
+  "explanation": "It is a trespass offering: he hath certainly trespassed against the LORD.",
+  "ref": "Leviticus 5:19"
+ },
+ {
+  "id": "leviticus-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the LORD speak to before giving the law about trespass in the holy things?",
+  "choices": [
+   "Joshua",
+   "Eleazar",
+   "Moses",
+   "Aaron"
+  ],
+  "answer": 2,
+  "explanation": "And the LORD spake unto Moses, saying, If a soul commit a trespass, and sin through ignorance, in the holy things of the LORD.",
+  "ref": "Leviticus 5:14–15"
+ },
+ {
+  "id": "leviticus-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What might a person swear with his lips to do, and then forget?",
+  "choices": [
+   "To go to war",
+   "To leave Israel",
+   "To give his firstborn",
+   "To do evil, or to do good"
+  ],
+  "answer": 3,
+  "explanation": "If a soul swear, pronouncing with his lips to do evil, or to do good, and it be hid from him, he shall be guilty when he knoweth of it.",
+  "ref": "Leviticus 5:4"
+ },
+ {
+  "id": "leviticus-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the priest sprinkle the blood of the sin offering bird?",
+  "choices": [
+   "Before the vail",
+   "On the mercy seat",
+   "Upon the side of the altar",
+   "Upon the horns of the altar"
+  ],
+  "answer": 2,
+  "explanation": "He shall sprinkle of the blood of the sin offering upon the side of the altar.",
+  "ref": "Leviticus 5:9"
+ },
+ {
+  "id": "leviticus-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done with the rest of the blood of the bird?",
+  "choices": [
+   "It was poured outside the camp",
+   "It was sprinkled on the people",
+   "It was wrung out at the bottom of the altar",
+   "It was kept in a basin"
+  ],
+  "answer": 2,
+  "explanation": "The rest of the blood shall be wrung out at the bottom of the altar.",
+  "ref": "Leviticus 5:9"
+ },
+ {
+  "id": "leviticus-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest not do when he wrung off the bird's head?",
+  "choices": [
+   "Eat it",
+   "Divide it asunder",
+   "Burn it first",
+   "Wash it"
+  ],
+  "answer": 1,
+  "explanation": "He shall wring off his head from his neck, but shall not divide it asunder.",
+  "ref": "Leviticus 5:8"
+ },
+ {
+  "id": "leviticus-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How had a person sinned if he brought a ram for trespass in the holy things?",
+  "choices": [
+   "Through theft",
+   "Through ignorance",
+   "Through anger",
+   "Through false witness"
+  ],
+  "answer": 1,
+  "explanation": "If a soul commit a trespass, and sin through ignorance, in the holy things of the LORD, he shall bring a ram.",
+  "ref": "Leviticus 5:15"
+ },
+ {
+  "id": "leviticus-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was no oil or frankincense put on the poorest sinner's flour?",
+  "choices": [
+   "Because it was unclean",
+   "Because it was a sin offering",
+   "Because it was too costly",
+   "Because it was for the priest"
+  ],
+  "answer": 1,
+  "explanation": "He shall put no oil upon it, neither frankincense thereon: for it is a sin offering.",
+  "ref": "Leviticus 5:11"
+ },
+ {
+  "id": "leviticus-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest take from the poor man's fine flour?",
+  "choices": [
+   "The oil",
+   "His handful",
+   "A cake",
+   "A tenth part"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall take his handful of it, even a memorial thereof, and burn it on the altar.",
+  "ref": "Leviticus 5:12"
+ },
+ {
+  "id": "leviticus-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Who received the remnant of the flour offering?",
+  "choices": [
+   "The poor",
+   "The priest",
+   "The sinner",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "The remnant shall be the priest's, as a meat offering.",
+  "ref": "Leviticus 5:13"
+ },
+ {
+  "id": "leviticus-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did a man add when he made amends for harm done in the holy thing?",
+  "choices": [
+   "A second ram",
+   "The tenth part",
+   "The fifth part",
+   "Double the amount"
+  ],
+  "answer": 2,
+  "explanation": "He shall make amends for the harm that he hath done in the holy thing, and shall add the fifth part thereto.",
+  "ref": "Leviticus 5:16"
+ },
+ {
+  "id": "leviticus-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the ram for the trespass offering come from?",
+  "choices": [
+   "Out of the flocks",
+   "From the field",
+   "Out of the herd",
+   "From the fowls"
+  ],
+  "answer": 0,
+  "explanation": "He shall bring a ram without blemish out of the flocks.",
+  "ref": "Leviticus 5:15"
+ },
+ {
+  "id": "leviticus-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the chapter say of a person who sinned \"though he wist it not\"?",
+  "choices": [
+   "He is cut off",
+   "He is free",
+   "He is guilty and shall bear his iniquity",
+   "He is unclean only"
+  ],
+  "answer": 2,
+  "explanation": "Though he wist it not, yet is he guilty, and shall bear his iniquity.",
+  "ref": "Leviticus 5:17"
+ },
+ {
+  "id": "leviticus-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the sinner to confess?",
+  "choices": [
+   "That he was a stranger",
+   "That he had sinned in that thing",
+   "That he had lost a vow",
+   "That he was unclean"
+  ],
+  "answer": 1,
+  "explanation": "He shall confess that he hath sinned in that thing.",
+  "ref": "Leviticus 5:5"
+ },
+ {
+  "id": "leviticus-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the two birds become when offered?",
+  "choices": [
+   "A peace and a meat offering",
+   "Two burnt offerings",
+   "Two sin offerings",
+   "A sin offering and a burnt offering"
+  ],
+  "answer": 3,
+  "explanation": "Two turtledoves or two young pigeons: one for a sin offering, and the other for a burnt offering.",
+  "ref": "Leviticus 5:7"
+ },
+ {
+  "id": "leviticus-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was brought for sins against the commandments of the LORD that a man knew not of?",
+  "choices": [
+   "Two turtledoves",
+   "A ram without blemish",
+   "A bullock",
+   "A kid of the goats"
+  ],
+  "answer": 1,
+  "explanation": "He shall bring a ram without blemish out of the flock, with thy estimation, for a trespass offering.",
+  "ref": "Leviticus 5:17–18"
+ },
+ {
+  "id": "leviticus-5-m-15",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the sinner have to make amends for in the holy thing?",
+  "choices": [
+   "The harm that he had done",
+   "The garment he had torn",
+   "The oath he had made",
+   "The blood he had spilled"
+  ],
+  "answer": 0,
+  "explanation": "He shall make amends for the harm that he hath done in the holy thing.",
+  "ref": "Leviticus 5:16"
+ },
+ {
+  "id": "leviticus-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much fine flour did the poorest sinner bring?",
+  "choices": [
+   "A whole ephah",
+   "Two handfuls",
+   "The fifth part of an ephah",
+   "The tenth part of an ephah"
+  ],
+  "answer": 3,
+  "explanation": "He shall bring the tenth part of an ephah of fine flour for a sin offering.",
+  "ref": "Leviticus 5:11"
+ },
+ {
+  "id": "leviticus-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what standard was the ram valued in shekels of silver?",
+  "choices": [
+   "The shekel of the camp",
+   "The shekel of the sanctuary",
+   "The shekel of the priest",
+   "The shekel of the king"
+  ],
+  "answer": 1,
+  "explanation": "With thy estimation by shekels of silver, after the shekel of the sanctuary.",
+  "ref": "Leviticus 5:15"
+ },
+ {
+  "id": "leviticus-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom was the amends, with the fifth part added, given?",
+  "choices": [
+   "Moses",
+   "The LORD's altar",
+   "The poor",
+   "The priest"
+  ],
+  "answer": 3,
+  "explanation": "He shall add the fifth part thereto, and give it unto the priest.",
+  "ref": "Leviticus 5:16"
+ },
+ {
+  "id": "leviticus-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of the two birds did the priest offer first?",
+  "choices": [
+   "The sin offering",
+   "The burnt offering",
+   "The smaller one",
+   "The one with the whiter wings"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall offer that which is for the sin offering first.",
+  "ref": "Leviticus 5:8"
+ },
+ {
+  "id": "leviticus-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which carcase is named among the things that made a person unclean?",
+  "choices": [
+   "Unclean locusts",
+   "Unclean creeping things",
+   "Unclean fishes",
+   "Unclean birds"
+  ],
+  "answer": 1,
+  "explanation": "If a soul touch the carcase of unclean creeping things, he also shall be unclean, and guilty.",
+  "ref": "Leviticus 5:2"
+ },
+ {
+  "id": "leviticus-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the man who touched hidden uncleanness become guilty?",
+  "choices": [
+   "At the next feast",
+   "When he knew of it",
+   "When he touched it",
+   "When the priest saw it"
+  ],
+  "answer": 1,
+  "explanation": "It be hid from him; when he knoweth of it, then he shall be guilty.",
+  "ref": "Leviticus 5:3"
+ },
+ {
+  "id": "leviticus-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The ram without blemish was valued \"with thy\" what?",
+  "choices": [
+   "Judgment",
+   "Oath",
+   "Estimation",
+   "Counsel"
+  ],
+  "answer": 2,
+  "explanation": "He shall bring a ram without blemish out of the flock, with thy estimation, for a trespass offering.",
+  "ref": "Leviticus 5:18"
+ },
+ {
+  "id": "leviticus-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Touching a hidden unclean carcase made the person what two things?",
+  "choices": [
+   "Unclean and guilty",
+   "Cursed and cut off",
+   "Poor and weak",
+   "Silent and sorry"
+  ],
+  "answer": 0,
+  "explanation": "He also shall be unclean, and guilty.",
+  "ref": "Leviticus 5:2"
+ },
+ {
+  "id": "leviticus-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides carcases, what other uncleanness might a man touch?",
+  "choices": [
+   "The uncleanness of man",
+   "The uncleanness of a garment",
+   "The uncleanness of a camp",
+   "The uncleanness of a house"
+  ],
+  "answer": 0,
+  "explanation": "If he touch the uncleanness of man, whatsoever uncleanness it be, and it be hid from him, when he knoweth of it, he shall be guilty.",
+  "ref": "Leviticus 5:3"
+ },
+ {
+  "id": "leviticus-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the handful of flour called when it was burned?",
+  "choices": [
+   "A firstfruit",
+   "A wave offering",
+   "A heave offering",
+   "A memorial"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall take his handful of it, even a memorial thereof, and burn it on the altar.",
+  "ref": "Leviticus 5:12"
+ },
+ {
+  "id": "leviticus-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What case did the LORD give Moses after the flour offering?",
+  "choices": [
+   "A false witness",
+   "A broken vow",
+   "Trespass in the holy things",
+   "A leper's cleansing"
+  ],
+  "answer": 2,
+  "explanation": "If a soul commit a trespass, and sin through ignorance, in the holy things of the LORD.",
+  "ref": "Leviticus 5:14–15"
+ },
+ {
+  "id": "leviticus-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In how many of these things must a man be guilty to confess his sin?",
+  "choices": [
+   "One of these things",
+   "All of these things",
+   "Three of these things",
+   "Two of these things"
+  ],
+  "answer": 0,
+  "explanation": "When he shall be guilty in one of these things, he shall confess that he hath sinned in that thing.",
+  "ref": "Leviticus 5:5"
+ },
+ {
+  "id": "leviticus-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose holy things did the sinner trespass in through ignorance?",
+  "choices": [
+   "The priests'",
+   "The people's",
+   "The LORD's",
+   "The Levites'"
+  ],
+  "answer": 2,
+  "explanation": "If a soul commit a trespass, and sin through ignorance, in the holy things of the LORD.",
+  "ref": "Leviticus 5:15"
+ },
+ {
+  "id": "leviticus-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the soul who heard the voice of swearing act as?",
+  "choices": [
+   "A surety",
+   "A judge",
+   "A priest",
+   "A witness"
+  ],
+  "answer": 3,
+  "explanation": "If a soul sin, and hear the voice of swearing, and is a witness, and do not utter it, he shall bear his iniquity.",
+  "ref": "Leviticus 5:1"
+ },
+ {
+  "id": "leviticus-5-h-15",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the priest burn the handful of flour?",
+  "choices": [
+   "Before the vail",
+   "Outside the camp",
+   "In the court",
+   "On the altar"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall take his handful, and burn it on the altar.",
+  "ref": "Leviticus 5:12"
+ },
+ {
   "id": "old-leviticus-6-1",
   "chapter": 6,
   "level": "beginner",
