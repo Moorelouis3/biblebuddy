@@ -14,6 +14,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import MatchSettings from "./MatchSettings";
+import { fireConfettiBurst } from "@/lib/celebration";
+import { ACTION_POINT_WEIGHTS } from "@/lib/levelSystem";
+
+/** XP for a board's first win: the match_board_won weight the points engine scores. */
+const BOARD_XP = ACTION_POINT_WEIGHTS.match_board_won ?? 10;
 import {
   adjacent,
   cloneBoard,
@@ -126,6 +131,7 @@ export default function MatchBoard({
   const [hint, setHint] = useState<Pos[] | null>(null);
   const [toast, setToast] = useState<string | null>(null);
   const [settings, setSettings] = useState(false);
+  const [celebrate, setCelebrate] = useState<{ xp: number } | null>(null);
   const [outcome, setOutcome] = useState<Outcome>(null);
   const boardRef = useRef(board);
   useEffect(() => {
@@ -260,6 +266,13 @@ export default function MatchBoard({
       writeSavedBoard(null);
       trackMatch("match_board_won", { board: level.id, number: level.number, title: level.title, score: finalScore, movesLeft, movesUsed: level.moves - movesLeft, replay: alreadyWon });
       matchSound.win();
+      // The win itself first: confetti and "+10 XP" over the finished board
+      // for a couple of seconds, then the story screen (Louis, 2026-11-23:
+      // "something should happen after a board win... confetti, plus XP").
+      // XP only on a board's first win; a replay celebrates without it.
+      setCelebrate({ xp: alreadyWon ? 0 : BOARD_XP });
+      fireConfettiBurst({ durationMs: 1800, origins: 2, peakParticleCount: 60, colors: ["#f6d36b", "#fff3cf", "#34a35a", "#0056FD", "#e8743b"] });
+      window.setTimeout(() => setCelebrate(null), 2200);
       setOutcome({ won: true, score: finalScore, movesLeft });
     } else if (movesLeft <= 0) {
       matchSound.lose();
@@ -499,7 +512,12 @@ export default function MatchBoard({
       {settings ? <MatchSettings onClose={() => setSettings(false)} /> : null}
 
       {/* A Genesis board won: its story screen (WinStory); other boards: the scroll. */}
-      {outcome?.won && winStoryFor(level.book, level.number, level.id) ? (
+      {celebrate ? (
+        <div className="bbm-winburst" role="status" aria-live="polite">
+          <p className="bbm-winburst-title">Board complete!</p>
+          {celebrate.xp ? <p className="bbm-winburst-xp">+{celebrate.xp} XP</p> : <p className="bbm-winburst-sub">Played again</p>}
+        </div>
+      ) : outcome?.won && winStoryFor(level.book, level.number, level.id) ? (
         <WinStory src={winStoryFor(level.book, level.number, level.id)!} alt={`Well done! ${level.title} complete`} onContinue={onExit} />
       ) : outcome ? (
         <div className="bbm-panelwrap" role="dialog" aria-modal="true">

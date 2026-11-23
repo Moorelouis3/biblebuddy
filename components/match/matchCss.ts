@@ -467,6 +467,19 @@ html.bb-native.bb-ios .bbm-board { padding-top: calc(12px + max(env(safe-area-in
 .bbm-hud { padding-left: calc(var(--w) * .175) !important; padding-right: calc(var(--w) * .16) !important; gap: 6px !important; }
 .bbm-goal { gap: 2px !important; font-size: clamp(16px, calc(var(--w) * .05), 24px) !important; }
 .bbm-goal img { width: clamp(32px, calc(var(--w) * .095), 48px) !important; height: clamp(32px, calc(var(--w) * .095), 48px) !important; filter: drop-shadow(0 2px 2px rgba(0,0,0,.25)); }
+/* The win moment: "Board complete!" and "+10 XP" pop over the finished board, with confetti, before the story screen. */
+.bbm-winburst { position:fixed; inset:0; z-index:30; display:flex; flex-direction:column; align-items:center; justify-content:center; gap: 10px; pointer-events:none;
+  background: radial-gradient(circle at 50% 45%, rgba(255,226,140,.45), rgba(20,10,2,.35) 60%); animation: bbm-fade .25s ease-out both; }
+.bbm-winburst-title { margin:0; padding: 10px 26px 12px; font-size: clamp(26px, 8vw, 40px); font-weight:900; color:#4a2a10 !important; border-radius: 18px;
+  background: linear-gradient(180deg,#fff3cf,#f2cf7a); box-shadow: inset 0 0 0 3px #c9934a, 0 10px 24px rgba(0,0,0,.45);
+  animation: bbm-burst-pop .5s cubic-bezier(.2,1.6,.4,1) both; }
+.bbm-winburst-xp { margin:0; font-size: clamp(40px, 14vw, 72px); font-weight:900; line-height:1; color:#fff8e1 !important;
+  -webkit-text-stroke: 2px #3a1d06; paint-order: stroke fill; text-shadow: 0 4px 0 #3a1d06, 0 0 22px rgba(255,214,90,.95), 0 8px 18px rgba(0,0,0,.6);
+  animation: bbm-burst-pop .55s .25s cubic-bezier(.2,1.6,.4,1) both, bbm-xp-rise 2.2s .3s ease-out both; }
+.bbm-winburst-sub { margin:0; font-size: 20px; font-weight:800; color:#fff3cf !important; text-shadow: 0 2px 6px rgba(0,0,0,.7); animation: bbm-burst-pop .5s .2s both; }
+@keyframes bbm-burst-pop { from { transform: scale(.3); opacity:0; } to { transform: scale(1); opacity:1; } }
+@keyframes bbm-xp-rise { 0%,55% { translate: 0 0; } 100% { translate: 0 -24px; } }
+@media (prefers-reduced-motion: reduce) { .bbm-winburst *, .bbm-winburst { animation: none !important; } }
 /* Long book names (Leviticus, Deuteronomy) get a wider ribbon and smaller type so the word fits. */
 .bbm-ribbon.is-long { width: 270px; font-size: 20px; letter-spacing: 0; }
 `;

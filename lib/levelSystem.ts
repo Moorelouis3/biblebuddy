@@ -70,6 +70,10 @@ export const ACTION_POINT_WEIGHTS: Partial<Record<ActionType, number>> = {
   // chapter. Scored once per book via UNIQUE_PER_LABEL in lib/pointsEngine.ts,
   // so replaying a puzzle pays nothing.
   word_search_book_completed: 15,
+  // A Bible Buddy Match board won (Louis, 2026-11-23: "give the user XP for
+  // winning a board"). Scored once per board via UNIQUE_PER_LABEL in
+  // lib/pointsEngine.ts (the label is the board id), so replays pay nothing.
+  match_board_won: 10,
   feed_post_thought: 5,
   feed_post_prayer: 5,
   feed_post_prayer_request: 5,

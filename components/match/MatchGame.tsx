@@ -25,6 +25,8 @@ import { trackMatch } from "@/lib/match/track";
 import { playMatchMusic, stopMatchMusic } from "@/lib/match/sound";
 import MatchSettings from "./MatchSettings";
 import GENERATED_MAPS from "@/lib/match/maps.generated.json";
+import { ACTION_TYPE } from "@/lib/actionTypes";
+import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { MATCH_CSS } from "./matchCss";
 import { MAP_PREVIEWS } from "@/lib/match/mapPreviews";
 import { clueApi } from "@/lib/clueGame/track";
@@ -77,6 +79,21 @@ function merge(p: Progress, s: Saved | null): Progress {
   const best = { ...p.best };
   for (const [k, v] of Object.entries(s.best || {})) best[k] = Math.max(best[k] || 0, Number(v) || 0);
   return normalize({ ...p, unlocked: Math.max(p.unlocked, s.unlocked || 1), done: [...new Set([...p.done, ...(s.done || [])])], best });
+}
+
+/**
+ * XP for a board won (Louis, 2026-11-23). One master_actions row, the same way
+ * Bible Word Search logs a finished book; lib/pointsEngine.ts scores
+ * match_board_won once per label (the board id), so even a repeated log could
+ * not pay twice. Never from a local dev server, so test plays earn nothing.
+ */
+function logBoardWon(boardId: string) {
+  if (process.env.NODE_ENV === "development") return;
+  void (async () => {
+    const { data } = await supabase.auth.getUser();
+    const uid = data.user?.id;
+    if (uid) await logActionToMasterActions(uid, ACTION_TYPE.match_board_won, boardId).catch(() => {});
+  })();
 }
 
 /** Send progress up (match_progress), so buddies can see where you are. */
@@ -204,10 +221,12 @@ export default function MatchGame() {
           level={screen.level}
           isLastLevel={screen.level.number === MATCH_LEVELS.length}
           alreadyWon={progress.done.includes(screen.level.id)}
-          onWin={(score) =>
-            testing.current
-              ? undefined
-              : update((p) => {
+          onWin={(score) => {
+            if (testing.current) return;
+            // XP: a board's first win logs match_board_won (labelled with the
+            // board id), which the points engine scores once per board.
+            if (!progress.done.includes(screen.level.id)) logBoardWon(screen.level.id);
+            update((p) => {
               const first = !p.done.includes(screen.level.id);
               const unlockNext = screen.level.number >= p.unlocked && screen.level.number < MATCH_LEVELS.length;
               return {
@@ -217,8 +236,8 @@ export default function MatchGame() {
                 unlocked: unlockNext ? screen.level.number + 1 : p.unlocked,
                 travel: unlockNext ? true : p.travel,
               };
-            }, true)
-          }
+            }, true);
+          }}
           onExit={() => setScreen({ name: "map" })}
         />
       )}

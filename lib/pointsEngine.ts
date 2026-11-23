@@ -48,6 +48,8 @@ const UNIQUE_PER_LABEL = new Set<string>([
   // Bible Word Search, 2026-11-13. The label is the book name alone, so each
   // of the 66 books can score once and no replay ever scores again.
   "word_search_book_completed",
+  // Bible Buddy Match, 2026-11-23: the label is the board id, so each board scores once.
+  "match_board_won",
   "person_learned",
   "place_discovered",
   "keyword_mastered",
