@@ -462,7 +462,9 @@ html.bb-native.bb-ios .bbm-board { padding-top: calc(12px + max(env(safe-area-in
 .bbm-gearbtn span { transform: translateY(-1px); text-shadow: 0 1px 0 #ffe9a8; }
 /* The goals without the word "Goal": the pictures and counts take its room and
    are bigger (Louis, 2026-11-23: "remove the word Goal, make the items bigger"). */
-.bbm-hud-goalrow { margin-top: 0 !important; }
+.bbm-hud-goalrow { margin-top: 0 !important; width: 100%; justify-content: space-between !important; gap: calc(var(--w) * .02) !important; padding: 0 calc(var(--w) * .015); box-sizing: border-box; }
+.bbm-hud-goals { display:flex; align-items:center; }
+.bbm-hud { padding-left: calc(var(--w) * .175) !important; padding-right: calc(var(--w) * .16) !important; gap: 6px !important; }
 .bbm-goal { gap: 2px !important; font-size: clamp(16px, calc(var(--w) * .05), 24px) !important; }
 .bbm-goal img { width: clamp(32px, calc(var(--w) * .095), 48px) !important; height: clamp(32px, calc(var(--w) * .095), 48px) !important; filter: drop-shadow(0 2px 2px rgba(0,0,0,.25)); }
 /* Long book names (Leviticus, Deuteronomy) get a wider ribbon and smaller type so the word fits. */
