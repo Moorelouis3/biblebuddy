@@ -7296,6 +7296,646 @@
   "ref": "Leviticus 11:24–28"
  },
  {
+  "id": "leviticus-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the LORD speak to in this chapter?",
+  "choices": [
+   "Aaron's sons",
+   "The elders",
+   "Moses and Aaron",
+   "Moses only"
+  ],
+  "answer": 2,
+  "explanation": "The LORD spake unto Moses and to Aaron.",
+  "ref": "Leviticus 11:1"
+ },
+ {
+  "id": "leviticus-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which animal divides the hoof but is unclean because it does not chew the cud?",
+  "choices": [
+   "The swine",
+   "The camel",
+   "The coney",
+   "The hare"
+  ],
+  "answer": 0,
+  "explanation": "The swine, though he divide the hoof, yet he cheweth not the cud; he is unclean to you.",
+  "ref": "Leviticus 11:7"
+ },
+ {
+  "id": "leviticus-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which of these is unclean because it chews the cud but does not divide the hoof?",
+  "choices": [
+   "The swine",
+   "The goat",
+   "The ox",
+   "The hare"
+  ],
+  "answer": 3,
+  "explanation": "The hare, because he cheweth the cud, but divideth not the hoof; he is unclean unto you.",
+  "ref": "Leviticus 11:6"
+ },
+ {
+  "id": "leviticus-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which bird heads the list of fowls that were an abomination?",
+  "choices": [
+   "The owl",
+   "The eagle",
+   "The swan",
+   "The stork"
+  ],
+  "answer": 1,
+  "explanation": "These are they which ye shall have in abomination among the fowls: the eagle.",
+  "ref": "Leviticus 11:13"
+ },
+ {
+  "id": "leviticus-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which of these could Israel eat?",
+  "choices": [
+   "The mole",
+   "The locust",
+   "The bat",
+   "The weasel"
+  ],
+  "answer": 1,
+  "explanation": "These of them ye may eat; the locust after his kind.",
+  "ref": "Leviticus 11:22"
+ },
+ {
+  "id": "leviticus-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did a person who carried an unclean carcase have to do?",
+  "choices": [
+   "Fast three days",
+   "Wash his clothes",
+   "Leave the camp",
+   "Offer a lamb"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever beareth ought of the carcase of them shall wash his clothes, and be unclean until the even.",
+  "ref": "Leviticus 11:25"
+ },
+ {
+  "id": "leviticus-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD call water creatures that had no fins nor scales?",
+  "choices": [
+   "An abomination",
+   "A sign",
+   "A blessing",
+   "A sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "Whatsoever hath no fins nor scales in the waters, that shall be an abomination unto you.",
+  "ref": "Leviticus 11:12"
+ },
+ {
+  "id": "leviticus-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which flying animal is listed among the fowls Israel must not eat?",
+  "choices": [
+   "The sparrow",
+   "The bat",
+   "The dove",
+   "The quail"
+  ],
+  "answer": 1,
+  "explanation": "And the stork, the heron after her kind, and the lapwing, and the bat.",
+  "ref": "Leviticus 11:19"
+ },
+ {
+  "id": "leviticus-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what land did the LORD bring Israel up?",
+  "choices": [
+   "Egypt",
+   "Midian",
+   "Moab",
+   "Canaan"
+  ],
+  "answer": 0,
+  "explanation": "I am the LORD that bringeth you up out of the land of Egypt, to be your God.",
+  "ref": "Leviticus 11:45"
+ },
+ {
+  "id": "leviticus-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the people told not to make themselves with creeping things?",
+  "choices": [
+   "Rich",
+   "Hungry",
+   "Afraid",
+   "Abominable"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall not make yourselves abominable with any creeping thing that creepeth.",
+  "ref": "Leviticus 11:43"
+ },
+ {
+  "id": "leviticus-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which waters could fish with fins and scales be eaten?",
+  "choices": [
+   "Only the rivers",
+   "Only lakes",
+   "The seas and the rivers",
+   "Only the sea"
+  ],
+  "answer": 2,
+  "explanation": "Whatsoever hath fins and scales in the waters, in the seas, and in the rivers, them shall ye eat.",
+  "ref": "Leviticus 11:9"
+ },
+ {
+  "id": "leviticus-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which animal is named among the unclean creeping things?",
+  "choices": [
+   "The camel",
+   "The hare",
+   "The mouse",
+   "The swine"
+  ],
+  "answer": 2,
+  "explanation": "These also shall be unclean among the creeping things: the weasel, and the mouse, and the tortoise.",
+  "ref": "Leviticus 11:29"
+ },
+ {
+  "id": "leviticus-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done with an earthen vessel into which an unclean carcase fell?",
+  "choices": [
+   "It was broken",
+   "It was sold",
+   "It was buried",
+   "It was washed"
+  ],
+  "answer": 0,
+  "explanation": "Every earthen vessel, whereinto any of them falleth, whatsoever is in it shall be unclean; and ye shall break it.",
+  "ref": "Leviticus 11:33"
+ },
+ {
+  "id": "leviticus-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done with an oven or ranges for pots touched by a carcase?",
+  "choices": [
+   "They were washed",
+   "They were buried",
+   "They were sold",
+   "They were broken down"
+  ],
+  "answer": 3,
+  "explanation": "Whether it be oven, or ranges for pots, they shall be broken down.",
+  "ref": "Leviticus 11:35"
+ },
+ {
+  "id": "leviticus-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What stayed clean even when a carcase was near?",
+  "choices": [
+   "A sack",
+   "A garment",
+   "A vessel of wood",
+   "A fountain or pit with plenty of water"
+  ],
+  "answer": 3,
+  "explanation": "A fountain or pit, wherein there is plenty of water, shall be clean.",
+  "ref": "Leviticus 11:36"
+ },
+ {
+  "id": "leviticus-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When would seed with part of a carcase on it be unclean?",
+  "choices": [
+   "If it was sown",
+   "If water had been put on the seed",
+   "If it was carried",
+   "If it was old"
+  ],
+  "answer": 1,
+  "explanation": "If any water be put upon the seed, and any part of their carcase fall thereon, it shall be unclean.",
+  "ref": "Leviticus 11:37–38"
+ },
+ {
+  "id": "leviticus-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was a person unclean who touched the carcase of a clean beast that died?",
+  "choices": [
+   "One month",
+   "Until the even",
+   "Seven days",
+   "For ever"
+  ],
+  "answer": 1,
+  "explanation": "If any beast, of which ye may eat, die; he that toucheth the carcase thereof shall be unclean until the even.",
+  "ref": "Leviticus 11:39"
+ },
+ {
+  "id": "leviticus-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done with a vessel of wood, raiment, skin or sack when a dead creeping thing fell on it?",
+  "choices": [
+   "It was broken",
+   "It was buried",
+   "It was put into water",
+   "It was burned"
+  ],
+  "answer": 2,
+  "explanation": "Whatsoever vessel it be, it must be put into water, and it shall be unclean until the even.",
+  "ref": "Leviticus 11:32"
+ },
+ {
+  "id": "leviticus-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which beasts were unclean among those that go on all four?",
+  "choices": [
+   "Those that go upon their paws",
+   "Those that chew the cud",
+   "Those that live in water",
+   "Those that divide the hoof"
+  ],
+  "answer": 0,
+  "explanation": "Whatsoever goeth upon his paws, among all manner of beasts that go on all four, those are unclean unto you.",
+  "ref": "Leviticus 11:27"
+ },
+ {
+  "id": "leviticus-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the purpose of the law at the end of the chapter?",
+  "choices": [
+   "To feed the poor",
+   "To teach the priests to write",
+   "To build the altar",
+   "To make a difference between the unclean and the clean"
+  ],
+  "answer": 3,
+  "explanation": "To make a difference between the unclean and the clean, and between the beast that may be eaten and the beast that may not be eaten.",
+  "ref": "Leviticus 11:47"
+ },
+ {
+  "id": "leviticus-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these flying creeping things could Israel eat?",
+  "choices": [
+   "The lizard",
+   "The grasshopper",
+   "The snail",
+   "The weasel"
+  ],
+  "answer": 1,
+  "explanation": "Even these of them ye may eat; the locust, the bald locust, the beetle, and the grasshopper.",
+  "ref": "Leviticus 11:22"
+ },
+ {
+  "id": "leviticus-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the edible flying creeping things have above their feet?",
+  "choices": [
+   "Wings of fire",
+   "Scales",
+   "Claws",
+   "Legs to leap with"
+  ],
+  "answer": 3,
+  "explanation": "Which have legs above their feet, to leap withal upon the earth.",
+  "ref": "Leviticus 11:21"
+ },
+ {
+  "id": "leviticus-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were Israel to have in abomination about water creatures without fins and scales?",
+  "choices": [
+   "Their carcases",
+   "Their eggs",
+   "Their nests",
+   "Their scales"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall not eat of their flesh, but ye shall have their carcases in abomination.",
+  "ref": "Leviticus 11:11"
+ },
+ {
+  "id": "leviticus-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was true of whatever was in an earthen vessel into which a carcase fell?",
+  "choices": [
+   "It was holy",
+   "It was for the priests",
+   "It was unclean",
+   "It was clean"
+  ],
+  "answer": 2,
+  "explanation": "Whereinto any of them falleth, whatsoever is in it shall be unclean.",
+  "ref": "Leviticus 11:33"
+ },
+ {
+  "id": "leviticus-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must not be done to the flesh of unclean beasts?",
+  "choices": [
+   "Eaten, and their carcase not touched",
+   "Burned on the altar",
+   "Used for oil",
+   "Sold to strangers"
+  ],
+  "answer": 0,
+  "explanation": "Of their flesh shall ye not eat, and their carcase shall ye not touch; they are unclean to you.",
+  "ref": "Leviticus 11:8"
+ },
+ {
+  "id": "leviticus-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many kinds of flying creeping things are named as edible?",
+  "choices": [
+   "Three",
+   "Four",
+   "Two",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "The locust, the bald locust, the beetle, and the grasshopper.",
+  "ref": "Leviticus 11:22"
+ },
+ {
+  "id": "leviticus-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which three animals chew the cud but do not divide the hoof?",
+  "choices": [
+   "The swine, the camel and the hare",
+   "The ox, the coney and the camel",
+   "The hare, the swine and the coney",
+   "The camel, the coney and the hare"
+  ],
+  "answer": 3,
+  "explanation": "The camel, the coney and the hare chew the cud but divide not the hoof.",
+  "ref": "Leviticus 11:4–6"
+ },
+ {
+  "id": "leviticus-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which bird is listed between the swan and the gier eagle?",
+  "choices": [
+   "The heron",
+   "The pelican",
+   "The stork",
+   "The cormorant"
+  ],
+  "answer": 1,
+  "explanation": "And the swan, and the pelican, and the gier eagle.",
+  "ref": "Leviticus 11:18"
+ },
+ {
+  "id": "leviticus-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which creeping thing is named first in the list of unclean creeping things?",
+  "choices": [
+   "The mouse",
+   "The tortoise",
+   "The weasel",
+   "The ferret"
+  ],
+  "answer": 2,
+  "explanation": "The weasel, and the mouse, and the tortoise after his kind.",
+  "ref": "Leviticus 11:29"
+ },
+ {
+  "id": "leviticus-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which creeping thing is named last in the list?",
+  "choices": [
+   "The ferret",
+   "The mole",
+   "The lizard",
+   "The snail"
+  ],
+  "answer": 1,
+  "explanation": "And the ferret, and the chameleon, and the lizard, and the snail, and the mole.",
+  "ref": "Leviticus 11:30"
+ },
+ {
+  "id": "leviticus-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which bird is said to be \"after her kind\"?",
+  "choices": [
+   "The hawk",
+   "The heron",
+   "The kite",
+   "The raven"
+  ],
+  "answer": 1,
+  "explanation": "The stork, the heron after her kind, and the lapwing, and the bat.",
+  "ref": "Leviticus 11:19"
+ },
+ {
+  "id": "leviticus-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was still unclean in a fountain or pit with plenty of water?",
+  "choices": [
+   "That which touched their carcase",
+   "The pit",
+   "The fountain",
+   "The water"
+  ],
+  "answer": 0,
+  "explanation": "A fountain or pit shall be clean: but that which toucheth their carcase shall be unclean.",
+  "ref": "Leviticus 11:36"
+ },
+ {
+  "id": "leviticus-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had to be done by one who ate of the carcase of a clean beast that died?",
+  "choices": [
+   "Leave the camp",
+   "Fast one day",
+   "Wash his clothes and be unclean until the even",
+   "Offer a ram"
+  ],
+  "answer": 2,
+  "explanation": "He that eateth of the carcase of it shall wash his clothes, and be unclean until the even.",
+  "ref": "Leviticus 11:40"
+ },
+ {
+  "id": "leviticus-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which bird comes after the vulture and the kite in the list?",
+  "choices": [
+   "The hawk",
+   "The eagle",
+   "The raven",
+   "The owl"
+  ],
+  "answer": 2,
+  "explanation": "And the vulture, and the kite after his kind; every raven after his kind.",
+  "ref": "Leviticus 11:14–15"
+ },
+ {
+  "id": "leviticus-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was unclean in every vessel that held such water?",
+  "choices": [
+   "The priest",
+   "The vessel only",
+   "All drink that might be drunk",
+   "The seed"
+  ],
+  "answer": 2,
+  "explanation": "All drink that may be drunk in every such vessel shall be unclean.",
+  "ref": "Leviticus 11:34"
+ },
+ {
+  "id": "leviticus-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were all other flying creeping things with four feet called?",
+  "choices": [
+   "Acceptable",
+   "Holy",
+   "Clean",
+   "An abomination"
+  ],
+  "answer": 3,
+  "explanation": "But all other flying creeping things, which have four feet, shall be an abomination unto you.",
+  "ref": "Leviticus 11:23"
+ },
+ {
+  "id": "leviticus-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which bird follows the eagle in the list?",
+  "choices": [
+   "The raven",
+   "The ossifrage",
+   "The swan",
+   "The owl"
+  ],
+  "answer": 1,
+  "explanation": "The eagle, and the ossifrage, and the ospray.",
+  "ref": "Leviticus 11:13"
+ },
+ {
+  "id": "leviticus-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which bird is listed between the owl and the cuckow?",
+  "choices": [
+   "The pelican",
+   "The swan",
+   "The night hawk",
+   "The kite"
+  ],
+  "answer": 2,
+  "explanation": "And the owl, and the night hawk, and the cuckow, and the hawk after his kind.",
+  "ref": "Leviticus 11:16"
+ },
+ {
+  "id": "leviticus-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which bird is listed between the little owl and the great owl?",
+  "choices": [
+   "The cormorant",
+   "The hawk",
+   "The swan",
+   "The pelican"
+  ],
+  "answer": 0,
+  "explanation": "And the little owl, and the cormorant, and the great owl.",
+  "ref": "Leviticus 11:17"
+ },
+ {
+  "id": "leviticus-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which creeping things were not to be eaten, besides those on all four?",
+  "choices": [
+   "Whatever lives in the sea",
+   "Whatever has wings",
+   "Whatever goes upon the belly",
+   "Whatever hops"
+  ],
+  "answer": 2,
+  "explanation": "Whatsoever goeth upon the belly, and whatsoever goeth upon all four, or whatsoever hath more feet, them ye shall not eat.",
+  "ref": "Leviticus 11:42"
+ },
+ {
   "id": "old-leviticus-12-1",
   "chapter": 12,
   "level": "beginner",
