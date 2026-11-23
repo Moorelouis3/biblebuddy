@@ -12432,6 +12432,646 @@
   "ref": "Exodus 18:21"
  },
  {
+  "id": "exodus-18-e-01",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose father-in-law was Jethro?",
+  "choices": [
+   "Aaron",
+   "Hur",
+   "Moses",
+   "Joshua"
+  ],
+  "answer": 2,
+  "explanation": "Jethro, the priest of Midian, was Moses' father in law.",
+  "ref": "Exodus 18:1"
+ },
+ {
+  "id": "exodus-18-e-02",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose wife did Jethro bring to Moses?",
+  "choices": [
+   "Rachel",
+   "Jochebed",
+   "Zipporah",
+   "Miriam"
+  ],
+  "answer": 2,
+  "explanation": "Jethro took Zipporah, Moses' wife, and her two sons.",
+  "ref": "Exodus 18:2"
+ },
+ {
+  "id": "exodus-18-e-03",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sons of Moses came with Jethro?",
+  "choices": [
+   "Four",
+   "Two",
+   "Three",
+   "One"
+  ],
+  "answer": 1,
+  "explanation": "Jethro took Zipporah and her two sons.",
+  "ref": "Exodus 18:2–3"
+ },
+ {
+  "id": "exodus-18-e-04",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jethro find Moses encamped?",
+  "choices": [
+   "In Midian",
+   "At the mount of God",
+   "At Rephidim's sea",
+   "At Egypt"
+  ],
+  "answer": 1,
+  "explanation": "He came unto Moses into the wilderness, where he encamped at the mount of God.",
+  "ref": "Exodus 18:5"
+ },
+ {
+  "id": "exodus-18-e-05",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Moses greet Jethro when they met?",
+  "choices": [
+   "He gave him a gift of gold",
+   "He did obeisance and kissed him",
+   "He wept in silence",
+   "He ran from him"
+  ],
+  "answer": 1,
+  "explanation": "Moses went out to meet his father in law, and did obeisance, and kissed him.",
+  "ref": "Exodus 18:7"
+ },
+ {
+  "id": "exodus-18-e-06",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jethro offer to God?",
+  "choices": [
+   "Incense only",
+   "Gold and silver",
+   "A burnt offering and sacrifices",
+   "Fine flour only"
+  ],
+  "answer": 2,
+  "explanation": "Jethro took a burnt offering and sacrifices for God.",
+  "ref": "Exodus 18:12"
+ },
+ {
+  "id": "exodus-18-e-07",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jethro say about the LORD among all gods?",
+  "choices": [
+   "He is greater than all gods",
+   "He is hidden",
+   "He is far away",
+   "He is the only friend of Midian"
+  ],
+  "answer": 0,
+  "explanation": "Now I know that the LORD is greater than all gods.",
+  "ref": "Exodus 18:11"
+ },
+ {
+  "id": "exodus-18-e-08",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jethro say to Moses about the work he was doing alone?",
+  "choices": [
+   "It is not good",
+   "It is well done",
+   "It is finished",
+   "It is a blessing"
+  ],
+  "answer": 0,
+  "explanation": "The thing that thou doest is not good.",
+  "ref": "Exodus 18:17"
+ },
+ {
+  "id": "exodus-18-e-09",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened after Moses did all Jethro said?",
+  "choices": [
+   "Jethro built an altar",
+   "Jethro joined the army",
+   "Jethro departed to his own land",
+   "Jethro became a judge"
+  ],
+  "answer": 2,
+  "explanation": "Moses let his father in law depart; and he went his way into his own land.",
+  "ref": "Exodus 18:27"
+ },
+ {
+  "id": "exodus-18-e-10",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who chose able men to be rulers over the people?",
+  "choices": [
+   "Jethro",
+   "Moses",
+   "Joshua",
+   "Aaron"
+  ],
+  "answer": 1,
+  "explanation": "Moses chose able men out of all Israel, and made them heads over the people.",
+  "ref": "Exodus 18:25"
+ },
+ {
+  "id": "exodus-18-m-01",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Jethro's job, according to the text?",
+  "choices": [
+   "Shepherd of Sinai",
+   "Priest of Midian",
+   "Captain of Egypt",
+   "Judge of Israel"
+  ],
+  "answer": 1,
+  "explanation": "Jethro was the priest of Midian, Moses' father in law.",
+  "ref": "Exodus 18:1"
+ },
+ {
+  "id": "exodus-18-m-02",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jethro hear that caused him to come?",
+  "choices": [
+   "That Moses was sick",
+   "That Amalek was beaten",
+   "All that God had done for Moses and Israel",
+   "That Pharaoh had died"
+  ],
+  "answer": 2,
+  "explanation": "Jethro heard of all that God had done for Moses, and for Israel his people.",
+  "ref": "Exodus 18:1"
+ },
+ {
+  "id": "exodus-18-m-03",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Moses call his son Gershom?",
+  "choices": [
+   "He was born in the wilderness",
+   "He had been an alien in a strange land",
+   "His father was a judge",
+   "God helped him"
+  ],
+  "answer": 1,
+  "explanation": "He said, I have been an alien in a strange land.",
+  "ref": "Exodus 18:3"
+ },
+ {
+  "id": "exodus-18-m-04",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Moses call his son Eliezer?",
+  "choices": [
+   "God delivered him from Pharaoh's sword",
+   "He was born at the mount",
+   "He was a gift from Jethro",
+   "He was a firstborn"
+  ],
+  "answer": 0,
+  "explanation": "The God of my father was mine help, and delivered me from the sword of Pharaoh.",
+  "ref": "Exodus 18:4"
+ },
+ {
+  "id": "exodus-18-m-05",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses tell Jethro when they went into the tent?",
+  "choices": [
+   "A new law",
+   "His plan for a king",
+   "All his sins in Midian",
+   "All the LORD had done to Pharaoh and Egypt"
+  ],
+  "answer": 3,
+  "explanation": "Moses told all that the LORD had done unto Pharaoh and to the Egyptians for Israel's sake.",
+  "ref": "Exodus 18:8"
+ },
+ {
+  "id": "exodus-18-m-06",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jethro respond to hearing what the LORD did?",
+  "choices": [
+   "He left in silence",
+   "He doubted it",
+   "He rejoiced for the goodness",
+   "He was angry"
+  ],
+  "answer": 2,
+  "explanation": "Jethro rejoiced for all the goodness which the LORD had done to Israel.",
+  "ref": "Exodus 18:9"
+ },
+ {
+  "id": "exodus-18-m-07",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "Who came with the elders to eat bread with Jethro?",
+  "choices": [
+   "Aaron",
+   "Joshua",
+   "Eleazar",
+   "Hur"
+  ],
+  "answer": 0,
+  "explanation": "Aaron came, and all the elders of Israel, to eat bread with Moses' father in law before God.",
+  "ref": "Exodus 18:12"
+ },
+ {
+  "id": "exodus-18-m-08",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Moses sit to judge the people?",
+  "choices": [
+   "The same night",
+   "On the morrow",
+   "At noon only",
+   "On the Sabbath"
+  ],
+  "answer": 1,
+  "explanation": "It came to pass on the morrow, that Moses sat to judge the people.",
+  "ref": "Exodus 18:13"
+ },
+ {
+  "id": "exodus-18-m-09",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people come to Moses?",
+  "choices": [
+   "To ask for bread",
+   "To ask for water",
+   "To ask to leave",
+   "To enquire of God"
+  ],
+  "answer": 3,
+  "explanation": "The people come unto me to enquire of God.",
+  "ref": "Exodus 18:15"
+ },
+ {
+  "id": "exodus-18-m-10",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jethro say would happen if Moses kept going alone?",
+  "choices": [
+   "He would surely wear away",
+   "He would grow rich",
+   "He would be sent back",
+   "He would be made king"
+  ],
+  "answer": 0,
+  "explanation": "Thou wilt surely wear away, both thou, and this people.",
+  "ref": "Exodus 18:18"
+ },
+ {
+  "id": "exodus-18-m-11",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jethro say Moses should teach the people?",
+  "choices": [
+   "Ordinances and laws",
+   "Trades and crafts",
+   "Songs of praise",
+   "The sword"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt teach them ordinances and laws.",
+  "ref": "Exodus 18:20"
+ },
+ {
+  "id": "exodus-18-m-12",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jethro say Moses should bring to God?",
+  "choices": [
+   "The elders",
+   "The causes of the people",
+   "The firstborn",
+   "Offerings of gold"
+  ],
+  "answer": 1,
+  "explanation": "Be thou for the people to God-ward, that thou mayest bring the causes unto God.",
+  "ref": "Exodus 18:19"
+ },
+ {
+  "id": "exodus-18-m-13",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of matters were the rulers to judge?",
+  "choices": [
+   "Every great matter",
+   "Every small matter",
+   "Matters of war",
+   "Matters of priests"
+  ],
+  "answer": 1,
+  "explanation": "Every great matter they shall bring unto thee, but every small matter they shall judge.",
+  "ref": "Exodus 18:22"
+ },
+ {
+  "id": "exodus-18-m-14",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jethro say would happen to the people if Moses did this?",
+  "choices": [
+   "They would go to their place in peace",
+   "They would cross the Jordan",
+   "They would fear Pharaoh",
+   "They would grow rich"
+  ],
+  "answer": 0,
+  "explanation": "All this people shall also go to their place in peace.",
+  "ref": "Exodus 18:23"
+ },
+ {
+  "id": "exodus-18-m-15",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the rulers bring to Moses?",
+  "choices": [
+   "The small matters",
+   "Every complaint",
+   "All the gifts",
+   "The hard causes"
+  ],
+  "answer": 3,
+  "explanation": "The hard causes they brought unto Moses.",
+  "ref": "Exodus 18:26"
+ },
+ {
+  "id": "exodus-18-h-01",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jethro say the chosen men must hate?",
+  "choices": [
+   "Pride",
+   "Covetousness",
+   "Strangers",
+   "Idolatry"
+  ],
+  "answer": 1,
+  "explanation": "Able men, such as fear God, men of truth, hating covetousness.",
+  "ref": "Exodus 18:21"
+ },
+ {
+  "id": "exodus-18-h-02",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides fearing God, what kind of men did Jethro say to choose?",
+  "choices": [
+   "Men of war",
+   "Men of wealth",
+   "Men of truth",
+   "Men of Levi"
+  ],
+  "answer": 2,
+  "explanation": "Able men, such as fear God, men of truth, hating covetousness.",
+  "ref": "Exodus 18:21"
+ },
+ {
+  "id": "exodus-18-h-03",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sizes of rulers did Jethro name?",
+  "choices": [
+   "Five",
+   "Three",
+   "Seven",
+   "Four"
+  ],
+  "answer": 3,
+  "explanation": "Rulers of thousands, hundreds, fifties, and tens.",
+  "ref": "Exodus 18:21"
+ },
+ {
+  "id": "exodus-18-h-04",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When were the rulers to judge the people?",
+  "choices": [
+   "At all seasons",
+   "On feast days only",
+   "Only on the morrow",
+   "Only in war"
+  ],
+  "answer": 0,
+  "explanation": "Let them judge the people at all seasons.",
+  "ref": "Exodus 18:22"
+ },
+ {
+  "id": "exodus-18-h-05",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the rulers do with Moses' burden?",
+  "choices": [
+   "Take it all away",
+   "Bear it with him",
+   "Leave it to Aaron",
+   "Return it to God"
+  ],
+  "answer": 1,
+  "explanation": "They shall bear the burden with thee.",
+  "ref": "Exodus 18:22"
+ },
+ {
+  "id": "exodus-18-h-06",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did the people stand by Moses as he judged?",
+  "choices": [
+   "From morning to evening",
+   "From noon to dusk",
+   "One hour",
+   "All night"
+  ],
+  "answer": 0,
+  "explanation": "The people stood by Moses from the morning unto the evening.",
+  "ref": "Exodus 18:13"
+ },
+ {
+  "id": "exodus-18-h-07",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say he made the people know besides judging them?",
+  "choices": [
+   "The way to Canaan",
+   "The names of the tribes",
+   "The songs of Moses",
+   "The statutes of God and his laws"
+  ],
+  "answer": 3,
+  "explanation": "I do make them know the statutes of God, and his laws.",
+  "ref": "Exodus 18:16"
+ },
+ {
+  "id": "exodus-18-h-08",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jethro say the LORD is greater than all gods?",
+  "choices": [
+   "He gave the law",
+   "He made the sea",
+   "He was above the Egyptians who dealt proudly",
+   "He sent manna"
+  ],
+  "answer": 2,
+  "explanation": "In the thing wherein they dealt proudly he was above them.",
+  "ref": "Exodus 18:11"
+ },
+ {
+  "id": "exodus-18-h-09",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "Who did Jethro say would wear away if Moses kept judging alone?",
+  "choices": [
+   "Moses only",
+   "The elders",
+   "Moses and the people",
+   "Moses and Aaron"
+  ],
+  "answer": 2,
+  "explanation": "Thou wilt surely wear away, both thou, and this people that is with thee.",
+  "ref": "Exodus 18:18"
+ },
+ {
+  "id": "exodus-18-h-10",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom did Aaron and the elders eat bread with Jethro?",
+  "choices": [
+   "Before Pharaoh",
+   "Before the ark",
+   "Before the people",
+   "Before God"
+  ],
+  "answer": 3,
+  "explanation": "They came to eat bread with Moses' father in law before God.",
+  "ref": "Exodus 18:12"
+ },
+ {
+  "id": "exodus-18-h-11",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Moses to be for the people, in Jethro's counsel?",
+  "choices": [
+   "A captain in war",
+   "A priest of Midian",
+   "A king to the tribes",
+   "For the people to God-ward"
+  ],
+  "answer": 3,
+  "explanation": "Be thou for the people to God-ward, that thou mayest bring the causes unto God.",
+  "ref": "Exodus 18:19"
+ },
+ {
+  "id": "exodus-18-h-12",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "What was the name of Moses' other son, besides Gershom?",
+  "choices": [
+   "Ithamar",
+   "Elisha",
+   "Eleazar",
+   "Eliezer"
+  ],
+  "answer": 3,
+  "explanation": "The name of the other was Eliezer.",
+  "ref": "Exodus 18:4"
+ },
+ {
+  "id": "exodus-18-h-13",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Moses done to Zipporah before Jethro took her?",
+  "choices": [
+   "Divorced her in Midian",
+   "Left her in Egypt",
+   "Hidden her",
+   "Sent her back"
+  ],
+  "answer": 3,
+  "explanation": "Jethro took Zipporah, Moses' wife, after he had sent her back.",
+  "ref": "Exodus 18:2"
+ },
+ {
+  "id": "exodus-18-h-14",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses and Jethro ask each other?",
+  "choices": [
+   "Of their journeys",
+   "Of the law",
+   "Of their welfare",
+   "Of Pharaoh"
+  ],
+  "answer": 2,
+  "explanation": "They asked each other of their welfare; and they came into the tent.",
+  "ref": "Exodus 18:7"
+ },
+ {
+  "id": "exodus-18-h-15",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which size of ruler came between hundreds and tens?",
+  "choices": [
+   "Thousands",
+   "Seventies",
+   "Twenties",
+   "Fifties"
+  ],
+  "answer": 3,
+  "explanation": "Rulers of thousands, rulers of hundreds, rulers of fifties, and rulers of tens.",
+  "ref": "Exodus 18:21"
+ },
+ {
   "id": "old-exodus-19-1",
   "chapter": 19,
   "level": "beginner",
