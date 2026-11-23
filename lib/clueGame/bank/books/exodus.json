@@ -2240,6 +2240,646 @@
   "ref": "Exodus 4:20"
  },
  {
+  "id": "exodus-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses hold in his hand when the LORD asked what it was?",
+  "choices": [
+   "A rod",
+   "A sword",
+   "A shepherd's bag",
+   "A sling"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, What is that in thine hand? And he said, A rod.",
+  "ref": "Exodus 4:2"
+ },
+ {
+  "id": "exodus-4-e-02x",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Moses take with him when he returned to Egypt?",
+  "choices": [
+   "Only Aaron",
+   "His mother",
+   "Jethro",
+   "His wife and sons"
+  ],
+  "answer": 3,
+  "explanation": "Moses took his wife and his sons, and set them upon an ass, and he returned to the land of Egypt.",
+  "ref": "Exodus 4:20"
+ },
+ {
+  "id": "exodus-4-e-03x",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses do when the rod became a serpent?",
+  "choices": [
+   "Struck it",
+   "Picked it up",
+   "Prayed",
+   "Fled from it"
+  ],
+  "answer": 3,
+  "explanation": "It became a serpent; and Moses fled from before it.",
+  "ref": "Exodus 4:3"
+ },
+ {
+  "id": "exodus-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the water of the river become if poured on dry land?",
+  "choices": [
+   "Wine",
+   "Fire",
+   "Dust",
+   "Blood"
+  ],
+  "answer": 3,
+  "explanation": "The water which thou takest out of the river shall become blood upon the dry land.",
+  "ref": "Exodus 4:9"
+ },
+ {
+  "id": "exodus-4-e-05x",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To which tribe did God say Aaron belonged?",
+  "choices": [
+   "Dan",
+   "Judah",
+   "Levi",
+   "Reuben"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said, Is not Aaron the Levite thy brother?",
+  "ref": "Exodus 4:14"
+ },
+ {
+  "id": "exodus-4-e-06x",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which land did the LORD tell Moses to go back to Egypt?",
+  "choices": [
+   "Canaan",
+   "Goshen",
+   "Horeb",
+   "Midian"
+  ],
+  "answer": 3,
+  "explanation": "And the LORD said unto Moses in Midian, Go, return into Egypt.",
+  "ref": "Exodus 4:19"
+ },
+ {
+  "id": "exodus-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Moses go back to and ask leave to return to Egypt?",
+  "choices": [
+   "Pharaoh",
+   "Jethro his father in law",
+   "Zipporah",
+   "Aaron"
+  ],
+  "answer": 1,
+  "explanation": "Moses went and returned to Jethro his father in law, and said, Let me go.",
+  "ref": "Exodus 4:18"
+ },
+ {
+  "id": "exodus-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took a sharp stone and circumcised her son?",
+  "choices": [
+   "Zipporah",
+   "Miriam",
+   "Jochebed",
+   "Elisheba"
+  ],
+  "answer": 0,
+  "explanation": "Then Zipporah took a sharp stone, and cut off the foreskin of her son.",
+  "ref": "Exodus 4:25"
+ },
+ {
+  "id": "exodus-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Aaron meet Moses?",
+  "choices": [
+   "In the mount of God",
+   "In Pharaoh's palace",
+   "By the Nile",
+   "In Midian"
+  ],
+  "answer": 0,
+  "explanation": "Aaron went, and met him in the mount of God, and kissed him.",
+  "ref": "Exodus 4:27"
+ },
+ {
+  "id": "exodus-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people do when they believed Aaron and the signs?",
+  "choices": [
+   "Rose up to fight",
+   "Bowed their heads and worshipped",
+   "Asked for more signs",
+   "Went home in silence"
+  ],
+  "answer": 1,
+  "explanation": "The people believed: then they bowed their heads and worshipped.",
+  "ref": "Exodus 4:31"
+ },
+ {
+  "id": "exodus-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Moses say the people might not believe him?",
+  "choices": [
+   "They did not know Moses",
+   "They had no elders",
+   "They would say the LORD had not appeared to him",
+   "They feared Pharaoh"
+  ],
+  "answer": 2,
+  "explanation": "They will say, The LORD hath not appeared unto thee.",
+  "ref": "Exodus 4:1"
+ },
+ {
+  "id": "exodus-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Moses make the serpent a rod again?",
+  "choices": [
+   "He struck it",
+   "He spoke to it",
+   "He threw it in water",
+   "He took it by the tail"
+  ],
+  "answer": 3,
+  "explanation": "Put forth thine hand, and take it by the tail. And it became a rod in his hand.",
+  "ref": "Exodus 4:4"
+ },
+ {
+  "id": "exodus-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened when Moses put his hand into his bosom again?",
+  "choices": [
+   "It stayed leprous",
+   "It was restored like his other flesh",
+   "It disappeared",
+   "It became stone"
+  ],
+  "answer": 1,
+  "explanation": "It was turned again as his other flesh.",
+  "ref": "Exodus 4:7"
+ },
+ {
+  "id": "exodus-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about who made man's mouth?",
+  "choices": [
+   "He, the LORD, made it",
+   "Aaron",
+   "The elders",
+   "Pharaoh"
+  ],
+  "answer": 0,
+  "explanation": "Who hath made man's mouth? have not I the LORD?",
+  "ref": "Exodus 4:11"
+ },
+ {
+  "id": "exodus-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD promise to do for Moses' mouth?",
+  "choices": [
+   "Give it to Aaron",
+   "Silence it",
+   "Be with it and teach him what to say",
+   "Heal it at once"
+  ],
+  "answer": 2,
+  "explanation": "I will be with thy mouth, and teach thee what thou shalt say.",
+  "ref": "Exodus 4:12"
+ },
+ {
+  "id": "exodus-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD feel when Moses asked Him to send someone else?",
+  "choices": [
+   "He laughed",
+   "His anger was kindled against Moses",
+   "He wept",
+   "He was glad"
+  ],
+  "answer": 1,
+  "explanation": "The anger of the LORD was kindled against Moses.",
+  "ref": "Exodus 4:14"
+ },
+ {
+  "id": "exodus-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jethro say when Moses asked to go back to Egypt?",
+  "choices": [
+   "Go in peace",
+   "Take my sons",
+   "Stay with us",
+   "Wait a year"
+  ],
+  "answer": 0,
+  "explanation": "And Jethro said to Moses, Go in peace.",
+  "ref": "Exodus 4:18"
+ },
+ {
+  "id": "exodus-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why could Moses go back to Egypt safely, the LORD said?",
+  "choices": [
+   "The Egyptians had left",
+   "Pharaoh had died alone",
+   "All the men who sought his life were dead",
+   "Pharaoh had freed Israel"
+  ],
+  "answer": 2,
+  "explanation": "Go, return into Egypt: for all the men are dead which sought thy life.",
+  "ref": "Exodus 4:19"
+ },
+ {
+  "id": "exodus-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what did Moses set his wife and sons for the journey?",
+  "choices": [
+   "A horse",
+   "A camel",
+   "A cart",
+   "An ass"
+  ],
+  "answer": 3,
+  "explanation": "Moses took his wife and his sons, and set them upon an ass.",
+  "ref": "Exodus 4:20"
+ },
+ {
+  "id": "exodus-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about Pharaoh's heart?",
+  "choices": [
+   "He would soften it",
+   "He would turn it to fear",
+   "He would break it",
+   "He would harden it"
+  ],
+  "answer": 3,
+  "explanation": "I will harden his heart, that he shall not let the people go.",
+  "ref": "Exodus 4:21"
+ },
+ {
+  "id": "exodus-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD call Israel when speaking to Pharaoh?",
+  "choices": [
+   "His son, even His firstborn",
+   "His flock",
+   "His servant",
+   "His bride"
+  ],
+  "answer": 0,
+  "explanation": "Thus saith the LORD, Israel is my son, even my firstborn.",
+  "ref": "Exodus 4:22"
+ },
+ {
+  "id": "exodus-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD do if Pharaoh refused to let His son go?",
+  "choices": [
+   "Take Pharaoh's crown",
+   "Slay Pharaoh's firstborn son",
+   "Send darkness",
+   "Turn the Nile to blood"
+  ],
+  "answer": 1,
+  "explanation": "If thou refuse to let him go, behold, I will slay thy son, even thy firstborn.",
+  "ref": "Exodus 4:23"
+ },
+ {
+  "id": "exodus-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Zipporah say to Moses after the circumcision?",
+  "choices": [
+   "Let us go home",
+   "You are a good husband",
+   "Forgive me",
+   "A bloody husband art thou to me"
+  ],
+  "answer": 3,
+  "explanation": "Zipporah said, Surely a bloody husband art thou to me.",
+  "ref": "Exodus 4:25"
+ },
+ {
+  "id": "exodus-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the LORD tell to go into the wilderness to meet Moses?",
+  "choices": [
+   "Jethro",
+   "Hur",
+   "Miriam",
+   "Aaron"
+  ],
+  "answer": 3,
+  "explanation": "And the LORD said to Aaron, Go into the wilderness to meet Moses.",
+  "ref": "Exodus 4:27"
+ },
+ {
+  "id": "exodus-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Aaron do when Moses and he met the elders of Israel?",
+  "choices": [
+   "Kept silent",
+   "Left for Egypt",
+   "Spoke the LORD's words and did the signs",
+   "Struck the rod"
+  ],
+  "answer": 2,
+  "explanation": "Aaron spake all the words which the LORD had spoken unto Moses, and did the signs.",
+  "ref": "Exodus 4:30"
+ },
+ {
+  "id": "exodus-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses he would do signs with?",
+  "choices": [
+   "The river water",
+   "Aaron’s staff",
+   "This rod in his hand",
+   "A golden serpent"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt take this rod in thine hand, wherewith thou shalt do signs.",
+  "ref": "Exodus 4:17"
+ },
+ {
+  "id": "exodus-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many signs did the LORD give Moses before the river water sign?",
+  "choices": [
+   "Two",
+   "Four",
+   "One",
+   "Three"
+  ],
+  "answer": 0,
+  "explanation": "If they will not believe also these two signs, take of the water of the river.",
+  "ref": "Exodus 4:9"
+ },
+ {
+  "id": "exodus-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Aaron would be to Moses?",
+  "choices": [
+   "His shepherd",
+   "His servant",
+   "His judge",
+   "His spokesman"
+  ],
+  "answer": 3,
+  "explanation": "He shall be thy spokesman unto the people.",
+  "ref": "Exodus 4:16"
+ },
+ {
+  "id": "exodus-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Moses would be to Aaron?",
+  "choices": [
+   "Instead of a father",
+   "Instead of a priest",
+   "Instead of a king",
+   "Instead of God"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt be to him instead of God.",
+  "ref": "Exodus 4:16"
+ },
+ {
+  "id": "exodus-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the LORD meet Moses and seek to kill him?",
+  "choices": [
+   "At the river",
+   "On the mountain",
+   "In Pharaoh's house",
+   "In the inn by the way"
+  ],
+  "answer": 3,
+  "explanation": "By the way in the inn, the LORD met him, and sought to kill him.",
+  "ref": "Exodus 4:24"
+ },
+ {
+  "id": "exodus-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Zipporah say, A bloody husband?",
+  "choices": [
+   "Because of a sacrifice",
+   "Because of the serpent",
+   "Because of the circumcision",
+   "Because of a battle"
+  ],
+  "answer": 2,
+  "explanation": "She said, A bloody husband thou art, because of the circumcision.",
+  "ref": "Exodus 4:26"
+ },
+ {
+  "id": "exodus-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Aaron greet Moses at the mount of God?",
+  "choices": [
+   "He ran away",
+   "He bowed down",
+   "He kissed him",
+   "He wept aloud"
+  ],
+  "answer": 2,
+  "explanation": "He went, and met him in the mount of God, and kissed him.",
+  "ref": "Exodus 4:27"
+ },
+ {
+  "id": "exodus-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses tell Aaron on meeting?",
+  "choices": [
+   "How to speak to Pharaoh only",
+   "All the words of the LORD and all the signs",
+   "Where Pharaoh was",
+   "Only the news of Midian"
+  ],
+  "answer": 1,
+  "explanation": "Moses told Aaron all the words of the LORD who had sent him, and all the signs.",
+  "ref": "Exodus 4:28"
+ },
+ {
+  "id": "exodus-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Moses and Aaron gather together?",
+  "choices": [
+   "The taskmasters",
+   "The elders of the children of Israel",
+   "Pharaoh's magicians",
+   "The priests of Midian"
+  ],
+  "answer": 1,
+  "explanation": "Moses and Aaron went and gathered together all the elders of the children of Israel.",
+  "ref": "Exodus 4:29"
+ },
+ {
+  "id": "exodus-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say he wanted to see about his brethren in Egypt?",
+  "choices": [
+   "Whether they were yet alive",
+   "How many they were",
+   "How they worshipped",
+   "Whether they had weapons"
+  ],
+  "answer": 0,
+  "explanation": "Let me go, and return unto my brethren which are in Egypt, and see whether they be yet alive.",
+  "ref": "Exodus 4:18"
+ },
+ {
+  "id": "exodus-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He had visited the children of Israel to do?",
+  "choices": [
+   "Count them",
+   "Teach them",
+   "Punish them",
+   "Look upon their affliction"
+  ],
+  "answer": 3,
+  "explanation": "The LORD had visited the children of Israel, and had looked upon their affliction.",
+  "ref": "Exodus 4:31"
+ },
+ {
+  "id": "exodus-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to say to Pharaoh Let my son go for?",
+  "choices": [
+   "That he may march",
+   "That he may rest",
+   "That he may feast",
+   "That he may serve me"
+  ],
+  "answer": 3,
+  "explanation": "Let my son go, that he may serve me.",
+  "ref": "Exodus 4:23"
+ },
+ {
+  "id": "exodus-4-h-16",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Moses should do with the wonders before Pharaoh?",
+  "choices": [
+   "Show them to the elders only",
+   "Keep them secret",
+   "Hide them",
+   "Do all the wonders put in his hand"
+  ],
+  "answer": 3,
+  "explanation": "See that thou do all those wonders before Pharaoh, which I have put in thine hand.",
+  "ref": "Exodus 4:21"
+ },
+ {
+  "id": "exodus-4-h-20",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If they would not hearken to the first sign, what would they believe?",
+  "choices": [
+   "Aaron alone",
+   "The rod",
+   "The voice of the latter sign",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "They will believe the voice of the latter sign.",
+  "ref": "Exodus 4:8"
+ },
+ {
+  "id": "exodus-4-h-21",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Zipporah cast at Moses’ feet?",
+  "choices": [
+   "Her veil",
+   "Her son’s foreskin",
+   "A rod",
+   "A stone"
+  ],
+  "answer": 1,
+  "explanation": "Zipporah took a sharp stone, and cut off the foreskin of her son, and cast it at his feet.",
+  "ref": "Exodus 4:25"
+ },
+ {
   "id": "old-exodus-5-1",
   "chapter": 5,
   "level": "beginner",
