@@ -13632,6 +13632,294 @@
   "ref": "Genesis 40:19"
  },
  {
+  "id": "genesis-40-m-01",
+  "chapter": 40,
+  "level": "medium",
+  "category": "place",
+  "question": "Whose house was the prison where Pharaoh put the butler and the baker?",
+  "choices": [
+   "Pharaoh's house",
+   "The captain of the guard's house",
+   "The chief butler's house",
+   "Potiphar's brother's house"
+  ],
+  "answer": 1,
+  "explanation": "Pharaoh put them in ward in the house of the captain of the guard, into the prison, the place where Joseph was bound.",
+  "ref": "Genesis 40:3"
+ },
+ {
+  "id": "genesis-40-m-02",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joseph ask the two men when he saw they were sad?",
+  "choices": [
+   "Wherefore look ye so sadly to day?",
+   "Who has offended you?",
+   "Where is Pharaoh?",
+   "What have you eaten?"
+  ],
+  "answer": 0,
+  "explanation": "He asked Pharaoh's officers, saying, Wherefore look ye so sadly to day?",
+  "ref": "Genesis 40:7"
+ },
+ {
+  "id": "genesis-40-m-03",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In the butler's dream, what did the clusters of the vine bring forth?",
+  "choices": [
+   "Bitter grapes",
+   "Ripe grapes",
+   "Wild gourds",
+   "Green figs"
+  ],
+  "answer": 1,
+  "explanation": "The clusters thereof brought forth ripe grapes.",
+  "ref": "Genesis 40:10"
+ },
+ {
+  "id": "genesis-40-h-01",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The captain of the guard charged Joseph with the two officers. What did Joseph do for them?",
+  "choices": [
+   "He guarded them",
+   "He served them",
+   "He judged them",
+   "He taught them"
+  ],
+  "answer": 1,
+  "explanation": "The captain of the guard charged Joseph with them, and he served them.",
+  "ref": "Genesis 40:4"
+ },
+ {
+  "id": "genesis-40-h-02",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did the two officers continue in ward before they dreamed?",
+  "choices": [
+   "A season",
+   "Seven years",
+   "Forty days",
+   "A single day"
+  ],
+  "answer": 0,
+  "explanation": "They continued a season in ward.",
+  "ref": "Genesis 40:4"
+ },
+ {
+  "id": "genesis-40-h-03",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the two sad men say they had none of?",
+  "choices": [
+   "An interpreter",
+   "A friend",
+   "A judge",
+   "Any hope"
+  ],
+  "answer": 0,
+  "explanation": "They said unto him, We have dreamed a dream, and there is no interpreter of it.",
+  "ref": "Genesis 40:8"
+ },
+ {
+  "id": "genesis-40-h-04",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph ask the men to do after saying interpretations belong to God?",
+  "choices": [
+   "Pray with him",
+   "Tell him their dreams",
+   "Wait three days",
+   "Ask Pharaoh"
+  ],
+  "answer": 1,
+  "explanation": "Joseph said, Do not interpretations belong to God? tell me them, I pray you.",
+  "ref": "Genesis 40:8"
+ },
+ {
+  "id": "genesis-40-h-05",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In the butler's dream, what shot forth on the budding vine?",
+  "choices": [
+   "Blossoms",
+   "Thorns",
+   "Leaves of gold",
+   "Tendrils"
+  ],
+  "answer": 0,
+  "explanation": "In the vine were three branches: and it was as though it budded, and her blossoms shot forth.",
+  "ref": "Genesis 40:10"
+ },
+ {
+  "id": "genesis-40-h-06",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph say the butler would put into Pharaoh's hand, as he did before?",
+  "choices": [
+   "The cup",
+   "The ring",
+   "The bread",
+   "The keys"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt deliver Pharaoh's cup into his hand, after the former manner when thou wast his butler.",
+  "ref": "Genesis 40:13"
+ },
+ {
+  "id": "genesis-40-h-07",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joseph said Pharaoh would restore the butler unto what?",
+  "choices": [
+   "His land",
+   "His vineyard",
+   "His place",
+   "His house"
+  ],
+  "answer": 2,
+  "explanation": "Within three days shall Pharaoh lift up thine head, and restore thee unto thy place.",
+  "ref": "Genesis 40:13"
+ },
+ {
+  "id": "genesis-40-h-08",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph ask the butler to show him when it was well with him?",
+  "choices": [
+   "Kindness",
+   "Gold",
+   "A reward",
+   "Mercy at court"
+  ],
+  "answer": 0,
+  "explanation": "Joseph said, Think on me when it shall be well with thee, and shew kindness, I pray thee, unto me.",
+  "ref": "Genesis 40:14"
+ },
+ {
+  "id": "genesis-40-h-09",
+  "chapter": 40,
+  "level": "hard",
+  "category": "place",
+  "question": "Joseph asked the butler to bring him out of what?",
+  "choices": [
+   "The land of Egypt",
+   "This house",
+   "The pit",
+   "The city"
+  ],
+  "answer": 1,
+  "explanation": "Joseph asked him to make mention of him unto Pharaoh, and bring him out of this house.",
+  "ref": "Genesis 40:14"
+ },
+ {
+  "id": "genesis-40-h-10",
+  "chapter": 40,
+  "level": "hard",
+  "category": "place",
+  "question": "What did Joseph call the place he was put in, where he had done nothing wrong?",
+  "choices": [
+   "The dungeon",
+   "The wilderness",
+   "The tower",
+   "The field"
+  ],
+  "answer": 0,
+  "explanation": "Joseph said, Here also have I done nothing that they should put me into the dungeon.",
+  "ref": "Genesis 40:15"
+ },
+ {
+  "id": "genesis-40-h-11",
+  "chapter": 40,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of the two officers told his dream to Joseph second?",
+  "choices": [
+   "The chief butler",
+   "The chief baker",
+   "Potiphar",
+   "The captain of the guard"
+  ],
+  "answer": 1,
+  "explanation": "When the chief baker saw that the interpretation was good, he said unto Joseph, I also was in my dream.",
+  "ref": "Genesis 40:16"
+ },
+ {
+  "id": "genesis-40-h-12",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In Joseph's words to the baker, what would Pharaoh lift from off him?",
+  "choices": [
+   "His crown",
+   "His robe",
+   "His chain",
+   "His head"
+  ],
+  "answer": 3,
+  "explanation": "Pharaoh shall lift up thy head from off thee, and shall hang thee on a tree.",
+  "ref": "Genesis 40:19"
+ },
+ {
+  "id": "genesis-40-h-13",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In Joseph's words to the baker, what would the birds eat?",
+  "choices": [
+   "His flesh",
+   "His bread",
+   "His grapes",
+   "His baskets"
+  ],
+  "answer": 0,
+  "explanation": "The birds shall eat thy flesh from off thee.",
+  "ref": "Genesis 40:19"
+ },
+ {
+  "id": "genesis-40-h-14",
+  "chapter": 40,
+  "level": "hard",
+  "category": "person",
+  "question": "For whom did Pharaoh make a feast on his birthday?",
+  "choices": [
+   "His family",
+   "All his servants",
+   "The people of Egypt",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "On the third day, which was Pharaoh's birthday, he made a feast unto all his servants.",
+  "ref": "Genesis 40:20"
+ },
+ {
+  "id": "genesis-40-h-15",
+  "chapter": 40,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was already bound in the prison where the two officers were put?",
+  "choices": [
+   "Simeon",
+   "Reuben",
+   "Potiphar",
+   "Joseph"
+  ],
+  "answer": 3,
+  "explanation": "Pharaoh put them in the prison, the place where Joseph was bound.",
+  "ref": "Genesis 40:3"
+ },
+ {
   "id": "old-genesis-41-1",
   "chapter": 41,
   "level": "beginner",
