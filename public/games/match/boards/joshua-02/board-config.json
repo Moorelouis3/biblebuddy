@@ -1,0 +1,30 @@
+{
+  "level": 2,
+  "name": "Rahab and the Scarlet Cord",
+  "scripture": "Numbers 2",
+  "chapter": "Joshua",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "scarlet-cord",
+    "banner",
+    "tabernacle",
+    "covenant-ark",
+    "wheat",
+    "stone",
+    "tree"
+  ],
+  "goals": {
+    "scarlet-cord": 8,
+    "banner": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match scarlet cord and banner.",
+  "storyEffect": "Match scarlet cord and banner."
+}

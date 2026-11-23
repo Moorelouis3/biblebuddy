@@ -1,0 +1,30 @@
+{
+  "level": 10,
+  "name": "Mercy in the Cave",
+  "scripture": "Numbers 24",
+  "chapter": "1 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "david",
+    "stone",
+    "oil-jar",
+    "tree",
+    "samuel",
+    "lamb",
+    "hannah"
+  ],
+  "goals": {
+    "david": 8,
+    "stone": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match david and stone.",
+  "storyEffect": "Match david and stone."
+}

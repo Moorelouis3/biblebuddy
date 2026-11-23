@@ -24,6 +24,7 @@ import MatchBoard, { readSavedBoard } from "./MatchBoard";
 import { trackMatch } from "@/lib/match/track";
 import { playMatchMusic, stopMatchMusic } from "@/lib/match/sound";
 import MatchSettings from "./MatchSettings";
+import GENERATED_MAPS from "@/lib/match/maps.generated.json";
 import { MATCH_CSS } from "./matchCss";
 import { MAP_PREVIEWS } from "@/lib/match/mapPreviews";
 import { clueApi } from "@/lib/clueGame/track";
@@ -237,7 +238,7 @@ function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; rea
   const [settings, setSettings] = useState(false);
   // The map pictures start downloading while the home screen is up, so the map opens ready.
   useEffect(() => {
-    for (const src of ["/games/match/ui/map-phone.webp", "/games/match/ui/map-exodus-phone.webp", "/games/match/ui/map-leviticus-phone.webp", "/games/match/ui/map-numbers-phone.webp", "/games/match/ui/map-deuteronomy-phone.webp"]) {
+    for (const src of Object.values(BOOK_MAPS).map((m) => m.src)) {
       const img = new Image();
       img.src = src;
     }
@@ -374,6 +375,12 @@ const BOOK_MAPS: Record<string, { src: string; path: Array<[number, number]>; fx
   Numbers: { src: "/games/match/ui/map-numbers-phone.webp", path: NUMBERS_PATH, fx: "numbers" },
   // Deuteronomy uses the Numbers weather (the same quiet fireflies).
   Deuteronomy: { src: "/games/match/ui/map-deuteronomy-phone.webp", path: DEUTERONOMY_PATH, fx: "numbers" },
+  // Books imported since (Joshua on) bring their map, traced path and preview
+  // in lib/match/maps.generated.json, written by the import, so a new book
+  // needs no code here.
+  ...Object.fromEntries(
+    Object.entries(GENERATED_MAPS as unknown as Record<string, { src: string; path: Array<[number, number]> }>).map(([b, m]) => [b, { src: m.src, path: m.path, fx: "numbers" as const }]),
+  ),
 };
 
 /**
@@ -384,22 +391,24 @@ const BOOK_MAPS: Record<string, { src: string; path: Array<[number, number]>; fx
  * Nile) and the Exodus boards. Each map is drawn in the art of the book of
  * its last board.
  */
-// 11 a map since Leviticus came in (2026-11-23): 33 boards fill three maps
-// exactly, and Genesis 1-11 sits whole on the Genesis map.
-const PER_MAP = 11;
+// One map per book since Joshua, Judges, Ruth and 1 Samuel came in
+// (2026-11-23): each book's boards (10 to 12) sit on that book's own painted
+// map, spread evenly. A fixed number a map drifted, so Ruth's map ended up
+// half 1 Samuel. A book over 14 boards spills onto a second copy of its map.
+const MAX_ON_MAP = 14;
 const SECTIONS: Section[] = (() => {
   const out: Section[] = [];
   let lastMap = BOOK_MAPS.Genesis;
-  for (let i = 0; i < MATCH_LEVELS.length; i += PER_MAP) {
-    const levels = MATCH_LEVELS.slice(i, i + PER_MAP);
-    // The map of the book with the most boards on it (Numbers 1-10 plus
-    // Deuteronomy 1 is the Numbers map, not a second Deuteronomy one).
-    const count = new Map<string, number>();
-    for (const l of levels) count.set(l.book, (count.get(l.book) || 0) + 1);
-    const book = [...count.entries()].sort((a, b) => b[1] - a[1])[0][0];
+  let i = 0;
+  while (i < MATCH_LEVELS.length) {
+    const book = MATCH_LEVELS[i].book;
+    let j = i;
+    while (j < MATCH_LEVELS.length && MATCH_LEVELS[j].book === book && j - i < MAX_ON_MAP) j++;
+    const levels = MATCH_LEVELS.slice(i, j);
     const m = BOOK_MAPS[book] || lastMap;
     lastMap = m;
     out.push({ src: m.src, fx: m.fx, path: m.path, levels, book });
+    i = j;
   }
   return out;
 })();
@@ -444,7 +453,7 @@ const LEVEL_AT: number[] = (() => {
     // short, so its last coin is not under the banner.
     const lo = seg > 0 ? 0.07 : 0;
     const hi = seg === SECTIONS.length - 1 ? 0.93 : 1;
-    s.levels.forEach((_, k) => out.push(first + (lo + ((k + 0.5) / PER_MAP) * (hi - lo)) * (last - first)));
+    s.levels.forEach((_, k) => out.push(first + (lo + ((k + 0.5) / s.levels.length) * (hi - lo)) * (last - first)));
     start += s.path.length;
   });
   return out;
@@ -565,7 +574,7 @@ function GenesisMap({
                 height: `${(100 / SEGMENTS) * (i > 0 ? BLEND : 1)}%`,
                 zIndex: i + 1,
                 // A tiny blurred preview shows at once while the full picture loads.
-                backgroundImage: `url(${(MAP_PREVIEWS[s.book.toLowerCase()] || MAP_PREVIEWS[s.fx])})`,
+                backgroundImage: `url(${(MAP_PREVIEWS[s.book.toLowerCase()] || (GENERATED_MAPS as Record<string, { preview?: string }>)[s.book]?.preview || MAP_PREVIEWS[s.fx])})`,
               }}
               src={s.src}
               alt={i === 0 ? "The Bible Buddy trail through Genesis, Exodus and Leviticus" : ""}

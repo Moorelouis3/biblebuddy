@@ -1,0 +1,30 @@
+{
+  "level": 6,
+  "name": "Saul Is Anointed",
+  "scripture": "Numbers 9–10",
+  "chapter": "1 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "oil-jar",
+    "samuel",
+    "banner",
+    "lamb",
+    "wheat",
+    "tent",
+    "david"
+  ],
+  "goals": {
+    "oil-jar": 8,
+    "samuel": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match oil jar and samuel.",
+  "storyEffect": "Match oil jar and samuel."
+}

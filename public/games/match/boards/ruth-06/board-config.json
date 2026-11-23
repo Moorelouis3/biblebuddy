@@ -1,0 +1,30 @@
+{
+  "level": 6,
+  "name": "Gleaning in the Fields",
+  "scripture": "Numbers 2:1–7",
+  "chapter": "Ruth",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "barley",
+    "basket",
+    "naomi",
+    "ruth",
+    "bread",
+    "staff",
+    "wheat"
+  ],
+  "goals": {
+    "barley": 8,
+    "basket": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match barley and basket.",
+  "storyEffect": "Match barley and basket."
+}

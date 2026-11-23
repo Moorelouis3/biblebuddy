@@ -1,0 +1,30 @@
+{
+  "level": 5,
+  "name": "Back to Bethlehem",
+  "scripture": "Numbers 1:19–22",
+  "chapter": "Ruth",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "barley",
+    "naomi",
+    "tree",
+    "basket",
+    "water-jar",
+    "tent",
+    "sandal"
+  ],
+  "goals": {
+    "barley": 8,
+    "naomi": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match barley and naomi.",
+  "storyEffect": "Match barley and naomi."
+}

@@ -1,0 +1,30 @@
+{
+  "level": 1,
+  "name": "Be Strong and Courageous",
+  "scripture": "Numbers 1",
+  "chapter": "Joshua",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "joshua",
+    "scroll",
+    "ram-horn",
+    "tabernacle",
+    "water-jar",
+    "stone",
+    "tent"
+  ],
+  "goals": {
+    "joshua": 8,
+    "scroll": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match joshua and scroll.",
+  "storyEffect": "Match joshua and scroll."
+}

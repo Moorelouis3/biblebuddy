@@ -1,0 +1,30 @@
+{
+  "level": 1,
+  "name": "Israel at Bochim",
+  "scripture": "Numbers 2:1–5",
+  "chapter": "Judges",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "altar",
+    "tent",
+    "banner",
+    "water-jar",
+    "stone",
+    "cloud",
+    "grape"
+  ],
+  "goals": {
+    "altar": 8,
+    "tent": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match altar and tent.",
+  "storyEffect": "Match altar and tent."
+}

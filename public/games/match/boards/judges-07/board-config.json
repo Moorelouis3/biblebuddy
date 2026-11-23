@@ -1,0 +1,30 @@
+{
+  "level": 7,
+  "name": "Jars and Torches",
+  "scripture": "Numbers 7",
+  "chapter": "Judges",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "water-jar",
+    "torch",
+    "tent",
+    "stone",
+    "altar",
+    "ram-horn",
+    "wheat"
+  ],
+  "goals": {
+    "water-jar": 8,
+    "torch": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match water jar and torch.",
+  "storyEffect": "Match water jar and torch."
+}

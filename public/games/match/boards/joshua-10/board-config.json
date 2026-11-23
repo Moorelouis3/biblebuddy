@@ -1,0 +1,30 @@
+{
+  "level": 10,
+  "name": "Choose Whom You Will Serve",
+  "scripture": "Numbers 24",
+  "chapter": "Joshua",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "joshua",
+    "stone",
+    "banner",
+    "water-jar",
+    "tree",
+    "water-drop",
+    "scroll"
+  ],
+  "goals": {
+    "joshua": 8,
+    "stone": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match joshua and stone.",
+  "storyEffect": "Match joshua and stone."
+}

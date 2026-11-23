@@ -1,0 +1,30 @@
+{
+  "level": 5,
+  "name": "Trumpets at Jericho",
+  "scripture": "Numbers 6",
+  "chapter": "Joshua",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "ram-horn",
+    "stone",
+    "bread",
+    "basket",
+    "altar",
+    "water-jar",
+    "tabernacle"
+  ],
+  "goals": {
+    "ram-horn": 8,
+    "stone": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match ram horn and stone.",
+  "storyEffect": "Match ram horn and stone."
+}

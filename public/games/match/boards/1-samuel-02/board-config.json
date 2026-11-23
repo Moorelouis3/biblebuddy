@@ -1,0 +1,30 @@
+{
+  "level": 2,
+  "name": "Samuel Comes to Shiloh",
+  "scripture": "Numbers 1:19–28; 2:1–11",
+  "chapter": "1 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "samuel",
+    "hannah",
+    "covenant-ark",
+    "oil-jar",
+    "wheat",
+    "lampstand",
+    "staff"
+  ],
+  "goals": {
+    "samuel": 8,
+    "hannah": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match samuel and hannah.",
+  "storyEffect": "Match samuel and hannah."
+}

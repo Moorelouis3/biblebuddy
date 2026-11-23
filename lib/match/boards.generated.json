@@ -1644,5 +1644,1285 @@
     },
     "goalText": "Match moses and stone.",
     "storyEffect": "Match moses and stone."
+  },
+  {
+    "slug": "joshua-01",
+    "folderTitle": "01-Be-Strong-and-Courageous",
+    "level": 1,
+    "name": "Be Strong and Courageous",
+    "scripture": "Numbers 1",
+    "chapter": "Joshua",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "joshua",
+      "scroll",
+      "ram-horn",
+      "tabernacle",
+      "water-jar",
+      "stone",
+      "tent"
+    ],
+    "goals": {
+      "joshua": 8,
+      "scroll": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match joshua and scroll.",
+    "storyEffect": "Match joshua and scroll."
+  },
+  {
+    "slug": "joshua-02",
+    "folderTitle": "02-Rahab-and-the-Scarlet-Cord",
+    "level": 2,
+    "name": "Rahab and the Scarlet Cord",
+    "scripture": "Numbers 2",
+    "chapter": "Joshua",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "scarlet-cord",
+      "banner",
+      "tabernacle",
+      "covenant-ark",
+      "wheat",
+      "stone",
+      "tree"
+    ],
+    "goals": {
+      "scarlet-cord": 8,
+      "banner": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match scarlet cord and banner.",
+    "storyEffect": "Match scarlet cord and banner."
+  },
+  {
+    "slug": "joshua-03",
+    "folderTitle": "03-Cross-the-Jordan",
+    "level": 3,
+    "name": "Cross the Jordan",
+    "scripture": "Numbers 3",
+    "chapter": "Joshua",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "covenant-ark",
+      "water-drop",
+      "cloud",
+      "tabernacle",
+      "joshua",
+      "banner",
+      "tree"
+    ],
+    "goals": {
+      "covenant-ark": 8,
+      "water-drop": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match covenant ark and water drop.",
+    "storyEffect": "Match covenant ark and water drop."
+  },
+  {
+    "slug": "joshua-04",
+    "folderTitle": "04-Twelve-Memorial-Stones",
+    "level": 4,
+    "name": "Twelve Memorial Stones",
+    "scripture": "Numbers 4",
+    "chapter": "Joshua",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "stone",
+      "basket",
+      "tabernacle",
+      "tree",
+      "altar",
+      "scroll",
+      "cloud"
+    ],
+    "goals": {
+      "stone": 8,
+      "basket": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match stone and basket.",
+    "storyEffect": "Match stone and basket."
+  },
+  {
+    "slug": "joshua-05",
+    "folderTitle": "05-Trumpets-at-Jericho",
+    "level": 5,
+    "name": "Trumpets at Jericho",
+    "scripture": "Numbers 6",
+    "chapter": "Joshua",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "ram-horn",
+      "stone",
+      "bread",
+      "basket",
+      "altar",
+      "water-jar",
+      "tabernacle"
+    ],
+    "goals": {
+      "ram-horn": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match ram horn and stone.",
+    "storyEffect": "Match ram horn and stone."
+  },
+  {
+    "slug": "joshua-06",
+    "folderTitle": "06-The-Covenant-at-Ebal",
+    "level": 6,
+    "name": "The Covenant at Ebal",
+    "scripture": "Numbers 8:30–35",
+    "chapter": "Joshua",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "altar",
+      "scroll",
+      "tent",
+      "bread",
+      "stone",
+      "basket",
+      "grape"
+    ],
+    "goals": {
+      "altar": 8,
+      "scroll": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match altar and scroll.",
+    "storyEffect": "Match altar and scroll."
+  },
+  {
+    "slug": "joshua-07",
+    "folderTitle": "07-The-Gibeonites-Arrive",
+    "level": 7,
+    "name": "The Gibeonites Arrive",
+    "scripture": "Numbers 9",
+    "chapter": "Joshua",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "bread",
+      "water-jar",
+      "grape",
+      "tent",
+      "water-drop",
+      "wheat",
+      "tabernacle"
+    ],
+    "goals": {
+      "bread": 8,
+      "water-jar": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match bread and water jar.",
+    "storyEffect": "Match bread and water jar."
+  },
+  {
+    "slug": "joshua-08",
+    "folderTitle": "08-The-Sun-Stands-Still",
+    "level": 8,
+    "name": "The Sun Stands Still",
+    "scripture": "Numbers 10:1–15",
+    "chapter": "Joshua",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "stone",
+      "cloud",
+      "wheat",
+      "covenant-ark",
+      "water-jar",
+      "bread",
+      "joshua"
+    ],
+    "goals": {
+      "stone": 8,
+      "cloud": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match stone and cloud.",
+    "storyEffect": "Match stone and cloud."
+  },
+  {
+    "slug": "joshua-09",
+    "folderTitle": "09-The-Land-at-Shiloh",
+    "level": 9,
+    "name": "The Land at Shiloh",
+    "scripture": "Numbers 18–19",
+    "chapter": "Joshua",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "tabernacle",
+      "tent",
+      "joshua",
+      "basket",
+      "stone",
+      "cloud",
+      "banner"
+    ],
+    "goals": {
+      "tabernacle": 8,
+      "tent": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match tabernacle and tent.",
+    "storyEffect": "Match tabernacle and tent."
+  },
+  {
+    "slug": "joshua-10",
+    "folderTitle": "10-Choose-Whom-You-Will-Serve",
+    "level": 10,
+    "name": "Choose Whom You Will Serve",
+    "scripture": "Numbers 24",
+    "chapter": "Joshua",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "joshua",
+      "stone",
+      "banner",
+      "water-jar",
+      "tree",
+      "water-drop",
+      "scroll"
+    ],
+    "goals": {
+      "joshua": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match joshua and stone.",
+    "storyEffect": "Match joshua and stone."
+  },
+  {
+    "slug": "judges-01",
+    "folderTitle": "01-Israel-at-Bochim",
+    "level": 1,
+    "name": "Israel at Bochim",
+    "scripture": "Numbers 2:1–5",
+    "chapter": "Judges",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "altar",
+      "tent",
+      "banner",
+      "water-jar",
+      "stone",
+      "cloud",
+      "grape"
+    ],
+    "goals": {
+      "altar": 8,
+      "tent": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match altar and tent.",
+    "storyEffect": "Match altar and tent."
+  },
+  {
+    "slug": "judges-02",
+    "folderTitle": "02-Ehuds-Message",
+    "level": 2,
+    "name": "Ehud’s Message",
+    "scripture": "Numbers 3:12–30",
+    "chapter": "Judges",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "scroll",
+      "stone",
+      "grape",
+      "tree",
+      "water-jar",
+      "ram-horn",
+      "wheat"
+    ],
+    "goals": {
+      "scroll": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match scroll and stone.",
+    "storyEffect": "Match scroll and stone."
+  },
+  {
+    "slug": "judges-03",
+    "folderTitle": "03-Deborahs-Palm-Tree",
+    "level": 3,
+    "name": "Deborah’s Palm Tree",
+    "scripture": "Numbers 4:4–9",
+    "chapter": "Judges",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "tree",
+      "scroll",
+      "altar",
+      "grape",
+      "cloud",
+      "wheat",
+      "water-jar"
+    ],
+    "goals": {
+      "tree": 8,
+      "scroll": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match tree and scroll.",
+    "storyEffect": "Match tree and scroll."
+  },
+  {
+    "slug": "judges-04",
+    "folderTitle": "04-Deborah-and-Barak",
+    "level": 4,
+    "name": "Deborah and Barak",
+    "scripture": "Numbers 4:10–16; 5",
+    "chapter": "Judges",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "banner",
+      "stone",
+      "cloud",
+      "water-jar",
+      "ram-horn",
+      "basket",
+      "tent"
+    ],
+    "goals": {
+      "banner": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match banner and stone.",
+    "storyEffect": "Match banner and stone."
+  },
+  {
+    "slug": "judges-05",
+    "folderTitle": "05-Gideon-at-the-Winepress",
+    "level": 5,
+    "name": "Gideon at the Winepress",
+    "scripture": "Numbers 6:11–24",
+    "chapter": "Judges",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "wheat",
+      "grape",
+      "altar",
+      "tent",
+      "water-jar",
+      "cloud",
+      "scroll"
+    ],
+    "goals": {
+      "wheat": 8,
+      "grape": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match wheat and grape.",
+    "storyEffect": "Match wheat and grape."
+  },
+  {
+    "slug": "judges-06",
+    "folderTitle": "06-Gideons-Fleece",
+    "level": 6,
+    "name": "Gideon’s Fleece",
+    "scripture": "Numbers 6:36–40",
+    "chapter": "Judges",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "fleece",
+      "water-drop",
+      "cloud",
+      "ram-horn",
+      "staff",
+      "tree",
+      "basket"
+    ],
+    "goals": {
+      "fleece": 8,
+      "water-drop": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match fleece and water drop.",
+    "storyEffect": "Match fleece and water drop."
+  },
+  {
+    "slug": "judges-07",
+    "folderTitle": "07-Jars-and-Torches",
+    "level": 7,
+    "name": "Jars and Torches",
+    "scripture": "Numbers 7",
+    "chapter": "Judges",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "water-jar",
+      "torch",
+      "tent",
+      "stone",
+      "altar",
+      "ram-horn",
+      "wheat"
+    ],
+    "goals": {
+      "water-jar": 8,
+      "torch": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match water jar and torch.",
+    "storyEffect": "Match water jar and torch."
+  },
+  {
+    "slug": "judges-08",
+    "folderTitle": "08-Jephthah-at-Mizpah",
+    "level": 8,
+    "name": "Jephthah at Mizpah",
+    "scripture": "Numbers 11:1–11",
+    "chapter": "Judges",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "banner",
+      "tent",
+      "staff",
+      "wheat",
+      "altar",
+      "scroll",
+      "water-jar"
+    ],
+    "goals": {
+      "banner": 8,
+      "tent": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match banner and tent.",
+    "storyEffect": "Match banner and tent."
+  },
+  {
+    "slug": "judges-09",
+    "folderTitle": "09-Samsons-Riddle",
+    "level": 9,
+    "name": "Samson’s Riddle",
+    "scripture": "Numbers 14",
+    "chapter": "Judges",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "honeycomb",
+      "lamb",
+      "tree",
+      "water-jar",
+      "ram-horn",
+      "tent",
+      "staff"
+    ],
+    "goals": {
+      "honeycomb": 8,
+      "lamb": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match honeycomb and lamb.",
+    "storyEffect": "Match honeycomb and lamb."
+  },
+  {
+    "slug": "judges-10",
+    "folderTitle": "10-Samson-at-the-Pillars",
+    "level": 10,
+    "name": "Samson at the Pillars",
+    "scripture": "Numbers 16:23–31",
+    "chapter": "Judges",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "stone",
+      "banner",
+      "cloud",
+      "wheat",
+      "tent",
+      "grape",
+      "ram-horn"
+    ],
+    "goals": {
+      "stone": 8,
+      "banner": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match stone and banner.",
+    "storyEffect": "Match stone and banner."
+  },
+  {
+    "slug": "ruth-01",
+    "folderTitle": "01-Famine-in-Bethlehem",
+    "level": 1,
+    "name": "Famine in Bethlehem",
+    "scripture": "Numbers 1:1",
+    "chapter": "Ruth",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "wheat",
+      "stone",
+      "sandal",
+      "basket",
+      "bread",
+      "tree",
+      "barley"
+    ],
+    "goals": {
+      "wheat": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match wheat and stone.",
+    "storyEffect": "Match wheat and stone."
+  },
+  {
+    "slug": "ruth-02",
+    "folderTitle": "02-On-the-Road-to-Moab",
+    "level": 2,
+    "name": "On the Road to Moab",
+    "scripture": "Numbers 1:1–5",
+    "chapter": "Ruth",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "staff",
+      "tent",
+      "basket",
+      "tree",
+      "ruth",
+      "naomi",
+      "sandal"
+    ],
+    "goals": {
+      "staff": 8,
+      "tent": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match staff and tent.",
+    "storyEffect": "Match staff and tent."
+  },
+  {
+    "slug": "ruth-03",
+    "folderTitle": "03-A-Farewell-on-the-Road",
+    "level": 3,
+    "name": "A Farewell on the Road",
+    "scripture": "Numbers 1:6–14",
+    "chapter": "Ruth",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "staff",
+      "water-jar",
+      "grape",
+      "naomi",
+      "wheat",
+      "tree",
+      "basket"
+    ],
+    "goals": {
+      "staff": 8,
+      "water-jar": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match staff and water jar.",
+    "storyEffect": "Match staff and water jar."
+  },
+  {
+    "slug": "ruth-04",
+    "folderTitle": "04-Where-You-Go",
+    "level": 4,
+    "name": "Where You Go",
+    "scripture": "Numbers 1:15–18",
+    "chapter": "Ruth",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "ruth",
+      "naomi",
+      "basket",
+      "barley",
+      "bread",
+      "grape",
+      "tent"
+    ],
+    "goals": {
+      "ruth": 8,
+      "naomi": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match ruth and naomi.",
+    "storyEffect": "Match ruth and naomi."
+  },
+  {
+    "slug": "ruth-05",
+    "folderTitle": "05-Back-to-Bethlehem",
+    "level": 5,
+    "name": "Back to Bethlehem",
+    "scripture": "Numbers 1:19–22",
+    "chapter": "Ruth",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "barley",
+      "naomi",
+      "tree",
+      "basket",
+      "water-jar",
+      "tent",
+      "sandal"
+    ],
+    "goals": {
+      "barley": 8,
+      "naomi": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match barley and naomi.",
+    "storyEffect": "Match barley and naomi."
+  },
+  {
+    "slug": "ruth-06",
+    "folderTitle": "06-Gleaning-in-the-Fields",
+    "level": 6,
+    "name": "Gleaning in the Fields",
+    "scripture": "Numbers 2:1–7",
+    "chapter": "Ruth",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "barley",
+      "basket",
+      "naomi",
+      "ruth",
+      "bread",
+      "staff",
+      "wheat"
+    ],
+    "goals": {
+      "barley": 8,
+      "basket": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match barley and basket.",
+    "storyEffect": "Match barley and basket."
+  },
+  {
+    "slug": "ruth-07",
+    "folderTitle": "07-At-Boazs-Table",
+    "level": 7,
+    "name": "At Boaz’s Table",
+    "scripture": "Numbers 2:8–23",
+    "chapter": "Ruth",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "bread",
+      "barley",
+      "water-jar",
+      "naomi",
+      "tent",
+      "sandal",
+      "wheat"
+    ],
+    "goals": {
+      "bread": 8,
+      "barley": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match bread and barley.",
+    "storyEffect": "Match bread and barley."
+  },
+  {
+    "slug": "ruth-08",
+    "folderTitle": "08-The-Threshing-Floor",
+    "level": 8,
+    "name": "The Threshing Floor",
+    "scripture": "Numbers 3",
+    "chapter": "Ruth",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "barley",
+      "ruth",
+      "grape",
+      "tent",
+      "staff",
+      "stone",
+      "bread"
+    ],
+    "goals": {
+      "barley": 8,
+      "ruth": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match barley and ruth.",
+    "storyEffect": "Match barley and ruth."
+  },
+  {
+    "slug": "ruth-09",
+    "folderTitle": "09-At-the-City-Gate",
+    "level": 9,
+    "name": "At the City Gate",
+    "scripture": "Numbers 4:1–12",
+    "chapter": "Ruth",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "sandal",
+      "stone",
+      "grape",
+      "staff",
+      "tree",
+      "ruth",
+      "basket"
+    ],
+    "goals": {
+      "sandal": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match sandal and stone.",
+    "storyEffect": "Match sandal and stone."
+  },
+  {
+    "slug": "ruth-10",
+    "folderTitle": "10-Naomi-Holds-Obed",
+    "level": 10,
+    "name": "Naomi Holds Obed",
+    "scripture": "Numbers 4:13–22",
+    "chapter": "Ruth",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "naomi",
+      "ruth",
+      "stone",
+      "basket",
+      "tree",
+      "water-jar",
+      "grape"
+    ],
+    "goals": {
+      "naomi": 8,
+      "ruth": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match naomi and ruth.",
+    "storyEffect": "Match naomi and ruth."
+  },
+  {
+    "slug": "1-samuel-01",
+    "folderTitle": "01-Hannahs-Prayer",
+    "level": 1,
+    "name": "Hannah’s Prayer",
+    "scripture": "Numbers 1:1–18",
+    "chapter": "1 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "hannah",
+      "tent",
+      "covenant-ark",
+      "david",
+      "oil-jar",
+      "staff",
+      "sling"
+    ],
+    "goals": {
+      "hannah": 8,
+      "tent": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match hannah and tent.",
+    "storyEffect": "Match hannah and tent."
+  },
+  {
+    "slug": "1-samuel-02",
+    "folderTitle": "02-Samuel-Comes-to-Shiloh",
+    "level": 2,
+    "name": "Samuel Comes to Shiloh",
+    "scripture": "Numbers 1:19–28; 2:1–11",
+    "chapter": "1 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "samuel",
+      "hannah",
+      "covenant-ark",
+      "oil-jar",
+      "wheat",
+      "lampstand",
+      "staff"
+    ],
+    "goals": {
+      "samuel": 8,
+      "hannah": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match samuel and hannah.",
+    "storyEffect": "Match samuel and hannah."
+  },
+  {
+    "slug": "1-samuel-03",
+    "folderTitle": "03-Speak-LORD",
+    "level": 3,
+    "name": "Speak, LORD",
+    "scripture": "Numbers 3",
+    "chapter": "1 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "samuel",
+      "lampstand",
+      "david",
+      "banner",
+      "stone",
+      "wheat",
+      "oil-jar"
+    ],
+    "goals": {
+      "samuel": 8,
+      "lampstand": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match samuel and lampstand.",
+    "storyEffect": "Match samuel and lampstand."
+  },
+  {
+    "slug": "1-samuel-04",
+    "folderTitle": "04-The-Ark-Returns",
+    "level": 4,
+    "name": "The Ark Returns",
+    "scripture": "Numbers 6",
+    "chapter": "1 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "covenant-ark",
+      "wheat",
+      "basket",
+      "david",
+      "staff",
+      "sling",
+      "stone"
+    ],
+    "goals": {
+      "covenant-ark": 8,
+      "wheat": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match covenant ark and wheat.",
+    "storyEffect": "Match covenant ark and wheat."
+  },
+  {
+    "slug": "1-samuel-05",
+    "folderTitle": "05-The-Stone-of-Help",
+    "level": 5,
+    "name": "The Stone of Help",
+    "scripture": "Numbers 7",
+    "chapter": "1 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "stone",
+      "samuel",
+      "lamb",
+      "basket",
+      "sling",
+      "covenant-ark",
+      "tree"
+    ],
+    "goals": {
+      "stone": 8,
+      "samuel": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match stone and samuel.",
+    "storyEffect": "Match stone and samuel."
+  },
+  {
+    "slug": "1-samuel-06",
+    "folderTitle": "06-Saul-Is-Anointed",
+    "level": 6,
+    "name": "Saul Is Anointed",
+    "scripture": "Numbers 9–10",
+    "chapter": "1 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "oil-jar",
+      "samuel",
+      "banner",
+      "lamb",
+      "wheat",
+      "tent",
+      "david"
+    ],
+    "goals": {
+      "oil-jar": 8,
+      "samuel": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match oil jar and samuel.",
+    "storyEffect": "Match oil jar and samuel."
+  },
+  {
+    "slug": "1-samuel-07",
+    "folderTitle": "07-David-Is-Anointed",
+    "level": 7,
+    "name": "David Is Anointed",
+    "scripture": "Numbers 16",
+    "chapter": "1 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "david",
+      "oil-jar",
+      "wheat",
+      "samuel",
+      "tent",
+      "basket",
+      "lamb"
+    ],
+    "goals": {
+      "david": 8,
+      "oil-jar": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match david and oil jar.",
+    "storyEffect": "Match david and oil jar."
+  },
+  {
+    "slug": "1-samuel-08",
+    "folderTitle": "08-David-and-Goliath",
+    "level": 8,
+    "name": "David and Goliath",
+    "scripture": "Numbers 17",
+    "chapter": "1 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "sling",
+      "stone",
+      "covenant-ark",
+      "basket",
+      "tree",
+      "david",
+      "banner"
+    ],
+    "goals": {
+      "sling": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match sling and stone.",
+    "storyEffect": "Match sling and stone."
+  },
+  {
+    "slug": "1-samuel-09",
+    "folderTitle": "09-David-and-Jonathan",
+    "level": 9,
+    "name": "David and Jonathan",
+    "scripture": "Numbers 20",
+    "chapter": "1 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "david",
+      "banner",
+      "stone",
+      "hannah",
+      "staff",
+      "basket",
+      "covenant-ark"
+    ],
+    "goals": {
+      "david": 8,
+      "banner": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match david and banner.",
+    "storyEffect": "Match david and banner."
+  },
+  {
+    "slug": "1-samuel-10",
+    "folderTitle": "10-Mercy-in-the-Cave",
+    "level": 10,
+    "name": "Mercy in the Cave",
+    "scripture": "Numbers 24",
+    "chapter": "1 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "david",
+      "stone",
+      "oil-jar",
+      "tree",
+      "samuel",
+      "lamb",
+      "hannah"
+    ],
+    "goals": {
+      "david": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match david and stone.",
+    "storyEffect": "Match david and stone."
   }
 ]

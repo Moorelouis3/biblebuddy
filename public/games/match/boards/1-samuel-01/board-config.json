@@ -1,0 +1,30 @@
+{
+  "level": 1,
+  "name": "Hannah’s Prayer",
+  "scripture": "Numbers 1:1–18",
+  "chapter": "1 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "hannah",
+    "tent",
+    "covenant-ark",
+    "david",
+    "oil-jar",
+    "staff",
+    "sling"
+  ],
+  "goals": {
+    "hannah": 8,
+    "tent": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match hannah and tent.",
+  "storyEffect": "Match hannah and tent."
+}

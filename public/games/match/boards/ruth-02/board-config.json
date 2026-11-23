@@ -1,0 +1,30 @@
+{
+  "level": 2,
+  "name": "On the Road to Moab",
+  "scripture": "Numbers 1:1–5",
+  "chapter": "Ruth",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "staff",
+    "tent",
+    "basket",
+    "tree",
+    "ruth",
+    "naomi",
+    "sandal"
+  ],
+  "goals": {
+    "staff": 8,
+    "tent": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match staff and tent.",
+  "storyEffect": "Match staff and tent."
+}

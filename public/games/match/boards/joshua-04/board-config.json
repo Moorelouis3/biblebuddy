@@ -1,0 +1,30 @@
+{
+  "level": 4,
+  "name": "Twelve Memorial Stones",
+  "scripture": "Numbers 4",
+  "chapter": "Joshua",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "stone",
+    "basket",
+    "tabernacle",
+    "tree",
+    "altar",
+    "scroll",
+    "cloud"
+  ],
+  "goals": {
+    "stone": 8,
+    "basket": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match stone and basket.",
+  "storyEffect": "Match stone and basket."
+}

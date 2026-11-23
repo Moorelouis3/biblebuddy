@@ -26,6 +26,9 @@ export function winStoryFor(book: string, number: number, id = ""): string | nul
   if (nu && Number(nu[1]) >= 1 && Number(nu[1]) <= 10) return `/games/match/transitions/numbers-${nu[1]}.webp`;
   const de = /^deuteronomy-(\d\d)$/.exec(id);
   if (de && Number(de[1]) >= 1 && Number(de[1]) <= 10) return `/games/match/transitions/deuteronomy-${de[1]}.webp`;
+  // Every book imported from Drive since (Joshua on): each board's win screen
+  // is imported beside it as transitions/<board id>.webp.
+  if (book !== "Genesis" && /^[a-z0-9-]+-\d\d$/.test(id)) return `/games/match/transitions/${id}.webp`;
   return null;
 }
 

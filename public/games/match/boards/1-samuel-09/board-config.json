@@ -1,0 +1,30 @@
+{
+  "level": 9,
+  "name": "David and Jonathan",
+  "scripture": "Numbers 20",
+  "chapter": "1 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "david",
+    "banner",
+    "stone",
+    "hannah",
+    "staff",
+    "basket",
+    "covenant-ark"
+  ],
+  "goals": {
+    "david": 8,
+    "banner": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match david and banner.",
+  "storyEffect": "Match david and banner."
+}

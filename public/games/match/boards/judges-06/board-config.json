@@ -1,0 +1,30 @@
+{
+  "level": 6,
+  "name": "Gideon’s Fleece",
+  "scripture": "Numbers 6:36–40",
+  "chapter": "Judges",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "fleece",
+    "water-drop",
+    "cloud",
+    "ram-horn",
+    "staff",
+    "tree",
+    "basket"
+  ],
+  "goals": {
+    "fleece": 8,
+    "water-drop": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match fleece and water drop.",
+  "storyEffect": "Match fleece and water drop."
+}

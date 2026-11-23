@@ -1,0 +1,30 @@
+{
+  "level": 3,
+  "name": "Deborah’s Palm Tree",
+  "scripture": "Numbers 4:4–9",
+  "chapter": "Judges",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "tree",
+    "scroll",
+    "altar",
+    "grape",
+    "cloud",
+    "wheat",
+    "water-jar"
+  ],
+  "goals": {
+    "tree": 8,
+    "scroll": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match tree and scroll.",
+  "storyEffect": "Match tree and scroll."
+}

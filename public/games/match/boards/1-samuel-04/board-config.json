@@ -1,0 +1,30 @@
+{
+  "level": 4,
+  "name": "The Ark Returns",
+  "scripture": "Numbers 6",
+  "chapter": "1 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "covenant-ark",
+    "wheat",
+    "basket",
+    "david",
+    "staff",
+    "sling",
+    "stone"
+  ],
+  "goals": {
+    "covenant-ark": 8,
+    "wheat": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match covenant ark and wheat.",
+  "storyEffect": "Match covenant ark and wheat."
+}

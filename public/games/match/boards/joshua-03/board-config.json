@@ -1,0 +1,30 @@
+{
+  "level": 3,
+  "name": "Cross the Jordan",
+  "scripture": "Numbers 3",
+  "chapter": "Joshua",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "covenant-ark",
+    "water-drop",
+    "cloud",
+    "tabernacle",
+    "joshua",
+    "banner",
+    "tree"
+  ],
+  "goals": {
+    "covenant-ark": 8,
+    "water-drop": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match covenant ark and water drop.",
+  "storyEffect": "Match covenant ark and water drop."
+}

@@ -1,0 +1,30 @@
+{
+  "level": 3,
+  "name": "Speak, LORD",
+  "scripture": "Numbers 3",
+  "chapter": "1 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "samuel",
+    "lampstand",
+    "david",
+    "banner",
+    "stone",
+    "wheat",
+    "oil-jar"
+  ],
+  "goals": {
+    "samuel": 8,
+    "lampstand": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match samuel and lampstand.",
+  "storyEffect": "Match samuel and lampstand."
+}

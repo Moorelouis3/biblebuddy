@@ -1,0 +1,30 @@
+{
+  "level": 10,
+  "name": "Samson at the Pillars",
+  "scripture": "Numbers 16:23–31",
+  "chapter": "Judges",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "stone",
+    "banner",
+    "cloud",
+    "wheat",
+    "tent",
+    "grape",
+    "ram-horn"
+  ],
+  "goals": {
+    "stone": 8,
+    "banner": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match stone and banner.",
+  "storyEffect": "Match stone and banner."
+}

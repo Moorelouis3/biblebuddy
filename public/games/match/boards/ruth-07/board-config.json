@@ -1,0 +1,30 @@
+{
+  "level": 7,
+  "name": "At Boaz’s Table",
+  "scripture": "Numbers 2:8–23",
+  "chapter": "Ruth",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "bread",
+    "barley",
+    "water-jar",
+    "naomi",
+    "tent",
+    "sandal",
+    "wheat"
+  ],
+  "goals": {
+    "bread": 8,
+    "barley": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match bread and barley.",
+  "storyEffect": "Match bread and barley."
+}

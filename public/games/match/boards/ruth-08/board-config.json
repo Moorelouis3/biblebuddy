@@ -1,0 +1,30 @@
+{
+  "level": 8,
+  "name": "The Threshing Floor",
+  "scripture": "Numbers 3",
+  "chapter": "Ruth",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "barley",
+    "ruth",
+    "grape",
+    "tent",
+    "staff",
+    "stone",
+    "bread"
+  ],
+  "goals": {
+    "barley": 8,
+    "ruth": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match barley and ruth.",
+  "storyEffect": "Match barley and ruth."
+}

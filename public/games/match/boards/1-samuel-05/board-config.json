@@ -1,0 +1,30 @@
+{
+  "level": 5,
+  "name": "The Stone of Help",
+  "scripture": "Numbers 7",
+  "chapter": "1 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "stone",
+    "samuel",
+    "lamb",
+    "basket",
+    "sling",
+    "covenant-ark",
+    "tree"
+  ],
+  "goals": {
+    "stone": 8,
+    "samuel": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match stone and samuel.",
+  "storyEffect": "Match stone and samuel."
+}

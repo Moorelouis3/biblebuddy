@@ -1,0 +1,30 @@
+{
+  "level": 8,
+  "name": "Jephthah at Mizpah",
+  "scripture": "Numbers 11:1–11",
+  "chapter": "Judges",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "banner",
+    "tent",
+    "staff",
+    "wheat",
+    "altar",
+    "scroll",
+    "water-jar"
+  ],
+  "goals": {
+    "banner": 8,
+    "tent": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match banner and tent.",
+  "storyEffect": "Match banner and tent."
+}

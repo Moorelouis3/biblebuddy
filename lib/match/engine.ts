@@ -551,7 +551,10 @@ const SOCKETS = ["#1b2b57", "#1d4a2a", "#4a2a14", "#1f3b4d", "#3b2350"];
  * on the map before it goes live (Louis, 2026-11-23: "I don't see it on local").
  */
 export const MAX_MATCH_LEVELS = process.env.NODE_ENV === "development" ? 500 : 22;
-const BOOK_ORDER = ["genesis", "exodus", "leviticus", "numbers", "deuteronomy"];
+const BOOK_ORDER = [
+  "genesis", "exodus", "leviticus", "numbers", "deuteronomy", "joshua", "judges", "ruth", "1 samuel", "2 samuel",
+  "1 kings", "2 kings", "1 chronicles", "2 chronicles", "ezra", "nehemiah", "esther", "job", "psalms", "proverbs",
+];
 /**
  * Every board asks for three things (Louis, 2026-11-23: "only 2 things people
  * need to get... it should be 3 not 2"). A board whose config names two goals

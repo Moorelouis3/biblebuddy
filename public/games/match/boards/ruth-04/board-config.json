@@ -1,0 +1,30 @@
+{
+  "level": 4,
+  "name": "Where You Go",
+  "scripture": "Numbers 1:15–18",
+  "chapter": "Ruth",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "ruth",
+    "naomi",
+    "basket",
+    "barley",
+    "bread",
+    "grape",
+    "tent"
+  ],
+  "goals": {
+    "ruth": 8,
+    "naomi": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match ruth and naomi.",
+  "storyEffect": "Match ruth and naomi."
+}

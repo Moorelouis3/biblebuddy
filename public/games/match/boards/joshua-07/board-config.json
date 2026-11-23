@@ -1,0 +1,30 @@
+{
+  "level": 7,
+  "name": "The Gibeonites Arrive",
+  "scripture": "Numbers 9",
+  "chapter": "Joshua",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "bread",
+    "water-jar",
+    "grape",
+    "tent",
+    "water-drop",
+    "wheat",
+    "tabernacle"
+  ],
+  "goals": {
+    "bread": 8,
+    "water-jar": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match bread and water jar.",
+  "storyEffect": "Match bread and water jar."
+}
