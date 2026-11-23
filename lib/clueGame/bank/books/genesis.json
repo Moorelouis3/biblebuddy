@@ -14688,6 +14688,294 @@
   "ref": "Genesis 43:34"
  },
  {
+  "id": "genesis-43-m-01",
+  "chapter": 43,
+  "level": "medium",
+  "category": "person",
+  "question": "Who offered to be surety for Benjamin?",
+  "choices": [
+   "Reuben",
+   "Judah",
+   "Simeon",
+   "Levi"
+  ],
+  "answer": 1,
+  "explanation": "Judah said, I will be surety for him; of my hand shalt thou require him.",
+  "ref": "Genesis 43:8–9"
+ },
+ {
+  "id": "genesis-43-m-02",
+  "chapter": 43,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Joseph say the men would dine with him?",
+  "choices": [
+   "At noon",
+   "At evening",
+   "On the Sabbath",
+   "At sunrise"
+  ],
+  "answer": 0,
+  "explanation": "Joseph said, Bring these men home, and slay, and make ready; for these men shall dine with me at noon.",
+  "ref": "Genesis 43:16"
+ },
+ {
+  "id": "genesis-43-m-03",
+  "chapter": 43,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did the steward bring out to the brothers?",
+  "choices": [
+   "Benjamin",
+   "Reuben",
+   "Simeon",
+   "Judah"
+  ],
+  "answer": 2,
+  "explanation": "The steward said, I had your money. And he brought Simeon out unto them.",
+  "ref": "Genesis 43:23"
+ },
+ {
+  "id": "genesis-43-h-01",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the family eaten up when Jacob sent his sons again?",
+  "choices": [
+   "The corn brought out of Egypt",
+   "Their flocks",
+   "The balm and honey",
+   "Their bread and wine"
+  ],
+  "answer": 0,
+  "explanation": "When they had eaten up the corn which they had brought out of Egypt, their father said unto them, Go again, buy us a little food.",
+  "ref": "Genesis 43:2"
+ },
+ {
+  "id": "genesis-43-h-02",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Judah say the man had solemnly protested they would not see?",
+  "choices": [
+   "His gold",
+   "His face",
+   "His house",
+   "His servants"
+  ],
+  "answer": 1,
+  "explanation": "The man did solemnly protest unto us, saying, Ye shall not see my face, except your brother be with you.",
+  "ref": "Genesis 43:3"
+ },
+ {
+  "id": "genesis-43-h-03",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The brothers said the man asked them straitly about what?",
+  "choices": [
+   "Their state and their kindred",
+   "Their flocks and herds",
+   "Their gods",
+   "Their gold and silver"
+  ],
+  "answer": 0,
+  "explanation": "The man asked us straitly of our state, and of our kindred, saying, Is your father yet alive? have ye another brother?",
+  "ref": "Genesis 43:7"
+ },
+ {
+  "id": "genesis-43-h-04",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Judah said that if Benjamin went, who else would live and not die besides Jacob and the brothers?",
+  "choices": [
+   "Their servants",
+   "Their little ones",
+   "Pharaoh's people",
+   "Simeon alone"
+  ],
+  "answer": 1,
+  "explanation": "Send the lad with me, that we may live, and not die, both we, and thou, and also our little ones.",
+  "ref": "Genesis 43:8"
+ },
+ {
+  "id": "genesis-43-h-05",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Judah say he would do if he did not bring Benjamin back?",
+  "choices": [
+   "Bear the blame for ever",
+   "Sell his flocks",
+   "Go to prison",
+   "Leave Canaan"
+  ],
+  "answer": 0,
+  "explanation": "If I bring him not unto thee, then let me bear the blame for ever.",
+  "ref": "Genesis 43:9"
+ },
+ {
+  "id": "genesis-43-h-06",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Judah said that if they had not lingered, what would they have done twice?",
+  "choices": [
+   "Returned",
+   "Prayed",
+   "Fasted",
+   "Sold corn"
+  ],
+  "answer": 0,
+  "explanation": "Except we had lingered, surely now we had returned this second time.",
+  "ref": "Genesis 43:10"
+ },
+ {
+  "id": "genesis-43-h-07",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these did Jacob tell them to carry in the present for the man?",
+  "choices": [
+   "Wine",
+   "A little balm",
+   "Silver rings",
+   "Fine wool"
+  ],
+  "answer": 1,
+  "explanation": "Jacob told them to take a little balm, and a little honey, spices, and myrrh, nuts, and almonds.",
+  "ref": "Genesis 43:11"
+ },
+ {
+  "id": "genesis-43-h-08",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much money did Jacob tell them to take in their hand?",
+  "choices": [
+   "Half money",
+   "Double money",
+   "Ten pieces of silver",
+   "No money"
+  ],
+  "answer": 1,
+  "explanation": "Jacob said, Take double money in your hand.",
+  "ref": "Genesis 43:12"
+ },
+ {
+  "id": "genesis-43-h-09",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob say when he sent Benjamin: “If I be bereaved of my children…”?",
+  "choices": [
+   "I am bereaved",
+   "I will go myself",
+   "God will keep them",
+   "Then Simeon returns"
+  ],
+  "answer": 0,
+  "explanation": "Jacob said, If I be bereaved of my children, I am bereaved.",
+  "ref": "Genesis 43:14"
+ },
+ {
+  "id": "genesis-43-h-10",
+  "chapter": 43,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Joseph tell to bring the men home?",
+  "choices": [
+   "His brother",
+   "The ruler of his house",
+   "Pharaoh's guard",
+   "The chief butler"
+  ],
+  "answer": 1,
+  "explanation": "Joseph said to the ruler of his house, Bring these men home.",
+  "ref": "Genesis 43:16"
+ },
+ {
+  "id": "genesis-43-h-11",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why were the brothers afraid when they were brought into Joseph's house?",
+  "choices": [
+   "Because of the money in their sacks",
+   "Because of Simeon's absence",
+   "Because of a dream",
+   "Because Pharaoh was there"
+  ],
+  "answer": 0,
+  "explanation": "They said, Because of the money that was returned in our sacks at the first time are we brought in.",
+  "ref": "Genesis 43:18"
+ },
+ {
+  "id": "genesis-43-h-12",
+  "chapter": 43,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the brothers speak with the steward of Joseph's house?",
+  "choices": [
+   "At the door of the house",
+   "At the well",
+   "In the market",
+   "By the river"
+  ],
+  "answer": 0,
+  "explanation": "They came near to the steward of Joseph's house, and they communed with him at the door of the house.",
+  "ref": "Genesis 43:19"
+ },
+ {
+  "id": "genesis-43-h-13",
+  "chapter": 43,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Joseph go to weep when he saw Benjamin?",
+  "choices": [
+   "Into the field",
+   "Into his chamber",
+   "Out to the river",
+   "Into the temple"
+  ],
+  "answer": 1,
+  "explanation": "He sought where to weep; and he entered into his chamber, and wept there.",
+  "ref": "Genesis 43:30"
+ },
+ {
+  "id": "genesis-43-h-14",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much more was Benjamin's mess than any of the others'?",
+  "choices": [
+   "Twice as much",
+   "Three times as much",
+   "Five times as much",
+   "Ten times as much"
+  ],
+  "answer": 2,
+  "explanation": "Benjamin's mess was five times so much as any of theirs.",
+  "ref": "Genesis 43:34"
+ },
+ {
+  "id": "genesis-43-h-15",
+  "chapter": 43,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the men react when they were seated by age at Joseph's table?",
+  "choices": [
+   "They marvelled one at another",
+   "They refused to sit",
+   "They laughed",
+   "They wept"
+  ],
+  "answer": 0,
+  "explanation": "They sat before him, the firstborn according to his birthright, and the youngest according to his youth: and the men marvelled one at another.",
+  "ref": "Genesis 43:33"
+ },
+ {
   "id": "old-genesis-44-1",
   "chapter": 44,
   "level": "beginner",
@@ -14736,6 +15024,294 @@
   "ref": "Genesis 44:13"
  },
  {
+  "id": "genesis-44-m-01",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joseph have put in the sack of the youngest?",
+  "choices": [
+   "His silver cup",
+   "A gold ring",
+   "A bag of grain only",
+   "A letter"
+  ],
+  "answer": 0,
+  "explanation": "Joseph said, Put my cup, the silver cup, in the sack's mouth of the youngest, and his corn money.",
+  "ref": "Genesis 44:2"
+ },
+ {
+  "id": "genesis-44-m-02",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the brothers do when the cup was found in Benjamin's sack?",
+  "choices": [
+   "Ran away",
+   "Rent their clothes",
+   "Prayed aloud",
+   "Fought the steward"
+  ],
+  "answer": 1,
+  "explanation": "The cup was found in Benjamin's sack. Then they rent their clothes, and laded every man his ass, and returned to the city.",
+  "ref": "Genesis 44:12–13"
+ },
+ {
+  "id": "genesis-44-m-03",
+  "chapter": 44,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Judah offer to be in place of the lad?",
+  "choices": [
+   "A bondman to Joseph",
+   "A prisoner in Egypt",
+   "A messenger to Jacob",
+   "A guard of the city"
+  ],
+  "answer": 0,
+  "explanation": "Judah said, Let thy servant abide instead of the lad a bondman to my lord.",
+  "ref": "Genesis 44:33"
+ },
+ {
+  "id": "genesis-44-h-01",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much food did Joseph tell the steward to put in the men's sacks?",
+  "choices": [
+   "Half a measure",
+   "Only enough for the way",
+   "As much as they can carry",
+   "A measure each"
+  ],
+  "answer": 2,
+  "explanation": "Joseph said, Fill the men's sacks with food, as much as they can carry.",
+  "ref": "Genesis 44:1"
+ },
+ {
+  "id": "genesis-44-h-02",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Joseph have every man's money put?",
+  "choices": [
+   "In his bag",
+   "In the sack's mouth",
+   "Under the corn",
+   "In his cloak"
+  ],
+  "answer": 1,
+  "explanation": "Joseph said, Put every man's money in his sack's mouth.",
+  "ref": "Genesis 44:1"
+ },
+ {
+  "id": "genesis-44-h-03",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When were the men sent away?",
+  "choices": [
+   "At noon",
+   "At evening",
+   "As soon as the morning was light",
+   "After three days"
+  ],
+  "answer": 2,
+  "explanation": "As soon as the morning was light, the men were sent away, they and their asses.",
+  "ref": "Genesis 44:3"
+ },
+ {
+  "id": "genesis-44-h-04",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the steward say Joseph did with the silver cup besides drinking from it?",
+  "choices": [
+   "He divineth by it",
+   "He pours offerings with it",
+   "He measures corn with it",
+   "He keeps oil in it"
+  ],
+  "answer": 0,
+  "explanation": "Is not this it in which my lord drinketh, and whereby indeed he divineth?",
+  "ref": "Genesis 44:5"
+ },
+ {
+  "id": "genesis-44-h-05",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The brothers said the one with the cup should die, and what would the rest be?",
+  "choices": [
+   "Free men",
+   "My lord's bondmen",
+   "Prisoners",
+   "Servants of Pharaoh"
+  ],
+  "answer": 1,
+  "explanation": "With whomsoever it be found, let him die, and we also will be my lord's bondmen.",
+  "ref": "Genesis 44:9"
+ },
+ {
+  "id": "genesis-44-h-06",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the steward say would happen to the others if the cup was found?",
+  "choices": [
+   "They would be blameless",
+   "They would be sold",
+   "They would be beaten",
+   "They would pay silver"
+  ],
+  "answer": 0,
+  "explanation": "He with whom it is found shall be my servant; and ye shall be blameless.",
+  "ref": "Genesis 44:10"
+ },
+ {
+  "id": "genesis-44-h-07",
+  "chapter": 44,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Joseph when Judah and his brethren came back?",
+  "choices": [
+   "In the field",
+   "Yet in his house",
+   "At the gate",
+   "By the river"
+  ],
+  "answer": 1,
+  "explanation": "Judah and his brethren came to Joseph's house; for he was yet there: and they fell before him on the ground.",
+  "ref": "Genesis 44:14"
+ },
+ {
+  "id": "genesis-44-h-08",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph say such a man as he could certainly do?",
+  "choices": [
+   "Divine",
+   "Forgive",
+   "Judge",
+   "Punish"
+  ],
+  "answer": 0,
+  "explanation": "Joseph said, Wot ye not that such a man as I can certainly divine?",
+  "ref": "Genesis 44:15"
+ },
+ {
+  "id": "genesis-44-h-09",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joseph said the others could go up to their father in what?",
+  "choices": [
+   "Chains",
+   "Peace",
+   "Haste",
+   "Silence"
+  ],
+  "answer": 1,
+  "explanation": "The man in whose hand the cup is found shall be my servant; and as for you, get you up in peace unto your father.",
+  "ref": "Genesis 44:17"
+ },
+ {
+  "id": "genesis-44-h-10",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Judah ask Joseph not to let burn against him?",
+  "choices": [
+   "His wrath",
+   "His anger",
+   "His fire",
+   "His grief"
+  ],
+  "answer": 1,
+  "explanation": "Let thy servant speak a word in my lord's ears, and let not thine anger burn against thy servant.",
+  "ref": "Genesis 44:18"
+ },
+ {
+  "id": "genesis-44-h-11",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Judah say Joseph wanted to set on Benjamin?",
+  "choices": [
+   "His seal",
+   "His eyes",
+   "His hand",
+   "His blessing"
+  ],
+  "answer": 1,
+  "explanation": "Thou saidst, Bring him down unto me, that I may set mine eyes upon him.",
+  "ref": "Genesis 44:21"
+ },
+ {
+  "id": "genesis-44-h-12",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Judah say would happen to Jacob if Benjamin left his father?",
+  "choices": [
+   "His father would die",
+   "His father would be glad",
+   "The famine would end",
+   "Joseph would return"
+  ],
+  "answer": 0,
+  "explanation": "The lad cannot leave his father: for if he should leave his father, his father would die.",
+  "ref": "Genesis 44:22"
+ },
+ {
+  "id": "genesis-44-h-13",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph ask his servants when he first spoke with them: Have ye a father, or what?",
+  "choices": [
+   "A sister",
+   "A brother",
+   "A wife",
+   "A son"
+  ],
+  "answer": 1,
+  "explanation": "My lord asked his servants, saying, Have ye a father, or a brother?",
+  "ref": "Genesis 44:19"
+ },
+ {
+  "id": "genesis-44-h-14",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph say would happen if the youngest did not come down?",
+  "choices": [
+   "They would see his face no more",
+   "They would be sold",
+   "They would be hanged",
+   "They would owe silver"
+  ],
+  "answer": 0,
+  "explanation": "Thou saidst, Except your youngest brother come down with you, ye shall see my face no more.",
+  "ref": "Genesis 44:23"
+ },
+ {
+  "id": "genesis-44-h-15",
+  "chapter": 44,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons did Jacob say his wife bare him?",
+  "choices": [
+   "One",
+   "Two",
+   "Three",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Thy servant my father said unto us, Ye know that my wife bare me two sons.",
+  "ref": "Genesis 44:27"
+ },
+ {
   "id": "old-genesis-45-2",
   "chapter": 45,
   "level": "beginner",
@@ -14782,6 +15358,294 @@
   "answer": 3,
   "explanation": "Joseph sent them away with the instruction not to fall out along the way.",
   "ref": "Genesis 45:24"
+ },
+ {
+  "id": "genesis-45-m-01",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Before Joseph made himself known, what did he cry to those who stood by?",
+  "choices": [
+   "Cause every man to go out from me",
+   "Bring Pharaoh here",
+   "Bind these men",
+   "Let none speak"
+  ],
+  "answer": 0,
+  "explanation": "Joseph cried, Cause every man to go out from me.",
+  "ref": "Genesis 45:1"
+ },
+ {
+  "id": "genesis-45-m-02",
+  "chapter": 45,
+  "level": "medium",
+  "category": "place",
+  "question": "In which land did Joseph say his father would dwell?",
+  "choices": [
+   "Canaan",
+   "Goshen",
+   "Gerar",
+   "On"
+  ],
+  "answer": 1,
+  "explanation": "Joseph said, Thou shalt dwell in the land of Goshen, and thou shalt be near unto me.",
+  "ref": "Genesis 45:10"
+ },
+ {
+  "id": "genesis-45-m-03",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Joseph said God did send him before them for what purpose?",
+  "choices": [
+   "To preserve life",
+   "To punish them",
+   "To rule Canaan",
+   "To find Benjamin"
+  ],
+  "answer": 0,
+  "explanation": "God did send me before you to preserve life.",
+  "ref": "Genesis 45:5"
+ },
+ {
+  "id": "genesis-45-h-01",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who stood with Joseph while he made himself known to his brethren?",
+  "choices": [
+   "Pharaoh",
+   "Benjamin",
+   "No man",
+   "The steward"
+  ],
+  "answer": 2,
+  "explanation": "There stood no man with him, while Joseph made himself known unto his brethren.",
+  "ref": "Genesis 45:1"
+ },
+ {
+  "id": "genesis-45-h-02",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why could his brethren not answer Joseph?",
+  "choices": [
+   "They were troubled at his presence",
+   "They did not know him",
+   "They were asleep",
+   "They had no words in Egyptian"
+  ],
+  "answer": 0,
+  "explanation": "His brethren could not answer him; for they were troubled at his presence.",
+  "ref": "Genesis 45:3"
+ },
+ {
+  "id": "genesis-45-h-03",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After saying \"I am Joseph,\" what did Joseph ask?",
+  "choices": [
+   "Is Benjamin well?",
+   "Doth my father yet live?",
+   "Why did you come?",
+   "Where is Simeon?"
+  ],
+  "answer": 1,
+  "explanation": "Joseph said unto his brethren, I am Joseph; doth my father yet live?",
+  "ref": "Genesis 45:3"
+ },
+ {
+  "id": "genesis-45-h-04",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years had the famine been in the land when Joseph spoke?",
+  "choices": [
+   "One",
+   "Two",
+   "Five",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "Joseph said, For these two years hath the famine been in the land.",
+  "ref": "Genesis 45:6"
+ },
+ {
+  "id": "genesis-45-h-05",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many more years of famine did Joseph say there were?",
+  "choices": [
+   "Two",
+   "Three",
+   "Five",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "There are five years, in the which there shall neither be earing nor harvest.",
+  "ref": "Genesis 45:6"
+ },
+ {
+  "id": "genesis-45-h-06",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joseph said God sent him to preserve them what in the earth?",
+  "choices": [
+   "A kingdom",
+   "A posterity",
+   "A temple",
+   "A name only"
+  ],
+  "answer": 1,
+  "explanation": "God sent me before you to preserve you a posterity in the earth.",
+  "ref": "Genesis 45:7"
+ },
+ {
+  "id": "genesis-45-h-07",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joseph said God made him lord of whose house?",
+  "choices": [
+   "His father's house",
+   "All Pharaoh's house",
+   "His brothers' house",
+   "Potiphar's house"
+  ],
+  "answer": 1,
+  "explanation": "God hath made me a father to Pharaoh, and lord of all his house.",
+  "ref": "Genesis 45:8"
+ },
+ {
+  "id": "genesis-45-h-08",
+  "chapter": 45,
+  "level": "hard",
+  "category": "person",
+  "question": "Upon whose neck did Joseph first fall and weep?",
+  "choices": [
+   "Reuben's",
+   "Judah's",
+   "Benjamin's",
+   "Simeon's"
+  ],
+  "answer": 2,
+  "explanation": "He fell upon his brother Benjamin's neck, and wept.",
+  "ref": "Genesis 45:14"
+ },
+ {
+  "id": "genesis-45-h-09",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh say they would eat of the land of Egypt?",
+  "choices": [
+   "The fat of the land",
+   "The first fruits",
+   "The bread of the river",
+   "The corn of Goshen"
+  ],
+  "answer": 0,
+  "explanation": "I will give you the good of the land of Egypt, and ye shall eat the fat of the land.",
+  "ref": "Genesis 45:18"
+ },
+ {
+  "id": "genesis-45-h-10",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh tell them to take out of Egypt for their little ones and wives?",
+  "choices": [
+   "Horses",
+   "Wagons",
+   "Tents",
+   "Boats"
+  ],
+  "answer": 1,
+  "explanation": "Take you wagons out of the land of Egypt for your little ones, and for your wives.",
+  "ref": "Genesis 45:19"
+ },
+ {
+  "id": "genesis-45-h-11",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many asses laden with good things of Egypt did Joseph send to his father?",
+  "choices": [
+   "Five",
+   "Ten",
+   "Twelve",
+   "Twenty"
+  ],
+  "answer": 1,
+  "explanation": "He sent ten asses laden with the good things of Egypt.",
+  "ref": "Genesis 45:23"
+ },
+ {
+  "id": "genesis-45-h-12",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph tell his brethren as they left?",
+  "choices": [
+   "Fall not out by the way",
+   "Come back in a year",
+   "Hurry home",
+   "Tell no one"
+  ],
+  "answer": 0,
+  "explanation": "He said unto them, See that ye fall not out by the way.",
+  "ref": "Genesis 45:24"
+ },
+ {
+  "id": "genesis-45-h-13",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What revived the spirit of Jacob when he saw it?",
+  "choices": [
+   "The wagons",
+   "The silver",
+   "The garments",
+   "The corn"
+  ],
+  "answer": 0,
+  "explanation": "When he saw the wagons which Joseph had sent to carry him, the spirit of Jacob their father revived.",
+  "ref": "Genesis 45:27"
+ },
+ {
+  "id": "genesis-45-h-14",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joseph said that if they stayed in Canaan, they might come to what?",
+  "choices": [
+   "Poverty",
+   "Exile",
+   "War",
+   "Sickness"
+  ],
+  "answer": 0,
+  "explanation": "There will I nourish thee; for yet there are five years of famine; lest thou, and thy household, come to poverty.",
+  "ref": "Genesis 45:11"
+ },
+ {
+  "id": "genesis-45-h-15",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel say when he heard Joseph was alive and saw the wagons?",
+  "choices": [
+   "It is enough",
+   "Let me die",
+   "Send Benjamin back",
+   "Bring Pharaoh"
+  ],
+  "answer": 0,
+  "explanation": "Israel said, It is enough; Joseph my son is yet alive: I will go and see him before I die.",
+  "ref": "Genesis 45:28"
  },
  {
   "id": "old-genesis-46-1",
