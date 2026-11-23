@@ -800,6 +800,646 @@
   "ref": "Exodus 2:23–25"
  },
  {
+  "id": "exodus-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Of which house was the man who took a daughter of Levi to wife?",
+  "choices": [
+   "Judah",
+   "Levi",
+   "Reuben",
+   "Benjamin"
+  ],
+  "answer": 1,
+  "explanation": "And there went a man of the house of Levi, and took to wife a daughter of Levi.",
+  "ref": "Exodus 2:1"
+ },
+ {
+  "id": "exodus-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Moses’ mother hide him?",
+  "choices": [
+   "Three months",
+   "Three days",
+   "Seven days",
+   "A year"
+  ],
+  "answer": 0,
+  "explanation": "When she saw him that he was a goodly child, she hid him three months.",
+  "ref": "Exodus 2:2"
+ },
+ {
+  "id": "exodus-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stood afar off to see what would be done to the baby?",
+  "choices": [
+   "His father",
+   "Pharaoh’s maid",
+   "A shepherd",
+   "His sister"
+  ],
+  "answer": 3,
+  "explanation": "And his sister stood afar off, to wit what would be done to him.",
+  "ref": "Exodus 2:4"
+ },
+ {
+  "id": "exodus-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Pharaoh’s daughter call him Moses?",
+  "choices": [
+   "He was born in Egypt",
+   "He was a Hebrew",
+   "Because she drew him out of the water",
+   "He was a goodly child"
+  ],
+  "answer": 2,
+  "explanation": "She called his name Moses: and she said, Because I drew him out of the water.",
+  "ref": "Exodus 2:10"
+ },
+ {
+  "id": "exodus-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Moses slay when he saw him smiting a Hebrew?",
+  "choices": [
+   "A shepherd",
+   "An Egyptian",
+   "A Midianite",
+   "A Hebrew"
+  ],
+  "answer": 1,
+  "explanation": "He spied an Egyptian smiting an Hebrew… he slew the Egyptian, and hid him in the sand.",
+  "ref": "Exodus 2:11–12"
+ },
+ {
+  "id": "exodus-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sought to slay Moses when he heard what he had done?",
+  "choices": [
+   "Pharaoh",
+   "The Hebrews",
+   "The shepherds",
+   "Reuel"
+  ],
+  "answer": 0,
+  "explanation": "Now when Pharaoh heard this thing, he sought to slay Moses.",
+  "ref": "Exodus 2:15"
+ },
+ {
+  "id": "exodus-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which daughter of the priest of Midian did Moses marry?",
+  "choices": [
+   "Miriam",
+   "Puah",
+   "Shiphrah",
+   "Zipporah"
+  ],
+  "answer": 3,
+  "explanation": "And he gave Moses Zipporah his daughter.",
+  "ref": "Exodus 2:21"
+ },
+ {
+  "id": "exodus-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "What name did Moses give his son?",
+  "choices": [
+   "Reuel",
+   "Levi",
+   "Gershom",
+   "Aaron"
+  ],
+  "answer": 2,
+  "explanation": "And she bare him a son, and he called his name Gershom.",
+  "ref": "Exodus 2:22"
+ },
+ {
+  "id": "exodus-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was hired to nurse the child for Pharaoh’s daughter?",
+  "choices": [
+   "An Egyptian maid",
+   "The child’s own mother",
+   "Pharaoh’s wife",
+   "A Midianite woman"
+  ],
+  "answer": 1,
+  "explanation": "The maid went and called the child’s mother… Take this child away, and nurse it for me.",
+  "ref": "Exodus 2:8–9"
+ },
+ {
+  "id": "exodus-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the babe do when the ark was opened?",
+  "choices": [
+   "Wept",
+   "Slept",
+   "Laughed",
+   "Cried out a name"
+  ],
+  "answer": 0,
+  "explanation": "When she had opened it, she saw the child: and, behold, the babe wept.",
+  "ref": "Exodus 2:6"
+ },
+ {
+  "id": "exodus-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses’ mother daub the ark of bulrushes with?",
+  "choices": [
+   "Clay and straw",
+   "Oil and wax",
+   "Mud and sand",
+   "Slime and pitch"
+  ],
+  "answer": 3,
+  "explanation": "She took for him an ark of bulrushes, and daubed it with slime and with pitch.",
+  "ref": "Exodus 2:3"
+ },
+ {
+  "id": "exodus-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did she lay the ark?",
+  "choices": [
+   "On the river’s bridge",
+   "Inside Pharaoh’s garden",
+   "In the flags by the river’s brink",
+   "Under a palm tree"
+  ],
+  "answer": 2,
+  "explanation": "She laid it in the flags by the river’s brink.",
+  "ref": "Exodus 2:3"
+ },
+ {
+  "id": "exodus-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh’s daughter say of the child when she saw him?",
+  "choices": [
+   "“This is a gift from the river”",
+   "“This is one of the Hebrews’ children”",
+   "“This is my own son”",
+   "“This is a sign of war”"
+  ],
+  "answer": 1,
+  "explanation": "She had compassion on him, and said, This is one of the Hebrews’ children.",
+  "ref": "Exodus 2:6"
+ },
+ {
+  "id": "exodus-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who offered to call a Hebrew nurse for Pharaoh’s daughter?",
+  "choices": [
+   "The baby’s sister",
+   "Pharaoh’s maid",
+   "The midwife",
+   "Reuel"
+  ],
+  "answer": 0,
+  "explanation": "Then said his sister to Pharaoh’s daughter, Shall I go and call to thee a nurse of the Hebrew women?",
+  "ref": "Exodus 2:7"
+ },
+ {
+  "id": "exodus-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh’s daughter promise to give the nurse?",
+  "choices": [
+   "A house",
+   "A garment",
+   "Land",
+   "Wages"
+  ],
+  "answer": 3,
+  "explanation": "Nurse it for me, and I will give thee thy wages.",
+  "ref": "Exodus 2:9"
+ },
+ {
+  "id": "exodus-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Moses hide the Egyptian he slew?",
+  "choices": [
+   "In the river",
+   "In a cave",
+   "In the sand",
+   "In Goshen"
+  ],
+  "answer": 2,
+  "explanation": "He slew the Egyptian, and hid him in the sand.",
+  "ref": "Exodus 2:12"
+ },
+ {
+  "id": "exodus-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Hebrew say to Moses who rebuked him?",
+  "choices": [
+   "“Who sent thee to Pharaoh?”",
+   "“Who made thee a prince and a judge over us?”",
+   "“Where is thy God?”",
+   "“Who is thy father?”"
+  ],
+  "answer": 1,
+  "explanation": "Who made thee a prince and a judge over us? intendest thou to kill me, as thou killedst the Egyptian?",
+  "ref": "Exodus 2:14"
+ },
+ {
+  "id": "exodus-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say when he feared?",
+  "choices": [
+   "“Surely this thing is known”",
+   "“I will go back”",
+   "“God will help me”",
+   "“No one saw me”"
+  ],
+  "answer": 0,
+  "explanation": "And Moses feared, and said, Surely this thing is known.",
+  "ref": "Exodus 2:14"
+ },
+ {
+  "id": "exodus-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who drove the priest of Midian’s daughters away from the well?",
+  "choices": [
+   "The Egyptians",
+   "Pharaoh’s men",
+   "Reuel’s servants",
+   "The shepherds"
+  ],
+  "answer": 3,
+  "explanation": "And the shepherds came and drove them away: but Moses stood up and helped them.",
+  "ref": "Exodus 2:17"
+ },
+ {
+  "id": "exodus-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many daughters did the priest of Midian have?",
+  "choices": [
+   "Two",
+   "Three",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "Now the priest of Midian had seven daughters.",
+  "ref": "Exodus 2:16"
+ },
+ {
+  "id": "exodus-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "What was the name of the daughters’ father?",
+  "choices": [
+   "Gershom",
+   "Reuel",
+   "Aaron",
+   "Amram"
+  ],
+  "answer": 1,
+  "explanation": "And when they came to Reuel their father, he said, How is it that ye are come so soon to day?",
+  "ref": "Exodus 2:18"
+ },
+ {
+  "id": "exodus-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Moses name his son Gershom?",
+  "choices": [
+   "He had been a stranger in a strange land",
+   "He was born in Midian",
+   "He was the firstborn",
+   "He loved the river"
+  ],
+  "answer": 0,
+  "explanation": "For he said, I have been a stranger in a strange land.",
+  "ref": "Exodus 2:22"
+ },
+ {
+  "id": "exodus-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "God remembered his covenant with Abraham, Isaac and whom?",
+  "choices": [
+   "Joseph",
+   "Moses",
+   "Levi",
+   "Jacob"
+  ],
+  "answer": 3,
+  "explanation": "God remembered his covenant with Abraham, with Isaac, and with Jacob.",
+  "ref": "Exodus 2:24"
+ },
+ {
+  "id": "exodus-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel do because of the bondage after the king died?",
+  "choices": [
+   "Rebelled",
+   "Fled to Midian",
+   "Sighed and cried",
+   "Built an altar"
+  ],
+  "answer": 2,
+  "explanation": "The children of Israel sighed by reason of the bondage, and they cried.",
+  "ref": "Exodus 2:23"
+ },
+ {
+  "id": "exodus-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Pharaoh’s daughter come down to the river?",
+  "choices": [
+   "To pray",
+   "To wash herself",
+   "To fetch water",
+   "To meet Moses"
+  ],
+  "answer": 1,
+  "explanation": "And the daughter of Pharaoh came down to wash herself at the river.",
+  "ref": "Exodus 2:5"
+ },
+ {
+  "id": "exodus-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the sister want to know as she stood afar off?",
+  "choices": [
+   "What would be done to him",
+   "Who the princess was",
+   "Where the river led",
+   "When Pharaoh would come"
+  ],
+  "answer": 0,
+  "explanation": "His sister stood afar off, to wit what would be done to him.",
+  "ref": "Exodus 2:4"
+ },
+ {
+  "id": "exodus-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who walked along by the river’s side with Pharaoh’s daughter?",
+  "choices": [
+   "Her sons",
+   "Moses’ mother",
+   "Pharaoh",
+   "Her maidens"
+  ],
+  "answer": 3,
+  "explanation": "And her maidens walked along by the river’s side.",
+  "ref": "Exodus 2:5"
+ },
+ {
+  "id": "exodus-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Pharaoh’s daughter send to fetch the ark?",
+  "choices": [
+   "Her father",
+   "The sister",
+   "Her maid",
+   "A soldier"
+  ],
+  "answer": 2,
+  "explanation": "When she saw the ark among the flags, she sent her maid to fetch it.",
+  "ref": "Exodus 2:5"
+ },
+ {
+  "id": "exodus-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses do before he slew the Egyptian?",
+  "choices": [
+   "Prayed to God",
+   "Looked this way and that",
+   "Called for help",
+   "Took a staff"
+  ],
+  "answer": 1,
+  "explanation": "He looked this way and that way, and when he saw that there was no man, he slew the Egyptian.",
+  "ref": "Exodus 2:12"
+ },
+ {
+  "id": "exodus-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day did Moses see two Hebrews strive together?",
+  "choices": [
+   "The second day",
+   "The same day",
+   "The seventh day",
+   "The third day"
+  ],
+  "answer": 0,
+  "explanation": "And when he went out the second day, behold, two men of the Hebrews strove together.",
+  "ref": "Exodus 2:13"
+ },
+ {
+  "id": "exodus-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses ask the Hebrew who did the wrong?",
+  "choices": [
+   "“Where is Pharaoh?”",
+   "“Who is thy father?”",
+   "“Why do you hide?”",
+   "“Wherefore smitest thou thy fellow?”"
+  ],
+  "answer": 3,
+  "explanation": "He said to him that did the wrong, Wherefore smitest thou thy fellow?",
+  "ref": "Exodus 2:13"
+ },
+ {
+  "id": "exodus-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the daughters fill to water their father’s flock?",
+  "choices": [
+   "The pitchers",
+   "The baskets",
+   "The troughs",
+   "The jars"
+  ],
+  "answer": 2,
+  "explanation": "They came and drew water, and filled the troughs to water their father’s flock.",
+  "ref": "Exodus 2:16"
+ },
+ {
+  "id": "exodus-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Reuel ask his daughters when they came home?",
+  "choices": [
+   "Where the flock was",
+   "How they were come so soon",
+   "Who had hurt them",
+   "Why they were afraid"
+  ],
+  "answer": 1,
+  "explanation": "He said, How is it that ye are come so soon to day?",
+  "ref": "Exodus 2:18"
+ },
+ {
+  "id": "exodus-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "What did the daughters call Moses when they told their father?",
+  "choices": [
+   "An Egyptian",
+   "A Hebrew",
+   "A shepherd",
+   "A prince"
+  ],
+  "answer": 0,
+  "explanation": "An Egyptian delivered us out of the hand of the shepherds.",
+  "ref": "Exodus 2:19"
+ },
+ {
+  "id": "exodus-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Reuel tell his daughters to call Moses?",
+  "choices": [
+   "So he could pay wages",
+   "So he could judge",
+   "So he could leave",
+   "So he could eat bread"
+  ],
+  "answer": 3,
+  "explanation": "Call him, that he may eat bread.",
+  "ref": "Exodus 2:20"
+ },
+ {
+  "id": "exodus-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses was content to do what with the man?",
+  "choices": [
+   "Work for him",
+   "Return to Egypt",
+   "Dwell with him",
+   "Marry his eldest"
+  ],
+  "answer": 2,
+  "explanation": "And Moses was content to dwell with the man.",
+  "ref": "Exodus 2:21"
+ },
+ {
+  "id": "exodus-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At the end of the chapter, what did God have unto Israel?",
+  "choices": [
+   "Anger",
+   "Respect",
+   "Silence",
+   "Judgment"
+  ],
+  "answer": 1,
+  "explanation": "And God looked upon the children of Israel, and God had respect unto them.",
+  "ref": "Exodus 2:25"
+ },
+ {
+  "id": "exodus-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who died in process of time, before Israel cried out?",
+  "choices": [
+   "The king of Egypt",
+   "Reuel",
+   "Moses’ father",
+   "Joseph"
+  ],
+  "answer": 0,
+  "explanation": "It came to pass in process of time, that the king of Egypt died.",
+  "ref": "Exodus 2:23"
+ },
+ {
+  "id": "exodus-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Moses stand up and help at the well?",
+  "choices": [
+   "Pharaoh’s maidens",
+   "The priest of Midian’s daughters",
+   "The Hebrew midwives",
+   "Reuel’s servants"
+  ],
+  "answer": 1,
+  "explanation": "The shepherds came and drove them away: but Moses stood up and helped them, and watered their flock.",
+  "ref": "Exodus 2:17"
+ },
+ {
+  "id": "exodus-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The daughters said Moses did what besides delivering them?",
+  "choices": [
+   "Drew water enough and watered the flock",
+   "Drove away the flock",
+   "Paid the shepherds",
+   "Dug a new well"
+  ],
+  "answer": 0,
+  "explanation": "An Egyptian delivered us… and also drew water enough for us, and watered the flock.",
+  "ref": "Exodus 2:19"
+ },
+ {
   "id": "old-exodus-3-1",
   "chapter": 3,
   "level": "beginner",
