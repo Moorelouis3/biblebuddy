@@ -2848,6 +2848,310 @@
   "ref": "Genesis 9:21"
  },
  {
+  "id": "genesis-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sons of Noah went forth of the ark?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "These are the three sons of Noah: and of them was the whole earth overspread.",
+  "ref": "Genesis 9:18–19"
+ },
+ {
+  "id": "genesis-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Noah uncovered after he drank the wine?",
+  "choices": [
+   "Within his tent",
+   "In the vineyard",
+   "In the ark",
+   "By the altar"
+  ],
+  "answer": 0,
+  "explanation": "He drank of the wine, and was drunken; and he was uncovered within his tent.",
+  "ref": "Genesis 9:21"
+ },
+ {
+  "id": "genesis-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did Noah live after the flood?",
+  "choices": [
+   "Six hundred years",
+   "Nine hundred and fifty years",
+   "One hundred and fifty years",
+   "Three hundred and fifty years"
+  ],
+  "answer": 3,
+  "explanation": "Noah lived after the flood three hundred and fifty years.",
+  "ref": "Genesis 9:28"
+ },
+ {
+  "id": "genesis-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Noah live in all?",
+  "choices": [
+   "Three hundred and fifty",
+   "Nine hundred and thirty",
+   "Nine hundred and fifty",
+   "Nine hundred and sixty-nine"
+  ],
+  "answer": 2,
+  "explanation": "All the days of Noah were nine hundred and fifty years: and he died.",
+  "ref": "Genesis 9:29"
+ },
+ {
+  "id": "genesis-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At whose hand did God say he would require the life of man, besides every beast?",
+  "choices": [
+   "Every king",
+   "Every man’s brother",
+   "Every priest",
+   "Every stranger"
+  ],
+  "answer": 1,
+  "explanation": "At the hand of every man’s brother will I require the life of man.",
+  "ref": "Genesis 9:5"
+ },
+ {
+  "id": "genesis-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whom besides Noah and his sons did God establish his covenant?",
+  "choices": [
+   "Their seed after them",
+   "Only the angels",
+   "Only the animals",
+   "Only the kings"
+  ],
+  "answer": 0,
+  "explanation": "I establish my covenant with you, and with your seed after you.",
+  "ref": "Genesis 9:9"
+ },
+ {
+  "id": "genesis-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God gave Noah and his sons all things, even as what?",
+  "choices": [
+   "The seed of the field",
+   "The fruit of the tree",
+   "The wine of the vine",
+   "The green herb"
+  ],
+  "answer": 3,
+  "explanation": "Even as the green herb have I given you all things.",
+  "ref": "Genesis 9:3"
+ },
+ {
+  "id": "genesis-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Shem and Japheth lay upon both their shoulders?",
+  "choices": [
+   "A net",
+   "A skin",
+   "A garment",
+   "A tent"
+  ],
+  "answer": 2,
+  "explanation": "Shem and Japheth took a garment, and laid it upon both their shoulders.",
+  "ref": "Genesis 9:23"
+ },
+ {
+  "id": "genesis-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The covenant was with every living creature that went out of what?",
+  "choices": [
+   "The garden",
+   "The ark",
+   "The city",
+   "The tent"
+  ],
+  "answer": 1,
+  "explanation": "With every living creature that is with you, from all that go out of the ark.",
+  "ref": "Genesis 9:10"
+ },
+ {
+  "id": "genesis-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God said the bow in the cloud was a token of a covenant between him and whom?",
+  "choices": [
+   "The earth",
+   "Only Noah",
+   "The angels",
+   "The seas"
+  ],
+  "answer": 0,
+  "explanation": "I do set my bow in the cloud, and it shall be for a token of a covenant between me and the earth.",
+  "ref": "Genesis 9:13"
+ },
+ {
+  "id": "genesis-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides beasts and fowls, upon whom would the fear and dread of man be?",
+  "choices": [
+   "The angels of heaven",
+   "The giants",
+   "The serpents only",
+   "All the fishes of the sea"
+  ],
+  "answer": 3,
+  "explanation": "The fear of you and the dread of you shall be upon all the fishes of the sea.",
+  "ref": "Genesis 9:2"
+ },
+ {
+  "id": "genesis-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God tell Noah’s family to replenish?",
+  "choices": [
+   "The ark",
+   "The vineyard",
+   "The earth",
+   "The flocks"
+  ],
+  "answer": 2,
+  "explanation": "God said, Be fruitful, and multiply, and replenish the earth.",
+  "ref": "Genesis 9:1"
+ },
+ {
+  "id": "genesis-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Noah said Canaan would be the servant of which sons?",
+  "choices": [
+   "Ham and Shem",
+   "Shem and Japheth",
+   "Ham and Japheth",
+   "Only Shem"
+  ],
+  "answer": 1,
+  "explanation": "Noah said Canaan shall be Shem’s servant, and Canaan shall be Japheth’s servant.",
+  "ref": "Genesis 9:26–27"
+ },
+ {
+  "id": "genesis-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Shem and Japheth not see when they covered their father?",
+  "choices": [
+   "Their father’s nakedness",
+   "Their brother Ham",
+   "The vineyard",
+   "The face of Canaan"
+  ],
+  "answer": 0,
+  "explanation": "Their faces were backward, and they saw not their father’s nakedness.",
+  "ref": "Genesis 9:23"
+ },
+ {
+  "id": "genesis-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whom, besides man, did God say he would require man’s blood?",
+  "choices": [
+   "Every bird",
+   "Every serpent",
+   "Every fish",
+   "Every beast"
+  ],
+  "answer": 3,
+  "explanation": "At the hand of every beast will I require it, and at the hand of man.",
+  "ref": "Genesis 9:5"
+ },
+ {
+  "id": "genesis-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say is the life of the flesh?",
+  "choices": [
+   "The breath",
+   "The bone",
+   "The blood",
+   "The fat"
+  ],
+  "answer": 2,
+  "explanation": "Flesh with the life thereof, which is the blood thereof, shall ye not eat.",
+  "ref": "Genesis 9:4"
+ },
+ {
+  "id": "genesis-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God call the bow in the cloud?",
+  "choices": [
+   "A crown of peace",
+   "A token of the covenant",
+   "A gate of heaven",
+   "A bridge for the angels"
+  ],
+  "answer": 1,
+  "explanation": "This is the token of the covenant, which I have established between me and all flesh.",
+  "ref": "Genesis 9:12–17"
+ },
+ {
+  "id": "genesis-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God told Noah’s sons to bring forth in the earth in what way?",
+  "choices": [
+   "Abundantly",
+   "Quietly",
+   "Slowly",
+   "Secretly"
+  ],
+  "answer": 0,
+  "explanation": "God said, Bring forth abundantly in the earth, and multiply therein.",
+  "ref": "Genesis 9:7"
+ },
+ {
+  "id": "genesis-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these did God include in his covenant with the creatures that went out of the ark?",
+  "choices": [
+   "Only the fowl",
+   "Only the cattle",
+   "Only the fish",
+   "Fowl, cattle, and every beast of the earth"
+  ],
+  "answer": 3,
+  "explanation": "With every living creature, of the fowl, of the cattle, and of every beast of the earth.",
+  "ref": "Genesis 9:10"
+ },
+ {
   "id": "old-genesis-10-1",
   "chapter": 10,
   "level": "beginner",
