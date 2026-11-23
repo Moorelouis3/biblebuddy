@@ -5840,6 +5840,646 @@
   "ref": "Leviticus 9:24"
  },
  {
+  "id": "leviticus-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did Moses call on the eighth day?",
+  "choices": [
+   "The twelve princes",
+   "Only Aaron",
+   "Aaron, his sons and the elders of Israel",
+   "The Levites"
+  ],
+  "answer": 2,
+  "explanation": "On the eighth day Moses called Aaron and his sons, and the elders of Israel.",
+  "ref": "Leviticus 9:1"
+ },
+ {
+  "id": "leviticus-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What young animal was Aaron to take for his sin offering?",
+  "choices": [
+   "A kid",
+   "A lamb",
+   "A dove",
+   "A young calf"
+  ],
+  "answer": 3,
+  "explanation": "Take thee a young calf for a sin offering.",
+  "ref": "Leviticus 9:2"
+ },
+ {
+  "id": "leviticus-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people bring for their sin offering?",
+  "choices": [
+   "A ram",
+   "A kid of the goats",
+   "A bullock",
+   "A young calf"
+  ],
+  "answer": 1,
+  "explanation": "Take ye a kid of the goats for a sin offering.",
+  "ref": "Leviticus 9:3"
+ },
+ {
+  "id": "leviticus-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say would happen that day?",
+  "choices": [
+   "He would raise Moses",
+   "He would give rain",
+   "He would destroy Egypt",
+   "He would appear unto them"
+  ],
+  "answer": 3,
+  "explanation": "For to day the LORD will appear unto you.",
+  "ref": "Leviticus 9:4"
+ },
+ {
+  "id": "leviticus-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Aaron to make for himself and the people?",
+  "choices": [
+   "A vow",
+   "Atonement",
+   "A covenant",
+   "A feast"
+  ],
+  "answer": 1,
+  "explanation": "Make an atonement for thyself, and for the people.",
+  "ref": "Leviticus 9:7"
+ },
+ {
+  "id": "leviticus-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Aaron's sons bring him?",
+  "choices": [
+   "The wood",
+   "The bread",
+   "The oil",
+   "The blood"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Aaron brought the blood unto him.",
+  "ref": "Leviticus 9:9"
+ },
+ {
+  "id": "leviticus-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Aaron do after offering the offerings?",
+  "choices": [
+   "He fled",
+   "He slept",
+   "He fasted",
+   "He lifted up his hand and blessed the people"
+  ],
+  "answer": 3,
+  "explanation": "Aaron lifted up his hand toward the people, and blessed them.",
+  "ref": "Leviticus 9:22"
+ },
+ {
+  "id": "leviticus-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went into the tabernacle and then blessed the people?",
+  "choices": [
+   "Eleazar",
+   "Aaron's sons",
+   "The elders",
+   "Moses and Aaron"
+  ],
+  "answer": 3,
+  "explanation": "Moses and Aaron went into the tabernacle of the congregation, and came out, and blessed the people.",
+  "ref": "Leviticus 9:23"
+ },
+ {
+  "id": "leviticus-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What appeared unto all the people?",
+  "choices": [
+   "Manna",
+   "The glory of the LORD",
+   "A cloud of locusts",
+   "A rainbow"
+  ],
+  "answer": 1,
+  "explanation": "The glory of the LORD appeared unto all the people.",
+  "ref": "Leviticus 9:23"
+ },
+ {
+  "id": "leviticus-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the fire from the LORD consume on the altar?",
+  "choices": [
+   "The priests",
+   "The tabernacle",
+   "The camp",
+   "The burnt offering and the fat"
+  ],
+  "answer": 3,
+  "explanation": "There came a fire out from before the LORD, and consumed upon the altar the burnt offering and the fat.",
+  "ref": "Leviticus 9:24"
+ },
+ {
+  "id": "leviticus-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of ram was Aaron told to take for a burnt offering?",
+  "choices": [
+   "A black ram",
+   "A ram with horns",
+   "A ram without blemish",
+   "A fat ram"
+  ],
+  "answer": 2,
+  "explanation": "A ram for a burnt offering, without blemish.",
+  "ref": "Leviticus 9:2"
+ },
+ {
+  "id": "leviticus-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people take for the burnt offering?",
+  "choices": [
+   "A calf and a lamb of the first year",
+   "A kid and a goat",
+   "Two doves",
+   "A bullock and a ram"
+  ],
+  "answer": 0,
+  "explanation": "A calf and a lamb, both of the first year, without blemish, for a burnt offering.",
+  "ref": "Leviticus 9:3"
+ },
+ {
+  "id": "leviticus-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people take for peace offerings?",
+  "choices": [
+   "A bullock and a ram",
+   "A kid and a lamb",
+   "Two doves",
+   "A calf and a goat"
+  ],
+  "answer": 0,
+  "explanation": "Also a bullock and a ram for peace offerings.",
+  "ref": "Leviticus 9:4"
+ },
+ {
+  "id": "leviticus-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be mingled with oil to be brought?",
+  "choices": [
+   "A meat offering",
+   "A drink offering",
+   "A sin offering",
+   "A wave offering"
+  ],
+  "answer": 0,
+  "explanation": "A meat offering mingled with oil.",
+  "ref": "Leviticus 9:4"
+ },
+ {
+  "id": "leviticus-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the blood put by Aaron's finger?",
+  "choices": [
+   "On his ear",
+   "On the ark",
+   "On the horns of the altar",
+   "On the vail"
+  ],
+  "answer": 2,
+  "explanation": "He dipped his finger in the blood, and put it upon the horns of the altar.",
+  "ref": "Leviticus 9:9"
+ },
+ {
+  "id": "leviticus-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was burnt outside the camp?",
+  "choices": [
+   "The kidneys",
+   "The flesh and the hide",
+   "The caul",
+   "The fat"
+  ],
+  "answer": 1,
+  "explanation": "The flesh and the hide he burnt with fire without the camp.",
+  "ref": "Leviticus 9:11"
+ },
+ {
+  "id": "leviticus-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Aaron burn upon the altar from the sin offering?",
+  "choices": [
+   "The head",
+   "The flesh",
+   "The fat, the kidneys and the caul",
+   "The hide"
+  ],
+  "answer": 2,
+  "explanation": "The fat, and the kidneys, and the caul above the liver of the sin offering, he burnt upon the altar.",
+  "ref": "Leviticus 9:10"
+ },
+ {
+  "id": "leviticus-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done to the burnt offering inwards and legs?",
+  "choices": [
+   "They were buried",
+   "They were given to the priests",
+   "They were washed",
+   "They were eaten"
+  ],
+  "answer": 2,
+  "explanation": "He did wash the inwards and the legs, and burnt them upon the burnt offering.",
+  "ref": "Leviticus 9:14"
+ },
+ {
+  "id": "leviticus-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the sin offering for the people?",
+  "choices": [
+   "The bullock",
+   "The calf",
+   "The ram",
+   "The goat"
+  ],
+  "answer": 3,
+  "explanation": "He took the goat, which was the sin offering for the people.",
+  "ref": "Leviticus 9:15"
+ },
+ {
+  "id": "leviticus-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the sons of Aaron present for the peace offerings?",
+  "choices": [
+   "The wood",
+   "The calf",
+   "The oil",
+   "The blood"
+  ],
+  "answer": 3,
+  "explanation": "Aaron's sons presented unto him the blood, which he sprinkled upon the altar round about.",
+  "ref": "Leviticus 9:18"
+ },
+ {
+  "id": "leviticus-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Aaron wave for a wave offering?",
+  "choices": [
+   "The skin",
+   "The breasts and the right shoulder",
+   "The fat",
+   "The head"
+  ],
+  "answer": 1,
+  "explanation": "The breasts and the right shoulder Aaron waved for a wave offering before the LORD.",
+  "ref": "Leviticus 9:21"
+ },
+ {
+  "id": "leviticus-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people bring before the tabernacle?",
+  "choices": [
+   "That which Moses commanded",
+   "Their firstborn",
+   "Gold and silver",
+   "Only a lamb each"
+  ],
+  "answer": 0,
+  "explanation": "They brought that which Moses commanded before the tabernacle of the congregation.",
+  "ref": "Leviticus 9:5"
+ },
+ {
+  "id": "leviticus-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Aaron take a handful of and burn upon the altar?",
+  "choices": [
+   "The meat offering",
+   "The ram",
+   "The goat",
+   "The calf"
+  ],
+  "answer": 0,
+  "explanation": "He brought the meat offering, and took an handful thereof, and burnt it upon the altar.",
+  "ref": "Leviticus 9:17"
+ },
+ {
+  "id": "leviticus-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the congregation do when they drew near?",
+  "choices": [
+   "Sang a psalm",
+   "Knelt in the court",
+   "Stood before the LORD",
+   "Left the camp"
+  ],
+  "answer": 2,
+  "explanation": "All the congregation drew near and stood before the LORD.",
+  "ref": "Leviticus 9:5"
+ },
+ {
+  "id": "leviticus-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old were the calf and lamb for the burnt offering?",
+  "choices": [
+   "Seven days old",
+   "Three years old",
+   "Of the first year",
+   "Of the second year"
+  ],
+  "answer": 2,
+  "explanation": "A calf and a lamb, both of the first year, without blemish, for a burnt offering.",
+  "ref": "Leviticus 9:3"
+ },
+ {
+  "id": "leviticus-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Beside which sacrifice did Aaron burn the handful of the meat offering?",
+  "choices": [
+   "The sin offering",
+   "The peace offering",
+   "The evening sacrifice",
+   "The burnt sacrifice of the morning"
+  ],
+  "answer": 3,
+  "explanation": "He took an handful thereof, and burnt it upon the altar, beside the burnt sacrifice of the morning.",
+  "ref": "Leviticus 9:17"
+ },
+ {
+  "id": "leviticus-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The people's goat was offered for sin in the same way as what?",
+  "choices": [
+   "As the peace offering",
+   "As the burnt offering",
+   "As the meat offering",
+   "As the first"
+  ],
+  "answer": 3,
+  "explanation": "He took the goat, and slew it, and offered it for sin, as the first.",
+  "ref": "Leviticus 9:15"
+ },
+ {
+  "id": "leviticus-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what did they put the fat of the bullock and the ram before burning it?",
+  "choices": [
+   "On the breasts",
+   "On the skin",
+   "On the head",
+   "On the horns"
+  ],
+  "answer": 0,
+  "explanation": "They put the fat upon the breasts, and he burnt the fat upon the altar.",
+  "ref": "Leviticus 9:20"
+ },
+ {
+  "id": "leviticus-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Who went into the tabernacle together and came out to bless the people?",
+  "choices": [
+   "Nadab and Abihu",
+   "Moses and Aaron",
+   "Aaron and Eleazar",
+   "Moses and Joshua"
+  ],
+  "answer": 1,
+  "explanation": "Moses and Aaron went into the tabernacle of the congregation, and came out, and blessed the people.",
+  "ref": "Leviticus 9:23"
+ },
+ {
+  "id": "leviticus-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Aaron deal with the blood of the burnt offering?",
+  "choices": [
+   "He put it on the horns",
+   "He sprinkled it round about upon the altar",
+   "He poured it at the altar's foot",
+   "He carried it out of the camp"
+  ],
+  "answer": 1,
+  "explanation": "Aaron's sons presented unto him the blood, which he sprinkled round about upon the altar.",
+  "ref": "Leviticus 9:12"
+ },
+ {
+  "id": "leviticus-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which part of the peace offering fat is named with the kidneys and the caul?",
+  "choices": [
+   "The shoulder",
+   "The head",
+   "The skin",
+   "The rump"
+  ],
+  "answer": 3,
+  "explanation": "The fat of the bullock and of the ram, the rump, and that which covereth the inwards, and the kidneys, and the caul above the liver.",
+  "ref": "Leviticus 9:19"
+ },
+ {
+  "id": "leviticus-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose sin offering did Aaron slay first?",
+  "choices": [
+   "The elders'",
+   "His own",
+   "Moses'",
+   "The people's"
+  ],
+  "answer": 1,
+  "explanation": "Aaron slew the calf of the sin offering, which was for himself.",
+  "ref": "Leviticus 9:8"
+ },
+ {
+  "id": "leviticus-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Toward whom did Aaron lift up his hand to bless?",
+  "choices": [
+   "Moses",
+   "The people",
+   "The altar",
+   "The tabernacle"
+  ],
+  "answer": 1,
+  "explanation": "Aaron lifted up his hand toward the people, and blessed them.",
+  "ref": "Leviticus 9:22"
+ },
+ {
+  "id": "leviticus-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which three offerings had Aaron finished when he came down?",
+  "choices": [
+   "Sin offering, burnt offering and peace offerings",
+   "Trespass, vow and heave offerings",
+   "Meat, drink and wave offerings",
+   "Only burnt offerings"
+  ],
+  "answer": 0,
+  "explanation": "He came down from offering of the sin offering, and the burnt offering, and peace offerings.",
+  "ref": "Leviticus 9:22"
+ },
+ {
+  "id": "leviticus-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Who had commanded Aaron to wave the breasts and the right shoulder?",
+  "choices": [
+   "Moses",
+   "Eleazar",
+   "The elders",
+   "The LORD directly"
+  ],
+  "answer": 0,
+  "explanation": "The breasts and the right shoulder Aaron waved for a wave offering before the LORD; as Moses commanded.",
+  "ref": "Leviticus 9:21"
+ },
+ {
+  "id": "leviticus-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom were the bullock and ram of the peace offerings for?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "The priests",
+   "The people"
+  ],
+  "answer": 3,
+  "explanation": "He slew also the bullock and the ram for a sacrifice of peace offerings, which was for the people.",
+  "ref": "Leviticus 9:18"
+ },
+ {
+  "id": "leviticus-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Aaron burn the washed inwards and legs?",
+  "choices": [
+   "Outside the camp",
+   "Upon the burnt offering on the altar",
+   "On the ground",
+   "At the laver"
+  ],
+  "answer": 1,
+  "explanation": "He did wash the inwards and the legs, and burnt them upon the burnt offering on the altar.",
+  "ref": "Leviticus 9:14"
+ },
+ {
+  "id": "leviticus-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the fire consume the burnt offering and the fat?",
+  "choices": [
+   "Outside the camp",
+   "In the court",
+   "Upon the altar",
+   "On the mount"
+  ],
+  "answer": 2,
+  "explanation": "A fire came out from before the LORD, and consumed upon the altar the burnt offering and the fat.",
+  "ref": "Leviticus 9:24"
+ },
+ {
+  "id": "leviticus-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who told Aaron to go unto the altar and offer his offerings?",
+  "choices": [
+   "Moses",
+   "The Levites",
+   "The elders",
+   "The people"
+  ],
+  "answer": 0,
+  "explanation": "Moses said unto Aaron, Go unto the altar, and offer thy sin offering, and thy burnt offering.",
+  "ref": "Leviticus 9:7"
+ },
+ {
+  "id": "leviticus-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was presented to Aaron with the pieces of the burnt offering?",
+  "choices": [
+   "The caul",
+   "The dung",
+   "The hide",
+   "The head"
+  ],
+  "answer": 3,
+  "explanation": "They presented the burnt offering unto him, with the pieces thereof, and the head: and he burnt them upon the altar.",
+  "ref": "Leviticus 9:13"
+ },
+ {
   "id": "old-leviticus-10-1",
   "chapter": 10,
   "level": "beginner",
