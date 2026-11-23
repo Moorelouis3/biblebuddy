@@ -121,7 +121,7 @@ export const GENESIS_06_10: ClueQuestion[] = [
     level: "beginner",
     category: "keyword",
     question: "How did the LORD feel that He had made man on the earth?",
-    choices: ["Glad", "Grieved", "Proud", "Sleepy"],
+    choices: ["Glad", "Grieved", "Proud", "Afraid"],
     answer: 1,
     explanation: "It repented the LORD that He had made man, and it grieved Him at His heart.",
     ref: ref("Genesis 6:6"),
