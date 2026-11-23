@@ -80,6 +80,646 @@
   "ref": "Leviticus 1:9"
  },
  {
+  "id": "leviticus-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the LORD speak to out of the tabernacle in this chapter?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "Joshua",
+   "Eleazar"
+  ],
+  "answer": 0,
+  "explanation": "The LORD called unto Moses, and spake unto him out of the tabernacle of the congregation.",
+  "ref": "Leviticus 1:1"
+ },
+ {
+  "id": "leviticus-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of offering is this chapter about?",
+  "choices": [
+   "The peace offering",
+   "The sin offering",
+   "The meat offering",
+   "The burnt offering"
+  ],
+  "answer": 3,
+  "explanation": "The chapter speaks of the burnt sacrifice, an offering made by fire unto the LORD.",
+  "ref": "Leviticus 1:3"
+ },
+ {
+  "id": "leviticus-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which animal from the herd was to be killed for the burnt offering?",
+  "choices": [
+   "A lamb",
+   "A goat",
+   "A bullock",
+   "A young pigeon"
+  ],
+  "answer": 2,
+  "explanation": "If his offering be a burnt sacrifice of the herd, he shall kill the bullock before the LORD.",
+  "ref": "Leviticus 1:3–5"
+ },
+ {
+  "id": "leviticus-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which animals from the flock could be offered as a burnt sacrifice?",
+  "choices": [
+   "Oxen or asses",
+   "Sheep or goats",
+   "Rams only",
+   "Lambs and doves"
+  ],
+  "answer": 1,
+  "explanation": "If his offering be of the flocks, namely, of the sheep, or of the goats.",
+  "ref": "Leviticus 1:10"
+ },
+ {
+  "id": "leviticus-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which birds could be brought for a burnt offering?",
+  "choices": [
+   "Doves or eagles",
+   "Turtledoves or young pigeons",
+   "Sparrows or ravens",
+   "Quails or hens"
+  ],
+  "answer": 1,
+  "explanation": "If it be of fowls, then he shall bring his offering of turtledoves, or of young pigeons.",
+  "ref": "Leviticus 1:14"
+ },
+ {
+  "id": "leviticus-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who brought the blood and sprinkled it round about upon the altar?",
+  "choices": [
+   "The priests, Aaron's sons",
+   "The offerer",
+   "The Levites",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "The priests, Aaron's sons, shall bring the blood, and sprinkle the blood round about upon the altar.",
+  "ref": "Leviticus 1:5"
+ },
+ {
+  "id": "leviticus-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the offering to be brought?",
+  "choices": [
+   "The top of the mount",
+   "The court gate only",
+   "The camp's edge",
+   "The door of the tabernacle of the congregation"
+  ],
+  "answer": 3,
+  "explanation": "He shall offer it at the door of the tabernacle of the congregation before the LORD.",
+  "ref": "Leviticus 1:3"
+ },
+ {
+  "id": "leviticus-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the burnt offering make for the man who brought it?",
+  "choices": [
+   "A feast",
+   "A vow",
+   "Atonement",
+   "A covenant"
+  ],
+  "answer": 2,
+  "explanation": "It shall be accepted for him to make atonement for him.",
+  "ref": "Leviticus 1:4"
+ },
+ {
+  "id": "leviticus-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Of whose will was the man to offer a burnt sacrifice from the herd?",
+  "choices": [
+   "The priest's command",
+   "The elders' choice",
+   "His own voluntary will",
+   "The king's word"
+  ],
+  "answer": 2,
+  "explanation": "He shall offer it of his own voluntary will at the door of the tabernacle.",
+  "ref": "Leviticus 1:3"
+ },
+ {
+  "id": "leviticus-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides the herd, from where else could cattle be brought for the offering?",
+  "choices": [
+   "The flock",
+   "The wilderness",
+   "The court",
+   "The camp's edge"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall bring your offering of the cattle, even of the herd, and of the flock.",
+  "ref": "Leviticus 1:2"
+ },
+ {
+  "id": "leviticus-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the sons of Aaron put upon the altar before laying the wood?",
+  "choices": [
+   "Fire",
+   "Oil",
+   "Incense",
+   "Salt"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Aaron the priest shall put fire upon the altar, and lay the wood in order upon the fire.",
+  "ref": "Leviticus 1:7"
+ },
+ {
+  "id": "leviticus-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom was the offering a sweet savour?",
+  "choices": [
+   "The priest",
+   "The people",
+   "Moses",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "It is a burnt sacrifice, an offering made by fire, of a sweet savour unto the LORD.",
+  "ref": "Leviticus 1:9"
+ },
+ {
+  "id": "leviticus-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the offerer do to the burnt offering after killing it, before cutting it into pieces?",
+  "choices": [
+   "Burn it",
+   "Salt it",
+   "Boil it",
+   "Flay it"
+  ],
+  "answer": 3,
+  "explanation": "He shall flay the burnt offering, and cut it into his pieces.",
+  "ref": "Leviticus 1:6"
+ },
+ {
+  "id": "leviticus-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which parts did the priests lay in order on the wood, besides the head?",
+  "choices": [
+   "The skin and the horns",
+   "The legs and the inwards",
+   "The parts and the fat",
+   "The blood and the fat"
+  ],
+  "answer": 2,
+  "explanation": "The priests shall lay the parts, the head, and the fat, in order upon the wood.",
+  "ref": "Leviticus 1:8"
+ },
+ {
+  "id": "leviticus-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest do to a bird's head at the altar?",
+  "choices": [
+   "Cut it with a knife",
+   "Wring it off",
+   "Wash it",
+   "Cover it"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall bring it unto the altar, and wring off his head, and burn it on the altar.",
+  "ref": "Leviticus 1:15"
+ },
+ {
+  "id": "leviticus-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the blood of the bird wrung out?",
+  "choices": [
+   "At the side of the altar",
+   "Upon the altar's horns",
+   "In the court gate",
+   "At the laver"
+  ],
+  "answer": 0,
+  "explanation": "The blood thereof shall be wrung out at the side of the altar.",
+  "ref": "Leviticus 1:15"
+ },
+ {
+  "id": "leviticus-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was plucked away with its feathers from the bird?",
+  "choices": [
+   "His crop",
+   "His wings",
+   "His legs",
+   "His head"
+  ],
+  "answer": 0,
+  "explanation": "He shall pluck away his crop with his feathers, and cast it beside the altar.",
+  "ref": "Leviticus 1:16"
+ },
+ {
+  "id": "leviticus-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the bird to be cleaved?",
+  "choices": [
+   "In two pieces",
+   "Without its wings",
+   "Into four parts",
+   "With its wings, but not divided asunder"
+  ],
+  "answer": 3,
+  "explanation": "He shall cleave it with the wings thereof, but shall not divide it asunder.",
+  "ref": "Leviticus 1:17"
+ },
+ {
+  "id": "leviticus-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to the burnt offering for the man who brought it?",
+  "choices": [
+   "It would be given to the priest",
+   "It would be forgotten",
+   "It would be accepted for him",
+   "It would be refused"
+  ],
+  "answer": 2,
+  "explanation": "He shall put his hand upon the head of the burnt offering; and it shall be accepted for him.",
+  "ref": "Leviticus 1:4"
+ },
+ {
+  "id": "leviticus-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much of the offering did the priest burn on the altar?",
+  "choices": [
+   "Half of it",
+   "All of it",
+   "Only the fat",
+   "Only the legs"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall burn all on the altar, to be a burnt sacrifice.",
+  "ref": "Leviticus 1:9"
+ },
+ {
+  "id": "leviticus-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was required of a burnt offering from the flocks?",
+  "choices": [
+   "A female lamb",
+   "A male without blemish",
+   "A year-old ram only",
+   "The firstborn"
+  ],
+  "answer": 1,
+  "explanation": "He shall bring it a male without blemish.",
+  "ref": "Leviticus 1:10"
+ },
+ {
+  "id": "leviticus-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the crop of the bird cast?",
+  "choices": [
+   "Beside the altar on the east part",
+   "In the camp",
+   "Outside the tabernacle door",
+   "On the north side"
+  ],
+  "answer": 0,
+  "explanation": "He shall cast it beside the altar on the east part, by the place of the ashes.",
+  "ref": "Leviticus 1:16"
+ },
+ {
+  "id": "leviticus-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom was Moses to speak these words?",
+  "choices": [
+   "The elders only",
+   "The Levites",
+   "Aaron's sons",
+   "The children of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Speak unto the children of Israel, and say unto them, If any man of you bring an offering unto the LORD.",
+  "ref": "Leviticus 1:2"
+ },
+ {
+  "id": "leviticus-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Before whom was the bullock killed?",
+  "choices": [
+   "The priest",
+   "The elders",
+   "The LORD",
+   "The people"
+  ],
+  "answer": 2,
+  "explanation": "He shall kill the bullock before the LORD.",
+  "ref": "Leviticus 1:5"
+ },
+ {
+  "id": "leviticus-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "On which side of the altar was a sheep or goat killed?",
+  "choices": [
+   "The south side",
+   "The east side",
+   "The north side",
+   "The west side"
+  ],
+  "answer": 2,
+  "explanation": "He shall kill it on the side of the altar northward before the LORD.",
+  "ref": "Leviticus 1:11"
+ },
+ {
+  "id": "leviticus-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Beside the altar's east part, the crop was cast by the place of what?",
+  "choices": [
+   "The blood",
+   "The ashes",
+   "The wood",
+   "The washing"
+  ],
+  "answer": 1,
+  "explanation": "He shall cast it beside the altar on the east part, by the place of the ashes.",
+  "ref": "Leviticus 1:16"
+ },
+ {
+  "id": "leviticus-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The crop was plucked away together with what?",
+  "choices": [
+   "His feathers",
+   "His wings",
+   "His fat",
+   "His legs"
+  ],
+  "answer": 0,
+  "explanation": "He shall pluck away his crop with his feathers.",
+  "ref": "Leviticus 1:16"
+ },
+ {
+  "id": "leviticus-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many kinds of animals does the chapter name for the burnt offering: herd, flock and what?",
+  "choices": [
+   "Fish",
+   "Asses",
+   "Camels",
+   "Fowls"
+  ],
+  "answer": 3,
+  "explanation": "If the burnt sacrifice be of fowls, then he shall bring turtledoves or young pigeons.",
+  "ref": "Leviticus 1:14"
+ },
+ {
+  "id": "leviticus-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The parts, the head, and what else were laid in order on the wood?",
+  "choices": [
+   "The skin",
+   "The blood",
+   "The horns",
+   "The fat"
+  ],
+  "answer": 3,
+  "explanation": "The priests shall lay the parts, the head, and the fat, in order upon the wood.",
+  "ref": "Leviticus 1:8"
+ },
+ {
+  "id": "leviticus-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which priest's sons put fire upon the altar?",
+  "choices": [
+   "Eleazar's",
+   "Moses'",
+   "Aaron's",
+   "Ithamar's"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Aaron the priest shall put fire upon the altar.",
+  "ref": "Leviticus 1:7"
+ },
+ {
+  "id": "leviticus-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "The altar of the burnt offering stood by the door of what?",
+  "choices": [
+   "The court",
+   "The tabernacle of the congregation",
+   "The holy place",
+   "The camp"
+  ],
+  "answer": 1,
+  "explanation": "The blood was sprinkled upon the altar that is by the door of the tabernacle of the congregation.",
+  "ref": "Leviticus 1:5"
+ },
+ {
+  "id": "leviticus-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priest do with the wrung-off head of the bird?",
+  "choices": [
+   "Burn it on the altar",
+   "Cast it by the ashes",
+   "Bury it",
+   "Give it to the priests"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall wring off his head, and burn it on the altar.",
+  "ref": "Leviticus 1:15"
+ },
+ {
+  "id": "leviticus-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From the flock offering, what was cut into pieces together with his head and his fat?",
+  "choices": [
+   "The sheep or goat",
+   "The bullock",
+   "The turtledove",
+   "The ram's horn"
+  ],
+  "answer": 0,
+  "explanation": "He shall cut it into his pieces, with his head and his fat.",
+  "ref": "Leviticus 1:12"
+ },
+ {
+  "id": "leviticus-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was to flay the bullock and cut it into pieces?",
+  "choices": [
+   "The priest",
+   "Aaron",
+   "The Levite",
+   "The man who brought it"
+  ],
+  "answer": 3,
+  "explanation": "He shall flay the burnt offering, and cut it into his pieces.",
+  "ref": "Leviticus 1:6"
+ },
+ {
+  "id": "leviticus-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was laid in order upon the fire on the altar?",
+  "choices": [
+   "The parts",
+   "The blood",
+   "The wood",
+   "The fat"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Aaron shall lay the wood in order upon the fire.",
+  "ref": "Leviticus 1:7"
+ },
+ {
+  "id": "leviticus-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before wringing off the bird's head, where did the priest bring it?",
+  "choices": [
+   "Unto the altar",
+   "To the laver",
+   "To the door of the court",
+   "Into the holy place"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall bring it unto the altar, and wring off his head, and burn it on the altar.",
+  "ref": "Leviticus 1:15"
+ },
+ {
+  "id": "leviticus-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The sheep or goat's inwards and legs were washed in what?",
+  "choices": [
+   "Oil",
+   "Water",
+   "Wine",
+   "Blood"
+  ],
+  "answer": 1,
+  "explanation": "He shall wash the inwards and the legs with water.",
+  "ref": "Leviticus 1:13"
+ },
+ {
+  "id": "leviticus-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the blood sprinkled upon the altar?",
+  "choices": [
+   "Round about",
+   "On the horns only",
+   "On the north side",
+   "Seven times"
+  ],
+  "answer": 0,
+  "explanation": "The priests shall sprinkle the blood round about upon the altar that is by the door of the tabernacle.",
+  "ref": "Leviticus 1:5"
+ },
+ {
+  "id": "leviticus-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the offerer do right after putting his hand upon the head of the offering?",
+  "choices": [
+   "Wash the inwards",
+   "Flay it",
+   "Give it to the priests",
+   "Kill the bullock before the LORD"
+  ],
+  "answer": 3,
+  "explanation": "He shall put his hand upon the head, and he shall kill the bullock before the LORD.",
+  "ref": "Leviticus 1:4–5"
+ },
+ {
+  "id": "leviticus-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what was the bird burnt upon the altar?",
+  "choices": [
+   "The wood that is upon the fire",
+   "The ashes",
+   "A bed of salt",
+   "The hot stones"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall burn it upon the altar, upon the wood that is upon the fire.",
+  "ref": "Leviticus 1:17"
+ },
+ {
   "id": "old-leviticus-2-1",
   "chapter": 2,
   "level": "beginner",
