@@ -210,6 +210,16 @@ export function isPageUnloading(): boolean {
  * `supabase.auth.getSession()` from inside the client's own fetch wrapper is a
  * recursion waiting to happen. Reports arrive unattributed, which is the right
  * trade - the table and the page are what identify the bug.
+ *
+ * `pathname` is the page the request was *made* from, passed in by the caller
+ * (lib/supabaseClient.ts) rather than read here. This function only runs once
+ * the request has already failed, which on a client-side navigation can be
+ * well after the reader clicked through to a different screen - reading
+ * `window.location.pathname` at that point names the page they landed on, not
+ * the one that made the request. A request that started on the dashboard and
+ * failed after the reader had already tapped through to Admin showed up as a
+ * bug on the admin page. Falls back to the current location only if a caller
+ * omits it.
  */
 export function reportSupabaseFailure(input: {
   url: string;
@@ -217,6 +227,7 @@ export function reportSupabaseFailure(input: {
   status: number;
   reason: string;
   preferHeader?: string | null;
+  pathname?: string;
 }): void {
   try {
     if (typeof window === "undefined") return;
@@ -225,7 +236,7 @@ export function reportSupabaseFailure(input: {
     const described = describeSupabaseRequest(input.url, input.method, input.preferHeader);
     if (!described) return;
 
-    const pathname = window.location.pathname;
+    const pathname = input.pathname || window.location.pathname;
     const fingerprint = failureFingerprint({
       table: described.table,
       operation: described.operation,

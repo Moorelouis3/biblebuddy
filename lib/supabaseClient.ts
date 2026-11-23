@@ -41,6 +41,11 @@ function instrumentedFetch(input: RequestInfo | URL, init?: RequestInit): Promis
   const url = typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url;
   const method = init?.method ?? (typeof input === "object" && "method" in input ? input.method : "GET");
   const preferHeader = getPreferHeader(init?.headers);
+  // Read now, before the request can fail: by the time .then/.catch below
+  // runs, a client-side navigation may have already changed the address bar,
+  // which would blame the failure on the wrong page (see
+  // lib/supabaseFailureReporter.ts).
+  const pathname = typeof window !== "undefined" ? window.location.pathname : undefined;
 
   return fetchWithTimeout(input, init).then(
     (response) => {
@@ -53,6 +58,7 @@ function instrumentedFetch(input: RequestInfo | URL, init?: RequestInit): Promis
           status: response.status,
           reason: response.statusText || "server error",
           preferHeader,
+          pathname,
         });
       }
       return response;
@@ -77,7 +83,7 @@ function instrumentedFetch(input: RequestInfo | URL, init?: RequestInit): Promis
         throw error;
       }
       const reason = error instanceof Error ? `${error.name}: ${error.message}` : "fetch failed";
-      reportSupabaseFailure({ url, method, status: 0, reason, preferHeader });
+      reportSupabaseFailure({ url, method, status: 0, reason, preferHeader, pathname });
       throw error;
     },
   );
