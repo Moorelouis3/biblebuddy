@@ -23296,6 +23296,646 @@
   "ref": "Exodus 33:18"
  },
  {
+  "id": "exodus-33-e-01",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD promise to send before Israel?",
+  "choices": [
+   "An angel",
+   "A prophet",
+   "A king",
+   "An army"
+  ],
+  "answer": 0,
+  "explanation": "I will send an angel before thee.",
+  "ref": "Exodus 33:2"
+ },
+ {
+  "id": "exodus-33-e-02",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people react to the evil tidings?",
+  "choices": [
+   "They fled",
+   "They rejoiced",
+   "They built an altar",
+   "They mourned"
+  ],
+  "answer": 3,
+  "explanation": "When the people heard these evil tidings, they mourned.",
+  "ref": "Exodus 33:4"
+ },
+ {
+  "id": "exodus-33-e-03",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses call the tent he pitched outside the camp?",
+  "choices": [
+   "The Tent of Meeting Place",
+   "The House of Gold",
+   "The Tent of Aaron",
+   "The Tabernacle of the congregation"
+  ],
+  "answer": 3,
+  "explanation": "He called it the Tabernacle of the congregation.",
+  "ref": "Exodus 33:7"
+ },
+ {
+  "id": "exodus-33-e-04",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which young man did not leave the tabernacle?",
+  "choices": [
+   "Hur",
+   "Joshua",
+   "Eleazar",
+   "Caleb"
+  ],
+  "answer": 1,
+  "explanation": "His servant Joshua, the son of Nun, a young man, departed not out of the tabernacle.",
+  "ref": "Exodus 33:11"
+ },
+ {
+  "id": "exodus-33-e-05",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What came down and stood at the tabernacle door when Moses entered?",
+  "choices": [
+   "The cloudy pillar",
+   "A flame of fire",
+   "A dove",
+   "A thunderstorm"
+  ],
+  "answer": 0,
+  "explanation": "The cloudy pillar descended, and stood at the door of the tabernacle.",
+  "ref": "Exodus 33:9"
+ },
+ {
+  "id": "exodus-33-e-06",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of land did God say Israel was going to?",
+  "choices": [
+   "A land flowing with milk and honey",
+   "A land of deserts",
+   "A land of iron and stone",
+   "A land of silver"
+  ],
+  "answer": 0,
+  "explanation": "Unto a land flowing with milk and honey.",
+  "ref": "Exodus 33:3"
+ },
+ {
+  "id": "exodus-33-e-07",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people do when they saw the cloudy pillar at the door?",
+  "choices": [
+   "They sang",
+   "They slept",
+   "They rose up and worshipped",
+   "They ran away"
+  ],
+  "answer": 2,
+  "explanation": "All the people rose up and worshipped, every man in his tent door.",
+  "ref": "Exodus 33:10"
+ },
+ {
+  "id": "exodus-33-e-08",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what did God tell Moses to stand while His glory passed by?",
+  "choices": [
+   "A rock",
+   "A hill of sand",
+   "A tent",
+   "A cart"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt stand upon a rock.",
+  "ref": "Exodus 33:21"
+ },
+ {
+  "id": "exodus-33-e-09",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say no man could do and live?",
+  "choices": [
+   "Hear His voice",
+   "Cross the sea",
+   "Enter Canaan",
+   "See His face"
+  ],
+  "answer": 3,
+  "explanation": "Thou canst not see my face: for there shall no man see me, and live.",
+  "ref": "Exodus 33:20"
+ },
+ {
+  "id": "exodus-33-e-10",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD promise Moses He would give with His presence?",
+  "choices": [
+   "Rest",
+   "Wine",
+   "A crown",
+   "Gold"
+  ],
+  "answer": 0,
+  "explanation": "My presence shall go with thee, and I will give thee rest.",
+  "ref": "Exodus 33:14"
+ },
+ {
+  "id": "exodus-33-m-01",
+  "chapter": 33,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom had the LORD sworn to give the land?",
+  "choices": [
+   "Adam, Noah and Shem",
+   "Abraham, Isaac and Jacob",
+   "Joseph, Judah and Levi",
+   "Moses, Aaron and Joshua"
+  ],
+  "answer": 1,
+  "explanation": "The land which I sware unto Abraham, to Isaac, and to Jacob.",
+  "ref": "Exodus 33:1"
+ },
+ {
+  "id": "exodus-33-m-02",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these peoples did God say He would drive out?",
+  "choices": [
+   "The Jebusite",
+   "The Philistine",
+   "The Moabite",
+   "The Edomite"
+  ],
+  "answer": 0,
+  "explanation": "I will drive out the Canaanite, the Amorite, and the Hittite, and the Perizzite, the Hivite, and the Jebusite.",
+  "ref": "Exodus 33:2"
+ },
+ {
+  "id": "exodus-33-m-03",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people take off after hearing the evil tidings?",
+  "choices": [
+   "Their rings of iron only",
+   "Their sandals",
+   "Their ornaments",
+   "Their garments"
+  ],
+  "answer": 2,
+  "explanation": "The children of Israel stripped themselves of their ornaments.",
+  "ref": "Exodus 33:6"
+ },
+ {
+  "id": "exodus-33-m-04",
+  "chapter": 33,
+  "level": "medium",
+  "category": "place",
+  "question": "By which mount did Israel strip off their ornaments?",
+  "choices": [
+   "Mount Hor",
+   "Mount Horeb",
+   "Mount Nebo",
+   "Mount Carmel"
+  ],
+  "answer": 1,
+  "explanation": "They stripped themselves of their ornaments by the mount Horeb.",
+  "ref": "Exodus 33:6"
+ },
+ {
+  "id": "exodus-33-m-05",
+  "chapter": 33,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Joshua?",
+  "choices": [
+   "Hur",
+   "Amram",
+   "Uri",
+   "Nun"
+  ],
+  "answer": 3,
+  "explanation": "Joshua, the son of Nun, a young man.",
+  "ref": "Exodus 33:11"
+ },
+ {
+  "id": "exodus-33-m-06",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say if God's presence did not go with them?",
+  "choices": [
+   "Let the people return",
+   "Stay in Egypt",
+   "Carry us not up hence",
+   "Send an angel"
+  ],
+  "answer": 2,
+  "explanation": "If thy presence go not with me, carry us not up hence.",
+  "ref": "Exodus 33:15"
+ },
+ {
+  "id": "exodus-33-m-07",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He might do if He went up in the midst of Israel?",
+  "choices": [
+   "Make them rich",
+   "Give them rest",
+   "Send rain",
+   "Consume them in the way"
+  ],
+  "answer": 3,
+  "explanation": "I will not go up in the midst of thee, lest I consume thee in the way.",
+  "ref": "Exodus 33:3"
+ },
+ {
+  "id": "exodus-33-m-08",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did God tell the people to put off their ornaments?",
+  "choices": [
+   "To build the tabernacle",
+   "To make a gift",
+   "That He might know what to do unto them",
+   "To pay Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Put off thy ornaments from thee, that I may know what to do unto thee.",
+  "ref": "Exodus 33:5"
+ },
+ {
+  "id": "exodus-33-m-09",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses ask God to shew him?",
+  "choices": [
+   "The land",
+   "His angel",
+   "The ark",
+   "His way"
+  ],
+  "answer": 3,
+  "explanation": "Shew me now thy way, that I may know thee.",
+  "ref": "Exodus 33:13"
+ },
+ {
+  "id": "exodus-33-m-10",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He knew Moses by?",
+  "choices": [
+   "Name",
+   "Voice",
+   "Face",
+   "Rod"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast found grace in my sight, and I know thee by name.",
+  "ref": "Exodus 33:17"
+ },
+ {
+  "id": "exodus-33-m-11",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would God proclaim before Moses?",
+  "choices": [
+   "The year of jubilee",
+   "The law of Moses",
+   "The covenant of Abraham",
+   "The name of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "I will proclaim the name of the LORD before thee.",
+  "ref": "Exodus 33:19"
+ },
+ {
+  "id": "exodus-33-m-12",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would God make pass before Moses?",
+  "choices": [
+   "All His goodness",
+   "Many angels",
+   "All His armies",
+   "A cloud of fire"
+  ],
+  "answer": 0,
+  "explanation": "I will make all my goodness pass before thee.",
+  "ref": "Exodus 33:19"
+ },
+ {
+  "id": "exodus-33-m-13",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people do at their tent doors when Moses went to the tabernacle?",
+  "choices": [
+   "Prayed and fasted",
+   "Played music",
+   "Packed their tents",
+   "Stood and looked after Moses"
+  ],
+  "answer": 3,
+  "explanation": "All the people rose up, and stood every man at his tent door, and looked after Moses.",
+  "ref": "Exodus 33:8"
+ },
+ {
+  "id": "exodus-33-m-14",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say He would cover Moses with as He passed by?",
+  "choices": [
+   "A mantle of fire",
+   "A cloud",
+   "A cloak",
+   "His hand"
+  ],
+  "answer": 3,
+  "explanation": "I will cover thee with my hand while I pass by.",
+  "ref": "Exodus 33:22"
+ },
+ {
+  "id": "exodus-33-h-01",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did God say He would put Moses as His glory passed?",
+  "choices": [
+   "In a clift of the rock",
+   "Under a tree",
+   "In a tent",
+   "Behind the tabernacle"
+  ],
+  "answer": 0,
+  "explanation": "I will put thee in a clift of the rock.",
+  "ref": "Exodus 33:22"
+ },
+ {
+  "id": "exodus-33-h-02",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Moses see after God took away His hand?",
+  "choices": [
+   "His hand",
+   "His crown",
+   "His back parts",
+   "His face"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt see my back parts: but my face shall not be seen.",
+  "ref": "Exodus 33:23"
+ },
+ {
+  "id": "exodus-33-h-03",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many peoples did God list that He would drive out?",
+  "choices": [
+   "Three",
+   "Six",
+   "Ten",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "The Canaanite, the Amorite, the Hittite, the Perizzite, the Hivite, and the Jebusite.",
+  "ref": "Exodus 33:2"
+ },
+ {
+  "id": "exodus-33-h-04",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say God had not let him know?",
+  "choices": [
+   "The name of the angel",
+   "The way to Canaan",
+   "Whom God would send with him",
+   "The date of the journey"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast not let me know whom thou wilt send with me.",
+  "ref": "Exodus 33:12"
+ },
+ {
+  "id": "exodus-33-h-05",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He would do \"in a moment\" if He came in their midst?",
+  "choices": [
+   "Lead them",
+   "Consume them",
+   "Feed them",
+   "Heal them"
+  ],
+  "answer": 1,
+  "explanation": "I will come up into the midst of thee in a moment, and consume thee.",
+  "ref": "Exodus 33:5"
+ },
+ {
+  "id": "exodus-33-h-06",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did God say He would be gracious?",
+  "choices": [
+   "To whom He will be gracious",
+   "Only to the priests",
+   "To all the earth",
+   "Only to Israel"
+  ],
+  "answer": 0,
+  "explanation": "I will be gracious to whom I will be gracious.",
+  "ref": "Exodus 33:19"
+ },
+ {
+  "id": "exodus-33-h-07",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses said, \"consider that this nation is thy ___\"?",
+  "choices": [
+   "People",
+   "Camp",
+   "Servant",
+   "Inheritance"
+  ],
+  "answer": 0,
+  "explanation": "Consider that this nation is thy people.",
+  "ref": "Exodus 33:13"
+ },
+ {
+  "id": "exodus-33-h-08",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Moses return after the LORD spoke with him face to face?",
+  "choices": [
+   "To Egypt",
+   "To the sea",
+   "Into the camp",
+   "To the hill"
+  ],
+  "answer": 2,
+  "explanation": "He turned again into the camp.",
+  "ref": "Exodus 33:11"
+ },
+ {
+  "id": "exodus-33-h-09",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses said Israel would be \"separated\" from whom if God went with them?",
+  "choices": [
+   "Only Egypt",
+   "All the people upon the face of the earth",
+   "The Levites",
+   "Only Canaan"
+  ],
+  "answer": 1,
+  "explanation": "So shall we be separated, I and thy people, from all the people that are upon the face of the earth.",
+  "ref": "Exodus 33:16"
+ },
+ {
+  "id": "exodus-33-h-10",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did the people watch Moses as he went to the tabernacle?",
+  "choices": [
+   "Until the cloud lifted",
+   "Until he returned",
+   "Until he was gone into it",
+   "Until sunset"
+  ],
+  "answer": 2,
+  "explanation": "They looked after Moses, until he was gone into the tabernacle.",
+  "ref": "Exodus 33:8"
+ },
+ {
+  "id": "exodus-33-h-11",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did every one who sought the LORD do?",
+  "choices": [
+   "Went to Joshua",
+   "Went out to the tabernacle outside the camp",
+   "Visited Aaron",
+   "Went up Mount Sinai"
+  ],
+  "answer": 1,
+  "explanation": "Every one which sought the LORD went out unto the tabernacle of the congregation.",
+  "ref": "Exodus 33:7"
+ },
+ {
+  "id": "exodus-33-h-12",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say he and the people had found in the LORD's sight?",
+  "choices": [
+   "Rest",
+   "Peace",
+   "Grace",
+   "Gold"
+  ],
+  "answer": 2,
+  "explanation": "If I have found grace in thy sight.",
+  "ref": "Exodus 33:13"
+ },
+ {
+  "id": "exodus-33-h-13",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the cloudy pillar stand when the LORD talked with Moses?",
+  "choices": [
+   "At the door of the tabernacle",
+   "On the mountain",
+   "Over the camp",
+   "Beside Aaron"
+  ],
+  "answer": 0,
+  "explanation": "The cloudy pillar descended, and stood at the door of the tabernacle, and the LORD talked with Moses.",
+  "ref": "Exodus 33:9"
+ },
+ {
+  "id": "exodus-33-h-14",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say to Moses' plea to go up with the people?",
+  "choices": [
+   "Go alone",
+   "Ask Aaron",
+   "Wait forty days",
+   "I will do this thing also that thou hast spoken"
+  ],
+  "answer": 3,
+  "explanation": "I will do this thing also that thou hast spoken: for thou hast found grace in my sight.",
+  "ref": "Exodus 33:17"
+ },
+ {
+  "id": "exodus-33-m-15",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD first tell Moses to do with the people?",
+  "choices": [
+   "Return to Egypt",
+   "Wait at Sinai",
+   "Depart and go up from there",
+   "Build a wall"
+  ],
+  "answer": 2,
+  "explanation": "Depart, and go up hence, thou and the people which thou hast brought up out of the land of Egypt.",
+  "ref": "Exodus 33:1"
+ },
+ {
+  "id": "exodus-33-h-15",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On whom did God say He would shew mercy?",
+  "choices": [
+   "On whom He will shew mercy",
+   "On the Levites only",
+   "Only the elders",
+   "On all nations alike"
+  ],
+  "answer": 0,
+  "explanation": "I will shew mercy on whom I will shew mercy.",
+  "ref": "Exodus 33:19"
+ },
+ {
   "id": "old-exodus-34-1",
   "chapter": 34,
   "level": "beginner",
