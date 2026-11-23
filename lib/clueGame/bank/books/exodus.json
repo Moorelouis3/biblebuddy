@@ -5120,6 +5120,646 @@
   "ref": "Exodus 8:32"
  },
  {
+  "id": "exodus-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say He would smite Pharaoh's borders with if he refused?",
+  "choices": [
+   "Frogs",
+   "Lice",
+   "Hail",
+   "Locusts"
+  ],
+  "answer": 0,
+  "explanation": "If thou refuse to let them go, I will smite all thy borders with frogs.",
+  "ref": "Exodus 8:2"
+ },
+ {
+  "id": "exodus-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did the LORD say the frogs would come, besides houses?",
+  "choices": [
+   "Into the bedchamber and onto the bed",
+   "Into the temple",
+   "Into the sea",
+   "Into the fields only"
+  ],
+  "answer": 0,
+  "explanation": "The frogs shall come into thine house, and into thy bedchamber, and upon thy bed.",
+  "ref": "Exodus 8:3"
+ },
+ {
+  "id": "exodus-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the LORD tell to stretch his rod over the streams to bring up frogs?",
+  "choices": [
+   "Aaron",
+   "Joshua",
+   "Hur",
+   "Pharaoh"
+  ],
+  "answer": 0,
+  "explanation": "Say unto Aaron, Stretch forth thine hand with thy rod over the streams.",
+  "ref": "Exodus 8:5"
+ },
+ {
+  "id": "exodus-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who also brought up frogs with their enchantments?",
+  "choices": [
+   "The magicians",
+   "The elders",
+   "The taskmasters",
+   "Pharaoh's sons"
+  ],
+  "answer": 0,
+  "explanation": "The magicians did so with their enchantments, and brought up frogs.",
+  "ref": "Exodus 8:7"
+ },
+ {
+  "id": "exodus-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Pharaoh ask Moses and Aaron to ask the LORD to do about the frogs?",
+  "choices": [
+   "Bring more",
+   "Punish Egypt",
+   "Take them away",
+   "Kill the magicians"
+  ],
+  "answer": 2,
+  "explanation": "Intreat the LORD, that he may take away the frogs from me, and from my people.",
+  "ref": "Exodus 8:8"
+ },
+ {
+  "id": "exodus-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Pharaoh promise if the frogs were taken away?",
+  "choices": [
+   "To let the people go and sacrifice",
+   "To give gold",
+   "To free the magicians",
+   "To build an altar"
+  ],
+  "answer": 0,
+  "explanation": "I will let the people go, that they may do sacrifice unto the LORD.",
+  "ref": "Exodus 8:8"
+ },
+ {
+  "id": "exodus-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses do with the dust to bring about the plague of lice?",
+  "choices": [
+   "Smote it with the rod",
+   "Scattered it by hand",
+   "Burned it",
+   "Threw it into the river"
+  ],
+  "answer": 0,
+  "explanation": "Aaron stretched out his hand with his rod, and smote the dust of the earth, and it became lice.",
+  "ref": "Exodus 8:17"
+ },
+ {
+  "id": "exodus-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On whom were the lice?",
+  "choices": [
+   "Man and beast",
+   "Only fish",
+   "Only Pharaoh",
+   "Only the Egyptians' priests"
+  ],
+  "answer": 0,
+  "explanation": "It became lice in man, and in beast.",
+  "ref": "Exodus 8:17"
+ },
+ {
+  "id": "exodus-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say He would send if Pharaoh would not let the people go after the lice?",
+  "choices": [
+   "Hail",
+   "Darkness",
+   "Swarms of flies",
+   "Frogs"
+  ],
+  "answer": 2,
+  "explanation": "I will send swarms of flies upon thee, and upon thy servants.",
+  "ref": "Exodus 8:21"
+ },
+ {
+  "id": "exodus-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which land was set apart from the flies?",
+  "choices": [
+   "Midian",
+   "Canaan",
+   "Goshen",
+   "Moab"
+  ],
+  "answer": 2,
+  "explanation": "I will sever in that day the land of Goshen, in which my people dwell.",
+  "ref": "Exodus 8:22"
+ },
+ {
+  "id": "exodus-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the frogs remain after they were removed?",
+  "choices": [
+   "In the villages",
+   "In the houses",
+   "In the river only",
+   "In the fields"
+  ],
+  "answer": 2,
+  "explanation": "They shall remain in the river only.",
+  "ref": "Exodus 8:11"
+ },
+ {
+  "id": "exodus-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Pharaoh call for when the frogs came?",
+  "choices": [
+   "The magicians",
+   "The elders",
+   "His servants only",
+   "Moses and Aaron"
+  ],
+  "answer": 3,
+  "explanation": "Pharaoh called for Moses and Aaron, and said, Intreat the LORD.",
+  "ref": "Exodus 8:8"
+ },
+ {
+  "id": "exodus-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Pharaoh say the frogs should be taken away?",
+  "choices": [
+   "After the feast",
+   "To morrow",
+   "Today",
+   "In three days"
+  ],
+  "answer": 1,
+  "explanation": "And he said, To morrow.",
+  "ref": "Exodus 8:10"
+ },
+ {
+  "id": "exodus-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say Pharaoh would know by this?",
+  "choices": [
+   "That none is like the LORD our God",
+   "That Moses was king",
+   "That the river was holy",
+   "That Egypt would be free"
+  ],
+  "answer": 0,
+  "explanation": "That thou mayest know that there is none like unto the LORD our God.",
+  "ref": "Exodus 8:10"
+ },
+ {
+  "id": "exodus-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the frogs after Moses cried to the LORD?",
+  "choices": [
+   "They became lice",
+   "They went to the sea",
+   "They filled the fields",
+   "They died out of houses, villages and fields"
+  ],
+  "answer": 3,
+  "explanation": "The frogs died out of the houses, out of the villages, and out of the fields.",
+  "ref": "Exodus 8:13"
+ },
+ {
+  "id": "exodus-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the land after the dead frogs were gathered?",
+  "choices": [
+   "It was healed",
+   "It flooded",
+   "It stank",
+   "It dried up"
+  ],
+  "answer": 2,
+  "explanation": "They gathered them together upon heaps: and the land stank.",
+  "ref": "Exodus 8:14"
+ },
+ {
+  "id": "exodus-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Pharaoh harden his heart after the frogs?",
+  "choices": [
+   "He saw there was respite",
+   "He was angry at Aaron",
+   "He was afraid",
+   "He lost the magicians"
+  ],
+  "answer": 0,
+  "explanation": "When Pharaoh saw that there was respite, he hardened his heart.",
+  "ref": "Exodus 8:15"
+ },
+ {
+  "id": "exodus-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What could the magicians not do?",
+  "choices": [
+   "Make serpents",
+   "Turn water to blood",
+   "Bring forth frogs",
+   "Bring forth lice"
+  ],
+  "answer": 3,
+  "explanation": "The magicians did so with their enchantments to bring forth lice, but they could not.",
+  "ref": "Exodus 8:18"
+ },
+ {
+  "id": "exodus-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Between whom did the LORD say He would put a division?",
+  "choices": [
+   "Egypt and Canaan",
+   "The elders and the servants",
+   "Moses and Aaron",
+   "His people and Pharaoh's people"
+  ],
+  "answer": 3,
+  "explanation": "I will put a division between my people and thy people.",
+  "ref": "Exodus 8:23"
+ },
+ {
+  "id": "exodus-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Pharaoh first say Moses and Aaron could sacrifice?",
+  "choices": [
+   "In the wilderness",
+   "In the land",
+   "By the river",
+   "In Goshen only"
+  ],
+  "answer": 1,
+  "explanation": "Go ye, sacrifice to your God in the land.",
+  "ref": "Exodus 8:25"
+ },
+ {
+  "id": "exodus-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say they would sacrifice if they did it in Egypt?",
+  "choices": [
+   "The abomination of the Egyptians",
+   "Their firstborn",
+   "Doves",
+   "Bread"
+  ],
+  "answer": 0,
+  "explanation": "We shall sacrifice the abomination of the Egyptians to the LORD our God.",
+  "ref": "Exodus 8:26"
+ },
+ {
+  "id": "exodus-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses fear the Egyptians would do if they sacrificed before their eyes?",
+  "choices": [
+   "Take their flocks",
+   "Stone them",
+   "Chase them",
+   "Burn their tents"
+  ],
+  "answer": 1,
+  "explanation": "Will they not stone us?",
+  "ref": "Exodus 8:26"
+ },
+ {
+  "id": "exodus-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How far did Pharaoh say they should not go?",
+  "choices": [
+   "To Canaan",
+   "Very far away",
+   "Beyond Goshen",
+   "Past the river"
+  ],
+  "answer": 1,
+  "explanation": "Only ye shall not go very far away: intreat for me.",
+  "ref": "Exodus 8:28"
+ },
+ {
+  "id": "exodus-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses ask Pharaoh not to do any more?",
+  "choices": [
+   "Hold the cattle",
+   "Deal deceitfully",
+   "Call the magicians",
+   "Break his word to the Egyptians"
+  ],
+  "answer": 1,
+  "explanation": "Let not Pharaoh deal deceitfully any more in not letting the people go.",
+  "ref": "Exodus 8:29"
+ },
+ {
+  "id": "exodus-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the flies after Moses intreated?",
+  "choices": [
+   "There remained not one",
+   "Half remained",
+   "They moved to Goshen",
+   "They died in the fields"
+  ],
+  "answer": 0,
+  "explanation": "He removed the swarms of flies; there remained not one.",
+  "ref": "Exodus 8:31"
+ },
+ {
+  "id": "exodus-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many days' journey into the wilderness did Moses say they would go?",
+  "choices": [
+   "One",
+   "Ten",
+   "Three",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "We will go three days' journey into the wilderness.",
+  "ref": "Exodus 8:27"
+ },
+ {
+  "id": "exodus-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what places was the swarm of flies, besides Pharaoh's house?",
+  "choices": [
+   "His servants' houses and all the land of Egypt",
+   "Only Goshen",
+   "Only the river",
+   "Only the city"
+  ],
+  "answer": 0,
+  "explanation": "There came a grievous swarm of flies into the house of Pharaoh, and into his servants' houses, and into all the land of Egypt.",
+  "ref": "Exodus 8:24"
+ },
+ {
+  "id": "exodus-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the land become by reason of the swarm of flies?",
+  "choices": [
+   "Corrupted",
+   "Dry",
+   "Cursed",
+   "Barren"
+  ],
+  "answer": 0,
+  "explanation": "The land was corrupted by reason of the swarm of flies.",
+  "ref": "Exodus 8:24"
+ },
+ {
+  "id": "exodus-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "From where would the frogs come up into Pharaoh's house?",
+  "choices": [
+   "The river",
+   "The fields",
+   "The sea",
+   "The desert"
+  ],
+  "answer": 0,
+  "explanation": "The river shall bring forth frogs abundantly, which shall go up and come into thine house.",
+  "ref": "Exodus 8:3"
+ },
+ {
+  "id": "exodus-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the magicians' words to Pharaoh?",
+  "choices": [
+   "We are defeated",
+   "This is the finger of God",
+   "The LORD is righteous",
+   "Let them go"
+  ],
+  "answer": 1,
+  "explanation": "The magicians said unto Pharaoh, This is the finger of God.",
+  "ref": "Exodus 8:19"
+ },
+ {
+  "id": "exodus-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Moses say the flies would depart from, besides Pharaoh?",
+  "choices": [
+   "The priests",
+   "The cattle",
+   "His servants and his people",
+   "Goshen"
+  ],
+  "answer": 2,
+  "explanation": "Depart from Pharaoh, from his servants, and from his people.",
+  "ref": "Exodus 8:29"
+ },
+ {
+  "id": "exodus-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to do before telling Pharaoh about the flies?",
+  "choices": [
+   "Fast three days",
+   "Go at night",
+   "Call the elders",
+   "Rise up early in the morning"
+  ],
+  "answer": 3,
+  "explanation": "Rise up early in the morning, and stand before Pharaoh.",
+  "ref": "Exodus 8:20"
+ },
+ {
+  "id": "exodus-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what purpose did the LORD say He would sever Goshen?",
+  "choices": [
+   "That Pharaoh may fear",
+   "That Israel may rest",
+   "That Moses may rule",
+   "That Pharaoh may know the LORD is in the midst of the earth"
+  ],
+  "answer": 3,
+  "explanation": "To the end thou mayest know that I am the LORD in the midst of the earth.",
+  "ref": "Exodus 8:22"
+ },
+ {
+  "id": "exodus-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which household places did the LORD say frogs would come?",
+  "choices": [
+   "Stables and gates",
+   "Wells and barns",
+   "Ovens and kneadingtroughs",
+   "Tents and wagons"
+  ],
+  "answer": 2,
+  "explanation": "The frogs shall come into thine ovens, and into thy kneadingtroughs.",
+  "ref": "Exodus 8:3"
+ },
+ {
+  "id": "exodus-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh say he would do after the flies?",
+  "choices": [
+   "Let them go and sacrifice in the wilderness",
+   "Give gold",
+   "Free all Israel",
+   "Send them to Goshen"
+  ],
+  "answer": 0,
+  "explanation": "I will let you go, that ye may sacrifice to the LORD your God in the wilderness.",
+  "ref": "Exodus 8:28"
+ },
+ {
+  "id": "exodus-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What dust became lice?",
+  "choices": [
+   "The dust of Goshen",
+   "The dust of the river",
+   "The dust of the temple",
+   "All the dust of the land"
+  ],
+  "answer": 3,
+  "explanation": "All the dust of the land became lice throughout all the land of Egypt.",
+  "ref": "Exodus 8:17"
+ },
+ {
+  "id": "exodus-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Moses told to say to Pharaoh when he came to the water?",
+  "choices": [
+   "Pharaoh must sacrifice",
+   "Let my people go, that they may serve me",
+   "Egypt is judged",
+   "Beware of the river"
+  ],
+  "answer": 1,
+  "explanation": "He cometh forth to the water; say unto him, Let my people go, that they may serve me.",
+  "ref": "Exodus 8:20"
+ },
+ {
+  "id": "exodus-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Moses cry unto the LORD?",
+  "choices": [
+   "Because the river was blood",
+   "Because of the frogs he had brought against Pharaoh",
+   "Because the flies had come",
+   "Because of Pharaoh's army"
+  ],
+  "answer": 1,
+  "explanation": "Moses cried unto the LORD because of the frogs which he had brought against Pharaoh.",
+  "ref": "Exodus 8:12"
+ },
+ {
+  "id": "exodus-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When would the sign of the Goshen division come?",
+  "choices": [
+   "That hour",
+   "In a month",
+   "To morrow",
+   "In three days"
+  ],
+  "answer": 2,
+  "explanation": "To morrow shall this sign be.",
+  "ref": "Exodus 8:23"
+ },
+ {
+  "id": "exodus-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Upon whom did the LORD say the frogs would come?",
+  "choices": [
+   "Only the elders",
+   "Only Pharaoh",
+   "The magicians only",
+   "Pharaoh, his people and all his servants"
+  ],
+  "answer": 3,
+  "explanation": "The frogs shall come up both on thee, and upon thy people, and upon all thy servants.",
+  "ref": "Exodus 8:4"
+ },
+ {
   "id": "old-exodus-9-1",
   "chapter": 9,
   "level": "beginner",
