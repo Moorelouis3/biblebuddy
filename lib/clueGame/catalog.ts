@@ -62,9 +62,12 @@ export const deckById = (id: string) => CLUE_DECKS.find((d) => d.id === id);
  * Each book its own scene (Louis, 2026-11-23: "a different scene for each
  * book"): the Bible Buddy Match board backgrounds, painted for these books,
  * with a calm middle where the question sits. Which one follows the first
- * chapter played, so a chapter keeps its scene. Genesis keeps its campsite.
+ * chapter played, so a chapter keeps its scene. Genesis too since the same
+ * day (Louis: "cant you use the Backgrounds from match also?"): its boards
+ * 03-11 are the ones with their own folders.
  */
-const MATCH_SCENES: Record<string, number> = {
+const MATCH_SCENES: Record<string, number | number[]> = {
+  genesis: [3, 4, 5, 6, 7, 8, 9, 10, 11],
   exodus: 12,
   leviticus: 10,
   numbers: 10,
@@ -82,7 +85,8 @@ export const sceneFor = (deckIds: string[] | undefined): ClueScene => {
   const boards = book ? MATCH_SCENES[book] : undefined;
   if (book && boards) {
     const ch = Number(keys.find((k) => k.startsWith("chapters:"))?.slice(9).split(",")[0]) || 1;
-    const n = String(((ch - 1) % boards) + 1).padStart(2, "0");
+    const list = Array.isArray(boards) ? boards : Array.from({ length: boards }, (_, i) => i + 1);
+    const n = String(list[(ch - 1) % list.length]).padStart(2, "0");
     const dir = `/games/match/boards/${book}-${n}`;
     return { phone: `${dir}/background-phone.webp`, desktop: `${dir}/background-desktop.webp` };
   }
