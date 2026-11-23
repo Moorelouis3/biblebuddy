@@ -16032,6 +16032,646 @@
   "ref": "Exodus 23:30"
  },
  {
+  "id": "exodus-23-e-01",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years shall a man sow his land before it rests?",
+  "choices": [
+   "Six",
+   "Three",
+   "Five",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "Six years thou shalt sow thy land, and shalt gather in the fruits thereof.",
+  "ref": "Exodus 23:10"
+ },
+ {
+  "id": "exodus-23-e-02",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the land in the seventh year?",
+  "choices": [
+   "It rests and lies still",
+   "It is sown twice",
+   "It is burned",
+   "It is sold"
+  ],
+  "answer": 0,
+  "explanation": "The seventh year thou shalt let it rest and lie still.",
+  "ref": "Exodus 23:11"
+ },
+ {
+  "id": "exodus-23-e-03",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who may eat what grows in the seventh year?",
+  "choices": [
+   "The priests",
+   "The judges",
+   "The poor of thy people",
+   "The strangers only"
+  ],
+  "answer": 2,
+  "explanation": "That the poor of thy people may eat.",
+  "ref": "Exodus 23:11"
+ },
+ {
+  "id": "exodus-23-e-04",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On which day shalt thou rest from thy work?",
+  "choices": [
+   "The tenth day",
+   "The seventh day",
+   "The first day",
+   "The third day"
+  ],
+  "answer": 1,
+  "explanation": "Six days thou shalt do thy work, and on the seventh day thou shalt rest.",
+  "ref": "Exodus 23:12"
+ },
+ {
+  "id": "exodus-23-e-05",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say about the name of other gods?",
+  "choices": [
+   "Write it down",
+   "Teach it to children",
+   "Make no mention of it",
+   "Speak it in feasts"
+  ],
+  "answer": 2,
+  "explanation": "Make no mention of the name of other gods, neither let it be heard out of thy mouth.",
+  "ref": "Exodus 23:13"
+ },
+ {
+  "id": "exodus-23-e-06",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times in the year shall Israel keep a feast to the LORD?",
+  "choices": [
+   "Three",
+   "Two",
+   "Four",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "Three times thou shalt keep a feast unto me in the year.",
+  "ref": "Exodus 23:14"
+ },
+ {
+  "id": "exodus-23-e-07",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days shall unleavened bread be eaten?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Forty",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt eat unleavened bread seven days.",
+  "ref": "Exodus 23:15"
+ },
+ {
+  "id": "exodus-23-e-08",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will God send before Israel to drive out the Hivite, Canaanite and Hittite?",
+  "choices": [
+   "Floods",
+   "Lions",
+   "Plagues",
+   "Hornets"
+  ],
+  "answer": 3,
+  "explanation": "I will send hornets before thee, which shall drive out the Hivite, the Canaanite, and the Hittite.",
+  "ref": "Exodus 23:28"
+ },
+ {
+  "id": "exodus-23-e-09",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say not to make with the people of the land?",
+  "choices": [
+   "A feast",
+   "A treaty of trade",
+   "A marriage only",
+   "A covenant"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt make no covenant with them, nor with their gods.",
+  "ref": "Exodus 23:32"
+ },
+ {
+  "id": "exodus-23-e-10",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will it be if Israel serves their gods?",
+  "choices": [
+   "A rest",
+   "A blessing",
+   "A snare",
+   "A feast"
+  ],
+  "answer": 2,
+  "explanation": "If thou serve their gods, it will surely be a snare unto thee.",
+  "ref": "Exodus 23:33"
+ },
+ {
+  "id": "exodus-23-m-01",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What may a man not follow to do evil?",
+  "choices": [
+   "A priest",
+   "A king",
+   "A multitude",
+   "A prophet"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt not follow a multitude to do evil.",
+  "ref": "Exodus 23:2"
+ },
+ {
+  "id": "exodus-23-m-02",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must be done if you see your enemy's ox or ass going astray?",
+  "choices": [
+   "Keep it",
+   "Sell it",
+   "Leave it",
+   "Bring it back to him"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt surely bring it back to him again.",
+  "ref": "Exodus 23:4"
+ },
+ {
+  "id": "exodus-23-m-03",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must you do if you see the ass of him that hates you lying under its burden?",
+  "choices": [
+   "Help with him",
+   "Walk by",
+   "Take the load",
+   "Report him"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt surely help with him.",
+  "ref": "Exodus 23:5"
+ },
+ {
+  "id": "exodus-23-m-04",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why must a man take no gift?",
+  "choices": [
+   "The gift is too small",
+   "The gift blindeth the wise",
+   "The gift is unclean",
+   "The gift is stolen"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt take no gift: for the gift blindeth the wise, and perverteth the words of the righteous.",
+  "ref": "Exodus 23:8"
+ },
+ {
+  "id": "exodus-23-m-05",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Israel not to oppress a stranger?",
+  "choices": [
+   "The stranger was a judge",
+   "The stranger was rich",
+   "The stranger was a priest",
+   "They knew the heart of a stranger from Egypt"
+  ],
+  "answer": 3,
+  "explanation": "Ye know the heart of a stranger, seeing ye were strangers in the land of Egypt.",
+  "ref": "Exodus 23:9"
+ },
+ {
+  "id": "exodus-23-m-06",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the beasts of the field eat in the seventh year?",
+  "choices": [
+   "The firstfruits",
+   "The stored grain",
+   "The vineyard's wine",
+   "What the poor leave"
+  ],
+  "answer": 3,
+  "explanation": "What they leave the beasts of the field shall eat.",
+  "ref": "Exodus 23:11"
+ },
+ {
+  "id": "exodus-23-m-07",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why shall the ox and ass rest on the seventh day?",
+  "choices": [
+   "That they may eat",
+   "That they may be offered",
+   "That they may be counted",
+   "That they may rest, and the stranger be refreshed"
+  ],
+  "answer": 3,
+  "explanation": "That thine ox and thine ass may rest, and the son of thy handmaid, and the stranger, may be refreshed.",
+  "ref": "Exodus 23:12"
+ },
+ {
+  "id": "exodus-23-m-08",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month was the feast of unleavened bread kept?",
+  "choices": [
+   "Abib",
+   "Sivan",
+   "Elul",
+   "Tammuz"
+  ],
+  "answer": 0,
+  "explanation": "In the time appointed of the month Abib; for in it thou camest out from Egypt.",
+  "ref": "Exodus 23:15"
+ },
+ {
+  "id": "exodus-23-m-09",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the feast at the end of the year called?",
+  "choices": [
+   "The feast of ingathering",
+   "The feast of lights",
+   "The feast of weeks",
+   "The feast of trumpets"
+  ],
+  "answer": 0,
+  "explanation": "The feast of ingathering, which is in the end of the year.",
+  "ref": "Exodus 23:16"
+ },
+ {
+  "id": "exodus-23-m-10",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who shall appear before the Lord GOD three times a year?",
+  "choices": [
+   "The elders",
+   "The priests only",
+   "The firstborn",
+   "All thy males"
+  ],
+  "answer": 3,
+  "explanation": "Three times in the year all thy males shall appear before the Lord GOD.",
+  "ref": "Exodus 23:17"
+ },
+ {
+  "id": "exodus-23-m-11",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall not remain until morning?",
+  "choices": [
+   "The oil",
+   "The fat of the sacrifice",
+   "The bread",
+   "The altar fire"
+  ],
+  "answer": 1,
+  "explanation": "Neither shall the fat of my sacrifice remain until the morning.",
+  "ref": "Exodus 23:18"
+ },
+ {
+  "id": "exodus-23-m-12",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall not be boiled in his mother's milk?",
+  "choices": [
+   "A kid",
+   "A calf",
+   "A dove",
+   "A lamb"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not seethe a kid in his mother's milk.",
+  "ref": "Exodus 23:19"
+ },
+ {
+  "id": "exodus-23-m-13",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why must Israel not provoke the Angel?",
+  "choices": [
+   "He is a judge",
+   "He will not pardon transgressions; God's name is in him",
+   "He is a stranger",
+   "He is weak"
+  ],
+  "answer": 1,
+  "explanation": "He will not pardon your transgressions: for my name is in him.",
+  "ref": "Exodus 23:21"
+ },
+ {
+  "id": "exodus-23-m-14",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will God bless if Israel serves Him?",
+  "choices": [
+   "Their gold",
+   "Their camels",
+   "Their tents",
+   "Their bread and water"
+  ],
+  "answer": 3,
+  "explanation": "He shall bless thy bread, and thy water; and I will take sickness away.",
+  "ref": "Exodus 23:25"
+ },
+ {
+  "id": "exodus-23-m-15",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will the LORD not drive out the nations in one year?",
+  "choices": [
+   "Lest the hornets die",
+   "Lest the land become desolate and beasts multiply",
+   "Lest they flee",
+   "Lest Israel grow proud"
+  ],
+  "answer": 1,
+  "explanation": "Lest the land become desolate, and the beast of the field multiply against thee.",
+  "ref": "Exodus 23:29"
+ },
+ {
+  "id": "exodus-23-h-01",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the Angel do to the Amorites, Hittites and others?",
+  "choices": [
+   "Teach them",
+   "Cut them off",
+   "Bless them",
+   "Make peace"
+  ],
+  "answer": 1,
+  "explanation": "Mine Angel shall go before thee, and bring thee in unto the Amorites; and I will cut them off.",
+  "ref": "Exodus 23:23"
+ },
+ {
+  "id": "exodus-23-h-02",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which people is listed with the Amorites and Hittites?",
+  "choices": [
+   "The Edomites",
+   "The Ammonites",
+   "The Moabites",
+   "The Perizzites"
+  ],
+  "answer": 3,
+  "explanation": "The Amorites, and the Hittites, and the Perizzites, and the Canaanites, and the Hivites, and the Jebusites.",
+  "ref": "Exodus 23:23"
+ },
+ {
+  "id": "exodus-23-h-03",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were Israel to do to the images of Canaan's gods?",
+  "choices": [
+   "Bury them",
+   "Carry them",
+   "Sell them",
+   "Quite break them down"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt utterly overthrow them, and quite break down their images.",
+  "ref": "Exodus 23:24"
+ },
+ {
+  "id": "exodus-23-h-04",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What boundary was set from the Red sea?",
+  "choices": [
+   "The Jordan",
+   "The Great River only",
+   "The sea of the Philistines",
+   "The Dead Sea"
+  ],
+  "answer": 2,
+  "explanation": "I will set thy bounds from the Red sea even unto the sea of the Philistines.",
+  "ref": "Exodus 23:31"
+ },
+ {
+  "id": "exodus-23-h-05",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What else would the LORD send before Israel besides hornets?",
+  "choices": [
+   "Lions",
+   "His fear",
+   "Fire",
+   "Plague"
+  ],
+  "answer": 1,
+  "explanation": "I will send my fear before thee.",
+  "ref": "Exodus 23:27"
+ },
+ {
+  "id": "exodus-23-h-06",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would God do for Israel's enemies if Israel obeyed His voice?",
+  "choices": [
+   "Be an enemy to them",
+   "Befriend them",
+   "Teach them",
+   "Forget them"
+  ],
+  "answer": 0,
+  "explanation": "I will be an enemy unto thine enemies, and an adversary unto thine adversaries.",
+  "ref": "Exodus 23:22"
+ },
+ {
+  "id": "exodus-23-h-07",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall no one appear before the LORD with at the feasts?",
+  "choices": [
+   "A shoe",
+   "A sword",
+   "Leavened bread",
+   "Empty"
+  ],
+  "answer": 3,
+  "explanation": "None shall appear before me empty.",
+  "ref": "Exodus 23:15"
+ },
+ {
+  "id": "exodus-23-h-08",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall not be offered with the blood of the sacrifice?",
+  "choices": [
+   "Oil",
+   "Leavened bread",
+   "Honey",
+   "Salt"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not offer the blood of my sacrifice with leavened bread.",
+  "ref": "Exodus 23:18"
+ },
+ {
+  "id": "exodus-23-h-09",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say about the number of Israel's days?",
+  "choices": [
+   "He will double them",
+   "He will shorten them",
+   "He will hide them",
+   "He will fulfil them"
+  ],
+  "answer": 3,
+  "explanation": "The number of thy days I will fulfil.",
+  "ref": "Exodus 23:26"
+ },
+ {
+  "id": "exodus-23-h-10",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From the desert to what was the land's bound set?",
+  "choices": [
+   "The Red sea",
+   "The Jordan valley",
+   "The river",
+   "The mountains of Sinai"
+  ],
+  "answer": 2,
+  "explanation": "From the desert unto the river.",
+  "ref": "Exodus 23:31"
+ },
+ {
+  "id": "exodus-23-h-11",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Israel's enemies do when the LORD's fear came?",
+  "choices": [
+   "Turn their backs",
+   "Sue for peace",
+   "Gather armies",
+   "Bring gifts"
+  ],
+  "answer": 0,
+  "explanation": "I will make all thine enemies turn their backs unto thee.",
+  "ref": "Exodus 23:27"
+ },
+ {
+  "id": "exodus-23-h-12",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must not be done to the poor man in his cause?",
+  "choices": [
+   "Feed him",
+   "Teach him",
+   "Wrest his judgment",
+   "Hide him"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt not wrest the judgment of thy poor in his cause.",
+  "ref": "Exodus 23:6"
+ },
+ {
+  "id": "exodus-23-h-13",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God say He will not do for the wicked?",
+  "choices": [
+   "Hear them",
+   "Justify them",
+   "See them",
+   "Judge them"
+  ],
+  "answer": 1,
+  "explanation": "I will not justify the wicked.",
+  "ref": "Exodus 23:7"
+ },
+ {
+  "id": "exodus-23-h-14",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when would God drive out the nations little by little?",
+  "choices": [
+   "Until the Jordan is crossed",
+   "Until the seventh year",
+   "Until the feast of weeks",
+   "Until Israel be increased and inherit the land"
+  ],
+  "answer": 3,
+  "explanation": "By little and little I will drive them out, until thou be increased, and inherit the land.",
+  "ref": "Exodus 23:30"
+ },
+ {
+  "id": "exodus-23-h-15",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does a gift do to the words of the righteous?",
+  "choices": [
+   "Strengthens them",
+   "Hides them",
+   "Perverteth them",
+   "Repeats them"
+  ],
+  "answer": 2,
+  "explanation": "The gift blindeth the wise, and perverteth the words of the righteous.",
+  "ref": "Exodus 23:8"
+ },
+ {
   "id": "old-exodus-24-1",
   "chapter": 24,
   "level": "beginner",
