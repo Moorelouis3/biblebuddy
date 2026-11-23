@@ -3680,6 +3680,646 @@
   "ref": "Exodus 6:20"
  },
  {
+  "id": "exodus-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who spoke to Moses and said, I am the LORD?",
+  "choices": [
+   "Jethro",
+   "Aaron",
+   "Pharaoh",
+   "God"
+  ],
+  "answer": 3,
+  "explanation": "God spake unto Moses, and said unto him, I am the LORD.",
+  "ref": "Exodus 6:2"
+ },
+ {
+  "id": "exodus-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "What land did God covenant to give Abraham, Isaac and Jacob?",
+  "choices": [
+   "Midian",
+   "Moab",
+   "Goshen",
+   "Canaan"
+  ],
+  "answer": 3,
+  "explanation": "I have also established my covenant with them, to give them the land of Canaan.",
+  "ref": "Exodus 6:4"
+ },
+ {
+  "id": "exodus-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had God heard from the children of Israel?",
+  "choices": [
+   "Their singing",
+   "Their groaning",
+   "Their laughter",
+   "Their prayers for rain"
+  ],
+  "answer": 1,
+  "explanation": "I have also heard the groaning of the children of Israel, whom the Egyptians keep in bondage.",
+  "ref": "Exodus 6:5"
+ },
+ {
+  "id": "exodus-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom were the Egyptians keeping in bondage?",
+  "choices": [
+   "The Midianites",
+   "The children of Israel",
+   "The Canaanites",
+   "The Levites only"
+  ],
+  "answer": 1,
+  "explanation": "The groaning of the children of Israel, whom the Egyptians keep in bondage.",
+  "ref": "Exodus 6:5"
+ },
+ {
+  "id": "exodus-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the LORD tell Moses to go in and speak?",
+  "choices": [
+   "Korah",
+   "Pharaoh king of Egypt",
+   "The elders of Midian",
+   "Jethro"
+  ],
+  "answer": 1,
+  "explanation": "Go in, speak unto Pharaoh king of Egypt, that he let the children of Israel go out of his land.",
+  "ref": "Exodus 6:11"
+ },
+ {
+  "id": "exodus-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say He would take Israel to Him for?",
+  "choices": [
+   "A army",
+   "A people",
+   "A flock of sheep",
+   "A priesthood only"
+  ],
+  "answer": 1,
+  "explanation": "I will take you to me for a people, and I will be to you a God.",
+  "ref": "Exodus 6:7"
+ },
+ {
+  "id": "exodus-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named as the firstborn of Israel?",
+  "choices": [
+   "Reuben",
+   "Levi",
+   "Simeon",
+   "Judah"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Reuben the firstborn of Israel.",
+  "ref": "Exodus 6:14"
+ },
+ {
+  "id": "exodus-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Aaron take to wife?",
+  "choices": [
+   "Zipporah",
+   "Jochebed",
+   "Elisheba",
+   "Miriam"
+  ],
+  "answer": 2,
+  "explanation": "Aaron took him Elisheba, daughter of Amminadab, to wife.",
+  "ref": "Exodus 6:23"
+ },
+ {
+  "id": "exodus-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these was a son of Aaron?",
+  "choices": [
+   "Hanoch",
+   "Nadab",
+   "Gershon",
+   "Korah"
+  ],
+  "answer": 1,
+  "explanation": "Elisheba bare him Nadab, and Abihu, Eleazar, and Ithamar.",
+  "ref": "Exodus 6:23"
+ },
+ {
+  "id": "exodus-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the LORD tell Moses and Aaron to bring out of Egypt?",
+  "choices": [
+   "The elders only",
+   "The children of Israel",
+   "The Egyptians",
+   "The Levites only"
+  ],
+  "answer": 1,
+  "explanation": "A charge to bring the children of Israel out of the land of Egypt.",
+  "ref": "Exodus 6:13"
+ },
+ {
+  "id": "exodus-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what name did God say He appeared to Abraham, Isaac and Jacob?",
+  "choices": [
+   "King of kings",
+   "God Almighty",
+   "The Most High",
+   "The Holy One"
+  ],
+  "answer": 1,
+  "explanation": "I appeared unto Abraham, unto Isaac, and unto Jacob, by the name of God Almighty.",
+  "ref": "Exodus 6:3"
+ },
+ {
+  "id": "exodus-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God call the land where the fathers were strangers?",
+  "choices": [
+   "The land of Egypt",
+   "The land of promise only",
+   "The land of their pilgrimage",
+   "The land of rest"
+  ],
+  "answer": 2,
+  "explanation": "The land of Canaan, the land of their pilgrimage, wherein they were strangers.",
+  "ref": "Exodus 6:4"
+ },
+ {
+  "id": "exodus-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had God remembered when He heard Israel's groaning?",
+  "choices": [
+   "Their sins",
+   "His anger",
+   "His covenant",
+   "Their names"
+  ],
+  "answer": 2,
+  "explanation": "I have remembered my covenant.",
+  "ref": "Exodus 6:5"
+ },
+ {
+  "id": "exodus-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From under what would God bring Israel out?",
+  "choices": [
+   "The sword",
+   "The burdens of the Egyptians",
+   "The desert",
+   "The famine"
+  ],
+  "answer": 1,
+  "explanation": "I will bring you out from under the burdens of the Egyptians.",
+  "ref": "Exodus 6:6"
+ },
+ {
+  "id": "exodus-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would God give Israel for an heritage?",
+  "choices": [
+   "Pharaoh's treasure",
+   "The land He swore to their fathers",
+   "The city of Egypt",
+   "The river"
+  ],
+  "answer": 1,
+  "explanation": "I will give it you for an heritage: I am the LORD.",
+  "ref": "Exodus 6:8"
+ },
+ {
+  "id": "exodus-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say Pharaoh would do with a strong hand?",
+  "choices": [
+   "Keep them captive",
+   "Make them his army",
+   "Drive them out of his land",
+   "Bring them back"
+  ],
+  "answer": 2,
+  "explanation": "With a strong hand shall he drive them out of his land.",
+  "ref": "Exodus 6:1"
+ },
+ {
+  "id": "exodus-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say about his lips?",
+  "choices": [
+   "They were uncircumcised",
+   "They were slow to move",
+   "They were burned",
+   "They were silent"
+  ],
+  "answer": 0,
+  "explanation": "How shall Pharaoh hear me, who am of uncircumcised lips?",
+  "ref": "Exodus 6:12"
+ },
+ {
+  "id": "exodus-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did the LORD give a charge, besides Moses?",
+  "choices": [
+   "Joshua",
+   "Hur",
+   "Aaron",
+   "Jethro"
+  ],
+  "answer": 2,
+  "explanation": "The LORD spake unto Moses and unto Aaron, and gave them a charge.",
+  "ref": "Exodus 6:13"
+ },
+ {
+  "id": "exodus-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How old was Kohath when he died?",
+  "choices": [
+   "130",
+   "147",
+   "137",
+   "133"
+  ],
+  "answer": 3,
+  "explanation": "The years of the life of Kohath were an hundred thirty and three years.",
+  "ref": "Exodus 6:18"
+ },
+ {
+  "id": "exodus-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Reuben?",
+  "choices": [
+   "Jemuel",
+   "Libni",
+   "Carmi",
+   "Mahali"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Reuben: Hanoch, and Pallu, Hezron, and Carmi.",
+  "ref": "Exodus 6:14"
+ },
+ {
+  "id": "exodus-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Which son of Simeon was the son of a Canaanitish woman?",
+  "choices": [
+   "Jamin",
+   "Ohad",
+   "Shaul",
+   "Zohar"
+  ],
+  "answer": 2,
+  "explanation": "Shaul the son of a Canaanitish woman.",
+  "ref": "Exodus 6:15"
+ },
+ {
+  "id": "exodus-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Izhar?",
+  "choices": [
+   "Libni",
+   "Assir",
+   "Mishael",
+   "Korah"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Izhar; Korah, and Nepheg, and Zichri.",
+  "ref": "Exodus 6:21"
+ },
+ {
+  "id": "exodus-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Phinehas?",
+  "choices": [
+   "Amram's",
+   "Nadab's",
+   "Korah's",
+   "Eleazar's"
+  ],
+  "answer": 3,
+  "explanation": "Eleazar took him one of the daughters of Putiel to wife; and she bare him Phinehas.",
+  "ref": "Exodus 6:25"
+ },
+ {
+  "id": "exodus-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say He would be to Israel?",
+  "choices": [
+   "A king",
+   "A shield only",
+   "A judge",
+   "A God"
+  ],
+  "answer": 3,
+  "explanation": "I will take you to me for a people, and I will be to you a God.",
+  "ref": "Exodus 6:7"
+ },
+ {
+  "id": "exodus-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Gershon?",
+  "choices": [
+   "Libni",
+   "Hebron",
+   "Mushi",
+   "Izhar"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Gershon; Libni, and Shimi.",
+  "ref": "Exodus 6:17"
+ },
+ {
+  "id": "exodus-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Levi when he died?",
+  "choices": [
+   "130",
+   "133",
+   "137",
+   "147"
+  ],
+  "answer": 2,
+  "explanation": "The years of the life of Levi were an hundred thirty and seven years.",
+  "ref": "Exodus 6:16"
+ },
+ {
+  "id": "exodus-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Amram when he died?",
+  "choices": [
+   "137",
+   "147",
+   "127",
+   "133"
+  ],
+  "answer": 0,
+  "explanation": "The years of the life of Amram were an hundred and thirty and seven years.",
+  "ref": "Exodus 6:20"
+ },
+ {
+  "id": "exodus-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Which were the sons of Merari?",
+  "choices": [
+   "Assir and Abiasaph",
+   "Mahali and Mushi",
+   "Libni and Shimi",
+   "Nepheg and Zichri"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Merari; Mahali and Mushi.",
+  "ref": "Exodus 6:19"
+ },
+ {
+  "id": "exodus-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Which were the sons of Uzziel?",
+  "choices": [
+   "Libni and Shimi",
+   "Korah, Nepheg and Zichri",
+   "Mishael, Elzaphan and Zithri",
+   "Assir, Elkanah and Abiasaph"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Uzziel; Mishael, and Elzaphan, and Zithri.",
+  "ref": "Exodus 6:22"
+ },
+ {
+  "id": "exodus-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Which were the sons of Korah?",
+  "choices": [
+   "Libni and Shimi",
+   "Mishael, Elzaphan and Zithri",
+   "Assir, Elkanah and Abiasaph",
+   "Mahali and Mushi"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Korah; Assir, and Elkanah, and Abiasaph.",
+  "ref": "Exodus 6:24"
+ },
+ {
+  "id": "exodus-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose sister was Elisheba?",
+  "choices": [
+   "Putiel's",
+   "Korah's",
+   "Amram's",
+   "Naashon's"
+  ],
+  "answer": 3,
+  "explanation": "Elisheba, daughter of Amminadab, sister of Naashon.",
+  "ref": "Exodus 6:23"
+ },
+ {
+  "id": "exodus-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose daughters did Eleazar's wife come from?",
+  "choices": [
+   "Amminadab",
+   "Naashon",
+   "Izhar",
+   "Putiel"
+  ],
+  "answer": 3,
+  "explanation": "Eleazar took him one of the daughters of Putiel to wife.",
+  "ref": "Exodus 6:25"
+ },
+ {
+  "id": "exodus-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "What relation was Jochebed to Amram?",
+  "choices": [
+   "His niece",
+   "His mother",
+   "His cousin",
+   "His father's sister"
+  ],
+  "answer": 3,
+  "explanation": "Amram took him Jochebed his father's sister to wife.",
+  "ref": "Exodus 6:20"
+ },
+ {
+  "id": "exodus-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons of Reuben are named?",
+  "choices": [
+   "Five",
+   "Six",
+   "Three",
+   "Four"
+  ],
+  "answer": 3,
+  "explanation": "Hanoch, and Pallu, Hezron, and Carmi.",
+  "ref": "Exodus 6:14"
+ },
+ {
+  "id": "exodus-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons of Simeon are named?",
+  "choices": [
+   "Four",
+   "Six",
+   "Three",
+   "Five"
+  ],
+  "answer": 1,
+  "explanation": "Jemuel, Jamin, Ohad, Jachin, Zohar, and Shaul.",
+  "ref": "Exodus 6:15"
+ },
+ {
+  "id": "exodus-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would God redeem Israel with besides a stretched out arm?",
+  "choices": [
+   "Great armies",
+   "Great plagues of beasts",
+   "Great judgments",
+   "Great wealth"
+  ],
+  "answer": 2,
+  "explanation": "I will redeem you with a stretched out arm, and with great judgments.",
+  "ref": "Exodus 6:6"
+ },
+ {
+  "id": "exodus-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Israel know when God brought them out?",
+  "choices": [
+   "That He is the LORD their God",
+   "That Moses was a prophet",
+   "That Pharaoh was mighty",
+   "That Canaan was near"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall know that I am the LORD your God.",
+  "ref": "Exodus 6:7"
+ },
+ {
+  "id": "exodus-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Kohath?",
+  "choices": [
+   "Hebron",
+   "Shimi",
+   "Libni",
+   "Mushi"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Kohath; Amram, and Izhar, and Hebron, and Uzziel.",
+  "ref": "Exodus 6:18"
+ },
+ {
+  "id": "exodus-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had God sworn to Abraham, Isaac and Jacob?",
+  "choices": [
+   "To send a prophet",
+   "To free their sons",
+   "To make them kings",
+   "To give them the land"
+  ],
+  "answer": 3,
+  "explanation": "The land, concerning the which I did swear to give it to Abraham, to Isaac, and to Jacob.",
+  "ref": "Exodus 6:8"
+ },
+ {
+  "id": "exodus-6-h-20",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son of Aaron is named right after Nadab?",
+  "choices": [
+   "Ithamar",
+   "Eleazar",
+   "Phinehas",
+   "Abihu"
+  ],
+  "answer": 3,
+  "explanation": "Elisheba bare him Nadab, and Abihu, Eleazar, and Ithamar.",
+  "ref": "Exodus 6:23"
+ },
+ {
   "id": "old-exodus-7-1",
   "chapter": 7,
   "level": "beginner",
