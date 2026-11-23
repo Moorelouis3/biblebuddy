@@ -2528,6 +2528,294 @@
   "ref": "Genesis 8:20"
  },
  {
+  "id": "genesis-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month did the ark rest on the mountains of Ararat?",
+  "choices": [
+   "The second month",
+   "The seventh month",
+   "The tenth month",
+   "The first month"
+  ],
+  "answer": 1,
+  "explanation": "The ark rested in the seventh month, on the seventeenth day of the month, upon the mountains of Ararat.",
+  "ref": "Genesis 8:4"
+ },
+ {
+  "id": "genesis-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the dove find no rest for?",
+  "choices": [
+   "The sole of her foot",
+   "Her wings",
+   "Her nest",
+   "Her young"
+  ],
+  "answer": 0,
+  "explanation": "The dove found no rest for the sole of her foot, and she returned unto him into the ark.",
+  "ref": "Genesis 8:9"
+ },
+ {
+  "id": "genesis-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "God said that, while the earth remains, what else shall not cease?",
+  "choices": [
+   "Fire and flood",
+   "War and famine",
+   "Gold and silver",
+   "Cold and heat"
+  ],
+  "answer": 3,
+  "explanation": "While the earth remaineth, seedtime and harvest, and cold and heat, and summer and winter, and day and night shall not cease.",
+  "ref": "Genesis 8:22"
+ },
+ {
+  "id": "genesis-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day of the seventh month did the ark rest on Ararat?",
+  "choices": [
+   "The first",
+   "The seventh",
+   "The seventeenth",
+   "The twenty-seventh"
+  ],
+  "answer": 2,
+  "explanation": "The ark rested in the seventh month, on the seventeenth day of the month.",
+  "ref": "Genesis 8:4"
+ },
+ {
+  "id": "genesis-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When were the tops of the mountains seen?",
+  "choices": [
+   "The seventeenth day of the seventh month",
+   "The first day of the tenth month",
+   "The first day of the first month",
+   "The twenty-seventh day of the second month"
+  ],
+  "answer": 1,
+  "explanation": "In the tenth month, on the first day of the month, were the tops of the mountains seen.",
+  "ref": "Genesis 8:5"
+ },
+ {
+  "id": "genesis-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many days did Noah wait before opening the window of the ark?",
+  "choices": [
+   "Forty days",
+   "Seven days",
+   "One hundred and fifty days",
+   "Twenty days"
+  ],
+  "answer": 0,
+  "explanation": "It came to pass at the end of forty days, that Noah opened the window of the ark.",
+  "ref": "Genesis 8:6"
+ },
+ {
+  "id": "genesis-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what year of Noah’s life were the waters dried up from the earth?",
+  "choices": [
+   "The six hundredth",
+   "The five hundredth",
+   "The six hundred and tenth",
+   "The six hundred and first"
+  ],
+  "answer": 3,
+  "explanation": "In the six hundredth and first year, in the first month, the first day, the waters were dried up.",
+  "ref": "Genesis 8:13"
+ },
+ {
+  "id": "genesis-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day of the second month was the earth dried?",
+  "choices": [
+   "The first",
+   "The seventeenth",
+   "The seven and twentieth",
+   "The tenth"
+  ],
+  "answer": 2,
+  "explanation": "In the second month, on the seven and twentieth day of the month, was the earth dried.",
+  "ref": "Genesis 8:14"
+ },
+ {
+  "id": "genesis-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times in all did Noah send out the dove?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "He sent forth the dove, and again sent the dove, and sent the dove a third time, which returned not.",
+  "ref": "Genesis 8:8–12"
+ },
+ {
+  "id": "genesis-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God remembered Noah and every living thing and all the cattle where?",
+  "choices": [
+   "With him in the ark",
+   "In the fields of Ararat",
+   "On the mountains",
+   "In the land of Nod"
+  ],
+  "answer": 0,
+  "explanation": "God remembered Noah, and every living thing, and all the cattle that was with him in the ark.",
+  "ref": "Genesis 8:1"
+ },
+ {
+  "id": "genesis-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After how many days were the waters abated?",
+  "choices": [
+   "Forty",
+   "Seventy",
+   "Seven",
+   "One hundred and fifty"
+  ],
+  "answer": 3,
+  "explanation": "After the end of the hundred and fifty days the waters were abated.",
+  "ref": "Genesis 8:3"
+ },
+ {
+  "id": "genesis-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did the raven go to and fro?",
+  "choices": [
+   "Until the evening",
+   "For seven days",
+   "Until the waters were dried up from the earth",
+   "Until it found an olive tree"
+  ],
+  "answer": 2,
+  "explanation": "He sent forth a raven, which went forth to and fro, until the waters were dried up from off the earth.",
+  "ref": "Genesis 8:7"
+ },
+ {
+  "id": "genesis-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Noah see when he removed the covering of the ark?",
+  "choices": [
+   "A rainbow in the sky",
+   "The face of the ground was dry",
+   "The raven returning",
+   "A green olive tree"
+  ],
+  "answer": 1,
+  "explanation": "Noah removed the covering of the ark, and looked, and, behold, the face of the ground was dry.",
+  "ref": "Genesis 8:13"
+ },
+ {
+  "id": "genesis-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who went forth out of the ark with Noah?",
+  "choices": [
+   "His sons, his wife, and his sons’ wives",
+   "Only his sons",
+   "Only his wife",
+   "His sons and his servants"
+  ],
+  "answer": 0,
+  "explanation": "Noah went forth, and his sons, and his wife, and his sons’ wives with him.",
+  "ref": "Genesis 8:18"
+ },
+ {
+  "id": "genesis-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For man’s sake, what did the LORD say he would not do again?",
+  "choices": [
+   "Send the rain",
+   "Smite the ark",
+   "Dry up the seas",
+   "Curse the ground any more"
+  ],
+  "answer": 3,
+  "explanation": "I will not again curse the ground any more for man’s sake.",
+  "ref": "Genesis 8:21"
+ },
+ {
+  "id": "genesis-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the olive leaf described in the dove’s mouth?",
+  "choices": [
+   "Dried",
+   "Green and tender",
+   "Pluckt off",
+   "Bound with a twig"
+  ],
+  "answer": 2,
+  "explanation": "Lo, in her mouth was an olive leaf pluckt off.",
+  "ref": "Genesis 8:11"
+ },
+ {
+  "id": "genesis-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God tell Noah to bring forth with him out of the ark?",
+  "choices": [
+   "Only the clean beasts",
+   "Every living thing that was with him",
+   "Only the birds",
+   "Food for seven days"
+  ],
+  "answer": 1,
+  "explanation": "Bring forth with thee every living thing that is with thee, of all flesh.",
+  "ref": "Genesis 8:17"
+ },
+ {
+  "id": "genesis-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these did God say shall not cease while the earth remains?",
+  "choices": [
+   "Day and night",
+   "Rain and flood",
+   "Kings and kingdoms",
+   "Fire and wind"
+  ],
+  "answer": 0,
+  "explanation": "While the earth remaineth, seedtime and harvest, and cold and heat, and summer and winter, and day and night shall not cease.",
+  "ref": "Genesis 8:22"
+ },
+ {
   "id": "old-genesis-9-2",
   "chapter": 9,
   "level": "beginner",
