@@ -28350,5 +28350,645 @@
   "answer": 1,
   "explanation": "When the cloud was taken up, Israel journeyed; when it remained, they stayed.",
   "ref": "Exodus 40:36–37"
+ },
+ {
+  "id": "exodus-40-e-01",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was told to set up the tabernacle?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "Joshua",
+   "Bezaleel"
+  ],
+  "answer": 0,
+  "explanation": "The LORD spake unto Moses: on the first day of the first month shalt thou set up the tabernacle.",
+  "ref": "Exodus 40:1–2"
+ },
+ {
+  "id": "exodus-40-e-02",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was set before the ark of the testimony for the burning of incense?",
+  "choices": [
+   "The table",
+   "The laver",
+   "The candlestick",
+   "The altar of gold"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt set the altar of gold for the incense before the ark of the testimony.",
+  "ref": "Exodus 40:5"
+ },
+ {
+  "id": "exodus-40-e-03",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses light after bringing in the candlestick?",
+  "choices": [
+   "The incense",
+   "The burnt offering",
+   "The lamps",
+   "A fire on the altar"
+  ],
+  "answer": 2,
+  "explanation": "He put the candlestick in the tent and lighted the lamps before the LORD.",
+  "ref": "Exodus 40:25"
+ },
+ {
+  "id": "exodus-40-e-04",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the altar of burnt offering set?",
+  "choices": [
+   "Behind the veil",
+   "Before the door of the tabernacle",
+   "Beside the ark",
+   "Inside the court gate only"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt set the altar of the burnt offering before the door of the tabernacle of the tent of the congregation.",
+  "ref": "Exodus 40:6"
+ },
+ {
+  "id": "exodus-40-e-05",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was set between the tent of the congregation and the altar?",
+  "choices": [
+   "The table",
+   "The laver",
+   "The candlestick",
+   "The ark"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt set the laver between the tent of the congregation and the altar.",
+  "ref": "Exodus 40:7"
+ },
+ {
+  "id": "exodus-40-e-06",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses put into the laver?",
+  "choices": [
+   "Water",
+   "Oil",
+   "Blood",
+   "Wine"
+  ],
+  "answer": 0,
+  "explanation": "He set the laver between the tent of the congregation and the altar, and put water there, to wash withal.",
+  "ref": "Exodus 40:30"
+ },
+ {
+  "id": "exodus-40-e-07",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses use to anoint the tabernacle and all that was in it?",
+  "choices": [
+   "Pure water",
+   "Blood",
+   "Incense",
+   "The anointing oil"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt take the anointing oil, and anoint the tabernacle, and all that is therein.",
+  "ref": "Exodus 40:9"
+ },
+ {
+  "id": "exodus-40-e-08",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Moses bring to the door of the tabernacle to wash with water?",
+  "choices": [
+   "The elders",
+   "The Levites",
+   "Aaron and his sons",
+   "All the people"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt bring Aaron and his sons unto the door of the tabernacle of the congregation, and wash them with water.",
+  "ref": "Exodus 40:12"
+ },
+ {
+  "id": "exodus-40-e-09",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was on the tabernacle by night in the sight of all Israel?",
+  "choices": [
+   "The moon",
+   "A rainbow",
+   "Fire",
+   "Darkness"
+  ],
+  "answer": 2,
+  "explanation": "The cloud of the LORD was upon the tabernacle by day, and fire was on it by night.",
+  "ref": "Exodus 40:38"
+ },
+ {
+  "id": "exodus-40-e-10",
+  "chapter": 40,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses use to cover the ark of the testimony?",
+  "choices": [
+   "A cloth of gold",
+   "The vail",
+   "Badgers' skins",
+   "The tent"
+  ],
+  "answer": 1,
+  "explanation": "He brought the ark into the tabernacle, and set up the vail of the covering, and covered the ark of the testimony.",
+  "ref": "Exodus 40:21"
+ },
+ {
+  "id": "exodus-40-m-01",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would anointing Aaron's sons make for them throughout their generations?",
+  "choices": [
+   "An everlasting priesthood",
+   "A kingdom",
+   "A land",
+   "A blessing of long life"
+  ],
+  "answer": 0,
+  "explanation": "Their anointing shall surely be an everlasting priesthood throughout their generations.",
+  "ref": "Exodus 40:15"
+ },
+ {
+  "id": "exodus-40-m-02",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year was the tabernacle reared up, in the first month?",
+  "choices": [
+   "The first year",
+   "The third year",
+   "The fortieth year",
+   "The second year"
+  ],
+  "answer": 3,
+  "explanation": "It came to pass in the first month in the second year, on the first day of the month, that the tabernacle was reared up.",
+  "ref": "Exodus 40:17"
+ },
+ {
+  "id": "exodus-40-m-03",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which side of the tabernacle did Moses put the table?",
+  "choices": [
+   "The south side",
+   "The east side",
+   "The west side",
+   "The north side"
+  ],
+  "answer": 3,
+  "explanation": "He put the table upon the side of the tabernacle northward, without the vail.",
+  "ref": "Exodus 40:22"
+ },
+ {
+  "id": "exodus-40-m-04",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which side of the tabernacle did Moses put the candlestick?",
+  "choices": [
+   "The north side",
+   "The east side",
+   "The south side",
+   "The west side"
+  ],
+  "answer": 2,
+  "explanation": "He put the candlestick over against the table, on the side of the tabernacle southward.",
+  "ref": "Exodus 40:24"
+ },
+ {
+  "id": "exodus-40-m-05",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses set in order upon the table before the LORD?",
+  "choices": [
+   "The lamps",
+   "The bread",
+   "The incense",
+   "The oil"
+  ],
+  "answer": 1,
+  "explanation": "He set the bread in order upon it before the LORD.",
+  "ref": "Exodus 40:23"
+ },
+ {
+  "id": "exodus-40-m-06",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses burn on the golden altar?",
+  "choices": [
+   "Sweet incense",
+   "The burnt offering",
+   "The meat offering",
+   "Spices and wine"
+  ],
+  "answer": 0,
+  "explanation": "He put the golden altar before the vail: and he burnt sweet incense thereon.",
+  "ref": "Exodus 40:26–27"
+ },
+ {
+  "id": "exodus-40-m-07",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses offer on the altar of burnt offering?",
+  "choices": [
+   "The burnt offering and the meat offering",
+   "A lamb and a dove",
+   "Oil and water",
+   "Bread and wine"
+  ],
+  "answer": 0,
+  "explanation": "He offered upon it the burnt offering and the meat offering; as the LORD commanded Moses.",
+  "ref": "Exodus 40:29"
+ },
+ {
+  "id": "exodus-40-m-08",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses, Aaron and his sons wash at the laver?",
+  "choices": [
+   "Their garments",
+   "Their heads",
+   "The offerings",
+   "Their hands and their feet"
+  ],
+  "answer": 3,
+  "explanation": "Moses and Aaron and his sons washed their hands and their feet thereat.",
+  "ref": "Exodus 40:31"
+ },
+ {
+  "id": "exodus-40-m-09",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did they wash at the laver?",
+  "choices": [
+   "Only on the sabbath",
+   "Each morning only",
+   "When they went into the tent or came near the altar",
+   "After the offering"
+  ],
+  "answer": 2,
+  "explanation": "When they went into the tent of the congregation, and when they came near unto the altar, they washed.",
+  "ref": "Exodus 40:32"
+ },
+ {
+  "id": "exodus-40-m-10",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses put upon Aaron before anointing him?",
+  "choices": [
+   "A crown of gold",
+   "The holy garments",
+   "A robe of blue only",
+   "A coat of skins"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt put upon Aaron the holy garments, and anoint him, and sanctify him.",
+  "ref": "Exodus 40:13"
+ },
+ {
+  "id": "exodus-40-m-11",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did Moses clothe Aaron's sons?",
+  "choices": [
+   "Robes of blue",
+   "Coats",
+   "Ephods",
+   "Mitres only"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt bring his sons, and clothe them with coats.",
+  "ref": "Exodus 40:14"
+ },
+ {
+  "id": "exodus-40-m-12",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses put above upon the ark?",
+  "choices": [
+   "The mercy seat",
+   "The vail",
+   "The golden altar",
+   "The tent covering"
+  ],
+  "answer": 0,
+  "explanation": "He put the testimony into the ark, set the staves on the ark, and put the mercy seat above upon the ark.",
+  "ref": "Exodus 40:20"
+ },
+ {
+  "id": "exodus-40-m-13",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the altar of burnt offering to be when it was anointed?",
+  "choices": [
+   "A place of rest",
+   "A table of the LORD",
+   "A seat of mercy",
+   "An altar most holy"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt anoint the altar of the burnt offering, and sanctify the altar: and it shall be an altar most holy.",
+  "ref": "Exodus 40:10"
+ },
+ {
+  "id": "exodus-40-m-14",
+  "chapter": 40,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whose sight was the cloud by day and fire by night throughout all Israel's journeys?",
+  "choices": [
+   "The priests",
+   "The elders",
+   "All the house of Israel",
+   "The Levites"
+  ],
+  "answer": 2,
+  "explanation": "The cloud of the LORD was upon the tabernacle by day, and fire was on it by night, in the sight of all the house of Israel.",
+  "ref": "Exodus 40:38"
+ },
+ {
+  "id": "exodus-40-m-15",
+  "chapter": 40,
+  "level": "medium",
+  "category": "person",
+  "question": "Who finished the work after setting up the hanging of the court gate?",
+  "choices": [
+   "Aaron",
+   "Bezaleel",
+   "Moses",
+   "Ithamar"
+  ],
+  "answer": 2,
+  "explanation": "He reared up the court round about the tabernacle and the altar, and set up the hanging of the court gate. So Moses finished the work.",
+  "ref": "Exodus 40:33"
+ },
+ {
+  "id": "exodus-40-h-01",
+  "chapter": 40,
+  "level": "hard",
+  "category": "place",
+  "question": "Before what was the golden altar put in the tent of the congregation?",
+  "choices": [
+   "The door",
+   "The vail",
+   "The table",
+   "The laver"
+  ],
+  "answer": 1,
+  "explanation": "He put the golden altar in the tent of the congregation before the vail.",
+  "ref": "Exodus 40:26"
+ },
+ {
+  "id": "exodus-40-h-02",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which side of the vail was the table put on?",
+  "choices": [
+   "Outside it",
+   "Inside it",
+   "Under it",
+   "Behind the ark"
+  ],
+  "answer": 0,
+  "explanation": "He put the table in the tent of the congregation upon the side northward, without the vail.",
+  "ref": "Exodus 40:22"
+ },
+ {
+  "id": "exodus-40-h-03",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses set up right after fastening the sockets of the tabernacle?",
+  "choices": [
+   "The pillars",
+   "The tent",
+   "The vail",
+   "The boards"
+  ],
+  "answer": 3,
+  "explanation": "Moses reared up the tabernacle, and fastened his sockets, and set up the boards thereof.",
+  "ref": "Exodus 40:18"
+ },
+ {
+  "id": "exodus-40-h-04",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses spread abroad over the tabernacle?",
+  "choices": [
+   "The vail",
+   "The hanging",
+   "The mercy seat",
+   "The tent"
+  ],
+  "answer": 3,
+  "explanation": "He spread abroad the tent over the tabernacle, and put the covering of the tent above upon it.",
+  "ref": "Exodus 40:19"
+ },
+ {
+  "id": "exodus-40-h-05",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses set on the ark after he put the testimony into it?",
+  "choices": [
+   "The oil",
+   "The golden crown",
+   "The staves",
+   "The vail"
+  ],
+  "answer": 2,
+  "explanation": "He took and put the testimony into the ark, and set the staves on the ark.",
+  "ref": "Exodus 40:20"
+ },
+ {
+  "id": "exodus-40-h-06",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses set up after bringing the ark into the tabernacle?",
+  "choices": [
+   "The table",
+   "The vail of the covering",
+   "The golden altar",
+   "The laver"
+  ],
+  "answer": 1,
+  "explanation": "He brought the ark into the tabernacle, and set up the vail of the covering, and covered the ark.",
+  "ref": "Exodus 40:21"
+ },
+ {
+  "id": "exodus-40-h-07",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses set up at the door of the tabernacle?",
+  "choices": [
+   "The hanging",
+   "The laver",
+   "The golden altar",
+   "The candlestick"
+  ],
+  "answer": 0,
+  "explanation": "He set up the hanging at the door of the tabernacle.",
+  "ref": "Exodus 40:28"
+ },
+ {
+  "id": "exodus-40-h-08",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Moses to anoint after the altar of burnt offering and its vessels?",
+  "choices": [
+   "The laver and his foot",
+   "The table",
+   "The ark",
+   "The golden altar"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt anoint the laver and his foot, and sanctify it.",
+  "ref": "Exodus 40:11"
+ },
+ {
+  "id": "exodus-40-h-09",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom did Moses light the lamps?",
+  "choices": [
+   "The elders",
+   "The priests",
+   "The people",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "He lighted the lamps before the LORD; as the LORD commanded Moses.",
+  "ref": "Exodus 40:25"
+ },
+ {
+  "id": "exodus-40-h-10",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses set up round about the tabernacle and the altar?",
+  "choices": [
+   "The wall of stone",
+   "The court",
+   "The tent",
+   "The boards"
+  ],
+  "answer": 1,
+  "explanation": "He reared up the court round about the tabernacle and the altar, and set up the hanging of the court gate.",
+  "ref": "Exodus 40:33"
+ },
+ {
+  "id": "exodus-40-h-11",
+  "chapter": 40,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Moses to bring Aaron and his sons to wash them?",
+  "choices": [
+   "The laver",
+   "The door of the tabernacle of the congregation",
+   "The court gate",
+   "The altar of burnt offering"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt bring Aaron and his sons unto the door of the tabernacle of the congregation, and wash them with water.",
+  "ref": "Exodus 40:12"
+ },
+ {
+  "id": "exodus-40-h-12",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why were Aaron and his sons to be anointed?",
+  "choices": [
+   "That they may rule the tribes",
+   "That they may minister in the priest's office",
+   "That they may carry the ark",
+   "That they may build the tent"
+  ],
+  "answer": 1,
+  "explanation": "Anoint them that they may minister unto me in the priest's office.",
+  "ref": "Exodus 40:15"
+ },
+ {
+  "id": "exodus-40-h-13",
+  "chapter": 40,
+  "level": "hard",
+  "category": "person",
+  "question": "Aaron's sons were to be anointed as who was anointed?",
+  "choices": [
+   "Their father",
+   "Moses",
+   "The elders",
+   "Joshua"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt anoint them, as thou didst anoint their father.",
+  "ref": "Exodus 40:15"
+ },
+ {
+  "id": "exodus-40-h-14",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After putting the holy garments on Aaron, what was Moses to do to him?",
+  "choices": [
+   "Anoint him and sanctify him",
+   "Crown him with gold",
+   "Seat him in the tent",
+   "Send him to the altar"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt put upon Aaron the holy garments, and anoint him, and sanctify him.",
+  "ref": "Exodus 40:13"
+ },
+ {
+  "id": "exodus-40-h-15",
+  "chapter": 40,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD first tell Moses to put in the tabernacle and cover with the vail?",
+  "choices": [
+   "The table",
+   "The ark of the testimony",
+   "The golden altar",
+   "The candlestick"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt put therein the ark of the testimony, and cover the ark with the vail.",
+  "ref": "Exodus 40:3"
  }
 ]
