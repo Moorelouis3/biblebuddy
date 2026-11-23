@@ -8752,6 +8752,662 @@
   "ref": "Exodus 13:21"
  },
  {
+  "id": "exodus-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say about all that opened the womb among Israel?",
+  "choices": [
+   "It is mine",
+   "It is Pharaoh's",
+   "It is the priests'",
+   "It is the elders'"
+  ],
+  "answer": 0,
+  "explanation": "Sanctify unto me all the firstborn, whatsoever openeth the womb... it is mine.",
+  "ref": "Exodus 13:2"
+ },
+ {
+  "id": "exodus-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was not to be eaten for seven days?",
+  "choices": [
+   "Roast lamb",
+   "Leavened bread",
+   "Honey",
+   "Bitter herbs"
+  ],
+  "answer": 1,
+  "explanation": "Seven days thou shalt eat unleavened bread; there shall no leavened bread be eaten.",
+  "ref": "Exodus 13:3"
+ },
+ {
+  "id": "exodus-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In which month did Israel come out of Egypt?",
+  "choices": [
+   "Nisan",
+   "Ethanim",
+   "Abib",
+   "Zif"
+  ],
+  "answer": 2,
+  "explanation": "This day came ye out in the month Abib.",
+  "ref": "Exodus 13:4"
+ },
+ {
+  "id": "exodus-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of land did the LORD swear to give Israel's fathers?",
+  "choices": [
+   "A land of gold",
+   "A land of mountains",
+   "A land of forests",
+   "A land flowing with milk and honey"
+  ],
+  "answer": 3,
+  "explanation": "A land flowing with milk and honey.",
+  "ref": "Exodus 13:5"
+ },
+ {
+  "id": "exodus-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said, \"Remember this day, in which ye came out from Egypt\"?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "Pharaoh",
+   "Joshua"
+  ],
+  "answer": 0,
+  "explanation": "And Moses said unto the people, Remember this day.",
+  "ref": "Exodus 13:3"
+ },
+ {
+  "id": "exodus-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Israel encamp after leaving Succoth?",
+  "choices": [
+   "Pi-hahiroth",
+   "Etham",
+   "Migdol",
+   "Rameses"
+  ],
+  "answer": 1,
+  "explanation": "They took their journey from Succoth, and encamped in Etham, in the edge of the wilderness.",
+  "ref": "Exodus 13:20"
+ },
+ {
+  "id": "exodus-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God lead Israel through instead of the way of the Philistines?",
+  "choices": [
+   "The mountains of Sinai",
+   "The land of Moab",
+   "The wilderness of the Red sea",
+   "The plain of Jordan"
+  ],
+  "answer": 2,
+  "explanation": "God led the people about, through the way of the wilderness of the Red sea.",
+  "ref": "Exodus 13:18"
+ },
+ {
+  "id": "exodus-13-e-08",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the pillar by night?",
+  "choices": [
+   "A pillar of smoke",
+   "A pillar of stone",
+   "A pillar of light",
+   "A pillar of fire"
+  ],
+  "answer": 3,
+  "explanation": "By night in a pillar of fire, to give them light.",
+  "ref": "Exodus 13:21"
+ },
+ {
+  "id": "exodus-13-e-09",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses say the LORD brought them out of by strength of hand?",
+  "choices": [
+   "The house of bondage",
+   "The house of Pharaoh",
+   "The land of Goshen",
+   "The wilderness"
+  ],
+  "answer": 0,
+  "explanation": "By strength of hand the LORD brought you out from this place.",
+  "ref": "Exodus 13:3"
+ },
+ {
+  "id": "exodus-13-e-10",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel go up out of Egypt?",
+  "choices": [
+   "Hungry",
+   "Harnessed",
+   "Singing",
+   "Barefoot"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel went up harnessed out of the land of Egypt.",
+  "ref": "Exodus 13:18"
+ },
+ {
+  "id": "exodus-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which peoples were named in the land the LORD promised?",
+  "choices": [
+   "Philistines, Moabites and Edomites",
+   "Egyptians, Hittites and Amalekites",
+   "Canaanites, Hittites, Amorites, Hivites and Jebusites",
+   "Midianites and Ammonites"
+  ],
+  "answer": 2,
+  "explanation": "The land of the Canaanites, and the Hittites, and the Amorites, and the Hivites, and the Jebusites.",
+  "ref": "Exodus 13:5"
+ },
+ {
+  "id": "exodus-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day of the seven was there a feast to the LORD?",
+  "choices": [
+   "The first",
+   "The third",
+   "The fifth",
+   "The seventh"
+  ],
+  "answer": 3,
+  "explanation": "Seven days thou shalt eat unleavened bread, and in the seventh day shall be a feast to the LORD.",
+  "ref": "Exodus 13:6"
+ },
+ {
+  "id": "exodus-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say Israel was to tell their son at that time?",
+  "choices": [
+   "This is done because of what the LORD did when I came out of Egypt",
+   "The lamb was for Pharaoh",
+   "The bread was for the poor",
+   "It was a custom of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt shew thy son in that day... This is done because of that which the LORD did unto me.",
+  "ref": "Exodus 13:8"
+ },
+ {
+  "id": "exodus-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the sign upon the hand and between the eyes be a memorial of?",
+  "choices": [
+   "That Egypt was defeated",
+   "That the LORD'S law be in their mouth",
+   "That the sea was parted",
+   "That the land was theirs"
+  ],
+  "answer": 1,
+  "explanation": "It shall be for a sign unto thee upon thine hand, and for a memorial between thine eyes, that the LORD'S law may be in thy mouth.",
+  "ref": "Exodus 13:9"
+ },
+ {
+  "id": "exodus-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done with the firstling of an ass?",
+  "choices": [
+   "Burn it",
+   "Release it",
+   "Redeem it with a lamb",
+   "Sell it"
+  ],
+  "answer": 2,
+  "explanation": "Every firstling of an ass thou shalt redeem with a lamb.",
+  "ref": "Exodus 13:13"
+ },
+ {
+  "id": "exodus-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If the ass's firstling was not redeemed, what was to be done?",
+  "choices": [
+   "Send it away",
+   "Sacrifice it on an altar",
+   "Give it to the priest",
+   "Break its neck"
+  ],
+  "answer": 3,
+  "explanation": "If thou wilt not redeem it, then thou shalt break his neck.",
+  "ref": "Exodus 13:13"
+ },
+ {
+  "id": "exodus-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Israel do for the firstborn of their children?",
+  "choices": [
+   "Redeem them",
+   "Sacrifice them",
+   "Send them to Egypt",
+   "Count them"
+  ],
+  "answer": 0,
+  "explanation": "All the firstborn of man among thy children shalt thou redeem.",
+  "ref": "Exodus 13:13"
+ },
+ {
+  "id": "exodus-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did God not lead Israel by the way of the Philistines?",
+  "choices": [
+   "It was too far",
+   "Lest they repent when they see war",
+   "It was flooded",
+   "Pharaoh's army was there"
+  ],
+  "answer": 1,
+  "explanation": "Lest peradventure the people repent when they see war, and they return to Egypt.",
+  "ref": "Exodus 13:17"
+ },
+ {
+  "id": "exodus-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the LORD's pillar of cloud lead them?",
+  "choices": [
+   "By night only",
+   "Only at the sea",
+   "By day, to lead them the way",
+   "Only in the camp"
+  ],
+  "answer": 2,
+  "explanation": "The LORD went before them by day in a pillar of a cloud, to lead them the way.",
+  "ref": "Exodus 13:21"
+ },
+ {
+  "id": "exodus-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose bones did Moses take, because he had sworn Israel?",
+  "choices": [
+   "Jacob's",
+   "Levi's",
+   "Abraham's",
+   "Joseph's"
+  ],
+  "answer": 3,
+  "explanation": "Moses took the bones of Joseph with him: for he had straitly sworn the children of Israel.",
+  "ref": "Exodus 13:19"
+ },
+ {
+  "id": "exodus-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What oath had Joseph made the children of Israel swear?",
+  "choices": [
+   "To carry his bones away from Egypt",
+   "To build a tomb",
+   "To honour Pharaoh",
+   "To keep the sabbath"
+  ],
+  "answer": 0,
+  "explanation": "God will surely visit you; and ye shall carry up my bones away hence with you.",
+  "ref": "Exodus 13:19"
+ },
+ {
+  "id": "exodus-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the LORD's strength of hand did?",
+  "choices": [
+   "Divided the sea",
+   "Brought them out of Egypt",
+   "Fed the people",
+   "Built the tabernacle"
+  ],
+  "answer": 1,
+  "explanation": "With a strong hand hath the LORD brought thee out of Egypt.",
+  "ref": "Exodus 13:9"
+ },
+ {
+  "id": "exodus-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When Pharaoh would hardly let them go, what did the LORD slay?",
+  "choices": [
+   "All the cattle",
+   "All the soldiers",
+   "All the firstborn in Egypt",
+   "All the fish"
+  ],
+  "answer": 2,
+  "explanation": "The LORD slew all the firstborn in the land of Egypt, both the firstborn of man, and the firstborn of beast.",
+  "ref": "Exodus 13:15"
+ },
+ {
+  "id": "exodus-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said about the leaven in Israel's quarters during the feast?",
+  "choices": [
+   "Little was allowed",
+   "Only for priests",
+   "Only in the evening",
+   "None was to be seen"
+  ],
+  "answer": 3,
+  "explanation": "Neither shall there be leaven seen with thee in all thy quarters.",
+  "ref": "Exodus 13:7"
+ },
+ {
+  "id": "exodus-13-m-15",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the ordinance to be kept in his season?",
+  "choices": [
+   "From year to year",
+   "Every month",
+   "Every seventh year",
+   "Once only"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt therefore keep this ordinance in his season from year to year.",
+  "ref": "Exodus 13:10"
+ },
+ {
+  "id": "exodus-13-m-16",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was Etham?",
+  "choices": [
+   "Beside the Nile",
+   "In the edge of the wilderness",
+   "In the land of Goshen",
+   "On the sea shore"
+  ],
+  "answer": 1,
+  "explanation": "Encamped in Etham, in the edge of the wilderness.",
+  "ref": "Exodus 13:20"
+ },
+ {
+  "id": "exodus-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What males among beasts were to be the LORD's?",
+  "choices": [
+   "All the lambs",
+   "All the rams",
+   "The firstlings that open the matrix",
+   "All the goats"
+  ],
+  "answer": 2,
+  "explanation": "Every firstling that cometh of a beast which thou hast; the males shall be the LORD'S.",
+  "ref": "Exodus 13:12"
+ },
+ {
+  "id": "exodus-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say about the day for seven days?",
+  "choices": [
+   "No work",
+   "No fire",
+   "No travel",
+   "No leaven seen in all thy quarters"
+  ],
+  "answer": 3,
+  "explanation": "There shall no leavened bread be seen with thee.",
+  "ref": "Exodus 13:7"
+ },
+ {
+  "id": "exodus-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the token upon the hand called, along with frontlets?",
+  "choices": [
+   "Frontlets between thine eyes",
+   "A ring",
+   "A rope",
+   "A banner"
+  ],
+  "answer": 0,
+  "explanation": "It shall be for a token upon thine hand, and for frontlets between thine eyes.",
+  "ref": "Exodus 13:16"
+ },
+ {
+  "id": "exodus-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the son ask: \"What is this?\" and the answer began with what?",
+  "choices": [
+   "By many horses",
+   "By strength of hand the LORD brought us out from Egypt",
+   "By our own armies",
+   "By the elders' plan"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt say unto him, By strength of hand the LORD brought us out from Egypt, from the house of bondage.",
+  "ref": "Exodus 13:14"
+ },
+ {
+  "id": "exodus-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say to the people about remembering?",
+  "choices": [
+   "Remember Joseph",
+   "Remember the sea",
+   "Remember this day",
+   "Remember the fathers"
+  ],
+  "answer": 2,
+  "explanation": "Remember this day, in which ye came out from Egypt.",
+  "ref": "Exodus 13:3"
+ },
+ {
+  "id": "exodus-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After the firstborn of Egypt were slain, what did Israel do with male firstlings?",
+  "choices": [
+   "Release them",
+   "Sell them",
+   "Redeem them with silver",
+   "Sacrifice them to the LORD"
+  ],
+  "answer": 3,
+  "explanation": "I sacrifice to the LORD all that openeth the matrix, being males.",
+  "ref": "Exodus 13:15"
+ },
+ {
+  "id": "exodus-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which people's way was near but not taken?",
+  "choices": [
+   "The Philistines'",
+   "The Egyptians'",
+   "The Midianites'",
+   "The Amalekites'"
+  ],
+  "answer": 0,
+  "explanation": "God led them not through the way of the land of the Philistines, although that was near.",
+  "ref": "Exodus 13:17"
+ },
+ {
+  "id": "exodus-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD not take away from before the people?",
+  "choices": [
+   "The manna",
+   "The pillar of cloud and the pillar of fire",
+   "The rod",
+   "The ark"
+  ],
+  "answer": 1,
+  "explanation": "He took not away the pillar of the cloud by day, nor the pillar of fire by night.",
+  "ref": "Exodus 13:22"
+ },
+ {
+  "id": "exodus-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Israel would do in the land when He gave it?",
+  "choices": [
+   "Rest forever",
+   "Offer a king's tax",
+   "Keep this service in this month",
+   "Build cities"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt keep this service in this month.",
+  "ref": "Exodus 13:5"
+ },
+ {
+  "id": "exodus-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel say they would have in their mouth?",
+  "choices": [
+   "Pharaoh's name",
+   "A song",
+   "A feast",
+   "The LORD's law"
+  ],
+  "answer": 3,
+  "explanation": "That the LORD'S law may be in thy mouth.",
+  "ref": "Exodus 13:9"
+ },
+ {
+  "id": "exodus-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From which place did Israel start before they encamped in Etham?",
+  "choices": [
+   "Succoth",
+   "Rameses",
+   "Goshen",
+   "Pithom"
+  ],
+  "answer": 0,
+  "explanation": "They took their journey from Succoth.",
+  "ref": "Exodus 13:20"
+ },
+ {
+  "id": "exodus-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Moses' words describe Pharaoh's attitude to letting Israel go?",
+  "choices": [
+   "He gladly let them go",
+   "He would hardly let them go",
+   "He sent them with gifts",
+   "He did not notice"
+  ],
+  "answer": 1,
+  "explanation": "When Pharaoh would hardly let us go, that the LORD slew all the firstborn in the land of Egypt.",
+  "ref": "Exodus 13:15"
+ },
+ {
+  "id": "exodus-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom was Israel to show the meaning of the feast \"in that day\"?",
+  "choices": [
+   "The elders",
+   "Strangers",
+   "Their son",
+   "Pharaoh"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt shew thy son in that day, saying, This is done because of that which the LORD did unto me.",
+  "ref": "Exodus 13:8"
+ },
+ {
+  "id": "exodus-13-h-14",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD call the place Israel was brought out from, in Moses' words?",
+  "choices": [
+   "The house of Pharaoh",
+   "The land of Ham",
+   "The iron furnace",
+   "The house of bondage"
+  ],
+  "answer": 3,
+  "explanation": "Remember this day, in which ye came out from Egypt, out of the house of bondage.",
+  "ref": "Exodus 13:3"
+ },
+ {
+  "id": "exodus-13-h-15",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the place where Israel encamped described as being on?",
+  "choices": [
+   "The edge of the wilderness",
+   "The bank of the Nile",
+   "The top of a hill",
+   "The sea shore"
+  ],
+  "answer": 0,
+  "explanation": "Encamped in Etham, in the edge of the wilderness.",
+  "ref": "Exodus 13:20"
+ },
+ {
   "id": "old-exodus-14-1",
   "chapter": 14,
   "level": "beginner",
