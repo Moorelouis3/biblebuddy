@@ -3680,6 +3680,646 @@
   "ref": "Leviticus 6:26"
  },
  {
+  "id": "leviticus-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did a man have to restore if he had taken his neighbour's goods by violence?",
+  "choices": [
+   "Half of it",
+   "Only a lamb",
+   "Nothing",
+   "The thing he took"
+  ],
+  "answer": 3,
+  "explanation": "He shall restore that which he took violently away.",
+  "ref": "Leviticus 6:2–4"
+ },
+ {
+  "id": "leviticus-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was to burn on the altar all night until the morning?",
+  "choices": [
+   "The lamp",
+   "The fire",
+   "The incense",
+   "The oil"
+  ],
+  "answer": 1,
+  "explanation": "The burning upon the altar all night unto the morning, and the fire of the altar shall be burning in it.",
+  "ref": "Leviticus 6:9"
+ },
+ {
+  "id": "leviticus-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was the fire on the altar to burn?",
+  "choices": [
+   "It was never to go out",
+   "Only on the Sabbath",
+   "Until the feast",
+   "For seven days"
+  ],
+  "answer": 0,
+  "explanation": "The fire shall ever be burning upon the altar; it shall never go out.",
+  "ref": "Leviticus 6:13"
+ },
+ {
+  "id": "leviticus-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the LORD tell Moses to command about the law of the burnt offering?",
+  "choices": [
+   "The twelve princes",
+   "The elders",
+   "The Levites",
+   "Aaron and his sons"
+  ],
+  "answer": 3,
+  "explanation": "Command Aaron and his sons, saying, This is the law of the burnt offering.",
+  "ref": "Leviticus 6:9"
+ },
+ {
+  "id": "leviticus-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priest burn on the altar every morning?",
+  "choices": [
+   "Wood",
+   "Incense",
+   "Oil",
+   "Palm branches"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall burn wood on it every morning.",
+  "ref": "Leviticus 6:12"
+ },
+ {
+  "id": "leviticus-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the priest to do with the ashes?",
+  "choices": [
+   "Scatter them in the court",
+   "Bury them in the tabernacle",
+   "Carry them outside the camp to a clean place",
+   "Mix them with oil"
+  ],
+  "answer": 2,
+  "explanation": "He shall carry forth the ashes without the camp unto a clean place.",
+  "ref": "Leviticus 6:11"
+ },
+ {
+  "id": "leviticus-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The remainder of the meat offering was eaten without what?",
+  "choices": [
+   "Oil",
+   "Salt",
+   "Water",
+   "Leaven"
+  ],
+  "answer": 3,
+  "explanation": "With unleavened bread shall it be eaten in the holy place.",
+  "ref": "Leviticus 6:16"
+ },
+ {
+  "id": "leviticus-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who ate what remained of the meat offering?",
+  "choices": [
+   "The elders only",
+   "The strangers",
+   "Aaron and his sons",
+   "All the people"
+  ],
+  "answer": 2,
+  "explanation": "The remainder thereof shall Aaron and his sons eat.",
+  "ref": "Leviticus 6:16"
+ },
+ {
+  "id": "leviticus-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the priest's own meat offering to be?",
+  "choices": [
+   "Kept for a year",
+   "Eaten by the people",
+   "Wholly burnt",
+   "Given to the poor"
+  ],
+  "answer": 2,
+  "explanation": "Every meat offering for the priest shall be wholly burnt: it shall not be eaten.",
+  "ref": "Leviticus 6:23"
+ },
+ {
+  "id": "leviticus-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which offering was \"most holy\" and killed where the burnt offering was killed?",
+  "choices": [
+   "The peace offering",
+   "The sin offering",
+   "The drink offering",
+   "The wave offering"
+  ],
+  "answer": 1,
+  "explanation": "In the place where the burnt offering is killed shall the sin offering be killed: it is most holy.",
+  "ref": "Leviticus 6:25"
+ },
+ {
+  "id": "leviticus-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "A man was to restore the stolen thing in the what?",
+  "choices": [
+   "Principal",
+   "Weight",
+   "Measure",
+   "Harvest"
+  ],
+  "answer": 0,
+  "explanation": "He shall even restore it in the principal, and shall add the fifth part more thereto.",
+  "ref": "Leviticus 6:5"
+ },
+ {
+  "id": "leviticus-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was brought as the trespass offering for wronging a neighbour?",
+  "choices": [
+   "A bullock",
+   "Two doves",
+   "A kid",
+   "A ram without blemish"
+  ],
+  "answer": 3,
+  "explanation": "He shall bring his trespass offering, a ram without blemish out of the flock.",
+  "ref": "Leviticus 6:6"
+ },
+ {
+  "id": "leviticus-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these was a way of lying to a neighbour named in the chapter?",
+  "choices": [
+   "In a thing delivered him to keep",
+   "In a thing borrowed for the feast",
+   "In a thing found in the camp",
+   "In a thing sold at market"
+  ],
+  "answer": 0,
+  "explanation": "If a soul lie unto his neighbour in that which was delivered him to keep.",
+  "ref": "Leviticus 6:2"
+ },
+ {
+  "id": "leviticus-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had a man found that he then lied about and swore falsely?",
+  "choices": [
+   "A buried treasure",
+   "A stranger's garment",
+   "A strayed ox",
+   "That which was lost"
+  ],
+  "answer": 3,
+  "explanation": "Or have found that which was lost, and lieth concerning it, and sweareth falsely.",
+  "ref": "Leviticus 6:3"
+ },
+ {
+  "id": "leviticus-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest wear to take up the ashes?",
+  "choices": [
+   "The ephod",
+   "A blue robe",
+   "A mitre only",
+   "His linen garment and linen breeches"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall put on his linen garment, and his linen breeches shall he put upon his flesh.",
+  "ref": "Leviticus 6:10"
+ },
+ {
+  "id": "leviticus-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest do with his garments before carrying the ashes out of the camp?",
+  "choices": [
+   "He put on other garments",
+   "He kept them on",
+   "He washed them",
+   "He burned them"
+  ],
+  "answer": 0,
+  "explanation": "He shall put off his garments, and put on other garments, and carry forth the ashes.",
+  "ref": "Leviticus 6:11"
+ },
+ {
+  "id": "leviticus-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest burn upon the altar fire along with the burnt offering?",
+  "choices": [
+   "The ashes",
+   "The earthen vessels",
+   "The fat of the peace offerings",
+   "The bread of the presence"
+  ],
+  "answer": 2,
+  "explanation": "He shall burn thereon the fat of the peace offerings.",
+  "ref": "Leviticus 6:12"
+ },
+ {
+  "id": "leviticus-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the priests' portion of the meat offering eaten?",
+  "choices": [
+   "Outside the camp",
+   "In the camp",
+   "In the court of the tabernacle",
+   "At their tents"
+  ],
+  "answer": 2,
+  "explanation": "In the holy place; in the court of the tabernacle of the congregation they shall eat it.",
+  "ref": "Leviticus 6:16"
+ },
+ {
+  "id": "leviticus-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was burned on the altar from the meat offering as a sweet savour?",
+  "choices": [
+   "The whole offering",
+   "A handful with the oil and all the frankincense",
+   "Only the oil",
+   "The bread only"
+  ],
+  "answer": 1,
+  "explanation": "He shall take his handful, and of the oil thereof, and all the frankincense, and burn it for a sweet savour, even the memorial.",
+  "ref": "Leviticus 6:15"
+ },
+ {
+  "id": "leviticus-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to anyone who touched the offerings made by fire?",
+  "choices": [
+   "He would be unclean",
+   "He would be fined",
+   "He would be cut off",
+   "He would be holy"
+  ],
+  "answer": 3,
+  "explanation": "Every one that toucheth them shall be holy.",
+  "ref": "Leviticus 6:18"
+ },
+ {
+  "id": "leviticus-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When was the offering of Aaron and his sons brought, according to the chapter?",
+  "choices": [
+   "The day he is anointed",
+   "The day of the new moon",
+   "The day of Passover",
+   "The day of atonement"
+  ],
+  "answer": 0,
+  "explanation": "This is the offering of Aaron and of his sons, in the day when he is anointed.",
+  "ref": "Leviticus 6:20"
+ },
+ {
+  "id": "leviticus-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what was the priest's meat offering made?",
+  "choices": [
+   "In water",
+   "In an oven with honey",
+   "In a pan with oil",
+   "On a stone"
+  ],
+  "answer": 2,
+  "explanation": "In a pan it shall be made with oil.",
+  "ref": "Leviticus 6:21"
+ },
+ {
+  "id": "leviticus-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done with a sin offering whose blood was brought into the tabernacle?",
+  "choices": [
+   "It was eaten",
+   "It was burnt in the fire",
+   "It was given to Levites",
+   "It was buried"
+  ],
+  "answer": 1,
+  "explanation": "No sin offering, whereof any of the blood is brought into the tabernacle, shall be eaten: it shall be burnt in the fire.",
+  "ref": "Leviticus 6:30"
+ },
+ {
+  "id": "leviticus-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done to an earthen vessel in which the sin offering was boiled?",
+  "choices": [
+   "It was washed",
+   "It was sold",
+   "It was broken",
+   "It was buried"
+  ],
+  "answer": 2,
+  "explanation": "The earthen vessel wherein it is sodden shall be broken.",
+  "ref": "Leviticus 6:28"
+ },
+ {
+  "id": "leviticus-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done to a garment sprinkled with the sin offering's blood?",
+  "choices": [
+   "Washed in the holy place",
+   "Buried",
+   "Torn",
+   "Burned"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt wash that whereon it was sprinkled in the holy place.",
+  "ref": "Leviticus 6:27"
+ },
+ {
+  "id": "leviticus-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much fine flour was Aaron's perpetual meat offering?",
+  "choices": [
+   "Two handfuls",
+   "A fifth part of an ephah",
+   "One ephah",
+   "The tenth part of an ephah"
+  ],
+  "answer": 3,
+  "explanation": "The tenth part of an ephah of fine flour for a meat offering perpetual.",
+  "ref": "Leviticus 6:20"
+ },
+ {
+  "id": "leviticus-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was Aaron's meat offering divided between the day?",
+  "choices": [
+   "All in the morning",
+   "Half in the morning, half at night",
+   "A third each of three times",
+   "Only at evening"
+  ],
+  "answer": 1,
+  "explanation": "Half of it in the morning, and half thereof at night.",
+  "ref": "Leviticus 6:20"
+ },
+ {
+  "id": "leviticus-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was to be done with a brasen pot in which sin offering was boiled?",
+  "choices": [
+   "Buried",
+   "Burned",
+   "Scoured and rinsed in water",
+   "Broken"
+  ],
+  "answer": 2,
+  "explanation": "If it be sodden in a brasen pot, it shall be both scoured, and rinsed in water.",
+  "ref": "Leviticus 6:28"
+ },
+ {
+  "id": "leviticus-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who shall eat of the sin offering?",
+  "choices": [
+   "Aaron alone",
+   "The whole people",
+   "The Levites",
+   "All the males among the priests"
+  ],
+  "answer": 3,
+  "explanation": "All the males among the priests shall eat thereof: it is most holy.",
+  "ref": "Leviticus 6:29"
+ },
+ {
+  "id": "leviticus-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the meat offering described besides \"holy\"?",
+  "choices": [
+   "Free",
+   "Unclean",
+   "Most holy",
+   "Common"
+  ],
+  "answer": 2,
+  "explanation": "It is most holy, as is the sin offering, and as the trespass offering.",
+  "ref": "Leviticus 6:17"
+ },
+ {
+  "id": "leviticus-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who shall offer the meat offering of the priest in Aaron's stead?",
+  "choices": [
+   "The priest of his sons that is anointed",
+   "The firstborn Levite",
+   "The elders",
+   "Moses"
+  ],
+  "answer": 0,
+  "explanation": "The priest of his sons that is anointed in his stead shall offer it.",
+  "ref": "Leviticus 6:22"
+ },
+ {
+  "id": "leviticus-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The burnt offering burned upon the altar all night until when?",
+  "choices": [
+   "The morning",
+   "The evening sacrifice",
+   "Midnight",
+   "The next Sabbath"
+  ],
+  "answer": 0,
+  "explanation": "The burning upon the altar all night unto the morning.",
+  "ref": "Leviticus 6:9"
+ },
+ {
+  "id": "leviticus-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was the priests' portion of the offerings made by fire to be theirs?",
+  "choices": [
+   "For ever, in their generations",
+   "Seven years",
+   "Until the Jubilee",
+   "Only while in the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "It shall be a statute for ever in your generations concerning the offerings of the LORD made by fire.",
+  "ref": "Leviticus 6:18"
+ },
+ {
+  "id": "leviticus-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what place were the priests to eat the sin offering?",
+  "choices": [
+   "In the court of the tabernacle",
+   "At the door of the camp",
+   "In their own tents",
+   "On the horns of the altar"
+  ],
+  "answer": 0,
+  "explanation": "The priest that offereth it for sin shall eat it: in the holy place shall it be eaten, in the court of the tabernacle of the congregation.",
+  "ref": "Leviticus 6:26"
+ },
+ {
+  "id": "leviticus-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priest put on to take up the ashes: what lay \"upon his flesh\"?",
+  "choices": [
+   "His linen breeches",
+   "His girdle",
+   "His mitre",
+   "His breastplate"
+  ],
+  "answer": 0,
+  "explanation": "His linen breeches shall he put upon his flesh.",
+  "ref": "Leviticus 6:10"
+ },
+ {
+  "id": "leviticus-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the ashes put first?",
+  "choices": [
+   "Beside the altar",
+   "Outside the gate",
+   "In the court",
+   "On the horns"
+  ],
+  "answer": 0,
+  "explanation": "He shall put them beside the altar.",
+  "ref": "Leviticus 6:10"
+ },
+ {
+  "id": "leviticus-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be on any thing that touches the sin offering's flesh?",
+  "choices": [
+   "It shall be cursed",
+   "It shall be burned",
+   "It shall be cut off",
+   "It shall be holy"
+  ],
+  "answer": 3,
+  "explanation": "Whatsoever shall touch the flesh thereof shall be holy.",
+  "ref": "Leviticus 6:27"
+ },
+ {
+  "id": "leviticus-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The meat offering law said the sons of Aaron shall offer it before what?",
+  "choices": [
+   "The camp",
+   "The LORD, before the altar",
+   "The vail",
+   "The mercy seat"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Aaron shall offer it before the LORD, before the altar.",
+  "ref": "Leviticus 6:14"
+ },
+ {
+  "id": "leviticus-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the sinner restore the thing with the fifth part?",
+  "choices": [
+   "At the next feast",
+   "In the day of his trespass offering",
+   "On the Sabbath",
+   "After seven days"
+  ],
+  "answer": 1,
+  "explanation": "He shall give it unto him to whom it appertaineth, in the day of his trespass offering.",
+  "ref": "Leviticus 6:5"
+ },
+ {
+  "id": "leviticus-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom was restoration given?",
+  "choices": [
+   "To the priest",
+   "To Moses",
+   "To him to whom it belonged",
+   "To the altar"
+  ],
+  "answer": 2,
+  "explanation": "Give it unto him to whom it appertaineth.",
+  "ref": "Leviticus 6:5"
+ },
+ {
   "id": "old-leviticus-7-1",
   "chapter": 7,
   "level": "beginner",
