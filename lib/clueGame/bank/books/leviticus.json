@@ -5120,6 +5120,646 @@
   "ref": "Leviticus 8:33"
  },
  {
+  "id": "leviticus-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the LORD tell Moses to take for the consecration?",
+  "choices": [
+   "The elders",
+   "Joshua and Caleb",
+   "The twelve princes",
+   "Aaron and his sons"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said, Take Aaron and his sons with him.",
+  "ref": "Leviticus 8:2"
+ },
+ {
+  "id": "leviticus-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the congregation gathered together?",
+  "choices": [
+   "At the door of the tabernacle of the congregation",
+   "By the Red Sea",
+   "Inside the camp gate",
+   "On Mount Sinai"
+  ],
+  "answer": 0,
+  "explanation": "The assembly was gathered together unto the door of the tabernacle of the congregation.",
+  "ref": "Leviticus 8:3–4"
+ },
+ {
+  "id": "leviticus-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses use to anoint the tabernacle and all that was in it?",
+  "choices": [
+   "The anointing oil",
+   "Blood",
+   "Water",
+   "Wine"
+  ],
+  "answer": 0,
+  "explanation": "Moses took the anointing oil, and anointed the tabernacle and all that was therein, and sanctified them.",
+  "ref": "Leviticus 8:10"
+ },
+ {
+  "id": "leviticus-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses pour on Aaron's head?",
+  "choices": [
+   "Blood",
+   "Water",
+   "The anointing oil",
+   "Wine"
+  ],
+  "answer": 2,
+  "explanation": "He poured of the anointing oil upon Aaron's head, and anointed him, to sanctify him.",
+  "ref": "Leviticus 8:12"
+ },
+ {
+  "id": "leviticus-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses put on Aaron's head for the golden plate, the holy crown?",
+  "choices": [
+   "The mitre",
+   "The robe",
+   "The bonnet",
+   "The ephod"
+  ],
+  "answer": 0,
+  "explanation": "He put the mitre upon his head; also upon the mitre did he put the golden plate, the holy crown.",
+  "ref": "Leviticus 8:9"
+ },
+ {
+  "id": "leviticus-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal was brought for the sin offering?",
+  "choices": [
+   "A dove",
+   "A lamb",
+   "A goat",
+   "A bullock"
+  ],
+  "answer": 3,
+  "explanation": "He brought the bullock for the sin offering.",
+  "ref": "Leviticus 8:14"
+ },
+ {
+  "id": "leviticus-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Aaron and his sons lay on the head of the bullock?",
+  "choices": [
+   "Their garments",
+   "Their hands",
+   "Bread",
+   "Oil"
+  ],
+  "answer": 1,
+  "explanation": "Aaron and his sons laid their hands upon the head of the bullock for the sin offering.",
+  "ref": "Leviticus 8:14"
+ },
+ {
+  "id": "leviticus-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which ram was burnt whole upon the altar?",
+  "choices": [
+   "The ram of trespass",
+   "The ram of peace",
+   "The ram for the burnt offering",
+   "The ram of consecration"
+  ],
+  "answer": 2,
+  "explanation": "Moses burnt the whole ram upon the altar: it was a burnt sacrifice for a sweet savour.",
+  "ref": "Leviticus 8:18–21"
+ },
+ {
+  "id": "leviticus-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose part was the breast of the ram of consecration?",
+  "choices": [
+   "Moses'",
+   "The people's",
+   "Eleazar's",
+   "Aaron's"
+  ],
+  "answer": 0,
+  "explanation": "Of the ram of consecration it was Moses' part.",
+  "ref": "Leviticus 8:29"
+ },
+ {
+  "id": "leviticus-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where were Aaron and his sons to boil and eat the flesh?",
+  "choices": [
+   "At the door of the tabernacle",
+   "In the court of the priests",
+   "On the altar",
+   "In the camp"
+  ],
+  "answer": 0,
+  "explanation": "Boil the flesh at the door of the tabernacle of the congregation: and there eat it.",
+  "ref": "Leviticus 8:31"
+ },
+ {
+  "id": "leviticus-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses put upon Aaron's sons?",
+  "choices": [
+   "Ephods and breastplates",
+   "Coats, girdles and bonnets",
+   "Only white linen",
+   "Mitres and robes"
+  ],
+  "answer": 1,
+  "explanation": "Moses brought Aaron's sons, and put coats upon them, and girded them with girdles, and put bonnets upon them.",
+  "ref": "Leviticus 8:13"
+ },
+ {
+  "id": "leviticus-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many times did Moses sprinkle anointing oil upon the altar?",
+  "choices": [
+   "Seven times",
+   "Twelve times",
+   "Once",
+   "Three times"
+  ],
+  "answer": 0,
+  "explanation": "He sprinkled thereof upon the altar seven times.",
+  "ref": "Leviticus 8:11"
+ },
+ {
+  "id": "leviticus-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses anoint besides the altar and its vessels?",
+  "choices": [
+   "The laver and his foot",
+   "The vail and the lamp",
+   "The table and the candlestick",
+   "The ark and the mercy seat"
+  ],
+  "answer": 0,
+  "explanation": "He anointed the altar and all his vessels, both the laver and his foot, to sanctify them.",
+  "ref": "Leviticus 8:11"
+ },
+ {
+  "id": "leviticus-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses do with the blood of the bullock?",
+  "choices": [
+   "Carried it out of the camp",
+   "Poured it all on the ground",
+   "Sprinkled it on the people",
+   "Put it on the horns of the altar with his finger"
+  ],
+  "answer": 3,
+  "explanation": "Moses took the blood, and put it upon the horns of the altar round about with his finger.",
+  "ref": "Leviticus 8:15"
+ },
+ {
+  "id": "leviticus-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the bullock's flesh, hide and dung burned?",
+  "choices": [
+   "At the door",
+   "On the altar",
+   "Outside the camp",
+   "Before the vail"
+  ],
+  "answer": 2,
+  "explanation": "The bullock, and his hide, his flesh, and his dung, he burnt with fire without the camp.",
+  "ref": "Leviticus 8:17"
+ },
+ {
+  "id": "leviticus-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses burn upon the altar from the bullock?",
+  "choices": [
+   "The head",
+   "The hide",
+   "The flesh",
+   "The fat, caul and two kidneys"
+  ],
+  "answer": 3,
+  "explanation": "He took all the fat that was upon the inwards, and caul above the liver, and the two kidneys, and their fat, and Moses burned it.",
+  "ref": "Leviticus 8:16"
+ },
+ {
+  "id": "leviticus-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses do with the inwards and legs of the burnt ram?",
+  "choices": [
+   "Burned them outside",
+   "Washed them in water",
+   "Buried them",
+   "Gave them to the priest"
+  ],
+  "answer": 1,
+  "explanation": "He washed the inwards and the legs in water; and Moses burnt the whole ram upon the altar.",
+  "ref": "Leviticus 8:21"
+ },
+ {
+  "id": "leviticus-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was put on the tip of Aaron's right ear from the consecration ram?",
+  "choices": [
+   "The oil",
+   "The blood",
+   "The fat",
+   "The flour"
+  ],
+  "answer": 1,
+  "explanation": "Moses took of the blood of it, and put it upon the tip of Aaron's right ear.",
+  "ref": "Leviticus 8:23"
+ },
+ {
+  "id": "leviticus-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses sprinkle on Aaron's garments and his sons?",
+  "choices": [
+   "Salt",
+   "Only water",
+   "Anointing oil and blood from the altar",
+   "Only oil"
+  ],
+  "answer": 2,
+  "explanation": "Moses took of the anointing oil, and of the blood which was upon the altar, and sprinkled it upon Aaron, and upon his garments.",
+  "ref": "Leviticus 8:30"
+ },
+ {
+  "id": "leviticus-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was put on the fat and right shoulder from the basket?",
+  "choices": [
+   "An unleavened cake, an oiled cake and a wafer",
+   "Bread and honey",
+   "A loaf of leaven",
+   "Barley cakes"
+  ],
+  "answer": 0,
+  "explanation": "He took one unleavened cake, and a cake of oiled bread, and one wafer, and put them on the fat, and upon the right shoulder.",
+  "ref": "Leviticus 8:26"
+ },
+ {
+  "id": "leviticus-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done with the remainder of the flesh and bread?",
+  "choices": [
+   "It was buried",
+   "It was eaten later",
+   "It was burned with fire",
+   "It was given to the poor"
+  ],
+  "answer": 2,
+  "explanation": "That which remaineth of the flesh and of the bread shall ye burn with fire.",
+  "ref": "Leviticus 8:32"
+ },
+ {
+  "id": "leviticus-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses put into the breastplate?",
+  "choices": [
+   "The oil",
+   "The tablets",
+   "The Urim and the Thummim",
+   "Twelve stones"
+  ],
+  "answer": 2,
+  "explanation": "He put in the breastplate the Urim and the Thummim.",
+  "ref": "Leviticus 8:8"
+ },
+ {
+  "id": "leviticus-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose hands did Moses put the cakes, fat and shoulder in?",
+  "choices": [
+   "The people's",
+   "Aaron's and his sons'",
+   "The elders'",
+   "Moses' own"
+  ],
+  "answer": 1,
+  "explanation": "He put all upon Aaron's hands, and upon his sons' hands, and waved them for a wave offering.",
+  "ref": "Leviticus 8:27"
+ },
+ {
+  "id": "leviticus-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses do with the blood of the burnt ram?",
+  "choices": [
+   "Drank it",
+   "Poured it out outside",
+   "Put it on Aaron's ear",
+   "Sprinkled it upon the altar round about"
+  ],
+  "answer": 3,
+  "explanation": "Moses sprinkled the blood upon the altar round about.",
+  "ref": "Leviticus 8:19"
+ },
+ {
+  "id": "leviticus-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were Aaron and his sons to abide at the door seven days?",
+  "choices": [
+   "To fast for sin",
+   "To train",
+   "Keep the charge of the LORD, that they die not",
+   "To rest"
+  ],
+  "answer": 2,
+  "explanation": "Abide at the door seven days, and keep the charge of the LORD, that ye die not.",
+  "ref": "Leviticus 8:35"
+ },
+ {
+  "id": "leviticus-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses clothe Aaron with first?",
+  "choices": [
+   "The ephod",
+   "The robe",
+   "The breastplate",
+   "The coat"
+  ],
+  "answer": 3,
+  "explanation": "He put upon him the coat, and girded him with the girdle, and clothed him with the robe.",
+  "ref": "Leviticus 8:7"
+ },
+ {
+  "id": "leviticus-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was bound to Aaron with the curious girdle?",
+  "choices": [
+   "The mitre",
+   "The bonnet",
+   "The ephod",
+   "The breastplate"
+  ],
+  "answer": 2,
+  "explanation": "He put the ephod upon him, and he girded him with the curious girdle of the ephod, and bound it unto him therewith.",
+  "ref": "Leviticus 8:7"
+ },
+ {
+  "id": "leviticus-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many rams did the LORD tell Moses to take?",
+  "choices": [
+   "Seven",
+   "Two",
+   "Three",
+   "One"
+  ],
+  "answer": 1,
+  "explanation": "Take a bullock for the sin offering, and two rams, and a basket of unleavened bread.",
+  "ref": "Leviticus 8:2"
+ },
+ {
+  "id": "leviticus-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the blood put on Aaron's right foot?",
+  "choices": [
+   "The sole",
+   "The ankle",
+   "The great toe",
+   "The heel"
+  ],
+  "answer": 2,
+  "explanation": "He put the blood upon the great toe of his right foot.",
+  "ref": "Leviticus 8:23"
+ },
+ {
+  "id": "leviticus-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which hand was the blood put on Aaron?",
+  "choices": [
+   "The thumb of the right hand",
+   "The little finger",
+   "The palm",
+   "The thumb of the left hand"
+  ],
+  "answer": 0,
+  "explanation": "He put it upon the thumb of his right hand.",
+  "ref": "Leviticus 8:23"
+ },
+ {
+  "id": "leviticus-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Aaron's sons receive the blood on, besides ear and thumb?",
+  "choices": [
+   "Their left hands",
+   "Their heads",
+   "Great toes of their right feet",
+   "Their foreheads"
+  ],
+  "answer": 2,
+  "explanation": "Upon the great toes of their right feet.",
+  "ref": "Leviticus 8:24"
+ },
+ {
+  "id": "leviticus-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the ram for the burnt offering burned as?",
+  "choices": [
+   "A burnt sacrifice for a sweet savour",
+   "A drink offering",
+   "A peace offering",
+   "A sin offering"
+  ],
+  "answer": 0,
+  "explanation": "It was a burnt sacrifice for a sweet savour, and an offering made by fire unto the LORD.",
+  "ref": "Leviticus 8:21"
+ },
+ {
+  "id": "leviticus-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the cakes burned upon?",
+  "choices": [
+   "The burnt offering",
+   "The meat offering",
+   "The peace offering",
+   "The sin offering"
+  ],
+  "answer": 0,
+  "explanation": "Moses took them from off their hands, and burnt them on the altar upon the burnt offering: they were consecrations.",
+  "ref": "Leviticus 8:28"
+ },
+ {
+  "id": "leviticus-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses call the bread in the basket?",
+  "choices": [
+   "The shewbread",
+   "The bread of the presence",
+   "The bread of consecrations",
+   "The bread of affliction"
+  ],
+  "answer": 2,
+  "explanation": "Eat it with the bread that is in the basket of consecrations.",
+  "ref": "Leviticus 8:31"
+ },
+ {
+  "id": "leviticus-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how long was the consecration to last?",
+  "choices": [
+   "Forty days",
+   "Seven days",
+   "Ten days",
+   "Three days"
+  ],
+  "answer": 1,
+  "explanation": "For seven days shall he consecrate you.",
+  "ref": "Leviticus 8:33"
+ },
+ {
+  "id": "leviticus-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the golden plate called?",
+  "choices": [
+   "The mitre",
+   "The ephod",
+   "The breastplate",
+   "The holy crown"
+  ],
+  "answer": 3,
+  "explanation": "The golden plate, the holy crown.",
+  "ref": "Leviticus 8:9"
+ },
+ {
+  "id": "leviticus-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Aaron told while abiding at the door?",
+  "choices": [
+   "He should come only by day",
+   "He should leave at night",
+   "He should fast",
+   "He should stay day and night"
+  ],
+  "answer": 3,
+  "explanation": "Abide at the door of the tabernacle day and night seven days.",
+  "ref": "Leviticus 8:35"
+ },
+ {
+  "id": "leviticus-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Aaron and his sons do at the end of the chapter?",
+  "choices": [
+   "Nothing",
+   "Some of the things",
+   "All things except the bread",
+   "All things the LORD commanded by Moses"
+  ],
+  "answer": 3,
+  "explanation": "So Aaron and his sons did all things which the LORD commanded by the hand of Moses.",
+  "ref": "Leviticus 8:36"
+ },
+ {
+  "id": "leviticus-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who said, \"This is the thing which the LORD commanded to be done\"?",
+  "choices": [
+   "Moses",
+   "Eleazar",
+   "Joshua",
+   "Aaron"
+  ],
+  "answer": 0,
+  "explanation": "Moses said unto the congregation, This is the thing which the LORD commanded to be done.",
+  "ref": "Leviticus 8:5"
+ },
+ {
+  "id": "leviticus-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which shoulder was taken with the fat of the ram of consecration?",
+  "choices": [
+   "The right shoulder",
+   "Both shoulders",
+   "The left shoulder",
+   "The neck"
+  ],
+  "answer": 0,
+  "explanation": "He took the fat, and the rump, and the fat upon the inwards, and the right shoulder.",
+  "ref": "Leviticus 8:25"
+ },
+ {
   "id": "old-leviticus-9-1",
   "chapter": 9,
   "level": "beginner",
