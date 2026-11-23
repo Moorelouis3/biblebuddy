@@ -4272,6 +4272,294 @@
   "ref": "Genesis 13:16"
  },
  {
+  "id": "genesis-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Lot see when he lifted up his eyes?",
+  "choices": [
+   "The plain of Jordan, well watered",
+   "A great city",
+   "A mountain of fire",
+   "The sea of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Lot beheld all the plain of Jordan, that it was well watered every where.",
+  "ref": "Genesis 13:10"
+ },
+ {
+  "id": "genesis-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abram ask Lot to do so there would be no strife?",
+  "choices": [
+   "Separate from him",
+   "Move to Egypt",
+   "Sell his herds",
+   "Dismiss his herdmen"
+  ],
+  "answer": 0,
+  "explanation": "Abram said, Separate thyself, I pray thee, from me.",
+  "ref": "Genesis 13:9"
+ },
+ {
+  "id": "genesis-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who spoke to Abram after Lot had separated from him?",
+  "choices": [
+   "The LORD",
+   "Melchizedek",
+   "An angel of Sodom",
+   "Lot"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said unto Abram, after that Lot was separated from him, Lift up now thine eyes.",
+  "ref": "Genesis 13:14"
+ },
+ {
+  "id": "genesis-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Where had Abram’s tent been at the beginning, before Egypt?",
+  "choices": [
+   "Between Bethel and Hai",
+   "Between Sodom and Zoar",
+   "Between Hebron and Mamre",
+   "Between Haran and Ur"
+  ],
+  "answer": 0,
+  "explanation": "He went to the place where his tent had been at the beginning, between Bethel and Hai.",
+  "ref": "Genesis 13:3"
+ },
+ {
+  "id": "genesis-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "The well-watered plain was like Egypt as thou comest unto which place?",
+  "choices": [
+   "Zoar",
+   "Hebron",
+   "Bethel",
+   "Salem"
+  ],
+  "answer": 0,
+  "explanation": "The plain was well watered, like the land of Egypt, as thou comest unto Zoar.",
+  "ref": "Genesis 13:10"
+ },
+ {
+  "id": "genesis-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Lot dwell after he separated from Abram?",
+  "choices": [
+   "In the cities of the plain",
+   "In the plain of Mamre",
+   "In Hebron",
+   "In Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Lot dwelled in the cities of the plain, and pitched his tent toward Sodom.",
+  "ref": "Genesis 13:12"
+ },
+ {
+  "id": "genesis-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How wicked does the chapter say the men of Sodom were?",
+  "choices": [
+   "Exceedingly",
+   "A little",
+   "Moderately",
+   "Secretly"
+  ],
+  "answer": 0,
+  "explanation": "The men of Sodom were wicked and sinners before the LORD exceedingly.",
+  "ref": "Genesis 13:13"
+ },
+ {
+  "id": "genesis-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abram say lay before Lot when he asked him to separate?",
+  "choices": [
+   "The whole land",
+   "A great river",
+   "A walled city",
+   "The sea"
+  ],
+  "answer": 0,
+  "explanation": "Abram said, Is not the whole land before thee?",
+  "ref": "Genesis 13:9"
+ },
+ {
+  "id": "genesis-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Lot do before choosing the plain of Jordan?",
+  "choices": [
+   "Lifted up his eyes and looked",
+   "Prayed to the LORD",
+   "Asked Abram’s advice",
+   "Sent his servants ahead"
+  ],
+  "answer": 0,
+  "explanation": "Lot lifted up his eyes, and beheld all the plain of Jordan.",
+  "ref": "Genesis 13:10"
+ },
+ {
+  "id": "genesis-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which way did Abram go when he came up out of Egypt?",
+  "choices": [
+   "Into the south",
+   "Into the east",
+   "Into the north",
+   "Toward the sea"
+  ],
+  "answer": 0,
+  "explanation": "Abram went up out of Egypt, he, and his wife, and all that he had, and Lot with him, into the south.",
+  "ref": "Genesis 13:1"
+ },
+ {
+  "id": "genesis-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abram find at Bethel that he had made at the first?",
+  "choices": [
+   "An altar",
+   "A well",
+   "A tower",
+   "A tent"
+  ],
+  "answer": 0,
+  "explanation": "He came unto the place of the altar, which he had made there at the first.",
+  "ref": "Genesis 13:4"
+ },
+ {
+  "id": "genesis-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abram build in the plain of Mamre?",
+  "choices": [
+   "An altar to the LORD",
+   "A city",
+   "A well",
+   "A house"
+  ],
+  "answer": 0,
+  "explanation": "Abram came and dwelt in the plain of Mamre, and built there an altar unto the LORD.",
+  "ref": "Genesis 13:18"
+ },
+ {
+  "id": "genesis-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Abram asked that there be no strife between his herdmen and whose?",
+  "choices": [
+   "Lot’s herdmen",
+   "Pharaoh’s herdmen",
+   "The Perizzite’s herdmen",
+   "Mamre’s herdmen"
+  ],
+  "answer": 0,
+  "explanation": "Abram said, Let there be no strife between my herdmen and thy herdmen.",
+  "ref": "Genesis 13:8"
+ },
+ {
+  "id": "genesis-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the plain of Jordan watered?",
+  "choices": [
+   "Well watered every where",
+   "By a single river only",
+   "By rain only",
+   "Only by wells"
+  ],
+  "answer": 0,
+  "explanation": "The plain of Jordan was well watered every where.",
+  "ref": "Genesis 13:10"
+ },
+ {
+  "id": "genesis-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city was destroyed along with Sodom, according to the chapter?",
+  "choices": [
+   "Gomorrah",
+   "Zoar",
+   "Bethel",
+   "Hai"
+  ],
+  "answer": 0,
+  "explanation": "The plain was well watered before the LORD destroyed Sodom and Gomorrah.",
+  "ref": "Genesis 13:10"
+ },
+ {
+  "id": "genesis-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abram do at the altar when he returned to Bethel?",
+  "choices": [
+   "Called on the name of the LORD",
+   "Offered a ram",
+   "Buried a servant",
+   "Made a vow to Lot"
+  ],
+  "answer": 0,
+  "explanation": "There Abram called on the name of the LORD.",
+  "ref": "Genesis 13:4"
+ },
+ {
+  "id": "genesis-13-h-14",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which direction did the LORD first tell Abram to look?",
+  "choices": [
+   "Northward",
+   "Southward",
+   "Eastward",
+   "Westward"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Look from the place where thou art northward, and southward, and eastward, and westward.",
+  "ref": "Genesis 13:14"
+ },
+ {
+  "id": "genesis-13-h-15",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "In which land did Abram dwell after Lot left?",
+  "choices": [
+   "The land of Canaan",
+   "The land of Egypt",
+   "The plain of Jordan",
+   "The land of Shinar"
+  ],
+  "answer": 0,
+  "explanation": "Abram dwelled in the land of Canaan.",
+  "ref": "Genesis 13:12"
+ },
+ {
   "id": "old-genesis-14-2",
   "chapter": 14,
   "level": "beginner",
