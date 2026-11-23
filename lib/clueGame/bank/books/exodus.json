@@ -2960,6 +2960,646 @@
   "ref": "Exodus 5:22–23"
  },
  {
+  "id": "exodus-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went in and told Pharaoh the words of the LORD God of Israel?",
+  "choices": [
+   "Moses and Jethro",
+   "Moses and Aaron",
+   "Aaron and Hur",
+   "Joshua and Caleb"
+  ],
+  "answer": 1,
+  "explanation": "Moses and Aaron went in, and told Pharaoh, Thus saith the LORD God of Israel.",
+  "ref": "Exodus 5:1"
+ },
+ {
+  "id": "exodus-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Pharaoh say he would no longer give the people?",
+  "choices": [
+   "Straw",
+   "Grain",
+   "Water",
+   "Wages"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall no more give the people straw to make brick.",
+  "ref": "Exodus 5:7"
+ },
+ {
+  "id": "exodus-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the Israelites making?",
+  "choices": [
+   "Pottery",
+   "Swords",
+   "Brick",
+   "Tents"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall no more give the people straw to make brick.",
+  "ref": "Exodus 5:7"
+ },
+ {
+  "id": "exodus-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people gather instead of straw?",
+  "choices": [
+   "Stubble",
+   "Thorns",
+   "Grass",
+   "Reeds"
+  ],
+  "answer": 0,
+  "explanation": "The people were scattered abroad to gather stubble instead of straw.",
+  "ref": "Exodus 5:12"
+ },
+ {
+  "id": "exodus-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the people scattered to gather stubble?",
+  "choices": [
+   "Throughout all the land of Egypt",
+   "Into the wilderness",
+   "To Goshen only",
+   "Along the Nile only"
+  ],
+  "answer": 0,
+  "explanation": "They were scattered abroad throughout all the land of Egypt.",
+  "ref": "Exodus 5:12"
+ },
+ {
+  "id": "exodus-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who were beaten for the bricks not being made?",
+  "choices": [
+   "The taskmasters",
+   "The elders",
+   "Moses and Aaron",
+   "The officers of the children of Israel"
+  ],
+  "answer": 3,
+  "explanation": "The officers of the children of Israel were beaten.",
+  "ref": "Exodus 5:14"
+ },
+ {
+  "id": "exodus-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the officers of Israel cry out about the beating?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Jethro",
+   "Pharaoh"
+  ],
+  "answer": 3,
+  "explanation": "The officers of the children of Israel came and cried unto Pharaoh.",
+  "ref": "Exodus 5:15"
+ },
+ {
+  "id": "exodus-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the officers meet as they came out from Pharaoh?",
+  "choices": [
+   "Joshua",
+   "The taskmasters",
+   "The elders of Midian",
+   "Moses and Aaron"
+  ],
+  "answer": 3,
+  "explanation": "They met Moses and Aaron, who stood in the way, as they came forth from Pharaoh.",
+  "ref": "Exodus 5:20"
+ },
+ {
+  "id": "exodus-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Pharaoh command the same day about the people?",
+  "choices": [
+   "His magicians",
+   "The taskmasters and officers",
+   "The priests",
+   "His sons"
+  ],
+  "answer": 1,
+  "explanation": "Pharaoh commanded the same day the taskmasters of the people, and their officers.",
+  "ref": "Exodus 5:6"
+ },
+ {
+  "id": "exodus-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long a journey did Moses and Aaron ask to go into the desert?",
+  "choices": [
+   "Three days",
+   "Forty days",
+   "One day",
+   "Seven days"
+  ],
+  "answer": 0,
+  "explanation": "Let us go three days' journey into the desert, and sacrifice unto the LORD our God.",
+  "ref": "Exodus 5:3"
+ },
+ {
+  "id": "exodus-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Moses and Aaron say the people would hold a feast?",
+  "choices": [
+   "In the wilderness",
+   "In Pharaoh's city",
+   "In Goshen",
+   "By the Nile"
+  ],
+  "answer": 0,
+  "explanation": "Let my people go, that they may hold a feast unto me in the wilderness.",
+  "ref": "Exodus 5:1"
+ },
+ {
+  "id": "exodus-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they say might fall on them if they did not sacrifice?",
+  "choices": [
+   "Pestilence or the sword",
+   "Fire or flood",
+   "Famine or darkness",
+   "Hail or locusts"
+  ],
+  "answer": 0,
+  "explanation": "Lest he fall upon us with pestilence, or with the sword.",
+  "ref": "Exodus 5:3"
+ },
+ {
+  "id": "exodus-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh tell Moses and Aaron to get unto?",
+  "choices": [
+   "Your altar",
+   "Your burdens",
+   "Your feast",
+   "Your tents"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore do ye let the people from their works? get you unto your burdens.",
+  "ref": "Exodus 5:4"
+ },
+ {
+  "id": "exodus-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh say about the daily number of bricks?",
+  "choices": [
+   "It would be forgotten",
+   "It would be doubled",
+   "It would be halved",
+   "It must not be diminished"
+  ],
+  "answer": 3,
+  "explanation": "The tale of the bricks, which they did make heretofore, ye shall not diminish ought thereof.",
+  "ref": "Exodus 5:8"
+ },
+ {
+  "id": "exodus-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the taskmasters say when they spoke to the people?",
+  "choices": [
+   "Go to Goshen",
+   "The LORD has sent Moses",
+   "Rest for a day",
+   "Thus saith Pharaoh, I will not give you straw"
+  ],
+  "answer": 3,
+  "explanation": "Thus saith Pharaoh, I will not give you straw.",
+  "ref": "Exodus 5:10"
+ },
+ {
+  "id": "exodus-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where were the people told to get straw?",
+  "choices": [
+   "From the river",
+   "From Pharaoh's barns",
+   "From the officers",
+   "Where they could find it"
+  ],
+  "answer": 3,
+  "explanation": "Go ye, get you straw where ye can find it.",
+  "ref": "Exodus 5:11"
+ },
+ {
+  "id": "exodus-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the taskmasters demand of the people?",
+  "choices": [
+   "Pay a tax",
+   "Leave Egypt",
+   "Fulfil your works, your daily tasks",
+   "Build a city"
+  ],
+  "answer": 2,
+  "explanation": "The taskmasters hasted them, saying, Fulfil your works, your daily tasks.",
+  "ref": "Exodus 5:13"
+ },
+ {
+  "id": "exodus-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose fault did the officers say it was that the bricks fell short?",
+  "choices": [
+   "The LORD",
+   "Moses",
+   "Aaron",
+   "Pharaoh's own people"
+  ],
+  "answer": 3,
+  "explanation": "The fault is in thine own people.",
+  "ref": "Exodus 5:16"
+ },
+ {
+  "id": "exodus-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the officers say Moses and Aaron had made abhorred?",
+  "choices": [
+   "Their savour in Pharaoh's eyes",
+   "Their names",
+   "Their work",
+   "Their feast"
+  ],
+  "answer": 0,
+  "explanation": "Ye have made our savour to be abhorred in the eyes of Pharaoh.",
+  "ref": "Exodus 5:21"
+ },
+ {
+  "id": "exodus-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the officers ask the LORD to do to Moses and Aaron?",
+  "choices": [
+   "Hide them",
+   "Forgive them",
+   "Bless them",
+   "Look upon them and judge"
+  ],
+  "answer": 3,
+  "explanation": "The LORD look upon you, and judge.",
+  "ref": "Exodus 5:21"
+ },
+ {
+  "id": "exodus-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the LORD had not done at all?",
+  "choices": [
+   "Spoken to Pharaoh",
+   "Delivered His people",
+   "Heard Moses",
+   "Sent Aaron"
+  ],
+  "answer": 1,
+  "explanation": "Neither hast thou delivered thy people at all.",
+  "ref": "Exodus 5:23"
+ },
+ {
+  "id": "exodus-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the officers say Moses and Aaron had put in the Egyptians' hands?",
+  "choices": [
+   "A sword to slay them",
+   "A rod",
+   "A whip",
+   "A chain"
+  ],
+  "answer": 0,
+  "explanation": "To put a sword in their hand to slay us.",
+  "ref": "Exodus 5:21"
+ },
+ {
+  "id": "exodus-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh call the words of Moses and Aaron?",
+  "choices": [
+   "Fearful words",
+   "Holy words",
+   "Vain words",
+   "Wise words"
+  ],
+  "answer": 2,
+  "explanation": "Let them not regard vain words.",
+  "ref": "Exodus 5:9"
+ },
+ {
+  "id": "exodus-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the officers say Pharaoh's servants lacked to give them?",
+  "choices": [
+   "Food",
+   "Water",
+   "Straw",
+   "Wages"
+  ],
+  "answer": 2,
+  "explanation": "There is no straw given unto thy servants, and they say to us, Make brick.",
+  "ref": "Exodus 5:16"
+ },
+ {
+  "id": "exodus-5-m-15",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh say about the people of the land?",
+  "choices": [
+   "They were strangers",
+   "They were few",
+   "They were weak",
+   "They were many"
+  ],
+  "answer": 3,
+  "explanation": "Behold, the people of the land now are many, and ye make them rest from their burdens.",
+  "ref": "Exodus 5:5"
+ },
+ {
+  "id": "exodus-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times did Pharaoh say, Ye are idle?",
+  "choices": [
+   "Once",
+   "Three times",
+   "Seven times",
+   "Twice"
+  ],
+  "answer": 3,
+  "explanation": "But he said, Ye are idle, ye are idle.",
+  "ref": "Exodus 5:17"
+ },
+ {
+  "id": "exodus-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh say Moses and Aaron made the people do from their works?",
+  "choices": [
+   "Pray over them",
+   "Sing at them",
+   "Flee them",
+   "Rest from them"
+  ],
+  "answer": 3,
+  "explanation": "Ye make them rest from their burdens.",
+  "ref": "Exodus 5:5"
+ },
+ {
+  "id": "exodus-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the officers see about their situation?",
+  "choices": [
+   "They were forgotten",
+   "They were in evil case",
+   "They were free",
+   "They were safe"
+  ],
+  "answer": 1,
+  "explanation": "The officers did see that they were in evil case.",
+  "ref": "Exodus 5:19"
+ },
+ {
+  "id": "exodus-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Moses and Aaron stand as the officers came out from Pharaoh?",
+  "choices": [
+   "In the field",
+   "By the river",
+   "At Pharaoh's gate",
+   "In the way"
+  ],
+  "answer": 3,
+  "explanation": "They met Moses and Aaron, who stood in the way.",
+  "ref": "Exodus 5:20"
+ },
+ {
+  "id": "exodus-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Who had set the Israelite officers over the people?",
+  "choices": [
+   "The elders",
+   "Moses",
+   "Pharaoh's taskmasters",
+   "Aaron"
+  ],
+  "answer": 2,
+  "explanation": "The officers of the children of Israel, which Pharaoh's taskmasters had set over them.",
+  "ref": "Exodus 5:14"
+ },
+ {
+  "id": "exodus-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how long did the officers say bricks were not made, as they were asked?",
+  "choices": [
+   "Three days",
+   "Yesterday and to day",
+   "All week",
+   "A month"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore have ye not fulfilled your task both yesterday and to day?",
+  "ref": "Exodus 5:14"
+ },
+ {
+  "id": "exodus-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh say should be laid upon the men?",
+  "choices": [
+   "A fine",
+   "More work",
+   "Fewer meals",
+   "Heavier stones"
+  ],
+  "answer": 1,
+  "explanation": "Let there more work be laid upon the men, that they may labour therein.",
+  "ref": "Exodus 5:9"
+ },
+ {
+  "id": "exodus-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Pharaoh give his command about the straw?",
+  "choices": [
+   "At the feast",
+   "After three days",
+   "The next morning",
+   "The same day"
+  ],
+  "answer": 3,
+  "explanation": "Pharaoh commanded the same day the taskmasters of the people.",
+  "ref": "Exodus 5:6"
+ },
+ {
+  "id": "exodus-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses said Pharaoh had done what since he came to speak in God's name?",
+  "choices": [
+   "Good to the people",
+   "Evil to the people",
+   "Ruled them well",
+   "Nothing"
+  ],
+  "answer": 1,
+  "explanation": "Since I came to Pharaoh to speak in thy name, he hath done evil to this people.",
+  "ref": "Exodus 5:23"
+ },
+ {
+  "id": "exodus-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The daily tasks were to be fulfilled as when there was what?",
+  "choices": [
+   "Straw",
+   "Wages",
+   "Water",
+   "Rest"
+  ],
+  "answer": 0,
+  "explanation": "Fulfil your works, your daily tasks, as when there was straw.",
+  "ref": "Exodus 5:13"
+ },
+ {
+  "id": "exodus-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "What did the officers call themselves when they cried to Pharaoh?",
+  "choices": [
+   "Thy sons",
+   "Thy priests",
+   "Thy friends",
+   "Thy servants"
+  ],
+  "answer": 3,
+  "explanation": "Wherefore dealest thou thus with thy servants?",
+  "ref": "Exodus 5:15"
+ },
+ {
+  "id": "exodus-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What name for God did Moses and Aaron use when they spoke of the meeting?",
+  "choices": [
+   "The God of Egypt",
+   "The God of the land",
+   "The God of the Hebrews",
+   "The God of the sea"
+  ],
+  "answer": 2,
+  "explanation": "The God of the Hebrews hath met with us.",
+  "ref": "Exodus 5:3"
+ },
+ {
+  "id": "exodus-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses do after the officers' complaint?",
+  "choices": [
+   "Went to Pharaoh",
+   "Fled to Midian",
+   "Returned unto the LORD",
+   "Called the elders"
+  ],
+  "answer": 2,
+  "explanation": "Moses returned unto the LORD, and said, Lord, wherefore hast thou so evil entreated this people?",
+  "ref": "Exodus 5:22"
+ },
+ {
+  "id": "exodus-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh say the people cried out about the work?",
+  "choices": [
+   "Give us straw",
+   "Let us go and sacrifice to our God",
+   "We want bread",
+   "We are tired"
+  ],
+  "answer": 1,
+  "explanation": "They cry, saying, Let us go and sacrifice to our God.",
+  "ref": "Exodus 5:8"
+ },
+ {
+  "id": "exodus-5-h-15",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Who hasted the people to fulfil their daily works?",
+  "choices": [
+   "The taskmasters",
+   "Aaron",
+   "The officers",
+   "Moses"
+  ],
+  "answer": 0,
+  "explanation": "The taskmasters hasted them, saying, Fulfil your works.",
+  "ref": "Exodus 5:13"
+ },
+ {
   "id": "old-exodus-6-1",
   "chapter": 6,
   "level": "beginner",
