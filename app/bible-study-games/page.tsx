@@ -48,25 +48,13 @@ export default function BibleStudyGamesPage() {
         <span className="min-w-0">
           <span className="block text-lg font-black text-[var(--bb-text-primary,#111827)]">Bible Trivia</span>
           <span className="mt-0.5 block text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-            Any book, Easy to Hard, ten seconds each. Play solo, with friends, or take a challenge.
+            Any book, any chapter, ten seconds each. Play solo, with friends, or take a challenge.
           </span>
         </span>
       </Link>
 
-      <Link
-        href="/bible-study-games/scrambled"
-        className="flex items-center gap-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-      >
-        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#dcfce7] text-2xl" aria-hidden="true">
-          🔤
-        </span>
-        <span className="min-w-0">
-          <span className="block text-lg font-black text-[var(--bb-text-primary,#111827)]">Scrambled</span>
-          <span className="mt-0.5 block text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-            Unscramble the verse before the hints run out.
-          </span>
-        </span>
-      </Link>
+      {/* Scrambled left the Games page on 2026-11-23 (Louis: "remove scrambled from the games
+          page"). The game itself and its other doors (the prompt after chapter trivia) stay. */}
 
       {/* Bible Memory, 2026-11-12. The third game: save a verse, practise it. */}
       <Link
