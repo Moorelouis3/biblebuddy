@@ -15664,36 +15664,324 @@
   "ref": "Genesis 47:9"
  },
  {
-  "id": "old-genesis-47-3",
+  "id": "genesis-47-e-01",
   "chapter": 47,
   "level": "beginner",
   "category": "keyword",
-  "question": "What did the Egyptians eventually give Joseph in exchange for food after their money was gone?",
+  "question": "What did Joseph answer when Jacob asked to be carried out of Egypt?",
   "choices": [
-   "Only their gold",
-   "Their children",
-   "Their livestock and then their land",
-   "Their temples"
+   "“It cannot be done”",
+   "“I will do as thou hast said”",
+   "“Ask Pharaoh first”",
+   "“Stay here with us”"
   ],
-  "answer": 2,
-  "explanation": "Joseph accepted livestock first and later bought the land for Pharaoh during the famine.",
-  "ref": "Genesis 47:16–20"
+  "answer": 1,
+  "explanation": "Jacob asked to be buried with his fathers, and Joseph said, I will do as thou hast said.",
+  "ref": "Genesis 47:30"
  },
  {
-  "id": "old-genesis-47-5",
+  "id": "genesis-47-e-02",
   "chapter": 47,
   "level": "beginner",
-  "category": "keyword",
-  "question": "What request did Jacob make of Joseph before he died?",
+  "category": "person",
+  "question": "Whose servants did the Egyptians say they would be?",
   "choices": [
-   "Make Benjamin ruler",
-   "Bury me in Egypt",
-   "Return the family to Canaan immediately",
-   "Do not bury me in Egypt"
+   "Pharaoh’s",
+   "Joseph’s",
+   "The priests’",
+   "Jacob’s"
+  ],
+  "answer": 0,
+  "explanation": "They said, Thou hast saved our lives… and we will be Pharaoh’s servants.",
+  "ref": "Genesis 47:25"
+ },
+ {
+  "id": "genesis-47-m-01",
+  "chapter": 47,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Jacob ask Joseph to bury him?",
+  "choices": [
+   "In Goshen",
+   "In Rameses",
+   "By the river",
+   "In his fathers’ buryingplace"
   ],
   "answer": 3,
-  "explanation": "Jacob made Joseph swear to bury him with his fathers, not in Egypt.",
-  "ref": "Genesis 47:29–30"
+  "explanation": "I will lie with my fathers, and thou shalt carry me out of Egypt, and bury me in their buryingplace.",
+  "ref": "Genesis 47:30"
+ },
+ {
+  "id": "genesis-47-m-02",
+  "chapter": 47,
+  "level": "medium",
+  "category": "place",
+  "question": "In which country did Israel dwell, grow and multiply?",
+  "choices": [
+   "Rameses",
+   "Padan-aram",
+   "Goshen",
+   "Gerar"
+  ],
+  "answer": 2,
+  "explanation": "Israel dwelt in the land of Egypt, in the country of Goshen… and grew, and multiplied exceedingly.",
+  "ref": "Genesis 47:27"
+ },
+ {
+  "id": "genesis-47-m-03",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jacob ask Joseph to deal with him?",
+  "choices": [
+   "Quickly and quietly",
+   "Kindly and truly",
+   "Boldly and justly",
+   "Gently and gladly"
+  ],
+  "answer": 1,
+  "explanation": "Put, I pray thee, thy hand under my thigh, and deal kindly and truly with me.",
+  "ref": "Genesis 47:29"
+ },
+ {
+  "id": "genesis-47-h-01",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Jacob live in Egypt?",
+  "choices": [
+   "Seventeen",
+   "Seven",
+   "Thirty",
+   "One hundred"
+  ],
+  "answer": 0,
+  "explanation": "And Jacob lived in the land of Egypt seventeen years.",
+  "ref": "Genesis 47:28"
+ },
+ {
+  "id": "genesis-47-h-02",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Jacob when he died, in all?",
+  "choices": [
+   "130",
+   "110",
+   "180",
+   "147"
+  ],
+  "answer": 3,
+  "explanation": "So the whole age of Jacob was an hundred forty and seven years.",
+  "ref": "Genesis 47:28"
+ },
+ {
+  "id": "genesis-47-h-03",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of his brethren did Joseph present to Pharaoh?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Five",
+   "Ten"
+  ],
+  "answer": 2,
+  "explanation": "And he took some of his brethren, even five men, and presented them unto Pharaoh.",
+  "ref": "Genesis 47:2"
+ },
+ {
+  "id": "genesis-47-h-04",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob call the days of the years of his life?",
+  "choices": [
+   "His kingdom",
+   "His pilgrimage",
+   "His labour",
+   "His famine"
+  ],
+  "answer": 1,
+  "explanation": "The days of the years of my pilgrimage are an hundred and thirty years.",
+  "ref": "Genesis 47:9"
+ },
+ {
+  "id": "genesis-47-h-05",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the priests not have to sell their lands?",
+  "choices": [
+   "Pharaoh gave them a portion",
+   "They paid with seed",
+   "They were Joseph’s kin",
+   "They owned no cattle"
+  ],
+  "answer": 0,
+  "explanation": "The priests had a portion assigned them of Pharaoh, and did eat their portion… wherefore they sold not their lands.",
+  "ref": "Genesis 47:22"
+ },
+ {
+  "id": "genesis-47-h-06",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many parts of the increase were the people’s own?",
+  "choices": [
+   "Five",
+   "Three",
+   "Nine",
+   "Four"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall give the fifth part unto Pharaoh, and four parts shall be your own.",
+  "ref": "Genesis 47:24"
+ },
+ {
+  "id": "genesis-47-h-07",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these did Joseph take in exchange for bread?",
+  "choices": [
+   "Camels",
+   "Goats",
+   "Asses",
+   "Swine"
+  ],
+  "answer": 2,
+  "explanation": "Joseph gave them bread in exchange for horses, and for the flocks, and for the cattle of the herds, and for the asses.",
+  "ref": "Genesis 47:17"
+ },
+ {
+  "id": "genesis-47-h-08",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Egyptians say was left besides their bodies, when the second year came?",
+  "choices": [
+   "Their idols",
+   "Their lands",
+   "Their ships",
+   "Their seed"
+  ],
+  "answer": 1,
+  "explanation": "There is not ought left in the sight of my lord, but our bodies, and our lands.",
+  "ref": "Genesis 47:18"
+ },
+ {
+  "id": "genesis-47-h-09",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph make a law over the land of Egypt?",
+  "choices": [
+   "Pharaoh should have the fifth part",
+   "The priests should pay tithes",
+   "The land should rest each year",
+   "Goshen should be free"
+  ],
+  "answer": 0,
+  "explanation": "Joseph made it a law over the land of Egypt… that Pharaoh should have the fifth part.",
+  "ref": "Genesis 47:26"
+ },
+ {
+  "id": "genesis-47-h-10",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The land of Egypt and Canaan did what by reason of the famine?",
+  "choices": [
+   "Rejoiced",
+   "Rested",
+   "Wandered",
+   "Fainted"
+  ],
+  "answer": 3,
+  "explanation": "There was no bread in all the land; for the famine was very sore, so that the land of Egypt and all the land of Canaan fainted.",
+  "ref": "Genesis 47:13"
+ },
+ {
+  "id": "genesis-47-h-11",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whom did Jacob say he would lie?",
+  "choices": [
+   "His sons",
+   "Pharaoh’s servants",
+   "His fathers",
+   "Joseph’s children"
+  ],
+  "answer": 2,
+  "explanation": "But I will lie with my fathers.",
+  "ref": "Genesis 47:30"
+ },
+ {
+  "id": "genesis-47-h-12",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh say Joseph’s father and brethren should have to dwell in?",
+  "choices": [
+   "The city of Rameses",
+   "The best of the land",
+   "A palace",
+   "The land of the priests"
+  ],
+  "answer": 1,
+  "explanation": "In the best of the land make thy father and brethren to dwell.",
+  "ref": "Genesis 47:6"
+ },
+ {
+  "id": "genesis-47-h-13",
+  "chapter": 47,
+  "level": "hard",
+  "category": "place",
+  "question": "Joseph gathered the money found in Egypt and which other land?",
+  "choices": [
+   "Canaan",
+   "Goshen",
+   "Syria",
+   "Midian"
+  ],
+  "answer": 0,
+  "explanation": "Joseph gathered up all the money that was found in the land of Egypt, and in the land of Canaan.",
+  "ref": "Genesis 47:14"
+ },
+ {
+  "id": "genesis-47-h-14",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did every Egyptian sell because the famine prevailed?",
+  "choices": [
+   "His house",
+   "His son",
+   "His boat",
+   "His field"
+  ],
+  "answer": 3,
+  "explanation": "The Egyptians sold every man his field, because the famine prevailed over them.",
+  "ref": "Genesis 47:20"
+ },
+ {
+  "id": "genesis-47-h-15",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The brothers told Pharaoh they had come to do what in the land?",
+  "choices": [
+   "Trade",
+   "Sojourn",
+   "Make war",
+   "Build cities"
+  ],
+  "answer": 1,
+  "explanation": "They said, For to sojourn in the land are we come; for thy servants have no pasture for their flocks.",
+  "ref": "Genesis 47:4"
  },
  {
   "id": "old-genesis-48-1",
