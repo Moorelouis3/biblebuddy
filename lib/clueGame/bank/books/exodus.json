@@ -21840,6 +21840,646 @@
   "ref": "Exodus 31:18"
  },
  {
+  "id": "exodus-31-e-01",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which day is the sabbath of rest, holy to the LORD?",
+  "choices": [
+   "The first day",
+   "The third day",
+   "The seventh day",
+   "The sixth day"
+  ],
+  "answer": 2,
+  "explanation": "In the seventh is the sabbath of rest, holy to the LORD.",
+  "ref": "Exodus 31:15"
+ },
+ {
+  "id": "exodus-31-e-02",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD do on the seventh day after making heaven and earth?",
+  "choices": [
+   "He rested",
+   "He made man",
+   "He sent rain",
+   "He built a garden"
+  ],
+  "answer": 0,
+  "explanation": "On the seventh day he rested, and was refreshed.",
+  "ref": "Exodus 31:17"
+ },
+ {
+  "id": "exodus-31-e-03",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which mountain did God give Moses the tables of testimony?",
+  "choices": [
+   "Mount Sinai",
+   "Mount Carmel",
+   "Mount Hor",
+   "Mount Nebo"
+  ],
+  "answer": 0,
+  "explanation": "He gave unto Moses upon mount Sinai two tables of testimony.",
+  "ref": "Exodus 31:18"
+ },
+ {
+  "id": "exodus-31-e-04",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the two tables of testimony made of?",
+  "choices": [
+   "Wood",
+   "Stone",
+   "Gold",
+   "Brass"
+  ],
+  "answer": 1,
+  "explanation": "The tables of testimony were tables of stone, written with the finger of God.",
+  "ref": "Exodus 31:18"
+ },
+ {
+  "id": "exodus-31-e-05",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would happen to anyone who did work on the sabbath day?",
+  "choices": [
+   "He would be fined",
+   "He would be sent away",
+   "He would be put to death",
+   "He would be whipped"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever doeth any work in the sabbath day, he shall surely be put to death.",
+  "ref": "Exodus 31:15"
+ },
+ {
+  "id": "exodus-31-e-06",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose holy garments did God tell Moses to have made?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "Bezaleel",
+   "Hur"
+  ],
+  "answer": 1,
+  "explanation": "God named the holy garments for Aaron the priest, and the garments of his sons.",
+  "ref": "Exodus 31:10"
+ },
+ {
+  "id": "exodus-31-e-07",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the children of Israel told to do with the sabbath?",
+  "choices": [
+   "Keep it",
+   "Forget it",
+   "Move it",
+   "Shorten it"
+  ],
+  "answer": 0,
+  "explanation": "Verily my sabbaths ye shall keep: for it is a sign between me and you.",
+  "ref": "Exodus 31:13"
+ },
+ {
+  "id": "exodus-31-e-08",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who spoke to Moses and named the men to build the tabernacle?",
+  "choices": [
+   "Aaron",
+   "Joshua",
+   "Jethro",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "And the LORD spake unto Moses, saying, See, I have called by name Bezaleel.",
+  "ref": "Exodus 31:1–2"
+ },
+ {
+  "id": "exodus-31-e-09",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which metals was Bezaleel to work in?",
+  "choices": [
+   "Iron, lead and tin",
+   "Gold, silver and brass",
+   "Copper, iron and steel",
+   "Gold, iron and tin"
+  ],
+  "answer": 1,
+  "explanation": "Bezaleel was to work in gold, and in silver, and in brass.",
+  "ref": "Exodus 31:4"
+ },
+ {
+  "id": "exodus-31-e-10",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days may work be done each week?",
+  "choices": [
+   "Five",
+   "Seven",
+   "Four",
+   "Six"
+  ],
+  "answer": 3,
+  "explanation": "Six days may work be done; but in the seventh is the sabbath of rest.",
+  "ref": "Exodus 31:15"
+ },
+ {
+  "id": "exodus-31-m-01",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the father of Bezaleel?",
+  "choices": [
+   "Hur",
+   "Uri",
+   "Ahisamach",
+   "Aaron"
+  ],
+  "answer": 1,
+  "explanation": "Bezaleel was the son of Uri, the son of Hur.",
+  "ref": "Exodus 31:2"
+ },
+ {
+  "id": "exodus-31-m-02",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "Of which tribe was Bezaleel?",
+  "choices": [
+   "Dan",
+   "Levi",
+   "Judah",
+   "Benjamin"
+  ],
+  "answer": 2,
+  "explanation": "Bezaleel was of the tribe of Judah.",
+  "ref": "Exodus 31:2"
+ },
+ {
+  "id": "exodus-31-m-03",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "Of which tribe was Aholiab?",
+  "choices": [
+   "Dan",
+   "Judah",
+   "Levi",
+   "Reuben"
+  ],
+  "answer": 0,
+  "explanation": "Aholiab, the son of Ahisamach, was of the tribe of Dan.",
+  "ref": "Exodus 31:6"
+ },
+ {
+  "id": "exodus-31-m-04",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the father of Aholiab?",
+  "choices": [
+   "Uri",
+   "Hur",
+   "Ahisamach",
+   "Amram"
+  ],
+  "answer": 2,
+  "explanation": "Aholiab was the son of Ahisamach, of the tribe of Dan.",
+  "ref": "Exodus 31:6"
+ },
+ {
+  "id": "exodus-31-m-05",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does God say He chose Bezaleel?",
+  "choices": [
+   "He drew lots",
+   "He called him by name",
+   "He sent an angel",
+   "He asked Aaron"
+  ],
+  "answer": 1,
+  "explanation": "See, I have called by name Bezaleel the son of Uri.",
+  "ref": "Exodus 31:2"
+ },
+ {
+  "id": "exodus-31-m-06",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God say the sabbath will let Israel know about Him?",
+  "choices": [
+   "That He is the LORD that doth sanctify them",
+   "That He is a jealous God",
+   "That He is the God of Abraham",
+   "That He is King of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "That ye may know that I am the LORD that doth sanctify you.",
+  "ref": "Exodus 31:13"
+ },
+ {
+  "id": "exodus-31-m-07",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is listed with the ark of the testimony as something to be made?",
+  "choices": [
+   "The mercy seat",
+   "The golden calf",
+   "The brazen sea",
+   "The veil of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "The ark of the testimony, and the mercy seat that is thereupon.",
+  "ref": "Exodus 31:7"
+ },
+ {
+  "id": "exodus-31-m-08",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of candlestick is named among the things to make?",
+  "choices": [
+   "The silver candlestick",
+   "The pure candlestick",
+   "The brass candlestick",
+   "The wooden candlestick"
+  ],
+  "answer": 1,
+  "explanation": "The table and his furniture, and the pure candlestick with all his furniture.",
+  "ref": "Exodus 31:8"
+ },
+ {
+  "id": "exodus-31-m-09",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the anointing oil, what was made for the holy place?",
+  "choices": [
+   "Sweet incense",
+   "Fine linen",
+   "Silver trumpets",
+   "Goats hair"
+  ],
+  "answer": 0,
+  "explanation": "The anointing oil, and sweet incense for the holy place.",
+  "ref": "Exodus 31:11"
+ },
+ {
+  "id": "exodus-31-m-10",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long is the sabbath to be kept by Israel?",
+  "choices": [
+   "Throughout their generations",
+   "Until they enter Canaan",
+   "For forty years",
+   "Until the tabernacle is built"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel shall keep the sabbath throughout their generations.",
+  "ref": "Exodus 31:16"
+ },
+ {
+  "id": "exodus-31-m-11",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does God describe the sabbath to Israel?",
+  "choices": [
+   "Holy unto you",
+   "A heavy burden",
+   "A day of sorrow",
+   "A day of war"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall keep the sabbath therefore; for it is holy unto you.",
+  "ref": "Exodus 31:14"
+ },
+ {
+  "id": "exodus-31-m-12",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did God tell to speak to the children of Israel about the sabbath?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Bezaleel",
+   "Joshua"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said unto Moses, Speak thou also unto the children of Israel.",
+  "ref": "Exodus 31:12–13"
+ },
+ {
+  "id": "exodus-31-m-13",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the sabbath called between God and Israel for ever?",
+  "choices": [
+   "A sign",
+   "A tax",
+   "A prayer",
+   "A name"
+  ],
+  "answer": 0,
+  "explanation": "It is a sign between me and the children of Israel for ever.",
+  "ref": "Exodus 31:17"
+ },
+ {
+  "id": "exodus-31-m-14",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say He had put in the hearts of all wise hearted people?",
+  "choices": [
+   "Courage",
+   "Wisdom",
+   "Fear",
+   "Gladness"
+  ],
+  "answer": 1,
+  "explanation": "In the hearts of all that are wise hearted I have put wisdom.",
+  "ref": "Exodus 31:6"
+ },
+ {
+  "id": "exodus-31-m-15",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say the sabbath is for Israel to observe, as a perpetual what?",
+  "choices": [
+   "Covenant",
+   "Feast",
+   "Sacrifice",
+   "Journey"
+  ],
+  "answer": 0,
+  "explanation": "Israel shall observe the sabbath for a perpetual covenant.",
+  "ref": "Exodus 31:16"
+ },
+ {
+  "id": "exodus-31-h-01",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Bezaleel to cut and set, besides working in metals?",
+  "choices": [
+   "Stones",
+   "Trees",
+   "Bricks",
+   "Cloths"
+  ],
+  "answer": 0,
+  "explanation": "He was given skill in cutting of stones, to set them.",
+  "ref": "Exodus 31:5"
+ },
+ {
+  "id": "exodus-31-h-02",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Bezaleel was filled with wisdom, knowledge and what else?",
+  "choices": [
+   "Strength",
+   "Understanding",
+   "Patience",
+   "Courage"
+  ],
+  "answer": 1,
+  "explanation": "I have filled him with the spirit of God, in wisdom, and in understanding, and in knowledge.",
+  "ref": "Exodus 31:3"
+ },
+ {
+  "id": "exodus-31-h-03",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Bezaleel carve to work all manner of workmanship?",
+  "choices": [
+   "Timber",
+   "Ivory",
+   "Marble",
+   "Clay"
+  ],
+  "answer": 0,
+  "explanation": "He was to carve timber, to work in all manner of workmanship.",
+  "ref": "Exodus 31:5"
+ },
+ {
+  "id": "exodus-31-h-04",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which item is listed right after the altar of burnt offering in God's list?",
+  "choices": [
+   "The laver and his foot",
+   "The table",
+   "The ark",
+   "The incense"
+  ],
+  "answer": 0,
+  "explanation": "The altar of burnt offering with all his furniture, and the laver and his foot.",
+  "ref": "Exodus 31:9"
+ },
+ {
+  "id": "exodus-31-h-05",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which holy things are listed before the garments for Aaron?",
+  "choices": [
+   "The cloths of service",
+   "The silver trumpets",
+   "The shewbread",
+   "The brazen sea"
+  ],
+  "answer": 0,
+  "explanation": "The altars, the laver, and the cloths of service, and the holy garments for Aaron the priest.",
+  "ref": "Exodus 31:9–10"
+ },
+ {
+  "id": "exodus-31-h-06",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD make in six days, according to the sabbath law?",
+  "choices": [
+   "Heaven and earth",
+   "Only the earth",
+   "The tabernacle",
+   "The mountains only"
+  ],
+  "answer": 0,
+  "explanation": "In six days the LORD made heaven and earth, and on the seventh day he rested.",
+  "ref": "Exodus 31:17"
+ },
+ {
+  "id": "exodus-31-h-07",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the first thing God said wise hearted men would make?",
+  "choices": [
+   "The tabernacle of the congregation",
+   "The ark",
+   "The altar",
+   "The garments"
+  ],
+  "answer": 0,
+  "explanation": "That they may make all that I have commanded thee; the tabernacle of the congregation.",
+  "ref": "Exodus 31:6–7"
+ },
+ {
+  "id": "exodus-31-h-08",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of works was Bezaleel to devise in gold, silver and brass?",
+  "choices": [
+   "Cunning works",
+   "Quick works",
+   "Secret works",
+   "Plain works"
+  ],
+  "answer": 0,
+  "explanation": "Bezaleel was to devise cunning works, to work in gold, and in silver, and in brass.",
+  "ref": "Exodus 31:4"
+ },
+ {
+  "id": "exodus-31-h-09",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Moses doing with God when the tables were given?",
+  "choices": [
+   "Communing",
+   "Fasting alone",
+   "Offering",
+   "Sleeping"
+  ],
+  "answer": 0,
+  "explanation": "When he had made an end of communing with him upon mount Sinai.",
+  "ref": "Exodus 31:18"
+ },
+ {
+  "id": "exodus-31-h-10",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "A soul who works on the sabbath is to be cut off from whom?",
+  "choices": [
+   "His people",
+   "His tribe",
+   "The camp",
+   "His house"
+  ],
+  "answer": 0,
+  "explanation": "That soul shall be cut off from among his people.",
+  "ref": "Exodus 31:14"
+ },
+ {
+  "id": "exodus-31-h-11",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Bezaleel was to work in what \"manner\" of workmanship?",
+  "choices": [
+   "All manner of workmanship",
+   "One manner only",
+   "Only stone work",
+   "Only royal work"
+  ],
+  "answer": 0,
+  "explanation": "He was filled with knowledge, and in all manner of workmanship.",
+  "ref": "Exodus 31:3"
+ },
+ {
+  "id": "exodus-31-h-12",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The sweet incense was made for which place?",
+  "choices": [
+   "The holy place",
+   "The camp",
+   "The court gate",
+   "The mountain"
+  ],
+  "answer": 0,
+  "explanation": "The anointing oil, and sweet incense for the holy place.",
+  "ref": "Exodus 31:11"
+ },
+ {
+  "id": "exodus-31-h-13",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the seventh day called, as opposed to the six days of work?",
+  "choices": [
+   "The sabbath of rest",
+   "The day of trumpets",
+   "The feast of weeks",
+   "The day of atonement"
+  ],
+  "answer": 0,
+  "explanation": "In the seventh is the sabbath of rest, holy to the LORD.",
+  "ref": "Exodus 31:15"
+ },
+ {
+  "id": "exodus-31-h-14",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these is named among the furniture to be made?",
+  "choices": [
+   "The altar of incense",
+   "The golden calf",
+   "The brazen serpent",
+   "The ark of Dagon"
+  ],
+  "answer": 0,
+  "explanation": "God listed the table, the pure candlestick, and the altar of incense.",
+  "ref": "Exodus 31:8"
+ },
+ {
+  "id": "exodus-31-h-15",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the LORD name the sabbath a sign \"throughout your generations\"?",
+  "choices": [
+   "Between me and you",
+   "In the camp of Dan",
+   "Before Pharaoh",
+   "Beside the ark"
+  ],
+  "answer": 0,
+  "explanation": "It is a sign between me and you throughout your generations.",
+  "ref": "Exodus 31:13"
+ },
+ {
   "id": "old-exodus-32-1",
   "chapter": 32,
   "level": "beginner",
