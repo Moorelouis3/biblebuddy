@@ -17472,6 +17472,646 @@
   "ref": "Exodus 25:31–37"
  },
  {
+  "id": "exodus-25-e-01",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What wood was the ark to be made of?",
+  "choices": [
+   "Cedar",
+   "Shittim wood",
+   "Olive wood",
+   "Fir"
+  ],
+  "answer": 1,
+  "explanation": "They shall make an ark of shittim wood.",
+  "ref": "Exodus 25:10"
+ },
+ {
+  "id": "exodus-25-e-02",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the ark overlaid with, inside and out?",
+  "choices": [
+   "Pure gold",
+   "Brass",
+   "Silver",
+   "Bronze"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt overlay it with pure gold, within and without.",
+  "ref": "Exodus 25:11"
+ },
+ {
+  "id": "exodus-25-e-03",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where were the two golden cherubims to be made?",
+  "choices": [
+   "On the ark's staves",
+   "On the table",
+   "On the curtains",
+   "On the two ends of the mercy seat"
+  ],
+  "answer": 3,
+  "explanation": "Make two cherubims of gold... in the two ends of the mercy seat.",
+  "ref": "Exodus 25:18"
+ },
+ {
+  "id": "exodus-25-e-04",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was to be set on the table before the LORD always?",
+  "choices": [
+   "Incense",
+   "Oil",
+   "Shewbread",
+   "First fruits"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt set upon the table shewbread before me alway.",
+  "ref": "Exodus 25:30"
+ },
+ {
+  "id": "exodus-25-e-05",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many branches came out of the sides of the candlestick?",
+  "choices": [
+   "Four",
+   "Six",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "Six branches shall come out of the sides of it.",
+  "ref": "Exodus 25:32"
+ },
+ {
+  "id": "exodus-25-e-06",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many lamps did the candlestick have?",
+  "choices": [
+   "Seven",
+   "Six",
+   "Twelve",
+   "Three"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt make the seven lamps thereof.",
+  "ref": "Exodus 25:37"
+ },
+ {
+  "id": "exodus-25-e-07",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the candlestick to be made of?",
+  "choices": [
+   "Brass",
+   "Silver",
+   "Shittim wood",
+   "Pure gold"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt make a candlestick of pure gold: of beaten work.",
+  "ref": "Exodus 25:31"
+ },
+ {
+  "id": "exodus-25-e-08",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were put into the rings so the ark could be carried?",
+  "choices": [
+   "Ropes",
+   "Poles of iron",
+   "Staves",
+   "Chains"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt put the staves into the rings by the sides of the ark, that the ark may be borne with them.",
+  "ref": "Exodus 25:14"
+ },
+ {
+  "id": "exodus-25-e-09",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who would God commune with from above the mercy seat?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Joshua",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "There I will meet with thee, and I will commune with thee from above the mercy seat.",
+  "ref": "Exodus 25:22"
+ },
+ {
+  "id": "exodus-25-e-10",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What stones were to be given for the ephod and the breastplate?",
+  "choices": [
+   "Onyx stones",
+   "Emeralds",
+   "Rubies",
+   "Pearls"
+  ],
+  "answer": 0,
+  "explanation": "Onyx stones, and stones to be set in the ephod, and in the breastplate.",
+  "ref": "Exodus 25:7"
+ },
+ {
+  "id": "exodus-25-m-01",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was the ark to be?",
+  "choices": [
+   "Three cubits",
+   "One cubit",
+   "Five cubits",
+   "Two cubits and a half"
+  ],
+  "answer": 3,
+  "explanation": "Two cubits and a half shall be the length thereof.",
+  "ref": "Exodus 25:10"
+ },
+ {
+  "id": "exodus-25-m-02",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many gold rings were cast for the ark?",
+  "choices": [
+   "Two",
+   "Six",
+   "Four",
+   "Eight"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt cast four rings of gold for it, and put them in the four corners.",
+  "ref": "Exodus 25:12"
+ },
+ {
+  "id": "exodus-25-m-03",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to happen to the staves of the ark?",
+  "choices": [
+   "They were removed at rest",
+   "They stayed in the rings and were never taken out",
+   "They were stored in the court",
+   "They were burned"
+  ],
+  "answer": 1,
+  "explanation": "The staves shall be in the rings of the ark: they shall not be taken from it.",
+  "ref": "Exodus 25:15"
+ },
+ {
+  "id": "exodus-25-m-04",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the wings of the cherubims stretch?",
+  "choices": [
+   "On high",
+   "Down to the ground",
+   "Toward the door",
+   "Around the ark"
+  ],
+  "answer": 0,
+  "explanation": "The cherubim shall stretch forth their wings on high.",
+  "ref": "Exodus 25:20"
+ },
+ {
+  "id": "exodus-25-m-05",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the cherubims' wings cover?",
+  "choices": [
+   "The ark's staves",
+   "Their faces",
+   "The table",
+   "The mercy seat"
+  ],
+  "answer": 3,
+  "explanation": "They shall stretch forth their wings on high, covering the mercy seat with their wings.",
+  "ref": "Exodus 25:20"
+ },
+ {
+  "id": "exodus-25-m-06",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was the table of shittim wood to be?",
+  "choices": [
+   "One cubit",
+   "Three cubits",
+   "Two cubits",
+   "Five cubits"
+  ],
+  "answer": 2,
+  "explanation": "A table of shittim wood: two cubits shall be the length thereof.",
+  "ref": "Exodus 25:23"
+ },
+ {
+  "id": "exodus-25-m-07",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How high was the table to be?",
+  "choices": [
+   "Two cubits",
+   "A cubit and a half",
+   "One cubit",
+   "Three cubits"
+  ],
+  "answer": 1,
+  "explanation": "A cubit and a half the height thereof.",
+  "ref": "Exodus 25:23"
+ },
+ {
+  "id": "exodus-25-m-08",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the table's dishes, spoons, covers and bowls made of?",
+  "choices": [
+   "Pure gold",
+   "Brass",
+   "Silver",
+   "Shittim wood"
+  ],
+  "answer": 0,
+  "explanation": "Of pure gold shalt thou make them.",
+  "ref": "Exodus 25:29"
+ },
+ {
+  "id": "exodus-25-m-09",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the bowls of the candlestick made like?",
+  "choices": [
+   "Pomegranates",
+   "Lilies",
+   "Grapes",
+   "Almonds"
+  ],
+  "answer": 3,
+  "explanation": "Three bowls made like unto almonds, with a knop and a flower.",
+  "ref": "Exodus 25:33"
+ },
+ {
+  "id": "exodus-25-m-10",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the candlestick to be fashioned?",
+  "choices": [
+   "Cast in a mold",
+   "Joined from separate parts",
+   "As one piece of beaten work of pure gold",
+   "Carved from wood"
+  ],
+  "answer": 2,
+  "explanation": "All it shall be one beaten work of pure gold.",
+  "ref": "Exodus 25:36"
+ },
+ {
+  "id": "exodus-25-m-11",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much pure gold was to be used for the candlestick and its vessels?",
+  "choices": [
+   "A hundred shekels",
+   "A talent",
+   "Ten talents",
+   "A cubit"
+  ],
+  "answer": 1,
+  "explanation": "Of a talent of pure gold shall he make it, with all these vessels.",
+  "ref": "Exodus 25:39"
+ },
+ {
+  "id": "exodus-25-m-12",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which three colors of cloth were among the offerings?",
+  "choices": [
+   "Blue, purple and scarlet",
+   "White, black and green",
+   "Red, yellow and blue",
+   "Gold, silver and brown"
+  ],
+  "answer": 0,
+  "explanation": "The offering: blue, and purple, and scarlet, and fine linen, and goats' hair.",
+  "ref": "Exodus 25:4"
+ },
+ {
+  "id": "exodus-25-m-13",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say the spices were for?",
+  "choices": [
+   "Food for the priests",
+   "Perfume for the people",
+   "Burial of the dead",
+   "Anointing oil and sweet incense"
+  ],
+  "answer": 3,
+  "explanation": "Oil for the light, spices for anointing oil, and for sweet incense.",
+  "ref": "Exodus 25:6"
+ },
+ {
+  "id": "exodus-25-m-14",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How tall was the ark to be?",
+  "choices": [
+   "Two cubits",
+   "Two cubits and a half",
+   "A cubit and a half",
+   "One cubit"
+  ],
+  "answer": 2,
+  "explanation": "A cubit and a half the height thereof.",
+  "ref": "Exodus 25:10"
+ },
+ {
+  "id": "exodus-25-h-01",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How broad was the ark to be?",
+  "choices": [
+   "Two cubits and a half",
+   "A cubit and a half",
+   "Two cubits",
+   "Three cubits"
+  ],
+  "answer": 1,
+  "explanation": "A cubit and a half the breadth thereof.",
+  "ref": "Exodus 25:10"
+ },
+ {
+  "id": "exodus-25-h-02",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was the mercy seat to be?",
+  "choices": [
+   "Two cubits and a half",
+   "Two cubits",
+   "Three cubits",
+   "One cubit and a half"
+  ],
+  "answer": 0,
+  "explanation": "A mercy seat of pure gold: two cubits and a half shall be the length thereof.",
+  "ref": "Exodus 25:17"
+ },
+ {
+  "id": "exodus-25-h-03",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the mercy seat made of?",
+  "choices": [
+   "Gold-covered wood",
+   "Brass",
+   "Silver",
+   "Pure gold"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt make a mercy seat of pure gold.",
+  "ref": "Exodus 25:17"
+ },
+ {
+  "id": "exodus-25-h-04",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was made upon the ark round about?",
+  "choices": [
+   "A border of silver",
+   "A rim of brass",
+   "A crown of gold",
+   "A cord of blue"
+  ],
+  "answer": 2,
+  "explanation": "Overlay it with pure gold... and shalt make upon it a crown of gold round about.",
+  "ref": "Exodus 25:11"
+ },
+ {
+  "id": "exodus-25-h-05",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How wide was the border to be around the table?",
+  "choices": [
+   "A cubit",
+   "A handbreadth",
+   "A span",
+   "A finger"
+  ],
+  "answer": 1,
+  "explanation": "A border of an hand breadth round about.",
+  "ref": "Exodus 25:25"
+ },
+ {
+  "id": "exodus-25-h-06",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were the table's gold rings to be set?",
+  "choices": [
+   "In the four corners on the four feet",
+   "On its top edge",
+   "Under the crown",
+   "On the two ends only"
+  ],
+  "answer": 0,
+  "explanation": "Put the rings in the four corners that are on the four feet thereof.",
+  "ref": "Exodus 25:26"
+ },
+ {
+  "id": "exodus-25-h-07",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many almond-shaped bowls were on each branch of the candlestick?",
+  "choices": [
+   "Two",
+   "Four",
+   "Seven",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "Three bowls made like almonds with a knop and a flower in one branch.",
+  "ref": "Exodus 25:33"
+ },
+ {
+  "id": "exodus-25-h-08",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many almond bowls were on the candlestick's own shaft?",
+  "choices": [
+   "Three",
+   "Six",
+   "Four",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "In the candlestick shall be four bowls made like unto almonds.",
+  "ref": "Exodus 25:34"
+ },
+ {
+  "id": "exodus-25-h-09",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the tongs and snuffdishes made of?",
+  "choices": [
+   "Brass",
+   "Pure gold",
+   "Silver",
+   "Iron"
+  ],
+  "answer": 1,
+  "explanation": "The tongs thereof, and the snuffdishes thereof, shall be of pure gold.",
+  "ref": "Exodus 25:38"
+ },
+ {
+  "id": "exodus-25-h-10",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many gold rings were on each side of the ark?",
+  "choices": [
+   "Two",
+   "One",
+   "Three",
+   "Four"
+  ],
+  "answer": 0,
+  "explanation": "Two rings shall be in the one side of it, and two rings in the other side of it.",
+  "ref": "Exodus 25:12"
+ },
+ {
+  "id": "exodus-25-h-11",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the seven lamps meant to do?",
+  "choices": [
+   "Burn incense",
+   "Mark the holy day",
+   "Warm the tent",
+   "Give light over against the candlestick"
+  ],
+  "answer": 3,
+  "explanation": "They shall light the lamps thereof, that they may give light over against it.",
+  "ref": "Exodus 25:37"
+ },
+ {
+  "id": "exodus-25-h-12",
+  "chapter": 25,
+  "level": "hard",
+  "category": "place",
+  "question": "Where had the pattern for the tabernacle's furnishings been shown to Moses?",
+  "choices": [
+   "In a dream",
+   "In the cloud by night",
+   "In the mount",
+   "In the tent"
+  ],
+  "answer": 2,
+  "explanation": "Look that thou make them after their pattern, which was shewed thee in the mount.",
+  "ref": "Exodus 25:40"
+ },
+ {
+  "id": "exodus-25-h-13",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Toward what were the faces of the cherubims to look?",
+  "choices": [
+   "The door",
+   "The mercy seat",
+   "The holy place",
+   "The heavens"
+  ],
+  "answer": 1,
+  "explanation": "Toward the mercy seat shall the faces of the cherubims be.",
+  "ref": "Exodus 25:20"
+ },
+ {
+  "id": "exodus-25-h-14",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the staves for the table made of?",
+  "choices": [
+   "Shittim wood overlaid with gold",
+   "Pure gold",
+   "Brass",
+   "Silver"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt make the staves of shittim wood, and overlay them with gold.",
+  "ref": "Exodus 25:28"
+ },
+ {
+  "id": "exodus-25-h-15",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which skins dyed red were among the offerings?",
+  "choices": [
+   "Goats' skins",
+   "Calves' skins",
+   "Lambs' skins",
+   "Rams' skins"
+  ],
+  "answer": 3,
+  "explanation": "The offering included rams' skins dyed red, and badgers' skins, and shittim wood.",
+  "ref": "Exodus 25:5"
+ },
+ {
+  "id": "exodus-25-m-15",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the LORD's reason for asking Israel to make a sanctuary?",
+  "choices": [
+   "That He might guard the camp",
+   "That He might dwell among them",
+   "That He might be seen by the nations",
+   "That He might rest from His work"
+  ],
+  "answer": 1,
+  "explanation": "Let them make me a sanctuary; that I may dwell among them.",
+  "ref": "Exodus 25:8"
+ },
+ {
   "id": "old-exodus-26-1",
   "chapter": 26,
   "level": "beginner",
