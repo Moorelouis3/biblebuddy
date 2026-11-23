@@ -9488,6 +9488,678 @@
   "ref": "Exodus 14:27–28"
  },
  {
+  "id": "exodus-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the LORD tell Israel to encamp, by the sea?",
+  "choices": [
+   "Before Pi-hahiroth",
+   "Before Etham",
+   "Before Succoth",
+   "Before Rameses"
+  ],
+  "answer": 0,
+  "explanation": "Turn and encamp before Pi-hahiroth, between Migdol and the sea.",
+  "ref": "Exodus 14:2"
+ },
+ {
+  "id": "exodus-14-e-02",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who pursued after Israel with chariots?",
+  "choices": [
+   "The Philistines",
+   "Pharaoh",
+   "The Amalekites",
+   "The Canaanites"
+  ],
+  "answer": 1,
+  "explanation": "The LORD hardened the heart of Pharaoh king of Egypt, and he pursued after the children of Israel.",
+  "ref": "Exodus 14:8"
+ },
+ {
+  "id": "exodus-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Israelites say it would have been better to do than die in the wilderness?",
+  "choices": [
+   "Return to Goshen",
+   "Fight Pharaoh",
+   "Serve the Egyptians",
+   "Wait for Joseph"
+  ],
+  "answer": 2,
+  "explanation": "It had been better for us to serve the Egyptians, than that we should die in the wilderness.",
+  "ref": "Exodus 14:12"
+ },
+ {
+  "id": "exodus-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses tell the people to do?",
+  "choices": [
+   "Flee into the hills",
+   "Take up arms",
+   "Build an altar",
+   "Fear not, stand still"
+  ],
+  "answer": 3,
+  "explanation": "Moses said, Fear ye not, stand still, and see the salvation of the LORD.",
+  "ref": "Exodus 14:13"
+ },
+ {
+  "id": "exodus-14-e-05",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who did Moses say would fight for Israel?",
+  "choices": [
+   "The LORD",
+   "Joshua",
+   "Aaron",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "The LORD shall fight for you, and ye shall hold your peace.",
+  "ref": "Exodus 14:14"
+ },
+ {
+  "id": "exodus-14-e-06",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to do over the sea?",
+  "choices": [
+   "Strike it with his rod twice",
+   "Stretch out his hand and divide it",
+   "Pour out a cup",
+   "Speak to the waves"
+  ],
+  "answer": 1,
+  "explanation": "Lift thou up thy rod, and stretch out thine hand over the sea, and divide it.",
+  "ref": "Exodus 14:16"
+ },
+ {
+  "id": "exodus-14-e-07",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the children of Israel go through in the midst of the sea?",
+  "choices": [
+   "Shallow mud",
+   "A narrow bridge",
+   "Dry ground",
+   "A boat path"
+  ],
+  "answer": 2,
+  "explanation": "The children of Israel shall go on dry ground through the midst of the sea.",
+  "ref": "Exodus 14:16"
+ },
+ {
+  "id": "exodus-14-e-08",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the waters to Israel on their right hand and left?",
+  "choices": [
+   "A river",
+   "A fence",
+   "A road",
+   "A wall"
+  ],
+  "answer": 3,
+  "explanation": "The waters were a wall unto them on their right hand, and on their left.",
+  "ref": "Exodus 14:22"
+ },
+ {
+  "id": "exodus-14-e-09",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many Egyptians remained after the waters returned?",
+  "choices": [
+   "Not so much as one",
+   "A few",
+   "A hundred",
+   "Half of them"
+  ],
+  "answer": 0,
+  "explanation": "There remained not so much as one of them.",
+  "ref": "Exodus 14:28"
+ },
+ {
+  "id": "exodus-14-e-10",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the people fear and believe after the great work?",
+  "choices": [
+   "Pharaoh and Moses",
+   "The LORD and His servant Moses",
+   "Aaron and Joshua",
+   "The angel only"
+  ],
+  "answer": 1,
+  "explanation": "The people feared the LORD, and believed the LORD, and his servant Moses.",
+  "ref": "Exodus 14:31"
+ },
+ {
+  "id": "exodus-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD say Pharaoh would think Israel was trapped?",
+  "choices": [
+   "They had no water",
+   "They had no leader",
+   "They are entangled in the land",
+   "They had no weapons"
+  ],
+  "answer": 2,
+  "explanation": "Pharaoh will say, They are entangled in the land, the wilderness hath shut them in.",
+  "ref": "Exodus 14:3"
+ },
+ {
+  "id": "exodus-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD say He would harden Pharaoh's heart?",
+  "choices": [
+   "To test Moses",
+   "To feed Israel",
+   "To close the sea",
+   "To be honoured upon Pharaoh and his host"
+  ],
+  "answer": 3,
+  "explanation": "I will be honoured upon Pharaoh, and upon all his host; that the Egyptians may know that I am the LORD.",
+  "ref": "Exodus 14:4"
+ },
+ {
+  "id": "exodus-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh and his servants say when they were told the people fled?",
+  "choices": [
+   "Why have we let Israel go from serving us?",
+   "Let them go in peace",
+   "Let us pray to God",
+   "Send them gifts"
+  ],
+  "answer": 0,
+  "explanation": "They said, Why have we done this, that we have let Israel go from serving us?",
+  "ref": "Exodus 14:5"
+ },
+ {
+  "id": "exodus-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many chosen chariots did Pharaoh take?",
+  "choices": [
+   "Three hundred",
+   "Six hundred",
+   "One thousand",
+   "Twelve hundred"
+  ],
+  "answer": 1,
+  "explanation": "He took six hundred chosen chariots, and all the chariots of Egypt.",
+  "ref": "Exodus 14:7"
+ },
+ {
+  "id": "exodus-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people say to Moses about graves?",
+  "choices": [
+   "That they needed graves",
+   "That they would build graves",
+   "Because there were no graves in Egypt?",
+   "That graves were holy"
+  ],
+  "answer": 2,
+  "explanation": "Because there were no graves in Egypt, hast thou taken us away to die in the wilderness?",
+  "ref": "Exodus 14:11"
+ },
+ {
+  "id": "exodus-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses promise about the Egyptians the people saw that day?",
+  "choices": [
+   "They would join Israel",
+   "They would turn back",
+   "They would bring gifts",
+   "They would see them no more for ever"
+  ],
+  "answer": 3,
+  "explanation": "The Egyptians whom ye have seen to day, ye shall see them again no more for ever.",
+  "ref": "Exodus 14:13"
+ },
+ {
+  "id": "exodus-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say to Moses when he cried to Him?",
+  "choices": [
+   "Wherefore criest thou unto me? Speak, that they go forward",
+   "Return to Egypt",
+   "Wait one more day",
+   "Build an altar"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore criest thou unto me? speak unto the children of Israel, that they go forward.",
+  "ref": "Exodus 14:15"
+ },
+ {
+  "id": "exodus-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel of God and the pillar of cloud do?",
+  "choices": [
+   "Moved ahead to the sea",
+   "Moved behind the camp of Israel",
+   "Stayed in the camp",
+   "Went toward Egypt"
+  ],
+  "answer": 1,
+  "explanation": "The angel of God removed and went behind them; the pillar of the cloud went from before their face, and stood behind them.",
+  "ref": "Exodus 14:19"
+ },
+ {
+  "id": "exodus-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the cloud do to the Egyptians but to Israel?",
+  "choices": [
+   "Fire to Egypt, light to Israel",
+   "Rain to Egypt, sun to Israel",
+   "Cloud and darkness to Egypt, light by night to Israel",
+   "Fog to Israel, light to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "It was a cloud and darkness to them, but it gave light by night to these.",
+  "ref": "Exodus 14:20"
+ },
+ {
+  "id": "exodus-14-m-10",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What caused the sea to go back all that night?",
+  "choices": [
+   "A strong west wind",
+   "A great earthquake",
+   "A burning fire",
+   "A strong east wind"
+  ],
+  "answer": 3,
+  "explanation": "The LORD caused the sea to go back by a strong east wind all that night.",
+  "ref": "Exodus 14:21"
+ },
+ {
+  "id": "exodus-14-m-11",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD take off the Egyptians' chariots?",
+  "choices": [
+   "Their wheels",
+   "Their horses",
+   "Their axles",
+   "Their shields"
+  ],
+  "answer": 0,
+  "explanation": "And took off their chariot wheels, that they drave them heavily.",
+  "ref": "Exodus 14:25"
+ },
+ {
+  "id": "exodus-14-m-12",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Egyptians say when the LORD troubled their host?",
+  "choices": [
+   "Let us fight on",
+   "Let us flee from the face of Israel",
+   "Let us pray to the sea",
+   "Let us return to Pharaoh"
+  ],
+  "answer": 1,
+  "explanation": "The Egyptians said, Let us flee from the face of Israel; for the LORD fighteth for them.",
+  "ref": "Exodus 14:25"
+ },
+ {
+  "id": "exodus-14-m-13",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the sea return to its strength?",
+  "choices": [
+   "At noon",
+   "At midnight",
+   "When the morning appeared",
+   "At evening"
+  ],
+  "answer": 2,
+  "explanation": "The sea returned to his strength when the morning appeared.",
+  "ref": "Exodus 14:27"
+ },
+ {
+  "id": "exodus-14-m-14",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel see upon the sea shore?",
+  "choices": [
+   "Their lost sheep",
+   "Pharaoh's treasure",
+   "A new land",
+   "The Egyptians dead"
+  ],
+  "answer": 3,
+  "explanation": "Israel saw the Egyptians dead upon the sea shore.",
+  "ref": "Exodus 14:30"
+ },
+ {
+  "id": "exodus-14-m-15",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the Israelites cry out to when they saw the Egyptians?",
+  "choices": [
+   "The LORD",
+   "Aaron",
+   "Pharaoh",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel cried out unto the LORD.",
+  "ref": "Exodus 14:10"
+ },
+ {
+  "id": "exodus-14-m-16",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Israel go out of Egypt according to the chapter?",
+  "choices": [
+   "With harps",
+   "With an high hand",
+   "In haste",
+   "In silence"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel went out with an high hand.",
+  "ref": "Exodus 14:8"
+ },
+ {
+  "id": "exodus-14-m-17",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the Israelites feel when Pharaoh drew nigh?",
+  "choices": [
+   "Joyful",
+   "Angry",
+   "Sore afraid",
+   "Calm"
+  ],
+  "answer": 2,
+  "explanation": "They were sore afraid: and the children of Israel cried out unto the LORD.",
+  "ref": "Exodus 14:10"
+ },
+ {
+  "id": "exodus-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "Which two places were named beside Pi-hahiroth as the camp's setting?",
+  "choices": [
+   "Etham and Succoth",
+   "Rameses and Goshen",
+   "Sinai and Horeb",
+   "Migdol and Baal-zephon"
+  ],
+  "answer": 3,
+  "explanation": "Before Pi-hahiroth, between Migdol and the sea, over against Baal-zephon.",
+  "ref": "Exodus 14:2"
+ },
+ {
+  "id": "exodus-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At what part of the night did the LORD look at the Egyptians through the pillar?",
+  "choices": [
+   "The morning watch",
+   "The evening watch",
+   "Midnight",
+   "Noon"
+  ],
+  "answer": 0,
+  "explanation": "In the morning watch the LORD looked unto the host of the Egyptians through the pillar of fire and of the cloud.",
+  "ref": "Exodus 14:24"
+ },
+ {
+  "id": "exodus-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say about the Israelites holding their peace?",
+  "choices": [
+   "Ye shall sing",
+   "Ye shall hold your peace",
+   "Ye shall run",
+   "Ye shall build"
+  ],
+  "answer": 1,
+  "explanation": "The LORD shall fight for you, and ye shall hold your peace.",
+  "ref": "Exodus 14:14"
+ },
+ {
+  "id": "exodus-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people say they had told Moses in Egypt?",
+  "choices": [
+   "Lead us to the sea",
+   "Give us a king",
+   "Let us alone, that we may serve the Egyptians",
+   "Let us worship"
+  ],
+  "answer": 2,
+  "explanation": "Is not this the word that we did tell thee in Egypt, saying, Let us alone, that we may serve the Egyptians?",
+  "ref": "Exodus 14:12"
+ },
+ {
+  "id": "exodus-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to stretch out over the sea to bring the waters back?",
+  "choices": [
+   "His rod only",
+   "A cloth",
+   "Both hands and the rod",
+   "His hand"
+  ],
+  "answer": 3,
+  "explanation": "Stretch out thine hand over the sea, that the waters may come again upon the Egyptians.",
+  "ref": "Exodus 14:26"
+ },
+ {
+  "id": "exodus-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the waters cover when they returned?",
+  "choices": [
+   "The chariots and horsemen and host",
+   "Only the horsemen",
+   "Only Pharaoh",
+   "Only the chariots"
+  ],
+  "answer": 0,
+  "explanation": "The waters returned, and covered the chariots, and the horsemen, and all the host of Pharaoh.",
+  "ref": "Exodus 14:28"
+ },
+ {
+  "id": "exodus-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh take with him besides chariots?",
+  "choices": [
+   "The priests",
+   "His people",
+   "The ark",
+   "His wife"
+  ],
+  "answer": 1,
+  "explanation": "He made ready his chariot, and took his people with him.",
+  "ref": "Exodus 14:6"
+ },
+ {
+  "id": "exodus-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He would get over Pharaoh and his host?",
+  "choices": [
+   "Victory by number",
+   "Tribute",
+   "Honour",
+   "A name in Egypt"
+  ],
+  "answer": 2,
+  "explanation": "I will get me honour upon Pharaoh, and upon all his host.",
+  "ref": "Exodus 14:17"
+ },
+ {
+  "id": "exodus-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the Egyptians would know?",
+  "choices": [
+   "That Moses was greater",
+   "That Israel was strong",
+   "That the sea was deep",
+   "That He is the LORD"
+  ],
+  "answer": 3,
+  "explanation": "That the Egyptians may know that I am the LORD.",
+  "ref": "Exodus 14:4"
+ },
+ {
+  "id": "exodus-14-h-10",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the LORD say He would make the Egyptians follow Israel into the sea?",
+  "choices": [
+   "By hardening their hearts",
+   "By offering gifts",
+   "By sending a sign",
+   "By a command from Pharaoh"
+  ],
+  "answer": 0,
+  "explanation": "I will harden the hearts of the Egyptians, and they shall follow them.",
+  "ref": "Exodus 14:17"
+ },
+ {
+  "id": "exodus-14-h-11",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "Who had captains over every chariot?",
+  "choices": [
+   "Moses",
+   "Pharaoh",
+   "Aaron",
+   "The Egyptians' priests"
+  ],
+  "answer": 1,
+  "explanation": "He took six hundred chosen chariots... and captains over every one of them.",
+  "ref": "Exodus 14:7"
+ },
+ {
+  "id": "exodus-14-h-12",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel see as \"that great work\"?",
+  "choices": [
+   "The parting of Jordan",
+   "The quail from heaven",
+   "What the LORD did upon the Egyptians",
+   "The giving of the law"
+  ],
+  "answer": 2,
+  "explanation": "Israel saw that great work which the LORD did upon the Egyptians.",
+  "ref": "Exodus 14:31"
+ },
+ {
+  "id": "exodus-14-h-13",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Egyptians pursue after Israel: all the horses and chariots of Pharaoh, his horsemen and his what?",
+  "choices": [
+   "Priests",
+   "Servants",
+   "Captains of ten",
+   "Army"
+  ],
+  "answer": 3,
+  "explanation": "The Egyptians pursued after them, all the horses and chariots of Pharaoh, and his horsemen, and his army.",
+  "ref": "Exodus 14:9"
+ },
+ {
+  "id": "exodus-14-h-14",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Moses should tell Israel to do, rather than cry?",
+  "choices": [
+   "Go forward",
+   "Stand still",
+   "Turn back",
+   "Camp"
+  ],
+  "answer": 0,
+  "explanation": "Speak unto the children of Israel, that they go forward.",
+  "ref": "Exodus 14:15"
+ },
+ {
+  "id": "exodus-14-h-15",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which side of the camp of Israel did the pillar of cloud come to stand?",
+  "choices": [
+   "Before them",
+   "Behind them",
+   "Above them",
+   "Beside them"
+  ],
+  "answer": 1,
+  "explanation": "The pillar of the cloud went from before their face, and stood behind them.",
+  "ref": "Exodus 14:19"
+ },
+ {
   "id": "old-exodus-15-1",
   "chapter": 15,
   "level": "beginner",
