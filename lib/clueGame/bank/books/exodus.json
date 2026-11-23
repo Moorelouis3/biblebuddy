@@ -27632,6 +27632,646 @@
   "ref": "Exodus 39:43"
  },
  {
+  "id": "exodus-39-e-01",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which garment was made of gold, blue, purple, scarlet and fine twined linen?",
+  "choices": [
+   "The ephod",
+   "The robe",
+   "The mitre",
+   "The breeches"
+  ],
+  "answer": 0,
+  "explanation": "He made the ephod of gold, blue, and purple, and scarlet, and fine twined linen.",
+  "ref": "Exodus 39:2"
+ },
+ {
+  "id": "exodus-39-e-02",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did they do with the gold so it could be worked into the cloth?",
+  "choices": [
+   "Melted it into bars",
+   "Ground it into dust",
+   "Wove it with flax",
+   "Beat it into thin plates and cut it into wires"
+  ],
+  "answer": 3,
+  "explanation": "They did beat the gold into thin plates, and cut it into wires, to work it in the blue, purple, scarlet and fine linen.",
+  "ref": "Exodus 39:3"
+ },
+ {
+  "id": "exodus-39-e-03",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many stones were set in the breastplate?",
+  "choices": [
+   "Seven",
+   "Ten",
+   "Twelve",
+   "Fourteen"
+  ],
+  "answer": 2,
+  "explanation": "The stones were twelve, according to the twelve tribes.",
+  "ref": "Exodus 39:14"
+ },
+ {
+  "id": "exodus-39-e-04",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the twelve stones of the breastplate stand for?",
+  "choices": [
+   "The twelve plagues",
+   "The twelve tribes of Israel",
+   "The twelve apostles",
+   "The twelve months"
+  ],
+  "answer": 1,
+  "explanation": "The stones were according to the names of the children of Israel, according to the twelve tribes.",
+  "ref": "Exodus 39:14"
+ },
+ {
+  "id": "exodus-39-e-05",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were made of pure gold and put on the hem of the robe?",
+  "choices": [
+   "Chains",
+   "Bells",
+   "Crowns",
+   "Rings"
+  ],
+  "answer": 1,
+  "explanation": "They made bells of pure gold, and put the bells between the pomegranates upon the hem of the robe.",
+  "ref": "Exodus 39:25"
+ },
+ {
+  "id": "exodus-39-e-06",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was made of blue, purple, scarlet and twined linen and put on the hems of the robe?",
+  "choices": [
+   "Pomegranates",
+   "Lilies",
+   "Doves",
+   "Lamps"
+  ],
+  "answer": 0,
+  "explanation": "They made upon the hems of the robe pomegranates of blue, and purple, and scarlet, and twined linen.",
+  "ref": "Exodus 39:24"
+ },
+ {
+  "id": "exodus-39-e-07",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What colour was the robe of the ephod?",
+  "choices": [
+   "All purple",
+   "All scarlet",
+   "All white",
+   "All blue"
+  ],
+  "answer": 3,
+  "explanation": "He made the robe of the ephod of woven work, all of blue.",
+  "ref": "Exodus 39:22"
+ },
+ {
+  "id": "exodus-39-e-08",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the plate of the holy crown made of?",
+  "choices": [
+   "Silver",
+   "Brass",
+   "Pure gold",
+   "Fine linen"
+  ],
+  "answer": 2,
+  "explanation": "They made the plate of the holy crown of pure gold.",
+  "ref": "Exodus 39:30"
+ },
+ {
+  "id": "exodus-39-e-09",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "person",
+  "question": "For whom did they make coats of fine linen of woven work?",
+  "choices": [
+   "Moses and Joshua",
+   "The Levites",
+   "Aaron and his sons",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "They made coats of fine linen of woven work for Aaron, and for his sons.",
+  "ref": "Exodus 39:27"
+ },
+ {
+  "id": "exodus-39-e-10",
+  "chapter": 39,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On which part of the ephod were the onyx stones put?",
+  "choices": [
+   "The hem",
+   "The shoulders",
+   "The girdle",
+   "The breast"
+  ],
+  "answer": 1,
+  "explanation": "He put them on the shoulders of the ephod, that they should be stones for a memorial to the children of Israel.",
+  "ref": "Exodus 39:7"
+ },
+ {
+  "id": "exodus-39-m-01",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the onyx stones on the shoulders of the ephod to be?",
+  "choices": [
+   "A memorial to the children of Israel",
+   "A sign of the covenant",
+   "A treasure for the priest",
+   "A guard against sin"
+  ],
+  "answer": 0,
+  "explanation": "He put them on the shoulders of the ephod, that they should be stones for a memorial to the children of Israel.",
+  "ref": "Exodus 39:7"
+ },
+ {
+  "id": "exodus-39-m-02",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many rows of stones were set in the breastplate?",
+  "choices": [
+   "Three",
+   "Six",
+   "Twelve",
+   "Four"
+  ],
+  "answer": 3,
+  "explanation": "They set in it four rows of stones.",
+  "ref": "Exodus 39:10"
+ },
+ {
+  "id": "exodus-39-m-03",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what was the breastplate bound to the rings of the ephod?",
+  "choices": [
+   "A cord of gold",
+   "A chain of silver",
+   "A band of linen",
+   "A lace of blue"
+  ],
+  "answer": 3,
+  "explanation": "They did bind the breastplate by his rings unto the rings of the ephod with a lace of blue.",
+  "ref": "Exodus 39:21"
+ },
+ {
+  "id": "exodus-39-m-04",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the chains at the ends of the breastplate made of?",
+  "choices": [
+   "Twisted goats' hair",
+   "Brass",
+   "Wreathen work of pure gold",
+   "Blue thread"
+  ],
+  "answer": 2,
+  "explanation": "They made upon the breastplate chains at the ends, of wreathen work of pure gold.",
+  "ref": "Exodus 39:15"
+ },
+ {
+  "id": "exodus-39-m-05",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was there a band round the hole in the middle of the robe?",
+  "choices": [
+   "So that it could be tied",
+   "So that it should not rend",
+   "So that it could be seen",
+   "So that bells could hang"
+  ],
+  "answer": 1,
+  "explanation": "There was a band round about the hole, that it should not rend.",
+  "ref": "Exodus 39:23"
+ },
+ {
+  "id": "exodus-39-m-06",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which colours were the pomegranates on the robe's hem made?",
+  "choices": [
+   "Blue, purple and scarlet",
+   "Gold, silver and blue",
+   "Red, green and white",
+   "Purple, black and gold"
+  ],
+  "answer": 0,
+  "explanation": "The pomegranates were of blue, and purple, and scarlet, and twined linen.",
+  "ref": "Exodus 39:24"
+ },
+ {
+  "id": "exodus-39-m-07",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the writing on the plate of the holy crown made?",
+  "choices": [
+   "Like the engravings of a signet",
+   "Painted with oil",
+   "Woven in blue thread",
+   "Written on skin"
+  ],
+  "answer": 0,
+  "explanation": "They wrote upon it a writing, like to the engravings of a signet, HOLINESS TO THE LORD.",
+  "ref": "Exodus 39:30"
+ },
+ {
+  "id": "exodus-39-m-08",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what was the plate of the holy crown fastened on high upon the mitre?",
+  "choices": [
+   "A chain of gold",
+   "A ring of brass",
+   "A cord of scarlet",
+   "A lace of blue"
+  ],
+  "answer": 3,
+  "explanation": "They tied unto it a lace of blue, to fasten it on high upon the mitre.",
+  "ref": "Exodus 39:31"
+ },
+ {
+  "id": "exodus-39-m-09",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the covering of rams' skins dyed?",
+  "choices": [
+   "Blue",
+   "Purple",
+   "Red",
+   "White"
+  ],
+  "answer": 2,
+  "explanation": "They brought the covering of rams' skins dyed red, and the covering of badgers' skins.",
+  "ref": "Exodus 39:34"
+ },
+ {
+  "id": "exodus-39-m-10",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides rams' skins dyed red, which covering was brought to Moses?",
+  "choices": [
+   "Goats' hair",
+   "Badgers' skins",
+   "Fine linen",
+   "Purple cloth"
+  ],
+  "answer": 1,
+  "explanation": "They brought the covering of rams' skins dyed red, and the covering of badgers' skins.",
+  "ref": "Exodus 39:34"
+ },
+ {
+  "id": "exodus-39-m-11",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was brought with the pure candlestick and its lamps?",
+  "choices": [
+   "Fine flour",
+   "The oil for light",
+   "The sweet incense",
+   "The shewbread"
+  ],
+  "answer": 1,
+  "explanation": "They brought the pure candlestick, with the lamps thereof, and the oil for light.",
+  "ref": "Exodus 39:37"
+ },
+ {
+  "id": "exodus-39-m-12",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the shoulderpieces made for the ephod used for?",
+  "choices": [
+   "To couple it together",
+   "To hold the bells",
+   "To carry the ark",
+   "To hold the plate"
+  ],
+  "answer": 0,
+  "explanation": "They made shoulderpieces for it, to couple it together: by the two edges was it coupled together.",
+  "ref": "Exodus 39:4"
+ },
+ {
+  "id": "exodus-39-m-13",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the curious girdle of the ephod made of?",
+  "choices": [
+   "Plain white linen",
+   "Goats' hair",
+   "Blue wool only",
+   "The same as the ephod"
+  ],
+  "answer": 3,
+  "explanation": "The curious girdle was of the same: gold, blue, purple, scarlet, and fine twined linen.",
+  "ref": "Exodus 39:5"
+ },
+ {
+  "id": "exodus-39-m-14",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they make of fine linen to go with the goodly bonnets for Aaron's sons?",
+  "choices": [
+   "A veil",
+   "A crown of gold",
+   "A mitre",
+   "A robe of blue"
+  ],
+  "answer": 2,
+  "explanation": "They made a mitre of fine linen, and goodly bonnets of fine linen.",
+  "ref": "Exodus 39:28"
+ },
+ {
+  "id": "exodus-39-m-15",
+  "chapter": 39,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was brought to Moses along with the golden altar?",
+  "choices": [
+   "The laver and its foot",
+   "The shewbread",
+   "The anointing oil and the sweet incense",
+   "The cloths of service"
+  ],
+  "answer": 2,
+  "explanation": "They brought the golden altar, and the anointing oil, and the sweet incense.",
+  "ref": "Exodus 39:38"
+ },
+ {
+  "id": "exodus-39-h-01",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the first stone in the first row of the breastplate?",
+  "choices": [
+   "A topaz",
+   "A sardius",
+   "An emerald",
+   "A jasper"
+  ],
+  "answer": 1,
+  "explanation": "The first row was a sardius, a topaz, and a carbuncle.",
+  "ref": "Exodus 39:10"
+ },
+ {
+  "id": "exodus-39-h-02",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which stone stood in the second row with an emerald and a sapphire?",
+  "choices": [
+   "A diamond",
+   "A ligure",
+   "A beryl",
+   "An agate"
+  ],
+  "answer": 0,
+  "explanation": "The second row was an emerald, a sapphire, and a diamond.",
+  "ref": "Exodus 39:11"
+ },
+ {
+  "id": "exodus-39-h-03",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which stone stood in the third row with a ligure and an agate?",
+  "choices": [
+   "A carbuncle",
+   "An onyx",
+   "A sardius",
+   "An amethyst"
+  ],
+  "answer": 3,
+  "explanation": "The third row was a ligure, an agate, and an amethyst.",
+  "ref": "Exodus 39:12"
+ },
+ {
+  "id": "exodus-39-h-04",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which stone was in the fourth row with a beryl and an onyx?",
+  "choices": [
+   "A topaz",
+   "A sapphire",
+   "An amethyst",
+   "A jasper"
+  ],
+  "answer": 3,
+  "explanation": "The fourth row was a beryl, an onyx, and a jasper.",
+  "ref": "Exodus 39:13"
+ },
+ {
+  "id": "exodus-39-h-05",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the length and breadth of the breastplate, doubled?",
+  "choices": [
+   "A cubit",
+   "A hand",
+   "A span",
+   "Two cubits"
+  ],
+  "answer": 2,
+  "explanation": "It was foursquare; they made the breastplate double: a span was the length and a span the breadth.",
+  "ref": "Exodus 39:9"
+ },
+ {
+  "id": "exodus-39-h-06",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what were the stones of the breastplate enclosed?",
+  "choices": [
+   "Rings of brass",
+   "Ouches of gold",
+   "Cases of silver",
+   "Frames of wood"
+  ],
+  "answer": 1,
+  "explanation": "The stones were inclosed in ouches of gold in their inclosings.",
+  "ref": "Exodus 39:13"
+ },
+ {
+  "id": "exodus-39-h-07",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The hole in the middle of the robe was like the hole of a what?",
+  "choices": [
+   "Habergeon",
+   "Tent",
+   "Basket",
+   "Garment of linen"
+  ],
+  "answer": 0,
+  "explanation": "There was an hole in the midst of the robe, as the hole of an habergeon.",
+  "ref": "Exodus 39:23"
+ },
+ {
+  "id": "exodus-39-h-08",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was brought to Moses right after the ark of the testimony, its staves and the mercy seat?",
+  "choices": [
+   "The table and the shewbread",
+   "The golden altar",
+   "The candlestick",
+   "The laver"
+  ],
+  "answer": 0,
+  "explanation": "After the ark, the staves and the mercy seat, they brought the table, and all the vessels thereof, and the shewbread.",
+  "ref": "Exodus 39:35–36"
+ },
+ {
+  "id": "exodus-39-h-09",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many rings of gold were put at the two ends of the breastplate for the chains?",
+  "choices": [
+   "Four",
+   "Six",
+   "Twelve",
+   "Two"
+  ],
+  "answer": 3,
+  "explanation": "They made two ouches of gold, and two gold rings; and put the two rings in the two ends of the breastplate.",
+  "ref": "Exodus 39:16"
+ },
+ {
+  "id": "exodus-39-h-10",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The breastplate was bound so that it would be where in relation to the curious girdle?",
+  "choices": [
+   "Beneath it",
+   "Behind it",
+   "Above it",
+   "Beside it"
+  ],
+  "answer": 2,
+  "explanation": "It was bound with a lace of blue, that it might be above the curious girdle of the ephod.",
+  "ref": "Exodus 39:21"
+ },
+ {
+  "id": "exodus-39-h-11",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "A bell and a what, round about the hem of the robe?",
+  "choices": [
+   "A lily",
+   "A pomegranate",
+   "A lamp",
+   "A ring"
+  ],
+  "answer": 1,
+  "explanation": "A bell and a pomegranate, a bell and a pomegranate, round about the hem of the robe to minister in.",
+  "ref": "Exodus 39:26"
+ },
+ {
+  "id": "exodus-39-h-12",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The breastplate was made like the work of what?",
+  "choices": [
+   "The robe",
+   "The ephod",
+   "The mitre",
+   "The altar"
+  ],
+  "answer": 1,
+  "explanation": "He made the breastplate of cunning work, like the work of the ephod.",
+  "ref": "Exodus 39:8"
+ },
+ {
+  "id": "exodus-39-h-13",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what were the ends of the two wreathen chains fastened, on the shoulderpieces?",
+  "choices": [
+   "The two ouches",
+   "The two rings of the girdle",
+   "The two bells",
+   "The two staves"
+  ],
+  "answer": 0,
+  "explanation": "The ends of the two chains were fastened in the two ouches, and put on the shoulderpieces of the ephod.",
+  "ref": "Exodus 39:18"
+ },
+ {
+  "id": "exodus-39-h-14",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they make of fine twined linen for Aaron's sons besides coats, a mitre and bonnets?",
+  "choices": [
+   "Blue girdles of gold",
+   "Veils",
+   "Cloaks of wool",
+   "Linen breeches"
+  ],
+  "answer": 3,
+  "explanation": "They made a mitre of fine linen, goodly bonnets of fine linen, and linen breeches of fine twined linen.",
+  "ref": "Exodus 39:28"
+ },
+ {
+  "id": "exodus-39-h-15",
+  "chapter": 39,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was brought to Moses with the brasen altar, his grate and his staves?",
+  "choices": [
+   "The sweet incense",
+   "The laver and his foot",
+   "The candlestick",
+   "The cloths of service"
+  ],
+  "answer": 1,
+  "explanation": "They brought the brasen altar, his grate of brass, his staves, and all his vessels, the laver and his foot.",
+  "ref": "Exodus 39:39"
+ },
+ {
   "id": "old-exodus-40-1",
   "chapter": 40,
   "level": "beginner",
