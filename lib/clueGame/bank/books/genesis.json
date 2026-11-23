@@ -7728,20 +7728,308 @@
   "ref": "Genesis 23:16"
  },
  {
-  "id": "old-genesis-23-5",
+  "id": "genesis-23-e-01",
   "chapter": 23,
   "level": "beginner",
-  "category": "place",
-  "question": "Where was Sarah buried?",
+  "category": "person",
+  "question": "Who died at Kirjath-arba, which is Hebron?",
   "choices": [
-   "Near Beersheba",
-   "In Egypt",
-   "In the cave of Machpelah near Hebron",
-   "On Mount Moriah"
+   "Hagar",
+   "Sarah",
+   "Nahor",
+   "Ephron"
+  ],
+  "answer": 1,
+  "explanation": "Sarah died in Kirjath-arba; the same is Hebron in the land of Canaan.",
+  "ref": "Genesis 23:2"
+ },
+ {
+  "id": "genesis-23-m-01",
+  "chapter": 23,
+  "level": "medium",
+  "category": "place",
+  "question": "Which cave did Abraham ask Ephron to give him?",
+  "choices": [
+   "The cave of Machpelah",
+   "The cave of Adullam",
+   "The cave of Mamre",
+   "The cave of Hebron"
+  ],
+  "answer": 0,
+  "explanation": "That he may give me the cave of Machpelah, which he hath, which is in the end of his field.",
+  "ref": "Genesis 23:9"
+ },
+ {
+  "id": "genesis-23-m-02",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did Abraham first speak after he stood up from before his dead?",
+  "choices": [
+   "The king of Gerar",
+   "Ephron",
+   "His servants",
+   "The sons of Heth"
+  ],
+  "answer": 3,
+  "explanation": "Abraham stood up from before his dead, and spake unto the sons of Heth.",
+  "ref": "Genesis 23:3"
+ },
+ {
+  "id": "genesis-23-m-03",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Abraham bow to again after Ephron offered him the field?",
+  "choices": [
+   "Ephron's sons",
+   "The elders of Mamre",
+   "The people of the land",
+   "His servants"
   ],
   "answer": 2,
-  "explanation": "Sarah was buried in the cave of Machpelah before Mamre, which is Hebron.",
-  "ref": "Genesis 23:19"
+  "explanation": "Abraham bowed down himself before the people of the land.",
+  "ref": "Genesis 23:12"
+ },
+ {
+  "id": "genesis-23-h-01",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Sarah when she died?",
+  "choices": [
+   "One hundred and ten",
+   "One hundred and twenty-seven",
+   "One hundred",
+   "One hundred and thirty-seven"
+  ],
+  "answer": 1,
+  "explanation": "Sarah was an hundred and seven and twenty years old.",
+  "ref": "Genesis 23:1"
+ },
+ {
+  "id": "genesis-23-h-02",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abraham do before he spoke to the sons of Heth?",
+  "choices": [
+   "Stood up from before his dead",
+   "Sent for Isaac",
+   "Went to the city gate",
+   "Sacrificed a lamb"
+  ],
+  "answer": 0,
+  "explanation": "Abraham stood up from before his dead, and spake unto the sons of Heth.",
+  "ref": "Genesis 23:3"
+ },
+ {
+  "id": "genesis-23-h-03",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Abraham said he was a stranger and a what with the sons of Heth?",
+  "choices": [
+   "Servant",
+   "Shepherd",
+   "Neighbour",
+   "Sojourner"
+  ],
+  "answer": 3,
+  "explanation": "I am a stranger and a sojourner with you.",
+  "ref": "Genesis 23:4"
+ },
+ {
+  "id": "genesis-23-h-04",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Abraham wanted to bury his dead out of his what?",
+  "choices": [
+   "Reach",
+   "Land",
+   "Sight",
+   "Memory"
+  ],
+  "answer": 2,
+  "explanation": "Give me a possession of a buryingplace with you, that I may bury my dead out of my sight.",
+  "ref": "Genesis 23:4"
+ },
+ {
+  "id": "genesis-23-h-05",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The sons of Heth said Abraham could bury his dead in the choice of their what?",
+  "choices": [
+   "Fields",
+   "Sepulchres",
+   "Houses",
+   "Gardens"
+  ],
+  "answer": 1,
+  "explanation": "In the choice of our sepulchres bury thy dead.",
+  "ref": "Genesis 23:6"
+ },
+ {
+  "id": "genesis-23-h-06",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Abraham say he would pay for the cave?",
+  "choices": [
+   "As much money as it is worth",
+   "With his sheep",
+   "With his servants",
+   "With a tenth of his flocks"
+  ],
+  "answer": 0,
+  "explanation": "For as much money as it is worth he shall give it me for a possession of a buryingplace.",
+  "ref": "Genesis 23:9"
+ },
+ {
+  "id": "genesis-23-h-07",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Ephron dwell?",
+  "choices": [
+   "In Gerar",
+   "In Zoar",
+   "By the plains of Mamre",
+   "Among the children of Heth"
+  ],
+  "answer": 3,
+  "explanation": "Ephron dwelt among the children of Heth.",
+  "ref": "Genesis 23:10"
+ },
+ {
+  "id": "genesis-23-h-08",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When Ephron offered the field, what did Abraham say he would give?",
+  "choices": [
+   "A feast",
+   "His flocks",
+   "Money for the field",
+   "Service"
+  ],
+  "answer": 2,
+  "explanation": "I will give thee money for the field; take it of me, and I will bury my dead there.",
+  "ref": "Genesis 23:13"
+ },
+ {
+  "id": "genesis-23-h-09",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of money did Abraham weigh out to Ephron?",
+  "choices": [
+   "Gold coin",
+   "Current money with the merchant",
+   "Temple silver",
+   "Pieces of brass"
+  ],
+  "answer": 1,
+  "explanation": "Abraham weighed to Ephron the silver, four hundred shekels of silver, current money with the merchant.",
+  "ref": "Genesis 23:16"
+ },
+ {
+  "id": "genesis-23-h-10",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "By whom was the field and cave made sure to Abraham for a burying place?",
+  "choices": [
+   "The sons of Heth",
+   "Ephron alone",
+   "The king of Gerar",
+   "Mamre"
+  ],
+  "answer": 0,
+  "explanation": "The field, and the cave that is therein, were made sure unto Abraham for a possession of a buryingplace by the sons of Heth.",
+  "ref": "Genesis 23:20"
+ },
+ {
+  "id": "genesis-23-h-11",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abraham come to do for Sarah besides mourn?",
+  "choices": [
+   "Build her a tomb",
+   "Pray over her",
+   "Fast for her",
+   "Weep for her"
+  ],
+  "answer": 3,
+  "explanation": "Abraham came to mourn for Sarah, and to weep for her.",
+  "ref": "Genesis 23:2"
+ },
+ {
+  "id": "genesis-23-h-12",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ephron call Abraham when he offered the field?",
+  "choices": [
+   "My friend",
+   "My brother",
+   "My lord",
+   "O prince"
+  ],
+  "answer": 2,
+  "explanation": "Nay, my lord, hear me: the field give I thee, and the cave that is therein.",
+  "ref": "Genesis 23:11"
+ },
+ {
+  "id": "genesis-23-h-13",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "In the presence of whom did Ephron say he gave the field?",
+  "choices": [
+   "The elders of Hebron",
+   "The sons of his people",
+   "His servants",
+   "The king"
+  ],
+  "answer": 1,
+  "explanation": "In the presence of the sons of my people give I it thee: bury thy dead.",
+  "ref": "Genesis 23:11"
+ },
+ {
+  "id": "genesis-23-h-14",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ephron say about the price when he named four hundred shekels?",
+  "choices": [
+   "What is that betwixt me and thee?",
+   "It is far too small",
+   "It is a fair price",
+   "It is half its worth"
+  ],
+  "answer": 0,
+  "explanation": "The land is worth four hundred shekels of silver; what is that betwixt me and thee? bury therefore thy dead.",
+  "ref": "Genesis 23:15"
+ },
+ {
+  "id": "genesis-23-h-15",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abraham do when Ephron named his price?",
+  "choices": [
+   "Argued the price",
+   "Refused to pay",
+   "Asked for time",
+   "Hearkened to him"
+  ],
+  "answer": 3,
+  "explanation": "Abraham hearkened unto Ephron; and Abraham weighed to Ephron the silver.",
+  "ref": "Genesis 23:16"
  },
  {
   "id": "old-genesis-24-1",
