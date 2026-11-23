@@ -18912,6 +18912,646 @@
   "ref": "Exodus 27:21"
  },
  {
+  "id": "exodus-27-e-01",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shape was the altar of burnt offering to be?",
+  "choices": [
+   "Round",
+   "Foursquare",
+   "Triangular",
+   "Oval"
+  ],
+  "answer": 1,
+  "explanation": "The altar shall be foursquare.",
+  "ref": "Exodus 27:1"
+ },
+ {
+  "id": "exodus-27-e-02",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was made upon the four corners of the altar?",
+  "choices": [
+   "Horns",
+   "Rings of gold",
+   "Lamps",
+   "Hooks"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt make the horns of it upon the four corners thereof.",
+  "ref": "Exodus 27:2"
+ },
+ {
+  "id": "exodus-27-e-03",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the altar's pans, shovels and basons made of?",
+  "choices": [
+   "Gold",
+   "Silver",
+   "Iron",
+   "Brass"
+  ],
+  "answer": 3,
+  "explanation": "All the vessels thereof thou shalt make of brass.",
+  "ref": "Exodus 27:3"
+ },
+ {
+  "id": "exodus-27-e-04",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the pans of the altar made to receive?",
+  "choices": [
+   "Its blood",
+   "Its oil",
+   "Its ashes",
+   "Its water"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt make his pans to receive his ashes.",
+  "ref": "Exodus 27:3"
+ },
+ {
+  "id": "exodus-27-e-05",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the pillar hooks and fillets of the court made of?",
+  "choices": [
+   "Gold",
+   "Silver",
+   "Brass",
+   "Iron"
+  ],
+  "answer": 1,
+  "explanation": "The hooks of the pillars and their fillets shall be of silver.",
+  "ref": "Exodus 27:10"
+ },
+ {
+  "id": "exodus-27-e-06",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What metal were the sockets of the court pillars?",
+  "choices": [
+   "Brass",
+   "Silver",
+   "Gold",
+   "Iron"
+  ],
+  "answer": 0,
+  "explanation": "Their twenty pillars and their twenty sockets shall be of brass.",
+  "ref": "Exodus 27:10"
+ },
+ {
+  "id": "exodus-27-e-07",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the staves of the altar for?",
+  "choices": [
+   "To burn the fire",
+   "To hang the curtains",
+   "To measure it",
+   "To bear it"
+  ],
+  "answer": 3,
+  "explanation": "The staves shall be upon the two sides of the altar, to bear it.",
+  "ref": "Exodus 27:7"
+ },
+ {
+  "id": "exodus-27-e-08",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was the altar to be made, as it was shewed in the mount?",
+  "choices": [
+   "Of solid stone",
+   "Of solid brass",
+   "Hollow with boards",
+   "Of earth"
+  ],
+  "answer": 2,
+  "explanation": "Hollow with boards shalt thou make it: as it was shewed thee in the mount.",
+  "ref": "Exodus 27:8"
+ },
+ {
+  "id": "exodus-27-e-09",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Aaron and his sons order the lamp?",
+  "choices": [
+   "In the court",
+   "In the tabernacle without the vail",
+   "At the altar of burnt offering",
+   "Behind the veil"
+  ],
+  "answer": 1,
+  "explanation": "In the tabernacle of the congregation without the vail, Aaron and his sons shall order it.",
+  "ref": "Exodus 27:21"
+ },
+ {
+  "id": "exodus-27-e-10",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was the ordinance of the lamp to last?",
+  "choices": [
+   "For ever, throughout their generations",
+   "Until they reached Canaan",
+   "One year",
+   "Seven years"
+  ],
+  "answer": 0,
+  "explanation": "It shall be a statute for ever unto their generations.",
+  "ref": "Exodus 27:21"
+ },
+ {
+  "id": "exodus-27-m-01",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long and broad was the altar to be?",
+  "choices": [
+   "Three cubits",
+   "Ten cubits",
+   "Seven cubits",
+   "Five cubits"
+  ],
+  "answer": 3,
+  "explanation": "An altar... five cubits long, and five cubits broad.",
+  "ref": "Exodus 27:1"
+ },
+ {
+  "id": "exodus-27-m-02",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How high was the altar to be?",
+  "choices": [
+   "Five cubits",
+   "Two cubits",
+   "Three cubits",
+   "Ten cubits"
+  ],
+  "answer": 2,
+  "explanation": "The height thereof shall be three cubits.",
+  "ref": "Exodus 27:1"
+ },
+ {
+  "id": "exodus-27-m-03",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was made for the altar out of brass in the form of a net?",
+  "choices": [
+   "A bowl of gold",
+   "A grate of network",
+   "A roof of boards",
+   "A lid of linen"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt make for it a grate of network of brass.",
+  "ref": "Exodus 27:4"
+ },
+ {
+  "id": "exodus-27-m-04",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many brass rings were on the grate?",
+  "choices": [
+   "Four",
+   "Two",
+   "Six",
+   "Eight"
+  ],
+  "answer": 0,
+  "explanation": "Upon the net shalt thou make four brasen rings in the four corners thereof.",
+  "ref": "Exodus 27:4"
+ },
+ {
+  "id": "exodus-27-m-05",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the staves of the altar made of?",
+  "choices": [
+   "Pure gold",
+   "Brass throughout",
+   "Cedar",
+   "Shittim wood overlaid with brass"
+  ],
+  "answer": 3,
+  "explanation": "Staves of shittim wood, and overlay them with brass.",
+  "ref": "Exodus 27:6"
+ },
+ {
+  "id": "exodus-27-m-06",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long were the hangings on the south side of the court?",
+  "choices": [
+   "Fifty cubits",
+   "Twenty cubits",
+   "A hundred cubits",
+   "Five cubits"
+  ],
+  "answer": 2,
+  "explanation": "Hangings for the court of fine twined linen of an hundred cubits long for one side.",
+  "ref": "Exodus 27:9"
+ },
+ {
+  "id": "exodus-27-m-07",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many pillars were on the south side of the court?",
+  "choices": [
+   "Ten",
+   "Twenty",
+   "Fifteen",
+   "Fifty"
+  ],
+  "answer": 1,
+  "explanation": "The twenty pillars thereof and their twenty sockets shall be of brass.",
+  "ref": "Exodus 27:10"
+ },
+ {
+  "id": "exodus-27-m-08",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How wide were the hangings on the west side of the court?",
+  "choices": [
+   "Fifty cubits",
+   "A hundred cubits",
+   "Twenty cubits",
+   "Fifteen cubits"
+  ],
+  "answer": 0,
+  "explanation": "The breadth of the court on the west side shall be hangings of fifty cubits.",
+  "ref": "Exodus 27:12"
+ },
+ {
+  "id": "exodus-27-m-09",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many pillars were on the west side?",
+  "choices": [
+   "Twenty",
+   "Four",
+   "Three",
+   "Ten"
+  ],
+  "answer": 3,
+  "explanation": "Their pillars ten, and their sockets ten.",
+  "ref": "Exodus 27:12"
+ },
+ {
+  "id": "exodus-27-m-10",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was the hanging for the gate of the court?",
+  "choices": [
+   "Fifteen cubits",
+   "Fifty cubits",
+   "Twenty cubits",
+   "Ten cubits"
+  ],
+  "answer": 2,
+  "explanation": "For the gate of the court shall be an hanging of twenty cubits.",
+  "ref": "Exodus 27:16"
+ },
+ {
+  "id": "exodus-27-m-11",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What colors were the hanging for the gate of the court?",
+  "choices": [
+   "White and gold",
+   "Blue, purple and scarlet with fine twined linen",
+   "Red and green",
+   "Black and silver"
+  ],
+  "answer": 1,
+  "explanation": "An hanging of blue, and purple, and scarlet, and fine twined linen, wrought with needlework.",
+  "ref": "Exodus 27:16"
+ },
+ {
+  "id": "exodus-27-m-12",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How wide were the hangings on each side of the gate?",
+  "choices": [
+   "Fifteen cubits",
+   "Twenty cubits",
+   "Ten cubits",
+   "Fifty cubits"
+  ],
+  "answer": 0,
+  "explanation": "The hangings of one side of the gate shall be fifteen cubits.",
+  "ref": "Exodus 27:14"
+ },
+ {
+  "id": "exodus-27-m-13",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How high was the court to be?",
+  "choices": [
+   "Ten cubits",
+   "Three cubits",
+   "Fifteen cubits",
+   "Five cubits"
+  ],
+  "answer": 3,
+  "explanation": "The height five cubits of fine twined linen.",
+  "ref": "Exodus 27:18"
+ },
+ {
+  "id": "exodus-27-m-14",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the pins of the tabernacle and the court made of?",
+  "choices": [
+   "Silver",
+   "Gold",
+   "Brass",
+   "Wood"
+  ],
+  "answer": 2,
+  "explanation": "All the pins of the court, shall be of brass.",
+  "ref": "Exodus 27:19"
+ },
+ {
+  "id": "exodus-27-h-01",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the brass grate to be put?",
+  "choices": [
+   "On top of the altar",
+   "Under the compass of the altar, to its midst",
+   "Inside the court gate",
+   "Beside the laver"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt put it under the compass of the altar beneath, that the net may be even to the midst of the altar.",
+  "ref": "Exodus 27:5"
+ },
+ {
+  "id": "exodus-27-h-02",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were the four rings of the grate to be put?",
+  "choices": [
+   "In its four corners",
+   "On the altar's horns",
+   "On the staves",
+   "Along the top"
+  ],
+  "answer": 0,
+  "explanation": "Four brasen rings in the four corners thereof.",
+  "ref": "Exodus 27:4"
+ },
+ {
+  "id": "exodus-27-h-03",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many pillars were on each side of the gate?",
+  "choices": [
+   "Two",
+   "Four",
+   "Five",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "Their pillars three, and their sockets three.",
+  "ref": "Exodus 27:14"
+ },
+ {
+  "id": "exodus-27-h-04",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many pillars stood at the gate of the court itself?",
+  "choices": [
+   "Three",
+   "Five",
+   "Four",
+   "Two"
+  ],
+  "answer": 2,
+  "explanation": "Their pillars shall be four, and their sockets four.",
+  "ref": "Exodus 27:16"
+ },
+ {
+  "id": "exodus-27-h-05",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How wide was the east end of the court?",
+  "choices": [
+   "A hundred cubits",
+   "Fifty cubits",
+   "Twenty cubits",
+   "Fifteen cubits"
+  ],
+  "answer": 1,
+  "explanation": "The breadth of the court on the east side eastward shall be fifty cubits.",
+  "ref": "Exodus 27:13"
+ },
+ {
+  "id": "exodus-27-h-06",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who were to bring the pure olive oil for the light?",
+  "choices": [
+   "The children of Israel",
+   "The Levites",
+   "Aaron's sons",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt command the children of Israel, that they bring thee pure oil olive beaten for the light.",
+  "ref": "Exodus 27:20"
+ },
+ {
+  "id": "exodus-27-h-07",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what hours were Aaron and his sons to order the lamp?",
+  "choices": [
+   "Morning to evening",
+   "Only on the Sabbath",
+   "From dawn to noon",
+   "From evening to morning"
+  ],
+  "answer": 3,
+  "explanation": "Aaron and his sons shall order it from evening to morning before the LORD.",
+  "ref": "Exodus 27:21"
+ },
+ {
+  "id": "exodus-27-h-08",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these was among the vessels of the altar?",
+  "choices": [
+   "Spoons of gold",
+   "Snuffdishes",
+   "Fleshhooks",
+   "Tongs of silver"
+  ],
+  "answer": 2,
+  "explanation": "His pans, and his shovels, and his basons, and his fleshhooks, and his firepans.",
+  "ref": "Exodus 27:3"
+ },
+ {
+  "id": "exodus-27-h-09",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long were the hangings on the north side of the court?",
+  "choices": [
+   "Fifty cubits",
+   "A hundred cubits",
+   "Fifteen cubits",
+   "Twenty cubits"
+  ],
+  "answer": 1,
+  "explanation": "For the north side in length there shall be hangings an hundred cubits long.",
+  "ref": "Exodus 27:11"
+ },
+ {
+  "id": "exodus-27-h-10",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sockets of brass were on the north side?",
+  "choices": [
+   "Twenty",
+   "Ten",
+   "Three",
+   "Fifteen"
+  ],
+  "answer": 0,
+  "explanation": "His twenty pillars and their twenty sockets of brass.",
+  "ref": "Exodus 27:11"
+ },
+ {
+  "id": "exodus-27-h-11",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many hangings of fifteen cubits flanked the gate of the court?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "One"
+  ],
+  "answer": 0,
+  "explanation": "The hangings of one side of the gate shall be fifteen cubits, and on the other side fifteen cubits.",
+  "ref": "Exodus 27:14–15"
+ },
+ {
+  "id": "exodus-27-h-12",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the length of the court overall?",
+  "choices": [
+   "Fifty cubits",
+   "Two hundred cubits",
+   "A hundred cubits",
+   "Twenty cubits"
+  ],
+  "answer": 2,
+  "explanation": "The length of the court shall be an hundred cubits, and the breadth fifty every where.",
+  "ref": "Exodus 27:18"
+ },
+ {
+  "id": "exodus-27-h-13",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the oil for the lamp to cause it to do?",
+  "choices": [
+   "Burn at night only",
+   "Burn always",
+   "Burn on feast days",
+   "Burn until morning only"
+  ],
+  "answer": 1,
+  "explanation": "Bring thee pure oil olive beaten for the light, to cause the lamp to burn always.",
+  "ref": "Exodus 27:20"
+ },
+ {
+  "id": "exodus-27-h-14",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before what was the lamp to be ordered by Aaron and his sons?",
+  "choices": [
+   "The testimony",
+   "The altar of burnt offering",
+   "The laver",
+   "The court gate"
+  ],
+  "answer": 0,
+  "explanation": "Aaron and his sons shall order it from evening to morning before the LORD, before the testimony.",
+  "ref": "Exodus 27:21"
+ },
+ {
+  "id": "exodus-27-h-15",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On whose behalf was the lamp ordering a statute for ever?",
+  "choices": [
+   "The children of Israel",
+   "The Levites",
+   "All the nations",
+   "The priests alone"
+  ],
+  "answer": 0,
+  "explanation": "It shall be a statute for ever unto their generations on the behalf of the children of Israel.",
+  "ref": "Exodus 27:21"
+ },
+ {
+  "id": "exodus-27-m-15",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the horns of the altar to be made?",
+  "choices": [
+   "Of separate gold",
+   "Of the same piece as the altar",
+   "Of cedar wood",
+   "Of silver"
+  ],
+  "answer": 1,
+  "explanation": "His horns shall be of the same, and thou shalt overlay it with brass.",
+  "ref": "Exodus 27:2"
+ },
+ {
   "id": "old-exodus-28-1",
   "chapter": 28,
   "level": "beginner",
