@@ -2148,16 +2148,16 @@
   "chapter": 7,
   "level": "beginner",
   "category": "keyword",
-  "question": "How many days did it rain on the earth?",
+  "question": "How much of all the LORD commanded did Noah do?",
   "choices": [
-   "7",
-   "30",
-   "40",
-   "150"
+   "All of it",
+   "Half of it",
+   "Most of it",
+   "None of it"
   ],
-  "answer": 2,
-  "explanation": "Rain fell for forty days and forty nights.",
-  "ref": "Genesis 7:12"
+  "answer": 0,
+  "explanation": "Noah did according unto all that the LORD commanded him.",
+  "ref": "Genesis 7:5"
  },
  {
   "id": "old-genesis-7-4",
@@ -2190,6 +2190,294 @@
   "answer": 1,
   "explanation": "The waters prevailed fifteen cubits upward over the mountains.",
   "ref": "Genesis 7:20"
+ },
+ {
+  "id": "genesis-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were beasts that were not clean taken into the ark?",
+  "choices": [
+   "By sevens",
+   "By two, the male and his female",
+   "By tens",
+   "One only of each kind"
+  ],
+  "answer": 1,
+  "explanation": "Of beasts that are not clean by two, the male and his female.",
+  "ref": "Genesis 7:2"
+ },
+ {
+  "id": "genesis-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Which sons of Noah entered the ark with him?",
+  "choices": [
+   "Shem, Ham, and Japheth",
+   "Cain, Abel, and Seth",
+   "Shem and Ham only",
+   "Japheth and Lamech"
+  ],
+  "answer": 0,
+  "explanation": "Entered Noah, and Shem, and Ham, and Japheth, the sons of Noah.",
+  "ref": "Genesis 7:13"
+ },
+ {
+  "id": "genesis-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the LORD tell Noah to bring into the ark?",
+  "choices": [
+   "Only his sons",
+   "Only the animals",
+   "His neighbours",
+   "All his house"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said unto Noah, Come thou and all thy house into the ark.",
+  "ref": "Genesis 7:1"
+ },
+ {
+  "id": "genesis-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day of the month did the fountains of the great deep break up?",
+  "choices": [
+   "The first",
+   "The seventh",
+   "The seventeenth",
+   "The twenty-seventh"
+  ],
+  "answer": 2,
+  "explanation": "In the second month, the seventeenth day of the month, were all the fountains of the great deep broken up.",
+  "ref": "Genesis 7:11"
+ },
+ {
+  "id": "genesis-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month of Noah’s six hundredth year did the flood begin?",
+  "choices": [
+   "The first month",
+   "The second month",
+   "The seventh month",
+   "The tenth month"
+  ],
+  "answer": 1,
+  "explanation": "In the six hundredth year of Noah’s life, in the second month, the seventeenth day.",
+  "ref": "Genesis 7:11"
+ },
+ {
+  "id": "genesis-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Noah’s sons and their wives enter the ark?",
+  "choices": [
+   "The selfsame day the fountains were broken up",
+   "Seven days before the flood",
+   "After the rain had stopped",
+   "After forty days"
+  ],
+  "answer": 0,
+  "explanation": "In the selfsame day entered Noah, and Shem, Ham, and Japheth, and Noah’s wife, and the three wives of his sons.",
+  "ref": "Genesis 7:11–13"
+ },
+ {
+  "id": "genesis-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was covered by the waters that prevailed exceedingly?",
+  "choices": [
+   "Only the valleys of the land",
+   "Only the fields of Noah",
+   "Only the cities of men",
+   "All the high hills under the whole heaven"
+  ],
+  "answer": 3,
+  "explanation": "The waters prevailed exceedingly; and all the high hills, that were under the whole heaven, were covered.",
+  "ref": "Genesis 7:19"
+ },
+ {
+  "id": "genesis-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which creatures that move on earth are listed as dying, besides fowl, cattle, beast and man?",
+  "choices": [
+   "Every fish",
+   "Every serpent only",
+   "Every creeping thing",
+   "Every tree"
+  ],
+  "answer": 2,
+  "explanation": "All flesh died, both of fowl, and of cattle, and of beast, and of every creeping thing that creepeth upon the earth, and every man.",
+  "ref": "Genesis 7:21"
+ },
+ {
+  "id": "genesis-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Noah and his family go into the ark?",
+  "choices": [
+   "Because of a great fire",
+   "Because of the waters of the flood",
+   "Because of a plague",
+   "Because of enemies"
+  ],
+  "answer": 1,
+  "explanation": "Noah went in, and his sons, and his wife, and his sons’ wives, because of the waters of the flood.",
+  "ref": "Genesis 7:7"
+ },
+ {
+  "id": "genesis-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened after the LORD shut Noah in?",
+  "choices": [
+   "The flood grew and bare up the ark",
+   "The rain stopped",
+   "The ark rested on a mountain",
+   "Noah opened the window"
+  ],
+  "answer": 0,
+  "explanation": "The LORD shut him in. And the flood was forty days upon the earth; and the waters increased, and bare up the ark.",
+  "ref": "Genesis 7:16–17"
+ },
+ {
+  "id": "genesis-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were those that died, in whose nostrils was the breath of life?",
+  "choices": [
+   "In the sea",
+   "In the cities only",
+   "In the ark",
+   "In the dry land"
+  ],
+  "answer": 3,
+  "explanation": "All in whose nostrils was the breath of life, of all that was in the dry land, died.",
+  "ref": "Genesis 7:22"
+ },
+ {
+  "id": "genesis-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What came upon the earth seven days after the LORD spoke to Noah?",
+  "choices": [
+   "A great wind",
+   "A great fire",
+   "The waters of the flood",
+   "A deep darkness"
+  ],
+  "answer": 2,
+  "explanation": "It came to pass after seven days, that the waters of the flood were upon the earth.",
+  "ref": "Genesis 7:10"
+ },
+ {
+  "id": "genesis-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were clean fowls of the air to be taken into the ark?",
+  "choices": [
+   "By twos only",
+   "By sevens, the male and the female",
+   "One of each kind",
+   "By tens"
+  ],
+  "answer": 1,
+  "explanation": "Of fowls also of the air by sevens, the male and the female.",
+  "ref": "Genesis 7:3"
+ },
+ {
+  "id": "genesis-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Noah’s life did the flood come?",
+  "choices": [
+   "The six hundredth",
+   "The five hundredth",
+   "The six hundred and first",
+   "The three hundredth"
+  ],
+  "answer": 0,
+  "explanation": "In the six hundredth year of Noah’s life the fountains of the great deep were broken up.",
+  "ref": "Genesis 7:11"
+ },
+ {
+  "id": "genesis-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say he would destroy from off the face of the earth?",
+  "choices": [
+   "Only the cities of men",
+   "Only the wicked kings",
+   "Every tree and field",
+   "Every living substance that he had made"
+  ],
+  "answer": 3,
+  "explanation": "Every living substance that I have made will I destroy from off the face of the earth.",
+  "ref": "Genesis 7:4"
+ },
+ {
+  "id": "genesis-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who entered the ark with Noah’s three sons on the selfsame day?",
+  "choices": [
+   "Noah’s brothers",
+   "Noah’s three daughters",
+   "Noah’s wife and the three wives of his sons",
+   "Methuselah and his wife"
+  ],
+  "answer": 2,
+  "explanation": "Noah, and Shem, and Ham, and Japheth, and Noah’s wife, and the three wives of his sons with them, into the ark.",
+  "ref": "Genesis 7:13"
+ },
+ {
+  "id": "genesis-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were clean beasts to be taken into the ark?",
+  "choices": [
+   "By twos only",
+   "By sevens, the male and his female",
+   "One of each kind",
+   "By tens"
+  ],
+  "answer": 1,
+  "explanation": "Of every clean beast thou shalt take to thee by sevens, the male and his female.",
+  "ref": "Genesis 7:2"
+ },
+ {
+  "id": "genesis-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which generation did the LORD say he had seen Noah righteous?",
+  "choices": [
+   "This generation",
+   "The first generation",
+   "The next generation",
+   "His father’s generation"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, For thee have I seen righteous before me in this generation.",
+  "ref": "Genesis 7:1"
  },
  {
   "id": "old-genesis-8-1",
