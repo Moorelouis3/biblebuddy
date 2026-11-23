@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-23-explained",
+    title: "1 Samuel 23 Explained: Keilah's Rescue and the Ziphites' Betrayal",
+    description:
+      "1 Samuel 23 explained verse by verse: David rescues Keilah, inquires through the ephod, Jonathan's last visit, and the Ziphites' betrayal at Maon.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-23-explained",
+    publishedAt: "2026-11-23",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 23 Explained 📖",
+      content:
+        "He rescues a town. The town is ready to hand him over anyway.\n\nThen the people who weren't even saved by him betray him too.\n\n📌 David asks God before he moves, twice in one chapter.\n\n📖 He saves Keilah from a Philistine raid.\n📖 The ephod tells him who would betray him.\n📖 A Philistine invasion is the only reason he isn't caught.\n\nNew article on:\n🟢 why David **inquires of the LORD** before acting\n🟢 **Jonathan's** last recorded visit with David\n🟢 the **Ziphites** who turn him in for nothing\n\nHave you ever done right by someone and had it cost you instead? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-22-explained",
     title: "1 Samuel 22 Explained: The Cave of Adullam and the Massacre at Nob",
     description:
