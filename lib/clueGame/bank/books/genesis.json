@@ -3904,6 +3904,294 @@
   "ref": "Genesis 12:13"
  },
  {
+  "id": "genesis-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would do to those who bless Abram?",
+  "choices": [
+   "Bless them",
+   "Curse them",
+   "Ignore them",
+   "Make them kings"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, I will bless them that bless thee.",
+  "ref": "Genesis 12:3"
+ },
+ {
+  "id": "genesis-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pharaoh tell Abram to do with Sarai?",
+  "choices": [
+   "Take her and go his way",
+   "Leave her in Egypt",
+   "Sell her",
+   "Give her to the princes"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh said, Behold thy wife, take her, and go thy way.",
+  "ref": "Genesis 12:19"
+ },
+ {
+  "id": "genesis-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abram say the Egyptians would say when they saw Sarai?",
+  "choices": [
+   "This is his wife",
+   "This is his sister",
+   "This is a queen",
+   "This is a stranger"
+  ],
+  "answer": 0,
+  "explanation": "Abram said the Egyptians would say, This is his wife: and they will kill me.",
+  "ref": "Genesis 12:12"
+ },
+ {
+  "id": "genesis-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD promise to do to Abram’s name?",
+  "choices": [
+   "Make it great",
+   "Change it",
+   "Write it in a book",
+   "Hide it"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, I will make of thee a great nation, and make thy name great.",
+  "ref": "Genesis 12:2"
+ },
+ {
+  "id": "genesis-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God told Abram, “thou shalt be a...” what?",
+  "choices": [
+   "Blessing",
+   "Shepherd",
+   "Judge",
+   "Priest"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, I will bless thee, and thou shalt be a blessing.",
+  "ref": "Genesis 12:2"
+ },
+ {
+  "id": "genesis-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides his country, what two things did the LORD tell Abram to leave?",
+  "choices": [
+   "His kindred and his father’s house",
+   "His flocks and his servants",
+   "His wife and Lot",
+   "His altar and his tent"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Get thee out of thy country, and from thy kindred, and from thy father’s house.",
+  "ref": "Genesis 12:1"
+ },
+ {
+  "id": "genesis-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was Lot related to Abram?",
+  "choices": [
+   "His brother",
+   "His brother’s son",
+   "His father’s brother",
+   "His wife’s brother"
+  ],
+  "answer": 1,
+  "explanation": "Abram took Lot his brother’s son.",
+  "ref": "Genesis 12:5"
+ },
+ {
+  "id": "genesis-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Abram passed through the land unto which plain?",
+  "choices": [
+   "The plain of Moreh",
+   "The plain of Mamre",
+   "The plain of Jordan",
+   "The plain of Shinar"
+  ],
+  "answer": 0,
+  "explanation": "Abram passed through the land unto the place of Sichem, unto the plain of Moreh.",
+  "ref": "Genesis 12:6"
+ },
+ {
+  "id": "genesis-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the chapter describe the famine in the land?",
+  "choices": [
+   "Short",
+   "Mild",
+   "Grievous",
+   "Hidden"
+  ],
+  "answer": 2,
+  "explanation": "The famine was grievous in the land.",
+  "ref": "Genesis 12:10"
+ },
+ {
+  "id": "genesis-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abram say the Egyptians would do with Sarai?",
+  "choices": [
+   "Save her alive",
+   "Take her to Pharaoh’s house",
+   "Send her away",
+   "Make her a servant"
+  ],
+  "answer": 0,
+  "explanation": "They will kill me, but they will save thee alive.",
+  "ref": "Genesis 12:12"
+ },
+ {
+  "id": "genesis-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides sheep, oxen and camels, which animals did Pharaoh give Abram?",
+  "choices": [
+   "Asses",
+   "Horses",
+   "Goats",
+   "Doves"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh gave Abram sheep, oxen, he asses, she asses, and camels.",
+  "ref": "Genesis 12:16"
+ },
+ {
+  "id": "genesis-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the LORD plague Pharaoh and his house?",
+  "choices": [
+   "Because of Sarai, Abram’s wife",
+   "Because of Lot",
+   "Because of Abram’s altar",
+   "Because of the famine"
+  ],
+  "answer": 0,
+  "explanation": "The LORD plagued Pharaoh and his house with great plagues because of Sarai Abram’s wife.",
+  "ref": "Genesis 12:17"
+ },
+ {
+  "id": "genesis-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh say he might have done if Abram had not said Sarai was his sister?",
+  "choices": [
+   "Taken her to wife",
+   "Sent her home",
+   "Killed Abram",
+   "Made her a servant"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh asked, Why saidst thou, She is my sister? so I might have taken her to me to wife.",
+  "ref": "Genesis 12:19"
+ },
+ {
+  "id": "genesis-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Abram tell Sarai to say she was his sister?",
+  "choices": [
+   "When they drew near to enter Egypt",
+   "After Pharaoh’s princes saw her",
+   "In the plain of Moreh",
+   "After the plagues began"
+  ],
+  "answer": 0,
+  "explanation": "When he was come near to enter into Egypt, he said unto Sarai his wife, Behold now, I know that thou art a fair woman.",
+  "ref": "Genesis 12:11"
+ },
+ {
+  "id": "genesis-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Pharaoh treat Abram because of Sarai?",
+  "choices": [
+   "He entreated him well",
+   "He threw him in prison",
+   "He ignored him",
+   "He made him a servant"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh entreated Abram well for her sake.",
+  "ref": "Genesis 12:16"
+ },
+ {
+  "id": "genesis-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh ask Abram when he called him?",
+  "choices": [
+   "What is this that thou hast done unto me?",
+   "Who is thy God?",
+   "Where is thy father’s house?",
+   "Why art thou in my land?"
+  ],
+  "answer": 0,
+  "explanation": "Pharaoh called Abram, and said, What is this that thou hast done unto me?",
+  "ref": "Genesis 12:18"
+ },
+ {
+  "id": "genesis-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many altars did Abram build in Canaan in this chapter?",
+  "choices": [
+   "Two",
+   "One",
+   "Three",
+   "Four"
+  ],
+  "answer": 0,
+  "explanation": "Abram built an altar at Sichem, and another near Bethel.",
+  "ref": "Genesis 12:7–8"
+ },
+ {
+  "id": "genesis-12-h-15",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Abram depart from Haran?",
+  "choices": [
+   "As the LORD had spoken to him",
+   "Because of a famine",
+   "Because Terah died",
+   "Because Lot asked him"
+  ],
+  "answer": 0,
+  "explanation": "Abram departed, as the LORD had spoken unto him.",
+  "ref": "Genesis 12:4"
+ },
+ {
   "id": "old-genesis-13-1",
   "chapter": 13,
   "level": "beginner",
