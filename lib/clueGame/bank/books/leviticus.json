@@ -4400,6 +4400,646 @@
   "ref": "Leviticus 7:25–27"
  },
  {
+  "id": "leviticus-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where was the trespass offering killed?",
+  "choices": [
+   "Where they kill the burnt offering",
+   "At the door of the camp",
+   "Outside the camp",
+   "Beside the laver"
+  ],
+  "answer": 0,
+  "explanation": "In the place where they kill the burnt offering shall they kill the trespass offering.",
+  "ref": "Leviticus 7:2"
+ },
+ {
+  "id": "leviticus-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where was the blood of the trespass offering sprinkled?",
+  "choices": [
+   "Round about upon the altar",
+   "On the people",
+   "On the ark",
+   "On the vail"
+  ],
+  "answer": 0,
+  "explanation": "The blood thereof shall he sprinkle round about upon the altar.",
+  "ref": "Leviticus 7:2"
+ },
+ {
+  "id": "leviticus-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who ate the trespass offering?",
+  "choices": [
+   "The elders",
+   "Every man in Israel",
+   "Every male among the priests",
+   "The strangers"
+  ],
+  "answer": 2,
+  "explanation": "Every male among the priests shall eat thereof: it shall be eaten in the holy place.",
+  "ref": "Leviticus 7:6"
+ },
+ {
+  "id": "leviticus-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priest that offered a man's burnt offering keep for himself?",
+  "choices": [
+   "The fat",
+   "The skin",
+   "The kidneys",
+   "The head"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall have to himself the skin of the burnt offering which he hath offered.",
+  "ref": "Leviticus 7:8"
+ },
+ {
+  "id": "leviticus-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of cakes went with the thanksgiving offering?",
+  "choices": [
+   "Barley cakes with leaven only",
+   "Unleavened cakes mingled with oil",
+   "Dried figs",
+   "Honey cakes"
+  ],
+  "answer": 1,
+  "explanation": "He shall offer unleavened cakes mingled with oil, and unleavened wafers anointed with oil.",
+  "ref": "Leviticus 7:12"
+ },
+ {
+  "id": "leviticus-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When was the flesh of a thanksgiving peace offering eaten?",
+  "choices": [
+   "At the next feast",
+   "The same day it was offered",
+   "On the third day",
+   "After a week"
+  ],
+  "answer": 1,
+  "explanation": "It shall be eaten the same day that it is offered; he shall not leave any of it until the morning.",
+  "ref": "Leviticus 7:15"
+ },
+ {
+  "id": "leviticus-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was done with the flesh left on the third day?",
+  "choices": [
+   "It was salted",
+   "It was eaten",
+   "It was burnt with fire",
+   "It was given to the poor"
+  ],
+  "answer": 2,
+  "explanation": "The remainder of the flesh on the third day shall be burnt with fire.",
+  "ref": "Leviticus 7:17"
+ },
+ {
+  "id": "leviticus-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were Israel forbidden to eat besides fat?",
+  "choices": [
+   "Honey",
+   "Blood",
+   "Fruit",
+   "Salt"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall eat no manner of blood, whether it be of fowl or of beast.",
+  "ref": "Leviticus 7:26"
+ },
+ {
+  "id": "leviticus-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to a soul that ate the fat or blood?",
+  "choices": [
+   "He fasted",
+   "He was fined",
+   "He was beaten",
+   "He was cut off from his people"
+  ],
+  "answer": 3,
+  "explanation": "Whatsoever soul it be that eateth any manner of blood, even that soul shall be cut off from his people.",
+  "ref": "Leviticus 7:27"
+ },
+ {
+  "id": "leviticus-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which part of the peace offering was waved as a wave offering?",
+  "choices": [
+   "The head",
+   "The skin",
+   "The breast",
+   "The tail"
+  ],
+  "answer": 2,
+  "explanation": "The breast may be waved for a wave offering before the LORD.",
+  "ref": "Leviticus 7:30"
+ },
+ {
+  "id": "leviticus-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What fat was Israel told never to eat?",
+  "choices": [
+   "The fat of ox, sheep or goat",
+   "Only the fat of fish",
+   "Only the fat of the camel",
+   "Only fat of birds"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall eat no manner of fat, of ox, or of sheep, or of goat.",
+  "ref": "Leviticus 7:23"
+ },
+ {
+  "id": "leviticus-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What could be done with the fat of a beast that died of itself?",
+  "choices": [
+   "It could be offered",
+   "It could be eaten",
+   "It must be buried",
+   "It could be used in any other use"
+  ],
+  "answer": 3,
+  "explanation": "The fat of the beast that dieth of itself may be used in any other use: but ye shall in no wise eat of it.",
+  "ref": "Leviticus 7:24"
+ },
+ {
+  "id": "leviticus-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest do with the fat of the peace offerings?",
+  "choices": [
+   "Burned it upon the altar",
+   "Ate it",
+   "Buried it",
+   "Gave it to the poor"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall burn the fat upon the altar.",
+  "ref": "Leviticus 7:31"
+ },
+ {
+  "id": "leviticus-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did the wave breast of the peace offerings belong?",
+  "choices": [
+   "Moses only",
+   "Aaron and his sons",
+   "The elders",
+   "The people"
+  ],
+  "answer": 1,
+  "explanation": "The breast shall be Aaron's and his sons'.",
+  "ref": "Leviticus 7:31"
+ },
+ {
+  "id": "leviticus-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which shoulder was given to the priest as a heave offering?",
+  "choices": [
+   "Both shoulders",
+   "The back",
+   "The left shoulder",
+   "The right shoulder"
+  ],
+  "answer": 3,
+  "explanation": "The right shoulder shall ye give unto the priest for an heave offering.",
+  "ref": "Leviticus 7:32"
+ },
+ {
+  "id": "leviticus-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened if the peace offering flesh was eaten on the third day?",
+  "choices": [
+   "It was salted",
+   "It was not accepted but an abomination",
+   "It was fine",
+   "It was half burned"
+  ],
+  "answer": 1,
+  "explanation": "If any of the flesh be eaten at all on the third day, it shall not be accepted; it shall be an abomination.",
+  "ref": "Leviticus 7:18"
+ },
+ {
+  "id": "leviticus-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done to flesh that touched an unclean thing?",
+  "choices": [
+   "It was burnt with fire",
+   "It was eaten",
+   "It was washed",
+   "It was sold"
+  ],
+  "answer": 0,
+  "explanation": "The flesh that toucheth any unclean thing shall not be eaten; it shall be burnt with fire.",
+  "ref": "Leviticus 7:19"
+ },
+ {
+  "id": "leviticus-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to one who ate peace offering flesh while unclean?",
+  "choices": [
+   "He washed",
+   "He fasted",
+   "He paid a ram",
+   "He was cut off from his people"
+  ],
+  "answer": 3,
+  "explanation": "The soul that eateth of the flesh, having his uncleanness upon him, shall be cut off from his people.",
+  "ref": "Leviticus 7:20"
+ },
+ {
+  "id": "leviticus-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the meat offerings of the sons of Aaron shared?",
+  "choices": [
+   "By lot",
+   "The younger took double",
+   "The eldest took most",
+   "One as much as another"
+  ],
+  "answer": 3,
+  "explanation": "Every meat offering, mingled with oil, and dry, shall all the sons of Aaron have, one as much as another.",
+  "ref": "Leviticus 7:10"
+ },
+ {
+  "id": "leviticus-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When might a peace offering be eaten on the morrow too?",
+  "choices": [
+   "If it was a sin offering",
+   "If it was a vow or voluntary offering",
+   "If it was a thanksgiving",
+   "If it was a burnt offering"
+  ],
+  "answer": 1,
+  "explanation": "If the sacrifice of his offering be a vow, or a voluntary offering, it shall be eaten the same day, and on the morrow also.",
+  "ref": "Leviticus 7:16"
+ },
+ {
+  "id": "leviticus-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What leavened thing was offered besides the cakes?",
+  "choices": [
+   "Dried meat",
+   "Leavened bread",
+   "Leaven alone",
+   "Honey"
+  ],
+  "answer": 1,
+  "explanation": "Besides the cakes, he shall offer for his offering leavened bread with the sacrifice of thanksgiving.",
+  "ref": "Leviticus 7:13"
+ },
+ {
+  "id": "leviticus-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the offering of one cake out of the whole called?",
+  "choices": [
+   "An heave offering",
+   "A sin offering",
+   "A vow",
+   "A drink offering"
+  ],
+  "answer": 0,
+  "explanation": "He shall offer one out of the whole oblation for an heave offering unto the LORD.",
+  "ref": "Leviticus 7:14"
+ },
+ {
+  "id": "leviticus-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who offered the blood of the peace offerings and the fat and had the right shoulder?",
+  "choices": [
+   "Any Israelite",
+   "The son of Aaron",
+   "The people",
+   "Moses"
+  ],
+  "answer": 1,
+  "explanation": "He among the sons of Aaron, that offereth the blood of the peace offerings, shall have the right shoulder for his part.",
+  "ref": "Leviticus 7:33"
+ },
+ {
+  "id": "leviticus-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the LORD taken of Israel's peace offerings for Aaron?",
+  "choices": [
+   "The head and skin",
+   "The two kidneys",
+   "The fat",
+   "The wave breast and heave shoulder"
+  ],
+  "answer": 3,
+  "explanation": "The wave breast and the heave shoulder have I taken of the children of Israel from off the sacrifices of their peace offerings.",
+  "ref": "Leviticus 7:34"
+ },
+ {
+  "id": "leviticus-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest burn upon the altar from the trespass offering?",
+  "choices": [
+   "The fat, the kidneys and the caul above the liver",
+   "The head and the skin",
+   "The whole beast",
+   "The breast and shoulder"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall burn them upon the altar for an offering made by fire unto the LORD.",
+  "ref": "Leviticus 7:3–5"
+ },
+ {
+  "id": "leviticus-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who got the one cake taken from the thanksgiving oblation as a heave offering?",
+  "choices": [
+   "The priest that sprinkled the blood of the peace offerings",
+   "Moses",
+   "Every Levite",
+   "The man who offered it"
+  ],
+  "answer": 0,
+  "explanation": "It shall be the priest's that sprinkleth the blood of the peace offerings.",
+  "ref": "Leviticus 7:14"
+ },
+ {
+  "id": "leviticus-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many laws are there for the sin offering and the trespass offering?",
+  "choices": [
+   "Three",
+   "One",
+   "Two",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "As the sin offering is, so is the trespass offering: there is one law for them.",
+  "ref": "Leviticus 7:7"
+ },
+ {
+  "id": "leviticus-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many kidneys were taken with the fat of the trespass offering?",
+  "choices": [
+   "Four",
+   "One",
+   "Two",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "And the two kidneys, and the fat that is on them, which is by the flanks.",
+  "ref": "Leviticus 7:4"
+ },
+ {
+  "id": "leviticus-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which baked meat offerings were the priest's who offered them?",
+  "choices": [
+   "Only the raw flour",
+   "Only the oil",
+   "None of them",
+   "Those baken in the oven, fryingpan and pan"
+  ],
+  "answer": 3,
+  "explanation": "All the meat offering that is baken in the oven, and dressed in the fryingpan, and in the pan, shall be the priest's.",
+  "ref": "Leviticus 7:9"
+ },
+ {
+  "id": "leviticus-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the blood of beasts, the blood of what was forbidden?",
+  "choices": [
+   "Fish",
+   "Fowl",
+   "Locusts",
+   "Doves only"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall eat no manner of blood, whether it be of fowl or of beast.",
+  "ref": "Leviticus 7:26"
+ },
+ {
+  "id": "leviticus-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was the wave breast and heave shoulder to be Aaron's sons' portion?",
+  "choices": [
+   "By a statute for ever",
+   "Until the Jubilee",
+   "For seven years",
+   "Until the land was entered"
+  ],
+  "answer": 0,
+  "explanation": "Have given them unto Aaron the priest and unto his sons by a statute for ever.",
+  "ref": "Leviticus 7:34"
+ },
+ {
+  "id": "leviticus-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was to bring the fat with the breast with his own hands?",
+  "choices": [
+   "A Levite",
+   "The priest",
+   "The man who offered the peace offering",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "His own hands shall bring the offerings of the LORD made by fire, the fat with the breast.",
+  "ref": "Leviticus 7:29–30"
+ },
+ {
+  "id": "leviticus-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was allowed to eat the flesh of the peace offerings?",
+  "choices": [
+   "Only males",
+   "All that are clean",
+   "Only the poor",
+   "Only priests"
+  ],
+  "answer": 1,
+  "explanation": "As for the flesh, all that be clean shall eat thereof.",
+  "ref": "Leviticus 7:19"
+ },
+ {
+  "id": "leviticus-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the right shoulder of the peace offerings called?",
+  "choices": [
+   "A wave offering",
+   "A free will offering",
+   "A drink offering",
+   "A heave offering"
+  ],
+  "answer": 3,
+  "explanation": "The right shoulder shall ye give unto the priest for an heave offering.",
+  "ref": "Leviticus 7:32"
+ },
+ {
+  "id": "leviticus-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the fat on the kidneys found?",
+  "choices": [
+   "Under the breast",
+   "Beside the liver",
+   "At the shoulder",
+   "By the flanks"
+  ],
+  "answer": 3,
+  "explanation": "The two kidneys, and the fat that is on them, which is by the flanks.",
+  "ref": "Leviticus 7:4"
+ },
+ {
+  "id": "leviticus-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the offerings of burnt, meat, sin, trespass and peace, what law ends the list?",
+  "choices": [
+   "The Passover",
+   "The vow",
+   "The Sabbath",
+   "The consecrations"
+  ],
+  "answer": 3,
+  "explanation": "This is the law of the burnt offering, the meat offering, the sin offering, the trespass offering, and of the consecrations, and of the sacrifice of the peace offerings.",
+  "ref": "Leviticus 7:37"
+ },
+ {
+  "id": "leviticus-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the trespass offering to be eaten?",
+  "choices": [
+   "In the holy place",
+   "Outside the camp",
+   "In the field",
+   "At the door of the camp"
+  ],
+  "answer": 0,
+  "explanation": "It shall be eaten in the holy place: it is most holy.",
+  "ref": "Leviticus 7:6"
+ },
+ {
+  "id": "leviticus-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Above which organ was the caul to be taken away?",
+  "choices": [
+   "The heart",
+   "The stomach",
+   "The lung",
+   "The liver"
+  ],
+  "answer": 3,
+  "explanation": "The caul that is above the liver, with the kidneys, it shall he take away.",
+  "ref": "Leviticus 7:4"
+ },
+ {
+  "id": "leviticus-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The one who offered a vow could eat the flesh the day he offered it and when else?",
+  "choices": [
+   "On the morrow also",
+   "Not again",
+   "At the next feast",
+   "On the third day"
+  ],
+  "answer": 0,
+  "explanation": "If the sacrifice of his offering be a vow, it shall be eaten the same day, and on the morrow also the remainder of it shall be eaten.",
+  "ref": "Leviticus 7:16"
+ },
+ {
+  "id": "leviticus-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what were the unleavened wafers anointed?",
+  "choices": [
+   "Water",
+   "Honey",
+   "Blood",
+   "Oil"
+  ],
+  "answer": 3,
+  "explanation": "He shall offer unleavened cakes mingled with oil, and unleavened wafers anointed with oil.",
+  "ref": "Leviticus 7:12"
+ },
+ {
   "id": "old-leviticus-8-1",
   "chapter": 8,
   "level": "beginner",
