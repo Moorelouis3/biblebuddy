@@ -14,14 +14,14 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { bookItems, loadBook, selectionToKeys } from "@/lib/clueGame/bank";
-import { createMatch, ROUND_INTRO_MS, soloSetup, type ClueSelection, type PublicCard } from "@/lib/clueGame/engine";
+import { createMatch, SOLO_SETTINGS, soloSetup, type ClueSelection, type PublicCard } from "@/lib/clueGame/engine";
 import { LEVEL_LABEL, LEVEL_PICKER, type ClueLevel, type ClueRef } from "@/lib/clueGame/types";
 import { trackClue } from "@/lib/clueGame/track";
 import ClueTable from "./ClueTable";
 import ClueResults, { ReviewList } from "./ClueResults";
 import ChallengeChoices from "./BuddyChallenge";
 import { ClueHeader, ClueRoomFrame, ScriptureSheet, StudyCard } from "./ClueParts";
-import { useLocalMatch } from "./useLocalMatch";
+import { introMs, useLocalMatch } from "./useLocalMatch";
 
 export type ChapterTriviaResult = {
   right: number;
@@ -49,7 +49,7 @@ function Round({
   const deckIds = selectionToKeys(selection);
   const [roundId, setRoundId] = useState(newRoundId);
   const { match, view, now, act, reset } = useLocalMatch(
-    () => createMatch({ items: bookItems(selection.book), selection, ...soloSetup("me", "You"), seed: newSeed() }),
+    () => createMatch({ items: bookItems(selection.book), selection, ...soloSetup("me", "You"), settings: SOLO_SETTINGS, seed: newSeed() }),
     { mode: "solo", deckIds },
   );
   const [study, setStudy] = useState<PublicCard | null>(null);
@@ -58,7 +58,7 @@ function Round({
   const reported = useRef(false);
 
   useEffect(() => {
-    if (match.phase === "ready") act({ type: "deal", now: Date.now() + ROUND_INTRO_MS });
+    if (match.phase === "ready") act({ type: "deal", now: Date.now() + introMs() });
   }, [match.phase, act]);
 
   const regular = match.done.filter((d) => !d.tiebreak);
@@ -77,7 +77,7 @@ function Round({
   }, [match.phase]);
 
   const playAgain = () => {
-    reset(createMatch({ items: bookItems(selection.book), selection, ...soloSetup("me", "You"), seed: newSeed(), avoid: match.deck }));
+    reset(createMatch({ items: bookItems(selection.book), selection, ...soloSetup("me", "You"), settings: SOLO_SETTINGS, seed: newSeed(), avoid: match.deck }));
     reported.current = false;
     setRoundId(newRoundId());
     setReview(false);
@@ -98,6 +98,8 @@ function Round({
         deckIds={deckIds}
         roundLabel={label}
         onAnswer={(choice) => act({ type: "answer", playerId: "me", choice })}
+        onNext={() => act({ type: "next" })}
+        onLifeline={(kind) => act({ type: kind, playerId: "me" })}
         isHost
         onPause={() => act({ type: "pause" })}
         onResume={() => act({ type: "resume" })}
@@ -125,7 +127,7 @@ function Round({
                   <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big" onClick={onExit}>
                     ✓ Done
                   </button>
-                  <ChallengeChoices key={roundId} body={{ roundId, selection, cardIds: match.deck, score: match.scores.me ?? 0, won: right }} />
+                  <ChallengeChoices key={roundId} body={{ roundId, selection, cardIds: match.deck, score: match.scores.me ?? 0, won: right, speed: true }} />
                 </>
               }
               secondary={

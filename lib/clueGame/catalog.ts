@@ -58,9 +58,36 @@ export const CLUE_DECKS: ClueDeck[] = [...OLD.map((b) => [b, "old"] as const), .
 
 export const deckById = (id: string) => CLUE_DECKS.find((d) => d.id === id);
 
-/** The board scene for a game: the first chosen deck that has one, else Genesis. */
-export const sceneFor = (deckIds: string[] | undefined): ClueScene =>
-  (deckIds || []).map((id) => deckById(id)?.scene).find(Boolean) || SCENES.genesis;
+/**
+ * Each book its own scene (Louis, 2026-11-23: "a different scene for each
+ * book"): the Bible Buddy Match board backgrounds, painted for these books,
+ * with a calm middle where the question sits. Which one follows the first
+ * chapter played, so a chapter keeps its scene. Genesis keeps its campsite.
+ */
+const MATCH_SCENES: Record<string, number> = {
+  exodus: 12,
+  leviticus: 10,
+  numbers: 10,
+  deuteronomy: 10,
+  joshua: 10,
+  judges: 10,
+  ruth: 10,
+  "1-samuel": 10,
+};
+
+/** The board scene for a game, from its selection keys (book, level, chapters). */
+export const sceneFor = (deckIds: string[] | undefined): ClueScene => {
+  const keys = deckIds || [];
+  const book = keys.find((k) => !k.includes(":"));
+  const boards = book ? MATCH_SCENES[book] : undefined;
+  if (book && boards) {
+    const ch = Number(keys.find((k) => k.startsWith("chapters:"))?.slice(9).split(",")[0]) || 1;
+    const n = String(((ch - 1) % boards) + 1).padStart(2, "0");
+    const dir = `/games/match/boards/${book}-${n}`;
+    return { phone: `${dir}/background-phone.webp`, desktop: `${dir}/background-desktop.webp` };
+  }
+  return keys.map((id) => deckById(id)?.scene).find(Boolean) || SCENES.genesis;
+};
 
 /** Every playable card, by id. Ids are unique across decks (prefix new decks' ids if a name repeats). */
 export const ALL_CLUE_CARDS = new Map<string, ClueCard>(

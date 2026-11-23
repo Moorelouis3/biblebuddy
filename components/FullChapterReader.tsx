@@ -2736,7 +2736,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                       <span className="text-xs font-semibold">Trivia</span>
                     </button>
                     <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
-                      {triviaDone ? "Trivia done" : "Chapter trivia"}
+                      {triviaDone ? "Trivia done · play again" : "Chapter trivia"}
                     </div>
 
                   </div>
@@ -2888,7 +2888,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                         className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${triviaDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:border-blue-200 hover:bg-blue-50"}`}
                       >
                         <span>Trivia Quiz</span>
-                        <span>{triviaDone ? "Done" : "Play"}</span>
+                        <span>{triviaDone ? "✓ Play again" : "Play"}</span>
                       </button>
                     ) : null}
 
@@ -3024,7 +3024,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                       className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${triviaDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] hover:brightness-95"}`}
                     >
                       <span>Trivia Quiz</span>
-                      <span>{triviaDone ? "Done" : "Play"}</span>
+                      <span>{triviaDone ? "✓ Play again" : "Play"}</span>
                     </button>
                   ) : null}
 

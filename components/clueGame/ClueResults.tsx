@@ -11,6 +11,7 @@ import type { ClueRef } from "@/lib/clueGame/types";
 import { clueSound } from "@/lib/clueGame/sound";
 import type { PublicCard, PublicMatch } from "@/lib/clueGame/engine";
 import { trackClue } from "@/lib/clueGame/track";
+import { fireConfettiBurst } from "@/lib/celebration";
 
 /**
  * The whole game, question by question, for after the last round: the
@@ -44,8 +45,10 @@ export function ReviewList({
           : mine === undefined
             ? "No answer · 0"
             : mine === right
-              ? "Right · +1"
-              : "Wrong · −1";
+              ? `Right · +${(youId ? c.points[youId] ?? 1 : 1).toLocaleString()}`
+              : (youId ? c.points[youId] ?? -1 : -1) < 0
+                ? "Wrong · −1"
+                : "Wrong · 0";
         const color = mine !== undefined && mine === right ? "#1d5a34" : mine !== undefined ? "#a3261b" : "#8a5a1a";
         return (
           <li key={`${c.id}-${i}`} className="bb-clue-review">
@@ -127,8 +130,27 @@ export default function ClueResults({
 }) {
   const [feedback, setFeedback] = useState<null | "up" | "down">(null);
   const [wantMore, setWantMore] = useState(false);
+  // 1 to 3 stars by how many were right (2026-11-23: "a better ending").
+  const share = total ? won / total : 0;
+  const stars = mode === "room" ? 0 : share >= 0.9 ? 3 : share >= 0.6 ? 2 : share >= 0.3 ? 1 : 0;
+  const [shownScore, setShownScore] = useState(0);
   useEffect(() => {
     clueSound.fanfare(heading !== "Game Over" && score > 0);
+    // Confetti for a good game, like a won Match board.
+    const stop = won > 0 && share >= 0.6 ? fireConfettiBurst({ durationMs: 1800, origins: 2, peakParticleCount: share === 1 ? 90 : 55, colors: ["#f6d36b", "#fff3cf", "#34a35a", "#0056FD", "#e8743b"] }) : () => {};
+    // The score counts up.
+    const t0 = performance.now();
+    let raf = 0;
+    const step = (t: number) => {
+      const k = Math.min(1, (t - t0) / 1100);
+      setShownScore(Math.round(score * (1 - Math.pow(1 - k, 3))));
+      if (k < 1) raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => {
+      stop();
+      cancelAnimationFrame(raf);
+    };
     // Once, when the results appear.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -136,8 +158,19 @@ export default function ClueResults({
     <div className="bb-clue-parchment bb-clue-panel text-center">
       <h2 className="bb-clue-serif bb-clue-title" style={{ color: "#2a1a0c" }}>{heading}</h2>
       <span className="bb-clue-logo-pill mx-auto inline-block" style={{ fontSize: 16, padding: "4px 22px" }}>{deckName}</span>
-      <div className="mt-4 flex justify-center">
-        <span className="bb-clue-pointsbadge" style={{ fontSize: 30, padding: "8px 26px" }}>⭐ {score} point{Math.abs(score) === 1 ? "" : "s"}</span>
+      {mode !== "room" ? (
+        <div className="bb-clue-stars" aria-label={`${stars} of 3 stars`}>
+          {[0, 1, 2].map((i) => (
+            <span key={i} className={i < stars ? "is-on" : ""} style={{ animationDelay: `${0.25 + i * 0.28}s` }}>
+              ★
+            </span>
+          ))}
+        </div>
+      ) : null}
+      <div className="mt-3 flex justify-center">
+        <span className="bb-clue-pointsbadge" style={{ fontSize: 30, padding: "8px 26px" }}>
+          ⭐ {shownScore.toLocaleString()} point{Math.abs(score) === 1 ? "" : "s"}
+        </span>
       </div>
       <p className="bb-clue-serif mt-3 text-[22px] font-bold">
         {won} of {total} right

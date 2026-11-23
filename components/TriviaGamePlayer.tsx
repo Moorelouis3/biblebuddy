@@ -23,7 +23,7 @@
  *  - onComplete once the completion is saved, then onClose.
  */
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { triggerPoints } from "@/components/PointsPop";
 import { TASK_XP } from "@/lib/progressionRewards";
 import { supabase } from "@/lib/supabaseClient";
@@ -60,8 +60,36 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
   const [playing, setPlaying] = useState<ClueLevel | null>(null);
   const [last, setLast] = useState<ChapterTriviaResult | null>(null);
   const completed = useRef(false);
+  // While the game is open, things that would close it wait until you leave it.
+  const inGame = useRef(false);
+  const held = useRef<Array<() => void>>([]);
+  const afterExit = (f: () => void) => (inGame.current ? held.current.push(f) : f());
+  // Done this chapter before (any time): say so, and offer it again.
+  const [doneBefore, setDoneBefore] = useState(false);
+  useEffect(() => {
+    let live = true;
+    void (async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user) return;
+      const { data } = await supabase
+        .from("master_actions")
+        .select("id")
+        .eq("user_id", user.id)
+        .eq("action_type", ACTION_TYPE.trivia_chapter_completed)
+        .ilike("action_label", `${bookName} ${chapterNumber} -%`)
+        .limit(1)
+        .maybeSingle();
+      if (live && data) setDoneBefore(true);
+    })();
+    return () => {
+      live = false;
+    };
+  }, [bookName, chapterNumber]);
 
   const start = (level: ClueLevel) => {
+    inGame.current = true;
     setPlaying(level);
     // The same "trivia started" record the old quiz made.
     void fetch("/api/consume-credit", {
@@ -104,14 +132,18 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
             dedupeKey: `trivia-chapter-completed:${bookKey}:${chapterNumber}`,
           });
           completed.current = true;
+          setDoneBefore(true);
           if (logged) triggerPoints(Math.round(earned * (TASK_XP.triviaPerfect / Math.max(r.total, 1))));
-          onComplete?.();
+          // Held until the player leaves the game (2026-11-23, Louis: "people should be able to
+          // do the quiz over"): callers close the quiz on onComplete, which took the results
+          // screen and its Play again button away the moment the last answer was in.
+          afterExit(() => onComplete?.());
         } catch (error) {
           console.error("[NAV] Failed to track Trivia chapter completion:", error);
         }
       }
 
-      dispatchLouisMoment({
+      afterExit(() => dispatchLouisMoment({
         message:
           r.right === r.total
             ? `Nice work. You just finished trivia for ${bookName} ${chapterNumber} and got a perfect score.\n\nIf you want to lock this chapter in even more, Scrambled is the best next move.\n\nDo you want to play it now?`
@@ -120,10 +152,20 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
           { id: `trivia-scrambled-${bookKey}-${chapterNumber}`, label: "Yes", href: `/bible-study-games/scrambled/${bookKey}/${chapterNumber}` },
           { id: `trivia-scrambled-no-${bookKey}-${chapterNumber}`, label: "No", message: "No problem.\n\nIf you want to come back to Scrambled later, I will be here." },
         ],
-      });
+      }));
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [bookKey, bookName, chapter?.progressKey, chapterNumber, onComplete],
   );
+
+  /** Leaving the game: run what finishing held back (onComplete, Louis's suggestion). */
+  const exitGame = () => {
+    setPlaying(null);
+    inGame.current = false;
+    const run = held.current;
+    held.current = [];
+    for (const f of run) f();
+  };
 
   // While the levels are being filled (LEVEL_PICKER off) one Play button mixes all of them.
   const total = counts.reduce((a: number, b: number) => a + (b || 0), 0);
@@ -151,6 +193,10 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
             <p className="mt-3 rounded-xl px-3 py-2 text-[15px] font-black" style={{ background: "rgba(29,90,55,.85)", color: "#fff3cf" }}>
               {last.right === last.total ? `Perfect! ${last.right}/${last.total}` : `You got ${last.right} of ${last.total} right`}{LEVEL_PICKER ? ". Play again or try a harder level." : ". Play again for new questions."}
             </p>
+          ) : doneBefore ? (
+            <p className="mt-3 rounded-xl px-3 py-2 text-[14px] font-bold" style={{ background: "rgba(29,90,55,.6)", color: "#fff3cf" }}>
+              ✓ You've done this one. Play it again any time, with new questions.
+            </p>
           ) : null}
           {playable.length ? (
             <div className="mt-4 grid gap-2">
@@ -165,7 +211,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
                     className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full text-[17px] font-black transition active:scale-[0.98] disabled:opacity-45"
                     style={{ color: "#fff7dd", background: ok ? "linear-gradient(180deg, #34a35a, #1d6a34)" : "#5a4630", boxShadow: "inset 0 0 0 2px #f6d36b" }}
                   >
-                    {!LEVEL_PICKER ? "▶ Play" : ok ? `▶ ${LEVEL_LABEL[lv]}` : `${LEVEL_LABEL[lv]} · coming soon`}
+                    {!LEVEL_PICKER ? (last || doneBefore ? "▶ Play again" : "▶ Play") : ok ? `▶ ${LEVEL_LABEL[lv]}` : `${LEVEL_LABEL[lv]} · coming soon`}
                   </button>
                 );
               })}
@@ -189,7 +235,7 @@ export default function TriviaGamePlayer({ bookName, bookSlug, chapter, onClose,
           chapter={chapterNumber}
           level={playing}
           onFinish={(r) => void finish(r)}
-          onExit={() => setPlaying(null)}
+          onExit={exitGame}
         />
       ) : null}
     </div>

@@ -19,7 +19,7 @@
  */
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import type { PublicCard, PublicMatch } from "@/lib/clueGame/engine";
+import { streakMultiplier, type PublicCard, type PublicMatch } from "@/lib/clueGame/engine";
 import { sceneFor } from "@/lib/clueGame/catalog";
 import { clueSound, startClueMusic } from "@/lib/clueGame/sound";
 
@@ -28,6 +28,61 @@ export type TablePlayer = { id: string; name: string; avatar?: string | null };
 const UI = "/games/clue/ui";
 const LETTERS = ["A", "B", "C", "D"];
 export const HOW_TO_PLAY = "You have 10 seconds to pick an answer. Right earns 1 point. Wrong costs 1 point. Skip for 0.";
+/** Speed points (solo, chapter trivia, new challenges). */
+export const HOW_TO_PLAY_SPEED = "Answer fast! A right answer is worth up to 1,000 points, more the quicker you are. 3 in a row ×1.5, 5 in a row ×2.";
+
+/** A number that counts up to its value (the score). */
+function CountUp({ value }: { value: number }) {
+  const [shown, setShown] = useState(value);
+  const from = useRef(value);
+  useEffect(() => {
+    const start = from.current;
+    if (start === value) return;
+    const t0 = performance.now();
+    let raf = 0;
+    const step = (t: number) => {
+      const k = Math.min(1, (t - t0) / 650);
+      const v = Math.round(start + (value - start) * (1 - Math.pow(1 - k, 3)));
+      setShown(v);
+      if (k < 1) raf = requestAnimationFrame(step);
+      else from.current = value;
+    };
+    raf = requestAnimationFrame(step);
+    return () => {
+      cancelAnimationFrame(raf);
+      from.current = value;
+    };
+  }, [value]);
+  return <>{shown.toLocaleString()}</>;
+}
+
+/** The countdown ring: drains, goes gold → orange → red, pulses in the last 3 seconds. */
+function TimerRing({ share, seconds }: { share: number; seconds: number }) {
+  const R = 20;
+  const C = 2 * Math.PI * R;
+  const color = seconds <= 3 ? "#d23a26" : seconds <= 6 ? "#e08a1e" : "#2f8a4f";
+  return (
+    <span className={`bb-cb-ring-timer ${seconds <= 3 ? "is-final" : ""}`} aria-label={`${seconds} seconds left`}>
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r={R} fill="#fff8e6" stroke="rgba(184,134,46,.35)" strokeWidth="5" />
+        <circle
+          cx="24"
+          cy="24"
+          r={R}
+          fill="none"
+          stroke={color}
+          strokeWidth="5"
+          strokeLinecap="round"
+          strokeDasharray={C}
+          strokeDashoffset={C * (1 - Math.max(0, Math.min(1, share)))}
+          transform="rotate(-90 24 24)"
+          style={{ transition: "stroke-dashoffset .15s linear, stroke .3s" }}
+        />
+      </svg>
+      <b style={{ color }}>{seconds}</b>
+    </span>
+  );
+}
 
 function initials(name: string) {
   return (
@@ -79,6 +134,8 @@ export default function ClueTable({
   onResume,
   overlay,
   roundLabel,
+  onNext,
+  onLifeline,
 }: {
   view: PublicMatch;
   players: TablePlayer[];
@@ -99,6 +156,10 @@ export default function ClueTable({
   overlay?: ReactNode;
   /** The selection in the header pill. */
   roundLabel?: string;
+  /** Quick play: skip the rest of the reveal. */
+  onNext?: () => void;
+  /** Solo helpers: 50/50 and +5 seconds. */
+  onLifeline?: (kind: "fifty" | "extend") => void;
 }) {
   const boardRef = useRef<HTMLDivElement | null>(null);
   const round = view.round;
@@ -136,6 +197,20 @@ export default function ClueTable({
   const canAnswer = view.phase === "question" && !!round && !paused && !inIntro && msLeft > 0 && mine === null && (!tiebreak || inTiebreak);
   const correct = revealed ? quiz?.correct ?? null : null;
   const myPoints = revealed && round?.points ? round.points[youId] ?? 0 : 0;
+  const speed = !!view.settings.speed;
+  const myMult = revealed ? round?.mult?.[youId] ?? 1 : 1;
+  const streak = view.streaks?.[youId] ?? 0;
+  const hidden = round?.hidden ?? [];
+  const openMs = round ? Math.max(1, round.closesAt - round.openAt) : 1;
+  // The progress dots: one per question, green right, red wrong or missed.
+  const dots = useMemo(() => {
+    const regular = view.history.filter((c) => !c.tiebreak);
+    return Array.from({ length: view.deckSize }, (_, i) => {
+      const c = regular[i];
+      if (c) return gotRight(c, youId) ? "is-right" : "is-wrong";
+      return i === regular.length && view.phase !== "over" ? "is-now" : "";
+    });
+  }, [view.history, view.deckSize, view.phase, youId]);
 
   // The game screen is locked: the page cannot scroll while the board is up,
   // the app menu is hidden, and the board fills exactly the screen below where it starts.
@@ -205,14 +280,21 @@ export default function ClueTable({
         else clueSound.missed();
       } else {
         const pts = round.points?.[youId] ?? 0;
+        // Right or wrong from the choice itself: with speed points a wrong answer is 0, not −1.
+        const mineNow = round.answers?.[youId]?.choice;
+        const wrongPick = mineNow !== undefined && mineNow !== round.quiz.correct;
         if (pts > 0) {
           clueSound.correct();
           window.setTimeout(() => clueSound.cheer(), 250);
-        } else if (pts < 0) {
+        } else if (pts < 0 || wrongPick) {
           clueSound.wrong();
           window.setTimeout(() => clueSound.aww(), 180);
         } else clueSound.missed();
-        for (const [id, p] of Object.entries(round.points || {})) if (p) pop(p > 0 ? `+${p}` : `−${-p}`, p > 0 ? "win" : "lose", id);
+        for (const [id, p] of Object.entries(round.points || {})) {
+          if (!p) continue;
+          const m = round.mult?.[id] ?? 1;
+          pop(p > 0 ? `+${p.toLocaleString()}${m > 1 ? ` ×${m}` : ""}` : `−${-p}`, p > 0 ? "win" : "lose", id);
+        }
       }
     }
     h.key = inIntro ? "" : roundKey;
@@ -259,16 +341,26 @@ export default function ClueTable({
     } else {
       // Only the fastest right answer scores, so a right answer can be worth 0.
       const scorer = Object.entries(round.points || {}).find(([, p]) => p > 0)?.[0];
-      outcome =
-        myPoints > 0
-          ? "Right! +1"
-          : myPoints < 0
-            ? "Wrong · −1"
-            : mine !== null && mine === correct
-              ? `Right, but ${scorer ? nameOf(scorer) : "someone"} was faster · 0`
-              : "No answer · 0";
-      outcomeColor = myPoints > 0 ? "#1d5a34" : myPoints < 0 ? "#a3261b" : "#8a5a1a";
-      if (view.phase === "reveal") outcome += lastRegular ? " · Last round!" : ` · Round ${view.dealt + 1} in ${Math.max(1, Math.ceil(dealMsLeft / 1000))}…`;
+      if (speed) {
+        outcome =
+          myPoints > 0
+            ? `Right! +${myPoints.toLocaleString()}${myMult > 1 ? ` (×${myMult} streak)` : ""}`
+            : mine !== null
+              ? "Wrong · 0"
+              : "Time's up · 0";
+        outcomeColor = myPoints > 0 ? "#1d5a34" : mine !== null ? "#a3261b" : "#8a5a1a";
+      } else {
+        outcome =
+          myPoints > 0
+            ? "Right! +1"
+            : myPoints < 0
+              ? "Wrong · −1"
+              : mine !== null && mine === correct
+                ? `Right, but ${scorer ? nameOf(scorer) : "someone"} was faster · 0`
+                : "No answer · 0";
+        outcomeColor = myPoints > 0 ? "#1d5a34" : myPoints < 0 ? "#a3261b" : "#8a5a1a";
+        if (view.phase === "reveal") outcome += lastRegular ? " · Last round!" : ` · Round ${view.dealt + 1} in ${Math.max(1, Math.ceil(dealMsLeft / 1000))}…`;
+      }
     }
   }
 
@@ -280,6 +372,14 @@ export default function ClueTable({
       <div className="bb-cb-titles">
         <span className="bb-cb-deckpill">{roundLabel || "Genesis"}</span>
         <span className="bb-cb-roundpill">{over ? "Game over" : tiebreak ? "Tiebreaker" : `Round ${Math.max(1, view.dealt)} of ${view.deckSize}`}</span>
+        {/* One dot per question (2026-11-23): green right, red wrong, gold the one you are on. */}
+        {view.players.length === 1 ? (
+          <span className="bb-cb-dots" aria-hidden="true">
+            {dots.map((d, i) => (
+              <i key={i} className={d} />
+            ))}
+          </span>
+        ) : null}
         {isHost && !over ? (
           <button type="button" className="bb-cb-roundpill is-button" onClick={paused ? onResume : onPause}>
             {paused ? "▶ Resume" : "⏸ Pause"}
@@ -329,33 +429,41 @@ export default function ClueTable({
         <>
           <div className="bb-cb-gap" />
           {/* The question: one big panel */}
-          <div ref={panelRef} className="bb-cb-panel bb-cb-bigpanel">
+          <div
+            ref={panelRef}
+            className={`bb-cb-panel bb-cb-bigpanel ${revealed && onNext && view.settings.quick && view.phase === "reveal" ? "is-tappable" : ""}`}
+            onClick={revealed && onNext && view.settings.quick && view.phase === "reveal" ? onNext : undefined}
+          >
             {inIntro ? (
-              <div className="bb-cb-howto">
-                <p className="bb-cb-howto-title">How to play</p>
-                <p className="bb-cb-howto-text">{HOW_TO_PLAY}</p>
-                <p className="bb-cb-howto-deal">First question in {Math.max(1, Math.ceil(introLeft / 1000))}…</p>
-              </div>
+              introLeft > 3000 ? (
+                <div className="bb-cb-howto">
+                  <p className="bb-cb-howto-title">How to play</p>
+                  <p className="bb-cb-howto-text">{speed ? HOW_TO_PLAY_SPEED : HOW_TO_PLAY}</p>
+                  <p className="bb-cb-howto-deal">First question in {Math.max(1, Math.ceil(introLeft / 1000))}…</p>
+                </div>
+              ) : (
+                // Ready… 3, 2, 1.
+                <div className="bb-cb-howto">
+                  <p className="bb-cb-howto-title">Get ready!</p>
+                  <p key={Math.ceil(introLeft / 1000)} className="bb-cb-countdown">{Math.max(1, Math.ceil(introLeft / 1000))}</p>
+                </div>
+              )
             ) : paused ? (
               <p className="bb-cb-panel-big">{players.length > 1 ? "Paused by the host. Talk it over!" : "Paused. Tap Resume when you are ready."}</p>
             ) : view.phase === "question" && quiz ? (
               <>
                 <div className="bb-cb-panel-head">
                   {tiebreak ? <span className="bb-cb-tb">Tiebreaker · First correct answer wins</span> : <span>{quiz.book ?? "Genesis"} {quiz.chapter}</span>}
-                  <span className="bb-cb-sep" />
-                  <span className={`bb-cb-timer ${seconds <= 3 ? "is-final" : ""}`} aria-live="polite">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={`${UI}/icon-stopwatch.webp`} alt="" />
-                    0:{String(seconds).padStart(2, "0")}
-                  </span>
                 </div>
+                {/* The countdown ring (2026-11-23): drains, changes colour, pulses at the end. */}
+                <TimerRing share={msLeft / openMs} seconds={Math.min(Math.ceil(openMs / 1000), Math.ceil(msLeft / 1000))} />
                 <div className="bb-cb-timebar">
-                  <span className={seconds <= 3 ? "is-final" : ""} style={{ transform: `scaleX(${msLeft / (view.settings.answerSeconds * 1000)})` }} />
+                  <span className={seconds <= 3 ? "is-final" : ""} style={{ transform: `scaleX(${msLeft / openMs})` }} />
                 </div>
-                <p key={roundKey} className="bb-cb-clue bb-cb-question bb-clue-fadein">{quiz.question}</p>
+                <p key={roundKey} className="bb-cb-clue bb-cb-question bb-cb-flipin">{quiz.question}</p>
               </>
             ) : revealed && quiz ? (
-              <div key={`r${roundKey}`} className="bb-cb-reveal bb-clue-fadein">
+              <div key={`r${roundKey}`} className="bb-cb-reveal bb-cb-flipin">
                 <p className="bb-cb-answer">{correct !== null ? quiz.choices[correct] : card?.answer}</p>
                 {quiz.explanation ? <p className="bb-cb-explain">{quiz.explanation}</p> : null}
                 <div className="bb-cb-panel-row">
@@ -366,9 +474,22 @@ export default function ClueTable({
                     </button>
                   ) : null}
                 </div>
-                <p className="bb-cb-outcome" style={{ color: outcomeColor }}>
+                <p className={`bb-cb-outcome ${myPoints > 0 ? "is-win" : ""}`} style={{ color: outcomeColor }}>
                   {outcome}
                 </p>
+                {onNext && view.settings.quick && view.phase === "reveal" ? (
+                  <button
+                    type="button"
+                    className="bb-cb-next"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onNext();
+                    }}
+                  >
+                    {lastRegular && !tiebreak ? "See results ▶" : "Next ▶"}
+                    <span className="bb-cb-next-bar" style={{ transform: `scaleX(${dealMsLeft / (view.settings.revealSeconds * 1000)})` }} />
+                  </button>
+                ) : null}
               </div>
             ) : null}
           </div>
@@ -382,14 +503,17 @@ export default function ClueTable({
                 const isRight = correct === i;
                 const isWrong = revealed && isMine && correct !== i;
                 const faded = (revealed && !isRight && !isMine) || (!revealed && mine !== null && !isMine);
+                const gone = !revealed && hidden.includes(i);
                 return (
                   <button
                     key={`${roundKey}-${i}`}
                     type="button"
-                    className={`bb-cb-choice ${isMine ? "is-mine" : ""} ${isRight ? "is-right" : ""} ${isWrong ? "is-wrong" : ""} ${faded ? "is-faded" : ""}`}
-                    disabled={!canAnswer}
+                    className={`bb-cb-choice bb-cb-slidein ${isMine ? "is-mine" : ""} ${isRight ? "is-right" : ""} ${isWrong ? "is-wrong" : ""} ${faded ? "is-faded" : ""} ${gone ? "is-gone" : ""}`}
+                    style={{ animationDelay: `${i * 70}ms` }}
+                    disabled={!canAnswer || gone}
                     onClick={() => choose(i)}
                     aria-pressed={isMine}
+                    aria-hidden={gone || undefined}
                   >
                     <span className="bb-cb-letter">{LETTERS[i]}</span>
                     <span className="bb-cb-choice-text">{text}</span>
@@ -411,13 +535,31 @@ export default function ClueTable({
                             : "Locked in. The answer shows when time is up."
                           : tiebreak
                             ? "One try. First right answer wins!"
-                            : "Pick one, or let it run out for 0."
+                            : speed
+                              ? "Faster answers score more!"
+                              : "Pick one, or let it run out for 0."
                       : view.phase === "reveal"
                         ? lastRegular && !tiebreak
                           ? "That was the last question."
-                          : "Next question coming…"
+                          : onNext && view.settings.quick
+                            ? "Tap to go on"
+                            : "Next question coming…"
                         : ""}
               </p>
+            </div>
+          ) : null}
+
+          {/* Helpers (solo): one 50/50 and one +5 seconds a game. */}
+          {!over && onLifeline && view.settings.lifelines ? (
+            <div className="bb-cb-lifelines">
+              <button type="button" className="bb-cb-lifeline" disabled={!canAnswer || !!view.used?.fifty} onClick={() => onLifeline("fifty")}>
+                <b>50/50</b>
+                <span>{view.used?.fifty ? "Used" : "Remove 2"}</span>
+              </button>
+              <button type="button" className="bb-cb-lifeline" disabled={!canAnswer || !!view.used?.time} onClick={() => onLifeline("extend")}>
+                <b>+5s</b>
+                <span>{view.used?.time ? "Used" : "More time"}</span>
+              </button>
             </div>
           ) : null}
 
@@ -425,14 +567,22 @@ export default function ClueTable({
           <div className="bb-cb-me">
             <span className={`bb-cb-mechip ${pops.some((x) => x.seat === youId && x.kind === "win") ? "is-scored" : ""} ${pops.some((x) => x.seat === youId && x.kind === "lose") ? "is-docked" : ""}`}>
               <RingPhoto name={me.name} src={me.avatar} size={60} seat={youId} />
-              <span className="bb-cb-greenpill bb-cb-mepill">You · {view.scores[youId] ?? 0} pts</span>
+              <span className="bb-cb-greenpill bb-cb-mepill">
+                You · <CountUp value={view.scores[youId] ?? 0} /> pts
+              </span>
             </span>
             <span className="bb-cb-divider" />
-            <span className="bb-cb-creampill bb-cb-collected">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={`${UI}/icon-trophy.webp`} alt="" />
-              {rightCount.get(youId) || 0} right
-            </span>
+            {speed && streak >= 2 ? (
+              <span key={streak} className="bb-cb-creampill bb-cb-collected bb-cb-streak">
+                🔥 {streak} in a row{streakMultiplier(streak) > 1 ? ` ×${streakMultiplier(streak)}` : ""}
+              </span>
+            ) : (
+              <span className="bb-cb-creampill bb-cb-collected">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={`${UI}/icon-trophy.webp`} alt="" />
+                {rightCount.get(youId) || 0} right
+              </span>
+            )}
           </div>
           <div className="bb-cb-bottomgap" />
         </>

@@ -96,7 +96,7 @@ export default function ClueChallengePost({ info }: { info: ClueChallengeInfo })
           <img src="/games/clue/ui/icon-trophy.webp" alt="" className="h-14 w-14 flex-shrink-0 drop-shadow-lg" />
           <div className="min-w-0">
             <p className="font-serif text-[22px] font-black leading-tight text-white drop-shadow">
-              {ch ? (perfect ? `${first} got a perfect ${ch.won}/${ch.total}!` : `${first} got ${ch.won}/${ch.total} right`) : `${first} scored ${info.score}`}
+              {ch ? (perfect ? `${first} got a perfect ${ch.won}/${ch.total}!` : `${first} got ${ch.won}/${ch.total} right`) : `${first} scored ${info.score.toLocaleString()}`}
             </p>
             {ch ? <p className="text-[13px] font-bold text-[#f3e6cc] drop-shadow">took {ch.from}’s challenge</p> : null}
             <p className="text-[15px] font-black text-[#f6d36b] drop-shadow">{perfect ? "Can you get a perfect one too?" : "Can you beat it?"}</p>
@@ -108,7 +108,7 @@ export default function ClueChallengePost({ info }: { info: ClueChallengeInfo })
         {ch && ch.names.length > 1 ? <p className="mt-1 text-[13px] font-bold text-[#f3e6cc]">🔗 {ch.names.join(" → ")}</p> : null}
         {info.leader && info.played > 1 ? (
           <p className="mt-1 text-[13px] font-bold text-[#f3e6cc]">
-            👑 {info.leader.split(/\s+/)[0]} leads with {info.leaderScore} · {info.played} Buddies have played
+            👑 {info.leader.split(/\s+/)[0]} leads with {info.leaderScore?.toLocaleString()} · {info.played} Buddies have played
           </p>
         ) : null}
         <Link

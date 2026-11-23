@@ -57,7 +57,7 @@ function Laurel({ flip }: { flip?: boolean }) {
     </svg>
   );
 }
-import { createMatch, ROUND_INTRO_MS, soloSetup, type ClueMatch, type ClueSelection, type PublicCard } from "@/lib/clueGame/engine";
+import { createMatch, SOLO_SETTINGS, soloSetup, type ClueMatch, type ClueSelection, type PublicCard } from "@/lib/clueGame/engine";
 import type { ClueRef } from "@/lib/clueGame/types";
 import { clueApi, clueUserId, trackClue } from "@/lib/clueGame/track";
 import { supabase } from "@/lib/supabaseClient";
@@ -65,7 +65,7 @@ import ClueTable from "./ClueTable";
 import ClueResults, { ReviewList } from "./ClueResults";
 import ChallengeChoices from "./BuddyChallenge";
 import { ClueHeader, ClueRoomFrame, ScriptureSheet, StudyCard } from "./ClueParts";
-import { useLocalMatch } from "./useLocalMatch";
+import { introMs, useLocalMatch } from "./useLocalMatch";
 
 type Screen = "menu" | "how" | "decks" | "play" | "multi";
 
@@ -257,7 +257,7 @@ function SoloRound({ selection, onExit }: { selection: ClueSelection; onExit: ()
   const deckIds = selectionToKeys(selection);
   // Questions from your last game come back only when the selection runs out of fresh ones.
   const { match, view, now, act, reset } = useLocalMatch(
-    () => createMatch({ items: bookItems(selection.book), selection, ...soloSetup("me", "You"), seed: newSeed(), avoid: typeof window === "undefined" ? [] : readJson<string[]>(SEEN_KEY, []) }),
+    () => createMatch({ items: bookItems(selection.book), selection, ...soloSetup("me", "You"), settings: SOLO_SETTINGS, seed: newSeed(), avoid: typeof window === "undefined" ? [] : readJson<string[]>(SEEN_KEY, []) }),
     { mode: "solo", deckIds },
   );
   const saved = useRef(false);
@@ -283,11 +283,11 @@ function SoloRound({ selection, onExit }: { selection: ClueSelection; onExit: ()
 
   // Deal the first card as soon as the table is up.
   useEffect(() => {
-    if (match.phase === "ready") act({ type: "deal", now: Date.now() + ROUND_INTRO_MS });
+    if (match.phase === "ready") act({ type: "deal", now: Date.now() + introMs() });
   }, [match.phase, act]);
 
   const playAgain = () => {
-    reset(createMatch({ items: bookItems(selection.book), selection, ...soloSetup("me", "You"), seed: newSeed(), avoid: usedIn(match) }));
+    reset(createMatch({ items: bookItems(selection.book), selection, ...soloSetup("me", "You"), settings: SOLO_SETTINGS, seed: newSeed(), avoid: usedIn(match) }));
     saved.current = false;
     setRoundId(newRoundId());
     setReview(false);
@@ -310,6 +310,8 @@ function SoloRound({ selection, onExit }: { selection: ClueSelection; onExit: ()
         deckIds={deckIds}
         roundLabel={bookName(selection.book)}
         onAnswer={(choice) => act({ type: "answer", playerId: "me", choice })}
+        onNext={() => act({ type: "next" })}
+        onLifeline={(kind) => act({ type: kind, playerId: "me" })}
         // Solo can pause (Louis, 2026-11-22). Challenges cannot: they are ranked.
         isHost
         onPause={() => act({ type: "pause" })}
@@ -335,7 +337,7 @@ function SoloRound({ selection, onExit }: { selection: ClueSelection; onExit: ()
             setReview(true);
             trackClue("clue_game_review_opened", { mode: "solo" });
           }}
-          primary={<ChallengeChoices key={roundId} body={{ roundId, selection, cardIds: match.deck, score: match.scores.me ?? 0, won: right }} />}
+          primary={<ChallengeChoices key={roundId} body={{ roundId, selection, cardIds: match.deck, score: match.scores.me ?? 0, won: right, speed: true }} />}
           secondary={
             <div className="flex gap-3">
               <button type="button" className="bb-clue-btn min-w-0 flex-[3] whitespace-nowrap !px-2" onClick={playAgain}>▶ Play Again</button>

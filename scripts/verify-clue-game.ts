@@ -6,7 +6,7 @@ import { ALL_CLUE_CARDS, CLUE_DECKS, poolFor } from "../lib/clueGame/catalog";
 import { isCorrectGuess } from "../lib/clueGame/answer";
 import { artKey } from "../lib/clueGame/ref";
 import { kjvStaticUrl } from "../lib/chapterStaticData";
-import { createMatch, reduceClueMatch, soloSetup, publicView, poolForSelection, neededForMatch, DEFAULT_CLUE_SETTINGS, ROUND_INTRO_MS, type ClueMatch, type ClueSelection } from "../lib/clueGame/engine";
+import { createMatch, reduceClueMatch, soloSetup, publicView, poolForSelection, neededForMatch, DEFAULT_CLUE_SETTINGS, ROUND_INTRO_MS, SOLO_SETTINGS, speedPoints, type ClueMatch, type ClueSelection } from "../lib/clueGame/engine";
 import { BANK_ITEMS, BOOK_INDEX, CLUE_BANK, MIN_ROUND, bookItems, booksWithQuestions, chaptersWithQuestions, cleanSelection, selectionFromKeys, selectionLabel, selectionStatus, selectionToKeys } from "../lib/clueGame/bank";
 // Every book file in the registry, as the server has it.
 import "../lib/clueGame/bank/all";
@@ -428,6 +428,57 @@ ok("feed: chain posts, new challenge posts and old Bible Clue posts all read bac
   const old = readClueChallenge("🃏 Ann scored 5 in Genesis · All chapters · Beginner on the Bible Clue Game. Can you beat it?\n\n2 Buddies have played it. Bo leads with 6.\n\n[Play the challenge](https://www.mybiblebuddy.net/bible-study-games/clue/challenge/Zz12Yy34)")!;
   assert.equal(old.leader, "Bo");
   assert.equal(old.played, 2);
+});
+
+/* ---------- solo game feel (2026-11-23) ---------- */
+
+const soloSpeed = (seed = 5) => {
+  let m = createMatch({ items: BANK_ITEMS, selection: sel("all"), ...soloSetup(), settings: SOLO_SETTINGS, seed });
+  m = reduceClueMatch(m, { type: "deal", now: 1000 }, CLUE_BANK);
+  return m;
+};
+const soloRight = (m: ClueMatch) => m.round!.order.indexOf(CLUE_BANK.get(m.round!.cardId)!.answer as 0);
+
+ok("solo: answering shows the answer at once, and Next skips the rest of the reveal", () => {
+  let m = soloSpeed();
+  const t0 = m.round!.openAt;
+  m = reduceClueMatch(m, { type: "answer", now: t0 + 1000, playerId: "me", choice: soloRight(m) }, CLUE_BANK);
+  assert.equal(m.phase, "reveal", "no waiting for the clock");
+  m = reduceClueMatch(m, { type: "next", now: t0 + 1500 }, CLUE_BANK);
+  assert.equal(m.phase, "question");
+  assert.equal(m.dealt, 2);
+});
+
+ok("speed points: 500-1,000 by speed; 3 in a row ×1.5, 5 in a row ×2; wrong is 0 and ends the streak", () => {
+  assert.equal(speedPoints(10000, 10000), 1000);
+  assert.equal(speedPoints(0, 10000), 500);
+  let m = soloSpeed(8);
+  const got: number[] = [];
+  for (let q = 0; q < 6; q += 1) {
+    const t0 = m.round!.openAt;
+    const choice = q === 5 ? (soloRight(m) + 1) % 4 : soloRight(m);
+    m = reduceClueMatch(m, { type: "answer", now: t0, playerId: "me", choice }, CLUE_BANK);
+    got.push(m.round!.points.me);
+    m = reduceClueMatch(m, { type: "next", now: t0 + 100 }, CLUE_BANK);
+  }
+  assert.deepEqual(got, [1000, 1000, 1500, 1500, 2000, 0]);
+  assert.equal(m.streaks!.me, 0);
+  assert.equal(m.scores.me, 7000);
+});
+
+ok("helpers: 50/50 takes away two wrong answers once; +5s adds five seconds once; rooms have neither", () => {
+  let m = soloSpeed(9);
+  const r0 = m.round!;
+  m = reduceClueMatch(m, { type: "fifty", now: r0.openAt, playerId: "me" }, CLUE_BANK);
+  assert.equal(m.round!.hidden!.length, 2);
+  assert.ok(!m.round!.hidden!.includes(soloRight(m)), "never the right one");
+  assert.equal(reduceClueMatch(m, { type: "answer", now: r0.openAt + 10, playerId: "me", choice: m.round!.hidden![0] }, CLUE_BANK).phase, "question", "a removed answer cannot be picked");
+  assert.equal(reduceClueMatch(m, { type: "fifty", now: r0.openAt, playerId: "me" }, CLUE_BANK), m, "once a game");
+  m = reduceClueMatch(m, { type: "extend", now: r0.openAt, playerId: "me" }, CLUE_BANK);
+  assert.equal(m.round!.closesAt, r0.closesAt + 5000);
+  assert.equal(reduceClueMatch(m, { type: "extend", now: r0.openAt, playerId: "me" }, CLUE_BANK), m, "once a game");
+  const room = start2();
+  assert.equal(reduceClueMatch(room, { type: "fifty", now: room.round!.openAt, playerId: "a" }, CLUE_BANK), room);
 });
 
 console.log(`\n${n} checks passed.`);

@@ -14,7 +14,7 @@ import { clueApi, trackClue } from "@/lib/clueGame/track";
 import { Avatar } from "./ClueParts";
 
 type Buddy = { id: string; name: string; avatar: string | null };
-type Body = { roundId: string; selection: unknown; cardIds: string[]; score: number; won: number };
+type Body = { roundId: string; selection: unknown; cardIds: string[]; score: number; won: number; speed?: boolean };
 
 /**
  * `passId`: pass an existing challenge on (the chain letter, 2026-11-23)

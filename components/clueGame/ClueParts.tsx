@@ -670,6 +670,40 @@ html:is(.bb-in-game, .bb-game-screen) :is(.bb-bottom-pill, .bb-safe-top-header, 
 .bb-cb-timebar { height:3px; margin: 7px 0 2px; border-radius:999px; background: rgba(184,134,46,.35); overflow:hidden; }
 .bb-cb-timebar span { display:block; height:100%; transform-origin:left; background:#b8862e; transition: transform .15s linear; }
 .bb-cb-timebar span.is-final { background:#c8452d; }
+/* Game feel (Louis, 2026-11-23: "make the new trivia look more game and smoother"). */
+.bb-cb-ring-timer { position:absolute; top: -18px; right: -10px; z-index:6; width: 58px; height: 58px; display:grid; place-items:center; filter: drop-shadow(0 4px 8px rgba(0,0,0,.35)); }
+.bb-cb-ring-timer svg { position:absolute; inset:0; width:100%; height:100%; }
+.bb-cb-ring-timer b { position:relative; font-family: Georgia, serif; font-size: 24px; font-weight:900; font-variant-numeric: tabular-nums; }
+.bb-cb-ring-timer.is-final { animation: bb-cb-pulse .45s ease-in-out infinite alternate; }
+.bb-cb-dots { display:flex; gap:5px; margin-top:3px; }
+.bb-cb-dots i { width:9px; height:9px; border-radius:999px; background: rgba(255,248,230,.55); box-shadow: 0 0 0 1.5px rgba(59,36,18,.55); transition: background .3s, transform .3s; }
+.bb-cb-dots i.is-right { background:#2f9a55; }
+.bb-cb-dots i.is-wrong { background:#c8452d; }
+.bb-cb-dots i.is-now { background:#f6d36b; transform: scale(1.35); }
+.bb-cb-flipin { animation: bb-cb-flipin .42s cubic-bezier(.2,.9,.3,1.2) both; transform-origin: 50% 0; }
+@keyframes bb-cb-flipin { from { opacity:0; transform: perspective(700px) rotateX(-70deg) translateY(-8px); } to { opacity:1; transform:none; } }
+.bb-cb-slidein { animation: bb-cb-slidein .35s cubic-bezier(.2,.9,.3,1.15) both; }
+@keyframes bb-cb-slidein { from { opacity:0; transform: translateY(14px) scale(.96); } }
+.bb-cb-choice.is-right, .bb-cb-choice.is-wrong { animation-delay: 0s !important; }
+.bb-cb-choice.is-gone { visibility:hidden; }
+.bb-cb-countdown { margin-top: 2px; font-family: Georgia, serif; font-weight:900; font-size: clamp(54px, 16vw, 80px); line-height:1; color:#1d5a34 !important; animation: bb-cb-count .9s ease-out both; }
+@keyframes bb-cb-count { from { opacity:0; transform: scale(1.9); } 30% { opacity:1; } to { transform: scale(1); } }
+.bb-cb-bigpanel.is-tappable { cursor:pointer; }
+.bb-cb-outcome.is-win { font-size: clamp(15px, 4.3vw, 19px); animation: bb-clue-bump .5s ease-out both; }
+.bb-cb-next { position:relative; overflow:hidden; display:block; margin: 10px auto 0; padding: 8px 30px; border-radius:999px; font-weight:900; font-size:16px; color:#fff7dd !important; background: linear-gradient(180deg,#34a35a,#1d6a34); box-shadow: inset 0 0 0 2px #f6d36b, 0 4px 10px rgba(0,0,0,.3); }
+.bb-cb-next-bar { position:absolute; left:0; bottom:0; height:3px; width:100%; background: rgba(255,247,221,.75); transform-origin:left; transition: transform .15s linear; }
+.bb-cb-lifelines { position:relative; z-index:20; display:flex; justify-content:center; gap:10px; margin: 8px auto 0; }
+.bb-cb-lifeline { display:flex; flex-direction:column; align-items:center; min-width: 84px; padding: 4px 12px 5px; border-radius:14px; line-height:1.05; color:#3b2412 !important; background: linear-gradient(180deg,#fff8e6,#f1ddb0); box-shadow: inset 0 0 0 2px #c99a46, 0 4px 8px rgba(0,0,0,.3); transition: transform .12s; }
+.bb-cb-lifeline b { font-family: Georgia, serif; font-size: 17px; font-weight:900; }
+.bb-cb-lifeline span { font-size: 11px; font-weight:800; opacity:.7; }
+.bb-cb-lifeline:not(:disabled):active { transform: scale(.94); }
+.bb-cb-lifeline:disabled { opacity:.45; filter: grayscale(.5); }
+.bb-clue-stars { display:flex; justify-content:center; gap:6px; margin-top:8px; font-size: 44px; line-height:1; }
+.bb-clue-stars span { color: rgba(120,84,40,.25) !important; }
+.bb-clue-stars span.is-on { color:#f2b51d !important; text-shadow: 0 0 14px rgba(246,211,107,.9), 0 3px 0 #8a5a12; animation: bb-clue-star .55s cubic-bezier(.2,.9,.3,1.4) both; }
+@keyframes bb-clue-star { from { opacity:0; transform: scale(2.4) rotate(-30deg); } to { opacity:1; transform:none; } }
+.bb-cb-streak { color:#8a2a0c !important; font-weight:900; animation: bb-clue-bump .5s ease-out both; }
+@media (prefers-reduced-motion: reduce) { .bb-cb-flipin, .bb-cb-slidein, .bb-cb-countdown, .bb-cb-ring-timer.is-final, .bb-cb-streak, .bb-cb-outcome.is-win { animation:none !important; } }
 .bb-cb-clue { margin-top:6px; text-align:center; font-family: Georgia, serif; font-weight:700; font-size: clamp(15px, min(5vw, 3.4vh), 30px); line-height:1.22; color:#2a1a0c !important; overflow-wrap:anywhere; }
 .bb-cb-panel-big { text-align:center; font-family: Georgia, serif; font-weight:700; font-size: clamp(16px, 4.6vw, 24px); }
 .bb-cb-answer { text-align:center; font-family: Georgia, serif; font-weight:800; font-size: clamp(22px, 6.4vw, 34px); line-height:1.1; color:#173b23 !important; }

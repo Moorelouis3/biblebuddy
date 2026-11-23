@@ -60,6 +60,16 @@ export type ClueSettings = {
   roundSize: number;
   pointsRight: number;
   pointsWrong: number;
+  /**
+   * Speed points (solo, chapter trivia, and challenges made since 2026-11-23):
+   * a right answer is worth 500 to 1,000 by how fast it came, times the streak
+   * (3 in a row ×1.5, 5 in a row ×2). Wrong or no answer: 0, and the streak ends.
+   */
+  speed?: boolean;
+  /** One player: answering closes the question at once, and Next skips the reveal. */
+  quick?: boolean;
+  /** One 50/50 and one +5 seconds per game (one player only). */
+  lifelines?: boolean;
 };
 
 export const DEFAULT_CLUE_SETTINGS: ClueSettings = {
@@ -69,6 +79,22 @@ export const DEFAULT_CLUE_SETTINGS: ClueSettings = {
   pointsRight: 1,
   pointsWrong: -1,
 };
+
+/**
+ * Playing alone (Louis, 2026-11-23: "make the new trivia look more game and
+ * smoother"): no waiting for the clock once you have answered, a short reveal
+ * you can tap past, speed points with streaks, and two helpers.
+ */
+export const SOLO_SETTINGS: Partial<ClueSettings> = { speed: true, quick: true, lifelines: true, revealSeconds: 4 };
+
+/** What a right answer is worth with speed points, before the streak. */
+export function speedPoints(msLeft: number, msTotal: number): number {
+  const share = Math.max(0, Math.min(1, msTotal > 0 ? msLeft / msTotal : 0));
+  return 500 + Math.round((500 * share) / 10) * 10;
+}
+
+/** The streak multiplier after this many right answers in a row. */
+export const streakMultiplier = (streak: number) => (streak >= 5 ? 2 : streak >= 3 ? 1.5 : 1);
 
 /** A player (rooms are one player per side; sides stay for the shared types). */
 export type ClueSide = { id: string; name: string };
@@ -99,6 +125,10 @@ export type ClueRound = {
   points: Record<string, number>;
   /** Tiebreak only: who answered right first. */
   winnerId: string | null;
+  /** 50/50: the two wrong display choices taken away. */
+  hidden?: number[];
+  /** Speed points: the streak multiplier each player's points got. */
+  mult?: Record<string, number>;
 };
 
 export type ClueMatch = {
@@ -122,6 +152,10 @@ export type ClueMatch = {
   /** Tied leaders playing the tiebreaker (empty outside it). */
   tiebreakers: string[];
   winnerSideIds: string[];
+  /** Speed points: right answers in a row, by player. */
+  streaks?: Record<string, number>;
+  /** Helpers already used this game. */
+  used?: { fifty?: boolean; time?: boolean };
 };
 
 /** A seeded random stream (mulberry32). */
@@ -247,7 +281,15 @@ export type ClueAction =
   | { type: "tick"; now: number }
   | { type: "answer"; now: number; playerId: string; choice: number }
   | { type: "pause"; now: number }
-  | { type: "resume"; now: number };
+  | { type: "resume"; now: number }
+  /** Quick play: skip the rest of the reveal. */
+  | { type: "next"; now: number }
+  /** Helpers (one player, once a game each). */
+  | { type: "fifty"; now: number; playerId: string }
+  | { type: "extend"; now: number; playerId: string };
+
+/** Five more seconds, the +5s helper. */
+export const EXTEND_MS = 5000;
 
 export type ClueBank = Map<string, BankItem>;
 
@@ -271,11 +313,12 @@ export function isRightChoice(item: BankItem, round: Pick<ClueRound, "order">, c
 }
 
 /** Can this player answer the open question right now? */
-export function canAnswer(match: ClueMatch, playerId: string, now: number): boolean {
+export function canAnswer(match: ClueMatch, playerId: string, now: number, choice?: number): boolean {
   const r = match.round;
   if (match.phase !== "question" || !r || match.pausedAt !== null) return false;
   if (now < r.openAt || now >= r.closesAt) return false; // not open yet, or closed (late)
   if (r.answers[playerId]) return false; // one answer per question
+  if (choice !== undefined && r.hidden?.includes(choice)) return false; // taken away by 50/50
   if (!match.players.some((p) => p.id === playerId)) return false;
   if (r.tiebreak && !match.tiebreakers.includes(playerId)) return false;
   return true;
@@ -292,6 +335,26 @@ function close(match: ClueMatch, at: number, bank: ClueBank): ClueMatch {
   const item = bank.get(r.cardId);
   const points: Record<string, number> = {};
   const scores = { ...match.scores };
+  if (!r.tiebreak && item && match.settings.speed) {
+    // Speed points with streaks (2026-11-23).
+    const streaks = { ...(match.streaks || {}) };
+    const mult: Record<string, number> = {};
+    for (const p of match.players) {
+      const a = r.answers[p.id];
+      const right = !!a && isRightChoice(item, r, a.choice);
+      if (!right) {
+        points[p.id] = 0;
+        streaks[p.id] = 0;
+        continue;
+      }
+      streaks[p.id] = (streaks[p.id] || 0) + 1;
+      mult[p.id] = streakMultiplier(streaks[p.id]);
+      const pts = Math.round((speedPoints(r.closesAt - a.at, r.closesAt - r.openAt) * mult[p.id]) / 10) * 10;
+      points[p.id] = pts;
+      scores[p.sideId] = (scores[p.sideId] ?? 0) + pts;
+    }
+    return { ...match, scores, streaks, phase: "reveal", round: { ...r, revealedAt: at, points, mult } };
+  }
   if (!r.tiebreak && item) {
     // One point per question: only the FIRST right answer received scores
     // (Louis, 2026-11-23). Wrong is still -1, so a fast guess costs.
@@ -375,10 +438,33 @@ export function reduceClueMatch(match: ClueMatch, action: ClueAction, bank: Clue
       }
       return m;
     }
-    case "answer": {
+    case "next": {
+      // Quick play: the reveal ends when you tap Next.
+      if (!match.settings.quick || match.phase !== "reveal" || match.pausedAt !== null || !match.round) return match;
+      return advance(match, action.now);
+    }
+    case "fifty":
+    case "extend": {
+      const r = match.round;
+      if (!match.settings.lifelines || match.players.length !== 1 || !r || r.tiebreak) return match;
       if (!canAnswer(match, action.playerId, action.now)) return match;
+      const used = match.used || {};
+      if (action.type === "extend") {
+        if (used.time) return match;
+        return { ...match, used: { ...used, time: true }, round: { ...r, closesAt: r.closesAt + EXTEND_MS } };
+      }
+      if (used.fifty) return match;
+      const item = bank.get(r.cardId);
+      if (!item) return match;
+      // Two of the three wrong display choices, the same two on a replay.
+      const wrong = [0, 1, 2, 3].filter((i) => !isRightChoice(item, r, i));
+      const hidden = shuffleCards(wrong, match.seed ^ match.dealt).slice(0, 2);
+      return { ...match, used: { ...used, fifty: true }, round: { ...r, hidden } };
+    }
+    case "answer": {
       const choice = Math.floor(Number(action.choice));
       if (!(choice >= 0 && choice <= 3)) return match;
+      if (!canAnswer(match, action.playerId, action.now, choice)) return match;
       const r = match.round!;
       const answers = { ...r.answers, [action.playerId]: { choice, at: action.now } };
       let m: ClueMatch = { ...match, round: { ...r, answers } };
@@ -392,7 +478,9 @@ export function reduceClueMatch(match: ClueMatch, action: ClueAction, bank: Clue
         // Everyone has used their attempt without a right answer: show it, then a fresh question.
         if (m.tiebreakers.every((id) => answers[id])) return close(m, action.now, bank);
       }
-      // Regular questions stay open the full time, even when everyone has answered.
+      // Quick play: one player has answered, so the reveal comes at once.
+      if (m.settings.quick && m.players.length === 1) return close(m, action.now, bank);
+      // Rooms: regular questions stay open the full time, even when everyone has answered.
       return m;
     }
   }
@@ -448,6 +536,10 @@ export type PublicRound = {
   answers?: Record<string, ClueAnswer>;
   points?: Record<string, number>;
   winnerId?: string | null;
+  /** 50/50: display choices taken away. */
+  hidden?: number[];
+  /** Speed points: each player's streak multiplier, after the reveal. */
+  mult?: Record<string, number>;
 };
 
 export type PublicHistory = PublicCard & {
@@ -475,6 +567,10 @@ export type PublicMatch = {
   history: PublicHistory[];
   /** Server clock at the time of this view, for a client clock offset. */
   serverNow: number;
+  /** Speed points: right answers in a row, by player. */
+  streaks: Record<string, number>;
+  /** Helpers already used this game. */
+  used: { fifty?: boolean; time?: boolean };
 };
 
 function revealCard(item: BankItem): PublicCard {
@@ -509,7 +605,8 @@ export function publicView(match: ClueMatch, bank: ClueBank, now: number, viewer
       tiebreak: r.tiebreak,
       locked: Object.keys(r.answers),
       mine: viewerId && r.answers[viewerId] ? r.answers[viewerId].choice : null,
-      ...(revealed ? { answers: r.answers, points: r.points, winnerId: r.winnerId } : {}),
+      hidden: r.hidden,
+      ...(revealed ? { answers: r.answers, points: r.points, winnerId: r.winnerId, mult: r.mult } : {}),
     };
   }
   const history: PublicHistory[] = match.done
@@ -534,5 +631,7 @@ export function publicView(match: ClueMatch, bank: ClueBank, now: number, viewer
     round,
     history,
     serverNow: now,
+    streaks: match.streaks || {},
+    used: match.used || {},
   };
 }

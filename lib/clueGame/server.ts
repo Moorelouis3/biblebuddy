@@ -360,7 +360,13 @@ export type ChallengeInput = {
    * the Feed.
    */
   buddyIds?: string[];
+  /** Played with speed points (since 2026-11-23): scores run to ~20,000, not ±10. */
+  speed?: boolean;
 };
+
+/** A score, clamped: speed points run 0 to 20,000; the old +1/−1 scoring ±50. */
+const clampScore = (raw: unknown, speed: boolean) =>
+  speed ? Math.max(0, Math.min(40000, Math.round(Number(raw) || 0))) : Math.max(-50, Math.min(50, Math.round(Number(raw) || 0)));
 
 /** The player's Bible Buddies (the buddies table, either side): id, first name, photo. */
 export async function listBuddies(admin: SupabaseClient, userId: string) {
@@ -383,7 +389,7 @@ export async function listBuddies(admin: SupabaseClient, userId: string) {
 export async function createChallenge(admin: SupabaseClient, user: ClueUser, input: ChallengeInput, opts: { postToFeed?: boolean } = {}) {
   const roundId = String(input.roundId || "").slice(0, 64);
   if (!roundId) return { error: "Missing round." };
-  const score = Math.max(-50, Math.min(50, Math.round(Number(input.score) || 0)));
+  const score = clampScore(input.score, !!input.speed);
   const wantBuddies = Array.isArray(input.buddyIds) && input.buddyIds.length > 0;
 
   // One challenge per finished round: an open challenge and a buddy challenge
@@ -409,7 +415,7 @@ export async function createChallenge(admin: SupabaseClient, user: ClueUser, inp
       deck_ids: selectionToKeys(selection),
       card_ids: cardIds,
       top_clue: {},
-      settings: { answerSeconds: DEFAULT_CLUE_SETTINGS.answerSeconds, revealSeconds: DEFAULT_CLUE_SETTINGS.revealSeconds },
+      settings: { answerSeconds: DEFAULT_CLUE_SETTINGS.answerSeconds, revealSeconds: DEFAULT_CLUE_SETTINGS.revealSeconds, ...(input.speed ? { speed: true } : {}) },
       creator_score: score,
       creator_won: won,
       attempts: 1,
@@ -503,6 +509,8 @@ export async function getChallenge(admin: SupabaseClient, rawId: string, user: C
     deckName: selectionLabel(selectionFromKeys(c.deck_ids as string[])),
     selection: selectionFromKeys(c.deck_ids as string[]),
     cardIds: c.card_ids as string[],
+    /** Speed points (made since 2026-11-23); older challenges keep the +1/−1 scoring. */
+    speed: !!(c.settings as { speed?: boolean } | null)?.speed,
     /** Made before the question bank (2026-11-22): its cards cannot be replayed. */
     outdated: !(c.card_ids as string[]).every((id) => CLUE_BANK.has(id)),
     attempts: c.attempts as number,
@@ -521,7 +529,7 @@ export async function submitChallengeAttempt(
   const id = String(rawId || "").replace(/[^A-Za-z0-9]/g, "").slice(0, 12);
   const { data: c } = await admin.from("clue_challenges").select("*").eq("id", id).maybeSingle();
   if (!c) return { error: "This challenge was not found." };
-  const score = Math.max(-50, Math.min(50, Math.round(Number(result.score) || 0)));
+  const score = clampScore(result.score, !!(c.settings as { speed?: boolean } | null)?.speed);
   const won = Math.max(0, Math.min(10, Math.round(Number(result.won) || 0)));
   const { data: prior } = await admin.from("clue_challenge_attempts").select("id").eq("challenge_id", id).eq("user_id", user.id).eq("ranked", true).maybeSingle();
   const ranked = !prior;

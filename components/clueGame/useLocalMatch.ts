@@ -11,8 +11,20 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CLUE_BANK } from "@/lib/clueGame/bank";
-import { publicView, reduceClueMatch, type ClueAction, type ClueMatch } from "@/lib/clueGame/engine";
+import { publicView, reduceClueMatch, ROUND_INTRO_MS, type ClueAction, type ClueMatch } from "@/lib/clueGame/engine";
 import { trackClue } from "@/lib/clueGame/track";
+
+/**
+ * How long before the first question: the "How to play" card the first time
+ * on this device, after that a quick 3, 2, 1 (2026-11-23: no waiting).
+ */
+export function introMs(): number {
+  try {
+    if (window.localStorage.getItem("bb:trivia-intro-seen")) return 3000;
+    window.localStorage.setItem("bb:trivia-intro-seen", "1");
+  } catch {}
+  return ROUND_INTRO_MS;
+}
 
 /** An action without its time: the hook stamps it. */
 type ClueActionInput = ClueAction extends infer A ? (A extends ClueAction ? Omit<A, "now"> & { now?: number } : never) : never;

@@ -10,14 +10,14 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { bookItems, loadBook } from "@/lib/clueGame/bank";
-import { createMatch, ROUND_INTRO_MS, soloSetup, type ClueSelection, type PublicCard } from "@/lib/clueGame/engine";
+import { createMatch, SOLO_SETTINGS, soloSetup, type ClueSelection, type PublicCard } from "@/lib/clueGame/engine";
 import type { ClueRef } from "@/lib/clueGame/types";
 import { clueApi, clueUserId, trackClue } from "@/lib/clueGame/track";
 import { supabase } from "@/lib/supabaseClient";
 import ClueTable from "./ClueTable";
 import ChallengeChoices from "./BuddyChallenge";
 import { Avatar, ClueHeader, ClueRoomFrame, ScriptureSheet, StudyCard } from "./ClueParts";
-import { useLocalMatch } from "./useLocalMatch";
+import { introMs, useLocalMatch } from "./useLocalMatch";
 
 type Challenge = {
   id: string;
@@ -28,6 +28,8 @@ type Challenge = {
   deckName: string;
   selection: ClueSelection;
   cardIds: string[];
+  /** Speed points (made since 2026-11-23); older ones keep +1/−1. */
+  speed?: boolean;
   /** Made before the question bank: it cannot be replayed. */
   outdated?: boolean;
   creatorId?: string;
@@ -46,7 +48,7 @@ function Board({ c }: { c: Challenge }) {
         <li key={row.userId} className="flex items-center gap-3 rounded-xl px-3 py-1.5" style={{ background: row.rank === 1 ? "#f6e7c1" : "rgba(255,255,255,.4)" }}>
           <span className="w-6 text-center font-black">{row.rank === 1 ? "👑" : row.rank}</span>
           <span className="min-w-0 flex-1 truncate font-bold">{row.name}</span>
-          <span className="font-black">⭐ {row.score}</span>
+          <span className="font-black">⭐ {row.score.toLocaleString()}</span>
         </li>
       ))}
     </ol>
@@ -55,14 +57,14 @@ function Board({ c }: { c: Challenge }) {
 
 function ChallengeRound({ c, from, onDone }: { c: Challenge; from: string | null; onDone: (c: Challenge, ranked: boolean, post: string | null) => void }) {
   const { match, view, now, act } = useLocalMatch(
-    () => createMatch({ items: bookItems(c.selection.book), selection: c.selection, ...soloSetup("me", "You"), seed: 1, cardIds: c.cardIds }),
+    () => createMatch({ items: bookItems(c.selection.book), selection: c.selection, ...soloSetup("me", "You"), ...(c.speed ? { settings: SOLO_SETTINGS } : {}), seed: 1, cardIds: c.cardIds }),
     { persistKey: `bb:clue-challenge:${c.id}`, mode: "challenge", deckIds: c.deckIds },
   );
   const [study, setStudy] = useState<PublicCard | null>(null);
   const [scripture, setScripture] = useState<ClueRef | null>(null);
   useEffect(() => {
     if (match.phase === "ready") {
-      act({ type: "deal", now: Date.now() + ROUND_INTRO_MS });
+      act({ type: "deal", now: Date.now() + introMs() });
       trackClue("clue_game_challenge_started", { challenge: c.id });
     }
   }, [match.phase, act, c.id]);
@@ -90,6 +92,8 @@ function ChallengeRound({ c, from, onDone }: { c: Challenge; from: string | null
         deckIds={c.deckIds}
         roundLabel={c.deckName}
         onAnswer={(choice) => act({ type: "answer", playerId: "me", choice })}
+        onNext={c.speed ? () => act({ type: "next" }) : undefined}
+        onLifeline={c.speed ? (kind) => act({ type: kind, playerId: "me" }) : undefined}
         onStudy={(card) => {
           setStudy(card);
           trackClue("clue_game_study_opened", { mode: "challenge", card: card.id });
