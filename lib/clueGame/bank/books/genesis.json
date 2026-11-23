@@ -15984,54 +15984,6 @@
   "ref": "Genesis 47:4"
  },
  {
-  "id": "old-genesis-49-3",
-  "chapter": 49,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How is Joseph described in Jacob's blessing?",
-  "choices": [
-   "A fruitful bough",
-   "A barren branch",
-   "A ravening wolf",
-   "A royal lion"
-  ],
-  "answer": 0,
-  "explanation": "Jacob calls Joseph a fruitful bough by a well.",
-  "ref": "Genesis 49:22"
- },
- {
-  "id": "old-genesis-49-4",
-  "chapter": 49,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What animal is Judah compared to in Jacob's blessing?",
-  "choices": [
-   "A lion's whelp",
-   "An eagle",
-   "A serpent",
-   "A deer"
-  ],
-  "answer": 0,
-  "explanation": "Judah is compared to a lion's whelp.",
-  "ref": "Genesis 49:9"
- },
- {
-  "id": "old-genesis-49-5",
-  "chapter": 49,
-  "level": "beginner",
-  "category": "place",
-  "question": "Where did Jacob instruct his sons to bury him?",
-  "choices": [
-   "In the cave of Machpelah",
-   "In Egypt",
-   "At Bethel",
-   "At Beersheba"
-  ],
-  "answer": 0,
-  "explanation": "Jacob instructed his sons to bury him in the cave of Machpelah with his fathers.",
-  "ref": "Genesis 49:29–30"
- },
- {
   "id": "old-genesis-50-1",
   "chapter": 50,
   "level": "beginner",
@@ -16782,5 +16734,341 @@
   "answer": 3,
   "explanation": "Behold, I will make thee fruitful, and multiply thee.",
   "ref": "Genesis 48:4"
+ },
+ {
+  "id": "genesis-49-e-01",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jacob say Judah’s father’s children would do before him?",
+  "choices": [
+   "Flee from him",
+   "Bow down",
+   "Fight him",
+   "Serve Pharaoh"
+  ],
+  "answer": 1,
+  "explanation": "Thy father’s children shall bow down before thee.",
+  "ref": "Genesis 49:8"
+ },
+ {
+  "id": "genesis-49-e-02",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which wife of Abraham was buried in the cave of Machpelah?",
+  "choices": [
+   "Sarah",
+   "Hagar",
+   "Keturah",
+   "Rachel"
+  ],
+  "answer": 0,
+  "explanation": "There they buried Abraham and Sarah his wife.",
+  "ref": "Genesis 49:31"
+ },
+ {
+  "id": "genesis-49-e-03",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jacob first tell his sons to do?",
+  "choices": [
+   "Build an altar",
+   "Go to Pharaoh",
+   "Sleep",
+   "Gather together"
+  ],
+  "answer": 3,
+  "explanation": "And Jacob called unto his sons, and said, Gather yourselves together.",
+  "ref": "Genesis 49:1"
+ },
+ {
+  "id": "genesis-49-m-01",
+  "chapter": 49,
+  "level": "medium",
+  "category": "person",
+  "question": "Which son would overcome at the last, though a troop overcame him?",
+  "choices": [
+   "Dan",
+   "Asher",
+   "Gad",
+   "Zebulun"
+  ],
+  "answer": 2,
+  "explanation": "Gad, a troop shall overcome him: but he shall overcome at the last.",
+  "ref": "Genesis 49:19"
+ },
+ {
+  "id": "genesis-49-m-02",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Jacob said Dan would do what as one of the tribes of Israel?",
+  "choices": [
+   "Rule Egypt",
+   "Judge his people",
+   "Keep the flocks",
+   "Carry the ark"
+  ],
+  "answer": 1,
+  "explanation": "Dan shall judge his people, as one of the tribes of Israel.",
+  "ref": "Genesis 49:16"
+ },
+ {
+  "id": "genesis-49-m-03",
+  "chapter": 49,
+  "level": "medium",
+  "category": "place",
+  "question": "The cave of Machpelah was before which place?",
+  "choices": [
+   "Mamre",
+   "Bethel",
+   "Goshen",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "The cave that is in the field of Machpelah, which is before Mamre, in the land of Canaan.",
+  "ref": "Genesis 49:30"
+ },
+ {
+  "id": "genesis-49-h-01",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Because of what did Jacob say Reuben would not excel?",
+  "choices": [
+   "He sold Joseph",
+   "He slew a man",
+   "He refused to work",
+   "He went up to his father’s bed"
+  ],
+  "answer": 3,
+  "explanation": "Unstable as water, thou shalt not excel; because thou wentest up to thy father’s bed.",
+  "ref": "Genesis 49:4"
+ },
+ {
+  "id": "genesis-49-h-02",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In their selfwill, what did Simeon and Levi dig down?",
+  "choices": [
+   "A well",
+   "A tower",
+   "A wall",
+   "A tent"
+  ],
+  "answer": 2,
+  "explanation": "In their anger they slew a man, and in their selfwill they digged down a wall.",
+  "ref": "Genesis 49:6"
+ },
+ {
+  "id": "genesis-49-h-03",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The sceptre shall not depart from Judah until whom come?",
+  "choices": [
+   "Joseph",
+   "Shiloh",
+   "Moses",
+   "The Angel"
+  ],
+  "answer": 1,
+  "explanation": "The sceptre shall not depart from Judah… until Shiloh come.",
+  "ref": "Genesis 49:10"
+ },
+ {
+  "id": "genesis-49-h-04",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jacob said Judah washed his garments in what?",
+  "choices": [
+   "Wine",
+   "Milk",
+   "Water",
+   "Oil"
+  ],
+  "answer": 0,
+  "explanation": "He washed his garments in wine, and his clothes in the blood of grapes.",
+  "ref": "Genesis 49:11"
+ },
+ {
+  "id": "genesis-49-h-05",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Judah’s teeth would be white with what?",
+  "choices": [
+   "Bread",
+   "Honey",
+   "Salt",
+   "Milk"
+  ],
+  "answer": 3,
+  "explanation": "His eyes shall be red with wine, and his teeth white with milk.",
+  "ref": "Genesis 49:12"
+ },
+ {
+  "id": "genesis-49-h-06",
+  "chapter": 49,
+  "level": "hard",
+  "category": "place",
+  "question": "Zebulun’s border would reach unto which place?",
+  "choices": [
+   "Goshen",
+   "Mamre",
+   "Zidon",
+   "Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Zebulun shall dwell at the haven of the sea… and his border shall be unto Zidon.",
+  "ref": "Genesis 49:13"
+ },
+ {
+  "id": "genesis-49-h-07",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Issachar see was good?",
+  "choices": [
+   "War",
+   "Rest",
+   "Gold",
+   "Wine"
+  ],
+  "answer": 1,
+  "explanation": "And he saw that rest was good, and the land that it was pleasant.",
+  "ref": "Genesis 49:15"
+ },
+ {
+  "id": "genesis-49-h-08",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Dan the serpent was said to bite what, so the rider falls backward?",
+  "choices": [
+   "The horse heels",
+   "The ass’s ears",
+   "The rider’s hand",
+   "The wagon wheel"
+  ],
+  "answer": 0,
+  "explanation": "Dan shall be an adder in the path, that biteth the horse heels, so that his rider shall fall backward.",
+  "ref": "Genesis 49:17"
+ },
+ {
+  "id": "genesis-49-h-09",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jacob say he had waited for?",
+  "choices": [
+   "A son’s return",
+   "The land of Goshen",
+   "Joseph’s coat",
+   "Thy salvation, O LORD"
+  ],
+  "answer": 3,
+  "explanation": "I have waited for thy salvation, O LORD.",
+  "ref": "Genesis 49:18"
+ },
+ {
+  "id": "genesis-49-h-10",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joseph’s bow abode in strength by the hands of whom?",
+  "choices": [
+   "The archers",
+   "Pharaoh",
+   "The mighty God of Jacob",
+   "His brethren"
+  ],
+  "answer": 2,
+  "explanation": "His bow abode in strength… by the hands of the mighty God of Jacob.",
+  "ref": "Genesis 49:24"
+ },
+ {
+  "id": "genesis-49-h-11",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At night, what would Benjamin do, like a wolf?",
+  "choices": [
+   "Rest in the fold",
+   "Divide the spoil",
+   "Guard the sheep",
+   "Howl at the gate"
+  ],
+  "answer": 1,
+  "explanation": "In the morning he shall devour the prey, and at night he shall divide the spoil.",
+  "ref": "Genesis 49:27"
+ },
+ {
+  "id": "genesis-49-h-12",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Naphtali, a hind let loose, giveth goodly what?",
+  "choices": [
+   "Words",
+   "Gifts",
+   "Sons",
+   "Corn"
+  ],
+  "answer": 0,
+  "explanation": "Naphtali is a hind let loose: he giveth goodly words.",
+  "ref": "Genesis 49:21"
+ },
+ {
+  "id": "genesis-49-h-13",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jacob called Reuben the beginning of his what?",
+  "choices": [
+   "Wealth",
+   "Kingdom",
+   "Wisdom",
+   "Strength"
+  ],
+  "answer": 3,
+  "explanation": "Reuben, thou art my firstborn, my might, and the beginning of my strength.",
+  "ref": "Genesis 49:3"
+ },
+ {
+  "id": "genesis-49-h-14",
+  "chapter": 49,
+  "level": "hard",
+  "category": "person",
+  "question": "The burial field was bought from the children of whom?",
+  "choices": [
+   "Ham",
+   "Esau",
+   "Heth",
+   "Canaan’s priests"
+  ],
+  "answer": 2,
+  "explanation": "The purchase of the field and of the cave that is therein was from the children of Heth.",
+  "ref": "Genesis 49:32"
+ },
+ {
+  "id": "genesis-49-h-15",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Judah binds his foal unto what?",
+  "choices": [
+   "A post",
+   "The vine",
+   "The gate",
+   "A tree of life"
+  ],
+  "answer": 1,
+  "explanation": "Binding his foal unto the vine, and his ass’s colt unto the choice vine.",
+  "ref": "Genesis 49:11"
  }
 ]
