@@ -8000,6 +8000,678 @@
   "ref": "Exodus 12:39"
  },
  {
+  "id": "exodus-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say this month would be for Israel?",
+  "choices": [
+   "The beginning of months",
+   "The month of rest",
+   "The end of the year",
+   "The month of war"
+  ],
+  "answer": 0,
+  "explanation": "This month shall be unto you the beginning of months: it shall be the first month of the year to you.",
+  "ref": "Exodus 12:2"
+ },
+ {
+  "id": "exodus-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal did each household take on the tenth day?",
+  "choices": [
+   "A calf",
+   "A lamb",
+   "A dove",
+   "A ram only"
+  ],
+  "answer": 1,
+  "explanation": "In the tenth day of this month they shall take to them every man a lamb.",
+  "ref": "Exodus 12:3"
+ },
+ {
+  "id": "exodus-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the meal called, as the LORD's own?",
+  "choices": [
+   "The harvest feast",
+   "The feast of weeks",
+   "The LORD's passover",
+   "The sabbath meal"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall eat it in haste: it is the LORD'S passover.",
+  "ref": "Exodus 12:11"
+ },
+ {
+  "id": "exodus-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the LORD do when He saw the blood on the houses?",
+  "choices": [
+   "Light a fire",
+   "Stop the plague at the river",
+   "Send an angel to guard",
+   "Pass over them"
+  ],
+  "answer": 3,
+  "explanation": "When I see the blood, I will pass over you.",
+  "ref": "Exodus 12:13"
+ },
+ {
+  "id": "exodus-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel eat for seven days?",
+  "choices": [
+   "Unleavened bread",
+   "Roast lamb",
+   "Barley porridge",
+   "Wild honey"
+  ],
+  "answer": 0,
+  "explanation": "Seven days shall ye eat unleavened bread.",
+  "ref": "Exodus 12:15"
+ },
+ {
+  "id": "exodus-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Pharaoh call for by night after the firstborn died?",
+  "choices": [
+   "The elders",
+   "Moses and Aaron",
+   "His magicians",
+   "Jethro"
+  ],
+  "answer": 1,
+  "explanation": "He called for Moses and Aaron by night, and said, Rise up, and get you forth.",
+  "ref": "Exodus 12:31"
+ },
+ {
+  "id": "exodus-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Pharaoh tell Israel to take when they left?",
+  "choices": [
+   "Their idols",
+   "Egyptian weapons",
+   "Their flocks and herds",
+   "Pharaoh's chariots"
+  ],
+  "answer": 2,
+  "explanation": "Also take your flocks and your herds, as ye have said, and be gone.",
+  "ref": "Exodus 12:32"
+ },
+ {
+  "id": "exodus-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which place did Israel journey to Succoth?",
+  "choices": [
+   "Goshen",
+   "Pithom",
+   "Memphis",
+   "Rameses"
+  ],
+  "answer": 3,
+  "explanation": "The children of Israel journeyed from Rameses to Succoth.",
+  "ref": "Exodus 12:37"
+ },
+ {
+  "id": "exodus-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did Israel dwell in Egypt?",
+  "choices": [
+   "Four hundred and thirty",
+   "One hundred and ten",
+   "Two hundred and fifty",
+   "Six hundred"
+  ],
+  "answer": 0,
+  "explanation": "The sojourning of the children of Israel, who dwelt in Egypt, was four hundred and thirty years.",
+  "ref": "Exodus 12:40"
+ },
+ {
+  "id": "exodus-12-e-10",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who was to be kept from eating the passover?",
+  "choices": [
+   "A child",
+   "A stranger",
+   "A widow",
+   "A shepherd"
+  ],
+  "answer": 1,
+  "explanation": "This is the ordinance of the passover: There shall no stranger eat thereof.",
+  "ref": "Exodus 12:43"
+ },
+ {
+  "id": "exodus-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what day of the month was the lamb taken?",
+  "choices": [
+   "The first",
+   "The fourteenth",
+   "The tenth",
+   "The seventh"
+  ],
+  "answer": 2,
+  "explanation": "In the tenth day of this month they shall take to them every man a lamb.",
+  "ref": "Exodus 12:3"
+ },
+ {
+  "id": "exodus-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What could a household do if it was too little for a whole lamb?",
+  "choices": [
+   "Take only half a lamb",
+   "Use a goat only",
+   "Skip the meal",
+   "Share with its nearest neighbour"
+  ],
+  "answer": 3,
+  "explanation": "Let him and his neighbour next unto his house take it according to the number of the souls.",
+  "ref": "Exodus 12:4"
+ },
+ {
+  "id": "exodus-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What age and sex was the lamb to be?",
+  "choices": [
+   "A male of the first year",
+   "A female of the first year",
+   "A male of three years",
+   "Any age"
+  ],
+  "answer": 0,
+  "explanation": "Your lamb shall be without blemish, a male of the first year.",
+  "ref": "Exodus 12:5"
+ },
+ {
+  "id": "exodus-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until which day was the lamb kept?",
+  "choices": [
+   "The seventh day",
+   "The fourteenth day",
+   "The tenth day",
+   "The twenty-first day"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall keep it up until the fourteenth day of the same month.",
+  "ref": "Exodus 12:6"
+ },
+ {
+  "id": "exodus-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the flesh to be cooked?",
+  "choices": [
+   "Boiled in water",
+   "Eaten raw",
+   "Roast with fire",
+   "Baked in clay"
+  ],
+  "answer": 2,
+  "explanation": "Eat not of it raw, nor sodden at all with water, but roast with fire.",
+  "ref": "Exodus 12:9"
+ },
+ {
+  "id": "exodus-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What herbs were eaten with the lamb?",
+  "choices": [
+   "Sweet herbs",
+   "Hyssop",
+   "Mint",
+   "Bitter herbs"
+  ],
+  "answer": 3,
+  "explanation": "They shall eat the flesh... with bitter herbs they shall eat it.",
+  "ref": "Exodus 12:8"
+ },
+ {
+  "id": "exodus-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done with any of the lamb left until morning?",
+  "choices": [
+   "Burn it with fire",
+   "Give it to the poor",
+   "Salt it",
+   "Bury it"
+  ],
+  "answer": 0,
+  "explanation": "That which remaineth of it until the morning ye shall burn with fire.",
+  "ref": "Exodus 12:10"
+ },
+ {
+  "id": "exodus-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to a soul who ate leavened bread in the seven days?",
+  "choices": [
+   "Pay a fine",
+   "Be cut off from Israel",
+   "Be sent away for a year",
+   "Bring a lamb"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever eateth leavened bread... that soul shall be cut off from Israel.",
+  "ref": "Exodus 12:15"
+ },
+ {
+  "id": "exodus-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Moses call to tell them to kill the passover?",
+  "choices": [
+   "The priests",
+   "The firstborn",
+   "The elders of Israel",
+   "The Levites"
+  ],
+  "answer": 2,
+  "explanation": "Then Moses called for all the elders of Israel.",
+  "ref": "Exodus 12:21"
+ },
+ {
+  "id": "exodus-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was used to strike the blood on the doorposts?",
+  "choices": [
+   "A palm branch",
+   "A cedar twig",
+   "A cloth",
+   "A bunch of hyssop"
+  ],
+  "answer": 3,
+  "explanation": "Take a bunch of hyssop, and dip it in the blood that is in the bason.",
+  "ref": "Exodus 12:22"
+ },
+ {
+  "id": "exodus-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say the children would ask about the service?",
+  "choices": [
+   "What mean ye by this service?",
+   "Why is the lamb small?",
+   "Where is the lamb from?",
+   "Who ate it first?"
+  ],
+  "answer": 0,
+  "explanation": "When your children shall say unto you, What mean ye by this service?",
+  "ref": "Exodus 12:26"
+ },
+ {
+  "id": "exodus-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the people respond after Moses spoke about the passover?",
+  "choices": [
+   "They sang",
+   "They bowed the head and worshipped",
+   "They built an altar",
+   "They fled"
+  ],
+  "answer": 1,
+  "explanation": "And the people bowed the head and worshipped.",
+  "ref": "Exodus 12:27"
+ },
+ {
+  "id": "exodus-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose firstborn were smitten, \"unto\" the dungeon?",
+  "choices": [
+   "The soldier's",
+   "The priest's",
+   "The captive's",
+   "The shepherd's"
+  ],
+  "answer": 2,
+  "explanation": "From the firstborn of Pharaoh... unto the firstborn of the captive that was in the dungeon.",
+  "ref": "Exodus 12:29"
+ },
+ {
+  "id": "exodus-12-m-14",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Egyptians urge Israel to leave in haste?",
+  "choices": [
+   "They feared the army",
+   "They wanted the land",
+   "They were hungry",
+   "They said, We be all dead men"
+  ],
+  "answer": 3,
+  "explanation": "The Egyptians were urgent upon the people... for they said, We be all dead men.",
+  "ref": "Exodus 12:33"
+ },
+ {
+  "id": "exodus-12-m-15",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Israelites borrow from the Egyptians besides jewels of silver and gold?",
+  "choices": [
+   "Raiment",
+   "Chariots",
+   "Swords",
+   "Tents"
+  ],
+  "answer": 0,
+  "explanation": "They borrowed of the Egyptians jewels of silver, and jewels of gold, and raiment.",
+  "ref": "Exodus 12:35"
+ },
+ {
+  "id": "exodus-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the bread dough carried in?",
+  "choices": [
+   "Baskets on donkeys",
+   "Kneadingtroughs bound up in their clothes",
+   "Jars on carts",
+   "Skins of goats"
+  ],
+  "answer": 1,
+  "explanation": "The people took their dough before it was leavened, their kneadingtroughs being bound up in their clothes upon their shoulders.",
+  "ref": "Exodus 12:34"
+ },
+ {
+  "id": "exodus-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the people to be dressed when they ate the passover?",
+  "choices": [
+   "In white robes",
+   "In sackcloth",
+   "Loins girded, shoes on, staff in hand",
+   "Barefoot"
+  ],
+  "answer": 2,
+  "explanation": "With your loins girded, your shoes on your feet, and your staff in your hand.",
+  "ref": "Exodus 12:11"
+ },
+ {
+  "id": "exodus-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Against whom did the LORD say He would execute judgment?",
+  "choices": [
+   "The sea of Egypt",
+   "The magicians",
+   "The army of Pharaoh",
+   "All the gods of Egypt"
+  ],
+  "answer": 3,
+  "explanation": "Against all the gods of Egypt I will execute judgment: I am the LORD.",
+  "ref": "Exodus 12:12"
+ },
+ {
+  "id": "exodus-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where on the house was the blood put besides the two side posts?",
+  "choices": [
+   "On the upper door post",
+   "On the roof",
+   "On the threshold",
+   "On the window"
+  ],
+  "answer": 0,
+  "explanation": "They shall take of the blood, and strike it on the two side posts and on the upper door post.",
+  "ref": "Exodus 12:7"
+ },
+ {
+  "id": "exodus-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the Israelites not to do until the morning?",
+  "choices": [
+   "Light a fire",
+   "Go out at the door of the house",
+   "Speak aloud",
+   "Eat bread"
+  ],
+  "answer": 1,
+  "explanation": "None of you shall go out at the door of his house until the morning.",
+  "ref": "Exodus 12:22"
+ },
+ {
+  "id": "exodus-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the number of men on foot who journeyed from Rameses to Succoth?",
+  "choices": [
+   "About sixty thousand",
+   "About two million",
+   "About six hundred thousand",
+   "About three hundred"
+  ],
+  "answer": 2,
+  "explanation": "About six hundred thousand on foot that were men, beside children.",
+  "ref": "Exodus 12:37"
+ },
+ {
+  "id": "exodus-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Who went up with Israel besides their flocks and herds?",
+  "choices": [
+   "The Egyptian army",
+   "The magicians",
+   "Pharaoh's sons",
+   "A mixed multitude"
+  ],
+  "answer": 3,
+  "explanation": "And a mixed multitude went up also with them.",
+  "ref": "Exodus 12:38"
+ },
+ {
+  "id": "exodus-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Israelites bake of the dough they brought out of Egypt?",
+  "choices": [
+   "Unleavened cakes",
+   "Honey cakes",
+   "Barley loaves",
+   "Fig cakes"
+  ],
+  "answer": 0,
+  "explanation": "They baked unleavened cakes of the dough which they brought forth out of Egypt.",
+  "ref": "Exodus 12:39"
+ },
+ {
+  "id": "exodus-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pharaoh ask Moses and Aaron to do at the end of his speech?",
+  "choices": [
+   "Pray for Egypt",
+   "Bless him also",
+   "Return the jewels",
+   "Stay in Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Also take your flocks and your herds... and be gone; and bless me also.",
+  "ref": "Exodus 12:32"
+ },
+ {
+  "id": "exodus-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was not to be broken in the passover lamb?",
+  "choices": [
+   "The skin",
+   "The head",
+   "A bone",
+   "The legs"
+  ],
+  "answer": 2,
+  "explanation": "Neither shall ye break a bone thereof.",
+  "ref": "Exodus 12:46"
+ },
+ {
+  "id": "exodus-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was required of a stranger's males before keeping the passover?",
+  "choices": [
+   "They must bring a lamb",
+   "They must wash",
+   "They must fast",
+   "They must be circumcised"
+  ],
+  "answer": 3,
+  "explanation": "Let all his males be circumcised, and then let him come near and keep it.",
+  "ref": "Exodus 12:48"
+ },
+ {
+  "id": "exodus-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On the day of what did the LORD's hosts go out of Egypt?",
+  "choices": [
+   "The selfsame day the 430 years ended",
+   "The day Pharaoh fell",
+   "The day of the sabbath",
+   "The day of Moses' birth"
+  ],
+  "answer": 0,
+  "explanation": "At the end of the four hundred and thirty years, even the selfsame day... all the hosts of the LORD went out.",
+  "ref": "Exodus 12:41"
+ },
+ {
+  "id": "exodus-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many days passed from the fourteenth until bread was no longer unleavened, ending on which day?",
+  "choices": [
+   "The seventeenth day",
+   "The twenty-first day",
+   "The tenth day",
+   "The twenty-eighth day"
+  ],
+  "answer": 1,
+  "explanation": "On the fourteenth day of the month at even... until the one and twentieth day of the month at even.",
+  "ref": "Exodus 12:18"
+ },
+ {
+  "id": "exodus-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who could eat the passover if he was bought for money?",
+  "choices": [
+   "No servant",
+   "A hired servant",
+   "A servant, once circumcised",
+   "Any foreigner"
+  ],
+  "answer": 2,
+  "explanation": "Every man's servant that is bought for money, when thou hast circumcised him, then shall he eat thereof.",
+  "ref": "Exodus 12:44"
+ },
+ {
+  "id": "exodus-12-h-15",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was done to the Egyptians' goods when the people borrowed?",
+  "choices": [
+   "They burned them",
+   "They returned them",
+   "They buried them",
+   "They spoiled the Egyptians"
+  ],
+  "answer": 3,
+  "explanation": "They lent unto them such things as they required. And they spoiled the Egyptians.",
+  "ref": "Exodus 12:36"
+ },
+ {
+  "id": "exodus-12-h-16",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say to those in a house with one dead?",
+  "choices": [
+   "Not a house was without one dead",
+   "Some houses were spared",
+   "Only Pharaoh's house",
+   "Only the palace"
+  ],
+  "answer": 0,
+  "explanation": "There was not a house where there was not one dead.",
+  "ref": "Exodus 12:30"
+ },
+ {
+  "id": "exodus-12-h-17",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the destroyer not do when the LORD saw the blood?",
+  "choices": [
+   "Cross the Nile",
+   "Come in unto their houses to smite them",
+   "Open the doors",
+   "Take the lambs"
+  ],
+  "answer": 1,
+  "explanation": "The LORD will pass over the door, and will not suffer the destroyer to come in unto your houses to smite you.",
+  "ref": "Exodus 12:23"
+ },
+ {
   "id": "old-exodus-13-1",
   "chapter": 13,
   "level": "beginner",
