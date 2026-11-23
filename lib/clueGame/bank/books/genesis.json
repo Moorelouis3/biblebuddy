@@ -7024,22 +7024,6 @@
   "ref": "Genesis 21:5"
  },
  {
-  "id": "old-genesis-21-3",
-  "chapter": 21,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "Why did Sarah ask Abraham to send Hagar and Ishmael away?",
-  "choices": [
-   "They wanted to return to Egypt",
-   "She saw Hagar's son mocking",
-   "God told her to first",
-   "There was not enough food"
-  ],
-  "answer": 1,
-  "explanation": "Sarah saw the son of Hagar mocking and told Abraham to cast out the bondwoman and her son.",
-  "ref": "Genesis 21:9–10"
- },
- {
   "id": "old-genesis-21-5",
   "chapter": 21,
   "level": "beginner",
@@ -7054,6 +7038,310 @@
   "answer": 0,
   "explanation": "The place was called Beersheba because there the two made an oath.",
   "ref": "Genesis 21:31"
+ },
+ {
+  "id": "genesis-21-e-01",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "What did Abraham call the son Sarah bore to him?",
+  "choices": [
+   "Ishmael",
+   "Isaac",
+   "Jacob",
+   "Esau"
+  ],
+  "answer": 1,
+  "explanation": "Abraham called the name of his son that was born unto him, whom Sarah bare to him, Isaac.",
+  "ref": "Genesis 21:3"
+ },
+ {
+  "id": "genesis-21-m-01",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abimelech and Phichol say about Abraham?",
+  "choices": [
+   "God is with thee in all that thou doest",
+   "Thou art a mighty prince",
+   "Thou art a prophet",
+   "Thou art a stranger here"
+  ],
+  "answer": 0,
+  "explanation": "Abimelech and Phichol spake unto Abraham, saying, God is with thee in all that thou doest.",
+  "ref": "Genesis 21:22"
+ },
+ {
+  "id": "genesis-21-m-02",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel of God tell Hagar to do for the lad?",
+  "choices": [
+   "Take him back to Abraham",
+   "Carry him to Egypt",
+   "Wash him in the well",
+   "Lift him up and hold him in her hand"
+  ],
+  "answer": 3,
+  "explanation": "Arise, lift up the lad, and hold him in thine hand; for I will make him a great nation.",
+  "ref": "Genesis 21:18"
+ },
+ {
+  "id": "genesis-21-m-03",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Sarah say God had made her do, so that all who heard would do the same?",
+  "choices": [
+   "Sing",
+   "Rejoice",
+   "Laugh",
+   "Weep"
+  ],
+  "answer": 2,
+  "explanation": "Sarah said, God hath made me to laugh, so that all that hear will laugh with me.",
+  "ref": "Genesis 21:6"
+ },
+ {
+  "id": "genesis-21-h-01",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Isaac when Abraham circumcised him?",
+  "choices": [
+   "Seven days old",
+   "Eight days old",
+   "Thirty days old",
+   "One year old"
+  ],
+  "answer": 1,
+  "explanation": "Abraham circumcised his son Isaac being eight days old, as God had commanded him.",
+  "ref": "Genesis 21:4"
+ },
+ {
+  "id": "genesis-21-h-02",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Sarah say Isaac must not share with the son of the bondwoman?",
+  "choices": [
+   "The inheritance (to be heir)",
+   "The tent",
+   "The well",
+   "The feast"
+  ],
+  "answer": 0,
+  "explanation": "The son of this bondwoman shall not be heir with my son, even with Isaac.",
+  "ref": "Genesis 21:10"
+ },
+ {
+  "id": "genesis-21-h-03",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was the thing very grievous in Abraham's sight?",
+  "choices": [
+   "Because of Sarah's anger",
+   "Because of the drought",
+   "Because of the feast",
+   "Because of his son"
+  ],
+  "answer": 3,
+  "explanation": "The thing was very grievous in Abraham's sight because of his son.",
+  "ref": "Genesis 21:11"
+ },
+ {
+  "id": "genesis-21-h-04",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God tell Abraham to do about all that Sarah had said?",
+  "choices": [
+   "Ignore it",
+   "Pray about it",
+   "Hearken unto her voice",
+   "Ask Abimelech"
+  ],
+  "answer": 2,
+  "explanation": "In all that Sarah hath said unto thee, hearken unto her voice.",
+  "ref": "Genesis 21:12"
+ },
+ {
+  "id": "genesis-21-h-05",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did God say He would make a nation of the bondwoman's son?",
+  "choices": [
+   "Because Hagar prayed",
+   "Because he was Abraham's seed",
+   "Because Sarah asked",
+   "Because he was the firstborn heir"
+  ],
+  "answer": 1,
+  "explanation": "Of the son of the bondwoman will I make a nation, because he is thy seed.",
+  "ref": "Genesis 21:13"
+ },
+ {
+  "id": "genesis-21-h-06",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Abraham put the bread and bottle of water he gave Hagar?",
+  "choices": [
+   "On her shoulder",
+   "In a basket",
+   "On a donkey",
+   "In the child's hands"
+  ],
+  "answer": 0,
+  "explanation": "Abraham took bread, and a bottle of water, and gave it unto Hagar, putting it on her shoulder.",
+  "ref": "Genesis 21:14"
+ },
+ {
+  "id": "genesis-21-h-07",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Under what did Hagar cast the child when the water was spent?",
+  "choices": [
+   "A tent",
+   "A rock",
+   "A palm tree",
+   "One of the shrubs"
+  ],
+  "answer": 3,
+  "explanation": "The water was spent in the bottle, and she cast the child under one of the shrubs.",
+  "ref": "Genesis 21:15"
+ },
+ {
+  "id": "genesis-21-h-08",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How far away did Hagar sit from the child?",
+  "choices": [
+   "A day's journey",
+   "A stone's throw",
+   "About a bowshot",
+   "Behind a hill"
+  ],
+  "answer": 2,
+  "explanation": "She sat her down over against him a good way off, as it were a bowshot.",
+  "ref": "Genesis 21:16"
+ },
+ {
+  "id": "genesis-21-h-09",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hagar say she did not want to see?",
+  "choices": [
+   "The wilderness",
+   "The death of the child",
+   "Abraham's tent",
+   "The angel of God"
+  ],
+  "answer": 1,
+  "explanation": "She said, Let me not see the death of the child.",
+  "ref": "Genesis 21:16"
+ },
+ {
+  "id": "genesis-21-h-10",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God hear in the wilderness?",
+  "choices": [
+   "The voice of the lad",
+   "The cry of the flocks",
+   "The prayer of Abraham",
+   "The song of Sarah"
+  ],
+  "answer": 0,
+  "explanation": "God heard the voice of the lad; and the angel of God called Hagar out of heaven.",
+  "ref": "Genesis 21:17"
+ },
+ {
+  "id": "genesis-21-h-11",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hagar do after God opened her eyes and she saw the well?",
+  "choices": [
+   "Went back to Abraham",
+   "Offered a sacrifice",
+   "Washed herself",
+   "Filled the bottle and gave the lad drink"
+  ],
+  "answer": 3,
+  "explanation": "She went, and filled the bottle with water, and gave the lad drink.",
+  "ref": "Genesis 21:19"
+ },
+ {
+  "id": "genesis-21-h-12",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Abraham give Abimelech seven ewe lambs?",
+  "choices": [
+   "As a gift for Phichol",
+   "As payment for land",
+   "As a witness that he had digged the well",
+   "As an offering to God"
+  ],
+  "answer": 2,
+  "explanation": "For these seven ewe lambs shalt thou take of my hand, that they may be a witness unto me, that I have digged this well.",
+  "ref": "Genesis 21:30"
+ },
+ {
+  "id": "genesis-21-h-13",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was the place called Beer-sheba?",
+  "choices": [
+   "Because seven wells were dug",
+   "Because there they sware both of them",
+   "Because a grove was planted",
+   "Because Abraham was born there"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore he called that place Beer-sheba; because there they sware both of them.",
+  "ref": "Genesis 21:31"
+ },
+ {
+  "id": "genesis-21-h-14",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Abimelech asked Abraham not to deal falsely with him, his son, and whom else?",
+  "choices": [
+   "His servants",
+   "His son's son",
+   "His captain",
+   "His wife"
+  ],
+  "answer": 1,
+  "explanation": "Swear unto me here by God that thou wilt not deal falsely with me, nor with my son, nor with my son's son.",
+  "ref": "Genesis 21:23"
+ },
+ {
+  "id": "genesis-21-h-15",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abimelech say when Abraham reproved him about the well?",
+  "choices": [
+   "He knew not who had done it",
+   "His servants were right",
+   "Abraham had no right to it",
+   "He would pay for it"
+  ],
+  "answer": 0,
+  "explanation": "Abimelech said, I wot not who hath done this thing: neither didst thou tell me, neither yet heard I of it, but to day.",
+  "ref": "Genesis 21:26"
  },
  {
   "id": "old-genesis-22-2",
