@@ -8400,6 +8400,326 @@
   "ref": "Genesis 25:22"
  },
  {
+  "id": "genesis-25-e-01",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Isaac take to wife?",
+  "choices": [
+   "Rebekah",
+   "Rachel",
+   "Leah",
+   "Keturah"
+  ],
+  "answer": 0,
+  "explanation": "Isaac was forty years old when he took Rebekah to wife.",
+  "ref": "Genesis 25:20"
+ },
+ {
+  "id": "genesis-25-e-02",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which brother despised his birthright?",
+  "choices": [
+   "Jacob",
+   "Esau",
+   "Isaac",
+   "Ishmael"
+  ],
+  "answer": 1,
+  "explanation": "Esau ate and drank, and went his way: thus Esau despised his birthright.",
+  "ref": "Genesis 25:34"
+ },
+ {
+  "id": "genesis-25-m-01",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Rebekah’s father?",
+  "choices": [
+   "Laban",
+   "Nahor",
+   "Bethuel",
+   "Ephron"
+  ],
+  "answer": 2,
+  "explanation": "Rebekah was the daughter of Bethuel the Syrian of Padan-aram.",
+  "ref": "Genesis 25:20"
+ },
+ {
+  "id": "genesis-25-m-02",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Rebekah do when the children struggled within her?",
+  "choices": [
+   "She called for Isaac’s brother",
+   "She left for Haran",
+   "She offered a sacrifice",
+   "She went to enquire of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "She said, If it be so, why am I thus? And she went to enquire of the LORD.",
+  "ref": "Genesis 25:22"
+ },
+ {
+  "id": "genesis-25-m-03",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Esau say when Jacob asked for his birthright?",
+  "choices": [
+   "I am at the point to die",
+   "I will give it for a flock",
+   "It is my father’s to give",
+   "Take it, it is yours already"
+  ],
+  "answer": 0,
+  "explanation": "Esau said, Behold, I am at the point to die: and what profit shall this birthright do to me?",
+  "ref": "Genesis 25:32"
+ },
+ {
+  "id": "genesis-25-h-01",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Isaac when he took Rebekah to wife?",
+  "choices": [
+   "Thirty",
+   "Forty",
+   "Sixty",
+   "Fifty"
+  ],
+  "answer": 1,
+  "explanation": "Isaac was forty years old when he took Rebekah to wife.",
+  "ref": "Genesis 25:20"
+ },
+ {
+  "id": "genesis-25-h-02",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Isaac when Rebekah bare the twins?",
+  "choices": [
+   "Forty years",
+   "Fourscore years",
+   "Threescore years",
+   "Thirty years"
+  ],
+  "answer": 2,
+  "explanation": "Isaac was threescore years old when she bare them.",
+  "ref": "Genesis 25:26"
+ },
+ {
+  "id": "genesis-25-h-03",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Abraham live?",
+  "choices": [
+   "137",
+   "120",
+   "147",
+   "175"
+  ],
+  "answer": 3,
+  "explanation": "The days of the years of Abraham’s life were an hundred threescore and fifteen years.",
+  "ref": "Genesis 25:7"
+ },
+ {
+  "id": "genesis-25-h-04",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Ishmael live?",
+  "choices": [
+   "175",
+   "137",
+   "127",
+   "147"
+  ],
+  "answer": 0,
+  "explanation": "These are the years of the life of Ishmael, an hundred and thirty and seven years.",
+  "ref": "Genesis 25:17"
+ },
+ {
+  "id": "genesis-25-h-05",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Abraham’s burial field belonged to Ephron, the son of whom?",
+  "choices": [
+   "Heth",
+   "Zohar",
+   "Bethuel",
+   "Mamre"
+  ],
+  "answer": 1,
+  "explanation": "Abraham was buried in the field of Ephron the son of Zohar the Hittite.",
+  "ref": "Genesis 25:9"
+ },
+ {
+  "id": "genesis-25-h-06",
+  "chapter": 25,
+  "level": "hard",
+  "category": "place",
+  "question": "By which well did Isaac dwell after Abraham died?",
+  "choices": [
+   "Beer-sheba",
+   "Esek",
+   "Lahai-roi",
+   "Sitnah"
+  ],
+  "answer": 2,
+  "explanation": "After Abraham’s death God blessed Isaac, and Isaac dwelt by the well Lahai-roi.",
+  "ref": "Genesis 25:11"
+ },
+ {
+  "id": "genesis-25-h-07",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the firstborn of Ishmael?",
+  "choices": [
+   "Kedar",
+   "Adbeel",
+   "Dumah",
+   "Nebajoth"
+  ],
+  "answer": 3,
+  "explanation": "The firstborn of Ishmael was Nebajoth, and then Kedar, Adbeel and Mibsam.",
+  "ref": "Genesis 25:13"
+ },
+ {
+  "id": "genesis-25-h-08",
+  "chapter": 25,
+  "level": "hard",
+  "category": "place",
+  "question": "Ishmael’s sons dwelt from Havilah to which place?",
+  "choices": [
+   "Shur",
+   "Egypt",
+   "Mamre",
+   "Gerar"
+  ],
+  "answer": 0,
+  "explanation": "They dwelt from Havilah unto Shur, that is before Egypt.",
+  "ref": "Genesis 25:18"
+ },
+ {
+  "id": "genesis-25-h-09",
+  "chapter": 25,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Rebekah from?",
+  "choices": [
+   "Gerar",
+   "Padan-aram",
+   "Egypt",
+   "Mamre"
+  ],
+  "answer": 1,
+  "explanation": "Rebekah was the daughter of Bethuel the Syrian of Padan-aram.",
+  "ref": "Genesis 25:20"
+ },
+ {
+  "id": "genesis-25-h-10",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was Keturah’s first son in the list?",
+  "choices": [
+   "Midian",
+   "Shuah",
+   "Zimran",
+   "Ishbak"
+  ],
+  "answer": 2,
+  "explanation": "Keturah bare him Zimran, and Jokshan, and Medan, and Midian, and Ishbak, and Shuah.",
+  "ref": "Genesis 25:2"
+ },
+ {
+  "id": "genesis-25-h-11",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abraham give the sons of his concubines?",
+  "choices": [
+   "Flocks of sheep",
+   "The land of Canaan",
+   "A blessing",
+   "Gifts"
+  ],
+  "answer": 3,
+  "explanation": "Unto the sons of the concubines Abraham gave gifts, and sent them away eastward.",
+  "ref": "Genesis 25:6"
+ },
+ {
+  "id": "genesis-25-h-12",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose sons were Sheba and Dedan?",
+  "choices": [
+   "Jokshan",
+   "Midian",
+   "Medan",
+   "Ishbak"
+  ],
+  "answer": 0,
+  "explanation": "Jokshan begat Sheba, and Dedan.",
+  "ref": "Genesis 25:3"
+ },
+ {
+  "id": "genesis-25-h-13",
+  "chapter": 25,
+  "level": "hard",
+  "category": "place",
+  "question": "Abraham’s burial cave was before which place?",
+  "choices": [
+   "Shur",
+   "Mamre",
+   "Gerar",
+   "Haran"
+  ],
+  "answer": 1,
+  "explanation": "The cave of Machpelah, in the field of Ephron, was before Mamre.",
+  "ref": "Genesis 25:9"
+ },
+ {
+  "id": "genesis-25-h-14",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Abraham purchased his burial field from the sons of whom?",
+  "choices": [
+   "Zohar",
+   "Ishmael",
+   "Heth",
+   "Midian"
+  ],
+  "answer": 2,
+  "explanation": "The field which Abraham purchased of the sons of Heth: there was Abraham buried, and Sarah his wife.",
+  "ref": "Genesis 25:10"
+ },
+ {
+  "id": "genesis-25-h-15",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Esau say as he asked Jacob for food?",
+  "choices": [
+   "I am a stranger",
+   "I have no sheep",
+   "I am hunted",
+   "I am faint"
+  ],
+  "answer": 3,
+  "explanation": "Esau said, Feed me, I pray thee, with that same red pottage; for I am faint.",
+  "ref": "Genesis 25:30"
+ },
+ {
   "id": "old-genesis-26-1",
   "chapter": 26,
   "level": "beginner",
