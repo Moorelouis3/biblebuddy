@@ -13072,6 +13072,646 @@
   "ref": "Joshua 19:51"
  },
  {
+  "id": "joshua-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe received the second lot?",
+  "choices": [
+   "Zebulun",
+   "Simeon",
+   "Issachar",
+   "Asher"
+  ],
+  "answer": 1,
+  "explanation": "The second lot came forth to Simeon.",
+  "ref": "Joshua 19:1"
+ },
+ {
+  "id": "joshua-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe received the third lot?",
+  "choices": [
+   "Simeon",
+   "Zebulun",
+   "Naphtali",
+   "Dan"
+  ],
+  "answer": 1,
+  "explanation": "The third lot came up for the children of Zebulun.",
+  "ref": "Joshua 19:10"
+ },
+ {
+  "id": "joshua-19-e-03",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe received the fourth lot?",
+  "choices": [
+   "Asher",
+   "Issachar",
+   "Dan",
+   "Zebulun"
+  ],
+  "answer": 1,
+  "explanation": "The fourth lot came out to Issachar.",
+  "ref": "Joshua 19:17"
+ },
+ {
+  "id": "joshua-19-e-04",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe received the fifth lot?",
+  "choices": [
+   "Naphtali",
+   "Asher",
+   "Dan",
+   "Simeon"
+  ],
+  "answer": 1,
+  "explanation": "The fifth lot came out for the tribe of the children of Asher.",
+  "ref": "Joshua 19:24"
+ },
+ {
+  "id": "joshua-19-e-05",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe received the sixth lot?",
+  "choices": [
+   "Dan",
+   "Naphtali",
+   "Issachar",
+   "Zebulun"
+  ],
+  "answer": 1,
+  "explanation": "The sixth lot came out to the children of Naphtali.",
+  "ref": "Joshua 19:32"
+ },
+ {
+  "id": "joshua-19-e-06",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Simeon receive its inheritance within Judah's?",
+  "choices": [
+   "Simeon had no children",
+   "Judah's part was too much for them",
+   "Simeon asked to dwell with Judah",
+   "Simeon was banished"
+  ],
+  "answer": 1,
+  "explanation": "The part of the children of Judah was too much for them.",
+  "ref": "Joshua 19:9"
+ },
+ {
+  "id": "joshua-19-e-07",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the children of Dan go up to fight?",
+  "choices": [
+   "They wanted the temple",
+   "Their coast was too little for them",
+   "They were attacked first",
+   "Joshua commanded it"
+  ],
+  "answer": 1,
+  "explanation": "The coast of the children of Dan went out too little for them.",
+  "ref": "Joshua 19:47"
+ },
+ {
+  "id": "joshua-19-e-08",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "What did the Danites rename Leshem?",
+  "choices": [
+   "Zorah",
+   "Dan",
+   "Ekron",
+   "Hazor"
+  ],
+  "answer": 1,
+  "explanation": "They called Leshem, Dan, after the name of Dan their father.",
+  "ref": "Joshua 19:47"
+ },
+ {
+  "id": "joshua-19-e-09",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua do with the city he was given?",
+  "choices": [
+   "He gave it to Caleb",
+   "He built it and dwelt in it",
+   "He made it a city of refuge",
+   "He left it empty"
+  ],
+  "answer": 1,
+  "explanation": "He built the city, and dwelt therein.",
+  "ref": "Joshua 19:50"
+ },
+ {
+  "id": "joshua-19-e-10",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which priest divided the inheritances with Joshua?",
+  "choices": [
+   "Phinehas",
+   "Eleazar",
+   "Aaron",
+   "Ithamar"
+  ],
+  "answer": 1,
+  "explanation": "The inheritances which Eleazar the priest, and Joshua the son of Nun divided by lot in Shiloh.",
+  "ref": "Joshua 19:51"
+ },
+ {
+  "id": "joshua-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city is named first among Simeon's cities?",
+  "choices": [
+   "Ziklag",
+   "Hormah",
+   "Moladah",
+   "Beer-sheba"
+  ],
+  "answer": 3,
+  "explanation": "They had in their inheritance Beer-sheba, or Sheba, and Moladah.",
+  "ref": "Joshua 19:2"
+ },
+ {
+  "id": "joshua-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cities were in Simeon's first group?",
+  "choices": [
+   "Four",
+   "Twelve",
+   "Twenty",
+   "Thirteen"
+  ],
+  "answer": 3,
+  "explanation": "Beer-sheba... Sharuhen; thirteen cities and their villages.",
+  "ref": "Joshua 19:2–6"
+ },
+ {
+  "id": "joshua-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cities are counted for Zebulun?",
+  "choices": [
+   "Nine",
+   "Thirteen",
+   "Sixteen",
+   "Twelve"
+  ],
+  "answer": 3,
+  "explanation": "Twelve cities with their villages.",
+  "ref": "Joshua 19:15"
+ },
+ {
+  "id": "joshua-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "person",
+  "question": "Bethlehem is named among the cities of which tribe?",
+  "choices": [
+   "Zebulun",
+   "Judah",
+   "Dan",
+   "Asher"
+  ],
+  "answer": 0,
+  "explanation": "Zebulun's cities were Kattath, Nahallal, Shimron, Idalah, and Bethlehem.",
+  "ref": "Joshua 19:15"
+ },
+ {
+  "id": "joshua-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Which of these was on Issachar's border?",
+  "choices": [
+   "Hebron",
+   "Jericho",
+   "Gezer",
+   "Jezreel"
+  ],
+  "answer": 3,
+  "explanation": "Their border was toward Jezreel, and Chesulloth, and Shunem.",
+  "ref": "Joshua 19:18"
+ },
+ {
+  "id": "joshua-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cities are counted for Issachar?",
+  "choices": [
+   "Twelve",
+   "Nineteen",
+   "Twenty-two",
+   "Sixteen"
+  ],
+  "answer": 3,
+  "explanation": "Sixteen cities with their villages.",
+  "ref": "Joshua 19:22"
+ },
+ {
+  "id": "joshua-19-m-07",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Asher's border reached which mountain westward?",
+  "choices": [
+   "Tabor",
+   "Hermon",
+   "Ephraim",
+   "Carmel"
+  ],
+  "answer": 3,
+  "explanation": "Reacheth to Carmel westward.",
+  "ref": "Joshua 19:26"
+ },
+ {
+  "id": "joshua-19-m-08",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cities are counted for Asher?",
+  "choices": [
+   "Sixteen",
+   "Nineteen",
+   "Twelve",
+   "Twenty and two"
+  ],
+  "answer": 3,
+  "explanation": "Twenty and two cities with their villages.",
+  "ref": "Joshua 19:30"
+ },
+ {
+  "id": "joshua-19-m-09",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Asher's coast reached unto which great city?",
+  "choices": [
+   "Gaza",
+   "Hebron",
+   "Beer-sheba",
+   "Zidon"
+  ],
+  "answer": 3,
+  "explanation": "Even unto great Zidon.",
+  "ref": "Joshua 19:28"
+ },
+ {
+  "id": "joshua-19-m-10",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city is called the strong city in Asher's coast?",
+  "choices": [
+   "Zidon",
+   "Hazor",
+   "Carmel",
+   "Tyre"
+  ],
+  "answer": 3,
+  "explanation": "The coast turneth to Ramah, and to the strong city Tyre.",
+  "ref": "Joshua 19:29"
+ },
+ {
+  "id": "joshua-19-m-11",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Which of these was one of Naphtali's fenced cities?",
+  "choices": [
+   "Beer-sheba",
+   "Ekron",
+   "Hebron",
+   "Hazor"
+  ],
+  "answer": 3,
+  "explanation": "The fenced cities are Ziddim, Zer, Hammath, Rakkath, Chinnereth... Hazor.",
+  "ref": "Joshua 19:35–36"
+ },
+ {
+  "id": "joshua-19-m-12",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cities are counted for Naphtali?",
+  "choices": [
+   "Twelve",
+   "Sixteen",
+   "Twenty-two",
+   "Nineteen"
+  ],
+  "answer": 3,
+  "explanation": "Nineteen cities with their villages.",
+  "ref": "Joshua 19:38"
+ },
+ {
+  "id": "joshua-19-m-13",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city did the Danites take and smite with the edge of the sword?",
+  "choices": [
+   "Zorah",
+   "Hazor",
+   "Gezer",
+   "Leshem"
+  ],
+  "answer": 3,
+  "explanation": "They took Leshem, and smote it with the edge of the sword, and possessed it.",
+  "ref": "Joshua 19:47"
+ },
+ {
+  "id": "joshua-19-m-14",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "In which mount was Timnath-serah, the city given to Joshua?",
+  "choices": [
+   "Mount Carmel",
+   "Mount Tabor",
+   "Mount Hermon",
+   "Mount Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "Timnath-serah in mount Ephraim.",
+  "ref": "Joshua 19:50"
+ },
+ {
+  "id": "joshua-19-m-15",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were these inheritances divided?",
+  "choices": [
+   "In Gilgal by the Jordan",
+   "At Hebron",
+   "On mount Ebal",
+   "In Shiloh before the Lord at the door of the tabernacle"
+  ],
+  "answer": 3,
+  "explanation": "Divided by lot in Shiloh before the Lord, at the door of the tabernacle of the congregation.",
+  "ref": "Joshua 19:51"
+ },
+ {
+  "id": "joshua-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities belonged to Simeon?",
+  "choices": [
+   "Ziklag",
+   "Gibeon",
+   "Shunem",
+   "Dor"
+  ],
+  "answer": 0,
+  "explanation": "Ziklag, and Beth-marcaboth, and Hazar-susah.",
+  "ref": "Joshua 19:5"
+ },
+ {
+  "id": "joshua-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "The villages around Simeon's cities went to which place?",
+  "choices": [
+   "Baalath-beer",
+   "Ramath-mizpeh",
+   "Beer-sheba",
+   "Hormah"
+  ],
+  "answer": 0,
+  "explanation": "All the villages round about these cities to Baalath-beer, Ramath of the south.",
+  "ref": "Joshua 19:8"
+ },
+ {
+  "id": "joshua-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Zebulun's inheritance border was unto which place?",
+  "choices": [
+   "Sarid",
+   "Jokneam",
+   "Japhia",
+   "Hannathon"
+  ],
+  "answer": 0,
+  "explanation": "The border of their inheritance was unto Sarid.",
+  "ref": "Joshua 19:10"
+ },
+ {
+  "id": "joshua-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Zebulun's border reached the river before which place?",
+  "choices": [
+   "Jokneam",
+   "Sarid",
+   "Gittah-hepher",
+   "Neah"
+  ],
+  "answer": 0,
+  "explanation": "Reached to the river that is before Jokneam.",
+  "ref": "Joshua 19:11"
+ },
+ {
+  "id": "joshua-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city is named with Jezreel and Chesulloth on Issachar's border?",
+  "choices": [
+   "Shunem",
+   "Hannathon",
+   "Kattath",
+   "Cabul"
+  ],
+  "answer": 0,
+  "explanation": "Their border was toward Jezreel, and Chesulloth, and Shunem.",
+  "ref": "Joshua 19:18"
+ },
+ {
+  "id": "joshua-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "At which river were the outgoings of Issachar's border?",
+  "choices": [
+   "Jordan",
+   "Kishon",
+   "Kanah",
+   "Arnon"
+  ],
+  "answer": 0,
+  "explanation": "The outgoings of their border were at Jordan.",
+  "ref": "Joshua 19:22"
+ },
+ {
+  "id": "joshua-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Asher's coast went out to Cabul on which hand?",
+  "choices": [
+   "The left hand",
+   "The right hand",
+   "The north hand",
+   "The east hand"
+  ],
+  "answer": 0,
+  "explanation": "And goeth out to Cabul on the left hand.",
+  "ref": "Joshua 19:27"
+ },
+ {
+  "id": "joshua-19-h-08",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Naphtali's coast reached Zebulun on which side?",
+  "choices": [
+   "The south side",
+   "The north side",
+   "The east side",
+   "The west side"
+  ],
+  "answer": 0,
+  "explanation": "And reacheth to Zebulun on the south side.",
+  "ref": "Joshua 19:34"
+ },
+ {
+  "id": "joshua-19-h-09",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Naphtali's coast reached Judah upon which river?",
+  "choices": [
+   "Jordan",
+   "Kishon",
+   "Arnon",
+   "Kanah"
+  ],
+  "answer": 0,
+  "explanation": "And to Judah upon Jordan toward the sunrising.",
+  "ref": "Joshua 19:34"
+ },
+ {
+  "id": "joshua-19-h-10",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Dan's border was before which place?",
+  "choices": [
+   "Japho",
+   "Ekron",
+   "Gath-rimmon",
+   "Zorah"
+  ],
+  "answer": 0,
+  "explanation": "Me-jarkon, and Rakkon, with the border before Japho.",
+  "ref": "Joshua 19:46"
+ },
+ {
+  "id": "joshua-19-h-11",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city comes right after Bene-berak in Dan's list?",
+  "choices": [
+   "Gath-rimmon",
+   "Eltekeh",
+   "Ajalon",
+   "Zorah"
+  ],
+  "answer": 0,
+  "explanation": "Jehud, and Bene-berak, and Gath-rimmon.",
+  "ref": "Joshua 19:45"
+ },
+ {
+  "id": "joshua-19-h-12",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to what did the children of Israel give Joshua the city he asked for?",
+  "choices": [
+   "The word of the Lord",
+   "The vote of the elders",
+   "The command of Eleazar",
+   "The lot"
+  ],
+  "answer": 0,
+  "explanation": "According to the word of the Lord they gave him the city which he asked.",
+  "ref": "Joshua 19:50"
+ },
+ {
+  "id": "joshua-19-h-13",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cities are named in Simeon's second group?",
+  "choices": [
+   "Four",
+   "Seven",
+   "Thirteen",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "Ain, Remmon, and Ether, and Ashan; four cities and their villages.",
+  "ref": "Joshua 19:7"
+ },
+ {
+  "id": "joshua-19-h-14",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Who gave Joshua the son of Nun an inheritance among them?",
+  "choices": [
+   "The children of Israel",
+   "Eleazar alone",
+   "Caleb",
+   "The tribe of Ephraim only"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel gave an inheritance to Joshua the son of Nun among them.",
+  "ref": "Joshua 19:49"
+ },
+ {
+  "id": "joshua-19-h-15",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the children of Israel give Joshua his inheritance?",
+  "choices": [
+   "After they made an end of dividing the land",
+   "Before dividing the land",
+   "When they crossed the Jordan",
+   "At the death of Moses"
+  ],
+  "answer": 0,
+  "explanation": "When they had made an end of dividing the land for inheritance, they gave an inheritance to Joshua.",
+  "ref": "Joshua 19:49"
+ },
+ {
   "id": "old-joshua-20-1",
   "chapter": 20,
   "level": "beginner",
