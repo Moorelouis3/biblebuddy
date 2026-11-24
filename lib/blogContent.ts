@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-28-explained",
+    title: "1 Samuel 28 Explained: Saul and the Witch of Endor",
+    description:
+      "1 Samuel 28 explained verse by verse: Saul's own law against mediums, the silence of God, the witch of Endor, and Samuel's final verdict.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-28-explained",
+    publishedAt: "2026-11-24",
+    readTime: "13 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 28 Explained 📖",
+      content:
+        "A king bans mediums.\nThen disguises himself to beg one for help.\n\n📌 Silence from God is sometimes an answer, not an absence.\n\n📖 God won't answer Saul by dreams, Urim, or prophets.\n📖 Saul sneaks to a medium at Endor by night.\n📖 Samuel delivers a verdict with a deadline: tomorrow.\n\nNew article on:\n🟢 why **God** suddenly stopped answering Saul\n🟢 the woman's own terror at what she saw\n🟢 what **Samuel** actually told Saul would happen\n\nHave you ever gone looking for an answer you'd already been given once? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-27-explained",
     title: "1 Samuel 27 Explained: David Defects to the Philistines",
     description:
