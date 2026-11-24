@@ -23856,6 +23856,646 @@
   "ref": "Numbers 34:5"
  },
  {
+  "id": "numbers-34-e-01",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the LORD speak to about the borders of the land?",
+  "choices": [
+   "Aaron",
+   "Joshua",
+   "Moses",
+   "Eleazar"
+  ],
+  "answer": 2,
+  "explanation": "The LORD spake unto Moses, saying, Command the children of Israel about the land of Canaan.",
+  "ref": "Numbers 34:1–2"
+ },
+ {
+  "id": "numbers-34-e-02",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which priest was named to help divide the land?",
+  "choices": [
+   "Phinehas",
+   "Eleazar",
+   "Aaron",
+   "Ithamar"
+  ],
+  "answer": 1,
+  "explanation": "These are the names of the men which shall divide the land: Eleazar the priest, and Joshua the son of Nun.",
+  "ref": "Numbers 34:17"
+ },
+ {
+  "id": "numbers-34-e-03",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Judah?",
+  "choices": [
+   "Joshua",
+   "Caleb",
+   "Nahshon",
+   "Hur"
+  ],
+  "answer": 1,
+  "explanation": "Of the tribe of Judah, Caleb the son of Jephunneh.",
+  "ref": "Numbers 34:19"
+ },
+ {
+  "id": "numbers-34-e-04",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "place",
+  "question": "Near which city had two and a half tribes received their land east of Jordan?",
+  "choices": [
+   "Hebron",
+   "Shechem",
+   "Bethel",
+   "Jericho"
+  ],
+  "answer": 3,
+  "explanation": "They received their inheritance on this side Jordan near Jericho eastward, toward the sunrising.",
+  "ref": "Numbers 34:15"
+ },
+ {
+  "id": "numbers-34-e-05",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was the land to be divided among the nine tribes and the half tribe?",
+  "choices": [
+   "By lot",
+   "By battle",
+   "By purchase",
+   "By vote"
+  ],
+  "answer": 0,
+  "explanation": "This is the land which ye shall inherit by lot, which the LORD commanded to give unto the nine tribes.",
+  "ref": "Numbers 34:13"
+ },
+ {
+  "id": "numbers-34-e-06",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the Jordan border end?",
+  "choices": [
+   "The Great Sea",
+   "The salt sea",
+   "Mount Hor",
+   "The river of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "The border shall go down to Jordan, and the goings out of it shall be at the salt sea.",
+  "ref": "Numbers 34:12"
+ },
+ {
+  "id": "numbers-34-e-07",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many tribes, plus a half tribe, were to inherit the land by lot?",
+  "choices": [
+   "Nine",
+   "Seven",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "The LORD commanded to give the land unto the nine tribes, and to the half tribe.",
+  "ref": "Numbers 34:13"
+ },
+ {
+  "id": "numbers-34-e-08",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "place",
+  "question": "The east border reached the side of which sea?",
+  "choices": [
+   "The sea of Chinnereth",
+   "The Great Sea",
+   "The Red Sea",
+   "The sea of Galilee only"
+  ],
+  "answer": 0,
+  "explanation": "The border shall reach unto the side of the sea of Chinnereth eastward.",
+  "ref": "Numbers 34:11"
+ },
+ {
+  "id": "numbers-34-e-09",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the land of Canaan to be for Israel?",
+  "choices": [
+   "A tribute",
+   "An inheritance",
+   "A wilderness",
+   "A prison"
+  ],
+  "answer": 1,
+  "explanation": "This is the land that shall fall unto you for an inheritance, even the land of Canaan.",
+  "ref": "Numbers 34:2"
+ },
+ {
+  "id": "numbers-34-e-10",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two tribes, with half of Manasseh, had already received their inheritance?",
+  "choices": [
+   "Judah and Dan",
+   "Simeon and Levi",
+   "Reuben and Gad",
+   "Ephraim and Asher"
+  ],
+  "answer": 2,
+  "explanation": "The tribe of Reuben and the tribe of Gad, and half the tribe of Manasseh, have received their inheritance.",
+  "ref": "Numbers 34:14"
+ },
+ {
+  "id": "numbers-34-m-01",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "The south quarter began from the wilderness of what?",
+  "choices": [
+   "Zin",
+   "Sin",
+   "Paran",
+   "Sinai"
+  ],
+  "answer": 0,
+  "explanation": "Your south quarter shall be from the wilderness of Zin along by the coast of Edom.",
+  "ref": "Numbers 34:3"
+ },
+ {
+  "id": "numbers-34-m-02",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "The south border was to reach the outmost coast of which sea?",
+  "choices": [
+   "The Great Sea",
+   "The salt sea",
+   "The Red Sea",
+   "The sea of Chinnereth"
+  ],
+  "answer": 1,
+  "explanation": "Your south border shall be the outmost coast of the salt sea eastward.",
+  "ref": "Numbers 34:3"
+ },
+ {
+  "id": "numbers-34-m-03",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "The south border turned to the ascent of what?",
+  "choices": [
+   "Akrabbim",
+   "Zephath",
+   "Moriah",
+   "Pisgah"
+  ],
+  "answer": 0,
+  "explanation": "Your border shall turn from the south to the ascent of Akrabbim.",
+  "ref": "Numbers 34:4"
+ },
+ {
+  "id": "numbers-34-m-04",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "The south border's going forth was from the south to which place?",
+  "choices": [
+   "Beersheba",
+   "Kadesh-barnea",
+   "Hebron",
+   "Zoar"
+  ],
+  "answer": 1,
+  "explanation": "The going forth thereof shall be from the south to Kadesh-barnea.",
+  "ref": "Numbers 34:4"
+ },
+ {
+  "id": "numbers-34-m-05",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "At Azmon the border turned toward which river?",
+  "choices": [
+   "Jordan",
+   "Euphrates",
+   "Jabbok",
+   "River of Egypt"
+  ],
+  "answer": 3,
+  "explanation": "The border shall fetch a compass from Azmon unto the river of Egypt.",
+  "ref": "Numbers 34:5"
+ },
+ {
+  "id": "numbers-34-m-06",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "Which mount was pointed out as part of the north border?",
+  "choices": [
+   "Mount Sinai",
+   "Mount Hor",
+   "Mount Nebo",
+   "Mount Carmel"
+  ],
+  "answer": 1,
+  "explanation": "From the great sea ye shall point out for you mount Hor.",
+  "ref": "Numbers 34:7"
+ },
+ {
+  "id": "numbers-34-m-07",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "From Mount Hor the border ran to the entrance of which place?",
+  "choices": [
+   "Hamath",
+   "Damascus",
+   "Zoar",
+   "Tyre"
+  ],
+  "answer": 0,
+  "explanation": "From mount Hor ye shall point out your border unto the entrance of Hamath.",
+  "ref": "Numbers 34:8"
+ },
+ {
+  "id": "numbers-34-m-08",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the north border's going out end?",
+  "choices": [
+   "Zedad",
+   "Hazar-enan",
+   "Riblah",
+   "Shepham"
+  ],
+  "answer": 1,
+  "explanation": "The border shall go on to Ziphron, and the goings out of it shall be at Hazar-enan.",
+  "ref": "Numbers 34:9"
+ },
+ {
+  "id": "numbers-34-m-09",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "The east border ran from Hazar-enan to where?",
+  "choices": [
+   "Shepham",
+   "Zedad",
+   "Azmon",
+   "Ain"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall point out your east border from Hazar-enan to Shepham.",
+  "ref": "Numbers 34:10"
+ },
+ {
+  "id": "numbers-34-m-10",
+  "chapter": 34,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Simeon?",
+  "choices": [
+   "Shemuel",
+   "Elidad",
+   "Kemuel",
+   "Pedahel"
+  ],
+  "answer": 0,
+  "explanation": "Of the tribe of the children of Simeon, Shemuel the son of Ammihud.",
+  "ref": "Numbers 34:20"
+ },
+ {
+  "id": "numbers-34-m-11",
+  "chapter": 34,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Benjamin?",
+  "choices": [
+   "Bukki",
+   "Elidad",
+   "Ahihud",
+   "Paltiel"
+  ],
+  "answer": 1,
+  "explanation": "Of the tribe of Benjamin, Elidad the son of Chislon.",
+  "ref": "Numbers 34:21"
+ },
+ {
+  "id": "numbers-34-m-12",
+  "chapter": 34,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Dan?",
+  "choices": [
+   "Hanniel",
+   "Elizaphan",
+   "Bukki",
+   "Kemuel"
+  ],
+  "answer": 2,
+  "explanation": "The prince of the tribe of the children of Dan, Bukki the son of Jogli.",
+  "ref": "Numbers 34:22"
+ },
+ {
+  "id": "numbers-34-m-13",
+  "chapter": 34,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Ephraim?",
+  "choices": [
+   "Kemuel",
+   "Pedahel",
+   "Shemuel",
+   "Hanniel"
+  ],
+  "answer": 0,
+  "explanation": "The prince of the tribe of the children of Ephraim, Kemuel the son of Shiphtan.",
+  "ref": "Numbers 34:24"
+ },
+ {
+  "id": "numbers-34-m-14",
+  "chapter": 34,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Zebulun?",
+  "choices": [
+   "Paltiel",
+   "Elizaphan",
+   "Elidad",
+   "Ahihud"
+  ],
+  "answer": 1,
+  "explanation": "The prince of the tribe of Zebulun, Elizaphan the son of Parnach.",
+  "ref": "Numbers 34:25"
+ },
+ {
+  "id": "numbers-34-m-15",
+  "chapter": 34,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Asher?",
+  "choices": [
+   "Ahihud",
+   "Bukki",
+   "Shemuel",
+   "Paltiel"
+  ],
+  "answer": 0,
+  "explanation": "The prince of the tribe of Asher, Ahihud the son of Shelomi.",
+  "ref": "Numbers 34:27"
+ },
+ {
+  "id": "numbers-34-h-01",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Hanniel son of Ephod was prince for the children of Joseph from which tribe?",
+  "choices": [
+   "Ephraim",
+   "Manasseh",
+   "Benjamin",
+   "Dan"
+  ],
+  "answer": 1,
+  "explanation": "The prince of the children of Joseph, for the tribe of Manasseh, Hanniel the son of Ephod.",
+  "ref": "Numbers 34:23"
+ },
+ {
+  "id": "numbers-34-h-02",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Paltiel the son of Azzan was prince of which tribe?",
+  "choices": [
+   "Naphtali",
+   "Asher",
+   "Issachar",
+   "Zebulun"
+  ],
+  "answer": 2,
+  "explanation": "The prince of the tribe of Issachar, Paltiel the son of Azzan.",
+  "ref": "Numbers 34:26"
+ },
+ {
+  "id": "numbers-34-h-03",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Pedahel was the prince of which tribe?",
+  "choices": [
+   "Naphtali",
+   "Gad",
+   "Simeon",
+   "Judah"
+  ],
+  "answer": 0,
+  "explanation": "The prince of the tribe of Naphtali, Pedahel the son of Ammihud.",
+  "ref": "Numbers 34:28"
+ },
+ {
+  "id": "numbers-34-h-04",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Caleb, the prince of Judah, was the son of whom?",
+  "choices": [
+   "Jephunneh",
+   "Nun",
+   "Hur",
+   "Ammihud"
+  ],
+  "answer": 0,
+  "explanation": "Of the tribe of Judah, Caleb the son of Jephunneh.",
+  "ref": "Numbers 34:19"
+ },
+ {
+  "id": "numbers-34-h-05",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Elidad of Benjamin was the son of whom?",
+  "choices": [
+   "Jogli",
+   "Chislon",
+   "Azzan",
+   "Parnach"
+  ],
+  "answer": 1,
+  "explanation": "Of the tribe of Benjamin, Elidad the son of Chislon.",
+  "ref": "Numbers 34:21"
+ },
+ {
+  "id": "numbers-34-h-06",
+  "chapter": 34,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place lay on the east side of Ain?",
+  "choices": [
+   "Shepham",
+   "Zedad",
+   "Riblah",
+   "Ziphron"
+  ],
+  "answer": 2,
+  "explanation": "The coast shall go down from Shepham to Riblah, on the east side of Ain.",
+  "ref": "Numbers 34:11"
+ },
+ {
+  "id": "numbers-34-h-07",
+  "chapter": 34,
+  "level": "hard",
+  "category": "place",
+  "question": "The north border went on to which place before Hazar-enan?",
+  "choices": [
+   "Ziphron",
+   "Zedad",
+   "Azmon",
+   "Hamath"
+  ],
+  "answer": 0,
+  "explanation": "The border shall go on to Ziphron, and the goings out of it shall be at Hazar-enan.",
+  "ref": "Numbers 34:9"
+ },
+ {
+  "id": "numbers-34-h-08",
+  "chapter": 34,
+  "level": "hard",
+  "category": "place",
+  "question": "After the entrance of Hamath, the border's goings forth were to which place?",
+  "choices": [
+   "Riblah",
+   "Zedad",
+   "Shepham",
+   "Ziphron"
+  ],
+  "answer": 1,
+  "explanation": "Unto the entrance of Hamath; and the goings forth of the border shall be to Zedad.",
+  "ref": "Numbers 34:8"
+ },
+ {
+  "id": "numbers-34-h-09",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Elizaphan, prince of Zebulun, was the son of whom?",
+  "choices": [
+   "Shelomi",
+   "Parnach",
+   "Ephod",
+   "Shiphtan"
+  ],
+  "answer": 1,
+  "explanation": "The prince of the tribe of Zebulun, Elizaphan the son of Parnach.",
+  "ref": "Numbers 34:25"
+ },
+ {
+  "id": "numbers-34-h-10",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Ahihud, prince of Asher, was the son of whom?",
+  "choices": [
+   "Ammihud",
+   "Jogli",
+   "Shelomi",
+   "Azzan"
+  ],
+  "answer": 2,
+  "explanation": "The prince of the tribe of Asher, Ahihud the son of Shelomi.",
+  "ref": "Numbers 34:27"
+ },
+ {
+  "id": "numbers-34-h-11",
+  "chapter": 34,
+  "level": "hard",
+  "category": "place",
+  "question": "After Kadesh-barnea, the south border passed on to which place?",
+  "choices": [
+   "Hazar-addar",
+   "Hazar-enan",
+   "Zedad",
+   "Zoar"
+  ],
+  "answer": 0,
+  "explanation": "It shall go on to Hazar-addar, and pass on to Azmon.",
+  "ref": "Numbers 34:4"
+ },
+ {
+  "id": "numbers-34-h-12",
+  "chapter": 34,
+  "level": "hard",
+  "category": "place",
+  "question": "From the sea of Chinnereth the border went down to which river?",
+  "choices": [
+   "Euphrates",
+   "Arnon",
+   "Jordan",
+   "Jabbok"
+  ],
+  "answer": 2,
+  "explanation": "The border shall go down to Jordan, and the goings out of it shall be at the salt sea.",
+  "ref": "Numbers 34:11–12"
+ },
+ {
+  "id": "numbers-34-h-13",
+  "chapter": 34,
+  "level": "hard",
+  "category": "place",
+  "question": "The south quarter went along by the coast of which land?",
+  "choices": [
+   "Moab",
+   "Ammon",
+   "Edom",
+   "Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Your south quarter shall be from the wilderness of Zin along by the coast of Edom.",
+  "ref": "Numbers 34:3"
+ },
+ {
+  "id": "numbers-34-h-14",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose name is given as the father of both Shemuel and Pedahel?",
+  "choices": [
+   "Ammihud",
+   "Ephod",
+   "Jogli",
+   "Azzan"
+  ],
+  "answer": 0,
+  "explanation": "Shemuel was the son of Ammihud, and Pedahel was the son of Ammihud.",
+  "ref": "Numbers 34:20"
+ },
+ {
+  "id": "numbers-34-h-15",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Kemuel, prince of Ephraim, was the son of whom?",
+  "choices": [
+   "Shiphtan",
+   "Chislon",
+   "Ephod",
+   "Jephunneh"
+  ],
+  "answer": 0,
+  "explanation": "The prince of the tribe of Ephraim, Kemuel the son of Shiphtan.",
+  "ref": "Numbers 34:24"
+ },
+ {
   "id": "old-numbers-35-1",
   "chapter": 35,
   "level": "beginner",
