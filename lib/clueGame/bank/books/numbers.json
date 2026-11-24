@@ -80,6 +80,646 @@
   "ref": "Numbers 1:46"
  },
  {
+  "id": "numbers-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who helped Moses take the sum of the congregation?",
+  "choices": [
+   "Joshua",
+   "Aaron",
+   "Caleb",
+   "Eleazar"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said, Thou and Aaron shall number them by their armies.",
+  "ref": "Numbers 1:3"
+ },
+ {
+  "id": "numbers-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who was to stand with Moses and Aaron from each tribe?",
+  "choices": [
+   "A man who was head of his father's house",
+   "A priest",
+   "A judge",
+   "A prophet"
+  ],
+  "answer": 0,
+  "explanation": "With you there shall be a man of every tribe; every one head of the house of his fathers.",
+  "ref": "Numbers 1:4"
+ },
+ {
+  "id": "numbers-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe had the most men counted?",
+  "choices": [
+   "Reuben",
+   "Dan",
+   "Benjamin",
+   "Judah"
+  ],
+  "answer": 3,
+  "explanation": "The tribe of Judah numbered threescore and fourteen thousand and six hundred.",
+  "ref": "Numbers 1:27"
+ },
+ {
+  "id": "numbers-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which son of Jacob is called Israel's eldest son in this chapter?",
+  "choices": [
+   "Simeon",
+   "Judah",
+   "Reuben",
+   "Levi"
+  ],
+  "answer": 2,
+  "explanation": "The children of Reuben, Israel's eldest son, were numbered.",
+  "ref": "Numbers 1:20"
+ },
+ {
+  "id": "numbers-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the Levites to do when the tabernacle set forward?",
+  "choices": [
+   "Leave it standing",
+   "Take it down",
+   "Carry it into battle",
+   "Burn it"
+  ],
+  "answer": 1,
+  "explanation": "When the tabernacle setteth forward, the Levites shall take it down.",
+  "ref": "Numbers 1:51"
+ },
+ {
+  "id": "numbers-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the Levites to pitch their tents?",
+  "choices": [
+   "Round about the tabernacle",
+   "Beside the river",
+   "Far from the camp",
+   "At the edge of Judah"
+  ],
+  "answer": 0,
+  "explanation": "The Levites shall pitch round about the tabernacle of testimony.",
+  "ref": "Numbers 1:53"
+ },
+ {
+  "id": "numbers-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who would be put to death if he came nigh the tabernacle?",
+  "choices": [
+   "The priest",
+   "The prince",
+   "The Levite",
+   "The stranger"
+  ],
+  "answer": 3,
+  "explanation": "The stranger that cometh nigh shall be put to death.",
+  "ref": "Numbers 1:51"
+ },
+ {
+  "id": "numbers-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Judah?",
+  "choices": [
+   "Elizur",
+   "Ahira",
+   "Nahshon",
+   "Eliab"
+  ],
+  "answer": 2,
+  "explanation": "Of Judah; Nahshon the son of Amminadab.",
+  "ref": "Numbers 1:7"
+ },
+ {
+  "id": "numbers-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two tribes came from the sons of Joseph?",
+  "choices": [
+   "Gad and Asher",
+   "Ephraim and Manasseh",
+   "Dan and Naphtali",
+   "Simeon and Levi"
+  ],
+  "answer": 1,
+  "explanation": "Of the children of Joseph: of Ephraim, and of Manasseh.",
+  "ref": "Numbers 1:10"
+ },
+ {
+  "id": "numbers-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In which year after leaving Egypt did the LORD command the census?",
+  "choices": [
+   "The second year",
+   "The first year",
+   "The third year",
+   "The fortieth year"
+  ],
+  "answer": 0,
+  "explanation": "The LORD spake on the first day of the second month, in the second year after they were come out of Egypt.",
+  "ref": "Numbers 1:1"
+ },
+ {
+  "id": "numbers-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did each Israelite pitch his tent?",
+  "choices": [
+   "By the river",
+   "By his trade",
+   "By his age",
+   "By his own standard"
+  ],
+  "answer": 3,
+  "explanation": "Every man shall pitch by his own camp, and every man by his own standard.",
+  "ref": "Numbers 1:52"
+ },
+ {
+  "id": "numbers-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men of the tribe of Reuben were numbered?",
+  "choices": [
+   "Fifty-nine thousand three hundred",
+   "Forty thousand five hundred",
+   "Forty-six thousand five hundred",
+   "Sixty-two thousand seven hundred"
+  ],
+  "answer": 2,
+  "explanation": "Those numbered of the tribe of Reuben were forty and six thousand and five hundred.",
+  "ref": "Numbers 1:21"
+ },
+ {
+  "id": "numbers-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men of the tribe of Simeon were numbered?",
+  "choices": [
+   "Forty-six thousand five hundred",
+   "Fifty-nine thousand three hundred",
+   "Fifty-four thousand four hundred",
+   "Forty-five thousand six hundred fifty"
+  ],
+  "answer": 1,
+  "explanation": "Those numbered of the tribe of Simeon were fifty and nine thousand and three hundred.",
+  "ref": "Numbers 1:23"
+ },
+ {
+  "id": "numbers-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which tribe was the second largest in the count?",
+  "choices": [
+   "Dan",
+   "Simeon",
+   "Issachar",
+   "Zebulun"
+  ],
+  "answer": 0,
+  "explanation": "Those numbered of the tribe of Dan were threescore and two thousand and seven hundred.",
+  "ref": "Numbers 1:39"
+ },
+ {
+  "id": "numbers-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Reuben?",
+  "choices": [
+   "Shelumiel son of Zurishaddai",
+   "Eliab son of Helon",
+   "Pagiel son of Ocran",
+   "Elizur son of Shedeur"
+  ],
+  "answer": 3,
+  "explanation": "Of the tribe of Reuben; Elizur the son of Shedeur.",
+  "ref": "Numbers 1:5"
+ },
+ {
+  "id": "numbers-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Issachar?",
+  "choices": [
+   "Ahiezer son of Ammishaddai",
+   "Eliasaph son of Deuel",
+   "Nethaneel son of Zuar",
+   "Ahira son of Enan"
+  ],
+  "answer": 2,
+  "explanation": "Of Issachar; Nethaneel the son of Zuar.",
+  "ref": "Numbers 1:8"
+ },
+ {
+  "id": "numbers-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day of the second month did Moses and Aaron gather the congregation?",
+  "choices": [
+   "The seventh day",
+   "The first day",
+   "The tenth day",
+   "The fifteenth day"
+  ],
+  "answer": 1,
+  "explanation": "They assembled all the congregation together on the first day of the second month.",
+  "ref": "Numbers 1:18"
+ },
+ {
+  "id": "numbers-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the Levites to pitch round about the tabernacle?",
+  "choices": [
+   "That there be no wrath upon Israel",
+   "To guard against Egypt",
+   "To keep the flocks",
+   "To feed the priests"
+  ],
+  "answer": 0,
+  "explanation": "The Levites shall pitch round about the tabernacle, that there be no wrath upon the congregation of Israel.",
+  "ref": "Numbers 1:53"
+ },
+ {
+  "id": "numbers-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Naphtali?",
+  "choices": [
+   "Abidan son of Gideoni",
+   "Gamaliel son of Pedahzur",
+   "Elishama son of Ammihud",
+   "Ahira son of Enan"
+  ],
+  "answer": 3,
+  "explanation": "Of Naphtali; Ahira the son of Enan.",
+  "ref": "Numbers 1:15"
+ },
+ {
+  "id": "numbers-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Benjamin?",
+  "choices": [
+   "Eliab son of Helon",
+   "Nahshon son of Amminadab",
+   "Abidan son of Gideoni",
+   "Pagiel son of Ocran"
+  ],
+  "answer": 2,
+  "explanation": "Of Benjamin; Abidan the son of Gideoni.",
+  "ref": "Numbers 1:11"
+ },
+ {
+  "id": "numbers-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How are the princes of the tribes described?",
+  "choices": [
+   "Judges of the land",
+   "Heads of thousands in Israel",
+   "Priests of the altar",
+   "Captains of Pharaoh"
+  ],
+  "answer": 1,
+  "explanation": "These were the renowned of the congregation, princes of the tribes of their fathers, heads of thousands in Israel.",
+  "ref": "Numbers 1:16"
+ },
+ {
+  "id": "numbers-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which tribe had the fewest men counted?",
+  "choices": [
+   "Manasseh",
+   "Benjamin",
+   "Gad",
+   "Ephraim"
+  ],
+  "answer": 0,
+  "explanation": "Those numbered of the tribe of Manasseh were thirty and two thousand and two hundred.",
+  "ref": "Numbers 1:35"
+ },
+ {
+  "id": "numbers-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the Levites appointed over?",
+  "choices": [
+   "The armies of Israel",
+   "The flocks and herds",
+   "The treasury",
+   "The tabernacle of testimony and its vessels"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt appoint the Levites over the tabernacle of testimony, and over all the vessels thereof.",
+  "ref": "Numbers 1:50"
+ },
+ {
+  "id": "numbers-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Manasseh?",
+  "choices": [
+   "Elishama son of Ammihud",
+   "Abidan son of Gideoni",
+   "Gamaliel son of Pedahzur",
+   "Elizur son of Shedeur"
+  ],
+  "answer": 2,
+  "explanation": "Of Manasseh; Gamaliel the son of Pedahzur.",
+  "ref": "Numbers 1:10"
+ },
+ {
+  "id": "numbers-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men of the tribe of Gad were numbered?",
+  "choices": [
+   "Forty-six thousand five hundred",
+   "Forty-five thousand six hundred fifty",
+   "Fifty-three thousand four hundred",
+   "Forty thousand five hundred"
+  ],
+  "answer": 1,
+  "explanation": "Those numbered of the tribe of Gad were forty and five thousand six hundred and fifty.",
+  "ref": "Numbers 1:25"
+ },
+ {
+  "id": "numbers-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Simeon?",
+  "choices": [
+   "Shelumiel",
+   "Elizur",
+   "Nahshon",
+   "Ahiezer"
+  ],
+  "answer": 0,
+  "explanation": "Of Simeon; Shelumiel the son of Zurishaddai.",
+  "ref": "Numbers 1:6"
+ },
+ {
+  "id": "numbers-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Eliab, the prince of Zebulun, was the son of whom?",
+  "choices": [
+   "Zuar",
+   "Deuel",
+   "Ocran",
+   "Helon"
+  ],
+  "answer": 3,
+  "explanation": "Of Zebulun; Eliab the son of Helon.",
+  "ref": "Numbers 1:9"
+ },
+ {
+  "id": "numbers-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of the tribe of Issachar were numbered?",
+  "choices": [
+   "Fifty-seven thousand four hundred",
+   "Fifty-three thousand four hundred",
+   "Fifty-four thousand four hundred",
+   "Fifty-nine thousand three hundred"
+  ],
+  "answer": 2,
+  "explanation": "Those numbered of the tribe of Issachar were fifty and four thousand and four hundred.",
+  "ref": "Numbers 1:29"
+ },
+ {
+  "id": "numbers-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of the tribe of Zebulun were numbered?",
+  "choices": [
+   "Fifty-four thousand four hundred",
+   "Fifty-seven thousand four hundred",
+   "Forty-one thousand five hundred",
+   "Thirty-five thousand four hundred"
+  ],
+  "answer": 1,
+  "explanation": "Those numbered of the tribe of Zebulun were fifty and seven thousand and four hundred.",
+  "ref": "Numbers 1:31"
+ },
+ {
+  "id": "numbers-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of the tribe of Benjamin were numbered?",
+  "choices": [
+   "Thirty-five thousand four hundred",
+   "Thirty-two thousand two hundred",
+   "Forty thousand five hundred",
+   "Forty-one thousand five hundred"
+  ],
+  "answer": 0,
+  "explanation": "Those numbered of the tribe of Benjamin were thirty and five thousand and four hundred.",
+  "ref": "Numbers 1:37"
+ },
+ {
+  "id": "numbers-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of the tribe of Asher were numbered?",
+  "choices": [
+   "Forty thousand five hundred",
+   "Fifty-three thousand four hundred",
+   "Thirty-five thousand four hundred",
+   "Forty-one thousand five hundred"
+  ],
+  "answer": 3,
+  "explanation": "Those numbered of the tribe of Asher were forty and one thousand and five hundred.",
+  "ref": "Numbers 1:41"
+ },
+ {
+  "id": "numbers-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of the tribe of Naphtali were numbered?",
+  "choices": [
+   "Fifty-four thousand four hundred",
+   "Forty-one thousand five hundred",
+   "Fifty-three thousand four hundred",
+   "Sixty-two thousand seven hundred"
+  ],
+  "answer": 2,
+  "explanation": "Those numbered of the tribe of Naphtali were fifty and three thousand and four hundred.",
+  "ref": "Numbers 1:43"
+ },
+ {
+  "id": "numbers-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of the tribe of Judah were numbered?",
+  "choices": [
+   "Sixty-two thousand seven hundred",
+   "Seventy-four thousand six hundred",
+   "Fifty-nine thousand three hundred",
+   "Fifty-seven thousand four hundred"
+  ],
+  "answer": 1,
+  "explanation": "Those numbered of the tribe of Judah were threescore and fourteen thousand and six hundred.",
+  "ref": "Numbers 1:27"
+ },
+ {
+  "id": "numbers-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Asher?",
+  "choices": [
+   "Pagiel son of Ocran",
+   "Eliasaph son of Deuel",
+   "Ahira son of Enan",
+   "Elishama son of Ammihud"
+  ],
+  "answer": 0,
+  "explanation": "Of Asher; Pagiel the son of Ocran.",
+  "ref": "Numbers 1:13"
+ },
+ {
+  "id": "numbers-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Gad?",
+  "choices": [
+   "Pagiel son of Ocran",
+   "Ahiezer son of Ammishaddai",
+   "Eliab son of Helon",
+   "Eliasaph son of Deuel"
+  ],
+  "answer": 3,
+  "explanation": "Of Gad; Eliasaph the son of Deuel.",
+  "ref": "Numbers 1:14"
+ },
+ {
+  "id": "numbers-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Dan?",
+  "choices": [
+   "Nethaneel son of Zuar",
+   "Shelumiel son of Zurishaddai",
+   "Ahiezer son of Ammishaddai",
+   "Abidan son of Gideoni"
+  ],
+  "answer": 2,
+  "explanation": "Of Dan; Ahiezer the son of Ammishaddai.",
+  "ref": "Numbers 1:12"
+ },
+ {
+  "id": "numbers-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the prince of the tribe of Ephraim?",
+  "choices": [
+   "Gamaliel son of Pedahzur",
+   "Elishama son of Ammihud",
+   "Eliab son of Helon",
+   "Elizur son of Shedeur"
+  ],
+  "answer": 1,
+  "explanation": "Of Ephraim; Elishama the son of Ammihud.",
+  "ref": "Numbers 1:10"
+ },
+ {
+  "id": "numbers-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men besides Moses and Aaron numbered Israel, one from each tribe?",
+  "choices": [
+   "Twelve",
+   "Ten",
+   "Seven",
+   "Thirteen"
+  ],
+  "answer": 0,
+  "explanation": "These are those that were numbered, which Moses and Aaron numbered, and the princes of Israel, being twelve men.",
+  "ref": "Numbers 1:44"
+ },
+ {
+  "id": "numbers-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who was to set up the tabernacle when it was to be pitched?",
+  "choices": [
+   "The princes",
+   "The priests only",
+   "The strangers",
+   "The Levites"
+  ],
+  "answer": 3,
+  "explanation": "When the tabernacle is to be pitched, the Levites shall set it up.",
+  "ref": "Numbers 1:51"
+ },
+ {
+  "id": "numbers-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Nahshon, the prince of Judah, was the son of whom?",
+  "choices": [
+   "Shedeur",
+   "Zuar",
+   "Amminadab",
+   "Pedahzur"
+  ],
+  "answer": 2,
+  "explanation": "Of Judah; Nahshon the son of Amminadab.",
+  "ref": "Numbers 1:7"
+ },
+ {
   "id": "old-numbers-2-1",
   "chapter": 2,
   "level": "beginner",
