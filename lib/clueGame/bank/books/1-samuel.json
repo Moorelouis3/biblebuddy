@@ -13776,6 +13776,646 @@
   "ref": "1 Samuel 20:41–42"
  },
  {
+  "id": "1-samuel-20-e-01",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was David's close friend that he turned to for help against Saul?",
+  "choices": [
+   "Abner",
+   "Jonathan",
+   "Samuel",
+   "Joab"
+  ],
+  "answer": 1,
+  "explanation": "David came and said before Jonathan, What have I done? what is mine iniquity?",
+  "ref": "1 Samuel 20:1"
+ },
+ {
+  "id": "1-samuel-20-e-02",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David ask to hide himself while the new moon feast went on?",
+  "choices": [
+   "In the field",
+   "In a cave",
+   "In Bethlehem",
+   "In Naioth"
+  ],
+  "answer": 0,
+  "explanation": "David said, Let me go, that I may hide myself in the field unto the third day at even.",
+  "ref": "1 Samuel 20:5"
+ },
+ {
+  "id": "1-samuel-20-e-03",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David tell Jonathan to say he had gone, if Saul asked?",
+  "choices": [
+   "Gibeah",
+   "Nob",
+   "Ramah",
+   "Bethlehem"
+  ],
+  "answer": 3,
+  "explanation": "Jonathan was to say that David earnestly asked leave to run to Bethlehem his city.",
+  "ref": "1 Samuel 20:6"
+ },
+ {
+  "id": "1-samuel-20-e-04",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went out to the field with Jonathan at the time appointed with David?",
+  "choices": [
+   "Abner",
+   "Saul's armourbearer",
+   "A little lad",
+   "Doeg"
+  ],
+  "answer": 2,
+  "explanation": "Jonathan went out into the field at the time appointed with David, and a little lad with him.",
+  "ref": "1 Samuel 20:35"
+ },
+ {
+  "id": "1-samuel-20-e-05",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "At the table, with whom was Saul's anger kindled?",
+  "choices": [
+   "David",
+   "Jonathan",
+   "Abner",
+   "Ahimelech"
+  ],
+  "answer": 1,
+  "explanation": "Saul's anger was kindled against Jonathan when he spoke up for David.",
+  "ref": "1 Samuel 20:30"
+ },
+ {
+  "id": "1-samuel-20-e-06",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose place at the king's table stood empty at the new moon?",
+  "choices": [
+   "David's",
+   "Jonathan's",
+   "Abner's",
+   "Saul's"
+  ],
+  "answer": 0,
+  "explanation": "The king sat upon his seat, and David's place was empty.",
+  "ref": "1 Samuel 20:25"
+ },
+ {
+  "id": "1-samuel-20-e-07",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jonathan tell his lad to carry the weapons at the end?",
+  "choices": [
+   "To the field",
+   "To Bethlehem",
+   "To Ramah",
+   "To the city"
+  ],
+  "answer": 3,
+  "explanation": "Jonathan gave his artillery unto his lad, and said, Go, carry them to the city.",
+  "ref": "1 Samuel 20:40"
+ },
+ {
+  "id": "1-samuel-20-e-08",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much did Jonathan love David, according to the text?",
+  "choices": [
+   "As a brother in battle",
+   "As his father",
+   "As his own soul",
+   "As a king"
+  ],
+  "answer": 2,
+  "explanation": "Jonathan loved him as he loved his own soul.",
+  "ref": "1 Samuel 20:17"
+ },
+ {
+  "id": "1-samuel-20-e-09",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jonathan say to David as they parted?",
+  "choices": [
+   "Fear not",
+   "Go in peace",
+   "Be strong",
+   "Come again soon"
+  ],
+  "answer": 1,
+  "explanation": "Jonathan said to David, Go in peace, forasmuch as we have sworn both of us in the name of the LORD.",
+  "ref": "1 Samuel 20:42"
+ },
+ {
+  "id": "1-samuel-20-e-10",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sat at Saul's side at the new moon feast?",
+  "choices": [
+   "Abner",
+   "Doeg",
+   "Joab",
+   "Ahimelech"
+  ],
+  "answer": 0,
+  "explanation": "Jonathan arose, and Abner sat by Saul's side.",
+  "ref": "1 Samuel 20:25"
+ },
+ {
+  "id": "1-samuel-20-m-01",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason was David to give for being away from Saul's table?",
+  "choices": [
+   "A war with the Philistines",
+   "A sickness",
+   "A trip for the king",
+   "A yearly family sacrifice"
+  ],
+  "answer": 3,
+  "explanation": "There is a yearly sacrifice there for all the family.",
+  "ref": "1 Samuel 20:6"
+ },
+ {
+  "id": "1-samuel-20-m-02",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Saul say nothing on the first day David's place was empty?",
+  "choices": [
+   "He was asleep",
+   "He trusted Jonathan",
+   "He thought David was not clean",
+   "He thought David was sick"
+  ],
+  "answer": 2,
+  "explanation": "He thought, Something hath befallen him, he is not clean.",
+  "ref": "1 Samuel 20:26"
+ },
+ {
+  "id": "1-samuel-20-m-03",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jonathan promise to do if his father meant evil toward David?",
+  "choices": [
+   "Fight Saul himself",
+   "Show it and send him away in peace",
+   "Hide him in the palace",
+   "Send him to Samuel"
+  ],
+  "answer": 1,
+  "explanation": "If it please my father to do thee evil, then I will shew it thee, and send thee away, that thou mayest go in peace.",
+  "ref": "1 Samuel 20:13"
+ },
+ {
+  "id": "1-samuel-20-m-04",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Saul sit at the feast?",
+  "choices": [
+   "By the wall",
+   "By the door",
+   "At the head of the table",
+   "Under a tree"
+  ],
+  "answer": 0,
+  "explanation": "The king sat upon his seat, as at other times, even upon a seat by the wall.",
+  "ref": "1 Samuel 20:25"
+ },
+ {
+  "id": "1-samuel-20-m-05",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many arrows did Jonathan say he would shoot?",
+  "choices": [
+   "One",
+   "Five",
+   "Seven",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "I will shoot three arrows on the side thereof, as though I shot at a mark.",
+  "ref": "1 Samuel 20:20"
+ },
+ {
+  "id": "1-samuel-20-m-06",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul say kept Jonathan from being established in his kingdom?",
+  "choices": [
+   "Abner's pride",
+   "Jonathan's friends",
+   "The son of Jesse living",
+   "The Philistines"
+  ],
+  "answer": 2,
+  "explanation": "As long as the son of Jesse liveth upon the ground, thou shalt not be established, nor thy kingdom.",
+  "ref": "1 Samuel 20:31"
+ },
+ {
+  "id": "1-samuel-20-m-07",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "What name did Saul use for David instead of saying his name?",
+  "choices": [
+   "The shepherd boy",
+   "The son of Jesse",
+   "The son of Kish",
+   "The man of Bethlehem"
+  ],
+  "answer": 1,
+  "explanation": "Saul said, Wherefore cometh not the son of Jesse to meat?",
+  "ref": "1 Samuel 20:27"
+ },
+ {
+  "id": "1-samuel-20-m-08",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jonathan eat no meat on the second day of the month?",
+  "choices": [
+   "He was grieved for David",
+   "He was fasting for Saul",
+   "He was ill",
+   "He was angry at David"
+  ],
+  "answer": 0,
+  "explanation": "He did eat no meat the second day: for he was grieved for David, because his father had done him shame.",
+  "ref": "1 Samuel 20:34"
+ },
+ {
+  "id": "1-samuel-20-m-09",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jonathan make David swear again?",
+  "choices": [
+   "Because Saul asked it",
+   "Because David doubted him",
+   "Because of the Philistines",
+   "Because he loved him"
+  ],
+  "answer": 3,
+  "explanation": "Jonathan caused David to swear again, because he loved him.",
+  "ref": "1 Samuel 20:17"
+ },
+ {
+  "id": "1-samuel-20-m-10",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did David claim had commanded him to be at the family sacrifice?",
+  "choices": [
+   "His father",
+   "Saul",
+   "His brother",
+   "Samuel"
+  ],
+  "answer": 2,
+  "explanation": "My brother, he hath commanded me to be there.",
+  "ref": "1 Samuel 20:29"
+ },
+ {
+  "id": "1-samuel-20-m-11",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jonathan cry after the lad as the arrow flew beyond him?",
+  "choices": [
+   "Turn back",
+   "Make speed, haste, stay not",
+   "Stand and wait",
+   "Run to the city"
+  ],
+  "answer": 1,
+  "explanation": "Jonathan cried after the lad, Make speed, haste, stay not.",
+  "ref": "1 Samuel 20:38"
+ },
+ {
+  "id": "1-samuel-20-m-12",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many times did David bow himself to the ground?",
+  "choices": [
+   "Three times",
+   "Once",
+   "Seven times",
+   "Twice"
+  ],
+  "answer": 0,
+  "explanation": "David fell on his face to the ground, and bowed himself three times.",
+  "ref": "1 Samuel 20:41"
+ },
+ {
+  "id": "1-samuel-20-m-13",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How close did David say he was to death?",
+  "choices": [
+   "A day",
+   "A night",
+   "A hand's breadth",
+   "A step"
+  ],
+  "answer": 3,
+  "explanation": "There is but a step between me and death.",
+  "ref": "1 Samuel 20:3"
+ },
+ {
+  "id": "1-samuel-20-m-14",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say Jonathan should do if there was iniquity in him?",
+  "choices": [
+   "Send him away",
+   "Give him to Saul",
+   "Slay him himself",
+   "Pray for him"
+  ],
+  "answer": 2,
+  "explanation": "If there be in me iniquity, slay me thyself; for why shouldest thou bring me to thy father?",
+  "ref": "1 Samuel 20:8"
+ },
+ {
+  "id": "1-samuel-20-h-01",
+  "chapter": 20,
+  "level": "hard",
+  "category": "place",
+  "question": "By which stone was David to wait?",
+  "choices": [
+   "Bohan",
+   "Ezel",
+   "Eben-ezer",
+   "Gilgal"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt remain by the stone Ezel.",
+  "ref": "1 Samuel 20:19"
+ },
+ {
+  "id": "1-samuel-20-h-02",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Saul finally ask Jonathan where David was?",
+  "choices": [
+   "The second day of the month",
+   "The first day",
+   "The third day",
+   "The seventh day"
+  ],
+  "answer": 0,
+  "explanation": "On the morrow, which was the second day of the month, Saul said, Wherefore cometh not the son of Jesse to meat?",
+  "ref": "1 Samuel 20:27"
+ },
+ {
+  "id": "1-samuel-20-h-03",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when did David ask to hide himself in the field?",
+  "choices": [
+   "The next morning",
+   "The seventh day",
+   "The sabbath",
+   "The third day at even"
+  ],
+  "answer": 3,
+  "explanation": "Let me go, that I may hide myself in the field unto the third day at even.",
+  "ref": "1 Samuel 20:5"
+ },
+ {
+  "id": "1-samuel-20-h-04",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul call Jonathan's mother in his anger?",
+  "choices": [
+   "A proud and foolish woman",
+   "A wicked sorceress",
+   "A perverse rebellious woman",
+   "A hard and cruel woman"
+  ],
+  "answer": 2,
+  "explanation": "Saul said, Thou son of the perverse rebellious woman.",
+  "ref": "1 Samuel 20:30"
+ },
+ {
+  "id": "1-samuel-20-h-05",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Jonathan shoot the arrow as the lad ran?",
+  "choices": [
+   "Short of him",
+   "Beyond him",
+   "Behind him",
+   "Into the city"
+  ],
+  "answer": 1,
+  "explanation": "As the lad ran, he shot an arrow beyond him.",
+  "ref": "1 Samuel 20:36"
+ },
+ {
+  "id": "1-samuel-20-h-06",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the words 'the arrows are on this side of thee' mean for David?",
+  "choices": [
+   "Peace, and no hurt",
+   "Run to Bethlehem",
+   "Wait three more days",
+   "Come to the city"
+  ],
+  "answer": 0,
+  "explanation": "Take them; then come thou: for there is peace to thee, and no hurt.",
+  "ref": "1 Samuel 20:21"
+ },
+ {
+  "id": "1-samuel-20-h-07",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Who knew what the arrows meant?",
+  "choices": [
+   "Jonathan and Abner",
+   "Only David",
+   "David and Michal",
+   "Only Jonathan and David"
+  ],
+  "answer": 3,
+  "explanation": "The lad knew not any thing: only Jonathan and David knew the matter.",
+  "ref": "1 Samuel 20:39"
+ },
+ {
+  "id": "1-samuel-20-h-08",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From which direction did David arise before bowing to Jonathan?",
+  "choices": [
+   "From the north",
+   "From behind the city",
+   "From a place toward the south",
+   "From the east"
+  ],
+  "answer": 2,
+  "explanation": "David arose out of a place toward the south, and fell on his face.",
+  "ref": "1 Samuel 20:41"
+ },
+ {
+  "id": "1-samuel-20-h-09",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose covenant had Jonathan brought David into?",
+  "choices": [
+   "Saul's",
+   "The LORD's",
+   "Samuel's",
+   "The priests'"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast brought thy servant into a covenant of the LORD with thee.",
+  "ref": "1 Samuel 20:8"
+ },
+ {
+  "id": "1-samuel-20-h-10",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jonathan ask the LORD to do to him if he failed to warn David?",
+  "choices": [
+   "Do so and much more to him",
+   "Take away his birthright",
+   "Cut off his house",
+   "Smite him"
+  ],
+  "answer": 0,
+  "explanation": "The LORD do so and much more to Jonathan.",
+  "ref": "1 Samuel 20:13"
+ },
+ {
+  "id": "1-samuel-20-h-11",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jonathan say David would be missed?",
+  "choices": [
+   "He always led prayer",
+   "Saul had asked for him",
+   "He owed a gift",
+   "His seat would be empty"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt be missed, because thy seat will be empty.",
+  "ref": "1 Samuel 20:18"
+ },
+ {
+  "id": "1-samuel-20-h-12",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jonathan say he would shoot the three arrows?",
+  "choices": [
+   "In anger at David",
+   "From the city wall",
+   "As though shooting at a mark",
+   "From the stone Ezel"
+  ],
+  "answer": 2,
+  "explanation": "I will shoot three arrows on the side thereof, as though I shot at a mark.",
+  "ref": "1 Samuel 20:20"
+ },
+ {
+  "id": "1-samuel-20-h-13",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul tell Jonathan to do with David?",
+  "choices": [
+   "Send him to Gath",
+   "Send and fetch him",
+   "Give him a sword",
+   "Hide him"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore now send and fetch him unto me, for he shall surely die.",
+  "ref": "1 Samuel 20:31"
+ },
+ {
+  "id": "1-samuel-20-h-14",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of whom did Jonathan say the LORD would require the covenant?",
+  "choices": [
+   "David's enemies",
+   "Saul's house",
+   "The Philistines",
+   "David's sons"
+  ],
+  "answer": 0,
+  "explanation": "Let the LORD even require it at the hand of David's enemies.",
+  "ref": "1 Samuel 20:16"
+ },
+ {
+  "id": "1-samuel-20-h-15",
+  "chapter": 20,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jonathan go when David left him?",
+  "choices": [
+   "To Bethlehem",
+   "To the field",
+   "To Ramah",
+   "Into the city"
+  ],
+  "answer": 3,
+  "explanation": "David departed: and Jonathan went into the city.",
+  "ref": "1 Samuel 20:42"
+ },
+ {
+  "id": "1-samuel-20-m-15",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "With whom did David say he should not fail to sit at meat?",
+  "choices": [
+   "Abner",
+   "Jonathan's brothers",
+   "The king",
+   "His family"
+  ],
+  "answer": 2,
+  "explanation": "To morrow is the new moon, and I should not fail to sit with the king at meat.",
+  "ref": "1 Samuel 20:5"
+ },
+ {
   "id": "old-1-samuel-21-1",
   "chapter": 21,
   "level": "beginner",
