@@ -14528,6 +14528,646 @@
   "ref": "Leviticus 21:22"
  },
  {
+  "id": "leviticus-21-e-01",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom was the LORD's word about not being defiled for the dead spoken?",
+  "choices": [
+   "All the Levites",
+   "The priests, the sons of Aaron",
+   "The elders",
+   "The tribe leaders"
+  ],
+  "answer": 1,
+  "explanation": "Speak unto the priests the sons of Aaron, and say unto them, There shall none be defiled for the dead.",
+  "ref": "Leviticus 21:1"
+ },
+ {
+  "id": "leviticus-21-e-02",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose death could a priest be defiled for, among his near kin?",
+  "choices": [
+   "A friend",
+   "His mother and father",
+   "A stranger",
+   "A servant"
+  ],
+  "answer": 1,
+  "explanation": "For his kin, that is near unto him, that is, for his mother, and for his father, and for his son, and for his daughter, and for his brother.",
+  "ref": "Leviticus 21:2"
+ },
+ {
+  "id": "leviticus-21-e-03",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must priests not make upon their head?",
+  "choices": [
+   "A crown",
+   "Baldness",
+   "A mark",
+   "A covering"
+  ],
+  "answer": 1,
+  "explanation": "They shall not make baldness upon their head, neither shave off the corner of their beard.",
+  "ref": "Leviticus 21:5"
+ },
+ {
+  "id": "leviticus-21-e-04",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must the priests be unto their God?",
+  "choices": [
+   "Silent",
+   "Holy",
+   "Wealthy",
+   "Hidden"
+  ],
+  "answer": 1,
+  "explanation": "They shall be holy unto their God, and not profane the name of their God.",
+  "ref": "Leviticus 21:6"
+ },
+ {
+  "id": "leviticus-21-e-05",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the priests offer that makes them holy?",
+  "choices": [
+   "Their own sheep",
+   "The bread of their God",
+   "The first of the fields",
+   "Silver and gold"
+  ],
+  "answer": 1,
+  "explanation": "The offerings of the LORD made by fire, and the bread of their God, they do offer: therefore they shall be holy.",
+  "ref": "Leviticus 21:6"
+ },
+ {
+  "id": "leviticus-21-e-06",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "What kind of wife may the high priest take?",
+  "choices": [
+   "A widow",
+   "A virgin of his own people",
+   "A stranger",
+   "A divorced woman"
+  ],
+  "answer": 1,
+  "explanation": "He shall take a virgin of his own people to wife.",
+  "ref": "Leviticus 21:14"
+ },
+ {
+  "id": "leviticus-21-e-07",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was poured on the head of the high priest?",
+  "choices": [
+   "Water",
+   "Anointing oil",
+   "Wine",
+   "Blood"
+  ],
+  "answer": 1,
+  "explanation": "He that is the high priest, upon whose head the anointing oil was poured.",
+  "ref": "Leviticus 21:10"
+ },
+ {
+  "id": "leviticus-21-e-08",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Moses tell about these rules at the end of the chapter?",
+  "choices": [
+   "Only the Levites",
+   "Aaron, his sons and all Israel",
+   "Only the elders",
+   "Only Joshua"
+  ],
+  "answer": 1,
+  "explanation": "Moses told it unto Aaron, and to his sons, and unto all the children of Israel.",
+  "ref": "Leviticus 21:24"
+ },
+ {
+  "id": "leviticus-21-e-09",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which priest's descendants with a blemish could not offer the bread of God?",
+  "choices": [
+   "Moses'",
+   "Aaron's",
+   "Levi's",
+   "Eleazar's"
+  ],
+  "answer": 1,
+  "explanation": "Speak unto Aaron, Whosoever he be of thy seed that hath any blemish, let him not approach to offer the bread of his God.",
+  "ref": "Leviticus 21:17"
+ },
+ {
+  "id": "leviticus-21-e-10",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where may the blemished priest eat the bread of God?",
+  "choices": [
+   "Only at home",
+   "He may eat the most holy and the holy",
+   "Only in the camp",
+   "Only on the sabbath"
+  ],
+  "answer": 1,
+  "explanation": "He shall eat the bread of his God, both of the most holy, and of the holy.",
+  "ref": "Leviticus 21:22"
+ },
+ {
+  "id": "leviticus-21-m-01",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is a priest not to do for the dead, other than near kin?",
+  "choices": [
+   "Weep",
+   "Pray",
+   "Dress",
+   "Be defiled"
+  ],
+  "answer": 3,
+  "explanation": "There shall none be defiled for the dead among his people.",
+  "ref": "Leviticus 21:1"
+ },
+ {
+  "id": "leviticus-21-m-02",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Which sister could a priest be defiled for?",
+  "choices": [
+   "Any sister",
+   "A married sister",
+   "A younger sister",
+   "A sister who was a virgin and had no husband"
+  ],
+  "answer": 3,
+  "explanation": "For his sister a virgin, that is nigh unto him, which hath had no husband; for her may he be defiled.",
+  "ref": "Leviticus 21:3"
+ },
+ {
+  "id": "leviticus-21-m-03",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Which kind of wives must a priest not take?",
+  "choices": [
+   "A widow or a stranger",
+   "A Levite's daughter",
+   "A woman from another tribe",
+   "A whore, profane, or put away from her husband"
+  ],
+  "answer": 3,
+  "explanation": "They shall not take a wife that is a whore, or profane; neither shall they take a woman put away from her husband.",
+  "ref": "Leviticus 21:7"
+ },
+ {
+  "id": "leviticus-21-m-04",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to a priest's daughter who plays the whore?",
+  "choices": [
+   "She is stoned",
+   "She is sent away",
+   "She is scourged",
+   "She is burnt with fire"
+  ],
+  "answer": 3,
+  "explanation": "She profaneth her father: she shall be burnt with fire.",
+  "ref": "Leviticus 21:9"
+ },
+ {
+  "id": "leviticus-21-m-05",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the high priest not do with his clothes?",
+  "choices": [
+   "Wash them",
+   "Change them",
+   "Hide them",
+   "Rend them"
+  ],
+  "answer": 3,
+  "explanation": "He shall not uncover his head, nor rend his clothes.",
+  "ref": "Leviticus 21:10"
+ },
+ {
+  "id": "leviticus-21-m-06",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the high priest not uncover?",
+  "choices": [
+   "His hands",
+   "His feet",
+   "His heart",
+   "His head"
+  ],
+  "answer": 3,
+  "explanation": "He shall not uncover his head, nor rend his clothes.",
+  "ref": "Leviticus 21:10"
+ },
+ {
+  "id": "leviticus-21-m-07",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "May the high priest defile himself for his father or mother?",
+  "choices": [
+   "Yes, for his father",
+   "Yes, for his mother",
+   "Yes, at the sanctuary",
+   "No"
+  ],
+  "answer": 3,
+  "explanation": "Neither shall he go in to any dead body, nor defile himself for his father, or for his mother.",
+  "ref": "Leviticus 21:11"
+ },
+ {
+  "id": "leviticus-21-m-08",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said to be upon the high priest that keeps him from leaving the sanctuary?",
+  "choices": [
+   "The ephod",
+   "The mitre",
+   "The breastplate",
+   "The crown of the anointing oil"
+  ],
+  "answer": 3,
+  "explanation": "Neither shall he go out of the sanctuary; for the crown of the anointing oil of his God is upon him.",
+  "ref": "Leviticus 21:12"
+ },
+ {
+  "id": "leviticus-21-m-09",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is a priest's marriage union to be?",
+  "choices": [
+   "With any woman",
+   "With a foreigner",
+   "With the poor",
+   "With his own people"
+  ],
+  "answer": 3,
+  "explanation": "He shall take a virgin of his own people to wife.",
+  "ref": "Leviticus 21:14"
+ },
+ {
+  "id": "leviticus-21-m-10",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What blemishes are named for priests who cannot approach?",
+  "choices": [
+   "A sick man",
+   "A poor man",
+   "A stranger",
+   "A blind man, a lame man"
+  ],
+  "answer": 3,
+  "explanation": "A blind man, or a lame, or he that hath a flat nose, or any thing superfluous.",
+  "ref": "Leviticus 21:18"
+ },
+ {
+  "id": "leviticus-21-m-11",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the high priest keep from profaning among his people?",
+  "choices": [
+   "His house",
+   "His altar",
+   "His oil",
+   "His seed"
+  ],
+  "answer": 3,
+  "explanation": "Neither shall he profane his seed among his people: for I the LORD do sanctify him.",
+  "ref": "Leviticus 21:15"
+ },
+ {
+  "id": "leviticus-21-m-12",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What may the blemished priest not go in unto?",
+  "choices": [
+   "The court",
+   "The camp",
+   "The gate",
+   "The vail"
+  ],
+  "answer": 3,
+  "explanation": "Only he shall not go in unto the vail, nor come nigh unto the altar, because he hath a blemish.",
+  "ref": "Leviticus 21:23"
+ },
+ {
+  "id": "leviticus-21-m-13",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the reason given why a blemished priest may not go near the altar?",
+  "choices": [
+   "He would be unclean",
+   "He would stumble",
+   "He would lose his office",
+   "He would profane the LORD's sanctuaries"
+  ],
+  "answer": 3,
+  "explanation": "That he profane not my sanctuaries: for I the LORD do sanctify them.",
+  "ref": "Leviticus 21:23"
+ },
+ {
+  "id": "leviticus-21-m-14",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the people told to do to the priest?",
+  "choices": [
+   "Honour him with gifts",
+   "Feed him",
+   "Obey him in all things",
+   "Sanctify him"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt sanctify him therefore; for he offereth the bread of thy God.",
+  "ref": "Leviticus 21:8"
+ },
+ {
+  "id": "leviticus-21-m-15",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is a priest to be holy unto the people?",
+  "choices": [
+   "He rules the land",
+   "He is the eldest",
+   "He is a Levite",
+   "He offers the bread of God"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt sanctify him therefore; for he offereth the bread of thy God: he shall be holy unto thee.",
+  "ref": "Leviticus 21:8"
+ },
+ {
+  "id": "leviticus-21-h-01",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must a priest not do to the corner of his beard?",
+  "choices": [
+   "Shave it off",
+   "Anoint it",
+   "Cover it",
+   "Colour it"
+  ],
+  "answer": 0,
+  "explanation": "Neither shall they shave off the corner of their beard, nor make any cuttings in their flesh.",
+  "ref": "Leviticus 21:5"
+ },
+ {
+  "id": "leviticus-21-h-02",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which phrase describes a priest not to be defiled among his people?",
+  "choices": [
+   "A chief man among his people",
+   "A prince of the tribe",
+   "A man of war",
+   "A judge in Israel"
+  ],
+  "answer": 0,
+  "explanation": "He shall not defile himself, being a chief man among his people.",
+  "ref": "Leviticus 21:4"
+ },
+ {
+  "id": "leviticus-21-h-03",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the high priest take in her virginity?",
+  "choices": [
+   "A wife",
+   "A vow",
+   "An oath",
+   "An oil"
+  ],
+  "answer": 0,
+  "explanation": "And he shall take a wife in her virginity.",
+  "ref": "Leviticus 21:13"
+ },
+ {
+  "id": "leviticus-21-h-04",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these women may the high priest not take?",
+  "choices": [
+   "A widow",
+   "A virgin",
+   "A daughter of a priest",
+   "A woman of his own people"
+  ],
+  "answer": 0,
+  "explanation": "A widow, or a divorced woman, or profane, or an harlot, these shall he not take.",
+  "ref": "Leviticus 21:14"
+ },
+ {
+  "id": "leviticus-21-h-05",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these is NOT named as a blemish in the chapter?",
+  "choices": [
+   "Barren",
+   "Brokenfooted",
+   "Crookbackt",
+   "Scabbed"
+  ],
+  "answer": 0,
+  "explanation": "Brokenfooted, brokenhanded, crookbackt, a dwarf, a blemish in his eye, scurvy, scabbed.",
+  "ref": "Leviticus 21:19–20"
+ },
+ {
+  "id": "leviticus-21-h-06",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these blemishes does the chapter name for a priest?",
+  "choices": [
+   "Brokenfooted",
+   "Deaf",
+   "Dumb",
+   "Gray-haired"
+  ],
+  "answer": 0,
+  "explanation": "Or a man that is brokenfooted, or brokenhanded.",
+  "ref": "Leviticus 21:19"
+ },
+ {
+  "id": "leviticus-21-h-07",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the high priest consecrated to put on?",
+  "choices": [
+   "The garments",
+   "The crown of gold",
+   "The sacred oil",
+   "The linen coat only"
+  ],
+  "answer": 0,
+  "explanation": "He that is consecrated to put on the garments shall not uncover his head, nor rend his clothes.",
+  "ref": "Leviticus 21:10"
+ },
+ {
+  "id": "leviticus-21-h-08",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the phrase about the priests' food?",
+  "choices": [
+   "The bread of their God",
+   "The portion of the Levites",
+   "The bread of the poor",
+   "The firstfruits of the land"
+  ],
+  "answer": 0,
+  "explanation": "The offerings of the LORD made by fire, and the bread of their God, they do offer.",
+  "ref": "Leviticus 21:6"
+ },
+ {
+  "id": "leviticus-21-h-09",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the LORD describe Himself regarding the priests?",
+  "choices": [
+   "I the LORD, which sanctify you, am holy",
+   "I the LORD am a refuge",
+   "I the LORD am a shield",
+   "I the LORD will bless you"
+  ],
+  "answer": 0,
+  "explanation": "I the LORD, which sanctify you, am holy.",
+  "ref": "Leviticus 21:8"
+ },
+ {
+  "id": "leviticus-21-h-10",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the high priest's profaning of a place forbidden?",
+  "choices": [
+   "Going out of the sanctuary",
+   "Sitting in the court",
+   "Staying at home",
+   "Entering the camp"
+  ],
+  "answer": 0,
+  "explanation": "Neither shall he go out of the sanctuary, nor profane the sanctuary of his God.",
+  "ref": "Leviticus 21:12"
+ },
+ {
+  "id": "leviticus-21-h-11",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of a priest's daughter who profanes herself?",
+  "choices": [
+   "She profaneth her father",
+   "She profaneth the altar",
+   "She profaneth the camp",
+   "She profaneth the land"
+  ],
+  "answer": 0,
+  "explanation": "If she profane herself by playing the whore, she profaneth her father.",
+  "ref": "Leviticus 21:9"
+ },
+ {
+  "id": "leviticus-21-h-12",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these is named as a blemish that bars a priest?",
+  "choices": [
+   "A stammerer",
+   "A leper's mark",
+   "A dwarf",
+   "A grey beard"
+  ],
+  "answer": 2,
+  "explanation": "Or crookbackt, or a dwarf, or that hath a blemish in his eye.",
+  "ref": "Leviticus 21:20"
+ },
+ {
+  "id": "leviticus-21-h-13",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Which part of the sanctuary may a blemished priest not come nigh?",
+  "choices": [
+   "The court",
+   "The altar",
+   "The laver",
+   "The table"
+  ],
+  "answer": 1,
+  "explanation": "He shall not go in unto the vail, nor come nigh unto the altar, because he hath a blemish.",
+  "ref": "Leviticus 21:23"
+ },
+ {
+  "id": "leviticus-21-h-14",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these may the priest, though blemished, still eat?",
+  "choices": [
+   "The most holy and the holy",
+   "Only the holy",
+   "Only the most holy",
+   "Neither"
+  ],
+  "answer": 0,
+  "explanation": "He shall eat the bread of his God, both of the most holy, and of the holy.",
+  "ref": "Leviticus 21:22"
+ },
+ {
+  "id": "leviticus-21-h-15",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the priests offer that is described as made by fire?",
+  "choices": [
+   "The wood of the altar",
+   "The oil of anointing",
+   "The water of washing",
+   "The offerings of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "The offerings of the LORD made by fire, and the bread of their God, they do offer.",
+  "ref": "Leviticus 21:6"
+ },
+ {
   "id": "old-leviticus-22-1",
   "chapter": 22,
   "level": "beginner",
