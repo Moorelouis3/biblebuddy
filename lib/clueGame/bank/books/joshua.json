@@ -8032,6 +8032,646 @@
   "ref": "Joshua 12:9"
  },
  {
+  "id": "joshua-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who smote Sihon and Og and gave their land to the tribes east of Jordan?",
+  "choices": [
+   "Caleb",
+   "Moses",
+   "Aaron",
+   "Joshua"
+  ],
+  "answer": 1,
+  "explanation": "Moses the servant of the LORD and the children of Israel smote them.",
+  "ref": "Joshua 12:6"
+ },
+ {
+  "id": "joshua-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribes received the land east of Jordan from Moses?",
+  "choices": [
+   "Judah, Levi and Dan",
+   "Ephraim and Issachar",
+   "Reubenites, Gadites and half tribe of Manasseh",
+   "Simeon and Benjamin"
+  ],
+  "answer": 2,
+  "explanation": "Moses gave it for a possession unto the Reubenites, and the Gadites, and the half tribe of Manasseh.",
+  "ref": "Joshua 12:6"
+ },
+ {
+  "id": "joshua-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city did Sihon king of the Amorites dwell in?",
+  "choices": [
+   "Hebron",
+   "Ai",
+   "Jericho",
+   "Heshbon"
+  ],
+  "answer": 3,
+  "explanation": "Sihon king of the Amorites, who dwelt in Heshbon.",
+  "ref": "Joshua 12:2"
+ },
+ {
+  "id": "joshua-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king reigned in Bashan?",
+  "choices": [
+   "Sihon",
+   "Adoni-zedek",
+   "Jabin",
+   "Og"
+  ],
+  "answer": 3,
+  "explanation": "Og king of Bashan reigned in mount Hermon, and in Salcah, and in all Bashan.",
+  "ref": "Joshua 12:4–5"
+ },
+ {
+  "id": "joshua-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Og was of the remnant of whom?",
+  "choices": [
+   "The Hittites",
+   "The Jebusites",
+   "The Hivites",
+   "The giants"
+  ],
+  "answer": 3,
+  "explanation": "Og king of Bashan was of the remnant of the giants.",
+  "ref": "Joshua 12:4"
+ },
+ {
+  "id": "joshua-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who smote the kings on the west side of Jordan?",
+  "choices": [
+   "The Gibeonites",
+   "Moses",
+   "The priests",
+   "Joshua and the children of Israel"
+  ],
+  "answer": 3,
+  "explanation": "These are the kings which Joshua and the children of Israel smote on this side Jordan on the west.",
+  "ref": "Joshua 12:7"
+ },
+ {
+  "id": "joshua-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which river was the border of the children of Ammon?",
+  "choices": [
+   "Jordan",
+   "Jabbok",
+   "Kishon",
+   "Arnon"
+  ],
+  "answer": 1,
+  "explanation": "Even unto the river Jabbok, which is the border of the children of Ammon.",
+  "ref": "Joshua 12:2"
+ },
+ {
+  "id": "joshua-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Whose king is listed right after Jerusalem's?",
+  "choices": [
+   "Jericho",
+   "Hebron",
+   "Ai",
+   "Gezer"
+  ],
+  "answer": 1,
+  "explanation": "The king of Jerusalem, one; the king of Hebron, one.",
+  "ref": "Joshua 12:10"
+ },
+ {
+  "id": "joshua-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many kings does the list count for each named city?",
+  "choices": [
+   "One",
+   "Two",
+   "Ten",
+   "Three"
+  ],
+  "answer": 0,
+  "explanation": "The king of Jericho, one; the king of Ai, one.",
+  "ref": "Joshua 12:9"
+ },
+ {
+  "id": "joshua-12-e-10",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua do with the land he took?",
+  "choices": [
+   "Sold it",
+   "Gave it to the tribes of Israel for a possession",
+   "Left it empty",
+   "Kept it"
+  ],
+  "answer": 1,
+  "explanation": "Joshua gave it unto the tribes of Israel for a possession according to their divisions.",
+  "ref": "Joshua 12:7"
+ },
+ {
+  "id": "joshua-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "From which river did the east land start?",
+  "choices": [
+   "Jordan",
+   "Jabbok",
+   "Kishon",
+   "Arnon"
+  ],
+  "answer": 3,
+  "explanation": "The other side Jordan toward the rising of the sun, from the river Arnon unto mount Hermon.",
+  "ref": "Joshua 12:1"
+ },
+ {
+  "id": "joshua-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "The east land stretched from the Arnon unto which mount?",
+  "choices": [
+   "Ebal",
+   "Seir",
+   "Hermon",
+   "Carmel"
+  ],
+  "answer": 2,
+  "explanation": "From the river Arnon unto mount Hermon, and all the plain on the east.",
+  "ref": "Joshua 12:1"
+ },
+ {
+  "id": "joshua-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "From which place did Sihon rule?",
+  "choices": [
+   "Aroer",
+   "Edrei",
+   "Salcah",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "Sihon ruled from Aroer, which is upon the bank of the river Arnon.",
+  "ref": "Joshua 12:2"
+ },
+ {
+  "id": "joshua-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Sihon ruled half of which land?",
+  "choices": [
+   "Gilead",
+   "Bashan",
+   "Moab",
+   "Goshen"
+  ],
+  "answer": 0,
+  "explanation": "From half Gilead, even unto the river Jabbok.",
+  "ref": "Joshua 12:2"
+ },
+ {
+  "id": "joshua-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "On the east, the plain reached to which sea?",
+  "choices": [
+   "The sea of Chinneroth",
+   "The Red Sea",
+   "The sea of Galilee's south",
+   "The great sea"
+  ],
+  "answer": 0,
+  "explanation": "And from the plain to the sea of Chinneroth on the east.",
+  "ref": "Joshua 12:3"
+ },
+ {
+  "id": "joshua-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Og dwell?",
+  "choices": [
+   "Hebron and Debir",
+   "Heshbon and Aroer",
+   "Ashtaroth and Edrei",
+   "Gilgal and Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "Og dwelt at Ashtaroth and at Edrei.",
+  "ref": "Joshua 12:4"
+ },
+ {
+  "id": "joshua-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Og's reign reached unto the border of which two peoples?",
+  "choices": [
+   "The Geshurites and the Maachathites",
+   "The Amorites and Jebusites",
+   "The Hittites and Hivites",
+   "The Moabites and Edomites"
+  ],
+  "answer": 0,
+  "explanation": "Unto the border of the Geshurites and the Maachathites.",
+  "ref": "Joshua 12:5"
+ },
+ {
+  "id": "joshua-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "The kings smitten by Joshua stretched from which valley?",
+  "choices": [
+   "Achor",
+   "Baal-gad in the valley of Lebanon",
+   "Elah",
+   "Ajalon"
+  ],
+  "answer": 1,
+  "explanation": "From Baal-gad in the valley of Lebanon even unto the mount Halak.",
+  "ref": "Joshua 12:7"
+ },
+ {
+  "id": "joshua-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "The mount Halak goeth up to which place?",
+  "choices": [
+   "Hermon",
+   "Seir",
+   "Ebal",
+   "Gilead"
+  ],
+  "answer": 1,
+  "explanation": "The mount Halak, that goeth up to Seir.",
+  "ref": "Joshua 12:7"
+ },
+ {
+  "id": "joshua-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Which people is named among those of the west country?",
+  "choices": [
+   "The Philistines",
+   "The Jebusites",
+   "The Moabites",
+   "The Egyptians"
+  ],
+  "answer": 1,
+  "explanation": "The Hittites, the Amorites, the Canaanites, the Perizzites, the Hivites, and the Jebusites.",
+  "ref": "Joshua 12:8"
+ },
+ {
+  "id": "joshua-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Which king is listed right after Jarmuth's?",
+  "choices": [
+   "Lachish",
+   "Gezer",
+   "Eglon",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "The king of Jarmuth, one; the king of Lachish, one.",
+  "ref": "Joshua 12:11"
+ },
+ {
+  "id": "joshua-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Which king is listed right after Hazor's?",
+  "choices": [
+   "Taanach",
+   "Madon",
+   "Shimron-meron",
+   "Achshaph"
+  ],
+  "answer": 2,
+  "explanation": "The king of Hazor, one; the king of Shimron-meron, one.",
+  "ref": "Joshua 12:19–20"
+ },
+ {
+  "id": "joshua-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Which king is listed with Taanach's?",
+  "choices": [
+   "Tirzah",
+   "Megiddo",
+   "Kedesh",
+   "Dor"
+  ],
+  "answer": 1,
+  "explanation": "The king of Taanach, one; the king of Megiddo, one.",
+  "ref": "Joshua 12:21"
+ },
+ {
+  "id": "joshua-12-m-14",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Which king is listed with Eglon's?",
+  "choices": [
+   "Gezer",
+   "Debir",
+   "Hormah",
+   "Arad"
+  ],
+  "answer": 0,
+  "explanation": "The king of Eglon, one; the king of Gezer, one.",
+  "ref": "Joshua 12:12"
+ },
+ {
+  "id": "joshua-12-m-15",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Which king is listed beside Libnah's?",
+  "choices": [
+   "Hormah",
+   "Arad",
+   "Adullam",
+   "Makkedah"
+  ],
+  "answer": 2,
+  "explanation": "The king of Libnah, one; the king of Adullam, one.",
+  "ref": "Joshua 12:15"
+ },
+ {
+  "id": "joshua-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Which king is listed with Debir's?",
+  "choices": [
+   "Geder",
+   "Hormah",
+   "Arad",
+   "Libnah"
+  ],
+  "answer": 0,
+  "explanation": "The king of Debir, one; the king of Geder, one.",
+  "ref": "Joshua 12:13"
+ },
+ {
+  "id": "joshua-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Which king is listed with Hormah's?",
+  "choices": [
+   "Geder",
+   "Debir",
+   "Arad",
+   "Libnah"
+  ],
+  "answer": 2,
+  "explanation": "The king of Hormah, one; the king of Arad, one.",
+  "ref": "Joshua 12:14"
+ },
+ {
+  "id": "joshua-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Which king is listed with Tappuah's?",
+  "choices": [
+   "Lasharon",
+   "Aphek",
+   "Madon",
+   "Hepher"
+  ],
+  "answer": 3,
+  "explanation": "The king of Tappuah, one; the king of Hepher, one.",
+  "ref": "Joshua 12:17"
+ },
+ {
+  "id": "joshua-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Which king is listed with Aphek's?",
+  "choices": [
+   "Lasharon",
+   "Madon",
+   "Hepher",
+   "Tappuah"
+  ],
+  "answer": 0,
+  "explanation": "The king of Aphek, one; the king of Lasharon, one.",
+  "ref": "Joshua 12:18"
+ },
+ {
+  "id": "joshua-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Which king is listed with Makkedah's?",
+  "choices": [
+   "Ai",
+   "Libnah",
+   "Bethel",
+   "Adullam"
+  ],
+  "answer": 2,
+  "explanation": "The king of Makkedah, one; the king of Bethel, one.",
+  "ref": "Joshua 12:16"
+ },
+ {
+  "id": "joshua-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Which king is listed with Madon's?",
+  "choices": [
+   "Megiddo",
+   "Taanach",
+   "Hazor",
+   "Achshaph"
+  ],
+  "answer": 2,
+  "explanation": "The king of Madon, one; the king of Hazor, one.",
+  "ref": "Joshua 12:19"
+ },
+ {
+  "id": "joshua-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Which king is listed with Achshaph's?",
+  "choices": [
+   "Kedesh",
+   "Taanach",
+   "Shimron-meron",
+   "Madon"
+  ],
+  "answer": 2,
+  "explanation": "The king of Shimron-meron, one; the king of Achshaph, one.",
+  "ref": "Joshua 12:20"
+ },
+ {
+  "id": "joshua-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Which king is listed with Kedesh's?",
+  "choices": [
+   "Dor",
+   "Taanach",
+   "Megiddo",
+   "Jokneam of Carmel"
+  ],
+  "answer": 3,
+  "explanation": "The king of Kedesh, one; the king of Jokneam of Carmel, one.",
+  "ref": "Joshua 12:22"
+ },
+ {
+  "id": "joshua-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "In the coast of which place was the king of Dor?",
+  "choices": [
+   "Dor",
+   "Gilgal",
+   "Carmel",
+   "Tirzah"
+  ],
+  "answer": 0,
+  "explanation": "The king of Dor in the coast of Dor, one.",
+  "ref": "Joshua 12:23"
+ },
+ {
+  "id": "joshua-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Which \"nations\" is the king of \"the nations of\" in the list?",
+  "choices": [
+   "Gilgal",
+   "Dor",
+   "Megiddo",
+   "Tirzah"
+  ],
+  "answer": 0,
+  "explanation": "The king of the nations of Gilgal, one.",
+  "ref": "Joshua 12:23"
+ },
+ {
+  "id": "joshua-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Which king is listed last?",
+  "choices": [
+   "Tirzah",
+   "Gilgal",
+   "Megiddo",
+   "Dor"
+  ],
+  "answer": 0,
+  "explanation": "The king of Tirzah, one: all the kings thirty and one.",
+  "ref": "Joshua 12:24"
+ },
+ {
+  "id": "joshua-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "In which place did Og reign besides Bashan and Hermon?",
+  "choices": [
+   "Salcah",
+   "Edrei",
+   "Heshbon",
+   "Aroer"
+  ],
+  "answer": 0,
+  "explanation": "Og reigned in mount Hermon, and in Salcah, and in all Bashan.",
+  "ref": "Joshua 12:5"
+ },
+ {
+  "id": "joshua-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "The way to which place is named by the salt sea?",
+  "choices": [
+   "Tirzah",
+   "Edrei",
+   "Gilgal",
+   "Beth-jeshimoth"
+  ],
+  "answer": 3,
+  "explanation": "Even the salt sea on the east, the way to Beth-jeshimoth.",
+  "ref": "Joshua 12:3"
+ },
+ {
+  "id": "joshua-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Og's half of Gilead was the border of which king's land?",
+  "choices": [
+   "Sihon king of Heshbon",
+   "Jabin king of Hazor",
+   "Adoni-zedek king of Jerusalem",
+   "Balak king of Moab"
+  ],
+  "answer": 0,
+  "explanation": "Og reigned in half Gilead, the border of Sihon king of Heshbon.",
+  "ref": "Joshua 12:5"
+ },
+ {
+  "id": "joshua-12-h-15",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Toward what did the land on the other side Jordan lie?",
+  "choices": [
+   "The rising of the sun",
+   "The setting of the sun",
+   "The north star",
+   "The great sea"
+  ],
+  "answer": 0,
+  "explanation": "The kings' land on the other side Jordan lay toward the rising of the sun.",
+  "ref": "Joshua 12:1"
+ },
+ {
   "id": "old-joshua-13-1",
   "chapter": 13,
   "level": "beginner",
