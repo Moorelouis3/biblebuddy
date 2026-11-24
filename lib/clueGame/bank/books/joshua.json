@@ -8752,6 +8752,646 @@
   "ref": "Joshua 13:22"
  },
  {
+  "id": "joshua-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who gave Reuben, Gad and half Manasseh their land east of Jordan?",
+  "choices": [
+   "Joshua",
+   "Moses",
+   "Eleazar",
+   "Caleb"
+  ],
+  "answer": 1,
+  "explanation": "Moses gave them their inheritance beyond Jordan eastward.",
+  "ref": "Joshua 13:8"
+ },
+ {
+  "id": "joshua-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the Lord tell Joshua to divide the land among the tribes?",
+  "choices": [
+   "By choice of the elders",
+   "By lot",
+   "By the oldest tribe first",
+   "By counting the people"
+  ],
+  "answer": 1,
+  "explanation": "The Lord said, Only divide thou it by lot unto the Israelites for an inheritance.",
+  "ref": "Joshua 13:6"
+ },
+ {
+  "id": "joshua-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which half-tribe also received land east of Jordan?",
+  "choices": [
+   "Ephraim",
+   "Manasseh",
+   "Benjamin",
+   "Simeon"
+  ],
+  "answer": 1,
+  "explanation": "Moses gave inheritance unto the half tribe of Manasseh.",
+  "ref": "Joshua 13:29"
+ },
+ {
+  "id": "joshua-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king reigned in Ashtaroth and in Edrei?",
+  "choices": [
+   "Sihon",
+   "Og",
+   "Balak",
+   "Jabin"
+  ],
+  "answer": 1,
+  "explanation": "Og, king of Bashan, reigned in Ashtaroth and in Edrei.",
+  "ref": "Joshua 13:12"
+ },
+ {
+  "id": "joshua-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of the Amorites reigned in Heshbon?",
+  "choices": [
+   "Og",
+   "Sihon",
+   "Balak",
+   "Eglon"
+  ],
+  "answer": 1,
+  "explanation": "Sihon king of the Amorites reigned in Heshbon.",
+  "ref": "Joshua 13:10"
+ },
+ {
+  "id": "joshua-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides half Manasseh, how many tribes were to share the land west of Jordan?",
+  "choices": [
+   "Seven",
+   "Nine",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Divide this land for an inheritance unto the nine tribes, and the half tribe of Manasseh.",
+  "ref": "Joshua 13:7"
+ },
+ {
+  "id": "joshua-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose borders did the Lord say still remained to be possessed?",
+  "choices": [
+   "The Moabites",
+   "The Philistines",
+   "The Egyptians",
+   "The Edomites"
+  ],
+  "answer": 1,
+  "explanation": "This is the land that yet remaineth: all the borders of the Philistines.",
+  "ref": "Joshua 13:2"
+ },
+ {
+  "id": "joshua-13-e-08",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which peoples did Israel not drive out, so that they dwell among Israel to this day?",
+  "choices": [
+   "The Sidonians and Hittites",
+   "The Geshurites and Maachathites",
+   "The Philistines and Avites",
+   "The Amorites and Jebusites"
+  ],
+  "answer": 1,
+  "explanation": "The Israelites expelled not the Geshurites, nor the Maachathites; they dwell among them until this day.",
+  "ref": "Joshua 13:13"
+ },
+ {
+  "id": "joshua-13-e-09",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe received Jazer and all the cities of Gilead?",
+  "choices": [
+   "Reuben",
+   "Gad",
+   "Judah",
+   "Levi"
+  ],
+  "answer": 1,
+  "explanation": "Their coast was Jazer, and all the cities of Gilead.",
+  "ref": "Joshua 13:24–25"
+ },
+ {
+  "id": "joshua-13-e-10",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe received Heshbon and Dibon?",
+  "choices": [
+   "Gad",
+   "Reuben",
+   "Manasseh",
+   "Benjamin"
+  ],
+  "answer": 1,
+  "explanation": "Moses gave Reuben Heshbon, Dibon, Bamoth-baal and Beth-baal-meon among their cities.",
+  "ref": "Joshua 13:15–17"
+ },
+ {
+  "id": "joshua-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many lords of the Philistines are named in the chapter?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Ten",
+   "Five"
+  ],
+  "answer": 3,
+  "explanation": "The land includes five lords of the Philistines.",
+  "ref": "Joshua 13:3"
+ },
+ {
+  "id": "joshua-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Which of these was a Philistine city of the five lords?",
+  "choices": [
+   "Jericho",
+   "Hebron",
+   "Shechem",
+   "Ekron"
+  ],
+  "answer": 3,
+  "explanation": "The five lords include the Ekronites, with Gaza, Ashdod, Eshkalon and Gath.",
+  "ref": "Joshua 13:3"
+ },
+ {
+  "id": "joshua-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord promise to do to the Sidonians and the hill country inhabitants?",
+  "choices": [
+   "Make them servants of Israel",
+   "Make peace with them",
+   "Scatter them among the tribes",
+   "Drive them out before Israel"
+  ],
+  "answer": 3,
+  "explanation": "I will drive out from before the children of Israel all the inhabitants of the hill country and all the Sidonians.",
+  "ref": "Joshua 13:6"
+ },
+ {
+  "id": "joshua-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Reuben's coast began at Aroer on the bank of which river?",
+  "choices": [
+   "Jordan",
+   "Jabbok",
+   "Kishon",
+   "Arnon"
+  ],
+  "answer": 3,
+  "explanation": "Their coast was from Aroer, that is on the bank of the river Arnon.",
+  "ref": "Joshua 13:16"
+ },
+ {
+  "id": "joshua-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the inheritance of the tribe of Levi?",
+  "choices": [
+   "The cities of Bashan",
+   "The plain of Medeba",
+   "The kingdom of Sihon",
+   "The sacrifices of the Lord made by fire"
+  ],
+  "answer": 3,
+  "explanation": "The sacrifices of the Lord God of Israel made by fire are their inheritance, as he said unto them.",
+  "ref": "Joshua 13:14"
+ },
+ {
+  "id": "joshua-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Og was of the remnant of whom?",
+  "choices": [
+   "The Philistines",
+   "The Amorites",
+   "The Midianites",
+   "The giants"
+  ],
+  "answer": 3,
+  "explanation": "Og reigned in Ashtaroth and Edrei, who remained of the remnant of the giants.",
+  "ref": "Joshua 13:12"
+ },
+ {
+  "id": "joshua-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who smote Sihon together with the princes of Midian?",
+  "choices": [
+   "Joshua",
+   "Caleb",
+   "Eleazar",
+   "Moses"
+  ],
+  "answer": 3,
+  "explanation": "Sihon was the king whom Moses smote with the princes of Midian.",
+  "ref": "Joshua 13:21"
+ },
+ {
+  "id": "joshua-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was one of the dukes of Sihon?",
+  "choices": [
+   "Machir",
+   "Beor",
+   "Jair",
+   "Rekem"
+  ],
+  "answer": 3,
+  "explanation": "The dukes of Sihon named are Evi, Rekem, Zur, Hur and Reba.",
+  "ref": "Joshua 13:21"
+ },
+ {
+  "id": "joshua-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Half of Gilead and Ashtaroth went to the children of which man?",
+  "choices": [
+   "Jair",
+   "Beor",
+   "Sihon",
+   "Machir"
+  ],
+  "answer": 3,
+  "explanation": "They pertained unto the children of Machir the son of Manasseh.",
+  "ref": "Joshua 13:31"
+ },
+ {
+  "id": "joshua-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cities were the towns of Jair in Bashan?",
+  "choices": [
+   "Twelve",
+   "Forty",
+   "One hundred",
+   "Threescore"
+  ],
+  "answer": 3,
+  "explanation": "All the towns of Jair, which are in Bashan, threescore cities.",
+  "ref": "Joshua 13:30"
+ },
+ {
+  "id": "joshua-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Moses distribute these lands east of Jordan?",
+  "choices": [
+   "In the hill country of Ephraim",
+   "In the valley of Achor",
+   "In the wilderness of Paran",
+   "In the plains of Moab"
+  ],
+  "answer": 3,
+  "explanation": "These are the countries which Moses did distribute in the plains of Moab, on the other side Jordan.",
+  "ref": "Joshua 13:32"
+ },
+ {
+  "id": "joshua-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Gad received half the land of which people?",
+  "choices": [
+   "The Moabites",
+   "The Edomites",
+   "The Midianites",
+   "The children of Ammon"
+  ],
+  "answer": 3,
+  "explanation": "Their coast was Jazer, and half the land of the children of Ammon, unto Aroer.",
+  "ref": "Joshua 13:25"
+ },
+ {
+  "id": "joshua-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "The land eastward from Baal-gad lay under which mountain?",
+  "choices": [
+   "Mount Carmel",
+   "Mount Pisgah",
+   "Mount Tabor",
+   "Mount Hermon"
+  ],
+  "answer": 3,
+  "explanation": "The land toward the sunrising was from Baal-gad under mount Hermon unto the entering into Hamath.",
+  "ref": "Joshua 13:5"
+ },
+ {
+  "id": "joshua-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Gad's inheritance reached the edge of which sea?",
+  "choices": [
+   "The Great Sea",
+   "The Red Sea",
+   "The Salt Sea",
+   "The sea of Chinnereth"
+  ],
+  "answer": 3,
+  "explanation": "His border reached unto the edge of the sea of Chinnereth on the other side Jordan eastward.",
+  "ref": "Joshua 13:27"
+ },
+ {
+  "id": "joshua-13-m-15",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Gilead lay beside the border of which two peoples?",
+  "choices": [
+   "The Sidonians and Giblites",
+   "The Moabites and Ammonites",
+   "The Avites and Canaanites",
+   "The Geshurites and Maachathites"
+  ],
+  "answer": 3,
+  "explanation": "Moses gave Gilead and the border of the Geshurites and Maachathites, and all mount Hermon.",
+  "ref": "Joshua 13:11"
+ },
+ {
+  "id": "joshua-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Which Philistine people is listed first among the five lords?",
+  "choices": [
+   "The Gazathites",
+   "The Gittites",
+   "The Ekronites",
+   "The Eshkalonites"
+  ],
+  "answer": 0,
+  "explanation": "The five lords are the Gazathites, Ashdothites, Eshkalonites, Gittites and Ekronites.",
+  "ref": "Joshua 13:3"
+ },
+ {
+  "id": "joshua-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Sihor, where the remaining land began, is said to be before which land?",
+  "choices": [
+   "Egypt",
+   "Canaan",
+   "Moab",
+   "Lebanon"
+  ],
+  "answer": 0,
+  "explanation": "From Sihor, which is before Egypt, even unto the borders of Ekron northward.",
+  "ref": "Joshua 13:3"
+ },
+ {
+  "id": "joshua-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "The land from Baal-gad under mount Hermon ran to the entering into which place?",
+  "choices": [
+   "Hamath",
+   "Damascus",
+   "Bashan",
+   "Lebanon"
+  ],
+  "answer": 0,
+  "explanation": "From Baal-gad under mount Hermon unto the entering into Hamath.",
+  "ref": "Joshua 13:5"
+ },
+ {
+  "id": "joshua-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the coast of half Manasseh begin?",
+  "choices": [
+   "Mahanaim",
+   "Heshbon",
+   "Jazer",
+   "Succoth"
+  ],
+  "answer": 0,
+  "explanation": "Their coast was from Mahanaim, all Bashan, all the kingdom of Og.",
+  "ref": "Joshua 13:30"
+ },
+ {
+  "id": "joshua-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities was given to Reuben?",
+  "choices": [
+   "Kirjathaim",
+   "Succoth",
+   "Mahanaim",
+   "Rabbah"
+  ],
+  "answer": 0,
+  "explanation": "Reuben's cities included Jahaza, Kedemoth, Mephaath, Kirjathaim and Sibmah.",
+  "ref": "Joshua 13:18–19"
+ },
+ {
+  "id": "joshua-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Gad's coast reached Aroer before which city?",
+  "choices": [
+   "Rabbah",
+   "Heshbon",
+   "Dibon",
+   "Edrei"
+  ],
+  "answer": 0,
+  "explanation": "Their coast reached half the land of Ammon, unto Aroer that is before Rabbah.",
+  "ref": "Joshua 13:25"
+ },
+ {
+  "id": "joshua-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Balaam the soothsayer?",
+  "choices": [
+   "Beor",
+   "Balak",
+   "Machir",
+   "Jair"
+  ],
+  "answer": 0,
+  "explanation": "Balaam also the son of Beor, the soothsayer, did the children of Israel slay with the sword.",
+  "ref": "Joshua 13:22"
+ },
+ {
+  "id": "joshua-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many dukes of Sihon are named in the chapter?",
+  "choices": [
+   "Five",
+   "Three",
+   "Four",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "Evi, and Rekem, and Zur, and Hur, and Reba were dukes of Sihon.",
+  "ref": "Joshua 13:21"
+ },
+ {
+  "id": "joshua-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Mearah is described as beside which people?",
+  "choices": [
+   "The Sidonians",
+   "The Amorites",
+   "The Philistines",
+   "The Giblites"
+  ],
+  "answer": 0,
+  "explanation": "Mearah that is beside the Sidonians, unto Aphek.",
+  "ref": "Joshua 13:4"
+ },
+ {
+  "id": "joshua-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "The cities of Sihon reached unto the border of which people?",
+  "choices": [
+   "The children of Ammon",
+   "The Moabites",
+   "The Midianites",
+   "The Geshurites"
+  ],
+  "answer": 0,
+  "explanation": "All the cities of Sihon king of the Amorites unto the border of the children of Ammon.",
+  "ref": "Joshua 13:10"
+ },
+ {
+  "id": "joshua-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Og's land of Bashan stretched unto which place?",
+  "choices": [
+   "Salcah",
+   "Hamath",
+   "Edrei",
+   "Aphek"
+  ],
+  "answer": 0,
+  "explanation": "All mount Hermon, and all Bashan unto Salcah.",
+  "ref": "Joshua 13:11"
+ },
+ {
+  "id": "joshua-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the children of Israel put Balaam to death?",
+  "choices": [
+   "With the sword",
+   "By stoning",
+   "By fire",
+   "By drowning"
+  ],
+  "answer": 0,
+  "explanation": "Balaam did the children of Israel slay with the sword.",
+  "ref": "Joshua 13:22"
+ },
+ {
+  "id": "joshua-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "The lands east of Jordan were distributed on the other side of Jordan by which city?",
+  "choices": [
+   "Jericho",
+   "Heshbon",
+   "Gilead",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "Moses distributed them in the plains of Moab, on the other side Jordan, by Jericho, eastward.",
+  "ref": "Joshua 13:32"
+ },
+ {
+  "id": "joshua-13-h-14",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these valley cities belonged to Gad?",
+  "choices": [
+   "Succoth",
+   "Dibon",
+   "Kedemoth",
+   "Heshbon"
+  ],
+  "answer": 0,
+  "explanation": "In the valley Gad had Beth-aram, Beth-nimrah, Succoth and Zaphon.",
+  "ref": "Joshua 13:27"
+ },
+ {
+  "id": "joshua-13-h-15",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "The land from Sihor to Ekron northward is said to be counted to whom?",
+  "choices": [
+   "The Canaanite",
+   "The Amorite",
+   "The Hittite",
+   "The Egyptian"
+  ],
+  "answer": 0,
+  "explanation": "Unto the borders of Ekron northward, which is counted to the Canaanite.",
+  "ref": "Joshua 13:3"
+ },
+ {
   "id": "old-joshua-14-1",
   "chapter": 14,
   "level": "beginner",
