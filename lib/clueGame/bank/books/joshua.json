@@ -6592,6 +6592,646 @@
   "ref": "Joshua 10:24"
  },
  {
+  "id": "joshua-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the king of Jerusalem in this chapter?",
+  "choices": [
+   "Japhia",
+   "Adoni-zedek",
+   "Hoham",
+   "Piram"
+  ],
+  "answer": 1,
+  "explanation": "Adoni-zedek king of Jerusalem had heard how Joshua had taken Ai.",
+  "ref": "Joshua 10:1"
+ },
+ {
+  "id": "joshua-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city did the five kings besiege?",
+  "choices": [
+   "Gibeon",
+   "Jericho",
+   "Gilgal",
+   "Ai"
+  ],
+  "answer": 0,
+  "explanation": "The five kings encamped before Gibeon, and made war against it.",
+  "ref": "Joshua 10:5"
+ },
+ {
+  "id": "joshua-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the men of Gibeon send to Joshua for help?",
+  "choices": [
+   "Makkedah",
+   "Hebron",
+   "Gilgal",
+   "Ai"
+  ],
+  "answer": 2,
+  "explanation": "The men of Gibeon sent unto Joshua to the camp to Gilgal.",
+  "ref": "Joshua 10:6"
+ },
+ {
+  "id": "joshua-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Joshua about the five kings' armies?",
+  "choices": [
+   "Wait a year",
+   "Flee",
+   "Fear them not",
+   "Make peace"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said unto Joshua, Fear them not: for I have delivered them into thine hand.",
+  "ref": "Joshua 10:8"
+ },
+ {
+  "id": "joshua-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Joshua come upon the Amorites?",
+  "choices": [
+   "By sea",
+   "By a long siege",
+   "Suddenly, after going up from Gilgal all night",
+   "By a trick"
+  ],
+  "answer": 2,
+  "explanation": "Joshua came unto them suddenly, and went up from Gilgal all night.",
+  "ref": "Joshua 10:9"
+ },
+ {
+  "id": "joshua-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which body stood still in the midst of heaven for about a whole day?",
+  "choices": [
+   "The sun",
+   "The north star",
+   "The morning star",
+   "A cloud"
+  ],
+  "answer": 0,
+  "explanation": "The sun stood still in the midst of heaven, and hasted not to go down about a whole day.",
+  "ref": "Joshua 10:13"
+ },
+ {
+  "id": "joshua-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which valley did Joshua name when he spoke to the moon?",
+  "choices": [
+   "Ajalon",
+   "Achor",
+   "Jordan",
+   "Elah"
+  ],
+  "answer": 0,
+  "explanation": "Sun, stand thou still upon Gibeon; and thou, Moon, in the valley of Ajalon.",
+  "ref": "Joshua 10:12"
+ },
+ {
+  "id": "joshua-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who fought for Israel that day?",
+  "choices": [
+   "The angels",
+   "The LORD",
+   "The kings",
+   "The Gibeonites"
+  ],
+  "answer": 1,
+  "explanation": "The LORD hearkened unto the voice of a man: for the LORD fought for Israel.",
+  "ref": "Joshua 10:14"
+ },
+ {
+  "id": "joshua-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua roll upon the cave's mouth?",
+  "choices": [
+   "Logs",
+   "Iron gates",
+   "Brass doors",
+   "Great stones"
+  ],
+  "answer": 3,
+  "explanation": "Joshua said, Roll great stones upon the mouth of the cave.",
+  "ref": "Joshua 10:18"
+ },
+ {
+  "id": "joshua-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what did Joshua hang the five kings?",
+  "choices": [
+   "Five trees",
+   "A wall",
+   "One great tree",
+   "A tower"
+  ],
+  "answer": 0,
+  "explanation": "Joshua smote them, and slew them, and hanged them on five trees.",
+  "ref": "Joshua 10:26"
+ },
+ {
+  "id": "joshua-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Adoni-zedek and his people fear Gibeon?",
+  "choices": [
+   "It had no king",
+   "It had an army of giants",
+   "It was a great city and its men were mighty",
+   "It held the ark"
+  ],
+  "answer": 2,
+  "explanation": "They feared greatly, because Gibeon was a great city and all the men thereof were mighty.",
+  "ref": "Joshua 10:2"
+ },
+ {
+  "id": "joshua-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Adoni-zedek want to smite Gibeon?",
+  "choices": [
+   "It refused tribute",
+   "It worshipped idols",
+   "It had made peace with Joshua and Israel",
+   "It had stolen gold"
+  ],
+  "answer": 2,
+  "explanation": "Come up unto me, that we may smite Gibeon: for it hath made peace with Joshua.",
+  "ref": "Joshua 10:4"
+ },
+ {
+  "id": "joshua-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of Gibeon ask Joshua not to do?",
+  "choices": [
+   "Slack his hand from his servants",
+   "Fight at night",
+   "Enter the city",
+   "Wait for the ark"
+  ],
+  "answer": 0,
+  "explanation": "Slack not thy hand from thy servants; come up to us quickly, and save us.",
+  "ref": "Joshua 10:6"
+ },
+ {
+  "id": "joshua-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD cast down on the Amorites as they fled?",
+  "choices": [
+   "Great stones from heaven",
+   "Locusts",
+   "Fire",
+   "Darkness"
+  ],
+  "answer": 0,
+  "explanation": "The LORD cast down great stones from heaven upon them unto Azekah, and they died.",
+  "ref": "Joshua 10:11"
+ },
+ {
+  "id": "joshua-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who killed more of the Amorites, the hailstones or the sword?",
+  "choices": [
+   "The sword",
+   "Neither",
+   "The hailstones",
+   "The same"
+  ],
+  "answer": 2,
+  "explanation": "They were more which died with hailstones than they whom the children of Israel slew with the sword.",
+  "ref": "Joshua 10:11"
+ },
+ {
+  "id": "joshua-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were the five kings hiding?",
+  "choices": [
+   "In a cave at Makkedah",
+   "In Gibeon",
+   "In Hebron",
+   "In Beth-horon"
+  ],
+  "answer": 0,
+  "explanation": "These five kings fled, and hid themselves in a cave at Makkedah.",
+  "ref": "Joshua 10:16"
+ },
+ {
+  "id": "joshua-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua say to do to the hindmost of their enemies?",
+  "choices": [
+   "Take them prisoner",
+   "Smite them and not let them enter their cities",
+   "Feed them",
+   "Let them go"
+  ],
+  "answer": 1,
+  "explanation": "Smite the hindmost of them; suffer them not to enter into their cities.",
+  "ref": "Joshua 10:19"
+ },
+ {
+  "id": "joshua-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When Israel returned to the camp at Makkedah, what had none done?",
+  "choices": [
+   "Cried out",
+   "Moved his tongue against any of Israel",
+   "Deserted",
+   "Taken spoil"
+  ],
+  "answer": 1,
+  "explanation": "None moved his tongue against any of the children of Israel.",
+  "ref": "Joshua 10:21"
+ },
+ {
+  "id": "joshua-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua tell the captains to do to the kings?",
+  "choices": [
+   "Bow down",
+   "Put their feet upon their necks",
+   "Free them",
+   "Pray"
+  ],
+  "answer": 1,
+  "explanation": "Come near, put your feet upon the necks of these kings.",
+  "ref": "Joshua 10:24"
+ },
+ {
+  "id": "joshua-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua say to the captains after this?",
+  "choices": [
+   "Go home",
+   "Fear not, nor be dismayed, be strong and of good courage",
+   "Rest now",
+   "Wait for the LORD"
+  ],
+  "answer": 1,
+  "explanation": "Fear not, nor be dismayed, be strong and of good courage.",
+  "ref": "Joshua 10:25"
+ },
+ {
+  "id": "joshua-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done with the kings' bodies at sunset?",
+  "choices": [
+   "Burnt",
+   "Cast into the cave and sealed with stones",
+   "Buried in Gilgal",
+   "Left on the trees"
+  ],
+  "answer": 1,
+  "explanation": "They took them down off the trees, and cast them into the cave, and laid great stones in the cave's mouth.",
+  "ref": "Joshua 10:27"
+ },
+ {
+  "id": "joshua-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Which king of Gezer came to help Lachish?",
+  "choices": [
+   "Hoham",
+   "Debir",
+   "Piram",
+   "Horam"
+  ],
+  "answer": 3,
+  "explanation": "Horam king of Gezer came up to help Lachish; and Joshua smote him and his people.",
+  "ref": "Joshua 10:33"
+ },
+ {
+  "id": "joshua-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How soon was Lachish taken?",
+  "choices": [
+   "On the first day",
+   "On the seventh day",
+   "On the second day",
+   "After a month"
+  ],
+  "answer": 2,
+  "explanation": "The LORD delivered Lachish into the hand of Israel, which took it on the second day.",
+  "ref": "Joshua 10:32"
+ },
+ {
+  "id": "joshua-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "From where to where did Joshua smite them?",
+  "choices": [
+   "From Kadesh-barnea unto Gaza",
+   "From Egypt to Jordan",
+   "From Gilgal to Ai",
+   "From Dan to Beersheba"
+  ],
+  "answer": 0,
+  "explanation": "Joshua smote them from Kadesh-barnea even unto Gaza.",
+  "ref": "Joshua 10:41"
+ },
+ {
+  "id": "joshua-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about the kings' men standing before Joshua?",
+  "choices": [
+   "Not a man of them would stand before him",
+   "Half would flee",
+   "They would surrender",
+   "They would be spared"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, I have delivered them into thine hand; there shall not a man of them stand before thee.",
+  "ref": "Joshua 10:8"
+ },
+ {
+  "id": "joshua-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which king of Hebron joined the five kings?",
+  "choices": [
+   "Japhia",
+   "Piram",
+   "Hoham",
+   "Adoni-zedek"
+  ],
+  "answer": 2,
+  "explanation": "Adoni-zedek sent unto Hoham king of Hebron.",
+  "ref": "Joshua 10:3"
+ },
+ {
+  "id": "joshua-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which king of Jarmuth was named?",
+  "choices": [
+   "Debir",
+   "Japhia",
+   "Hoham",
+   "Piram"
+  ],
+  "answer": 3,
+  "explanation": "Adoni-zedek sent unto Piram king of Jarmuth.",
+  "ref": "Joshua 10:3"
+ },
+ {
+  "id": "joshua-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the king of Lachish named?",
+  "choices": [
+   "Japhia",
+   "Piram",
+   "Hoham",
+   "Horam"
+  ],
+  "answer": 0,
+  "explanation": "Adoni-zedek sent unto Japhia king of Lachish.",
+  "ref": "Joshua 10:3"
+ },
+ {
+  "id": "joshua-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was king of Eglon?",
+  "choices": [
+   "Japhia",
+   "Hoham",
+   "Horam",
+   "Debir"
+  ],
+  "answer": 3,
+  "explanation": "Adoni-zedek sent unto Debir king of Eglon.",
+  "ref": "Joshua 10:3"
+ },
+ {
+  "id": "joshua-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which book is named as recording Joshua's long day?",
+  "choices": [
+   "The book of Moses",
+   "The book of Jasher",
+   "The book of Wars",
+   "The book of Kings"
+  ],
+  "answer": 1,
+  "explanation": "Is not this written in the book of Jasher?",
+  "ref": "Joshua 10:13"
+ },
+ {
+  "id": "joshua-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the text say that day compared with others?",
+  "choices": [
+   "It was shorter",
+   "There was no day like it before or after",
+   "It was the same",
+   "It was the longest of many"
+  ],
+  "answer": 1,
+  "explanation": "There was no day like that before it or after it, that the LORD hearkened unto the voice of a man.",
+  "ref": "Joshua 10:14"
+ },
+ {
+  "id": "joshua-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Which road did the LORD chase them along?",
+  "choices": [
+   "The road to Jordan",
+   "The way of the wilderness",
+   "The way that goeth up to Beth-horon",
+   "The road to Jericho"
+  ],
+  "answer": 2,
+  "explanation": "He chased them along the way that goeth up to Beth-horon.",
+  "ref": "Joshua 10:10"
+ },
+ {
+  "id": "joshua-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides Beth-horon, to which two places were the Amorites chased?",
+  "choices": [
+   "Libnah and Eglon",
+   "Ai and Bethel",
+   "Azekah and Makkedah",
+   "Hebron and Debir"
+  ],
+  "answer": 2,
+  "explanation": "They smote them to Azekah, and unto Makkedah.",
+  "ref": "Joshua 10:10"
+ },
+ {
+  "id": "joshua-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do to the Amorites before Israel?",
+  "choices": [
+   "Discomfited them",
+   "Taught them",
+   "Fed them",
+   "Hid them"
+  ],
+  "answer": 0,
+  "explanation": "The LORD discomfited them before Israel, and slew them with a great slaughter at Gibeon.",
+  "ref": "Joshua 10:10"
+ },
+ {
+  "id": "joshua-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "To where did the rest of the enemies enter?",
+  "choices": [
+   "The wilderness",
+   "The sea",
+   "Fenced cities",
+   "Caves"
+  ],
+  "answer": 2,
+  "explanation": "The rest which remained entered into fenced cities.",
+  "ref": "Joshua 10:20"
+ },
+ {
+  "id": "joshua-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city did Joshua attack after Makkedah?",
+  "choices": [
+   "Libnah",
+   "Debir",
+   "Eglon",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "Joshua passed from Makkedah unto Libnah, and fought against Libnah.",
+  "ref": "Joshua 10:29"
+ },
+ {
+  "id": "joshua-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was Eglon taken?",
+  "choices": [
+   "After a siege of years",
+   "By treaty",
+   "On that very day",
+   "On the second day"
+  ],
+  "answer": 2,
+  "explanation": "They took it on that day, and smote it with the edge of the sword.",
+  "ref": "Joshua 10:35"
+ },
+ {
+  "id": "joshua-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who went up with Joshua from Eglon to Hebron?",
+  "choices": [
+   "The Gibeonites",
+   "All Israel",
+   "The priests",
+   "Caleb"
+  ],
+  "answer": 1,
+  "explanation": "Joshua went up from Eglon, and all Israel with him, unto Hebron.",
+  "ref": "Joshua 10:36"
+ },
+ {
+  "id": "joshua-10-h-14",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "To which camp did Joshua return after the conquests?",
+  "choices": [
+   "Makkedah",
+   "Gilgal",
+   "Gibeon",
+   "Libnah"
+  ],
+  "answer": 1,
+  "explanation": "Joshua returned, and all Israel with him, unto the camp to Gilgal.",
+  "ref": "Joshua 10:43"
+ },
+ {
+  "id": "joshua-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Joshua take all these kings at one time?",
+  "choices": [
+   "The LORD God of Israel fought for Israel",
+   "The kings fled",
+   "He had more men",
+   "It was winter"
+  ],
+  "answer": 0,
+  "explanation": "All these kings did Joshua take at one time, because the LORD God of Israel fought for Israel.",
+  "ref": "Joshua 10:42"
+ },
+ {
   "id": "old-joshua-11-1",
   "chapter": 11,
   "level": "beginner",
