@@ -15216,6 +15216,646 @@
   "ref": "Numbers 22:35"
  },
  {
+  "id": "numbers-22-e-01",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Israel pitch their tents at the start of the chapter?",
+  "choices": [
+   "On Mount Hor",
+   "In the plains of Moab by Jericho",
+   "By the river Arnon",
+   "In the valley of Zared"
+  ],
+  "answer": 1,
+  "explanation": "Israel pitched in the plains of Moab on this side Jordan by Jericho.",
+  "ref": "Numbers 22:1"
+ },
+ {
+  "id": "numbers-22-e-02",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son was Balak?",
+  "choices": [
+   "Beor's",
+   "Zippor's",
+   "Sihon's",
+   "Reuel's"
+  ],
+  "answer": 1,
+  "explanation": "Balak the son of Zippor was king of the Moabites at that time.",
+  "ref": "Numbers 22:2–4"
+ },
+ {
+  "id": "numbers-22-e-03",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Moab feel about Israel?",
+  "choices": [
+   "Full of pity",
+   "Sore afraid",
+   "Ready to welcome them",
+   "Proud and unafraid"
+  ],
+  "answer": 1,
+  "explanation": "Moab was sore afraid of the people, because they were many.",
+  "ref": "Numbers 22:3"
+ },
+ {
+  "id": "numbers-22-e-04",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Balak send messengers to?",
+  "choices": [
+   "Eleazar the priest",
+   "Balaam the son of Beor",
+   "Jethro of Midian",
+   "Elihu the son of Barachel"
+  ],
+  "answer": 1,
+  "explanation": "He sent messengers unto Balaam the son of Beor to Pethor.",
+  "ref": "Numbers 22:5"
+ },
+ {
+  "id": "numbers-22-e-05",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balak want Balaam to do to Israel?",
+  "choices": [
+   "Bless them",
+   "Curse them",
+   "Count them",
+   "Feed them"
+  ],
+  "answer": 1,
+  "explanation": "Come now therefore, I pray thee, curse me this people.",
+  "ref": "Numbers 22:6"
+ },
+ {
+  "id": "numbers-22-e-06",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balaam saddle to go with the princes of Moab?",
+  "choices": [
+   "His camel",
+   "His ass",
+   "His horse",
+   "His mule"
+  ],
+  "answer": 1,
+  "explanation": "Balaam rose up in the morning, and saddled his ass.",
+  "ref": "Numbers 22:21"
+ },
+ {
+  "id": "numbers-22-e-07",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stood in the way with a sword drawn in his hand?",
+  "choices": [
+   "Balak",
+   "The angel of the LORD",
+   "An Amorite king",
+   "A Midianite elder"
+  ],
+  "answer": 1,
+  "explanation": "The ass saw the angel of the LORD standing in the way, and his sword drawn in his hand.",
+  "ref": "Numbers 22:23"
+ },
+ {
+  "id": "numbers-22-e-08",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balaam do when the ass turned aside into the field?",
+  "choices": [
+   "Dismounted and prayed",
+   "Smote her",
+   "Turned back home",
+   "Called his servants"
+  ],
+  "answer": 1,
+  "explanation": "The ass went into the field: and Balaam smote the ass, to turn her into the way.",
+  "ref": "Numbers 22:23"
+ },
+ {
+  "id": "numbers-22-e-09",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balaam do when the LORD opened his eyes and he saw the angel?",
+  "choices": [
+   "Ran from the road",
+   "Bowed down and fell flat on his face",
+   "Drew his own sword",
+   "Rode on past"
+  ],
+  "answer": 1,
+  "explanation": "He bowed down his head, and fell flat on his face.",
+  "ref": "Numbers 22:31"
+ },
+ {
+  "id": "numbers-22-e-10",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balaam say to the angel after he was rebuked?",
+  "choices": [
+   "I was not told",
+   "I have sinned",
+   "Let me go home",
+   "I will curse them"
+  ],
+  "answer": 1,
+  "explanation": "Balaam said unto the angel of the LORD, I have sinned.",
+  "ref": "Numbers 22:34"
+ },
+ {
+  "id": "numbers-22-m-01",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moab say Israel would do, like an ox?",
+  "choices": [
+   "Trample the fields",
+   "Drink every well",
+   "Plough the land",
+   "Lick up all around them like grass"
+  ],
+  "answer": 3,
+  "explanation": "Now shall this company lick up all that are round about us, as the ox licketh up the grass of the field.",
+  "ref": "Numbers 22:4"
+ },
+ {
+  "id": "numbers-22-m-02",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did Moab speak, along with Balak, about Israel?",
+  "choices": [
+   "The elders of Edom",
+   "The elders of Ammon",
+   "The priests of Baal",
+   "The elders of Midian"
+  ],
+  "answer": 3,
+  "explanation": "Moab said unto the elders of Midian, Now shall this company lick up all that are round about us.",
+  "ref": "Numbers 22:4"
+ },
+ {
+  "id": "numbers-22-m-03",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the elders carry in their hand to Balaam?",
+  "choices": [
+   "Jars of oil",
+   "Bags of wheat",
+   "Gifts of oxen",
+   "The rewards of divination"
+  ],
+  "answer": 3,
+  "explanation": "The elders of Moab and Midian departed with the rewards of divination in their hand.",
+  "ref": "Numbers 22:7"
+ },
+ {
+  "id": "numbers-22-m-04",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balak say about the one Balaam blesses?",
+  "choices": [
+   "He is safe from Moab",
+   "He is cast out",
+   "He is silent",
+   "He is blessed"
+  ],
+  "answer": 3,
+  "explanation": "I wot that he whom thou blessest is blessed, and he whom thou cursest is cursed.",
+  "ref": "Numbers 22:6"
+ },
+ {
+  "id": "numbers-22-m-05",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question did God ask Balaam in the night?",
+  "choices": [
+   "Why have you come to Moab?",
+   "Who sent you to Pethor?",
+   "Where is Balak?",
+   "What men are these with thee?"
+  ],
+  "answer": 3,
+  "explanation": "God came unto Balaam, and said, What men are these with thee?",
+  "ref": "Numbers 22:9"
+ },
+ {
+  "id": "numbers-22-m-06",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did God tell Balaam not to curse the people?",
+  "choices": [
+   "They are too many",
+   "They are Midian's friends",
+   "They are far away",
+   "They are blessed"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not curse the people: for they are blessed.",
+  "ref": "Numbers 22:12"
+ },
+ {
+  "id": "numbers-22-m-07",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam tell Balak's princes the next morning?",
+  "choices": [
+   "Come back at harvest",
+   "Bring more gold",
+   "I will go at night",
+   "The LORD refuseth to give me leave to go"
+  ],
+  "answer": 3,
+  "explanation": "Get you into your land: for the LORD refuseth to give me leave to go with you.",
+  "ref": "Numbers 22:13"
+ },
+ {
+  "id": "numbers-22-m-08",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balak promise Balaam in his second message?",
+  "choices": [
+   "A city in Moab",
+   "Half his kingdom",
+   "A chariot",
+   "Very great honour"
+  ],
+  "answer": 3,
+  "explanation": "I will promote thee unto very great honour, and I will do whatsoever thou sayest.",
+  "ref": "Numbers 22:17"
+ },
+ {
+  "id": "numbers-22-m-09",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam say about a house full of silver and gold?",
+  "choices": [
+   "He would gladly take it",
+   "He would send it to Israel",
+   "He would share it with Balak",
+   "He still could not go beyond the word of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "If Balak would give me his house full of silver and gold, I cannot go beyond the word of the LORD my God.",
+  "ref": "Numbers 22:18"
+ },
+ {
+  "id": "numbers-22-m-10",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to Balaam's foot when the ass pressed against the wall?",
+  "choices": [
+   "It was cut",
+   "It was bound",
+   "It was healed",
+   "It was crushed"
+  ],
+  "answer": 3,
+  "explanation": "She thrust herself unto the wall, and crushed Balaam's foot against the wall.",
+  "ref": "Numbers 22:25"
+ },
+ {
+  "id": "numbers-22-m-11",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the ass do in the narrow place?",
+  "choices": [
+   "Ran into the field",
+   "Bit Balaam",
+   "Turned back",
+   "Fell down under Balaam"
+  ],
+  "answer": 3,
+  "explanation": "When the ass saw the angel of the LORD, she fell down under Balaam.",
+  "ref": "Numbers 22:27"
+ },
+ {
+  "id": "numbers-22-m-12",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam use to strike the ass the third time?",
+  "choices": [
+   "A sword",
+   "A rod of brass",
+   "A whip",
+   "A staff"
+  ],
+  "answer": 3,
+  "explanation": "Balaam's anger was kindled, and he smote the ass with a staff.",
+  "ref": "Numbers 22:27"
+ },
+ {
+  "id": "numbers-22-m-13",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam say he would do to the ass if he had a sword?",
+  "choices": [
+   "Sell her",
+   "Set her free",
+   "Ride her home",
+   "Kill her"
+  ],
+  "answer": 3,
+  "explanation": "I would there were a sword in mine hand, for now would I kill thee.",
+  "ref": "Numbers 22:29"
+ },
+ {
+  "id": "numbers-22-m-14",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel say would have happened if the ass had not turned?",
+  "choices": [
+   "He would have struck her dumb",
+   "He would have let both pass",
+   "He would have blinded Balaam",
+   "He would have slain Balaam and saved her alive"
+  ],
+  "answer": 3,
+  "explanation": "Unless she had turned from me, surely now also I had slain thee, and saved her alive.",
+  "ref": "Numbers 22:33"
+ },
+ {
+  "id": "numbers-22-m-15",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balak offer when Balaam arrived?",
+  "choices": [
+   "Gold and silver",
+   "Wine and bread",
+   "Doves and goats",
+   "Oxen and sheep"
+  ],
+  "answer": 3,
+  "explanation": "Balak offered oxen and sheep, and sent to Balaam, and to the princes that were with him.",
+  "ref": "Numbers 22:40"
+ },
+ {
+  "id": "numbers-22-h-01",
+  "chapter": 22,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Balaam live?",
+  "choices": [
+   "Pethor",
+   "Heshbon",
+   "Edrei",
+   "Kirjath-huzoth"
+  ],
+  "answer": 0,
+  "explanation": "Balak sent messengers unto Balaam the son of Beor to Pethor.",
+  "ref": "Numbers 22:5"
+ },
+ {
+  "id": "numbers-22-h-02",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many servants were with Balaam on his ass?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "None"
+  ],
+  "answer": 0,
+  "explanation": "Now he was riding upon his ass, and his two servants were with him.",
+  "ref": "Numbers 22:22"
+ },
+ {
+  "id": "numbers-22-h-03",
+  "chapter": 22,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the angel stand the second time?",
+  "choices": [
+   "In a path of the vineyards with a wall on each side",
+   "On the top of a hill",
+   "By a river bank",
+   "At the gate of a city"
+  ],
+  "answer": 0,
+  "explanation": "The angel of the LORD stood in a path of the vineyards, a wall being on this side, and a wall on that side.",
+  "ref": "Numbers 22:24"
+ },
+ {
+  "id": "numbers-22-h-04",
+  "chapter": 22,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the angel stand the third time?",
+  "choices": [
+   "In a narrow place with no way to turn",
+   "Under a great tree",
+   "At a ford of the river",
+   "On the plain of Moab"
+  ],
+  "answer": 0,
+  "explanation": "He stood in a narrow place, where was no way to turn either to the right hand or to the left.",
+  "ref": "Numbers 22:26"
+ },
+ {
+  "id": "numbers-22-h-05",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times did the ass say Balaam had smitten her?",
+  "choices": [
+   "Three times",
+   "Twice",
+   "Seven times",
+   "Ten times"
+  ],
+  "answer": 0,
+  "explanation": "What have I done unto thee, that thou hast smitten me these three times?",
+  "ref": "Numbers 22:28"
+ },
+ {
+  "id": "numbers-22-h-06",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Balaam answer when the ass asked if she had ever done so before?",
+  "choices": [
+   "Nay",
+   "Yes, often",
+   "I do not know",
+   "Only once"
+  ],
+  "answer": 0,
+  "explanation": "Was I ever wont to do so unto thee? And he said, Nay.",
+  "ref": "Numbers 22:30"
+ },
+ {
+  "id": "numbers-22-h-07",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the angel say was perverse before him?",
+  "choices": [
+   "Balaam's way",
+   "Balak's offer",
+   "The ass's stubbornness",
+   "Moab's gifts"
+  ],
+  "answer": 0,
+  "explanation": "I went out to withstand thee, because thy way is perverse before me.",
+  "ref": "Numbers 22:32"
+ },
+ {
+  "id": "numbers-22-h-08",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kindled God's anger after Balaam went with the princes?",
+  "choices": [
+   "Because he went",
+   "Because he took gold",
+   "Because he saddled the ass",
+   "Because he slept at Pethor"
+  ],
+  "answer": 0,
+  "explanation": "God's anger was kindled because he went.",
+  "ref": "Numbers 22:22"
+ },
+ {
+  "id": "numbers-22-h-09",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God tell Balaam at night about going with the men?",
+  "choices": [
+   "If they come to call thee, rise up and go with them",
+   "Never go with them",
+   "Go only after seven days",
+   "Send the ass alone"
+  ],
+  "answer": 0,
+  "explanation": "If the men come to call thee, rise up, and go with them; but yet the word which I shall say unto thee, that shalt thou do.",
+  "ref": "Numbers 22:20"
+ },
+ {
+  "id": "numbers-22-h-10",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "What kind of princes did Balak send the second time?",
+  "choices": [
+   "More, and more honourable than the first",
+   "Fewer and older",
+   "Armed with swords",
+   "Princes of Midian"
+  ],
+  "answer": 0,
+  "explanation": "Balak sent yet again princes, more, and more honourable than they.",
+  "ref": "Numbers 22:15"
+ },
+ {
+  "id": "numbers-22-h-11",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Balaam tell the first princes to do for the night?",
+  "choices": [
+   "Lodge there until he brought word from the LORD",
+   "Return to Balak at once",
+   "Camp with Israel",
+   "Leave their gifts and go"
+  ],
+  "answer": 0,
+  "explanation": "Lodge here this night, and I will bring you word again, as the LORD shall speak unto me.",
+  "ref": "Numbers 22:8"
+ },
+ {
+  "id": "numbers-22-h-12",
+  "chapter": 22,
+  "level": "hard",
+  "category": "place",
+  "question": "To which city did Balak and Balaam come together?",
+  "choices": [
+   "Kirjath-huzoth",
+   "Pethor",
+   "Heshbon",
+   "Jahaz"
+  ],
+  "answer": 0,
+  "explanation": "Balaam went with Balak, and they came unto Kirjath-huzoth.",
+  "ref": "Numbers 22:39"
+ },
+ {
+  "id": "numbers-22-h-13",
+  "chapter": 22,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Balak take Balaam on the morrow?",
+  "choices": [
+   "Into the high places of Baal",
+   "Up Mount Hor",
+   "To the plains of Jericho",
+   "To the river Arnon"
+  ],
+  "answer": 0,
+  "explanation": "Balak took Balaam, and brought him up into the high places of Baal.",
+  "ref": "Numbers 22:41"
+ },
+ {
+  "id": "numbers-22-h-14",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What could Balaam see from the high places of Baal?",
+  "choices": [
+   "The utmost part of the people",
+   "All of Moab's cities",
+   "The Jordan river",
+   "The land of Midian"
+  ],
+  "answer": 0,
+  "explanation": "That thence he might see the utmost part of the people.",
+  "ref": "Numbers 22:41"
+ },
+ {
+  "id": "numbers-22-h-15",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Balaam say about his power to speak?",
+  "choices": [
+   "He could only speak the word God put in his mouth",
+   "He could speak whatever he chose",
+   "He could speak curses for a price",
+   "He had no word at all"
+  ],
+  "answer": 0,
+  "explanation": "The word that God putteth in my mouth, that shall I speak.",
+  "ref": "Numbers 22:38"
+ },
+ {
   "id": "old-numbers-23-1",
   "chapter": 23,
   "level": "beginner",
