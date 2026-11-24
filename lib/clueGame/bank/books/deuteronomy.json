@@ -21008,6 +21008,646 @@
   "ref": "Deuteronomy 30:7"
  },
  {
+  "id": "deuteronomy-30-e-01",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the LORD have on Israel when they returned to Him?",
+  "choices": [
+   "Compassion",
+   "Anger",
+   "Silence",
+   "Vengeance"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God will turn thy captivity, and have compassion upon thee.",
+  "ref": "Deuteronomy 30:3"
+ },
+ {
+  "id": "deuteronomy-30-e-02",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who would gather Israel from all the nations?",
+  "choices": [
+   "The LORD their God",
+   "The priests",
+   "Joshua",
+   "Their kings"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God... will return and gather thee from all the nations.",
+  "ref": "Deuteronomy 30:3"
+ },
+ {
+  "id": "deuteronomy-30-e-03",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "place",
+  "question": "Into what land would the LORD bring them back?",
+  "choices": [
+   "The land their fathers possessed",
+   "The land of Moab",
+   "The land of Egypt",
+   "The land of the Philistines"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God will bring thee into the land which thy fathers possessed.",
+  "ref": "Deuteronomy 30:5"
+ },
+ {
+  "id": "deuteronomy-30-e-04",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the LORD circumcise so Israel could love Him?",
+  "choices": [
+   "Their heart",
+   "Their hands",
+   "Their lips",
+   "Their sons only"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God will circumcise thine heart.",
+  "ref": "Deuteronomy 30:6"
+ },
+ {
+  "id": "deuteronomy-30-e-05",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses tell Israel to choose?",
+  "choices": [
+   "Life",
+   "Gold",
+   "Rest",
+   "A king"
+  ],
+  "answer": 0,
+  "explanation": "Therefore choose life, that both thou and thy seed may live.",
+  "ref": "Deuteronomy 30:19"
+ },
+ {
+  "id": "deuteronomy-30-e-06",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where is the word, according to Moses, very nigh?",
+  "choices": [
+   "In thy mouth and in thy heart",
+   "In the ark",
+   "In the tabernacle",
+   "On the mountain"
+  ],
+  "answer": 0,
+  "explanation": "The word is very nigh unto thee, in thy mouth, and in thy heart, that thou mayest do it.",
+  "ref": "Deuteronomy 30:14"
+ },
+ {
+  "id": "deuteronomy-30-e-07",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which three fathers had the LORD sworn to give the land to?",
+  "choices": [
+   "Abraham, Isaac and Jacob",
+   "Noah, Shem and Abraham",
+   "Isaac, Jacob and Joseph",
+   "Abraham, Jacob and Moses"
+  ],
+  "answer": 0,
+  "explanation": "The land which the LORD sware unto thy fathers, to Abraham, to Isaac, and to Jacob.",
+  "ref": "Deuteronomy 30:20"
+ },
+ {
+  "id": "deuteronomy-30-e-08",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would happen to Israel if they turned away to worship other gods?",
+  "choices": [
+   "They would surely perish",
+   "They would wander",
+   "They would be forgiven",
+   "They would be priests"
+  ],
+  "answer": 0,
+  "explanation": "I denounce unto you this day, that ye shall surely perish.",
+  "ref": "Deuteronomy 30:18"
+ },
+ {
+  "id": "deuteronomy-30-e-09",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With how much of themselves were they to obey the LORD?",
+  "choices": [
+   "All their heart and soul",
+   "Their words only",
+   "Their strength only",
+   "Their offerings"
+  ],
+  "answer": 0,
+  "explanation": "Shalt obey his voice... with all thine heart, and with all thy soul.",
+  "ref": "Deuteronomy 30:2"
+ },
+ {
+  "id": "deuteronomy-30-e-10",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "Over whom would the LORD again rejoice for good?",
+  "choices": [
+   "Israel",
+   "The Egyptians",
+   "The nations",
+   "The stranger only"
+  ],
+  "answer": 0,
+  "explanation": "The LORD will again rejoice over thee for good, as he rejoiced over thy fathers.",
+  "ref": "Deuteronomy 30:9"
+ },
+ {
+  "id": "deuteronomy-30-m-01",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Israel call to mind among the nations?",
+  "choices": [
+   "The feasts and the sabbaths",
+   "The names of their fathers",
+   "The blessing and the curse",
+   "The song of Moses"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt call them to mind among all the nations, whither the LORD thy God hath driven thee.",
+  "ref": "Deuteronomy 30:1"
+ },
+ {
+  "id": "deuteronomy-30-m-02",
+  "chapter": 30,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was to obey the LORD's voice along with Israel?",
+  "choices": [
+   "The stranger",
+   "The priests only",
+   "Their children",
+   "The elders only"
+  ],
+  "answer": 2,
+  "explanation": "Shalt obey his voice... thou and thy children, with all thine heart, and with all thy soul.",
+  "ref": "Deuteronomy 30:2"
+ },
+ {
+  "id": "deuteronomy-30-m-03",
+  "chapter": 30,
+  "level": "medium",
+  "category": "place",
+  "question": "From where would the LORD fetch any who were driven out?",
+  "choices": [
+   "The ends of the sea",
+   "The mountains of Moab",
+   "The outmost parts of heaven",
+   "The cities of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "If any of thine be driven out unto the outmost parts of heaven, from thence will the LORD thy God gather thee.",
+  "ref": "Deuteronomy 30:4"
+ },
+ {
+  "id": "deuteronomy-30-m-04",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD do for Israel in the land, beyond what He did for their fathers?",
+  "choices": [
+   "Give them a king",
+   "Give them a temple",
+   "Multiply them above their fathers",
+   "Make them one tribe"
+  ],
+  "answer": 2,
+  "explanation": "He will do thee good, and multiply thee above thy fathers.",
+  "ref": "Deuteronomy 30:5"
+ },
+ {
+  "id": "deuteronomy-30-m-05",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the LORD circumcise their heart?",
+  "choices": [
+   "To keep them from war",
+   "To make them priests",
+   "To love Him with all heart and soul that they may live",
+   "To give them rest"
+  ],
+  "answer": 2,
+  "explanation": "To love the LORD thy God with all thine heart, and with all thy soul, that thou mayest live.",
+  "ref": "Deuteronomy 30:6"
+ },
+ {
+  "id": "deuteronomy-30-m-06",
+  "chapter": 30,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were His commandments and statutes written?",
+  "choices": [
+   "On the stones of Ebal",
+   "On the ark",
+   "In the book of the law",
+   "On the tent poles"
+  ],
+  "answer": 2,
+  "explanation": "His commandments and his statutes which are written in this book of the law.",
+  "ref": "Deuteronomy 30:10"
+ },
+ {
+  "id": "deuteronomy-30-m-07",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Moses describe the commandment?",
+  "choices": [
+   "Hard and heavy",
+   "Known only to the priests",
+   "Not hidden, neither far off",
+   "Written in secret"
+  ],
+  "answer": 2,
+  "explanation": "For this commandment which I command thee this day, it is not hidden from thee, neither is it far off.",
+  "ref": "Deuteronomy 30:11"
+ },
+ {
+  "id": "deuteronomy-30-m-08",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to those who loved the LORD and walked in His ways?",
+  "choices": [
+   "They would rule the nations",
+   "They would never be sick",
+   "They would live and multiply",
+   "They would see Egypt again"
+  ],
+  "answer": 2,
+  "explanation": "That thou mayest live and multiply: and the LORD thy God shall bless thee.",
+  "ref": "Deuteronomy 30:16"
+ },
+ {
+  "id": "deuteronomy-30-m-09",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen if the heart turned away and would not hear?",
+  "choices": [
+   "They would be sent to Egypt",
+   "They would lose the ark",
+   "They would be drawn away to worship other gods",
+   "They would be blind"
+  ],
+  "answer": 2,
+  "explanation": "But if thine heart turn away... but shalt be drawn away, and worship other gods, and serve them.",
+  "ref": "Deuteronomy 30:17"
+ },
+ {
+  "id": "deuteronomy-30-m-10",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Israel not do in the land if they turned away?",
+  "choices": [
+   "Build houses",
+   "Sow fields",
+   "Prolong their days",
+   "Keep the feasts"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall not prolong your days upon the land.",
+  "ref": "Deuteronomy 30:18"
+ },
+ {
+  "id": "deuteronomy-30-m-11",
+  "chapter": 30,
+  "level": "medium",
+  "category": "place",
+  "question": "Which river were they about to pass over to possess the land?",
+  "choices": [
+   "Arnon",
+   "Jabbok",
+   "Jordan",
+   "Nile"
+  ],
+  "answer": 2,
+  "explanation": "The land, whither thou passest over Jordan to go to possess it.",
+  "ref": "Deuteronomy 30:18"
+ },
+ {
+  "id": "deuteronomy-30-m-12",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why should Israel choose life?",
+  "choices": [
+   "That they may have a king",
+   "That they may leave Moab",
+   "That both they and their seed may live",
+   "That they may be rich"
+  ],
+  "answer": 2,
+  "explanation": "Therefore choose life, that both thou and thy seed may live.",
+  "ref": "Deuteronomy 30:19"
+ },
+ {
+  "id": "deuteronomy-30-m-13",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the LORD is to Israel?",
+  "choices": [
+   "Their shield and their rock",
+   "Their king and judge",
+   "Their life and the length of their days",
+   "Their rest and their light"
+  ],
+  "answer": 2,
+  "explanation": "For he is thy life, and the length of thy days.",
+  "ref": "Deuteronomy 30:20"
+ },
+ {
+  "id": "deuteronomy-30-m-14",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel to do to the LORD, besides loving and obeying Him?",
+  "choices": [
+   "Build for Him",
+   "Fear the stranger",
+   "Cleave unto Him",
+   "Hide from Him"
+  ],
+  "answer": 2,
+  "explanation": "That thou mayest love the LORD thy God... obey his voice... cleave unto him.",
+  "ref": "Deuteronomy 30:20"
+ },
+ {
+  "id": "deuteronomy-30-m-15",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD do in the land whither they went, if they loved and obeyed Him?",
+  "choices": [
+   "Judge them",
+   "Test them",
+   "Bless them",
+   "Number them"
+  ],
+  "answer": 2,
+  "explanation": "The LORD thy God shall bless thee in the land whither thou goest to possess it.",
+  "ref": "Deuteronomy 30:16"
+ },
+ {
+  "id": "deuteronomy-30-h-01",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When would Israel call the blessing and the curse to mind?",
+  "choices": [
+   "When the king was crowned",
+   "In the year of release",
+   "At the feast of tabernacles",
+   "When driven among all the nations"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt call them to mind among all the nations, whither the LORD thy God hath driven thee.",
+  "ref": "Deuteronomy 30:1"
+ },
+ {
+  "id": "deuteronomy-30-h-02",
+  "chapter": 30,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose heart would the LORD circumcise along with theirs?",
+  "choices": [
+   "Their stranger's",
+   "Their servants'",
+   "Their priests'",
+   "Their seed's"
+  ],
+  "answer": 3,
+  "explanation": "The LORD thy God will circumcise thine heart, and the heart of thy seed.",
+  "ref": "Deuteronomy 30:6"
+ },
+ {
+  "id": "deuteronomy-30-h-03",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Israel do when they returned and obeyed the LORD's voice?",
+  "choices": [
+   "Build an altar at Ebal",
+   "Offer a hundred bullocks",
+   "Number the tribes",
+   "Do all His commandments"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt return and obey the voice of the LORD, and do all his commandments.",
+  "ref": "Deuteronomy 30:8"
+ },
+ {
+  "id": "deuteronomy-30-h-04",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these was Israel promised to be made plenteous in?",
+  "choices": [
+   "The silver of the stranger",
+   "The towers of their cities",
+   "The robes of the priests",
+   "The fruit of their cattle"
+  ],
+  "answer": 3,
+  "explanation": "Plenteous in every work of thine hand... in the fruit of thy cattle.",
+  "ref": "Deuteronomy 30:9"
+ },
+ {
+  "id": "deuteronomy-30-h-05",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the commandment not require, as Moses said about heaven?",
+  "choices": [
+   "That the priests carry it",
+   "That the king read it",
+   "That a prophet declare it",
+   "That someone go up to bring it down"
+  ],
+  "answer": 3,
+  "explanation": "It is not in heaven, that thou shouldest say, Who shall go up for us to heaven, and bring it unto us?",
+  "ref": "Deuteronomy 30:12"
+ },
+ {
+  "id": "deuteronomy-30-h-06",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the commandment not require, as Moses said about the sea?",
+  "choices": [
+   "That someone sail to Egypt",
+   "That someone climb Mount Sinai",
+   "That someone cross Jordan",
+   "That someone go over the sea to bring it"
+  ],
+  "answer": 3,
+  "explanation": "Neither is it beyond the sea... Who shall go over the sea for us, and bring it unto us?",
+  "ref": "Deuteronomy 30:13"
+ },
+ {
+  "id": "deuteronomy-30-h-07",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say was very nigh unto them?",
+  "choices": [
+   "The land",
+   "The enemy",
+   "The ark",
+   "The word"
+  ],
+  "answer": 3,
+  "explanation": "But the word is very nigh unto thee.",
+  "ref": "Deuteronomy 30:14"
+ },
+ {
+  "id": "deuteronomy-30-h-08",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses set before them alongside death?",
+  "choices": [
+   "Hunger",
+   "Sorrow",
+   "Silence",
+   "Evil"
+  ],
+  "answer": 3,
+  "explanation": "I have set before thee this day life and good, and death and evil.",
+  "ref": "Deuteronomy 30:15"
+ },
+ {
+  "id": "deuteronomy-30-h-09",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the first thing Moses commanded Israel to do that day?",
+  "choices": [
+   "Keep the Sabbath",
+   "Pass over Jordan",
+   "Build the altar",
+   "Love the LORD their God"
+  ],
+  "answer": 3,
+  "explanation": "I command thee this day to love the LORD thy God, to walk in his ways.",
+  "ref": "Deuteronomy 30:16"
+ },
+ {
+  "id": "deuteronomy-30-h-10",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Israel to do with the commandments and statutes written in the book of the law?",
+  "choices": [
+   "Hide them",
+   "Teach only the elders",
+   "Carry them to Egypt",
+   "Keep them"
+  ],
+  "answer": 3,
+  "explanation": "Hearken unto the voice of the LORD thy God, to keep his commandments and his statutes which are written in this book of the law.",
+  "ref": "Deuteronomy 30:10"
+ },
+ {
+  "id": "deuteronomy-30-h-11",
+  "chapter": 30,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom must Israel turn with all their heart and soul?",
+  "choices": [
+   "The priests",
+   "Their fathers' God of Egypt",
+   "The elders",
+   "The LORD their God"
+  ],
+  "answer": 3,
+  "explanation": "If thou turn unto the LORD thy God with all thine heart, and with all thy soul.",
+  "ref": "Deuteronomy 30:10"
+ },
+ {
+  "id": "deuteronomy-30-h-12",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was the word in their mouth and heart?",
+  "choices": [
+   "That they may sing it",
+   "That they may hide it",
+   "That they may teach the nations",
+   "That they may do it"
+  ],
+  "answer": 3,
+  "explanation": "The word is very nigh unto thee, in thy mouth, and in thy heart, that thou mayest do it.",
+  "ref": "Deuteronomy 30:14"
+ },
+ {
+  "id": "deuteronomy-30-h-13",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses set before Israel besides life and death?",
+  "choices": [
+   "Peace and war",
+   "Rain and drought",
+   "Gold and silver",
+   "Blessing and cursing"
+  ],
+  "answer": 3,
+  "explanation": "I have set before you life and death, blessing and cursing.",
+  "ref": "Deuteronomy 30:19"
+ },
+ {
+  "id": "deuteronomy-30-h-14",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose ways were Israel to walk in?",
+  "choices": [
+   "Their fathers' ways",
+   "The nations' ways",
+   "The Levites' ways",
+   "The LORD's ways"
+  ],
+  "answer": 3,
+  "explanation": "To love the LORD thy God, to walk in his ways.",
+  "ref": "Deuteronomy 30:16"
+ },
+ {
+  "id": "deuteronomy-30-h-15",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What might Israel do in the land the LORD sware to their fathers?",
+  "choices": [
+   "Rest from war",
+   "Build a kingdom",
+   "Hide in it",
+   "Dwell in it"
+  ],
+  "answer": 3,
+  "explanation": "That thou mayest dwell in the land which the LORD sware unto thy fathers.",
+  "ref": "Deuteronomy 30:20"
+ },
+ {
   "id": "old-deuteronomy-31-1",
   "chapter": 31,
   "level": "beginner",
