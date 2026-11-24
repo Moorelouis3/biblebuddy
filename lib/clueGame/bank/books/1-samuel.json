@@ -12308,7 +12308,7 @@
   "chapter": 18,
   "level": "beginner",
   "category": "keyword",
-  "question": "How many times did Saul cast a javelin at David in this chapter?",
+  "question": "How many times did David avoid out of Saul's presence when Saul cast the javelin?",
   "choices": [
    "Once",
    "Three times",
@@ -12316,7 +12316,7 @@
    "Seven times"
   ],
   "answer": 2,
-  "explanation": "Saul cast the javelin at David twice.",
+  "explanation": "Saul cast the javelin, and David avoided out of his presence twice.",
   "ref": "1 Samuel 18:10–11"
  },
  {
@@ -12334,6 +12334,646 @@
   "answer": 1,
   "explanation": "David married Michal after fulfilling Saul's demand.",
   "ref": "1 Samuel 18:27"
+ },
+ {
+  "id": "1-samuel-18-e-01",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jonathan and David make together?",
+  "choices": [
+   "A treaty with Philistia",
+   "A covenant",
+   "A sacrifice",
+   "A plan of escape"
+  ],
+  "answer": 1,
+  "explanation": "Jonathan and David made a covenant, because he loved him as his own soul.",
+  "ref": "1 Samuel 18:3"
+ },
+ {
+  "id": "1-samuel-18-e-02",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came out of the cities singing and dancing to meet Saul?",
+  "choices": [
+   "The priests",
+   "The women",
+   "The elders",
+   "The soldiers"
+  ],
+  "answer": 1,
+  "explanation": "The women came out of all cities of Israel, singing and dancing, to meet king Saul.",
+  "ref": "1 Samuel 18:6"
+ },
+ {
+  "id": "1-samuel-18-e-03",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was in Saul's hand when the evil spirit came upon him?",
+  "choices": [
+   "A sword",
+   "A javelin",
+   "A harp",
+   "A sling"
+  ],
+  "answer": 1,
+  "explanation": "The evil spirit from God came upon Saul, and there was a javelin in Saul's hand.",
+  "ref": "1 Samuel 18:10"
+ },
+ {
+  "id": "1-samuel-18-e-04",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of Saul's daughters did he first offer to David?",
+  "choices": [
+   "Michal",
+   "Merab",
+   "Rizpah",
+   "Abigail"
+  ],
+  "answer": 1,
+  "explanation": "Saul said, Behold my elder daughter Merab, her will I give thee to wife.",
+  "ref": "1 Samuel 18:17"
+ },
+ {
+  "id": "1-samuel-18-e-05",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of Saul's daughters loved David?",
+  "choices": [
+   "Merab",
+   "Michal",
+   "Rizpah",
+   "Ahinoam"
+  ],
+  "answer": 1,
+  "explanation": "Michal Saul's daughter loved David.",
+  "ref": "1 Samuel 18:20"
+ },
+ {
+  "id": "1-samuel-18-e-06",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Saul set David over?",
+  "choices": [
+   "The priests",
+   "The men of war",
+   "The singers",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Saul set him over the men of war, and he was accepted in the sight of all the people.",
+  "ref": "1 Samuel 18:5"
+ },
+ {
+  "id": "1-samuel-18-e-07",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who loved David because he went out and came in before them?",
+  "choices": [
+   "Only the priests",
+   "All Israel and Judah",
+   "Only the Philistines",
+   "Only Saul's servants"
+  ],
+  "answer": 1,
+  "explanation": "All Israel and Judah loved David, because he went out and came in before them.",
+  "ref": "1 Samuel 18:16"
+ },
+ {
+  "id": "1-samuel-18-e-08",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul become to David continually?",
+  "choices": [
+   "His teacher",
+   "His enemy",
+   "His friend",
+   "His priest"
+  ],
+  "answer": 1,
+  "explanation": "Saul was yet the more afraid of David; and Saul became David's enemy continually.",
+  "ref": "1 Samuel 18:29"
+ },
+ {
+  "id": "1-samuel-18-e-09",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David behave in all his ways?",
+  "choices": [
+   "Proudly",
+   "Wisely",
+   "Fearfully",
+   "Carelessly"
+  ],
+  "answer": 1,
+  "explanation": "David behaved himself wisely in all his ways; and the LORD was with him.",
+  "ref": "1 Samuel 18:14"
+ },
+ {
+  "id": "1-samuel-18-e-10",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Saul want David to fight?",
+  "choices": [
+   "The Amalekites",
+   "The Philistines",
+   "The Moabites",
+   "The Edomites"
+  ],
+  "answer": 1,
+  "explanation": "Let not mine hand be upon him, but let the hand of the Philistines be upon him.",
+  "ref": "1 Samuel 18:17"
+ },
+ {
+  "id": "1-samuel-18-m-01",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Saul keep David that day?",
+  "choices": [
+   "In the house of Jonathan",
+   "In the tent of Abner",
+   "In the valley of Elah",
+   "With him, no more going home to his father's house"
+  ],
+  "answer": 3,
+  "explanation": "Saul took him that day, and would let him go no more home to his father's house.",
+  "ref": "1 Samuel 18:2"
+ },
+ {
+  "id": "1-samuel-18-m-02",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the women play as they came to meet Saul?",
+  "choices": [
+   "Harps and cymbals",
+   "Trumpets and drums",
+   "Pipes and rams' horns",
+   "Tabrets and instruments of musick"
+  ],
+  "answer": 3,
+  "explanation": "The women came out with tabrets, with joy, and with instruments of musick.",
+  "ref": "1 Samuel 18:6"
+ },
+ {
+  "id": "1-samuel-18-m-03",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Saul react to the women's song?",
+  "choices": [
+   "He laughed",
+   "He wept",
+   "He danced",
+   "He was very wroth"
+  ],
+  "answer": 3,
+  "explanation": "Saul was very wroth, and the saying displeased him.",
+  "ref": "1 Samuel 18:8"
+ },
+ {
+  "id": "1-samuel-18-m-04",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul do to David from that day forward?",
+  "choices": [
+   "Honoured him",
+   "Sent him away",
+   "Taught him",
+   "Eyed him"
+  ],
+  "answer": 3,
+  "explanation": "Saul eyed David from that day and forward.",
+  "ref": "1 Samuel 18:9"
+ },
+ {
+  "id": "1-samuel-18-m-05",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the evil spirit cause Saul to do in the house?",
+  "choices": [
+   "Weep",
+   "Flee",
+   "Sleep",
+   "Prophesy"
+  ],
+  "answer": 3,
+  "explanation": "The evil spirit from God came upon Saul, and he prophesied in the midst of the house.",
+  "ref": "1 Samuel 18:10"
+ },
+ {
+  "id": "1-samuel-18-m-06",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul say when he cast the javelin?",
+  "choices": [
+   "David shall not be king",
+   "The LORD has left me",
+   "Let David depart",
+   "I will smite David even to the wall with it"
+  ],
+  "answer": 3,
+  "explanation": "Saul cast the javelin; for he said, I will smite David even to the wall with it.",
+  "ref": "1 Samuel 18:11"
+ },
+ {
+  "id": "1-samuel-18-m-07",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Saul afraid of David?",
+  "choices": [
+   "David was stronger than Saul",
+   "David had a larger army",
+   "David was a prophet",
+   "The LORD was with David and departed from Saul"
+  ],
+  "answer": 3,
+  "explanation": "Saul was afraid of David, because the LORD was with him, and was departed from Saul.",
+  "ref": "1 Samuel 18:12"
+ },
+ {
+  "id": "1-samuel-18-m-08",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul make David instead of keeping him near?",
+  "choices": [
+   "A judge",
+   "A priest",
+   "A prince of Judah",
+   "Captain over a thousand"
+  ],
+  "answer": 3,
+  "explanation": "Saul removed him from him, and made him his captain over a thousand.",
+  "ref": "1 Samuel 18:13"
+ },
+ {
+  "id": "1-samuel-18-m-09",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom was Merab given instead of David?",
+  "choices": [
+   "Abner",
+   "Jonathan",
+   "Joab",
+   "Adriel the Meholathite"
+  ],
+  "answer": 3,
+  "explanation": "Merab Saul's daughter was given unto Adriel the Meholathite to wife.",
+  "ref": "1 Samuel 18:19"
+ },
+ {
+  "id": "1-samuel-18-m-10",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Saul say he would give Michal to David?",
+  "choices": [
+   "That she might bring peace",
+   "To please Jonathan",
+   "To reward his harp playing",
+   "That she might be a snare to him"
+  ],
+  "answer": 3,
+  "explanation": "I will give him her, that she may be a snare to him, and that the hand of the Philistines may be against him.",
+  "ref": "1 Samuel 18:21"
+ },
+ {
+  "id": "1-samuel-18-m-11",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David describe himself to Saul's servants?",
+  "choices": [
+   "A mighty man of valour",
+   "A shepherd of Bethlehem",
+   "A servant of Samuel",
+   "A poor man, and lightly esteemed"
+  ],
+  "answer": 3,
+  "explanation": "Seemeth it to you a light thing to be a king's son in law, seeing that I am a poor man, and lightly esteemed?",
+  "ref": "1 Samuel 18:23"
+ },
+ {
+  "id": "1-samuel-18-m-12",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul ask David to bring as the dowry?",
+  "choices": [
+   "An hundred sheep",
+   "A hundred pieces of gold",
+   "An hundred horses",
+   "An hundred foreskins of the Philistines"
+  ],
+  "answer": 3,
+  "explanation": "The king desireth not any dowry, but an hundred foreskins of the Philistines.",
+  "ref": "1 Samuel 18:25"
+ },
+ {
+  "id": "1-samuel-18-m-13",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul know when he saw that Michal loved David?",
+  "choices": [
+   "That David would be king",
+   "That Jonathan was against him",
+   "That the Philistines were gone",
+   "That the LORD was with David"
+  ],
+  "answer": 3,
+  "explanation": "Saul saw and knew that the LORD was with David, and that Michal loved him.",
+  "ref": "1 Samuel 18:28"
+ },
+ {
+  "id": "1-samuel-18-m-14",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Saul tell his servants to speak to David?",
+  "choices": [
+   "Loudly",
+   "Before the elders",
+   "In writing",
+   "Secretly"
+  ],
+  "answer": 3,
+  "explanation": "Saul commanded his servants, Commune with David secretly.",
+  "ref": "1 Samuel 18:22"
+ },
+ {
+  "id": "1-samuel-18-m-15",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say when Saul offered him Merab?",
+  "choices": [
+   "I am ready to fight",
+   "I will ask Jonathan first",
+   "I will wait for Samuel",
+   "Who am I, that I should be son in law to the king?"
+  ],
+  "answer": 3,
+  "explanation": "David said, Who am I? and what is my life, or my father's family in Israel?",
+  "ref": "1 Samuel 18:18"
+ },
+ {
+  "id": "1-samuel-18-h-01",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "Who did Merab marry?",
+  "choices": [
+   "Adriel",
+   "Abner",
+   "Joab",
+   "Kish"
+  ],
+  "answer": 0,
+  "explanation": "She was given unto Adriel the Meholathite to wife.",
+  "ref": "1 Samuel 18:19"
+ },
+ {
+  "id": "1-samuel-18-h-02",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Philistines did David slay for the dowry?",
+  "choices": [
+   "Two hundred",
+   "One hundred",
+   "Four hundred",
+   "Six hundred"
+  ],
+  "answer": 0,
+  "explanation": "David slew of the Philistines two hundred men.",
+  "ref": "1 Samuel 18:27"
+ },
+ {
+  "id": "1-samuel-18-h-03",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul ask David to be, for Merab?",
+  "choices": [
+   "Valiant and fight the LORD'S battles",
+   "A priest and keep the ark",
+   "A judge and rule the tribes",
+   "A shepherd and feed the flock"
+  ],
+  "answer": 0,
+  "explanation": "Only be thou valiant for me, and fight the LORD'S battles.",
+  "ref": "1 Samuel 18:17"
+ },
+ {
+  "id": "1-samuel-18-h-04",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "What did Saul call Merab?",
+  "choices": [
+   "His elder daughter",
+   "His younger daughter",
+   "His only daughter",
+   "His foster daughter"
+  ],
+  "answer": 0,
+  "explanation": "Behold my elder daughter Merab, her will I give thee to wife.",
+  "ref": "1 Samuel 18:17"
+ },
+ {
+  "id": "1-samuel-18-h-05",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul say the king hath in David?",
+  "choices": [
+   "Delight",
+   "Doubt",
+   "Debt",
+   "Dread"
+  ],
+  "answer": 0,
+  "explanation": "Behold, the king hath delight in thee, and all his servants love thee.",
+  "ref": "1 Samuel 18:22"
+ },
+ {
+  "id": "1-samuel-18-h-06",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of David's name after he behaved wisely?",
+  "choices": [
+   "It was much set by",
+   "It was forgotten",
+   "It was cursed",
+   "It was hidden"
+  ],
+  "answer": 0,
+  "explanation": "David behaved himself wisely; so that his name was much set by.",
+  "ref": "1 Samuel 18:30"
+ },
+ {
+  "id": "1-samuel-18-h-07",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did David's men give the foreskins to the king?",
+  "choices": [
+   "In full tale",
+   "In small bags",
+   "At the gate",
+   "By a servant"
+  ],
+  "answer": 0,
+  "explanation": "David brought their foreskins, and they gave them in full tale to the king.",
+  "ref": "1 Samuel 18:27"
+ },
+ {
+  "id": "1-samuel-18-h-08",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "Who went with David when he slew the two hundred Philistines?",
+  "choices": [
+   "His men",
+   "Jonathan",
+   "Abner",
+   "Saul"
+  ],
+  "answer": 0,
+  "explanation": "David arose and went, he and his men, and slew of the Philistines two hundred men.",
+  "ref": "1 Samuel 18:27"
+ },
+ {
+  "id": "1-samuel-18-h-09",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "From where did the women come out to meet Saul?",
+  "choices": [
+   "All the cities of Israel",
+   "Only Gibeah",
+   "Only Bethlehem",
+   "The camp of the Philistines"
+  ],
+  "answer": 0,
+  "explanation": "The women came out of all cities of Israel, singing and dancing, to meet king Saul.",
+  "ref": "1 Samuel 18:6"
+ },
+ {
+  "id": "1-samuel-18-h-10",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul say the women had ascribed to him?",
+  "choices": [
+   "But thousands",
+   "But hundreds",
+   "Ten thousands",
+   "No praise"
+  ],
+  "answer": 0,
+  "explanation": "They have ascribed to me but thousands.",
+  "ref": "1 Samuel 18:8"
+ },
+ {
+  "id": "1-samuel-18-h-11",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "Who, besides Saul, did Saul's servants say loved David?",
+  "choices": [
+   "All the king's servants",
+   "Only the priests",
+   "The elders",
+   "The Philistines"
+  ],
+  "answer": 0,
+  "explanation": "All his servants love thee.",
+  "ref": "1 Samuel 18:22"
+ },
+ {
+  "id": "1-samuel-18-h-12",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did David play before Saul when the evil spirit came?",
+  "choices": [
+   "With his hand",
+   "With a trumpet",
+   "With his foot",
+   "With a sling"
+  ],
+  "answer": 0,
+  "explanation": "David played with his hand, as at other times.",
+  "ref": "1 Samuel 18:10"
+ },
+ {
+  "id": "1-samuel-18-h-13",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "David behaved himself more wisely than whom?",
+  "choices": [
+   "All the servants of Saul",
+   "The priests",
+   "The elders of Judah",
+   "The sons of Saul"
+  ],
+  "answer": 0,
+  "explanation": "David behaved himself more wisely than all the servants of Saul.",
+  "ref": "1 Samuel 18:30"
+ },
+ {
+  "id": "1-samuel-18-h-14",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul think to make David do by the hand of the Philistines?",
+  "choices": [
+   "Fall",
+   "Flee",
+   "Weep",
+   "Wander"
+  ],
+  "answer": 0,
+  "explanation": "Saul thought to make David fall by the hand of the Philistines.",
+  "ref": "1 Samuel 18:25"
+ },
+ {
+  "id": "1-samuel-18-h-15",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On the morrow what came upon Saul?",
+  "choices": [
+   "The evil spirit from God",
+   "A great sleep",
+   "A messenger",
+   "A fire"
+  ],
+  "answer": 0,
+  "explanation": "On the morrow the evil spirit from God came upon Saul.",
+  "ref": "1 Samuel 18:10"
  },
  {
   "id": "old-1-samuel-19-1",
