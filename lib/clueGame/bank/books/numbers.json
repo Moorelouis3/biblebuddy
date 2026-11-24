@@ -7280,6 +7280,646 @@
   "ref": "Numbers 11:34"
  },
  {
+  "id": "numbers-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What put out the fire of the LORD when the people complained?",
+  "choices": [
+   "Moses prayed to the LORD",
+   "A heavy rain",
+   "The people repented in sackcloth",
+   "Aaron's incense"
+  ],
+  "answer": 0,
+  "explanation": "The people cried unto Moses; and when Moses prayed unto the LORD, the fire was quenched.",
+  "ref": "Numbers 11:2"
+ },
+ {
+  "id": "numbers-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What food did Israel say they remembered eating freely in Egypt?",
+  "choices": [
+   "Lamb",
+   "Fish",
+   "Bread",
+   "Honey"
+  ],
+  "answer": 1,
+  "explanation": "We remember the fish, which we did eat in Egypt freely.",
+  "ref": "Numbers 11:5"
+ },
+ {
+  "id": "numbers-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the only food Israel had before their eyes?",
+  "choices": [
+   "Manna",
+   "Figs",
+   "Barley loaves",
+   "Quails"
+  ],
+  "answer": 0,
+  "explanation": "There is nothing at all, beside this manna, before our eyes.",
+  "ref": "Numbers 11:6"
+ },
+ {
+  "id": "numbers-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did the manna fall upon the camp?",
+  "choices": [
+   "At the evening sacrifice",
+   "Only on the Sabbath",
+   "With the dew in the night",
+   "At noon"
+  ],
+  "answer": 2,
+  "explanation": "When the dew fell upon the camp in the night, the manna fell upon it.",
+  "ref": "Numbers 11:9"
+ },
+ {
+  "id": "numbers-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who asked the LORD why he was given the burden of all the people?",
+  "choices": [
+   "Aaron",
+   "Eldad",
+   "Moses",
+   "Joshua"
+  ],
+  "answer": 2,
+  "explanation": "Moses said unto the LORD, Wherefore hast thou afflicted thy servant?",
+  "ref": "Numbers 11:11"
+ },
+ {
+  "id": "numbers-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two men prophesied in the camp?",
+  "choices": [
+   "Joshua and Hobab",
+   "Nadab and Abihu",
+   "Hur and Caleb",
+   "Eldad and Medad"
+  ],
+  "answer": 3,
+  "explanation": "The name of the one was Eldad, and the name of the other Medad.",
+  "ref": "Numbers 11:26"
+ },
+ {
+  "id": "numbers-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said to Moses, My lord Moses, forbid them?",
+  "choices": [
+   "Aaron",
+   "Joshua the son of Nun",
+   "Caleb",
+   "Hobab"
+  ],
+  "answer": 1,
+  "explanation": "Joshua the son of Nun, the servant of Moses, answered and said, My lord Moses, forbid them.",
+  "ref": "Numbers 11:28"
+ },
+ {
+  "id": "numbers-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD send from the sea to give Israel flesh?",
+  "choices": [
+   "Fish",
+   "Locusts",
+   "Lambs",
+   "Quails"
+  ],
+  "answer": 3,
+  "explanation": "There went forth a wind from the LORD, and brought quails from the sea.",
+  "ref": "Numbers 11:31"
+ },
+ {
+  "id": "numbers-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the people while the flesh was between their teeth?",
+  "choices": [
+   "They fell asleep",
+   "The quails flew away",
+   "They were satisfied",
+   "The LORD smote them with a great plague"
+  ],
+  "answer": 3,
+  "explanation": "While the flesh was yet between their teeth, the LORD smote the people with a very great plague.",
+  "ref": "Numbers 11:33"
+ },
+ {
+  "id": "numbers-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which place did the people journey from Kibroth-hattaavah?",
+  "choices": [
+   "Paran",
+   "Hazeroth",
+   "Kadesh",
+   "Taberah"
+  ],
+  "answer": 1,
+  "explanation": "The people journeyed from Kibroth-hattaavah unto Hazeroth; and abode at Hazeroth.",
+  "ref": "Numbers 11:35"
+ },
+ {
+  "id": "numbers-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which part of the camp did the fire consume?",
+  "choices": [
+   "The uttermost parts",
+   "The tents of the priests",
+   "The middle",
+   "The tabernacle"
+  ],
+  "answer": 0,
+  "explanation": "The fire of the LORD burnt among them, and consumed them that were in the uttermost parts of the camp.",
+  "ref": "Numbers 11:1"
+ },
+ {
+  "id": "numbers-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the first place called Taberah?",
+  "choices": [
+   "Manna fell there first",
+   "The fire of the LORD burnt among them",
+   "They buried Aaron there",
+   "They found water there"
+  ],
+  "answer": 1,
+  "explanation": "He called the name of the place Taberah: because the fire of the LORD burnt among them.",
+  "ref": "Numbers 11:3"
+ },
+ {
+  "id": "numbers-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who fell a lusting among the people?",
+  "choices": [
+   "The princes",
+   "The mixt multitude",
+   "The Levites",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "The mixt multitude that was among them fell a lusting.",
+  "ref": "Numbers 11:4"
+ },
+ {
+  "id": "numbers-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two foods did Israel remember from Egypt besides fish?",
+  "choices": [
+   "Lentils and figs",
+   "Corn and wine",
+   "Dates and pomegranates",
+   "Cucumbers and melons"
+  ],
+  "answer": 3,
+  "explanation": "The cucumbers, and the melons, and the leeks, and the onions, and the garlick.",
+  "ref": "Numbers 11:5"
+ },
+ {
+  "id": "numbers-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the manna look like?",
+  "choices": [
+   "Pearls of frost",
+   "Coriander seed",
+   "Barley grains",
+   "Small stones"
+  ],
+  "answer": 1,
+  "explanation": "The manna was as coriander seed, and the colour thereof as the colour of bdellium.",
+  "ref": "Numbers 11:7"
+ },
+ {
+  "id": "numbers-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the manna taste when baked into cakes?",
+  "choices": [
+   "Like salt",
+   "Like fresh oil",
+   "Like honey",
+   "Like fish"
+  ],
+  "answer": 1,
+  "explanation": "The taste of it was as the taste of fresh oil.",
+  "ref": "Numbers 11:8"
+ },
+ {
+  "id": "numbers-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Moses say the people wept?",
+  "choices": [
+   "Together at the tabernacle",
+   "Only the mixt multitude",
+   "Throughout their families, every man in his tent door",
+   "Only the elders"
+  ],
+  "answer": 2,
+  "explanation": "Moses heard the people weep throughout their families, every man in the door of his tent.",
+  "ref": "Numbers 11:10"
+ },
+ {
+  "id": "numbers-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses ask to be done to him if the LORD dealt thus with him?",
+  "choices": [
+   "Make me a priest",
+   "Take me to Canaan",
+   "Send me to Egypt",
+   "Kill me out of hand"
+  ],
+  "answer": 3,
+  "explanation": "If thou deal thus with me, kill me, I pray thee, out of hand.",
+  "ref": "Numbers 11:15"
+ },
+ {
+  "id": "numbers-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many elders did the LORD tell Moses to gather?",
+  "choices": [
+   "One hundred",
+   "Seventy",
+   "Twelve",
+   "Forty"
+  ],
+  "answer": 1,
+  "explanation": "Gather unto me seventy men of the elders of Israel.",
+  "ref": "Numbers 11:16"
+ },
+ {
+  "id": "numbers-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD take and put upon the seventy elders?",
+  "choices": [
+   "Of the manna",
+   "Of the fire",
+   "Of the anointing oil",
+   "Of the spirit which was upon Moses"
+  ],
+  "answer": 3,
+  "explanation": "I will take of the spirit which is upon thee, and will put it upon them.",
+  "ref": "Numbers 11:17"
+ },
+ {
+  "id": "numbers-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For how long did the LORD say they would eat flesh?",
+  "choices": [
+   "One day",
+   "Forty days",
+   "A whole month",
+   "Seven days"
+  ],
+  "answer": 2,
+  "explanation": "Even a whole month, until it come out at your nostrils, and it be loathsome unto you.",
+  "ref": "Numbers 11:20"
+ },
+ {
+  "id": "numbers-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many footmen did Moses say were among the people?",
+  "choices": [
+   "Six hundred thousand",
+   "Three million",
+   "Seventy thousand",
+   "Twelve thousand"
+  ],
+  "answer": 0,
+  "explanation": "The people, among whom I am, are six hundred thousand footmen.",
+  "ref": "Numbers 11:21"
+ },
+ {
+  "id": "numbers-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the elders do when the spirit rested upon them?",
+  "choices": [
+   "Fell asleep",
+   "Wept",
+   "Prophesied and did not cease",
+   "Went to the camp"
+  ],
+  "answer": 2,
+  "explanation": "When the spirit rested upon them, they prophesied, and did not cease.",
+  "ref": "Numbers 11:25"
+ },
+ {
+  "id": "numbers-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses wish for all the LORD's people?",
+  "choices": [
+   "That they were all leaders",
+   "That they were all prophets",
+   "That they were all priests",
+   "That they were all elders"
+  ],
+  "answer": 1,
+  "explanation": "Would God that all the LORD'S people were prophets, and that the LORD would put his spirit upon them!",
+  "ref": "Numbers 11:29"
+ },
+ {
+  "id": "numbers-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the place named Kibroth-hattaavah?",
+  "choices": [
+   "Water came out of the rock",
+   "They buried the people that lusted",
+   "They found quails there",
+   "The cloud rested there"
+  ],
+  "answer": 1,
+  "explanation": "He called the name of that place Kibroth-hattaavah: because there they buried the people that lusted.",
+  "ref": "Numbers 11:34"
+ },
+ {
+  "id": "numbers-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses compare himself to in asking if he conceived the people?",
+  "choices": [
+   "A shepherd with a flock",
+   "A father with sons",
+   "A nursing father carrying a sucking child",
+   "A king over servants"
+  ],
+  "answer": 2,
+  "explanation": "Carry them in thy bosom, as a nursing father beareth the sucking child.",
+  "ref": "Numbers 11:12"
+ },
+ {
+  "id": "numbers-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Israel to do against tomorrow?",
+  "choices": [
+   "Offer a lamb",
+   "Sanctify themselves",
+   "Fast",
+   "Gather manna twice"
+  ],
+  "answer": 1,
+  "explanation": "Sanctify yourselves against to morrow, and ye shall eat flesh.",
+  "ref": "Numbers 11:18"
+ },
+ {
+  "id": "numbers-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say they despised?",
+  "choices": [
+   "The tabernacle",
+   "The manna",
+   "The elders",
+   "The LORD which is among them"
+  ],
+  "answer": 3,
+  "explanation": "Because that ye have despised the LORD which is among you, and have wept before him.",
+  "ref": "Numbers 11:20"
+ },
+ {
+  "id": "numbers-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD ask about His hand?",
+  "choices": [
+   "Is my hand heavy?",
+   "Is my hand stretched out?",
+   "Is the LORD's hand waxed short?",
+   "Is my hand shut?"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said unto Moses, Is the LORD'S hand waxed short?",
+  "ref": "Numbers 11:23"
+ },
+ {
+  "id": "numbers-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Moses set the seventy elders?",
+  "choices": [
+   "In the camp",
+   "Round about the tabernacle",
+   "At the mount",
+   "At the gate"
+  ],
+  "answer": 1,
+  "explanation": "Moses gathered the seventy men of the elders of the people, and set them round about the tabernacle.",
+  "ref": "Numbers 11:24"
+ },
+ {
+  "id": "numbers-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the two men in the camp go not unto?",
+  "choices": [
+   "The tabernacle",
+   "The river",
+   "The gate",
+   "The mount"
+  ],
+  "answer": 0,
+  "explanation": "They were of them that were written, but went not out unto the tabernacle.",
+  "ref": "Numbers 11:26"
+ },
+ {
+  "id": "numbers-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Moses answer Joshua?",
+  "choices": [
+   "Be silent",
+   "Bring them to me",
+   "Let them prophesy no more",
+   "Enviest thou for my sake?"
+  ],
+  "answer": 3,
+  "explanation": "Moses said unto him, Enviest thou for my sake?",
+  "ref": "Numbers 11:29"
+ },
+ {
+  "id": "numbers-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How high on the earth did the quails lie?",
+  "choices": [
+   "Ten cubits",
+   "One cubit",
+   "Two cubits",
+   "Seven cubits"
+  ],
+  "answer": 2,
+  "explanation": "As it were two cubits high upon the face of the earth.",
+  "ref": "Numbers 11:31"
+ },
+ {
+  "id": "numbers-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many homers did he that gathered least gather?",
+  "choices": [
+   "Two",
+   "Seven",
+   "Ten",
+   "Twenty"
+  ],
+  "answer": 2,
+  "explanation": "He that gathered least gathered ten homers.",
+  "ref": "Numbers 11:32"
+ },
+ {
+  "id": "numbers-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did the people stand up and gather the quails?",
+  "choices": [
+   "Three days",
+   "All that day, all that night and all the next day",
+   "Seven days",
+   "One evening"
+  ],
+  "answer": 1,
+  "explanation": "The people stood up all that day, and all that night, and all the next day, and they gathered the quails.",
+  "ref": "Numbers 11:32"
+ },
+ {
+  "id": "numbers-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The quails fell how far on this side and on the other side of the camp?",
+  "choices": [
+   "A mile",
+   "A hundred paces",
+   "A furlong",
+   "A day's journey"
+  ],
+  "answer": 3,
+  "explanation": "As it were a day's journey on this side, and as it were a day's journey on the other side, round about the camp.",
+  "ref": "Numbers 11:31"
+ },
+ {
+  "id": "numbers-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the people say it had been well with them?",
+  "choices": [
+   "The manna",
+   "Egypt",
+   "The wilderness",
+   "The camp"
+  ],
+  "answer": 1,
+  "explanation": "For it was well with us in Egypt.",
+  "ref": "Numbers 11:18"
+ },
+ {
+  "id": "numbers-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did the people grind the manna?",
+  "choices": [
+   "Mills",
+   "Ovens",
+   "Stone basins",
+   "Wooden bowls"
+  ],
+  "answer": 0,
+  "explanation": "They ground it in mills, or beat it in a mortar.",
+  "ref": "Numbers 11:8"
+ },
+ {
+  "id": "numbers-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do when He came down to speak with Moses?",
+  "choices": [
+   "Came in a whirlwind",
+   "Came in fire",
+   "Came in a still voice",
+   "Came in a cloud"
+  ],
+  "answer": 3,
+  "explanation": "The LORD came down in a cloud, and spake unto him.",
+  "ref": "Numbers 11:25"
+ },
+ {
+  "id": "numbers-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Who ran and told Moses about Eldad and Medad?",
+  "choices": [
+   "An elder",
+   "A young man",
+   "Aaron",
+   "Joshua"
+  ],
+  "answer": 1,
+  "explanation": "There ran a young man, and told Moses, Eldad and Medad do prophesy in the camp.",
+  "ref": "Numbers 11:27"
+ },
+ {
   "id": "old-numbers-12-1",
   "chapter": 12,
   "level": "beginner",
