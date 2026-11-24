@@ -24,6 +24,9 @@ export const MATCH_SCENES: Record<string, Array<[number, number, number]>> = {
   judges: [[2, 2, 1], [3, 3, 2], [4, 4, 3], [4, 5, 4], [6, 6, 5], [6, 6, 6], [7, 7, 7], [11, 11, 8], [14, 14, 9], [16, 16, 10]],
   ruth: [[1, 1, 1], [1, 1, 2], [1, 1, 3], [1, 1, 4], [1, 1, 5], [2, 2, 6], [2, 2, 7], [3, 3, 8], [4, 4, 9], [4, 4, 10]],
   "1-samuel": [[1, 1, 1], [1, 2, 2], [3, 3, 3], [6, 6, 4], [7, 7, 5], [9, 10, 6], [16, 16, 7], [17, 17, 8], [20, 20, 9], [24, 24, 10]],
+  "2-samuel": [[1, 1, 1], [2, 2, 2], [5, 5, 3], [6, 6, 4], [7, 7, 5], [9, 9, 6], [12, 12, 7], [15, 15, 8], [19, 19, 9], [24, 24, 10]],
+  // 1 Chronicles is left out on purpose: its backgrounds are being redone
+  // (style audit, 2026-11-24). Add it here when the new art is imported.
 };
 
 /** "1 Samuel", "1-samuel", "Song of Solomon" -> "1-samuel", "song-of-solomon". */
