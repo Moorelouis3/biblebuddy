@@ -18128,6 +18128,646 @@
   "ref": "Deuteronomy 26:18–19"
  },
  {
+  "id": "deuteronomy-26-e-01",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the worshiper put the firstfruits in?",
+  "choices": [
+   "A basket",
+   "A jar",
+   "A sack",
+   "A cart"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt put it in a basket, and shalt go unto the place which the LORD thy God shall choose.",
+  "ref": "Deuteronomy 26:2"
+ },
+ {
+  "id": "deuteronomy-26-e-02",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took the basket out of the worshiper's hand?",
+  "choices": [
+   "The priest",
+   "A Levite",
+   "An elder",
+   "A judge"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall take the basket out of thine hand.",
+  "ref": "Deuteronomy 26:4"
+ },
+ {
+  "id": "deuteronomy-26-e-03",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the priest set down the basket?",
+  "choices": [
+   "Before the altar of the LORD",
+   "On the ark",
+   "At the city gate",
+   "In the tent door"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall set it down before the altar of the LORD thy God.",
+  "ref": "Deuteronomy 26:4"
+ },
+ {
+  "id": "deuteronomy-26-e-04",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of land did the LORD give Israel?",
+  "choices": [
+   "A land that floweth with milk and honey",
+   "A land of gold and silver",
+   "A land of cedar and stone",
+   "A land without enemies"
+  ],
+  "answer": 0,
+  "explanation": "He hath given us this land, even a land that floweth with milk and honey.",
+  "ref": "Deuteronomy 26:9"
+ },
+ {
+  "id": "deuteronomy-26-e-05",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who treated Israel badly in Egypt?",
+  "choices": [
+   "The Egyptians",
+   "The Syrians",
+   "The Amorites",
+   "The Moabites"
+  ],
+  "answer": 0,
+  "explanation": "The Egyptians evil entreated us, and afflicted us.",
+  "ref": "Deuteronomy 26:6"
+ },
+ {
+  "id": "deuteronomy-26-e-06",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the LORD swear to give the land?",
+  "choices": [
+   "Their fathers",
+   "The judges",
+   "The priests",
+   "The kings"
+  ],
+  "answer": 0,
+  "explanation": "I am come unto the country which the LORD sware unto our fathers for to give us.",
+  "ref": "Deuteronomy 26:3"
+ },
+ {
+  "id": "deuteronomy-26-e-07",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the worshiper's father go down to live?",
+  "choices": [
+   "Egypt",
+   "Moab",
+   "Edom",
+   "Babylon"
+  ],
+  "answer": 0,
+  "explanation": "He went down into Egypt, and sojourned there with a few.",
+  "ref": "Deuteronomy 26:5"
+ },
+ {
+  "id": "deuteronomy-26-e-08",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who brought Israel out of Egypt?",
+  "choices": [
+   "The LORD",
+   "Aaron",
+   "The priest",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "The LORD brought us forth out of Egypt with a mighty hand.",
+  "ref": "Deuteronomy 26:8"
+ },
+ {
+  "id": "deuteronomy-26-e-09",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With how much of their being were Israel to keep the statutes?",
+  "choices": [
+   "All their heart and all their soul",
+   "Only on the Sabbath",
+   "With their hands only",
+   "In the year of tithing only"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt therefore keep and do them with all thine heart, and with all thy soul.",
+  "ref": "Deuteronomy 26:16"
+ },
+ {
+  "id": "deuteronomy-26-e-10",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the worshiper to rejoice in?",
+  "choices": [
+   "Every good thing the LORD gave",
+   "Silver and gold",
+   "A king",
+   "A new law"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt rejoice in every good thing which the LORD thy God hath given unto thee, and unto thine house.",
+  "ref": "Deuteronomy 26:11"
+ },
+ {
+  "id": "deuteronomy-26-m-01",
+  "chapter": 26,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the worshiper to carry the basket of firstfruits?",
+  "choices": [
+   "To the king's house",
+   "To the city gate",
+   "To the place the LORD would choose",
+   "To Mount Sinai"
+  ],
+  "answer": 2,
+  "explanation": "Go unto the place which the LORD thy God shall choose to place his name there.",
+  "ref": "Deuteronomy 26:2"
+ },
+ {
+  "id": "deuteronomy-26-m-02",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is the company that went down into Egypt with the father described?",
+  "choices": [
+   "A great host",
+   "All his flocks and herds",
+   "A few",
+   "The twelve tribes"
+  ],
+  "answer": 2,
+  "explanation": "He went down into Egypt, and sojourned there with a few.",
+  "ref": "Deuteronomy 26:5"
+ },
+ {
+  "id": "deuteronomy-26-m-03",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the worshiper's father's family become in Egypt?",
+  "choices": [
+   "A small and quiet household",
+   "A nation of priests",
+   "A nation, great, mighty, and populous",
+   "A nation of shepherd kings"
+  ],
+  "answer": 2,
+  "explanation": "He became there a nation, great, mighty, and populous.",
+  "ref": "Deuteronomy 26:5"
+ },
+ {
+  "id": "deuteronomy-26-m-04",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD do when Israel cried to Him in Egypt?",
+  "choices": [
+   "He sent them a king",
+   "He went silent",
+   "He heard their voice",
+   "He sent them to Moab"
+  ],
+  "answer": 2,
+  "explanation": "When we cried unto the LORD God of our fathers, the LORD heard our voice.",
+  "ref": "Deuteronomy 26:7"
+ },
+ {
+  "id": "deuteronomy-26-m-05",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD bring Israel out of Egypt?",
+  "choices": [
+   "With a strong army",
+   "By a hidden path",
+   "With a mighty hand and an outstretched arm",
+   "With a loud trumpet only"
+  ],
+  "answer": 2,
+  "explanation": "The LORD brought us forth out of Egypt with a mighty hand, and with an outstretched arm.",
+  "ref": "Deuteronomy 26:8"
+ },
+ {
+  "id": "deuteronomy-26-m-06",
+  "chapter": 26,
+  "level": "medium",
+  "category": "person",
+  "question": "Besides the worshiper's house, who was to rejoice in every good thing?",
+  "choices": [
+   "The king and his army",
+   "The priest and the judge",
+   "The Levite and the stranger",
+   "The widow only"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt rejoice in every good thing... thou, and the Levite, and the stranger that is among you.",
+  "ref": "Deuteronomy 26:11"
+ },
+ {
+  "id": "deuteronomy-26-m-07",
+  "chapter": 26,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were the Levite, stranger, fatherless and widow to eat the tithe?",
+  "choices": [
+   "At the altar",
+   "In the wilderness",
+   "Within thy gates",
+   "On the mountain"
+  ],
+  "answer": 2,
+  "explanation": "That they may eat within thy gates, and be filled.",
+  "ref": "Deuteronomy 26:12"
+ },
+ {
+  "id": "deuteronomy-26-m-08",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the third year called?",
+  "choices": [
+   "The year of release",
+   "The year of jubilee",
+   "The year of tithing",
+   "The year of rest"
+  ],
+  "answer": 2,
+  "explanation": "The third year, which is the year of tithing.",
+  "ref": "Deuteronomy 26:12"
+ },
+ {
+  "id": "deuteronomy-26-m-09",
+  "chapter": 26,
+  "level": "medium",
+  "category": "place",
+  "question": "Out of where did the worshiper say he brought the hallowed things?",
+  "choices": [
+   "Out of the temple",
+   "Out of Egypt",
+   "Out of his house",
+   "Out of the field"
+  ],
+  "answer": 2,
+  "explanation": "I have brought away the hallowed things out of mine house.",
+  "ref": "Deuteronomy 26:13"
+ },
+ {
+  "id": "deuteronomy-26-m-10",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the worshiper say about the LORD's commandments?",
+  "choices": [
+   "He had kept some of them",
+   "He had written them down",
+   "He had not transgressed or forgotten them",
+   "He had taught them to the king"
+  ],
+  "answer": 2,
+  "explanation": "I have not transgressed thy commandments, neither have I forgotten them.",
+  "ref": "Deuteronomy 26:13"
+ },
+ {
+  "id": "deuteronomy-26-m-11",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what kind of use had the worshiper not taken away the hallowed things?",
+  "choices": [
+   "Any public use",
+   "Any army use",
+   "Any unclean use",
+   "Any king's use"
+  ],
+  "answer": 2,
+  "explanation": "Neither have I taken away ought thereof for any unclean use.",
+  "ref": "Deuteronomy 26:14"
+ },
+ {
+  "id": "deuteronomy-26-m-12",
+  "chapter": 26,
+  "level": "medium",
+  "category": "place",
+  "question": "From where did the worshiper ask the LORD to look down?",
+  "choices": [
+   "From Mount Sinai",
+   "From the altar",
+   "His holy habitation, from heaven",
+   "From the cloud over the camp"
+  ],
+  "answer": 2,
+  "explanation": "Look down from thy holy habitation, from heaven, and bless thy people Israel.",
+  "ref": "Deuteronomy 26:15"
+ },
+ {
+  "id": "deuteronomy-26-m-13",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What two things did the worshiper ask the LORD to bless?",
+  "choices": [
+   "The priests and the altar",
+   "The king and his army",
+   "His people Israel and the land",
+   "The Levites and the cities"
+  ],
+  "answer": 2,
+  "explanation": "Bless thy people Israel, and the land which thou hast given us.",
+  "ref": "Deuteronomy 26:15"
+ },
+ {
+  "id": "deuteronomy-26-m-14",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel avouch the LORD to be?",
+  "choices": [
+   "Their king only",
+   "Their judge only",
+   "Their God",
+   "Their shield only"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast avouched the LORD this day to be thy God.",
+  "ref": "Deuteronomy 26:17"
+ },
+ {
+  "id": "deuteronomy-26-m-15",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what three ways would the LORD make Israel high above all nations?",
+  "choices": [
+   "In silver, gold and cattle",
+   "In armies, walls and kings",
+   "In praise, in name, and in honour",
+   "In wisdom, bread and wine"
+  ],
+  "answer": 2,
+  "explanation": "To make thee high above all nations... in praise, and in name, and in honour.",
+  "ref": "Deuteronomy 26:19"
+ },
+ {
+  "id": "deuteronomy-26-h-01",
+  "chapter": 26,
+  "level": "hard",
+  "category": "place",
+  "question": "What did the worshiper tell the priest he had come unto?",
+  "choices": [
+   "The land of the Amorites",
+   "The city of the Levites",
+   "The mount of blessing",
+   "The country the LORD sware to their fathers to give"
+  ],
+  "answer": 3,
+  "explanation": "I am come unto the country which the LORD sware unto our fathers for to give us.",
+  "ref": "Deuteronomy 26:3"
+ },
+ {
+  "id": "deuteronomy-26-h-02",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Which priest was the worshiper to go to?",
+  "choices": [
+   "The oldest priest in Israel",
+   "Any Levite in the city",
+   "The priest of his own tribe",
+   "The priest that shall be in those days"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt go unto the priest that shall be in those days.",
+  "ref": "Deuteronomy 26:3"
+ },
+ {
+  "id": "deuteronomy-26-h-03",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides a mighty hand and an outstretched arm, what did the LORD use to bring Israel out?",
+  "choices": [
+   "A cloud and a pillar of fire",
+   "Plagues and a flood",
+   "A sword and an army",
+   "Great terribleness, signs and wonders"
+  ],
+  "answer": 3,
+  "explanation": "He brought us forth with great terribleness, and with signs, and with wonders.",
+  "ref": "Deuteronomy 26:8"
+ },
+ {
+  "id": "deuteronomy-26-h-04",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What three things did the LORD look on when He heard Israel's cry?",
+  "choices": [
+   "Their sin, idols and pride",
+   "Their hunger, thirst and sickness",
+   "Their flocks, herds and tents",
+   "Their affliction, labour and oppression"
+  ],
+  "answer": 3,
+  "explanation": "The LORD looked on our affliction, and our labour, and our oppression.",
+  "ref": "Deuteronomy 26:7"
+ },
+ {
+  "id": "deuteronomy-26-h-05",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the worshiper say he now brought before the LORD?",
+  "choices": [
+   "The firstborn of his flock",
+   "A tenth of his silver",
+   "A lamb without blemish",
+   "The firstfruits of the land"
+  ],
+  "answer": 3,
+  "explanation": "I have brought the firstfruits of the land, which thou, O LORD, hast given me.",
+  "ref": "Deuteronomy 26:10"
+ },
+ {
+  "id": "deuteronomy-26-h-06",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the worshiper say he had done to the voice of the LORD his God?",
+  "choices": [
+   "Written it down",
+   "Taught it to others",
+   "Sung it in praise",
+   "Hearkened to it"
+  ],
+  "answer": 3,
+  "explanation": "I have hearkened to the voice of the LORD my God.",
+  "ref": "Deuteronomy 26:14"
+ },
+ {
+  "id": "deuteronomy-26-h-07",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD command Israel to do on this day?",
+  "choices": [
+   "Build a new altar",
+   "Cross the Jordan",
+   "Number the people",
+   "Do the statutes and judgments"
+  ],
+  "answer": 3,
+  "explanation": "This day the LORD thy God hath commanded thee to do these statutes and judgments.",
+  "ref": "Deuteronomy 26:16"
+ },
+ {
+  "id": "deuteronomy-26-h-08",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Israel avouched they would walk in what?",
+  "choices": [
+   "The wilderness",
+   "The old paths of Egypt",
+   "The land of the stranger",
+   "His ways"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast avouched the LORD... to walk in his ways, and to keep his statutes.",
+  "ref": "Deuteronomy 26:17"
+ },
+ {
+  "id": "deuteronomy-26-h-09",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Above whom did the LORD say He would make Israel high?",
+  "choices": [
+   "All Canaanite kings",
+   "The Egyptians",
+   "The Levites",
+   "All nations"
+  ],
+  "answer": 3,
+  "explanation": "To make thee high above all nations which he hath made.",
+  "ref": "Deuteronomy 26:19"
+ },
+ {
+  "id": "deuteronomy-26-h-10",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When was the worshiper to bring the firstfruits?",
+  "choices": [
+   "As soon as the grain was sown",
+   "Before crossing the Jordan",
+   "In the year of release",
+   "Once they possessed and dwelt in the land"
+  ],
+  "answer": 3,
+  "explanation": "When thou art come in unto the land... and possessest it, and dwellest therein.",
+  "ref": "Deuteronomy 26:1"
+ },
+ {
+  "id": "deuteronomy-26-h-11",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why were the tithes given to the Levite, stranger, fatherless and widow?",
+  "choices": [
+   "That they may build the temple",
+   "That they may pay the priest",
+   "That they may serve the king",
+   "That they may eat and be filled"
+  ],
+  "answer": 3,
+  "explanation": "...that they may eat within thy gates, and be filled.",
+  "ref": "Deuteronomy 26:12"
+ },
+ {
+  "id": "deuteronomy-26-h-12",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Egyptians lay upon Israel?",
+  "choices": [
+   "Heavy taxes",
+   "A great famine",
+   "A decree of death",
+   "Hard bondage"
+  ],
+  "answer": 3,
+  "explanation": "The Egyptians evil entreated us, and afflicted us, and laid upon us hard bondage.",
+  "ref": "Deuteronomy 26:6"
+ },
+ {
+  "id": "deuteronomy-26-h-13",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the worshiper to do after setting the firstfruits before the LORD?",
+  "choices": [
+   "Return home at once",
+   "Give them to the priest",
+   "Offer a lamb",
+   "Worship before the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt set it before the LORD thy God, and worship before the LORD thy God.",
+  "ref": "Deuteronomy 26:10"
+ },
+ {
+  "id": "deuteronomy-26-h-14",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To which God did Israel cry in Egypt, according to the worshiper's words?",
+  "choices": [
+   "The God of the Egyptians",
+   "The God of the hills",
+   "The God of the stranger",
+   "The LORD God of their fathers"
+  ],
+  "answer": 3,
+  "explanation": "When we cried unto the LORD God of our fathers.",
+  "ref": "Deuteronomy 26:7"
+ },
+ {
+  "id": "deuteronomy-26-h-15",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of His commandments did the LORD say Israel should keep?",
+  "choices": [
+   "The ten",
+   "Those about the altar",
+   "Only the statutes",
+   "All of them"
+  ],
+  "answer": 3,
+  "explanation": "...that thou shouldest keep all his commandments.",
+  "ref": "Deuteronomy 26:18"
+ },
+ {
   "id": "old-deuteronomy-27-1",
   "chapter": 27,
   "level": "beginner",
