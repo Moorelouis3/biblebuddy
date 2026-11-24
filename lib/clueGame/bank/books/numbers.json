@@ -20256,6 +20256,646 @@
   "ref": "Numbers 29:35"
  },
  {
+  "id": "numbers-29-e-01",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In which month was the day of blowing the trumpets?",
+  "choices": [
+   "The seventh month",
+   "The tenth month",
+   "The first month",
+   "The third month"
+  ],
+  "answer": 0,
+  "explanation": "And in the seventh month, on the first day of the month, it is a day of blowing the trumpets.",
+  "ref": "Numbers 29:1"
+ },
+ {
+  "id": "numbers-29-e-02",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were Israel to do to their souls on the tenth day of the seventh month?",
+  "choices": [
+   "Praise them",
+   "Number them",
+   "Afflict them",
+   "Hide them"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall have an holy convocation; and ye shall afflict your souls.",
+  "ref": "Numbers 29:7"
+ },
+ {
+  "id": "numbers-29-e-03",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What work was Israel allowed to do on the Day of Atonement?",
+  "choices": [
+   "Cooking",
+   "Light work only",
+   "Farm work",
+   "None"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall not do any work therein.",
+  "ref": "Numbers 29:7"
+ },
+ {
+  "id": "numbers-29-e-04",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many young bullocks were offered on the day of blowing the trumpets?",
+  "choices": [
+   "One",
+   "Two",
+   "Thirteen",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "One young bullock, one ram, and seven lambs of the first year without blemish.",
+  "ref": "Numbers 29:2"
+ },
+ {
+  "id": "numbers-29-e-05",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many young bullocks were offered on the first day of the seven-day feast?",
+  "choices": [
+   "Seven",
+   "Ten",
+   "Thirteen",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "Thirteen young bullocks, two rams, and fourteen lambs of the first year.",
+  "ref": "Numbers 29:13"
+ },
+ {
+  "id": "numbers-29-e-06",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many young bullocks were offered on the second day of the feast?",
+  "choices": [
+   "Ten",
+   "Eleven",
+   "Twelve",
+   "Thirteen"
+  ],
+  "answer": 2,
+  "explanation": "On the second day ye shall offer twelve young bullocks.",
+  "ref": "Numbers 29:17"
+ },
+ {
+  "id": "numbers-29-e-07",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many bullocks were offered on the seventh day of the feast?",
+  "choices": [
+   "Nine",
+   "Seven",
+   "Eight",
+   "Fourteen"
+  ],
+  "answer": 1,
+  "explanation": "And on the seventh day seven bullocks, two rams, and fourteen lambs.",
+  "ref": "Numbers 29:32"
+ },
+ {
+  "id": "numbers-29-e-08",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many rams were offered each day of the seven-day feast?",
+  "choices": [
+   "One",
+   "Two",
+   "Fourteen",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "Each day of the seven-day feast had two rams.",
+  "ref": "Numbers 29:13"
+ },
+ {
+  "id": "numbers-29-e-09",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many lambs were offered each day of the seven-day feast?",
+  "choices": [
+   "Seven",
+   "Twelve",
+   "Fourteen",
+   "Two"
+  ],
+  "answer": 2,
+  "explanation": "Thirteen young bullocks, two rams, and fourteen lambs of the first year.",
+  "ref": "Numbers 29:13"
+ },
+ {
+  "id": "numbers-29-e-10",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told the children of Israel all that the LORD commanded?",
+  "choices": [
+   "Moses",
+   "Joshua",
+   "Eleazar",
+   "Caleb"
+  ],
+  "answer": 0,
+  "explanation": "And Moses told the children of Israel according to all that the LORD commanded Moses.",
+  "ref": "Numbers 29:40"
+ },
+ {
+  "id": "numbers-29-m-01",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many lambs were offered on the day of blowing the trumpets?",
+  "choices": [
+   "Two",
+   "Fourteen",
+   "Twelve",
+   "Seven"
+  ],
+  "answer": 3,
+  "explanation": "One young bullock, one ram, and seven lambs of the first year without blemish.",
+  "ref": "Numbers 29:2"
+ },
+ {
+  "id": "numbers-29-m-02",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many tenth deals of flour went with the bullock on the day of trumpets?",
+  "choices": [
+   "Four",
+   "Three",
+   "Two",
+   "One"
+  ],
+  "answer": 1,
+  "explanation": "Their meat offering shall be of flour mingled with oil, three tenth deals for a bullock.",
+  "ref": "Numbers 29:3"
+ },
+ {
+  "id": "numbers-29-m-03",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many tenth deals of flour went with the ram on the day of trumpets?",
+  "choices": [
+   "Three",
+   "Two",
+   "One",
+   "Five"
+  ],
+  "answer": 1,
+  "explanation": "Two tenth deals for a ram.",
+  "ref": "Numbers 29:3"
+ },
+ {
+  "id": "numbers-29-m-04",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many tenth deals of flour went with each lamb on the day of trumpets?",
+  "choices": [
+   "Two",
+   "Half",
+   "Three",
+   "One"
+  ],
+  "answer": 3,
+  "explanation": "One tenth deal for one lamb, throughout the seven lambs.",
+  "ref": "Numbers 29:4"
+ },
+ {
+  "id": "numbers-29-m-05",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the sin offering on the day of trumpets?",
+  "choices": [
+   "Two doves",
+   "One kid of the goats",
+   "One ram",
+   "One bullock"
+  ],
+  "answer": 1,
+  "explanation": "One kid of the goats for a sin offering, to make an atonement for you.",
+  "ref": "Numbers 29:5"
+ },
+ {
+  "id": "numbers-29-m-06",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many rams were offered in the burnt offering on the Day of Atonement?",
+  "choices": [
+   "One",
+   "Thirteen",
+   "Seven",
+   "Two"
+  ],
+  "answer": 0,
+  "explanation": "One young bullock, one ram, and seven lambs of the first year.",
+  "ref": "Numbers 29:8"
+ },
+ {
+  "id": "numbers-29-m-07",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many bullocks were offered on the third day of the feast?",
+  "choices": [
+   "Nine",
+   "Ten",
+   "Eleven",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "And on the third day eleven bullocks, two rams, fourteen lambs.",
+  "ref": "Numbers 29:20"
+ },
+ {
+  "id": "numbers-29-m-08",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many bullocks were offered on the fourth day of the feast?",
+  "choices": [
+   "Eleven",
+   "Eight",
+   "Ten",
+   "Nine"
+  ],
+  "answer": 2,
+  "explanation": "And on the fourth day ten bullocks, two rams, and fourteen lambs.",
+  "ref": "Numbers 29:23"
+ },
+ {
+  "id": "numbers-29-m-09",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many bullocks were offered on the eighth day, the solemn assembly?",
+  "choices": [
+   "Two",
+   "One",
+   "Seven",
+   "Eight"
+  ],
+  "answer": 1,
+  "explanation": "One bullock, one ram, seven lambs of the first year without blemish.",
+  "ref": "Numbers 29:36"
+ },
+ {
+  "id": "numbers-29-m-10",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many lambs were offered on the eighth day?",
+  "choices": [
+   "Seven",
+   "Fourteen",
+   "One",
+   "Two"
+  ],
+  "answer": 0,
+  "explanation": "One bullock, one ram, seven lambs of the first year without blemish.",
+  "ref": "Numbers 29:36"
+ },
+ {
+  "id": "numbers-29-m-11",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the sin offering on the first day of the seven-day feast?",
+  "choices": [
+   "One kid of the goats",
+   "One bullock",
+   "One ram",
+   "Two lambs"
+  ],
+  "answer": 0,
+  "explanation": "And one kid of the goats for a sin offering; beside the continual burnt offering.",
+  "ref": "Numbers 29:16"
+ },
+ {
+  "id": "numbers-29-m-12",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the sin offering on the second day of the feast?",
+  "choices": [
+   "One ram",
+   "One bullock",
+   "Seven lambs",
+   "One kid of the goats"
+  ],
+  "answer": 3,
+  "explanation": "And one kid of the goats for a sin offering.",
+  "ref": "Numbers 29:19"
+ },
+ {
+  "id": "numbers-29-m-13",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many tenth deals of flour went with each bullock of the thirteen?",
+  "choices": [
+   "One",
+   "Three",
+   "Two",
+   "Four"
+  ],
+  "answer": 1,
+  "explanation": "Three tenth deals unto every bullock of the thirteen bullocks.",
+  "ref": "Numbers 29:14"
+ },
+ {
+  "id": "numbers-29-m-14",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides burnt offerings, which offering was named among the extras for the set feasts?",
+  "choices": [
+   "Trespass offerings",
+   "Tithe offerings",
+   "Wave offerings",
+   "Freewill offerings"
+  ],
+  "answer": 3,
+  "explanation": "Beside your vows, and your freewill offerings.",
+  "ref": "Numbers 29:39"
+ },
+ {
+  "id": "numbers-29-m-15",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many tenth deals of flour went with each ram at the seven-day feast?",
+  "choices": [
+   "One",
+   "Four",
+   "Three",
+   "Two"
+  ],
+  "answer": 3,
+  "explanation": "Two tenth deals to each ram of the two rams.",
+  "ref": "Numbers 29:14"
+ },
+ {
+  "id": "numbers-29-h-01",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The trumpets-day offering was given beside which other offerings?",
+  "choices": [
+   "The firstfruits",
+   "The burnt offering of the month and the daily",
+   "The peace offering",
+   "The passover"
+  ],
+  "answer": 1,
+  "explanation": "Beside the burnt offering of the month, and the daily burnt offering.",
+  "ref": "Numbers 29:6"
+ },
+ {
+  "id": "numbers-29-h-02",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What other sin offering is named on the Day of Atonement?",
+  "choices": [
+   "The wave offering",
+   "The heave offering",
+   "The sin offering of atonement",
+   "The trespass offering"
+  ],
+  "answer": 2,
+  "explanation": "One kid of the goats for a sin offering; beside the sin offering of atonement.",
+  "ref": "Numbers 29:11"
+ },
+ {
+  "id": "numbers-29-h-03",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the sin offering on the third day of the feast?",
+  "choices": [
+   "One goat",
+   "Seven lambs",
+   "Two rams",
+   "One bullock"
+  ],
+  "answer": 0,
+  "explanation": "And one goat for a sin offering; beside the continual burnt offering.",
+  "ref": "Numbers 29:22"
+ },
+ {
+  "id": "numbers-29-h-04",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the sin offering on the eighth day?",
+  "choices": [
+   "One goat",
+   "One ram",
+   "One kid",
+   "One bullock"
+  ],
+  "answer": 0,
+  "explanation": "And one goat for a sin offering; beside the continual burnt offering.",
+  "ref": "Numbers 29:38"
+ },
+ {
+  "id": "numbers-29-h-05",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which offerings were named alongside vows and freewill offerings?",
+  "choices": [
+   "Tithes",
+   "Wave offerings",
+   "Trespass offerings",
+   "Peace offerings"
+  ],
+  "answer": 3,
+  "explanation": "Beside your vows, and your freewill offerings... and for your peace offerings.",
+  "ref": "Numbers 29:39"
+ },
+ {
+  "id": "numbers-29-h-06",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the meat and drink offerings for the later days to be given?",
+  "choices": [
+   "According to their number, after the manner",
+   "Only on the first day",
+   "Without wine",
+   "Double each day"
+  ],
+  "answer": 0,
+  "explanation": "Their meat offering and drink offerings shall be according to their number, after the manner.",
+  "ref": "Numbers 29:18"
+ },
+ {
+  "id": "numbers-29-h-07",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was held on the fifteenth day of the seventh month?",
+  "choices": [
+   "A battle",
+   "An holy convocation",
+   "A census",
+   "A fast of three days"
+  ],
+  "answer": 1,
+  "explanation": "On the fifteenth day of the seventh month ye shall have an holy convocation.",
+  "ref": "Numbers 29:12"
+ },
+ {
+  "id": "numbers-29-h-08",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many bullocks were offered on the fifth day of the feast?",
+  "choices": [
+   "Eight",
+   "Seven",
+   "Ten",
+   "Nine"
+  ],
+  "answer": 3,
+  "explanation": "And on the fifth day nine bullocks, two rams, and fourteen lambs.",
+  "ref": "Numbers 29:26"
+ },
+ {
+  "id": "numbers-29-h-09",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many bullocks were offered on the sixth day of the feast?",
+  "choices": [
+   "Seven",
+   "Eight",
+   "Nine",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "And on the sixth day eight bullocks, two rams, and fourteen lambs.",
+  "ref": "Numbers 29:29"
+ },
+ {
+  "id": "numbers-29-h-10",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many lambs were offered on the fourth day of the feast?",
+  "choices": [
+   "Seven",
+   "Ten",
+   "Fourteen",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "On the fourth day ten bullocks, two rams, and fourteen lambs.",
+  "ref": "Numbers 29:23"
+ },
+ {
+  "id": "numbers-29-h-11",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many rams were offered on the eighth day?",
+  "choices": [
+   "Two",
+   "Fourteen",
+   "One",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "One bullock, one ram, seven lambs of the first year.",
+  "ref": "Numbers 29:36"
+ },
+ {
+  "id": "numbers-29-h-12",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was forbidden on the eighth day?",
+  "choices": [
+   "Servile work",
+   "Singing",
+   "Travel",
+   "Eating meat"
+  ],
+  "answer": 0,
+  "explanation": "On the eighth day ye shall have a solemn assembly: ye shall do no servile work.",
+  "ref": "Numbers 29:35"
+ },
+ {
+  "id": "numbers-29-h-13",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the sin offering on the seventh day of the feast?",
+  "choices": [
+   "One bullock",
+   "Two rams",
+   "One kid",
+   "One goat"
+  ],
+  "answer": 3,
+  "explanation": "And one goat for a sin offering; beside the continual burnt offering.",
+  "ref": "Numbers 29:34"
+ },
+ {
+  "id": "numbers-29-h-14",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the sin offering on the fourth day of the feast?",
+  "choices": [
+   "Two rams",
+   "One kid of the goats",
+   "One lamb",
+   "One bullock"
+  ],
+  "answer": 1,
+  "explanation": "And one kid of the goats for a sin offering.",
+  "ref": "Numbers 29:25"
+ },
+ {
+  "id": "numbers-29-h-15",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many lambs were offered on the sixth day of the feast?",
+  "choices": [
+   "Fourteen",
+   "Eight",
+   "Thirteen",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "And on the sixth day eight bullocks, two rams, and fourteen lambs.",
+  "ref": "Numbers 29:29"
+ },
+ {
   "id": "old-numbers-30-1",
   "chapter": 30,
   "level": "beginner",
