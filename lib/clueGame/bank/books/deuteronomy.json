@@ -800,6 +800,646 @@
   "ref": "Deuteronomy 2:14–16"
  },
  {
+  "id": "deuteronomy-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which people dwelt in Mount Seir?",
+  "choices": [
+   "The children of Esau",
+   "The Amorites",
+   "The Ammonites",
+   "The Egyptians"
+  ],
+  "answer": 0,
+  "explanation": "Ye are to pass through the coast of your brethren the children of Esau, which dwell in Seir.",
+  "ref": "Deuteronomy 2:4"
+ },
+ {
+  "id": "deuteronomy-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which direction did the LORD tell Israel to turn?",
+  "choices": [
+   "Southward",
+   "Eastward",
+   "Northward",
+   "Westward"
+  ],
+  "answer": 2,
+  "explanation": "Ye have compassed this mountain long enough: turn you northward.",
+  "ref": "Deuteronomy 2:3"
+ },
+ {
+  "id": "deuteronomy-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to buy from the children of Esau?",
+  "choices": [
+   "Meat and water for money",
+   "Cattle and wool",
+   "Oil and wine",
+   "Tents and weapons"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall buy meat of them for money, and water of them for money.",
+  "ref": "Deuteronomy 2:6"
+ },
+ {
+  "id": "deuteronomy-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which brook did Israel cross?",
+  "choices": [
+   "Arnon",
+   "Jabbok",
+   "Kidron",
+   "Zered"
+  ],
+  "answer": 3,
+  "explanation": "Get you over the brook Zered. And we went over the brook Zered.",
+  "ref": "Deuteronomy 2:13"
+ },
+ {
+  "id": "deuteronomy-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years from Kadesh-barnea until crossing the brook Zered?",
+  "choices": [
+   "Twelve",
+   "Thirty and eight",
+   "Seventy",
+   "Forty and two"
+  ],
+  "answer": 1,
+  "explanation": "The space from Kadesh-barnea until we were come over the brook Zered was thirty and eight years.",
+  "ref": "Deuteronomy 2:14"
+ },
+ {
+  "id": "deuteronomy-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Moses send messengers to?",
+  "choices": [
+   "Og king of Bashan",
+   "Balak king of Moab",
+   "Sihon king of Heshbon",
+   "The king of Edom"
+  ],
+  "answer": 2,
+  "explanation": "I sent messengers unto Sihon king of Heshbon with words of peace.",
+  "ref": "Deuteronomy 2:26"
+ },
+ {
+  "id": "deuteronomy-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of words did the messengers carry?",
+  "choices": [
+   "Words of peace",
+   "Words of war",
+   "Words of tribute",
+   "Words of prophecy"
+  ],
+  "answer": 0,
+  "explanation": "I sent messengers out of the wilderness of Kedemoth unto Sihon with words of peace.",
+  "ref": "Deuteronomy 2:26"
+ },
+ {
+  "id": "deuteronomy-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "What did Sihon do when asked to let Israel pass?",
+  "choices": [
+   "He let them pass",
+   "He would not let them pass",
+   "He asked for gold",
+   "He joined them"
+  ],
+  "answer": 1,
+  "explanation": "Sihon king of Heshbon would not let us pass by him.",
+  "ref": "Deuteronomy 2:30"
+ },
+ {
+  "id": "deuteronomy-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Sihon and his people fight Israel?",
+  "choices": [
+   "Jahaz",
+   "Hormah",
+   "Kadesh",
+   "Ar"
+  ],
+  "answer": 0,
+  "explanation": "Then Sihon came out against us, he and all his people, to fight at Jahaz.",
+  "ref": "Deuteronomy 2:32"
+ },
+ {
+  "id": "deuteronomy-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who delivered Sihon before Israel?",
+  "choices": [
+   "The LORD our God",
+   "Aaron",
+   "Joshua",
+   "The captains"
+  ],
+  "answer": 0,
+  "explanation": "The LORD our God delivered him before us; and we smote him.",
+  "ref": "Deuteronomy 2:33"
+ },
+ {
+  "id": "deuteronomy-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom had the LORD given Mount Seir?",
+  "choices": [
+   "Esau",
+   "Lot",
+   "Ishmael",
+   "Sihon"
+  ],
+  "answer": 0,
+  "explanation": "I have given mount Seir unto Esau for a possession.",
+  "ref": "Deuteronomy 2:5"
+ },
+ {
+  "id": "deuteronomy-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much of Esau's land would the LORD give Israel?",
+  "choices": [
+   "A mountain",
+   "Half",
+   "Not so much as a footbreadth",
+   "A valley"
+  ],
+  "answer": 2,
+  "explanation": "I will not give you of their land, no, not so much as a footbreadth.",
+  "ref": "Deuteronomy 2:5"
+ },
+ {
+  "id": "deuteronomy-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who received Ar as a possession?",
+  "choices": [
+   "The children of Lot",
+   "The children of Esau",
+   "The Amorites",
+   "The Anakims"
+  ],
+  "answer": 0,
+  "explanation": "I have given Ar unto the children of Lot for a possession.",
+  "ref": "Deuteronomy 2:9"
+ },
+ {
+  "id": "deuteronomy-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "What did the Moabites call the tall people who once dwelt in their land?",
+  "choices": [
+   "Zamzummims",
+   "Horims",
+   "Avims",
+   "Emims"
+  ],
+  "answer": 3,
+  "explanation": "They were accounted giants, but the Moabites call them Emims.",
+  "ref": "Deuteronomy 2:10–11"
+ },
+ {
+  "id": "deuteronomy-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "What did the Ammonites call the giants of their land?",
+  "choices": [
+   "Zamzummims",
+   "Emims",
+   "Anakims",
+   "Caphtorims"
+  ],
+  "answer": 0,
+  "explanation": "The Ammonites call them Zamzummims.",
+  "ref": "Deuteronomy 2:20"
+ },
+ {
+  "id": "deuteronomy-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who dwelt in Seir beforetime and were destroyed by Esau's children?",
+  "choices": [
+   "The Emims",
+   "The Horims",
+   "The Avims",
+   "The Amorites"
+  ],
+  "answer": 1,
+  "explanation": "The Horims also dwelt in Seir beforetime; but the children of Esau succeeded them.",
+  "ref": "Deuteronomy 2:12"
+ },
+ {
+  "id": "deuteronomy-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Moses say the LORD had cared for Israel for forty years?",
+  "choices": [
+   "Thou hast lacked nothing",
+   "They lacked bread",
+   "They lacked water",
+   "They lacked shelter"
+  ],
+  "answer": 0,
+  "explanation": "These forty years the LORD thy God hath been with thee; thou hast lacked nothing.",
+  "ref": "Deuteronomy 2:7"
+ },
+ {
+  "id": "deuteronomy-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Which river did the LORD tell Israel to pass over before Sihon?",
+  "choices": [
+   "Jordan",
+   "Jabbok",
+   "Euphrates",
+   "Arnon"
+  ],
+  "answer": 3,
+  "explanation": "Rise ye up, take your journey, and pass over the river Arnon.",
+  "ref": "Deuteronomy 2:24"
+ },
+ {
+  "id": "deuteronomy-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "From which wilderness did Moses send messengers?",
+  "choices": [
+   "Kedemoth",
+   "Paran",
+   "Zin",
+   "Sinai"
+  ],
+  "answer": 0,
+  "explanation": "I sent messengers out of the wilderness of Kedemoth.",
+  "ref": "Deuteronomy 2:26"
+ },
+ {
+  "id": "deuteronomy-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel ask Sihon to allow?",
+  "choices": [
+   "To pass through his land",
+   "To trade horses",
+   "To rest a year",
+   "To settle there"
+  ],
+  "answer": 0,
+  "explanation": "Let me pass through thy land: I will go along by the high way.",
+  "ref": "Deuteronomy 2:27"
+ },
+ {
+  "id": "deuteronomy-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would Sihon not let Israel pass?",
+  "choices": [
+   "The LORD hardened his spirit",
+   "He feared Moab",
+   "He loved Esau",
+   "He was asleep"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God hardened his spirit, and made his heart obstinate.",
+  "ref": "Deuteronomy 2:30"
+ },
+ {
+  "id": "deuteronomy-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel take for a prey from Sihon's cities?",
+  "choices": [
+   "The cattle and the spoil",
+   "The gold only",
+   "The children",
+   "The altars"
+  ],
+  "answer": 0,
+  "explanation": "Only the cattle we took for a prey unto ourselves, and the spoil of the cities.",
+  "ref": "Deuteronomy 2:35"
+ },
+ {
+  "id": "deuteronomy-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "From Aroer, Israel found no city too strong unto where?",
+  "choices": [
+   "Gilead",
+   "Hormah",
+   "Ammon",
+   "Edom"
+  ],
+  "answer": 0,
+  "explanation": "From Aroer even unto Gilead, there was not one city too strong for us.",
+  "ref": "Deuteronomy 2:36"
+ },
+ {
+  "id": "deuteronomy-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Which land did Israel not come to, as the LORD forbade?",
+  "choices": [
+   "The land of the children of Ammon",
+   "The land of Sihon",
+   "Gilead",
+   "Aroer"
+  ],
+  "answer": 0,
+  "explanation": "Only unto the land of the children of Ammon thou camest not.",
+  "ref": "Deuteronomy 2:37"
+ },
+ {
+  "id": "deuteronomy-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the LORD tell Moses to pass through Ar?",
+  "choices": [
+   "Before leaving Horeb",
+   "After all the men of war were dead",
+   "On the Sabbath",
+   "Before the spies went"
+  ],
+  "answer": 1,
+  "explanation": "When all the men of war were consumed and dead, the LORD spake unto me.",
+  "ref": "Deuteronomy 2:16–18"
+ },
+ {
+  "id": "deuteronomy-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why were the men of war consumed from the host?",
+  "choices": [
+   "The hand of the LORD was against them",
+   "The Amorites killed them",
+   "A flood came",
+   "They ran away"
+  ],
+  "answer": 0,
+  "explanation": "The hand of the LORD was against them, to destroy them from among the host.",
+  "ref": "Deuteronomy 2:15"
+ },
+ {
+  "id": "deuteronomy-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who destroyed the Avims who dwelt in Hazerim?",
+  "choices": [
+   "The Caphtorims",
+   "The Emims",
+   "The Horims",
+   "The Moabites"
+  ],
+  "answer": 0,
+  "explanation": "The Caphtorims, which came forth out of Caphtor, destroyed them.",
+  "ref": "Deuteronomy 2:23"
+ },
+ {
+  "id": "deuteronomy-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "From which land did the Caphtorims come?",
+  "choices": [
+   "Caphtor",
+   "Hazerim",
+   "Azzah",
+   "Kedemoth"
+  ],
+  "answer": 0,
+  "explanation": "The Caphtorims, which came forth out of Caphtor, destroyed them.",
+  "ref": "Deuteronomy 2:23"
+ },
+ {
+  "id": "deuteronomy-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Israel passed by the way of the plain from Elath and from which place?",
+  "choices": [
+   "Ezion-gaber",
+   "Jahaz",
+   "Aroer",
+   "Heshbon"
+  ],
+  "answer": 0,
+  "explanation": "We passed by the way of the plain from Elath, and from Ezion-gaber.",
+  "ref": "Deuteronomy 2:8"
+ },
+ {
+  "id": "deuteronomy-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How would the children of Esau feel toward Israel?",
+  "choices": [
+   "Afraid",
+   "Glad",
+   "Proud",
+   "Angry"
+  ],
+  "answer": 0,
+  "explanation": "They shall be afraid of you: take ye good heed unto yourselves therefore.",
+  "ref": "Deuteronomy 2:4"
+ },
+ {
+  "id": "deuteronomy-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Israel promise to pass through Sihon's land?",
+  "choices": [
+   "On their feet",
+   "By chariots",
+   "By night",
+   "On camels"
+  ],
+  "answer": 0,
+  "explanation": "Only I will pass through on my feet.",
+  "ref": "Deuteronomy 2:28"
+ },
+ {
+  "id": "deuteronomy-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel promise not to do on the high way?",
+  "choices": [
+   "Rest at night",
+   "Turn right or left",
+   "Buy food",
+   "Light fires"
+  ],
+  "answer": 1,
+  "explanation": "I will neither turn unto the right hand nor to the left.",
+  "ref": "Deuteronomy 2:27"
+ },
+ {
+  "id": "deuteronomy-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Which peoples had sold Israel meat and water for money?",
+  "choices": [
+   "Esau's children and the Moabites",
+   "The Amorites and Sihon",
+   "The Ammonites and Horims",
+   "The Egyptians and Philistines"
+  ],
+  "answer": 0,
+  "explanation": "The children of Esau and the Moabites did unto me.",
+  "ref": "Deuteronomy 2:29"
+ },
+ {
+  "id": "deuteronomy-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel do to the men, women and little ones of every city of Sihon?",
+  "choices": [
+   "They took them captive",
+   "They sold them",
+   "They utterly destroyed them",
+   "They sent them away"
+  ],
+  "answer": 2,
+  "explanation": "We utterly destroyed the men, and the women, and the little ones, of every city.",
+  "ref": "Deuteronomy 2:34"
+ },
+ {
+  "id": "deuteronomy-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "The Emims were great, many and tall, like whom?",
+  "choices": [
+   "The Anakims",
+   "The Moabites",
+   "The Horims",
+   "The Amorites"
+  ],
+  "answer": 0,
+  "explanation": "A people great, and many, and tall, as the Anakims.",
+  "ref": "Deuteronomy 2:10"
+ },
+ {
+  "id": "deuteronomy-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Israel told not to do to the Moabites?",
+  "choices": [
+   "Pass by them",
+   "Buy from them",
+   "Distress them or contend with them in battle",
+   "Speak to them"
+  ],
+  "answer": 2,
+  "explanation": "Distress not the Moabites, neither contend with them in battle.",
+  "ref": "Deuteronomy 2:9"
+ },
+ {
+  "id": "deuteronomy-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the Avims dwell before the Caphtorims destroyed them?",
+  "choices": [
+   "Hazerim",
+   "Seir",
+   "Ar",
+   "Jahaz"
+  ],
+  "answer": 0,
+  "explanation": "The Avims dwelt in Hazerim, even unto Azzah, until the Caphtorims destroyed them.",
+  "ref": "Deuteronomy 2:23"
+ },
+ {
+  "id": "deuteronomy-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Which river did the LORD say Israel had not come near in Ammon's land?",
+  "choices": [
+   "Arnon",
+   "Jordan",
+   "Jabbok",
+   "Zered"
+  ],
+  "answer": 2,
+  "explanation": "Nor unto any place of the river Jabbok.",
+  "ref": "Deuteronomy 2:37"
+ },
+ {
+  "id": "deuteronomy-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Israel was to pass through which place, the coast of Moab?",
+  "choices": [
+   "Ar",
+   "Seir",
+   "Heshbon",
+   "Jahaz"
+  ],
+  "answer": 0,
+  "explanation": "Thou art to pass over through Ar, the coast of Moab, this day.",
+  "ref": "Deuteronomy 2:18"
+ },
+ {
+  "id": "deuteronomy-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the land of Ammon also accounted in old time?",
+  "choices": [
+   "A land of giants",
+   "A land of vineyards",
+   "A land of cedars",
+   "A land of salt"
+  ],
+  "answer": 0,
+  "explanation": "That also was accounted a land of giants: giants dwelt therein in old time.",
+  "ref": "Deuteronomy 2:20"
+ },
+ {
   "id": "old-deuteronomy-3-1",
   "chapter": 3,
   "level": "beginner",
