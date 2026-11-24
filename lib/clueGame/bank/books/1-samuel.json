@@ -14496,6 +14496,646 @@
   "ref": "1 Samuel 21:13"
  },
  {
+  "id": "1-samuel-21-e-01",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David come to Ahimelech the priest?",
+  "choices": [
+   "Gibeah",
+   "Nob",
+   "Ramah",
+   "Bethlehem"
+  ],
+  "answer": 1,
+  "explanation": "Then came David to Nob to Ahimelech the priest.",
+  "ref": "1 Samuel 21:1"
+ },
+ {
+  "id": "1-samuel-21-e-02",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Ahimelech feel when he met David?",
+  "choices": [
+   "Afraid",
+   "Glad",
+   "Angry",
+   "Proud"
+  ],
+  "answer": 0,
+  "explanation": "Ahimelech was afraid at the meeting of David.",
+  "ref": "1 Samuel 21:1"
+ },
+ {
+  "id": "1-samuel-21-e-03",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many loaves of bread did David ask for?",
+  "choices": [
+   "Two",
+   "Seven",
+   "Twelve",
+   "Five"
+  ],
+  "answer": 3,
+  "explanation": "Give me five loaves of bread in mine hand, or what there is present.",
+  "ref": "1 Samuel 21:3"
+ },
+ {
+  "id": "1-samuel-21-e-04",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the only bread the priest had at Nob?",
+  "choices": [
+   "Barley cakes",
+   "Unleavened bread",
+   "The shewbread",
+   "Fresh baked loaves"
+  ],
+  "answer": 2,
+  "explanation": "There was no bread there but the shewbread, that was taken from before the LORD.",
+  "ref": "1 Samuel 21:6"
+ },
+ {
+  "id": "1-samuel-21-e-05",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which servant of Saul was at Nob that day, detained before the LORD?",
+  "choices": [
+   "Abner",
+   "Doeg",
+   "Joab",
+   "Ahimelech"
+  ],
+  "answer": 1,
+  "explanation": "A certain man of the servants of Saul was there that day, and his name was Doeg, an Edomite.",
+  "ref": "1 Samuel 21:7"
+ },
+ {
+  "id": "1-samuel-21-e-06",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say when he saw Goliath's sword?",
+  "choices": [
+   "There is none like that",
+   "It is too heavy",
+   "Give it to Jonathan",
+   "I cannot lift it"
+  ],
+  "answer": 0,
+  "explanation": "David said, There is none like that; give it me.",
+  "ref": "1 Samuel 21:9"
+ },
+ {
+  "id": "1-samuel-21-e-07",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Achish's servants say Saul and David had slain?",
+  "choices": [
+   "Lions and bears",
+   "Armies and kings",
+   "Giants and priests",
+   "Thousands and ten thousands"
+  ],
+  "answer": 3,
+  "explanation": "Saul hath slain his thousands, and David his ten thousands.",
+  "ref": "1 Samuel 21:11"
+ },
+ {
+  "id": "1-samuel-21-e-08",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Achish say he had no need of?",
+  "choices": [
+   "Servants",
+   "Weapons",
+   "Mad men",
+   "Soldiers"
+  ],
+  "answer": 2,
+  "explanation": "Have I need of mad men, that ye have brought this fellow to play the mad man in my presence?",
+  "ref": "1 Samuel 21:15"
+ },
+ {
+  "id": "1-samuel-21-e-09",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did David say had sent him on a secret business?",
+  "choices": [
+   "Samuel",
+   "The king",
+   "Jonathan",
+   "Abner"
+  ],
+  "answer": 1,
+  "explanation": "David said, The king hath commanded me a business.",
+  "ref": "1 Samuel 21:2"
+ },
+ {
+  "id": "1-samuel-21-e-10",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides bread, what did David ask Ahimelech for?",
+  "choices": [
+   "A spear or sword",
+   "A shield",
+   "A horse",
+   "A bow"
+  ],
+  "answer": 0,
+  "explanation": "Is there not here under thine hand spear or sword?",
+  "ref": "1 Samuel 21:8"
+ },
+ {
+  "id": "1-samuel-21-m-01",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did David give for coming to Nob alone?",
+  "choices": [
+   "He was running from Saul",
+   "He was on a pilgrimage",
+   "He had lost his men",
+   "The king's secret business"
+  ],
+  "answer": 3,
+  "explanation": "The king hath commanded me a business, and hath said, Let no man know any thing of the business.",
+  "ref": "1 Samuel 21:2"
+ },
+ {
+  "id": "1-samuel-21-m-02",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest require before he would give the hallowed bread?",
+  "choices": [
+   "That David pay for it",
+   "That David offer a sacrifice",
+   "That the young men had kept from women",
+   "That David swear an oath"
+  ],
+  "answer": 2,
+  "explanation": "There is hallowed bread; if the young men have kept themselves at least from women.",
+  "ref": "1 Samuel 21:4"
+ },
+ {
+  "id": "1-samuel-21-m-03",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "About how long had women been kept from David's men?",
+  "choices": [
+   "One day",
+   "Three days",
+   "A week",
+   "A month"
+  ],
+  "answer": 1,
+  "explanation": "Of a truth women have been kept from us about these three days.",
+  "ref": "1 Samuel 21:5"
+ },
+ {
+  "id": "1-samuel-21-m-04",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was Goliath's sword kept?",
+  "choices": [
+   "Wrapped in a cloth behind the ephod",
+   "Under the altar",
+   "In the priest's tent",
+   "In a chest at the gate"
+  ],
+  "answer": 0,
+  "explanation": "It is here wrapped in a cloth behind the ephod.",
+  "ref": "1 Samuel 21:9"
+ },
+ {
+  "id": "1-samuel-21-m-05",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was put in place of the shewbread when it was taken away?",
+  "choices": [
+   "Fresh oil",
+   "Wine",
+   "New loaves of barley",
+   "Hot bread"
+  ],
+  "answer": 3,
+  "explanation": "The shewbread was taken from before the LORD, to put hot bread in the day when it was taken away.",
+  "ref": "1 Samuel 21:6"
+ },
+ {
+  "id": "1-samuel-21-m-06",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David say he had no sword or weapons?",
+  "choices": [
+   "Saul had taken them",
+   "He lost them in battle",
+   "The king's business required haste",
+   "He left them with Jonathan"
+  ],
+  "answer": 2,
+  "explanation": "I have neither brought my sword nor my weapons, because the king's business required haste.",
+  "ref": "1 Samuel 21:8"
+ },
+ {
+  "id": "1-samuel-21-m-07",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom had David slain in the valley of Elah?",
+  "choices": [
+   "Agag",
+   "Goliath the Philistine",
+   "Achish",
+   "Doeg"
+  ],
+  "answer": 1,
+  "explanation": "The sword of Goliath the Philistine, whom thou slewest in the valley of Elah.",
+  "ref": "1 Samuel 21:9"
+ },
+ {
+  "id": "1-samuel-21-m-08",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the servants of Achish call David?",
+  "choices": [
+   "The king of the land",
+   "The giant killer",
+   "A Hebrew spy",
+   "The son of Jesse"
+  ],
+  "answer": 0,
+  "explanation": "Is not this David the king of the land?",
+  "ref": "1 Samuel 21:11"
+ },
+ {
+  "id": "1-samuel-21-m-09",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David feel about Achish after the servants spoke?",
+  "choices": [
+   "Proud",
+   "Calm",
+   "Hopeful",
+   "Sore afraid"
+  ],
+  "answer": 3,
+  "explanation": "David laid up these words in his heart, and was sore afraid of Achish the king of Gath.",
+  "ref": "1 Samuel 21:12"
+ },
+ {
+  "id": "1-samuel-21-m-10",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David do with the words of Achish's servants?",
+  "choices": [
+   "Wrote them down",
+   "Sang them in Gath",
+   "Laid them up in his heart",
+   "Told them to Jonathan"
+  ],
+  "answer": 2,
+  "explanation": "David laid up these words in his heart.",
+  "ref": "1 Samuel 21:12"
+ },
+ {
+  "id": "1-samuel-21-m-11",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men did David have with him at Nob?",
+  "choices": [
+   "Four hundred",
+   "None",
+   "Six hundred",
+   "Three"
+  ],
+  "answer": 1,
+  "explanation": "Why art thou alone, and no man with thee?",
+  "ref": "1 Samuel 21:1"
+ },
+ {
+  "id": "1-samuel-21-m-12",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Achish ask why they had brought David to him?",
+  "choices": [
+   "His servants",
+   "Saul's soldiers",
+   "The priests",
+   "The people of Gath"
+  ],
+  "answer": 0,
+  "explanation": "Then said Achish unto his servants, Lo, ye see the man is mad: wherefore then have ye brought him to me?",
+  "ref": "1 Samuel 21:14"
+ },
+ {
+  "id": "1-samuel-21-m-13",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Doeg's position among Saul's servants?",
+  "choices": [
+   "Captain of the guard",
+   "Keeper of the spear",
+   "Armourbearer",
+   "Chief of the herdmen"
+  ],
+  "answer": 3,
+  "explanation": "Doeg, an Edomite, the chiefest of the herdmen that belonged to Saul.",
+  "ref": "1 Samuel 21:7"
+ },
+ {
+  "id": "1-samuel-21-m-14",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was Doeg that day?",
+  "choices": [
+   "Guarding Saul",
+   "Hunting David",
+   "Detained before the LORD",
+   "Herding in Gath"
+  ],
+  "answer": 2,
+  "explanation": "A certain man of the servants of Saul was there that day, detained before the LORD.",
+  "ref": "1 Samuel 21:7"
+ },
+ {
+  "id": "1-samuel-21-m-15",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say was holy?",
+  "choices": [
+   "The bread of the priest",
+   "The vessels of the young men",
+   "The sword",
+   "The road to Nob"
+  ],
+  "answer": 1,
+  "explanation": "The vessels of the young men are holy.",
+  "ref": "1 Samuel 21:5"
+ },
+ {
+  "id": "1-samuel-21-h-01",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Achish say he would not allow the madman to do?",
+  "choices": [
+   "Come into his house",
+   "Enter Gath",
+   "Speak before him",
+   "Return to Saul"
+  ],
+  "answer": 0,
+  "explanation": "Shall this fellow come into my house?",
+  "ref": "1 Samuel 21:15"
+ },
+ {
+  "id": "1-samuel-21-h-02",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priest say he did not have under his hand?",
+  "choices": [
+   "Any water",
+   "Any wine",
+   "Any oil",
+   "Common bread"
+  ],
+  "answer": 3,
+  "explanation": "There is no common bread under mine hand, but there is hallowed bread.",
+  "ref": "1 Samuel 21:4"
+ },
+ {
+  "id": "1-samuel-21-h-03",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did David describe the bread, as he spoke to the priest?",
+  "choices": [
+   "Holy beyond use",
+   "Fit for a king",
+   "In a manner common",
+   "Old and stale"
+  ],
+  "answer": 2,
+  "explanation": "The bread is in a manner common, yea, though it were sanctified this day in the vessel.",
+  "ref": "1 Samuel 21:5"
+ },
+ {
+  "id": "1-samuel-21-h-04",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say he had not brought with him?",
+  "choices": [
+   "His servants",
+   "His sword and his weapons",
+   "His harp",
+   "His armour-bearer"
+  ],
+  "answer": 1,
+  "explanation": "I have neither brought my sword nor my weapons with me.",
+  "ref": "1 Samuel 21:8"
+ },
+ {
+  "id": "1-samuel-21-h-05",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did David say he had appointed his servants?",
+  "choices": [
+   "To such and such a place",
+   "To Gath",
+   "To the cave Adullam",
+   "To Bethlehem"
+  ],
+  "answer": 0,
+  "explanation": "I have appointed my servants to such and such a place.",
+  "ref": "1 Samuel 21:2"
+ },
+ {
+  "id": "1-samuel-21-h-06",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many weapons did the priest say were there besides Goliath's sword?",
+  "choices": [
+   "One spear",
+   "Two swords",
+   "A bow",
+   "None"
+  ],
+  "answer": 3,
+  "explanation": "There is no other save that here.",
+  "ref": "1 Samuel 21:9"
+ },
+ {
+  "id": "1-samuel-21-h-07",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the first thing Ahimelech asked David?",
+  "choices": [
+   "Where he was going",
+   "Who sent him",
+   "Why he was alone",
+   "What he needed"
+  ],
+  "answer": 2,
+  "explanation": "Why art thou alone, and no man with thee?",
+  "ref": "1 Samuel 21:1"
+ },
+ {
+  "id": "1-samuel-21-h-08",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the servants of Achish say the people sang of David?",
+  "choices": [
+   "In the temple",
+   "In dances",
+   "On the road",
+   "In the fields"
+  ],
+  "answer": 1,
+  "explanation": "Did they not sing one to another of him in dances?",
+  "ref": "1 Samuel 21:11"
+ },
+ {
+  "id": "1-samuel-21-h-09",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David change before the servants of Achish?",
+  "choices": [
+   "His behaviour",
+   "His clothes",
+   "His name",
+   "His voice"
+  ],
+  "answer": 0,
+  "explanation": "He changed his behaviour before them, and feigned himself mad in their hands.",
+  "ref": "1 Samuel 21:13"
+ },
+ {
+  "id": "1-samuel-21-h-10",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From before whom was the shewbread taken?",
+  "choices": [
+   "The altar",
+   "The king",
+   "The ark",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "The shewbread, that was taken from before the LORD.",
+  "ref": "1 Samuel 21:6"
+ },
+ {
+  "id": "1-samuel-21-h-11",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did David flee Nob that day?",
+  "choices": [
+   "For fear of Doeg",
+   "For fear of the priest",
+   "For fear of Saul",
+   "For fear of the Philistines"
+  ],
+  "answer": 2,
+  "explanation": "David arose, and fled that day for fear of Saul.",
+  "ref": "1 Samuel 21:10"
+ },
+ {
+  "id": "1-samuel-21-h-12",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "In which valley, according to the priest, had David slain Goliath?",
+  "choices": [
+   "The valley of Sorek",
+   "The valley of Elah",
+   "The valley of Hinnom",
+   "The valley of Gilboa"
+  ],
+  "answer": 1,
+  "explanation": "Goliath the Philistine, whom thou slewest in the valley of Elah.",
+  "ref": "1 Samuel 21:9"
+ },
+ {
+  "id": "1-samuel-21-h-13",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say the king had told him about the business?",
+  "choices": [
+   "Let no man know any thing",
+   "Tell the priests",
+   "Speak only to Ahimelech",
+   "Bring it to Gath"
+  ],
+  "answer": 0,
+  "explanation": "The king hath said unto me, Let no man know any thing of the business whereabout I send thee.",
+  "ref": "1 Samuel 21:2"
+ },
+ {
+  "id": "1-samuel-21-h-14",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David scrabble on while feigning madness?",
+  "choices": [
+   "The walls of the house",
+   "The floor of the palace",
+   "The ground of Gath",
+   "The doors of the gate"
+  ],
+  "answer": 3,
+  "explanation": "He scrabbled on the doors of the gate.",
+  "ref": "1 Samuel 21:13"
+ },
+ {
+  "id": "1-samuel-21-h-15",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If there were not five loaves, what did David say he would take?",
+  "choices": [
+   "Whatever Doeg offered",
+   "A sword instead",
+   "What there is present",
+   "Nothing"
+  ],
+  "answer": 2,
+  "explanation": "Give me five loaves of bread in mine hand, or what there is present.",
+  "ref": "1 Samuel 21:3"
+ },
+ {
   "id": "old-1-samuel-22-1",
   "chapter": 22,
   "level": "beginner",
