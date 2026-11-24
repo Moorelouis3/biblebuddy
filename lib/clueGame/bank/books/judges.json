@@ -5840,6 +5840,646 @@
   "ref": "Judges 9:54"
  },
  {
+  "id": "judges-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son was Abimelech?",
+  "choices": [
+   "Zebul's",
+   "Jerubbaal's (Gideon's)",
+   "Gaal's",
+   "Jotham's"
+  ],
+  "answer": 1,
+  "explanation": "Abimelech the son of Jerubbaal went to Shechem unto his mother's brethren.",
+  "ref": "Judges 9:1"
+ },
+ {
+  "id": "judges-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Abimelech first go to win support?",
+  "choices": [
+   "Succoth",
+   "Thebez",
+   "Shechem",
+   "Penuel"
+  ],
+  "answer": 2,
+  "explanation": "Abimelech went to Shechem unto his mother's brethren, and communed with them.",
+  "ref": "Judges 9:1"
+ },
+ {
+  "id": "judges-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the men of Shechem make king?",
+  "choices": [
+   "Jotham",
+   "Gaal",
+   "Zebul",
+   "Abimelech"
+  ],
+  "answer": 3,
+  "explanation": "All the men of Shechem gathered together, and made Abimelech king.",
+  "ref": "Judges 9:6"
+ },
+ {
+  "id": "judges-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tree did the trees ask first to reign over them?",
+  "choices": [
+   "The olive tree",
+   "The fig tree",
+   "The vine",
+   "The cedar"
+  ],
+  "answer": 0,
+  "explanation": "The trees went forth to anoint a king, and said unto the olive tree, Reign thou over us.",
+  "ref": "Judges 9:8"
+ },
+ {
+  "id": "judges-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to Shechem and stirred the men against Abimelech?",
+  "choices": [
+   "Zebul",
+   "Gaal the son of Ebed",
+   "Jotham",
+   "Hamor"
+  ],
+  "answer": 1,
+  "explanation": "Gaal the son of Ebed came with his brethren, and the men of Shechem put their confidence in him.",
+  "ref": "Judges 9:26"
+ },
+ {
+  "id": "judges-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Abimelech do to the city of Shechem after taking it?",
+  "choices": [
+   "Rebuilt its walls",
+   "Made it his capital",
+   "Sowed it with salt",
+   "Left it empty"
+  ],
+  "answer": 2,
+  "explanation": "He took the city, beat down the city, and sowed it with salt.",
+  "ref": "Judges 9:45"
+ },
+ {
+  "id": "judges-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "At which city did Abimelech die?",
+  "choices": [
+   "Shechem",
+   "Ophrah",
+   "Arumah",
+   "Thebez"
+  ],
+  "answer": 3,
+  "explanation": "Abimelech went to Thebez, and encamped against Thebez, and took it.",
+  "ref": "Judges 9:50"
+ },
+ {
+  "id": "judges-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jotham flee for fear of his brother?",
+  "choices": [
+   "Beer",
+   "Ophrah",
+   "Thebez",
+   "Mount Zalmon"
+  ],
+  "answer": 0,
+  "explanation": "Jotham ran away, and fled, and went to Beer, and dwelt there.",
+  "ref": "Judges 9:21"
+ },
+ {
+  "id": "judges-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who rendered the wickedness of Abimelech upon his head?",
+  "choices": [
+   "Jotham",
+   "God",
+   "Gaal",
+   "The men of Israel"
+  ],
+  "answer": 1,
+  "explanation": "Thus God rendered the wickedness of Abimelech, which he did unto his father.",
+  "ref": "Judges 9:56"
+ },
+ {
+  "id": "judges-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Abimelech destroy the men of the tower of Shechem?",
+  "choices": [
+   "He starved them",
+   "He opened the gates",
+   "He set the hold on fire upon them",
+   "He sent Jotham"
+  ],
+  "answer": 2,
+  "explanation": "The people put boughs to the hold, and set the hold on fire upon them.",
+  "ref": "Judges 9:49"
+ },
+ {
+  "id": "judges-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many pieces of silver did Shechem give Abimelech?",
+  "choices": [
+   "Thirty",
+   "A hundred",
+   "Seven",
+   "Threescore and ten"
+  ],
+  "answer": 3,
+  "explanation": "They gave him threescore and ten pieces of silver out of the house of Baal-berith.",
+  "ref": "Judges 9:4"
+ },
+ {
+  "id": "judges-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Abimelech hire with the silver?",
+  "choices": [
+   "Vain and light persons",
+   "Mighty men of valour",
+   "Men of Ephraim",
+   "Soldiers of Midian"
+  ],
+  "answer": 0,
+  "explanation": "Abimelech hired vain and light persons, which followed him.",
+  "ref": "Judges 9:4"
+ },
+ {
+  "id": "judges-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Abimelech slay his brethren?",
+  "choices": [
+   "At Shechem's gate",
+   "At his father's house in Ophrah",
+   "On mount Gerizim",
+   "At Thebez"
+  ],
+  "answer": 1,
+  "explanation": "He went unto his father's house at Ophrah, and slew his brethren upon one stone.",
+  "ref": "Judges 9:5"
+ },
+ {
+  "id": "judges-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Shechem's hearts incline to follow Abimelech?",
+  "choices": [
+   "He promised them gold",
+   "He was a mighty warrior",
+   "They said, He is our brother",
+   "They feared him"
+  ],
+  "answer": 2,
+  "explanation": "Their hearts inclined to follow Abimelech; for they said, He is our brother.",
+  "ref": "Judges 9:3"
+ },
+ {
+  "id": "judges-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the fig tree say it would not forsake?",
+  "choices": [
+   "His shade",
+   "His fatness",
+   "His wine",
+   "His sweetness and good fruit"
+  ],
+  "answer": 3,
+  "explanation": "Should I forsake my sweetness, and my good fruit, and go to be promoted over the trees?",
+  "ref": "Judges 9:11"
+ },
+ {
+  "id": "judges-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the vine say it would not leave?",
+  "choices": [
+   "His wine, which cheereth God and man",
+   "His fatness",
+   "His sweetness",
+   "His shadow"
+  ],
+  "answer": 0,
+  "explanation": "Should I leave my wine, which cheereth God and man?",
+  "ref": "Judges 9:13"
+ },
+ {
+  "id": "judges-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the bramble say would devour the cedars of Lebanon?",
+  "choices": [
+   "The sword",
+   "Fire from the bramble",
+   "A great wind",
+   "The trees themselves"
+  ],
+  "answer": 1,
+  "explanation": "If not, let fire come out of the bramble, and devour the cedars of Lebanon.",
+  "ref": "Judges 9:15"
+ },
+ {
+  "id": "judges-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God send between Abimelech and the men of Shechem?",
+  "choices": [
+   "A famine",
+   "A prophet",
+   "An evil spirit",
+   "An angel"
+  ],
+  "answer": 2,
+  "explanation": "God sent an evil spirit between Abimelech and the men of Shechem.",
+  "ref": "Judges 9:23"
+ },
+ {
+  "id": "judges-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long had Abimelech reigned when God sent the evil spirit?",
+  "choices": [
+   "Seven years",
+   "Ten years",
+   "Forty years",
+   "Three years"
+  ],
+  "answer": 3,
+  "explanation": "When Abimelech had reigned three years over Israel, God sent an evil spirit.",
+  "ref": "Judges 9:22–23"
+ },
+ {
+  "id": "judges-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who sent messengers privily to Abimelech about Gaal?",
+  "choices": [
+   "Zebul",
+   "Jotham",
+   "Hamor",
+   "Ebed"
+  ],
+  "answer": 0,
+  "explanation": "Zebul the ruler of the city sent messengers unto Abimelech privily.",
+  "ref": "Judges 9:30–31"
+ },
+ {
+  "id": "judges-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Zebul tell Gaal he saw coming down from the mountains?",
+  "choices": [
+   "A band of Midianites",
+   "The shadow of the mountains as if they were men",
+   "Flocks of sheep",
+   "Clouds of dust"
+  ],
+  "answer": 1,
+  "explanation": "Zebul said, Thou seest the shadow of the mountains as if they were men.",
+  "ref": "Judges 9:36"
+ },
+ {
+  "id": "judges-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into how many companies did Abimelech first divide his people by night?",
+  "choices": [
+   "Three",
+   "Two",
+   "Four",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "Abimelech and the people laid wait against Shechem in four companies.",
+  "ref": "Judges 9:34"
+ },
+ {
+  "id": "judges-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Abimelech dwell while Zebul drove out Gaal?",
+  "choices": [
+   "Ophrah",
+   "Beer",
+   "Thebez",
+   "Arumah"
+  ],
+  "answer": 3,
+  "explanation": "Abimelech dwelt at Arumah: and Zebul thrust out Gaal and his brethren.",
+  "ref": "Judges 9:41"
+ },
+ {
+  "id": "judges-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abimelech take in his hand on mount Zalmon?",
+  "choices": [
+   "An axe",
+   "A torch",
+   "A spear",
+   "A shield"
+  ],
+  "answer": 0,
+  "explanation": "Abimelech took an axe in his hand, and cut down a bough from the trees.",
+  "ref": "Judges 9:48"
+ },
+ {
+  "id": "judges-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the people of Thebez flee?",
+  "choices": [
+   "Into the mountains",
+   "Into a strong tower",
+   "Into Shechem",
+   "Into the house of Berith"
+  ],
+  "answer": 1,
+  "explanation": "There was a strong tower within the city, and thither fled all the men and women.",
+  "ref": "Judges 9:51"
+ },
+ {
+  "id": "judges-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who gathered with the men of Shechem to make Abimelech king?",
+  "choices": [
+   "The house of Hamor",
+   "The men of Ophrah",
+   "All the house of Millo",
+   "The elders of Succoth"
+  ],
+  "answer": 2,
+  "explanation": "All the men of Shechem gathered together, and all the house of Millo.",
+  "ref": "Judges 9:6"
+ },
+ {
+  "id": "judges-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Abimelech made king?",
+  "choices": [
+   "At the gate of Ophrah",
+   "On mount Gerizim",
+   "Before the tower of Thebez",
+   "By the plain of the pillar in Shechem"
+  ],
+  "answer": 3,
+  "explanation": "They made Abimelech king, by the plain of the pillar that was in Shechem.",
+  "ref": "Judges 9:6"
+ },
+ {
+  "id": "judges-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of Gideon's sons was the youngest and hid himself?",
+  "choices": [
+   "Jotham",
+   "Jether",
+   "Abimelech",
+   "Zebul"
+  ],
+  "answer": 0,
+  "explanation": "Jotham the youngest son of Jerubbaal was left; for he hid himself.",
+  "ref": "Judges 9:5"
+ },
+ {
+  "id": "judges-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jotham called Abimelech the son of whose servant?",
+  "choices": [
+   "His concubine from Penuel",
+   "His maidservant",
+   "His wife's handmaid",
+   "A servant of Joash"
+  ],
+  "answer": 1,
+  "explanation": "Ye have made Abimelech, the son of his maidservant, king over the men of Shechem.",
+  "ref": "Judges 9:18"
+ },
+ {
+  "id": "judges-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Gaal told the men of Shechem to serve whom?",
+  "choices": [
+   "The house of Jerubbaal",
+   "Zebul the ruler",
+   "The men of Hamor the father of Shechem",
+   "The princes of Succoth"
+  ],
+  "answer": 2,
+  "explanation": "Gaal said, serve the men of Hamor the father of Shechem.",
+  "ref": "Judges 9:28"
+ },
+ {
+  "id": "judges-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "By which plain did another company come along, said Gaal?",
+  "choices": [
+   "The plain of Moreh",
+   "The plain of Jordan",
+   "The plain of Zaanaim",
+   "The plain of Meonenim"
+  ],
+  "answer": 3,
+  "explanation": "See there come another company along by the plain of Meonenim.",
+  "ref": "Judges 9:37"
+ },
+ {
+  "id": "judges-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Zebul do to Gaal and his brethren?",
+  "choices": [
+   "Thrust them out of Shechem",
+   "Slew them",
+   "Sold them",
+   "Hid them"
+  ],
+  "answer": 0,
+  "explanation": "Zebul thrust out Gaal and his brethren, that they should not dwell in Shechem.",
+  "ref": "Judges 9:41"
+ },
+ {
+  "id": "judges-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into whose house did the men of the tower of Shechem enter a hold?",
+  "choices": [
+   "The house of Millo",
+   "The house of the god Berith",
+   "The house of Jerubbaal",
+   "The house of Zebul"
+  ],
+  "answer": 1,
+  "explanation": "They entered into an hold of the house of the god Berith.",
+  "ref": "Judges 9:46"
+ },
+ {
+  "id": "judges-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "About how many men and women died in the tower of Shechem?",
+  "choices": [
+   "Seventy",
+   "Three hundred",
+   "A thousand",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "All the men of the tower of Shechem died also, about a thousand men and women.",
+  "ref": "Judges 9:49"
+ },
+ {
+  "id": "judges-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into how many companies did Abimelech divide his people the next day?",
+  "choices": [
+   "Four",
+   "Two",
+   "Five",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "He took the people, and divided them into three companies, and laid wait in the field.",
+  "ref": "Judges 9:43"
+ },
+ {
+  "id": "judges-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abimelech try to do to the door of the tower at Thebez?",
+  "choices": [
+   "Burn it with fire",
+   "Break it with an axe",
+   "Open it with a key",
+   "Dig under it"
+  ],
+  "answer": 0,
+  "explanation": "He went hard unto the door of the tower to burn it with fire.",
+  "ref": "Judges 9:52"
+ },
+ {
+  "id": "judges-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Abimelech call to slay him?",
+  "choices": [
+   "Zebul",
+   "His armourbearer",
+   "The woman",
+   "Jotham"
+  ],
+  "answer": 1,
+  "explanation": "He called hastily unto the young man his armourbearer, Draw thy sword, and slay me.",
+  "ref": "Judges 9:54"
+ },
+ {
+  "id": "judges-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men of Israel do when they saw Abimelech was dead?",
+  "choices": [
+   "Made Jotham king",
+   "Burned Thebez",
+   "Departed every man unto his place",
+   "Buried him at Ophrah"
+  ],
+  "answer": 2,
+  "explanation": "When the men of Israel saw that Abimelech was dead, they departed every man unto his place.",
+  "ref": "Judges 9:55"
+ },
+ {
+  "id": "judges-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jotham say his father had done for Shechem?",
+  "choices": [
+   "Delivered them out of the hand of Midian",
+   "Built the tower of Shechem",
+   "Made peace with Moab",
+   "Gave them the pillar"
+  ],
+  "answer": 0,
+  "explanation": "Jotham said his father fought for you, and adventured his life far, and delivered you out of the hand of Midian.",
+  "ref": "Judges 9:17"
+ },
+ {
+  "id": "judges-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose curse came upon the men of Shechem?",
+  "choices": [
+   "Jotham the son of Jerubbaal",
+   "Gaal the son of Ebed",
+   "The angel of the LORD",
+   "Joash"
+  ],
+  "answer": 0,
+  "explanation": "Upon them came the curse of Jotham the son of Jerubbaal.",
+  "ref": "Judges 9:57"
+ },
+ {
   "id": "old-judges-10-1",
   "chapter": 10,
   "level": "beginner",
