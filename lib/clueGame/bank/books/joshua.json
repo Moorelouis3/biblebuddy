@@ -5120,6 +5120,662 @@
   "ref": "Joshua 8:34–35"
  },
  {
+  "id": "joshua-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Joshua not to be?",
+  "choices": [
+   "Silent",
+   "Hasty",
+   "Dismayed",
+   "Proud"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said, Fear not, neither be thou dismayed.",
+  "ref": "Joshua 8:1"
+ },
+ {
+  "id": "joshua-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city did Joshua go up against in this chapter?",
+  "choices": [
+   "Hebron",
+   "Gibeon",
+   "Ai",
+   "Jericho"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said, Arise, go up to Ai.",
+  "ref": "Joshua 8:1"
+ },
+ {
+  "id": "joshua-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many mighty men of valour did Joshua send away by night?",
+  "choices": [
+   "Five thousand",
+   "Three thousand",
+   "Thirty thousand",
+   "Twelve thousand"
+  ],
+  "answer": 2,
+  "explanation": "Joshua chose out thirty thousand mighty men of valour, and sent them away by night.",
+  "ref": "Joshua 8:3"
+ },
+ {
+  "id": "joshua-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the ambush do to Ai once they entered it?",
+  "choices": [
+   "Left it empty",
+   "Set it on fire",
+   "Opened its gates for Joshua",
+   "Made peace"
+  ],
+  "answer": 1,
+  "explanation": "They entered into the city, and took it, and hasted and set the city on fire.",
+  "ref": "Joshua 8:19"
+ },
+ {
+  "id": "joshua-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the men of Ai see behind them?",
+  "choices": [
+   "The ark",
+   "A river flooding",
+   "A great army from Bethel",
+   "The smoke of the city rising to heaven"
+  ],
+  "answer": 3,
+  "explanation": "The men of Ai looked behind them, and behold, the smoke of the city ascended up to heaven.",
+  "ref": "Joshua 8:20"
+ },
+ {
+  "id": "joshua-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men and women of Ai fell that day?",
+  "choices": [
+   "Thirty thousand",
+   "Five thousand",
+   "Three thousand",
+   "Twelve thousand"
+  ],
+  "answer": 3,
+  "explanation": "All that fell that day, both of men and women, were twelve thousand.",
+  "ref": "Joshua 8:25"
+ },
+ {
+  "id": "joshua-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua do to Ai in the end?",
+  "choices": [
+   "Rebuilt it",
+   "Burnt it and made it an heap for ever",
+   "Gave it to Bethel",
+   "Lived in it"
+  ],
+  "answer": 1,
+  "explanation": "Joshua burnt Ai, and made it an heap for ever, even a desolation unto this day.",
+  "ref": "Joshua 8:28"
+ },
+ {
+  "id": "joshua-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the altar on mount Ebal made of?",
+  "choices": [
+   "Gold",
+   "Wood",
+   "Brass",
+   "Whole stones"
+  ],
+  "answer": 3,
+  "explanation": "An altar of whole stones, over which no man hath lift up any iron.",
+  "ref": "Joshua 8:31"
+ },
+ {
+  "id": "joshua-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua write on the stones?",
+  "choices": [
+   "A copy of the law of Moses",
+   "A song",
+   "The names of Ai's dead",
+   "A map"
+  ],
+  "answer": 0,
+  "explanation": "He wrote there upon the stones a copy of the law of Moses.",
+  "ref": "Joshua 8:32"
+ },
+ {
+  "id": "joshua-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kinds of offerings did Israel offer on the altar?",
+  "choices": [
+   "Burnt offerings and peace offerings",
+   "Drink offerings only",
+   "Sin offerings only",
+   "Grain only"
+  ],
+  "answer": 0,
+  "explanation": "They offered thereon burnt offerings unto the LORD, and sacrificed peace offerings.",
+  "ref": "Joshua 8:31"
+ },
+ {
+  "id": "joshua-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were Israel allowed to take from Ai?",
+  "choices": [
+   "Its king's crown",
+   "Its gold and idols",
+   "Nothing at all",
+   "The spoil and the cattle"
+  ],
+  "answer": 3,
+  "explanation": "Only the spoil thereof, and the cattle thereof, shall ye take for a prey unto yourselves.",
+  "ref": "Joshua 8:2"
+ },
+ {
+  "id": "joshua-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the ambush lie in wait?",
+  "choices": [
+   "At Jericho",
+   "On the east of Ai",
+   "Inside Ai",
+   "Between Bethel and Ai"
+  ],
+  "answer": 3,
+  "explanation": "They went to lie in ambush, and abode between Bethel and Ai, on the west side of Ai.",
+  "ref": "Joshua 8:9"
+ },
+ {
+  "id": "joshua-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Joshua lodge the night the ambush went out?",
+  "choices": [
+   "In Ai",
+   "In Bethel",
+   "By the Jordan",
+   "Among the people"
+  ],
+  "answer": 3,
+  "explanation": "Joshua lodged that night among the people.",
+  "ref": "Joshua 8:9"
+ },
+ {
+  "id": "joshua-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which side of Ai did Joshua and the people pitch?",
+  "choices": [
+   "West",
+   "North",
+   "South",
+   "East"
+  ],
+  "answer": 1,
+  "explanation": "They pitched on the north side of Ai: now there was a valley between them and Ai.",
+  "ref": "Joshua 8:11"
+ },
+ {
+  "id": "joshua-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Joshua go that night?",
+  "choices": [
+   "Back to Gilgal",
+   "Into Ai",
+   "Up Mount Ebal",
+   "Into the midst of the valley"
+  ],
+  "answer": 3,
+  "explanation": "Joshua went that night into the midst of the valley.",
+  "ref": "Joshua 8:13"
+ },
+ {
+  "id": "joshua-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king of Ai not know?",
+  "choices": [
+   "That Bethel had fallen",
+   "That Joshua had left",
+   "That there were liers in ambush behind the city",
+   "That the Jordan was dry"
+  ],
+  "answer": 2,
+  "explanation": "He wist not that there were liers in ambush against him behind the city.",
+  "ref": "Joshua 8:14"
+ },
+ {
+  "id": "joshua-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Joshua and Israel act when Ai came out?",
+  "choices": [
+   "They sang",
+   "They made as if they were beaten and fled",
+   "They hid in the gate",
+   "They stood firm"
+  ],
+  "answer": 1,
+  "explanation": "Joshua and all Israel made as if they were beaten before them, and fled by the way of the wilderness.",
+  "ref": "Joshua 8:15"
+ },
+ {
+  "id": "joshua-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who besides Ai's men went out in pursuit of Israel?",
+  "choices": [
+   "The Gibeonites",
+   "The men of Hazor",
+   "The men of Bethel",
+   "The Philistines"
+  ],
+  "answer": 2,
+  "explanation": "There was not a man left in Ai or Bethel, that went not out after Israel.",
+  "ref": "Joshua 8:17"
+ },
+ {
+  "id": "joshua-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ai's men leave open as they pursued?",
+  "choices": [
+   "The valley",
+   "The gate of Bethel",
+   "The city",
+   "The altar"
+  ],
+  "answer": 2,
+  "explanation": "They left the city open, and pursued after Israel.",
+  "ref": "Joshua 8:17"
+ },
+ {
+  "id": "joshua-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who told Joshua to stretch out the spear?",
+  "choices": [
+   "The priests",
+   "The LORD",
+   "Caleb",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said unto Joshua, Stretch out the spear that is in thy hand toward Ai.",
+  "ref": "Joshua 8:18"
+ },
+ {
+  "id": "joshua-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the ambush do as soon as Joshua stretched out his hand?",
+  "choices": [
+   "They waited",
+   "They blew trumpets",
+   "They retreated",
+   "They ran and entered the city"
+  ],
+  "answer": 3,
+  "explanation": "The ambush arose quickly out of their place, and they ran as soon as he had stretched out his hand.",
+  "ref": "Joshua 8:19"
+ },
+ {
+  "id": "joshua-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "What happened to the king of Ai at first?",
+  "choices": [
+   "He was taken alive and brought to Joshua",
+   "He was slain at once",
+   "He fled",
+   "He surrendered the keys"
+  ],
+  "answer": 0,
+  "explanation": "The king of Ai they took alive, and brought him to Joshua.",
+  "ref": "Joshua 8:23"
+ },
+ {
+  "id": "joshua-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the king's body cast after it was taken down?",
+  "choices": [
+   "On Mount Ebal",
+   "At the entering of the gate of the city",
+   "Into the river",
+   "Into the valley of Achor"
+  ],
+  "answer": 1,
+  "explanation": "Joshua commanded that they should cast it at the entering of the gate of the city.",
+  "ref": "Joshua 8:29"
+ },
+ {
+  "id": "joshua-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had commanded the altar to be of whole stones?",
+  "choices": [
+   "Moses the servant of the LORD",
+   "Eleazar",
+   "Aaron",
+   "Joshua"
+  ],
+  "answer": 0,
+  "explanation": "As Moses the servant of the LORD commanded, an altar of whole stones.",
+  "ref": "Joshua 8:31"
+ },
+ {
+  "id": "joshua-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who stood on either side of the ark during the reading?",
+  "choices": [
+   "The twelve spies",
+   "The captains",
+   "The priests the Levites",
+   "The kings"
+  ],
+  "answer": 2,
+  "explanation": "They stood on this side the ark and on that side before the priests the Levites, which bare the ark.",
+  "ref": "Joshua 8:33"
+ },
+ {
+  "id": "joshua-8-m-16",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was present when Joshua read the law?",
+  "choices": [
+   "The women, the little ones and the strangers",
+   "Only the men of war",
+   "Only the elders",
+   "Only the priests"
+  ],
+  "answer": 0,
+  "explanation": "Joshua read before all the congregation of Israel, with the women, and the little ones, and the strangers.",
+  "ref": "Joshua 8:35"
+ },
+ {
+  "id": "joshua-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men did Joshua set in the ambush?",
+  "choices": [
+   "Three thousand",
+   "About five thousand",
+   "About thirty thousand",
+   "Twelve thousand"
+  ],
+  "answer": 1,
+  "explanation": "He took about five thousand men, and set them to lie in ambush between Bethel and Ai.",
+  "ref": "Joshua 8:12"
+ },
+ {
+  "id": "joshua-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua say Ai would think when Israel fled?",
+  "choices": [
+   "They are tired",
+   "The LORD is angry",
+   "They flee before us, as at the first",
+   "They have no spears"
+  ],
+  "answer": 2,
+  "explanation": "They will say, They flee before us, as at the first: therefore we will flee before them.",
+  "ref": "Joshua 8:6"
+ },
+ {
+  "id": "joshua-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua tell the ambush not to do?",
+  "choices": [
+   "Burn the city",
+   "Go very far from the city",
+   "Kill the king",
+   "Take spoil"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall lie in wait behind the city: go not very far from the city, but be ye all ready.",
+  "ref": "Joshua 8:4"
+ },
+ {
+  "id": "joshua-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say about the city when the ambush took it?",
+  "choices": [
+   "It would be given to Bethel",
+   "It would sink",
+   "It would be spared",
+   "It would be delivered into their hand"
+  ],
+  "answer": 3,
+  "explanation": "The LORD your God will deliver it into your hand.",
+  "ref": "Joshua 8:7"
+ },
+ {
+  "id": "joshua-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua do early the morning after the ambush was sent?",
+  "choices": [
+   "Built an altar",
+   "Numbered the people",
+   "Crossed the Jordan",
+   "Fasted"
+  ],
+  "answer": 1,
+  "explanation": "Joshua rose up early in the morning, and numbered the people.",
+  "ref": "Joshua 8:10"
+ },
+ {
+  "id": "joshua-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who went up before the people to Ai with Joshua?",
+  "choices": [
+   "The twelve spies",
+   "The elders of Israel",
+   "The priests",
+   "The captains of Ai"
+  ],
+  "answer": 1,
+  "explanation": "Joshua went up, he and the elders of Israel, before the people to Ai.",
+  "ref": "Joshua 8:10"
+ },
+ {
+  "id": "joshua-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Ai's men go out against Israel?",
+  "choices": [
+   "At midnight",
+   "At the evening sacrifice",
+   "At a time appointed, before the plain",
+   "At noon"
+  ],
+  "answer": 2,
+  "explanation": "The men of the city went out against Israel to battle, at a time appointed, before the plain.",
+  "ref": "Joshua 8:14"
+ },
+ {
+  "id": "joshua-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which direction did Joshua and Israel flee?",
+  "choices": [
+   "Toward Shiloh",
+   "By the way of the wilderness",
+   "Toward Bethel",
+   "Toward Jericho"
+  ],
+  "answer": 1,
+  "explanation": "Joshua and all Israel fled by the way of the wilderness.",
+  "ref": "Joshua 8:15"
+ },
+ {
+  "id": "joshua-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the people who fled to the wilderness?",
+  "choices": [
+   "They died of thirst",
+   "They hid",
+   "They turned back on the pursuers",
+   "They crossed the river"
+  ],
+  "answer": 2,
+  "explanation": "The people that fled to the wilderness turned back upon the pursuers.",
+  "ref": "Joshua 8:20"
+ },
+ {
+  "id": "joshua-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men of Ai have no power to do?",
+  "choices": [
+   "Flee this way or that way",
+   "Pass the gate",
+   "Fight",
+   "Pray"
+  ],
+  "answer": 0,
+  "explanation": "They had no power to flee this way or that way.",
+  "ref": "Joshua 8:20"
+ },
+ {
+  "id": "joshua-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Joshua keep his hand stretched out?",
+  "choices": [
+   "Seven days",
+   "Until the king died",
+   "Until sunset",
+   "Until he had utterly destroyed Ai's people"
+  ],
+  "answer": 3,
+  "explanation": "Joshua drew not his hand back, wherewith he stretched out the spear, until he had utterly destroyed all the inhabitants of Ai.",
+  "ref": "Joshua 8:26"
+ },
+ {
+  "id": "joshua-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was the king of Ai hanged on a tree?",
+  "choices": [
+   "Seven days",
+   "Three days",
+   "Until eventide",
+   "Until morning"
+  ],
+  "answer": 2,
+  "explanation": "The king of Ai he hanged on a tree until eventide.",
+  "ref": "Joshua 8:29"
+ },
+ {
+  "id": "joshua-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was raised over the king's body?",
+  "choices": [
+   "A tent",
+   "A great heap of stones",
+   "A pillar",
+   "An altar"
+  ],
+  "answer": 1,
+  "explanation": "They should raise thereon a great heap of stones, that remaineth unto this day.",
+  "ref": "Joshua 8:29"
+ },
+ {
+  "id": "joshua-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Half of Israel stood over against which mountain besides Ebal?",
+  "choices": [
+   "Carmel",
+   "Hermon",
+   "Nebo",
+   "Gerizim"
+  ],
+  "answer": 3,
+  "explanation": "Half of them over against mount Gerizim, and half over against mount Ebal.",
+  "ref": "Joshua 8:33"
+ },
+ {
+  "id": "joshua-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Israel stand half against Gerizim and half against Ebal?",
+  "choices": [
+   "To bless the people as Moses commanded",
+   "To flee",
+   "To count themselves",
+   "To hide from Ai"
+  ],
+  "answer": 0,
+  "explanation": "As Moses had commanded before, that they should bless the people of Israel.",
+  "ref": "Joshua 8:33"
+ },
+ {
   "id": "old-joshua-9-1",
   "chapter": 9,
   "level": "beginner",
