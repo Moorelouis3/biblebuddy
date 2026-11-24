@@ -20992,6 +20992,646 @@
   "ref": "1 Samuel 30:24"
  },
  {
+  "id": "1-samuel-30-e-01",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did the Amalekites carry away from Ziklag?",
+  "choices": [
+   "The elders of the city",
+   "The priests",
+   "The women, sons and daughters",
+   "Only the young men"
+  ],
+  "answer": 2,
+  "explanation": "Their wives, and their sons, and their daughters, were taken captives.",
+  "ref": "1 Samuel 30:2–3"
+ },
+ {
+  "id": "1-samuel-30-e-02",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David and his people do when they saw the burned city?",
+  "choices": [
+   "Rushed to attack Gath",
+   "Fled to the hills",
+   "Prayed in silence",
+   "Wept until they had no more power"
+  ],
+  "answer": 3,
+  "explanation": "David and the people lifted up their voice and wept, until they had no more power to weep.",
+  "ref": "1 Samuel 30:4"
+ },
+ {
+  "id": "1-samuel-30-e-03",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which priest brought David the ephod?",
+  "choices": [
+   "Eli",
+   "Zadok",
+   "Ahimaaz",
+   "Abiathar"
+  ],
+  "answer": 3,
+  "explanation": "Abiathar brought thither the ephod to David.",
+  "ref": "1 Samuel 30:7"
+ },
+ {
+  "id": "1-samuel-30-e-04",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "place",
+  "question": "At which brook did part of David's men stay behind?",
+  "choices": [
+   "Cherith",
+   "Jabbok",
+   "Kidron",
+   "Besor"
+  ],
+  "answer": 3,
+  "explanation": "David came to the brook Besor, where those that were left behind stayed.",
+  "ref": "1 Samuel 30:9"
+ },
+ {
+  "id": "1-samuel-30-e-05",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men went on with David to pursue the Amalekites?",
+  "choices": [
+   "Two hundred",
+   "One hundred",
+   "Four hundred",
+   "Six hundred"
+  ],
+  "answer": 2,
+  "explanation": "David pursued, he and four hundred men.",
+  "ref": "1 Samuel 30:10"
+ },
+ {
+  "id": "1-samuel-30-e-06",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David's men find in the field?",
+  "choices": [
+   "An Egyptian",
+   "An Amalekite king",
+   "A Philistine soldier",
+   "A priest of Nob"
+  ],
+  "answer": 0,
+  "explanation": "They found an Egyptian in the field, and brought him to David.",
+  "ref": "1 Samuel 30:11"
+ },
+ {
+  "id": "1-samuel-30-e-07",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did they first give the Egyptian?",
+  "choices": [
+   "Oil and fruit",
+   "Bread and water",
+   "Wine and meat",
+   "Milk and honey"
+  ],
+  "answer": 1,
+  "explanation": "They gave him bread, and he did eat; and they made him drink water.",
+  "ref": "1 Samuel 30:11"
+ },
+ {
+  "id": "1-samuel-30-e-08",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many of the Amalekites escaped the battle?",
+  "choices": [
+   "Two hundred on foot",
+   "None at all",
+   "Four hundred young men on camels",
+   "Their king only"
+  ],
+  "answer": 2,
+  "explanation": "There escaped not a man of them, save four hundred young men, which rode upon camels, and fled.",
+  "ref": "1 Samuel 30:17"
+ },
+ {
+  "id": "1-samuel-30-e-09",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do about his two wives?",
+  "choices": [
+   "He sent them to Judah",
+   "He ransomed them with silver",
+   "He rescued them",
+   "He left them with Achish"
+  ],
+  "answer": 2,
+  "explanation": "David recovered all that the Amalekites had carried away: and David rescued his two wives.",
+  "ref": "1 Samuel 30:18"
+ },
+ {
+  "id": "1-samuel-30-e-10",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did David send a present from the spoil?",
+  "choices": [
+   "The priests at Nob",
+   "The elders of Judah, his friends",
+   "Saul's household",
+   "Achish, king of Gath"
+  ],
+  "answer": 1,
+  "explanation": "He sent of the spoil unto the elders of Judah, even to his friends.",
+  "ref": "1 Samuel 30:26"
+ },
+ {
+  "id": "1-samuel-30-m-01",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day did David and his men come to Ziklag?",
+  "choices": [
+   "The seventh day",
+   "The first day",
+   "The tenth day",
+   "The third day"
+  ],
+  "answer": 3,
+  "explanation": "When David and his men were come to Ziklag on the third day, the Amalekites had burned it with fire.",
+  "ref": "1 Samuel 30:1"
+ },
+ {
+  "id": "1-samuel-30-m-02",
+  "chapter": 30,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two wives of David were taken captive?",
+  "choices": [
+   "Abigail and Bathsheba",
+   "Ahinoam and Abigail",
+   "Michal and Abigail",
+   "Ahinoam and Michal"
+  ],
+  "answer": 1,
+  "explanation": "David's two wives were taken captives, Ahinoam the Jezreelitess, and Abigail the wife of Nabal.",
+  "ref": "1 Samuel 30:5"
+ },
+ {
+  "id": "1-samuel-30-m-03",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people speak of stoning David?",
+  "choices": [
+   "David had made peace with Achish",
+   "Ziklag's gates were left open",
+   "Every man was grieved for his sons and daughters",
+   "David refused to pray"
+  ],
+  "answer": 2,
+  "explanation": "The people spake of stoning him, because the soul of all the people was grieved, every man for his sons and daughters.",
+  "ref": "1 Samuel 30:6"
+ },
+ {
+  "id": "1-samuel-30-m-04",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD answer when David asked whether to pursue?",
+  "choices": [
+   "Send Abiathar alone",
+   "Go to Gath",
+   "Pursue, for thou shalt overtake and recover all",
+   "Wait three days"
+  ],
+  "answer": 2,
+  "explanation": "He answered him, Pursue: for thou shalt surely overtake them, and without fail recover all.",
+  "ref": "1 Samuel 30:8"
+ },
+ {
+  "id": "1-samuel-30-m-05",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did two hundred men stay at the brook Besor?",
+  "choices": [
+   "They feared the Amalekites",
+   "They were too faint to cross it",
+   "David sent them to Judah",
+   "They were guarding the camp"
+  ],
+  "answer": 1,
+  "explanation": "Two hundred abode behind, which were so faint that they could not go over the brook Besor.",
+  "ref": "1 Samuel 30:10"
+ },
+ {
+  "id": "1-samuel-30-m-06",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long had the Egyptian gone without bread or water?",
+  "choices": [
+   "Three days and three nights",
+   "Two days and nights",
+   "One day and night",
+   "Seven days"
+  ],
+  "answer": 0,
+  "explanation": "He had eaten no bread, nor drunk any water, three days and three nights.",
+  "ref": "1 Samuel 30:12"
+ },
+ {
+  "id": "1-samuel-30-m-07",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David's men give the Egyptian to eat besides bread?",
+  "choices": [
+   "Roasted grain and olives",
+   "Honey and cheese",
+   "A fat calf",
+   "A cake of figs and two clusters of raisins"
+  ],
+  "answer": 3,
+  "explanation": "They gave him a piece of a cake of figs, and two clusters of raisins.",
+  "ref": "1 Samuel 30:12"
+ },
+ {
+  "id": "1-samuel-30-m-08",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why had the Egyptian's master left him?",
+  "choices": [
+   "He had stolen from him",
+   "He had been captured",
+   "He could not keep up",
+   "He had fallen sick three days before"
+  ],
+  "answer": 3,
+  "explanation": "My master left me, because three days agone I fell sick.",
+  "ref": "1 Samuel 30:13"
+ },
+ {
+  "id": "1-samuel-30-m-09",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Egyptian ask David to swear?",
+  "choices": [
+   "To make him a free man",
+   "To take him to Egypt",
+   "To give him a share of spoil",
+   "Not to kill him nor give him to his master"
+  ],
+  "answer": 3,
+  "explanation": "Swear unto me by God, that thou wilt neither kill me, nor deliver me into the hands of my master.",
+  "ref": "1 Samuel 30:15"
+ },
+ {
+  "id": "1-samuel-30-m-10",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the Amalekites doing when David found them?",
+  "choices": [
+   "Eating, drinking and dancing",
+   "Counting the spoil",
+   "Sleeping in their tents",
+   "Marching toward Gath"
+  ],
+  "answer": 0,
+  "explanation": "They were spread abroad upon all the earth, eating and drinking, and dancing.",
+  "ref": "1 Samuel 30:16"
+ },
+ {
+  "id": "1-samuel-30-m-11",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did David's battle with the Amalekites last?",
+  "choices": [
+   "Three days",
+   "One night",
+   "From dawn to noon",
+   "From the twilight to the evening of the next day"
+  ],
+  "answer": 3,
+  "explanation": "David smote them from the twilight even unto the evening of the next day.",
+  "ref": "1 Samuel 30:17"
+ },
+ {
+  "id": "1-samuel-30-m-12",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the wicked men want to give the two hundred?",
+  "choices": [
+   "Only their wives and children",
+   "Half the cattle",
+   "A tenth of the spoil",
+   "Nothing, not even their families"
+  ],
+  "answer": 0,
+  "explanation": "We will not give them ought of the spoil, save to every man his wife and his children.",
+  "ref": "1 Samuel 30:22"
+ },
+ {
+  "id": "1-samuel-30-m-13",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say should be the share of the one who tarried by the stuff?",
+  "choices": [
+   "Half as much",
+   "The same as the one who went to battle",
+   "A tenth",
+   "The flocks only"
+  ],
+  "answer": 1,
+  "explanation": "As his part is that goeth down to the battle, so shall his part be that tarrieth by the stuff: they shall part alike.",
+  "ref": "1 Samuel 30:24"
+ },
+ {
+  "id": "1-samuel-30-m-14",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David make of his ruling on sharing the spoil?",
+  "choices": [
+   "A gift to Abiathar",
+   "A secret between friends",
+   "A vow to the LORD",
+   "A statute and an ordinance for Israel"
+  ],
+  "answer": 3,
+  "explanation": "He made it a statute and an ordinance for Israel unto this day.",
+  "ref": "1 Samuel 30:25"
+ },
+ {
+  "id": "1-samuel-30-m-15",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David do when he saw the two hundred at the brook?",
+  "choices": [
+   "He saluted them",
+   "He counted them",
+   "He rebuked them",
+   "He sent them home"
+  ],
+  "answer": 0,
+  "explanation": "When David came near to the people, he saluted them.",
+  "ref": "1 Samuel 30:21"
+ },
+ {
+  "id": "1-samuel-30-h-01",
+  "chapter": 30,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Abiathar the priest?",
+  "choices": [
+   "Eli's",
+   "Abner's",
+   "Ahimelech's",
+   "Zadok's"
+  ],
+  "answer": 2,
+  "explanation": "David said to Abiathar the priest, Ahimelech's son, bring me hither the ephod.",
+  "ref": "1 Samuel 30:7"
+ },
+ {
+  "id": "1-samuel-30-h-02",
+  "chapter": 30,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose servant was the young Egyptian?",
+  "choices": [
+   "A Kenite's",
+   "A Philistine's",
+   "An Amalekite's",
+   "An Egyptian's"
+  ],
+  "answer": 2,
+  "explanation": "I am a young man of Egypt, servant to an Amalekite.",
+  "ref": "1 Samuel 30:13"
+ },
+ {
+  "id": "1-samuel-30-h-03",
+  "chapter": 30,
+  "level": "hard",
+  "category": "person",
+  "question": "On whose south did the Egyptian say the raid was made, besides Judah's coast?",
+  "choices": [
+   "The Cherethites",
+   "The Ammonites",
+   "The Moabites",
+   "The Edomites"
+  ],
+  "answer": 0,
+  "explanation": "We made an invasion upon the south of the Cherethites, and upon the coast which belongeth to Judah.",
+  "ref": "1 Samuel 30:14"
+ },
+ {
+  "id": "1-samuel-30-h-04",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David call the present he sent to the elders of Judah?",
+  "choices": [
+   "A gift from Achish",
+   "Wages for faithful men",
+   "Spoil of the enemies of the LORD",
+   "The firstfruits of Ziklag"
+  ],
+  "answer": 2,
+  "explanation": "Behold a present for you of the spoil of the enemies of the LORD.",
+  "ref": "1 Samuel 30:26"
+ },
+ {
+  "id": "1-samuel-30-h-05",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David take from the Amalekites and call \"David's spoil\"?",
+  "choices": [
+   "The flocks and herds",
+   "The silver and gold",
+   "The camels",
+   "The captive women"
+  ],
+  "answer": 0,
+  "explanation": "David took all the flocks and the herds, and said, This is David's spoil.",
+  "ref": "1 Samuel 30:20"
+ },
+ {
+  "id": "1-samuel-30-h-06",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What name did the text give those who would not share the spoil?",
+  "choices": [
+   "Captains of hundreds",
+   "Wicked men and men of Belial",
+   "Elders of Judah",
+   "Mighty men of valour"
+  ],
+  "answer": 1,
+  "explanation": "Then answered all the wicked men and men of Belial, of those that went with David.",
+  "ref": "1 Samuel 30:22"
+ },
+ {
+  "id": "1-samuel-30-h-07",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did David say the credit for the victory belonged?",
+  "choices": [
+   "The LORD, who had preserved them",
+   "Abiathar the priest",
+   "His mighty men",
+   "The Egyptian guide"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall not do so, my brethren, with that which the LORD hath given us, who hath preserved us.",
+  "ref": "1 Samuel 30:23"
+ },
+ {
+  "id": "1-samuel-30-h-08",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David ask the LORD about the raiding troop?",
+  "choices": [
+   "Shall I return to Gath?",
+   "Where is Ziklag's God?",
+   "Shall I pursue after this troop?",
+   "Shall I make peace?"
+  ],
+  "answer": 2,
+  "explanation": "David enquired at the LORD, saying, Shall I pursue after this troop? shall I overtake them?",
+  "ref": "1 Samuel 30:8"
+ },
+ {
+  "id": "1-samuel-30-h-09",
+  "chapter": 30,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these places received a share of the spoil?",
+  "choices": [
+   "Hormah",
+   "Gibeah",
+   "Beersheba",
+   "Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "David sent to them which were in Hormah, and in Chor-ashan, and in Athach.",
+  "ref": "1 Samuel 30:30"
+ },
+ {
+  "id": "1-samuel-30-h-10",
+  "chapter": 30,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these places also received spoil?",
+  "choices": [
+   "Jericho",
+   "Gath",
+   "Hebron",
+   "Bethlehem"
+  ],
+  "answer": 2,
+  "explanation": "David sent to them which were in Hebron, and to all the places where he and his men were wont to haunt.",
+  "ref": "1 Samuel 30:31"
+ },
+ {
+  "id": "1-samuel-30-h-11",
+  "chapter": 30,
+  "level": "hard",
+  "category": "person",
+  "question": "Which people's cities, besides the Jerahmeelites, received spoil?",
+  "choices": [
+   "The Philistines",
+   "The Hittites",
+   "The Kenites",
+   "The Moabites"
+  ],
+  "answer": 2,
+  "explanation": "Them in the cities of the Jerahmeelites, and in the cities of the Kenites.",
+  "ref": "1 Samuel 30:29"
+ },
+ {
+  "id": "1-samuel-30-h-12",
+  "chapter": 30,
+  "level": "hard",
+  "category": "place",
+  "question": "From which lands had the Amalekites taken their great spoil?",
+  "choices": [
+   "Egypt and Syria",
+   "Gath and Ekron",
+   "The Philistines and Judah",
+   "Moab and Edom"
+  ],
+  "answer": 2,
+  "explanation": "The great spoil that they had taken out of the land of the Philistines, and out of the land of Judah.",
+  "ref": "1 Samuel 30:16"
+ },
+ {
+  "id": "1-samuel-30-h-13",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the text describe what was lacking after David's victory?",
+  "choices": [
+   "A few of the children",
+   "The household goods",
+   "Nothing was lacking, small or great",
+   "Only the flocks"
+  ],
+  "answer": 2,
+  "explanation": "There was nothing lacking to them, neither small nor great, neither sons nor daughters, neither spoil.",
+  "ref": "1 Samuel 30:19"
+ },
+ {
+  "id": "1-samuel-30-h-14",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did David \"encourage himself\" when he was greatly distressed?",
+  "choices": [
+   "In his mighty men",
+   "In the LORD his God",
+   "In the spoil he would win",
+   "In Abiathar's counsel"
+  ],
+  "answer": 1,
+  "explanation": "David encouraged himself in the LORD his God.",
+  "ref": "1 Samuel 30:6"
+ },
+ {
+  "id": "1-samuel-30-h-15",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Egyptian say he was, when David asked where he was from?",
+  "choices": [
+   "A boy of Jezreel",
+   "A soldier of Philistia",
+   "A young man of Egypt",
+   "An old man of Gath"
+  ],
+  "answer": 2,
+  "explanation": "He said, I am a young man of Egypt, servant to an Amalekite.",
+  "ref": "1 Samuel 30:13"
+ },
+ {
   "id": "old-1-samuel-31-1",
   "chapter": 31,
   "level": "beginner",
