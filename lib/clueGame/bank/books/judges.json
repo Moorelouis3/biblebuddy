@@ -6560,6 +6560,646 @@
   "ref": "Judges 10:16"
  },
  {
+  "id": "judges-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who judged Israel after Tola?",
+  "choices": [
+   "Samson",
+   "Jephthah",
+   "Jair",
+   "Abimelech"
+  ],
+  "answer": 2,
+  "explanation": "After Tola arose Jair, a Gileadite, and judged Israel twenty and two years.",
+  "ref": "Judges 10:3"
+ },
+ {
+  "id": "judges-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the children of Israel do again in the sight of the LORD?",
+  "choices": [
+   "They built a temple",
+   "They made peace with Ammon",
+   "They fled to Egypt",
+   "They did evil"
+  ],
+  "answer": 3,
+  "explanation": "The children of Israel did evil again in the sight of the LORD.",
+  "ref": "Judges 10:6"
+ },
+ {
+  "id": "judges-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which false gods did Israel serve after Jair died?",
+  "choices": [
+   "The golden ephod",
+   "Baalim and Ashtaroth",
+   "The brazen serpent",
+   "Dagon and Molech"
+  ],
+  "answer": 1,
+  "explanation": "Israel served Baalim, and Ashtaroth, and the gods of Syria, Zidon, Moab, Ammon and the Philistines.",
+  "ref": "Judges 10:6"
+ },
+ {
+  "id": "judges-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel say when they first cried unto the LORD?",
+  "choices": [
+   "Ammon has wronged us",
+   "Give us a sign",
+   "We have sinned against thee",
+   "Send us a king"
+  ],
+  "answer": 2,
+  "explanation": "They cried, We have sinned against thee, both because we have forsaken our God, and also served Baalim.",
+  "ref": "Judges 10:10"
+ },
+ {
+  "id": "judges-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which people gathered and encamped in Gilead at the end of the chapter?",
+  "choices": [
+   "The Amorites",
+   "The children of Ammon",
+   "The Philistines",
+   "The Midianites"
+  ],
+  "answer": 1,
+  "explanation": "Then the children of Ammon were gathered together, and encamped in Gilead.",
+  "ref": "Judges 10:17"
+ },
+ {
+  "id": "judges-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the children of Israel assemble and encamp?",
+  "choices": [
+   "Camon",
+   "Timnath",
+   "Mizpeh",
+   "Shamir"
+  ],
+  "answer": 2,
+  "explanation": "The children of Israel assembled themselves together, and encamped in Mizpeh.",
+  "ref": "Judges 10:17"
+ },
+ {
+  "id": "judges-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say He would do no more for Israel?",
+  "choices": [
+   "Feed them",
+   "Send them rain",
+   "Hear their prayers",
+   "Deliver them"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said, Yet ye have forsaken me, and served other gods: wherefore I will deliver you no more.",
+  "ref": "Judges 10:13"
+ },
+ {
+  "id": "judges-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the LORD when Israel put away the strange gods?",
+  "choices": [
+   "He raised up Tola again",
+   "His soul was grieved for their misery",
+   "He gave them manna",
+   "He sent fire from heaven"
+  ],
+  "answer": 1,
+  "explanation": "They served the LORD: and his soul was grieved for the misery of Israel.",
+  "ref": "Judges 10:16"
+ },
+ {
+  "id": "judges-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What reward did the people and princes of Gilead offer to the man who would begin the fight?",
+  "choices": [
+   "A thousand pieces of silver",
+   "A city of his own",
+   "To be head over Gilead",
+   "Peace for forty years"
+  ],
+  "answer": 2,
+  "explanation": "He that began to fight against the children of Ammon would be head over all the inhabitants of Gilead.",
+  "ref": "Judges 10:18"
+ },
+ {
+  "id": "judges-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which river did Ammon cross to fight Judah, Benjamin and Ephraim?",
+  "choices": [
+   "Jabbok",
+   "Kishon",
+   "Arnon",
+   "Jordan"
+  ],
+  "answer": 3,
+  "explanation": "The children of Ammon passed over Jordan to fight also against Judah, and against Benjamin, and against the house of Ephraim.",
+  "ref": "Judges 10:9"
+ },
+ {
+  "id": "judges-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Tola's father?",
+  "choices": [
+   "Abimelech",
+   "Puah",
+   "Dodo",
+   "Jair"
+  ],
+  "answer": 1,
+  "explanation": "Tola was the son of Puah, the son of Dodo, a man of Issachar.",
+  "ref": "Judges 10:1"
+ },
+ {
+  "id": "judges-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Tola buried?",
+  "choices": [
+   "Gilead",
+   "Camon",
+   "Mizpeh",
+   "Shamir"
+  ],
+  "answer": 3,
+  "explanation": "Tola judged Israel twenty and three years, and died, and was buried in Shamir.",
+  "ref": "Judges 10:2"
+ },
+ {
+  "id": "judges-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Jair buried?",
+  "choices": [
+   "Timnath",
+   "Gilead",
+   "Camon",
+   "Shamir"
+  ],
+  "answer": 2,
+  "explanation": "Jair died, and was buried in Camon.",
+  "ref": "Judges 10:5"
+ },
+ {
+  "id": "judges-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Jair called, besides being a judge of Israel?",
+  "choices": [
+   "A man of Issachar",
+   "A Zidonian",
+   "A Gileadite",
+   "A Philistine"
+  ],
+  "answer": 2,
+  "explanation": "After Tola arose Jair, a Gileadite.",
+  "ref": "Judges 10:3"
+ },
+ {
+  "id": "judges-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Jair judge Israel?",
+  "choices": [
+   "Twenty and three",
+   "Forty",
+   "Eighteen",
+   "Twenty and two"
+  ],
+  "answer": 3,
+  "explanation": "Jair judged Israel twenty and two years.",
+  "ref": "Judges 10:3"
+ },
+ {
+  "id": "judges-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the thirty cities of Jair's sons called?",
+  "choices": [
+   "Havoth-jair",
+   "Camon",
+   "Shamir",
+   "Mizpeh"
+  ],
+  "answer": 0,
+  "explanation": "They had thirty cities, which are called Havoth-jair unto this day.",
+  "ref": "Judges 10:4"
+ },
+ {
+  "id": "judges-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the gods of Syria, Zidon, Moab and Ammon, whose gods did Israel serve?",
+  "choices": [
+   "The Philistines",
+   "The Maonites",
+   "The Egyptians",
+   "The Amalekites"
+  ],
+  "answer": 0,
+  "explanation": "Israel served the gods of the children of Ammon and the gods of the Philistines.",
+  "ref": "Judges 10:6"
+ },
+ {
+  "id": "judges-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "On the other side of Jordan, in whose land did the oppression fall?",
+  "choices": [
+   "The Moabites",
+   "The Amorites",
+   "The Philistines",
+   "The Syrians"
+  ],
+  "answer": 1,
+  "explanation": "They oppressed the children of Israel on the other side Jordan in the land of the Amorites, which is in Gilead.",
+  "ref": "Judges 10:8"
+ },
+ {
+  "id": "judges-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which three tribes did Ammon cross Jordan to fight?",
+  "choices": [
+   "Simeon, Levi and Issachar",
+   "Judah, Benjamin and Ephraim",
+   "Asher, Naphtali and Zebulun",
+   "Dan, Gad and Reuben"
+  ],
+  "answer": 1,
+  "explanation": "Ammon passed over Jordan to fight against Judah, and against Benjamin, and against the house of Ephraim.",
+  "ref": "Judges 10:9"
+ },
+ {
+  "id": "judges-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From whom did the LORD first say He had delivered Israel?",
+  "choices": [
+   "The Zidonians",
+   "The Amalekites",
+   "The Maonites",
+   "The Egyptians"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said, Did not I deliver you from the Egyptians, and from the Amorites, from the children of Ammon, and from the Philistines?",
+  "ref": "Judges 10:11"
+ },
+ {
+  "id": "judges-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which people did the LORD list with the Zidonians and the Amalekites as oppressors?",
+  "choices": [
+   "The Maonites",
+   "The Moabites",
+   "The Midianites",
+   "The Edomites"
+  ],
+  "answer": 0,
+  "explanation": "The Zidonians also, and the Amalekites, and the Maonites, did oppress you.",
+  "ref": "Judges 10:12"
+ },
+ {
+  "id": "judges-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel ask the LORD to do \"only, we pray thee, this day\"?",
+  "choices": [
+   "Forgive them",
+   "Deliver them",
+   "Hide them",
+   "Feed them"
+  ],
+  "answer": 1,
+  "explanation": "Israel said, do thou unto us whatsoever seemeth good; deliver us only, we pray thee, this day.",
+  "ref": "Judges 10:15"
+ },
+ {
+  "id": "judges-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who asked, \"What man is he that will begin to fight against the children of Ammon?\"",
+  "choices": [
+   "Tola",
+   "Jair and his sons",
+   "The elders of Ephraim",
+   "The people and princes of Gilead"
+  ],
+  "answer": 3,
+  "explanation": "The people and princes of Gilead said one to another, What man is he that will begin to fight against the children of Ammon?",
+  "ref": "Judges 10:18"
+ },
+ {
+  "id": "judges-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Tola was a man of which tribe?",
+  "choices": [
+   "Benjamin",
+   "Issachar",
+   "Ephraim",
+   "Judah"
+  ],
+  "answer": 1,
+  "explanation": "Tola the son of Puah, the son of Dodo, was a man of Issachar.",
+  "ref": "Judges 10:1"
+ },
+ {
+  "id": "judges-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "In which hill country did Tola dwell?",
+  "choices": [
+   "Mount Judah",
+   "Mount Ephraim",
+   "Mount Gilead",
+   "Mount Issachar"
+  ],
+  "answer": 1,
+  "explanation": "Tola dwelt in Shamir in mount Ephraim.",
+  "ref": "Judges 10:1"
+ },
+ {
+  "id": "judges-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel do when the Zidonians, Amalekites and Maonites oppressed them?",
+  "choices": [
+   "They chose a king",
+   "They hid in caves",
+   "They fled across Jordan",
+   "They cried to the LORD"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said, The Zidonians also, and the Amalekites, and the Maonites, did oppress you; and ye cried to me, and I delivered you.",
+  "ref": "Judges 10:12"
+ },
+ {
+  "id": "judges-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose gods are NOT in the list of gods Israel served?",
+  "choices": [
+   "Egypt",
+   "Zidon",
+   "The Philistines",
+   "Moab"
+  ],
+  "answer": 0,
+  "explanation": "The list names Syria, Zidon, Moab, Ammon and the Philistines, not Egypt.",
+  "ref": "Judges 10:6"
+ },
+ {
+  "id": "judges-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the LORD say He would deliver Israel no more?",
+  "choices": [
+   "They forsook Him and served other gods",
+   "They had no judge",
+   "They refused to fight",
+   "They broke the Sabbath"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Yet ye have forsaken me, and served other gods: wherefore I will deliver you no more.",
+  "ref": "Judges 10:13"
+ },
+ {
+  "id": "judges-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the Egyptians, Amorites and Ammon, whom did the LORD say He had delivered Israel from?",
+  "choices": [
+   "The Midianites",
+   "The Amalekites",
+   "The Syrians",
+   "The Philistines"
+  ],
+  "answer": 3,
+  "explanation": "Did not I deliver you from the Egyptians, and from the Amorites, from the children of Ammon, and from the Philistines?",
+  "ref": "Judges 10:11"
+ },
+ {
+  "id": "judges-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man is said to have arisen \"to defend Israel\"?",
+  "choices": [
+   "Jair",
+   "Tola",
+   "Abimelech",
+   "Gideon"
+  ],
+  "answer": 1,
+  "explanation": "After Abimelech there arose to defend Israel Tola the son of Puah.",
+  "ref": "Judges 10:1"
+ },
+ {
+  "id": "judges-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "After whom did Tola arise?",
+  "choices": [
+   "Jair",
+   "Gideon",
+   "Jotham",
+   "Abimelech"
+  ],
+  "answer": 3,
+  "explanation": "After Abimelech there arose to defend Israel Tola the son of Puah.",
+  "ref": "Judges 10:1"
+ },
+ {
+  "id": "judges-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Tola was the son of Puah, who was the son of whom?",
+  "choices": [
+   "Dodo",
+   "Abimelech",
+   "Jair",
+   "Gilead"
+  ],
+  "answer": 0,
+  "explanation": "Tola the son of Puah, the son of Dodo.",
+  "ref": "Judges 10:1"
+ },
+ {
+  "id": "judges-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is the anger of the LORD described when He gave Israel to their enemies?",
+  "choices": [
+   "Kindled for a season",
+   "Slow",
+   "Hot",
+   "Quenched"
+  ],
+  "answer": 2,
+  "explanation": "The anger of the LORD was hot against Israel, and he sold them.",
+  "ref": "Judges 10:7"
+ },
+ {
+  "id": "judges-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two sins did Israel confess in their first cry to the LORD?",
+  "choices": [
+   "Killing Abimelech and refusing Tola",
+   "Making a king and burning incense",
+   "Forsaking God and serving Baalim",
+   "Breaking the Sabbath and stealing"
+  ],
+  "answer": 2,
+  "explanation": "They said, We have sinned against thee, both because we have forsaken our God, and also served Baalim.",
+  "ref": "Judges 10:10"
+ },
+ {
+  "id": "judges-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel tell the LORD to do to them in their second prayer?",
+  "choices": [
+   "Whatsoever He had promised",
+   "Whatsoever He willed for Ammon",
+   "Whatsoever seemeth good",
+   "Whatsoever their fathers asked"
+  ],
+  "answer": 2,
+  "explanation": "Israel said, We have sinned: do thou unto us whatsoever seemeth good.",
+  "ref": "Judges 10:15"
+ },
+ {
+  "id": "judges-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jair's thirty sons have besides thirty ass colts?",
+  "choices": [
+   "Thirty wives",
+   "Thirty flocks",
+   "Thirty cities",
+   "Thirty tents"
+  ],
+  "answer": 2,
+  "explanation": "He had thirty sons that rode on thirty ass colts, and they had thirty cities.",
+  "ref": "Judges 10:4"
+ },
+ {
+  "id": "judges-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "In which land were Jair's cities, called Havoth-jair?",
+  "choices": [
+   "Gilead",
+   "Moab",
+   "Ephraim",
+   "Zidon"
+  ],
+  "answer": 0,
+  "explanation": "They had thirty cities, which are in the land of Gilead.",
+  "ref": "Judges 10:4"
+ },
+ {
+  "id": "judges-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Israel's condition after Ammon crossed Jordan?",
+  "choices": [
+   "Scattered into Egypt",
+   "At peace",
+   "Without a leader",
+   "Sore distressed"
+  ],
+  "answer": 3,
+  "explanation": "The children of Ammon passed over Jordan, so that Israel was sore distressed.",
+  "ref": "Judges 10:9"
+ },
+ {
+  "id": "judges-10-h-14",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In the list of gods Israel served, which come right after the gods of Zidon?",
+  "choices": [
+   "The gods of Moab",
+   "The gods of Syria",
+   "The gods of the Philistines",
+   "The gods of Ammon"
+  ],
+  "answer": 0,
+  "explanation": "Israel served the gods of Syria, and of Zidon, and of Moab, and of the children of Ammon, and of the Philistines.",
+  "ref": "Judges 10:6"
+ },
+ {
+  "id": "judges-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do to Israel because of His hot anger?",
+  "choices": [
+   "He sold them",
+   "He drove them out",
+   "He led them away",
+   "He lent them"
+  ],
+  "answer": 0,
+  "explanation": "The anger of the LORD was hot against Israel, and he sold them into the hands of the Philistines and Ammon.",
+  "ref": "Judges 10:7"
+ },
+ {
   "id": "old-judges-11-1",
   "chapter": 11,
   "level": "beginner",
