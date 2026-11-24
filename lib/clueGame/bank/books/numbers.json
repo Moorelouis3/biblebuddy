@@ -13776,6 +13776,646 @@
   "ref": "Numbers 20:28"
  },
  {
+  "id": "numbers-20-e-01",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the people short of at Kadesh?",
+  "choices": [
+   "Bread",
+   "Water",
+   "Meat",
+   "Shade"
+  ],
+  "answer": 1,
+  "explanation": "There was no water for the congregation.",
+  "ref": "Numbers 20:2"
+ },
+ {
+  "id": "numbers-20-e-02",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the people gather against when there was no water?",
+  "choices": [
+   "Joshua and Caleb",
+   "Moses and Aaron",
+   "Eleazar and Phinehas",
+   "Miriam and Aaron"
+  ],
+  "answer": 1,
+  "explanation": "They gathered themselves together against Moses and against Aaron.",
+  "ref": "Numbers 20:2"
+ },
+ {
+  "id": "numbers-20-e-03",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the water that came from the rock called?",
+  "choices": [
+   "The water of Marah",
+   "The water of Meribah",
+   "The water of Elim",
+   "The water of Jordan"
+  ],
+  "answer": 1,
+  "explanation": "This is the water of Meribah; the children of Israel strove with the LORD.",
+  "ref": "Numbers 20:13"
+ },
+ {
+  "id": "numbers-20-e-04",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king did Moses send messengers to from Kadesh?",
+  "choices": [
+   "The king of Moab",
+   "The king of Edom",
+   "The king of Bashan",
+   "The king of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Moses sent messengers from Kadesh unto the king of Edom.",
+  "ref": "Numbers 20:14"
+ },
+ {
+  "id": "numbers-20-e-05",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Edom answer when Israel asked to pass through?",
+  "choices": [
+   "Pass in peace",
+   "Thou shalt not go through",
+   "Pay a toll first",
+   "Come back tomorrow"
+  ],
+  "answer": 1,
+  "explanation": "Edom said, Thou shalt not go through, and refused Israel passage.",
+  "ref": "Numbers 20:18–21"
+ },
+ {
+  "id": "numbers-20-e-06",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which mount did Israel journey from Kadesh?",
+  "choices": [
+   "Mount Sinai",
+   "Mount Hor",
+   "Mount Nebo",
+   "Mount Carmel"
+  ],
+  "answer": 1,
+  "explanation": "The whole congregation journeyed from Kadesh and came unto mount Hor.",
+  "ref": "Numbers 20:22"
+ },
+ {
+  "id": "numbers-20-e-07",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who died on top of Mount Hor?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "Eleazar",
+   "Miriam"
+  ],
+  "answer": 1,
+  "explanation": "Aaron died there in the top of the mount.",
+  "ref": "Numbers 20:28"
+ },
+ {
+  "id": "numbers-20-e-08",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Israel mourn for Aaron?",
+  "choices": [
+   "Seven days",
+   "Thirty days",
+   "Forty days",
+   "Three days"
+  ],
+  "answer": 1,
+  "explanation": "They mourned for Aaron thirty days, even all the house of Israel.",
+  "ref": "Numbers 20:29"
+ },
+ {
+  "id": "numbers-20-e-09",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses take from before the LORD to bring water from the rock?",
+  "choices": [
+   "A trumpet",
+   "The rod",
+   "A censer",
+   "A basin"
+  ],
+  "answer": 1,
+  "explanation": "Moses took the rod from before the LORD, as he commanded him.",
+  "ref": "Numbers 20:9"
+ },
+ {
+  "id": "numbers-20-e-10",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What appeared to Moses and Aaron at the door of the tabernacle?",
+  "choices": [
+   "A pillar of dust",
+   "The glory of the LORD",
+   "An angel with a sword",
+   "A burning bush"
+  ],
+  "answer": 1,
+  "explanation": "They fell upon their faces: and the glory of the LORD appeared unto them.",
+  "ref": "Numbers 20:6"
+ },
+ {
+  "id": "numbers-20-m-01",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What name did Moses call the people before striking the rock?",
+  "choices": [
+   "Fools",
+   "Sinners",
+   "Strangers",
+   "Rebels"
+  ],
+  "answer": 3,
+  "explanation": "Moses said, Hear now, ye rebels; must we fetch you water out of this rock?",
+  "ref": "Numbers 20:10"
+ },
+ {
+  "id": "numbers-20-m-02",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people wish when they complained about the water?",
+  "choices": [
+   "That they had stayed in Egypt",
+   "That they had crossed the Jordan",
+   "That they had gone to Edom",
+   "That they had died when their brethren died"
+  ],
+  "answer": 3,
+  "explanation": "They said, Would God that we had died when our brethren died before the LORD!",
+  "ref": "Numbers 20:3"
+ },
+ {
+  "id": "numbers-20-m-03",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Moses and Aaron go when the people gathered against them?",
+  "choices": [
+   "The top of the mount",
+   "The edge of Edom",
+   "The king's high way",
+   "The door of the tabernacle"
+  ],
+  "answer": 3,
+  "explanation": "They went from the presence of the assembly unto the door of the tabernacle of the congregation.",
+  "ref": "Numbers 20:6"
+ },
+ {
+  "id": "numbers-20-m-04",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses do with Aaron's garments on Mount Hor?",
+  "choices": [
+   "Burned them",
+   "Gave them to Moses' sons",
+   "Laid them in the tabernacle",
+   "Put them upon Eleazar"
+  ],
+  "answer": 3,
+  "explanation": "Moses stripped Aaron of his garments, and put them upon Eleazar his son.",
+  "ref": "Numbers 20:28"
+ },
+ {
+  "id": "numbers-20-m-05",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel promise not to pass through in Edom's land?",
+  "choices": [
+   "The cities and gates",
+   "The mountains",
+   "The villages and temples",
+   "The fields and vineyards"
+  ],
+  "answer": 3,
+  "explanation": "We will not pass through the fields, or through the vineyards.",
+  "ref": "Numbers 20:17"
+ },
+ {
+  "id": "numbers-20-m-06",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What road did Israel say they would walk through Edom?",
+  "choices": [
+   "The sea road",
+   "The old road of the fathers",
+   "The valley road",
+   "The king's high way"
+  ],
+  "answer": 3,
+  "explanation": "We will go by the king's high way, we will not turn to the right hand nor to the left.",
+  "ref": "Numbers 20:17"
+ },
+ {
+  "id": "numbers-20-m-07",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel offer to do if their cattle drank Edom's water?",
+  "choices": [
+   "Dig new wells",
+   "Leave their cattle behind",
+   "Give a lamb",
+   "Pay for it"
+  ],
+  "answer": 3,
+  "explanation": "If I and my cattle drink of thy water, then I will pay for it.",
+  "ref": "Numbers 20:19"
+ },
+ {
+  "id": "numbers-20-m-08",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Edom threaten to do if Israel tried to pass by?",
+  "choices": [
+   "Close the wells",
+   "Send a plague",
+   "Call for Egypt",
+   "Come out against them with the sword"
+  ],
+  "answer": 3,
+  "explanation": "Edom said, Lest I come out against thee with the sword.",
+  "ref": "Numbers 20:18"
+ },
+ {
+  "id": "numbers-20-m-09",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel do when Edom refused them passage?",
+  "choices": [
+   "Fought Edom",
+   "Camped at Edom's border",
+   "Went back to Egypt",
+   "Turned away from him"
+  ],
+  "answer": 3,
+  "explanation": "Edom refused to give Israel passage through his border: wherefore Israel turned away from him.",
+  "ref": "Numbers 20:21"
+ },
+ {
+  "id": "numbers-20-m-10",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses tell Edom God had sent to bring Israel out of Egypt?",
+  "choices": [
+   "A prophet",
+   "A cloud of fire",
+   "A great wind",
+   "An angel"
+  ],
+  "answer": 3,
+  "explanation": "When we cried unto the LORD, he heard our voice, and sent an angel.",
+  "ref": "Numbers 20:16"
+ },
+ {
+  "id": "numbers-20-m-11",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which fruit did the people say the place lacked, besides figs and vines?",
+  "choices": [
+   "Olives",
+   "Dates",
+   "Grapes",
+   "Pomegranates"
+  ],
+  "answer": 3,
+  "explanation": "It is no place of seed, or of figs, or of vines, or of pomegranates.",
+  "ref": "Numbers 20:5"
+ },
+ {
+  "id": "numbers-20-m-12",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses call Israel in relation to the king of Edom?",
+  "choices": [
+   "His servant",
+   "His cousin",
+   "His neighbour",
+   "His brother"
+  ],
+  "answer": 3,
+  "explanation": "Thus saith thy brother Israel.",
+  "ref": "Numbers 20:14"
+ },
+ {
+  "id": "numbers-20-m-13",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did the Lord tell Moses to take up Mount Hor with Aaron?",
+  "choices": [
+   "Joshua",
+   "Caleb",
+   "Phinehas",
+   "Eleazar, Aaron's son"
+  ],
+  "answer": 3,
+  "explanation": "Take Aaron and Eleazar his son, and bring them up unto mount Hor.",
+  "ref": "Numbers 20:25"
+ },
+ {
+  "id": "numbers-20-m-14",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "Mount Hor was by the coast of whose land?",
+  "choices": [
+   "Moab",
+   "Midian",
+   "Canaan",
+   "Edom"
+  ],
+  "answer": 3,
+  "explanation": "The LORD spake in mount Hor, by the coast of the land of Edom.",
+  "ref": "Numbers 20:23"
+ },
+ {
+  "id": "numbers-20-m-15",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses and Aaron do at the door of the tabernacle?",
+  "choices": [
+   "Offered a burnt offering",
+   "Tore their clothes",
+   "Sent for Eleazar",
+   "Fell upon their faces"
+  ],
+  "answer": 3,
+  "explanation": "They went unto the door of the tabernacle, and they fell upon their faces.",
+  "ref": "Numbers 20:6"
+ },
+ {
+  "id": "numbers-20-h-01",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month did Israel come into the desert of Zin?",
+  "choices": [
+   "The first month",
+   "The third month",
+   "The seventh month",
+   "The tenth month"
+  ],
+  "answer": 0,
+  "explanation": "Israel came into the desert of Zin in the first month.",
+  "ref": "Numbers 20:1"
+ },
+ {
+  "id": "numbers-20-h-02",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides themselves, what did the people say would die in the wilderness?",
+  "choices": [
+   "Their cattle",
+   "Their children",
+   "Their servants",
+   "Their camels"
+  ],
+  "answer": 0,
+  "explanation": "Why have ye brought us into this wilderness, that we and our cattle should die there?",
+  "ref": "Numbers 20:4"
+ },
+ {
+  "id": "numbers-20-h-03",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people call the place Moses had brought them to?",
+  "choices": [
+   "An evil place",
+   "A cursed land",
+   "A forgotten land",
+   "A barren hill"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore have ye made us to come up out of Egypt, to bring us in unto this evil place?",
+  "ref": "Numbers 20:5"
+ },
+ {
+  "id": "numbers-20-h-04",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where did Moses take the rod?",
+  "choices": [
+   "From before the LORD",
+   "From Aaron's hand",
+   "From the ark of Egypt",
+   "From the tent of Eleazar"
+  ],
+  "answer": 0,
+  "explanation": "Moses took the rod from before the LORD, as he commanded him.",
+  "ref": "Numbers 20:9"
+ },
+ {
+  "id": "numbers-20-h-05",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who else drank the water besides the congregation?",
+  "choices": [
+   "Their beasts",
+   "The Edomites",
+   "The priests alone",
+   "The elders only"
+  ],
+  "answer": 0,
+  "explanation": "The water came out abundantly, and the congregation drank, and their beasts also.",
+  "ref": "Numbers 20:11"
+ },
+ {
+  "id": "numbers-20-h-06",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose eyes had Moses and Aaron failed to sanctify the LORD?",
+  "choices": [
+   "The children of Israel",
+   "The king of Edom",
+   "The elders",
+   "The Egyptians"
+  ],
+  "answer": 0,
+  "explanation": "Because ye believed me not, to sanctify me in the eyes of the children of Israel.",
+  "ref": "Numbers 20:12"
+ },
+ {
+  "id": "numbers-20-h-07",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Aaron was to be gathered unto whom?",
+  "choices": [
+   "His people",
+   "His sons",
+   "The elders",
+   "Miriam"
+  ],
+  "answer": 0,
+  "explanation": "Aaron shall be gathered unto his people.",
+  "ref": "Numbers 20:24"
+ },
+ {
+  "id": "numbers-20-h-08",
+  "chapter": 20,
+  "level": "hard",
+  "category": "place",
+  "question": "Where on Mount Hor did Aaron die?",
+  "choices": [
+   "In the top of the mount",
+   "At the foot of the mount",
+   "In the tabernacle",
+   "In a cave"
+  ],
+  "answer": 0,
+  "explanation": "Aaron died there in the top of the mount.",
+  "ref": "Numbers 20:28"
+ },
+ {
+  "id": "numbers-20-h-09",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Who came down from Mount Hor with Moses?",
+  "choices": [
+   "Eleazar",
+   "Aaron",
+   "Joshua",
+   "Caleb"
+  ],
+  "answer": 0,
+  "explanation": "Moses and Eleazar came down from the mount.",
+  "ref": "Numbers 20:28"
+ },
+ {
+  "id": "numbers-20-h-10",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Edom come out against Israel?",
+  "choices": [
+   "With much people and a strong hand",
+   "With chariots of iron",
+   "With a single champion",
+   "With fire and smoke"
+  ],
+  "answer": 0,
+  "explanation": "Edom came out against him with much people, and with a strong hand.",
+  "ref": "Numbers 20:20"
+ },
+ {
+  "id": "numbers-20-h-11",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Israel say they would go through Edom?",
+  "choices": [
+   "On their feet",
+   "On horseback",
+   "In small groups at night",
+   "With their cattle left behind"
+  ],
+  "answer": 0,
+  "explanation": "I will only, without doing any thing else, go through on my feet.",
+  "ref": "Numbers 20:19"
+ },
+ {
+  "id": "numbers-20-h-12",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say the Egyptians did to Israel and their fathers?",
+  "choices": [
+   "Vexed them",
+   "Enslaved them",
+   "Drowned them",
+   "Starved them"
+  ],
+  "answer": 0,
+  "explanation": "The Egyptians vexed us, and our fathers.",
+  "ref": "Numbers 20:15"
+ },
+ {
+  "id": "numbers-20-h-13",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Moses say Israel dwelt in Egypt?",
+  "choices": [
+   "A long time",
+   "Four hundred years",
+   "Seven years",
+   "Three generations"
+  ],
+  "answer": 0,
+  "explanation": "We have dwelt in Egypt a long time.",
+  "ref": "Numbers 20:15"
+ },
+ {
+  "id": "numbers-20-h-14",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel say they would not turn to as they passed through Edom?",
+  "choices": [
+   "The right hand or the left",
+   "The east or the west",
+   "The fields or the wells",
+   "The hills or the valleys"
+  ],
+  "answer": 0,
+  "explanation": "We will not turn to the right hand nor to the left, until we have passed thy borders.",
+  "ref": "Numbers 20:17"
+ },
+ {
+  "id": "numbers-20-h-15",
+  "chapter": 20,
+  "level": "hard",
+  "category": "place",
+  "question": "How did Moses describe Kadesh to the king of Edom?",
+  "choices": [
+   "A city in the uttermost of his border",
+   "A city of refuge",
+   "A city by the sea",
+   "A city on a hill"
+  ],
+  "answer": 0,
+  "explanation": "Behold, we are in Kadesh, a city in the uttermost of thy border.",
+  "ref": "Numbers 20:16"
+ },
+ {
   "id": "old-numbers-21-1",
   "chapter": 21,
   "level": "beginner",
