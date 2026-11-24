@@ -4400,6 +4400,646 @@
   "ref": "Deuteronomy 7:25"
  },
  {
+  "id": "deuteronomy-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what did the LORD bring Israel out and redeem them?",
+  "choices": [
+   "A mighty hand",
+   "A great wind",
+   "A strong army",
+   "A flood"
+  ],
+  "answer": 0,
+  "explanation": "The LORD brought you out with a mighty hand, and redeemed you.",
+  "ref": "Deuteronomy 7:8"
+ },
+ {
+  "id": "deuteronomy-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "From the hand of whom did the LORD redeem Israel?",
+  "choices": [
+   "Pharaoh king of Egypt",
+   "The Amorites",
+   "The Hittites",
+   "Balak king of Moab"
+  ],
+  "answer": 0,
+  "explanation": "He redeemed you from the hand of Pharaoh king of Egypt.",
+  "ref": "Deuteronomy 7:8"
+ },
+ {
+  "id": "deuteronomy-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD send among the nations?",
+  "choices": [
+   "The hornet",
+   "The locust",
+   "The hail",
+   "The darkness"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God will send the hornet among them.",
+  "ref": "Deuteronomy 7:20"
+ },
+ {
+  "id": "deuteronomy-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must Israel destroy of the nations' worship?",
+  "choices": [
+   "Their altars",
+   "Their wells",
+   "Their roads",
+   "Their gates"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall destroy their altars, and break down their images.",
+  "ref": "Deuteronomy 7:5"
+ },
+ {
+  "id": "deuteronomy-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Moses describe Israel's number among the peoples?",
+  "choices": [
+   "The fewest of all people",
+   "The greatest of all people",
+   "Twelve thousand",
+   "About equal to the Amorites"
+  ],
+  "answer": 0,
+  "explanation": "Ye were the fewest of all people.",
+  "ref": "Deuteronomy 7:7"
+ },
+ {
+  "id": "deuteronomy-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which of these is one of the seven nations?",
+  "choices": [
+   "The Jebusites",
+   "The Philistines",
+   "The Moabites",
+   "The Edomites"
+  ],
+  "answer": 0,
+  "explanation": "The nations include the Hittites, Girgashites, Amorites, Canaanites, Perizzites, Hivites and Jebusites.",
+  "ref": "Deuteronomy 7:1"
+ },
+ {
+  "id": "deuteronomy-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD take away from Israel if they obey?",
+  "choices": [
+   "All sickness",
+   "All cattle",
+   "All sons",
+   "All tents"
+  ],
+  "answer": 0,
+  "explanation": "The LORD will take away from thee all sickness.",
+  "ref": "Deuteronomy 7:15"
+ },
+ {
+  "id": "deuteronomy-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would serving the nations' gods be to Israel?",
+  "choices": [
+   "A snare",
+   "A blessing",
+   "A reward",
+   "A feast"
+  ],
+  "answer": 0,
+  "explanation": "Neither shalt thou serve their gods; for that will be a snare unto thee.",
+  "ref": "Deuteronomy 7:16"
+ },
+ {
+  "id": "deuteronomy-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Moses call the LORD who keepeth covenant and mercy?",
+  "choices": [
+   "The faithful God",
+   "The silent God",
+   "The hidden God",
+   "The angry God"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God, he is God, the faithful God.",
+  "ref": "Deuteronomy 7:9"
+ },
+ {
+  "id": "deuteronomy-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of people does Moses call Israel?",
+  "choices": [
+   "An holy people",
+   "A proud people",
+   "A numerous people",
+   "A wandering people"
+  ],
+  "answer": 0,
+  "explanation": "Thou art an holy people unto the LORD thy God.",
+  "ref": "Deuteronomy 7:6"
+ },
+ {
+  "id": "deuteronomy-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the nations do to Israel's sons if they married their daughters?",
+  "choices": [
+   "Make them rich",
+   "Make them kings",
+   "Turn them away from following the LORD",
+   "Send them to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "They will turn away thy son from following me, that they may serve other gods.",
+  "ref": "Deuteronomy 7:3–4"
+ },
+ {
+  "id": "deuteronomy-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To how many generations does the LORD keep covenant and mercy with them that love Him?",
+  "choices": [
+   "Ten",
+   "Seven",
+   "A thousand",
+   "Forty"
+  ],
+  "answer": 2,
+  "explanation": "He keepeth covenant and mercy...to a thousand generations.",
+  "ref": "Deuteronomy 7:9"
+ },
+ {
+  "id": "deuteronomy-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the LORD repay those that hate Him?",
+  "choices": [
+   "In secret",
+   "After many years",
+   "To their face",
+   "By their sons"
+  ],
+  "answer": 2,
+  "explanation": "He will repay him to his face.",
+  "ref": "Deuteronomy 7:10"
+ },
+ {
+  "id": "deuteronomy-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who will not be barren if Israel obeys?",
+  "choices": [
+   "Only the priests",
+   "Only the firstborn",
+   "Male or female among them and their cattle",
+   "Only the Levites"
+  ],
+  "answer": 2,
+  "explanation": "There shall not be male or female barren among you, or among your cattle.",
+  "ref": "Deuteronomy 7:14"
+ },
+ {
+  "id": "deuteronomy-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where will the evil diseases of Egypt be laid?",
+  "choices": [
+   "Upon the Levites",
+   "Upon the cattle only",
+   "Upon all them that hate Israel",
+   "Upon Pharaoh's sons"
+  ],
+  "answer": 2,
+  "explanation": "The LORD will lay them upon all them that hate thee.",
+  "ref": "Deuteronomy 7:15"
+ },
+ {
+  "id": "deuteronomy-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall Israel's eye have for the people delivered to them?",
+  "choices": [
+   "Great mercy",
+   "Quiet sorrow",
+   "No pity",
+   "Joy"
+  ],
+  "answer": 2,
+  "explanation": "Thine eye shall have no pity upon them.",
+  "ref": "Deuteronomy 7:16"
+ },
+ {
+  "id": "deuteronomy-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What might Israel say in their heart about the nations?",
+  "choices": [
+   "These nations are our friends",
+   "These nations are weak",
+   "These nations are more than I",
+   "These nations are our kin"
+  ],
+  "answer": 2,
+  "explanation": "If thou shalt say in thine heart, These nations are more than I; how can I dispossess them?",
+  "ref": "Deuteronomy 7:17"
+ },
+ {
+  "id": "deuteronomy-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are Israel to remember when they are afraid?",
+  "choices": [
+   "The names of the judges",
+   "The days of the creation",
+   "What the LORD did to Pharaoh and all Egypt",
+   "The sacrifices of their fathers"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt well remember what the LORD thy God did unto Pharaoh, and unto all Egypt.",
+  "ref": "Deuteronomy 7:18"
+ },
+ {
+  "id": "deuteronomy-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will the LORD not drive out the nations all at once?",
+  "choices": [
+   "Lest Israel grow proud",
+   "Lest the rivers dry up",
+   "Lest the beasts of the field increase",
+   "Lest the winter come"
+  ],
+  "answer": 2,
+  "explanation": "Thou mayest not consume them at once, lest the beasts of the field increase upon thee.",
+  "ref": "Deuteronomy 7:22"
+ },
+ {
+  "id": "deuteronomy-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD deliver into Israel's hand?",
+  "choices": [
+   "Their wives",
+   "Their flocks",
+   "Their kings",
+   "Their sons"
+  ],
+  "answer": 2,
+  "explanation": "He shall deliver their kings into thine hand.",
+  "ref": "Deuteronomy 7:24"
+ },
+ {
+  "id": "deuteronomy-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must Israel not take from the burned images?",
+  "choices": [
+   "The wood of them",
+   "The robes of them",
+   "The silver and gold on them",
+   "The altars of them"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt not desire the silver or gold that is on them.",
+  "ref": "Deuteronomy 7:25"
+ },
+ {
+  "id": "deuteronomy-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is it to the LORD to take the silver and gold of the images?",
+  "choices": [
+   "A sacrifice",
+   "A wonder",
+   "An abomination",
+   "A tribute"
+  ],
+  "answer": 2,
+  "explanation": "It is an abomination to the LORD thy God.",
+  "ref": "Deuteronomy 7:25"
+ },
+ {
+  "id": "deuteronomy-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is the LORD described as being among Israel?",
+  "choices": [
+   "A gentle shepherd",
+   "A distant king",
+   "A mighty God and terrible",
+   "A quiet judge"
+  ],
+  "answer": 2,
+  "explanation": "The LORD thy God is among you, a mighty God and terrible.",
+  "ref": "Deuteronomy 7:21"
+ },
+ {
+  "id": "deuteronomy-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What three things will the LORD do for Israel if they obey?",
+  "choices": [
+   "Feed them, clothe them and house them",
+   "Free them, heal them and crown them",
+   "Love them, bless them and multiply them",
+   "Hide them, guide them and teach them"
+  ],
+  "answer": 2,
+  "explanation": "He will love thee, and bless thee, and multiply thee.",
+  "ref": "Deuteronomy 7:13"
+ },
+ {
+  "id": "deuteronomy-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If the LORD's anger were kindled against Israel, how would He destroy them?",
+  "choices": [
+   "Slowly",
+   "By famine only",
+   "Suddenly",
+   "By their own sons"
+  ],
+  "answer": 2,
+  "explanation": "So will the anger of the LORD be kindled against you, and destroy thee suddenly.",
+  "ref": "Deuteronomy 7:4"
+ },
+ {
+  "id": "deuteronomy-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which nation is named first in the list of seven?",
+  "choices": [
+   "The Amorites",
+   "The Canaanites",
+   "The Jebusites",
+   "The Hittites"
+  ],
+  "answer": 3,
+  "explanation": "The list begins with the Hittites, and the Girgashites, and the Amorites.",
+  "ref": "Deuteronomy 7:1"
+ },
+ {
+  "id": "deuteronomy-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which nation is named last in the list of seven?",
+  "choices": [
+   "The Hivites",
+   "The Perizzites",
+   "The Girgashites",
+   "The Jebusites"
+  ],
+  "answer": 3,
+  "explanation": "The list ends with the Hivites, and the Jebusites.",
+  "ref": "Deuteronomy 7:1"
+ },
+ {
+  "id": "deuteronomy-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which nation is named right before the Hivites?",
+  "choices": [
+   "The Canaanites",
+   "The Amorites",
+   "The Jebusites",
+   "The Perizzites"
+  ],
+  "answer": 3,
+  "explanation": "The Canaanites, and the Perizzites, and the Hivites.",
+  "ref": "Deuteronomy 7:1"
+ },
+ {
+  "id": "deuteronomy-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Israel must cut down the nations' what?",
+  "choices": [
+   "Fields",
+   "Vineyards",
+   "Fences",
+   "Groves"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall...cut down their groves.",
+  "ref": "Deuteronomy 7:5"
+ },
+ {
+  "id": "deuteronomy-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Israel must break down the nations' what?",
+  "choices": [
+   "Cities",
+   "Gates",
+   "Wells",
+   "Images"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall destroy their altars, and break down their images.",
+  "ref": "Deuteronomy 7:5"
+ },
+ {
+  "id": "deuteronomy-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses says the LORD will not be what to him that hateth Him?",
+  "choices": [
+   "Silent",
+   "Angry",
+   "Near",
+   "Slack"
+  ],
+  "answer": 3,
+  "explanation": "He will not be slack to him that hateth him.",
+  "ref": "Deuteronomy 7:10"
+ },
+ {
+  "id": "deuteronomy-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD redeemed Israel out of the house of what?",
+  "choices": [
+   "Idols",
+   "Sorrow",
+   "Darkness",
+   "Bondmen"
+  ],
+  "answer": 3,
+  "explanation": "He redeemed you out of the house of bondmen.",
+  "ref": "Deuteronomy 7:8"
+ },
+ {
+  "id": "deuteronomy-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the increase of kine, what will the LORD bless?",
+  "choices": [
+   "The fruit of the vine only",
+   "The gold of the land",
+   "The tents of the fathers",
+   "The flocks of thy sheep"
+  ],
+  "answer": 3,
+  "explanation": "The increase of thy kine, and the flocks of thy sheep.",
+  "ref": "Deuteronomy 7:13"
+ },
+ {
+  "id": "deuteronomy-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The mighty hand and the signs and wonders are joined to what other act?",
+  "choices": [
+   "The pillar of fire",
+   "The parted sea",
+   "The thick cloud",
+   "The stretched out arm"
+  ],
+  "answer": 3,
+  "explanation": "The signs, and the wonders, and the mighty hand, and the stretched out arm.",
+  "ref": "Deuteronomy 7:19"
+ },
+ {
+  "id": "deuteronomy-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How will the LORD destroy the nations once delivered to Israel?",
+  "choices": [
+   "With a great famine",
+   "With a flood",
+   "With a plague of locusts",
+   "With a mighty destruction"
+  ],
+  "answer": 3,
+  "explanation": "He shall destroy them with a mighty destruction, until they be destroyed.",
+  "ref": "Deuteronomy 7:23"
+ },
+ {
+  "id": "deuteronomy-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall Israel destroy from under heaven?",
+  "choices": [
+   "The nations' fields",
+   "The nations' rivers",
+   "The nations' roads",
+   "The nations' name"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt destroy their name from under heaven.",
+  "ref": "Deuteronomy 7:24"
+ },
+ {
+  "id": "deuteronomy-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Moses say no man shall be able to do before Israel?",
+  "choices": [
+   "Cross the river",
+   "Enter the land",
+   "Speak a word",
+   "Stand before them"
+  ],
+  "answer": 3,
+  "explanation": "There shall no man be able to stand before thee.",
+  "ref": "Deuteronomy 7:24"
+ },
+ {
+  "id": "deuteronomy-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses says thy daughter thou shalt not give unto his what?",
+  "choices": [
+   "Servant",
+   "Brother",
+   "House",
+   "Son"
+  ],
+  "answer": 3,
+  "explanation": "Thy daughter thou shalt not give unto his son.",
+  "ref": "Deuteronomy 7:3"
+ },
+ {
+  "id": "deuteronomy-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Israel become if they brought an abomination into their house?",
+  "choices": [
+   "A holy people",
+   "A great nation",
+   "A stranger",
+   "A cursed thing"
+  ],
+  "answer": 3,
+  "explanation": "Lest thou be a cursed thing like it.",
+  "ref": "Deuteronomy 7:26"
+ },
+ {
+  "id": "deuteronomy-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides detest, what must Israel do to the cursed thing?",
+  "choices": [
+   "Quickly sell it",
+   "Carefully keep it",
+   "Boldly show it",
+   "Utterly abhor it"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt utterly detest it, and thou shalt utterly abhor it.",
+  "ref": "Deuteronomy 7:26"
+ },
+ {
   "id": "old-deuteronomy-8-1",
   "chapter": 8,
   "level": "beginner",
