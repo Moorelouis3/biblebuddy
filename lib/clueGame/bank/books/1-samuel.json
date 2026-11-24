@@ -7296,6 +7296,646 @@
   "ref": "1 Samuel 11:14–15"
  },
  {
+  "id": "1-samuel-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city did Nahash encamp against?",
+  "choices": [
+   "Jabesh-gilead",
+   "Gibeah",
+   "Bethel",
+   "Ramah"
+  ],
+  "answer": 0,
+  "explanation": "Nahash the Ammonite came up, and encamped against Jabesh-gilead.",
+  "ref": "1 Samuel 11:1"
+ },
+ {
+  "id": "1-samuel-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the men of Jabesh offer Nahash?",
+  "choices": [
+   "A tribute of gold",
+   "To serve him if he made a covenant",
+   "Their daughters",
+   "Their cattle"
+  ],
+  "answer": 1,
+  "explanation": "All the men of Jabesh said unto Nahash, Make a covenant with us, and we will serve thee.",
+  "ref": "1 Samuel 11:1"
+ },
+ {
+  "id": "1-samuel-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days of respite did the elders of Jabesh ask for?",
+  "choices": [
+   "Three days",
+   "Ten days",
+   "Seven days",
+   "Forty days"
+  ],
+  "answer": 2,
+  "explanation": "Give us seven days respite, that we may send messengers unto all the coasts of Israel.",
+  "ref": "1 Samuel 11:3"
+ },
+ {
+  "id": "1-samuel-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which town did the messengers from Jabesh come first?",
+  "choices": [
+   "Ramah",
+   "Gilgal",
+   "Mizpeh",
+   "Gibeah of Saul"
+  ],
+  "answer": 3,
+  "explanation": "Then came the messengers to Gibeah of Saul, and told the tidings in the ears of the people.",
+  "ref": "1 Samuel 11:4"
+ },
+ {
+  "id": "1-samuel-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Saul doing when he heard the people weeping?",
+  "choices": [
+   "Coming from the field after the herd",
+   "Praying at the altar",
+   "Visiting Samuel",
+   "Hiding with the baggage"
+  ],
+  "answer": 0,
+  "explanation": "Saul came after the herd out of the field; and Saul said, What aileth the people that they weep?",
+  "ref": "1 Samuel 11:5"
+ },
+ {
+  "id": "1-samuel-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul cut into pieces and send through Israel?",
+  "choices": [
+   "A lamb",
+   "A yoke of oxen",
+   "His robe",
+   "A sword"
+  ],
+  "answer": 1,
+  "explanation": "He took a yoke of oxen, and hewed them in pieces, and sent them throughout all the coasts of Israel.",
+  "ref": "1 Samuel 11:7"
+ },
+ {
+  "id": "1-samuel-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into how many companies did Saul divide the people?",
+  "choices": [
+   "Two",
+   "Four",
+   "Three",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "Saul put the people in three companies.",
+  "ref": "1 Samuel 11:11"
+ },
+ {
+  "id": "1-samuel-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul say should not happen to anyone that day?",
+  "choices": [
+   "A man sent home",
+   "A man left behind",
+   "A man hungry",
+   "A man put to death"
+  ],
+  "answer": 3,
+  "explanation": "Saul said, There shall not a man be put to death this day.",
+  "ref": "1 Samuel 11:13"
+ },
+ {
+  "id": "1-samuel-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of offerings did they make at Gilgal?",
+  "choices": [
+   "Peace offerings",
+   "Sin offerings",
+   "Drink offerings",
+   "Trespass offerings"
+  ],
+  "answer": 0,
+  "explanation": "They sacrificed sacrifices of peace offerings before the LORD.",
+  "ref": "1 Samuel 11:15"
+ },
+ {
+  "id": "1-samuel-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people do for Saul at Gilgal?",
+  "choices": [
+   "They crowned Samuel",
+   "They made him king before the Lord",
+   "They sent him to Jabesh",
+   "They gave him a sword"
+  ],
+  "answer": 1,
+  "explanation": "All the people went to Gilgal; and there they made Saul king before the LORD in Gilgal.",
+  "ref": "1 Samuel 11:15"
+ },
+ {
+  "id": "1-samuel-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of Jabesh say to Nahash?",
+  "choices": [
+   "We will fight you",
+   "Spare our children",
+   "Make a covenant with us, and we will serve thee",
+   "We want no covenant"
+  ],
+  "answer": 2,
+  "explanation": "All the men of Jabesh said unto Nahash, Make a covenant with us, and we will serve thee.",
+  "ref": "1 Samuel 11:1"
+ },
+ {
+  "id": "1-samuel-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Nahash want to put out their right eyes?",
+  "choices": [
+   "To weaken their army",
+   "To honour his god",
+   "To mark prisoners",
+   "To bring a reproach upon all Israel"
+  ],
+  "answer": 3,
+  "explanation": "That I may thrust out all your right eyes, and lay it for a reproach upon all Israel.",
+  "ref": "1 Samuel 11:2"
+ },
+ {
+  "id": "1-samuel-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the elders ask for seven days?",
+  "choices": [
+   "To send messengers to all Israel",
+   "To bury their dead",
+   "To gather harvest",
+   "To pay tribute"
+  ],
+  "answer": 0,
+  "explanation": "Give us seven days respite, that we may send messengers unto all the coasts of Israel.",
+  "ref": "1 Samuel 11:3"
+ },
+ {
+  "id": "1-samuel-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the people react to the tidings from Jabesh?",
+  "choices": [
+   "They took up weapons",
+   "They lifted up their voices and wept",
+   "They ran away",
+   "They sang"
+  ],
+  "answer": 1,
+  "explanation": "All the people lifted up their voices, and wept.",
+  "ref": "1 Samuel 11:4"
+ },
+ {
+  "id": "1-samuel-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul say would be done to the oxen of those who did not come?",
+  "choices": [
+   "They would be sold",
+   "They would be taken",
+   "The same as to his oxen",
+   "They would be offered"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever cometh not forth after Saul and after Samuel, so shall it be done unto his oxen.",
+  "ref": "1 Samuel 11:7"
+ },
+ {
+  "id": "1-samuel-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Saul name with himself in the message?",
+  "choices": [
+   "Kish",
+   "Jonathan",
+   "Nahash",
+   "Samuel"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever cometh not forth after Saul and after Samuel.",
+  "ref": "1 Samuel 11:7"
+ },
+ {
+  "id": "1-samuel-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What fell on the people so that they came out with one consent?",
+  "choices": [
+   "The fear of the Lord",
+   "Fear of Nahash",
+   "A great drought",
+   "Hunger"
+  ],
+  "answer": 0,
+  "explanation": "The fear of the LORD fell on the people, and they came out with one consent.",
+  "ref": "1 Samuel 11:7"
+ },
+ {
+  "id": "1-samuel-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Saul number the people?",
+  "choices": [
+   "Gibeah",
+   "Bezek",
+   "Ramah",
+   "Gilgal"
+  ],
+  "answer": 1,
+  "explanation": "When he numbered them in Bezek, the children of Israel were three hundred thousand.",
+  "ref": "1 Samuel 11:8"
+ },
+ {
+  "id": "1-samuel-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many children of Israel did Saul number at Bezek?",
+  "choices": [
+   "Thirty thousand",
+   "Seventy thousand",
+   "Three hundred thousand",
+   "Four hundred"
+  ],
+  "answer": 2,
+  "explanation": "When he numbered them in Bezek, the children of Israel were three hundred thousand.",
+  "ref": "1 Samuel 11:8"
+ },
+ {
+  "id": "1-samuel-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the messengers promise the men of Jabesh?",
+  "choices": [
+   "Help in seven days",
+   "Help by evening",
+   "Samuel's blessing",
+   "Help by the time the sun was hot the next day"
+  ],
+  "answer": 3,
+  "explanation": "Tomorrow, by that time the sun be hot, ye shall have help.",
+  "ref": "1 Samuel 11:9"
+ },
+ {
+  "id": "1-samuel-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of Jabesh tell Nahash?",
+  "choices": [
+   "Tomorrow we will come out to you",
+   "We will not surrender",
+   "We will send gold",
+   "Our king will come"
+  ],
+  "answer": 0,
+  "explanation": "To morrow we will come out unto you, and ye shall do with us all that seemeth good unto you.",
+  "ref": "1 Samuel 11:10"
+ },
+ {
+  "id": "1-samuel-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "At what time did Saul's companies come into the host of the Ammonites?",
+  "choices": [
+   "At midnight",
+   "In the morning watch",
+   "At noon",
+   "At sunset"
+  ],
+  "answer": 1,
+  "explanation": "They came into the midst of the host in the morning watch, and slew the Ammonites until the heat of the day.",
+  "ref": "1 Samuel 11:11"
+ },
+ {
+  "id": "1-samuel-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was left of the Ammonites after the battle?",
+  "choices": [
+   "A few hundred",
+   "Their king alone",
+   "Not two of them were left together",
+   "None"
+  ],
+  "answer": 2,
+  "explanation": "They which remained were scattered, so that two of them were not left together.",
+  "ref": "1 Samuel 11:11"
+ },
+ {
+  "id": "1-samuel-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people ask Samuel to do after the victory?",
+  "choices": [
+   "Put to death those who doubted Saul",
+   "Make Saul priest",
+   "Give them the spoil",
+   "Send them home"
+  ],
+  "answer": 0,
+  "explanation": "The people said unto Samuel, Who is he that said, Shall Saul reign over us? bring the men, that we may put them to death.",
+  "ref": "1 Samuel 11:12"
+ },
+ {
+  "id": "1-samuel-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who told the people to go to Gilgal?",
+  "choices": [
+   "Samuel",
+   "Saul",
+   "Nahash",
+   "The elders of Jabesh"
+  ],
+  "answer": 0,
+  "explanation": "Then said Samuel to the people, Come, and let us go to Gilgal.",
+  "ref": "1 Samuel 11:14"
+ },
+ {
+  "id": "1-samuel-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of Judah were numbered at Bezek?",
+  "choices": [
+   "Three hundred thousand",
+   "Thirty thousand",
+   "Three thousand",
+   "Seventy thousand"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel were three hundred thousand, and the men of Judah thirty thousand.",
+  "ref": "1 Samuel 11:8"
+ },
+ {
+  "id": "1-samuel-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when did the people slay the Ammonites?",
+  "choices": [
+   "Until sunset",
+   "Until midnight",
+   "Until the heat of the day",
+   "Until the third day"
+  ],
+  "answer": 2,
+  "explanation": "They slew the Ammonites until the heat of the day.",
+  "ref": "1 Samuel 11:11"
+ },
+ {
+  "id": "1-samuel-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul say the Lord had wrought in Israel?",
+  "choices": [
+   "Victory by fire",
+   "Peace",
+   "A king",
+   "Salvation"
+  ],
+  "answer": 3,
+  "explanation": "For to day the LORD hath wrought salvation in Israel.",
+  "ref": "1 Samuel 11:13"
+ },
+ {
+  "id": "1-samuel-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the elders do if no man saved them within seven days?",
+  "choices": [
+   "Come out to Nahash",
+   "Flee to Gilead",
+   "Fight alone",
+   "Pay tribute"
+  ],
+  "answer": 0,
+  "explanation": "If there be no man to save us, we will come out to thee.",
+  "ref": "1 Samuel 11:3"
+ },
+ {
+  "id": "1-samuel-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "In whose ears did the messengers tell the tidings at Gibeah?",
+  "choices": [
+   "The people's",
+   "The elders'",
+   "Samuel's",
+   "The priests'"
+  ],
+  "answer": 0,
+  "explanation": "The messengers told the tidings in the ears of the people: and all the people lifted up their voices, and wept.",
+  "ref": "1 Samuel 11:4"
+ },
+ {
+  "id": "1-samuel-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Nahash do against Jabesh-gilead?",
+  "choices": [
+   "Burned its gates",
+   "Sent a message",
+   "Encamped against it",
+   "Took its king"
+  ],
+  "answer": 2,
+  "explanation": "Nahash the Ammonite came up, and encamped against Jabesh-gilead.",
+  "ref": "1 Samuel 11:1"
+ },
+ {
+  "id": "1-samuel-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Who put the people in three companies?",
+  "choices": [
+   "Samuel",
+   "Abner",
+   "Kish",
+   "Saul"
+  ],
+  "answer": 3,
+  "explanation": "It was so on the morrow, that Saul put the people in three companies.",
+  "ref": "1 Samuel 11:11"
+ },
+ {
+  "id": "1-samuel-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Who carried the oxen pieces through the coasts of Israel?",
+  "choices": [
+   "Messengers",
+   "Saul himself",
+   "The elders",
+   "Servants of Samuel"
+  ],
+  "answer": 0,
+  "explanation": "He sent them throughout all the coasts of Israel by the hands of messengers.",
+  "ref": "1 Samuel 11:7"
+ },
+ {
+  "id": "1-samuel-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which people did Nahash belong to?",
+  "choices": [
+   "The Ammonites",
+   "The Philistines",
+   "The Amalekites",
+   "The Moabites"
+  ],
+  "answer": 0,
+  "explanation": "Then Nahash the Ammonite came up, and encamped against Jabesh-gilead.",
+  "ref": "1 Samuel 11:1"
+ },
+ {
+  "id": "1-samuel-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Who rejoiced greatly at Gilgal?",
+  "choices": [
+   "Samuel and the elders",
+   "The men of Jabesh",
+   "Saul and all the men of Israel",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "Saul and all the men of Israel rejoiced greatly.",
+  "ref": "1 Samuel 11:15"
+ },
+ {
+  "id": "1-samuel-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the three companies come in the morning watch?",
+  "choices": [
+   "Around Jabesh",
+   "To the Ammonite king's tent",
+   "By the river",
+   "Into the midst of the host"
+  ],
+  "answer": 3,
+  "explanation": "They came into the midst of the host in the morning watch.",
+  "ref": "1 Samuel 11:11"
+ },
+ {
+  "id": "1-samuel-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the elders of Jabesh send to all the coasts of Israel?",
+  "choices": [
+   "Messengers",
+   "Gold",
+   "A banner",
+   "Letters"
+  ],
+  "answer": 0,
+  "explanation": "That we may send messengers unto all the coasts of Israel.",
+  "ref": "1 Samuel 11:3"
+ },
+ {
+  "id": "1-samuel-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the men of Jabesh feel when told of coming help?",
+  "choices": [
+   "They were afraid",
+   "They were glad",
+   "They wept",
+   "They doubted"
+  ],
+  "answer": 1,
+  "explanation": "The messengers came and shewed it to the men of Jabesh; and they were glad.",
+  "ref": "1 Samuel 11:9"
+ },
+ {
+  "id": "1-samuel-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the people come out after the fear of the Lord fell?",
+  "choices": [
+   "With one consent",
+   "In three companies",
+   "By tribes",
+   "Without weapons"
+  ],
+  "answer": 0,
+  "explanation": "The fear of the LORD fell on the people, and they came out with one consent.",
+  "ref": "1 Samuel 11:7"
+ },
+ {
+  "id": "1-samuel-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul ask when he saw the people weeping?",
+  "choices": [
+   "What aileth the people that they weep?",
+   "Where is Samuel?",
+   "Who has died?",
+   "Why is Nahash here?"
+  ],
+  "answer": 0,
+  "explanation": "Saul said, What aileth the people that they weep?",
+  "ref": "1 Samuel 11:5"
+ },
+ {
   "id": "old-1-samuel-12-1",
   "chapter": 12,
   "level": "beginner",
