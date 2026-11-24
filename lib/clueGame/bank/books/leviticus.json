@@ -10176,6 +10176,646 @@
   "ref": "Leviticus 15:31"
  },
  {
+  "id": "leviticus-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who did the LORD speak to in this chapter?",
+  "choices": [
+   "Moses alone",
+   "Moses and Aaron",
+   "Aaron's sons",
+   "Joshua and Caleb"
+  ],
+  "answer": 1,
+  "explanation": "And the LORD spake unto Moses and to Aaron, saying.",
+  "ref": "Leviticus 15:1"
+ },
+ {
+  "id": "leviticus-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must one who touched the sick man's bed wash?",
+  "choices": [
+   "Only his feet",
+   "His clothes and himself in water",
+   "His tent",
+   "Nothing"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever toucheth his bed shall wash his clothes, and bathe himself in water.",
+  "ref": "Leviticus 15:5"
+ },
+ {
+  "id": "leviticus-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was such a person unclean?",
+  "choices": [
+   "Seven days",
+   "Until the even",
+   "Forty days",
+   "One month"
+  ],
+  "answer": 1,
+  "explanation": "He shall wash his clothes, and bathe himself in water, and be unclean until the even.",
+  "ref": "Leviticus 15:5"
+ },
+ {
+  "id": "leviticus-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was done to the vessel of earth the sick man touched?",
+  "choices": [
+   "It was washed",
+   "It was broken",
+   "It was given away",
+   "It was burned"
+  ],
+  "answer": 1,
+  "explanation": "The vessel of earth, that he toucheth which hath the issue, shall be broken.",
+  "ref": "Leviticus 15:12"
+ },
+ {
+  "id": "leviticus-15-e-05",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what water did the cleansed man bathe his flesh after seven days?",
+  "choices": [
+   "The sea",
+   "Running water",
+   "Oil",
+   "Salt water"
+  ],
+  "answer": 1,
+  "explanation": "He shall bathe his flesh in running water, and shall be clean.",
+  "ref": "Leviticus 15:13"
+ },
+ {
+  "id": "leviticus-15-e-06",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did he bring his two birds on the eighth day?",
+  "choices": [
+   "The city gate",
+   "The door of the tabernacle",
+   "His own tent",
+   "The river"
+  ],
+  "answer": 1,
+  "explanation": "Come before the LORD unto the door of the tabernacle of the congregation.",
+  "ref": "Leviticus 15:14"
+ },
+ {
+  "id": "leviticus-15-e-07",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who offered the two birds for the cleansed man?",
+  "choices": [
+   "The man himself",
+   "The priest",
+   "Moses",
+   "The Levite"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall offer them, the one for a sin offering, and the other for a burnt offering.",
+  "ref": "Leviticus 15:15"
+ },
+ {
+  "id": "leviticus-15-e-08",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was a woman with an issue of blood put apart?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Forty days",
+   "One month"
+  ],
+  "answer": 1,
+  "explanation": "If a woman have an issue ... she shall be put apart seven days.",
+  "ref": "Leviticus 15:19"
+ },
+ {
+  "id": "leviticus-15-e-09",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would defile the tabernacle among them?",
+  "choices": [
+   "Their feasts",
+   "Their uncleanness",
+   "Their flocks",
+   "Their tents"
+  ],
+  "answer": 1,
+  "explanation": "They die not in their uncleanness, when they defile my tabernacle that is among them.",
+  "ref": "Leviticus 15:31"
+ },
+ {
+  "id": "leviticus-15-e-10",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say a man would be if his seed went out from him?",
+  "choices": [
+   "Unclean seven days",
+   "Unclean until the even",
+   "Cut off",
+   "Banished"
+  ],
+  "answer": 1,
+  "explanation": "He shall wash all his flesh in water, and be unclean until the even.",
+  "ref": "Leviticus 15:16"
+ },
+ {
+  "id": "leviticus-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened if the man with the issue spat upon a clean person?",
+  "choices": [
+   "He was put to death",
+   "He was fined",
+   "Nothing",
+   "He washed his clothes, bathed, and was unclean until even"
+  ],
+  "answer": 3,
+  "explanation": "If he spit upon him that is clean; then he shall wash his clothes ... until the even.",
+  "ref": "Leviticus 15:8"
+ },
+ {
+  "id": "leviticus-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the man with the issue ride that became unclean?",
+  "choices": [
+   "His donkey",
+   "His camel",
+   "His chariot",
+   "Any saddle he rode upon"
+  ],
+  "answer": 3,
+  "explanation": "What saddle soever he rideth upon that hath the issue shall be unclean.",
+  "ref": "Leviticus 15:9"
+ },
+ {
+  "id": "leviticus-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must the man have done to avoid making others unclean when he touched them?",
+  "choices": [
+   "Washed his feet",
+   "Anointed himself",
+   "Waited seven days",
+   "Rinsed his hands in water"
+  ],
+  "answer": 3,
+  "explanation": "Whomsoever he toucheth ... and hath not rinsed his hands in water.",
+  "ref": "Leviticus 15:11"
+ },
+ {
+  "id": "leviticus-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done to a wooden vessel he touched?",
+  "choices": [
+   "It was broken",
+   "It was burned",
+   "It was buried",
+   "It was rinsed in water"
+  ],
+  "answer": 3,
+  "explanation": "Every vessel of wood shall be rinsed in water.",
+  "ref": "Leviticus 15:12"
+ },
+ {
+  "id": "leviticus-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which things where seed of copulation lay were washed?",
+  "choices": [
+   "Only his bed",
+   "Only his clothes",
+   "The whole tent",
+   "Every garment and every skin"
+  ],
+  "answer": 3,
+  "explanation": "Every garment, and every skin, whereon is the seed of copulation, shall be washed with water.",
+  "ref": "Leviticus 15:17"
+ },
+ {
+  "id": "leviticus-15-m-06",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was required of a man and woman who lay together with such an issue?",
+  "choices": [
+   "Both were put out of the camp",
+   "Both brought a lamb",
+   "Nothing",
+   "Both bathed and were unclean until even"
+  ],
+  "answer": 3,
+  "explanation": "They shall both bathe themselves in water, and be unclean until the even.",
+  "ref": "Leviticus 15:18"
+ },
+ {
+  "id": "leviticus-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was a man unclean who lay with a woman in her flowers?",
+  "choices": [
+   "One day",
+   "Until the even",
+   "Forty days",
+   "Seven days"
+  ],
+  "answer": 3,
+  "explanation": "If any man lie with her at all, and her flowers be upon him, he shall be unclean seven days.",
+  "ref": "Leviticus 15:24"
+ },
+ {
+  "id": "leviticus-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When her issue ran beyond her time, what were the days of uncleanness like?",
+  "choices": [
+   "Twice as long",
+   "Forty days",
+   "Until the priest said",
+   "As the days of her separation"
+  ],
+  "answer": 3,
+  "explanation": "All the days of the issue of her uncleanness shall be as the days of her separation.",
+  "ref": "Leviticus 15:25"
+ },
+ {
+  "id": "leviticus-15-m-09",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "After she was cleansed, how many days did she number to herself?",
+  "choices": [
+   "Three days",
+   "Twelve days",
+   "Eight days",
+   "Seven days"
+  ],
+  "answer": 3,
+  "explanation": "She shall number to herself seven days, and after that she shall be clean.",
+  "ref": "Leviticus 15:28"
+ },
+ {
+  "id": "leviticus-15-m-10",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day did she bring two turtles or young pigeons?",
+  "choices": [
+   "The seventh day",
+   "The first day",
+   "The tenth day",
+   "The eighth day"
+  ],
+  "answer": 3,
+  "explanation": "On the eighth day she shall take unto her two turtles, or two young pigeons.",
+  "ref": "Leviticus 15:29"
+ },
+ {
+  "id": "leviticus-15-m-11",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who touches her bed in her separation must do what?",
+  "choices": [
+   "Offer a lamb",
+   "Leave the camp",
+   "Wait seven days",
+   "Wash clothes, bathe, be unclean until even"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever toucheth her bed shall wash his clothes, and bathe himself in water.",
+  "ref": "Leviticus 15:21"
+ },
+ {
+  "id": "leviticus-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did sitting on her seat make a person?",
+  "choices": [
+   "Clean",
+   "Unclean seven days",
+   "Cut off",
+   "Unclean until the even"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever toucheth any thing that she sat upon shall wash his clothes ... until the even.",
+  "ref": "Leviticus 15:22"
+ },
+ {
+  "id": "leviticus-15-m-13",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What sort of thing she lay upon in her separation was unclean?",
+  "choices": [
+   "Only her bed",
+   "Only her clothes",
+   "Only her tent",
+   "Every thing she lay upon"
+  ],
+  "answer": 3,
+  "explanation": "Every thing that she lieth upon in her separation shall be unclean.",
+  "ref": "Leviticus 15:20"
+ },
+ {
+  "id": "leviticus-15-m-14",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest make for her before the LORD?",
+  "choices": [
+   "A feast",
+   "A covenant",
+   "A blessing",
+   "An atonement"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall make an atonement for her before the LORD for the issue of her uncleanness.",
+  "ref": "Leviticus 15:30"
+ },
+ {
+  "id": "leviticus-15-m-15",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the bed of the man with the issue called?",
+  "choices": [
+   "Holy",
+   "The priest's bed",
+   "A bed of rest",
+   "Unclean"
+  ],
+  "answer": 3,
+  "explanation": "Every bed, whereon he lieth that hath the issue, is unclean.",
+  "ref": "Leviticus 15:4"
+ },
+ {
+  "id": "leviticus-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whether his flesh ran or was stopped from the issue, what was it?",
+  "choices": [
+   "His uncleanness",
+   "His healing",
+   "His cleansing",
+   "A blessing"
+  ],
+  "answer": 0,
+  "explanation": "Whether his flesh run with his issue, or his flesh be stopped from his issue, it is his uncleanness.",
+  "ref": "Leviticus 15:3"
+ },
+ {
+  "id": "leviticus-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did touching anything that was under the sick man make a person?",
+  "choices": [
+   "Unclean until the even",
+   "Clean",
+   "Unclean seven days",
+   "Cut off"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever toucheth any thing that was under him shall be unclean until the even.",
+  "ref": "Leviticus 15:10"
+ },
+ {
+  "id": "leviticus-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did a person do who sat where the sick man had sat?",
+  "choices": [
+   "Washed his clothes and bathed in water",
+   "Brought a lamb",
+   "Left the camp",
+   "Nothing"
+  ],
+  "answer": 0,
+  "explanation": "He that sitteth on any thing whereon he sat ... shall wash his clothes, and bathe himself in water.",
+  "ref": "Leviticus 15:6"
+ },
+ {
+  "id": "leviticus-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two materials of vessel are named?",
+  "choices": [
+   "Earth and wood",
+   "Brass and iron",
+   "Gold and silver",
+   "Clay and leather"
+  ],
+  "answer": 0,
+  "explanation": "The vessel of earth ... shall be broken: and every vessel of wood shall be rinsed in water.",
+  "ref": "Leviticus 15:12"
+ },
+ {
+  "id": "leviticus-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of the cleansed man's two birds, what was the second for after the sin offering?",
+  "choices": [
+   "A burnt offering",
+   "A trespass offering",
+   "A peace offering",
+   "A meat offering"
+  ],
+  "answer": 0,
+  "explanation": "The one for a sin offering, and the other for a burnt offering.",
+  "ref": "Leviticus 15:15"
+ },
+ {
+  "id": "leviticus-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what did the priest make atonement for the cleansed man?",
+  "choices": [
+   "His issue",
+   "His house",
+   "His clothes",
+   "His land"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall make an atonement for him before the LORD for his issue.",
+  "ref": "Leviticus 15:15"
+ },
+ {
+  "id": "leviticus-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the bed of the woman in her long issue become like?",
+  "choices": [
+   "The bed of her separation",
+   "A holy bed",
+   "A clean bed",
+   "A burned bed"
+  ],
+  "answer": 0,
+  "explanation": "Every bed whereon she lieth all the days of her issue shall be unto her as the bed of her separation.",
+  "ref": "Leviticus 15:26"
+ },
+ {
+  "id": "leviticus-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the woman's atonement cover: the issue of her what?",
+  "choices": [
+   "Uncleanness",
+   "Sin",
+   "Vow",
+   "House"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall make an atonement for her before the LORD for the issue of her uncleanness.",
+  "ref": "Leviticus 15:30"
+ },
+ {
+  "id": "leviticus-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who received the woman's two turtles or young pigeons?",
+  "choices": [
+   "The priest",
+   "Moses",
+   "Aaron's wife",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "She shall take unto her two turtles ... and bring them unto the priest.",
+  "ref": "Leviticus 15:29"
+ },
+ {
+  "id": "leviticus-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did a man's bed become if he lay with her in her flowers?",
+  "choices": [
+   "Unclean",
+   "Holy",
+   "Burned",
+   "Washed clean"
+  ],
+  "answer": 0,
+  "explanation": "He shall be unclean seven days; and all the bed whereon he lieth shall be unclean.",
+  "ref": "Leviticus 15:24"
+ },
+ {
+  "id": "leviticus-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The final law mentions him that lieth with her that is what?",
+  "choices": [
+   "Unclean",
+   "Sick",
+   "Cast out",
+   "Newly wed"
+  ],
+  "answer": 0,
+  "explanation": "This is the law ... of him that lieth with her that is unclean.",
+  "ref": "Leviticus 15:33"
+ },
+ {
+  "id": "leviticus-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In the cleansed man's offering, which offering is named first?",
+  "choices": [
+   "The sin offering",
+   "The burnt offering",
+   "The trespass offering",
+   "The peace offering"
+  ],
+  "answer": 0,
+  "explanation": "The one for a sin offering, and the other for a burnt offering.",
+  "ref": "Leviticus 15:15"
+ },
+ {
+  "id": "leviticus-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom did the cleansed man come with his two birds?",
+  "choices": [
+   "The LORD",
+   "Pharaoh",
+   "The elders",
+   "Joshua"
+  ],
+  "answer": 0,
+  "explanation": "He shall ... come before the LORD unto the door of the tabernacle of the congregation.",
+  "ref": "Leviticus 15:14"
+ },
+ {
+  "id": "leviticus-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the final verse of the man's law say is defiled by the issue?",
+  "choices": [
+   "Him whose seed goeth from him",
+   "Him who eats",
+   "Him who sleeps",
+   "Him who prays"
+  ],
+  "answer": 0,
+  "explanation": "This is the law of him that hath an issue, and of him whose seed goeth from him, and is defiled therewith.",
+  "ref": "Leviticus 15:32"
+ },
+ {
+  "id": "leviticus-15-h-15",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After washing and bathing in running water, what was the cleansed man?",
+  "choices": [
+   "Clean",
+   "Still unclean",
+   "A priest",
+   "Banished"
+  ],
+  "answer": 0,
+  "explanation": "He shall number to himself seven days ... and shall be clean.",
+  "ref": "Leviticus 15:13"
+ },
+ {
   "id": "old-leviticus-16-1",
   "chapter": 16,
   "level": "beginner",
