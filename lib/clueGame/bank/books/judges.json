@@ -8720,6 +8720,646 @@
   "ref": "Judges 13:24"
  },
  {
+  "id": "judges-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Samson's father?",
+  "choices": [
+   "Jair",
+   "Elkanah",
+   "Manoah",
+   "Gilead"
+  ],
+  "answer": 2,
+  "explanation": "There was a certain man of Zorah, of the family of the Danites, whose name was Manoah.",
+  "ref": "Judges 13:2"
+ },
+ {
+  "id": "judges-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which town was Manoah from?",
+  "choices": [
+   "Gaza",
+   "Timnath",
+   "Bethlehem",
+   "Zorah"
+  ],
+  "answer": 3,
+  "explanation": "There was a certain man of Zorah, whose name was Manoah.",
+  "ref": "Judges 13:2"
+ },
+ {
+  "id": "judges-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Manoah was of the family of which tribe?",
+  "choices": [
+   "The Zebulonites",
+   "The Ephraimites",
+   "The Judahites",
+   "The Danites"
+  ],
+  "answer": 3,
+  "explanation": "A certain man of Zorah, of the family of the Danites, whose name was Manoah.",
+  "ref": "Judges 13:2"
+ },
+ {
+  "id": "judges-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who appeared to Manoah's wife and told her she would have a son?",
+  "choices": [
+   "The elders of Dan",
+   "A priest of Zorah",
+   "The angel of the LORD",
+   "A prophet of Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "The angel of the LORD appeared unto the woman, and said unto her, thou shalt conceive, and bear a son.",
+  "ref": "Judges 13:3"
+ },
+ {
+  "id": "judges-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the woman told not to drink?",
+  "choices": [
+   "Any drink from Zorah",
+   "Wine nor strong drink",
+   "Milk",
+   "Water from the well"
+  ],
+  "answer": 1,
+  "explanation": "Drink not wine nor strong drink, and eat not any unclean thing.",
+  "ref": "Judges 13:4"
+ },
+ {
+  "id": "judges-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was never to come on the child's head?",
+  "choices": [
+   "A razor",
+   "A veil",
+   "Oil",
+   "A crown"
+  ],
+  "answer": 0,
+  "explanation": "No razor shall come on his head: for the child shall be a Nazarite unto God.",
+  "ref": "Judges 13:5"
+ },
+ {
+  "id": "judges-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Manoah want to make ready for the angel?",
+  "choices": [
+   "A lamb",
+   "A loaf of bread",
+   "A calf",
+   "A kid"
+  ],
+  "answer": 3,
+  "explanation": "Manoah said, let us detain thee, until we shall have made ready a kid for thee.",
+  "ref": "Judges 13:15"
+ },
+ {
+  "id": "judges-13-e-08",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Manoah's wife do when the angel came to her again?",
+  "choices": [
+   "Hid in the house",
+   "Sent for the elders",
+   "Made haste, ran and told her husband",
+   "Fell asleep in the field"
+  ],
+  "answer": 2,
+  "explanation": "The woman made haste, and ran, and shewed her husband.",
+  "ref": "Judges 13:10"
+ },
+ {
+  "id": "judges-13-e-09",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Manoah say after the angel ascended in the flame?",
+  "choices": [
+   "Let us tell all Dan",
+   "Let us build a house here",
+   "We shall surely die, because we have seen God",
+   "Let us flee to Gaza"
+  ],
+  "answer": 2,
+  "explanation": "Manoah said unto his wife, We shall surely die, because we have seen God.",
+  "ref": "Judges 13:22"
+ },
+ {
+  "id": "judges-13-e-10",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD do for the child as he grew?",
+  "choices": [
+   "Hid him",
+   "Made him king",
+   "Blessed him",
+   "Sent him away"
+  ],
+  "answer": 2,
+  "explanation": "The child grew, and the LORD blessed him.",
+  "ref": "Judges 13:24"
+ },
+ {
+  "id": "judges-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the woman say the man of God looked like?",
+  "choices": [
+   "An angel of God",
+   "A priest",
+   "A Philistine",
+   "A king"
+  ],
+  "answer": 0,
+  "explanation": "His countenance was like the countenance of an angel of God, very terrible.",
+  "ref": "Judges 13:6"
+ },
+ {
+  "id": "judges-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the woman say she had not asked the man?",
+  "choices": [
+   "Whence he was",
+   "What he ate",
+   "Who sent him",
+   "Why he came"
+  ],
+  "answer": 0,
+  "explanation": "I asked him not whence he was, neither told he me his name.",
+  "ref": "Judges 13:6"
+ },
+ {
+  "id": "judges-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Manoah ask the LORD to do about the man of God?",
+  "choices": [
+   "Take him to heaven",
+   "Send him to the Philistines",
+   "Send him again to teach them about the child",
+   "Give him a name"
+  ],
+  "answer": 2,
+  "explanation": "Manoah intreated the LORD, let the man of God come again unto us, and teach us what we shall do unto the child.",
+  "ref": "Judges 13:8"
+ },
+ {
+  "id": "judges-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the woman when the angel came to her again?",
+  "choices": [
+   "At the altar",
+   "Sitting in the field",
+   "In her house",
+   "At the well"
+  ],
+  "answer": 1,
+  "explanation": "The angel of God came again unto the woman as she sat in the field.",
+  "ref": "Judges 13:9"
+ },
+ {
+  "id": "judges-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was not with the woman when the angel came again?",
+  "choices": [
+   "Her servant",
+   "Manoah her husband",
+   "Her father",
+   "Her sister"
+  ],
+  "answer": 1,
+  "explanation": "The angel came again unto the woman as she sat in the field: but Manoah her husband was not with her.",
+  "ref": "Judges 13:9"
+ },
+ {
+  "id": "judges-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Manoah ask the man when he came to him?",
+  "choices": [
+   "What is thy name?",
+   "Art thou the man that spakest unto the woman?",
+   "Who sent thee?",
+   "Where is thy home?"
+  ],
+  "answer": 1,
+  "explanation": "Manoah said unto him, Art thou the man that spakest unto the woman? And he said, I am.",
+  "ref": "Judges 13:11"
+ },
+ {
+  "id": "judges-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel say he would not do though Manoah detained him?",
+  "choices": [
+   "Eat of his bread",
+   "Take a gift",
+   "Stay the night",
+   "Enter his house"
+  ],
+  "answer": 0,
+  "explanation": "Though thou detain me, I will not eat of thy bread.",
+  "ref": "Judges 13:16"
+ },
+ {
+  "id": "judges-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom did the angel say a burnt offering must be offered?",
+  "choices": [
+   "The rock",
+   "The LORD",
+   "The angel",
+   "Dan"
+  ],
+  "answer": 1,
+  "explanation": "If thou wilt offer a burnt offering, thou must offer it unto the LORD.",
+  "ref": "Judges 13:16"
+ },
+ {
+  "id": "judges-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Manoah take and offer to the LORD?",
+  "choices": [
+   "A kid with a meat offering",
+   "Two turtledoves",
+   "A ram",
+   "A bullock"
+  ],
+  "answer": 0,
+  "explanation": "Manoah took a kid with a meat offering, and offered it upon a rock unto the LORD.",
+  "ref": "Judges 13:19"
+ },
+ {
+  "id": "judges-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Upon what did Manoah offer the kid?",
+  "choices": [
+   "An altar of brass",
+   "A rock",
+   "A stone pillar",
+   "A hilltop tent"
+  ],
+  "answer": 1,
+  "explanation": "Manoah offered it upon a rock unto the LORD.",
+  "ref": "Judges 13:19"
+ },
+ {
+  "id": "judges-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Manoah and his wife do when the flame went up?",
+  "choices": [
+   "Sang praises",
+   "Fell on their faces to the ground",
+   "Covered the fire",
+   "Ran away"
+  ],
+  "answer": 1,
+  "explanation": "Manoah and his wife looked on it, and fell on their faces to the ground.",
+  "ref": "Judges 13:20"
+ },
+ {
+  "id": "judges-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Manoah's wife say proved the LORD did not mean to kill them?",
+  "choices": [
+   "He had hidden His name",
+   "He had given them a son",
+   "He had spoken in the field",
+   "He received a burnt offering and meat offering"
+  ],
+  "answer": 3,
+  "explanation": "If the LORD were pleased to kill us, he would not have received a burnt offering and a meat offering at our hands.",
+  "ref": "Judges 13:23"
+ },
+ {
+  "id": "judges-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Between which two places did the Spirit of the LORD begin to move Samson?",
+  "choices": [
+   "Timnath and Zorah",
+   "Mizpeh and Gilead",
+   "Gaza and Hebron",
+   "Zorah and Eshtaol"
+  ],
+  "answer": 3,
+  "explanation": "The Spirit of the LORD began to move him at times in the camp of Dan between Zorah and Eshtaol.",
+  "ref": "Judges 13:25"
+ },
+ {
+  "id": "judges-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was the child to be a Nazarite?",
+  "choices": [
+   "From the womb to the day of his death",
+   "Seven years",
+   "Until he married",
+   "Until he was grown"
+  ],
+  "answer": 0,
+  "explanation": "The child shall be a Nazarite to God from the womb to the day of his death.",
+  "ref": "Judges 13:7"
+ },
+ {
+  "id": "judges-13-m-15",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel say the child would begin to do?",
+  "choices": [
+   "Deliver Israel out of the hand of the Philistines",
+   "Judge Israel forty years",
+   "Build a temple",
+   "Defeat Ammon"
+  ],
+  "answer": 0,
+  "explanation": "He shall begin to deliver Israel out of the hand of the Philistines.",
+  "ref": "Judges 13:5"
+ },
+ {
+  "id": "judges-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the angel tell Manoah concerning his wife?",
+  "choices": [
+   "She must leave Zorah",
+   "Of all that he said, let her beware",
+   "She must fast",
+   "She must stay indoors"
+  ],
+  "answer": 1,
+  "explanation": "Of all that I said unto the woman let her beware.",
+  "ref": "Judges 13:13"
+ },
+ {
+  "id": "judges-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the woman describe the countenance of the man of God?",
+  "choices": [
+   "Very sad",
+   "Very terrible",
+   "Very old",
+   "Very bright"
+  ],
+  "answer": 1,
+  "explanation": "His countenance was like the countenance of an angel of God, very terrible.",
+  "ref": "Judges 13:6"
+ },
+ {
+  "id": "judges-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Manoah want to know the angel's name?",
+  "choices": [
+   "To name the child",
+   "To do him honour when his sayings came to pass",
+   "To tell the Philistines",
+   "To write it down"
+  ],
+  "answer": 1,
+  "explanation": "What is thy name, that when thy sayings come to pass we may do thee honour?",
+  "ref": "Judges 13:17"
+ },
+ {
+  "id": "judges-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the angel say he would not give his name?",
+  "choices": [
+   "It is secret",
+   "It is forbidden",
+   "It is too long",
+   "It is unknown"
+  ],
+  "answer": 0,
+  "explanation": "Why askest thou thus after my name, seeing it is secret?",
+  "ref": "Judges 13:18"
+ },
+ {
+  "id": "judges-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the angel do while Manoah offered the kid?",
+  "choices": [
+   "Hid his face",
+   "Wept",
+   "Did wonderously",
+   "Prayed aloud"
+  ],
+  "answer": 2,
+  "explanation": "Manoah offered it upon a rock unto the LORD: and the angel did wonderously.",
+  "ref": "Judges 13:19"
+ },
+ {
+  "id": "judges-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Manoah know he was an angel of the LORD?",
+  "choices": [
+   "When the woman told him",
+   "When he ate the kid",
+   "When the Spirit came",
+   "When the angel did no more appear"
+  ],
+  "answer": 3,
+  "explanation": "The angel did no more appear to Manoah and to his wife. Then Manoah knew that he was an angel of the LORD.",
+  "ref": "Judges 13:21"
+ },
+ {
+  "id": "judges-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Manoah not know when the angel refused his bread?",
+  "choices": [
+   "That he was a prophet",
+   "That he was hungry",
+   "That he was a Danite",
+   "That he was an angel of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "For Manoah knew not that he was an angel of the LORD.",
+  "ref": "Judges 13:16"
+ },
+ {
+  "id": "judges-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which camp did the Spirit of the LORD begin to move Samson?",
+  "choices": [
+   "The camp of Gilead",
+   "The camp of Judah",
+   "The camp of Ephraim",
+   "The camp of Dan"
+  ],
+  "answer": 3,
+  "explanation": "The Spirit of the LORD began to move him at times in the camp of Dan.",
+  "ref": "Judges 13:25"
+ },
+ {
+  "id": "judges-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides wine and strong drink, what must the woman not eat?",
+  "choices": [
+   "Any bread",
+   "Any unclean thing",
+   "Any fruit of the field",
+   "Any meat of the flock"
+  ],
+  "answer": 1,
+  "explanation": "Drink not wine nor strong drink, and eat not any unclean thing.",
+  "ref": "Judges 13:4"
+ },
+ {
+  "id": "judges-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Manoah ask the angel about the child?",
+  "choices": [
+   "How to order him",
+   "Where he would live",
+   "When he would be born",
+   "Who would teach him"
+  ],
+  "answer": 0,
+  "explanation": "Manoah said, How shall we order the child, and how shall we do unto him?",
+  "ref": "Judges 13:12"
+ },
+ {
+  "id": "judges-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the angel say the woman may not eat that cometh of the vine?",
+  "choices": [
+   "Leaves",
+   "Grapes only",
+   "Raisins only",
+   "Any thing"
+  ],
+  "answer": 3,
+  "explanation": "She may not eat of any thing that cometh of the vine.",
+  "ref": "Judges 13:14"
+ },
+ {
+  "id": "judges-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Manoah call the LORD when he asked for the man of God to come again?",
+  "choices": [
+   "O Judge",
+   "O my Lord",
+   "O Father",
+   "O King"
+  ],
+  "answer": 1,
+  "explanation": "Manoah intreated the LORD, and said, O my Lord, let the man of God come again unto us.",
+  "ref": "Judges 13:8"
+ },
+ {
+  "id": "judges-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the woman first call the visitor when she told her husband?",
+  "choices": [
+   "A man of God",
+   "A Philistine",
+   "A stranger",
+   "A prophet"
+  ],
+  "answer": 0,
+  "explanation": "The woman said, A man of God came unto me.",
+  "ref": "Judges 13:6"
+ },
+ {
+  "id": "judges-13-h-14",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Who said the LORD would not have received their offering if He meant to kill them?",
+  "choices": [
+   "Manoah",
+   "The elders",
+   "Manoah's wife",
+   "The angel"
+  ],
+  "answer": 2,
+  "explanation": "His wife said unto him, If the LORD were pleased to kill us, he would not have received a burnt offering and a meat offering at our hands.",
+  "ref": "Judges 13:23"
+ },
+ {
+  "id": "judges-13-h-15",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the flame go up from the altar?",
+  "choices": [
+   "Toward the field",
+   "Toward Dan",
+   "Toward Zorah",
+   "Toward heaven"
+  ],
+  "answer": 3,
+  "explanation": "The flame went up toward heaven from off the altar, that the angel of the LORD ascended in the flame.",
+  "ref": "Judges 13:20"
+ },
+ {
   "id": "old-judges-14-1",
   "chapter": 14,
   "level": "beginner",
