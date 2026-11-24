@@ -2960,6 +2960,646 @@
   "ref": "1 Samuel 5:8–11"
  },
  {
+  "id": "1-samuel-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "From where did the Philistines bring the ark to Ashdod?",
+  "choices": [
+   "Shiloh",
+   "Eben-ezer",
+   "Aphek",
+   "Ramah"
+  ],
+  "answer": 1,
+  "explanation": "The Philistines took the ark of God, and brought it from Eben-ezer unto Ashdod.",
+  "ref": "1 Samuel 5:1"
+ },
+ {
+  "id": "1-samuel-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which Philistine city was the ark first brought?",
+  "choices": [
+   "Ashkelon",
+   "Gath",
+   "Ekron",
+   "Ashdod"
+  ],
+  "answer": 3,
+  "explanation": "The Philistines brought it from Eben-ezer unto Ashdod.",
+  "ref": "1 Samuel 5:1"
+ },
+ {
+  "id": "1-samuel-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people of Ashdod do with Dagon after he first fell?",
+  "choices": [
+   "Burned him",
+   "Set him in his place again",
+   "Buried him",
+   "Left him on the ground"
+  ],
+  "answer": 1,
+  "explanation": "They took Dagon, and set him in his place again.",
+  "ref": "1 Samuel 5:3"
+ },
+ {
+  "id": "1-samuel-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the men of Ashdod find when they arose early?",
+  "choices": [
+   "Dagon was shining",
+   "The ark was gone",
+   "The temple was empty",
+   "Dagon fallen on his face before the ark"
+  ],
+  "answer": 3,
+  "explanation": "Dagon was fallen upon his face to the earth before the ark of the LORD.",
+  "ref": "1 Samuel 5:3"
+ },
+ {
+  "id": "1-samuel-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What came upon the city of Gath after the ark was carried there?",
+  "choices": [
+   "A great flood",
+   "A very great destruction",
+   "A famine",
+   "Darkness"
+  ],
+  "answer": 1,
+  "explanation": "The hand of the LORD was against the city with a very great destruction.",
+  "ref": "1 Samuel 5:9"
+ },
+ {
+  "id": "1-samuel-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did they send the ark after Gath?",
+  "choices": [
+   "Beth-shemesh",
+   "Ashdod",
+   "Shiloh",
+   "Ekron"
+  ],
+  "answer": 3,
+  "explanation": "They sent the ark of God to Ekron.",
+  "ref": "1 Samuel 5:10"
+ },
+ {
+  "id": "1-samuel-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what did the LORD smite the men of Ashdod?",
+  "choices": [
+   "Locusts",
+   "Emerods",
+   "Fire",
+   "Darkness"
+  ],
+  "answer": 1,
+  "explanation": "He destroyed them, and smote them with emerods, even Ashdod and the coasts thereof.",
+  "ref": "1 Samuel 5:6"
+ },
+ {
+  "id": "1-samuel-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose hand was heavy upon the people of Ashdod?",
+  "choices": [
+   "Eli's",
+   "Dagon's",
+   "Samuel's",
+   "The LORD's"
+  ],
+  "answer": 3,
+  "explanation": "The hand of the LORD was heavy upon them of Ashdod.",
+  "ref": "1 Samuel 5:6"
+ },
+ {
+  "id": "1-samuel-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was left to Dagon after his head and hands were cut off?",
+  "choices": [
+   "His feet",
+   "Only the stump",
+   "His crown",
+   "His body"
+  ],
+  "answer": 1,
+  "explanation": "Only the stump of Dagon was left to him.",
+  "ref": "1 Samuel 5:4"
+ },
+ {
+  "id": "1-samuel-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said, The ark of the God of Israel shall not abide with us?",
+  "choices": [
+   "The Ekronites",
+   "The priests of Eli",
+   "The lords of Gath",
+   "The men of Ashdod"
+  ],
+  "answer": 3,
+  "explanation": "The men of Ashdod said, The ark of the God of Israel shall not abide with us.",
+  "ref": "1 Samuel 5:7"
+ },
+ {
+  "id": "1-samuel-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Whose house did the Philistines bring the ark into?",
+  "choices": [
+   "The house of the lords",
+   "The house of Eli",
+   "The house of Baal",
+   "The house of Dagon"
+  ],
+  "answer": 3,
+  "explanation": "They brought it into the house of Dagon, and set it by Dagon.",
+  "ref": "1 Samuel 5:2"
+ },
+ {
+  "id": "1-samuel-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was cut off Dagon on the second morning besides his head?",
+  "choices": [
+   "Both feet",
+   "Both palms of his hands",
+   "His arms",
+   "His crown"
+  ],
+  "answer": 1,
+  "explanation": "The head of Dagon and both the palms of his hands were cut off upon the threshold.",
+  "ref": "1 Samuel 5:4"
+ },
+ {
+  "id": "1-samuel-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Upon what were Dagon's head and palms cut off?",
+  "choices": [
+   "The ark",
+   "The altar",
+   "The floor of the temple",
+   "The threshold"
+  ],
+  "answer": 3,
+  "explanation": "The head of Dagon and both the palms of his hands were cut off upon the threshold.",
+  "ref": "1 Samuel 5:4"
+ },
+ {
+  "id": "1-samuel-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the priests of Dagon not do unto this day?",
+  "choices": [
+   "Enter Ashdod",
+   "Tread on the threshold of Dagon",
+   "Offer sacrifice",
+   "Speak his name"
+  ],
+  "answer": 1,
+  "explanation": "Neither the priests of Dagon, nor any that come into Dagon's house, tread on the threshold of Dagon in Ashdod.",
+  "ref": "1 Samuel 5:5"
+ },
+ {
+  "id": "1-samuel-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the men of Ashdod gather to ask about the ark?",
+  "choices": [
+   "Samuel",
+   "The priests of Eli",
+   "The elders of Israel",
+   "All the lords of the Philistines"
+  ],
+  "answer": 3,
+  "explanation": "They gathered all the lords of the Philistines unto them, and said, What shall we do with the ark?",
+  "ref": "1 Samuel 5:8"
+ },
+ {
+  "id": "1-samuel-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On whom did the men of Ashdod say the LORD's hand was sore?",
+  "choices": [
+   "Only the priests",
+   "Them and Dagon their god",
+   "Only Gath",
+   "The lords"
+  ],
+  "answer": 1,
+  "explanation": "His hand is sore upon us, and upon Dagon our god.",
+  "ref": "1 Samuel 5:7"
+ },
+ {
+  "id": "1-samuel-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the LORD smite in Gath?",
+  "choices": [
+   "Only the priests",
+   "Only the elders",
+   "Only the soldiers",
+   "Men both small and great"
+  ],
+  "answer": 3,
+  "explanation": "He smote the men of the city, both small and great.",
+  "ref": "1 Samuel 5:9"
+ },
+ {
+  "id": "1-samuel-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Ekronites cry out when the ark came?",
+  "choices": [
+   "They wanted to worship it",
+   "They feared it would slay them and their people",
+   "They had no priests",
+   "They wanted to keep it"
+  ],
+  "answer": 1,
+  "explanation": "They have brought about the ark of the God of Israel to us, to slay us and our people.",
+  "ref": "1 Samuel 5:10"
+ },
+ {
+  "id": "1-samuel-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the lords of the Philistines say about the ark?",
+  "choices": [
+   "Return it to Aphek",
+   "Keep it in Ekron",
+   "Burn it",
+   "Send it away to its own place"
+  ],
+  "answer": 3,
+  "explanation": "Send away the ark of the God of Israel, and let it go again to his own place.",
+  "ref": "1 Samuel 5:11"
+ },
+ {
+  "id": "1-samuel-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What went up to heaven from the city?",
+  "choices": [
+   "Smoke",
+   "The cry of the city",
+   "The ark",
+   "Dagon's name"
+  ],
+  "answer": 1,
+  "explanation": "The cry of the city went up to heaven.",
+  "ref": "1 Samuel 5:12"
+ },
+ {
+  "id": "1-samuel-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of Ashdod say they must do when they saw the plague?",
+  "choices": [
+   "Give gifts to it",
+   "Carry it to Shiloh",
+   "Burn Dagon",
+   "They would not let the ark abide with them"
+  ],
+  "answer": 3,
+  "explanation": "The ark of the God of Israel shall not abide with us.",
+  "ref": "1 Samuel 5:7"
+ },
+ {
+  "id": "1-samuel-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question did the men of Ashdod ask the lords of the Philistines?",
+  "choices": [
+   "Where is Dagon?",
+   "Who sent the ark?",
+   "What shall we do with the ark of the God of Israel?",
+   "Shall we send it back?"
+  ],
+  "answer": 2,
+  "explanation": "They said, What shall we do with the ark of the God of Israel?",
+  "ref": "1 Samuel 5:8"
+ },
+ {
+  "id": "1-samuel-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the lords say the ark should be carried about?",
+  "choices": [
+   "Gath",
+   "Ekron",
+   "Shiloh",
+   "Aphek"
+  ],
+  "answer": 0,
+  "explanation": "Let the ark of the God of Israel be carried about unto Gath.",
+  "ref": "1 Samuel 5:8"
+ },
+ {
+  "id": "1-samuel-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which part of the body did the men of Gath have emerods?",
+  "choices": [
+   "Their heads",
+   "Their hands",
+   "Their secret parts",
+   "Their feet"
+  ],
+  "answer": 2,
+  "explanation": "They had emerods in their secret parts.",
+  "ref": "1 Samuel 5:9"
+ },
+ {
+  "id": "1-samuel-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the lords want the ark sent away?",
+  "choices": [
+   "That it slay us not",
+   "To honour the Hebrews",
+   "To pay a vow",
+   "To end the war"
+  ],
+  "answer": 0,
+  "explanation": "Send away the ark... that it slay us not, and our people.",
+  "ref": "1 Samuel 5:11"
+ },
+ {
+  "id": "1-samuel-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was throughout all the city of Ekron?",
+  "choices": [
+   "A harvest",
+   "A great feast",
+   "A deadly destruction",
+   "A silence"
+  ],
+  "answer": 2,
+  "explanation": "There was a deadly destruction throughout all the city; the hand of God was very heavy there.",
+  "ref": "1 Samuel 5:11"
+ },
+ {
+  "id": "1-samuel-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the men in Ekron who did not die?",
+  "choices": [
+   "They were smitten with emerods",
+   "They fled",
+   "They were healed",
+   "They hid the ark"
+  ],
+  "answer": 0,
+  "explanation": "The men that died not were smitten with the emerods.",
+  "ref": "1 Samuel 5:12"
+ },
+ {
+  "id": "1-samuel-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To where did Dagon fall the second time?",
+  "choices": [
+   "Behind the altar",
+   "Into a pit",
+   "To the ground before the ark",
+   "Outside the door"
+  ],
+  "answer": 2,
+  "explanation": "Dagon was fallen upon his face to the ground before the ark of the LORD.",
+  "ref": "1 Samuel 5:4"
+ },
+ {
+  "id": "1-samuel-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Who cried out at Ekron when the ark arrived?",
+  "choices": [
+   "The Ekronites",
+   "The lords",
+   "The priests of Dagon",
+   "The Gittites"
+  ],
+  "answer": 0,
+  "explanation": "The ark of God came to Ekron, that the Ekronites cried out.",
+  "ref": "1 Samuel 5:10"
+ },
+ {
+  "id": "1-samuel-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long have the priests avoided the threshold, the text says?",
+  "choices": [
+   "For a generation",
+   "For seven years",
+   "Unto this day",
+   "Until the ark left"
+  ],
+  "answer": 2,
+  "explanation": "They tread not on the threshold of Dagon in Ashdod unto this day.",
+  "ref": "1 Samuel 5:5"
+ },
+ {
+  "id": "1-samuel-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did the lords of the Philistines gather the second time besides the people of Ekron?",
+  "choices": [
+   "They sent and gathered all the lords",
+   "The priests of Dagon",
+   "The elders of Gath",
+   "The Hebrews"
+  ],
+  "answer": 0,
+  "explanation": "They sent and gathered together all the lords of the Philistines.",
+  "ref": "1 Samuel 5:11"
+ },
+ {
+  "id": "1-samuel-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the stump of Dagon show was left?",
+  "choices": [
+   "His arms",
+   "His crown",
+   "Only his stump",
+   "His feet"
+  ],
+  "answer": 2,
+  "explanation": "Only the stump of Dagon was left to him.",
+  "ref": "1 Samuel 5:4"
+ },
+ {
+  "id": "1-samuel-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the cry of the city of Ekron do?",
+  "choices": [
+   "Went up to heaven",
+   "Reached Shiloh",
+   "Stopped the plague",
+   "Woke the priests"
+  ],
+  "answer": 0,
+  "explanation": "The cry of the city went up to heaven.",
+  "ref": "1 Samuel 5:12"
+ },
+ {
+  "id": "1-samuel-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did the men of Ashdod call our god?",
+  "choices": [
+   "Chemosh",
+   "Baal",
+   "Dagon",
+   "Molech"
+  ],
+  "answer": 2,
+  "explanation": "His hand is sore upon us, and upon Dagon our god.",
+  "ref": "1 Samuel 5:7"
+ },
+ {
+  "id": "1-samuel-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who sent and gathered the lords of the Philistines the first time?",
+  "choices": [
+   "The men of Ashdod",
+   "The priests of Dagon",
+   "The people of Gath",
+   "The Ekronites"
+  ],
+  "answer": 0,
+  "explanation": "They sent therefore and gathered all the lords of the Philistines unto them.",
+  "ref": "1 Samuel 5:8"
+ },
+ {
+  "id": "1-samuel-5-h-15",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which part of Ashdod besides the city was destroyed?",
+  "choices": [
+   "The gate",
+   "The temple only",
+   "The coasts thereof",
+   "The fields of Gath"
+  ],
+  "answer": 2,
+  "explanation": "He destroyed them, even Ashdod and the coasts thereof.",
+  "ref": "1 Samuel 5:6"
+ },
+ {
+  "id": "1-samuel-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city received the ark last in this chapter?",
+  "choices": [
+   "Ekron",
+   "Ashdod",
+   "Gath",
+   "Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "They sent the ark of God to Ekron.",
+  "ref": "1 Samuel 5:10"
+ },
+ {
+  "id": "1-samuel-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "In which city did the people say the ark shall not abide with them?",
+  "choices": [
+   "Gath",
+   "Ekron",
+   "Ashdod",
+   "Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "The men of Ashdod saw that it was so, they said, The ark of the God of Israel shall not abide with us.",
+  "ref": "1 Samuel 5:7"
+ },
+ {
+  "id": "1-samuel-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what name did the Philistines call the God whose ark it was?",
+  "choices": [
+   "The God of Israel",
+   "The God of Egypt",
+   "The Most High",
+   "The Lord of Dagon"
+  ],
+  "answer": 0,
+  "explanation": "The ark of the God of Israel shall not abide with us.",
+  "ref": "1 Samuel 5:7"
+ },
+ {
+  "id": "1-samuel-5-m-15",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of Ashdod do after the lords answered them?",
+  "choices": [
+   "Burned it",
+   "Sent it back to Shiloh",
+   "Carried the ark about to Gath",
+   "Hid it in Dagon's house"
+  ],
+  "answer": 2,
+  "explanation": "They carried the ark of the God of Israel about thither.",
+  "ref": "1 Samuel 5:8"
+ },
+ {
   "id": "old-1-samuel-6-1",
   "chapter": 6,
   "level": "beginner",
