@@ -4400,6 +4400,646 @@
   "ref": "Joshua 7:26"
  },
  {
+  "id": "joshua-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the men of Israel do when they went up against Ai?",
+  "choices": [
+   "They waited at the gate",
+   "They made peace",
+   "They won easily",
+   "They fled before the men of Ai"
+  ],
+  "answer": 3,
+  "explanation": "About three thousand men went up thither: and they fled before the men of Ai.",
+  "ref": "Joshua 7:4"
+ },
+ {
+  "id": "joshua-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "What did Joshua do after the defeat?",
+  "choices": [
+   "Sent for Rahab",
+   "Blew the trumpets",
+   "Left for Gilgal",
+   "Rent his clothes and fell on his face before the ark"
+  ],
+  "answer": 3,
+  "explanation": "Joshua rent his clothes, and fell to the earth upon his face before the ark of the LORD until the eventide.",
+  "ref": "Joshua 7:6"
+ },
+ {
+  "id": "joshua-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who spoke to Joshua and told him to get up?",
+  "choices": [
+   "Achan",
+   "The LORD",
+   "Caleb",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said unto Joshua, Get thee up; wherefore liest thou thus upon thy face?",
+  "ref": "Joshua 7:10"
+ },
+ {
+  "id": "joshua-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say Israel had done?",
+  "choices": [
+   "Sinned and taken of the accursed thing",
+   "Refused to fight",
+   "Worshipped idols",
+   "Crossed Jordan late"
+  ],
+  "answer": 0,
+  "explanation": "Israel hath sinned, and they have taken of the accursed thing.",
+  "ref": "Joshua 7:11"
+ },
+ {
+  "id": "joshua-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "From which tribe was Achan?",
+  "choices": [
+   "Benjamin",
+   "Levi",
+   "Judah",
+   "Ephraim"
+  ],
+  "answer": 2,
+  "explanation": "Achan, of the tribe of Judah, took of the accursed thing.",
+  "ref": "Joshua 7:1"
+ },
+ {
+  "id": "joshua-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the hearts of the people after the defeat?",
+  "choices": [
+   "They burned",
+   "They melted and became as water",
+   "They hardened",
+   "They grew proud"
+  ],
+  "answer": 1,
+  "explanation": "The hearts of the people melted, and became as water.",
+  "ref": "Joshua 7:5"
+ },
+ {
+  "id": "joshua-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Achan hide the stolen things?",
+  "choices": [
+   "In a cave",
+   "In the earth in the midst of his tent",
+   "In the river",
+   "Under the altar"
+  ],
+  "answer": 1,
+  "explanation": "They are hid in the earth in the midst of my tent, and the silver under it.",
+  "ref": "Joshua 7:21"
+ },
+ {
+  "id": "joshua-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did Joshua tell to give glory to the LORD and confess?",
+  "choices": [
+   "The elders",
+   "Zabdi",
+   "The spies",
+   "Achan"
+  ],
+  "answer": 3,
+  "explanation": "Joshua said unto Achan, My son, give glory to the LORD God of Israel, and make confession.",
+  "ref": "Joshua 7:19"
+ },
+ {
+  "id": "joshua-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Israel put Achan to death?",
+  "choices": [
+   "They stoned him with stones",
+   "They hanged him",
+   "They drowned him",
+   "They sent him away"
+  ],
+  "answer": 0,
+  "explanation": "All Israel stoned him with stones, and burned them with fire.",
+  "ref": "Joshua 7:25"
+ },
+ {
+  "id": "joshua-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was raised over Achan after he died?",
+  "choices": [
+   "A tent",
+   "A tall pillar",
+   "An altar",
+   "A great heap of stones"
+  ],
+  "answer": 3,
+  "explanation": "They raised over him a great heap of stones unto this day.",
+  "ref": "Joshua 7:26"
+ },
+ {
+  "id": "joshua-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who viewed Ai before the attack?",
+  "choices": [
+   "The priests",
+   "The elders",
+   "Caleb's sons",
+   "Men sent by Joshua"
+  ],
+  "answer": 3,
+  "explanation": "Joshua sent men from Jericho to Ai, and the men went up and viewed Ai.",
+  "ref": "Joshua 7:2"
+ },
+ {
+  "id": "joshua-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men say about Ai when they returned?",
+  "choices": [
+   "They are mighty giants",
+   "They are but few",
+   "They have no wall",
+   "They are asleep"
+  ],
+  "answer": 1,
+  "explanation": "Make not all the people to labour thither; for they are but few.",
+  "ref": "Joshua 7:3"
+ },
+ {
+  "id": "joshua-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the men of Ai chase Israel as far as?",
+  "choices": [
+   "Gilgal",
+   "Jericho",
+   "Shebarim",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "They chased them from before the gate even unto Shebarim.",
+  "ref": "Joshua 7:5"
+ },
+ {
+  "id": "joshua-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua and the elders put upon their heads?",
+  "choices": [
+   "Oil",
+   "Ashes",
+   "Dust",
+   "Mud"
+  ],
+  "answer": 2,
+  "explanation": "Joshua and the elders of Israel put dust upon their heads.",
+  "ref": "Joshua 7:6"
+ },
+ {
+  "id": "joshua-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua wish Israel had done instead of crossing Jordan?",
+  "choices": [
+   "Fought at Jericho",
+   "Gone to Egypt",
+   "Camped at Ai",
+   "Been content on the other side"
+  ],
+  "answer": 3,
+  "explanation": "Would to God we had been content, and dwelt on the other side Jordan!",
+  "ref": "Joshua 7:7"
+ },
+ {
+  "id": "joshua-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua fear the Canaanites would do?",
+  "choices": [
+   "Join Israel",
+   "Move away",
+   "Offer peace",
+   "Hear of it and cut off Israel's name"
+  ],
+  "answer": 3,
+  "explanation": "The Canaanites shall hear of it, and shall environ us round, and cut off our name from the earth.",
+  "ref": "Joshua 7:9"
+ },
+ {
+  "id": "joshua-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD no longer be with Israel unless they did?",
+  "choices": [
+   "Return to Egypt",
+   "Build an altar",
+   "Destroy the accursed from among them",
+   "Offer more sacrifices"
+  ],
+  "answer": 2,
+  "explanation": "Neither will I be with you any more, except ye destroy the accursed from among you.",
+  "ref": "Joshua 7:12"
+ },
+ {
+  "id": "joshua-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel told to do for the next day?",
+  "choices": [
+   "Sacrifice a lamb",
+   "Fast for seven days",
+   "Sanctify themselves",
+   "March on Ai"
+  ],
+  "answer": 2,
+  "explanation": "Sanctify yourselves against to morrow.",
+  "ref": "Joshua 7:13"
+ },
+ {
+  "id": "joshua-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the guilty person to be found?",
+  "choices": [
+   "By Joshua's guess",
+   "By tribes, families, households and man by man",
+   "By the elders' vote",
+   "By lot at the gate"
+  ],
+  "answer": 1,
+  "explanation": "Brought by tribes, then families, then households, then man by man.",
+  "ref": "Joshua 7:14"
+ },
+ {
+  "id": "joshua-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to happen to the one taken with the accursed thing?",
+  "choices": [
+   "He would pay a fine",
+   "He would be burnt with fire with all he had",
+   "He would be exiled",
+   "He would be scourged"
+  ],
+  "answer": 1,
+  "explanation": "He that is taken with the accursed thing shall be burnt with fire, he and all that he hath.",
+  "ref": "Joshua 7:15"
+ },
+ {
+  "id": "joshua-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which tribe was taken first?",
+  "choices": [
+   "Dan",
+   "Benjamin",
+   "Judah",
+   "Reuben"
+  ],
+  "answer": 2,
+  "explanation": "The tribe of Judah was taken.",
+  "ref": "Joshua 7:16"
+ },
+ {
+  "id": "joshua-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which family of Judah was taken?",
+  "choices": [
+   "The Hezronites",
+   "The Shelanites",
+   "The Carmites",
+   "The Zarhites"
+  ],
+  "answer": 3,
+  "explanation": "He took the family of the Zarhites.",
+  "ref": "Joshua 7:17"
+ },
+ {
+  "id": "joshua-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Achan say made him take the goods?",
+  "choices": [
+   "He was ordered",
+   "He was hungry",
+   "He coveted them",
+   "He was afraid"
+  ],
+  "answer": 2,
+  "explanation": "I saw among the spoils a goodly Babylonish garment, then I coveted them, and took them.",
+  "ref": "Joshua 7:21"
+ },
+ {
+  "id": "joshua-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who ran to Achan's tent?",
+  "choices": [
+   "The priests",
+   "Achan's sons",
+   "Messengers sent by Joshua",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "Joshua sent messengers, and they ran unto the tent.",
+  "ref": "Joshua 7:22"
+ },
+ {
+  "id": "joshua-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Achan taken and judged?",
+  "choices": [
+   "Gilgal",
+   "Mount Ebal",
+   "The valley of Achor",
+   "Ai"
+  ],
+  "answer": 2,
+  "explanation": "They brought them unto the valley of Achor.",
+  "ref": "Joshua 7:24"
+ },
+ {
+  "id": "joshua-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "About how many men did the spies say should go up to Ai?",
+  "choices": [
+   "Two or three thousand",
+   "Three hundred",
+   "Thirty-six thousand",
+   "Twelve thousand"
+  ],
+  "answer": 0,
+  "explanation": "Let about two or three thousand men go up and smite Ai.",
+  "ref": "Joshua 7:3"
+ },
+ {
+  "id": "joshua-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of Israel did Ai strike down?",
+  "choices": [
+   "Thirty and six",
+   "Three hundred",
+   "Thirty",
+   "Three"
+  ],
+  "answer": 0,
+  "explanation": "The men of Ai smote of them about thirty and six men.",
+  "ref": "Joshua 7:5"
+ },
+ {
+  "id": "joshua-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "What was Ai beside, according to the chapter?",
+  "choices": [
+   "Beth-aven",
+   "Bethel's gate",
+   "Jericho",
+   "Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "Ai, which is beside Beth-aven, on the east side of Bethel.",
+  "ref": "Joshua 7:2"
+ },
+ {
+  "id": "joshua-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Achan's father?",
+  "choices": [
+   "Zabdi",
+   "Zerah",
+   "Carmi",
+   "Judah"
+  ],
+  "answer": 2,
+  "explanation": "Achan, the son of Carmi, the son of Zabdi, the son of Zerah.",
+  "ref": "Joshua 7:1"
+ },
+ {
+  "id": "joshua-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shekels of silver did Achan take?",
+  "choices": [
+   "One hundred",
+   "Fifty",
+   "Two hundred",
+   "Four hundred"
+  ],
+  "answer": 2,
+  "explanation": "Two hundred shekels of silver.",
+  "ref": "Joshua 7:21"
+ },
+ {
+  "id": "joshua-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much did the wedge of gold weigh?",
+  "choices": [
+   "One hundred shekels",
+   "Two hundred shekels",
+   "Twenty shekels",
+   "Fifty shekels"
+  ],
+  "answer": 3,
+  "explanation": "A wedge of gold of fifty shekels weight.",
+  "ref": "Joshua 7:21"
+ },
+ {
+  "id": "joshua-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man of the Zarhites was taken by name?",
+  "choices": [
+   "Zerah",
+   "Carmi",
+   "Zabdi",
+   "Achan"
+  ],
+  "answer": 2,
+  "explanation": "He brought the family of the Zarhites man by man; and Zabdi was taken.",
+  "ref": "Joshua 7:17"
+ },
+ {
+  "id": "joshua-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What sins did the LORD say Israel committed besides taking the accursed thing?",
+  "choices": [
+   "Murder and lies",
+   "Idolatry and theft",
+   "Stolen and dissembled",
+   "Lying and adultery"
+  ],
+  "answer": 2,
+  "explanation": "They have also stolen, and dissembled also.",
+  "ref": "Joshua 7:11"
+ },
+ {
+  "id": "joshua-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose hands did Joshua fear Israel would be delivered into?",
+  "choices": [
+   "The Amorites",
+   "The Philistines",
+   "The Egyptians",
+   "The Hivites"
+  ],
+  "answer": 0,
+  "explanation": "To deliver us into the hand of the Amorites, to destroy us?",
+  "ref": "Joshua 7:7"
+ },
+ {
+  "id": "joshua-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua say to Achan when he stoned him?",
+  "choices": [
+   "Why hast thou troubled us?",
+   "Repent now",
+   "Fear not",
+   "Go in peace"
+  ],
+  "answer": 0,
+  "explanation": "Why hast thou troubled us? the LORD shall trouble thee this day.",
+  "ref": "Joshua 7:25"
+ },
+ {
+  "id": "joshua-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to Achan's sons, daughters and animals?",
+  "choices": [
+   "They were taken to the valley of Achor",
+   "They fled",
+   "They stayed in Jericho",
+   "They were spared"
+  ],
+  "answer": 0,
+  "explanation": "Joshua took Achan, his sons, daughters, oxen, asses, sheep, tent and all he had to the valley of Achor.",
+  "ref": "Joshua 7:24"
+ },
+ {
+  "id": "joshua-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was laid out before the LORD after being taken from the tent?",
+  "choices": [
+   "The garment, silver and gold",
+   "The sheep",
+   "The altar stones",
+   "The ark"
+  ],
+  "answer": 0,
+  "explanation": "They took them out of the midst of the tent, and laid them out before the LORD.",
+  "ref": "Joshua 7:23"
+ },
+ {
+  "id": "joshua-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do after the heap of stones was raised?",
+  "choices": [
+   "Gave Ai",
+   "Sent fire",
+   "Closed the Jordan",
+   "Turned from the fierceness of his anger"
+  ],
+  "answer": 3,
+  "explanation": "So the LORD turned from the fierceness of his anger.",
+  "ref": "Joshua 7:26"
+ },
+ {
+  "id": "joshua-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the LORD's anger kindled against?",
+  "choices": [
+   "Achan only",
+   "Joshua",
+   "Ai",
+   "The children of Israel"
+  ],
+  "answer": 3,
+  "explanation": "The anger of the LORD was kindled against the children of Israel.",
+  "ref": "Joshua 7:1"
+ },
+ {
+  "id": "joshua-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when did Joshua lie on his face before the ark?",
+  "choices": [
+   "The eventide",
+   "The seventh day",
+   "The next morning",
+   "Three days"
+  ],
+  "answer": 0,
+  "explanation": "Joshua fell to the earth upon his face before the ark of the LORD until the eventide.",
+  "ref": "Joshua 7:6"
+ },
+ {
   "id": "old-joshua-8-1",
   "chapter": 8,
   "level": "beginner",
