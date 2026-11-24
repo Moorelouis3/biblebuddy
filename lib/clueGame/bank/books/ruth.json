@@ -2238,5 +2238,645 @@
   "answer": 3,
   "explanation": "Obed is named in the genealogy leading to David.",
   "ref": "Ruth 4:17"
+ },
+ {
+  "id": "ruth-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Boaz tell the kinsman to do when he came by the gate?",
+  "choices": [
+   "Turn aside and sit down",
+   "Go to Moab",
+   "Give him a shoe",
+   "Wait outside"
+  ],
+  "answer": 0,
+  "explanation": "Boaz said, Ho, such a one! turn aside, sit down here. And he turned aside, and sat down.",
+  "ref": "Ruth 4:1"
+ },
+ {
+  "id": "ruth-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose land was Naomi selling?",
+  "choices": [
+   "Elimelech's",
+   "Boaz's",
+   "Obed's",
+   "Jesse's"
+  ],
+  "answer": 0,
+  "explanation": "Naomi selleth a parcel of land, which was our brother Elimelech's.",
+  "ref": "Ruth 4:3"
+ },
+ {
+  "id": "ruth-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Boaz purchase to be his wife?",
+  "choices": [
+   "Orpah",
+   "Ruth the Moabitess",
+   "Tamar",
+   "Leah"
+  ],
+  "answer": 1,
+  "explanation": "Moreover Ruth the Moabitess, the wife of Mahlon, have I purchased to be my wife.",
+  "ref": "Ruth 4:10"
+ },
+ {
+  "id": "ruth-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Ruth's first husband, whose name Boaz wanted to raise up?",
+  "choices": [
+   "Chilion",
+   "Elimelech",
+   "Mahlon",
+   "Obed"
+  ],
+  "answer": 2,
+  "explanation": "Ruth the Moabitess, the wife of Mahlon, have I purchased to be my wife.",
+  "ref": "Ruth 4:10"
+ },
+ {
+  "id": "ruth-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people at the gate say when Boaz called on them?",
+  "choices": [
+   "We are witnesses",
+   "We will not hear",
+   "Let the kinsman decide",
+   "Peace be unto you"
+  ],
+  "answer": 0,
+  "explanation": "All the people that were in the gate, and the elders, said, We are witnesses.",
+  "ref": "Ruth 4:11"
+ },
+ {
+  "id": "ruth-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took the child and became nurse unto it?",
+  "choices": [
+   "Ruth",
+   "Naomi",
+   "Tamar",
+   "Rachel"
+  ],
+  "answer": 1,
+  "explanation": "Naomi took the child, and laid it in her bosom, and became nurse unto it.",
+  "ref": "Ruth 4:16"
+ },
+ {
+  "id": "ruth-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who gave the child his name?",
+  "choices": [
+   "Boaz",
+   "Ruth",
+   "The women her neighbours",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "The women her neighbours gave it a name, and they called his name Obed.",
+  "ref": "Ruth 4:17"
+ },
+ {
+  "id": "ruth-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the son of Pharez?",
+  "choices": [
+   "Hezron",
+   "Ram",
+   "Salmon",
+   "Jesse"
+  ],
+  "answer": 0,
+  "explanation": "Now these are the generations of Pharez: Pharez begat Hezron.",
+  "ref": "Ruth 4:18"
+ },
+ {
+  "id": "ruth-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the son of Jesse?",
+  "choices": [
+   "Obed",
+   "Boaz",
+   "David",
+   "Salmon"
+  ],
+  "answer": 2,
+  "explanation": "Obed begat Jesse, and Jesse begat David.",
+  "ref": "Ruth 4:22"
+ },
+ {
+  "id": "ruth-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who gave Ruth conception so that she bore a son?",
+  "choices": [
+   "Naomi",
+   "The LORD",
+   "The elders",
+   "Boaz's kinsman"
+  ],
+  "answer": 1,
+  "explanation": "Boaz took Ruth, and she was his wife: and the LORD gave her conception, and she bare a son.",
+  "ref": "Ruth 4:13"
+ },
+ {
+  "id": "ruth-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the nearer kinsman first answer when Boaz offered the land?",
+  "choices": [
+   "I will redeem it",
+   "I cannot redeem it",
+   "Ask Naomi",
+   "Ask the elders"
+  ],
+  "answer": 0,
+  "explanation": "He said, I will redeem it.",
+  "ref": "Ruth 4:4"
+ },
+ {
+  "id": "ruth-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom must the kinsman also buy with the field, said Boaz?",
+  "choices": [
+   "Orpah",
+   "Ruth the Moabitess",
+   "Naomi's servant",
+   "Elimelech's widow"
+  ],
+  "answer": 1,
+  "explanation": "Thou must buy it also of Ruth the Moabitess, the wife of the dead.",
+  "ref": "Ruth 4:5"
+ },
+ {
+  "id": "ruth-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why must the buyer also take Ruth, according to Boaz?",
+  "choices": [
+   "To raise up the name of the dead",
+   "To pay Naomi's debt",
+   "To be rich in Moab",
+   "To please the elders"
+  ],
+  "answer": 0,
+  "explanation": "Thou must buy it also of Ruth... to raise up the name of the dead upon his inheritance.",
+  "ref": "Ruth 4:5"
+ },
+ {
+  "id": "ruth-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Out of which country had Naomi come again?",
+  "choices": [
+   "Egypt",
+   "Moab",
+   "Edom",
+   "Syria"
+  ],
+  "answer": 1,
+  "explanation": "Naomi, that is come again out of the country of Moab, selleth a parcel of land.",
+  "ref": "Ruth 4:3"
+ },
+ {
+  "id": "ruth-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Boaz say stood next in line after the nearer kinsman?",
+  "choices": [
+   "Himself",
+   "Obed",
+   "The elders",
+   "Mahlon"
+  ],
+  "answer": 0,
+  "explanation": "There is none to redeem it beside thee; and I am after thee.",
+  "ref": "Ruth 4:4"
+ },
+ {
+  "id": "ruth-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Boaz say he had bought from the hand of Naomi?",
+  "choices": [
+   "All that was Elimelech's, Chilion's and Mahlon's",
+   "Only the field",
+   "Her house",
+   "Her flocks"
+  ],
+  "answer": 0,
+  "explanation": "Ye are witnesses this day, that I have bought all that was Elimelech's, and all that was Chilion's and Mahlon's.",
+  "ref": "Ruth 4:9"
+ },
+ {
+  "id": "ruth-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were the people told Boaz should be famous?",
+  "choices": [
+   "Bethlehem",
+   "Moab",
+   "Shiloh",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "Do thou worthily in Ephratah, and be famous in Bethlehem.",
+  "ref": "Ruth 4:11"
+ },
+ {
+  "id": "ruth-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the people say Ruth should be like in Boaz's house, along with Leah?",
+  "choices": [
+   "Sarah",
+   "Rachel",
+   "Rebekah",
+   "Tamar"
+  ],
+  "answer": 1,
+  "explanation": "The LORD make the woman... like Rachel and like Leah, which two did build the house of Israel.",
+  "ref": "Ruth 4:11"
+ },
+ {
+  "id": "ruth-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who bare Pharez to Judah?",
+  "choices": [
+   "Rachel",
+   "Leah",
+   "Tamar",
+   "Ruth"
+  ],
+  "answer": 2,
+  "explanation": "Let thy house be like the house of Pharez, whom Tamar bare unto Judah.",
+  "ref": "Ruth 4:12"
+ },
+ {
+  "id": "ruth-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the women say Naomi's grandson would be to her?",
+  "choices": [
+   "A restorer of her life",
+   "A judge",
+   "A priest",
+   "A king"
+  ],
+  "answer": 0,
+  "explanation": "He shall be unto thee a restorer of thy life, and a nourisher of thine old age.",
+  "ref": "Ruth 4:15"
+ },
+ {
+  "id": "ruth-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the women say Ruth was better to Naomi than?",
+  "choices": [
+   "Seven sons",
+   "Ten friends",
+   "Twelve servants",
+   "A field"
+  ],
+  "answer": 0,
+  "explanation": "Thy daughter in law, which loveth thee, is better to thee than seven sons.",
+  "ref": "Ruth 4:15"
+ },
+ {
+  "id": "ruth-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the women say of Naomi when the child was born?",
+  "choices": [
+   "There is a son born to Naomi",
+   "Her sorrow is ended",
+   "The field is sold",
+   "The name is lost"
+  ],
+  "answer": 0,
+  "explanation": "The women said, There is a son born to Naomi.",
+  "ref": "Ruth 4:17"
+ },
+ {
+  "id": "ruth-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the LORD not left Naomi without, said the women?",
+  "choices": [
+   "A kinsman",
+   "A harvest",
+   "A home",
+   "A friend"
+  ],
+  "answer": 0,
+  "explanation": "Blessed be the LORD, which hath not left thee this day without a kinsman.",
+  "ref": "Ruth 4:14"
+ },
+ {
+  "id": "ruth-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Boaz purchase Ruth to be his wife?",
+  "choices": [
+   "To raise up the name of the dead",
+   "To gain Naomi's flocks",
+   "To please the elders",
+   "To leave Bethlehem"
+  ],
+  "answer": 0,
+  "explanation": "Ruth... have I purchased to be my wife, to raise up the name of the dead upon his inheritance.",
+  "ref": "Ruth 4:10"
+ },
+ {
+  "id": "ruth-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the kinsman say to Boaz after deciding not to redeem?",
+  "choices": [
+   "Buy it for thee",
+   "Take my field",
+   "Ask Naomi",
+   "Sit down"
+  ],
+  "answer": 0,
+  "explanation": "The kinsman said unto Boaz, Buy it for thee. So he drew off his shoe.",
+  "ref": "Ruth 4:8"
+ },
+ {
+  "id": "ruth-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who begat Boaz?",
+  "choices": [
+   "Salmon",
+   "Nahshon",
+   "Obed",
+   "Ram"
+  ],
+  "answer": 0,
+  "explanation": "Salmon begat Boaz, and Boaz begat Obed.",
+  "ref": "Ruth 4:21"
+ },
+ {
+  "id": "ruth-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who begat Nahshon?",
+  "choices": [
+   "Amminadab",
+   "Ram",
+   "Hezron",
+   "Salmon"
+  ],
+  "answer": 0,
+  "explanation": "Amminadab begat Nahshon, and Nahshon begat Salmon.",
+  "ref": "Ruth 4:20"
+ },
+ {
+  "id": "ruth-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who begat Amminadab?",
+  "choices": [
+   "Hezron",
+   "Ram",
+   "Pharez",
+   "Judah"
+  ],
+  "answer": 1,
+  "explanation": "Hezron begat Ram, and Ram begat Amminadab.",
+  "ref": "Ruth 4:19"
+ },
+ {
+  "id": "ruth-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who begat Ram?",
+  "choices": [
+   "Hezron",
+   "Pharez",
+   "Amminadab",
+   "Nahshon"
+  ],
+  "answer": 0,
+  "explanation": "Hezron begat Ram, and Ram begat Amminadab.",
+  "ref": "Ruth 4:19"
+ },
+ {
+  "id": "ruth-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who begat Obed?",
+  "choices": [
+   "Salmon",
+   "Boaz",
+   "Jesse",
+   "Mahlon"
+  ],
+  "answer": 1,
+  "explanation": "Salmon begat Boaz, and Boaz begat Obed.",
+  "ref": "Ruth 4:21"
+ },
+ {
+  "id": "ruth-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who begat Salmon?",
+  "choices": [
+   "Nahshon",
+   "Boaz",
+   "Ram",
+   "Hezron"
+  ],
+  "answer": 0,
+  "explanation": "Amminadab begat Nahshon, and Nahshon begat Salmon.",
+  "ref": "Ruth 4:20"
+ },
+ {
+  "id": "ruth-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did a man give his shoe in the former manner in Israel?",
+  "choices": [
+   "His neighbour",
+   "The elders",
+   "The priest",
+   "The judge"
+  ],
+  "answer": 0,
+  "explanation": "A man plucked off his shoe, and gave it to his neighbour: and this was a testimony in Israel.",
+  "ref": "Ruth 4:7"
+ },
+ {
+  "id": "ruth-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose hand did Boaz say he bought the lands from?",
+  "choices": [
+   "Naomi",
+   "Ruth",
+   "The kinsman",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "I have bought all that was Elimelech's... of the hand of Naomi.",
+  "ref": "Ruth 4:9"
+ },
+ {
+  "id": "ruth-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people say Rachel and Leah did?",
+  "choices": [
+   "Built the house of Israel",
+   "Fed the flocks",
+   "Judged Israel",
+   "Served Boaz"
+  ],
+  "answer": 0,
+  "explanation": "Rachel and like Leah, which two did build the house of Israel.",
+  "ref": "Ruth 4:11"
+ },
+ {
+  "id": "ruth-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Naomi lay the child?",
+  "choices": [
+   "In her bosom",
+   "In a cradle",
+   "In the field",
+   "In Ruth's arms"
+  ],
+  "answer": 0,
+  "explanation": "Naomi took the child, and laid it in her bosom.",
+  "ref": "Ruth 4:16"
+ },
+ {
+  "id": "ruth-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What else did the women say the child would be to Naomi in her old age?",
+  "choices": [
+   "A nourisher",
+   "A keeper of the field",
+   "A judge",
+   "A messenger"
+  ],
+  "answer": 0,
+  "explanation": "He shall be a restorer of thy life, and a nourisher of thine old age.",
+  "ref": "Ruth 4:15"
+ },
+ {
+  "id": "ruth-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what land did the women say the child's name would be famous?",
+  "choices": [
+   "Israel",
+   "Judah",
+   "Moab",
+   "Ephratah"
+  ],
+  "answer": 0,
+  "explanation": "That his name may be famous in Israel.",
+  "ref": "Ruth 4:14"
+ },
+ {
+  "id": "ruth-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose generations does the chapter list, beginning with Pharez?",
+  "choices": [
+   "Judah's line to David",
+   "Boaz's brothers",
+   "Naomi's sons",
+   "Elimelech's house"
+  ],
+  "answer": 0,
+  "explanation": "Now these are the generations of Pharez: Pharez begat Hezron.",
+  "ref": "Ruth 4:18"
+ },
+ {
+  "id": "ruth-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Boaz say about the kinsman's rights? \"Buy it before the inhabitants and before whom?\"",
+  "choices": [
+   "The elders of my people",
+   "The priests",
+   "The judges",
+   "The reapers"
+  ],
+  "answer": 0,
+  "explanation": "Buy it before the inhabitants, and before the elders of my people.",
+  "ref": "Ruth 4:4"
+ },
+ {
+  "id": "ruth-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the women say Ruth, Naomi's daughter in law, did toward Naomi?",
+  "choices": [
+   "Loved her",
+   "Obeyed her",
+   "Served her",
+   "Pitied her"
+  ],
+  "answer": 0,
+  "explanation": "The women said, Thy daughter in law, which loveth thee, is better to thee than seven sons.",
+  "ref": "Ruth 4:15"
  }
 ]
