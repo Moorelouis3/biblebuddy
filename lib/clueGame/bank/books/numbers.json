@@ -4400,6 +4400,646 @@
   "ref": "Numbers 7:89"
  },
  {
+  "id": "numbers-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which tribe's prince offered his gifts on the first day?",
+  "choices": [
+   "Ephraim",
+   "Reuben",
+   "Judah",
+   "Levi"
+  ],
+  "answer": 2,
+  "explanation": "The first day's offering was Nahshon the son of Amminadab, of the tribe of Judah.",
+  "ref": "Numbers 7:12"
+ },
+ {
+  "id": "numbers-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who gave the wagons and oxen to the Levites?",
+  "choices": [
+   "Aaron",
+   "Ithamar",
+   "Joshua",
+   "Moses"
+  ],
+  "answer": 3,
+  "explanation": "Moses took the wagons and the oxen, and gave them unto the Levites.",
+  "ref": "Numbers 7:6"
+ },
+ {
+  "id": "numbers-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did each prince bring his offering for the altar?",
+  "choices": [
+   "All on the first day",
+   "Each on his own day",
+   "Only on the Sabbath",
+   "All together at evening"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said, They shall offer their offering, each prince on his day, for the dedicating of the altar.",
+  "ref": "Numbers 7:11"
+ },
+ {
+  "id": "numbers-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were each prince's silver charger and silver bowl full of?",
+  "choices": [
+   "Wine",
+   "Incense",
+   "Fine flour mingled with oil",
+   "Water"
+  ],
+  "answer": 2,
+  "explanation": "Both of them were full of fine flour mingled with oil for a meat offering.",
+  "ref": "Numbers 7:13"
+ },
+ {
+  "id": "numbers-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was each golden spoon full of?",
+  "choices": [
+   "Silver",
+   "Incense",
+   "Oil",
+   "Honey"
+  ],
+  "answer": 1,
+  "explanation": "One spoon of ten shekels of gold, full of incense.",
+  "ref": "Numbers 7:14"
+ },
+ {
+  "id": "numbers-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did each prince bring for a sin offering?",
+  "choices": [
+   "One ram",
+   "Two turtledoves",
+   "One kid of the goats",
+   "One young bullock"
+  ],
+  "answer": 2,
+  "explanation": "One kid of the goats for a sin offering.",
+  "ref": "Numbers 7:16"
+ },
+ {
+  "id": "numbers-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What large young animal was part of each prince's burnt offering?",
+  "choices": [
+   "A camel",
+   "A donkey",
+   "A young lion",
+   "A young bullock"
+  ],
+  "answer": 3,
+  "explanation": "One young bullock, one ram, one lamb of the first year, for a burnt offering.",
+  "ref": "Numbers 7:15"
+ },
+ {
+  "id": "numbers-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the princes dedicating with their offerings?",
+  "choices": [
+   "The priests' tents",
+   "The altar",
+   "The city wall",
+   "The ark"
+  ],
+  "answer": 1,
+  "explanation": "They offered for dedicating of the altar in the day that it was anointed.",
+  "ref": "Numbers 7:10"
+ },
+ {
+  "id": "numbers-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who were the princes who brought the offerings?",
+  "choices": [
+   "The sons of Aaron",
+   "The Levites of Kohath",
+   "Heads of the tribes of Israel",
+   "Captains of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "The princes of Israel, heads of the house of their fathers, who were the princes of the tribes.",
+  "ref": "Numbers 7:2"
+ },
+ {
+  "id": "numbers-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Moses divide the wagons and oxen among the Levites?",
+  "choices": [
+   "By drawing lots",
+   "By age",
+   "Equally to all three",
+   "According to their service"
+  ],
+  "answer": 3,
+  "explanation": "Give them unto the Levites, to every man according to his service.",
+  "ref": "Numbers 7:5"
+ },
+ {
+  "id": "numbers-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who received two wagons and four oxen?",
+  "choices": [
+   "The sons of Aaron",
+   "The sons of Gershon",
+   "The sons of Merari",
+   "The sons of Kohath"
+  ],
+  "answer": 1,
+  "explanation": "Two wagons and four oxen he gave unto the sons of Gershon, according to their service.",
+  "ref": "Numbers 7:7"
+ },
+ {
+  "id": "numbers-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who received four wagons and eight oxen?",
+  "choices": [
+   "The sons of Levi's brothers",
+   "The sons of Gershon",
+   "The sons of Kohath",
+   "The sons of Merari"
+  ],
+  "answer": 3,
+  "explanation": "Four wagons and eight oxen he gave unto the sons of Merari.",
+  "ref": "Numbers 7:8"
+ },
+ {
+  "id": "numbers-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the prince who offered on the first day?",
+  "choices": [
+   "Elizur",
+   "Eliab",
+   "Nahshon",
+   "Nethaneel"
+  ],
+  "answer": 2,
+  "explanation": "He that offered his offering the first day was Nahshon the son of Amminadab.",
+  "ref": "Numbers 7:12"
+ },
+ {
+  "id": "numbers-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Which tribe's prince offered on the second day?",
+  "choices": [
+   "Zebulun",
+   "Simeon",
+   "Issachar",
+   "Reuben"
+  ],
+  "answer": 2,
+  "explanation": "On the second day Nethaneel the son of Zuar, prince of Issachar, did offer.",
+  "ref": "Numbers 7:18"
+ },
+ {
+  "id": "numbers-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many shekels did each silver charger weigh?",
+  "choices": [
+   "70",
+   "120",
+   "100",
+   "130"
+  ],
+  "answer": 3,
+  "explanation": "One silver charger, the weight thereof was an hundred and thirty shekels.",
+  "ref": "Numbers 7:13"
+ },
+ {
+  "id": "numbers-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many shekels did each silver bowl weigh?",
+  "choices": [
+   "70",
+   "130",
+   "10",
+   "120"
+  ],
+  "answer": 0,
+  "explanation": "One silver bowl of seventy shekels, after the shekel of the sanctuary.",
+  "ref": "Numbers 7:13"
+ },
+ {
+  "id": "numbers-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many shekels of gold was each spoon?",
+  "choices": [
+   "Ten",
+   "Twelve",
+   "Seventy",
+   "Thirty"
+  ],
+  "answer": 0,
+  "explanation": "One spoon of ten shekels of gold, full of incense.",
+  "ref": "Numbers 7:14"
+ },
+ {
+  "id": "numbers-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Under whose hand were the sons of Merari serving?",
+  "choices": [
+   "Nahshon",
+   "Ithamar",
+   "Eleazar",
+   "Aaron himself"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Merari were under the hand of Ithamar the son of Aaron the priest.",
+  "ref": "Numbers 7:8"
+ },
+ {
+  "id": "numbers-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What three animals made up each prince's burnt offering?",
+  "choices": [
+   "A kid, a bullock and a pigeon",
+   "A bullock, a ram and a lamb",
+   "Two oxen, a goat and a lamb",
+   "A goat, a ram and a dove"
+  ],
+  "answer": 1,
+  "explanation": "One young bullock, one ram, one lamb of the first year, for a burnt offering.",
+  "ref": "Numbers 7:15"
+ },
+ {
+  "id": "numbers-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many oxen did each prince give among the peace offerings?",
+  "choices": [
+   "One",
+   "Five",
+   "Twelve",
+   "Two"
+  ],
+  "answer": 3,
+  "explanation": "For a sacrifice of peace offerings, two oxen, five rams, five he goats, five lambs of the first year.",
+  "ref": "Numbers 7:17"
+ },
+ {
+  "id": "numbers-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many he goats did each prince give among the peace offerings?",
+  "choices": [
+   "Five",
+   "Ten",
+   "Two",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "Two oxen, five rams, five he goats, five lambs of the first year.",
+  "ref": "Numbers 7:17"
+ },
+ {
+  "id": "numbers-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD tell Moses to take the wagons and oxen from the princes?",
+  "choices": [
+   "To pay the soldiers",
+   "That they may do the service of the tabernacle",
+   "To give to the poor",
+   "To feed the priests"
+  ],
+  "answer": 1,
+  "explanation": "Take it of them, that they may be to do the service of the tabernacle of the congregation.",
+  "ref": "Numbers 7:5"
+ },
+ {
+  "id": "numbers-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many shekels did all the silver vessels weigh together?",
+  "choices": [
+   "Seven hundred",
+   "One thousand",
+   "One hundred and thirty",
+   "Two thousand four hundred"
+  ],
+  "answer": 3,
+  "explanation": "All the silver vessels weighed two thousand and four hundred shekels, after the shekel of the sanctuary.",
+  "ref": "Numbers 7:85"
+ },
+ {
+  "id": "numbers-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many shekels did all the gold of the spoons weigh?",
+  "choices": [
+   "Ten",
+   "A hundred and twenty",
+   "Two thousand four hundred",
+   "Seventy"
+  ],
+  "answer": 1,
+  "explanation": "All the gold of the spoons was an hundred and twenty shekels.",
+  "ref": "Numbers 7:86"
+ },
+ {
+  "id": "numbers-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many bullocks were offered in all for the peace offerings?",
+  "choices": [
+   "Sixty",
+   "Twenty and four",
+   "Twelve",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "All the oxen for the sacrifice of the peace offerings were twenty and four bullocks.",
+  "ref": "Numbers 7:88"
+ },
+ {
+  "id": "numbers-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Nahshon's father?",
+  "choices": [
+   "Shedeur",
+   "Zuar",
+   "Helon",
+   "Amminadab"
+  ],
+  "answer": 3,
+  "explanation": "Nahshon the son of Amminadab, of the tribe of Judah.",
+  "ref": "Numbers 7:12"
+ },
+ {
+  "id": "numbers-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Which prince offered on the third day?",
+  "choices": [
+   "Eliab",
+   "Elizur",
+   "Gamaliel",
+   "Nethaneel"
+  ],
+  "answer": 0,
+  "explanation": "On the third day Eliab the son of Helon, prince of the children of Zebulun, did offer.",
+  "ref": "Numbers 7:24"
+ },
+ {
+  "id": "numbers-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Elizur, who offered on the fourth day, was prince of which tribe?",
+  "choices": [
+   "Reuben",
+   "Simeon",
+   "Gad",
+   "Dan"
+  ],
+  "answer": 0,
+  "explanation": "On the fourth day Elizur the son of Shedeur, prince of the children of Reuben, did offer.",
+  "ref": "Numbers 7:30"
+ },
+ {
+  "id": "numbers-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Shelumiel, who offered on the fifth day, was prince of which tribe?",
+  "choices": [
+   "Gad",
+   "Reuben",
+   "Asher",
+   "Simeon"
+  ],
+  "answer": 3,
+  "explanation": "On the fifth day Shelumiel the son of Zurishaddai, prince of the children of Simeon, did offer.",
+  "ref": "Numbers 7:36"
+ },
+ {
+  "id": "numbers-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Elishama, who offered on the seventh day, was prince of which tribe?",
+  "choices": [
+   "Manasseh",
+   "Ephraim",
+   "Benjamin",
+   "Naphtali"
+  ],
+  "answer": 1,
+  "explanation": "On the seventh day Elishama the son of Ammihud, prince of the children of Ephraim, offered.",
+  "ref": "Numbers 7:48"
+ },
+ {
+  "id": "numbers-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Gamaliel, who offered on the eighth day, was prince of which tribe?",
+  "choices": [
+   "Dan",
+   "Ephraim",
+   "Benjamin",
+   "Manasseh"
+  ],
+  "answer": 3,
+  "explanation": "On the eighth day offered Gamaliel the son of Pedahzur, prince of the children of Manasseh.",
+  "ref": "Numbers 7:54"
+ },
+ {
+  "id": "numbers-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Ahira, who offered on the twelfth day, was prince of which tribe?",
+  "choices": [
+   "Naphtali",
+   "Dan",
+   "Asher",
+   "Gad"
+  ],
+  "answer": 0,
+  "explanation": "On the twelfth day Ahira the son of Enan, prince of the children of Naphtali, offered.",
+  "ref": "Numbers 7:78"
+ },
+ {
+  "id": "numbers-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Eliasaph, who offered on the sixth day, was prince of which tribe?",
+  "choices": [
+   "Asher",
+   "Reuben",
+   "Gad",
+   "Simeon"
+  ],
+  "answer": 2,
+  "explanation": "On the sixth day Eliasaph the son of Deuel, prince of the children of Gad, offered.",
+  "ref": "Numbers 7:42"
+ },
+ {
+  "id": "numbers-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many rams in all were offered for the peace offerings?",
+  "choices": [
+   "Twelve",
+   "Five",
+   "Sixty",
+   "Twenty and four"
+  ],
+  "answer": 2,
+  "explanation": "The rams sixty, the he goats sixty, the lambs of the first year sixty.",
+  "ref": "Numbers 7:88"
+ },
+ {
+  "id": "numbers-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many lambs of the first year in all were offered as burnt offerings?",
+  "choices": [
+   "Sixty",
+   "Twenty and four",
+   "Twelve",
+   "Five"
+  ],
+  "answer": 2,
+  "explanation": "The lambs of the first year twelve, with their meat offering.",
+  "ref": "Numbers 7:87"
+ },
+ {
+  "id": "numbers-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many kids of the goats were offered in all for sin offerings?",
+  "choices": [
+   "Sixty",
+   "Six",
+   "Twelve",
+   "Twenty and four"
+  ],
+  "answer": 2,
+  "explanation": "The kids of the goats for sin offering twelve.",
+  "ref": "Numbers 7:87"
+ },
+ {
+  "id": "numbers-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By which shekel were the vessels weighed?",
+  "choices": [
+   "The shekel of the sanctuary",
+   "The merchant's shekel",
+   "The king's shekel",
+   "The shekel of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "One silver bowl of seventy shekels, after the shekel of the sanctuary.",
+  "ref": "Numbers 7:13"
+ },
+ {
+  "id": "numbers-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many princes shared one covered wagon?",
+  "choices": [
+   "Three",
+   "One",
+   "Four",
+   "Two"
+  ],
+  "answer": 3,
+  "explanation": "A wagon for two of the princes, and for each one an ox.",
+  "ref": "Numbers 7:3"
+ },
+ {
+  "id": "numbers-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Ahiezer, who offered on the tenth day, was prince of which tribe?",
+  "choices": [
+   "Dan",
+   "Asher",
+   "Naphtali",
+   "Gad"
+  ],
+  "answer": 0,
+  "explanation": "On the tenth day Ahiezer the son of Ammishaddai, prince of the children of Dan, offered.",
+  "ref": "Numbers 7:66"
+ },
+ {
+  "id": "numbers-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Which prince offered on the ninth day?",
+  "choices": [
+   "Abidan",
+   "Ahiezer",
+   "Elishama",
+   "Pagiel"
+  ],
+  "answer": 0,
+  "explanation": "On the ninth day Abidan the son of Gideoni, prince of the children of Benjamin, offered.",
+  "ref": "Numbers 7:60"
+ },
+ {
   "id": "old-numbers-8-1",
   "chapter": 8,
   "level": "beginner",
