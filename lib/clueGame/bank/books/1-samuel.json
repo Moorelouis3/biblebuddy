@@ -1520,6 +1520,646 @@
   "ref": "1 Samuel 3:20"
  },
  {
+  "id": "1-samuel-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who ministered unto the LORD before Eli?",
+  "choices": [
+   "Hophni",
+   "Samuel",
+   "Elkanah",
+   "Phinehas"
+  ],
+  "answer": 1,
+  "explanation": "The child Samuel ministered unto the LORD before Eli.",
+  "ref": "1 Samuel 3:1"
+ },
+ {
+  "id": "1-samuel-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What began to wax dim so that Eli could not see?",
+  "choices": [
+   "His voice",
+   "His hearing",
+   "His strength",
+   "His eyes"
+  ],
+  "answer": 3,
+  "explanation": "Eli was laid down in his place, and his eyes began to wax dim, that he could not see.",
+  "ref": "1 Samuel 3:2"
+ },
+ {
+  "id": "1-samuel-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samuel answer when the LORD called him?",
+  "choices": [
+   "Who is there?",
+   "Here am I",
+   "Speak, LORD",
+   "I am afraid"
+  ],
+  "answer": 1,
+  "explanation": "The LORD called Samuel: and he answered, Here am I.",
+  "ref": "1 Samuel 3:4"
+ },
+ {
+  "id": "1-samuel-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Samuel run to when he heard the call?",
+  "choices": [
+   "Hophni",
+   "Hannah",
+   "Elkanah",
+   "Eli"
+  ],
+  "answer": 3,
+  "explanation": "He ran unto Eli, and said, Here am I; for thou calledst me.",
+  "ref": "1 Samuel 3:5"
+ },
+ {
+  "id": "1-samuel-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Eli say to Samuel when he came the first time?",
+  "choices": [
+   "Go to Hannah",
+   "I called not, lie down again",
+   "Speak, LORD",
+   "Stay awake"
+  ],
+  "answer": 1,
+  "explanation": "He said, I called not; lie down again.",
+  "ref": "1 Samuel 3:5"
+ },
+ {
+  "id": "1-samuel-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who perceived that the LORD had called the child?",
+  "choices": [
+   "Hannah",
+   "Hophni",
+   "Elkanah",
+   "Eli"
+  ],
+  "answer": 3,
+  "explanation": "Eli perceived that the LORD had called the child.",
+  "ref": "1 Samuel 3:8"
+ },
+ {
+  "id": "1-samuel-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Samuel lie down to sleep?",
+  "choices": [
+   "In Ramah",
+   "In the temple of the LORD",
+   "At Eli's house",
+   "In a tent"
+  ],
+  "answer": 1,
+  "explanation": "Samuel was laid down to sleep in the temple of the LORD, where the ark of God was.",
+  "ref": "1 Samuel 3:3"
+ },
+ {
+  "id": "1-samuel-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samuel say when the LORD called, Samuel, Samuel?",
+  "choices": [
+   "I will not go",
+   "Here am I",
+   "Send me",
+   "Speak, for thy servant heareth"
+  ],
+  "answer": 3,
+  "explanation": "Samuel answered, Speak; for thy servant heareth.",
+  "ref": "1 Samuel 3:10"
+ },
+ {
+  "id": "1-samuel-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was afraid to show Eli the vision?",
+  "choices": [
+   "Hophni",
+   "Samuel",
+   "Hannah",
+   "Phinehas"
+  ],
+  "answer": 1,
+  "explanation": "Samuel feared to shew Eli the vision.",
+  "ref": "1 Samuel 3:15"
+ },
+ {
+  "id": "1-samuel-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the LORD appear again?",
+  "choices": [
+   "Bethel",
+   "Ramah",
+   "Gilgal",
+   "Shiloh"
+  ],
+  "answer": 3,
+  "explanation": "The LORD appeared again in Shiloh.",
+  "ref": "1 Samuel 3:21"
+ },
+ {
+  "id": "1-samuel-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say he would do in Israel that would make ears tingle?",
+  "choices": [
+   "A war",
+   "A famine",
+   "A flood",
+   "A thing"
+  ],
+  "answer": 3,
+  "explanation": "Behold, I will do a thing in Israel, at which both the ears of every one that heareth it shall tingle.",
+  "ref": "1 Samuel 3:11"
+ },
+ {
+  "id": "1-samuel-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say he would do to Eli's house when he began?",
+  "choices": [
+   "Spare it",
+   "Make an end",
+   "Raise it up",
+   "Move it to Ramah"
+  ],
+  "answer": 1,
+  "explanation": "When I begin, I will also make an end.",
+  "ref": "1 Samuel 3:12"
+ },
+ {
+  "id": "1-samuel-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the LORD judge Eli's house for ever?",
+  "choices": [
+   "They hated Samuel",
+   "Eli did not offer",
+   "They left Shiloh",
+   "His sons made themselves vile and he restrained them not"
+  ],
+  "answer": 3,
+  "explanation": "His sons made themselves vile, and he restrained them not.",
+  "ref": "1 Samuel 3:13"
+ },
+ {
+  "id": "1-samuel-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD swear about the iniquity of Eli's house?",
+  "choices": [
+   "It would be forgiven",
+   "It would not be purged with sacrifice nor offering",
+   "It would pass to Samuel",
+   "It would end in a year"
+  ],
+  "answer": 1,
+  "explanation": "The iniquity of Eli's house shall not be purged with sacrifice nor offering for ever.",
+  "ref": "1 Samuel 3:14"
+ },
+ {
+  "id": "1-samuel-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel do in the morning before he feared to tell Eli?",
+  "choices": [
+   "Swept the altar",
+   "Went to Ramah",
+   "Prayed in Gilgal",
+   "Opened the doors of the house of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Samuel lay until the morning, and opened the doors of the house of the LORD.",
+  "ref": "1 Samuel 3:15"
+ },
+ {
+  "id": "1-samuel-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eli call Samuel when he asked about the vision?",
+  "choices": [
+   "My servant",
+   "My son",
+   "My friend",
+   "The priest"
+  ],
+  "answer": 1,
+  "explanation": "Eli called Samuel, and said, Samuel, my son.",
+  "ref": "1 Samuel 3:16"
+ },
+ {
+  "id": "1-samuel-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eli ask Samuel not to do?",
+  "choices": [
+   "Speak to Hophni",
+   "Wake him again",
+   "Go to the temple",
+   "Hide anything from him"
+  ],
+  "answer": 3,
+  "explanation": "I pray thee hide it not from me.",
+  "ref": "1 Samuel 3:17"
+ },
+ {
+  "id": "1-samuel-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eli say after Samuel told him everything?",
+  "choices": [
+   "Leave Shiloh",
+   "It is the LORD: let him do what seemeth him good",
+   "Take my place",
+   "It is false"
+  ],
+  "answer": 1,
+  "explanation": "It is the LORD: let him do what seemeth him good.",
+  "ref": "1 Samuel 3:18"
+ },
+ {
+  "id": "1-samuel-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD not let fall to the ground?",
+  "choices": [
+   "The offerings",
+   "The ark",
+   "The lamp",
+   "Samuel's words"
+  ],
+  "answer": 3,
+  "explanation": "The LORD was with him, and did let none of his words fall to the ground.",
+  "ref": "1 Samuel 3:19"
+ },
+ {
+  "id": "1-samuel-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel not yet know?",
+  "choices": [
+   "Eli's voice",
+   "The LORD",
+   "The temple",
+   "The law"
+  ],
+  "answer": 1,
+  "explanation": "Samuel did not yet know the LORD, neither was the word of the LORD yet revealed unto him.",
+  "ref": "1 Samuel 3:7"
+ },
+ {
+  "id": "1-samuel-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two words did the LORD call when he stood and called?",
+  "choices": [
+   "My son, my son",
+   "Eli, Eli",
+   "Hannah, Hannah",
+   "Samuel, Samuel"
+  ],
+  "answer": 3,
+  "explanation": "The LORD came, and stood, and called as at other times, Samuel, Samuel.",
+  "ref": "1 Samuel 3:10"
+ },
+ {
+  "id": "1-samuel-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had not yet gone out when the LORD first called Samuel?",
+  "choices": [
+   "The morning star",
+   "The altar fire",
+   "The lamp of God",
+   "The incense"
+  ],
+  "answer": 2,
+  "explanation": "Ere the lamp of God went out in the temple of the LORD, Samuel was laid down to sleep.",
+  "ref": "1 Samuel 3:3"
+ },
+ {
+  "id": "1-samuel-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of the LORD's visions was missing in those days?",
+  "choices": [
+   "Open vision",
+   "Prophets",
+   "Priests",
+   "Altars"
+  ],
+  "answer": 0,
+  "explanation": "The word of the LORD was precious in those days; there was no open vision.",
+  "ref": "1 Samuel 3:1"
+ },
+ {
+  "id": "1-samuel-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Eli say to the child on the second call?",
+  "choices": [
+   "Open the door",
+   "Go to bed",
+   "I called not, my son, lie down again",
+   "Wake the priests"
+  ],
+  "answer": 2,
+  "explanation": "I called not, my son; lie down again.",
+  "ref": "1 Samuel 3:6"
+ },
+ {
+  "id": "1-samuel-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Eli say God would do to Samuel if he hid anything?",
+  "choices": [
+   "Do so to thee, and more also",
+   "Send him away",
+   "Strike him",
+   "Cast him out"
+  ],
+  "answer": 0,
+  "explanation": "God do so to thee, and more also, if thou hide any thing from me.",
+  "ref": "1 Samuel 3:17"
+ },
+ {
+  "id": "1-samuel-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samuel tell Eli?",
+  "choices": [
+   "Nothing",
+   "Half of it",
+   "Every whit",
+   "Only the end"
+  ],
+  "answer": 2,
+  "explanation": "Samuel told him every whit, and hid nothing from him.",
+  "ref": "1 Samuel 3:18"
+ },
+ {
+  "id": "1-samuel-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "From where to where did all Israel know Samuel was established a prophet?",
+  "choices": [
+   "Dan to Beer-sheba",
+   "Shiloh to Ramah",
+   "Gilgal to Bethel",
+   "Hebron to Dan"
+  ],
+  "answer": 0,
+  "explanation": "All Israel from Dan even to Beer-sheba knew that Samuel was established to be a prophet.",
+  "ref": "1 Samuel 3:20"
+ },
+ {
+  "id": "1-samuel-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Eli's sons made themselves?",
+  "choices": [
+   "Rich",
+   "Priests",
+   "Vile",
+   "Strong"
+  ],
+  "answer": 2,
+  "explanation": "His sons made themselves vile, and he restrained them not.",
+  "ref": "1 Samuel 3:13"
+ },
+ {
+  "id": "1-samuel-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Eli knew?",
+  "choices": [
+   "The iniquity",
+   "The voice of Samuel",
+   "The vision",
+   "The sign"
+  ],
+  "answer": 0,
+  "explanation": "I will judge his house for ever for the iniquity which he knoweth.",
+  "ref": "1 Samuel 3:13"
+ },
+ {
+  "id": "1-samuel-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was Eli lying when his eyes began to wax dim?",
+  "choices": [
+   "By the ark",
+   "In the temple",
+   "In his place",
+   "At the door"
+  ],
+  "answer": 2,
+  "explanation": "Eli was laid down in his place, and his eyes began to wax dim.",
+  "ref": "1 Samuel 3:2"
+ },
+ {
+  "id": "1-samuel-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What reason did Samuel give Eli for running to him?",
+  "choices": [
+   "Thou calledst me",
+   "I am afraid",
+   "I had a dream",
+   "The lamp went out"
+  ],
+  "answer": 0,
+  "explanation": "He ran unto Eli, and said, Here am I; for thou calledst me.",
+  "ref": "1 Samuel 3:5"
+ },
+ {
+  "id": "1-samuel-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samuel do when the LORD called the second time?",
+  "choices": [
+   "Opened the doors",
+   "Stayed in bed",
+   "Arose and went to Eli",
+   "Prayed"
+  ],
+  "answer": 2,
+  "explanation": "The LORD called yet again, Samuel. And Samuel arose and went to Eli.",
+  "ref": "1 Samuel 3:6"
+ },
+ {
+  "id": "1-samuel-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who restrained not his sons, so his house was judged?",
+  "choices": [
+   "Eli",
+   "Elkanah",
+   "Samuel",
+   "Hophni"
+  ],
+  "answer": 0,
+  "explanation": "His sons made themselves vile, and he restrained them not.",
+  "ref": "1 Samuel 3:13"
+ },
+ {
+  "id": "1-samuel-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samuel answer when Eli called him, my son?",
+  "choices": [
+   "I am afraid",
+   "Speak, LORD",
+   "Here am I",
+   "I called not"
+  ],
+  "answer": 2,
+  "explanation": "Eli called Samuel, and said, Samuel, my son. And he answered, Here am I.",
+  "ref": "1 Samuel 3:16"
+ },
+ {
+  "id": "1-samuel-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how long did the LORD say he would judge Eli's house?",
+  "choices": [
+   "For ever",
+   "Seven years",
+   "Until Samuel was grown",
+   "One generation"
+  ],
+  "answer": 0,
+  "explanation": "I will judge his house for ever for the iniquity which he knoweth.",
+  "ref": "1 Samuel 3:13"
+ },
+ {
+  "id": "1-samuel-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom had the LORD already told he would judge his house?",
+  "choices": [
+   "Samuel",
+   "Hophni",
+   "Eli",
+   "Elkanah"
+  ],
+  "answer": 2,
+  "explanation": "I have told him that I will judge his house for ever.",
+  "ref": "1 Samuel 3:13"
+ },
+ {
+  "id": "1-samuel-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD come the last time he called Samuel?",
+  "choices": [
+   "He stood and called",
+   "He sent an angel",
+   "He spoke from the ark",
+   "He spoke from a cloud"
+  ],
+  "answer": 0,
+  "explanation": "The LORD came, and stood, and called as at other times, Samuel, Samuel.",
+  "ref": "1 Samuel 3:10"
+ },
+ {
+  "id": "1-samuel-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Samuel think was calling him?",
+  "choices": [
+   "Hophni",
+   "Hannah",
+   "Eli",
+   "Elkanah"
+  ],
+  "answer": 2,
+  "explanation": "He ran unto Eli, and said, Here am I; for thou calledst me.",
+  "ref": "1 Samuel 3:5"
+ },
+ {
+  "id": "1-samuel-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eli first tell Samuel to do after he perceived it was the LORD?",
+  "choices": [
+   "Go, lie down",
+   "Go to Shiloh",
+   "Wake Hophni",
+   "Open the doors"
+  ],
+  "answer": 0,
+  "explanation": "Eli said unto Samuel, Go, lie down.",
+  "ref": "1 Samuel 3:9"
+ },
+ {
+  "id": "1-samuel-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question did Eli ask Samuel in the morning?",
+  "choices": [
+   "Why did you sleep?",
+   "Who called you?",
+   "What is the thing that the LORD hath said unto thee?",
+   "Where is the lamp?"
+  ],
+  "answer": 2,
+  "explanation": "What is the thing that the LORD hath said unto thee?",
+  "ref": "1 Samuel 3:17"
+ },
+ {
   "id": "old-1-samuel-4-1",
   "chapter": 4,
   "level": "beginner",
