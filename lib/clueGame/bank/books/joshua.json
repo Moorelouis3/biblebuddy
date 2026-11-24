@@ -2240,6 +2240,646 @@
   "ref": "Joshua 4:24"
  },
  {
+  "id": "joshua-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who spoke to Joshua after all the people had passed over the Jordan?",
+  "choices": [
+   "Eleazar",
+   "The LORD",
+   "Caleb",
+   "An angel of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "When all the people were clean passed over Jordan, the LORD spake unto Joshua.",
+  "ref": "Joshua 4:1"
+ },
+ {
+  "id": "joshua-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did each man carry his stone?",
+  "choices": [
+   "In a cart",
+   "Upon his shoulder",
+   "In his hands",
+   "On a donkey"
+  ],
+  "answer": 1,
+  "explanation": "Take ye up every man of you a stone upon his shoulder.",
+  "ref": "Joshua 4:5"
+ },
+ {
+  "id": "joshua-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For how long would the stones be a memorial?",
+  "choices": [
+   "Seven years",
+   "For ever",
+   "Until Jericho fell",
+   "Until Joshua died"
+  ],
+  "answer": 1,
+  "explanation": "These stones shall be for a memorial unto the children of Israel for ever.",
+  "ref": "Joshua 4:7"
+ },
+ {
+  "id": "joshua-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribes passed over armed before the children of Israel?",
+  "choices": [
+   "Judah, Levi and Dan",
+   "Reuben, Gad and half Manasseh",
+   "Simeon, Asher and Issachar",
+   "Benjamin, Ephraim and Naphtali"
+  ],
+  "answer": 1,
+  "explanation": "The children of Reuben, and the children of Gad, and half the tribe of Manasseh, passed over armed.",
+  "ref": "Joshua 4:12"
+ },
+ {
+  "id": "joshua-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On which day of the first month did the people come up out of Jordan?",
+  "choices": [
+   "The first",
+   "The tenth",
+   "The fourteenth",
+   "The seventh"
+  ],
+  "answer": 1,
+  "explanation": "The people came up out of Jordan on the tenth day of the first month.",
+  "ref": "Joshua 4:19"
+ },
+ {
+  "id": "joshua-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the waters when the priests came up out of Jordan?",
+  "choices": [
+   "They stayed dry",
+   "They returned to their place",
+   "They turned to blood",
+   "They froze"
+  ],
+  "answer": 1,
+  "explanation": "The waters of Jordan returned unto their place, and flowed over all his banks.",
+  "ref": "Joshua 4:18"
+ },
+ {
+  "id": "joshua-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To which earlier miracle did Joshua compare the drying of Jordan?",
+  "choices": [
+   "The manna",
+   "The Red Sea",
+   "The plagues of Egypt",
+   "The pillar of fire"
+  ],
+  "answer": 1,
+  "explanation": "The LORD your God did to the Red sea, which he dried up from before us.",
+  "ref": "Joshua 4:23"
+ },
+ {
+  "id": "joshua-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Israel fear all the days of his life, as they feared Moses?",
+  "choices": [
+   "Caleb",
+   "Joshua",
+   "Eleazar",
+   "Phinehas"
+  ],
+  "answer": 1,
+  "explanation": "On that day the LORD magnified Joshua in the sight of all Israel; and they feared him, as they feared Moses.",
+  "ref": "Joshua 4:14"
+ },
+ {
+  "id": "joshua-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who commanded the priests to come up out of Jordan?",
+  "choices": [
+   "Moses",
+   "Joshua",
+   "Eleazar",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Joshua therefore commanded the priests, saying, Come ye up out of Jordan.",
+  "ref": "Joshua 4:17"
+ },
+ {
+  "id": "joshua-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who passed over last, in the presence of the people?",
+  "choices": [
+   "The men of war",
+   "The ark of the LORD and the priests",
+   "The twelve men",
+   "Joshua alone"
+  ],
+  "answer": 1,
+  "explanation": "When all the people were clean passed over, that the ark of the LORD passed over, and the priests, in the presence of the people.",
+  "ref": "Joshua 4:11"
+ },
+ {
+  "id": "joshua-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question would children ask in time to come?",
+  "choices": [
+   "Why did you leave Egypt?",
+   "Where is the ark?",
+   "Who is Joshua?",
+   "What mean ye by these stones?"
+  ],
+  "answer": 3,
+  "explanation": "When your children ask their fathers in time to come, saying, What mean ye by these stones?",
+  "ref": "Joshua 4:6"
+ },
+ {
+  "id": "joshua-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were Israel to answer their children about the stones?",
+  "choices": [
+   "Moses set them up",
+   "They mark a battle",
+   "They mark a king's tomb",
+   "The waters of Jordan were cut off before the ark"
+  ],
+  "answer": 3,
+  "explanation": "The waters of Jordan were cut off before the ark of the covenant of the LORD.",
+  "ref": "Joshua 4:7"
+ },
+ {
+  "id": "joshua-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the number of stones set?",
+  "choices": [
+   "By the number of the priests",
+   "By the number of years in the wilderness",
+   "By the number of cities",
+   "By the number of the tribes"
+  ],
+  "answer": 3,
+  "explanation": "Twelve stones, according to the number of the tribes of the children of Israel.",
+  "ref": "Joshua 4:8"
+ },
+ {
+  "id": "joshua-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where else did Joshua set up twelve stones?",
+  "choices": [
+   "At Shiloh",
+   "At Jericho",
+   "On Mount Ebal",
+   "In the midst of Jordan"
+  ],
+  "answer": 3,
+  "explanation": "Joshua set up twelve stones in the midst of Jordan, in the place where the feet of the priests stood.",
+  "ref": "Joshua 4:9"
+ },
+ {
+  "id": "joshua-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "About how many prepared for war passed over before the LORD?",
+  "choices": [
+   "Four thousand",
+   "Twelve thousand",
+   "Six hundred thousand",
+   "Forty thousand"
+  ],
+  "answer": 3,
+  "explanation": "About forty thousand prepared for war passed over before the LORD unto battle.",
+  "ref": "Joshua 4:13"
+ },
+ {
+  "id": "joshua-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "To which place did the forty thousand pass over for battle?",
+  "choices": [
+   "The hill of Ai",
+   "The mountain of Ebal",
+   "The plains of Moab",
+   "The plains of Jericho"
+  ],
+  "answer": 3,
+  "explanation": "Forty thousand prepared for war passed over before the LORD unto battle, to the plains of Jericho.",
+  "ref": "Joshua 4:13"
+ },
+ {
+  "id": "joshua-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD call the ark when He told Joshua to command the priests?",
+  "choices": [
+   "The ark of the covenant of Moses",
+   "The ark of the mighty hand",
+   "The ark of the host",
+   "The ark of the testimony"
+  ],
+  "answer": 3,
+  "explanation": "Command the priests that bear the ark of the testimony, that they come up out of Jordan.",
+  "ref": "Joshua 4:16"
+ },
+ {
+  "id": "joshua-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD do for Joshua on the day of the crossing?",
+  "choices": [
+   "Gave him a crown",
+   "Showed him Jericho's walls falling",
+   "Made him judge",
+   "Magnified him in the sight of all Israel"
+  ],
+  "answer": 3,
+  "explanation": "On that day the LORD magnified Joshua in the sight of all Israel.",
+  "ref": "Joshua 4:14"
+ },
+ {
+  "id": "joshua-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the priests stand in Jordan?",
+  "choices": [
+   "Until sundown",
+   "Until the stones were taken",
+   "Until Joshua returned",
+   "Until everything the LORD commanded was finished"
+  ],
+  "answer": 3,
+  "explanation": "The priests which bare the ark stood in the midst of Jordan, until every thing was finished that the LORD commanded Joshua.",
+  "ref": "Joshua 4:10"
+ },
+ {
+  "id": "joshua-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where were the twelve men to leave the stones?",
+  "choices": [
+   "The riverbank",
+   "The ark's tent",
+   "Jericho's gate",
+   "The lodging place that night"
+  ],
+  "answer": 3,
+  "explanation": "Leave them in the lodging place, where ye shall lodge this night.",
+  "ref": "Joshua 4:3"
+ },
+ {
+  "id": "joshua-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Israel encamp in the east border of Jericho?",
+  "choices": [
+   "Ai",
+   "Shechem",
+   "Shiloh",
+   "Gilgal"
+  ],
+  "answer": 3,
+  "explanation": "And encamped in Gilgal, in the east border of Jericho.",
+  "ref": "Joshua 4:19"
+ },
+ {
+  "id": "joshua-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people do after the priests stood in Jordan until all was finished?",
+  "choices": [
+   "Rested",
+   "Offered sacrifices",
+   "Sang a psalm",
+   "Hasted and passed over"
+  ],
+  "answer": 3,
+  "explanation": "The people hasted and passed over.",
+  "ref": "Joshua 4:10"
+ },
+ {
+  "id": "joshua-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Joshua say Israel came over this Jordan?",
+  "choices": [
+   "By boats",
+   "By a bridge",
+   "By swimming",
+   "On dry land"
+  ],
+  "answer": 3,
+  "explanation": "Israel came over this Jordan on dry land.",
+  "ref": "Joshua 4:22"
+ },
+ {
+  "id": "joshua-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD dry up Jordan, according to Joshua?",
+  "choices": [
+   "To punish Egypt",
+   "To feed Israel",
+   "To protect the ark",
+   "That the people of the earth might know His mighty hand"
+  ],
+  "answer": 3,
+  "explanation": "That all the people of the earth might know the hand of the LORD, that it is mighty.",
+  "ref": "Joshua 4:24"
+ },
+ {
+  "id": "joshua-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Israel to fear the LORD for ever?",
+  "choices": [
+   "Because He is strict",
+   "Because He is far away",
+   "Because He has no mercy",
+   "Because His hand is mighty"
+  ],
+  "answer": 3,
+  "explanation": "That ye might fear the LORD your God for ever.",
+  "ref": "Joshua 4:24"
+ },
+ {
+  "id": "joshua-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom had Joshua prepared, one from each tribe?",
+  "choices": [
+   "Twelve men",
+   "Seven spies",
+   "Ten elders",
+   "Forty priests"
+  ],
+  "answer": 0,
+  "explanation": "Then Joshua called the twelve men, whom he had prepared, out of every tribe a man.",
+  "ref": "Joshua 4:4"
+ },
+ {
+  "id": "joshua-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where exactly were the twelve stones taken from?",
+  "choices": [
+   "The place where the priests' feet stood firm",
+   "The bank of Jordan",
+   "The hill of Gilgal",
+   "The wall of Jericho"
+  ],
+  "answer": 0,
+  "explanation": "Out of the place where the priests' feet stood firm, twelve stones.",
+  "ref": "Joshua 4:3"
+ },
+ {
+  "id": "joshua-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When the waters returned, what did they flow over?",
+  "choices": [
+   "All his banks, as before",
+   "The camp",
+   "The stones",
+   "The ark"
+  ],
+  "answer": 0,
+  "explanation": "The waters of Jordan returned unto their place, and flowed over all his banks, as they did before.",
+  "ref": "Joshua 4:18"
+ },
+ {
+  "id": "joshua-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to whose command did Joshua speak to the people?",
+  "choices": [
+   "All that Moses commanded Joshua",
+   "The elders' counsel",
+   "The priests' advice",
+   "The tribes' vote"
+  ],
+  "answer": 0,
+  "explanation": "According to all that Moses commanded Joshua: and the people hasted and passed over.",
+  "ref": "Joshua 4:10"
+ },
+ {
+  "id": "joshua-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had been lifted up unto the dry land when the waters returned?",
+  "choices": [
+   "The soles of the priests' feet",
+   "The ark",
+   "The stones",
+   "The tents"
+  ],
+  "answer": 0,
+  "explanation": "The soles of the priests' feet were lifted up unto the dry land, that the waters of Jordan returned.",
+  "ref": "Joshua 4:18"
+ },
+ {
+  "id": "joshua-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Joshua say the stones set up in Jordan remain?",
+  "choices": [
+   "Unto this day",
+   "For forty years",
+   "Until the flood",
+   "Until the next harvest"
+  ],
+  "answer": 0,
+  "explanation": "They are there unto this day.",
+  "ref": "Joshua 4:9"
+ },
+ {
+  "id": "joshua-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Joshua pitch the twelve stones taken from Jordan?",
+  "choices": [
+   "Gilgal",
+   "Jericho",
+   "Ai",
+   "Shechem"
+  ],
+  "answer": 0,
+  "explanation": "Those twelve stones, which they took out of Jordan, did Joshua pitch in Gilgal.",
+  "ref": "Joshua 4:20"
+ },
+ {
+  "id": "joshua-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Reubenites and others passed over armed as who had spoken to them?",
+  "choices": [
+   "Moses",
+   "Joshua",
+   "Aaron",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "Passed over armed before the children of Israel, as Moses spake unto them.",
+  "ref": "Joshua 4:12"
+ },
+ {
+  "id": "joshua-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom did the forty thousand pass unto battle?",
+  "choices": [
+   "The LORD",
+   "The elders",
+   "The priests",
+   "The king"
+  ],
+  "answer": 0,
+  "explanation": "Forty thousand prepared for war passed over before the LORD unto battle.",
+  "ref": "Joshua 4:13"
+ },
+ {
+  "id": "joshua-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say to Joshua about the priests that bear the ark?",
+  "choices": [
+   "Command them to come up out of Jordan",
+   "Command them to stay",
+   "Command them to offer incense",
+   "Command them to blow trumpets"
+  ],
+  "answer": 0,
+  "explanation": "Command the priests that bear the ark of the testimony, that they come up out of Jordan.",
+  "ref": "Joshua 4:16"
+ },
+ {
+  "id": "joshua-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who dried up the waters of Jordan before Israel, according to Joshua?",
+  "choices": [
+   "The LORD your God",
+   "The priests",
+   "Moses",
+   "The twelve men"
+  ],
+  "answer": 0,
+  "explanation": "The LORD your God dried up the waters of Jordan from before you, until ye were passed over.",
+  "ref": "Joshua 4:23"
+ },
+ {
+  "id": "joshua-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the twelve men's task, 'before the ark of the LORD', as Joshua said?",
+  "choices": [
+   "Pass over into the midst of Jordan",
+   "Guard the ark",
+   "Build an altar",
+   "Sound the trumpet"
+  ],
+  "answer": 0,
+  "explanation": "Pass over before the ark of the LORD your God into the midst of Jordan.",
+  "ref": "Joshua 4:5"
+ },
+ {
+  "id": "joshua-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the stones be among Israel, when children asked about them?",
+  "choices": [
+   "A sign",
+   "A boundary",
+   "A grave",
+   "A threat"
+  ],
+  "answer": 0,
+  "explanation": "That this may be a sign among you, that when your children ask their fathers, What mean ye by these stones?",
+  "ref": "Joshua 4:6"
+ },
+ {
+  "id": "joshua-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the LORD say to take up the stones: out of every what?",
+  "choices": [
+   "Tribe a man",
+   "City a man",
+   "Family a man",
+   "Camp a man"
+  ],
+  "answer": 0,
+  "explanation": "Take you twelve men out of the people, out of every tribe a man.",
+  "ref": "Joshua 4:2"
+ },
+ {
+  "id": "joshua-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the LORD speak to Joshua about taking twelve men?",
+  "choices": [
+   "When all the people were clean passed over",
+   "Before they reached Jordan",
+   "After they reached Gilgal",
+   "When the priests came up"
+  ],
+  "answer": 0,
+  "explanation": "When all the people were clean passed over Jordan, the LORD spake unto Joshua.",
+  "ref": "Joshua 4:1"
+ },
+ {
   "id": "old-joshua-5-1",
   "chapter": 5,
   "level": "beginner",
