@@ -147,7 +147,11 @@ export function drawWeek(pool: BankItem[], used: Set<string>, seed: number): Ban
   };
   const fresh = pool.filter((q) => !used.has(q.id));
   const from = fresh.length >= 10 ? fresh : pool;
-  const byLevel = (level: keyof typeof LEVEL_ORDER) => shuffle(from.filter((q) => q.level === level));
+  // The imported old Trivia questions ("old-…") are all labelled easy whatever
+  // they are (the first Disciples week drew Gamaliel and "sanctify through
+  // what?" as easy), so the question writer's own ratings come first.
+  const rated = (q: BankItem) => (q.id.startsWith("old-") ? 1 : 0);
+  const byLevel = (level: keyof typeof LEVEL_ORDER) => shuffle(from.filter((q) => q.level === level)).sort((a, b) => rated(a) - rated(b));
   const picked: BankItem[] = [...byLevel("beginner").slice(0, 7), ...byLevel("medium").slice(0, 3)];
   // Not enough of a level: fill from the rest, easiest first.
   for (const q of shuffle(from).sort((a, b) => LEVEL_ORDER[a.level] - LEVEL_ORDER[b.level])) {
