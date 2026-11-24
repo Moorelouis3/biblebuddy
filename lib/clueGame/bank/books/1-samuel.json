@@ -20198,13 +20198,13 @@
   "category": "person",
   "question": "Who objected to David marching with the Philistine army?",
   "choices": [
+   "The princes of the Philistines",
    "Achish",
-   "Saul",
-   "Jonathan",
-   "The lords of the Philistines"
+   "The priests of Dagon",
+   "Saul's captains"
   ],
-  "answer": 3,
-  "explanation": "The Philistine lords did not trust David in battle.",
+  "answer": 0,
+  "explanation": "The princes of the Philistines were wroth with him, and said, Make this fellow return.",
   "ref": "1 Samuel 29:3–4"
  },
  {
@@ -20270,6 +20270,646 @@
   "answer": 2,
   "explanation": "David left early in the morning.",
   "ref": "1 Samuel 29:10–11"
+ },
+ {
+  "id": "1-samuel-29-e-01",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the Philistines gather all their armies?",
+  "choices": [
+   "Aphek",
+   "Ekron",
+   "Gath",
+   "Shunem"
+  ],
+  "answer": 0,
+  "explanation": "The Philistines gathered together all their armies to Aphek.",
+  "ref": "1 Samuel 29:1"
+ },
+ {
+  "id": "1-samuel-29-e-02",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the Israelites pitch their camp?",
+  "choices": [
+   "At Shiloh",
+   "By a fountain in Jezreel",
+   "In the valley of Elah",
+   "On Mount Gilboa"
+  ],
+  "answer": 1,
+  "explanation": "The Israelites pitched by a fountain which is in Jezreel.",
+  "ref": "1 Samuel 29:1"
+ },
+ {
+  "id": "1-samuel-29-e-03",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Philistine princes ask when they saw David's men?",
+  "choices": [
+   "Where is Saul?",
+   "What do these Hebrews here?",
+   "Why do they carry swords?",
+   "Who are these strangers?"
+  ],
+  "answer": 1,
+  "explanation": "The princes of the Philistines said, What do these Hebrews here?",
+  "ref": "1 Samuel 29:3"
+ },
+ {
+  "id": "1-samuel-29-e-04",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who spoke up for David before the Philistine princes?",
+  "choices": [
+   "Jonathan",
+   "Achish",
+   "Abner",
+   "Dagon's priest"
+  ],
+  "answer": 1,
+  "explanation": "Achish said, Is not this David, the servant of Saul the king of Israel? I have found no fault in him.",
+  "ref": "1 Samuel 29:3"
+ },
+ {
+  "id": "1-samuel-29-e-05",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose servant did Achish say David had been?",
+  "choices": [
+   "Samuel's",
+   "Nabal's",
+   "Jonathan's",
+   "Saul's"
+  ],
+  "answer": 3,
+  "explanation": "Is not this David, the servant of Saul the king of Israel?",
+  "ref": "1 Samuel 29:3"
+ },
+ {
+  "id": "1-samuel-29-e-06",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the princes say Achish must do with David?",
+  "choices": [
+   "Make him return to his place",
+   "Put him in prison",
+   "Give him a command",
+   "Send him to Saul"
+  ],
+  "answer": 0,
+  "explanation": "Make this fellow return, that he may go again to his place which thou hast appointed him.",
+  "ref": "1 Samuel 29:4"
+ },
+ {
+  "id": "1-samuel-29-e-07",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David and his men march in the Philistine host?",
+  "choices": [
+   "At the front",
+   "With the lords",
+   "In the rear with Achish",
+   "On the right wing"
+  ],
+  "answer": 2,
+  "explanation": "David and his men passed on in the rereward with Achish.",
+  "ref": "1 Samuel 29:2"
+ },
+ {
+  "id": "1-samuel-29-e-08",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the Philistines go up to at the end of the chapter?",
+  "choices": [
+   "Jezreel",
+   "Aphek",
+   "Gath",
+   "Ziklag"
+  ],
+  "answer": 0,
+  "explanation": "David and his men rose up early to depart; and the Philistines went up to Jezreel.",
+  "ref": "1 Samuel 29:11"
+ },
+ {
+  "id": "1-samuel-29-e-09",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David call \"my lord the king\" when he protested?",
+  "choices": [
+   "Achish",
+   "Samuel",
+   "Jonathan",
+   "Saul"
+  ],
+  "answer": 0,
+  "explanation": "David said, What have I done, that I may not go fight against the enemies of my lord the king?",
+  "ref": "1 Samuel 29:8"
+ },
+ {
+  "id": "1-samuel-29-e-10",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Philistine lords call David's company?",
+  "choices": [
+   "Hebrews",
+   "Gittites",
+   "Israelites",
+   "Amalekites"
+  ],
+  "answer": 0,
+  "explanation": "What do these Hebrews here?",
+  "ref": "1 Samuel 29:3"
+ },
+ {
+  "id": "1-samuel-29-m-01",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the lords fear David would become in the battle?",
+  "choices": [
+   "An adversary",
+   "A captain",
+   "A prisoner",
+   "A traitor to Saul"
+  ],
+  "answer": 0,
+  "explanation": "Let him not go down with us to battle, lest in the battle he be an adversary to us.",
+  "ref": "1 Samuel 29:4"
+ },
+ {
+  "id": "1-samuel-29-m-02",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what, said the princes, would David reconcile himself to his master?",
+  "choices": [
+   "The heads of these men",
+   "A promise to Saul",
+   "A sacrifice",
+   "The gold of the Philistines"
+  ],
+  "answer": 0,
+  "explanation": "Wherewith should he reconcile himself unto his master? should it not be with the heads of these men?",
+  "ref": "1 Samuel 29:4"
+ },
+ {
+  "id": "1-samuel-29-m-03",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Achish describe David's going out and coming in?",
+  "choices": [
+   "Dangerous to my lords",
+   "Good in my sight",
+   "Proud before God",
+   "Foolish in my sight"
+  ],
+  "answer": 1,
+  "explanation": "Thy going out and thy coming in with me in the host is good in my sight.",
+  "ref": "1 Samuel 29:6"
+ },
+ {
+  "id": "1-samuel-29-m-04",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did Achish give for sending David away?",
+  "choices": [
+   "David was too old",
+   "Saul demanded him",
+   "David was needed at Ziklag",
+   "The lords favour thee not"
+  ],
+  "answer": 3,
+  "explanation": "Nevertheless the lords favour thee not.",
+  "ref": "1 Samuel 29:6"
+ },
+ {
+  "id": "1-samuel-29-m-05",
+  "chapter": 29,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was David told to return?",
+  "choices": [
+   "To the wilderness",
+   "To Gath's gate",
+   "To the place Achish had appointed him",
+   "To Saul's camp"
+  ],
+  "answer": 2,
+  "explanation": "That he may go again to his place which thou hast appointed him.",
+  "ref": "1 Samuel 29:4"
+ },
+ {
+  "id": "1-samuel-29-m-06",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long had Achish known David, in his own words?",
+  "choices": [
+   "Seven months",
+   "These days, or these years",
+   "Only one night",
+   "Since his youth"
+  ],
+  "answer": 1,
+  "explanation": "Which hath been with me these days, or these years.",
+  "ref": "1 Samuel 29:3"
+ },
+ {
+  "id": "1-samuel-29-m-07",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what manner did the lords of the Philistines pass on?",
+  "choices": [
+   "By the king's command",
+   "By hundreds and by thousands",
+   "By tribes and families",
+   "By night in silence"
+  ],
+  "answer": 1,
+  "explanation": "The lords of the Philistines passed on by hundreds, and by thousands.",
+  "ref": "1 Samuel 29:2"
+ },
+ {
+  "id": "1-samuel-29-m-08",
+  "chapter": 29,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did David say he wanted to fight against?",
+  "choices": [
+   "The enemies of his lord the king",
+   "The Amalekites",
+   "The sons of Saul",
+   "The men of Jezreel"
+  ],
+  "answer": 0,
+  "explanation": "What have I done, that I may not go fight against the enemies of my lord the king?",
+  "ref": "1 Samuel 29:8"
+ },
+ {
+  "id": "1-samuel-29-m-09",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Achish want David to avoid doing to the lords?",
+  "choices": [
+   "Paying them",
+   "Defeating them",
+   "Displeasing them",
+   "Deceiving them"
+  ],
+  "answer": 2,
+  "explanation": "Return, and go in peace, that thou displease not the lords of the Philistines.",
+  "ref": "1 Samuel 29:7"
+ },
+ {
+  "id": "1-samuel-29-m-10",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How had the people of Israel sung about David and Saul?",
+  "choices": [
+   "On the march",
+   "In dances",
+   "In the temple",
+   "At the gate"
+  ],
+  "answer": 1,
+  "explanation": "Of whom they sang one to another in dances.",
+  "ref": "1 Samuel 29:5"
+ },
+ {
+  "id": "1-samuel-29-m-11",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Achish swear by when he spoke to David?",
+  "choices": [
+   "The LORD",
+   "The gods of Gath",
+   "Dagon",
+   "The king"
+  ],
+  "answer": 0,
+  "explanation": "Achish said, Surely, as the LORD liveth, thou hast been upright.",
+  "ref": "1 Samuel 29:6"
+ },
+ {
+  "id": "1-samuel-29-m-12",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What word did Achish use for David's conduct?",
+  "choices": [
+   "Faithful",
+   "Loyal",
+   "Wise",
+   "Upright"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast been upright.",
+  "ref": "1 Samuel 29:6"
+ },
+ {
+  "id": "1-samuel-29-m-13",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Achish say he had not found in David?",
+  "choices": [
+   "Fear",
+   "Pride",
+   "Evil",
+   "Treachery"
+  ],
+  "answer": 2,
+  "explanation": "I have not found evil in thee since the day of thy coming unto me unto this day.",
+  "ref": "1 Samuel 29:6"
+ },
+ {
+  "id": "1-samuel-29-m-14",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Achish compare David to?",
+  "choices": [
+   "A mighty king",
+   "An angel of God",
+   "A faithful dog",
+   "A prophet of old"
+  ],
+  "answer": 1,
+  "explanation": "I know that thou art good in my sight, as an angel of God.",
+  "ref": "1 Samuel 29:9"
+ },
+ {
+  "id": "1-samuel-29-m-15",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Achish tell David to leave?",
+  "choices": [
+   "At midnight",
+   "Early, as soon as it was light",
+   "After the battle",
+   "At noon"
+  ],
+  "answer": 1,
+  "explanation": "Rise up early in the morning, and as soon as ye be up early in the morning, and have light, depart.",
+  "ref": "1 Samuel 29:10"
+ },
+ {
+  "id": "1-samuel-29-h-01",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "With whom were the princes of the Philistines wroth?",
+  "choices": [
+   "Samuel",
+   "Saul",
+   "Achish",
+   "David"
+  ],
+  "answer": 2,
+  "explanation": "The princes of the Philistines were wroth with him, and said, Make this fellow return.",
+  "ref": "1 Samuel 29:4"
+ },
+ {
+  "id": "1-samuel-29-h-02",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "With whose servants was David told to depart?",
+  "choices": [
+   "The lords' servants",
+   "His master's servants",
+   "The servants of Achish",
+   "The men of Aphek"
+  ],
+  "answer": 1,
+  "explanation": "Rise up early in the morning with thy master's servants that are come with thee.",
+  "ref": "1 Samuel 29:10"
+ },
+ {
+  "id": "1-samuel-29-h-03",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Achish say David had done \"since he fell unto me\"?",
+  "choices": [
+   "Fought the Amalekites",
+   "Nothing in which he found fault",
+   "Sent word to Saul",
+   "Brought gifts to Gath"
+  ],
+  "answer": 1,
+  "explanation": "I have found no fault in him since he fell unto me unto this day.",
+  "ref": "1 Samuel 29:3"
+ },
+ {
+  "id": "1-samuel-29-h-04",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the princes call David when they demanded he return?",
+  "choices": [
+   "This Hebrew",
+   "This stranger",
+   "This servant",
+   "This fellow"
+  ],
+  "answer": 3,
+  "explanation": "Make this fellow return.",
+  "ref": "1 Samuel 29:4"
+ },
+ {
+  "id": "1-samuel-29-h-05",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David ask when he was sent back?",
+  "choices": [
+   "What have I done?",
+   "Who has accused me?",
+   "Where shall I go?",
+   "When shall I return?"
+  ],
+  "answer": 0,
+  "explanation": "David said unto Achish, But what have I done?",
+  "ref": "1 Samuel 29:8"
+ },
+ {
+  "id": "1-samuel-29-h-06",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say Achish had found in his servant?",
+  "choices": [
+   "Treason",
+   "Nothing",
+   "Fault",
+   "Fear"
+  ],
+  "answer": 1,
+  "explanation": "What hast thou found in thy servant so long as I have been with thee unto this day?",
+  "ref": "1 Samuel 29:8"
+ },
+ {
+  "id": "1-samuel-29-h-07",
+  "chapter": 29,
+  "level": "hard",
+  "category": "place",
+  "question": "According to the princes, where should David go again?",
+  "choices": [
+   "Jezreel",
+   "Ekron",
+   "Gilboa",
+   "His place"
+  ],
+  "answer": 3,
+  "explanation": "Let him go again to his place which thou hast appointed him.",
+  "ref": "1 Samuel 29:4"
+ },
+ {
+  "id": "1-samuel-29-h-08",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the princes say David might be to them in battle?",
+  "choices": [
+   "A servant",
+   "A spy",
+   "An adversary",
+   "A captain"
+  ],
+  "answer": 2,
+  "explanation": "Lest in the battle he be an adversary to us.",
+  "ref": "1 Samuel 29:4"
+ },
+ {
+  "id": "1-samuel-29-h-09",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "Who passed on in the rear with Achish?",
+  "choices": [
+   "The men of Gath",
+   "Saul's servants",
+   "The lords of the Philistines",
+   "David and his men"
+  ],
+  "answer": 3,
+  "explanation": "David and his men passed on in the rereward with Achish.",
+  "ref": "1 Samuel 29:2"
+ },
+ {
+  "id": "1-samuel-29-h-10",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Achish tell David to do, so as not to displease the lords?",
+  "choices": [
+   "Fight for Saul",
+   "Hide in Gath",
+   "Stay in the rear",
+   "Return and go in peace"
+  ],
+  "answer": 3,
+  "explanation": "Wherefore now return, and go in peace, that thou displease not the lords.",
+  "ref": "1 Samuel 29:7"
+ },
+ {
+  "id": "1-samuel-29-h-11",
+  "chapter": 29,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did David and his men return?",
+  "choices": [
+   "Hebron",
+   "Jezreel",
+   "The land of the Philistines",
+   "Judah"
+  ],
+  "answer": 2,
+  "explanation": "David and his men rose up early to depart in the morning, to return into the land of the Philistines.",
+  "ref": "1 Samuel 29:11"
+ },
+ {
+  "id": "1-samuel-29-h-12",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the song say David slew?",
+  "choices": [
+   "His seven thousands",
+   "His hundreds",
+   "His thousands",
+   "His ten thousands"
+  ],
+  "answer": 3,
+  "explanation": "Saul slew his thousands, and David his ten thousands.",
+  "ref": "1 Samuel 29:5"
+ },
+ {
+  "id": "1-samuel-29-h-13",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the song say Saul slew?",
+  "choices": [
+   "His ten thousands",
+   "His thousands",
+   "His armies",
+   "His hundreds"
+  ],
+  "answer": 1,
+  "explanation": "Saul slew his thousands, and David his ten thousands.",
+  "ref": "1 Samuel 29:5"
+ },
+ {
+  "id": "1-samuel-29-h-14",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When David was told to leave, what did Achish say about his master's servants?",
+  "choices": [
+   "They had come with David",
+   "They would guide him",
+   "They were Saul's captains",
+   "They were Philistines"
+  ],
+  "answer": 0,
+  "explanation": "Thy master's servants that are come with thee.",
+  "ref": "1 Samuel 29:10"
+ },
+ {
+  "id": "1-samuel-29-h-15",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "What did Achish call David when he addressed the princes?",
+  "choices": [
+   "David, the servant of Saul",
+   "The son of Jesse",
+   "The slayer of Goliath",
+   "A man of Judah"
+  ],
+  "answer": 0,
+  "explanation": "Is not this David, the servant of Saul the king of Israel?",
+  "ref": "1 Samuel 29:3"
  },
  {
   "id": "old-1-samuel-30-1",
