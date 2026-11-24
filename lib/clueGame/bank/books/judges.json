@@ -7280,6 +7280,646 @@
   "ref": "Judges 11:34"
  },
  {
+  "id": "judges-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Jephthah's father?",
+  "choices": [
+   "Gilead",
+   "Gideon",
+   "Abdon",
+   "Ibzan"
+  ],
+  "answer": 0,
+  "explanation": "Gilead begat Jephthah.",
+  "ref": "Judges 11:1"
+ },
+ {
+  "id": "judges-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of man was Jephthah called at the start of the chapter?",
+  "choices": [
+   "A scribe",
+   "A mighty man of valour",
+   "A priest of Shiloh",
+   "A shepherd"
+  ],
+  "answer": 1,
+  "explanation": "Jephthah the Gileadite was a mighty man of valour.",
+  "ref": "Judges 11:1"
+ },
+ {
+  "id": "judges-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which land did Jephthah flee from his brethren?",
+  "choices": [
+   "Tob",
+   "Moab",
+   "Edom",
+   "Gilead"
+  ],
+  "answer": 0,
+  "explanation": "Jephthah fled from his brethren, and dwelt in the land of Tob.",
+  "ref": "Judges 11:3"
+ },
+ {
+  "id": "judges-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who made war against Israel in this chapter?",
+  "choices": [
+   "The Midianites",
+   "The children of Ammon",
+   "The Egyptians",
+   "The Philistines"
+  ],
+  "answer": 1,
+  "explanation": "The children of Ammon made war against Israel.",
+  "ref": "Judges 11:4"
+ },
+ {
+  "id": "judges-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the elders of Gilead ask Jephthah to be?",
+  "choices": [
+   "Their scribe",
+   "Their priest",
+   "Their king in Egypt",
+   "Their captain"
+  ],
+  "answer": 3,
+  "explanation": "They said unto Jephthah, Come, and be our captain, that we may fight with the children of Ammon.",
+  "ref": "Judges 11:6"
+ },
+ {
+  "id": "judges-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jephthah utter all his words before the LORD?",
+  "choices": [
+   "Kadesh",
+   "Tob",
+   "Heshbon",
+   "Mizpeh"
+  ],
+  "answer": 3,
+  "explanation": "Jephthah uttered all his words before the LORD in Mizpeh.",
+  "ref": "Judges 11:11"
+ },
+ {
+  "id": "judges-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What came upon Jephthah before he passed over to the children of Ammon?",
+  "choices": [
+   "A fire from heaven",
+   "A cloud of smoke",
+   "The Spirit of the LORD",
+   "A great fear"
+  ],
+  "answer": 2,
+  "explanation": "Then the Spirit of the LORD came upon Jephthah.",
+  "ref": "Judges 11:29"
+ },
+ {
+  "id": "judges-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jephthah's daughter bring out to meet him?",
+  "choices": [
+   "Timbrels and dances",
+   "A lamb and a goat",
+   "Bread and wine",
+   "Swords and shields"
+  ],
+  "answer": 0,
+  "explanation": "His daughter came out to meet him with timbrels and with dances.",
+  "ref": "Judges 11:34"
+ },
+ {
+  "id": "judges-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jephthah do when he saw his daughter?",
+  "choices": [
+   "He rent his clothes",
+   "He laughed",
+   "He ran away",
+   "He sang a psalm"
+  ],
+  "answer": 0,
+  "explanation": "When he saw her, he rent his clothes, and said, Alas, my daughter!",
+  "ref": "Judges 11:35"
+ },
+ {
+  "id": "judges-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Jephthah's daughter ask to be let alone?",
+  "choices": [
+   "Two months",
+   "Two days",
+   "Seven days",
+   "Forty days"
+  ],
+  "answer": 0,
+  "explanation": "She said, let me alone two months, that I may go up and down upon the mountains.",
+  "ref": "Judges 11:37"
+ },
+ {
+  "id": "judges-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who thrust Jephthah out of his father's house?",
+  "choices": [
+   "His half-brothers, the sons of Gilead's wife",
+   "The priests of Gilead",
+   "The elders of Ephraim",
+   "The king of Ammon"
+  ],
+  "answer": 0,
+  "explanation": "Gilead's wife's sons grew up, and they thrust out Jephthah.",
+  "ref": "Judges 11:2"
+ },
+ {
+  "id": "judges-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did Jephthah's brothers give for denying him an inheritance?",
+  "choices": [
+   "He was a coward",
+   "He was the son of a strange woman",
+   "He had no children",
+   "He served other gods"
+  ],
+  "answer": 1,
+  "explanation": "They said, Thou shalt not inherit in our father's house; for thou art the son of a strange woman.",
+  "ref": "Judges 11:2"
+ },
+ {
+  "id": "judges-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jephthah ask the elders when they came to him in distress?",
+  "choices": [
+   "Why did Ammon attack?",
+   "Where is your king?",
+   "Did not ye hate me, and expel me?",
+   "Who will follow me?"
+  ],
+  "answer": 2,
+  "explanation": "Jephthah said, Did not ye hate me, and expel me out of my father's house? and why are ye come unto me now when ye are in distress?",
+  "ref": "Judges 11:7"
+ },
+ {
+  "id": "judges-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jephthah ask for if the LORD delivered Ammon before him?",
+  "choices": [
+   "To be their priest",
+   "To go back to Tob",
+   "To receive silver",
+   "To be their head"
+  ],
+  "answer": 3,
+  "explanation": "Jephthah said, If the LORD deliver them before me, shall I be your head?",
+  "ref": "Judges 11:9"
+ },
+ {
+  "id": "judges-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the elders of Gilead call as witness between them and Jephthah?",
+  "choices": [
+   "Their fathers",
+   "The king of Edom",
+   "The people",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "The elders said, The LORD be witness between us, if we do not so according to thy words.",
+  "ref": "Judges 11:10"
+ },
+ {
+  "id": "judges-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What land did Ammon's king say Israel took when they came up out of Egypt?",
+  "choices": [
+   "From Jericho to Hebron",
+   "From Arnon unto Jabbok and Jordan",
+   "From Gilead to Mizpeh",
+   "From Dan to Beersheba"
+  ],
+  "answer": 1,
+  "explanation": "The king of Ammon said Israel took away his land from Arnon even unto Jabbok, and unto Jordan.",
+  "ref": "Judges 11:13"
+ },
+ {
+  "id": "judges-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Israel abide after Edom and Moab refused them?",
+  "choices": [
+   "Heshbon",
+   "Jahaz",
+   "Aroer",
+   "Kadesh"
+  ],
+  "answer": 3,
+  "explanation": "The king of Moab would not consent: and Israel abode in Kadesh.",
+  "ref": "Judges 11:17"
+ },
+ {
+  "id": "judges-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Which king of the Amorites would not trust Israel to pass through his land?",
+  "choices": [
+   "Jabin",
+   "Balak",
+   "Sihon",
+   "Og"
+  ],
+  "answer": 2,
+  "explanation": "Sihon trusted not Israel to pass through his coast.",
+  "ref": "Judges 11:20"
+ },
+ {
+  "id": "judges-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Sihon pitch his people before fighting Israel?",
+  "choices": [
+   "Arnon",
+   "Heshbon",
+   "Jahaz",
+   "Mizpeh"
+  ],
+  "answer": 2,
+  "explanation": "Sihon gathered all his people together, and pitched in Jahaz, and fought against Israel.",
+  "ref": "Judges 11:20"
+ },
+ {
+  "id": "judges-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Jephthah say Ammon's god gave them land to possess?",
+  "choices": [
+   "Ashtaroth",
+   "Chemosh",
+   "Baal",
+   "Dagon"
+  ],
+  "answer": 1,
+  "explanation": "Wilt not thou possess that which Chemosh thy god giveth thee to possess?",
+  "ref": "Judges 11:24"
+ },
+ {
+  "id": "judges-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Which king of Moab did Jephthah ask if he ever strove against Israel?",
+  "choices": [
+   "Eglon",
+   "Sihon",
+   "Og",
+   "Balak the son of Zippor"
+  ],
+  "answer": 3,
+  "explanation": "Art thou any thing better than Balak the son of Zippor, king of Moab?",
+  "ref": "Judges 11:25"
+ },
+ {
+  "id": "judges-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did Jephthah say Israel dwelt in Heshbon and the cities by Arnon?",
+  "choices": [
+   "Three hundred years",
+   "One hundred years",
+   "Forty years",
+   "Seventy years"
+  ],
+  "answer": 0,
+  "explanation": "Israel dwelt in Heshbon and her towns three hundred years.",
+  "ref": "Judges 11:26"
+ },
+ {
+  "id": "judges-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Jephthah's vow if the LORD delivered Ammon into his hands?",
+  "choices": [
+   "Whatever came out of his house would be the LORD's",
+   "He would give half his goods",
+   "He would serve in the tabernacle",
+   "He would build an altar"
+  ],
+  "answer": 0,
+  "explanation": "Whatsoever cometh forth of the doors of my house to meet me shall surely be the LORD'S.",
+  "ref": "Judges 11:31"
+ },
+ {
+  "id": "judges-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jephthah's daughter say he should do?",
+  "choices": [
+   "Ask the priest",
+   "Do to her according to his vow",
+   "Send her to Ephraim",
+   "Break his vow"
+  ],
+  "answer": 1,
+  "explanation": "She said, do to me according to that which hath proceeded out of thy mouth.",
+  "ref": "Judges 11:36"
+ },
+ {
+  "id": "judges-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the daughters of Israel do every year?",
+  "choices": [
+   "Dance at Mizpeh",
+   "Fast seven days",
+   "Lament Jephthah's daughter four days",
+   "Offer first fruits"
+  ],
+  "answer": 2,
+  "explanation": "The daughters of Israel went yearly to lament the daughter of Jephthah the Gileadite four days in a year.",
+  "ref": "Judges 11:40"
+ },
+ {
+  "id": "judges-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is Jephthah's mother described at the start of the chapter?",
+  "choices": [
+   "An harlot",
+   "A priestess",
+   "A Zidonian queen",
+   "A widow"
+  ],
+  "answer": 0,
+  "explanation": "Jephthah was the son of an harlot.",
+  "ref": "Judges 11:1"
+ },
+ {
+  "id": "judges-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After the elders agreed, what did the people make Jephthah?",
+  "choices": [
+   "Head and captain",
+   "Judge and prophet",
+   "King and priest",
+   "Prince and scribe"
+  ],
+  "answer": 0,
+  "explanation": "The people made him head and captain over them.",
+  "ref": "Judges 11:11"
+ },
+ {
+  "id": "judges-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jephthah first send to the king of Ammon?",
+  "choices": [
+   "A challenge to single combat",
+   "Messengers asking what he had to do with him",
+   "A gift of silver",
+   "A letter from the elders"
+  ],
+  "answer": 1,
+  "explanation": "Jephthah sent messengers unto the king of the children of Ammon, saying, What hast thou to do with me?",
+  "ref": "Judges 11:12"
+ },
+ {
+  "id": "judges-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ammon's king say Israel must do with those lands?",
+  "choices": [
+   "Restore them peaceably",
+   "Move to Gilead",
+   "Fight for them",
+   "Pay tribute"
+  ],
+  "answer": 0,
+  "explanation": "Now therefore restore those lands again peaceably.",
+  "ref": "Judges 11:13"
+ },
+ {
+  "id": "judges-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place was the border of Moab?",
+  "choices": [
+   "Jahaz",
+   "Kadesh",
+   "Arnon",
+   "Jabbok"
+  ],
+  "answer": 2,
+  "explanation": "Arnon was the border of Moab.",
+  "ref": "Judges 11:18"
+ },
+ {
+  "id": "judges-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Israel pitch when they came by the east side of Moab?",
+  "choices": [
+   "On the other side of Arnon",
+   "At the Jordan",
+   "In Heshbon",
+   "At Mizpeh"
+  ],
+  "answer": 0,
+  "explanation": "They pitched on the other side of Arnon, but came not within the border of Moab.",
+  "ref": "Judges 11:18"
+ },
+ {
+  "id": "judges-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "What was Sihon king of?",
+  "choices": [
+   "Heshbon",
+   "Edom",
+   "Gilead",
+   "Moab"
+  ],
+  "answer": 0,
+  "explanation": "Israel sent messengers unto Sihon king of the Amorites, the king of Heshbon.",
+  "ref": "Judges 11:19"
+ },
+ {
+  "id": "judges-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who delivered Sihon and his people into Israel's hand?",
+  "choices": [
+   "The elders",
+   "The LORD God of Israel",
+   "Balak",
+   "Chemosh"
+  ],
+  "answer": 1,
+  "explanation": "The LORD God of Israel delivered Sihon and all his people into the hand of Israel.",
+  "ref": "Judges 11:21"
+ },
+ {
+  "id": "judges-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Jephthah call to judge between Israel and Ammon?",
+  "choices": [
+   "The priests",
+   "The elders of Gilead",
+   "The LORD the Judge",
+   "The king of Moab"
+  ],
+  "answer": 2,
+  "explanation": "The LORD the Judge be judge this day between the children of Israel and the children of Ammon.",
+  "ref": "Judges 11:27"
+ },
+ {
+  "id": "judges-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Through which two lands did Jephthah pass before going to Ammon?",
+  "choices": [
+   "Ephraim and Judah",
+   "Tob and Mizpeh",
+   "Gilead and Manasseh",
+   "Moab and Edom"
+  ],
+  "answer": 2,
+  "explanation": "He passed over Gilead, and Manasseh, and passed over Mizpeh of Gilead.",
+  "ref": "Judges 11:29"
+ },
+ {
+  "id": "judges-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cities did Jephthah smite from Aroer to Minnith?",
+  "choices": [
+   "Thirty",
+   "Twenty",
+   "Forty",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "He smote them from Aroer, even till thou come to Minnith, even twenty cities.",
+  "ref": "Judges 11:33"
+ },
+ {
+  "id": "judges-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who was Jephthah's daughter in relation to his other children?",
+  "choices": [
+   "One of seven",
+   "His only child",
+   "The youngest of three",
+   "The firstborn of two"
+  ],
+  "answer": 1,
+  "explanation": "She was his only child; beside her he had neither son nor daughter.",
+  "ref": "Judges 11:34"
+ },
+ {
+  "id": "judges-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jephthah say he could not do?",
+  "choices": [
+   "Enter Mizpeh",
+   "Break the covenant of Edom",
+   "Go back from his word to the LORD",
+   "Fight Ammon again"
+  ],
+  "answer": 2,
+  "explanation": "I have opened my mouth unto the LORD, and I cannot go back.",
+  "ref": "Judges 11:35"
+ },
+ {
+  "id": "judges-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Jephthah's daughter bewail her virginity?",
+  "choices": [
+   "By the Jordan",
+   "Upon the mountains",
+   "In the temple",
+   "At Mizpeh"
+  ],
+  "answer": 1,
+  "explanation": "She went with her companions, and bewailed her virginity upon the mountains.",
+  "ref": "Judges 11:38"
+ },
+ {
+  "id": "judges-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jephthah's daughter say the LORD had done for him?",
+  "choices": [
+   "Given him a house",
+   "Made him king",
+   "Given him a son",
+   "Taken vengeance of his enemies"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hath taken vengeance for thee of thine enemies, even of the children of Ammon.",
+  "ref": "Judges 11:36"
+ },
+ {
   "id": "old-judges-12-1",
   "chapter": 12,
   "level": "beginner",
