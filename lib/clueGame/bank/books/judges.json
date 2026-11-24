@@ -11600,6 +11600,646 @@
   "ref": "Judges 17:6"
  },
  {
+  "id": "judges-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is the man of mount Ephraim named at the start of the chapter?",
+  "choices": [
+   "Micah",
+   "Gershom",
+   "Jonathan",
+   "Gideon"
+  ],
+  "answer": 0,
+  "explanation": "There was a man of mount Ephraim, whose name was Micah.",
+  "ref": "Judges 17:1"
+ },
+ {
+  "id": "judges-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Micah tell his mother about the missing silver?",
+  "choices": [
+   "A thief took it",
+   "I took it",
+   "I buried it",
+   "I lost it"
+  ],
+  "answer": 1,
+  "explanation": "Micah said, Behold, the silver is with me; I took it.",
+  "ref": "Judges 17:2"
+ },
+ {
+  "id": "judges-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Micah's house hold, besides images?",
+  "choices": [
+   "A city of refuge",
+   "A tent of meeting",
+   "A house of gods",
+   "A tower"
+  ],
+  "answer": 2,
+  "explanation": "The man Micah had an house of gods.",
+  "ref": "Judges 17:5"
+ },
+ {
+  "id": "judges-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides teraphim, what did Micah make for his house of gods?",
+  "choices": [
+   "A breastplate",
+   "A trumpet",
+   "An ark",
+   "An ephod"
+  ],
+  "answer": 3,
+  "explanation": "Micah made an ephod, and teraphim.",
+  "ref": "Judges 17:5"
+ },
+ {
+  "id": "judges-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Micah ask the young Levite to be to him?",
+  "choices": [
+   "A father and a priest",
+   "A servant and a spy",
+   "A judge and a king",
+   "A soldier and a guard"
+  ],
+  "answer": 0,
+  "explanation": "Micah said, Dwell with me, and be unto me a father and a priest.",
+  "ref": "Judges 17:10"
+ },
+ {
+  "id": "judges-17-e-06",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who became Micah's priest at the end of the chapter?",
+  "choices": [
+   "Micah's son",
+   "The young Levite",
+   "Micah's mother",
+   "The founder"
+  ],
+  "answer": 1,
+  "explanation": "Micah consecrated the Levite; and the young man became his priest.",
+  "ref": "Judges 17:12"
+ },
+ {
+  "id": "judges-17-e-07",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Micah's mother say to him when he gave back the silver?",
+  "choices": [
+   "Thou hast shamed me",
+   "Go in peace",
+   "Blessed be thou of the LORD",
+   "Thou shalt surely die"
+  ],
+  "answer": 2,
+  "explanation": "His mother said, Blessed be thou of the LORD, my son.",
+  "ref": "Judges 17:2"
+ },
+ {
+  "id": "judges-17-e-08",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who made the graven image and molten image out of the silver?",
+  "choices": [
+   "Micah",
+   "The Levite",
+   "Micah's son",
+   "The founder"
+  ],
+  "answer": 3,
+  "explanation": "His mother gave two hundred shekels to the founder, who made a graven image and a molten image.",
+  "ref": "Judges 17:4"
+ },
+ {
+  "id": "judges-17-e-09",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the young Levite feel about dwelling with Micah?",
+  "choices": [
+   "Content",
+   "Afraid",
+   "Angry",
+   "Homesick"
+  ],
+  "answer": 0,
+  "explanation": "The Levite was content to dwell with the man.",
+  "ref": "Judges 17:11"
+ },
+ {
+  "id": "judges-17-e-10",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the young Levite come to when he left Bethlehemjudah?",
+  "choices": [
+   "Shiloh",
+   "Mount Ephraim",
+   "Jericho",
+   "Gibeah"
+  ],
+  "answer": 1,
+  "explanation": "He came to mount Ephraim to the house of Micah, as he journeyed.",
+  "ref": "Judges 17:8"
+ },
+ {
+  "id": "judges-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Micah's mother done about the silver that was taken from her?",
+  "choices": [
+   "Hidden it",
+   "Sold it",
+   "Cursed it",
+   "Prayed over it"
+  ],
+  "answer": 2,
+  "explanation": "Micah said the silver was taken, about which his mother cursed.",
+  "ref": "Judges 17:2"
+ },
+ {
+  "id": "judges-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "For whom had Micah's mother dedicated the silver?",
+  "choices": [
+   "Her husband",
+   "A priest",
+   "The Levite",
+   "Her son"
+  ],
+  "answer": 3,
+  "explanation": "She said she had wholly dedicated the silver unto the LORD for her son.",
+  "ref": "Judges 17:3"
+ },
+ {
+  "id": "judges-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom had Micah's mother dedicated the silver?",
+  "choices": [
+   "The LORD",
+   "The Levite",
+   "The founder",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "She said, I had wholly dedicated the silver unto the LORD.",
+  "ref": "Judges 17:3"
+ },
+ {
+  "id": "judges-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much silver did Micah's mother give the founder?",
+  "choices": [
+   "Eleven hundred shekels",
+   "Two hundred shekels",
+   "Ten shekels",
+   "Seventy shekels"
+  ],
+  "answer": 1,
+  "explanation": "His mother took two hundred shekels of silver, and gave them to the founder.",
+  "ref": "Judges 17:4"
+ },
+ {
+  "id": "judges-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides an ephod, what did Micah make for his house of gods?",
+  "choices": [
+   "A golden calf",
+   "An altar of brass",
+   "Teraphim",
+   "A trumpet"
+  ],
+  "answer": 2,
+  "explanation": "Micah made an ephod, and teraphim.",
+  "ref": "Judges 17:5"
+ },
+ {
+  "id": "judges-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides silver, what did Micah promise the Levite each year?",
+  "choices": [
+   "A flock of sheep",
+   "A field",
+   "A house",
+   "A suit of apparel"
+  ],
+  "answer": 3,
+  "explanation": "Micah offered ten shekels of silver by the year, and a suit of apparel, and his victuals.",
+  "ref": "Judges 17:10"
+ },
+ {
+  "id": "judges-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Micah say he now knew after he had a Levite as priest?",
+  "choices": [
+   "The LORD will do me good",
+   "The LORD is angry",
+   "Israel needs a king",
+   "My sons will rule"
+  ],
+  "answer": 0,
+  "explanation": "Micah said, Now know I that the LORD will do me good.",
+  "ref": "Judges 17:13"
+ },
+ {
+  "id": "judges-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Levite say he was looking for when he came to Micah?",
+  "choices": [
+   "A wife",
+   "A place to sojourn",
+   "A war to fight",
+   "An inheritance of land"
+  ],
+  "answer": 1,
+  "explanation": "He said, I go to sojourn where I may find a place.",
+  "ref": "Judges 17:9"
+ },
+ {
+  "id": "judges-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Micah treat the young Levite in his house?",
+  "choices": [
+   "As a hired servant",
+   "As a stranger",
+   "As one of his sons",
+   "As a captive"
+  ],
+  "answer": 2,
+  "explanation": "The young man was unto him as one of his sons.",
+  "ref": "Judges 17:11"
+ },
+ {
+  "id": "judges-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Micah consecrate after his son served as priest?",
+  "choices": [
+   "The founder",
+   "His mother",
+   "A Danite",
+   "The Levite"
+  ],
+  "answer": 3,
+  "explanation": "Micah consecrated the Levite; and the young man became his priest.",
+  "ref": "Judges 17:12"
+ },
+ {
+  "id": "judges-17-m-11",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were the graven and molten images kept?",
+  "choices": [
+   "In the house of Micah",
+   "In Shiloh",
+   "In Bethlehemjudah",
+   "On a hill"
+  ],
+  "answer": 0,
+  "explanation": "They were in the house of Micah.",
+  "ref": "Judges 17:4"
+ },
+ {
+  "id": "judges-17-m-12",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Micah do with the eleven hundred shekels before his mother's words?",
+  "choices": [
+   "Gave them to the Levite",
+   "Restored them to her",
+   "Hid them again",
+   "Spent them"
+  ],
+  "answer": 1,
+  "explanation": "When he had restored the eleven hundred shekels of silver to his mother, she spoke.",
+  "ref": "Judges 17:3"
+ },
+ {
+  "id": "judges-17-m-13",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Levite do when Micah offered him a place?",
+  "choices": [
+   "He refused",
+   "He asked for more",
+   "He went in",
+   "He left that night"
+  ],
+  "answer": 2,
+  "explanation": "Micah offered terms, so the Levite went in.",
+  "ref": "Judges 17:10"
+ },
+ {
+  "id": "judges-17-m-14",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Micah first ask the young Levite when he arrived?",
+  "choices": [
+   "What is thy name?",
+   "Who sent thee?",
+   "Art thou a priest?",
+   "Whence comest thou?"
+  ],
+  "answer": 3,
+  "explanation": "Micah said unto him, Whence comest thou?",
+  "ref": "Judges 17:9"
+ },
+ {
+  "id": "judges-17-m-15",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Micah's mother call him when she blessed him?",
+  "choices": [
+   "My son",
+   "My lord",
+   "My servant",
+   "My brother"
+  ],
+  "answer": 0,
+  "explanation": "His mother said, Blessed be thou of the LORD, my son.",
+  "ref": "Judges 17:2"
+ },
+ {
+  "id": "judges-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shekels of silver a year did Micah offer the Levite?",
+  "choices": [
+   "Two hundred",
+   "Ten",
+   "Eleven hundred",
+   "Seventy"
+  ],
+  "answer": 1,
+  "explanation": "Micah said, I will give thee ten shekels of silver by the year.",
+  "ref": "Judges 17:10"
+ },
+ {
+  "id": "judges-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what family was the young Levite from Bethlehemjudah?",
+  "choices": [
+   "Ephraim",
+   "Dan",
+   "Judah",
+   "Benjamin"
+  ],
+  "answer": 2,
+  "explanation": "There was a young man out of Bethlehemjudah of the family of Judah, who was a Levite.",
+  "ref": "Judges 17:7"
+ },
+ {
+  "id": "judges-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides silver and apparel, what did Micah promise the Levite?",
+  "choices": [
+   "A wife",
+   "A vineyard",
+   "Servants",
+   "His victuals"
+  ],
+  "answer": 3,
+  "explanation": "Micah offered ten shekels, a suit of apparel, and his victuals.",
+  "ref": "Judges 17:10"
+ },
+ {
+  "id": "judges-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Micah do right after he made the ephod and teraphim?",
+  "choices": [
+   "Consecrated one of his sons",
+   "Hired a Levite",
+   "Went to Shiloh",
+   "Broke the images"
+  ],
+  "answer": 0,
+  "explanation": "He made an ephod, and teraphim, and consecrated one of his sons, who became his priest.",
+  "ref": "Judges 17:5"
+ },
+ {
+  "id": "judges-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Levite answer when asked where he came from?",
+  "choices": [
+   "I am an Ephraimite",
+   "I am a Levite of Bethlehemjudah",
+   "I am a son of Aaron",
+   "I am from Shiloh"
+  ],
+  "answer": 1,
+  "explanation": "He said, I am a Levite of Bethlehemjudah.",
+  "ref": "Judges 17:9"
+ },
+ {
+  "id": "judges-17-h-06",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Micah's mother word her gift to the LORD?",
+  "choices": [
+   "Tithed of all I have",
+   "Vowed for my husband",
+   "Wholly dedicated from my hand",
+   "Given for the temple"
+  ],
+  "answer": 2,
+  "explanation": "She said, I had wholly dedicated the silver unto the LORD from my hand.",
+  "ref": "Judges 17:3"
+ },
+ {
+  "id": "judges-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In Micah's mother's words, what did the silver become two images for?",
+  "choices": [
+   "An ephod and a breastplate",
+   "An altar and a laver",
+   "A crown and a staff",
+   "A graven and a molten image"
+  ],
+  "answer": 3,
+  "explanation": "She dedicated it for her son to make a graven image and a molten image.",
+  "ref": "Judges 17:3"
+ },
+ {
+  "id": "judges-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose house did the young Levite enter on his journey?",
+  "choices": [
+   "Micah's",
+   "The founder's",
+   "His father's",
+   "A judge's"
+  ],
+  "answer": 0,
+  "explanation": "He came to mount Ephraim to the house of Micah, as he journeyed.",
+  "ref": "Judges 17:8"
+ },
+ {
+  "id": "judges-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the young Levite do in Bethlehemjudah before he left?",
+  "choices": [
+   "Ruled as a judge",
+   "Sojourned there",
+   "Kept sheep",
+   "Built an altar"
+  ],
+  "answer": 1,
+  "explanation": "There was a young man out of Bethlehemjudah, and he sojourned there.",
+  "ref": "Judges 17:7"
+ },
+ {
+  "id": "judges-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who became Micah's priest before the Levite?",
+  "choices": [
+   "The founder",
+   "His mother",
+   "One of his sons",
+   "A servant"
+  ],
+  "answer": 2,
+  "explanation": "Micah consecrated one of his sons, who became his priest.",
+  "ref": "Judges 17:5"
+ },
+ {
+  "id": "judges-17-h-12",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Micah describe his plan for the Levite's role?",
+  "choices": [
+   "Father and priest",
+   "Brother and guard",
+   "Judge and teacher",
+   "Servant and cook"
+  ],
+  "answer": 0,
+  "explanation": "Micah said, be unto me a father and a priest.",
+  "ref": "Judges 17:10"
+ },
+ {
+  "id": "judges-17-h-13",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Micah say would be given to the Levite besides the year's silver?",
+  "choices": [
+   "Two asses",
+   "A suit of apparel and victuals",
+   "A tent",
+   "A sword"
+  ],
+  "answer": 1,
+  "explanation": "Micah said he would give ten shekels, a suit of apparel, and his victuals.",
+  "ref": "Judges 17:10"
+ },
+ {
+  "id": "judges-17-h-14",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Micah say of the Levite after becoming his priest?",
+  "choices": [
+   "He shall judge Israel",
+   "I need no king",
+   "The LORD will do me good",
+   "He shall be my son-in-law"
+  ],
+  "answer": 2,
+  "explanation": "Now know I that the LORD will do me good, seeing I have a Levite to my priest.",
+  "ref": "Judges 17:13"
+ },
+ {
+  "id": "judges-17-h-15",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened when Micah restored the silver, according to his mother?",
+  "choices": [
+   "She cursed him",
+   "She took it away",
+   "She buried it",
+   "She would restore it to him"
+  ],
+  "answer": 3,
+  "explanation": "His mother said, now therefore I will restore it unto thee.",
+  "ref": "Judges 17:3"
+ },
+ {
+  "id": "judges-17-h-17",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Who spoke a curse over the lost silver in Micah's hearing?",
+  "choices": [
+   "His mother",
+   "The founder",
+   "The Levite",
+   "His brother"
+  ],
+  "answer": 0,
+  "explanation": "Micah said, the silver about which thou cursedst, and spakest of also in mine ears.",
+  "ref": "Judges 17:2"
+ },
+ {
   "id": "old-judges-18-1",
   "chapter": 18,
   "level": "beginner",
