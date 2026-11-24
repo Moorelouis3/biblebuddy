@@ -1520,6 +1520,646 @@
   "ref": "Judges 3:31"
  },
  {
+  "id": "judges-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe was Ehud from?",
+  "choices": [
+   "Judah",
+   "Benjamin",
+   "Ephraim",
+   "Dan"
+  ],
+  "answer": 1,
+  "explanation": "Ehud the son of Gera was a Benjamite, a man lefthanded.",
+  "ref": "Judges 3:15"
+ },
+ {
+  "id": "judges-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ehud bring to Eglon king of Moab?",
+  "choices": [
+   "A letter",
+   "A sword",
+   "A present",
+   "A prisoner"
+  ],
+  "answer": 2,
+  "explanation": "By Ehud the children of Israel sent a present unto Eglon the king of Moab.",
+  "ref": "Judges 3:15–17"
+ },
+ {
+  "id": "judges-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose younger brother was Othniel?",
+  "choices": [
+   "Joshua's",
+   "Gideon's",
+   "Ehud's",
+   "Caleb's"
+  ],
+  "answer": 3,
+  "explanation": "The LORD raised up Othniel the son of Kenaz, Caleb's younger brother.",
+  "ref": "Judges 3:9"
+ },
+ {
+  "id": "judges-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What came upon Othniel so that he judged Israel?",
+  "choices": [
+   "The Spirit of the LORD",
+   "A fire from heaven",
+   "A cloud",
+   "A great wind"
+  ],
+  "answer": 0,
+  "explanation": "The Spirit of the LORD came upon him, and he judged Israel, and went out to war.",
+  "ref": "Judges 3:10"
+ },
+ {
+  "id": "judges-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Eglon king of Moab described?",
+  "choices": [
+   "A very old man",
+   "A very fat man",
+   "A very tall man",
+   "A blind man"
+  ],
+  "answer": 1,
+  "explanation": "Eglon was a very fat man.",
+  "ref": "Judges 3:17"
+ },
+ {
+  "id": "judges-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ehud blow in the mountain of Ephraim?",
+  "choices": [
+   "A ram's horn only",
+   "A flute",
+   "A trumpet",
+   "A shout of praise"
+  ],
+  "answer": 2,
+  "explanation": "Ehud blew a trumpet in the mountain of Ephraim, and Israel went down with him.",
+  "ref": "Judges 3:27"
+ },
+ {
+  "id": "judges-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Eglon sitting when Ehud came to him?",
+  "choices": [
+   "On a throne in Jericho",
+   "In a tent",
+   "On a city wall",
+   "In a summer parlour"
+  ],
+  "answer": 3,
+  "explanation": "Ehud came unto him; and he was sitting in a summer parlour, which he had for himself alone.",
+  "ref": "Judges 3:20"
+ },
+ {
+  "id": "judges-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Eglon's servants use to open the locked doors?",
+  "choices": [
+   "A key",
+   "An axe",
+   "A ladder",
+   "A battering ram"
+  ],
+  "answer": 0,
+  "explanation": "They took a key, and opened them, and their lord was fallen down dead.",
+  "ref": "Judges 3:25"
+ },
+ {
+  "id": "judges-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do after Othniel died?",
+  "choices": [
+   "They built the temple",
+   "They did evil again in the sight of the LORD",
+   "They crossed the Jordan",
+   "They made Ehud king"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel did evil again in the sight of the LORD.",
+  "ref": "Judges 3:11–12"
+ },
+ {
+  "id": "judges-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do after they settled among the Canaanites?",
+  "choices": [
+   "They drove them all out",
+   "They built cities with them",
+   "They married their daughters and served their gods",
+   "They sold them their land"
+  ],
+  "answer": 2,
+  "explanation": "They took their daughters to be their wives and served their gods.",
+  "ref": "Judges 3:5–6"
+ },
+ {
+  "id": "judges-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Which king did the LORD sell Israel into the hand of first?",
+  "choices": [
+   "Eglon king of Moab",
+   "Jabin king of Canaan",
+   "Sisera",
+   "Chushan-rishathaim king of Mesopotamia"
+  ],
+  "answer": 3,
+  "explanation": "The LORD sold them into the hand of Chushan-rishathaim king of Mesopotamia.",
+  "ref": "Judges 3:8"
+ },
+ {
+  "id": "judges-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Israel serve Chushan-rishathaim?",
+  "choices": [
+   "Eight years",
+   "Seven years",
+   "Eighteen years",
+   "Forty years"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel served Chushan-rishathaim eight years.",
+  "ref": "Judges 3:8"
+ },
+ {
+  "id": "judges-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Israel serve Eglon king of Moab?",
+  "choices": [
+   "Eight years",
+   "Eighteen years",
+   "Twenty years",
+   "Forty years"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel served Eglon the king of Moab eighteen years.",
+  "ref": "Judges 3:14"
+ },
+ {
+  "id": "judges-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the land have rest after Othniel's victory?",
+  "choices": [
+   "Eighty years",
+   "Twenty years",
+   "Forty years",
+   "Eight years"
+  ],
+  "answer": 2,
+  "explanation": "The land had rest forty years. And Othniel the son of Kenaz died.",
+  "ref": "Judges 3:11"
+ },
+ {
+  "id": "judges-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the land have rest after Moab was subdued?",
+  "choices": [
+   "Forty years",
+   "Eighteen years",
+   "Ten years",
+   "Fourscore years"
+  ],
+  "answer": 3,
+  "explanation": "Moab was subdued that day, and the land had rest fourscore years.",
+  "ref": "Judges 3:30"
+ },
+ {
+  "id": "judges-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Othniel's father?",
+  "choices": [
+   "Kenaz",
+   "Gera",
+   "Anath",
+   "Caleb"
+  ],
+  "answer": 0,
+  "explanation": "Othniel was the son of Kenaz, Caleb's younger brother.",
+  "ref": "Judges 3:9"
+ },
+ {
+  "id": "judges-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Ehud's father?",
+  "choices": [
+   "Kenaz",
+   "Gera",
+   "Anath",
+   "Eglon"
+  ],
+  "answer": 1,
+  "explanation": "The deliverer was Ehud the son of Gera, a Benjamite.",
+  "ref": "Judges 3:15"
+ },
+ {
+  "id": "judges-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two peoples did Eglon gather to him against Israel?",
+  "choices": [
+   "Moab and Edom",
+   "Midian and Amalek",
+   "Ammon and Amalek",
+   "Ammon and Philistia"
+  ],
+  "answer": 2,
+  "explanation": "He gathered unto him the children of Ammon and Amalek, and smote Israel.",
+  "ref": "Judges 3:13"
+ },
+ {
+  "id": "judges-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city did Eglon and his allies possess?",
+  "choices": [
+   "Ai",
+   "Gilgal",
+   "Hebron",
+   "The city of palm trees"
+  ],
+  "answer": 3,
+  "explanation": "Eglon smote Israel and possessed the city of palm trees.",
+  "ref": "Judges 3:13"
+ },
+ {
+  "id": "judges-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Ehud hide his dagger?",
+  "choices": [
+   "Under his raiment on his right thigh",
+   "In his sandal",
+   "In the present",
+   "In his left hand"
+  ],
+  "answer": 0,
+  "explanation": "He did gird it under his raiment upon his right thigh.",
+  "ref": "Judges 3:16"
+ },
+ {
+  "id": "judges-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD strengthen Eglon against Israel?",
+  "choices": [
+   "Because Moab prayed to him",
+   "Because Israel had done evil in his sight",
+   "Because Israel refused the present",
+   "Because Eglon was a Benjamite"
+  ],
+  "answer": 1,
+  "explanation": "The LORD strengthened Eglon because they had done evil in the sight of the LORD.",
+  "ref": "Judges 3:12"
+ },
+ {
+  "id": "judges-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Ehud escape to after the murder?",
+  "choices": [
+   "Gilgal",
+   "Jericho",
+   "Seirath",
+   "Moab"
+  ],
+  "answer": 2,
+  "explanation": "Ehud passed beyond the quarries, and escaped unto Seirath.",
+  "ref": "Judges 3:26"
+ },
+ {
+  "id": "judges-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eglon's servants think he was doing in the locked parlour?",
+  "choices": [
+   "Sleeping",
+   "Praying",
+   "Counting gold",
+   "Covering his feet"
+  ],
+  "answer": 3,
+  "explanation": "They said, Surely he covereth his feet in his summer chamber.",
+  "ref": "Judges 3:24"
+ },
+ {
+  "id": "judges-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ehud tell Israel the LORD had done?",
+  "choices": [
+   "Delivered the Moabites into their hand",
+   "Sent a plague on Moab",
+   "Struck Eglon blind",
+   "Broken the walls of Moab"
+  ],
+  "answer": 0,
+  "explanation": "He said, Follow after me: for the LORD hath delivered your enemies the Moabites into your hand.",
+  "ref": "Judges 3:28"
+ },
+ {
+  "id": "judges-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was the dagger Ehud made?",
+  "choices": [
+   "A span",
+   "A cubit",
+   "Two cubits",
+   "A handbreadth"
+  ],
+  "answer": 1,
+  "explanation": "Ehud made a dagger which had two edges, of a cubit length.",
+  "ref": "Judges 3:16"
+ },
+ {
+  "id": "judges-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many edges did Ehud's dagger have?",
+  "choices": [
+   "One",
+   "Three",
+   "Two",
+   "Four"
+  ],
+  "answer": 2,
+  "explanation": "Ehud made him a dagger which had two edges.",
+  "ref": "Judges 3:16"
+ },
+ {
+  "id": "judges-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Ehud when he turned back to the king?",
+  "choices": [
+   "At the fords of Jordan",
+   "On mount Ephraim",
+   "At the gate of Moab",
+   "At the quarries by Gilgal"
+  ],
+  "answer": 3,
+  "explanation": "He himself turned again from the quarries that were by Gilgal.",
+  "ref": "Judges 3:19"
+ },
+ {
+  "id": "judges-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "About how many Moabites did Israel slay at that time?",
+  "choices": [
+   "Ten thousand",
+   "Six hundred",
+   "Eighteen thousand",
+   "Forty thousand"
+  ],
+  "answer": 0,
+  "explanation": "They slew of Moab at that time about ten thousand men.",
+  "ref": "Judges 3:29"
+ },
+ {
+  "id": "judges-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Philistines did Shamgar slay with an ox goad?",
+  "choices": [
+   "Six thousand",
+   "Six hundred",
+   "Sixty",
+   "Three hundred"
+  ],
+  "answer": 1,
+  "explanation": "Shamgar slew of the Philistines six hundred men with an ox goad.",
+  "ref": "Judges 3:31"
+ },
+ {
+  "id": "judges-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Shamgar?",
+  "choices": [
+   "Kenaz",
+   "Gera",
+   "Anath",
+   "Ehud"
+  ],
+  "answer": 2,
+  "explanation": "After Ehud was Shamgar the son of Anath.",
+  "ref": "Judges 3:31"
+ },
+ {
+  "id": "judges-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "What did Israel take so that no Moabite could pass over?",
+  "choices": [
+   "The quarries of Gilgal",
+   "The gates of Jericho",
+   "The mount of Ephraim",
+   "The fords of Jordan"
+  ],
+  "answer": 3,
+  "explanation": "They took the fords of Jordan toward Moab, and suffered not a man to pass over.",
+  "ref": "Judges 3:28"
+ },
+ {
+  "id": "judges-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many lords of the Philistines were among the nations left?",
+  "choices": [
+   "Five",
+   "Three",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "The nations left included five lords of the Philistines.",
+  "ref": "Judges 3:3"
+ },
+ {
+  "id": "judges-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "On which mountain did the Hivites dwell?",
+  "choices": [
+   "Mount Ephraim",
+   "Mount Lebanon",
+   "Mount Hermon",
+   "Mount Gilboa"
+  ],
+  "answer": 1,
+  "explanation": "The Hivites dwelt in mount Lebanon, from mount Baal-hermon unto the entering in of Hamath.",
+  "ref": "Judges 3:3"
+ },
+ {
+  "id": "judges-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ehud do with the people who carried the present?",
+  "choices": [
+   "He kept them in Gilgal",
+   "He had them guard the door",
+   "He sent them away",
+   "He took them to Seirath"
+  ],
+  "answer": 2,
+  "explanation": "When he had made an end to offer the present, he sent away the people that bare the present.",
+  "ref": "Judges 3:18"
+ },
+ {
+  "id": "judges-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ehud do to the doors of the parlour as he left?",
+  "choices": [
+   "Left them open",
+   "Barred them with a beam",
+   "Burned them",
+   "Shut and locked them"
+  ],
+  "answer": 3,
+  "explanation": "Ehud went forth through the porch, and shut the doors of the parlour upon him, and locked them.",
+  "ref": "Judges 3:23"
+ },
+ {
+  "id": "judges-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king say that made his attendants go out?",
+  "choices": [
+   "Keep silence",
+   "Depart from me",
+   "Bring me wine",
+   "Fetch the guard"
+  ],
+  "answer": 0,
+  "explanation": "Ehud said he had a secret errand, who said, Keep silence. And all that stood by him went out.",
+  "ref": "Judges 3:19"
+ },
+ {
+  "id": "judges-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What closed upon the blade so Ehud could not draw it out?",
+  "choices": [
+   "The haft",
+   "The fat",
+   "The robe",
+   "The doors"
+  ],
+  "answer": 1,
+  "explanation": "The fat closed upon the blade, so that he could not draw the dagger out of his belly.",
+  "ref": "Judges 3:22"
+ },
+ {
+  "id": "judges-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which false gods did Israel serve after forgetting the LORD?",
+  "choices": [
+   "Dagon and Chemosh",
+   "Molech and Milcom",
+   "Baalim and the groves",
+   "Ashtaroth and Dagon"
+  ],
+  "answer": 2,
+  "explanation": "They forgat the LORD their God, and served Baalim and the groves.",
+  "ref": "Judges 3:7"
+ },
+ {
+  "id": "judges-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the Moabites slain by Israel described?",
+  "choices": [
+   "All old and weary",
+   "All unarmed",
+   "All strangers",
+   "All lusty, and all men of valour"
+  ],
+  "answer": 3,
+  "explanation": "They slew about ten thousand men, all lusty, and all men of valour.",
+  "ref": "Judges 3:29"
+ },
+ {
+  "id": "judges-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ehud say he had for the king, when he turned again?",
+  "choices": [
+   "A gift from Moab",
+   "A secret errand",
+   "A song",
+   "A warning from Gilgal"
+  ],
+  "answer": 1,
+  "explanation": "Ehud said, I have a secret errand unto thee, O king.",
+  "ref": "Judges 3:19"
+ },
+ {
   "id": "old-judges-4-1",
   "chapter": 4,
   "level": "beginner",
