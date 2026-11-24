@@ -1520,6 +1520,646 @@
   "ref": "Numbers 3:46–48"
  },
  {
+  "id": "numbers-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these was a son of Levi?",
+  "choices": [
+   "Mushi",
+   "Kohath",
+   "Libni",
+   "Amram"
+  ],
+  "answer": 1,
+  "explanation": "These were the sons of Levi by their names; Gershon, and Kohath, and Merari.",
+  "ref": "Numbers 3:17"
+ },
+ {
+  "id": "numbers-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which side of the tabernacle did the Gershonites pitch?",
+  "choices": [
+   "Westward, behind it",
+   "Southward",
+   "Northward",
+   "Eastward"
+  ],
+  "answer": 0,
+  "explanation": "The families of the Gershonites shall pitch behind the tabernacle westward.",
+  "ref": "Numbers 3:23"
+ },
+ {
+  "id": "numbers-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which side of the tabernacle did the Kohathites pitch?",
+  "choices": [
+   "Westward",
+   "Northward",
+   "Eastward",
+   "Southward"
+  ],
+  "answer": 3,
+  "explanation": "The families of the sons of Kohath shall pitch on the side of the tabernacle southward.",
+  "ref": "Numbers 3:29"
+ },
+ {
+  "id": "numbers-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which side of the tabernacle did the Merarites pitch?",
+  "choices": [
+   "Southward",
+   "Westward",
+   "Northward",
+   "Eastward"
+  ],
+  "answer": 2,
+  "explanation": "The chief of the families of Merari shall pitch on the side of the tabernacle northward.",
+  "ref": "Numbers 3:35"
+ },
+ {
+  "id": "numbers-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who camped before the tabernacle toward the east?",
+  "choices": [
+   "The Gershonites",
+   "Moses, Aaron and his sons",
+   "The Kohathites",
+   "The Merarites"
+  ],
+  "answer": 1,
+  "explanation": "Those that encamp toward the east shall be Moses, and Aaron and his sons.",
+  "ref": "Numbers 3:38"
+ },
+ {
+  "id": "numbers-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nadab and Abihu offer before the LORD when they died?",
+  "choices": [
+   "Strange fire",
+   "Unclean bread",
+   "Wild honey",
+   "Blind lambs"
+  ],
+  "answer": 0,
+  "explanation": "Nadab and Abihu died before the LORD, when they offered strange fire before the LORD.",
+  "ref": "Numbers 3:4"
+ },
+ {
+  "id": "numbers-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which son of Aaron was the firstborn?",
+  "choices": [
+   "Abihu",
+   "Eleazar",
+   "Ithamar",
+   "Nadab"
+  ],
+  "answer": 3,
+  "explanation": "These are the names of the sons of Aaron; Nadab the firstborn, and Abihu, Eleazar, and Ithamar.",
+  "ref": "Numbers 3:2"
+ },
+ {
+  "id": "numbers-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what age were the Levite males numbered?",
+  "choices": [
+   "Twenty years old",
+   "Thirty years old",
+   "A month old",
+   "Five years old"
+  ],
+  "answer": 2,
+  "explanation": "Every male from a month old and upward shalt thou number them.",
+  "ref": "Numbers 3:15"
+ },
+ {
+  "id": "numbers-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many Levites were numbered in all?",
+  "choices": [
+   "Eight thousand six hundred",
+   "Twenty-two thousand",
+   "Seven thousand five hundred",
+   "Six thousand two hundred"
+  ],
+  "answer": 1,
+  "explanation": "All that were numbered of the Levites, all the males from a month old and upward, were twenty and two thousand.",
+  "ref": "Numbers 3:39"
+ },
+ {
+  "id": "numbers-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many shekels apiece were taken to redeem the extra firstborn?",
+  "choices": [
+   "Five",
+   "Ten",
+   "Twenty",
+   "Fifty"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt even take five shekels apiece by the poll, after the shekel of the sanctuary.",
+  "ref": "Numbers 3:47"
+ },
+ {
+  "id": "numbers-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which Levite family had charge of the tabernacle, its coverings and the hangings?",
+  "choices": [
+   "The Kohathites",
+   "The Merarites",
+   "The Aaronites",
+   "The Gershonites"
+  ],
+  "answer": 3,
+  "explanation": "The charge of the sons of Gershon shall be the tabernacle, and the tent, the covering thereof, and the hanging for the door.",
+  "ref": "Numbers 3:25"
+ },
+ {
+  "id": "numbers-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which Levite family had charge of the ark, the table and the candlestick?",
+  "choices": [
+   "The Gershonites",
+   "The Merarites",
+   "The Kohathites",
+   "The Libnites"
+  ],
+  "answer": 2,
+  "explanation": "Their charge shall be the ark, and the table, and the candlestick, and the altars.",
+  "ref": "Numbers 3:31"
+ },
+ {
+  "id": "numbers-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which Levite family had charge of the boards, bars, pillars and sockets of the tabernacle?",
+  "choices": [
+   "The Gershonites",
+   "The Merarites",
+   "The Kohathites",
+   "The Izeharites"
+  ],
+  "answer": 1,
+  "explanation": "Under the charge of the sons of Merari shall be the boards of the tabernacle, and the bars, and the pillars, and the sockets.",
+  "ref": "Numbers 3:36"
+ },
+ {
+  "id": "numbers-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many males of the Gershonites were numbered?",
+  "choices": [
+   "Seven thousand five hundred",
+   "Eight thousand six hundred",
+   "Six thousand two hundred",
+   "Twenty-two thousand"
+  ],
+  "answer": 0,
+  "explanation": "Those numbered of the Gershonites were seven thousand and five hundred.",
+  "ref": "Numbers 3:22"
+ },
+ {
+  "id": "numbers-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many males of the Kohathites were numbered?",
+  "choices": [
+   "Seven thousand five hundred",
+   "Six thousand two hundred",
+   "Twenty-two thousand",
+   "Eight thousand six hundred"
+  ],
+  "answer": 3,
+  "explanation": "In the number of all the males of the Kohathites were eight thousand and six hundred.",
+  "ref": "Numbers 3:28"
+ },
+ {
+  "id": "numbers-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many males of the Merarites were numbered?",
+  "choices": [
+   "Seven thousand five hundred",
+   "Eight thousand six hundred",
+   "Six thousand two hundred",
+   "Twenty-two thousand"
+  ],
+  "answer": 2,
+  "explanation": "Those numbered of the Merarites were six thousand and two hundred.",
+  "ref": "Numbers 3:34"
+ },
+ {
+  "id": "numbers-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was chief of the house of the father of the Gershonites?",
+  "choices": [
+   "Elizaphan son of Uzziel",
+   "Eliasaph son of Lael",
+   "Zuriel son of Abihail",
+   "Eleazar son of Aaron"
+  ],
+  "answer": 1,
+  "explanation": "The chief of the Gershonites shall be Eliasaph the son of Lael.",
+  "ref": "Numbers 3:24"
+ },
+ {
+  "id": "numbers-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was chief of the house of the father of the Kohathites?",
+  "choices": [
+   "Elizaphan son of Uzziel",
+   "Eliasaph son of Lael",
+   "Zuriel son of Abihail",
+   "Ithamar son of Aaron"
+  ],
+  "answer": 0,
+  "explanation": "The chief of the families of the Kohathites shall be Elizaphan the son of Uzziel.",
+  "ref": "Numbers 3:30"
+ },
+ {
+  "id": "numbers-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was chief of the house of the father of the families of Merari?",
+  "choices": [
+   "Eliasaph son of Lael",
+   "Elizaphan son of Uzziel",
+   "Eleazar son of Aaron",
+   "Zuriel son of Abihail"
+  ],
+  "answer": 3,
+  "explanation": "The chief of the families of Merari was Zuriel the son of Abihail.",
+  "ref": "Numbers 3:35"
+ },
+ {
+  "id": "numbers-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two sons of Aaron died without children?",
+  "choices": [
+   "Eleazar and Ithamar",
+   "Nadab and Eleazar",
+   "Nadab and Abihu",
+   "Abihu and Ithamar"
+  ],
+  "answer": 2,
+  "explanation": "Nadab and Abihu died before the LORD, and they had no children.",
+  "ref": "Numbers 3:4"
+ },
+ {
+  "id": "numbers-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two sons of Aaron ministered in the priest's office in his sight?",
+  "choices": [
+   "Nadab and Abihu",
+   "Eleazar and Ithamar",
+   "Nadab and Ithamar",
+   "Abihu and Eleazar"
+  ],
+  "answer": 1,
+  "explanation": "Eleazar and Ithamar ministered in the priest's office in the sight of Aaron their father.",
+  "ref": "Numbers 3:4"
+ },
+ {
+  "id": "numbers-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the LORD hallow to Himself all the firstborn in Israel?",
+  "choices": [
+   "The day He smote the firstborn in Egypt",
+   "The day Israel crossed the sea",
+   "The day the tabernacle was raised",
+   "The day Moses was born"
+  ],
+  "answer": 0,
+  "explanation": "On the day that I smote all the firstborn in the land of Egypt I hallowed unto me all the firstborn in Israel.",
+  "ref": "Numbers 3:13"
+ },
+ {
+  "id": "numbers-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By how many did the firstborn of Israel outnumber the Levites?",
+  "choices": [
+   "One hundred",
+   "Three hundred and sixty-five",
+   "Two thousand",
+   "Two hundred and seventy-three"
+  ],
+  "answer": 3,
+  "explanation": "The two hundred and threescore and thirteen of the firstborn of Israel are more than the Levites.",
+  "ref": "Numbers 3:46"
+ },
+ {
+  "id": "numbers-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom was the redemption money for the extra firstborn given?",
+  "choices": [
+   "The princes of Israel",
+   "The Gershonites",
+   "Aaron and his sons",
+   "Moses alone"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt give the money, wherewith the odd number of them is to be redeemed, unto Aaron and to his sons.",
+  "ref": "Numbers 3:48"
+ },
+ {
+  "id": "numbers-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom were the Levites wholly given?",
+  "choices": [
+   "The princes",
+   "Aaron and his sons",
+   "The elders",
+   "The captains of thousands"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt give the Levites unto Aaron and to his sons: they are wholly given unto him.",
+  "ref": "Numbers 3:9"
+ },
+ {
+  "id": "numbers-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many firstborn males of Israel were numbered, a month old and upward?",
+  "choices": [
+   "Twenty-two thousand two hundred seventy-three",
+   "Twenty-two thousand",
+   "Twenty-three thousand two hundred",
+   "Twenty-two thousand five hundred"
+  ],
+  "answer": 0,
+  "explanation": "The firstborn males were twenty and two thousand two hundred and threescore and thirteen.",
+  "ref": "Numbers 3:43"
+ },
+ {
+  "id": "numbers-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shekels of redemption money did Moses take from the extra firstborn?",
+  "choices": [
+   "One thousand two hundred seventy-three",
+   "One thousand five hundred",
+   "Two thousand two hundred",
+   "One thousand three hundred sixty-five"
+  ],
+  "answer": 3,
+  "explanation": "Of the firstborn of Israel took he the money; a thousand three hundred and threescore and five shekels.",
+  "ref": "Numbers 3:50"
+ },
+ {
+  "id": "numbers-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two sons did Gershon have?",
+  "choices": [
+   "Mahli and Mushi",
+   "Amram and Izehar",
+   "Libni and Shimei",
+   "Hebron and Uzziel"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Gershon by their families; Libni, and Shimei.",
+  "ref": "Numbers 3:18"
+ },
+ {
+  "id": "numbers-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Kohath?",
+  "choices": [
+   "Libni",
+   "Hebron",
+   "Mahli",
+   "Shimei"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Kohath by their families; Amram, and Izehar, Hebron, and Uzziel.",
+  "ref": "Numbers 3:19"
+ },
+ {
+  "id": "numbers-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two sons did Merari have?",
+  "choices": [
+   "Mahli and Mushi",
+   "Libni and Shimei",
+   "Amram and Izehar",
+   "Hebron and Uzziel"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Merari; Mahli, and Mushi.",
+  "ref": "Numbers 3:20"
+ },
+ {
+  "id": "numbers-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these was in the charge of the Kohathites?",
+  "choices": [
+   "The boards of the tabernacle",
+   "The hangings of the court",
+   "The cords of the tent",
+   "The candlestick"
+  ],
+  "answer": 3,
+  "explanation": "Their charge shall be the ark, the table, the candlestick, and the altars.",
+  "ref": "Numbers 3:31"
+ },
+ {
+  "id": "numbers-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these was in the charge of the Merarites?",
+  "choices": [
+   "The ark",
+   "The table",
+   "The pillars and sockets",
+   "The covering of the tent"
+  ],
+  "answer": 2,
+  "explanation": "Under the charge of the sons of Merari shall be the boards, the bars, the pillars, and the sockets.",
+  "ref": "Numbers 3:36"
+ },
+ {
+  "id": "numbers-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The cattle of the Levites were taken instead of what?",
+  "choices": [
+   "All the flocks of Egypt",
+   "The firstlings among the cattle of Israel",
+   "The tithe of the herd",
+   "The offerings of the priests"
+  ],
+  "answer": 1,
+  "explanation": "Take the cattle of the Levites instead of all the firstlings among the cattle of the children of Israel.",
+  "ref": "Numbers 3:41"
+ },
+ {
+  "id": "numbers-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "In which wilderness did Nadab and Abihu die?",
+  "choices": [
+   "The wilderness of Sinai",
+   "The wilderness of Paran",
+   "The wilderness of Zin",
+   "The wilderness of Shur"
+  ],
+  "answer": 0,
+  "explanation": "Nadab and Abihu died before the LORD, in the wilderness of Sinai.",
+  "ref": "Numbers 3:4"
+ },
+ {
+  "id": "numbers-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Before whom was the tribe of Levi to be presented?",
+  "choices": [
+   "Moses",
+   "The princes",
+   "The elders",
+   "Aaron the priest"
+  ],
+  "answer": 3,
+  "explanation": "Bring the tribe of Levi near, and present them before Aaron the priest, that they may minister unto him.",
+  "ref": "Numbers 3:6"
+ },
+ {
+  "id": "numbers-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many gerahs does the chapter say are in the shekel?",
+  "choices": [
+   "Ten",
+   "Fifty",
+   "Twenty",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "After the shekel of the sanctuary shalt thou take them: the shekel is twenty gerahs.",
+  "ref": "Numbers 3:47"
+ },
+ {
+  "id": "numbers-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Aaron?",
+  "choices": [
+   "Mushi",
+   "Ithamar",
+   "Uzziel",
+   "Hebron"
+  ],
+  "answer": 1,
+  "explanation": "The names of the sons of Aaron; Nadab, Abihu, Eleazar, and Ithamar.",
+  "ref": "Numbers 3:2"
+ },
+ {
+  "id": "numbers-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was to happen to the stranger who came nigh the priest's office?",
+  "choices": [
+   "He was put to death",
+   "He was sent away",
+   "He paid a fine",
+   "He was made a Levite"
+  ],
+  "answer": 0,
+  "explanation": "The stranger that cometh nigh shall be put to death.",
+  "ref": "Numbers 3:10"
+ },
+ {
+  "id": "numbers-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two families made up the Gershonites?",
+  "choices": [
+   "The Mahlites and the Mushites",
+   "The Amramites and the Izeharites",
+   "The Hebronites and the Uzzielites",
+   "The Libnites and the Shimites"
+  ],
+  "answer": 3,
+  "explanation": "Of Gershon was the family of the Libnites, and the family of the Shimites.",
+  "ref": "Numbers 3:21"
+ },
+ {
+  "id": "numbers-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "On which mountain did the LORD speak with Moses in the day of these generations?",
+  "choices": [
+   "Mount Hor",
+   "Mount Nebo",
+   "Mount Sinai",
+   "Mount Carmel"
+  ],
+  "answer": 2,
+  "explanation": "These are the generations of Aaron and Moses in the day that the LORD spake with Moses in mount Sinai.",
+  "ref": "Numbers 3:1"
+ },
+ {
   "id": "old-numbers-4-1",
   "chapter": 4,
   "level": "beginner",
