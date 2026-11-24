@@ -10192,6 +10192,646 @@
   "ref": "Joshua 15:63"
  },
  {
+  "id": "joshua-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who received the city of Hebron as a part among the children of Judah?",
+  "choices": [
+   "Othniel",
+   "Caleb",
+   "Joshua",
+   "Eleazar"
+  ],
+  "answer": 1,
+  "explanation": "Unto Caleb the son of Jephunneh he gave a part among the children of Judah, even the city of Arba, which is Hebron.",
+  "ref": "Joshua 15:13"
+ },
+ {
+  "id": "joshua-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Othniel was the brother of whom?",
+  "choices": [
+   "Joshua",
+   "Caleb",
+   "Moses",
+   "Eleazar"
+  ],
+  "answer": 1,
+  "explanation": "Othniel the son of Kenaz, the brother of Caleb, took it.",
+  "ref": "Joshua 15:17"
+ },
+ {
+  "id": "joshua-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "What was the name of Debir before?",
+  "choices": [
+   "Kirjath-arba",
+   "Kirjath-sepher",
+   "Kirjath-jearim",
+   "Kirjath-sannah"
+  ],
+  "answer": 1,
+  "explanation": "The name of Debir before was Kirjath-sepher.",
+  "ref": "Joshua 15:15"
+ },
+ {
+  "id": "joshua-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Caleb promise to give as a wife to the man who took Kirjath-sepher?",
+  "choices": [
+   "His sister Miriam",
+   "His daughter Achsah",
+   "His niece Rahab",
+   "His servant Zilpah"
+  ],
+  "answer": 1,
+  "explanation": "He that smiteth Kirjath-sepher, and taketh it, to him will I give Achsah my daughter to wife.",
+  "ref": "Joshua 15:16"
+ },
+ {
+  "id": "joshua-15-e-05",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Achsah light off when she asked her father for a field?",
+  "choices": [
+   "Her camel",
+   "Her ass",
+   "Her chariot",
+   "Her horse"
+  ],
+  "answer": 1,
+  "explanation": "She lighted off her ass; and Caleb said unto her, What wouldest thou?",
+  "ref": "Joshua 15:18"
+ },
+ {
+  "id": "joshua-15-e-06",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "What sea was the east border of Judah?",
+  "choices": [
+   "The great sea",
+   "The salt sea",
+   "The sea of Chinnereth",
+   "The Red Sea"
+  ],
+  "answer": 1,
+  "explanation": "The east border was the salt sea, even unto the end of Jordan.",
+  "ref": "Joshua 15:5"
+ },
+ {
+  "id": "joshua-15-e-07",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "What was the west border of Judah?",
+  "choices": [
+   "The salt sea",
+   "The great sea",
+   "The river Jordan",
+   "The wilderness of Zin"
+  ],
+  "answer": 1,
+  "explanation": "The west border was to the great sea, and the coast thereof.",
+  "ref": "Joshua 15:12"
+ },
+ {
+  "id": "joshua-15-e-08",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which Philistine city is listed with Ashdod among Judah's cities?",
+  "choices": [
+   "Gath",
+   "Gaza",
+   "Tyre",
+   "Sidon"
+  ],
+  "answer": 1,
+  "explanation": "Ashdod with her towns and her villages, Gaza with her towns and her villages.",
+  "ref": "Joshua 15:47"
+ },
+ {
+  "id": "joshua-15-e-09",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which people dwell with the children of Judah at Jerusalem?",
+  "choices": [
+   "The Amorites",
+   "The Jebusites",
+   "The Hivites",
+   "The Perizzites"
+  ],
+  "answer": 1,
+  "explanation": "The Jebusites dwell with the children of Judah at Jerusalem unto this day.",
+  "ref": "Joshua 15:63"
+ },
+ {
+  "id": "joshua-15-e-10",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose daughter was Achsah?",
+  "choices": [
+   "Joshua's",
+   "Caleb's",
+   "Othniel's",
+   "Moses'"
+  ],
+  "answer": 1,
+  "explanation": "Caleb said, I give Achsah my daughter to wife.",
+  "ref": "Joshua 15:16"
+ },
+ {
+  "id": "joshua-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Othniel was the son of whom?",
+  "choices": [
+   "Jephunneh",
+   "Nun",
+   "Anak",
+   "Kenaz"
+  ],
+  "answer": 3,
+  "explanation": "Othniel the son of Kenaz, the brother of Caleb, took it.",
+  "ref": "Joshua 15:17"
+ },
+ {
+  "id": "joshua-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was one of the three sons of Anak?",
+  "choices": [
+   "Othniel",
+   "Eshtaol",
+   "Zoreah",
+   "Sheshai"
+  ],
+  "answer": 3,
+  "explanation": "Caleb drove thence the three sons of Anak, Sheshai, and Ahiman, and Talmai.",
+  "ref": "Joshua 15:14"
+ },
+ {
+  "id": "joshua-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Achsah say her father had already given her?",
+  "choices": [
+   "A field in Hebron",
+   "A vineyard",
+   "A house in Debir",
+   "A south land"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast given me a south land; give me also springs of water.",
+  "ref": "Joshua 15:19"
+ },
+ {
+  "id": "joshua-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which springs did Caleb give Achsah?",
+  "choices": [
+   "The springs of Hebron",
+   "The springs of Gilgal",
+   "The springs of En-gedi",
+   "The upper and the nether springs"
+  ],
+  "answer": 3,
+  "explanation": "And he gave her the upper springs, and the nether springs.",
+  "ref": "Joshua 15:19"
+ },
+ {
+  "id": "joshua-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Who moved Othniel to ask Caleb for a field?",
+  "choices": [
+   "Joshua",
+   "Caleb himself",
+   "The elders",
+   "Achsah"
+  ],
+  "answer": 3,
+  "explanation": "She moved him to ask of her father a field.",
+  "ref": "Joshua 15:18"
+ },
+ {
+  "id": "joshua-15-m-06",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "The border went up south of the Jebusite, which is what city?",
+  "choices": [
+   "Hebron",
+   "Debir",
+   "Jericho",
+   "Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "The border went up unto the south side of the Jebusite; the same is Jerusalem.",
+  "ref": "Joshua 15:8"
+ },
+ {
+  "id": "joshua-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cities are counted for the uttermost southern group toward Edom?",
+  "choices": [
+   "Twelve",
+   "Forty",
+   "Fifty-two",
+   "Twenty and nine"
+  ],
+  "answer": 3,
+  "explanation": "All the cities are twenty and nine, with their villages.",
+  "ref": "Joshua 15:32"
+ },
+ {
+  "id": "joshua-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cities are counted in the group in the valley, from Eshtaol to Gederothaim?",
+  "choices": [
+   "Nine",
+   "Sixteen",
+   "Twenty",
+   "Fourteen"
+  ],
+  "answer": 3,
+  "explanation": "In the valley, Eshtaol, Zoreah... fourteen cities with their villages.",
+  "ref": "Joshua 15:33–36"
+ },
+ {
+  "id": "joshua-15-m-09",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city is among the uttermost cities of Judah's southern group?",
+  "choices": [
+   "Jericho",
+   "Shechem",
+   "Bethel",
+   "Beer-sheba"
+  ],
+  "answer": 3,
+  "explanation": "The southern cities include Hazar-shual, and Beer-sheba, and Bizjothjah.",
+  "ref": "Joshua 15:28"
+ },
+ {
+  "id": "joshua-15-m-10",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were the cities Beth-arabah, Middin and Secacah?",
+  "choices": [
+   "In the valley",
+   "In the mountains",
+   "By the sea",
+   "In the wilderness"
+  ],
+  "answer": 3,
+  "explanation": "In the wilderness, Beth-arabah, Middin, and Secacah.",
+  "ref": "Joshua 15:61"
+ },
+ {
+  "id": "joshua-15-m-11",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Baalah is also called what?",
+  "choices": [
+   "Kirjath-arba",
+   "Kirjath-sepher",
+   "Kirjath-sannah",
+   "Kirjath-jearim"
+  ],
+  "answer": 3,
+  "explanation": "Baalah, which is Kirjath-jearim.",
+  "ref": "Joshua 15:9"
+ },
+ {
+  "id": "joshua-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Judah's southern border reached toward the border of which land?",
+  "choices": [
+   "Moab",
+   "Ammon",
+   "Gilead",
+   "Edom"
+  ],
+  "answer": 3,
+  "explanation": "Even to the border of Edom the wilderness of Zin southward was the uttermost part of the south coast.",
+  "ref": "Joshua 15:1"
+ },
+ {
+  "id": "joshua-15-m-13",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Achsah ask her father for first?",
+  "choices": [
+   "A servant",
+   "A silver dowry",
+   "A city",
+   "A blessing"
+  ],
+  "answer": 3,
+  "explanation": "Who answered, Give me a blessing; for thou hast given me a south land.",
+  "ref": "Joshua 15:19"
+ },
+ {
+  "id": "joshua-15-m-14",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Caleb say to Achsah when she lighted off her ass?",
+  "choices": [
+   "Why do you come?",
+   "Go back to your husband",
+   "Who sent you?",
+   "What wouldest thou?"
+  ],
+  "answer": 3,
+  "explanation": "Caleb said unto her, What wouldest thou?",
+  "ref": "Joshua 15:18"
+ },
+ {
+  "id": "joshua-15-m-15",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "From which city did Caleb drive the three sons of Anak?",
+  "choices": [
+   "Hebron",
+   "Debir",
+   "Jerusalem",
+   "Gaza"
+  ],
+  "answer": 0,
+  "explanation": "Caleb received Hebron, and drove thence the three sons of Anak.",
+  "ref": "Joshua 15:13–14"
+ },
+ {
+  "id": "joshua-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "The stone of Bohan was named for the son of whom?",
+  "choices": [
+   "Reuben",
+   "Judah",
+   "Caleb",
+   "Kenaz"
+  ],
+  "answer": 0,
+  "explanation": "The border went up to the stone of Bohan the son of Reuben.",
+  "ref": "Joshua 15:6"
+ },
+ {
+  "id": "joshua-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Arba is called the father of whom?",
+  "choices": [
+   "Anak",
+   "Caleb",
+   "Kenaz",
+   "Sheshai"
+  ],
+  "answer": 0,
+  "explanation": "The city of Arba the father of Anak, which city is Hebron.",
+  "ref": "Joshua 15:13"
+ },
+ {
+  "id": "joshua-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Kirjath-sannah is also called what?",
+  "choices": [
+   "Debir",
+   "Hebron",
+   "Baalah",
+   "Eshtemoh"
+  ],
+  "answer": 0,
+  "explanation": "Dannah, and Kirjath-sannah, which is Debir.",
+  "ref": "Joshua 15:49"
+ },
+ {
+  "id": "joshua-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place did Judah's south border pass that Caleb had been sent from long before?",
+  "choices": [
+   "Kadesh-barnea",
+   "Gilgal",
+   "Hebron",
+   "Beer-sheba"
+  ],
+  "answer": 0,
+  "explanation": "It ascended up on the south side unto Kadesh-barnea.",
+  "ref": "Joshua 15:3"
+ },
+ {
+  "id": "joshua-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Judah's south coast went out unto which river?",
+  "choices": [
+   "The river of Egypt",
+   "The Arnon",
+   "The Kishon",
+   "The Jabbok"
+  ],
+  "answer": 0,
+  "explanation": "It passed toward Azmon, and went out unto the river of Egypt.",
+  "ref": "Joshua 15:4"
+ },
+ {
+  "id": "joshua-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "The border went up by the valley of the son of whom?",
+  "choices": [
+   "Hinnom",
+   "Anak",
+   "Reuben",
+   "Kenaz"
+  ],
+  "answer": 0,
+  "explanation": "The border went up by the valley of the son of Hinnom.",
+  "ref": "Joshua 15:8"
+ },
+ {
+  "id": "joshua-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long do the Jebusites dwell with Judah at Jerusalem?",
+  "choices": [
+   "Unto this day",
+   "Seven years",
+   "Until Joshua's death",
+   "Until the temple was built"
+  ],
+  "answer": 0,
+  "explanation": "The Jebusites dwell with the children of Judah at Jerusalem unto this day.",
+  "ref": "Joshua 15:63"
+ },
+ {
+  "id": "joshua-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The group with Lachish, Bozkath and Eglon is one of how many cities?",
+  "choices": [
+   "Sixteen",
+   "Nine",
+   "Eleven",
+   "Fourteen"
+  ],
+  "answer": 0,
+  "explanation": "Lachish, Bozkath, Eglon... Makkedah; sixteen cities with their villages.",
+  "ref": "Joshua 15:39–41"
+ },
+ {
+  "id": "joshua-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city among the wilderness cities is listed last?",
+  "choices": [
+   "En-gedi",
+   "Middin",
+   "Secacah",
+   "Nibshan"
+  ],
+  "answer": 0,
+  "explanation": "Nibshan, and the city of Salt, and En-gedi; six cities with their villages.",
+  "ref": "Joshua 15:62"
+ },
+ {
+  "id": "joshua-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "From Ekron unto the sea, all that lay near which city belonged to Judah?",
+  "choices": [
+   "Ashdod",
+   "Gaza",
+   "Hebron",
+   "Libnah"
+  ],
+  "answer": 0,
+  "explanation": "From Ekron even unto the sea, all that lay near Ashdod, with their villages.",
+  "ref": "Joshua 15:46"
+ },
+ {
+  "id": "joshua-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Judah's east border was the salt sea unto the end of what?",
+  "choices": [
+   "Jordan",
+   "Arnon",
+   "Hinnom",
+   "Kidron"
+  ],
+  "answer": 0,
+  "explanation": "The east border was the salt sea, even unto the end of Jordan.",
+  "ref": "Joshua 15:5"
+ },
+ {
+  "id": "joshua-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "The uttermost part of the south coast was the wilderness of what?",
+  "choices": [
+   "Zin",
+   "Paran",
+   "Sinai",
+   "Shur"
+  ],
+  "answer": 0,
+  "explanation": "The wilderness of Zin southward was the uttermost part of the south coast.",
+  "ref": "Joshua 15:1"
+ },
+ {
+  "id": "joshua-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities was in the valley group of Judah?",
+  "choices": [
+   "Adullam",
+   "Beer-sheba",
+   "Maon",
+   "Libnah"
+  ],
+  "answer": 0,
+  "explanation": "In the valley, Jarmuth, and Adullam, Socoh, and Azekah.",
+  "ref": "Joshua 15:35"
+ },
+ {
+  "id": "joshua-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to whose commandment did Caleb receive his part among Judah?",
+  "choices": [
+   "The Lord's, to Joshua",
+   "Moses' alone",
+   "The high priest's",
+   "The elders' of Judah"
+  ],
+  "answer": 0,
+  "explanation": "He gave a part among the children of Judah, according to the commandment of the Lord to Joshua.",
+  "ref": "Joshua 15:13"
+ },
+ {
+  "id": "joshua-15-h-15",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The group with Keilah, Achzib and Mareshah numbers how many cities?",
+  "choices": [
+   "Nine",
+   "Six",
+   "Eleven",
+   "Sixteen"
+  ],
+  "answer": 0,
+  "explanation": "Keilah, and Achzib, and Mareshah; nine cities with their villages.",
+  "ref": "Joshua 15:44"
+ },
+ {
   "id": "old-joshua-16-1",
   "chapter": 16,
   "level": "beginner",
