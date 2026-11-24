@@ -16688,6 +16688,646 @@
   "ref": "Deuteronomy 24:19–21"
  },
  {
+  "id": "deuteronomy-24-e-01",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into whose hand did the husband put the bill of divorcement?",
+  "choices": [
+   "The elders'",
+   "Hers",
+   "The priest's",
+   "Her father's"
+  ],
+  "answer": 1,
+  "explanation": "He shall write her a bill of divorcement, and give it in her hand, and send her out of his house.",
+  "ref": "Deuteronomy 24:1"
+ },
+ {
+  "id": "deuteronomy-24-e-02",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What could a divorced woman do after leaving her husband's house?",
+  "choices": [
+   "Return to him",
+   "Be another man's wife",
+   "Enter the camp",
+   "Take his goods"
+  ],
+  "answer": 1,
+  "explanation": "When she is departed out of his house, she may go and be another man's wife.",
+  "ref": "Deuteronomy 24:2"
+ },
+ {
+  "id": "deuteronomy-24-e-03",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a newly married man to do for his wife for a year?",
+  "choices": [
+   "Build her a house",
+   "Cheer her up",
+   "Teach her",
+   "Send her to her father"
+  ],
+  "answer": 1,
+  "explanation": "He shall be free at home one year, and shall cheer up his wife which he hath taken.",
+  "ref": "Deuteronomy 24:5"
+ },
+ {
+  "id": "deuteronomy-24-e-04",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was no man to take to pledge?",
+  "choices": [
+   "A plough",
+   "A millstone",
+   "A sword",
+   "A tent"
+  ],
+  "answer": 1,
+  "explanation": "No man shall take the nether or the upper millstone to pledge.",
+  "ref": "Deuteronomy 24:6"
+ },
+ {
+  "id": "deuteronomy-24-e-05",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the penalty for stealing a brother of Israel and selling him?",
+  "choices": [
+   "A fine of silver",
+   "Death",
+   "Exile",
+   "Slavery"
+  ],
+  "answer": 1,
+  "explanation": "If a man be found stealing any of his brethren and selleth him, then that thief shall die.",
+  "ref": "Deuteronomy 24:7"
+ },
+ {
+  "id": "deuteronomy-24-e-06",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the LORD deal with by the way after Israel left Egypt?",
+  "choices": [
+   "Aaron",
+   "Miriam",
+   "Moses",
+   "Korah"
+  ],
+  "answer": 1,
+  "explanation": "Remember what the LORD thy God did unto Miriam by the way, after that ye were come forth out of Egypt.",
+  "ref": "Deuteronomy 24:9"
+ },
+ {
+  "id": "deuteronomy-24-e-07",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where was the lender to stand when the borrower brought out the pledge?",
+  "choices": [
+   "At the gate",
+   "Abroad, outside the house",
+   "In the field",
+   "At the altar"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt stand abroad, and the man to whom thou dost lend shall bring out the pledge abroad unto thee.",
+  "ref": "Deuteronomy 24:11"
+ },
+ {
+  "id": "deuteronomy-24-e-08",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was to be given back to a poor man when the sun went down?",
+  "choices": [
+   "His land",
+   "His pledge",
+   "His servant",
+   "His coat of mail"
+  ],
+  "answer": 1,
+  "explanation": "In any case thou shalt deliver him the pledge again when the sun goeth down.",
+  "ref": "Deuteronomy 24:13"
+ },
+ {
+  "id": "deuteronomy-24-e-09",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whose sin was every man to be put to death?",
+  "choices": [
+   "His father's",
+   "His own",
+   "His son's",
+   "His master's"
+  ],
+  "answer": 1,
+  "explanation": "Every man shall be put to death for his own sin.",
+  "ref": "Deuteronomy 24:16"
+ },
+ {
+  "id": "deuteronomy-24-e-10",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to remember they had been in Egypt?",
+  "choices": [
+   "A shepherd",
+   "A bondman",
+   "A guest",
+   "A king"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt remember that thou wast a bondman in Egypt, and the LORD thy God redeemed thee thence.",
+  "ref": "Deuteronomy 24:18"
+ },
+ {
+  "id": "deuteronomy-24-m-01",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why might a husband write his wife a bill of divorcement?",
+  "choices": [
+   "She bore no son",
+   "She left home",
+   "She was poor",
+   "He found some uncleanness in her"
+  ],
+  "answer": 3,
+  "explanation": "She find no favour in his eyes, because he hath found some uncleanness in her.",
+  "ref": "Deuteronomy 24:1"
+ },
+ {
+  "id": "deuteronomy-24-m-02",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the woman called after she had been another man's wife and was sent back?",
+  "choices": [
+   "Free",
+   "Righteous",
+   "Barren",
+   "Defiled"
+  ],
+  "answer": 3,
+  "explanation": "Her former husband may not take her again to be his wife, after that she is defiled.",
+  "ref": "Deuteronomy 24:4"
+ },
+ {
+  "id": "deuteronomy-24-m-03",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel not to cause by this act?",
+  "choices": [
+   "The firstborn to die",
+   "The rain to cease",
+   "The camp to move",
+   "The land to sin"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not cause the land to sin, which the LORD thy God giveth thee.",
+  "ref": "Deuteronomy 24:4"
+ },
+ {
+  "id": "deuteronomy-24-m-04",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was a newly married man not charged with?",
+  "choices": [
+   "Any tithe",
+   "Any journey",
+   "Any sacrifice",
+   "Any business"
+  ],
+  "answer": 3,
+  "explanation": "He shall not go out to war, neither shall he be charged with any business.",
+  "ref": "Deuteronomy 24:5"
+ },
+ {
+  "id": "deuteronomy-24-m-05",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was a millstone not to be taken to pledge?",
+  "choices": [
+   "It was holy",
+   "It was heavy",
+   "It was sold at the gate",
+   "It took a man's life to pledge"
+  ],
+  "answer": 3,
+  "explanation": "For he taketh a man's life to pledge.",
+  "ref": "Deuteronomy 24:6"
+ },
+ {
+  "id": "deuteronomy-24-m-06",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who would teach Israel what to do about the plague of leprosy?",
+  "choices": [
+   "The elders",
+   "The judges",
+   "The captains",
+   "The priests the Levites"
+  ],
+  "answer": 3,
+  "explanation": "Do according to all that the priests the Levites shall teach you.",
+  "ref": "Deuteronomy 24:8"
+ },
+ {
+  "id": "deuteronomy-24-m-07",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was a lender not to do to fetch a pledge?",
+  "choices": [
+   "Send a servant",
+   "Ask the priest",
+   "Wait a day",
+   "Go into the borrower's house"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not go into his house to fetch his pledge.",
+  "ref": "Deuteronomy 24:10"
+ },
+ {
+  "id": "deuteronomy-24-m-08",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the lender not to do with a poor man's pledge?",
+  "choices": [
+   "Sell it",
+   "Show it",
+   "Carry it away",
+   "Sleep with it"
+  ],
+  "answer": 3,
+  "explanation": "If the man be poor, thou shalt not sleep with his pledge.",
+  "ref": "Deuteronomy 24:12"
+ },
+ {
+  "id": "deuteronomy-24-m-09",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the pledge to be returned at sundown?",
+  "choices": [
+   "So he could pay the debt",
+   "So he could go to the temple",
+   "So he could feast",
+   "So he could sleep in his own raiment"
+  ],
+  "answer": 3,
+  "explanation": "That he may sleep in his own raiment, and bless thee.",
+  "ref": "Deuteronomy 24:13"
+ },
+ {
+  "id": "deuteronomy-24-m-10",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would returning the pledge be counted as?",
+  "choices": [
+   "A sacrifice",
+   "A tithe",
+   "A vow",
+   "Righteousness before the LORD"
+  ],
+  "answer": 3,
+  "explanation": "It shall be righteousness unto thee before the LORD thy God.",
+  "ref": "Deuteronomy 24:13"
+ },
+ {
+  "id": "deuteronomy-24-m-11",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom besides his brethren was Israel not to oppress as a hired servant?",
+  "choices": [
+   "The Levites",
+   "The captives of war",
+   "Kings' servants",
+   "Strangers within the gates"
+  ],
+  "answer": 3,
+  "explanation": "Whether he be of thy brethren, or of thy strangers that are in thy land within thy gates.",
+  "ref": "Deuteronomy 24:14"
+ },
+ {
+  "id": "deuteronomy-24-m-12",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was a poor hired servant to be paid on the day?",
+  "choices": [
+   "He was a Levite",
+   "He worked far away",
+   "He had no tent",
+   "He was poor and set his heart on it"
+  ],
+  "answer": 3,
+  "explanation": "He is poor, and setteth his heart upon it.",
+  "ref": "Deuteronomy 24:15"
+ },
+ {
+  "id": "deuteronomy-24-m-13",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What might a poor servant do if he were not paid in time?",
+  "choices": [
+   "Sell his children",
+   "Leave the land",
+   "Appeal to the king",
+   "Cry against Israel to the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Lest he cry against thee unto the LORD, and it be sin unto thee.",
+  "ref": "Deuteronomy 24:15"
+ },
+ {
+  "id": "deuteronomy-24-m-14",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not to be taken to pledge besides a millstone?",
+  "choices": [
+   "A widow's oxen",
+   "A widow's house",
+   "A widow's oil",
+   "A widow's raiment"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not pervert the judgment of the stranger, nor of the fatherless; nor take a widow's raiment to pledge.",
+  "ref": "Deuteronomy 24:17"
+ },
+ {
+  "id": "deuteronomy-24-m-15",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who got the forgotten sheaf, and the leftover olives and grapes?",
+  "choices": [
+   "The priests",
+   "The Levites only",
+   "The poor of Egypt",
+   "The stranger, fatherless and widow"
+  ],
+  "answer": 3,
+  "explanation": "It shall be for the stranger, for the fatherless, and for the widow.",
+  "ref": "Deuteronomy 24:19"
+ },
+ {
+  "id": "deuteronomy-24-h-01",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which millstone could not be taken to pledge?",
+  "choices": [
+   "Nether or upper",
+   "Only the upper",
+   "Only the nether",
+   "A new one"
+  ],
+  "answer": 0,
+  "explanation": "No man shall take the nether or the upper millstone to pledge.",
+  "ref": "Deuteronomy 24:6"
+ },
+ {
+  "id": "deuteronomy-24-h-02",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the LORD deal with Miriam?",
+  "choices": [
+   "After Israel came out of Egypt",
+   "Before the plagues",
+   "At Sinai",
+   "In the land"
+  ],
+  "answer": 0,
+  "explanation": "What the LORD did unto Miriam by the way, after that ye were come forth out of Egypt.",
+  "ref": "Deuteronomy 24:9"
+ },
+ {
+  "id": "deuteronomy-24-h-03",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what two ways might a later husband's marriage end?",
+  "choices": [
+   "He hated her, or he died",
+   "He left her, or he sold her",
+   "He fined her, or he stoned her",
+   "She fled, or she died"
+  ],
+  "answer": 0,
+  "explanation": "If the latter husband hate her and divorce her, or if the latter husband die.",
+  "ref": "Deuteronomy 24:3"
+ },
+ {
+  "id": "deuteronomy-24-h-04",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD call a man taking back his former wife after she had been another's?",
+  "choices": [
+   "An abomination",
+   "A trespass",
+   "A blessing",
+   "A vow"
+  ],
+  "answer": 0,
+  "explanation": "That is abomination before the LORD.",
+  "ref": "Deuteronomy 24:4"
+ },
+ {
+  "id": "deuteronomy-24-h-05",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel not do to a sheaf forgotten in the field?",
+  "choices": [
+   "Go again to fetch it",
+   "Burn it",
+   "Give it to the priest",
+   "Count it"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast forgot a sheaf in the field, thou shalt not go again to fetch it.",
+  "ref": "Deuteronomy 24:19"
+ },
+ {
+  "id": "deuteronomy-24-h-06",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Israel not to do after beating the olive tree?",
+  "choices": [
+   "Go over the boughs again",
+   "Shake the branches",
+   "Sell the oil",
+   "Cut the tree down"
+  ],
+  "answer": 0,
+  "explanation": "When thou beatest thine olive tree, thou shalt not go over the boughs again.",
+  "ref": "Deuteronomy 24:20"
+ },
+ {
+  "id": "deuteronomy-24-h-07",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Israel not to do afterward in the vineyard?",
+  "choices": [
+   "Glean it",
+   "Prune it",
+   "Water it",
+   "Sell it"
+  ],
+  "answer": 0,
+  "explanation": "When thou gatherest the grapes of thy vineyard, thou shalt not glean it afterward.",
+  "ref": "Deuteronomy 24:21"
+ },
+ {
+  "id": "deuteronomy-24-h-08",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD do for Israel who left the forgotten sheaf?",
+  "choices": [
+   "Bless all the work of their hands",
+   "Give a year of rest",
+   "Add to their days",
+   "Send rain"
+  ],
+  "answer": 0,
+  "explanation": "That the LORD thy God may bless thee in all the work of thine hands.",
+  "ref": "Deuteronomy 24:19"
+ },
+ {
+  "id": "deuteronomy-24-h-09",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose judgment was Israel not to pervert, besides the fatherless?",
+  "choices": [
+   "The stranger's",
+   "The elder's",
+   "The king's",
+   "The priest's"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not pervert the judgment of the stranger, nor of the fatherless.",
+  "ref": "Deuteronomy 24:17"
+ },
+ {
+  "id": "deuteronomy-24-h-10",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who were not to be put to death for their children?",
+  "choices": [
+   "The fathers",
+   "The elders",
+   "The mothers",
+   "The servants"
+  ],
+  "answer": 0,
+  "explanation": "The fathers shall not be put to death for the children.",
+  "ref": "Deuteronomy 24:16"
+ },
+ {
+  "id": "deuteronomy-24-h-11",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many groups are named for the gleanings?",
+  "choices": [
+   "Three",
+   "Two",
+   "Four",
+   "Five"
+  ],
+  "answer": 0,
+  "explanation": "The stranger, the fatherless, and the widow.",
+  "ref": "Deuteronomy 24:19"
+ },
+ {
+  "id": "deuteronomy-24-h-12",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel observe diligently about the plague of leprosy?",
+  "choices": [
+   "What the priests the Levites teach",
+   "What the elders judge",
+   "What the king decrees",
+   "What the prophet says"
+  ],
+  "answer": 0,
+  "explanation": "Take heed in the plague of leprosy, and do according to all that the priests the Levites shall teach you.",
+  "ref": "Deuteronomy 24:8"
+ },
+ {
+  "id": "deuteronomy-24-h-13",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the poor servant set his heart upon?",
+  "choices": [
+   "His hire",
+   "His freedom",
+   "His land",
+   "His wife"
+  ],
+  "answer": 0,
+  "explanation": "He is poor, and setteth his heart upon it.",
+  "ref": "Deuteronomy 24:15"
+ },
+ {
+  "id": "deuteronomy-24-h-14",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the husband not find in his wife before he divorced her?",
+  "choices": [
+   "Favour in his eyes",
+   "Children",
+   "A dowry",
+   "Honour"
+  ],
+  "answer": 0,
+  "explanation": "She find no favour in his eyes, because he hath found some uncleanness in her.",
+  "ref": "Deuteronomy 24:1"
+ },
+ {
+  "id": "deuteronomy-24-h-15",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the poor man do for the lender when the pledge was returned?",
+  "choices": [
+   "Blessed him",
+   "Paid interest",
+   "Served him",
+   "Repaid double"
+  ],
+  "answer": 0,
+  "explanation": "That he may sleep in his own raiment, and bless thee.",
+  "ref": "Deuteronomy 24:13"
+ },
+ {
   "id": "old-deuteronomy-25-1",
   "chapter": 25,
   "level": "beginner",
