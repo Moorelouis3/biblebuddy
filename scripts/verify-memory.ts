@@ -16,7 +16,14 @@ import {
   ORDER_MAX_WORDS,
   SESSION_LENGTH,
   WELL_KNOWN_REFERENCES,
+  answerPoints,
+  buildFadeQuestion,
   buildFillQuestion,
+  buildLettersQuestion,
+  firstLetter,
+  isFadePickCorrect,
+  medalFor,
+  sessionStars,
   buildOrderQuestion,
   buildReferenceQuestion,
   buildSession,
@@ -222,7 +229,7 @@ check("a session is five questions, and one saved verse is enough for one", () =
     const one = buildSession([verses[1]], NOW, seeded(seed));
     assert.equal(one.length, SESSION_LENGTH);
     assert.ok(one.every((question) => question.verseId === verses[1].id));
-    assert.equal(new Set(one.map((question) => question.type)).size, 3, "all three games turn up");
+    assert.equal(new Set(one.map((question) => question.type)).size, 5, "all five games turn up");
 
     const many = buildSession(verses, NOW, seeded(seed));
     assert.equal(many.length, SESSION_LENGTH);
@@ -279,6 +286,49 @@ check("points: one capped action, registered everywhere it has to be", () => {
   assert.match(read("lib/levelSystem.ts"), /bible_memory_session_completed: \d+/);
   assert.match(read("lib/pointsEngine.ts"), /bible_memory_session_completed: 2,/);
   assert.ok(read("supabase/migrations/20261112_memory_verses.sql").includes("bible_memory_session_completed"));
+});
+
+check("first letters: every needed letter has a key, and there are spare keys", () => {
+  for (let seed = 1; seed <= 40; seed += 1) {
+    for (const v of verses) {
+      const q = buildLettersQuestion(v, seeded(seed));
+      assert.ok(q.tokens.length >= 1 && q.tokens.length <= 14);
+      for (const token of q.tokens) assert.ok(q.keys.includes(firstLetter(token)), `${q.reference} needs ${firstLetter(token)}`);
+      assert.ok(q.keys.length >= new Set(q.tokens.map(firstLetter)).size + 3);
+      assert.equal(new Set(q.keys).size, q.keys.length);
+    }
+  }
+});
+
+check("fading verse: the hidden words in order are always right, and the two decoys are not in the verse", () => {
+  for (let seed = 1; seed <= 40; seed += 1) {
+    for (const v of verses) {
+      const others = verses.filter((o) => o.id !== v.id);
+      const q = buildFadeQuestion(v, others, seeded(seed));
+      assert.ok(q.hidden.length >= 1);
+      q.hidden.forEach((index, gap) => assert.ok(isFadePickCorrect(q, gap, q.tokens[index])));
+      const hiddenWords = new Set(q.hidden.map((index) => normalizeWord(q.tokens[index])));
+      const decoys = q.bank.filter((tile) => !hiddenWords.has(normalizeWord(tile.word)));
+      assert.equal(decoys.length, 2, q.reference);
+      const inVerse = new Set(q.tokens.map(normalizeWord));
+      for (const d of decoys) assert.ok(!inVerse.has(normalizeWord(d.word)), `decoy ${d.word} is in ${q.reference}`);
+    }
+  }
+});
+
+check("fading verse: more fades as the verse is better known", () => {
+  const long = verses.reduce((a, b) => (tokenize(a.verse_text).length >= tokenize(b.verse_text).length ? a : b));
+  const at = (level: number) => buildFadeQuestion({ ...long, level }, [], seeded(7)).hidden.length;
+  assert.ok(at(0) <= at(1) && at(1) <= at(2), `${at(0)} ${at(1)} ${at(2)}`);
+});
+
+check("medals and points", () => {
+  assert.deepEqual([0, 1, 2, 3].map(medalFor), [null, "Bronze", "Silver", "Gold"]);
+  assert.equal(answerPoints("fill", 2, 1), 1000);
+  assert.equal(answerPoints("fill", 60, 1), 500);
+  assert.equal(answerPoints("order", 10, 3), 1500);
+  assert.equal(answerPoints("letters", 5, 5), 2000);
+  assert.deepEqual([sessionStars(5, 5), sessionStars(3, 5), sessionStars(2, 5), sessionStars(1, 5)], [3, 2, 1, 0]);
 });
 
 console.log(`\n${passed} checks passed`);

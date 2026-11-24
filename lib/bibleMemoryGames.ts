@@ -384,11 +384,163 @@ export function buildReferenceQuestion(
   };
 }
 
+// ───────────────────────── game 4: first letters ─────────────────────────
+
+/**
+ * Added 2026-11-24. The verse is shown as first letters only ("F G s l t
+ * w..."), and the person taps the first letter of each word in turn, from
+ * memory. It is the oldest trick for learning a verse by heart.
+ */
+export type LettersQuestion = {
+  type: "letters";
+  verseId: string;
+  reference: string;
+  translation: string;
+  /** The words of the part being asked, with punctuation. */
+  tokens: string[];
+  /** The verse before and after that part, shown so a section in the middle has its place. */
+  before: string;
+  after: string;
+  /** The letter keys to tap: every first letter needed, plus a few that are not. */
+  keys: string[];
+};
+
+/** More than this many words and the verse is asked a section at a time. */
+export const LETTERS_MAX_WORDS = 14;
+/** Wrong taps allowed before the question counts as missed. */
+export const LETTERS_SLIPS = 2;
+
+export function firstLetter(word: string): string {
+  return normalizeWord(word).charAt(0).toUpperCase();
+}
+
+function sectionOf(tokens: readonly string[], max: number, rng: Rng): [number, number] {
+  if (tokens.length <= max) return [0, tokens.length];
+  const sections = Math.ceil(tokens.length / max);
+  const size = Math.ceil(tokens.length / sections);
+  const section = Math.min(sections - 1, Math.floor(rng() * sections));
+  const start = section * size;
+  return [start, Math.min(tokens.length, start + size)];
+}
+
+export function buildLettersQuestion(verse: MemoryVerse, rng: Rng = Math.random): LettersQuestion {
+  const all = tokenize(verse.verse_text);
+  const [start, end] = sectionOf(all, LETTERS_MAX_WORDS, rng);
+  const tokens = all.slice(start, end);
+  const needed = [...new Set(tokens.map(firstLetter).filter(Boolean))];
+  const spare = shuffle("ABCDEFGHIJKLMNOPRSTUWY".split("").filter((letter) => !needed.includes(letter)), rng);
+  // Eight keys at least, so the answer is never just "the only keys there are".
+  const keys = [...needed, ...spare.slice(0, Math.max(3, 8 - needed.length))].sort();
+  return {
+    type: "letters",
+    verseId: verse.id,
+    reference: formatReference(verse),
+    translation: verse.translation,
+    tokens,
+    before: all.slice(0, start).join(" "),
+    after: all.slice(end).join(" "),
+    keys,
+  };
+}
+
+// ───────────────────────── game 5: the fading verse ─────────────────────────
+
+/**
+ * Added 2026-11-24. The whole verse is on screen with some words gone, and the
+ * missing words wait in a bank; tap them back in order. The better the verse
+ * is known (its level), the more of it fades: a third, then half, then three
+ * quarters.
+ */
+export type FadeQuestion = {
+  type: "fade";
+  verseId: string;
+  reference: string;
+  translation: string;
+  tokens: string[];
+  /** The verse around a long verse's section, shown dimmed. */
+  before: string;
+  after: string;
+  /** Positions in `tokens` that are hidden, in reading order. */
+  hidden: number[];
+  /** The hidden words plus two that do not belong, shuffled. */
+  bank: OrderTile[];
+};
+
+export const FADE_SHARE = [0.34, 0.5, 0.75, 0.75] as const;
+
+export function buildFadeQuestion(verse: MemoryVerse, otherVerses: readonly MemoryVerse[], rng: Rng = Math.random): FadeQuestion {
+  const all = tokenize(verse.verse_text);
+  const [start, end] = sectionOf(all, 24, rng);
+  const tokens = all.slice(start, end);
+  const share = FADE_SHARE[clampLevel(verse.level)];
+  const want = Math.max(1, Math.min(tokens.length, Math.round(tokens.length * share), 10));
+  const hidden = shuffle(tokens.map((_, index) => index), rng).slice(0, want).sort((a, b) => a - b);
+  const inVerse = new Set(tokens.map(normalizeWord));
+  const decoys: string[] = [];
+  for (const word of [...shuffle(otherVerses.flatMap((other) => tokenize(other.verse_text)).map(displayWord), rng), ...shuffle(SPARE_WORDS, rng)]) {
+    const key = normalizeWord(word);
+    if (key.length < 3 || inVerse.has(key) || decoys.some((d) => normalizeWord(d) === key)) continue;
+    decoys.push(word.toLowerCase());
+    if (decoys.length >= 2) break;
+  }
+  const words = [...hidden.map((index) => displayWord(tokens[index])), ...decoys];
+  return {
+    type: "fade",
+    verseId: verse.id,
+    reference: formatReference(verse),
+    translation: verse.translation,
+    tokens,
+    before: all.slice(0, start).join(" "),
+    after: all.slice(end).join(" "),
+    hidden,
+    bank: shuffle(words.map((word, id) => ({ id, word })), rng),
+  };
+}
+
+/** A tile is right for a gap when its letters match the hidden word's (so two identical words are interchangeable). */
+export function isFadePickCorrect(question: FadeQuestion, gap: number, word: string): boolean {
+  const index = question.hidden[gap];
+  return index !== undefined && normalizeWord(question.tokens[index]) === normalizeWord(word);
+}
+
+// ───────────────────────── medals ─────────────────────────
+
+export type Medal = "Bronze" | "Silver" | "Gold";
+
+/** A verse's medal by its level: one clean session earns Bronze, three in a row Gold. */
+export function medalFor(level: number): Medal | null {
+  const value = clampLevel(level);
+  return value >= 3 ? "Gold" : value === 2 ? "Silver" : value === 1 ? "Bronze" : null;
+}
+
+// ───────────────────────── points ─────────────────────────
+
+/**
+ * Speed points like Bible Trivia (2026-11-24): 500 for a right answer, up to
+ * 500 more for a quick one, times the streak (x1.5 from three right in a row,
+ * x2 from five). The building games get a longer clock than the tapping ones.
+ * Points are for the fun of it; they are not XP.
+ */
+export function answerPoints(type: MemoryQuestion["type"], seconds: number, streak: number): number {
+  const [full, none] = type === "fill" || type === "reference" ? [6, 25] : [15, 60];
+  const speed = seconds <= full ? 500 : seconds >= none ? 0 : Math.round(500 * (1 - (seconds - full) / (none - full)));
+  const multiplier = streak >= 5 ? 2 : streak >= 3 ? 1.5 : 1;
+  return Math.round((500 + speed) * multiplier);
+}
+
+/** 1 to 3 stars by the share right, the same cut-offs as Bible Trivia. */
+export function sessionStars(right: number, total: number): number {
+  const share = total ? right / total : 0;
+  return share >= 0.9 ? 3 : share >= 0.6 ? 2 : share >= 0.3 ? 1 : 0;
+}
+
+export const HEARTS = 3;
+
 // ───────────────────────── a session ─────────────────────────
 
-export type MemoryQuestion = FillQuestion | OrderQuestion | ReferenceQuestion;
+export type MemoryQuestion = FillQuestion | OrderQuestion | ReferenceQuestion | LettersQuestion | FadeQuestion;
 
-const GAME_ORDER: Array<MemoryQuestion["type"]> = ["fill", "order", "reference"];
+const GAME_ORDER: Array<MemoryQuestion["type"]> = ["fill", "letters", "order", "fade", "reference"];
 
 /**
  * Five questions. With five or more verses saved, the five most in need get
@@ -407,6 +559,8 @@ export function buildSession(verses: readonly MemoryVerse[], now: Date, rng: Rng
     const game = GAME_ORDER[(firstGame + index) % GAME_ORDER.length];
     if (game === "fill") questions.push(buildFillQuestion(verse, others, rng));
     else if (game === "order") questions.push(buildOrderQuestion(verse, rng));
+    else if (game === "letters") questions.push(buildLettersQuestion(verse, rng));
+    else if (game === "fade") questions.push(buildFadeQuestion(verse, others, rng));
     else questions.push(buildReferenceQuestion(verse, others, rng));
   }
   return questions;

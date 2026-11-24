@@ -24,9 +24,14 @@
  *
  * Found words are marked with an outlined capsule and heavier letters, not
  * with colour alone.
+ *
+ * Game look (2026-11-24): parchment letters inside the Match gold frame, a
+ * note per letter as a drag grows, the newest capsule draws itself in with a
+ * gold glow, a wrong line shakes the grid, and a hint pulses a first letter.
  */
 
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { matchSound } from "@/lib/match/sound";
 import { cellsBetween, matchSelection, placementCells, snapEnd, type Cell, type Placement, type Puzzle } from "@/lib/wordSearchGame";
 
 type Props = {
@@ -37,13 +42,19 @@ type Props = {
   onFound: (letters: string) => void;
   /** No more selecting: the puzzle is finished. */
   disabled?: boolean;
+  /** A line that is not one of the words. */
+  onMiss?: () => void;
+  /** A first letter to pulse: the hint. */
+  hint?: Cell | null;
+  /** The word found last, drawn in with a glow. */
+  newest?: string | null;
 };
 
 type Selection = { start: Cell; end: Cell };
 
 const sameCell = (a: Cell | null, b: Cell | null) => Boolean(a && b && a.row === b.row && a.col === b.col);
 
-export default function WordSearchGrid({ puzzle, found, onFound, disabled = false }: Props) {
+export default function WordSearchGrid({ puzzle, found, onFound, disabled = false, onMiss, hint = null, newest = null }: Props) {
   const size = puzzle.size;
   const gridRef = useRef<HTMLDivElement | null>(null);
   // The live drag. `end` lives here, not only in state, so pointerup reads
@@ -55,6 +66,8 @@ export default function WordSearchGrid({ puzzle, found, onFound, disabled = fals
   const [cursor, setCursor] = useState<Cell>({ row: 0, col: 0 });
   const [focused, setFocused] = useState(false);
   const [message, setMessage] = useState("");
+  const [shake, setShake] = useState(0);
+  const lastLen = useRef(1);
 
   const foundSet = useMemo(() => new Set(found), [found]);
   const foundPlacements = useMemo(
@@ -94,9 +107,12 @@ export default function WordSearchGrid({ puzzle, found, onFound, disabled = fals
         setMessage("Already found");
       } else {
         setMessage("Not one of the words");
+        setShake((n) => n + 1);
+        matchSound.nope();
+        onMiss?.();
       }
     },
-    [puzzle, foundSet, onFound],
+    [puzzle, foundSet, onFound, onMiss],
   );
 
   /** One tap (or one Enter) on a cell, in tap-tap mode. */
@@ -135,6 +151,9 @@ export default function WordSearchGrid({ puzzle, found, onFound, disabled = fals
       // Capture is a nicety; the handlers below work without it.
     }
     drag.current = { pointerId: event.pointerId, start: cell, end: cell, moved: false };
+    matchSound.unlock();
+    matchSound.link(0);
+    lastLen.current = 1;
     setSelection({ start: cell, end: cell });
     setCursor(cell);
   }
@@ -147,6 +166,12 @@ export default function WordSearchGrid({ puzzle, found, onFound, disabled = fals
     const end = snapEnd(current.start, raw, size);
     if (!sameCell(end, current.start)) current.moved = true;
     current.end = end;
+    // One note per letter the line grows by, climbing like a Match chain.
+    const len = cellsBetween(current.start, end)?.length ?? 1;
+    if (len !== lastLen.current) {
+      if (len > lastLen.current) matchSound.link(len - 1);
+      lastLen.current = len;
+    }
     setSelection({ start: current.start, end });
   }
 
@@ -207,8 +232,19 @@ export default function WordSearchGrid({ puzzle, found, onFound, disabled = fals
     y2: end.row + 0.5,
   });
 
+  useEffect(() => {
+    if (!shake) return;
+    const el = gridRef.current;
+    if (!el) return;
+    el.classList.remove("bbg-shake");
+    void el.offsetWidth;
+    el.classList.add("bbg-shake");
+  }, [shake]);
+
   return (
     <div className="mx-auto w-full max-w-[30rem]">
+      <div className="bbg-frame">
+      <div className="bbg-frame-inner">
       <div
         ref={gridRef}
         role="grid"
@@ -226,7 +262,7 @@ export default function WordSearchGrid({ puzzle, found, onFound, disabled = fals
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         onContextMenu={(event) => event.preventDefault()}
-        className="relative aspect-square w-full select-none rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-white outline-none focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2563eb)]"
+        className="relative aspect-square w-full select-none rounded-md outline-none focus-visible:ring-2 focus-visible:ring-[#f2b51d]"
         style={{ touchAction: "none", WebkitUserSelect: "none", WebkitTouchCallout: "none" }}
       >
         <svg
@@ -238,19 +274,20 @@ export default function WordSearchGrid({ puzzle, found, onFound, disabled = fals
           {foundPlacements.map((placement) => {
             const cells = placementCells(placement);
             const points = line(cells[0], cells[cells.length - 1]);
+            const isNew = placement.letters === newest;
             return (
-              <g key={placement.letters}>
+              <g key={placement.letters} className={isNew ? "bbws-new" : undefined}>
                 {/* A dark outline under a pale fill: a capsule you can see without colour. */}
-                <line {...points} className="bb-cv-ws-edge" stroke="#166534" strokeWidth={0.84} strokeLinecap="round" />
-                <line {...points} className="bb-cv-ws-fill" stroke="#dcfce7" strokeWidth={0.7} strokeLinecap="round" />
+                <line {...points} pathLength={1} className="bbws-cap" stroke="#1f6b3a" strokeWidth={0.84} strokeLinecap="round" />
+                <line {...points} pathLength={1} className="bbws-cap" stroke="#c9efc4" strokeOpacity={0.92} strokeWidth={0.7} strokeLinecap="round" />
               </g>
             );
           })}
           {preview ? (
             <line
               {...line(preview.start, preview.end)}
-              stroke="#2563eb"
-              strokeOpacity={0.35}
+              stroke="#e0a21a"
+              strokeOpacity={0.5}
               strokeWidth={0.8}
               strokeLinecap="round"
             />
@@ -266,18 +303,20 @@ export default function WordSearchGrid({ puzzle, found, onFound, disabled = fals
               const isFound = foundCells.has(`${rowIndex},${colIndex}`);
               const isAnchor = sameCell(anchor, { row: rowIndex, col: colIndex });
               const isCursor = focused && !disabled && cursor.row === rowIndex && cursor.col === colIndex;
+              const isHint = Boolean(hint && hint.row === rowIndex && hint.col === colIndex);
               return (
                 <div
                   key={`${rowIndex}-${colIndex}`}
                   role="gridcell"
                   aria-selected={isAnchor}
-                  className={`relative flex items-center justify-center leading-none text-[#111827] ${
+                  className={`relative flex items-center justify-center leading-none text-[#2a1a0c] ${
                     isFound ? "font-black" : "font-bold"
                   }`}
-                  style={{ fontSize: "clamp(13px, 4.6vw, 22px)" }}
+                  style={{ fontSize: "clamp(13px, 4.4vw, 22px)", fontFamily: "Georgia, serif" }}
                 >
+                  {isHint ? <span className="bbws-hint" aria-hidden="true" /> : null}
                   {isAnchor ? (
-                    <span className="absolute inset-[8%] rounded-full border-2 border-[#2563eb] bg-[#dbeafe]" aria-hidden="true" />
+                    <span className="absolute inset-[8%] rounded-full border-2 border-[#b8860b] bg-[#fde9a8]" aria-hidden="true" />
                   ) : null}
                   {isCursor ? (
                     <span className="absolute inset-[4%] rounded-md border-2 border-dashed border-[#111827]" aria-hidden="true" />
@@ -289,10 +328,21 @@ export default function WordSearchGrid({ puzzle, found, onFound, disabled = fals
           )}
         </div>
       </div>
+      </div>
+      </div>
+      <style>{GRID_CSS}</style>
 
-      <p className="mt-2 min-h-[1.25rem] text-center text-xs font-bold text-[var(--bb-text-muted,#6b7280)]" aria-live="polite">
+      <p className="mt-2 min-h-[1.25rem] text-center text-xs font-bold text-[#fff3dc]" style={{ textShadow: "0 1px 2px rgba(0,0,0,.7)" }} aria-live="polite">
         {message}
       </p>
     </div>
   );
 }
+
+const GRID_CSS = `
+.bbws-new .bbws-cap { stroke-dasharray: 1; stroke-dashoffset: 1; animation: bbws-draw .45s ease-out forwards; }
+.bbws-new { animation: bbws-glow 1.2s ease-out; }
+.bbws-hint { position:absolute; inset:6%; border-radius:999px; background: rgba(246,200,60,.55); border:2px solid #b8860b; animation: bbg-pulse .8s ease-in-out infinite; }
+@keyframes bbws-draw { to { stroke-dashoffset: 0; } }
+@keyframes bbws-glow { 0% { filter: drop-shadow(0 0 0 rgba(255,214,90,0)); } 35% { filter: drop-shadow(0 0 .35px rgba(255,200,60,1)); } 100% { filter: drop-shadow(0 0 0 rgba(255,214,90,0)); } }
+`;

@@ -14,6 +14,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { BIBLE_BOOKS, getBookTotalChapters } from "../lib/bibleBookChapters";
 import { WORD_SEARCH_BOOKS, getWordSearchBook } from "../lib/wordSearchData";
+import { formatClock, scoreFind, speedBonus, starsFor, streakMultiplier } from "../lib/wordSearchScore";
+import { bookScene, hasOwnScene } from "../lib/games/bookScene";
 import {
   GRID_SIZE,
   cellsBetween,
@@ -202,6 +204,34 @@ check("points: one action, scored once per book, registered everywhere it has to
   const unique = engine.slice(engine.indexOf("UNIQUE_PER_LABEL"), engine.indexOf("DAILY_CAPS"));
   assert.ok(unique.includes('"word_search_book_completed"'), "scored once per book, not per replay");
   assert.ok(read("supabase/migrations/20261113_word_search_progress.sql").includes("word_search_book_completed"));
+});
+
+check("score: a quick find earns the full bonus, a slow one none, and streaks multiply like Trivia", () => {
+  assert.equal(speedBonus(3), 100);
+  assert.equal(speedBonus(45), 0);
+  assert.ok(speedBonus(15) > 0 && speedBonus(15) < 100);
+  assert.deepEqual([1, 2, 3, 4, 5, 9].map(streakMultiplier), [1, 1, 1.5, 1.5, 2, 2]);
+  assert.deepEqual(scoreFind(5, 0), { points: 200, streak: 1, multiplier: 1 });
+  assert.deepEqual(scoreFind(5, 2), { points: 300, streak: 3, multiplier: 1.5 });
+  assert.equal(scoreFind(25, 4).streak, 1, "a long gap breaks the streak");
+});
+
+check("stars: fast is three, hints cost one, never below one", () => {
+  assert.equal(starsFor(12 * 15, 12, 0), 3);
+  assert.equal(starsFor(12 * 30, 12, 0), 2);
+  assert.equal(starsFor(12 * 90, 12, 0), 1);
+  assert.equal(starsFor(12 * 15, 12, 2), 2);
+  assert.equal(starsFor(12 * 90, 12, 3), 1);
+  assert.equal(formatClock(75), "1:15");
+});
+
+check("scenes: every book has one, and the painted books use their own Match boards", () => {
+  for (const book of WORD_SEARCH_BOOKS) {
+    const scene = bookScene(book.book);
+    assert.ok(fs.existsSync(path.join(root, "public", scene.phone)), `${book.book}: ${scene.phone}`);
+    assert.ok(fs.existsSync(path.join(root, "public", scene.desktop)), `${book.book}: ${scene.desktop}`);
+    if (hasOwnScene(book.book)) assert.ok(scene.phone.includes(`/boards/${book.slug}-`), book.book);
+  }
 });
 
 console.log(`\n${passed} checks passed`);
