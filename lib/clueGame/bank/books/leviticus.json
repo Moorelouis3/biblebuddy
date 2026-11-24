@@ -13792,6 +13792,662 @@
   "ref": "Leviticus 20:26"
  },
  {
+  "id": "leviticus-20-e-01",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the people give their seed, bringing a death penalty?",
+  "choices": [
+   "Baal",
+   "Molech",
+   "Dagon",
+   "Chemosh"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever giveth any of his seed unto Molech shall surely be put to death.",
+  "ref": "Leviticus 20:2"
+ },
+ {
+  "id": "leviticus-20-e-02",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were those who gave seed to Molech to be put to death?",
+  "choices": [
+   "Burnt with fire",
+   "Stoned with stones",
+   "Put to the sword",
+   "Cast out of the camp"
+  ],
+  "answer": 1,
+  "explanation": "The people of the land shall stone him with stones.",
+  "ref": "Leviticus 20:2"
+ },
+ {
+  "id": "leviticus-20-e-03",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say He will set against the man who gave his seed to Molech?",
+  "choices": [
+   "His hand",
+   "His face",
+   "His sword",
+   "His angel"
+  ],
+  "answer": 1,
+  "explanation": "I will set my face against that man, and will cut him off from among his people.",
+  "ref": "Leviticus 20:3"
+ },
+ {
+  "id": "leviticus-20-e-04",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say His people must be, because He is holy?",
+  "choices": [
+   "Strong",
+   "Holy",
+   "Numerous",
+   "Separate from the land"
+  ],
+  "answer": 1,
+  "explanation": "Sanctify yourselves therefore, and be ye holy: for I am the LORD your God.",
+  "ref": "Leviticus 20:7"
+ },
+ {
+  "id": "leviticus-20-e-05",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to one who curses his father or mother?",
+  "choices": [
+   "He is scourged",
+   "He shall be put to death",
+   "He is cast out of the camp",
+   "He brings a ram"
+  ],
+  "answer": 1,
+  "explanation": "Every one that curseth his father or his mother shall be surely put to death.",
+  "ref": "Leviticus 20:9"
+ },
+ {
+  "id": "leviticus-20-e-06",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What land did the LORD promise to give Israel to possess?",
+  "choices": [
+   "A land of vineyards and cities",
+   "A land that floweth with milk and honey",
+   "A land without enemies",
+   "A land of rivers and mountains"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall inherit their land, a land that floweth with milk and honey.",
+  "ref": "Leviticus 20:24"
+ },
+ {
+  "id": "leviticus-20-e-07",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say He had done to Israel from other people?",
+  "choices": [
+   "Taught them",
+   "Separated them",
+   "Scattered them",
+   "Numbered them"
+  ],
+  "answer": 1,
+  "explanation": "I am the LORD your God, which have separated you from other people.",
+  "ref": "Leviticus 20:24"
+ },
+ {
+  "id": "leviticus-20-e-08",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say He would do to the nations in the land before Israel?",
+  "choices": [
+   "Make them servants",
+   "Cast them out",
+   "Teach them",
+   "Bless them"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall not walk in the manners of the nation, which I cast out before you.",
+  "ref": "Leviticus 20:23"
+ },
+ {
+  "id": "leviticus-20-e-09",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who spoke the word of the LORD to Israel in this chapter?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Joshua",
+   "Eleazar"
+  ],
+  "answer": 1,
+  "explanation": "And the LORD spake unto Moses, saying, Again, thou shalt say to the children of Israel.",
+  "ref": "Leviticus 20:1"
+ },
+ {
+  "id": "leviticus-20-e-10",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say He does for His people?",
+  "choices": [
+   "Feeds them",
+   "Sanctifies them",
+   "Numbers them",
+   "Hides them"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall keep my statutes, and do them: I am the LORD which sanctify you.",
+  "ref": "Leviticus 20:8"
+ },
+ {
+  "id": "leviticus-20-m-01",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "Who besides the children of Israel were also forbidden to give seed to Molech?",
+  "choices": [
+   "Levites only",
+   "Priests only",
+   "Foreign kings",
+   "Strangers that sojourn in Israel"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever he be of the children of Israel, or of the strangers that sojourn in Israel, that giveth any of his seed unto Molech.",
+  "ref": "Leviticus 20:2"
+ },
+ {
+  "id": "leviticus-20-m-02",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the LORD say the giving of seed to Molech was wrong?",
+  "choices": [
+   "It broke the sabbath",
+   "It caused famine",
+   "It angered the priests",
+   "It defiled His sanctuary"
+  ],
+  "answer": 3,
+  "explanation": "To defile my sanctuary, and to profane my holy name.",
+  "ref": "Leviticus 20:3"
+ },
+ {
+  "id": "leviticus-20-m-03",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What if the people hide their eyes and do not kill the man who gave seed to Molech?",
+  "choices": [
+   "The LORD sends plague on the camp",
+   "The priests judge him",
+   "The land is cursed seven years",
+   "The LORD sets His face against him and his family"
+  ],
+  "answer": 3,
+  "explanation": "Then I will set my face against that man, and against his family, and will cut him off.",
+  "ref": "Leviticus 20:5"
+ },
+ {
+  "id": "leviticus-20-m-04",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say about the soul that turns after familiar spirits and wizards?",
+  "choices": [
+   "He must bring a sin offering",
+   "He is scourged",
+   "He is exiled seven years",
+   "He will set His face against and cut him off"
+  ],
+  "answer": 3,
+  "explanation": "I will even set my face against that soul, and will cut him off from among his people.",
+  "ref": "Leviticus 20:6"
+ },
+ {
+  "id": "leviticus-20-m-05",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the man or woman who has a familiar spirit or is a wizard?",
+  "choices": [
+   "They are sent away",
+   "They are scourged",
+   "They bring a ram",
+   "They shall be stoned"
+  ],
+  "answer": 3,
+  "explanation": "A man also or woman that hath a familiar spirit, or that is a wizard, shall surely be put to death: they shall stone them with stones.",
+  "ref": "Leviticus 20:27"
+ },
+ {
+  "id": "leviticus-20-m-06",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of his blood when a man curses his father or mother?",
+  "choices": [
+   "His blood shall be shed by priests",
+   "His blood shall cry out",
+   "His blood shall defile the land",
+   "His blood shall be upon him"
+  ],
+  "answer": 3,
+  "explanation": "He hath cursed his father or his mother; his blood shall be upon him.",
+  "ref": "Leviticus 20:9"
+ },
+ {
+  "id": "leviticus-20-m-07",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the adulterer and adulteress?",
+  "choices": [
+   "Both are scourged",
+   "Both bring offerings",
+   "Both are cast out",
+   "Both are put to death"
+  ],
+  "answer": 3,
+  "explanation": "The adulterer and the adulteress shall surely be put to death.",
+  "ref": "Leviticus 20:10"
+ },
+ {
+  "id": "leviticus-20-m-08",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the land do if Israel did not keep His statutes and judgments?",
+  "choices": [
+   "Burn them",
+   "Swallow them",
+   "Drown them",
+   "Spue them out"
+  ],
+  "answer": 3,
+  "explanation": "Keep all my statutes, and all my judgments: that the land whither I bring you to dwell therein, spue you not out.",
+  "ref": "Leviticus 20:22"
+ },
+ {
+  "id": "leviticus-20-m-09",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD abhor the nation He cast out?",
+  "choices": [
+   "They worshipped the sun",
+   "They were too many",
+   "They refused tribute",
+   "They committed all these things"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall not walk in the manners of the nation, which I cast out before you: for they committed all these things, and therefore I abhorred them.",
+  "ref": "Leviticus 20:23"
+ },
+ {
+  "id": "leviticus-20-m-10",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What difference were the people to put between clean and unclean?",
+  "choices": [
+   "Priests and Levites",
+   "Rich and poor",
+   "Israelites and strangers",
+   "Clean beasts and unclean, and fowls"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall therefore put difference between clean beasts and unclean, and between unclean fowls and clean.",
+  "ref": "Leviticus 20:25"
+ },
+ {
+  "id": "leviticus-20-m-11",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He had done to Israel so that they would be His?",
+  "choices": [
+   "Brought them across the sea",
+   "Given them a king",
+   "Given them manna",
+   "Severed them from other people"
+  ],
+  "answer": 3,
+  "explanation": "I the LORD am holy, and have severed you from other people, that ye should be mine.",
+  "ref": "Leviticus 20:26"
+ },
+ {
+  "id": "leviticus-20-m-12",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done to the beast in the case of lying with a beast?",
+  "choices": [
+   "It was sold",
+   "It was set free",
+   "It was offered on the altar",
+   "It was slain"
+  ],
+  "answer": 3,
+  "explanation": "If a man lie with a beast, he shall surely be put to death: and ye shall slay the beast.",
+  "ref": "Leviticus 20:15"
+ },
+ {
+  "id": "leviticus-20-m-13",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to those who take an uncle's wife?",
+  "choices": [
+   "They are stoned",
+   "They are burnt",
+   "They are cast out",
+   "They shall die childless"
+  ],
+  "answer": 3,
+  "explanation": "If a man shall lie with his uncle's wife, they shall bear their sin; they shall die childless.",
+  "ref": "Leviticus 20:20"
+ },
+ {
+  "id": "leviticus-20-m-14",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of the man who takes his brother's wife?",
+  "choices": [
+   "It is a sin offering",
+   "It is a mercy",
+   "It is an honour",
+   "It is an unclean thing"
+  ],
+  "answer": 3,
+  "explanation": "If a man shall take his brother's wife, it is an unclean thing: they shall be childless.",
+  "ref": "Leviticus 20:21"
+ },
+ {
+  "id": "leviticus-20-m-15",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is the punishment described for a man who takes a wife and her mother?",
+  "choices": [
+   "They are stoned",
+   "They are scourged",
+   "They are driven out",
+   "They are burnt with fire"
+  ],
+  "answer": 3,
+  "explanation": "They shall be burnt with fire, both he and they; that there be no wickedness among you.",
+  "ref": "Leviticus 20:14"
+ },
+ {
+  "id": "leviticus-20-m-16",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD tell Israel not to do in the manner of the nation He cast out?",
+  "choices": [
+   "Eat their food",
+   "Learn their language",
+   "Enter their cities",
+   "Walk in their manners"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall not walk in the manners of the nation, which I cast out before you.",
+  "ref": "Leviticus 20:23"
+ },
+ {
+  "id": "leviticus-20-h-01",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say shall make Israel's souls abominable?",
+  "choices": [
+   "Foreign altars",
+   "Unwashed hands",
+   "Dead bodies",
+   "Beast, fowl, or creeping things set apart as unclean"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall not make your souls abominable by beast, or by fowl, or by any manner of living thing that creepeth on the ground.",
+  "ref": "Leviticus 20:25"
+ },
+ {
+  "id": "leviticus-20-h-02",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Israel was to do to be holy, besides keeping His statutes?",
+  "choices": [
+   "Offer daily sacrifice",
+   "Sanctify themselves",
+   "Build altars",
+   "Number the people"
+  ],
+  "answer": 1,
+  "explanation": "Sanctify yourselves therefore, and be ye holy: for I am the LORD your God.",
+  "ref": "Leviticus 20:7"
+ },
+ {
+  "id": "leviticus-20-h-03",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say of the man who lies with his father's wife?",
+  "choices": [
+   "He has defiled the camp",
+   "He has profaned the altar",
+   "He has broken the sabbath",
+   "He has uncovered his father's nakedness"
+  ],
+  "answer": 3,
+  "explanation": "He hath uncovered his father's nakedness: both of them shall surely be put to death.",
+  "ref": "Leviticus 20:11"
+ },
+ {
+  "id": "leviticus-20-h-04",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say of a man and his daughter in law?",
+  "choices": [
+   "They are unclean seven days",
+   "They shall be scourged",
+   "They shall be sent out",
+   "They have wrought confusion"
+  ],
+  "answer": 3,
+  "explanation": "They have wrought confusion; their blood shall be upon them.",
+  "ref": "Leviticus 20:12"
+ },
+ {
+  "id": "leviticus-20-h-05",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to the man who takes his sister, his father's or mother's daughter?",
+  "choices": [
+   "They are stoned at the gate",
+   "They are burnt",
+   "They are put in ward",
+   "They are cut off in the sight of their people"
+  ],
+  "answer": 3,
+  "explanation": "It is a wicked thing; and they shall be cut off in the sight of their people.",
+  "ref": "Leviticus 20:17"
+ },
+ {
+  "id": "leviticus-20-h-06",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say for the man who has lain with his mother's sister or father's sister?",
+  "choices": [
+   "They shall be burnt",
+   "They shall be put to death",
+   "They shall bring a ram",
+   "They shall bear their iniquity"
+  ],
+  "answer": 3,
+  "explanation": "He uncovereth his near kin: they shall bear their iniquity.",
+  "ref": "Leviticus 20:19"
+ },
+ {
+  "id": "leviticus-20-h-07",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to the person who has lain with a beast and is a woman?",
+  "choices": [
+   "The woman is scourged",
+   "The woman is sent away",
+   "The woman brings a ram",
+   "The woman and the beast are killed"
+  ],
+  "answer": 3,
+  "explanation": "If a woman approach unto any beast, thou shalt kill the woman, and the beast.",
+  "ref": "Leviticus 20:16"
+ },
+ {
+  "id": "leviticus-20-h-08",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say about the fate of those who go whoring after Molech with the man?",
+  "choices": [
+   "They are put in ward",
+   "They are scourged",
+   "They are exiled",
+   "They too are cut off from among their people"
+  ],
+  "answer": 3,
+  "explanation": "I will cut him off, and all that go a whoring after him, to commit whoredom with Molech, from among their people.",
+  "ref": "Leviticus 20:5"
+ },
+ {
+  "id": "leviticus-20-h-09",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say about the one who lies with mankind as with a woman?",
+  "choices": [
+   "It is an unclean thing",
+   "It is a trespass",
+   "It is a profane thing",
+   "It is an abomination"
+  ],
+  "answer": 3,
+  "explanation": "Both of them have committed an abomination: they shall surely be put to death.",
+  "ref": "Leviticus 20:13"
+ },
+ {
+  "id": "leviticus-20-h-10",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD said Israel must keep all His statutes and what else?",
+  "choices": [
+   "His feasts",
+   "His offerings",
+   "His sabbaths only",
+   "His judgments"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall therefore keep all my statutes, and all my judgments, and do them.",
+  "ref": "Leviticus 20:22"
+ },
+ {
+  "id": "leviticus-20-h-11",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What phrase does the LORD use for a man taking his brother's wife?",
+  "choices": [
+   "A holy thing",
+   "An unclean thing",
+   "A wicked thing",
+   "A hidden thing"
+  ],
+  "answer": 1,
+  "explanation": "If a man shall take his brother's wife, it is an unclean thing.",
+  "ref": "Leviticus 20:21"
+ },
+ {
+  "id": "leviticus-20-h-12",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say of the nation's reason for being cast out?",
+  "choices": [
+   "He pitied them",
+   "He tested them",
+   "He abhorred them",
+   "He forgot them"
+  ],
+  "answer": 2,
+  "explanation": "They committed all these things, and therefore I abhorred them.",
+  "ref": "Leviticus 20:23"
+ },
+ {
+  "id": "leviticus-20-h-13",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "When the LORD said Whosoever giveth his seed to Molech, who executes him?",
+  "choices": [
+   "The priests",
+   "The judges only",
+   "Moses",
+   "The people of the land"
+  ],
+  "answer": 3,
+  "explanation": "The people of the land shall stone him with stones.",
+  "ref": "Leviticus 20:2"
+ },
+ {
+  "id": "leviticus-20-h-14",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do those who go after wizards turn into, in the LORD's words?",
+  "choices": [
+   "Whoring after them",
+   "Serving them",
+   "Fearing them",
+   "Hiding from them"
+  ],
+  "answer": 0,
+  "explanation": "The soul that turneth after wizards, to go a whoring after them, I will set my face against that soul.",
+  "ref": "Leviticus 20:6"
+ },
+ {
+  "id": "leviticus-20-h-15",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the land would be that He would give Israel?",
+  "choices": [
+   "A land of cedars",
+   "A land of fortified cities",
+   "A land of rest",
+   "A land that floweth with milk and honey"
+  ],
+  "answer": 3,
+  "explanation": "A land that floweth with milk and honey: I am the LORD your God.",
+  "ref": "Leviticus 20:24"
+ },
+ {
   "id": "old-leviticus-21-1",
   "chapter": 21,
   "level": "beginner",
