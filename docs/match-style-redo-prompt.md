@@ -1,97 +1,152 @@
-# Prompt for ChatGPT: redo the backgrounds that do not match (Exodus, Leviticus, 1 Chronicles)
+# Prompt for ChatGPT: redo the board backgrounds that are not landscapes
 
-Made 2026-11-24 from an audit of all 111 live board backgrounds. Louis: "a lot of the
-boards in match for exodus levetiucus or more have these bad bg backgrounds that dont
-match the style". The PDF version (docs/match-prompts/Match-Style-Redo.pdf) has the
-reference pictures inside it; give ChatGPT the PDF and say "do Part 1" (then Part 2,
-then Part 3), one part per chat so the style does not drift.
+Louis, 2026-11-24: "the bg of the boards is just the land scape". Every board background
+is a landscape with no people. Audit of all live backgrounds on 2026-11-24:
 
-What the audit found. About 75 of the 111 boards share one look: warm golden
-storybook painting, Bible people in the scene, rich but calm colours (Genesis 3-11,
-Numbers through 2 Samuel). Three groups do not:
+- **Correct (landscapes, keep):** Genesis 03-06 and 08-11, Exodus 02, 06, 07, 08,
+  Deuteronomy 07, Joshua 08, Leviticus 01-10, 1 Chronicles 01-10, 1 Corinthians 01-10.
+- **Redo (people, faces or close-ups of objects): 77 boards**, listed below.
 
-- **Exodus 01, 03, 04, 05, 06, 07, 09, 10, 11, 12**: a cartoon baby with a Pixar face,
-  dark night and storm scenes, a cartoon frog, bright turquoise water, and close-ups of
-  objects (tablets, golden calf, lampstand) on plain or white grounds instead of a scene.
-- **Leviticus 01-10**: almost empty sand with a thin strip of scenery at the top. They
-  were redone on 2026-11-23 with the "people only small and far away" rule, which
-  overshot.
-- **1 Chronicles 01-10**: the same empty-sand look, from the same rule in the book PDFs.
-
-Exodus 02 (burning bush) and 08 (Mount Sinai) are fine and stay.
+The PDF version is docs/match-prompts/Match-Style-Redo.pdf (with the pictures). Give it
+to ChatGPT one part at a time, so the style does not drift.
 
 ---
 
-## The look to copy
+## The rule
 
-The reference pictures in this PDF are finished Bible Buddy Match backgrounds. **Every new
-background must look like it was painted by the same artist on the same day.**
+**A board background is a landscape. No people. Nobody at all**: no Moses, no David, no
+crowds, no faces, no figures in the distance. Only the place where the story happens.
 
-1. **A real Bible scene with its people in it**, like the references: warm golden
-   storybook painting, soft detailed faces, robes in rust, cream, purple and blue,
-   hills, olive trees, stone and sky. People can be large in the scene, like David
-   with his sling or Ruth in the field.
-2. **Not a cartoon.** No Pixar or Disney faces, no big cartoon eyes, no cartoon animals
-   with faces. Painted, gentle and real.
-3. **Warm golden light**, morning or evening haze. **No** dark night or storm scenes,
-   **no** bright turquoise water, **no** neon or toy-bright colours.
-4. **A whole scene, never a close-up of one object** on a plain or white ground. If the
-   story is about an object (the tablets, the Ark, the calf), show it in its place
-   with people around it.
-5. **Not empty.** Never a big plain field of sand. The scene fills the picture.
-6. Gentle and hopeful. No blood, no bodies, no violence: judgment is shown as distant
-   smoke or a sky growing dark far away.
-7. No text, buttons, UI or frames.
+1. **The place, not the people.** Hills, desert, rivers, fields, olive trees, tents, city
+   walls, the Tabernacle, sky. The story is told by the place and what is left in it (a
+   basket in the reeds, a sling on a rock, an empty throne room).
+2. **The middle 60% stays calm and simple** (ground, sand, field, water, mist). The game
+   board covers it. The interesting things go in the **top 20%**, stones or grass in the
+   **bottom 15%**.
+3. **Warm, golden, hazy, painted light**, like the reference pictures. No dark storm or
+   night scenes, no bright turquoise or neon colours, no cartoon look.
+4. **Not a close-up of one object** on a plain ground. Always a wide landscape.
+5. No text, buttons, UI or frames.
 
-For each board below make **`background-phone.png` at 1080x2340** and
-**`background-desktop.png` at 1920x1080** (the same scene, wider), and put them in that
-board's existing folder in Drive, replacing the old files with the same names. **Change
-nothing else**: not the tiles, not `board-config.json`, not the win screens, not the map.
+For each board make **`background-phone.png` at 1080x2340** and **`background-desktop.png`
+at 1920x1080** (same scene, wider). Put them in that board's existing folder in Drive,
+replacing the old files with the same names. **Change nothing else.**
 
-Before delivering, put each new background next to the reference pictures. If it looks
-like a different artist, a cartoon, or an empty field, paint it again.
+Before delivering, check every picture: if there is a single person in it, paint it again.
 
-## Part 1: Exodus (10 boards, folder `Exodus`)
+## Part 1: Genesis 07 and Exodus (9 boards)
 
-| Folder | Scripture | The scene |
-|---|---|---|
-| `01-Moses-in-the-Basket` | Exodus 1-2 | Pharaoh's daughter and her maids at the edge of the Nile among tall reeds, lifting the reed basket from the water; Miriam watching from the rushes; Egyptian buildings and palms behind. A painted baby, not a cartoon. |
-| `03-Let-My-People-Go` | Exodus 5-7:13 | Moses and Aaron standing before Pharaoh on his steps in a warm sandstone hall; Hebrew brickmakers with straw and bricks seen through the columns. |
-| `04-The-Plagues-of-Egypt` | Exodus 7:14-10:29 | Moses with his staff raised on a riverbank at evening; the Nile darker in the distance, a few frogs on the stones, a hazy sky growing dim far away. Warm, not stormy. |
-| `05-The-First-Passover` | Exodus 11-13:16 | A Hebrew family inside their home at golden lamplight, sandals on and staffs in hand, unleavened bread and a cup on the table, the doorway marked; ready to leave. Warm and hopeful, not dark. |
-| `06-Across-the-Red-Sea` | Exodus 13:17-15:21 | Israel walking through the sea on dry ground at dawn, the walls of water in deep green-blue painted softly (not turquoise), Moses at the front with his staff, Miriam with her tambourine on the far shore. |
-| `07-Through-the-Wilderness` | Exodus 15:22-18:27 | The camp in the wilderness at morning, families gathering white manna from the ground into baskets, quail in the scrub, Moses striking the rock with water flowing. |
-| `09-Plans-for-the-Tabernacle` | Exodus 25-31 | Bezalel and the craftsmen at work in the camp: weaving blue and purple cloth, shaping gold, the lampstand being finished, the people bringing gifts. A scene with people, not a table of objects. |
-| `10-The-Golden-Calf` | Exodus 32 | Moses coming down the mountain path holding the tablets, looking toward the camp below where the golden calf stands among the people. Mountain and camp in warm light. |
-| `11-New-Tablets` | Exodus 33-34 | Moses alone on Mount Sinai at dawn with two new stone tablets, his face shining softly, the camp tiny far below, warm cloud on the peak. |
-| `12-The-Tabernacle` | Exodus 35-40 | The finished Tabernacle in the middle of the camp, the cloud resting over it, priests at the bronze altar and families watching from their tents. Seen from outside, in its setting, not on white. |
+| Folder | The landscape |
+|---|---|
+| `Genesis/07-Abraham-at-Beersheba` | A stone well beside a tamarisk tree in the dry Negev hills, tents and grazing sheep far off, golden evening. |
+| `Exodus/01-Moses-in-the-Basket` | The Nile at morning between tall papyrus reeds, a small reed basket floating near the bank, palms and an Egyptian palace far behind. |
+| `Exodus/03-Let-My-People-Go` | Egyptian brickfields at sunset: rows of mud bricks drying, piles of straw, the walls and columns of Pharaoh's city beyond. |
+| `Exodus/04-The-Plagues-of-Egypt` | The Nile valley under a strange amber-dimmed sky, the river darker far off, empty fields and palms, Egyptian temples on the horizon. Warm, not stormy. |
+| `Exodus/05-The-First-Passover` | A quiet Hebrew village in Goshen at golden dusk, doorframes marked red, lamplight in the windows, empty lane, the desert beyond. |
+| `Exodus/09-Plans-for-the-Tabernacle` | The wilderness camp at morning: rows of tents, looms with blue and purple cloth hanging outside, gold and bronze glinting, Sinai behind. |
+| `Exodus/10-The-Golden-Calf` | The path coming down Mount Sinai, the camp far below in the plain with a tiny golden glint at its centre, warm haze. |
+| `Exodus/11-New-Tablets` | The summit of Mount Sinai at dawn, a flat rock in the light, cloud resting on the peak, the camp too small to see. |
+| `Exodus/12-The-Tabernacle` | The finished Tabernacle seen from a hill, its courtyard of white curtains in the middle of the camp, the cloud resting above it, desert all around. |
 
-## Part 2: Leviticus (10 boards, folder `Leviticus`)
+## Part 2: Numbers (10 boards)
 
-| Folder | Scripture | The scene |
-|---|---|---|
-| `01-The-Burnt-Offering` | Leviticus 1 | A man bringing a lamb to the bronze altar in front of the Tabernacle, a priest receiving it, smoke rising, the camp around them. |
-| `02-Grain-and-Peace-Offerings` | Leviticus 2-3 | A woman carrying a basket of flat bread and grain to the priest, a small jar of oil and frankincense beside her, the Tabernacle behind. |
-| `03-Aaron-Made-Priest` | Leviticus 8 | Moses pouring anointing oil on Aaron's head, Aaron in his priestly robes and jewelled breastplate, his sons beside him, the people watching. |
-| `04-Fire-from-the-LORD` | Leviticus 9 | Aaron with his hands raised in blessing as fire comes down on the altar, the people bowing with joy around the Tabernacle court. |
-| `05-Clean-and-Unclean` | Leviticus 11 | Moses teaching a family beside the camp: sheep and a goat nearby, fish in a stream, birds in an olive tree. Calm and real, no cartoon animals. |
-| `06-The-Day-of-Atonement` | Leviticus 16 | Aaron in plain white linen with incense, the Tabernacle behind him; a goat being led away into the far wilderness. |
-| `07-Love-Your-Neighbor` | Leviticus 19 | The edge of a wheat field left for the poor: a widow and a child gathering grain while the farmer and his family greet them. |
-| `08-The-Feasts-of-the-LORD` | Leviticus 23 | Families building booths of branches across the camp at evening, lamps glowing, children carrying palm branches, a priest with a silver trumpet. |
-| `09-The-Year-of-Jubilee` | Leviticus 25 | A priest blowing the ram's horn on a hill above the camp at sunrise, families below returning to their fields with joy. |
-| `10-Blessings-for-Obedience` | Leviticus 26 | Gentle rain just ending over green fields and vineyards, a family harvesting grapes and wheat, the sun breaking through. |
+| Folder | The landscape |
+|---|---|
+| `01-Count-the-Tribes` | The wilderness of Sinai with the tribes' tents in great ordered rows around the Tabernacle, banners on poles, mountains behind. |
+| `02-Follow-the-Cloud` | A pillar of soft cloud moving over the desert at dawn, the camp's tents folded, a road leading away. |
+| `03-Manna-and-Quail` | The desert floor at sunrise covered in white manna like frost, quail in the low scrub, tents in the distance. |
+| `04-The-Twelve-Spies` | The view from a ridge into Canaan: green valleys, vineyards with huge clusters of grapes, walled cities far off. |
+| `05-Aarons-Budding-Staff` | Inside the Tabernacle court at dawn, a wooden staff leaning on the altar covered in almond blossom, the tent curtains glowing. |
+| `06-Water-from-the-Rock` | A great rock in the desert at Kadesh with water pouring from it into a pool, palms beginning to grow, cliffs behind. |
+| `07-The-Bronze-Serpent` | A bronze serpent on a tall pole standing on a rise in the wilderness, the camp far below, evening light. |
+| `08-Balaam-and-the-Donkey` | A narrow path between vineyard walls in the hills of Moab, an empty road ahead, Israel's camp spread on the plain below. |
+| `09-Joshua-Chosen-to-Lead` | The plains of Moab at sunset, the camp by the Jordan, Mount Nebo rising behind. |
+| `10-At-the-Edge-of-the-Jordan` | The Jordan River from the east bank, green land and Jericho's walls on the far side, warm evening haze. |
 
-## Part 3: 1 Chronicles (10 boards, folder `1 Chronicles`)
+## Part 3: Deuteronomy (9 boards; 07 stays)
 
-| Folder | Scripture | The scene |
-|---|---|---|
-| `01-The-Family-of-Israel` | 1 Chronicles 1-9 | An old father telling his children and grandchildren their family history under an olive tree, a scroll open on his knees, the hills of Israel behind. |
-| `02-The-Well-of-Bethlehem` | 1 Chronicles 11 | Three of David's mighty men at the well by Bethlehem's gate at evening, drawing water in a clay jar; the town on the hill behind. Warm dusk, not night. |
-| `03-The-Ark-Brought-Home` | 1 Chronicles 15 | The Levites carrying the golden Ark on poles up the road to Jerusalem, David dancing in front, musicians and the crowd rejoicing. |
-| `04-A-Song-of-Thanks` | 1 Chronicles 16 | Asaph and the Levites singing with harps and cymbals before the tent of the Ark in Jerusalem, the people listening. |
-| `05-The-Threshing-Floor` | 1 Chronicles 21 | David building an altar on Ornan's threshing floor on the hilltop, Ornan and his sons with the oxen and wheat nearby, Jerusalem below. |
-| `06-Gathering-for-the-Temple` | 1 Chronicles 22 | Workers stacking cut stone, cedar beams and bronze in Jerusalem, David showing young Solomon the gathered materials. |
-| `07-The-Singers-and-Harps` | 1 Chronicles 25 | Rows of singers and musicians with harps, lyres and cymbals, practising together in a courtyard in Jerusalem. |
-| `08-The-Gatekeepers` | 1 Chronicles 26 | Gatekeepers in robes standing watch at great wooden gates of Jerusalem in the morning, the city behind them. |
-| `09-The-Plans-for-the-Temple` | 1 Chronicles 28 | Old King David handing Solomon the scroll of the Temple plans in front of the leaders of Israel. |
-| `10-Davids-Last-Prayer` | 1 Chronicles 29 | David praying with his arms raised before all the people, who bring gifts of gold and silver, Jerusalem in golden evening light. |
+| Folder | The landscape |
+|---|---|
+| `01-Remember-the-Wilderness` | A long winding road back through the wilderness, mountains and desert in layers, the camp small on the plain. |
+| `02-Remember-Sinai` | Mount Sinai from the plain, cloud on its peak, quiet desert and two flat stones in the foreground. |
+| `03-Hear-O-Israel` | A hillside village at morning, a doorway with a small scroll case on the doorpost, fields beyond. |
+| `04-A-Good-Land` | A valley of wheat, barley, vines, fig and olive trees and pomegranates, a stream running through, hills behind. |
+| `05-Remember-the-Manna` | The empty desert at dawn with a thin layer of white manna, a single clay jar on a rock. |
+| `06-Bring-the-Firstfruits` | Terraced fields at harvest, a woven basket of first fruit resting on a stone by the path, the hills of Canaan. |
+| `08-Joshua-Takes-the-Lead` | The Tabernacle tent at the edge of the plains of Moab, the cloud standing at its door, the Jordan valley beyond. |
+| `09-The-Song-of-Moses` | Wide view of the sky over the wilderness at golden hour, an eagle gliding over cliffs, the camp tiny below. |
+| `10-From-Mount-Nebo` | The view from the top of Mount Nebo across the whole promised land: the Jordan, Jericho, the hills to the sea. |
+
+## Part 4: Joshua (9 boards; 08 stays)
+
+| Folder | The landscape |
+|---|---|
+| `01-Be-Strong-and-Courageous` | The Jordan valley at sunrise seen from the east, the river in flood, the green land beyond. |
+| `02-Rahab-and-the-Scarlet-Cord` | Jericho's great walls at dusk, a house built into the wall with a red cord hanging from its window, hills behind. |
+| `03-Cross-the-Jordan` | The Jordan riverbed dry with stones showing, the water standing far upstream, both banks green. |
+| `04-Twelve-Memorial-Stones` | Twelve large stones piled in a heap at Gilgal by the river, palm trees, evening light. |
+| `05-Trumpets-at-Jericho` | Jericho's walls fallen in a cloud of dust far away, ram's horns resting on a rock in front. |
+| `06-The-Covenant-at-Ebal` | Two mountains facing each other, Ebal and Gerizim, a stone altar on Ebal's slope, the valley between. |
+| `07-The-Gibeonites-Arrive` | A dusty road into the hills with worn-out sandals and old wineskins left by the roadside, a city on a hill. |
+| `09-The-Land-at-Shiloh` | The Tabernacle standing at Shiloh among green hills, the land spread out in fields. |
+| `10-Choose-Whom-You-Will-Serve` | A large stone set up under an oak tree at Shechem, the town and hills behind, golden light. |
+
+## Part 5: Judges (10 boards)
+
+| Folder | The landscape |
+|---|---|
+| `01-Israel-at-Bochim` | A quiet valley at Bochim with a small altar of stones, soft mist, hills around. |
+| `02-Ehuds-Message` | A palace of Moab with a cool roof room, palms, the fords of the Jordan below. |
+| `03-Deborahs-Palm-Tree` | A great palm tree between Ramah and Bethel in the hill country, an empty stone seat beneath it. |
+| `04-Deborah-and-Barak` | Mount Tabor rising over the plain, the Kishon river winding through after rain. |
+| `05-Gideon-at-the-Winepress` | A stone winepress under an oak tree at Ophrah, wheat spilling over its edge, fields behind. |
+| `06-Gideons-Fleece` | A wool fleece lying on a threshing floor at dawn, wet with dew, the ground around dry. |
+| `07-Jars-and-Torches` | Clay jars and ram's horns on a ridge at first light, the valley below where the Midianite tents stood. |
+| `08-Jephthah-at-Mizpah` | The town of Mizpah on a hilltop in Gilead, a watchtower, green hills. |
+| `09-Samsons-Riddle` | A vineyard road near Timnah, a honeycomb in an old tree, hills and a town beyond. |
+| `10-Samson-at-the-Pillars` | The ruins of a great temple of the Philistines, two broken pillars, the sea far off at sunset. |
+
+## Part 6: Ruth (10 boards)
+
+| Folder | The landscape |
+|---|---|
+| `01-Famine-in-Bethlehem` | Bethlehem's hills in a dry year, empty fields, cracked earth, the town on the ridge. |
+| `02-On-the-Road-to-Moab` | A long road winding down from Judah toward the hills of Moab, the Dead Sea glinting. |
+| `03-A-Farewell-on-the-Road` | A fork in a country road, one way to Moab and one to Judah, an olive tree at the fork. |
+| `04-Where-You-Go` | The road climbing toward Bethlehem at golden hour, the town small on its hill. |
+| `05-Back-to-Bethlehem` | Bethlehem's gate at the start of the barley harvest, golden fields around the town. |
+| `06-Gleaning-in-the-Fields` | Barley fields at harvest with sheaves standing, stalks left along the edges, the town behind. |
+| `07-At-Boazs-Table` | A shady spot at the field's edge with bread, a bowl of grain and a clay jug on a cloth, fields beyond. |
+| `08-The-Threshing-Floor` | A threshing floor on a hill at golden dusk, heaps of grain and a pitchfork, the town below. |
+| `09-At-the-City-Gate` | Bethlehem's city gate with stone benches, the road leading in, evening light. |
+| `10-Naomi-Holds-Obed` | Bethlehem from the hills at sunrise, homes with smoke rising, fields full and green. |
+
+## Part 7: 1 Samuel (10 boards)
+
+| Folder | The landscape |
+|---|---|
+| `01-Hannahs-Prayer` | The Tabernacle at Shiloh among the hills at evening, its door lit by lamplight. |
+| `02-Samuel-Comes-to-Shiloh` | The road up to Shiloh, the Tabernacle on its rise, vineyards on the slopes. |
+| `03-Speak-LORD` | The Tabernacle at night just before dawn, the lamp of God still burning inside, stars fading. Warm, not dark. |
+| `04-The-Ark-Returns` | A cart with the golden Ark standing in a wheat field at Beth Shemesh, two cows grazing, a large stone nearby. |
+| `05-The-Stone-of-Help` | A tall standing stone between Mizpah and Shen, green hills, golden light. |
+| `06-Saul-Is-Anointed` | A hilltop town at sunrise with a road leading down, a small clay flask of oil on a rock. |
+| `07-David-Is-Anointed` | The hills of Bethlehem with sheep grazing in a valley, a horn of oil on a stone wall. |
+| `08-David-and-Goliath` | The Valley of Elah: two hills facing each other, a stream with smooth stones, a sling lying on a rock. |
+| `09-David-and-Jonathan` | A field with a large stone, three arrows lying in the grass, the king's town in the distance. |
+| `10-Mercy-in-the-Cave` | The cliffs and caves of En Gedi above the Dead Sea, a waterfall, wild goats on the rocks. |
+
+## Part 8: 2 Samuel (10 boards)
+
+| Folder | The landscape |
+|---|---|
+| `01-Davids-Lament` | Mount Gilboa at sunset, quiet empty hills, a harp resting on a rock. |
+| `02-King-at-Hebron` | The town of Hebron among olive groves and vineyards, morning light. |
+| `03-Jerusalem-the-City-of-David` | Jerusalem on its hill, the walls and the stronghold of Zion, valleys around. |
+| `04-The-Ark-Comes-to-Jerusalem` | The road up into Jerusalem lined with palm branches, a tent waiting on the hill. |
+| `05-Gods-Promise-to-David` | Jerusalem at night under a sky full of stars, a cedar palace on the hill. Warm, not dark. |
+| `06-A-Place-at-the-Kings-Table` | A palace courtyard in Jerusalem with a long table set with bread and fruit, an empty seat. |
+| `07-Nathans-Story-of-the-Lamb` | A small farm in the hills with one little lamb by a poor man's house, big flocks on the far hills. |
+| `08-Across-the-Kidron` | The Kidron valley and the Mount of Olives seen from Jerusalem's walls, a path leading away east. |
+| `09-Back-Across-the-Jordan` | The fords of the Jordan at Gilgal, the river shining, the road back up to Jerusalem. |
+| `10-Araunahs-Threshing-Floor` | A threshing floor on a hilltop above Jerusalem, a newly built stone altar with smoke rising, the city below. |
