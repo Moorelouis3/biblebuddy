@@ -733,12 +733,12 @@ const BOOK_ORDER = [
   "hebrews", "james", "1 peter", "2 peter", "1 john", "2 john", "3 john", "jude", "revelation",
 ];
 /**
- * Imported but not on the map yet. 1 Corinthians arrived (2026-11-24) while
- * 1 Kings to Romans were still being painted; it would have put players
- * straight from 1 Chronicles into Paul's letters. It waits here until Louis
- * says it goes live; delete a book from this list to show it.
+ * Imported but not on the map yet: delete a book from this list to show it.
+ * Empty since 2026-11-24: Louis put 1 Corinthians live straight after
+ * 1 Chronicles ("Live now"), before 1 Kings to Romans exist; those slot in by
+ * BOOK_ORDER when they are imported.
  */
-const HELD_BOOKS = new Set(["1 corinthians"]);
+const HELD_BOOKS = new Set<string>();
 /**
  * Every board asks for three things (Louis, 2026-11-23: "only 2 things people
  * need to get... it should be 3 not 2"). A board whose config names two goals
