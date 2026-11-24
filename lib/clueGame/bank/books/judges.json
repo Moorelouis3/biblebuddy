@@ -4400,6 +4400,646 @@
   "ref": "Judges 7:22"
  },
  {
+  "id": "judges-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went down to the Midianite camp with Gideon?",
+  "choices": [
+   "Joash his father",
+   "Phurah his servant",
+   "Abi-ezer",
+   "Barak"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said, go thou with Phurah thy servant down to the host.",
+  "ref": "Judges 7:10–11"
+ },
+ {
+  "id": "judges-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Gideon's men cry as they blew the trumpets?",
+  "choices": [
+   "Praise ye the LORD",
+   "Jehovah-shalom",
+   "The sword of the LORD, and of Gideon",
+   "The LORD is with us"
+  ],
+  "answer": 2,
+  "explanation": "They cried, The sword of the LORD, and of Gideon.",
+  "ref": "Judges 7:20"
+ },
+ {
+  "id": "judges-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Gideon's men do to the pitchers?",
+  "choices": [
+   "Filled them with oil",
+   "Hid them",
+   "Threw them in the well",
+   "Brake them"
+  ],
+  "answer": 3,
+  "explanation": "The three companies blew the trumpets, and brake the pitchers.",
+  "ref": "Judges 7:20"
+ },
+ {
+  "id": "judges-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two princes of Midian were taken and slain?",
+  "choices": [
+   "Oreb and Zeeb",
+   "Zebah and Zalmunna",
+   "Sisera and Jabin",
+   "Eglon and Chushan"
+  ],
+  "answer": 0,
+  "explanation": "They took two princes of the Midianites, Oreb and Zeeb, and slew them.",
+  "ref": "Judges 7:25"
+ },
+ {
+  "id": "judges-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into how many companies did Gideon divide his three hundred men?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "He divided the three hundred men into three companies.",
+  "ref": "Judges 7:16"
+ },
+ {
+  "id": "judges-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the Midianites like for multitude?",
+  "choices": [
+   "Ants",
+   "Stars",
+   "Grasshoppers",
+   "Locusts of Egypt only"
+  ],
+  "answer": 2,
+  "explanation": "The Midianites lay along in the valley like grasshoppers for multitude.",
+  "ref": "Judges 7:12"
+ },
+ {
+  "id": "judges-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Gideon do when he heard the dream and its meaning?",
+  "choices": [
+   "He wept",
+   "He ran away",
+   "He built an altar",
+   "He worshipped"
+  ],
+  "answer": 3,
+  "explanation": "When Gideon heard the telling of the dream, and the interpretation thereof, he worshipped.",
+  "ref": "Judges 7:15"
+ },
+ {
+  "id": "judges-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose sword did the Midianite say the barley cake was?",
+  "choices": [
+   "The sword of Gideon",
+   "The sword of Barak",
+   "The sword of Phurah",
+   "The sword of Joash's household"
+  ],
+  "answer": 0,
+  "explanation": "This is nothing else save the sword of Gideon the son of Joash.",
+  "ref": "Judges 7:14"
+ },
+ {
+  "id": "judges-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which men were called to take the waters unto Jordan?",
+  "choices": [
+   "The men of Judah",
+   "The men of Ephraim",
+   "The men of Dan",
+   "The men of Gilead"
+  ],
+  "answer": 1,
+  "explanation": "Gideon sent messengers throughout mount Ephraim, and all the men of Ephraim took the waters.",
+  "ref": "Judges 7:24"
+ },
+ {
+  "id": "judges-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the host of Midian do when the trumpets blew?",
+  "choices": [
+   "Stood to fight",
+   "Surrendered",
+   "Ran, cried, and fled",
+   "Hid in caves"
+  ],
+  "answer": 2,
+  "explanation": "All the host ran, and cried, and fled.",
+  "ref": "Judges 7:21"
+ },
+ {
+  "id": "judges-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Beside what well did Gideon and the people pitch?",
+  "choices": [
+   "The well of Beer",
+   "The well of Jacob",
+   "The well of Ophrah",
+   "The well of Harod"
+  ],
+  "answer": 3,
+  "explanation": "Jerubbaal rose up early, and pitched beside the well of Harod.",
+  "ref": "Judges 7:1"
+ },
+ {
+  "id": "judges-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many of the people returned home as fearful?",
+  "choices": [
+   "Twenty and two thousand",
+   "Ten thousand",
+   "Nine thousand seven hundred",
+   "Thirty-two thousand"
+  ],
+  "answer": 0,
+  "explanation": "There returned of the people twenty and two thousand; and there remained ten thousand.",
+  "ref": "Judges 7:3"
+ },
+ {
+  "id": "judges-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the LORD say he would try the people for Gideon?",
+  "choices": [
+   "Unto the water",
+   "On mount Gilead",
+   "At the winepress",
+   "By the hill of Moreh"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, bring them down unto the water, and I will try them for thee there.",
+  "ref": "Judges 7:4"
+ },
+ {
+  "id": "judges-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Beside which hill were the Midianites in the valley?",
+  "choices": [
+   "Mount Tabor",
+   "Mount Gilead",
+   "The hill of Moreh",
+   "The hill of Ophrah"
+  ],
+  "answer": 2,
+  "explanation": "The host of the Midianites were on the north side of them, by the hill of Moreh.",
+  "ref": "Judges 7:1"
+ },
+ {
+  "id": "judges-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "From which mount were the fearful told to depart?",
+  "choices": [
+   "Mount Ephraim",
+   "Mount Tabor",
+   "Mount Sinai",
+   "Mount Gilead"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever is fearful and afraid, let him return and depart early from mount Gilead.",
+  "ref": "Judges 7:3"
+ },
+ {
+  "id": "judges-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the rest of the people do at the water?",
+  "choices": [
+   "Bowed down upon their knees to drink",
+   "Drank from their helmets",
+   "Refused to drink",
+   "Filled pitchers"
+  ],
+  "answer": 0,
+  "explanation": "All the rest of the people bowed down upon their knees to drink water.",
+  "ref": "Judges 7:6"
+ },
+ {
+  "id": "judges-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Gideon's hundred men come to the outside of the camp?",
+  "choices": [
+   "At dawn",
+   "At the beginning of the middle watch",
+   "At noon",
+   "At the end of the night"
+  ],
+  "answer": 1,
+  "explanation": "They came in the beginning of the middle watch; and they had but newly set the watch.",
+  "ref": "Judges 7:19"
+ },
+ {
+  "id": "judges-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gideon tell his men to do as he did?",
+  "choices": [
+   "Wait for the signal of the horn",
+   "Follow Phurah",
+   "Look on me, and do likewise",
+   "Hold the lamps high"
+  ],
+  "answer": 2,
+  "explanation": "He said, Look on me, and do likewise.",
+  "ref": "Judges 7:17"
+ },
+ {
+  "id": "judges-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which tribes gathered and pursued the Midianites?",
+  "choices": [
+   "Judah, Dan and Simeon",
+   "Reuben, Gad and Levi",
+   "Zebulun, Issachar and Ephraim",
+   "Naphtali, Asher and Manasseh"
+  ],
+  "answer": 3,
+  "explanation": "The men of Israel gathered out of Naphtali, and out of Asher, and out of all Manasseh.",
+  "ref": "Judges 7:23"
+ },
+ {
+  "id": "judges-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Zeeb slain?",
+  "choices": [
+   "At the winepress of Zeeb",
+   "On the rock Zeeb",
+   "At the well of Harod",
+   "In the valley of Jezreel"
+  ],
+  "answer": 0,
+  "explanation": "Zeeb they slew at the winepress of Zeeb.",
+  "ref": "Judges 7:25"
+ },
+ {
+  "id": "judges-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD tell Gideon to go down with Phurah?",
+  "choices": [
+   "To count the host",
+   "To hear what they say and be strengthened",
+   "To buy food",
+   "To set the watch"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt hear what they say; and afterward shall thine hands be strengthened.",
+  "ref": "Judges 7:11"
+ },
+ {
+  "id": "judges-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By whom did the LORD say he would save Israel?",
+  "choices": [
+   "By the ten thousand",
+   "By the men of Ephraim",
+   "By the three hundred men that lapped",
+   "By Phurah"
+  ],
+  "answer": 2,
+  "explanation": "By the three hundred men that lapped will I save you.",
+  "ref": "Judges 7:7"
+ },
+ {
+  "id": "judges-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "To where did the host of Midian flee?",
+  "choices": [
+   "Taanach",
+   "Hazor",
+   "Ophrah",
+   "Beth-shittah in Zererath"
+  ],
+  "answer": 3,
+  "explanation": "The host fled to Beth-shittah in Zererath.",
+  "ref": "Judges 7:22"
+ },
+ {
+  "id": "judges-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was brought to Gideon beyond Jordan?",
+  "choices": [
+   "The heads of Oreb and Zeeb",
+   "The tent of Midian",
+   "The spoil of the camp",
+   "The swords of the princes"
+  ],
+  "answer": 0,
+  "explanation": "They brought the heads of Oreb and Zeeb to Gideon on the other side Jordan.",
+  "ref": "Judges 7:25"
+ },
+ {
+  "id": "judges-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the man in the dream see tumble into the host?",
+  "choices": [
+   "A burning torch",
+   "A cake of barley bread",
+   "A stone from Ophrah",
+   "A pitcher of water"
+  ],
+  "answer": 1,
+  "explanation": "A cake of barley bread tumbled into the host of Midian, and smote the tent.",
+  "ref": "Judges 7:13"
+ },
+ {
+  "id": "judges-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people take in their hand when sent away?",
+  "choices": [
+   "Swords and shields",
+   "Lamps and bread",
+   "Victuals and trumpets",
+   "Pitchers and cakes"
+  ],
+  "answer": 2,
+  "explanation": "The people took victuals in their hand, and their trumpets.",
+  "ref": "Judges 7:8"
+ },
+ {
+  "id": "judges-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the tent the barley cake smote?",
+  "choices": [
+   "It caught fire",
+   "It was carried off",
+   "It was torn",
+   "It fell and was overturned"
+  ],
+  "answer": 3,
+  "explanation": "It smote it that it fell, and overturned it, that the tent lay along.",
+  "ref": "Judges 7:13"
+ },
+ {
+  "id": "judges-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Midianite camels were without number, as what?",
+  "choices": [
+   "The sand by the sea side",
+   "The stars of heaven",
+   "The dust of the earth",
+   "The leaves of the trees"
+  ],
+  "answer": 0,
+  "explanation": "Their camels were without number, as the sand by the sea side for multitude.",
+  "ref": "Judges 7:12"
+ },
+ {
+  "id": "judges-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men were with Gideon when he came to the camp?",
+  "choices": [
+   "Three hundred",
+   "A hundred",
+   "Ten",
+   "Fifty"
+  ],
+  "answer": 1,
+  "explanation": "Gideon, and the hundred men that were with him, came unto the outside of the camp.",
+  "ref": "Judges 7:19"
+ },
+ {
+  "id": "judges-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which hand did the men hold the lamps?",
+  "choices": [
+   "The right hand",
+   "Both hands",
+   "The left hand",
+   "Under the arm"
+  ],
+  "answer": 2,
+  "explanation": "They held the lamps in their left hands, and the trumpets in their right hands.",
+  "ref": "Judges 7:20"
+ },
+ {
+  "id": "judges-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the Midianites just done when Gideon's men arrived?",
+  "choices": [
+   "Fallen asleep",
+   "Eaten supper",
+   "Struck camp",
+   "Newly set the watch"
+  ],
+  "answer": 3,
+  "explanation": "They had but newly set the watch.",
+  "ref": "Judges 7:19"
+ },
+ {
+  "id": "judges-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Unto what border did the host flee, besides Beth-shittah?",
+  "choices": [
+   "Abel-meholah",
+   "Beth-barah",
+   "Gilead",
+   "Moreh"
+  ],
+  "answer": 0,
+  "explanation": "The host fled unto the border of Abel-meholah, unto Tabbath.",
+  "ref": "Judges 7:22"
+ },
+ {
+  "id": "judges-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is named as Jerubbaal at the start of the chapter?",
+  "choices": [
+   "Joash",
+   "Gideon",
+   "Phurah",
+   "Oreb"
+  ],
+  "answer": 1,
+  "explanation": "Then Jerubbaal, who is Gideon, rose up early.",
+  "ref": "Judges 7:1"
+ },
+ {
+  "id": "judges-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the man interpret the dream?",
+  "choices": [
+   "Midian would find bread",
+   "Israel would starve",
+   "It was the sword of Gideon, to whom God gave Midian",
+   "Gideon would die"
+  ],
+  "answer": 2,
+  "explanation": "His fellow said, into his hand hath God delivered Midian, and all the host.",
+  "ref": "Judges 7:14"
+ },
+ {
+  "id": "judges-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Where were the heads of Oreb and Zeeb brought to Gideon?",
+  "choices": [
+   "At Ophrah",
+   "In the valley of Moreh",
+   "At Beth-barah",
+   "On the other side Jordan"
+  ],
+  "answer": 3,
+  "explanation": "They brought the heads of Oreb and Zeeb to Gideon on the other side Jordan.",
+  "ref": "Judges 7:25"
+ },
+ {
+  "id": "judges-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Oreb slain?",
+  "choices": [
+   "Upon the rock Oreb",
+   "At the winepress",
+   "By the well of Harod",
+   "At Tabbath"
+  ],
+  "answer": 0,
+  "explanation": "They slew Oreb upon the rock Oreb.",
+  "ref": "Judges 7:25"
+ },
+ {
+  "id": "judges-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Unto which places were the waters to be taken before Midian?",
+  "choices": [
+   "Harod and Moreh",
+   "Beth-barah and Jordan",
+   "Gilead and Tabor",
+   "Ophrah and Gaza"
+  ],
+  "answer": 1,
+  "explanation": "Take before them the waters unto Beth-barah and Jordan.",
+  "ref": "Judges 7:24"
+ },
+ {
+  "id": "judges-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did the LORD say to set by himself at the water?",
+  "choices": [
+   "Everyone that carried a sword",
+   "Everyone that drank last",
+   "Everyone that lappeth with his tongue as a dog",
+   "Everyone from Manasseh"
+  ],
+  "answer": 2,
+  "explanation": "Every one that lappeth of the water with his tongue, as a dog lappeth, him shalt thou set by himself.",
+  "ref": "Judges 7:5"
+ },
+ {
+  "id": "judges-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "On which side of Gideon were the Midianites camped?",
+  "choices": [
+   "The north side",
+   "The south side",
+   "The east side",
+   "The west side"
+  ],
+  "answer": 0,
+  "explanation": "The host of the Midianites were on the north side of them, by the hill of Moreh, in the valley.",
+  "ref": "Judges 7:1"
+ },
+ {
+  "id": "judges-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the LORD tell Gideon to go down to the host?",
+  "choices": [
+   "The same night",
+   "At the first light",
+   "After seven days",
+   "At noon"
+  ],
+  "answer": 0,
+  "explanation": "The same night the LORD said unto him, Arise, get thee down unto the host.",
+  "ref": "Judges 7:9"
+ },
+ {
   "id": "old-judges-8-1",
   "chapter": 8,
   "level": "beginner",
