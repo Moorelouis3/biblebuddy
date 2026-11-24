@@ -14528,6 +14528,646 @@
   "ref": "Deuteronomy 21:22–23"
  },
  {
+  "id": "deuteronomy-21-e-01",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the slain man found whose killer was not known?",
+  "choices": [
+   "In a house",
+   "Lying in the field",
+   "At the city gate",
+   "In a vineyard"
+  ],
+  "answer": 1,
+  "explanation": "If one be found slain in the land, lying in the field, and it be not known who hath slain him.",
+  "ref": "Deuteronomy 21:1"
+ },
+ {
+  "id": "deuteronomy-21-e-02",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who were to measure the distance to the cities round about the slain man?",
+  "choices": [
+   "The priests",
+   "The elders and judges",
+   "The captains",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "Thy elders and thy judges shall measure unto the cities round about him that is slain.",
+  "ref": "Deuteronomy 21:2"
+ },
+ {
+  "id": "deuteronomy-21-e-03",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose neck was struck off in the rough valley?",
+  "choices": [
+   "The ox's",
+   "The heifer's",
+   "A goat's",
+   "A lamb's"
+  ],
+  "answer": 1,
+  "explanation": "The elders shall strike off the heifer's neck there in the valley.",
+  "ref": "Deuteronomy 21:4"
+ },
+ {
+  "id": "deuteronomy-21-e-04",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the elders wash over the beheaded heifer?",
+  "choices": [
+   "Their feet",
+   "Their hands",
+   "Their garments",
+   "Their faces"
+  ],
+  "answer": 1,
+  "explanation": "All the elders of that city shall wash their hands over the heifer that is beheaded in the valley.",
+  "ref": "Deuteronomy 21:6"
+ },
+ {
+  "id": "deuteronomy-21-e-05",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the captive woman to do for a full month in the man's house?",
+  "choices": [
+   "Fast from bread",
+   "Bewail her father and mother",
+   "Work in his fields",
+   "Serve the priests"
+  ],
+  "answer": 1,
+  "explanation": "She shall remain in thine house, and bewail her father and her mother a full month.",
+  "ref": "Deuteronomy 21:13"
+ },
+ {
+  "id": "deuteronomy-21-e-06",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the man not to do if he had no delight in the captive woman?",
+  "choices": [
+   "Let her go",
+   "Sell her for money",
+   "Give her land",
+   "Send her home"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt let her go whither she will; but thou shalt not sell her at all for money.",
+  "ref": "Deuteronomy 21:14"
+ },
+ {
+  "id": "deuteronomy-21-e-07",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much did the firstborn son of the hated wife receive?",
+  "choices": [
+   "Half",
+   "A double portion",
+   "Nothing",
+   "A tenth"
+  ],
+  "answer": 1,
+  "explanation": "He shall acknowledge the son of the hated for the firstborn, by giving him a double portion of all that he hath.",
+  "ref": "Deuteronomy 21:17"
+ },
+ {
+  "id": "deuteronomy-21-e-08",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was done to the stubborn and rebellious son?",
+  "choices": [
+   "He was sold",
+   "The men of his city stoned him",
+   "He was exiled",
+   "He was beaten and freed"
+  ],
+  "answer": 1,
+  "explanation": "All the men of his city shall stone him with stones, that he die.",
+  "ref": "Deuteronomy 21:21"
+ },
+ {
+  "id": "deuteronomy-21-e-09",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the parents bring a stubborn and rebellious son?",
+  "choices": [
+   "To the priests",
+   "To the elders at the gate of his city",
+   "To the camp",
+   "To the judges' tent"
+  ],
+  "answer": 1,
+  "explanation": "His father and mother shall bring him out unto the elders of his city, and unto the gate of his place.",
+  "ref": "Deuteronomy 21:19"
+ },
+ {
+  "id": "deuteronomy-21-e-10",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When was a hanged man's body to be buried?",
+  "choices": [
+   "After seven days",
+   "The same day",
+   "At the next feast",
+   "After three days"
+  ],
+  "answer": 1,
+  "explanation": "His body shall not remain all night upon the tree, but thou shalt in any wise bury him that day.",
+  "ref": "Deuteronomy 21:23"
+ },
+ {
+  "id": "deuteronomy-21-m-01",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of heifer was to be taken for the unsolved killing?",
+  "choices": [
+   "One of the firstborn",
+   "One without spot",
+   "One three years old",
+   "One not worked or yoked"
+  ],
+  "answer": 3,
+  "explanation": "An heifer which hath not been wrought with, and which hath not drawn in the yoke.",
+  "ref": "Deuteronomy 21:3"
+ },
+ {
+  "id": "deuteronomy-21-m-02",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which city's elders took the heifer?",
+  "choices": [
+   "The largest city",
+   "The city of refuge",
+   "The city of the priests",
+   "The city nearest the slain man"
+  ],
+  "answer": 3,
+  "explanation": "The city which is next unto the slain man, even the elders of that city shall take an heifer.",
+  "ref": "Deuteronomy 21:3"
+ },
+ {
+  "id": "deuteronomy-21-m-03",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the heifer's neck broken?",
+  "choices": [
+   "On a high hill",
+   "At the city gate",
+   "By the altar",
+   "In a rough valley"
+  ],
+  "answer": 3,
+  "explanation": "Bring the heifer down unto a rough valley, which is neither eared nor sown.",
+  "ref": "Deuteronomy 21:4"
+ },
+ {
+  "id": "deuteronomy-21-m-04",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Who came near at the ceremony, chosen to minister to the LORD?",
+  "choices": [
+   "The judges",
+   "The captains",
+   "The firstborn",
+   "The priests the sons of Levi"
+  ],
+  "answer": 3,
+  "explanation": "The priests the sons of Levi shall come near, for the LORD hath chosen them to minister unto him.",
+  "ref": "Deuteronomy 21:5"
+ },
+ {
+  "id": "deuteronomy-21-m-05",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the elders say about their hands?",
+  "choices": [
+   "They were clean from sin",
+   "They were washed for war",
+   "They were full of oil",
+   "They had not shed this blood"
+  ],
+  "answer": 3,
+  "explanation": "They shall say, Our hands have not shed this blood, neither have our eyes seen it.",
+  "ref": "Deuteronomy 21:7"
+ },
+ {
+  "id": "deuteronomy-21-m-06",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the elders pray the LORD would not do to Israel?",
+  "choices": [
+   "Send the plague",
+   "Scatter them",
+   "Take the land",
+   "Lay innocent blood to their charge"
+  ],
+  "answer": 3,
+  "explanation": "Be merciful, O LORD, and lay not innocent blood unto thy people of Israel's charge.",
+  "ref": "Deuteronomy 21:8"
+ },
+ {
+  "id": "deuteronomy-21-m-07",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the captive woman do to her head?",
+  "choices": [
+   "Cover it",
+   "Anoint it",
+   "Cut a lock",
+   "Shave it"
+  ],
+  "answer": 3,
+  "explanation": "She shall shave her head, and pare her nails.",
+  "ref": "Deuteronomy 21:12"
+ },
+ {
+  "id": "deuteronomy-21-m-08",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the captive woman to put off?",
+  "choices": [
+   "Her jewels",
+   "Her sandals",
+   "Her veil",
+   "The raiment of her captivity"
+  ],
+  "answer": 3,
+  "explanation": "She shall put the raiment of her captivity from off her.",
+  "ref": "Deuteronomy 21:13"
+ },
+ {
+  "id": "deuteronomy-21-m-09",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the man not to sell a woman he no longer delighted in?",
+  "choices": [
+   "Because she was a priest's",
+   "Because she was rich",
+   "Because she had children",
+   "Because he had humbled her"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not make merchandise of her, because thou hast humbled her.",
+  "ref": "Deuteronomy 21:14"
+ },
+ {
+  "id": "deuteronomy-21-m-10",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In the case of two wives, which wife's son might the father wrongly favour?",
+  "choices": [
+   "The hated wife's son",
+   "The servant's son",
+   "The youngest son",
+   "The beloved wife's son"
+  ],
+  "answer": 3,
+  "explanation": "He may not make the son of the beloved firstborn before the son of the hated, which is indeed the firstborn.",
+  "ref": "Deuteronomy 21:16"
+ },
+ {
+  "id": "deuteronomy-21-m-11",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the firstborn represent, according to the law?",
+  "choices": [
+   "The head of the tribe",
+   "The heir of the priesthood",
+   "The king of his house",
+   "The beginning of his father's strength"
+  ],
+  "answer": 3,
+  "explanation": "He is the beginning of his strength; the right of the firstborn is his.",
+  "ref": "Deuteronomy 21:17"
+ },
+ {
+  "id": "deuteronomy-21-m-12",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the parents say of the rebellious son?",
+  "choices": [
+   "He will not work",
+   "He has left home",
+   "He has cursed the king",
+   "He will not obey our voice"
+  ],
+  "answer": 3,
+  "explanation": "This our son is stubborn and rebellious, he will not obey our voice.",
+  "ref": "Deuteronomy 21:20"
+ },
+ {
+  "id": "deuteronomy-21-m-13",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What two sins did the parents name about the rebellious son?",
+  "choices": [
+   "Thief and liar",
+   "Idolater and coward",
+   "Murderer and adulterer",
+   "Glutton and drunkard"
+  ],
+  "answer": 3,
+  "explanation": "He is a glutton, and a drunkard.",
+  "ref": "Deuteronomy 21:20"
+ },
+ {
+  "id": "deuteronomy-21-m-14",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to happen to all Israel when they heard of the stoning?",
+  "choices": [
+   "They would mourn",
+   "They would fast",
+   "They would rejoice",
+   "They would hear and fear"
+  ],
+  "answer": 3,
+  "explanation": "So shalt thou put evil away from among you; and all Israel shall hear, and fear.",
+  "ref": "Deuteronomy 21:21"
+ },
+ {
+  "id": "deuteronomy-21-m-15",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was said of a man hanged on a tree?",
+  "choices": [
+   "He is unclean for a year",
+   "He is blessed",
+   "He is forgiven",
+   "He is accursed of God"
+  ],
+  "answer": 3,
+  "explanation": "For he that is hanged is accursed of God.",
+  "ref": "Deuteronomy 21:23"
+ },
+ {
+  "id": "deuteronomy-21-h-01",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of valley was the heifer brought to, as described?",
+  "choices": [
+   "Neither eared nor sown",
+   "Watered and green",
+   "Full of stones",
+   "Near the temple"
+  ],
+  "answer": 0,
+  "explanation": "The rough valley is neither eared nor sown.",
+  "ref": "Deuteronomy 21:4"
+ },
+ {
+  "id": "deuteronomy-21-h-02",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priests' word decide in Israel?",
+  "choices": [
+   "Every controversy and every stroke",
+   "Every vow and tithe",
+   "Every feast and fast",
+   "Every marriage and burial"
+  ],
+  "answer": 0,
+  "explanation": "By their word shall every controversy and every stroke be tried.",
+  "ref": "Deuteronomy 21:5"
+ },
+ {
+  "id": "deuteronomy-21-h-03",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be forgiven the people after the heifer ceremony?",
+  "choices": [
+   "The blood",
+   "The vow",
+   "The tithe",
+   "The rebellion"
+  ],
+  "answer": 0,
+  "explanation": "The blood shall be forgiven them.",
+  "ref": "Deuteronomy 21:8"
+ },
+ {
+  "id": "deuteronomy-21-h-04",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was the captive woman to wait before she became the man's wife?",
+  "choices": [
+   "A full month",
+   "Seven days",
+   "Forty days",
+   "A year"
+  ],
+  "answer": 0,
+  "explanation": "She shall bewail her father and her mother a full month; and after that she shall be his wife.",
+  "ref": "Deuteronomy 21:13"
+ },
+ {
+  "id": "deuteronomy-21-h-05",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If the hated wife's son was the firstborn, what must the father acknowledge?",
+  "choices": [
+   "He is the firstborn",
+   "He is only a servant",
+   "He is the youngest",
+   "He is under the beloved's son"
+  ],
+  "answer": 0,
+  "explanation": "He shall acknowledge the son of the hated for the firstborn.",
+  "ref": "Deuteronomy 21:17"
+ },
+ {
+  "id": "deuteronomy-21-h-06",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Who lay hold of the rebellious son?",
+  "choices": [
+   "His father and his mother",
+   "The elders",
+   "The priests",
+   "The judges"
+  ],
+  "answer": 0,
+  "explanation": "Then shall his father and his mother lay hold on him.",
+  "ref": "Deuteronomy 21:19"
+ },
+ {
+  "id": "deuteronomy-21-h-07",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the parents first done to the rebellious son before bringing him to the elders?",
+  "choices": [
+   "Chastened him",
+   "Sold him",
+   "Hidden him",
+   "Taught him a trade"
+  ],
+  "answer": 0,
+  "explanation": "When they have chastened him, he will not hearken unto them.",
+  "ref": "Deuteronomy 21:18"
+ },
+ {
+  "id": "deuteronomy-21-h-08",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "What land was said not to be defiled by a hanged body staying overnight?",
+  "choices": [
+   "The land the LORD gives for an inheritance",
+   "The camp of Israel",
+   "The land of Egypt",
+   "The wilderness"
+  ],
+  "answer": 0,
+  "explanation": "That thy land be not defiled, which the LORD thy God giveth thee for an inheritance.",
+  "ref": "Deuteronomy 21:23"
+ },
+ {
+  "id": "deuteronomy-21-h-09",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the elders say the LORD had done for his people Israel?",
+  "choices": [
+   "Redeemed them",
+   "Healed them",
+   "Fed them",
+   "Judged them"
+  ],
+  "answer": 0,
+  "explanation": "O LORD, unto thy people Israel, whom thou hast redeemed.",
+  "ref": "Deuteronomy 21:8"
+ },
+ {
+  "id": "deuteronomy-21-h-10",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man see among the captives and desire to have as his wife?",
+  "choices": [
+   "A beautiful woman",
+   "A skilled servant",
+   "A king's daughter",
+   "A widow with children"
+  ],
+  "answer": 0,
+  "explanation": "He seeth among the captives a beautiful woman, and hath a desire unto her.",
+  "ref": "Deuteronomy 21:11"
+ },
+ {
+  "id": "deuteronomy-21-h-11",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was unknown about the man found slain in the field?",
+  "choices": [
+   "Who had slain him",
+   "Where he came from",
+   "What day he died",
+   "What weapon was used"
+  ],
+  "answer": 0,
+  "explanation": "He was found slain in the field, and it be not known who hath slain him.",
+  "ref": "Deuteronomy 21:1"
+ },
+ {
+  "id": "deuteronomy-21-h-12",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the elders say their eyes had not done?",
+  "choices": [
+   "Seen the killing",
+   "Seen the killer flee",
+   "Seen the heifer slain",
+   "Seen the valley"
+  ],
+  "answer": 0,
+  "explanation": "They shall answer, Our hands have not shed this blood, neither have our eyes seen it.",
+  "ref": "Deuteronomy 21:7"
+ },
+ {
+  "id": "deuteronomy-21-h-13",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was put away from among Israel by stoning the rebellious son?",
+  "choices": [
+   "Evil",
+   "The firstborn right",
+   "The stranger",
+   "The unclean thing"
+  ],
+  "answer": 0,
+  "explanation": "So shalt thou put evil away from among you.",
+  "ref": "Deuteronomy 21:21"
+ },
+ {
+  "id": "deuteronomy-21-h-14",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of sin led to a man being hanged on a tree?",
+  "choices": [
+   "A sin worthy of death",
+   "A sin of theft",
+   "A sin of idolatry only",
+   "A sin of the Sabbath"
+  ],
+  "answer": 0,
+  "explanation": "If a man have committed a sin worthy of death, and thou hang him on a tree.",
+  "ref": "Deuteronomy 21:22"
+ },
+ {
+  "id": "deuteronomy-21-h-15",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where might the captive woman go if the man had no delight in her?",
+  "choices": [
+   "Whither she will",
+   "Back to her people's king",
+   "To the priests",
+   "To the elders' house"
+  ],
+  "answer": 0,
+  "explanation": "If thou have no delight in her, then thou shalt let her go whither she will.",
+  "ref": "Deuteronomy 21:14"
+ },
+ {
   "id": "old-deuteronomy-22-1",
   "chapter": 22,
   "level": "beginner",
