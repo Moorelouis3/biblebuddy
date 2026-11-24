@@ -8016,6 +8016,646 @@
   "ref": "Leviticus 12:8"
  },
  {
+  "id": "leviticus-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who did the LORD speak to in this chapter?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Joshua",
+   "Miriam"
+  ],
+  "answer": 1,
+  "explanation": "And the LORD spake unto Moses, saying.",
+  "ref": "Leviticus 12:1"
+ },
+ {
+  "id": "leviticus-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who was Moses told to speak to about this law?",
+  "choices": [
+   "The priests only",
+   "The children of Israel",
+   "The Levites",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Speak unto the children of Israel, saying, If a woman have conceived seed.",
+  "ref": "Leviticus 12:2"
+ },
+ {
+  "id": "leviticus-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a woman called for seven days after bearing a man child?",
+  "choices": [
+   "Blessed",
+   "Unclean",
+   "Cursed",
+   "Holy"
+  ],
+  "answer": 1,
+  "explanation": "If a woman have born a man child, she shall be unclean seven days.",
+  "ref": "Leviticus 12:2"
+ },
+ {
+  "id": "leviticus-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was she not to touch while her days of purifying lasted?",
+  "choices": [
+   "Any lamb",
+   "Any hallowed thing",
+   "Any water",
+   "Any bread"
+  ],
+  "answer": 1,
+  "explanation": "She shall touch no hallowed thing, nor come into the sanctuary.",
+  "ref": "Leviticus 12:4"
+ },
+ {
+  "id": "leviticus-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where was she not to come until her purifying was fulfilled?",
+  "choices": [
+   "The camp",
+   "The sanctuary",
+   "Her tent",
+   "The city"
+  ],
+  "answer": 1,
+  "explanation": "She shall touch no hallowed thing, nor come into the sanctuary.",
+  "ref": "Leviticus 12:4"
+ },
+ {
+  "id": "leviticus-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did she bring to the priest when her days were fulfilled?",
+  "choices": [
+   "A bullock",
+   "A lamb of the first year",
+   "A goat",
+   "A ram"
+  ],
+  "answer": 1,
+  "explanation": "She shall bring a lamb of the first year for a burnt offering.",
+  "ref": "Leviticus 12:6"
+ },
+ {
+  "id": "leviticus-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who offered the sacrifice for her before the LORD?",
+  "choices": [
+   "Her husband",
+   "The priest",
+   "Moses",
+   "An elder"
+  ],
+  "answer": 1,
+  "explanation": "The priest offers it before the LORD and makes an atonement for her.",
+  "ref": "Leviticus 12:7"
+ },
+ {
+  "id": "leviticus-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did she bring her offering?",
+  "choices": [
+   "The mountain top",
+   "The door of the tabernacle",
+   "The city gate",
+   "The river"
+  ],
+  "answer": 1,
+  "explanation": "She shall bring it unto the door of the tabernacle of the congregation.",
+  "ref": "Leviticus 12:6"
+ },
+ {
+  "id": "leviticus-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was she after the priest made atonement for her?",
+  "choices": [
+   "Banished",
+   "Cleansed",
+   "Counted unclean again",
+   "Made a priest"
+  ],
+  "answer": 1,
+  "explanation": "She shall be cleansed from the issue of her blood.",
+  "ref": "Leviticus 12:7"
+ },
+ {
+  "id": "leviticus-12-e-10",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Did this law apply to a woman who bore a son or a daughter?",
+  "choices": [
+   "Only a son",
+   "Both a male and a female",
+   "Only a daughter",
+   "Only the firstborn"
+  ],
+  "answer": 1,
+  "explanation": "This is the law for her that hath born a male or a female.",
+  "ref": "Leviticus 12:7"
+ },
+ {
+  "id": "leviticus-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which was longer, her purifying after a son or after a daughter?",
+  "choices": [
+   "After a son",
+   "They were equal",
+   "It depended on the priest",
+   "After a daughter"
+  ],
+  "answer": 3,
+  "explanation": "After a son it was three and thirty days; after a maid child threescore and six days.",
+  "ref": "Leviticus 12:4–5"
+ },
+ {
+  "id": "leviticus-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many days did she continue in the blood of her purifying after a maid child?",
+  "choices": [
+   "Thirty-three days",
+   "Forty days",
+   "Eighty days",
+   "Sixty-six days"
+  ],
+  "answer": 3,
+  "explanation": "She shall continue in the blood of her purifying threescore and six days.",
+  "ref": "Leviticus 12:5"
+ },
+ {
+  "id": "leviticus-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of offering was the lamb of the first year?",
+  "choices": [
+   "A peace offering",
+   "A trespass offering",
+   "A meat offering",
+   "A burnt offering"
+  ],
+  "answer": 3,
+  "explanation": "She shall bring a lamb of the first year for a burnt offering.",
+  "ref": "Leviticus 12:6"
+ },
+ {
+  "id": "leviticus-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest make for the woman before the LORD?",
+  "choices": [
+   "A covenant",
+   "A blessing",
+   "A record",
+   "An atonement"
+  ],
+  "answer": 3,
+  "explanation": "Who shall offer it before the LORD, and make an atonement for her.",
+  "ref": "Leviticus 12:7"
+ },
+ {
+  "id": "leviticus-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Before whom did the priest offer the sacrifice?",
+  "choices": [
+   "The elders",
+   "The congregation",
+   "Aaron's sons",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "Who shall offer it before the LORD, and make an atonement for her.",
+  "ref": "Leviticus 12:7"
+ },
+ {
+  "id": "leviticus-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The woman's seven unclean days matched the days of her separation for her what?",
+  "choices": [
+   "Weakness of heart",
+   "Sin",
+   "Vow",
+   "Infirmity"
+  ],
+  "answer": 3,
+  "explanation": "According to the days of the separation for her infirmity shall she be unclean.",
+  "ref": "Leviticus 12:2"
+ },
+ {
+  "id": "leviticus-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the law call what a woman had done: 'If a woman have conceived ...'?",
+  "choices": [
+   "A child",
+   "A son",
+   "A promise",
+   "Seed"
+  ],
+  "answer": 3,
+  "explanation": "If a woman have conceived seed, and born a man child.",
+  "ref": "Leviticus 12:2"
+ },
+ {
+  "id": "leviticus-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what was she continuing through the thirty-three days?",
+  "choices": [
+   "The days of her vow",
+   "The priest's house",
+   "The camp outside",
+   "The blood of her purifying"
+  ],
+  "answer": 3,
+  "explanation": "She shall continue in the blood of her purifying three and thirty days.",
+  "ref": "Leviticus 12:4"
+ },
+ {
+  "id": "leviticus-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If she bore a maid child, how long was she unclean first?",
+  "choices": [
+   "Seven days",
+   "Forty days",
+   "One month",
+   "Two weeks"
+  ],
+  "answer": 3,
+  "explanation": "If she bear a maid child, then she shall be unclean two weeks.",
+  "ref": "Leviticus 12:5"
+ },
+ {
+  "id": "leviticus-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides a lamb, how many birds did the full offering call for?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "One"
+  ],
+  "answer": 3,
+  "explanation": "A lamb for a burnt offering, and a young pigeon or a turtledove for a sin offering.",
+  "ref": "Leviticus 12:6"
+ },
+ {
+  "id": "leviticus-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when was she to keep away from hallowed things?",
+  "choices": [
+   "Until the next feast",
+   "Until the priest died",
+   "Until the child was named",
+   "Until the days of her purifying were fulfilled"
+  ],
+  "answer": 3,
+  "explanation": "Until the days of her purifying be fulfilled.",
+  "ref": "Leviticus 12:4"
+ },
+ {
+  "id": "leviticus-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was circumcised on the eighth day?",
+  "choices": [
+   "The child's name",
+   "The child's hair",
+   "The mother's offering",
+   "The flesh of the child's foreskin"
+  ],
+  "answer": 3,
+  "explanation": "And in the eighth day the flesh of his foreskin shall be circumcised.",
+  "ref": "Leviticus 12:3"
+ },
+ {
+  "id": "leviticus-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "A poor woman who could not bring a lamb brought two of what?",
+  "choices": [
+   "Rams or goats",
+   "Doves or sparrows",
+   "Loaves or cakes",
+   "Turtles or young pigeons"
+  ],
+  "answer": 3,
+  "explanation": "If she be not able to bring a lamb, then she shall bring two turtles, or two young pigeons.",
+  "ref": "Leviticus 12:8"
+ },
+ {
+  "id": "leviticus-12-m-14",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who was the offering brought to at the door of the tabernacle?",
+  "choices": [
+   "Moses",
+   "The elders",
+   "The Levites",
+   "The priest"
+  ],
+  "answer": 3,
+  "explanation": "She shall bring it unto the door of the tabernacle of the congregation, unto the priest.",
+  "ref": "Leviticus 12:6"
+ },
+ {
+  "id": "leviticus-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which bird was a sin offering alongside the lamb?",
+  "choices": [
+   "A raven",
+   "A young pigeon or a turtledove",
+   "A sparrow",
+   "An eagle"
+  ],
+  "answer": 1,
+  "explanation": "A young pigeon, or a turtledove, for a sin offering.",
+  "ref": "Leviticus 12:6"
+ },
+ {
+  "id": "leviticus-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which offering is named first in the woman's offering: burnt or sin?",
+  "choices": [
+   "The sin offering",
+   "The burnt offering",
+   "The peace offering",
+   "The trespass offering"
+  ],
+  "answer": 1,
+  "explanation": "A lamb of the first year for a burnt offering, and a young pigeon or turtledove for a sin offering.",
+  "ref": "Leviticus 12:6"
+ },
+ {
+  "id": "leviticus-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If she brought two turtles, what was the second bird for?",
+  "choices": [
+   "A meat offering",
+   "A sin offering",
+   "A peace offering",
+   "A wave offering"
+  ],
+  "answer": 1,
+  "explanation": "The one for the burnt offering, and the other for a sin offering.",
+  "ref": "Leviticus 12:8"
+ },
+ {
+  "id": "leviticus-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the lamb's age for her burnt offering?",
+  "choices": [
+   "Three years",
+   "Of the first year",
+   "Eight days",
+   "Two years"
+  ],
+  "answer": 1,
+  "explanation": "She shall bring a lamb of the first year for a burnt offering.",
+  "ref": "Leviticus 12:6"
+ },
+ {
+  "id": "leviticus-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was she cleansed from after the priest's atonement?",
+  "choices": [
+   "The plague of leprosy",
+   "The issue of her blood",
+   "The touch of the dead",
+   "The sin of her husband"
+  ],
+  "answer": 1,
+  "explanation": "She shall be cleansed from the issue of her blood.",
+  "ref": "Leviticus 12:7"
+ },
+ {
+  "id": "leviticus-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the second period after a son's seven days?",
+  "choices": [
+   "Two weeks",
+   "Three and thirty days",
+   "Sixty-six days",
+   "Seven days again"
+  ],
+  "answer": 1,
+  "explanation": "And she shall then continue in the blood of her purifying three and thirty days.",
+  "ref": "Leviticus 12:4"
+ },
+ {
+  "id": "leviticus-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After the first period for a maid child, what was the second period?",
+  "choices": [
+   "Three and thirty days",
+   "Threescore and six days",
+   "Eighty days",
+   "Seven days"
+  ],
+  "answer": 1,
+  "explanation": "She shall continue in the blood of her purifying threescore and six days.",
+  "ref": "Leviticus 12:5"
+ },
+ {
+  "id": "leviticus-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priest do for the poor woman besides taking her birds?",
+  "choices": [
+   "Blessed her house",
+   "Made an atonement for her",
+   "Washed her clothes",
+   "Gave her bread"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall make an atonement for her, and she shall be clean.",
+  "ref": "Leviticus 12:8"
+ },
+ {
+  "id": "leviticus-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the sanctuary-related rule that applied for the entire purifying days?",
+  "choices": [
+   "She could dwell in it",
+   "She could not come into it",
+   "She had to serve in it",
+   "She could sleep in it"
+  ],
+  "answer": 1,
+  "explanation": "She shall touch no hallowed thing, nor come into the sanctuary.",
+  "ref": "Leviticus 12:4"
+ },
+ {
+  "id": "leviticus-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "A daughter's first unclean period was how many times a son's?",
+  "choices": [
+   "Three times",
+   "Twice",
+   "Equal",
+   "Four times"
+  ],
+  "answer": 1,
+  "explanation": "A son: unclean seven days; a maid child: unclean two weeks.",
+  "ref": "Leviticus 12:2–5"
+ },
+ {
+  "id": "leviticus-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When was she to bring the lamb and the bird?",
+  "choices": [
+   "On the eighth day",
+   "When the days of her purifying were fulfilled",
+   "On the seventh day",
+   "Before the child was born"
+  ],
+  "answer": 1,
+  "explanation": "When the days of her purifying are fulfilled, she shall bring a lamb.",
+  "ref": "Leviticus 12:6"
+ },
+ {
+  "id": "leviticus-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which was named first in the poor woman's offering: turtles or pigeons?",
+  "choices": [
+   "Pigeons",
+   "Turtles",
+   "Sparrows",
+   "Lambs"
+  ],
+  "answer": 1,
+  "explanation": "She shall bring two turtles, or two young pigeons.",
+  "ref": "Leviticus 12:8"
+ },
+ {
+  "id": "leviticus-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What age were the pigeons the poor woman could bring?",
+  "choices": [
+   "Old",
+   "Young",
+   "Of the first year",
+   "Eight days old"
+  ],
+  "answer": 1,
+  "explanation": "She shall bring two turtles, or two young pigeons.",
+  "ref": "Leviticus 12:8"
+ },
+ {
+  "id": "leviticus-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What word describes the things she was not to touch?",
+  "choices": [
+   "Common",
+   "Hallowed",
+   "Clean",
+   "Sacred oil"
+  ],
+  "answer": 1,
+  "explanation": "She shall touch no hallowed thing.",
+  "ref": "Leviticus 12:4"
+ },
+ {
+  "id": "leviticus-12-m-15",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest's atonement make the poor woman?",
+  "choices": [
+   "Priestly",
+   "Clean",
+   "Holy",
+   "Free from her vow"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall make an atonement for her, and she shall be clean.",
+  "ref": "Leviticus 12:8"
+ },
+ {
+  "id": "leviticus-12-h-15",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After a son's first unclean period, what number of days came next?",
+  "choices": [
+   "Three and thirty",
+   "Seven",
+   "Sixty-six",
+   "Two weeks"
+  ],
+  "answer": 0,
+  "explanation": "She shall then continue in the blood of her purifying three and thirty days.",
+  "ref": "Leviticus 12:4"
+ },
+ {
   "id": "old-leviticus-13-1",
   "chapter": 13,
   "level": "beginner",
