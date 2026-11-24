@@ -11648,6 +11648,646 @@
   "ref": "Deuteronomy 17:18"
  },
  {
+  "id": "deuteronomy-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD call a blemished bullock or sheep offered to Him?",
+  "choices": [
+   "An abomination",
+   "A gift",
+   "A firstling",
+   "A peace offering"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not sacrifice unto the LORD thy God any bullock, or sheep, wherein is blemish... for that is an abomination unto the LORD thy God.",
+  "ref": "Deuteronomy 17:1"
+ },
+ {
+  "id": "deuteronomy-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What heavenly bodies did the wicked man or woman worship?",
+  "choices": [
+   "The clouds and the rain",
+   "The mountains and hills",
+   "The rivers and seas",
+   "The sun, the moon or the host of heaven"
+  ],
+  "answer": 3,
+  "explanation": "Served other gods, and worshipped them, either the sun, or moon, or any of the host of heaven.",
+  "ref": "Deuteronomy 17:3"
+ },
+ {
+  "id": "deuteronomy-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was the man or woman who served other gods put to death?",
+  "choices": [
+   "Burned with fire",
+   "Hanged on a tree",
+   "Stoned with stones",
+   "Struck with a sword"
+  ],
+  "answer": 2,
+  "explanation": "Shalt stone them with stones, till they die.",
+  "ref": "Deuteronomy 17:5"
+ },
+ {
+  "id": "deuteronomy-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Could a man be put to death at the mouth of one witness?",
+  "choices": [
+   "Yes, if the priest agreed",
+   "No",
+   "Yes, if he confessed",
+   "Yes, if the king commanded"
+  ],
+  "answer": 1,
+  "explanation": "At the mouth of one witness he shall not be put to death.",
+  "ref": "Deuteronomy 17:6"
+ },
+ {
+  "id": "deuteronomy-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose hands were first upon the guilty one?",
+  "choices": [
+   "The priests",
+   "The witnesses",
+   "The elders",
+   "The king"
+  ],
+  "answer": 1,
+  "explanation": "The hands of the witnesses shall be first upon him to put him to death, and afterward the hands of all the people.",
+  "ref": "Deuteronomy 17:7"
+ },
+ {
+  "id": "deuteronomy-17-e-06",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did Israel come with a matter too hard for judgment?",
+  "choices": [
+   "The priests the Levites and the judge",
+   "The elders and the king",
+   "The captain and the scribe",
+   "The prophet and the stranger"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt come unto the priests the Levites, and unto the judge that shall be in those days, and enquire.",
+  "ref": "Deuteronomy 17:9"
+ },
+ {
+  "id": "deuteronomy-17-e-07",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "What does Israel say they will set over them when in the land?",
+  "choices": [
+   "A priest",
+   "A prophet",
+   "A captain",
+   "A king"
+  ],
+  "answer": 3,
+  "explanation": "I will set a king over me, like as all the nations that are about me.",
+  "ref": "Deuteronomy 17:14"
+ },
+ {
+  "id": "deuteronomy-17-e-08",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom shall the king come from?",
+  "choices": [
+   "The Levites",
+   "The strangers",
+   "Israel's brethren",
+   "The Egyptians"
+  ],
+  "answer": 2,
+  "explanation": "One from among thy brethren shalt thou set king over thee: thou mayest not set a stranger over thee.",
+  "ref": "Deuteronomy 17:15"
+ },
+ {
+  "id": "deuteronomy-17-e-09",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must the king not do to horses?",
+  "choices": [
+   "Ride them",
+   "Sell them",
+   "Multiply them to himself",
+   "Feed them"
+  ],
+  "answer": 2,
+  "explanation": "But he shall not multiply horses to himself.",
+  "ref": "Deuteronomy 17:16"
+ },
+ {
+  "id": "deuteronomy-17-e-10",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "To what land must the people not return?",
+  "choices": [
+   "Moab",
+   "Egypt",
+   "Edom",
+   "Midian"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall henceforth return no more that way.",
+  "ref": "Deuteronomy 17:16"
+ },
+ {
+  "id": "deuteronomy-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the wicked person had transgressed?",
+  "choices": [
+   "The king's decree",
+   "The LORD's covenant",
+   "The elders' counsel",
+   "The Levite's portion"
+  ],
+  "answer": 1,
+  "explanation": "That hath wrought wickedness in the sight of the LORD thy God, in transgressing his covenant.",
+  "ref": "Deuteronomy 17:2"
+ },
+ {
+  "id": "deuteronomy-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must be done before the stoning when it is told to Israel?",
+  "choices": [
+   "Enquire diligently and find the thing true and certain",
+   "Send to the king",
+   "Wait a year",
+   "Cast lots"
+  ],
+  "answer": 0,
+  "explanation": "And thou hast heard of it, and enquired diligently, and, behold, it be true, and the thing certain.",
+  "ref": "Deuteronomy 17:4"
+ },
+ {
+  "id": "deuteronomy-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the guilty man or woman brought out to be stoned?",
+  "choices": [
+   "Unto thy gates",
+   "Unto the altar",
+   "Unto the camp",
+   "Unto the mountain"
+  ],
+  "answer": 0,
+  "explanation": "Then shalt thou bring forth that man or that woman... unto thy gates.",
+  "ref": "Deuteronomy 17:5"
+ },
+ {
+  "id": "deuteronomy-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What matters could be too hard for the judges of the gates?",
+  "choices": [
+   "Between wheat and barley",
+   "Between tithe and offering",
+   "Between feast and fast",
+   "Between blood and blood, plea and plea, stroke and stroke"
+  ],
+  "answer": 3,
+  "explanation": "Between blood and blood, between plea and plea, and between stroke and stroke, being matters of controversy.",
+  "ref": "Deuteronomy 17:8"
+ },
+ {
+  "id": "deuteronomy-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How closely was Israel to follow the sentence given at the chosen place?",
+  "choices": [
+   "Only in the first year",
+   "Only in matters of blood",
+   "Not turn to the right hand nor to the left",
+   "Only if the elders agreed"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt not decline from the sentence which they shall shew thee, to the right hand, nor to the left.",
+  "ref": "Deuteronomy 17:11"
+ },
+ {
+  "id": "deuteronomy-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the man who will not hearken to the priest or judge?",
+  "choices": [
+   "He is fined",
+   "He shall die",
+   "He is exiled",
+   "He is scourged"
+  ],
+  "answer": 1,
+  "explanation": "Even that man shall die: and thou shalt put away the evil from Israel.",
+  "ref": "Deuteronomy 17:12"
+ },
+ {
+  "id": "deuteronomy-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the people do after seeing the sentence on the presumptuous man?",
+  "choices": [
+   "Praise the judge",
+   "Hear, fear and do no more presumptuously",
+   "Pay a tithe",
+   "Go up to the chosen place"
+  ],
+  "answer": 1,
+  "explanation": "And all the people shall hear, and fear, and do no more presumptuously.",
+  "ref": "Deuteronomy 17:13"
+ },
+ {
+  "id": "deuteronomy-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who chooses the king Israel sets over them?",
+  "choices": [
+   "The LORD",
+   "The elders",
+   "The priests",
+   "The people"
+  ],
+  "answer": 0,
+  "explanation": "Whom the LORD thy God shall choose.",
+  "ref": "Deuteronomy 17:15"
+ },
+ {
+  "id": "deuteronomy-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the king not to cause the people to return to Egypt?",
+  "choices": [
+   "Egypt was too far",
+   "Egypt had no horses",
+   "Egypt would attack them",
+   "The LORD said they shall return no more that way"
+  ],
+  "answer": 3,
+  "explanation": "Forasmuch as the LORD hath said unto you, Ye shall henceforth return no more that way.",
+  "ref": "Deuteronomy 17:16"
+ },
+ {
+  "id": "deuteronomy-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the king not to multiply wives?",
+  "choices": [
+   "That his house stay small",
+   "That his sons be few",
+   "That his heart turn not away",
+   "That his silver be kept"
+  ],
+  "answer": 2,
+  "explanation": "Neither shall he multiply wives to himself, that his heart turn not away.",
+  "ref": "Deuteronomy 17:17"
+ },
+ {
+  "id": "deuteronomy-17-m-11",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From what was the king's copy of the law written?",
+  "choices": [
+   "Out of the stones of Ebal",
+   "Out of the ark's scroll alone",
+   "Out of that which is before the priests the Levites",
+   "Out of the elders' memory"
+  ],
+  "answer": 2,
+  "explanation": "He shall write him a copy of this law in a book out of that which is before the priests the Levites.",
+  "ref": "Deuteronomy 17:18"
+ },
+ {
+  "id": "deuteronomy-17-m-12",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When was the king to write the copy of the law?",
+  "choices": [
+   "Before he is chosen",
+   "When he sitteth upon the throne of his kingdom",
+   "In his first battle",
+   "In his last year"
+  ],
+  "answer": 1,
+  "explanation": "When he sitteth upon the throne of his kingdom, that he shall write him a copy of this law.",
+  "ref": "Deuteronomy 17:18"
+ },
+ {
+  "id": "deuteronomy-17-m-13",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For how long was the king to read the law?",
+  "choices": [
+   "All the days of his life",
+   "Seven days",
+   "Every seventh year",
+   "Until the next feast"
+  ],
+  "answer": 0,
+  "explanation": "He shall read therein all the days of his life.",
+  "ref": "Deuteronomy 17:19"
+ },
+ {
+  "id": "deuteronomy-17-m-14",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the king to read the law all his life?",
+  "choices": [
+   "That he may win wars",
+   "That he may gather silver",
+   "That he may judge alone",
+   "That he may learn to fear the LORD his God"
+  ],
+  "answer": 3,
+  "explanation": "That he may learn to fear the LORD his God, to keep all the words of this law and these statutes.",
+  "ref": "Deuteronomy 17:19"
+ },
+ {
+  "id": "deuteronomy-17-m-15",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the king's reading keep his heart from?",
+  "choices": [
+   "Wandering in the wilderness",
+   "Being proud of his horses",
+   "Fearing his enemies",
+   "Being lifted up above his brethren"
+  ],
+  "answer": 3,
+  "explanation": "That his heart be not lifted up above his brethren.",
+  "ref": "Deuteronomy 17:20"
+ },
+ {
+  "id": "deuteronomy-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is a blemished sacrifice also described as, besides blemish?",
+  "choices": [
+   "Weakness",
+   "Uncleanness",
+   "Barrenness",
+   "Evilfavouredness"
+  ],
+  "answer": 3,
+  "explanation": "Any bullock, or sheep, wherein is blemish, or any evilfavouredness.",
+  "ref": "Deuteronomy 17:1"
+ },
+ {
+  "id": "deuteronomy-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the wicked man or woman found?",
+  "choices": [
+   "At the tabernacle",
+   "In the wilderness",
+   "Within any of the gates the LORD gave",
+   "Among the Levites"
+  ],
+  "answer": 2,
+  "explanation": "If there be found among you, within any of thy gates which the LORD thy God giveth thee.",
+  "ref": "Deuteronomy 17:2"
+ },
+ {
+  "id": "deuteronomy-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the chapter say was not commanded by the LORD that they worshipped?",
+  "choices": [
+   "The sun alone",
+   "The host of heaven",
+   "The idols of Egypt",
+   "The groves"
+  ],
+  "answer": 1,
+  "explanation": "Or any of the host of heaven, which I have not commanded.",
+  "ref": "Deuteronomy 17:3"
+ },
+ {
+  "id": "deuteronomy-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After the hands of the witnesses, whose hands came next?",
+  "choices": [
+   "The elders",
+   "The hands of all the people",
+   "The priests",
+   "The king"
+  ],
+  "answer": 1,
+  "explanation": "The hands of the witnesses shall be first upon him... and afterward the hands of all the people.",
+  "ref": "Deuteronomy 17:7"
+ },
+ {
+  "id": "deuteronomy-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Israel put away by putting the guilty to death?",
+  "choices": [
+   "The evil from among them",
+   "The sin offering",
+   "The unclean beast",
+   "The strangers"
+  ],
+  "answer": 0,
+  "explanation": "So thou shalt put the evil away from among you.",
+  "ref": "Deuteronomy 17:7"
+ },
+ {
+  "id": "deuteronomy-17-h-06",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two groups are named in the matter too hard for judgment, aside from the judge?",
+  "choices": [
+   "The elders and the scribes",
+   "The captains and the kings",
+   "The prophets and the princes",
+   "The priests the Levites"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt come unto the priests the Levites, and unto the judge that shall be in those days.",
+  "ref": "Deuteronomy 17:9"
+ },
+ {
+  "id": "deuteronomy-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the judges and priests show Israel?",
+  "choices": [
+   "The way to Egypt",
+   "The tithes owed",
+   "The sentence of judgment",
+   "The feast days"
+  ],
+  "answer": 2,
+  "explanation": "And they shall shew thee the sentence of judgment.",
+  "ref": "Deuteronomy 17:9"
+ },
+ {
+  "id": "deuteronomy-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Which person stands to minister before the LORD at the chosen place?",
+  "choices": [
+   "The judge",
+   "The stranger",
+   "The priest",
+   "The scribe"
+  ],
+  "answer": 2,
+  "explanation": "Will not hearken unto the priest that standeth to minister there before the LORD thy God.",
+  "ref": "Deuteronomy 17:12"
+ },
+ {
+  "id": "deuteronomy-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom may the king not be?",
+  "choices": [
+   "A Levite",
+   "A stranger, not a brother",
+   "A priest",
+   "A shepherd"
+  ],
+  "answer": 1,
+  "explanation": "Thou mayest not set a stranger over thee, which is not thy brother.",
+  "ref": "Deuteronomy 17:15"
+ },
+ {
+  "id": "deuteronomy-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides wives, what must the king not greatly multiply?",
+  "choices": [
+   "Silver and gold",
+   "Servants",
+   "Chariots",
+   "Flocks"
+  ],
+  "answer": 0,
+  "explanation": "Neither shall he greatly multiply to himself silver and gold.",
+  "ref": "Deuteronomy 17:17"
+ },
+ {
+  "id": "deuteronomy-17-h-11",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where does the king sit when he writes the copy of the law?",
+  "choices": [
+   "In the tent of meeting",
+   "At the gate",
+   "On the chosen mountain",
+   "Upon the throne of his kingdom"
+  ],
+  "answer": 3,
+  "explanation": "When he sitteth upon the throne of his kingdom.",
+  "ref": "Deuteronomy 17:18"
+ },
+ {
+  "id": "deuteronomy-17-h-12",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the king and his children prolong in the midst of Israel?",
+  "choices": [
+   "His wars",
+   "His armies",
+   "His wealth",
+   "His days in his kingdom"
+  ],
+  "answer": 3,
+  "explanation": "To the end that he may prolong his days in his kingdom, he, and his children, in the midst of Israel.",
+  "ref": "Deuteronomy 17:20"
+ },
+ {
+  "id": "deuteronomy-17-h-13",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the king not turn aside from to the right hand or the left?",
+  "choices": [
+   "The altar",
+   "The throne",
+   "The commandment",
+   "The Levites"
+  ],
+  "answer": 2,
+  "explanation": "That he turn not aside from the commandment, to the right hand, or to the left.",
+  "ref": "Deuteronomy 17:20"
+ },
+ {
+  "id": "deuteronomy-17-h-14",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "A matter too hard for whom did Moses speak of, before Israel went up to the chosen place?",
+  "choices": [
+   "For thee in judgment",
+   "For the king",
+   "For the priest",
+   "For the stranger"
+  ],
+  "answer": 0,
+  "explanation": "If there arise a matter too hard for thee in judgment... then shalt thou arise, and get thee up into the place which the LORD thy God shall choose.",
+  "ref": "Deuteronomy 17:8"
+ },
+ {
+  "id": "deuteronomy-17-h-15",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD call the man or woman's deed of serving other gods?",
+  "choices": [
+   "Wickedness in His sight",
+   "A small sin",
+   "A foolish vow",
+   "A gift of the heart"
+  ],
+  "answer": 0,
+  "explanation": "Man or woman, that hath wrought wickedness in the sight of the LORD thy God, in transgressing his covenant.",
+  "ref": "Deuteronomy 17:2"
+ },
+ {
   "id": "old-deuteronomy-18-1",
   "chapter": 18,
   "level": "beginner",
