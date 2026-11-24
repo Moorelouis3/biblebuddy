@@ -80,6 +80,646 @@
   "ref": "Joshua 1:12–15"
  },
  {
+  "id": "joshua-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the LORD speak to after the death of Moses?",
+  "choices": [
+   "Caleb",
+   "Joshua",
+   "Eleazar",
+   "Phinehas"
+  ],
+  "answer": 1,
+  "explanation": "After the death of Moses the LORD spake unto Joshua the son of Nun, Moses' minister.",
+  "ref": "Joshua 1:1"
+ },
+ {
+  "id": "joshua-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD call Moses when He told Joshua he was dead?",
+  "choices": [
+   "My prophet",
+   "My servant",
+   "My friend",
+   "My priest"
+  ],
+  "answer": 1,
+  "explanation": "Moses my servant is dead; now therefore arise, go over this Jordan.",
+  "ref": "Joshua 1:2"
+ },
+ {
+  "id": "joshua-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the LORD say would be with Joshua wherever he went?",
+  "choices": [
+   "The elders of Israel",
+   "The LORD his God",
+   "The ark of the covenant",
+   "The angel of the LORD"
+  ],
+  "answer": 1,
+  "explanation": "Be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest.",
+  "ref": "Joshua 1:9"
+ },
+ {
+  "id": "joshua-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When was Joshua to meditate in the book of the law?",
+  "choices": [
+   "Every morning",
+   "Day and night",
+   "On the Sabbath",
+   "Every seven years"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt meditate therein day and night, that thou mayest observe to do according to all that is written therein.",
+  "ref": "Joshua 1:8"
+ },
+ {
+  "id": "joshua-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua tell the officers to tell the people to prepare?",
+  "choices": [
+   "Weapons",
+   "Victuals",
+   "Boats",
+   "Altars"
+  ],
+  "answer": 1,
+  "explanation": "Pass through the host, and command the people, saying, Prepare you victuals.",
+  "ref": "Joshua 1:11"
+ },
+ {
+  "id": "joshua-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom had Israel hearkened to in all things before Joshua?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Caleb",
+   "Eleazar"
+  ],
+  "answer": 1,
+  "explanation": "According as we hearkened unto Moses in all things, so will we hearken unto thee.",
+  "ref": "Joshua 1:17"
+ },
+ {
+  "id": "joshua-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people answer Joshua?",
+  "choices": [
+   "We will return to Egypt",
+   "All that thou commandest us we will do",
+   "We will wait for Moses",
+   "We will choose a king"
+  ],
+  "answer": 1,
+  "explanation": "And they answered Joshua, saying, All that thou commandest us we will do.",
+  "ref": "Joshua 1:16"
+ },
+ {
+  "id": "joshua-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Joshua command to pass through the host?",
+  "choices": [
+   "The priests",
+   "The officers of the people",
+   "The elders",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "Then Joshua commanded the officers of the people, saying, Pass through the host.",
+  "ref": "Joshua 1:10"
+ },
+ {
+  "id": "joshua-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which great river is named as the edge of the land given to Israel?",
+  "choices": [
+   "The Nile",
+   "The Euphrates",
+   "The Jabbok",
+   "The Arnon"
+  ],
+  "answer": 1,
+  "explanation": "From the wilderness and this Lebanon even unto the great river, the river Euphrates.",
+  "ref": "Joshua 1:4"
+ },
+ {
+  "id": "joshua-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the LORD say He gave the land?",
+  "choices": [
+   "The Levites only",
+   "The children of Israel",
+   "The Hittites",
+   "The elders of Moab"
+  ],
+  "answer": 1,
+  "explanation": "Go over this Jordan, thou, and all this people, unto the land which I do give to them, even to the children of Israel.",
+  "ref": "Joshua 1:2"
+ },
+ {
+  "id": "joshua-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In how many days would Israel pass over the Jordan?",
+  "choices": [
+   "Two",
+   "Seven",
+   "Forty",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "Within three days ye shall pass over this Jordan, to go in to possess the land.",
+  "ref": "Joshua 1:11"
+ },
+ {
+  "id": "joshua-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "All the land of which people lay within Israel's promised coast?",
+  "choices": [
+   "The Egyptians",
+   "The Philistines",
+   "The Moabites",
+   "The Hittites"
+  ],
+  "answer": 3,
+  "explanation": "Unto the great river, the river Euphrates, all the land of the Hittites.",
+  "ref": "Joshua 1:4"
+ },
+ {
+  "id": "joshua-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He had given Israel, as He said to Moses?",
+  "choices": [
+   "Every city of Egypt",
+   "Every mountain in Moab",
+   "Every well in the wilderness",
+   "Every place the sole of their foot shall tread"
+  ],
+  "answer": 3,
+  "explanation": "Every place that the sole of your foot shall tread upon, that have I given unto you, as I said unto Moses.",
+  "ref": "Joshua 1:3"
+ },
+ {
+  "id": "joshua-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long would no man be able to stand before Joshua?",
+  "choices": [
+   "For forty years",
+   "Until the land was divided",
+   "Until he crossed Jordan",
+   "All the days of his life"
+  ],
+  "answer": 3,
+  "explanation": "There shall not any man be able to stand before thee all the days of thy life.",
+  "ref": "Joshua 1:5"
+ },
+ {
+  "id": "joshua-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD promise Joshua, as He had been with Moses?",
+  "choices": [
+   "I will give thee a crown",
+   "I will make thee a priest",
+   "I will make thee king over Edom",
+   "I will not fail thee, nor forsake thee"
+  ],
+  "answer": 3,
+  "explanation": "As I was with Moses, so I will be with thee: I will not fail thee, nor forsake thee.",
+  "ref": "Joshua 1:5"
+ },
+ {
+  "id": "joshua-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Joshua to divide unto the people for an inheritance?",
+  "choices": [
+   "The spoil of Egypt",
+   "The cities of the Levites",
+   "The cattle",
+   "The land"
+  ],
+  "answer": 3,
+  "explanation": "Unto this people shalt thou divide for an inheritance the land.",
+  "ref": "Joshua 1:6"
+ },
+ {
+  "id": "joshua-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Joshua was told not to turn from the law to where?",
+  "choices": [
+   "Toward Egypt",
+   "Toward the wilderness",
+   "Toward the sea",
+   "To the right hand or to the left"
+  ],
+  "answer": 3,
+  "explanation": "Turn not from it to the right hand or to the left, that thou mayest prosper.",
+  "ref": "Joshua 1:7"
+ },
+ {
+  "id": "joshua-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Joshua was told to observe to do according to what?",
+  "choices": [
+   "All the counsel of the elders",
+   "All the dreams of the prophets",
+   "All the customs of Canaan",
+   "All the law Moses commanded"
+  ],
+  "answer": 3,
+  "explanation": "That thou mayest observe to do according to all the law, which Moses my servant commanded thee.",
+  "ref": "Joshua 1:7"
+ },
+ {
+  "id": "joshua-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to remain in the land Moses gave on the east side of Jordan?",
+  "choices": [
+   "Only the old men",
+   "The ark",
+   "The tents of the priests",
+   "Wives, little ones and cattle"
+  ],
+  "answer": 3,
+  "explanation": "Your wives, your little ones, and your cattle, shall remain in the land which Moses gave you on this side Jordan.",
+  "ref": "Joshua 1:14"
+ },
+ {
+  "id": "joshua-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were to pass before their brethren armed?",
+  "choices": [
+   "Only the priests",
+   "The firstborn sons",
+   "The elders",
+   "All the mighty men of valour"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall pass before your brethren armed, all the mighty men of valour, and help them.",
+  "ref": "Joshua 1:14"
+ },
+ {
+  "id": "joshua-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long were the two and a half tribes to help their brethren?",
+  "choices": [
+   "For seven years",
+   "Until Jericho fell",
+   "Until Joshua died",
+   "Until the LORD gave them rest"
+  ],
+  "answer": 3,
+  "explanation": "Until the LORD have given your brethren rest, as he hath given you.",
+  "ref": "Joshua 1:15"
+ },
+ {
+  "id": "joshua-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to anyone who rebelled against Joshua's commandment?",
+  "choices": [
+   "He would be exiled",
+   "He would pay a fine",
+   "He would be beaten",
+   "He would be put to death"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever doth rebel against thy commandment shall be put to death.",
+  "ref": "Joshua 1:18"
+ },
+ {
+  "id": "joshua-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the people say they would go?",
+  "choices": [
+   "Back to Egypt",
+   "Only to Jericho",
+   "Only where the ark went",
+   "Wherever Joshua sent them"
+  ],
+  "answer": 3,
+  "explanation": "Whithersoever thou sendest us, we will go.",
+  "ref": "Joshua 1:16"
+ },
+ {
+  "id": "joshua-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people ask for Joshua?",
+  "choices": [
+   "That he live long",
+   "That he be made king",
+   "That he build a temple",
+   "That the LORD be with him as with Moses"
+  ],
+  "answer": 3,
+  "explanation": "Only the LORD thy God be with thee, as he was with Moses.",
+  "ref": "Joshua 1:17"
+ },
+ {
+  "id": "joshua-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the land Moses gave the two and a half tribes?",
+  "choices": [
+   "Beyond the great sea",
+   "Near Mount Sinai",
+   "Beside the Euphrates",
+   "On this side Jordan toward the sunrising"
+  ],
+  "answer": 3,
+  "explanation": "Moses the LORD'S servant gave you on this side Jordan toward the sunrising.",
+  "ref": "Joshua 1:15"
+ },
+ {
+  "id": "joshua-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which mountain range is named as a boundary: 'this ___'?",
+  "choices": [
+   "Lebanon",
+   "Hermon",
+   "Carmel",
+   "Seir"
+  ],
+  "answer": 0,
+  "explanation": "From the wilderness and this Lebanon even unto the great river, the river Euphrates.",
+  "ref": "Joshua 1:4"
+ },
+ {
+  "id": "joshua-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which sea lay toward the going down of the sun in Israel's coast?",
+  "choices": [
+   "The great sea",
+   "The Red Sea",
+   "The Salt Sea",
+   "The sea of Chinnereth"
+  ],
+  "answer": 0,
+  "explanation": "And unto the great sea toward the going down of the sun, shall be your coast.",
+  "ref": "Joshua 1:4"
+ },
+ {
+  "id": "joshua-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom had the LORD sworn to give the land?",
+  "choices": [
+   "Their fathers",
+   "The kings of Canaan",
+   "Moses alone",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "The land, which I sware unto their fathers to give them.",
+  "ref": "Joshua 1:6"
+ },
+ {
+  "id": "joshua-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If Joshua meditated in the law day and night, what would he have?",
+  "choices": [
+   "Good success",
+   "Long life",
+   "Great riches",
+   "Many sons"
+  ],
+  "answer": 0,
+  "explanation": "Then thou shalt make thy way prosperous, and then thou shalt have good success.",
+  "ref": "Joshua 1:8"
+ },
+ {
+  "id": "joshua-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joshua told the two and a half tribes the LORD had given them what?",
+  "choices": [
+   "Rest",
+   "Peace offerings",
+   "Flocks",
+   "Captives"
+  ],
+  "answer": 0,
+  "explanation": "The LORD your God hath given you rest, and hath given you this land.",
+  "ref": "Joshua 1:13"
+ },
+ {
+  "id": "joshua-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joshua was told: 'Be not afraid, neither be thou ___'.",
+  "choices": [
+   "Dismayed",
+   "Weary",
+   "Silent",
+   "Hasty"
+  ],
+  "answer": 0,
+  "explanation": "Be not afraid, neither be thou dismayed: for the LORD thy God is with thee.",
+  "ref": "Joshua 1:9"
+ },
+ {
+  "id": "joshua-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joshua was told to be strong and very what?",
+  "choices": [
+   "Courageous",
+   "Wise",
+   "Patient",
+   "Humble"
+  ],
+  "answer": 0,
+  "explanation": "Only be thou strong and very courageous, that thou mayest observe to do according to all the law.",
+  "ref": "Joshua 1:7"
+ },
+ {
+  "id": "joshua-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say to Joshua just before the second 'Be strong and of a good courage'?",
+  "choices": [
+   "Have not I commanded thee?",
+   "Fear not the giants",
+   "Rest in the camp",
+   "Count the host"
+  ],
+  "answer": 0,
+  "explanation": "Have not I commanded thee? Be strong and of a good courage; be not afraid.",
+  "ref": "Joshua 1:9"
+ },
+ {
+  "id": "joshua-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were the officers told to pass?",
+  "choices": [
+   "Through the host",
+   "Over Jordan",
+   "Around Jericho",
+   "Before the ark"
+  ],
+  "answer": 0,
+  "explanation": "Pass through the host, and command the people.",
+  "ref": "Joshua 1:11"
+ },
+ {
+  "id": "joshua-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the river Euphrates called in the chapter?",
+  "choices": [
+   "The great river",
+   "The mighty river",
+   "The river of Eden",
+   "The eastern flood"
+  ],
+  "answer": 0,
+  "explanation": "Even unto the great river, the river Euphrates.",
+  "ref": "Joshua 1:4"
+ },
+ {
+  "id": "joshua-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the two and a half tribes told to remember?",
+  "choices": [
+   "The word Moses commanded",
+   "The covenant at Sinai",
+   "The names of the tribes",
+   "The wrath of the LORD"
+  ],
+  "answer": 0,
+  "explanation": "Remember the word which Moses the servant of the LORD commanded you.",
+  "ref": "Joshua 1:13"
+ },
+ {
+  "id": "joshua-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Joshua is called the minister of whom?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "Eleazar",
+   "Caleb"
+  ],
+  "answer": 0,
+  "explanation": "The LORD spake unto Joshua the son of Nun, Moses' minister.",
+  "ref": "Joshua 1:1"
+ },
+ {
+  "id": "joshua-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the two and a half tribes do after their brethren had rest?",
+  "choices": [
+   "Return to their land and enjoy it",
+   "Go on to Egypt",
+   "Camp at Gilgal forever",
+   "Build a temple"
+  ],
+  "answer": 0,
+  "explanation": "Then ye shall return unto the land of your possession, and enjoy it.",
+  "ref": "Joshua 1:15"
+ },
+ {
+  "id": "joshua-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Joshua to do after saying Moses was dead?",
+  "choices": [
+   "Arise, go over this Jordan",
+   "Wait at Shittim",
+   "Build an altar",
+   "Send out spies"
+  ],
+  "answer": 0,
+  "explanation": "Moses my servant is dead; now therefore arise, go over this Jordan.",
+  "ref": "Joshua 1:2"
+ },
+ {
+  "id": "joshua-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the mighty men of valour to do for their brethren?",
+  "choices": [
+   "Help them",
+   "Feed them",
+   "Teach them",
+   "Lead them"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall pass before your brethren armed, all the mighty men of valour, and help them.",
+  "ref": "Joshua 1:14"
+ },
+ {
   "id": "old-joshua-2-1",
   "chapter": 2,
   "level": "beginner",
