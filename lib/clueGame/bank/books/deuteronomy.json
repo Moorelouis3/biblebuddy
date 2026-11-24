@@ -80,6 +80,646 @@
   "ref": "Deuteronomy 1:26–32"
  },
  {
+  "id": "deuteronomy-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who spoke these words to all Israel?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Joshua",
+   "Caleb"
+  ],
+  "answer": 1,
+  "explanation": "These be the words which Moses spake unto all Israel on this side Jordan.",
+  "ref": "Deuteronomy 1:1"
+ },
+ {
+  "id": "deuteronomy-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In which year did Moses speak to the children of Israel?",
+  "choices": [
+   "The second",
+   "The twentieth",
+   "The fortieth",
+   "The seventieth"
+  ],
+  "answer": 2,
+  "explanation": "It came to pass in the fortieth year, in the eleventh month, that Moses spake unto the children of Israel.",
+  "ref": "Deuteronomy 1:3"
+ },
+ {
+  "id": "deuteronomy-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men were chosen to search out the land?",
+  "choices": [
+   "Seven",
+   "Twelve",
+   "Ten",
+   "Two"
+  ],
+  "answer": 1,
+  "explanation": "I took twelve men of you, one of a tribe.",
+  "ref": "Deuteronomy 1:23"
+ },
+ {
+  "id": "deuteronomy-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "At which mountain did the LORD tell Israel they had dwelt long enough?",
+  "choices": [
+   "Horeb",
+   "Sinai",
+   "Nebo",
+   "Hor"
+  ],
+  "answer": 0,
+  "explanation": "The LORD our God spake unto us in Horeb: Ye have dwelt long enough in this mount.",
+  "ref": "Deuteronomy 1:6"
+ },
+ {
+  "id": "deuteronomy-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was promised he would see the land because he wholly followed the LORD?",
+  "choices": [
+   "Joshua",
+   "Moses",
+   "Caleb",
+   "Aaron"
+  ],
+  "answer": 2,
+  "explanation": "Save Caleb the son of Jephunneh; he shall see it, because he hath wholly followed the LORD.",
+  "ref": "Deuteronomy 1:36"
+ },
+ {
+  "id": "deuteronomy-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was told he would not go into the land for the people's sake?",
+  "choices": [
+   "Moses",
+   "Caleb",
+   "Eleazar",
+   "Joshua"
+  ],
+  "answer": 0,
+  "explanation": "The LORD was angry with me for your sakes, saying, Thou also shalt not go in thither.",
+  "ref": "Deuteronomy 1:37"
+ },
+ {
+  "id": "deuteronomy-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which three fathers had the LORD sworn to give the land?",
+  "choices": [
+   "Abraham, Isaac and Jacob",
+   "Noah, Shem and Ham",
+   "Adam, Seth and Enoch",
+   "Levi, Judah and Joseph"
+  ],
+  "answer": 0,
+  "explanation": "The land which the LORD sware unto your fathers, Abraham, Isaac, and Jacob.",
+  "ref": "Deuteronomy 1:8"
+ },
+ {
+  "id": "deuteronomy-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What guided Israel by day?",
+  "choices": [
+   "A pillar of smoke",
+   "A cloud",
+   "A star",
+   "An angel"
+  ],
+  "answer": 1,
+  "explanation": "The LORD went before you to shew you the way, in fire by night and in a cloud by day.",
+  "ref": "Deuteronomy 1:33"
+ },
+ {
+  "id": "deuteronomy-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which group, said to be a prey, would be given the land?",
+  "choices": [
+   "Your little ones",
+   "Your elders",
+   "Your priests",
+   "Your captains"
+  ],
+  "answer": 0,
+  "explanation": "Your little ones, which ye said should be a prey, shall go in thither, and unto them will I give it.",
+  "ref": "Deuteronomy 1:39"
+ },
+ {
+  "id": "deuteronomy-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who chased Israel like bees when they went up into the hill?",
+  "choices": [
+   "The Moabites",
+   "The Egyptians",
+   "The Amorites",
+   "The Edomites"
+  ],
+  "answer": 2,
+  "explanation": "The Amorites came out against you, and chased you, as bees do.",
+  "ref": "Deuteronomy 1:44"
+ },
+ {
+  "id": "deuteronomy-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which king of the Amorites, dwelling in Heshbon, had Moses slain?",
+  "choices": [
+   "Sihon",
+   "Og",
+   "Balak",
+   "Arad"
+  ],
+  "answer": 0,
+  "explanation": "He had slain Sihon the king of the Amorites, which dwelt in Heshbon.",
+  "ref": "Deuteronomy 1:4"
+ },
+ {
+  "id": "deuteronomy-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Og, whom Moses had slain, was king of what?",
+  "choices": [
+   "Moab",
+   "Ammon",
+   "Bashan",
+   "Edom"
+  ],
+  "answer": 2,
+  "explanation": "He had slain Og the king of Bashan.",
+  "ref": "Deuteronomy 1:4"
+ },
+ {
+  "id": "deuteronomy-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "In which land did Moses begin to declare this law?",
+  "choices": [
+   "Moab",
+   "Egypt",
+   "Gilead",
+   "Canaan"
+  ],
+  "answer": 0,
+  "explanation": "On this side Jordan, in the land of Moab, began Moses to declare this law.",
+  "ref": "Deuteronomy 1:5"
+ },
+ {
+  "id": "deuteronomy-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Which great river was named as the edge of the land?",
+  "choices": [
+   "Nile",
+   "Euphrates",
+   "Jordan",
+   "Tigris"
+  ],
+  "answer": 1,
+  "explanation": "Unto Lebanon, unto the great river, the river Euphrates.",
+  "ref": "Deuteronomy 1:7"
+ },
+ {
+  "id": "deuteronomy-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of men did Moses tell them to take as rulers?",
+  "choices": [
+   "Wise men, and understanding, and known among your tribes",
+   "Young soldiers",
+   "Only priests",
+   "The oldest of each family"
+  ],
+  "answer": 0,
+  "explanation": "Take you wise men, and understanding, and known among your tribes, and I will make them rulers over you.",
+  "ref": "Deuteronomy 1:13"
+ },
+ {
+  "id": "deuteronomy-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Moses made captains over thousands, hundreds, tens and what?",
+  "choices": [
+   "Twenties",
+   "Fifties",
+   "Seventies",
+   "Fours"
+  ],
+  "answer": 1,
+  "explanation": "Captains over thousands, and captains over hundreds, and captains over fifties, and captains over tens.",
+  "ref": "Deuteronomy 1:15"
+ },
+ {
+  "id": "deuteronomy-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the judges told to judge?",
+  "choices": [
+   "Quickly",
+   "Righteously",
+   "Secretly",
+   "Strictly"
+  ],
+  "answer": 1,
+  "explanation": "Judge righteously between every man and his brother, and the stranger that is with him.",
+  "ref": "Deuteronomy 1:16"
+ },
+ {
+  "id": "deuteronomy-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom were hard cases to be brought?",
+  "choices": [
+   "Eleazar",
+   "The captains of fifties",
+   "Joshua",
+   "Moses"
+  ],
+  "answer": 3,
+  "explanation": "The cause that is too hard for you, bring it unto me, and I will hear it.",
+  "ref": "Deuteronomy 1:17"
+ },
+ {
+  "id": "deuteronomy-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Which valley did the spies reach?",
+  "choices": [
+   "Eshcol",
+   "Sorek",
+   "Hebron",
+   "Zin"
+  ],
+  "answer": 0,
+  "explanation": "They came unto the valley of Eshcol, and searched it out.",
+  "ref": "Deuteronomy 1:24"
+ },
+ {
+  "id": "deuteronomy-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What report did the spies bring about the land?",
+  "choices": [
+   "It was a good land",
+   "It was empty",
+   "It was cursed",
+   "It was a dry land"
+  ],
+  "answer": 0,
+  "explanation": "They said, It is a good land which the LORD our God doth give us.",
+  "ref": "Deuteronomy 1:25"
+ },
+ {
+  "id": "deuteronomy-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Israel murmur in their tents?",
+  "choices": [
+   "They said the LORD hated them",
+   "They had no water",
+   "They wanted a king",
+   "They missed Egypt's gods"
+  ],
+  "answer": 0,
+  "explanation": "Because the LORD hated us, he hath brought us forth out of the land of Egypt.",
+  "ref": "Deuteronomy 1:27"
+ },
+ {
+  "id": "deuteronomy-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Israel say had discouraged their heart?",
+  "choices": [
+   "Their brethren",
+   "Moses",
+   "Aaron",
+   "Their children"
+  ],
+  "answer": 0,
+  "explanation": "Our brethren have discouraged our heart, saying, The people is greater and taller than we.",
+  "ref": "Deuteronomy 1:28"
+ },
+ {
+  "id": "deuteronomy-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose sons did the people say they had seen there?",
+  "choices": [
+   "The Anakims",
+   "The Moabites",
+   "The Edomites",
+   "The Philistines"
+  ],
+  "answer": 0,
+  "explanation": "We have seen the sons of the Anakims there.",
+  "ref": "Deuteronomy 1:28"
+ },
+ {
+  "id": "deuteronomy-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say to calm the people's fear?",
+  "choices": [
+   "Dread not, neither be afraid of them",
+   "Return to Egypt",
+   "Wait for Aaron",
+   "Build an altar"
+  ],
+  "answer": 0,
+  "explanation": "Then I said unto you, Dread not, neither be afraid of them.",
+  "ref": "Deuteronomy 1:29"
+ },
+ {
+  "id": "deuteronomy-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD say He would not let Israel's evil generation see the land?",
+  "choices": [
+   "He heard their words and was wroth",
+   "They had no leader",
+   "They were too weak",
+   "They worshipped idols"
+  ],
+  "answer": 0,
+  "explanation": "The LORD heard the voice of your words, and was wroth, and sware.",
+  "ref": "Deuteronomy 1:34"
+ },
+ {
+  "id": "deuteronomy-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "To which place did Israel come after leaving Horeb?",
+  "choices": [
+   "Kadesh-barnea",
+   "Hormah",
+   "Eshcol",
+   "Edrei"
+  ],
+  "answer": 0,
+  "explanation": "We departed from Horeb and we came to Kadesh-barnea.",
+  "ref": "Deuteronomy 1:19"
+ },
+ {
+  "id": "deuteronomy-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Moses describe the wilderness they crossed?",
+  "choices": [
+   "Great and terrible",
+   "Green and wide",
+   "Cold and still",
+   "Dry and short"
+  ],
+  "answer": 0,
+  "explanation": "We went through all that great and terrible wilderness.",
+  "ref": "Deuteronomy 1:19"
+ },
+ {
+  "id": "deuteronomy-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why would Caleb receive the land he had trodden upon?",
+  "choices": [
+   "He wholly followed the LORD",
+   "He was the eldest",
+   "He fought the Anakims",
+   "He led the spies"
+  ],
+  "answer": 0,
+  "explanation": "To him will I give the land that he hath trodden upon, because he hath wholly followed the LORD.",
+  "ref": "Deuteronomy 1:36"
+ },
+ {
+  "id": "deuteronomy-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "The plain where Moses spoke was over against which sea?",
+  "choices": [
+   "The Red sea",
+   "The Great sea",
+   "The salt sea",
+   "The sea of Chinnereth"
+  ],
+  "answer": 0,
+  "explanation": "In the plain over against the Red sea, between Paran, and Tophel, and Laban, and Hazeroth, and Dizahab.",
+  "ref": "Deuteronomy 1:1"
+ },
+ {
+  "id": "deuteronomy-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "The Amorites destroyed Israel in Seir, even to where?",
+  "choices": [
+   "Hormah",
+   "Kadesh",
+   "Eshcol",
+   "Heshbon"
+  ],
+  "answer": 0,
+  "explanation": "The Amorites chased you and destroyed you in Seir, even unto Hormah.",
+  "ref": "Deuteronomy 1:44"
+ },
+ {
+  "id": "deuteronomy-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month did Moses speak to Israel?",
+  "choices": [
+   "The first",
+   "The seventh",
+   "The tenth",
+   "The eleventh"
+  ],
+  "answer": 3,
+  "explanation": "In the fortieth year, in the eleventh month, on the first day of the month.",
+  "ref": "Deuteronomy 1:3"
+ },
+ {
+  "id": "deuteronomy-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "At which place did Og dwell?",
+  "choices": [
+   "Heshbon",
+   "Astaroth in Edrei",
+   "Mount Seir",
+   "Hazeroth"
+  ],
+  "answer": 1,
+  "explanation": "Og the king of Bashan, which dwelt at Astaroth in Edrei.",
+  "ref": "Deuteronomy 1:4"
+ },
+ {
+  "id": "deuteronomy-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Israel stay at Kadesh?",
+  "choices": [
+   "Seven days",
+   "Forty days",
+   "Many days",
+   "One night"
+  ],
+  "answer": 2,
+  "explanation": "Ye abode in Kadesh many days.",
+  "ref": "Deuteronomy 1:46"
+ },
+ {
+  "id": "deuteronomy-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel say they would do after the LORD's sentence?",
+  "choices": [
+   "Go back to Egypt",
+   "Go up and fight",
+   "Make a golden calf",
+   "Choose a king"
+  ],
+  "answer": 1,
+  "explanation": "We have sinned against the LORD, we will go up and fight.",
+  "ref": "Deuteronomy 1:41"
+ },
+ {
+  "id": "deuteronomy-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the LORD say Israel should not go up and fight?",
+  "choices": [
+   "He was not among them",
+   "The hill was too steep",
+   "They had no food",
+   "Moses forbade it"
+  ],
+  "answer": 0,
+  "explanation": "Go not up, neither fight; for I am not among you; lest ye be smitten.",
+  "ref": "Deuteronomy 1:42"
+ },
+ {
+  "id": "deuteronomy-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do when Israel returned and wept?",
+  "choices": [
+   "He healed them",
+   "He would not hearken to their voice",
+   "He sent manna",
+   "He gave them a sign"
+  ],
+  "answer": 1,
+  "explanation": "The LORD would not hearken to your voice, nor give ear unto you.",
+  "ref": "Deuteronomy 1:45"
+ },
+ {
+  "id": "deuteronomy-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the LORD bear Israel in the wilderness?",
+  "choices": [
+   "As a man doth bear his son",
+   "As a shepherd leads sheep",
+   "As an eagle carries young",
+   "As a king guards a gate"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God bare thee, as a man doth bear his son.",
+  "ref": "Deuteronomy 1:31"
+ },
+ {
+  "id": "deuteronomy-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had each man done before going up into the hill?",
+  "choices": [
+   "Girded on his weapons of war",
+   "Washed his clothes",
+   "Offered a lamb",
+   "Counted his sons"
+  ],
+  "answer": 0,
+  "explanation": "Ye had girded on every man his weapons of war, ye were ready to go up into the hill.",
+  "ref": "Deuteronomy 1:41"
+ },
+ {
+  "id": "deuteronomy-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By which way were they told to turn into the wilderness?",
+  "choices": [
+   "By the way of the Red sea",
+   "By the way of Edom",
+   "By the way of Jordan",
+   "By the way of Hormah"
+  ],
+  "answer": 0,
+  "explanation": "Turn you, and take your journey into the wilderness by the way of the Red sea.",
+  "ref": "Deuteronomy 1:40"
+ },
+ {
+  "id": "deuteronomy-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man was Moses told to encourage because he would cause Israel to inherit?",
+  "choices": [
+   "Caleb",
+   "Joshua",
+   "Eleazar",
+   "Hur"
+  ],
+  "answer": 1,
+  "explanation": "Joshua the son of Nun, which standeth before thee, he shall go in thither: encourage him.",
+  "ref": "Deuteronomy 1:38"
+ },
+ {
   "id": "old-deuteronomy-2-1",
   "chapter": 2,
   "level": "beginner",
