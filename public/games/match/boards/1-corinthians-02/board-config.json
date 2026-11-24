@@ -1,0 +1,30 @@
+{
+  "level": 2,
+  "name": "Foolish Things",
+  "scripture": "1 Corinthians 1:18–31",
+  "chapter": "1 Corinthians",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "scroll",
+    "staff",
+    "basket",
+    "booth",
+    "oil-jar",
+    "stone",
+    "gold"
+  ],
+  "goals": {
+    "scroll": 8,
+    "basket": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Look for wisdom in unlikely places.",
+  "storyEffect": "Look for wisdom in unlikely places."
+}

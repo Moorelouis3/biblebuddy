@@ -3564,5 +3564,325 @@
     },
     "goalText": "Bring gifts and give thanks.",
     "storyEffect": "Bring gifts and give thanks."
+  },
+  {
+    "slug": "1-corinthians-01",
+    "folderTitle": "01-The-Church-in-Corinth",
+    "level": 1,
+    "name": "The Church in Corinth",
+    "scripture": "1 Corinthians 1",
+    "chapter": "1 Corinthians",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "scroll",
+      "bread",
+      "stone",
+      "banner",
+      "water-jar",
+      "olive-sprig",
+      "wave"
+    ],
+    "goals": {
+      "scroll": 8,
+      "bread": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather the church in Corinth.",
+    "storyEffect": "Gather the church in Corinth."
+  },
+  {
+    "slug": "1-corinthians-02",
+    "folderTitle": "02-Foolish-Things",
+    "level": 2,
+    "name": "Foolish Things",
+    "scripture": "1 Corinthians 1:18–31",
+    "chapter": "1 Corinthians",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "scroll",
+      "staff",
+      "basket",
+      "booth",
+      "oil-jar",
+      "stone",
+      "gold"
+    ],
+    "goals": {
+      "scroll": 8,
+      "basket": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Look for wisdom in unlikely places.",
+    "storyEffect": "Look for wisdom in unlikely places."
+  },
+  {
+    "slug": "1-corinthians-03",
+    "folderTitle": "03-Planting-and-Watering",
+    "level": 3,
+    "name": "Planting and Watering",
+    "scripture": "1 Corinthians 3:5–9",
+    "chapter": "1 Corinthians",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "water-drop",
+      "wheat",
+      "water-jar",
+      "basket",
+      "tree",
+      "olive-sprig",
+      "stone"
+    ],
+    "goals": {
+      "water-drop": 8,
+      "wheat": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Plant the seed and water it.",
+    "storyEffect": "Plant the seed and water it."
+  },
+  {
+    "slug": "1-corinthians-04",
+    "folderTitle": "04-Building-on-the-Foundation",
+    "level": 4,
+    "name": "Building on the Foundation",
+    "scripture": "1 Corinthians 3:10–15",
+    "chapter": "1 Corinthians",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "stone",
+      "logs",
+      "brick",
+      "gold",
+      "scroll",
+      "staff",
+      "basket"
+    ],
+    "goals": {
+      "stone": 8,
+      "logs": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Build carefully on the foundation.",
+    "storyEffect": "Build carefully on the foundation."
+  },
+  {
+    "slug": "1-corinthians-05",
+    "folderTitle": "05-Run-to-Win",
+    "level": 5,
+    "name": "Run to Win",
+    "scripture": "1 Corinthians 9:24–27",
+    "chapter": "1 Corinthians",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "wreath",
+      "sandal",
+      "banner",
+      "stone",
+      "water-jar",
+      "fabric",
+      "staff"
+    ],
+    "goals": {
+      "wreath": 8,
+      "sandal": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Run for a crown that lasts.",
+    "storyEffect": "Run for a crown that lasts."
+  },
+  {
+    "slug": "1-corinthians-06",
+    "folderTitle": "06-The-Lords-Supper",
+    "level": 6,
+    "name": "The Lord's Supper",
+    "scripture": "1 Corinthians 11:23–26",
+    "chapter": "1 Corinthians",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "bread",
+      "cup",
+      "lampstand",
+      "oil-jar",
+      "water-jar",
+      "fabric",
+      "scroll"
+    ],
+    "goals": {
+      "bread": 8,
+      "cup": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather the bread and the cup.",
+    "storyEffect": "Gather the bread and the cup."
+  },
+  {
+    "slug": "1-corinthians-07",
+    "folderTitle": "07-One-Body",
+    "level": 7,
+    "name": "One Body",
+    "scripture": "1 Corinthians 12",
+    "chapter": "1 Corinthians",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "scroll",
+      "bread",
+      "fabric",
+      "oil-jar",
+      "basket",
+      "staff",
+      "water-drop"
+    ],
+    "goals": {
+      "bread": 8,
+      "fabric": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Bring different gifts together.",
+    "storyEffect": "Bring different gifts together."
+  },
+  {
+    "slug": "1-corinthians-08",
+    "folderTitle": "08-Love-Is-Patient",
+    "level": 8,
+    "name": "Love Is Patient",
+    "scripture": "1 Corinthians 13",
+    "chapter": "1 Corinthians",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "olive-sprig",
+      "fig",
+      "tree",
+      "almond-blossom",
+      "bread",
+      "water-jar",
+      "basket"
+    ],
+    "goals": {
+      "olive-sprig": 8,
+      "water-jar": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Show patient and kind love.",
+    "storyEffect": "Show patient and kind love."
+  },
+  {
+    "slug": "1-corinthians-09",
+    "folderTitle": "09-Raised-in-Glory",
+    "level": 9,
+    "name": "Raised in Glory",
+    "scripture": "1 Corinthians 15:35–49",
+    "chapter": "1 Corinthians",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "seedling",
+      "wheat",
+      "barley",
+      "water-drop",
+      "cloud",
+      "olive-sprig",
+      "stone"
+    ],
+    "goals": {
+      "seedling": 8,
+      "wheat": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Sow a seed and look for new life.",
+    "storyEffect": "Sow a seed and look for new life."
+  },
+  {
+    "slug": "1-corinthians-10",
+    "folderTitle": "10-The-Trumpet-Will-Sound",
+    "level": 10,
+    "name": "The Trumpet Will Sound",
+    "scripture": "1 Corinthians 15:50–58",
+    "chapter": "1 Corinthians",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "trumpet",
+      "cloud",
+      "fire",
+      "banner",
+      "gold",
+      "scroll",
+      "dove"
+    ],
+    "goals": {
+      "trumpet": 8,
+      "cloud": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Hold on to the hope of resurrection.",
+    "storyEffect": "Hold on to the hope of resurrection."
   }
 ]

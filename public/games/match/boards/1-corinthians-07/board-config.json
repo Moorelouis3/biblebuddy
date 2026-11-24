@@ -1,0 +1,30 @@
+{
+  "level": 7,
+  "name": "One Body",
+  "scripture": "1 Corinthians 12",
+  "chapter": "1 Corinthians",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "scroll",
+    "bread",
+    "fabric",
+    "oil-jar",
+    "basket",
+    "staff",
+    "water-drop"
+  ],
+  "goals": {
+    "bread": 8,
+    "fabric": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Bring different gifts together.",
+  "storyEffect": "Bring different gifts together."
+}

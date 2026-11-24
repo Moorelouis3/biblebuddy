@@ -1,0 +1,30 @@
+{
+  "level": 1,
+  "name": "The Church in Corinth",
+  "scripture": "1 Corinthians 1",
+  "chapter": "1 Corinthians",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "scroll",
+    "bread",
+    "stone",
+    "banner",
+    "water-jar",
+    "olive-sprig",
+    "wave"
+  ],
+  "goals": {
+    "scroll": 8,
+    "bread": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Gather the church in Corinth.",
+  "storyEffect": "Gather the church in Corinth."
+}

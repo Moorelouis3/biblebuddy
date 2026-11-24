@@ -726,7 +726,19 @@ export const MAX_MATCH_LEVELS = 500;
 const BOOK_ORDER = [
   "genesis", "exodus", "leviticus", "numbers", "deuteronomy", "joshua", "judges", "ruth", "1 samuel", "2 samuel",
   "1 kings", "2 kings", "1 chronicles", "2 chronicles", "ezra", "nehemiah", "esther", "job", "psalms", "proverbs",
+  "ecclesiastes", "song of solomon", "isaiah", "jeremiah", "lamentations", "ezekiel", "daniel", "hosea", "joel",
+  "amos", "obadiah", "jonah", "micah", "nahum", "habakkuk", "zephaniah", "haggai", "zechariah", "malachi",
+  "matthew", "mark", "luke", "john", "acts", "romans", "1 corinthians", "2 corinthians", "galatians", "ephesians",
+  "philippians", "colossians", "1 thessalonians", "2 thessalonians", "1 timothy", "2 timothy", "titus", "philemon",
+  "hebrews", "james", "1 peter", "2 peter", "1 john", "2 john", "3 john", "jude", "revelation",
 ];
+/**
+ * Imported but not on the map yet. 1 Corinthians arrived (2026-11-24) while
+ * 1 Kings to Romans were still being painted; it would have put players
+ * straight from 1 Chronicles into Paul's letters. It waits here until Louis
+ * says it goes live; delete a book from this list to show it.
+ */
+const HELD_BOOKS = new Set(["1 corinthians"]);
 /**
  * Every board asks for three things (Louis, 2026-11-23: "only 2 things people
  * need to get... it should be 3 not 2"). A board whose config names two goals
@@ -764,6 +776,7 @@ function fromConfigs(configs: BoardConfig[]): MatchLevel[] {
   const rest = configs
     // Creation and Eden are the first two boards already.
     .filter((c) => !(book(c).toLowerCase() === "genesis" && c.level <= 2))
+    .filter((c) => !HELD_BOOKS.has(book(c).toLowerCase()))
     .filter((c) => c.tiles?.length >= 4 && Object.keys(c.goals || {}).length > 0)
     .sort((a, b) => order(a) - order(b));
   return rest.map((c, i) => ({

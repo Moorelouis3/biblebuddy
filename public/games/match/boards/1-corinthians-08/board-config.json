@@ -1,0 +1,30 @@
+{
+  "level": 8,
+  "name": "Love Is Patient",
+  "scripture": "1 Corinthians 13",
+  "chapter": "1 Corinthians",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "olive-sprig",
+    "fig",
+    "tree",
+    "almond-blossom",
+    "bread",
+    "water-jar",
+    "basket"
+  ],
+  "goals": {
+    "olive-sprig": 8,
+    "water-jar": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Show patient and kind love.",
+  "storyEffect": "Show patient and kind love."
+}

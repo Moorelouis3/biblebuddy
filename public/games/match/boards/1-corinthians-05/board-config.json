@@ -1,0 +1,30 @@
+{
+  "level": 5,
+  "name": "Run to Win",
+  "scripture": "1 Corinthians 9:24–27",
+  "chapter": "1 Corinthians",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "wreath",
+    "sandal",
+    "banner",
+    "stone",
+    "water-jar",
+    "fabric",
+    "staff"
+  ],
+  "goals": {
+    "wreath": 8,
+    "sandal": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Run for a crown that lasts.",
+  "storyEffect": "Run for a crown that lasts."
+}

@@ -1,0 +1,30 @@
+{
+  "level": 9,
+  "name": "Raised in Glory",
+  "scripture": "1 Corinthians 15:35–49",
+  "chapter": "1 Corinthians",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "seedling",
+    "wheat",
+    "barley",
+    "water-drop",
+    "cloud",
+    "olive-sprig",
+    "stone"
+  ],
+  "goals": {
+    "seedling": 8,
+    "wheat": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Sow a seed and look for new life.",
+  "storyEffect": "Sow a seed and look for new life."
+}

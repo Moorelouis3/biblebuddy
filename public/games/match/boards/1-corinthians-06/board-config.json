@@ -1,0 +1,30 @@
+{
+  "level": 6,
+  "name": "The Lord's Supper",
+  "scripture": "1 Corinthians 11:23–26",
+  "chapter": "1 Corinthians",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "bread",
+    "cup",
+    "lampstand",
+    "oil-jar",
+    "water-jar",
+    "fabric",
+    "scroll"
+  ],
+  "goals": {
+    "bread": 8,
+    "cup": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Gather the bread and the cup.",
+  "storyEffect": "Gather the bread and the cup."
+}

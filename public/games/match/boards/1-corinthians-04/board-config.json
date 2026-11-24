@@ -1,0 +1,30 @@
+{
+  "level": 4,
+  "name": "Building on the Foundation",
+  "scripture": "1 Corinthians 3:10–15",
+  "chapter": "1 Corinthians",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "stone",
+    "logs",
+    "brick",
+    "gold",
+    "scroll",
+    "staff",
+    "basket"
+  ],
+  "goals": {
+    "stone": 8,
+    "logs": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Build carefully on the foundation.",
+  "storyEffect": "Build carefully on the foundation."
+}

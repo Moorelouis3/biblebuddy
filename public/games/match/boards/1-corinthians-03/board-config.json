@@ -1,0 +1,30 @@
+{
+  "level": 3,
+  "name": "Planting and Watering",
+  "scripture": "1 Corinthians 3:5–9",
+  "chapter": "1 Corinthians",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "water-drop",
+    "wheat",
+    "water-jar",
+    "basket",
+    "tree",
+    "olive-sprig",
+    "stone"
+  ],
+  "goals": {
+    "water-drop": 8,
+    "wheat": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Plant the seed and water it.",
+  "storyEffect": "Plant the seed and water it."
+}
