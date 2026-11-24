@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-26-explained",
+    title: "1 Samuel 26 Explained: David Spares Saul a Second Time",
+    description:
+      "1 Samuel 26 explained verse by verse: David sneaks into Saul's camp, refuses to kill him again, and hears Saul confess for the last time.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-26-explained",
+    publishedAt: "2026-11-24",
+    readTime: "16 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 26 Explained 📖",
+      content:
+        "A spear planted by a sleeping king's head.\nDavid's hand already close enough to take it.\n\n📌 The second chance at revenge is harder to turn down than the first.\n\n📖 The Ziphites betray David's hiding place again.\n📖 David and Abishai walk through a sleeping army.\n📖 Saul confesses for the last time they ever speak.\n\nNew article on:\n🟢 what the **deep sleep from the LORD** really was\n🟢 why David took a **spear and water jug**, not a life\n🟢 why David still fled after Saul's **blessing**\n\nHave you ever had to forgive the same hurt twice? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-25-explained",
     title: "1 Samuel 25 Explained: Nabal's Folly and Abigail's Wisdom",
     description:
