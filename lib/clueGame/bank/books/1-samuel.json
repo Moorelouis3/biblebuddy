@@ -80,6 +80,646 @@
   "ref": "1 Samuel 1:20"
  },
  {
+  "id": "1-samuel-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "What was the name of Elkanah's other wife?",
+  "choices": [
+   "Peninnah",
+   "Michal",
+   "Abigail",
+   "Hannah"
+  ],
+  "answer": 0,
+  "explanation": "He had two wives; the name of the one was Hannah, and the name of the other Peninnah.",
+  "ref": "1 Samuel 1:2"
+ },
+ {
+  "id": "1-samuel-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of Elkanah's wives had children?",
+  "choices": [
+   "Hannah",
+   "Peninnah",
+   "Abigail",
+   "Michal"
+  ],
+  "answer": 1,
+  "explanation": "Peninnah had children, but Hannah had no children.",
+  "ref": "1 Samuel 1:2"
+ },
+ {
+  "id": "1-samuel-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who had shut up Hannah's womb?",
+  "choices": [
+   "Peninnah",
+   "Eli",
+   "The LORD",
+   "Elkanah"
+  ],
+  "answer": 2,
+  "explanation": "The LORD had shut up her womb.",
+  "ref": "1 Samuel 1:5"
+ },
+ {
+  "id": "1-samuel-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who were the two sons of Eli, priests of the LORD at Shiloh?",
+  "choices": [
+   "Hophni and Phinehas",
+   "Joel and Abiah",
+   "Elkanah and Jeroham",
+   "Samuel and Saul"
+  ],
+  "answer": 0,
+  "explanation": "The two sons of Eli, Hophni and Phinehas, the priests of the LORD, were there.",
+  "ref": "1 Samuel 1:3"
+ },
+ {
+  "id": "1-samuel-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hannah do when her adversary provoked her?",
+  "choices": [
+   "She wept and did not eat",
+   "She left Shiloh",
+   "She struck her",
+   "She ran away"
+  ],
+  "answer": 0,
+  "explanation": "Therefore she wept, and did not eat.",
+  "ref": "1 Samuel 1:7"
+ },
+ {
+  "id": "1-samuel-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hannah ask the LORD to give her?",
+  "choices": [
+   "A man child",
+   "Great riches",
+   "A new home",
+   "A long life"
+  ],
+  "answer": 0,
+  "explanation": "Wilt give unto thine handmaid a man child, then I will give him unto the LORD.",
+  "ref": "1 Samuel 1:11"
+ },
+ {
+  "id": "1-samuel-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which house did Elkanah and Hannah return after worshipping?",
+  "choices": [
+   "Ramah",
+   "Bethel",
+   "Gilgal",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "They returned, and came to their house to Ramah.",
+  "ref": "1 Samuel 1:19"
+ },
+ {
+  "id": "1-samuel-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hannah vow would never come upon her son's head?",
+  "choices": [
+   "A razor",
+   "A crown",
+   "Oil",
+   "A cloth"
+  ],
+  "answer": 0,
+  "explanation": "There shall no razor come upon his head.",
+  "ref": "1 Samuel 1:11"
+ },
+ {
+  "id": "1-samuel-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Hannah look after Eli said, Go in peace?",
+  "choices": [
+   "Her countenance was no more sad",
+   "She wept more",
+   "She was angry",
+   "She left at once"
+  ],
+  "answer": 0,
+  "explanation": "The woman went her way, and did eat, and her countenance was no more sad.",
+  "ref": "1 Samuel 1:18"
+ },
+ {
+  "id": "1-samuel-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sat upon a seat by a post of the temple of the LORD?",
+  "choices": [
+   "Elkanah",
+   "Eli the priest",
+   "Hophni",
+   "Samuel"
+  ],
+  "answer": 1,
+  "explanation": "Eli the priest sat upon a seat by a post of the temple of the LORD.",
+  "ref": "1 Samuel 1:9"
+ },
+ {
+  "id": "1-samuel-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elkanah give to Hannah at the sacrifice?",
+  "choices": [
+   "A worthy portion",
+   "A single piece",
+   "Nothing",
+   "The best lamb"
+  ],
+  "answer": 0,
+  "explanation": "Unto Hannah he gave a worthy portion; for he loved Hannah.",
+  "ref": "1 Samuel 1:5"
+ },
+ {
+  "id": "1-samuel-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Hannah when Peninnah provoked her year by year?",
+  "choices": [
+   "Going up to the house of the LORD",
+   "In the fields of Ramah",
+   "At the city gate",
+   "In Eli's house"
+  ],
+  "answer": 0,
+  "explanation": "Year by year, when she went up to the house of the LORD, so she provoked her; therefore she wept.",
+  "ref": "1 Samuel 1:7"
+ },
+ {
+  "id": "1-samuel-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who provoked Hannah sore to make her fret?",
+  "choices": [
+   "Her adversary",
+   "Eli",
+   "Her sister",
+   "Elkanah"
+  ],
+  "answer": 0,
+  "explanation": "Her adversary also provoked her sore, for to make her fret.",
+  "ref": "1 Samuel 1:6"
+ },
+ {
+  "id": "1-samuel-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elkanah ask Hannah to comfort her?",
+  "choices": [
+   "Am not I better to thee than ten sons?",
+   "Shall I send Peninnah away?",
+   "Will you not eat?",
+   "Shall we leave Shiloh?"
+  ],
+  "answer": 0,
+  "explanation": "Am not I better to thee than ten sons?",
+  "ref": "1 Samuel 1:8"
+ },
+ {
+  "id": "1-samuel-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Hannah pray in the temple?",
+  "choices": [
+   "Only her lips moved, her voice not heard",
+   "Aloud with a loud voice",
+   "With a song",
+   "Kneeling at the altar"
+  ],
+  "answer": 0,
+  "explanation": "Hannah, she spake in her heart; only her lips moved, but her voice was not heard.",
+  "ref": "1 Samuel 1:13"
+ },
+ {
+  "id": "1-samuel-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eli tell Hannah to put away from her?",
+  "choices": [
+   "Her wine",
+   "Her veil",
+   "Her sorrow",
+   "Her vow"
+  ],
+  "answer": 0,
+  "explanation": "How long wilt thou be drunken? put away thy wine from thee.",
+  "ref": "1 Samuel 1:14"
+ },
+ {
+  "id": "1-samuel-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of woman did Hannah say she was?",
+  "choices": [
+   "A woman of a sorrowful spirit",
+   "A woman of great wealth",
+   "A woman of Belial",
+   "A woman of Ramah"
+  ],
+  "answer": 0,
+  "explanation": "No, my lord, I am a woman of a sorrowful spirit.",
+  "ref": "1 Samuel 1:15"
+ },
+ {
+  "id": "1-samuel-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hannah say she had poured out before the LORD?",
+  "choices": [
+   "Her soul",
+   "Her wine",
+   "Her gift",
+   "Her oil"
+  ],
+  "answer": 0,
+  "explanation": "I have poured out my soul before the LORD.",
+  "ref": "1 Samuel 1:15"
+ },
+ {
+  "id": "1-samuel-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eli say to Hannah after hearing her?",
+  "choices": [
+   "Go in peace",
+   "Go to Ramah",
+   "Offer a bullock",
+   "Stay and pray"
+  ],
+  "answer": 0,
+  "explanation": "Go in peace: and the God of Israel grant thee thy petition that thou hast asked of him.",
+  "ref": "1 Samuel 1:17"
+ },
+ {
+  "id": "1-samuel-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Hannah not go up to Shiloh the next year?",
+  "choices": [
+   "Until the child was weaned",
+   "She was ill",
+   "Peninnah forbade her",
+   "Eli sent her away"
+  ],
+  "answer": 0,
+  "explanation": "I will not go up until the child be weaned, and then I will bring him.",
+  "ref": "1 Samuel 1:22"
+ },
+ {
+  "id": "1-samuel-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elkanah say to Hannah about staying home?",
+  "choices": [
+   "Do what seemeth thee good",
+   "Go at once",
+   "You must come",
+   "Ask Eli"
+  ],
+  "answer": 0,
+  "explanation": "Do what seemeth thee good; tarry until thou have weaned him.",
+  "ref": "1 Samuel 1:23"
+ },
+ {
+  "id": "1-samuel-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Hannah bring the child after he was weaned?",
+  "choices": [
+   "The house of the LORD in Shiloh",
+   "Ramah",
+   "Bethel",
+   "Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "She brought him unto the house of the LORD in Shiloh: and the child was young.",
+  "ref": "1 Samuel 1:24"
+ },
+ {
+  "id": "1-samuel-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hannah say she had prayed for?",
+  "choices": [
+   "This child",
+   "Many sons",
+   "A house",
+   "Peace"
+  ],
+  "answer": 0,
+  "explanation": "For this child I prayed; and the LORD hath given me my petition.",
+  "ref": "1 Samuel 1:27"
+ },
+ {
+  "id": "1-samuel-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hannah and Elkanah do early the morning after she prayed?",
+  "choices": [
+   "Worshipped before the LORD",
+   "Went to Eli",
+   "Offered a lamb",
+   "Left for Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "They rose up in the morning early, and worshipped before the LORD, and returned.",
+  "ref": "1 Samuel 1:19"
+ },
+ {
+  "id": "1-samuel-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eli mark as Hannah continued praying?",
+  "choices": [
+   "Her mouth",
+   "Her tears",
+   "Her gift",
+   "Her robe"
+  ],
+  "answer": 0,
+  "explanation": "As she continued praying before the LORD, Eli marked her mouth.",
+  "ref": "1 Samuel 1:12"
+ },
+ {
+  "id": "1-samuel-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "From which city was Elkanah?",
+  "choices": [
+   "Ramathaim-zophim",
+   "Shiloh",
+   "Bethlehem",
+   "Gibeah"
+  ],
+  "answer": 0,
+  "explanation": "There was a certain man of Ramathaim-zophim, of mount Ephraim, and his name was Elkanah.",
+  "ref": "1 Samuel 1:1"
+ },
+ {
+  "id": "1-samuel-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Of which mount was Elkanah's city?",
+  "choices": [
+   "Mount Ephraim",
+   "Mount Carmel",
+   "Mount Gilboa",
+   "Mount Zion"
+  ],
+  "answer": 0,
+  "explanation": "A certain man of Ramathaim-zophim, of mount Ephraim.",
+  "ref": "1 Samuel 1:1"
+ },
+ {
+  "id": "1-samuel-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Elkanah was the son of whom?",
+  "choices": [
+   "Jeroham",
+   "Elihu",
+   "Tohu",
+   "Zuph"
+  ],
+  "answer": 0,
+  "explanation": "Elkanah, the son of Jeroham, the son of Elihu, the son of Tohu, the son of Zuph.",
+  "ref": "1 Samuel 1:1"
+ },
+ {
+  "id": "1-samuel-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Elkanah called, as an Ephrathite?",
+  "choices": [
+   "An Ephrathite",
+   "A Benjamite",
+   "A Levite",
+   "A Judahite"
+  ],
+  "answer": 0,
+  "explanation": "The son of Zuph, an Ephrathite.",
+  "ref": "1 Samuel 1:1"
+ },
+ {
+  "id": "1-samuel-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who received portions from Elkanah besides Peninnah?",
+  "choices": [
+   "All her sons and daughters",
+   "The priests",
+   "The servants",
+   "The poor"
+  ],
+  "answer": 0,
+  "explanation": "He gave to Peninnah his wife, and to all her sons and her daughters, portions.",
+  "ref": "1 Samuel 1:4"
+ },
+ {
+  "id": "1-samuel-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many bullocks did Hannah take when she brought Samuel to Shiloh?",
+  "choices": [
+   "Three",
+   "One",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 0,
+  "explanation": "She took him up with her, with three bullocks, and one ephah of flour, and a bottle of wine.",
+  "ref": "1 Samuel 1:24"
+ },
+ {
+  "id": "1-samuel-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much flour did Hannah bring with Samuel?",
+  "choices": [
+   "One ephah",
+   "Two ephahs",
+   "Ten measures",
+   "A bushel"
+  ],
+  "answer": 0,
+  "explanation": "With three bullocks, and one ephah of flour, and a bottle of wine.",
+  "ref": "1 Samuel 1:24"
+ },
+ {
+  "id": "1-samuel-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hannah bring in a bottle with the bullocks and flour?",
+  "choices": [
+   "Wine",
+   "Oil",
+   "Water",
+   "Honey"
+  ],
+  "answer": 0,
+  "explanation": "With three bullocks, and one ephah of flour, and a bottle of wine.",
+  "ref": "1 Samuel 1:24"
+ },
+ {
+  "id": "1-samuel-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they slay before bringing the child to Eli?",
+  "choices": [
+   "A bullock",
+   "A lamb",
+   "A goat",
+   "A ram"
+  ],
+  "answer": 0,
+  "explanation": "They slew a bullock, and brought the child to Eli.",
+  "ref": "1 Samuel 1:25"
+ },
+ {
+  "id": "1-samuel-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elkanah say he hoped the LORD would do?",
+  "choices": [
+   "Establish his word",
+   "Bless Peninnah",
+   "Give a son",
+   "Forgive them"
+  ],
+  "answer": 0,
+  "explanation": "Tarry until thou have weaned him; only the LORD establish his word.",
+  "ref": "1 Samuel 1:23"
+ },
+ {
+  "id": "1-samuel-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hannah say she had drunk neither of?",
+  "choices": [
+   "Wine nor strong drink",
+   "Water or milk",
+   "Oil or honey",
+   "Wine or vinegar"
+  ],
+  "answer": 0,
+  "explanation": "I have drunken neither wine nor strong drink.",
+  "ref": "1 Samuel 1:15"
+ },
+ {
+  "id": "1-samuel-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do for Hannah after Elkanah knew her?",
+  "choices": [
+   "Remembered her",
+   "Healed her",
+   "Warned her",
+   "Visited Eli"
+  ],
+  "answer": 0,
+  "explanation": "Elkanah knew Hannah his wife; and the LORD remembered her.",
+  "ref": "1 Samuel 1:19"
+ },
+ {
+  "id": "1-samuel-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hannah ask Eli not to count her for?",
+  "choices": [
+   "A daughter of Belial",
+   "A thief",
+   "A widow",
+   "A servant of Peninnah"
+  ],
+  "answer": 0,
+  "explanation": "Count not thine handmaid for a daughter of Belial.",
+  "ref": "1 Samuel 1:16"
+ },
+ {
+  "id": "1-samuel-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hannah ask to find in Eli's sight?",
+  "choices": [
+   "Grace",
+   "Mercy",
+   "Honor",
+   "Peace"
+  ],
+  "answer": 0,
+  "explanation": "Let thine handmaid find grace in thy sight.",
+  "ref": "1 Samuel 1:18"
+ },
+ {
+  "id": "1-samuel-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hannah say of herself and Eli when she came to Shiloh?",
+  "choices": [
+   "I am the woman that stood by thee here, praying",
+   "I am the widow of Elkanah",
+   "I am Peninnah's sister",
+   "I am a prophetess"
+  ],
+  "answer": 0,
+  "explanation": "I am the woman that stood by thee here, praying unto the LORD.",
+  "ref": "1 Samuel 1:26"
+ },
+ {
   "id": "old-1-samuel-2-1",
   "chapter": 2,
   "level": "beginner",
