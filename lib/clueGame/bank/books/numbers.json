@@ -16656,6 +16656,646 @@
   "ref": "Numbers 24:10–11"
  },
  {
+  "id": "numbers-24-e-01",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Balaam set his face this time?",
+  "choices": [
+   "Toward Egypt",
+   "Toward the wilderness",
+   "Toward Pethor",
+   "Toward Jericho"
+  ],
+  "answer": 1,
+  "explanation": "He set his face toward the wilderness.",
+  "ref": "Numbers 24:1"
+ },
+ {
+  "id": "numbers-24-e-02",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balaam see Israel doing when he lifted up his eyes?",
+  "choices": [
+   "Marching to war",
+   "Abiding in their tents by tribes",
+   "Offering sacrifices",
+   "Crossing the Jordan"
+  ],
+  "answer": 1,
+  "explanation": "He saw Israel abiding in his tents according to their tribes.",
+  "ref": "Numbers 24:2"
+ },
+ {
+  "id": "numbers-24-e-03",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son did Balaam call himself?",
+  "choices": [
+   "Zippor's",
+   "Beor's",
+   "Aaron's",
+   "Sihon's"
+  ],
+  "answer": 1,
+  "explanation": "Balaam the son of Beor hath said.",
+  "ref": "Numbers 24:3"
+ },
+ {
+  "id": "numbers-24-e-04",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Balaam describe himself in his parable?",
+  "choices": [
+   "The man who cannot see",
+   "The man whose eyes are open",
+   "The man of Moab",
+   "The man of the east"
+  ],
+  "answer": 1,
+  "explanation": "The man whose eyes are open hath said.",
+  "ref": "Numbers 24:3"
+ },
+ {
+  "id": "numbers-24-e-05",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balaam say Israel was like as it lay down?",
+  "choices": [
+   "A lamb",
+   "A lion",
+   "A bear",
+   "A serpent"
+  ],
+  "answer": 1,
+  "explanation": "He couched, he lay down as a lion, and as a great lion: who shall stir him up?",
+  "ref": "Numbers 24:9"
+ },
+ {
+  "id": "numbers-24-e-06",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balak do with his hands when his anger was kindled?",
+  "choices": [
+   "Tore his clothes",
+   "Smote them together",
+   "Raised them to heaven",
+   "Covered his face"
+  ],
+  "answer": 1,
+  "explanation": "Balak's anger was kindled against Balaam, and he smote his hands together.",
+  "ref": "Numbers 24:10"
+ },
+ {
+  "id": "numbers-24-e-07",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times did Balak say Balaam had blessed Israel?",
+  "choices": [
+   "Twice",
+   "Three times",
+   "Seven times",
+   "Once"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast altogether blessed them these three times.",
+  "ref": "Numbers 24:10"
+ },
+ {
+  "id": "numbers-24-e-08",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balak tell Balaam to do?",
+  "choices": [
+   "Stay in Moab",
+   "Flee to his place",
+   "Build more altars",
+   "Curse Midian"
+  ],
+  "answer": 1,
+  "explanation": "Therefore now flee thou to thy place.",
+  "ref": "Numbers 24:11"
+ },
+ {
+  "id": "numbers-24-e-09",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which people did Balaam say put their nest in a rock?",
+  "choices": [
+   "The Edomites",
+   "The Kenites",
+   "The Amalekites",
+   "The Midianites"
+  ],
+  "answer": 1,
+  "explanation": "He looked on the Kenites: Strong is thy dwellingplace, and thou puttest thy nest in a rock.",
+  "ref": "Numbers 24:21"
+ },
+ {
+  "id": "numbers-24-e-10",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balaam do at the end of the chapter?",
+  "choices": [
+   "Joined Israel",
+   "Rose up and returned to his place",
+   "Stayed with Balak",
+   "Went to Pisgah"
+  ],
+  "answer": 1,
+  "explanation": "Balaam rose up, and went and returned to his place.",
+  "ref": "Numbers 24:25"
+ },
+ {
+  "id": "numbers-24-m-01",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam no longer go to seek, as at other times?",
+  "choices": [
+   "Gold",
+   "Altars",
+   "Visions in dreams",
+   "Enchantments"
+  ],
+  "answer": 3,
+  "explanation": "He went not, as at other times, to seek for enchantments.",
+  "ref": "Numbers 24:1"
+ },
+ {
+  "id": "numbers-24-m-02",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What trees did Balaam say Israel's tents were like beside the waters?",
+  "choices": [
+   "Palm trees",
+   "Olive trees",
+   "Fig trees",
+   "Cedar trees"
+  ],
+  "answer": 3,
+  "explanation": "As the trees of lign aloes which the LORD hath planted, and as cedar trees beside the waters.",
+  "ref": "Numbers 24:6"
+ },
+ {
+  "id": "numbers-24-m-03",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam say the LORD had planted, which Israel was like?",
+  "choices": [
+   "Vines of Eshcol",
+   "Olive groves",
+   "Gardens of figs",
+   "Trees of lign aloes"
+  ],
+  "answer": 3,
+  "explanation": "As the trees of lign aloes which the LORD hath planted.",
+  "ref": "Numbers 24:6"
+ },
+ {
+  "id": "numbers-24-m-04",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam say about those who bless and curse Israel?",
+  "choices": [
+   "All are blessed",
+   "All are cursed",
+   "None will be judged",
+   "Blessed is he that blesseth, cursed is he that curseth"
+  ],
+  "answer": 3,
+  "explanation": "Blessed is he that blesseth thee, and cursed is he that curseth thee.",
+  "ref": "Numbers 24:9"
+ },
+ {
+  "id": "numbers-24-m-05",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balak say he had thought to do for Balaam?",
+  "choices": [
+   "Make him king",
+   "Send him home",
+   "Give him a field",
+   "Promote him to great honour"
+  ],
+  "answer": 3,
+  "explanation": "I thought to promote thee unto great honour; but the LORD hath kept thee back from honour.",
+  "ref": "Numbers 24:11"
+ },
+ {
+  "id": "numbers-24-m-06",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Balaam say had kept him back from honour?",
+  "choices": [
+   "Balak",
+   "The princes",
+   "His ass",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hath kept thee back from honour.",
+  "ref": "Numbers 24:11"
+ },
+ {
+  "id": "numbers-24-m-07",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam remind Balak he had said to the messengers?",
+  "choices": [
+   "He would be paid in silver",
+   "He would not return",
+   "He needed a sign",
+   "He could not go beyond the commandment of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "If Balak would give me his house full of silver and gold, I cannot go beyond the commandment of the LORD.",
+  "ref": "Numbers 24:13"
+ },
+ {
+  "id": "numbers-24-m-08",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam say he would tell Balak before going to his people?",
+  "choices": [
+   "Where to find gold",
+   "When Moab would fall",
+   "Who the next king would be",
+   "What Israel shall do to his people in the latter days"
+  ],
+  "answer": 3,
+  "explanation": "I will advertise thee what this people shall do to thy people in the latter days.",
+  "ref": "Numbers 24:14"
+ },
+ {
+  "id": "numbers-24-m-09",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam say would rise out of Israel with a Star out of Jacob?",
+  "choices": [
+   "A Crown",
+   "A Sword",
+   "A Banner",
+   "A Sceptre"
+  ],
+  "answer": 3,
+  "explanation": "There shall come a Star out of Jacob, and a Sceptre shall rise out of Israel.",
+  "ref": "Numbers 24:17"
+ },
+ {
+  "id": "numbers-24-m-10",
+  "chapter": 24,
+  "level": "medium",
+  "category": "place",
+  "question": "What would the Sceptre smite?",
+  "choices": [
+   "The walls of Jericho",
+   "The gates of Edom",
+   "The tents of Midian",
+   "The corners of Moab"
+  ],
+  "answer": 3,
+  "explanation": "A Sceptre shall rise out of Israel, and shall smite the corners of Moab.",
+  "ref": "Numbers 24:17"
+ },
+ {
+  "id": "numbers-24-m-11",
+  "chapter": 24,
+  "level": "medium",
+  "category": "place",
+  "question": "What would Edom become, according to Balaam?",
+  "choices": [
+   "A refuge",
+   "A desert",
+   "A friend",
+   "A possession"
+  ],
+  "answer": 3,
+  "explanation": "Edom shall be a possession, Seir also shall be a possession for his enemies.",
+  "ref": "Numbers 24:18"
+ },
+ {
+  "id": "numbers-24-m-12",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam say the Kenite would suffer?",
+  "choices": [
+   "Be blessed",
+   "Become a nation",
+   "Go to Moab",
+   "Be wasted"
+  ],
+  "answer": 3,
+  "explanation": "Nevertheless the Kenite shall be wasted, until Asshur shall carry thee away captive.",
+  "ref": "Numbers 24:22"
+ },
+ {
+  "id": "numbers-24-m-13",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Who would carry the Kenite away captive?",
+  "choices": [
+   "Eber",
+   "Moab",
+   "Egypt",
+   "Asshur"
+  ],
+  "answer": 3,
+  "explanation": "The Kenite shall be wasted, until Asshur shall carry thee away captive.",
+  "ref": "Numbers 24:22"
+ },
+ {
+  "id": "numbers-24-m-14",
+  "chapter": 24,
+  "level": "medium",
+  "category": "place",
+  "question": "From where did Balaam say ships would come?",
+  "choices": [
+   "The land of Egypt",
+   "The mountains of the east",
+   "The river of Aram",
+   "The coast of Chittim"
+  ],
+  "answer": 3,
+  "explanation": "Ships shall come from the coast of Chittim.",
+  "ref": "Numbers 24:24"
+ },
+ {
+  "id": "numbers-24-h-01",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what condition did Balaam say he saw the vision of the Almighty?",
+  "choices": [
+   "Asleep on his bed",
+   "Falling into a trance with his eyes open",
+   "Standing on a mountain",
+   "Fasting for seven days"
+  ],
+  "answer": 1,
+  "explanation": "Which saw the vision of the Almighty, falling into a trance, but having his eyes open.",
+  "ref": "Numbers 24:4"
+ },
+ {
+  "id": "numbers-24-h-02",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What knowledge did Balaam say he knew in his second parable?",
+  "choices": [
+   "The wisdom of Egypt",
+   "The knowledge of the most High",
+   "The law of Moses",
+   "The counsel of Balak"
+  ],
+  "answer": 1,
+  "explanation": "Which heard the words of God, and knew the knowledge of the most High.",
+  "ref": "Numbers 24:16"
+ },
+ {
+  "id": "numbers-24-h-03",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Balaam say Israel's tents were like as they spread forth?",
+  "choices": [
+   "The clouds",
+   "The valleys",
+   "The sands",
+   "The mountains"
+  ],
+  "answer": 1,
+  "explanation": "As the valleys are they spread forth, as gardens by the river's side.",
+  "ref": "Numbers 24:6"
+ },
+ {
+  "id": "numbers-24-h-04",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Israel pour out of his buckets?",
+  "choices": [
+   "Oil",
+   "Water",
+   "Wine",
+   "Milk"
+  ],
+  "answer": 1,
+  "explanation": "He shall pour the water out of his buckets.",
+  "ref": "Numbers 24:7"
+ },
+ {
+  "id": "numbers-24-h-05",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose king did Balaam say would be higher than Agag?",
+  "choices": [
+   "Moab's",
+   "Israel's",
+   "Edom's",
+   "Amalek's"
+  ],
+  "answer": 1,
+  "explanation": "His king shall be higher than Agag, and his kingdom shall be exalted.",
+  "ref": "Numbers 24:7"
+ },
+ {
+  "id": "numbers-24-h-06",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Israel pierce his enemies through with?",
+  "choices": [
+   "His spears",
+   "His arrows",
+   "His swords",
+   "His staves"
+  ],
+  "answer": 1,
+  "explanation": "He shall break their bones, and pierce them through with his arrows.",
+  "ref": "Numbers 24:8"
+ },
+ {
+  "id": "numbers-24-h-07",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Balaam say the Sceptre would destroy?",
+  "choices": [
+   "All the children of Amalek",
+   "All the children of Sheth",
+   "All the children of Ammon",
+   "All the children of Seir"
+  ],
+  "answer": 1,
+  "explanation": "A Sceptre shall rise out of Israel, and destroy all the children of Sheth.",
+  "ref": "Numbers 24:17"
+ },
+ {
+  "id": "numbers-24-h-08",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Balaam say Israel would do?",
+  "choices": [
+   "Flee quickly",
+   "Do valiantly",
+   "Rest in peace",
+   "Stand silent"
+  ],
+  "answer": 1,
+  "explanation": "Israel shall do valiantly.",
+  "ref": "Numbers 24:18"
+ },
+ {
+  "id": "numbers-24-h-09",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Balaam say about seeing the one who would come?",
+  "choices": [
+   "I see him even now",
+   "I shall see him, but not now",
+   "I will never see him",
+   "I saw him in Egypt"
+  ],
+  "answer": 1,
+  "explanation": "I shall see him, but not now: I shall behold him, but not nigh.",
+  "ref": "Numbers 24:17"
+ },
+ {
+  "id": "numbers-24-h-10",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides Asshur, who would the ships from Chittim afflict?",
+  "choices": [
+   "Moab",
+   "Eber",
+   "Edom",
+   "Seir"
+  ],
+  "answer": 1,
+  "explanation": "Ships shall come from Chittim, and shall afflict Asshur, and shall afflict Eber.",
+  "ref": "Numbers 24:24"
+ },
+ {
+  "id": "numbers-24-h-11",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Balak do at the end of the chapter?",
+  "choices": [
+   "Follow Balaam",
+   "Go his way",
+   "Build an altar",
+   "Make war on Israel"
+  ],
+  "answer": 1,
+  "explanation": "Balaam returned to his place: and Balak also went his way.",
+  "ref": "Numbers 24:25"
+ },
+ {
+  "id": "numbers-24-h-12",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Balaam say the Kenites put their nest?",
+  "choices": [
+   "In a tree",
+   "In a rock",
+   "In the sand",
+   "In a cave"
+  ],
+  "answer": 1,
+  "explanation": "Thou puttest thy nest in a rock.",
+  "ref": "Numbers 24:21"
+ },
+ {
+  "id": "numbers-24-h-13",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Balaam say would come out of Jacob to have dominion?",
+  "choices": [
+   "A prophet to Moab",
+   "One that shall destroy him that remaineth of the city",
+   "A judge for Edom",
+   "A king over Midian"
+  ],
+  "answer": 1,
+  "explanation": "Out of Jacob shall come he that shall have dominion, and shall destroy him that remaineth of the city.",
+  "ref": "Numbers 24:19"
+ },
+ {
+  "id": "numbers-24-m-15",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam say Israel would do to the nations his enemies?",
+  "choices": [
+   "Make peace with them",
+   "Teach them",
+   "Eat them up",
+   "Send them gifts"
+  ],
+  "answer": 2,
+  "explanation": "He shall eat up the nations his enemies, and shall break their bones.",
+  "ref": "Numbers 24:8"
+ },
+ {
+  "id": "numbers-24-h-14",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Balaam say Israel's seed would be?",
+  "choices": [
+   "In many waters",
+   "In many cities",
+   "In the mountains",
+   "In the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "His seed shall be in many waters.",
+  "ref": "Numbers 24:7"
+ },
+ {
+  "id": "numbers-24-h-15",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did Balaam say he was going before he told Balak what would come?",
+  "choices": [
+   "His people",
+   "The princes of Moab",
+   "The elders of Midian",
+   "The Kenites"
+  ],
+  "answer": 0,
+  "explanation": "Behold, I go unto my people: come therefore, and I will advertise thee.",
+  "ref": "Numbers 24:14"
+ },
+ {
   "id": "old-numbers-25-1",
   "chapter": 25,
   "level": "beginner",
