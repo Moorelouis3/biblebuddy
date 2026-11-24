@@ -13056,6 +13056,646 @@
   "ref": "1 Samuel 19:23–24"
  },
  {
+  "id": "1-samuel-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who delighted much in David?",
+  "choices": [
+   "Abner",
+   "Jonathan",
+   "Samuel",
+   "Doeg"
+  ],
+  "answer": 1,
+  "explanation": "Jonathan Saul's son delighted much in David.",
+  "ref": "1 Samuel 19:2"
+ },
+ {
+  "id": "1-samuel-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Michal help David escape from the house?",
+  "choices": [
+   "She hid him in a cave",
+   "She let him down through a window",
+   "She sent him to Jonathan",
+   "She opened the gate"
+  ],
+  "answer": 1,
+  "explanation": "Michal let David down through a window: and he went, and fled, and escaped.",
+  "ref": "1 Samuel 19:12"
+ },
+ {
+  "id": "1-samuel-19-e-03",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul throw at David, which stuck in the wall?",
+  "choices": [
+   "A sword",
+   "A javelin",
+   "A spear of Goliath",
+   "A stone"
+  ],
+  "answer": 1,
+  "explanation": "Saul sought to smite David even to the wall with the javelin.",
+  "ref": "1 Samuel 19:10"
+ },
+ {
+  "id": "1-samuel-19-e-04",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Michal tell Saul's messengers about David?",
+  "choices": [
+   "He is away",
+   "He is sick",
+   "He is praying",
+   "He is sleeping"
+  ],
+  "answer": 1,
+  "explanation": "When Saul sent messengers to take David, she said, He is sick.",
+  "ref": "1 Samuel 19:14"
+ },
+ {
+  "id": "1-samuel-19-e-05",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David and Samuel go to dwell?",
+  "choices": [
+   "Gilgal",
+   "Naioth",
+   "Bethlehem",
+   "Hebron"
+  ],
+  "answer": 1,
+  "explanation": "He and Samuel went and dwelt in Naioth.",
+  "ref": "1 Samuel 19:18"
+ },
+ {
+  "id": "1-samuel-19-e-06",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did David fight when there was war again?",
+  "choices": [
+   "The Amalekites",
+   "The Philistines",
+   "The Ammonites",
+   "The Moabites"
+  ],
+  "answer": 1,
+  "explanation": "David went out, and fought with the Philistines, and slew them with a great slaughter.",
+  "ref": "1 Samuel 19:8"
+ },
+ {
+  "id": "1-samuel-19-e-07",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did people say about Saul after he lay naked?",
+  "choices": [
+   "Is Saul still king?",
+   "Is Saul also among the prophets?",
+   "Is Saul also a priest?",
+   "Is Saul also sick?"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore they say, Is Saul also among the prophets?",
+  "ref": "1 Samuel 19:24"
+ },
+ {
+  "id": "1-samuel-19-e-08",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Saul send messengers to watch David?",
+  "choices": [
+   "The tabernacle",
+   "David's house",
+   "Gilgal",
+   "The field"
+  ],
+  "answer": 1,
+  "explanation": "Saul also sent messengers unto David's house, to watch him, and to slay him in the morning.",
+  "ref": "1 Samuel 19:11"
+ },
+ {
+  "id": "1-samuel-19-e-09",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose voice did Saul hearken to?",
+  "choices": [
+   "Abner's",
+   "Jonathan's",
+   "Michal's",
+   "Samuel's"
+  ],
+  "answer": 1,
+  "explanation": "Saul hearkened unto the voice of Jonathan.",
+  "ref": "1 Samuel 19:6"
+ },
+ {
+  "id": "1-samuel-19-e-10",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told David that Saul sought to kill him?",
+  "choices": [
+   "Michal",
+   "Jonathan",
+   "Abner",
+   "Samuel"
+  ],
+  "answer": 1,
+  "explanation": "Jonathan told David, Saul my father seeketh to kill thee.",
+  "ref": "1 Samuel 19:2"
+ },
+ {
+  "id": "1-samuel-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jonathan say he would do beside his father in the field?",
+  "choices": [
+   "Hide David",
+   "Fight beside Saul",
+   "Pray for Saul",
+   "Commune with his father of David"
+  ],
+  "answer": 3,
+  "explanation": "I will stand beside my father in the field where thou art, and I will commune with my father of thee.",
+  "ref": "1 Samuel 19:3"
+ },
+ {
+  "id": "1-samuel-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jonathan say David's works had been to Saul?",
+  "choices": [
+   "Quite small",
+   "Hard to see",
+   "Mixed",
+   "Very good"
+  ],
+  "answer": 3,
+  "explanation": "His works have been to thee-ward very good.",
+  "ref": "1 Samuel 19:4"
+ },
+ {
+  "id": "1-samuel-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jonathan say David did when he slew the Philistine?",
+  "choices": [
+   "Fled first",
+   "Prayed all night",
+   "Used Saul's armour",
+   "Put his life in his hand"
+  ],
+  "answer": 3,
+  "explanation": "He did put his life in his hand, and slew the Philistine.",
+  "ref": "1 Samuel 19:5"
+ },
+ {
+  "id": "1-samuel-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What oath did Saul swear?",
+  "choices": [
+   "David shall be my son",
+   "David shall be king",
+   "David shall leave Israel",
+   "As the LORD liveth, David shall not be slain"
+  ],
+  "answer": 3,
+  "explanation": "Saul sware, As the LORD liveth, he shall not be slain.",
+  "ref": "1 Samuel 19:6"
+ },
+ {
+  "id": "1-samuel-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was David brought into Saul's presence after the oath?",
+  "choices": [
+   "In chains",
+   "With the priests",
+   "Only at night",
+   "As in times past"
+  ],
+  "answer": 3,
+  "explanation": "Jonathan brought David to Saul, and he was in his presence, as in times past.",
+  "ref": "1 Samuel 19:7"
+ },
+ {
+  "id": "1-samuel-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David do in the war that followed?",
+  "choices": [
+   "Hid in a cave",
+   "Fled to Samuel",
+   "Made peace",
+   "Slew the Philistines with a great slaughter"
+  ],
+  "answer": 3,
+  "explanation": "David fought with the Philistines, and slew them with a great slaughter.",
+  "ref": "1 Samuel 19:8"
+ },
+ {
+  "id": "1-samuel-19-m-07",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Saul holding when the evil spirit came upon him in his house?",
+  "choices": [
+   "A harp",
+   "A sword",
+   "A staff",
+   "A javelin"
+  ],
+  "answer": 3,
+  "explanation": "The evil spirit was upon Saul, as he sat in his house with his javelin in his hand.",
+  "ref": "1 Samuel 19:9"
+ },
+ {
+  "id": "1-samuel-19-m-08",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Michal tell David about the morning?",
+  "choices": [
+   "Saul would forgive him",
+   "Jonathan was coming",
+   "The Philistines would attack",
+   "If he did not save his life tonight he would be slain"
+  ],
+  "answer": 3,
+  "explanation": "Michal said, If thou save not thy life to night, to morrow thou shalt be slain.",
+  "ref": "1 Samuel 19:11"
+ },
+ {
+  "id": "1-samuel-19-m-09",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul ask Michal when he learned David had escaped?",
+  "choices": [
+   "Where is David?",
+   "Who helped him?",
+   "Why is he sick?",
+   "Why hast thou deceived me?"
+  ],
+  "answer": 3,
+  "explanation": "Saul said unto Michal, Why hast thou deceived me so, and sent away mine enemy?",
+  "ref": "1 Samuel 19:17"
+ },
+ {
+  "id": "1-samuel-19-m-10",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What excuse did Michal give Saul?",
+  "choices": [
+   "Jonathan forced her",
+   "The servants helped him",
+   "She was afraid of the Philistines",
+   "David said Let me go; why should I kill thee"
+  ],
+  "answer": 3,
+  "explanation": "Michal answered Saul, He said unto me, Let me go; why should I kill thee?",
+  "ref": "1 Samuel 19:17"
+ },
+ {
+  "id": "1-samuel-19-m-11",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul tell the messengers to do the second time?",
+  "choices": [
+   "Wait for the morning",
+   "Kill the guards",
+   "Find Samuel",
+   "Bring David up in the bed"
+  ],
+  "answer": 3,
+  "explanation": "Bring him up to me in the bed, that I may slay him.",
+  "ref": "1 Samuel 19:15"
+ },
+ {
+  "id": "1-samuel-19-m-12",
+  "chapter": 19,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was standing as appointed over the company of the prophets?",
+  "choices": [
+   "David",
+   "Jonathan",
+   "Abner",
+   "Samuel"
+  ],
+  "answer": 3,
+  "explanation": "They saw the company of the prophets prophesying, and Samuel standing as appointed over them.",
+  "ref": "1 Samuel 19:20"
+ },
+ {
+  "id": "1-samuel-19-m-13",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "At what well did Saul ask where Samuel and David were?",
+  "choices": [
+   "The well of Bethlehem",
+   "The well of Harod",
+   "The well at Gilgal",
+   "The great well in Sechu"
+  ],
+  "answer": 3,
+  "explanation": "He came to a great well that is in Sechu: and he asked, Where are Samuel and David?",
+  "ref": "1 Samuel 19:22"
+ },
+ {
+  "id": "1-samuel-19-m-14",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What came upon the messengers of Saul at Naioth?",
+  "choices": [
+   "A great sleep",
+   "A fear",
+   "A sickness",
+   "The Spirit of God"
+  ],
+  "answer": 3,
+  "explanation": "The Spirit of God was upon the messengers of Saul, and they also prophesied.",
+  "ref": "1 Samuel 19:20"
+ },
+ {
+  "id": "1-samuel-19-m-15",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul think when he told Jonathan and his servants?",
+  "choices": [
+   "That they should find Samuel",
+   "That they should call Michal",
+   "That they should anoint Jonathan",
+   "That they should kill David"
+  ],
+  "answer": 3,
+  "explanation": "Saul spake to Jonathan his son, and to all his servants, that they should kill David.",
+  "ref": "1 Samuel 19:1"
+ },
+ {
+  "id": "1-samuel-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jonathan say Saul would sin against if he slew David without cause?",
+  "choices": [
+   "Innocent blood",
+   "The priests",
+   "The king's house",
+   "The LORD's house"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore then wilt thou sin against innocent blood, to slay David without a cause?",
+  "ref": "1 Samuel 19:5"
+ },
+ {
+  "id": "1-samuel-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD work for all Israel through David's victory?",
+  "choices": [
+   "A great salvation",
+   "A great army",
+   "A great treasure",
+   "A great peace"
+  ],
+  "answer": 0,
+  "explanation": "The LORD wrought a great salvation for all Israel.",
+  "ref": "1 Samuel 19:5"
+ },
+ {
+  "id": "1-samuel-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did David smite the javelin when he slipped away?",
+  "choices": [
+   "Into the wall",
+   "Into the bed",
+   "Into the door",
+   "Into the floor"
+  ],
+  "answer": 0,
+  "explanation": "He slipped away out of Saul's presence, and he smote the javelin into the wall.",
+  "ref": "1 Samuel 19:10"
+ },
+ {
+  "id": "1-samuel-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What covered the image in the bed?",
+  "choices": [
+   "A cloth",
+   "A skin",
+   "A blanket of wool",
+   "A curtain"
+  ],
+  "answer": 0,
+  "explanation": "She laid it in the bed, and put a pillow of goats' hair for his bolster, and covered it with a cloth.",
+  "ref": "1 Samuel 19:13"
+ },
+ {
+  "id": "1-samuel-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times did Saul send messengers to Naioth?",
+  "choices": [
+   "Three times",
+   "Once",
+   "Twice",
+   "Seven times"
+  ],
+  "answer": 0,
+  "explanation": "Saul sent messengers again the third time, and they prophesied also.",
+  "ref": "1 Samuel 19:21"
+ },
+ {
+  "id": "1-samuel-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Saul lie down naked at Naioth?",
+  "choices": [
+   "All that day and all that night",
+   "Three days",
+   "One hour",
+   "Seven days"
+  ],
+  "answer": 0,
+  "explanation": "He lay down naked all that day and all that night.",
+  "ref": "1 Samuel 19:24"
+ },
+ {
+  "id": "1-samuel-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did David flee and escape from Saul's javelin?",
+  "choices": [
+   "That night",
+   "At noon",
+   "In the morning",
+   "The next week"
+  ],
+  "answer": 0,
+  "explanation": "David fled, and escaped that night.",
+  "ref": "1 Samuel 19:10"
+ },
+ {
+  "id": "1-samuel-19-h-08",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the messengers see at Naioth?",
+  "choices": [
+   "The company of the prophets prophesying",
+   "An army in array",
+   "A burning altar",
+   "A great light"
+  ],
+  "answer": 0,
+  "explanation": "They saw the company of the prophets prophesying.",
+  "ref": "1 Samuel 19:20"
+ },
+ {
+  "id": "1-samuel-19-h-09",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Where were Samuel and David, according to the one who answered Saul?",
+  "choices": [
+   "Naioth in Ramah",
+   "Gibeah",
+   "Sechu",
+   "Bethlehem"
+  ],
+  "answer": 0,
+  "explanation": "One said, Behold, they be at Naioth in Ramah.",
+  "ref": "1 Samuel 19:22"
+ },
+ {
+  "id": "1-samuel-19-h-10",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jonathan say Saul did when he saw David slay the Philistine?",
+  "choices": [
+   "Rejoiced",
+   "Mourned",
+   "Slept",
+   "Doubted"
+  ],
+  "answer": 0,
+  "explanation": "Thou sawest it, and didst rejoice.",
+  "ref": "1 Samuel 19:5"
+ },
+ {
+  "id": "1-samuel-19-h-11",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul do to the messengers after the first ones prophesied?",
+  "choices": [
+   "Sent other messengers",
+   "Went himself",
+   "Sent Abner",
+   "Gave up"
+  ],
+  "answer": 0,
+  "explanation": "When it was told Saul, he sent other messengers, and they prophesied likewise.",
+  "ref": "1 Samuel 19:21"
+ },
+ {
+  "id": "1-samuel-19-h-12",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David tell Samuel at Ramah?",
+  "choices": [
+   "All that Saul had done to him",
+   "Where Michal was",
+   "That Jonathan was killed",
+   "That he would be king"
+  ],
+  "answer": 0,
+  "explanation": "David came to Samuel to Ramah, and told him all that Saul had done to him.",
+  "ref": "1 Samuel 19:18"
+ },
+ {
+  "id": "1-samuel-19-h-13",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when did Jonathan tell David to take heed?",
+  "choices": [
+   "The morning",
+   "The evening",
+   "The new moon",
+   "The sabbath"
+  ],
+  "answer": 0,
+  "explanation": "Take heed to thyself until the morning, and abide in a secret place.",
+  "ref": "1 Samuel 19:2"
+ },
+ {
+  "id": "1-samuel-19-h-14",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "What did Saul call David when he spoke to Michal?",
+  "choices": [
+   "My servant",
+   "My son",
+   "Mine enemy",
+   "My captain"
+  ],
+  "answer": 2,
+  "explanation": "Why hast thou deceived me so, and sent away mine enemy, that he is escaped?",
+  "ref": "1 Samuel 19:17"
+ },
+ {
+  "id": "1-samuel-19-h-15",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose wife was Michal called when she warned him?",
+  "choices": [
+   "Jonathan's",
+   "Abner's",
+   "David's",
+   "Samuel's"
+  ],
+  "answer": 2,
+  "explanation": "Michal David's wife told him, If thou save not thy life to night, to morrow thou shalt be slain.",
+  "ref": "1 Samuel 19:11"
+ },
+ {
   "id": "old-1-samuel-20-1",
   "chapter": 20,
   "level": "beginner",
