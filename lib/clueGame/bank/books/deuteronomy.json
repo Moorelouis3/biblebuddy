@@ -13088,6 +13088,646 @@
   "ref": "Deuteronomy 19:19"
  },
  {
+  "id": "deuteronomy-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many cities was Israel to separate in the midst of the land for the slayer?",
+  "choices": [
+   "Two",
+   "Three",
+   "Six",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said, Thou shalt separate three cities for thee in the midst of thy land.",
+  "ref": "Deuteronomy 19:2"
+ },
+ {
+  "id": "deuteronomy-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who might pursue a slayer who killed by accident?",
+  "choices": [
+   "The priests",
+   "The avenger of blood",
+   "The judges",
+   "The captains"
+  ],
+  "answer": 1,
+  "explanation": "The avenger of the blood might pursue the slayer while his heart was hot.",
+  "ref": "Deuteronomy 19:6"
+ },
+ {
+  "id": "deuteronomy-19-e-03",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to a man who killed his neighbour ignorantly and fled to a city of refuge?",
+  "choices": [
+   "He was sent to prison",
+   "He lived",
+   "He was put to death",
+   "He was driven from Israel"
+  ],
+  "answer": 1,
+  "explanation": "He shall flee unto one of those cities, and live.",
+  "ref": "Deuteronomy 19:5"
+ },
+ {
+  "id": "deuteronomy-19-e-04",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many more cities were to be added if the LORD enlarged Israel's coast?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "If Israel kept the commandments, they were to add three cities more beside the first three.",
+  "ref": "Deuteronomy 19:9"
+ },
+ {
+  "id": "deuteronomy-19-e-05",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel not to show to a man who killed his neighbour in hatred?",
+  "choices": [
+   "Honour",
+   "Pity",
+   "Mercy",
+   "Welcome"
+  ],
+  "answer": 1,
+  "explanation": "Thine eye shall not pity him, but thou shalt put away the guilt of innocent blood from Israel.",
+  "ref": "Deuteronomy 19:13"
+ },
+ {
+  "id": "deuteronomy-19-e-06",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of killing let a slayer flee to a city of refuge?",
+  "choices": [
+   "Killing in battle",
+   "Killing ignorantly, without hatred",
+   "Killing a thief at night",
+   "Killing a hired servant"
+  ],
+  "answer": 1,
+  "explanation": "The slayer who may flee is he who killeth his neighbour ignorantly, whom he hated not in time past.",
+  "ref": "Deuteronomy 19:4"
+ },
+ {
+  "id": "deuteronomy-19-e-07",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was to decide whether a witness had testified falsely?",
+  "choices": [
+   "The avenger of blood",
+   "The judges",
+   "The captains",
+   "The Levite scribes"
+  ],
+  "answer": 1,
+  "explanation": "The judges shall make diligent inquisition, and if the witness be false, he has testified falsely against his brother.",
+  "ref": "Deuteronomy 19:18"
+ },
+ {
+  "id": "deuteronomy-19-e-08",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD give Israel to possess, according to this chapter?",
+  "choices": [
+   "A king",
+   "The land",
+   "A new law",
+   "A great army"
+  ],
+  "answer": 1,
+  "explanation": "The LORD cut off the nations and gave Israel the land to possess.",
+  "ref": "Deuteronomy 19:1"
+ },
+ {
+  "id": "deuteronomy-19-e-09",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Against whom had the false witness testified falsely?",
+  "choices": [
+   "The priest",
+   "His brother",
+   "The judge",
+   "A stranger"
+  ],
+  "answer": 1,
+  "explanation": "The witness had testified falsely against his brother.",
+  "ref": "Deuteronomy 19:18"
+ },
+ {
+  "id": "deuteronomy-19-e-10",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the closing verse say should go for life?",
+  "choices": [
+   "Silver",
+   "Life",
+   "A sacrifice",
+   "A year of service"
+  ],
+  "answer": 1,
+  "explanation": "Life shall go for life, eye for eye, tooth for tooth, hand for hand, foot for foot.",
+  "ref": "Deuteronomy 19:21"
+ },
+ {
+  "id": "deuteronomy-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where were the three cities to be separated?",
+  "choices": [
+   "On the border of the land",
+   "Beside the Jordan only",
+   "Within the camp of Levi",
+   "In the midst of the land"
+  ],
+  "answer": 3,
+  "explanation": "Moses said, Thou shalt separate three cities for thee in the midst of thy land.",
+  "ref": "Deuteronomy 19:2"
+ },
+ {
+  "id": "deuteronomy-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel to prepare so that every slayer could flee to a city?",
+  "choices": [
+   "A wall",
+   "A sacrifice",
+   "A watch",
+   "A way"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt prepare thee a way, and divide the coasts of thy land into three parts, that every slayer may flee thither.",
+  "ref": "Deuteronomy 19:3"
+ },
+ {
+  "id": "deuteronomy-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the two neighbours doing in the wood in the example?",
+  "choices": [
+   "Hunting",
+   "Gathering fruit",
+   "Building a fence",
+   "Hewing wood"
+  ],
+  "answer": 3,
+  "explanation": "A man goeth into the wood with his neighbour to hew wood, and the axe head slips.",
+  "ref": "Deuteronomy 19:5"
+ },
+ {
+  "id": "deuteronomy-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what state was the avenger's heart as he chased the slayer?",
+  "choices": [
+   "Cold",
+   "Sorrowful",
+   "Peaceful",
+   "Hot"
+  ],
+  "answer": 3,
+  "explanation": "The avenger of blood might pursue the slayer while his heart is hot.",
+  "ref": "Deuteronomy 19:6"
+ },
+ {
+  "id": "deuteronomy-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the slayer of the example not worthy of death?",
+  "choices": [
+   "He was a Levite",
+   "He paid a fine",
+   "He had a witness",
+   "He hated his neighbour not in time past"
+  ],
+  "answer": 3,
+  "explanation": "He was not worthy of death, inasmuch as he hated him not in time past.",
+  "ref": "Deuteronomy 19:6"
+ },
+ {
+  "id": "deuteronomy-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not to be shed in the land, which is why the cities were set apart?",
+  "choices": [
+   "Animal blood",
+   "Sacrificial blood",
+   "Blood of the enemy",
+   "Innocent blood"
+  ],
+  "answer": 3,
+  "explanation": "The cities were set apart that innocent blood be not shed in the land.",
+  "ref": "Deuteronomy 19:10"
+ },
+ {
+  "id": "deuteronomy-19-m-07",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom had the LORD sworn to give the whole land?",
+  "choices": [
+   "The judges",
+   "The priests",
+   "The twelve spies",
+   "Israel's fathers"
+  ],
+  "answer": 3,
+  "explanation": "The LORD had sworn unto their fathers to give them all the land he promised.",
+  "ref": "Deuteronomy 19:8"
+ },
+ {
+  "id": "deuteronomy-19-m-08",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the man do who hated his neighbour and lay in wait for him?",
+  "choices": [
+   "Robbed him",
+   "Cursed him",
+   "Took his field",
+   "Smote him mortally"
+  ],
+  "answer": 3,
+  "explanation": "He hated his neighbour, lay in wait, and smote him mortally that he died.",
+  "ref": "Deuteronomy 19:11"
+ },
+ {
+  "id": "deuteronomy-19-m-09",
+  "chapter": 19,
+  "level": "medium",
+  "category": "person",
+  "question": "Into whose hand were the elders to deliver the murderer from the city of refuge?",
+  "choices": [
+   "The priests",
+   "The judges",
+   "The captains",
+   "The avenger of blood"
+  ],
+  "answer": 3,
+  "explanation": "The elders of his city were to deliver him into the hand of the avenger of blood, that he may die.",
+  "ref": "Deuteronomy 19:12"
+ },
+ {
+  "id": "deuteronomy-19-m-10",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who had set the landmarks that were not to be removed?",
+  "choices": [
+   "The priests",
+   "The tribal heads",
+   "Moses alone",
+   "They of old time"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not remove thy neighbour's landmark, which they of old time have set.",
+  "ref": "Deuteronomy 19:14"
+ },
+ {
+  "id": "deuteronomy-19-m-11",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Before whom were both men to stand in a case of false witness?",
+  "choices": [
+   "The elders and captains only",
+   "The king and his servants",
+   "The avenger of blood",
+   "The LORD, the priests and the judges"
+  ],
+  "answer": 3,
+  "explanation": "Both men shall stand before the LORD, before the priests and the judges.",
+  "ref": "Deuteronomy 19:17"
+ },
+ {
+  "id": "deuteronomy-19-m-12",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would not be committed again after a false witness was punished?",
+  "choices": [
+   "Any further war",
+   "Any false oath only",
+   "Any journey",
+   "Any such evil"
+  ],
+  "answer": 3,
+  "explanation": "Those which remain shall hear, and fear, and shall henceforth commit no more any such evil among you.",
+  "ref": "Deuteronomy 19:20"
+ },
+ {
+  "id": "deuteronomy-19-m-13",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel to put away from Israel by executing the murderer?",
+  "choices": [
+   "The unclean thing",
+   "The stranger",
+   "The firstborn",
+   "The guilt of innocent blood"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt put away the guilt of innocent blood from Israel, that it may go well with thee.",
+  "ref": "Deuteronomy 19:13"
+ },
+ {
+  "id": "deuteronomy-19-m-14",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was one condition for adding three more cities?",
+  "choices": [
+   "Paying a tithe",
+   "Building a temple",
+   "Choosing a king",
+   "Keeping all the commandments"
+  ],
+  "answer": 3,
+  "explanation": "The three added cities depended on keeping all the commandments to do them.",
+  "ref": "Deuteronomy 19:9"
+ },
+ {
+  "id": "deuteronomy-19-m-15",
+  "chapter": 19,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was giving Israel the land to possess?",
+  "choices": [
+   "Moses",
+   "The elders",
+   "Joshua",
+   "The LORD their God"
+  ],
+  "answer": 3,
+  "explanation": "The land is the one which the LORD thy God giveth thee to possess it.",
+  "ref": "Deuteronomy 19:1"
+ },
+ {
+  "id": "deuteronomy-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cities of refuge in all would Israel have after adding three more?",
+  "choices": [
+   "Six",
+   "Three",
+   "Nine",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "Israel was to add three cities more, beside the first three.",
+  "ref": "Deuteronomy 19:9"
+ },
+ {
+  "id": "deuteronomy-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why might the avenger overtake the slayer, according to Moses?",
+  "choices": [
+   "The way was long",
+   "The slayer was slow",
+   "The gate was closed",
+   "He had no witness"
+  ],
+  "answer": 0,
+  "explanation": "Moses said the avenger might overtake him because the way is long.",
+  "ref": "Deuteronomy 19:6"
+ },
+ {
+  "id": "deuteronomy-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the man cutting down with his axe in the example?",
+  "choices": [
+   "A tree",
+   "A fence",
+   "A hedge",
+   "A vine"
+  ],
+  "answer": 0,
+  "explanation": "His hand fetcheth a stroke with the axe to cut down the tree.",
+  "ref": "Deuteronomy 19:5"
+ },
+ {
+  "id": "deuteronomy-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Complete the list: life for life, eye for eye, tooth for tooth, hand for hand, what?",
+  "choices": [
+   "Foot for foot",
+   "Ear for ear",
+   "Ox for ox",
+   "Stripe for stripe"
+  ],
+  "answer": 0,
+  "explanation": "The chapter ends: life for life, eye for eye, tooth for tooth, hand for hand, foot for foot.",
+  "ref": "Deuteronomy 19:21"
+ },
+ {
+  "id": "deuteronomy-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides keeping the commandments, what was Israel to do for three more cities?",
+  "choices": [
+   "Love the LORD and walk ever in his ways",
+   "Offer a burnt offering",
+   "Cross the Jordan again",
+   "Tear down the high places"
+  ],
+  "answer": 0,
+  "explanation": "Israel was to love the LORD thy God and to walk ever in his ways.",
+  "ref": "Deuteronomy 19:9"
+ },
+ {
+  "id": "deuteronomy-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where had the landmarks been set that Israel was not to move?",
+  "choices": [
+   "In their inheritance",
+   "On the mountain",
+   "In the wilderness",
+   "Beside the river"
+  ],
+  "answer": 0,
+  "explanation": "The landmark was set by them of old time in thine inheritance.",
+  "ref": "Deuteronomy 19:14"
+ },
+ {
+  "id": "deuteronomy-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the LORD cut off before Israel succeeded them in their cities?",
+  "choices": [
+   "The nations",
+   "The kings",
+   "The giants",
+   "The Egyptians"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God hath cut off the nations whose land he giveth thee.",
+  "ref": "Deuteronomy 19:1"
+ },
+ {
+  "id": "deuteronomy-19-h-08",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would follow for Israel if it put away the guilt of innocent blood?",
+  "choices": [
+   "It would go well with them",
+   "They would be rich",
+   "They would have rest",
+   "They would have no enemies"
+  ],
+  "answer": 0,
+  "explanation": "Moses said, that it may go well with thee.",
+  "ref": "Deuteronomy 19:13"
+ },
+ {
+  "id": "deuteronomy-19-h-09",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was to be put away from among Israel when a false witness was punished?",
+  "choices": [
+   "The evil",
+   "The priest",
+   "The unclean thing",
+   "The stranger"
+  ],
+  "answer": 0,
+  "explanation": "Do unto him as he had thought to have done to his brother: so shalt thou put the evil away from among you.",
+  "ref": "Deuteronomy 19:19"
+ },
+ {
+  "id": "deuteronomy-19-h-10",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into how many parts was Israel to divide the coasts of the land?",
+  "choices": [
+   "Three",
+   "Two",
+   "Four",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "Israel was to divide the coasts of the land into three parts, that every slayer may flee.",
+  "ref": "Deuteronomy 19:3"
+ },
+ {
+  "id": "deuteronomy-19-h-11",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If innocent blood were shed in the land, what would be upon Israel?",
+  "choices": [
+   "Blood",
+   "A curse",
+   "A plague",
+   "A famine"
+  ],
+  "answer": 0,
+  "explanation": "Innocent blood shed in the land would mean that so blood be upon thee.",
+  "ref": "Deuteronomy 19:10"
+ },
+ {
+  "id": "deuteronomy-19-h-12",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose elders were to send and fetch a murderer out of the city of refuge?",
+  "choices": [
+   "The elders of his own city",
+   "The elders of the city of refuge",
+   "The elders of Levi",
+   "The elders of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "The elders of his city shall send and fetch him thence.",
+  "ref": "Deuteronomy 19:12"
+ },
+ {
+  "id": "deuteronomy-19-h-13",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the judges make before ruling that a witness was false?",
+  "choices": [
+   "Diligent inquisition",
+   "A feast",
+   "A vow",
+   "A sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "The judges shall make diligent inquisition.",
+  "ref": "Deuteronomy 19:18"
+ },
+ {
+  "id": "deuteronomy-19-h-14",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who would hear and fear after a false witness was punished?",
+  "choices": [
+   "Those which remain",
+   "The priests only",
+   "The avenger of blood",
+   "The judges only"
+  ],
+  "answer": 0,
+  "explanation": "Those which remain shall hear, and fear.",
+  "ref": "Deuteronomy 19:20"
+ },
+ {
+  "id": "deuteronomy-19-h-15",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Who would enlarge Israel's coast, as he had sworn to their fathers?",
+  "choices": [
+   "The LORD their God",
+   "Joshua",
+   "The elders",
+   "Moses"
+  ],
+  "answer": 0,
+  "explanation": "If the LORD thy God enlarge thy coast, as he hath sworn unto thy fathers.",
+  "ref": "Deuteronomy 19:8"
+ },
+ {
   "id": "old-deuteronomy-20-1",
   "chapter": 20,
   "level": "beginner",
