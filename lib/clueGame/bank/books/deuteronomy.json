@@ -3680,6 +3680,646 @@
   "ref": "Deuteronomy 6:20–25"
  },
  {
+  "id": "deuteronomy-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Moses say the land floweth with?",
+  "choices": [
+   "Milk and honey",
+   "Wine and oil",
+   "Corn and honey",
+   "Milk and butter"
+  ],
+  "answer": 0,
+  "explanation": "The land floweth with milk and honey.",
+  "ref": "Deuteronomy 6:3"
+ },
+ {
+  "id": "deuteronomy-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where are Israel to write the words of the LORD?",
+  "choices": [
+   "On the posts of their house and on their gates",
+   "On the walls of the tabernacle",
+   "On stones by the river",
+   "On the garments of the priests"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt write them upon the posts of thy house, and on thy gates.",
+  "ref": "Deuteronomy 6:9"
+ },
+ {
+  "id": "deuteronomy-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which three fathers did the LORD swear to give the land to?",
+  "choices": [
+   "Abraham, Isaac and Jacob",
+   "Noah, Abraham and Isaac",
+   "Abraham, Jacob and Joseph",
+   "Isaac, Jacob and Moses"
+  ],
+  "answer": 0,
+  "explanation": "The land which he sware unto thy fathers, to Abraham, to Isaac, and to Jacob.",
+  "ref": "Deuteronomy 6:10"
+ },
+ {
+  "id": "deuteronomy-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who will ask in time to come what the testimonies and statutes mean?",
+  "choices": [
+   "Thy son",
+   "The priest",
+   "A stranger",
+   "The king"
+  ],
+  "answer": 0,
+  "explanation": "When thy son asketh thee in time to come, What mean the testimonies, and the statutes?",
+  "ref": "Deuteronomy 6:20"
+ },
+ {
+  "id": "deuteronomy-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose bondmen were Israel in Egypt, according to Moses?",
+  "choices": [
+   "Pharaoh's",
+   "The Hittites'",
+   "The Amorites'",
+   "The priests'"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt say unto thy son, We were Pharaoh's bondmen in Egypt.",
+  "ref": "Deuteronomy 6:21"
+ },
+ {
+  "id": "deuteronomy-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where are the words to be bound as a sign?",
+  "choices": [
+   "Upon thine hand",
+   "Upon thy feet",
+   "Around thy neck",
+   "Upon thy shoulder"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt bind them for a sign upon thine hand.",
+  "ref": "Deuteronomy 6:8"
+ },
+ {
+  "id": "deuteronomy-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of God is the LORD said to be among Israel?",
+  "choices": [
+   "A jealous God",
+   "A distant God",
+   "A hidden God",
+   "A sleeping God"
+  ],
+  "answer": 0,
+  "explanation": "For the LORD thy God is a jealous God among you.",
+  "ref": "Deuteronomy 6:15"
+ },
+ {
+  "id": "deuteronomy-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose gods must Israel not go after?",
+  "choices": [
+   "The gods of the people round about them",
+   "The gods of Egypt only",
+   "The gods of the Levites",
+   "The gods of their fathers"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall not go after other gods, of the gods of the people which are round about you.",
+  "ref": "Deuteronomy 6:14"
+ },
+ {
+  "id": "deuteronomy-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom shall Israel fear and serve?",
+  "choices": [
+   "The LORD thy God",
+   "Pharaoh",
+   "The elders",
+   "The nations round about"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt fear the LORD thy God, and serve him, and shalt swear by his name.",
+  "ref": "Deuteronomy 6:13"
+ },
+ {
+  "id": "deuteronomy-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When are Israel to talk of God's words?",
+  "choices": [
+   "Sitting, walking, lying down and rising up",
+   "Only on the sabbath",
+   "Only at the feasts",
+   "Only in the tabernacle"
+  ],
+  "answer": 0,
+  "explanation": "Talk of them when thou sittest in thine house, and when thou walkest by the way, and when thou liest down, and when thou risest up.",
+  "ref": "Deuteronomy 6:7"
+ },
+ {
+  "id": "deuteronomy-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Moses say Israel is to keep the statutes all the days of their life?",
+  "choices": [
+   "That they may be rich",
+   "That they may be kings",
+   "That they may fear the LORD and their days be prolonged",
+   "That they may never travel"
+  ],
+  "answer": 2,
+  "explanation": "That thou mightest fear the LORD thy God, to keep all his statutes...and that thy days may be prolonged.",
+  "ref": "Deuteronomy 6:2"
+ },
+ {
+  "id": "deuteronomy-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Moses say will happen to Israel in the land if they observe to do?",
+  "choices": [
+   "They will become kings",
+   "They will never fight",
+   "They will increase mightily",
+   "They will rule Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Observe to do it; that it may be well with thee, and that ye may increase mightily.",
+  "ref": "Deuteronomy 6:3"
+ },
+ {
+  "id": "deuteronomy-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of cities will the LORD give Israel that they did not build?",
+  "choices": [
+   "Walled fortress cities",
+   "Cities of ivory",
+   "Great and goodly cities",
+   "Cities of refuge"
+  ],
+  "answer": 2,
+  "explanation": "He gives great and goodly cities, which thou buildedst not.",
+  "ref": "Deuteronomy 6:10"
+ },
+ {
+  "id": "deuteronomy-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the houses be full of that Israel did not fill?",
+  "choices": [
+   "Gold and silver",
+   "Corn and oil",
+   "All good things",
+   "Flocks and herds"
+  ],
+  "answer": 2,
+  "explanation": "Houses full of all good things, which thou filledst not.",
+  "ref": "Deuteronomy 6:11"
+ },
+ {
+  "id": "deuteronomy-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will Israel find in the land that they did not dig?",
+  "choices": [
+   "Graves",
+   "Ditches",
+   "Wells",
+   "Cisterns of stone"
+  ],
+  "answer": 2,
+  "explanation": "Wells digged, which thou diggedst not.",
+  "ref": "Deuteronomy 6:11"
+ },
+ {
+  "id": "deuteronomy-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which trees are named among those Israel did not plant?",
+  "choices": [
+   "Fig trees",
+   "Cedar trees",
+   "Olive trees",
+   "Palm trees"
+  ],
+  "answer": 2,
+  "explanation": "Vineyards and olive trees, which thou plantedst not.",
+  "ref": "Deuteronomy 6:11"
+ },
+ {
+  "id": "deuteronomy-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Moses says the LORD is the God of whom?",
+  "choices": [
+   "The Egyptians",
+   "The Levites only",
+   "Thy fathers",
+   "The kings"
+  ],
+  "answer": 2,
+  "explanation": "As the LORD God of thy fathers hath promised thee.",
+  "ref": "Deuteronomy 6:3"
+ },
+ {
+  "id": "deuteronomy-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would be kindled against Israel if they followed other gods?",
+  "choices": [
+   "The fire of the altar",
+   "The wrath of Pharaoh",
+   "The anger of the LORD",
+   "The fire of the mount"
+  ],
+  "answer": 2,
+  "explanation": "Lest the anger of the LORD thy God be kindled against thee.",
+  "ref": "Deuteronomy 6:15"
+ },
+ {
+  "id": "deuteronomy-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Moses tell Israel to do what is right and good in the LORD's sight?",
+  "choices": [
+   "That they may be given a king",
+   "That they may return to Egypt",
+   "That it may be well and they may possess the good land",
+   "That they may escape the sword"
+  ],
+  "answer": 2,
+  "explanation": "Do that which is right and good...that thou mayest go in and possess the good land.",
+  "ref": "Deuteronomy 6:18"
+ },
+ {
+  "id": "deuteronomy-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do to Israel's enemies?",
+  "choices": [
+   "Make them servants",
+   "Turn them to Egypt",
+   "Cast them out before Israel",
+   "Give them peace"
+  ],
+  "answer": 2,
+  "explanation": "To cast out all thine enemies from before thee, as the LORD hath spoken.",
+  "ref": "Deuteronomy 6:19"
+ },
+ {
+  "id": "deuteronomy-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD shew upon Egypt before the eyes of Israel?",
+  "choices": [
+   "Hail and darkness only",
+   "Wells of blood only",
+   "Signs and wonders, great and sore",
+   "A pillar of cloud only"
+  ],
+  "answer": 2,
+  "explanation": "The LORD shewed signs and wonders, great and sore, upon Egypt.",
+  "ref": "Deuteronomy 6:22"
+ },
+ {
+  "id": "deuteronomy-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD bring Israel out of Egypt, according to the answer for the son?",
+  "choices": [
+   "To let them rest in the wilderness",
+   "To build Him a temple",
+   "To bring them in and give them the land",
+   "To make them a king"
+  ],
+  "answer": 2,
+  "explanation": "He brought us out...that he might bring us in, to give us the land which he sware unto our fathers.",
+  "ref": "Deuteronomy 6:23"
+ },
+ {
+  "id": "deuteronomy-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD command Israel to do all these statutes?",
+  "choices": [
+   "To make them a great army",
+   "To make them rich",
+   "For their good always, to preserve them alive",
+   "To fill the tabernacle"
+  ],
+  "answer": 2,
+  "explanation": "The LORD commanded us to do all these statutes...for our good always, that he might preserve us alive.",
+  "ref": "Deuteronomy 6:24"
+ },
+ {
+  "id": "deuteronomy-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Moses say shall be Israel's righteousness?",
+  "choices": [
+   "Offering many sacrifices",
+   "Having many children",
+   "Observing to do all these commandments",
+   "Taking the land"
+  ],
+  "answer": 2,
+  "explanation": "It shall be our righteousness, if we observe to do all these commandments.",
+  "ref": "Deuteronomy 6:25"
+ },
+ {
+  "id": "deuteronomy-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD swear to Abraham, Isaac and Jacob?",
+  "choices": [
+   "To give them a king",
+   "To give them a temple",
+   "To give them the land",
+   "To give them gold"
+  ],
+  "answer": 2,
+  "explanation": "The land which he sware unto thy fathers, to give thee great and goodly cities.",
+  "ref": "Deuteronomy 6:10"
+ },
+ {
+  "id": "deuteronomy-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Moses tells Israel to keep the statutes: thou, thy son, and whom?",
+  "choices": [
+   "Thy servant",
+   "Thy stranger",
+   "Thy brother",
+   "Thy son's son"
+  ],
+  "answer": 3,
+  "explanation": "Thou, and thy son, and thy son's son, all the days of thy life.",
+  "ref": "Deuteronomy 6:2"
+ },
+ {
+  "id": "deuteronomy-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the words to be as, between thine eyes?",
+  "choices": [
+   "Garments",
+   "Crowns",
+   "Stones",
+   "Frontlets"
+  ],
+  "answer": 3,
+  "explanation": "They shall be as frontlets between thine eyes.",
+  "ref": "Deuteronomy 6:8"
+ },
+ {
+  "id": "deuteronomy-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Verse 1 names the commandments, the statutes and what?",
+  "choices": [
+   "The offerings",
+   "The feasts",
+   "The covenants",
+   "The judgments"
+  ],
+  "answer": 3,
+  "explanation": "These are the commandments, the statutes, and the judgments.",
+  "ref": "Deuteronomy 6:1"
+ },
+ {
+  "id": "deuteronomy-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where does Moses say the words which he commands shall be?",
+  "choices": [
+   "In thy tent",
+   "On thy table",
+   "In thy field",
+   "In thine heart"
+  ],
+  "answer": 3,
+  "explanation": "These words, which I command thee this day, shall be in thine heart.",
+  "ref": "Deuteronomy 6:6"
+ },
+ {
+  "id": "deuteronomy-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Words are talked of when thou walkest by the what?",
+  "choices": [
+   "The river",
+   "The field",
+   "The gate",
+   "The way"
+  ],
+  "answer": 3,
+  "explanation": "Talk of them when thou walkest by the way.",
+  "ref": "Deuteronomy 6:7"
+ },
+ {
+  "id": "deuteronomy-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Upon Egypt, upon Pharaoh and upon whom else did the LORD shew signs and wonders?",
+  "choices": [
+   "All his armies",
+   "All his priests",
+   "All his horsemen",
+   "All his household"
+  ],
+  "answer": 3,
+  "explanation": "Upon Egypt, upon Pharaoh, and upon all his household, before our eyes.",
+  "ref": "Deuteronomy 6:22"
+ },
+ {
+  "id": "deuteronomy-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Israel is to do what is right and good in the sight of whom?",
+  "choices": [
+   "The elders",
+   "The priests",
+   "Moses",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt do that which is right and good in the sight of the LORD.",
+  "ref": "Deuteronomy 6:18"
+ },
+ {
+  "id": "deuteronomy-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Israel is to keep the commandments of the LORD, His testimonies and His what?",
+  "choices": [
+   "Offerings",
+   "Feasts",
+   "Altars",
+   "Statutes"
+  ],
+  "answer": 3,
+  "explanation": "Keep the commandments of the LORD your God, and his testimonies, and his statutes.",
+  "ref": "Deuteronomy 6:17"
+ },
+ {
+  "id": "deuteronomy-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When Israel has eaten and is full, Moses warns them not to do what?",
+  "choices": [
+   "Go back to Egypt",
+   "Build an idol",
+   "Ask for a king",
+   "Forget the LORD"
+  ],
+  "answer": 3,
+  "explanation": "When thou shalt have eaten and be full; then beware lest thou forget the LORD.",
+  "ref": "Deuteronomy 6:11–12"
+ },
+ {
+  "id": "deuteronomy-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To the end of what are Israel to fear the LORD, thou, thy son and thy son's son?",
+  "choices": [
+   "Until they cross Jordan",
+   "Until the land is won",
+   "Until the feast of weeks",
+   "All the days of thy life"
+  ],
+  "answer": 3,
+  "explanation": "To keep all his statutes...all the days of thy life.",
+  "ref": "Deuteronomy 6:2"
+ },
+ {
+  "id": "deuteronomy-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD will cast out Israel's enemies, as the LORD hath what?",
+  "choices": [
+   "Written",
+   "Sworn",
+   "Done",
+   "Spoken"
+  ],
+  "answer": 3,
+  "explanation": "To cast out all thine enemies from before thee, as the LORD hath spoken.",
+  "ref": "Deuteronomy 6:19"
+ },
+ {
+  "id": "deuteronomy-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Which father is named between Abraham and Jacob?",
+  "choices": [
+   "Joseph",
+   "Ishmael",
+   "Esau",
+   "Isaac"
+  ],
+  "answer": 3,
+  "explanation": "The land which he sware unto thy fathers, to Abraham, to Isaac, and to Jacob.",
+  "ref": "Deuteronomy 6:10"
+ },
+ {
+  "id": "deuteronomy-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Israel is to fear the LORD, serve Him and do what in His name?",
+  "choices": [
+   "Build in it",
+   "Bless in it",
+   "Hide in it",
+   "Swear by it"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt fear the LORD thy God, and serve him, and shalt swear by his name.",
+  "ref": "Deuteronomy 6:13"
+ },
+ {
+  "id": "deuteronomy-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what did the LORD bring Israel out of Egypt, in the answer to the son?",
+  "choices": [
+   "A great flood",
+   "A strong wind",
+   "A fiery sword",
+   "A mighty hand"
+  ],
+  "answer": 3,
+  "explanation": "The LORD brought us out of Egypt with a mighty hand.",
+  "ref": "Deuteronomy 6:21"
+ },
+ {
+  "id": "deuteronomy-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The anger of the LORD would destroy Israel from off the face of the what?",
+  "choices": [
+   "Land",
+   "Sea",
+   "Mount",
+   "Earth"
+  ],
+  "answer": 3,
+  "explanation": "Lest...he destroy thee from off the face of the earth.",
+  "ref": "Deuteronomy 6:15"
+ },
+ {
   "id": "old-deuteronomy-7-1",
   "chapter": 7,
   "level": "beginner",
