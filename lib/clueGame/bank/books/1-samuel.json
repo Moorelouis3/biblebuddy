@@ -4400,6 +4400,646 @@
   "ref": "1 Samuel 7:12"
  },
  {
+  "id": "1-samuel-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the men of Kirjath-jearim sanctify to keep the ark?",
+  "choices": [
+   "Eleazar",
+   "Samuel",
+   "Joel",
+   "Abinadab"
+  ],
+  "answer": 0,
+  "explanation": "They brought the ark into the house of Abinadab and sanctified Eleazar his son to keep the ark of the LORD.",
+  "ref": "1 Samuel 7:1"
+ },
+ {
+  "id": "1-samuel-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did the ark abide in Kirjath-jearim?",
+  "choices": [
+   "Seven years",
+   "Twenty years",
+   "Forty years",
+   "Seven months"
+  ],
+  "answer": 1,
+  "explanation": "While the ark abode in Kirjath-jearim, the time was long; for it was twenty years.",
+  "ref": "1 Samuel 7:2"
+ },
+ {
+  "id": "1-samuel-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Israel to return to the Lord with all their hearts?",
+  "choices": [
+   "Eli",
+   "Saul",
+   "Samuel",
+   "Abinadab"
+  ],
+  "answer": 2,
+  "explanation": "Samuel spake unto all the house of Israel, If ye do return unto the LORD with all your hearts.",
+  "ref": "1 Samuel 7:3"
+ },
+ {
+  "id": "1-samuel-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do with Baalim and Ashtaroth?",
+  "choices": [
+   "They carried them to Gath",
+   "They hid them at Mizpeh",
+   "They burned the ark's cart",
+   "They put them away"
+  ],
+  "answer": 3,
+  "explanation": "The children of Israel did put away Baalim and Ashtaroth, and served the LORD only.",
+  "ref": "1 Samuel 7:4"
+ },
+ {
+  "id": "1-samuel-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do with the water they drew at Mizpeh?",
+  "choices": [
+   "Poured it out before the Lord",
+   "Washed the altar",
+   "Gave it to the Philistines",
+   "Drank it in silence"
+  ],
+  "answer": 0,
+  "explanation": "They drew water, and poured it out before the LORD.",
+  "ref": "1 Samuel 7:6"
+ },
+ {
+  "id": "1-samuel-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do on that day at Mizpeh, saying they had sinned?",
+  "choices": [
+   "They built an altar",
+   "They fasted",
+   "They crowned a king",
+   "They went to war"
+  ],
+  "answer": 1,
+  "explanation": "They fasted on that day, and said there, We have sinned against the LORD.",
+  "ref": "1 Samuel 7:6"
+ },
+ {
+  "id": "1-samuel-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samuel take and offer as a burnt offering?",
+  "choices": [
+   "A young bullock",
+   "Two doves",
+   "A sucking lamb",
+   "A ram"
+  ],
+  "answer": 2,
+  "explanation": "Samuel took a sucking lamb, and offered it for a burnt offering wholly unto the LORD.",
+  "ref": "1 Samuel 7:9"
+ },
+ {
+  "id": "1-samuel-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Israel feel when they heard the Philistines were coming?",
+  "choices": [
+   "They were glad",
+   "They were angry",
+   "They were proud",
+   "They were afraid"
+  ],
+  "answer": 3,
+  "explanation": "When the children of Israel heard it, they were afraid of the Philistines.",
+  "ref": "1 Samuel 7:7"
+ },
+ {
+  "id": "1-samuel-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Samuel's house?",
+  "choices": [
+   "Ramah",
+   "Shiloh",
+   "Bethlehem",
+   "Gibeah"
+  ],
+  "answer": 0,
+  "explanation": "His return was to Ramah; for there was his house; and there he judged Israel.",
+  "ref": "1 Samuel 7:17"
+ },
+ {
+  "id": "1-samuel-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samuel build at Ramah?",
+  "choices": [
+   "A house of cedar",
+   "An altar unto the Lord",
+   "A city wall",
+   "A tower"
+  ],
+  "answer": 1,
+  "explanation": "And there he built an altar unto the LORD.",
+  "ref": "1 Samuel 7:17"
+ },
+ {
+  "id": "1-samuel-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel say the Lord would do if Israel returned with all their hearts?",
+  "choices": [
+   "Give them a king",
+   "Restore the ark",
+   "Deliver them from the Philistines",
+   "Send them rain"
+  ],
+  "answer": 2,
+  "explanation": "Put away the strange gods and serve him only: and he will deliver you out of the hand of the Philistines.",
+  "ref": "1 Samuel 7:3"
+ },
+ {
+  "id": "1-samuel-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel tell Israel to do with their hearts?",
+  "choices": [
+   "Harden them",
+   "Close them",
+   "Rend them",
+   "Prepare them unto the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Prepare your hearts unto the LORD, and serve him only.",
+  "ref": "1 Samuel 7:3"
+ },
+ {
+  "id": "1-samuel-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel say at Mizpeh?",
+  "choices": [
+   "We have sinned against the Lord",
+   "We want a king",
+   "We will fight",
+   "The ark is lost"
+  ],
+  "answer": 0,
+  "explanation": "They fasted on that day, and said there, We have sinned against the LORD.",
+  "ref": "1 Samuel 7:6"
+ },
+ {
+  "id": "1-samuel-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the lords of the Philistines go up against Israel?",
+  "choices": [
+   "Israel stole the ark",
+   "They heard Israel had gathered at Mizpeh",
+   "Israel refused tribute",
+   "Samuel insulted them"
+  ],
+  "answer": 1,
+  "explanation": "When the Philistines heard that the children of Israel were gathered together to Mizpeh, the lords went up against Israel.",
+  "ref": "1 Samuel 7:7"
+ },
+ {
+  "id": "1-samuel-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel ask Samuel when the Philistines came?",
+  "choices": [
+   "Make us a king",
+   "Lead us in battle",
+   "Cease not to cry unto the Lord for us",
+   "Bring back the ark"
+  ],
+  "answer": 2,
+  "explanation": "They said to Samuel, Cease not to cry unto the LORD our God for us, that he will save us.",
+  "ref": "1 Samuel 7:8"
+ },
+ {
+  "id": "1-samuel-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel do while offering the lamb?",
+  "choices": [
+   "He fled",
+   "He fasted",
+   "He blessed the army",
+   "He cried unto the Lord for Israel"
+  ],
+  "answer": 3,
+  "explanation": "Samuel cried unto the LORD for Israel; and the LORD heard him.",
+  "ref": "1 Samuel 7:9"
+ },
+ {
+  "id": "1-samuel-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the Philistines when the Lord thundered?",
+  "choices": [
+   "They were smitten before Israel",
+   "They fled home unharmed",
+   "They made peace",
+   "They captured Mizpeh"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thundered with a great thunder on that day upon the Philistines, and discomfited them; and they were smitten before Israel.",
+  "ref": "1 Samuel 7:10"
+ },
+ {
+  "id": "1-samuel-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Between which two places did Samuel set up the stone?",
+  "choices": [
+   "Ramah and Bethel",
+   "Mizpeh and Shen",
+   "Gilgal and Ekron",
+   "Gath and Mizpeh"
+  ],
+  "answer": 1,
+  "explanation": "Samuel took a stone, and set it between Mizpeh and Shen.",
+  "ref": "1 Samuel 7:12"
+ },
+ {
+  "id": "1-samuel-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel say when he named the stone Eben-ezer?",
+  "choices": [
+   "Here God dwells",
+   "God is our king",
+   "Hitherto hath the Lord helped us",
+   "The Lord has won"
+  ],
+  "answer": 2,
+  "explanation": "He called the name of it Eben-ezer, saying, Hitherto hath the LORD helped us.",
+  "ref": "1 Samuel 7:12"
+ },
+ {
+  "id": "1-samuel-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened after the Philistines were subdued?",
+  "choices": [
+   "They sent tribute",
+   "They took the ark",
+   "They joined Israel",
+   "They came no more into Israel's coast"
+  ],
+  "answer": 3,
+  "explanation": "The Philistines were subdued, and they came no more into the coast of Israel.",
+  "ref": "1 Samuel 7:13"
+ },
+ {
+  "id": "1-samuel-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose hand was against the Philistines all the days of Samuel?",
+  "choices": [
+   "The Lord's",
+   "Saul's",
+   "Samuel's",
+   "The elders'"
+  ],
+  "answer": 0,
+  "explanation": "The hand of the LORD was against the Philistines all the days of Samuel.",
+  "ref": "1 Samuel 7:13"
+ },
+ {
+  "id": "1-samuel-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With whom was there peace after the victory?",
+  "choices": [
+   "The Moabites",
+   "The Amorites",
+   "The Ammonites",
+   "The Edomites"
+  ],
+  "answer": 1,
+  "explanation": "And there was peace between Israel and the Amorites.",
+  "ref": "1 Samuel 7:14"
+ },
+ {
+  "id": "1-samuel-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For how long did Samuel judge Israel?",
+  "choices": [
+   "Seven years",
+   "Twenty years",
+   "All the days of his life",
+   "Until he was forty"
+  ],
+  "answer": 2,
+  "explanation": "And Samuel judged Israel all the days of his life.",
+  "ref": "1 Samuel 7:15"
+ },
+ {
+  "id": "1-samuel-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel do in Mizpeh after the gathering?",
+  "choices": [
+   "He anointed a king",
+   "He built a wall",
+   "He blew a trumpet",
+   "He judged the children of Israel"
+  ],
+  "answer": 3,
+  "explanation": "And Samuel judged the children of Israel in Mizpeh.",
+  "ref": "1 Samuel 7:6"
+ },
+ {
+  "id": "1-samuel-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Philistines lose that Israel got back?",
+  "choices": [
+   "The cities they had taken from Israel",
+   "The ark",
+   "Their gods",
+   "Their king"
+  ],
+  "answer": 0,
+  "explanation": "The cities which the Philistines had taken from Israel were restored to Israel.",
+  "ref": "1 Samuel 7:14"
+ },
+ {
+  "id": "1-samuel-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Abinadab's house stand?",
+  "choices": [
+   "In the valley",
+   "In the hill",
+   "By the sea",
+   "In the city gate"
+  ],
+  "answer": 1,
+  "explanation": "They brought the ark into the house of Abinadab in the hill.",
+  "ref": "1 Samuel 7:1"
+ },
+ {
+  "id": "1-samuel-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Under what place did Israel's pursuit of the Philistines end?",
+  "choices": [
+   "Mizpeh",
+   "Ekron",
+   "Beth-car",
+   "Shen"
+  ],
+  "answer": 2,
+  "explanation": "The men of Israel pursued the Philistines, and smote them, until they came under Beth-car.",
+  "ref": "1 Samuel 7:11"
+ },
+ {
+  "id": "1-samuel-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place stood on the other side of the Eben-ezer stone from Mizpeh?",
+  "choices": [
+   "Gath",
+   "Ramah",
+   "Gilgal",
+   "Shen"
+  ],
+  "answer": 3,
+  "explanation": "He set it between Mizpeh and Shen.",
+  "ref": "1 Samuel 7:12"
+ },
+ {
+  "id": "1-samuel-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two idols are named among the strange gods Israel put away?",
+  "choices": [
+   "Baalim and Ashtaroth",
+   "Dagon and Baalim",
+   "Molech and Dagon",
+   "Ashtaroth and Chemosh"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel did put away Baalim and Ashtaroth.",
+  "ref": "1 Samuel 7:4"
+ },
+ {
+  "id": "1-samuel-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the sucking lamb offered to the Lord?",
+  "choices": [
+   "As a peace offering",
+   "Wholly, as a burnt offering",
+   "Half burned, half eaten",
+   "As a drink offering"
+  ],
+  "answer": 1,
+  "explanation": "Samuel took a sucking lamb, and offered it for a burnt offering wholly unto the LORD.",
+  "ref": "1 Samuel 7:9"
+ },
+ {
+  "id": "1-samuel-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the Philistines doing while Samuel offered the burnt offering?",
+  "choices": [
+   "Fleeing",
+   "Praying to Dagon",
+   "Drawing near to battle",
+   "Retreating to Ekron"
+  ],
+  "answer": 2,
+  "explanation": "As Samuel was offering up the burnt offering, the Philistines drew near to battle against Israel.",
+  "ref": "1 Samuel 7:10"
+ },
+ {
+  "id": "1-samuel-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Cities were restored from Ekron even unto which city?",
+  "choices": [
+   "Gaza",
+   "Ashdod",
+   "Askelon",
+   "Gath"
+  ],
+  "answer": 3,
+  "explanation": "The cities which the Philistines had taken were restored, from Ekron even unto Gath.",
+  "ref": "1 Samuel 7:14"
+ },
+ {
+  "id": "1-samuel-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the father of Eleazar, who kept the ark?",
+  "choices": [
+   "Abinadab",
+   "Samuel",
+   "Kish",
+   "Eli"
+  ],
+  "answer": 0,
+  "explanation": "They brought it into the house of Abinadab and sanctified Eleazar his son.",
+  "ref": "1 Samuel 7:1"
+ },
+ {
+  "id": "1-samuel-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place is first in the list of Samuel's yearly circuit?",
+  "choices": [
+   "Gilgal",
+   "Bethel",
+   "Mizpeh",
+   "Ramah"
+  ],
+  "answer": 1,
+  "explanation": "He went from year to year in circuit to Bethel, and Gilgal, and Mizpeh.",
+  "ref": "1 Samuel 7:16"
+ },
+ {
+  "id": "1-samuel-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On whom did the Lord thunder with a great thunder?",
+  "choices": [
+   "The Amorites",
+   "The Israelites",
+   "The Philistines",
+   "The Ammonites"
+  ],
+  "answer": 2,
+  "explanation": "The LORD thundered with a great thunder on that day upon the Philistines.",
+  "ref": "1 Samuel 7:10"
+ },
+ {
+  "id": "1-samuel-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whose hand did Israel ask to be saved?",
+  "choices": [
+   "The Amorites",
+   "The Egyptians",
+   "The Moabites",
+   "The Philistines"
+  ],
+  "answer": 3,
+  "explanation": "That he will save us out of the hand of the Philistines.",
+  "ref": "1 Samuel 7:8"
+ },
+ {
+  "id": "1-samuel-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place is named with Bethel and Mizpeh on Samuel's circuit?",
+  "choices": [
+   "Gilgal",
+   "Shiloh",
+   "Ramah",
+   "Ekron"
+  ],
+  "answer": 0,
+  "explanation": "He went in circuit to Bethel, and Gilgal, and Mizpeh.",
+  "ref": "1 Samuel 7:16"
+ },
+ {
+  "id": "1-samuel-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samuel say he would do for Israel at Mizpeh?",
+  "choices": [
+   "Anoint a king",
+   "Pray for them unto the Lord",
+   "Lead them to war",
+   "Offer ten lambs"
+  ],
+  "answer": 1,
+  "explanation": "Gather all Israel to Mizpeh, and I will pray for you unto the LORD.",
+  "ref": "1 Samuel 7:5"
+ },
+ {
+  "id": "1-samuel-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After whom did all the house of Israel lament during the long wait?",
+  "choices": [
+   "Samuel",
+   "Eli",
+   "The Lord",
+   "The ark"
+  ],
+  "answer": 2,
+  "explanation": "All the house of Israel lamented after the LORD.",
+  "ref": "1 Samuel 7:2"
+ },
+ {
+  "id": "1-samuel-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "From where did the men of Israel go out to pursue the Philistines?",
+  "choices": [
+   "Gilgal",
+   "Mizpeh",
+   "Ramah",
+   "Bethel"
+  ],
+  "answer": 1,
+  "explanation": "The men of Israel went out of Mizpeh, and pursued the Philistines, and smote them.",
+  "ref": "1 Samuel 7:11"
+ },
+ {
   "id": "old-1-samuel-8-1",
   "chapter": 8,
   "level": "beginner",
