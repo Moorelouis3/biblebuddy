@@ -13808,6 +13808,646 @@
   "ref": "Deuteronomy 20:19–20"
  },
  {
+  "id": "deuteronomy-20-e-01",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When Israel saw horses, chariots and a larger people, what were they told?",
+  "choices": [
+   "Retreat at once",
+   "Be not afraid",
+   "Ask for a sign",
+   "Wait for the king"
+  ],
+  "answer": 1,
+  "explanation": "Be not afraid of them: for the LORD thy God is with thee, which brought thee up out of Egypt.",
+  "ref": "Deuteronomy 20:1"
+ },
+ {
+  "id": "deuteronomy-20-e-02",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who goes with Israel to fight for them against their enemies?",
+  "choices": [
+   "The priest",
+   "The LORD their God",
+   "The captains",
+   "The officers"
+  ],
+  "answer": 1,
+  "explanation": "The LORD your God is he that goeth with you, to fight for you against your enemies, to save you.",
+  "ref": "Deuteronomy 20:4"
+ },
+ {
+  "id": "deuteronomy-20-e-03",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was to speak to the people as they came near to the battle?",
+  "choices": [
+   "The king",
+   "The priest",
+   "The judge",
+   "The avenger"
+  ],
+  "answer": 1,
+  "explanation": "When ye are come nigh unto the battle, the priest shall approach and speak unto the people.",
+  "ref": "Deuteronomy 20:2"
+ },
+ {
+  "id": "deuteronomy-20-e-04",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What man was to go home who had built a new house?",
+  "choices": [
+   "One who had sold it",
+   "One who had not dedicated it",
+   "One who had lent it",
+   "One who had tithed on it"
+  ],
+  "answer": 1,
+  "explanation": "Let him go and return to his house, lest he die in the battle, and another man dedicate it.",
+  "ref": "Deuteronomy 20:5"
+ },
+ {
+  "id": "deuteronomy-20-e-05",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What man was to go home who had planted a vineyard?",
+  "choices": [
+   "One who had sold it",
+   "One who had not yet eaten of it",
+   "One who had no sons",
+   "One who had hired servants"
+  ],
+  "answer": 1,
+  "explanation": "The man who planted a vineyard and had not yet eaten of it was to return home.",
+  "ref": "Deuteronomy 20:6"
+ },
+ {
+  "id": "deuteronomy-20-e-06",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What man was to go home who had betrothed a wife?",
+  "choices": [
+   "One who had lost her",
+   "One who had not taken her",
+   "One who had a firstborn",
+   "One who had two wives"
+  ],
+  "answer": 1,
+  "explanation": "The man who had betrothed a wife and not taken her was to go home, lest another man take her.",
+  "ref": "Deuteronomy 20:7"
+ },
+ {
+  "id": "deuteronomy-20-e-07",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to do first when they came near a city to fight against it?",
+  "choices": [
+   "Burn its gates",
+   "Proclaim peace to it",
+   "Send spies",
+   "Cut off its water"
+  ],
+  "answer": 1,
+  "explanation": "When thou comest nigh unto a city to fight against it, then proclaim peace unto it.",
+  "ref": "Deuteronomy 20:10"
+ },
+ {
+  "id": "deuteronomy-20-e-08",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel not to destroy when besieging a city a long time?",
+  "choices": [
+   "The wells",
+   "The fruit trees",
+   "The houses of the poor",
+   "The flocks of the city"
+  ],
+  "answer": 1,
+  "explanation": "Israel was not to destroy the trees by forcing an axe against them, for they might eat of them.",
+  "ref": "Deuteronomy 20:19"
+ },
+ {
+  "id": "deuteronomy-20-e-09",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who were the officers to send home for being fearful and fainthearted?",
+  "choices": [
+   "Every man over forty",
+   "Any fearful and fainthearted man",
+   "The firstborn sons",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "What man is there that is fearful and fainthearted? let him go and return unto his house.",
+  "ref": "Deuteronomy 20:8"
+ },
+ {
+  "id": "deuteronomy-20-e-10",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "Out of what land had the LORD brought Israel?",
+  "choices": [
+   "Babylon",
+   "Egypt",
+   "Moab",
+   "Edom"
+  ],
+  "answer": 1,
+  "explanation": "The LORD thy God is with thee, which brought thee up out of the land of Egypt.",
+  "ref": "Deuteronomy 20:1"
+ },
+ {
+  "id": "deuteronomy-20-m-01",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest say to the people about their hearts?",
+  "choices": [
+   "Let your hearts be hard",
+   "Let your hearts be proud",
+   "Let your hearts be divided",
+   "Let not your hearts faint"
+  ],
+  "answer": 3,
+  "explanation": "Let not your hearts faint, fear not, and do not tremble, neither be ye terrified because of them.",
+  "ref": "Deuteronomy 20:3"
+ },
+ {
+  "id": "deuteronomy-20-m-02",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the man with a new house sent home?",
+  "choices": [
+   "Lest he sell it",
+   "Lest the house burn",
+   "Lest his wife leave",
+   "Lest he die and another dedicate it"
+  ],
+  "answer": 3,
+  "explanation": "He was sent home lest he die in the battle, and another man dedicate the house.",
+  "ref": "Deuteronomy 20:5"
+ },
+ {
+  "id": "deuteronomy-20-m-03",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the man with a vineyard sent home?",
+  "choices": [
+   "Lest the vines die",
+   "Lest thieves enter",
+   "Lest the rains come",
+   "Lest another man eat of it"
+  ],
+  "answer": 3,
+  "explanation": "He was sent home lest he die in the battle, and another man eat of the vineyard.",
+  "ref": "Deuteronomy 20:6"
+ },
+ {
+  "id": "deuteronomy-20-m-04",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "Who spoke to the people in the army about going home, after the priest spoke?",
+  "choices": [
+   "The priests",
+   "The judges",
+   "The elders of Levi",
+   "The officers"
+  ],
+  "answer": 3,
+  "explanation": "After the priest, the officers spoke to the people, saying what man hath built a new house.",
+  "ref": "Deuteronomy 20:5"
+ },
+ {
+  "id": "deuteronomy-20-m-05",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the fainthearted sent home?",
+  "choices": [
+   "Lest they steal",
+   "Lest they be killed first",
+   "Lest they be captured",
+   "Lest their brethren's heart faint too"
+  ],
+  "answer": 3,
+  "explanation": "They were sent home lest his brethren's heart faint as well as his heart.",
+  "ref": "Deuteronomy 20:8"
+ },
+ {
+  "id": "deuteronomy-20-m-06",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were made to lead the people after the officers had finished speaking?",
+  "choices": [
+   "The priests",
+   "The judges",
+   "The Levites",
+   "Captains of the armies"
+  ],
+  "answer": 3,
+  "explanation": "When the officers have made an end of speaking, they shall make captains of the armies to lead the people.",
+  "ref": "Deuteronomy 20:9"
+ },
+ {
+  "id": "deuteronomy-20-m-07",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If a city answered peace and opened its gates, what would its people become?",
+  "choices": [
+   "Slaves in Egypt",
+   "Slain by the sword",
+   "Priests of the LORD",
+   "Tributaries who serve Israel"
+  ],
+  "answer": 3,
+  "explanation": "All the people found therein shall be tributaries unto thee, and they shall serve thee.",
+  "ref": "Deuteronomy 20:11"
+ },
+ {
+  "id": "deuteronomy-20-m-08",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If a city made war instead of peace, what was Israel to do?",
+  "choices": [
+   "Pass it by",
+   "Ask for a sign",
+   "Burn its fields",
+   "Besiege it"
+  ],
+  "answer": 3,
+  "explanation": "If it will make no peace but make war against thee, then thou shalt besiege it.",
+  "ref": "Deuteronomy 20:12"
+ },
+ {
+  "id": "deuteronomy-20-m-09",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What could Israel take from a distant city they conquered?",
+  "choices": [
+   "Only the gold",
+   "Only the land",
+   "Nothing at all",
+   "Women, little ones, cattle and spoil"
+  ],
+  "answer": 3,
+  "explanation": "The women, the little ones, the cattle and all the spoil thou shalt take unto thyself.",
+  "ref": "Deuteronomy 20:14"
+ },
+ {
+  "id": "deuteronomy-20-m-10",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel to do to the cities of the nations in the land?",
+  "choices": [
+   "Offer them peace",
+   "Make them tributaries",
+   "Leave them for a year",
+   "Save alive nothing that breatheth"
+  ],
+  "answer": 3,
+  "explanation": "In the cities of these people thou shalt save alive nothing that breatheth.",
+  "ref": "Deuteronomy 20:16"
+ },
+ {
+  "id": "deuteronomy-20-m-11",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the nations of the land to be utterly destroyed?",
+  "choices": [
+   "For their gold",
+   "For their wells",
+   "For their fields",
+   "So Israel would not learn their abominations"
+  ],
+  "answer": 3,
+  "explanation": "That they teach you not to do after all their abominations, which they have done unto their gods.",
+  "ref": "Deuteronomy 20:18"
+ },
+ {
+  "id": "deuteronomy-20-m-12",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which trees could Israel cut down for siege works?",
+  "choices": [
+   "Olive trees",
+   "Fig trees",
+   "Palm trees",
+   "Trees not for meat"
+  ],
+  "answer": 3,
+  "explanation": "Only the trees which thou knowest that they be not trees for meat shalt thou cut down.",
+  "ref": "Deuteronomy 20:20"
+ },
+ {
+  "id": "deuteronomy-20-m-13",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel to build against a city that made war with them?",
+  "choices": [
+   "Altars",
+   "A wall of stone",
+   "Tents",
+   "Bulwarks"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt build bulwarks against the city that maketh war with thee, until it be subdued.",
+  "ref": "Deuteronomy 20:20"
+ },
+ {
+  "id": "deuteronomy-20-m-14",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the field tree compared to in the text?",
+  "choices": [
+   "A king's crown",
+   "A giant",
+   "A stranger",
+   "Man's life"
+  ],
+  "answer": 3,
+  "explanation": "For the tree of the field is man's life.",
+  "ref": "Deuteronomy 20:19"
+ },
+ {
+  "id": "deuteronomy-20-m-15",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the people to treat cities far off that were not of these nations?",
+  "choices": [
+   "Destroy at once",
+   "Leave them alone",
+   "Make a treaty only",
+   "Offer peace first, then fight if refused"
+  ],
+  "answer": 3,
+  "explanation": "Thus shalt thou do unto all the cities which are very far off, not of the cities of these nations.",
+  "ref": "Deuteronomy 20:15"
+ },
+ {
+  "id": "deuteronomy-20-h-01",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priest tell Israel not to do besides fear and faint?",
+  "choices": [
+   "Tremble",
+   "Murmur",
+   "Sleep",
+   "Scatter"
+  ],
+  "answer": 0,
+  "explanation": "The priest said, let not your hearts faint, fear not, and do not tremble, neither be ye terrified.",
+  "ref": "Deuteronomy 20:3"
+ },
+ {
+  "id": "deuteronomy-20-h-02",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was to be smitten with the edge of the sword in a city that would not make peace?",
+  "choices": [
+   "Every male",
+   "Every woman",
+   "Every elder",
+   "Every captain"
+  ],
+  "answer": 0,
+  "explanation": "When the LORD hath delivered it, thou shalt smite every male thereof with the edge of the sword.",
+  "ref": "Deuteronomy 20:13"
+ },
+ {
+  "id": "deuteronomy-20-h-03",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which people is listed first among the nations to be utterly destroyed?",
+  "choices": [
+   "The Hittites",
+   "The Amorites",
+   "The Jebusites",
+   "The Hivites"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt utterly destroy them: the Hittites, and the Amorites, the Canaanites, the Perizzites, the Hivites, and the Jebusites.",
+  "ref": "Deuteronomy 20:17"
+ },
+ {
+  "id": "deuteronomy-20-h-04",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which people is listed last among the nations to be utterly destroyed?",
+  "choices": [
+   "The Jebusites",
+   "The Hittites",
+   "The Perizzites",
+   "The Hivites"
+  ],
+  "answer": 0,
+  "explanation": "The list ends with the Jebusites.",
+  "ref": "Deuteronomy 20:17"
+ },
+ {
+  "id": "deuteronomy-20-h-05",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many nations are named to be utterly destroyed?",
+  "choices": [
+   "Six",
+   "Three",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 0,
+  "explanation": "The Hittites, Amorites, Canaanites, Perizzites, Hivites and Jebusites are named.",
+  "ref": "Deuteronomy 20:17"
+ },
+ {
+  "id": "deuteronomy-20-h-06",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the betrothed man risk another man doing if he died in battle?",
+  "choices": [
+   "Take her",
+   "Sell her",
+   "Hide her",
+   "Teach her"
+  ],
+  "answer": 0,
+  "explanation": "Lest he die in the battle, and another man take her.",
+  "ref": "Deuteronomy 20:7"
+ },
+ {
+  "id": "deuteronomy-20-h-07",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did a city's people have to do if it opened to Israel's peace?",
+  "choices": [
+   "Serve Israel",
+   "Pay a tithe",
+   "Leave the land",
+   "Join the army"
+  ],
+  "answer": 0,
+  "explanation": "All the people found therein shall be tributaries unto thee, and they shall serve thee.",
+  "ref": "Deuteronomy 20:11"
+ },
+ {
+  "id": "deuteronomy-20-h-08",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Israel to eat from the cities far off?",
+  "choices": [
+   "The spoil of their enemies",
+   "Only the tribute",
+   "Only the cattle",
+   "Nothing"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt eat the spoil of thine enemies, which the LORD thy God hath given thee.",
+  "ref": "Deuteronomy 20:14"
+ },
+ {
+  "id": "deuteronomy-20-h-09",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was forbidden against fruit trees by force?",
+  "choices": [
+   "An axe",
+   "Fire",
+   "A battering ram",
+   "A spade"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not destroy the trees thereof by forcing an axe against them.",
+  "ref": "Deuteronomy 20:19"
+ },
+ {
+  "id": "deuteronomy-20-h-10",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Israel do to a city 'until it be subdued'?",
+  "choices": [
+   "Build bulwarks against it",
+   "Starve its flocks",
+   "Burn its fields",
+   "Cut off its roads"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt build bulwarks against the city until it be subdued.",
+  "ref": "Deuteronomy 20:20"
+ },
+ {
+  "id": "deuteronomy-20-h-11",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priest say the LORD would do for Israel in the battle?",
+  "choices": [
+   "Save them",
+   "Hide them",
+   "Bless the harvest",
+   "Send hornets"
+  ],
+  "answer": 0,
+  "explanation": "The LORD your God is he that goeth with you, to fight for you against your enemies, to save you.",
+  "ref": "Deuteronomy 20:4"
+ },
+ {
+  "id": "deuteronomy-20-h-12",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides horses and chariots, what did Israel see that they were not to fear?",
+  "choices": [
+   "A people more than they",
+   "A walled mountain",
+   "A great river",
+   "A burning bush"
+  ],
+  "answer": 0,
+  "explanation": "When thou seest horses, and chariots, and a people more than thou, be not afraid of them.",
+  "ref": "Deuteronomy 20:1"
+ },
+ {
+  "id": "deuteronomy-20-h-13",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was a man to be described who feared battle: 'fearful and ___'?",
+  "choices": [
+   "Fainthearted",
+   "Foolish",
+   "Faithless",
+   "Frozen"
+  ],
+  "answer": 0,
+  "explanation": "What man is there that is fearful and fainthearted?",
+  "ref": "Deuteronomy 20:8"
+ },
+ {
+  "id": "deuteronomy-20-h-14",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The officers asked who had built a new house and had not yet done what to it?",
+  "choices": [
+   "Dedicated it",
+   "Roofed it",
+   "Sold it",
+   "Furnished it"
+  ],
+  "answer": 0,
+  "explanation": "What man hath built a new house, and hath not dedicated it?",
+  "ref": "Deuteronomy 20:5"
+ },
+ {
+  "id": "deuteronomy-20-h-15",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Israel to do to the six nations, as the LORD had commanded?",
+  "choices": [
+   "Utterly destroy them",
+   "Make them tributaries",
+   "Offer them peace",
+   "Drive them to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt utterly destroy them, as the LORD thy God hath commanded thee.",
+  "ref": "Deuteronomy 20:17"
+ },
+ {
   "id": "old-deuteronomy-21-1",
   "chapter": 21,
   "level": "beginner",
