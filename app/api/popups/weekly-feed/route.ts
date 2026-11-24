@@ -9,6 +9,7 @@ import {
 } from "@/lib/weeklyFeedPopups";
 import { ensureWeeklyPollFeedPost, findPrayerThreadPost } from "@/lib/weeklyFeedPosts";
 import { ensureWeeklyGroupPollPost } from "@/lib/weeklyGroupPollAdmin";
+import { currentWeekly } from "@/lib/clueGame/weekly";
 
 /**
  * Eligibility for the two weekly feed nudges (2026-10-18).
@@ -42,7 +43,32 @@ export async function GET(request: Request) {
   if (!url || !anonKey || !serviceKey) return NextResponse.json({ eligible: false });
 
   const params = new URL(request.url).searchParams;
-  const kind = params.get("kind") === "poll" ? "poll" : ("prayer" as WeeklyFeedPopupKind);
+  const rawKind = params.get("kind");
+
+  // Weekly Bible Trivia (2026-11-24): this week's game, unless this person has
+  // already played it. The popup's own rules decide whether it is shown at all.
+  if (rawKind === "trivia") {
+    const header = request.headers.get("authorization") || "";
+    const token = header.toLowerCase().startsWith("bearer ") ? header.slice(7) : "";
+    if (!token) return NextResponse.json({ eligible: false }, { status: 401 });
+    const authClient = createClient(url, anonKey, { auth: { autoRefreshToken: false, persistSession: false } });
+    const { data: userData } = await authClient.auth.getUser(token);
+    const userId = userData.user?.id;
+    if (!userId) return NextResponse.json({ eligible: false }, { status: 401 });
+    const admin = createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
+    const week = await currentWeekly(admin);
+    if (!week) return NextResponse.json({ eligible: false });
+    const { data: played } = await admin.from("clue_challenge_attempts").select("id").eq("challenge_id", week.id).eq("user_id", userId).limit(1);
+    if (played?.length) return NextResponse.json({ eligible: false });
+    return NextResponse.json({
+      eligible: true,
+      kind: "trivia",
+      threadPostId: week.feedPostId,
+      trivia: { id: week.id, title: week.weekly.title, intro: week.weekly.intro, played: week.attempts },
+    });
+  }
+
+  const kind = rawKind === "poll" ? "poll" : ("prayer" as WeeklyFeedPopupKind);
 
   const header = request.headers.get("authorization") || "";
   const token = header.toLowerCase().startsWith("bearer ") ? header.slice(7) : "";

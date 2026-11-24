@@ -28,6 +28,7 @@
 import type { ActionType } from "../actionTypes";
 import { communityEventStartsAt, getCommunityEvent } from "../communityEvents";
 import { getPrayerWeekKey } from "../weeklyFeedPopups";
+import { weekKeyFor } from "../clueGame/weekly";
 import { BIRTHDAY_ENDS_AT, BIRTHDAY_HEADLINE, BIRTHDAY_MESSAGE, BIRTHDAY_SHORT_LINE, BIRTHDAY_STARTS_AT } from "../birthday";
 
 export type PopupKind =
@@ -207,7 +208,7 @@ export type PopupDefinition = {
    * coordinator asks /api/popups/weekly-feed for the week's post (and the
    * poll's question) before showing it.
    */
-  weekly?: "prayer" | "poll";
+  weekly?: "prayer" | "poll" | "trivia";
   /**
    * Drawn by its own approved design instead of the shared card. Only the
    * drawing: who sees it and what is recorded are the coordinator's.
@@ -710,6 +711,33 @@ export const POPUP_CATALOG: PopupDefinition[] = [
   // of their own (WeeklyFeedPopup) until 2026-11-15, in a different look;
   // they are the shared card now. Below the tutorials and the dated things on
   // purpose: they come round every week, so they can wait their turn.
+  // Weekly Bible Trivia (Louis, 2026-11-24: "have a pop up for it like the
+  // question of the week"). The week's theme replaces the headline when shown
+  // (PopupCoordinator), and the button opens the week's game. Someone who has
+  // already played this week is not asked (/api/popups/weekly-feed?kind=trivia).
+  {
+    id: "weekly_trivia",
+    version: 1,
+    kind: "announcement",
+    priority: 26,
+    sections: ["/bible-study-games/clue"],
+    pill: "Weekly Bible Trivia",
+    headline: "This week's Bible Trivia is live.",
+    headlineAccent: "is live.",
+    description: "Everyone plays the same 10 questions. Highest score by Tuesday wins, and playing earns bonus XP.",
+    cardTitle: "Weekly Bible Trivia",
+    cardLine: "A new theme every Tuesday.",
+    cardIcon: "🏆",
+    preview: "trivia",
+    steps: [],
+    cta: { label: "Play this week's trivia", href: "/bb-feed" },
+    ctaInSection: "Got it",
+    footnote: "100% FREE • New every Tuesday",
+    usedWhen: [],
+    minAccountAgeDays: 0,
+    expiresAt: null,
+    weekly: "trivia",
+  },
   {
     id: "weekly_prayer",
     version: 1,
@@ -837,7 +865,12 @@ function pollWeekStart(date: Date): number {
 export function liveCatalog(now: Date): PopupDefinition[] {
   return POPUP_CATALOG.map((popup) => {
     if (!popup.weekly) return popup;
-    const start = popup.weekly === "poll" ? pollWeekStart(now) : Date.parse(`${getPrayerWeekKey(now)}T00:00:00Z`);
+    const start =
+      popup.weekly === "poll"
+        ? pollWeekStart(now)
+        : popup.weekly === "trivia"
+          ? Date.parse(`${weekKeyFor(now)}T17:00:00Z`)
+          : Date.parse(`${getPrayerWeekKey(now)}T00:00:00Z`);
     return { ...popup, version: Math.floor(start / WEEK_MS) };
   });
 }

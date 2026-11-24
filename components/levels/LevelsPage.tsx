@@ -75,6 +75,8 @@ const WAYS_TO_EARN: Array<{ emoji: string; label: string; xp: string; note?: str
   },
   { emoji: "🧩", label: "Finish a Bible Word Search book", xp: `${w("word_search_book_completed")} XP`, note: "Once per book" },
   { emoji: "🏆", label: "Win a Bible Buddy Match board", xp: `${w("match_board_won")} XP`, note: "Once per board" },
+  { emoji: "🧠", label: "Play the Weekly Bible Trivia", xp: `${w("weekly_trivia_played")} XP`, note: "Once a week" },
+  { emoji: "🥇", label: "Win the Weekly Bible Trivia", xp: `${w("weekly_trivia_won")} XP`, note: "Top score of the week" },
   { emoji: "💭", label: "A Bible Memory practice session", xp: `${w("bible_memory_session_completed")} XP`, note: "Up to 2 a day" },
   { emoji: "👋", label: "Open the app", xp: `${w("user_login")} XP`, note: "Once a day" },
   { emoji: "🔥", label: "Keep your streak", xp: "+5 XP per week", note: "Up to +50" },

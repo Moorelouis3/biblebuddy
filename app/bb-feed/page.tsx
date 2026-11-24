@@ -2408,8 +2408,15 @@ function selectPinnedPosts<T extends FeedPost>(posts: T[]): T[] {
     (post) => /prayer request/i.test(post.content.split("\n", 1)[0] ?? "") && !pollIdFromPost(post.link_url),
   );
 
+  /**
+   * Weekly Bible Trivia (Louis, 2026-11-24: "pinned at the top"): the open
+   * week, Tuesday to Tuesday. Last week's post gets its winner line when the
+   * new one goes up, and that line is what lets go of the pin.
+   */
+  const weeklyTrivia = official.find((post) => headline(post).startsWith("🏆 Weekly Bible Trivia:") && !post.content.includes("🥇 Winner:"));
+
   const pinned: T[] = [];
-  for (const candidate of [poll, prayer]) {
+  for (const candidate of [weeklyTrivia, poll, prayer]) {
     if (!candidate || pinned.length >= PINNED_MAX) continue;
     if (pinned.some((post) => post.id === candidate.id)) continue;
     pinned.push(candidate);

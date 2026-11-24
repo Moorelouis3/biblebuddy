@@ -16,6 +16,7 @@
  */
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { logWeeklyXp, weeklyPostText, type WeeklyInfo } from "./weekly";
 import { CLUE_BANK, MIN_ROUND, bookItems, cleanSelection, selectionFromKeys, selectionLabel, selectionStatus, selectionToKeys } from "./bank";
 // Every book's questions in the registry: rooms and challenges can use any book.
 import "./bank/all";
@@ -498,7 +499,13 @@ export async function getChallenge(admin: SupabaseClient, rawId: string, user: C
   const { data: creator } = await admin.from("profile_stats").select("display_name, profile_image_url").eq("user_id", c.creator_id).maybeSingle();
   const mine = user ? (board || []).find((row) => row.user_id === user.id) ?? null : null;
   const chain = await challengeChain(admin, id);
+  const weekly = ((c.settings as { weekly?: WeeklyInfo } | null)?.weekly ?? null) as WeeklyInfo | null;
+  const cardIds = c.card_ids as string[];
   return {
+    /** Weekly Bible Trivia (lib/clueGame/weekly.ts): the week's theme, and its winner once closed. */
+    weekly,
+    /** Every book its questions come from: a weekly theme spans several. */
+    books: [...new Set(cardIds.map((cid) => CLUE_BANK.get(cid)?.book).filter(Boolean) as string[])],
     chain: chain.map((r) => ({ userId: r.userId, name: r.name })),
     id,
     creatorId: c.creator_id as string,
@@ -506,7 +513,7 @@ export async function getChallenge(admin: SupabaseClient, rawId: string, user: C
     creatorAvatar: ((creator as { profile_image_url?: string | null } | null)?.profile_image_url as string | null) ?? null,
     creatorScore: c.creator_score as number,
     deckIds: c.deck_ids as string[],
-    deckName: selectionLabel(selectionFromKeys(c.deck_ids as string[])),
+    deckName: weekly ? weekly.title : selectionLabel(selectionFromKeys(c.deck_ids as string[])),
     selection: selectionFromKeys(c.deck_ids as string[]),
     cardIds: c.card_ids as string[],
     /** Speed points (made since 2026-11-23); older challenges keep the +1/−1 scoring. */
@@ -531,8 +538,10 @@ export async function submitChallengeAttempt(
   if (!c) return { error: "This challenge was not found." };
   const score = clampScore(result.score, !!(c.settings as { speed?: boolean } | null)?.speed);
   const won = Math.max(0, Math.min(10, Math.round(Number(result.won) || 0)));
+  const weekly = ((c.settings as { weekly?: WeeklyInfo } | null)?.weekly ?? null) as WeeklyInfo | null;
   const { data: prior } = await admin.from("clue_challenge_attempts").select("id").eq("challenge_id", id).eq("user_id", user.id).eq("ranked", true).maybeSingle();
-  const ranked = !prior;
+  // A finished week is practice only: its winner is already on the post.
+  const ranked = !prior && !weekly?.closed;
   const { error } = await admin.from("clue_challenge_attempts").insert({ challenge_id: id, user_id: user.id, display_name: user.name, score, won, ranked });
   // The unique index on ranked attempts settles a double submit: the second is practice.
   if (error && ranked) {
@@ -556,6 +565,16 @@ export async function submitChallengeAttempt(
     .from("clue_challenges")
     .update({ attempts, leader_id: top?.user_id ?? c.leader_id, leader_name: top?.display_name ?? c.leader_name, leader_score: top?.score ?? c.leader_score })
     .eq("id", id);
+  if (weekly) {
+    // The week's post shows who leads; playing earns the weekly bonus XP.
+    if (c.feed_post_id) {
+      const content = weeklyPostText({ id, weekly, attempts, leaderName: (top?.display_name as string | null) ?? null, leaderScore: (top?.score as number | null) ?? null });
+      await admin.from("feed_posts").update({ content }).eq("id", c.feed_post_id);
+    }
+    await logWeeklyXp(admin, user.id, "weekly_trivia_played", weekly.week).catch(() => {});
+    // No chain-letter post per player: the whole community plays this one.
+    return { ranked: true, tookLead: top?.user_id === user.id && attempts > 1, chainPost: null };
+  }
   if (c.feed_post_id) {
     const { data: creator } = await admin.from("profile_stats").select("display_name").eq("user_id", c.creator_id).maybeSingle();
     const content = challengePostText({

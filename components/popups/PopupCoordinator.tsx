@@ -92,6 +92,8 @@ type WeeklyPayload = {
   eligible?: boolean;
   threadPostId?: string | null;
   pollPostId?: string | null;
+  /** kind=trivia: this week's game. */
+  trivia?: { id: string; title: string; intro: string; played: number };
   poll?: {
     id: string;
     groupId: string;
@@ -105,7 +107,7 @@ type WeeklyPayload = {
   };
 };
 
-async function loadWeekly(kind: "prayer" | "poll"): Promise<WeeklyPayload | null> {
+async function loadWeekly(kind: "prayer" | "poll" | "trivia"): Promise<WeeklyPayload | null> {
   try {
     const token = (await supabase.auth.getSession()).data.session?.access_token;
     if (!token) return null;
@@ -560,7 +562,7 @@ export default function PopupCoordinator({
         if (popup.weekly) {
           weekly = await loadWeekly(popup.weekly);
           if (cancelled) return;
-          if (!weekly || (popup.weekly === "poll" && !weekly.poll)) {
+          if (!weekly || (popup.weekly === "poll" && !weekly.poll) || (popup.weekly === "trivia" && !weekly.trivia)) {
             nothingToAsk.add(popup.id);
             clearSince = 0;
             timer = setTimeout(tick, TICK_MS);
@@ -578,10 +580,25 @@ export default function PopupCoordinator({
         if (cancelled) return;
         writeVisit(userId, { lastActiveAt: new Date().toISOString(), shown: true });
         const post = popup.weekly === "poll" ? weekly?.pollPostId : weekly?.threadPostId;
+        const trivia = popup.weekly === "trivia" ? weekly?.trivia : undefined;
         setOpen({
-          popup,
+          // The week's theme is the headline: "This week: The 12 Disciples".
+          popup: trivia
+            ? {
+                ...popup,
+                headline: `This week: ${trivia.title}`,
+                headlineAccent: trivia.title,
+                description: `${trivia.intro} Everyone plays the same 10 questions. Highest score by Tuesday wins, and playing earns bonus XP.`,
+              }
+            : popup,
           inSection: inSection(popup, pathRef.current),
-          href: popup.weekly ? (post ? `/bb-feed?post=${post}` : "/bb-feed") : undefined,
+          href: trivia
+            ? `/bible-study-games/clue/challenge/${trivia.id}`
+            : popup.weekly
+              ? post
+                ? `/bb-feed?post=${post}`
+                : "/bb-feed"
+              : undefined,
           poll: weekly?.poll,
         });
         track("popup_shown", userId, popup.id, { version: popup.version, page: pathRef.current });

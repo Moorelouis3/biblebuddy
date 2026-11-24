@@ -74,6 +74,11 @@ export const ACTION_POINT_WEIGHTS: Partial<Record<ActionType, number>> = {
   // winning a board"). Scored once per board via UNIQUE_PER_LABEL in
   // lib/pointsEngine.ts (the label is the board id), so replays pay nothing.
   match_board_won: 10,
+  // Weekly Bible Trivia (Louis, 2026-11-24: "bonus XP points just for
+  // playing"). Logged by the server (lib/clueGame/weekly.ts) once per week,
+  // labelled with the week, and scored once per label in lib/pointsEngine.ts.
+  weekly_trivia_played: 25,
+  weekly_trivia_won: 100,
   feed_post_thought: 5,
   feed_post_prayer: 5,
   feed_post_prayer_request: 5,

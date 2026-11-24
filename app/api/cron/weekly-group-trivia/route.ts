@@ -1,3 +1,7 @@
+// RETIRED 2026-11-24: no longer in vercel.json. The weekly trivia is now Weekly
+// Bible Trivia on the Feed (app/api/cron/weekly-bible-trivia, lib/clueGame/weekly.ts).
+// Kept only so old links to it do not 404; nothing schedules it. Never re-add
+// it to vercel.json alongside the new one.
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { ensureWeeklyGroupTriviaPost } from "@/lib/weeklyGroupTriviaAdmin";

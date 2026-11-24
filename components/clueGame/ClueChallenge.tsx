@@ -38,6 +38,10 @@ type Challenge = {
   chain?: Array<{ userId: string; name: string }>;
   leaderboard: Array<{ rank: number; userId: string; name: string; score: number; won: number }>;
   yourRanked: { score: number; won: number } | null;
+  /** Weekly Bible Trivia (lib/clueGame/weekly.ts). */
+  weekly?: { title: string; intro: string; week: string; closed?: boolean; winner?: { name: string; score: number } | null } | null;
+  /** Every book the questions come from (a weekly theme spans several). */
+  books?: string[];
   error?: string;
 };
 
@@ -139,7 +143,8 @@ export default function ClueChallenge({ id }: { id: string }) {
       const res = await clueApi<Challenge>(`/api/clue-game/challenges/${id}`);
       if (res.ok) {
         // The challenge's book has to be loaded before its questions can play.
-        await loadBook(res.data.selection?.book || "genesis").catch(() => null);
+        const books = res.data.books?.length ? res.data.books : [res.data.selection?.book || "genesis"];
+        await Promise.all(books.map((b) => loadBook(b).catch(() => null)));
         setC(res.data);
         trackClue("clue_game_challenge_opened", { challenge: id });
         // An unfinished attempt goes straight back to the table.
@@ -153,7 +158,7 @@ export default function ClueChallenge({ id }: { id: string }) {
   return (
     <ClueRoomFrame>
       <div className="pb-28">
-        <ClueHeader backHref="/bible-study-games/clue" subtitle={playing ? undefined : c?.deckName || "Genesis"} badge={playing ? undefined : "Challenge"} hideLogo={playing} />
+        <ClueHeader backHref="/bible-study-games/clue" subtitle={playing ? undefined : c?.deckName || "Genesis"} badge={playing ? undefined : c?.weekly ? "Weekly" : "Challenge"} hideLogo={playing} />
         {error ? (
           <div className="bb-clue-panel bb-clue-parchment text-center">
             <p className="bb-clue-serif text-xl font-bold">{error}</p>
@@ -174,7 +179,13 @@ export default function ClueChallenge({ id }: { id: string }) {
         ) : (
           <div className="bb-clue-panel bb-clue-parchment text-center">
             {/* You vs the challenger (Louis, 2026-11-22: "a challenge vs little intro"). */}
-            {!finished ? (
+            {c.weekly && !finished ? (
+              <div className="mb-2">
+                <p className="text-[12px] font-black uppercase tracking-wide" style={{ color: "#8a5a12" }}>🏆 Weekly Bible Trivia</p>
+                <p className="mt-1 text-[14px] font-bold">{c.weekly.intro}</p>
+              </div>
+            ) : null}
+            {!finished && !c.weekly ? (
               <div className="bb-clue-vs" aria-label={`You versus ${c.creatorName}`}>
                 <span className="bb-clue-vs-side is-left">
                   <Avatar name="You" src={me} size={78} />
@@ -189,10 +200,20 @@ export default function ClueChallenge({ id }: { id: string }) {
               </div>
             ) : null}
             <h2 className="bb-clue-serif bb-clue-title" style={{ color: "#2a1a0c", fontSize: 30 }}>
-              {finished ? (finished.ranked ? "Your score is in!" : "Practice round done") : `${c.creatorName} scored ${c.creatorScore}`}
+              {finished ? (finished.ranked ? "Your score is in!" : "Practice round done") : c.weekly ? c.weekly.title : `${c.creatorName} scored ${c.creatorScore}`}
             </h2>
             <p className="mt-1 text-[15px] font-bold">
-              {finished
+              {c.weekly
+                ? finished?.ranked
+                  ? "You're on this week's leaderboard, and you earned bonus XP. Top score by Tuesday wins!"
+                  : c.weekly.closed
+                    ? c.weekly.winner
+                      ? `This week is over. 🥇 ${c.weekly.winner.name} won with ${c.weekly.winner.score.toLocaleString()}. Play it for practice.`
+                      : "This week is over. Play it for practice."
+                    : finished || c.yourRanked
+                      ? "Only your first try counts on the leaderboard."
+                      : `Everyone plays the same ${c.cardIds.length} questions. Highest score by Tuesday wins, and playing earns bonus XP.`
+                : finished
                 ? finished.ranked
                   ? finished.posted
                     ? "Your score is on the Feed and you are in the chain. Pass it on!"
@@ -218,7 +239,7 @@ export default function ClueChallenge({ id }: { id: string }) {
               <p className="mt-4 text-[14px] font-bold">This challenge was made in the old version of the game, so it can’t be replayed.</p>
             ) : (
               <button type="button" className="bb-clue-btn bb-clue-btn-green bb-clue-btn-big mt-4" onClick={() => setPlaying(true)}>
-                ▶ {c.yourRanked || finished ? "Play again (practice)" : "Play Challenge"}
+                ▶ {c.yourRanked || finished || c.weekly?.closed ? "Play again (practice)" : c.weekly ? "Play this week's trivia" : "Play Challenge"}
               </button>
             )}
             <Link href="/bible-study-games/clue" className="bb-clue-link mt-3 inline-flex">Play your own round</Link>

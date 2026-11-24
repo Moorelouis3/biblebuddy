@@ -21,8 +21,8 @@
       "schedule": "*/15 * * * *"
     },
     {
-      "path": "/api/cron/weekly-group-trivia",
-      "schedule": "0 16,17 * * 2"
+      "path": "/api/cron/weekly-bible-trivia",
+      "schedule": "0 16,17,18 * * 2"
     },
     {
       "path": "/api/cron/update-monday",

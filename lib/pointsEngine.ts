@@ -50,6 +50,9 @@ const UNIQUE_PER_LABEL = new Set<string>([
   "word_search_book_completed",
   // Bible Buddy Match, 2026-11-23: the label is the board id, so each board scores once.
   "match_board_won",
+  // Weekly Bible Trivia, 2026-11-24: the label is the week, so each week pays once.
+  "weekly_trivia_played",
+  "weekly_trivia_won",
   "person_learned",
   "place_discovered",
   "keyword_mastered",
