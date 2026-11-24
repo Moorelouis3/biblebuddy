@@ -2924,5 +2924,645 @@
     },
     "goalText": "Match david and stone.",
     "storyEffect": "Match david and stone."
+  },
+  {
+    "slug": "2-samuel-01",
+    "folderTitle": "01-Davids-Lament",
+    "level": 1,
+    "name": "David’s Lament",
+    "scripture": "2 Samuel 1",
+    "chapter": "2 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "banner",
+      "scroll",
+      "stone",
+      "water-drop",
+      "oil-jar",
+      "trumpet",
+      "wheat"
+    ],
+    "goals": {
+      "banner": 8,
+      "scroll": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match banner and scroll.",
+    "storyEffect": "Match banner and scroll."
+  },
+  {
+    "slug": "2-samuel-02",
+    "folderTitle": "02-King-at-Hebron",
+    "level": 2,
+    "name": "King at Hebron",
+    "scripture": "2 Samuel 2:1–7",
+    "chapter": "2 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "david",
+      "oil-jar",
+      "tent",
+      "banner",
+      "scroll",
+      "wheat",
+      "bread"
+    ],
+    "goals": {
+      "david": 8,
+      "oil-jar": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match david and oil jar.",
+    "storyEffect": "Match david and oil jar."
+  },
+  {
+    "slug": "2-samuel-03",
+    "folderTitle": "03-Jerusalem-the-City-of-David",
+    "level": 3,
+    "name": "Jerusalem, the City of David",
+    "scripture": "2 Samuel 5:1–12",
+    "chapter": "2 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "david",
+      "stone",
+      "covenant-ark",
+      "water-drop",
+      "staff",
+      "oil-jar",
+      "bread"
+    ],
+    "goals": {
+      "david": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match david and stone.",
+    "storyEffect": "Match david and stone."
+  },
+  {
+    "slug": "2-samuel-04",
+    "folderTitle": "04-The-Ark-Comes-to-Jerusalem",
+    "level": 4,
+    "name": "The Ark Comes to Jerusalem",
+    "scripture": "2 Samuel 6:12–19",
+    "chapter": "2 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "covenant-ark",
+      "trumpet",
+      "oil-jar",
+      "stone",
+      "banner",
+      "lamb",
+      "tree"
+    ],
+    "goals": {
+      "covenant-ark": 8,
+      "trumpet": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match covenant ark and trumpet.",
+    "storyEffect": "Match covenant ark and trumpet."
+  },
+  {
+    "slug": "2-samuel-05",
+    "folderTitle": "05-Gods-Promise-to-David",
+    "level": 5,
+    "name": "God’s Promise to David",
+    "scripture": "2 Samuel 7",
+    "chapter": "2 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "scroll",
+      "david",
+      "water-drop",
+      "trumpet",
+      "wheat",
+      "bread",
+      "staff"
+    ],
+    "goals": {
+      "scroll": 8,
+      "david": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match scroll and david.",
+    "storyEffect": "Match scroll and david."
+  },
+  {
+    "slug": "2-samuel-06",
+    "folderTitle": "06-A-Place-at-the-Kings-Table",
+    "level": 6,
+    "name": "A Place at the King’s Table",
+    "scripture": "2 Samuel 9",
+    "chapter": "2 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "bread",
+      "david",
+      "basket",
+      "water-drop",
+      "scroll",
+      "tree",
+      "covenant-ark"
+    ],
+    "goals": {
+      "bread": 8,
+      "david": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match bread and david.",
+    "storyEffect": "Match bread and david."
+  },
+  {
+    "slug": "2-samuel-07",
+    "folderTitle": "07-Nathans-Story-of-the-Lamb",
+    "level": 7,
+    "name": "Nathan’s Story of the Lamb",
+    "scripture": "2 Samuel 12:1–13",
+    "chapter": "2 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "lamb",
+      "scroll",
+      "trumpet",
+      "oil-jar",
+      "bread",
+      "altar",
+      "david"
+    ],
+    "goals": {
+      "lamb": 8,
+      "scroll": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match lamb and scroll.",
+    "storyEffect": "Match lamb and scroll."
+  },
+  {
+    "slug": "2-samuel-08",
+    "folderTitle": "08-Across-the-Kidron",
+    "level": 8,
+    "name": "Across the Kidron",
+    "scripture": "2 Samuel 15:13–30",
+    "chapter": "2 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "tree",
+      "staff",
+      "oil-jar",
+      "covenant-ark",
+      "trumpet",
+      "scroll",
+      "tent"
+    ],
+    "goals": {
+      "tree": 8,
+      "staff": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match tree and staff.",
+    "storyEffect": "Match tree and staff."
+  },
+  {
+    "slug": "2-samuel-09",
+    "folderTitle": "09-Back-Across-the-Jordan",
+    "level": 9,
+    "name": "Back Across the Jordan",
+    "scripture": "2 Samuel 19:15–40",
+    "chapter": "2 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "water-drop",
+      "banner",
+      "lamb",
+      "staff",
+      "trumpet",
+      "covenant-ark",
+      "oil-jar"
+    ],
+    "goals": {
+      "water-drop": 8,
+      "banner": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match water drop and banner.",
+    "storyEffect": "Match water drop and banner."
+  },
+  {
+    "slug": "2-samuel-10",
+    "folderTitle": "10-Araunahs-Threshing-Floor",
+    "level": 10,
+    "name": "Araunah’s Threshing Floor",
+    "scripture": "2 Samuel 24:18–25",
+    "chapter": "2 Samuel",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "altar",
+      "wheat",
+      "tree",
+      "david",
+      "trumpet",
+      "bread",
+      "tent"
+    ],
+    "goals": {
+      "altar": 8,
+      "wheat": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Match altar and wheat.",
+    "storyEffect": "Match altar and wheat."
+  },
+  {
+    "slug": "1-chronicles-01",
+    "folderTitle": "01-The-Family-of-Israel",
+    "level": 1,
+    "name": "The Family of Israel",
+    "scripture": "1 Chronicles 1–9",
+    "chapter": "1 Chronicles",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "tent",
+      "stone",
+      "banner",
+      "tree",
+      "water-jar",
+      "basket",
+      "scroll"
+    ],
+    "goals": {
+      "tent": 8,
+      "banner": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather the families of Israel.",
+    "storyEffect": "Gather the families of Israel."
+  },
+  {
+    "slug": "1-chronicles-02",
+    "folderTitle": "02-The-Well-of-Bethlehem",
+    "level": 2,
+    "name": "The Well of Bethlehem",
+    "scripture": "1 Chronicles 11",
+    "chapter": "1 Chronicles",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "well",
+      "water-jar",
+      "torch",
+      "water-drop",
+      "stone",
+      "tent",
+      "staff"
+    ],
+    "goals": {
+      "well": 8,
+      "water-jar": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Bring water from the well.",
+    "storyEffect": "Bring water from the well."
+  },
+  {
+    "slug": "1-chronicles-03",
+    "folderTitle": "03-The-Ark-Brought-Home",
+    "level": 3,
+    "name": "The Ark Brought Home",
+    "scripture": "1 Chronicles 15",
+    "chapter": "1 Chronicles",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "covenant-ark",
+      "trumpet",
+      "banner",
+      "stone",
+      "fabric",
+      "tree",
+      "oil-jar"
+    ],
+    "goals": {
+      "covenant-ark": 8,
+      "trumpet": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Bring the Ark to Jerusalem.",
+    "storyEffect": "Bring the Ark to Jerusalem."
+  },
+  {
+    "slug": "1-chronicles-04",
+    "folderTitle": "04-A-Song-of-Thanks",
+    "level": 4,
+    "name": "A Song of Thanks",
+    "scripture": "1 Chronicles 16",
+    "chapter": "1 Chronicles",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "harp",
+      "cymbals",
+      "trumpet",
+      "tent",
+      "scroll",
+      "banner",
+      "bread"
+    ],
+    "goals": {
+      "harp": 8,
+      "cymbals": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Give thanks to the Lord.",
+    "storyEffect": "Give thanks to the Lord."
+  },
+  {
+    "slug": "1-chronicles-05",
+    "folderTitle": "05-The-Threshing-Floor",
+    "level": 5,
+    "name": "The Threshing Floor",
+    "scripture": "1 Chronicles 21",
+    "chapter": "1 Chronicles",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "altar",
+      "wheat",
+      "stone",
+      "cloud",
+      "logs",
+      "gold",
+      "basket"
+    ],
+    "goals": {
+      "altar": 8,
+      "wheat": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Build an altar on the hilltop.",
+    "storyEffect": "Build an altar on the hilltop."
+  },
+  {
+    "slug": "1-chronicles-06",
+    "folderTitle": "06-Gathering-for-the-Temple",
+    "level": 6,
+    "name": "Gathering for the Temple",
+    "scripture": "1 Chronicles 22",
+    "chapter": "1 Chronicles",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "stone",
+      "logs",
+      "gold",
+      "brick",
+      "basket",
+      "scroll",
+      "staff"
+    ],
+    "goals": {
+      "stone": 8,
+      "logs": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather materials for the Temple.",
+    "storyEffect": "Gather materials for the Temple."
+  },
+  {
+    "slug": "1-chronicles-07",
+    "folderTitle": "07-The-Singers-and-Harps",
+    "level": 7,
+    "name": "The Singers and Harps",
+    "scripture": "1 Chronicles 25",
+    "chapter": "1 Chronicles",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "harp",
+      "cymbals",
+      "trumpet",
+      "tent",
+      "scroll",
+      "blue-linen",
+      "oil-jar"
+    ],
+    "goals": {
+      "harp": 8,
+      "cymbals": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Set apart the singers and musicians.",
+    "storyEffect": "Set apart the singers and musicians."
+  },
+  {
+    "slug": "1-chronicles-08",
+    "folderTitle": "08-The-Gatekeepers",
+    "level": 8,
+    "name": "The Gatekeepers",
+    "scripture": "1 Chronicles 26",
+    "chapter": "1 Chronicles",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "stone",
+      "logs",
+      "torch",
+      "lampstand",
+      "staff",
+      "scroll",
+      "banner"
+    ],
+    "goals": {
+      "stone": 8,
+      "torch": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Take up the watch at the gates.",
+    "storyEffect": "Take up the watch at the gates."
+  },
+  {
+    "slug": "1-chronicles-09",
+    "folderTitle": "09-The-Plans-for-the-Temple",
+    "level": 9,
+    "name": "The Plans for the Temple",
+    "scripture": "1 Chronicles 28",
+    "chapter": "1 Chronicles",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "scroll",
+      "stone",
+      "logs",
+      "gold",
+      "lampstand",
+      "blue-linen",
+      "brick"
+    ],
+    "goals": {
+      "scroll": 8,
+      "gold": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Give Solomon the Temple plans.",
+    "storyEffect": "Give Solomon the Temple plans."
+  },
+  {
+    "slug": "1-chronicles-10",
+    "folderTitle": "10-Davids-Last-Prayer",
+    "level": 10,
+    "name": "David's Last Prayer",
+    "scripture": "1 Chronicles 29",
+    "chapter": "1 Chronicles",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "gold",
+      "logs",
+      "stone",
+      "oil-jar",
+      "scroll",
+      "altar",
+      "trumpet"
+    ],
+    "goals": {
+      "gold": 8,
+      "logs": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Bring gifts and give thanks.",
+    "storyEffect": "Bring gifts and give thanks."
   }
 ]

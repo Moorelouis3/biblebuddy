@@ -1,0 +1,30 @@
+{
+  "level": 3,
+  "name": "The Ark Brought Home",
+  "scripture": "1 Chronicles 15",
+  "chapter": "1 Chronicles",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "covenant-ark",
+    "trumpet",
+    "banner",
+    "stone",
+    "fabric",
+    "tree",
+    "oil-jar"
+  ],
+  "goals": {
+    "covenant-ark": 8,
+    "trumpet": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Bring the Ark to Jerusalem.",
+  "storyEffect": "Bring the Ark to Jerusalem."
+}

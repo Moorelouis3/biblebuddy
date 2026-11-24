@@ -1,0 +1,30 @@
+{
+  "level": 2,
+  "name": "King at Hebron",
+  "scripture": "2 Samuel 2:1–7",
+  "chapter": "2 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "david",
+    "oil-jar",
+    "tent",
+    "banner",
+    "scroll",
+    "wheat",
+    "bread"
+  ],
+  "goals": {
+    "david": 8,
+    "oil-jar": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match david and oil jar.",
+  "storyEffect": "Match david and oil jar."
+}

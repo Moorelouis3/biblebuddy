@@ -1,0 +1,30 @@
+{
+  "level": 7,
+  "name": "Nathan’s Story of the Lamb",
+  "scripture": "2 Samuel 12:1–13",
+  "chapter": "2 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "lamb",
+    "scroll",
+    "trumpet",
+    "oil-jar",
+    "bread",
+    "altar",
+    "david"
+  ],
+  "goals": {
+    "lamb": 8,
+    "scroll": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match lamb and scroll.",
+  "storyEffect": "Match lamb and scroll."
+}

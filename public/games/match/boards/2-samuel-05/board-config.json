@@ -1,0 +1,30 @@
+{
+  "level": 5,
+  "name": "God’s Promise to David",
+  "scripture": "2 Samuel 7",
+  "chapter": "2 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "scroll",
+    "david",
+    "water-drop",
+    "trumpet",
+    "wheat",
+    "bread",
+    "staff"
+  ],
+  "goals": {
+    "scroll": 8,
+    "david": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match scroll and david.",
+  "storyEffect": "Match scroll and david."
+}

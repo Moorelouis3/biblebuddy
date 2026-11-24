@@ -719,7 +719,7 @@ const SOCKETS = ["#1b2b57", "#1d4a2a", "#4a2a14", "#1f3b4d", "#3b2350"];
 /**
  * The playable order: Genesis, Exodus, Leviticus, Numbers and on, in Bible
  * order (BOOK_ORDER). Every imported board is live (Louis, 2026-11-23: "of
- * course I want them all live"): 93 boards, Genesis to 1 Samuel. A book is
+ * course I want them all live"): every board from Genesis to 1 Chronicles (1 and 2 Kings slot in by BOOK_ORDER when imported). A book is
  * only imported when its Drive folder is complete, so there is no cap here.
  */
 export const MAX_MATCH_LEVELS = 500;

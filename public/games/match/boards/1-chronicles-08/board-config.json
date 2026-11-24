@@ -1,0 +1,30 @@
+{
+  "level": 8,
+  "name": "The Gatekeepers",
+  "scripture": "1 Chronicles 26",
+  "chapter": "1 Chronicles",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "stone",
+    "logs",
+    "torch",
+    "lampstand",
+    "staff",
+    "scroll",
+    "banner"
+  ],
+  "goals": {
+    "stone": 8,
+    "torch": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Take up the watch at the gates.",
+  "storyEffect": "Take up the watch at the gates."
+}

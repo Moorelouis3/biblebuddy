@@ -1,0 +1,30 @@
+{
+  "level": 8,
+  "name": "Across the Kidron",
+  "scripture": "2 Samuel 15:13–30",
+  "chapter": "2 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "tree",
+    "staff",
+    "oil-jar",
+    "covenant-ark",
+    "trumpet",
+    "scroll",
+    "tent"
+  ],
+  "goals": {
+    "tree": 8,
+    "staff": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match tree and staff.",
+  "storyEffect": "Match tree and staff."
+}

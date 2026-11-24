@@ -1,0 +1,30 @@
+{
+  "level": 4,
+  "name": "The Ark Comes to Jerusalem",
+  "scripture": "2 Samuel 6:12–19",
+  "chapter": "2 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "covenant-ark",
+    "trumpet",
+    "oil-jar",
+    "stone",
+    "banner",
+    "lamb",
+    "tree"
+  ],
+  "goals": {
+    "covenant-ark": 8,
+    "trumpet": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match covenant ark and trumpet.",
+  "storyEffect": "Match covenant ark and trumpet."
+}

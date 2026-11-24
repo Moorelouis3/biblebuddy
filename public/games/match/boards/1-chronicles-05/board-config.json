@@ -1,0 +1,30 @@
+{
+  "level": 5,
+  "name": "The Threshing Floor",
+  "scripture": "1 Chronicles 21",
+  "chapter": "1 Chronicles",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "altar",
+    "wheat",
+    "stone",
+    "cloud",
+    "logs",
+    "gold",
+    "basket"
+  ],
+  "goals": {
+    "altar": 8,
+    "wheat": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Build an altar on the hilltop.",
+  "storyEffect": "Build an altar on the hilltop."
+}

@@ -1,0 +1,30 @@
+{
+  "level": 1,
+  "name": "David’s Lament",
+  "scripture": "2 Samuel 1",
+  "chapter": "2 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "banner",
+    "scroll",
+    "stone",
+    "water-drop",
+    "oil-jar",
+    "trumpet",
+    "wheat"
+  ],
+  "goals": {
+    "banner": 8,
+    "scroll": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match banner and scroll.",
+  "storyEffect": "Match banner and scroll."
+}

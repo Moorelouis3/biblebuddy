@@ -1,0 +1,30 @@
+{
+  "level": 9,
+  "name": "Back Across the Jordan",
+  "scripture": "2 Samuel 19:15–40",
+  "chapter": "2 Samuel",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "water-drop",
+    "banner",
+    "lamb",
+    "staff",
+    "trumpet",
+    "covenant-ark",
+    "oil-jar"
+  ],
+  "goals": {
+    "water-drop": 8,
+    "banner": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Match water drop and banner.",
+  "storyEffect": "Match water drop and banner."
+}

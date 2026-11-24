@@ -1,0 +1,30 @@
+{
+  "level": 7,
+  "name": "The Singers and Harps",
+  "scripture": "1 Chronicles 25",
+  "chapter": "1 Chronicles",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "harp",
+    "cymbals",
+    "trumpet",
+    "tent",
+    "scroll",
+    "blue-linen",
+    "oil-jar"
+  ],
+  "goals": {
+    "harp": 8,
+    "cymbals": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Set apart the singers and musicians.",
+  "storyEffect": "Set apart the singers and musicians."
+}

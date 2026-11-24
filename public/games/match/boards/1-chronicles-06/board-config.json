@@ -1,0 +1,30 @@
+{
+  "level": 6,
+  "name": "Gathering for the Temple",
+  "scripture": "1 Chronicles 22",
+  "chapter": "1 Chronicles",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "stone",
+    "logs",
+    "gold",
+    "brick",
+    "basket",
+    "scroll",
+    "staff"
+  ],
+  "goals": {
+    "stone": 8,
+    "logs": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Gather materials for the Temple.",
+  "storyEffect": "Gather materials for the Temple."
+}

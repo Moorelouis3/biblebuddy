@@ -1,0 +1,30 @@
+{
+  "level": 9,
+  "name": "The Plans for the Temple",
+  "scripture": "1 Chronicles 28",
+  "chapter": "1 Chronicles",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "scroll",
+    "stone",
+    "logs",
+    "gold",
+    "lampstand",
+    "blue-linen",
+    "brick"
+  ],
+  "goals": {
+    "scroll": 8,
+    "gold": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Give Solomon the Temple plans.",
+  "storyEffect": "Give Solomon the Temple plans."
+}

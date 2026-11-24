@@ -1,0 +1,30 @@
+{
+  "level": 10,
+  "name": "David's Last Prayer",
+  "scripture": "1 Chronicles 29",
+  "chapter": "1 Chronicles",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "gold",
+    "logs",
+    "stone",
+    "oil-jar",
+    "scroll",
+    "altar",
+    "trumpet"
+  ],
+  "goals": {
+    "gold": 8,
+    "logs": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Bring gifts and give thanks.",
+  "storyEffect": "Bring gifts and give thanks."
+}
