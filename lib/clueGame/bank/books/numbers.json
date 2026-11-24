@@ -2960,6 +2960,646 @@
   "ref": "Numbers 5:17"
  },
  {
+  "id": "numbers-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were the unclean to be put out of the camp?",
+  "choices": [
+   "Because they were enemies",
+   "So they would not defile the camp where God dwells",
+   "Because the food was short",
+   "Because the tents were full"
+  ],
+  "answer": 1,
+  "explanation": "Put them without the camp, that they defile not their camps, in the midst whereof I dwell.",
+  "ref": "Numbers 5:3"
+ },
+ {
+  "id": "numbers-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the children of Israel do when told to put the unclean out?",
+  "choices": [
+   "They did so",
+   "They refused",
+   "They argued with Moses",
+   "They waited a year"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel did so, and put them out without the camp, as the LORD spake unto Moses.",
+  "ref": "Numbers 5:4"
+ },
+ {
+  "id": "numbers-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the unclean to be put?",
+  "choices": [
+   "Inside the tabernacle court",
+   "Beside the altar",
+   "On the mountain",
+   "Without the camp"
+  ],
+  "answer": 3,
+  "explanation": "Without the camp shall ye put them.",
+  "ref": "Numbers 5:3"
+ },
+ {
+  "id": "numbers-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must a guilty person do before making restitution?",
+  "choices": [
+   "Fast three days",
+   "Leave the camp",
+   "Confess his sin",
+   "Offer a bull"
+  ],
+  "answer": 2,
+  "explanation": "They shall confess their sin which they have done.",
+  "ref": "Numbers 5:7"
+ },
+ {
+  "id": "numbers-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the barley meal offering for the jealous husband called?",
+  "choices": [
+   "An offering of peace",
+   "An offering of jealousy",
+   "A freewill offering",
+   "An offering of firstfruits"
+  ],
+  "answer": 1,
+  "explanation": "It is an offering of jealousy, an offering of memorial.",
+  "ref": "Numbers 5:15"
+ },
+ {
+  "id": "numbers-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the jealous husband bring his wife?",
+  "choices": [
+   "The priest",
+   "The elders",
+   "The judges",
+   "Moses"
+  ],
+  "answer": 0,
+  "explanation": "Then shall the man bring his wife unto the priest.",
+  "ref": "Numbers 5:15"
+ },
+ {
+  "id": "numbers-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what kind of vessel did the priest put the holy water?",
+  "choices": [
+   "A golden bowl",
+   "A brass laver",
+   "A silver cup",
+   "An earthen vessel"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall take holy water in an earthen vessel.",
+  "ref": "Numbers 5:17"
+ },
+ {
+  "id": "numbers-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priest uncover when he set the woman before the LORD?",
+  "choices": [
+   "Her hands",
+   "Her feet",
+   "Her head",
+   "Her face with a veil"
+  ],
+  "answer": 2,
+  "explanation": "The priest shall set the woman before the LORD, and uncover the woman's head.",
+  "ref": "Numbers 5:18"
+ },
+ {
+  "id": "numbers-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the woman say after the priest spoke the curse?",
+  "choices": [
+   "Hallelujah",
+   "Amen, amen",
+   "Blessed be the LORD",
+   "I am clean"
+  ],
+  "answer": 1,
+  "explanation": "And the woman shall say, Amen, amen.",
+  "ref": "Numbers 5:22"
+ },
+ {
+  "id": "numbers-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By what did the priest charge the woman?",
+  "choices": [
+   "An oath",
+   "A sacrifice",
+   "A vow of silence",
+   "A witness"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall charge her by an oath.",
+  "ref": "Numbers 5:19"
+ },
+ {
+  "id": "numbers-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much barley meal was the jealousy offering?",
+  "choices": [
+   "The fifth part of an ephah",
+   "A whole ephah",
+   "A handful",
+   "The tenth part of an ephah"
+  ],
+  "answer": 3,
+  "explanation": "He shall bring her offering, the tenth part of an ephah of barley meal.",
+  "ref": "Numbers 5:15"
+ },
+ {
+  "id": "numbers-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "From where did the priest take dust to put in the water?",
+  "choices": [
+   "The altar of burnt offering",
+   "The camp",
+   "The floor of the tabernacle",
+   "The door of the tent"
+  ],
+  "answer": 2,
+  "explanation": "Of the dust that is in the floor of the tabernacle the priest shall take, and put it into the water.",
+  "ref": "Numbers 5:17"
+ },
+ {
+  "id": "numbers-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest put in the woman's hands?",
+  "choices": [
+   "The holy water",
+   "The offering of memorial",
+   "The book of curses",
+   "A censer"
+  ],
+  "answer": 1,
+  "explanation": "He shall put the offering of memorial in her hands, which is the jealousy offering.",
+  "ref": "Numbers 5:18"
+ },
+ {
+  "id": "numbers-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the water the priest held in his hand called?",
+  "choices": [
+   "The bitter water that causeth the curse",
+   "The water of purifying",
+   "The water of separation",
+   "The water of life"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall have in his hand the bitter water that causeth the curse.",
+  "ref": "Numbers 5:18"
+ },
+ {
+  "id": "numbers-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If the woman was clean, what did the chapter say she would do?",
+  "choices": [
+   "Wave the offering",
+   "Leave the camp",
+   "Offer a ram",
+   "Conceive seed"
+  ],
+  "answer": 3,
+  "explanation": "If the woman be not defiled, but be clean; then she shall be free, and shall conceive seed.",
+  "ref": "Numbers 5:28"
+ },
+ {
+  "id": "numbers-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest burn upon the altar?",
+  "choices": [
+   "The whole ram",
+   "The holy water",
+   "An handful of the offering",
+   "The book"
+  ],
+  "answer": 2,
+  "explanation": "The priest shall take an handful of the offering, even the memorial thereof, and burn it upon the altar.",
+  "ref": "Numbers 5:26"
+ },
+ {
+  "id": "numbers-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest write in a book?",
+  "choices": [
+   "The names of the witnesses",
+   "The curses",
+   "The husband's complaint",
+   "The woman's oath"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall write these curses in a book.",
+  "ref": "Numbers 5:23"
+ },
+ {
+  "id": "numbers-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest use to blot out the written curses?",
+  "choices": [
+   "The bitter water",
+   "Oil",
+   "Dust",
+   "Fire"
+  ],
+  "answer": 0,
+  "explanation": "He shall blot them out with the bitter water.",
+  "ref": "Numbers 5:23"
+ },
+ {
+  "id": "numbers-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What came upon the husband that led him to bring his wife to the priest?",
+  "choices": [
+   "A dream",
+   "A fever",
+   "A debt",
+   "The spirit of jealousy"
+  ],
+  "answer": 3,
+  "explanation": "If the spirit of jealousy come upon him, and he be jealous of his wife.",
+  "ref": "Numbers 5:14"
+ },
+ {
+  "id": "numbers-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If the woman was guilty, what would her belly do?",
+  "choices": [
+   "Burn",
+   "Shrink",
+   "Swell",
+   "Bleed"
+  ],
+  "answer": 2,
+  "explanation": "The water that causeth the curse shall enter into her, and her belly shall swell, and her thigh shall rot.",
+  "ref": "Numbers 5:27"
+ },
+ {
+  "id": "numbers-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would a guilty woman become among her people?",
+  "choices": [
+   "A servant",
+   "A curse",
+   "A widow",
+   "A stranger"
+  ],
+  "answer": 1,
+  "explanation": "The woman shall be a curse among her people.",
+  "ref": "Numbers 5:27"
+ },
+ {
+  "id": "numbers-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What belonged to the priest of all that Israel brought him?",
+  "choices": [
+   "Every offering of the holy things",
+   "Only the firstborn",
+   "The tithes alone",
+   "The land of Judah"
+  ],
+  "answer": 0,
+  "explanation": "Every offering of all the holy things of the children of Israel, which they bring unto the priest, shall be his.",
+  "ref": "Numbers 5:9"
+ },
+ {
+  "id": "numbers-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the guilty man repay besides the fifth part?",
+  "choices": [
+   "Two rams",
+   "A tenth of his flock",
+   "Nothing more",
+   "The principal"
+  ],
+  "answer": 3,
+  "explanation": "He shall recompense his trespass with the principal thereof, and add unto it the fifth part.",
+  "ref": "Numbers 5:7"
+ },
+ {
+  "id": "numbers-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was made for the man who owed restitution to the LORD?",
+  "choices": [
+   "A new altar",
+   "A tent of meeting",
+   "Atonement by the ram",
+   "A feast"
+  ],
+  "answer": 2,
+  "explanation": "Beside the ram of the atonement, whereby an atonement shall be made for him.",
+  "ref": "Numbers 5:8"
+ },
+ {
+  "id": "numbers-5-m-15",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was guiltless from iniquity at the end of the law?",
+  "choices": [
+   "The priest",
+   "The man",
+   "The woman",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Then shall the man be guiltless from iniquity, and this woman shall bear her iniquity.",
+  "ref": "Numbers 5:31"
+ },
+ {
+  "id": "numbers-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the offering of jealousy bring to remembrance?",
+  "choices": [
+   "Iniquity",
+   "The covenant",
+   "The Sabbath",
+   "The exodus"
+  ],
+  "answer": 0,
+  "explanation": "It is an offering of jealousy, an offering of memorial, bringing iniquity to remembrance.",
+  "ref": "Numbers 5:15"
+ },
+ {
+  "id": "numbers-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was lacking in the case where the wife's sin was hidden?",
+  "choices": [
+   "A priest",
+   "A husband",
+   "A trial",
+   "A witness against her"
+  ],
+  "answer": 3,
+  "explanation": "And there be no witness against her, neither she be taken with the manner.",
+  "ref": "Numbers 5:13"
+ },
+ {
+  "id": "numbers-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the chapter call this law about a wife who goes aside?",
+  "choices": [
+   "The law of the leper",
+   "The law of vows",
+   "The law of jealousies",
+   "The law of firstfruits"
+  ],
+  "answer": 2,
+  "explanation": "This is the law of jealousies, when a wife goeth aside to another instead of her husband.",
+  "ref": "Numbers 5:29"
+ },
+ {
+  "id": "numbers-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the priest to execute on the woman?",
+  "choices": [
+   "A fine",
+   "All this law",
+   "A judgment of stoning",
+   "A cleansing"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall execute upon her all this law.",
+  "ref": "Numbers 5:30"
+ },
+ {
+  "id": "numbers-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which part of the guilty woman would rot?",
+  "choices": [
+   "Her thigh",
+   "Her hand",
+   "Her tongue",
+   "Her eye"
+  ],
+  "answer": 0,
+  "explanation": "The LORD make thy thigh to rot, and thy belly to swell.",
+  "ref": "Numbers 5:21"
+ },
+ {
+  "id": "numbers-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priest do with the jealousy offering before burning a part of it?",
+  "choices": [
+   "Buried it",
+   "Poured it out",
+   "Sold it",
+   "Waved it before the LORD"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall wave the offering before the LORD, and offer it upon the altar.",
+  "ref": "Numbers 5:25"
+ },
+ {
+  "id": "numbers-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who would bear her iniquity at the end of the law?",
+  "choices": [
+   "The husband",
+   "The priest",
+   "The woman",
+   "Her kinsman"
+  ],
+  "answer": 2,
+  "explanation": "The man shall be guiltless from iniquity, and this woman shall bear her iniquity.",
+  "ref": "Numbers 5:31"
+ },
+ {
+  "id": "numbers-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does the chapter say could commit a trespass against the LORD?",
+  "choices": [
+   "Only a priest",
+   "A man or woman",
+   "Only a Levite",
+   "Only a stranger"
+  ],
+  "answer": 1,
+  "explanation": "When a man or woman shall commit any sin that men commit, to do a trespass against the LORD.",
+  "ref": "Numbers 5:6"
+ },
+ {
+  "id": "numbers-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the priest bring the woman near and set her?",
+  "choices": [
+   "Before the LORD",
+   "Before Moses",
+   "Before the elders",
+   "At the gate"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall bring her near, and set her before the LORD.",
+  "ref": "Numbers 5:16"
+ },
+ {
+  "id": "numbers-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If a man's wife did what, was the trespass against her husband said to begin?",
+  "choices": [
+   "Fall sick",
+   "Leave the camp",
+   "Lie to the priest",
+   "Go aside"
+  ],
+  "answer": 3,
+  "explanation": "If any man's wife go aside, and commit a trespass against him.",
+  "ref": "Numbers 5:12"
+ },
+ {
+  "id": "numbers-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the water become when it entered a guilty woman?",
+  "choices": [
+   "Warm",
+   "Clear",
+   "Bitter",
+   "Hot"
+  ],
+  "answer": 2,
+  "explanation": "The water that causeth the curse shall enter into her, and become bitter.",
+  "ref": "Numbers 5:27"
+ },
+ {
+  "id": "numbers-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom was the trespass money first to be given?",
+  "choices": [
+   "The priest",
+   "Him against whom he trespassed",
+   "The LORD's altar",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "He shall give it unto him against whom he hath trespassed.",
+  "ref": "Numbers 5:7"
+ },
+ {
+  "id": "numbers-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If the woman had not gone aside, what would the priest say she was from the bitter water?",
+  "choices": [
+   "Free",
+   "Cursed",
+   "Guilty",
+   "Unclean"
+  ],
+  "answer": 0,
+  "explanation": "If no man have lain with thee, be thou free from this bitter water that causeth the curse.",
+  "ref": "Numbers 5:19"
+ },
+ {
+  "id": "numbers-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was every man's hallowed thing given to the priest said to be?",
+  "choices": [
+   "The LORD's",
+   "The people's",
+   "The altar's",
+   "His"
+  ],
+  "answer": 3,
+  "explanation": "Every man's hallowed things shall be his: whatsoever any man giveth the priest, it shall be his.",
+  "ref": "Numbers 5:10"
+ },
+ {
+  "id": "numbers-5-h-15",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the priest say when charging the guilty woman with the oath of cursing?",
+  "choices": [
+   "The LORD forgive thee",
+   "The LORD bless thee",
+   "The LORD make thee a curse and an oath among thy people",
+   "The LORD heal thee"
+  ],
+  "answer": 2,
+  "explanation": "The priest shall say unto the woman, The LORD make thee a curse and an oath among thy people.",
+  "ref": "Numbers 5:21"
+ },
+ {
   "id": "old-numbers-6-1",
   "chapter": 6,
   "level": "beginner",
