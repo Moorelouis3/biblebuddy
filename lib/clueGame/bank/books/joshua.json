@@ -12352,6 +12352,646 @@
   "ref": "Joshua 18:11"
  },
  {
+  "id": "joshua-18-e-01",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men from each tribe did Joshua ask for to describe the land?",
+  "choices": [
+   "One",
+   "Three",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Give out from among you three men for each tribe.",
+  "ref": "Joshua 18:4"
+ },
+ {
+  "id": "joshua-18-e-02",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into how many parts was the remaining land to be divided?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Five",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "They shall divide it into seven parts.",
+  "ref": "Joshua 18:5"
+ },
+ {
+  "id": "joshua-18-e-03",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Joshua divide the land among the seven tribes?",
+  "choices": [
+   "By drawing straws",
+   "By casting lots",
+   "By choosing his favorites",
+   "By a vote of the elders"
+  ],
+  "answer": 1,
+  "explanation": "Joshua cast lots for them in Shiloh before the Lord.",
+  "ref": "Joshua 18:10"
+ },
+ {
+  "id": "joshua-18-e-04",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did the men write down the description of the land?",
+  "choices": [
+   "On a stone",
+   "In a book",
+   "On a scroll of silver",
+   "On the altar"
+  ],
+  "answer": 1,
+  "explanation": "They described it by cities into seven parts in a book.",
+  "ref": "Joshua 18:9"
+ },
+ {
+  "id": "joshua-18-e-05",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe was to abide in its coast on the south?",
+  "choices": [
+   "Benjamin",
+   "Judah",
+   "Dan",
+   "Asher"
+  ],
+  "answer": 1,
+  "explanation": "Judah shall abide in their coast on the south.",
+  "ref": "Joshua 18:5"
+ },
+ {
+  "id": "joshua-18-e-06",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the inheritance of the Levites?",
+  "choices": [
+   "The cities of Gilead",
+   "The priesthood of the Lord",
+   "The land of Bashan",
+   "The valley of Jezreel"
+  ],
+  "answer": 1,
+  "explanation": "The Levites have no part among you; for the priesthood of the Lord is their inheritance.",
+  "ref": "Joshua 18:7"
+ },
+ {
+  "id": "joshua-18-e-07",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who gave Gad, Reuben and half Manasseh their inheritance beyond Jordan?",
+  "choices": [
+   "Joshua",
+   "Moses",
+   "Eleazar",
+   "Caleb"
+  ],
+  "answer": 1,
+  "explanation": "Beyond Jordan on the east, which Moses the servant of the Lord gave them.",
+  "ref": "Joshua 18:7"
+ },
+ {
+  "id": "joshua-18-e-08",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Benjamin's lot came out between which two tribes?",
+  "choices": [
+   "Dan and Asher",
+   "Judah and Joseph",
+   "Reuben and Gad",
+   "Simeon and Levi"
+  ],
+  "answer": 1,
+  "explanation": "The coast of their lot came forth between the children of Judah and the children of Joseph.",
+  "ref": "Joshua 18:11"
+ },
+ {
+  "id": "joshua-18-e-09",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was said of the land when Israel assembled at Shiloh?",
+  "choices": [
+   "It was empty",
+   "It was subdued before them",
+   "It was divided already",
+   "It was under famine"
+  ],
+  "answer": 1,
+  "explanation": "And the land was subdued before them.",
+  "ref": "Joshua 18:1"
+ },
+ {
+  "id": "joshua-18-e-10",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "Jebusi, among Benjamin's cities, is which city?",
+  "choices": [
+   "Hebron",
+   "Jerusalem",
+   "Bethel",
+   "Jericho"
+  ],
+  "answer": 1,
+  "explanation": "Jebusi, which is Jerusalem.",
+  "ref": "Joshua 18:28"
+ },
+ {
+  "id": "joshua-18-m-01",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Joshua cast lots for the seven tribes?",
+  "choices": [
+   "In Gilgal",
+   "In Hebron",
+   "On mount Ebal",
+   "In Shiloh before the Lord"
+  ],
+  "answer": 3,
+  "explanation": "I may here cast lots for you before the Lord in Shiloh.",
+  "ref": "Joshua 18:8"
+ },
+ {
+  "id": "joshua-18-m-02",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the men return to Joshua after describing the land?",
+  "choices": [
+   "To Gilgal",
+   "To Jericho",
+   "To Hebron",
+   "To the host at Shiloh"
+  ],
+  "answer": 3,
+  "explanation": "They came again to Joshua to the host at Shiloh.",
+  "ref": "Joshua 18:9"
+ },
+ {
+  "id": "joshua-18-m-03",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "What was the border of Benjamin on the east side?",
+  "choices": [
+   "The great sea",
+   "The wilderness of Zin",
+   "Mount Hermon",
+   "Jordan"
+  ],
+  "answer": 3,
+  "explanation": "And Jordan was the border of it on the east side.",
+  "ref": "Joshua 18:20"
+ },
+ {
+  "id": "joshua-18-m-04",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "The north border's goings out were at the wilderness of which place?",
+  "choices": [
+   "Beth-horon",
+   "Beth-arabah",
+   "Beth-hoglah",
+   "Beth-aven"
+  ],
+  "answer": 3,
+  "explanation": "The goings out thereof were at the wilderness of Beth-aven.",
+  "ref": "Joshua 18:12"
+ },
+ {
+  "id": "joshua-18-m-05",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "Luz, toward which the border went, is which city?",
+  "choices": [
+   "Gibeon",
+   "Jericho",
+   "Jerusalem",
+   "Bethel"
+  ],
+  "answer": 3,
+  "explanation": "The side of Luz, which is Bethel, southward.",
+  "ref": "Joshua 18:13"
+ },
+ {
+  "id": "joshua-18-m-06",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "Kirjath-baal, the west quarter's end, was a city of which tribe?",
+  "choices": [
+   "Ephraim",
+   "Dan",
+   "Simeon",
+   "Judah"
+  ],
+  "answer": 3,
+  "explanation": "Kirjath-baal, which is Kirjath-jearim, a city of the children of Judah.",
+  "ref": "Joshua 18:14"
+ },
+ {
+  "id": "joshua-18-m-07",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "The south quarter went out to the well of waters of what?",
+  "choices": [
+   "Hinnom",
+   "Bohan",
+   "Jezreel",
+   "Nephtoah"
+  ],
+  "answer": 3,
+  "explanation": "The border went out to the well of waters of Nephtoah.",
+  "ref": "Joshua 18:15"
+ },
+ {
+  "id": "joshua-18-m-08",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "The border descended to the valley of Hinnom, to the side of which city?",
+  "choices": [
+   "Hebron",
+   "Luz",
+   "Gaba",
+   "Jebusi"
+  ],
+  "answer": 3,
+  "explanation": "Descended to the valley of Hinnom, to the side of Jebusi on the south.",
+  "ref": "Joshua 18:16"
+ },
+ {
+  "id": "joshua-18-m-09",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "The border descended to which spring or well after the valley of Hinnom?",
+  "choices": [
+   "En-gedi",
+   "En-shemesh",
+   "En-tappuah",
+   "En-rogel"
+  ],
+  "answer": 3,
+  "explanation": "And descended to En-rogel.",
+  "ref": "Joshua 18:16"
+ },
+ {
+  "id": "joshua-18-m-10",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "The border descended to the stone of Bohan, the son of whom?",
+  "choices": [
+   "Judah",
+   "Benjamin",
+   "Joseph",
+   "Reuben"
+  ],
+  "answer": 3,
+  "explanation": "The stone of Bohan the son of Reuben.",
+  "ref": "Joshua 18:17"
+ },
+ {
+  "id": "joshua-18-m-11",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "The outgoings of the south coast were at the north bay of which sea?",
+  "choices": [
+   "The great sea",
+   "The sea of Chinnereth",
+   "The Red Sea",
+   "The salt sea"
+  ],
+  "answer": 3,
+  "explanation": "The outgoings were at the north bay of the salt sea at the south end of Jordan.",
+  "ref": "Joshua 18:19"
+ },
+ {
+  "id": "joshua-18-m-12",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cities were in the first group of Benjamin's cities?",
+  "choices": [
+   "Seven",
+   "Ten",
+   "Fourteen",
+   "Twelve"
+  ],
+  "answer": 3,
+  "explanation": "Jericho... Gaba; twelve cities with their villages.",
+  "ref": "Joshua 18:21–24"
+ },
+ {
+  "id": "joshua-18-m-13",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cities were in the second group of Benjamin's cities?",
+  "choices": [
+   "Twelve",
+   "Nine",
+   "Twenty",
+   "Fourteen"
+  ],
+  "answer": 3,
+  "explanation": "Gibeon... Kirjath; fourteen cities with their villages.",
+  "ref": "Joshua 18:25–28"
+ },
+ {
+  "id": "joshua-18-m-14",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city is named first in Benjamin's list of cities?",
+  "choices": [
+   "Bethel",
+   "Gibeon",
+   "Ramah",
+   "Jericho"
+  ],
+  "answer": 3,
+  "explanation": "The cities of Benjamin were Jericho, and Beth-hoglah, and the valley of Keziz.",
+  "ref": "Joshua 18:21"
+ },
+ {
+  "id": "joshua-18-m-15",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "The border descended to Ataroth-adar, near the hill south of which place?",
+  "choices": [
+   "Kirjath-jearim",
+   "Jericho",
+   "Bethel",
+   "The nether Beth-horon"
+  ],
+  "answer": 3,
+  "explanation": "Ataroth-adar, near the hill that lieth on the south side of the nether Beth-horon.",
+  "ref": "Joshua 18:13"
+ },
+ {
+  "id": "joshua-18-h-01",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city begins the second group of Benjamin's cities?",
+  "choices": [
+   "Gibeon",
+   "Ramah",
+   "Mizpeh",
+   "Gaba"
+  ],
+  "answer": 0,
+  "explanation": "Gibeon, and Ramah, and Beeroth.",
+  "ref": "Joshua 18:25"
+ },
+ {
+  "id": "joshua-18-h-02",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city ends the first group of twelve cities of Benjamin?",
+  "choices": [
+   "Gaba",
+   "Ophrah",
+   "Ophni",
+   "Bethel"
+  ],
+  "answer": 0,
+  "explanation": "Chephar-haammonai, and Ophni, and Gaba; twelve cities.",
+  "ref": "Joshua 18:24"
+ },
+ {
+  "id": "joshua-18-h-03",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "Which valley is named among Benjamin's first cities?",
+  "choices": [
+   "The valley of Keziz",
+   "The valley of Achor",
+   "The valley of Hinnom",
+   "The valley of Jezreel"
+  ],
+  "answer": 0,
+  "explanation": "Jericho, and Beth-hoglah, and the valley of Keziz.",
+  "ref": "Joshua 18:21"
+ },
+ {
+  "id": "joshua-18-h-04",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these was one of Benjamin's cities beside Bethel?",
+  "choices": [
+   "Zemaraim",
+   "Hebron",
+   "Beer-sheba",
+   "Dor"
+  ],
+  "answer": 0,
+  "explanation": "Beth-arabah, and Zemaraim, and Bethel.",
+  "ref": "Joshua 18:22"
+ },
+ {
+  "id": "joshua-18-h-05",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities belonged to Benjamin?",
+  "choices": [
+   "Ophrah",
+   "Lachish",
+   "Gaza",
+   "Ziklag"
+  ],
+  "answer": 0,
+  "explanation": "Avim, and Parah, and Ophrah.",
+  "ref": "Joshua 18:23"
+ },
+ {
+  "id": "joshua-18-h-06",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city is named with Chephirah and Mozah in Benjamin's list?",
+  "choices": [
+   "Mizpeh",
+   "Shiloh",
+   "Eglon",
+   "Libnah"
+  ],
+  "answer": 0,
+  "explanation": "Mizpeh, and Chephirah, and Mozah.",
+  "ref": "Joshua 18:26"
+ },
+ {
+  "id": "joshua-18-h-07",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city is named with Gibeon and Ramah in Benjamin's list?",
+  "choices": [
+   "Beeroth",
+   "Eltekon",
+   "Hebron",
+   "Beer-sheba"
+  ],
+  "answer": 0,
+  "explanation": "Gibeon, and Ramah, and Beeroth.",
+  "ref": "Joshua 18:25"
+ },
+ {
+  "id": "joshua-18-h-08",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities is in the group with Irpeel and Taralah?",
+  "choices": [
+   "Rekem",
+   "Bethel",
+   "Beth-hoglah",
+   "Gibeon"
+  ],
+  "answer": 0,
+  "explanation": "Rekem, and Irpeel, and Taralah.",
+  "ref": "Joshua 18:27"
+ },
+ {
+  "id": "joshua-18-h-09",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place was over against the going up of Adummim?",
+  "choices": [
+   "Geliloth",
+   "Arabah",
+   "Nephtoah",
+   "En-rogel"
+  ],
+  "answer": 0,
+  "explanation": "Toward Geliloth, which is over against the going up of Adummim.",
+  "ref": "Joshua 18:17"
+ },
+ {
+  "id": "joshua-18-h-10",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "From En-shemesh, the border went forth toward which place?",
+  "choices": [
+   "Geliloth",
+   "Beth-aven",
+   "Luz",
+   "Beeroth"
+  ],
+  "answer": 0,
+  "explanation": "It went forth to En-shemesh, and went forth toward Geliloth.",
+  "ref": "Joshua 18:17"
+ },
+ {
+  "id": "joshua-18-h-11",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "After passing over against Arabah northward, the border went down unto where?",
+  "choices": [
+   "Arabah",
+   "Beth-hoglah",
+   "Jericho",
+   "Bohan"
+  ],
+  "answer": 0,
+  "explanation": "It passed along over against Arabah northward, and went down unto Arabah.",
+  "ref": "Joshua 18:18"
+ },
+ {
+  "id": "joshua-18-h-12",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "The border passed along the side of which place northward before the salt sea?",
+  "choices": [
+   "Beth-hoglah",
+   "Beth-aven",
+   "Beth-horon",
+   "Beth-arabah"
+  ],
+  "answer": 0,
+  "explanation": "The border passed along to the side of Beth-hoglah northward.",
+  "ref": "Joshua 18:19"
+ },
+ {
+  "id": "joshua-18-h-13",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these places is named at the end of Benjamin's second list?",
+  "choices": [
+   "Kirjath",
+   "Gibeon",
+   "Ramah",
+   "Rekem"
+  ],
+  "answer": 0,
+  "explanation": "Zelah, Eleph, and Jebusi, which is Jerusalem, Gibeath, and Kirjath.",
+  "ref": "Joshua 18:28"
+ },
+ {
+  "id": "joshua-18-h-14",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joshua said the land had been given to Israel by whom?",
+  "choices": [
+   "The Lord God of their fathers",
+   "Moses the servant of the Lord",
+   "The princes of the tribes",
+   "Eleazar the priest"
+  ],
+  "answer": 0,
+  "explanation": "Joshua asked how long they were slack to possess the land which the Lord God of their fathers had given them.",
+  "ref": "Joshua 18:3"
+ },
+ {
+  "id": "joshua-18-h-15",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "The border of Benjamin on the north side was from which river?",
+  "choices": [
+   "Jordan",
+   "Arnon",
+   "Kishon",
+   "Jabbok"
+  ],
+  "answer": 0,
+  "explanation": "Their border on the north side was from Jordan; the border went up to the side of Jericho.",
+  "ref": "Joshua 18:12"
+ },
+ {
   "id": "old-joshua-19-1",
   "chapter": 19,
   "level": "beginner",
