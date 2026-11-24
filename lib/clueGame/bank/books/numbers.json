@@ -20976,6 +20976,646 @@
   "ref": "Numbers 30:14"
  },
  {
+  "id": "numbers-30-e-01",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did Moses speak the commands about vows?",
+  "choices": [
+   "The heads of the tribes",
+   "Only the women",
+   "The Levites",
+   "Only the priests"
+  ],
+  "answer": 0,
+  "explanation": "Moses spake unto the heads of the tribes concerning the children of Israel.",
+  "ref": "Numbers 30:1"
+ },
+ {
+  "id": "numbers-30-e-02",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must a man do if he vows a vow unto the LORD?",
+  "choices": [
+   "Forget it after a year",
+   "Pay a fine",
+   "Ask a priest to cancel it",
+   "Do all that proceeds out of his mouth"
+  ],
+  "answer": 3,
+  "explanation": "He shall not break his word, he shall do according to all that proceedeth out of his mouth.",
+  "ref": "Numbers 30:2"
+ },
+ {
+  "id": "numbers-30-e-03",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is a man bound by when he swears an oath?",
+  "choices": [
+   "A covenant of salt",
+   "A bond",
+   "A seal",
+   "A ring"
+  ],
+  "answer": 1,
+  "explanation": "If a man swear an oath to bind his soul with a bond; he shall not break his word.",
+  "ref": "Numbers 30:2"
+ },
+ {
+  "id": "numbers-30-e-04",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If a father kept silent when he heard his daughter's vow, what happened to her vows?",
+  "choices": [
+   "They passed to her brother",
+   "They doubled",
+   "They stood",
+   "They were cancelled"
+  ],
+  "answer": 2,
+  "explanation": "Her father shall hold his peace at her: then all her vows shall stand.",
+  "ref": "Numbers 30:4"
+ },
+ {
+  "id": "numbers-30-e-05",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If a father disallowed his daughter's vow, what did the LORD do for her?",
+  "choices": [
+   "Cursed her",
+   "Punished her",
+   "Ignored her",
+   "Forgave her"
+  ],
+  "answer": 3,
+  "explanation": "The LORD shall forgive her, because her father disallowed her.",
+  "ref": "Numbers 30:5"
+ },
+ {
+  "id": "numbers-30-e-06",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If a husband disallowed his wife's vow on the day he heard it, what happened to the vow?",
+  "choices": [
+   "It was of none effect",
+   "It passed to her father",
+   "It stood",
+   "It doubled"
+  ],
+  "answer": 0,
+  "explanation": "Then he shall make her vow of none effect: and the LORD shall forgive her.",
+  "ref": "Numbers 30:8"
+ },
+ {
+  "id": "numbers-30-e-07",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If a husband held his peace when he heard his wife's vow, what happened to it?",
+  "choices": [
+   "It was halved",
+   "It was forgotten",
+   "It stood",
+   "It was void"
+  ],
+  "answer": 2,
+  "explanation": "Her husband heard it, and held his peace at her: then her vows shall stand.",
+  "ref": "Numbers 30:7"
+ },
+ {
+  "id": "numbers-30-e-08",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose vows stood against them?",
+  "choices": [
+   "A priest's wife's",
+   "A widow's and a divorced woman's",
+   "A young girl's",
+   "A prince's"
+  ],
+  "answer": 1,
+  "explanation": "Every vow of a widow, and of her that is divorced, shall stand against her.",
+  "ref": "Numbers 30:9"
+ },
+ {
+  "id": "numbers-30-e-09",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD call the rules about vows between a man and his wife?",
+  "choices": [
+   "Statutes",
+   "Songs",
+   "Stories",
+   "Suggestions"
+  ],
+  "answer": 0,
+  "explanation": "These are the statutes, which the LORD commanded Moses.",
+  "ref": "Numbers 30:16"
+ },
+ {
+  "id": "numbers-30-e-10",
+  "chapter": 30,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose vow could a father disallow while she lived in his house?",
+  "choices": [
+   "His brother's",
+   "His servant's",
+   "His daughter's",
+   "His son's"
+  ],
+  "answer": 2,
+  "explanation": "Between the father and his daughter, being yet in her youth in her father's house.",
+  "ref": "Numbers 30:16"
+ },
+ {
+  "id": "numbers-30-m-01",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what stage of life did the chapter say a woman's vow came under her father's hearing?",
+  "choices": [
+   "When she was widowed",
+   "After her marriage",
+   "When she was old",
+   "In her youth in her father's house"
+  ],
+  "answer": 3,
+  "explanation": "If a woman vow a vow, being in her father's house in her youth.",
+  "ref": "Numbers 30:3"
+ },
+ {
+  "id": "numbers-30-m-02",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When must a father disallow his daughter's vow for it to be cancelled?",
+  "choices": [
+   "Before the next feast",
+   "Within a year",
+   "After seven days",
+   "In the day that he heareth"
+  ],
+  "answer": 3,
+  "explanation": "But if her father disallow her in the day that he heareth.",
+  "ref": "Numbers 30:5"
+ },
+ {
+  "id": "numbers-30-m-03",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When must a husband disallow his wife's vow?",
+  "choices": [
+   "After a week",
+   "On the day he heard it",
+   "At the new moon",
+   "Any time later"
+  ],
+  "answer": 1,
+  "explanation": "But if her husband disallowed her on the day that he heard it.",
+  "ref": "Numbers 30:8"
+ },
+ {
+  "id": "numbers-30-m-04",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about a woman whose husband made her vow void?",
+  "choices": [
+   "The LORD shall forgive her",
+   "She must leave the camp",
+   "She must offer a bullock",
+   "The LORD shall curse her"
+  ],
+  "answer": 0,
+  "explanation": "Her husband hath made them void; and the LORD shall forgive her.",
+  "ref": "Numbers 30:12"
+ },
+ {
+  "id": "numbers-30-m-05",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens if a husband holds his peace from day to day about his wife's vows?",
+  "choices": [
+   "He voids them",
+   "They move to her father",
+   "He establishes them",
+   "He pays a fine"
+  ],
+  "answer": 2,
+  "explanation": "He confirmeth them, because he held his peace at her.",
+  "ref": "Numbers 30:14"
+ },
+ {
+  "id": "numbers-30-m-06",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens if a husband makes a vow void after he has heard it and been silent?",
+  "choices": [
+   "She is forgiven",
+   "Nothing",
+   "He must offer a lamb",
+   "He shall bear her iniquity"
+  ],
+  "answer": 3,
+  "explanation": "If he shall any ways make them void after that he hath heard them; then he shall bear her iniquity.",
+  "ref": "Numbers 30:15"
+ },
+ {
+  "id": "numbers-30-m-07",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which kind of oath could a husband establish or make void?",
+  "choices": [
+   "Only oaths about money",
+   "Only oaths about land",
+   "Only oaths made in the temple",
+   "Every binding oath to afflict the soul"
+  ],
+  "answer": 3,
+  "explanation": "Every vow, and every binding oath to afflict the soul, her husband may establish it, or make it void.",
+  "ref": "Numbers 30:13"
+ },
+ {
+  "id": "numbers-30-m-08",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say a man should not do with his word after a vow?",
+  "choices": [
+   "Repeat it",
+   "Write it",
+   "Sell it",
+   "Break it"
+  ],
+  "answer": 3,
+  "explanation": "He shall not break his word.",
+  "ref": "Numbers 30:2"
+ },
+ {
+  "id": "numbers-30-m-09",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did a married woman make a vow in the case described in verse ten?",
+  "choices": [
+   "In the tabernacle",
+   "In Moab",
+   "In her husband's house",
+   "By the river"
+  ],
+  "answer": 2,
+  "explanation": "If she vowed in her husband's house, or bound her soul by a bond with an oath.",
+  "ref": "Numbers 30:10"
+ },
+ {
+  "id": "numbers-30-m-10",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about a wife who vowed and her husband was silent on the day he heard?",
+  "choices": [
+   "She must repeat them",
+   "Her vows stand",
+   "She must be punished",
+   "Her vows are void"
+  ],
+  "answer": 1,
+  "explanation": "Her husband heard it, and held his peace at her in the day that he heard it.",
+  "ref": "Numbers 30:7"
+ },
+ {
+  "id": "numbers-30-m-11",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses call 'the thing which the LORD hath commanded' when he spoke to the tribe heads?",
+  "choices": [
+   "This is the thing",
+   "A riddle",
+   "A blessing",
+   "A parable"
+  ],
+  "answer": 0,
+  "explanation": "Moses said, This is the thing which the LORD hath commanded.",
+  "ref": "Numbers 30:1"
+ },
+ {
+  "id": "numbers-30-m-12",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What stands against a widow regarding her vows?",
+  "choices": [
+   "Only vows to the LORD's priests",
+   "Nothing she says",
+   "Only vows made in her youth",
+   "Every vow she has bound her soul with"
+  ],
+  "answer": 3,
+  "explanation": "Every vow of a widow wherewith they have bound their souls shall stand against her.",
+  "ref": "Numbers 30:9"
+ },
+ {
+  "id": "numbers-30-m-13",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two kinds of promises does the chapter name together?",
+  "choices": [
+   "A sign and a wonder",
+   "A prayer and a psalm",
+   "A gift and a tithe",
+   "A vow and an oath"
+  ],
+  "answer": 3,
+  "explanation": "If a man vow a vow unto the LORD, or swear an oath.",
+  "ref": "Numbers 30:2"
+ },
+ {
+  "id": "numbers-30-h-01",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is a woman's father said to react when he lets her vow stand?",
+  "choices": [
+   "He pays a fine",
+   "He holds his peace at her",
+   "He rejoices aloud",
+   "He writes it"
+  ],
+  "answer": 1,
+  "explanation": "And her father shall hold his peace at her: then all her vows shall stand.",
+  "ref": "Numbers 30:4"
+ },
+ {
+  "id": "numbers-30-h-02",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two groups of women have vows that stand against them?",
+  "choices": [
+   "Priests' wives and princes' wives",
+   "Daughters and wives",
+   "Servants and slaves",
+   "Widows and the divorced"
+  ],
+  "answer": 3,
+  "explanation": "Every vow of a widow, and of her that is divorced, shall stand against her.",
+  "ref": "Numbers 30:9"
+ },
+ {
+  "id": "numbers-30-h-03",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do for the woman whose father disallowed her vow?",
+  "choices": [
+   "He judged her",
+   "He freed her father",
+   "He forgave her",
+   "He ignored her"
+  ],
+  "answer": 2,
+  "explanation": "The LORD shall forgive her, because her father disallowed her.",
+  "ref": "Numbers 30:5"
+ },
+ {
+  "id": "numbers-30-h-04",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would a husband 'bear' if he made vows void after hearing and being silent?",
+  "choices": [
+   "Her gift",
+   "Her iniquity",
+   "Her debt",
+   "Her name"
+  ],
+  "answer": 1,
+  "explanation": "Then he shall bear her iniquity.",
+  "ref": "Numbers 30:15"
+ },
+ {
+  "id": "numbers-30-h-05",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The vows of a woman in her husband's house stood unless he did what?",
+  "choices": [
+   "Made them void on the day he heard",
+   "Left the camp",
+   "Kept the sabbath",
+   "Stayed silent"
+  ],
+  "answer": 0,
+  "explanation": "But if her husband hath utterly made them void on the day he heard them.",
+  "ref": "Numbers 30:12"
+ },
+ {
+  "id": "numbers-30-h-06",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The husband could 'establish' or what, concerning her binding oath?",
+  "choices": [
+   "Make it secret",
+   "Make it void",
+   "Make it public",
+   "Make it double"
+  ],
+  "answer": 1,
+  "explanation": "Her husband may establish it, or her husband may make it void.",
+  "ref": "Numbers 30:13"
+ },
+ {
+  "id": "numbers-30-m-14",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose silence let a daughter's vow stand?",
+  "choices": [
+   "Her brother's",
+   "The prince's",
+   "The priest's",
+   "Her father's"
+  ],
+  "answer": 3,
+  "explanation": "Her father shall hold his peace at her: then all her vows shall stand.",
+  "ref": "Numbers 30:4"
+ },
+ {
+  "id": "numbers-30-m-15",
+  "chapter": 30,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose silence let a wife's vow stand?",
+  "choices": [
+   "Her father's",
+   "The elders'",
+   "Moses'",
+   "Her husband's"
+  ],
+  "answer": 3,
+  "explanation": "Her husband heard it, and held his peace at her: then her vows shall stand.",
+  "ref": "Numbers 30:7"
+ },
+ {
+  "id": "numbers-30-h-07",
+  "chapter": 30,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose vow does the chapter speak of first?",
+  "choices": [
+   "A widow's",
+   "A wife's",
+   "A daughter's",
+   "A man's"
+  ],
+  "answer": 3,
+  "explanation": "If a man vow a vow unto the LORD, or swear an oath to bind his soul with a bond.",
+  "ref": "Numbers 30:2"
+ },
+ {
+  "id": "numbers-30-h-08",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Concerning whom did Moses speak to the heads of the tribes?",
+  "choices": [
+   "The Midianites",
+   "The Egyptians",
+   "The Levites only",
+   "The children of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Moses spake unto the heads of the tribes concerning the children of Israel.",
+  "ref": "Numbers 30:1"
+ },
+ {
+  "id": "numbers-30-h-09",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which woman's vows does the chapter describe after the one in her father's house?",
+  "choices": [
+   "A woman who had a husband when she vowed",
+   "A woman of Midian",
+   "A woman in Moab",
+   "A servant girl"
+  ],
+  "answer": 0,
+  "explanation": "And if she had at all an husband, when she vowed, or uttered ought out of her lips.",
+  "ref": "Numbers 30:6"
+ },
+ {
+  "id": "numbers-30-h-10",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did a woman utter her vow with?",
+  "choices": [
+   "Her hands",
+   "Her feet",
+   "Her eyes",
+   "Her lips"
+  ],
+  "answer": 3,
+  "explanation": "Whatsoever proceeded out of her lips concerning her vows shall not stand.",
+  "ref": "Numbers 30:6"
+ },
+ {
+  "id": "numbers-30-h-11",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who forgives a woman whose husband made her vow void?",
+  "choices": [
+   "Her father",
+   "Moses",
+   "The priest",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "Her husband hath made them void; and the LORD shall forgive her.",
+  "ref": "Numbers 30:12"
+ },
+ {
+  "id": "numbers-30-h-12",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose house was the woman in verse ten when she made her vow?",
+  "choices": [
+   "Her father's",
+   "The priest's",
+   "Her husband's",
+   "Moses'"
+  ],
+  "answer": 2,
+  "explanation": "And if she vowed in her husband's house, or bound her soul by a bond with an oath.",
+  "ref": "Numbers 30:10"
+ },
+ {
+  "id": "numbers-30-h-13",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the husband confirm all her bonds without a word?",
+  "choices": [
+   "Wrote them down",
+   "Told her father",
+   "Offered a lamb",
+   "Held his peace from day to day"
+  ],
+  "answer": 3,
+  "explanation": "If her husband altogether hold his peace at her from day to day, he establisheth all her vows.",
+  "ref": "Numbers 30:14"
+ },
+ {
+  "id": "numbers-30-h-14",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who was responsible for the woman's iniquity if the husband voided her vow later?",
+  "choices": [
+   "The woman",
+   "The husband",
+   "The father",
+   "The priest"
+  ],
+  "answer": 1,
+  "explanation": "But if he shall any ways make them void after that he hath heard them; then he shall bear her iniquity.",
+  "ref": "Numbers 30:15"
+ },
+ {
+  "id": "numbers-30-h-15",
+  "chapter": 30,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If a father disallowed his daughter's vow, how many of her vows would stand?",
+  "choices": [
+   "None of them",
+   "Only the first",
+   "All of them",
+   "Half of them"
+  ],
+  "answer": 0,
+  "explanation": "But if her father disallow her in the day that he heareth; not any of her vows shall stand.",
+  "ref": "Numbers 30:5"
+ },
+ {
   "id": "old-numbers-31-1",
   "chapter": 31,
   "level": "beginner",
