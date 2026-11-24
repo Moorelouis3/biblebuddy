@@ -9472,6 +9472,646 @@
   "ref": "Joshua 14:8–9"
  },
  {
+  "id": "joshua-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which priest helped Joshua distribute the land?",
+  "choices": [
+   "Phinehas",
+   "Eleazar",
+   "Aaron",
+   "Ithamar"
+  ],
+  "answer": 1,
+  "explanation": "Eleazar the priest, and Joshua the son of Nun distributed the inheritance.",
+  "ref": "Joshua 14:1"
+ },
+ {
+  "id": "joshua-14-e-02",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which place did the children of Judah come to Joshua?",
+  "choices": [
+   "Hebron",
+   "Gilgal",
+   "Jericho",
+   "Shiloh"
+  ],
+  "answer": 1,
+  "explanation": "Then the children of Judah came unto Joshua in Gilgal.",
+  "ref": "Joshua 14:6"
+ },
+ {
+  "id": "joshua-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sent Caleb from Kadesh-barnea to spy out the land?",
+  "choices": [
+   "Joshua",
+   "Moses",
+   "Eleazar",
+   "Aaron"
+  ],
+  "answer": 1,
+  "explanation": "Moses the servant of the Lord sent me from Kadesh-barnea to espy out the land.",
+  "ref": "Joshua 14:7"
+ },
+ {
+  "id": "joshua-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which people lived in the mountain that Caleb asked for?",
+  "choices": [
+   "The Philistines",
+   "The Anakims",
+   "The Moabites",
+   "The Midianites"
+  ],
+  "answer": 1,
+  "explanation": "Thou heardest in that day how the Anakims were there.",
+  "ref": "Joshua 14:12"
+ },
+ {
+  "id": "joshua-14-e-05",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was the land divided among the nine and a half tribes?",
+  "choices": [
+   "By the oldest tribe first",
+   "By lot",
+   "By the king's choice",
+   "By counting families"
+  ],
+  "answer": 1,
+  "explanation": "By lot was their inheritance, as the Lord commanded by the hand of Moses.",
+  "ref": "Joshua 14:2"
+ },
+ {
+  "id": "joshua-14-e-06",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the land have at the end of the chapter?",
+  "choices": [
+   "A new king",
+   "Rest from war",
+   "A famine",
+   "A feast"
+  ],
+  "answer": 1,
+  "explanation": "And the land had rest from war.",
+  "ref": "Joshua 14:15"
+ },
+ {
+  "id": "joshua-14-e-07",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two tribes were the children of Joseph?",
+  "choices": [
+   "Reuben and Gad",
+   "Manasseh and Ephraim",
+   "Judah and Dan",
+   "Simeon and Levi"
+  ],
+  "answer": 1,
+  "explanation": "The children of Joseph were two tribes, Manasseh and Ephraim.",
+  "ref": "Joshua 14:4"
+ },
+ {
+  "id": "joshua-14-e-08",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe received no inheritance of land among the others?",
+  "choices": [
+   "The Judahites",
+   "The Levites",
+   "The Ephraimites",
+   "The Gadites"
+  ],
+  "answer": 1,
+  "explanation": "Unto the Levites he gave none inheritance among them.",
+  "ref": "Joshua 14:3"
+ },
+ {
+  "id": "joshua-14-e-09",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which land did Israel inherit these countries?",
+  "choices": [
+   "Egypt",
+   "Canaan",
+   "Moab",
+   "Gilead"
+  ],
+  "answer": 1,
+  "explanation": "These are the countries which the children of Israel inherited in the land of Canaan.",
+  "ref": "Joshua 14:1"
+ },
+ {
+  "id": "joshua-14-e-10",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who gave Hebron to Caleb for an inheritance?",
+  "choices": [
+   "Moses",
+   "Joshua",
+   "Eleazar",
+   "Othniel"
+  ],
+  "answer": 1,
+  "explanation": "Joshua blessed him, and gave unto Caleb the son of Jephunneh Hebron for an inheritance.",
+  "ref": "Joshua 14:13"
+ },
+ {
+  "id": "joshua-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "Caleb was the son of whom?",
+  "choices": [
+   "Nun",
+   "Kenaz",
+   "Arba",
+   "Jephunneh"
+  ],
+  "answer": 3,
+  "explanation": "Caleb the son of Jephunneh the Kenezite said unto him.",
+  "ref": "Joshua 14:6"
+ },
+ {
+  "id": "joshua-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "Which tribe's children came to Joshua with Caleb?",
+  "choices": [
+   "Ephraim",
+   "Benjamin",
+   "Manasseh",
+   "Judah"
+  ],
+  "answer": 3,
+  "explanation": "Then the children of Judah came unto Joshua in Gilgal.",
+  "ref": "Joshua 14:6"
+ },
+ {
+  "id": "joshua-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "place",
+  "question": "Where had the Lord spoken the word about Caleb and Joshua?",
+  "choices": [
+   "Gilgal",
+   "Mount Sinai",
+   "Shiloh",
+   "Kadesh-barnea"
+  ],
+  "answer": 3,
+  "explanation": "The thing that the Lord said unto Moses concerning me and thee in Kadesh-barnea.",
+  "ref": "Joshua 14:6"
+ },
+ {
+  "id": "joshua-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Caleb's brethren who went up with him do to the people?",
+  "choices": [
+   "Made them rejoice",
+   "Made them angry",
+   "Made them march at once",
+   "Made their heart melt"
+  ],
+  "answer": 3,
+  "explanation": "My brethren that went up with me made the heart of the people melt.",
+  "ref": "Joshua 14:8"
+ },
+ {
+  "id": "joshua-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses swear to Caleb that day?",
+  "choices": [
+   "That he would lead Israel after Joshua",
+   "That he would live a hundred years",
+   "That he would be the high priest",
+   "That the land his feet had trodden would be his inheritance"
+  ],
+  "answer": 3,
+  "explanation": "Moses sware: Surely the land whereon thy feet have trodden shall be thine inheritance, and thy children's for ever.",
+  "ref": "Joshua 14:9"
+ },
+ {
+  "id": "joshua-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For how many years had the Lord kept Caleb alive since Moses spoke the word?",
+  "choices": [
+   "Thirty",
+   "Forty",
+   "Fifty",
+   "Forty-five"
+  ],
+  "answer": 3,
+  "explanation": "The Lord hath kept me alive these forty and five years.",
+  "ref": "Joshua 14:10"
+ },
+ {
+  "id": "joshua-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Caleb said his strength was still as it was then, for what?",
+  "choices": [
+   "For building",
+   "For farming",
+   "For judging",
+   "For war"
+  ],
+  "answer": 3,
+  "explanation": "As my strength was then, even so is my strength now, for war, both to go out, and to come in.",
+  "ref": "Joshua 14:11"
+ },
+ {
+  "id": "joshua-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Caleb describe the cities of the Anakims?",
+  "choices": [
+   "Small and weak",
+   "Empty and ruined",
+   "Rich and open",
+   "Great and fenced"
+  ],
+  "answer": 3,
+  "explanation": "The cities were great and fenced.",
+  "ref": "Joshua 14:12"
+ },
+ {
+  "id": "joshua-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Caleb say he needed in order to drive out the Anakims?",
+  "choices": [
+   "More soldiers",
+   "Chariots of iron",
+   "A new weapon",
+   "The Lord to be with him"
+  ],
+  "answer": 3,
+  "explanation": "If so be the Lord will be with me, then I shall be able to drive them out.",
+  "ref": "Joshua 14:12"
+ },
+ {
+  "id": "joshua-14-m-10",
+  "chapter": 14,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were the Levites given to live?",
+  "choices": [
+   "In Hebron only",
+   "In tents in Gilgal",
+   "Beside the Jordan",
+   "In cities"
+  ],
+  "answer": 3,
+  "explanation": "They gave no part unto the Levites in the land, save cities to dwell in.",
+  "ref": "Joshua 14:4"
+ },
+ {
+  "id": "joshua-14-m-11",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Levites get no part in the land, according to the chapter?",
+  "choices": [
+   "They were too few",
+   "They had sinned",
+   "They had been given Hebron",
+   "Joseph's children made two tribes"
+  ],
+  "answer": 3,
+  "explanation": "The children of Joseph were two tribes, therefore they gave no part unto the Levites in the land, save cities.",
+  "ref": "Joshua 14:4"
+ },
+ {
+  "id": "joshua-14-m-12",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "Arba, after whom Hebron was once named, was what?",
+  "choices": [
+   "A king of Judah",
+   "A priest of Levi",
+   "A friend of Joshua",
+   "A great man among the Anakims"
+  ],
+  "answer": 3,
+  "explanation": "Kirjath-arba; which Arba was a great man among the Anakims.",
+  "ref": "Joshua 14:15"
+ },
+ {
+  "id": "joshua-14-m-13",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Moses sent Caleb to do at Kadesh-barnea?",
+  "choices": [
+   "To build an altar",
+   "To fight the Anakims",
+   "To make peace",
+   "To espy out the land"
+  ],
+  "answer": 3,
+  "explanation": "Moses sent me from Kadesh-barnea to espy out the land.",
+  "ref": "Joshua 14:7"
+ },
+ {
+  "id": "joshua-14-m-14",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "By whose hand did the Lord command the division by lot?",
+  "choices": [
+   "Joshua",
+   "Eleazar",
+   "Caleb",
+   "Moses"
+  ],
+  "answer": 3,
+  "explanation": "By lot was their inheritance, as the Lord commanded by the hand of Moses.",
+  "ref": "Joshua 14:2"
+ },
+ {
+  "id": "joshua-14-m-15",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "Joshua was the son of whom?",
+  "choices": [
+   "Jephunneh",
+   "Eleazar",
+   "Kenaz",
+   "Nun"
+  ],
+  "answer": 3,
+  "explanation": "Eleazar the priest, and Joshua the son of Nun.",
+  "ref": "Joshua 14:1"
+ },
+ {
+  "id": "joshua-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many tribes had Moses already given inheritance on the other side Jordan?",
+  "choices": [
+   "Two and a half",
+   "One",
+   "Three and a half",
+   "Five"
+  ],
+  "answer": 0,
+  "explanation": "Moses had given the inheritance of two tribes and an half tribe on the other side Jordan.",
+  "ref": "Joshua 14:3"
+ },
+ {
+  "id": "joshua-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Caleb describe Moses when he first speaks to Joshua?",
+  "choices": [
+   "The man of God",
+   "The great prophet",
+   "The lawgiver",
+   "The shepherd of Israel"
+  ],
+  "answer": 0,
+  "explanation": "The thing that the Lord said unto Moses the man of God concerning me and thee.",
+  "ref": "Joshua 14:6"
+ },
+ {
+  "id": "joshua-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "Caleb said the Lord's word at Kadesh-barnea concerned him and whom?",
+  "choices": [
+   "Joshua",
+   "Eleazar",
+   "Aaron",
+   "Phinehas"
+  ],
+  "answer": 0,
+  "explanation": "The Lord said unto Moses concerning me and thee in Kadesh-barnea.",
+  "ref": "Joshua 14:6"
+ },
+ {
+  "id": "joshua-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Caleb say he brought Moses when he came back from spying?",
+  "choices": [
+   "Word as it was in his heart",
+   "Fruit of the land",
+   "A map of the cities",
+   "A sword from the Anakims"
+  ],
+  "answer": 0,
+  "explanation": "I brought him word again as it was in mine heart.",
+  "ref": "Joshua 14:7"
+ },
+ {
+  "id": "joshua-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the suburbs given to the Levites for?",
+  "choices": [
+   "Their cattle and their substance",
+   "Their altars and offerings",
+   "Their wells and gardens",
+   "Their armies and tents"
+  ],
+  "answer": 0,
+  "explanation": "Cities to dwell in, with their suburbs for their cattle and for their substance.",
+  "ref": "Joshua 14:4"
+ },
+ {
+  "id": "joshua-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Hebron became the inheritance of Caleb until when?",
+  "choices": [
+   "Unto this day",
+   "Until the next jubilee",
+   "Until his death",
+   "Until the exile"
+  ],
+  "answer": 0,
+  "explanation": "Hebron therefore became the inheritance of Caleb unto this day.",
+  "ref": "Joshua 14:14"
+ },
+ {
+  "id": "joshua-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "Which word describes Caleb the son of Jephunneh in the chapter?",
+  "choices": [
+   "Kenezite",
+   "Hivite",
+   "Amorite",
+   "Hittite"
+  ],
+  "answer": 0,
+  "explanation": "Caleb the son of Jephunneh the Kenezite.",
+  "ref": "Joshua 14:6"
+ },
+ {
+  "id": "joshua-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "What was the name of Hebron before?",
+  "choices": [
+   "Kirjath-arba",
+   "Kirjath-jearim",
+   "Kedesh",
+   "Kibroth-hattaavah"
+  ],
+  "answer": 0,
+  "explanation": "The name of Hebron before was Kirjath-arba.",
+  "ref": "Joshua 14:15"
+ },
+ {
+  "id": "joshua-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "Moses swore the land would be Caleb's and whose for ever?",
+  "choices": [
+   "His children's",
+   "His brethren's",
+   "The tribe of Levi's",
+   "Joshua's"
+  ],
+  "answer": 0,
+  "explanation": "Thy feet have trodden shall be thine inheritance, and thy children's for ever.",
+  "ref": "Joshua 14:9"
+ },
+ {
+  "id": "joshua-14-h-10",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua do to Caleb before giving him Hebron?",
+  "choices": [
+   "Blessed him",
+   "Anointed him",
+   "Laid hands on him",
+   "Gave him a sword"
+  ],
+  "answer": 0,
+  "explanation": "And Joshua blessed him, and gave unto Caleb the son of Jephunneh Hebron.",
+  "ref": "Joshua 14:13"
+ },
+ {
+  "id": "joshua-14-h-11",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Caleb said his strength was for war, both to go out and to do what?",
+  "choices": [
+   "Come in",
+   "Turn back",
+   "Stand still",
+   "Sit down"
+  ],
+  "answer": 0,
+  "explanation": "My strength now, for war, both to go out, and to come in.",
+  "ref": "Joshua 14:11"
+ },
+ {
+  "id": "joshua-14-h-12",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Caleb said the Lord's word to Moses was spoken while Israel did what?",
+  "choices": [
+   "Wandered in the wilderness",
+   "Camped at Sinai",
+   "Crossed the Jordan",
+   "Fought the Amorites"
+  ],
+  "answer": 0,
+  "explanation": "Since the Lord spake this word unto Moses, while the children of Israel wandered in the wilderness.",
+  "ref": "Joshua 14:10"
+ },
+ {
+  "id": "joshua-14-h-13",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As the Lord commanded Moses, what did the children of Israel do?",
+  "choices": [
+   "They divided the land",
+   "They went to war again",
+   "They built an altar",
+   "They numbered the people"
+  ],
+  "answer": 0,
+  "explanation": "As the Lord commanded Moses, so the children of Israel did, and they divided the land.",
+  "ref": "Joshua 14:5"
+ },
+ {
+  "id": "joshua-14-h-14",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides Eleazar and Joshua, who distributed the inheritance?",
+  "choices": [
+   "The heads of the fathers of the tribes",
+   "The elders of Judah",
+   "The judges of Israel",
+   "The captains of the host"
+  ],
+  "answer": 0,
+  "explanation": "Eleazar, Joshua, and the heads of the fathers of the tribes distributed it.",
+  "ref": "Joshua 14:1"
+ },
+ {
+  "id": "joshua-14-h-15",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Caleb ask Joshua to give him?",
+  "choices": [
+   "This mountain",
+   "This valley",
+   "This plain",
+   "This river"
+  ],
+  "answer": 0,
+  "explanation": "Now therefore give me this mountain, whereof the LORD spake in that day.",
+  "ref": "Joshua 14:12"
+ },
+ {
   "id": "old-joshua-15-1",
   "chapter": 15,
   "level": "beginner",
