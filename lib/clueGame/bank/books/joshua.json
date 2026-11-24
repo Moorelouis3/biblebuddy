@@ -11632,6 +11632,646 @@
   "ref": "Joshua 17:17–18"
  },
  {
+  "id": "joshua-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the firstborn of Joseph?",
+  "choices": [
+   "Ephraim",
+   "Manasseh",
+   "Benjamin",
+   "Machir"
+  ],
+  "answer": 1,
+  "explanation": "There was also a lot for the tribe of Manasseh; for he was the firstborn of Joseph.",
+  "ref": "Joshua 17:1"
+ },
+ {
+  "id": "joshua-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Machir called, which is why he received Gilead and Bashan?",
+  "choices": [
+   "A man of wisdom",
+   "A man of war",
+   "A man of peace",
+   "A shepherd of Israel"
+  ],
+  "answer": 1,
+  "explanation": "Because he was a man of war, therefore he had Gilead and Bashan.",
+  "ref": "Joshua 17:1"
+ },
+ {
+  "id": "joshua-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which two lands did Machir receive?",
+  "choices": [
+   "Tappuah and Dor",
+   "Gilead and Bashan",
+   "Asher and Issachar",
+   "Gezer and Luz"
+  ],
+  "answer": 1,
+  "explanation": "Because he was a man of war, therefore he had Gilead and Bashan.",
+  "ref": "Joshua 17:1"
+ },
+ {
+  "id": "joshua-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Zelophehad have instead of sons?",
+  "choices": [
+   "Servants",
+   "Daughters",
+   "Flocks",
+   "Brothers only"
+  ],
+  "answer": 1,
+  "explanation": "Zelophehad had no sons, but daughters.",
+  "ref": "Joshua 17:3"
+ },
+ {
+  "id": "joshua-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Before which priest did Zelophehad's daughters come?",
+  "choices": [
+   "Phinehas",
+   "Eleazar",
+   "Aaron",
+   "Eli"
+  ],
+  "answer": 1,
+  "explanation": "They came near before Eleazar the priest, and before Joshua the son of Nun.",
+  "ref": "Joshua 17:4"
+ },
+ {
+  "id": "joshua-17-e-06",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many daughters of Zelophehad are named?",
+  "choices": [
+   "Three",
+   "Five",
+   "Four",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "Mahlah, and Noah, Hoglah, Milcah, and Tirzah.",
+  "ref": "Joshua 17:3"
+ },
+ {
+  "id": "joshua-17-e-07",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many portions fell to Manasseh, besides Gilead and Bashan?",
+  "choices": [
+   "Five",
+   "Ten",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "There fell ten portions to Manasseh, beside the land of Gilead and Bashan.",
+  "ref": "Joshua 17:5"
+ },
+ {
+  "id": "joshua-17-e-08",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do to the Canaanites when they grew strong?",
+  "choices": [
+   "They made them priests",
+   "They put them to tribute",
+   "They sent them away",
+   "They made a treaty with them"
+  ],
+  "answer": 1,
+  "explanation": "When Israel were waxen strong, they put the Canaanites to tribute; but did not utterly drive them out.",
+  "ref": "Joshua 17:13"
+ },
+ {
+  "id": "joshua-17-e-09",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Southward of the river Kanah, the land was whose?",
+  "choices": [
+   "Judah's",
+   "Ephraim's",
+   "Dan's",
+   "Levi's"
+  ],
+  "answer": 1,
+  "explanation": "Southward it was Ephraim's, and northward it was Manasseh's.",
+  "ref": "Joshua 17:10"
+ },
+ {
+  "id": "joshua-17-e-10",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "In whose land did Joshua tell them to cut down the wood country?",
+  "choices": [
+   "The Moabites and Ammonites",
+   "The Perizzites and the giants",
+   "The Philistines and Sidonians",
+   "The Jebusites and Hivites"
+  ],
+  "answer": 1,
+  "explanation": "Get thee up to the wood country, and cut down for thyself there in the land of the Perizzites and of the giants.",
+  "ref": "Joshua 17:15"
+ },
+ {
+  "id": "joshua-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Machir was the father of whom?",
+  "choices": [
+   "Hepher",
+   "Zelophehad",
+   "Shechem",
+   "Gilead"
+  ],
+  "answer": 3,
+  "explanation": "Machir the firstborn of Manasseh, the father of Gilead.",
+  "ref": "Joshua 17:1"
+ },
+ {
+  "id": "joshua-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Zelophehad was the son of whom?",
+  "choices": [
+   "Gilead",
+   "Machir",
+   "Joshua",
+   "Hepher"
+  ],
+  "answer": 3,
+  "explanation": "Zelophehad, the son of Hepher, the son of Gilead.",
+  "ref": "Joshua 17:3"
+ },
+ {
+  "id": "joshua-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was one of the families of the rest of Manasseh's sons?",
+  "choices": [
+   "Mahlah",
+   "Tirzah",
+   "Dor",
+   "Helek"
+  ],
+  "answer": 3,
+  "explanation": "The children of Abiezer, Helek, Asriel, Shechem, Hepher and Shemida.",
+  "ref": "Joshua 17:2"
+ },
+ {
+  "id": "joshua-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the daughters say the Lord had commanded Moses to give them?",
+  "choices": [
+   "A city of refuge",
+   "A portion of Gilead alone",
+   "A dowry of silver",
+   "An inheritance among their brethren"
+  ],
+  "answer": 3,
+  "explanation": "The Lord commanded Moses to give us an inheritance among our brethren.",
+  "ref": "Joshua 17:4"
+ },
+ {
+  "id": "joshua-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "On which side of Jordan were Gilead and Bashan?",
+  "choices": [
+   "The near side",
+   "The west side",
+   "The south side",
+   "The other side"
+  ],
+  "answer": 3,
+  "explanation": "Beside the land of Gilead and Bashan, which were on the other side Jordan.",
+  "ref": "Joshua 17:5"
+ },
+ {
+  "id": "joshua-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "Michmethah lay before which place?",
+  "choices": [
+   "Bethel",
+   "Jericho",
+   "Gezer",
+   "Shechem"
+  ],
+  "answer": 3,
+  "explanation": "The coast of Manasseh was from Asher to Michmethah, that lieth before Shechem.",
+  "ref": "Joshua 17:7"
+ },
+ {
+  "id": "joshua-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Tappuah, though in Manasseh's land, belonged to whom?",
+  "choices": [
+   "The children of Judah",
+   "The children of Asher",
+   "The children of Dan",
+   "The children of Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "Tappuah on the border of Manasseh belonged to the children of Ephraim.",
+  "ref": "Joshua 17:8"
+ },
+ {
+  "id": "joshua-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "Which of these cities did Manasseh have in Issachar and Asher?",
+  "choices": [
+   "Hebron",
+   "Jericho",
+   "Gezer",
+   "Megiddo"
+  ],
+  "answer": 3,
+  "explanation": "Manasseh had in Issachar and in Asher Beth-shean, Ibleam, Dor, Endor, Taanach and Megiddo.",
+  "ref": "Joshua 17:11"
+ },
+ {
+  "id": "joshua-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The cities in Issachar and Asher were called how many countries?",
+  "choices": [
+   "Two",
+   "Five",
+   "Ten",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "The inhabitants of Megiddo and her towns, even three countries.",
+  "ref": "Joshua 17:11"
+ },
+ {
+  "id": "joshua-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why could Manasseh not drive out the inhabitants of those cities?",
+  "choices": [
+   "They had no soldiers",
+   "The ark was elsewhere",
+   "Joshua forbade it",
+   "The Canaanites would dwell in that land"
+  ],
+  "answer": 3,
+  "explanation": "The children of Manasseh could not drive out the inhabitants; but the Canaanites would dwell in that land.",
+  "ref": "Joshua 17:12"
+ },
+ {
+  "id": "joshua-17-m-11",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did the children of Joseph give for deserving more than one lot?",
+  "choices": [
+   "They were the oldest tribe",
+   "They had the most priests",
+   "They had no enemies",
+   "They were a great people the Lord had blessed"
+  ],
+  "answer": 3,
+  "explanation": "Why hast thou given me but one lot, seeing I am a great people, forasmuch as the Lord hath blessed me hitherto?",
+  "ref": "Joshua 17:14"
+ },
+ {
+  "id": "joshua-17-m-12",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the children of Joseph say about the hill country?",
+  "choices": [
+   "It is too steep to farm",
+   "It is full of giants only",
+   "It belongs to Judah",
+   "It is not enough for us"
+  ],
+  "answer": 3,
+  "explanation": "The hill is not enough for us.",
+  "ref": "Joshua 17:16"
+ },
+ {
+  "id": "joshua-17-m-13",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "Which valley's Canaanites did Joseph fear, having chariots of iron?",
+  "choices": [
+   "The valley of Achor",
+   "The valley of Hinnom",
+   "The valley of Sorek",
+   "The valley of Jezreel"
+  ],
+  "answer": 3,
+  "explanation": "All the Canaanites in the valley have chariots of iron, who are of Beth-shean and the valley of Jezreel.",
+  "ref": "Joshua 17:16"
+ },
+ {
+  "id": "joshua-17-m-14",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua say if mount Ephraim was too narrow for them?",
+  "choices": [
+   "Ask Judah for land",
+   "Cross the Jordan again",
+   "Wait for another lot",
+   "Cut down the wood country"
+  ],
+  "answer": 3,
+  "explanation": "If mount Ephraim be too narrow for thee, get thee up to the wood country, and cut down for thyself.",
+  "ref": "Joshua 17:15"
+ },
+ {
+  "id": "joshua-17-m-15",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Who spoke to Joshua about having only one lot?",
+  "choices": [
+   "The elders of Judah",
+   "The Levites",
+   "The sons of Caleb",
+   "The children of Joseph"
+  ],
+  "answer": 3,
+  "explanation": "The children of Joseph spake unto Joshua.",
+  "ref": "Joshua 17:14"
+ },
+ {
+  "id": "joshua-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a daughter of Zelophehad?",
+  "choices": [
+   "Milcah",
+   "Shemida",
+   "Asriel",
+   "Helek"
+  ],
+  "answer": 0,
+  "explanation": "Mahlah, and Noah, Hoglah, Milcah, and Tirzah.",
+  "ref": "Joshua 17:3"
+ },
+ {
+  "id": "joshua-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Hepher was the son of whom?",
+  "choices": [
+   "Gilead",
+   "Machir",
+   "Manasseh",
+   "Zelophehad"
+  ],
+  "answer": 0,
+  "explanation": "Zelophehad, the son of Hepher, the son of Gilead, the son of Machir.",
+  "ref": "Joshua 17:3"
+ },
+ {
+  "id": "joshua-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "Manasseh's border went along on the right hand to the inhabitants of which place?",
+  "choices": [
+   "En-tappuah",
+   "Dor",
+   "Endor",
+   "Taanach"
+  ],
+  "answer": 0,
+  "explanation": "The border went along on the right hand unto the inhabitants of En-tappuah.",
+  "ref": "Joshua 17:7"
+ },
+ {
+  "id": "joshua-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "Manasseh and Ephraim met together in Asher on the north and in which tribe on the east?",
+  "choices": [
+   "Issachar",
+   "Judah",
+   "Dan",
+   "Naphtali"
+  ],
+  "answer": 0,
+  "explanation": "They met together in Asher on the north, and in Issachar on the east.",
+  "ref": "Joshua 17:10"
+ },
+ {
+  "id": "joshua-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city is named first among Manasseh's cities in Issachar and Asher?",
+  "choices": [
+   "Beth-shean",
+   "Ibleam",
+   "Dor",
+   "Megiddo"
+  ],
+  "answer": 0,
+  "explanation": "Manasseh had in Issachar and in Asher Beth-shean and her towns, and Ibleam.",
+  "ref": "Joshua 17:11"
+ },
+ {
+  "id": "joshua-17-h-06",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities was listed after Dor in Manasseh's cities?",
+  "choices": [
+   "Endor",
+   "Gezer",
+   "Hebron",
+   "Luz"
+  ],
+  "answer": 0,
+  "explanation": "The inhabitants of Dor and her towns, and the inhabitants of Endor and her towns.",
+  "ref": "Joshua 17:11"
+ },
+ {
+  "id": "joshua-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities of Manasseh was listed just before Megiddo?",
+  "choices": [
+   "Taanach",
+   "Ibleam",
+   "Dor",
+   "Beth-shean"
+  ],
+  "answer": 0,
+  "explanation": "The inhabitants of Taanach and her towns, and the inhabitants of Megiddo and her towns.",
+  "ref": "Joshua 17:11"
+ },
+ {
+  "id": "joshua-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city's towns came second in the list of Manasseh's cities in Issachar and Asher?",
+  "choices": [
+   "Ibleam",
+   "Dor",
+   "Endor",
+   "Taanach"
+  ],
+  "answer": 0,
+  "explanation": "Beth-shean and her towns, and Ibleam and her towns.",
+  "ref": "Joshua 17:11"
+ },
+ {
+  "id": "joshua-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "What formed the border of Manasseh on the other side from the north?",
+  "choices": [
+   "The sea",
+   "The Jordan",
+   "The wilderness",
+   "The river Arnon"
+  ],
+  "answer": 0,
+  "explanation": "Northward it was Manasseh's, and the sea is his border.",
+  "ref": "Joshua 17:10"
+ },
+ {
+  "id": "joshua-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua tell the house of Joseph they had, besides being a great people?",
+  "choices": [
+   "Great power",
+   "Great wealth",
+   "Great wisdom",
+   "Great cities"
+  ],
+  "answer": 0,
+  "explanation": "Thou art a great people, and hast great power: thou shalt not have one lot only.",
+  "ref": "Joshua 17:17"
+ },
+ {
+  "id": "joshua-17-h-11",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the house of Joseph do to the Canaanites, though they had iron chariots?",
+  "choices": [
+   "Drive them out",
+   "Make peace with them",
+   "Flee from them",
+   "Serve them"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt drive out the Canaanites, though they have iron chariots, and though they be strong.",
+  "ref": "Joshua 17:18"
+ },
+ {
+  "id": "joshua-17-h-12",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua say the mountain was, which Joseph would cut down?",
+  "choices": [
+   "A wood",
+   "A fortress",
+   "A vineyard",
+   "A pasture"
+  ],
+  "answer": 0,
+  "explanation": "The mountain shall be thine; for it is a wood, and thou shalt cut it down.",
+  "ref": "Joshua 17:18"
+ },
+ {
+  "id": "joshua-17-h-13",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Joshua spoke to the house of Joseph, even to which two tribes?",
+  "choices": [
+   "Ephraim and Manasseh",
+   "Reuben and Gad",
+   "Judah and Benjamin",
+   "Simeon and Dan"
+  ],
+  "answer": 0,
+  "explanation": "Joshua spake unto the house of Joseph, even to Ephraim and to Manasseh.",
+  "ref": "Joshua 17:17"
+ },
+ {
+  "id": "joshua-17-h-14",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these daughters of Zelophehad is named last?",
+  "choices": [
+   "Tirzah",
+   "Mahlah",
+   "Noah",
+   "Hoglah"
+  ],
+  "answer": 0,
+  "explanation": "Mahlah, and Noah, Hoglah, Milcah, and Tirzah.",
+  "ref": "Joshua 17:3"
+ },
+ {
+  "id": "joshua-17-h-15",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the daughters of Manasseh have an inheritance among his sons?",
+  "choices": [
+   "The Lord had commanded Moses to give it",
+   "Their father had died in battle",
+   "They were Levites",
+   "Joshua chose them"
+  ],
+  "answer": 0,
+  "explanation": "The daughters had an inheritance among his sons, as the Lord commanded Moses.",
+  "ref": "Joshua 17:4–6"
+ },
+ {
   "id": "old-joshua-18-1",
   "chapter": 18,
   "level": "beginner",
