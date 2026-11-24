@@ -13056,6 +13056,646 @@
   "ref": "Numbers 19:12"
  },
  {
+  "id": "numbers-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the LORD speak about the red heifer?",
+  "choices": [
+   "Moses and Eleazar",
+   "Aaron and his sons",
+   "Moses and Joshua",
+   "Moses and Aaron"
+  ],
+  "answer": 3,
+  "explanation": "And the LORD spake unto Moses and unto Aaron, saying, This is the ordinance of the law.",
+  "ref": "Numbers 19:1–2"
+ },
+ {
+  "id": "numbers-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the red heifer to be brought forth and slain?",
+  "choices": [
+   "At the altar",
+   "At the tabernacle door",
+   "Outside the camp",
+   "In the court"
+  ],
+  "answer": 2,
+  "explanation": "Give her unto Eleazar the priest, that he may bring her forth without the camp, and one shall slay her before his face.",
+  "ref": "Numbers 19:3"
+ },
+ {
+  "id": "numbers-19-e-03",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many times did the priest sprinkle the blood before the tabernacle?",
+  "choices": [
+   "Three times",
+   "Seven times",
+   "Twelve times",
+   "Once"
+  ],
+  "answer": 1,
+  "explanation": "Eleazar the priest shall sprinkle of her blood directly before the tabernacle of the congregation seven times.",
+  "ref": "Numbers 19:4"
+ },
+ {
+  "id": "numbers-19-e-04",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was to gather up the ashes of the heifer?",
+  "choices": [
+   "A man that is clean",
+   "The high priest",
+   "Any Levite",
+   "Moses"
+  ],
+  "answer": 0,
+  "explanation": "A man that is clean shall gather up the ashes of the heifer.",
+  "ref": "Numbers 19:9"
+ },
+ {
+  "id": "numbers-19-e-05",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the ashes laid up?",
+  "choices": [
+   "In the tabernacle",
+   "In the ark",
+   "Beside the altar",
+   "In a clean place outside the camp"
+  ],
+  "answer": 3,
+  "explanation": "Lay them up without the camp in a clean place.",
+  "ref": "Numbers 19:9"
+ },
+ {
+  "id": "numbers-19-e-06",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was put to the ashes in a vessel for an unclean person?",
+  "choices": [
+   "Oil",
+   "Wine",
+   "Running water",
+   "Blood"
+  ],
+  "answer": 2,
+  "explanation": "Running water shall be put thereto in a vessel.",
+  "ref": "Numbers 19:17"
+ },
+ {
+  "id": "numbers-19-e-07",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the clean person dip in the water to sprinkle it?",
+  "choices": [
+   "A palm branch",
+   "Hyssop",
+   "A cedar branch",
+   "A scarlet cord"
+  ],
+  "answer": 1,
+  "explanation": "A clean person shall take hyssop, and dip it in the water, and sprinkle it.",
+  "ref": "Numbers 19:18"
+ },
+ {
+  "id": "numbers-19-e-08",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Besides Israel, for whom was the ordinance a statute for ever?",
+  "choices": [
+   "The stranger who sojourns among them",
+   "The Levites only",
+   "The priests",
+   "The princes"
+  ],
+  "answer": 0,
+  "explanation": "It shall be unto the children of Israel, and unto the stranger that sojourneth among them, for a statute for ever.",
+  "ref": "Numbers 19:10"
+ },
+ {
+  "id": "numbers-19-e-09",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the water of separation called in the chapter?",
+  "choices": [
+   "A memorial of Egypt",
+   "An offering of thanks",
+   "A feast offering",
+   "A purification for sin"
+  ],
+  "answer": 3,
+  "explanation": "It shall be kept for a water of separation: it is a purification for sin.",
+  "ref": "Numbers 19:9"
+ },
+ {
+  "id": "numbers-19-e-10",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was a person unclean who touched a bone of a man or a grave?",
+  "choices": [
+   "Until the evening",
+   "Three days",
+   "Seven days",
+   "Thirty days"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever toucheth a dead body, or a bone of a man, or a grave, shall be unclean seven days.",
+  "ref": "Numbers 19:16"
+ },
+ {
+  "id": "numbers-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had never come upon the red heifer?",
+  "choices": [
+   "A saddle",
+   "A bridle",
+   "A yoke",
+   "A burden"
+  ],
+  "answer": 2,
+  "explanation": "A red heifer without spot, wherein is no blemish, and upon which never came yoke.",
+  "ref": "Numbers 19:2"
+ },
+ {
+  "id": "numbers-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did Eleazar take the blood of the heifer?",
+  "choices": [
+   "A basin",
+   "His finger",
+   "A bunch of hyssop",
+   "A bowl"
+  ],
+  "answer": 1,
+  "explanation": "Eleazar the priest shall take of her blood with his finger.",
+  "ref": "Numbers 19:4"
+ },
+ {
+  "id": "numbers-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was burned along with the skin, flesh and blood of the heifer?",
+  "choices": [
+   "Her dung",
+   "Her horns",
+   "Her hooves",
+   "Her bones only"
+  ],
+  "answer": 0,
+  "explanation": "Her skin, and her flesh, and her blood, with her dung, shall he burn.",
+  "ref": "Numbers 19:5"
+ },
+ {
+  "id": "numbers-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest cast into the midst of the burning heifer?",
+  "choices": [
+   "Salt, incense and oil",
+   "Gold, silver and brass",
+   "Flour, oil and wine",
+   "Cedar wood, hyssop and scarlet"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall take cedar wood, and hyssop, and scarlet, and cast it into the midst of the burning of the heifer.",
+  "ref": "Numbers 19:6"
+ },
+ {
+  "id": "numbers-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was the priest unclean after burning the heifer ritual?",
+  "choices": [
+   "Seven days",
+   "Three days",
+   "Until the even",
+   "Until the morning"
+  ],
+  "answer": 2,
+  "explanation": "The priest shall wash his clothes, and he shall bathe his flesh in water... and shall be unclean until the even.",
+  "ref": "Numbers 19:7"
+ },
+ {
+  "id": "numbers-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which two days was the unclean person to purify himself with the water?",
+  "choices": [
+   "The first and the seventh",
+   "The third and the seventh",
+   "The second and the eighth",
+   "The fifth and the seventh"
+  ],
+  "answer": 1,
+  "explanation": "He shall purify himself with it on the third day, and on the seventh day he shall be clean.",
+  "ref": "Numbers 19:12"
+ },
+ {
+  "id": "numbers-19-m-07",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened if a man did not purify himself on the third day?",
+  "choices": [
+   "He would not be clean on the seventh day",
+   "He was clean anyway",
+   "He had to start again from the first day",
+   "He was sent outside the camp for a month"
+  ],
+  "answer": 0,
+  "explanation": "If he purify not himself the third day, then the seventh day he shall not be clean.",
+  "ref": "Numbers 19:12"
+ },
+ {
+  "id": "numbers-19-m-08",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the penalty for touching a dead body and not purifying oneself?",
+  "choices": [
+   "He paid a bullock",
+   "He was beaten",
+   "He was exiled for a year",
+   "That soul was cut off from Israel"
+  ],
+  "answer": 3,
+  "explanation": "That soul shall be cut off from Israel: because the water of separation was not sprinkled upon him.",
+  "ref": "Numbers 19:13"
+ },
+ {
+  "id": "numbers-19-m-09",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was unclean when a man died in a tent?",
+  "choices": [
+   "Only the dead man's family",
+   "Only the priest",
+   "All who came into the tent and all that was in it",
+   "Only the tent's owner"
+  ],
+  "answer": 2,
+  "explanation": "When a man dieth in a tent: all that come into the tent, and all that is in the tent, shall be unclean seven days.",
+  "ref": "Numbers 19:14"
+ },
+ {
+  "id": "numbers-19-m-10",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which vessel was unclean when someone died in the tent?",
+  "choices": [
+   "Every vessel of brass",
+   "Every open vessel with no covering bound upon it",
+   "Every vessel of wood",
+   "Every vessel in the tabernacle"
+  ],
+  "answer": 1,
+  "explanation": "Every open vessel, which hath no covering bound upon it, is unclean.",
+  "ref": "Numbers 19:15"
+ },
+ {
+  "id": "numbers-19-m-11",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who else became unclean besides one who touched a dead body: one slain how, in the open fields?",
+  "choices": [
+   "One slain with a sword",
+   "One killed by a beast",
+   "One struck by lightning",
+   "One who fell in battle"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever toucheth one that is slain with a sword in the open fields... shall be unclean seven days.",
+  "ref": "Numbers 19:16"
+ },
+ {
+  "id": "numbers-19-m-12",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was sprinkled on the tent, the vessels and the persons?",
+  "choices": [
+   "Blood of a ram",
+   "Oil of anointing",
+   "Plain well water",
+   "The water of the ashes with running water"
+  ],
+  "answer": 3,
+  "explanation": "Take of the ashes of the burnt heifer... and running water... sprinkle it upon the tent, and upon all the vessels, and upon the persons.",
+  "ref": "Numbers 19:17–18"
+ },
+ {
+  "id": "numbers-19-m-13",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the person who sprinkled the water of separation?",
+  "choices": [
+   "He was cut off",
+   "He offered a lamb",
+   "He washed his clothes",
+   "He fasted seven days"
+  ],
+  "answer": 2,
+  "explanation": "He that sprinkleth the water of separation shall wash his clothes.",
+  "ref": "Numbers 19:21"
+ },
+ {
+  "id": "numbers-19-m-14",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would become unclean to the one who touched the water of separation?",
+  "choices": [
+   "He is cut off",
+   "He is unclean until even",
+   "He is unclean seven days",
+   "He is made clean"
+  ],
+  "answer": 1,
+  "explanation": "He that toucheth the water of separation shall be unclean until even.",
+  "ref": "Numbers 19:21"
+ },
+ {
+  "id": "numbers-19-m-15",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did a person who did not purify himself defile?",
+  "choices": [
+   "The sanctuary of the LORD",
+   "The camp",
+   "The priests",
+   "The altar of incense"
+  ],
+  "answer": 0,
+  "explanation": "He hath defiled the sanctuary of the LORD: the water of separation hath not been sprinkled upon him.",
+  "ref": "Numbers 19:20"
+ },
+ {
+  "id": "numbers-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the red heifer described, in addition to having no blemish?",
+  "choices": [
+   "Without spot",
+   "Without horns",
+   "Without sickness",
+   "Without a white mark"
+  ],
+  "answer": 0,
+  "explanation": "Bring thee a red heifer without spot, wherein is no blemish.",
+  "ref": "Numbers 19:2"
+ },
+ {
+  "id": "numbers-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The ordinance said the ashes were kept for the congregation as what water?",
+  "choices": [
+   "The water of cleansing",
+   "The water of the altar",
+   "The water of the covenant",
+   "The water of separation"
+  ],
+  "answer": 3,
+  "explanation": "It shall be kept for the congregation of the children of Israel for a water of separation.",
+  "ref": "Numbers 19:9"
+ },
+ {
+  "id": "numbers-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the priest unclean after bathing his flesh?",
+  "choices": [
+   "He stayed out seven days",
+   "He was clean at once",
+   "He came into the camp but was unclean until the even",
+   "He had to offer a lamb"
+  ],
+  "answer": 2,
+  "explanation": "Afterward he shall come into the camp, and the priest shall be unclean until the even.",
+  "ref": "Numbers 19:7"
+ },
+ {
+  "id": "numbers-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the sprinkler to do on the seventh day?",
+  "choices": [
+   "Offer a sin offering",
+   "Purify himself, wash, bathe, and be clean at even",
+   "Stay outside the camp",
+   "Fast until the morning"
+  ],
+  "answer": 1,
+  "explanation": "On the seventh day he shall purify himself, and wash his clothes, and bathe himself in water, and shall be clean at even.",
+  "ref": "Numbers 19:19"
+ },
+ {
+  "id": "numbers-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD call the rule for the water of separation sprinkler?",
+  "choices": [
+   "A perpetual statute",
+   "A temporary ordinance",
+   "A feast day",
+   "A covenant of salt"
+  ],
+  "answer": 0,
+  "explanation": "It shall be a perpetual statute unto them, that he that sprinkleth the water of separation shall wash his clothes.",
+  "ref": "Numbers 19:21"
+ },
+ {
+  "id": "numbers-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was true of whatever the unclean person touched?",
+  "choices": [
+   "It became holy",
+   "It had to be burned",
+   "It was washed seven times",
+   "It became unclean"
+  ],
+  "answer": 3,
+  "explanation": "Whatsoever the unclean person toucheth shall be unclean.",
+  "ref": "Numbers 19:22"
+ },
+ {
+  "id": "numbers-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The soul that touched what the unclean person touched was unclean until when?",
+  "choices": [
+   "The morning",
+   "Seven days",
+   "Even",
+   "The third day"
+  ],
+  "answer": 2,
+  "explanation": "The soul that toucheth it shall be unclean until even.",
+  "ref": "Numbers 19:22"
+ },
+ {
+  "id": "numbers-19-h-08",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the heifer slain in relation to Eleazar?",
+  "choices": [
+   "Behind him",
+   "Before his face",
+   "At the altar",
+   "In the tabernacle"
+  ],
+  "answer": 1,
+  "explanation": "One shall slay her before his face.",
+  "ref": "Numbers 19:3"
+ },
+ {
+  "id": "numbers-19-h-09",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The blood of the heifer was sprinkled before the tabernacle how?",
+  "choices": [
+   "Directly before it",
+   "On the door posts",
+   "On the altar",
+   "On the veil"
+  ],
+  "answer": 0,
+  "explanation": "Sprinkle of her blood directly before the tabernacle of the congregation seven times.",
+  "ref": "Numbers 19:4"
+ },
+ {
+  "id": "numbers-19-h-10",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the heifer burned in relation to Eleazar?",
+  "choices": [
+   "Behind the camp",
+   "At the altar",
+   "By a servant alone",
+   "In his sight"
+  ],
+  "answer": 3,
+  "explanation": "One shall burn the heifer in his sight.",
+  "ref": "Numbers 19:5"
+ },
+ {
+  "id": "numbers-19-h-11",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "He that gathered the ashes was how long unclean?",
+  "choices": [
+   "Seven days",
+   "Three days",
+   "Until the even",
+   "One day"
+  ],
+  "answer": 2,
+  "explanation": "He that gathereth the ashes of the heifer shall wash his clothes, and be unclean until the even.",
+  "ref": "Numbers 19:10"
+ },
+ {
+  "id": "numbers-19-h-12",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides a bone and a grave, what else made one unclean in the open fields?",
+  "choices": [
+   "A tent",
+   "A dead body",
+   "A beast",
+   "A river"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever toucheth one that is slain with a sword in the open fields, or a dead body, or a bone of a man, or a grave.",
+  "ref": "Numbers 19:16"
+ },
+ {
+  "id": "numbers-19-h-13",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the clean person sprinkle the unclean?",
+  "choices": [
+   "On the third day and the seventh day",
+   "On the first and seventh day",
+   "On the third day only",
+   "On the sabbath"
+  ],
+  "answer": 0,
+  "explanation": "The clean person shall sprinkle upon the unclean on the third day, and on the seventh day.",
+  "ref": "Numbers 19:19"
+ },
+ {
+  "id": "numbers-19-h-14",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did touching the dead body of any man make a person for seven days?",
+  "choices": [
+   "A stranger",
+   "Holy",
+   "Cut off",
+   "Unclean"
+  ],
+  "answer": 3,
+  "explanation": "He that toucheth the dead body of any man shall be unclean seven days.",
+  "ref": "Numbers 19:11"
+ },
+ {
+  "id": "numbers-19-h-15",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The unclean person was to have what put in a vessel with the ashes?",
+  "choices": [
+   "Fresh milk",
+   "Blood",
+   "Running water",
+   "Olive oil"
+  ],
+  "answer": 2,
+  "explanation": "Running water shall be put thereto in a vessel.",
+  "ref": "Numbers 19:17"
+ },
+ {
   "id": "old-numbers-20-1",
   "chapter": 20,
   "level": "beginner",
