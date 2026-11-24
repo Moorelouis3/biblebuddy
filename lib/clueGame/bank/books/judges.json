@@ -8000,6 +8000,646 @@
   "ref": "Judges 12:13–15"
  },
  {
+  "id": "judges-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which men gathered themselves together and went northward to Jephthah?",
+  "choices": [
+   "The men of Ammon",
+   "The Philistines",
+   "The men of Judah",
+   "The men of Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "The men of Ephraim gathered themselves together, and went northward, and said unto Jephthah.",
+  "ref": "Judges 12:1"
+ },
+ {
+  "id": "judges-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the men of Ephraim threaten to do to Jephthah?",
+  "choices": [
+   "Drive out his people",
+   "Take his daughter",
+   "Burn his house upon him with fire",
+   "Cut down his vines"
+  ],
+  "answer": 2,
+  "explanation": "They said, we will burn thine house upon thee with fire.",
+  "ref": "Judges 12:1"
+ },
+ {
+  "id": "judges-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jephthah gather together to fight Ephraim?",
+  "choices": [
+   "The elders of Moab",
+   "The men of Judah",
+   "All the men of Gilead",
+   "The men of Tob"
+  ],
+  "answer": 2,
+  "explanation": "Jephthah gathered together all the men of Gilead, and fought with Ephraim.",
+  "ref": "Judges 12:4"
+ },
+ {
+  "id": "judges-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "At what place did the Gileadites take the passages to stop the Ephraimites?",
+  "choices": [
+   "Mizpeh",
+   "The Jordan",
+   "Bethlehem",
+   "The Arnon"
+  ],
+  "answer": 1,
+  "explanation": "The Gileadites took the passages of Jordan before the Ephraimites.",
+  "ref": "Judges 12:5"
+ },
+ {
+  "id": "judges-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many Ephraimites fell at that time?",
+  "choices": [
+   "Seven thousand",
+   "Twenty thousand",
+   "Forty and two thousand",
+   "Three hundred"
+  ],
+  "answer": 2,
+  "explanation": "There fell at that time of the Ephraimites forty and two thousand.",
+  "ref": "Judges 12:6"
+ },
+ {
+  "id": "judges-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who judged Israel after Jephthah?",
+  "choices": [
+   "Ibzan of Bethlehem",
+   "Abdon the Pirathonite",
+   "Elon the Zebulonite",
+   "Tola"
+  ],
+  "answer": 0,
+  "explanation": "After him Ibzan of Bethlehem judged Israel.",
+  "ref": "Judges 12:8"
+ },
+ {
+  "id": "judges-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which town was Ibzan from?",
+  "choices": [
+   "Bethlehem",
+   "Pirathon",
+   "Gilead",
+   "Aijalon"
+  ],
+  "answer": 0,
+  "explanation": "After him Ibzan of Bethlehem judged Israel.",
+  "ref": "Judges 12:8"
+ },
+ {
+  "id": "judges-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who judged Israel after Ibzan?",
+  "choices": [
+   "Abdon",
+   "Elon",
+   "Jair",
+   "Samson"
+  ],
+  "answer": 1,
+  "explanation": "After him Elon, a Zebulonite, judged Israel.",
+  "ref": "Judges 12:11"
+ },
+ {
+  "id": "judges-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Elon was a man of which tribe?",
+  "choices": [
+   "Zebulun",
+   "Judah",
+   "Manasseh",
+   "Ephraim"
+  ],
+  "answer": 0,
+  "explanation": "After him Elon, a Zebulonite, judged Israel.",
+  "ref": "Judges 12:11"
+ },
+ {
+  "id": "judges-12-e-10",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who judged Israel after Elon?",
+  "choices": [
+   "Ibzan",
+   "Jephthah",
+   "Abdon the son of Hillel",
+   "Tola"
+  ],
+  "answer": 2,
+  "explanation": "After him Abdon the son of Hillel, a Pirathonite, judged Israel.",
+  "ref": "Judges 12:13"
+ },
+ {
+  "id": "judges-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jephthah say Ephraim had failed to do when he called them?",
+  "choices": [
+   "Send him silver",
+   "Bring him bread",
+   "Deliver him out of Ammon's hands",
+   "Give him a king"
+  ],
+  "answer": 2,
+  "explanation": "Jephthah said, when I called you, ye delivered me not out of their hands.",
+  "ref": "Judges 12:2"
+ },
+ {
+  "id": "judges-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Jephthah say delivered the children of Ammon into his hand?",
+  "choices": [
+   "The LORD",
+   "The elders",
+   "The men of Gilead",
+   "His daughter"
+  ],
+  "answer": 0,
+  "explanation": "I put my life in my hands, and the LORD delivered them into my hand.",
+  "ref": "Judges 12:3"
+ },
+ {
+  "id": "judges-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Ibzan judge Israel?",
+  "choices": [
+   "Six",
+   "Ten",
+   "Eight",
+   "Seven"
+  ],
+  "answer": 3,
+  "explanation": "Ibzan judged Israel seven years.",
+  "ref": "Judges 12:9"
+ },
+ {
+  "id": "judges-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whom did Ibzan take in thirty daughters from abroad?",
+  "choices": [
+   "His servants",
+   "His sons",
+   "His nephews",
+   "His brothers"
+  ],
+  "answer": 1,
+  "explanation": "He took in thirty daughters from abroad for his sons.",
+  "ref": "Judges 12:9"
+ },
+ {
+  "id": "judges-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Elon judge Israel?",
+  "choices": [
+   "Six",
+   "Eight",
+   "Ten",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "Elon judged Israel ten years.",
+  "ref": "Judges 12:11"
+ },
+ {
+  "id": "judges-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Elon buried?",
+  "choices": [
+   "Aijalon",
+   "Pirathon",
+   "Bethlehem",
+   "Gilead"
+  ],
+  "answer": 0,
+  "explanation": "Elon the Zebulonite died, and was buried in Aijalon in the country of Zebulun.",
+  "ref": "Judges 12:12"
+ },
+ {
+  "id": "judges-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the father of Abdon?",
+  "choices": [
+   "Dodo",
+   "Gilead",
+   "Puah",
+   "Hillel"
+  ],
+  "answer": 3,
+  "explanation": "Abdon the son of Hillel, a Pirathonite, judged Israel.",
+  "ref": "Judges 12:13"
+ },
+ {
+  "id": "judges-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Which town was Abdon from?",
+  "choices": [
+   "Aijalon",
+   "Bethlehem",
+   "Pirathon",
+   "Mizpeh"
+  ],
+  "answer": 2,
+  "explanation": "Abdon the son of Hillel, a Pirathonite.",
+  "ref": "Judges 12:13"
+ },
+ {
+  "id": "judges-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Abdon judge Israel?",
+  "choices": [
+   "Eight",
+   "Six",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 0,
+  "explanation": "He had forty sons and thirty nephews, and he judged Israel eight years.",
+  "ref": "Judges 12:14"
+ },
+ {
+  "id": "judges-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Abdon buried?",
+  "choices": [
+   "Pirathon",
+   "Aijalon",
+   "Bethlehem",
+   "Gilead"
+  ],
+  "answer": 0,
+  "explanation": "Abdon the son of Hillel the Pirathonite died, and was buried in Pirathon.",
+  "ref": "Judges 12:15"
+ },
+ {
+  "id": "judges-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Jephthah buried?",
+  "choices": [
+   "At Bethlehem",
+   "At Mizpeh",
+   "In one of the cities of Gilead",
+   "In Tob"
+  ],
+  "answer": 2,
+  "explanation": "Jephthah the Gileadite died, and was buried in one of the cities of Gilead.",
+  "ref": "Judges 12:7"
+ },
+ {
+  "id": "judges-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What word did the Ephraimite say instead of Shibboleth?",
+  "choices": [
+   "Sibboleth",
+   "Shiloh",
+   "Shamir",
+   "Shalom"
+  ],
+  "answer": 0,
+  "explanation": "He said Sibboleth: for he could not frame to pronounce it right.",
+  "ref": "Judges 12:6"
+ },
+ {
+  "id": "judges-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "With whom did Jephthah say he and his people were at great strife?",
+  "choices": [
+   "The Philistines",
+   "The men of Ephraim",
+   "The children of Ammon",
+   "The Amorites"
+  ],
+  "answer": 2,
+  "explanation": "I and my people were at great strife with the children of Ammon.",
+  "ref": "Judges 12:2"
+ },
+ {
+  "id": "judges-12-m-14",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the escaped Ephraimites ask to do at the Jordan?",
+  "choices": [
+   "Rest",
+   "Buy food",
+   "Fight",
+   "Go over"
+  ],
+  "answer": 3,
+  "explanation": "The Ephraimites which were escaped said, Let me go over.",
+  "ref": "Judges 12:5"
+ },
+ {
+  "id": "judges-12-m-15",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Gileadites do to those who could not say Shibboleth right?",
+  "choices": [
+   "Made them servants",
+   "Took them and slew them at the passages of Jordan",
+   "Held them for ransom",
+   "Sent them home"
+  ],
+  "answer": 1,
+  "explanation": "They took him, and slew him at the passages of Jordan.",
+  "ref": "Judges 12:6"
+ },
+ {
+  "id": "judges-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which direction did the Ephraimites go to meet Jephthah?",
+  "choices": [
+   "Eastward",
+   "Southward",
+   "Westward",
+   "Northward"
+  ],
+  "answer": 3,
+  "explanation": "The men of Ephraim gathered themselves together, and went northward.",
+  "ref": "Judges 12:1"
+ },
+ {
+  "id": "judges-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jephthah say he put in his hands when Ephraim did not help?",
+  "choices": [
+   "His sword",
+   "His daughter",
+   "His life",
+   "His house"
+  ],
+  "answer": 2,
+  "explanation": "I put my life in my hands, and passed over against the children of Ammon.",
+  "ref": "Judges 12:3"
+ },
+ {
+  "id": "judges-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What insult did the men of Gilead hear from Ephraim?",
+  "choices": [
+   "That Gilead had no king",
+   "That Gileadites were fugitives of Ephraim",
+   "That Gileadites were cowards",
+   "That Jephthah was a harlot's son"
+  ],
+  "answer": 1,
+  "explanation": "They said, Ye Gileadites are fugitives of Ephraim among the Ephraimites, and among the Manassites.",
+  "ref": "Judges 12:4"
+ },
+ {
+  "id": "judges-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Among whom did Ephraim say the Gileadites were fugitives, besides the Ephraimites?",
+  "choices": [
+   "The Zebulonites",
+   "The Manassites",
+   "The Benjamites",
+   "The Amorites"
+  ],
+  "answer": 1,
+  "explanation": "Ye Gileadites are fugitives of Ephraim among the Ephraimites, and among the Manassites.",
+  "ref": "Judges 12:4"
+ },
+ {
+  "id": "judges-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question did the Gileadites ask each escaped Ephraimite?",
+  "choices": [
+   "Who is thy father?",
+   "Art thou an Ephraimite?",
+   "Hast thou seen Jephthah?",
+   "Where is thy house?"
+  ],
+  "answer": 1,
+  "explanation": "The men of Gilead said unto him, Art thou an Ephraimite?",
+  "ref": "Judges 12:5"
+ },
+ {
+  "id": "judges-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the Ephraimite say Sibboleth?",
+  "choices": [
+   "He could not frame to pronounce it right",
+   "He had never heard the word",
+   "He wished to mock Gilead",
+   "He was afraid"
+  ],
+  "answer": 0,
+  "explanation": "He said Sibboleth: for he could not frame to pronounce it right.",
+  "ref": "Judges 12:6"
+ },
+ {
+  "id": "judges-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Where were the Ephraimites slain?",
+  "choices": [
+   "At the passages of Jordan",
+   "On the mountains",
+   "In Gilead's cities",
+   "At Mizpeh"
+  ],
+  "answer": 0,
+  "explanation": "They took him, and slew him at the passages of Jordan.",
+  "ref": "Judges 12:6"
+ },
+ {
+  "id": "judges-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "In which country was Aijalon, where Elon was buried?",
+  "choices": [
+   "The land of Moab",
+   "The land of Gilead",
+   "The land of Ephraim",
+   "The country of Zebulun"
+  ],
+  "answer": 3,
+  "explanation": "Elon was buried in Aijalon in the country of Zebulun.",
+  "ref": "Judges 12:12"
+ },
+ {
+  "id": "judges-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "In which land was Pirathon?",
+  "choices": [
+   "The land of Judah",
+   "The land of Gilead",
+   "The land of Ephraim",
+   "The land of Zebulun"
+  ],
+  "answer": 2,
+  "explanation": "Abdon was buried in Pirathon in the land of Ephraim.",
+  "ref": "Judges 12:15"
+ },
+ {
+  "id": "judges-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Abdon was buried in the mount of which people?",
+  "choices": [
+   "The Zidonians",
+   "The Amorites",
+   "The Philistines",
+   "The Amalekites"
+  ],
+  "answer": 3,
+  "explanation": "He was buried in Pirathon in the land of Ephraim, in the mount of the Amalekites.",
+  "ref": "Judges 12:15"
+ },
+ {
+  "id": "judges-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Ibzan buried?",
+  "choices": [
+   "Gilead",
+   "Bethlehem",
+   "Aijalon",
+   "Pirathon"
+  ],
+  "answer": 1,
+  "explanation": "Then died Ibzan, and was buried at Bethlehem.",
+  "ref": "Judges 12:10"
+ },
+ {
+  "id": "judges-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jephthah ask Ephraim after the LORD gave him Ammon?",
+  "choices": [
+   "Why they had not brought spoil",
+   "Why they had come to fight against him",
+   "Why they had hated Gilead",
+   "Why they had a king"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore then are ye come up unto me this day, to fight against me?",
+  "ref": "Judges 12:3"
+ },
+ {
+  "id": "judges-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did an escaped Ephraimite first answer when asked if he was an Ephraimite?",
+  "choices": [
+   "Nay",
+   "Yea",
+   "We are of Gilead",
+   "We are of Manasseh"
+  ],
+  "answer": 0,
+  "explanation": "The men of Gilead said, Art thou an Ephraimite? If he said, Nay;",
+  "ref": "Judges 12:5"
+ },
+ {
+  "id": "judges-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Which judge in this chapter is called \"the Gileadite\" at his death?",
+  "choices": [
+   "Jephthah",
+   "Ibzan",
+   "Abdon",
+   "Elon"
+  ],
+  "answer": 0,
+  "explanation": "Then died Jephthah the Gileadite, and was buried in one of the cities of Gilead.",
+  "ref": "Judges 12:7"
+ },
+ {
+  "id": "judges-12-h-15",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Against whom did Jephthah pass over after Ephraim did not help him?",
+  "choices": [
+   "The Amorites",
+   "The Moabites",
+   "The Philistines",
+   "The children of Ammon"
+  ],
+  "answer": 3,
+  "explanation": "When I saw that ye delivered me not, I passed over against the children of Ammon.",
+  "ref": "Judges 12:3"
+ },
+ {
   "id": "old-judges-13-1",
   "chapter": 13,
   "level": "beginner",
