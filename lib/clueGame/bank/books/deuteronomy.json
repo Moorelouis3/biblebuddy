@@ -8000,6 +8000,646 @@
   "ref": "Deuteronomy 12:32"
  },
  {
+  "id": "deuteronomy-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to do to the altars of the nations?",
+  "choices": [
+   "Overthrow them",
+   "Repair them",
+   "Guard them",
+   "Move them"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall overthrow their altars, and break their pillars, and burn their groves with fire.",
+  "ref": "Deuteronomy 12:3"
+ },
+ {
+  "id": "deuteronomy-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to burn with fire in the land?",
+  "choices": [
+   "Their tents",
+   "Their fields",
+   "Their ships",
+   "Their groves"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall overthrow their altars, and break their pillars, and burn their groves with fire.",
+  "ref": "Deuteronomy 12:3"
+ },
+ {
+  "id": "deuteronomy-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where must Israel bring their burnt offerings and sacrifices?",
+  "choices": [
+   "Any high hill",
+   "Their own homes",
+   "The place the LORD shall choose",
+   "Under a green tree"
+  ],
+  "answer": 2,
+  "explanation": "Unto the place which the LORD your God shall choose... thither ye shall bring your burnt offerings, and your sacrifices.",
+  "ref": "Deuteronomy 12:5–6"
+ },
+ {
+  "id": "deuteronomy-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must Israel not eat?",
+  "choices": [
+   "The fat",
+   "The blood",
+   "The hart",
+   "The roebuck"
+  ],
+  "answer": 1,
+  "explanation": "Only ye shall not eat the blood; ye shall pour it upon the earth as water.",
+  "ref": "Deuteronomy 12:16"
+ },
+ {
+  "id": "deuteronomy-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to do with the blood?",
+  "choices": [
+   "Burn it with the groves",
+   "Pour it upon the earth as water",
+   "Give it to the Levite",
+   "Sprinkle it on the doorposts"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall pour it upon the earth as water.",
+  "ref": "Deuteronomy 12:16"
+ },
+ {
+  "id": "deuteronomy-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe's servant is Israel told not to forsake?",
+  "choices": [
+   "The Levite",
+   "The Reubenite",
+   "The Danite",
+   "The Benjamite"
+  ],
+  "answer": 0,
+  "explanation": "Take heed to thyself that thou forsake not the Levite as long as thou livest upon the earth.",
+  "ref": "Deuteronomy 12:19"
+ },
+ {
+  "id": "deuteronomy-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which river must Israel cross to reach the land?",
+  "choices": [
+   "Euphrates",
+   "Nile",
+   "Jabbok",
+   "Jordan"
+  ],
+  "answer": 3,
+  "explanation": "But when ye go over Jordan, and dwell in the land which the LORD your God giveth you to inherit.",
+  "ref": "Deuteronomy 12:10"
+ },
+ {
+  "id": "deuteronomy-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the nations burn in the fire to their gods?",
+  "choices": [
+   "Their harvests",
+   "Their idols",
+   "Their sons and daughters",
+   "Their tents"
+  ],
+  "answer": 2,
+  "explanation": "Even their sons and their daughters they have burnt in the fire to their gods.",
+  "ref": "Deuteronomy 12:31"
+ },
+ {
+  "id": "deuteronomy-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must Israel not do to the words the LORD commands?",
+  "choices": [
+   "Write them down",
+   "Read them aloud",
+   "Add to them or diminish from them",
+   "Teach them to strangers"
+  ],
+  "answer": 2,
+  "explanation": "What thing soever I command you, observe to do it: thou shalt not add thereto, nor diminish from it.",
+  "ref": "Deuteronomy 12:32"
+ },
+ {
+  "id": "deuteronomy-12-e-10",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Moses say Israel should treat the LORD, unlike the nations' gods?",
+  "choices": [
+   "Serve Him on every hill",
+   "Not do so unto the LORD",
+   "Serve Him in secret",
+   "Serve Him only in famine"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall not do so unto the LORD your God.",
+  "ref": "Deuteronomy 12:4"
+ },
+ {
+  "id": "deuteronomy-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the nations serve their gods besides the high mountains?",
+  "choices": [
+   "In the valleys and caves",
+   "Upon the hills and under every green tree",
+   "By the rivers and wells",
+   "In the cities and gates"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall utterly destroy all the places, wherein the nations... served their gods, upon the high mountains, and upon the hills, and under every green tree.",
+  "ref": "Deuteronomy 12:2"
+ },
+ {
+  "id": "deuteronomy-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel to hew down?",
+  "choices": [
+   "The graven images of their gods",
+   "The cedars of Lebanon",
+   "The walls of their cities",
+   "The trees of the garden"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall hew down the graven images of their gods, and destroy the names of them out of that place.",
+  "ref": "Deuteronomy 12:3"
+ },
+ {
+  "id": "deuteronomy-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD choose to put in the place He chooses?",
+  "choices": [
+   "His name",
+   "His throne",
+   "His ark alone",
+   "His sword"
+  ],
+  "answer": 0,
+  "explanation": "The place which the LORD your God shall choose out of all your tribes to put his name there.",
+  "ref": "Deuteronomy 12:5"
+ },
+ {
+  "id": "deuteronomy-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say every man did in his own eyes at that time?",
+  "choices": [
+   "What was good",
+   "What was wise",
+   "What was needful",
+   "What was right"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall not do after all the things that we do here this day, every man whatsoever is right in his own eyes.",
+  "ref": "Deuteronomy 12:8"
+ },
+ {
+  "id": "deuteronomy-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Israel not yet dwell safely, according to Moses?",
+  "choices": [
+   "They had no king",
+   "They had no priests",
+   "They had not yet come to the rest and the inheritance",
+   "They had lost the ark"
+  ],
+  "answer": 2,
+  "explanation": "For ye are not as yet come to the rest and to the inheritance, which the LORD your God giveth you.",
+  "ref": "Deuteronomy 12:9"
+ },
+ {
+  "id": "deuteronomy-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the Levite to rejoice with Israel at the chosen place?",
+  "choices": [
+   "He was the oldest tribe",
+   "He had no part nor inheritance with them",
+   "He carried the offerings",
+   "He had no tent"
+  ],
+  "answer": 1,
+  "explanation": "The Levite that is within your gates; forasmuch as he hath no part nor inheritance with you.",
+  "ref": "Deuteronomy 12:12"
+ },
+ {
+  "id": "deuteronomy-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where could Israel kill and eat flesh as they desired?",
+  "choices": [
+   "Only at the altar",
+   "In all their gates",
+   "Only at the tabernacle",
+   "Only on the hills"
+  ],
+  "answer": 1,
+  "explanation": "Thou mayest kill and eat flesh in all thy gates, whatsoever thy soul lusteth after.",
+  "ref": "Deuteronomy 12:15"
+ },
+ {
+  "id": "deuteronomy-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who may eat the common flesh of the roebuck and the hart?",
+  "choices": [
+   "The unclean and the clean alike",
+   "Only the clean",
+   "Only the priests",
+   "Only the Levites"
+  ],
+  "answer": 0,
+  "explanation": "The unclean and the clean may eat thereof, as of the roebuck, and as of the hart.",
+  "ref": "Deuteronomy 12:15"
+ },
+ {
+  "id": "deuteronomy-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the reason given for not eating the blood?",
+  "choices": [
+   "The blood is holy bread",
+   "The blood is unclean",
+   "The blood is Pharaoh's",
+   "The blood is the life"
+  ],
+  "answer": 3,
+  "explanation": "Be sure that thou eat not the blood: for the blood is the life; and thou mayest not eat the life with the flesh.",
+  "ref": "Deuteronomy 12:23"
+ },
+ {
+  "id": "deuteronomy-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would go well for Israel if they did not eat the blood?",
+  "choices": [
+   "They would never be hungry",
+   "Rain would never fail",
+   "It would go well with them and their children",
+   "They would never be sick"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt not eat it; that it may go well with thee, and with thy children after thee.",
+  "ref": "Deuteronomy 12:25"
+ },
+ {
+  "id": "deuteronomy-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel to do if the chosen place was too far away?",
+  "choices": [
+   "Move their tents closer",
+   "Skip the offerings",
+   "Kill of their herd and flock and eat in their gates",
+   "Send the Levite instead"
+  ],
+  "answer": 2,
+  "explanation": "If the place... be too far from thee, then thou shalt kill of thy herd and of thy flock... and thou shalt eat in thy gates.",
+  "ref": "Deuteronomy 12:21"
+ },
+ {
+  "id": "deuteronomy-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the blood of the sacrifices on the altar?",
+  "choices": [
+   "It is poured on the earth",
+   "It is poured out upon the altar of the LORD",
+   "It is burned in the groves",
+   "It is given to the Levite"
+  ],
+  "answer": 1,
+  "explanation": "The blood of thy sacrifices shall be poured out upon the altar of the LORD thy God, and thou shalt eat the flesh.",
+  "ref": "Deuteronomy 12:27"
+ },
+ {
+  "id": "deuteronomy-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel warned not to be by following the nations after they were destroyed?",
+  "choices": [
+   "Snared",
+   "Scattered",
+   "Forgotten",
+   "Wearied"
+  ],
+  "answer": 0,
+  "explanation": "Take heed to thyself that thou be not snared by following them, after that they be destroyed from before thee.",
+  "ref": "Deuteronomy 12:30"
+ },
+ {
+  "id": "deuteronomy-12-m-14",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question was Israel not to ask about the nations' gods?",
+  "choices": [
+   "Who made these gods?",
+   "Where are these gods?",
+   "Which gods are strongest?",
+   "How did these nations serve their gods?"
+  ],
+  "answer": 3,
+  "explanation": "That thou enquire not after their gods, saying, How did these nations serve their gods? even so will I do likewise.",
+  "ref": "Deuteronomy 12:30"
+ },
+ {
+  "id": "deuteronomy-12-m-15",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD hate that the nations did to their gods?",
+  "choices": [
+   "Every feast",
+   "Every vow",
+   "Every song",
+   "Every abomination"
+  ],
+  "answer": 3,
+  "explanation": "For every abomination to the LORD, which he hateth, have they done unto their gods.",
+  "ref": "Deuteronomy 12:31"
+ },
+ {
+  "id": "deuteronomy-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which offerings are named first in the list brought to the chosen place?",
+  "choices": [
+   "Peace offerings",
+   "Sin offerings",
+   "Meat offerings",
+   "Burnt offerings"
+  ],
+  "answer": 3,
+  "explanation": "Thither ye shall bring your burnt offerings, and your sacrifices, and your tithes.",
+  "ref": "Deuteronomy 12:6"
+ },
+ {
+  "id": "deuteronomy-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides tithes and heave offerings, what else was brought to the chosen place?",
+  "choices": [
+   "Silver and gold",
+   "Spoil of war",
+   "Vows and freewill offerings",
+   "Wool and flax"
+  ],
+  "answer": 2,
+  "explanation": "Your vows, and your freewill offerings, and the firstlings of your herds and of your flocks.",
+  "ref": "Deuteronomy 12:6"
+ },
+ {
+  "id": "deuteronomy-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were Israel to do before the LORD at the chosen place?",
+  "choices": [
+   "Fast and weep",
+   "Eat and rejoice",
+   "Sing and dance only",
+   "Sleep and watch"
+  ],
+  "answer": 1,
+  "explanation": "There ye shall eat before the LORD your God, and ye shall rejoice in all that ye put your hand unto.",
+  "ref": "Deuteronomy 12:7"
+ },
+ {
+  "id": "deuteronomy-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When will the place the LORD chooses be fixed, according to Moses?",
+  "choices": [
+   "When they build a house",
+   "When He gives rest from all their enemies round about",
+   "When they choose a king",
+   "When the Levites are numbered"
+  ],
+  "answer": 1,
+  "explanation": "When he giveth you rest from all your enemies round about, so that ye dwell in safety; then there shall be a place.",
+  "ref": "Deuteronomy 12:10–11"
+ },
+ {
+  "id": "deuteronomy-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who else is named with sons and daughters to rejoice before the LORD?",
+  "choices": [
+   "Menservants and maidservants",
+   "Strangers and widows",
+   "Priests and prophets",
+   "Elders and judges"
+  ],
+  "answer": 0,
+  "explanation": "Ye, and your sons, and your daughters, and your menservants, and your maidservants, and the Levite that is within your gates.",
+  "ref": "Deuteronomy 12:12"
+ },
+ {
+  "id": "deuteronomy-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Moses tell Israel to take heed of regarding burnt offerings?",
+  "choices": [
+   "Not to offer them at night",
+   "Not to offer them on feast days",
+   "Not to offer them without salt",
+   "Not to offer them in every place they see"
+  ],
+  "answer": 3,
+  "explanation": "Take heed to thyself that thou offer not thy burnt offerings in every place that thou seest.",
+  "ref": "Deuteronomy 12:13"
+ },
+ {
+  "id": "deuteronomy-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In how many of Israel's tribes would the LORD choose the place?",
+  "choices": [
+   "Two",
+   "Three",
+   "One",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "But in the place which the LORD shall choose in one of thy tribes, there thou shalt offer thy burnt offerings.",
+  "ref": "Deuteronomy 12:14"
+ },
+ {
+  "id": "deuteronomy-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two animals are named as examples of ordinary eating?",
+  "choices": [
+   "The ox and the sheep",
+   "The goat and the lamb",
+   "The roebuck and the hart",
+   "The camel and the hare"
+  ],
+  "answer": 2,
+  "explanation": "The unclean and the clean may eat thereof, as of the roebuck, and as of the hart.",
+  "ref": "Deuteronomy 12:15"
+ },
+ {
+  "id": "deuteronomy-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What may Israel not eat within their gates besides tithes and vows?",
+  "choices": [
+   "The fat of the peace offering",
+   "The firstlings of their herds or flock",
+   "The flesh of the hart",
+   "The fruit of the groves"
+  ],
+  "answer": 1,
+  "explanation": "Thou mayest not eat within thy gates the tithe of thy corn... or the firstlings of thy herds or of thy flock.",
+  "ref": "Deuteronomy 12:17"
+ },
+ {
+  "id": "deuteronomy-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The tithe of corn, wine and what else may not be eaten in their gates?",
+  "choices": [
+   "Oil",
+   "Honey",
+   "Figs",
+   "Barley"
+  ],
+  "answer": 0,
+  "explanation": "Thou mayest not eat within thy gates the tithe of thy corn, or of thy wine, or of thy oil.",
+  "ref": "Deuteronomy 12:17"
+ },
+ {
+  "id": "deuteronomy-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When will the LORD enlarge Israel's border, according to the chapter?",
+  "choices": [
+   "When they build the temple",
+   "When the Levites ask",
+   "When Moses dies",
+   "As He has promised"
+  ],
+  "answer": 3,
+  "explanation": "When the LORD thy God shall enlarge thy border, as he hath promised thee.",
+  "ref": "Deuteronomy 12:20"
+ },
+ {
+  "id": "deuteronomy-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the soul of Israel long to eat when the border is enlarged?",
+  "choices": [
+   "Honey",
+   "Bread",
+   "Fruit",
+   "Flesh"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt say, I will eat flesh, because thy soul longeth to eat flesh; thou mayest eat flesh.",
+  "ref": "Deuteronomy 12:20"
+ },
+ {
+  "id": "deuteronomy-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of things must Israel take to the chosen place besides vows?",
+  "choices": [
+   "Their jewels",
+   "Their weapons",
+   "Their holy things",
+   "Their idols"
+  ],
+  "answer": 2,
+  "explanation": "Only thy holy things which thou hast, and thy vows, thou shalt take, and go unto the place which the LORD shall choose.",
+  "ref": "Deuteronomy 12:26"
+ },
+ {
+  "id": "deuteronomy-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long would it go well with Israel's children if Israel did what is good and right?",
+  "choices": [
+   "Seven years",
+   "For ever",
+   "Until the harvest",
+   "Forty years"
+  ],
+  "answer": 1,
+  "explanation": "That it may go well with thee, and with thy children after thee for ever, when thou doest that which is good and right.",
+  "ref": "Deuteronomy 12:28"
+ },
+ {
+  "id": "deuteronomy-12-h-15",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do to the nations before Israel as they go to possess them?",
+  "choices": [
+   "Cut them off from before thee",
+   "Scatter them by plague",
+   "Send them to Egypt",
+   "Turn them to the LORD"
+  ],
+  "answer": 0,
+  "explanation": "When the LORD thy God shall cut off the nations from before thee, whither thou goest to possess them.",
+  "ref": "Deuteronomy 12:29"
+ },
+ {
   "id": "old-deuteronomy-13-1",
   "chapter": 13,
   "level": "beginner",
