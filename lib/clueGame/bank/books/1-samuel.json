@@ -86,12 +86,12 @@
   "category": "person",
   "question": "What was the name of Elkanah's other wife?",
   "choices": [
-   "Peninnah",
    "Michal",
+   "Peninnah",
    "Abigail",
    "Hannah"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "He had two wives; the name of the one was Hannah, and the name of the other Peninnah.",
   "ref": "1 Samuel 1:2"
  },
@@ -150,12 +150,12 @@
   "category": "keyword",
   "question": "What did Hannah do when her adversary provoked her?",
   "choices": [
-   "She wept and did not eat",
    "She left Shiloh",
+   "She wept and did not eat",
    "She struck her",
    "She ran away"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Therefore she wept, and did not eat.",
   "ref": "1 Samuel 1:7"
  },
@@ -166,12 +166,12 @@
   "category": "keyword",
   "question": "What did Hannah ask the LORD to give her?",
   "choices": [
-   "A man child",
-   "Great riches",
    "A new home",
+   "Great riches",
+   "A man child",
    "A long life"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "Wilt give unto thine handmaid a man child, then I will give him unto the LORD.",
   "ref": "1 Samuel 1:11"
  },
@@ -182,12 +182,12 @@
   "category": "place",
   "question": "To which house did Elkanah and Hannah return after worshipping?",
   "choices": [
-   "Ramah",
+   "Hebron",
    "Bethel",
    "Gilgal",
-   "Hebron"
+   "Ramah"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "They returned, and came to their house to Ramah.",
   "ref": "1 Samuel 1:19"
  },
@@ -214,12 +214,12 @@
   "category": "keyword",
   "question": "How did Hannah look after Eli said, Go in peace?",
   "choices": [
-   "Her countenance was no more sad",
    "She wept more",
+   "Her countenance was no more sad",
    "She was angry",
    "She left at once"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "The woman went her way, and did eat, and her countenance was no more sad.",
   "ref": "1 Samuel 1:18"
  },
@@ -246,12 +246,12 @@
   "category": "keyword",
   "question": "What did Elkanah give to Hannah at the sacrifice?",
   "choices": [
-   "A worthy portion",
    "A single piece",
+   "A worthy portion",
    "Nothing",
    "The best lamb"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Unto Hannah he gave a worthy portion; for he loved Hannah.",
   "ref": "1 Samuel 1:5"
  },
@@ -262,12 +262,12 @@
   "category": "place",
   "question": "Where was Hannah when Peninnah provoked her year by year?",
   "choices": [
-   "Going up to the house of the LORD",
-   "In the fields of Ramah",
    "At the city gate",
+   "In the fields of Ramah",
+   "Going up to the house of the LORD",
    "In Eli's house"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "Year by year, when she went up to the house of the LORD, so she provoked her; therefore she wept.",
   "ref": "1 Samuel 1:7"
  },
@@ -278,12 +278,12 @@
   "category": "person",
   "question": "Who provoked Hannah sore to make her fret?",
   "choices": [
-   "Her adversary",
+   "Elkanah",
    "Eli",
    "Her sister",
-   "Elkanah"
+   "Her adversary"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Her adversary also provoked her sore, for to make her fret.",
   "ref": "1 Samuel 1:6"
  },
@@ -310,12 +310,12 @@
   "category": "keyword",
   "question": "How did Hannah pray in the temple?",
   "choices": [
-   "Only her lips moved, her voice not heard",
    "Aloud with a loud voice",
+   "Only her lips moved, her voice not heard",
    "With a song",
    "Kneeling at the altar"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Hannah, she spake in her heart; only her lips moved, but her voice was not heard.",
   "ref": "1 Samuel 1:13"
  },
@@ -326,12 +326,12 @@
   "category": "keyword",
   "question": "What did Eli tell Hannah to put away from her?",
   "choices": [
-   "Her wine",
-   "Her veil",
    "Her sorrow",
+   "Her veil",
+   "Her wine",
    "Her vow"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "How long wilt thou be drunken? put away thy wine from thee.",
   "ref": "1 Samuel 1:14"
  },
@@ -342,12 +342,12 @@
   "category": "keyword",
   "question": "What kind of woman did Hannah say she was?",
   "choices": [
-   "A woman of a sorrowful spirit",
+   "A woman of Ramah",
    "A woman of great wealth",
    "A woman of Belial",
-   "A woman of Ramah"
+   "A woman of a sorrowful spirit"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "No, my lord, I am a woman of a sorrowful spirit.",
   "ref": "1 Samuel 1:15"
  },
@@ -374,12 +374,12 @@
   "category": "keyword",
   "question": "What did Eli say to Hannah after hearing her?",
   "choices": [
-   "Go in peace",
    "Go to Ramah",
+   "Go in peace",
    "Offer a bullock",
    "Stay and pray"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Go in peace: and the God of Israel grant thee thy petition that thou hast asked of him.",
   "ref": "1 Samuel 1:17"
  },
@@ -390,12 +390,12 @@
   "category": "keyword",
   "question": "Why did Hannah not go up to Shiloh the next year?",
   "choices": [
-   "Until the child was weaned",
-   "She was ill",
    "Peninnah forbade her",
+   "She was ill",
+   "Until the child was weaned",
    "Eli sent her away"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "I will not go up until the child be weaned, and then I will bring him.",
   "ref": "1 Samuel 1:22"
  },
@@ -406,12 +406,12 @@
   "category": "keyword",
   "question": "What did Elkanah say to Hannah about staying home?",
   "choices": [
-   "Do what seemeth thee good",
+   "Ask Eli",
    "Go at once",
    "You must come",
-   "Ask Eli"
+   "Do what seemeth thee good"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Do what seemeth thee good; tarry until thou have weaned him.",
   "ref": "1 Samuel 1:23"
  },
@@ -438,12 +438,12 @@
   "category": "keyword",
   "question": "What did Hannah say she had prayed for?",
   "choices": [
-   "This child",
    "Many sons",
+   "This child",
    "A house",
    "Peace"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "For this child I prayed; and the LORD hath given me my petition.",
   "ref": "1 Samuel 1:27"
  },
@@ -454,12 +454,12 @@
   "category": "keyword",
   "question": "What did Hannah and Elkanah do early the morning after she prayed?",
   "choices": [
-   "Worshipped before the LORD",
-   "Went to Eli",
    "Offered a lamb",
+   "Went to Eli",
+   "Worshipped before the LORD",
    "Left for Gilgal"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "They rose up in the morning early, and worshipped before the LORD, and returned.",
   "ref": "1 Samuel 1:19"
  },
@@ -470,12 +470,12 @@
   "category": "keyword",
   "question": "What did Eli mark as Hannah continued praying?",
   "choices": [
-   "Her mouth",
+   "Her robe",
    "Her tears",
    "Her gift",
-   "Her robe"
+   "Her mouth"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "As she continued praying before the LORD, Eli marked her mouth.",
   "ref": "1 Samuel 1:12"
  },
@@ -486,12 +486,12 @@
   "category": "place",
   "question": "From which city was Elkanah?",
   "choices": [
-   "Ramathaim-zophim",
    "Shiloh",
+   "Ramathaim-zophim",
    "Bethlehem",
    "Gibeah"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "There was a certain man of Ramathaim-zophim, of mount Ephraim, and his name was Elkanah.",
   "ref": "1 Samuel 1:1"
  },
@@ -502,12 +502,12 @@
   "category": "place",
   "question": "Of which mount was Elkanah's city?",
   "choices": [
-   "Mount Ephraim",
-   "Mount Carmel",
    "Mount Gilboa",
+   "Mount Carmel",
+   "Mount Ephraim",
    "Mount Zion"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "A certain man of Ramathaim-zophim, of mount Ephraim.",
   "ref": "1 Samuel 1:1"
  },
@@ -518,12 +518,12 @@
   "category": "person",
   "question": "Elkanah was the son of whom?",
   "choices": [
-   "Jeroham",
+   "Zuph",
    "Elihu",
    "Tohu",
-   "Zuph"
+   "Jeroham"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "Elkanah, the son of Jeroham, the son of Elihu, the son of Tohu, the son of Zuph.",
   "ref": "1 Samuel 1:1"
  },
@@ -550,12 +550,12 @@
   "category": "keyword",
   "question": "Who received portions from Elkanah besides Peninnah?",
   "choices": [
-   "All her sons and daughters",
    "The priests",
+   "All her sons and daughters",
    "The servants",
    "The poor"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "He gave to Peninnah his wife, and to all her sons and her daughters, portions.",
   "ref": "1 Samuel 1:4"
  },
@@ -566,12 +566,12 @@
   "category": "keyword",
   "question": "How many bullocks did Hannah take when she brought Samuel to Shiloh?",
   "choices": [
-   "Three",
-   "One",
    "Seven",
+   "One",
+   "Three",
    "Ten"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "She took him up with her, with three bullocks, and one ephah of flour, and a bottle of wine.",
   "ref": "1 Samuel 1:24"
  },
@@ -582,12 +582,12 @@
   "category": "keyword",
   "question": "How much flour did Hannah bring with Samuel?",
   "choices": [
-   "One ephah",
+   "A bushel",
    "Two ephahs",
    "Ten measures",
-   "A bushel"
+   "One ephah"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "With three bullocks, and one ephah of flour, and a bottle of wine.",
   "ref": "1 Samuel 1:24"
  },
@@ -614,12 +614,12 @@
   "category": "keyword",
   "question": "What did they slay before bringing the child to Eli?",
   "choices": [
-   "A bullock",
    "A lamb",
+   "A bullock",
    "A goat",
    "A ram"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "They slew a bullock, and brought the child to Eli.",
   "ref": "1 Samuel 1:25"
  },
@@ -630,12 +630,12 @@
   "category": "keyword",
   "question": "What did Elkanah say he hoped the LORD would do?",
   "choices": [
-   "Establish his word",
-   "Bless Peninnah",
    "Give a son",
+   "Bless Peninnah",
+   "Establish his word",
    "Forgive them"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "Tarry until thou have weaned him; only the LORD establish his word.",
   "ref": "1 Samuel 1:23"
  },
@@ -646,12 +646,12 @@
   "category": "keyword",
   "question": "What did Hannah say she had drunk neither of?",
   "choices": [
-   "Wine nor strong drink",
+   "Wine or vinegar",
    "Water or milk",
    "Oil or honey",
-   "Wine or vinegar"
+   "Wine nor strong drink"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "I have drunken neither wine nor strong drink.",
   "ref": "1 Samuel 1:15"
  },
@@ -678,12 +678,12 @@
   "category": "keyword",
   "question": "What did Hannah ask Eli not to count her for?",
   "choices": [
-   "A daughter of Belial",
    "A thief",
+   "A daughter of Belial",
    "A widow",
    "A servant of Peninnah"
   ],
-  "answer": 0,
+  "answer": 1,
   "explanation": "Count not thine handmaid for a daughter of Belial.",
   "ref": "1 Samuel 1:16"
  },
@@ -694,12 +694,12 @@
   "category": "keyword",
   "question": "What did Hannah ask to find in Eli's sight?",
   "choices": [
-   "Grace",
-   "Mercy",
    "Honor",
+   "Mercy",
+   "Grace",
    "Peace"
   ],
-  "answer": 0,
+  "answer": 2,
   "explanation": "Let thine handmaid find grace in thy sight.",
   "ref": "1 Samuel 1:18"
  },
@@ -710,12 +710,12 @@
   "category": "keyword",
   "question": "What did Hannah say of herself and Eli when she came to Shiloh?",
   "choices": [
-   "I am the woman that stood by thee here, praying",
+   "I am a prophetess",
    "I am the widow of Elkanah",
    "I am Peninnah's sister",
-   "I am a prophetess"
+   "I am the woman that stood by thee here, praying"
   ],
-  "answer": 0,
+  "answer": 3,
   "explanation": "I am the woman that stood by thee here, praying unto the LORD.",
   "ref": "1 Samuel 1:26"
  },
@@ -798,6 +798,646 @@
   "answer": 3,
   "explanation": "The death of Hophni and Phinehas in one day would confirm the judgment.",
   "ref": "1 Samuel 2:34"
+ },
+ {
+  "id": "1-samuel-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who prayed the song at the start of the chapter?",
+  "choices": [
+   "Peninnah",
+   "Hannah",
+   "Eli",
+   "Elkanah"
+  ],
+  "answer": 1,
+  "explanation": "Hannah prayed, and said, My heart rejoiceth in the LORD.",
+  "ref": "1 Samuel 2:1"
+ },
+ {
+  "id": "1-samuel-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Elkanah go after Samuel was left at Shiloh?",
+  "choices": [
+   "Gilgal",
+   "Bethel",
+   "Ramah",
+   "Gibeah"
+  ],
+  "answer": 2,
+  "explanation": "Elkanah went to Ramah to his house.",
+  "ref": "1 Samuel 2:11"
+ },
+ {
+  "id": "1-samuel-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Before whom did the child Samuel minister unto the LORD?",
+  "choices": [
+   "Phinehas",
+   "Hophni",
+   "Elkanah",
+   "Eli the priest"
+  ],
+  "answer": 3,
+  "explanation": "The child did minister unto the LORD before Eli the priest.",
+  "ref": "1 Samuel 2:11"
+ },
+ {
+  "id": "1-samuel-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samuel's mother bring him from year to year?",
+  "choices": [
+   "A little coat",
+   "A sword",
+   "A scroll",
+   "A lamb"
+  ],
+  "answer": 0,
+  "explanation": "His mother made him a little coat, and brought it to him from year to year.",
+  "ref": "1 Samuel 2:19"
+ },
+ {
+  "id": "1-samuel-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who visited Hannah so that she conceived again?",
+  "choices": [
+   "Eli",
+   "The LORD",
+   "Elkanah",
+   "A prophet"
+  ],
+  "answer": 1,
+  "explanation": "The LORD visited Hannah, so that she conceived.",
+  "ref": "1 Samuel 2:21"
+ },
+ {
+  "id": "1-samuel-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who blessed Elkanah and his wife?",
+  "choices": [
+   "A man of God",
+   "Samuel",
+   "Eli",
+   "Phinehas"
+  ],
+  "answer": 2,
+  "explanation": "Eli blessed Elkanah and his wife.",
+  "ref": "1 Samuel 2:20"
+ },
+ {
+  "id": "1-samuel-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to Eli with a message from the LORD?",
+  "choices": [
+   "An angel",
+   "Samuel",
+   "Elkanah",
+   "A man of God"
+  ],
+  "answer": 3,
+  "explanation": "There came a man of God unto Eli, and said unto him, Thus saith the LORD.",
+  "ref": "1 Samuel 2:27"
+ },
+ {
+  "id": "1-samuel-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the sons of Eli not know?",
+  "choices": [
+   "The LORD",
+   "The law",
+   "The altar",
+   "Their father"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Eli were sons of Belial; they knew not the LORD.",
+  "ref": "1 Samuel 2:12"
+ },
+ {
+  "id": "1-samuel-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who grew in favour with the LORD and with men?",
+  "choices": [
+   "Hophni",
+   "Samuel",
+   "Elkanah",
+   "Phinehas"
+  ],
+  "answer": 1,
+  "explanation": "The child Samuel grew on, and was in favour both with the LORD, and also with men.",
+  "ref": "1 Samuel 2:26"
+ },
+ {
+  "id": "1-samuel-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was very old and heard all his sons did unto Israel?",
+  "choices": [
+   "Elkanah",
+   "Eli",
+   "Samuel",
+   "Jeroham"
+  ],
+  "answer": 1,
+  "explanation": "Now Eli was very old, and heard all that his sons did unto all Israel.",
+  "ref": "1 Samuel 2:22"
+ },
+ {
+  "id": "1-samuel-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In Hannah's song, who is said to be holy as none other?",
+  "choices": [
+   "The LORD",
+   "The king",
+   "The priest",
+   "The prophet"
+  ],
+  "answer": 0,
+  "explanation": "Hannah said, There is none holy as the LORD: for there is none beside thee.",
+  "ref": "1 Samuel 2:2"
+ },
+ {
+  "id": "1-samuel-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hannah's song call God, saying none is like him?",
+  "choices": [
+   "A shepherd",
+   "A fortress",
+   "A rock",
+   "A shield"
+  ],
+  "answer": 2,
+  "explanation": "Neither is there any rock like our God.",
+  "ref": "1 Samuel 2:2"
+ },
+ {
+  "id": "1-samuel-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of what is the LORD a God, said Hannah?",
+  "choices": [
+   "Silence",
+   "Wealth",
+   "War",
+   "Knowledge"
+  ],
+  "answer": 3,
+  "explanation": "The LORD is a God of knowledge, and by him actions are weighed.",
+  "ref": "1 Samuel 2:3"
+ },
+ {
+  "id": "1-samuel-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hannah say is broken?",
+  "choices": [
+   "The bows of the mighty men",
+   "The walls of the city",
+   "The shields of kings",
+   "The swords of Philistines"
+  ],
+  "answer": 0,
+  "explanation": "The bows of the mighty men are broken, and they that stumbled are girded with strength.",
+  "ref": "1 Samuel 2:4"
+ },
+ {
+  "id": "1-samuel-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many has the barren borne, said Hannah's song?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "So that the barren hath born seven.",
+  "ref": "1 Samuel 2:5"
+ },
+ {
+  "id": "1-samuel-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From where does the LORD raise up the poor?",
+  "choices": [
+   "Out of the pit",
+   "Out of Egypt",
+   "Out of the dust",
+   "Out of prison"
+  ],
+  "answer": 2,
+  "explanation": "He raiseth up the poor out of the dust.",
+  "ref": "1 Samuel 2:8"
+ },
+ {
+  "id": "1-samuel-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hannah say belong to the LORD and hold up the world?",
+  "choices": [
+   "The seas",
+   "The mountains",
+   "The stars",
+   "The pillars of the earth"
+  ],
+  "answer": 3,
+  "explanation": "The pillars of the earth are the LORD'S, and he hath set the world upon them.",
+  "ref": "1 Samuel 2:8"
+ },
+ {
+  "id": "1-samuel-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD keep, according to Hannah?",
+  "choices": [
+   "The feet of his saints",
+   "The gates of Shiloh",
+   "The ark",
+   "The sheep of Israel"
+  ],
+  "answer": 0,
+  "explanation": "He will keep the feet of his saints, and the wicked shall be silent in darkness.",
+  "ref": "1 Samuel 2:9"
+ },
+ {
+  "id": "1-samuel-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest take for himself from the pot?",
+  "choices": [
+   "The fat only",
+   "All that the fleshhook brought up",
+   "Half the meat",
+   "Nothing"
+  ],
+  "answer": 1,
+  "explanation": "All that the fleshhook brought up the priest took for himself.",
+  "ref": "1 Samuel 2:14"
+ },
+ {
+  "id": "1-samuel-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did men abhor the offering of the LORD?",
+  "choices": [
+   "The temple was shut",
+   "A famine",
+   "The sin of the young men",
+   "Lack of oxen"
+  ],
+  "answer": 2,
+  "explanation": "The sin of the young men was very great before the LORD: for men abhorred the offering of the LORD.",
+  "ref": "1 Samuel 2:17"
+ },
+ {
+  "id": "1-samuel-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eli ask his sons about their deeds?",
+  "choices": [
+   "Shall I send you away?",
+   "Who told you?",
+   "Where is Samuel?",
+   "Why do ye such things?"
+  ],
+  "answer": 3,
+  "explanation": "He said unto them, Why do ye such things?",
+  "ref": "1 Samuel 2:23"
+ },
+ {
+  "id": "1-samuel-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Eli's sons not listen to him?",
+  "choices": [
+   "The LORD would slay them",
+   "They were afraid of Shiloh",
+   "They were young",
+   "They hated Samuel"
+  ],
+  "answer": 0,
+  "explanation": "They hearkened not unto the voice of their father, because the LORD would slay them.",
+  "ref": "1 Samuel 2:25"
+ },
+ {
+  "id": "1-samuel-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eli pray would come for the loan lent to the LORD?",
+  "choices": [
+   "Wealth",
+   "Seed of this woman",
+   "Long life",
+   "A priesthood"
+  ],
+  "answer": 1,
+  "explanation": "The LORD give thee seed of this woman for the loan which is lent to the LORD.",
+  "ref": "1 Samuel 2:20"
+ },
+ {
+  "id": "1-samuel-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the LORD plainly shown to Eli's father's house?",
+  "choices": [
+   "He gave them land",
+   "He gave them the ark",
+   "He appeared in Egypt",
+   "He sent a prophet"
+  ],
+  "answer": 2,
+  "explanation": "Did I plainly appear unto the house of thy father, when they were in Egypt in Pharaoh's house?",
+  "ref": "1 Samuel 2:27"
+ },
+ {
+  "id": "1-samuel-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the LORD say Eli honoured above him?",
+  "choices": [
+   "The judges",
+   "The people",
+   "Samuel",
+   "His sons"
+  ],
+  "answer": 3,
+  "explanation": "Honourest thy sons above me, to make yourselves fat with the chiefest of all the offerings.",
+  "ref": "1 Samuel 2:29"
+ },
+ {
+  "id": "1-samuel-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many teeth did the fleshhook of the priest's servant have?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Five"
+  ],
+  "answer": 1,
+  "explanation": "The priest's servant came with a fleshhook of three teeth in his hand.",
+  "ref": "1 Samuel 2:13"
+ },
+ {
+  "id": "1-samuel-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons and daughters did Hannah bear after Samuel?",
+  "choices": [
+   "Five sons",
+   "Two sons and three daughters",
+   "Three sons and two daughters",
+   "Seven daughters"
+  ],
+  "answer": 2,
+  "explanation": "She conceived, and bare three sons and two daughters.",
+  "ref": "1 Samuel 2:21"
+ },
+ {
+  "id": "1-samuel-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of flesh did the priest's servant demand for the priest?",
+  "choices": [
+   "Salted",
+   "Sodden, not raw",
+   "Smoked",
+   "Raw, not sodden"
+  ],
+  "answer": 3,
+  "explanation": "He will not have sodden flesh of thee, but raw.",
+  "ref": "1 Samuel 2:15"
+ },
+ {
+  "id": "1-samuel-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the servant say if a man wanted the fat burned first?",
+  "choices": [
+   "Give it now, or I will take it by force",
+   "Wait until the morning",
+   "Go to Eli",
+   "Bring a lamb"
+  ],
+  "answer": 0,
+  "explanation": "Nay; but thou shalt give it me now: and if not, I will take it by force.",
+  "ref": "1 Samuel 2:16"
+ },
+ {
+  "id": "1-samuel-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "At the door of what did Eli's sons lie with the women who assembled?",
+  "choices": [
+   "The city gate",
+   "The tabernacle of the congregation",
+   "The house of Elkanah",
+   "The ark"
+  ],
+  "answer": 1,
+  "explanation": "They lay with the women that assembled at the door of the tabernacle of the congregation.",
+  "ref": "1 Samuel 2:22"
+ },
+ {
+  "id": "1-samuel-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Eli say his sons made the LORD'S people do?",
+  "choices": [
+   "Flee",
+   "Weep",
+   "Transgress",
+   "Fast"
+  ],
+  "answer": 2,
+  "explanation": "Ye make the LORD'S people to transgress.",
+  "ref": "1 Samuel 2:24"
+ },
+ {
+  "id": "1-samuel-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did Eli say shall judge a man who sins against another man?",
+  "choices": [
+   "The elders",
+   "The priest",
+   "The king",
+   "The judge"
+  ],
+  "answer": 3,
+  "explanation": "If one man sin against another, the judge shall judge him.",
+  "ref": "1 Samuel 2:25"
+ },
+ {
+  "id": "1-samuel-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which three things did the LORD choose Eli's father's house for?",
+  "choices": [
+   "Offer on the altar, burn incense, wear an ephod",
+   "Judge Israel, carry the ark, teach the law",
+   "Kill sacrifices, build the temple, guard the gate",
+   "Lead battle, sing, write the law"
+  ],
+  "answer": 0,
+  "explanation": "To offer upon mine altar, to burn incense, to wear an ephod before me.",
+  "ref": "1 Samuel 2:28"
+ },
+ {
+  "id": "1-samuel-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say of them that honour him?",
+  "choices": [
+   "They shall be kings",
+   "He will honour them",
+   "They shall be silent",
+   "They shall be rich"
+  ],
+  "answer": 1,
+  "explanation": "For them that honour me I will honour, and they that despise me shall be lightly esteemed.",
+  "ref": "1 Samuel 2:30"
+ },
+ {
+  "id": "1-samuel-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say there would not be in Eli's house?",
+  "choices": [
+   "A son",
+   "A priest",
+   "An old man",
+   "A servant"
+  ],
+  "answer": 2,
+  "explanation": "There shall not be an old man in thine house.",
+  "ref": "1 Samuel 2:31"
+ },
+ {
+  "id": "1-samuel-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would those left in Eli's house crouch for?",
+  "choices": [
+   "A sheep",
+   "A field",
+   "A priesthood",
+   "A piece of silver and a morsel of bread"
+  ],
+  "answer": 3,
+  "explanation": "Every one that is left in thine house shall come and crouch to him for a piece of silver and a morsel of bread.",
+  "ref": "1 Samuel 2:36"
+ },
+ {
+  "id": "1-samuel-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say he would raise up?",
+  "choices": [
+   "A faithful priest",
+   "A king",
+   "A judge",
+   "A prophet"
+  ],
+  "answer": 0,
+  "explanation": "I will raise me up a faithful priest, that shall do according to that which is in mine heart.",
+  "ref": "1 Samuel 2:35"
+ },
+ {
+  "id": "1-samuel-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where does Hannah's song say the LORD lifts the beggar?",
+  "choices": [
+   "The dust",
+   "The dunghill",
+   "The pit",
+   "The gate"
+  ],
+  "answer": 1,
+  "explanation": "He lifteth the beggar from the dunghill, to set them among princes.",
+  "ref": "1 Samuel 2:8"
+ },
+ {
+  "id": "1-samuel-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD shall judge the ends of what, said Hannah?",
+  "choices": [
+   "The land",
+   "The sea",
+   "The earth",
+   "The heavens"
+  ],
+  "answer": 2,
+  "explanation": "The LORD shall judge the ends of the earth.",
+  "ref": "1 Samuel 2:10"
+ },
+ {
+  "id": "1-samuel-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom does Hannah's song say the LORD shall give strength?",
+  "choices": [
+   "His king",
+   "The priests",
+   "The poor",
+   "The judges"
+  ],
+  "answer": 0,
+  "explanation": "He shall give strength unto his king, and exalt the horn of his anointed.",
+  "ref": "1 Samuel 2:10"
  },
  {
   "id": "old-1-samuel-3-1",
