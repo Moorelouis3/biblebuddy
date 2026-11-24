@@ -2960,6 +2960,646 @@
   "ref": "Deuteronomy 5:29"
  },
  {
+  "id": "deuteronomy-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stood between the LORD and the people to show them the word of the LORD?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "Joshua",
+   "Caleb"
+  ],
+  "answer": 0,
+  "explanation": "Moses stood between the LORD and the people to show them the word of the LORD, for they were afraid of the fire.",
+  "ref": "Deuteronomy 5:5"
+ },
+ {
+  "id": "deuteronomy-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD call Egypt when He says He brought Israel out of it?",
+  "choices": [
+   "The house of bondage",
+   "The house of sorrow",
+   "The house of Pharaoh",
+   "The land of darkness"
+  ],
+  "answer": 0,
+  "explanation": "The LORD says He brought them out of the land of Egypt, from the house of bondage.",
+  "ref": "Deuteronomy 5:6"
+ },
+ {
+  "id": "deuteronomy-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD write the words on and give to Moses?",
+  "choices": [
+   "Two tables of stone",
+   "Two leather scrolls",
+   "A bronze plate",
+   "A wall of the tent"
+  ],
+  "answer": 0,
+  "explanation": "He wrote them in two tables of stone, and delivered them unto Moses.",
+  "ref": "Deuteronomy 5:22"
+ },
+ {
+  "id": "deuteronomy-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What may Israel not make, according to the second commandment?",
+  "choices": [
+   "A graven image",
+   "A tent of skins",
+   "A drink offering",
+   "A bronze serpent"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not make thee any graven image, or any likeness of any thing.",
+  "ref": "Deuteronomy 5:8"
+ },
+ {
+  "id": "deuteronomy-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does the LORD tell Israel to honour?",
+  "choices": [
+   "Their father and mother",
+   "Their elders and judges",
+   "The priests and Levites",
+   "Moses and Aaron"
+  ],
+  "answer": 0,
+  "explanation": "Honour thy father and thy mother, as the LORD thy God hath commanded thee.",
+  "ref": "Deuteronomy 5:16"
+ },
+ {
+  "id": "deuteronomy-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which of these is one of the commandments the LORD spoke?",
+  "choices": [
+   "Thou shalt not steal",
+   "Thou shalt not eat blood",
+   "Thou shalt not move a landmark",
+   "Thou shalt not curse the deaf"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Neither shalt thou steal.",
+  "ref": "Deuteronomy 5:19"
+ },
+ {
+  "id": "deuteronomy-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say the LORD had shewed them at the mount?",
+  "choices": [
+   "His glory and his greatness",
+   "His wrath and his mercy",
+   "His wisdom and his law",
+   "His kingdom and his power"
+  ],
+  "answer": 0,
+  "explanation": "They said, the LORD our God hath shewed us his glory and his greatness.",
+  "ref": "Deuteronomy 5:24"
+ },
+ {
+  "id": "deuteronomy-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which day does the LORD call the sabbath of the LORD thy God?",
+  "choices": [
+   "The seventh day",
+   "The first day",
+   "The sixth day",
+   "The tenth day"
+  ],
+  "answer": 0,
+  "explanation": "The seventh day is the sabbath of the LORD thy God.",
+  "ref": "Deuteronomy 5:14"
+ },
+ {
+  "id": "deuteronomy-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to say to the people when they went back from the mount?",
+  "choices": [
+   "Get you into your tents again",
+   "Gather the elders again",
+   "Return to Egypt",
+   "Camp by the mount"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Go say to them, Get you into your tents again.",
+  "ref": "Deuteronomy 5:30"
+ },
+ {
+  "id": "deuteronomy-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The LORD says, 'Thou shalt have none other what before me'?",
+  "choices": [
+   "Gods",
+   "Kings",
+   "Priests",
+   "Altars"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt have none other gods before me.",
+  "ref": "Deuteronomy 5:7"
+ },
+ {
+  "id": "deuteronomy-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people not go up into the mount?",
+  "choices": [
+   "Moses forbade them with a rod",
+   "The path was blocked by water",
+   "They were afraid because of the fire",
+   "They were still building camp"
+  ],
+  "answer": 2,
+  "explanation": "Moses says they were afraid by reason of the fire, and went not up into the mount.",
+  "ref": "Deuteronomy 5:5"
+ },
+ {
+  "id": "deuteronomy-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the LORD describe Himself when He forbids bowing to images?",
+  "choices": [
+   "An angry God",
+   "A silent God",
+   "A jealous God",
+   "A distant God"
+  ],
+  "answer": 2,
+  "explanation": "For I the LORD thy God am a jealous God.",
+  "ref": "Deuteronomy 5:9"
+ },
+ {
+  "id": "deuteronomy-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Mercy is promised to thousands of those who do what?",
+  "choices": [
+   "Offer sacrifices daily",
+   "Dwell in the land",
+   "Love Him and keep His commandments",
+   "Fight their enemies"
+  ],
+  "answer": 2,
+  "explanation": "He shows mercy unto thousands of them that love him and keep his commandments.",
+  "ref": "Deuteronomy 5:10"
+ },
+ {
+  "id": "deuteronomy-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say about the one who takes His name in vain?",
+  "choices": [
+   "He will make him a servant",
+   "He will cut off his sons",
+   "He will not hold him guiltless",
+   "He will send him out of the camp"
+  ],
+  "answer": 2,
+  "explanation": "The LORD will not hold him guiltless that taketh his name in vain.",
+  "ref": "Deuteronomy 5:11"
+ },
+ {
+  "id": "deuteronomy-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why must a master give his manservant and maidservant rest on the sabbath?",
+  "choices": [
+   "So they can travel",
+   "So they can pay tithes",
+   "That they may rest as well as he",
+   "So they can guard the camp"
+  ],
+  "answer": 2,
+  "explanation": "The commandment says that thy manservant and thy maidservant may rest as well as thou.",
+  "ref": "Deuteronomy 5:14"
+ },
+ {
+  "id": "deuteronomy-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is promised to those who honour their father and mother?",
+  "choices": [
+   "Great riches",
+   "Many sons",
+   "Their days will be prolonged",
+   "Victory in every battle"
+  ],
+  "answer": 2,
+  "explanation": "Honour thy father and thy mother, that thy days may be prolonged, and that it may go well with thee.",
+  "ref": "Deuteronomy 5:16"
+ },
+ {
+  "id": "deuteronomy-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which animals are named among those that must rest on the sabbath?",
+  "choices": [
+   "The lambs and the goats",
+   "The camels and the horses",
+   "The ox and the ass",
+   "The doves and the sheep"
+  ],
+  "answer": 2,
+  "explanation": "The sabbath rest covers thine ox, nor thine ass, nor any of thy cattle.",
+  "ref": "Deuteronomy 5:14"
+ },
+ {
+  "id": "deuteronomy-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Who came near to Moses when the mountain burned with fire?",
+  "choices": [
+   "Aaron and his sons",
+   "The women and children",
+   "The heads of the tribes and the elders",
+   "Joshua and Caleb"
+  ],
+  "answer": 2,
+  "explanation": "All the heads of your tribes, and your elders, came near unto Moses.",
+  "ref": "Deuteronomy 5:23"
+ },
+ {
+  "id": "deuteronomy-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people say no one had done and lived?",
+  "choices": [
+   "Touched the tables of stone",
+   "Looked into the ark",
+   "Heard the voice of the living God out of the fire",
+   "Gone up to the top of the mount"
+  ],
+  "answer": 2,
+  "explanation": "They asked who of all flesh hath heard the voice of the living God speaking out of the midst of the fire, and lived?",
+  "ref": "Deuteronomy 5:26"
+ },
+ {
+  "id": "deuteronomy-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about the words the people spoke to Moses?",
+  "choices": [
+   "They have spoken in pride",
+   "They have spoken falsely",
+   "They have well said all that they have spoken",
+   "They have spoken too late"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said, they have well said all that they have spoken.",
+  "ref": "Deuteronomy 5:28"
+ },
+ {
+  "id": "deuteronomy-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD speak to Moses, to be taught to the people?",
+  "choices": [
+   "The names of the tribes",
+   "The way to Canaan",
+   "The commandments, statutes and judgments",
+   "The number of the people"
+  ],
+  "answer": 2,
+  "explanation": "Stand thou here by me, and I will speak unto thee all the commandments, and the statutes, and the judgments.",
+  "ref": "Deuteronomy 5:31"
+ },
+ {
+  "id": "deuteronomy-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many days does the LORD say to labour and do all your work?",
+  "choices": [
+   "Five",
+   "Seven",
+   "Six",
+   "Four"
+  ],
+  "answer": 2,
+  "explanation": "Six days thou shalt labour, and do all thy work.",
+  "ref": "Deuteronomy 5:13"
+ },
+ {
+  "id": "deuteronomy-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of the neighbour's belongings is named first in the commandment against coveting?",
+  "choices": [
+   "His house",
+   "His field",
+   "His wife",
+   "His ox"
+  ],
+  "answer": 2,
+  "explanation": "Neither shalt thou desire thy neighbour's wife, neither shalt thou covet thy neighbour's house.",
+  "ref": "Deuteronomy 5:21"
+ },
+ {
+  "id": "deuteronomy-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD bring Israel out of Egypt, according to the sabbath commandment?",
+  "choices": [
+   "With a pillar of cloud only",
+   "By night without a sign",
+   "With a mighty hand and a stretched out arm",
+   "By the hand of Aaron"
+  ],
+  "answer": 2,
+  "explanation": "The LORD thy God brought thee out thence through a mighty hand and by a stretched out arm.",
+  "ref": "Deuteronomy 5:15"
+ },
+ {
+  "id": "deuteronomy-5-m-15",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen if Israel walks in all the ways the LORD commanded?",
+  "choices": [
+   "They will never need a king",
+   "They will never have enemies",
+   "They may live and prolong their days in the land",
+   "They will return to Egypt rich"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall walk in all the ways...that ye may live, and that it may be well with you.",
+  "ref": "Deuteronomy 5:33"
+ },
+ {
+  "id": "deuteronomy-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To how many generations does the LORD visit the iniquity of the fathers on those that hate Him?",
+  "choices": [
+   "The second and third",
+   "The fourth and fifth",
+   "The seventh",
+   "The third and fourth"
+  ],
+  "answer": 3,
+  "explanation": "He visits the iniquity of the fathers upon the children unto the third and fourth generation of them that hate him.",
+  "ref": "Deuteronomy 5:9"
+ },
+ {
+  "id": "deuteronomy-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At the mount the voice came out of the fire, the cloud and what else?",
+  "choices": [
+   "The thunder",
+   "The smoke of the altar",
+   "The earthquake",
+   "The thick darkness"
+  ],
+  "answer": 3,
+  "explanation": "The LORD spake out of the midst of the fire, of the cloud, and of the thick darkness.",
+  "ref": "Deuteronomy 5:22"
+ },
+ {
+  "id": "deuteronomy-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides his house, which of the neighbour's belongings does the commandment name?",
+  "choices": [
+   "His vineyard",
+   "His well",
+   "His garden",
+   "His field"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not covet thy neighbour's house, his field, or his manservant.",
+  "ref": "Deuteronomy 5:21"
+ },
+ {
+  "id": "deuteronomy-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which commandment comes right after \"Thou shalt not kill\"?",
+  "choices": [
+   "Thou shalt not steal",
+   "Thou shalt not bear false witness",
+   "Thou shalt not covet",
+   "Thou shalt not commit adultery"
+  ],
+  "answer": 3,
+  "explanation": "After Thou shalt not kill comes Neither shalt thou commit adultery.",
+  "ref": "Deuteronomy 5:17–18"
+ },
+ {
+  "id": "deuteronomy-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which commandment comes right after \"Honour thy father and thy mother\"?",
+  "choices": [
+   "Thou shalt not commit adultery",
+   "Thou shalt not steal",
+   "Keep the sabbath day",
+   "Thou shalt not kill"
+  ],
+  "answer": 3,
+  "explanation": "After honouring father and mother comes Thou shalt not kill.",
+  "ref": "Deuteronomy 5:16–17"
+ },
+ {
+  "id": "deuteronomy-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The people said God doth talk with man, and what?",
+  "choices": [
+   "He forgiveth",
+   "He judgeth",
+   "He abideth",
+   "He liveth"
+  ],
+  "answer": 3,
+  "explanation": "They said, we have seen this day that God doth talk with man, and he liveth.",
+  "ref": "Deuteronomy 5:24"
+ },
+ {
+  "id": "deuteronomy-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the LORD talk with Israel in the mount, out of the midst of the fire?",
+  "choices": [
+   "By an angel",
+   "In a dream",
+   "By a trumpet only",
+   "Face to face"
+  ],
+  "answer": 3,
+  "explanation": "The LORD talked with you face to face in the mount out of the midst of the fire.",
+  "ref": "Deuteronomy 5:4"
+ },
+ {
+  "id": "deuteronomy-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses tells Israel to learn the statutes, and keep them, and do what?",
+  "choices": [
+   "Teach them",
+   "Write them",
+   "Sing them",
+   "Do them"
+  ],
+  "answer": 3,
+  "explanation": "Hear the statutes and judgments...that ye may learn them, and keep, and do them.",
+  "ref": "Deuteronomy 5:1"
+ },
+ {
+  "id": "deuteronomy-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Israel must not bow down to images, nor do what else?",
+  "choices": [
+   "Name them",
+   "Sell them",
+   "Look on them",
+   "Serve them"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not bow down thyself unto them, nor serve them.",
+  "ref": "Deuteronomy 5:9"
+ },
+ {
+  "id": "deuteronomy-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "No likeness may be made of what is in heaven above, the earth beneath, or where else?",
+  "choices": [
+   "In the clouds of the sky",
+   "In the tents of Israel",
+   "In the stones of the mount",
+   "In the waters beneath the earth"
+  ],
+  "answer": 3,
+  "explanation": "Likenesses of anything in heaven above, in the earth beneath, or in the waters beneath the earth are forbidden.",
+  "ref": "Deuteronomy 5:8"
+ },
+ {
+  "id": "deuteronomy-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people say would happen if they heard the LORD's voice any more?",
+  "choices": [
+   "They would be blind",
+   "They would be scattered",
+   "They would be made slaves",
+   "They would die"
+  ],
+  "answer": 3,
+  "explanation": "If we hear the voice of the LORD our God any more, then we shall die.",
+  "ref": "Deuteronomy 5:25"
+ },
+ {
+  "id": "deuteronomy-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom besides the people does the LORD wish well for ever, if they feared Him?",
+  "choices": [
+   "Their cattle",
+   "Their servants",
+   "Their strangers",
+   "Their children"
+  ],
+  "answer": 3,
+  "explanation": "O that they would fear me...that it might be well with them, and with their children for ever!",
+  "ref": "Deuteronomy 5:29"
+ },
+ {
+  "id": "deuteronomy-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses says the LORD will teach the commandments, the statutes and what?",
+  "choices": [
+   "The offerings",
+   "The feasts",
+   "The blessings",
+   "The judgments"
+  ],
+  "answer": 3,
+  "explanation": "I will speak unto thee all the commandments, and the statutes, and the judgments.",
+  "ref": "Deuteronomy 5:31"
+ },
+ {
+  "id": "deuteronomy-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where must Israel not turn aside from what God commanded?",
+  "choices": [
+   "To the north or south",
+   "Into the wilderness",
+   "Toward Egypt",
+   "To the right hand or to the left"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall not turn aside to the right hand or to the left.",
+  "ref": "Deuteronomy 5:32"
+ },
+ {
+  "id": "deuteronomy-5-h-15",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The sabbath is kept to do what to the day?",
+  "choices": [
+   "Number it",
+   "Rename it",
+   "Forget it",
+   "Sanctify it"
+  ],
+  "answer": 3,
+  "explanation": "Keep the sabbath day to sanctify it, as the LORD thy God hath commanded thee.",
+  "ref": "Deuteronomy 5:12"
+ },
+ {
   "id": "old-deuteronomy-6-1",
   "chapter": 6,
   "level": "beginner",
