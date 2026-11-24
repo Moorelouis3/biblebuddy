@@ -7312,6 +7312,646 @@
   "ref": "Joshua 11:19–20"
  },
  {
+  "id": "joshua-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the king of Hazor?",
+  "choices": [
+   "Jobab",
+   "Jabin",
+   "Og",
+   "Adoni-zedek"
+  ],
+  "answer": 1,
+  "explanation": "Jabin king of Hazor had heard those things.",
+  "ref": "Joshua 11:1"
+ },
+ {
+  "id": "joshua-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the northern kings pitch together to fight Israel?",
+  "choices": [
+   "Gilgal",
+   "Mount Ebal",
+   "The waters of Merom",
+   "The Jordan"
+  ],
+  "answer": 2,
+  "explanation": "They came and pitched together at the waters of Merom, to fight against Israel.",
+  "ref": "Joshua 11:5"
+ },
+ {
+  "id": "joshua-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many were the kings' people compared to the sand?",
+  "choices": [
+   "As the sand upon the sea shore",
+   "As few",
+   "As the locusts",
+   "As the stars"
+  ],
+  "answer": 0,
+  "explanation": "Much people, even as the sand that is upon the sea shore in multitude.",
+  "ref": "Joshua 11:4"
+ },
+ {
+  "id": "joshua-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Joshua about the kings?",
+  "choices": [
+   "Wait a year",
+   "Make a league",
+   "Send spies",
+   "Be not afraid because of them"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said unto Joshua, Be not afraid because of them.",
+  "ref": "Joshua 11:6"
+ },
+ {
+  "id": "joshua-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua do to the kings' horses?",
+  "choices": [
+   "He houghed them",
+   "He fed them",
+   "He sold them",
+   "He kept them"
+  ],
+  "answer": 0,
+  "explanation": "He houghed their horses, and burnt their chariots with fire.",
+  "ref": "Joshua 11:9"
+ },
+ {
+  "id": "joshua-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Joshua come against the kings at Merom?",
+  "choices": [
+   "By sea",
+   "In secret for a year",
+   "Suddenly",
+   "After a siege"
+  ],
+  "answer": 2,
+  "explanation": "Joshua came against them by the waters of Merom suddenly.",
+  "ref": "Joshua 11:7"
+ },
+ {
+  "id": "joshua-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua take as a prey from the cities?",
+  "choices": [
+   "The spoil and the cattle",
+   "The people",
+   "The gold only",
+   "The temples"
+  ],
+  "answer": 0,
+  "explanation": "All the spoil of these cities, and the cattle, the children of Israel took for a prey.",
+  "ref": "Joshua 11:14"
+ },
+ {
+  "id": "joshua-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who were cut off from the mountains by Joshua?",
+  "choices": [
+   "The Jebusites",
+   "The Philistines",
+   "The Anakims",
+   "The Hivites"
+  ],
+  "answer": 2,
+  "explanation": "Joshua cut off the Anakims from the mountains.",
+  "ref": "Joshua 11:21"
+ },
+ {
+  "id": "joshua-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the land do at the end of the chapter?",
+  "choices": [
+   "Fell to famine",
+   "Fled",
+   "Burned",
+   "Rested from war"
+  ],
+  "answer": 3,
+  "explanation": "And the land rested from war.",
+  "ref": "Joshua 11:23"
+ },
+ {
+  "id": "joshua-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua do to the cities of those kings he took?",
+  "choices": [
+   "Utterly destroyed them",
+   "Made them his own",
+   "Gave them to Gibeon",
+   "Left them standing"
+  ],
+  "answer": 0,
+  "explanation": "All the cities of those kings did Joshua take, and he utterly destroyed them, as Moses commanded.",
+  "ref": "Joshua 11:12"
+ },
+ {
+  "id": "joshua-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "To which kings did Jabin send?",
+  "choices": [
+   "Sihon and Og",
+   "Hoham and Piram",
+   "Jobab, Shimron and Achshaph",
+   "Horam and Debir"
+  ],
+  "answer": 2,
+  "explanation": "He sent to Jobab king of Madon, and to the king of Shimron, and to the king of Achshaph.",
+  "ref": "Joshua 11:1"
+ },
+ {
+  "id": "joshua-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Under which mountain did the Hivite live in the land of Mizpeh?",
+  "choices": [
+   "Ebal",
+   "Carmel",
+   "Hermon",
+   "Lebanon"
+  ],
+  "answer": 2,
+  "explanation": "The Hivite under Hermon in the land of Mizpeh.",
+  "ref": "Joshua 11:3"
+ },
+ {
+  "id": "joshua-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say would happen the next day?",
+  "choices": [
+   "The kings would flee",
+   "The river would open",
+   "The sun would stand still",
+   "He would deliver them all slain before Israel"
+  ],
+  "answer": 3,
+  "explanation": "To morrow about this time will I deliver them up all slain before Israel.",
+  "ref": "Joshua 11:6"
+ },
+ {
+  "id": "joshua-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "How far was the enemy chased east?",
+  "choices": [
+   "The Red Sea",
+   "The valley of Mizpeh eastward",
+   "Gilgal",
+   "The Jordan"
+  ],
+  "answer": 1,
+  "explanation": "They chased them unto great Zidon, and unto the valley of Mizpeh eastward.",
+  "ref": "Joshua 11:8"
+ },
+ {
+  "id": "joshua-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "How far was the enemy chased toward the sea?",
+  "choices": [
+   "Ashdod",
+   "Gaza",
+   "Great Zidon",
+   "Egypt"
+  ],
+  "answer": 2,
+  "explanation": "They chased them unto great Zidon, and unto Misrephoth-maim.",
+  "ref": "Joshua 11:8"
+ },
+ {
+  "id": "joshua-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city did Joshua turn back and take?",
+  "choices": [
+   "Hazor",
+   "Libnah",
+   "Lachish",
+   "Eglon"
+  ],
+  "answer": 0,
+  "explanation": "Joshua at that time turned back, and took Hazor.",
+  "ref": "Joshua 11:10"
+ },
+ {
+  "id": "joshua-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Hazor taken?",
+  "choices": [
+   "It was nearest",
+   "It was weakest",
+   "It held the ark",
+   "It beforetime was the head of all those kingdoms"
+  ],
+  "answer": 3,
+  "explanation": "Hazor beforetime was the head of all those kingdoms.",
+  "ref": "Joshua 11:10"
+ },
+ {
+  "id": "joshua-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city was burnt of all those that stood in their strength?",
+  "choices": [
+   "Hazor only",
+   "Zidon",
+   "Merom",
+   "Mizpeh"
+  ],
+  "answer": 0,
+  "explanation": "Israel burned none of them, save Hazor only.",
+  "ref": "Joshua 11:13"
+ },
+ {
+  "id": "joshua-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua leave undone of all the LORD commanded Moses?",
+  "choices": [
+   "Nothing",
+   "The kings",
+   "The Anakims",
+   "One city"
+  ],
+  "answer": 0,
+  "explanation": "He left nothing undone of all that the LORD commanded Moses.",
+  "ref": "Joshua 11:15"
+ },
+ {
+  "id": "joshua-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Mount Halak goes up to which place?",
+  "choices": [
+   "Gilgal",
+   "Hermon",
+   "Lebanon",
+   "Seir"
+  ],
+  "answer": 3,
+  "explanation": "From the mount Halak, that goeth up to Seir.",
+  "ref": "Joshua 11:17"
+ },
+ {
+  "id": "joshua-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did Joshua make war with all those kings?",
+  "choices": [
+   "A long time",
+   "Forty days",
+   "One year",
+   "Three days"
+  ],
+  "answer": 0,
+  "explanation": "Joshua made war a long time with all those kings.",
+  "ref": "Joshua 11:18"
+ },
+ {
+  "id": "joshua-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Which people alone made peace with Israel?",
+  "choices": [
+   "The Hivites of Gibeon",
+   "The Amorites",
+   "The Jebusites",
+   "The Perizzites"
+  ],
+  "answer": 0,
+  "explanation": "There was not a city that made peace, save the Hivites the inhabitants of Gibeon.",
+  "ref": "Joshua 11:19"
+ },
+ {
+  "id": "joshua-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "From what places did Joshua cut off the Anakims?",
+  "choices": [
+   "Gaza and Gath",
+   "Hebron, Debir and Anab",
+   "Jericho and Gilgal",
+   "Ai and Bethel"
+  ],
+  "answer": 1,
+  "explanation": "He cut off the Anakims from Hebron, from Debir, from Anab.",
+  "ref": "Joshua 11:21"
+ },
+ {
+  "id": "joshua-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did some Anakims remain?",
+  "choices": [
+   "Hebron",
+   "Hazor",
+   "Gaza, Gath and Ashdod",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "Only in Gaza, in Gath, and in Ashdod, there remained.",
+  "ref": "Joshua 11:22"
+ },
+ {
+  "id": "joshua-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Joshua give the land to Israel?",
+  "choices": [
+   "By gift to priests",
+   "By lot to kings",
+   "By divisions according to their tribes",
+   "By sale"
+  ],
+  "answer": 2,
+  "explanation": "Joshua gave it for an inheritance unto Israel according to their divisions by their tribes.",
+  "ref": "Joshua 11:23"
+ },
+ {
+  "id": "joshua-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Joshua to burn with fire?",
+  "choices": [
+   "Their tents",
+   "Their chariots",
+   "Their idols",
+   "Their gates"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt hough their horses, and burn their chariots with fire.",
+  "ref": "Joshua 11:6"
+ },
+ {
+  "id": "joshua-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides Zidon and Mizpeh, to which place were they chased?",
+  "choices": [
+   "Goshen",
+   "Gaza",
+   "Ashdod",
+   "Misrephoth-maim"
+  ],
+  "answer": 3,
+  "explanation": "They chased them unto great Zidon, and unto Misrephoth-maim.",
+  "ref": "Joshua 11:8"
+ },
+ {
+  "id": "joshua-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the LORD say He would deliver the kings up?",
+  "choices": [
+   "To morrow about this time",
+   "In seven days",
+   "At sunrise",
+   "At the next moon"
+  ],
+  "answer": 0,
+  "explanation": "To morrow about this time will I deliver them up all slain before Israel.",
+  "ref": "Joshua 11:6"
+ },
+ {
+  "id": "joshua-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua do to the king of Hazor?",
+  "choices": [
+   "Made him a servant",
+   "Spared him",
+   "Smote him with the sword",
+   "Hanged him"
+  ],
+  "answer": 2,
+  "explanation": "He took Hazor, and smote the king thereof with the sword.",
+  "ref": "Joshua 11:10"
+ },
+ {
+  "id": "joshua-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Which peoples lived \"in the mountains\" among those gathered?",
+  "choices": [
+   "The Canaanite",
+   "The Hittite",
+   "The Hivite",
+   "The Jebusite"
+  ],
+  "answer": 3,
+  "explanation": "And to the Jebusite in the mountains.",
+  "ref": "Joshua 11:3"
+ },
+ {
+  "id": "joshua-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides the mountains of Judah, from which mountains were Anakims cut off?",
+  "choices": [
+   "Mount Hermon",
+   "Mount Carmel",
+   "The mountains of Israel",
+   "Mount Gerizim"
+  ],
+  "answer": 2,
+  "explanation": "From all the mountains of Judah, and from all the mountains of Israel.",
+  "ref": "Joshua 11:21"
+ },
+ {
+  "id": "joshua-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua do to the Anakims and their cities?",
+  "choices": [
+   "Made them servants",
+   "Destroyed them utterly",
+   "Gave them to Caleb",
+   "Left them"
+  ],
+  "answer": 1,
+  "explanation": "Joshua destroyed them utterly with their cities.",
+  "ref": "Joshua 11:21"
+ },
+ {
+  "id": "joshua-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "What was said of the land of Goshen in Joshua's conquest?",
+  "choices": [
+   "He took all the land of Goshen",
+   "It was burnt",
+   "He avoided it",
+   "It was given to Moses"
+  ],
+  "answer": 0,
+  "explanation": "Joshua took all that land, the hills, and all the south country, and all the land of Goshen.",
+  "ref": "Joshua 11:16"
+ },
+ {
+  "id": "joshua-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did Jabin first send word, according to the chapter?",
+  "choices": [
+   "Jobab king of Madon",
+   "Hoham king of Hebron",
+   "Sihon king of Heshbon",
+   "Og king of Bashan"
+  ],
+  "answer": 0,
+  "explanation": "Jabin sent to Jobab king of Madon, and to the king of Shimron, and to the king of Achshaph.",
+  "ref": "Joshua 11:1"
+ },
+ {
+  "id": "joshua-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "On which side were the borders of Dor?",
+  "choices": [
+   "West",
+   "South",
+   "East",
+   "North"
+  ],
+  "answer": 0,
+  "explanation": "The kings in the borders of Dor on the west.",
+  "ref": "Joshua 11:2"
+ },
+ {
+  "id": "joshua-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Baal-gad was in the valley of which place?",
+  "choices": [
+   "Ajalon",
+   "Lebanon",
+   "Merom",
+   "Jordan"
+  ],
+  "answer": 1,
+  "explanation": "Baal-gad in the valley of Lebanon under mount Hermon.",
+  "ref": "Joshua 11:17"
+ },
+ {
+  "id": "joshua-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua do at that time before he took Hazor?",
+  "choices": [
+   "Turned back",
+   "Made a league",
+   "Offered a sacrifice",
+   "Sent spies"
+  ],
+  "answer": 0,
+  "explanation": "Joshua at that time turned back, and took Hazor.",
+  "ref": "Joshua 11:10"
+ },
+ {
+  "id": "joshua-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose command was Joshua obeying when he utterly destroyed the cities?",
+  "choices": [
+   "Moses the servant of the LORD",
+   "Caleb",
+   "Aaron",
+   "Eleazar"
+  ],
+  "answer": 0,
+  "explanation": "He utterly destroyed them, as Moses the servant of the LORD commanded.",
+  "ref": "Joshua 11:12"
+ },
+ {
+  "id": "joshua-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Where were the Canaanites placed in the list?",
+  "choices": [
+   "South",
+   "North only",
+   "In Gaza",
+   "East and west"
+  ],
+  "answer": 3,
+  "explanation": "And to the Canaanite on the east and on the west.",
+  "ref": "Joshua 11:3"
+ },
+ {
+  "id": "joshua-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides Madon and Shimron, whose king did Jabin send to?",
+  "choices": [
+   "Achshaph",
+   "Gezer",
+   "Debir",
+   "Libnah"
+  ],
+  "answer": 0,
+  "explanation": "He sent to Jobab king of Madon, and to the king of Shimron, and to the king of Achshaph.",
+  "ref": "Joshua 11:1"
+ },
+ {
   "id": "old-joshua-12-1",
   "chapter": 12,
   "level": "beginner",
