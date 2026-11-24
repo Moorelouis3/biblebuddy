@@ -16656,6 +16656,646 @@
   "ref": "1 Samuel 24:17"
  },
  {
+  "id": "1-samuel-24-e-01",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Saul go to seek at En-gedi?",
+  "choices": [
+   "Samuel",
+   "David",
+   "Abner",
+   "Jonathan"
+  ],
+  "answer": 1,
+  "explanation": "It was told him, Behold, David is in the wilderness of En-gedi.",
+  "ref": "1 Samuel 24:1"
+ },
+ {
+  "id": "1-samuel-24-e-02",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were David and his men while Saul was in the cave?",
+  "choices": [
+   "In the sides of the cave",
+   "On the rocks outside",
+   "In Gibeah",
+   "At the sheepcotes"
+  ],
+  "answer": 0,
+  "explanation": "David and his men remained in the sides of the cave.",
+  "ref": "1 Samuel 24:3"
+ },
+ {
+  "id": "1-samuel-24-e-03",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Saul go into the cave?",
+  "choices": [
+   "To pray",
+   "To hide from David",
+   "To sleep",
+   "To cover his feet"
+  ],
+  "answer": 3,
+  "explanation": "Saul went in to cover his feet.",
+  "ref": "1 Samuel 24:3"
+ },
+ {
+  "id": "1-samuel-24-e-04",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David's men say the day was?",
+  "choices": [
+   "The day of the new moon",
+   "The day of Saul's death",
+   "The day the LORD would deliver his enemy to him",
+   "The day to flee"
+  ],
+  "answer": 2,
+  "explanation": "Behold the day of which the LORD said unto thee, I will deliver thine enemy into thine hand.",
+  "ref": "1 Samuel 24:4"
+ },
+ {
+  "id": "1-samuel-24-e-05",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David first address Saul after leaving the cave?",
+  "choices": [
+   "O king of Israel",
+   "My lord the king",
+   "Saul my enemy",
+   "Father of Jonathan"
+  ],
+  "answer": 1,
+  "explanation": "David cried after Saul, saying, My lord the king.",
+  "ref": "1 Samuel 24:8"
+ },
+ {
+  "id": "1-samuel-24-e-06",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David bow before Saul?",
+  "choices": [
+   "With his face to the earth",
+   "On one knee",
+   "On his back",
+   "With his hands raised"
+  ],
+  "answer": 0,
+  "explanation": "David stooped with his face to the earth, and bowed himself.",
+  "ref": "1 Samuel 24:8"
+ },
+ {
+  "id": "1-samuel-24-e-07",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul do after David spoke?",
+  "choices": [
+   "Threw his spear",
+   "Laughed",
+   "Ordered David seized",
+   "Lifted up his voice and wept"
+  ],
+  "answer": 3,
+  "explanation": "Saul lifted up his voice, and wept.",
+  "ref": "1 Samuel 24:16"
+ },
+ {
+  "id": "1-samuel-24-e-08",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "What did Saul call David when he heard his voice?",
+  "choices": [
+   "My servant",
+   "My brother",
+   "My son",
+   "My captain"
+  ],
+  "answer": 2,
+  "explanation": "Saul said, Is this thy voice, my son David?",
+  "ref": "1 Samuel 24:16"
+ },
+ {
+  "id": "1-samuel-24-e-09",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul say David would surely be?",
+  "choices": [
+   "Priest",
+   "King",
+   "Judge",
+   "Captain"
+  ],
+  "answer": 1,
+  "explanation": "I know well that thou shalt surely be king.",
+  "ref": "1 Samuel 24:20"
+ },
+ {
+  "id": "1-samuel-24-e-10",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul ask David to swear?",
+  "choices": [
+   "Not to cut off his seed",
+   "To serve him",
+   "To return to Gibeah",
+   "To spare Abner"
+  ],
+  "answer": 0,
+  "explanation": "Swear now therefore unto me by the LORD, that thou wilt not cut off my seed after me.",
+  "ref": "1 Samuel 24:21"
+ },
+ {
+  "id": "1-samuel-24-m-01",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many chosen men did Saul take to seek David?",
+  "choices": [
+   "One thousand",
+   "Six hundred",
+   "Ten thousand",
+   "Three thousand"
+  ],
+  "answer": 3,
+  "explanation": "Saul took three thousand chosen men out of all Israel.",
+  "ref": "1 Samuel 24:2"
+ },
+ {
+  "id": "1-samuel-24-m-02",
+  "chapter": 24,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Saul go to seek David?",
+  "choices": [
+   "Into the valley of Elah",
+   "Through the forest of Hareth",
+   "Upon the rocks of the wild goats",
+   "Along the Jordan"
+  ],
+  "answer": 2,
+  "explanation": "Went to seek David and his men upon the rocks of the wild goats.",
+  "ref": "1 Samuel 24:2"
+ },
+ {
+  "id": "1-samuel-24-m-03",
+  "chapter": 24,
+  "level": "medium",
+  "category": "place",
+  "question": "What stood near the cave Saul entered?",
+  "choices": [
+   "A well",
+   "The sheepcotes",
+   "A tree",
+   "A city gate"
+  ],
+  "answer": 1,
+  "explanation": "He came to the sheepcotes by the way, where was a cave.",
+  "ref": "1 Samuel 24:3"
+ },
+ {
+  "id": "1-samuel-24-m-04",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David do to Saul's robe?",
+  "choices": [
+   "Cut off the skirt secretly",
+   "Took the whole robe",
+   "Tore it",
+   "Burned it"
+  ],
+  "answer": 0,
+  "explanation": "David arose, and cut off the skirt of Saul's robe privily.",
+  "ref": "1 Samuel 24:4"
+ },
+ {
+  "id": "1-samuel-24-m-05",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David stop his men from rising against Saul?",
+  "choices": [
+   "With a command to Jonathan",
+   "With a sword",
+   "By leaving them",
+   "With his words"
+  ],
+  "answer": 3,
+  "explanation": "David stayed his servants with these words, and suffered them not to rise against Saul.",
+  "ref": "1 Samuel 24:7"
+ },
+ {
+  "id": "1-samuel-24-m-06",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David ask Saul about men's words?",
+  "choices": [
+   "Why he doubted Jonathan",
+   "Why he feared Abner",
+   "Why he heard them saying David sought his hurt",
+   "Why he trusted Doeg"
+  ],
+  "answer": 2,
+  "explanation": "Wherefore hearest thou men's words, saying, Behold, David seeketh thy hurt?",
+  "ref": "1 Samuel 24:9"
+ },
+ {
+  "id": "1-samuel-24-m-07",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say some bade him do?",
+  "choices": [
+   "Flee to Gath",
+   "Kill Saul",
+   "Take the kingdom",
+   "Burn the cave"
+  ],
+  "answer": 1,
+  "explanation": "Some bade me kill thee: but mine eye spared thee.",
+  "ref": "1 Samuel 24:10"
+ },
+ {
+  "id": "1-samuel-24-m-08",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David hold up as proof?",
+  "choices": [
+   "The skirt of Saul's robe",
+   "Saul's spear",
+   "Saul's cruse of water",
+   "Saul's sandal"
+  ],
+  "answer": 0,
+  "explanation": "See the skirt of thy robe in my hand.",
+  "ref": "1 Samuel 24:11"
+ },
+ {
+  "id": "1-samuel-24-m-09",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What proverb did David quote?",
+  "choices": [
+   "A soft answer turneth away wrath",
+   "Pride goeth before a fall",
+   "The fool hath said in his heart",
+   "Wickedness proceedeth from the wicked"
+  ],
+  "answer": 3,
+  "explanation": "As saith the proverb of the ancients, Wickedness proceedeth from the wicked.",
+  "ref": "1 Samuel 24:13"
+ },
+ {
+  "id": "1-samuel-24-m-10",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David call himself when asking whom the king pursued?",
+  "choices": [
+   "A lion's whelp",
+   "A hunted dove",
+   "A dead dog and a flea",
+   "A man of Bethlehem"
+  ],
+  "answer": 2,
+  "explanation": "After whom dost thou pursue? after a dead dog, after a flea.",
+  "ref": "1 Samuel 24:14"
+ },
+ {
+  "id": "1-samuel-24-m-11",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David ask the LORD to be between him and Saul?",
+  "choices": [
+   "Witness",
+   "Judge",
+   "Shield",
+   "Guide"
+  ],
+  "answer": 1,
+  "explanation": "The LORD therefore be judge, and judge between me and thee.",
+  "ref": "1 Samuel 24:15"
+ },
+ {
+  "id": "1-samuel-24-m-12",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul say David had rewarded him with?",
+  "choices": [
+   "Good, while Saul gave evil",
+   "Honour",
+   "Silence",
+   "Loyalty"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast rewarded me good, whereas I have rewarded thee evil.",
+  "ref": "1 Samuel 24:17"
+ },
+ {
+  "id": "1-samuel-24-m-13",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul say no man does when he finds his enemy?",
+  "choices": [
+   "Gives him bread",
+   "Spares his house",
+   "Makes a covenant",
+   "Lets him go well away"
+  ],
+  "answer": 3,
+  "explanation": "If a man find his enemy, will he let him go well away?",
+  "ref": "1 Samuel 24:19"
+ },
+ {
+  "id": "1-samuel-24-m-14",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul say would be established in David's hand?",
+  "choices": [
+   "The house of Saul",
+   "The tribe of Judah",
+   "The kingdom of Israel",
+   "The city of Gibeah"
+  ],
+  "answer": 2,
+  "explanation": "The kingdom of Israel shall be established in thine hand.",
+  "ref": "1 Samuel 24:20"
+ },
+ {
+  "id": "1-samuel-24-m-15",
+  "chapter": 24,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did David and his men go after Saul went home?",
+  "choices": [
+   "Back to Keilah",
+   "Up to the hold",
+   "To Gibeah",
+   "To the wilderness of Paran"
+  ],
+  "answer": 1,
+  "explanation": "Saul went home; but David and his men gat them up unto the hold.",
+  "ref": "1 Samuel 24:22"
+ },
+ {
+  "id": "1-samuel-24-h-01",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Saul just done when he heard David was at En-gedi?",
+  "choices": [
+   "Returned from following the Philistines",
+   "Gone to Gibeah",
+   "Anointed Jonathan",
+   "Fought the Amalekites"
+  ],
+  "answer": 0,
+  "explanation": "Saul was returned from following the Philistines.",
+  "ref": "1 Samuel 24:1"
+ },
+ {
+  "id": "1-samuel-24-h-02",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say there was not in his hand?",
+  "choices": [
+   "A sword",
+   "Hatred of Saul",
+   "Fear of the LORD",
+   "Evil nor transgression"
+  ],
+  "answer": 3,
+  "explanation": "There is neither evil nor transgression in mine hand, and I have not sinned against thee.",
+  "ref": "1 Samuel 24:11"
+ },
+ {
+  "id": "1-samuel-24-h-03",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say Saul was doing to his soul?",
+  "choices": [
+   "Troubling it",
+   "Healing it",
+   "Hunting it to take it",
+   "Counting it"
+  ],
+  "answer": 2,
+  "explanation": "Yet thou huntest my soul to take it.",
+  "ref": "1 Samuel 24:11"
+ },
+ {
+  "id": "1-samuel-24-h-04",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David call Saul in his speech?",
+  "choices": [
+   "My master only",
+   "My father",
+   "My brother",
+   "Mine enemy"
+  ],
+  "answer": 1,
+  "explanation": "Moreover, my father, see, yea, see the skirt of thy robe in my hand.",
+  "ref": "1 Samuel 24:11"
+ },
+ {
+  "id": "1-samuel-24-h-05",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say the LORD would do for him against Saul?",
+  "choices": [
+   "Avenge him",
+   "Strike Saul down",
+   "Send an angel",
+   "Take the kingdom"
+  ],
+  "answer": 0,
+  "explanation": "The LORD judge between me and thee, and the LORD avenge me of thee: but mine hand shall not be upon thee.",
+  "ref": "1 Samuel 24:12"
+ },
+ {
+  "id": "1-samuel-24-h-06",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say Saul's eyes had seen that day?",
+  "choices": [
+   "David's men with swords",
+   "The skirt of the robe",
+   "Jonathan's covenant",
+   "How the LORD delivered him into David's hand"
+  ],
+  "answer": 3,
+  "explanation": "This day thine eyes have seen how that the LORD had delivered thee to day into mine hand in the cave.",
+  "ref": "1 Samuel 24:10"
+ },
+ {
+  "id": "1-samuel-24-h-07",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul do when David cried after him?",
+  "choices": [
+   "Drew his sword",
+   "Ran away",
+   "Looked behind him",
+   "Knelt down"
+  ],
+  "answer": 2,
+  "explanation": "When Saul looked behind him, David stooped with his face to the earth.",
+  "ref": "1 Samuel 24:8"
+ },
+ {
+  "id": "1-samuel-24-h-08",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul ask the LORD to do for David?",
+  "choices": [
+   "Make him king at once",
+   "Reward him good",
+   "Protect his seed",
+   "Forgive Saul"
+  ],
+  "answer": 1,
+  "explanation": "The LORD reward thee good for that thou hast done unto me this day.",
+  "ref": "1 Samuel 24:19"
+ },
+ {
+  "id": "1-samuel-24-h-09",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides his seed, what did Saul ask David not to destroy?",
+  "choices": [
+   "His name out of his father's house",
+   "His city Gibeah",
+   "His throne",
+   "His armies"
+  ],
+  "answer": 0,
+  "explanation": "That thou wilt not destroy my name out of my father's house.",
+  "ref": "1 Samuel 24:21"
+ },
+ {
+  "id": "1-samuel-24-h-10",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul do after leaving the cave?",
+  "choices": [
+   "Slept by the sheepcotes",
+   "Called his men to the cave",
+   "Went to En-gedi",
+   "Went on his way"
+  ],
+  "answer": 3,
+  "explanation": "Saul rose up out of the cave, and went on his way.",
+  "ref": "1 Samuel 24:7"
+ },
+ {
+  "id": "1-samuel-24-h-11",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say the LORD would not allow him to do to his master?",
+  "choices": [
+   "Take his robe",
+   "Speak to him",
+   "Stretch forth his hand against him",
+   "Follow him"
+  ],
+  "answer": 2,
+  "explanation": "The LORD forbid that I should do this thing unto my master, to stretch forth mine hand against him.",
+  "ref": "1 Samuel 24:6"
+ },
+ {
+  "id": "1-samuel-24-h-12",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Saul say David had dealt with him that day?",
+  "choices": [
+   "Harshly",
+   "Well",
+   "Slyly",
+   "Proudly"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast shewed this day how that thou hast dealt well with me.",
+  "ref": "1 Samuel 24:18"
+ },
+ {
+  "id": "1-samuel-24-h-13",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say about his hand and Saul, twice in his speech?",
+  "choices": [
+   "It shall not be upon thee",
+   "It shall slay thee",
+   "It shall be thy shield",
+   "It shall deliver thee"
+  ],
+  "answer": 0,
+  "explanation": "Mine hand shall not be upon thee.",
+  "ref": "1 Samuel 24:12"
+ },
+ {
+  "id": "1-samuel-24-h-14",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David do in answer to Saul's request?",
+  "choices": [
+   "Refused",
+   "Asked for time",
+   "Wept only",
+   "Swore to Saul"
+  ],
+  "answer": 3,
+  "explanation": "David sware unto Saul.",
+  "ref": "1 Samuel 24:22"
+ },
+ {
+  "id": "1-samuel-24-h-15",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David's men remind him the LORD had said?",
+  "choices": [
+   "Go not near Saul",
+   "Thou shalt be king",
+   "I will deliver thine enemy into thine hand",
+   "Fear not"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said unto thee, Behold, I will deliver thine enemy into thine hand.",
+  "ref": "1 Samuel 24:4"
+ },
+ {
   "id": "old-1-samuel-25-1",
   "chapter": 25,
   "level": "beginner",
