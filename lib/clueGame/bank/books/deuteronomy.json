@@ -22448,6 +22448,646 @@
   "ref": "Deuteronomy 32:46–47"
  },
  {
+  "id": "deuteronomy-32-e-01",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which mountain was Moses told to go up and die on?",
+  "choices": [
+   "Nebo",
+   "Sinai",
+   "Hor",
+   "Ebal"
+  ],
+  "answer": 0,
+  "explanation": "Get thee up into this mountain Abarim, unto mount Nebo.",
+  "ref": "Deuteronomy 32:49"
+ },
+ {
+  "id": "deuteronomy-32-e-02",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who died on mount Hor and was gathered to his people?",
+  "choices": [
+   "Aaron",
+   "Miriam",
+   "Joshua",
+   "Eleazar"
+  ],
+  "answer": 0,
+  "explanation": "As Aaron thy brother died in mount Hor, and was gathered unto his people.",
+  "ref": "Deuteronomy 32:50"
+ },
+ {
+  "id": "deuteronomy-32-e-03",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who spoke all the words of the song in the ears of the people?",
+  "choices": [
+   "Moses",
+   "Joshua",
+   "Aaron",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "Moses came and spake all the words of this song in the ears of the people.",
+  "ref": "Deuteronomy 32:44"
+ },
+ {
+  "id": "deuteronomy-32-e-04",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which land was mount Nebo?",
+  "choices": [
+   "Moab",
+   "Egypt",
+   "Midian",
+   "Edom"
+  ],
+  "answer": 0,
+  "explanation": "Mount Nebo, which is in the land of Moab, that is over against Jericho.",
+  "ref": "Deuteronomy 32:49"
+ },
+ {
+  "id": "deuteronomy-32-e-05",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "place",
+  "question": "What land would Moses see from Nebo?",
+  "choices": [
+   "The land of Canaan",
+   "The land of Egypt",
+   "The land of Midian",
+   "The land of Edom"
+  ],
+  "answer": 0,
+  "explanation": "Behold the land of Canaan, which I give unto the children of Israel for a possession.",
+  "ref": "Deuteronomy 32:49"
+ },
+ {
+  "id": "deuteronomy-32-e-06",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the LORD find Jacob?",
+  "choices": [
+   "In a desert land",
+   "In Egypt",
+   "In a garden",
+   "In a city"
+  ],
+  "answer": 0,
+  "explanation": "He found him in a desert land, and in the waste howling wilderness.",
+  "ref": "Deuteronomy 32:10"
+ },
+ {
+  "id": "deuteronomy-32-e-07",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What bird is God's care for Israel compared to?",
+  "choices": [
+   "An eagle",
+   "A dove",
+   "A hen",
+   "A raven"
+  ],
+  "answer": 0,
+  "explanation": "As an eagle stirreth up her nest, fluttereth over her young, beareth them on her wings.",
+  "ref": "Deuteronomy 32:11"
+ },
+ {
+  "id": "deuteronomy-32-e-08",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did Israel sacrifice instead of God?",
+  "choices": [
+   "Devils",
+   "The sun",
+   "Baal of Peor",
+   "Their kings"
+  ],
+  "answer": 0,
+  "explanation": "They sacrificed unto devils, not to God.",
+  "ref": "Deuteronomy 32:17"
+ },
+ {
+  "id": "deuteronomy-32-e-09",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom does vengeance belong?",
+  "choices": [
+   "The LORD",
+   "The priests",
+   "The judges",
+   "The kings"
+  ],
+  "answer": 0,
+  "explanation": "To me belongeth vengeance, and recompence.",
+  "ref": "Deuteronomy 32:35"
+ },
+ {
+  "id": "deuteronomy-32-e-10",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say He does, besides killing?",
+  "choices": [
+   "Makes alive",
+   "Sends rain",
+   "Builds cities",
+   "Divides nations"
+  ],
+  "answer": 0,
+  "explanation": "I kill, and I make alive; I wound, and I heal.",
+  "ref": "Deuteronomy 32:39"
+ },
+ {
+  "id": "deuteronomy-32-m-01",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say he would publish?",
+  "choices": [
+   "The law of Moses",
+   "The names of the tribes",
+   "The name of the LORD",
+   "The song of Joshua"
+  ],
+  "answer": 2,
+  "explanation": "Because I will publish the name of the LORD: ascribe ye greatness unto our God.",
+  "ref": "Deuteronomy 32:3"
+ },
+ {
+  "id": "deuteronomy-32-m-02",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is God described as to truth and iniquity?",
+  "choices": [
+   "A God of mystery",
+   "A God of silence",
+   "A God of truth and without iniquity",
+   "A God of wrath only"
+  ],
+  "answer": 2,
+  "explanation": "A God of truth and without iniquity, just and right is he.",
+  "ref": "Deuteronomy 32:4"
+ },
+ {
+  "id": "deuteronomy-32-m-03",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses call the people who corrupted themselves?",
+  "choices": [
+   "A stiff and weary host",
+   "A foolish and idle people",
+   "A perverse and crooked generation",
+   "A proud and wealthy nation"
+  ],
+  "answer": 2,
+  "explanation": "They are a perverse and crooked generation.",
+  "ref": "Deuteronomy 32:5"
+ },
+ {
+  "id": "deuteronomy-32-m-04",
+  "chapter": 32,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Moses say had bought and made Israel?",
+  "choices": [
+   "The kings of Canaan",
+   "The priests",
+   "The LORD, their father",
+   "Their fathers' leader"
+  ],
+  "answer": 2,
+  "explanation": "Is not he thy father that hath bought thee? hath he not made thee, and established thee?",
+  "ref": "Deuteronomy 32:6"
+ },
+ {
+  "id": "deuteronomy-32-m-05",
+  "chapter": 32,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom were Israel to ask about the days of old?",
+  "choices": [
+   "The priests and prophets",
+   "The stranger and the judge",
+   "Their father and their elders",
+   "The king and the captain"
+  ],
+  "answer": 2,
+  "explanation": "Ask thy father, and he will shew thee; thy elders, and they will tell thee.",
+  "ref": "Deuteronomy 32:7"
+ },
+ {
+  "id": "deuteronomy-32-m-06",
+  "chapter": 32,
+  "level": "medium",
+  "category": "person",
+  "question": "Who is the lot of the LORD's inheritance?",
+  "choices": [
+   "Esau",
+   "Joseph",
+   "Jacob",
+   "Levi"
+  ],
+  "answer": 2,
+  "explanation": "The LORD'S portion is his people; Jacob is the lot of his inheritance.",
+  "ref": "Deuteronomy 32:9"
+ },
+ {
+  "id": "deuteronomy-32-m-07",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD keep Israel in the wilderness?",
+  "choices": [
+   "As a flock of sheep",
+   "As a vine",
+   "As the apple of his eye",
+   "As a tower"
+  ],
+  "answer": 2,
+  "explanation": "He led him about, he instructed him, he kept him as the apple of his eye.",
+  "ref": "Deuteronomy 32:10"
+ },
+ {
+  "id": "deuteronomy-32-m-08",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who was with the LORD when He led Israel?",
+  "choices": [
+   "The angel of the LORD",
+   "The cloud only",
+   "No strange god",
+   "Moses alone"
+  ],
+  "answer": 2,
+  "explanation": "So the LORD alone did lead him, and there was no strange god with him.",
+  "ref": "Deuteronomy 32:12"
+ },
+ {
+  "id": "deuteronomy-32-m-09",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel made to suck out of the rock?",
+  "choices": [
+   "Water",
+   "Milk",
+   "Honey",
+   "Wine"
+  ],
+  "answer": 2,
+  "explanation": "He made him to suck honey out of the rock, and oil out of the flinty rock.",
+  "ref": "Deuteronomy 32:13"
+ },
+ {
+  "id": "deuteronomy-32-m-10",
+  "chapter": 32,
+  "level": "medium",
+  "category": "place",
+  "question": "Which breed of rams is named among Israel's food?",
+  "choices": [
+   "Of Moab",
+   "Of Egypt",
+   "Of Bashan",
+   "Of Edom"
+  ],
+  "answer": 2,
+  "explanation": "Rams of the breed of Bashan, and goats.",
+  "ref": "Deuteronomy 32:14"
+ },
+ {
+  "id": "deuteronomy-32-m-11",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did Israel provoke the LORD to jealousy?",
+  "choices": [
+   "Idle feasts",
+   "Golden crowns",
+   "Strange gods and abominations",
+   "Broken vows"
+  ],
+  "answer": 2,
+  "explanation": "They provoked him to jealousy with strange gods, with abominations provoked they him to anger.",
+  "ref": "Deuteronomy 32:16"
+ },
+ {
+  "id": "deuteronomy-32-m-12",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of gods had they served that their fathers feared not?",
+  "choices": [
+   "Gods of the sea",
+   "Gods of the sun",
+   "New gods that came newly up",
+   "Gods of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "To new gods that came newly up, whom your fathers feared not.",
+  "ref": "Deuteronomy 32:17"
+ },
+ {
+  "id": "deuteronomy-32-m-13",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would do to see their end?",
+  "choices": [
+   "Send a flood",
+   "Leave them alone",
+   "Hide His face",
+   "Send a prophet"
+  ],
+  "answer": 2,
+  "explanation": "I will hide my face from them, I will see what their end shall be.",
+  "ref": "Deuteronomy 32:20"
+ },
+ {
+  "id": "deuteronomy-32-m-14",
+  "chapter": 32,
+  "level": "medium",
+  "category": "place",
+  "question": "Whose vine was the enemy's vine said to be of?",
+  "choices": [
+   "Egypt",
+   "Moab",
+   "Sodom",
+   "Edom"
+  ],
+  "answer": 2,
+  "explanation": "Their vine is of the vine of Sodom, and of the fields of Gomorrah.",
+  "ref": "Deuteronomy 32:32"
+ },
+ {
+  "id": "deuteronomy-32-m-15",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD ask about the gods they trusted?",
+  "choices": [
+   "Who made them?",
+   "Who carried them?",
+   "Where are their gods?",
+   "Who will bring them back?"
+  ],
+  "answer": 2,
+  "explanation": "And he shall say, Where are their gods, their rock in whom they trusted?",
+  "ref": "Deuteronomy 32:37"
+ },
+ {
+  "id": "deuteronomy-32-h-01",
+  "chapter": 32,
+  "level": "hard",
+  "category": "person",
+  "question": "Who spoke the words of the song with Moses?",
+  "choices": [
+   "Hoshea the son of Nun",
+   "Caleb the son of Jephunneh",
+   "Eleazar the son of Aaron",
+   "Phinehas the priest"
+  ],
+  "answer": 0,
+  "explanation": "Moses came and spake... he, and Hoshea the son of Nun.",
+  "ref": "Deuteronomy 32:44"
+ },
+ {
+  "id": "deuteronomy-32-h-02",
+  "chapter": 32,
+  "level": "hard",
+  "category": "place",
+  "question": "In which wilderness was Meribah-Kadesh?",
+  "choices": [
+   "The wilderness of Sinai",
+   "The wilderness of Paran",
+   "The wilderness of Shur",
+   "The wilderness of Zin"
+  ],
+  "answer": 3,
+  "explanation": "The waters of Meribah-Kadesh, in the wilderness of Zin.",
+  "ref": "Deuteronomy 32:51"
+ },
+ {
+  "id": "deuteronomy-32-h-03",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was Moses not to enter the land?",
+  "choices": [
+   "They had built a golden calf",
+   "They had murmured against Aaron",
+   "They had refused to cross Jordan",
+   "They had not sanctified the LORD among Israel"
+  ],
+  "answer": 3,
+  "explanation": "Because ye sanctified me not in the midst of the children of Israel.",
+  "ref": "Deuteronomy 32:51"
+ },
+ {
+  "id": "deuteronomy-32-h-04",
+  "chapter": 32,
+  "level": "hard",
+  "category": "place",
+  "question": "Mount Nebo was part of which mountain?",
+  "choices": [
+   "Horeb",
+   "Hermon",
+   "Carmel",
+   "Abarim"
+  ],
+  "answer": 3,
+  "explanation": "Get thee up into this mountain Abarim, unto mount Nebo.",
+  "ref": "Deuteronomy 32:49"
+ },
+ {
+  "id": "deuteronomy-32-h-05",
+  "chapter": 32,
+  "level": "hard",
+  "category": "place",
+  "question": "Over against which city was Nebo?",
+  "choices": [
+   "Heshbon",
+   "Hebron",
+   "Ai",
+   "Jericho"
+  ],
+  "answer": 3,
+  "explanation": "Mount Nebo... that is over against Jericho.",
+  "ref": "Deuteronomy 32:49"
+ },
+ {
+  "id": "deuteronomy-32-h-06",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the LORD speak to Moses about going up Nebo?",
+  "choices": [
+   "The next morning",
+   "After forty days",
+   "At the feast",
+   "That selfsame day"
+  ],
+  "answer": 3,
+  "explanation": "The LORD spake unto Moses that selfsame day.",
+  "ref": "Deuteronomy 32:48"
+ },
+ {
+  "id": "deuteronomy-32-h-07",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to what did the Most High set the bounds of the peoples?",
+  "choices": [
+   "The number of the tribes of Canaan",
+   "The length of the rivers",
+   "The names of the fathers",
+   "The number of the children of Israel"
+  ],
+  "answer": 3,
+  "explanation": "He set the bounds of the people according to the number of the children of Israel.",
+  "ref": "Deuteronomy 32:8"
+ },
+ {
+  "id": "deuteronomy-32-h-08",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He would spend upon them?",
+  "choices": [
+   "His treasures",
+   "His sword only",
+   "His storehouses",
+   "His arrows"
+  ],
+  "answer": 3,
+  "explanation": "I will heap mischiefs upon them; I will spend mine arrows upon them.",
+  "ref": "Deuteronomy 32:23"
+ },
+ {
+  "id": "deuteronomy-32-h-09",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many would two put to flight if the Rock had not sold them?",
+  "choices": [
+   "A thousand",
+   "A hundred",
+   "Twelve thousand",
+   "Ten thousand"
+  ],
+  "answer": 3,
+  "explanation": "How should one chase a thousand, and two put ten thousand to flight?",
+  "ref": "Deuteronomy 32:30"
+ },
+ {
+  "id": "deuteronomy-32-h-10",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides hunger and burning heat, what would the LORD send on them?",
+  "choices": [
+   "Locusts and frogs",
+   "Hail and fire",
+   "Darkness and plagues",
+   "The teeth of beasts and the poison of serpents"
+  ],
+  "answer": 3,
+  "explanation": "I will also send the teeth of beasts upon them, with the poison of serpents of the dust.",
+  "ref": "Deuteronomy 32:24"
+ },
+ {
+  "id": "deuteronomy-32-h-11",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How far would the fire kindled in God's anger burn?",
+  "choices": [
+   "Unto the sea",
+   "Unto the camp",
+   "Unto the mountains of Moab",
+   "Unto the lowest hell"
+  ],
+  "answer": 3,
+  "explanation": "A fire is kindled in mine anger, and shall burn unto the lowest hell.",
+  "ref": "Deuteronomy 32:22"
+ },
+ {
+  "id": "deuteronomy-32-h-12",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say as He lifts His hand to heaven?",
+  "choices": [
+   "I am the first",
+   "Fear not",
+   "I have spoken",
+   "I live for ever"
+  ],
+  "answer": 3,
+  "explanation": "I lift up my hand to heaven, and say, I live for ever.",
+  "ref": "Deuteronomy 32:40"
+ },
+ {
+  "id": "deuteronomy-32-h-13",
+  "chapter": 32,
+  "level": "hard",
+  "category": "person",
+  "question": "Who does the LORD say should rejoice with His people?",
+  "choices": [
+   "The priests",
+   "The kings",
+   "The elders",
+   "The nations"
+  ],
+  "answer": 3,
+  "explanation": "Rejoice, O ye nations, with his people.",
+  "ref": "Deuteronomy 32:43"
+ },
+ {
+  "id": "deuteronomy-32-h-14",
+  "chapter": 32,
+  "level": "hard",
+  "category": "person",
+  "question": "Who were judges that their rock is not as our Rock?",
+  "choices": [
+   "The enemies themselves",
+   "The priests",
+   "The elders",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "For their rock is not as our Rock, even our enemies themselves being judges.",
+  "ref": "Deuteronomy 32:31"
+ },
+ {
+  "id": "deuteronomy-32-h-15",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Israel prolong in the land if they set their hearts to the words?",
+  "choices": [
+   "Their journeys",
+   "Their feasts",
+   "Their wars",
+   "Their days"
+  ],
+  "answer": 3,
+  "explanation": "Through this thing ye shall prolong your days in the land, whither ye go over Jordan to possess it.",
+  "ref": "Deuteronomy 32:47"
+ },
+ {
   "id": "old-deuteronomy-33-1",
   "chapter": 33,
   "level": "beginner",
