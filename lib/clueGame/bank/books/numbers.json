@@ -3680,6 +3680,646 @@
   "ref": "Numbers 6:24"
  },
  {
+  "id": "numbers-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who could take the vow of a Nazarite?",
+  "choices": [
+   "Only the men of Israel",
+   "Only the Levites",
+   "Either man or woman",
+   "Only priests"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said, When either man or woman shall separate themselves to vow a vow of a Nazarite.",
+  "ref": "Numbers 6:2"
+ },
+ {
+  "id": "numbers-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Moses told to give the blessing to speak over Israel?",
+  "choices": [
+   "The elders",
+   "Joshua",
+   "The twelve princes",
+   "Aaron and his sons"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said, Speak unto Aaron and unto his sons, On this wise ye shall bless the children of Israel.",
+  "ref": "Numbers 6:23"
+ },
+ {
+  "id": "numbers-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a Nazarite called all the days of his separation?",
+  "choices": [
+   "Holy unto the LORD",
+   "A priest of Aaron",
+   "A servant of Moses",
+   "A captain of Israel"
+  ],
+  "answer": 0,
+  "explanation": "All the days of his separation he is holy unto the LORD.",
+  "ref": "Numbers 6:8"
+ },
+ {
+  "id": "numbers-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides wine, what fruit could a Nazarite not eat, fresh or dried?",
+  "choices": [
+   "Dates",
+   "Figs",
+   "Grapes",
+   "Pomegranates"
+  ],
+  "answer": 2,
+  "explanation": "He shall drink no liquor of grapes, nor eat moist grapes, or dried.",
+  "ref": "Numbers 6:3"
+ },
+ {
+  "id": "numbers-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say Aaron's sons would put upon the children of Israel?",
+  "choices": [
+   "A mark of blood",
+   "His name",
+   "Oil",
+   "Ashes"
+  ],
+  "answer": 1,
+  "explanation": "They shall put my name upon the children of Israel; and I will bless them.",
+  "ref": "Numbers 6:27"
+ },
+ {
+  "id": "numbers-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the Nazarite brought when his days of separation were fulfilled?",
+  "choices": [
+   "The river Jordan",
+   "The top of the mount",
+   "The city gate",
+   "The door of the tabernacle"
+  ],
+  "answer": 3,
+  "explanation": "He shall be brought unto the door of the tabernacle of the congregation.",
+  "ref": "Numbers 6:13"
+ },
+ {
+  "id": "numbers-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the priestly blessing say the LORD will give?",
+  "choices": [
+   "Victory",
+   "Long life",
+   "Riches",
+   "Peace"
+  ],
+  "answer": 3,
+  "explanation": "The LORD lift up his countenance upon thee, and give thee peace.",
+  "ref": "Numbers 6:26"
+ },
+ {
+  "id": "numbers-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Nazarite do with his shaven hair at the end of his vow?",
+  "choices": [
+   "Gave it to the priest",
+   "Hung it on the tabernacle",
+   "Buried it",
+   "Put it in the fire"
+  ],
+  "answer": 3,
+  "explanation": "He shall take the hair of his separation, and put it in the fire which is under the sacrifice of the peace offerings.",
+  "ref": "Numbers 6:18"
+ },
+ {
+  "id": "numbers-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After his offerings were done, what could the Nazarite drink again?",
+  "choices": [
+   "Oil",
+   "Wine",
+   "Honey",
+   "Milk"
+  ],
+  "answer": 1,
+  "explanation": "After that the Nazarite may drink wine.",
+  "ref": "Numbers 6:20"
+ },
+ {
+  "id": "numbers-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In the blessing, what does the LORD make to shine upon you?",
+  "choices": [
+   "His face",
+   "His light",
+   "His glory",
+   "His sword"
+  ],
+  "answer": 0,
+  "explanation": "The LORD make his face shine upon thee, and be gracious unto thee.",
+  "ref": "Numbers 6:25"
+ },
+ {
+  "id": "numbers-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "For which relatives was a Nazarite not to make himself unclean?",
+  "choices": [
+   "Only his father",
+   "His wife and children",
+   "His servants and cattle",
+   "His father, mother, brother and sister"
+  ],
+  "answer": 3,
+  "explanation": "He shall not make himself unclean for his father, or for his mother, for his brother, or for his sister, when they die.",
+  "ref": "Numbers 6:7"
+ },
+ {
+  "id": "numbers-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the Nazarite not to defile himself, even for family?",
+  "choices": [
+   "It was the Sabbath",
+   "The consecration of his God was upon his head",
+   "He was a priest",
+   "He was an old man"
+  ],
+  "answer": 1,
+  "explanation": "He shall not make himself unclean, because the consecration of his God is upon his head.",
+  "ref": "Numbers 6:7"
+ },
+ {
+  "id": "numbers-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day did a defiled Nazarite shave his head?",
+  "choices": [
+   "The first day",
+   "The third day",
+   "The eighth day",
+   "The seventh day"
+  ],
+  "answer": 3,
+  "explanation": "He shall shave his head in the day of his cleansing, on the seventh day shall he shave it.",
+  "ref": "Numbers 6:9"
+ },
+ {
+  "id": "numbers-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did a defiled Nazarite bring to the priest on the eighth day?",
+  "choices": [
+   "Two turtles or two young pigeons",
+   "A basket of bread",
+   "A bullock",
+   "A lamb and a ram"
+  ],
+  "answer": 0,
+  "explanation": "On the eighth day he shall bring two turtles, or two young pigeons, to the priest.",
+  "ref": "Numbers 6:10"
+ },
+ {
+  "id": "numbers-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the earlier days of a defiled Nazarite's separation?",
+  "choices": [
+   "They carried over to the next year",
+   "They were lost",
+   "They counted double",
+   "They were forgiven"
+  ],
+  "answer": 1,
+  "explanation": "The days that were before shall be lost, because his separation was defiled.",
+  "ref": "Numbers 6:12"
+ },
+ {
+  "id": "numbers-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the Nazarite's burnt offering when his days were fulfilled?",
+  "choices": [
+   "A ewe lamb",
+   "A bullock",
+   "A ram",
+   "A he lamb of the first year"
+  ],
+  "answer": 3,
+  "explanation": "He shall offer one he lamb of the first year without blemish for a burnt offering.",
+  "ref": "Numbers 6:14"
+ },
+ {
+  "id": "numbers-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the Nazarite's peace offering at the end of his vow?",
+  "choices": [
+   "A basket of grain",
+   "One bullock",
+   "Two goats",
+   "One ram without blemish"
+  ],
+  "answer": 3,
+  "explanation": "He shall offer one ram without blemish for peace offerings.",
+  "ref": "Numbers 6:14"
+ },
+ {
+  "id": "numbers-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Who waved the shoulder, cake and wafer before the LORD?",
+  "choices": [
+   "The Nazarite himself",
+   "The priest",
+   "A Levite",
+   "Moses"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall wave them for a wave offering before the LORD.",
+  "ref": "Numbers 6:20"
+ },
+ {
+  "id": "numbers-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD promise after His name was put on Israel?",
+  "choices": [
+   "I will give them the land",
+   "I will bless them",
+   "I will dwell among them",
+   "I will hide my face"
+  ],
+  "answer": 1,
+  "explanation": "They shall put my name upon the children of Israel; and I will bless them.",
+  "ref": "Numbers 6:27"
+ },
+ {
+  "id": "numbers-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In the blessing, what does the LORD be toward you after His face shines?",
+  "choices": [
+   "Near",
+   "Gracious",
+   "Silent",
+   "Angry"
+  ],
+  "answer": 1,
+  "explanation": "The LORD make his face shine upon thee, and be gracious unto thee.",
+  "ref": "Numbers 6:25"
+ },
+ {
+  "id": "numbers-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of the two birds a defiled Nazarite brought, one was a sin offering. What was the other?",
+  "choices": [
+   "A peace offering",
+   "A trespass offering",
+   "A meat offering",
+   "A burnt offering"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall offer the one for a sin offering, and the other for a burnt offering.",
+  "ref": "Numbers 6:11"
+ },
+ {
+  "id": "numbers-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the priest make atonement for the defiled Nazarite?",
+  "choices": [
+   "He broke the Sabbath",
+   "He drank wine",
+   "He cut his hair",
+   "He sinned by the dead"
+  ],
+  "answer": 3,
+  "explanation": "He made an atonement for him, for that he sinned by the dead.",
+  "ref": "Numbers 6:11"
+ },
+ {
+  "id": "numbers-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom was Moses told to speak the law of the Nazarite?",
+  "choices": [
+   "The children of Israel",
+   "The elders",
+   "Aaron and his sons",
+   "The priests only"
+  ],
+  "answer": 0,
+  "explanation": "Speak unto the children of Israel, and say unto them, When either man or woman shall separate themselves.",
+  "ref": "Numbers 6:2"
+ },
+ {
+  "id": "numbers-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What defiled a Nazarite's head of consecration in this chapter?",
+  "choices": [
+   "Eating grapes",
+   "A man dying very suddenly by him",
+   "Touching an unclean beast",
+   "Walking in a strange land"
+  ],
+  "answer": 1,
+  "explanation": "If any man die very suddenly by him, he hath defiled the head of his consecration.",
+  "ref": "Numbers 6:9"
+ },
+ {
+  "id": "numbers-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the blessing say the LORD will lift up upon you?",
+  "choices": [
+   "His hand",
+   "His banner",
+   "His countenance",
+   "His voice"
+  ],
+  "answer": 2,
+  "explanation": "The LORD lift up his countenance upon thee, and give thee peace.",
+  "ref": "Numbers 6:26"
+ },
+ {
+  "id": "numbers-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day did a defiled Nazarite bring his birds to the priest?",
+  "choices": [
+   "The eighth day",
+   "The seventh day",
+   "The third day",
+   "The first day"
+  ],
+  "answer": 0,
+  "explanation": "On the eighth day he shall bring two turtles, or two young pigeons, to the priest.",
+  "ref": "Numbers 6:10"
+ },
+ {
+  "id": "numbers-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What offering was the lamb of the first year for a defiled Nazarite?",
+  "choices": [
+   "A burnt offering",
+   "A sin offering",
+   "A peace offering",
+   "A trespass offering"
+  ],
+  "answer": 3,
+  "explanation": "He shall bring a lamb of the first year for a trespass offering.",
+  "ref": "Numbers 6:12"
+ },
+ {
+  "id": "numbers-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the Nazarite's sin offering when his days were fulfilled?",
+  "choices": [
+   "Two turtledoves",
+   "One he lamb",
+   "One ram",
+   "One ewe lamb of the first year"
+  ],
+  "answer": 3,
+  "explanation": "One ewe lamb of the first year without blemish for a sin offering.",
+  "ref": "Numbers 6:14"
+ },
+ {
+  "id": "numbers-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the cakes in the Nazarite's basket made of?",
+  "choices": [
+   "Wheat and leaven",
+   "Fine flour mingled with oil",
+   "Barley meal and honey",
+   "Dates and figs"
+  ],
+  "answer": 1,
+  "explanation": "A basket of unleavened bread, cakes of fine flour mingled with oil.",
+  "ref": "Numbers 6:15"
+ },
+ {
+  "id": "numbers-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What part of the ram did the priest take, boiled, for the Nazarite's hands?",
+  "choices": [
+   "The sodden shoulder",
+   "The head",
+   "The breast",
+   "The kidneys"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall take the sodden shoulder of the ram, and one unleavened cake.",
+  "ref": "Numbers 6:19"
+ },
+ {
+  "id": "numbers-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was holy for the priest, with the wave breast?",
+  "choices": [
+   "The hide",
+   "The head of the ram",
+   "The heave shoulder",
+   "The fat of the kidneys"
+  ],
+  "answer": 2,
+  "explanation": "This is holy for the priest, with the wave breast and heave shoulder.",
+  "ref": "Numbers 6:20"
+ },
+ {
+  "id": "numbers-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Nazarite ate nothing of the vine tree, from the kernels to what?",
+  "choices": [
+   "The husk",
+   "The root",
+   "The leaf",
+   "The branch"
+  ],
+  "answer": 0,
+  "explanation": "He shall eat nothing that is made of the vine tree, from the kernels even to the husk.",
+  "ref": "Numbers 6:4"
+ },
+ {
+  "id": "numbers-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides vinegar of wine, what vinegar was a Nazarite not to drink?",
+  "choices": [
+   "Vinegar of honey",
+   "Vinegar of barley",
+   "Vinegar of strong drink",
+   "Vinegar of figs"
+  ],
+  "answer": 2,
+  "explanation": "He shall drink no vinegar of wine, or vinegar of strong drink.",
+  "ref": "Numbers 6:3"
+ },
+ {
+  "id": "numbers-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many unleavened cakes did the priest take out of the basket?",
+  "choices": [
+   "Twelve",
+   "Three",
+   "Two",
+   "One"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall take one unleavened cake out of the basket, and one unleavened wafer.",
+  "ref": "Numbers 6:19"
+ },
+ {
+  "id": "numbers-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priest do to the defiled Nazarite's head on the day of his offering?",
+  "choices": [
+   "Hallowed it",
+   "Shaved it",
+   "Washed it",
+   "Anointed it with oil"
+  ],
+  "answer": 0,
+  "explanation": "He sinned by the dead, and shall hallow his head that same day.",
+  "ref": "Numbers 6:11"
+ },
+ {
+  "id": "numbers-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what were the wafers of unleavened bread anointed?",
+  "choices": [
+   "Oil",
+   "Blood",
+   "Honey",
+   "Water"
+  ],
+  "answer": 0,
+  "explanation": "Wafers of unleavened bread anointed with oil.",
+  "ref": "Numbers 6:15"
+ },
+ {
+  "id": "numbers-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Nazarite must do according to what, says the law?",
+  "choices": [
+   "The vow which he vowed",
+   "The choice of the priest",
+   "The word of the elders",
+   "The number of his years"
+  ],
+  "answer": 0,
+  "explanation": "According to the vow which he vowed, so he must do after the law of his separation.",
+  "ref": "Numbers 6:21"
+ },
+ {
+  "id": "numbers-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many lambs did the Nazarite bring, besides the ram, at the end?",
+  "choices": [
+   "Two",
+   "One",
+   "Seven",
+   "Three"
+  ],
+  "answer": 0,
+  "explanation": "One he lamb and one ewe lamb of the first year, and one ram.",
+  "ref": "Numbers 6:14"
+ },
+ {
+  "id": "numbers-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With the bread, the Nazarite brought a meat offering and what other offering?",
+  "choices": [
+   "A wave offering",
+   "A drink offering",
+   "A trespass offering",
+   "A heave offering"
+  ],
+  "answer": 1,
+  "explanation": "A basket of unleavened bread, and their meat offering, and their drink offerings.",
+  "ref": "Numbers 6:15"
+ },
+ {
+  "id": "numbers-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which offerings did the priest offer first before the ram?",
+  "choices": [
+   "Sin offering and burnt offering",
+   "Trespass and meat offering",
+   "Peace and drink offering",
+   "Wave and heave offering"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall offer his sin offering, and his burnt offering.",
+  "ref": "Numbers 6:16"
+ },
+ {
   "id": "old-numbers-7-1",
   "chapter": 7,
   "level": "beginner",
