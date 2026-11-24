@@ -15968,6 +15968,646 @@
   "ref": "Deuteronomy 23:19"
  },
  {
+  "id": "deuteronomy-23-e-01",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom was Israel not to abhor, because he was their brother?",
+  "choices": [
+   "An Ammonite",
+   "An Edomite",
+   "A Moabite",
+   "A Midianite"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not abhor an Edomite; for he is thy brother.",
+  "ref": "Deuteronomy 23:7"
+ },
+ {
+  "id": "deuteronomy-23-e-02",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom was Israel not to abhor, because they had been strangers in his land?",
+  "choices": [
+   "An Edomite",
+   "An Egyptian",
+   "A Moabite",
+   "An Amorite"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not abhor an Egyptian; because thou wast a stranger in his land.",
+  "ref": "Deuteronomy 23:7"
+ },
+ {
+  "id": "deuteronomy-23-e-03",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD turn Balaam's curse into?",
+  "choices": [
+   "A warning",
+   "A blessing",
+   "A famine",
+   "A wall"
+  ],
+  "answer": 1,
+  "explanation": "The LORD thy God turned the curse into a blessing unto thee.",
+  "ref": "Deuteronomy 23:5"
+ },
+ {
+  "id": "deuteronomy-23-e-04",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the Moabites hire to curse Israel?",
+  "choices": [
+   "Balak",
+   "Balaam",
+   "Beor",
+   "Bela"
+  ],
+  "answer": 1,
+  "explanation": "They hired against thee Balaam the son of Beor to curse thee.",
+  "ref": "Deuteronomy 23:4"
+ },
+ {
+  "id": "deuteronomy-23-e-05",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was an unclean man to go during the night's uncleanness?",
+  "choices": [
+   "To the tabernacle",
+   "Outside the camp",
+   "To the elders",
+   "Into his tent"
+  ],
+  "answer": 1,
+  "explanation": "He shall go abroad out of the camp, he shall not come within the camp.",
+  "ref": "Deuteronomy 23:10"
+ },
+ {
+  "id": "deuteronomy-23-e-06",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the unclean man to do when evening came?",
+  "choices": [
+   "Offer a lamb",
+   "Wash himself with water",
+   "Shave his head",
+   "Fast till morning"
+  ],
+  "answer": 1,
+  "explanation": "When evening cometh on, he shall wash himself with water.",
+  "ref": "Deuteronomy 23:11"
+ },
+ {
+  "id": "deuteronomy-23-e-07",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to have upon the weapon?",
+  "choices": [
+   "A banner",
+   "A paddle",
+   "A lamp",
+   "A sheath of gold"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt have a paddle upon thy weapon.",
+  "ref": "Deuteronomy 23:13"
+ },
+ {
+  "id": "deuteronomy-23-e-08",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom could Israel lend upon usury?",
+  "choices": [
+   "A brother",
+   "A stranger",
+   "A widow",
+   "A priest"
+  ],
+  "answer": 1,
+  "explanation": "Unto a stranger thou mayest lend upon usury; but unto thy brother thou shalt not.",
+  "ref": "Deuteronomy 23:20"
+ },
+ {
+  "id": "deuteronomy-23-e-09",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What could a man do in his neighbour's vineyard?",
+  "choices": [
+   "Gather a basket",
+   "Eat grapes his fill",
+   "Prune the vines",
+   "Take cuttings"
+  ],
+  "answer": 1,
+  "explanation": "Thou mayest eat grapes thy fill at thine own pleasure.",
+  "ref": "Deuteronomy 23:24"
+ },
+ {
+  "id": "deuteronomy-23-e-10",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a man not to slack to do when he vowed a vow?",
+  "choices": [
+   "Sing it",
+   "Pay it",
+   "Repeat it",
+   "Hide it"
+  ],
+  "answer": 1,
+  "explanation": "When thou shalt vow a vow unto the LORD thy God, thou shalt not slack to pay it.",
+  "ref": "Deuteronomy 23:21"
+ },
+ {
+  "id": "deuteronomy-23-m-01",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD turn the curse into a blessing?",
+  "choices": [
+   "Because Balaam repented",
+   "Because of Moab's gift",
+   "Because of a sacrifice",
+   "Because he loved Israel"
+  ],
+  "answer": 3,
+  "explanation": "The LORD thy God turned the curse into a blessing unto thee, because the LORD thy God loved thee.",
+  "ref": "Deuteronomy 23:5"
+ },
+ {
+  "id": "deuteronomy-23-m-02",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel not to seek of Ammon and Moab?",
+  "choices": [
+   "Their land",
+   "Their gold",
+   "Their daughters",
+   "Their peace or prosperity"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not seek their peace nor their prosperity all thy days for ever.",
+  "ref": "Deuteronomy 23:6"
+ },
+ {
+  "id": "deuteronomy-23-m-03",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which generation could children of Edomites and Egyptians enter the congregation?",
+  "choices": [
+   "The first",
+   "The tenth",
+   "The seventh",
+   "The third"
+  ],
+  "answer": 3,
+  "explanation": "The children begotten of them shall enter into the congregation of the LORD in their third generation.",
+  "ref": "Deuteronomy 23:8"
+ },
+ {
+  "id": "deuteronomy-23-m-04",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When the host goes against its enemies, what was Israel to keep from?",
+  "choices": [
+   "Every feast",
+   "Every stranger",
+   "Every spoil",
+   "Every wicked thing"
+  ],
+  "answer": 3,
+  "explanation": "When the host goeth forth against thine enemies, then keep thee from every wicked thing.",
+  "ref": "Deuteronomy 23:9"
+ },
+ {
+  "id": "deuteronomy-23-m-05",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When could the unclean man come into the camp again?",
+  "choices": [
+   "After seven days",
+   "At the next morning",
+   "After the priest spoke",
+   "When the sun was down"
+  ],
+  "answer": 3,
+  "explanation": "When the sun is down, he shall come into the camp again.",
+  "ref": "Deuteronomy 23:11"
+ },
+ {
+  "id": "deuteronomy-23-m-06",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the paddle used for?",
+  "choices": [
+   "Digging wells",
+   "Defence",
+   "Measuring",
+   "Digging and covering waste"
+  ],
+  "answer": 3,
+  "explanation": "When thou wilt ease thyself abroad, thou shalt dig therewith, and cover that which cometh from thee.",
+  "ref": "Deuteronomy 23:13"
+ },
+ {
+  "id": "deuteronomy-23-m-07",
+  "chapter": 23,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Israel to have a place for easing themselves?",
+  "choices": [
+   "Inside the tent of meeting",
+   "Near the well",
+   "By the gate",
+   "Outside the camp"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt have a place also without the camp, whither thou shalt go forth abroad.",
+  "ref": "Deuteronomy 23:12"
+ },
+ {
+  "id": "deuteronomy-23-m-08",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the escaped servant free to dwell?",
+  "choices": [
+   "With the priests",
+   "In the camp of Levi",
+   "With his old master",
+   "Where it liked him best"
+  ],
+  "answer": 3,
+  "explanation": "He shall dwell with thee, in that place which he shall choose in one of thy gates, where it liketh him best.",
+  "ref": "Deuteronomy 23:16"
+ },
+ {
+  "id": "deuteronomy-23-m-09",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel not to do to the escaped servant?",
+  "choices": [
+   "Teach him",
+   "Feed him",
+   "Count him",
+   "Oppress him"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not oppress him.",
+  "ref": "Deuteronomy 23:16"
+ },
+ {
+  "id": "deuteronomy-23-m-10",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not to be brought into the house of the LORD for any vow?",
+  "choices": [
+   "Unleavened bread",
+   "A firstling",
+   "Blind animals",
+   "The hire of a whore or price of a dog"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not bring the hire of a whore, or the price of a dog, into the house of the LORD.",
+  "ref": "Deuteronomy 23:18"
+ },
+ {
+  "id": "deuteronomy-23-m-11",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kinds of usury were forbidden toward a brother?",
+  "choices": [
+   "Money only",
+   "Land only",
+   "Cattle only",
+   "Money, victuals or any thing lent"
+  ],
+  "answer": 3,
+  "explanation": "Usury of money, usury of victuals, usury of any thing that is lent upon usury.",
+  "ref": "Deuteronomy 23:19"
+ },
+ {
+  "id": "deuteronomy-23-m-12",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD do if Israel lent not upon usury to a brother?",
+  "choices": [
+   "Give them silver",
+   "Prolong their days only",
+   "Add three cities",
+   "Bless all they set their hand to"
+  ],
+  "answer": 3,
+  "explanation": "That the LORD thy God may bless thee in all that thou settest thine hand to.",
+  "ref": "Deuteronomy 23:20"
+ },
+ {
+  "id": "deuteronomy-23-m-13",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was no sin for a man to do?",
+  "choices": [
+   "Break a vow",
+   "Delay a vow",
+   "Make a vow in secret",
+   "Forbear to vow"
+  ],
+  "answer": 3,
+  "explanation": "If thou shalt forbear to vow, it shall be no sin in thee.",
+  "ref": "Deuteronomy 23:22"
+ },
+ {
+  "id": "deuteronomy-23-m-14",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What could a man pluck in his neighbour's standing corn?",
+  "choices": [
+   "Sheaves",
+   "Stalks to burn",
+   "A basket of grain",
+   "Ears with his hand"
+  ],
+  "answer": 3,
+  "explanation": "Thou mayest pluck the ears with thine hand; but thou shalt not move a sickle unto thy neighbour's standing corn.",
+  "ref": "Deuteronomy 23:25"
+ },
+ {
+  "id": "deuteronomy-23-m-15",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the LORD walking in the midst of the camp?",
+  "choices": [
+   "To count the tribes",
+   "To judge the elders",
+   "To keep the Sabbath",
+   "To deliver Israel and give up their enemies"
+  ],
+  "answer": 3,
+  "explanation": "The LORD walketh in the midst of thy camp, to deliver thee, and to give up thine enemies before thee.",
+  "ref": "Deuteronomy 23:14"
+ },
+ {
+  "id": "deuteronomy-23-h-01",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Balaam?",
+  "choices": [
+   "Beor's",
+   "Balak's",
+   "Bela's",
+   "Zippor's"
+  ],
+  "answer": 0,
+  "explanation": "They hired Balaam the son of Beor.",
+  "ref": "Deuteronomy 23:4"
+ },
+ {
+  "id": "deuteronomy-23-h-02",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "From where did Balaam come, according to the chapter?",
+  "choices": [
+   "Pethor of Mesopotamia",
+   "Moab",
+   "Midian",
+   "Edom"
+  ],
+  "answer": 0,
+  "explanation": "Balaam the son of Beor of Pethor of Mesopotamia.",
+  "ref": "Deuteronomy 23:4"
+ },
+ {
+  "id": "deuteronomy-23-h-03",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what generation could an Ammonite or Moabite not enter the congregation?",
+  "choices": [
+   "The tenth, and for ever",
+   "The third",
+   "The seventh",
+   "The second"
+  ],
+  "answer": 0,
+  "explanation": "Even to their tenth generation shall they not enter into the congregation of the LORD for ever.",
+  "ref": "Deuteronomy 23:3"
+ },
+ {
+  "id": "deuteronomy-23-h-04",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What else was called the abomination along with the hire of a whore?",
+  "choices": [
+   "The price of a dog",
+   "The tithe of oil",
+   "A blemished lamb",
+   "An unclean bird"
+  ],
+  "answer": 0,
+  "explanation": "The hire of a whore and the price of a dog are both abomination unto the LORD.",
+  "ref": "Deuteronomy 23:18"
+ },
+ {
+  "id": "deuteronomy-23-h-05",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was a man not to put in his vessel in his neighbour's vineyard?",
+  "choices": [
+   "Any grapes",
+   "Any figs",
+   "Any wine",
+   "Any leaves"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not put any in thy vessel.",
+  "ref": "Deuteronomy 23:24"
+ },
+ {
+  "id": "deuteronomy-23-h-06",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD do if he saw an unclean thing in the camp?",
+  "choices": [
+   "Turn away from Israel",
+   "Send a plague",
+   "Scatter the host",
+   "Withdraw the cloud"
+  ],
+  "answer": 0,
+  "explanation": "That he see no unclean thing in thee, and turn away from thee.",
+  "ref": "Deuteronomy 23:14"
+ },
+ {
+  "id": "deuteronomy-23-h-07",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the uncleanness that sent a man outside the camp happen?",
+  "choices": [
+   "By night",
+   "At noon",
+   "On the Sabbath",
+   "At dawn"
+  ],
+  "answer": 0,
+  "explanation": "Any man that is not clean by reason of uncleanness that chanceth him by night.",
+  "ref": "Deuteronomy 23:10"
+ },
+ {
+  "id": "deuteronomy-23-h-08",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD surely require of a man who vowed?",
+  "choices": [
+   "The vow",
+   "A sacrifice",
+   "A tithe",
+   "A year of service"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God will surely require it of thee; and it would be sin in thee.",
+  "ref": "Deuteronomy 23:21"
+ },
+ {
+  "id": "deuteronomy-23-h-09",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of offering did the man promise with his mouth?",
+  "choices": [
+   "A freewill offering",
+   "A sin offering",
+   "A peace offering",
+   "A meat offering"
+  ],
+  "answer": 0,
+  "explanation": "Even a freewill offering, according as thou hast vowed, which thou hast promised with thy mouth.",
+  "ref": "Deuteronomy 23:23"
+ },
+ {
+  "id": "deuteronomy-23-h-10",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was not to be moved against a neighbour's standing corn?",
+  "choices": [
+   "A sickle",
+   "A plough",
+   "A scythe",
+   "A fork"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not move a sickle unto thy neighbour's standing corn.",
+  "ref": "Deuteronomy 23:25"
+ },
+ {
+  "id": "deuteronomy-23-h-11",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Among whom was there to be no whore?",
+  "choices": [
+   "The daughters of Israel",
+   "The strangers",
+   "The Levites only",
+   "The captives"
+  ],
+  "answer": 0,
+  "explanation": "There shall be no whore of the daughters of Israel.",
+  "ref": "Deuteronomy 23:17"
+ },
+ {
+  "id": "deuteronomy-23-h-12",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would it be in a man who slacked to pay his vow?",
+  "choices": [
+   "Sin",
+   "Folly",
+   "Debt",
+   "Shame"
+  ],
+  "answer": 0,
+  "explanation": "The LORD will surely require it of thee; and it would be sin in thee.",
+  "ref": "Deuteronomy 23:21"
+ },
+ {
+  "id": "deuteronomy-23-h-13",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the camp to be, so that the LORD would not turn away?",
+  "choices": [
+   "Holy",
+   "Large",
+   "Walled",
+   "Quiet"
+  ],
+  "answer": 0,
+  "explanation": "Therefore shall thy camp be holy: that he see no unclean thing in thee.",
+  "ref": "Deuteronomy 23:14"
+ },
+ {
+  "id": "deuteronomy-23-h-14",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was a word 'gone out of thy lips' to be treated?",
+  "choices": [
+   "Kept and performed",
+   "Forgotten",
+   "Written down",
+   "Repeated"
+  ],
+  "answer": 0,
+  "explanation": "That which is gone out of thy lips thou shalt keep and perform.",
+  "ref": "Deuteronomy 23:23"
+ },
+ {
+  "id": "deuteronomy-23-h-15",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides Ammonites and Moabites, who else was barred to the tenth generation?",
+  "choices": [
+   "A bastard",
+   "An Edomite",
+   "An Egyptian",
+   "A stranger"
+  ],
+  "answer": 0,
+  "explanation": "A bastard shall not enter into the congregation of the LORD; even to his tenth generation.",
+  "ref": "Deuteronomy 23:2"
+ },
+ {
   "id": "old-deuteronomy-24-1",
   "chapter": 24,
   "level": "beginner",
