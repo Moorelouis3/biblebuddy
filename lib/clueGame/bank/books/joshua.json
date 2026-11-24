@@ -15952,6 +15952,646 @@
   "ref": "Joshua 23:16"
  },
  {
+  "id": "joshua-23-e-01",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who called for all Israel in this chapter?",
+  "choices": [
+   "Eleazar",
+   "Caleb",
+   "Phinehas",
+   "Joshua"
+  ],
+  "answer": 3,
+  "explanation": "Joshua called for all Israel, and for their elders, and for their heads, and for their judges, and for their officers.",
+  "ref": "Joshua 23:2"
+ },
+ {
+  "id": "joshua-23-e-02",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the LORD given Israel from all their enemies?",
+  "choices": [
+   "Gold",
+   "A king",
+   "A temple",
+   "Rest"
+  ],
+  "answer": 3,
+  "explanation": "The LORD had given rest unto Israel from all their enemies round about.",
+  "ref": "Joshua 23:1"
+ },
+ {
+  "id": "joshua-23-e-03",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who fought for Israel, Joshua said?",
+  "choices": [
+   "The elders",
+   "Caleb",
+   "The priests",
+   "The LORD your God"
+  ],
+  "answer": 3,
+  "explanation": "The LORD your God is he that hath fought for you.",
+  "ref": "Joshua 23:3"
+ },
+ {
+  "id": "joshua-23-e-04",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose book of the law were they to keep and do?",
+  "choices": [
+   "Joshua",
+   "Aaron",
+   "Eleazar",
+   "Moses"
+  ],
+  "answer": 3,
+  "explanation": "Keep and do all that is written in the book of the law of Moses.",
+  "ref": "Joshua 23:6"
+ },
+ {
+  "id": "joshua-23-e-05",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the nations left among them to Israel if they joined them?",
+  "choices": [
+   "Friends and helpers",
+   "Servants",
+   "Trade partners",
+   "Snares and traps"
+  ],
+  "answer": 3,
+  "explanation": "They shall be snares and traps unto you.",
+  "ref": "Joshua 23:13"
+ },
+ {
+  "id": "joshua-23-e-06",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should Israel cleave unto?",
+  "choices": [
+   "The nations that remain",
+   "The land of the Amorites",
+   "Their own strength",
+   "The LORD their God"
+  ],
+  "answer": 3,
+  "explanation": "But cleave unto the LORD your God, as ye have done unto this day.",
+  "ref": "Joshua 23:8"
+ },
+ {
+  "id": "joshua-23-e-07",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many of the good things the LORD promised had failed?",
+  "choices": [
+   "Only one",
+   "A few",
+   "Half",
+   "Not one"
+  ],
+  "answer": 3,
+  "explanation": "Not one thing hath failed of all the good things.",
+  "ref": "Joshua 23:14"
+ },
+ {
+  "id": "joshua-23-e-08",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many could one man of Israel chase?",
+  "choices": [
+   "A hundred",
+   "Ten",
+   "Ten thousand",
+   "A thousand"
+  ],
+  "answer": 3,
+  "explanation": "One man of you shall chase a thousand.",
+  "ref": "Joshua 23:10"
+ },
+ {
+  "id": "joshua-23-e-09",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua say about his own age?",
+  "choices": [
+   "He was young",
+   "He was a hundred and twenty",
+   "He was blind",
+   "He was old and stricken in age"
+  ],
+  "answer": 3,
+  "explanation": "Joshua waxed old and stricken in age.",
+  "ref": "Joshua 23:1"
+ },
+ {
+  "id": "joshua-23-e-10",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua say the LORD would do if Israel went back?",
+  "choices": [
+   "Give more land",
+   "Send a king",
+   "Send a prophet",
+   "Bring evil things upon them"
+  ],
+  "answer": 3,
+  "explanation": "So shall the LORD bring upon you all evil things.",
+  "ref": "Joshua 23:15"
+ },
+ {
+  "id": "joshua-23-m-01",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "Which groups did Joshua call together besides all Israel?",
+  "choices": [
+   "Priests and Levites",
+   "Elders, heads, judges and officers",
+   "Princes and spies",
+   "Kings and captains"
+  ],
+  "answer": 1,
+  "explanation": "He called for all Israel, and for their elders, and for their heads, and for their judges, and for their officers.",
+  "ref": "Joshua 23:2"
+ },
+ {
+  "id": "joshua-23-m-02",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Joshua say he had divided the remaining nations?",
+  "choices": [
+   "By battle",
+   "By lot, as an inheritance for the tribes",
+   "By treaty",
+   "By sale"
+  ],
+  "answer": 1,
+  "explanation": "I have divided unto you by lot these nations that remain, to be an inheritance for your tribes.",
+  "ref": "Joshua 23:4"
+ },
+ {
+  "id": "joshua-23-m-03",
+  "chapter": 23,
+  "level": "medium",
+  "category": "place",
+  "question": "Which sea marked the western edge of the land?",
+  "choices": [
+   "The Red sea",
+   "The great sea",
+   "The Dead sea",
+   "The sea of Galilee"
+  ],
+  "answer": 1,
+  "explanation": "Even unto the great sea westward.",
+  "ref": "Joshua 23:4"
+ },
+ {
+  "id": "joshua-23-m-04",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who would expel the remaining nations from before Israel?",
+  "choices": [
+   "Joshua",
+   "The LORD your God",
+   "The tribes",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "The LORD your God, he shall expel them from before you.",
+  "ref": "Joshua 23:5"
+ },
+ {
+  "id": "joshua-23-m-05",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were they not to turn aside from the law?",
+  "choices": [
+   "To the north or south",
+   "To the right hand or to the left",
+   "By night",
+   "To Egypt"
+  ],
+  "answer": 1,
+  "explanation": "That ye turn not aside therefrom to the right hand or to the left.",
+  "ref": "Joshua 23:6"
+ },
+ {
+  "id": "joshua-23-m-06",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were they not to make mention of among the nations?",
+  "choices": [
+   "The names of their kings",
+   "The names of their gods",
+   "Their cities",
+   "Their wars"
+  ],
+  "answer": 1,
+  "explanation": "Neither make mention of the names of their gods.",
+  "ref": "Joshua 23:7"
+ },
+ {
+  "id": "joshua-23-m-07",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were they told not to cause anyone to do by the nations' gods?",
+  "choices": [
+   "Offer a lamb",
+   "Swear by them",
+   "Make a vow of rest",
+   "Count the days"
+  ],
+  "answer": 1,
+  "explanation": "Nor cause to swear by them, neither serve them, nor bow yourselves unto them.",
+  "ref": "Joshua 23:7"
+ },
+ {
+  "id": "joshua-23-m-08",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had no man been able to do before Israel?",
+  "choices": [
+   "Pass by them",
+   "Stand before them",
+   "Count them",
+   "Hide from them"
+  ],
+  "answer": 1,
+  "explanation": "No man hath been able to stand before you unto this day.",
+  "ref": "Joshua 23:9"
+ },
+ {
+  "id": "joshua-23-m-09",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were they to take good heed of, that they should do?",
+  "choices": [
+   "Count their cattle",
+   "Love the LORD their God",
+   "Keep their tents",
+   "Fear the nations"
+  ],
+  "answer": 1,
+  "explanation": "Take good heed therefore unto yourselves, that ye love the LORD your God.",
+  "ref": "Joshua 23:11"
+ },
+ {
+  "id": "joshua-23-m-10",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What marriage warning did Joshua give?",
+  "choices": [
+   "Marry only within Judah",
+   "Do not make marriages with the remaining nations",
+   "Marry only Levites",
+   "Marry before the feast"
+  ],
+  "answer": 1,
+  "explanation": "Make marriages with them, and go in unto them, and they to you.",
+  "ref": "Joshua 23:12"
+ },
+ {
+  "id": "joshua-23-m-11",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the nations be in their sides?",
+  "choices": [
+   "Rest",
+   "Scourges",
+   "Walls",
+   "Shields"
+  ],
+  "answer": 1,
+  "explanation": "They shall be snares and traps unto you, and scourges in your sides.",
+  "ref": "Joshua 23:13"
+ },
+ {
+  "id": "joshua-23-m-12",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the nations be in their eyes?",
+  "choices": [
+   "Stones",
+   "Thorns",
+   "Smoke",
+   "Dust"
+  ],
+  "answer": 1,
+  "explanation": "And thorns in your eyes.",
+  "ref": "Joshua 23:13"
+ },
+ {
+  "id": "joshua-23-m-13",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which phrase did Joshua use for his coming death?",
+  "choices": [
+   "Going to Shiloh",
+   "Going the way of all the earth",
+   "Going up the mountain",
+   "Going home to Gilgal"
+  ],
+  "answer": 1,
+  "explanation": "This day I am going the way of all the earth.",
+  "ref": "Joshua 23:14"
+ },
+ {
+  "id": "joshua-23-m-14",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua call the land the LORD had given?",
+  "choices": [
+   "The land of milk",
+   "The good land",
+   "The holy mountain",
+   "The lost land"
+  ],
+  "answer": 1,
+  "explanation": "Until ye perish from off this good land which the LORD your God hath given you.",
+  "ref": "Joshua 23:13"
+ },
+ {
+  "id": "joshua-23-m-15",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua say would make the LORD's anger kindle?",
+  "choices": [
+   "Counting the people",
+   "Transgressing the covenant and serving other gods",
+   "Missing a feast",
+   "Building cities"
+  ],
+  "answer": 1,
+  "explanation": "When ye have transgressed the covenant of the LORD, and have gone and served other gods.",
+  "ref": "Joshua 23:16"
+ },
+ {
+  "id": "joshua-23-h-01",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Joshua say one man of Israel could chase a thousand?",
+  "choices": [
+   "The LORD fights for them",
+   "Israel had more weapons",
+   "The nations were afraid",
+   "Israel had the best captains"
+  ],
+  "answer": 0,
+  "explanation": "One man of you shall chase a thousand: for the LORD your God, he it is that fighteth for you.",
+  "ref": "Joshua 23:10"
+ },
+ {
+  "id": "joshua-23-h-02",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua tell Israel to be, to keep all that was written in the law?",
+  "choices": [
+   "Very courageous",
+   "Very patient",
+   "Very quiet",
+   "Very rich"
+  ],
+  "answer": 0,
+  "explanation": "Be ye therefore very courageous to keep and to do all that is written in the book of the law of Moses.",
+  "ref": "Joshua 23:6"
+ },
+ {
+  "id": "joshua-23-h-03",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Where were the people told not to come?",
+  "choices": [
+   "Among the nations that remained",
+   "Into Egypt",
+   "To Mount Sinai",
+   "Back to Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "That ye come not among these nations, these that remain among you.",
+  "ref": "Joshua 23:7"
+ },
+ {
+  "id": "joshua-23-h-04",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Israel seen the LORD do?",
+  "choices": [
+   "All he had done to these nations because of them",
+   "Part the Red sea twice",
+   "Send manna again",
+   "Raise a king"
+  ],
+  "answer": 0,
+  "explanation": "Ye have seen all that the LORD your God hath done unto all these nations because of you.",
+  "ref": "Joshua 23:3"
+ },
+ {
+  "id": "joshua-23-h-05",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD no more do if Israel joined the remnant of the nations?",
+  "choices": [
+   "Drive them out",
+   "Give rain",
+   "Send judges",
+   "Hear prayer"
+  ],
+  "answer": 0,
+  "explanation": "The LORD your God will no more drive out any of these nations from before you.",
+  "ref": "Joshua 23:13"
+ },
+ {
+  "id": "joshua-23-h-06",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long after the LORD gave rest did Joshua call for all Israel?",
+  "choices": [
+   "A long time",
+   "Seven days",
+   "One year",
+   "The next morning"
+  ],
+  "answer": 0,
+  "explanation": "It came to pass a long time after that the LORD had given rest unto Israel.",
+  "ref": "Joshua 23:1"
+ },
+ {
+  "id": "joshua-23-h-07",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua say Israel knew in all their hearts and souls?",
+  "choices": [
+   "Not one good thing had failed",
+   "That the nations would return",
+   "That the land was small",
+   "That Joshua would live"
+  ],
+  "answer": 0,
+  "explanation": "Ye know in all your hearts and in all your souls, that not one thing hath failed of all the good things.",
+  "ref": "Joshua 23:14"
+ },
+ {
+  "id": "joshua-23-h-08",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As all good things came upon Israel, what else did Joshua say would come if they sinned?",
+  "choices": [
+   "All evil things",
+   "A new king",
+   "Another flood",
+   "A second wilderness"
+  ],
+  "answer": 0,
+  "explanation": "So shall the LORD bring upon you all evil things.",
+  "ref": "Joshua 23:15"
+ },
+ {
+  "id": "joshua-23-h-09",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Israel perish from, if they broke the covenant?",
+  "choices": [
+   "The good land the LORD gave",
+   "The wilderness",
+   "The cities of Moab",
+   "The tents of Kedar"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall perish quickly from off the good land which he hath given unto you.",
+  "ref": "Joshua 23:16"
+ },
+ {
+  "id": "joshua-23-h-10",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be kindled against Israel if they served other gods?",
+  "choices": [
+   "The anger of the LORD",
+   "The fire of the altar",
+   "The lamp of the tabernacle",
+   "The beacon of Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "Then shall the anger of the LORD be kindled against you.",
+  "ref": "Joshua 23:16"
+ },
+ {
+  "id": "joshua-23-h-11",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of nations had the LORD driven out before Israel?",
+  "choices": [
+   "Great nations and strong",
+   "Weak, scattered nations",
+   "Nations without kings",
+   "Nations without cities"
+  ],
+  "answer": 0,
+  "explanation": "The LORD hath driven out from before you great nations and strong.",
+  "ref": "Joshua 23:9"
+ },
+ {
+  "id": "joshua-23-h-12",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "To what boundary did Joshua say the land extended westward?",
+  "choices": [
+   "The great sea",
+   "The Red sea",
+   "The river Arnon",
+   "Mount Seir"
+  ],
+  "answer": 0,
+  "explanation": "From Jordan, even unto the great sea westward.",
+  "ref": "Joshua 23:4"
+ },
+ {
+  "id": "joshua-23-h-13",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua call the nations still living among them?",
+  "choices": [
+   "The remnant of these nations",
+   "The seven kings",
+   "The people of Ai",
+   "The sons of Anak"
+  ],
+  "answer": 0,
+  "explanation": "Cleave unto the remnant of these nations, even these that remain among you.",
+  "ref": "Joshua 23:12"
+ },
+ {
+  "id": "joshua-23-h-14",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides serving them, what were Israel forbidden to do toward the nations' gods?",
+  "choices": [
+   "Bow themselves unto them",
+   "Visit their cities",
+   "Count their number",
+   "Learn their songs"
+  ],
+  "answer": 0,
+  "explanation": "Neither serve them, nor bow yourselves unto them.",
+  "ref": "Joshua 23:7"
+ },
+ {
+  "id": "joshua-23-h-15",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As Israel had done \"unto this day\", what were they told to do to the LORD?",
+  "choices": [
+   "Cleave unto him",
+   "Wait upon him",
+   "Sing to him",
+   "Count his days"
+  ],
+  "answer": 0,
+  "explanation": "Cleave unto the LORD your God, as ye have done unto this day.",
+  "ref": "Joshua 23:8"
+ },
+ {
   "id": "old-joshua-24-1",
   "chapter": 24,
   "level": "beginner",
