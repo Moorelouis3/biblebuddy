@@ -12336,6 +12336,646 @@
   "ref": "Numbers 18:26"
  },
  {
+  "id": "numbers-18-e-01",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the LORD speak at the start of the chapter?",
+  "choices": [
+   "Korah",
+   "Eleazar",
+   "Joshua",
+   "Aaron"
+  ],
+  "answer": 3,
+  "explanation": "And the LORD said unto Aaron, Thou and thy sons and thy father's house with thee shall bear the iniquity of the sanctuary.",
+  "ref": "Numbers 18:1"
+ },
+ {
+  "id": "numbers-18-e-02",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say was Aaron's part and inheritance?",
+  "choices": [
+   "The cities of Judah",
+   "The land of Canaan",
+   "The LORD Himself",
+   "A tenth of the flocks"
+  ],
+  "answer": 2,
+  "explanation": "I am thy part and thine inheritance among the children of Israel.",
+  "ref": "Numbers 18:20"
+ },
+ {
+  "id": "numbers-18-e-03",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD give the children of Levi for an inheritance?",
+  "choices": [
+   "The firstborn of man",
+   "All the tenth in Israel",
+   "The cities of refuge",
+   "The land beyond Jordan"
+  ],
+  "answer": 1,
+  "explanation": "I have given the children of Levi all the tenth in Israel for an inheritance.",
+  "ref": "Numbers 18:21"
+ },
+ {
+  "id": "numbers-18-e-04",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many shekels was the redemption price of a firstborn man?",
+  "choices": [
+   "Five shekels",
+   "Two shekels",
+   "Ten shekels",
+   "Thirty shekels"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt redeem, according to thine estimation, for the money of five shekels.",
+  "ref": "Numbers 18:16"
+ },
+ {
+  "id": "numbers-18-e-05",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The Levites were given to Aaron as what?",
+  "choices": [
+   "A reward",
+   "A burden",
+   "A sacrifice",
+   "A gift for the LORD"
+  ],
+  "answer": 3,
+  "explanation": "To you they are given as a gift for the LORD, to do the service of the tabernacle.",
+  "ref": "Numbers 18:6"
+ },
+ {
+  "id": "numbers-18-e-06",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was done with the blood of the firstling of a cow, sheep or goat?",
+  "choices": [
+   "It was poured on the ground",
+   "It was kept for redemption",
+   "It was sprinkled upon the altar",
+   "It was drunk by the priests"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt sprinkle their blood upon the altar, and shalt burn their fat.",
+  "ref": "Numbers 18:17"
+ },
+ {
+  "id": "numbers-18-e-07",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the Levites give the LORD's heave offering of the tithes?",
+  "choices": [
+   "Moses",
+   "Aaron the priest",
+   "Eleazar the prince",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall give thereof the LORD'S heave offering to Aaron the priest.",
+  "ref": "Numbers 18:28"
+ },
+ {
+  "id": "numbers-18-e-08",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the covenant for the priests' portion called?",
+  "choices": [
+   "A covenant of salt",
+   "A covenant of peace",
+   "A covenant of fire",
+   "A covenant of rest"
+  ],
+  "answer": 0,
+  "explanation": "It is a covenant of salt for ever before the LORD unto thee and to thy seed with thee.",
+  "ref": "Numbers 18:19"
+ },
+ {
+  "id": "numbers-18-e-09",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD give Aaron the charge of in this chapter?",
+  "choices": [
+   "His heave offerings of all the hallowed things",
+   "The cities of the Levites",
+   "The tithe of the land",
+   "The keys of the camp"
+  ],
+  "answer": 0,
+  "explanation": "Behold, I also have given thee the charge of mine heave offerings of all the hallowed things of the children of Israel.",
+  "ref": "Numbers 18:8"
+ },
+ {
+  "id": "numbers-18-e-10",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose charge were the Levites to keep, joined to Aaron?",
+  "choices": [
+   "The tabernacle",
+   "The army of Israel",
+   "The flocks of Israel",
+   "The tents of the princes"
+  ],
+  "answer": 0,
+  "explanation": "They shall keep thy charge, and the charge of all the tabernacle.",
+  "ref": "Numbers 18:3"
+ },
+ {
+  "id": "numbers-18-m-01",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the Levites forbidden to come near?",
+  "choices": [
+   "The camp of Israel",
+   "The tent of Moses",
+   "The vessels of the sanctuary and the altar",
+   "The court of the tabernacle"
+  ],
+  "answer": 2,
+  "explanation": "They shall not come nigh the vessels of the sanctuary and the altar, that neither they, nor ye also, die.",
+  "ref": "Numbers 18:3"
+ },
+ {
+  "id": "numbers-18-m-02",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "Who alone were to minister before the tabernacle of witness?",
+  "choices": [
+   "Aaron and the Levites",
+   "Aaron and his sons",
+   "The princes and the Levites",
+   "All Israel"
+  ],
+  "answer": 1,
+  "explanation": "Thou and thy sons with thee shall minister before the tabernacle of witness.",
+  "ref": "Numbers 18:2"
+ },
+ {
+  "id": "numbers-18-m-03",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From what age were the firstborn to be redeemed?",
+  "choices": [
+   "From a month old",
+   "From a year old",
+   "From seven days old",
+   "From twenty years old"
+  ],
+  "answer": 0,
+  "explanation": "Those that are to be redeemed from a month old shalt thou redeem.",
+  "ref": "Numbers 18:16"
+ },
+ {
+  "id": "numbers-18-m-04",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many gerahs made up the shekel of the sanctuary?",
+  "choices": [
+   "Ten",
+   "Five",
+   "Forty",
+   "Twenty"
+  ],
+  "answer": 3,
+  "explanation": "After the shekel of the sanctuary, which is twenty gerahs.",
+  "ref": "Numbers 18:16"
+ },
+ {
+  "id": "numbers-18-m-05",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done with the fat of the firstling of a cow, sheep or goat?",
+  "choices": [
+   "It was eaten by the priests",
+   "It was poured out",
+   "It was burned as an offering by fire",
+   "It was given to the Levites"
+  ],
+  "answer": 2,
+  "explanation": "Shalt burn their fat for an offering made by fire, for a sweet savour unto the LORD.",
+  "ref": "Numbers 18:17"
+ },
+ {
+  "id": "numbers-18-m-06",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The flesh of the firstlings was to be the priests', like which portions?",
+  "choices": [
+   "The head and the legs",
+   "The wave breast and the right shoulder",
+   "The skin and the fat",
+   "The liver and the kidneys"
+  ],
+  "answer": 1,
+  "explanation": "The flesh of them shall be thine, as the wave breast and as the right shoulder are thine.",
+  "ref": "Numbers 18:18"
+ },
+ {
+  "id": "numbers-18-m-07",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where were the most holy things to be eaten?",
+  "choices": [
+   "In the most holy place",
+   "At the camp gate",
+   "At the altar of incense",
+   "In the priests' homes"
+  ],
+  "answer": 0,
+  "explanation": "In the most holy place shalt thou eat it; every male shall eat it.",
+  "ref": "Numbers 18:10"
+ },
+ {
+  "id": "numbers-18-m-08",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD give Aaron of the oil, wine and wheat?",
+  "choices": [
+   "The tenth part",
+   "The last gleanings",
+   "The first and last half",
+   "All the best of them, the firstfruits"
+  ],
+  "answer": 3,
+  "explanation": "All the best of the oil, and all the best of the wine, and of the wheat, the firstfruits of them.",
+  "ref": "Numbers 18:12"
+ },
+ {
+  "id": "numbers-18-m-09",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about everything devoted in Israel?",
+  "choices": [
+   "It shall be burned",
+   "It shall be the Levites'",
+   "It shall be Aaron's",
+   "It shall be returned"
+  ],
+  "answer": 2,
+  "explanation": "Every thing devoted in Israel shall be thine.",
+  "ref": "Numbers 18:14"
+ },
+ {
+  "id": "numbers-18-m-10",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why must the children of Israel not come nigh the tabernacle?",
+  "choices": [
+   "Lest they see the ark",
+   "Lest they bear sin and die",
+   "Lest they defile the camp",
+   "Lest they anger Moses"
+  ],
+  "answer": 1,
+  "explanation": "Neither must the children of Israel henceforth come nigh the tabernacle of the congregation, lest they bear sin, and die.",
+  "ref": "Numbers 18:22"
+ },
+ {
+  "id": "numbers-18-m-11",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much of the tithe were the Levites to give as a heave offering?",
+  "choices": [
+   "A tenth part of the tithe",
+   "Half of the tithe",
+   "All of the tithe",
+   "A twentieth of the tithe"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall offer up an heave offering of it for the LORD, even a tenth part of the tithe.",
+  "ref": "Numbers 18:26"
+ },
+ {
+  "id": "numbers-18-m-12",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The Levites' heave offering was reckoned to them as what?",
+  "choices": [
+   "The firstfruits of the flock",
+   "The gold of the sanctuary",
+   "The bread of the presence",
+   "The corn of the threshingfloor and winepress"
+  ],
+  "answer": 3,
+  "explanation": "This your heave offering shall be reckoned unto you, as though it were the corn of the threshingfloor, and as the fulness of the winepress.",
+  "ref": "Numbers 18:27"
+ },
+ {
+  "id": "numbers-18-m-13",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where could the Levites eat the rest of the tithe?",
+  "choices": [
+   "Only in the tabernacle",
+   "Only in Levite cities",
+   "In every place, they and their households",
+   "Only at the altar"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall eat it in every place, ye and your households: for it is your reward for your service.",
+  "ref": "Numbers 18:31"
+ },
+ {
+  "id": "numbers-18-m-14",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to the firstborn of unclean beasts?",
+  "choices": [
+   "They shall be sacrificed",
+   "They shall be redeemed",
+   "They shall be freed",
+   "They shall be burned"
+  ],
+  "answer": 1,
+  "explanation": "The firstling of unclean beasts shalt thou redeem.",
+  "ref": "Numbers 18:15"
+ },
+ {
+  "id": "numbers-18-m-15",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say would no more come upon Israel if the priests kept the charge of the sanctuary?",
+  "choices": [
+   "Wrath",
+   "Plague",
+   "Famine",
+   "Exile"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall keep the charge of the sanctuary, and of the altar: that there be no wrath any more upon the children of Israel.",
+  "ref": "Numbers 18:5"
+ },
+ {
+  "id": "numbers-18-h-01",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Aaron and his sons bear along with the iniquity of the sanctuary?",
+  "choices": [
+   "The iniquity of their priesthood",
+   "The iniquity of the Levites",
+   "The iniquity of the camp",
+   "The iniquity of the princes"
+  ],
+  "answer": 0,
+  "explanation": "Thou and thy sons with thee shall bear the iniquity of your priesthood.",
+  "ref": "Numbers 18:1"
+ },
+ {
+  "id": "numbers-18-h-02",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Aaron's priest's office applied to the altar and to what other place?",
+  "choices": [
+   "The outer court",
+   "The camp",
+   "The mountain",
+   "Within the vail"
+  ],
+  "answer": 3,
+  "explanation": "Shalt keep your priest's office for every thing of the altar, and within the vail.",
+  "ref": "Numbers 18:7"
+ },
+ {
+  "id": "numbers-18-h-03",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these was among the most holy things given to Aaron?",
+  "choices": [
+   "Every peace offering",
+   "Every burnt offering",
+   "Every trespass offering",
+   "Every drink offering"
+  ],
+  "answer": 2,
+  "explanation": "Every meat offering, and every sin offering, and every trespass offering of theirs, shall be most holy for thee and for thy sons.",
+  "ref": "Numbers 18:9"
+ },
+ {
+  "id": "numbers-18-h-04",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "Who could eat the heave offering of the gift besides Aaron and his sons?",
+  "choices": [
+   "Only the Levites",
+   "His daughters, and everyone clean in his house",
+   "All the princes",
+   "The strangers"
+  ],
+  "answer": 1,
+  "explanation": "I have given them unto thee, and to thy sons and to thy daughters with thee... every one that is clean in thy house shall eat of it.",
+  "ref": "Numbers 18:11"
+ },
+ {
+  "id": "numbers-18-h-05",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The first ripe things of the land were to belong to Aaron, and who could eat of them?",
+  "choices": [
+   "Everyone clean in his house",
+   "Only the men",
+   "Only the priests",
+   "Only the sons"
+  ],
+  "answer": 0,
+  "explanation": "Whatsoever is first ripe in the land... shall be thine; every one that is clean in thine house shall eat of it.",
+  "ref": "Numbers 18:13"
+ },
+ {
+  "id": "numbers-18-h-06",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the LORD give the holy things to Aaron?",
+  "choices": [
+   "By reason of his age",
+   "By reason of the rebellion",
+   "By reason of his sons",
+   "By reason of the anointing"
+  ],
+  "answer": 3,
+  "explanation": "Unto thee have I given them by reason of the anointing, and to thy sons, by an ordinance for ever.",
+  "ref": "Numbers 18:8"
+ },
+ {
+  "id": "numbers-18-h-07",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of the firstlings were NOT to be redeemed because they are holy?",
+  "choices": [
+   "Of a man, an ass, or a camel",
+   "Of a lamb, a dove, or a bullock",
+   "Of a cow, a sheep, or a goat",
+   "Of an ox, a ram, or a bird"
+  ],
+  "answer": 2,
+  "explanation": "The firstling of a cow, or of a sheep, or of a goat, thou shalt not redeem; they are holy.",
+  "ref": "Numbers 18:17"
+ },
+ {
+  "id": "numbers-18-h-08",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the Levites' work in the tabernacle was to be called, when they ate the tithes?",
+  "choices": [
+   "Their offering for sin",
+   "Their reward for their service",
+   "Their gift to Israel",
+   "Their inheritance in the land"
+  ],
+  "answer": 1,
+  "explanation": "It is your reward for your service in the tabernacle of the congregation.",
+  "ref": "Numbers 18:31"
+ },
+ {
+  "id": "numbers-18-h-09",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did the LORD say the Levites' lack of inheritance would last?",
+  "choices": [
+   "A statute for ever throughout their generations",
+   "Until they entered Canaan",
+   "Until a king reigned",
+   "For forty years"
+  ],
+  "answer": 0,
+  "explanation": "It shall be a statute for ever throughout your generations, that among the children of Israel they have no inheritance.",
+  "ref": "Numbers 18:23"
+ },
+ {
+  "id": "numbers-18-h-10",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the Levites bear as they served the tabernacle?",
+  "choices": [
+   "The ark",
+   "Israel's sins",
+   "The fat of the offerings",
+   "Their iniquity"
+  ],
+  "answer": 3,
+  "explanation": "The Levites shall do the service of the tabernacle, and they shall bear their iniquity.",
+  "ref": "Numbers 18:23"
+ },
+ {
+  "id": "numbers-18-h-11",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Levites' heave offering was to come from the best of what?",
+  "choices": [
+   "Their flocks",
+   "Their cities",
+   "Their gifts, the hallowed part",
+   "Their vineyards"
+  ],
+  "answer": 2,
+  "explanation": "Out of all your gifts ye shall offer every heave offering of the LORD, of all the best thereof.",
+  "ref": "Numbers 18:29"
+ },
+ {
+  "id": "numbers-18-h-12",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the Levites not do if they heaved the best of the tithe?",
+  "choices": [
+   "Receive another inheritance",
+   "Bear sin because of it",
+   "Give an offering",
+   "Serve in the sanctuary"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall bear no sin by reason of it, when ye have heaved from it the best of it.",
+  "ref": "Numbers 18:32"
+ },
+ {
+  "id": "numbers-18-h-13",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the Levites warned not to pollute, lest they die?",
+  "choices": [
+   "The holy things of the children of Israel",
+   "The altar of burnt offering",
+   "The camp of Levi",
+   "The land of promise"
+  ],
+  "answer": 0,
+  "explanation": "Neither shall ye pollute the holy things of the children of Israel, lest ye die.",
+  "ref": "Numbers 18:32"
+ },
+ {
+  "id": "numbers-18-h-14",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The tithe the Levites received was what kind of offering from Israel?",
+  "choices": [
+   "A drink offering",
+   "A sin offering",
+   "A peace offering",
+   "A heave offering unto the LORD"
+  ],
+  "answer": 3,
+  "explanation": "The tithes of the children of Israel, which they offer as an heave offering unto the LORD, I have given to the Levites to inherit.",
+  "ref": "Numbers 18:24"
+ },
+ {
+  "id": "numbers-18-h-15",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose tribe was called 'the tribe of thy father' when joined to Aaron?",
+  "choices": [
+   "Judah",
+   "Reuben",
+   "Levi",
+   "Ephraim"
+  ],
+  "answer": 2,
+  "explanation": "Thy brethren also of the tribe of Levi, the tribe of thy father, bring thou with thee.",
+  "ref": "Numbers 18:2"
+ },
+ {
   "id": "old-numbers-19-1",
   "chapter": 19,
   "level": "beginner",
