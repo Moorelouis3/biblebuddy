@@ -21728,6 +21728,646 @@
   "ref": "Deuteronomy 31:19"
  },
  {
+  "id": "deuteronomy-31-e-01",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who would not go over the Jordan with Israel?",
+  "choices": [
+   "Moses",
+   "Joshua",
+   "Aaron",
+   "Caleb"
+  ],
+  "answer": 0,
+  "explanation": "The LORD hath said unto me, Thou shalt not go over this Jordan.",
+  "ref": "Deuteronomy 31:2"
+ },
+ {
+  "id": "deuteronomy-31-e-02",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who would go over before Israel and destroy the nations?",
+  "choices": [
+   "The LORD their God",
+   "The priests",
+   "The elders",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God, he will go over before thee, and he will destroy these nations.",
+  "ref": "Deuteronomy 31:3"
+ },
+ {
+  "id": "deuteronomy-31-e-03",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses write and give to the priests?",
+  "choices": [
+   "This law",
+   "A song of victory",
+   "A census",
+   "A map of the land"
+  ],
+  "answer": 0,
+  "explanation": "Moses wrote this law, and delivered it unto the priests the sons of Levi.",
+  "ref": "Deuteronomy 31:9"
+ },
+ {
+  "id": "deuteronomy-31-e-04",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two kings had the LORD destroyed before Israel?",
+  "choices": [
+   "Sihon and Og",
+   "Balak and Balaam",
+   "Pharaoh and Jabin",
+   "Agag and Eglon"
+  ],
+  "answer": 0,
+  "explanation": "The LORD shall do unto them as he did to Sihon and to Og, kings of the Amorites.",
+  "ref": "Deuteronomy 31:4"
+ },
+ {
+  "id": "deuteronomy-31-e-05",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What words did Moses say to Israel and Joshua?",
+  "choices": [
+   "Be strong and of a good courage",
+   "Return to Egypt",
+   "Rest and be still",
+   "Hear, O Israel"
+  ],
+  "answer": 0,
+  "explanation": "Be strong and of a good courage, fear not, nor be afraid of them.",
+  "ref": "Deuteronomy 31:6"
+ },
+ {
+  "id": "deuteronomy-31-e-06",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the LORD appear to Moses and Joshua?",
+  "choices": [
+   "In the tabernacle, in a pillar of cloud",
+   "On the top of Sinai",
+   "In the Jordan",
+   "In the tent of Moses at night"
+  ],
+  "answer": 0,
+  "explanation": "The LORD appeared in the tabernacle in a pillar of a cloud.",
+  "ref": "Deuteronomy 31:15"
+ },
+ {
+  "id": "deuteronomy-31-e-07",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say would happen to Moses?",
+  "choices": [
+   "He would sleep with his fathers",
+   "He would go over Jordan",
+   "He would be made king",
+   "He would live many more years"
+  ],
+  "answer": 0,
+  "explanation": "Behold, thou shalt sleep with thy fathers.",
+  "ref": "Deuteronomy 31:16"
+ },
+ {
+  "id": "deuteronomy-31-e-08",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the people go after, breaking the LORD's covenant?",
+  "choices": [
+   "The gods of the strangers of the land",
+   "The gods of Egypt",
+   "The kings of Canaan",
+   "The priests of Moab"
+  ],
+  "answer": 0,
+  "explanation": "This people will rise up, and go a whoring after the gods of the strangers of the land.",
+  "ref": "Deuteronomy 31:16"
+ },
+ {
+  "id": "deuteronomy-31-e-09",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who bare the ark of the covenant?",
+  "choices": [
+   "The Levites",
+   "The elders",
+   "The judges",
+   "The captains"
+  ],
+  "answer": 0,
+  "explanation": "Moses commanded the Levites, which bare the ark of the covenant of the LORD.",
+  "ref": "Deuteronomy 31:25"
+ },
+ {
+  "id": "deuteronomy-31-e-10",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the LORD do to His face in that day of Israel's sin?",
+  "choices": [
+   "Hide it from them",
+   "Turn it toward them",
+   "Show it in fire",
+   "Cover it with a cloud"
+  ],
+  "answer": 0,
+  "explanation": "I will forsake them, and I will hide my face from them.",
+  "ref": "Deuteronomy 31:17"
+ },
+ {
+  "id": "deuteronomy-31-m-01",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why could Moses no more go out and come in?",
+  "choices": [
+   "He was sick",
+   "He had sinned at Kadesh",
+   "The LORD had said he would not go over Jordan",
+   "He was lame"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hath said unto me, Thou shalt not go over this Jordan.",
+  "ref": "Deuteronomy 31:2"
+ },
+ {
+  "id": "deuteronomy-31-m-02",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the LORD would not do to Israel?",
+  "choices": [
+   "Give them a king",
+   "Let them rest",
+   "Fail them nor forsake them",
+   "Bring them to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "The LORD thy God... he will not fail thee, nor forsake thee.",
+  "ref": "Deuteronomy 31:6"
+ },
+ {
+  "id": "deuteronomy-31-m-03",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Joshua cause Israel to do to the land?",
+  "choices": [
+   "Sell it",
+   "Share it with the nations",
+   "Inherit it",
+   "Leave it"
+  ],
+  "answer": 2,
+  "explanation": "Thou must go with this people unto the land... and thou shalt cause them to inherit it.",
+  "ref": "Deuteronomy 31:7"
+ },
+ {
+  "id": "deuteronomy-31-m-04",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was to be gathered to hear the law read?",
+  "choices": [
+   "The priests only",
+   "The elders only",
+   "Men, women, children and the stranger",
+   "The kings of the land"
+  ],
+  "answer": 2,
+  "explanation": "Gather the people together, men, and women, and children, and thy stranger that is within thy gates.",
+  "ref": "Deuteronomy 31:12"
+ },
+ {
+  "id": "deuteronomy-31-m-05",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the children to hear the law?",
+  "choices": [
+   "That they may become priests",
+   "That they may sing in the temple",
+   "That they may learn to fear the LORD",
+   "That they may count the tribes"
+  ],
+  "answer": 2,
+  "explanation": "That their children, which have not known any thing, may hear, and learn to fear the LORD.",
+  "ref": "Deuteronomy 31:13"
+ },
+ {
+  "id": "deuteronomy-31-m-06",
+  "chapter": 31,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were Moses and Joshua to present themselves?",
+  "choices": [
+   "On mount Ebal",
+   "At the river Jordan",
+   "In the tabernacle of the congregation",
+   "At the city gate"
+  ],
+  "answer": 2,
+  "explanation": "Present yourselves in the tabernacle of the congregation, that I may give him a charge.",
+  "ref": "Deuteronomy 31:14"
+ },
+ {
+  "id": "deuteronomy-31-m-07",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD give to Joshua in the tabernacle?",
+  "choices": [
+   "A new name",
+   "A crown",
+   "A charge",
+   "A staff"
+  ],
+  "answer": 2,
+  "explanation": "Call Joshua... that I may give him a charge.",
+  "ref": "Deuteronomy 31:14"
+ },
+ {
+  "id": "deuteronomy-31-m-08",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the people do after they ate, were filled and waxed fat?",
+  "choices": [
+   "Build the temple",
+   "Offer more sacrifices",
+   "Turn to other gods",
+   "Pay the tithe"
+  ],
+  "answer": 2,
+  "explanation": "They shall have eaten and filled themselves, and waxen fat; then will they turn unto other gods.",
+  "ref": "Deuteronomy 31:20"
+ },
+ {
+  "id": "deuteronomy-31-m-09",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the people say when many evils befell them?",
+  "choices": [
+   "The LORD is far off",
+   "The king has failed",
+   "Our God is not among us",
+   "The nations are too strong"
+  ],
+  "answer": 2,
+  "explanation": "Are not these evils come upon us, because our God is not among us?",
+  "ref": "Deuteronomy 31:17"
+ },
+ {
+  "id": "deuteronomy-31-m-10",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Moses write the song and teach it to Israel?",
+  "choices": [
+   "After the burial of Aaron",
+   "On the next Sabbath",
+   "The same day",
+   "At the end of forty days"
+  ],
+  "answer": 2,
+  "explanation": "Moses therefore wrote this song the same day, and taught it the children of Israel.",
+  "ref": "Deuteronomy 31:22"
+ },
+ {
+  "id": "deuteronomy-31-m-11",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the song to be when evils befell Israel?",
+  "choices": [
+   "A comfort to them",
+   "A prayer for rain",
+   "A witness against them",
+   "A call to war"
+  ],
+  "answer": 2,
+  "explanation": "This song shall testify against them as a witness.",
+  "ref": "Deuteronomy 31:21"
+ },
+ {
+  "id": "deuteronomy-31-m-12",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say he knew about the people?",
+  "choices": [
+   "Their hunger and thirst",
+   "Their wealth and pride",
+   "Their rebellion and stiff neck",
+   "Their fear and shame"
+  ],
+  "answer": 2,
+  "explanation": "For I know thy rebellion, and thy stiff neck.",
+  "ref": "Deuteronomy 31:27"
+ },
+ {
+  "id": "deuteronomy-31-m-13",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Moses ask to be gathered to hear the words?",
+  "choices": [
+   "The priests and the judges",
+   "The captains of fifties",
+   "The elders of the tribes and the officers",
+   "The women and children"
+  ],
+  "answer": 2,
+  "explanation": "Gather unto me all the elders of your tribes, and your officers.",
+  "ref": "Deuteronomy 31:28"
+ },
+ {
+  "id": "deuteronomy-31-m-14",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say would befall them in the latter days?",
+  "choices": [
+   "Peace",
+   "Famine only",
+   "Evil",
+   "War with Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Evil will befall you in the latter days; because ye will do evil in the sight of the LORD.",
+  "ref": "Deuteronomy 31:29"
+ },
+ {
+  "id": "deuteronomy-31-m-15",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say to Moses about the people's future?",
+  "choices": [
+   "They would be faithful",
+   "They would cross the sea",
+   "They would forsake Him and break His covenant",
+   "They would choose a king"
+  ],
+  "answer": 2,
+  "explanation": "This people... will forsake me, and break my covenant which I have made with them.",
+  "ref": "Deuteronomy 31:16"
+ },
+ {
+  "id": "deuteronomy-31-h-01",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the LORD, who would go over before Israel?",
+  "choices": [
+   "Caleb",
+   "Eleazar",
+   "Phinehas",
+   "Joshua"
+  ],
+  "answer": 3,
+  "explanation": "Joshua, he shall go over before thee, as the LORD hath said.",
+  "ref": "Deuteronomy 31:3"
+ },
+ {
+  "id": "deuteronomy-31-h-02",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "Of which people were Sihon and Og kings?",
+  "choices": [
+   "The Moabites",
+   "The Edomites",
+   "The Midianites",
+   "The Amorites"
+  ],
+  "answer": 3,
+  "explanation": "Sihon and to Og, kings of the Amorites.",
+  "ref": "Deuteronomy 31:4"
+ },
+ {
+  "id": "deuteronomy-31-h-03",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "In whose sight did Moses call Joshua and charge him?",
+  "choices": [
+   "The priests' only",
+   "The elders' only",
+   "The Levites' only",
+   "All Israel's"
+  ],
+  "answer": 3,
+  "explanation": "Moses called unto Joshua, and said unto him in the sight of all Israel.",
+  "ref": "Deuteronomy 31:7"
+ },
+ {
+  "id": "deuteronomy-31-h-04",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "Who besides the priests received the law Moses wrote?",
+  "choices": [
+   "The captains of the host",
+   "The judges of the gates",
+   "The prophets",
+   "The elders of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Moses wrote this law, and delivered it unto the priests... and unto all the elders of Israel.",
+  "ref": "Deuteronomy 31:9"
+ },
+ {
+  "id": "deuteronomy-31-h-05",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year was the law to be read to Israel?",
+  "choices": [
+   "The year of jubilee",
+   "The first year of a king",
+   "The year of plenty",
+   "The year of release"
+  ],
+  "answer": 3,
+  "explanation": "At the end of every seven years, in the solemnity of the year of release.",
+  "ref": "Deuteronomy 31:10"
+ },
+ {
+  "id": "deuteronomy-31-h-06",
+  "chapter": 31,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the pillar of cloud stand?",
+  "choices": [
+   "Over the ark",
+   "Over the camp",
+   "Over the altar",
+   "Over the door of the tabernacle"
+  ],
+  "answer": 3,
+  "explanation": "The pillar of the cloud stood over the door of the tabernacle.",
+  "ref": "Deuteronomy 31:15"
+ },
+ {
+  "id": "deuteronomy-31-h-07",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the song to be put?",
+  "choices": [
+   "In the ark",
+   "On tables of stone",
+   "On the city gates",
+   "In the mouths of the children of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Teach it the children of Israel: put it in their mouths.",
+  "ref": "Deuteronomy 31:19"
+ },
+ {
+  "id": "deuteronomy-31-h-08",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "Out of whose mouths would the song never be forgotten?",
+  "choices": [
+   "The priests'",
+   "The elders'",
+   "The Levites'",
+   "Their seed's"
+  ],
+  "answer": 3,
+  "explanation": "It shall not be forgotten out of the mouths of their seed.",
+  "ref": "Deuteronomy 31:21"
+ },
+ {
+  "id": "deuteronomy-31-h-09",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Joshua?",
+  "choices": [
+   "Caleb's",
+   "Eleazar's",
+   "Jephunneh's",
+   "Nun's"
+  ],
+  "answer": 3,
+  "explanation": "He gave Joshua the son of Nun a charge.",
+  "ref": "Deuteronomy 31:23"
+ },
+ {
+  "id": "deuteronomy-31-h-10",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD be with, when Joshua brought Israel into the land?",
+  "choices": [
+   "With the ark only",
+   "With the priests",
+   "With the elders",
+   "With Joshua"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt bring the children of Israel into the land which I sware unto them: and I will be with thee.",
+  "ref": "Deuteronomy 31:23"
+ },
+ {
+  "id": "deuteronomy-31-h-11",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the law book was to be, put in the side of the ark?",
+  "choices": [
+   "A treasure for the king",
+   "A comfort for the priests",
+   "A map for the land",
+   "A witness against them"
+  ],
+  "answer": 3,
+  "explanation": "Take this book of the law, and put it in the side of the ark... that it may be there for a witness against thee.",
+  "ref": "Deuteronomy 31:26"
+ },
+ {
+  "id": "deuteronomy-31-h-12",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say he would call to record against the elders and officers?",
+  "choices": [
+   "The stones of the altar",
+   "The ark",
+   "The song",
+   "Heaven and earth"
+  ],
+  "answer": 3,
+  "explanation": "That I may speak these words in their ears, and call heaven and earth to record against them.",
+  "ref": "Deuteronomy 31:28"
+ },
+ {
+  "id": "deuteronomy-31-h-13",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses know Israel would do after his death?",
+  "choices": [
+   "Cross the sea",
+   "Choose a king",
+   "Rebuild the altar",
+   "Utterly corrupt themselves"
+  ],
+  "answer": 3,
+  "explanation": "For I know that after my death ye will utterly corrupt yourselves.",
+  "ref": "Deuteronomy 31:29"
+ },
+ {
+  "id": "deuteronomy-31-h-14",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did Moses speak the words of the song until they were ended?",
+  "choices": [
+   "The elders of Israel",
+   "Joshua alone",
+   "The priests the Levites",
+   "All the congregation of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Moses spake in the ears of all the congregation of Israel the words of this song, until they were ended.",
+  "ref": "Deuteronomy 31:30"
+ },
+ {
+  "id": "deuteronomy-31-h-15",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Moses made an end of writing in a book?",
+  "choices": [
+   "The words of this law",
+   "The song of Israel",
+   "The names of the tribes",
+   "The journeys of the camp"
+  ],
+  "answer": 0,
+  "explanation": "Moses had made an end of writing the words of this law in a book, until they were finished.",
+  "ref": "Deuteronomy 31:24"
+ },
+ {
   "id": "old-deuteronomy-32-1",
   "chapter": 32,
   "level": "beginner",
