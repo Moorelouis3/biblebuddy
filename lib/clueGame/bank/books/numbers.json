@@ -5120,6 +5120,646 @@
   "ref": "Numbers 8:24"
  },
  {
+  "id": "numbers-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the seven lamps stand over against?",
+  "choices": [
+   "The candlestick",
+   "The ark",
+   "The table",
+   "The altar"
+  ],
+  "answer": 0,
+  "explanation": "The seven lamps shall give light over against the candlestick.",
+  "ref": "Numbers 8:2"
+ },
+ {
+  "id": "numbers-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who lighted the lamps?",
+  "choices": [
+   "Eleazar",
+   "Ithamar",
+   "Aaron",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "Aaron did so; he lighted the lamps thereof over against the candlestick.",
+  "ref": "Numbers 8:3"
+ },
+ {
+  "id": "numbers-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the candlestick made of?",
+  "choices": [
+   "Silver",
+   "Brass",
+   "Acacia wood",
+   "Beaten gold"
+  ],
+  "answer": 3,
+  "explanation": "This work of the candlestick was of beaten gold.",
+  "ref": "Numbers 8:4"
+ },
+ {
+  "id": "numbers-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the LORD tell Moses to take from among Israel and cleanse?",
+  "choices": [
+   "The firstborn sons",
+   "The Levites",
+   "The elders",
+   "The princes"
+  ],
+  "answer": 1,
+  "explanation": "Take the Levites from among the children of Israel, and cleanse them.",
+  "ref": "Numbers 8:6"
+ },
+ {
+  "id": "numbers-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was sprinkled upon the Levites to cleanse them?",
+  "choices": [
+   "Water of purifying",
+   "Oil",
+   "Blood",
+   "Ashes"
+  ],
+  "answer": 0,
+  "explanation": "Sprinkle water of purifying upon them.",
+  "ref": "Numbers 8:7"
+ },
+ {
+  "id": "numbers-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Levites do to their clothes?",
+  "choices": [
+   "Tore them",
+   "Washed them",
+   "Burned them",
+   "Dyed them"
+  ],
+  "answer": 1,
+  "explanation": "Let them wash their clothes, and so make themselves clean.",
+  "ref": "Numbers 8:7"
+ },
+ {
+  "id": "numbers-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What offerings were two young bullocks used for the Levites?",
+  "choices": [
+   "A drink offering and a wave offering",
+   "Two peace offerings",
+   "A burnt offering and a sin offering",
+   "Two trespass offerings"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt offer the one for a sin offering, and the other for a burnt offering, unto the LORD.",
+  "ref": "Numbers 8:12"
+ },
+ {
+  "id": "numbers-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose are the firstborn of Israel, both man and beast, says the LORD?",
+  "choices": [
+   "The priests'",
+   "The princes'",
+   "The LORD's",
+   "Aaron's"
+  ],
+  "answer": 2,
+  "explanation": "All the firstborn of the children of Israel are mine, both man and beast.",
+  "ref": "Numbers 8:17"
+ },
+ {
+  "id": "numbers-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the LORD give the Levites as a gift?",
+  "choices": [
+   "Aaron and his sons",
+   "The twelve spies",
+   "The princes of the tribes",
+   "Joshua"
+  ],
+  "answer": 0,
+  "explanation": "I have given the Levites as a gift to Aaron and to his sons.",
+  "ref": "Numbers 8:19"
+ },
+ {
+  "id": "numbers-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what age did the Levites cease waiting upon the service?",
+  "choices": [
+   "Seventy",
+   "Forty",
+   "Sixty",
+   "Fifty"
+  ],
+  "answer": 3,
+  "explanation": "From the age of fifty years they shall cease waiting upon the service thereof.",
+  "ref": "Numbers 8:25"
+ },
+ {
+  "id": "numbers-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the meat offering that went with the young bullock?",
+  "choices": [
+   "Unleavened wafers",
+   "Barley cakes",
+   "Dried figs",
+   "Fine flour mingled with oil"
+  ],
+  "answer": 3,
+  "explanation": "Take a young bullock with his meat offering, even fine flour mingled with oil.",
+  "ref": "Numbers 8:8"
+ },
+ {
+  "id": "numbers-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Levites shave in their cleansing?",
+  "choices": [
+   "Only their heads",
+   "Only their beards",
+   "All their flesh",
+   "Nothing"
+  ],
+  "answer": 2,
+  "explanation": "Let them shave all their flesh, and let them wash their clothes.",
+  "ref": "Numbers 8:7"
+ },
+ {
+  "id": "numbers-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who laid their hands upon the heads of the bullocks?",
+  "choices": [
+   "Aaron",
+   "The princes",
+   "The Levites",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "The Levites shall lay their hands upon the heads of the bullocks.",
+  "ref": "Numbers 8:12"
+ },
+ {
+  "id": "numbers-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who offered the Levites before the LORD as an offering?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "The princes",
+   "The Levites themselves"
+  ],
+  "answer": 1,
+  "explanation": "Aaron shall offer the Levites before the LORD for an offering of the children of Israel.",
+  "ref": "Numbers 8:11"
+ },
+ {
+  "id": "numbers-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Aaron to offer the Levites before the LORD?",
+  "choices": [
+   "To be made priests",
+   "That they may execute the service of the LORD",
+   "To be sent out of the camp",
+   "To pay for Israel's sin of idols"
+  ],
+  "answer": 1,
+  "explanation": "Aaron shall offer the Levites that they may execute the service of the LORD.",
+  "ref": "Numbers 8:11"
+ },
+ {
+  "id": "numbers-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where were the Levites brought with the whole assembly gathered?",
+  "choices": [
+   "To the river",
+   "To the camp gate",
+   "To the mount",
+   "Before the tabernacle of the congregation"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt bring the Levites before the tabernacle of the congregation, and gather the whole assembly together.",
+  "ref": "Numbers 8:9"
+ },
+ {
+  "id": "numbers-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what way did the LORD say the Levites were His?",
+  "choices": [
+   "They were separated from the children of Israel",
+   "They were born in Egypt",
+   "They were taken in war",
+   "They were bought with silver"
+  ],
+  "answer": 0,
+  "explanation": "Thus shalt thou separate the Levites from among the children of Israel: and the Levites shall be mine.",
+  "ref": "Numbers 8:14"
+ },
+ {
+  "id": "numbers-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What day did the LORD say He sanctified the firstborn for Himself?",
+  "choices": [
+   "The day He smote every firstborn in Egypt",
+   "The day the tabernacle was set up",
+   "The day of the Passover feast at Sinai",
+   "The day they left Egypt's border"
+  ],
+  "answer": 0,
+  "explanation": "On the day that I smote every firstborn in the land of Egypt I sanctified them for myself.",
+  "ref": "Numbers 8:17"
+ },
+ {
+  "id": "numbers-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The LORD said He had taken the Levites instead of whom?",
+  "choices": [
+   "The elders of Israel",
+   "The sons of Aaron",
+   "Such as open every womb, the firstborn",
+   "The captains of thousands"
+  ],
+  "answer": 2,
+  "explanation": "Instead of such as open every womb, even instead of the firstborn of all the children of Israel, have I taken them.",
+  "ref": "Numbers 8:16"
+ },
+ {
+  "id": "numbers-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say would be avoided when Israel came near the sanctuary?",
+  "choices": [
+   "A flood",
+   "A famine",
+   "A war",
+   "A plague among the children of Israel"
+  ],
+  "answer": 3,
+  "explanation": "That there be no plague among the children of Israel, when they come nigh unto the sanctuary.",
+  "ref": "Numbers 8:19"
+ },
+ {
+  "id": "numbers-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "At what age did a Levite begin to wait upon the service?",
+  "choices": [
+   "Twenty and five",
+   "Twenty",
+   "Forty",
+   "Thirty"
+  ],
+  "answer": 0,
+  "explanation": "From twenty and five years old and upward they shall go in to wait upon the service.",
+  "ref": "Numbers 8:24"
+ },
+ {
+  "id": "numbers-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Levites do after age fifty?",
+  "choices": [
+   "Became priests",
+   "Minister with their brethren and keep the charge",
+   "Carried the ark",
+   "Went home to their cities"
+  ],
+  "answer": 1,
+  "explanation": "They shall minister with their brethren in the tabernacle, to keep the charge, and shall do no service.",
+  "ref": "Numbers 8:26"
+ },
+ {
+  "id": "numbers-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What pattern was the candlestick made according to?",
+  "choices": [
+   "The pattern the LORD showed Moses",
+   "A pattern drawn by Aaron",
+   "A design of the princes",
+   "The pattern of Egypt's temples"
+  ],
+  "answer": 0,
+  "explanation": "According unto the pattern which the LORD had shewed Moses, so he made the candlestick.",
+  "ref": "Numbers 8:4"
+ },
+ {
+  "id": "numbers-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Did Israel do as the LORD commanded concerning the Levites?",
+  "choices": [
+   "No, they refused",
+   "Only Aaron obeyed",
+   "Only in part",
+   "Yes, all that the LORD commanded Moses"
+  ],
+  "answer": 3,
+  "explanation": "Moses, and Aaron, and all the congregation did to the Levites according unto all that the LORD commanded Moses.",
+  "ref": "Numbers 8:20"
+ },
+ {
+  "id": "numbers-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Before whom did the Levites go in to do their service?",
+  "choices": [
+   "Moses alone",
+   "The princes",
+   "Aaron and his sons",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "After that went the Levites in to do their service before Aaron, and before his sons.",
+  "ref": "Numbers 8:22"
+ },
+ {
+  "id": "numbers-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The shaft and flowers of the candlestick were made of what kind of work?",
+  "choices": [
+   "Woven work",
+   "Beaten work",
+   "Cast work",
+   "Carved wood"
+  ],
+  "answer": 1,
+  "explanation": "The shaft thereof, unto the flowers thereof, was beaten work.",
+  "ref": "Numbers 8:4"
+ },
+ {
+  "id": "numbers-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many lamps gave light over against the candlestick?",
+  "choices": [
+   "Ten",
+   "Twelve",
+   "Seven",
+   "Three"
+  ],
+  "answer": 2,
+  "explanation": "The seven lamps shall give light over against the candlestick.",
+  "ref": "Numbers 8:2"
+ },
+ {
+  "id": "numbers-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many young bullocks were taken for the Levites' offerings?",
+  "choices": [
+   "Two",
+   "Seven",
+   "One",
+   "Three"
+  ],
+  "answer": 0,
+  "explanation": "A young bullock with his meat offering, and another young bullock for a sin offering.",
+  "ref": "Numbers 8:8"
+ },
+ {
+  "id": "numbers-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The bullock for the Levites' sin offering was a second what?",
+  "choices": [
+   "A kid of the goats",
+   "A ram",
+   "A young bullock",
+   "A lamb"
+  ],
+  "answer": 2,
+  "explanation": "Another young bullock shalt thou take for a sin offering.",
+  "ref": "Numbers 8:8"
+ },
+ {
+  "id": "numbers-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom were the Levites set, along with before his sons?",
+  "choices": [
+   "Moses",
+   "Joshua",
+   "The princes",
+   "Aaron"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt set the Levites before Aaron, and before his sons, and offer them for an offering unto the LORD.",
+  "ref": "Numbers 8:13"
+ },
+ {
+  "id": "numbers-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the Levites were to Him, instead of the firstborn?",
+  "choices": [
+   "Sold into service",
+   "Lent for a season",
+   "Wholly given unto Him",
+   "Servants of Aaron only"
+  ],
+  "answer": 2,
+  "explanation": "They are wholly given unto me from among the children of Israel.",
+  "ref": "Numbers 8:16"
+ },
+ {
+  "id": "numbers-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Aaron make for the Levites to cleanse them?",
+  "choices": [
+   "A sacrifice of thanks",
+   "A covenant",
+   "A vow",
+   "An atonement"
+  ],
+  "answer": 3,
+  "explanation": "Aaron offered them as an offering before the LORD; and Aaron made an atonement for them to cleanse them.",
+  "ref": "Numbers 8:21"
+ },
+ {
+  "id": "numbers-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Levites do after they were purified, before Aaron offered them?",
+  "choices": [
+   "Anointed themselves with oil",
+   "Shaved their heads",
+   "Washed their clothes",
+   "Fasted"
+  ],
+  "answer": 2,
+  "explanation": "The Levites were purified, and they washed their clothes; and Aaron offered them.",
+  "ref": "Numbers 8:21"
+ },
+ {
+  "id": "numbers-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which place were the Levites to serve?",
+  "choices": [
+   "The mount of Sinai",
+   "The tents of the princes",
+   "The tabernacle of the congregation",
+   "The camp gate"
+  ],
+  "answer": 2,
+  "explanation": "After that shall the Levites go in to do the service of the tabernacle of the congregation.",
+  "ref": "Numbers 8:15"
+ },
+ {
+  "id": "numbers-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the children of Israel do to the Levites before the LORD?",
+  "choices": [
+   "Gave them silver",
+   "Poured oil on them",
+   "Put their hands upon them",
+   "Washed their feet"
+  ],
+  "answer": 2,
+  "explanation": "The children of Israel shall put their hands upon the Levites.",
+  "ref": "Numbers 8:10"
+ },
+ {
+  "id": "numbers-8-h-16",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides serving, what were the Levites given to make for Israel?",
+  "choices": [
+   "A census",
+   "A covenant",
+   "An atonement",
+   "A treaty"
+  ],
+  "answer": 2,
+  "explanation": "The Levites were given to make an atonement for the children of Israel.",
+  "ref": "Numbers 8:19"
+ },
+ {
+  "id": "numbers-8-h-17",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were Levites over fifty to keep while ministering with their brethren?",
+  "choices": [
+   "The treasure",
+   "The charge",
+   "The flocks",
+   "The gates"
+  ],
+  "answer": 1,
+  "explanation": "They shall minister with their brethren in the tabernacle of the congregation, to keep the charge.",
+  "ref": "Numbers 8:26"
+ },
+ {
+  "id": "numbers-8-h-18",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who besides Moses and Aaron did to the Levites all the LORD commanded?",
+  "choices": [
+   "The elders only",
+   "The Levites' wives",
+   "The twelve princes",
+   "All the congregation of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Moses, and Aaron, and all the congregation of the children of Israel, did to the Levites according unto all that the LORD commanded.",
+  "ref": "Numbers 8:20"
+ },
+ {
+  "id": "numbers-8-h-19",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Aaron offered the Levites as an offering of whom?",
+  "choices": [
+   "The elders",
+   "The firstborn",
+   "The children of Israel",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "Aaron shall offer the Levites before the LORD for an offering of the children of Israel.",
+  "ref": "Numbers 8:11"
+ },
+ {
+  "id": "numbers-8-h-20",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After the Levites were cleansed, what was done with them before the LORD?",
+  "choices": [
+   "They were anointed with oil",
+   "They were offered for an offering",
+   "They were numbered again",
+   "They were sent out of the camp"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt cleanse them, and offer them for an offering.",
+  "ref": "Numbers 8:15"
+ },
+ {
   "id": "old-numbers-9-1",
   "chapter": 9,
   "level": "beginner",
