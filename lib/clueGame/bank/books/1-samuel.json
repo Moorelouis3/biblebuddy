@@ -18096,6 +18096,646 @@
   "ref": "1 Samuel 26:17"
  },
  {
+  "id": "1-samuel-26-e-01",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Saul go down to the wilderness of Ziph to seek?",
+  "choices": [
+   "Abner",
+   "David",
+   "Jonathan",
+   "Doeg"
+  ],
+  "answer": 1,
+  "explanation": "Saul went down to seek David in the wilderness of Ziph.",
+  "ref": "1 Samuel 26:2"
+ },
+ {
+  "id": "1-samuel-26-e-02",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Saul lie when David came by night?",
+  "choices": [
+   "In the trench",
+   "In a cave",
+   "Under a tree",
+   "In a tent at Gibeah"
+  ],
+  "answer": 0,
+  "explanation": "Saul lay in the trench, and the people pitched round about him.",
+  "ref": "1 Samuel 26:5"
+ },
+ {
+  "id": "1-samuel-26-e-03",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Saul's captain of the host?",
+  "choices": [
+   "Joab",
+   "Abishai",
+   "Doeg",
+   "Abner"
+  ],
+  "answer": 3,
+  "explanation": "Abner the son of Ner, the captain of his host.",
+  "ref": "1 Samuel 26:5"
+ },
+ {
+  "id": "1-samuel-26-e-04",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who lay around Saul in the camp?",
+  "choices": [
+   "Jonathan and Michal",
+   "Doeg and Ahimelech",
+   "Abner and the people",
+   "The Ziphites"
+  ],
+  "answer": 2,
+  "explanation": "Abner and the people lay round about him.",
+  "ref": "1 Samuel 26:7"
+ },
+ {
+  "id": "1-samuel-26-e-05",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Abishai ask to do to Saul?",
+  "choices": [
+   "Bind him",
+   "Smite him with the spear",
+   "Take his crown",
+   "Wake him"
+  ],
+  "answer": 1,
+  "explanation": "Let me smite him, I pray thee, with the spear even to the earth at once.",
+  "ref": "1 Samuel 26:8"
+ },
+ {
+  "id": "1-samuel-26-e-06",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say to Abishai about Saul?",
+  "choices": [
+   "Destroy him not",
+   "Smite him quickly",
+   "Leave him to Abner",
+   "Take him prisoner"
+  ],
+  "answer": 0,
+  "explanation": "David said to Abishai, Destroy him not.",
+  "ref": "1 Samuel 26:9"
+ },
+ {
+  "id": "1-samuel-26-e-07",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David stand to call to the people?",
+  "choices": [
+   "At the gate of the camp",
+   "In the trench",
+   "By the cave",
+   "On the top of a hill afar off"
+  ],
+  "answer": 3,
+  "explanation": "David stood on the top of an hill afar off; a great space being between them.",
+  "ref": "1 Samuel 26:13"
+ },
+ {
+  "id": "1-samuel-26-e-08",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David call out to, asking Answerest thou not?",
+  "choices": [
+   "Saul",
+   "Abishai",
+   "Abner",
+   "Ahimelech"
+  ],
+  "answer": 2,
+  "explanation": "David cried to the people, and to Abner, saying, Answerest thou not, Abner?",
+  "ref": "1 Samuel 26:14"
+ },
+ {
+  "id": "1-samuel-26-e-09",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul say after hearing David's words?",
+  "choices": [
+   "I was right",
+   "I have sinned",
+   "I will find you again",
+   "Give me my spear"
+  ],
+  "answer": 1,
+  "explanation": "Then said Saul, I have sinned: return, my son David.",
+  "ref": "1 Samuel 26:21"
+ },
+ {
+  "id": "1-samuel-26-e-10",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul say David would do?",
+  "choices": [
+   "Great things, and still prevail",
+   "Flee to Gath",
+   "Rule Moab",
+   "Build the temple"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt both do great things, and also shalt still prevail.",
+  "ref": "1 Samuel 26:25"
+ },
+ {
+  "id": "1-samuel-26-m-01",
+  "chapter": 26,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Saul pitch his camp?",
+  "choices": [
+   "In the cave at En-gedi",
+   "At Gibeah",
+   "In the forest of Hareth",
+   "In the hill of Hachilah"
+  ],
+  "answer": 3,
+  "explanation": "Saul pitched in the hill of Hachilah, which is before Jeshimon, by the way.",
+  "ref": "1 Samuel 26:3"
+ },
+ {
+  "id": "1-samuel-26-m-02",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David learn Saul had come?",
+  "choices": [
+   "Jonathan told him",
+   "Abiathar enquired",
+   "He sent out spies",
+   "A messenger came"
+  ],
+  "answer": 2,
+  "explanation": "David sent out spies, and understood that Saul was come in very deed.",
+  "ref": "1 Samuel 26:4"
+ },
+ {
+  "id": "1-samuel-26-m-03",
+  "chapter": 26,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did David ask, Who will go down with me to Saul?",
+  "choices": [
+   "Joab and Abiathar",
+   "Ahimelech the Hittite and Abishai",
+   "Jonathan and Gad",
+   "Abner and Doeg"
+  ],
+  "answer": 1,
+  "explanation": "David answered and said to Ahimelech the Hittite, and to Abishai the son of Zeruiah.",
+  "ref": "1 Samuel 26:6"
+ },
+ {
+  "id": "1-samuel-26-m-04",
+  "chapter": 26,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose brother was Abishai?",
+  "choices": [
+   "Joab's",
+   "David's",
+   "Abner's",
+   "Ahimelech's"
+  ],
+  "answer": 0,
+  "explanation": "Abishai the son of Zeruiah, brother to Joab.",
+  "ref": "1 Samuel 26:6"
+ },
+ {
+  "id": "1-samuel-26-m-05",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did David and Abishai come to the camp?",
+  "choices": [
+   "At dawn",
+   "At noon",
+   "At the new moon",
+   "By night"
+  ],
+  "answer": 3,
+  "explanation": "David and Abishai came to the people by night.",
+  "ref": "1 Samuel 26:7"
+ },
+ {
+  "id": "1-samuel-26-m-06",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abishai say God had done?",
+  "choices": [
+   "Taken Saul's kingdom",
+   "Sent Abner away",
+   "Delivered his enemy into David's hand",
+   "Hidden the camp"
+  ],
+  "answer": 2,
+  "explanation": "God hath delivered thine enemy into thine hand this day.",
+  "ref": "1 Samuel 26:8"
+ },
+ {
+  "id": "1-samuel-26-m-07",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David ask, who could stretch forth his hand against the LORD's anointed?",
+  "choices": [
+   "And live",
+   "And be guiltless",
+   "And be forgiven",
+   "And be king"
+  ],
+  "answer": 1,
+  "explanation": "Who can stretch forth his hand against the LORD'S anointed, and be guiltless?",
+  "ref": "1 Samuel 26:9"
+ },
+ {
+  "id": "1-samuel-26-m-08",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say might happen to Saul besides the LORD smiting him?",
+  "choices": [
+   "He might die in battle",
+   "He might be exiled",
+   "He might lose his sight",
+   "He might repent"
+  ],
+  "answer": 0,
+  "explanation": "His day shall come to die; or he shall descend into battle, and perish.",
+  "ref": "1 Samuel 26:10"
+ },
+ {
+  "id": "1-samuel-26-m-09",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David ask Abner about his duty?",
+  "choices": [
+   "Why he left Gibeah",
+   "Why he followed Saul",
+   "Why he hated David",
+   "Why he had not kept the king his lord"
+  ],
+  "answer": 3,
+  "explanation": "Wherefore then hast thou not kept thy lord the king?",
+  "ref": "1 Samuel 26:15"
+ },
+ {
+  "id": "1-samuel-26-m-10",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say Abner and his men deserved?",
+  "choices": [
+   "To be exiled",
+   "To be punished by Saul",
+   "To die",
+   "Thanks"
+  ],
+  "answer": 2,
+  "explanation": "As the LORD liveth, ye are worthy to die, because ye have not kept your master.",
+  "ref": "1 Samuel 26:16"
+ },
+ {
+  "id": "1-samuel-26-m-11",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David ask Saul he had done?",
+  "choices": [
+   "Why he was proud",
+   "What evil was in his hand",
+   "Why he left Gibeah",
+   "Why he took the spear"
+  ],
+  "answer": 1,
+  "explanation": "Wherefore doth my lord thus pursue after his servant? for what have I done?",
+  "ref": "1 Samuel 26:18"
+ },
+ {
+  "id": "1-samuel-26-m-12",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say wicked men told him to do?",
+  "choices": [
+   "Go, serve other gods",
+   "Flee to Moab",
+   "Fight Saul",
+   "Take Saul's spear"
+  ],
+  "answer": 0,
+  "explanation": "They have driven me out this day from abiding in the inheritance of the LORD, saying, Go, serve other gods.",
+  "ref": "1 Samuel 26:19"
+ },
+ {
+  "id": "1-samuel-26-m-13",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say the king of Israel was seeking?",
+  "choices": [
+   "A lion",
+   "A dead dog",
+   "A fox",
+   "A flea"
+  ],
+  "answer": 3,
+  "explanation": "The king of Israel is come out to seek a flea, as when one doth hunt a partridge.",
+  "ref": "1 Samuel 26:20"
+ },
+ {
+  "id": "1-samuel-26-m-14",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul promise David?",
+  "choices": [
+   "He would give him Michal",
+   "He would give him a city",
+   "He would do him no more harm",
+   "He would make him captain"
+  ],
+  "answer": 2,
+  "explanation": "I will no more do thee harm, because my soul was precious in thine eyes this day.",
+  "ref": "1 Samuel 26:21"
+ },
+ {
+  "id": "1-samuel-26-m-15",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Saul describe himself?",
+  "choices": [
+   "He had been betrayed",
+   "He had played the fool and erred exceedingly",
+   "He had been deceived by Abner",
+   "He had followed Samuel"
+  ],
+  "answer": 1,
+  "explanation": "Behold, I have played the fool, and have erred exceedingly.",
+  "ref": "1 Samuel 26:21"
+ },
+ {
+  "id": "1-samuel-26-h-01",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many blows did Abishai say he would need to strike Saul?",
+  "choices": [
+   "One",
+   "Two",
+   "Three",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "Let me smite him with the spear even to the earth at once, and I will not smite him the second time.",
+  "ref": "1 Samuel 26:8"
+ },
+ {
+  "id": "1-samuel-26-h-02",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was Saul's spear when David found him?",
+  "choices": [
+   "Leaning on the trench",
+   "Held by Abner",
+   "Lying in his tent",
+   "Stuck in the ground at his bolster"
+  ],
+  "answer": 3,
+  "explanation": "Saul lay sleeping within the trench, and his spear stuck in the ground at his bolster.",
+  "ref": "1 Samuel 26:7"
+ },
+ {
+  "id": "1-samuel-26-h-03",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did David say should fetch the king's spear?",
+  "choices": [
+   "Abishai",
+   "Abner",
+   "One of the young men",
+   "Saul himself"
+  ],
+  "answer": 2,
+  "explanation": "Let one of the young men come over and fetch it.",
+  "ref": "1 Samuel 26:22"
+ },
+ {
+  "id": "1-samuel-26-h-04",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say Saul could accept if the LORD had stirred him up?",
+  "choices": [
+   "A sacrifice of lambs",
+   "An offering",
+   "An apology",
+   "A covenant"
+  ],
+  "answer": 1,
+  "explanation": "If the LORD have stirred thee up against me, let him accept an offering.",
+  "ref": "1 Samuel 26:19"
+ },
+ {
+  "id": "1-samuel-26-h-05",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say should happen to those who drove him out, if they were men?",
+  "choices": [
+   "Cursed be they before the LORD",
+   "They shall be forgiven",
+   "They shall flee",
+   "They shall be slain"
+  ],
+  "answer": 0,
+  "explanation": "If they be the children of men, cursed be they before the LORD.",
+  "ref": "1 Samuel 26:19"
+ },
+ {
+  "id": "1-samuel-26-h-06",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David ask not fall to the earth before the LORD?",
+  "choices": [
+   "His tears",
+   "His servants",
+   "His spear",
+   "His blood"
+  ],
+  "answer": 3,
+  "explanation": "Let not my blood fall to the earth before the face of the LORD.",
+  "ref": "1 Samuel 26:20"
+ },
+ {
+  "id": "1-samuel-26-h-07",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What bird did David mention when speaking of the hunt?",
+  "choices": [
+   "An eagle",
+   "A dove",
+   "A partridge",
+   "A raven"
+  ],
+  "answer": 2,
+  "explanation": "As when one doth hunt a partridge in the mountains.",
+  "ref": "1 Samuel 26:20"
+ },
+ {
+  "id": "1-samuel-26-h-08",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Saul say he would no more harm David?",
+  "choices": [
+   "David had given him gifts",
+   "His soul was precious in David's eyes that day",
+   "Abner begged him",
+   "Jonathan stood between them"
+  ],
+  "answer": 1,
+  "explanation": "My soul was precious in thine eyes this day.",
+  "ref": "1 Samuel 26:21"
+ },
+ {
+  "id": "1-samuel-26-h-09",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David ask the LORD to render to every man?",
+  "choices": [
+   "His righteousness and faithfulness",
+   "His reward in gold",
+   "His house and land",
+   "Justice and peace"
+  ],
+  "answer": 0,
+  "explanation": "The LORD render to every man his righteousness and his faithfulness.",
+  "ref": "1 Samuel 26:23"
+ },
+ {
+  "id": "1-samuel-26-h-10",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David ask be set much by in the eyes of the LORD?",
+  "choices": [
+   "His kingdom",
+   "His house",
+   "His name",
+   "His life"
+  ],
+  "answer": 3,
+  "explanation": "Let my life be much set by in the eyes of the LORD, and let him deliver me out of all tribulation.",
+  "ref": "1 Samuel 26:24"
+ },
+ {
+  "id": "1-samuel-26-h-11",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Saul go at the end?",
+  "choices": [
+   "Stayed in the wilderness",
+   "Went to Ziph",
+   "Returned to his place",
+   "Went to Gath"
+  ],
+  "answer": 2,
+  "explanation": "David went on his way, and Saul returned to his place.",
+  "ref": "1 Samuel 26:25"
+ },
+ {
+  "id": "1-samuel-26-h-12",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David call Abner in his questions to him?",
+  "choices": [
+   "A faithful friend",
+   "A valiant man",
+   "A wise counsellor",
+   "A proud captain"
+  ],
+  "answer": 1,
+  "explanation": "Art not thou a valiant man? and who is like to thee in Israel?",
+  "ref": "1 Samuel 26:15"
+ },
+ {
+  "id": "1-samuel-26-h-13",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Abner?",
+  "choices": [
+   "Ner",
+   "Jesse",
+   "Kish",
+   "Zeruiah"
+  ],
+  "answer": 0,
+  "explanation": "Abner the son of Ner, the captain of his host.",
+  "ref": "1 Samuel 26:5"
+ },
+ {
+  "id": "1-samuel-26-h-14",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did David say someone came into the camp?",
+  "choices": [
+   "To steal the spear",
+   "To wake Abner",
+   "To tell Saul of Ziph",
+   "To destroy the king"
+  ],
+  "answer": 3,
+  "explanation": "There came one of the people in to destroy the king thy lord.",
+  "ref": "1 Samuel 26:15"
+ },
+ {
+  "id": "1-samuel-26-h-15",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abner ask when David cried out?",
+  "choices": [
+   "Where is the king's spear?",
+   "Are you not David?",
+   "Who art thou that criest to the king?",
+   "Why do you hide in the hills?"
+  ],
+  "answer": 2,
+  "explanation": "Abner answered and said, Who art thou that criest to the king?",
+  "ref": "1 Samuel 26:14"
+ },
+ {
   "id": "old-1-samuel-27-1",
   "chapter": 27,
   "level": "beginner",
