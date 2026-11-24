@@ -23886,5 +23886,645 @@
   "answer": 3,
   "explanation": "The book closes by stating no prophet arose in Israel like Moses.",
   "ref": "Deuteronomy 34:10"
+ },
+ {
+  "id": "deuteronomy-34-e-01",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was full of the spirit of wisdom after Moses died?",
+  "choices": [
+   "Caleb",
+   "Joshua",
+   "Eleazar",
+   "Aaron"
+  ],
+  "answer": 1,
+  "explanation": "Joshua the son of Nun was full of the spirit of wisdom; for Moses had laid his hands upon him.",
+  "ref": "Deuteronomy 34:9"
+ },
+ {
+  "id": "deuteronomy-34-e-02",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which land did Moses die?",
+  "choices": [
+   "Egypt",
+   "Moab",
+   "Canaan",
+   "Midian"
+  ],
+  "answer": 1,
+  "explanation": "So Moses the servant of the LORD died there in the land of Moab.",
+  "ref": "Deuteronomy 34:5"
+ },
+ {
+  "id": "deuteronomy-34-e-03",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title does the chapter give Moses when he died?",
+  "choices": [
+   "King of Israel",
+   "Servant of the LORD",
+   "Judge of Israel",
+   "Priest of the LORD"
+  ],
+  "answer": 1,
+  "explanation": "So Moses the servant of the LORD died there in the land of Moab.",
+  "ref": "Deuteronomy 34:5"
+ },
+ {
+  "id": "deuteronomy-34-e-04",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city is called 'the city of palm trees'?",
+  "choices": [
+   "Zoar",
+   "Jericho",
+   "Hebron",
+   "Ai"
+  ],
+  "answer": 1,
+  "explanation": "The plain of the valley of Jericho, the city of palm trees, unto Zoar.",
+  "ref": "Deuteronomy 34:3"
+ },
+ {
+  "id": "deuteronomy-34-e-05",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which three men did the LORD say He had sworn to give the land to?",
+  "choices": [
+   "Noah, Abraham and Isaac",
+   "Abraham, Isaac and Jacob",
+   "Abraham, Jacob and Joseph",
+   "Isaac, Jacob and Moses"
+  ],
+  "answer": 1,
+  "explanation": "This is the land which I sware unto Abraham, unto Isaac, and unto Jacob.",
+  "ref": "Deuteronomy 34:4"
+ },
+ {
+  "id": "deuteronomy-34-e-06",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say Moses could see but not enter?",
+  "choices": [
+   "Egypt",
+   "The promised land",
+   "Mount Sinai",
+   "The wilderness"
+  ],
+  "answer": 1,
+  "explanation": "I have caused thee to see it with thine eyes, but thou shalt not go over thither.",
+  "ref": "Deuteronomy 34:4"
+ },
+ {
+  "id": "deuteronomy-34-e-07",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who buried Moses?",
+  "choices": [
+   "Joshua",
+   "The LORD",
+   "Aaron's sons",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "And he buried him in a valley in the land of Moab.",
+  "ref": "Deuteronomy 34:6"
+ },
+ {
+  "id": "deuteronomy-34-e-08",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had Moses laid upon Joshua?",
+  "choices": [
+   "His staff",
+   "His hands",
+   "His robe",
+   "His sword"
+  ],
+  "answer": 1,
+  "explanation": "Joshua was full of the spirit of wisdom; for Moses had laid his hands upon him.",
+  "ref": "Deuteronomy 34:9"
+ },
+ {
+  "id": "deuteronomy-34-e-09",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who wept for Moses thirty days?",
+  "choices": [
+   "The elders only",
+   "The children of Israel",
+   "The Levites",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel wept for Moses in the plains of Moab thirty days.",
+  "ref": "Deuteronomy 34:8"
+ },
+ {
+  "id": "deuteronomy-34-e-10",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Before which ruler did Moses do signs and wonders in Egypt?",
+  "choices": [
+   "Balak",
+   "Pharaoh",
+   "Sihon",
+   "Og"
+  ],
+  "answer": 1,
+  "explanation": "In all the signs and the wonders, which the LORD sent him to do in the land of Egypt to Pharaoh.",
+  "ref": "Deuteronomy 34:11"
+ },
+ {
+  "id": "deuteronomy-34-m-01",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "Moses went up to the top of which place?",
+  "choices": [
+   "Horeb",
+   "Carmel",
+   "Hermon",
+   "Pisgah"
+  ],
+  "answer": 3,
+  "explanation": "Moses went up unto the mountain of Nebo, to the top of Pisgah.",
+  "ref": "Deuteronomy 34:1"
+ },
+ {
+  "id": "deuteronomy-34-m-02",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "Which land did the LORD show Moses, unto Dan?",
+  "choices": [
+   "Moab",
+   "Edom",
+   "Bashan",
+   "Gilead"
+  ],
+  "answer": 3,
+  "explanation": "And the LORD shewed him all the land of Gilead, unto Dan.",
+  "ref": "Deuteronomy 34:1"
+ },
+ {
+  "id": "deuteronomy-34-m-03",
+  "chapter": 34,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Joshua?",
+  "choices": [
+   "Jephunneh",
+   "Eleazar",
+   "Hur",
+   "Nun"
+  ],
+  "answer": 3,
+  "explanation": "And Joshua the son of Nun was full of the spirit of wisdom.",
+  "ref": "Deuteronomy 34:9"
+ },
+ {
+  "id": "deuteronomy-34-m-04",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "Moses was buried in a valley over against which place?",
+  "choices": [
+   "Mount Nebo",
+   "Jericho",
+   "Heshbon",
+   "Beth-peor"
+  ],
+  "answer": 3,
+  "explanation": "He buried him in a valley in the land of Moab, over against Beth-peor.",
+  "ref": "Deuteronomy 34:6"
+ },
+ {
+  "id": "deuteronomy-34-m-05",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "In which land was Moses buried?",
+  "choices": [
+   "Gilead",
+   "Canaan",
+   "Egypt",
+   "Moab"
+  ],
+  "answer": 3,
+  "explanation": "And he buried him in a valley in the land of Moab.",
+  "ref": "Deuteronomy 34:6"
+ },
+ {
+  "id": "deuteronomy-34-m-06",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not dim when Moses died at 120 years old?",
+  "choices": [
+   "His hearing",
+   "His memory",
+   "His voice",
+   "His eye"
+  ],
+  "answer": 3,
+  "explanation": "Moses was an hundred and twenty years old when he died: his eye was not dim.",
+  "ref": "Deuteronomy 34:7"
+ },
+ {
+  "id": "deuteronomy-34-m-07",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to what did Moses die in Moab?",
+  "choices": [
+   "The law of Moses",
+   "The counsel of the elders",
+   "The command of Joshua",
+   "The word of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "So Moses the servant of the LORD died there in the land of Moab, according to the word of the LORD.",
+  "ref": "Deuteronomy 34:5"
+ },
+ {
+  "id": "deuteronomy-34-m-08",
+  "chapter": 34,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two sons of Joseph have their lands named among those shown to Moses?",
+  "choices": [
+   "Reuben and Simeon",
+   "Dan and Gad",
+   "Judah and Levi",
+   "Ephraim and Manasseh"
+  ],
+  "answer": 3,
+  "explanation": "And all Naphtali, and the land of Ephraim, and Manasseh.",
+  "ref": "Deuteronomy 34:2"
+ },
+ {
+  "id": "deuteronomy-34-m-09",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would give to the seed of Abraham, Isaac and Jacob?",
+  "choices": [
+   "A king",
+   "A prophet",
+   "Great riches",
+   "The land"
+  ],
+  "answer": 3,
+  "explanation": "This is the land which I sware unto Abraham, unto Isaac, and unto Jacob, saying, I will give it unto thy seed.",
+  "ref": "Deuteronomy 34:4"
+ },
+ {
+  "id": "deuteronomy-34-m-10",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Israel weep for Moses?",
+  "choices": [
+   "On Mount Nebo",
+   "At Jericho",
+   "At Kadesh",
+   "In the plains of Moab"
+  ],
+  "answer": 3,
+  "explanation": "The children of Israel wept for Moses in the plains of Moab thirty days.",
+  "ref": "Deuteronomy 34:8"
+ },
+ {
+  "id": "deuteronomy-34-m-11",
+  "chapter": 34,
+  "level": "medium",
+  "category": "person",
+  "question": "Which tribe's land was named along with Naphtali, Ephraim and Manasseh?",
+  "choices": [
+   "Reuben",
+   "Simeon",
+   "Levi",
+   "Judah"
+  ],
+  "answer": 3,
+  "explanation": "And all Naphtali, and the land of Ephraim, and Manasseh, and all the land of Judah.",
+  "ref": "Deuteronomy 34:2"
+ },
+ {
+  "id": "deuteronomy-34-m-12",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whose sight did Moses show that mighty hand?",
+  "choices": [
+   "All Egypt",
+   "Pharaoh",
+   "The elders only",
+   "All Israel"
+  ],
+  "answer": 3,
+  "explanation": "And in all that mighty hand, and in all the great terror which Moses shewed in the sight of all Israel.",
+  "ref": "Deuteronomy 34:12"
+ },
+ {
+  "id": "deuteronomy-34-m-13",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "In which land did the LORD send Moses to do signs and wonders?",
+  "choices": [
+   "Moab",
+   "Midian",
+   "Canaan",
+   "Egypt"
+  ],
+  "answer": 3,
+  "explanation": "In all the signs and the wonders, which the LORD sent him to do in the land of Egypt.",
+  "ref": "Deuteronomy 34:11"
+ },
+ {
+  "id": "deuteronomy-34-m-14",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "Which land named in the chapter was among those the LORD showed Moses?",
+  "choices": [
+   "Edom",
+   "Ammon",
+   "Midian",
+   "Naphtali"
+  ],
+  "answer": 3,
+  "explanation": "And all Naphtali, and the land of Ephraim, and Manasseh.",
+  "ref": "Deuteronomy 34:2"
+ },
+ {
+  "id": "deuteronomy-34-m-15",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The LORD let Moses see the land with his eyes, but what would he not do?",
+  "choices": [
+   "Go over thither",
+   "Divide it",
+   "Rule over it",
+   "Name its cities"
+  ],
+  "answer": 0,
+  "explanation": "I have caused thee to see it with thine eyes, but thou shalt not go over thither.",
+  "ref": "Deuteronomy 34:4"
+ },
+ {
+  "id": "deuteronomy-34-h-01",
+  "chapter": 34,
+  "level": "hard",
+  "category": "place",
+  "question": "Over against which place was Moses buried?",
+  "choices": [
+   "Jericho",
+   "Beth-peor",
+   "Zoar",
+   "Pisgah"
+  ],
+  "answer": 1,
+  "explanation": "He buried him in a valley in the land of Moab, over against Beth-peor.",
+  "ref": "Deuteronomy 34:6"
+ },
+ {
+  "id": "deuteronomy-34-h-02",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said about Moses' sepulchre?",
+  "choices": [
+   "It was marked by a pillar",
+   "No man knows it to this day",
+   "It was guarded by Joshua",
+   "It was on Mount Nebo"
+  ],
+  "answer": 1,
+  "explanation": "But no man knoweth of his sepulchre unto this day.",
+  "ref": "Deuteronomy 34:6"
+ },
+ {
+  "id": "deuteronomy-34-h-03",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was not abated when Moses died?",
+  "choices": [
+   "His wisdom",
+   "His natural force",
+   "His faith",
+   "His speech"
+  ],
+  "answer": 1,
+  "explanation": "His eye was not dim, nor his natural force abated.",
+  "ref": "Deuteronomy 34:7"
+ },
+ {
+  "id": "deuteronomy-34-h-04",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He had done concerning the land to Abraham, Isaac and Jacob?",
+  "choices": [
+   "Shown it in a dream",
+   "Sworn to give it",
+   "Written it in a book",
+   "Measured it by line"
+  ],
+  "answer": 1,
+  "explanation": "This is the land which I sware unto Abraham, unto Isaac, and unto Jacob.",
+  "ref": "Deuteronomy 34:4"
+ },
+ {
+  "id": "deuteronomy-34-h-05",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The land shown to Moses reached unto which sea?",
+  "choices": [
+   "The Red Sea",
+   "The utmost sea",
+   "The Salt Sea",
+   "The sea of Galilee"
+  ],
+  "answer": 1,
+  "explanation": "And all the land of Judah, unto the utmost sea.",
+  "ref": "Deuteronomy 34:2"
+ },
+ {
+  "id": "deuteronomy-34-h-06",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the LORD know Moses?",
+  "choices": [
+   "In a dream",
+   "Face to face",
+   "By a voice only",
+   "In a cloud"
+  ],
+  "answer": 1,
+  "explanation": "There arose not a prophet since in Israel like unto Moses, whom the LORD knew face to face.",
+  "ref": "Deuteronomy 34:10"
+ },
+ {
+  "id": "deuteronomy-34-h-07",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses did signs before Pharaoh, all his servants and all his what?",
+  "choices": [
+   "Army",
+   "Land",
+   "Priests",
+   "Houses"
+  ],
+  "answer": 1,
+  "explanation": "To Pharaoh, and to all his servants, and to all his land.",
+  "ref": "Deuteronomy 34:11"
+ },
+ {
+  "id": "deuteronomy-34-h-08",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Along with that mighty hand, what did Moses show in the sight of all Israel?",
+  "choices": [
+   "Great mercy",
+   "Great terror",
+   "Great wisdom",
+   "Great victory"
+  ],
+  "answer": 1,
+  "explanation": "And in all that mighty hand, and in all the great terror which Moses shewed in the sight of all Israel.",
+  "ref": "Deuteronomy 34:12"
+ },
+ {
+  "id": "deuteronomy-34-h-09",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Joshua was full of the spirit of what?",
+  "choices": [
+   "Power",
+   "Wisdom",
+   "Courage",
+   "Prophecy"
+  ],
+  "answer": 1,
+  "explanation": "Joshua the son of Nun was full of the spirit of wisdom.",
+  "ref": "Deuteronomy 34:9"
+ },
+ {
+  "id": "deuteronomy-34-h-10",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Which patriarch is named last in the LORD's oath about the land?",
+  "choices": [
+   "Abraham",
+   "Jacob",
+   "Isaac",
+   "Joseph"
+  ],
+  "answer": 1,
+  "explanation": "This is the land which I sware unto Abraham, unto Isaac, and unto Jacob.",
+  "ref": "Deuteronomy 34:4"
+ },
+ {
+  "id": "deuteronomy-34-h-11",
+  "chapter": 34,
+  "level": "hard",
+  "category": "place",
+  "question": "Pisgah is said to be over against which city?",
+  "choices": [
+   "Heshbon",
+   "Jericho",
+   "Zoar",
+   "Gilgal"
+  ],
+  "answer": 1,
+  "explanation": "The top of Pisgah, that is over against Jericho.",
+  "ref": "Deuteronomy 34:1"
+ },
+ {
+  "id": "deuteronomy-34-h-12",
+  "chapter": 34,
+  "level": "hard",
+  "category": "place",
+  "question": "The LORD showed Moses the land of Gilead unto which place?",
+  "choices": [
+   "Zoar",
+   "Dan",
+   "Hebron",
+   "Beersheba"
+  ],
+  "answer": 1,
+  "explanation": "And the LORD shewed him all the land of Gilead, unto Dan.",
+  "ref": "Deuteronomy 34:1"
+ },
+ {
+  "id": "deuteronomy-34-h-13",
+  "chapter": 34,
+  "level": "hard",
+  "category": "place",
+  "question": "The plain of the valley of Jericho stretches unto which place?",
+  "choices": [
+   "Hebron",
+   "Zoar",
+   "Dan",
+   "Beth-peor"
+  ],
+  "answer": 1,
+  "explanation": "And the south, and the plain of the valley of Jericho, the city of palm trees, unto Zoar.",
+  "ref": "Deuteronomy 34:3"
+ },
+ {
+  "id": "deuteronomy-34-h-14",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel do after Moses died, under Joshua?",
+  "choices": [
+   "Returned to Egypt",
+   "Did as the LORD commanded Moses",
+   "Went up to Nebo",
+   "Chose a king"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel hearkened unto him, and did as the LORD commanded Moses.",
+  "ref": "Deuteronomy 34:9"
+ },
+ {
+  "id": "deuteronomy-34-h-15",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the days of mourning for Moses said to be?",
+  "choices": [
+   "Seven days",
+   "Ended after thirty days",
+   "Forty days",
+   "A full year"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel wept thirty days: so the days of weeping and mourning for Moses were ended.",
+  "ref": "Deuteronomy 34:8"
  }
 ]
