@@ -10880,6 +10880,646 @@
   "ref": "Judges 16:29–30"
  },
  {
+  "id": "judges-16-e-01",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samson take from the city of Gaza at midnight?",
+  "choices": [
+   "The altar of Dagon",
+   "The city's treasure",
+   "The doors of the gate",
+   "The king's crown"
+  ],
+  "answer": 2,
+  "explanation": "Samson took the doors of the gate of the city, and the two posts, and went away with them.",
+  "ref": "Judges 16:3"
+ },
+ {
+  "id": "judges-16-e-02",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who offered Delilah money to find the secret of Samson's strength?",
+  "choices": [
+   "The priests of Dagon",
+   "The lords of the Philistines",
+   "The Gazites",
+   "The men of Judah"
+  ],
+  "answer": 1,
+  "explanation": "The lords of the Philistines said unto her, Entice him, and see wherein his great strength lieth.",
+  "ref": "Judges 16:5"
+ },
+ {
+  "id": "judges-16-e-03",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what did Samson first say he could be bound?",
+  "choices": [
+   "New ropes",
+   "Seven green withs",
+   "A chain of brass",
+   "A web and a pin"
+  ],
+  "answer": 1,
+  "explanation": "If they bind me with seven green withs that were never dried, then shall I be weak.",
+  "ref": "Judges 16:7"
+ },
+ {
+  "id": "judges-16-e-04",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Delilah make Samson sleep when his hair was cut?",
+  "choices": [
+   "In the prison",
+   "Upon her knees",
+   "On the roof",
+   "In the field"
+  ],
+  "answer": 1,
+  "explanation": "She made him sleep upon her knees; and she caused him to shave off the seven locks of his head.",
+  "ref": "Judges 16:19"
+ },
+ {
+  "id": "judges-16-e-05",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samson do in the prison house?",
+  "choices": [
+   "Sing",
+   "Weave",
+   "Plow",
+   "Grind"
+  ],
+  "answer": 3,
+  "explanation": "He did grind in the prison house.",
+  "ref": "Judges 16:21"
+ },
+ {
+  "id": "judges-16-e-06",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which god did the lords of the Philistines offer a great sacrifice to?",
+  "choices": [
+   "Ashtaroth",
+   "Dagon",
+   "Chemosh",
+   "Baal"
+  ],
+  "answer": 1,
+  "explanation": "They gathered them together for to offer a great sacrifice unto Dagon their god.",
+  "ref": "Judges 16:23"
+ },
+ {
+  "id": "judges-16-e-07",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Between what did the Philistines set Samson?",
+  "choices": [
+   "The gates",
+   "The lions",
+   "The altars",
+   "The pillars"
+  ],
+  "answer": 3,
+  "explanation": "They called for Samson out of the prison house; and they set him between the pillars.",
+  "ref": "Judges 16:25"
+ },
+ {
+  "id": "judges-16-e-08",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samson ask the LORD to give him only this once?",
+  "choices": [
+   "Water",
+   "Freedom",
+   "Sight",
+   "Strength"
+  ],
+  "answer": 3,
+  "explanation": "Strengthen me, I pray thee, only this once, O God.",
+  "ref": "Judges 16:28"
+ },
+ {
+  "id": "judges-16-e-09",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samson say before he bowed himself with all his might?",
+  "choices": [
+   "Let me see once more",
+   "Let me die with the Philistines",
+   "Let the LORD judge",
+   "Let me go free"
+  ],
+  "answer": 1,
+  "explanation": "Samson said, Let me die with the Philistines.",
+  "ref": "Judges 16:30"
+ },
+ {
+  "id": "judges-16-e-10",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Samson buried?",
+  "choices": [
+   "On the hill before Hebron",
+   "In Timnath",
+   "In Gaza",
+   "Between Zorah and Eshtaol"
+  ],
+  "answer": 3,
+  "explanation": "They buried him between Zorah and Eshtaol in the buryingplace of Manoah his father.",
+  "ref": "Judges 16:31"
+ },
+ {
+  "id": "judges-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "In which valley did Delilah live?",
+  "choices": [
+   "The valley of Jezreel",
+   "The valley of Elah",
+   "The valley of Sorek",
+   "The valley of Achor"
+  ],
+  "answer": 2,
+  "explanation": "He loved a woman in the valley of Sorek, whose name was Delilah.",
+  "ref": "Judges 16:4"
+ },
+ {
+  "id": "judges-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much silver did each lord of the Philistines promise Delilah?",
+  "choices": [
+   "One hundred pieces",
+   "Thirty pieces",
+   "Seventy pieces",
+   "Eleven hundred pieces"
+  ],
+  "answer": 3,
+  "explanation": "We will give thee every one of us eleven hundred pieces of silver.",
+  "ref": "Judges 16:5"
+ },
+ {
+  "id": "judges-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the lords tell Delilah to find out?",
+  "choices": [
+   "Wherein his great strength lieth",
+   "How many men he had",
+   "Who his father was",
+   "Where he lived"
+  ],
+  "answer": 0,
+  "explanation": "Entice him, and see wherein his great strength lieth.",
+  "ref": "Judges 16:5"
+ },
+ {
+  "id": "judges-16-m-04",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did Samson say, second, that he could be bound?",
+  "choices": [
+   "The seven locks woven into a web",
+   "A chain of brass",
+   "Seven green withs",
+   "New ropes that never were occupied"
+  ],
+  "answer": 3,
+  "explanation": "If they bind me fast with new ropes that never were occupied, then shall I be weak.",
+  "ref": "Judges 16:11"
+ },
+ {
+  "id": "judges-16-m-05",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samson say Delilah should weave with the web?",
+  "choices": [
+   "His beard",
+   "The seven locks of his head",
+   "A rope of flax",
+   "Seven green withs"
+  ],
+  "answer": 1,
+  "explanation": "If thou weavest the seven locks of my head with the web.",
+  "ref": "Judges 16:13"
+ },
+ {
+  "id": "judges-16-m-06",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samson go away with when he awoke from sleep?",
+  "choices": [
+   "Her chain",
+   "The green withs",
+   "The pin of the beam and the web",
+   "The ropes"
+  ],
+  "answer": 2,
+  "explanation": "He went away with the pin of the beam, and with the web.",
+  "ref": "Judges 16:14"
+ },
+ {
+  "id": "judges-16-m-07",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Delilah cry out each time to wake Samson?",
+  "choices": [
+   "The doors are shut",
+   "The Philistines be upon thee, Samson",
+   "The LORD has departed",
+   "Rise and flee"
+  ],
+  "answer": 1,
+  "explanation": "She said unto him, The Philistines be upon thee, Samson.",
+  "ref": "Judges 16:9"
+ },
+ {
+  "id": "judges-16-m-08",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to Samson's soul when Delilah pressed him daily?",
+  "choices": [
+   "It was afraid",
+   "It was vexed unto death",
+   "It was hardened",
+   "It was glad"
+  ],
+  "answer": 1,
+  "explanation": "She pressed him daily with her words, so that his soul was vexed unto death.",
+  "ref": "Judges 16:16"
+ },
+ {
+  "id": "judges-16-m-09",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the lords of the Philistines bring in their hand?",
+  "choices": [
+   "Fetters",
+   "Money",
+   "Swords",
+   "Seven green withs"
+  ],
+  "answer": 1,
+  "explanation": "The lords of the Philistines came up unto her, and brought money in their hand.",
+  "ref": "Judges 16:18"
+ },
+ {
+  "id": "judges-16-m-10",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samson not know when he woke to shake himself?",
+  "choices": [
+   "That his hair was cut",
+   "That the LORD was departed from him",
+   "That the Philistines were near",
+   "That Delilah had left"
+  ],
+  "answer": 1,
+  "explanation": "He wist not that the LORD was departed from him.",
+  "ref": "Judges 16:20"
+ },
+ {
+  "id": "judges-16-m-11",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did the Philistines bind Samson in Gaza?",
+  "choices": [
+   "Ropes",
+   "Iron chains",
+   "Cords of flax",
+   "Fetters of brass"
+  ],
+  "answer": 3,
+  "explanation": "They brought him down to Gaza, and bound him with fetters of brass.",
+  "ref": "Judges 16:21"
+ },
+ {
+  "id": "judges-16-m-12",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Philistine people say their god had done?",
+  "choices": [
+   "Sent a plague on Israel",
+   "Raised a king",
+   "Given them rain",
+   "Delivered Samson their enemy into their hand"
+  ],
+  "answer": 3,
+  "explanation": "They said, Our god hath delivered Samson our enemy into our hand.",
+  "ref": "Judges 16:23"
+ },
+ {
+  "id": "judges-16-m-13",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men and women were on the roof watching Samson?",
+  "choices": [
+   "About one hundred",
+   "About three hundred",
+   "About three thousand",
+   "About seven thousand"
+  ],
+  "answer": 2,
+  "explanation": "There were upon the roof about three thousand men and women.",
+  "ref": "Judges 16:27"
+ },
+ {
+  "id": "judges-16-m-14",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Samson ask to let him feel the pillars?",
+  "choices": [
+   "The lords of the Philistines",
+   "Delilah",
+   "His brethren",
+   "The lad that held him by the hand"
+  ],
+  "answer": 3,
+  "explanation": "Samson said unto the lad that held him by the hand, Suffer me that I may feel the pillars.",
+  "ref": "Judges 16:26"
+ },
+ {
+  "id": "judges-16-m-15",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who were more in number: those Samson slew in death or in life?",
+  "choices": [
+   "Not stated",
+   "They were equal",
+   "Those slain in his life",
+   "Those slain in his death"
+  ],
+  "answer": 3,
+  "explanation": "The dead which he slew at his death were more than they which he slew in his life.",
+  "ref": "Judges 16:30"
+ },
+ {
+  "id": "judges-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the Gazites lie in wait for Samson?",
+  "choices": [
+   "In the temple",
+   "In the gate of the city",
+   "On the hill",
+   "In the prison"
+  ],
+  "answer": 1,
+  "explanation": "They compassed him in, and laid wait for him all night in the gate of the city.",
+  "ref": "Judges 16:2"
+ },
+ {
+  "id": "judges-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At what time did Samson arise and take the doors of the gate?",
+  "choices": [
+   "Midnight",
+   "Dawn",
+   "Evening",
+   "Noon"
+  ],
+  "answer": 0,
+  "explanation": "Samson lay till midnight, and arose at midnight, and took the doors of the gate.",
+  "ref": "Judges 16:3"
+ },
+ {
+  "id": "judges-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "To the top of which hill did Samson carry the gate?",
+  "choices": [
+   "The hill of Moreh",
+   "Mount Ephraim",
+   "The hill of Etam",
+   "The hill before Hebron"
+  ],
+  "answer": 3,
+  "explanation": "He carried them up to the top of an hill that is before Hebron.",
+  "ref": "Judges 16:3"
+ },
+ {
+  "id": "judges-16-h-04",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was special about the seven green withs?",
+  "choices": [
+   "They had never been dried",
+   "They were cut at night",
+   "They were from Sorek",
+   "They were made of gold"
+  ],
+  "answer": 0,
+  "explanation": "Seven green withs that were never dried.",
+  "ref": "Judges 16:7"
+ },
+ {
+  "id": "judges-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what did the Bible compare the broken withs?",
+  "choices": [
+   "A bruised reed",
+   "A reed in the wind",
+   "A cobweb",
+   "A thread of tow touching fire"
+  ],
+  "answer": 3,
+  "explanation": "He brake the withs, as a thread of tow is broken when it toucheth the fire.",
+  "ref": "Judges 16:9"
+ },
+ {
+  "id": "judges-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who were abiding in the chamber while Delilah tested Samson?",
+  "choices": [
+   "The lords of the Philistines",
+   "Samson's brethren",
+   "Men lying in wait",
+   "Her servants"
+  ],
+  "answer": 2,
+  "explanation": "There were men lying in wait, abiding with her in the chamber.",
+  "ref": "Judges 16:9"
+ },
+ {
+  "id": "judges-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Delilah say Samson had done to her?",
+  "choices": [
+   "Forsaken her",
+   "Mocked her and told her lies",
+   "Robbed her",
+   "Insulted her father"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast mocked me, and told me lies.",
+  "ref": "Judges 16:10"
+ },
+ {
+  "id": "judges-16-h-08",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Delilah say was not with her?",
+  "choices": [
+   "His word",
+   "His heart",
+   "His hair",
+   "His strength"
+  ],
+  "answer": 1,
+  "explanation": "How canst thou say, I love thee, when thine heart is not with me?",
+  "ref": "Judges 16:15"
+ },
+ {
+  "id": "judges-16-h-09",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the Philistines describe Samson besides their enemy?",
+  "choices": [
+   "The king of Dan",
+   "The destroyer of our country",
+   "The servant of Dagon",
+   "The thief of Gaza"
+  ],
+  "answer": 1,
+  "explanation": "Our god hath delivered into our hands our enemy, and the destroyer of our country.",
+  "ref": "Judges 16:24"
+ },
+ {
+  "id": "judges-16-h-10",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which hands did Samson use to hold the two middle pillars?",
+  "choices": [
+   "His right and his left",
+   "Both his left",
+   "His left and a staff",
+   "Both his right"
+  ],
+  "answer": 0,
+  "explanation": "Samson took hold of the two middle pillars, of the one with his right hand, and of the other with his left.",
+  "ref": "Judges 16:29"
+ },
+ {
+  "id": "judges-16-h-11",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what did Samson ask to be avenged of the Philistines?",
+  "choices": [
+   "For his hair",
+   "For his wife",
+   "For his two eyes",
+   "For his father"
+  ],
+  "answer": 2,
+  "explanation": "That I may be at once avenged of the Philistines for my two eyes.",
+  "ref": "Judges 16:28"
+ },
+ {
+  "id": "judges-16-h-12",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Delilah see that made her send for the lords?",
+  "choices": [
+   "That he had told her all his heart",
+   "That he was in chains",
+   "That he was asleep",
+   "That he was weak"
+  ],
+  "answer": 0,
+  "explanation": "When Delilah saw that he had told her all his heart, she sent and called for the lords.",
+  "ref": "Judges 16:18"
+ },
+ {
+  "id": "judges-16-h-13",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samson say he would do when he awoke the last time?",
+  "choices": [
+   "Flee to Gaza",
+   "Call his brethren",
+   "Break the pillars",
+   "Go out as at other times and shake himself"
+  ],
+  "answer": 3,
+  "explanation": "He said, I will go out as at other times before, and shake myself.",
+  "ref": "Judges 16:20"
+ },
+ {
+  "id": "judges-16-h-14",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Who did Delilah call to shave off Samson's seven locks?",
+  "choices": [
+   "A priest of Dagon",
+   "Her servant maid",
+   "The lords of the Philistines",
+   "A man"
+  ],
+  "answer": 3,
+  "explanation": "She called for a man, and she caused him to shave off the seven locks of his head.",
+  "ref": "Judges 16:19"
+ },
+ {
+  "id": "judges-16-h-15",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many locks did Samson have on his head?",
+  "choices": [
+   "Twelve",
+   "Ten",
+   "Seven",
+   "Three"
+  ],
+  "answer": 2,
+  "explanation": "She caused him to shave off the seven locks of his head.",
+  "ref": "Judges 16:19"
+ },
+ {
   "id": "old-judges-17-1",
   "chapter": 17,
   "level": "beginner",
