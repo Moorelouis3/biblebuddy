@@ -10176,6 +10176,646 @@
   "ref": "1 Samuel 15:33"
  },
  {
+  "id": "1-samuel-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the king of the Amalekites?",
+  "choices": [
+   "Balak",
+   "Agag",
+   "Og",
+   "Nahash"
+  ],
+  "answer": 1,
+  "explanation": "Saul took Agag the king of the Amalekites alive.",
+  "ref": "1 Samuel 15:8"
+ },
+ {
+  "id": "1-samuel-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul say the people spared the best animals for?",
+  "choices": [
+   "To feed the army",
+   "To sacrifice unto the LORD",
+   "To pay the Kenites",
+   "To send to Samuel"
+  ],
+  "answer": 1,
+  "explanation": "The people spared the best of the sheep and of the oxen, to sacrifice unto the LORD thy God.",
+  "ref": "1 Samuel 15:15"
+ },
+ {
+  "id": "1-samuel-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say repented him?",
+  "choices": [
+   "That he had made the world",
+   "That he had set up Saul to be king",
+   "That he had chosen Samuel",
+   "That he had sent the Philistines"
+  ],
+  "answer": 1,
+  "explanation": "It repenteth me that I have set up Saul to be king.",
+  "ref": "1 Samuel 15:11"
+ },
+ {
+  "id": "1-samuel-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Saul say he had obeyed the people's voice?",
+  "choices": [
+   "He loved the spoil",
+   "He feared the people",
+   "He was tired",
+   "Samuel was late"
+  ],
+  "answer": 1,
+  "explanation": "Saul said, I feared the people, and obeyed their voice.",
+  "ref": "1 Samuel 15:24"
+ },
+ {
+  "id": "1-samuel-15-e-05",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What tore when Samuel turned to go away?",
+  "choices": [
+   "His sandal",
+   "The skirt of his mantle",
+   "His tent",
+   "The ephod"
+  ],
+  "answer": 1,
+  "explanation": "Saul laid hold upon the skirt of his mantle, and it rent.",
+  "ref": "1 Samuel 15:27"
+ },
+ {
+  "id": "1-samuel-15-e-06",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who mourned for Saul?",
+  "choices": [
+   "Jonathan",
+   "Samuel",
+   "Abner",
+   "David"
+  ],
+  "answer": 1,
+  "explanation": "Samuel came no more to see Saul, nevertheless Samuel mourned for Saul.",
+  "ref": "1 Samuel 15:35"
+ },
+ {
+  "id": "1-samuel-15-e-07",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which town did Samuel go after leaving Saul?",
+  "choices": [
+   "Bethel",
+   "Ramah",
+   "Shiloh",
+   "Hebron"
+  ],
+  "answer": 1,
+  "explanation": "Samuel went to Ramah; and Saul went up to his house to Gibeah of Saul.",
+  "ref": "1 Samuel 15:34"
+ },
+ {
+  "id": "1-samuel-15-e-08",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samuel do to the LORD all night when he heard of Saul's turning back?",
+  "choices": [
+   "He fasted in silence",
+   "He cried unto the LORD",
+   "He offered a lamb",
+   "He slept in the tent"
+  ],
+  "answer": 1,
+  "explanation": "It grieved Samuel; and he cried unto the LORD all night.",
+  "ref": "1 Samuel 15:11"
+ },
+ {
+  "id": "1-samuel-15-e-09",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Saul tell to depart from among the Amalekites?",
+  "choices": [
+   "The Philistines",
+   "The Kenites",
+   "The Moabites",
+   "The Edomites"
+  ],
+  "answer": 1,
+  "explanation": "Saul said unto the Kenites, Go, depart, get you down from among the Amalekites.",
+  "ref": "1 Samuel 15:6"
+ },
+ {
+  "id": "1-samuel-15-e-10",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Rebellion is as the sin of what?",
+  "choices": [
+   "Murder",
+   "Witchcraft",
+   "Theft",
+   "Pride"
+  ],
+  "answer": 1,
+  "explanation": "For rebellion is as the sin of witchcraft.",
+  "ref": "1 Samuel 15:23"
+ },
+ {
+  "id": "1-samuel-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD of hosts say Amalek must be punished?",
+  "choices": [
+   "Amalek worshipped idols",
+   "Amalek attacked Samuel",
+   "Amalek would not pay tribute",
+   "Amalek laid wait for Israel in the way from Egypt"
+  ],
+  "answer": 3,
+  "explanation": "I remember that which Amalek did to Israel, how he laid wait for him in the way, when he came up from Egypt.",
+  "ref": "1 Samuel 15:2"
+ },
+ {
+  "id": "1-samuel-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Saul number the people before going against Amalek?",
+  "choices": [
+   "Gilgal",
+   "Gibeah",
+   "Carmel",
+   "Telaim"
+  ],
+  "answer": 3,
+  "explanation": "Saul gathered the people together, and numbered them in Telaim.",
+  "ref": "1 Samuel 15:4"
+ },
+ {
+  "id": "1-samuel-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many footmen did Saul number?",
+  "choices": [
+   "Thirty thousand",
+   "Ten thousand",
+   "Six hundred",
+   "Two hundred thousand"
+  ],
+  "answer": 3,
+  "explanation": "Saul numbered them in Telaim, two hundred thousand footmen.",
+  "ref": "1 Samuel 15:4"
+ },
+ {
+  "id": "1-samuel-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men of Judah were with Saul?",
+  "choices": [
+   "Two hundred thousand",
+   "Thirty thousand",
+   "Six hundred",
+   "Ten thousand"
+  ],
+  "answer": 3,
+  "explanation": "Saul numbered two hundred thousand footmen, and ten thousand men of Judah.",
+  "ref": "1 Samuel 15:4"
+ },
+ {
+  "id": "1-samuel-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the Kenites allowed to leave Amalek before the battle?",
+  "choices": [
+   "They paid tribute to Saul",
+   "They were relatives of Samuel",
+   "They worshipped the LORD at Gilgal",
+   "They had shown kindness to Israel"
+  ],
+  "answer": 3,
+  "explanation": "Ye shewed kindness to all the children of Israel, when they came up out of Egypt.",
+  "ref": "1 Samuel 15:6"
+ },
+ {
+  "id": "1-samuel-15-m-06",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul say to Samuel when they met?",
+  "choices": [
+   "I have done all that was left",
+   "The Amalekites have escaped",
+   "The LORD has left us",
+   "I have performed the commandment of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Saul said unto him, Blessed be thou of the LORD: I have performed the commandment of the LORD.",
+  "ref": "1 Samuel 15:13"
+ },
+ {
+  "id": "1-samuel-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Saul set up a place for himself before going down to Gilgal?",
+  "choices": [
+   "Ramah",
+   "Gibeah",
+   "Michmash",
+   "Carmel"
+  ],
+  "answer": 3,
+  "explanation": "Saul came to Carmel, and, behold, he set him up a place.",
+  "ref": "1 Samuel 15:12"
+ },
+ {
+  "id": "1-samuel-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Saul been made when he was little in his own sight?",
+  "choices": [
+   "A captain of a hundred",
+   "A judge in Gilgal",
+   "A priest of the LORD",
+   "The head of the tribes of Israel"
+  ],
+  "answer": 3,
+  "explanation": "When thou wast little in thine own sight, wast thou not made the head of the tribes of Israel?",
+  "ref": "1 Samuel 15:17"
+ },
+ {
+  "id": "1-samuel-15-m-09",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Samuel say would receive the kingdom?",
+  "choices": [
+   "Jonathan",
+   "The people",
+   "The Kenites",
+   "A neighbour better than Saul"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hath given the kingdom of Israel to a neighbour of thine, that is better than thou.",
+  "ref": "1 Samuel 15:28"
+ },
+ {
+  "id": "1-samuel-15-m-10",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul ask Samuel to do after confessing his sin?",
+  "choices": [
+   "Anoint Jonathan",
+   "Spare Agag",
+   "Sacrifice for him at Ramah",
+   "Pardon his sin and turn again with him"
+  ],
+  "answer": 3,
+  "explanation": "Saul said, I pray thee, pardon my sin, and turn again with me, that I may worship the LORD.",
+  "ref": "1 Samuel 15:25"
+ },
+ {
+  "id": "1-samuel-15-m-11",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Before whom did Saul ask Samuel to honour him?",
+  "choices": [
+   "The priests at Shiloh",
+   "The Amalekites",
+   "The Philistines",
+   "The elders of his people and Israel"
+  ],
+  "answer": 3,
+  "explanation": "Saul said, Honour me now, I pray thee, before the elders of my people, and before Israel.",
+  "ref": "1 Samuel 15:30"
+ },
+ {
+  "id": "1-samuel-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Agag say when he came to Samuel?",
+  "choices": [
+   "Spare me and I will serve Israel",
+   "I am the king of Amalek",
+   "The LORD is righteous",
+   "Surely the bitterness of death is past"
+  ],
+  "answer": 3,
+  "explanation": "Agag said, Surely the bitterness of death is past.",
+  "ref": "1 Samuel 15:32"
+ },
+ {
+  "id": "1-samuel-15-m-13",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Samuel hew Agag in pieces?",
+  "choices": [
+   "Ramah",
+   "Carmel",
+   "Gibeah",
+   "Gilgal"
+  ],
+  "answer": 3,
+  "explanation": "Samuel hewed Agag in pieces before the LORD in Gilgal.",
+  "ref": "1 Samuel 15:33"
+ },
+ {
+  "id": "1-samuel-15-m-14",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Saul go up to his house?",
+  "choices": [
+   "Ramah",
+   "Gilgal",
+   "Carmel",
+   "Gibeah of Saul"
+  ],
+  "answer": 3,
+  "explanation": "Samuel went to Ramah; and Saul went up to his house to Gibeah of Saul.",
+  "ref": "1 Samuel 15:34"
+ },
+ {
+  "id": "1-samuel-15-m-15",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul and the people destroy utterly?",
+  "choices": [
+   "Only the sheep",
+   "Only the king's house",
+   "Nothing at all",
+   "Everything vile and refuse"
+  ],
+  "answer": 3,
+  "explanation": "Every thing that was vile and refuse, that they destroyed utterly.",
+  "ref": "1 Samuel 15:9"
+ },
+ {
+  "id": "1-samuel-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Saul smote the Amalekites from Havilah until he came to where?",
+  "choices": [
+   "Shur",
+   "Carmel",
+   "Telaim",
+   "Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "Saul smote the Amalekites from Havilah until thou comest to Shur, that is over against Egypt.",
+  "ref": "1 Samuel 15:7"
+ },
+ {
+  "id": "1-samuel-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Shur is described as being over against which land?",
+  "choices": [
+   "Egypt",
+   "Moab",
+   "Edom",
+   "Gilead"
+  ],
+  "answer": 0,
+  "explanation": "Shur, that is over against Egypt.",
+  "ref": "1 Samuel 15:7"
+ },
+ {
+  "id": "1-samuel-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Saul lay wait when he came to a city of Amalek?",
+  "choices": [
+   "In the valley",
+   "On the mountain",
+   "At the gate",
+   "In a cave"
+  ],
+  "answer": 0,
+  "explanation": "Saul came to a city of Amalek, and laid wait in the valley.",
+  "ref": "1 Samuel 15:5"
+ },
+ {
+  "id": "1-samuel-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Amalek done to Israel on the way up from Egypt?",
+  "choices": [
+   "Laid wait for him",
+   "Stolen his cattle",
+   "Burned his tents",
+   "Taken his children"
+  ],
+  "answer": 0,
+  "explanation": "He laid wait for him in the way, when he came up from Egypt.",
+  "ref": "1 Samuel 15:2"
+ },
+ {
+  "id": "1-samuel-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samuel say the Strength of Israel will not do?",
+  "choices": [
+   "Lie nor repent",
+   "Forsake nor forget",
+   "Sleep nor slumber",
+   "Fail nor fall"
+  ],
+  "answer": 0,
+  "explanation": "The Strength of Israel will not lie nor repent: for he is not a man.",
+  "ref": "1 Samuel 15:29"
+ },
+ {
+  "id": "1-samuel-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Stubbornness is as what, according to Samuel?",
+  "choices": [
+   "Iniquity and idolatry",
+   "The sin of witchcraft",
+   "The pride of kings",
+   "A cursed offering"
+  ],
+  "answer": 0,
+  "explanation": "Stubbornness is as iniquity and idolatry.",
+  "ref": "1 Samuel 15:23"
+ },
+ {
+  "id": "1-samuel-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which animals were named in the command besides ox and sheep?",
+  "choices": [
+   "Camel and ass",
+   "Goat and horse",
+   "Lamb and dove",
+   "Calf and mule"
+  ],
+  "answer": 0,
+  "explanation": "Slay both man and woman, infant and suckling, ox and sheep, camel and ass.",
+  "ref": "1 Samuel 15:3"
+ },
+ {
+  "id": "1-samuel-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Along with man and woman, who else was Saul told to slay?",
+  "choices": [
+   "Infant and suckling",
+   "Priest and elder",
+   "Captain and servant",
+   "King and prince"
+  ],
+  "answer": 0,
+  "explanation": "Slay both man and woman, infant and suckling.",
+  "ref": "1 Samuel 15:3"
+ },
+ {
+  "id": "1-samuel-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides Agag and the best of the sheep, what else did Saul and the people spare?",
+  "choices": [
+   "Fatlings and lambs",
+   "Silver and gold",
+   "Chariots",
+   "Women and children"
+  ],
+  "answer": 0,
+  "explanation": "Saul and the people spared Agag, and the best of the sheep, and of the oxen, and of the fatlings, and the lambs.",
+  "ref": "1 Samuel 15:9"
+ },
+ {
+  "id": "1-samuel-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Agag come unto Samuel?",
+  "choices": [
+   "Delicately",
+   "Boldly",
+   "In chains",
+   "On horseback"
+  ],
+  "answer": 0,
+  "explanation": "Agag came unto him delicately.",
+  "ref": "1 Samuel 15:32"
+ },
+ {
+  "id": "1-samuel-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "What did Samuel say would be childless among women?",
+  "choices": [
+   "Agag's mother",
+   "Saul's wife",
+   "Jonathan's mother",
+   "Samuel's mother"
+  ],
+  "answer": 0,
+  "explanation": "As thy sword hath made women childless, so shall thy mother be childless among women.",
+  "ref": "1 Samuel 15:33"
+ },
+ {
+  "id": "1-samuel-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samuel say Saul did upon the spoil?",
+  "choices": [
+   "Flew upon it",
+   "Slept upon it",
+   "Shared it",
+   "Hid it"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore then didst thou not obey, but didst fly upon the spoil?",
+  "ref": "1 Samuel 15:19"
+ },
+ {
+  "id": "1-samuel-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when did Samuel come no more to see Saul?",
+  "choices": [
+   "The day of his death",
+   "The next feast",
+   "The year's end",
+   "The battle with the Philistines"
+  ],
+  "answer": 0,
+  "explanation": "Samuel came no more to see Saul until the day of his death.",
+  "ref": "1 Samuel 15:35"
+ },
+ {
+  "id": "1-samuel-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what condition did Saul take Agag?",
+  "choices": [
+   "Alive",
+   "Wounded",
+   "Bound in chains",
+   "Disguised"
+  ],
+  "answer": 0,
+  "explanation": "He took Agag the king of the Amalekites alive.",
+  "ref": "1 Samuel 15:8"
+ },
+ {
+  "id": "1-samuel-15-h-15",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Samuel say the LORD sent Saul on a journey to deal with the Amalekites?",
+  "choices": [
+   "To destroy the sinners until they be consumed",
+   "To make a treaty",
+   "To take captives",
+   "To drive them to Shur"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Go and utterly destroy the sinners the Amalekites, and fight against them until they be consumed.",
+  "ref": "1 Samuel 15:18"
+ },
+ {
   "id": "old-1-samuel-16-1",
   "chapter": 16,
   "level": "beginner",
