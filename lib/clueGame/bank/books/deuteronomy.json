@@ -12368,6 +12368,646 @@
   "ref": "Deuteronomy 18:22"
  },
  {
+  "id": "deuteronomy-18-e-01",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe had no part nor inheritance with Israel?",
+  "choices": [
+   "The tribe of Levi",
+   "The tribe of Judah",
+   "The tribe of Dan",
+   "The tribe of Reuben"
+  ],
+  "answer": 0,
+  "explanation": "The priests the Levites, and all the tribe of Levi, shall have no part nor inheritance with Israel.",
+  "ref": "Deuteronomy 18:1"
+ },
+ {
+  "id": "deuteronomy-18-e-02",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Levites eat?",
+  "choices": [
+   "The firstfruits of Egypt",
+   "The spoil of war",
+   "The fish of the sea",
+   "The offerings of the LORD made by fire"
+  ],
+  "answer": 3,
+  "explanation": "They shall eat the offerings of the LORD made by fire, and his inheritance.",
+  "ref": "Deuteronomy 18:1"
+ },
+ {
+  "id": "deuteronomy-18-e-03",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the priest to receive of ox or sheep sacrificed?",
+  "choices": [
+   "The head and the feet",
+   "The skin and the fat",
+   "The shoulder, the two cheeks and the maw",
+   "The heart and the liver"
+  ],
+  "answer": 2,
+  "explanation": "They shall give unto the priest the shoulder, and the two cheeks, and the maw.",
+  "ref": "Deuteronomy 18:3"
+ },
+ {
+  "id": "deuteronomy-18-e-04",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the LORD choose to stand and minister in His name?",
+  "choices": [
+   "The elders",
+   "The priest and his sons",
+   "The prophets",
+   "The judges"
+  ],
+  "answer": 1,
+  "explanation": "The LORD thy God hath chosen him out of all thy tribes, to stand to minister in the name of the LORD, him and his sons for ever.",
+  "ref": "Deuteronomy 18:5"
+ },
+ {
+  "id": "deuteronomy-18-e-05",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which part of the fleece was given to the priest?",
+  "choices": [
+   "The last of the fleece",
+   "The first of the fleece of the sheep",
+   "The best lamb",
+   "The tenth of the wool"
+  ],
+  "answer": 1,
+  "explanation": "And the first of the fleece of thy sheep, shalt thou give him.",
+  "ref": "Deuteronomy 18:4"
+ },
+ {
+  "id": "deuteronomy-18-e-06",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must a son or daughter not be made to do?",
+  "choices": [
+   "Pass through the fire",
+   "Cross the Jordan",
+   "Eat the blood",
+   "Serve the priest"
+  ],
+  "answer": 0,
+  "explanation": "There shall not be found among you any one that maketh his son or his daughter to pass through the fire.",
+  "ref": "Deuteronomy 18:10"
+ },
+ {
+  "id": "deuteronomy-18-e-07",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "With whom would Israel's nations' abominations be linked, driving them out?",
+  "choices": [
+   "The Levites",
+   "The strangers",
+   "The priests",
+   "The nations in the land"
+  ],
+  "answer": 3,
+  "explanation": "Because of these abominations the LORD thy God doth drive them out from before thee.",
+  "ref": "Deuteronomy 18:12"
+ },
+ {
+  "id": "deuteronomy-18-e-08",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Moses tell Israel to be with the LORD?",
+  "choices": [
+   "Fearful",
+   "Silent",
+   "Perfect",
+   "Rich"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt be perfect with the LORD thy God.",
+  "ref": "Deuteronomy 18:13"
+ },
+ {
+  "id": "deuteronomy-18-e-09",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "What will the LORD raise up from Israel's brethren?",
+  "choices": [
+   "A king like David",
+   "A priest like Aaron",
+   "A Prophet like unto Moses",
+   "A judge like Joshua"
+  ],
+  "answer": 2,
+  "explanation": "The LORD thy God will raise up unto thee a Prophet from the midst of thee, of thy brethren, like unto me.",
+  "ref": "Deuteronomy 18:15"
+ },
+ {
+  "id": "deuteronomy-18-e-10",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the prophet who speaks in the name of other gods?",
+  "choices": [
+   "He is silenced",
+   "He shall die",
+   "He is exiled",
+   "He is fined"
+  ],
+  "answer": 1,
+  "explanation": "That prophet, which shall presume to speak a word in my name... or that shall speak in the name of other gods, even that prophet shall die.",
+  "ref": "Deuteronomy 18:20"
+ },
+ {
+  "id": "deuteronomy-18-m-01",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the LORD to the Levites, as He has said?",
+  "choices": [
+   "Their king",
+   "Their inheritance",
+   "Their shield",
+   "Their land"
+  ],
+  "answer": 1,
+  "explanation": "The LORD is their inheritance, as he hath said unto them.",
+  "ref": "Deuteronomy 18:2"
+ },
+ {
+  "id": "deuteronomy-18-m-02",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people give the priest besides the shoulder, cheeks and maw?",
+  "choices": [
+   "The firstfruit of their corn, wine and oil",
+   "A tenth of their silver",
+   "A lamb every year",
+   "A portion of the spoil"
+  ],
+  "answer": 0,
+  "explanation": "The firstfruit also of thy corn, of thy wine, and of thine oil... shalt thou give him.",
+  "ref": "Deuteronomy 18:4"
+ },
+ {
+  "id": "deuteronomy-18-m-03",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What may a Levite do who comes from any of Israel's gates with all the desire of his mind?",
+  "choices": [
+   "Minister at the chosen place",
+   "Judge the people",
+   "Dwell in the camp",
+   "Sell his land"
+  ],
+  "answer": 0,
+  "explanation": "If a Levite come from any of thy gates... unto the place which the LORD shall choose; then he shall minister in the name of the LORD his God.",
+  "ref": "Deuteronomy 18:6–7"
+ },
+ {
+  "id": "deuteronomy-18-m-04",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would such a Levite receive at the chosen place?",
+  "choices": [
+   "Land in the hills",
+   "Cities in Judah",
+   "Silver and gold",
+   "Like portions to eat"
+  ],
+  "answer": 3,
+  "explanation": "They shall have like portions to eat, beside that which cometh of the sale of his patrimony.",
+  "ref": "Deuteronomy 18:8"
+ },
+ {
+  "id": "deuteronomy-18-m-05",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are Israel not to learn when they come into the land?",
+  "choices": [
+   "The ways of the Levites",
+   "The songs of the temple",
+   "The abominations of the nations",
+   "The law of the king"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt not learn to do after the abominations of those nations.",
+  "ref": "Deuteronomy 18:9"
+ },
+ {
+  "id": "deuteronomy-18-m-06",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these practices is forbidden among Israel?",
+  "choices": [
+   "Burnt offering",
+   "Divination",
+   "Prayer",
+   "Tithing"
+  ],
+  "answer": 1,
+  "explanation": "There shall not be found among you any one that... useth divination.",
+  "ref": "Deuteronomy 18:10"
+ },
+ {
+  "id": "deuteronomy-18-m-07",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these forbidden persons consults with familiar spirits?",
+  "choices": [
+   "A prophet",
+   "A consulter with familiar spirits",
+   "A priest",
+   "A judge"
+  ],
+  "answer": 1,
+  "explanation": "Or a charmer, or a consulter with familiar spirits, or a wizard, or a necromancer.",
+  "ref": "Deuteronomy 18:11"
+ },
+ {
+  "id": "deuteronomy-18-m-08",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the nations hearken unto that the LORD did not suffer Israel to do?",
+  "choices": [
+   "Observers of times and diviners",
+   "Priests and Levites",
+   "Judges and officers",
+   "Kings and captains"
+  ],
+  "answer": 0,
+  "explanation": "For these nations... hearkened unto observers of times, and unto diviners: but as for thee, the LORD thy God hath not suffered thee so to do.",
+  "ref": "Deuteronomy 18:14"
+ },
+ {
+  "id": "deuteronomy-18-m-09",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "Where had Israel asked not to hear the voice of the LORD again?",
+  "choices": [
+   "At Sinai in the cloud",
+   "At Hebron in the camp",
+   "At Jordan in the plain",
+   "In Horeb in the day of the assembly"
+  ],
+  "answer": 3,
+  "explanation": "According to all that thou desiredst of the LORD thy God in Horeb in the day of the assembly.",
+  "ref": "Deuteronomy 18:16"
+ },
+ {
+  "id": "deuteronomy-18-m-10",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people ask not to hear the voice or see the great fire?",
+  "choices": [
+   "That they not weep",
+   "That they not be shamed",
+   "That they die not",
+   "That they not be judged"
+  ],
+  "answer": 2,
+  "explanation": "Let me not hear again the voice of the LORD my God, neither let me see this great fire any more, that I die not.",
+  "ref": "Deuteronomy 18:16"
+ },
+ {
+  "id": "deuteronomy-18-m-11",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about what the people had spoken at Horeb?",
+  "choices": [
+   "They have spoken in haste",
+   "They have spoken proudly",
+   "They have well spoken",
+   "They have spoken falsely"
+  ],
+  "answer": 2,
+  "explanation": "And the LORD said unto me, They have well spoken that which they have spoken.",
+  "ref": "Deuteronomy 18:17"
+ },
+ {
+  "id": "deuteronomy-18-m-12",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD put in the promised Prophet's mouth?",
+  "choices": [
+   "His sword",
+   "His words",
+   "His law",
+   "His staff"
+  ],
+  "answer": 1,
+  "explanation": "I will raise them up a Prophet... and will put my words in his mouth.",
+  "ref": "Deuteronomy 18:18"
+ },
+ {
+  "id": "deuteronomy-18-m-13",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do to the one who will not hearken to the Prophet's words?",
+  "choices": [
+   "Require it of him",
+   "Forgive him",
+   "Send him away",
+   "Scatter him"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever will not hearken unto my words which he shall speak in my name, I will require it of him.",
+  "ref": "Deuteronomy 18:19"
+ },
+ {
+  "id": "deuteronomy-18-m-14",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question does Israel ask in the heart about a prophet?",
+  "choices": [
+   "Who sent this prophet?",
+   "Where is the prophet's tribe?",
+   "When will the prophet die?",
+   "How shall we know the word which the LORD hath not spoken?"
+  ],
+  "answer": 3,
+  "explanation": "And if thou say in thine heart, How shall we know the word which the LORD hath not spoken?",
+  "ref": "Deuteronomy 18:21"
+ },
+ {
+  "id": "deuteronomy-18-m-15",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are Israel told about a prophet whose words do not come to pass?",
+  "choices": [
+   "To bring him to the priest",
+   "To follow him",
+   "To pay him",
+   "Not to be afraid of him"
+  ],
+  "answer": 3,
+  "explanation": "The prophet hath spoken it presumptuously: thou shalt not be afraid of him.",
+  "ref": "Deuteronomy 18:22"
+ },
+ {
+  "id": "deuteronomy-18-h-01",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "Which tribe are the priests said to be of?",
+  "choices": [
+   "The Judahites",
+   "The Danites",
+   "The Gadites",
+   "The Levites"
+  ],
+  "answer": 3,
+  "explanation": "The priests the Levites, and all the tribe of Levi.",
+  "ref": "Deuteronomy 18:1"
+ },
+ {
+  "id": "deuteronomy-18-h-02",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Levite get besides the like portions?",
+  "choices": [
+   "A tenth of the spoil",
+   "A city of refuge",
+   "The sale of his patrimony",
+   "A field of the king"
+  ],
+  "answer": 2,
+  "explanation": "Beside that which cometh of the sale of his patrimony.",
+  "ref": "Deuteronomy 18:8"
+ },
+ {
+  "id": "deuteronomy-18-h-03",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the forbidden person who watches signs called?",
+  "choices": [
+   "A shepherd of signs",
+   "An observer of times",
+   "A keeper of gates",
+   "A reader of stars"
+  ],
+  "answer": 1,
+  "explanation": "There shall not be found among you... an observer of times.",
+  "ref": "Deuteronomy 18:10"
+ },
+ {
+  "id": "deuteronomy-18-h-04",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is named in the list right after an observer of times?",
+  "choices": [
+   "A charmer",
+   "An enchanter",
+   "A wizard",
+   "A necromancer"
+  ],
+  "answer": 1,
+  "explanation": "Or that useth divination, or an observer of times, or an enchanter, or a witch.",
+  "ref": "Deuteronomy 18:10"
+ },
+ {
+  "id": "deuteronomy-18-h-05",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which is the last of the forbidden persons named in the list?",
+  "choices": [
+   "A necromancer",
+   "A witch",
+   "A charmer",
+   "A wizard"
+  ],
+  "answer": 0,
+  "explanation": "Or a charmer, or a consulter with familiar spirits, or a wizard, or a necromancer.",
+  "ref": "Deuteronomy 18:11"
+ },
+ {
+  "id": "deuteronomy-18-h-06",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Moses say all who do these things are to the LORD?",
+  "choices": [
+   "A snare",
+   "A burden",
+   "A sorrow",
+   "An abomination"
+  ],
+  "answer": 3,
+  "explanation": "For all that do these things are an abomination unto the LORD.",
+  "ref": "Deuteronomy 18:12"
+ },
+ {
+  "id": "deuteronomy-18-h-07",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Like whom was the promised Prophet to be?",
+  "choices": [
+   "Like Aaron",
+   "Like Joshua",
+   "Like Moses",
+   "Like Samuel"
+  ],
+  "answer": 2,
+  "explanation": "A Prophet from the midst of thee, of thy brethren, like unto me.",
+  "ref": "Deuteronomy 18:15"
+ },
+ {
+  "id": "deuteronomy-18-h-08",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say the people saw at Horeb that they feared?",
+  "choices": [
+   "The cloud of glory",
+   "The burning bush",
+   "This great fire",
+   "The angel"
+  ],
+  "answer": 2,
+  "explanation": "Neither let me see this great fire any more, that I die not.",
+  "ref": "Deuteronomy 18:16"
+ },
+ {
+  "id": "deuteronomy-18-h-09",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From among whom will the LORD raise up the Prophet?",
+  "choices": [
+   "The strangers",
+   "Their brethren",
+   "The Levites alone",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "I will raise them up a Prophet from among their brethren, like unto thee.",
+  "ref": "Deuteronomy 18:18"
+ },
+ {
+  "id": "deuteronomy-18-h-10",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the prophet 'presume' to do that deserved death?",
+  "choices": [
+   "Speak a word in the LORD's name that He had not commanded",
+   "Offer a burnt offering",
+   "Enter the tabernacle",
+   "Number the people"
+  ],
+  "answer": 0,
+  "explanation": "The prophet, which shall presume to speak a word in my name, which I have not commanded him to speak.",
+  "ref": "Deuteronomy 18:20"
+ },
+ {
+  "id": "deuteronomy-18-h-11",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say the people may do about a presumptuous prophet whose word fails?",
+  "choices": [
+   "Stone him at once",
+   "Follow him still",
+   "Take him to Horeb",
+   "Not be afraid of him"
+  ],
+  "answer": 3,
+  "explanation": "The prophet hath spoken it presumptuously: thou shalt not be afraid of him.",
+  "ref": "Deuteronomy 18:22"
+ },
+ {
+  "id": "deuteronomy-18-h-12",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the sign that a word was not from the LORD?",
+  "choices": [
+   "The prophet is a Levite",
+   "The prophet is young",
+   "The prophet is poor",
+   "The thing follows not nor comes to pass"
+  ],
+  "answer": 3,
+  "explanation": "If the thing follow not, nor come to pass, that is the thing which the LORD hath not spoken.",
+  "ref": "Deuteronomy 18:22"
+ },
+ {
+  "id": "deuteronomy-18-h-13",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose name does the promised Prophet speak?",
+  "choices": [
+   "Moses' name",
+   "The elders' name",
+   "The LORD's name",
+   "The king's name"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever will not hearken unto my words which he shall speak in my name, I will require it of him.",
+  "ref": "Deuteronomy 18:19"
+ },
+ {
+  "id": "deuteronomy-18-h-14",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Moses say the Levites' inheritance had been spoken?",
+  "choices": [
+   "As Moses had written",
+   "As the LORD had said unto them",
+   "As the elders agreed",
+   "As the priests chose"
+  ],
+  "answer": 1,
+  "explanation": "The LORD is their inheritance, as he hath said unto them.",
+  "ref": "Deuteronomy 18:2"
+ },
+ {
+  "id": "deuteronomy-18-h-15",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which part of the sacrifice did the priest receive that is named last?",
+  "choices": [
+   "The shoulder",
+   "The cheeks",
+   "The fleece",
+   "The maw"
+  ],
+  "answer": 3,
+  "explanation": "They shall give unto the priest the shoulder, and the two cheeks, and the maw.",
+  "ref": "Deuteronomy 18:3"
+ },
+ {
   "id": "old-deuteronomy-19-1",
   "chapter": 19,
   "level": "beginner",
