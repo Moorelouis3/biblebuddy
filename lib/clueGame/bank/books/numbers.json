@@ -6560,6 +6560,646 @@
   "ref": "Numbers 10:35"
  },
  {
+  "id": "numbers-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the two trumpets made of?",
+  "choices": [
+   "Ram's horn",
+   "Brass",
+   "Gold",
+   "Silver"
+  ],
+  "answer": 3,
+  "explanation": "Make thee two trumpets of silver; of a whole piece shalt thou make them.",
+  "ref": "Numbers 10:2"
+ },
+ {
+  "id": "numbers-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was to blow the trumpets?",
+  "choices": [
+   "The princes",
+   "The Levites of Gershon",
+   "The captains of the host",
+   "The sons of Aaron, the priests"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Aaron, the priests, shall blow with the trumpets.",
+  "ref": "Numbers 10:8"
+ },
+ {
+  "id": "numbers-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which wilderness did the cloud rest after leaving Sinai?",
+  "choices": [
+   "Sin",
+   "Paran",
+   "Zin",
+   "Shur"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel took their journeys out of the wilderness of Sinai; and the cloud rested in the wilderness of Paran.",
+  "ref": "Numbers 10:12"
+ },
+ {
+  "id": "numbers-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe's standard went first when Israel set forward?",
+  "choices": [
+   "Dan",
+   "Reuben",
+   "Ephraim",
+   "Judah"
+  ],
+  "answer": 3,
+  "explanation": "In the first place went the standard of the camp of the children of Judah.",
+  "ref": "Numbers 10:14"
+ },
+ {
+  "id": "numbers-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Hobab's relation to Moses?",
+  "choices": [
+   "Moses' brother",
+   "Moses' son",
+   "Moses' father in law",
+   "Moses' cousin"
+  ],
+  "answer": 2,
+  "explanation": "Moses said unto Hobab, the son of Raguel the Midianite, Moses' father in law.",
+  "ref": "Numbers 10:29"
+ },
+ {
+  "id": "numbers-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hobab first say to Moses?",
+  "choices": [
+   "I will come later",
+   "I will go",
+   "I will not go",
+   "I will send my sons"
+  ],
+  "answer": 2,
+  "explanation": "He said unto him, I will not go; but I will depart to mine own land.",
+  "ref": "Numbers 10:30"
+ },
+ {
+  "id": "numbers-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What went before Israel in the three days' journey?",
+  "choices": [
+   "The ark of the covenant",
+   "The twelve spies",
+   "The princes",
+   "The cloud only"
+  ],
+  "answer": 0,
+  "explanation": "The ark of the covenant of the LORD went before them in the three days' journey.",
+  "ref": "Numbers 10:33"
+ },
+ {
+  "id": "numbers-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was upon Israel by day when they went out of the camp?",
+  "choices": [
+   "The cloud of the LORD",
+   "A canopy of gold",
+   "A pillar of fire",
+   "A banner"
+  ],
+  "answer": 0,
+  "explanation": "The cloud of the LORD was upon them by day, when they went out of the camp.",
+  "ref": "Numbers 10:34"
+ },
+ {
+  "id": "numbers-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses say when the ark rested?",
+  "choices": [
+   "Let my people go",
+   "Return, O LORD, unto the many thousands of Israel",
+   "Rise up, LORD",
+   "Hear, O Israel"
+  ],
+  "answer": 1,
+  "explanation": "When it rested, he said, Return, O LORD, unto the many thousands of Israel.",
+  "ref": "Numbers 10:36"
+ },
+ {
+  "id": "numbers-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what mount did Israel depart on a three days' journey?",
+  "choices": [
+   "The mount of the LORD",
+   "Mount Hor",
+   "Mount Carmel",
+   "Mount Nebo"
+  ],
+  "answer": 0,
+  "explanation": "They departed from the mount of the LORD three days' journey.",
+  "ref": "Numbers 10:33"
+ },
+ {
+  "id": "numbers-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the trumpets used for besides calling the assembly?",
+  "choices": [
+   "Calling the Levites to work",
+   "The journeying of the camps",
+   "Counting the tribes",
+   "Marking the Sabbath"
+  ],
+  "answer": 1,
+  "explanation": "That thou mayest use them for the calling of the assembly, and for the journeying of the camps.",
+  "ref": "Numbers 10:2"
+ },
+ {
+  "id": "numbers-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who gathered to Moses if only one trumpet was blown?",
+  "choices": [
+   "The princes, heads of the thousands",
+   "The sons of Aaron",
+   "All the assembly",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "If they blow but with one trumpet, then the princes, which are heads of the thousands of Israel, shall gather themselves unto thee.",
+  "ref": "Numbers 10:4"
+ },
+ {
+  "id": "numbers-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did all the assembly gather when both trumpets blew?",
+  "choices": [
+   "At the river",
+   "At the camp gate",
+   "At the mount",
+   "At the door of the tabernacle"
+  ],
+  "answer": 3,
+  "explanation": "All the assembly shall assemble themselves to thee at the door of the tabernacle of the congregation.",
+  "ref": "Numbers 10:3"
+ },
+ {
+  "id": "numbers-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which camps went forward at the first alarm?",
+  "choices": [
+   "Those on the north",
+   "Those on the west",
+   "Those on the east parts",
+   "Those on the south"
+  ],
+  "answer": 2,
+  "explanation": "When ye blow an alarm, then the camps that lie on the east parts shall go forward.",
+  "ref": "Numbers 10:5"
+ },
+ {
+  "id": "numbers-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which camps went forward at the second alarm?",
+  "choices": [
+   "Those on the south side",
+   "Those on the east",
+   "Those on the west",
+   "Those on the north"
+  ],
+  "answer": 0,
+  "explanation": "When ye blow an alarm the second time, then the camps that lie on the south side shall take their journey.",
+  "ref": "Numbers 10:6"
+ },
+ {
+  "id": "numbers-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was promised if Israel blew an alarm when they went to war?",
+  "choices": [
+   "They would be remembered before the LORD and saved",
+   "They would not be afraid",
+   "They would win without a battle",
+   "They would take the spoil"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall blow an alarm with the trumpets; and ye shall be remembered before the LORD your God, and ye shall be saved from your enemies.",
+  "ref": "Numbers 10:9"
+ },
+ {
+  "id": "numbers-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the cloud lift from the tabernacle?",
+  "choices": [
+   "The fourteenth day of the first month",
+   "The twentieth day of the second month",
+   "The first day of the first month",
+   "The tenth day of the seventh month"
+  ],
+  "answer": 1,
+  "explanation": "On the twentieth day of the second month, in the second year, the cloud was taken up.",
+  "ref": "Numbers 10:11"
+ },
+ {
+  "id": "numbers-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who commanded the host of Judah?",
+  "choices": [
+   "Nethaneel the son of Zuar",
+   "Nahshon the son of Amminadab",
+   "Elizur the son of Shedeur",
+   "Eliab the son of Helon"
+  ],
+  "answer": 1,
+  "explanation": "Over his host was Nahshon the son of Amminadab.",
+  "ref": "Numbers 10:14"
+ },
+ {
+  "id": "numbers-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who bore the tabernacle when it was taken down?",
+  "choices": [
+   "The sons of Aaron",
+   "The sons of Gershon and Merari",
+   "The princes",
+   "The Kohathites"
+  ],
+  "answer": 1,
+  "explanation": "The tabernacle was taken down; and the sons of Gershon and the sons of Merari set forward, bearing the tabernacle.",
+  "ref": "Numbers 10:17"
+ },
+ {
+  "id": "numbers-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who set forward bearing the sanctuary?",
+  "choices": [
+   "The Merarites",
+   "The Gershonites",
+   "The sons of Judah",
+   "The Kohathites"
+  ],
+  "answer": 3,
+  "explanation": "The Kohathites set forward, bearing the sanctuary.",
+  "ref": "Numbers 10:21"
+ },
+ {
+  "id": "numbers-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Which camp was the rereward of all the camps?",
+  "choices": [
+   "The camp of Judah",
+   "The camp of Dan",
+   "The camp of Ephraim",
+   "The camp of Reuben"
+  ],
+  "answer": 1,
+  "explanation": "The standard of the camp of the children of Dan set forward, which was the rereward of all the camps.",
+  "ref": "Numbers 10:25"
+ },
+ {
+  "id": "numbers-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the LORD had spoken concerning Israel?",
+  "choices": [
+   "Wrath",
+   "Judgement",
+   "Rest",
+   "Good"
+  ],
+  "answer": 3,
+  "explanation": "Come thou with us, and we will do thee good: for the LORD hath spoken good concerning Israel.",
+  "ref": "Numbers 10:29"
+ },
+ {
+  "id": "numbers-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Hobab say he would go?",
+  "choices": [
+   "To Egypt",
+   "To his own land and kindred",
+   "Back to Sinai",
+   "To Canaan"
+  ],
+  "answer": 1,
+  "explanation": "I will depart to mine own land, and to my kindred.",
+  "ref": "Numbers 10:30"
+ },
+ {
+  "id": "numbers-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say Hobab could be to Israel?",
+  "choices": [
+   "Instead of a king",
+   "Instead of a guide dog",
+   "Instead of a priest",
+   "Instead of eyes"
+  ],
+  "answer": 3,
+  "explanation": "Thou knowest how we are to encamp in the wilderness, and thou mayest be to us instead of eyes.",
+  "ref": "Numbers 10:31"
+ },
+ {
+  "id": "numbers-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses promise Hobab if he went with them?",
+  "choices": [
+   "A tent of his own",
+   "Silver and gold",
+   "The same goodness the LORD did to Israel",
+   "A share of the land"
+  ],
+  "answer": 2,
+  "explanation": "What goodness the LORD shall do unto us, the same will we do unto thee.",
+  "ref": "Numbers 10:32"
+ },
+ {
+  "id": "numbers-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the silver trumpets made from, in one piece?",
+  "choices": [
+   "A whole piece",
+   "Beaten plates",
+   "Two pieces joined",
+   "Cast moulds"
+  ],
+  "answer": 0,
+  "explanation": "Of a whole piece shalt thou make them.",
+  "ref": "Numbers 10:2"
+ },
+ {
+  "id": "numbers-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When the congregation was gathered, they blew but did not do what?",
+  "choices": [
+   "Sound an alarm",
+   "Light the lamps",
+   "Offer a burnt offering",
+   "Sing"
+  ],
+  "answer": 0,
+  "explanation": "When the congregation is to be gathered together, ye shall blow, but ye shall not sound an alarm.",
+  "ref": "Numbers 10:7"
+ },
+ {
+  "id": "numbers-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Over what offerings were trumpets blown in the day of gladness?",
+  "choices": [
+   "Drink offerings only",
+   "Burnt offerings and peace offerings",
+   "Meat offerings only",
+   "Sin offerings and trespass offerings"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall blow with the trumpets over your burnt offerings, and over the sacrifices of your peace offerings.",
+  "ref": "Numbers 10:10"
+ },
+ {
+  "id": "numbers-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what were the trumpet blasts in solemn days to be a memorial?",
+  "choices": [
+   "To the priests",
+   "In the camp",
+   "To the nations",
+   "Before your God"
+  ],
+  "answer": 3,
+  "explanation": "That they may be to you for a memorial before your God: I am the LORD your God.",
+  "ref": "Numbers 10:10"
+ },
+ {
+  "id": "numbers-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The trumpets were an ordinance for how long?",
+  "choices": [
+   "Until they reached Canaan",
+   "Until the priests died",
+   "For ever throughout your generations",
+   "For forty years"
+  ],
+  "answer": 2,
+  "explanation": "They shall be to you for an ordinance for ever throughout your generations.",
+  "ref": "Numbers 10:8"
+ },
+ {
+  "id": "numbers-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who led the host of Issachar?",
+  "choices": [
+   "Nethaneel the son of Zuar",
+   "Elizur the son of Shedeur",
+   "Pagiel the son of Ocran",
+   "Eliab the son of Helon"
+  ],
+  "answer": 0,
+  "explanation": "Over the host of the tribe of the children of Issachar was Nethaneel the son of Zuar.",
+  "ref": "Numbers 10:15"
+ },
+ {
+  "id": "numbers-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who led the host of Zebulun?",
+  "choices": [
+   "Ahira the son of Enan",
+   "Eliab the son of Helon",
+   "Nahshon the son of Amminadab",
+   "Eliasaph the son of Deuel"
+  ],
+  "answer": 1,
+  "explanation": "Over the host of the tribe of the children of Zebulun was Eliab the son of Helon.",
+  "ref": "Numbers 10:16"
+ },
+ {
+  "id": "numbers-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who led the host of Simeon?",
+  "choices": [
+   "Elizur the son of Shedeur",
+   "Elishama the son of Ammihud",
+   "Eliasaph the son of Deuel",
+   "Shelumiel the son of Zurishaddai"
+  ],
+  "answer": 3,
+  "explanation": "Over the host of the tribe of the children of Simeon was Shelumiel the son of Zurishaddai.",
+  "ref": "Numbers 10:19"
+ },
+ {
+  "id": "numbers-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who led the host of Ephraim?",
+  "choices": [
+   "Ahiezer the son of Ammishaddai",
+   "Elishama the son of Ammihud",
+   "Gamaliel the son of Pedahzur",
+   "Abidan the son of Gideoni"
+  ],
+  "answer": 1,
+  "explanation": "The standard of the camp of Ephraim set forward: over his host was Elishama the son of Ammihud.",
+  "ref": "Numbers 10:22"
+ },
+ {
+  "id": "numbers-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who led the host of Naphtali?",
+  "choices": [
+   "Abidan the son of Gideoni",
+   "Ahiezer the son of Ammishaddai",
+   "Pagiel the son of Ocran",
+   "Ahira the son of Enan"
+  ],
+  "answer": 3,
+  "explanation": "Over the host of the tribe of the children of Naphtali was Ahira the son of Enan.",
+  "ref": "Numbers 10:27"
+ },
+ {
+  "id": "numbers-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Hobab was the son of whom?",
+  "choices": [
+   "Jethro the priest",
+   "Raguel the Midianite",
+   "Amram",
+   "Reuel the Edomite"
+  ],
+  "answer": 1,
+  "explanation": "Hobab, the son of Raguel the Midianite, Moses' father in law.",
+  "ref": "Numbers 10:29"
+ },
+ {
+  "id": "numbers-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who led the host of Benjamin?",
+  "choices": [
+   "Pagiel the son of Ocran",
+   "Abidan the son of Gideoni",
+   "Gamaliel the son of Pedahzur",
+   "Ahiezer the son of Ammishaddai"
+  ],
+  "answer": 1,
+  "explanation": "Over the host of the tribe of the children of Benjamin was Abidan the son of Gideoni.",
+  "ref": "Numbers 10:24"
+ },
+ {
+  "id": "numbers-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the ark to do on the three days' journey?",
+  "choices": [
+   "Search out a resting place for them",
+   "Guard the camp from enemies",
+   "Give them water",
+   "Carry the manna"
+  ],
+  "answer": 0,
+  "explanation": "The ark of the covenant went before them, to search out a resting place for them.",
+  "ref": "Numbers 10:33"
+ },
+ {
+  "id": "numbers-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who led the host of Gad?",
+  "choices": [
+   "Eliasaph the son of Deuel",
+   "Shelumiel the son of Zurishaddai",
+   "Elizur the son of Shedeur",
+   "Eliab the son of Helon"
+  ],
+  "answer": 0,
+  "explanation": "Over the host of the tribe of the children of Gad was Eliasaph the son of Deuel.",
+  "ref": "Numbers 10:20"
+ },
+ {
+  "id": "numbers-10-h-16",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tribe's standard set forward after the Gershon and Merari, led by Elizur?",
+  "choices": [
+   "Gad",
+   "Simeon",
+   "Reuben",
+   "Judah"
+  ],
+  "answer": 2,
+  "explanation": "The standard of the camp of Reuben set forward: over his host was Elizur the son of Shedeur.",
+  "ref": "Numbers 10:18"
+ },
+ {
   "id": "old-numbers-11-1",
   "chapter": 11,
   "level": "beginner",
