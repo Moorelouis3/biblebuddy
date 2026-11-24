@@ -15248,6 +15248,646 @@
   "ref": "Deuteronomy 22:11"
  },
  {
+  "id": "deuteronomy-22-e-01",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to do when a brother's ass or ox fell down by the way?",
+  "choices": [
+   "Leave it for the owner",
+   "Help lift it up again",
+   "Sell it",
+   "Give it to the priests"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt surely help him to lift them up again.",
+  "ref": "Deuteronomy 22:4"
+ },
+ {
+  "id": "deuteronomy-22-e-02",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel to let go when taking young birds from a nest?",
+  "choices": [
+   "The eggs",
+   "The mother bird",
+   "The nest",
+   "The youngest bird"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt in any wise let the dam go, and take the young to thee.",
+  "ref": "Deuteronomy 22:7"
+ },
+ {
+  "id": "deuteronomy-22-e-03",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD promise to those who let the mother bird go?",
+  "choices": [
+   "They would find silver",
+   "They would prolong their days",
+   "They would have many sons",
+   "They would have peace"
+  ],
+  "answer": 1,
+  "explanation": "Let the dam go, that it may be well with thee, and that thou mayest prolong thy days.",
+  "ref": "Deuteronomy 22:7"
+ },
+ {
+  "id": "deuteronomy-22-e-04",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two animals were not to plow together?",
+  "choices": [
+   "An ox and a horse",
+   "An ox and an ass",
+   "A horse and an ass",
+   "Two oxen"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not plow with an ox and an ass together.",
+  "ref": "Deuteronomy 22:10"
+ },
+ {
+  "id": "deuteronomy-22-e-05",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel not to sow in the vineyard?",
+  "choices": [
+   "Barley",
+   "Divers seeds",
+   "Flax",
+   "Mustard"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not sow thy vineyard with divers seeds.",
+  "ref": "Deuteronomy 22:9"
+ },
+ {
+  "id": "deuteronomy-22-e-06",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the girl's parents bring the tokens of her virginity?",
+  "choices": [
+   "To the priest",
+   "To the elders in the gate",
+   "To the judges' tent",
+   "To the husband's house"
+  ],
+  "answer": 1,
+  "explanation": "The father and mother shall bring the tokens unto the elders of the city in the gate.",
+  "ref": "Deuteronomy 22:15"
+ },
+ {
+  "id": "deuteronomy-22-e-07",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the husband bring upon the damsel when he lied about her?",
+  "choices": [
+   "A curse",
+   "An evil name",
+   "A plague",
+   "A debt"
+  ],
+  "answer": 1,
+  "explanation": "Because he hath brought up an evil name upon a virgin of Israel.",
+  "ref": "Deuteronomy 22:19"
+ },
+ {
+  "id": "deuteronomy-22-e-08",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the penalty when a man lay with another man's wife?",
+  "choices": [
+   "Only the man died",
+   "Both the man and woman died",
+   "Both were fined",
+   "Both were exiled"
+  ],
+  "answer": 1,
+  "explanation": "They shall both of them die, both the man that lay with the woman, and the woman.",
+  "ref": "Deuteronomy 22:22"
+ },
+ {
+  "id": "deuteronomy-22-e-09",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who alone was to die when a man forced a betrothed damsel in the field?",
+  "choices": [
+   "The damsel",
+   "The man",
+   "Both of them",
+   "Her father"
+  ],
+  "answer": 1,
+  "explanation": "Then the man only that lay with her shall die.",
+  "ref": "Deuteronomy 22:25"
+ },
+ {
+  "id": "deuteronomy-22-e-10",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told the elders, 'I gave my daughter unto this man to wife'?",
+  "choices": [
+   "The damsel herself",
+   "The damsel's father",
+   "The husband",
+   "The priest"
+  ],
+  "answer": 1,
+  "explanation": "The damsel's father shall say unto the elders, I gave my daughter unto this man to wife.",
+  "ref": "Deuteronomy 22:16"
+ },
+ {
+  "id": "deuteronomy-22-m-01",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the ox and sheep, what else of a brother's was to be given back?",
+  "choices": [
+   "His tent",
+   "His seed",
+   "His field",
+   "His raiment"
+  ],
+  "answer": 3,
+  "explanation": "So shalt thou do with his raiment; and with all lost things of thy brother's.",
+  "ref": "Deuteronomy 22:3"
+ },
+ {
+  "id": "deuteronomy-22-m-02",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was a found animal to stay in the finder's house?",
+  "choices": [
+   "Seven days",
+   "Until the feast",
+   "One year",
+   "Until the brother sought it"
+  ],
+  "answer": 3,
+  "explanation": "It shall be with thee until thy brother seek after it, and thou shalt restore it to him again.",
+  "ref": "Deuteronomy 22:2"
+ },
+ {
+  "id": "deuteronomy-22-m-03",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD call a man wearing a woman's garment?",
+  "choices": [
+   "A blessing",
+   "A sign",
+   "A trespass",
+   "An abomination"
+  ],
+  "answer": 3,
+  "explanation": "All that do so are abomination unto the LORD thy God.",
+  "ref": "Deuteronomy 22:5"
+ },
+ {
+  "id": "deuteronomy-22-m-04",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was a roof battlement required?",
+  "choices": [
+   "To hold rain",
+   "To keep out thieves",
+   "To mark the owner",
+   "So no blood would come upon the house"
+  ],
+  "answer": 3,
+  "explanation": "That thou bring not blood upon thine house, if any man fall from thence.",
+  "ref": "Deuteronomy 22:8"
+ },
+ {
+  "id": "deuteronomy-22-m-05",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the vineyard not to be sown with divers seeds?",
+  "choices": [
+   "Lest the soil dry",
+   "Lest birds come",
+   "Lest it be taxed",
+   "Lest the fruit be defiled"
+  ],
+  "answer": 3,
+  "explanation": "Lest the fruit of thy seed and the fruit of thy vineyard be defiled.",
+  "ref": "Deuteronomy 22:9"
+ },
+ {
+  "id": "deuteronomy-22-m-06",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the husband say of his wife in the case of the evil name?",
+  "choices": [
+   "She stole from me",
+   "She left my house",
+   "She cursed me",
+   "I found her not a maid"
+  ],
+  "answer": 3,
+  "explanation": "He says, I took this woman, and when I came to her, I found her not a maid.",
+  "ref": "Deuteronomy 22:14"
+ },
+ {
+  "id": "deuteronomy-22-m-07",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the girl's parents spread before the elders?",
+  "choices": [
+   "A robe",
+   "A scroll",
+   "A banner",
+   "The cloth"
+  ],
+  "answer": 3,
+  "explanation": "They shall spread the cloth before the elders of the city.",
+  "ref": "Deuteronomy 22:17"
+ },
+ {
+  "id": "deuteronomy-22-m-08",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the elders do to the husband who slandered his wife?",
+  "choices": [
+   "Stoned him",
+   "Banished him",
+   "Cut his hand",
+   "Chastised him"
+  ],
+  "answer": 3,
+  "explanation": "The elders of that city shall take that man and chastise him.",
+  "ref": "Deuteronomy 22:18"
+ },
+ {
+  "id": "deuteronomy-22-m-09",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done to the wife if the tokens of virginity were not found?",
+  "choices": [
+   "She was sent away",
+   "She was fined",
+   "She was sold",
+   "She was stoned at her father's door"
+  ],
+  "answer": 3,
+  "explanation": "The men of her city shall stone her at the door of her father's house.",
+  "ref": "Deuteronomy 22:21"
+ },
+ {
+  "id": "deuteronomy-22-m-10",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the damsel's folly said to be, if the charge was true?",
+  "choices": [
+   "Stealing from the temple",
+   "Breaking the Sabbath",
+   "Cursing the elders",
+   "Playing the whore in her father's house"
+  ],
+  "answer": 3,
+  "explanation": "She hath wrought folly in Israel, to play the whore in her father's house.",
+  "ref": "Deuteronomy 22:21"
+ },
+ {
+  "id": "deuteronomy-22-m-11",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the betrothed damsel stoned in the city case?",
+  "choices": [
+   "Because she ran away",
+   "Because she was bold",
+   "Because she lied",
+   "Because she cried not in the city"
+  ],
+  "answer": 3,
+  "explanation": "The damsel, because she cried not, being in the city; and the man, because he hath humbled his neighbour's wife.",
+  "ref": "Deuteronomy 22:24"
+ },
+ {
+  "id": "deuteronomy-22-m-12",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was there no sin worthy of death in the damsel in the field?",
+  "choices": [
+   "She was young",
+   "She was a stranger",
+   "She was a widow",
+   "She cried and no one was there to save her"
+  ],
+  "answer": 3,
+  "explanation": "He found her in the field, and the betrothed damsel cried, and there was none to save her.",
+  "ref": "Deuteronomy 22:27"
+ },
+ {
+  "id": "deuteronomy-22-m-13",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the man to do who lay with an unbetrothed virgin and was found?",
+  "choices": [
+   "Be put to death",
+   "Be sent away",
+   "Be fined only",
+   "Pay her father and marry her"
+  ],
+  "answer": 3,
+  "explanation": "He shall give the damsel's father fifty shekels and she shall be his wife.",
+  "ref": "Deuteronomy 22:29"
+ },
+ {
+  "id": "deuteronomy-22-m-14",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would he not be allowed to do to her afterward?",
+  "choices": [
+   "Visit her father",
+   "Leave the city",
+   "Sell her land",
+   "Put her away all his days"
+  ],
+  "answer": 3,
+  "explanation": "Because he hath humbled her, he may not put her away all his days.",
+  "ref": "Deuteronomy 22:29"
+ },
+ {
+  "id": "deuteronomy-22-h-01",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shekels of silver was the slanderous husband fined?",
+  "choices": [
+   "Fifty",
+   "A hundred",
+   "Thirty",
+   "Two hundred"
+  ],
+  "answer": 1,
+  "explanation": "They shall amerce him in an hundred shekels of silver, and give them unto the father of the damsel.",
+  "ref": "Deuteronomy 22:19"
+ },
+ {
+  "id": "deuteronomy-22-h-02",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shekels did the man pay who lay with an unbetrothed virgin?",
+  "choices": [
+   "A hundred",
+   "Fifty",
+   "Thirty",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "The man that lay with her shall give unto the damsel's father fifty shekels of silver.",
+  "ref": "Deuteronomy 22:29"
+ },
+ {
+  "id": "deuteronomy-22-h-03",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What might be in the nest besides young ones?",
+  "choices": [
+   "Feathers",
+   "Eggs",
+   "Seeds",
+   "Stones"
+  ],
+  "answer": 1,
+  "explanation": "Whether they be young ones, or eggs, and the dam sitting upon the young, or upon the eggs.",
+  "ref": "Deuteronomy 22:6"
+ },
+ {
+  "id": "deuteronomy-22-h-04",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where might the bird's nest be found by the way?",
+  "choices": [
+   "In a rock only",
+   "In a tree or on the ground",
+   "On the roof",
+   "In a vineyard"
+  ],
+  "answer": 1,
+  "explanation": "If a bird's nest chance to be before thee in the way in any tree, or on the ground.",
+  "ref": "Deuteronomy 22:6"
+ },
+ {
+  "id": "deuteronomy-22-h-05",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was a man not to discover?",
+  "choices": [
+   "His brother's tent",
+   "His father's skirt",
+   "His neighbour's field",
+   "His mother's house"
+  ],
+  "answer": 1,
+  "explanation": "A man shall not take his father's wife, nor discover his father's skirt.",
+  "ref": "Deuteronomy 22:30"
+ },
+ {
+  "id": "deuteronomy-22-h-06",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom was the fine for slander paid?",
+  "choices": [
+   "The elders",
+   "The damsel's father",
+   "The priests",
+   "The damsel herself"
+  ],
+  "answer": 1,
+  "explanation": "They shall give them unto the father of the damsel.",
+  "ref": "Deuteronomy 22:19"
+ },
+ {
+  "id": "deuteronomy-22-h-07",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the husband done to the damsel after he went in unto her?",
+  "choices": [
+   "Beaten her",
+   "Hated her",
+   "Sold her",
+   "Sent her away"
+  ],
+  "answer": 1,
+  "explanation": "If any man take a wife, and go in unto her, and hate her.",
+  "ref": "Deuteronomy 22:13"
+ },
+ {
+  "id": "deuteronomy-22-m-15",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel not to do when seeing a lost or fallen animal?",
+  "choices": [
+   "Hide thyself",
+   "Make a sacrifice",
+   "Count it",
+   "Take payment"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not see thy brother's ass or his ox fall down by the way, and hide thyself.",
+  "ref": "Deuteronomy 22:4"
+ },
+ {
+  "id": "deuteronomy-22-h-08",
+  "chapter": 22,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the betrothed damsel and the man stoned in the city case?",
+  "choices": [
+   "At the gate of the city",
+   "In the field",
+   "At her father's door",
+   "In the valley"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall bring them both out unto the gate of that city, and ye shall stone them with stones.",
+  "ref": "Deuteronomy 22:24"
+ },
+ {
+  "id": "deuteronomy-22-h-09",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what was the matter in the field compared?",
+  "choices": [
+   "A man rising against his neighbour and slaying him",
+   "A robbery by night",
+   "A broken vow",
+   "A false oath"
+  ],
+  "answer": 0,
+  "explanation": "For as when a man riseth against his neighbour, and slayeth him, even so is this matter.",
+  "ref": "Deuteronomy 22:26"
+ },
+ {
+  "id": "deuteronomy-22-h-10",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the husband give against his wife, according to her father?",
+  "choices": [
+   "Occasions of speech",
+   "Gifts of silver",
+   "Oaths of peace",
+   "Cause for war"
+  ],
+  "answer": 0,
+  "explanation": "The father says, lo, he hath given occasions of speech against her.",
+  "ref": "Deuteronomy 22:17"
+ },
+ {
+  "id": "deuteronomy-22-h-11",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If the thing was true, what was lacking for the damsel?",
+  "choices": [
+   "The tokens of virginity",
+   "A dowry",
+   "A witness",
+   "A husband"
+  ],
+  "answer": 0,
+  "explanation": "If this thing be true, and the tokens of virginity be not found for the damsel.",
+  "ref": "Deuteronomy 22:20"
+ },
+ {
+  "id": "deuteronomy-22-h-12",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Who were to bring out the damsel to stone her?",
+  "choices": [
+   "The men of her city",
+   "Her brothers",
+   "The priests",
+   "Her husband"
+  ],
+  "answer": 0,
+  "explanation": "The men of her city shall stone her with stones that she die.",
+  "ref": "Deuteronomy 22:21"
+ },
+ {
+  "id": "deuteronomy-22-h-13",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel have to do with all lost things of a brother's?",
+  "choices": [
+   "Do likewise and restore them",
+   "Keep them as spoil",
+   "Offer them to the LORD",
+   "Sell them in the gate"
+  ],
+  "answer": 0,
+  "explanation": "In like manner with all lost things of thy brother's, thou mayest not hide thyself.",
+  "ref": "Deuteronomy 22:3"
+ },
+ {
+  "id": "deuteronomy-22-h-14",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man in the city case do to his neighbour's wife?",
+  "choices": [
+   "Humbled her",
+   "Robbed her",
+   "Cursed her",
+   "Carried her away"
+  ],
+  "answer": 0,
+  "explanation": "The man hath humbled his neighbour's wife: so thou shalt put away evil from among you.",
+  "ref": "Deuteronomy 22:24"
+ },
+ {
+  "id": "deuteronomy-22-h-15",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the chapter say the man in the field case did to the damsel?",
+  "choices": [
+   "Forced her",
+   "Bribed her",
+   "Deceived her",
+   "Followed her home"
+  ],
+  "answer": 0,
+  "explanation": "The man force her, and lie with her: then the man only that lay with her shall die.",
+  "ref": "Deuteronomy 22:25"
+ },
+ {
   "id": "old-deuteronomy-23-1",
   "chapter": 23,
   "level": "beginner",
