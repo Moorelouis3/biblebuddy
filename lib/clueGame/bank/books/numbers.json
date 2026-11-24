@@ -18096,6 +18096,646 @@
   "ref": "Numbers 26:64–65"
  },
  {
+  "id": "numbers-26-e-01",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the LORD speak to along with Moses about the census?",
+  "choices": [
+   "Joshua the son of Nun",
+   "Eleazar the son of Aaron",
+   "Phinehas the priest",
+   "Caleb the son of Jephunneh"
+  ],
+  "answer": 1,
+  "explanation": "The LORD spake unto Moses and unto Eleazar the son of Aaron the priest.",
+  "ref": "Numbers 26:1"
+ },
+ {
+  "id": "numbers-26-e-02",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was this census taken?",
+  "choices": [
+   "At Mount Sinai",
+   "In the plains of Moab by Jordan near Jericho",
+   "At Kadesh",
+   "At Mount Hor"
+  ],
+  "answer": 1,
+  "explanation": "Moses and Eleazar the priest spake with them in the plains of Moab by Jordan near Jericho.",
+  "ref": "Numbers 26:3"
+ },
+ {
+  "id": "numbers-26-e-03",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what age were the men counted?",
+  "choices": [
+   "Thirty years old",
+   "Twenty years old and upward",
+   "Twelve years old",
+   "Forty years old"
+  ],
+  "answer": 1,
+  "explanation": "Take the sum of the people, from twenty years old and upward.",
+  "ref": "Numbers 26:4"
+ },
+ {
+  "id": "numbers-26-e-04",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the eldest son of Israel, listed first in the census?",
+  "choices": [
+   "Judah",
+   "Reuben",
+   "Simeon",
+   "Levi"
+  ],
+  "answer": 1,
+  "explanation": "Reuben, the eldest son of Israel.",
+  "ref": "Numbers 26:5"
+ },
+ {
+  "id": "numbers-26-e-05",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two men strove against Moses and Aaron in the company of Korah?",
+  "choices": [
+   "Nadab and Abihu",
+   "Dathan and Abiram",
+   "Er and Onan",
+   "Eliab and Nemuel"
+  ],
+  "answer": 1,
+  "explanation": "This is that Dathan and Abiram, which were famous in the congregation, who strove against Moses.",
+  "ref": "Numbers 26:9"
+ },
+ {
+  "id": "numbers-26-e-06",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What swallowed up Dathan, Abiram and Korah?",
+  "choices": [
+   "The sea",
+   "The earth",
+   "A fire",
+   "A whirlwind"
+  ],
+  "answer": 1,
+  "explanation": "The earth opened her mouth, and swallowed them up together with Korah.",
+  "ref": "Numbers 26:10"
+ },
+ {
+  "id": "numbers-26-e-07",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the total number counted of the children of Israel?",
+  "choices": [
+   "603,550",
+   "601,730",
+   "598,000",
+   "625,000"
+  ],
+  "answer": 1,
+  "explanation": "These were the numbered of the children of Israel, six hundred thousand and a thousand seven hundred and thirty.",
+  "ref": "Numbers 26:51"
+ },
+ {
+  "id": "numbers-26-e-08",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "What did Zelophehad have instead of sons?",
+  "choices": [
+   "Brothers",
+   "Daughters",
+   "Servants",
+   "Nephews"
+  ],
+  "answer": 1,
+  "explanation": "Zelophehad the son of Hepher had no sons, but daughters.",
+  "ref": "Numbers 26:33"
+ },
+ {
+  "id": "numbers-26-e-09",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two sons of Aaron died when they offered strange fire?",
+  "choices": [
+   "Eleazar and Ithamar",
+   "Nadab and Abihu",
+   "Er and Onan",
+   "Korah and Dathan"
+  ],
+  "answer": 1,
+  "explanation": "Nadab and Abihu died, when they offered strange fire before the LORD.",
+  "ref": "Numbers 26:61"
+ },
+ {
+  "id": "numbers-26-e-10",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "What was the name of Amram's wife?",
+  "choices": [
+   "Miriam",
+   "Jochebed",
+   "Zipporah",
+   "Sarah"
+  ],
+  "answer": 1,
+  "explanation": "The name of Amram's wife was Jochebed, the daughter of Levi.",
+  "ref": "Numbers 26:59"
+ },
+ {
+  "id": "numbers-26-m-01",
+  "chapter": 26,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Er and Onan, the sons of Judah, die?",
+  "choices": [
+   "In Egypt",
+   "In the wilderness of Sinai",
+   "In the plains of Moab",
+   "In the land of Canaan"
+  ],
+  "answer": 3,
+  "explanation": "Er and Onan died in the land of Canaan.",
+  "ref": "Numbers 26:19"
+ },
+ {
+  "id": "numbers-26-m-02",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many were numbered of Judah?",
+  "choices": [
+   "64,300",
+   "60,500",
+   "52,700",
+   "76,500"
+  ],
+  "answer": 3,
+  "explanation": "The families of Judah numbered threescore and sixteen thousand and five hundred.",
+  "ref": "Numbers 26:22"
+ },
+ {
+  "id": "numbers-26-m-03",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many were numbered of Simeon?",
+  "choices": [
+   "32,500",
+   "40,500",
+   "43,730",
+   "22,200"
+  ],
+  "answer": 3,
+  "explanation": "The families of the Simeonites were twenty and two thousand and two hundred.",
+  "ref": "Numbers 26:14"
+ },
+ {
+  "id": "numbers-26-m-04",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many were numbered of Gad?",
+  "choices": [
+   "45,400",
+   "53,400",
+   "22,200",
+   "40,500"
+  ],
+  "answer": 3,
+  "explanation": "The children of Gad were forty thousand and five hundred.",
+  "ref": "Numbers 26:18"
+ },
+ {
+  "id": "numbers-26-m-05",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many were numbered of Issachar?",
+  "choices": [
+   "64,400",
+   "60,500",
+   "76,500",
+   "64,300"
+  ],
+  "answer": 3,
+  "explanation": "Those numbered of Issachar were threescore and four thousand and three hundred.",
+  "ref": "Numbers 26:25"
+ },
+ {
+  "id": "numbers-26-m-06",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many were numbered of Dan?",
+  "choices": [
+   "64,300",
+   "53,400",
+   "45,600",
+   "64,400"
+  ],
+  "answer": 3,
+  "explanation": "The Shuhamites numbered threescore and four thousand and four hundred.",
+  "ref": "Numbers 26:43"
+ },
+ {
+  "id": "numbers-26-m-07",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many Levites were numbered, all males from a month old?",
+  "choices": [
+   "22,200",
+   "32,500",
+   "43,730",
+   "23,000"
+  ],
+  "answer": 3,
+  "explanation": "Those numbered of them were twenty and three thousand, all males from a month old and upward.",
+  "ref": "Numbers 26:62"
+ },
+ {
+  "id": "numbers-26-m-08",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the Levites not numbered among the children of Israel?",
+  "choices": [
+   "They were too few",
+   "They were priests only",
+   "They were already in Canaan",
+   "They had no inheritance among Israel"
+  ],
+  "answer": 3,
+  "explanation": "They were not numbered among the children of Israel, because there was no inheritance given them.",
+  "ref": "Numbers 26:62"
+ },
+ {
+  "id": "numbers-26-m-09",
+  "chapter": 26,
+  "level": "medium",
+  "category": "person",
+  "question": "What happened to the children of Korah?",
+  "choices": [
+   "They were swallowed up",
+   "They were burned",
+   "They fled to Moab",
+   "They died not"
+  ],
+  "answer": 3,
+  "explanation": "Notwithstanding the children of Korah died not.",
+  "ref": "Numbers 26:11"
+ },
+ {
+  "id": "numbers-26-m-10",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Nadab and Abihu die?",
+  "choices": [
+   "They touched the ark",
+   "They rebelled with Korah",
+   "They left the camp",
+   "They offered strange fire before the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Nadab and Abihu died, when they offered strange fire before the LORD.",
+  "ref": "Numbers 26:61"
+ },
+ {
+  "id": "numbers-26-m-11",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men did the fire devour when Korah's company died?",
+  "choices": [
+   "Seventy",
+   "Four hundred",
+   "Fourteen thousand",
+   "Two hundred and fifty"
+  ],
+  "answer": 3,
+  "explanation": "The fire devoured two hundred and fifty men: and they became a sign.",
+  "ref": "Numbers 26:10"
+ },
+ {
+  "id": "numbers-26-m-12",
+  "chapter": 26,
+  "level": "medium",
+  "category": "person",
+  "question": "What was the name of Asher's daughter?",
+  "choices": [
+   "Tirzah",
+   "Hoglah",
+   "Milcah",
+   "Sarah"
+  ],
+  "answer": 3,
+  "explanation": "The name of the daughter of Asher was Sarah.",
+  "ref": "Numbers 26:46"
+ },
+ {
+  "id": "numbers-26-m-13",
+  "chapter": 26,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the father of Aaron, Moses and Miriam?",
+  "choices": [
+   "Kohath",
+   "Levi",
+   "Merari",
+   "Amram"
+  ],
+  "answer": 3,
+  "explanation": "Kohath begat Amram. And she bare unto Amram Aaron and Moses, and Miriam their sister.",
+  "ref": "Numbers 26:58–59"
+ },
+ {
+  "id": "numbers-26-m-14",
+  "chapter": 26,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Miriam to Aaron and Moses?",
+  "choices": [
+   "Their mother",
+   "Their aunt",
+   "Their daughter",
+   "Their sister"
+  ],
+  "answer": 3,
+  "explanation": "She bare unto Amram Aaron and Moses, and Miriam their sister.",
+  "ref": "Numbers 26:59"
+ },
+ {
+  "id": "numbers-26-m-15",
+  "chapter": 26,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of Aaron's sons are named besides Nadab and Abihu?",
+  "choices": [
+   "Er and Onan",
+   "Gershon and Kohath",
+   "Mahlah and Noah",
+   "Eleazar and Ithamar"
+  ],
+  "answer": 3,
+  "explanation": "Unto Aaron was born Nadab, and Abihu, Eleazar, and Ithamar.",
+  "ref": "Numbers 26:60"
+ },
+ {
+  "id": "numbers-26-h-01",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were numbered of Reuben?",
+  "choices": [
+   "43,730",
+   "43,700",
+   "45,600",
+   "40,500"
+  ],
+  "answer": 0,
+  "explanation": "They that were numbered of the Reubenites were forty and three thousand and seven hundred and thirty.",
+  "ref": "Numbers 26:7"
+ },
+ {
+  "id": "numbers-26-h-02",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were numbered of Zebulun?",
+  "choices": [
+   "60,500",
+   "64,300",
+   "52,700",
+   "53,400"
+  ],
+  "answer": 0,
+  "explanation": "The families of the Zebulunites numbered threescore thousand and five hundred.",
+  "ref": "Numbers 26:27"
+ },
+ {
+  "id": "numbers-26-h-03",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were numbered of Benjamin?",
+  "choices": [
+   "45,600",
+   "45,400",
+   "43,730",
+   "40,500"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Benjamin were forty and five thousand and six hundred.",
+  "ref": "Numbers 26:41"
+ },
+ {
+  "id": "numbers-26-h-04",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were numbered of Asher?",
+  "choices": [
+   "53,400",
+   "52,700",
+   "45,400",
+   "64,400"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Asher were fifty and three thousand and four hundred.",
+  "ref": "Numbers 26:47"
+ },
+ {
+  "id": "numbers-26-h-05",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were numbered of Naphtali?",
+  "choices": [
+   "45,400",
+   "45,600",
+   "53,400",
+   "40,500"
+  ],
+  "answer": 0,
+  "explanation": "The families of Naphtali were forty and five thousand and four hundred.",
+  "ref": "Numbers 26:50"
+ },
+ {
+  "id": "numbers-26-h-06",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were numbered of Manasseh?",
+  "choices": [
+   "52,700",
+   "53,400",
+   "32,500",
+   "43,730"
+  ],
+  "answer": 0,
+  "explanation": "The families of Manasseh were fifty and two thousand and seven hundred.",
+  "ref": "Numbers 26:34"
+ },
+ {
+  "id": "numbers-26-h-07",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were numbered of Ephraim?",
+  "choices": [
+   "32,500",
+   "22,200",
+   "40,500",
+   "52,700"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Ephraim were thirty and two thousand and five hundred.",
+  "ref": "Numbers 26:37"
+ },
+ {
+  "id": "numbers-26-h-08",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the father of Zelophehad?",
+  "choices": [
+   "Hepher",
+   "Gilead",
+   "Machir",
+   "Manasseh"
+  ],
+  "answer": 0,
+  "explanation": "Zelophehad the son of Hepher had no sons, but daughters.",
+  "ref": "Numbers 26:33"
+ },
+ {
+  "id": "numbers-26-h-09",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Who did Machir beget?",
+  "choices": [
+   "Gilead",
+   "Hepher",
+   "Manasseh",
+   "Jeezer"
+  ],
+  "answer": 0,
+  "explanation": "Machir begat Gilead: of Gilead come the family of the Gileadites.",
+  "ref": "Numbers 26:29"
+ },
+ {
+  "id": "numbers-26-h-10",
+  "chapter": 26,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Jochebed born, according to the chapter?",
+  "choices": [
+   "Egypt",
+   "Canaan",
+   "Moab",
+   "Midian"
+  ],
+  "answer": 0,
+  "explanation": "Jochebed, the daughter of Levi, whom her mother bare to Levi in Egypt.",
+  "ref": "Numbers 26:59"
+ },
+ {
+  "id": "numbers-26-h-11",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son of Pallu is named, whose sons were Nemuel, Dathan and Abiram?",
+  "choices": [
+   "Eliab",
+   "Hanoch",
+   "Hezron",
+   "Carmi"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Pallu; Eliab. And the sons of Eliab; Nemuel, and Dathan, and Abiram.",
+  "ref": "Numbers 26:8–9"
+ },
+ {
+  "id": "numbers-26-h-12",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many families did the sons of Dan list?",
+  "choices": [
+   "One, the Shuhamites",
+   "Three",
+   "Five",
+   "Two"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Dan: of Shuham, the family of the Shuhamites.",
+  "ref": "Numbers 26:42"
+ },
+ {
+  "id": "numbers-26-h-13",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say would be given to the many tribes?",
+  "choices": [
+   "More inheritance",
+   "Less inheritance",
+   "Equal cities",
+   "Only the hill country"
+  ],
+  "answer": 0,
+  "explanation": "To many thou shalt give the more inheritance, and to few thou shalt give the less inheritance.",
+  "ref": "Numbers 26:54"
+ },
+ {
+  "id": "numbers-26-h-14",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what age were the Levites numbered?",
+  "choices": [
+   "A month old and upward",
+   "Twenty years old",
+   "Thirty years old",
+   "One year old"
+  ],
+  "answer": 0,
+  "explanation": "All males from a month old and upward.",
+  "ref": "Numbers 26:62"
+ },
+ {
+  "id": "numbers-26-h-15",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Who were the two sons of Bela the son of Benjamin?",
+  "choices": [
+   "Ard and Naaman",
+   "Er and Onan",
+   "Shupham and Hupham",
+   "Eliab and Nemuel"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Bela were Ard and Naaman.",
+  "ref": "Numbers 26:40"
+ },
+ {
   "id": "old-numbers-27-1",
   "chapter": 27,
   "level": "beginner",
