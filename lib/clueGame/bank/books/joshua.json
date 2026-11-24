@@ -800,6 +800,646 @@
   "ref": "Joshua 2:24"
  },
  {
+  "id": "joshua-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the chapter describe Rahab?",
+  "choices": [
+   "A priestess",
+   "An harlot",
+   "A prophetess",
+   "A queen"
+  ],
+  "answer": 1,
+  "explanation": "They went, and came into an harlot's house, named Rahab, and lodged there.",
+  "ref": "Joshua 2:1"
+ },
+ {
+  "id": "joshua-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men did Joshua send to spy out Jericho?",
+  "choices": [
+   "Three",
+   "Two",
+   "Twelve",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "Joshua the son of Nun sent out of Shittim two men to spy secretly.",
+  "ref": "Joshua 2:1"
+ },
+ {
+  "id": "joshua-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sent word to Rahab to bring forth the men?",
+  "choices": [
+   "Joshua",
+   "The king of Jericho",
+   "Sihon",
+   "The priests of Jericho"
+  ],
+  "answer": 1,
+  "explanation": "The king of Jericho sent unto Rahab, saying, Bring forth the men that are come to thee.",
+  "ref": "Joshua 2:3"
+ },
+ {
+  "id": "joshua-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Rahab hide the spies?",
+  "choices": [
+   "In the cellar",
+   "On the roof under flax",
+   "In a well",
+   "In the temple"
+  ],
+  "answer": 1,
+  "explanation": "She had brought them up to the roof of the house, and hid them with the stalks of flax.",
+  "ref": "Joshua 2:6"
+ },
+ {
+  "id": "joshua-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Rahab let the spies down from her house?",
+  "choices": [
+   "Through the gate",
+   "By a cord through the window",
+   "By a ladder",
+   "Through a tunnel"
+  ],
+  "answer": 1,
+  "explanation": "Then she let them down by a cord through the window.",
+  "ref": "Joshua 2:15"
+ },
+ {
+  "id": "joshua-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Rahab tell the spies to hide?",
+  "choices": [
+   "The river",
+   "The mountain",
+   "The wilderness",
+   "The sea"
+  ],
+  "answer": 1,
+  "explanation": "Get you to the mountain, lest the pursuers meet you.",
+  "ref": "Joshua 2:16"
+ },
+ {
+  "id": "joshua-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days were the spies to hide in the mountain?",
+  "choices": [
+   "One",
+   "Three",
+   "Seven",
+   "Forty"
+  ],
+  "answer": 1,
+  "explanation": "Hide yourselves there three days, until the pursuers be returned.",
+  "ref": "Joshua 2:16"
+ },
+ {
+  "id": "joshua-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Sihon and Og were kings of which people?",
+  "choices": [
+   "The Hittites",
+   "The Amorites",
+   "The Philistines",
+   "The Canaanites"
+  ],
+  "answer": 1,
+  "explanation": "The two kings of the Amorites, that were on the other side Jordan, Sihon and Og.",
+  "ref": "Joshua 2:10"
+ },
+ {
+  "id": "joshua-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which water had the LORD dried up for Israel, according to Rahab?",
+  "choices": [
+   "The Jordan",
+   "The Red Sea",
+   "The Salt Sea",
+   "The river Arnon"
+  ],
+  "answer": 1,
+  "explanation": "We have heard how the LORD dried up the water of the Red sea for you.",
+  "ref": "Joshua 2:10"
+ },
+ {
+  "id": "joshua-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the spies return with their report?",
+  "choices": [
+   "Caleb",
+   "Joshua",
+   "Eleazar",
+   "Rahab's father"
+  ],
+  "answer": 1,
+  "explanation": "The two men returned, and came to Joshua the son of Nun, and told him all things that befell them.",
+  "ref": "Joshua 2:23"
+ },
+ {
+  "id": "joshua-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "From which place did Joshua send the spies?",
+  "choices": [
+   "Gilgal",
+   "Jordan",
+   "Ai",
+   "Shittim"
+  ],
+  "answer": 3,
+  "explanation": "Joshua the son of Nun sent out of Shittim two men to spy secretly.",
+  "ref": "Joshua 2:1"
+ },
+ {
+  "id": "joshua-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Rahab tell the king's men about when the spies left?",
+  "choices": [
+   "At first light",
+   "At noon",
+   "At the new moon",
+   "About the time of shutting of the gate"
+  ],
+  "answer": 3,
+  "explanation": "It came to pass about the time of shutting of the gate, when it was dark, that the men went out.",
+  "ref": "Joshua 2:5"
+ },
+ {
+  "id": "joshua-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the king's men pursue the spies?",
+  "choices": [
+   "To Gilgal",
+   "To Ai",
+   "To the mountain",
+   "The way to Jordan unto the fords"
+  ],
+  "answer": 3,
+  "explanation": "The men pursued after them the way to Jordan unto the fords.",
+  "ref": "Joshua 2:7"
+ },
+ {
+  "id": "joshua-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the gate-keepers do as soon as the pursuers went out?",
+  "choices": [
+   "Lit fires",
+   "Blew trumpets",
+   "Searched the houses",
+   "Shut the gate"
+  ],
+  "answer": 3,
+  "explanation": "As soon as they which pursued after them were gone out, they shut the gate.",
+  "ref": "Joshua 2:7"
+ },
+ {
+  "id": "joshua-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Rahab say happened to the hearts of Jericho's people?",
+  "choices": [
+   "They hardened",
+   "They rejoiced",
+   "They trembled with joy",
+   "They melted"
+  ],
+  "answer": 3,
+  "explanation": "As soon as we had heard these things, our hearts did melt.",
+  "ref": "Joshua 2:11"
+ },
+ {
+  "id": "joshua-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Rahab say the LORD is God?",
+  "choices": [
+   "Of the hills and not the valleys",
+   "Of Israel only",
+   "Of the sea alone",
+   "In heaven above and in earth beneath"
+  ],
+  "answer": 3,
+  "explanation": "The LORD your God, he is God in heaven above, and in earth beneath.",
+  "ref": "Joshua 2:11"
+ },
+ {
+  "id": "joshua-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Rahab ask the spies to swear?",
+  "choices": [
+   "To spare the city",
+   "To make her queen",
+   "To take her gold",
+   "To show kindness to her father's house"
+  ],
+  "answer": 3,
+  "explanation": "Swear unto me by the LORD, since I have shewed you kindness, that ye will also shew kindness unto my father's house.",
+  "ref": "Joshua 2:12"
+ },
+ {
+  "id": "joshua-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The spies answered: 'Our life for yours, if ye ___ not this our business.'",
+  "choices": [
+   "Forget",
+   "Deny",
+   "Betray",
+   "Utter"
+  ],
+  "answer": 3,
+  "explanation": "Our life for yours, if ye utter not this our business.",
+  "ref": "Joshua 2:14"
+ },
+ {
+  "id": "joshua-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Rahab's house?",
+  "choices": [
+   "In the market",
+   "Beside the gate",
+   "On the hill",
+   "Upon the town wall"
+  ],
+  "answer": 3,
+  "explanation": "Her house was upon the town wall, and she dwelt upon the wall.",
+  "ref": "Joshua 2:15"
+ },
+ {
+  "id": "joshua-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Rahab to bind in the window?",
+  "choices": [
+   "A white cloth",
+   "A branch of palm",
+   "A silver chain",
+   "A line of scarlet thread"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt bind this line of scarlet thread in the window.",
+  "ref": "Joshua 2:18"
+ },
+ {
+  "id": "joshua-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose blood would be on his own head if he went out of Rahab's doors?",
+  "choices": [
+   "Only Rahab's father",
+   "The spies",
+   "The king's men",
+   "Whoever went into the street"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever shall go out of the doors of thy house into the street, his blood shall be upon his head.",
+  "ref": "Joshua 2:19"
+ },
+ {
+  "id": "joshua-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom was Rahab to bring home to her house?",
+  "choices": [
+   "Only her children",
+   "Only her husband",
+   "Her servants alone",
+   "Her father, mother, brethren and household"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt bring thy father, and thy mother, and thy brethren, and all thy father's household, home unto thee.",
+  "ref": "Joshua 2:18"
+ },
+ {
+  "id": "joshua-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Rahab do after saying 'so be it'?",
+  "choices": [
+   "Left Jericho",
+   "Burned her house",
+   "Sent for Joshua",
+   "Bound the scarlet line in the window"
+  ],
+  "answer": 3,
+  "explanation": "She sent them away, and they departed: and she bound the scarlet line in the window.",
+  "ref": "Joshua 2:21"
+ },
+ {
+  "id": "joshua-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the spies tell Joshua the inhabitants of the country did?",
+  "choices": [
+   "Prepare for battle",
+   "Flee to Ai",
+   "Make peace",
+   "Faint because of them"
+  ],
+  "answer": 3,
+  "explanation": "Truly the LORD hath delivered into our hands all the land; for even all the inhabitants of the country do faint because of us.",
+  "ref": "Joshua 2:24"
+ },
+ {
+  "id": "joshua-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Rahab say had fallen upon Jericho?",
+  "choices": [
+   "Their tents",
+   "Their hunger",
+   "A plague",
+   "Their terror"
+  ],
+  "answer": 3,
+  "explanation": "I know that the LORD hath given you the land, and that your terror is fallen upon us.",
+  "ref": "Joshua 2:9"
+ },
+ {
+  "id": "joshua-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Rahab tell the king's men about where the spies went?",
+  "choices": [
+   "She knew not",
+   "To the mountain",
+   "To Gilgal",
+   "Back to Shittim"
+  ],
+  "answer": 0,
+  "explanation": "Whither the men went I wot not: pursue after them quickly.",
+  "ref": "Joshua 2:5"
+ },
+ {
+  "id": "joshua-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Rahab laid in order on the roof?",
+  "choices": [
+   "Stalks of flax",
+   "Bundles of wheat",
+   "Cords",
+   "Tents"
+  ],
+  "answer": 0,
+  "explanation": "She had brought them up to the roof of the house, and hid them with the stalks of flax, which she had laid in order upon the roof.",
+  "ref": "Joshua 2:6"
+ },
+ {
+  "id": "joshua-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Rahab say about where the men came from?",
+  "choices": [
+   "She wist not whence they were",
+   "They were from Ai",
+   "They were Hittites",
+   "They came from Moab"
+  ],
+  "answer": 0,
+  "explanation": "There came men unto me, but I wist not whence they were.",
+  "ref": "Joshua 2:4"
+ },
+ {
+  "id": "joshua-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the king say the men had come into Jericho?",
+  "choices": [
+   "To search out all the country",
+   "To trade",
+   "To worship",
+   "To buy flax"
+  ],
+  "answer": 0,
+  "explanation": "They be come to search out all the country.",
+  "ref": "Joshua 2:3"
+ },
+ {
+  "id": "joshua-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was Rahab when she spoke to the spies before they lay down?",
+  "choices": [
+   "Up on the roof",
+   "At the gate",
+   "In the street",
+   "On the wall's tower"
+  ],
+  "answer": 0,
+  "explanation": "Before they were laid down, she came up unto them upon the roof.",
+  "ref": "Joshua 2:8"
+ },
+ {
+  "id": "joshua-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Rahab ask the spies to give her as a sign of their oath?",
+  "choices": [
+   "A true token",
+   "A ring",
+   "A hostage",
+   "A written deed"
+  ],
+  "answer": 0,
+  "explanation": "Give me a true token: and that ye will save alive my father.",
+  "ref": "Joshua 2:12"
+ },
+ {
+  "id": "joshua-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the spies say they would do for Rahab when the LORD gave them the land?",
+  "choices": [
+   "Deal kindly and truly",
+   "Give her gold",
+   "Make her a judge",
+   "Give her a field"
+  ],
+  "answer": 0,
+  "explanation": "When the LORD hath given us the land, that we will deal kindly and truly with thee.",
+  "ref": "Joshua 2:14"
+ },
+ {
+  "id": "joshua-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would free the spies from Rahab's oath if she did it?",
+  "choices": [
+   "If she uttered their business",
+   "If she left the house",
+   "If the gate was shut",
+   "If the king asked her"
+  ],
+  "answer": 0,
+  "explanation": "If thou utter this our business, then we will be quit of thine oath.",
+  "ref": "Joshua 2:20"
+ },
+ {
+  "id": "joshua-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be on the spies' head if a hand touched someone inside Rahab's house?",
+  "choices": [
+   "His blood",
+   "Their curse",
+   "Their oath",
+   "Their shame"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever shall be with thee in the house, his blood shall be on our head, if any hand be upon him.",
+  "ref": "Joshua 2:19"
+ },
+ {
+  "id": "joshua-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the pursuers do on the way and what was the result?",
+  "choices": [
+   "Sought them throughout all the way and found them not",
+   "Found them near Jordan",
+   "Found them at the mountain",
+   "Gave up at the gate"
+  ],
+  "answer": 0,
+  "explanation": "The pursuers sought them throughout all the way, but found them not.",
+  "ref": "Joshua 2:22"
+ },
+ {
+  "id": "joshua-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After the mountain, what did the two men do before coming to Joshua?",
+  "choices": [
+   "Descended and passed over",
+   "Slept at the fords",
+   "Returned to Rahab",
+   "Went to Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "The two men returned, and descended from the mountain, and passed over, and came to Joshua.",
+  "ref": "Joshua 2:23"
+ },
+ {
+  "id": "joshua-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which direction did Rahab tell the spies to go to avoid the pursuers?",
+  "choices": [
+   "To the mountain",
+   "To the sea",
+   "Back to Jordan",
+   "To Shittim"
+  ],
+  "answer": 0,
+  "explanation": "Get you to the mountain, lest the pursuers meet you.",
+  "ref": "Joshua 2:16"
+ },
+ {
+  "id": "joshua-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Rahab say the LORD had given the Israelites?",
+  "choices": [
+   "The land",
+   "Her house",
+   "Jericho's gold",
+   "The king"
+  ],
+  "answer": 0,
+  "explanation": "I know that the LORD hath given you the land.",
+  "ref": "Joshua 2:9"
+ },
+ {
+  "id": "joshua-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Rahab say the Israelites had utterly destroyed, besides Sihon?",
+  "choices": [
+   "Og",
+   "Balak",
+   "Balaam",
+   "Pharaoh"
+  ],
+  "answer": 0,
+  "explanation": "The two kings of the Amorites, Sihon and Og, whom ye utterly destroyed.",
+  "ref": "Joshua 2:10"
+ },
+ {
+  "id": "joshua-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Rahab ask to save besides father and mother?",
+  "choices": [
+   "Her brethren and sisters",
+   "Her children",
+   "Her servants",
+   "Her neighbors"
+  ],
+  "answer": 0,
+  "explanation": "That ye will save alive my father, and my mother, and my brethren, and my sisters, and all that they have.",
+  "ref": "Joshua 2:13"
+ },
+ {
   "id": "old-joshua-3-1",
   "chapter": 3,
   "level": "beginner",
