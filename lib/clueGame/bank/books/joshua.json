@@ -10912,6 +10912,646 @@
   "ref": "Joshua 16:4"
  },
  {
+  "id": "joshua-16-e-01",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which people did Ephraim fail to drive out of Gezer?",
+  "choices": [
+   "The Jebusites",
+   "The Canaanites",
+   "The Philistines",
+   "The Amorites"
+  ],
+  "answer": 1,
+  "explanation": "They drave not out the Canaanites that dwelt in Gezer.",
+  "ref": "Joshua 16:10"
+ },
+ {
+  "id": "joshua-16-e-02",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "The border went out from Bethel to which place?",
+  "choices": [
+   "Gezer",
+   "Luz",
+   "Shiloh",
+   "Jericho"
+  ],
+  "answer": 1,
+  "explanation": "And goeth out from Bethel to Luz.",
+  "ref": "Joshua 16:2"
+ },
+ {
+  "id": "joshua-16-e-03",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "What did the western end of Joseph's lot reach?",
+  "choices": [
+   "The wilderness",
+   "The sea",
+   "The Jordan",
+   "Mount Hermon"
+  ],
+  "answer": 1,
+  "explanation": "Gezer: and the goings out thereof are at the sea.",
+  "ref": "Joshua 16:3"
+ },
+ {
+  "id": "joshua-16-e-04",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose lot is described at the start of the chapter?",
+  "choices": [
+   "The children of Judah",
+   "The children of Joseph",
+   "The children of Levi",
+   "The children of Dan"
+  ],
+  "answer": 1,
+  "explanation": "The lot of the children of Joseph fell from Jordan by Jericho.",
+  "ref": "Joshua 16:1"
+ },
+ {
+  "id": "joshua-16-e-05",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "From Tappuah, the border went westward to which river?",
+  "choices": [
+   "Arnon",
+   "Kanah",
+   "Jordan",
+   "Kishon"
+  ],
+  "answer": 1,
+  "explanation": "The border went out from Tappuah westward unto the river Kanah.",
+  "ref": "Joshua 16:8"
+ },
+ {
+  "id": "joshua-16-e-06",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were Ephraim's separate cities?",
+  "choices": [
+   "Among the cities of Judah",
+   "Among the inheritance of Manasseh",
+   "Beside the Jordan",
+   "On the sea coast"
+  ],
+  "answer": 1,
+  "explanation": "The separate cities for Ephraim were among the inheritance of the children of Manasseh.",
+  "ref": "Joshua 16:9"
+ },
+ {
+  "id": "joshua-16-e-07",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "At which river did Ephraim's border finally go out, after coming to Jericho?",
+  "choices": [
+   "Arnon",
+   "Jordan",
+   "Kanah",
+   "Kishon"
+  ],
+  "answer": 1,
+  "explanation": "And came to Jericho, and went out at Jordan.",
+  "ref": "Joshua 16:7"
+ },
+ {
+  "id": "joshua-16-e-08",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which Joseph tribe shared its land with Ephraim's separate cities?",
+  "choices": [
+   "Judah",
+   "Manasseh",
+   "Reuben",
+   "Benjamin"
+  ],
+  "answer": 1,
+  "explanation": "Ephraim's separate cities were among the inheritance of the children of Manasseh.",
+  "ref": "Joshua 16:9"
+ },
+ {
+  "id": "joshua-16-e-09",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "Joseph's lot reached the water of Jericho on which side?",
+  "choices": [
+   "The west",
+   "The east",
+   "The north",
+   "The south"
+  ],
+  "answer": 1,
+  "explanation": "Unto the water of Jericho on the east.",
+  "ref": "Joshua 16:1"
+ },
+ {
+  "id": "joshua-16-e-10",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many tribes are named as the children of Joseph in the chapter?",
+  "choices": [
+   "One",
+   "Two",
+   "Three",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "The children of Joseph, Manasseh and Ephraim, took their inheritance.",
+  "ref": "Joshua 16:4"
+ },
+ {
+  "id": "joshua-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the Canaanites dwell among the Ephraimites?",
+  "choices": [
+   "Seven years",
+   "Until Joshua died",
+   "Until the kings came",
+   "Unto this day"
+  ],
+  "answer": 3,
+  "explanation": "The Canaanites dwell among the Ephraimites unto this day.",
+  "ref": "Joshua 16:10"
+ },
+ {
+  "id": "joshua-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "On the way to Ataroth, the border passed the borders of whom?",
+  "choices": [
+   "Japhleti",
+   "Hinnom",
+   "Kenaz",
+   "Archi"
+  ],
+  "answer": 3,
+  "explanation": "Passeth along unto the borders of Archi to Ataroth.",
+  "ref": "Joshua 16:2"
+ },
+ {
+  "id": "joshua-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "Westward, the border went down to the coast of whom?",
+  "choices": [
+   "Archi",
+   "Jair",
+   "Machir",
+   "Japhleti"
+  ],
+  "answer": 3,
+  "explanation": "Goeth down westward to the coast of Japhleti.",
+  "ref": "Joshua 16:3"
+ },
+ {
+  "id": "joshua-16-m-04",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "The border went about eastward unto which place?",
+  "choices": [
+   "Beth-horon",
+   "Tappuah",
+   "Gezer",
+   "Taanath-shiloh"
+  ],
+  "answer": 3,
+  "explanation": "The border went about eastward unto Taanath-shiloh.",
+  "ref": "Joshua 16:6"
+ },
+ {
+  "id": "joshua-16-m-05",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "Going down from Janohah, the border came to Ataroth and which other place?",
+  "choices": [
+   "Luz",
+   "Archi",
+   "Michmethah",
+   "Naarath"
+  ],
+  "answer": 3,
+  "explanation": "It went down from Janohah to Ataroth, and to Naarath.",
+  "ref": "Joshua 16:7"
+ },
+ {
+  "id": "joshua-16-m-06",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "After Naarath, the border came to which city?",
+  "choices": [
+   "Bethel",
+   "Gezer",
+   "Luz",
+   "Jericho"
+  ],
+  "answer": 3,
+  "explanation": "And came to Jericho, and went out at Jordan.",
+  "ref": "Joshua 16:7"
+ },
+ {
+  "id": "joshua-16-m-07",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "The wilderness from Jericho went up throughout which mount?",
+  "choices": [
+   "Mount Hermon",
+   "Mount Ephron",
+   "Mount Seir",
+   "Mount Bethel"
+  ],
+  "answer": 3,
+  "explanation": "To the wilderness that goeth up from Jericho throughout mount Bethel.",
+  "ref": "Joshua 16:1"
+ },
+ {
+  "id": "joshua-16-m-08",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "After Beth-horon the nether, the lot went on to which city?",
+  "choices": [
+   "Luz",
+   "Jericho",
+   "Tappuah",
+   "Gezer"
+  ],
+  "answer": 3,
+  "explanation": "Unto the coast of Beth-horon the nether, and to Gezer.",
+  "ref": "Joshua 16:3"
+ },
+ {
+  "id": "joshua-16-m-09",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "Ephraim's east border was Ataroth-addar unto which place?",
+  "choices": [
+   "Beth-horon the nether",
+   "Bethel",
+   "Luz",
+   "Beth-horon the upper"
+  ],
+  "answer": 3,
+  "explanation": "Ataroth-addar, unto Beth-horon the upper.",
+  "ref": "Joshua 16:5"
+ },
+ {
+  "id": "joshua-16-m-10",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city's name starts the border's westward line to the river Kanah?",
+  "choices": [
+   "Taanath-shiloh",
+   "Naarath",
+   "Janohah",
+   "Tappuah"
+  ],
+  "answer": 3,
+  "explanation": "The border went out from Tappuah westward unto the river Kanah.",
+  "ref": "Joshua 16:8"
+ },
+ {
+  "id": "joshua-16-m-11",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "Beth-horon appears in the chapter in which two forms?",
+  "choices": [
+   "The north and the south",
+   "The great and the small",
+   "The old and the new",
+   "The upper and the nether"
+  ],
+  "answer": 3,
+  "explanation": "Beth-horon the nether and Beth-horon the upper are both named.",
+  "ref": "Joshua 16:3–5"
+ },
+ {
+  "id": "joshua-16-m-12",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "Toward the sea, the border went out to which place on the north side?",
+  "choices": [
+   "Archi",
+   "Janohah",
+   "Naarath",
+   "Michmethah"
+  ],
+  "answer": 3,
+  "explanation": "The border went out toward the sea to Michmethah on the north side.",
+  "ref": "Joshua 16:6"
+ },
+ {
+  "id": "joshua-16-m-13",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the goings out of the border from Tappuah end?",
+  "choices": [
+   "At Jordan",
+   "At Jericho",
+   "At Bethel",
+   "At the sea"
+  ],
+  "answer": 3,
+  "explanation": "The goings out thereof were at the sea.",
+  "ref": "Joshua 16:8"
+ },
+ {
+  "id": "joshua-16-m-14",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "Which Beth-horon lay on the western line of Joseph's lot?",
+  "choices": [
+   "The upper",
+   "The great",
+   "The north",
+   "The nether"
+  ],
+  "answer": 3,
+  "explanation": "Unto the coast of Beth-horon the nether, and to Gezer.",
+  "ref": "Joshua 16:3"
+ },
+ {
+  "id": "joshua-16-m-15",
+  "chapter": 16,
+  "level": "medium",
+  "category": "place",
+  "question": "Taanath-shiloh was passed on the east on the way to which place?",
+  "choices": [
+   "Gezer",
+   "Luz",
+   "Archi",
+   "Janohah"
+  ],
+  "answer": 3,
+  "explanation": "The border passed by Taanath-shiloh on the east to Janohah.",
+  "ref": "Joshua 16:6"
+ },
+ {
+  "id": "joshua-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "The line passing the borders of Archi went on to which place?",
+  "choices": [
+   "Ataroth",
+   "Naarath",
+   "Janohah",
+   "Luz"
+  ],
+  "answer": 0,
+  "explanation": "Passeth along unto the borders of Archi to Ataroth.",
+  "ref": "Joshua 16:2"
+ },
+ {
+  "id": "joshua-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "What was Ephraim's border on the east side?",
+  "choices": [
+   "Ataroth-addar",
+   "Taanath-shiloh",
+   "Michmethah",
+   "Beth-horon the nether"
+  ],
+  "answer": 0,
+  "explanation": "The border on the east side was Ataroth-addar, unto Beth-horon the upper.",
+  "ref": "Joshua 16:5"
+ },
+ {
+  "id": "joshua-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Michmethah lay on which side of Ephraim's inheritance?",
+  "choices": [
+   "The north",
+   "The south",
+   "The east",
+   "The west"
+  ],
+  "answer": 0,
+  "explanation": "The border went out toward the sea to Michmethah on the north side.",
+  "ref": "Joshua 16:6"
+ },
+ {
+  "id": "joshua-16-h-04",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "The border went down from which place to Ataroth?",
+  "choices": [
+   "Janohah",
+   "Tappuah",
+   "Michmethah",
+   "Luz"
+  ],
+  "answer": 0,
+  "explanation": "It went down from Janohah to Ataroth, and to Naarath.",
+  "ref": "Joshua 16:7"
+ },
+ {
+  "id": "joshua-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Among whom did the Canaanites of Gezer dwell?",
+  "choices": [
+   "The Ephraimites",
+   "The Manassites",
+   "The Judahites",
+   "The Benjamites"
+  ],
+  "answer": 0,
+  "explanation": "The Canaanites dwell among the Ephraimites unto this day.",
+  "ref": "Joshua 16:10"
+ },
+ {
+  "id": "joshua-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these is named together with Gezer on the western goings out?",
+  "choices": [
+   "Beth-horon the nether",
+   "Michmethah",
+   "Taanath-shiloh",
+   "Naarath"
+  ],
+  "answer": 0,
+  "explanation": "Beth-horon the nether, and to Gezer.",
+  "ref": "Joshua 16:3"
+ },
+ {
+  "id": "joshua-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "The line reaching Jericho passed by which place before it, going down?",
+  "choices": [
+   "Naarath",
+   "Gezer",
+   "Luz",
+   "Tappuah"
+  ],
+  "answer": 0,
+  "explanation": "It went down to Ataroth, and to Naarath, and came to Jericho.",
+  "ref": "Joshua 16:7"
+ },
+ {
+  "id": "joshua-16-h-08",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "What did the lot of Joseph pass between Bethel and Archi?",
+  "choices": [
+   "Luz",
+   "Gezer",
+   "Jericho",
+   "Kanah"
+  ],
+  "answer": 0,
+  "explanation": "From Bethel to Luz, and passeth along unto the borders of Archi.",
+  "ref": "Joshua 16:2"
+ },
+ {
+  "id": "joshua-16-h-09",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Where does the border begin to run from Jordan?",
+  "choices": [
+   "By Jericho",
+   "By Gezer",
+   "By Bethel",
+   "By Tappuah"
+  ],
+  "answer": 0,
+  "explanation": "The lot fell from Jordan by Jericho.",
+  "ref": "Joshua 16:1"
+ },
+ {
+  "id": "joshua-16-h-10",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which direction was the border drawn, going out of Bethel to the coast of Japhleti?",
+  "choices": [
+   "Westward",
+   "Eastward",
+   "Northward",
+   "Southward"
+  ],
+  "answer": 0,
+  "explanation": "And goeth down westward to the coast of Japhleti.",
+  "ref": "Joshua 16:3"
+ },
+ {
+  "id": "joshua-16-h-11",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place is named between Bethel and the borders of Archi?",
+  "choices": [
+   "Luz",
+   "Gezer",
+   "Janohah",
+   "Tappuah"
+  ],
+  "answer": 0,
+  "explanation": "From Bethel to Luz, and passeth along unto the borders of Archi.",
+  "ref": "Joshua 16:2"
+ },
+ {
+  "id": "joshua-16-h-12",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides Jericho, which city is named in the first border of Joseph's lot?",
+  "choices": [
+   "Bethel",
+   "Hebron",
+   "Shiloh",
+   "Shechem"
+  ],
+  "answer": 0,
+  "explanation": "Throughout mount Bethel, and goeth out from Bethel to Luz.",
+  "ref": "Joshua 16:1–2"
+ },
+ {
+  "id": "joshua-16-h-13",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which direction did the border run from Tappuah to the river Kanah?",
+  "choices": [
+   "Westward",
+   "Eastward",
+   "Northward",
+   "Southward"
+  ],
+  "answer": 0,
+  "explanation": "The border went out from Tappuah westward unto the river Kanah.",
+  "ref": "Joshua 16:8"
+ },
+ {
+  "id": "joshua-16-h-14",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "On which side of Ephraim's inheritance was Ataroth-addar?",
+  "choices": [
+   "The east side",
+   "The west side",
+   "The north side",
+   "The south side"
+  ],
+  "answer": 0,
+  "explanation": "The border of their inheritance on the east side was Ataroth-addar.",
+  "ref": "Joshua 16:5"
+ },
+ {
+  "id": "joshua-16-h-15",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Beth-horon the upper ended Ephraim's border on which side?",
+  "choices": [
+   "The east side",
+   "The west side",
+   "The north side",
+   "The south side"
+  ],
+  "answer": 0,
+  "explanation": "The border of their inheritance on the east side was Ataroth-addar, unto Beth-horon the upper.",
+  "ref": "Joshua 16:5"
+ },
+ {
   "id": "old-joshua-17-1",
   "chapter": 17,
   "level": "beginner",
