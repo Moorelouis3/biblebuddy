@@ -15968,6 +15968,646 @@
   "ref": "Leviticus 23:27"
  },
  {
+  "id": "leviticus-23-e-01",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the feasts of the LORD called, to be proclaimed?",
+  "choices": [
+   "Solemn fasts",
+   "Holy convocations",
+   "Pilgrim days",
+   "Memorial nights"
+  ],
+  "answer": 1,
+  "explanation": "The feasts of the LORD, which ye shall proclaim to be holy convocations, even these are my feasts.",
+  "ref": "Leviticus 23:2"
+ },
+ {
+  "id": "leviticus-23-e-02",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On which day of the week is the sabbath of rest?",
+  "choices": [
+   "The first day",
+   "The seventh day",
+   "The third day",
+   "The fifth day"
+  ],
+  "answer": 1,
+  "explanation": "Six days shall work be done: but the seventh day is the sabbath of rest.",
+  "ref": "Leviticus 23:3"
+ },
+ {
+  "id": "leviticus-23-e-03",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which feast is on the fourteenth day of the first month?",
+  "choices": [
+   "Unleavened bread",
+   "The LORD's passover",
+   "Tabernacles",
+   "Trumpets"
+  ],
+  "answer": 1,
+  "explanation": "In the fourteenth day of the first month at even is the LORD'S passover.",
+  "ref": "Leviticus 23:5"
+ },
+ {
+  "id": "leviticus-23-e-04",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days must unleavened bread be eaten?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Ten days",
+   "Fourteen days"
+  ],
+  "answer": 1,
+  "explanation": "On the fifteenth day is the feast of unleavened bread: seven days ye must eat unleavened bread.",
+  "ref": "Leviticus 23:6"
+ },
+ {
+  "id": "leviticus-23-e-05",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of bread did Israel eat during the feast of unleavened bread?",
+  "choices": [
+   "Leavened bread",
+   "Unleavened bread",
+   "Parched bread",
+   "Honey bread"
+  ],
+  "answer": 1,
+  "explanation": "Seven days ye must eat unleavened bread.",
+  "ref": "Leviticus 23:6"
+ },
+ {
+  "id": "leviticus-23-e-06",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was blown on the first day of the seventh month?",
+  "choices": [
+   "Horns of rams only",
+   "Trumpets",
+   "Shofars at dawn",
+   "A silver bell"
+  ],
+  "answer": 1,
+  "explanation": "In the first day of the month, a memorial of blowing of trumpets, an holy convocation.",
+  "ref": "Leviticus 23:24"
+ },
+ {
+  "id": "leviticus-23-e-07",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the tenth day of the seventh month?",
+  "choices": [
+   "Rejoicing",
+   "A day of atonement",
+   "Harvest",
+   "Remembrance"
+  ],
+  "answer": 1,
+  "explanation": "On the tenth day of this seventh month there shall be a day of atonement.",
+  "ref": "Leviticus 23:27"
+ },
+ {
+  "id": "leviticus-23-e-08",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What feast begins on the fifteenth of the seventh month?",
+  "choices": [
+   "Passover",
+   "The feast of tabernacles",
+   "Unleavened bread",
+   "Trumpets"
+  ],
+  "answer": 1,
+  "explanation": "The fifteenth day of this seventh month shall be the feast of tabernacles for seven days.",
+  "ref": "Leviticus 23:34"
+ },
+ {
+  "id": "leviticus-23-e-09",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel dwell in during the feast of tabernacles?",
+  "choices": [
+   "Caves",
+   "Booths",
+   "Tents of skin",
+   "Houses of stone"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall dwell in booths seven days; all that are Israelites born shall dwell in booths.",
+  "ref": "Leviticus 23:42"
+ },
+ {
+  "id": "leviticus-23-e-10",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who declared the feasts of the LORD to Israel?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Joshua",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "And Moses declared unto the children of Israel the feasts of the LORD.",
+  "ref": "Leviticus 23:44"
+ },
+ {
+  "id": "leviticus-23-m-01",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people bring the priest when they reaped the harvest in the land?",
+  "choices": [
+   "A lamb",
+   "A basket of figs",
+   "A jar of oil",
+   "A sheaf of the firstfruits"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall bring a sheaf of the firstfruits of your harvest unto the priest.",
+  "ref": "Leviticus 23:10"
+ },
+ {
+  "id": "leviticus-23-m-02",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the priest wave the sheaf?",
+  "choices": [
+   "On the sabbath",
+   "On the new moon",
+   "On the tenth day",
+   "On the morrow after the sabbath"
+  ],
+  "answer": 3,
+  "explanation": "On the morrow after the sabbath the priest shall wave it.",
+  "ref": "Leviticus 23:11"
+ },
+ {
+  "id": "leviticus-23-m-03",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What animal was offered when the sheaf was waved?",
+  "choices": [
+   "A bullock",
+   "A kid of the goats",
+   "A ram of two years",
+   "A he lamb of the first year without blemish"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall offer that day when ye wave the sheaf an he lamb without blemish of the first year for a burnt offering.",
+  "ref": "Leviticus 23:12"
+ },
+ {
+  "id": "leviticus-23-m-04",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the drink offering made of with the sheaf offering?",
+  "choices": [
+   "Oil and water",
+   "Milk and honey",
+   "Water only",
+   "Wine, the fourth part of a hin"
+  ],
+  "answer": 3,
+  "explanation": "The drink offering thereof shall be of wine, the fourth part of an hin.",
+  "ref": "Leviticus 23:13"
+ },
+ {
+  "id": "leviticus-23-m-05",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What could they not eat until they brought the offering to God?",
+  "choices": [
+   "Meat or fish",
+   "Honey or wine",
+   "Figs or grapes",
+   "Bread, parched corn, or green ears"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall eat neither bread, nor parched corn, nor green ears, until the selfsame day that ye have brought an offering unto your God.",
+  "ref": "Leviticus 23:14"
+ },
+ {
+  "id": "leviticus-23-m-06",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many sabbaths were to be counted from the wave offering?",
+  "choices": [
+   "Three sabbaths",
+   "Ten sabbaths",
+   "Twelve sabbaths",
+   "Seven sabbaths"
+  ],
+  "answer": 3,
+  "explanation": "Seven sabbaths shall be complete.",
+  "ref": "Leviticus 23:15"
+ },
+ {
+  "id": "leviticus-23-m-07",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many days were numbered to the morrow after the seventh sabbath?",
+  "choices": [
+   "Forty days",
+   "Thirty days",
+   "Seventy days",
+   "Fifty days"
+  ],
+  "answer": 3,
+  "explanation": "Even unto the morrow after the seventh sabbath shall ye number fifty days.",
+  "ref": "Leviticus 23:16"
+ },
+ {
+  "id": "leviticus-23-m-08",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people bring out of their habitations at the end of the count?",
+  "choices": [
+   "Twelve loaves",
+   "Seven loaves",
+   "One loaf",
+   "Two wave loaves"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall bring out of your habitations two wave loaves of two tenth deals.",
+  "ref": "Leviticus 23:17"
+ },
+ {
+  "id": "leviticus-23-m-09",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the two wave loaves baked?",
+  "choices": [
+   "Without leaven",
+   "In honey",
+   "In oil only",
+   "With leaven"
+  ],
+  "answer": 3,
+  "explanation": "They shall be baken with leaven; they are the firstfruits unto the LORD.",
+  "ref": "Leviticus 23:17"
+ },
+ {
+  "id": "leviticus-23-m-10",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was offered with the bread of the firstfruits besides lambs?",
+  "choices": [
+   "Two bullocks",
+   "Three rams",
+   "Seven bullocks",
+   "One young bullock and two rams"
+  ],
+  "answer": 3,
+  "explanation": "Seven lambs without blemish of the first year, and one young bullock, and two rams.",
+  "ref": "Leviticus 23:18"
+ },
+ {
+  "id": "leviticus-23-m-11",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What animal was offered as a sin offering at that feast?",
+  "choices": [
+   "A bullock",
+   "A ram",
+   "A turtledove",
+   "One kid of the goats"
+  ],
+  "answer": 3,
+  "explanation": "Then ye shall sacrifice one kid of the goats for a sin offering.",
+  "ref": "Leviticus 23:19"
+ },
+ {
+  "id": "leviticus-23-m-12",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be left in the corners of the field at harvest?",
+  "choices": [
+   "Altar stones",
+   "Boundary markers",
+   "A tenth of the grain",
+   "Gleanings, for the poor and stranger"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not make clean riddance of the corners of thy field; thou shalt leave them unto the poor, and to the stranger.",
+  "ref": "Leviticus 23:22"
+ },
+ {
+  "id": "leviticus-23-m-13",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What could not be done on the day of atonement?",
+  "choices": [
+   "Any eating of meat",
+   "Any travel",
+   "Any wine",
+   "Any work"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall do no work in that same day: for it is a day of atonement.",
+  "ref": "Leviticus 23:28"
+ },
+ {
+  "id": "leviticus-23-m-14",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the people to do to their souls on the day of atonement?",
+  "choices": [
+   "Cleanse them",
+   "Hide them",
+   "Free them",
+   "Afflict them"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall afflict your souls, and offer an offering made by fire unto the LORD.",
+  "ref": "Leviticus 23:27"
+ },
+ {
+  "id": "leviticus-23-m-15",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the soul that does not afflict itself on that day?",
+  "choices": [
+   "He is scourged",
+   "He brings a ram",
+   "He is exiled",
+   "He is cut off from his people"
+  ],
+  "answer": 3,
+  "explanation": "Whatsoever soul it be that shall not be afflicted in that same day, he shall be cut off from among his people.",
+  "ref": "Leviticus 23:29"
+ },
+ {
+  "id": "leviticus-23-h-01",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what evening does the day of atonement sabbath begin?",
+  "choices": [
+   "The ninth day at even",
+   "The tenth day at even",
+   "The first day at even",
+   "The eighth day at even"
+  ],
+  "answer": 0,
+  "explanation": "In the ninth day of the month at even, from even unto even, shall ye celebrate your sabbath.",
+  "ref": "Leviticus 23:32"
+ },
+ {
+  "id": "leviticus-23-h-02",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD do to the soul that works on the day of atonement?",
+  "choices": [
+   "Destroy him from among his people",
+   "Scourge him",
+   "Fine him",
+   "Send him away"
+  ],
+  "answer": 0,
+  "explanation": "Whatsoever soul it be that doeth any work in that same day, the same soul will I destroy from among his people.",
+  "ref": "Leviticus 23:30"
+ },
+ {
+  "id": "leviticus-23-h-03",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the eighth day of tabernacles called?",
+  "choices": [
+   "A solemn assembly",
+   "A memorial",
+   "A trumpet day",
+   "A day of rest only"
+  ],
+  "answer": 0,
+  "explanation": "On the eighth day shall be an holy convocation: it is a solemn assembly; and ye shall do no servile work therein.",
+  "ref": "Leviticus 23:36"
+ },
+ {
+  "id": "leviticus-23-h-04",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What branches were taken on the first day of the feast of tabernacles?",
+  "choices": [
+   "Palm branches, willows of the brook",
+   "Olive and fig",
+   "Cedar and fir",
+   "Vine and pomegranate"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall take you the boughs of goodly trees, branches of palm trees, and the boughs of thick trees, and willows of the brook.",
+  "ref": "Leviticus 23:40"
+ },
+ {
+  "id": "leviticus-23-h-05",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the willows taken from?",
+  "choices": [
+   "The brook",
+   "The river",
+   "The sea",
+   "The valley"
+  ],
+  "answer": 0,
+  "explanation": "And willows of the brook; and ye shall rejoice before the LORD your God seven days.",
+  "ref": "Leviticus 23:40"
+ },
+ {
+  "id": "leviticus-23-h-06",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Israel dwell in booths, according to the chapter?",
+  "choices": [
+   "So their generations would know He made them live in booths",
+   "To honour the harvest",
+   "To rest from the road",
+   "To remember Sinai"
+  ],
+  "answer": 0,
+  "explanation": "That your generations may know that I made the children of Israel to dwell in booths, when I brought them out of the land of Egypt.",
+  "ref": "Leviticus 23:43"
+ },
+ {
+  "id": "leviticus-23-h-07",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much fine flour was in the meat offering with the waved sheaf?",
+  "choices": [
+   "Two tenth deals",
+   "One tenth deal",
+   "Three tenth deals",
+   "Four tenth deals"
+  ],
+  "answer": 0,
+  "explanation": "The meat offering thereof shall be two tenth deals of fine flour mingled with oil.",
+  "ref": "Leviticus 23:13"
+ },
+ {
+  "id": "leviticus-23-h-08",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many tenth deals were in each wave loaf set?",
+  "choices": [
+   "Two tenth deals",
+   "One tenth deal",
+   "Three tenth deals",
+   "Seven tenth deals"
+  ],
+  "answer": 0,
+  "explanation": "Two wave loaves of two tenth deals: they shall be of fine flour.",
+  "ref": "Leviticus 23:17"
+ },
+ {
+  "id": "leviticus-23-h-09",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of work was forbidden on holy convocation days?",
+  "choices": [
+   "Servile work",
+   "Any travel",
+   "Any cooking",
+   "Any trading"
+  ],
+  "answer": 0,
+  "explanation": "In the first day ye shall have an holy convocation: ye shall do no servile work therein.",
+  "ref": "Leviticus 23:7"
+ },
+ {
+  "id": "leviticus-23-h-10",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which month did the passover fall?",
+  "choices": [
+   "The first month",
+   "The third month",
+   "The seventh month",
+   "The ninth month"
+  ],
+  "answer": 0,
+  "explanation": "In the fourteenth day of the first month at even is the LORD'S passover.",
+  "ref": "Leviticus 23:5"
+ },
+ {
+  "id": "leviticus-23-h-11",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What feast month was the trumpet memorial in?",
+  "choices": [
+   "The seventh month",
+   "The first month",
+   "The third month",
+   "The fifth month"
+  ],
+  "answer": 0,
+  "explanation": "In the seventh month, in the first day of the month, shall ye have a sabbath, a memorial of blowing of trumpets.",
+  "ref": "Leviticus 23:24"
+ },
+ {
+  "id": "leviticus-23-h-12",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said about the day of atonement being a statute?",
+  "choices": [
+   "It is a statute for ever",
+   "It is a temporary rule",
+   "It is for priests only",
+   "It is a freewill rite"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall do no manner of work: it shall be a statute for ever throughout your generations in all your dwellings.",
+  "ref": "Leviticus 23:31"
+ },
+ {
+  "id": "leviticus-23-h-13",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the offering to be, for the people who gathered the fruit of the land in the seventh month?",
+  "choices": [
+   "A feast unto the LORD seven days",
+   "A fast of one day",
+   "A pilgrimage to Sinai",
+   "A harvest sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "When ye have gathered in the fruit of the land, ye shall keep a feast unto the LORD seven days.",
+  "ref": "Leviticus 23:39"
+ },
+ {
+  "id": "leviticus-23-h-14",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which day of the feast of tabernacles is a sabbath, besides the eighth?",
+  "choices": [
+   "The first day",
+   "The fourth day",
+   "The sixth day",
+   "The seventh day"
+  ],
+  "answer": 0,
+  "explanation": "On the first day shall be a sabbath, and on the eighth day shall be a sabbath.",
+  "ref": "Leviticus 23:39"
+ },
+ {
+  "id": "leviticus-23-h-15",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many lambs of the first year were offered with the bread of the firstfruits?",
+  "choices": [
+   "Seven",
+   "Two",
+   "Twelve",
+   "Fifty"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall offer with the bread seven lambs without blemish of the first year, and one young bullock, and two rams.",
+  "ref": "Leviticus 23:18"
+ },
+ {
   "id": "old-leviticus-24-1",
   "chapter": 24,
   "level": "beginner",
