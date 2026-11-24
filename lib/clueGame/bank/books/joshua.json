@@ -15232,6 +15232,646 @@
   "ref": "Joshua 22:34"
  },
  {
+  "id": "joshua-22-e-01",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who called the Reubenites, Gadites and half tribe of Manasseh together?",
+  "choices": [
+   "Phinehas",
+   "Eleazar",
+   "Caleb",
+   "Joshua"
+  ],
+  "answer": 3,
+  "explanation": "Then Joshua called the Reubenites, and the Gadites, and the half tribe of Manasseh.",
+  "ref": "Joshua 22:1"
+ },
+ {
+  "id": "joshua-22-e-02",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose commandment had the eastern tribes kept?",
+  "choices": [
+   "Aaron",
+   "Caleb",
+   "Eleazar",
+   "Moses"
+  ],
+  "answer": 3,
+  "explanation": "Ye have kept all that Moses the servant of the LORD commanded you.",
+  "ref": "Joshua 22:2"
+ },
+ {
+  "id": "joshua-22-e-03",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua do to the eastern tribes before sending them away?",
+  "choices": [
+   "He cursed them",
+   "He numbered them",
+   "He fined them",
+   "He blessed them"
+  ],
+  "answer": 3,
+  "explanation": "So Joshua blessed them, and sent them away.",
+  "ref": "Joshua 22:6"
+ },
+ {
+  "id": "joshua-22-e-04",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which place did the eastern tribes depart for Gilead?",
+  "choices": [
+   "Gilgal",
+   "Jericho",
+   "Hebron",
+   "Shiloh"
+  ],
+  "answer": 3,
+  "explanation": "They departed out of Shiloh, which is in the land of Canaan, to go unto the country of Gilead.",
+  "ref": "Joshua 22:9"
+ },
+ {
+  "id": "joshua-22-e-05",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "place",
+  "question": "Beside which river did the eastern tribes build their altar?",
+  "choices": [
+   "Arnon",
+   "Jabbok",
+   "Kishon",
+   "Jordan"
+  ],
+  "answer": 3,
+  "explanation": "They built there an altar by Jordan, a great altar to see to.",
+  "ref": "Joshua 22:10"
+ },
+ {
+  "id": "joshua-22-e-06",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the western Israelites gather to do when they heard of the altar?",
+  "choices": [
+   "Build their own altar",
+   "Make a treaty",
+   "Offer sacrifices",
+   "Go up to war against them"
+  ],
+  "answer": 3,
+  "explanation": "The whole congregation gathered themselves together at Shiloh, to go up to war against them.",
+  "ref": "Joshua 22:12"
+ },
+ {
+  "id": "joshua-22-e-07",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son was Phinehas?",
+  "choices": [
+   "Aaron the priest",
+   "Joshua",
+   "Caleb",
+   "Eleazar the priest"
+  ],
+  "answer": 3,
+  "explanation": "Phinehas the son of Eleazar the priest.",
+  "ref": "Joshua 22:13"
+ },
+ {
+  "id": "joshua-22-e-08",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many princes went with Phinehas?",
+  "choices": [
+   "Twelve",
+   "Seven",
+   "Three",
+   "Ten"
+  ],
+  "answer": 3,
+  "explanation": "And with him ten princes, of each chief house a prince.",
+  "ref": "Joshua 22:14"
+ },
+ {
+  "id": "joshua-22-e-09",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which son of Zerah did Phinehas remind them of?",
+  "choices": [
+   "Caleb",
+   "Korah",
+   "Phinehas",
+   "Achan"
+  ],
+  "answer": 3,
+  "explanation": "Did not Achan the son of Zerah commit a trespass in the accursed thing?",
+  "ref": "Joshua 22:20"
+ },
+ {
+  "id": "joshua-22-e-10",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the western tribes do when they heard the answer?",
+  "choices": [
+   "They went to war",
+   "They broke the altar",
+   "They left Shiloh",
+   "They blessed God"
+  ],
+  "answer": 3,
+  "explanation": "The children of Israel blessed God, and did not intend to go up against them in battle.",
+  "ref": "Joshua 22:33"
+ },
+ {
+  "id": "joshua-22-m-01",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua tell the eastern tribes to do with the spoil of their enemies?",
+  "choices": [
+   "Burn it",
+   "Divide it with their brethren",
+   "Give it to Eleazar",
+   "Bury it at Shiloh"
+  ],
+  "answer": 1,
+  "explanation": "Divide the spoil of your enemies with your brethren.",
+  "ref": "Joshua 22:8"
+ },
+ {
+  "id": "joshua-22-m-02",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua tell them to take diligent heed to do?",
+  "choices": [
+   "Build cities",
+   "The commandment and the law Moses charged",
+   "Number the tribes",
+   "Offer a sacrifice every day"
+  ],
+  "answer": 1,
+  "explanation": "Take diligent heed to do the commandment and the law, which Moses charged you.",
+  "ref": "Joshua 22:5"
+ },
+ {
+  "id": "joshua-22-m-03",
+  "chapter": 22,
+  "level": "medium",
+  "category": "place",
+  "question": "Where had Moses given half of Manasseh their possession?",
+  "choices": [
+   "Gilead",
+   "Bashan",
+   "Shiloh",
+   "Canaan"
+  ],
+  "answer": 1,
+  "explanation": "Unto the one half of the tribe of Manasseh Moses had given possession in Bashan.",
+  "ref": "Joshua 22:7"
+ },
+ {
+  "id": "joshua-22-m-04",
+  "chapter": 22,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Joshua give the other half of Manasseh their land?",
+  "choices": [
+   "In Bashan",
+   "Among their brethren westward of Jordan",
+   "In Gilead",
+   "At Shiloh"
+  ],
+  "answer": 1,
+  "explanation": "The other half Joshua gave among their brethren on this side Jordan westward.",
+  "ref": "Joshua 22:7"
+ },
+ {
+  "id": "joshua-22-m-05",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the altar built in relation to the land of Canaan?",
+  "choices": [
+   "Inside Shiloh",
+   "Over against it, at the Jordan border",
+   "Beside the tabernacle",
+   "On Mount Ebal"
+  ],
+  "answer": 1,
+  "explanation": "An altar over against the land of Canaan, in the borders of Jordan.",
+  "ref": "Joshua 22:11"
+ },
+ {
+  "id": "joshua-22-m-06",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the western tribes' charge against the altar builders?",
+  "choices": [
+   "Stealing spoil",
+   "Trespass against the God of Israel",
+   "Breaking the Sabbath",
+   "Worshiping Baal"
+  ],
+  "answer": 1,
+  "explanation": "What trespass is this that ye have committed against the God of Israel?",
+  "ref": "Joshua 22:16"
+ },
+ {
+  "id": "joshua-22-m-07",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What earlier sin of Israel did Phinehas mention?",
+  "choices": [
+   "The golden calf",
+   "The iniquity of Peor",
+   "The spies' report",
+   "The fall of Jericho"
+  ],
+  "answer": 1,
+  "explanation": "Is the iniquity of Peor too little for us?",
+  "ref": "Joshua 22:17"
+ },
+ {
+  "id": "joshua-22-m-08",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Phinehas say the altar builders could take possession if their land was unclean?",
+  "choices": [
+   "In Bashan",
+   "Among Israel, where the LORD's tabernacle dwelt",
+   "Beyond Arnon",
+   "In Jericho"
+  ],
+  "answer": 1,
+  "explanation": "Pass over unto the land of the possession of the LORD, wherein the LORD'S tabernacle dwelleth.",
+  "ref": "Joshua 22:19"
+ },
+ {
+  "id": "joshua-22-m-09",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the eastern tribes fear the western children might one day say to their children?",
+  "choices": [
+   "You are not Israel",
+   "You have no part in the LORD",
+   "Your altar is stolen",
+   "Your land is ours"
+  ],
+  "answer": 1,
+  "explanation": "Ye have no part in the LORD.",
+  "ref": "Joshua 22:24–25"
+ },
+ {
+  "id": "joshua-22-m-10",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the eastern tribes say the altar was NOT built for?",
+  "choices": [
+   "A witness",
+   "Burnt offering or sacrifice",
+   "A memorial of Jordan",
+   "A meeting place"
+  ],
+  "answer": 1,
+  "explanation": "Let us now prepare to build us an altar, not for burnt offering, nor for sacrifice.",
+  "ref": "Joshua 22:26"
+ },
+ {
+  "id": "joshua-22-m-11",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What boundary did the LORD make between the eastern and western tribes?",
+  "choices": [
+   "The Arnon",
+   "Jordan",
+   "The Jabbok",
+   "Mount Gilead"
+  ],
+  "answer": 1,
+  "explanation": "The LORD hath made Jordan a border between us and you.",
+  "ref": "Joshua 22:25"
+ },
+ {
+  "id": "joshua-22-m-12",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the altar to be a witness of?",
+  "choices": [
+   "That Jordan was a border",
+   "That the LORD is God",
+   "That Moses was a prophet",
+   "That Joshua was a leader"
+  ],
+  "answer": 1,
+  "explanation": "It shall be a witness between us that the LORD is God.",
+  "ref": "Joshua 22:34"
+ },
+ {
+  "id": "joshua-22-m-13",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "Who spoke for the western tribes to the eastern tribes?",
+  "choices": [
+   "Joshua alone",
+   "Phinehas and ten princes",
+   "Eleazar and Caleb",
+   "Twelve spies"
+  ],
+  "answer": 1,
+  "explanation": "Phinehas the son of Eleazar the priest, and with him ten princes.",
+  "ref": "Joshua 22:13–14"
+ },
+ {
+  "id": "joshua-22-m-14",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Phinehas react to the eastern tribes' answer?",
+  "choices": [
+   "He was angry",
+   "It pleased him",
+   "He asked for a sign",
+   "He asked for sacrifice"
+  ],
+  "answer": 1,
+  "explanation": "When Phinehas heard the words, it pleased them.",
+  "ref": "Joshua 22:30"
+ },
+ {
+  "id": "joshua-22-m-15",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Phinehas say the eastern tribes had done by not trespassing?",
+  "choices": [
+   "Won a battle",
+   "Delivered Israel out of the LORD's hand",
+   "Built a temple",
+   "Saved Jericho"
+  ],
+  "answer": 1,
+  "explanation": "Now ye have delivered the children of Israel out of the hand of the LORD.",
+  "ref": "Joshua 22:31"
+ },
+ {
+  "id": "joshua-22-h-01",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these did Joshua list among the riches to take home?",
+  "choices": [
+   "Iron",
+   "Pearls",
+   "Wine",
+   "Oil"
+  ],
+  "answer": 0,
+  "explanation": "Return with much riches, with silver, and with gold, and with brass, and with iron.",
+  "ref": "Joshua 22:8"
+ },
+ {
+  "id": "joshua-22-h-02",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Joshua describe the altar builders' loyalty to their brethren?",
+  "choices": [
+   "They had not left them these many days",
+   "They fought only once",
+   "They had built the tabernacle",
+   "They had crossed first"
+  ],
+  "answer": 0,
+  "explanation": "Ye have not left your brethren these many days unto this day.",
+  "ref": "Joshua 22:3"
+ },
+ {
+  "id": "joshua-22-h-03",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the altar look when they built it?",
+  "choices": [
+   "A great altar to see to",
+   "Small and plain",
+   "Covered in gold",
+   "Made of unhewn stones only"
+  ],
+  "answer": 0,
+  "explanation": "They built there an altar by Jordan, a great altar to see to.",
+  "ref": "Joshua 22:10"
+ },
+ {
+  "id": "joshua-22-h-04",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "What did the elders say the LORD God of gods does?",
+  "choices": [
+   "He knoweth",
+   "He forgetteth",
+   "He sleepeth",
+   "He departeth"
+  ],
+  "answer": 0,
+  "explanation": "The LORD God of gods, he knoweth, and Israel he shall know.",
+  "ref": "Joshua 22:22"
+ },
+ {
+  "id": "joshua-22-h-05",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Phinehas say the western tribes would face if the altar builders rebelled?",
+  "choices": [
+   "The LORD's wrath on the whole congregation",
+   "Famine for seven years",
+   "Exile from Canaan",
+   "War with Moab"
+  ],
+  "answer": 0,
+  "explanation": "To morrow he will be wroth with the whole congregation of Israel.",
+  "ref": "Joshua 22:18"
+ },
+ {
+  "id": "joshua-22-h-06",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to Achan, according to Phinehas?",
+  "choices": [
+   "He perished not alone in his iniquity",
+   "He was sent away alive",
+   "He was forgiven",
+   "He escaped to Jordan"
+  ],
+  "answer": 0,
+  "explanation": "That man perished not alone in his iniquity.",
+  "ref": "Joshua 22:20"
+ },
+ {
+  "id": "joshua-22-h-07",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had come upon the congregation at Peor?",
+  "choices": [
+   "A plague",
+   "A famine",
+   "A flood",
+   "A war"
+  ],
+  "answer": 0,
+  "explanation": "The iniquity of Peor, although there was a plague in the congregation of the LORD.",
+  "ref": "Joshua 22:17"
+ },
+ {
+  "id": "joshua-22-h-08",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the eastern tribes call the altar's pattern?",
+  "choices": [
+   "The pattern of the altar of the LORD",
+   "The altar of Moses",
+   "The sign of Joshua",
+   "The stone of Ed"
+  ],
+  "answer": 0,
+  "explanation": "Behold the pattern of the altar of the LORD, which our fathers made.",
+  "ref": "Joshua 22:28"
+ },
+ {
+  "id": "joshua-22-h-09",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the eastern tribes say their true altar stood?",
+  "choices": [
+   "Before the LORD's tabernacle",
+   "At Gilead",
+   "In Bashan",
+   "At Jericho"
+  ],
+  "answer": 0,
+  "explanation": "Beside the altar of the LORD our God that is before his tabernacle.",
+  "ref": "Joshua 22:29"
+ },
+ {
+  "id": "joshua-22-h-10",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Which tribes called the altar Ed?",
+  "choices": [
+   "Reuben and Gad",
+   "Judah and Benjamin",
+   "Dan and Asher",
+   "Ephraim and Levi"
+  ],
+  "answer": 0,
+  "explanation": "The children of Reuben and the children of Gad called the altar Ed.",
+  "ref": "Joshua 22:34"
+ },
+ {
+  "id": "joshua-22-h-11",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Who went from each chief house with Phinehas?",
+  "choices": [
+   "A prince",
+   "A Levite",
+   "A priest",
+   "A captain"
+  ],
+  "answer": 0,
+  "explanation": "Ten princes, of each chief house a prince throughout all the tribes of Israel.",
+  "ref": "Joshua 22:14"
+ },
+ {
+  "id": "joshua-22-h-12",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Phinehas bring the answer back to?",
+  "choices": [
+   "The children of Israel in Canaan",
+   "Joshua at Gilgal",
+   "Moses",
+   "The elders of Gilead"
+  ],
+  "answer": 0,
+  "explanation": "Returned unto the land of Canaan, to the children of Israel, and brought them word again.",
+  "ref": "Joshua 22:32"
+ },
+ {
+  "id": "joshua-22-h-13",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Phinehas say he perceived that day?",
+  "choices": [
+   "That the LORD is among us",
+   "That the LORD is angry",
+   "That the LORD is far off",
+   "That Joshua is chosen"
+  ],
+  "answer": 0,
+  "explanation": "This day we perceive that the LORD is among us.",
+  "ref": "Joshua 22:31"
+ },
+ {
+  "id": "joshua-22-h-14",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If they had built it to turn from the LORD, what did they say should happen?",
+  "choices": [
+   "Let the LORD himself require it",
+   "Let Joshua judge them",
+   "Let the altar be burned",
+   "Let them be sold"
+  ],
+  "answer": 0,
+  "explanation": "Let the LORD himself require it.",
+  "ref": "Joshua 22:23"
+ },
+ {
+  "id": "joshua-22-h-15",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kinds of offerings did the eastern tribes say they would still bring before the LORD?",
+  "choices": [
+   "Burnt, sacrifices and peace offerings",
+   "Wine and oil only",
+   "Firstfruits only",
+   "Sin offerings only"
+  ],
+  "answer": 0,
+  "explanation": "We might do the service of the LORD before him with our burnt offerings, and with our sacrifices, and with our peace offerings.",
+  "ref": "Joshua 22:27"
+ },
+ {
   "id": "old-joshua-23-1",
   "chapter": 23,
   "level": "beginner",
