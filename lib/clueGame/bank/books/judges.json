@@ -80,6 +80,646 @@
   "ref": "Judges 1:27–36"
  },
  {
+  "id": "judges-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did the children of Israel ask about who should go up first?",
+  "choices": [
+   "Joshua",
+   "Caleb",
+   "Phinehas",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "The children of Israel asked the LORD, Who shall go up for us against the Canaanites first?",
+  "ref": "Judges 1:1"
+ },
+ {
+  "id": "judges-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which brother did Judah ask to come up with him?",
+  "choices": [
+   "Benjamin",
+   "Levi",
+   "Reuben",
+   "Simeon"
+  ],
+  "answer": 3,
+  "explanation": "Judah said unto Simeon his brother, Come up with me into my lot.",
+  "ref": "Judges 1:3"
+ },
+ {
+  "id": "judges-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king was caught at Bezek?",
+  "choices": [
+   "Balak",
+   "Sihon",
+   "Og",
+   "Adoni-bezek"
+  ],
+  "answer": 3,
+  "explanation": "They found Adoni-bezek in Bezek.",
+  "ref": "Judges 1:5"
+ },
+ {
+  "id": "judges-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Adoni-bezek die?",
+  "choices": [
+   "Bezek",
+   "Hebron",
+   "Gaza",
+   "Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "They brought him to Jerusalem, and there he died.",
+  "ref": "Judges 1:7"
+ },
+ {
+  "id": "judges-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose daughter was Achsah?",
+  "choices": [
+   "Othniel's",
+   "Judah's",
+   "Joshua's",
+   "Caleb's"
+  ],
+  "answer": 3,
+  "explanation": "Caleb said, To him will I give Achsah my daughter to wife.",
+  "ref": "Judges 1:12"
+ },
+ {
+  "id": "judges-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city had been called Kirjath-arba?",
+  "choices": [
+   "Debir",
+   "Bethel",
+   "Zephath",
+   "Hebron"
+  ],
+  "answer": 3,
+  "explanation": "The name of Hebron before was Kirjath-arba.",
+  "ref": "Judges 1:10"
+ },
+ {
+  "id": "judges-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city was called Luz before?",
+  "choices": [
+   "Hebron",
+   "Zephath",
+   "Gaza",
+   "Bethel"
+  ],
+  "answer": 3,
+  "explanation": "The name of the city before was Luz.",
+  "ref": "Judges 1:23"
+ },
+ {
+  "id": "judges-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "What was the city Zephath renamed?",
+  "choices": [
+   "Luz",
+   "Debir",
+   "Bochim",
+   "Hormah"
+  ],
+  "answer": 3,
+  "explanation": "The name of the city was called Hormah.",
+  "ref": "Judges 1:17"
+ },
+ {
+  "id": "judges-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose father-in-law was the Kenite?",
+  "choices": [
+   "Joshua's",
+   "Caleb's",
+   "Judah's",
+   "Moses'"
+  ],
+  "answer": 3,
+  "explanation": "The children of the Kenite, Moses' father in law.",
+  "ref": "Judges 1:16"
+ },
+ {
+  "id": "judges-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who was with Judah as he drove out the people of the mountain?",
+  "choices": [
+   "Caleb",
+   "Moses",
+   "The Kenites",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "The LORD was with Judah; and he drave out the inhabitants of the mountain.",
+  "ref": "Judges 1:19"
+ },
+ {
+  "id": "judges-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about the land when Judah was chosen?",
+  "choices": [
+   "It was already won",
+   "He had delivered it into his hand",
+   "It was empty",
+   "It was cursed"
+  ],
+  "answer": 1,
+  "explanation": "Judah shall go up: behold, I have delivered the land into his hand.",
+  "ref": "Judges 1:2"
+ },
+ {
+  "id": "judges-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men did Judah and Simeon slay in Bezek?",
+  "choices": [
+   "Seven thousand",
+   "Ten thousand",
+   "Three thousand",
+   "Thirty thousand"
+  ],
+  "answer": 1,
+  "explanation": "They slew of them in Bezek ten thousand men.",
+  "ref": "Judges 1:4"
+ },
+ {
+  "id": "judges-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they cut off from Adoni-bezek?",
+  "choices": [
+   "His hands",
+   "His thumbs and his great toes",
+   "His ears",
+   "His beard"
+  ],
+  "answer": 1,
+  "explanation": "They cut off his thumbs and his great toes.",
+  "ref": "Judges 1:6"
+ },
+ {
+  "id": "judges-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many kings had Adoni-bezek treated the same way?",
+  "choices": [
+   "Seven",
+   "Seventy",
+   "Twelve",
+   "Forty"
+  ],
+  "answer": 1,
+  "explanation": "Threescore and ten kings, having their thumbs and their great toes cut off.",
+  "ref": "Judges 1:7"
+ },
+ {
+  "id": "judges-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Adoni-bezek say about what God had done to him?",
+  "choices": [
+   "God had forgotten him",
+   "God had requited him",
+   "God had blessed him",
+   "God had ignored him"
+  ],
+  "answer": 1,
+  "explanation": "As I have done, so God hath requited me.",
+  "ref": "Judges 1:7"
+ },
+ {
+  "id": "judges-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Judah do to Jerusalem?",
+  "choices": [
+   "Made peace with it",
+   "Took it and set it on fire",
+   "Left it alone",
+   "Gave it to Benjamin"
+  ],
+  "answer": 1,
+  "explanation": "They had fought against Jerusalem, and had taken it, and set the city on fire.",
+  "ref": "Judges 1:8"
+ },
+ {
+  "id": "judges-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which three sons of Anak did Judah slay at Hebron?",
+  "choices": [
+   "Og, Sihon and Balak",
+   "Sheshai, Ahiman and Talmai",
+   "Arba, Anak and Caleb",
+   "Sheshai, Hamor and Balaam"
+  ],
+  "answer": 1,
+  "explanation": "They slew Sheshai, and Ahiman, and Talmai.",
+  "ref": "Judges 1:10"
+ },
+ {
+  "id": "judges-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Caleb's reward for taking Kirjath-sepher?",
+  "choices": [
+   "A hundred pieces of silver",
+   "His daughter Achsah as wife",
+   "The city of Hebron",
+   "A field in Gilead"
+  ],
+  "answer": 1,
+  "explanation": "He that smiteth Kirjath-sepher, and taketh it, to him will I give Achsah my daughter to wife.",
+  "ref": "Judges 1:12"
+ },
+ {
+  "id": "judges-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who took Kirjath-sepher?",
+  "choices": [
+   "Caleb himself",
+   "Othniel the son of Kenaz",
+   "Joshua",
+   "Judah"
+  ],
+  "answer": 1,
+  "explanation": "Othniel the son of Kenaz, Caleb's younger brother, took it.",
+  "ref": "Judges 1:13"
+ },
+ {
+  "id": "judges-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Achsah ask her father for besides a blessing?",
+  "choices": [
+   "A flock",
+   "Springs of water",
+   "A house",
+   "A vineyard"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast given me a south land; give me also springs of water.",
+  "ref": "Judges 1:15"
+ },
+ {
+  "id": "judges-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Caleb give Achsah?",
+  "choices": [
+   "A field of grain",
+   "The upper springs and the nether springs",
+   "The city Debir",
+   "A hundred sheep"
+  ],
+  "answer": 1,
+  "explanation": "Caleb gave her the upper springs and the nether springs.",
+  "ref": "Judges 1:15"
+ },
+ {
+  "id": "judges-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why could Judah not drive out the inhabitants of the valley?",
+  "choices": [
+   "They had a king",
+   "They had chariots of iron",
+   "They were too many",
+   "They had walls of stone"
+  ],
+  "answer": 1,
+  "explanation": "Could not drive out the inhabitants of the valley, because they had chariots of iron.",
+  "ref": "Judges 1:19"
+ },
+ {
+  "id": "judges-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who got Hebron, as Moses said?",
+  "choices": [
+   "Judah",
+   "Caleb",
+   "Othniel",
+   "Simeon"
+  ],
+  "answer": 1,
+  "explanation": "They gave Hebron unto Caleb, as Moses said.",
+  "ref": "Judges 1:20"
+ },
+ {
+  "id": "judges-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the man of Bethel show the spies?",
+  "choices": [
+   "A hidden spring",
+   "The entrance into the city",
+   "A way out",
+   "The king's house"
+  ],
+  "answer": 1,
+  "explanation": "Shew us the entrance into the city, and we will shew thee mercy.",
+  "ref": "Judges 1:24–25"
+ },
+ {
+  "id": "judges-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which Canaanites did the tribe of Benjamin not drive out of Jerusalem?",
+  "choices": [
+   "The Hittites",
+   "The Jebusites",
+   "The Amorites",
+   "The Perizzites"
+  ],
+  "answer": 1,
+  "explanation": "The children of Benjamin did not drive out the Jebusites that inhabited Jerusalem.",
+  "ref": "Judges 1:21"
+ },
+ {
+  "id": "judges-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two peoples did the LORD deliver to Judah at Bezek?",
+  "choices": [
+   "The Canaanites and the Perizzites",
+   "The Hittites and the Jebusites",
+   "The Amorites and the Hivites",
+   "The Moabites and the Ammonites"
+  ],
+  "answer": 0,
+  "explanation": "The LORD delivered the Canaanites and the Perizzites into their hand.",
+  "ref": "Judges 1:4"
+ },
+ {
+  "id": "judges-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "What was the city of Debir called before?",
+  "choices": [
+   "Kirjath-sepher",
+   "Kirjath-arba",
+   "Luz",
+   "Hormah"
+  ],
+  "answer": 0,
+  "explanation": "The name of Debir before was Kirjath-sepher.",
+  "ref": "Judges 1:11"
+ },
+ {
+  "id": "judges-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Achsah do when she came to Othniel?",
+  "choices": [
+   "She lighted from off her ass",
+   "She sang",
+   "She wept",
+   "She fasted"
+  ],
+  "answer": 0,
+  "explanation": "She moved him to ask of her father a field: and she lighted from off her ass.",
+  "ref": "Judges 1:14"
+ },
+ {
+  "id": "judges-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the Kenites go with Judah?",
+  "choices": [
+   "Into the wilderness of Judah",
+   "Into Egypt",
+   "To Bethel",
+   "Into Moab"
+  ],
+  "answer": 0,
+  "explanation": "They went up out of the city of palm trees with the children of Judah into the wilderness of Judah.",
+  "ref": "Judges 1:16"
+ },
+ {
+  "id": "judges-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which city did Judah and Simeon utterly destroy?",
+  "choices": [
+   "Zephath",
+   "Debir",
+   "Gaza",
+   "Ekron"
+  ],
+  "answer": 0,
+  "explanation": "They slew the Canaanites that inhabited Zephath, and utterly destroyed it.",
+  "ref": "Judges 1:17"
+ },
+ {
+  "id": "judges-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities did Judah take with its coast?",
+  "choices": [
+   "Askelon",
+   "Bethel",
+   "Megiddo",
+   "Accho"
+  ],
+  "answer": 0,
+  "explanation": "Judah took Gaza, and Askelon, and Ekron, each with the coast thereof.",
+  "ref": "Judges 1:18"
+ },
+ {
+  "id": "judges-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons of Anak did Caleb expel from Hebron?",
+  "choices": [
+   "Three",
+   "Two",
+   "Four",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "He expelled thence the three sons of Anak.",
+  "ref": "Judges 1:20"
+ },
+ {
+  "id": "judges-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "To which land did the man of Luz go?",
+  "choices": [
+   "The land of the Hittites",
+   "The land of Moab",
+   "The land of Egypt",
+   "The land of Gilead"
+  ],
+  "answer": 0,
+  "explanation": "The man went into the land of the Hittites, and built a city, and called the name thereof Luz.",
+  "ref": "Judges 1:26"
+ },
+ {
+  "id": "judges-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the house of Joseph do before they attacked Bethel?",
+  "choices": [
+   "Sent spies to descry it",
+   "Asked Caleb for help",
+   "Fasted three days",
+   "Built siege towers"
+  ],
+  "answer": 0,
+  "explanation": "The house of Joseph sent to descry Bethel.",
+  "ref": "Judges 1:23"
+ },
+ {
+  "id": "judges-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tribe did not drive out the people of Beth-shean, Taanach, Dor, Ibleam and Megiddo?",
+  "choices": [
+   "Manasseh",
+   "Judah",
+   "Asher",
+   "Ephraim"
+  ],
+  "answer": 0,
+  "explanation": "Neither did Manasseh drive out the inhabitants of Beth-shean and her towns, Taanach, Dor, Ibleam, Megiddo.",
+  "ref": "Judges 1:27"
+ },
+ {
+  "id": "judges-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tribe did not drive out the Canaanites of Gezer?",
+  "choices": [
+   "Ephraim",
+   "Manasseh",
+   "Zebulun",
+   "Dan"
+  ],
+  "answer": 0,
+  "explanation": "Neither did Ephraim drive out the Canaanites that dwelt in Gezer.",
+  "ref": "Judges 1:29"
+ },
+ {
+  "id": "judges-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tribe left the people of Kitron and Nahalol?",
+  "choices": [
+   "Zebulun",
+   "Asher",
+   "Naphtali",
+   "Dan"
+  ],
+  "answer": 0,
+  "explanation": "Neither did Zebulun drive out the inhabitants of Kitron, nor of Nahalol.",
+  "ref": "Judges 1:30"
+ },
+ {
+  "id": "judges-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tribe did not drive out the people of Accho and Zidon?",
+  "choices": [
+   "Asher",
+   "Zebulun",
+   "Naphtali",
+   "Dan"
+  ],
+  "answer": 0,
+  "explanation": "Neither did Asher drive out the inhabitants of Accho, nor Zidon.",
+  "ref": "Judges 1:31"
+ },
+ {
+  "id": "judges-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who forced the children of Dan into the mountain?",
+  "choices": [
+   "The Amorites",
+   "The Jebusites",
+   "The Hittites",
+   "The Philistines"
+  ],
+  "answer": 0,
+  "explanation": "The Amorites forced the children of Dan into the mountain.",
+  "ref": "Judges 1:34"
+ },
+ {
+  "id": "judges-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel do with the Canaanites when it grew strong?",
+  "choices": [
+   "Put them to tribute",
+   "Drove them out",
+   "Made them judges",
+   "Sold them"
+  ],
+  "answer": 0,
+  "explanation": "When Israel was strong, that they put the Canaanites to tribute, and did not utterly drive them out.",
+  "ref": "Judges 1:28"
+ },
+ {
   "id": "old-judges-2-1",
   "chapter": 2,
   "level": "beginner",
