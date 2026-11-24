@@ -21651,16 +21651,16 @@
   "id": "old-1-samuel-31-2",
   "chapter": 31,
   "level": "beginner",
-  "category": "keyword",
+  "category": "person",
   "question": "Which of Saul's sons were slain in the battle?",
   "choices": [
-   "Ishbosheth and Mephibosheth",
-   "Jonathan, Abinadab, and Malchishua",
+   "Hophni and Phinehas",
    "Abner and Joab",
-   "Hophni and Phinehas"
+   "Jonathan, Abinadab and Melchi-shua",
+   "Ish-bosheth and Mephibosheth"
   ],
-  "answer": 1,
-  "explanation": "Jonathan, Abinadab, and Malchishua died with Saul.",
+  "answer": 2,
+  "explanation": "The Philistines slew Jonathan, and Abinadab, and Melchi-shua, Saul's sons.",
   "ref": "1 Samuel 31:2"
  },
  {
@@ -21710,5 +21710,645 @@
   "answer": 1,
   "explanation": "The men of Jabesh-gilead retrieved and honored the bodies.",
   "ref": "1 Samuel 31:11–13"
+ },
+ {
+  "id": "1-samuel-31-e-01",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which mountain did the men of Israel fall slain?",
+  "choices": [
+   "Ebal",
+   "Hermon",
+   "Gilboa",
+   "Carmel"
+  ],
+  "answer": 2,
+  "explanation": "The men of Israel fled from before the Philistines, and fell down slain in mount Gilboa.",
+  "ref": "1 Samuel 31:1"
+ },
+ {
+  "id": "1-samuel-31-e-02",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who wounded Saul in the battle?",
+  "choices": [
+   "The chariots",
+   "The archers",
+   "A Philistine giant",
+   "His own captain"
+  ],
+  "answer": 1,
+  "explanation": "The archers hit him; and he was sore wounded of the archers.",
+  "ref": "1 Samuel 31:3"
+ },
+ {
+  "id": "1-samuel-31-e-03",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Saul ask to thrust him through with a sword?",
+  "choices": [
+   "Abner",
+   "His son Jonathan",
+   "A passing Amalekite",
+   "His armourbearer"
+  ],
+  "answer": 3,
+  "explanation": "Saul said unto his armourbearer, Draw thy sword, and thrust me through therewith.",
+  "ref": "1 Samuel 31:4"
+ },
+ {
+  "id": "1-samuel-31-e-04",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the armourbearer do when he saw Saul was dead?",
+  "choices": [
+   "Gave Saul's crown to David",
+   "Fled to Jabesh",
+   "Surrendered to the Philistines",
+   "Fell on his own sword and died"
+  ],
+  "answer": 3,
+  "explanation": "When his armourbearer saw that Saul was dead, he fell likewise upon his sword, and died with him.",
+  "ref": "1 Samuel 31:5"
+ },
+ {
+  "id": "1-samuel-31-e-05",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many of Saul's sons died with him?",
+  "choices": [
+   "One",
+   "Two",
+   "Four",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "So Saul died, and his three sons, and his armourbearer, and all his men, that same day together.",
+  "ref": "1 Samuel 31:6"
+ },
+ {
+  "id": "1-samuel-31-e-06",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did the Philistines come to strip the slain?",
+  "choices": [
+   "After three days",
+   "On the morrow",
+   "That same night",
+   "At the next feast"
+  ],
+  "answer": 1,
+  "explanation": "On the morrow, when the Philistines came to strip the slain, they found Saul and his three sons.",
+  "ref": "1 Samuel 31:8"
+ },
+ {
+  "id": "1-samuel-31-e-07",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Philistines cut off from Saul?",
+  "choices": [
+   "His hand",
+   "His crown",
+   "His head",
+   "His beard"
+  ],
+  "answer": 2,
+  "explanation": "They cut off his head, and stripped off his armour.",
+  "ref": "1 Samuel 31:9"
+ },
+ {
+  "id": "1-samuel-31-e-08",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the Philistines put Saul's armour?",
+  "choices": [
+   "In the house of Dagon at Gath",
+   "On the walls of Gilboa",
+   "In Ekron's market",
+   "In the house of Ashtaroth"
+  ],
+  "answer": 3,
+  "explanation": "They put his armour in the house of Ashtaroth.",
+  "ref": "1 Samuel 31:10"
+ },
+ {
+  "id": "1-samuel-31-e-09",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the valiant men of Jabesh-gilead do with the bodies after burning them?",
+  "choices": [
+   "Buried their bones under a tree",
+   "Sent them to Gilgal",
+   "Carried them to Hebron",
+   "Laid them in a cave"
+  ],
+  "answer": 0,
+  "explanation": "They took their bones, and buried them under a tree at Jabesh.",
+  "ref": "1 Samuel 31:13"
+ },
+ {
+  "id": "1-samuel-31-e-10",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did the men of Jabesh fast?",
+  "choices": [
+   "One day",
+   "Three days",
+   "Forty days",
+   "Seven days"
+  ],
+  "answer": 3,
+  "explanation": "They buried them under a tree at Jabesh, and fasted seven days.",
+  "ref": "1 Samuel 31:13"
+ },
+ {
+  "id": "1-samuel-31-m-01",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Saul want his armourbearer to kill him?",
+  "choices": [
+   "So he would not suffer from his wound",
+   "So the uncircumcised would not abuse him",
+   "So David would not find him",
+   "So he could join Samuel"
+  ],
+  "answer": 1,
+  "explanation": "Draw thy sword, and thrust me through therewith; lest these uncircumcised come and thrust me through, and abuse me.",
+  "ref": "1 Samuel 31:4"
+ },
+ {
+  "id": "1-samuel-31-m-02",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the armourbearer not kill Saul?",
+  "choices": [
+   "Saul was still strong",
+   "Jonathan forbade it",
+   "He was sore afraid",
+   "He loved the Philistines"
+  ],
+  "answer": 2,
+  "explanation": "His armourbearer would not; for he was sore afraid.",
+  "ref": "1 Samuel 31:4"
+ },
+ {
+  "id": "1-samuel-31-m-03",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Saul die?",
+  "choices": [
+   "An archer's arrow struck him down",
+   "The armourbearer slew him",
+   "He took a sword and fell upon it",
+   "A Philistine captain killed him"
+  ],
+  "answer": 2,
+  "explanation": "Saul took a sword, and fell upon it.",
+  "ref": "1 Samuel 31:4"
+ },
+ {
+  "id": "1-samuel-31-m-04",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "Who died together with Saul that same day?",
+  "choices": [
+   "Abner and Joab",
+   "Only his sons",
+   "Saul and Jonathan alone",
+   "His three sons, his armourbearer and all his men"
+  ],
+  "answer": 3,
+  "explanation": "Saul died, and his three sons, and his armourbearer, and all his men, that same day together.",
+  "ref": "1 Samuel 31:6"
+ },
+ {
+  "id": "1-samuel-31-m-05",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Israelites beyond the valley and Jordan do when they saw Saul dead?",
+  "choices": [
+   "Sent for David",
+   "Forsook their cities and fled",
+   "Gathered at Gilboa",
+   "Fought the Philistines"
+  ],
+  "answer": 1,
+  "explanation": "They forsook the cities, and fled; and the Philistines came and dwelt in them.",
+  "ref": "1 Samuel 31:7"
+ },
+ {
+  "id": "1-samuel-31-m-06",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Philistines do to the abandoned cities?",
+  "choices": [
+   "They burned them",
+   "They left them empty",
+   "They gave them to Achish",
+   "They came and dwelt in them"
+  ],
+  "answer": 3,
+  "explanation": "The Philistines came and dwelt in them.",
+  "ref": "1 Samuel 31:7"
+ },
+ {
+  "id": "1-samuel-31-m-07",
+  "chapter": 31,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the Philistines send word of Saul's death?",
+  "choices": [
+   "To the cities of Moab",
+   "To Egypt",
+   "To Jerusalem",
+   "Round about the land of the Philistines"
+  ],
+  "answer": 3,
+  "explanation": "They sent into the land of the Philistines round about, to publish it in the house of their idols, and among the people.",
+  "ref": "1 Samuel 31:9"
+ },
+ {
+  "id": "1-samuel-31-m-08",
+  "chapter": 31,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the Philistines fasten Saul's body?",
+  "choices": [
+   "To the gate of Ekron",
+   "To a tower at Aphek",
+   "To the wall of Beth-shan",
+   "To a tree at Gath"
+  ],
+  "answer": 2,
+  "explanation": "They fastened his body to the wall of Beth-shan.",
+  "ref": "1 Samuel 31:10"
+ },
+ {
+  "id": "1-samuel-31-m-09",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "Who heard what the Philistines had done to Saul?",
+  "choices": [
+   "The priests of Nob",
+   "The elders of Judah",
+   "The men of Keilah",
+   "The inhabitants of Jabesh-gilead"
+  ],
+  "answer": 3,
+  "explanation": "When the inhabitants of Jabesh-gilead heard of that which the Philistines had done to Saul.",
+  "ref": "1 Samuel 31:11"
+ },
+ {
+  "id": "1-samuel-31-m-10",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the valiant men of Jabesh travel to get Saul's body?",
+  "choices": [
+   "By day with an army",
+   "In secret over three nights",
+   "By boat",
+   "All night"
+  ],
+  "answer": 3,
+  "explanation": "All the valiant men arose, and went all night, and took the body of Saul.",
+  "ref": "1 Samuel 31:12"
+ },
+ {
+  "id": "1-samuel-31-m-11",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose bodies did the men of Jabesh take from the wall?",
+  "choices": [
+   "Saul's and his sons'",
+   "The armourbearer's",
+   "Only Saul's",
+   "Jonathan's alone"
+  ],
+  "answer": 0,
+  "explanation": "They took the body of Saul and the bodies of his sons from the wall of Beth-shan.",
+  "ref": "1 Samuel 31:12"
+ },
+ {
+  "id": "1-samuel-31-m-12",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of Jabesh do with the bodies at Jabesh?",
+  "choices": [
+   "Left them in a field",
+   "Embalmed them",
+   "Carried them to Gilboa",
+   "Burnt them"
+  ],
+  "answer": 3,
+  "explanation": "They came to Jabesh, and burnt them there.",
+  "ref": "1 Samuel 31:12"
+ },
+ {
+  "id": "1-samuel-31-m-13",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Philistines strip off Saul besides cutting off his head?",
+  "choices": [
+   "His royal robe",
+   "His armour",
+   "His sandals",
+   "His ring"
+  ],
+  "answer": 1,
+  "explanation": "They cut off his head, and stripped off his armour.",
+  "ref": "1 Samuel 31:9"
+ },
+ {
+  "id": "1-samuel-31-m-14",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of Israel do before the Philistines in the battle?",
+  "choices": [
+   "Surrendered",
+   "Fled",
+   "Sang a battle song",
+   "Stood firm"
+  ],
+  "answer": 1,
+  "explanation": "The men of Israel fled from before the Philistines.",
+  "ref": "1 Samuel 31:1"
+ },
+ {
+  "id": "1-samuel-31-m-15",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the Philistines follow hard upon?",
+  "choices": [
+   "David and his men",
+   "Abner and the guard",
+   "Saul and his sons",
+   "The men of Jabesh"
+  ],
+  "answer": 2,
+  "explanation": "The Philistines followed hard upon Saul and upon his sons.",
+  "ref": "1 Samuel 31:2"
+ },
+ {
+  "id": "1-samuel-31-h-01",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was one of the sons of Saul slain by the Philistines?",
+  "choices": [
+   "Ish-bosheth",
+   "Abinadab",
+   "Absalom",
+   "Mephibosheth"
+  ],
+  "answer": 1,
+  "explanation": "The Philistines slew Jonathan, and Abinadab, and Melchi-shua, Saul's sons.",
+  "ref": "1 Samuel 31:2"
+ },
+ {
+  "id": "1-samuel-31-h-02",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul call the Philistines when he spoke to his armourbearer?",
+  "choices": [
+   "These heathen",
+   "These archers",
+   "These uncircumcised",
+   "These strangers"
+  ],
+  "answer": 2,
+  "explanation": "Lest these uncircumcised come and thrust me through, and abuse me.",
+  "ref": "1 Samuel 31:4"
+ },
+ {
+  "id": "1-samuel-31-h-03",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the battle go for Saul before the archers hit him?",
+  "choices": [
+   "It was even",
+   "He had not yet joined it",
+   "He gained the upper hand",
+   "It went sore against him"
+  ],
+  "answer": 3,
+  "explanation": "The battle went sore against Saul, and the archers hit him.",
+  "ref": "1 Samuel 31:3"
+ },
+ {
+  "id": "1-samuel-31-h-04",
+  "chapter": 31,
+  "level": "hard",
+  "category": "place",
+  "question": "Where, besides the valley, did Israelites forsake their cities?",
+  "choices": [
+   "In the hill country of Ephraim",
+   "On the plain of Sharon",
+   "In the Negev",
+   "On the other side Jordan"
+  ],
+  "answer": 3,
+  "explanation": "The men of Israel that were on the other side of the valley, and they that were on the other side Jordan, saw that the men of Israel fled.",
+  "ref": "1 Samuel 31:7"
+ },
+ {
+  "id": "1-samuel-31-h-05",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the purpose of sending Saul's armour among the Philistines?",
+  "choices": [
+   "To publish it in the house of their idols",
+   "To send a warning to David",
+   "To trade for horses",
+   "To pay a tribute"
+  ],
+  "answer": 0,
+  "explanation": "They sent into the land of the Philistines round about, to publish it in the house of their idols.",
+  "ref": "1 Samuel 31:9"
+ },
+ {
+  "id": "1-samuel-31-h-06",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Philistines publish the news among?",
+  "choices": [
+   "The Egyptians",
+   "Their idols' house and the people",
+   "Only the priests",
+   "The kings of Gath"
+  ],
+  "answer": 1,
+  "explanation": "To publish it in the house of their idols, and among the people.",
+  "ref": "1 Samuel 31:9"
+ },
+ {
+  "id": "1-samuel-31-h-07",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the valiant men do after they came to Jabesh with the bodies?",
+  "choices": [
+   "Mourned for a month",
+   "Buried them whole",
+   "Sent them to Gilgal",
+   "Burnt them there"
+  ],
+  "answer": 3,
+  "explanation": "They came to Jabesh, and burnt them there.",
+  "ref": "1 Samuel 31:12"
+ },
+ {
+  "id": "1-samuel-31-h-08",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Under what did the men of Jabesh bury the bones?",
+  "choices": [
+   "An altar",
+   "A tree",
+   "A tower",
+   "A rock"
+  ],
+  "answer": 1,
+  "explanation": "They took their bones, and buried them under a tree at Jabesh.",
+  "ref": "1 Samuel 31:13"
+ },
+ {
+  "id": "1-samuel-31-h-09",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Philistines find when they came to strip the slain?",
+  "choices": [
+   "Saul hidden in a cave",
+   "David's men among the dead",
+   "Saul's crown at Endor",
+   "Saul and his three sons fallen in Gilboa"
+  ],
+  "answer": 3,
+  "explanation": "They found Saul and his three sons fallen in mount Gilboa.",
+  "ref": "1 Samuel 31:8"
+ },
+ {
+  "id": "1-samuel-31-h-10",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the armourbearer's action show about Saul's death?",
+  "choices": [
+   "He guarded the body",
+   "He took Saul's sword to Gath",
+   "He ran for help",
+   "He died with Saul"
+  ],
+  "answer": 3,
+  "explanation": "He fell likewise upon his sword, and died with him.",
+  "ref": "1 Samuel 31:5"
+ },
+ {
+  "id": "1-samuel-31-h-11",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul's armourbearer feel that kept him from obeying?",
+  "choices": [
+   "He was weary",
+   "He was sore afraid",
+   "He was ashamed",
+   "He was angry"
+  ],
+  "answer": 1,
+  "explanation": "His armourbearer would not; for he was sore afraid.",
+  "ref": "1 Samuel 31:4"
+ },
+ {
+  "id": "1-samuel-31-h-12",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "Who rose to take the bodies from the wall?",
+  "choices": [
+   "Only the elders",
+   "The priests",
+   "The women of Jabesh",
+   "All the valiant men"
+  ],
+  "answer": 3,
+  "explanation": "All the valiant men arose, and went all night.",
+  "ref": "1 Samuel 31:12"
+ },
+ {
+  "id": "1-samuel-31-h-13",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israelites do at the sight of Saul and his sons dead?",
+  "choices": [
+   "Mourned at Gilboa",
+   "Prayed for David",
+   "Marched to Beth-shan",
+   "Forsook the cities and fled"
+  ],
+  "answer": 3,
+  "explanation": "They forsook the cities, and fled.",
+  "ref": "1 Samuel 31:7"
+ },
+ {
+  "id": "1-samuel-31-h-14",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Saul, his sons, and his men all die?",
+  "choices": [
+   "At the evening sacrifice",
+   "That same day together",
+   "On the morrow",
+   "After three days"
+  ],
+  "answer": 1,
+  "explanation": "Saul died, and his three sons, and his armourbearer, and all his men, that same day together.",
+  "ref": "1 Samuel 31:6"
+ },
+ {
+  "id": "1-samuel-31-h-15",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which battle word describes how the Philistines pursued Saul?",
+  "choices": [
+   "Waited for him",
+   "Fled from him",
+   "Followed hard upon him",
+   "Surrounded the city"
+  ],
+  "answer": 2,
+  "explanation": "The Philistines followed hard upon Saul and upon his sons.",
+  "ref": "1 Samuel 31:2"
  }
 ]
