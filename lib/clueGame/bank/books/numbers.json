@@ -15936,6 +15936,646 @@
   "ref": "Numbers 23:11"
  },
  {
+  "id": "numbers-23-e-01",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balak and Balaam offer on every altar?",
+  "choices": [
+   "A lamb and a dove",
+   "A bullock and a ram",
+   "Two goats",
+   "A heifer and a kid"
+  ],
+  "answer": 1,
+  "explanation": "Balak and Balaam offered on every altar a bullock and a ram.",
+  "ref": "Numbers 23:2"
+ },
+ {
+  "id": "numbers-23-e-02",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Balaam go while Balak stood by the burnt offering?",
+  "choices": [
+   "Into the valley",
+   "To a high place",
+   "Back to Pethor",
+   "To the river"
+  ],
+  "answer": 1,
+  "explanation": "Balaam said, Stand by thy burnt offering, and I will go: and he went to an high place.",
+  "ref": "Numbers 23:3"
+ },
+ {
+  "id": "numbers-23-e-03",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who met Balaam at the high place?",
+  "choices": [
+   "The angel with the sword",
+   "God",
+   "Balak",
+   "Moses"
+  ],
+  "answer": 1,
+  "explanation": "God met Balaam.",
+  "ref": "Numbers 23:4"
+ },
+ {
+  "id": "numbers-23-e-04",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stood by the burnt sacrifice with Balak?",
+  "choices": [
+   "The elders of Midian",
+   "The princes of Moab",
+   "The priests of Baal",
+   "The sons of Balaam"
+  ],
+  "answer": 1,
+  "explanation": "He stood by his burnt sacrifice, he, and all the princes of Moab.",
+  "ref": "Numbers 23:6"
+ },
+ {
+  "id": "numbers-23-e-05",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Balaam say Balak had brought him to curse?",
+  "choices": [
+   "Edom",
+   "Jacob",
+   "Ammon",
+   "Midian"
+  ],
+  "answer": 1,
+  "explanation": "Come, curse me Jacob, and come, defy Israel.",
+  "ref": "Numbers 23:7"
+ },
+ {
+  "id": "numbers-23-e-06",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balaam take up before he spoke?",
+  "choices": [
+   "His staff",
+   "His parable",
+   "His harp",
+   "His censer"
+  ],
+  "answer": 1,
+  "explanation": "And he took up his parable, and said.",
+  "ref": "Numbers 23:7"
+ },
+ {
+  "id": "numbers-23-e-07",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which place did Balak bring Balaam the second time?",
+  "choices": [
+   "The top of Hor",
+   "The top of Pisgah",
+   "The top of Carmel",
+   "The plains of Jericho"
+  ],
+  "answer": 1,
+  "explanation": "He brought him into the field of Zophim, to the top of Pisgah.",
+  "ref": "Numbers 23:14"
+ },
+ {
+  "id": "numbers-23-e-08",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balaam say the people would rise up like?",
+  "choices": [
+   "A mighty eagle",
+   "A great lion",
+   "A flood",
+   "A wall of fire"
+  ],
+  "answer": 1,
+  "explanation": "The people shall rise up as a great lion, and lift up himself as a young lion.",
+  "ref": "Numbers 23:24"
+ },
+ {
+  "id": "numbers-23-e-09",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Balak say when Balaam still would not curse Israel?",
+  "choices": [
+   "Then go back to Aram",
+   "Neither curse them at all, nor bless them at all",
+   "Then curse Moab instead",
+   "Then bless them twice"
+  ],
+  "answer": 1,
+  "explanation": "Balak said unto Balaam, Neither curse them at all, nor bless them at all.",
+  "ref": "Numbers 23:25"
+ },
+ {
+  "id": "numbers-23-e-10",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which top did Balak bring Balaam the third time?",
+  "choices": [
+   "The top of Pisgah",
+   "The top of Peor",
+   "The top of Hor",
+   "The top of Nebo"
+  ],
+  "answer": 1,
+  "explanation": "Balak brought Balaam unto the top of Peor, that looketh toward Jeshimon.",
+  "ref": "Numbers 23:28"
+ },
+ {
+  "id": "numbers-23-m-01",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD put in Balaam's mouth?",
+  "choices": [
+   "A coal of fire",
+   "A song of praise",
+   "A curse",
+   "A word"
+  ],
+  "answer": 3,
+  "explanation": "The LORD put a word in Balaam's mouth, and said, Return unto Balak.",
+  "ref": "Numbers 23:5"
+ },
+ {
+  "id": "numbers-23-m-02",
+  "chapter": 23,
+  "level": "medium",
+  "category": "place",
+  "question": "From where did Balaam say Balak had brought him?",
+  "choices": [
+   "From Egypt",
+   "From the plains of Jericho",
+   "From the south",
+   "From Aram, out of the mountains of the east"
+  ],
+  "answer": 3,
+  "explanation": "Balak the king of Moab hath brought me from Aram, out of the mountains of the east.",
+  "ref": "Numbers 23:7"
+ },
+ {
+  "id": "numbers-23-m-03",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam ask could not be counted?",
+  "choices": [
+   "The stars of heaven",
+   "The sand of the sea",
+   "The cattle of Israel",
+   "The dust of Jacob"
+  ],
+  "answer": 3,
+  "explanation": "Who can count the dust of Jacob?",
+  "ref": "Numbers 23:10"
+ },
+ {
+  "id": "numbers-23-m-04",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Balaam answer Balak's complaint that he had blessed Israel?",
+  "choices": [
+   "He had been paid to bless",
+   "He had misheard",
+   "He would try again",
+   "He must speak what the LORD put in his mouth"
+  ],
+  "answer": 3,
+  "explanation": "Must I not take heed to speak that which the LORD hath put in my mouth?",
+  "ref": "Numbers 23:12"
+ },
+ {
+  "id": "numbers-23-m-05",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balak say Balaam would see from another place?",
+  "choices": [
+   "All of Israel",
+   "Nothing at all",
+   "Only the Jordan",
+   "Only the utmost part of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt see but the utmost part of them, and shalt not see them all.",
+  "ref": "Numbers 23:13"
+ },
+ {
+  "id": "numbers-23-m-06",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balak build in the field of Zophim?",
+  "choices": [
+   "A tabernacle",
+   "A wall",
+   "A tower",
+   "Seven altars"
+  ],
+  "answer": 3,
+  "explanation": "He built seven altars, and offered a bullock and a ram on every altar.",
+  "ref": "Numbers 23:14"
+ },
+ {
+  "id": "numbers-23-m-07",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balak ask Balaam when he returned the second time?",
+  "choices": [
+   "Hast thou cursed them?",
+   "Where is Israel?",
+   "How many are they?",
+   "What hath the LORD spoken?"
+  ],
+  "answer": 3,
+  "explanation": "Balak said unto him, What hath the LORD spoken?",
+  "ref": "Numbers 23:17"
+ },
+ {
+  "id": "numbers-23-m-08",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam say he had received commandment to do?",
+  "choices": [
+   "Curse",
+   "Count",
+   "Flee",
+   "Bless"
+  ],
+  "answer": 3,
+  "explanation": "Behold, I have received commandment to bless: and he hath blessed; and I cannot reverse it.",
+  "ref": "Numbers 23:20"
+ },
+ {
+  "id": "numbers-23-m-09",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam say God did for Israel regarding Egypt?",
+  "choices": [
+   "Hid them in Egypt",
+   "Sent them to Egypt",
+   "Sold them to Egypt",
+   "Brought them out of Egypt"
+  ],
+  "answer": 3,
+  "explanation": "God brought them out of Egypt; he hath as it were the strength of an unicorn.",
+  "ref": "Numbers 23:22"
+ },
+ {
+  "id": "numbers-23-m-10",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam say there was no use against Jacob?",
+  "choices": [
+   "Swords",
+   "Walls",
+   "Armies",
+   "Enchantment"
+  ],
+  "answer": 3,
+  "explanation": "Surely there is no enchantment against Jacob, neither is there any divination against Israel.",
+  "ref": "Numbers 23:23"
+ },
+ {
+  "id": "numbers-23-m-11",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was it said of Jacob and Israel, according to this time?",
+  "choices": [
+   "Blessed be the LORD!",
+   "Who is like unto thee?",
+   "Great is our God!",
+   "What hath God wrought!"
+  ],
+  "answer": 3,
+  "explanation": "According to this time it shall be said of Jacob and of Israel, What hath God wrought!",
+  "ref": "Numbers 23:23"
+ },
+ {
+  "id": "numbers-23-m-12",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam say the lion would not do until it ate the prey?",
+  "choices": [
+   "Roar",
+   "Move",
+   "Sleep",
+   "Lie down"
+  ],
+  "answer": 3,
+  "explanation": "He shall not lie down until he eat of the prey, and drink the blood of the slain.",
+  "ref": "Numbers 23:24"
+ },
+ {
+  "id": "numbers-23-m-13",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam remind Balak he had told him?",
+  "choices": [
+   "I will curse for gold",
+   "I will return to Aram",
+   "I cannot see them",
+   "All that the LORD speaketh, that I must do"
+  ],
+  "answer": 3,
+  "explanation": "Told not I thee, saying, All that the LORD speaketh, that I must do?",
+  "ref": "Numbers 23:26"
+ },
+ {
+  "id": "numbers-23-m-14",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides curse Jacob, what did Balak say Balaam should do to Israel?",
+  "choices": [
+   "Count them",
+   "Scatter them",
+   "Feed them",
+   "Defy them"
+  ],
+  "answer": 3,
+  "explanation": "Balak said, Come, curse me Jacob, and come, defy Israel.",
+  "ref": "Numbers 23:7"
+ },
+ {
+  "id": "numbers-23-h-01",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides seven altars, what did Balaam ask Balak to prepare?",
+  "choices": [
+   "Seven lambs and seven doves",
+   "Seven oxen and seven rams",
+   "Seven goats",
+   "Seven bullocks and seven kids"
+  ],
+  "answer": 1,
+  "explanation": "Build me here seven altars, and prepare me here seven oxen and seven rams.",
+  "ref": "Numbers 23:1"
+ },
+ {
+  "id": "numbers-23-h-02",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Balaam tell God he had prepared?",
+  "choices": [
+   "Seven lambs",
+   "Seven altars",
+   "Seven priests",
+   "Seven fires"
+  ],
+  "answer": 1,
+  "explanation": "I have prepared seven altars, and I have offered upon every altar a bullock and a ram.",
+  "ref": "Numbers 23:4"
+ },
+ {
+  "id": "numbers-23-h-03",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What part of Israel did Balaam say could not be counted?",
+  "choices": [
+   "The third part",
+   "The fourth part",
+   "The half",
+   "The tenth part"
+  ],
+  "answer": 1,
+  "explanation": "Who can count the dust of Jacob, and the number of the fourth part of Israel?",
+  "ref": "Numbers 23:10"
+ },
+ {
+  "id": "numbers-23-h-04",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Balaam want his last end to be like?",
+  "choices": [
+   "The death of kings",
+   "The death of the righteous",
+   "The death of a prophet",
+   "The death of Moses"
+  ],
+  "answer": 1,
+  "explanation": "Let me die the death of the righteous, and let my last end be like his!",
+  "ref": "Numbers 23:10"
+ },
+ {
+  "id": "numbers-23-h-05",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "In which field did Balak build seven altars on the second try?",
+  "choices": [
+   "The field of Zared",
+   "The field of Zophim",
+   "The plain of Moab",
+   "The field of Jahaz"
+  ],
+  "answer": 1,
+  "explanation": "He brought him into the field of Zophim, to the top of Pisgah.",
+  "ref": "Numbers 23:14"
+ },
+ {
+  "id": "numbers-23-h-06",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Balaam say was among Israel, the LORD their God being with them?",
+  "choices": [
+   "The sound of a trumpet",
+   "The shout of a king",
+   "A pillar of fire",
+   "The voice of a prophet"
+  ],
+  "answer": 1,
+  "explanation": "The LORD his God is with him, and the shout of a king is among them.",
+  "ref": "Numbers 23:21"
+ },
+ {
+  "id": "numbers-23-h-07",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Balaam say God had not beheld in Jacob?",
+  "choices": [
+   "Idolatry",
+   "Iniquity",
+   "Weakness",
+   "Fear"
+  ],
+  "answer": 1,
+  "explanation": "He hath not beheld iniquity in Jacob, neither hath he seen perverseness in Israel.",
+  "ref": "Numbers 23:21"
+ },
+ {
+  "id": "numbers-23-h-08",
+  "chapter": 23,
+  "level": "hard",
+  "category": "person",
+  "question": "How did Balaam address Balak before the second parable?",
+  "choices": [
+   "Thou king of Aram",
+   "Thou son of Zippor",
+   "Thou servant of Baal",
+   "Thou man of Moab"
+  ],
+  "answer": 1,
+  "explanation": "Rise up, Balak, and hear; hearken unto me, thou son of Zippor.",
+  "ref": "Numbers 23:18"
+ },
+ {
+  "id": "numbers-23-h-09",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Balaam to do after putting a word in his mouth the first time?",
+  "choices": [
+   "Go to Pisgah",
+   "Return unto Balak",
+   "Offer another bullock",
+   "Wait for the morning"
+  ],
+  "answer": 1,
+  "explanation": "The LORD put a word in Balaam's mouth, and said, Return unto Balak, and thus thou shalt speak.",
+  "ref": "Numbers 23:5"
+ },
+ {
+  "id": "numbers-23-h-10",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the lion drink after it ate the prey?",
+  "choices": [
+   "Water from the brook",
+   "The blood of the slain",
+   "Wine",
+   "The waters of Arnon"
+  ],
+  "answer": 1,
+  "explanation": "He shall not lie down until he eat of the prey, and drink the blood of the slain.",
+  "ref": "Numbers 23:24"
+ },
+ {
+  "id": "numbers-23-h-11",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Balak hope when he took Balaam to Peor?",
+  "choices": [
+   "That Israel would leave",
+   "That it would please God for Balaam to curse from there",
+   "That Moab would be spared",
+   "That Balaam would stay"
+  ],
+  "answer": 1,
+  "explanation": "Peradventure it will please God that thou mayest curse me them from thence.",
+  "ref": "Numbers 23:27"
+ },
+ {
+  "id": "numbers-23-h-12",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Where does Peor look toward?",
+  "choices": [
+   "Jericho",
+   "Jeshimon",
+   "Jordan",
+   "Egypt"
+  ],
+  "answer": 1,
+  "explanation": "The top of Peor, that looketh toward Jeshimon.",
+  "ref": "Numbers 23:28"
+ },
+ {
+  "id": "numbers-23-m-15",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Balaam tell Balak to do while he went to meet the LORD yonder?",
+  "choices": [
+   "Build another altar",
+   "Pray with the princes",
+   "Wait at the foot of the hill",
+   "Stand by his burnt offering"
+  ],
+  "answer": 3,
+  "explanation": "Balaam said, Stand here by thy burnt offering, while I meet the LORD yonder.",
+  "ref": "Numbers 23:15"
+ },
+ {
+  "id": "numbers-23-h-13",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Balaam say God is not the son of man to do?",
+  "choices": [
+   "Repent",
+   "Forget",
+   "Forgive",
+   "Sleep"
+  ],
+  "answer": 0,
+  "explanation": "God is not a man, that he should lie; neither the son of man, that he should repent.",
+  "ref": "Numbers 23:19"
+ },
+ {
+  "id": "numbers-23-h-14",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Balak call Israel when he complained to Balaam?",
+  "choices": [
+   "His enemies",
+   "His servants",
+   "His brothers",
+   "His rivals in trade"
+  ],
+  "answer": 0,
+  "explanation": "I took thee to curse mine enemies, and, behold, thou hast blessed them altogether.",
+  "ref": "Numbers 23:11"
+ },
+ {
+  "id": "numbers-23-h-15",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What strength did Balaam say God had, as it were?",
+  "choices": [
+   "The strength of an unicorn",
+   "The strength of an ox",
+   "The strength of a bear",
+   "The strength of a bull"
+  ],
+  "answer": 0,
+  "explanation": "God brought them out of Egypt; he hath as it were the strength of an unicorn.",
+  "ref": "Numbers 23:22"
+ },
+ {
   "id": "old-numbers-24-1",
   "chapter": 24,
   "level": "beginner",
