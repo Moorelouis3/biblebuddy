@@ -2240,6 +2240,646 @@
   "ref": "Deuteronomy 4:41–43"
  },
  {
+  "id": "deuteronomy-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Moses call the LORD your God?",
+  "choices": [
+   "A rock",
+   "A shepherd",
+   "A consuming fire",
+   "A king of kings"
+  ],
+  "answer": 2,
+  "explanation": "The LORD thy God is a consuming fire, even a jealous God.",
+  "ref": "Deuteronomy 4:24"
+ },
+ {
+  "id": "deuteronomy-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Out of what did the LORD speak to Israel at Horeb?",
+  "choices": [
+   "The midst of the fire",
+   "A bush",
+   "A whirlwind",
+   "A cloud only"
+  ],
+  "answer": 0,
+  "explanation": "The LORD spake unto you out of the midst of the fire.",
+  "ref": "Deuteronomy 4:12"
+ },
+ {
+  "id": "deuteronomy-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many commandments did the LORD declare as His covenant?",
+  "choices": [
+   "Seven",
+   "Twelve",
+   "Ten",
+   "Five"
+  ],
+  "answer": 2,
+  "explanation": "He declared unto you his covenant, even ten commandments.",
+  "ref": "Deuteronomy 4:13"
+ },
+ {
+  "id": "deuteronomy-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD write the commandments on?",
+  "choices": [
+   "Papyrus",
+   "Bronze plates",
+   "A scroll",
+   "Two tables of stone"
+  ],
+  "answer": 3,
+  "explanation": "He wrote them upon two tables of stone.",
+  "ref": "Deuteronomy 4:13"
+ },
+ {
+  "id": "deuteronomy-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Moses call Egypt?",
+  "choices": [
+   "The iron furnace",
+   "The house of bondage",
+   "The land of bricks",
+   "The great river"
+  ],
+  "answer": 0,
+  "explanation": "The LORD hath brought you forth out of the iron furnace, even out of Egypt.",
+  "ref": "Deuteronomy 4:20"
+ },
+ {
+  "id": "deuteronomy-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was told he would not go over Jordan?",
+  "choices": [
+   "Eleazar",
+   "Caleb",
+   "Moses",
+   "Joshua"
+  ],
+  "answer": 2,
+  "explanation": "The LORD sware that I should not go over Jordan; I must die in this land.",
+  "ref": "Deuteronomy 4:21–22"
+ },
+ {
+  "id": "deuteronomy-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "At which mountain did the people stand and hear the LORD?",
+  "choices": [
+   "Nebo",
+   "Carmel",
+   "Horeb",
+   "Hermon"
+  ],
+  "answer": 2,
+  "explanation": "The day that thou stoodest before the LORD thy God in Horeb.",
+  "ref": "Deuteronomy 4:10"
+ },
+ {
+  "id": "deuteronomy-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which heavenly lights might tempt Israel to worship them?",
+  "choices": [
+   "Sun, moon and stars",
+   "Lightning",
+   "Comets",
+   "Clouds"
+  ],
+  "answer": 0,
+  "explanation": "When thou seest the sun, and the moon, and the stars, shouldest be driven to worship them.",
+  "ref": "Deuteronomy 4:19"
+ },
+ {
+  "id": "deuteronomy-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will happen if Israel seeks the LORD with all their heart and soul?",
+  "choices": [
+   "They will find Him",
+   "They will be silent",
+   "They will be rich",
+   "They will be kings"
+  ],
+  "answer": 0,
+  "explanation": "If thou seek him with all thy heart and with all thy soul, thou shalt find him.",
+  "ref": "Deuteronomy 4:29"
+ },
+ {
+  "id": "deuteronomy-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of God is the LORD, according to Moses?",
+  "choices": [
+   "A distant God",
+   "A hidden God",
+   "A merciful God",
+   "A silent God"
+  ],
+  "answer": 2,
+  "explanation": "The LORD thy God is a merciful God; he will not forsake thee.",
+  "ref": "Deuteronomy 4:31"
+ },
+ {
+  "id": "deuteronomy-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD do to the men who followed Baal-peor?",
+  "choices": [
+   "Healed them",
+   "Led them out",
+   "Destroyed them from among you",
+   "Scattered them"
+  ],
+  "answer": 2,
+  "explanation": "All the men that followed Baal-peor, the LORD thy God hath destroyed them from among you.",
+  "ref": "Deuteronomy 4:3"
+ },
+ {
+  "id": "deuteronomy-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were alive every one that day?",
+  "choices": [
+   "Those who cleaved unto the LORD",
+   "Those who left Egypt",
+   "Those at Pisgah",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "Ye that did cleave unto the LORD your God are alive every one of you this day.",
+  "ref": "Deuteronomy 4:4"
+ },
+ {
+  "id": "deuteronomy-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom were Israel to teach the things they had seen?",
+  "choices": [
+   "Strangers",
+   "The Levites only",
+   "The nations",
+   "Their sons and sons' sons"
+  ],
+  "answer": 3,
+  "explanation": "Teach them thy sons, and thy sons' sons.",
+  "ref": "Deuteronomy 4:9"
+ },
+ {
+  "id": "deuteronomy-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD gather the people at Horeb?",
+  "choices": [
+   "So they might build",
+   "So they might learn to fear Him",
+   "So they might count themselves",
+   "So they might sacrifice"
+  ],
+  "answer": 1,
+  "explanation": "Gather me the people together, that they may learn to fear me.",
+  "ref": "Deuteronomy 4:10"
+ },
+ {
+  "id": "deuteronomy-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Israel receive the LORD's words at Horeb?",
+  "choices": [
+   "They saw a bird",
+   "They saw a man",
+   "They heard a voice but saw no similitude",
+   "They saw a face"
+  ],
+  "answer": 2,
+  "explanation": "Ye heard the voice of the words, but saw no similitude; only ye heard a voice.",
+  "ref": "Deuteronomy 4:12"
+ },
+ {
+  "id": "deuteronomy-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Moses not allowed to enter the land?",
+  "choices": [
+   "The LORD was angry with him for their sakes",
+   "He had no sons",
+   "He lost the staff",
+   "He was too old"
+  ],
+  "answer": 0,
+  "explanation": "The LORD was angry with me for your sakes, and sware that I should not go over Jordan.",
+  "ref": "Deuteronomy 4:21"
+ },
+ {
+  "id": "deuteronomy-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Moses say he must die?",
+  "choices": [
+   "In Egypt",
+   "In this land",
+   "In Horeb",
+   "In Canaan"
+  ],
+  "answer": 1,
+  "explanation": "I must die in this land, I must not go over Jordan.",
+  "ref": "Deuteronomy 4:22"
+ },
+ {
+  "id": "deuteronomy-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Moses call to witness against Israel if they sinned?",
+  "choices": [
+   "The elders",
+   "The nations",
+   "Heaven and earth",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "I call heaven and earth to witness against you this day.",
+  "ref": "Deuteronomy 4:26"
+ },
+ {
+  "id": "deuteronomy-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of gods would Israel serve among the nations?",
+  "choices": [
+   "Gods of gold",
+   "Gods of wood and stone",
+   "Gods of the sea",
+   "Gods of fire"
+  ],
+  "answer": 1,
+  "explanation": "There ye shall serve gods, the work of men's hands, wood and stone.",
+  "ref": "Deuteronomy 4:28"
+ },
+ {
+  "id": "deuteronomy-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many would be left among the heathen?",
+  "choices": [
+   "Twelve",
+   "None",
+   "Few in number",
+   "A thousand"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall be left few in number among the heathen.",
+  "ref": "Deuteronomy 4:27"
+ },
+ {
+  "id": "deuteronomy-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Which tribe received Bezer?",
+  "choices": [
+   "Reubenites",
+   "Manassites",
+   "Levites",
+   "Gadites"
+  ],
+  "answer": 0,
+  "explanation": "Bezer in the wilderness, in the plain country, of the Reubenites.",
+  "ref": "Deuteronomy 4:43"
+ },
+ {
+  "id": "deuteronomy-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Which tribe received Ramoth in Gilead?",
+  "choices": [
+   "Reubenites",
+   "Gadites",
+   "Manassites",
+   "Judahites"
+  ],
+  "answer": 1,
+  "explanation": "Ramoth in Gilead, of the Gadites.",
+  "ref": "Deuteronomy 4:43"
+ },
+ {
+  "id": "deuteronomy-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Which tribe received Golan in Bashan?",
+  "choices": [
+   "Reubenites",
+   "Levites",
+   "Gadites",
+   "Manassites"
+  ],
+  "answer": 3,
+  "explanation": "Golan in Bashan, of the Manassites.",
+  "ref": "Deuteronomy 4:43"
+ },
+ {
+  "id": "deuteronomy-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Moses set apart the three cities?",
+  "choices": [
+   "For the priests",
+   "For the slayer who killed unawares",
+   "For the sick",
+   "For prisoners of war"
+  ],
+  "answer": 1,
+  "explanation": "That the slayer might flee thither, which should kill his neighbour unawares.",
+  "ref": "Deuteronomy 4:42"
+ },
+ {
+  "id": "deuteronomy-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which days would Israel turn to the LORD in tribulation?",
+  "choices": [
+   "In the latter days",
+   "In the first days",
+   "In the days of the judges",
+   "In the days of famine"
+  ],
+  "answer": 0,
+  "explanation": "When thou art in tribulation, even in the latter days, if thou turn to the LORD thy God.",
+  "ref": "Deuteronomy 4:30"
+ },
+ {
+  "id": "deuteronomy-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Which king dwelt at Heshbon in the land of the valley over against Beth-peor?",
+  "choices": [
+   "Arad",
+   "Og",
+   "Balak",
+   "Sihon"
+  ],
+  "answer": 3,
+  "explanation": "In the land of Sihon king of the Amorites, who dwelt at Heshbon.",
+  "ref": "Deuteronomy 4:46"
+ },
+ {
+  "id": "deuteronomy-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "The land stretched from Aroer by Arnon to which mount?",
+  "choices": [
+   "Moriah",
+   "Sinai",
+   "Hermon",
+   "Nebo"
+  ],
+  "answer": 2,
+  "explanation": "From Aroer, which is by the bank of the river Arnon, even unto mount Sion, which is Hermon.",
+  "ref": "Deuteronomy 4:48"
+ },
+ {
+  "id": "deuteronomy-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "The plain eastward reached under the springs of which mountain?",
+  "choices": [
+   "Hor",
+   "Pisgah",
+   "Gerizim",
+   "Tabor"
+  ],
+  "answer": 1,
+  "explanation": "Even unto the sea of the plain, under the springs of Pisgah.",
+  "ref": "Deuteronomy 4:49"
+ },
+ {
+  "id": "deuteronomy-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the LORD choose the seed of Israel's fathers?",
+  "choices": [
+   "Because he loved thy fathers",
+   "Because they asked",
+   "Because they were many",
+   "Because they were strong"
+  ],
+  "answer": 0,
+  "explanation": "Because he loved thy fathers, therefore he chose their seed after them.",
+  "ref": "Deuteronomy 4:37"
+ },
+ {
+  "id": "deuteronomy-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The nations the LORD would drive out were greater and what?",
+  "choices": [
+   "Fewer than Israel",
+   "Poorer than Israel",
+   "Mightier than Israel",
+   "Older than Israel"
+  ],
+  "answer": 2,
+  "explanation": "To drive out nations from before thee greater and mightier than thou art.",
+  "ref": "Deuteronomy 4:38"
+ },
+ {
+  "id": "deuteronomy-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which water creature is named among forbidden likenesses?",
+  "choices": [
+   "Fish",
+   "Serpent",
+   "Whale",
+   "Frog"
+  ],
+  "answer": 0,
+  "explanation": "The likeness of any fish that is in the waters beneath the earth.",
+  "ref": "Deuteronomy 4:18"
+ },
+ {
+  "id": "deuteronomy-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who divided the sun, moon and stars unto all nations?",
+  "choices": [
+   "The elders",
+   "Moses",
+   "The LORD thy God",
+   "Joshua"
+  ],
+  "answer": 2,
+  "explanation": "The host of heaven, which the LORD thy God hath divided unto all nations.",
+  "ref": "Deuteronomy 4:19"
+ },
+ {
+  "id": "deuteronomy-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses call Israel in relation to God?",
+  "choices": [
+   "A people of inheritance",
+   "A people of fire",
+   "A people of rest",
+   "A chosen priesthood"
+  ],
+  "answer": 0,
+  "explanation": "To be unto him a people of inheritance, as ye are this day.",
+  "ref": "Deuteronomy 4:20"
+ },
+ {
+  "id": "deuteronomy-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these did God use to take a nation from another nation?",
+  "choices": [
+   "A sword of fire",
+   "A flood",
+   "A stretched out arm",
+   "A star"
+  ],
+  "answer": 2,
+  "explanation": "By a mighty hand, and by a stretched out arm, and by great terrors.",
+  "ref": "Deuteronomy 4:34"
+ },
+ {
+  "id": "deuteronomy-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses ask if any people had heard God from the fire and lived?",
+  "choices": [
+   "Did ever people hear and live?",
+   "Did any build an altar?",
+   "Did any ask for rain?",
+   "Did any see his face?"
+  ],
+  "answer": 0,
+  "explanation": "Did ever people hear the voice of God speaking out of the midst of the fire, and live?",
+  "ref": "Deuteronomy 4:33"
+ },
+ {
+  "id": "deuteronomy-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If Israel kept the statutes, what would be prolonged?",
+  "choices": [
+   "Their journey",
+   "Their tents",
+   "Their days upon the earth",
+   "Their winters"
+  ],
+  "answer": 2,
+  "explanation": "That thou mayest prolong thy days upon the earth.",
+  "ref": "Deuteronomy 4:40"
+ },
+ {
+  "id": "deuteronomy-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The mountain at Horeb burned with fire with what else?",
+  "choices": [
+   "Darkness, clouds and thick darkness",
+   "Smoke and ash",
+   "Wind and rain",
+   "Thunder and hail"
+  ],
+  "answer": 0,
+  "explanation": "The mountain burned with fire unto the midst of heaven, with darkness, clouds, and thick darkness.",
+  "ref": "Deuteronomy 4:11"
+ },
+ {
+  "id": "deuteronomy-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the nations say the great nation of Israel was?",
+  "choices": [
+   "A rich people",
+   "A hidden people",
+   "A feared people",
+   "A wise and understanding people"
+  ],
+  "answer": 3,
+  "explanation": "Surely this great nation is a wise and understanding people.",
+  "ref": "Deuteronomy 4:6"
+ },
+ {
+  "id": "deuteronomy-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD not forget, though Israel is scattered?",
+  "choices": [
+   "The names of cities",
+   "The temple",
+   "The covenant of thy fathers",
+   "The feasts"
+  ],
+  "answer": 2,
+  "explanation": "He will not forget the covenant of thy fathers which he sware unto them.",
+  "ref": "Deuteronomy 4:31"
+ },
+ {
+  "id": "deuteronomy-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where were the three cities set apart in relation to Jordan?",
+  "choices": [
+   "South of Seir",
+   "Across Jordan westward",
+   "On this side Jordan toward the sunrising",
+   "Along the Great sea"
+  ],
+  "answer": 2,
+  "explanation": "Moses severed three cities on this side Jordan toward the sunrising.",
+  "ref": "Deuteronomy 4:41"
+ },
+ {
   "id": "old-deuteronomy-5-1",
   "chapter": 5,
   "level": "beginner",
