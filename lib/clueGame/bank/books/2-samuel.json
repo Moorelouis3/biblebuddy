@@ -756,31 +756,31 @@
   "chapter": 2,
   "level": "beginner",
   "category": "person",
-  "question": "Whom did Abner set up as king over the northern tribes?",
+  "question": "Whom did Abner make king over Gilead and Israel?",
   "choices": [
-   "Jonathan",
-   "Mephibosheth",
    "Joab",
-   "Ishbosheth"
+   "Mephibosheth",
+   "Jonathan",
+   "Ish-bosheth"
   ],
   "answer": 3,
-  "explanation": "Abner made Ishbosheth, Saul's son, king over Israel.",
-  "ref": "2 Samuel 2:8–10"
+  "explanation": "Abner took Ish-bosheth the son of Saul, brought him to Mahanaim, and made him king.",
+  "ref": "2 Samuel 2:8–9"
  },
  {
   "id": "old-2-samuel-2-4",
   "chapter": 2,
   "level": "beginner",
   "category": "place",
-  "question": "Where did the servants of David and the servants of Ishbosheth first meet in conflict?",
+  "question": "Where did Joab's men and Abner's men meet, sitting on either side?",
   "choices": [
    "The pool of Gibeon",
-   "Hebron",
-   "Gilgal",
-   "Bethlehem"
+   "The well of Bethlehem",
+   "The pool of Siloam",
+   "The brook Besor"
   ],
   "answer": 0,
-  "explanation": "The confrontation took place by the pool of Gibeon.",
+  "explanation": "Joab and the servants of David met together by the pool of Gibeon, one on each side.",
   "ref": "2 Samuel 2:13"
  },
  {
@@ -788,16 +788,672 @@
   "chapter": 2,
   "level": "beginner",
   "category": "person",
-  "question": "Who killed Asahel after Asahel pursued him persistently?",
+  "question": "Who killed Asahel after he pursued him?",
   "choices": [
-   "Abner",
+   "Abishai",
+   "Ish-bosheth",
    "Joab",
-   "Ishbosheth",
-   "David"
+   "Abner"
+  ],
+  "answer": 3,
+  "explanation": "Abner with the hinder end of the spear smote him under the fifth rib, and he died in the same place.",
+  "ref": "2 Samuel 2:23"
+ },
+ {
+  "id": "2-samuel-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did the LORD tell David to go up?",
+  "choices": [
+   "Hebron",
+   "Bethlehem",
+   "Jerusalem",
+   "Gibeon"
   ],
   "answer": 0,
-  "explanation": "Abner slew Asahel with the hinder end of the spear.",
+  "explanation": "David enquired of the LORD, Whither shall I go up? And he said, Unto Hebron.",
+  "ref": "2 Samuel 2:1"
+ },
+ {
+  "id": "2-samuel-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two wives went up with David?",
+  "choices": [
+   "Ahinoam and Abigail",
+   "Abigail and Bathsheba",
+   "Michal and Abigail",
+   "Michal and Ahinoam"
+  ],
+  "answer": 0,
+  "explanation": "David went up, and his two wives also, Ahinoam the Jezreelitess, and Abigail Nabal's wife.",
+  "ref": "2 Samuel 2:2"
+ },
+ {
+  "id": "2-samuel-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who anointed David king over the house of Judah?",
+  "choices": [
+   "Abner",
+   "Samuel",
+   "The men of Judah",
+   "The priests of Nob"
+  ],
+  "answer": 2,
+  "explanation": "The men of Judah came, and there they anointed David king over the house of Judah.",
+  "ref": "2 Samuel 2:4"
+ },
+ {
+  "id": "2-samuel-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who buried Saul, as the men of Judah told David?",
+  "choices": [
+   "The men of Jabesh-gilead",
+   "David's mighty men",
+   "The Philistines",
+   "The men of Keilah"
+  ],
+  "answer": 0,
+  "explanation": "They told David, That the men of Jabesh-gilead were they that buried Saul.",
+  "ref": "2 Samuel 2:4"
+ },
+ {
+  "id": "2-samuel-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was captain of Saul's host?",
+  "choices": [
+   "Joab",
+   "Asahel",
+   "Abner the son of Ner",
+   "Abishai"
+  ],
+  "answer": 2,
+  "explanation": "Abner the son of Ner, captain of Saul's host, took Ish-bosheth.",
+  "ref": "2 Samuel 2:8"
+ },
+ {
+  "id": "2-samuel-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Abner bring Ish-bosheth?",
+  "choices": [
+   "Gibeon",
+   "Gilgal",
+   "Hebron",
+   "Mahanaim"
+  ],
+  "answer": 3,
+  "explanation": "Abner took Ish-bosheth the son of Saul, and brought him over to Mahanaim.",
+  "ref": "2 Samuel 2:8"
+ },
+ {
+  "id": "2-samuel-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was David king in Hebron over Judah?",
+  "choices": [
+   "Seven years and six months",
+   "Two years",
+   "Forty years",
+   "Three years"
+  ],
+  "answer": 0,
+  "explanation": "The time that David was king in Hebron over the house of Judah was seven years and six months.",
+  "ref": "2 Samuel 2:11"
+ },
+ {
+  "id": "2-samuel-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Asahel as light of foot as?",
+  "choices": [
+   "A running eagle",
+   "A swift hare",
+   "A wild roe",
+   "A young lion"
+  ],
+  "answer": 2,
+  "explanation": "Asahel was as light of foot as a wild roe.",
+  "ref": "2 Samuel 2:18"
+ },
+ {
+  "id": "2-samuel-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose brothers were Joab, Abishai and Asahel?",
+  "choices": [
+   "Sons of Jesse",
+   "Sons of Zeruiah",
+   "Sons of Ner",
+   "Sons of Saul"
+  ],
+  "answer": 1,
+  "explanation": "There were three sons of Zeruiah there, Joab, and Abishai, and Asahel.",
+  "ref": "2 Samuel 2:18"
+ },
+ {
+  "id": "2-samuel-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joab do to stop the fighting?",
+  "choices": [
+   "Lifted his spear",
+   "Rode between the lines",
+   "Sent a messenger to Hebron",
+   "Blew a trumpet"
+  ],
+  "answer": 3,
+  "explanation": "Joab blew a trumpet, and all the people stood still, and pursued after Israel no more.",
+  "ref": "2 Samuel 2:28"
+ },
+ {
+  "id": "2-samuel-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David do before going up to a city of Judah?",
+  "choices": [
+   "Offered a burnt offering",
+   "Enquired of the LORD",
+   "Sent for Abner",
+   "Called a council of his men"
+  ],
+  "answer": 1,
+  "explanation": "David enquired of the LORD, saying, Shall I go up into any of the cities of Judah?",
+  "ref": "2 Samuel 2:1"
+ },
+ {
+  "id": "2-samuel-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who came up with David to dwell in the cities of Hebron?",
+  "choices": [
+   "Every man of his, with his household",
+   "The elders of Judah",
+   "Only his two wives",
+   "His brothers"
+  ],
+  "answer": 0,
+  "explanation": "His men that were with him did David bring up, every man with his household.",
+  "ref": "2 Samuel 2:3"
+ },
+ {
+  "id": "2-samuel-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David send to the men of Jabesh-gilead?",
+  "choices": [
+   "A gift of oxen",
+   "A letter of silver",
+   "Messengers",
+   "An army"
+  ],
+  "answer": 2,
+  "explanation": "David sent messengers unto the men of Jabesh-gilead, and said, Blessed be ye of the LORD.",
+  "ref": "2 Samuel 2:5"
+ },
+ {
+  "id": "2-samuel-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David bless the men of Jabesh-gilead?",
+  "choices": [
+   "They had fed his men",
+   "They had shown kindness to Saul by burying him",
+   "They had fought Abner",
+   "They had joined his army"
+  ],
+  "answer": 1,
+  "explanation": "Blessed be ye of the LORD, that ye have shewed this kindness unto your lord, even unto Saul, and have buried him.",
+  "ref": "2 Samuel 2:5"
+ },
+ {
+  "id": "2-samuel-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David tell the men of Jabesh to be?",
+  "choices": [
+   "Wise",
+   "Silent",
+   "Valiant",
+   "Patient"
+  ],
+  "answer": 2,
+  "explanation": "Let your hands be strengthened, and be ye valiant: for your master Saul is dead.",
+  "ref": "2 Samuel 2:7"
+ },
+ {
+  "id": "2-samuel-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Over which places did Abner make Ish-bosheth king?",
+  "choices": [
+   "Moab and Ammon",
+   "Gilead and all Israel",
+   "Judah and Hebron",
+   "Only Benjamin"
+  ],
+  "answer": 1,
+  "explanation": "Abner made him king over Gilead, and over the Ashurites, and over Jezreel, and over Ephraim, and over Benjamin, and over all Israel.",
+  "ref": "2 Samuel 2:9"
+ },
+ {
+  "id": "2-samuel-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How old was Ish-bosheth when he began to reign?",
+  "choices": [
+   "Thirty years old",
+   "Sixty years old",
+   "Twenty years old",
+   "Forty years old"
+  ],
+  "answer": 3,
+  "explanation": "Ish-bosheth Saul's son was forty years old when he began to reign over Israel.",
+  "ref": "2 Samuel 2:10"
+ },
+ {
+  "id": "2-samuel-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did Ish-bosheth reign over Israel?",
+  "choices": [
+   "Forty years",
+   "Seven years",
+   "Two years",
+   "One year"
+  ],
+  "answer": 2,
+  "explanation": "Ish-bosheth reigned two years.",
+  "ref": "2 Samuel 2:10"
+ },
+ {
+  "id": "2-samuel-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who followed David while Ish-bosheth reigned?",
+  "choices": [
+   "The men of Gilead",
+   "The Philistines",
+   "The house of Judah",
+   "The house of Benjamin"
+  ],
+  "answer": 2,
+  "explanation": "The house of Judah followed David.",
+  "ref": "2 Samuel 2:10"
+ },
+ {
+  "id": "2-samuel-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Joab's mother?",
+  "choices": [
+   "Zeruiah",
+   "Rizpah",
+   "Abigail",
+   "Ahinoam"
+  ],
+  "answer": 0,
+  "explanation": "Joab the son of Zeruiah, and the servants of David, went out.",
+  "ref": "2 Samuel 2:13"
+ },
+ {
+  "id": "2-samuel-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abner suggest the young men do before them?",
+  "choices": [
+   "Run a race",
+   "Arise and play",
+   "Wrestle",
+   "Cast lots"
+  ],
+  "answer": 1,
+  "explanation": "Abner said to Joab, Let the young men now arise, and play before us.",
+  "ref": "2 Samuel 2:14"
+ },
+ {
+  "id": "2-samuel-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men from each side went over to play?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Twenty",
+   "Twelve"
+  ],
+  "answer": 3,
+  "explanation": "There arose and went over by number twelve of Benjamin, and twelve of the servants of David.",
+  "ref": "2 Samuel 2:15"
+ },
+ {
+  "id": "2-samuel-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "What was the place of the fight called?",
+  "choices": [
+   "Beth-shan",
+   "Mahanaim",
+   "Helkath-hazzurim",
+   "Baal-perazim"
+  ],
+  "answer": 2,
+  "explanation": "That place was called Helkath-hazzurim, which is in Gibeon.",
+  "ref": "2 Samuel 2:16"
+ },
+ {
+  "id": "2-samuel-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Which side was beaten in the very sore battle?",
+  "choices": [
+   "Both sides equally",
+   "Abner and the men of Israel",
+   "The men of Judah",
+   "Joab and David's servants"
+  ],
+  "answer": 1,
+  "explanation": "Abner was beaten, and the men of Israel, before the servants of David.",
+  "ref": "2 Samuel 2:17"
+ },
+ {
+  "id": "2-samuel-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abner say would be bitter in the latter end?",
+  "choices": [
+   "The pursuit of Benjamin",
+   "The sword devouring for ever",
+   "The pool of Gibeon",
+   "The loss of Ish-bosheth"
+  ],
+  "answer": 1,
+  "explanation": "Shall the sword devour for ever? knowest thou not that it will be bitterness in the latter end?",
+  "ref": "2 Samuel 2:26"
+ },
+ {
+  "id": "2-samuel-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the twelve and twelve men fight at the pool?",
+  "choices": [
+   "With spears from a distance",
+   "With slings and stones",
+   "With staves and clubs",
+   "Caught each other by the head, sword in the side"
+  ],
+  "answer": 3,
+  "explanation": "They caught every one his fellow by the head, and thrust his sword in his fellow's side; so they fell down together.",
+  "ref": "2 Samuel 2:16"
+ },
+ {
+  "id": "2-samuel-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Asahel follow Abner?",
+  "choices": [
+   "He circled him",
+   "He turned not to the right nor the left",
+   "He called out to him",
+   "He followed from far behind"
+  ],
+  "answer": 1,
+  "explanation": "In going he turned not to the right hand nor to the left from following Abner.",
+  "ref": "2 Samuel 2:19"
+ },
+ {
+  "id": "2-samuel-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abner say Asahel could take instead of pursuing him?",
+  "choices": [
+   "The armour of one of the young men",
+   "The horse of Joab",
+   "The spear of Abner",
+   "The crown of Ish-bosheth"
+  ],
+  "answer": 0,
+  "explanation": "Lay thee hold on one of the young men, and take thee his armour.",
+  "ref": "2 Samuel 2:21"
+ },
+ {
+  "id": "2-samuel-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who did Abner say he would have to face if he killed Asahel?",
+  "choices": [
+   "Joab, Asahel's brother",
+   "Abishai",
+   "David",
+   "Ish-bosheth"
+  ],
+  "answer": 0,
+  "explanation": "How then should I hold up my face to Joab thy brother?",
+  "ref": "2 Samuel 2:22"
+ },
+ {
+  "id": "2-samuel-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where under the ribs did Abner smite Asahel?",
+  "choices": [
+   "In the side",
+   "In the chest",
+   "In the back",
+   "Under the fifth rib"
+  ],
+  "answer": 3,
+  "explanation": "Abner with the hinder end of the spear smote him under the fifth rib, that the spear came out behind him.",
   "ref": "2 Samuel 2:23"
+ },
+ {
+  "id": "2-samuel-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abner use to smite Asahel?",
+  "choices": [
+   "His sword",
+   "A stone",
+   "The hinder end of the spear",
+   "A bow"
+  ],
+  "answer": 2,
+  "explanation": "Abner with the hinder end of the spear smote him.",
+  "ref": "2 Samuel 2:23"
+ },
+ {
+  "id": "2-samuel-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did people do when they came to where Asahel lay?",
+  "choices": [
+   "Stood still",
+   "Turned back",
+   "Buried him there",
+   "Wept aloud"
+  ],
+  "answer": 0,
+  "explanation": "As many as came to the place where Asahel fell down and died stood still.",
+  "ref": "2 Samuel 2:23"
+ },
+ {
+  "id": "2-samuel-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two brothers pursued Abner after Asahel fell?",
+  "choices": [
+   "Joab and Abishai",
+   "Abishai and David",
+   "Abner and Joab",
+   "Joab and Asahel"
+  ],
+  "answer": 0,
+  "explanation": "Joab also and Abishai pursued after Abner.",
+  "ref": "2 Samuel 2:24"
+ },
+ {
+  "id": "2-samuel-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "At what hill did the sun go down on the pursuit?",
+  "choices": [
+   "The hill of Hachilah",
+   "The hill of Ammah",
+   "The hill of Moriah",
+   "Mount Gilboa"
+  ],
+  "answer": 1,
+  "explanation": "The sun went down when they were come to the hill of Ammah.",
+  "ref": "2 Samuel 2:24"
+ },
+ {
+  "id": "2-samuel-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who gathered after Abner and stood on the top of a hill?",
+  "choices": [
+   "The servants of David",
+   "The men of Judah",
+   "The Philistines",
+   "The children of Benjamin"
+  ],
+  "answer": 3,
+  "explanation": "The children of Benjamin gathered themselves together after Abner, and became one troop.",
+  "ref": "2 Samuel 2:25"
+ },
+ {
+  "id": "2-samuel-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joab say would have happened by morning if Abner had not spoken?",
+  "choices": [
+   "The pool would have been taken",
+   "The people would have gone up from following their brethren",
+   "The people would have burned the city",
+   "Abner would have been slain"
+  ],
+  "answer": 1,
+  "explanation": "As God liveth, unless thou hadst spoken, surely then in the morning the people had gone up every one from following his brother.",
+  "ref": "2 Samuel 2:27"
+ },
+ {
+  "id": "2-samuel-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Abner and his men travel back to Mahanaim?",
+  "choices": [
+   "By day through the hills",
+   "In boats on Jordan",
+   "Divided in three groups",
+   "All that night through the plain"
+  ],
+  "answer": 3,
+  "explanation": "Abner and his men walked all that night through the plain, and passed over Jordan.",
+  "ref": "2 Samuel 2:29"
+ },
+ {
+  "id": "2-samuel-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of David's servants were lacking, besides Asahel?",
+  "choices": [
+   "Nineteen",
+   "Twelve",
+   "Three hundred",
+   "Nine"
+  ],
+  "answer": 0,
+  "explanation": "There lacked of David's servants nineteen men and Asahel.",
+  "ref": "2 Samuel 2:30"
+ },
+ {
+  "id": "2-samuel-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of Benjamin and Abner's men died?",
+  "choices": [
+   "Three hundred and threescore",
+   "Nineteen",
+   "Two thousand",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "The servants of David had smitten of Benjamin, and of Abner's men, so that three hundred and threescore men died.",
+  "ref": "2 Samuel 2:31"
+ },
+ {
+  "id": "2-samuel-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Asahel buried?",
+  "choices": [
+   "At Hebron",
+   "At Gibeon by the pool",
+   "In his father's sepulchre in Bethlehem",
+   "At Mahanaim"
+  ],
+  "answer": 2,
+  "explanation": "They took up Asahel, and buried him in the sepulchre of his father, which was in Bethlehem.",
+  "ref": "2 Samuel 2:32"
+ },
+ {
+  "id": "2-samuel-2-h-16",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Joab and his men reach Hebron?",
+  "choices": [
+   "At sunset",
+   "At midnight",
+   "At noon",
+   "At break of day"
+  ],
+  "answer": 3,
+  "explanation": "Joab and his men went all night, and they came to Hebron at break of day.",
+  "ref": "2 Samuel 2:32"
  },
  {
   "id": "old-2-samuel-3-1",
