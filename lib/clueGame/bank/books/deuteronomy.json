@@ -10928,6 +10928,646 @@
   "ref": "Deuteronomy 16:21"
  },
  {
+  "id": "deuteronomy-16-e-01",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which feast begins the chapter?",
+  "choices": [
+   "The passover",
+   "The feast of weeks",
+   "The feast of tabernacles",
+   "The feast of trumpets"
+  ],
+  "answer": 0,
+  "explanation": "Observe the month of Abib, and keep the passover unto the LORD thy God.",
+  "ref": "Deuteronomy 16:1"
+ },
+ {
+  "id": "deuteronomy-16-e-02",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did the LORD bring Israel out of Egypt?",
+  "choices": [
+   "At noon",
+   "At dawn",
+   "On the sabbath",
+   "By night"
+  ],
+  "answer": 3,
+  "explanation": "In the month of Abib the LORD thy God brought thee forth out of Egypt by night.",
+  "ref": "Deuteronomy 16:1"
+ },
+ {
+  "id": "deuteronomy-16-e-03",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of bread was eaten with the passover?",
+  "choices": [
+   "Honey bread",
+   "Barley cakes",
+   "Unleavened bread",
+   "Fine flour bread"
+  ],
+  "answer": 2,
+  "explanation": "Seven days shalt thou eat unleavened bread therewith, even the bread of affliction.",
+  "ref": "Deuteronomy 16:3"
+ },
+ {
+  "id": "deuteronomy-16-e-04",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the unleavened bread called?",
+  "choices": [
+   "The bread of angels",
+   "The bread of affliction",
+   "The bread of the poor",
+   "The bread of the covenant"
+  ],
+  "answer": 1,
+  "explanation": "Even the bread of affliction; for thou camest forth out of the land of Egypt in haste.",
+  "ref": "Deuteronomy 16:3"
+ },
+ {
+  "id": "deuteronomy-16-e-05",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what time of day was the passover to be sacrificed?",
+  "choices": [
+   "At dawn",
+   "At even, at the going down of the sun",
+   "At noon",
+   "At midnight"
+  ],
+  "answer": 1,
+  "explanation": "There thou shalt sacrifice the passover at even, at the going down of the sun.",
+  "ref": "Deuteronomy 16:6"
+ },
+ {
+  "id": "deuteronomy-16-e-06",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Israel go in the morning after the passover?",
+  "choices": [
+   "To their tents",
+   "To the mountain",
+   "To the Levites",
+   "To the sea"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt turn in the morning, and go unto thy tents.",
+  "ref": "Deuteronomy 16:7"
+ },
+ {
+  "id": "deuteronomy-16-e-07",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many weeks were Israel to number toward the feast of weeks?",
+  "choices": [
+   "Three",
+   "Ten",
+   "Twelve",
+   "Seven"
+  ],
+  "answer": 3,
+  "explanation": "Seven weeks shalt thou number unto thee.",
+  "ref": "Deuteronomy 16:9"
+ },
+ {
+  "id": "deuteronomy-16-e-08",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days is the feast of tabernacles kept?",
+  "choices": [
+   "One day",
+   "Three days",
+   "Seven days",
+   "Fifty days"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt observe the feast of tabernacles seven days.",
+  "ref": "Deuteronomy 16:13"
+ },
+ {
+  "id": "deuteronomy-16-e-09",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who are appointed in all the gates to judge the people?",
+  "choices": [
+   "Priests and kings",
+   "Elders and prophets",
+   "Judges and officers",
+   "Levites and scribes"
+  ],
+  "answer": 2,
+  "explanation": "Judges and officers shalt thou make thee in all thy gates.",
+  "ref": "Deuteronomy 16:18"
+ },
+ {
+  "id": "deuteronomy-16-e-10",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are Israel told to follow so they may live?",
+  "choices": [
+   "The king's word",
+   "That which is altogether just",
+   "The elders' counsel",
+   "The way of the nations"
+  ],
+  "answer": 1,
+  "explanation": "That which is altogether just shalt thou follow, that thou mayest live, and inherit the land.",
+  "ref": "Deuteronomy 16:20"
+ },
+ {
+  "id": "deuteronomy-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel to sacrifice as the passover?",
+  "choices": [
+   "Only lambs of the first year",
+   "Of the flock and the herd",
+   "Only doves",
+   "Only goats"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt therefore sacrifice the passover unto the LORD thy God, of the flock and the herd.",
+  "ref": "Deuteronomy 16:2"
+ },
+ {
+  "id": "deuteronomy-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Israel eat unleavened bread, according to Moses?",
+  "choices": [
+   "They came out of Egypt in haste",
+   "The ovens were broken",
+   "The wheat was green",
+   "It was the priests' custom"
+  ],
+  "answer": 0,
+  "explanation": "For thou camest forth out of the land of Egypt in haste.",
+  "ref": "Deuteronomy 16:3"
+ },
+ {
+  "id": "deuteronomy-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must not be seen in Israel's coast for seven days?",
+  "choices": [
+   "Leavened bread",
+   "Oil",
+   "Strangers",
+   "Wine"
+  ],
+  "answer": 0,
+  "explanation": "There shall be no leavened bread seen with thee in all thy coast seven days.",
+  "ref": "Deuteronomy 16:4"
+ },
+ {
+  "id": "deuteronomy-16-m-04",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not to remain until the morning of the flesh sacrificed the first day?",
+  "choices": [
+   "The blood",
+   "The bread",
+   "The wine",
+   "Anything of the flesh"
+  ],
+  "answer": 3,
+  "explanation": "Neither shall there any thing of the flesh, which thou sacrificedst the first day at even, remain all night until the morning.",
+  "ref": "Deuteronomy 16:4"
+ },
+ {
+  "id": "deuteronomy-16-m-05",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the passover not to be sacrificed?",
+  "choices": [
+   "At the chosen place",
+   "At the altar",
+   "Within any of their gates",
+   "At the tabernacle"
+  ],
+  "answer": 2,
+  "explanation": "Thou mayest not sacrifice the passover within any of thy gates.",
+  "ref": "Deuteronomy 16:5"
+ },
+ {
+  "id": "deuteronomy-16-m-06",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the passover to be prepared?",
+  "choices": [
+   "Boiled in the camp",
+   "Roasted and eaten at the chosen place",
+   "Eaten raw",
+   "Carried home"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt roast and eat it in the place which the LORD thy God shall choose.",
+  "ref": "Deuteronomy 16:7"
+ },
+ {
+  "id": "deuteronomy-16-m-07",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens on the seventh day of unleavened bread?",
+  "choices": [
+   "A great sacrifice",
+   "A solemn assembly, with no work",
+   "A feast for the poor",
+   "A march to the chosen place"
+  ],
+  "answer": 1,
+  "explanation": "On the seventh day shall be a solemn assembly to the LORD thy God: thou shalt do no work therein.",
+  "ref": "Deuteronomy 16:8"
+ },
+ {
+  "id": "deuteronomy-16-m-08",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Israel begin to number the seven weeks?",
+  "choices": [
+   "When they put the sickle to the corn",
+   "When the passover was eaten",
+   "When the rains fell",
+   "When the firstlings were born"
+  ],
+  "answer": 0,
+  "explanation": "Begin to number the seven weeks from such time as thou beginnest to put the sickle to the corn.",
+  "ref": "Deuteronomy 16:9"
+ },
+ {
+  "id": "deuteronomy-16-m-09",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel bring at the feast of weeks?",
+  "choices": [
+   "A tenth of the flock",
+   "A lamb without spot",
+   "A sheaf of barley",
+   "A freewill offering according to the LORD's blessing"
+  ],
+  "answer": 3,
+  "explanation": "Keep the feast of weeks unto the LORD thy God with a tribute of a freewill offering of thine hand, according as the LORD thy God hath blessed thee.",
+  "ref": "Deuteronomy 16:10"
+ },
+ {
+  "id": "deuteronomy-16-m-10",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who were to rejoice with Israel at the feast of weeks?",
+  "choices": [
+   "Only the priests",
+   "Only the elders",
+   "The Levite, stranger, fatherless and widow",
+   "Only the men of war"
+  ],
+  "answer": 2,
+  "explanation": "The Levite that is within thy gates, and the stranger, and the fatherless, and the widow, that are among you.",
+  "ref": "Deuteronomy 16:11"
+ },
+ {
+  "id": "deuteronomy-16-m-11",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When was the feast of tabernacles observed?",
+  "choices": [
+   "Before the harvest",
+   "At the new moon",
+   "After gathering in the corn and wine",
+   "In the month of Abib"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt observe the feast of tabernacles seven days, after that thou hast gathered in thy corn and thy wine.",
+  "ref": "Deuteronomy 16:13"
+ },
+ {
+  "id": "deuteronomy-16-m-12",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why shall Israel surely rejoice at the feast of tabernacles?",
+  "choices": [
+   "Their enemies are gone",
+   "The LORD shall bless them in all their increase",
+   "Their tents are built",
+   "Their king is anointed"
+  ],
+  "answer": 1,
+  "explanation": "Because the LORD thy God shall bless thee in all thine increase... therefore thou shalt surely rejoice.",
+  "ref": "Deuteronomy 16:15"
+ },
+ {
+  "id": "deuteronomy-16-m-13",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which three feasts called all males to appear before the LORD?",
+  "choices": [
+   "Unleavened bread, weeks and tabernacles",
+   "Passover, trumpets and atonement",
+   "Weeks, trumpets and tabernacles",
+   "Sabbaths, new moons and jubilee"
+  ],
+  "answer": 0,
+  "explanation": "In the feast of unleavened bread, and in the feast of weeks, and in the feast of tabernacles.",
+  "ref": "Deuteronomy 16:16"
+ },
+ {
+  "id": "deuteronomy-16-m-14",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were Israel's males not to appear before the LORD?",
+  "choices": [
+   "Armed",
+   "Barefoot",
+   "Alone",
+   "Empty"
+  ],
+  "answer": 3,
+  "explanation": "They shall not appear before the LORD empty.",
+  "ref": "Deuteronomy 16:16"
+ },
+ {
+  "id": "deuteronomy-16-m-15",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does a gift do to the eyes of the wise?",
+  "choices": [
+   "Opens them",
+   "Dims them slowly",
+   "Hardens them",
+   "Blinds them"
+  ],
+  "answer": 3,
+  "explanation": "For a gift doth blind the eyes of the wise, and pervert the words of the righteous.",
+  "ref": "Deuteronomy 16:19"
+ },
+ {
+  "id": "deuteronomy-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides sons and daughters, who rejoices in the household at the feast of weeks?",
+  "choices": [
+   "Manservant and maidservant",
+   "Captives and hirelings",
+   "Priests and scribes",
+   "Elders and captains"
+  ],
+  "answer": 0,
+  "explanation": "Thou, and thy son, and thy daughter, and thy manservant, and thy maidservant, and the Levite that is within thy gates.",
+  "ref": "Deuteronomy 16:11"
+ },
+ {
+  "id": "deuteronomy-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must be remembered all the days of life by eating the unleavened bread?",
+  "choices": [
+   "The day of the sabbath",
+   "The day of the covenant",
+   "The day they came out of Egypt",
+   "The day of the first harvest"
+  ],
+  "answer": 2,
+  "explanation": "That thou mayest remember the day when thou camest forth out of the land of Egypt all the days of thy life.",
+  "ref": "Deuteronomy 16:3"
+ },
+ {
+  "id": "deuteronomy-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how many days must unleavened bread be eaten with the passover?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Two days",
+   "Ten days"
+  ],
+  "answer": 1,
+  "explanation": "Seven days shalt thou eat unleavened bread therewith.",
+  "ref": "Deuteronomy 16:3"
+ },
+ {
+  "id": "deuteronomy-16-h-04",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At what season was the passover sacrificed?",
+  "choices": [
+   "The season of first fruits",
+   "The season they came forth out of Egypt",
+   "The season of rain",
+   "The season of the new moon"
+  ],
+  "answer": 1,
+  "explanation": "At the season that thou camest forth out of the land of Egypt.",
+  "ref": "Deuteronomy 16:6"
+ },
+ {
+  "id": "deuteronomy-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many days is unleavened bread eaten before the seventh-day assembly?",
+  "choices": [
+   "Six days",
+   "Three days",
+   "Five days",
+   "Seven days"
+  ],
+  "answer": 0,
+  "explanation": "Six days thou shalt eat unleavened bread: and on the seventh day shall be a solemn assembly.",
+  "ref": "Deuteronomy 16:8"
+ },
+ {
+  "id": "deuteronomy-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Moses tell Israel to remember at the feast of weeks?",
+  "choices": [
+   "They were kings",
+   "They were strangers in Moab",
+   "They were priests",
+   "They were bondmen in Egypt"
+  ],
+  "answer": 3,
+  "explanation": "And thou shalt remember that thou wast a bondman in Egypt.",
+  "ref": "Deuteronomy 16:12"
+ },
+ {
+  "id": "deuteronomy-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who else besides the Levite is to rejoice at the feast of tabernacles?",
+  "choices": [
+   "The prophet and the elder",
+   "The soldier and the captain",
+   "The stranger, the fatherless and the widow",
+   "The judge and the officer"
+  ],
+  "answer": 2,
+  "explanation": "The Levite, the stranger, and the fatherless, and the widow, that are within thy gates.",
+  "ref": "Deuteronomy 16:14"
+ },
+ {
+  "id": "deuteronomy-16-h-08",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say Israel must do to the statutes after remembering bondage?",
+  "choices": [
+   "Teach them to strangers",
+   "Write them on stone",
+   "Observe and do them",
+   "Hide them"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt observe and do these statutes.",
+  "ref": "Deuteronomy 16:12"
+ },
+ {
+  "id": "deuteronomy-16-h-09",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was each man to give at the feasts?",
+  "choices": [
+   "One tenth of all",
+   "As he is able, according to the LORD's blessing",
+   "A shekel of silver",
+   "As the priest told him"
+  ],
+  "answer": 1,
+  "explanation": "Every man shall give as he is able, according to the blessing of the LORD thy God.",
+  "ref": "Deuteronomy 16:17"
+ },
+ {
+  "id": "deuteronomy-16-h-10",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Throughout what were judges and officers to be made?",
+  "choices": [
+   "Throughout their tribes",
+   "Throughout the camp of Levi",
+   "Throughout the wilderness",
+   "Throughout the cities of refuge"
+  ],
+  "answer": 0,
+  "explanation": "Judges and officers shalt thou make thee in all thy gates... throughout thy tribes.",
+  "ref": "Deuteronomy 16:18"
+ },
+ {
+  "id": "deuteronomy-16-h-11",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what kind of judgment were the judges to judge the people?",
+  "choices": [
+   "Quick judgment",
+   "Merciful judgment",
+   "Silent judgment",
+   "Just judgment"
+  ],
+  "answer": 3,
+  "explanation": "They shall judge the people with just judgment.",
+  "ref": "Deuteronomy 16:18"
+ },
+ {
+  "id": "deuteronomy-16-h-12",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What may a gift pervert?",
+  "choices": [
+   "The cause of the stranger",
+   "The altar of the LORD",
+   "The elders of the city",
+   "The words of the righteous"
+  ],
+  "answer": 3,
+  "explanation": "For a gift doth blind the eyes of the wise, and pervert the words of the righteous.",
+  "ref": "Deuteronomy 16:19"
+ },
+ {
+  "id": "deuteronomy-16-h-13",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would following the altogether just thing let Israel do?",
+  "choices": [
+   "Rest from enemies",
+   "Judge the nations",
+   "Live and inherit the land",
+   "Build the city"
+  ],
+  "answer": 2,
+  "explanation": "That thou mayest live, and inherit the land which the LORD thy God giveth thee.",
+  "ref": "Deuteronomy 16:20"
+ },
+ {
+  "id": "deuteronomy-16-h-14",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Israel not to plant near the altar?",
+  "choices": [
+   "A vineyard",
+   "A grove of any trees",
+   "A garden of herbs",
+   "A cedar row"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not plant thee a grove of any trees near unto the altar of the LORD thy God.",
+  "ref": "Deuteronomy 16:21"
+ },
+ {
+  "id": "deuteronomy-16-h-15",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD hate that Israel was told not to set up?",
+  "choices": [
+   "Any image",
+   "A pillar of stone",
+   "A tent of meeting",
+   "A watchtower"
+  ],
+  "answer": 0,
+  "explanation": "Neither shalt thou set thee up any image; which the LORD thy God hateth.",
+  "ref": "Deuteronomy 16:22"
+ },
+ {
   "id": "old-deuteronomy-17-1",
   "chapter": 17,
   "level": "beginner",
