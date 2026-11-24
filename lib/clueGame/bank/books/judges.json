@@ -13760,6 +13760,646 @@
   "ref": "Judges 20:47"
  },
  {
+  "id": "judges-20-e-01",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Israel what had happened at Gibeah?",
+  "choices": [
+   "The Levite, husband of the slain woman",
+   "The old man",
+   "The servant",
+   "Phinehas"
+  ],
+  "answer": 0,
+  "explanation": "The Levite, the husband of the woman that was slain, answered and said, I came into Gibeah.",
+  "ref": "Judges 20:4"
+ },
+ {
+  "id": "judges-20-e-02",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "From where to where did the congregation gather as one man?",
+  "choices": [
+   "From Dan to Shiloh",
+   "From Dan to Beer-sheba",
+   "From Gilead to Jordan",
+   "From Bethel to Gibeah"
+  ],
+  "answer": 1,
+  "explanation": "The congregation was gathered together as one man, from Dan even to Beer-sheba.",
+  "ref": "Judges 20:1"
+ },
+ {
+  "id": "judges-20-e-03",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many footmen that drew sword presented themselves at Mizpeh?",
+  "choices": [
+   "Forty thousand",
+   "Twenty-six thousand",
+   "Four hundred thousand",
+   "Six hundred"
+  ],
+  "answer": 2,
+  "explanation": "The chief of the people presented themselves, four hundred thousand footmen that drew sword.",
+  "ref": "Judges 20:2"
+ },
+ {
+  "id": "judges-20-e-04",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel say they would not do until justice was done?",
+  "choices": [
+   "Eat bread",
+   "Make peace",
+   "Sleep",
+   "Go home to their tents"
+  ],
+  "answer": 3,
+  "explanation": "They said, We will not any of us go to his tent, neither will we any of us turn into his house.",
+  "ref": "Judges 20:8"
+ },
+ {
+  "id": "judges-20-e-05",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Israel decide who would go up against Gibeah?",
+  "choices": [
+   "By lot",
+   "By vote",
+   "By a king's order",
+   "By a dream"
+  ],
+  "answer": 0,
+  "explanation": "They said, we will go up by lot against it.",
+  "ref": "Judges 20:9"
+ },
+ {
+  "id": "judges-20-e-06",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel ask Benjamin to deliver up?",
+  "choices": [
+   "Their king",
+   "The men, children of Belial",
+   "Their gold",
+   "Their elders"
+  ],
+  "answer": 1,
+  "explanation": "They asked Benjamin to deliver the men, the children of Belial, which are in Gibeah.",
+  "ref": "Judges 20:13"
+ },
+ {
+  "id": "judges-20-e-07",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Israel seek the LORD before the first battle?",
+  "choices": [
+   "They made a treaty",
+   "They slept at Mizpeh",
+   "They asked counsel of God",
+   "They sent spies"
+  ],
+  "answer": 2,
+  "explanation": "They went up to the house of God, and asked counsel of God.",
+  "ref": "Judges 20:18"
+ },
+ {
+  "id": "judges-20-e-08",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Israelites do after the second defeat at the house of God?",
+  "choices": [
+   "Went home",
+   "Made a treaty",
+   "Chose a king",
+   "Wept, fasted and offered offerings"
+  ],
+  "answer": 3,
+  "explanation": "They wept, fasted until even, and offered burnt offerings and peace offerings.",
+  "ref": "Judges 20:26"
+ },
+ {
+  "id": "judges-20-e-09",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "What did the LORD tell Israel on the third day?",
+  "choices": [
+   "Go up; I will deliver them",
+   "Go home",
+   "Make peace",
+   "Wait a year"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Go up; for to morrow I will deliver them into thine hand.",
+  "ref": "Judges 20:28"
+ },
+ {
+  "id": "judges-20-e-10",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel set around Gibeah on the third day?",
+  "choices": [
+   "A wall",
+   "Liers in wait",
+   "Fire",
+   "A trench"
+  ],
+  "answer": 1,
+  "explanation": "Israel set liers in wait round about Gibeah.",
+  "ref": "Judges 20:29"
+ },
+ {
+  "id": "judges-20-m-01",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many Israelites fell in Benjamin's first victory?",
+  "choices": [
+   "Eighteen thousand",
+   "Twenty-five thousand",
+   "Twenty-two thousand",
+   "Forty thousand"
+  ],
+  "answer": 2,
+  "explanation": "Benjamin destroyed down to the ground of the Israelites that day twenty and two thousand men.",
+  "ref": "Judges 20:21"
+ },
+ {
+  "id": "judges-20-m-02",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many Israelites fell on the second day?",
+  "choices": [
+   "Twenty-two thousand",
+   "Thirty",
+   "Twenty-five thousand",
+   "Eighteen thousand"
+  ],
+  "answer": 3,
+  "explanation": "Benjamin destroyed again eighteen thousand men of Israel.",
+  "ref": "Judges 20:25"
+ },
+ {
+  "id": "judges-20-m-03",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many Benjamites that drew sword were numbered from the cities?",
+  "choices": [
+   "Twenty-six thousand",
+   "Twenty-five thousand",
+   "Four hundred thousand",
+   "Eighteen thousand"
+  ],
+  "answer": 0,
+  "explanation": "The children of Benjamin were numbered at that time twenty and six thousand men that drew sword.",
+  "ref": "Judges 20:15"
+ },
+ {
+  "id": "judges-20-m-04",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many chosen men of Gibeah were numbered besides?",
+  "choices": [
+   "Six hundred",
+   "Seven hundred",
+   "One thousand",
+   "Four hundred"
+  ],
+  "answer": 1,
+  "explanation": "The inhabitants of Gibeah were numbered seven hundred chosen men.",
+  "ref": "Judges 20:15"
+ },
+ {
+  "id": "judges-20-m-05",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was special about the seven hundred chosen men?",
+  "choices": [
+   "They were archers",
+   "They rode chariots",
+   "They were lefthanded slingers",
+   "They were giants"
+  ],
+  "answer": 2,
+  "explanation": "Seven hundred chosen men lefthanded; every one could sling stones at an hair breadth, and not miss.",
+  "ref": "Judges 20:16"
+ },
+ {
+  "id": "judges-20-m-07",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD answer on the first day when Israel asked who goes first?",
+  "choices": [
+   "Judah shall go up first",
+   "Ephraim first",
+   "Benjamin first",
+   "Levi first"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Judah shall go up first.",
+  "ref": "Judges 20:18"
+ },
+ {
+  "id": "judges-20-m-08",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "Who stood before the ark in those days?",
+  "choices": [
+   "Eleazar",
+   "Phinehas",
+   "Aaron",
+   "Samuel"
+  ],
+  "answer": 1,
+  "explanation": "Phinehas, the son of Eleazar, the son of Aaron, stood before it in those days.",
+  "ref": "Judges 20:28"
+ },
+ {
+  "id": "judges-20-m-09",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Israel put themselves in array on the third day?",
+  "choices": [
+   "Mizpeh",
+   "Shiloh",
+   "Baal-tamar",
+   "Rimmon"
+  ],
+  "answer": 2,
+  "explanation": "All the men of Israel rose up and put themselves in array at Baal-tamar.",
+  "ref": "Judges 20:33"
+ },
+ {
+  "id": "judges-20-m-10",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What sign did Israel agree with the liers in wait?",
+  "choices": [
+   "A trumpet",
+   "A banner",
+   "A shout",
+   "A flame with smoke from the city"
+  ],
+  "answer": 3,
+  "explanation": "There was an appointed sign that they should make a great flame with smoke rise up out of the city.",
+  "ref": "Judges 20:38"
+ },
+ {
+  "id": "judges-20-m-11",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many Benjamites fell that day in the third battle?",
+  "choices": [
+   "Twenty-five thousand and a hundred",
+   "Eighteen thousand",
+   "Twenty-two thousand",
+   "Twenty-six thousand"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel destroyed of the Benjamites that day twenty and five thousand and an hundred men.",
+  "ref": "Judges 20:35"
+ },
+ {
+  "id": "judges-20-m-12",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many chosen men came against Gibeah on the third day?",
+  "choices": [
+   "Twelve thousand",
+   "Ten thousand",
+   "Four hundred",
+   "Seven hundred"
+  ],
+  "answer": 1,
+  "explanation": "There came against Gibeah ten thousand chosen men out of all Israel.",
+  "ref": "Judges 20:34"
+ },
+ {
+  "id": "judges-20-m-13",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "To what rock did six hundred Benjamites flee?",
+  "choices": [
+   "The rock of Oreb",
+   "The rock Etam",
+   "The rock Rimmon",
+   "The rock of Zur"
+  ],
+  "answer": 2,
+  "explanation": "Six hundred men turned and fled to the wilderness unto the rock Rimmon.",
+  "ref": "Judges 20:47"
+ },
+ {
+  "id": "judges-20-m-14",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the six hundred stay at the rock Rimmon?",
+  "choices": [
+   "Four years",
+   "Forty days",
+   "One year",
+   "Four months"
+  ],
+  "answer": 3,
+  "explanation": "They abode in the rock Rimmon four months.",
+  "ref": "Judges 20:47"
+ },
+ {
+  "id": "judges-20-m-15",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel do to the cities of Benjamin at the end?",
+  "choices": [
+   "Set them on fire",
+   "Left them alone",
+   "Made them tribute",
+   "Gave them to Judah"
+  ],
+  "answer": 0,
+  "explanation": "They set on fire all the cities that they came to.",
+  "ref": "Judges 20:48"
+ },
+ {
+  "id": "judges-20-h-02",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Benjamites fell in all that day?",
+  "choices": [
+   "Eighteen thousand",
+   "Twenty-six thousand",
+   "Twenty-five thousand",
+   "Five thousand"
+  ],
+  "answer": 2,
+  "explanation": "All that fell that day of Benjamin were twenty and five thousand men that drew the sword.",
+  "ref": "Judges 20:46"
+ },
+ {
+  "id": "judges-20-h-04",
+  "chapter": 20,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Benjamin's fleeing men pursue unto?",
+  "choices": [
+   "Gidom",
+   "Gibeah",
+   "Bethel",
+   "Zorah"
+  ],
+  "answer": 0,
+  "explanation": "They pursued hard after them unto Gidom, and slew two thousand men.",
+  "ref": "Judges 20:45"
+ },
+ {
+  "id": "judges-20-h-05",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Benjamites fell in the field of battle, men of valour?",
+  "choices": [
+   "Twenty-two thousand",
+   "Eighteen thousand",
+   "Ten thousand",
+   "Six hundred"
+  ],
+  "answer": 1,
+  "explanation": "There fell of Benjamin eighteen thousand men; all these were men of valour.",
+  "ref": "Judges 20:44"
+ },
+ {
+  "id": "judges-20-h-06",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the Israelites trick Benjamin in the third battle?",
+  "choices": [
+   "Hid in the city",
+   "Camped at night",
+   "Fled to draw them from the city",
+   "Went round Gibeah"
+  ],
+  "answer": 2,
+  "explanation": "The children of Israel said, Let us flee, and draw them from the city unto the highways.",
+  "ref": "Judges 20:32"
+ },
+ {
+  "id": "judges-20-h-07",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Israelites did Benjamin kill in the highways at first on the third day?",
+  "choices": [
+   "About three hundred",
+   "About ten",
+   "About a thousand",
+   "About thirty"
+  ],
+  "answer": 3,
+  "explanation": "They began to smite of the people, and kill, about thirty men of Israel.",
+  "ref": "Judges 20:31"
+ },
+ {
+  "id": "judges-20-h-08",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Benjamites see when they looked behind them?",
+  "choices": [
+   "The flame of the city ascending",
+   "Israel's liers",
+   "The ark",
+   "A cloud"
+  ],
+  "answer": 0,
+  "explanation": "The flame of the city ascended up to heaven.",
+  "ref": "Judges 20:40"
+ },
+ {
+  "id": "judges-20-h-09",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel's liers in wait do to Gibeah?",
+  "choices": [
+   "Burned the field",
+   "Smote it with the edge of the sword",
+   "Took it alive",
+   "Opened its gates"
+  ],
+  "answer": 1,
+  "explanation": "The liers in wait smote all the city with the edge of the sword.",
+  "ref": "Judges 20:37"
+ },
+ {
+  "id": "judges-20-h-10",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Benjamites think when Israel retired the third day?",
+  "choices": [
+   "The LORD forsook Israel",
+   "They fled for ever",
+   "They are smitten down before us",
+   "They will wait"
+  ],
+  "answer": 2,
+  "explanation": "They said, Surely they are smitten down before us, as in the first battle.",
+  "ref": "Judges 20:39"
+ },
+ {
+  "id": "judges-20-h-11",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the Benjamites turn their backs and flee?",
+  "choices": [
+   "The ark came",
+   "Night fell",
+   "Judah attacked",
+   "They saw evil was come upon them"
+  ],
+  "answer": 3,
+  "explanation": "The men of Benjamin were amazed: for they saw that evil was come upon them.",
+  "ref": "Judges 20:41"
+ },
+ {
+  "id": "judges-20-h-13",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel say they would do to the children of Belial?",
+  "choices": [
+   "Banish them",
+   "Put them to death",
+   "Enslave them",
+   "Scatter them"
+  ],
+  "answer": 1,
+  "explanation": "They said, deliver us the men, that we may put them to death, and put away evil from Israel.",
+  "ref": "Judges 20:13"
+ },
+ {
+  "id": "judges-20-h-14",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of Israel besides Benjamin were numbered?",
+  "choices": [
+   "Four thousand",
+   "Forty thousand",
+   "Four hundred thousand",
+   "Twenty-six thousand"
+  ],
+  "answer": 2,
+  "explanation": "The men of Israel beside Benjamin were numbered four hundred thousand men that drew sword.",
+  "ref": "Judges 20:17"
+ },
+ {
+  "id": "judges-20-h-20",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Benjamites were gleaned in the highways as they fled?",
+  "choices": [
+   "Five thousand",
+   "Two thousand",
+   "Eighteen thousand",
+   "Six hundred"
+  ],
+  "answer": 0,
+  "explanation": "They gleaned of them in the highways five thousand men.",
+  "ref": "Judges 20:45"
+ },
+ {
+  "id": "judges-20-h-21",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Benjamites were slain pursuing unto Gidom?",
+  "choices": [
+   "Two thousand",
+   "Five thousand",
+   "Eighteen thousand",
+   "Six hundred"
+  ],
+  "answer": 0,
+  "explanation": "They pursued hard after them unto Gidom, and slew two thousand men.",
+  "ref": "Judges 20:45"
+ },
+ {
+  "id": "judges-20-h-22",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say on the second day when asked about going again?",
+  "choices": [
+   "Go up against him",
+   "Cease",
+   "Wait",
+   "Send Judah home"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Go up against him.",
+  "ref": "Judges 20:23"
+ },
+ {
+  "id": "judges-20-m-21",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel ask the LORD about Benjamin on the second day?",
+  "choices": [
+   "Shall I go up again against my brother?",
+   "Shall we make peace?",
+   "Who shall be king?",
+   "Where is the ark?"
+  ],
+  "answer": 0,
+  "explanation": "They asked, Shall I go up again to battle against the children of Benjamin my brother?",
+  "ref": "Judges 20:23"
+ },
+ {
+  "id": "judges-20-h-23",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel ask Benjamin's tribes about the deed before the war?",
+  "choices": [
+   "What wickedness is this?",
+   "Who is your king?",
+   "Where is the Levite?",
+   "Why did you flee?"
+  ],
+  "answer": 0,
+  "explanation": "The tribes of Israel sent men through all Benjamin, saying, What wickedness is this that is done among you?",
+  "ref": "Judges 20:12"
+ },
+ {
   "id": "old-judges-21-1",
   "chapter": 21,
   "level": "beginner",
