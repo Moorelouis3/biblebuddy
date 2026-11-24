@@ -18816,6 +18816,646 @@
   "ref": "Numbers 27:19"
  },
  {
+  "id": "numbers-27-e-01",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these was one of the daughters of Zelophehad?",
+  "choices": [
+   "Zipporah",
+   "Sarah",
+   "Miriam",
+   "Tirzah"
+  ],
+  "answer": 3,
+  "explanation": "The daughters of Zelophehad were Mahlah, Noah, Hoglah, Milcah and Tirzah.",
+  "ref": "Numbers 27:1"
+ },
+ {
+  "id": "numbers-27-e-02",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which mountain did the LORD tell Moses to go up to see the land?",
+  "choices": [
+   "Mount Carmel",
+   "Mount Sinai",
+   "Mount Hor",
+   "Mount Abarim"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said, Get thee up into this mount Abarim, and see the land.",
+  "ref": "Numbers 27:12"
+ },
+ {
+  "id": "numbers-27-e-03",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses say the congregation must not be like, without a leader?",
+  "choices": [
+   "Birds with no nest",
+   "A field with no water",
+   "A house with no door",
+   "Sheep with no shepherd"
+  ],
+  "answer": 3,
+  "explanation": "Moses wanted the congregation not to be as sheep which have no shepherd.",
+  "ref": "Numbers 27:17"
+ },
+ {
+  "id": "numbers-27-e-04",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did Moses bring the cause of Zelophehad's daughters?",
+  "choices": [
+   "Aaron",
+   "The LORD",
+   "The princes",
+   "Joshua"
+  ],
+  "answer": 1,
+  "explanation": "Moses brought their cause before the LORD.",
+  "ref": "Numbers 27:5"
+ },
+ {
+  "id": "numbers-27-e-05",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the daughters say their father died?",
+  "choices": [
+   "In battle",
+   "By a plague",
+   "In his own sin",
+   "By a serpent"
+  ],
+  "answer": 2,
+  "explanation": "They said he died in the wilderness in his own sin, and had no sons.",
+  "ref": "Numbers 27:3"
+ },
+ {
+  "id": "numbers-27-e-06",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which brother of Moses had already been gathered to his people?",
+  "choices": [
+   "Eleazar",
+   "Caleb",
+   "Aaron",
+   "Nadab"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said Moses would be gathered to his people, as Aaron thy brother was gathered.",
+  "ref": "Numbers 27:13"
+ },
+ {
+  "id": "numbers-27-e-07",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses do to Joshua when he gave him a charge?",
+  "choices": [
+   "Poured oil on his head",
+   "Washed his feet",
+   "Laid his hands on him",
+   "Gave him a staff"
+  ],
+  "answer": 2,
+  "explanation": "Moses laid his hands upon him, and gave him a charge.",
+  "ref": "Numbers 27:23"
+ },
+ {
+  "id": "numbers-27-e-08",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Before which leader did the daughters first stand to ask?",
+  "choices": [
+   "Caleb",
+   "Moses",
+   "Joshua",
+   "Balak"
+  ],
+  "answer": 1,
+  "explanation": "They stood before Moses, and before Eleazar the priest, and before the princes.",
+  "ref": "Numbers 27:2"
+ },
+ {
+  "id": "numbers-27-e-09",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses ask the LORD to do for the congregation?",
+  "choices": [
+   "Set a man over it",
+   "Send rain",
+   "Send them manna",
+   "Give them a king"
+  ],
+  "answer": 0,
+  "explanation": "Moses asked that the LORD set a man over the congregation.",
+  "ref": "Numbers 27:16"
+ },
+ {
+  "id": "numbers-27-e-10",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the daughters of Zelophehad ask to be given?",
+  "choices": [
+   "Gold and silver",
+   "A possession among their father's brethren",
+   "A new tent",
+   "Their father's flocks only"
+  ],
+  "answer": 1,
+  "explanation": "They asked, Give unto us therefore a possession among the brethren of our father.",
+  "ref": "Numbers 27:4"
+ },
+ {
+  "id": "numbers-27-m-01",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Zelophehad?",
+  "choices": [
+   "Korah",
+   "Hepher",
+   "Nun",
+   "Machir"
+  ],
+  "answer": 1,
+  "explanation": "Zelophehad was the son of Hepher.",
+  "ref": "Numbers 27:1"
+ },
+ {
+  "id": "numbers-27-m-02",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of which tribe were the families of Zelophehad's daughters?",
+  "choices": [
+   "Judah",
+   "Manasseh",
+   "Gad",
+   "Dan"
+  ],
+  "answer": 1,
+  "explanation": "They were of the families of Manasseh the son of Joseph.",
+  "ref": "Numbers 27:1"
+ },
+ {
+  "id": "numbers-27-m-03",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the daughters say their father's name should not be done away?",
+  "choices": [
+   "He was a priest",
+   "He was a prince",
+   "He had no land",
+   "He had no son"
+  ],
+  "answer": 3,
+  "explanation": "They asked why his name should be done away from his family, because he hath no son.",
+  "ref": "Numbers 27:4"
+ },
+ {
+  "id": "numbers-27-m-04",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many daughters of Zelophehad are named?",
+  "choices": [
+   "Five",
+   "Three",
+   "Seven",
+   "Four"
+  ],
+  "answer": 0,
+  "explanation": "Mahlah, Noah, Hoglah, Milcah and Tirzah are named.",
+  "ref": "Numbers 27:1"
+ },
+ {
+  "id": "numbers-27-m-05",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If a man died with no son, to whom did the LORD say his inheritance should pass?",
+  "choices": [
+   "His brother",
+   "His daughter",
+   "His priest",
+   "His servant"
+  ],
+  "answer": 1,
+  "explanation": "If a man die, and have no son, then ye shall cause his inheritance to pass unto his daughter.",
+  "ref": "Numbers 27:8"
+ },
+ {
+  "id": "numbers-27-m-06",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If a man had no daughter, who received his inheritance?",
+  "choices": [
+   "Eleazar",
+   "His brethren",
+   "The tabernacle",
+   "The princes"
+  ],
+  "answer": 1,
+  "explanation": "If he have no daughter, then ye shall give his inheritance unto his brethren.",
+  "ref": "Numbers 27:9"
+ },
+ {
+  "id": "numbers-27-m-07",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If a man had no brethren, who received his inheritance?",
+  "choices": [
+   "His neighbours",
+   "The elders",
+   "His father's brethren",
+   "His servants"
+  ],
+  "answer": 2,
+  "explanation": "If he have no brethren, then his inheritance goes unto his father's brethren.",
+  "ref": "Numbers 27:10"
+ },
+ {
+  "id": "numbers-27-m-08",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If his father had no brethren, who received the inheritance?",
+  "choices": [
+   "His nearest kinsman",
+   "Moses",
+   "His wife's family",
+   "The congregation"
+  ],
+  "answer": 0,
+  "explanation": "It was to go to his kinsman that is next to him of his family.",
+  "ref": "Numbers 27:11"
+ },
+ {
+  "id": "numbers-27-m-09",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about what the daughters of Zelophehad spoke?",
+  "choices": [
+   "They speak right",
+   "They speak boldly but wrongly",
+   "They speak foolishly",
+   "They speak too late"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, The daughters of Zelophehad speak right.",
+  "ref": "Numbers 27:7"
+ },
+ {
+  "id": "numbers-27-m-10",
+  "chapter": 27,
+  "level": "medium",
+  "category": "place",
+  "question": "In which wilderness was the water of Meribah where Moses rebelled?",
+  "choices": [
+   "Zin",
+   "Paran",
+   "Sin",
+   "Sinai"
+  ],
+  "answer": 0,
+  "explanation": "It is the water of Meribah in Kadesh in the wilderness of Zin.",
+  "ref": "Numbers 27:14"
+ },
+ {
+  "id": "numbers-27-m-11",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Moses address the LORD when he asked for a new leader?",
+  "choices": [
+   "God of the mountains",
+   "King of the nations",
+   "God of the heavens",
+   "God of the spirits of all flesh"
+  ],
+  "answer": 3,
+  "explanation": "Moses said, Let the LORD, the God of the spirits of all flesh, set a man over the congregation.",
+  "ref": "Numbers 27:16"
+ },
+ {
+  "id": "numbers-27-m-12",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to put upon Joshua?",
+  "choices": [
+   "Some of his honour",
+   "His sword",
+   "His staff",
+   "His robe"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Thou shalt put some of thine honour upon him.",
+  "ref": "Numbers 27:20"
+ },
+ {
+  "id": "numbers-27-m-13",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who would ask counsel for Joshua after the judgment of Urim?",
+  "choices": [
+   "Moses",
+   "Eleazar the priest",
+   "Caleb",
+   "Phinehas"
+  ],
+  "answer": 1,
+  "explanation": "Joshua shall stand before Eleazar the priest, who shall ask counsel for him after the judgment of Urim.",
+  "ref": "Numbers 27:21"
+ },
+ {
+  "id": "numbers-27-m-14",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD describe Joshua the son of Nun?",
+  "choices": [
+   "A man in whom is the spirit",
+   "A man of war",
+   "A man of great wealth",
+   "A man of many sons"
+  ],
+  "answer": 0,
+  "explanation": "The LORD called him a man in whom is the spirit.",
+  "ref": "Numbers 27:18"
+ },
+ {
+  "id": "numbers-27-m-15",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say the inheritance law would be for Israel?",
+  "choices": [
+   "A gift for priests",
+   "A temporary rule",
+   "A statute of judgment",
+   "A secret"
+  ],
+  "answer": 2,
+  "explanation": "It shall be unto the children of Israel a statute of judgment, as the LORD commanded Moses.",
+  "ref": "Numbers 27:11"
+ },
+ {
+  "id": "numbers-27-h-01",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Zelophehad's father Hepher was the son of whom?",
+  "choices": [
+   "Gilead",
+   "Joseph",
+   "Manasseh",
+   "Machir"
+  ],
+  "answer": 0,
+  "explanation": "Zelophehad was the son of Hepher, the son of Gilead.",
+  "ref": "Numbers 27:1"
+ },
+ {
+  "id": "numbers-27-h-02",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Which daughter of Zelophehad is named first in the list?",
+  "choices": [
+   "Mahlah",
+   "Milcah",
+   "Hoglah",
+   "Noah"
+  ],
+  "answer": 0,
+  "explanation": "The names are Mahlah, Noah, and Hoglah, and Milcah, and Tirzah.",
+  "ref": "Numbers 27:1"
+ },
+ {
+  "id": "numbers-27-h-03",
+  "chapter": 27,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the daughters stand to make their request?",
+  "choices": [
+   "In Moses' tent",
+   "Beside the river",
+   "By the door of the tabernacle",
+   "On Mount Abarim"
+  ],
+  "answer": 2,
+  "explanation": "They stood by the door of the tabernacle of the congregation.",
+  "ref": "Numbers 27:2"
+ },
+ {
+  "id": "numbers-27-h-04",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "In whose company did the daughters say their father was not?",
+  "choices": [
+   "Korah's",
+   "Balaam's",
+   "Midian's",
+   "Dathan's"
+  ],
+  "answer": 0,
+  "explanation": "He was not in the company of them that gathered against the LORD in the company of Korah.",
+  "ref": "Numbers 27:3"
+ },
+ {
+  "id": "numbers-27-h-05",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Moses and Aaron failed to do at the water?",
+  "choices": [
+   "Sanctify him before their eyes",
+   "Count the people",
+   "Build an altar",
+   "Offer a sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "They rebelled to sanctify me at the water before their eyes.",
+  "ref": "Numbers 27:14"
+ },
+ {
+  "id": "numbers-27-h-06",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses asked for a man who would lead the people out and do what?",
+  "choices": [
+   "Bring them in",
+   "Feed them",
+   "Number them",
+   "Teach them songs"
+  ],
+  "answer": 0,
+  "explanation": "He asked for one who would lead them out, and bring them in.",
+  "ref": "Numbers 27:17"
+ },
+ {
+  "id": "numbers-27-h-07",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to do to Joshua first?",
+  "choices": [
+   "Lay his hand upon him",
+   "Give him a sword",
+   "Change his name",
+   "Anoint him"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Take thee Joshua the son of Nun... and lay thine hand upon him.",
+  "ref": "Numbers 27:18"
+ },
+ {
+  "id": "numbers-27-h-08",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the LORD have Moses put some of his honour on Joshua?",
+  "choices": [
+   "So Joshua would be rich",
+   "So Eleazar would step down",
+   "So the princes would rest",
+   "So the congregation would be obedient"
+  ],
+  "answer": 3,
+  "explanation": "It was that all the congregation of Israel may be obedient.",
+  "ref": "Numbers 27:20"
+ },
+ {
+  "id": "numbers-27-h-09",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "At whose word were Israel to go out and come in?",
+  "choices": [
+   "Joshua's",
+   "Aaron's",
+   "Caleb's",
+   "Eleazar's"
+  ],
+  "answer": 0,
+  "explanation": "At his word shall they go out, and at his word they shall come in, with Joshua.",
+  "ref": "Numbers 27:21"
+ },
+ {
+  "id": "numbers-27-h-10",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses do after the LORD commanded him about Joshua?",
+  "choices": [
+   "Chose someone else",
+   "Asked for a sign",
+   "Did as the LORD commanded",
+   "Delayed a day"
+  ],
+  "answer": 2,
+  "explanation": "Moses did as the LORD commanded him, and took Joshua.",
+  "ref": "Numbers 27:22"
+ },
+ {
+  "id": "numbers-27-h-11",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Manasseh, the tribe of the daughters, was the son of whom?",
+  "choices": [
+   "Reuben",
+   "Jacob",
+   "Hepher",
+   "Joseph"
+  ],
+  "answer": 3,
+  "explanation": "They were of the families of Manasseh the son of Joseph.",
+  "ref": "Numbers 27:1"
+ },
+ {
+  "id": "numbers-27-h-12",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses rebelled against what in the desert of Zin?",
+  "choices": [
+   "The LORD's commandment",
+   "A sacrifice",
+   "The priests",
+   "The princes"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Ye rebelled against my commandment in the desert of Zin.",
+  "ref": "Numbers 27:14"
+ },
+ {
+  "id": "numbers-27-h-13",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to cause to pass to the daughters?",
+  "choices": [
+   "Their father's inheritance",
+   "Their father's name",
+   "Their father's tent",
+   "A new law"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt cause the inheritance of their father to pass unto them.",
+  "ref": "Numbers 27:7"
+ },
+ {
+  "id": "numbers-27-h-14",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses give Joshua besides laying hands on him?",
+  "choices": [
+   "A ring",
+   "A charge",
+   "A cloak",
+   "A scroll"
+  ],
+  "answer": 1,
+  "explanation": "He laid his hands upon him, and gave him a charge.",
+  "ref": "Numbers 27:23"
+ },
+ {
+  "id": "numbers-27-h-15",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say would happen to Moses after he saw the land?",
+  "choices": [
+   "He would be gathered to his people",
+   "He would build an altar",
+   "He would rest in Gilead",
+   "He would lead Israel in"
+  ],
+  "answer": 0,
+  "explanation": "When thou hast seen it, thou also shalt be gathered unto thy people.",
+  "ref": "Numbers 27:13"
+ },
+ {
   "id": "old-numbers-28-1",
   "chapter": 28,
   "level": "beginner",
