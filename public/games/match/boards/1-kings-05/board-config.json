@@ -1,0 +1,30 @@
+{
+  "level": 5,
+  "name": "The Temple Dedicated",
+  "scripture": "1 Kings 8",
+  "chapter": "1 Kings",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "covenant-ark",
+    "lampstand",
+    "incense",
+    "cloud",
+    "stone",
+    "gold",
+    "bread"
+  ],
+  "goals": {
+    "covenant-ark": 8,
+    "cloud": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Bring the Ark into the Temple.",
+  "storyEffect": "Bring the Ark into the Temple."
+}

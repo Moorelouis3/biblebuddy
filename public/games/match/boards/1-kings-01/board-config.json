@@ -1,0 +1,30 @@
+{
+  "level": 1,
+  "name": "Solomon Made King",
+  "scripture": "1 Kings 1",
+  "chapter": "1 Kings",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "crown",
+    "donkey",
+    "oil-jar",
+    "trumpet",
+    "scroll",
+    "water-jar",
+    "stone"
+  ],
+  "goals": {
+    "crown": 8,
+    "oil-jar": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Anoint the new king.",
+  "storyEffect": "Anoint the new king."
+}

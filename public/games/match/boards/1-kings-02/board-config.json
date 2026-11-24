@@ -1,0 +1,30 @@
+{
+  "level": 2,
+  "name": "Solomon Asks for Wisdom",
+  "scripture": "1 Kings 3:1–15",
+  "chapter": "1 Kings",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "scroll",
+    "cloud",
+    "staff",
+    "altar",
+    "tree",
+    "bread",
+    "gold"
+  ],
+  "goals": {
+    "scroll": 8,
+    "altar": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Ask God for wisdom.",
+  "storyEffect": "Ask God for wisdom."
+}

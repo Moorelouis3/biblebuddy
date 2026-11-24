@@ -1,0 +1,30 @@
+{
+  "level": 6,
+  "name": "The Queen of Sheba",
+  "scripture": "1 Kings 10",
+  "chapter": "1 Kings",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "camel",
+    "gold",
+    "fabric",
+    "fig",
+    "basket",
+    "water-jar",
+    "scroll"
+  ],
+  "goals": {
+    "camel": 8,
+    "gold": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Welcome the Queen of Sheba.",
+  "storyEffect": "Welcome the Queen of Sheba."
+}

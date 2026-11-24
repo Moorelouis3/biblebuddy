@@ -1,0 +1,30 @@
+{
+  "level": 9,
+  "name": "Fire on Mount Carmel",
+  "scripture": "1 Kings 18",
+  "chapter": "1 Kings",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "altar",
+    "fire",
+    "water-jar",
+    "cloud",
+    "stone",
+    "olive-sprig",
+    "wheat"
+  ],
+  "goals": {
+    "altar": 8,
+    "water-jar": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Prepare the altar on Carmel.",
+  "storyEffect": "Prepare the altar on Carmel."
+}

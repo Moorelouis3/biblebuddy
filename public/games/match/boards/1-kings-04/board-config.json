@@ -1,0 +1,30 @@
+{
+  "level": 4,
+  "name": "Building the Temple",
+  "scripture": "1 Kings 5–6",
+  "chapter": "1 Kings",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "logs",
+    "acacia",
+    "brick",
+    "lampstand",
+    "stone",
+    "gold",
+    "basket"
+  ],
+  "goals": {
+    "logs": 8,
+    "stone": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Gather cedar and stone for the Temple.",
+  "storyEffect": "Gather cedar and stone for the Temple."
+}

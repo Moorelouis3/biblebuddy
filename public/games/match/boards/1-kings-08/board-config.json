@@ -1,0 +1,30 @@
+{
+  "level": 8,
+  "name": "Fed by Ravens",
+  "scripture": "1 Kings 17",
+  "chapter": "1 Kings",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "raven",
+    "water-drop",
+    "bread",
+    "stone",
+    "staff",
+    "tree",
+    "wheat"
+  ],
+  "goals": {
+    "raven": 8,
+    "bread": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Gather bread beside the brook.",
+  "storyEffect": "Gather bread beside the brook."
+}

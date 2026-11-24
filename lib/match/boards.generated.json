@@ -4204,5 +4204,325 @@
     },
     "goalText": "Hold on to the promise of eternal life.",
     "storyEffect": "Hold on to the promise of eternal life."
+  },
+  {
+    "slug": "1-kings-01",
+    "folderTitle": "01-Solomon-Made-King",
+    "level": 1,
+    "name": "Solomon Made King",
+    "scripture": "1 Kings 1",
+    "chapter": "1 Kings",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "crown",
+      "donkey",
+      "oil-jar",
+      "trumpet",
+      "scroll",
+      "water-jar",
+      "stone"
+    ],
+    "goals": {
+      "crown": 8,
+      "oil-jar": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Anoint the new king.",
+    "storyEffect": "Anoint the new king."
+  },
+  {
+    "slug": "1-kings-02",
+    "folderTitle": "02-Solomon-Asks-for-Wisdom",
+    "level": 2,
+    "name": "Solomon Asks for Wisdom",
+    "scripture": "1 Kings 3:1–15",
+    "chapter": "1 Kings",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "scroll",
+      "cloud",
+      "staff",
+      "altar",
+      "tree",
+      "bread",
+      "gold"
+    ],
+    "goals": {
+      "scroll": 8,
+      "altar": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Ask God for wisdom.",
+    "storyEffect": "Ask God for wisdom."
+  },
+  {
+    "slug": "1-kings-03",
+    "folderTitle": "03-The-Wise-Judgment",
+    "level": 3,
+    "name": "The Wise Judgment",
+    "scripture": "1 Kings 3:16–28",
+    "chapter": "1 Kings",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "scroll",
+      "crown",
+      "staff",
+      "basket",
+      "fabric",
+      "stone",
+      "gold"
+    ],
+    "goals": {
+      "scroll": 8,
+      "crown": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Listen carefully and judge wisely.",
+    "storyEffect": "Listen carefully and judge wisely."
+  },
+  {
+    "slug": "1-kings-04",
+    "folderTitle": "04-Building-the-Temple",
+    "level": 4,
+    "name": "Building the Temple",
+    "scripture": "1 Kings 5–6",
+    "chapter": "1 Kings",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "logs",
+      "acacia",
+      "brick",
+      "lampstand",
+      "stone",
+      "gold",
+      "basket"
+    ],
+    "goals": {
+      "logs": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather cedar and stone for the Temple.",
+    "storyEffect": "Gather cedar and stone for the Temple."
+  },
+  {
+    "slug": "1-kings-05",
+    "folderTitle": "05-The-Temple-Dedicated",
+    "level": 5,
+    "name": "The Temple Dedicated",
+    "scripture": "1 Kings 8",
+    "chapter": "1 Kings",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "covenant-ark",
+      "lampstand",
+      "incense",
+      "cloud",
+      "stone",
+      "gold",
+      "bread"
+    ],
+    "goals": {
+      "covenant-ark": 8,
+      "cloud": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Bring the Ark into the Temple.",
+    "storyEffect": "Bring the Ark into the Temple."
+  },
+  {
+    "slug": "1-kings-06",
+    "folderTitle": "06-The-Queen-of-Sheba",
+    "level": 6,
+    "name": "The Queen of Sheba",
+    "scripture": "1 Kings 10",
+    "chapter": "1 Kings",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "camel",
+      "gold",
+      "fabric",
+      "fig",
+      "basket",
+      "water-jar",
+      "scroll"
+    ],
+    "goals": {
+      "camel": 8,
+      "gold": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Welcome the Queen of Sheba.",
+    "storyEffect": "Welcome the Queen of Sheba."
+  },
+  {
+    "slug": "1-kings-07",
+    "folderTitle": "07-The-Kingdom-Divided",
+    "level": 7,
+    "name": "The Kingdom Divided",
+    "scripture": "1 Kings 12",
+    "chapter": "1 Kings",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "banner",
+      "sandal",
+      "staff",
+      "stone",
+      "scroll",
+      "bread",
+      "tree"
+    ],
+    "goals": {
+      "banner": 8,
+      "sandal": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Follow the road as the kingdom divides.",
+    "storyEffect": "Follow the road as the kingdom divides."
+  },
+  {
+    "slug": "1-kings-08",
+    "folderTitle": "08-Fed-by-Ravens",
+    "level": 8,
+    "name": "Fed by Ravens",
+    "scripture": "1 Kings 17",
+    "chapter": "1 Kings",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "raven",
+      "water-drop",
+      "bread",
+      "stone",
+      "staff",
+      "tree",
+      "wheat"
+    ],
+    "goals": {
+      "raven": 8,
+      "bread": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Gather bread beside the brook.",
+    "storyEffect": "Gather bread beside the brook."
+  },
+  {
+    "slug": "1-kings-09",
+    "folderTitle": "09-Fire-on-Mount-Carmel",
+    "level": 9,
+    "name": "Fire on Mount Carmel",
+    "scripture": "1 Kings 18",
+    "chapter": "1 Kings",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "altar",
+      "fire",
+      "water-jar",
+      "cloud",
+      "stone",
+      "olive-sprig",
+      "wheat"
+    ],
+    "goals": {
+      "altar": 8,
+      "water-jar": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Prepare the altar on Carmel.",
+    "storyEffect": "Prepare the altar on Carmel."
+  },
+  {
+    "slug": "1-kings-10",
+    "folderTitle": "10-The-Still-Small-Voice",
+    "level": 10,
+    "name": "The Still Small Voice",
+    "scripture": "1 Kings 19",
+    "chapter": "1 Kings",
+    "grid": [
+      7,
+      7
+    ],
+    "moveLimit": 28,
+    "tiles": [
+      "cloud",
+      "stone",
+      "staff",
+      "bread",
+      "water-jar",
+      "olive-sprig",
+      "dove"
+    ],
+    "goals": {
+      "cloud": 8,
+      "stone": 8
+    },
+    "backgrounds": {
+      "phone": "background-phone.png",
+      "desktop": "background-desktop.png"
+    },
+    "goalText": "Be still and listen.",
+    "storyEffect": "Be still and listen."
   }
 ]

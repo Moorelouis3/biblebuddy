@@ -1,0 +1,30 @@
+{
+  "level": 7,
+  "name": "The Kingdom Divided",
+  "scripture": "1 Kings 12",
+  "chapter": "1 Kings",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "banner",
+    "sandal",
+    "staff",
+    "stone",
+    "scroll",
+    "bread",
+    "tree"
+  ],
+  "goals": {
+    "banner": 8,
+    "sandal": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Follow the road as the kingdom divides.",
+  "storyEffect": "Follow the road as the kingdom divides."
+}

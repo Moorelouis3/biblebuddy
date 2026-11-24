@@ -1,0 +1,30 @@
+{
+  "level": 3,
+  "name": "The Wise Judgment",
+  "scripture": "1 Kings 3:16–28",
+  "chapter": "1 Kings",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "scroll",
+    "crown",
+    "staff",
+    "basket",
+    "fabric",
+    "stone",
+    "gold"
+  ],
+  "goals": {
+    "scroll": 8,
+    "crown": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Listen carefully and judge wisely.",
+  "storyEffect": "Listen carefully and judge wisely."
+}
