@@ -17408,6 +17408,646 @@
   "ref": "Leviticus 25:23"
  },
  {
+  "id": "leviticus-25-e-01",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the LORD speak to Moses in this chapter?",
+  "choices": [
+   "The tabernacle",
+   "Mount Sinai",
+   "Mount Horeb",
+   "The plains of Moab"
+  ],
+  "answer": 1,
+  "explanation": "And the LORD spake unto Moses in mount Sinai, saying.",
+  "ref": "Leviticus 25:1"
+ },
+ {
+  "id": "leviticus-25-e-02",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years could the people sow their field?",
+  "choices": [
+   "Three years",
+   "Six years",
+   "Seven years",
+   "Ten years"
+  ],
+  "answer": 1,
+  "explanation": "Six years thou shalt sow thy field, and six years thou shalt prune thy vineyard.",
+  "ref": "Leviticus 25:3"
+ },
+ {
+  "id": "leviticus-25-e-03",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the seventh year to be for the land?",
+  "choices": [
+   "A year of feasting",
+   "A sabbath of rest",
+   "A year of harvest",
+   "A year of war"
+  ],
+  "answer": 1,
+  "explanation": "In the seventh year shall be a sabbath of rest unto the land, a sabbath for the LORD.",
+  "ref": "Leviticus 25:4"
+ },
+ {
+  "id": "leviticus-25-e-04",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the fiftieth year called?",
+  "choices": [
+   "A sabbath",
+   "A jubile",
+   "A passover",
+   "A feast"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall hallow the fiftieth year, and proclaim liberty throughout all the land: it shall be a jubile unto you.",
+  "ref": "Leviticus 25:10"
+ },
+ {
+  "id": "leviticus-25-e-05",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was sounded to begin the jubile?",
+  "choices": [
+   "A shofar of ram",
+   "The trumpet",
+   "A bell",
+   "A drum"
+  ],
+  "answer": 1,
+  "explanation": "Then shalt thou cause the trumpet of the jubile to sound on the tenth day of the seventh month.",
+  "ref": "Leviticus 25:9"
+ },
+ {
+  "id": "leviticus-25-e-06",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was proclaimed throughout the land in the fiftieth year?",
+  "choices": [
+   "War",
+   "Liberty",
+   "Plenty",
+   "Peace"
+  ],
+  "answer": 1,
+  "explanation": "Proclaim liberty throughout all the land unto all the inhabitants thereof.",
+  "ref": "Leviticus 25:10"
+ },
+ {
+  "id": "leviticus-25-e-07",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did each man return to in the year of jubile?",
+  "choices": [
+   "The tabernacle",
+   "His possession and his family",
+   "The mountain",
+   "The city"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall return every man unto his possession, and ye shall return every man unto his family.",
+  "ref": "Leviticus 25:10"
+ },
+ {
+  "id": "leviticus-25-e-08",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose is the land, according to the LORD?",
+  "choices": [
+   "Israel's",
+   "The LORD's",
+   "The priests'",
+   "The kings'"
+  ],
+  "answer": 1,
+  "explanation": "The land shall not be sold for ever: for the land is mine; for ye are strangers and sojourners with me.",
+  "ref": "Leviticus 25:23"
+ },
+ {
+  "id": "leviticus-25-e-09",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must not be taken from a poor brother?",
+  "choices": [
+   "His land",
+   "Usury",
+   "His garment",
+   "His house"
+  ],
+  "answer": 1,
+  "explanation": "Take thou no usury of him, or increase: but fear thy God.",
+  "ref": "Leviticus 25:36"
+ },
+ {
+  "id": "leviticus-25-e-10",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what land did the LORD bring Israel out?",
+  "choices": [
+   "Canaan",
+   "Egypt",
+   "Babylon",
+   "Moab"
+  ],
+  "answer": 1,
+  "explanation": "I am the LORD your God, which brought you forth out of the land of Egypt, to give you the land of Canaan.",
+  "ref": "Leviticus 25:38"
+ },
+ {
+  "id": "leviticus-25-m-01",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not to be done in the seventh year?",
+  "choices": [
+   "Gather the grain only",
+   "Eat the fruit",
+   "Build houses",
+   "Sow the field or prune the vineyard"
+  ],
+  "answer": 3,
+  "explanation": "In the seventh year thou shalt neither sow thy field, nor prune thy vineyard.",
+  "ref": "Leviticus 25:4"
+ },
+ {
+  "id": "leviticus-25-m-02",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was allowed to eat of the sabbath year growth?",
+  "choices": [
+   "Only the poor",
+   "Only the priests",
+   "Only the master",
+   "The master, servants, hired servant, stranger and cattle"
+  ],
+  "answer": 3,
+  "explanation": "The sabbath of the land shall be meat for thee, and for thy servant, and for thy maid, and for thy hired servant, and for thy stranger.",
+  "ref": "Leviticus 25:6–7"
+ },
+ {
+  "id": "leviticus-25-m-03",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years are seven sabbaths of years?",
+  "choices": [
+   "Forty",
+   "Fifty",
+   "Seventy",
+   "Forty and nine"
+  ],
+  "answer": 3,
+  "explanation": "Seven sabbaths of years, seven times seven years; the space shall be forty and nine years.",
+  "ref": "Leviticus 25:8"
+ },
+ {
+  "id": "leviticus-25-m-04",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day was the jubile trumpet sounded?",
+  "choices": [
+   "The first day of the first month",
+   "The fourteenth of the first month",
+   "The fifteenth of the seventh month",
+   "The tenth day of the seventh month"
+  ],
+  "answer": 3,
+  "explanation": "Cause the trumpet of the jubile to sound on the tenth day of the seventh month.",
+  "ref": "Leviticus 25:9"
+ },
+ {
+  "id": "leviticus-25-m-05",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the people not to do in the jubile year?",
+  "choices": [
+   "Eat or drink",
+   "Travel",
+   "Trade",
+   "Sow or reap"
+  ],
+  "answer": 3,
+  "explanation": "A jubile shall that fiftieth year be unto you: ye shall not sow, neither reap that which groweth of itself in it.",
+  "ref": "Leviticus 25:11"
+ },
+ {
+  "id": "leviticus-25-m-06",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were prices to be set when buying from a neighbour?",
+  "choices": [
+   "By weight in silver",
+   "By the priest's word",
+   "By the elders",
+   "By the number of years after the jubile"
+  ],
+  "answer": 3,
+  "explanation": "According to the number of years after the jubile thou shalt buy of thy neighbour.",
+  "ref": "Leviticus 25:15"
+ },
+ {
+  "id": "leviticus-25-m-07",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What blessing did the LORD promise in the sixth year?",
+  "choices": [
+   "Double fruit for one year",
+   "Manna",
+   "Rain for forty days",
+   "Fruit for three years"
+  ],
+  "answer": 3,
+  "explanation": "I will command my blessing upon you in the sixth year, and it shall bring forth fruit for three years.",
+  "ref": "Leviticus 25:21"
+ },
+ {
+  "id": "leviticus-25-m-08",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until what year did they eat of the old store?",
+  "choices": [
+   "The eighth year",
+   "The tenth year",
+   "The seventh year",
+   "The ninth year"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall sow the eighth year, and eat yet of old fruit until the ninth year.",
+  "ref": "Leviticus 25:22"
+ },
+ {
+  "id": "leviticus-25-m-09",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say the people were to Him in the land?",
+  "choices": [
+   "Owners",
+   "Judges",
+   "Priests",
+   "Strangers and sojourners"
+  ],
+  "answer": 3,
+  "explanation": "The land is mine; for ye are strangers and sojourners with me.",
+  "ref": "Leviticus 25:23"
+ },
+ {
+  "id": "leviticus-25-m-10",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be granted for all the land of their possession?",
+  "choices": [
+   "A tax",
+   "A boundary",
+   "A fine",
+   "Redemption"
+  ],
+  "answer": 3,
+  "explanation": "In all the land of your possession ye shall grant a redemption for the land.",
+  "ref": "Leviticus 25:24"
+ },
+ {
+  "id": "leviticus-25-m-11",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long could a house in a walled city be redeemed after sale?",
+  "choices": [
+   "Seven years",
+   "Until the jubile",
+   "Ten years",
+   "A whole year"
+  ],
+  "answer": 3,
+  "explanation": "Within a full year may he redeem it.",
+  "ref": "Leviticus 25:29"
+ },
+ {
+  "id": "leviticus-25-m-12",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to a house in a walled city not redeemed within a year?",
+  "choices": [
+   "It returns at jubile",
+   "It goes to the priest",
+   "It is given to the poor",
+   "It is established for ever to the buyer"
+  ],
+  "answer": 3,
+  "explanation": "The house that is in the walled city shall be established for ever to him that bought it.",
+  "ref": "Leviticus 25:30"
+ },
+ {
+  "id": "leviticus-25-m-13",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What may the Levites do with the houses in their cities?",
+  "choices": [
+   "Sell them for ever",
+   "Lease them",
+   "Never redeem them",
+   "Redeem them at any time"
+  ],
+  "answer": 3,
+  "explanation": "The cities of the Levites may the Levites redeem at any time.",
+  "ref": "Leviticus 25:32"
+ },
+ {
+  "id": "leviticus-25-m-14",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What may not be sold, being the Levites' perpetual possession?",
+  "choices": [
+   "The temple",
+   "The altar",
+   "The tithe",
+   "The field of the suburbs"
+  ],
+  "answer": 3,
+  "explanation": "The field of the suburbs of their cities may not be sold; for it is their perpetual possession.",
+  "ref": "Leviticus 25:34"
+ },
+ {
+  "id": "leviticus-25-m-15",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is a poor brother to be treated?",
+  "choices": [
+   "Put out of the land",
+   "Sold at once",
+   "Taxed",
+   "Relieved, that he may live with thee"
+  ],
+  "answer": 3,
+  "explanation": "If thy brother be waxen poor, then thou shalt relieve him, that he may live with thee.",
+  "ref": "Leviticus 25:35"
+ },
+ {
+  "id": "leviticus-25-h-01",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What grows of its own accord in the sabbath year may not be what?",
+  "choices": [
+   "Reaped",
+   "Eaten",
+   "Burnt",
+   "Counted"
+  ],
+  "answer": 0,
+  "explanation": "That which groweth of its own accord of thy harvest thou shalt not reap.",
+  "ref": "Leviticus 25:5"
+ },
+ {
+  "id": "leviticus-25-h-02",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the people not gather in the sabbath year?",
+  "choices": [
+   "Grapes of the undressed vine",
+   "Figs",
+   "Olives",
+   "Wheat"
+  ],
+  "answer": 0,
+  "explanation": "Neither gather the grapes of thy vine undressed.",
+  "ref": "Leviticus 25:5"
+ },
+ {
+  "id": "leviticus-25-h-03",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If a man sells land and cannot buy it back, when does it go out?",
+  "choices": [
+   "In the year of jubile",
+   "After seven years",
+   "After ten years",
+   "Never"
+  ],
+  "answer": 0,
+  "explanation": "That which is sold shall remain in the hand of him that hath bought it until the year of jubile: and in the jubile it shall go out.",
+  "ref": "Leviticus 25:28"
+ },
+ {
+  "id": "leviticus-25-h-04",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to houses in unwalled villages?",
+  "choices": [
+   "They are counted as the fields of the country",
+   "They are lost",
+   "They are given to the priest",
+   "They never return"
+  ],
+  "answer": 0,
+  "explanation": "The houses of the villages which have no wall round about them shall be counted as the fields of the country.",
+  "ref": "Leviticus 25:31"
+ },
+ {
+  "id": "leviticus-25-h-05",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is a poor Israelite sold to a brother to be treated?",
+  "choices": [
+   "As an hired servant, not a bondservant",
+   "As a bondservant",
+   "As a slave for ever",
+   "As a stranger"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not compel him to serve as a bondservant: But as an hired servant, and as a sojourner, he shall be with thee.",
+  "ref": "Leviticus 25:39–40"
+ },
+ {
+  "id": "leviticus-25-h-06",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when does the sold brother serve?",
+  "choices": [
+   "The year of jubile",
+   "Seven years",
+   "Ten years",
+   "His death"
+  ],
+  "answer": 0,
+  "explanation": "He shall serve thee unto the year of jubile.",
+  "ref": "Leviticus 25:40"
+ },
+ {
+  "id": "leviticus-25-h-07",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why are the people not to be sold as bondmen?",
+  "choices": [
+   "They are the LORD's servants brought out of Egypt",
+   "They are kings",
+   "They are priests",
+   "They are strangers"
+  ],
+  "answer": 0,
+  "explanation": "For they are my servants, which I brought forth out of the land of Egypt: they shall not be sold as bondmen.",
+  "ref": "Leviticus 25:42"
+ },
+ {
+  "id": "leviticus-25-h-08",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom shall they buy bondmen and bondmaids?",
+  "choices": [
+   "The heathen round about",
+   "Their brethren",
+   "The Levites",
+   "The poor"
+  ],
+  "answer": 0,
+  "explanation": "Both thy bondmen, and thy bondmaids, shall be of the heathen that are round about you.",
+  "ref": "Leviticus 25:44"
+ },
+ {
+  "id": "leviticus-25-h-09",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Over whom shall they not rule with rigour?",
+  "choices": [
+   "Their brethren the children of Israel",
+   "The heathen",
+   "The strangers",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "Over your brethren the children of Israel, ye shall not rule one over another with rigour.",
+  "ref": "Leviticus 25:46"
+ },
+ {
+  "id": "leviticus-25-h-10",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these may redeem a brother sold to a stranger?",
+  "choices": [
+   "His uncle or uncle's son",
+   "His friend",
+   "A priest",
+   "A judge"
+  ],
+  "answer": 0,
+  "explanation": "Either his uncle, or his uncle's son, may redeem him.",
+  "ref": "Leviticus 25:49"
+ },
+ {
+  "id": "leviticus-25-h-11",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to a brother not redeemed in the years?",
+  "choices": [
+   "He goes out in jubile with his children",
+   "He stays for ever",
+   "He is sold again",
+   "He is freed at once"
+  ],
+  "answer": 0,
+  "explanation": "If he be not redeemed in these years, then he shall go out in the year of jubile, both he, and his children with him.",
+  "ref": "Leviticus 25:54"
+ },
+ {
+  "id": "leviticus-25-h-12",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say about lending victuals?",
+  "choices": [
+   "Not to lend for increase",
+   "Not to lend at all",
+   "To lend only to priests",
+   "To lend for a tenth"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not give him thy money upon usury, nor lend him thy victuals for increase.",
+  "ref": "Leviticus 25:37"
+ },
+ {
+  "id": "leviticus-25-h-13",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is promised if the people keep His statutes and judgments?",
+  "choices": [
+   "They dwell in the land in safety",
+   "They become rich",
+   "They have a king",
+   "They conquer nations"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall do my statutes, and keep my judgments, and ye shall dwell in the land in safety.",
+  "ref": "Leviticus 25:18"
+ },
+ {
+  "id": "leviticus-25-h-14",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the land yield if they obey?",
+  "choices": [
+   "Her fruit, so they eat their fill",
+   "Gold",
+   "Iron",
+   "Rest only"
+  ],
+  "answer": 0,
+  "explanation": "The land shall yield her fruit, and ye shall eat your fill, and dwell therein in safety.",
+  "ref": "Leviticus 25:19"
+ },
+ {
+  "id": "leviticus-25-h-15",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom is the brother who sold himself to be treated like in his service?",
+  "choices": [
+   "A yearly hired servant",
+   "A bondmaid",
+   "A stranger",
+   "A soldier"
+  ],
+  "answer": 0,
+  "explanation": "As a yearly hired servant shall he be with him.",
+  "ref": "Leviticus 25:53"
+ },
+ {
   "id": "old-leviticus-26-1",
   "chapter": 26,
   "level": "beginner",
