@@ -7956,15 +7956,15 @@
   "chapter": 12,
   "level": "beginner",
   "category": "person",
-  "question": "Whom did Samuel say the people had chosen and desired as king?",
+  "question": "According to Samuel, who had set a king over the people?",
   "choices": [
-   "David",
-   "Jonathan",
-   "Saul",
-   "Abner"
+   "The Lord",
+   "Samuel",
+   "The elders",
+   "Nahash"
   ],
-  "answer": 2,
-  "explanation": "Samuel acknowledged the people's chosen king.",
+  "answer": 0,
+  "explanation": "Behold the king whom ye have chosen, and whom ye have desired! and, behold, the LORD hath set a king over you.",
   "ref": "1 Samuel 12:13"
  },
  {
@@ -8014,6 +8014,646 @@
   "answer": 2,
   "explanation": "Samuel ended with a solemn warning for both people and king.",
   "ref": "1 Samuel 12:25"
+ },
+ {
+  "id": "1-samuel-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Samuel describe himself to Israel?",
+  "choices": [
+   "Old and grayheaded",
+   "Weak and sick",
+   "Young and strong",
+   "Poor and hungry"
+  ],
+  "answer": 0,
+  "explanation": "Samuel said, I am old and grayheaded; and I have walked before you from my childhood unto this day.",
+  "ref": "1 Samuel 12:2"
+ },
+ {
+  "id": "1-samuel-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say when Samuel asked if he had wronged them?",
+  "choices": [
+   "We cannot say",
+   "Thou hast not defrauded us",
+   "Thou hast taken our oxen",
+   "Ask the elders"
+  ],
+  "answer": 1,
+  "explanation": "They said, Thou hast not defrauded us, nor oppressed us, neither hast thou taken ought of any man's hand.",
+  "ref": "1 Samuel 12:4"
+ },
+ {
+  "id": "1-samuel-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the Lord advance in the days of the fathers?",
+  "choices": [
+   "Joshua and Caleb",
+   "Eli and Samuel",
+   "Moses and Aaron",
+   "Saul and Jonathan"
+  ],
+  "answer": 2,
+  "explanation": "It is the LORD that advanced Moses and Aaron, and that brought your fathers up out of the land of Egypt.",
+  "ref": "1 Samuel 12:6"
+ },
+ {
+  "id": "1-samuel-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the Lord send when the fathers cried to Him in Egypt?",
+  "choices": [
+   "Samuel and Eli",
+   "Gideon and Barak",
+   "Joel and Abiah",
+   "Moses and Aaron"
+  ],
+  "answer": 3,
+  "explanation": "Your fathers cried unto the LORD, then the LORD sent Moses and Aaron, which brought forth your fathers out of Egypt.",
+  "ref": "1 Samuel 12:8"
+ },
+ {
+  "id": "1-samuel-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Ammon came against Israel?",
+  "choices": [
+   "Nahash",
+   "Agag",
+   "Jabin",
+   "Balak"
+  ],
+  "answer": 0,
+  "explanation": "Ye saw that Nahash the king of the children of Ammon came against you.",
+  "ref": "1 Samuel 12:12"
+ },
+ {
+  "id": "1-samuel-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say when they saw Nahash coming?",
+  "choices": [
+   "Send for Moses",
+   "Nay; a king shall reign over us",
+   "Let us flee",
+   "Call the elders"
+  ],
+  "answer": 1,
+  "explanation": "Ye said unto me, Nay; but a king shall reign over us: when the LORD your God was your king.",
+  "ref": "1 Samuel 12:12"
+ },
+ {
+  "id": "1-samuel-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people ask Samuel to do after the thunder and rain?",
+  "choices": [
+   "Anoint a new king",
+   "Offer a sacrifice",
+   "Pray for them that they die not",
+   "Send Saul away"
+  ],
+  "answer": 2,
+  "explanation": "All the people said unto Samuel, Pray for thy servants unto the LORD thy God, that we die not.",
+  "ref": "1 Samuel 12:19"
+ },
+ {
+  "id": "1-samuel-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samuel say he would not stop doing for the people?",
+  "choices": [
+   "Judging them",
+   "Teaching them",
+   "Visiting them",
+   "Praying for them"
+  ],
+  "answer": 3,
+  "explanation": "God forbid that I should sin against the LORD in ceasing to pray for you.",
+  "ref": "1 Samuel 12:23"
+ },
+ {
+  "id": "1-samuel-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why will the Lord not forsake his people?",
+  "choices": [
+   "For his great name's sake",
+   "Because of Samuel",
+   "Because of Saul",
+   "Because of their sacrifices"
+  ],
+  "answer": 0,
+  "explanation": "The LORD will not forsake his people for his great name's sake.",
+  "ref": "1 Samuel 12:22"
+ },
+ {
+  "id": "1-samuel-12-e-10",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samuel say he would teach the people?",
+  "choices": [
+   "The law of kings",
+   "The good and the right way",
+   "The art of war",
+   "The songs of Israel"
+  ],
+  "answer": 1,
+  "explanation": "I will teach you the good and the right way.",
+  "ref": "1 Samuel 12:23"
+ },
+ {
+  "id": "1-samuel-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Samuel say was witness with the Lord against the people?",
+  "choices": [
+   "The elders",
+   "The priests",
+   "His anointed",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "The LORD is witness against you, and his anointed is witness this day.",
+  "ref": "1 Samuel 12:5"
+ },
+ {
+  "id": "1-samuel-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel say about his sons?",
+  "choices": [
+   "They would judge Israel",
+   "They were far away",
+   "They were dead",
+   "They were with the people"
+  ],
+  "answer": 3,
+  "explanation": "The king walketh before you: and I am old and grayheaded; and, behold, my sons are with you.",
+  "ref": "1 Samuel 12:2"
+ },
+ {
+  "id": "1-samuel-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Lord sell the fathers into the hand of their enemies?",
+  "choices": [
+   "They forgot the Lord their God",
+   "They refused a king",
+   "They broke the Sabbath",
+   "They fought each other"
+  ],
+  "answer": 0,
+  "explanation": "When they forgat the LORD their God, he sold them into the hand of Sisera.",
+  "ref": "1 Samuel 12:9"
+ },
+ {
+  "id": "1-samuel-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people say when they cried to the Lord for deliverance?",
+  "choices": [
+   "We want a king",
+   "We have sinned, because we have forsaken the Lord",
+   "Send us Moses",
+   "Give us rain"
+  ],
+  "answer": 1,
+  "explanation": "They cried unto the LORD, and said, We have sinned, because we have forsaken the LORD, and have served Baalim and Ashtaroth.",
+  "ref": "1 Samuel 12:10"
+ },
+ {
+  "id": "1-samuel-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the Lord send to deliver Israel from their enemies?",
+  "choices": [
+   "Moses, Aaron, Joshua and Eli",
+   "Saul, Jonathan and Abner",
+   "Jerubbaal, Bedan, Jephthah and Samuel",
+   "Joel, Abiah and Samuel"
+  ],
+  "answer": 2,
+  "explanation": "The LORD sent Jerubbaal, and Bedan, and Jephthah, and Samuel, and delivered you out of the hand of your enemies.",
+  "ref": "1 Samuel 12:11"
+ },
+ {
+  "id": "1-samuel-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel say about the king whom the people had chosen?",
+  "choices": [
+   "He had no sons",
+   "He was a prophet",
+   "He was a judge",
+   "The king now walked before them"
+  ],
+  "answer": 3,
+  "explanation": "And now, behold, the king walketh before you.",
+  "ref": "1 Samuel 12:2"
+ },
+ {
+  "id": "1-samuel-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen if people and king feared and obeyed the Lord?",
+  "choices": [
+   "They would continue following the Lord",
+   "They would be rich",
+   "They would not die",
+   "They would have peace with Egypt"
+  ],
+  "answer": 0,
+  "explanation": "If ye will fear the LORD, then shall both ye and also the king continue following the LORD your God.",
+  "ref": "1 Samuel 12:14"
+ },
+ {
+  "id": "1-samuel-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen if they rebelled against the Lord's commandment?",
+  "choices": [
+   "The king would be removed",
+   "The hand of the Lord would be against them",
+   "Rain would stop",
+   "Samuel would leave"
+  ],
+  "answer": 1,
+  "explanation": "If ye will not obey, then shall the hand of the LORD be against you, as it was against your fathers.",
+  "ref": "1 Samuel 12:15"
+ },
+ {
+  "id": "1-samuel-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel say about vain things?",
+  "choices": [
+   "They are cheap",
+   "They are easy to find",
+   "They cannot profit nor deliver",
+   "They are old"
+  ],
+  "answer": 2,
+  "explanation": "Turn ye not aside: for then should ye go after vain things, which cannot profit nor deliver; for they are vain.",
+  "ref": "1 Samuel 12:21"
+ },
+ {
+  "id": "1-samuel-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Samuel say was their king when they asked for another?",
+  "choices": [
+   "Saul",
+   "Nahash",
+   "Samuel",
+   "The Lord"
+  ],
+  "answer": 3,
+  "explanation": "Ye said unto me, Nay; but a king shall reign over us: when the LORD your God was your king.",
+  "ref": "1 Samuel 12:12"
+ },
+ {
+  "id": "1-samuel-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Samuel tell the people to serve the Lord?",
+  "choices": [
+   "With all their heart",
+   "With sacrifices only",
+   "With loud songs",
+   "With fasting only"
+  ],
+  "answer": 0,
+  "explanation": "Serve the LORD with all your heart.",
+  "ref": "1 Samuel 12:20"
+ },
+ {
+  "id": "1-samuel-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel say the people must not do despite their wickedness?",
+  "choices": [
+   "Pray for Saul",
+   "Turn aside from following the Lord",
+   "Leave Gilgal",
+   "Fear the thunder"
+  ],
+  "answer": 1,
+  "explanation": "Fear not: ye have done all this wickedness: yet turn not aside from following the LORD.",
+  "ref": "1 Samuel 12:20"
+ },
+ {
+  "id": "1-samuel-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had pleased the Lord, according to Samuel?",
+  "choices": [
+   "To make Israel his people",
+   "To give Israel a king",
+   "To send Samuel away",
+   "To end the Philistine war"
+  ],
+  "answer": 0,
+  "explanation": "The LORD will not forsake his people: because it hath pleased the LORD to make you his people.",
+  "ref": "1 Samuel 12:22"
+ },
+ {
+  "id": "1-samuel-12-m-14",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people say they had added to all their sins?",
+  "choices": [
+   "The worship of Dagon",
+   "Breaking the Sabbath",
+   "Forgetting Moses",
+   "The evil of asking for a king"
+  ],
+  "answer": 3,
+  "explanation": "We have added unto all our sins this evil, to ask us a king.",
+  "ref": "1 Samuel 12:19"
+ },
+ {
+  "id": "1-samuel-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was captain of the host of Hazor?",
+  "choices": [
+   "Sisera",
+   "Nahash",
+   "Jerubbaal",
+   "Bedan"
+  ],
+  "answer": 0,
+  "explanation": "He sold them into the hand of Sisera, captain of the host of Hazor.",
+  "ref": "1 Samuel 12:9"
+ },
+ {
+  "id": "1-samuel-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Into the hand of the king of which land did the Lord sell the fathers?",
+  "choices": [
+   "Ammon",
+   "Moab",
+   "Edom",
+   "Egypt"
+  ],
+  "answer": 1,
+  "explanation": "He sold them into the hand of the Philistines, and into the hand of the king of Moab.",
+  "ref": "1 Samuel 12:9"
+ },
+ {
+  "id": "1-samuel-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these men did the Lord send to deliver Israel?",
+  "choices": [
+   "Eli",
+   "Abner",
+   "Bedan",
+   "Kish"
+  ],
+  "answer": 2,
+  "explanation": "The LORD sent Jerubbaal, and Bedan, and Jephthah, and Samuel.",
+  "ref": "1 Samuel 12:11"
+ },
+ {
+  "id": "1-samuel-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "When who had come into Egypt did the fathers cry to the Lord?",
+  "choices": [
+   "Joseph",
+   "Isaac",
+   "Moses",
+   "Jacob"
+  ],
+  "answer": 3,
+  "explanation": "When Jacob was come into Egypt, and your fathers cried unto the LORD, then the LORD sent Moses and Aaron.",
+  "ref": "1 Samuel 12:8"
+ },
+ {
+  "id": "1-samuel-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From when had Samuel walked before the people?",
+  "choices": [
+   "From his childhood",
+   "From the ark's return",
+   "From Eli's death",
+   "From Saul's anointing"
+  ],
+  "answer": 0,
+  "explanation": "I have walked before you from my childhood unto this day.",
+  "ref": "1 Samuel 12:2"
+ },
+ {
+  "id": "1-samuel-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Samuel say to serve the Lord?",
+  "choices": [
+   "With gifts and oil",
+   "In truth with all your heart",
+   "With trumpets",
+   "With silver"
+  ],
+  "answer": 1,
+  "explanation": "Only fear the LORD, and serve him in truth with all your heart.",
+  "ref": "1 Samuel 12:24"
+ },
+ {
+  "id": "1-samuel-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the people answer when Samuel said the Lord was witness?",
+  "choices": [
+   "We do not know",
+   "Let Saul speak",
+   "He is witness",
+   "Ask the priests"
+  ],
+  "answer": 2,
+  "explanation": "The LORD is witness against you. And they answered, He is witness.",
+  "ref": "1 Samuel 12:5"
+ },
+ {
+  "id": "1-samuel-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did a bribe do, according to Samuel's words?",
+  "choices": [
+   "It stopped his ears",
+   "It hardened his heart",
+   "It shut his mouth",
+   "It blinded his eyes"
+  ],
+  "answer": 3,
+  "explanation": "Of whose hand have I received any bribe to blind mine eyes therewith?",
+  "ref": "1 Samuel 12:3"
+ },
+ {
+  "id": "1-samuel-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samuel promise to do if he had wronged anyone?",
+  "choices": [
+   "Restore it",
+   "Leave Israel",
+   "Offer a sacrifice",
+   "Step down as judge"
+  ],
+  "answer": 0,
+  "explanation": "Witness against me; and I will restore it you.",
+  "ref": "1 Samuel 12:3"
+ },
+ {
+  "id": "1-samuel-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samuel say he would reason with the people about?",
+  "choices": [
+   "The king's duties",
+   "The righteous acts of the Lord",
+   "The Philistines",
+   "Their sins in Egypt"
+  ],
+  "answer": 1,
+  "explanation": "I may reason with you before the LORD of all the righteous acts of the LORD.",
+  "ref": "1 Samuel 12:7"
+ },
+ {
+  "id": "1-samuel-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samuel tell the people to consider?",
+  "choices": [
+   "How long they had sinned",
+   "How many kings they had",
+   "How great things the Lord had done for them",
+   "How old Samuel was"
+  ],
+  "answer": 2,
+  "explanation": "Consider how great things he hath done for you.",
+  "ref": "1 Samuel 12:24"
+ },
+ {
+  "id": "1-samuel-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man, still living, is named among those the Lord sent to deliver Israel?",
+  "choices": [
+   "Saul",
+   "Eli",
+   "Nahash",
+   "Samuel"
+  ],
+  "answer": 3,
+  "explanation": "The LORD sent Jerubbaal, and Bedan, and Jephthah, and Samuel.",
+  "ref": "1 Samuel 12:11"
+ },
+ {
+  "id": "1-samuel-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people promise if the Lord delivered them from their enemies?",
+  "choices": [
+   "We will serve thee",
+   "We will give a tenth",
+   "We will build an altar",
+   "We will fast"
+  ],
+  "answer": 0,
+  "explanation": "Deliver us out of the hand of our enemies, and we will serve thee.",
+  "ref": "1 Samuel 12:10"
+ },
+ {
+  "id": "1-samuel-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Samuel describe the people's wickedness in asking for a king?",
+  "choices": [
+   "Small and forgiven",
+   "Great in the sight of the Lord",
+   "Hidden from the Lord",
+   "Done in ignorance"
+  ],
+  "answer": 1,
+  "explanation": "That ye may perceive and see that your wickedness is great, which ye have done in the sight of the LORD.",
+  "ref": "1 Samuel 12:17"
+ },
+ {
+  "id": "1-samuel-12-h-15",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which gods did Israel say they had served when they cried out?",
+  "choices": [
+   "Dagon and Baalim",
+   "Molech and Ashtaroth",
+   "Baalim and Ashtaroth",
+   "Dagon and Molech"
+  ],
+  "answer": 2,
+  "explanation": "We have forsaken the LORD, and have served Baalim and Ashtaroth.",
+  "ref": "1 Samuel 12:10"
+ },
+ {
+  "id": "1-samuel-12-m-15",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Israel live after the Lord delivered them by the judges?",
+  "choices": [
+   "They dwelled safe",
+   "They lived in fear",
+   "They fought each other",
+   "They went into Egypt"
+  ],
+  "answer": 0,
+  "explanation": "The LORD sent Jerubbaal, and Bedan, and Jephthah, and Samuel, and delivered you out of the hand of your enemies, and ye dwelled safe.",
+  "ref": "1 Samuel 12:11"
  },
  {
   "id": "old-1-samuel-13-1",
