@@ -9440,6 +9440,646 @@
   "ref": "Judges 14:15–17"
  },
  {
+  "id": "judges-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Samson ask to get the woman of Timnath for him?",
+  "choices": [
+   "The Philistine lords",
+   "The elders of Dan",
+   "His brethren",
+   "His father and his mother"
+  ],
+  "answer": 3,
+  "explanation": "He told his father and his mother, now therefore get her for me to wife.",
+  "ref": "Judges 14:2"
+ },
+ {
+  "id": "judges-14-e-02",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samson's parents call the Philistines?",
+  "choices": [
+   "The mighty",
+   "The Danites",
+   "The uncircumcised",
+   "The wise"
+  ],
+  "answer": 2,
+  "explanation": "That thou goest to take a wife of the uncircumcised Philistines?",
+  "ref": "Judges 14:3"
+ },
+ {
+  "id": "judges-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What came mightily upon Samson when the young lion roared?",
+  "choices": [
+   "A swarm of bees",
+   "His brethren",
+   "The Spirit of the LORD",
+   "A great fear"
+  ],
+  "answer": 2,
+  "explanation": "The Spirit of the LORD came mightily upon him, and he rent him as he would have rent a kid.",
+  "ref": "Judges 14:6"
+ },
+ {
+  "id": "judges-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samson make at Timnath?",
+  "choices": [
+   "A feast",
+   "A treaty",
+   "An altar",
+   "A wall"
+  ],
+  "answer": 0,
+  "explanation": "Samson made there a feast; for so used the young men to do.",
+  "ref": "Judges 14:10"
+ },
+ {
+  "id": "judges-14-e-05",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many companions were brought to be with Samson?",
+  "choices": [
+   "Twelve",
+   "Seventy",
+   "Thirty",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "They brought thirty companions to be with him.",
+  "ref": "Judges 14:11"
+ },
+ {
+  "id": "judges-14-e-06",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days did Samson say the feast lasted for the riddle?",
+  "choices": [
+   "Ten",
+   "Three",
+   "Forty",
+   "Seven"
+  ],
+  "answer": 3,
+  "explanation": "If ye can certainly declare it me within the seven days of the feast.",
+  "ref": "Judges 14:12"
+ },
+ {
+  "id": "judges-14-e-07",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samson offer if the companions solved the riddle?",
+  "choices": [
+   "Thirty cities",
+   "Thirty sheep",
+   "Thirty sheets and thirty change of garments",
+   "Thirty talents of silver"
+  ],
+  "answer": 2,
+  "explanation": "I will give you thirty sheets and thirty change of garments.",
+  "ref": "Judges 14:12"
+ },
+ {
+  "id": "judges-14-e-08",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samson's wife do before him to learn the riddle?",
+  "choices": [
+   "She prayed",
+   "She danced",
+   "She wept",
+   "She fled"
+  ],
+  "answer": 2,
+  "explanation": "Samson's wife wept before him.",
+  "ref": "Judges 14:16"
+ },
+ {
+  "id": "judges-14-e-09",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did Samson go and slay thirty men?",
+  "choices": [
+   "Zorah",
+   "Gaza",
+   "Timnath",
+   "Ashkelon"
+  ],
+  "answer": 3,
+  "explanation": "The Spirit of the LORD came upon him, and he went down to Ashkelon, and slew thirty men of them.",
+  "ref": "Judges 14:19"
+ },
+ {
+  "id": "judges-14-e-10",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom was Samson's wife given at the end of the chapter?",
+  "choices": [
+   "His companion",
+   "His father",
+   "The king of Gaza",
+   "A Danite"
+  ],
+  "answer": 0,
+  "explanation": "Samson's wife was given to his companion, whom he had used as his friend.",
+  "ref": "Judges 14:20"
+ },
+ {
+  "id": "judges-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Samson's parents say he should look for a wife?",
+  "choices": [
+   "Among the Philistines",
+   "Among his brethren and his own people",
+   "In Zorah only",
+   "In Gaza"
+  ],
+  "answer": 1,
+  "explanation": "Is there never a woman among the daughters of thy brethren, or among all my people?",
+  "ref": "Judges 14:3"
+ },
+ {
+  "id": "judges-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did Samson give for wanting the woman?",
+  "choices": [
+   "She pleaseth me well",
+   "She is rich",
+   "She is of Dan",
+   "She is the judge's daughter"
+  ],
+  "answer": 0,
+  "explanation": "Samson said, Get her for me; for she pleaseth me well.",
+  "ref": "Judges 14:3"
+ },
+ {
+  "id": "judges-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samson's parents not know about his request?",
+  "choices": [
+   "That she was barren",
+   "That it was of the LORD",
+   "That she was a Philistine",
+   "That she was a widow"
+  ],
+  "answer": 1,
+  "explanation": "His father and his mother knew not that it was of the LORD, that he sought an occasion against the Philistines.",
+  "ref": "Judges 14:4"
+ },
+ {
+  "id": "judges-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had dominion over Israel at that time?",
+  "choices": [
+   "The Ammonites",
+   "The Midianites",
+   "The Amorites",
+   "The Philistines"
+  ],
+  "answer": 3,
+  "explanation": "At that time the Philistines had dominion over Israel.",
+  "ref": "Judges 14:4"
+ },
+ {
+  "id": "judges-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the young lion roar against Samson?",
+  "choices": [
+   "The gates of Gaza",
+   "The camp of Dan",
+   "The field of Zorah",
+   "The vineyards of Timnath"
+  ],
+  "answer": 3,
+  "explanation": "They came to the vineyards of Timnath: and, behold, a young lion roared against him.",
+  "ref": "Judges 14:5"
+ },
+ {
+  "id": "judges-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samson not tell his father or mother?",
+  "choices": [
+   "That he was a Nazarite",
+   "That he loved the woman",
+   "That he feared the Philistines",
+   "What he had done to the lion"
+  ],
+  "answer": 3,
+  "explanation": "He told not his father or his mother what he had done.",
+  "ref": "Judges 14:6"
+ },
+ {
+  "id": "judges-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samson give his father and mother to eat?",
+  "choices": [
+   "Honey",
+   "Bread",
+   "Figs",
+   "A kid"
+  ],
+  "answer": 0,
+  "explanation": "He took thereof in his hands, and went on eating, and came to his father and mother, and he gave them, and they did eat.",
+  "ref": "Judges 14:9"
+ },
+ {
+  "id": "judges-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "Who went down to the woman to arrange the feast?",
+  "choices": [
+   "The elders of Timnath",
+   "The Philistine lords",
+   "Samson's father",
+   "Samson's brethren"
+  ],
+  "answer": 2,
+  "explanation": "His father went down unto the woman: and Samson made there a feast.",
+  "ref": "Judges 14:10"
+ },
+ {
+  "id": "judges-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Samson's riddle end: \"Out of the eater came forth meat, and out of the strong came forth...\"?",
+  "choices": [
+   "Water",
+   "Strength",
+   "Honey",
+   "Sweetness"
+  ],
+  "answer": 3,
+  "explanation": "Out of the eater came forth meat, and out of the strong came forth sweetness.",
+  "ref": "Judges 14:14"
+ },
+ {
+  "id": "judges-14-m-10",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many days did they fail to expound the riddle?",
+  "choices": [
+   "Three days",
+   "One day",
+   "Two days",
+   "Seven days"
+  ],
+  "answer": 0,
+  "explanation": "They could not in three days expound the riddle.",
+  "ref": "Judges 14:14"
+ },
+ {
+  "id": "judges-14-m-11",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they threaten to do to Samson's wife and her father's house?",
+  "choices": [
+   "Sell them",
+   "Take their goods",
+   "Burn them with fire",
+   "Drive them out"
+  ],
+  "answer": 2,
+  "explanation": "Entice thy husband, lest we burn thee and thy father's house with fire.",
+  "ref": "Judges 14:15"
+ },
+ {
+  "id": "judges-14-m-12",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samson's wife say about his feelings?",
+  "choices": [
+   "Thou art a stranger",
+   "Thou dost but hate me, and lovest me not",
+   "Thou art a liar",
+   "Thou hast forsaken me"
+  ],
+  "answer": 1,
+  "explanation": "Thou dost but hate me, and lovest me not.",
+  "ref": "Judges 14:16"
+ },
+ {
+  "id": "judges-14-m-13",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day did Samson tell his wife the riddle?",
+  "choices": [
+   "The third day",
+   "The fifth day",
+   "The first day",
+   "The seventh day"
+  ],
+  "answer": 3,
+  "explanation": "It came to pass on the seventh day, that he told her, because she lay sore upon him.",
+  "ref": "Judges 14:17"
+ },
+ {
+  "id": "judges-14-m-14",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of the city ask Samson, about honey and a lion?",
+  "choices": [
+   "Where is thy wife?",
+   "What is thy name?",
+   "What is sweeter than honey?",
+   "Who told thee the riddle?"
+  ],
+  "answer": 2,
+  "explanation": "The men of the city said, What is sweeter than honey? and what is stronger than a lion?",
+  "ref": "Judges 14:18"
+ },
+ {
+  "id": "judges-14-m-15",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samson say about his heifer?",
+  "choices": [
+   "My heifer is lost",
+   "Ye had not found my riddle but for my heifer",
+   "My heifer is the best in Dan",
+   "My heifer is yours"
+  ],
+  "answer": 1,
+  "explanation": "If ye had not plowed with my heifer, ye had not found out my riddle.",
+  "ref": "Judges 14:18"
+ },
+ {
+  "id": "judges-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How had Samson rent the lion?",
+  "choices": [
+   "As he would have rent a kid",
+   "With a stone",
+   "With a sword",
+   "With a rope"
+  ],
+  "answer": 0,
+  "explanation": "He rent him as he would have rent a kid, and he had nothing in his hand.",
+  "ref": "Judges 14:6"
+ },
+ {
+  "id": "judges-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was in Samson's hand when he rent the lion?",
+  "choices": [
+   "A jawbone",
+   "Nothing",
+   "A sword",
+   "A staff"
+  ],
+  "answer": 1,
+  "explanation": "He rent him as he would have rent a kid, and he had nothing in his hand.",
+  "ref": "Judges 14:6"
+ },
+ {
+  "id": "judges-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After a time, what did Samson turn aside to see?",
+  "choices": [
+   "The vineyards",
+   "The feast tent",
+   "The carcase of the lion",
+   "The woman's house"
+  ],
+  "answer": 2,
+  "explanation": "He turned aside to see the carcase of the lion: and, behold, there was a swarm of bees and honey.",
+  "ref": "Judges 14:8"
+ },
+ {
+  "id": "judges-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samson not tell his parents about the honey?",
+  "choices": [
+   "That it was for the feast",
+   "That it was stolen",
+   "That it came from the lion's carcase",
+   "That it was a gift"
+  ],
+  "answer": 2,
+  "explanation": "He told not them that he had taken the honey out of the carcase of the lion.",
+  "ref": "Judges 14:9"
+ },
+ {
+  "id": "judges-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Samson make a feast?",
+  "choices": [
+   "It was a priest's custom",
+   "The king commanded it",
+   "So used the young men to do",
+   "His father asked"
+  ],
+  "answer": 2,
+  "explanation": "Samson made there a feast; for so used the young men to do.",
+  "ref": "Judges 14:10"
+ },
+ {
+  "id": "judges-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did the thirty men say, \"Entice thy husband\"?",
+  "choices": [
+   "The woman's father",
+   "Samson's father",
+   "Samson's mother",
+   "Samson's wife"
+  ],
+  "answer": 3,
+  "explanation": "They said unto Samson's wife, Entice thy husband, that he may declare unto us the riddle.",
+  "ref": "Judges 14:15"
+ },
+ {
+  "id": "judges-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what day did the Philistine men press Samson's wife?",
+  "choices": [
+   "The seventh day",
+   "The second day",
+   "The fourth day",
+   "The first day"
+  ],
+  "answer": 0,
+  "explanation": "It came to pass on the seventh day, that they said unto Samson's wife.",
+  "ref": "Judges 14:15"
+ },
+ {
+  "id": "judges-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Samson tell his wife the riddle?",
+  "choices": [
+   "She threatened him",
+   "She lay sore upon him",
+   "She swore an oath",
+   "She paid him"
+  ],
+  "answer": 1,
+  "explanation": "On the seventh day he told her, because she lay sore upon him.",
+  "ref": "Judges 14:17"
+ },
+ {
+  "id": "judges-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did Samson's wife tell the riddle?",
+  "choices": [
+   "Her father only",
+   "The elders of Dan",
+   "The king of Gaza",
+   "The children of her people"
+  ],
+  "answer": 3,
+  "explanation": "She told the riddle to the children of her people.",
+  "ref": "Judges 14:17"
+ },
+ {
+  "id": "judges-14-h-10",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samson say he had not told even to his parents?",
+  "choices": [
+   "His name",
+   "His vow",
+   "The riddle",
+   "The lion's death"
+  ],
+  "answer": 2,
+  "explanation": "I have not told it my father nor my mother, and shall I tell it thee?",
+  "ref": "Judges 14:16"
+ },
+ {
+  "id": "judges-14-h-11",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At what time of day did the men give the answer to Samson?",
+  "choices": [
+   "At dawn",
+   "Before the sun went down",
+   "At midnight",
+   "At noon"
+  ],
+  "answer": 1,
+  "explanation": "The men of the city said unto him on the seventh day before the sun went down.",
+  "ref": "Judges 14:18"
+ },
+ {
+  "id": "judges-14-h-12",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samson take from the thirty men of Ashkelon?",
+  "choices": [
+   "Their spoil",
+   "Their cattle",
+   "Their gates",
+   "Their sons"
+  ],
+  "answer": 0,
+  "explanation": "He slew thirty men of them, and took their spoil.",
+  "ref": "Judges 14:19"
+ },
+ {
+  "id": "judges-14-h-13",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom did Samson give change of garments?",
+  "choices": [
+   "His parents",
+   "The elders of Timnath",
+   "Those who expounded the riddle",
+   "His wife"
+  ],
+  "answer": 2,
+  "explanation": "He gave change of garments unto them which expounded the riddle.",
+  "ref": "Judges 14:19"
+ },
+ {
+  "id": "judges-14-h-14",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was kindled in Samson before he went up to his father's house?",
+  "choices": [
+   "His torch",
+   "His anger",
+   "His fear",
+   "His love"
+  ],
+  "answer": 1,
+  "explanation": "His anger was kindled, and he went up to his father's house.",
+  "ref": "Judges 14:19"
+ },
+ {
+  "id": "judges-14-h-15",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Samson's companion been to him?",
+  "choices": [
+   "His brother",
+   "His friend",
+   "His servant",
+   "His enemy"
+  ],
+  "answer": 1,
+  "explanation": "Samson's wife was given to his companion, whom he had used as his friend.",
+  "ref": "Judges 14:20"
+ },
+ {
   "id": "old-judges-15-1",
   "chapter": 15,
   "level": "beginner",
