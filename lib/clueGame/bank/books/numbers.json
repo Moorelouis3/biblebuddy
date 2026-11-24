@@ -9456,6 +9456,646 @@
   "ref": "Numbers 14:44–45"
  },
  {
+  "id": "numbers-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people cry that they wished had happened to them?",
+  "choices": [
+   "That they had stayed at Sinai",
+   "That they had never left Canaan",
+   "That they had been born kings",
+   "That they had died in Egypt or in the wilderness"
+  ],
+  "answer": 3,
+  "explanation": "They said, Would God that we had died in the land of Egypt! or would God we had died in this wilderness!",
+  "ref": "Numbers 14:2"
+ },
+ {
+  "id": "numbers-14-e-02",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two spies told the people the land was exceeding good?",
+  "choices": [
+   "Moses and Aaron",
+   "Caleb and Shammua",
+   "Joshua and Caleb",
+   "Joshua and Igal"
+  ],
+  "answer": 2,
+  "explanation": "Joshua the son of Nun, and Caleb the son of Jephunneh, spake unto all the company, The land is an exceeding good land.",
+  "ref": "Numbers 14:6–7"
+ },
+ {
+  "id": "numbers-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the whole congregation say to do to Joshua and Caleb?",
+  "choices": [
+   "Send them away",
+   "Stone them with stones",
+   "Make them captains",
+   "Bind them in ward"
+  ],
+  "answer": 1,
+  "explanation": "But all the congregation bade stone them with stones.",
+  "ref": "Numbers 14:10"
+ },
+ {
+  "id": "numbers-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What appeared in the tabernacle of the congregation before all Israel?",
+  "choices": [
+   "The glory of the LORD",
+   "A pillar of smoke",
+   "A flame from heaven",
+   "An angel of the LORD"
+  ],
+  "answer": 0,
+  "explanation": "The glory of the LORD appeared in the tabernacle of the congregation before all the children of Israel.",
+  "ref": "Numbers 14:10"
+ },
+ {
+  "id": "numbers-14-e-05",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say He would do to the people with the pestilence?",
+  "choices": [
+   "Scatter them among nations",
+   "Send them back to Egypt",
+   "Make them slaves",
+   "Smite them and disinherit them"
+  ],
+  "answer": 3,
+  "explanation": "I will smite them with the pestilence, and disinherit them.",
+  "ref": "Numbers 14:12"
+ },
+ {
+  "id": "numbers-14-e-06",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who pleaded with the LORD not to destroy the people?",
+  "choices": [
+   "Aaron",
+   "Caleb",
+   "Moses",
+   "Joshua"
+  ],
+  "answer": 2,
+  "explanation": "Moses said unto the LORD, Pardon, I beseech thee, the iniquity of this people.",
+  "ref": "Numbers 14:13–19"
+ },
+ {
+  "id": "numbers-14-e-07",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which spy did the LORD call 'my servant' because he followed Him fully?",
+  "choices": [
+   "Joshua",
+   "Caleb",
+   "Aaron",
+   "Hur"
+  ],
+  "answer": 1,
+  "explanation": "My servant Caleb, because he had another spirit with him, and hath followed me fully.",
+  "ref": "Numbers 14:24"
+ },
+ {
+  "id": "numbers-14-e-08",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the men who brought up the evil report die?",
+  "choices": [
+   "By the plague before the LORD",
+   "By the sword",
+   "By fire from heaven",
+   "In a battle with Amalek"
+  ],
+  "answer": 0,
+  "explanation": "Those men that did bring up the evil report upon the land, died by the plague before the LORD.",
+  "ref": "Numbers 14:37"
+ },
+ {
+  "id": "numbers-14-e-09",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two of the spies lived still after the others died?",
+  "choices": [
+   "Caleb and Shammua",
+   "Joshua and Gaddi",
+   "Sethur and Geuel",
+   "Joshua and Caleb"
+  ],
+  "answer": 3,
+  "explanation": "Joshua the son of Nun, and Caleb the son of Jephunneh, lived still.",
+  "ref": "Numbers 14:38"
+ },
+ {
+  "id": "numbers-14-e-10",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Against whom did all the children of Israel murmur?",
+  "choices": [
+   "Joshua and Caleb",
+   "Eleazar and Ithamar",
+   "Moses and Aaron",
+   "Moses and Joshua"
+  ],
+  "answer": 2,
+  "explanation": "All the children of Israel murmured against Moses and against Aaron.",
+  "ref": "Numbers 14:2"
+ },
+ {
+  "id": "numbers-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua and Caleb say the people of the land were for Israel?",
+  "choices": [
+   "Servants",
+   "Gold",
+   "Bread",
+   "Wine"
+  ],
+  "answer": 2,
+  "explanation": "Neither fear ye the people of the land; for they are bread for us.",
+  "ref": "Numbers 14:9"
+ },
+ {
+  "id": "numbers-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua and Caleb tell the people not to do against the LORD?",
+  "choices": [
+   "Murmur",
+   "Rebel",
+   "Sleep",
+   "Forget"
+  ],
+  "answer": 1,
+  "explanation": "Only rebel not ye against the LORD, neither fear ye the people of the land.",
+  "ref": "Numbers 14:9"
+ },
+ {
+  "id": "numbers-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD ask Moses about the people's belief?",
+  "choices": [
+   "How long will it be ere they believe me",
+   "Why will they not fear me",
+   "When will they build me a house",
+   "Who will lead them"
+  ],
+  "answer": 0,
+  "explanation": "How long will it be ere they believe me, for all the signs which I have shewed among them?",
+  "ref": "Numbers 14:11"
+ },
+ {
+  "id": "numbers-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the LORD offer to make into a greater and mightier nation?",
+  "choices": [
+   "Joshua",
+   "Caleb",
+   "Aaron",
+   "Moses"
+  ],
+  "answer": 3,
+  "explanation": "I will make of thee a greater nation and mightier than they.",
+  "ref": "Numbers 14:12"
+ },
+ {
+  "id": "numbers-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the nations would claim if the LORD killed all the people?",
+  "choices": [
+   "That the LORD had abandoned Moses",
+   "That the LORD was angry at Egypt",
+   "That the LORD was not able to bring them into the land",
+   "That Israel had lost its king"
+  ],
+  "answer": 2,
+  "explanation": "Because the LORD was not able to bring this people into the land which he sware unto them, therefore he hath slain them.",
+  "ref": "Numbers 14:15–16"
+ },
+ {
+  "id": "numbers-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Moses describe the LORD when he asked for pardon?",
+  "choices": [
+   "Swift to anger and slow to forgive",
+   "Longsuffering, and of great mercy",
+   "King of all nations",
+   "Maker of heaven and earth"
+  ],
+  "answer": 1,
+  "explanation": "The LORD is longsuffering, and of great mercy, forgiving iniquity and transgression.",
+  "ref": "Numbers 14:18"
+ },
+ {
+  "id": "numbers-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD answer Moses' plea for the people?",
+  "choices": [
+   "I have pardoned according to thy word",
+   "I will hear no more",
+   "Let them go back to Egypt",
+   "Wait seven days for my answer"
+  ],
+  "answer": 0,
+  "explanation": "And the LORD said, I have pardoned according to thy word.",
+  "ref": "Numbers 14:20"
+ },
+ {
+  "id": "numbers-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the LORD bring Caleb into the land?",
+  "choices": [
+   "He was the oldest of the spies",
+   "He was the son of Moses' friend",
+   "He had killed a giant",
+   "He had another spirit and followed the LORD fully"
+  ],
+  "answer": 3,
+  "explanation": "My servant Caleb, because he had another spirit with him, and hath followed me fully, him will I bring into the land.",
+  "ref": "Numbers 14:24"
+ },
+ {
+  "id": "numbers-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who dwelt in the valley when Israel was told to turn back?",
+  "choices": [
+   "The Hittites and Jebusites",
+   "The Anakim and Amorites",
+   "The Amalekites and the Canaanites",
+   "The Moabites and Edomites"
+  ],
+  "answer": 2,
+  "explanation": "Now the Amalekites and the Canaanites dwelt in the valley.",
+  "ref": "Numbers 14:25"
+ },
+ {
+  "id": "numbers-14-m-10",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By which way were the people told to get into the wilderness?",
+  "choices": [
+   "By the way of Hebron",
+   "By the way of the Red sea",
+   "By the way of Jordan",
+   "By the way of Moab"
+  ],
+  "answer": 1,
+  "explanation": "To morrow turn you, and get you into the wilderness by the way of the Red sea.",
+  "ref": "Numbers 14:25"
+ },
+ {
+  "id": "numbers-14-m-11",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From what age and upward would those who murmured fall in the wilderness?",
+  "choices": [
+   "Twenty years old",
+   "Thirty years old",
+   "Forty years old",
+   "Sixty years old"
+  ],
+  "answer": 0,
+  "explanation": "All that were numbered of you, from twenty years old and upward, which have murmured against me.",
+  "ref": "Numbers 14:29"
+ },
+ {
+  "id": "numbers-14-m-12",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the LORD say He would bring into the land, though the people said they would be a prey?",
+  "choices": [
+   "Their elders",
+   "Their priests",
+   "Their servants",
+   "Their little ones"
+  ],
+  "answer": 3,
+  "explanation": "But your little ones, which ye said should be a prey, them will I bring in.",
+  "ref": "Numbers 14:31"
+ },
+ {
+  "id": "numbers-14-m-13",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the people wander forty years?",
+  "choices": [
+   "One year for each tribe",
+   "One year for each plague of Egypt",
+   "One year for each of the forty days they searched the land",
+   "One year for each spy"
+  ],
+  "answer": 2,
+  "explanation": "After the number of the days in which ye searched the land, even forty days, each day for a year, shall ye bear your iniquities.",
+  "ref": "Numbers 14:34"
+ },
+ {
+  "id": "numbers-14-m-14",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many times had the people tempted the LORD, according to Him?",
+  "choices": [
+   "Three times",
+   "Ten times",
+   "Seven times",
+   "Twelve times"
+  ],
+  "answer": 1,
+  "explanation": "Have tempted me now these ten times, and have not hearkened to my voice.",
+  "ref": "Numbers 14:22"
+ },
+ {
+  "id": "numbers-14-m-15",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people do early the next morning after hearing the LORD's sentence?",
+  "choices": [
+   "They went up to the top of the mountain",
+   "They returned to Egypt",
+   "They fasted in the tabernacle",
+   "They destroyed their idols"
+  ],
+  "answer": 0,
+  "explanation": "They rose up early in the morning, and gat them up into the top of the mountain.",
+  "ref": "Numbers 14:40"
+ },
+ {
+  "id": "numbers-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Moses say the LORD went before the people by day?",
+  "choices": [
+   "In a pillar of a cloud",
+   "In a pillar of fire",
+   "In a whirlwind",
+   "In a chariot"
+  ],
+  "answer": 0,
+  "explanation": "Thou goest before them, by daytime in a pillar of a cloud, and in a pillar of fire by night.",
+  "ref": "Numbers 14:14"
+ },
+ {
+  "id": "numbers-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD forgives iniquity but visits the iniquity of the fathers upon the children unto which generations?",
+  "choices": [
+   "The second and third",
+   "The fourth and fifth",
+   "The seventh",
+   "The third and fourth"
+  ],
+  "answer": 3,
+  "explanation": "Visiting the iniquity of the fathers upon the children unto the third and fourth generation.",
+  "ref": "Numbers 14:18"
+ },
+ {
+  "id": "numbers-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua and Caleb say had departed from the people of the land?",
+  "choices": [
+   "Their gods",
+   "Their kings",
+   "Their defence",
+   "Their courage"
+  ],
+  "answer": 2,
+  "explanation": "They are bread for us: their defence is departed from them, and the LORD is with us.",
+  "ref": "Numbers 14:9"
+ },
+ {
+  "id": "numbers-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD swore that all the earth shall be filled with what?",
+  "choices": [
+   "The fear of the LORD",
+   "The glory of the LORD",
+   "The knowledge of Israel",
+   "The praise of the people"
+  ],
+  "answer": 1,
+  "explanation": "But as truly as I live, all the earth shall be filled with the glory of the LORD.",
+  "ref": "Numbers 14:21"
+ },
+ {
+  "id": "numbers-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the people react when Moses told them the LORD's sayings?",
+  "choices": [
+   "They mourned greatly",
+   "They were silent",
+   "They rejoiced",
+   "They fled the camp"
+  ],
+  "answer": 0,
+  "explanation": "Moses told these sayings unto all the children of Israel: and the people mourned greatly.",
+  "ref": "Numbers 14:39"
+ },
+ {
+  "id": "numbers-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people say as they went up the mountain?",
+  "choices": [
+   "The LORD is with us",
+   "We will return to Egypt",
+   "Moses has deceived us",
+   "We have sinned"
+  ],
+  "answer": 3,
+  "explanation": "Lo, we be here, and will go up unto the place which the LORD hath promised: for we have sinned.",
+  "ref": "Numbers 14:40"
+ },
+ {
+  "id": "numbers-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Moses say they must not go up against the enemy?",
+  "choices": [
+   "The Jordan was in flood",
+   "They had no weapons",
+   "The LORD was not among them",
+   "It was the sabbath"
+  ],
+  "answer": 2,
+  "explanation": "Go not up, for the LORD is not among you; that ye be not smitten before your enemies.",
+  "ref": "Numbers 14:42"
+ },
+ {
+  "id": "numbers-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did not depart out of the camp when the people went up the hill?",
+  "choices": [
+   "Aaron and the priests",
+   "The ark of the covenant and Moses",
+   "Joshua and Caleb",
+   "The elders and the Levites"
+  ],
+  "answer": 1,
+  "explanation": "The ark of the covenant of the LORD, and Moses, departed not out of the camp.",
+  "ref": "Numbers 14:44"
+ },
+ {
+  "id": "numbers-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "place",
+  "question": "Unto what place were the Israelites smitten and discomfited?",
+  "choices": [
+   "Hormah",
+   "Kadesh",
+   "Hebron",
+   "Rehob"
+  ],
+  "answer": 0,
+  "explanation": "The Amalekites came down, and the Canaanites which dwelt in that hill, and smote them, even unto Hormah.",
+  "ref": "Numbers 14:45"
+ },
+ {
+  "id": "numbers-14-h-10",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He would do to the people as they had spoken in His ears?",
+  "choices": [
+   "He would double their punishment",
+   "He would forgive them at once",
+   "He would hide His face",
+   "As they had spoken, so He would do to them"
+  ],
+  "answer": 3,
+  "explanation": "As ye have spoken in mine ears, so will I do to you.",
+  "ref": "Numbers 14:28"
+ },
+ {
+  "id": "numbers-14-h-11",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses said the nations had heard the LORD was seen how among the people?",
+  "choices": [
+   "In a dream",
+   "By a voice only",
+   "Face to face",
+   "In a burning bush"
+  ],
+  "answer": 2,
+  "explanation": "They have heard that thou LORD art among this people, that thou LORD art seen face to face.",
+  "ref": "Numbers 14:14"
+ },
+ {
+  "id": "numbers-14-h-12",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the spies had brought upon the land?",
+  "choices": [
+   "A curse",
+   "A slander",
+   "A blessing",
+   "A famine"
+  ],
+  "answer": 1,
+  "explanation": "The men which Moses sent to search the land... by bringing up a slander upon the land.",
+  "ref": "Numbers 14:36"
+ },
+ {
+  "id": "numbers-14-h-13",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses and Aaron do before the assembly when the people wanted to return to Egypt?",
+  "choices": [
+   "Fell on their faces",
+   "Rent their clothes",
+   "Went into the tabernacle",
+   "Lifted up their voice and wept"
+  ],
+  "answer": 0,
+  "explanation": "Then Moses and Aaron fell on their faces before all the assembly of the congregation.",
+  "ref": "Numbers 14:5"
+ },
+ {
+  "id": "numbers-14-h-14",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD call the congregation that murmured against Him?",
+  "choices": [
+   "A stiffnecked people",
+   "A holy nation",
+   "A rebellious house",
+   "An evil congregation"
+  ],
+  "answer": 3,
+  "explanation": "How long shall I bear with this evil congregation, which murmur against me?",
+  "ref": "Numbers 14:27"
+ },
+ {
+  "id": "numbers-14-h-15",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the people say the LORD had brought them to the land?",
+  "choices": [
+   "To starve in the wilderness",
+   "To be scattered",
+   "To fall by the sword",
+   "To be made slaves"
+  ],
+  "answer": 2,
+  "explanation": "Wherefore hath the LORD brought us unto this land, to fall by the sword, that our wives and our children should be a prey?",
+  "ref": "Numbers 14:3"
+ },
+ {
   "id": "old-numbers-15-1",
   "chapter": 15,
   "level": "beginner",
