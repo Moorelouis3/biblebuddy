@@ -800,6 +800,646 @@
   "ref": "Numbers 2:2"
  },
  {
+  "id": "numbers-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which side of the tabernacle did the camp of Reuben pitch?",
+  "choices": [
+   "North",
+   "South",
+   "East",
+   "West"
+  ],
+  "answer": 1,
+  "explanation": "On the south side shall be the standard of the camp of Reuben.",
+  "ref": "Numbers 2:10"
+ },
+ {
+  "id": "numbers-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which side of the tabernacle did the camp of Ephraim pitch?",
+  "choices": [
+   "West",
+   "South",
+   "North",
+   "East"
+  ],
+  "answer": 0,
+  "explanation": "On the west side shall be the standard of the camp of Ephraim.",
+  "ref": "Numbers 2:18"
+ },
+ {
+  "id": "numbers-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which side of the tabernacle did the camp of Dan pitch?",
+  "choices": [
+   "South",
+   "East",
+   "West",
+   "North"
+  ],
+  "answer": 3,
+  "explanation": "The standard of the camp of Dan shall be on the north side.",
+  "ref": "Numbers 2:25"
+ },
+ {
+  "id": "numbers-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was captain of the children of Judah?",
+  "choices": [
+   "Elizur",
+   "Ahiezer",
+   "Nahshon",
+   "Abidan"
+  ],
+  "answer": 2,
+  "explanation": "Nahshon the son of Amminadab shall be captain of the children of Judah.",
+  "ref": "Numbers 2:3"
+ },
+ {
+  "id": "numbers-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which camp was to set forth first?",
+  "choices": [
+   "The camp of Dan",
+   "The camp of Judah",
+   "The camp of Ephraim",
+   "The camp of Levi"
+  ],
+  "answer": 1,
+  "explanation": "All that were numbered in the camp of Judah were numbered; these shall first set forth.",
+  "ref": "Numbers 2:9"
+ },
+ {
+  "id": "numbers-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which camp was to go hindmost with their standards?",
+  "choices": [
+   "The camp of Dan",
+   "The camp of Judah",
+   "The camp of Reuben",
+   "The camp of Ephraim"
+  ],
+  "answer": 0,
+  "explanation": "The camp of Dan shall go hindmost with their standards.",
+  "ref": "Numbers 2:31"
+ },
+ {
+  "id": "numbers-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In which rank did the camp of Ephraim go forward?",
+  "choices": [
+   "The first rank",
+   "The second rank",
+   "The last rank",
+   "The third rank"
+  ],
+  "answer": 3,
+  "explanation": "The camp of Ephraim shall go forward in the third rank.",
+  "ref": "Numbers 2:24"
+ },
+ {
+  "id": "numbers-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose camp set forward in the midst of the other camps?",
+  "choices": [
+   "The priests",
+   "The princes",
+   "The Levites",
+   "The strangers"
+  ],
+  "answer": 2,
+  "explanation": "The tabernacle shall set forward with the camp of the Levites in the midst of the camp.",
+  "ref": "Numbers 2:17"
+ },
+ {
+  "id": "numbers-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the LORD speak to at the start of this chapter?",
+  "choices": [
+   "Moses and Joshua",
+   "Moses and Aaron",
+   "Aaron and Eleazar",
+   "Moses and Caleb"
+  ],
+  "answer": 1,
+  "explanation": "And the LORD spake unto Moses and unto Aaron, saying.",
+  "ref": "Numbers 2:1"
+ },
+ {
+  "id": "numbers-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do with what the LORD commanded Moses?",
+  "choices": [
+   "They did according to all of it",
+   "They did half of it",
+   "They asked to change it",
+   "They put it off"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel did according to all that the LORD commanded Moses.",
+  "ref": "Numbers 2:34"
+ },
+ {
+  "id": "numbers-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two tribes pitched with Reuben in the camp on the south?",
+  "choices": [
+   "Judah and Issachar",
+   "Dan and Asher",
+   "Ephraim and Manasseh",
+   "Simeon and Gad"
+  ],
+  "answer": 3,
+  "explanation": "By Reuben pitched the tribe of Simeon, then the tribe of Gad.",
+  "ref": "Numbers 2:12"
+ },
+ {
+  "id": "numbers-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two tribes pitched with Ephraim in the camp on the west?",
+  "choices": [
+   "Simeon and Gad",
+   "Asher and Naphtali",
+   "Manasseh and Benjamin",
+   "Issachar and Zebulun"
+  ],
+  "answer": 2,
+  "explanation": "By Ephraim pitched the tribe of Manasseh, then the tribe of Benjamin.",
+  "ref": "Numbers 2:20"
+ },
+ {
+  "id": "numbers-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two tribes pitched with Dan in the camp on the north?",
+  "choices": [
+   "Gad and Simeon",
+   "Asher and Naphtali",
+   "Manasseh and Benjamin",
+   "Issachar and Zebulun"
+  ],
+  "answer": 1,
+  "explanation": "By Dan pitched the tribe of Asher, then the tribe of Naphtali.",
+  "ref": "Numbers 2:27"
+ },
+ {
+  "id": "numbers-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was captain of the children of Reuben?",
+  "choices": [
+   "Elizur son of Shedeur",
+   "Nahshon son of Amminadab",
+   "Eliab son of Helon",
+   "Pagiel son of Ocran"
+  ],
+  "answer": 0,
+  "explanation": "The captain of the children of Reuben shall be Elizur the son of Shedeur.",
+  "ref": "Numbers 2:10"
+ },
+ {
+  "id": "numbers-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was captain of the sons of Ephraim?",
+  "choices": [
+   "Gamaliel son of Pedahzur",
+   "Abidan son of Gideoni",
+   "Ahira son of Enan",
+   "Elishama son of Ammihud"
+  ],
+  "answer": 3,
+  "explanation": "The captain of the sons of Ephraim shall be Elishama the son of Ammihud.",
+  "ref": "Numbers 2:18"
+ },
+ {
+  "id": "numbers-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was captain of the children of Dan?",
+  "choices": [
+   "Shelumiel son of Zurishaddai",
+   "Nethaneel son of Zuar",
+   "Ahiezer son of Ammishaddai",
+   "Eliasaph son of Reuel"
+  ],
+  "answer": 2,
+  "explanation": "The captain of the children of Dan shall be Ahiezer the son of Ammishaddai.",
+  "ref": "Numbers 2:25"
+ },
+ {
+  "id": "numbers-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men were numbered in the whole camp of Judah?",
+  "choices": [
+   "One hundred fifty-one thousand four hundred fifty",
+   "One hundred eighty-six thousand four hundred",
+   "One hundred eight thousand one hundred",
+   "One hundred fifty-seven thousand six hundred"
+  ],
+  "answer": 1,
+  "explanation": "All that were numbered in the camp of Judah were an hundred thousand and fourscore thousand and six thousand and four hundred.",
+  "ref": "Numbers 2:9"
+ },
+ {
+  "id": "numbers-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men were numbered in the whole camp of Reuben?",
+  "choices": [
+   "One hundred fifty-one thousand four hundred fifty",
+   "One hundred eighty-six thousand four hundred",
+   "One hundred eight thousand one hundred",
+   "One hundred fifty-seven thousand six hundred"
+  ],
+  "answer": 0,
+  "explanation": "All that were numbered in the camp of Reuben were an hundred thousand and fifty and one thousand and four hundred and fifty.",
+  "ref": "Numbers 2:16"
+ },
+ {
+  "id": "numbers-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was captain of the sons of Benjamin?",
+  "choices": [
+   "Gamaliel son of Pedahzur",
+   "Ahira son of Enan",
+   "Elizur son of Shedeur",
+   "Abidan son of Gideoni"
+  ],
+  "answer": 3,
+  "explanation": "The captain of the sons of Benjamin shall be Abidan the son of Gideoni.",
+  "ref": "Numbers 2:22"
+ },
+ {
+  "id": "numbers-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "How far from the tabernacle were the tribes to pitch?",
+  "choices": [
+   "Within sight of the door",
+   "Inside the court",
+   "Far off about it",
+   "Beyond the river"
+  ],
+  "answer": 2,
+  "explanation": "Far off about the tabernacle of the congregation shall they pitch.",
+  "ref": "Numbers 2:2"
+ },
+ {
+  "id": "numbers-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of the four camps had the most men numbered?",
+  "choices": [
+   "Reuben",
+   "Judah",
+   "Ephraim",
+   "Dan"
+  ],
+  "answer": 1,
+  "explanation": "The camp of Judah numbered one hundred eighty-six thousand four hundred.",
+  "ref": "Numbers 2:9"
+ },
+ {
+  "id": "numbers-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of the four camps had the fewest men numbered?",
+  "choices": [
+   "Ephraim",
+   "Judah",
+   "Reuben",
+   "Dan"
+  ],
+  "answer": 0,
+  "explanation": "The camp of Ephraim numbered an hundred thousand and eight thousand and an hundred.",
+  "ref": "Numbers 2:24"
+ },
+ {
+  "id": "numbers-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was captain of the children of Zebulun?",
+  "choices": [
+   "Nethaneel son of Zuar",
+   "Pagiel son of Ocran",
+   "Elishama son of Ammihud",
+   "Eliab son of Helon"
+  ],
+  "answer": 3,
+  "explanation": "Eliab the son of Helon shall be captain of the children of Zebulun.",
+  "ref": "Numbers 2:7"
+ },
+ {
+  "id": "numbers-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was captain of the children of Simeon?",
+  "choices": [
+   "Elizur son of Shedeur",
+   "Ahiezer son of Ammishaddai",
+   "Shelumiel son of Zurishaddai",
+   "Nahshon son of Amminadab"
+  ],
+  "answer": 2,
+  "explanation": "The captain of the children of Simeon shall be Shelumiel the son of Zurishaddai.",
+  "ref": "Numbers 2:12"
+ },
+ {
+  "id": "numbers-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was captain of the children of Manasseh?",
+  "choices": [
+   "Elishama son of Ammihud",
+   "Gamaliel son of Pedahzur",
+   "Abidan son of Gideoni",
+   "Eliab son of Helon"
+  ],
+  "answer": 1,
+  "explanation": "The captain of the children of Manasseh shall be Gamaliel the son of Pedahzur.",
+  "ref": "Numbers 2:20"
+ },
+ {
+  "id": "numbers-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men in all were numbered in the camp of Dan?",
+  "choices": [
+   "One hundred fifty-seven thousand six hundred",
+   "One hundred fifty-one thousand four hundred fifty",
+   "One hundred eight thousand one hundred",
+   "One hundred eighty-six thousand four hundred"
+  ],
+  "answer": 0,
+  "explanation": "All they that were numbered in the camp of Dan were an hundred thousand and fifty and seven thousand and six hundred.",
+  "ref": "Numbers 2:31"
+ },
+ {
+  "id": "numbers-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men in all were numbered in the camp of Ephraim?",
+  "choices": [
+   "One hundred fifty-seven thousand six hundred",
+   "One hundred eighty-six thousand four hundred",
+   "One hundred fifty-one thousand four hundred fifty",
+   "One hundred eight thousand one hundred"
+  ],
+  "answer": 3,
+  "explanation": "All that were numbered of the camp of Ephraim were an hundred thousand and eight thousand and an hundred.",
+  "ref": "Numbers 2:24"
+ },
+ {
+  "id": "numbers-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "In this chapter, Eliasaph, captain of Gad, is the son of whom?",
+  "choices": [
+   "Deuel",
+   "Zuar",
+   "Reuel",
+   "Helon"
+  ],
+  "answer": 2,
+  "explanation": "Then the tribe of Gad: and the captain of the sons of Gad shall be Eliasaph the son of Reuel.",
+  "ref": "Numbers 2:14"
+ },
+ {
+  "id": "numbers-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Pagiel, the captain of Asher, was the son of whom?",
+  "choices": [
+   "Enan",
+   "Ocran",
+   "Gideoni",
+   "Helon"
+  ],
+  "answer": 1,
+  "explanation": "The captain of the children of Asher shall be Pagiel the son of Ocran.",
+  "ref": "Numbers 2:27"
+ },
+ {
+  "id": "numbers-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Ahira, the captain of Naphtali, was the son of whom?",
+  "choices": [
+   "Enan",
+   "Ocran",
+   "Ammihud",
+   "Zuar"
+  ],
+  "answer": 0,
+  "explanation": "The captain of the children of Naphtali shall be Ahira the son of Enan.",
+  "ref": "Numbers 2:29"
+ },
+ {
+  "id": "numbers-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tribe pitched last in the camp of Reuben, after Simeon?",
+  "choices": [
+   "Zebulun",
+   "Asher",
+   "Benjamin",
+   "Gad"
+  ],
+  "answer": 3,
+  "explanation": "Then the tribe of Gad: and the captain of the sons of Gad shall be Eliasaph.",
+  "ref": "Numbers 2:14"
+ },
+ {
+  "id": "numbers-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tribe pitched last in the camp of Ephraim, after Manasseh?",
+  "choices": [
+   "Gad",
+   "Dan",
+   "Benjamin",
+   "Naphtali"
+  ],
+  "answer": 2,
+  "explanation": "Then the tribe of Benjamin: and the captain of the sons of Benjamin shall be Abidan.",
+  "ref": "Numbers 2:22"
+ },
+ {
+  "id": "numbers-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tribe pitched last in the camp of Dan, after Asher?",
+  "choices": [
+   "Gad",
+   "Naphtali",
+   "Issachar",
+   "Simeon"
+  ],
+  "answer": 1,
+  "explanation": "Then the tribe of Naphtali: and the captain of the children of Naphtali shall be Ahira.",
+  "ref": "Numbers 2:29"
+ },
+ {
+  "id": "numbers-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Elishama, the captain of Ephraim, was the son of whom?",
+  "choices": [
+   "Ammihud",
+   "Pedahzur",
+   "Shedeur",
+   "Gideoni"
+  ],
+  "answer": 0,
+  "explanation": "The captain of the sons of Ephraim shall be Elishama the son of Ammihud.",
+  "ref": "Numbers 2:18"
+ },
+ {
+  "id": "numbers-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Gamaliel, the captain of Manasseh, was the son of whom?",
+  "choices": [
+   "Ammihud",
+   "Gideoni",
+   "Zuar",
+   "Pedahzur"
+  ],
+  "answer": 3,
+  "explanation": "The captain of the children of Manasseh shall be Gamaliel the son of Pedahzur.",
+  "ref": "Numbers 2:20"
+ },
+ {
+  "id": "numbers-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Abidan, the captain of Benjamin, was the son of whom?",
+  "choices": [
+   "Pedahzur",
+   "Shedeur",
+   "Gideoni",
+   "Helon"
+  ],
+  "answer": 2,
+  "explanation": "The captain of the sons of Benjamin shall be Abidan the son of Gideoni.",
+  "ref": "Numbers 2:22"
+ },
+ {
+  "id": "numbers-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Ahiezer, the captain of Dan, was the son of whom?",
+  "choices": [
+   "Zurishaddai",
+   "Ammishaddai",
+   "Amminadab",
+   "Ammihud"
+  ],
+  "answer": 1,
+  "explanation": "The captain of the children of Dan shall be Ahiezer the son of Ammishaddai.",
+  "ref": "Numbers 2:25"
+ },
+ {
+  "id": "numbers-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Nethaneel, the captain of Issachar, was the son of whom?",
+  "choices": [
+   "Zuar",
+   "Shedeur",
+   "Helon",
+   "Ocran"
+  ],
+  "answer": 0,
+  "explanation": "Nethaneel the son of Zuar shall be captain of the children of Issachar.",
+  "ref": "Numbers 2:5"
+ },
+ {
+  "id": "numbers-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Elizur, the captain of Reuben, was the son of whom?",
+  "choices": [
+   "Zuar",
+   "Reuel",
+   "Enan",
+   "Shedeur"
+  ],
+  "answer": 3,
+  "explanation": "The captain of the children of Reuben shall be Elizur the son of Shedeur.",
+  "ref": "Numbers 2:10"
+ },
+ {
+  "id": "numbers-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Eliab, the captain of Zebulun, was the son of whom?",
+  "choices": [
+   "Zuar",
+   "Deuel",
+   "Helon",
+   "Ocran"
+  ],
+  "answer": 2,
+  "explanation": "Eliab the son of Helon shall be captain of the children of Zebulun.",
+  "ref": "Numbers 2:7"
+ },
+ {
   "id": "old-numbers-3-1",
   "chapter": 3,
   "level": "beginner",
