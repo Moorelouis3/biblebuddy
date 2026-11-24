@@ -2240,6 +2240,646 @@
   "ref": "1 Samuel 4:21"
  },
  {
+  "id": "1-samuel-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Israel pitch beside in the battle against the Philistines?",
+  "choices": [
+   "Shiloh",
+   "Eben-ezer",
+   "Ramah",
+   "Gilgal"
+  ],
+  "answer": 1,
+  "explanation": "Israel pitched beside Eben-ezer: and the Philistines pitched in Aphek.",
+  "ref": "1 Samuel 4:1"
+ },
+ {
+  "id": "1-samuel-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the Philistines pitch their camp?",
+  "choices": [
+   "Gath",
+   "Eben-ezer",
+   "Shiloh",
+   "Aphek"
+  ],
+  "answer": 3,
+  "explanation": "The Philistines pitched in Aphek.",
+  "ref": "1 Samuel 4:1"
+ },
+ {
+  "id": "1-samuel-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did all Israel do when the ark came into the camp?",
+  "choices": [
+   "Fell silent",
+   "Shouted with a great shout",
+   "Fasted",
+   "Offered a bullock"
+  ],
+  "answer": 1,
+  "explanation": "All Israel shouted with a great shout, so that the earth rang again.",
+  "ref": "1 Samuel 4:5"
+ },
+ {
+  "id": "1-samuel-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Philistines say when they learned the ark had come?",
+  "choices": [
+   "Send for Dagon",
+   "The Hebrews will flee",
+   "Let us make peace",
+   "God is come into the camp"
+  ],
+  "answer": 3,
+  "explanation": "The Philistines were afraid, for they said, God is come into the camp.",
+  "ref": "1 Samuel 4:7"
+ },
+ {
+  "id": "1-samuel-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From which tribe was the man who ran from the army to Shiloh?",
+  "choices": [
+   "Judah",
+   "Benjamin",
+   "Levi",
+   "Dan"
+  ],
+  "answer": 1,
+  "explanation": "There ran a man of Benjamin out of the army, and came to Shiloh the same day.",
+  "ref": "1 Samuel 4:12"
+ },
+ {
+  "id": "1-samuel-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where was Eli sitting when the news came?",
+  "choices": [
+   "On a hill",
+   "In the temple",
+   "At the city gate",
+   "On a seat by the wayside"
+  ],
+  "answer": 3,
+  "explanation": "Eli sat upon a seat by the wayside watching.",
+  "ref": "1 Samuel 4:13"
+ },
+ {
+  "id": "1-samuel-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Eli?",
+  "choices": [
+   "Seventy",
+   "Ninety and eight",
+   "Eighty and four",
+   "One hundred"
+  ],
+  "answer": 1,
+  "explanation": "Eli was ninety and eight years old; and his eyes were dim, that he could not see.",
+  "ref": "1 Samuel 4:15"
+ },
+ {
+  "id": "1-samuel-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose wife was with child and near to be delivered?",
+  "choices": [
+   "Elkanah's",
+   "Hophni's",
+   "Samuel's",
+   "Phinehas'"
+  ],
+  "answer": 3,
+  "explanation": "His daughter in law, Phinehas' wife, was with child, near to be delivered.",
+  "ref": "1 Samuel 4:19"
+ },
+ {
+  "id": "1-samuel-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years had Eli judged Israel?",
+  "choices": [
+   "Twenty",
+   "Forty",
+   "Thirty",
+   "Seventy"
+  ],
+  "answer": 1,
+  "explanation": "He had judged Israel forty years.",
+  "ref": "1 Samuel 4:18"
+ },
+ {
+  "id": "1-samuel-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel suffer in the first battle?",
+  "choices": [
+   "They lost the camp",
+   "They won",
+   "They made peace",
+   "They were smitten before the Philistines"
+  ],
+  "answer": 3,
+  "explanation": "Israel was smitten before the Philistines.",
+  "ref": "1 Samuel 4:2"
+ },
+ {
+  "id": "1-samuel-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the elders say would save them out of the hand of their enemies?",
+  "choices": [
+   "A sacrifice",
+   "Samuel",
+   "The priests",
+   "The ark of the covenant"
+  ],
+  "answer": 3,
+  "explanation": "Let us fetch the ark of the covenant of the LORD out of Shiloh unto us, that it may save us.",
+  "ref": "1 Samuel 4:3"
+ },
+ {
+  "id": "1-samuel-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Between what does the ark of the covenant of the LORD dwell?",
+  "choices": [
+   "Two pillars",
+   "The cherubims",
+   "The altars",
+   "The tents"
+  ],
+  "answer": 1,
+  "explanation": "The ark of the covenant of the LORD of hosts, which dwelleth between the cherubims.",
+  "ref": "1 Samuel 4:4"
+ },
+ {
+  "id": "1-samuel-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Philistines say had never happened before?",
+  "choices": [
+   "An earthquake",
+   "A famine",
+   "A plague",
+   "Such a thing as this"
+  ],
+  "answer": 3,
+  "explanation": "Woe unto us! for there hath not been such a thing heretofore.",
+  "ref": "1 Samuel 4:7"
+ },
+ {
+  "id": "1-samuel-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Philistines say these Gods had done to the Egyptians?",
+  "choices": [
+   "Drowned them in the sea",
+   "Smote them with all the plagues in the wilderness",
+   "Drove them from Canaan",
+   "Sent a famine"
+  ],
+  "answer": 1,
+  "explanation": "These are the Gods that smote the Egyptians with all the plagues in the wilderness.",
+  "ref": "1 Samuel 4:8"
+ },
+ {
+  "id": "1-samuel-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Philistines tell each other to do?",
+  "choices": [
+   "Hide the ark",
+   "Flee to Gath",
+   "Make a treaty",
+   "Quit themselves like men"
+  ],
+  "answer": 3,
+  "explanation": "Be strong, and quit yourselves like men, O ye Philistines.",
+  "ref": "1 Samuel 4:9"
+ },
+ {
+  "id": "1-samuel-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many footmen of Israel fell in the second battle?",
+  "choices": [
+   "Four thousand",
+   "Thirty thousand",
+   "Ten thousand",
+   "Fifty thousand"
+  ],
+  "answer": 1,
+  "explanation": "There fell of Israel thirty thousand footmen.",
+  "ref": "1 Samuel 4:10"
+ },
+ {
+  "id": "1-samuel-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Israel flee after being smitten the second time?",
+  "choices": [
+   "Into the hills",
+   "Into Shiloh",
+   "Into Ramah",
+   "Every man into his tent"
+  ],
+  "answer": 3,
+  "explanation": "Israel was smitten, and they fled every man into his tent.",
+  "ref": "1 Samuel 4:10"
+ },
+ {
+  "id": "1-samuel-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the man from the army look when he came to Shiloh?",
+  "choices": [
+   "Wounded in the arm",
+   "Clothes rent, with earth upon his head",
+   "Carrying the ark",
+   "Dressed in armour"
+  ],
+  "answer": 1,
+  "explanation": "He came to Shiloh with his clothes rent, and with earth upon his head.",
+  "ref": "1 Samuel 4:12"
+ },
+ {
+  "id": "1-samuel-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Eli's heart tremble?",
+  "choices": [
+   "For Samuel",
+   "For his sons",
+   "For Shiloh",
+   "For the ark of God"
+  ],
+  "answer": 3,
+  "explanation": "Eli sat watching: for his heart trembled for the ark of God.",
+  "ref": "1 Samuel 4:13"
+ },
+ {
+  "id": "1-samuel-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the whole city do when the man told the news?",
+  "choices": [
+   "Fled",
+   "Cried out",
+   "Prayed",
+   "Went to war"
+  ],
+  "answer": 1,
+  "explanation": "When the man came into the city, and told it, all the city cried out.",
+  "ref": "1 Samuel 4:13"
+ },
+ {
+  "id": "1-samuel-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eli ask when he heard the noise of the crying?",
+  "choices": [
+   "Has the ark returned?",
+   "Where are my sons?",
+   "Who is there?",
+   "What meaneth the noise of this tumult?"
+  ],
+  "answer": 3,
+  "explanation": "He said, What meaneth the noise of this tumult?",
+  "ref": "1 Samuel 4:14"
+ },
+ {
+  "id": "1-samuel-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the last piece of bad news the messenger told Eli?",
+  "choices": [
+   "Israel had fled",
+   "The ark of God is taken",
+   "The army was destroyed",
+   "Samuel was dead"
+  ],
+  "answer": 1,
+  "explanation": "Thy two sons also, Hophni and Phinehas, are dead, and the ark of God is taken.",
+  "ref": "1 Samuel 4:17"
+ },
+ {
+  "id": "1-samuel-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What made Eli fall from his seat?",
+  "choices": [
+   "A servant pushed him",
+   "Hearing of his sons",
+   "Fainting",
+   "Hearing of the ark of God"
+  ],
+  "answer": 3,
+  "explanation": "When he made mention of the ark of God, he fell from off the seat backward.",
+  "ref": "1 Samuel 4:18"
+ },
+ {
+  "id": "1-samuel-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the women say to Phinehas' wife as she was dying?",
+  "choices": [
+   "The glory is departed",
+   "Fear not, thou hast born a son",
+   "Call for Eli",
+   "Pray to the LORD"
+  ],
+  "answer": 1,
+  "explanation": "The women said unto her, Fear not; for thou hast born a son.",
+  "ref": "1 Samuel 4:20"
+ },
+ {
+  "id": "1-samuel-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Phinehas' wife react to the women?",
+  "choices": [
+   "She thanked them",
+   "She named the child at once",
+   "She wept for joy",
+   "She answered not, neither did she regard it"
+  ],
+  "answer": 3,
+  "explanation": "She answered not, neither did she regard it.",
+  "ref": "1 Samuel 4:20"
+ },
+ {
+  "id": "1-samuel-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose word came to all Israel at the start of the chapter?",
+  "choices": [
+   "Hophni",
+   "Eli",
+   "Samuel",
+   "Phinehas"
+  ],
+  "answer": 2,
+  "explanation": "The word of Samuel came to all Israel.",
+  "ref": "1 Samuel 4:1"
+ },
+ {
+  "id": "1-samuel-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "About how many men did the Philistines slay in the first battle?",
+  "choices": [
+   "Four thousand",
+   "Three thousand",
+   "Thirty thousand",
+   "Ten thousand"
+  ],
+  "answer": 0,
+  "explanation": "They slew of the army in the field about four thousand men.",
+  "ref": "1 Samuel 4:2"
+ },
+ {
+  "id": "1-samuel-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What part of Eli broke when he fell?",
+  "choices": [
+   "His arm",
+   "His back",
+   "His neck",
+   "His leg"
+  ],
+  "answer": 2,
+  "explanation": "He fell backward by the side of the gate, and his neck brake, and he died.",
+  "ref": "1 Samuel 4:18"
+ },
+ {
+  "id": "1-samuel-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Eli's fall kill him, the text says?",
+  "choices": [
+   "He was an old man, and heavy",
+   "He was struck by a soldier",
+   "The gate fell",
+   "He had no sight"
+  ],
+  "answer": 0,
+  "explanation": "His neck brake, and he died: for he was an old man, and heavy.",
+  "ref": "1 Samuel 4:18"
+ },
+ {
+  "id": "1-samuel-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man say about himself when Eli asked who he was?",
+  "choices": [
+   "I am a priest",
+   "I am Hophni's servant",
+   "I fled to day out of the army",
+   "I carried the ark"
+  ],
+  "answer": 2,
+  "explanation": "I am he that came out of the army, and I fled to day out of the army.",
+  "ref": "1 Samuel 4:16"
+ },
+ {
+  "id": "1-samuel-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Eli call the messenger?",
+  "choices": [
+   "My son",
+   "My brother",
+   "My servant",
+   "My friend"
+  ],
+  "answer": 0,
+  "explanation": "And he said, What is there done, my son?",
+  "ref": "1 Samuel 4:16"
+ },
+ {
+  "id": "1-samuel-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the woman do when she heard the tidings of the ark?",
+  "choices": [
+   "Sat on the ground",
+   "Fled to Ramah",
+   "Bowed herself and travailed",
+   "Cried to the LORD"
+  ],
+  "answer": 2,
+  "explanation": "She heard the tidings... she bowed herself and travailed; for her pains came upon her.",
+  "ref": "1 Samuel 4:19"
+ },
+ {
+  "id": "1-samuel-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the ark, whose deaths did the woman give as the reason for naming the child?",
+  "choices": [
+   "Her father in law and her husband",
+   "Her sons",
+   "Her brothers",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "Because the ark of God was taken, and because of her father in law and her husband.",
+  "ref": "1 Samuel 4:21"
+ },
+ {
+  "id": "1-samuel-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Philistines say they would be if they did not fight?",
+  "choices": [
+   "Captives in Egypt",
+   "Slain",
+   "Servants unto the Hebrews",
+   "Exiles"
+  ],
+  "answer": 2,
+  "explanation": "Quit yourselves like men, that ye be not servants unto the Hebrews.",
+  "ref": "1 Samuel 4:9"
+ },
+ {
+  "id": "1-samuel-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the Philistines understand the ark had come?",
+  "choices": [
+   "Into the camp",
+   "Into Aphek",
+   "Into Shiloh",
+   "Into Gath"
+  ],
+  "answer": 0,
+  "explanation": "They understood that the ark of the LORD was come into the camp.",
+  "ref": "1 Samuel 4:6"
+ },
+ {
+  "id": "1-samuel-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the great shout do?",
+  "choices": [
+   "The sky darkened",
+   "The walls fell",
+   "The earth rang again",
+   "The ground shook the camp"
+  ],
+  "answer": 2,
+  "explanation": "All Israel shouted with a great shout, so that the earth rang again.",
+  "ref": "1 Samuel 4:5"
+ },
+ {
+  "id": "1-samuel-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Philistines call the God of the Hebrews in their fear?",
+  "choices": [
+   "Mighty Gods",
+   "The Rock",
+   "The Most High",
+   "The God of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Who shall deliver us out of the hand of these mighty Gods?",
+  "ref": "1 Samuel 4:8"
+ },
+ {
+  "id": "1-samuel-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the man of Benjamin reach Shiloh?",
+  "choices": [
+   "Three days later",
+   "The next morning",
+   "The same day",
+   "At nightfall"
+  ],
+  "answer": 2,
+  "explanation": "A man of Benjamin ran out of the army, and came to Shiloh the same day.",
+  "ref": "1 Samuel 4:12"
+ },
+ {
+  "id": "1-samuel-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the messenger say had happened to Israel?",
+  "choices": [
+   "Israel has hidden",
+   "Israel has won",
+   "Israel is fled before the Philistines",
+   "Israel is in Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "Israel is fled before the Philistines, and there hath been also a great slaughter among the people.",
+  "ref": "1 Samuel 4:17"
+ },
+ {
+  "id": "1-samuel-4-h-16",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "By the side of what did Eli fall backward from his seat?",
+  "choices": [
+   "The gate",
+   "The altar",
+   "The temple",
+   "The well"
+  ],
+  "answer": 0,
+  "explanation": "He fell from off the seat backward by the side of the gate, and his neck brake.",
+  "ref": "1 Samuel 4:18"
+ },
+ {
   "id": "old-1-samuel-5-1",
   "chapter": 5,
   "level": "beginner",
