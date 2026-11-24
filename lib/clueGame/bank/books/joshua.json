@@ -16670,5 +16670,645 @@
   "answer": 1,
   "explanation": "Joshua set up a great stone as a witness to the covenant renewal.",
   "ref": "Joshua 24:26–27"
+ },
+ {
+  "id": "joshua-24-e-01",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who gathered all the tribes of Israel to Shechem?",
+  "choices": [
+   "Eleazar",
+   "Caleb",
+   "Phinehas",
+   "Joshua"
+  ],
+  "answer": 3,
+  "explanation": "Joshua gathered all the tribes of Israel to Shechem.",
+  "ref": "Joshua 24:1"
+ },
+ {
+  "id": "joshua-24-e-02",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose father was Terah?",
+  "choices": [
+   "Isaac",
+   "Jacob",
+   "Moses",
+   "Abraham"
+  ],
+  "answer": 3,
+  "explanation": "Terah, the father of Abraham, and the father of Nachor.",
+  "ref": "Joshua 24:2"
+ },
+ {
+  "id": "joshua-24-e-03",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was given to Abraham by the LORD?",
+  "choices": [
+   "Esau",
+   "Jacob",
+   "Joseph",
+   "Isaac"
+  ],
+  "answer": 3,
+  "explanation": "I took your father Abraham and gave him Isaac.",
+  "ref": "Joshua 24:3"
+ },
+ {
+  "id": "joshua-24-e-04",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two sons were given to Isaac?",
+  "choices": [
+   "Moses and Aaron",
+   "Joseph and Benjamin",
+   "Reuben and Judah",
+   "Jacob and Esau"
+  ],
+  "answer": 3,
+  "explanation": "I gave unto Isaac Jacob and Esau.",
+  "ref": "Joshua 24:4"
+ },
+ {
+  "id": "joshua-24-e-05",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two men did the LORD send to bring Israel out of Egypt?",
+  "choices": [
+   "Joshua and Caleb",
+   "Jacob and Esau",
+   "Eleazar and Phinehas",
+   "Moses and Aaron"
+  ],
+  "answer": 3,
+  "explanation": "I sent Moses also and Aaron.",
+  "ref": "Joshua 24:5"
+ },
+ {
+  "id": "joshua-24-e-06",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which sea did the Egyptians pursue Israel to?",
+  "choices": [
+   "The great sea",
+   "The Dead sea",
+   "The sea of Galilee",
+   "The Red sea"
+  ],
+  "answer": 3,
+  "explanation": "The Egyptians pursued after your fathers with chariots and horsemen unto the Red sea.",
+  "ref": "Joshua 24:6"
+ },
+ {
+  "id": "joshua-24-e-07",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the king of Moab who warred against Israel?",
+  "choices": [
+   "Og",
+   "Sihon",
+   "Zippor",
+   "Balak"
+  ],
+  "answer": 3,
+  "explanation": "Balak the son of Zippor, king of Moab, arose and warred against Israel.",
+  "ref": "Joshua 24:9"
+ },
+ {
+  "id": "joshua-24-e-08",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Balak call to curse Israel?",
+  "choices": [
+   "Beor",
+   "Moses",
+   "Aaron",
+   "Balaam"
+  ],
+  "answer": 3,
+  "explanation": "Sent and called Balaam the son of Beor to curse you.",
+  "ref": "Joshua 24:9"
+ },
+ {
+  "id": "joshua-24-e-09",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Joshua and his house say they would serve?",
+  "choices": [
+   "Baal",
+   "The gods of the Amorites",
+   "The gods beyond the flood",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "But as for me and my house, we will serve the LORD.",
+  "ref": "Joshua 24:15"
+ },
+ {
+  "id": "joshua-24-e-10",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "How old was Joshua when he died?",
+  "choices": [
+   "Eighty",
+   "A hundred and twenty",
+   "A hundred",
+   "A hundred and ten"
+  ],
+  "answer": 3,
+  "explanation": "Joshua the son of Nun, the servant of the LORD, died, being an hundred and ten years old.",
+  "ref": "Joshua 24:29"
+ },
+ {
+  "id": "joshua-24-m-01",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua say Terah's family did beyond the flood?",
+  "choices": [
+   "Built altars to the LORD",
+   "Served other gods",
+   "Kept flocks only",
+   "Fought the Amorites"
+  ],
+  "answer": 1,
+  "explanation": "Your fathers dwelt on the other side of the flood in old time, and they served other gods.",
+  "ref": "Joshua 24:2"
+ },
+ {
+  "id": "joshua-24-m-02",
+  "chapter": 24,
+  "level": "medium",
+  "category": "place",
+  "question": "What mountain did the LORD give to Esau?",
+  "choices": [
+   "Mount Ephraim",
+   "Mount Seir",
+   "Mount Gilead",
+   "Mount Ebal"
+  ],
+  "answer": 1,
+  "explanation": "I gave unto Esau mount Seir, to possess it.",
+  "ref": "Joshua 24:4"
+ },
+ {
+  "id": "joshua-24-m-03",
+  "chapter": 24,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Jacob and his children go?",
+  "choices": [
+   "Up to Shechem",
+   "Down into Egypt",
+   "To mount Seir",
+   "Back beyond the flood"
+  ],
+  "answer": 1,
+  "explanation": "Jacob and his children went down into Egypt.",
+  "ref": "Joshua 24:4"
+ },
+ {
+  "id": "joshua-24-m-04",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD put between Israel and the Egyptians at the sea?",
+  "choices": [
+   "A cloud of fire",
+   "Darkness",
+   "A wall of water",
+   "A mountain"
+  ],
+  "answer": 1,
+  "explanation": "He put darkness between you and the Egyptians.",
+  "ref": "Joshua 24:7"
+ },
+ {
+  "id": "joshua-24-m-05",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD do to the Egyptians at the sea?",
+  "choices": [
+   "Opened the earth",
+   "Brought the sea upon them",
+   "Sent hail",
+   "Struck them with plague"
+  ],
+  "answer": 1,
+  "explanation": "And brought the sea upon them, and covered them.",
+  "ref": "Joshua 24:7"
+ },
+ {
+  "id": "joshua-24-m-06",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which people living across Jordan fought against Israel?",
+  "choices": [
+   "The Moabites",
+   "The Amorites",
+   "The Egyptians",
+   "The Philistines"
+  ],
+  "answer": 1,
+  "explanation": "I brought you into the land of the Amorites, which dwelt on the other side Jordan.",
+  "ref": "Joshua 24:8"
+ },
+ {
+  "id": "joshua-24-m-07",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Balaam not curse Israel?",
+  "choices": [
+   "He was afraid of Balak",
+   "The LORD would not hearken to him",
+   "He was bribed",
+   "He was sick"
+  ],
+  "answer": 1,
+  "explanation": "I would not hearken unto Balaam; therefore he blessed you still.",
+  "ref": "Joshua 24:10"
+ },
+ {
+  "id": "joshua-24-m-08",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD send before Israel to drive out the Amorite kings?",
+  "choices": [
+   "A plague",
+   "The hornet",
+   "A cloud",
+   "A storm"
+  ],
+  "answer": 1,
+  "explanation": "I sent the hornet before you, which drave them out.",
+  "ref": "Joshua 24:12"
+ },
+ {
+  "id": "joshua-24-m-09",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua say Israel ate from that they had not planted?",
+  "choices": [
+   "Fig trees and gardens",
+   "Vineyards and oliveyards",
+   "Wheat fields only",
+   "Date palms"
+  ],
+  "answer": 1,
+  "explanation": "Of the vineyards and oliveyards which ye planted not do ye eat.",
+  "ref": "Joshua 24:13"
+ },
+ {
+  "id": "joshua-24-m-10",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the people to serve the LORD?",
+  "choices": [
+   "In silence",
+   "In sincerity and in truth",
+   "With all their silver",
+   "With fasting only"
+  ],
+  "answer": 1,
+  "explanation": "Fear the LORD, and serve him in sincerity and in truth.",
+  "ref": "Joshua 24:14"
+ },
+ {
+  "id": "joshua-24-m-11",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people say when they refused to forsake the LORD?",
+  "choices": [
+   "Not yet",
+   "God forbid",
+   "We will see",
+   "Let us ask Eleazar"
+  ],
+  "answer": 1,
+  "explanation": "God forbid that we should forsake the LORD, to serve other gods.",
+  "ref": "Joshua 24:16"
+ },
+ {
+  "id": "joshua-24-m-12",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of God did Joshua say the LORD is?",
+  "choices": [
+   "A distant God",
+   "A holy God, a jealous God",
+   "A silent God",
+   "A hidden God"
+  ],
+  "answer": 1,
+  "explanation": "Ye cannot serve the LORD: for he is an holy God; he is a jealous God.",
+  "ref": "Joshua 24:19"
+ },
+ {
+  "id": "joshua-24-m-13",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua tell the people to put away?",
+  "choices": [
+   "Their cattle",
+   "The strange gods among them",
+   "Their swords",
+   "Their tents"
+  ],
+  "answer": 1,
+  "explanation": "Put away the strange gods which are among you.",
+  "ref": "Joshua 24:23"
+ },
+ {
+  "id": "joshua-24-m-14",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Joshua set the great stone?",
+  "choices": [
+   "On mount Ebal",
+   "Under an oak by the sanctuary of the LORD",
+   "At the Jordan",
+   "Inside Shiloh"
+  ],
+  "answer": 1,
+  "explanation": "Took a great stone, and set it up there under an oak, that was by the sanctuary of the LORD.",
+  "ref": "Joshua 24:26"
+ },
+ {
+  "id": "joshua-24-m-15",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Who died after Joshua and was buried in a hill given to his son Phinehas?",
+  "choices": [
+   "Caleb",
+   "Eleazar",
+   "Aaron",
+   "Moses"
+  ],
+  "answer": 1,
+  "explanation": "Eleazar the son of Aaron died; and they buried him in a hill that pertained to Phinehas his son.",
+  "ref": "Joshua 24:33"
+ },
+ {
+  "id": "joshua-24-h-01",
+  "chapter": 24,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Joshua buried?",
+  "choices": [
+   "Timnath-serah",
+   "Shechem",
+   "Shiloh",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "They buried him in the border of his inheritance in Timnath-serah, in mount Ephraim.",
+  "ref": "Joshua 24:30"
+ },
+ {
+  "id": "joshua-24-h-02",
+  "chapter": 24,
+  "level": "hard",
+  "category": "place",
+  "question": "On which side of the hill of Gaash was Joshua buried?",
+  "choices": [
+   "The north side",
+   "The south side",
+   "The east side",
+   "The west side"
+  ],
+  "answer": 0,
+  "explanation": "In Timnath-serah, on the north side of the hill of Gaash.",
+  "ref": "Joshua 24:30"
+ },
+ {
+  "id": "joshua-24-h-03",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were the bones of Joseph buried?",
+  "choices": [
+   "In Shechem",
+   "In Hebron",
+   "In Bethel",
+   "In Timnath-serah"
+  ],
+  "answer": 0,
+  "explanation": "The bones of Joseph buried they in Shechem.",
+  "ref": "Joshua 24:32"
+ },
+ {
+  "id": "joshua-24-h-04",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much did Jacob pay for the parcel of ground at Shechem?",
+  "choices": [
+   "A hundred pieces of silver",
+   "Ten pieces of gold",
+   "Forty shekels",
+   "Two hundred pieces of silver"
+  ],
+  "answer": 0,
+  "explanation": "A parcel of ground which Jacob bought of the sons of Hamor for an hundred pieces of silver.",
+  "ref": "Joshua 24:32"
+ },
+ {
+  "id": "joshua-24-h-05",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom did Jacob buy the ground at Shechem?",
+  "choices": [
+   "The sons of Hamor",
+   "The sons of Esau",
+   "The Amorites of Jericho",
+   "The sons of Balak"
+  ],
+  "answer": 0,
+  "explanation": "Jacob bought of the sons of Hamor the father of Shechem.",
+  "ref": "Joshua 24:32"
+ },
+ {
+  "id": "joshua-24-h-06",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose inheritance did the ground at Shechem become?",
+  "choices": [
+   "The children of Joseph",
+   "The children of Judah",
+   "The children of Levi",
+   "The children of Gad"
+  ],
+  "answer": 0,
+  "explanation": "It became the inheritance of the children of Joseph.",
+  "ref": "Joshua 24:32"
+ },
+ {
+  "id": "joshua-24-h-07",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two sons of Terah are named here?",
+  "choices": [
+   "Abraham and Nachor",
+   "Abraham and Isaac",
+   "Nachor and Esau",
+   "Isaac and Jacob"
+  ],
+  "answer": 0,
+  "explanation": "Terah, the father of Abraham, and the father of Nachor.",
+  "ref": "Joshua 24:2"
+ },
+ {
+  "id": "joshua-24-h-08",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Israel serve the LORD?",
+  "choices": [
+   "All the days of Joshua and the elders who outlived him",
+   "Only until Joshua died",
+   "Forty years",
+   "Until the first king"
+  ],
+  "answer": 0,
+  "explanation": "Israel served the LORD all the days of Joshua, and all the days of the elders that overlived Joshua.",
+  "ref": "Joshua 24:31"
+ },
+ {
+  "id": "joshua-24-h-09",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua write the people's words in?",
+  "choices": [
+   "The book of the law of God",
+   "A scroll of brass",
+   "The tabernacle wall",
+   "A stone tablet only"
+  ],
+  "answer": 0,
+  "explanation": "Joshua wrote these words in the book of the law of God.",
+  "ref": "Joshua 24:26"
+ },
+ {
+  "id": "joshua-24-h-10",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Joshua say the stone would be a witness?",
+  "choices": [
+   "It heard all the words of the LORD",
+   "It was blessed by Eleazar",
+   "It came from Sinai",
+   "It was carved by Moses"
+  ],
+  "answer": 0,
+  "explanation": "This stone shall be a witness unto us; for it hath heard all the words of the LORD.",
+  "ref": "Joshua 24:27"
+ },
+ {
+  "id": "joshua-24-h-11",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua set for the people in Shechem along with the covenant?",
+  "choices": [
+   "A statute and an ordinance",
+   "A feast",
+   "A tax",
+   "A king"
+  ],
+  "answer": 0,
+  "explanation": "Joshua made a covenant with the people that day, and set them a statute and an ordinance in Shechem.",
+  "ref": "Joshua 24:25"
+ },
+ {
+  "id": "joshua-24-h-12",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua say they were against themselves, having chosen the LORD?",
+  "choices": [
+   "Witnesses",
+   "Judges",
+   "Captains",
+   "Prophets"
+  ],
+  "answer": 0,
+  "explanation": "Ye are witnesses against yourselves that ye have chosen you the LORD.",
+  "ref": "Joshua 24:22"
+ },
+ {
+  "id": "joshua-24-h-13",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua say the LORD would do if they forsook him and served strange gods?",
+  "choices": [
+   "Turn and do them hurt and consume them",
+   "Send them to Egypt",
+   "Forgive them again",
+   "Give them another land"
+  ],
+  "answer": 0,
+  "explanation": "He will turn and do you hurt, and consume you, after that he hath done you good.",
+  "ref": "Joshua 24:20"
+ },
+ {
+  "id": "joshua-24-h-14",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the gods beyond the flood, whose gods did Joshua name as a choice?",
+  "choices": [
+   "The gods of the Amorites",
+   "The gods of Moab",
+   "The gods of Egypt only",
+   "The gods of the Philistines"
+  ],
+  "answer": 0,
+  "explanation": "Or the gods of the Amorites, in whose land ye dwell.",
+  "ref": "Joshua 24:15"
+ },
+ {
+  "id": "joshua-24-h-15",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people call Egypt when they spoke of the LORD bringing them out?",
+  "choices": [
+   "The house of bondage",
+   "The land of Goshen",
+   "The sea of darkness",
+   "The land of Pharaoh's rest"
+  ],
+  "answer": 0,
+  "explanation": "The LORD our God brought us up out of the land of Egypt, from the house of bondage.",
+  "ref": "Joshua 24:17"
  }
 ]
