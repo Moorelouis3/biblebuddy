@@ -11616,6 +11616,646 @@
   "ref": "Numbers 17:10"
  },
  {
+  "id": "numbers-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Moses to write upon each rod?",
+  "choices": [
+   "A verse of the law",
+   "The name of his tribe's city",
+   "The name of the LORD",
+   "Every man's name"
+  ],
+  "answer": 3,
+  "explanation": "Write thou every man's name upon his rod.",
+  "ref": "Numbers 17:2"
+ },
+ {
+  "id": "numbers-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the rod of the man whom the LORD chose do?",
+  "choices": [
+   "Turn into a serpent",
+   "Burst into flame",
+   "Blossom",
+   "Grow into a tree"
+  ],
+  "answer": 2,
+  "explanation": "The man's rod, whom I shall choose, shall blossom.",
+  "ref": "Numbers 17:5"
+ },
+ {
+  "id": "numbers-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did Moses go into the tabernacle of witness to see the rods?",
+  "choices": [
+   "That same night",
+   "On the morrow",
+   "After seven days",
+   "At the new moon"
+  ],
+  "answer": 1,
+  "explanation": "On the morrow Moses went into the tabernacle of witness; and, behold, the rod of Aaron was budded.",
+  "ref": "Numbers 17:8"
+ },
+ {
+  "id": "numbers-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who brought out all the rods to the children of Israel?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "Eleazar",
+   "Joshua"
+  ],
+  "answer": 0,
+  "explanation": "Moses brought out all the rods from before the LORD unto all the children of Israel.",
+  "ref": "Numbers 17:9"
+ },
+ {
+  "id": "numbers-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did each man do when the rods were shown to Israel?",
+  "choices": [
+   "Burned his rod",
+   "Laid his rod on the altar",
+   "Broke his rod",
+   "Looked and took his own rod"
+  ],
+  "answer": 3,
+  "explanation": "They looked, and took every man his rod.",
+  "ref": "Numbers 17:9"
+ },
+ {
+  "id": "numbers-17-e-06",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the children of Israel cry out to Moses?",
+  "choices": [
+   "We will go up at once",
+   "The LORD is our God",
+   "We die, we perish, we all perish",
+   "We will serve Aaron"
+  ],
+  "answer": 2,
+  "explanation": "The children of Israel spake unto Moses, saying, Behold, we die, we perish, we all perish.",
+  "ref": "Numbers 17:12"
+ },
+ {
+  "id": "numbers-17-e-07",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Moses to bring Aaron's rod again before the testimony?",
+  "choices": [
+   "Aaron",
+   "The LORD",
+   "The elders",
+   "Eleazar"
+  ],
+  "answer": 1,
+  "explanation": "And the LORD said unto Moses, Bring Aaron's rod again before the testimony.",
+  "ref": "Numbers 17:10"
+ },
+ {
+  "id": "numbers-17-e-08",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The LORD wanted the murmurings of whom to cease?",
+  "choices": [
+   "The children of Israel",
+   "The Levites only",
+   "The priests",
+   "The princes"
+  ],
+  "answer": 0,
+  "explanation": "I will make to cease from me the murmurings of the children of Israel, whereby they murmur against you.",
+  "ref": "Numbers 17:5"
+ },
+ {
+  "id": "numbers-17-e-09",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who gave Moses a rod apiece?",
+  "choices": [
+   "Every priest",
+   "Every Levite",
+   "Every elder",
+   "Every one of the princes"
+  ],
+  "answer": 3,
+  "explanation": "Every one of their princes gave him a rod apiece, for each prince one.",
+  "ref": "Numbers 17:6"
+ },
+ {
+  "id": "numbers-17-e-10",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Did Moses do what the LORD commanded about Aaron's rod?",
+  "choices": [
+   "No, Aaron kept it himself",
+   "No, he waited a year",
+   "Yes, as the LORD commanded him, so did he",
+   "Yes, but only after the elders agreed"
+  ],
+  "answer": 2,
+  "explanation": "Moses did so: as the LORD commanded him, so did he.",
+  "ref": "Numbers 17:11"
+ },
+ {
+  "id": "numbers-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the LORD tell Moses to lay up the rods?",
+  "choices": [
+   "On the altar of burnt offering",
+   "In the camp of Judah",
+   "In the tabernacle before the testimony",
+   "In Moses' own tent"
+  ],
+  "answer": 2,
+  "explanation": "Lay them up in the tabernacle of the congregation before the testimony, where I will meet with you.",
+  "ref": "Numbers 17:4"
+ },
+ {
+  "id": "numbers-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many rods were gathered according to the houses of the fathers?",
+  "choices": [
+   "Ten",
+   "Twelve",
+   "Seventy",
+   "Two hundred and fifty"
+  ],
+  "answer": 1,
+  "explanation": "Of all their princes according to the house of their fathers twelve rods.",
+  "ref": "Numbers 17:2"
+ },
+ {
+  "id": "numbers-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Aaron's rod stood for the head of which house?",
+  "choices": [
+   "The house of Levi",
+   "The house of Judah",
+   "The house of Reuben",
+   "The house of Ephraim"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt write Aaron's name upon the rod of Levi: for one rod shall be for the head of the house of their fathers.",
+  "ref": "Numbers 17:3"
+ },
+ {
+  "id": "numbers-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Aaron's rod yield?",
+  "choices": [
+   "Figs",
+   "Pomegranates",
+   "Grapes",
+   "Almonds"
+  ],
+  "answer": 3,
+  "explanation": "The rod of Aaron for the house of Levi was budded, and brought forth buds, and bloomed blossoms, and yielded almonds.",
+  "ref": "Numbers 17:8"
+ },
+ {
+  "id": "numbers-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Aaron's rod to be kept before the testimony?",
+  "choices": [
+   "As a memorial of Egypt",
+   "As a staff for Moses",
+   "As a token against the rebels",
+   "As an offering for sin"
+  ],
+  "answer": 2,
+  "explanation": "Bring Aaron's rod again before the testimony, to be kept for a token against the rebels.",
+  "ref": "Numbers 17:10"
+ },
+ {
+  "id": "numbers-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the token take away, so that the people would not die?",
+  "choices": [
+   "Their sins",
+   "Their murmurings",
+   "Their enemies",
+   "Their plagues"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt quite take away their murmurings from me, that they die not.",
+  "ref": "Numbers 17:10"
+ },
+ {
+  "id": "numbers-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where were the rods laid up before the LORD?",
+  "choices": [
+   "In the tabernacle of witness",
+   "In the court of the tabernacle",
+   "At the camp gate",
+   "In the cloud"
+  ],
+  "answer": 0,
+  "explanation": "Moses laid up the rods before the LORD in the tabernacle of witness.",
+  "ref": "Numbers 17:7"
+ },
+ {
+  "id": "numbers-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people say would happen to whoever comes near the tabernacle?",
+  "choices": [
+   "He shall be blessed",
+   "He shall be made priest",
+   "He shall be cut off",
+   "He shall die"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever cometh any thing near unto the tabernacle of the LORD shall die.",
+  "ref": "Numbers 17:13"
+ },
+ {
+  "id": "numbers-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question did the people ask at the end of the chapter?",
+  "choices": [
+   "Who will lead us home?",
+   "Where is the LORD?",
+   "Shall we be consumed with dying?",
+   "Will the plague return?"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever cometh any thing near unto the tabernacle of the LORD shall die: shall we be consumed with dying?",
+  "ref": "Numbers 17:13"
+ },
+ {
+  "id": "numbers-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the LORD say He would meet with Moses?",
+  "choices": [
+   "On the mountain of Sinai",
+   "In the tabernacle before the testimony",
+   "At the camp gate",
+   "At the altar"
+  ],
+  "answer": 1,
+  "explanation": "Lay them up before the testimony, where I will meet with you.",
+  "ref": "Numbers 17:4"
+ },
+ {
+  "id": "numbers-17-m-11",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose rod was among the twelve rods Moses received?",
+  "choices": [
+   "Aaron's",
+   "Moses'",
+   "Korah's",
+   "Eleazar's"
+  ],
+  "answer": 0,
+  "explanation": "The rod of Aaron was among their rods.",
+  "ref": "Numbers 17:6"
+ },
+ {
+  "id": "numbers-17-m-12",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would make cease through the choosing of the rod?",
+  "choices": [
+   "Israel's wandering",
+   "The plague among the people",
+   "The wars with Amalek",
+   "Israel's murmuring against Moses and Aaron"
+  ],
+  "answer": 3,
+  "explanation": "I will make to cease from me the murmurings of the children of Israel, whereby they murmur against you.",
+  "ref": "Numbers 17:5"
+ },
+ {
+  "id": "numbers-17-m-13",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Aaron's rod done by the next morning?",
+  "choices": [
+   "It had turned to a serpent",
+   "It had withered",
+   "It had budded, bloomed blossoms and yielded almonds",
+   "It had taken root"
+  ],
+  "answer": 2,
+  "explanation": "Behold, the rod of Aaron was budded, and brought forth buds, and bloomed blossoms, and yielded almonds.",
+  "ref": "Numbers 17:8"
+ },
+ {
+  "id": "numbers-17-m-14",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose name was written on the rod of the tribe of Levi?",
+  "choices": [
+   "Moses'",
+   "Aaron's",
+   "Korah's",
+   "Eleazar's"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt write Aaron's name upon the rod of Levi.",
+  "ref": "Numbers 17:3"
+ },
+ {
+  "id": "numbers-17-m-15",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Moses show the people the rods?",
+  "choices": [
+   "He brought them out from before the LORD",
+   "He sent Aaron with them",
+   "He set them on the altar",
+   "He placed them in the ark"
+  ],
+  "answer": 0,
+  "explanation": "Moses brought out all the rods from before the LORD unto all the children of Israel.",
+  "ref": "Numbers 17:9"
+ },
+ {
+  "id": "numbers-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what order does the text say Aaron's rod changed?",
+  "choices": [
+   "Budded, bloomed blossoms, then yielded almonds",
+   "Yielded almonds, then budded, then bloomed",
+   "Bloomed, then withered, then budded",
+   "Budded, then dried, then yielded almonds"
+  ],
+  "answer": 0,
+  "explanation": "The rod of Aaron was budded, and brought forth buds, and bloomed blossoms, and yielded almonds.",
+  "ref": "Numbers 17:8"
+ },
+ {
+  "id": "numbers-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD call the rebels in connection with Aaron's rod?",
+  "choices": [
+   "The wicked",
+   "The stiffnecked",
+   "The enemies",
+   "The rebels"
+  ],
+  "answer": 3,
+  "explanation": "Bring Aaron's rod again before the testimony, to be kept for a token against the rebels.",
+  "ref": "Numbers 17:10"
+ },
+ {
+  "id": "numbers-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the tabernacle of witness, which other name does the text give for the place the rods were laid?",
+  "choices": [
+   "The house of the LORD",
+   "The holy of holies",
+   "The tabernacle of the congregation",
+   "The court of the priests"
+  ],
+  "answer": 2,
+  "explanation": "Lay them up in the tabernacle of the congregation before the testimony.",
+  "ref": "Numbers 17:4"
+ },
+ {
+  "id": "numbers-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many rods were placed before the LORD in all?",
+  "choices": [
+   "Thirteen, one for Moses too",
+   "Twelve, one for each prince",
+   "Ten",
+   "Seventy"
+  ],
+  "answer": 1,
+  "explanation": "Every one of their princes gave him a rod apiece... even twelve rods.",
+  "ref": "Numbers 17:6"
+ },
+ {
+  "id": "numbers-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On the rod of Levi, Aaron's name stood for what?",
+  "choices": [
+   "The head of the house of their fathers",
+   "The first of the prophets",
+   "The keeper of the ark",
+   "The judge of Israel"
+  ],
+  "answer": 0,
+  "explanation": "One rod shall be for the head of the house of their fathers.",
+  "ref": "Numbers 17:3"
+ },
+ {
+  "id": "numbers-17-h-06",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did the LORD say would be the man whose rod blossomed?",
+  "choices": [
+   "The man who was eldest",
+   "The man with the largest tribe",
+   "The man Moses named",
+   "The man whom He should choose"
+  ],
+  "answer": 3,
+  "explanation": "The man's rod, whom I shall choose, shall blossom.",
+  "ref": "Numbers 17:5"
+ },
+ {
+  "id": "numbers-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The princes gave their rods according to what?",
+  "choices": [
+   "Their ages",
+   "Their camp positions",
+   "Their fathers' houses",
+   "Their flocks"
+  ],
+  "answer": 2,
+  "explanation": "Each prince one, according to their fathers' houses.",
+  "ref": "Numbers 17:6"
+ },
+ {
+  "id": "numbers-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Israel address when they said they all perish?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "The elders",
+   "Eleazar"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel spake unto Moses, saying, Behold, we die, we perish, we all perish.",
+  "ref": "Numbers 17:12"
+ },
+ {
+  "id": "numbers-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Moses' response to the LORD's instruction to bring Aaron's rod again?",
+  "choices": [
+   "He did exactly as commanded",
+   "He asked for a sign",
+   "He delayed a day",
+   "He gave it to Aaron"
+  ],
+  "answer": 0,
+  "explanation": "Moses did so: as the LORD commanded him, so did he.",
+  "ref": "Numbers 17:11"
+ },
+ {
+  "id": "numbers-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the people say whoever 'cometh any thing near' would die?",
+  "choices": [
+   "The camp of Korah",
+   "The mountain of God",
+   "The altar of incense",
+   "The tabernacle of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever cometh any thing near unto the tabernacle of the LORD shall die.",
+  "ref": "Numbers 17:13"
+ },
+ {
+  "id": "numbers-17-h-11",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The rod of Aaron was for which house when it budded?",
+  "choices": [
+   "The house of Judah",
+   "The house of Reuben",
+   "The house of Levi",
+   "The house of Dan"
+  ],
+  "answer": 2,
+  "explanation": "The rod of Aaron for the house of Levi was budded.",
+  "ref": "Numbers 17:8"
+ },
+ {
+  "id": "numbers-17-h-12",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of the twelve rods, the LORD said to take one from whom in each fathers' house?",
+  "choices": [
+   "The priests",
+   "The princes",
+   "The firstborn",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Take of every one of them a rod... of all their princes according to the house of their fathers twelve rods.",
+  "ref": "Numbers 17:2"
+ },
+ {
+  "id": "numbers-17-h-13",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel say would happen to them if even a thing came near the tabernacle?",
+  "choices": [
+   "They would be consumed with dying",
+   "They would be driven out",
+   "They would be forgiven",
+   "They would be blessed"
+  ],
+  "answer": 0,
+  "explanation": "Shall we be consumed with dying?",
+  "ref": "Numbers 17:13"
+ },
+ {
+  "id": "numbers-17-h-14",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the LORD's purpose in taking away murmurings from Him by the token?",
+  "choices": [
+   "That the priests be honoured",
+   "That the tabernacle be moved",
+   "That the plague return",
+   "That the people die not"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt quite take away their murmurings from me, that they die not.",
+  "ref": "Numbers 17:10"
+ },
+ {
+  "id": "numbers-17-h-15",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Moses bring Aaron's rod again to be kept?",
+  "choices": [
+   "Into the ark",
+   "Outside the camp",
+   "Before the testimony",
+   "On the altar"
+  ],
+  "answer": 2,
+  "explanation": "Bring Aaron's rod again before the testimony.",
+  "ref": "Numbers 17:10"
+ },
+ {
   "id": "old-numbers-18-1",
   "chapter": 18,
   "level": "beginner",
