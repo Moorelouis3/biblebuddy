@@ -11616,6 +11616,646 @@
   "ref": "Leviticus 17:10"
  },
  {
+  "id": "leviticus-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who was Moses told to speak to in this chapter?",
+  "choices": [
+   "Only the priests",
+   "Aaron, his sons and all Israel",
+   "Only the elders",
+   "Only the Levites"
+  ],
+  "answer": 1,
+  "explanation": "Speak unto Aaron, and unto his sons, and unto all the children of Israel.",
+  "ref": "Leviticus 17:2"
+ },
+ {
+  "id": "leviticus-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which animals were not to be killed without bringing them to the tabernacle?",
+  "choices": [
+   "A deer or hare",
+   "An ox, lamb or goat",
+   "A dove or sparrow",
+   "A camel or ass"
+  ],
+  "answer": 1,
+  "explanation": "What man soever ... killeth an ox, or lamb, or goat, in the camp.",
+  "ref": "Leviticus 17:3"
+ },
+ {
+  "id": "leviticus-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would happen to the man who did not bring it to the tabernacle door?",
+  "choices": [
+   "He would pay a fine",
+   "He would be cut off from his people",
+   "He would be a priest",
+   "He would be blessed"
+  ],
+  "answer": 1,
+  "explanation": "That man shall be cut off from among his people.",
+  "ref": "Leviticus 17:4"
+ },
+ {
+  "id": "leviticus-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what did the priest sprinkle the blood?",
+  "choices": [
+   "The ground",
+   "The altar of the LORD",
+   "The door",
+   "The people"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall sprinkle the blood upon the altar of the LORD.",
+  "ref": "Leviticus 17:6"
+ },
+ {
+  "id": "leviticus-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priest burn for a sweet savour?",
+  "choices": [
+   "The skin",
+   "The fat",
+   "The horns",
+   "The bones"
+  ],
+  "answer": 1,
+  "explanation": "And burn the fat for a sweet savour unto the LORD.",
+  "ref": "Leviticus 17:6"
+ },
+ {
+  "id": "leviticus-17-e-06",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say about eating blood?",
+  "choices": [
+   "Eat it freely",
+   "No soul shall eat blood",
+   "Eat it only on feasts",
+   "Eat it with bread"
+  ],
+  "answer": 1,
+  "explanation": "No soul of you shall eat blood, neither shall any stranger.",
+  "ref": "Leviticus 17:12"
+ },
+ {
+  "id": "leviticus-17-e-07",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the blood make for the soul?",
+  "choices": [
+   "A feast",
+   "An atonement",
+   "A covenant",
+   "A vow"
+  ],
+  "answer": 1,
+  "explanation": "It is the blood that maketh an atonement for the soul.",
+  "ref": "Leviticus 17:11"
+ },
+ {
+  "id": "leviticus-17-e-08",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a hunter to do with the blood of a beast he caught?",
+  "choices": [
+   "Drink it",
+   "Pour it out and cover it with dust",
+   "Keep it",
+   "Burn it"
+  ],
+  "answer": 1,
+  "explanation": "He shall even pour out the blood thereof, and cover it with dust.",
+  "ref": "Leviticus 17:13"
+ },
+ {
+  "id": "leviticus-17-e-09",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people eat that died of itself make them?",
+  "choices": [
+   "Priests",
+   "Unclean until the even",
+   "Cut off",
+   "Free"
+  ],
+  "answer": 1,
+  "explanation": "Every soul that eateth that which died of itself ... shall be unclean until the even.",
+  "ref": "Leviticus 17:15"
+ },
+ {
+  "id": "leviticus-17-e-10",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was said of the life of the flesh?",
+  "choices": [
+   "It is in the heart",
+   "It is in the blood",
+   "It is in the breath",
+   "It is in the bones"
+  ],
+  "answer": 1,
+  "explanation": "The life of the flesh is in the blood.",
+  "ref": "Leviticus 17:11"
+ },
+ {
+  "id": "leviticus-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say would be imputed to a man who killed an ox in the camp without bringing it?",
+  "choices": [
+   "Sin",
+   "A fine",
+   "Death by stoning",
+   "Blood"
+  ],
+  "answer": 3,
+  "explanation": "Blood shall be imputed unto that man; he hath shed blood.",
+  "ref": "Leviticus 17:4"
+ },
+ {
+  "id": "leviticus-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What offerings were they to bring from the open field?",
+  "choices": [
+   "Sin offerings",
+   "Meat offerings",
+   "Trespass offerings",
+   "Peace offerings"
+  ],
+  "answer": 3,
+  "explanation": "Offer them for peace offerings unto the LORD.",
+  "ref": "Leviticus 17:5"
+ },
+ {
+  "id": "leviticus-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom were they no more to offer sacrifices?",
+  "choices": [
+   "Kings",
+   "The sun",
+   "The elders",
+   "Devils"
+  ],
+  "answer": 3,
+  "explanation": "They shall no more offer their sacrifices unto devils.",
+  "ref": "Leviticus 17:7"
+ },
+ {
+  "id": "leviticus-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who else besides the house of Israel was covered by the law?",
+  "choices": [
+   "Only priests",
+   "Only the slaves",
+   "No one else",
+   "The strangers that sojourn among them"
+  ],
+  "answer": 3,
+  "explanation": "Of the house of Israel, or of the strangers which sojourn among you.",
+  "ref": "Leviticus 17:8"
+ },
+ {
+  "id": "leviticus-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the man who offered a burnt offering elsewhere?",
+  "choices": [
+   "He was fined",
+   "He was exiled",
+   "He was blessed",
+   "He was cut off from his people"
+  ],
+  "answer": 3,
+  "explanation": "That man shall be cut off from among his people.",
+  "ref": "Leviticus 17:9"
+ },
+ {
+  "id": "leviticus-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who set his face against the soul that ate blood?",
+  "choices": [
+   "The priest",
+   "Moses",
+   "The elders",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "I will even set my face against that soul that eateth blood.",
+  "ref": "Leviticus 17:10"
+ },
+ {
+  "id": "leviticus-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the LORD given upon the altar?",
+  "choices": [
+   "The fat",
+   "The oil",
+   "The wine",
+   "The blood, to make atonement"
+  ],
+  "answer": 3,
+  "explanation": "I have given it to you upon the altar to make an atonement for your souls.",
+  "ref": "Leviticus 17:11"
+ },
+ {
+  "id": "leviticus-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the hunter catch that could be eaten?",
+  "choices": [
+   "Only a deer",
+   "Only fish",
+   "Only a dove",
+   "Any beast or fowl"
+  ],
+  "answer": 3,
+  "explanation": "Hunteth and catcheth any beast or fowl that may be eaten.",
+  "ref": "Leviticus 17:13"
+ },
+ {
+  "id": "leviticus-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say the blood of all flesh is?",
+  "choices": [
+   "The heart thereof",
+   "The strength thereof",
+   "The curse thereof",
+   "The life thereof"
+  ],
+  "answer": 3,
+  "explanation": "The blood of it is for the life thereof.",
+  "ref": "Leviticus 17:14"
+ },
+ {
+  "id": "leviticus-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What else did the one eating torn flesh wash?",
+  "choices": [
+   "His hands",
+   "His house",
+   "His tent",
+   "His clothes and bathed himself"
+  ],
+  "answer": 3,
+  "explanation": "He shall both wash his clothes, and bathe himself in water.",
+  "ref": "Leviticus 17:15"
+ },
+ {
+  "id": "leviticus-17-m-11",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If a man did not wash after eating what died of itself, what happened?",
+  "choices": [
+   "He was cut off",
+   "He was fined",
+   "Nothing",
+   "He shall bear his iniquity"
+  ],
+  "answer": 3,
+  "explanation": "If he wash them not ... then he shall bear his iniquity.",
+  "ref": "Leviticus 17:16"
+ },
+ {
+  "id": "leviticus-17-m-12",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What eaten flesh made one unclean besides what died of itself?",
+  "choices": [
+   "What was roasted",
+   "What was sold",
+   "What was given",
+   "What was torn with beasts"
+  ],
+  "answer": 3,
+  "explanation": "That which died of itself, or that which was torn with beasts.",
+  "ref": "Leviticus 17:15"
+ },
+ {
+  "id": "leviticus-17-m-13",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the statute concerning devils?",
+  "choices": [
+   "A statute for a year",
+   "A statute for the priests",
+   "A statute for the strangers",
+   "A statute for ever throughout their generations"
+  ],
+  "answer": 3,
+  "explanation": "This shall be a statute for ever unto them throughout their generations.",
+  "ref": "Leviticus 17:7"
+ },
+ {
+  "id": "leviticus-17-m-14",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was killed in the camp or out of the camp?",
+  "choices": [
+   "A bull",
+   "A ram",
+   "A calf",
+   "An ox, lamb or goat"
+  ],
+  "answer": 3,
+  "explanation": "That killeth an ox, or lamb, or goat, in the camp, or that killeth it out of the camp.",
+  "ref": "Leviticus 17:3"
+ },
+ {
+  "id": "leviticus-17-m-15",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "After the man washes and bathes, what is said of him?",
+  "choices": [
+   "He shall be a priest",
+   "He shall be cut off",
+   "He shall be exiled",
+   "He shall be clean"
+  ],
+  "answer": 3,
+  "explanation": "Then shall he be clean.",
+  "ref": "Leviticus 17:15"
+ },
+ {
+  "id": "leviticus-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people's sacrifices go whoring after?",
+  "choices": [
+   "Devils",
+   "Idols of gold",
+   "Stars",
+   "Kings"
+  ],
+  "answer": 0,
+  "explanation": "After whom they have gone a whoring.",
+  "ref": "Leviticus 17:7"
+ },
+ {
+  "id": "leviticus-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What made the offering one the priest was brought?",
+  "choices": [
+   "Peace offerings",
+   "Burnt offerings",
+   "Sin offerings",
+   "Wave offerings"
+  ],
+  "answer": 0,
+  "explanation": "Unto the priest, and offer them for peace offerings unto the LORD.",
+  "ref": "Leviticus 17:5"
+ },
+ {
+  "id": "leviticus-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were sacrifices offered 'in the open field' meant to be brought?",
+  "choices": [
+   "To the door of the tabernacle",
+   "To the mountain",
+   "To the city",
+   "To the river"
+  ],
+  "answer": 0,
+  "explanation": "They may bring them unto the LORD, unto the door of the tabernacle of the congregation.",
+  "ref": "Leviticus 17:5"
+ },
+ {
+  "id": "leviticus-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What part did the priest burn at the altar for a sweet savour?",
+  "choices": [
+   "The fat",
+   "The blood",
+   "The skin",
+   "The head"
+  ],
+  "answer": 0,
+  "explanation": "Burn the fat for a sweet savour unto the LORD.",
+  "ref": "Leviticus 17:6"
+ },
+ {
+  "id": "leviticus-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the priest's sprinkling done?",
+  "choices": [
+   "At the door of the tabernacle",
+   "In the camp",
+   "On the mount",
+   "In the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "Sprinkle the blood upon the altar of the LORD at the door of the tabernacle.",
+  "ref": "Leviticus 17:6"
+ },
+ {
+  "id": "leviticus-17-h-06",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the hunter cover the blood with?",
+  "choices": [
+   "Dust",
+   "Stones",
+   "Leaves",
+   "A cloth"
+  ],
+  "answer": 0,
+  "explanation": "He shall even pour out the blood thereof, and cover it with dust.",
+  "ref": "Leviticus 17:13"
+ },
+ {
+  "id": "leviticus-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What phrase describes the soul that ate what died of itself, if he did not wash?",
+  "choices": [
+   "He shall bear his iniquity",
+   "He shall be burned",
+   "He shall be killed",
+   "He shall flee"
+  ],
+  "answer": 0,
+  "explanation": "He shall bear his iniquity.",
+  "ref": "Leviticus 17:16"
+ },
+ {
+  "id": "leviticus-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose house is named at the start of the law about killing animals?",
+  "choices": [
+   "The house of Israel",
+   "The house of Levi",
+   "The house of Aaron",
+   "The house of Judah"
+  ],
+  "answer": 0,
+  "explanation": "What man soever there be of the house of Israel.",
+  "ref": "Leviticus 17:3"
+ },
+ {
+  "id": "leviticus-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which animal is listed first in the law of killing: ox, lamb or goat?",
+  "choices": [
+   "An ox",
+   "A lamb",
+   "A goat",
+   "A bullock"
+  ],
+  "answer": 0,
+  "explanation": "What man soever ... killeth an ox, or lamb, or goat.",
+  "ref": "Leviticus 17:3"
+ },
+ {
+  "id": "leviticus-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the blood atone for?",
+  "choices": [
+   "Your souls",
+   "Your houses",
+   "Your lands",
+   "Your flocks"
+  ],
+  "answer": 0,
+  "explanation": "The blood that maketh an atonement for the soul.",
+  "ref": "Leviticus 17:11"
+ },
+ {
+  "id": "leviticus-17-h-11",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who besides the children of Israel had to pour out hunted blood?",
+  "choices": [
+   "The strangers that sojourn among them",
+   "The priests only",
+   "The Levites only",
+   "No one else"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel, or of the strangers that sojourn among you, which hunteth.",
+  "ref": "Leviticus 17:13"
+ },
+ {
+  "id": "leviticus-17-h-12",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In the law of killing animals, was killing out of the camp allowed without bringing it?",
+  "choices": [
+   "No, killing out of the camp was also forbidden",
+   "Yes, out of the camp was fine",
+   "Only in the open field",
+   "Only for strangers"
+  ],
+  "answer": 0,
+  "explanation": "That killeth it out of the camp, and bringeth it not unto the door.",
+  "ref": "Leviticus 17:3"
+ },
+ {
+  "id": "leviticus-17-h-13",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides Aaron and all Israel, who else was addressed?",
+  "choices": [
+   "His sons",
+   "The elders",
+   "The Levites",
+   "The strangers"
+  ],
+  "answer": 0,
+  "explanation": "Speak unto Aaron, and unto his sons, and unto all the children of Israel.",
+  "ref": "Leviticus 17:2"
+ },
+ {
+  "id": "leviticus-17-h-14",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What sort of savour did the burned fat give?",
+  "choices": [
+   "A sweet savour",
+   "A bitter savour",
+   "A smoky savour",
+   "A holy savour"
+  ],
+  "answer": 0,
+  "explanation": "Burn the fat for a sweet savour unto the LORD.",
+  "ref": "Leviticus 17:6"
+ },
+ {
+  "id": "leviticus-17-h-15",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of the priest's altar: where was it?",
+  "choices": [
+   "At the door of the tabernacle",
+   "In the camp",
+   "On the mountain",
+   "Inside the veil"
+  ],
+  "answer": 0,
+  "explanation": "The altar of the LORD at the door of the tabernacle of the congregation.",
+  "ref": "Leviticus 17:6"
+ },
+ {
   "id": "old-leviticus-18-1",
   "chapter": 18,
   "level": "beginner",
