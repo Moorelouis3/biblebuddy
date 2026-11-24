@@ -8736,6 +8736,646 @@
   "ref": "Leviticus 13:46"
  },
  {
+  "id": "leviticus-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who did the LORD speak to at the start of this chapter?",
+  "choices": [
+   "Moses and Joshua",
+   "Moses and Aaron",
+   "Aaron and his sons",
+   "Moses and Miriam"
+  ],
+  "answer": 1,
+  "explanation": "And the LORD spake unto Moses and Aaron, saying.",
+  "ref": "Leviticus 13:1"
+ },
+ {
+  "id": "leviticus-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "A person with a plague in the skin was brought to Aaron or to whom?",
+  "choices": [
+   "Moses",
+   "One of his sons the priests",
+   "An elder",
+   "A judge"
+  ],
+  "answer": 1,
+  "explanation": "He shall be brought unto Aaron the priest, or unto one of his sons the priests.",
+  "ref": "Leviticus 13:2"
+ },
+ {
+  "id": "leviticus-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priest pronounce over a person whose plague was leprosy?",
+  "choices": [
+   "Cursed",
+   "Unclean",
+   "Holy",
+   "Healed"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall look on him, and pronounce him unclean.",
+  "ref": "Leviticus 13:3"
+ },
+ {
+  "id": "leviticus-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was done to the clothes of the leper?",
+  "choices": [
+   "They were burned",
+   "They were rent",
+   "They were washed in the sea",
+   "They were given away"
+  ],
+  "answer": 1,
+  "explanation": "The leper in whom the plague is, his clothes shall be rent, and his head bare.",
+  "ref": "Leviticus 13:45"
+ },
+ {
+  "id": "leviticus-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the leper's head to be?",
+  "choices": [
+   "Anointed",
+   "Bare",
+   "Covered with ashes",
+   "Shaven"
+  ],
+  "answer": 1,
+  "explanation": "His clothes shall be rent, and his head bare.",
+  "ref": "Leviticus 13:45"
+ },
+ {
+  "id": "leviticus-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the leper put upon his upper lip?",
+  "choices": [
+   "A ring",
+   "A covering",
+   "Oil",
+   "Ashes"
+  ],
+  "answer": 1,
+  "explanation": "He shall put a covering upon his upper lip, and shall cry, Unclean, unclean.",
+  "ref": "Leviticus 13:45"
+ },
+ {
+  "id": "leviticus-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two kinds of garment could have a plague?",
+  "choices": [
+   "Silk or cotton",
+   "Woollen or linen",
+   "Goat hair or cotton",
+   "Linen or silk"
+  ],
+  "answer": 1,
+  "explanation": "The garment also that the plague of leprosy is in, whether it be a woollen garment, or a linen garment.",
+  "ref": "Leviticus 13:47"
+ },
+ {
+  "id": "leviticus-13-e-08",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was done to a garment with a fretting leprosy?",
+  "choices": [
+   "It was buried",
+   "It was burned in the fire",
+   "It was sold",
+   "It was given to the priest"
+  ],
+  "answer": 1,
+  "explanation": "He shall therefore burn that garment ... it shall be burnt in the fire.",
+  "ref": "Leviticus 13:52"
+ },
+ {
+  "id": "leviticus-13-e-09",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priest pronounce if the leprosy had covered all the skin and turned white?",
+  "choices": [
+   "Unclean",
+   "Clean",
+   "Cursed",
+   "Banished"
+  ],
+  "answer": 1,
+  "explanation": "If the leprosy have covered all his flesh, he shall pronounce him clean that hath the plague.",
+  "ref": "Leviticus 13:13"
+ },
+ {
+  "id": "leviticus-13-e-10",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was said of a man whose hair had fallen off his head?",
+  "choices": [
+   "He is unclean",
+   "He is bald; yet is he clean",
+   "He is cursed",
+   "He is a leper"
+  ],
+  "answer": 1,
+  "explanation": "The man whose hair is fallen off his head, he is bald; yet is he clean.",
+  "ref": "Leviticus 13:40"
+ },
+ {
+  "id": "leviticus-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If the plague was only a scab, what did the man wash to be clean?",
+  "choices": [
+   "His hands only",
+   "His house",
+   "His flocks",
+   "His clothes"
+  ],
+  "answer": 3,
+  "explanation": "It is but a scab: and he shall wash his clothes, and be clean.",
+  "ref": "Leviticus 13:6"
+ },
+ {
+  "id": "leviticus-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did raw flesh appearing in the man make him?",
+  "choices": [
+   "Clean",
+   "A priest",
+   "Free from the camp",
+   "Unclean"
+  ],
+  "answer": 3,
+  "explanation": "When raw flesh appeareth in him, he shall be unclean.",
+  "ref": "Leviticus 13:14"
+ },
+ {
+  "id": "leviticus-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was it called when the rising was white, the hair white, with quick raw flesh?",
+  "choices": [
+   "A burning boil",
+   "A dry scall",
+   "A freckled spot",
+   "An old leprosy"
+  ],
+  "answer": 3,
+  "explanation": "It is an old leprosy in the skin of his flesh, and the priest shall pronounce him unclean.",
+  "ref": "Leviticus 13:10–11"
+ },
+ {
+  "id": "leviticus-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What came after a boil was healed: a white rising or bright spot meant what?",
+  "choices": [
+   "A freckled spot",
+   "A dry scall",
+   "A burning",
+   "Leprosy broken out of the boil"
+  ],
+  "answer": 3,
+  "explanation": "It is a plague of leprosy broken out of the boil.",
+  "ref": "Leviticus 13:18–20"
+ },
+ {
+  "id": "leviticus-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If the bright spot stayed and spread not in a burn, what was it?",
+  "choices": [
+   "A freckled spot",
+   "A dry scall",
+   "An old leprosy",
+   "An inflammation of the burning"
+  ],
+  "answer": 3,
+  "explanation": "It is a rising of the burning ... it is an inflammation of the burning.",
+  "ref": "Leviticus 13:28"
+ },
+ {
+  "id": "leviticus-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the plague on the head or beard with thin yellow hair called?",
+  "choices": [
+   "A freckled spot",
+   "A burning boil",
+   "An old leprosy",
+   "A dry scall"
+  ],
+  "answer": 3,
+  "explanation": "It is a dry scall, even a leprosy upon the head or beard.",
+  "ref": "Leviticus 13:30"
+ },
+ {
+  "id": "leviticus-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In treating the scall, what was the man not to shave?",
+  "choices": [
+   "His beard",
+   "His head",
+   "His eyebrows",
+   "The scall itself"
+  ],
+  "answer": 3,
+  "explanation": "He shall be shaven, but the scall shall he not shave.",
+  "ref": "Leviticus 13:33"
+ },
+ {
+  "id": "leviticus-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was darkish white bright spots in the skin called?",
+  "choices": [
+   "A dry scall",
+   "An old leprosy",
+   "A burning boil",
+   "A freckled spot"
+  ],
+  "answer": 3,
+  "explanation": "It is a freckled spot that groweth in the skin; he is clean.",
+  "ref": "Leviticus 13:39"
+ },
+ {
+  "id": "leviticus-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was a white reddish sore on a bald head called?",
+  "choices": [
+   "A freckled spot",
+   "A burning boil",
+   "A dry scall",
+   "A leprosy sprung up"
+  ],
+  "answer": 3,
+  "explanation": "It is a leprosy sprung up in his bald head, or his bald forehead.",
+  "ref": "Leviticus 13:42"
+ },
+ {
+  "id": "leviticus-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What colours of plague in a garment marked it as leprosy?",
+  "choices": [
+   "Black or white",
+   "Blue or purple",
+   "Yellow or grey",
+   "Greenish or reddish"
+  ],
+  "answer": 3,
+  "explanation": "If the plague be greenish or reddish in the garment, it is a plague of leprosy.",
+  "ref": "Leviticus 13:49"
+ },
+ {
+  "id": "leviticus-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What two parts of woven cloth are named?",
+  "choices": [
+   "Hem and sleeve",
+   "Thread and hook",
+   "Wool and flax",
+   "Warp and woof"
+  ],
+  "answer": 3,
+  "explanation": "Whether it be in the warp, or woof; of linen, or of woollen.",
+  "ref": "Leviticus 13:48"
+ },
+ {
+  "id": "leviticus-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If the garment plague had not spread, what did the priest command?",
+  "choices": [
+   "Burn it",
+   "Cut it out",
+   "Bury it",
+   "Wash it and shut it up seven days more"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall command that they wash the thing wherein the plague is, and he shall shut it up seven days more.",
+  "ref": "Leviticus 13:54"
+ },
+ {
+  "id": "leviticus-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What grown up in a scall showed it was healed?",
+  "choices": [
+   "Yellow hair",
+   "White hair",
+   "Red hair",
+   "Black hair"
+  ],
+  "answer": 3,
+  "explanation": "If there is black hair grown up therein; the scall is healed, he is clean.",
+  "ref": "Leviticus 13:37"
+ },
+ {
+  "id": "leviticus-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the leper's habitation to be?",
+  "choices": [
+   "In the priest's tent",
+   "At the tabernacle door",
+   "Among the Levites",
+   "Without the camp"
+  ],
+  "answer": 3,
+  "explanation": "All the days wherein the plague shall be in him ... without the camp shall his habitation be.",
+  "ref": "Leviticus 13:46"
+ },
+ {
+  "id": "leviticus-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was a spreading plague in a garment called?",
+  "choices": [
+   "A dry scall",
+   "A fretting leprosy",
+   "An old leprosy",
+   "A burning boil"
+  ],
+  "answer": 1,
+  "explanation": "The plague is a fretting leprosy; it is unclean.",
+  "ref": "Leviticus 13:51"
+ },
+ {
+  "id": "leviticus-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If the washed garment plague was somewhat dark, what did the priest do?",
+  "choices": [
+   "Burn the garment",
+   "Rend it out of the garment",
+   "Wash it again",
+   "Bury it"
+  ],
+  "answer": 1,
+  "explanation": "He shall rend it out of the garment, or out of the skin, or out of the warp, or out of the woof.",
+  "ref": "Leviticus 13:56"
+ },
+ {
+  "id": "leviticus-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times was a garment washed whose plague departed?",
+  "choices": [
+   "Three times",
+   "The second time",
+   "Seven times",
+   "Once only"
+  ],
+  "answer": 1,
+  "explanation": "It shall be washed the second time, and shall be clean.",
+  "ref": "Leviticus 13:58"
+ },
+ {
+  "id": "leviticus-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of hair marked the plague as a dry scall?",
+  "choices": [
+   "A black hair",
+   "A yellow thin hair",
+   "A red hair",
+   "A grey hair"
+  ],
+  "answer": 1,
+  "explanation": "If it be in sight deeper than the skin; and there be in it a yellow thin hair.",
+  "ref": "Leviticus 13:30"
+ },
+ {
+  "id": "leviticus-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If the scall spread after cleansing, what did the priest not seek?",
+  "choices": [
+   "Black hair",
+   "Yellow hair",
+   "A witness",
+   "A sacrifice"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall not seek for yellow hair; he is unclean.",
+  "ref": "Leviticus 13:36"
+ },
+ {
+  "id": "leviticus-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was a man with hair fallen from the front of his head called?",
+  "choices": [
+   "Utterly bald",
+   "Forehead bald",
+   "Scalled",
+   "Freckled"
+  ],
+  "answer": 1,
+  "explanation": "He that hath his hair fallen off from the part of his head toward his face, he is forehead bald: yet is he clean.",
+  "ref": "Leviticus 13:41"
+ },
+ {
+  "id": "leviticus-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the plague of the man who was utterly unclean on a bald head?",
+  "choices": [
+   "On his hand",
+   "In his head",
+   "On his foot",
+   "In his beard"
+  ],
+  "answer": 1,
+  "explanation": "He is a leprous man ... his plague is in his head.",
+  "ref": "Leviticus 13:44"
+ },
+ {
+  "id": "leviticus-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After a scall man was shaven, how long was he shut up more?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Fourteen days",
+   "One day"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall shut up him that hath the scall seven days more.",
+  "ref": "Leviticus 13:33"
+ },
+ {
+  "id": "leviticus-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of a plague that had not changed colour after washing?",
+  "choices": [
+   "It is healed",
+   "It is fret inward",
+   "It is clean",
+   "It is a scab"
+  ],
+  "answer": 1,
+  "explanation": "It is fret inward, whether it be bare within or without.",
+  "ref": "Leviticus 13:55"
+ },
+ {
+  "id": "leviticus-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the things made of skin that could also have the plague?",
+  "choices": [
+   "Any thing made of iron",
+   "Any thing made of skin",
+   "Any tent cord",
+   "Any vessel of wood"
+  ],
+  "answer": 1,
+  "explanation": "Whether in a skin, or in any thing made of skin.",
+  "ref": "Leviticus 13:48"
+ },
+ {
+  "id": "leviticus-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If a boil-spot had no white hairs and was somewhat dark, how long was he shut up?",
+  "choices": [
+   "Two days",
+   "Seven days",
+   "Fourteen days",
+   "Forty days"
+  ],
+  "answer": 1,
+  "explanation": "There be no white hairs therein ... then the priest shall shut him up seven days.",
+  "ref": "Leviticus 13:21"
+ },
+ {
+  "id": "leviticus-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What colour was a boil's healed place spot, white and somewhat what?",
+  "choices": [
+   "Yellow",
+   "Reddish",
+   "Black",
+   "Greenish"
+  ],
+  "answer": 1,
+  "explanation": "A white rising, or a bright spot, white, and somewhat reddish.",
+  "ref": "Leviticus 13:19"
+ },
+ {
+  "id": "leviticus-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For a plague at a stay, what did the priest do after the first seven days?",
+  "choices": [
+   "Pronounced him unclean",
+   "Shut him up seven days more",
+   "Sent him out of the camp",
+   "Burned his clothes"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall shut him up seven days more.",
+  "ref": "Leviticus 13:5"
+ },
+ {
+  "id": "leviticus-13-h-14",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priest not do with a man with an old leprosy?",
+  "choices": [
+   "Look at him",
+   "Shut him up",
+   "Pronounce him clean",
+   "Rend his clothes"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall pronounce him unclean, and shall not shut him up: for he is unclean.",
+  "ref": "Leviticus 13:11"
+ },
+ {
+  "id": "leviticus-13-h-15",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If a healed boil's spot was lower than the skin with white hair, what was it?",
+  "choices": [
+   "A scab",
+   "A plague of leprosy",
+   "A freckled spot",
+   "A burning"
+  ],
+  "answer": 1,
+  "explanation": "If it be in sight lower than the skin, and the hair be turned white; it is a plague of leprosy.",
+  "ref": "Leviticus 13:20"
+ },
+ {
+  "id": "leviticus-13-m-15",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If a scab spread after the priest had seen it, what did he pronounce it?",
+  "choices": [
+   "A leprosy",
+   "A freckled spot",
+   "Clean",
+   "A dry scall"
+  ],
+  "answer": 0,
+  "explanation": "The scab spreadeth in the skin, then the priest shall pronounce him unclean: it is a leprosy.",
+  "ref": "Leviticus 13:8"
+ },
+ {
   "id": "old-leviticus-14-1",
   "chapter": 14,
   "level": "beginner",
