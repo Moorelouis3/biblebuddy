@@ -8736,6 +8736,646 @@
   "ref": "1 Samuel 13:15"
  },
  {
+  "id": "1-samuel-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who smote the garrison of the Philistines that was in Geba?",
+  "choices": [
+   "Saul",
+   "Jonathan",
+   "Samuel",
+   "Abner"
+  ],
+  "answer": 1,
+  "explanation": "Jonathan smote the garrison of the Philistines that was in Geba.",
+  "ref": "1 Samuel 13:3"
+ },
+ {
+  "id": "1-samuel-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did Saul wait for at Gilgal?",
+  "choices": [
+   "Jonathan",
+   "Samuel",
+   "Abner",
+   "Eli"
+  ],
+  "answer": 1,
+  "explanation": "Saul tarried seven days, according to the set time that Samuel had appointed.",
+  "ref": "1 Samuel 13:8"
+ },
+ {
+  "id": "1-samuel-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days did Saul wait for Samuel at Gilgal?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Ten",
+   "Forty"
+  ],
+  "answer": 1,
+  "explanation": "He tarried seven days, according to the set time that Samuel had appointed.",
+  "ref": "1 Samuel 13:8"
+ },
+ {
+  "id": "1-samuel-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul blow throughout all the land?",
+  "choices": [
+   "A ram's horn at the gate",
+   "A trumpet",
+   "A war cry",
+   "A shepherd's pipe"
+  ],
+  "answer": 1,
+  "explanation": "Saul blew the trumpet throughout all the land, saying, Let the Hebrews hear.",
+  "ref": "1 Samuel 13:3"
+ },
+ {
+  "id": "1-samuel-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which people gathered to fight with Israel?",
+  "choices": [
+   "The Amalekites",
+   "The Philistines",
+   "The Ammonites",
+   "The Moabites"
+  ],
+  "answer": 1,
+  "explanation": "The Philistines gathered themselves together to fight with Israel.",
+  "ref": "1 Samuel 13:5"
+ },
+ {
+  "id": "1-samuel-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the frightened Israelites hide themselves?",
+  "choices": [
+   "In the city of Gilgal",
+   "In caves, thickets, rocks and pits",
+   "In the tabernacle",
+   "Among the Philistines"
+  ],
+  "answer": 1,
+  "explanation": "The people did hide themselves in caves, and in thickets, and in rocks, and in high places, and in pits.",
+  "ref": "1 Samuel 13:6"
+ },
+ {
+  "id": "1-samuel-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who arrived as soon as Saul had finished the burnt offering?",
+  "choices": [
+   "Jonathan",
+   "Samuel",
+   "Abner",
+   "The Philistines"
+  ],
+  "answer": 1,
+  "explanation": "As soon as he had made an end of offering the burnt offering, behold, Samuel came.",
+  "ref": "1 Samuel 13:10"
+ },
+ {
+  "id": "1-samuel-13-e-08",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samuel say Saul had done?",
+  "choices": [
+   "Done wisely",
+   "Done foolishly",
+   "Done as commanded",
+   "Done too late"
+  ],
+  "answer": 1,
+  "explanation": "Samuel said to Saul, Thou hast done foolishly: thou hast not kept the commandment of the LORD thy God.",
+  "ref": "1 Samuel 13:13"
+ },
+ {
+  "id": "1-samuel-13-e-09",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of man had the LORD sought to take Saul's place?",
+  "choices": [
+   "A man of war",
+   "A man after his own heart",
+   "A man from Gilgal",
+   "A man of Benjamin"
+  ],
+  "answer": 1,
+  "explanation": "The LORD hath sought him a man after his own heart.",
+  "ref": "1 Samuel 13:14"
+ },
+ {
+  "id": "1-samuel-13-e-10",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Saul's son who stayed with him in Gibeah of Benjamin?",
+  "choices": [
+   "Abinadab",
+   "Jonathan",
+   "Ishui",
+   "Melchishua"
+  ],
+  "answer": 1,
+  "explanation": "Saul, and Jonathan his son, abode in Gibeah of Benjamin.",
+  "ref": "1 Samuel 13:16"
+ },
+ {
+  "id": "1-samuel-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many chariots did the Philistines gather against Israel?",
+  "choices": [
+   "Three thousand",
+   "Six thousand",
+   "Ten thousand",
+   "Thirty thousand"
+  ],
+  "answer": 3,
+  "explanation": "The Philistines came with thirty thousand chariots, and six thousand horsemen.",
+  "ref": "1 Samuel 13:5"
+ },
+ {
+  "id": "1-samuel-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the Philistines pitch their camp?",
+  "choices": [
+   "Gilgal",
+   "Gibeah",
+   "Geba",
+   "Michmash"
+  ],
+  "answer": 3,
+  "explanation": "The Philistines came up, and pitched in Michmash.",
+  "ref": "1 Samuel 13:5"
+ },
+ {
+  "id": "1-samuel-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was there no smith in all the land of Israel?",
+  "choices": [
+   "The smiths had all gone to war",
+   "The smiths were killed by Saul",
+   "The Hebrews had no iron",
+   "Philistines feared Hebrews making swords or spears"
+  ],
+  "answer": 3,
+  "explanation": "The Philistines said, Lest the Hebrews make them swords or spears.",
+  "ref": "1 Samuel 13:19"
+ },
+ {
+  "id": "1-samuel-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did some of the Hebrews go over Jordan to escape?",
+  "choices": [
+   "The land of Moab",
+   "The land of Edom",
+   "The land of Midian",
+   "The land of Gad and Gilead"
+  ],
+  "answer": 3,
+  "explanation": "Some of the Hebrews went over Jordan to the land of Gad and Gilead.",
+  "ref": "1 Samuel 13:7"
+ },
+ {
+  "id": "1-samuel-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "On the day of battle, who had a sword or spear in their hand?",
+  "choices": [
+   "Only Saul",
+   "Only Jonathan",
+   "Every man of Benjamin",
+   "Saul and Jonathan"
+  ],
+  "answer": 3,
+  "explanation": "There was neither sword nor spear found in the hand of any of the people, but with Saul and with Jonathan was there found.",
+  "ref": "1 Samuel 13:22"
+ },
+ {
+  "id": "1-samuel-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men of Israel did Saul choose for himself?",
+  "choices": [
+   "Two thousand",
+   "One thousand",
+   "Six hundred",
+   "Three thousand"
+  ],
+  "answer": 3,
+  "explanation": "Saul chose him three thousand men of Israel.",
+  "ref": "1 Samuel 13:2"
+ },
+ {
+  "id": "1-samuel-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul say when he blew the trumpet?",
+  "choices": [
+   "Gather to Gilgal",
+   "Arm yourselves",
+   "The LORD is with us",
+   "Let the Hebrews hear"
+  ],
+  "answer": 3,
+  "explanation": "Saul blew the trumpet throughout all the land, saying, Let the Hebrews hear.",
+  "ref": "1 Samuel 13:3"
+ },
+ {
+  "id": "1-samuel-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul fear the Philistines would do to him at Gilgal?",
+  "choices": [
+   "Cut off his supplies",
+   "Capture Jonathan",
+   "Burn the camp",
+   "Come down upon him"
+  ],
+  "answer": 3,
+  "explanation": "Saul said, The Philistines will come down now upon me to Gilgal.",
+  "ref": "1 Samuel 13:12"
+ },
+ {
+  "id": "1-samuel-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul say he had not yet done when he offered the sacrifice?",
+  "choices": [
+   "Heard from Samuel",
+   "Gathered his captains",
+   "Fasted for a day",
+   "Made supplication unto the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Saul said, I have not made supplication unto the LORD: I forced myself therefore, and offered a burnt offering.",
+  "ref": "1 Samuel 13:12"
+ },
+ {
+  "id": "1-samuel-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD have done for Saul's kingdom if he had obeyed?",
+  "choices": [
+   "Given it to Jonathan",
+   "Doubled its size",
+   "Kept the Philistines away",
+   "Established it upon Israel for ever"
+  ],
+  "answer": 3,
+  "explanation": "Now would the LORD have established thy kingdom upon Israel for ever.",
+  "ref": "1 Samuel 13:13"
+ },
+ {
+  "id": "1-samuel-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Samuel go when he left Gilgal?",
+  "choices": [
+   "Ramah",
+   "Bethel",
+   "Shiloh",
+   "Gibeah of Benjamin"
+  ],
+  "answer": 3,
+  "explanation": "Samuel arose, and gat him up from Gilgal unto Gibeah of Benjamin.",
+  "ref": "1 Samuel 13:15"
+ },
+ {
+  "id": "1-samuel-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the people while Saul waited at Gilgal for Samuel?",
+  "choices": [
+   "They fell asleep",
+   "They joined the Philistines",
+   "They built an altar",
+   "They were scattered from him"
+  ],
+  "answer": 3,
+  "explanation": "Samuel came not to Gilgal; and the people were scattered from Saul.",
+  "ref": "1 Samuel 13:8"
+ },
+ {
+  "id": "1-samuel-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul do with the rest of the people after choosing three thousand?",
+  "choices": [
+   "Sent them to Gilgal",
+   "Made them servants",
+   "Sent them to Gibeah",
+   "Sent every man to his tent"
+  ],
+  "answer": 3,
+  "explanation": "The rest of the people he sent every man to his tent.",
+  "ref": "1 Samuel 13:2"
+ },
+ {
+  "id": "1-samuel-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the Israelites get their tools sharpened?",
+  "choices": [
+   "They used a file at Gilgal",
+   "They paid the priests",
+   "They made stone tools",
+   "They went down to the Philistines"
+  ],
+  "answer": 3,
+  "explanation": "All the Israelites went down to the Philistines, to sharpen every man his share, and his coulter, and his axe, and his mattock.",
+  "ref": "1 Samuel 13:20"
+ },
+ {
+  "id": "1-samuel-13-m-15",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul call for besides the burnt offering?",
+  "choices": [
+   "A sin offering",
+   "A meat offering",
+   "A drink offering",
+   "Peace offerings"
+  ],
+  "answer": 3,
+  "explanation": "Saul said, Bring hither a burnt offering to me, and peace offerings.",
+  "ref": "1 Samuel 13:9"
+ },
+ {
+  "id": "1-samuel-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many horsemen did the Philistines bring?",
+  "choices": [
+   "Six thousand",
+   "Three thousand",
+   "Thirty thousand",
+   "Twelve thousand"
+  ],
+  "answer": 0,
+  "explanation": "The Philistines gathered thirty thousand chariots, and six thousand horsemen.",
+  "ref": "1 Samuel 13:5"
+ },
+ {
+  "id": "1-samuel-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of Saul's three thousand were with Saul himself?",
+  "choices": [
+   "Two thousand",
+   "One thousand",
+   "Six hundred",
+   "Three hundred"
+  ],
+  "answer": 0,
+  "explanation": "Two thousand were with Saul in Michmash and in mount Bethel.",
+  "ref": "1 Samuel 13:2"
+ },
+ {
+  "id": "1-samuel-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Where were the two thousand men who were with Saul?",
+  "choices": [
+   "Michmash and mount Bethel",
+   "Gilgal and Geba",
+   "Gibeah and Ophrah",
+   "Beth-horon and Shual"
+  ],
+  "answer": 0,
+  "explanation": "Two thousand were with Saul in Michmash and in mount Bethel.",
+  "ref": "1 Samuel 13:2"
+ },
+ {
+  "id": "1-samuel-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Where were the thousand men who were with Jonathan?",
+  "choices": [
+   "Gibeah of Benjamin",
+   "Michmash",
+   "Geba",
+   "Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "A thousand were with Jonathan in Gibeah of Benjamin.",
+  "ref": "1 Samuel 13:2"
+ },
+ {
+  "id": "1-samuel-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "The Philistines pitched in Michmash, eastward from which place?",
+  "choices": [
+   "Beth-aven",
+   "Beth-horon",
+   "Bethel",
+   "Beth-shemesh"
+  ],
+  "answer": 0,
+  "explanation": "They pitched in Michmash, eastward from Beth-aven.",
+  "ref": "1 Samuel 13:5"
+ },
+ {
+  "id": "1-samuel-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "One company of Philistine spoilers turned toward which place?",
+  "choices": [
+   "Ophrah",
+   "Beth-horon",
+   "Gilgal",
+   "Zeboim"
+  ],
+  "answer": 0,
+  "explanation": "One company turned unto the way that leadeth to Ophrah, unto the land of Shual.",
+  "ref": "1 Samuel 13:17"
+ },
+ {
+  "id": "1-samuel-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Another company of the spoilers turned the way to which place?",
+  "choices": [
+   "Beth-horon",
+   "Ophrah",
+   "Shual",
+   "Geba"
+  ],
+  "answer": 0,
+  "explanation": "Another company turned the way to Beth-horon.",
+  "ref": "1 Samuel 13:18"
+ },
+ {
+  "id": "1-samuel-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "The third company of the spoilers looked toward the valley of what?",
+  "choices": [
+   "Zeboim",
+   "Elah",
+   "Shual",
+   "Jordan"
+  ],
+  "answer": 0,
+  "explanation": "The border looked to the valley of Zeboim toward the wilderness.",
+  "ref": "1 Samuel 13:18"
+ },
+ {
+  "id": "1-samuel-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the share, coulter and axe, which tool did the Israelites sharpen?",
+  "choices": [
+   "Mattock",
+   "Sickle",
+   "Sword",
+   "Plough-beam"
+  ],
+  "answer": 0,
+  "explanation": "Every man sharpened his share, and his coulter, and his axe, and his mattock.",
+  "ref": "1 Samuel 13:20"
+ },
+ {
+  "id": "1-samuel-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the Philistine garrison go out to at the end of the chapter?",
+  "choices": [
+   "The passage of Michmash",
+   "The cave of Adullam",
+   "The gate of Gilgal",
+   "The pass of Geba"
+  ],
+  "answer": 0,
+  "explanation": "The garrison of the Philistines went out to the passage of Michmash.",
+  "ref": "1 Samuel 13:23"
+ },
+ {
+  "id": "1-samuel-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD commanded the man after his own heart to be what over his people?",
+  "choices": [
+   "Captain",
+   "King",
+   "Judge",
+   "Priest"
+  ],
+  "answer": 0,
+  "explanation": "The LORD hath commanded him to be captain over his people.",
+  "ref": "1 Samuel 13:14"
+ },
+ {
+  "id": "1-samuel-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what were the Philistine people compared in number?",
+  "choices": [
+   "The sand on the sea shore",
+   "The stars of heaven",
+   "The locusts",
+   "The grass of the field"
+  ],
+  "answer": 0,
+  "explanation": "People as the sand which is on the sea shore in multitude.",
+  "ref": "1 Samuel 13:5"
+ },
+ {
+  "id": "1-samuel-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tool did the Israelites have a file for, along with the mattocks?",
+  "choices": [
+   "Forks",
+   "Swords",
+   "Spears",
+   "Bows"
+  ],
+  "answer": 0,
+  "explanation": "They had a file for the mattocks, and for the coulters, and for the forks, and for the axes.",
+  "ref": "1 Samuel 13:21"
+ },
+ {
+  "id": "1-samuel-13-h-14",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did all the people follow Saul at Gilgal?",
+  "choices": [
+   "Trembling",
+   "Singing",
+   "In silence",
+   "Gladly"
+  ],
+  "answer": 0,
+  "explanation": "As for Saul, he was yet in Gilgal, and all the people followed him trembling.",
+  "ref": "1 Samuel 13:7"
+ },
+ {
+  "id": "1-samuel-13-h-15",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After Jonathan struck the garrison, what was Israel held to be by the Philistines?",
+  "choices": [
+   "In abomination",
+   "In honour",
+   "In fear",
+   "In pity"
+  ],
+  "answer": 0,
+  "explanation": "Israel also was had in abomination with the Philistines.",
+  "ref": "1 Samuel 13:4"
+ },
+ {
   "id": "old-1-samuel-14-1",
   "chapter": 14,
   "level": "beginner",
