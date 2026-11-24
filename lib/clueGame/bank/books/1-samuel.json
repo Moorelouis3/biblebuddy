@@ -6560,6 +6560,662 @@
   "ref": "1 Samuel 10:27"
  },
  {
+  "id": "1-samuel-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samuel do to Saul after pouring the oil on his head?",
+  "choices": [
+   "Kissed him",
+   "Crowned him",
+   "Washed his feet",
+   "Gave him a sword"
+  ],
+  "answer": 0,
+  "explanation": "Samuel took a vial of oil, and poured it upon his head, and kissed him.",
+  "ref": "1 Samuel 10:1"
+ },
+ {
+  "id": "1-samuel-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where would Saul meet two men who said the asses were found?",
+  "choices": [
+   "At Gilgal",
+   "By Rachel's sepulchre",
+   "At Mizpeh",
+   "By the well of Beer-sheba"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt find two men by Rachel's sepulchre in the border of Benjamin at Zelzah.",
+  "ref": "1 Samuel 10:2"
+ },
+ {
+  "id": "1-samuel-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the two men tell Saul?",
+  "choices": [
+   "The Philistines were coming",
+   "Samuel was dead",
+   "The asses were found",
+   "His father was ill"
+  ],
+  "answer": 2,
+  "explanation": "They will say unto thee, The asses which thou wentest to seek are found.",
+  "ref": "1 Samuel 10:2"
+ },
+ {
+  "id": "1-samuel-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the three men on the plain of Tabor going?",
+  "choices": [
+   "To Gilgal",
+   "To Ramah",
+   "To Mizpeh",
+   "Up to God at Bethel"
+  ],
+  "answer": 3,
+  "explanation": "There shall meet thee three men going up to God to Bethel.",
+  "ref": "1 Samuel 10:3"
+ },
+ {
+  "id": "1-samuel-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did one of the three men carry?",
+  "choices": [
+   "Three kids",
+   "A sack of wheat",
+   "A harp",
+   "A lamp"
+  ],
+  "answer": 0,
+  "explanation": "One carrying three kids, and another carrying three loaves of bread, and another carrying a bottle of wine.",
+  "ref": "1 Samuel 10:3"
+ },
+ {
+  "id": "1-samuel-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which instrument did the company of prophets have?",
+  "choices": [
+   "A trumpet",
+   "A harp",
+   "A cymbal",
+   "A horn"
+  ],
+  "answer": 1,
+  "explanation": "A company of prophets coming down with a psaltery, and a tabret, and a pipe, and a harp, before them.",
+  "ref": "1 Samuel 10:5"
+ },
+ {
+  "id": "1-samuel-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What proverb arose about Saul?",
+  "choices": [
+   "Saul is a mighty man",
+   "The least shall be king",
+   "Is Saul also among the prophets?",
+   "Who is Kish's son?"
+  ],
+  "answer": 2,
+  "explanation": "It became a proverb, Is Saul also among the prophets?",
+  "ref": "1 Samuel 10:12"
+ },
+ {
+  "id": "1-samuel-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Samuel call the people together to the Lord?",
+  "choices": [
+   "Shiloh",
+   "Gilgal",
+   "Bethel",
+   "Mizpeh"
+  ],
+  "answer": 3,
+  "explanation": "Samuel called the people together unto the LORD to Mizpeh.",
+  "ref": "1 Samuel 10:17"
+ },
+ {
+  "id": "1-samuel-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did all the people shout when they saw Saul?",
+  "choices": [
+   "God save the king",
+   "Hail the judge",
+   "Long live Samuel",
+   "Praise the Lord"
+  ],
+  "answer": 0,
+  "explanation": "And all the people shouted, and said, God save the king.",
+  "ref": "1 Samuel 10:24"
+ },
+ {
+  "id": "1-samuel-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Saul go home after the gathering?",
+  "choices": [
+   "Ramah",
+   "Gibeah",
+   "Bethel",
+   "Gilgal"
+  ],
+  "answer": 1,
+  "explanation": "Saul also went home to Gibeah; and there went with him a band of men, whose hearts God had touched.",
+  "ref": "1 Samuel 10:26"
+ },
+ {
+  "id": "1-samuel-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel say the anointing meant?",
+  "choices": [
+   "Saul was to be priest",
+   "Saul was to rule Judah only",
+   "The Lord had anointed Saul captain over his inheritance",
+   "Saul was to build the temple"
+  ],
+  "answer": 2,
+  "explanation": "Is it not because the LORD hath anointed thee to be captain over his inheritance?",
+  "ref": "1 Samuel 10:1"
+ },
+ {
+  "id": "1-samuel-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the two men say about Saul's father?",
+  "choices": [
+   "He had gone to Ramah",
+   "He was angry",
+   "He had died",
+   "He had left the care of the asses and sorrowed for them"
+  ],
+  "answer": 3,
+  "explanation": "Thy father hath left the care of the asses, and sorroweth for you, saying, What shall I do for my son?",
+  "ref": "1 Samuel 10:2"
+ },
+ {
+  "id": "1-samuel-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many loaves of bread would the three men give Saul?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "They will salute thee, and give thee two loaves of bread; which thou shalt receive of their hands.",
+  "ref": "1 Samuel 10:4"
+ },
+ {
+  "id": "1-samuel-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the garrison of the Philistines?",
+  "choices": [
+   "At Bethel",
+   "At the hill of God",
+   "At Mizpeh",
+   "At Gilgal"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt come to the hill of God, where is the garrison of the Philistines.",
+  "ref": "1 Samuel 10:5"
+ },
+ {
+  "id": "1-samuel-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to Saul among the prophets?",
+  "choices": [
+   "He would be turned into another man",
+   "He would be silenced",
+   "He would be struck blind",
+   "He would be made priest"
+  ],
+  "answer": 0,
+  "explanation": "The Spirit of the LORD will come upon thee, and thou shalt prophesy with them, and shalt be turned into another man.",
+  "ref": "1 Samuel 10:6"
+ },
+ {
+  "id": "1-samuel-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel tell Saul to do when the signs came?",
+  "choices": [
+   "Come straight to Ramah",
+   "Tell no one",
+   "Raise an army",
+   "Do as occasion served, for God was with him"
+  ],
+  "answer": 3,
+  "explanation": "Do as occasion serve thee; for God is with thee.",
+  "ref": "1 Samuel 10:7"
+ },
+ {
+  "id": "1-samuel-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many days was Saul to wait at Gilgal?",
+  "choices": [
+   "Seven days",
+   "Three days",
+   "Twelve days",
+   "Forty days"
+  ],
+  "answer": 0,
+  "explanation": "Seven days shalt thou tarry, till I come to thee, and shew thee what thou shalt do.",
+  "ref": "1 Samuel 10:8"
+ },
+ {
+  "id": "1-samuel-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Samuel do when he came down to Gilgal?",
+  "choices": [
+   "Anoint the elders",
+   "Offer burnt offerings and peace offerings",
+   "Fight the Philistines",
+   "Judge the tribes"
+  ],
+  "answer": 1,
+  "explanation": "I will come down unto thee, to offer burnt offerings, and to sacrifice sacrifices of peace offerings.",
+  "ref": "1 Samuel 10:8"
+ },
+ {
+  "id": "1-samuel-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God give Saul when he turned his back to leave Samuel?",
+  "choices": [
+   "A new name",
+   "A sword",
+   "Another heart",
+   "A crown"
+  ],
+  "answer": 2,
+  "explanation": "When he had turned his back to go from Samuel, God gave him another heart.",
+  "ref": "1 Samuel 10:9"
+ },
+ {
+  "id": "1-samuel-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people say when they saw Saul prophesy?",
+  "choices": [
+   "He is a false prophet",
+   "Samuel has taught him",
+   "Who is this stranger?",
+   "What is this that is come unto the son of Kish?"
+  ],
+  "answer": 3,
+  "explanation": "The people said one to another, What is this that is come unto the son of Kish? Is Saul also among the prophets?",
+  "ref": "1 Samuel 10:11"
+ },
+ {
+  "id": "1-samuel-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who asked Saul where he had gone?",
+  "choices": [
+   "His uncle",
+   "His father",
+   "Samuel",
+   "His servant"
+  ],
+  "answer": 0,
+  "explanation": "Saul's uncle said unto him and to his servant, Whither went ye?",
+  "ref": "1 Samuel 10:14"
+ },
+ {
+  "id": "1-samuel-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul not tell his uncle?",
+  "choices": [
+   "That the asses were found",
+   "The matter of the kingdom",
+   "That he met Samuel",
+   "That he prophesied"
+  ],
+  "answer": 1,
+  "explanation": "But of the matter of the kingdom, whereof Samuel spake, he told him not.",
+  "ref": "1 Samuel 10:16"
+ },
+ {
+  "id": "1-samuel-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "Which tribe was taken first when the lot was cast?",
+  "choices": [
+   "Judah",
+   "Ephraim",
+   "Benjamin",
+   "Levi"
+  ],
+  "answer": 2,
+  "explanation": "All the tribes of Israel came near, and the tribe of Benjamin was taken.",
+  "ref": "1 Samuel 10:20"
+ },
+ {
+  "id": "1-samuel-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which family of Benjamin was taken?",
+  "choices": [
+   "The family of Abiel",
+   "The family of Zeror",
+   "The family of Kish",
+   "The family of Matri"
+  ],
+  "answer": 3,
+  "explanation": "The tribe of Benjamin came near by their families, the family of Matri was taken, and Saul the son of Kish.",
+  "ref": "1 Samuel 10:21"
+ },
+ {
+  "id": "1-samuel-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel do with the manner of the kingdom?",
+  "choices": [
+   "Wrote it in a book and laid it up before the Lord",
+   "Read it to Saul alone",
+   "Sent it to Gilgal",
+   "Burned it"
+  ],
+  "answer": 0,
+  "explanation": "Samuel told the people the manner of the kingdom, and wrote it in a book, and laid it up before the LORD.",
+  "ref": "1 Samuel 10:25"
+ },
+ {
+  "id": "1-samuel-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "At which place by Rachel's sepulchre would Saul meet the two men?",
+  "choices": [
+   "Zuph",
+   "Zelzah",
+   "Shalim",
+   "Shen"
+  ],
+  "answer": 1,
+  "explanation": "Rachel's sepulchre in the border of Benjamin at Zelzah.",
+  "ref": "1 Samuel 10:2"
+ },
+ {
+  "id": "1-samuel-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Where would three men meet Saul going up to Bethel?",
+  "choices": [
+   "The plain of Mizpeh",
+   "The hill of God",
+   "The plain of Tabor",
+   "The valley of Zuph"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt come to the plain of Tabor, and there shall meet thee three men.",
+  "ref": "1 Samuel 10:3"
+ },
+ {
+  "id": "1-samuel-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the third of the three men carry?",
+  "choices": [
+   "Three kids",
+   "Three loaves",
+   "A harp",
+   "A bottle of wine"
+  ],
+  "answer": 3,
+  "explanation": "Another carrying a bottle of wine.",
+  "ref": "1 Samuel 10:3"
+ },
+ {
+  "id": "1-samuel-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Saul meet the company of prophets?",
+  "choices": [
+   "The hill of God",
+   "Mount Ephraim",
+   "Gilgal",
+   "The plain of Tabor"
+  ],
+  "answer": 0,
+  "explanation": "A company of prophets met him; and the Spirit of God came upon him.",
+  "ref": "1 Samuel 10:10"
+ },
+ {
+  "id": "1-samuel-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question gave rise to the proverb about Saul?",
+  "choices": [
+   "Who is the king?",
+   "But who is their father?",
+   "Where is Samuel?",
+   "Who sent them?"
+  ],
+  "answer": 1,
+  "explanation": "One answered and said, But who is their father? Therefore it became a proverb.",
+  "ref": "1 Samuel 10:12"
+ },
+ {
+  "id": "1-samuel-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whose hand did the Lord say He had saved Israel, besides all kingdoms?",
+  "choices": [
+   "The Philistines",
+   "The Amorites",
+   "The Egyptians",
+   "The Ammonites"
+  ],
+  "answer": 2,
+  "explanation": "I brought up Israel out of Egypt, and delivered you out of the hand of the Egyptians.",
+  "ref": "1 Samuel 10:18"
+ },
+ {
+  "id": "1-samuel-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the people told to present themselves before the Lord?",
+  "choices": [
+   "By their cities",
+   "By their age",
+   "By their weapons",
+   "By their tribes and thousands"
+  ],
+  "answer": 3,
+  "explanation": "Present yourselves before the LORD by your tribes, and by your thousands.",
+  "ref": "1 Samuel 10:19"
+ },
+ {
+  "id": "1-samuel-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was true when they sought Saul after he was chosen?",
+  "choices": [
+   "He could not be found",
+   "He had gone home",
+   "He was praying",
+   "He was with Samuel"
+  ],
+  "answer": 0,
+  "explanation": "When they sought him, he could not be found.",
+  "ref": "1 Samuel 10:21"
+ },
+ {
+  "id": "1-samuel-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul's uncle ask him to tell?",
+  "choices": [
+   "Where the asses were",
+   "What Samuel said to them",
+   "Who anointed him",
+   "Where Samuel lived"
+  ],
+  "answer": 1,
+  "explanation": "Saul's uncle said, Tell me, I pray thee, what Samuel said unto you.",
+  "ref": "1 Samuel 10:15"
+ },
+ {
+  "id": "1-samuel-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Saul stand compared to the people?",
+  "choices": [
+   "As the smallest",
+   "Level with Samuel",
+   "Higher than any from his shoulders upward",
+   "Shorter than Jonathan"
+  ],
+  "answer": 2,
+  "explanation": "He stood among the people, he was higher than any of the people from his shoulders and upward.",
+  "ref": "1 Samuel 10:23"
+ },
+ {
+  "id": "1-samuel-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who went home with Saul to Gibeah?",
+  "choices": [
+   "The elders of Israel",
+   "Samuel and his sons",
+   "His servant alone",
+   "A band of men whose hearts God had touched"
+  ],
+  "answer": 3,
+  "explanation": "Saul went home to Gibeah; and there went with him a band of men, whose hearts God had touched.",
+  "ref": "1 Samuel 10:26"
+ },
+ {
+  "id": "1-samuel-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the children of Belial say about Saul?",
+  "choices": [
+   "How shall this man save us?",
+   "He is not a Benjamite",
+   "He is too young",
+   "He is a coward"
+  ],
+  "answer": 0,
+  "explanation": "The children of Belial said, How shall this man save us? And they despised him.",
+  "ref": "1 Samuel 10:27"
+ },
+ {
+  "id": "1-samuel-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Saul respond to those who despised him?",
+  "choices": [
+   "He answered in anger",
+   "He held his peace",
+   "He arrested them",
+   "He left Gibeah"
+  ],
+  "answer": 1,
+  "explanation": "They despised him, and brought him no presents. But he held his peace.",
+  "ref": "1 Samuel 10:27"
+ },
+ {
+  "id": "1-samuel-10-h-14",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the people done to God by asking for a king, said Samuel?",
+  "choices": [
+   "Obeyed him",
+   "Thanked him",
+   "Rejected him",
+   "Forgotten him"
+  ],
+  "answer": 2,
+  "explanation": "Ye have this day rejected your God, who himself saved you; and ye have said unto him, Nay, but set a king over us.",
+  "ref": "1 Samuel 10:19"
+ },
+ {
+  "id": "1-samuel-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samuel say about Saul to all the people?",
+  "choices": [
+   "There is none like him among all the people",
+   "He is the least of all",
+   "He is the son of a judge",
+   "He is wiser than the elders"
+  ],
+  "answer": 0,
+  "explanation": "Samuel said, See ye him whom the LORD hath chosen, that there is none like him among all the people?",
+  "ref": "1 Samuel 10:24"
+ },
+ {
+  "id": "1-samuel-10-h-16",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord say when asked if Saul should yet come?",
+  "choices": [
+   "He had hid himself among the stuff",
+   "He was at Gibeah",
+   "He was with Samuel",
+   "He had gone to Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "The LORD answered, Behold, he hath hid himself among the stuff.",
+  "ref": "1 Samuel 10:22"
+ },
+ {
   "id": "old-1-samuel-11-1",
   "chapter": 11,
   "level": "beginner",
