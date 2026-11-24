@@ -19460,15 +19460,15 @@
   "chapter": 28,
   "level": "beginner",
   "category": "keyword",
-  "question": "Why was Saul greatly afraid in this chapter?",
+  "question": "Why was Saul greatly afraid?",
   "choices": [
-   "David was crowned",
-   "The ark was missing",
    "He saw the Philistine host gathered for war",
-   "Jonathan left him"
+   "Jonathan had left him",
+   "David had been crowned king",
+   "The ark of God was missing"
   ],
-  "answer": 2,
-  "explanation": "Saul was terrified by the Philistine army.",
+  "answer": 0,
+  "explanation": "When Saul saw the host of the Philistines, he was afraid, and his heart greatly trembled.",
   "ref": "1 Samuel 28:5"
  },
  {
@@ -19526,14 +19526,670 @@
   "category": "keyword",
   "question": "How did Saul react after hearing Samuel's words?",
   "choices": [
-   "He rejoiced",
-   "He attacked Endor",
+   "He rejoiced and gave thanks",
    "He called for Jonathan",
-   "He fell straightway all along on the earth"
+   "He fell straightway all along on the earth",
+   "He attacked the woman"
+  ],
+  "answer": 2,
+  "explanation": "Saul fell straightway all along on the earth, and was sore afraid, because of the words of Samuel.",
+  "ref": "1 Samuel 28:20"
+ },
+ {
+  "id": "1-samuel-28-e-01",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told David he must go out with him to battle?",
+  "choices": [
+   "Jonathan",
+   "Saul",
+   "Achish",
+   "Abner"
+  ],
+  "answer": 2,
+  "explanation": "Achish said unto David, Thou shalt go out with me to battle, thou and thy men.",
+  "ref": "1 Samuel 28:1"
+ },
+ {
+  "id": "1-samuel-28-e-02",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Saul gather all Israel to meet the Philistines?",
+  "choices": [
+   "Endor",
+   "Ramah",
+   "Gilboa",
+   "Shunem"
+  ],
+  "answer": 2,
+  "explanation": "Saul gathered all Israel together, and they pitched in Gilboa.",
+  "ref": "1 Samuel 28:4"
+ },
+ {
+  "id": "1-samuel-28-e-03",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Saul ask the woman to bring up?",
+  "choices": [
+   "Abner",
+   "Eli",
+   "Samuel",
+   "David"
+  ],
+  "answer": 2,
+  "explanation": "Saul said, Bring me up Samuel.",
+  "ref": "1 Samuel 28:11"
+ },
+ {
+  "id": "1-samuel-28-e-04",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Saul go to the woman at Endor?",
+  "choices": [
+   "Disguised in other clothes",
+   "As a king in his armor",
+   "Riding on a horse",
+   "With his whole army"
+  ],
+  "answer": 0,
+  "explanation": "Saul disguised himself, and put on other raiment, and he went.",
+  "ref": "1 Samuel 28:8"
+ },
+ {
+  "id": "1-samuel-28-e-05",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did Saul come to the woman?",
+  "choices": [
+   "At sunrise",
+   "By night",
+   "On the sabbath",
+   "At noon"
+  ],
+  "answer": 1,
+  "explanation": "They came to the woman by night.",
+  "ref": "1 Samuel 28:8"
+ },
+ {
+  "id": "1-samuel-28-e-06",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Samuel buried?",
+  "choices": [
+   "Bethel",
+   "Gilgal",
+   "Shiloh",
+   "Ramah"
   ],
   "answer": 3,
-  "explanation": "Saul collapsed in fear and weakness.",
+  "explanation": "Samuel was dead, and all Israel had lamented him, and buried him in Ramah, even in his own city.",
+  "ref": "1 Samuel 28:3"
+ },
+ {
+  "id": "1-samuel-28-e-07",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had Saul done to those with familiar spirits and the wizards?",
+  "choices": [
+   "Put them out of the land",
+   "Sent them to Egypt",
+   "Hidden them in Gilboa",
+   "Made them his advisers"
+  ],
+  "answer": 0,
+  "explanation": "Saul had put away those that had familiar spirits, and the wizards, out of the land.",
+  "ref": "1 Samuel 28:3"
+ },
+ {
+  "id": "1-samuel-28-e-08",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the woman kill to feed Saul?",
+  "choices": [
+   "A goat",
+   "A fat calf",
+   "A lamb",
+   "A dove"
+  ],
+  "answer": 1,
+  "explanation": "The woman had a fat calf in the house; and she hasted, and killed it.",
+  "ref": "1 Samuel 28:24"
+ },
+ {
+  "id": "1-samuel-28-e-09",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of bread did the woman bake for Saul?",
+  "choices": [
+   "Bread with oil",
+   "Barley cakes with honey",
+   "Bread with figs",
+   "Unleavened bread"
+  ],
+  "answer": 3,
+  "explanation": "She took flour, and kneaded it, and did bake unleavened bread thereof.",
+  "ref": "1 Samuel 28:24"
+ },
+ {
+  "id": "1-samuel-28-e-10",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why had the Philistines gathered their armies?",
+  "choices": [
+   "To meet Achish's council",
+   "To attack Gath",
+   "To raid Egypt",
+   "To fight with Israel"
+  ],
+  "answer": 3,
+  "explanation": "The Philistines gathered their armies together for warfare, to fight with Israel.",
+  "ref": "1 Samuel 28:1"
+ },
+ {
+  "id": "1-samuel-28-m-01",
+  "chapter": 28,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the Philistines pitch their camp?",
+  "choices": [
+   "Aphek",
+   "Gilboa",
+   "Shunem",
+   "Jezreel"
+  ],
+  "answer": 2,
+  "explanation": "The Philistines came and pitched in Shunem.",
+  "ref": "1 Samuel 28:4"
+ },
+ {
+  "id": "1-samuel-28-m-02",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men went with Saul to the woman?",
+  "choices": [
+   "Four",
+   "Two",
+   "Twelve",
+   "Three"
+  ],
+  "answer": 1,
+  "explanation": "Saul went, and two men with him, and they came to the woman by night.",
+  "ref": "1 Samuel 28:8"
+ },
+ {
+  "id": "1-samuel-28-m-03",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the woman fear Saul was laying for her?",
+  "choices": [
+   "A trap for her sons",
+   "A fine of silver",
+   "A snare for her life",
+   "A curse upon her house"
+  ],
+  "answer": 2,
+  "explanation": "Wherefore then layest thou a snare for my life, to cause me to die?",
+  "ref": "1 Samuel 28:9"
+ },
+ {
+  "id": "1-samuel-28-m-04",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul swear to the woman by the LORD?",
+  "choices": [
+   "That no punishment would happen to her",
+   "That he would not tell Achish",
+   "That he would reward her with gold",
+   "That he would return to her"
+  ],
+  "answer": 0,
+  "explanation": "Saul sware, As the LORD liveth, there shall no punishment happen to thee for this thing.",
+  "ref": "1 Samuel 28:10"
+ },
+ {
+  "id": "1-samuel-28-m-05",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the woman say she saw ascending out of the earth?",
+  "choices": [
+   "A cloud of fire",
+   "A great army",
+   "An old man in armor",
+   "Gods"
+  ],
+  "answer": 3,
+  "explanation": "The woman said, I saw gods ascending out of the earth.",
+  "ref": "1 Samuel 28:13"
+ },
+ {
+  "id": "1-samuel-28-m-06",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the woman describe the form she saw?",
+  "choices": [
+   "A king with a crown",
+   "A young warrior with a spear",
+   "An old man covered with a mantle",
+   "A priest in a robe"
+  ],
+  "answer": 2,
+  "explanation": "She said, An old man cometh up; and he is covered with a mantle.",
+  "ref": "1 Samuel 28:14"
+ },
+ {
+  "id": "1-samuel-28-m-07",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel ask Saul when he appeared?",
+  "choices": [
+   "Why hast thou forsaken the Lord?",
+   "Where is David, thy servant?",
+   "Why hast thou disquieted me, to bring me up?",
+   "Who hath sent thee to Endor?"
+  ],
+  "answer": 2,
+  "explanation": "Samuel said to Saul, Why hast thou disquieted me, to bring me up?",
+  "ref": "1 Samuel 28:15"
+ },
+ {
+  "id": "1-samuel-28-m-08",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Saul say he had called Samuel up?",
+  "choices": [
+   "David had fled from him",
+   "Samuel owed him a prophecy",
+   "The Philistines made war and God had departed from him",
+   "His sons were sick"
+  ],
+  "answer": 2,
+  "explanation": "Saul answered, I am sore distressed; for the Philistines make war against me, and God is departed from me.",
+  "ref": "1 Samuel 28:15"
+ },
+ {
+  "id": "1-samuel-28-m-09",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why, said Samuel, had the LORD done this thing to Saul?",
+  "choices": [
+   "He did not obey the voice of the LORD against Amalek",
+   "He had married a foreign wife",
+   "He had killed the priests of Nob",
+   "He had hunted David"
+  ],
+  "answer": 0,
+  "explanation": "Because thou obeyedst not the voice of the LORD, nor executedst his fierce wrath upon Amalek.",
+  "ref": "1 Samuel 28:18"
+ },
+ {
+  "id": "1-samuel-28-m-10",
+  "chapter": 28,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did Samuel say the kingdom had been given?",
+  "choices": [
+   "Jonathan",
+   "Abner",
+   "Ish-bosheth",
+   "David, Saul's neighbour"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hath rent the kingdom out of thine hand, and given it to thy neighbour, even to David.",
+  "ref": "1 Samuel 28:17"
+ },
+ {
+  "id": "1-samuel-28-m-11",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel say would happen to Saul and his sons the next day?",
+  "choices": [
+   "They would take Gath",
+   "They would be crowned again",
+   "They would flee to Egypt",
+   "They would be with Samuel"
+  ],
+  "answer": 3,
+  "explanation": "To morrow shalt thou and thy sons be with me.",
+  "ref": "1 Samuel 28:19"
+ },
+ {
+  "id": "1-samuel-28-m-12",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Saul have no strength after Samuel spoke?",
+  "choices": [
+   "He was old and sick",
+   "He had been wounded",
+   "He had eaten no bread all day and night",
+   "He had not slept for a week"
+  ],
+  "answer": 2,
+  "explanation": "There was no strength in him; for he had eaten no bread all the day, nor all the night.",
   "ref": "1 Samuel 28:20"
+ },
+ {
+  "id": "1-samuel-28-m-13",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul first say when the woman offered him food?",
+  "choices": [
+   "I will not eat",
+   "Bring me wine",
+   "Give it to my servants",
+   "Keep it for David"
+  ],
+  "answer": 0,
+  "explanation": "He refused, and said, I will not eat.",
+  "ref": "1 Samuel 28:23"
+ },
+ {
+  "id": "1-samuel-28-m-14",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What post did Achish promise David?",
+  "choices": [
+   "Ruler of Ziklag",
+   "Judge of Gath",
+   "Keeper of his head for ever",
+   "Captain of the host"
+  ],
+  "answer": 2,
+  "explanation": "Achish said to David, Therefore will I make thee keeper of mine head for ever.",
+  "ref": "1 Samuel 28:2"
+ },
+ {
+  "id": "1-samuel-28-m-15",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David answer when Achish said he must go out to battle?",
+  "choices": [
+   "Thou shalt know what thy servant can do",
+   "I cannot fight against Israel",
+   "I will go with a glad heart",
+   "Let me stay at Ziklag"
+  ],
+  "answer": 0,
+  "explanation": "David said to Achish, Surely thou shalt know what thy servant can do.",
+  "ref": "1 Samuel 28:2"
+ },
+ {
+  "id": "1-samuel-28-m-16",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul perceive when the woman described the old man?",
+  "choices": [
+   "That it was an angel",
+   "That it was Samuel",
+   "That it was a trick",
+   "That it was David"
+  ],
+  "answer": 1,
+  "explanation": "Saul perceived that it was Samuel, and he stooped with his face to the ground, and bowed himself.",
+  "ref": "1 Samuel 28:14"
+ },
+ {
+  "id": "1-samuel-28-h-01",
+  "chapter": 28,
+  "level": "hard",
+  "category": "person",
+  "question": "Who compelled Saul to eat after he refused?",
+  "choices": [
+   "His servants, together with the woman",
+   "Abner, his captain",
+   "Only the woman",
+   "Only his two men"
+  ],
+  "answer": 0,
+  "explanation": "His servants, together with the woman, compelled him; and he hearkened unto their voice.",
+  "ref": "1 Samuel 28:23"
+ },
+ {
+  "id": "1-samuel-28-h-02",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Saul sit after he arose from the earth?",
+  "choices": [
+   "Upon the bed",
+   "Upon a stool by the door",
+   "Upon the ground",
+   "Upon his mule"
+  ],
+  "answer": 0,
+  "explanation": "He arose from the earth, and sat upon the bed.",
+  "ref": "1 Samuel 28:23"
+ },
+ {
+  "id": "1-samuel-28-h-03",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the woman say she had put in her hand?",
+  "choices": [
+   "Her life",
+   "Her calf",
+   "Her bread",
+   "Her key"
+  ],
+  "answer": 0,
+  "explanation": "Thine handmaid hath obeyed thy voice, and I have put my life in my hand.",
+  "ref": "1 Samuel 28:21"
+ },
+ {
+  "id": "1-samuel-28-h-04",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the woman know her visitor was Saul?",
+  "choices": [
+   "He wore his crown",
+   "She saw Samuel",
+   "His voice gave him away",
+   "A servant told her"
+  ],
+  "answer": 1,
+  "explanation": "When the woman saw Samuel, she cried with a loud voice, saying, Why hast thou deceived me? for thou art Saul.",
+  "ref": "1 Samuel 28:12"
+ },
+ {
+  "id": "1-samuel-28-h-05",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samuel say the LORD had become to Saul?",
+  "choices": [
+   "His enemy",
+   "His shepherd",
+   "His judge",
+   "His shield"
+  ],
+  "answer": 0,
+  "explanation": "Seeing the LORD is departed from thee, and is become thine enemy.",
+  "ref": "1 Samuel 28:16"
+ },
+ {
+  "id": "1-samuel-28-h-06",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the LORD rent out of Saul's hand?",
+  "choices": [
+   "The crown",
+   "The ark",
+   "The Urim",
+   "The kingdom"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hath rent the kingdom out of thine hand.",
+  "ref": "1 Samuel 28:17"
+ },
+ {
+  "id": "1-samuel-28-h-07",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul's heart do when he saw the Philistine host?",
+  "choices": [
+   "Sank in despair",
+   "Burned within him",
+   "Greatly trembled",
+   "Grew hard"
+  ],
+  "answer": 2,
+  "explanation": "When Saul saw the host of the Philistines, he was afraid, and his heart greatly trembled.",
+  "ref": "1 Samuel 28:5"
+ },
+ {
+  "id": "1-samuel-28-h-08",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul say to the woman when she cried out?",
+  "choices": [
+   "Fear the Lord",
+   "Hold thy peace",
+   "Be not afraid",
+   "Depart from me"
+  ],
+  "answer": 2,
+  "explanation": "The king said unto her, Be not afraid: for what sawest thou?",
+  "ref": "1 Samuel 28:13"
+ },
+ {
+  "id": "1-samuel-28-h-09",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question did Saul ask the woman about what she saw?",
+  "choices": [
+   "How old is he?",
+   "What form is he of?",
+   "Who is he?",
+   "What does he say?"
+  ],
+  "answer": 1,
+  "explanation": "He said unto her, What form is he of?",
+  "ref": "1 Samuel 28:14"
+ },
+ {
+  "id": "1-samuel-28-h-10",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Saul and his men leave the woman's house?",
+  "choices": [
+   "The next evening",
+   "At dawn",
+   "After three days",
+   "That night"
+  ],
+  "answer": 3,
+  "explanation": "They did eat. Then they rose up, and went away that night.",
+  "ref": "1 Samuel 28:25"
+ },
+ {
+  "id": "1-samuel-28-h-11",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the woman do with the flour?",
+  "choices": [
+   "Hid it in a pot",
+   "Gave it to the servants",
+   "Poured it on the calf",
+   "Kneaded it and baked bread"
+  ],
+  "answer": 3,
+  "explanation": "She took flour, and kneaded it, and did bake unleavened bread thereof.",
+  "ref": "1 Samuel 28:24"
+ },
+ {
+  "id": "1-samuel-28-h-12",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the woman offer to set before Saul?",
+  "choices": [
+   "A morsel of bread",
+   "A cup of wine",
+   "A bowl of pottage",
+   "A basket of fruit"
+  ],
+  "answer": 0,
+  "explanation": "Let me set a morsel of bread before thee; and eat, that thou mayest have strength.",
+  "ref": "1 Samuel 28:22"
+ },
+ {
+  "id": "1-samuel-28-h-13",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question did the woman ask before Saul named Samuel?",
+  "choices": [
+   "Whom shall I bring up unto thee?",
+   "Where is thy king?",
+   "Dost thou fear the Lord?",
+   "What is thy name?"
+  ],
+  "answer": 0,
+  "explanation": "Then said the woman, Whom shall I bring up unto thee?",
+  "ref": "1 Samuel 28:11"
+ },
+ {
+  "id": "1-samuel-28-h-14",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the woman call herself when she spoke to Saul?",
+  "choices": [
+   "Thy witness",
+   "Thy servant girl",
+   "Thine handmaid",
+   "Thy daughter"
+  ],
+  "answer": 2,
+  "explanation": "The woman said unto him, Behold, thine handmaid hath obeyed thy voice.",
+  "ref": "1 Samuel 28:21"
+ },
+ {
+  "id": "1-samuel-28-h-15",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul ask the woman to divine for him by?",
+  "choices": [
+   "A lot",
+   "The Urim",
+   "A dream",
+   "The familiar spirit"
+  ],
+  "answer": 3,
+  "explanation": "I pray thee, divine unto me by the familiar spirit, and bring me him up.",
+  "ref": "1 Samuel 28:8"
  },
  {
   "id": "old-1-samuel-29-1",
