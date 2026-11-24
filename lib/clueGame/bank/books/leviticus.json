@@ -10820,15 +10820,15 @@
   "chapter": 16,
   "level": "beginner",
   "category": "keyword",
-  "question": "After whose death did the Lord speak to Moses about entering the holy place?",
+  "question": "The LORD spoke to Moses after the death of whose two sons?",
   "choices": [
-   "Eleazar and Ithamar",
-   "Miriam and Aaron",
-   "Korah and Dathan",
-   "Nadab and Abihu"
+   "Aaron",
+   "Moses",
+   "Korah",
+   "Eli"
   ],
-  "answer": 3,
-  "explanation": "The instructions came after the death of Nadab and Abihu.",
+  "answer": 0,
+  "explanation": "The LORD spake unto Moses after the death of the two sons of Aaron, when they offered before the LORD, and died.",
   "ref": "Leviticus 16:1"
  },
  {
@@ -10845,7 +10845,7 @@
   ],
   "answer": 2,
   "explanation": "The Day of Atonement entrance into the most holy place was once each year.",
-  "ref": "Leviticus 16:2"
+  "ref": "Leviticus 16:34"
  },
  {
   "id": "old-leviticus-16-3",
@@ -10894,6 +10894,646 @@
   "answer": 2,
   "explanation": "The people were to afflict their souls and do no work on that day.",
   "ref": "Leviticus 16:29–31"
+ },
+ {
+  "id": "leviticus-16-e-01",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who was Moses told to speak to about coming into the holy place?",
+  "choices": [
+   "Joshua",
+   "Aaron his brother",
+   "Eleazar",
+   "Miriam"
+  ],
+  "answer": 1,
+  "explanation": "Speak unto Aaron thy brother, that he come not at all times into the holy place.",
+  "ref": "Leviticus 16:2"
+ },
+ {
+  "id": "leviticus-16-e-02",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Aaron bring as a sin offering for himself?",
+  "choices": [
+   "A lamb",
+   "A young bullock",
+   "A kid",
+   "A dove"
+  ],
+  "answer": 1,
+  "explanation": "Thus shall Aaron come into the holy place: with a young bullock for a sin offering.",
+  "ref": "Leviticus 16:3"
+ },
+ {
+  "id": "leviticus-16-e-03",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Aaron bring as a burnt offering?",
+  "choices": [
+   "A goat",
+   "A ram",
+   "A bullock",
+   "A lamb"
+  ],
+  "answer": 1,
+  "explanation": "With a young bullock for a sin offering, and a ram for a burnt offering.",
+  "ref": "Leviticus 16:3"
+ },
+ {
+  "id": "leviticus-16-e-04",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Aaron wear in the holy place?",
+  "choices": [
+   "A blue robe",
+   "The holy linen coat",
+   "A breastplate of gold",
+   "A purple cloak"
+  ],
+  "answer": 1,
+  "explanation": "He shall put on the holy linen coat.",
+  "ref": "Leviticus 16:4"
+ },
+ {
+  "id": "leviticus-16-e-05",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Aaron cast on the two goats?",
+  "choices": [
+   "Stones",
+   "Lots",
+   "Dice of gold",
+   "Straws"
+  ],
+  "answer": 1,
+  "explanation": "Aaron shall cast lots upon the two goats.",
+  "ref": "Leviticus 16:8"
+ },
+ {
+  "id": "leviticus-16-e-06",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the second goat called?",
+  "choices": [
+   "The ram",
+   "The scapegoat",
+   "The kid of peace",
+   "The wave goat"
+  ],
+  "answer": 1,
+  "explanation": "One lot for the LORD, and the other lot for the scapegoat.",
+  "ref": "Leviticus 16:8"
+ },
+ {
+  "id": "leviticus-16-e-07",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where was the scapegoat sent?",
+  "choices": [
+   "Into the city",
+   "Into the wilderness",
+   "Into the sea",
+   "To Egypt"
+  ],
+  "answer": 1,
+  "explanation": "To let him go for a scapegoat into the wilderness.",
+  "ref": "Leviticus 16:10"
+ },
+ {
+  "id": "leviticus-16-e-08",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In which month and on which day was the day of afflicting souls?",
+  "choices": [
+   "The first month, the tenth day",
+   "The seventh month, the tenth day",
+   "The seventh month, the first day",
+   "The third month, the fifth day"
+  ],
+  "answer": 1,
+  "explanation": "In the seventh month, on the tenth day of the month, ye shall afflict your souls.",
+  "ref": "Leviticus 16:29"
+ },
+ {
+  "id": "leviticus-16-e-09",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of sabbath was the day?",
+  "choices": [
+   "A sabbath of feasting",
+   "A sabbath of rest",
+   "A sabbath of war",
+   "A sabbath of silence"
+  ],
+  "answer": 1,
+  "explanation": "It shall be a sabbath of rest unto you.",
+  "ref": "Leviticus 16:31"
+ },
+ {
+  "id": "leviticus-16-e-10",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How often was atonement made for Israel?",
+  "choices": [
+   "Every month",
+   "Once a year",
+   "Every week",
+   "Every seven years"
+  ],
+  "answer": 1,
+  "explanation": "To make an atonement for the children of Israel for all their sins once a year.",
+  "ref": "Leviticus 16:34"
+ },
+ {
+  "id": "leviticus-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did the LORD say would appear in the cloud upon the mercy seat?",
+  "choices": [
+   "An angel",
+   "Moses",
+   "The priest",
+   "The LORD himself"
+  ],
+  "answer": 3,
+  "explanation": "I will appear in the cloud upon the mercy seat.",
+  "ref": "Leviticus 16:2"
+ },
+ {
+  "id": "leviticus-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many kids of the goats did Aaron take for a sin offering?",
+  "choices": [
+   "One",
+   "Three",
+   "Seven",
+   "Two"
+  ],
+  "answer": 3,
+  "explanation": "He shall take of the congregation two kids of the goats for a sin offering.",
+  "ref": "Leviticus 16:5"
+ },
+ {
+  "id": "leviticus-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Aaron take from the congregation for a burnt offering?",
+  "choices": [
+   "Two rams",
+   "A bullock",
+   "A lamb",
+   "One ram"
+  ],
+  "answer": 3,
+  "explanation": "And one ram for a burnt offering.",
+  "ref": "Leviticus 16:5"
+ },
+ {
+  "id": "leviticus-16-m-04",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the goat on which the LORD's lot fell?",
+  "choices": [
+   "It was sent away",
+   "It was eaten",
+   "It was set free",
+   "It was offered for a sin offering"
+  ],
+  "answer": 3,
+  "explanation": "The goat upon which the LORD'S lot fell, and offer him for a sin offering.",
+  "ref": "Leviticus 16:9"
+ },
+ {
+  "id": "leviticus-16-m-05",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Aaron bring within the vail in his hands?",
+  "choices": [
+   "A lamb and a knife",
+   "Bread and wine",
+   "Gold and silver",
+   "A censer of burning coals and sweet incense"
+  ],
+  "answer": 3,
+  "explanation": "A censer full of burning coals of fire ... and his hands full of sweet incense beaten small.",
+  "ref": "Leviticus 16:12"
+ },
+ {
+  "id": "leviticus-16-m-06",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Aaron put the incense on the fire?",
+  "choices": [
+   "To light the lamps",
+   "To honour the priests",
+   "To make peace",
+   "That the cloud might cover the mercy seat so he die not"
+  ],
+  "answer": 3,
+  "explanation": "That the cloud of the incense may cover the mercy seat ... that he die not.",
+  "ref": "Leviticus 16:13"
+ },
+ {
+  "id": "leviticus-16-m-07",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many times did Aaron sprinkle the blood before the mercy seat?",
+  "choices": [
+   "Three times",
+   "Twelve times",
+   "Once",
+   "Seven times"
+  ],
+  "answer": 3,
+  "explanation": "Before the mercy seat shall he sprinkle of the blood with his finger seven times.",
+  "ref": "Leviticus 16:14"
+ },
+ {
+  "id": "leviticus-16-m-08",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which goat's blood did Aaron bring within the vail after the bullock's?",
+  "choices": [
+   "The scapegoat",
+   "The ram",
+   "The lamb",
+   "The goat of the sin offering for the people"
+  ],
+  "answer": 3,
+  "explanation": "He kill the goat of the sin offering, that is for the people, and bring his blood within the vail.",
+  "ref": "Leviticus 16:15"
+ },
+ {
+  "id": "leviticus-16-m-09",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who was in the tabernacle when Aaron went in to make atonement?",
+  "choices": [
+   "The priests",
+   "The elders",
+   "Moses",
+   "No man"
+  ],
+  "answer": 3,
+  "explanation": "There shall be no man in the tabernacle of the congregation when he goeth in.",
+  "ref": "Leviticus 16:17"
+ },
+ {
+  "id": "leviticus-16-m-10",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Aaron lay on the head of the live goat?",
+  "choices": [
+   "His right hand",
+   "A staff",
+   "A cloth",
+   "Both his hands"
+  ],
+  "answer": 3,
+  "explanation": "Aaron shall lay both his hands upon the head of the live goat.",
+  "ref": "Leviticus 16:21"
+ },
+ {
+  "id": "leviticus-16-m-11",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did he do over the live goat?",
+  "choices": [
+   "Slaughtered it",
+   "Washed it",
+   "Named it",
+   "Confessed all the iniquities of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Confess over him all the iniquities of the children of Israel.",
+  "ref": "Leviticus 16:21"
+ },
+ {
+  "id": "leviticus-16-m-12",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who sent the live goat away?",
+  "choices": [
+   "The priest",
+   "A prophet",
+   "The ruler",
+   "A fit man"
+  ],
+  "answer": 3,
+  "explanation": "And shall send him away by the hand of a fit man into the wilderness.",
+  "ref": "Leviticus 16:21"
+ },
+ {
+  "id": "leviticus-16-m-13",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the goat bear upon him?",
+  "choices": [
+   "Gold and silver",
+   "The incense",
+   "The priest's garments",
+   "All their iniquities"
+  ],
+  "answer": 3,
+  "explanation": "The goat shall bear upon him all their iniquities unto a land not inhabited.",
+  "ref": "Leviticus 16:22"
+ },
+ {
+  "id": "leviticus-16-m-14",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Aaron do with the linen garments after?",
+  "choices": [
+   "Burned them",
+   "Gave them to Moses",
+   "Hung them on the altar",
+   "Put them off and left them in the tabernacle"
+  ],
+  "answer": 3,
+  "explanation": "Shall put off the linen garments ... and shall leave them there.",
+  "ref": "Leviticus 16:23"
+ },
+ {
+  "id": "leviticus-16-m-15",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was burned outside the camp?",
+  "choices": [
+   "The ram",
+   "The scapegoat",
+   "The garments",
+   "The skins, flesh and dung of the bullock and goat"
+  ],
+  "answer": 3,
+  "explanation": "They shall burn in the fire their skins, and their flesh, and their dung.",
+  "ref": "Leviticus 16:27"
+ },
+ {
+  "id": "leviticus-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the girdle made of?",
+  "choices": [
+   "Linen",
+   "Gold",
+   "Purple wool",
+   "Goats' hair"
+  ],
+  "answer": 0,
+  "explanation": "Shall be girded with a linen girdle.",
+  "ref": "Leviticus 16:4"
+ },
+ {
+  "id": "leviticus-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Aaron's headdress made of?",
+  "choices": [
+   "A linen mitre",
+   "A golden crown",
+   "A turban of blue",
+   "A veil"
+  ],
+  "answer": 0,
+  "explanation": "With the linen mitre shall he be attired.",
+  "ref": "Leviticus 16:4"
+ },
+ {
+  "id": "leviticus-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whom was Aaron's bullock offered first?",
+  "choices": [
+   "For himself and his house",
+   "For the people",
+   "For the priests only",
+   "For the stranger"
+  ],
+  "answer": 0,
+  "explanation": "Aaron shall offer his bullock of the sin offering, which is for himself ... and for his house.",
+  "ref": "Leviticus 16:6"
+ },
+ {
+  "id": "leviticus-16-h-04",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which direction was the blood sprinkled on the mercy seat?",
+  "choices": [
+   "Eastward",
+   "Westward",
+   "Northward",
+   "Southward"
+  ],
+  "answer": 0,
+  "explanation": "Sprinkle it with his finger upon the mercy seat eastward.",
+  "ref": "Leviticus 16:14"
+ },
+ {
+  "id": "leviticus-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the blood put on the altar?",
+  "choices": [
+   "On the horns round about",
+   "On the steps",
+   "On the base",
+   "On the grate"
+  ],
+  "answer": 0,
+  "explanation": "Put it upon the horns of the altar round about.",
+  "ref": "Leviticus 16:18"
+ },
+ {
+  "id": "leviticus-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the goat carry its load unto?",
+  "choices": [
+   "A land not inhabited",
+   "The camp",
+   "The river",
+   "The mountain"
+  ],
+  "answer": 0,
+  "explanation": "The goat shall bear upon him all their iniquities unto a land not inhabited.",
+  "ref": "Leviticus 16:22"
+ },
+ {
+  "id": "leviticus-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the one who let the scapegoat go wash?",
+  "choices": [
+   "His clothes and his flesh",
+   "Only his hands",
+   "The goat",
+   "The altar"
+  ],
+  "answer": 0,
+  "explanation": "He that let go the goat ... shall wash his clothes, and bathe his flesh in water.",
+  "ref": "Leviticus 16:26"
+ },
+ {
+  "id": "leviticus-16-h-08",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Aaron burn upon the altar?",
+  "choices": [
+   "The fat of the sin offering",
+   "The scapegoat",
+   "The garments",
+   "The incense only"
+  ],
+  "answer": 0,
+  "explanation": "The fat of the sin offering shall he burn upon the altar.",
+  "ref": "Leviticus 16:25"
+ },
+ {
+  "id": "leviticus-16-h-09",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the people, who was Aaron's second burnt offering for?",
+  "choices": [
+   "Himself",
+   "Moses",
+   "The Levites",
+   "The stranger"
+  ],
+  "answer": 0,
+  "explanation": "Offer his burnt offering, and the burnt offering of the people, and make an atonement for himself, and for the people.",
+  "ref": "Leviticus 16:24"
+ },
+ {
+  "id": "leviticus-16-h-10",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who could not work on the day of atonement besides your own country?",
+  "choices": [
+   "A stranger that sojourneth",
+   "The priests only",
+   "The slaves",
+   "The children"
+  ],
+  "answer": 0,
+  "explanation": "Do no work at all, whether it be one of your own country, or a stranger that sojourneth among you.",
+  "ref": "Leviticus 16:29"
+ },
+ {
+  "id": "leviticus-16-h-11",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who would make the atonement after Aaron?",
+  "choices": [
+   "The priest whom he shall anoint",
+   "Moses's son",
+   "Any Levite",
+   "The eldest of the people"
+  ],
+  "answer": 0,
+  "explanation": "The priest, whom he shall anoint ... in his father's stead, shall make the atonement.",
+  "ref": "Leviticus 16:32"
+ },
+ {
+  "id": "leviticus-16-h-12",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priest put on when making atonement?",
+  "choices": [
+   "The linen clothes, the holy garments",
+   "A purple robe",
+   "Scarlet",
+   "Iron armour"
+  ],
+  "answer": 0,
+  "explanation": "Shall put on the linen clothes, even the holy garments.",
+  "ref": "Leviticus 16:32"
+ },
+ {
+  "id": "leviticus-16-h-13",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Aaron do with his flesh before putting on the holy garments?",
+  "choices": [
+   "Washed it in water",
+   "Anointed it",
+   "Covered it",
+   "Shaved it"
+  ],
+  "answer": 0,
+  "explanation": "Therefore shall he wash his flesh in water, and so put them on.",
+  "ref": "Leviticus 16:4"
+ },
+ {
+  "id": "leviticus-16-h-14",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the final line about Aaron's obedience?",
+  "choices": [
+   "And he did as the LORD commanded Moses",
+   "He fled",
+   "He wept",
+   "He refused"
+  ],
+  "answer": 0,
+  "explanation": "And he did as the LORD commanded Moses.",
+  "ref": "Leviticus 16:34"
+ },
+ {
+  "id": "leviticus-16-h-15",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was made atonement for besides the holy sanctuary and the altar?",
+  "choices": [
+   "The tabernacle, priests and people",
+   "The ark only",
+   "The camp",
+   "The river"
+  ],
+  "answer": 0,
+  "explanation": "He shall make an atonement for the holy sanctuary ... the tabernacle ... the altar ... the priests ... all the people.",
+  "ref": "Leviticus 16:33"
  },
  {
   "id": "old-leviticus-17-1",
