@@ -2240,6 +2240,646 @@
   "ref": "Judges 4:21"
  },
  {
+  "id": "judges-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the captain of Jabin's army?",
+  "choices": [
+   "Barak",
+   "Sisera",
+   "Heber",
+   "Abinoam"
+  ],
+  "answer": 1,
+  "explanation": "Jabin's army had a captain, Sisera, who dwelt in Harosheth of the Gentiles.",
+  "ref": "Judges 4:2"
+ },
+ {
+  "id": "judges-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Toward which mountain did Deborah tell Barak to draw his men?",
+  "choices": [
+   "Mount Ephraim",
+   "Mount Hermon",
+   "Mount Tabor",
+   "Mount Carmel"
+  ],
+  "answer": 2,
+  "explanation": "Deborah said, Go and draw toward mount Tabor, and take with thee ten thousand men.",
+  "ref": "Judges 4:6"
+ },
+ {
+  "id": "judges-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jael give Sisera to drink?",
+  "choices": [
+   "Wine",
+   "Water",
+   "Honey",
+   "Milk"
+  ],
+  "answer": 3,
+  "explanation": "Jael opened a bottle of milk, and gave him drink.",
+  "ref": "Judges 4:19"
+ },
+ {
+  "id": "judges-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jael cover Sisera with?",
+  "choices": [
+   "A mantle",
+   "A tent skin",
+   "A blanket of goat hair",
+   "A cloak of Barak"
+  ],
+  "answer": 0,
+  "explanation": "When he had turned in unto her into the tent, she covered him with a mantle.",
+  "ref": "Judges 4:18"
+ },
+ {
+  "id": "judges-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose wife was Jael?",
+  "choices": [
+   "Barak's",
+   "Heber the Kenite's",
+   "Sisera's",
+   "Lapidoth's"
+  ],
+  "answer": 1,
+  "explanation": "Jael was the wife of Heber the Kenite.",
+  "ref": "Judges 4:17"
+ },
+ {
+  "id": "judges-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Deborah, who judged Israel at that time?",
+  "choices": [
+   "A priestess",
+   "A queen",
+   "A prophetess",
+   "A widow"
+  ],
+  "answer": 2,
+  "explanation": "Deborah, a prophetess, the wife of Lapidoth, judged Israel at that time.",
+  "ref": "Judges 4:4"
+ },
+ {
+  "id": "judges-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Barak say he would need before he would go?",
+  "choices": [
+   "That Israel have more chariots",
+   "That Jael join them",
+   "That Sisera be warned",
+   "That Deborah go with him"
+  ],
+  "answer": 3,
+  "explanation": "Barak said, If thou wilt go with me, then I will go: but if thou wilt not, I will not go.",
+  "ref": "Judges 4:8"
+ },
+ {
+  "id": "judges-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Sisera leave his chariot when the LORD defeated his host?",
+  "choices": [
+   "He fled away on his feet",
+   "He drove away faster",
+   "He hid beneath it",
+   "He surrendered to Barak"
+  ],
+  "answer": 0,
+  "explanation": "Sisera lighted down off his chariot, and fled away on his feet.",
+  "ref": "Judges 4:15"
+ },
+ {
+  "id": "judges-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jael take in her hand, besides a tent nail?",
+  "choices": [
+   "A spear",
+   "A hammer",
+   "A sword",
+   "A staff"
+  ],
+  "answer": 1,
+  "explanation": "Jael took a nail of the tent, and took an hammer in her hand.",
+  "ref": "Judges 4:21"
+ },
+ {
+  "id": "judges-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who subdued Jabin king of Canaan that day?",
+  "choices": [
+   "Barak",
+   "Deborah",
+   "God",
+   "Jael"
+  ],
+  "answer": 2,
+  "explanation": "God subdued on that day Jabin the king of Canaan before the children of Israel.",
+  "ref": "Judges 4:23"
+ },
+ {
+  "id": "judges-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Deborah's husband?",
+  "choices": [
+   "Abinoam",
+   "Heber",
+   "Barak",
+   "Lapidoth"
+  ],
+  "answer": 3,
+  "explanation": "Deborah was a prophetess, the wife of Lapidoth.",
+  "ref": "Judges 4:4"
+ },
+ {
+  "id": "judges-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Barak's father?",
+  "choices": [
+   "Abinoam",
+   "Lapidoth",
+   "Heber",
+   "Hobab"
+  ],
+  "answer": 0,
+  "explanation": "Barak was the son of Abinoam, out of Kedesh-naphtali.",
+  "ref": "Judges 4:6"
+ },
+ {
+  "id": "judges-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two tribes were to supply Barak's ten thousand men?",
+  "choices": [
+   "Judah and Benjamin",
+   "Naphtali and Zebulun",
+   "Ephraim and Manasseh",
+   "Dan and Asher"
+  ],
+  "answer": 1,
+  "explanation": "Deborah told Barak to take men of the children of Naphtali and of the children of Zebulun.",
+  "ref": "Judges 4:6"
+ },
+ {
+  "id": "judges-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Jabin mightily oppress Israel?",
+  "choices": [
+   "Eight years",
+   "Eighteen years",
+   "Twenty years",
+   "Forty years"
+  ],
+  "answer": 2,
+  "explanation": "For twenty years Jabin mightily oppressed the children of Israel.",
+  "ref": "Judges 4:3"
+ },
+ {
+  "id": "judges-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Sisera dwell?",
+  "choices": [
+   "Hazor",
+   "Kedesh",
+   "Zaanaim",
+   "Harosheth of the Gentiles"
+  ],
+  "answer": 3,
+  "explanation": "Sisera dwelt in Harosheth of the Gentiles.",
+  "ref": "Judges 4:2"
+ },
+ {
+  "id": "judges-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "At which river would the LORD draw Sisera to Barak?",
+  "choices": [
+   "The river Kishon",
+   "The river Jordan",
+   "The river Arnon",
+   "The river Jabbok"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, I will draw unto thee to the river Kishon Sisera.",
+  "ref": "Judges 4:7"
+ },
+ {
+  "id": "judges-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Sisera ask Jael for?",
+  "choices": [
+   "Food and shelter for his men",
+   "A little water to drink",
+   "A horse",
+   "A message to Jabin"
+  ],
+  "answer": 1,
+  "explanation": "Sisera said, Give me, I pray thee, a little water to drink; for I am thirsty.",
+  "ref": "Judges 4:19"
+ },
+ {
+  "id": "judges-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Sisera flee to the tent of Jael?",
+  "choices": [
+   "She was his sister",
+   "Her tent was nearest Tabor",
+   "There was peace between Jabin and the house of Heber",
+   "Heber had promised him help"
+  ],
+  "answer": 2,
+  "explanation": "Sisera fled there: for there was peace between Jabin and the house of Heber the Kenite.",
+  "ref": "Judges 4:17"
+ },
+ {
+  "id": "judges-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Israel again do evil in the sight of the LORD?",
+  "choices": [
+   "When Othniel was dead",
+   "When Deborah was born",
+   "When Barak was king",
+   "When Ehud was dead"
+  ],
+  "answer": 3,
+  "explanation": "The children of Israel again did evil in the sight of the LORD, when Ehud was dead.",
+  "ref": "Judges 4:1"
+ },
+ {
+  "id": "judges-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Sisera tell Jael to say if anyone asked if a man was there?",
+  "choices": [
+   "No",
+   "He has gone to Tabor",
+   "He is a Kenite",
+   "I do not know"
+  ],
+  "answer": 0,
+  "explanation": "Sisera said, thou shalt say, No.",
+  "ref": "Judges 4:20"
+ },
+ {
+  "id": "judges-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "In which city did Jabin reign?",
+  "choices": [
+   "Harosheth",
+   "Hazor",
+   "Kedesh",
+   "Bethel"
+  ],
+  "answer": 1,
+  "explanation": "The LORD sold them into the hand of Jabin king of Canaan, that reigned in Hazor.",
+  "ref": "Judges 4:2"
+ },
+ {
+  "id": "judges-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "From which town did Deborah call Barak?",
+  "choices": [
+   "Harosheth",
+   "Ramah",
+   "Kedesh-naphtali",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "She called Barak the son of Abinoam out of Kedesh-naphtali.",
+  "ref": "Judges 4:6"
+ },
+ {
+  "id": "judges-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would do with Sisera?",
+  "choices": [
+   "Strike him with plague",
+   "Send him to Egypt",
+   "Turn him back to Hazor",
+   "Deliver him into Barak's hand"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said, I will deliver him into thine hand.",
+  "ref": "Judges 4:7"
+ },
+ {
+  "id": "judges-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Deborah say about the LORD when she told Barak to go up?",
+  "choices": [
+   "Is not the LORD gone out before thee?",
+   "The LORD is far from thee",
+   "The LORD waits at Tabor",
+   "The LORD has left Hazor"
+  ],
+  "answer": 0,
+  "explanation": "Deborah said, Up; is not the LORD gone out before thee?",
+  "ref": "Judges 4:14"
+ },
+ {
+  "id": "judges-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Deborah dwell?",
+  "choices": [
+   "Under an oak at Shiloh",
+   "Under a palm tree between Ramah and Bethel",
+   "In a tent at Kedesh",
+   "In a house at Hazor"
+  ],
+  "answer": 1,
+  "explanation": "She dwelt under the palm tree of Deborah between Ramah and Bethel in mount Ephraim.",
+  "ref": "Judges 4:5"
+ },
+ {
+  "id": "judges-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "By which plain had Heber pitched his tent?",
+  "choices": [
+   "The plain of Jordan",
+   "The plain of Jezreel",
+   "The plain of Zaanaim",
+   "The plain of Sharon"
+  ],
+  "answer": 2,
+  "explanation": "Heber pitched his tent unto the plain of Zaanaim, which is by Kedesh.",
+  "ref": "Judges 4:11"
+ },
+ {
+  "id": "judges-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "How far did Barak pursue the chariots and host?",
+  "choices": [
+   "Unto Hazor",
+   "Unto Mount Tabor",
+   "Unto the river Jordan",
+   "Unto Harosheth of the Gentiles"
+  ],
+  "answer": 3,
+  "explanation": "Barak pursued after the chariots unto Harosheth of the Gentiles.",
+  "ref": "Judges 4:16"
+ },
+ {
+  "id": "judges-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of Sisera's host were left after the battle?",
+  "choices": [
+   "Not a man",
+   "Ten thousand",
+   "Nine hundred",
+   "A remnant of a few"
+  ],
+  "answer": 0,
+  "explanation": "All the host of Sisera fell upon the edge of the sword; and there was not a man left.",
+  "ref": "Judges 4:16"
+ },
+ {
+  "id": "judges-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "To which town did Barak call Zebulun and Naphtali?",
+  "choices": [
+   "Tabor",
+   "Kedesh",
+   "Hazor",
+   "Ramah"
+  ],
+  "answer": 1,
+  "explanation": "Barak called Zebulun and Naphtali to Kedesh, and went up with ten thousand men.",
+  "ref": "Judges 4:10"
+ },
+ {
+  "id": "judges-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Jael drive the nail?",
+  "choices": [
+   "Into his hand",
+   "Into the tent door",
+   "Into his temples",
+   "Into his chariot"
+  ],
+  "answer": 2,
+  "explanation": "Jael smote the nail into his temples, and fastened it into the ground.",
+  "ref": "Judges 4:21"
+ },
+ {
+  "id": "judges-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Sisera's state when Jael killed him?",
+  "choices": [
+   "Praying",
+   "Wounded and bleeding",
+   "Drinking milk",
+   "Fast asleep and weary"
+  ],
+  "answer": 3,
+  "explanation": "The nail was smitten into his temples: for he was fast asleep and weary. So he died.",
+  "ref": "Judges 4:21"
+ },
+ {
+  "id": "judges-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Sisera tell Jael to stand?",
+  "choices": [
+   "In the door of the tent",
+   "Behind the tent",
+   "On the hill",
+   "By the well"
+  ],
+  "answer": 0,
+  "explanation": "Sisera said, Stand in the door of the tent.",
+  "ref": "Judges 4:20"
+ },
+ {
+  "id": "judges-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jael say to Barak when he came pursuing Sisera?",
+  "choices": [
+   "Sisera has gone to Hazor",
+   "Come, and I will shew thee the man whom thou seekest",
+   "Turn in, my lord",
+   "Fear not, he is gone"
+  ],
+  "answer": 1,
+  "explanation": "Jael said, Come, and I will shew thee the man whom thou seekest.",
+  "ref": "Judges 4:22"
+ },
+ {
+  "id": "judges-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom had Heber the Kenite severed himself from?",
+  "choices": [
+   "The Israelites",
+   "The Canaanites",
+   "The Kenites",
+   "The house of Jabin"
+  ],
+  "answer": 2,
+  "explanation": "Heber the Kenite had severed himself from the Kenites.",
+  "ref": "Judges 4:11"
+ },
+ {
+  "id": "judges-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jael say to Sisera when she met him?",
+  "choices": [
+   "Come, and rest at Kedesh",
+   "Drink and be strong",
+   "Flee to Hazor",
+   "Turn in, my lord; fear not"
+  ],
+  "answer": 3,
+  "explanation": "Jael said, Turn in, my lord, turn in to me; fear not.",
+  "ref": "Judges 4:18"
+ },
+ {
+  "id": "judges-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Heber the Kenite was a descendant of whom?",
+  "choices": [
+   "Hobab, Moses' father in law",
+   "Jethro of Midian",
+   "Kenaz the Kenizzite",
+   "Abinoam"
+  ],
+  "answer": 0,
+  "explanation": "Heber the Kenite was of the children of Hobab the father in law of Moses.",
+  "ref": "Judges 4:11"
+ },
+ {
+  "id": "judges-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What container did Jael open for Sisera's drink?",
+  "choices": [
+   "A skin of wine",
+   "A bottle of milk",
+   "A jar of water",
+   "A cup of honey"
+  ],
+  "answer": 1,
+  "explanation": "She opened a bottle of milk, and gave him drink.",
+  "ref": "Judges 4:19"
+ },
+ {
+  "id": "judges-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel do to Jabin in the end?",
+  "choices": [
+   "Made peace with him",
+   "Paid him tribute",
+   "Destroyed him",
+   "Drove him to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Israel prospered, and prevailed against Jabin until they had destroyed Jabin king of Canaan.",
+  "ref": "Judges 4:24"
+ },
+ {
+  "id": "judges-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Before whom did the LORD discomfit Sisera and all his host?",
+  "choices": [
+   "Barak",
+   "Deborah",
+   "Jael",
+   "Heber"
+  ],
+  "answer": 0,
+  "explanation": "The LORD discomfited Sisera, and all his chariots, and all his host, with the edge of the sword before Barak.",
+  "ref": "Judges 4:15"
+ },
+ {
+  "id": "judges-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the children of Israel come up to Deborah?",
+  "choices": [
+   "To be healed",
+   "For judgment",
+   "To offer sacrifice",
+   "To be counted"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel came up to her for judgment.",
+  "ref": "Judges 4:5"
+ },
+ {
   "id": "old-judges-5-1",
   "chapter": 5,
   "level": "beginner",
