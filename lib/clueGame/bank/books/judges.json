@@ -12320,6 +12320,646 @@
   "ref": "Judges 18:29"
  },
  {
+  "id": "judges-18-e-01",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many Danite men went to spy out the land?",
+  "choices": [
+   "Five",
+   "Three",
+   "Twelve",
+   "Six hundred"
+  ],
+  "answer": 0,
+  "explanation": "The children of Dan sent of their family five men to spy out the land.",
+  "ref": "Judges 18:2"
+ },
+ {
+  "id": "judges-18-e-02",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which two towns did the Danite spies come from?",
+  "choices": [
+   "Shiloh and Bethel",
+   "Zorah and Eshtaol",
+   "Gibeah and Ramah",
+   "Laish and Zidon"
+  ],
+  "answer": 1,
+  "explanation": "They were sent from Zorah, and from Eshtaol.",
+  "ref": "Judges 18:2"
+ },
+ {
+  "id": "judges-18-e-03",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose house did the five spies lodge at?",
+  "choices": [
+   "Jonathan's",
+   "Gershom's",
+   "Micah's",
+   "Manoah's"
+  ],
+  "answer": 2,
+  "explanation": "They came to mount Ephraim, to the house of Micah, and lodged there.",
+  "ref": "Judges 18:2"
+ },
+ {
+  "id": "judges-18-e-04",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the five men recognise by his voice at Micah's house?",
+  "choices": [
+   "Micah",
+   "Micah's mother",
+   "The founder",
+   "The young Levite"
+  ],
+  "answer": 3,
+  "explanation": "They knew the voice of the young man the Levite.",
+  "ref": "Judges 18:3"
+ },
+ {
+  "id": "judges-18-e-05",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many armed Danite men went up against Laish?",
+  "choices": [
+   "Six hundred",
+   "Five hundred",
+   "Three hundred",
+   "Twelve hundred"
+  ],
+  "answer": 0,
+  "explanation": "There went out of Zorah and Eshtaol six hundred men appointed with weapons of war.",
+  "ref": "Judges 18:11"
+ },
+ {
+  "id": "judges-18-e-06",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Danites do to the city of Laish?",
+  "choices": [
+   "Made peace with it",
+   "Burnt it with fire",
+   "Besieged it for years",
+   "Passed it by"
+  ],
+  "answer": 1,
+  "explanation": "They smote them with the edge of the sword, and burnt the city with fire.",
+  "ref": "Judges 18:27"
+ },
+ {
+  "id": "judges-18-e-07",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "After whom did the Danites name the city Dan?",
+  "choices": [
+   "Micah",
+   "Jonathan",
+   "Dan their father",
+   "Gershom"
+  ],
+  "answer": 2,
+  "explanation": "They called the name of the city Dan, after the name of Dan their father.",
+  "ref": "Judges 18:29"
+ },
+ {
+  "id": "judges-18-e-08",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priest say to the five men when they asked for counsel?",
+  "choices": [
+   "Go back home",
+   "Do not go",
+   "Wait a year",
+   "Go in peace"
+  ],
+  "answer": 3,
+  "explanation": "The priest said, Go in peace: before the LORD is your way wherein ye go.",
+  "ref": "Judges 18:6"
+ },
+ {
+  "id": "judges-18-e-09",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who followed the Danites and cried after them from Micah's side?",
+  "choices": [
+   "Men near Micah's house",
+   "The Levite's sons",
+   "The five spies",
+   "The men of Laish"
+  ],
+  "answer": 0,
+  "explanation": "The men in the houses near Micah's house gathered and overtook the Danites.",
+  "ref": "Judges 18:22"
+ },
+ {
+  "id": "judges-18-e-10",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Micah say the Danites had taken from him?",
+  "choices": [
+   "His sons",
+   "His gods and the priest",
+   "His silver",
+   "His cattle"
+  ],
+  "answer": 1,
+  "explanation": "Micah said, Ye have taken away my gods which I made, and the priest.",
+  "ref": "Judges 18:24"
+ },
+ {
+  "id": "judges-18-m-01",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the five spies find about the people of Laish?",
+  "choices": [
+   "They were armed and ready",
+   "They were at war",
+   "They dwelt careless and secure",
+   "They were starving"
+  ],
+  "answer": 2,
+  "explanation": "They saw the people dwelt careless, after the manner of the Zidonians, quiet and secure.",
+  "ref": "Judges 18:7"
+ },
+ {
+  "id": "judges-18-m-02",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the five spies ask the Levite to do for them?",
+  "choices": [
+   "Sacrifice a lamb",
+   "Go with them",
+   "Give them silver",
+   "Ask counsel of God"
+  ],
+  "answer": 3,
+  "explanation": "They said, Ask counsel, we pray thee, of God.",
+  "ref": "Judges 18:5"
+ },
+ {
+  "id": "judges-18-m-03",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Levite tell the spies about his place with Micah?",
+  "choices": [
+   "Micah hired him",
+   "Micah had stolen him",
+   "He was a guest",
+   "He was Micah's brother"
+  ],
+  "answer": 0,
+  "explanation": "He said Micah hath hired me, and I am his priest.",
+  "ref": "Judges 18:4"
+ },
+ {
+  "id": "judges-18-m-04",
+  "chapter": 18,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the Danites pitch their camp near Judah on their way?",
+  "choices": [
+   "Bethlehem",
+   "Kirjath-jearim",
+   "Shiloh",
+   "Hebron"
+  ],
+  "answer": 1,
+  "explanation": "They pitched in Kirjath-jearim, in Judah.",
+  "ref": "Judges 18:12"
+ },
+ {
+  "id": "judges-18-m-05",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the camp place behind Kirjath-jearim called?",
+  "choices": [
+   "Beth-rehob",
+   "Zorah",
+   "Mahaneh-dan",
+   "Dan-jaan"
+  ],
+  "answer": 2,
+  "explanation": "They called that place Mahaneh-dan unto this day.",
+  "ref": "Judges 18:12"
+ },
+ {
+  "id": "judges-18-m-06",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the spies tell their brethren about the land they had seen?",
+  "choices": [
+   "It was barren",
+   "It was full of giants",
+   "It was too strong",
+   "It was very good"
+  ],
+  "answer": 3,
+  "explanation": "They said, we have seen the land, and, behold, it is very good.",
+  "ref": "Judges 18:9"
+ },
+ {
+  "id": "judges-18-m-07",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the spies say God had done about Laish?",
+  "choices": [
+   "Given it into their hands",
+   "Cursed it",
+   "Hidden it",
+   "Promised it to Judah"
+  ],
+  "answer": 0,
+  "explanation": "They said, God hath given it into your hands.",
+  "ref": "Judges 18:10"
+ },
+ {
+  "id": "judges-18-m-08",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "Who stood at the entering of the gate while the spies took the images?",
+  "choices": [
+   "Micah",
+   "The priest with six hundred men",
+   "The five spies",
+   "Dan's elders"
+  ],
+  "answer": 1,
+  "explanation": "The priest stood in the entering of the gate with the six hundred men.",
+  "ref": "Judges 18:17"
+ },
+ {
+  "id": "judges-18-m-09",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Danites say would be better for the priest?",
+  "choices": [
+   "To keep silent and flee",
+   "To rule a city",
+   "To serve a tribe than one man",
+   "To return to Judah"
+  ],
+  "answer": 2,
+  "explanation": "They asked if it was better to be priest to one man or to a tribe and a family in Israel.",
+  "ref": "Judges 18:19"
+ },
+ {
+  "id": "judges-18-m-10",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Danites tell the priest to do with his mouth?",
+  "choices": [
+   "Pray with it",
+   "Close his eyes",
+   "Shout aloud",
+   "Lay his hand upon it"
+  ],
+  "answer": 3,
+  "explanation": "They said, Hold thy peace, lay thine hand upon thy mouth.",
+  "ref": "Judges 18:19"
+ },
+ {
+  "id": "judges-18-m-11",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the priest feel when he went with the Danites?",
+  "choices": [
+   "His heart was glad",
+   "He was afraid",
+   "He was angry",
+   "He wept"
+  ],
+  "answer": 0,
+  "explanation": "The priest's heart was glad, and he took the ephod, and the teraphim, and the graven image.",
+  "ref": "Judges 18:20"
+ },
+ {
+  "id": "judges-18-m-12",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Danites put before them as they left?",
+  "choices": [
+   "The six hundred men",
+   "The little ones and the cattle",
+   "The five spies",
+   "The priest"
+  ],
+  "answer": 1,
+  "explanation": "They put the little ones and the cattle and the carriage before them.",
+  "ref": "Judges 18:21"
+ },
+ {
+  "id": "judges-18-m-13",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Micah turn back after the Danites answered him?",
+  "choices": [
+   "He found his priest",
+   "The Levite refused",
+   "They were too strong for him",
+   "It was night"
+  ],
+  "answer": 2,
+  "explanation": "When Micah saw that they were too strong for him, he went back unto his house.",
+  "ref": "Judges 18:26"
+ },
+ {
+  "id": "judges-18-m-14",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Danites say would happen to Micah's life if he complained?",
+  "choices": [
+   "The LORD would curse him",
+   "He would lose his silver",
+   "He would be exiled",
+   "Angry fellows might kill him"
+  ],
+  "answer": 3,
+  "explanation": "They said, lest angry fellows run upon thee, and thou lose thy life.",
+  "ref": "Judges 18:25"
+ },
+ {
+  "id": "judges-18-m-15",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was there no deliverer for Laish?",
+  "choices": [
+   "It was far from Zidon",
+   "It had no walls",
+   "Its king was dead",
+   "Its men were absent"
+  ],
+  "answer": 0,
+  "explanation": "There was no deliverer, because it was far from Zidon.",
+  "ref": "Judges 18:28"
+ },
+ {
+  "id": "judges-18-h-01",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the son of Gershom who became priest to the tribe of Dan?",
+  "choices": [
+   "Micah",
+   "Jonathan",
+   "Eleazar",
+   "Phinehas"
+  ],
+  "answer": 1,
+  "explanation": "Jonathan, the son of Gershom, the son of Manasseh, he and his sons were priests to the tribe of Dan.",
+  "ref": "Judges 18:30"
+ },
+ {
+  "id": "judges-18-h-02",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son is Gershom said to be, in the Danite priesthood?",
+  "choices": [
+   "Aaron",
+   "Levi",
+   "Manasseh",
+   "Dan"
+  ],
+  "answer": 2,
+  "explanation": "Jonathan, the son of Gershom, the son of Manasseh.",
+  "ref": "Judges 18:30"
+ },
+ {
+  "id": "judges-18-h-03",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how long did Micah's graven image stay set up at Dan?",
+  "choices": [
+   "Until Samuel judged",
+   "Until the king reigned",
+   "Forty years",
+   "All the time the house of God was in Shiloh"
+  ],
+  "answer": 3,
+  "explanation": "They set up Micah's graven image all the time that the house of God was in Shiloh.",
+  "ref": "Judges 18:31"
+ },
+ {
+  "id": "judges-18-h-04",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "In what valley was Laish situated?",
+  "choices": [
+   "By Beth-rehob",
+   "By Hebron",
+   "By Jordan's mouth",
+   "By Mount Tabor"
+  ],
+  "answer": 0,
+  "explanation": "It was in the valley that lieth by Beth-rehob.",
+  "ref": "Judges 18:28"
+ },
+ {
+  "id": "judges-18-h-05",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "What was the name of the city at the first before it was called Dan?",
+  "choices": [
+   "Zorah",
+   "Laish",
+   "Shiloh",
+   "Eshtaol"
+  ],
+  "answer": 1,
+  "explanation": "The name of the city was Laish at the first.",
+  "ref": "Judges 18:29"
+ },
+ {
+  "id": "judges-18-h-06",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the spies say about Laish's land and its lacks?",
+  "choices": [
+   "Plenty of rain only",
+   "It had no water",
+   "No want of anything",
+   "It had no king"
+  ],
+  "answer": 2,
+  "explanation": "They said, a place where there is no want of any thing that is in the earth.",
+  "ref": "Judges 18:10"
+ },
+ {
+  "id": "judges-18-h-07",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Laish lack that might have put the people to shame?",
+  "choices": [
+   "A wall",
+   "A well",
+   "A king's army",
+   "A magistrate"
+  ],
+  "answer": 3,
+  "explanation": "There was no magistrate in the land that might put them to shame in any thing.",
+  "ref": "Judges 18:7"
+ },
+ {
+  "id": "judges-18-h-08",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the Danite priesthood to last until, in the text?",
+  "choices": [
+   "The day of the captivity of the land",
+   "The days of Samuel",
+   "The reign of David",
+   "The coming of the Philistines"
+  ],
+  "answer": 0,
+  "explanation": "They were priests until the day of the captivity of the land.",
+  "ref": "Judges 18:30"
+ },
+ {
+  "id": "judges-18-h-10",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Danites take from Micah's house besides the molten image?",
+  "choices": [
+   "A golden crown",
+   "A silver cup",
+   "A carved image",
+   "His idol-maker"
+  ],
+  "answer": 2,
+  "explanation": "They fetched the carved image, the ephod, the teraphim, and the molten image.",
+  "ref": "Judges 18:18"
+ },
+ {
+  "id": "judges-18-h-11",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who said to Micah, What aileth thee, that thou comest with such a company?",
+  "choices": [
+   "The Danites",
+   "The priest",
+   "Micah's mother",
+   "Men near Micah's house"
+  ],
+  "answer": 3,
+  "explanation": "The men near Micah's house cried unto the children of Dan, and said unto Micah, What aileth thee?",
+  "ref": "Judges 18:23"
+ },
+ {
+  "id": "judges-18-h-12",
+  "chapter": 18,
+  "level": "hard",
+  "category": "person",
+  "question": "With which people did Laish have no dealings because they were far away?",
+  "choices": [
+   "The Zidonians",
+   "The Philistines",
+   "The Moabites",
+   "The Egyptians"
+  ],
+  "answer": 0,
+  "explanation": "Laish was far from the Zidonians, and had no business with any man.",
+  "ref": "Judges 18:7"
+ },
+ {
+  "id": "judges-18-h-13",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the spies say the Danites should not be about going up?",
+  "choices": [
+   "Afraid",
+   "Slothful",
+   "Proud",
+   "Angry"
+  ],
+  "answer": 1,
+  "explanation": "They said, be not slothful to go, and to enter to possess the land.",
+  "ref": "Judges 18:9"
+ },
+ {
+  "id": "judges-18-h-14",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the five men go after they saw Laish?",
+  "choices": [
+   "To Shiloh",
+   "To Micah's house",
+   "Back to Zorah and Eshtaol",
+   "To Bethlehem"
+  ],
+  "answer": 2,
+  "explanation": "They came unto their brethren to Zorah and Eshtaol.",
+  "ref": "Judges 18:8"
+ },
+ {
+  "id": "judges-18-h-16",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Danites tell Micah not to let be heard among them?",
+  "choices": [
+   "His voice",
+   "His prayer",
+   "His gods",
+   "His name"
+  ],
+  "answer": 0,
+  "explanation": "The children of Dan said, Let not thy voice be heard among us.",
+  "ref": "Judges 18:25"
+ },
+ {
+  "id": "judges-18-h-17",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the priest walk when he left with the images?",
+  "choices": [
+   "In the midst of the people",
+   "Behind the cattle",
+   "Ahead of the spies",
+   "Alone"
+  ],
+  "answer": 0,
+  "explanation": "The priest took the ephod, the teraphim, and the graven image, and went in the midst of the people.",
+  "ref": "Judges 18:20"
+ },
+ {
   "id": "old-judges-19-1",
   "chapter": 19,
   "level": "beginner",
