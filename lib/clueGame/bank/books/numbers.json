@@ -24576,6 +24576,646 @@
   "ref": "Numbers 35:31"
  },
  {
+  "id": "numbers-35-e-01",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the LORD speak to Moses in this chapter?",
+  "choices": [
+   "On Mount Sinai",
+   "At Kadesh",
+   "On Mount Nebo",
+   "In the plains of Moab by Jordan near Jericho"
+  ],
+  "answer": 3,
+  "explanation": "The LORD spake unto Moses in the plains of Moab by Jordan near Jericho.",
+  "ref": "Numbers 35:1"
+ },
+ {
+  "id": "numbers-35-e-02",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many cities in all were the Levites to be given?",
+  "choices": [
+   "Forty and eight",
+   "Twelve",
+   "Six",
+   "Seventy"
+  ],
+  "answer": 0,
+  "explanation": "All the cities which ye shall give to the Levites shall be forty and eight cities.",
+  "ref": "Numbers 35:7"
+ },
+ {
+  "id": "numbers-35-e-03",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many cities of refuge were to be on this side Jordan?",
+  "choices": [
+   "Six",
+   "One",
+   "Two",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall give three cities on this side Jordan, and three cities in the land of Canaan.",
+  "ref": "Numbers 35:14"
+ },
+ {
+  "id": "numbers-35-e-04",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was allowed to slay the murderer when he met him?",
+  "choices": [
+   "The high priest",
+   "The revenger of blood",
+   "The elders",
+   "Eleazar"
+  ],
+  "answer": 1,
+  "explanation": "The revenger of blood himself shall slay the murderer: when he meeteth him, he shall slay him.",
+  "ref": "Numbers 35:19"
+ },
+ {
+  "id": "numbers-35-e-05",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Besides Israelites, who else could flee to the cities of refuge?",
+  "choices": [
+   "The stranger and the sojourner",
+   "Only the priests",
+   "Only the Levites",
+   "Only the elders"
+  ],
+  "answer": 0,
+  "explanation": "These six cities shall be a refuge for the children of Israel, and for the stranger, and for the sojourner.",
+  "ref": "Numbers 35:15"
+ },
+ {
+  "id": "numbers-35-e-06",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "The cities of refuge protected the manslayer from whom?",
+  "choices": [
+   "The Levites",
+   "The avenger",
+   "The princes",
+   "The stranger"
+  ],
+  "answer": 1,
+  "explanation": "They shall be cities for refuge from the avenger, that the manslayer die not.",
+  "ref": "Numbers 35:12"
+ },
+ {
+  "id": "numbers-35-e-07",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Until whose death did the slayer have to stay in his city of refuge?",
+  "choices": [
+   "Moses",
+   "The avenger",
+   "The high priest",
+   "The judge"
+  ],
+  "answer": 2,
+  "explanation": "He shall abide in it unto the death of the high priest, which was anointed with the holy oil.",
+  "ref": "Numbers 35:25"
+ },
+ {
+  "id": "numbers-35-e-08",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does shed blood do to the land?",
+  "choices": [
+   "It defiles it",
+   "It blesses it",
+   "It dries it",
+   "It divides it"
+  ],
+  "answer": 0,
+  "explanation": "Blood it defileth the land: and the land cannot be cleansed of the blood that is shed therein.",
+  "ref": "Numbers 35:33"
+ },
+ {
+  "id": "numbers-35-e-09",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does the LORD say dwells among the children of Israel?",
+  "choices": [
+   "Moses",
+   "The high priest",
+   "The congregation",
+   "I the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Defile not the land which ye shall inhabit, wherein I dwell: for I the LORD dwell among the children of Israel.",
+  "ref": "Numbers 35:34"
+ },
+ {
+  "id": "numbers-35-e-10",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who judged between the slayer and the revenger of blood?",
+  "choices": [
+   "The congregation",
+   "The princes",
+   "The Levites",
+   "Joshua"
+  ],
+  "answer": 0,
+  "explanation": "The congregation shall judge between the slayer and the revenger of blood according to these judgments.",
+  "ref": "Numbers 35:24"
+ },
+ {
+  "id": "numbers-35-m-01",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How far did the Levites' suburbs reach outward from the city wall?",
+  "choices": [
+   "A hundred cubits",
+   "A thousand cubits",
+   "Two thousand cubits",
+   "Five hundred cubits"
+  ],
+  "answer": 1,
+  "explanation": "The suburbs shall reach from the wall of the city and outward a thousand cubits round about.",
+  "ref": "Numbers 35:4"
+ },
+ {
+  "id": "numbers-35-m-02",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cubits were measured outside the city on the east side?",
+  "choices": [
+   "One thousand",
+   "Three thousand",
+   "Five hundred",
+   "Two thousand"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall measure from without the city on the east side two thousand cubits.",
+  "ref": "Numbers 35:5"
+ },
+ {
+  "id": "numbers-35-m-03",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From tribes with many cities, how many were they to give the Levites?",
+  "choices": [
+   "Many",
+   "Ten",
+   "An equal number",
+   "Only one"
+  ],
+  "answer": 0,
+  "explanation": "From them that have many ye shall give many; but from them that have few ye shall give few.",
+  "ref": "Numbers 35:8"
+ },
+ {
+  "id": "numbers-35-m-04",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many more cities were added to the six cities of refuge?",
+  "choices": [
+   "Twelve",
+   "Forty and two",
+   "Thirty",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "Among the cities there shall be six for refuge, and to them ye shall add forty and two cities.",
+  "ref": "Numbers 35:6"
+ },
+ {
+  "id": "numbers-35-m-05",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The manslayer was protected from the avenger until he did what?",
+  "choices": [
+   "Paid a ransom",
+   "Reached Canaan",
+   "Stood before the congregation in judgment",
+   "Offered a sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "The manslayer die not, until he stand before the congregation in judgment.",
+  "ref": "Numbers 35:12"
+ },
+ {
+  "id": "numbers-35-m-06",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the suburbs of the Levite cities to be used for?",
+  "choices": [
+   "Their cattle, goods and beasts",
+   "Their tabernacle",
+   "Their gold",
+   "Their prisoners"
+  ],
+  "answer": 0,
+  "explanation": "The suburbs of them shall be for their cattle, and for their goods, and for all their beasts.",
+  "ref": "Numbers 35:3"
+ },
+ {
+  "id": "numbers-35-m-07",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the penalty for a murderer?",
+  "choices": [
+   "He paid a ransom",
+   "He was put to death",
+   "He was banished",
+   "He was scourged"
+  ],
+  "answer": 1,
+  "explanation": "The murderer shall surely be put to death.",
+  "ref": "Numbers 35:16"
+ },
+ {
+  "id": "numbers-35-m-08",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Along with hatred, what else marked a killing as murder?",
+  "choices": [
+   "Laying of wait",
+   "A sudden fall",
+   "Drunkenness",
+   "A stolen goat"
+  ],
+  "answer": 0,
+  "explanation": "If he thrust him of hatred, or hurl at him by laying of wait, that he die, he is a murderer.",
+  "ref": "Numbers 35:20–21"
+ },
+ {
+  "id": "numbers-35-m-09",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If the avenger killed the slayer outside the city's border, what was true of him?",
+  "choices": [
+   "He was exiled",
+   "He was not guilty of blood",
+   "He paid a fine",
+   "He became a Levite"
+  ],
+  "answer": 1,
+  "explanation": "The revenger of blood kill the slayer; he shall not be guilty of blood.",
+  "ref": "Numbers 35:27"
+ },
+ {
+  "id": "numbers-35-m-10",
+  "chapter": 35,
+  "level": "medium",
+  "category": "place",
+  "question": "After the high priest died, where could the slayer return?",
+  "choices": [
+   "To Egypt",
+   "To Canaan only",
+   "Into the land of his possession",
+   "To the wilderness"
+  ],
+  "answer": 2,
+  "explanation": "After the death of the high priest the slayer shall return into the land of his possession.",
+  "ref": "Numbers 35:28"
+ },
+ {
+  "id": "numbers-35-m-11",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the high priest anointed with?",
+  "choices": [
+   "Spikenard",
+   "Holy oil",
+   "Frankincense",
+   "Wine"
+  ],
+  "answer": 1,
+  "explanation": "The high priest was anointed with the holy oil.",
+  "ref": "Numbers 35:25"
+ },
+ {
+  "id": "numbers-35-m-12",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was this statute of judgment to last?",
+  "choices": [
+   "Until Jericho fell",
+   "Forty years",
+   "Throughout your generations",
+   "Until the Jubilee"
+  ],
+  "answer": 2,
+  "explanation": "These things shall be for a statute of judgment unto you throughout your generations.",
+  "ref": "Numbers 35:29"
+ },
+ {
+  "id": "numbers-35-m-13",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was each tribe's number of Levite cities decided?",
+  "choices": [
+   "By lot",
+   "According to its inheritance",
+   "By the priests' choice",
+   "Equally for all"
+  ],
+  "answer": 1,
+  "explanation": "Every one shall give of his cities unto the Levites according to his inheritance which he inheriteth.",
+  "ref": "Numbers 35:8"
+ },
+ {
+  "id": "numbers-35-m-14",
+  "chapter": 35,
+  "level": "medium",
+  "category": "place",
+  "question": "In which land were the other three cities of refuge to be given?",
+  "choices": [
+   "Gilead",
+   "Bashan",
+   "Canaan",
+   "Moab"
+  ],
+  "answer": 2,
+  "explanation": "Three cities shall ye give in the land of Canaan, which shall be cities of refuge.",
+  "ref": "Numbers 35:14"
+ },
+ {
+  "id": "numbers-35-h-01",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What could cleanse the land of blood that was shed in it?",
+  "choices": [
+   "The blood of him that shed it",
+   "A sin offering",
+   "Washing with water",
+   "The ashes of a heifer"
+  ],
+  "answer": 0,
+  "explanation": "The land cannot be cleansed of the blood that is shed therein, but by the blood of him that shed it.",
+  "ref": "Numbers 35:33"
+ },
+ {
+  "id": "numbers-35-h-02",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What could not be taken for a slayer who fled, so he might return before the priest died?",
+  "choices": [
+   "A pledge",
+   "A sacrifice",
+   "Satisfaction",
+   "A witness"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall take no satisfaction for him that is fled to the city of his refuge, until the death of the priest.",
+  "ref": "Numbers 35:32"
+ },
+ {
+  "id": "numbers-35-h-03",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "A killer with a hand weapon of what material was a murderer?",
+  "choices": [
+   "Wood",
+   "Bronze",
+   "Bone",
+   "Rope"
+  ],
+  "answer": 0,
+  "explanation": "If he smite him with an hand weapon of wood, wherewith he may die, he is a murderer.",
+  "ref": "Numbers 35:18"
+ },
+ {
+  "id": "numbers-35-h-04",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The congregation judged the case of one who thrust another how?",
+  "choices": [
+   "In secret",
+   "By night",
+   "Suddenly without enmity",
+   "With an iron tool"
+  ],
+  "answer": 2,
+  "explanation": "If he thrust him suddenly without enmity, the congregation shall judge between the slayer and the revenger.",
+  "ref": "Numbers 35:22–24"
+ },
+ {
+  "id": "numbers-35-h-05",
+  "chapter": 35,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the city placed within the measured suburbs?",
+  "choices": [
+   "At the north edge",
+   "In the midst",
+   "At the east gate",
+   "At the south corner"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall measure two thousand cubits on each side, and the city shall be in the midst.",
+  "ref": "Numbers 35:5"
+ },
+ {
+  "id": "numbers-35-h-06",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In enmity, with what did the killer smite?",
+  "choices": [
+   "A rod",
+   "A stone",
+   "A sword",
+   "His hand"
+  ],
+  "answer": 3,
+  "explanation": "Or in enmity smite him with his hand, that he die: he shall surely be put to death.",
+  "ref": "Numbers 35:21"
+ },
+ {
+  "id": "numbers-35-h-07",
+  "chapter": 35,
+  "level": "hard",
+  "category": "person",
+  "question": "Who restored the slayer to the city of his refuge?",
+  "choices": [
+   "The congregation",
+   "The high priest",
+   "The avenger",
+   "The princes"
+  ],
+  "answer": 0,
+  "explanation": "The congregation shall restore him to the city of his refuge, whither he was fled.",
+  "ref": "Numbers 35:25"
+ },
+ {
+  "id": "numbers-35-h-08",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When were Israel to appoint the cities of refuge?",
+  "choices": [
+   "Before leaving Moab",
+   "When they came over Jordan into Canaan",
+   "After the first harvest",
+   "When the high priest died"
+  ],
+  "answer": 1,
+  "explanation": "When ye be come over Jordan into the land of Canaan, then ye shall appoint cities of refuge.",
+  "ref": "Numbers 35:10–11"
+ },
+ {
+  "id": "numbers-35-h-09",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The cities given to the Levites came from whose possession?",
+  "choices": [
+   "The Levites'",
+   "The stranger's",
+   "The children of Israel",
+   "The priests'"
+  ],
+  "answer": 2,
+  "explanation": "The cities which ye shall give shall be of the possession of the children of Israel.",
+  "ref": "Numbers 35:8"
+ },
+ {
+  "id": "numbers-35-h-10",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what were the thousand cubits of suburb measured?",
+  "choices": [
+   "The altar",
+   "The wall of the city",
+   "The gate",
+   "The well"
+  ],
+  "answer": 1,
+  "explanation": "The suburbs shall reach from the wall of the city and outward a thousand cubits.",
+  "ref": "Numbers 35:4"
+ },
+ {
+  "id": "numbers-35-h-11",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When was the revenger of blood to slay the murderer?",
+  "choices": [
+   "At the feast",
+   "At sunrise",
+   "After the trial",
+   "When he meeteth him"
+  ],
+  "answer": 3,
+  "explanation": "The revenger of blood shall slay the murderer, when he meeteth him.",
+  "ref": "Numbers 35:19"
+ },
+ {
+  "id": "numbers-35-h-12",
+  "chapter": 35,
+  "level": "hard",
+  "category": "person",
+  "question": "A murderer was put to death by the mouth of whom?",
+  "choices": [
+   "Witnesses",
+   "The priest",
+   "The avenger alone",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "The murderer shall be put to death by the mouth of witnesses.",
+  "ref": "Numbers 35:30"
+ },
+ {
+  "id": "numbers-35-h-13",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which places was the statute of judgment to apply throughout your generations?",
+  "choices": [
+   "In all your dwellings",
+   "Only at Shiloh",
+   "Only in cities",
+   "In the camp"
+  ],
+  "answer": 0,
+  "explanation": "These things shall be a statute throughout your generations in all your dwellings.",
+  "ref": "Numbers 35:29"
+ },
+ {
+  "id": "numbers-35-h-14",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On how many sides of the city was the suburb measured outward?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Six"
+  ],
+  "answer": 2,
+  "explanation": "East, south, west and north, two thousand cubits each, with the city in the midst.",
+  "ref": "Numbers 35:5"
+ },
+ {
+  "id": "numbers-35-h-15",
+  "chapter": 35,
+  "level": "hard",
+  "category": "place",
+  "question": "Which side was named first when the city's suburbs were measured?",
+  "choices": [
+   "East",
+   "North",
+   "South",
+   "West"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall measure from without the city on the east side two thousand cubits.",
+  "ref": "Numbers 35:5"
+ },
+ {
+  "id": "numbers-35-m-15",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the manslayer to do to reach a city of refuge?",
+  "choices": [
+   "Hide",
+   "Flee thither",
+   "Pay the Levites",
+   "Wait for the priest"
+  ],
+  "answer": 1,
+  "explanation": "The cities shall be for the slayer that he may flee thither.",
+  "ref": "Numbers 35:11"
+ },
+ {
   "id": "old-numbers-36-1",
   "chapter": 36,
   "level": "beginner",
