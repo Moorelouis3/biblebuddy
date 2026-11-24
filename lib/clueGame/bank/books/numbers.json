@@ -17376,6 +17376,646 @@
   "ref": "Numbers 25:9"
  },
  {
+  "id": "numbers-25-e-01",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Israel abide when the people began to sin?",
+  "choices": [
+   "Pisgah",
+   "Shittim",
+   "Heshbon",
+   "Kadesh"
+  ],
+  "answer": 1,
+  "explanation": "Israel abode in Shittim, and the people began to commit whoredom.",
+  "ref": "Numbers 25:1"
+ },
+ {
+  "id": "numbers-25-e-02",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people do at the sacrifices of the gods of Moab?",
+  "choices": [
+   "Offered the firstborn",
+   "Ate and bowed down to their gods",
+   "Refused to attend",
+   "Wept before the LORD"
+  ],
+  "answer": 1,
+  "explanation": "The people did eat, and bowed down to their gods.",
+  "ref": "Numbers 25:2"
+ },
+ {
+  "id": "numbers-25-e-03",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son was Phinehas?",
+  "choices": [
+   "Moses'",
+   "Eleazar's",
+   "Zimri's",
+   "Salu's"
+  ],
+  "answer": 1,
+  "explanation": "Phinehas, the son of Eleazar, the son of Aaron the priest.",
+  "ref": "Numbers 25:7"
+ },
+ {
+  "id": "numbers-25-e-04",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Phinehas take in his hand?",
+  "choices": [
+   "A sword",
+   "A javelin",
+   "A rod",
+   "A spear of iron"
+  ],
+  "answer": 1,
+  "explanation": "Phinehas took a javelin in his hand.",
+  "ref": "Numbers 25:7"
+ },
+ {
+  "id": "numbers-25-e-05",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Phinehas go after the man of Israel?",
+  "choices": [
+   "Into the tabernacle",
+   "Into the tent",
+   "Out of the camp",
+   "Up the mount"
+  ],
+  "answer": 1,
+  "explanation": "He went after the man of Israel into the tent, and thrust both of them through.",
+  "ref": "Numbers 25:8"
+ },
+ {
+  "id": "numbers-25-e-06",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was stayed from the children of Israel after Phinehas acted?",
+  "choices": [
+   "The famine",
+   "The plague",
+   "The war",
+   "The drought"
+  ],
+  "answer": 1,
+  "explanation": "So the plague was stayed from the children of Israel.",
+  "ref": "Numbers 25:8"
+ },
+ {
+  "id": "numbers-25-e-07",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "What was the name of the Israelite who was slain with the Midianitish woman?",
+  "choices": [
+   "Salu",
+   "Zimri",
+   "Zur",
+   "Eleazar"
+  ],
+  "answer": 1,
+  "explanation": "The name of the Israelite that was slain was Zimri, the son of Salu.",
+  "ref": "Numbers 25:14"
+ },
+ {
+  "id": "numbers-25-e-08",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "What was the name of the Midianitish woman who was slain?",
+  "choices": [
+   "Miriam",
+   "Cozbi",
+   "Rahab",
+   "Zipporah"
+  ],
+  "answer": 1,
+  "explanation": "The name of the Midianitish woman that was slain was Cozbi, the daughter of Zur.",
+  "ref": "Numbers 25:15"
+ },
+ {
+  "id": "numbers-25-e-09",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe did Zimri belong to?",
+  "choices": [
+   "Judah",
+   "Simeon",
+   "Levi",
+   "Reuben"
+  ],
+  "answer": 1,
+  "explanation": "Zimri was a prince of a chief house among the Simeonites.",
+  "ref": "Numbers 25:14"
+ },
+ {
+  "id": "numbers-25-e-10",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to do to the Midianites?",
+  "choices": [
+   "Make peace with them",
+   "Vex them and smite them",
+   "Ignore them",
+   "Trade with them"
+  ],
+  "answer": 1,
+  "explanation": "Vex the Midianites, and smite them.",
+  "ref": "Numbers 25:17"
+ },
+ {
+  "id": "numbers-25-m-01",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Moses tell to slay the men joined to Baal-peor?",
+  "choices": [
+   "The priests",
+   "The elders of Moab",
+   "The princes of Judah",
+   "The judges of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Moses said unto the judges of Israel, Slay ye every one his men that were joined unto Baal-peor.",
+  "ref": "Numbers 25:5"
+ },
+ {
+  "id": "numbers-25-m-02",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to do with the heads of the people?",
+  "choices": [
+   "Number them",
+   "Bring them to Phinehas",
+   "Send them to Moab",
+   "Hang them up"
+  ],
+  "answer": 3,
+  "explanation": "Take all the heads of the people, and hang them up before the LORD.",
+  "ref": "Numbers 25:4"
+ },
+ {
+  "id": "numbers-25-m-03",
+  "chapter": 25,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the congregation weeping when the Israelite brought the woman?",
+  "choices": [
+   "On the plains of Moab",
+   "At the foot of Pisgah",
+   "By the river Arnon",
+   "Before the door of the tabernacle"
+  ],
+  "answer": 3,
+  "explanation": "They were weeping before the door of the tabernacle of the congregation.",
+  "ref": "Numbers 25:6"
+ },
+ {
+  "id": "numbers-25-m-04",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did the Israelite bring the Midianitish woman?",
+  "choices": [
+   "Moses",
+   "The judges",
+   "The princes of Moab",
+   "His brethren"
+  ],
+  "answer": 3,
+  "explanation": "One of the children of Israel came and brought unto his brethren a Midianitish woman.",
+  "ref": "Numbers 25:6"
+ },
+ {
+  "id": "numbers-25-m-05",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "In whose sight did the man bring the woman?",
+  "choices": [
+   "The priests alone",
+   "The judges only",
+   "The Midianites",
+   "Moses and all the congregation"
+  ],
+  "answer": 3,
+  "explanation": "In the sight of Moses, and in the sight of all the congregation of the children of Israel.",
+  "ref": "Numbers 25:6"
+ },
+ {
+  "id": "numbers-25-m-06",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Phinehas do to the man and the woman?",
+  "choices": [
+   "Bound them",
+   "Drove them out",
+   "Brought them to Moses",
+   "Thrust both of them through"
+  ],
+  "answer": 3,
+  "explanation": "He thrust both of them through, the man of Israel, and the woman through her belly.",
+  "ref": "Numbers 25:8"
+ },
+ {
+  "id": "numbers-25-m-07",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD say Phinehas turned his wrath away?",
+  "choices": [
+   "He prayed seven days",
+   "He offered a bullock",
+   "He feared the plague",
+   "He was zealous for the LORD's sake"
+  ],
+  "answer": 3,
+  "explanation": "Phinehas hath turned my wrath away, while he was zealous for my sake among them.",
+  "ref": "Numbers 25:11"
+ },
+ {
+  "id": "numbers-25-m-08",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Who else would share the covenant with Phinehas?",
+  "choices": [
+   "The tribe of Judah",
+   "The elders",
+   "All of Israel",
+   "His seed after him"
+  ],
+  "answer": 3,
+  "explanation": "He shall have it, and his seed after him.",
+  "ref": "Numbers 25:13"
+ },
+ {
+  "id": "numbers-25-m-09",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Phinehas make for the children of Israel?",
+  "choices": [
+   "A treaty",
+   "A vow",
+   "A sacrifice of peace",
+   "An atonement"
+  ],
+  "answer": 3,
+  "explanation": "He was zealous for his God, and made an atonement for the children of Israel.",
+  "ref": "Numbers 25:13"
+ },
+ {
+  "id": "numbers-25-m-10",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Zimri?",
+  "choices": [
+   "Zur's",
+   "Eleazar's",
+   "Beor's",
+   "Salu's"
+  ],
+  "answer": 3,
+  "explanation": "Zimri, the son of Salu, a prince of a chief house among the Simeonites.",
+  "ref": "Numbers 25:14"
+ },
+ {
+  "id": "numbers-25-m-11",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose daughter was Cozbi?",
+  "choices": [
+   "Salu's",
+   "Balak's",
+   "Eleazar's",
+   "Zur's"
+  ],
+  "answer": 3,
+  "explanation": "Cozbi, the daughter of Zur.",
+  "ref": "Numbers 25:15"
+ },
+ {
+  "id": "numbers-25-m-12",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say the Midianites had used to beguile Israel?",
+  "choices": [
+   "Gold",
+   "Armies",
+   "Dreams",
+   "Wiles"
+  ],
+  "answer": 3,
+  "explanation": "They vex you with their wiles, wherewith they have beguiled you.",
+  "ref": "Numbers 25:18"
+ },
+ {
+  "id": "numbers-25-m-13",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what matters did the LORD say the Midianites had beguiled Israel?",
+  "choices": [
+   "Sihon and Og",
+   "Baal and Moloch",
+   "Shittim and Jericho",
+   "Peor and Cozbi"
+  ],
+  "answer": 3,
+  "explanation": "They have beguiled you in the matter of Peor, and in the matter of Cozbi.",
+  "ref": "Numbers 25:18"
+ },
+ {
+  "id": "numbers-25-m-14",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Phinehas receive that was called everlasting?",
+  "choices": [
+   "A kingdom",
+   "An inheritance",
+   "A city",
+   "A priesthood"
+  ],
+  "answer": 3,
+  "explanation": "The covenant of an everlasting priesthood.",
+  "ref": "Numbers 25:13"
+ },
+ {
+  "id": "numbers-25-m-15",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "From which nation was the woman the man brought?",
+  "choices": [
+   "Moab",
+   "Edom",
+   "Egypt",
+   "Midian"
+  ],
+  "answer": 3,
+  "explanation": "He brought a Midianitish woman.",
+  "ref": "Numbers 25:6"
+ },
+ {
+  "id": "numbers-25-h-01",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Against what were the heads of the people to be hanged?",
+  "choices": [
+   "The sun",
+   "The wall",
+   "The gate",
+   "The altar"
+  ],
+  "answer": 0,
+  "explanation": "Hang them up before the LORD against the sun.",
+  "ref": "Numbers 25:4"
+ },
+ {
+  "id": "numbers-25-h-02",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why were the heads to be hanged before the LORD?",
+  "choices": [
+   "So the fierce anger of the LORD would turn from Israel",
+   "To honour the dead",
+   "To warn Moab",
+   "To shame Zimri"
+  ],
+  "answer": 0,
+  "explanation": "That the fierce anger of the LORD may be turned away from Israel.",
+  "ref": "Numbers 25:4"
+ },
+ {
+  "id": "numbers-25-h-03",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the woman struck by Phinehas's javelin?",
+  "choices": [
+   "Through her belly",
+   "Through her heart",
+   "In her side",
+   "In her hand"
+  ],
+  "answer": 0,
+  "explanation": "The woman through her belly.",
+  "ref": "Numbers 25:8"
+ },
+ {
+  "id": "numbers-25-h-04",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Phinehas rise up from?",
+  "choices": [
+   "Among the congregation",
+   "The door of the tent",
+   "The mount",
+   "The judges' seat"
+  ],
+  "answer": 0,
+  "explanation": "He rose up from among the congregation, and took a javelin in his hand.",
+  "ref": "Numbers 25:7"
+ },
+ {
+  "id": "numbers-25-h-05",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Phinehas go after?",
+  "choices": [
+   "The man of Israel",
+   "The judges",
+   "The woman alone",
+   "Moses"
+  ],
+  "answer": 0,
+  "explanation": "He went after the man of Israel into the tent.",
+  "ref": "Numbers 25:8"
+ },
+ {
+  "id": "numbers-25-h-06",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "What was Zimri's rank among the Simeonites?",
+  "choices": [
+   "Prince of a chief house",
+   "Head of a tribe",
+   "A judge",
+   "A priest"
+  ],
+  "answer": 0,
+  "explanation": "Zimri was a prince of a chief house among the Simeonites.",
+  "ref": "Numbers 25:14"
+ },
+ {
+  "id": "numbers-25-h-07",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "What was Zur the head over?",
+  "choices": [
+   "A people",
+   "An army",
+   "A city",
+   "The judges"
+  ],
+  "answer": 0,
+  "explanation": "Zur was head over a people, and of a chief house in Midian.",
+  "ref": "Numbers 25:15"
+ },
+ {
+  "id": "numbers-25-h-08",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "How did the LORD describe Cozbi in relation to the Midianites?",
+  "choices": [
+   "Their sister",
+   "Their queen",
+   "Their prophetess",
+   "Their servant"
+  ],
+  "answer": 0,
+  "explanation": "Cozbi, the daughter of a prince of Midian, their sister.",
+  "ref": "Numbers 25:18"
+ },
+ {
+  "id": "numbers-25-h-09",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When was Cozbi slain, according to the LORD?",
+  "choices": [
+   "In the day of the plague for Peor's sake",
+   "In the day of Aaron's death",
+   "In the first month",
+   "On the plains of Jericho"
+  ],
+  "answer": 0,
+  "explanation": "Which was slain in the day of the plague for Peor's sake.",
+  "ref": "Numbers 25:18"
+ },
+ {
+  "id": "numbers-25-h-10",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was kindled against Israel when they joined Baal-peor?",
+  "choices": [
+   "The anger of the LORD",
+   "The wrath of Moab",
+   "The fire of the altar",
+   "The judges' fury"
+  ],
+  "answer": 0,
+  "explanation": "Israel joined himself unto Baal-peor: and the anger of the LORD was kindled against Israel.",
+  "ref": "Numbers 25:3"
+ },
+ {
+  "id": "numbers-25-h-11",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Phinehas was the son of Eleazar, the son of whom?",
+  "choices": [
+   "Aaron the priest",
+   "Moses",
+   "Levi",
+   "Korah"
+  ],
+  "answer": 0,
+  "explanation": "Phinehas, the son of Eleazar, the son of Aaron the priest.",
+  "ref": "Numbers 25:7"
+ },
+ {
+  "id": "numbers-25-h-12",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Phinehas turned away from Israel?",
+  "choices": [
+   "His wrath",
+   "His plague only",
+   "His judges",
+   "His altars"
+  ],
+  "answer": 0,
+  "explanation": "Phinehas hath turned my wrath away from the children of Israel.",
+  "ref": "Numbers 25:11"
+ },
+ {
+  "id": "numbers-25-h-13",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say he had not done in his jealousy?",
+  "choices": [
+   "Consumed the children of Israel",
+   "Forgiven Israel",
+   "Judged Moab",
+   "Cursed Midian"
+  ],
+  "answer": 0,
+  "explanation": "That I consumed not the children of Israel in my jealousy.",
+  "ref": "Numbers 25:11"
+ },
+ {
+  "id": "numbers-25-h-14",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose men was each judge to slay?",
+  "choices": [
+   "His own men",
+   "The Midianites' men",
+   "Moab's princes",
+   "The heads of Simeon"
+  ],
+  "answer": 0,
+  "explanation": "Slay ye every one his men that were joined unto Baal-peor.",
+  "ref": "Numbers 25:5"
+ },
+ {
+  "id": "numbers-25-h-15",
+  "chapter": 25,
+  "level": "hard",
+  "category": "place",
+  "question": "Where were the heads of the people to be hanged?",
+  "choices": [
+   "Before the LORD",
+   "Before Moses",
+   "Before the judges",
+   "Before Moab"
+  ],
+  "answer": 0,
+  "explanation": "Hang them up before the LORD against the sun.",
+  "ref": "Numbers 25:4"
+ },
+ {
   "id": "old-numbers-26-1",
   "chapter": 26,
   "level": "beginner",
