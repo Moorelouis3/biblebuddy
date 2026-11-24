@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-25-explained",
+    title: "1 Samuel 25 Explained: Nabal's Folly and Abigail's Wisdom",
+    description:
+      "1 Samuel 25 explained verse by verse: Nabal's insult, Abigail's intervention, David's vow of vengeance, and Nabal's sudden death.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-25-explained",
+    publishedAt: "2026-11-24",
+    readTime: "18 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 25 Explained 📖",
+      content:
+        "He swears to wipe out an entire household over a refused gift.\nA woman he has never met rides out to stop him.\n\n📌 David could spare a king hunting him and still almost kill a houseful of strangers over pride.\n\n📖 Nabal insults David and refuses his request.\n📖 David arms four hundred men for revenge.\n📖 Abigail stops him before he reaches the door.\n\nNew article on:\n🟢 why Nabal's insult was worse than it sounds\n🟢 the vow David almost **kept**\n🟢 what really happened to **Nabal**\n\nHave you ever been so insulted you started planning exactly how someone would pay? 🙏",
+    },
+  },
+  {
     slug: "1-samuel-24-explained",
     title: "1 Samuel 24 Explained: David Spares Saul in the Cave at Engedi",
     description:
