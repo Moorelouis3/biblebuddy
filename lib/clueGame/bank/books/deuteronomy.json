@@ -10192,6 +10192,662 @@
   "ref": "Deuteronomy 15:16–17"
  },
  {
+  "id": "deuteronomy-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How often was a release to be made?",
+  "choices": [
+   "At the end of every seven years",
+   "Every year",
+   "Every three years",
+   "Every fifty years"
+  ],
+  "answer": 0,
+  "explanation": "At the end of every seven years thou shalt make a release.",
+  "ref": "Deuteronomy 15:1"
+ },
+ {
+  "id": "deuteronomy-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was released in the seventh year?",
+  "choices": [
+   "The land of the Levites",
+   "The firstling flock",
+   "The tithe of oil",
+   "What a creditor lent to his neighbour"
+  ],
+  "answer": 3,
+  "explanation": "Every creditor that lendeth ought unto his neighbour shall release it.",
+  "ref": "Deuteronomy 15:2"
+ },
+ {
+  "id": "deuteronomy-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the release called?",
+  "choices": [
+   "The king's release",
+   "The priest's release",
+   "The LORD's release",
+   "The Levite's release"
+  ],
+  "answer": 2,
+  "explanation": "Because it is called the LORD'S release.",
+  "ref": "Deuteronomy 15:2"
+ },
+ {
+  "id": "deuteronomy-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "From whom could a debt still be demanded again?",
+  "choices": [
+   "A brother",
+   "A foreigner",
+   "A Levite",
+   "A widow"
+  ],
+  "answer": 1,
+  "explanation": "Of a foreigner thou mayest exact it again.",
+  "ref": "Deuteronomy 15:3"
+ },
+ {
+  "id": "deuteronomy-15-e-05",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must Israel not do toward a poor brother?",
+  "choices": [
+   "Lend him money",
+   "Harden their heart or shut their hand",
+   "Visit his house",
+   "Greet him at the gate"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not harden thine heart, nor shut thine hand from thy poor brother.",
+  "ref": "Deuteronomy 15:7"
+ },
+ {
+  "id": "deuteronomy-15-e-06",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was Israel to open their hand to the poor?",
+  "choices": [
+   "Wide",
+   "Quietly",
+   "Rarely",
+   "Sparingly"
+  ],
+  "answer": 0,
+  "explanation": "But thou shalt open thine hand wide unto him, and shalt surely lend him sufficient for his need.",
+  "ref": "Deuteronomy 15:8"
+ },
+ {
+  "id": "deuteronomy-15-e-07",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After how many years was a Hebrew servant to go free?",
+  "choices": [
+   "Three years",
+   "Ten years",
+   "Fifty years",
+   "Six years of service, free in the seventh"
+  ],
+  "answer": 3,
+  "explanation": "If thy brother, an Hebrew man, or an Hebrew woman, be sold unto thee, and serve thee six years; then in the seventh year thou shalt let him go free.",
+  "ref": "Deuteronomy 15:12"
+ },
+ {
+  "id": "deuteronomy-15-e-08",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "Out of what land had Israel been a bondman?",
+  "choices": [
+   "Moab",
+   "Canaan",
+   "Egypt",
+   "Edom"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt remember that thou wast a bondman in the land of Egypt, and the LORD thy God redeemed thee.",
+  "ref": "Deuteronomy 15:15"
+ },
+ {
+  "id": "deuteronomy-15-e-09",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was used to mark a servant who would not go free?",
+  "choices": [
+   "A seal on the hand",
+   "A mark on the brow",
+   "An aul thrust through his ear",
+   "A cut on the foot"
+  ],
+  "answer": 2,
+  "explanation": "Then thou shalt take an aul, and thrust it through his ear unto the door, and he shall be thy servant for ever.",
+  "ref": "Deuteronomy 15:17"
+ },
+ {
+  "id": "deuteronomy-15-e-10",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall Israel do with the firstling males of the herd and flock?",
+  "choices": [
+   "Sell them",
+   "Sanctify them unto the LORD",
+   "Send them to Egypt",
+   "Eat them in secret"
+  ],
+  "answer": 1,
+  "explanation": "All the firstling males that come of thy herd and of thy flock thou shalt sanctify unto the LORD thy God.",
+  "ref": "Deuteronomy 15:19"
+ },
+ {
+  "id": "deuteronomy-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD promise if there were no poor among Israel?",
+  "choices": [
+   "He would give them a king",
+   "He would greatly bless them in the land",
+   "He would give them gold",
+   "He would send them rain"
+  ],
+  "answer": 1,
+  "explanation": "Save when there shall be no poor among you; for the LORD shall greatly bless thee in the land.",
+  "ref": "Deuteronomy 15:4"
+ },
+ {
+  "id": "deuteronomy-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what condition would the LORD bless Israel greatly?",
+  "choices": [
+   "Carefully hearkening to the LORD's voice",
+   "Offering a thousand bulls",
+   "Building a house for Him",
+   "Conquering all the nations"
+  ],
+  "answer": 0,
+  "explanation": "Only if thou carefully hearken unto the voice of the LORD thy God, to observe to do all these commandments.",
+  "ref": "Deuteronomy 15:5"
+ },
+ {
+  "id": "deuteronomy-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD promise Israel about lending and borrowing?",
+  "choices": [
+   "They would lend to many nations but not borrow",
+   "They would borrow from many nations",
+   "They would lend only to Levites",
+   "They would lend and borrow equally"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt lend unto many nations, but thou shalt not borrow.",
+  "ref": "Deuteronomy 15:6"
+ },
+ {
+  "id": "deuteronomy-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD promise about reigning over nations?",
+  "choices": [
+   "Israel would be ruled by a stranger",
+   "Israel would reign over Egypt",
+   "Israel would have two kings",
+   "Israel would reign over many, but none over them"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt reign over many nations, but they shall not reign over thee.",
+  "ref": "Deuteronomy 15:6"
+ },
+ {
+  "id": "deuteronomy-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much was Israel to lend a poor brother?",
+  "choices": [
+   "Half of his need",
+   "As much as he asked",
+   "Sufficient for his need",
+   "Nothing more than a loaf"
+  ],
+  "answer": 2,
+  "explanation": "Shalt surely lend him sufficient for his need, in that which he wanteth.",
+  "ref": "Deuteronomy 15:8"
+ },
+ {
+  "id": "deuteronomy-15-m-06",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What wicked thought did Moses warn against about the seventh year?",
+  "choices": [
+   "The poor man is not worthy",
+   "The year of release is at hand, so give him nothing",
+   "The loan should be doubled",
+   "The Levite should be paid first"
+  ],
+  "answer": 1,
+  "explanation": "Beware that there be not a thought in thy wicked heart, saying, The seventh year, the year of release, is at hand; and thine eye be evil against thy poor brother.",
+  "ref": "Deuteronomy 15:9"
+ },
+ {
+  "id": "deuteronomy-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens if the poor man cries to the LORD against a stingy lender?",
+  "choices": [
+   "It is rewarded",
+   "It is sin unto him",
+   "It is forgotten",
+   "It is forgiven"
+  ],
+  "answer": 1,
+  "explanation": "And he cry unto the LORD against thee, and it be sin unto thee.",
+  "ref": "Deuteronomy 15:9"
+ },
+ {
+  "id": "deuteronomy-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why shall the giver's heart not be grieved when he gives?",
+  "choices": [
+   "The LORD will bless him in all his works",
+   "The poor will repay him",
+   "The king will honor him",
+   "The Levite will pray"
+  ],
+  "answer": 0,
+  "explanation": "Because that for this thing the LORD thy God shall bless thee in all thy works.",
+  "ref": "Deuteronomy 15:10"
+ },
+ {
+  "id": "deuteronomy-15-m-09",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Moses say will never cease out of the land?",
+  "choices": [
+   "The famine",
+   "The enemies",
+   "The rains",
+   "The poor"
+  ],
+  "answer": 3,
+  "explanation": "For the poor shall never cease out of the land.",
+  "ref": "Deuteronomy 15:11"
+ },
+ {
+  "id": "deuteronomy-15-m-10",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How must a released servant not be sent away?",
+  "choices": [
+   "At night",
+   "In secret",
+   "Empty",
+   "Alone"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt not let him go away empty.",
+  "ref": "Deuteronomy 15:13"
+ },
+ {
+  "id": "deuteronomy-15-m-11",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From where was the freed servant to be liberally furnished?",
+  "choices": [
+   "The king's treasury",
+   "The tithe of the Levites",
+   "His master's flock, floor and winepress",
+   "The chosen place"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt furnish him liberally out of thy flock, and out of thy floor, and out of thy winepress.",
+  "ref": "Deuteronomy 15:14"
+ },
+ {
+  "id": "deuteronomy-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why might a servant choose not to go free?",
+  "choices": [
+   "He is afraid of Egypt",
+   "He loves his master and house and is well with him",
+   "He owes a debt",
+   "He has no tribe"
+  ],
+  "answer": 1,
+  "explanation": "I will not go away from thee; because he loveth thee and thine house, because he is well with thee.",
+  "ref": "Deuteronomy 15:16"
+ },
+ {
+  "id": "deuteronomy-15-m-13",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much was a servant worth for six years, according to Moses?",
+  "choices": [
+   "A double hired servant",
+   "Half a hired servant",
+   "Three hired servants",
+   "A shekel of silver"
+  ],
+  "answer": 0,
+  "explanation": "For he hath been worth a double hired servant to thee, in serving thee six years.",
+  "ref": "Deuteronomy 15:18"
+ },
+ {
+  "id": "deuteronomy-15-m-14",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel not to do with the firstling of the bullock?",
+  "choices": [
+   "Offer it",
+   "Eat it",
+   "Count it",
+   "Do any work with it"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt do no work with the firstling of thy bullock, nor shear the firstling of thy sheep.",
+  "ref": "Deuteronomy 15:19"
+ },
+ {
+  "id": "deuteronomy-15-m-15",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What blemishes meant a firstling could not be sacrificed?",
+  "choices": [
+   "Too young, too old",
+   "Wild or tame",
+   "Black or red",
+   "Lame, blind or any ill blemish"
+  ],
+  "answer": 3,
+  "explanation": "If there be any blemish therein, as if it be lame, or blind, or have any ill blemish, thou shalt not sacrifice it unto the LORD.",
+  "ref": "Deuteronomy 15:21"
+ },
+ {
+  "id": "deuteronomy-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say a creditor shall not do to his brother?",
+  "choices": [
+   "Count his sheep",
+   "Visit his house",
+   "Sell his land",
+   "Exact the loan of him"
+  ],
+  "answer": 3,
+  "explanation": "He shall not exact it of his neighbour, or of his brother.",
+  "ref": "Deuteronomy 15:2"
+ },
+ {
+  "id": "deuteronomy-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What blessing did Moses link to remembering the poor in the land the LORD gave?",
+  "choices": [
+   "Peace in the gates",
+   "Wells of water",
+   "Inheritance to possess",
+   "Gold from the nations"
+  ],
+  "answer": 2,
+  "explanation": "In the land which the LORD thy God giveth thee for an inheritance to possess it.",
+  "ref": "Deuteronomy 15:4"
+ },
+ {
+  "id": "deuteronomy-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where might the poor brother be found?",
+  "choices": [
+   "At the tabernacle",
+   "Within any of thy gates",
+   "In the wilderness",
+   "Among the Levites"
+  ],
+  "answer": 1,
+  "explanation": "If there be among you a poor man of one of thy brethren within any of thy gates.",
+  "ref": "Deuteronomy 15:7"
+ },
+ {
+  "id": "deuteronomy-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which year is called the year of release?",
+  "choices": [
+   "The third",
+   "The seventh",
+   "The tenth",
+   "The fiftieth"
+  ],
+  "answer": 1,
+  "explanation": "The seventh year, the year of release, is at hand.",
+  "ref": "Deuteronomy 15:9"
+ },
+ {
+  "id": "deuteronomy-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does Moses say is also set free after six years besides a Hebrew man?",
+  "choices": [
+   "An Hebrew woman",
+   "A stranger",
+   "A foreigner",
+   "A Levite"
+  ],
+  "answer": 0,
+  "explanation": "If thy brother, an Hebrew man, or an Hebrew woman, be sold unto thee, and serve thee six years.",
+  "ref": "Deuteronomy 15:12"
+ },
+ {
+  "id": "deuteronomy-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What three things was the freed servant given from?",
+  "choices": [
+   "Herd, house and field",
+   "Tent, sword and shield",
+   "Oil, honey and wool",
+   "Flock, floor and winepress"
+  ],
+  "answer": 3,
+  "explanation": "Out of thy flock, and out of thy floor, and out of thy winepress.",
+  "ref": "Deuteronomy 15:14"
+ },
+ {
+  "id": "deuteronomy-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the servant who stays do besides being a servant for ever?",
+  "choices": [
+   "He is sent to the Levites",
+   "He is made a priest",
+   "His ear is pierced to the door",
+   "He is given a field"
+  ],
+  "answer": 2,
+  "explanation": "Thrust it through his ear unto the door, and he shall be thy servant for ever.",
+  "ref": "Deuteronomy 15:17"
+ },
+ {
+  "id": "deuteronomy-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom else shall the same be done as the male servant?",
+  "choices": [
+   "Unto his son",
+   "Unto the stranger",
+   "Unto the maidservant",
+   "Unto the Levite"
+  ],
+  "answer": 2,
+  "explanation": "And also unto thy maidservant thou shalt do likewise.",
+  "ref": "Deuteronomy 15:17"
+ },
+ {
+  "id": "deuteronomy-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do when the master sends a servant free?",
+  "choices": [
+   "Send him a prophet",
+   "Bless him in all that he doeth",
+   "Give him a king",
+   "Open the heavens"
+  ],
+  "answer": 1,
+  "explanation": "The LORD thy God shall bless thee in all that thou doest.",
+  "ref": "Deuteronomy 15:18"
+ },
+ {
+  "id": "deuteronomy-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was not to be done to the firstling of the sheep?",
+  "choices": [
+   "Shear it",
+   "Sell it",
+   "Carry it",
+   "Count it"
+  ],
+  "answer": 0,
+  "explanation": "Nor shear the firstling of thy sheep.",
+  "ref": "Deuteronomy 15:19"
+ },
+ {
+  "id": "deuteronomy-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How often was the firstling eaten before the LORD?",
+  "choices": [
+   "Every month",
+   "Every seven years",
+   "Every three years",
+   "Year by year"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt eat it before the LORD thy God year by year in the place which the LORD shall choose.",
+  "ref": "Deuteronomy 15:20"
+ },
+ {
+  "id": "deuteronomy-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who ate the firstling with the household?",
+  "choices": [
+   "Only the priests",
+   "Only the Levites",
+   "Only the poor",
+   "Thou and thy household"
+  ],
+  "answer": 3,
+  "explanation": "Thou and thy household.",
+  "ref": "Deuteronomy 15:20"
+ },
+ {
+  "id": "deuteronomy-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where may the blemished firstling be eaten?",
+  "choices": [
+   "At the altar",
+   "In the wilderness",
+   "Within thy gates",
+   "At the tabernacle"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt eat it within thy gates: the unclean and the clean person shall eat it alike.",
+  "ref": "Deuteronomy 15:22"
+ },
+ {
+  "id": "deuteronomy-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the blood to be poured out?",
+  "choices": [
+   "Upon the altar",
+   "As water upon the ground",
+   "Over the doorposts",
+   "Into a vessel"
+  ],
+  "answer": 1,
+  "explanation": "Only thou shalt not eat the blood thereof; thou shalt pour it upon the ground as water.",
+  "ref": "Deuteronomy 15:23"
+ },
+ {
+  "id": "deuteronomy-15-h-15",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two animals are used to say the clean and unclean may eat alike?",
+  "choices": [
+   "The roebuck and the hart",
+   "The ox and the sheep",
+   "The goat and the lamb",
+   "The camel and the hare"
+  ],
+  "answer": 0,
+  "explanation": "The unclean and the clean person shall eat it alike, as the roebuck, and as the hart.",
+  "ref": "Deuteronomy 15:22"
+ },
+ {
+  "id": "deuteronomy-15-h-16",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Moses tell Israel to remember about themselves?",
+  "choices": [
+   "Bondmen in Egypt, redeemed by the LORD",
+   "Kings in Canaan",
+   "Shepherds of Midian",
+   "Priests of Levi"
+  ],
+  "answer": 0,
+  "explanation": "And thou shalt remember that thou wast a bondman in the land of Egypt, and the LORD thy God redeemed thee.",
+  "ref": "Deuteronomy 15:15"
+ },
+ {
   "id": "old-deuteronomy-16-1",
   "chapter": 16,
   "level": "beginner",
