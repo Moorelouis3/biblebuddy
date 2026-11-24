@@ -8720,6 +8720,646 @@
   "ref": "Deuteronomy 13:5"
  },
  {
+  "id": "deuteronomy-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does the chapter say may arise among Israel and give a sign or a wonder?",
+  "choices": [
+   "A prophet or a dreamer of dreams",
+   "A priest or a judge",
+   "A king or a captain",
+   "An elder or a Levite"
+  ],
+  "answer": 0,
+  "explanation": "If there arise among you a prophet, or a dreamer of dreams, and giveth thee a sign or a wonder.",
+  "ref": "Deuteronomy 13:1"
+ },
+ {
+  "id": "deuteronomy-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the false prophet urge Israel to do?",
+  "choices": [
+   "Return to Egypt",
+   "Make a king",
+   "Cross the Jordan early",
+   "Go after other gods and serve them"
+  ],
+  "answer": 3,
+  "explanation": "Saying, Let us go after other gods, which thou hast not known, and let us serve them.",
+  "ref": "Deuteronomy 13:2"
+ },
+ {
+  "id": "deuteronomy-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was to happen to the prophet who tried to turn Israel from the LORD?",
+  "choices": [
+   "He was to be exiled",
+   "He was to be fined",
+   "He was to be put to death",
+   "He was to be silenced"
+  ],
+  "answer": 2,
+  "explanation": "That prophet, or that dreamer of dreams, shall be put to death.",
+  "ref": "Deuteronomy 13:5"
+ },
+ {
+  "id": "deuteronomy-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses say Israel must do toward the LORD their God?",
+  "choices": [
+   "Fight for Him",
+   "Walk after Him, fear Him and cleave unto Him",
+   "Travel to Him",
+   "Hide from Him"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall walk after the LORD your God, and fear him, and keep his commandments, and obey his voice, and ye shall serve him, and cleave unto him.",
+  "ref": "Deuteronomy 13:4"
+ },
+ {
+  "id": "deuteronomy-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these might secretly entice someone to serve other gods?",
+  "choices": [
+   "A stranger",
+   "The wife of thy bosom",
+   "A priest",
+   "A king"
+  ],
+  "answer": 1,
+  "explanation": "If thy brother... or thy son, or thy daughter, or the wife of thy bosom, or thy friend... entice thee secretly.",
+  "ref": "Deuteronomy 13:6"
+ },
+ {
+  "id": "deuteronomy-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was the one who enticed a person to other gods to be put to death?",
+  "choices": [
+   "Stoned with stones",
+   "Burned with fire",
+   "Struck with the sword",
+   "Hanged on a tree"
+  ],
+  "answer": 0,
+  "explanation": "And thou shalt stone him with stones, that he die.",
+  "ref": "Deuteronomy 13:10"
+ },
+ {
+  "id": "deuteronomy-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what land had the LORD brought Israel out?",
+  "choices": [
+   "Moab",
+   "Edom",
+   "Midian",
+   "Egypt"
+  ],
+  "answer": 3,
+  "explanation": "Which brought thee out of the land of Egypt, from the house of bondage.",
+  "ref": "Deuteronomy 13:10"
+ },
+ {
+  "id": "deuteronomy-13-e-08",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "What are the men who lead a city to serve other gods called?",
+  "choices": [
+   "Sons of Anak",
+   "Sons of Levi",
+   "Children of Belial",
+   "Children of Ammon"
+  ],
+  "answer": 2,
+  "explanation": "Certain men, the children of Belial, are gone out from among you, and have withdrawn the inhabitants of their city.",
+  "ref": "Deuteronomy 13:13"
+ },
+ {
+  "id": "deuteronomy-13-e-09",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must Israel do before destroying a city said to serve other gods?",
+  "choices": [
+   "Send for the king",
+   "Wait a year",
+   "Enquire, search and ask diligently",
+   "Cast lots"
+  ],
+  "answer": 2,
+  "explanation": "Then shalt thou enquire, and make search, and ask diligently; and, behold, if it be truth.",
+  "ref": "Deuteronomy 13:14"
+ },
+ {
+  "id": "deuteronomy-13-e-10",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall the city that served other gods become?",
+  "choices": [
+   "A city of refuge",
+   "An heap for ever",
+   "A Levite's city",
+   "A garden"
+  ],
+  "answer": 1,
+  "explanation": "It shall be an heap for ever; it shall not be built again.",
+  "ref": "Deuteronomy 13:16"
+ },
+ {
+  "id": "deuteronomy-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the LORD allow a prophet's sign to come to pass?",
+  "choices": [
+   "He wants to teach them signs",
+   "He proves Israel to know if they love Him",
+   "He wants to honor the prophet",
+   "He wants to test the elders"
+  ],
+  "answer": 1,
+  "explanation": "The LORD your God proveth you, to know whether ye love the LORD your God with all your heart and with all your soul.",
+  "ref": "Deuteronomy 13:3"
+ },
+ {
+  "id": "deuteronomy-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With how much of themselves are Israel to love the LORD?",
+  "choices": [
+   "All their heart and all their soul",
+   "All their strength and mind",
+   "Their tithes and offerings",
+   "Their houses and fields"
+  ],
+  "answer": 0,
+  "explanation": "To know whether ye love the LORD your God with all your heart and with all your soul.",
+  "ref": "Deuteronomy 13:3"
+ },
+ {
+  "id": "deuteronomy-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the false prophet's words try to thrust Israel out of?",
+  "choices": [
+   "The way the LORD commanded them to walk",
+   "The land of Canaan",
+   "The tents of the camp",
+   "The city of refuge"
+  ],
+  "answer": 0,
+  "explanation": "To thrust thee out of the way which the LORD thy God commanded thee to walk in.",
+  "ref": "Deuteronomy 13:5"
+ },
+ {
+  "id": "deuteronomy-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How near or far might the gods of the people be that someone urged Israel to serve?",
+  "choices": [
+   "Only in Egypt",
+   "Only across the Jordan",
+   "Only in the hills",
+   "Round about or far off, to the ends of the earth"
+  ],
+  "answer": 3,
+  "explanation": "Of the gods of the people which are round about you, nigh unto thee, or far off from thee, from the one end of the earth even unto the other end of the earth.",
+  "ref": "Deuteronomy 13:7"
+ },
+ {
+  "id": "deuteronomy-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was Israel to treat someone who secretly enticed them to other gods?",
+  "choices": [
+   "Warn him twice",
+   "Send him away",
+   "Not consent, not pity, and not conceal him",
+   "Hide him from the elders"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt not consent unto him... neither shall thine eye pity him, neither shalt thou spare, neither shalt thou conceal him.",
+  "ref": "Deuteronomy 13:8"
+ },
+ {
+  "id": "deuteronomy-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose hand was to be first upon the one who enticed Israel?",
+  "choices": [
+   "The hand of the priest",
+   "The hand of the one he enticed",
+   "The hand of the elders",
+   "The hand of Moses"
+  ],
+  "answer": 1,
+  "explanation": "Thine hand shall be first upon him to put him to death, and afterwards the hand of all the people.",
+  "ref": "Deuteronomy 13:9"
+ },
+ {
+  "id": "deuteronomy-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the enticer to be stoned?",
+  "choices": [
+   "He had stolen a vow",
+   "He sought to thrust them away from the LORD",
+   "He had broken the sabbath",
+   "He had slain a man"
+  ],
+  "answer": 1,
+  "explanation": "Because he hath sought to thrust thee away from the LORD thy God, which brought thee out of the land of Egypt.",
+  "ref": "Deuteronomy 13:10"
+ },
+ {
+  "id": "deuteronomy-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would all Israel do when they heard of this punishment?",
+  "choices": [
+   "Hear, fear and do no more such wickedness",
+   "Rejoice and sing",
+   "Send gifts",
+   "Offer burnt offerings"
+  ],
+  "answer": 0,
+  "explanation": "And all Israel shall hear, and fear, and shall do no more any such wickedness as this is among you.",
+  "ref": "Deuteronomy 13:11"
+ },
+ {
+  "id": "deuteronomy-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where might Israel hear that men had led a city to serve other gods?",
+  "choices": [
+   "In the wilderness",
+   "In Egypt",
+   "In the camp of Levi",
+   "In one of their cities the LORD gave them"
+  ],
+  "answer": 3,
+  "explanation": "If thou shalt hear say in one of thy cities, which the LORD thy God hath given thee to dwell there.",
+  "ref": "Deuteronomy 13:12"
+ },
+ {
+  "id": "deuteronomy-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done to the cattle of the guilty city?",
+  "choices": [
+   "Led to the chosen place",
+   "Given to the Levites",
+   "Destroyed with the edge of the sword",
+   "Set free"
+  ],
+  "answer": 2,
+  "explanation": "Smite the inhabitants of that city with the edge of the sword, destroying it utterly, and all that is therein, and the cattle thereof.",
+  "ref": "Deuteronomy 13:15"
+ },
+ {
+  "id": "deuteronomy-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the spoil of the guilty city to be gathered?",
+  "choices": [
+   "Before the priests",
+   "Into the tabernacle",
+   "Into the midst of the street",
+   "Outside the gate"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt gather all the spoil of it into the midst of the street thereof, and shalt burn with fire the city.",
+  "ref": "Deuteronomy 13:16"
+ },
+ {
+  "id": "deuteronomy-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not to cleave to Israel's hand after the city was burned?",
+  "choices": [
+   "The ashes",
+   "The cursed thing",
+   "The blood",
+   "The sword"
+  ],
+  "answer": 1,
+  "explanation": "There shall cleave nought of the cursed thing to thine hand.",
+  "ref": "Deuteronomy 13:17"
+ },
+ {
+  "id": "deuteronomy-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was nothing of the cursed thing to cleave to their hand?",
+  "choices": [
+   "So the LORD may turn from the fierceness of His anger",
+   "So the city can be rebuilt",
+   "So the priests have a portion",
+   "So the spoil may be sold"
+  ],
+  "answer": 0,
+  "explanation": "That the LORD may turn from the fierceness of his anger, and shew thee mercy, and have compassion upon thee, and multiply thee.",
+  "ref": "Deuteronomy 13:17"
+ },
+ {
+  "id": "deuteronomy-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom had the LORD sworn that He would multiply Israel?",
+  "choices": [
+   "Unto Moses alone",
+   "Unto the Levites",
+   "Unto the elders",
+   "Unto their fathers"
+  ],
+  "answer": 3,
+  "explanation": "And multiply thee, as he hath sworn unto thy fathers.",
+  "ref": "Deuteronomy 13:17"
+ },
+ {
+  "id": "deuteronomy-13-m-15",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say is right in the eyes of the LORD their God?",
+  "choices": [
+   "To build a great temple",
+   "To offer a thousand bulls",
+   "To number the people",
+   "To hearken to His voice and keep all His commandments"
+  ],
+  "answer": 3,
+  "explanation": "When thou shalt hearken to the voice of the LORD thy God, to keep all his commandments... to do that which is right in the eyes of the LORD thy God.",
+  "ref": "Deuteronomy 13:18"
+ },
+ {
+  "id": "deuteronomy-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two kinds of signs does the prophet give?",
+  "choices": [
+   "A cloud or a fire",
+   "A dream or a trumpet",
+   "A star or a flood",
+   "A sign or a wonder"
+  ],
+  "answer": 3,
+  "explanation": "And giveth thee a sign or a wonder... and the sign or the wonder come to pass.",
+  "ref": "Deuteronomy 13:1–2"
+ },
+ {
+  "id": "deuteronomy-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is the friend who might entice Israel described?",
+  "choices": [
+   "As thy strength",
+   "As thy shadow",
+   "As thine own soul",
+   "As thy shield"
+  ],
+  "answer": 2,
+  "explanation": "Or thy friend, which is as thine own soul, entice thee secretly.",
+  "ref": "Deuteronomy 13:6"
+ },
+ {
+  "id": "deuteronomy-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is the secret enticer's relative first described?",
+  "choices": [
+   "Thy father's brother",
+   "Thy brother, the son of thy mother",
+   "Thy neighbor's son",
+   "Thy cousin of Levi"
+  ],
+  "answer": 1,
+  "explanation": "If thy brother, the son of thy mother, or thy son, or thy daughter.",
+  "ref": "Deuteronomy 13:6"
+ },
+ {
+  "id": "deuteronomy-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does the secret enticer say have not known these other gods?",
+  "choices": [
+   "Thou and the Levites",
+   "Thou, nor thy fathers",
+   "Thou and the elders",
+   "Thou and the strangers"
+  ],
+  "answer": 1,
+  "explanation": "Let us go and serve other gods, which thou hast not known, thou, nor thy fathers.",
+  "ref": "Deuteronomy 13:6"
+ },
+ {
+  "id": "deuteronomy-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Moses say Israel's eye shall not do toward the enticer?",
+  "choices": [
+   "Pity him",
+   "Look on him",
+   "Weep for him",
+   "Follow him"
+  ],
+  "answer": 0,
+  "explanation": "Neither shall thine eye pity him, neither shalt thou spare, neither shalt thou conceal him.",
+  "ref": "Deuteronomy 13:8"
+ },
+ {
+  "id": "deuteronomy-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do for Israel from the house of bondage, according to the chapter?",
+  "choices": [
+   "Hid them",
+   "Fed them first",
+   "Rested them",
+   "Redeemed them"
+  ],
+  "answer": 3,
+  "explanation": "Which brought you out of the land of Egypt, and redeemed you out of the house of bondage.",
+  "ref": "Deuteronomy 13:5"
+ },
+ {
+  "id": "deuteronomy-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Moses tell Israel is the effect of putting the false prophet to death?",
+  "choices": [
+   "The people are made rich",
+   "The enemy flees",
+   "The evil is put away from the midst of them",
+   "The rains return"
+  ],
+  "answer": 2,
+  "explanation": "So shalt thou put the evil away from the midst of thee.",
+  "ref": "Deuteronomy 13:5"
+ },
+ {
+  "id": "deuteronomy-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where is the report of the men of Belial heard?",
+  "choices": [
+   "In the wilderness",
+   "At the chosen place",
+   "In one of thy cities",
+   "In the camp of Levi"
+  ],
+  "answer": 2,
+  "explanation": "If thou shalt hear say in one of thy cities.",
+  "ref": "Deuteronomy 13:12"
+ },
+ {
+  "id": "deuteronomy-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the men of Belial done to the inhabitants of their city?",
+  "choices": [
+   "Taken them captive",
+   "Withdrawn them",
+   "Numbered them",
+   "Scattered them"
+  ],
+  "answer": 1,
+  "explanation": "Certain men, the children of Belial, are gone out from among you, and have withdrawn the inhabitants of their city.",
+  "ref": "Deuteronomy 13:13"
+ },
+ {
+  "id": "deuteronomy-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must be found true and certain before the city is destroyed?",
+  "choices": [
+   "That such abomination is wrought among them",
+   "That the city was rich",
+   "That the elders agreed",
+   "That the priest consented"
+  ],
+  "answer": 0,
+  "explanation": "If it be truth, and the thing certain, that such abomination is wrought among you.",
+  "ref": "Deuteronomy 13:14"
+ },
+ {
+  "id": "deuteronomy-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the inhabitants, what else was smitten with the sword in the guilty city?",
+  "choices": [
+   "The gates",
+   "The vineyards",
+   "The fields",
+   "The cattle"
+  ],
+  "answer": 3,
+  "explanation": "Destroying it utterly, and all that is therein, and the cattle thereof, with the edge of the sword.",
+  "ref": "Deuteronomy 13:15"
+ },
+ {
+  "id": "deuteronomy-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whom was the city and its spoil burned with fire?",
+  "choices": [
+   "For the priests",
+   "For the king",
+   "For the Levites",
+   "For the LORD thy God"
+  ],
+  "answer": 3,
+  "explanation": "Shalt burn with fire the city, and all the spoil thereof every whit, for the LORD thy God.",
+  "ref": "Deuteronomy 13:16"
+ },
+ {
+  "id": "deuteronomy-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say the LORD would do for Israel after turning from His anger?",
+  "choices": [
+   "Give them a king",
+   "Give them rest",
+   "Shew mercy, have compassion and multiply them",
+   "Give them gold"
+  ],
+  "answer": 2,
+  "explanation": "That the LORD may turn from the fierceness of his anger, and shew thee mercy, and have compassion upon thee, and multiply thee.",
+  "ref": "Deuteronomy 13:17"
+ },
+ {
+  "id": "deuteronomy-13-h-14",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When does Moses say he commands these commandments?",
+  "choices": [
+   "At Horeb",
+   "This day",
+   "Each sabbath",
+   "Every year"
+  ],
+  "answer": 1,
+  "explanation": "To keep all his commandments which I command thee this day.",
+  "ref": "Deuteronomy 13:18"
+ },
+ {
+  "id": "deuteronomy-13-h-15",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "May the burned city be built again?",
+  "choices": [
+   "No, it shall not be built again",
+   "Yes, after seven years",
+   "Yes, by the Levites",
+   "Yes, if the king agrees"
+  ],
+  "answer": 0,
+  "explanation": "It shall be an heap for ever; it shall not be built again.",
+  "ref": "Deuteronomy 13:16"
+ },
+ {
   "id": "old-deuteronomy-14-1",
   "chapter": 14,
   "level": "beginner",
