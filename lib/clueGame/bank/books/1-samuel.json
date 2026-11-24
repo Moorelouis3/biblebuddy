@@ -11556,7 +11556,7 @@
   "chapter": 17,
   "level": "beginner",
   "category": "keyword",
-  "question": "What reward did Saul promise the man who killed Goliath?",
+  "question": "What reward did the men of Israel say awaited the man who killed Goliath?",
   "choices": [
    "Great riches, the king's daughter, and freedom in his father's house",
    "Only silver",
@@ -11564,7 +11564,7 @@
    "The priesthood"
   ],
   "answer": 0,
-  "explanation": "Saul promised wealth, marriage into the royal family, and exemption for his family.",
+  "explanation": "The king will enrich him with great riches, give him his daughter, and make his father's house free in Israel.",
   "ref": "1 Samuel 17:25"
  },
  {
@@ -11614,6 +11614,646 @@
   "answer": 0,
   "explanation": "David felled Goliath with a stone and then cut off his head with Goliath's sword.",
   "ref": "1 Samuel 17:49–51"
+ },
+ {
+  "id": "1-samuel-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which Philistine city was Goliath from?",
+  "choices": [
+   "Ekron",
+   "Gath",
+   "Ashdod",
+   "Gaza"
+  ],
+  "answer": 1,
+  "explanation": "There went out a champion out of the camp of the Philistines, named Goliath, of Gath.",
+  "ref": "1 Samuel 17:4"
+ },
+ {
+  "id": "1-samuel-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was David's father?",
+  "choices": [
+   "Kish",
+   "Jesse",
+   "Ner",
+   "Obed"
+  ],
+  "answer": 1,
+  "explanation": "David was the son of that Ephrathite of Bethlehemjudah, whose name was Jesse.",
+  "ref": "1 Samuel 17:12"
+ },
+ {
+  "id": "1-samuel-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two animals had David killed while keeping his father's sheep?",
+  "choices": [
+   "A wolf and a leopard",
+   "A lion and a bear",
+   "A lion and a wolf",
+   "A bear and a serpent"
+  ],
+  "answer": 1,
+  "explanation": "Thy servant slew both the lion and the bear.",
+  "ref": "1 Samuel 17:36"
+ },
+ {
+  "id": "1-samuel-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What weapon did David use to strike Goliath?",
+  "choices": [
+   "A spear",
+   "A sling",
+   "A bow",
+   "A sword"
+  ],
+  "answer": 1,
+  "explanation": "David prevailed over the Philistine with a sling and with a stone.",
+  "ref": "1 Samuel 17:50"
+ },
+ {
+  "id": "1-samuel-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did the stone strike Goliath?",
+  "choices": [
+   "In his chest",
+   "In his forehead",
+   "In his leg",
+   "In his shoulder"
+  ],
+  "answer": 1,
+  "explanation": "David smote the Philistine in his forehead, that the stone sunk into his forehead.",
+  "ref": "1 Samuel 17:49"
+ },
+ {
+  "id": "1-samuel-17-e-06",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Saul and all Israel feel when they heard Goliath's words?",
+  "choices": [
+   "Angry and ready",
+   "Dismayed and greatly afraid",
+   "Joyful and bold",
+   "Silent and sleepy"
+  ],
+  "answer": 1,
+  "explanation": "When Saul and all Israel heard those words of the Philistine, they were dismayed, and greatly afraid.",
+  "ref": "1 Samuel 17:11"
+ },
+ {
+  "id": "1-samuel-17-e-07",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do with Saul's armour?",
+  "choices": [
+   "Gave it to Jonathan",
+   "Put it off him",
+   "Wore it into battle",
+   "Sold it"
+  ],
+  "answer": 1,
+  "explanation": "David said, I cannot go with these; for I have not proved them. And David put them off him.",
+  "ref": "1 Samuel 17:39"
+ },
+ {
+  "id": "1-samuel-17-e-08",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of David's brothers grew angry at him?",
+  "choices": [
+   "Abinadab",
+   "Eliab",
+   "Shammah",
+   "Jonathan"
+  ],
+  "answer": 1,
+  "explanation": "Eliab's anger was kindled against David.",
+  "ref": "1 Samuel 17:28"
+ },
+ {
+  "id": "1-samuel-17-e-09",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Philistines do when they saw their champion was dead?",
+  "choices": [
+   "They surrendered",
+   "They fled",
+   "They attacked Saul",
+   "They made peace"
+  ],
+  "answer": 1,
+  "explanation": "When the Philistines saw their champion was dead, they fled.",
+  "ref": "1 Samuel 17:51"
+ },
+ {
+  "id": "1-samuel-17-e-10",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "By which valley did Saul and Israel pitch?",
+  "choices": [
+   "The valley of Zeboim",
+   "The valley of Elah",
+   "The valley of Jordan",
+   "The valley of Shaaraim"
+  ],
+  "answer": 1,
+  "explanation": "Saul and the men of Israel pitched by the valley of Elah.",
+  "ref": "1 Samuel 17:2"
+ },
+ {
+  "id": "1-samuel-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Goliath say would happen if he prevailed against Israel's man?",
+  "choices": [
+   "Israel would pay silver",
+   "Israel would leave Judah",
+   "The Philistines would go home",
+   "Israel would be their servants"
+  ],
+  "answer": 3,
+  "explanation": "If I prevail against him, and kill him, then shall ye be our servants, and serve us.",
+  "ref": "1 Samuel 17:9"
+ },
+ {
+  "id": "1-samuel-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For how many days did Goliath present himself morning and evening?",
+  "choices": [
+   "Seven",
+   "Ten",
+   "Thirty",
+   "Forty"
+  ],
+  "answer": 3,
+  "explanation": "The Philistine drew near morning and evening, and presented himself forty days.",
+  "ref": "1 Samuel 17:16"
+ },
+ {
+  "id": "1-samuel-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the eldest of the three sons of Jesse who followed Saul?",
+  "choices": [
+   "Abinadab",
+   "Shammah",
+   "David",
+   "Eliab"
+  ],
+  "answer": 3,
+  "explanation": "The names of the three sons were Eliab the first born, and next unto him Abinadab, and the third Shammah.",
+  "ref": "1 Samuel 17:13"
+ },
+ {
+  "id": "1-samuel-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesse send David with for his brothers?",
+  "choices": [
+   "Wine and figs",
+   "A lamb and a kid",
+   "Barley and honey",
+   "Parched corn and ten loaves"
+  ],
+  "answer": 3,
+  "explanation": "Take now for thy brethren an ephah of this parched corn, and these ten loaves.",
+  "ref": "1 Samuel 17:17"
+ },
+ {
+  "id": "1-samuel-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom was David to carry ten cheeses?",
+  "choices": [
+   "Saul",
+   "Abner",
+   "The priest",
+   "The captain of their thousand"
+  ],
+  "answer": 3,
+  "explanation": "Carry these ten cheeses unto the captain of their thousand.",
+  "ref": "1 Samuel 17:18"
+ },
+ {
+  "id": "1-samuel-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David describe the Philistine who defied Israel?",
+  "choices": [
+   "A mighty man of war",
+   "A giant from Gath",
+   "A king of Ekron",
+   "An uncircumcised Philistine defying the living God"
+  ],
+  "answer": 3,
+  "explanation": "Who is this uncircumcised Philistine, that he should defy the armies of the living God?",
+  "ref": "1 Samuel 17:26"
+ },
+ {
+  "id": "1-samuel-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul say to David about why he could not fight Goliath?",
+  "choices": [
+   "David had no sword",
+   "David had no armour",
+   "David was not of Benjamin",
+   "David was but a youth"
+  ],
+  "answer": 3,
+  "explanation": "Thou art but a youth, and he a man of war from his youth.",
+  "ref": "1 Samuel 17:33"
+ },
+ {
+  "id": "1-samuel-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David say he overcame the lion when it rose against him?",
+  "choices": [
+   "He drove it off with a staff",
+   "He shot it with a bow",
+   "He cut it with a sword",
+   "He caught it by the beard and slew it"
+  ],
+  "answer": 3,
+  "explanation": "When he arose against me, I caught him by his beard, and smote him, and slew him.",
+  "ref": "1 Samuel 17:35"
+ },
+ {
+  "id": "1-samuel-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David trust to deliver him from Goliath?",
+  "choices": [
+   "His strength",
+   "Saul's armour",
+   "His brothers",
+   "The LORD that delivered him from the lion and the bear"
+  ],
+  "answer": 3,
+  "explanation": "The LORD that delivered me out of the paw of the lion, and out of the paw of the bear, he will deliver me.",
+  "ref": "1 Samuel 17:37"
+ },
+ {
+  "id": "1-samuel-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Goliath say when he saw David come with a staff?",
+  "choices": [
+   "Who is this boy?",
+   "Where is thy father?",
+   "Get thee home",
+   "Am I a dog?"
+  ],
+  "answer": 3,
+  "explanation": "The Philistine said unto David, Am I a dog, that thou comest to me with staves?",
+  "ref": "1 Samuel 17:43"
+ },
+ {
+  "id": "1-samuel-17-m-11",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say about the battle?",
+  "choices": [
+   "The battle is for the brave",
+   "The battle is for Saul",
+   "The battle will be short",
+   "The battle is the LORD'S"
+  ],
+  "answer": 3,
+  "explanation": "The LORD saveth not with sword and spear: for the battle is the LORD'S.",
+  "ref": "1 Samuel 17:47"
+ },
+ {
+  "id": "1-samuel-17-m-12",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did David bring the head of the Philistine?",
+  "choices": [
+   "Gilgal",
+   "Bethlehem",
+   "Gibeah",
+   "Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "David took the head of the Philistine, and brought it to Jerusalem.",
+  "ref": "1 Samuel 17:54"
+ },
+ {
+  "id": "1-samuel-17-m-13",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Saul ask whose son David was?",
+  "choices": [
+   "Jonathan",
+   "Eliab",
+   "Jesse",
+   "Abner"
+  ],
+  "answer": 3,
+  "explanation": "Saul said unto Abner, the captain of the host, Abner, whose son is this youth?",
+  "ref": "1 Samuel 17:55"
+ },
+ {
+  "id": "1-samuel-17-m-14",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David carry his stones in?",
+  "choices": [
+   "A leather belt",
+   "A brass target",
+   "Saul's helmet",
+   "A shepherd's bag"
+  ],
+  "answer": 3,
+  "explanation": "He put them in a shepherd's bag which he had, even in a scrip.",
+  "ref": "1 Samuel 17:40"
+ },
+ {
+  "id": "1-samuel-17-m-15",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul say to David as he sent him out?",
+  "choices": [
+   "Go in peace",
+   "Go and do not return",
+   "Go and fear nothing",
+   "Go, and the LORD be with thee"
+  ],
+  "answer": 3,
+  "explanation": "Saul said unto David, Go, and the LORD be with thee.",
+  "ref": "1 Samuel 17:37"
+ },
+ {
+  "id": "1-samuel-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Goliath's height?",
+  "choices": [
+   "Six cubits and a span",
+   "Four cubits and a span",
+   "Ten cubits",
+   "Seven cubits and a hand"
+  ],
+  "answer": 0,
+  "explanation": "Goliath, of Gath, whose height was six cubits and a span.",
+  "ref": "1 Samuel 17:4"
+ },
+ {
+  "id": "1-samuel-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much did Goliath's spear head weigh?",
+  "choices": [
+   "Six hundred shekels of iron",
+   "Five thousand shekels of brass",
+   "Three hundred shekels of iron",
+   "Six thousand shekels of brass"
+  ],
+  "answer": 0,
+  "explanation": "His spear's head weighed six hundred shekels of iron.",
+  "ref": "1 Samuel 17:7"
+ },
+ {
+  "id": "1-samuel-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much did the weight of Goliath's coat of mail come to?",
+  "choices": [
+   "Five thousand shekels of brass",
+   "Six hundred shekels of iron",
+   "Ten thousand shekels",
+   "Three thousand shekels of brass"
+  ],
+  "answer": 0,
+  "explanation": "The weight of the coat was five thousand shekels of brass.",
+  "ref": "1 Samuel 17:5"
+ },
+ {
+  "id": "1-samuel-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "Between which places did the Philistines pitch, in Ephes-dammim?",
+  "choices": [
+   "Shochoh and Azekah",
+   "Gath and Ekron",
+   "Gilgal and Michmash",
+   "Elah and Bethlehem"
+  ],
+  "answer": 0,
+  "explanation": "They pitched between Shochoh and Azekah, in Ephes-dammim.",
+  "ref": "1 Samuel 17:1"
+ },
+ {
+  "id": "1-samuel-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Goliath wear between his shoulders?",
+  "choices": [
+   "A target of brass",
+   "A quiver of arrows",
+   "A shield of iron",
+   "A cloak"
+  ],
+  "answer": 0,
+  "explanation": "He had greaves of brass upon his legs, and a target of brass between his shoulders.",
+  "ref": "1 Samuel 17:6"
+ },
+ {
+  "id": "1-samuel-17-h-06",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Who went before Goliath?",
+  "choices": [
+   "One bearing a shield",
+   "His brother",
+   "A trumpeter",
+   "Two spearmen"
+  ],
+  "answer": 0,
+  "explanation": "One bearing a shield went before him.",
+  "ref": "1 Samuel 17:7"
+ },
+ {
+  "id": "1-samuel-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son of Jesse was the third who followed Saul?",
+  "choices": [
+   "Shammah",
+   "Eliab",
+   "Abinadab",
+   "Raddai"
+  ],
+  "answer": 0,
+  "explanation": "The three sons were Eliab the first born, and next unto him Abinadab, and the third Shammah.",
+  "ref": "1 Samuel 17:13"
+ },
+ {
+  "id": "1-samuel-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons did Jesse have?",
+  "choices": [
+   "Eight",
+   "Seven",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "David was the son of Jesse; and he had eight sons.",
+  "ref": "1 Samuel 17:12"
+ },
+ {
+  "id": "1-samuel-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "The wounded of the Philistines fell down by the way to Shaaraim, even unto Gath and which other city?",
+  "choices": [
+   "Ekron",
+   "Ashdod",
+   "Gaza",
+   "Askelon"
+  ],
+  "answer": 0,
+  "explanation": "The wounded fell down by the way to Shaaraim, even unto Gath, and unto Ekron.",
+  "ref": "1 Samuel 17:52"
+ },
+ {
+  "id": "1-samuel-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did David put Goliath's armour?",
+  "choices": [
+   "In his tent",
+   "In the house of the LORD",
+   "On the altar",
+   "In Saul's treasury"
+  ],
+  "answer": 0,
+  "explanation": "David took the head to Jerusalem; but he put his armour in his tent.",
+  "ref": "1 Samuel 17:54"
+ },
+ {
+  "id": "1-samuel-17-h-11",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did David say he could not go in Saul's armour?",
+  "choices": [
+   "He had not proved it",
+   "It was too heavy",
+   "It was too short",
+   "It belonged to Jonathan"
+  ],
+  "answer": 0,
+  "explanation": "I cannot go with these; for I have not proved them.",
+  "ref": "1 Samuel 17:39"
+ },
+ {
+  "id": "1-samuel-17-h-12",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Eliab ask David about the sheep?",
+  "choices": [
+   "With whom he had left those few sheep",
+   "Who fed the sheep",
+   "Why the sheep were not sold",
+   "Where the sheep were"
+  ],
+  "answer": 0,
+  "explanation": "Why camest thou down hither? and with whom hast thou left those few sheep in the wilderness?",
+  "ref": "1 Samuel 17:28"
+ },
+ {
+  "id": "1-samuel-17-h-13",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Jesse called, in the description of David's family?",
+  "choices": [
+   "An Ephrathite of Bethlehemjudah",
+   "A Benjamite of Gibeah",
+   "A Levite of Shiloh",
+   "A Kenite of Carmel"
+  ],
+  "answer": 0,
+  "explanation": "David was the son of that Ephrathite of Bethlehemjudah, whose name was Jesse.",
+  "ref": "1 Samuel 17:12"
+ },
+ {
+  "id": "1-samuel-17-h-14",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The staff of Goliath's spear was like what?",
+  "choices": [
+   "A weaver's beam",
+   "A shepherd's rod",
+   "A ship's mast",
+   "A tree trunk"
+  ],
+  "answer": 0,
+  "explanation": "The staff of his spear was like a weaver's beam.",
+  "ref": "1 Samuel 17:7"
+ },
+ {
+  "id": "1-samuel-17-h-15",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "What lay between the Philistines and Israel on their mountains?",
+  "choices": [
+   "A valley",
+   "A river",
+   "A forest",
+   "A wall"
+  ],
+  "answer": 0,
+  "explanation": "The Philistines stood on a mountain on the one side, and Israel on the other side: and there was a valley between them.",
+  "ref": "1 Samuel 17:3"
  },
  {
   "id": "old-1-samuel-18-1",
