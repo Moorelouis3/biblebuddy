@@ -5856,6 +5856,662 @@
   "ref": "Joshua 9:21"
  },
  {
+  "id": "joshua-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which people tricked Israel into making a league with them?",
+  "choices": [
+   "The Gibeonites",
+   "The Egyptians",
+   "The Moabites",
+   "The Philistines"
+  ],
+  "answer": 0,
+  "explanation": "When the inhabitants of Gibeon heard what Joshua had done, they did work wilily.",
+  "ref": "Joshua 9:3–4"
+ },
+ {
+  "id": "joshua-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Joshua's camp when the Gibeonites came?",
+  "choices": [
+   "Shiloh",
+   "Gilgal",
+   "Ai",
+   "Jericho"
+  ],
+  "answer": 1,
+  "explanation": "They went to Joshua unto the camp at Gilgal.",
+  "ref": "Joshua 9:6"
+ },
+ {
+  "id": "joshua-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Gibeonites take upon their asses?",
+  "choices": [
+   "Old sacks and old wine bottles",
+   "New tents",
+   "Spears",
+   "Golden cups"
+  ],
+  "answer": 0,
+  "explanation": "They took old sacks upon their asses, and wine bottles, old, and rent, and bound up.",
+  "ref": "Joshua 9:4"
+ },
+ {
+  "id": "joshua-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the condition of the Gibeonites' bread?",
+  "choices": [
+   "Sweet",
+   "Unleavened and new",
+   "Dry and mouldy",
+   "Fresh and warm"
+  ],
+  "answer": 2,
+  "explanation": "All the bread of their provision was dry and mouldy.",
+  "ref": "Joshua 9:5"
+ },
+ {
+  "id": "joshua-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Gibeonites ask Israel to make with them?",
+  "choices": [
+   "A feast",
+   "A wall",
+   "A league",
+   "A trade"
+  ],
+  "answer": 2,
+  "explanation": "We be come from a far country: now therefore make ye a league with us.",
+  "ref": "Joshua 9:6"
+ },
+ {
+  "id": "joshua-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua do after hearing the Gibeonites' story?",
+  "choices": [
+   "Attacked them",
+   "Made peace and a league with them",
+   "Sent them away",
+   "Built a wall"
+  ],
+  "answer": 1,
+  "explanation": "Joshua made peace with them, and made a league with them, to let them live.",
+  "ref": "Joshua 9:15"
+ },
+ {
+  "id": "joshua-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the princes of the congregation do to the Gibeonites?",
+  "choices": [
+   "Cursed them",
+   "Swore to them",
+   "Fed them only",
+   "Fought them"
+  ],
+  "answer": 1,
+  "explanation": "The princes of the congregation sware unto them.",
+  "ref": "Joshua 9:15"
+ },
+ {
+  "id": "joshua-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua say the Gibeonites had done to Israel?",
+  "choices": [
+   "Robbed them",
+   "Healed them",
+   "Beguiled them",
+   "Betrayed the ark"
+  ],
+  "answer": 2,
+  "explanation": "Wherefore have ye beguiled us, saying, We are very far from you; when ye dwell among us?",
+  "ref": "Joshua 9:22"
+ },
+ {
+  "id": "joshua-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Gibeonites say made them afraid of their lives?",
+  "choices": [
+   "A famine",
+   "The LORD's command to give Israel all the land",
+   "A plague",
+   "A flood"
+  ],
+  "answer": 1,
+  "explanation": "They said they were sore afraid of their lives because of you.",
+  "ref": "Joshua 9:24"
+ },
+ {
+  "id": "joshua-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua do with the Gibeonites at last?",
+  "choices": [
+   "Delivered them so they were not slain",
+   "Sent them to Egypt",
+   "Made them kings",
+   "Killed them"
+  ],
+  "answer": 0,
+  "explanation": "Joshua delivered them out of the hand of the children of Israel, that they slew them not.",
+  "ref": "Joshua 9:26"
+ },
+ {
+  "id": "joshua-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the kings on this side Jordan do when they heard?",
+  "choices": [
+   "Fled",
+   "Gathered together to fight Joshua and Israel",
+   "Made peace",
+   "Sent gifts"
+  ],
+  "answer": 1,
+  "explanation": "They gathered themselves together, to fight with Joshua and with Israel, with one accord.",
+  "ref": "Joshua 9:2"
+ },
+ {
+  "id": "joshua-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the Gibeonites heard about?",
+  "choices": [
+   "The Jordan crossing only",
+   "What Joshua did to Jericho and Ai",
+   "Rahab",
+   "The ark"
+  ],
+  "answer": 1,
+  "explanation": "The inhabitants of Gibeon heard what Joshua had done unto Jericho and to Ai.",
+  "ref": "Joshua 9:3"
+ },
+ {
+  "id": "joshua-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "What did the men of Israel call the Gibeonites at first?",
+  "choices": [
+   "Hittites",
+   "Jebusites",
+   "Amorites",
+   "Hivites"
+  ],
+  "answer": 3,
+  "explanation": "The men of Israel said unto the Hivites, Peradventure ye dwell among us.",
+  "ref": "Joshua 9:7"
+ },
+ {
+  "id": "joshua-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Gibeonites say they had come from a far country?",
+  "choices": [
+   "Because of the name of the LORD thy God",
+   "Because of a war",
+   "For trade",
+   "For wives"
+  ],
+  "answer": 0,
+  "explanation": "From a very far country thy servants are come because of the name of the LORD thy God.",
+  "ref": "Joshua 9:9"
+ },
+ {
+  "id": "joshua-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two Amorite kings did the Gibeonites mention?",
+  "choices": [
+   "Jabin and Adoni-zedek",
+   "Sihon and Og",
+   "Eglon and Debir",
+   "Balak and Balaam"
+  ],
+  "answer": 1,
+  "explanation": "He did to the two kings of the Amorites, to Sihon king of Heshbon, and to Og king of Bashan.",
+  "ref": "Joshua 9:10"
+ },
+ {
+  "id": "joshua-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Gibeonites say their elders told them to take?",
+  "choices": [
+   "Gold",
+   "Victuals for the journey",
+   "Gifts for Joshua",
+   "Weapons"
+  ],
+  "answer": 1,
+  "explanation": "Our elders spake to us, saying, Take victuals with you for the journey.",
+  "ref": "Joshua 9:11"
+ },
+ {
+  "id": "joshua-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Gibeonites say about their bread?",
+  "choices": [
+   "It was stale",
+   "It was cold",
+   "It was hot when they left",
+   "It was bought"
+  ],
+  "answer": 2,
+  "explanation": "This our bread we took hot out of our houses on the day we came forth.",
+  "ref": "Joshua 9:12"
+ },
+ {
+  "id": "joshua-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was wrong with the bottles of wine?",
+  "choices": [
+   "They were sealed",
+   "They were rent",
+   "They were sour",
+   "They were empty"
+  ],
+  "answer": 1,
+  "explanation": "These bottles of wine, which we filled, were new; and, behold, they be rent.",
+  "ref": "Joshua 9:13"
+ },
+ {
+  "id": "joshua-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of Israel not do when they took the Gibeonites' victuals?",
+  "choices": [
+   "Pray",
+   "Count the people",
+   "Light a fire",
+   "Ask counsel at the mouth of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "The men took of their victuals, and asked not counsel at the mouth of the LORD.",
+  "ref": "Joshua 9:14"
+ },
+ {
+  "id": "joshua-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Israel learn the Gibeonites were neighbours?",
+  "choices": [
+   "After seven days",
+   "After a year",
+   "The next morning",
+   "At the end of three days"
+  ],
+  "answer": 3,
+  "explanation": "At the end of three days after they had made a league, they heard that they were their neighbours.",
+  "ref": "Joshua 9:16"
+ },
+ {
+  "id": "joshua-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who murmured against the princes?",
+  "choices": [
+   "All the congregation",
+   "The Gibeonites",
+   "The priests",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "All the congregation murmured against the princes.",
+  "ref": "Joshua 9:18"
+ },
+ {
+  "id": "joshua-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the princes say they could not touch the Gibeonites?",
+  "choices": [
+   "The ark forbade it",
+   "They were weak",
+   "They had sworn by the LORD God of Israel",
+   "They were kin"
+  ],
+  "answer": 2,
+  "explanation": "We have sworn unto them by the LORD God of Israel: now therefore we may not touch them.",
+  "ref": "Joshua 9:19"
+ },
+ {
+  "id": "joshua-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the princes fear if they broke the oath?",
+  "choices": [
+   "Exile",
+   "A famine",
+   "Wrath upon Israel",
+   "A flood"
+  ],
+  "answer": 2,
+  "explanation": "We will let them live, lest wrath be upon us, because of the oath.",
+  "ref": "Joshua 9:20"
+ },
+ {
+  "id": "joshua-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua say the Gibeonites were?",
+  "choices": [
+   "Blessed",
+   "Chosen",
+   "Free",
+   "Cursed"
+  ],
+  "answer": 3,
+  "explanation": "Now therefore ye are cursed, and there shall none of you be freed from being bondmen.",
+  "ref": "Joshua 9:23"
+ },
+ {
+  "id": "joshua-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whom were they to be hewers of wood and drawers of water?",
+  "choices": [
+   "The house of Joshua's God",
+   "The camp",
+   "Jericho",
+   "The kings"
+  ],
+  "answer": 0,
+  "explanation": "Hewers of wood and drawers of water for the house of my God.",
+  "ref": "Joshua 9:23"
+ },
+ {
+  "id": "joshua-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Which four cities belonged to the Gibeonites?",
+  "choices": [
+   "Gibeon, Hazor, Lachish and Eglon",
+   "Gibeon, Jericho, Ai and Shiloh",
+   "Gibeon, Chephirah, Beeroth and Kirjath-jearim",
+   "Gibeon, Ai, Bethel and Hebron"
+  ],
+  "answer": 2,
+  "explanation": "Their cities were Gibeon, and Chephirah, and Beeroth, and Kirjath-jearim.",
+  "ref": "Joshua 9:17"
+ },
+ {
+  "id": "joshua-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what day did Israel reach the Gibeonites' cities?",
+  "choices": [
+   "The tenth day",
+   "The third day",
+   "The seventh day",
+   "The first day"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel journeyed, and came unto their cities on the third day.",
+  "ref": "Joshua 9:17"
+ },
+ {
+  "id": "joshua-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Og king of Bashan, according to the Gibeonites?",
+  "choices": [
+   "Gilgal",
+   "Lebanon",
+   "Heshbon",
+   "Ashtaroth"
+  ],
+  "answer": 3,
+  "explanation": "Og king of Bashan, which was at Ashtaroth.",
+  "ref": "Joshua 9:10"
+ },
+ {
+  "id": "joshua-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Gibeonites say their garments and shoes had become?",
+  "choices": [
+   "Torn by war",
+   "Old by reason of the very long journey",
+   "Wet",
+   "Dirty with sand"
+  ],
+  "answer": 1,
+  "explanation": "Our garments and our shoes are become old by reason of the very long journey.",
+  "ref": "Joshua 9:13"
+ },
+ {
+  "id": "joshua-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was on the Gibeonites' feet?",
+  "choices": [
+   "Iron boots",
+   "Old shoes and clouted",
+   "Sandals",
+   "Nothing"
+  ],
+  "answer": 1,
+  "explanation": "Old shoes and clouted upon their feet.",
+  "ref": "Joshua 9:5"
+ },
+ {
+  "id": "joshua-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Gibeonites say they would be when they met Joshua?",
+  "choices": [
+   "Thy kings",
+   "Thy captains",
+   "Thy servants",
+   "Thy priests"
+  ],
+  "answer": 2,
+  "explanation": "We are thy servants.",
+  "ref": "Joshua 9:8"
+ },
+ {
+  "id": "joshua-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question did Joshua ask them first?",
+  "choices": [
+   "What is your god?",
+   "Where is your king?",
+   "Have you eaten?",
+   "Who are ye? and from whence come ye?"
+  ],
+  "answer": 3,
+  "explanation": "Joshua said unto them, Who are ye? and from whence come ye?",
+  "ref": "Joshua 9:8"
+ },
+ {
+  "id": "joshua-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the Gibeonites' answer about the LORD's command to Moses?",
+  "choices": [
+   "To make peace",
+   "To leave Egypt",
+   "To give Israel all the land and destroy its inhabitants",
+   "To build an ark"
+  ],
+  "answer": 2,
+  "explanation": "The LORD commanded his servant Moses to give you all the land, and to destroy all the inhabitants.",
+  "ref": "Joshua 9:24"
+ },
+ {
+  "id": "joshua-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Gibeonites say Joshua could do with them?",
+  "choices": [
+   "Free them",
+   "Nothing",
+   "Make them kings",
+   "As seemeth good and right unto thee"
+  ],
+  "answer": 3,
+  "explanation": "As it seemeth good and right unto thee to do unto us, do.",
+  "ref": "Joshua 9:25"
+ },
+ {
+  "id": "joshua-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what else besides the congregation were the Gibeonites made hewers of wood?",
+  "choices": [
+   "The king's house",
+   "The tabernacle gate",
+   "Gilgal",
+   "The altar of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Joshua made them hewers of wood and drawers of water for the congregation, and for the altar of the LORD.",
+  "ref": "Joshua 9:27"
+ },
+ {
+  "id": "joshua-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Joshua make them hewers of wood and drawers of water?",
+  "choices": [
+   "After seven days",
+   "A year later",
+   "That day",
+   "At Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "Joshua made them that day hewers of wood and drawers of water.",
+  "ref": "Joshua 9:27"
+ },
+ {
+  "id": "joshua-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Which people is listed last among those the kings belonged to?",
+  "choices": [
+   "Hittite",
+   "Hivite",
+   "Perizzite",
+   "Jebusite"
+  ],
+  "answer": 3,
+  "explanation": "The kings were of the Hittite, the Amorite, the Canaanite, the Perizzite, the Hivite, and the Jebusite.",
+  "ref": "Joshua 9:1"
+ },
+ {
+  "id": "joshua-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "The kings lived in the coasts of the great sea over against which mountain?",
+  "choices": [
+   "Hermon",
+   "Lebanon",
+   "Ebal",
+   "Carmel"
+  ],
+  "answer": 1,
+  "explanation": "The coasts of the great sea over against Lebanon.",
+  "ref": "Joshua 9:1"
+ },
+ {
+  "id": "joshua-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the chapter say the Gibeonites worked?",
+  "choices": [
+   "Wilily",
+   "Slowly",
+   "Boldly",
+   "Openly"
+  ],
+  "answer": 0,
+  "explanation": "They did work wilily, and went and made as if they had been ambassadors.",
+  "ref": "Joshua 9:4"
+ },
+ {
+  "id": "joshua-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Gibeonites make as if they had been?",
+  "choices": [
+   "Captains",
+   "Ambassadors",
+   "Priests",
+   "Merchants"
+  ],
+  "answer": 1,
+  "explanation": "They made as if they had been ambassadors.",
+  "ref": "Joshua 9:4"
+ },
+ {
+  "id": "joshua-9-h-16",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua say none of the Gibeonites would be freed from?",
+  "choices": [
+   "Gilgal",
+   "Being bondmen",
+   "Paying tribute",
+   "The league"
+  ],
+  "answer": 1,
+  "explanation": "There shall none of you be freed from being bondmen.",
+  "ref": "Joshua 9:23"
+ },
+ {
   "id": "old-joshua-10-1",
   "chapter": 10,
   "level": "beginner",
