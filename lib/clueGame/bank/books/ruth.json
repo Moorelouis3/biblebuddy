@@ -1520,6 +1520,646 @@
   "ref": "Ruth 3:15"
  },
  {
+  "id": "ruth-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Ruth's mother in law?",
+  "choices": [
+   "Orpah",
+   "Naomi",
+   "Deborah",
+   "Hannah"
+  ],
+  "answer": 1,
+  "explanation": "Naomi her mother in law said unto her, My daughter, shall I not seek rest for thee?",
+  "ref": "Ruth 3:1"
+ },
+ {
+  "id": "ruth-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What grain did Boaz winnow at the threshingfloor that night?",
+  "choices": [
+   "Wheat",
+   "Barley",
+   "Corn meal",
+   "Flax"
+  ],
+  "answer": 1,
+  "explanation": "Naomi said, Behold, he winnoweth barley to night in the threshingfloor.",
+  "ref": "Ruth 3:2"
+ },
+ {
+  "id": "ruth-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was winnowing at the threshingfloor that night?",
+  "choices": [
+   "Boaz",
+   "Obed",
+   "Elimelech",
+   "Mahlon"
+  ],
+  "answer": 0,
+  "explanation": "Naomi told Ruth that Boaz of their kindred winnoweth barley to night in the threshingfloor.",
+  "ref": "Ruth 3:2"
+ },
+ {
+  "id": "ruth-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Naomi tell Ruth to do first, before going down to the floor?",
+  "choices": [
+   "Wash herself",
+   "Fast three days",
+   "Gather sheaves",
+   "Cut her hair"
+  ],
+  "answer": 0,
+  "explanation": "Naomi said, Wash thyself therefore, and anoint thee, and put thy raiment upon thee.",
+  "ref": "Ruth 3:3"
+ },
+ {
+  "id": "ruth-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Ruth answer Naomi's plan?",
+  "choices": [
+   "I will not go",
+   "All that thou sayest I will do",
+   "Let Orpah go",
+   "I will ask Boaz first"
+  ],
+  "answer": 1,
+  "explanation": "Ruth said unto her, All that thou sayest unto me I will do.",
+  "ref": "Ruth 3:5"
+ },
+ {
+  "id": "ruth-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was afraid at midnight when he turned himself?",
+  "choices": [
+   "Naomi",
+   "Boaz",
+   "The kinsman",
+   "A servant"
+  ],
+  "answer": 1,
+  "explanation": "At midnight the man was afraid, and turned himself, and behold, a woman lay at his feet.",
+  "ref": "Ruth 3:8"
+ },
+ {
+  "id": "ruth-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What part of Boaz did Ruth uncover?",
+  "choices": [
+   "His head",
+   "His hands",
+   "His feet",
+   "His shoulders"
+  ],
+  "answer": 2,
+  "explanation": "Ruth came softly, and uncovered his feet, and laid her down.",
+  "ref": "Ruth 3:7"
+ },
+ {
+  "id": "ruth-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Boaz call Ruth when he blessed her?",
+  "choices": [
+   "My sister",
+   "My daughter",
+   "My servant",
+   "My friend"
+  ],
+  "answer": 1,
+  "explanation": "Boaz said, Blessed be thou of the LORD, my daughter.",
+  "ref": "Ruth 3:10"
+ },
+ {
+  "id": "ruth-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the city know Ruth to be?",
+  "choices": [
+   "A virtuous woman",
+   "A rich widow",
+   "A prophetess",
+   "A faithful servant"
+  ],
+  "answer": 0,
+  "explanation": "Boaz said, All the city of my people doth know that thou art a virtuous woman.",
+  "ref": "Ruth 3:11"
+ },
+ {
+  "id": "ruth-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Ruth go after she left Boaz with the barley?",
+  "choices": [
+   "Into the city",
+   "Back to Moab",
+   "To Shiloh",
+   "Into the field"
+  ],
+  "answer": 0,
+  "explanation": "Boaz laid the barley on her: and she went into the city.",
+  "ref": "Ruth 3:15"
+ },
+ {
+  "id": "ruth-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When was Ruth to go in to Boaz, according to Naomi?",
+  "choices": [
+   "When he sat in the gate",
+   "When he had done eating and drinking",
+   "At sunrise",
+   "When the elders left"
+  ],
+  "answer": 1,
+  "explanation": "Make not thyself known unto the man, until he shall have done eating and drinking.",
+  "ref": "Ruth 3:3"
+ },
+ {
+  "id": "ruth-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides washing, what else did Naomi tell Ruth to do?",
+  "choices": [
+   "Anoint herself",
+   "Bring an offering",
+   "Take a servant",
+   "Fast"
+  ],
+  "answer": 0,
+  "explanation": "Naomi said, Wash thyself, and anoint thee, and put thy raiment upon thee.",
+  "ref": "Ruth 3:3"
+ },
+ {
+  "id": "ruth-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Boaz lie down after he had eaten and drunk?",
+  "choices": [
+   "In the tent",
+   "At the end of the heap of corn",
+   "By the city gate",
+   "In his house"
+  ],
+  "answer": 1,
+  "explanation": "His heart was merry, and he went to lie down at the end of the heap of corn.",
+  "ref": "Ruth 3:7"
+ },
+ {
+  "id": "ruth-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Boaz's heart like when he went to lie down?",
+  "choices": [
+   "Heavy",
+   "Troubled",
+   "Merry",
+   "Angry"
+  ],
+  "answer": 2,
+  "explanation": "When Boaz had eaten and drunk, and his heart was merry, he went to lie down.",
+  "ref": "Ruth 3:7"
+ },
+ {
+  "id": "ruth-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Boaz say was Ruth's latter kindness compared with her first?",
+  "choices": [
+   "More than the beginning",
+   "Less than the beginning",
+   "Equal to the beginning",
+   "Hidden from all"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast shewed more kindness in the latter end than at the beginning.",
+  "ref": "Ruth 3:10"
+ },
+ {
+  "id": "ruth-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Boaz say Ruth had not followed?",
+  "choices": [
+   "Strangers",
+   "Young men",
+   "The reapers",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Thou followedst not young men, whether poor or rich.",
+  "ref": "Ruth 3:10"
+ },
+ {
+  "id": "ruth-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Boaz promise to do for Ruth?",
+  "choices": [
+   "All that she requireth",
+   "Give her land",
+   "Send her to Moab",
+   "Make her a servant"
+  ],
+  "answer": 0,
+  "explanation": "Fear not; I will do to thee all that thou requirest.",
+  "ref": "Ruth 3:11"
+ },
+ {
+  "id": "ruth-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what oath did Boaz promise to do the kinsman's part?",
+  "choices": [
+   "As the LORD liveth",
+   "By the altar",
+   "By the elders",
+   "By Abraham"
+  ],
+  "answer": 0,
+  "explanation": "If he will not do the part of a kinsman, then will I do the part of a kinsman to thee, as the LORD liveth.",
+  "ref": "Ruth 3:13"
+ },
+ {
+  "id": "ruth-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Boaz tell Ruth to do until the morning?",
+  "choices": [
+   "Go home at once",
+   "Lie down",
+   "Wake the kinsman",
+   "Keep watch"
+  ],
+  "answer": 1,
+  "explanation": "Boaz said, Tarry this night... lie down until the morning.",
+  "ref": "Ruth 3:13"
+ },
+ {
+  "id": "ruth-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Boaz not want known?",
+  "choices": [
+   "That Ruth was a Moabitess",
+   "That a woman came into the floor",
+   "That he was a kinsman",
+   "That he gave barley"
+  ],
+  "answer": 1,
+  "explanation": "Boaz said, Let it not be known that a woman came into the floor.",
+  "ref": "Ruth 3:14"
+ },
+ {
+  "id": "ruth-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did Boaz give for sending barley home with Ruth?",
+  "choices": [
+   "Go not empty unto thy mother in law",
+   "Feed the poor",
+   "Pay the reapers",
+   "Repay Naomi's debt"
+  ],
+  "answer": 0,
+  "explanation": "Ruth said, He said to me, Go not empty unto thy mother in law.",
+  "ref": "Ruth 3:17"
+ },
+ {
+  "id": "ruth-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Naomi tell Ruth to do until she knew how the matter would fall?",
+  "choices": [
+   "Sit still",
+   "Go to Moab",
+   "Return to the floor",
+   "Pray at the gate"
+  ],
+  "answer": 0,
+  "explanation": "Sit still, my daughter, until thou know how the matter will fall.",
+  "ref": "Ruth 3:18"
+ },
+ {
+  "id": "ruth-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Ruth describe herself to Boaz?",
+  "choices": [
+   "Thine handmaid",
+   "A stranger",
+   "His sister",
+   "A poor widow"
+  ],
+  "answer": 0,
+  "explanation": "She answered, I am Ruth thine handmaid.",
+  "ref": "Ruth 3:9"
+ },
+ {
+  "id": "ruth-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Boaz say when he first saw a woman at his feet?",
+  "choices": [
+   "Who art thou?",
+   "Go away",
+   "Where is Naomi?",
+   "Fear not"
+  ],
+  "answer": 0,
+  "explanation": "He said, Who art thou?",
+  "ref": "Ruth 3:9"
+ },
+ {
+  "id": "ruth-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Naomi ask Ruth when she came home?",
+  "choices": [
+   "Who art thou, my daughter?",
+   "Where is Boaz?",
+   "Did you eat?",
+   "What did you gather?"
+  ],
+  "answer": 0,
+  "explanation": "When she came to her mother in law, she said, Who art thou, my daughter?",
+  "ref": "Ruth 3:16"
+ },
+ {
+  "id": "ruth-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Ruth to do about the place where Boaz lay?",
+  "choices": [
+   "Mark it",
+   "Sweep it",
+   "Guard it",
+   "Bless it"
+  ],
+  "answer": 0,
+  "explanation": "Naomi said, Thou shalt mark the place where he shall lie.",
+  "ref": "Ruth 3:4"
+ },
+ {
+  "id": "ruth-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Naomi say Boaz would do after Ruth lay at his feet?",
+  "choices": [
+   "Tell her what to do",
+   "Send her away",
+   "Call the elders",
+   "Give her bread"
+  ],
+  "answer": 0,
+  "explanation": "Naomi said, He will tell thee what thou shalt do.",
+  "ref": "Ruth 3:4"
+ },
+ {
+  "id": "ruth-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Ruth did according to all that who bade her?",
+  "choices": [
+   "Boaz",
+   "Her mother in law",
+   "The elders",
+   "Orpah"
+  ],
+  "answer": 1,
+  "explanation": "She went down unto the floor, and did according to all that her mother in law bade her.",
+  "ref": "Ruth 3:6"
+ },
+ {
+  "id": "ruth-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At what time of night did Boaz turn and find a woman at his feet?",
+  "choices": [
+   "Evening",
+   "Midnight",
+   "Cockcrow",
+   "Before dawn"
+  ],
+  "answer": 1,
+  "explanation": "It came to pass at midnight, that the man was afraid, and turned himself.",
+  "ref": "Ruth 3:8"
+ },
+ {
+  "id": "ruth-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Ruth come to the place where Boaz lay?",
+  "choices": [
+   "Softly",
+   "Running",
+   "Weeping",
+   "With a lamp"
+  ],
+  "answer": 0,
+  "explanation": "She came softly, and uncovered his feet, and laid her down.",
+  "ref": "Ruth 3:7"
+ },
+ {
+  "id": "ruth-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ruth ask Boaz to spread over her?",
+  "choices": [
+   "His cloak",
+   "His skirt",
+   "His tent",
+   "His veil"
+  ],
+  "answer": 1,
+  "explanation": "Spread therefore thy skirt over thine handmaid; for thou art a near kinsman.",
+  "ref": "Ruth 3:9"
+ },
+ {
+  "id": "ruth-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Boaz say about a nearer kinsman?",
+  "choices": [
+   "There was one nearer than he",
+   "There was none nearer",
+   "He had died",
+   "He had left Bethlehem"
+  ],
+  "answer": 0,
+  "explanation": "It is true that I am thy near kinsman: howbeit there is a kinsman nearer than I.",
+  "ref": "Ruth 3:12"
+ },
+ {
+  "id": "ruth-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Ruth rise from Boaz's feet?",
+  "choices": [
+   "Before one could know another",
+   "At full daylight",
+   "At noon",
+   "When the reapers came"
+  ],
+  "answer": 0,
+  "explanation": "She rose up before one could know another.",
+  "ref": "Ruth 3:14"
+ },
+ {
+  "id": "ruth-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Boaz tell Ruth to bring and hold?",
+  "choices": [
+   "Her sack",
+   "The vail",
+   "A basket",
+   "Her sandals"
+  ],
+  "answer": 1,
+  "explanation": "Bring the vail that thou hast upon thee, and hold it.",
+  "ref": "Ruth 3:15"
+ },
+ {
+  "id": "ruth-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did Ruth tell all that the man had done to her?",
+  "choices": [
+   "The elders",
+   "Her mother in law",
+   "The maidens",
+   "Boaz's servants"
+  ],
+  "answer": 1,
+  "explanation": "She came to her mother in law... and she told her all that the man had done to her.",
+  "ref": "Ruth 3:16"
+ },
+ {
+  "id": "ruth-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Naomi say Boaz would not be in until he finished the matter?",
+  "choices": [
+   "Peace",
+   "Rest",
+   "Bethlehem",
+   "Debt"
+  ],
+  "answer": 1,
+  "explanation": "The man will not be in rest, until he have finished the thing this day.",
+  "ref": "Ruth 3:18"
+ },
+ {
+  "id": "ruth-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By when did Naomi say Boaz would finish the matter?",
+  "choices": [
+   "This day",
+   "The next harvest",
+   "The new moon",
+   "Within a year"
+  ],
+  "answer": 0,
+  "explanation": "He will not be in rest, until he have finished the thing this day.",
+  "ref": "Ruth 3:18"
+ },
+ {
+  "id": "ruth-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whose maidens had Ruth been, according to Naomi?",
+  "choices": [
+   "Boaz's",
+   "Orpah's",
+   "The elders'",
+   "Elimelech's"
+  ],
+  "answer": 0,
+  "explanation": "Naomi said, Is not Boaz of our kindred, with whose maidens thou wast?",
+  "ref": "Ruth 3:2"
+ },
+ {
+  "id": "ruth-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If the nearer kinsman would perform his part, what did Boaz say?",
+  "choices": [
+   "Well",
+   "It is a shame",
+   "Then I will not",
+   "Let him pay"
+  ],
+  "answer": 0,
+  "explanation": "If he will perform unto thee the part of a kinsman, well; let him do the kinsman's part.",
+  "ref": "Ruth 3:13"
+ },
+ {
+  "id": "ruth-3-h-17",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "If the nearer kinsman would not act, who said he would do the kinsman's part?",
+  "choices": [
+   "Boaz",
+   "Obed",
+   "Jesse",
+   "Mahlon"
+  ],
+  "answer": 0,
+  "explanation": "Boaz said, If he will not do the part of a kinsman to thee, then will I do the part of a kinsman to thee.",
+  "ref": "Ruth 3:13"
+ },
+ {
   "id": "old-ruth-4-1",
   "chapter": 4,
   "level": "beginner",
