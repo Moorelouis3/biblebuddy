@@ -12336,6 +12336,646 @@
   "ref": "Leviticus 18:24–28"
  },
  {
+  "id": "leviticus-18-e-01",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who did the LORD speak to at the start of this chapter?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Joshua",
+   "Eleazar"
+  ],
+  "answer": 1,
+  "explanation": "And the LORD spake unto Moses, saying.",
+  "ref": "Leviticus 18:1"
+ },
+ {
+  "id": "leviticus-18-e-02",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Israel to say about who he is?",
+  "choices": [
+   "I am the Rock",
+   "I am the LORD your God",
+   "I am the King",
+   "I am the Judge"
+  ],
+  "answer": 1,
+  "explanation": "Speak unto the children of Israel, and say unto them, I am the LORD your God.",
+  "ref": "Leviticus 18:2"
+ },
+ {
+  "id": "leviticus-18-e-03",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were Israel to keep and do?",
+  "choices": [
+   "The customs of Canaan",
+   "His judgments and his ordinances",
+   "The customs of Egypt",
+   "Their own ideas"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall do my judgments, and keep mine ordinances, to walk therein.",
+  "ref": "Leviticus 18:4"
+ },
+ {
+  "id": "leviticus-18-e-04",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say a man would do if he kept his statutes?",
+  "choices": [
+   "Be rich",
+   "Live in them",
+   "Rule",
+   "Be a priest"
+  ],
+  "answer": 1,
+  "explanation": "Which if a man do, he shall live in them: I am the LORD.",
+  "ref": "Leviticus 18:5"
+ },
+ {
+  "id": "leviticus-18-e-05",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose nakedness was Israel told not to uncover first in the list?",
+  "choices": [
+   "Brother",
+   "Father or mother",
+   "Sister",
+   "Aunt"
+  ],
+  "answer": 1,
+  "explanation": "The nakedness of thy father, or the nakedness of thy mother, shalt thou not uncover.",
+  "ref": "Leviticus 18:7"
+ },
+ {
+  "id": "leviticus-18-e-06",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD forbid with a neighbour's wife?",
+  "choices": [
+   "Eating with her",
+   "Lying carnally with her",
+   "Speaking to her",
+   "Visiting her"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not lie carnally with thy neighbour's wife, to defile thyself with her.",
+  "ref": "Leviticus 18:20"
+ },
+ {
+  "id": "leviticus-18-e-07",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD forbid with a beast?",
+  "choices": [
+   "Riding it",
+   "Lying with it",
+   "Selling it",
+   "Killing it"
+  ],
+  "answer": 1,
+  "explanation": "Neither shalt thou lie with any beast to defile thyself therewith.",
+  "ref": "Leviticus 18:23"
+ },
+ {
+  "id": "leviticus-18-e-08",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name were they not to profane?",
+  "choices": [
+   "The name of Moses",
+   "The name of their God",
+   "The name of their father",
+   "The name of the land"
+  ],
+  "answer": 1,
+  "explanation": "Neither shalt thou profane the name of thy God: I am the LORD.",
+  "ref": "Leviticus 18:21"
+ },
+ {
+  "id": "leviticus-18-e-09",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say would happen to those who committed these abominations?",
+  "choices": [
+   "They shall be fined",
+   "They shall be cut off from among their people",
+   "They shall be blessed",
+   "They shall be priests"
+  ],
+  "answer": 1,
+  "explanation": "The souls that commit them shall be cut off from among their people.",
+  "ref": "Leviticus 18:29"
+ },
+ {
+  "id": "leviticus-18-e-10",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say the land would do if they defiled it?",
+  "choices": [
+   "Bloom",
+   "Spue them out",
+   "Flood",
+   "Burn"
+  ],
+  "answer": 1,
+  "explanation": "That the land spue not you out also, when ye defile it.",
+  "ref": "Leviticus 18:28"
+ },
+ {
+  "id": "leviticus-18-m-01",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was said of the sister, the daughter of thy father's wife begotten of thy father?",
+  "choices": [
+   "She is thy cousin",
+   "She is thy aunt",
+   "She is thy neighbour",
+   "She is thy sister"
+  ],
+  "answer": 3,
+  "explanation": "Thy father's wife's daughter, begotten of thy father, she is thy sister.",
+  "ref": "Leviticus 18:11"
+ },
+ {
+  "id": "leviticus-18-m-02",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was a son's daughter's nakedness not to be uncovered?",
+  "choices": [
+   "They are strangers",
+   "They are unclean",
+   "They are priests",
+   "Theirs is thine own nakedness"
+  ],
+  "answer": 3,
+  "explanation": "For theirs is thine own nakedness.",
+  "ref": "Leviticus 18:10"
+ },
+ {
+  "id": "leviticus-18-m-03",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was said of the father's sister?",
+  "choices": [
+   "She is thy cousin",
+   "She is a stranger",
+   "She is thy sister",
+   "She is thy father's near kinswoman"
+  ],
+  "answer": 3,
+  "explanation": "She is thy father's near kinswoman.",
+  "ref": "Leviticus 18:12"
+ },
+ {
+  "id": "leviticus-18-m-04",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was said of the father's brother's wife?",
+  "choices": [
+   "She is thy cousin",
+   "She is thy sister",
+   "She is a stranger",
+   "She is thine aunt"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not approach to his wife: she is thine aunt.",
+  "ref": "Leviticus 18:14"
+ },
+ {
+  "id": "leviticus-18-m-05",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was said of the daughter in law?",
+  "choices": [
+   "She is thy sister",
+   "She is thy cousin",
+   "She is a stranger",
+   "She is thy son's wife"
+  ],
+  "answer": 3,
+  "explanation": "She is thy son's wife; thou shalt not uncover her nakedness.",
+  "ref": "Leviticus 18:15"
+ },
+ {
+  "id": "leviticus-18-m-06",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was said of the brother's wife's nakedness?",
+  "choices": [
+   "It is thy cousin's",
+   "It is thy aunt's",
+   "It is thy friend's",
+   "It is thy brother's nakedness"
+  ],
+  "answer": 3,
+  "explanation": "It is thy brother's nakedness.",
+  "ref": "Leviticus 18:16"
+ },
+ {
+  "id": "leviticus-18-m-07",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD call lying with a woman and her daughter?",
+  "choices": [
+   "Confusion",
+   "A shame",
+   "A sin offering",
+   "Wickedness"
+  ],
+  "answer": 3,
+  "explanation": "They are her near kinswomen: it is wickedness.",
+  "ref": "Leviticus 18:17"
+ },
+ {
+  "id": "leviticus-18-m-08",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why not take a wife to her sister?",
+  "choices": [
+   "To honour her",
+   "To feed her",
+   "To join families",
+   "To vex her"
+  ],
+  "answer": 3,
+  "explanation": "Neither shalt thou take a wife to her sister, to vex her.",
+  "ref": "Leviticus 18:18"
+ },
+ {
+  "id": "leviticus-18-m-09",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When was a man not to approach a woman?",
+  "choices": [
+   "On the Sabbath",
+   "On a feast day",
+   "At night",
+   "While she was put apart for her uncleanness"
+  ],
+  "answer": 3,
+  "explanation": "As long as she is put apart for her uncleanness.",
+  "ref": "Leviticus 18:19"
+ },
+ {
+  "id": "leviticus-18-m-10",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD call lying with mankind as with womankind?",
+  "choices": [
+   "A confusion",
+   "A vow",
+   "A wickedness",
+   "An abomination"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not lie with mankind, as with womankind: it is abomination.",
+  "ref": "Leviticus 18:22"
+ },
+ {
+  "id": "leviticus-18-m-11",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD call lying with a beast?",
+  "choices": [
+   "Abomination",
+   "Wickedness",
+   "Folly",
+   "Confusion"
+  ],
+  "answer": 3,
+  "explanation": "Neither shall any woman stand before a beast to lie down thereto: it is confusion.",
+  "ref": "Leviticus 18:23"
+ },
+ {
+  "id": "leviticus-18-m-12",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who were defiled in all these things?",
+  "choices": [
+   "The Egyptians only",
+   "The Israelites only",
+   "The priests",
+   "The nations the LORD cast out"
+  ],
+  "answer": 3,
+  "explanation": "For in all these the nations are defiled which I cast out before you.",
+  "ref": "Leviticus 18:24"
+ },
+ {
+  "id": "leviticus-18-m-13",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD do to the iniquity of the land?",
+  "choices": [
+   "Forgive it",
+   "Hide it",
+   "Ignore it",
+   "Visit it upon the land"
+  ],
+  "answer": 3,
+  "explanation": "The land is defiled: therefore I do visit the iniquity thereof upon it.",
+  "ref": "Leviticus 18:25"
+ },
+ {
+  "id": "leviticus-18-m-14",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the land do with its inhabitants?",
+  "choices": [
+   "Hid them",
+   "Fed them",
+   "Blessed them",
+   "Vomited them out"
+  ],
+  "answer": 3,
+  "explanation": "The land itself vomiteth out her inhabitants.",
+  "ref": "Leviticus 18:25"
+ },
+ {
+  "id": "leviticus-18-m-15",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who were bound to keep these statutes besides Israel's own nation?",
+  "choices": [
+   "The Egyptians",
+   "The Philistines",
+   "The priests only",
+   "The stranger that sojourneth"
+  ],
+  "answer": 3,
+  "explanation": "Neither any of your own nation, nor any stranger that sojourneth among you.",
+  "ref": "Leviticus 18:26"
+ },
+ {
+  "id": "leviticus-18-h-01",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose land had Israel dwelt, whose doings they must not copy?",
+  "choices": [
+   "Egypt",
+   "Moab",
+   "Edom",
+   "Ammon"
+  ],
+  "answer": 0,
+  "explanation": "After the doings of the land of Egypt, wherein ye dwelt, shall ye not do.",
+  "ref": "Leviticus 18:3"
+ },
+ {
+  "id": "leviticus-18-h-02",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into which land would the LORD bring them?",
+  "choices": [
+   "Canaan",
+   "Gilead",
+   "Moab",
+   "Goshen"
+  ],
+  "answer": 0,
+  "explanation": "After the doings of the land of Canaan, whither I bring you, shall ye not do.",
+  "ref": "Leviticus 18:3"
+ },
+ {
+  "id": "leviticus-18-h-03",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of the father's wife's nakedness?",
+  "choices": [
+   "It is thy father's nakedness",
+   "It is thy mother's",
+   "It is thy brother's",
+   "It is thy sister's"
+  ],
+  "answer": 0,
+  "explanation": "The nakedness of thy father's wife shalt thou not uncover: it is thy father's nakedness.",
+  "ref": "Leviticus 18:8"
+ },
+ {
+  "id": "leviticus-18-h-04",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of the mother's sister?",
+  "choices": [
+   "She is thy mother's near kinswoman",
+   "She is thine aunt",
+   "She is thy cousin",
+   "She is a stranger"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not uncover the nakedness of thy mother's sister: for she is thy mother's near kinswoman.",
+  "ref": "Leviticus 18:13"
+ },
+ {
+  "id": "leviticus-18-h-05",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of the nakedness of the sister born at home or abroad?",
+  "choices": [
+   "Not to be uncovered",
+   "To be covered with cloth",
+   "To be honoured",
+   "To be praised"
+  ],
+  "answer": 0,
+  "explanation": "Whether she be born at home, or born abroad, even their nakedness thou shalt not uncover.",
+  "ref": "Leviticus 18:9"
+ },
+ {
+  "id": "leviticus-18-h-06",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whom could a man not take a wife 'beside the other in her life time'?",
+  "choices": [
+   "Her sister",
+   "Her mother",
+   "Her daughter",
+   "Her friend"
+  ],
+  "answer": 0,
+  "explanation": "Neither shalt thou take a wife to her sister, to vex her ... beside the other in her life time.",
+  "ref": "Leviticus 18:18"
+ },
+ {
+  "id": "leviticus-18-h-07",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the practices of the land before them called?",
+  "choices": [
+   "Abominable customs",
+   "Holy customs",
+   "Wise customs",
+   "Old customs"
+  ],
+  "answer": 0,
+  "explanation": "That ye commit not any one of these abominable customs.",
+  "ref": "Leviticus 18:30"
+ },
+ {
+  "id": "leviticus-18-h-08",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of the abominations of the men of the land before them?",
+  "choices": [
+   "They had defiled the land",
+   "They had blessed the land",
+   "They had left the land",
+   "They had built the land"
+  ],
+  "answer": 0,
+  "explanation": "For all these abominations have the men of the land done ... and the land is defiled.",
+  "ref": "Leviticus 18:27"
+ },
+ {
+  "id": "leviticus-18-h-09",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say they should not walk in of Canaan and Egypt?",
+  "choices": [
+   "Their ordinances",
+   "Their roads",
+   "Their tents",
+   "Their markets"
+  ],
+  "answer": 0,
+  "explanation": "Neither shall ye walk in their ordinances.",
+  "ref": "Leviticus 18:3"
+ },
+ {
+  "id": "leviticus-18-h-10",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said at the end of the chapter?",
+  "choices": [
+   "I am the LORD your God",
+   "Amen",
+   "Hear, O Israel",
+   "Fear not"
+  ],
+  "answer": 0,
+  "explanation": "Therefore shall ye keep mine ordinance ... I am the LORD your God.",
+  "ref": "Leviticus 18:30"
+ },
+ {
+  "id": "leviticus-18-h-11",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom were Israel told not to approach to uncover their nakedness?",
+  "choices": [
+   "Any that is near of kin",
+   "Any stranger",
+   "Any slave",
+   "Any priest"
+  ],
+  "answer": 0,
+  "explanation": "None of you shall approach to any that is near of kin to him.",
+  "ref": "Leviticus 18:6"
+ },
+ {
+  "id": "leviticus-18-h-12",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides her daughter, whose daughters were not to be taken in the same case?",
+  "choices": [
+   "Her son's daughter or her daughter's daughter",
+   "Her sister's daughter",
+   "Her friend's daughter",
+   "Her servant's daughter"
+  ],
+  "answer": 0,
+  "explanation": "Neither shalt thou take her son's daughter, or her daughter's daughter.",
+  "ref": "Leviticus 18:17"
+ },
+ {
+  "id": "leviticus-18-h-13",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who else was forbidden to stand before a beast?",
+  "choices": [
+   "Any woman",
+   "Any priest",
+   "Any child",
+   "Any stranger only"
+  ],
+  "answer": 0,
+  "explanation": "Neither shall any woman stand before a beast to lie down thereto.",
+  "ref": "Leviticus 18:23"
+ },
+ {
+  "id": "leviticus-18-h-14",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The sister whose nakedness was forbidden could be the daughter of whom?",
+  "choices": [
+   "Of thy father or of thy mother",
+   "Of thy father only",
+   "Of thy mother only",
+   "Of thy brother"
+  ],
+  "answer": 0,
+  "explanation": "The nakedness of thy sister, the daughter of thy father, or daughter of thy mother.",
+  "ref": "Leviticus 18:9"
+ },
+ {
+  "id": "leviticus-18-h-15",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did the LORD say cast out the nations before Israel?",
+  "choices": [
+   "The LORD himself",
+   "The Egyptians",
+   "Moses",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "In all these the nations are defiled which I cast out before you.",
+  "ref": "Leviticus 18:24"
+ },
+ {
   "id": "old-leviticus-19-1",
   "chapter": 19,
   "level": "beginner",
