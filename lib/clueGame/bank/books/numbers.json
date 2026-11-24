@@ -21696,6 +21696,646 @@
   "ref": "Numbers 31:49"
  },
  {
+  "id": "numbers-31-e-01",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son was Phinehas, who went with the army?",
+  "choices": [
+   "Aaron's",
+   "Eleazar the priest's",
+   "Joshua's",
+   "Moses'"
+  ],
+  "answer": 1,
+  "explanation": "Moses sent them, and Phinehas the son of Eleazar the priest, to the war.",
+  "ref": "Numbers 31:6"
+ },
+ {
+  "id": "numbers-31-e-02",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men in all were armed for the war?",
+  "choices": [
+   "Twelve thousand",
+   "Six hundred",
+   "Forty thousand",
+   "One thousand"
+  ],
+  "answer": 0,
+  "explanation": "A thousand of every tribe, twelve thousand armed for war.",
+  "ref": "Numbers 31:5"
+ },
+ {
+  "id": "numbers-31-e-03",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Israel bring the captives and the spoil?",
+  "choices": [
+   "The camp at the plains of Moab",
+   "Egypt",
+   "Kadesh",
+   "Mount Sinai"
+  ],
+  "answer": 0,
+  "explanation": "They brought them unto the camp at the plains of Moab, which are by Jordan near Jericho.",
+  "ref": "Numbers 31:12"
+ },
+ {
+  "id": "numbers-31-e-04",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many kings of Midian were slain?",
+  "choices": [
+   "Twelve",
+   "Seven",
+   "Five",
+   "Two"
+  ],
+  "answer": 2,
+  "explanation": "Evi, and Rekem, and Zur, and Hur, and Reba, five kings of Midian.",
+  "ref": "Numbers 31:8"
+ },
+ {
+  "id": "numbers-31-e-05",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do to the cities of Midian?",
+  "choices": [
+   "Gave them to Levites",
+   "Sold them",
+   "Left them standing",
+   "Burnt them with fire"
+  ],
+  "answer": 3,
+  "explanation": "They burnt all their cities wherein they dwelt with fire.",
+  "ref": "Numbers 31:10"
+ },
+ {
+  "id": "numbers-31-e-06",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what matter did Moses say the Midianite women had caused trespass?",
+  "choices": [
+   "The matter of Peor",
+   "The matter of the calf",
+   "The matter of Meribah",
+   "The matter of Korah"
+  ],
+  "answer": 0,
+  "explanation": "These caused Israel, through the counsel of Balaam, to commit trespass in the matter of Peor.",
+  "ref": "Numbers 31:16"
+ },
+ {
+  "id": "numbers-31-e-07",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days were the men to stay outside the camp?",
+  "choices": [
+   "Seven",
+   "One",
+   "Three",
+   "Forty"
+  ],
+  "answer": 0,
+  "explanation": "Do ye abide without the camp seven days.",
+  "ref": "Numbers 31:19"
+ },
+ {
+  "id": "numbers-31-e-08",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the captains bring to the LORD to make atonement for their souls?",
+  "choices": [
+   "Barrels of oil",
+   "An oblation of jewels of gold",
+   "Their swords",
+   "A flock of sheep"
+  ],
+  "answer": 1,
+  "explanation": "We have brought an oblation for the LORD, to make an atonement for our souls.",
+  "ref": "Numbers 31:50"
+ },
+ {
+  "id": "numbers-31-e-09",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went out with Moses to meet the army outside the camp?",
+  "choices": [
+   "Caleb",
+   "Eleazar the priest",
+   "Phinehas alone",
+   "Joshua"
+  ],
+  "answer": 1,
+  "explanation": "Moses, and Eleazar the priest, and all the princes went forth to meet them.",
+  "ref": "Numbers 31:13"
+ },
+ {
+  "id": "numbers-31-e-10",
+  "chapter": 31,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Moses feel toward the officers of the host when they returned?",
+  "choices": [
+   "Weary",
+   "Silent",
+   "Joyful",
+   "Wroth"
+  ],
+  "answer": 3,
+  "explanation": "Moses was wroth with the officers of the host.",
+  "ref": "Numbers 31:14"
+ },
+ {
+  "id": "numbers-31-m-01",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was one of the five kings of Midian?",
+  "choices": [
+   "Balak",
+   "Og",
+   "Sihon",
+   "Rekem"
+  ],
+  "answer": 3,
+  "explanation": "Evi, and Rekem, and Zur, and Hur, and Reba.",
+  "ref": "Numbers 31:8"
+ },
+ {
+  "id": "numbers-31-m-02",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Moses say the women should not be saved alive?",
+  "choices": [
+   "They were soldiers",
+   "They hid the kings",
+   "They stole the spoil",
+   "They caused Israel to trespass through Balaam's counsel"
+  ],
+  "answer": 3,
+  "explanation": "These caused the children of Israel, through the counsel of Balaam, to commit trespass.",
+  "ref": "Numbers 31:16"
+ },
+ {
+  "id": "numbers-31-m-03",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done to things that could abide the fire?",
+  "choices": [
+   "They went through the fire",
+   "They were sold",
+   "They were hidden",
+   "They were buried"
+  ],
+  "answer": 0,
+  "explanation": "Every thing that may abide the fire, ye shall make it go through the fire, and it shall be clean.",
+  "ref": "Numbers 31:23"
+ },
+ {
+  "id": "numbers-31-m-04",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these metals was named among the spoil to be purified?",
+  "choices": [
+   "Copper",
+   "Platinum",
+   "Bronze plate",
+   "Tin"
+  ],
+  "answer": 3,
+  "explanation": "Only the gold, and the silver, the brass, the iron, the tin, and the lead.",
+  "ref": "Numbers 31:22"
+ },
+ {
+  "id": "numbers-31-m-05",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "Who spoke the ordinance of the law to the men of war?",
+  "choices": [
+   "Phinehas",
+   "Joshua",
+   "Eleazar the priest",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "Eleazar the priest said unto the men of war, This is the ordinance of the law.",
+  "ref": "Numbers 31:21"
+ },
+ {
+  "id": "numbers-31-m-06",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day were the soldiers to wash their clothes?",
+  "choices": [
+   "The seventh day",
+   "The tenth day",
+   "The third day",
+   "The first day"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall wash your clothes on the seventh day, and ye shall be clean.",
+  "ref": "Numbers 31:24"
+ },
+ {
+  "id": "numbers-31-m-07",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into how many parts was the prey to be divided?",
+  "choices": [
+   "Five",
+   "Twelve",
+   "Three",
+   "Two"
+  ],
+  "answer": 3,
+  "explanation": "Divide the prey into two parts.",
+  "ref": "Numbers 31:27"
+ },
+ {
+  "id": "numbers-31-m-08",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What portion of the soldiers' half was given as the LORD's tribute?",
+  "choices": [
+   "One of fifty",
+   "One of five hundred",
+   "One of ten",
+   "One of a hundred"
+  ],
+  "answer": 1,
+  "explanation": "Levy a tribute unto the LORD: one soul of five hundred.",
+  "ref": "Numbers 31:28"
+ },
+ {
+  "id": "numbers-31-m-09",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What portion of the congregation's half was given to the Levites?",
+  "choices": [
+   "One of five hundred",
+   "One of fifty",
+   "One of a hundred",
+   "One of ten"
+  ],
+  "answer": 1,
+  "explanation": "Of the children of Israel's half, thou shalt take one portion of fifty.",
+  "ref": "Numbers 31:30"
+ },
+ {
+  "id": "numbers-31-m-10",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom was the soldiers' tribute given as a heave offering?",
+  "choices": [
+   "The princes",
+   "Eleazar the priest",
+   "Joshua",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "Take it of their half, and give it unto Eleazar the priest, for an heave offering of the LORD.",
+  "ref": "Numbers 31:29"
+ },
+ {
+  "id": "numbers-31-m-11",
+  "chapter": 31,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom was the tribute from the congregation's half given?",
+  "choices": [
+   "The princes",
+   "The Levites",
+   "Eleazar",
+   "The poor"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt take one portion of fifty... and give them unto the Levites.",
+  "ref": "Numbers 31:30"
+ },
+ {
+  "id": "numbers-31-m-12",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which women were kept alive for Israel?",
+  "choices": [
+   "Only the kings' wives",
+   "All the women",
+   "Only the old women",
+   "The women children who had not known a man"
+  ],
+  "answer": 3,
+  "explanation": "All the women children, that have not known a man, keep alive for yourselves.",
+  "ref": "Numbers 31:18"
+ },
+ {
+  "id": "numbers-31-m-13",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many shekels of gold did the captains offer?",
+  "choices": [
+   "Seven thousand",
+   "Fifty thousand",
+   "Twelve thousand",
+   "Sixteen thousand seven hundred and fifty"
+  ],
+  "answer": 3,
+  "explanation": "The gold of the offering was sixteen thousand seven hundred and fifty shekels.",
+  "ref": "Numbers 31:52"
+ },
+ {
+  "id": "numbers-31-m-14",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses and Eleazar do with the gold of the captains?",
+  "choices": [
+   "Sent it to Moab",
+   "Brought it into the tabernacle as a memorial",
+   "Divided it among the tribes",
+   "Melted it for a calf"
+  ],
+  "answer": 1,
+  "explanation": "They brought it into the tabernacle of the congregation, for a memorial.",
+  "ref": "Numbers 31:54"
+ },
+ {
+  "id": "numbers-31-h-01",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sheep were in the booty?",
+  "choices": [
+   "72,000",
+   "337,500",
+   "61,000",
+   "675,000"
+  ],
+  "answer": 3,
+  "explanation": "The booty was six hundred thousand and seventy thousand and five thousand sheep.",
+  "ref": "Numbers 31:32"
+ },
+ {
+  "id": "numbers-31-h-02",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many beeves were in the booty?",
+  "choices": [
+   "36,000",
+   "675,000",
+   "61,000",
+   "72,000"
+  ],
+  "answer": 3,
+  "explanation": "And threescore and twelve thousand beeves.",
+  "ref": "Numbers 31:33"
+ },
+ {
+  "id": "numbers-31-h-03",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many asses were in the booty?",
+  "choices": [
+   "72,000",
+   "61,000",
+   "30,500",
+   "32,000"
+  ],
+  "answer": 1,
+  "explanation": "And threescore and one thousand asses.",
+  "ref": "Numbers 31:34"
+ },
+ {
+  "id": "numbers-31-h-04",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many persons, women who had not known man, were in the booty?",
+  "choices": [
+   "72,000",
+   "32,000",
+   "61,000",
+   "16,000"
+  ],
+  "answer": 1,
+  "explanation": "Thirty and two thousand persons in all, of women that had not known man.",
+  "ref": "Numbers 31:35"
+ },
+ {
+  "id": "numbers-31-h-05",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sheep were the LORD's tribute from the soldiers' half?",
+  "choices": [
+   "72",
+   "32",
+   "61",
+   "675"
+  ],
+  "answer": 3,
+  "explanation": "The LORD'S tribute of the sheep was six hundred and threescore and fifteen.",
+  "ref": "Numbers 31:37"
+ },
+ {
+  "id": "numbers-31-h-06",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many beeves were the LORD's tribute from the soldiers' half?",
+  "choices": [
+   "61",
+   "675",
+   "36",
+   "72"
+  ],
+  "answer": 3,
+  "explanation": "The beeves were thirty and six thousand; of which the LORD'S tribute was threescore and twelve.",
+  "ref": "Numbers 31:38"
+ },
+ {
+  "id": "numbers-31-h-07",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many asses were the LORD's tribute?",
+  "choices": [
+   "32",
+   "30",
+   "72",
+   "61"
+  ],
+  "answer": 3,
+  "explanation": "The asses were thirty thousand and five hundred; of which the LORD'S tribute was threescore and one.",
+  "ref": "Numbers 31:39"
+ },
+ {
+  "id": "numbers-31-h-08",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many persons were the LORD's tribute?",
+  "choices": [
+   "32",
+   "72",
+   "61",
+   "16"
+  ],
+  "answer": 0,
+  "explanation": "The persons were sixteen thousand; of which the LORD'S tribute was thirty and two persons.",
+  "ref": "Numbers 31:40"
+ },
+ {
+  "id": "numbers-31-h-09",
+  "chapter": 31,
+  "level": "hard",
+  "category": "person",
+  "question": "Who came near to Moses to report the count of the men?",
+  "choices": [
+   "The captains of thousands and hundreds",
+   "The princes",
+   "The Levites",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "The officers which were over thousands came near unto Moses.",
+  "ref": "Numbers 31:48"
+ },
+ {
+  "id": "numbers-31-h-10",
+  "chapter": 31,
+  "level": "hard",
+  "category": "place",
+  "question": "The plains of Moab by Jordan were near which city?",
+  "choices": [
+   "Jericho",
+   "Hebron",
+   "Shechem",
+   "Bethel"
+  ],
+  "answer": 0,
+  "explanation": "The camp at the plains of Moab, which are by Jordan near Jericho.",
+  "ref": "Numbers 31:12"
+ },
+ {
+  "id": "numbers-31-h-11",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which days were the killers to purify themselves and their captives?",
+  "choices": [
+   "The fourth and the fifth",
+   "Only the seventh",
+   "The first and the second",
+   "The third and the seventh"
+  ],
+  "answer": 3,
+  "explanation": "Purify both yourselves and your captives on the third day, and on the seventh day.",
+  "ref": "Numbers 31:19"
+ },
+ {
+  "id": "numbers-31-h-12",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these was to be purified besides all raiment and things of skins?",
+  "choices": [
+   "All work of silver",
+   "All things of linen",
+   "All things of wool",
+   "All work of goats' hair"
+  ],
+  "answer": 3,
+  "explanation": "Purify all your raiment, and all work of goats' hair, and all things made of wood.",
+  "ref": "Numbers 31:20"
+ },
+ {
+  "id": "numbers-31-h-13",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many beeves were in the soldiers' half?",
+  "choices": [
+   "16,000",
+   "30,500",
+   "36,000",
+   "72,000"
+  ],
+  "answer": 2,
+  "explanation": "The beeves were thirty and six thousand.",
+  "ref": "Numbers 31:38"
+ },
+ {
+  "id": "numbers-31-h-14",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many persons were in the soldiers' half?",
+  "choices": [
+   "32,000",
+   "36,000",
+   "30,500",
+   "16,000"
+  ],
+  "answer": 3,
+  "explanation": "And the persons were sixteen thousand.",
+  "ref": "Numbers 31:40"
+ },
+ {
+  "id": "numbers-31-h-15",
+  "chapter": 31,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many asses were in the soldiers' half?",
+  "choices": [
+   "30,500",
+   "61,000",
+   "36,000",
+   "16,000"
+  ],
+  "answer": 0,
+  "explanation": "The asses were thirty thousand and five hundred.",
+  "ref": "Numbers 31:39"
+ },
+ {
+  "id": "numbers-31-m-15",
+  "chapter": 31,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Phinehas have in his hand to blow in the war?",
+  "choices": [
+   "A harp",
+   "A ram's horn",
+   "A flag",
+   "The trumpets"
+  ],
+  "answer": 3,
+  "explanation": "Phinehas went with the holy instruments, and the trumpets to blow in his hand.",
+  "ref": "Numbers 31:6"
+ },
+ {
   "id": "old-numbers-32-1",
   "chapter": 32,
   "level": "beginner",
