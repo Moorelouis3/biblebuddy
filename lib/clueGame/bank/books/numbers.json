@@ -10896,6 +10896,646 @@
   "ref": "Numbers 16:46–48"
  },
  {
+  "id": "numbers-16-e-01",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses do when he heard the rebels' complaint?",
+  "choices": [
+   "He rent his clothes",
+   "He struck the ground",
+   "He left the camp",
+   "He fell upon his face"
+  ],
+  "answer": 3,
+  "explanation": "And when Moses heard it, he fell upon his face.",
+  "ref": "Numbers 16:4"
+ },
+ {
+  "id": "numbers-16-e-02",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many princes of the assembly rose up with Korah?",
+  "choices": [
+   "Seventy",
+   "One hundred",
+   "Two hundred and fifty",
+   "Fourteen thousand"
+  ],
+  "answer": 2,
+  "explanation": "Certain of the children of Israel, two hundred and fifty princes of the assembly, famous in the congregation, men of renown.",
+  "ref": "Numbers 16:2"
+ },
+ {
+  "id": "numbers-16-e-03",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses tell Korah and his company to take and put fire in?",
+  "choices": [
+   "Lamps",
+   "Censers",
+   "Trumpets",
+   "Basins"
+  ],
+  "answer": 1,
+  "explanation": "Take you censers, Korah, and all his company; and put fire therein.",
+  "ref": "Numbers 16:6–7"
+ },
+ {
+  "id": "numbers-16-e-04",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From which tribe was Korah?",
+  "choices": [
+   "Levi",
+   "Reuben",
+   "Judah",
+   "Dan"
+  ],
+  "answer": 0,
+  "explanation": "Korah, the son of Izhar, the son of Kohath, the son of Levi.",
+  "ref": "Numbers 16:1"
+ },
+ {
+  "id": "numbers-16-e-05",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which priest took up the censers out of the burning?",
+  "choices": [
+   "Ithamar",
+   "Phinehas",
+   "Nadab",
+   "Eleazar the son of Aaron"
+  ],
+  "answer": 3,
+  "explanation": "Speak unto Eleazar the son of Aaron the priest, that he take up the censers out of the burning.",
+  "ref": "Numbers 16:37"
+ },
+ {
+  "id": "numbers-16-e-06",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Dathan and Abiram say when Moses sent to call them?",
+  "choices": [
+   "We are coming at once",
+   "We will bring our offering",
+   "We will not come up",
+   "Let Aaron come first"
+  ],
+  "answer": 2,
+  "explanation": "Moses sent to call Dathan and Abiram: which said, We will not come up.",
+  "ref": "Numbers 16:12"
+ },
+ {
+  "id": "numbers-16-e-07",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel round about do when the earth swallowed Korah's company?",
+  "choices": [
+   "They prayed",
+   "They fled",
+   "They sang",
+   "They built an altar"
+  ],
+  "answer": 1,
+  "explanation": "All Israel that were round about them fled at the cry of them.",
+  "ref": "Numbers 16:34"
+ },
+ {
+  "id": "numbers-16-e-08",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was made from the brasen censers?",
+  "choices": [
+   "Broad plates for a covering of the altar",
+   "A new altar",
+   "Golden bells",
+   "A laver"
+  ],
+  "answer": 0,
+  "explanation": "The censers were made broad plates for a covering of the altar.",
+  "ref": "Numbers 16:39"
+ },
+ {
+  "id": "numbers-16-e-09",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the congregation say to Moses and Aaron the next day?",
+  "choices": [
+   "Ye have led us back to Egypt",
+   "Ye are the chosen of the LORD",
+   "Ye have made us a nation",
+   "Ye have killed the people of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "On the morrow all the congregation murmured, saying, Ye have killed the people of the LORD.",
+  "ref": "Numbers 16:41"
+ },
+ {
+  "id": "numbers-16-e-10",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many died in the plague, besides those in the matter of Korah?",
+  "choices": [
+   "Two hundred and fifty",
+   "Three thousand",
+   "Fourteen thousand and seven hundred",
+   "Twenty-four thousand"
+  ],
+  "answer": 2,
+  "explanation": "They that died in the plague were fourteen thousand and seven hundred, beside them that died about the matter of Korah.",
+  "ref": "Numbers 16:49"
+ },
+ {
+  "id": "numbers-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Dathan and Abiram say Moses had brought them up out of?",
+  "choices": [
+   "A land of famine",
+   "A land of bondage",
+   "A land that floweth with milk and honey",
+   "A land of Philistines"
+  ],
+  "answer": 2,
+  "explanation": "Is it a small thing that thou hast brought us up out of a land that floweth with milk and honey, to kill us in the wilderness?",
+  "ref": "Numbers 16:13"
+ },
+ {
+  "id": "numbers-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the rebels sought in addition to their service at the tabernacle?",
+  "choices": [
+   "The kingship",
+   "The priesthood",
+   "The land of Canaan",
+   "The ark"
+  ],
+  "answer": 1,
+  "explanation": "He hath brought thee near to him: and seek ye the priesthood also?",
+  "ref": "Numbers 16:10"
+ },
+ {
+  "id": "numbers-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say he had not taken from the rebels?",
+  "choices": [
+   "One ass",
+   "One ox",
+   "One shekel",
+   "One measure of corn"
+  ],
+  "answer": 0,
+  "explanation": "I have not taken one ass from them, neither have I hurt one of them.",
+  "ref": "Numbers 16:15"
+ },
+ {
+  "id": "numbers-16-m-04",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses ask the LORD about the rebels' offering?",
+  "choices": [
+   "Receive their offering",
+   "Hide their offering",
+   "Multiply their offering",
+   "Respect not their offering"
+  ],
+  "answer": 3,
+  "explanation": "Moses said unto the LORD, Respect not thou their offering.",
+  "ref": "Numbers 16:15"
+ },
+ {
+  "id": "numbers-16-m-05",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses and Aaron to do from among the congregation?",
+  "choices": [
+   "Hide in the tabernacle",
+   "Lead the people to Hebron",
+   "Separate themselves so He could consume them in a moment",
+   "Gather the elders"
+  ],
+  "answer": 2,
+  "explanation": "Separate yourselves from among this congregation, that I may consume them in a moment.",
+  "ref": "Numbers 16:21"
+ },
+ {
+  "id": "numbers-16-m-06",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Moses and Aaron address God when pleading for the congregation?",
+  "choices": [
+   "O God of Abraham, Isaac and Jacob",
+   "O God, the God of the spirits of all flesh",
+   "O LORD of hosts",
+   "O King of heaven"
+  ],
+  "answer": 1,
+  "explanation": "They fell upon their faces, and said, O God, the God of the spirits of all flesh, shall one man sin, and wilt thou be wroth with all the congregation?",
+  "ref": "Numbers 16:22"
+ },
+ {
+  "id": "numbers-16-m-07",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say the people should not do with the possessions of the wicked men?",
+  "choices": [
+   "Touch anything of theirs",
+   "Look upon them",
+   "Burn them",
+   "Carry them away"
+  ],
+  "answer": 0,
+  "explanation": "Depart from the tents of these wicked men, and touch nothing of theirs, lest ye be consumed in all their sins.",
+  "ref": "Numbers 16:26"
+ },
+ {
+  "id": "numbers-16-m-08",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would prove that the LORD had not sent Moses?",
+  "choices": [
+   "If rain fell that day",
+   "If the cloud departed",
+   "If Aaron's rod failed",
+   "If the men died the common death of all men"
+  ],
+  "answer": 3,
+  "explanation": "If these men die the common death of all men... then the LORD hath not sent me.",
+  "ref": "Numbers 16:29"
+ },
+ {
+  "id": "numbers-16-m-09",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What sign did Moses say would show the men had provoked the LORD?",
+  "choices": [
+   "Fire would fall on them",
+   "A plague would strike them",
+   "The earth would open and swallow them alive",
+   "They would be struck blind"
+  ],
+  "answer": 2,
+  "explanation": "If the LORD make a new thing, and the earth open her mouth, and swallow them up... they go down quick into the pit.",
+  "ref": "Numbers 16:30"
+ },
+ {
+  "id": "numbers-16-m-10",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who stood in the door of their tents with Dathan and Abiram?",
+  "choices": [
+   "Their servants",
+   "Their wives, sons and little children",
+   "Two hundred and fifty princes",
+   "The elders of Israel"
+  ],
+  "answer": 1,
+  "explanation": "Dathan and Abiram came out, and stood in the door of their tents, and their wives, and their sons, and their little children.",
+  "ref": "Numbers 16:27"
+ },
+ {
+  "id": "numbers-16-m-11",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What came out from the LORD and consumed the two hundred and fifty men?",
+  "choices": [
+   "A fire",
+   "A plague",
+   "A flood",
+   "An earthquake"
+  ],
+  "answer": 0,
+  "explanation": "There came out a fire from the LORD, and consumed the two hundred and fifty men that offered incense.",
+  "ref": "Numbers 16:35"
+ },
+ {
+  "id": "numbers-16-m-12",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the brasen censers made into a covering for the altar?",
+  "choices": [
+   "As a gift for the tabernacle builders",
+   "To honour Eleazar",
+   "To hide the ark",
+   "No stranger, not of Aaron's seed, may offer incense"
+  ],
+  "answer": 3,
+  "explanation": "A memorial that no stranger, which is not of the seed of Aaron, come near to offer incense before the LORD.",
+  "ref": "Numbers 16:40"
+ },
+ {
+  "id": "numbers-16-m-13",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses tell Aaron to take to make an atonement for the people?",
+  "choices": [
+   "A lamb and a ram",
+   "The ark of the covenant",
+   "A censer with fire from the altar and incense",
+   "The rod of Levi"
+  ],
+  "answer": 2,
+  "explanation": "Take a censer, and put fire therein from off the altar, and put on incense, and make an atonement for them.",
+  "ref": "Numbers 16:46"
+ },
+ {
+  "id": "numbers-16-m-14",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Aaron do to stop the plague?",
+  "choices": [
+   "He struck the rock",
+   "He stood between the dead and the living",
+   "He sprinkled blood on the door",
+   "He lifted up the serpent"
+  ],
+  "answer": 1,
+  "explanation": "He stood between the dead and the living; and the plague was stayed.",
+  "ref": "Numbers 16:48"
+ },
+ {
+  "id": "numbers-16-m-15",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the glory of the LORD appear when Korah gathered the congregation?",
+  "choices": [
+   "At the door of the tabernacle",
+   "On the mountain top",
+   "In the valley",
+   "Over the camp of Judah"
+  ],
+  "answer": 0,
+  "explanation": "Korah gathered all the congregation against them unto the door of the tabernacle: and the glory of the LORD appeared unto all the congregation.",
+  "ref": "Numbers 16:19"
+ },
+ {
+  "id": "numbers-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Korah's father?",
+  "choices": [
+   "Izhar",
+   "Eliab",
+   "Peleth",
+   "Kohath"
+  ],
+  "answer": 0,
+  "explanation": "Now Korah, the son of Izhar, the son of Kohath, the son of Levi.",
+  "ref": "Numbers 16:1"
+ },
+ {
+  "id": "numbers-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the father of Dathan and Abiram?",
+  "choices": [
+   "Peleth",
+   "Izhar",
+   "Kohath",
+   "Eliab"
+  ],
+  "answer": 3,
+  "explanation": "Dathan and Abiram, the sons of Eliab.",
+  "ref": "Numbers 16:1"
+ },
+ {
+  "id": "numbers-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man, son of Peleth, joined Korah in the rebellion?",
+  "choices": [
+   "Aaron",
+   "Eleazar",
+   "On",
+   "Eliab"
+  ],
+  "answer": 2,
+  "explanation": "And On, the son of Peleth, sons of Reuben, took men.",
+  "ref": "Numbers 16:1"
+ },
+ {
+  "id": "numbers-16-h-04",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From which tribe were Dathan, Abiram and On?",
+  "choices": [
+   "Levi",
+   "Reuben",
+   "Judah",
+   "Gad"
+  ],
+  "answer": 1,
+  "explanation": "Dathan and Abiram, the sons of Eliab, and On, the son of Peleth, sons of Reuben.",
+  "ref": "Numbers 16:1"
+ },
+ {
+  "id": "numbers-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the rebels say about all the congregation?",
+  "choices": [
+   "That all are holy, and the LORD is among them",
+   "That all are priests of the LORD",
+   "That all are chosen to rule",
+   "That all are free from sin"
+  ],
+  "answer": 0,
+  "explanation": "Ye take too much upon you, seeing all the congregation are holy, every one of them, and the LORD is among them.",
+  "ref": "Numbers 16:3"
+ },
+ {
+  "id": "numbers-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say the LORD would do the next day?",
+  "choices": [
+   "Send fire on the camp",
+   "Open the sea",
+   "Give the land",
+   "Show who are His and who is holy"
+  ],
+  "answer": 3,
+  "explanation": "Even to morrow the LORD will shew who are his, and who is holy.",
+  "ref": "Numbers 16:5"
+ },
+ {
+  "id": "numbers-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was told to bring his censer before the LORD along with Korah's company?",
+  "choices": [
+   "Eleazar",
+   "Joshua",
+   "Aaron",
+   "Caleb"
+  ],
+  "answer": 2,
+  "explanation": "Thou also, and Aaron, each of you his censer.",
+  "ref": "Numbers 16:17"
+ },
+ {
+  "id": "numbers-16-h-08",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Who followed Moses when he went to Dathan and Abiram?",
+  "choices": [
+   "The two hundred and fifty princes",
+   "The elders of Israel",
+   "The sons of Aaron",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "And Moses rose up and went unto Dathan and Abiram; and the elders of Israel followed him.",
+  "ref": "Numbers 16:25"
+ },
+ {
+  "id": "numbers-16-h-09",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say proved he had not acted of his own mind?",
+  "choices": [
+   "The LORD had sent him to do all these works",
+   "The people had agreed",
+   "The elders had spoken",
+   "The ark had moved"
+  ],
+  "answer": 0,
+  "explanation": "Hereby ye shall know that the LORD hath sent me to do all these works; for I have not done them of mine own mind.",
+  "ref": "Numbers 16:28"
+ },
+ {
+  "id": "numbers-16-h-10",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did all Israel flee from the cry of the swallowed men?",
+  "choices": [
+   "Lest fire fall on them",
+   "Lest the plague reach them",
+   "Lest the cloud depart",
+   "Lest the earth swallow them up also"
+  ],
+  "answer": 3,
+  "explanation": "They said, Lest the earth swallow us up also.",
+  "ref": "Numbers 16:34"
+ },
+ {
+  "id": "numbers-16-h-11",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD call Korah's company, whose censers were hallowed?",
+  "choices": [
+   "Rebels against the king",
+   "Deceivers of the people",
+   "Sinners against their own souls",
+   "Enemies of Moses"
+  ],
+  "answer": 2,
+  "explanation": "The censers of these sinners against their own souls, let them make them broad plates.",
+  "ref": "Numbers 16:38"
+ },
+ {
+  "id": "numbers-16-h-12",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Eleazar do to the fire from the censers?",
+  "choices": [
+   "He carried it to the altar",
+   "He scattered it yonder",
+   "He covered it with the plates",
+   "He quenched it with water"
+  ],
+  "answer": 1,
+  "explanation": "Take up the censers out of the burning, and scatter thou the fire yonder; for they are hallowed.",
+  "ref": "Numbers 16:37"
+ },
+ {
+  "id": "numbers-16-h-13",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What covered the tabernacle when the congregation gathered against Moses and Aaron the second time?",
+  "choices": [
+   "The cloud",
+   "A thick darkness",
+   "A pillar of fire",
+   "A cloud of incense"
+  ],
+  "answer": 0,
+  "explanation": "They looked toward the tabernacle: and, behold, the cloud covered it, and the glory of the LORD appeared.",
+  "ref": "Numbers 16:42"
+ },
+ {
+  "id": "numbers-16-h-14",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Aaron go to the congregation with the censer?",
+  "choices": [
+   "He walked slowly",
+   "He rode upon an ass",
+   "He sent his sons",
+   "He ran into the midst of them"
+  ],
+  "answer": 3,
+  "explanation": "Aaron took as Moses commanded, and ran into the midst of the congregation.",
+  "ref": "Numbers 16:47"
+ },
+ {
+  "id": "numbers-16-h-15",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses tell the sons of Levi was a small thing in comparison with seeking the priesthood?",
+  "choices": [
+   "That God had given them cities",
+   "That God had spared them in Egypt",
+   "God had separated them for the tabernacle service",
+   "That God had numbered them"
+  ],
+  "answer": 2,
+  "explanation": "Seemeth it but a small thing unto you, that the God of Israel hath separated you... to do the service of the tabernacle of the LORD?",
+  "ref": "Numbers 16:9"
+ },
+ {
   "id": "old-numbers-17-1",
   "chapter": 17,
   "level": "beginner",
