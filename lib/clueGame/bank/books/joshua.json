@@ -3680,6 +3680,646 @@
   "ref": "Joshua 6:22–25"
  },
  {
+  "id": "joshua-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city was shut up tight because of the children of Israel?",
+  "choices": [
+   "Ai",
+   "Gilgal",
+   "Jericho",
+   "Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Jericho was straitly shut up because of the children of Israel: none went out, and none came in.",
+  "ref": "Joshua 6:1"
+ },
+ {
+  "id": "joshua-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Joshua that Jericho was given into his hand?",
+  "choices": [
+   "The LORD",
+   "Rahab",
+   "Caleb",
+   "The captain of the guard"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said unto Joshua, See, I have given into thine hand Jericho.",
+  "ref": "Joshua 6:2"
+ },
+ {
+  "id": "joshua-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many priests carried trumpets of rams' horns before the ark?",
+  "choices": [
+   "Two",
+   "Seven",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Seven priests shall bear before the ark seven trumpets of rams' horns.",
+  "ref": "Joshua 6:4"
+ },
+ {
+  "id": "joshua-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joshua tell the people to do when the seventh circuit was finished?",
+  "choices": [
+   "Sing",
+   "Kneel",
+   "Shout",
+   "Run"
+  ],
+  "answer": 2,
+  "explanation": "Joshua said unto the people, Shout; for the LORD hath given you the city.",
+  "ref": "Joshua 6:16"
+ },
+ {
+  "id": "joshua-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the people lodge each night after marching around Jericho?",
+  "choices": [
+   "In the camp",
+   "In Jericho",
+   "At Gilgal's river",
+   "On the wall"
+  ],
+  "answer": 0,
+  "explanation": "They came into the camp, and lodged in the camp.",
+  "ref": "Joshua 6:11"
+ },
+ {
+  "id": "joshua-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The priests blew their trumpets before which sacred object?",
+  "choices": [
+   "The ark of the LORD",
+   "The golden altar",
+   "The tabernacle table",
+   "The brazen laver"
+  ],
+  "answer": 0,
+  "explanation": "The seven priests bearing seven trumpets passed on before the LORD, and the ark of the covenant followed them.",
+  "ref": "Joshua 6:8"
+ },
+ {
+  "id": "joshua-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do to Jericho at the end, besides taking its silver and gold?",
+  "choices": [
+   "Flooded it",
+   "Burnt it with fire",
+   "Left it standing",
+   "Gave it to Rahab"
+  ],
+  "answer": 1,
+  "explanation": "They burnt the city with fire, and all that was therein.",
+  "ref": "Joshua 6:24"
+ },
+ {
+  "id": "joshua-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the people told NOT to do while marching around the city?",
+  "choices": [
+   "Carry weapons",
+   "Eat bread",
+   "Make any noise",
+   "Look at the walls"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall not shout, nor make any noise with your voice.",
+  "ref": "Joshua 6:10"
+ },
+ {
+  "id": "joshua-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the silver, gold, brass and iron go?",
+  "choices": [
+   "Into the camp",
+   "Into the treasury of the LORD",
+   "To the soldiers",
+   "To Rahab"
+  ],
+  "answer": 1,
+  "explanation": "They put the silver, gold and vessels of brass and iron into the treasury of the house of the LORD.",
+  "ref": "Joshua 6:24"
+ },
+ {
+  "id": "joshua-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Joshua at the end of the chapter?",
+  "choices": [
+   "The LORD was with him and his fame spread",
+   "He was hurt",
+   "He left Israel",
+   "He was captured"
+  ],
+  "answer": 0,
+  "explanation": "The LORD was with Joshua; and his fame was noised throughout all the country.",
+  "ref": "Joshua 6:27"
+ },
+ {
+  "id": "joshua-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the city, what did the LORD say He had given into Joshua's hand?",
+  "choices": [
+   "Its flocks and herds",
+   "Its king and mighty men of valour",
+   "Its gates and towers",
+   "Its wells"
+  ],
+  "answer": 1,
+  "explanation": "The LORD gave Joshua Jericho, and the king thereof, and the mighty men of valour.",
+  "ref": "Joshua 6:2"
+ },
+ {
+  "id": "joshua-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were to go around the city once a day for six days?",
+  "choices": [
+   "The priests only",
+   "The women and children",
+   "All the men of war",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt compass the city, all ye men of war, and go round about the city once.",
+  "ref": "Joshua 6:3"
+ },
+ {
+  "id": "joshua-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Who went before the priests that blew the trumpets?",
+  "choices": [
+   "The armed men",
+   "The rereward",
+   "The elders",
+   "Rahab's family"
+  ],
+  "answer": 0,
+  "explanation": "The armed men went before the priests that blew with the trumpets.",
+  "ref": "Joshua 6:9"
+ },
+ {
+  "id": "joshua-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Who came after the ark in the procession?",
+  "choices": [
+   "The armed men",
+   "The rereward",
+   "The spies",
+   "The Levites with oxen"
+  ],
+  "answer": 1,
+  "explanation": "The rereward came after the ark, the priests going on, and blowing with the trumpets.",
+  "ref": "Joshua 6:9"
+ },
+ {
+  "id": "joshua-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when were the people told to keep silent?",
+  "choices": [
+   "Until the wall shook",
+   "Until the seventh day began",
+   "Until the priests stopped",
+   "Until the day Joshua bid them shout"
+  ],
+  "answer": 3,
+  "explanation": "Not a word was to proceed out of their mouth until the day I bid you shout; then shall ye shout.",
+  "ref": "Joshua 6:10"
+ },
+ {
+  "id": "joshua-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Joshua rise on the second day?",
+  "choices": [
+   "At midnight",
+   "Early in the morning",
+   "At noon",
+   "At sunset"
+  ],
+  "answer": 1,
+  "explanation": "Joshua rose early in the morning, and the priests took up the ark of the LORD.",
+  "ref": "Joshua 6:12"
+ },
+ {
+  "id": "joshua-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Why was Rahab to be spared?",
+  "choices": [
+   "She hid the messengers",
+   "She paid a ransom",
+   "She opened the gate",
+   "She was a priest's kin"
+  ],
+  "answer": 0,
+  "explanation": "Only Rahab the harlot shall live, because she hid the messengers that we sent.",
+  "ref": "Joshua 6:17"
+ },
+ {
+  "id": "joshua-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua say the city and all in it would be to the LORD?",
+  "choices": [
+   "Consecrated",
+   "Accursed",
+   "Forgiven",
+   "Blessed"
+  ],
+  "answer": 1,
+  "explanation": "The city shall be accursed, even it, and all that are therein, to the LORD.",
+  "ref": "Joshua 6:17"
+ },
+ {
+  "id": "joshua-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the silver, gold, and vessels of brass and iron said to be?",
+  "choices": [
+   "Accursed",
+   "Spoil for the soldiers",
+   "Consecrated unto the LORD",
+   "A gift for Rahab"
+  ],
+  "answer": 2,
+  "explanation": "All the silver, and gold, and vessels of brass and iron, are consecrated unto the LORD.",
+  "ref": "Joshua 6:19"
+ },
+ {
+  "id": "joshua-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joshua warn would happen if Israel took of the accursed thing?",
+  "choices": [
+   "The ark would be lost",
+   "They would make the camp of Israel a curse",
+   "The wall would rise again",
+   "They would lose the war"
+  ],
+  "answer": 1,
+  "explanation": "Keep yourselves from the accursed thing, lest ye make the camp of Israel a curse, and trouble it.",
+  "ref": "Joshua 6:18"
+ },
+ {
+  "id": "joshua-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Who went into Rahab's house to bring her out?",
+  "choices": [
+   "The priests",
+   "The two spies",
+   "The armed men",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "The young men that were spies went in, and brought Rahab out.",
+  "ref": "Joshua 6:22–23"
+ },
+ {
+  "id": "joshua-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the spies bring out with Rahab and all she had?",
+  "choices": [
+   "Her father, mother and brethren",
+   "Her husband and sons",
+   "The king's servants",
+   "Her neighbours only"
+  ],
+  "answer": 0,
+  "explanation": "They brought Rahab, and her father, and her mother, and her brethren, and all that she had.",
+  "ref": "Joshua 6:23"
+ },
+ {
+  "id": "joshua-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were Rahab's kindred left after being brought out?",
+  "choices": [
+   "Inside Jericho",
+   "In the treasury",
+   "Without the camp of Israel",
+   "On the wall"
+  ],
+  "answer": 2,
+  "explanation": "They brought out all her kindred, and left them without the camp of Israel.",
+  "ref": "Joshua 6:23"
+ },
+ {
+  "id": "joshua-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides people, which animals were destroyed in Jericho?",
+  "choices": [
+   "Camels and goats",
+   "Ox, sheep and ass",
+   "Horses and mules",
+   "Doves and oxen only"
+  ],
+  "answer": 1,
+  "explanation": "They utterly destroyed all that was in the city, both man and woman, young and old, and ox, and sheep, and ass.",
+  "ref": "Joshua 6:21"
+ },
+ {
+  "id": "joshua-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Rahab live from then on?",
+  "choices": [
+   "In Egypt",
+   "In Jericho's ruins",
+   "In Israel",
+   "In Gilgal's tents"
+  ],
+  "answer": 2,
+  "explanation": "Joshua saved Rahab alive; and she dwelleth in Israel even unto this day.",
+  "ref": "Joshua 6:25"
+ },
+ {
+  "id": "joshua-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua say the man who rebuilt Jericho would lay in his firstborn?",
+  "choices": [
+   "The foundation",
+   "The gates",
+   "The altar",
+   "The walls"
+  ],
+  "answer": 0,
+  "explanation": "He shall lay the foundation thereof in his firstborn.",
+  "ref": "Joshua 6:26"
+ },
+ {
+  "id": "joshua-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In his youngest son, what would that man set up?",
+  "choices": [
+   "The foundation",
+   "The gates of it",
+   "The altar",
+   "The ark"
+  ],
+  "answer": 1,
+  "explanation": "In his youngest son shall he set up the gates of it.",
+  "ref": "Joshua 6:26"
+ },
+ {
+  "id": "joshua-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day did they rise early about the dawning of the day?",
+  "choices": [
+   "The first",
+   "The third",
+   "The sixth",
+   "The seventh"
+  ],
+  "answer": 3,
+  "explanation": "On the seventh day they rose early about the dawning of the day, and compassed the city seven times.",
+  "ref": "Joshua 6:15"
+ },
+ {
+  "id": "joshua-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Joshua tell the people to shout?",
+  "choices": [
+   "When the ark stopped",
+   "At the seventh time the priests blew",
+   "When the wall shook",
+   "At sunrise"
+  ],
+  "answer": 1,
+  "explanation": "At the seventh time, when the priests blew with the trumpets, Joshua said unto the people, Shout.",
+  "ref": "Joshua 6:16"
+ },
+ {
+  "id": "joshua-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What reason did Joshua give for the shout?",
+  "choices": [
+   "The LORD hath given you the city",
+   "The wall is weak",
+   "The enemy is asleep",
+   "The king has fled"
+  ],
+  "answer": 0,
+  "explanation": "Shout; for the LORD hath given you the city.",
+  "ref": "Joshua 6:16"
+ },
+ {
+  "id": "joshua-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides silver and gold, which metals went into the LORD's treasury?",
+  "choices": [
+   "Lead and tin",
+   "Brass and iron",
+   "Copper and tin",
+   "Bronze and lead"
+  ],
+  "answer": 1,
+  "explanation": "Only the silver, and the gold, and the vessels of brass and of iron, they put into the treasury.",
+  "ref": "Joshua 6:24"
+ },
+ {
+  "id": "joshua-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was each man to go up into the city once the wall fell?",
+  "choices": [
+   "Straight before him",
+   "By the gate only",
+   "Behind the ark",
+   "By ladders"
+  ],
+  "answer": 0,
+  "explanation": "The people shall ascend up every man straight before him.",
+  "ref": "Joshua 6:5"
+ },
+ {
+  "id": "joshua-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the two spies done for Rahab, which Joshua reminded them of?",
+  "choices": [
+   "Paid her",
+   "Sworn to her",
+   "Built her a house",
+   "Fed her"
+  ],
+  "answer": 1,
+  "explanation": "Go into the harlot's house, and bring out the woman, and all that she hath, as ye sware unto her.",
+  "ref": "Joshua 6:22"
+ },
+ {
+  "id": "joshua-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Joshua?",
+  "choices": [
+   "Jephunneh",
+   "Eleazar",
+   "Nun",
+   "Amram"
+  ],
+  "answer": 2,
+  "explanation": "Joshua the son of Nun called the priests.",
+  "ref": "Joshua 6:6"
+ },
+ {
+  "id": "joshua-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Joshua call to take up the ark of the covenant?",
+  "choices": [
+   "The priests",
+   "The elders",
+   "The spies",
+   "The judges"
+  ],
+  "answer": 0,
+  "explanation": "Joshua called the priests, and said unto them, Take up the ark of the covenant.",
+  "ref": "Joshua 6:6"
+ },
+ {
+  "id": "joshua-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of Jericho's gates at the start of the chapter?",
+  "choices": [
+   "They were burnt",
+   "None went out and none came in",
+   "They stood open",
+   "They were guarded by Rahab"
+  ],
+  "answer": 1,
+  "explanation": "Jericho was straitly shut up: none went out, and none came in.",
+  "ref": "Joshua 6:1"
+ },
+ {
+  "id": "joshua-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the seven priests do \"continually\" as they went?",
+  "choices": [
+   "Sang",
+   "Blew with the trumpets",
+   "Offered incense",
+   "Kept silence"
+  ],
+  "answer": 1,
+  "explanation": "Seven priests bearing seven trumpets of rams' horns went on continually, and blew with the trumpets.",
+  "ref": "Joshua 6:13"
+ },
+ {
+  "id": "joshua-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of blast was to signal the great shout?",
+  "choices": [
+   "A long blast",
+   "Three short blasts",
+   "A silent pause",
+   "A double blast"
+  ],
+  "answer": 0,
+  "explanation": "When they make a long blast with the ram's horn, all the people shall shout with a great shout.",
+  "ref": "Joshua 6:5"
+ },
+ {
+  "id": "joshua-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joshua say of the man who rebuilt Jericho?",
+  "choices": [
+   "He would be exiled",
+   "He would be cursed before the LORD",
+   "He would be a king",
+   "He would be struck blind"
+  ],
+  "answer": 1,
+  "explanation": "Cursed be the man before the LORD, that riseth up and buildeth this city Jericho.",
+  "ref": "Joshua 6:26"
+ },
+ {
+  "id": "joshua-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides Rahab herself, what did Joshua order brought out of her house?",
+  "choices": [
+   "Her idols",
+   "All that she had",
+   "Her books",
+   "Her gold only"
+  ],
+  "answer": 1,
+  "explanation": "Bring out thence the woman, and all that she hath.",
+  "ref": "Joshua 6:22"
+ },
+ {
   "id": "old-joshua-7-1",
   "chapter": 7,
   "level": "beginner",
