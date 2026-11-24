@@ -6560,6 +6560,646 @@
   "ref": "Deuteronomy 10:18–19"
  },
  {
+  "id": "deuteronomy-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What wood did Moses use to make the ark?",
+  "choices": [
+   "Shittim wood",
+   "Cedar",
+   "Olive",
+   "Fir"
+  ],
+  "answer": 0,
+  "explanation": "I made an ark of shittim wood.",
+  "ref": "Deuteronomy 10:3"
+ },
+ {
+  "id": "deuteronomy-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who died and was buried at Mosera?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Joshua",
+   "Eleazar"
+  ],
+  "answer": 0,
+  "explanation": "There Aaron died, and there he was buried.",
+  "ref": "Deuteronomy 10:6"
+ },
+ {
+  "id": "deuteronomy-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who wrote on the second tables of stone?",
+  "choices": [
+   "The LORD",
+   "Moses",
+   "Aaron",
+   "Eleazar"
+  ],
+  "answer": 0,
+  "explanation": "He wrote on the tables, according to the first writing, the ten commandments.",
+  "ref": "Deuteronomy 10:4"
+ },
+ {
+  "id": "deuteronomy-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did Moses stay in the mount the second time?",
+  "choices": [
+   "Forty days and forty nights",
+   "Seven days",
+   "Twelve days",
+   "Three days"
+  ],
+  "answer": 0,
+  "explanation": "I stayed in the mount, according to the first time, forty days and forty nights.",
+  "ref": "Deuteronomy 10:10"
+ },
+ {
+  "id": "deuteronomy-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Above whom did the LORD choose Israel's seed?",
+  "choices": [
+   "Above all people",
+   "Above the angels",
+   "Above the priests",
+   "Above the Levites only"
+  ],
+  "answer": 0,
+  "explanation": "He chose their seed after them, even you above all people.",
+  "ref": "Deuteronomy 10:15"
+ },
+ {
+  "id": "deuteronomy-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What belongs to the LORD, the heaven of heavens and what else?",
+  "choices": [
+   "The earth with all that is in it",
+   "The wilderness only",
+   "The land of Canaan only",
+   "The tabernacle"
+  ],
+  "answer": 0,
+  "explanation": "The heaven and the heaven of heavens is the LORD'S thy God, the earth also, with all that therein is.",
+  "ref": "Deuteronomy 10:14"
+ },
+ {
+  "id": "deuteronomy-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has the LORD made Israel as for multitude?",
+  "choices": [
+   "The stars of heaven",
+   "The sand of the sea",
+   "The dust of the earth",
+   "The grass of the field"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God hath made thee as the stars of heaven for multitude.",
+  "ref": "Deuteronomy 10:22"
+ },
+ {
+  "id": "deuteronomy-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Moses call the LORD?",
+  "choices": [
+   "God of gods and Lord of lords",
+   "King of kings and judge of all",
+   "Shepherd of Israel",
+   "Maker of the sea"
+  ],
+  "answer": 0,
+  "explanation": "The LORD your God is God of gods, and Lord of lords.",
+  "ref": "Deuteronomy 10:17"
+ },
+ {
+  "id": "deuteronomy-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "For whom does the LORD execute judgment?",
+  "choices": [
+   "The fatherless and the widow",
+   "The rich and the strong",
+   "The priests and the kings",
+   "The soldiers and the elders"
+  ],
+  "answer": 0,
+  "explanation": "He doth execute the judgment of the fatherless and widow.",
+  "ref": "Deuteronomy 10:18"
+ },
+ {
+  "id": "deuteronomy-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Israel told to be no more?",
+  "choices": [
+   "Stiffnecked",
+   "Hungry",
+   "Few",
+   "Homeless"
+  ],
+  "answer": 0,
+  "explanation": "Circumcise therefore the foreskin of your heart, and be no more stiffnecked.",
+  "ref": "Deuteronomy 10:16"
+ },
+ {
+  "id": "deuteronomy-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD write on the second tables?",
+  "choices": [
+   "The names of the tribes",
+   "The laws of the offerings",
+   "The ten commandments",
+   "The story of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "He wrote on the tables...the ten commandments, which the LORD spake unto you in the mount.",
+  "ref": "Deuteronomy 10:4"
+ },
+ {
+  "id": "deuteronomy-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "From which place did Israel journey to Mosera?",
+  "choices": [
+   "Gudgodah",
+   "Jotbath",
+   "Beeroth of the children of Jaakan",
+   "Horeb"
+  ],
+  "answer": 2,
+  "explanation": "The children of Israel took their journey from Beeroth of the children of Jaakan to Mosera.",
+  "ref": "Deuteronomy 10:6"
+ },
+ {
+  "id": "deuteronomy-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to hew?",
+  "choices": [
+   "A bronze altar",
+   "A wooden box",
+   "Two tables of stone like the first",
+   "A stone pillar"
+  ],
+  "answer": 2,
+  "explanation": "Hew thee two tables of stone like unto the first.",
+  "ref": "Deuteronomy 10:1"
+ },
+ {
+  "id": "deuteronomy-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Levi not have with his brethren?",
+  "choices": [
+   "A tent",
+   "A voice",
+   "Part or inheritance",
+   "A name"
+  ],
+  "answer": 2,
+  "explanation": "Levi hath no part nor inheritance with his brethren; the LORD is his inheritance.",
+  "ref": "Deuteronomy 10:9"
+ },
+ {
+  "id": "deuteronomy-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Moses told to take his journey before the people?",
+  "choices": [
+   "That they may hear the law",
+   "That they may build the ark",
+   "That they may go in and possess the land",
+   "That they may cross the sea"
+  ],
+  "answer": 2,
+  "explanation": "Take thy journey before the people, that they may go in and possess the land.",
+  "ref": "Deuteronomy 10:11"
+ },
+ {
+  "id": "deuteronomy-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what are Israel to serve the LORD?",
+  "choices": [
+   "All their silver and gold",
+   "All their cattle",
+   "All their heart and all their soul",
+   "All their cities"
+  ],
+  "answer": 2,
+  "explanation": "To serve the LORD thy God with all thy heart and with all thy soul.",
+  "ref": "Deuteronomy 10:12"
+ },
+ {
+  "id": "deuteronomy-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whose good does Moses say the commandments are kept?",
+  "choices": [
+   "The priests' good",
+   "Pharaoh's good",
+   "Israel's own good",
+   "The Levites' good"
+  ],
+  "answer": 2,
+  "explanation": "To keep the commandments of the LORD, and his statutes...for thy good.",
+  "ref": "Deuteronomy 10:13"
+ },
+ {
+  "id": "deuteronomy-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Israel told to circumcise?",
+  "choices": [
+   "The edge of their field",
+   "The door of their house",
+   "The foreskin of their heart",
+   "The hair of their head"
+  ],
+  "answer": 2,
+  "explanation": "Circumcise therefore the foreskin of your heart.",
+  "ref": "Deuteronomy 10:16"
+ },
+ {
+  "id": "deuteronomy-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD not take, since He regards not persons?",
+  "choices": [
+   "Sacrifice",
+   "Silver",
+   "Reward",
+   "Honour"
+  ],
+  "answer": 2,
+  "explanation": "He regardeth not persons, nor taketh reward.",
+  "ref": "Deuteronomy 10:17"
+ },
+ {
+  "id": "deuteronomy-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why are Israel told to love the stranger?",
+  "choices": [
+   "The stranger is a priest",
+   "The stranger is rich",
+   "They were strangers in the land of Egypt",
+   "The stranger is kin"
+  ],
+  "answer": 2,
+  "explanation": "Love ye therefore the stranger: for ye were strangers in the land of Egypt.",
+  "ref": "Deuteronomy 10:19"
+ },
+ {
+  "id": "deuteronomy-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom shall Israel cleave?",
+  "choices": [
+   "The elders",
+   "The Levites",
+   "The LORD",
+   "The stranger"
+  ],
+  "answer": 2,
+  "explanation": "Him shalt thou serve, and to him shalt thou cleave, and swear by his name.",
+  "ref": "Deuteronomy 10:20"
+ },
+ {
+  "id": "deuteronomy-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD respond to Moses's second prayer?",
+  "choices": [
+   "He sent a plague",
+   "He gave a new law",
+   "He hearkened and would not destroy Israel",
+   "He was silent"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hearkened unto me at that time also, and the LORD would not destroy thee.",
+  "ref": "Deuteronomy 10:10"
+ },
+ {
+  "id": "deuteronomy-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Levi to do before the LORD?",
+  "choices": [
+   "Lead the army",
+   "Rule the tribes",
+   "Stand and minister to Him",
+   "Gather the tithes"
+  ],
+  "answer": 2,
+  "explanation": "The LORD separated the tribe of Levi...to stand before the LORD to minister unto him.",
+  "ref": "Deuteronomy 10:8"
+ },
+ {
+  "id": "deuteronomy-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses hold in his hand when he went up the mount?",
+  "choices": [
+   "The ark",
+   "A rod",
+   "The two tables of stone",
+   "A censer"
+  ],
+  "answer": 2,
+  "explanation": "I went up into the mount, having the two tables in mine hand.",
+  "ref": "Deuteronomy 10:3"
+ },
+ {
+  "id": "deuteronomy-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the LORD to Israel, besides their God?",
+  "choices": [
+   "Their king only",
+   "Their shield only",
+   "Their praise",
+   "Their rock only"
+  ],
+  "answer": 2,
+  "explanation": "He is thy praise, and he is thy God.",
+  "ref": "Deuteronomy 10:21"
+ },
+ {
+  "id": "deuteronomy-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who ministered in the priest's office in Aaron's stead?",
+  "choices": [
+   "Ithamar his son",
+   "Moses",
+   "Joshua",
+   "Eleazar his son"
+  ],
+  "answer": 3,
+  "explanation": "Eleazar his son ministered in the priest's office in his stead.",
+  "ref": "Deuteronomy 10:6"
+ },
+ {
+  "id": "deuteronomy-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "What kind of land was Jotbath?",
+  "choices": [
+   "A land of hills",
+   "A land of sand",
+   "A land of vines",
+   "A land of rivers of waters"
+  ],
+  "answer": 3,
+  "explanation": "Jotbath, a land of rivers of waters.",
+  "ref": "Deuteronomy 10:7"
+ },
+ {
+  "id": "deuteronomy-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "From Gudgodah, to which place did they journey?",
+  "choices": [
+   "Mosera",
+   "Beeroth",
+   "Horeb",
+   "Jotbath"
+  ],
+  "answer": 3,
+  "explanation": "From Gudgodah to Jotbath.",
+  "ref": "Deuteronomy 10:7"
+ },
+ {
+  "id": "deuteronomy-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the phrase for the highest heavens in the LORD's possession?",
+  "choices": [
+   "The throne of heaven",
+   "The gate of heaven",
+   "The mount of heaven",
+   "The heaven of heavens"
+  ],
+  "answer": 3,
+  "explanation": "Behold, the heaven and the heaven of heavens is the LORD'S thy God.",
+  "ref": "Deuteronomy 10:14"
+ },
+ {
+  "id": "deuteronomy-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many persons did Israel's fathers go down into Egypt with?",
+  "choices": [
+   "Twelve",
+   "Seventy times seven",
+   "A hundred",
+   "Threescore and ten"
+  ],
+  "answer": 3,
+  "explanation": "Thy fathers went down into Egypt with threescore and ten persons.",
+  "ref": "Deuteronomy 10:22"
+ },
+ {
+  "id": "deuteronomy-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD is a great God, a mighty and a what?",
+  "choices": [
+   "Gentle",
+   "Patient",
+   "Hidden",
+   "Terrible"
+  ],
+  "answer": 3,
+  "explanation": "A great God, a mighty, and a terrible.",
+  "ref": "Deuteronomy 10:17"
+ },
+ {
+  "id": "deuteronomy-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD is thy praise, and what else is said to Israel?",
+  "choices": [
+   "He is thy shield",
+   "He is thy rock",
+   "He is thy king",
+   "He is thy God"
+  ],
+  "answer": 3,
+  "explanation": "He is thy praise, and he is thy God.",
+  "ref": "Deuteronomy 10:21"
+ },
+ {
+  "id": "deuteronomy-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Levi was separated to stand before the LORD, to minister and to do what in His name?",
+  "choices": [
+   "Judge",
+   "Teach",
+   "Sacrifice",
+   "Bless"
+  ],
+  "answer": 3,
+  "explanation": "To bless in his name, unto this day.",
+  "ref": "Deuteronomy 10:8"
+ },
+ {
+  "id": "deuteronomy-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The second writing was according to which writing?",
+  "choices": [
+   "The Egyptian writing",
+   "The priest's writing",
+   "The prophet's writing",
+   "The first writing"
+  ],
+  "answer": 3,
+  "explanation": "He wrote on the tables, according to the first writing.",
+  "ref": "Deuteronomy 10:4"
+ },
+ {
+  "id": "deuteronomy-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD hearkened to Moses and would not do what?",
+  "choices": [
+   "Leave Israel",
+   "Judge Aaron",
+   "Break the tables",
+   "Destroy Israel"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hearkened unto me at that time also, and the LORD would not destroy thee.",
+  "ref": "Deuteronomy 10:10"
+ },
+ {
+  "id": "deuteronomy-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides fearing the LORD, Israel is to walk in all His what?",
+  "choices": [
+   "Tents",
+   "Gates",
+   "Courts",
+   "Ways"
+  ],
+  "answer": 3,
+  "explanation": "What doth the LORD thy God require of thee, but to fear the LORD thy God, to walk in all his ways.",
+  "ref": "Deuteronomy 10:12"
+ },
+ {
+  "id": "deuteronomy-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "In whom did the LORD have a delight to love?",
+  "choices": [
+   "The nations",
+   "The Levites",
+   "The strangers",
+   "Thy fathers"
+  ],
+  "answer": 3,
+  "explanation": "Only the LORD had a delight in thy fathers to love them.",
+  "ref": "Deuteronomy 10:15"
+ },
+ {
+  "id": "deuteronomy-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what was Levi separated by the LORD?",
+  "choices": [
+   "To rule the nations",
+   "To lead the army",
+   "To keep the flocks",
+   "To bear the ark of the covenant"
+  ],
+  "answer": 3,
+  "explanation": "The LORD separated the tribe of Levi, to bear the ark of the covenant of the LORD.",
+  "ref": "Deuteronomy 10:8"
+ },
+ {
+  "id": "deuteronomy-10-h-14",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of things has the LORD done for Israel, which their eyes have seen?",
+  "choices": [
+   "Secret and small things",
+   "Few and simple things",
+   "Strange and hidden things",
+   "Great and terrible things"
+  ],
+  "answer": 3,
+  "explanation": "He hath done for thee these great and terrible things, which thine eyes have seen.",
+  "ref": "Deuteronomy 10:21"
+ },
+ {
+  "id": "deuteronomy-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom shall Israel fear, serve and swear by?",
+  "choices": [
+   "The elders",
+   "The priests",
+   "Moses",
+   "The LORD thy God"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt fear the LORD thy God; him shalt thou serve...and swear by his name.",
+  "ref": "Deuteronomy 10:20"
+ },
+ {
   "id": "old-deuteronomy-11-1",
   "chapter": 11,
   "level": "beginner",
