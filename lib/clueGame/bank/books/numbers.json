@@ -5840,6 +5840,646 @@
   "ref": "Numbers 9:17–23"
  },
  {
+  "id": "numbers-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the LORD speak to Moses about keeping the passover?",
+  "choices": [
+   "The wilderness of Sinai",
+   "The plains of Moab",
+   "Kadesh",
+   "The land of Goshen"
+  ],
+  "answer": 0,
+  "explanation": "The LORD spake unto Moses in the wilderness of Sinai.",
+  "ref": "Numbers 9:1"
+ },
+ {
+  "id": "numbers-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what day of the first month was the passover kept?",
+  "choices": [
+   "The first",
+   "The twenty-first",
+   "The fourteenth",
+   "The tenth"
+  ],
+  "answer": 2,
+  "explanation": "They kept the passover on the fourteenth day of the first month at even.",
+  "ref": "Numbers 9:5"
+ },
+ {
+  "id": "numbers-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the defiled men come before with their question?",
+  "choices": [
+   "The Levites",
+   "The princes",
+   "Joshua and Caleb",
+   "Moses and Aaron"
+  ],
+  "answer": 3,
+  "explanation": "They came before Moses and before Aaron on that day.",
+  "ref": "Numbers 9:6"
+ },
+ {
+  "id": "numbers-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses tell the defiled men to do?",
+  "choices": [
+   "Wash seven times",
+   "Offer a bullock",
+   "Go home",
+   "Stand still"
+  ],
+  "answer": 3,
+  "explanation": "Moses said unto them, Stand still, and I will hear what the LORD will command.",
+  "ref": "Numbers 9:8"
+ },
+ {
+  "id": "numbers-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the cloud look like at evening over the tabernacle?",
+  "choices": [
+   "A thick darkness",
+   "A white dove",
+   "The appearance of fire",
+   "A rainbow"
+  ],
+  "answer": 2,
+  "explanation": "At even there was upon the tabernacle as it were the appearance of fire, until the morning.",
+  "ref": "Numbers 9:15"
+ },
+ {
+  "id": "numbers-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do where the cloud abode?",
+  "choices": [
+   "Built an altar",
+   "Sent out spies",
+   "Pitched their tents",
+   "Offered a lamb"
+  ],
+  "answer": 2,
+  "explanation": "In the place where the cloud abode, there the children of Israel pitched their tents.",
+  "ref": "Numbers 9:17"
+ },
+ {
+  "id": "numbers-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the passover lamb get eaten with?",
+  "choices": [
+   "Barley cakes and milk",
+   "Olives and figs",
+   "Unleavened bread and bitter herbs",
+   "Wine and honey"
+  ],
+  "answer": 2,
+  "explanation": "They shall keep it, and eat it with unleavened bread and bitter herbs.",
+  "ref": "Numbers 9:11"
+ },
+ {
+  "id": "numbers-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When the cloud was taken up, what did Israel do?",
+  "choices": [
+   "Built altars",
+   "Journeyed",
+   "Fasted",
+   "Rested"
+  ],
+  "answer": 1,
+  "explanation": "When the cloud was taken up from the tabernacle, then after that the children of Israel journeyed.",
+  "ref": "Numbers 9:17"
+ },
+ {
+  "id": "numbers-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What covered the tabernacle by day?",
+  "choices": [
+   "A tent of skins",
+   "The cloud",
+   "A veil of linen",
+   "Smoke from the altar"
+  ],
+  "answer": 1,
+  "explanation": "The cloud covered it by day, and the appearance of fire by night.",
+  "ref": "Numbers 9:16"
+ },
+ {
+  "id": "numbers-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who else could keep the passover according to its ordinance?",
+  "choices": [
+   "Any Egyptian",
+   "Only the firstborn",
+   "A stranger who sojourned among them",
+   "Only the priests"
+  ],
+  "answer": 2,
+  "explanation": "If a stranger shall sojourn among you, and will keep the passover unto the LORD, so shall he do.",
+  "ref": "Numbers 9:14"
+ },
+ {
+  "id": "numbers-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men say kept them back from keeping the passover?",
+  "choices": [
+   "They were far off on a journey",
+   "They were sick",
+   "They were defiled by the dead body of a man",
+   "They had no lamb"
+  ],
+  "answer": 2,
+  "explanation": "We are defiled by the dead body of a man: wherefore are we kept back?",
+  "ref": "Numbers 9:7"
+ },
+ {
+  "id": "numbers-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month were the unclean or far-off to keep the passover?",
+  "choices": [
+   "The second month",
+   "The third month",
+   "The tenth month",
+   "The seventh month"
+  ],
+  "answer": 0,
+  "explanation": "The fourteenth day of the second month at even they shall keep it.",
+  "ref": "Numbers 9:11"
+ },
+ {
+  "id": "numbers-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides being unclean by a dead body, who else could keep the second passover?",
+  "choices": [
+   "Those who were sick",
+   "The princes",
+   "Anyone in a journey afar off",
+   "The Levites"
+  ],
+  "answer": 2,
+  "explanation": "If any man shall be unclean by reason of a dead body, or be in a journey afar off, yet he shall keep the passover.",
+  "ref": "Numbers 9:10"
+ },
+ {
+  "id": "numbers-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not to be left until the morning?",
+  "choices": [
+   "The bitter herbs",
+   "The wine",
+   "The unleavened bread",
+   "Any of the passover offering"
+  ],
+  "answer": 3,
+  "explanation": "They shall leave none of it unto the morning, nor break any bone of it.",
+  "ref": "Numbers 9:12"
+ },
+ {
+  "id": "numbers-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not to be done to the passover offering?",
+  "choices": [
+   "Eat it in haste",
+   "Break any bone of it",
+   "Roast it with fire",
+   "Sprinkle it with oil"
+  ],
+  "answer": 1,
+  "explanation": "They shall leave none of it unto the morning, nor break any bone of it.",
+  "ref": "Numbers 9:12"
+ },
+ {
+  "id": "numbers-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to a clean man who did not keep the passover?",
+  "choices": [
+   "He was sent to the Levites",
+   "He paid a fine of silver",
+   "He kept it a year later",
+   "That soul was cut off from his people"
+  ],
+  "answer": 3,
+  "explanation": "The man that is clean, and forbeareth to keep the passover, the same soul shall be cut off from among his people.",
+  "ref": "Numbers 9:13"
+ },
+ {
+  "id": "numbers-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the reason given for cutting off the man who skipped it?",
+  "choices": [
+   "He was proud",
+   "He had defiled the camp",
+   "He was a stranger",
+   "He brought not the offering of the LORD in its season"
+  ],
+  "answer": 3,
+  "explanation": "Because he brought not the offering of the LORD in his appointed season, that man shall bear his sin.",
+  "ref": "Numbers 9:13"
+ },
+ {
+  "id": "numbers-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many ordinances did the LORD say for the stranger and the native-born?",
+  "choices": [
+   "A lesser one for strangers",
+   "Strangers were excluded",
+   "A separate one for each",
+   "One ordinance for both"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall have one ordinance, both for the stranger, and for him that was born in the land.",
+  "ref": "Numbers 9:14"
+ },
+ {
+  "id": "numbers-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the cloud first cover the tabernacle?",
+  "choices": [
+   "When Aaron lit the lamps",
+   "The day it was reared up",
+   "When the princes brought gifts",
+   "The day of the first passover in Egypt"
+  ],
+  "answer": 1,
+  "explanation": "On the day that the tabernacle was reared up the cloud covered the tabernacle.",
+  "ref": "Numbers 9:15"
+ },
+ {
+  "id": "numbers-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel do while the cloud stayed upon the tabernacle?",
+  "choices": [
+   "Marched on",
+   "Held a feast",
+   "Gathered manna daily",
+   "Rested in their tents"
+  ],
+  "answer": 3,
+  "explanation": "As long as the cloud abode upon the tabernacle they rested in their tents.",
+  "ref": "Numbers 9:18"
+ },
+ {
+  "id": "numbers-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel do when the cloud tarried long upon the tabernacle?",
+  "choices": [
+   "Built altars",
+   "Moved on anyway",
+   "Sent men ahead",
+   "Kept the charge of the LORD and journeyed not"
+  ],
+  "answer": 3,
+  "explanation": "When the cloud tarried long upon the tabernacle many days, the children of Israel kept the charge of the LORD, and journeyed not.",
+  "ref": "Numbers 9:19"
+ },
+ {
+  "id": "numbers-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Did Israel journey when the cloud was taken up at night?",
+  "choices": [
+   "Only after the morning",
+   "Yes, by day or by night",
+   "Only on the Sabbath",
+   "No, only by day"
+  ],
+  "answer": 1,
+  "explanation": "Whether it was by day or by night that the cloud was taken up, they journeyed.",
+  "ref": "Numbers 9:21"
+ },
+ {
+  "id": "numbers-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who commanded when Israel journeyed and pitched?",
+  "choices": [
+   "Moses",
+   "The princes",
+   "The LORD",
+   "Aaron"
+  ],
+  "answer": 2,
+  "explanation": "At the commandment of the LORD the children of Israel journeyed, and at the commandment of the LORD they pitched.",
+  "ref": "Numbers 9:18"
+ },
+ {
+  "id": "numbers-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long might the cloud tarry, if it stayed longest?",
+  "choices": [
+   "Ten years",
+   "Seven days",
+   "A year",
+   "Forty days"
+  ],
+  "answer": 2,
+  "explanation": "Whether it were two days, or a month, or a year, that the cloud tarried, the children of Israel abode in their tents.",
+  "ref": "Numbers 9:22"
+ },
+ {
+  "id": "numbers-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The LORD's commandment came by the hand of whom?",
+  "choices": [
+   "Joshua",
+   "Ithamar",
+   "Aaron",
+   "Moses"
+  ],
+  "answer": 3,
+  "explanation": "They kept the charge of the LORD, at the commandment of the LORD by the hand of Moses.",
+  "ref": "Numbers 9:23"
+ },
+ {
+  "id": "numbers-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month of the second year was the first passover in this chapter kept?",
+  "choices": [
+   "The second month",
+   "The first month",
+   "The third month",
+   "The seventh month"
+  ],
+  "answer": 1,
+  "explanation": "In the first month of the second year after they were come out of the land of Egypt.",
+  "ref": "Numbers 9:1"
+ },
+ {
+  "id": "numbers-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At what time of day was the passover kept on the fourteenth day?",
+  "choices": [
+   "At midnight",
+   "At noon",
+   "At dawn",
+   "At even"
+  ],
+  "answer": 3,
+  "explanation": "In the fourteenth day of this month, at even, ye shall keep it in his appointed season.",
+  "ref": "Numbers 9:3"
+ },
+ {
+  "id": "numbers-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The cloud was a few days on the tabernacle. What did Israel do?",
+  "choices": [
+   "Kept a feast",
+   "Sent out scouts",
+   "Abode in their tents by the LORD's commandment",
+   "Marched at once"
+  ],
+  "answer": 2,
+  "explanation": "When the cloud was a few days upon the tabernacle, according to the commandment of the LORD they abode in their tents.",
+  "ref": "Numbers 9:20"
+ },
+ {
+  "id": "numbers-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The cloud rested from even unto the morning. When did they journey?",
+  "choices": [
+   "The next evening",
+   "When the cloud was taken up in the morning",
+   "At noon",
+   "After a month"
+  ],
+  "answer": 1,
+  "explanation": "When the cloud abode from even unto the morning, and was taken up in the morning, then they journeyed.",
+  "ref": "Numbers 9:21"
+ },
+ {
+  "id": "numbers-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the cloud cover, named as the tent of the testimony?",
+  "choices": [
+   "Mount Sinai",
+   "The ark alone",
+   "The tabernacle",
+   "The camp"
+  ],
+  "answer": 2,
+  "explanation": "The cloud covered the tabernacle, namely, the tent of the testimony.",
+  "ref": "Numbers 9:15"
+ },
+ {
+  "id": "numbers-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The defiled men asked why they might not offer an offering of the LORD in what?",
+  "choices": [
+   "The first month",
+   "The wilderness",
+   "His appointed season",
+   "The holy place"
+  ],
+  "answer": 2,
+  "explanation": "Wherefore are we kept back, that we may not offer an offering of the LORD in his appointed season?",
+  "ref": "Numbers 9:7"
+ },
+ {
+  "id": "numbers-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD call the people of the defiled men's family line?",
+  "choices": [
+   "Captains",
+   "Posterity",
+   "Elders",
+   "Servants"
+  ],
+  "answer": 1,
+  "explanation": "If any man of you or of your posterity shall be unclean by reason of a dead body.",
+  "ref": "Numbers 9:10"
+ },
+ {
+  "id": "numbers-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The man who did not keep the passover would do what with his sin?",
+  "choices": [
+   "Bear it",
+   "Offer a sin bullock",
+   "Pay a ransom",
+   "Be forgiven"
+  ],
+  "answer": 0,
+  "explanation": "Because he brought not the offering of the LORD in his appointed season, that man shall bear his sin.",
+  "ref": "Numbers 9:13"
+ },
+ {
+  "id": "numbers-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD said to keep the passover according to all its rites and what?",
+  "choices": [
+   "Sacrifices of oxen",
+   "Priests",
+   "Gifts",
+   "Ceremonies"
+  ],
+  "answer": 3,
+  "explanation": "According to all the rites of it, and according to all the ceremonies thereof, shall ye keep it.",
+  "ref": "Numbers 9:3"
+ },
+ {
+  "id": "numbers-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the defiled men come before Moses and Aaron?",
+  "choices": [
+   "The seventh day",
+   "After the feast",
+   "On that same day",
+   "The next morning"
+  ],
+  "answer": 2,
+  "explanation": "They came before Moses and before Aaron on that day.",
+  "ref": "Numbers 9:6"
+ },
+ {
+  "id": "numbers-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say he would hear while the men stood still?",
+  "choices": [
+   "What the men's tribe said",
+   "What the LORD would command concerning them",
+   "What the elders advised",
+   "What Aaron decided"
+  ],
+  "answer": 1,
+  "explanation": "Stand still, and I will hear what the LORD will command concerning you.",
+  "ref": "Numbers 9:8"
+ },
+ {
+  "id": "numbers-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Israel keep the passover in the wilderness of Sinai?",
+  "choices": [
+   "According to all that the LORD commanded Moses",
+   "In haste and in secret",
+   "With a lamb for each tribe",
+   "Only the firstborn kept it"
+  ],
+  "answer": 0,
+  "explanation": "According to all that the LORD commanded Moses, so did the children of Israel.",
+  "ref": "Numbers 9:5"
+ },
+ {
+  "id": "numbers-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The men said they were defiled by the dead body of what?",
+  "choices": [
+   "An unclean beast",
+   "A leper",
+   "A stranger",
+   "A man"
+  ],
+  "answer": 3,
+  "explanation": "We are defiled by the dead body of a man.",
+  "ref": "Numbers 9:7"
+ },
+ {
+  "id": "numbers-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The second year was counted from when they came out of where?",
+  "choices": [
+   "The Red sea",
+   "The land of Goshen",
+   "The wilderness of Sinai",
+   "The land of Egypt"
+  ],
+  "answer": 3,
+  "explanation": "In the first month of the second year after they were come out of the land of Egypt.",
+  "ref": "Numbers 9:1"
+ },
+ {
+  "id": "numbers-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "A stranger keeping the passover was to follow its ordinance and what else?",
+  "choices": [
+   "The priest's choice",
+   "The manner thereof",
+   "The tribe's custom",
+   "The Levites' count"
+  ],
+  "answer": 1,
+  "explanation": "According to the ordinance of the passover, and according to the manner thereof, so shall he do.",
+  "ref": "Numbers 9:14"
+ },
+ {
   "id": "old-numbers-10-1",
   "chapter": 10,
   "level": "beginner",
