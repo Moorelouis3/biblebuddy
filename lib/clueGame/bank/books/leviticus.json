@@ -9456,6 +9456,646 @@
   "ref": "Leviticus 14:45"
  },
  {
+  "id": "leviticus-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose law did the LORD give in the day of his cleansing?",
+  "choices": [
+   "The priest",
+   "The leper",
+   "The Levite",
+   "The stranger"
+  ],
+  "answer": 1,
+  "explanation": "This shall be the law of the leper in the day of his cleansing.",
+  "ref": "Leviticus 14:2"
+ },
+ {
+  "id": "leviticus-14-e-02",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priest take with the two clean birds for the cleansing?",
+  "choices": [
+   "Salt and oil",
+   "Cedar wood, scarlet and hyssop",
+   "Bread and wine",
+   "Silver and gold"
+  ],
+  "answer": 1,
+  "explanation": "Two birds alive and clean, and cedar wood, and scarlet, and hyssop.",
+  "ref": "Leviticus 14:4"
+ },
+ {
+  "id": "leviticus-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the living bird in the end?",
+  "choices": [
+   "It was killed",
+   "It was let loose into the open field",
+   "It was eaten",
+   "It was kept"
+  ],
+  "answer": 1,
+  "explanation": "He shall let the living bird loose into the open field.",
+  "ref": "Leviticus 14:7"
+ },
+ {
+  "id": "leviticus-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the cleansed man shave off on the seventh day?",
+  "choices": [
+   "Only his beard",
+   "All his hair",
+   "Only his head",
+   "His eyebrows only"
+  ],
+  "answer": 1,
+  "explanation": "On the seventh day he shall shave all his hair off his head and his beard and his eyebrows.",
+  "ref": "Leviticus 14:9"
+ },
+ {
+  "id": "leviticus-14-e-05",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days did he stay outside his tent after coming into the camp?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Ten days",
+   "Forty days"
+  ],
+  "answer": 1,
+  "explanation": "He shall tarry abroad out of his tent seven days.",
+  "ref": "Leviticus 14:8"
+ },
+ {
+  "id": "leviticus-14-e-06",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On which day did he bring the lambs for his offering?",
+  "choices": [
+   "The seventh day",
+   "The eighth day",
+   "The tenth day",
+   "The first day"
+  ],
+  "answer": 1,
+  "explanation": "And on the eighth day he shall take two he lambs without blemish.",
+  "ref": "Leviticus 14:10"
+ },
+ {
+  "id": "leviticus-14-e-07",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did the priest present the man and the offerings?",
+  "choices": [
+   "In the city",
+   "At the door of the tabernacle",
+   "On the mountain",
+   "At the river"
+  ],
+  "answer": 1,
+  "explanation": "Before the LORD, at the door of the tabernacle of the congregation.",
+  "ref": "Leviticus 14:11"
+ },
+ {
+  "id": "leviticus-14-e-08",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the owner of a house tell the priest he saw?",
+  "choices": [
+   "A dream",
+   "As it were a plague in the house",
+   "A thief",
+   "A fire"
+  ],
+  "answer": 1,
+  "explanation": "It seemeth to me there is as it were a plague in the house.",
+  "ref": "Leviticus 14:35"
+ },
+ {
+  "id": "leviticus-14-e-09",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into which land would the plague of leprosy come in a house?",
+  "choices": [
+   "The land of Egypt",
+   "The land of Canaan",
+   "The land of Moab",
+   "The wilderness"
+  ],
+  "answer": 1,
+  "explanation": "When ye be come into the land of Canaan.",
+  "ref": "Leviticus 14:34"
+ },
+ {
+  "id": "leviticus-14-e-10",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priest command to do to a house before he looked at it?",
+  "choices": [
+   "Burn it",
+   "Empty it",
+   "Wash it",
+   "Paint it"
+  ],
+  "answer": 1,
+  "explanation": "The priest shall command that they empty the house.",
+  "ref": "Leviticus 14:36"
+ },
+ {
+  "id": "leviticus-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the first bird killed in?",
+  "choices": [
+   "A golden bowl",
+   "A brass pan",
+   "A wooden dish",
+   "An earthen vessel over running water"
+  ],
+  "answer": 3,
+  "explanation": "One of the birds be killed in an earthen vessel over running water.",
+  "ref": "Leviticus 14:5"
+ },
+ {
+  "id": "leviticus-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was dipped in the blood of the slain bird?",
+  "choices": [
+   "Only the priest's hand",
+   "Only the scarlet",
+   "A lamb",
+   "The living bird and the cedar, scarlet and hyssop"
+  ],
+  "answer": 3,
+  "explanation": "Dip them and the living bird in the blood of the bird that was killed.",
+  "ref": "Leviticus 14:6"
+ },
+ {
+  "id": "leviticus-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many he lambs were taken on the eighth day?",
+  "choices": [
+   "One",
+   "Three",
+   "Seven",
+   "Two"
+  ],
+  "answer": 3,
+  "explanation": "He shall take two he lambs without blemish, and one ewe lamb of the first year.",
+  "ref": "Leviticus 14:10"
+ },
+ {
+  "id": "leviticus-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What else was taken with the lambs, a measure of oil called a what?",
+  "choices": [
+   "A hin",
+   "A bath",
+   "An ephah",
+   "A log"
+  ],
+  "answer": 3,
+  "explanation": "Three tenth deals of fine flour ... and one log of oil.",
+  "ref": "Leviticus 14:10"
+ },
+ {
+  "id": "leviticus-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which lamb was offered as a trespass offering?",
+  "choices": [
+   "The ewe lamb",
+   "Both he lambs",
+   "None",
+   "One he lamb"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall take one he lamb, and offer him for a trespass offering.",
+  "ref": "Leviticus 14:12"
+ },
+ {
+  "id": "leviticus-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the trespass offering's blood put on the one cleansed?",
+  "choices": [
+   "The forehead only",
+   "His left hand",
+   "His heart",
+   "The right ear, right thumb and right great toe"
+  ],
+  "answer": 3,
+  "explanation": "Upon the tip of the right ear ... the thumb of his right hand ... the great toe of his right foot.",
+  "ref": "Leviticus 14:14"
+ },
+ {
+  "id": "leviticus-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which hand did the priest pour the oil?",
+  "choices": [
+   "His right hand",
+   "The leper's hand",
+   "A bowl",
+   "His own left hand"
+  ],
+  "answer": 3,
+  "explanation": "Pour it into the palm of his own left hand.",
+  "ref": "Leviticus 14:15"
+ },
+ {
+  "id": "leviticus-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many times did the priest sprinkle the oil before the LORD?",
+  "choices": [
+   "Three times",
+   "Twelve times",
+   "Once",
+   "Seven times"
+  ],
+  "answer": 3,
+  "explanation": "Sprinkle of the oil with his finger seven times before the LORD.",
+  "ref": "Leviticus 14:16"
+ },
+ {
+  "id": "leviticus-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest pour on the cleansed man's head?",
+  "choices": [
+   "Blood",
+   "Water",
+   "Wine",
+   "The rest of the oil"
+  ],
+  "answer": 3,
+  "explanation": "The remnant of the oil ... he shall pour upon the head of him that is to be cleansed.",
+  "ref": "Leviticus 14:18"
+ },
+ {
+  "id": "leviticus-14-m-10",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did a poor man bring for the trespass offering?",
+  "choices": [
+   "Two lambs",
+   "A ram",
+   "A bullock",
+   "One lamb"
+  ],
+  "answer": 3,
+  "explanation": "If he be poor ... he shall take one lamb for a trespass offering.",
+  "ref": "Leviticus 14:21"
+ },
+ {
+  "id": "leviticus-14-m-11",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did a poor man bring in place of three tenth deals of flour?",
+  "choices": [
+   "Three loaves",
+   "Two cakes",
+   "A log of wine",
+   "One tenth deal of fine flour"
+  ],
+  "answer": 3,
+  "explanation": "One tenth deal of fine flour mingled with oil for a meat offering.",
+  "ref": "Leviticus 14:21"
+ },
+ {
+  "id": "leviticus-14-m-12",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest do with the stones that had the house plague?",
+  "choices": [
+   "Burned them in the house",
+   "Buried them in the house",
+   "Washed them",
+   "Cast them into an unclean place outside the city"
+  ],
+  "answer": 3,
+  "explanation": "They shall cast them into an unclean place without the city.",
+  "ref": "Leviticus 14:40"
+ },
+ {
+  "id": "leviticus-14-m-13",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done to the inside of the house with the plague?",
+  "choices": [
+   "It was washed in oil",
+   "It was painted red",
+   "It was left",
+   "It was scraped"
+  ],
+  "answer": 3,
+  "explanation": "He shall cause the house to be scraped within round about.",
+  "ref": "Leviticus 14:41"
+ },
+ {
+  "id": "leviticus-14-m-14",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was the house shut up before the priest returned to look?",
+  "choices": [
+   "Three days",
+   "Two days",
+   "Ten days",
+   "Seven days"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall go out ... and shut up the house seven days.",
+  "ref": "Leviticus 14:38"
+ },
+ {
+  "id": "leviticus-14-m-15",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was used to plaster the house again?",
+  "choices": [
+   "The same stones",
+   "Clay from the river",
+   "Cedar",
+   "Other stones and other morter"
+  ],
+  "answer": 3,
+  "explanation": "They shall take other stones ... and he shall take other morter, and shall plaister the house.",
+  "ref": "Leviticus 14:42"
+ },
+ {
+  "id": "leviticus-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many birds did the poor man bring for the sin and burnt offerings?",
+  "choices": [
+   "Two turtledoves or two young pigeons",
+   "One lamb and one dove",
+   "Two lambs",
+   "A goat and a dove"
+  ],
+  "answer": 0,
+  "explanation": "Two turtledoves, or two young pigeons, such as he is able to get.",
+  "ref": "Leviticus 14:22"
+ },
+ {
+  "id": "leviticus-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose was the trespass offering, as the sin offering is?",
+  "choices": [
+   "The priest's",
+   "The LORD's alone",
+   "The leper's",
+   "The people's"
+  ],
+  "answer": 0,
+  "explanation": "As the sin offering is the priest's, so is the trespass offering: it is most holy.",
+  "ref": "Leviticus 14:13"
+ },
+ {
+  "id": "leviticus-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The trespass offering was killed in the place of what two offerings?",
+  "choices": [
+   "The sin offering and the burnt offering",
+   "The peace offering",
+   "The meat offering",
+   "The drink offering"
+  ],
+  "answer": 0,
+  "explanation": "In the place where he shall kill the sin offering and the burnt offering, in the holy place.",
+  "ref": "Leviticus 14:13"
+ },
+ {
+  "id": "leviticus-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the oil put on the cleansed man's ear, thumb and toe?",
+  "choices": [
+   "Upon the blood of the trespass offering",
+   "Under the blood",
+   "Instead of the blood",
+   "After washing"
+  ],
+  "answer": 0,
+  "explanation": "Upon the tip of the right ear ... upon the blood of the trespass offering.",
+  "ref": "Leviticus 14:17"
+ },
+ {
+  "id": "leviticus-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the house plague's colour?",
+  "choices": [
+   "Greenish or reddish",
+   "Black",
+   "White",
+   "Blue"
+  ],
+  "answer": 0,
+  "explanation": "Hollow strakes, greenish or reddish, which in sight are lower than the wall.",
+  "ref": "Leviticus 14:37"
+ },
+ {
+  "id": "leviticus-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If the plague came back after plastering, what kind of leprosy was it?",
+  "choices": [
+   "A fretting leprosy",
+   "A dry scall",
+   "An old leprosy",
+   "A freckled spot"
+  ],
+  "answer": 0,
+  "explanation": "It is a fretting leprosy in the house: it is unclean.",
+  "ref": "Leviticus 14:44"
+ },
+ {
+  "id": "leviticus-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who was unclean until the even in the shut up house?",
+  "choices": [
+   "He that goeth into the house",
+   "The priest",
+   "The owner",
+   "The children"
+  ],
+  "answer": 0,
+  "explanation": "He that goeth into the house all the while that it is shut up shall be unclean until the even.",
+  "ref": "Leviticus 14:46"
+ },
+ {
+  "id": "leviticus-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did he who ate in the house wash?",
+  "choices": [
+   "His clothes",
+   "His hands",
+   "The house",
+   "The dishes"
+  ],
+  "answer": 0,
+  "explanation": "He that eateth in the house shall wash his clothes.",
+  "ref": "Leviticus 14:47"
+ },
+ {
+  "id": "leviticus-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many birds cleansed a house?",
+  "choices": [
+   "Two",
+   "One",
+   "Three",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "He shall take to cleanse the house two birds, and cedar wood, and scarlet, and hyssop.",
+  "ref": "Leviticus 14:49"
+ },
+ {
+  "id": "leviticus-14-h-10",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times was the house sprinkled?",
+  "choices": [
+   "Seven times",
+   "Three times",
+   "Twelve times",
+   "Once"
+  ],
+  "answer": 0,
+  "explanation": "And sprinkle the house seven times.",
+  "ref": "Leviticus 14:51"
+ },
+ {
+  "id": "leviticus-14-h-11",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the living bird let go after cleansing a house?",
+  "choices": [
+   "Out of the city into the open fields",
+   "Into the house",
+   "Into the wilderness",
+   "Into a tree"
+  ],
+  "answer": 0,
+  "explanation": "He shall let go the living bird out of the city into the open fields.",
+  "ref": "Leviticus 14:53"
+ },
+ {
+  "id": "leviticus-14-h-12",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priest make for the house to be clean?",
+  "choices": [
+   "An atonement",
+   "A vow",
+   "A feast",
+   "A tithe"
+  ],
+  "answer": 0,
+  "explanation": "He shall ... make an atonement for the house: and it shall be clean.",
+  "ref": "Leviticus 14:53"
+ },
+ {
+  "id": "leviticus-14-h-13",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the law teach about uncleanness and cleanness?",
+  "choices": [
+   "When it is unclean and when it is clean",
+   "How to build a house",
+   "How to keep the feasts",
+   "How to pay tithes"
+  ],
+  "answer": 0,
+  "explanation": "To teach when it is unclean, and when it is clean: this is the law of leprosy.",
+  "ref": "Leviticus 14:57"
+ },
+ {
+  "id": "leviticus-14-h-14",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What offering was killed after the sin offering?",
+  "choices": [
+   "The burnt offering",
+   "The meat offering",
+   "The peace offering",
+   "The trespass offering"
+  ],
+  "answer": 0,
+  "explanation": "He shall offer the sin offering ... and afterward he shall kill the burnt offering.",
+  "ref": "Leviticus 14:19"
+ },
+ {
+  "id": "leviticus-14-h-15",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On the seventh day, what did the priest look to see about the house?",
+  "choices": [
+   "Whether the plague had spread in the walls",
+   "Whether the roof had fallen",
+   "Whether it was empty",
+   "Whether the owner had returned"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall come again the seventh day ... if the plague be spread in the walls of the house.",
+  "ref": "Leviticus 14:39"
+ },
+ {
   "id": "old-leviticus-15-1",
   "chapter": 15,
   "level": "beginner",
