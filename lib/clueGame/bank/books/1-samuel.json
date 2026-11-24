@@ -15216,6 +15216,646 @@
   "ref": "1 Samuel 22:20"
  },
  {
+  "id": "1-samuel-22-e-01",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "About how many men were with David at the cave?",
+  "choices": [
+   "Forty",
+   "Four hundred",
+   "Six hundred",
+   "One thousand"
+  ],
+  "answer": 1,
+  "explanation": "He became a captain over them: and there were with him about four hundred men.",
+  "ref": "1 Samuel 22:2"
+ },
+ {
+  "id": "1-samuel-22-e-02",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went down to David at the cave when they heard of it?",
+  "choices": [
+   "His brethren and his father's house",
+   "Jonathan and Michal",
+   "Saul's servants",
+   "The priests of Nob"
+  ],
+  "answer": 0,
+  "explanation": "When his brethren and all his father's house heard it, they went down thither to him.",
+  "ref": "1 Samuel 22:1"
+ },
+ {
+  "id": "1-samuel-22-e-03",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "To which king did David bring his father and mother?",
+  "choices": [
+   "The king of Gath",
+   "The king of Edom",
+   "The king of Ammon",
+   "The king of Moab"
+  ],
+  "answer": 3,
+  "explanation": "He brought them before the king of Moab.",
+  "ref": "1 Samuel 22:4"
+ },
+ {
+  "id": "1-samuel-22-e-04",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophet told David to leave the hold?",
+  "choices": [
+   "Samuel",
+   "Nathan",
+   "Gad",
+   "Ahijah"
+  ],
+  "answer": 2,
+  "explanation": "The prophet Gad said unto David, Abide not in the hold.",
+  "ref": "1 Samuel 22:5"
+ },
+ {
+  "id": "1-samuel-22-e-05",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul hold in his hand while his servants stood around him?",
+  "choices": [
+   "A sword",
+   "His spear",
+   "A staff",
+   "A harp"
+  ],
+  "answer": 1,
+  "explanation": "Saul abode in Gibeah under a tree in Ramah, having his spear in his hand.",
+  "ref": "1 Samuel 22:6"
+ },
+ {
+  "id": "1-samuel-22-e-06",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the king send to call, with all his father's house?",
+  "choices": [
+   "Ahimelech the priest",
+   "Abiathar",
+   "Samuel",
+   "Gad"
+  ],
+  "answer": 0,
+  "explanation": "The king sent to call Ahimelech the priest, the son of Ahitub, and all his father's house.",
+  "ref": "1 Samuel 22:11"
+ },
+ {
+  "id": "1-samuel-22-e-07",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who would not put forth their hand against the priests of the LORD?",
+  "choices": [
+   "Abner and Doeg",
+   "The Benjamites",
+   "The Philistines",
+   "The servants of the king"
+  ],
+  "answer": 3,
+  "explanation": "The servants of the king would not put forth their hand to fall upon the priests of the LORD.",
+  "ref": "1 Samuel 22:17"
+ },
+ {
+  "id": "1-samuel-22-e-08",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city of the priests did Doeg strike with the sword?",
+  "choices": [
+   "Gibeah",
+   "Ramah",
+   "Nob",
+   "Adullam"
+  ],
+  "answer": 2,
+  "explanation": "Nob, the city of the priests, smote he with the edge of the sword.",
+  "ref": "1 Samuel 22:19"
+ },
+ {
+  "id": "1-samuel-22-e-09",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Abiathar tell that Saul had slain the LORD's priests?",
+  "choices": [
+   "Gad",
+   "David",
+   "Jonathan",
+   "The king of Moab"
+  ],
+  "answer": 1,
+  "explanation": "Abiathar shewed David that Saul had slain the LORD'S priests.",
+  "ref": "1 Samuel 22:21"
+ },
+ {
+  "id": "1-samuel-22-e-10",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David tell Abiathar to do?",
+  "choices": [
+   "Abide with him",
+   "Go back to Nob",
+   "Flee to Moab",
+   "Serve Saul"
+  ],
+  "answer": 0,
+  "explanation": "David said, Abide thou with me, fear not.",
+  "ref": "1 Samuel 22:23"
+ },
+ {
+  "id": "1-samuel-22-m-01",
+  "chapter": 22,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did David take his parents?",
+  "choices": [
+   "Mizpeh of Benjamin",
+   "Gibeah",
+   "Bethlehem",
+   "Mizpeh of Moab"
+  ],
+  "answer": 3,
+  "explanation": "David went thence to Mizpeh of Moab.",
+  "ref": "1 Samuel 22:3"
+ },
+ {
+  "id": "1-samuel-22-m-02",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David become over the men who gathered to him?",
+  "choices": [
+   "A judge",
+   "A priest",
+   "A captain",
+   "A prophet"
+  ],
+  "answer": 2,
+  "explanation": "He became a captain over them.",
+  "ref": "1 Samuel 22:2"
+ },
+ {
+  "id": "1-samuel-22-m-03",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David ask the king of Moab to keep his parents?",
+  "choices": [
+   "Until Saul died",
+   "Until he knew what God would do for him",
+   "Until the war ended",
+   "Until winter passed"
+  ],
+  "answer": 1,
+  "explanation": "Let my father and my mother come forth, and be with you, till I know what God will do for me.",
+  "ref": "1 Samuel 22:3"
+ },
+ {
+  "id": "1-samuel-22-m-04",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gad tell David to do?",
+  "choices": [
+   "Depart into the land of Judah",
+   "Stay in the hold",
+   "Go to Gath",
+   "Return to Saul"
+  ],
+  "answer": 0,
+  "explanation": "Abide not in the hold; depart, and get thee into the land of Judah.",
+  "ref": "1 Samuel 22:5"
+ },
+ {
+  "id": "1-samuel-22-m-05",
+  "chapter": 22,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did David go after leaving the hold?",
+  "choices": [
+   "The wilderness of Ziph",
+   "The cave of Engedi",
+   "The land of Gath",
+   "The forest of Hareth"
+  ],
+  "answer": 3,
+  "explanation": "David departed, and came into the forest of Hareth.",
+  "ref": "1 Samuel 22:5"
+ },
+ {
+  "id": "1-samuel-22-m-06",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "What group did Saul address as his servants stood around him?",
+  "choices": [
+   "Levites",
+   "Philistines",
+   "Benjamites",
+   "Edomites"
+  ],
+  "answer": 2,
+  "explanation": "Saul said, Hear now, ye Benjamites.",
+  "ref": "1 Samuel 22:7"
+ },
+ {
+  "id": "1-samuel-22-m-07",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul complain none of his servants had shown him?",
+  "choices": [
+   "Where David was hiding",
+   "That his son had made a league with David",
+   "That Doeg was loyal",
+   "That Samuel had died"
+  ],
+  "answer": 1,
+  "explanation": "There is none that sheweth me that my son hath made a league with the son of Jesse.",
+  "ref": "1 Samuel 22:8"
+ },
+ {
+  "id": "1-samuel-22-m-08",
+  "chapter": 22,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Doeg say he saw David come?",
+  "choices": [
+   "Nob",
+   "Gath",
+   "Bethlehem",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "I saw the son of Jesse coming to Nob, to Ahimelech the son of Ahitub.",
+  "ref": "1 Samuel 22:9"
+ },
+ {
+  "id": "1-samuel-22-m-09",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Doeg say Ahimelech did for David?",
+  "choices": [
+   "Hid him in the temple",
+   "Sent him to Moab",
+   "Gave him a horse and servants",
+   "Enquired of the LORD, gave food and Goliath's sword"
+  ],
+  "answer": 3,
+  "explanation": "He enquired of the LORD for him, and gave him victuals, and gave him the sword of Goliath.",
+  "ref": "1 Samuel 22:10"
+ },
+ {
+  "id": "1-samuel-22-m-10",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Ahimelech describe David to Saul?",
+  "choices": [
+   "A servant of Samuel",
+   "A rebel and a thief",
+   "The king's son in law, faithful",
+   "An outlaw"
+  ],
+  "answer": 2,
+  "explanation": "Who is so faithful among all thy servants as David, which is the king's son in law?",
+  "ref": "1 Samuel 22:14"
+ },
+ {
+  "id": "1-samuel-22-m-11",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What sentence did Saul pass on Ahimelech?",
+  "choices": [
+   "He must leave Israel",
+   "He and his father's house would surely die",
+   "He must give up the ephod",
+   "He would be put in prison"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt surely die, Ahimelech, thou, and all thy father's house.",
+  "ref": "1 Samuel 22:16"
+ },
+ {
+  "id": "1-samuel-22-m-12",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Saul say the priests should die?",
+  "choices": [
+   "Their hand was with David and they did not tell him",
+   "They stole from the tabernacle",
+   "They would not anoint Jonathan",
+   "They worshipped idols"
+  ],
+  "answer": 0,
+  "explanation": "Their hand also is with David, and because they knew when he fled, and did not shew it to me.",
+  "ref": "1 Samuel 22:17"
+ },
+ {
+  "id": "1-samuel-22-m-13",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Saul command to fall upon the priests?",
+  "choices": [
+   "Abner",
+   "The footmen",
+   "Jonathan",
+   "Doeg the Edomite"
+  ],
+  "answer": 3,
+  "explanation": "The king said to Doeg, Turn thou, and fall upon the priests.",
+  "ref": "1 Samuel 22:18"
+ },
+ {
+  "id": "1-samuel-22-m-14",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Abiathar?",
+  "choices": [
+   "Ahitub's brother's",
+   "Gad's",
+   "Ahimelech's",
+   "Doeg's"
+  ],
+  "answer": 2,
+  "explanation": "One of the sons of Ahimelech the son of Ahitub, named Abiathar, escaped.",
+  "ref": "1 Samuel 22:20"
+ },
+ {
+  "id": "1-samuel-22-m-15",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say he knew the day Doeg was at Nob?",
+  "choices": [
+   "Saul would find him",
+   "Doeg would surely tell Saul",
+   "The priests would be spared",
+   "Abiathar would flee"
+  ],
+  "answer": 1,
+  "explanation": "I knew it that day, when Doeg the Edomite was there, that he would surely tell Saul.",
+  "ref": "1 Samuel 22:22"
+ },
+ {
+  "id": "1-samuel-22-h-01",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Ahimelech's father?",
+  "choices": [
+   "Ahitub",
+   "Eli",
+   "Abiathar",
+   "Phinehas"
+  ],
+  "answer": 0,
+  "explanation": "Ahimelech the priest, the son of Ahitub.",
+  "ref": "1 Samuel 22:11"
+ },
+ {
+  "id": "1-samuel-22-h-02",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul say David would give every one of the Benjamites?",
+  "choices": [
+   "Gold and silver",
+   "Houses and servants",
+   "Cattle and sheep",
+   "Fields and vineyards"
+  ],
+  "answer": 3,
+  "explanation": "Will the son of Jesse give every one of you fields and vineyards?",
+  "ref": "1 Samuel 22:7"
+ },
+ {
+  "id": "1-samuel-22-h-03",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul say David would make the Benjamites?",
+  "choices": [
+   "Priests and judges",
+   "Princes and kings",
+   "Captains of thousands and hundreds",
+   "Rulers of cities"
+  ],
+  "answer": 2,
+  "explanation": "Make you all captains of thousands, and captains of hundreds.",
+  "ref": "1 Samuel 22:7"
+ },
+ {
+  "id": "1-samuel-22-h-04",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much did Ahimelech say he knew of the matter?",
+  "choices": [
+   "Only a little",
+   "Nothing, less or more",
+   "Everything",
+   "Only that David was fleeing"
+  ],
+  "answer": 1,
+  "explanation": "Thy servant knew nothing of all this, less or more.",
+  "ref": "1 Samuel 22:15"
+ },
+ {
+  "id": "1-samuel-22-h-05",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the eighty and five persons Doeg slew wear?",
+  "choices": [
+   "A linen ephod",
+   "A purple robe",
+   "Sackcloth",
+   "A breastplate"
+  ],
+  "answer": 0,
+  "explanation": "He slew on that day fourscore and five persons that did wear a linen ephod.",
+  "ref": "1 Samuel 22:18"
+ },
+ {
+  "id": "1-samuel-22-h-06",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which animals were also struck at Nob?",
+  "choices": [
+   "Camels and goats",
+   "Oxen and horses",
+   "Sheep and doves",
+   "Oxen, asses and sheep"
+  ],
+  "answer": 3,
+  "explanation": "Oxen, and asses, and sheep, with the edge of the sword.",
+  "ref": "1 Samuel 22:19"
+ },
+ {
+  "id": "1-samuel-22-h-07",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say he had occasioned?",
+  "choices": [
+   "The fall of Nob",
+   "The war with Saul",
+   "The death of all of Abiathar's father's house",
+   "Saul's madness"
+  ],
+  "answer": 2,
+  "explanation": "I have occasioned the death of all the persons of thy father's house.",
+  "ref": "1 Samuel 22:22"
+ },
+ {
+  "id": "1-samuel-22-h-08",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What reason did David give why Abiathar would be safe with him?",
+  "choices": [
+   "David had many soldiers",
+   "He that sought David's life sought his",
+   "The king of Moab would protect them",
+   "The priests were holy"
+  ],
+  "answer": 1,
+  "explanation": "He that seeketh my life seeketh thy life: but with me thou shalt be in safeguard.",
+  "ref": "1 Samuel 22:23"
+ },
+ {
+  "id": "1-samuel-22-h-09",
+  "chapter": 22,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Saul say had stirred up his servant to lie in wait?",
+  "choices": [
+   "His son",
+   "Ahimelech",
+   "Doeg",
+   "Abner"
+  ],
+  "answer": 0,
+  "explanation": "My son hath stirred up my servant against me, to lie in wait, as at this day.",
+  "ref": "1 Samuel 22:8"
+ },
+ {
+  "id": "1-samuel-22-h-10",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did David's parents dwell with the king of Moab?",
+  "choices": [
+   "Seven years",
+   "Until Saul died",
+   "One winter",
+   "All the while David was in the hold"
+  ],
+  "answer": 3,
+  "explanation": "They dwelt with him all the while that David was in the hold.",
+  "ref": "1 Samuel 22:4"
+ },
+ {
+  "id": "1-samuel-22-h-11",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul hear about David before he spoke to his servants?",
+  "choices": [
+   "That David had gone to Gath",
+   "That David had died",
+   "That David was discovered, and his men",
+   "That David had been made king"
+  ],
+  "answer": 2,
+  "explanation": "When Saul heard that David was discovered, and the men that were with him.",
+  "ref": "1 Samuel 22:6"
+ },
+ {
+  "id": "1-samuel-22-h-12",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul accuse Ahimelech of giving David?",
+  "choices": [
+   "Gold and a horse",
+   "Bread, a sword, and enquiring of God",
+   "Armour and servants",
+   "A spear and a shield"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast given him bread, and a sword, and hast enquired of God for him.",
+  "ref": "1 Samuel 22:13"
+ },
+ {
+  "id": "1-samuel-22-h-13",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ahimelech say he did not begin to do for David that day?",
+  "choices": [
+   "Enquire of God for him",
+   "Hide him at Nob",
+   "Arm him for war",
+   "Send him to Moab"
+  ],
+  "answer": 0,
+  "explanation": "Did I then begin to enquire of God for him? be it far from me.",
+  "ref": "1 Samuel 22:15"
+ },
+ {
+  "id": "1-samuel-22-h-14",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul say about his servants' feelings toward him?",
+  "choices": [
+   "All grieved with him",
+   "All feared him",
+   "All obeyed him",
+   "None was sorry for him"
+  ],
+  "answer": 3,
+  "explanation": "There is none of you that is sorry for me.",
+  "ref": "1 Samuel 22:8"
+ },
+ {
+  "id": "1-samuel-22-h-15",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were Saul and his servants when he accused them of conspiracy?",
+  "choices": [
+   "Gilgal, in a tent",
+   "Nob, in the temple",
+   "Gibeah, under a tree",
+   "Hebron, in the city"
+  ],
+  "answer": 2,
+  "explanation": "Saul abode in Gibeah under a tree in Ramah, having his spear in his hand.",
+  "ref": "1 Samuel 22:6"
+ },
+ {
   "id": "old-1-samuel-23-1",
   "chapter": 23,
   "level": "beginner",
