@@ -5120,6 +5120,646 @@
   "ref": "Judges 8:28"
  },
  {
+  "id": "judges-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city's men refused Gideon bread for his faint army?",
+  "choices": [
+   "Ophrah",
+   "Succoth",
+   "Shechem",
+   "Gilead"
+  ],
+  "answer": 1,
+  "explanation": "Gideon asked the men of Succoth for loaves of bread; the princes of Succoth refused.",
+  "ref": "Judges 8:5–6"
+ },
+ {
+  "id": "judges-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "What did Gideon do to the tower of Penuel?",
+  "choices": [
+   "Built it up",
+   "Set it on fire",
+   "Beat it down",
+   "Hid inside it"
+  ],
+  "answer": 2,
+  "explanation": "He beat down the tower of Penuel, and slew the men of the city.",
+  "ref": "Judges 8:17"
+ },
+ {
+  "id": "judges-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Gideon's firstborn son?",
+  "choices": [
+   "Abimelech",
+   "Joash",
+   "Phurah",
+   "Jether"
+  ],
+  "answer": 3,
+  "explanation": "Gideon said unto Jether his firstborn, Up, and slay them.",
+  "ref": "Judges 8:20"
+ },
+ {
+  "id": "judges-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which son did Gideon's concubine in Shechem bear?",
+  "choices": [
+   "Abimelech",
+   "Jether",
+   "Zebah",
+   "Jotham"
+  ],
+  "answer": 0,
+  "explanation": "His concubine that was in Shechem bare him a son, whose name he called Abimelech.",
+  "ref": "Judges 8:31"
+ },
+ {
+  "id": "judges-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Gideon teach the men of Succoth?",
+  "choices": [
+   "With the sword",
+   "With thorns of the wilderness and briers",
+   "With chains",
+   "With a letter"
+  ],
+  "answer": 1,
+  "explanation": "He took the elders of the city, and thorns of the wilderness and briers, and with them he taught the men of Succoth.",
+  "ref": "Judges 8:16"
+ },
+ {
+  "id": "judges-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sons of his body did Gideon have?",
+  "choices": [
+   "Twelve",
+   "Forty",
+   "Threescore and ten",
+   "A hundred"
+  ],
+  "answer": 2,
+  "explanation": "Gideon had threescore and ten sons of his body begotten: for he had many wives.",
+  "ref": "Judges 8:30"
+ },
+ {
+  "id": "judges-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Gideon buried?",
+  "choices": [
+   "In Shechem",
+   "Beside the well of Harod",
+   "On mount Ephraim",
+   "In the sepulchre of Joash his father in Ophrah"
+  ],
+  "answer": 3,
+  "explanation": "Gideon was buried in the sepulchre of Joash his father, in Ophrah of the Abi-ezrites.",
+  "ref": "Judges 8:32"
+ },
+ {
+  "id": "judges-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Israel make their god after Gideon died?",
+  "choices": [
+   "Baal-berith",
+   "Jehovah-shalom",
+   "Dagon",
+   "Chemosh"
+  ],
+  "answer": 0,
+  "explanation": "As soon as Gideon was dead, Israel went a whoring after Baalim, and made Baal-berith their god.",
+  "ref": "Judges 8:33"
+ },
+ {
+  "id": "judges-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom had Zebah and Zalmunna slain at Tabor?",
+  "choices": [
+   "Gideon's servants",
+   "Gideon's brethren",
+   "The men of Succoth",
+   "Princes of Ephraim"
+  ],
+  "answer": 1,
+  "explanation": "Gideon said, They were my brethren, even the sons of my mother.",
+  "ref": "Judges 8:18–19"
+ },
+ {
+  "id": "judges-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men did Gideon have when he passed over Jordan?",
+  "choices": [
+   "Ten thousand",
+   "A hundred",
+   "Three hundred",
+   "Fifteen thousand"
+  ],
+  "answer": 2,
+  "explanation": "Gideon came to Jordan, and passed over, he, and the three hundred men that were with him, faint, yet pursuing.",
+  "ref": "Judges 8:4"
+ },
+ {
+  "id": "judges-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gideon say was better than the vintage of Abi-ezer?",
+  "choices": [
+   "The harvest of Manasseh",
+   "The flocks of Gilead",
+   "The wine of Succoth",
+   "The gleaning of the grapes of Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "Is not the gleaning of the grapes of Ephraim better than the vintage of Abi-ezer?",
+  "ref": "Judges 8:2"
+ },
+ {
+  "id": "judges-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Gideon say had delivered Oreb and Zeeb into Ephraim's hands?",
+  "choices": [
+   "God",
+   "The men of Abi-ezer",
+   "Gideon's three hundred",
+   "Phurah"
+  ],
+  "answer": 0,
+  "explanation": "God hath delivered into your hands the princes of Midian, Oreb and Zeeb.",
+  "ref": "Judges 8:3"
+ },
+ {
+  "id": "judges-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the princes of Succoth answer Gideon?",
+  "choices": [
+   "Take what you need",
+   "Are the hands of Zebah and Zalmunna now in thine hand?",
+   "Our bread is for the king",
+   "Return when you have won"
+  ],
+  "answer": 1,
+  "explanation": "The princes of Succoth said, Are the hands of Zebah and Zalmunna now in thine hand?",
+  "ref": "Judges 8:6"
+ },
+ {
+  "id": "judges-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gideon promise to do to the men of Penuel?",
+  "choices": [
+   "Burn their city",
+   "Take their flocks",
+   "Break down their tower",
+   "Make them pay tribute"
+  ],
+  "answer": 2,
+  "explanation": "He said, When I come again in peace, I will break down this tower.",
+  "ref": "Judges 8:9"
+ },
+ {
+  "id": "judges-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were Zebah and Zalmunna with their hosts?",
+  "choices": [
+   "Nobah",
+   "Jogbehah",
+   "Penuel",
+   "Karkor"
+  ],
+  "answer": 3,
+  "explanation": "Zebah and Zalmunna were in Karkor, and their hosts with them.",
+  "ref": "Judges 8:10"
+ },
+ {
+  "id": "judges-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "About how many men remained with Zebah and Zalmunna?",
+  "choices": [
+   "Fifteen thousand",
+   "A hundred and twenty thousand",
+   "Three hundred",
+   "Seventy-seven"
+  ],
+  "answer": 0,
+  "explanation": "Their hosts with them were about fifteen thousand men.",
+  "ref": "Judges 8:10"
+ },
+ {
+  "id": "judges-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jether not draw his sword?",
+  "choices": [
+   "He had no sword",
+   "He feared, because he was yet a youth",
+   "He refused to kill",
+   "His father stopped him"
+  ],
+  "answer": 1,
+  "explanation": "The youth drew not his sword: for he feared, because he was yet a youth.",
+  "ref": "Judges 8:20"
+ },
+ {
+  "id": "judges-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Zebah and Zalmunna say to Gideon?",
+  "choices": [
+   "Spare us for our brethren",
+   "Let us pay tribute",
+   "Rise thou, and fall upon us",
+   "Send for Jether"
+  ],
+  "answer": 2,
+  "explanation": "Rise thou, and fall upon us: for as the man is, so is his strength.",
+  "ref": "Judges 8:21"
+ },
+ {
+  "id": "judges-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gideon ask the people to give him?",
+  "choices": [
+   "Their best sheep",
+   "Their swords",
+   "Their sons",
+   "The earrings of their prey"
+  ],
+  "answer": 3,
+  "explanation": "I would desire a request of you, that ye would give me every man the earrings of his prey.",
+  "ref": "Judges 8:24"
+ },
+ {
+  "id": "judges-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Midianites have golden earrings?",
+  "choices": [
+   "They were Ishmaelites",
+   "They were kings",
+   "They were priests of Baal",
+   "They traded in Egypt"
+  ],
+  "answer": 0,
+  "explanation": "They had golden earrings, because they were Ishmaelites.",
+  "ref": "Judges 8:24"
+ },
+ {
+  "id": "judges-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Gideon die?",
+  "choices": [
+   "In battle",
+   "In a good old age",
+   "By the sword of Abimelech",
+   "In a fall"
+  ],
+  "answer": 1,
+  "explanation": "Gideon the son of Joash died in a good old age.",
+  "ref": "Judges 8:32"
+ },
+ {
+  "id": "judges-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Gideon dwell after Midian was subdued?",
+  "choices": [
+   "In Succoth",
+   "In Shechem",
+   "In his own house",
+   "In Penuel"
+  ],
+  "answer": 2,
+  "explanation": "Jerubbaal the son of Joash went and dwelt in his own house.",
+  "ref": "Judges 8:29"
+ },
+ {
+  "id": "judges-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel fail to show to the house of Jerubbaal?",
+  "choices": [
+   "Tribute",
+   "Honour at his grave",
+   "A crown",
+   "Kindness"
+  ],
+  "answer": 3,
+  "explanation": "Neither shewed they kindness to the house of Jerubbaal, namely, Gideon.",
+  "ref": "Judges 8:35"
+ },
+ {
+  "id": "judges-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Israel ask to rule over them?",
+  "choices": [
+   "Gideon, his son, and his son's son",
+   "Jether alone",
+   "Gideon and the elders",
+   "Abimelech and Jether"
+  ],
+  "answer": 0,
+  "explanation": "Rule thou over us, both thou, and thy son, and thy son's son also.",
+  "ref": "Judges 8:22"
+ },
+ {
+  "id": "judges-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gideon take from the camels' necks of the kings?",
+  "choices": [
+   "Bells and bridles",
+   "Ornaments",
+   "Saddles",
+   "Tents"
+  ],
+  "answer": 1,
+  "explanation": "Gideon slew Zebah and Zalmunna, and took away the ornaments that were on their camels' necks.",
+  "ref": "Judges 8:21"
+ },
+ {
+  "id": "judges-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men that drew sword had fallen of the east?",
+  "choices": [
+   "Fifteen thousand",
+   "Seventy-seven thousand",
+   "A hundred and twenty thousand",
+   "Two hundred thousand"
+  ],
+  "answer": 2,
+  "explanation": "There fell an hundred and twenty thousand men that drew sword.",
+  "ref": "Judges 8:10"
+ },
+ {
+  "id": "judges-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many princes and elders of Succoth did the young man describe?",
+  "choices": [
+   "Seventy",
+   "Twelve",
+   "Three hundred",
+   "Threescore and seventeen"
+  ],
+  "answer": 3,
+  "explanation": "He described unto him the princes of Succoth, and the elders thereof, even threescore and seventeen men.",
+  "ref": "Judges 8:14"
+ },
+ {
+  "id": "judges-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Gideon went up by the way of those in tents east of which places?",
+  "choices": [
+   "Nobah and Jogbehah",
+   "Succoth and Penuel",
+   "Karkor and Tabor",
+   "Ophrah and Shechem"
+  ],
+  "answer": 0,
+  "explanation": "Gideon went up by the way of them that dwelt in tents on the east of Nobah and Jogbehah.",
+  "ref": "Judges 8:11"
+ },
+ {
+  "id": "judges-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was Gideon able to smite the host of Zebah and Zalmunna?",
+  "choices": [
+   "They were asleep in Karkor",
+   "The host was secure",
+   "They had no weapons",
+   "They were fleeing"
+  ],
+  "answer": 1,
+  "explanation": "Gideon smote the host: for the host was secure.",
+  "ref": "Judges 8:11"
+ },
+ {
+  "id": "judges-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Gideon return from the battle?",
+  "choices": [
+   "At midnight",
+   "After three days",
+   "Before the sun was up",
+   "At noon"
+  ],
+  "answer": 2,
+  "explanation": "Gideon the son of Joash returned from battle before the sun was up.",
+  "ref": "Judges 8:13"
+ },
+ {
+  "id": "judges-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the weight of the golden earrings Gideon requested?",
+  "choices": [
+   "Seventy shekels",
+   "A thousand talents",
+   "Three hundred shekels",
+   "A thousand and seven hundred shekels"
+  ],
+  "answer": 3,
+  "explanation": "The weight of the golden earrings was a thousand and seven hundred shekels of gold.",
+  "ref": "Judges 8:26"
+ },
+ {
+  "id": "judges-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "In which city did Gideon put the ephod?",
+  "choices": [
+   "Ophrah",
+   "Shechem",
+   "Succoth",
+   "Penuel"
+  ],
+  "answer": 0,
+  "explanation": "Gideon made an ephod thereof, and put it in his city, even in Ophrah.",
+  "ref": "Judges 8:27"
+ },
+ {
+  "id": "judges-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the kings say each of Gideon's brethren resembled?",
+  "choices": [
+   "A mighty man of valour",
+   "The children of a king",
+   "A prince of Midian",
+   "A servant of the LORD"
+  ],
+  "answer": 1,
+  "explanation": "Each one resembled the children of a king.",
+  "ref": "Judges 8:18"
+ },
+ {
+  "id": "judges-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Gideon's concubine who bore Abimelech live?",
+  "choices": [
+   "In Ophrah",
+   "In Succoth",
+   "In Shechem",
+   "In Penuel"
+  ],
+  "answer": 2,
+  "explanation": "His concubine that was in Shechem, she also bare him a son.",
+  "ref": "Judges 8:31"
+ },
+ {
+  "id": "judges-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men spread to receive the earrings?",
+  "choices": [
+   "A tent skin",
+   "A shield",
+   "A basket",
+   "A garment"
+  ],
+  "answer": 3,
+  "explanation": "They spread a garment, and did cast therein every man the earrings of his prey.",
+  "ref": "Judges 8:25"
+ },
+ {
+  "id": "judges-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the ephod become to Gideon and his house?",
+  "choices": [
+   "It became a snare",
+   "It became a blessing",
+   "It was stolen",
+   "It was burned"
+  ],
+  "answer": 0,
+  "explanation": "All Israel went thither a whoring after it: which thing became a snare unto Gideon.",
+  "ref": "Judges 8:27"
+ },
+ {
+  "id": "judges-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ephraim's anger do when Gideon had spoken?",
+  "choices": [
+   "It grew hotter",
+   "It was abated",
+   "They left the army",
+   "They fought him"
+  ],
+  "answer": 1,
+  "explanation": "Their anger was abated toward him, when he had said that.",
+  "ref": "Judges 8:3"
+ },
+ {
+  "id": "judges-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to Midian, so that they lifted up their heads no more?",
+  "choices": [
+   "It was driven to Egypt",
+   "It made peace",
+   "It was subdued before Israel",
+   "It joined Ephraim"
+  ],
+  "answer": 2,
+  "explanation": "Thus was Midian subdued before the children of Israel, so that they lifted up their heads no more.",
+  "ref": "Judges 8:28"
+ },
+ {
+  "id": "judges-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men of Israel fail to remember after Gideon died?",
+  "choices": [
+   "The law of Moses",
+   "Their kings",
+   "The ephod",
+   "The LORD their God"
+  ],
+  "answer": 3,
+  "explanation": "The children of Israel remembered not the LORD their God, who had delivered them.",
+  "ref": "Judges 8:34"
+ },
+ {
+  "id": "judges-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Gideon say the men of Succoth had upbraided him with?",
+  "choices": [
+   "Zebah and Zalmunna in his hand",
+   "His small army",
+   "His father's idol",
+   "The tower of Penuel"
+  ],
+  "answer": 0,
+  "explanation": "He said, Behold Zebah and Zalmunna, with whom ye did upbraid me.",
+  "ref": "Judges 8:15"
+ },
+ {
   "id": "old-judges-9-1",
   "chapter": 9,
   "level": "beginner",
