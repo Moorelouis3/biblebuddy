@@ -1,0 +1,30 @@
+{
+  "level": 1,
+  "name": "The Word of Life",
+  "scripture": "1 John 1:1–4",
+  "chapter": "1 John",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "scroll",
+    "cloud",
+    "tree",
+    "olive-sprig",
+    "water-drop",
+    "stone",
+    "dove"
+  ],
+  "goals": {
+    "scroll": 8,
+    "dove": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Share the word of life.",
+  "storyEffect": "Share the word of life."
+}

@@ -1,0 +1,30 @@
+{
+  "level": 3,
+  "name": "Faithful to Forgive",
+  "scripture": "1 John 1:8–2:2",
+  "chapter": "1 John",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "water-drop",
+    "stone",
+    "water-jar",
+    "wave",
+    "olive-sprig",
+    "basket",
+    "dove"
+  ],
+  "goals": {
+    "water-drop": 8,
+    "stone": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Come to God and confess your sins.",
+  "storyEffect": "Come to God and confess your sins."
+}

@@ -1,0 +1,30 @@
+{
+  "level": 4,
+  "name": "Do Not Love the World",
+  "scripture": "1 John 2:15–17",
+  "chapter": "1 John",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "booth",
+    "gold",
+    "scroll",
+    "basket",
+    "fig",
+    "fabric",
+    "bread"
+  ],
+  "goals": {
+    "scroll": 8,
+    "bread": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Choose what lasts.",
+  "storyEffect": "Choose what lasts."
+}

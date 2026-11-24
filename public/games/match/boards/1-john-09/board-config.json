@@ -1,0 +1,30 @@
+{
+  "level": 9,
+  "name": "Perfect Love",
+  "scripture": "1 John 4:13–21",
+  "chapter": "1 John",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "wave",
+    "water-drop",
+    "cloud",
+    "dove",
+    "olive-sprig",
+    "stone",
+    "water-jar"
+  ],
+  "goals": {
+    "wave": 8,
+    "dove": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Let perfect love drive out fear.",
+  "storyEffect": "Let perfect love drive out fear."
+}

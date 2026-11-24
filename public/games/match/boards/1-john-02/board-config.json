@@ -1,0 +1,30 @@
+{
+  "level": 2,
+  "name": "Walk in the Light",
+  "scripture": "1 John 1:5–7",
+  "chapter": "1 John",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "tree",
+    "staff",
+    "lampstand",
+    "stone",
+    "sandal",
+    "olive-sprig",
+    "cloud"
+  ],
+  "goals": {
+    "tree": 8,
+    "lampstand": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Walk together in the light.",
+  "storyEffect": "Walk together in the light."
+}

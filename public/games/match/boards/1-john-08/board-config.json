@@ -1,0 +1,30 @@
+{
+  "level": 8,
+  "name": "God Is Love",
+  "scripture": "1 John 4:7–12",
+  "chapter": "1 John",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "water-jar",
+    "bread",
+    "olive-sprig",
+    "dove",
+    "basket",
+    "lampstand",
+    "fig"
+  ],
+  "goals": {
+    "dove": 8,
+    "water-jar": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Love one another.",
+  "storyEffect": "Love one another."
+}

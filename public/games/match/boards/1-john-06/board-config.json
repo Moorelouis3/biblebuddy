@@ -1,0 +1,30 @@
+{
+  "level": 6,
+  "name": "Love in Action",
+  "scripture": "1 John 3:16–18",
+  "chapter": "1 John",
+  "grid": [
+    7,
+    7
+  ],
+  "moveLimit": 28,
+  "tiles": [
+    "bread",
+    "water-jar",
+    "basket",
+    "lampstand",
+    "stone",
+    "fabric",
+    "olive-sprig"
+  ],
+  "goals": {
+    "bread": 8,
+    "basket": 8
+  },
+  "backgrounds": {
+    "phone": "background-phone.png",
+    "desktop": "background-desktop.png"
+  },
+  "goalText": "Share with someone in need.",
+  "storyEffect": "Share with someone in need."
+}
