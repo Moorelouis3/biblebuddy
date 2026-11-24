@@ -10176,6 +10176,646 @@
   "ref": "Numbers 15:38"
  },
  {
+  "id": "numbers-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What color of ribband were the Israelites to put on the fringe of their garments?",
+  "choices": [
+   "Scarlet",
+   "Purple",
+   "White",
+   "Blue"
+  ],
+  "answer": 3,
+  "explanation": "Put upon the fringe of the borders a ribband of blue.",
+  "ref": "Numbers 15:38"
+ },
+ {
+  "id": "numbers-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the man who gathered sticks on the sabbath?",
+  "choices": [
+   "He was sent from the camp alive",
+   "He paid a fine of silver",
+   "The congregation stoned him to death",
+   "He was whipped"
+  ],
+  "answer": 2,
+  "explanation": "All the congregation brought him without the camp, and stoned him with stones, and he died.",
+  "ref": "Numbers 15:35–36"
+ },
+ {
+  "id": "numbers-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the man stoned?",
+  "choices": [
+   "At the tabernacle door",
+   "Outside the camp",
+   "On the mountain",
+   "In the city gate"
+  ],
+  "answer": 1,
+  "explanation": "All the congregation shall stone him with stones without the camp.",
+  "ref": "Numbers 15:35"
+ },
+ {
+  "id": "numbers-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Besides the native Israelites, who was to follow the same law?",
+  "choices": [
+   "The stranger who sojourns among them",
+   "The priests only",
+   "The Levites",
+   "The kings"
+  ],
+  "answer": 0,
+  "explanation": "One law and one manner shall be for you, and for the stranger that sojourneth with you.",
+  "ref": "Numbers 15:16"
+ },
+ {
+  "id": "numbers-15-e-05",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why were the Israelites to look upon the fringe?",
+  "choices": [
+   "To remember the day of the Exodus",
+   "To count the sabbaths",
+   "To remember their tribe",
+   "To remember all the commandments of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "That ye may look upon it, and remember all the commandments of the LORD, and do them.",
+  "ref": "Numbers 15:39"
+ },
+ {
+  "id": "numbers-15-e-06",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the LORD describe Himself at the end of the chapter?",
+  "choices": [
+   "The God of Abraham, Isaac and Jacob",
+   "The Maker of heaven and earth",
+   "The LORD your God, who brought them out of Egypt",
+   "The King of Israel"
+  ],
+  "answer": 2,
+  "explanation": "I am the LORD your God, which brought you out of the land of Egypt, to be your God.",
+  "ref": "Numbers 15:41"
+ },
+ {
+  "id": "numbers-15-e-07",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell them to offer from the first of their dough?",
+  "choices": [
+   "A loaf of leaven",
+   "A cake, as a heave offering",
+   "A bowl of flour",
+   "A lamb"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall offer up a cake of the first of your dough for an heave offering.",
+  "ref": "Numbers 15:20"
+ },
+ {
+  "id": "numbers-15-e-08",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who makes atonement for the soul that sins ignorantly?",
+  "choices": [
+   "The priest",
+   "The elders",
+   "The sinner himself",
+   "Moses"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall make an atonement for the soul that sinneth ignorantly, and it shall be forgiven him.",
+  "ref": "Numbers 15:28"
+ },
+ {
+  "id": "numbers-15-e-09",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the Israelites when they found the man gathering sticks?",
+  "choices": [
+   "In Canaan",
+   "In Egypt",
+   "At Hebron",
+   "In the wilderness"
+  ],
+  "answer": 3,
+  "explanation": "While the children of Israel were in the wilderness, they found a man that gathered sticks upon the sabbath day.",
+  "ref": "Numbers 15:32"
+ },
+ {
+  "id": "numbers-15-e-10",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to do about the man who gathered sticks?",
+  "choices": [
+   "He must pay a double offering",
+   "He must be sent away for seven days",
+   "He must surely be put to death",
+   "He must bring a lamb"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said unto Moses, The man shall be surely put to death.",
+  "ref": "Numbers 15:35"
+ },
+ {
+  "id": "numbers-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much flour went with the meat offering for one lamb?",
+  "choices": [
+   "Two tenth deals",
+   "Three tenth deals",
+   "A tenth deal",
+   "A fourth part of an hin"
+  ],
+  "answer": 2,
+  "explanation": "A meat offering of a tenth deal of flour mingled with the fourth part of an hin of oil.",
+  "ref": "Numbers 15:4"
+ },
+ {
+  "id": "numbers-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much flour went with the meat offering for a ram?",
+  "choices": [
+   "A tenth deal",
+   "Two tenth deals",
+   "Three tenth deals",
+   "Half an hin"
+  ],
+  "answer": 1,
+  "explanation": "For a ram, thou shalt prepare for a meat offering two tenth deals of flour.",
+  "ref": "Numbers 15:6"
+ },
+ {
+  "id": "numbers-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much flour went with the meat offering for a bullock?",
+  "choices": [
+   "Three tenth deals",
+   "A tenth deal",
+   "Two tenth deals",
+   "Half an hin"
+  ],
+  "answer": 0,
+  "explanation": "With a bullock a meat offering of three tenth deals of flour mingled with half an hin of oil.",
+  "ref": "Numbers 15:9"
+ },
+ {
+  "id": "numbers-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the whole congregation to offer if they sinned by ignorance?",
+  "choices": [
+   "A lamb without blemish",
+   "Two turtledoves",
+   "A ram of the flock",
+   "One young bullock for a burnt offering"
+  ],
+  "answer": 3,
+  "explanation": "All the congregation shall offer one young bullock for a burnt offering, with one kid of the goats for a sin offering.",
+  "ref": "Numbers 15:24"
+ },
+ {
+  "id": "numbers-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Along with the bullock, what else did the congregation bring for a sin offering?",
+  "choices": [
+   "A ram",
+   "A lamb",
+   "One kid of the goats",
+   "A she goat"
+  ],
+  "answer": 2,
+  "explanation": "One kid of the goats for a sin offering.",
+  "ref": "Numbers 15:24"
+ },
+ {
+  "id": "numbers-15-m-06",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the man who gathered sticks put in ward?",
+  "choices": [
+   "He had run away",
+   "It was not declared what should be done to him",
+   "He was a stranger",
+   "He denied it"
+  ],
+  "answer": 1,
+  "explanation": "They put him in ward, because it was not declared what should be done to him.",
+  "ref": "Numbers 15:34"
+ },
+ {
+  "id": "numbers-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say the soul that sins presumptuously does?",
+  "choices": [
+   "Reproacheth the LORD",
+   "Wearies the priest",
+   "Defiles the land",
+   "Forgets the law"
+  ],
+  "answer": 0,
+  "explanation": "The soul that doeth ought presumptuously, the same reproacheth the LORD; and that soul shall be cut off.",
+  "ref": "Numbers 15:30"
+ },
+ {
+  "id": "numbers-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the Israelites be as they remembered the commandments?",
+  "choices": [
+   "Rich in the land",
+   "Free from enemies",
+   "Priests of the nations",
+   "Holy unto their God"
+  ],
+  "answer": 3,
+  "explanation": "That ye may remember, and do all my commandments, and be holy unto your God.",
+  "ref": "Numbers 15:40"
+ },
+ {
+  "id": "numbers-15-m-09",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Who stoned the man with stones outside the camp?",
+  "choices": [
+   "The priests",
+   "The Levites",
+   "All the congregation",
+   "Moses and Aaron"
+  ],
+  "answer": 2,
+  "explanation": "All the congregation brought him without the camp, and stoned him with stones.",
+  "ref": "Numbers 15:36"
+ },
+ {
+  "id": "numbers-15-m-10",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When were the Israelites to offer up a heave offering of dough?",
+  "choices": [
+   "When they left Egypt",
+   "When they ate of the bread of the land",
+   "When the sabbath began",
+   "When the first lamb was born"
+  ],
+  "answer": 1,
+  "explanation": "When ye eat of the bread of the land, ye shall offer up an heave offering unto the LORD.",
+  "ref": "Numbers 15:19"
+ },
+ {
+  "id": "numbers-15-m-11",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was the ordinance for the stranger and the congregation to last?",
+  "choices": [
+   "For ever in their generations",
+   "Until they entered the land",
+   "For seven years",
+   "Until a king reigned"
+  ],
+  "answer": 0,
+  "explanation": "One ordinance shall be both for you and for the stranger, an ordinance for ever in your generations.",
+  "ref": "Numbers 15:15"
+ },
+ {
+  "id": "numbers-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was forgiven along with the congregation when all the people were in ignorance?",
+  "choices": [
+   "The priest only",
+   "The Levites only",
+   "Their servants",
+   "The stranger among them"
+  ],
+  "answer": 3,
+  "explanation": "It shall be forgiven all the congregation of the children of Israel, and the stranger that sojourneth among them.",
+  "ref": "Numbers 15:26"
+ },
+ {
+  "id": "numbers-15-m-13",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should the fringes help Israel not to seek after?",
+  "choices": [
+   "The gods of the nations",
+   "The riches of Egypt",
+   "Their own heart and their own eyes",
+   "The honour of kings"
+  ],
+  "answer": 2,
+  "explanation": "That ye seek not after your own heart and your own eyes, after which ye use to go a whoring.",
+  "ref": "Numbers 15:39"
+ },
+ {
+  "id": "numbers-15-m-14",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was an individual to bring if he sinned through ignorance?",
+  "choices": [
+   "A young bullock",
+   "A she goat of the first year",
+   "A ram",
+   "A dove"
+  ],
+  "answer": 1,
+  "explanation": "If any soul sin through ignorance, then he shall bring a she goat of the first year for a sin offering.",
+  "ref": "Numbers 15:27"
+ },
+ {
+  "id": "numbers-15-m-15",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was done with a drink offering for one lamb?",
+  "choices": [
+   "A fourth part of an hin of wine was prepared",
+   "A tenth deal of wine was poured",
+   "Half an hin of oil was used",
+   "A third part of an hin of wine was used"
+  ],
+  "answer": 0,
+  "explanation": "The fourth part of an hin of wine for a drink offering shalt thou prepare for one lamb.",
+  "ref": "Numbers 15:5"
+ },
+ {
+  "id": "numbers-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much oil was mingled with the flour for a ram's meat offering?",
+  "choices": [
+   "The third part of an hin",
+   "The fourth part of an hin",
+   "Half an hin",
+   "A tenth deal"
+  ],
+  "answer": 0,
+  "explanation": "Two tenth deals of flour mingled with the third part of an hin of oil.",
+  "ref": "Numbers 15:6"
+ },
+ {
+  "id": "numbers-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much oil was mingled with the flour for a bullock's meat offering?",
+  "choices": [
+   "The fourth part of an hin",
+   "The third part of an hin",
+   "A tenth deal",
+   "Half an hin"
+  ],
+  "answer": 3,
+  "explanation": "Three tenth deals of flour mingled with half an hin of oil.",
+  "ref": "Numbers 15:9"
+ },
+ {
+  "id": "numbers-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much wine was the drink offering for a bullock?",
+  "choices": [
+   "The fourth part of an hin",
+   "The third part of an hin",
+   "Half an hin",
+   "A tenth deal"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt bring for a drink offering half an hin of wine.",
+  "ref": "Numbers 15:10"
+ },
+ {
+  "id": "numbers-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much wine was the drink offering for a ram?",
+  "choices": [
+   "The fourth part of an hin",
+   "The third part of an hin",
+   "Half an hin",
+   "Two tenth deals"
+  ],
+  "answer": 1,
+  "explanation": "For a drink offering thou shalt offer the third part of an hin of wine.",
+  "ref": "Numbers 15:7"
+ },
+ {
+  "id": "numbers-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the presumptuous soul had despised?",
+  "choices": [
+   "The word of the LORD",
+   "The priest",
+   "The sabbath only",
+   "The tabernacle"
+  ],
+  "answer": 0,
+  "explanation": "Because he hath despised the word of the LORD, and hath broken his commandment, that soul shall utterly be cut off.",
+  "ref": "Numbers 15:31"
+ },
+ {
+  "id": "numbers-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say would be upon the presumptuous soul that is cut off?",
+  "choices": [
+   "His blood",
+   "His children",
+   "His curse",
+   "His iniquity"
+  ],
+  "answer": 3,
+  "explanation": "That soul shall utterly be cut off; his iniquity shall be upon him.",
+  "ref": "Numbers 15:31"
+ },
+ {
+  "id": "numbers-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The cake of the first dough was to be lifted like the heave offering of what?",
+  "choices": [
+   "The altar",
+   "The vineyard",
+   "The threshingfloor",
+   "The firstborn"
+  ],
+  "answer": 2,
+  "explanation": "As ye do the heave offering of the threshingfloor, so shall ye heave it.",
+  "ref": "Numbers 15:20"
+ },
+ {
+  "id": "numbers-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which four animals did the LORD name for the offerings done in this manner?",
+  "choices": [
+   "A bullock, a goat, a dove, or a pigeon",
+   "A bullock, a ram, a lamb, or a kid",
+   "A ram, a heifer, a lamb, or a dove",
+   "A lamb, a kid, a turtledove, or a bullock"
+  ],
+  "answer": 1,
+  "explanation": "Thus shall it be done for one bullock, or for one ram, or for a lamb, or a kid.",
+  "ref": "Numbers 15:11"
+ },
+ {
+  "id": "numbers-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who brought the man to Moses and Aaron and all the congregation?",
+  "choices": [
+   "Those who found him gathering sticks",
+   "The priests",
+   "The elders",
+   "His family"
+  ],
+  "answer": 0,
+  "explanation": "They that found him gathering sticks brought him unto Moses and Aaron, and unto all the congregation.",
+  "ref": "Numbers 15:33"
+ },
+ {
+  "id": "numbers-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what day did the man gather sticks?",
+  "choices": [
+   "The day of atonement",
+   "The feast of weeks",
+   "The new moon",
+   "The sabbath day"
+  ],
+  "answer": 3,
+  "explanation": "They found a man that gathered sticks upon the sabbath day.",
+  "ref": "Numbers 15:32"
+ },
+ {
+  "id": "numbers-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What sort of offering did the LORD call the offering by fire?",
+  "choices": [
+   "A cleansing for sin",
+   "A memorial of Egypt",
+   "A sweet savour unto the LORD",
+   "A feast for the priests"
+  ],
+  "answer": 2,
+  "explanation": "To make a sweet savour unto the LORD, of the herd, or of the flock.",
+  "ref": "Numbers 15:3"
+ },
+ {
+  "id": "numbers-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After the priest made atonement for the congregation sinning in ignorance, what would follow?",
+  "choices": [
+   "It would be forgiven them",
+   "They would be cut off",
+   "They would wait seven days",
+   "They would be sent away"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall make an atonement for all the congregation, and it shall be forgiven them; for it is ignorance.",
+  "ref": "Numbers 15:25"
+ },
+ {
+  "id": "numbers-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to bid Israel make in the borders of their garments throughout their generations?",
+  "choices": [
+   "Fringes",
+   "Tassels of gold",
+   "Hems of scarlet",
+   "Bells"
+  ],
+  "answer": 0,
+  "explanation": "Bid them that they make them fringes in the borders of their garments throughout their generations.",
+  "ref": "Numbers 15:38"
+ },
+ {
+  "id": "numbers-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of offering did they bring along with the burnt offering besides the drink offering?",
+  "choices": [
+   "A peace offering of oxen",
+   "A trespass offering",
+   "A wave offering of firstfruits",
+   "A meat offering of flour mingled with oil"
+  ],
+  "answer": 3,
+  "explanation": "Bring a meat offering of a tenth deal of flour mingled with the fourth part of an hin of oil.",
+  "ref": "Numbers 15:4"
+ },
+ {
+  "id": "numbers-15-h-15",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The sin-of-ignorance commands counted from which day onward?",
+  "choices": [
+   "The day the LORD commanded Moses",
+   "The day they left Egypt",
+   "The day they crossed Jordan",
+   "The day the tabernacle was set up"
+  ],
+  "answer": 0,
+  "explanation": "All that the LORD hath commanded you by the hand of Moses, from the day that the LORD commanded Moses, and henceforward.",
+  "ref": "Numbers 15:23"
+ },
+ {
   "id": "old-numbers-16-1",
   "chapter": 16,
   "level": "beginner",
