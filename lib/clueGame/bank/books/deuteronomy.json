@@ -5840,6 +5840,646 @@
   "ref": "Deuteronomy 9:18"
  },
  {
+  "id": "deuteronomy-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which river was Israel about to pass over?",
+  "choices": [
+   "Jordan",
+   "Nile",
+   "Euphrates",
+   "Jabbok"
+  ],
+  "answer": 0,
+  "explanation": "Moses says, Thou art to pass over Jordan this day.",
+  "ref": "Deuteronomy 9:1"
+ },
+ {
+  "id": "deuteronomy-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "How does Moses describe the Anakims?",
+  "choices": [
+   "A people great and tall",
+   "A people small and weak",
+   "A people few and poor",
+   "A people proud and old"
+  ],
+  "answer": 0,
+  "explanation": "A people great and tall, the children of the Anakims.",
+  "ref": "Deuteronomy 9:2"
+ },
+ {
+  "id": "deuteronomy-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses receive on the mount?",
+  "choices": [
+   "Two tables of stone",
+   "A golden crown",
+   "A silver trumpet",
+   "A scroll of the prophets"
+  ],
+  "answer": 0,
+  "explanation": "He went up into the mount to receive the tables of stone, even the tables of the covenant.",
+  "ref": "Deuteronomy 9:9"
+ },
+ {
+  "id": "deuteronomy-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel make while Moses was on the mount?",
+  "choices": [
+   "A molten calf",
+   "A golden ark",
+   "A stone altar",
+   "A bronze serpent"
+  ],
+  "answer": 0,
+  "explanation": "Ye had sinned against the LORD your God, and had made you a molten calf.",
+  "ref": "Deuteronomy 9:16"
+ },
+ {
+  "id": "deuteronomy-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to do when the people had corrupted themselves?",
+  "choices": [
+   "Get down quickly",
+   "Wait another forty days",
+   "Send Aaron to them",
+   "Build an altar"
+  ],
+  "answer": 0,
+  "explanation": "Arise, get thee down quickly from hence; for thy people...have corrupted themselves.",
+  "ref": "Deuteronomy 9:12"
+ },
+ {
+  "id": "deuteronomy-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses do to the calf after burning it?",
+  "choices": [
+   "Ground it very small, as dust",
+   "Hung it on the gate",
+   "Gave it to the priests",
+   "Buried it in the camp"
+  ],
+  "answer": 0,
+  "explanation": "He burnt it with fire, and stamped it, and ground it very small.",
+  "ref": "Deuteronomy 9:21"
+ },
+ {
+  "id": "deuteronomy-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Moses cast the dust of the calf?",
+  "choices": [
+   "Into the brook that descended out of the mount",
+   "Into the Jordan",
+   "Into the tent of the congregation",
+   "Into the wilderness wind"
+  ],
+  "answer": 0,
+  "explanation": "I cast the dust thereof into the brook that descended out of the mount.",
+  "ref": "Deuteronomy 9:21"
+ },
+ {
+  "id": "deuteronomy-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses not do during the forty days on the mount?",
+  "choices": [
+   "Eat bread or drink water",
+   "Speak with the LORD",
+   "Sleep in the camp",
+   "Write the law"
+  ],
+  "answer": 0,
+  "explanation": "I abode in the mount forty days and forty nights, I neither did eat bread nor drink water.",
+  "ref": "Deuteronomy 9:9"
+ },
+ {
+  "id": "deuteronomy-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which three servants did Moses ask the LORD to remember?",
+  "choices": [
+   "Abraham, Isaac and Jacob",
+   "Noah, Abraham and Isaac",
+   "Isaac, Jacob and Joseph",
+   "Abraham, Joseph and Joshua"
+  ],
+  "answer": 0,
+  "explanation": "Remember thy servants, Abraham, Isaac, and Jacob.",
+  "ref": "Deuteronomy 9:27"
+ },
+ {
+  "id": "deuteronomy-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Moses say the LORD goes before Israel?",
+  "choices": [
+   "As a consuming fire",
+   "As a cloud of rain",
+   "As a mighty wind",
+   "As a flowing river"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God is he which goeth over before thee; as a consuming fire he shall destroy them.",
+  "ref": "Deuteronomy 9:3"
+ },
+ {
+  "id": "deuteronomy-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD offer to make of Moses if He destroyed Israel?",
+  "choices": [
+   "A king over Egypt",
+   "A priest of all nations",
+   "A nation mightier and greater than they",
+   "A judge over the tribes"
+  ],
+  "answer": 2,
+  "explanation": "I will make of thee a nation mightier and greater than they.",
+  "ref": "Deuteronomy 9:14"
+ },
+ {
+  "id": "deuteronomy-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would blot out if Moses let Him alone?",
+  "choices": [
+   "Their tents from the camp",
+   "Their fathers' graves",
+   "Their name from under heaven",
+   "Their cattle from the hills"
+  ],
+  "answer": 2,
+  "explanation": "Let me alone, that I may destroy them, and blot out their name from under heaven.",
+  "ref": "Deuteronomy 9:14"
+ },
+ {
+  "id": "deuteronomy-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Which place is named where Israel provoked the LORD to wrath?",
+  "choices": [
+   "Jericho",
+   "Gilgal",
+   "Taberah",
+   "Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "At Taberah, and at Massah, and at Kibroth-hattaavah, ye provoked the LORD to wrath.",
+  "ref": "Deuteronomy 9:22"
+ },
+ {
+  "id": "deuteronomy-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD tell Israel to do when He sent them from Kadesh-barnea?",
+  "choices": [
+   "Wait for Aaron",
+   "Build the tabernacle",
+   "Go up and possess the land",
+   "Turn back to Horeb"
+  ],
+  "answer": 2,
+  "explanation": "The LORD sent you from Kadesh-barnea, saying, Go up and possess the land which I have given you.",
+  "ref": "Deuteronomy 9:23"
+ },
+ {
+  "id": "deuteronomy-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD respond to Moses's prayer against destroying Israel?",
+  "choices": [
+   "He refused him",
+   "He sent Aaron",
+   "He hearkened to him",
+   "He was silent"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hearkened unto me at that time also.",
+  "ref": "Deuteronomy 9:19"
+ },
+ {
+  "id": "deuteronomy-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Moses afraid?",
+  "choices": [
+   "Of the Anakims",
+   "Of the fire on the mount",
+   "Of the LORD's anger and hot displeasure against Israel",
+   "Of Pharaoh"
+  ],
+  "answer": 2,
+  "explanation": "I was afraid of the anger and hot displeasure, wherewith the LORD was wroth against you.",
+  "ref": "Deuteronomy 9:19"
+ },
+ {
+  "id": "deuteronomy-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses pray the LORD would not destroy?",
+  "choices": [
+   "The tables of stone",
+   "The mount of God",
+   "His people and His inheritance",
+   "The brook"
+  ],
+  "answer": 2,
+  "explanation": "O Lord GOD, destroy not thy people and thine inheritance.",
+  "ref": "Deuteronomy 9:26"
+ },
+ {
+  "id": "deuteronomy-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What might the land of Egypt say if the LORD slew Israel in the wilderness?",
+  "choices": [
+   "That Pharaoh was greater",
+   "That Moses was a false prophet",
+   "That the LORD was not able to bring them into the land",
+   "That the tables were broken"
+  ],
+  "answer": 2,
+  "explanation": "Lest the land...say, Because the LORD was not able to bring them into the land which he promised them.",
+  "ref": "Deuteronomy 9:28"
+ },
+ {
+  "id": "deuteronomy-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Moses tell Israel not to say in their heart about the land?",
+  "choices": [
+   "The LORD is far from us",
+   "The land is too large",
+   "For my righteousness the LORD hath brought me in",
+   "The Anakims are weak"
+  ],
+  "answer": 2,
+  "explanation": "Speak not thou in thine heart...For my righteousness the LORD hath brought me in to possess this land.",
+  "ref": "Deuteronomy 9:4"
+ },
+ {
+  "id": "deuteronomy-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was written on the tables of stone?",
+  "choices": [
+   "Only the ten names of the tribes",
+   "The laws of the sacrifices",
+   "All the words the LORD spake in the mount out of the fire",
+   "The list of the nations"
+  ],
+  "answer": 2,
+  "explanation": "On them was written according to all the words, which the LORD spake with you in the mount.",
+  "ref": "Deuteronomy 9:10"
+ },
+ {
+  "id": "deuteronomy-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the mount doing when Moses came down?",
+  "choices": [
+   "Shaking with thunder",
+   "Covered with snow",
+   "Burning with fire",
+   "Hidden in cloud"
+  ],
+  "answer": 2,
+  "explanation": "I turned and came down from the mount, and the mount burned with fire.",
+  "ref": "Deuteronomy 9:15"
+ },
+ {
+  "id": "deuteronomy-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Moses fall down before the LORD a second forty days?",
+  "choices": [
+   "Because Aaron was sick",
+   "Because the calf was missing",
+   "Because the LORD had said He would destroy them",
+   "Because the tables were lost"
+  ],
+  "answer": 2,
+  "explanation": "I fell down before the LORD forty days and forty nights...because the LORD had said he would destroy you.",
+  "ref": "Deuteronomy 9:25"
+ },
+ {
+  "id": "deuteronomy-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the LORD drive out the nations, besides their wickedness?",
+  "choices": [
+   "To make room for Moses",
+   "To give Israel Egypt",
+   "To perform the word sworn to Abraham, Isaac and Jacob",
+   "To end the wilderness"
+  ],
+  "answer": 2,
+  "explanation": "That he may perform the word which the LORD sware unto thy fathers.",
+  "ref": "Deuteronomy 9:5"
+ },
+ {
+  "id": "deuteronomy-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Israel also provoke the LORD to anger, so that He would have destroyed them?",
+  "choices": [
+   "In Egypt",
+   "In Moab",
+   "In Horeb",
+   "In Canaan"
+  ],
+  "answer": 2,
+  "explanation": "Also in Horeb ye provoked the LORD to wrath.",
+  "ref": "Deuteronomy 9:8"
+ },
+ {
+  "id": "deuteronomy-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the LORD very angry with, to have destroyed him?",
+  "choices": [
+   "Joshua",
+   "Caleb",
+   "Aaron",
+   "Miriam"
+  ],
+  "answer": 2,
+  "explanation": "The LORD was very angry with Aaron to have destroyed him.",
+  "ref": "Deuteronomy 9:20"
+ },
+ {
+  "id": "deuteronomy-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what were the tables of stone written?",
+  "choices": [
+   "The hand of Moses",
+   "A bronze tool",
+   "A reed pen",
+   "The finger of God"
+  ],
+  "answer": 3,
+  "explanation": "The LORD delivered unto me two tables of stone written with the finger of God.",
+  "ref": "Deuteronomy 9:10"
+ },
+ {
+  "id": "deuteronomy-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At the end of the forty days, what did the LORD give Moses?",
+  "choices": [
+   "A rod and a staff",
+   "A golden calf",
+   "The ark",
+   "The two tables of the covenant"
+  ],
+  "answer": 3,
+  "explanation": "At the end of forty days and forty nights, the LORD gave me the two tables of stone.",
+  "ref": "Deuteronomy 9:11"
+ },
+ {
+  "id": "deuteronomy-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are the cities of the nations described?",
+  "choices": [
+   "Small and hidden",
+   "Open and low",
+   "Ruined and empty",
+   "Great and fenced up to heaven"
+  ],
+  "answer": 3,
+  "explanation": "Cities great and fenced up to heaven.",
+  "ref": "Deuteronomy 9:1"
+ },
+ {
+  "id": "deuteronomy-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question do the people ask about the children of Anak?",
+  "choices": [
+   "Who can pass by them",
+   "Who can count them",
+   "Who can feed them",
+   "Who can stand before them"
+  ],
+  "answer": 3,
+  "explanation": "Who can stand before the children of Anak!",
+  "ref": "Deuteronomy 9:2"
+ },
+ {
+  "id": "deuteronomy-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place is named alongside Taberah and Massah?",
+  "choices": [
+   "Kadesh-barnea",
+   "Horeb",
+   "Gilgal",
+   "Kibroth-hattaavah"
+  ],
+  "answer": 3,
+  "explanation": "At Taberah, and at Massah, and at Kibroth-hattaavah, ye provoked the LORD to wrath.",
+  "ref": "Deuteronomy 9:22"
+ },
+ {
+  "id": "deuteronomy-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "From which place did the LORD send Israel to possess the land?",
+  "choices": [
+   "Taberah",
+   "Horeb",
+   "Jordan",
+   "Kadesh-barnea"
+  ],
+  "answer": 3,
+  "explanation": "The LORD sent you from Kadesh-barnea.",
+  "ref": "Deuteronomy 9:23"
+ },
+ {
+  "id": "deuteronomy-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Since when had Israel been rebellious against the LORD, said Moses?",
+  "choices": [
+   "From the days of Joseph",
+   "From the crossing of Jordan",
+   "From the days of Abraham",
+   "From the day that He knew them"
+  ],
+  "answer": 3,
+  "explanation": "Ye have been rebellious against the LORD from the day that I knew you.",
+  "ref": "Deuteronomy 9:24"
+ },
+ {
+  "id": "deuteronomy-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what did the LORD bring Israel out, according to Moses's prayer?",
+  "choices": [
+   "His great flood",
+   "His pillar of cloud",
+   "His many angels",
+   "His mighty power and stretched out arm"
+  ],
+  "answer": 3,
+  "explanation": "They are thy people...which thou broughtest out by thy mighty power and by thy stretched out arm.",
+  "ref": "Deuteronomy 9:29"
+ },
+ {
+  "id": "deuteronomy-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses prayed for the LORD to look not on the stubbornness, wickedness or what of the people?",
+  "choices": [
+   "Their number",
+   "Their tents",
+   "Their gold",
+   "Their sin"
+  ],
+  "answer": 3,
+  "explanation": "Look not unto the stubbornness of this people, nor to their wickedness, nor to their sin.",
+  "ref": "Deuteronomy 9:27"
+ },
+ {
+  "id": "deuteronomy-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD would blot out Israel's name from under what?",
+  "choices": [
+   "The mount",
+   "The sun",
+   "The earth",
+   "Heaven"
+  ],
+  "answer": 3,
+  "explanation": "Blot out their name from under heaven.",
+  "ref": "Deuteronomy 9:14"
+ },
+ {
+  "id": "deuteronomy-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When Moses saw the calf, what did he do with the two tables?",
+  "choices": [
+   "Hid them in the brook",
+   "Gave them to Aaron",
+   "Set them on the mount",
+   "Cast them out of his hands and broke them"
+  ],
+  "answer": 3,
+  "explanation": "I took the two tables, and cast them out of my two hands, and brake them.",
+  "ref": "Deuteronomy 9:17"
+ },
+ {
+  "id": "deuteronomy-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say the people had made, when He told Moses to go down?",
+  "choices": [
+   "A golden ark",
+   "A brazen altar",
+   "A carved pillar",
+   "A molten image"
+  ],
+  "answer": 3,
+  "explanation": "They have made them a molten image.",
+  "ref": "Deuteronomy 9:12"
+ },
+ {
+  "id": "deuteronomy-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses says Israel is not given the land for their righteousness or what?",
+  "choices": [
+   "The number of their sons",
+   "The strength of their arm",
+   "The wisdom of their elders",
+   "The uprightness of their heart"
+  ],
+  "answer": 3,
+  "explanation": "Not for thy righteousness, or for the uprightness of thine heart.",
+  "ref": "Deuteronomy 9:5"
+ },
+ {
+  "id": "deuteronomy-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the day the LORD spoke from the fire in the mount called?",
+  "choices": [
+   "The day of atonement",
+   "The day of the covenant",
+   "The day of rest",
+   "The day of the assembly"
+  ],
+  "answer": 3,
+  "explanation": "The words were spoken in the mount out of the midst of the fire in the day of the assembly.",
+  "ref": "Deuteronomy 9:10"
+ },
+ {
+  "id": "deuteronomy-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "From the day they left which land had Israel been rebellious against the LORD?",
+  "choices": [
+   "Moab",
+   "Edom",
+   "Midian",
+   "Egypt"
+  ],
+  "answer": 3,
+  "explanation": "From the day that thou didst depart out of the land of Egypt...ye have been rebellious against the LORD.",
+  "ref": "Deuteronomy 9:7"
+ },
+ {
   "id": "old-deuteronomy-10-1",
   "chapter": 10,
   "level": "beginner",
