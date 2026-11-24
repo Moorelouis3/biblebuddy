@@ -13056,6 +13056,662 @@
   "ref": "Leviticus 19:33–34"
  },
  {
+  "id": "leviticus-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom were the people told to fear, along with keeping the sabbaths?",
+  "choices": [
+   "Their elders and judges",
+   "Every man his mother and his father",
+   "Their priests and Levites",
+   "Moses and Aaron"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall fear every man his mother, and his father, and keep my sabbaths.",
+  "ref": "Leviticus 19:3"
+ },
+ {
+  "id": "leviticus-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of gods were the people told not to make for themselves?",
+  "choices": [
+   "Golden calves only",
+   "Molten gods",
+   "Wooden gods",
+   "Stone pillars"
+  ],
+  "answer": 1,
+  "explanation": "Turn ye not unto idols, nor make to yourselves molten gods.",
+  "ref": "Leviticus 19:4"
+ },
+ {
+  "id": "leviticus-19-e-03",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which sacrifice is described as offered at the people's own will?",
+  "choices": [
+   "Burnt offerings",
+   "Peace offerings",
+   "Sin offerings",
+   "Trespass offerings"
+  ],
+  "answer": 1,
+  "explanation": "If ye offer a sacrifice of peace offerings unto the LORD, ye shall offer it at your own will.",
+  "ref": "Leviticus 19:5"
+ },
+ {
+  "id": "leviticus-19-e-04",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the people not to do to the deaf?",
+  "choices": [
+   "Ignore them",
+   "Curse them",
+   "Teach them",
+   "Avoid them"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not curse the deaf, nor put a stumblingblock before the blind.",
+  "ref": "Leviticus 19:14"
+ },
+ {
+  "id": "leviticus-19-e-05",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was not to be put before the blind?",
+  "choices": [
+   "A heavy burden",
+   "A stumblingblock",
+   "A closed door",
+   "A false guide"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not curse the deaf, nor put a stumblingblock before the blind.",
+  "ref": "Leviticus 19:14"
+ },
+ {
+  "id": "leviticus-19-e-06",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Before whom were the people told to rise up?",
+  "choices": [
+   "The judges",
+   "The hoary head",
+   "The priests",
+   "Every stranger"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt rise up before the hoary head, and honour the face of the old man.",
+  "ref": "Leviticus 19:32"
+ },
+ {
+  "id": "leviticus-19-e-07",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God say the people were in the land of Egypt?",
+  "choices": [
+   "Priests",
+   "Strangers",
+   "Conquerors",
+   "Shepherds only"
+  ],
+  "answer": 1,
+  "explanation": "The stranger shall be unto you as one born among you; for ye were strangers in the land of Egypt.",
+  "ref": "Leviticus 19:34"
+ },
+ {
+  "id": "leviticus-19-e-08",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of balances and weights were the people to have?",
+  "choices": [
+   "Heavy ones",
+   "Just ones",
+   "Golden ones",
+   "Large ones"
+  ],
+  "answer": 1,
+  "explanation": "Just balances, just weights, a just ephah, and a just hin, shall ye have.",
+  "ref": "Leviticus 19:36"
+ },
+ {
+  "id": "leviticus-19-e-09",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the people told not to do about their neighbour's goods?",
+  "choices": [
+   "Borrow",
+   "Steal",
+   "Sell",
+   "Count"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall not steal, neither deal falsely, neither lie one to another.",
+  "ref": "Leviticus 19:11"
+ },
+ {
+  "id": "leviticus-19-e-10",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "From what land does the LORD say He brought Israel out?",
+  "choices": [
+   "Babylon",
+   "Egypt",
+   "Canaan",
+   "Moab"
+  ],
+  "answer": 1,
+  "explanation": "I am the LORD your God, which brought you out of the land of Egypt.",
+  "ref": "Leviticus 19:36"
+ },
+ {
+  "id": "leviticus-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long could peace offering meat be eaten after it was offered?",
+  "choices": [
+   "Only the same day",
+   "For three days",
+   "For seven days",
+   "The same day and the next day"
+  ],
+  "answer": 3,
+  "explanation": "It shall be eaten the same day ye offer it, and on the morrow.",
+  "ref": "Leviticus 19:6"
+ },
+ {
+  "id": "leviticus-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to peace offering meat left until the third day?",
+  "choices": [
+   "It is given to the poor",
+   "It is buried",
+   "It is eaten by the priests",
+   "It is burnt in the fire"
+  ],
+  "answer": 3,
+  "explanation": "If ought remain until the third day, it shall be burnt in the fire.",
+  "ref": "Leviticus 19:6"
+ },
+ {
+  "id": "leviticus-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the people told not to gather from their vineyard?",
+  "choices": [
+   "Any leaves",
+   "The wine",
+   "The first ripe fruit",
+   "Every grape"
+  ],
+  "answer": 3,
+  "explanation": "Neither shalt thou gather every grape of thy vineyard; thou shalt leave them for the poor and stranger.",
+  "ref": "Leviticus 19:10"
+ },
+ {
+  "id": "leviticus-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "person",
+  "question": "For whom were the corners of the field and the gleanings left?",
+  "choices": [
+   "The priests",
+   "The widows only",
+   "The Levites",
+   "The poor and the stranger"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt leave them for the poor and stranger.",
+  "ref": "Leviticus 19:10"
+ },
+ {
+  "id": "leviticus-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must not stay with you all night until the morning?",
+  "choices": [
+   "A borrowed garment",
+   "A stranger's animal",
+   "The peace offering",
+   "The wages of a hired man"
+  ],
+  "answer": 3,
+  "explanation": "The wages of him that is hired shall not abide with thee all night until the morning.",
+  "ref": "Leviticus 19:13"
+ },
+ {
+  "id": "leviticus-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the people told not to be among their people?",
+  "choices": [
+   "A judge",
+   "A stranger",
+   "A shepherd",
+   "A talebearer"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not go up and down as a talebearer among thy people.",
+  "ref": "Leviticus 19:16"
+ },
+ {
+  "id": "leviticus-19-m-07",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the people told to do rather than hate their brother in the heart?",
+  "choices": [
+   "Forgive in silence",
+   "Avoid him",
+   "Report him to the priest",
+   "Rebuke the neighbour"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not hate thy brother in thine heart: thou shalt in any wise rebuke thy neighbour.",
+  "ref": "Leviticus 19:17"
+ },
+ {
+  "id": "leviticus-19-m-08",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is not to be mingled in a garment?",
+  "choices": [
+   "Silk and linen",
+   "Skins and wool",
+   "Blue and scarlet",
+   "Linen and woollen"
+  ],
+  "answer": 3,
+  "explanation": "Neither shall a garment mingled of linen and woollen come upon thee.",
+  "ref": "Leviticus 19:19"
+ },
+ {
+  "id": "leviticus-19-m-09",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must a man bring for a trespass offering in the case of the bondmaid?",
+  "choices": [
+   "A bullock",
+   "A goat",
+   "Two turtledoves",
+   "A ram"
+  ],
+  "answer": 3,
+  "explanation": "He shall bring his trespass offering unto the LORD, even a ram for a trespass offering.",
+  "ref": "Leviticus 19:21"
+ },
+ {
+  "id": "leviticus-19-m-10",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the ram for the trespass offering brought?",
+  "choices": [
+   "The brazen altar",
+   "Mount Sinai",
+   "The city gate",
+   "The door of the tabernacle"
+  ],
+  "answer": 3,
+  "explanation": "Unto the door of the tabernacle of the congregation, even a ram for a trespass offering.",
+  "ref": "Leviticus 19:21"
+ },
+ {
+  "id": "leviticus-19-m-11",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the fruit of newly planted trees counted as for three years?",
+  "choices": [
+   "Holy",
+   "Unclean",
+   "The priests' portion",
+   "Uncircumcised"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall count the fruit thereof as uncircumcised: three years shall it be as uncircumcised unto you.",
+  "ref": "Leviticus 19:23"
+ },
+ {
+  "id": "leviticus-19-m-12",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the people told not to eat?",
+  "choices": [
+   "Fruit of young trees",
+   "Meat on the sabbath",
+   "Anything cooked",
+   "Anything with the blood"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall not eat any thing with the blood.",
+  "ref": "Leviticus 19:26"
+ },
+ {
+  "id": "leviticus-19-m-13",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the people told not to mar?",
+  "choices": [
+   "The altar",
+   "The sabbath bread",
+   "The garments of the priest",
+   "The corners of the beard"
+  ],
+  "answer": 3,
+  "explanation": "Neither shalt thou mar the corners of thy beard.",
+  "ref": "Leviticus 19:27"
+ },
+ {
+  "id": "leviticus-19-m-14",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the people forbidden to make in their flesh for the dead?",
+  "choices": [
+   "Tears",
+   "Offerings",
+   "Altars",
+   "Cuttings"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall not make any cuttings in your flesh for the dead, nor print any marks upon you.",
+  "ref": "Leviticus 19:28"
+ },
+ {
+  "id": "leviticus-19-m-15",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must the people not regard or seek after, to be defiled by them?",
+  "choices": [
+   "Idols of the nations",
+   "Priests of Molech",
+   "Unclean beasts",
+   "Familiar spirits and wizards"
+  ],
+  "answer": 3,
+  "explanation": "Regard not them that have familiar spirits, neither seek after wizards, to be defiled by them.",
+  "ref": "Leviticus 19:31"
+ },
+ {
+  "id": "leviticus-19-m-16",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say Israel was to reverence?",
+  "choices": [
+   "The elders",
+   "The land",
+   "The priests' garments",
+   "His sanctuary"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall keep my sabbaths, and reverence my sanctuary.",
+  "ref": "Leviticus 19:30"
+ },
+ {
+  "id": "leviticus-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In the fourth year, what was the fruit of the planted trees to be?",
+  "choices": [
+   "Eaten by the poor",
+   "Counted as uncircumcised",
+   "Burnt on the altar",
+   "Holy to praise the LORD"
+  ],
+  "answer": 3,
+  "explanation": "In the fourth year all the fruit thereof shall be holy to praise the LORD withal.",
+  "ref": "Leviticus 19:24"
+ },
+ {
+  "id": "leviticus-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year could the people eat the fruit of the trees?",
+  "choices": [
+   "The second year",
+   "The third year",
+   "The seventh year",
+   "The fifth year"
+  ],
+  "answer": 3,
+  "explanation": "In the fifth year shall ye eat of the fruit thereof, that it may yield unto you the increase thereof.",
+  "ref": "Leviticus 19:25"
+ },
+ {
+  "id": "leviticus-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to the soul that eats the offering on the third day?",
+  "choices": [
+   "He is scourged",
+   "He brings a ram",
+   "He is sent away from camp",
+   "He is cut off from his people"
+  ],
+  "answer": 3,
+  "explanation": "That soul shall be cut off from among his people.",
+  "ref": "Leviticus 19:8"
+ },
+ {
+  "id": "leviticus-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the person who eats it on the third day bear?",
+  "choices": [
+   "A fine",
+   "A curse",
+   "A blemish",
+   "His iniquity"
+  ],
+  "answer": 3,
+  "explanation": "Every one that eateth it shall bear his iniquity, because he hath profaned the hallowed thing of the LORD.",
+  "ref": "Leviticus 19:8"
+ },
+ {
+  "id": "leviticus-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What punishment was given in the bondmaid case instead of death?",
+  "choices": [
+   "She is stoned",
+   "She is freed",
+   "She is put away",
+   "She is scourged"
+  ],
+  "answer": 3,
+  "explanation": "She shall be scourged; they shall not be put to death, because she was not free.",
+  "ref": "Leviticus 19:20"
+ },
+ {
+  "id": "leviticus-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will be forgiven the man after the priest makes atonement with the ram?",
+  "choices": [
+   "Only his debts",
+   "His uncleanness",
+   "The sin of his father",
+   "The sin he hath done"
+  ],
+  "answer": 3,
+  "explanation": "The priest shall make an atonement for him with the ram of the trespass offering, and the sin which he hath done shall be forgiven him.",
+  "ref": "Leviticus 19:22"
+ },
+ {
+  "id": "leviticus-19-h-08",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the people told not to do to the corners of their heads?",
+  "choices": [
+   "Cover them",
+   "Anoint them",
+   "Shave them bare",
+   "Round them"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall not round the corners of your heads.",
+  "ref": "Leviticus 19:27"
+ },
+ {
+  "id": "leviticus-19-h-09",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would happen if a daughter were made a whore?",
+  "choices": [
+   "The altar would be defiled",
+   "The people would be scattered",
+   "The harvest would fail",
+   "The land would fall to whoredom"
+  ],
+  "answer": 3,
+  "explanation": "Do not prostitute thy daughter, lest the land fall to whoredom, and the land become full of wickedness.",
+  "ref": "Leviticus 19:29"
+ },
+ {
+  "id": "leviticus-19-h-10",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say should not be done to the corners of the field?",
+  "choices": [
+   "They shall be burnt",
+   "They shall be sown with mingled seed",
+   "They shall be left empty",
+   "They shall not be wholly reaped"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not wholly reap the corners of thy field.",
+  "ref": "Leviticus 19:9"
+ },
+ {
+  "id": "leviticus-19-h-11",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two measures are named among the just weights and measures?",
+  "choices": [
+   "A cubit and a span",
+   "A shekel and a gerah",
+   "An omer and a bath",
+   "An ephah and a hin"
+  ],
+  "answer": 3,
+  "explanation": "Just balances, just weights, a just ephah, and a just hin, shall ye have.",
+  "ref": "Leviticus 19:36"
+ },
+ {
+  "id": "leviticus-19-h-12",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must not be sown in a field?",
+  "choices": [
+   "Barley",
+   "Seed in the seventh year",
+   "Seed of the stranger",
+   "Mingled seed"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not sow thy field with mingled seed.",
+  "ref": "Leviticus 19:19"
+ },
+ {
+  "id": "leviticus-19-h-13",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of cattle breeding is forbidden?",
+  "choices": [
+   "In the sabbath year",
+   "In the fourth year",
+   "Among the strangers",
+   "With a diverse kind"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not let thy cattle gender with a diverse kind.",
+  "ref": "Leviticus 19:19"
+ },
+ {
+  "id": "leviticus-19-h-14",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom must the judge not respect in judgment?",
+  "choices": [
+   "The priest nor the stranger",
+   "Only the rich",
+   "Only a friend",
+   "The poor nor the mighty"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not respect the person of the poor, nor honour the person of the mighty.",
+  "ref": "Leviticus 19:15"
+ },
+ {
+  "id": "leviticus-19-h-15",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say about swearing by His name?",
+  "choices": [
+   "Not to swear at all",
+   "To swear only at the altar",
+   "To swear only in the tabernacle",
+   "Not to swear falsely"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall not swear by my name falsely.",
+  "ref": "Leviticus 19:12"
+ },
+ {
+  "id": "leviticus-19-h-16",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Moses told to say to all the congregation at the start?",
+  "choices": [
+   "Ye shall be strong",
+   "Ye shall be many",
+   "Ye shall be free",
+   "Ye shall be holy"
+  ],
+  "answer": 3,
+  "explanation": "Speak unto all the congregation of the children of Israel, and say unto them, Ye shall be holy.",
+  "ref": "Leviticus 19:2"
+ },
+ {
   "id": "old-leviticus-20-1",
   "chapter": 20,
   "level": "beginner",
