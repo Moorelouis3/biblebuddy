@@ -10102,12 +10102,12 @@
   "category": "keyword",
   "question": "Why did the Philistines burn Samson's wife and her father?",
   "choices": [
-   "They rebelled",
-   "They hid Gideon",
-   "They stole silver",
-   "They blamed them for Samson's actions"
+   "They had hidden Samson",
+   "They blamed them for Samson's actions",
+   "They had fled to Etam",
+   "They had stolen the harvest"
   ],
-  "answer": 3,
+  "answer": 1,
   "explanation": "The Philistines burned them because they connected them to Samson's revenge.",
   "ref": "Judges 15:6"
  },
@@ -10158,6 +10158,646 @@
   "answer": 1,
   "explanation": "God miraculously brought water from the hollow place.",
   "ref": "Judges 15:18–19"
+ },
+ {
+  "id": "judges-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samson bring when he visited his wife?",
+  "choices": [
+   "A jar of wine",
+   "A lamb",
+   "Honey",
+   "A kid"
+  ],
+  "answer": 3,
+  "explanation": "Samson visited his wife with a kid.",
+  "ref": "Judges 15:1"
+ },
+ {
+  "id": "judges-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who would not let Samson go in to his wife's chamber?",
+  "choices": [
+   "Her father",
+   "The Philistine lords",
+   "Her brother",
+   "Her companion"
+  ],
+  "answer": 0,
+  "explanation": "Her father would not suffer him to go in.",
+  "ref": "Judges 15:1"
+ },
+ {
+  "id": "judges-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many foxes did Samson catch?",
+  "choices": [
+   "Three hundred",
+   "One hundred",
+   "Seven",
+   "Thirty"
+  ],
+  "answer": 0,
+  "explanation": "Samson went and caught three hundred foxes.",
+  "ref": "Judges 15:4"
+ },
+ {
+  "id": "judges-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samson put between two tails?",
+  "choices": [
+   "A cord",
+   "A trumpet",
+   "A bell",
+   "A firebrand"
+  ],
+  "answer": 3,
+  "explanation": "He turned tail to tail, and put a firebrand in the midst between two tails.",
+  "ref": "Judges 15:4"
+ },
+ {
+  "id": "judges-15-e-05",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Samson dwell after smiting the Philistines?",
+  "choices": [
+   "The top of the rock Etam",
+   "The camp of Dan",
+   "Timnath",
+   "Gaza"
+  ],
+  "answer": 0,
+  "explanation": "He went down and dwelt in the top of the rock Etam.",
+  "ref": "Judges 15:8"
+ },
+ {
+  "id": "judges-15-e-06",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the Philistines pitch and spread themselves?",
+  "choices": [
+   "In Judah, in Lehi",
+   "In Ephraim, in Shechem",
+   "In Dan, in Zorah",
+   "In Gilead, in Mizpeh"
+  ],
+  "answer": 0,
+  "explanation": "The Philistines went up, and pitched in Judah, and spread themselves in Lehi.",
+  "ref": "Judges 15:9"
+ },
+ {
+  "id": "judges-15-e-07",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what did the men of Judah bind Samson?",
+  "choices": [
+   "Two new cords",
+   "New ropes of flax",
+   "Seven green withs",
+   "Iron chains"
+  ],
+  "answer": 0,
+  "explanation": "They bound him with two new cords, and brought him up from the rock.",
+  "ref": "Judges 15:13"
+ },
+ {
+  "id": "judges-15-e-08",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the cords when Samson came to Lehi?",
+  "choices": [
+   "They were untied by Judah",
+   "They became as flax burnt with fire",
+   "They were cast into the sea",
+   "They were cut by a sword"
+  ],
+  "answer": 1,
+  "explanation": "The cords that were upon his arms became as flax that was burnt with fire.",
+  "ref": "Judges 15:14"
+ },
+ {
+  "id": "judges-15-e-09",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Samson call on when he was sore athirst?",
+  "choices": [
+   "The men of Judah",
+   "The LORD",
+   "Manoah",
+   "The Philistines"
+  ],
+  "answer": 1,
+  "explanation": "He was sore athirst, and called on the LORD.",
+  "ref": "Judges 15:18"
+ },
+ {
+  "id": "judges-15-e-10",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did Samson judge Israel in the days of the Philistines?",
+  "choices": [
+   "Forty",
+   "Twenty",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "He judged Israel in the days of the Philistines twenty years.",
+  "ref": "Judges 15:20"
+ },
+ {
+  "id": "judges-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did her father say he thought about Samson?",
+  "choices": [
+   "That he was a Philistine",
+   "That he was a coward",
+   "That he had utterly hated her",
+   "That he was dead"
+  ],
+  "answer": 2,
+  "explanation": "I verily thought that thou hadst utterly hated her; therefore I gave her to thy companion.",
+  "ref": "Judges 15:2"
+ },
+ {
+  "id": "judges-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did her father offer Samson instead?",
+  "choices": [
+   "Her cousin",
+   "Her mother",
+   "Her younger sister",
+   "A servant"
+  ],
+  "answer": 2,
+  "explanation": "Is not her younger sister fairer than she? take her, I pray thee, instead of her.",
+  "ref": "Judges 15:2"
+ },
+ {
+  "id": "judges-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samson say he would be more of than the Philistines?",
+  "choices": [
+   "Mighty",
+   "Famous",
+   "Blameless",
+   "Wise"
+  ],
+  "answer": 2,
+  "explanation": "Now shall I be more blameless than the Philistines, though I do them a displeasure.",
+  "ref": "Judges 15:3"
+ },
+ {
+  "id": "judges-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the burning foxes destroy?",
+  "choices": [
+   "Gates and towers",
+   "Flocks and herds",
+   "Houses and walls",
+   "Shocks, standing corn, vineyards and olives"
+  ],
+  "answer": 3,
+  "explanation": "He burnt up both the shocks, and also the standing corn, with the vineyards and olives.",
+  "ref": "Judges 15:5"
+ },
+ {
+  "id": "judges-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the Philistines blame for the burning?",
+  "choices": [
+   "The Danites",
+   "Samson, the son in law of the Timnite",
+   "Manoah",
+   "The men of Judah"
+  ],
+  "answer": 1,
+  "explanation": "They answered, Samson, the son in law of the Timnite, because he had taken his wife.",
+  "ref": "Judges 15:6"
+ },
+ {
+  "id": "judges-15-m-06",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Philistines do to Samson's wife and her father?",
+  "choices": [
+   "Drove them out",
+   "Burnt them with fire",
+   "Sold them",
+   "Took them captive"
+  ],
+  "answer": 1,
+  "explanation": "The Philistines came up, and burnt her and her father with fire.",
+  "ref": "Judges 15:6"
+ },
+ {
+  "id": "judges-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samson say he would do before he ceased?",
+  "choices": [
+   "Be avenged of them",
+   "Flee to Judah",
+   "Offer a sacrifice",
+   "Make peace"
+  ],
+  "answer": 0,
+  "explanation": "Though ye have done this, yet will I be avenged of you, and after that I will cease.",
+  "ref": "Judges 15:7"
+ },
+ {
+  "id": "judges-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Samson smite the Philistines?",
+  "choices": [
+   "With a sword and shield",
+   "Hip and thigh with a great slaughter",
+   "By a flood",
+   "With fire only"
+  ],
+  "answer": 1,
+  "explanation": "He smote them hip and thigh with a great slaughter.",
+  "ref": "Judges 15:8"
+ },
+ {
+  "id": "judges-15-m-09",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men of Judah went to the rock Etam?",
+  "choices": [
+   "Three hundred",
+   "Three thousand",
+   "Ten thousand",
+   "Seven hundred"
+  ],
+  "answer": 1,
+  "explanation": "Then three thousand men of Judah went to the top of the rock Etam.",
+  "ref": "Judges 15:11"
+ },
+ {
+  "id": "judges-15-m-10",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samson ask the men of Judah to swear?",
+  "choices": [
+   "That they would hide him",
+   "That they would not fall upon him themselves",
+   "That they would serve him",
+   "That they would give him bread"
+  ],
+  "answer": 1,
+  "explanation": "Swear unto me, that ye will not fall upon me yourselves.",
+  "ref": "Judges 15:12"
+ },
+ {
+  "id": "judges-15-m-11",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of Judah promise they would not do to Samson?",
+  "choices": [
+   "Bind him",
+   "Strike him",
+   "Hide him",
+   "Kill him"
+  ],
+  "answer": 3,
+  "explanation": "We will bind thee fast, and deliver thee into their hand: but surely we will not kill thee.",
+  "ref": "Judges 15:13"
+ },
+ {
+  "id": "judges-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "What name did Samson give the place where he cast away the jawbone?",
+  "choices": [
+   "Lehi",
+   "Ramath-lehi",
+   "En-hakkore",
+   "Etam"
+  ],
+  "answer": 1,
+  "explanation": "He cast away the jawbone out of his hand, and called that place Ramath-lehi.",
+  "ref": "Judges 15:17"
+ },
+ {
+  "id": "judges-15-m-13",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "What was the name of the spring God made for Samson?",
+  "choices": [
+   "Gaza",
+   "Ramath-lehi",
+   "Etam",
+   "En-hakkore"
+  ],
+  "answer": 3,
+  "explanation": "He called the name thereof En-hakkore, which is in Lehi unto this day.",
+  "ref": "Judges 15:19"
+ },
+ {
+  "id": "judges-15-m-14",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Samson describe the slain with the jawbone?",
+  "choices": [
+   "Piled like sheaves",
+   "Fallen like grass",
+   "Scattered like chaff",
+   "Heaps upon heaps"
+  ],
+  "answer": 3,
+  "explanation": "With the jawbone of an ass, heaps upon heaps, with the jaw of an ass have I slain a thousand men.",
+  "ref": "Judges 15:16"
+ },
+ {
+  "id": "judges-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what season did Samson visit his wife?",
+  "choices": [
+   "The time of wheat harvest",
+   "The time of the vintage",
+   "The time of the rains",
+   "The time of barley harvest"
+  ],
+  "answer": 0,
+  "explanation": "It came to pass in the time of wheat harvest, that Samson visited his wife with a kid.",
+  "ref": "Judges 15:1"
+ },
+ {
+  "id": "judges-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the firebrand put among the foxes?",
+  "choices": [
+   "Under each foot",
+   "Around each neck",
+   "Between two tails",
+   "On each head"
+  ],
+  "answer": 2,
+  "explanation": "He put a firebrand in the midst between two tails.",
+  "ref": "Judges 15:4"
+ },
+ {
+  "id": "judges-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the men of Judah say the Philistines had come up?",
+  "choices": [
+   "To take Samson's wife",
+   "To burn Judah's cities",
+   "To take Judah's land",
+   "To bind Samson and do to him as he had done to them"
+  ],
+  "answer": 3,
+  "explanation": "To bind Samson are we come up, to do to him as he hath done to us.",
+  "ref": "Judges 15:10"
+ },
+ {
+  "id": "judges-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men of Judah say the Philistines were over them?",
+  "choices": [
+   "Brethren",
+   "Captives",
+   "Slaves",
+   "Rulers"
+  ],
+  "answer": 3,
+  "explanation": "Knowest thou not that the Philistines are rulers over us?",
+  "ref": "Judges 15:11"
+ },
+ {
+  "id": "judges-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samson say to Judah about what he had done?",
+  "choices": [
+   "I did it by mistake",
+   "I did it for the LORD",
+   "I did it for Judah",
+   "As they did unto me, so have I done unto them"
+  ],
+  "answer": 3,
+  "explanation": "He said unto them, As they did unto me, so have I done unto them.",
+  "ref": "Judges 15:11"
+ },
+ {
+  "id": "judges-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of jawbone did Samson find?",
+  "choices": [
+   "A broken jawbone of a ram",
+   "A dry jawbone of a lion",
+   "A new jawbone of an ass",
+   "An old jawbone of an ox"
+  ],
+  "answer": 2,
+  "explanation": "He found a new jawbone of an ass, and put forth his hand, and took it.",
+  "ref": "Judges 15:15"
+ },
+ {
+  "id": "judges-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samson do with the jawbone when he finished speaking?",
+  "choices": [
+   "Hung it on a tree",
+   "Cast it away out of his hand",
+   "Gave it to Judah",
+   "Kept it"
+  ],
+  "answer": 1,
+  "explanation": "When he had made an end of speaking, he cast away the jawbone out of his hand.",
+  "ref": "Judges 15:17"
+ },
+ {
+  "id": "judges-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samson say the LORD had given into the hand of his servant?",
+  "choices": [
+   "A new name",
+   "A fountain of water",
+   "A great victory in Gaza",
+   "This great deliverance"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast given this great deliverance into the hand of thy servant.",
+  "ref": "Judges 15:18"
+ },
+ {
+  "id": "judges-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into whose hand did Samson fear he would fall?",
+  "choices": [
+   "The men of Judah",
+   "The uncircumcised",
+   "The Timnite",
+   "His wife's father"
+  ],
+  "answer": 1,
+  "explanation": "Shall I die for thirst, and fall into the hand of the uncircumcised?",
+  "ref": "Judges 15:18"
+ },
+ {
+  "id": "judges-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to Samson after he drank the water?",
+  "choices": [
+   "His spirit came again and he revived",
+   "He fled to Etam",
+   "He fell asleep",
+   "He judged Israel"
+  ],
+  "answer": 0,
+  "explanation": "When he had drunk, his spirit came again, and he revived.",
+  "ref": "Judges 15:19"
+ },
+ {
+  "id": "judges-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where is En-hakkore said to be?",
+  "choices": [
+   "In Timnath",
+   "In Gaza",
+   "In Etam",
+   "In Lehi"
+  ],
+  "answer": 3,
+  "explanation": "He called the name thereof En-hakkore, which is in Lehi unto this day.",
+  "ref": "Judges 15:19"
+ },
+ {
+  "id": "judges-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Philistines do against Samson when he came to Lehi?",
+  "choices": [
+   "Shouted against him",
+   "Prayed to Dagon",
+   "Fled from him",
+   "Bound him again"
+  ],
+  "answer": 0,
+  "explanation": "When he came unto Lehi, the Philistines shouted against him.",
+  "ref": "Judges 15:14"
+ },
+ {
+  "id": "judges-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom had Samson's wife's father given her?",
+  "choices": [
+   "Her brother",
+   "The Timnite's son",
+   "A Philistine lord",
+   "Samson's companion"
+  ],
+  "answer": 3,
+  "explanation": "I gave her to thy companion.",
+  "ref": "Judges 15:2"
+ },
+ {
+  "id": "judges-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men of Judah say they came to do at the rock Etam?",
+  "choices": [
+   "Make Samson their king",
+   "Bind Samson and deliver him to the Philistines",
+   "Kill Samson",
+   "Offer Samson peace"
+  ],
+  "answer": 1,
+  "explanation": "We are come down to bind thee, that we may deliver thee into the hand of the Philistines.",
+  "ref": "Judges 15:12"
+ },
+ {
+  "id": "judges-15-m-15",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of Judah ask the Philistines in Lehi?",
+  "choices": [
+   "Who is your king?",
+   "Where is Samson?",
+   "What do ye want of Etam?",
+   "Why are ye come up against us?"
+  ],
+  "answer": 3,
+  "explanation": "The men of Judah said, Why are ye come up against us?",
+  "ref": "Judges 15:10"
+ },
+ {
+  "id": "judges-15-h-15",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where did the men of Judah bring Samson up after binding him?",
+  "choices": [
+   "From the rock",
+   "From the camp of Dan",
+   "From Timnath",
+   "From Gaza"
+  ],
+  "answer": 0,
+  "explanation": "They bound him with two new cords, and brought him up from the rock.",
+  "ref": "Judges 15:13"
  },
  {
   "id": "old-judges-16-1",
