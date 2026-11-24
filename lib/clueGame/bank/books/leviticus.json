@@ -18846,5 +18846,645 @@
   "answer": 0,
   "explanation": "The book closes by saying these commandments were given in Mount Sinai.",
   "ref": "Leviticus 27:34"
+ },
+ {
+  "id": "leviticus-27-e-01",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many shekels of silver was a male aged twenty to sixty valued at?",
+  "choices": [
+   "Thirty",
+   "Fifty",
+   "Twenty",
+   "Fifteen"
+  ],
+  "answer": 1,
+  "explanation": "Thy estimation shall be of the male fifty shekels of silver, after the shekel of the sanctuary.",
+  "ref": "Leviticus 27:3"
+ },
+ {
+  "id": "leviticus-27-e-02",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many shekels was a female aged twenty to sixty valued at?",
+  "choices": [
+   "Thirty",
+   "Fifty",
+   "Ten",
+   "Fifteen"
+  ],
+  "answer": 0,
+  "explanation": "If it be a female, then thy estimation shall be thirty shekels.",
+  "ref": "Leviticus 27:4"
+ },
+ {
+  "id": "leviticus-27-e-03",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the LORD speak to at the start of this chapter?",
+  "choices": [
+   "Aaron",
+   "Joshua",
+   "Eleazar",
+   "Moses"
+  ],
+  "answer": 3,
+  "explanation": "The LORD spake unto Moses, saying, Speak unto the children of Israel.",
+  "ref": "Leviticus 27:1"
+ },
+ {
+  "id": "leviticus-27-e-04",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom was Moses told to speak to about vows?",
+  "choices": [
+   "The priests only",
+   "The Levites",
+   "The children of Israel",
+   "The elders of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Speak unto the children of Israel, and say unto them, When a man shall make a singular vow.",
+  "ref": "Leviticus 27:2"
+ },
+ {
+  "id": "leviticus-27-e-05",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to a beast that a man gave to the LORD as an offering?",
+  "choices": [
+   "It was sold",
+   "It became holy",
+   "It was set free",
+   "It was returned"
+  ],
+  "answer": 1,
+  "explanation": "All that any man giveth of such unto the LORD shall be holy.",
+  "ref": "Leviticus 27:9"
+ },
+ {
+  "id": "leviticus-27-e-06",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides persons and animals, what could a man sanctify to be holy unto the LORD?",
+  "choices": [
+   "His house",
+   "The tabernacle",
+   "A king's palace",
+   "A city wall"
+  ],
+  "answer": 0,
+  "explanation": "When a man shall sanctify his house to be holy unto the LORD, then the priest shall estimate it.",
+  "ref": "Leviticus 27:14"
+ },
+ {
+  "id": "leviticus-27-e-07",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose possession did a devoted field become when it went out in the jubile?",
+  "choices": [
+   "The owner's",
+   "The king's",
+   "Moses'",
+   "The priest's"
+  ],
+  "answer": 3,
+  "explanation": "The field, when it goeth out in the jubile, shall be holy unto the LORD; the possession thereof shall be the priest's.",
+  "ref": "Leviticus 27:21"
+ },
+ {
+  "id": "leviticus-27-e-08",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By whose shekel were all the estimations made?",
+  "choices": [
+   "The shekel of Egypt",
+   "The shekel of the merchant",
+   "The shekel of the sanctuary",
+   "The shekel of the king"
+  ],
+  "answer": 2,
+  "explanation": "All thy estimations shall be according to the shekel of the sanctuary.",
+  "ref": "Leviticus 27:25"
+ },
+ {
+  "id": "leviticus-27-e-09",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In the jubile, to whom did a bought field return?",
+  "choices": [
+   "The priest",
+   "The one it was bought from",
+   "The buyer's sons",
+   "The tabernacle"
+  ],
+  "answer": 1,
+  "explanation": "In the year of the jubile the field shall return unto him of whom it was bought.",
+  "ref": "Leviticus 27:24"
+ },
+ {
+  "id": "leviticus-27-e-10",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a man not allowed to do to an animal he had given to the LORD?",
+  "choices": [
+   "Change it for another",
+   "Show it to the priest",
+   "Count it",
+   "Offer it at the altar"
+  ],
+  "answer": 0,
+  "explanation": "He shall not alter it, nor change it, a good for a bad, or a bad for a good.",
+  "ref": "Leviticus 27:10"
+ },
+ {
+  "id": "leviticus-27-m-01",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many shekels was a male aged five to twenty valued at?",
+  "choices": [
+   "Fifty",
+   "Ten",
+   "Five",
+   "Twenty"
+  ],
+  "answer": 3,
+  "explanation": "If it be from five years old even unto twenty years old, thy estimation shall be of the male twenty shekels.",
+  "ref": "Leviticus 27:5"
+ },
+ {
+  "id": "leviticus-27-m-02",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many shekels of silver was a male from a month to five years old valued at?",
+  "choices": [
+   "Three",
+   "Ten",
+   "Five",
+   "Twenty"
+  ],
+  "answer": 2,
+  "explanation": "From a month old even unto five years old, thy estimation shall be of the male five shekels of silver.",
+  "ref": "Leviticus 27:6"
+ },
+ {
+  "id": "leviticus-27-m-03",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened if a man changed one beast for another he had vowed?",
+  "choices": [
+   "The first was set free",
+   "Both became holy",
+   "He paid a fine",
+   "The exchange was refused"
+  ],
+  "answer": 1,
+  "explanation": "If he shall at all change beast for beast, then it and the exchange thereof shall be holy.",
+  "ref": "Leviticus 27:10"
+ },
+ {
+  "id": "leviticus-27-m-04",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who was an unclean beast presented before to be valued?",
+  "choices": [
+   "The priest",
+   "Moses",
+   "The elders",
+   "The judges"
+  ],
+  "answer": 0,
+  "explanation": "If it be any unclean beast, he shall present the beast before the priest, and the priest shall value it.",
+  "ref": "Leviticus 27:11"
+ },
+ {
+  "id": "leviticus-27-m-05",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much was a homer of barley seed in a field valued at?",
+  "choices": [
+   "Thirty shekels of silver",
+   "Ten shekels of silver",
+   "Five shekels of silver",
+   "Fifty shekels of silver"
+  ],
+  "answer": 3,
+  "explanation": "An homer of barley seed shall be valued at fifty shekels of silver.",
+  "ref": "Leviticus 27:16"
+ },
+ {
+  "id": "leviticus-27-m-06",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If a man sanctified his field after the jubile, how did the priest reckon its price?",
+  "choices": [
+   "By its size alone",
+   "By the seed already sown",
+   "By the years that remain until the jubile",
+   "By the harvest of last year"
+  ],
+  "answer": 2,
+  "explanation": "The priest shall reckon the money according to the years that remain, even unto the year of the jubile.",
+  "ref": "Leviticus 27:18"
+ },
+ {
+  "id": "leviticus-27-m-07",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to a field that was not redeemed or had been sold to another man?",
+  "choices": [
+   "It returned at once",
+   "It could not be redeemed any more",
+   "It was given to Levites",
+   "It was burned"
+  ],
+  "answer": 1,
+  "explanation": "If he will not redeem the field, or have sold it to another man, it shall not be redeemed any more.",
+  "ref": "Leviticus 27:20"
+ },
+ {
+  "id": "leviticus-27-m-08",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was every devoted thing to the LORD?",
+  "choices": [
+   "Most holy",
+   "Unclean",
+   "Redeemable",
+   "The priest's gift"
+  ],
+  "answer": 0,
+  "explanation": "Every devoted thing is most holy unto the LORD.",
+  "ref": "Leviticus 27:28"
+ },
+ {
+  "id": "leviticus-27-m-09",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to happen to a person who was devoted and not redeemed?",
+  "choices": [
+   "Sold as a servant",
+   "Sent to the priest",
+   "Set free in the jubile",
+   "Put to death"
+  ],
+  "answer": 3,
+  "explanation": "None devoted, which shall be devoted of men, shall be redeemed; but shall surely be put to death.",
+  "ref": "Leviticus 27:29"
+ },
+ {
+  "id": "leviticus-27-m-10",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the tithe of the herd or flock pass under?",
+  "choices": [
+   "The yoke",
+   "The gate",
+   "The rod",
+   "The altar"
+  ],
+  "answer": 2,
+  "explanation": "Whatsoever passeth under the rod, the tenth shall be holy unto the LORD.",
+  "ref": "Leviticus 27:32"
+ },
+ {
+  "id": "leviticus-27-m-11",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was a man not to do when choosing the tithe animal?",
+  "choices": [
+   "Count the flock",
+   "Search whether it be good or bad",
+   "Sell the herd",
+   "Ask the priest"
+  ],
+  "answer": 1,
+  "explanation": "He shall not search whether it be good or bad, neither shall he change it.",
+  "ref": "Leviticus 27:33"
+ },
+ {
+  "id": "leviticus-27-m-12",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who estimated a house a man had sanctified to the LORD?",
+  "choices": [
+   "The priest",
+   "The elders",
+   "The owner",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall estimate it, whether it be good or bad: as the priest shall estimate it, so shall it stand.",
+  "ref": "Leviticus 27:14"
+ },
+ {
+  "id": "leviticus-27-m-13",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two animals does the chapter name as the firstlings no man could sanctify?",
+  "choices": [
+   "Ass and goat",
+   "Camel and ox",
+   "Sheep and dove",
+   "Ox and sheep"
+  ],
+  "answer": 3,
+  "explanation": "The firstling of the beasts, whether it be ox, or sheep, is the LORD'S.",
+  "ref": "Leviticus 27:26"
+ },
+ {
+  "id": "leviticus-27-m-14",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was a poor man's vow valued if he was poorer than the estimation?",
+  "choices": [
+   "By half price",
+   "By the priest's choice of animals",
+   "According to his ability",
+   "By the elders' vote"
+  ],
+  "answer": 2,
+  "explanation": "According to his ability that vowed shall the priest value him.",
+  "ref": "Leviticus 27:8"
+ },
+ {
+  "id": "leviticus-27-m-15",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many shekels was a female aged five to twenty valued at?",
+  "choices": [
+   "Thirty",
+   "Ten",
+   "Twenty",
+   "Three"
+  ],
+  "answer": 1,
+  "explanation": "If it be from five years old even unto twenty years old, thy estimation shall be for the female ten shekels.",
+  "ref": "Leviticus 27:5"
+ },
+ {
+  "id": "leviticus-27-h-01",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shekels was a female over sixty years old valued at?",
+  "choices": [
+   "Ten",
+   "Fifteen",
+   "Thirty",
+   "Five"
+  ],
+  "answer": 0,
+  "explanation": "If it be from sixty years old and above, for the female ten shekels.",
+  "ref": "Leviticus 27:7"
+ },
+ {
+  "id": "leviticus-27-h-02",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shekels of silver was a female from a month to five years old valued at?",
+  "choices": [
+   "Five",
+   "Ten",
+   "Twenty",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "From a month old even unto five years old, for the female thy estimation shall be three shekels of silver.",
+  "ref": "Leviticus 27:6"
+ },
+ {
+  "id": "leviticus-27-h-03",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many gerahs made one shekel?",
+  "choices": [
+   "Ten",
+   "Fifty",
+   "Twenty",
+   "Thirty"
+  ],
+  "answer": 2,
+  "explanation": "Twenty gerahs shall be the shekel.",
+  "ref": "Leviticus 27:25"
+ },
+ {
+  "id": "leviticus-27-h-04",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Up to what age was a male valued at fifty shekels?",
+  "choices": [
+   "Fifty",
+   "Sixty",
+   "Forty",
+   "Seventy"
+  ],
+  "answer": 1,
+  "explanation": "Thy estimation shall be of the male from twenty years old even unto sixty years old.",
+  "ref": "Leviticus 27:3"
+ },
+ {
+  "id": "leviticus-27-h-05",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If a man sanctified his field from the year of the jubile, what happened to the estimation?",
+  "choices": [
+   "It stood",
+   "It was halved",
+   "It was doubled",
+   "It was cancelled"
+  ],
+  "answer": 0,
+  "explanation": "If he sanctify his field from the year of jubile, according to thy estimation it shall stand.",
+  "ref": "Leviticus 27:17"
+ },
+ {
+  "id": "leviticus-27-h-06",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the firstling of an unclean beast that was not redeemed?",
+  "choices": [
+   "It was set free",
+   "It was burned",
+   "It was given to Levites",
+   "It was sold at the estimation"
+  ],
+  "answer": 3,
+  "explanation": "If it be not redeemed, then it shall be sold according to thy estimation.",
+  "ref": "Leviticus 27:27"
+ },
+ {
+  "id": "leviticus-27-h-07",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two things from the land does the chapter say are the tithe?",
+  "choices": [
+   "Oil and wine",
+   "Honey and milk",
+   "Seed of the land and fruit of the tree",
+   "Corn and flax"
+  ],
+  "answer": 2,
+  "explanation": "All the tithe of the land, whether of the seed of the land, or of the fruit of the tree, is the LORD'S.",
+  "ref": "Leviticus 27:30"
+ },
+ {
+  "id": "leviticus-27-h-08",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two things could never be done with a devoted thing?",
+  "choices": [
+   "Counted or weighed",
+   "Sold or redeemed",
+   "Shared or loaned",
+   "Eaten or burned"
+  ],
+  "answer": 1,
+  "explanation": "No devoted thing shall be sold or redeemed.",
+  "ref": "Leviticus 27:28"
+ },
+ {
+  "id": "leviticus-27-h-09",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What could never be done with a tithe animal that had been changed?",
+  "choices": [
+   "It could not be redeemed",
+   "It could not be eaten",
+   "It could not be counted",
+   "It could not be led out"
+  ],
+  "answer": 0,
+  "explanation": "If he change it at all, then both it and the change thereof shall be holy; it shall not be redeemed.",
+  "ref": "Leviticus 27:33"
+ },
+ {
+  "id": "leviticus-27-h-10",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which three kinds of things could a man devote to the LORD?",
+  "choices": [
+   "Gold, silver and oil",
+   "House, vineyard and garden",
+   "Servant, wife and ox",
+   "Man, beast and field"
+  ],
+  "answer": 3,
+  "explanation": "No devoted thing, of man and beast, and of the field of his possession, shall be sold or redeemed.",
+  "ref": "Leviticus 27:28"
+ },
+ {
+  "id": "leviticus-27-h-11",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "A field not redeemed went out in the jubile holy as what?",
+  "choices": [
+   "A field of the Levites",
+   "A common field",
+   "A field devoted",
+   "A field of refuge"
+  ],
+  "answer": 2,
+  "explanation": "The field, when it goeth out in the jubile, shall be holy unto the LORD, as a field devoted.",
+  "ref": "Leviticus 27:21"
+ },
+ {
+  "id": "leviticus-27-h-12",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was the estimation for a bought field given to the LORD?",
+  "choices": [
+   "As a gift to Moses",
+   "As a holy thing",
+   "As a sacrifice",
+   "As a tithe"
+  ],
+  "answer": 1,
+  "explanation": "He shall give thine estimation in that day, as a holy thing unto the LORD.",
+  "ref": "Leviticus 27:23"
+ },
+ {
+  "id": "leviticus-27-h-13",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when did the priest reckon the worth of a field that was bought and sanctified?",
+  "choices": [
+   "The year of the jubile",
+   "The next feast",
+   "The seventh year",
+   "The next harvest"
+  ],
+  "answer": 0,
+  "explanation": "The priest shall reckon unto him the worth of thy estimation, even unto the year of the jubile.",
+  "ref": "Leviticus 27:23"
+ },
+ {
+  "id": "leviticus-27-h-14",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shekels was a male over sixty years old valued at?",
+  "choices": [
+   "Ten",
+   "Twenty",
+   "Fifty",
+   "Fifteen"
+  ],
+  "answer": 3,
+  "explanation": "If it be from sixty years old and above, if it be a male, then thy estimation shall be fifteen shekels.",
+  "ref": "Leviticus 27:7"
+ },
+ {
+  "id": "leviticus-27-h-15",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what age did the valuation of persons begin?",
+  "choices": [
+   "A week old",
+   "One year old",
+   "A month old",
+   "Three years old"
+  ],
+  "answer": 2,
+  "explanation": "If it be from a month old even unto five years old, thy estimation shall be of the male five shekels.",
+  "ref": "Leviticus 27:6"
  }
 ]
