@@ -23136,6 +23136,646 @@
   "ref": "Numbers 33:55"
  },
  {
+  "id": "numbers-33-e-01",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In which month did Israel depart from Rameses?",
+  "choices": [
+   "The first month",
+   "The third month",
+   "The seventh month",
+   "The tenth month"
+  ],
+  "answer": 0,
+  "explanation": "They departed from Rameses in the first month, on the fifteenth day of the first month.",
+  "ref": "Numbers 33:3"
+ },
+ {
+  "id": "numbers-33-e-02",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did Israel go out, in relation to the passover?",
+  "choices": [
+   "During it",
+   "A week before it",
+   "On the morrow after it",
+   "A month after it"
+  ],
+  "answer": 2,
+  "explanation": "On the morrow after the passover the children of Israel went out with an high hand.",
+  "ref": "Numbers 33:3"
+ },
+ {
+  "id": "numbers-33-e-03",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Israel pitch first after leaving Rameses?",
+  "choices": [
+   "Elim",
+   "Succoth",
+   "Marah",
+   "Etham"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel removed from Rameses, and pitched in Succoth.",
+  "ref": "Numbers 33:5"
+ },
+ {
+  "id": "numbers-33-e-04",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the Egyptians doing while Israel left?",
+  "choices": [
+   "Building cities",
+   "Sowing fields",
+   "Chasing Israel",
+   "Burying their firstborn"
+  ],
+  "answer": 3,
+  "explanation": "The Egyptians buried all their firstborn, which the LORD had smitten among them.",
+  "ref": "Numbers 33:4"
+ },
+ {
+  "id": "numbers-33-e-05",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was at Elim?",
+  "choices": [
+   "A great mountain",
+   "A fortress",
+   "A golden idol",
+   "Twelve fountains of water"
+  ],
+  "answer": 3,
+  "explanation": "In Elim were twelve fountains of water, and threescore and ten palm trees.",
+  "ref": "Numbers 33:9"
+ },
+ {
+  "id": "numbers-33-e-06",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which priest died on mount Hor?",
+  "choices": [
+   "Eleazar",
+   "Phinehas",
+   "Aaron",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "Aaron the priest went up into mount Hor at the commandment of the LORD, and died there.",
+  "ref": "Numbers 33:38"
+ },
+ {
+  "id": "numbers-33-e-07",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was there no water for the people to drink?",
+  "choices": [
+   "Marah",
+   "Elim",
+   "Succoth",
+   "Rephidim"
+  ],
+  "answer": 3,
+  "explanation": "They encamped at Rephidim, where was no water for the people to drink.",
+  "ref": "Numbers 33:14"
+ },
+ {
+  "id": "numbers-33-e-08",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Through what did Israel pass into the wilderness?",
+  "choices": [
+   "The midst of the sea",
+   "A mountain gate",
+   "A desert pass",
+   "The Jordan"
+  ],
+  "answer": 0,
+  "explanation": "They passed through the midst of the sea into the wilderness.",
+  "ref": "Numbers 33:8"
+ },
+ {
+  "id": "numbers-33-e-09",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king heard of Israel's coming?",
+  "choices": [
+   "King Sihon",
+   "King Balak",
+   "King Arad the Canaanite",
+   "King Og"
+  ],
+  "answer": 2,
+  "explanation": "King Arad the Canaanite heard of the coming of the children of Israel.",
+  "ref": "Numbers 33:40"
+ },
+ {
+  "id": "numbers-33-e-10",
+  "chapter": 33,
+  "level": "beginner",
+  "category": "place",
+  "question": "Mount Hor was at the edge of which land?",
+  "choices": [
+   "Egypt",
+   "Midian",
+   "Edom",
+   "Moab"
+  ],
+  "answer": 2,
+  "explanation": "They pitched in mount Hor, in the edge of the land of Edom.",
+  "ref": "Numbers 33:37"
+ },
+ {
+  "id": "numbers-33-m-01",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many palm trees were at Elim?",
+  "choices": [
+   "One hundred",
+   "Threescore and ten",
+   "Forty",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "In Elim were twelve fountains of water, and threescore and ten palm trees.",
+  "ref": "Numbers 33:9"
+ },
+ {
+  "id": "numbers-33-m-02",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How old was Aaron when he died on mount Hor?",
+  "choices": [
+   "127",
+   "120",
+   "123",
+   "110"
+  ],
+  "answer": 2,
+  "explanation": "Aaron was an hundred and twenty and three years old when he died in mount Hor.",
+  "ref": "Numbers 33:39"
+ },
+ {
+  "id": "numbers-33-m-03",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day and month did Aaron die?",
+  "choices": [
+   "The fifteenth day of the seventh month",
+   "The tenth day of the first month",
+   "The first day of the fifth month",
+   "The first day of the first month"
+  ],
+  "answer": 2,
+  "explanation": "Aaron died in the first day of the fifth month.",
+  "ref": "Numbers 33:38"
+ },
+ {
+  "id": "numbers-33-m-04",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year after leaving Egypt did Aaron die?",
+  "choices": [
+   "The first",
+   "The tenth",
+   "The fortieth",
+   "The twentieth"
+  ],
+  "answer": 2,
+  "explanation": "He died in the fortieth year after the children of Israel were come out of the land of Egypt.",
+  "ref": "Numbers 33:38"
+ },
+ {
+  "id": "numbers-33-m-05",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was their journey in the wilderness before Marah?",
+  "choices": [
+   "One day",
+   "Forty days",
+   "Seven days",
+   "Three days"
+  ],
+  "answer": 3,
+  "explanation": "They went three days' journey in the wilderness of Etham, and pitched in Marah.",
+  "ref": "Numbers 33:8"
+ },
+ {
+  "id": "numbers-33-m-06",
+  "chapter": 33,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did they camp that was before Baal-zephon?",
+  "choices": [
+   "Etham",
+   "Marah",
+   "Pi-hahiroth",
+   "Dophkah"
+  ],
+  "answer": 2,
+  "explanation": "They turned again unto Pi-hahiroth, which is before Baal-zephon.",
+  "ref": "Numbers 33:7"
+ },
+ {
+  "id": "numbers-33-m-07",
+  "chapter": 33,
+  "level": "medium",
+  "category": "place",
+  "question": "Which place is called the wilderness of Zin?",
+  "choices": [
+   "Marah",
+   "Hor",
+   "Elim",
+   "Kadesh"
+  ],
+  "answer": 3,
+  "explanation": "They pitched in the wilderness of Zin, which is Kadesh.",
+  "ref": "Numbers 33:36"
+ },
+ {
+  "id": "numbers-33-m-08",
+  "chapter": 33,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did they pitch after Ezion-gaber?",
+  "choices": [
+   "Mount Hor",
+   "Moab",
+   "Rephidim",
+   "The wilderness of Zin"
+  ],
+  "answer": 3,
+  "explanation": "They removed from Ezion-gaber, and pitched in the wilderness of Zin, which is Kadesh.",
+  "ref": "Numbers 33:36"
+ },
+ {
+  "id": "numbers-33-m-09",
+  "chapter": 33,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did they pitch after Rephidim?",
+  "choices": [
+   "Elim",
+   "Succoth",
+   "The wilderness of Sinai",
+   "Marah"
+  ],
+  "answer": 2,
+  "explanation": "They departed from Rephidim, and pitched in the wilderness of Sinai.",
+  "ref": "Numbers 33:15"
+ },
+ {
+  "id": "numbers-33-m-10",
+  "chapter": 33,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did they pitch in the end of the list?",
+  "choices": [
+   "The plains of Moab by Jordan near Jericho",
+   "Mount Hor",
+   "Rameses",
+   "Kadesh"
+  ],
+  "answer": 0,
+  "explanation": "They pitched in the plains of Moab by Jordan near Jericho.",
+  "ref": "Numbers 33:48"
+ },
+ {
+  "id": "numbers-33-m-11",
+  "chapter": 33,
+  "level": "medium",
+  "category": "place",
+  "question": "Between which two places did they pitch by Jordan in Moab?",
+  "choices": [
+   "Kadesh and Hor",
+   "Beth-jesimoth and Abel-shittim",
+   "Rameses and Succoth",
+   "Elim and Marah"
+  ],
+  "answer": 1,
+  "explanation": "They pitched by Jordan, from Beth-jesimoth even unto Abel-shittim.",
+  "ref": "Numbers 33:49"
+ },
+ {
+  "id": "numbers-33-m-12",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did the LORD give for driving out the inhabitants?",
+  "choices": [
+   "Israel needed gold",
+   "They were too strong",
+   "I have given you the land to possess it",
+   "They had no cattle"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall dispossess the inhabitants of the land: for I have given you the land to possess it.",
+  "ref": "Numbers 33:53"
+ },
+ {
+  "id": "numbers-33-m-13",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Israel do to the high places of Canaan?",
+  "choices": [
+   "Leave them",
+   "Sell them",
+   "Rebuild them",
+   "Pluck them down"
+  ],
+  "answer": 3,
+  "explanation": "Quite pluck down all their high places.",
+  "ref": "Numbers 33:52"
+ },
+ {
+  "id": "numbers-33-m-14",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would do if Israel did not drive the inhabitants out?",
+  "choices": [
+   "Give them a new land",
+   "Send a plague",
+   "Send manna",
+   "Do to Israel as He thought to do to them"
+  ],
+  "answer": 3,
+  "explanation": "It shall come to pass, that I shall do unto you, as I thought to do unto them.",
+  "ref": "Numbers 33:56"
+ },
+ {
+  "id": "numbers-33-m-15",
+  "chapter": 33,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who was to receive more inheritance in the land?",
+  "choices": [
+   "The fewer",
+   "The princes only",
+   "The more",
+   "The Levites"
+  ],
+  "answer": 2,
+  "explanation": "To the more ye shall give the more inheritance, and to the fewer the less.",
+  "ref": "Numbers 33:54"
+ },
+ {
+  "id": "numbers-33-h-01",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Etham was in the edge of what?",
+  "choices": [
+   "The valley",
+   "The wilderness",
+   "The sea",
+   "The mountain"
+  ],
+  "answer": 1,
+  "explanation": "They pitched in Etham, which is in the edge of the wilderness.",
+  "ref": "Numbers 33:6"
+ },
+ {
+  "id": "numbers-33-h-02",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place is named as the one they pitched before at the sea?",
+  "choices": [
+   "Hazeroth",
+   "Migdol",
+   "Sinai",
+   "Dophkah"
+  ],
+  "answer": 1,
+  "explanation": "And they pitched before Migdol.",
+  "ref": "Numbers 33:7"
+ },
+ {
+  "id": "numbers-33-h-03",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did they encamp after leaving the wilderness of Sin?",
+  "choices": [
+   "Dophkah",
+   "Elim",
+   "Alush",
+   "Rephidim"
+  ],
+  "answer": 0,
+  "explanation": "They took their journey out of the wilderness of Sin, and encamped in Dophkah.",
+  "ref": "Numbers 33:12"
+ },
+ {
+  "id": "numbers-33-h-04",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did they camp after Elim?",
+  "choices": [
+   "At Rephidim",
+   "By the Red sea",
+   "At Moab",
+   "At Hazeroth"
+  ],
+  "answer": 1,
+  "explanation": "They removed from Elim, and encamped by the Red sea.",
+  "ref": "Numbers 33:10"
+ },
+ {
+  "id": "numbers-33-h-05",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did they encamp after Hazeroth?",
+  "choices": [
+   "Libnah",
+   "Rithmah",
+   "Rissah",
+   "Tahath"
+  ],
+  "answer": 1,
+  "explanation": "They departed from Hazeroth, and pitched in Rithmah.",
+  "ref": "Numbers 33:18"
+ },
+ {
+  "id": "numbers-33-h-06",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did they pitch after Libnah?",
+  "choices": [
+   "Kehelathah",
+   "Haradah",
+   "Rissah",
+   "Rithmah"
+  ],
+  "answer": 2,
+  "explanation": "They removed from Libnah, and pitched at Rissah.",
+  "ref": "Numbers 33:21"
+ },
+ {
+  "id": "numbers-33-h-07",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did they pitch after leaving mount Hor?",
+  "choices": [
+   "Dophkah",
+   "Punon",
+   "Oboth",
+   "Zalmonah"
+  ],
+  "answer": 3,
+  "explanation": "They departed from mount Hor, and pitched in Zalmonah.",
+  "ref": "Numbers 33:41"
+ },
+ {
+  "id": "numbers-33-h-08",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these places did they pitch at after Punon?",
+  "choices": [
+   "Alush",
+   "Succoth",
+   "Etham",
+   "Oboth"
+  ],
+  "answer": 3,
+  "explanation": "They departed from Punon, and pitched in Oboth.",
+  "ref": "Numbers 33:43"
+ },
+ {
+  "id": "numbers-33-h-09",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Ije-abarim was in the border of which land?",
+  "choices": [
+   "Edom",
+   "Egypt",
+   "Midian",
+   "Moab"
+  ],
+  "answer": 3,
+  "explanation": "They pitched in Ije-abarim, in the border of Moab.",
+  "ref": "Numbers 33:44"
+ },
+ {
+  "id": "numbers-33-h-10",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Before which place did they pitch in the mountains of Abarim?",
+  "choices": [
+   "Moab",
+   "Jericho",
+   "Nebo",
+   "Hor"
+  ],
+  "answer": 2,
+  "explanation": "They pitched in the mountains of Abarim, before Nebo.",
+  "ref": "Numbers 33:47"
+ },
+ {
+  "id": "numbers-33-h-11",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did they pitch before mountains of Abarim?",
+  "choices": [
+   "Almon-diblathaim",
+   "Dibon-gad",
+   "Oboth",
+   "Zalmonah"
+  ],
+  "answer": 0,
+  "explanation": "They removed from Dibon-gad, and encamped in Almon-diblathaim.",
+  "ref": "Numbers 33:46"
+ },
+ {
+  "id": "numbers-33-h-12",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did they pitch after Alush?",
+  "choices": [
+   "Sinai",
+   "Hazeroth",
+   "Rephidim",
+   "Elim"
+  ],
+  "answer": 2,
+  "explanation": "They departed from Alush, and encamped at Rephidim.",
+  "ref": "Numbers 33:14"
+ },
+ {
+  "id": "numbers-33-h-13",
+  "chapter": 33,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place did they pitch at just before Haradah?",
+  "choices": [
+   "Tarah",
+   "Makheloth",
+   "Mount Shapher",
+   "Tahath"
+  ],
+  "answer": 2,
+  "explanation": "They removed from mount Shapher, and encamped in Haradah.",
+  "ref": "Numbers 33:23–24"
+ },
+ {
+  "id": "numbers-33-h-14",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Israel pitch after Kibroth-hattaavah?",
+  "choices": [
+   "Hazeroth",
+   "Libnah",
+   "Kadesh",
+   "Moab"
+  ],
+  "answer": 0,
+  "explanation": "They departed from Kibroth-hattaavah, and encamped at Hazeroth.",
+  "ref": "Numbers 33:17"
+ },
+ {
+  "id": "numbers-33-h-15",
+  "chapter": 33,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD tell Israel to destroy besides molten images?",
+  "choices": [
+   "All their cattle",
+   "All their pictures",
+   "All their wells",
+   "All their trees"
+  ],
+  "answer": 1,
+  "explanation": "Destroy all their pictures, and destroy all their molten images.",
+  "ref": "Numbers 33:52"
+ },
+ {
   "id": "old-numbers-34-1",
   "chapter": 34,
   "level": "beginner",
