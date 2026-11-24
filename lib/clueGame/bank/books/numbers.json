@@ -22416,6 +22416,646 @@
   "ref": "Numbers 32:33"
  },
  {
+  "id": "numbers-32-e-01",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two tribes had a very great multitude of cattle?",
+  "choices": [
+   "Reuben and Gad",
+   "Levi and Simeon",
+   "Asher and Naphtali",
+   "Judah and Dan"
+  ],
+  "answer": 0,
+  "explanation": "The children of Reuben and the children of Gad had a very great multitude of cattle.",
+  "ref": "Numbers 32:1"
+ },
+ {
+  "id": "numbers-32-e-02",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which two lands did they see as a place for cattle?",
+  "choices": [
+   "Sinai and Zin",
+   "Edom and Bashan",
+   "Egypt and Moab",
+   "Jazer and Gilead"
+  ],
+  "answer": 3,
+  "explanation": "When they saw the land of Jazer, and the land of Gilead, the place was a place for cattle.",
+  "ref": "Numbers 32:1"
+ },
+ {
+  "id": "numbers-32-e-03",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which priest did they speak to along with Moses?",
+  "choices": [
+   "Ithamar",
+   "Eleazar",
+   "Aaron",
+   "Phinehas"
+  ],
+  "answer": 1,
+  "explanation": "They spake unto Moses, and to Eleazar the priest, and unto the princes of the congregation.",
+  "ref": "Numbers 32:2"
+ },
+ {
+  "id": "numbers-32-e-04",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did they ask not to be done with them?",
+  "choices": [
+   "To be brought over Jordan",
+   "To be counted",
+   "To be moved to Egypt",
+   "To be sent to war"
+  ],
+  "answer": 0,
+  "explanation": "Let this land be given unto thy servants, and bring us not over Jordan.",
+  "ref": "Numbers 32:5"
+ },
+ {
+  "id": "numbers-32-e-05",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses ask them about their brethren?",
+  "choices": [
+   "Shall your brethren go to war, and shall ye sit here?",
+   "Will you lead your brethren?",
+   "Will you sell your brethren?",
+   "Will you feed your brethren?"
+  ],
+  "answer": 0,
+  "explanation": "Moses said, Shall your brethren go to war, and shall ye sit here?",
+  "ref": "Numbers 32:6"
+ },
+ {
+  "id": "numbers-32-e-06",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two men were saved from the oath because they wholly followed the LORD?",
+  "choices": [
+   "Moses and Aaron",
+   "Gad and Reuben",
+   "Caleb and Joshua",
+   "Eleazar and Phinehas"
+  ],
+  "answer": 2,
+  "explanation": "Save Caleb the son of Jephunneh and Joshua the son of Nun.",
+  "ref": "Numbers 32:12"
+ },
+ {
+  "id": "numbers-32-e-07",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did the LORD make Israel wander in the wilderness?",
+  "choices": [
+   "Forty",
+   "Ten",
+   "Twenty",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "He made them wander in the wilderness forty years.",
+  "ref": "Numbers 32:13"
+ },
+ {
+  "id": "numbers-32-e-08",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did they promise to build for their cattle?",
+  "choices": [
+   "Altars",
+   "Barns",
+   "Sheepfolds",
+   "Towers"
+  ],
+  "answer": 2,
+  "explanation": "We will build sheepfolds here for our cattle, and cities for our little ones.",
+  "ref": "Numbers 32:16"
+ },
+ {
+  "id": "numbers-32-e-09",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did Moses give Gilead?",
+  "choices": [
+   "Machir the son of Manasseh",
+   "Jair",
+   "Caleb",
+   "Gad"
+  ],
+  "answer": 0,
+  "explanation": "Moses gave Gilead unto Machir the son of Manasseh.",
+  "ref": "Numbers 32:40"
+ },
+ {
+  "id": "numbers-32-e-10",
+  "chapter": 32,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe's half joined Reuben and Gad in receiving land?",
+  "choices": [
+   "Dan",
+   "Manasseh",
+   "Judah",
+   "Levi"
+  ],
+  "answer": 1,
+  "explanation": "Moses gave to Gad, Reuben, and half the tribe of Manasseh.",
+  "ref": "Numbers 32:33"
+ },
+ {
+  "id": "numbers-32-m-01",
+  "chapter": 32,
+  "level": "medium",
+  "category": "place",
+  "question": "From where were the spies sent to see the land?",
+  "choices": [
+   "Mount Sinai",
+   "Kadesh-barnea",
+   "Egypt",
+   "Moab"
+  ],
+  "answer": 1,
+  "explanation": "Moses reminded them of when he sent their fathers from Kadesh-barnea to see the land.",
+  "ref": "Numbers 32:8"
+ },
+ {
+  "id": "numbers-32-m-02",
+  "chapter": 32,
+  "level": "medium",
+  "category": "place",
+  "question": "Which valley did the spies go up to?",
+  "choices": [
+   "Eshcol",
+   "Jordan",
+   "Moab",
+   "Gilead"
+  ],
+  "answer": 0,
+  "explanation": "They went up unto the valley of Eshcol, and saw the land.",
+  "ref": "Numbers 32:9"
+ },
+ {
+  "id": "numbers-32-m-03",
+  "chapter": 32,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Caleb?",
+  "choices": [
+   "Jephunneh",
+   "Nun",
+   "Hepher",
+   "Eleazar"
+  ],
+  "answer": 0,
+  "explanation": "Caleb the son of Jephunneh the Kenezite.",
+  "ref": "Numbers 32:12"
+ },
+ {
+  "id": "numbers-32-m-04",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the men twenty years and upward not allowed to see the land?",
+  "choices": [
+   "They had not wholly followed the LORD",
+   "They were too old",
+   "They were too few",
+   "They refused to fight Midian"
+  ],
+  "answer": 0,
+  "explanation": "None of the men... shall see the land; because they have not wholly followed me.",
+  "ref": "Numbers 32:11"
+ },
+ {
+  "id": "numbers-32-m-05",
+  "chapter": 32,
+  "level": "medium",
+  "category": "person",
+  "question": "The LORD sware to give the land to Abraham, Isaac and whom?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "Joseph",
+   "Jacob"
+  ],
+  "answer": 3,
+  "explanation": "The land which I sware unto Abraham, unto Isaac, and unto Jacob.",
+  "ref": "Numbers 32:11"
+ },
+ {
+  "id": "numbers-32-m-06",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the tribes say would shelter their little ones?",
+  "choices": [
+   "The mountains",
+   "The wilderness",
+   "The fenced cities",
+   "The tents"
+  ],
+  "answer": 2,
+  "explanation": "Our little ones shall dwell in the fenced cities because of the inhabitants of the land.",
+  "ref": "Numbers 32:17"
+ },
+ {
+  "id": "numbers-32-m-07",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Moses say they would be if they went armed and the land was subdued?",
+  "choices": [
+   "Blessed with gold",
+   "Guiltless before the LORD and Israel",
+   "Given Jericho",
+   "Made princes"
+  ],
+  "answer": 1,
+  "explanation": "Then afterward ye shall return, and be guiltless before the LORD, and before Israel.",
+  "ref": "Numbers 32:22"
+ },
+ {
+  "id": "numbers-32-m-08",
+  "chapter": 32,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say if they did not go armed over Jordan?",
+  "choices": [
+   "They would be Levites",
+   "They would lose their cattle only",
+   "They would be forgiven",
+   "They had sinned against the LORD"
+  ],
+  "answer": 3,
+  "explanation": "But if ye will not do so, behold, ye have sinned against the LORD.",
+  "ref": "Numbers 32:23"
+ },
+ {
+  "id": "numbers-32-m-09",
+  "chapter": 32,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Moses command about Reuben and Gad besides Eleazar?",
+  "choices": [
+   "Joshua",
+   "Caleb",
+   "Aaron",
+   "Phinehas"
+  ],
+  "answer": 0,
+  "explanation": "Moses commanded Eleazar the priest, and Joshua the son of Nun, and the chief fathers.",
+  "ref": "Numbers 32:28"
+ },
+ {
+  "id": "numbers-32-m-10",
+  "chapter": 32,
+  "level": "medium",
+  "category": "place",
+  "question": "Where would they have possessions if they would not pass over armed?",
+  "choices": [
+   "In the land of Canaan",
+   "In Egypt",
+   "In Moab",
+   "In Edom"
+  ],
+  "answer": 0,
+  "explanation": "If they will not pass over armed, they shall have possessions among you in the land of Canaan.",
+  "ref": "Numbers 32:30"
+ },
+ {
+  "id": "numbers-32-m-11",
+  "chapter": 32,
+  "level": "medium",
+  "category": "person",
+  "question": "Which Amorite king's kingdom did Moses give them?",
+  "choices": [
+   "Balak",
+   "Evi",
+   "Arad",
+   "Sihon"
+  ],
+  "answer": 3,
+  "explanation": "The kingdom of Sihon king of the Amorites, and the kingdom of Og king of Bashan.",
+  "ref": "Numbers 32:33"
+ },
+ {
+  "id": "numbers-32-m-12",
+  "chapter": 32,
+  "level": "medium",
+  "category": "person",
+  "question": "Which king of Bashan's kingdom did Moses give them?",
+  "choices": [
+   "Sihon",
+   "Og",
+   "Balak",
+   "Arad"
+  ],
+  "answer": 1,
+  "explanation": "The kingdom of Og king of Bashan.",
+  "ref": "Numbers 32:33"
+ },
+ {
+  "id": "numbers-32-m-13",
+  "chapter": 32,
+  "level": "medium",
+  "category": "person",
+  "question": "Who went to Gilead and took it, driving out the Amorite?",
+  "choices": [
+   "The children of Machir",
+   "The children of Gad",
+   "Joshua's men",
+   "The children of Reuben"
+  ],
+  "answer": 0,
+  "explanation": "The children of Machir went to Gilead, and took it, and dispossessed the Amorite.",
+  "ref": "Numbers 32:39"
+ },
+ {
+  "id": "numbers-32-m-14",
+  "chapter": 32,
+  "level": "medium",
+  "category": "person",
+  "question": "Who called the small towns of Gilead Havoth-jair?",
+  "choices": [
+   "Jair",
+   "Nobah",
+   "Caleb",
+   "Machir"
+  ],
+  "answer": 0,
+  "explanation": "Jair the son of Manasseh took the small towns thereof, and called them Havoth-jair.",
+  "ref": "Numbers 32:41"
+ },
+ {
+  "id": "numbers-32-m-15",
+  "chapter": 32,
+  "level": "medium",
+  "category": "person",
+  "question": "Who took Kenath and called it after his own name?",
+  "choices": [
+   "Machir",
+   "Gad",
+   "Jair",
+   "Nobah"
+  ],
+  "answer": 3,
+  "explanation": "Nobah went and took Kenath, and called it Nobah, after his own name.",
+  "ref": "Numbers 32:42"
+ },
+ {
+  "id": "numbers-32-h-01",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses call the men now risen up in their fathers' stead?",
+  "choices": [
+   "An increase of sinful men",
+   "A faithful host",
+   "A mighty army",
+   "A holy people"
+  ],
+  "answer": 0,
+  "explanation": "Ye are risen up in your fathers' stead, an increase of sinful men.",
+  "ref": "Numbers 32:14"
+ },
+ {
+  "id": "numbers-32-h-02",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say would happen if they turned away from the LORD?",
+  "choices": [
+   "He would give them Jordan",
+   "He would send plague",
+   "He would make them kings",
+   "He would leave them in the wilderness again"
+  ],
+  "answer": 3,
+  "explanation": "If ye turn away, he will yet again leave them in the wilderness.",
+  "ref": "Numbers 32:15"
+ },
+ {
+  "id": "numbers-32-h-03",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until when did they say they would not return to their houses?",
+  "choices": [
+   "Until every man had his inheritance",
+   "Until the next feast",
+   "Until the harvest",
+   "Until Moses died"
+  ],
+  "answer": 0,
+  "explanation": "We will not return unto our houses, until the children of Israel have inherited every man his inheritance.",
+  "ref": "Numbers 32:18"
+ },
+ {
+  "id": "numbers-32-h-04",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did they say they would not inherit with Israel over Jordan?",
+  "choices": [
+   "They were Levites",
+   "They were afraid",
+   "Their inheritance had fallen eastward",
+   "They had no cattle"
+  ],
+  "answer": 2,
+  "explanation": "Because our inheritance is fallen to us on this side Jordan eastward.",
+  "ref": "Numbers 32:19"
+ },
+ {
+  "id": "numbers-32-h-05",
+  "chapter": 32,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these did the children of Gad build?",
+  "choices": [
+   "Aroer",
+   "Elealeh",
+   "Kirjathaim",
+   "Heshbon"
+  ],
+  "answer": 0,
+  "explanation": "And the children of Gad built Dibon, and Ataroth, and Aroer.",
+  "ref": "Numbers 32:34"
+ },
+ {
+  "id": "numbers-32-h-06",
+  "chapter": 32,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these did the children of Reuben build?",
+  "choices": [
+   "Kirjathaim",
+   "Jogbehah",
+   "Dibon",
+   "Aroer"
+  ],
+  "answer": 0,
+  "explanation": "And the children of Reuben built Heshbon, and Elealeh, and Kirjathaim.",
+  "ref": "Numbers 32:37"
+ },
+ {
+  "id": "numbers-32-h-07",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was done to the names of Nebo and Baal-meon?",
+  "choices": [
+   "They were kept",
+   "They were doubled",
+   "They were forgotten",
+   "They were changed"
+  ],
+  "answer": 3,
+  "explanation": "Nebo, and Baal-meon, (their names being changed).",
+  "ref": "Numbers 32:38"
+ },
+ {
+  "id": "numbers-32-h-08",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Gad build besides the fenced cities?",
+  "choices": [
+   "Altars",
+   "Folds for sheep",
+   "Temples",
+   "Wells"
+  ],
+  "answer": 1,
+  "explanation": "Beth-nimrah, Beth-haran, fenced cities: and folds for sheep.",
+  "ref": "Numbers 32:36"
+ },
+ {
+  "id": "numbers-32-h-09",
+  "chapter": 32,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these was among the places listed as a land for cattle?",
+  "choices": [
+   "Elealeh",
+   "Gilead's mount",
+   "Jericho",
+   "Kenath"
+  ],
+  "answer": 0,
+  "explanation": "Ataroth, and Dibon, and Jazer, and Nimrah, and Heshbon, and Elealeh, and Shebam, and Nebo, and Beon.",
+  "ref": "Numbers 32:3"
+ },
+ {
+  "id": "numbers-32-h-10",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do to the country they saw as a land for cattle?",
+  "choices": [
+   "He blessed it",
+   "He hid it",
+   "He cursed it",
+   "He smote it before the congregation"
+  ],
+  "answer": 3,
+  "explanation": "The country which the LORD smote before the congregation of Israel, is a land for cattle.",
+  "ref": "Numbers 32:4"
+ },
+ {
+  "id": "numbers-32-h-11",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the tribes answer Moses' command?",
+  "choices": [
+   "We refuse",
+   "Ask the LORD first",
+   "We will think about it",
+   "Thy servants will do as my lord commandeth"
+  ],
+  "answer": 3,
+  "explanation": "The children of Gad and Reuben said, Thy servants will do as my lord commandeth.",
+  "ref": "Numbers 32:25"
+ },
+ {
+  "id": "numbers-32-h-12",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did they say their wives, flocks and cattle would stay?",
+  "choices": [
+   "At Sinai",
+   "In Canaan",
+   "In Moab",
+   "In the cities of Gilead"
+  ],
+  "answer": 3,
+  "explanation": "Our little ones, our wives, our flocks, and all our cattle, shall be there in the cities of Gilead.",
+  "ref": "Numbers 32:26"
+ },
+ {
+  "id": "numbers-32-h-13",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses tell them to do with their sheep and little ones?",
+  "choices": [
+   "Build cities for the little ones and folds for the sheep",
+   "Send them to Canaan",
+   "Leave them at Sinai",
+   "Sell them"
+  ],
+  "answer": 0,
+  "explanation": "Build you cities for your little ones, and folds for your sheep.",
+  "ref": "Numbers 32:24"
+ },
+ {
+  "id": "numbers-32-h-14",
+  "chapter": 32,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD swear about the men that came out of Egypt?",
+  "choices": [
+   "None of them would die",
+   "Only the priests would see it",
+   "None of them from twenty years old would see the land",
+   "All would see it"
+  ],
+  "answer": 2,
+  "explanation": "Surely none of the men that came up out of Egypt, from twenty years old and upward, shall see the land.",
+  "ref": "Numbers 32:11"
+ },
+ {
+  "id": "numbers-32-h-15",
+  "chapter": 32,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose deed at Eshcol did Moses say they were repeating?",
+  "choices": [
+   "The princes'",
+   "The Midianites'",
+   "Their fathers'",
+   "The Levites'"
+  ],
+  "answer": 2,
+  "explanation": "Thus did your fathers... they discouraged the heart of the children of Israel.",
+  "ref": "Numbers 32:8–9"
+ },
+ {
   "id": "old-numbers-33-1",
   "chapter": 33,
   "level": "beginner",
