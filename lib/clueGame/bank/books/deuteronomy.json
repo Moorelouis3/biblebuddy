@@ -18848,6 +18848,646 @@
   "ref": "Deuteronomy 27:12"
  },
  {
+  "id": "deuteronomy-27-e-01",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who, with the elders of Israel, commanded the people?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "Joshua",
+   "Caleb"
+  ],
+  "answer": 0,
+  "explanation": "Moses with the elders of Israel commanded the people, saying, Keep all the commandments.",
+  "ref": "Deuteronomy 27:1"
+ },
+ {
+  "id": "deuteronomy-27-e-02",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which river were the people to pass over before setting up the stones?",
+  "choices": [
+   "Jordan",
+   "Arnon",
+   "Euphrates",
+   "Nile"
+  ],
+  "answer": 0,
+  "explanation": "On the day when ye shall pass over Jordan unto the land, thou shalt set thee up great stones.",
+  "ref": "Deuteronomy 27:2"
+ },
+ {
+  "id": "deuteronomy-27-e-03",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of altar was Israel to build to the LORD?",
+  "choices": [
+   "An altar of stones",
+   "An altar of gold",
+   "An altar of brass",
+   "An altar of wood"
+  ],
+  "answer": 0,
+  "explanation": "There shalt thou build an altar unto the LORD thy God, an altar of stones.",
+  "ref": "Deuteronomy 27:5"
+ },
+ {
+  "id": "deuteronomy-27-e-04",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel offer on the altar besides peace offerings?",
+  "choices": [
+   "Burnt offerings",
+   "Drink offerings only",
+   "Trespass offerings only",
+   "Wave sheaves"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt offer burnt offerings thereon unto the LORD thy God.",
+  "ref": "Deuteronomy 27:6"
+ },
+ {
+  "id": "deuteronomy-27-e-05",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the great stones to be covered with?",
+  "choices": [
+   "Plaister",
+   "Gold",
+   "Pitch",
+   "Clay and straw"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt set thee up great stones, and plaister them with plaister.",
+  "ref": "Deuteronomy 27:2"
+ },
+ {
+  "id": "deuteronomy-27-e-06",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the peace offerings for, besides eating?",
+  "choices": [
+   "Rejoicing before the LORD",
+   "Atoning for the priests",
+   "Counting the people",
+   "Paying the tithe"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt offer peace offerings, and shalt eat there, and rejoice before the LORD thy God.",
+  "ref": "Deuteronomy 27:7"
+ },
+ {
+  "id": "deuteronomy-27-e-07",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who spoke the curses to all the men of Israel with a loud voice?",
+  "choices": [
+   "The Levites",
+   "The elders",
+   "The judges",
+   "The captains"
+  ],
+  "answer": 0,
+  "explanation": "The Levites shall speak, and say unto all the men of Israel with a loud voice.",
+  "ref": "Deuteronomy 27:14"
+ },
+ {
+  "id": "deuteronomy-27-e-08",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe stood on mount Gerizim to bless the people?",
+  "choices": [
+   "Judah",
+   "Reuben",
+   "Gad",
+   "Dan"
+  ],
+  "answer": 0,
+  "explanation": "These shall stand upon mount Gerizim to bless the people... Simeon, and Levi, and Judah.",
+  "ref": "Deuteronomy 27:12"
+ },
+ {
+  "id": "deuteronomy-27-e-09",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe stood on mount Ebal to curse?",
+  "choices": [
+   "Reuben",
+   "Judah",
+   "Levi",
+   "Benjamin"
+  ],
+  "answer": 0,
+  "explanation": "These shall stand upon mount Ebal to curse; Reuben, Gad, and Asher.",
+  "ref": "Deuteronomy 27:13"
+ },
+ {
+  "id": "deuteronomy-27-e-10",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of image was cursed?",
+  "choices": [
+   "A graven or molten image",
+   "A painted banner",
+   "A golden crown",
+   "A stone pillar"
+  ],
+  "answer": 0,
+  "explanation": "Cursed be the man that maketh any graven or molten image, an abomination unto the LORD.",
+  "ref": "Deuteronomy 27:15"
+ },
+ {
+  "id": "deuteronomy-27-m-01",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When were the great stones to be set up?",
+  "choices": [
+   "After the first harvest",
+   "Before the Sabbath year",
+   "On the day they passed over Jordan",
+   "When the king was crowned"
+  ],
+  "answer": 2,
+  "explanation": "On the day when ye shall pass over Jordan... thou shalt set thee up great stones.",
+  "ref": "Deuteronomy 27:2"
+ },
+ {
+  "id": "deuteronomy-27-m-02",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the words of the law to be written on the stones?",
+  "choices": [
+   "That the priests could read them",
+   "That the king could sit by them",
+   "That they may go in to the land",
+   "That the enemy would fear"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt write upon them all the words of this law... that thou mayest go in unto the land.",
+  "ref": "Deuteronomy 27:3"
+ },
+ {
+  "id": "deuteronomy-27-m-03",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the altar stones to be?",
+  "choices": [
+   "Cut stones",
+   "Painted stones",
+   "Whole stones",
+   "Hewn stones"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt build the altar of the LORD thy God of whole stones.",
+  "ref": "Deuteronomy 27:6"
+ },
+ {
+  "id": "deuteronomy-27-m-04",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel to do before the LORD with the peace offerings?",
+  "choices": [
+   "Burn them whole",
+   "Carry them home",
+   "Eat there and rejoice",
+   "Leave them for the priests"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt offer peace offerings, and shalt eat there, and rejoice before the LORD thy God.",
+  "ref": "Deuteronomy 27:7"
+ },
+ {
+  "id": "deuteronomy-27-m-05",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who spoke with Moses to all Israel, saying, Take heed and hearken?",
+  "choices": [
+   "The elders of Israel",
+   "The captains of thousands",
+   "The priests the Levites",
+   "The judges"
+  ],
+  "answer": 2,
+  "explanation": "Moses and the priests the Levites spake unto all Israel, saying, Take heed, and hearken, O Israel.",
+  "ref": "Deuteronomy 27:9"
+ },
+ {
+  "id": "deuteronomy-27-m-06",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses say Israel had become that day?",
+  "choices": [
+   "A nation of priests",
+   "A kingdom of princes",
+   "The people of the LORD their God",
+   "A host of the LORD"
+  ],
+  "answer": 2,
+  "explanation": "This day thou art become the people of the LORD thy God.",
+  "ref": "Deuteronomy 27:9"
+ },
+ {
+  "id": "deuteronomy-27-m-07",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many tribes stood on mount Gerizim to bless?",
+  "choices": [
+   "Four",
+   "Three",
+   "Six",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "Simeon, and Levi, and Judah, and Issachar, and Joseph, and Benjamin.",
+  "ref": "Deuteronomy 27:12"
+ },
+ {
+  "id": "deuteronomy-27-m-08",
+  "chapter": 27,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the craftsman's cursed image put?",
+  "choices": [
+   "On a high hill",
+   "In the temple",
+   "In a secret place",
+   "On the city wall"
+  ],
+  "answer": 2,
+  "explanation": "Cursed be the man that maketh any graven or molten image... and putteth it in a secret place.",
+  "ref": "Deuteronomy 27:15"
+ },
+ {
+  "id": "deuteronomy-27-m-09",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was cursed if he set light by him or her?",
+  "choices": [
+   "The priest",
+   "The judge",
+   "His father or his mother",
+   "The king"
+  ],
+  "answer": 2,
+  "explanation": "Cursed be he that setteth light by his father or his mother.",
+  "ref": "Deuteronomy 27:16"
+ },
+ {
+  "id": "deuteronomy-27-m-10",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was cursed if a man removed it?",
+  "choices": [
+   "His neighbour's gate",
+   "His neighbour's well",
+   "His neighbour's landmark",
+   "His neighbour's field gate"
+  ],
+  "answer": 2,
+  "explanation": "Cursed be he that removeth his neighbour's landmark.",
+  "ref": "Deuteronomy 27:17"
+ },
+ {
+  "id": "deuteronomy-27-m-11",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom was it a curse to make wander out of the way?",
+  "choices": [
+   "The stranger",
+   "The widow",
+   "The blind",
+   "The old"
+  ],
+  "answer": 2,
+  "explanation": "Cursed be he that maketh the blind to wander out of the way.",
+  "ref": "Deuteronomy 27:18"
+ },
+ {
+  "id": "deuteronomy-27-m-12",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose judgment was it a curse to pervert?",
+  "choices": [
+   "The priest, king and judge",
+   "The Levite, elder and captain",
+   "The stranger, fatherless and widow",
+   "The rich, strong and wise"
+  ],
+  "answer": 2,
+  "explanation": "Cursed be he that perverteth the judgment of the stranger, fatherless, and widow.",
+  "ref": "Deuteronomy 27:19"
+ },
+ {
+  "id": "deuteronomy-27-m-13",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was it a curse to smite a neighbour?",
+  "choices": [
+   "With a sword",
+   "In the field",
+   "Secretly",
+   "On the Sabbath"
+  ],
+  "answer": 2,
+  "explanation": "Cursed be he that smiteth his neighbour secretly.",
+  "ref": "Deuteronomy 27:24"
+ },
+ {
+  "id": "deuteronomy-27-m-14",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was a man cursed for taking to slay an innocent person?",
+  "choices": [
+   "A pledge",
+   "A tithe",
+   "A reward",
+   "A garment"
+  ],
+  "answer": 2,
+  "explanation": "Cursed be he that taketh reward to slay an innocent person.",
+  "ref": "Deuteronomy 27:25"
+ },
+ {
+  "id": "deuteronomy-27-m-15",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the last curse, on him who did not do what?",
+  "choices": [
+   "Offer the firstfruits",
+   "Keep the Sabbath",
+   "Confirm all the words of this law",
+   "Honour the priests"
+  ],
+  "answer": 2,
+  "explanation": "Cursed be he that confirmeth not all the words of this law to do them.",
+  "ref": "Deuteronomy 27:26"
+ },
+ {
+  "id": "deuteronomy-27-h-01",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is named with Moses as commanding the people in the first verse?",
+  "choices": [
+   "The priests the Levites",
+   "The captains of the host",
+   "The judges",
+   "The elders of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Moses with the elders of Israel commanded the people.",
+  "ref": "Deuteronomy 27:1"
+ },
+ {
+  "id": "deuteronomy-27-h-02",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these tribes was named among those on mount Ebal to curse?",
+  "choices": [
+   "Simeon",
+   "Issachar",
+   "Benjamin",
+   "Naphtali"
+  ],
+  "answer": 3,
+  "explanation": "These shall stand upon mount Ebal to curse... Dan, and Naphtali.",
+  "ref": "Deuteronomy 27:13"
+ },
+ {
+  "id": "deuteronomy-27-h-03",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these tribes was named among those on mount Gerizim to bless?",
+  "choices": [
+   "Gad",
+   "Asher",
+   "Zebulun",
+   "Joseph"
+  ],
+  "answer": 3,
+  "explanation": "Simeon, and Levi, and Judah, and Issachar, and Joseph, and Benjamin.",
+  "ref": "Deuteronomy 27:12"
+ },
+ {
+  "id": "deuteronomy-27-h-04",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Which tribe stood on mount Gerizim with Levi and Judah?",
+  "choices": [
+   "Reuben",
+   "Dan",
+   "Naphtali",
+   "Simeon"
+  ],
+  "answer": 3,
+  "explanation": "Simeon, and Levi, and Judah, and Issachar, and Joseph, and Benjamin.",
+  "ref": "Deuteronomy 27:12"
+ },
+ {
+  "id": "deuteronomy-27-h-05",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Which tribe stood on mount Ebal with Reuben and Asher?",
+  "choices": [
+   "Judah",
+   "Levi",
+   "Joseph",
+   "Gad"
+  ],
+  "answer": 3,
+  "explanation": "Reuben, Gad, and Asher, and Zebulun, Dan, and Naphtali.",
+  "ref": "Deuteronomy 27:13"
+ },
+ {
+  "id": "deuteronomy-27-h-06",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the words of the law to be written on the stones?",
+  "choices": [
+   "In gold letters",
+   "In a secret script",
+   "In three languages",
+   "Very plainly"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt write upon the stones all the words of this law very plainly.",
+  "ref": "Deuteronomy 27:8"
+ },
+ {
+  "id": "deuteronomy-27-h-07",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the Levites to speak 'with' when they spoke the curses?",
+  "choices": [
+   "A trumpet",
+   "A song",
+   "A whisper",
+   "A loud voice"
+  ],
+  "answer": 3,
+  "explanation": "The Levites shall speak, and say unto all the men of Israel with a loud voice.",
+  "ref": "Deuteronomy 27:14"
+ },
+ {
+  "id": "deuteronomy-27-h-08",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say Israel should do after 'Take heed'?",
+  "choices": [
+   "Rejoice",
+   "Wait",
+   "Fast",
+   "Hearken"
+  ],
+  "answer": 3,
+  "explanation": "Take heed, and hearken, O Israel.",
+  "ref": "Deuteronomy 27:9"
+ },
+ {
+  "id": "deuteronomy-27-h-09",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose voice was Israel to obey, doing His commandments and statutes?",
+  "choices": [
+   "The voice of Moses",
+   "The voice of the priests",
+   "The voice of the elders",
+   "The voice of the LORD their God"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt therefore obey the voice of the LORD thy God, and do his commandments and his statutes.",
+  "ref": "Deuteronomy 27:10"
+ },
+ {
+  "id": "deuteronomy-27-h-10",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who had promised Israel the land that floweth with milk and honey?",
+  "choices": [
+   "Moses and the elders",
+   "The priests the Levites",
+   "The kings of Canaan",
+   "The LORD God of their fathers"
+  ],
+  "answer": 3,
+  "explanation": "...a land that floweth with milk and honey; as the LORD God of thy fathers hath promised thee.",
+  "ref": "Deuteronomy 27:3"
+ },
+ {
+  "id": "deuteronomy-27-h-11",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose hands made the image that was cursed?",
+  "choices": [
+   "The priest",
+   "The shepherd",
+   "The stranger",
+   "The craftsman"
+  ],
+  "answer": 3,
+  "explanation": "...an abomination unto the LORD, the work of the hands of the craftsman.",
+  "ref": "Deuteronomy 27:15"
+ },
+ {
+  "id": "deuteronomy-27-h-12",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD call the graven or molten image?",
+  "choices": [
+   "A stumbling stone",
+   "A snare",
+   "A reproach",
+   "An abomination"
+  ],
+  "answer": 3,
+  "explanation": "An abomination unto the LORD.",
+  "ref": "Deuteronomy 27:15"
+ },
+ {
+  "id": "deuteronomy-27-h-13",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Moses charge the people about the blessings and curses?",
+  "choices": [
+   "The next morning",
+   "After crossing Jordan",
+   "At the feast",
+   "The same day"
+  ],
+  "answer": 3,
+  "explanation": "And Moses charged the people the same day.",
+  "ref": "Deuteronomy 27:11"
+ },
+ {
+  "id": "deuteronomy-27-h-14",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Which tribe stood on mount Gerizim with Joseph and Judah?",
+  "choices": [
+   "Zebulun",
+   "Reuben",
+   "Asher",
+   "Benjamin"
+  ],
+  "answer": 3,
+  "explanation": "Simeon, and Levi, and Judah, and Issachar, and Joseph, and Benjamin.",
+  "ref": "Deuteronomy 27:12"
+ },
+ {
+  "id": "deuteronomy-27-h-15",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Which tribe stood on mount Ebal with Dan and Naphtali?",
+  "choices": [
+   "Issachar",
+   "Simeon",
+   "Judah",
+   "Zebulun"
+  ],
+  "answer": 3,
+  "explanation": "Reuben, Gad, and Asher, and Zebulun, Dan, and Naphtali.",
+  "ref": "Deuteronomy 27:13"
+ },
+ {
   "id": "old-deuteronomy-28-1",
   "chapter": 28,
   "level": "beginner",
@@ -18926,6 +19566,646 @@
   "answer": 3,
   "explanation": "The chapter warns of worldwide scattering because of covenant unfaithfulness.",
   "ref": "Deuteronomy 28:64"
+ },
+ {
+  "id": "deuteronomy-28-e-01",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the LORD do for Israel if they hearkened diligently?",
+  "choices": [
+   "Set them on high above all nations",
+   "Make them a kingdom of priests",
+   "Give them a king",
+   "Make them rest forever"
+  ],
+  "answer": 0,
+  "explanation": "If thou shalt hearken... the LORD thy God will set thee on high above all nations of the earth.",
+  "ref": "Deuteronomy 28:1"
+ },
+ {
+  "id": "deuteronomy-28-e-02",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where would obedient Israel be blessed?",
+  "choices": [
+   "In the city and in the field",
+   "On the sea",
+   "In Egypt",
+   "In the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "Blessed shalt thou be in the city, and blessed shalt thou be in the field.",
+  "ref": "Deuteronomy 28:3"
+ },
+ {
+  "id": "deuteronomy-28-e-03",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things would be blessed besides the fruit of the body and the ground?",
+  "choices": [
+   "Basket and store",
+   "Sword and shield",
+   "Tent and altar",
+   "Seed and sickle"
+  ],
+  "answer": 0,
+  "explanation": "Blessed shall be thy basket and thy store.",
+  "ref": "Deuteronomy 28:5"
+ },
+ {
+  "id": "deuteronomy-28-e-04",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many ways would enemies flee before obedient Israel?",
+  "choices": [
+   "Seven",
+   "Three",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "They shall come out against thee one way, and flee before thee seven ways.",
+  "ref": "Deuteronomy 28:7"
+ },
+ {
+  "id": "deuteronomy-28-e-05",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the LORD make Israel, if they obeyed?",
+  "choices": [
+   "The head and not the tail",
+   "The first and the last",
+   "The hand and not the foot",
+   "The shepherd, not the sheep"
+  ],
+  "answer": 0,
+  "explanation": "The LORD shall make thee the head, and not the tail.",
+  "ref": "Deuteronomy 28:13"
+ },
+ {
+  "id": "deuteronomy-28-e-06",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of nation would the LORD bring from far against disobedient Israel?",
+  "choices": [
+   "One as swift as the eagle flieth",
+   "One as slow as the ox",
+   "One as strong as the cedar",
+   "One as many as the sand"
+  ],
+  "answer": 0,
+  "explanation": "The LORD shall bring a nation against thee from far... as swift as the eagle flieth.",
+  "ref": "Deuteronomy 28:49"
+ },
+ {
+  "id": "deuteronomy-28-e-07",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where would the LORD bring them again with ships?",
+  "choices": [
+   "Egypt",
+   "Babylon",
+   "Assyria",
+   "Moab"
+  ],
+  "answer": 0,
+  "explanation": "The LORD shall bring thee into Egypt again with ships.",
+  "ref": "Deuteronomy 28:68"
+ },
+ {
+  "id": "deuteronomy-28-e-08",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the locust do to their seed in the field?",
+  "choices": [
+   "Consume it",
+   "Carry it away",
+   "Plant it again",
+   "Leave it alone"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt carry much seed out into the field, and shalt gather but little in; for the locust shall consume it.",
+  "ref": "Deuteronomy 28:38"
+ },
+ {
+  "id": "deuteronomy-28-e-09",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should Israel not go after, to the right hand or the left?",
+  "choices": [
+   "Other gods",
+   "The stranger's customs",
+   "The kings of the earth",
+   "Their own desires"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not go aside... to the right hand, or to the left, to go after other gods to serve them.",
+  "ref": "Deuteronomy 28:14"
+ },
+ {
+  "id": "deuteronomy-28-e-10",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the LORD bring on Israel that they were afraid of?",
+  "choices": [
+   "All the diseases of Egypt",
+   "The wild beasts of the field",
+   "The flood",
+   "The wars of Moab"
+  ],
+  "answer": 0,
+  "explanation": "He will bring upon thee all the diseases of Egypt, which thou wast afraid of.",
+  "ref": "Deuteronomy 28:60"
+ },
+ {
+  "id": "deuteronomy-28-m-01",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD establish Israel to be, if they kept His commandments?",
+  "choices": [
+   "A mighty kingdom",
+   "A nation of kings",
+   "An holy people unto Himself",
+   "A people without enemies"
+  ],
+  "answer": 2,
+  "explanation": "The LORD shall establish thee an holy people unto himself... if thou shalt keep the commandments.",
+  "ref": "Deuteronomy 28:9"
+ },
+ {
+  "id": "deuteronomy-28-m-02",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How would all people of the earth see Israel?",
+  "choices": [
+   "As the strongest army",
+   "As the richest land",
+   "As called by the name of the LORD",
+   "As a house of kings"
+  ],
+  "answer": 2,
+  "explanation": "All people of the earth shall see that thou art called by the name of the LORD.",
+  "ref": "Deuteronomy 28:10"
+ },
+ {
+  "id": "deuteronomy-28-m-03",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD open to give rain in its season?",
+  "choices": [
+   "The windows of the temple",
+   "The storehouses of Egypt",
+   "His good treasure, the heaven",
+   "The gates of the city"
+  ],
+  "answer": 2,
+  "explanation": "The LORD shall open unto thee his good treasure, the heaven to give the rain unto thy land in his season.",
+  "ref": "Deuteronomy 28:12"
+ },
+ {
+  "id": "deuteronomy-28-m-04",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Israel do for many nations but not do themselves?",
+  "choices": [
+   "Fight, but not flee",
+   "Teach, but not learn",
+   "Lend, but not borrow",
+   "Sell, but not buy"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt lend unto many nations, and thou shalt not borrow.",
+  "ref": "Deuteronomy 28:12"
+ },
+ {
+  "id": "deuteronomy-28-m-05",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD make cleave to disobedient Israel?",
+  "choices": [
+   "The sword",
+   "The leprosy",
+   "The pestilence",
+   "The famine"
+  ],
+  "answer": 2,
+  "explanation": "The LORD shall make the pestilence cleave unto thee, until he have consumed thee.",
+  "ref": "Deuteronomy 28:21"
+ },
+ {
+  "id": "deuteronomy-28-m-06",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the rain of their land become?",
+  "choices": [
+   "Hail and fire",
+   "Blood and water",
+   "Powder and dust",
+   "Salt and sand"
+  ],
+  "answer": 2,
+  "explanation": "The LORD shall make the rain of thy land powder and dust.",
+  "ref": "Deuteronomy 28:24"
+ },
+ {
+  "id": "deuteronomy-28-m-07",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would eat the dead bodies of Israel with none to drive them away?",
+  "choices": [
+   "The dogs of the camp",
+   "The vultures of the desert",
+   "The fowls of the air and the beasts of the earth",
+   "The worms of the grave"
+  ],
+  "answer": 2,
+  "explanation": "Thy carcase shall be meat unto all fowls of the air, and unto the beasts of the earth.",
+  "ref": "Deuteronomy 28:26"
+ },
+ {
+  "id": "deuteronomy-28-m-08",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD smite Israel with besides madness and astonishment of heart?",
+  "choices": [
+   "Deafness",
+   "Lameness",
+   "Blindness",
+   "Dumbness"
+  ],
+  "answer": 2,
+  "explanation": "The LORD shall smite thee with madness, and blindness, and astonishment of heart.",
+  "ref": "Deuteronomy 28:28"
+ },
+ {
+  "id": "deuteronomy-28-m-09",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How would disobedient Israel grope at noonday?",
+  "choices": [
+   "As a child in the night",
+   "As a man in a cave",
+   "As the blind gropeth in darkness",
+   "As a shepherd in the mist"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt grope at noonday, as the blind gropeth in darkness.",
+  "ref": "Deuteronomy 28:29"
+ },
+ {
+  "id": "deuteronomy-28-m-10",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would a man plant, yet not gather?",
+  "choices": [
+   "A field's barley",
+   "An orchard's figs",
+   "A vineyard's grapes",
+   "A garden's herbs"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt plant a vineyard, and shalt not gather the grapes thereof.",
+  "ref": "Deuteronomy 28:30"
+ },
+ {
+  "id": "deuteronomy-28-m-11",
+  "chapter": 28,
+  "level": "medium",
+  "category": "person",
+  "question": "Who would be given to another people while Israel's eyes failed with longing?",
+  "choices": [
+   "Their flocks and herds",
+   "Their houses and fields",
+   "Their sons and daughters",
+   "Their priests and judges"
+  ],
+  "answer": 2,
+  "explanation": "Thy sons and thy daughters shall be given unto another people.",
+  "ref": "Deuteronomy 28:32"
+ },
+ {
+  "id": "deuteronomy-28-m-12",
+  "chapter": 28,
+  "level": "medium",
+  "category": "place",
+  "question": "Where would the LORD bring Israel and their king?",
+  "choices": [
+   "Back to the wilderness of Sinai",
+   "To the land of Moab",
+   "To a nation neither they nor their fathers knew",
+   "To the cities of the Levites"
+  ],
+  "answer": 2,
+  "explanation": "The LORD shall bring thee, and thy king... unto a nation which neither thou nor thy fathers have known.",
+  "ref": "Deuteronomy 28:36"
+ },
+ {
+  "id": "deuteronomy-28-m-13",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Israel serve in the foreign land?",
+  "choices": [
+   "The king of that land",
+   "The gods of Egypt only",
+   "Other gods, wood and stone",
+   "The gold of their captors"
+  ],
+  "answer": 2,
+  "explanation": "There shalt thou serve other gods, wood and stone.",
+  "ref": "Deuteronomy 28:36"
+ },
+ {
+  "id": "deuteronomy-28-m-14",
+  "chapter": 28,
+  "level": "medium",
+  "category": "person",
+  "question": "Who would rise above Israel very high?",
+  "choices": [
+   "The priest of the land",
+   "The king's servant",
+   "The stranger within them",
+   "The Levite"
+  ],
+  "answer": 2,
+  "explanation": "The stranger that is within thee shall get up above thee very high; and thou shalt come down very low.",
+  "ref": "Deuteronomy 28:43"
+ },
+ {
+  "id": "deuteronomy-28-m-15",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the stranger be, and Israel be?",
+  "choices": [
+   "He the shepherd, Israel the flock",
+   "He the father, Israel the son",
+   "He the head, Israel the tail",
+   "He the priest, Israel the king"
+  ],
+  "answer": 2,
+  "explanation": "He shall be the head, and thou shalt be the tail.",
+  "ref": "Deuteronomy 28:44"
+ },
+ {
+  "id": "deuteronomy-28-h-01",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where would the LORD command the blessing on Israel?",
+  "choices": [
+   "In their temple",
+   "On their altars",
+   "In their cities of refuge",
+   "In their storehouses"
+  ],
+  "answer": 3,
+  "explanation": "The LORD shall command the blessing upon thee in thy storehouses.",
+  "ref": "Deuteronomy 28:8"
+ },
+ {
+  "id": "deuteronomy-28-h-02",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why would the curses come, according to the text?",
+  "choices": [
+   "Because they built too many altars",
+   "Because they gave too little silver",
+   "Because they fought too many wars",
+   "Because they served not the LORD with joyfulness"
+  ],
+  "answer": 3,
+  "explanation": "Because thou servedst not the LORD thy God with joyfulness, and with gladness of heart.",
+  "ref": "Deuteronomy 28:47"
+ },
+ {
+  "id": "deuteronomy-28-h-03",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what would Israel serve their enemies?",
+  "choices": [
+   "Fire, sword and plague",
+   "Chains, prison and darkness",
+   "Silver, grain and oil",
+   "Hunger, thirst, nakedness and want of all things"
+  ],
+  "answer": 3,
+  "explanation": "Thou serve thine enemies... in hunger, and in thirst, and in nakedness, and in want of all things.",
+  "ref": "Deuteronomy 28:48"
+ },
+ {
+  "id": "deuteronomy-28-h-04",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD put upon Israel's neck?",
+  "choices": [
+   "A chain of brass",
+   "A rope of hemp",
+   "A collar of gold",
+   "A yoke of iron"
+  ],
+  "answer": 3,
+  "explanation": "He shall put a yoke of iron upon thy neck, until he have destroyed thee.",
+  "ref": "Deuteronomy 28:48"
+ },
+ {
+  "id": "deuteronomy-28-h-05",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be true of the far nation's tongue?",
+  "choices": [
+   "It would be Hebrew",
+   "It would be like Egypt's",
+   "It would sound like a song",
+   "Israel would not understand it"
+  ],
+  "answer": 3,
+  "explanation": "A nation whose tongue thou shalt not understand.",
+  "ref": "Deuteronomy 28:49"
+ },
+ {
+  "id": "deuteronomy-28-h-06",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is the far nation described?",
+  "choices": [
+   "A nation of gentle faces",
+   "A nation of few men",
+   "A nation of dark skin",
+   "A nation of fierce countenance"
+  ],
+  "answer": 3,
+  "explanation": "A nation of fierce countenance, which shall not regard the person of the old, nor shew favour to the young.",
+  "ref": "Deuteronomy 28:50"
+ },
+ {
+  "id": "deuteronomy-28-h-07",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would come down in the siege?",
+  "choices": [
+   "The towers of the temple",
+   "The gates of Egypt",
+   "The tents of the camp",
+   "High and fenced walls in which they trusted"
+  ],
+  "answer": 3,
+  "explanation": "He shall besiege thee in all thy gates, until thy high and fenced walls come down, wherein thou trustedst.",
+  "ref": "Deuteronomy 28:52"
+ },
+ {
+  "id": "deuteronomy-28-h-08",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Israel been as multitude, before being left few in number?",
+  "choices": [
+   "As the sand of the sea",
+   "As the dust of the earth",
+   "As the locusts of the field",
+   "As the stars of heaven"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall be left few in number, whereas ye were as the stars of heaven for multitude.",
+  "ref": "Deuteronomy 28:62"
+ },
+ {
+  "id": "deuteronomy-28-h-09",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As the LORD rejoiced to do Israel good, what would He rejoice to do?",
+  "choices": [
+   "Scatter them",
+   "Forgive them",
+   "Make them a bye-word",
+   "Destroy them and bring them to nought"
+  ],
+  "answer": 3,
+  "explanation": "So the LORD will rejoice over you to destroy you, and to bring you to nought.",
+  "ref": "Deuteronomy 28:63"
+ },
+ {
+  "id": "deuteronomy-28-h-10",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD give Israel among the nations besides sorrow of mind?",
+  "choices": [
+   "A strong heart and open hands",
+   "A new tongue and new land",
+   "A heavy yoke and long life",
+   "A trembling heart and failing of eyes"
+  ],
+  "answer": 3,
+  "explanation": "The LORD shall give thee there a trembling heart, and failing of eyes, and sorrow of mind.",
+  "ref": "Deuteronomy 28:65"
+ },
+ {
+  "id": "deuteronomy-28-h-11",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would Israel say in the morning in their fear?",
+  "choices": [
+   "Would God it were noon!",
+   "Would God I had died!",
+   "Where is the LORD?",
+   "Would God it were even!"
+  ],
+  "answer": 3,
+  "explanation": "In the morning thou shalt say, Would God it were even!",
+  "ref": "Deuteronomy 28:67"
+ },
+ {
+  "id": "deuteronomy-28-h-12",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would no man do to the Israelites sold as bondmen and bondwomen?",
+  "choices": [
+   "Free them",
+   "Feed them",
+   "Hide them",
+   "Buy them"
+  ],
+  "answer": 3,
+  "explanation": "There ye shall be sold unto your enemies for bondmen and bondwomen, and no man shall buy you.",
+  "ref": "Deuteronomy 28:68"
+ },
+ {
+  "id": "deuteronomy-28-h-13",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would eat the grapes of vineyards Israel dressed?",
+  "choices": [
+   "Locusts",
+   "Birds",
+   "Foxes",
+   "Worms"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt plant vineyards, and dress them, but shalt neither drink of the wine... for the worms shall eat them.",
+  "ref": "Deuteronomy 28:39"
+ },
+ {
+  "id": "deuteronomy-28-h-14",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why would Israel not anoint with the oil of their olive trees?",
+  "choices": [
+   "The oil was for the priests",
+   "The enemy would take it",
+   "The trees would be burned",
+   "The olive would cast his fruit"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not anoint thyself with the oil; for thine olive shall cast his fruit.",
+  "ref": "Deuteronomy 28:40"
+ },
+ {
+  "id": "deuteronomy-28-h-15",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What name was Israel to fear?",
+  "choices": [
+   "The name of the king",
+   "The name of the fathers",
+   "The name of the stranger",
+   "THE LORD THY GOD, the glorious and fearful name"
+  ],
+  "answer": 3,
+  "explanation": "That thou mayest fear this glorious and fearful name, THE LORD THY GOD.",
+  "ref": "Deuteronomy 28:58"
  },
  {
   "id": "old-deuteronomy-29-1",
