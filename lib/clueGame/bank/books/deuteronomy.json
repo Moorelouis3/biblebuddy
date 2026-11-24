@@ -5120,6 +5120,646 @@
   "ref": "Deuteronomy 8:18"
  },
  {
+  "id": "deuteronomy-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did the LORD lead Israel in the wilderness?",
+  "choices": [
+   "Forty",
+   "Seven",
+   "Twelve",
+   "Seventy"
+  ],
+  "answer": 0,
+  "explanation": "Moses says to remember all the way the LORD led thee these forty years in the wilderness.",
+  "ref": "Deuteronomy 8:2"
+ },
+ {
+  "id": "deuteronomy-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD feed Israel with in the wilderness?",
+  "choices": [
+   "Manna",
+   "Quail only",
+   "Barley bread",
+   "Figs"
+  ],
+  "answer": 0,
+  "explanation": "He fed thee with manna, which thou knewest not.",
+  "ref": "Deuteronomy 8:3"
+ },
+ {
+  "id": "deuteronomy-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Moses describe the wilderness the LORD led Israel through?",
+  "choices": [
+   "Great and terrible",
+   "Green and quiet",
+   "Short and easy",
+   "Dark and cold"
+  ],
+  "answer": 0,
+  "explanation": "He led thee through that great and terrible wilderness.",
+  "ref": "Deuteronomy 8:15"
+ },
+ {
+  "id": "deuteronomy-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD suffer Israel to do in the wilderness?",
+  "choices": [
+   "Hunger",
+   "Wander alone",
+   "Fight the Egyptians",
+   "Build cities"
+  ],
+  "answer": 0,
+  "explanation": "He humbled thee, and suffered thee to hunger.",
+  "ref": "Deuteronomy 8:3"
+ },
+ {
+  "id": "deuteronomy-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD bring Israel into?",
+  "choices": [
+   "A good land",
+   "A barren land",
+   "A land of giants",
+   "A land of ice"
+  ],
+  "answer": 0,
+  "explanation": "The LORD thy God bringeth thee into a good land.",
+  "ref": "Deuteronomy 8:7"
+ },
+ {
+  "id": "deuteronomy-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which fruit tree is named among the good land's produce?",
+  "choices": [
+   "Fig trees",
+   "Apple trees",
+   "Cedar trees",
+   "Almond trees"
+  ],
+  "answer": 0,
+  "explanation": "A land of wheat, and barley, and vines, and fig trees.",
+  "ref": "Deuteronomy 8:8"
+ },
+ {
+  "id": "deuteronomy-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will Israel not do in the good land, according to Moses?",
+  "choices": [
+   "Lack anything",
+   "Plant vines",
+   "Keep flocks",
+   "Build houses"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not lack any thing in it.",
+  "ref": "Deuteronomy 8:9"
+ },
+ {
+  "id": "deuteronomy-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Moses compare the LORD's chastening of Israel?",
+  "choices": [
+   "To a man chastening his son",
+   "To a king punishing a servant",
+   "To a shepherd driving sheep",
+   "To a judge sentencing a thief"
+  ],
+  "answer": 0,
+  "explanation": "As a man chasteneth his son, so the LORD thy God chasteneth thee.",
+  "ref": "Deuteronomy 8:5"
+ },
+ {
+  "id": "deuteronomy-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which creatures were in the wilderness?",
+  "choices": [
+   "Fiery serpents and scorpions",
+   "Lions and bears",
+   "Wolves and foxes",
+   "Locusts and frogs"
+  ],
+  "answer": 0,
+  "explanation": "The wilderness had fiery serpents, and scorpions, and drought.",
+  "ref": "Deuteronomy 8:15"
+ },
+ {
+  "id": "deuteronomy-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will happen if Israel forgets the LORD and serves other gods?",
+  "choices": [
+   "They shall surely perish",
+   "They shall wander again",
+   "They shall be given a king",
+   "They shall return to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "If thou do at all forget the LORD thy God...ye shall surely perish.",
+  "ref": "Deuteronomy 8:19"
+ },
+ {
+  "id": "deuteronomy-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had neither Israel nor their fathers known?",
+  "choices": [
+   "Water from a rock",
+   "The wilderness",
+   "Manna",
+   "The Sabbath"
+  ],
+  "answer": 2,
+  "explanation": "He fed thee with manna, which thou knewest not, neither did thy fathers know.",
+  "ref": "Deuteronomy 8:3"
+ },
+ {
+  "id": "deuteronomy-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Israel told to remember?",
+  "choices": [
+   "The names of their kings",
+   "The walls of Jericho",
+   "All the way the LORD led them forty years",
+   "The gods of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt remember all the way which the LORD thy God led thee.",
+  "ref": "Deuteronomy 8:2"
+ },
+ {
+  "id": "deuteronomy-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "After being chastened, what should Israel do?",
+  "choices": [
+   "Build an altar and wait",
+   "Return to their tents",
+   "Keep the commandments, walk in His ways and fear Him",
+   "Ask for a king"
+  ],
+  "answer": 2,
+  "explanation": "Keep the commandments of the LORD thy God, to walk in his ways, and to fear him.",
+  "ref": "Deuteronomy 8:6"
+ },
+ {
+  "id": "deuteronomy-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two grains are named among the good land's produce?",
+  "choices": [
+   "Rye and millet",
+   "Corn and rice",
+   "Wheat and barley",
+   "Oats and spelt"
+  ],
+  "answer": 2,
+  "explanation": "A land of wheat, and barley, and vines.",
+  "ref": "Deuteronomy 8:8"
+ },
+ {
+  "id": "deuteronomy-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what are Israel to bless the LORD when they have eaten and are full?",
+  "choices": [
+   "The victory in battle",
+   "The tents of their fathers",
+   "The good land He has given",
+   "The kings of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt bless the LORD thy God for the good land which he hath given thee.",
+  "ref": "Deuteronomy 8:10"
+ },
+ {
+  "id": "deuteronomy-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What might Israel build and dwell in when they have eaten and are full?",
+  "choices": [
+   "Strong towers",
+   "Many altars",
+   "Goodly houses",
+   "Walled cities"
+  ],
+  "answer": 2,
+  "explanation": "Lest...thou hast built goodly houses, and dwelt therein.",
+  "ref": "Deuteronomy 8:12"
+ },
+ {
+  "id": "deuteronomy-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will be multiplied along with Israel's herds and flocks?",
+  "choices": [
+   "Tents and wells",
+   "Sons and servants",
+   "Silver and gold",
+   "Fields and gates"
+  ],
+  "answer": 2,
+  "explanation": "Thy herds and thy flocks multiply, and thy silver and thy gold is multiplied.",
+  "ref": "Deuteronomy 8:13"
+ },
+ {
+  "id": "deuteronomy-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Moses warn will be lifted up if Israel forgets the LORD?",
+  "choices": [
+   "Their hand",
+   "Their voice",
+   "Their heart",
+   "Their eyes"
+  ],
+  "answer": 2,
+  "explanation": "Then thine heart be lifted up, and thou forget the LORD thy God.",
+  "ref": "Deuteronomy 8:14"
+ },
+ {
+  "id": "deuteronomy-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What might Israel say in their heart about their wealth?",
+  "choices": [
+   "The LORD gave me this wealth",
+   "My fathers left me this wealth",
+   "My power and my hand got me this wealth",
+   "The land gave me this wealth"
+  ],
+  "answer": 2,
+  "explanation": "Thou say in thine heart, My power and the might of mine hand hath gotten me this wealth.",
+  "ref": "Deuteronomy 8:17"
+ },
+ {
+  "id": "deuteronomy-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the LORD give Israel power to get wealth?",
+  "choices": [
+   "That they may be proud",
+   "That they may trade with Egypt",
+   "That He may establish His covenant sworn to their fathers",
+   "That they may build a temple"
+  ],
+  "answer": 2,
+  "explanation": "It is he that giveth thee power to get wealth, that he may establish his covenant which he sware unto thy fathers.",
+  "ref": "Deuteronomy 8:18"
+ },
+ {
+  "id": "deuteronomy-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD give Israel power to get?",
+  "choices": [
+   "Cities",
+   "Wives",
+   "Wealth",
+   "Wars"
+  ],
+  "answer": 2,
+  "explanation": "It is he that giveth thee power to get wealth.",
+  "ref": "Deuteronomy 8:18"
+ },
+ {
+  "id": "deuteronomy-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will Israel perish like the nations the LORD destroys?",
+  "choices": [
+   "They had too few soldiers",
+   "They lacked a king",
+   "They would not be obedient to the voice of the LORD",
+   "They lacked a temple"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall perish; because ye would not be obedient unto the voice of the LORD your God.",
+  "ref": "Deuteronomy 8:20"
+ },
+ {
+  "id": "deuteronomy-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why are Israel to observe all the commandments?",
+  "choices": [
+   "That they may escape the wilderness",
+   "That they may rule Egypt",
+   "That they may live, multiply and possess the land",
+   "That they may build the temple"
+  ],
+  "answer": 2,
+  "explanation": "Observe to do, that ye may live, and multiply, and go in and possess the land.",
+  "ref": "Deuteronomy 8:1"
+ },
+ {
+  "id": "deuteronomy-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who led Israel through the wilderness and fed them with manna?",
+  "choices": [
+   "Moses alone",
+   "The elders",
+   "The LORD thy God",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "It was the LORD thy God who fed thee in the wilderness with manna.",
+  "ref": "Deuteronomy 8:15–16"
+ },
+ {
+  "id": "deuteronomy-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did the LORD swear the covenant He will establish?",
+  "choices": [
+   "Their judges",
+   "Their priests",
+   "Their fathers",
+   "Their kings"
+  ],
+  "answer": 2,
+  "explanation": "That he may establish his covenant which he sware unto thy fathers.",
+  "ref": "Deuteronomy 8:18"
+ },
+ {
+  "id": "deuteronomy-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of what kind of rock did the LORD bring forth water?",
+  "choices": [
+   "Marble",
+   "Granite",
+   "Sandstone",
+   "Flint"
+  ],
+  "answer": 3,
+  "explanation": "Who brought thee forth water out of the rock of flint.",
+  "ref": "Deuteronomy 8:15"
+ },
+ {
+  "id": "deuteronomy-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The list of the land's produce ends with oil olive and what?",
+  "choices": [
+   "Wine",
+   "Corn",
+   "Barley",
+   "Honey"
+  ],
+  "answer": 3,
+  "explanation": "A land of oil olive, and honey.",
+  "ref": "Deuteronomy 8:8"
+ },
+ {
+  "id": "deuteronomy-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What may Israel dig out of the hills?",
+  "choices": [
+   "Silver",
+   "Gold",
+   "Salt",
+   "Brass"
+  ],
+  "answer": 3,
+  "explanation": "Out of whose hills thou mayest dig brass.",
+  "ref": "Deuteronomy 8:9"
+ },
+ {
+  "id": "deuteronomy-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Where do the fountains and depths spring out?",
+  "choices": [
+   "Out of rocks and caves",
+   "Out of fields and gates",
+   "Out of cities and towns",
+   "Out of valleys and hills"
+  ],
+  "answer": 3,
+  "explanation": "Fountains and depths that spring out of valleys and hills.",
+  "ref": "Deuteronomy 8:7"
+ },
+ {
+  "id": "deuteronomy-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The good land is called a land of brooks of what?",
+  "choices": [
+   "Oil",
+   "Milk",
+   "Wine",
+   "Water"
+  ],
+  "answer": 3,
+  "explanation": "A land of brooks of water.",
+  "ref": "Deuteronomy 8:7"
+ },
+ {
+  "id": "deuteronomy-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do after He suffered Israel to hunger?",
+  "choices": [
+   "Sent them quail",
+   "Gave them a feast",
+   "Led them to a city",
+   "Fed them with manna"
+  ],
+  "answer": 3,
+  "explanation": "He suffered thee to hunger, and fed thee with manna.",
+  "ref": "Deuteronomy 8:3"
+ },
+ {
+  "id": "deuteronomy-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Forget not the LORD in not keeping His commandments, His judgments and His what?",
+  "choices": [
+   "Offerings",
+   "Altars",
+   "Feasts",
+   "Statutes"
+  ],
+  "answer": 3,
+  "explanation": "His commandments, and his judgments, and his statutes.",
+  "ref": "Deuteronomy 8:11"
+ },
+ {
+  "id": "deuteronomy-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses says to walk in His ways, to fear Him and to keep what?",
+  "choices": [
+   "The feast days",
+   "The tents of the fathers",
+   "The wells of the land",
+   "The commandments of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt keep the commandments of the LORD thy God, to walk in his ways.",
+  "ref": "Deuteronomy 8:6"
+ },
+ {
+  "id": "deuteronomy-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If Israel forgets the LORD, they walk after other gods, serve them and do what else?",
+  "choices": [
+   "Name them",
+   "Carry them",
+   "Feed them",
+   "Worship them"
+  ],
+  "answer": 3,
+  "explanation": "Walk after other gods, and serve them, and worship them.",
+  "ref": "Deuteronomy 8:19"
+ },
+ {
+  "id": "deuteronomy-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Man lives by every word that proceedeth out of what?",
+  "choices": [
+   "The book of the law",
+   "The tent of meeting",
+   "The heart of Moses",
+   "The mouth of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "By every word that proceedeth out of the mouth of the LORD doth man live.",
+  "ref": "Deuteronomy 8:3"
+ },
+ {
+  "id": "deuteronomy-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The land's stones are what?",
+  "choices": [
+   "Gold",
+   "Silver",
+   "Marble",
+   "Iron"
+  ],
+  "answer": 3,
+  "explanation": "A land whose stones are iron.",
+  "ref": "Deuteronomy 8:9"
+ },
+ {
+  "id": "deuteronomy-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which fruit is named after vines and fig trees?",
+  "choices": [
+   "Dates",
+   "Grapes",
+   "Olives",
+   "Pomegranates"
+  ],
+  "answer": 3,
+  "explanation": "A land of wheat, and barley, and vines, and fig trees, and pomegranates.",
+  "ref": "Deuteronomy 8:8"
+ },
+ {
+  "id": "deuteronomy-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the LORD humble Israel and prove them with manna?",
+  "choices": [
+   "To make them fear Egypt",
+   "To teach them war",
+   "To teach them trade",
+   "To do them good at their latter end"
+  ],
+  "answer": 3,
+  "explanation": "He fed thee in the wilderness with manna...to do thee good at thy latter end.",
+  "ref": "Deuteronomy 8:16"
+ },
+ {
+  "id": "deuteronomy-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides fiery serpents and scorpions, what did the wilderness have?",
+  "choices": [
+   "Floods",
+   "Snow",
+   "Forests",
+   "Drought"
+  ],
+  "answer": 3,
+  "explanation": "The wilderness had fiery serpents, and scorpions, and drought, where there was no water.",
+  "ref": "Deuteronomy 8:15"
+ },
+ {
+  "id": "deuteronomy-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD told Israel what they could eat without scarceness?",
+  "choices": [
+   "Fish",
+   "Honey",
+   "Figs",
+   "Bread"
+  ],
+  "answer": 3,
+  "explanation": "A land wherein thou shalt eat bread without scarceness.",
+  "ref": "Deuteronomy 8:9"
+ },
+ {
   "id": "old-deuteronomy-9-1",
   "chapter": 9,
   "level": "beginner",
