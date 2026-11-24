@@ -9440,6 +9440,678 @@
   "ref": "Deuteronomy 14:28–29"
  },
  {
+  "id": "deuteronomy-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "What are Israel called at the start of the chapter?",
+  "choices": [
+   "The children of the LORD their God",
+   "The servants of Pharaoh",
+   "The sons of Levi",
+   "The sheep of the shepherd"
+  ],
+  "answer": 0,
+  "explanation": "Ye are the children of the LORD your God.",
+  "ref": "Deuteronomy 14:1"
+ },
+ {
+  "id": "deuteronomy-14-e-02",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were Israel not to do for the dead?",
+  "choices": [
+   "Bury them within a year",
+   "Mourn at the gates",
+   "Eat with the Levite",
+   "Cut themselves or make baldness between the eyes"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall not cut yourselves, nor make any baldness between your eyes for the dead.",
+  "ref": "Deuteronomy 14:1"
+ },
+ {
+  "id": "deuteronomy-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of people is Israel to the LORD?",
+  "choices": [
+   "A mighty people",
+   "A wandering people",
+   "An holy people",
+   "A rich people"
+  ],
+  "answer": 2,
+  "explanation": "For thou art an holy people unto the LORD thy God.",
+  "ref": "Deuteronomy 14:2"
+ },
+ {
+  "id": "deuteronomy-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which animal is the first listed among the beasts Israel may eat?",
+  "choices": [
+   "The camel",
+   "The ox",
+   "The hare",
+   "The swine"
+  ],
+  "answer": 1,
+  "explanation": "These are the beasts which ye shall eat: the ox, the sheep, and the goat.",
+  "ref": "Deuteronomy 14:4"
+ },
+ {
+  "id": "deuteronomy-14-e-05",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which animal was unclean because it did not chew the cud?",
+  "choices": [
+   "The ox",
+   "The swine",
+   "The sheep",
+   "The goat"
+  ],
+  "answer": 1,
+  "explanation": "The swine, because it divideth the hoof, yet cheweth not the cud, it is unclean unto you.",
+  "ref": "Deuteronomy 14:8"
+ },
+ {
+  "id": "deuteronomy-14-e-06",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must clean fish have?",
+  "choices": [
+   "Fins and scales",
+   "Fins only",
+   "Scales only",
+   "Gills and tails"
+  ],
+  "answer": 0,
+  "explanation": "All that have fins and scales shall ye eat.",
+  "ref": "Deuteronomy 14:9"
+ },
+ {
+  "id": "deuteronomy-14-e-07",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which large bird is named first among those Israel must not eat?",
+  "choices": [
+   "The swan",
+   "The stork",
+   "The raven",
+   "The eagle"
+  ],
+  "answer": 3,
+  "explanation": "But these are they of which ye shall not eat: the eagle, and ossifrage, and the ospray.",
+  "ref": "Deuteronomy 14:12"
+ },
+ {
+  "id": "deuteronomy-14-e-08",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall Israel not touch of the swine?",
+  "choices": [
+   "Its skin",
+   "Its young",
+   "Its dead carcase",
+   "Its bones alone"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall not eat of their flesh, nor touch their dead carcase.",
+  "ref": "Deuteronomy 14:8"
+ },
+ {
+  "id": "deuteronomy-14-e-09",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must Israel not eat that dieth of itself?",
+  "choices": [
+   "Only the fat",
+   "Only the blood",
+   "Any such thing",
+   "Only the liver"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall not eat of any thing that dieth of itself.",
+  "ref": "Deuteronomy 14:21"
+ },
+ {
+  "id": "deuteronomy-14-e-10",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After how many years was the tithe brought forth and laid up within the gates?",
+  "choices": [
+   "Two",
+   "Three",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "At the end of three years thou shalt bring forth all the tithe of thine increase the same year.",
+  "ref": "Deuteronomy 14:28"
+ },
+ {
+  "id": "deuteronomy-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which word describes Israel as the LORD's own among all nations?",
+  "choices": [
+   "Conquering people",
+   "Peculiar people",
+   "Wandering people",
+   "Hidden people"
+  ],
+  "answer": 1,
+  "explanation": "The LORD hath chosen thee to be a peculiar people unto himself, above all the nations that are upon the earth.",
+  "ref": "Deuteronomy 14:2"
+ },
+ {
+  "id": "deuteronomy-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Israel told not to eat?",
+  "choices": [
+   "Any abominable thing",
+   "Any bread",
+   "Any herb",
+   "Any honey"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not eat any abominable thing.",
+  "ref": "Deuteronomy 14:3"
+ },
+ {
+  "id": "deuteronomy-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must a beast do to be clean, besides parting the hoof?",
+  "choices": [
+   "Chew the cud",
+   "Have horns",
+   "Be without spot",
+   "Be born in the field"
+  ],
+  "answer": 0,
+  "explanation": "Every beast that parteth the hoof, and cleaveth the cleft into two claws, and cheweth the cud among the beasts, that ye shall eat.",
+  "ref": "Deuteronomy 14:6"
+ },
+ {
+  "id": "deuteronomy-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the camel unclean?",
+  "choices": [
+   "It has no scales",
+   "It lives in the water",
+   "It eats carrion",
+   "It chews the cud but divides not the hoof"
+  ],
+  "answer": 3,
+  "explanation": "They chew the cud, but divide not the hoof; therefore they are unclean unto you.",
+  "ref": "Deuteronomy 14:7"
+ },
+ {
+  "id": "deuteronomy-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these is unclean along with the camel and the hare?",
+  "choices": [
+   "The hart",
+   "The roebuck",
+   "The coney",
+   "The wild ox"
+  ],
+  "answer": 2,
+  "explanation": "As the camel, and the hare, and the coney.",
+  "ref": "Deuteronomy 14:7"
+ },
+ {
+  "id": "deuteronomy-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What may Israel not eat from the waters?",
+  "choices": [
+   "Anything caught by hand",
+   "Whatsoever hath not fins and scales",
+   "Anything over a year old",
+   "Anything from the sea"
+  ],
+  "answer": 1,
+  "explanation": "Whatsoever hath not fins and scales ye may not eat; it is unclean unto you.",
+  "ref": "Deuteronomy 14:10"
+ },
+ {
+  "id": "deuteronomy-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which birds may Israel eat?",
+  "choices": [
+   "Only the swan",
+   "All clean birds",
+   "Only those that fly high",
+   "Only those found in nests"
+  ],
+  "answer": 1,
+  "explanation": "Of all clean birds ye shall eat.",
+  "ref": "Deuteronomy 14:11"
+ },
+ {
+  "id": "deuteronomy-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What creeping thing is unclean?",
+  "choices": [
+   "Every creeping thing that flieth",
+   "Every worm of the field",
+   "Every serpent of the sea",
+   "Every beast of burden"
+  ],
+  "answer": 0,
+  "explanation": "Every creeping thing that flieth is unclean unto you: they shall not be eaten.",
+  "ref": "Deuteronomy 14:19"
+ },
+ {
+  "id": "deuteronomy-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom could Israel give a thing that died of itself?",
+  "choices": [
+   "The Levite",
+   "The widow",
+   "The priest",
+   "The stranger in their gates"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt give it unto the stranger that is in thy gates, that he may eat it.",
+  "ref": "Deuteronomy 14:21"
+ },
+ {
+  "id": "deuteronomy-14-m-10",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom could Israel sell a thing that died of itself?",
+  "choices": [
+   "A priest",
+   "A prophet",
+   "An alien",
+   "A neighbor"
+  ],
+  "answer": 2,
+  "explanation": "Or thou mayest sell it unto an alien.",
+  "ref": "Deuteronomy 14:21"
+ },
+ {
+  "id": "deuteronomy-14-m-11",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are Israel to tithe each year?",
+  "choices": [
+   "Their sons",
+   "Their servants",
+   "All the increase of their seed",
+   "Their tents"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt truly tithe all the increase of thy seed, that the field bringeth forth year by year.",
+  "ref": "Deuteronomy 14:22"
+ },
+ {
+  "id": "deuteronomy-14-m-12",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Israel to eat the tithe before the LORD at the chosen place?",
+  "choices": [
+   "That they may be counted",
+   "That they may learn to fear the LORD always",
+   "That they may be fed",
+   "That they may be paid"
+  ],
+  "answer": 1,
+  "explanation": "That thou mayest learn to fear the LORD thy God always.",
+  "ref": "Deuteronomy 14:23"
+ },
+ {
+  "id": "deuteronomy-14-m-13",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What could Israel do if the chosen place was too far to carry the tithe?",
+  "choices": [
+   "Turn it into money",
+   "Leave it at home",
+   "Give it to a stranger",
+   "Burn it in the field"
+  ],
+  "answer": 0,
+  "explanation": "Then shalt thou turn it into money, and bind up the money in thine hand.",
+  "ref": "Deuteronomy 14:24–25"
+ },
+ {
+  "id": "deuteronomy-14-m-14",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel to do with the money at the chosen place?",
+  "choices": [
+   "Give it to the king",
+   "Hide it in the tabernacle",
+   "Pay the Levite's debts",
+   "Buy whatever their soul desired and eat before the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt bestow that money for whatsoever thy soul lusteth after... and thou shalt eat there before the LORD thy God.",
+  "ref": "Deuteronomy 14:26"
+ },
+ {
+  "id": "deuteronomy-14-m-15",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who was not to be forsaken because he had no inheritance?",
+  "choices": [
+   "The widow",
+   "The stranger",
+   "The orphan",
+   "The Levite"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not forsake him; for he hath no part nor inheritance with thee.",
+  "ref": "Deuteronomy 14:27"
+ },
+ {
+  "id": "deuteronomy-14-m-16",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD do if Israel brought the third year tithe for the needy?",
+  "choices": [
+   "Send them rain",
+   "Give them a king",
+   "Bless them in all the work of their hand",
+   "Make them rich in cattle"
+  ],
+  "answer": 2,
+  "explanation": "That the LORD thy God may bless thee in all the work of thine hand which thou doest.",
+  "ref": "Deuteronomy 14:29"
+ },
+ {
+  "id": "deuteronomy-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the baldness not to be made?",
+  "choices": [
+   "On the head",
+   "Above the brow",
+   "Between the eyes",
+   "Behind the ear"
+  ],
+  "answer": 2,
+  "explanation": "Nor make any baldness between your eyes for the dead.",
+  "ref": "Deuteronomy 14:1"
+ },
+ {
+  "id": "deuteronomy-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which three clean animals begin the list of beasts to eat?",
+  "choices": [
+   "The hart, the roebuck and the swine",
+   "The ox, the sheep and the goat",
+   "The camel, the hare and the ox",
+   "The goat, the coney and the hart"
+  ],
+  "answer": 1,
+  "explanation": "The ox, the sheep, and the goat.",
+  "ref": "Deuteronomy 14:4"
+ },
+ {
+  "id": "deuteronomy-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which beast is listed between the wild goat and the wild ox?",
+  "choices": [
+   "The chamois",
+   "The pygarg",
+   "The fallow deer",
+   "The roebuck"
+  ],
+  "answer": 1,
+  "explanation": "And the wild goat, and the pygarg, and the wild ox, and the chamois.",
+  "ref": "Deuteronomy 14:5"
+ },
+ {
+  "id": "deuteronomy-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the swine do that makes it unclean?",
+  "choices": [
+   "It divides the hoof but chews not the cud",
+   "It chews the cud but not the hoof",
+   "It has neither hoof nor cud",
+   "It eats the dead"
+  ],
+  "answer": 0,
+  "explanation": "The swine, because it divideth the hoof, yet cheweth not the cud.",
+  "ref": "Deuteronomy 14:8"
+ },
+ {
+  "id": "deuteronomy-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which bird comes right after the glede in the list of unclean birds?",
+  "choices": [
+   "The raven",
+   "The vulture",
+   "The owl",
+   "The kite"
+  ],
+  "answer": 3,
+  "explanation": "And the glede, and the kite, and the vulture after his kind.",
+  "ref": "Deuteronomy 14:13"
+ },
+ {
+  "id": "deuteronomy-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which unclean birds are listed 'after his kind' right after the vulture?",
+  "choices": [
+   "Every owl",
+   "Every hawk",
+   "Every raven",
+   "Every stork"
+  ],
+  "answer": 2,
+  "explanation": "And the vulture after his kind, and every raven after his kind.",
+  "ref": "Deuteronomy 14:13–14"
+ },
+ {
+  "id": "deuteronomy-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these is named among unclean fowl?",
+  "choices": [
+   "The dove",
+   "The sparrow",
+   "The cuckow",
+   "The quail"
+  ],
+  "answer": 2,
+  "explanation": "And the owl, and the night hawk, and the cuckow, and the hawk after his kind.",
+  "ref": "Deuteronomy 14:15"
+ },
+ {
+  "id": "deuteronomy-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which bird is listed with the little owl and the great owl?",
+  "choices": [
+   "The raven",
+   "The swan",
+   "The stork",
+   "The eagle"
+  ],
+  "answer": 1,
+  "explanation": "The little owl, and the great owl, and the swan.",
+  "ref": "Deuteronomy 14:16"
+ },
+ {
+  "id": "deuteronomy-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What creature closes the list of unclean birds?",
+  "choices": [
+   "The bat",
+   "The lapwing",
+   "The heron",
+   "The stork"
+  ],
+  "answer": 0,
+  "explanation": "And the stork, and the heron after her kind, and the lapwing, and the bat.",
+  "ref": "Deuteronomy 14:18"
+ },
+ {
+  "id": "deuteronomy-14-h-10",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which fowls may Israel eat?",
+  "choices": [
+   "Only the swan",
+   "Only night birds",
+   "Only the stork",
+   "All clean fowls"
+  ],
+  "answer": 3,
+  "explanation": "But of all clean fowls ye may eat.",
+  "ref": "Deuteronomy 14:20"
+ },
+ {
+  "id": "deuteronomy-14-h-11",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What may not be seethed in its mother's milk?",
+  "choices": [
+   "A lamb",
+   "A calf",
+   "A ram",
+   "A kid"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not seethe a kid in his mother's milk.",
+  "ref": "Deuteronomy 14:21"
+ },
+ {
+  "id": "deuteronomy-14-h-12",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are named with corn and wine in the tithe eaten at the chosen place?",
+  "choices": [
+   "Honey",
+   "Wool",
+   "Oil",
+   "Figs"
+  ],
+  "answer": 2,
+  "explanation": "The tithe of thy corn, of thy wine, and of thine oil, and the firstlings of thy herds and of thy flocks.",
+  "ref": "Deuteronomy 14:23"
+ },
+ {
+  "id": "deuteronomy-14-h-13",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides oxen, sheep and wine, what may the money buy?",
+  "choices": [
+   "Fine linen",
+   "Strong drink",
+   "Silver",
+   "Servants"
+  ],
+  "answer": 1,
+  "explanation": "For oxen, or for sheep, or for wine, or for strong drink, or for whatsoever thy soul desireth.",
+  "ref": "Deuteronomy 14:26"
+ },
+ {
+  "id": "deuteronomy-14-h-14",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is named with the Levite, stranger and fatherless to eat of the three-year tithe?",
+  "choices": [
+   "The widow",
+   "The priest",
+   "The captive",
+   "The elder"
+  ],
+  "answer": 0,
+  "explanation": "The Levite... and the stranger, and the fatherless, and the widow, which are within thy gates, shall come, and shall eat and be satisfied.",
+  "ref": "Deuteronomy 14:29"
+ },
+ {
+  "id": "deuteronomy-14-h-15",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the three-year tithe laid up?",
+  "choices": [
+   "Within thy gates",
+   "At the tabernacle",
+   "In the temple",
+   "In the field"
+  ],
+  "answer": 0,
+  "explanation": "Shalt bring forth all the tithe of thine increase the same year, and shalt lay it up within thy gates.",
+  "ref": "Deuteronomy 14:28"
+ },
+ {
+  "id": "deuteronomy-14-h-16",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to those who eat of the three-year tithe?",
+  "choices": [
+   "They are numbered",
+   "They are fined",
+   "They are sent away",
+   "They eat and are satisfied"
+  ],
+  "answer": 3,
+  "explanation": "Shall come, and shall eat and be satisfied.",
+  "ref": "Deuteronomy 14:29"
+ },
+ {
   "id": "old-deuteronomy-15-1",
   "chapter": 15,
   "level": "beginner",
