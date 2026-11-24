@@ -3680,6 +3680,646 @@
   "ref": "Judges 6:36–40"
  },
  {
+  "id": "judges-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Gideon doing when the angel of the LORD found him?",
+  "choices": [
+   "Sowing barley in the field",
+   "Threshing wheat by the winepress",
+   "Tending sheep",
+   "Hiding in a cave"
+  ],
+  "answer": 1,
+  "explanation": "His son Gideon threshed wheat by the winepress, to hide it from the Midianites.",
+  "ref": "Judges 6:11"
+ },
+ {
+  "id": "judges-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Under what did the angel of the LORD sit in Ophrah?",
+  "choices": [
+   "A palm tree",
+   "A fig tree",
+   "An oak",
+   "A terebinth"
+  ],
+  "answer": 2,
+  "explanation": "The angel of the LORD sat under an oak which was in Ophrah.",
+  "ref": "Judges 6:11"
+ },
+ {
+  "id": "judges-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Gideon call the altar he built to the LORD?",
+  "choices": [
+   "Jehovah-jireh",
+   "Jehovah-nissi",
+   "Bethel",
+   "Jehovah-shalom"
+  ],
+  "answer": 3,
+  "explanation": "Gideon built an altar there unto the LORD, and called it Jehovah-shalom.",
+  "ref": "Judges 6:24"
+ },
+ {
+  "id": "judges-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Gideon's father?",
+  "choices": [
+   "Joash",
+   "Abinoam",
+   "Kenaz",
+   "Lapidoth"
+  ],
+  "answer": 0,
+  "explanation": "Gideon was the son of Joash the Abi-ezrite.",
+  "ref": "Judges 6:11"
+ },
+ {
+  "id": "judges-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What rose up out of the rock and consumed Gideon's offering?",
+  "choices": [
+   "Water",
+   "Fire",
+   "A cloud",
+   "A voice"
+  ],
+  "answer": 1,
+  "explanation": "There rose up fire out of the rock, and consumed the flesh and the unleavened cakes.",
+  "ref": "Judges 6:21"
+ },
+ {
+  "id": "judges-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What new name was Gideon given on that day?",
+  "choices": [
+   "Jehovah-shalom",
+   "Abi-ezer",
+   "Jerubbaal",
+   "Joash"
+  ],
+  "answer": 2,
+  "explanation": "Therefore on that day he called him Jerubbaal, saying, Let Baal plead against him.",
+  "ref": "Judges 6:32"
+ },
+ {
+  "id": "judges-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In which tribe did Gideon say his family was poor?",
+  "choices": [
+   "Ephraim",
+   "Judah",
+   "Benjamin",
+   "Manasseh"
+  ],
+  "answer": 3,
+  "explanation": "Gideon said, my family is poor in Manasseh, and I am the least in my father's house.",
+  "ref": "Judges 6:15"
+ },
+ {
+  "id": "judges-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Gideon blow when the Spirit of the LORD came upon him?",
+  "choices": [
+   "A trumpet",
+   "A flute",
+   "A ram's horn only",
+   "A horn of oil"
+  ],
+  "answer": 0,
+  "explanation": "The Spirit of the LORD came upon Gideon, and he blew a trumpet.",
+  "ref": "Judges 6:34"
+ },
+ {
+  "id": "judges-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the Midianites and their allies pitch?",
+  "choices": [
+   "On mount Tabor",
+   "In the valley of Jezreel",
+   "Beside the Jordan",
+   "At Ophrah"
+  ],
+  "answer": 1,
+  "explanation": "They went over, and pitched in the valley of Jezreel.",
+  "ref": "Judges 6:33"
+ },
+ {
+  "id": "judges-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Midianites come like, for multitude?",
+  "choices": [
+   "Locusts of Egypt",
+   "Sand of the sea",
+   "Grasshoppers",
+   "Stars of heaven"
+  ],
+  "answer": 2,
+  "explanation": "They came as grasshoppers for multitude; both they and their camels were without number.",
+  "ref": "Judges 6:5"
+ },
+ {
+  "id": "judges-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which peoples came up with the Midianites?",
+  "choices": [
+   "The Moabites and the Ammonites",
+   "The Philistines and the Hittites",
+   "The Edomites and the Amorites",
+   "The Amalekites and the children of the east"
+  ],
+  "answer": 3,
+  "explanation": "The Midianites came up, and the Amalekites, and the children of the east.",
+  "ref": "Judges 6:3"
+ },
+ {
+  "id": "judges-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "How far did the Midianites destroy the increase of the earth?",
+  "choices": [
+   "Till thou come unto Gaza",
+   "Till they reached Egypt",
+   "Unto the river Jordan",
+   "Unto Hebron"
+  ],
+  "answer": 0,
+  "explanation": "They destroyed the increase of the earth, till thou come unto Gaza.",
+  "ref": "Judges 6:4"
+ },
+ {
+  "id": "judges-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the LORD send when Israel cried because of Midian?",
+  "choices": [
+   "An angel to Gideon",
+   "A prophet",
+   "A priest",
+   "A judge named Barak"
+  ],
+  "answer": 1,
+  "explanation": "The LORD sent a prophet unto the children of Israel.",
+  "ref": "Judges 6:8"
+ },
+ {
+  "id": "judges-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gideon ask about the LORD's miracles?",
+  "choices": [
+   "Why did the miracles stop at Jordan?",
+   "Who saw his miracles in Egypt?",
+   "Where be all his miracles which our fathers told us of?",
+   "Will the LORD show a miracle today?"
+  ],
+  "answer": 2,
+  "explanation": "Gideon asked, where be all his miracles which our fathers told us of?",
+  "ref": "Judges 6:13"
+ },
+ {
+  "id": "judges-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Gideon say he could not save Israel?",
+  "choices": [
+   "He was too old",
+   "He had no sword",
+   "He had no servants",
+   "He was the least in his father's house"
+  ],
+  "answer": 3,
+  "explanation": "Gideon said, my family is poor in Manasseh, and I am the least in my father's house.",
+  "ref": "Judges 6:15"
+ },
+ {
+  "id": "judges-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD promise Gideon about the Midianites?",
+  "choices": [
+   "He would smite them as one man",
+   "He would burn their tents",
+   "He would drown them in Kishon",
+   "He would send them away"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, Surely I will be with thee, and thou shalt smite the Midianites as one man.",
+  "ref": "Judges 6:16"
+ },
+ {
+  "id": "judges-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Gideon prepare to set before the angel?",
+  "choices": [
+   "A lamb and wine",
+   "A kid and unleavened cakes",
+   "An ox and bread",
+   "Doves and oil"
+  ],
+  "answer": 1,
+  "explanation": "Gideon made ready a kid, and unleavened cakes of an ephah of flour.",
+  "ref": "Judges 6:19"
+ },
+ {
+  "id": "judges-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel use to touch the flesh and cakes?",
+  "choices": [
+   "His right hand",
+   "A torch from the altar",
+   "The end of the staff in his hand",
+   "A rod of iron"
+  ],
+  "answer": 2,
+  "explanation": "The angel put forth the end of the staff that was in his hand, and touched the flesh.",
+  "ref": "Judges 6:21"
+ },
+ {
+  "id": "judges-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say to Gideon when he feared he would die?",
+  "choices": [
+   "Go in peace to Ophrah",
+   "Build an altar quickly",
+   "Be strong and courageous",
+   "Peace be unto thee; fear not"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said unto him, Peace be unto thee; fear not: thou shalt not die.",
+  "ref": "Judges 6:23"
+ },
+ {
+  "id": "judges-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Gideon told to take for the offering of the night?",
+  "choices": [
+   "His father's second bullock of seven years old",
+   "A lamb of the first year",
+   "A ram without blemish",
+   "A young goat"
+  ],
+  "answer": 0,
+  "explanation": "Take thy father's young bullock, even the second bullock of seven years old.",
+  "ref": "Judges 6:25"
+ },
+ {
+  "id": "judges-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Gideon throw down the altar of Baal by night?",
+  "choices": [
+   "He wanted to surprise Midian",
+   "He feared his father's household and the men of the city",
+   "He was told to hide it",
+   "It was too heavy by day"
+  ],
+  "answer": 1,
+  "explanation": "He feared his father's household, and the men of the city, that he could not do it by day.",
+  "ref": "Judges 6:27"
+ },
+ {
+  "id": "judges-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joash say to those who wanted Gideon to die?",
+  "choices": [
+   "Gideon is only a boy",
+   "Let him go to the temple",
+   "Will ye plead for Baal?",
+   "The LORD will judge him"
+  ],
+  "answer": 2,
+  "explanation": "Joash said, Will ye plead for Baal? will ye save him?",
+  "ref": "Judges 6:31"
+ },
+ {
+  "id": "judges-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much water did Gideon wring out of the fleece?",
+  "choices": [
+   "A pot full",
+   "A skin full",
+   "A cup full",
+   "A bowl full"
+  ],
+  "answer": 3,
+  "explanation": "He wringed the dew out of the fleece, a bowl full of water.",
+  "ref": "Judges 6:38"
+ },
+ {
+  "id": "judges-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What else was Gideon told to cut down besides the altar of Baal?",
+  "choices": [
+   "The grove",
+   "The pillar",
+   "The tree of Ophrah",
+   "The wall"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, throw down the altar of Baal, and cut down the grove that is by it.",
+  "ref": "Judges 6:25"
+ },
+ {
+  "id": "judges-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which tribes did Gideon send messengers to, beside Manasseh?",
+  "choices": [
+   "Judah, Simeon and Dan",
+   "Asher, Zebulun and Naphtali",
+   "Ephraim, Reuben and Gad",
+   "Issachar, Dan and Judah"
+  ],
+  "answer": 1,
+  "explanation": "He sent messengers unto Asher, and unto Zebulun, and unto Naphtali.",
+  "ref": "Judges 6:35"
+ },
+ {
+  "id": "judges-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much flour was in Gideon's unleavened cakes?",
+  "choices": [
+   "A homer",
+   "A cubit",
+   "An ephah",
+   "A hin"
+  ],
+  "answer": 2,
+  "explanation": "Gideon made ready unleavened cakes of an ephah of flour.",
+  "ref": "Judges 6:19"
+ },
+ {
+  "id": "judges-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Gideon put the flesh and the broth?",
+  "choices": [
+   "Flesh in a dish, broth in a bowl",
+   "Both in a skin",
+   "Both on a platter",
+   "Flesh in a basket, broth in a pot"
+  ],
+  "answer": 3,
+  "explanation": "The flesh he put in a basket, and he put the broth in a pot.",
+  "ref": "Judges 6:19"
+ },
+ {
+  "id": "judges-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What wood was used for the burnt sacrifice?",
+  "choices": [
+   "The wood of the grove",
+   "Cedar wood",
+   "Acacia wood",
+   "Olive wood"
+  ],
+  "answer": 0,
+  "explanation": "Offer a burnt sacrifice with the wood of the grove which thou shalt cut down.",
+  "ref": "Judges 6:26"
+ },
+ {
+  "id": "judges-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Gideon say when he saw it was an angel of the LORD?",
+  "choices": [
+   "I am not worthy to stand here",
+   "Alas, O Lord GOD! I have seen an angel face to face",
+   "Blessed be the LORD of Israel",
+   "Let me build an altar"
+  ],
+  "answer": 1,
+  "explanation": "Gideon said, Alas, O Lord GOD! for because I have seen an angel of the LORD face to face.",
+  "ref": "Judges 6:22"
+ },
+ {
+  "id": "judges-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the angel after the fire?",
+  "choices": [
+   "He sat down under the oak",
+   "He went into Ophrah",
+   "He departed out of his sight",
+   "He stood on the rock"
+  ],
+  "answer": 2,
+  "explanation": "The angel of the LORD departed out of his sight.",
+  "ref": "Judges 6:21"
+ },
+ {
+  "id": "judges-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the angel tell Gideon to do with the flesh and cakes?",
+  "choices": [
+   "Carry them to Joash",
+   "Burn them in the winepress",
+   "Eat them under the oak",
+   "Lay them on the rock and pour out the broth"
+  ],
+  "answer": 3,
+  "explanation": "Take the flesh and the unleavened cakes, and lay them upon this rock, and pour out the broth.",
+  "ref": "Judges 6:20"
+ },
+ {
+  "id": "judges-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of his servants did Gideon take?",
+  "choices": [
+   "Ten",
+   "Three",
+   "Twelve",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "Gideon took ten men of his servants, and did as the LORD had said.",
+  "ref": "Judges 6:27"
+ },
+ {
+  "id": "judges-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose people were gathered after Gideon when he blew the trumpet?",
+  "choices": [
+   "Ephraim",
+   "Abi-ezer",
+   "Naphtali",
+   "Benjamin"
+  ],
+  "answer": 1,
+  "explanation": "He blew a trumpet; and Abi-ezer was gathered after him.",
+  "ref": "Judges 6:34"
+ },
+ {
+  "id": "judges-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Gideon say he would put the fleece of wool?",
+  "choices": [
+   "On the rock",
+   "By the winepress",
+   "In the floor",
+   "Under the oak"
+  ],
+  "answer": 2,
+  "explanation": "I will put a fleece of wool in the floor.",
+  "ref": "Judges 6:37"
+ },
+ {
+  "id": "judges-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the first sign with the fleece?",
+  "choices": [
+   "Dry fleece, dew on the ground",
+   "Fire on the fleece",
+   "Water from the fleece",
+   "Dew only on the fleece, dry ground beside"
+  ],
+  "answer": 3,
+  "explanation": "If the dew be on the fleece only, and dry upon all the earth beside.",
+  "ref": "Judges 6:37"
+ },
+ {
+  "id": "judges-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Gideon say before asking for the second sign?",
+  "choices": [
+   "I will speak but this once",
+   "Let me not be put to shame",
+   "Forgive thy servant",
+   "I will ask no more"
+  ],
+  "answer": 0,
+  "explanation": "Gideon said, Let not thine anger be hot against me, and I will speak but this once.",
+  "ref": "Judges 6:39"
+ },
+ {
+  "id": "judges-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Midianites leave for Israel, neither sheep, nor ox, nor what?",
+  "choices": [
+   "Camel",
+   "Goat",
+   "Ass",
+   "Horse"
+  ],
+  "answer": 2,
+  "explanation": "They left no sustenance for Israel, neither sheep, nor ox, nor ass.",
+  "ref": "Judges 6:4"
+ },
+ {
+  "id": "judges-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did the oak in Ophrah belong to?",
+  "choices": [
+   "Gideon",
+   "Abinoam",
+   "Eglon",
+   "Joash the Abi-ezrite"
+  ],
+  "answer": 3,
+  "explanation": "The oak in Ophrah pertained unto Joash the Abi-ezrite.",
+  "ref": "Judges 6:11"
+ },
+ {
+  "id": "judges-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Israel make dens, besides mountains?",
+  "choices": [
+   "Caves and strong holds",
+   "Wells and pits",
+   "Tombs and walls",
+   "Fields and tents"
+  ],
+  "answer": 0,
+  "explanation": "Israel made them the dens which are in the mountains, and caves, and strong holds.",
+  "ref": "Judges 6:2"
+ },
+ {
+  "id": "judges-6-h-16",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did the LORD tell Israel not to fear?",
+  "choices": [
+   "The kings of Midian",
+   "The gods of the Amorites",
+   "The prophets of Baal",
+   "The people of Gaza"
+  ],
+  "answer": 1,
+  "explanation": "I said, fear not the gods of the Amorites, in whose land ye dwell.",
+  "ref": "Judges 6:10"
+ },
+ {
   "id": "old-judges-7-1",
   "chapter": 7,
   "level": "beginner",
