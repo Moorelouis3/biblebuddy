@@ -14478,5 +14478,645 @@
   "answer": 1,
   "explanation": "The book ends by stressing Israel's moral chaos without a king.",
   "ref": "Judges 21:25"
+ },
+ {
+  "id": "judges-21-e-01",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where had the men of Israel sworn their oath about Benjamin?",
+  "choices": [
+   "Mizpeh",
+   "Shiloh",
+   "Gibeah",
+   "Bethel"
+  ],
+  "answer": 0,
+  "explanation": "The men of Israel had sworn in Mizpeh, There shall not any of us give his daughter unto Benjamin to wife.",
+  "ref": "Judges 21:1"
+ },
+ {
+  "id": "judges-21-e-02",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people feel when they came to the house of God?",
+  "choices": [
+   "They rejoiced",
+   "They wept sore",
+   "They were silent",
+   "They were angry"
+  ],
+  "answer": 1,
+  "explanation": "They lifted up their voices, and wept sore.",
+  "ref": "Judges 21:2"
+ },
+ {
+  "id": "judges-21-e-03",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people build the next morning?",
+  "choices": [
+   "A wall",
+   "A tent",
+   "An altar",
+   "A tower"
+  ],
+  "answer": 2,
+  "explanation": "The people rose early, and built there an altar, and offered burnt offerings and peace offerings.",
+  "ref": "Judges 21:4"
+ },
+ {
+  "id": "judges-21-e-04",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people lament that Israel now lacked?",
+  "choices": [
+   "A king",
+   "A judge",
+   "A priest",
+   "One tribe"
+  ],
+  "answer": 3,
+  "explanation": "They said, why is this come to pass, that there should be to day one tribe lacking in Israel?",
+  "ref": "Judges 21:3"
+ },
+ {
+  "id": "judges-21-e-05",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What oath was made against anyone who did not come up to Mizpeh?",
+  "choices": [
+   "He shall surely be put to death",
+   "He shall be fined",
+   "He shall be exiled",
+   "He shall be silent"
+  ],
+  "answer": 0,
+  "explanation": "They had made a great oath concerning him that came not up, He shall surely be put to death.",
+  "ref": "Judges 21:5"
+ },
+ {
+  "id": "judges-21-e-06",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many young virgins were found at Jabesh-gilead?",
+  "choices": [
+   "Six hundred",
+   "Four hundred",
+   "Twelve",
+   "Seventy"
+  ],
+  "answer": 1,
+  "explanation": "They found among the inhabitants of Jabesh-gilead four hundred young virgins.",
+  "ref": "Judges 21:12"
+ },
+ {
+  "id": "judges-21-e-07",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which camp did they bring the young virgins?",
+  "choices": [
+   "Mizpeh",
+   "Gibeah",
+   "Shiloh",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "They brought them unto the camp to Shiloh, which is in the land of Canaan.",
+  "ref": "Judges 21:12"
+ },
+ {
+  "id": "judges-21-e-08",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where were the six hundred Benjamites at this time?",
+  "choices": [
+   "In Gibeah",
+   "In Mizpeh",
+   "In Jabesh",
+   "In the rock Rimmon"
+  ],
+  "answer": 3,
+  "explanation": "The whole congregation sent to the children of Benjamin that were in the rock Rimmon.",
+  "ref": "Judges 21:13"
+ },
+ {
+  "id": "judges-21-e-09",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel say Benjamin must have so a tribe is not destroyed?",
+  "choices": [
+   "An inheritance",
+   "A king",
+   "A temple",
+   "A treaty"
+  ],
+  "answer": 0,
+  "explanation": "They said, There must be an inheritance for them that be escaped of Benjamin.",
+  "ref": "Judges 21:17"
+ },
+ {
+  "id": "judges-21-e-10",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Benjamites do with the cities after they got wives?",
+  "choices": [
+   "Burned them",
+   "Repaired them and dwelt in them",
+   "Left them empty",
+   "Gave them to Judah"
+  ],
+  "answer": 1,
+  "explanation": "They returned unto their inheritance, and repaired the cities, and dwelt in them.",
+  "ref": "Judges 21:23"
+ },
+ {
+  "id": "judges-21-m-01",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose people came not to the camp at Mizpeh?",
+  "choices": [
+   "Shiloh",
+   "Dan",
+   "Jabesh-gilead",
+   "Jericho"
+  ],
+  "answer": 2,
+  "explanation": "There came none to the camp from Jabesh-gilead to the assembly.",
+  "ref": "Judges 21:8"
+ },
+ {
+  "id": "judges-21-m-02",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many valiant men did the congregation send to Jabesh-gilead?",
+  "choices": [
+   "Four hundred",
+   "Six hundred",
+   "Twenty-five thousand",
+   "Twelve thousand"
+  ],
+  "answer": 3,
+  "explanation": "The congregation sent thither twelve thousand men of the valiantest.",
+  "ref": "Judges 21:10"
+ },
+ {
+  "id": "judges-21-m-03",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the congregation command to be done at Jabesh-gilead?",
+  "choices": [
+   "Utterly destroy every male and every woman who knew a man",
+   "Take silver",
+   "Spare all",
+   "Take prisoners to Mizpeh"
+  ],
+  "answer": 0,
+  "explanation": "They said, Ye shall utterly destroy every male, and every woman that hath lain by man.",
+  "ref": "Judges 21:11"
+ },
+ {
+  "id": "judges-21-m-04",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the congregation call to Benjamin in the rock Rimmon?",
+  "choices": [
+   "With a war cry",
+   "Peaceably",
+   "By night",
+   "With a trumpet"
+  ],
+  "answer": 1,
+  "explanation": "They sent some to speak to the children of Benjamin, and to call peaceably unto them.",
+  "ref": "Judges 21:13"
+ },
+ {
+  "id": "judges-21-m-05",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Were the wives from Jabesh-gilead enough for Benjamin?",
+  "choices": [
+   "Yes, exactly",
+   "There were too many",
+   "No, they sufficed them not",
+   "Benjamin refused them"
+  ],
+  "answer": 2,
+  "explanation": "They gave them wives which they had saved alive, and yet so they sufficed them not.",
+  "ref": "Judges 21:14"
+ },
+ {
+  "id": "judges-21-m-06",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people repent for Benjamin?",
+  "choices": [
+   "Benjamin had asked",
+   "They saw the ark",
+   "They lost a battle",
+   "The LORD had made a breach in the tribes"
+  ],
+  "answer": 3,
+  "explanation": "The people repented them for Benjamin, because the LORD had made a breach in the tribes of Israel.",
+  "ref": "Judges 21:15"
+ },
+ {
+  "id": "judges-21-m-07",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the elders ask about the Benjamites who remained?",
+  "choices": [
+   "How shall we do for wives for them?",
+   "Who shall be king?",
+   "Where is Shiloh?",
+   "Who will lead them?"
+  ],
+  "answer": 0,
+  "explanation": "The elders said, How shall we do for wives for them that remain, seeing the women are destroyed out of Benjamin?",
+  "ref": "Judges 21:16"
+ },
+ {
+  "id": "judges-21-m-08",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What curse did Israel swear against anyone who gave a wife to Benjamin?",
+  "choices": [
+   "He shall be stoned",
+   "Cursed be he that giveth a wife",
+   "He shall be banished",
+   "He shall be poor"
+  ],
+  "answer": 1,
+  "explanation": "They said, Cursed be he that giveth a wife to Benjamin.",
+  "ref": "Judges 21:18"
+ },
+ {
+  "id": "judges-21-m-09",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What feast was kept yearly at Shiloh?",
+  "choices": [
+   "A feast of weeks",
+   "A feast of lots",
+   "A feast of the LORD",
+   "A feast of lights"
+  ],
+  "answer": 2,
+  "explanation": "There is a feast of the LORD in Shiloh yearly.",
+  "ref": "Judges 21:19"
+ },
+ {
+  "id": "judges-21-m-10",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Benjamin's men lie in wait?",
+  "choices": [
+   "In the wilderness",
+   "On the highway",
+   "In the rock",
+   "In the vineyards"
+  ],
+  "answer": 3,
+  "explanation": "They commanded them, Go and lie in wait in the vineyards.",
+  "ref": "Judges 21:20"
+ },
+ {
+  "id": "judges-21-m-11",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the daughters of Shiloh doing when the Benjamites came out?",
+  "choices": [
+   "Dancing in dances",
+   "Gleaning",
+   "Praying",
+   "Harvesting"
+  ],
+  "answer": 0,
+  "explanation": "If the daughters of Shiloh come out to dance in dances, then come ye out of the vineyards.",
+  "ref": "Judges 21:21"
+ },
+ {
+  "id": "judges-21-m-12",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many wives was each Benjamite to catch?",
+  "choices": [
+   "Two wives",
+   "Every man his wife",
+   "Ten wives",
+   "Four wives"
+  ],
+  "answer": 1,
+  "explanation": "Catch you every man his wife of the daughters of Shiloh.",
+  "ref": "Judges 21:21"
+ },
+ {
+  "id": "judges-21-m-13",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the elders say they would answer the fathers who complained?",
+  "choices": [
+   "They deserved it",
+   "It was the LORD's will",
+   "Be favourable unto them for our sakes",
+   "Fight for them"
+  ],
+  "answer": 2,
+  "explanation": "We will say, Be favourable unto them for our sakes.",
+  "ref": "Judges 21:22"
+ },
+ {
+  "id": "judges-21-m-14",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the Benjamites take wives, according to their number?",
+  "choices": [
+   "By buying",
+   "By lot",
+   "By treaty",
+   "Of them that danced"
+  ],
+  "answer": 3,
+  "explanation": "The children of Benjamin took them wives, according to their number, of them that danced, whom they caught.",
+  "ref": "Judges 21:23"
+ },
+ {
+  "id": "judges-21-m-15",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Israel go after the Benjamites took wives?",
+  "choices": [
+   "Every man to his tribe and inheritance",
+   "To Shiloh",
+   "To Mizpeh",
+   "To Jericho"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel departed thence, every man to his tribe and to his family.",
+  "ref": "Judges 21:24"
+ },
+ {
+  "id": "judges-21-h-01",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what side of Bethel was the feast place at Shiloh?",
+  "choices": [
+   "South",
+   "North",
+   "East",
+   "West"
+  ],
+  "answer": 1,
+  "explanation": "The feast place was on the north side of Bethel.",
+  "ref": "Judges 21:19"
+ },
+ {
+  "id": "judges-21-h-02",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which side of the highway from Bethel to Shechem was the place?",
+  "choices": [
+   "West",
+   "North",
+   "East",
+   "South"
+  ],
+  "answer": 2,
+  "explanation": "It was on the east side of the highway that goeth up from Bethel to Shechem.",
+  "ref": "Judges 21:19"
+ },
+ {
+  "id": "judges-21-h-03",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "South of which place was the feast site at Shiloh?",
+  "choices": [
+   "Shechem",
+   "Gibeah",
+   "Mizpeh",
+   "Lebonah"
+  ],
+  "answer": 3,
+  "explanation": "It was on the south of Lebonah.",
+  "ref": "Judges 21:19"
+ },
+ {
+  "id": "judges-21-h-04",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Israel say they were not guilty of breaking the oath?",
+  "choices": [
+   "They had not given the daughters",
+   "The LORD commanded it",
+   "Benjamin was not guilty",
+   "Israel had won the war"
+  ],
+  "answer": 0,
+  "explanation": "The elders said, ye did not give unto them at this time, that ye should be guilty.",
+  "ref": "Judges 21:22"
+ },
+ {
+  "id": "judges-21-h-05",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why would the fathers' complaint be answered kindly?",
+  "choices": [
+   "They broke a vow",
+   "Each man had not been reserved a wife in the war",
+   "Shiloh owed Benjamin",
+   "The LORD said so"
+  ],
+  "answer": 1,
+  "explanation": "We will say, we reserved not to each man his wife in the war.",
+  "ref": "Judges 21:22"
+ },
+ {
+  "id": "judges-21-h-06",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the congregation say to the twelve thousand about women and children at Jabesh?",
+  "choices": [
+   "Spare them",
+   "Bring them to Mizpeh",
+   "Smite them with the edge of the sword",
+   "Take only the men"
+  ],
+  "answer": 2,
+  "explanation": "Go and smite the inhabitants with the edge of the sword, with the women and the children.",
+  "ref": "Judges 21:10"
+ },
+ {
+  "id": "judges-21-h-07",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the numbers of the people confirmed that Jabesh-gilead was absent?",
+  "choices": [
+   "The elders told them",
+   "A priest said so",
+   "They saw empty fields",
+   "The people were numbered"
+  ],
+  "answer": 3,
+  "explanation": "The people were numbered, and there were none of the inhabitants of Jabesh-gilead there.",
+  "ref": "Judges 21:9"
+ },
+ {
+  "id": "judges-21-h-08",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people do before lamenting that one tribe was lacking?",
+  "choices": [
+   "Abode till even before God",
+   "Went to war",
+   "Fasted forty days",
+   "Sent spies"
+  ],
+  "answer": 0,
+  "explanation": "The people came to the house of God, and abode there till even before God, and lifted up their voices.",
+  "ref": "Judges 21:2"
+ },
+ {
+  "id": "judges-21-h-09",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people say was cut off from Israel that day?",
+  "choices": [
+   "A king",
+   "One tribe",
+   "The priests",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "They said, There is one tribe cut off from Israel this day.",
+  "ref": "Judges 21:6"
+ },
+ {
+  "id": "judges-21-h-10",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Benjamites do after catching their wives?",
+  "choices": [
+   "Returned to Shiloh",
+   "Went to Jabesh",
+   "Went to the land of Benjamin",
+   "Built an altar"
+  ],
+  "answer": 2,
+  "explanation": "They caught them wives and went to the land of Benjamin.",
+  "ref": "Judges 21:21"
+ },
+ {
+  "id": "judges-21-h-12",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did the people say they swore by when refusing daughters?",
+  "choices": [
+   "The LORD",
+   "Phinehas",
+   "Their fathers",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "They said, seeing we have sworn by the LORD that we will not give them of our daughters to wives.",
+  "ref": "Judges 21:7"
+ },
+ {
+  "id": "judges-21-h-14",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the elders say Israel could not do to get wives for Benjamin?",
+  "choices": [
+   "Fight again",
+   "Go to Shiloh",
+   "Give them their own daughters",
+   "Visit the vineyards"
+  ],
+  "answer": 2,
+  "explanation": "They said, Howbeit we may not give them wives of our daughters.",
+  "ref": "Judges 21:18"
+ },
+ {
+  "id": "judges-21-h-16",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To which tribe had Israel sworn not to give daughters?",
+  "choices": [
+   "Benjamin",
+   "Judah",
+   "Dan",
+   "Ephraim"
+  ],
+  "answer": 0,
+  "explanation": "The men of Israel sware, There shall not any of us give his daughter unto Benjamin to wife.",
+  "ref": "Judges 21:1"
+ },
+ {
+  "id": "judges-21-h-17",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of the four hundred young virgins found at Jabesh-gilead?",
+  "choices": [
+   "They had known no man",
+   "They were widows",
+   "They were of Benjamin",
+   "They were sisters"
+  ],
+  "answer": 0,
+  "explanation": "They were young virgins, that had known no man by lying with any male.",
+  "ref": "Judges 21:12"
+ },
+ {
+  "id": "judges-21-h-18",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did the people cry, Why is this come to pass in Israel?",
+  "choices": [
+   "The LORD God of Israel",
+   "The elders",
+   "Phinehas",
+   "The Levite"
+  ],
+  "answer": 0,
+  "explanation": "They said, O LORD God of Israel, why is this come to pass in Israel?",
+  "ref": "Judges 21:3"
  }
 ]
