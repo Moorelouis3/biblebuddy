@@ -17376,6 +17376,646 @@
   "ref": "1 Samuel 25:39–42"
  },
  {
+  "id": "1-samuel-25-e-01",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Nabal have his possessions and shear his sheep?",
+  "choices": [
+   "Hebron",
+   "Carmel",
+   "Ziph",
+   "Gibeah"
+  ],
+  "answer": 1,
+  "explanation": "There was a man in Maon, whose possessions were in Carmel; and he was shearing his sheep in Carmel.",
+  "ref": "1 Samuel 25:2"
+ },
+ {
+  "id": "1-samuel-25-e-02",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is Abigail described?",
+  "choices": [
+   "Of good understanding and beautiful",
+   "Proud and quick-tempered",
+   "Quiet and weak",
+   "Rich and idle"
+  ],
+  "answer": 0,
+  "explanation": "She was a woman of good understanding, and of a beautiful countenance.",
+  "ref": "1 Samuel 25:3"
+ },
+ {
+  "id": "1-samuel-25-e-03",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many young men did David send to Nabal?",
+  "choices": [
+   "Two",
+   "Four",
+   "Twelve",
+   "Ten"
+  ],
+  "answer": 3,
+  "explanation": "David sent out ten young men.",
+  "ref": "1 Samuel 25:5"
+ },
+ {
+  "id": "1-samuel-25-e-04",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David's young men ask Nabal to give?",
+  "choices": [
+   "Ten sheep",
+   "A hundred loaves",
+   "Whatsoever came to his hand",
+   "Water and wine only"
+  ],
+  "answer": 2,
+  "explanation": "Give, I pray thee, whatsoever cometh to thine hand unto thy servants, and to thy son David.",
+  "ref": "1 Samuel 25:8"
+ },
+ {
+  "id": "1-samuel-25-e-05",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Nabal answer David's servants?",
+  "choices": [
+   "Welcome, servants of David",
+   "Who is David?",
+   "Come back tomorrow",
+   "Take what you need"
+  ],
+  "answer": 1,
+  "explanation": "Nabal answered David's servants, and said, Who is David? and who is the son of Jesse?",
+  "ref": "1 Samuel 25:10"
+ },
+ {
+  "id": "1-samuel-25-e-06",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "About how many men went up after David with swords?",
+  "choices": [
+   "Four hundred",
+   "Two hundred",
+   "Six hundred",
+   "One hundred"
+  ],
+  "answer": 0,
+  "explanation": "There went up after David about four hundred men; and two hundred abode by the stuff.",
+  "ref": "1 Samuel 25:13"
+ },
+ {
+  "id": "1-samuel-25-e-07",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Abigail what Nabal had done?",
+  "choices": [
+   "Samuel",
+   "David's captain",
+   "Her father",
+   "One of the young men"
+  ],
+  "answer": 3,
+  "explanation": "One of the young men told Abigail, Nabal's wife.",
+  "ref": "1 Samuel 25:14"
+ },
+ {
+  "id": "1-samuel-25-e-08",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Abigail bow before David?",
+  "choices": [
+   "On one knee",
+   "With a nod",
+   "On her face to the ground",
+   "With her hands raised"
+  ],
+  "answer": 2,
+  "explanation": "She fell before David on her face, and bowed herself to the ground.",
+  "ref": "1 Samuel 25:23"
+ },
+ {
+  "id": "1-samuel-25-e-09",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say to Abigail when he received her gift?",
+  "choices": [
+   "Stay with my men",
+   "Go up in peace to thine house",
+   "Return to Nabal and rebuke him",
+   "Come to Carmel"
+  ],
+  "answer": 1,
+  "explanation": "David said, Go up in peace to thine house; see, I have hearkened to thy voice.",
+  "ref": "1 Samuel 25:35"
+ },
+ {
+  "id": "1-samuel-25-e-10",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who struck Nabal so that he died?",
+  "choices": [
+   "The LORD",
+   "David",
+   "Abigail",
+   "A servant"
+  ],
+  "answer": 0,
+  "explanation": "The LORD smote Nabal, that he died.",
+  "ref": "1 Samuel 25:38"
+ },
+ {
+  "id": "1-samuel-25-m-01",
+  "chapter": 25,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Samuel buried?",
+  "choices": [
+   "At Gibeah",
+   "At Shiloh",
+   "At Bethlehem",
+   "In his house at Ramah"
+  ],
+  "answer": 3,
+  "explanation": "All the Israelites buried him in his house at Ramah.",
+  "ref": "1 Samuel 25:1"
+ },
+ {
+  "id": "1-samuel-25-m-02",
+  "chapter": 25,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did David go down after Samuel died?",
+  "choices": [
+   "The wilderness of Maon",
+   "The wilderness of Ziph",
+   "The wilderness of Paran",
+   "Gath"
+  ],
+  "answer": 2,
+  "explanation": "David arose, and went down to the wilderness of Paran.",
+  "ref": "1 Samuel 25:1"
+ },
+ {
+  "id": "1-samuel-25-m-03",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many sheep did Nabal have?",
+  "choices": [
+   "Five hundred",
+   "Three thousand",
+   "One thousand",
+   "Ten thousand"
+  ],
+  "answer": 1,
+  "explanation": "He had three thousand sheep, and a thousand goats.",
+  "ref": "1 Samuel 25:2"
+ },
+ {
+  "id": "1-samuel-25-m-04",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of whose house was Nabal?",
+  "choices": [
+   "Caleb",
+   "Judah",
+   "Jesse",
+   "Benjamin"
+  ],
+  "answer": 0,
+  "explanation": "He was of the house of Caleb.",
+  "ref": "1 Samuel 25:3"
+ },
+ {
+  "id": "1-samuel-25-m-05",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What greeting did David tell his men to give Nabal?",
+  "choices": [
+   "God save the king",
+   "The LORD be with thee",
+   "Hail, master of Carmel",
+   "Peace be to thee, thy house and all thou hast"
+  ],
+  "answer": 3,
+  "explanation": "Peace be both to thee, and peace be to thine house, and peace be unto all that thou hast.",
+  "ref": "1 Samuel 25:6"
+ },
+ {
+  "id": "1-samuel-25-m-06",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say about Nabal's shepherds?",
+  "choices": [
+   "They were fed by David",
+   "They joined David's men",
+   "They were not hurt and nothing was missing",
+   "They were afraid"
+  ],
+  "answer": 2,
+  "explanation": "We hurt them not, neither was there ought missing unto them.",
+  "ref": "1 Samuel 25:7"
+ },
+ {
+  "id": "1-samuel-25-m-07",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nabal say about servants nowadays?",
+  "choices": [
+   "Many wait on kings",
+   "Many break away from their master",
+   "Many seek bread",
+   "Many flee to Moab"
+  ],
+  "answer": 1,
+  "explanation": "There be many servants now a days that break away every man from his master.",
+  "ref": "1 Samuel 25:10"
+ },
+ {
+  "id": "1-samuel-25-m-08",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nabal refuse to give to men he did not know?",
+  "choices": [
+   "His bread, water and meat for the shearers",
+   "His sheep",
+   "His gold",
+   "His land"
+  ],
+  "answer": 0,
+  "explanation": "Shall I then take my bread, and my water, and my flesh that I have killed for my shearers, and give it unto men, whom I know not?",
+  "ref": "1 Samuel 25:11"
+ },
+ {
+  "id": "1-samuel-25-m-09",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David tell his men to do?",
+  "choices": [
+   "Return to the cave",
+   "Go to Saul",
+   "Wait for the morning",
+   "Gird on every man his sword"
+  ],
+  "answer": 3,
+  "explanation": "Gird ye on every man his sword.",
+  "ref": "1 Samuel 25:13"
+ },
+ {
+  "id": "1-samuel-25-m-10",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the servant say David's men had been to them?",
+  "choices": [
+   "A fire in the dark",
+   "A shield in battle",
+   "A wall by night and day",
+   "A guard at the gate"
+  ],
+  "answer": 2,
+  "explanation": "They were a wall unto us both by night and day.",
+  "ref": "1 Samuel 25:16"
+ },
+ {
+  "id": "1-samuel-25-m-11",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the servant call Nabal?",
+  "choices": [
+   "A son of Caleb",
+   "A son of Belial",
+   "A man of Carmel",
+   "A fool of Maon"
+  ],
+  "answer": 1,
+  "explanation": "He is such a son of Belial, that a man cannot speak to him.",
+  "ref": "1 Samuel 25:17"
+ },
+ {
+  "id": "1-samuel-25-m-12",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Abigail not tell about her journey?",
+  "choices": [
+   "Nabal",
+   "David",
+   "Her servants",
+   "Her mother"
+  ],
+  "answer": 0,
+  "explanation": "She told not her husband Nabal.",
+  "ref": "1 Samuel 25:19"
+ },
+ {
+  "id": "1-samuel-25-m-13",
+  "chapter": 25,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Abigail meet David?",
+  "choices": [
+   "At the gate of Carmel",
+   "At Maon",
+   "In the wood of Ziph",
+   "By the covert of the hill"
+  ],
+  "answer": 3,
+  "explanation": "She came down by the covert of the hill, and David and his men came down against her.",
+  "ref": "1 Samuel 25:20"
+ },
+ {
+  "id": "1-samuel-25-m-14",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abigail say about Nabal's name?",
+  "choices": [
+   "He is a fool for sheep",
+   "His name means Jesse",
+   "Folly is with him",
+   "He is called Caleb"
+  ],
+  "answer": 2,
+  "explanation": "As his name is, so is he; Nabal is his name, and folly is with him.",
+  "ref": "1 Samuel 25:25"
+ },
+ {
+  "id": "1-samuel-25-m-15",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abigail ask to be upon her?",
+  "choices": [
+   "The blessing",
+   "The iniquity",
+   "The sword",
+   "The curse of the people"
+  ],
+  "answer": 1,
+  "explanation": "Upon me, my lord, upon me let this iniquity be.",
+  "ref": "1 Samuel 25:24"
+ },
+ {
+  "id": "1-samuel-25-h-01",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many loaves did Abigail take?",
+  "choices": [
+   "Two hundred",
+   "Five",
+   "One hundred",
+   "Four hundred"
+  ],
+  "answer": 0,
+  "explanation": "Abigail made haste, and took two hundred loaves.",
+  "ref": "1 Samuel 25:18"
+ },
+ {
+  "id": "1-samuel-25-h-02",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sheep ready dressed did Abigail take?",
+  "choices": [
+   "Two",
+   "Ten",
+   "Twenty",
+   "Five"
+  ],
+  "answer": 3,
+  "explanation": "Five sheep ready dressed.",
+  "ref": "1 Samuel 25:18"
+ },
+ {
+  "id": "1-samuel-25-h-03",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many clusters of raisins did Abigail take?",
+  "choices": [
+   "Fifty",
+   "Two hundred",
+   "A hundred",
+   "Five"
+  ],
+  "answer": 2,
+  "explanation": "An hundred clusters of raisins, and two hundred cakes of figs.",
+  "ref": "1 Samuel 25:18"
+ },
+ {
+  "id": "1-samuel-25-h-04",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Nabal doing when Abigail returned home?",
+  "choices": [
+   "Counting his sheep",
+   "Holding a feast like a king's, very drunken",
+   "Mourning for his servants",
+   "Praying in his house"
+  ],
+  "answer": 1,
+  "explanation": "He held a feast in his house, like the feast of a king; and Nabal's heart was merry within him, for he was very drunken.",
+  "ref": "1 Samuel 25:36"
+ },
+ {
+  "id": "1-samuel-25-h-05",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Abigail tell Nabal what had happened?",
+  "choices": [
+   "In the morning, when the wine was gone out of him",
+   "That night at the feast",
+   "After ten days",
+   "When David arrived"
+  ],
+  "answer": 0,
+  "explanation": "In the morning, when the wine was gone out of Nabal, his wife had told him these things.",
+  "ref": "1 Samuel 25:37"
+ },
+ {
+  "id": "1-samuel-25-h-06",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long after did the LORD smite Nabal?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Forty days",
+   "About ten days"
+  ],
+  "answer": 3,
+  "explanation": "It came to pass about ten days after, that the LORD smote Nabal.",
+  "ref": "1 Samuel 25:38"
+ },
+ {
+  "id": "1-samuel-25-h-07",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abigail say should happen to David's enemies?",
+  "choices": [
+   "Be driven out",
+   "Be sold",
+   "Be as Nabal",
+   "Be as Saul"
+  ],
+  "answer": 2,
+  "explanation": "Let thine enemies, and they that seek evil to my lord, be as Nabal.",
+  "ref": "1 Samuel 25:26"
+ },
+ {
+  "id": "1-samuel-25-h-08",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abigail say would happen to the souls of David's enemies?",
+  "choices": [
+   "Be buried at Ramah",
+   "Be slung out as out of the middle of a sling",
+   "Be bound in the bundle of life",
+   "Be scattered like chaff"
+  ],
+  "answer": 1,
+  "explanation": "The souls of thine enemies, them shall he sling out, as out of the middle of a sling.",
+  "ref": "1 Samuel 25:29"
+ },
+ {
+  "id": "1-samuel-25-h-09",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abigail ask David to do when the LORD had dealt well with him?",
+  "choices": [
+   "Remember her",
+   "Make her queen",
+   "Pardon Nabal",
+   "Give her a house"
+  ],
+  "answer": 0,
+  "explanation": "When the LORD shall have dealt well with my lord, then remember thine handmaid.",
+  "ref": "1 Samuel 25:31"
+ },
+ {
+  "id": "1-samuel-25-h-10",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many damsels went with Abigail to become David's wife?",
+  "choices": [
+   "Two",
+   "Three",
+   "Seven",
+   "Five"
+  ],
+  "answer": 3,
+  "explanation": "Abigail rode upon an ass, with five damsels of hers that went after her.",
+  "ref": "1 Samuel 25:42"
+ },
+ {
+  "id": "1-samuel-25-h-11",
+  "chapter": 25,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Ahinoam, whom David also took, from?",
+  "choices": [
+   "Carmel",
+   "Gallim",
+   "Jezreel",
+   "Maon"
+  ],
+  "answer": 2,
+  "explanation": "David also took Ahinoam of Jezreel.",
+  "ref": "1 Samuel 25:43"
+ },
+ {
+  "id": "1-samuel-25-h-12",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom had Saul given Michal?",
+  "choices": [
+   "Abner",
+   "Phalti the son of Laish",
+   "Jonathan's friend",
+   "Ahinoam's brother"
+  ],
+  "answer": 1,
+  "explanation": "Saul had given Michal his daughter to Phalti the son of Laish, which was of Gallim.",
+  "ref": "1 Samuel 25:44"
+ },
+ {
+  "id": "1-samuel-25-h-13",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abigail say she would be to David's servants?",
+  "choices": [
+   "A servant to wash their feet",
+   "A cook for their meals",
+   "A shepherd for their sheep",
+   "A guide to Carmel"
+  ],
+  "answer": 0,
+  "explanation": "Let thine handmaid be a servant to wash the feet of the servants of my lord.",
+  "ref": "1 Samuel 25:41"
+ },
+ {
+  "id": "1-samuel-25-h-14",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abigail say the LORD would make for David?",
+  "choices": [
+   "A strong city",
+   "A great name",
+   "A royal crown",
+   "A sure house"
+  ],
+  "answer": 3,
+  "explanation": "The LORD will certainly make my lord a sure house.",
+  "ref": "1 Samuel 25:28"
+ },
+ {
+  "id": "1-samuel-25-h-15",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Abigail say the LORD had kept David from doing?",
+  "choices": [
+   "Going to Carmel",
+   "Fighting Saul",
+   "Coming to shed blood",
+   "Taking the flocks"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hath withholden thee from coming to shed blood, and from avenging thyself with thine own hand.",
+  "ref": "1 Samuel 25:26"
+ },
+ {
   "id": "old-1-samuel-26-1",
   "chapter": 26,
   "level": "beginner",
