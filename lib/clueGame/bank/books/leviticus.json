@@ -18128,6 +18128,646 @@
   "ref": "Leviticus 26:40–42"
  },
  {
+  "id": "leviticus-26-e-01",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD promise to set among Israel if they obeyed?",
+  "choices": [
+   "A king",
+   "My tabernacle",
+   "A walled city",
+   "A mighty army"
+  ],
+  "answer": 1,
+  "explanation": "God said, I will set my tabernacle among you.",
+  "ref": "Leviticus 26:11"
+ },
+ {
+  "id": "leviticus-26-e-02",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say Israel would be to Him if He walked among them?",
+  "choices": [
+   "My people",
+   "My priests",
+   "My armies",
+   "My judges"
+  ],
+  "answer": 0,
+  "explanation": "God said, I will walk among you, and will be your God, and ye shall be my people.",
+  "ref": "Leviticus 26:12"
+ },
+ {
+  "id": "leviticus-26-e-03",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "place",
+  "question": "Out of which land had the LORD brought Israel?",
+  "choices": [
+   "Canaan",
+   "Moab",
+   "Edom",
+   "Egypt"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said He brought them forth out of the land of Egypt.",
+  "ref": "Leviticus 26:13"
+ },
+ {
+  "id": "leviticus-26-e-04",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which mountain did the LORD give these statutes and laws?",
+  "choices": [
+   "Mount Carmel",
+   "Mount Hermon",
+   "Mount Sinai",
+   "Mount Nebo"
+  ],
+  "answer": 2,
+  "explanation": "These are the laws the LORD made between him and Israel in mount Sinai.",
+  "ref": "Leviticus 26:46"
+ },
+ {
+  "id": "leviticus-26-e-05",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "person",
+  "question": "By whose hand did the LORD give these laws to Israel?",
+  "choices": [
+   "Aaron",
+   "Moses",
+   "Joshua",
+   "Eleazar"
+  ],
+  "answer": 1,
+  "explanation": "The laws were made in mount Sinai by the hand of Moses.",
+  "ref": "Leviticus 26:46"
+ },
+ {
+  "id": "leviticus-26-e-06",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the land do while Israel was away in their enemies' land?",
+  "choices": [
+   "Enjoy her sabbaths",
+   "Grow wild grapes",
+   "Be given to Edom",
+   "Flood the valleys"
+  ],
+  "answer": 0,
+  "explanation": "Then shall the land rest, and enjoy her sabbaths.",
+  "ref": "Leviticus 26:34"
+ },
+ {
+  "id": "leviticus-26-e-07",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would God make of the cities of a disobedient Israel?",
+  "choices": [
+   "Fortresses",
+   "Cities of refuge",
+   "Markets",
+   "Waste"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said, I will make your cities waste.",
+  "ref": "Leviticus 26:31"
+ },
+ {
+  "id": "leviticus-26-e-08",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where would God scatter Israel if they would not obey?",
+  "choices": [
+   "Into the wilderness",
+   "Across the Jordan",
+   "Among the heathen",
+   "Into the mountains"
+  ],
+  "answer": 2,
+  "explanation": "The LORD said, I will scatter you among the heathen.",
+  "ref": "Leviticus 26:33"
+ },
+ {
+  "id": "leviticus-26-e-09",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would obedient Israel eat to the full in their land?",
+  "choices": [
+   "Honey",
+   "Bread",
+   "Fish",
+   "Figs"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said, Ye shall eat your bread to the full, and dwell in your land safely.",
+  "ref": "Leviticus 26:5"
+ },
+ {
+  "id": "leviticus-26-e-10",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would God rid out of the land if Israel obeyed?",
+  "choices": [
+   "Evil beasts",
+   "Thorns",
+   "Locusts",
+   "Fleas"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, I will rid evil beasts out of the land.",
+  "ref": "Leviticus 26:6"
+ },
+ {
+  "id": "leviticus-26-m-01",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The threshing would reach unto what, if Israel obeyed?",
+  "choices": [
+   "The Jubile",
+   "The new moon",
+   "The Day of Atonement",
+   "The vintage"
+  ],
+  "answer": 3,
+  "explanation": "Your threshing shall reach unto the vintage, and the vintage shall reach unto the sowing time.",
+  "ref": "Leviticus 26:5"
+ },
+ {
+  "id": "leviticus-26-m-02",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many of Israel would chase an hundred of their enemies?",
+  "choices": [
+   "Two",
+   "Ten",
+   "Five",
+   "Twenty"
+  ],
+  "answer": 2,
+  "explanation": "Five of you shall chase an hundred.",
+  "ref": "Leviticus 26:8"
+ },
+ {
+  "id": "leviticus-26-m-03",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would God make Israel's heaven like if they stayed stubborn?",
+  "choices": [
+   "Brass",
+   "Iron",
+   "Silver",
+   "Stone"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said, I will make your heaven as iron, and your earth as brass.",
+  "ref": "Leviticus 26:19"
+ },
+ {
+  "id": "leviticus-26-m-04",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which was appointed over Israel along with terror and the burning ague?",
+  "choices": [
+   "Consumption",
+   "Leprosy",
+   "Famine",
+   "Blindness"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said, I will appoint over you terror, consumption, and the burning ague.",
+  "ref": "Leviticus 26:16"
+ },
+ {
+  "id": "leviticus-26-m-05",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who would eat the seed Israel sowed in vain?",
+  "choices": [
+   "Wild beasts",
+   "Locusts",
+   "Their neighbours",
+   "Their enemies"
+  ],
+  "answer": 3,
+  "explanation": "They would sow their seed in vain, for their enemies shall eat it.",
+  "ref": "Leviticus 26:16"
+ },
+ {
+  "id": "leviticus-26-m-06",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would those who hated disobedient Israel do to them?",
+  "choices": [
+   "Feed them",
+   "Join them",
+   "Reign over them",
+   "Marry them"
+  ],
+  "answer": 2,
+  "explanation": "They that hate you shall reign over you.",
+  "ref": "Leviticus 26:17"
+ },
+ {
+  "id": "leviticus-26-m-07",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Israel do when none pursued them?",
+  "choices": [
+   "Fight",
+   "Flee",
+   "Pray",
+   "Sleep"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall flee when none pursueth.",
+  "ref": "Leviticus 26:17"
+ },
+ {
+  "id": "leviticus-26-m-08",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would wild beasts rob from Israel?",
+  "choices": [
+   "Their children",
+   "Their gold",
+   "Their wells",
+   "Their tents"
+  ],
+  "answer": 0,
+  "explanation": "Wild beasts shall rob you of your children, and destroy your cattle.",
+  "ref": "Leviticus 26:22"
+ },
+ {
+  "id": "leviticus-26-m-09",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would God send among Israel when they gathered within their cities?",
+  "choices": [
+   "Darkness",
+   "Fire",
+   "Hail",
+   "Pestilence"
+  ],
+  "answer": 3,
+  "explanation": "When ye are gathered together within your cities, I will send the pestilence among you.",
+  "ref": "Leviticus 26:25"
+ },
+ {
+  "id": "leviticus-26-m-10",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the sword God brought upon them avenge?",
+  "choices": [
+   "The blood of the prophets",
+   "The pride of Pharaoh",
+   "The quarrel of my covenant",
+   "The firstborn of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "I will bring a sword upon you, that shall avenge the quarrel of my covenant.",
+  "ref": "Leviticus 26:25"
+ },
+ {
+  "id": "leviticus-26-m-11",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Israel have no power to do before their enemies?",
+  "choices": [
+   "Pray",
+   "Stand",
+   "Build",
+   "Return"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall have no power to stand before your enemies.",
+  "ref": "Leviticus 26:37"
+ },
+ {
+  "id": "leviticus-26-m-12",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What small sound would chase the survivors in their enemies' lands?",
+  "choices": [
+   "A shaken leaf",
+   "A distant trumpet",
+   "Falling rain",
+   "Wind in the cedars"
+  ],
+  "answer": 0,
+  "explanation": "The sound of a shaken leaf shall chase them.",
+  "ref": "Leviticus 26:36"
+ },
+ {
+  "id": "leviticus-26-m-13",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the land lie desolate and rest?",
+  "choices": [
+   "Enemies had burned it",
+   "The rain had stopped",
+   "The people had left it",
+   "It had not rested in Israel's sabbaths"
+  ],
+  "answer": 3,
+  "explanation": "It shall rest because it did not rest in your sabbaths, when ye dwelt upon it.",
+  "ref": "Leviticus 26:35"
+ },
+ {
+  "id": "leviticus-26-m-14",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of hearts must be humbled for God to remember His covenant?",
+  "choices": [
+   "Proud hearts",
+   "Broken hearts",
+   "Uncircumcised hearts",
+   "Hardened hearts"
+  ],
+  "answer": 2,
+  "explanation": "If their uncircumcised hearts be humbled, then God would remember His covenant.",
+  "ref": "Leviticus 26:41"
+ },
+ {
+  "id": "leviticus-26-m-15",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Even in the land of their enemies, what did God say He would not do?",
+  "choices": [
+   "Send them rain",
+   "Cast them away",
+   "Make them kings",
+   "Give them cities"
+  ],
+  "answer": 1,
+  "explanation": "I will not cast them away, neither will I abhor them, to destroy them utterly.",
+  "ref": "Leviticus 26:44"
+ },
+ {
+  "id": "leviticus-26-h-01",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of Israel would put ten thousand of their enemies to flight?",
+  "choices": [
+   "An hundred",
+   "Five",
+   "Fifty",
+   "A thousand"
+  ],
+  "answer": 0,
+  "explanation": "An hundred of you shall put ten thousand to flight.",
+  "ref": "Leviticus 26:8"
+ },
+ {
+  "id": "leviticus-26-h-02",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many women would bake Israel's bread in one oven?",
+  "choices": [
+   "Two",
+   "Five",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 3,
+  "explanation": "When God had broken the staff of their bread, ten women would bake bread in one oven.",
+  "ref": "Leviticus 26:26"
+ },
+ {
+  "id": "leviticus-26-h-03",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Israel would bring forth the old because of the what?",
+  "choices": [
+   "Harvest",
+   "Feast",
+   "New",
+   "Rain"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall eat old store, and bring forth the old because of the new.",
+  "ref": "Leviticus 26:10"
+ },
+ {
+  "id": "leviticus-26-h-04",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If Israel stayed stubborn, the earth would be made like what?",
+  "choices": [
+   "Iron",
+   "Brass",
+   "Dust",
+   "Clay"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said, I will make your heaven as iron, and your earth as brass.",
+  "ref": "Leviticus 26:19"
+ },
+ {
+  "id": "leviticus-26-h-05",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Upon what would God cast the carcases of Israel's dead?",
+  "choices": [
+   "The carcases of their idols",
+   "The altars of Baal",
+   "The high hills",
+   "The walls of their cities"
+  ],
+  "answer": 0,
+  "explanation": "I will cast your carcases upon the carcases of your idols.",
+  "ref": "Leviticus 26:30"
+ },
+ {
+  "id": "leviticus-26-h-06",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Along with His covenant with Abraham, what else would God remember?",
+  "choices": [
+   "The ark",
+   "The wilderness",
+   "Their kings",
+   "The land"
+  ],
+  "answer": 3,
+  "explanation": "Then will I remember my covenant with Jacob, Isaac and Abraham; and I will remember the land.",
+  "ref": "Leviticus 26:42"
+ },
+ {
+  "id": "leviticus-26-h-07",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had God broken when He brought Israel out of Egypt?",
+  "choices": [
+   "The gates of Pharaoh",
+   "The Red Sea walls",
+   "The bands of their yoke",
+   "The chains of the prison"
+  ],
+  "answer": 2,
+  "explanation": "I have broken the bands of your yoke, and made you go upright.",
+  "ref": "Leviticus 26:13"
+ },
+ {
+  "id": "leviticus-26-h-08",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would God break so that Israel ate and was not satisfied?",
+  "choices": [
+   "The jars of oil",
+   "The staff of their bread",
+   "The wells",
+   "The ovens"
+  ],
+  "answer": 1,
+  "explanation": "When I have broken the staff of your bread, ye shall eat, and not be satisfied.",
+  "ref": "Leviticus 26:26"
+ },
+ {
+  "id": "leviticus-26-h-09",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How would Israel's bread be delivered to them after the staff of it was broken?",
+  "choices": [
+   "By weight",
+   "By measure",
+   "In baskets",
+   "By the omer"
+  ],
+  "answer": 0,
+  "explanation": "They shall deliver you your bread again by weight.",
+  "ref": "Leviticus 26:26"
+ },
+ {
+  "id": "leviticus-26-h-10",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How would the enemies who lived in Israel's desolate land feel about it?",
+  "choices": [
+   "Glad",
+   "Afraid",
+   "Ashamed",
+   "Astonished"
+  ],
+  "answer": 3,
+  "explanation": "Your enemies which dwell therein shall be astonished at it.",
+  "ref": "Leviticus 26:32"
+ },
+ {
+  "id": "leviticus-26-h-11",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If Israel obeyed, what did God say His soul would not do to them?",
+  "choices": [
+   "Forget them",
+   "Leave them",
+   "Abhor them",
+   "Judge them"
+  ],
+  "answer": 2,
+  "explanation": "I will set my tabernacle among you: and my soul shall not abhor you.",
+  "ref": "Leviticus 26:11"
+ },
+ {
+  "id": "leviticus-26-h-12",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would God break if Israel would still not hearken?",
+  "choices": [
+   "The tablets of stone",
+   "The pride of their power",
+   "The ark of the covenant",
+   "The walls of Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "I will break the pride of your power.",
+  "ref": "Leviticus 26:19"
+ },
+ {
+  "id": "leviticus-26-h-13",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would God send into the hearts of survivors in their enemies' lands?",
+  "choices": [
+   "Faintness",
+   "Joy",
+   "Anger",
+   "Wisdom"
+  ],
+  "answer": 0,
+  "explanation": "I will send a faintness into their hearts in the lands of their enemies.",
+  "ref": "Leviticus 26:36"
+ },
+ {
+  "id": "leviticus-26-h-14",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be desolate when wild beasts made Israel few in number?",
+  "choices": [
+   "Their granaries",
+   "Their wells",
+   "Their gardens",
+   "Their high ways"
+  ],
+  "answer": 3,
+  "explanation": "Your high ways shall be desolate.",
+  "ref": "Leviticus 26:22"
+ },
+ {
+  "id": "leviticus-26-h-15",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides their own iniquity, whose iniquity would survivors pine away in?",
+  "choices": [
+   "Their kings'",
+   "Their priests'",
+   "Their fathers'",
+   "Their neighbours'"
+  ],
+  "answer": 2,
+  "explanation": "They shall pine away in their enemies' lands, and in the iniquities of their fathers.",
+  "ref": "Leviticus 26:39"
+ },
+ {
   "id": "old-leviticus-27-1",
   "chapter": 27,
   "level": "beginner",
