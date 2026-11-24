@@ -5840,6 +5840,646 @@
   "ref": "1 Samuel 9:15–16"
  },
  {
+  "id": "1-samuel-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Saul's father?",
+  "choices": [
+   "Kish",
+   "Abner",
+   "Samuel",
+   "Abiel"
+  ],
+  "answer": 0,
+  "explanation": "There was a man of Benjamin, whose name was Kish; and he had a son, whose name was Saul.",
+  "ref": "1 Samuel 9:1–2"
+ },
+ {
+  "id": "1-samuel-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went with Saul to look for the asses?",
+  "choices": [
+   "Jonathan",
+   "One of the servants",
+   "Samuel",
+   "His brother"
+  ],
+  "answer": 1,
+  "explanation": "Kish said to Saul his son, Take now one of the servants with thee, and arise, go seek the asses.",
+  "ref": "1 Samuel 9:3"
+ },
+ {
+  "id": "1-samuel-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was a prophet called beforetime in Israel?",
+  "choices": [
+   "A judge",
+   "A priest",
+   "A seer",
+   "A watchman"
+  ],
+  "answer": 2,
+  "explanation": "He that is now called a Prophet was beforetime called a Seer.",
+  "ref": "1 Samuel 9:9"
+ },
+ {
+  "id": "1-samuel-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Saul and his servant meet going up the hill to the city?",
+  "choices": [
+   "Shepherds",
+   "Priests",
+   "Philistine soldiers",
+   "Young maidens drawing water"
+  ],
+  "answer": 3,
+  "explanation": "They found young maidens going out to draw water, and said unto them, Is the seer here?",
+  "ref": "1 Samuel 9:11"
+ },
+ {
+  "id": "1-samuel-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Samuel tell Saul about the lost asses?",
+  "choices": [
+   "They were found",
+   "They were stolen",
+   "They were sold",
+   "They were dead"
+  ],
+  "answer": 0,
+  "explanation": "As for thine asses that were lost three days ago, set not thy mind on them; for they are found.",
+  "ref": "1 Samuel 9:20"
+ },
+ {
+  "id": "1-samuel-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the cook set before Saul?",
+  "choices": [
+   "A whole lamb",
+   "The shoulder",
+   "Bread and wine",
+   "A loaf of bread"
+  ],
+  "answer": 1,
+  "explanation": "The cook took up the shoulder, and that which was upon it, and set it before Saul.",
+  "ref": "1 Samuel 9:24"
+ },
+ {
+  "id": "1-samuel-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Samuel talk with Saul after the meal?",
+  "choices": [
+   "In the gate",
+   "At the altar",
+   "On the top of the house",
+   "In the field"
+  ],
+  "answer": 2,
+  "explanation": "Samuel communed with Saul upon the top of the house.",
+  "ref": "1 Samuel 9:25"
+ },
+ {
+  "id": "1-samuel-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Saul, \"I am the seer\"?",
+  "choices": [
+   "The servant",
+   "Kish",
+   "The cook",
+   "Samuel"
+  ],
+  "answer": 3,
+  "explanation": "Samuel answered Saul, and said, I am the seer: go up before me unto the high place.",
+  "ref": "1 Samuel 9:19"
+ },
+ {
+  "id": "1-samuel-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Saul want to turn back at the land of Zuph?",
+  "choices": [
+   "His father might worry about them",
+   "He was sick",
+   "He was out of water",
+   "He was afraid of Philistines"
+  ],
+  "answer": 0,
+  "explanation": "Come, and let us return; lest my father leave caring for the asses, and take thought for us.",
+  "ref": "1 Samuel 9:5"
+ },
+ {
+  "id": "1-samuel-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the people go up to eat after Samuel blessed the sacrifice?",
+  "choices": [
+   "The gate",
+   "The high place",
+   "The house of Kish",
+   "Mizpeh"
+  ],
+  "answer": 1,
+  "explanation": "There is a sacrifice of the people to day in the high place; the people will not eat until he come.",
+  "ref": "1 Samuel 9:12–13"
+ },
+ {
+  "id": "1-samuel-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Saul say they had nothing to bring the man of God?",
+  "choices": [
+   "They were robbed",
+   "They lost their money",
+   "The bread was spent in their vessels",
+   "They had no animals"
+  ],
+  "answer": 2,
+  "explanation": "The bread is spent in our vessels, and there is not a present to bring to the man of God.",
+  "ref": "1 Samuel 9:7"
+ },
+ {
+  "id": "1-samuel-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the servant have to give to the man of God?",
+  "choices": [
+   "A shekel of gold",
+   "A loaf of bread",
+   "A lamb",
+   "The fourth part of a shekel of silver"
+  ],
+  "answer": 3,
+  "explanation": "I have here at hand the fourth part of a shekel of silver: that will I give to the man of God.",
+  "ref": "1 Samuel 9:8"
+ },
+ {
+  "id": "1-samuel-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the servant say about everything the man of God said?",
+  "choices": [
+   "It cometh surely to pass",
+   "It is often wrong",
+   "It is hard to hear",
+   "It is for kings"
+  ],
+  "answer": 0,
+  "explanation": "He is an honourable man; all that he saith cometh surely to pass.",
+  "ref": "1 Samuel 9:6"
+ },
+ {
+  "id": "1-samuel-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the maidens tell Saul to make haste?",
+  "choices": [
+   "The city gate would close",
+   "There was a sacrifice at the high place that day",
+   "Rain was coming",
+   "Samuel was leaving"
+  ],
+  "answer": 1,
+  "explanation": "Make haste now, for he came to day to the city; for there is a sacrifice of the people to day in the high place.",
+  "ref": "1 Samuel 9:12"
+ },
+ {
+  "id": "1-samuel-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the people not eat until Samuel came?",
+  "choices": [
+   "He carved the meat",
+   "He held the feast key",
+   "He blessed the sacrifice",
+   "He was the host's father"
+  ],
+  "answer": 2,
+  "explanation": "The people will not eat until he come, because he doth bless the sacrifice.",
+  "ref": "1 Samuel 9:13"
+ },
+ {
+  "id": "1-samuel-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When had the Lord told Samuel that Saul was coming?",
+  "choices": [
+   "A year before",
+   "That morning",
+   "Three days before",
+   "A day before"
+  ],
+  "answer": 3,
+  "explanation": "The LORD had told Samuel in his ear a day before Saul came.",
+  "ref": "1 Samuel 9:15"
+ },
+ {
+  "id": "1-samuel-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord say Saul would do for Israel?",
+  "choices": [
+   "Save them from the Philistines",
+   "Build the temple",
+   "Judge the tribes",
+   "Bring back the ark"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt anoint him to be captain over my people, that he may save my people out of the hand of the Philistines.",
+  "ref": "1 Samuel 9:16"
+ },
+ {
+  "id": "1-samuel-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Lord say He would send Saul?",
+  "choices": [
+   "Because Samuel was old",
+   "Because Israel's cry had come to Him",
+   "Because the ark was lost",
+   "Because Eli had died"
+  ],
+  "answer": 1,
+  "explanation": "I have looked upon my people, because their cry is come unto me.",
+  "ref": "1 Samuel 9:16"
+ },
+ {
+  "id": "1-samuel-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "On whom did Samuel say all the desire of Israel was?",
+  "choices": [
+   "Samuel and his sons",
+   "Kish only",
+   "Saul and his father's house",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "On whom is all the desire of Israel? Is it not on thee, and on all thy father's house?",
+  "ref": "1 Samuel 9:20"
+ },
+ {
+  "id": "1-samuel-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Saul describe his tribe and family?",
+  "choices": [
+   "The strongest tribe",
+   "A tribe of priests",
+   "A tribe of kings",
+   "The smallest tribe and the least family"
+  ],
+  "answer": 3,
+  "explanation": "Am not I a Benjamite, of the smallest of the tribes of Israel? and my family the least of all the families?",
+  "ref": "1 Samuel 9:21"
+ },
+ {
+  "id": "1-samuel-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Samuel seat Saul at the feast?",
+  "choices": [
+   "In the chiefest place",
+   "At the door",
+   "Beside the cook",
+   "Outside"
+  ],
+  "answer": 0,
+  "explanation": "Samuel made them sit in the chiefest place among them that were bidden.",
+  "ref": "1 Samuel 9:22"
+ },
+ {
+  "id": "1-samuel-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "About how many people were at the meal?",
+  "choices": [
+   "Seven",
+   "Thirty",
+   "Twelve",
+   "One hundred"
+  ],
+  "answer": 1,
+  "explanation": "They sat in the chiefest place among them that were bidden, which were about thirty persons.",
+  "ref": "1 Samuel 9:22"
+ },
+ {
+  "id": "1-samuel-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel tell the cook to bring?",
+  "choices": [
+   "The best wine",
+   "A new loaf",
+   "The portion he had set aside",
+   "The ark's offering"
+  ],
+  "answer": 2,
+  "explanation": "Bring the portion which I gave thee, of which I said unto thee, Set it by thee.",
+  "ref": "1 Samuel 9:23"
+ },
+ {
+  "id": "1-samuel-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Samuel promise to tell Saul?",
+  "choices": [
+   "Where the asses were",
+   "Who his enemies were",
+   "How long he would reign",
+   "All that was in his heart"
+  ],
+  "answer": 3,
+  "explanation": "I will let thee go, and will tell thee all that is in thine heart.",
+  "ref": "1 Samuel 9:19"
+ },
+ {
+  "id": "1-samuel-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Kish?",
+  "choices": [
+   "Abiel",
+   "Zeror",
+   "Aphiah",
+   "Bechorath"
+  ],
+  "answer": 0,
+  "explanation": "Kish, the son of Abiel, the son of Zeror, the son of Bechorath, the son of Aphiah.",
+  "ref": "1 Samuel 9:1"
+ },
+ {
+  "id": "1-samuel-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Abiel, the father of Kish?",
+  "choices": [
+   "Aphiah",
+   "Zeror",
+   "Kish",
+   "Bechorath"
+  ],
+  "answer": 1,
+  "explanation": "Kish, the son of Abiel, the son of Zeror, the son of Bechorath.",
+  "ref": "1 Samuel 9:1"
+ },
+ {
+  "id": "1-samuel-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Through which hill country did Saul pass first in his search?",
+  "choices": [
+   "Mount Carmel",
+   "Mount Zion",
+   "Mount Ephraim",
+   "Mount Gilead"
+  ],
+  "answer": 2,
+  "explanation": "He passed through mount Ephraim, and passed through the land of Shalisha.",
+  "ref": "1 Samuel 9:4"
+ },
+ {
+  "id": "1-samuel-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Which land did Saul pass through after mount Ephraim?",
+  "choices": [
+   "Shalim",
+   "Zuph",
+   "Benjamin",
+   "Shalisha"
+  ],
+  "answer": 3,
+  "explanation": "He passed through mount Ephraim, and passed through the land of Shalisha, but they found them not.",
+  "ref": "1 Samuel 9:4"
+ },
+ {
+  "id": "1-samuel-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Which land did Saul search after Shalisha?",
+  "choices": [
+   "Shalim",
+   "Zuph",
+   "Gilead",
+   "Shalisha"
+  ],
+  "answer": 0,
+  "explanation": "Then they passed through the land of Shalim, and there they were not.",
+  "ref": "1 Samuel 9:4"
+ },
+ {
+  "id": "1-samuel-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "In which land did Saul say, \"Come, and let us return\"?",
+  "choices": [
+   "Shalisha",
+   "Zuph",
+   "Shalim",
+   "Gilgal"
+  ],
+  "answer": 1,
+  "explanation": "When they were come to the land of Zuph, Saul said to his servant, Come, and let us return.",
+  "ref": "1 Samuel 9:5"
+ },
+ {
+  "id": "1-samuel-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is Kish described?",
+  "choices": [
+   "A rich shepherd",
+   "A man of war and counsel",
+   "A mighty man of power",
+   "A judge in Benjamin"
+  ],
+  "answer": 2,
+  "explanation": "Kish, a Benjamite, a mighty man of power.",
+  "ref": "1 Samuel 9:1"
+ },
+ {
+  "id": "1-samuel-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Since when had the portion been kept for Saul?",
+  "choices": [
+   "Since the morning",
+   "Since Saul arrived at the gate",
+   "Since the day before",
+   "Since Samuel said he had invited the people"
+  ],
+  "answer": 3,
+  "explanation": "Unto this time hath it been kept for thee since I said, I have invited the people.",
+  "ref": "1 Samuel 9:24"
+ },
+ {
+  "id": "1-samuel-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Samuel tell to pass on before them on the road?",
+  "choices": [
+   "The servant",
+   "The cook",
+   "Kish",
+   "The maidens"
+  ],
+  "answer": 0,
+  "explanation": "Samuel said to Saul, Bid the servant pass on before us, and he passed on.",
+  "ref": "1 Samuel 9:27"
+ },
+ {
+  "id": "1-samuel-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Samuel say he would shew Saul at the end of the city?",
+  "choices": [
+   "A sign from heaven",
+   "The word of God",
+   "The king's crown",
+   "The ark"
+  ],
+  "answer": 1,
+  "explanation": "Stand thou still a while, that I may shew thee the word of God.",
+  "ref": "1 Samuel 9:27"
+ },
+ {
+  "id": "1-samuel-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Samuel stop Saul to speak with him?",
+  "choices": [
+   "At the high place",
+   "At the well",
+   "At the end of the city",
+   "By the gate of Ramah"
+  ],
+  "answer": 2,
+  "explanation": "As they were going down to the end of the city, Samuel said to Saul, stand thou still a while.",
+  "ref": "1 Samuel 9:27"
+ },
+ {
+  "id": "1-samuel-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Which land did Saul pass through after Shalim?",
+  "choices": [
+   "Mount Ephraim",
+   "The land of Shalisha",
+   "Gilead",
+   "The land of the Benjamites"
+  ],
+  "answer": 3,
+  "explanation": "He passed through the land of the Benjamites, but they found them not.",
+  "ref": "1 Samuel 9:4"
+ },
+ {
+  "id": "1-samuel-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the servant describe the man of God?",
+  "choices": [
+   "An honourable man",
+   "A rich man",
+   "A stranger",
+   "An old judge"
+  ],
+  "answer": 0,
+  "explanation": "There is in this city a man of God, and he is an honourable man.",
+  "ref": "1 Samuel 9:6"
+ },
+ {
+  "id": "1-samuel-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is Saul described in his father's house?",
+  "choices": [
+   "A mighty man of war",
+   "A choice young man and a goodly",
+   "A wise judge",
+   "A humble shepherd"
+  ],
+  "answer": 1,
+  "explanation": "He had a son, whose name was Saul, a choice young man, and a goodly.",
+  "ref": "1 Samuel 9:2"
+ },
+ {
+  "id": "1-samuel-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Saul and Samuel rise on the last morning?",
+  "choices": [
+   "At midnight",
+   "At noon",
+   "About the spring of the day",
+   "At evening"
+  ],
+  "answer": 2,
+  "explanation": "They arose early: and it came to pass, about the spring of the day, that Samuel called Saul.",
+  "ref": "1 Samuel 9:26"
+ },
+ {
+  "id": "1-samuel-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When would Saul find Samuel in the city, said the maidens?",
+  "choices": [
+   "Before he went up to the high place",
+   "After the feast",
+   "At the city gate at night",
+   "On the top of the house"
+  ],
+  "answer": 0,
+  "explanation": "As soon as ye be come into the city, ye shall straightway find him, before he go up to the high place to eat.",
+  "ref": "1 Samuel 9:13"
+ },
+ {
   "id": "old-1-samuel-10-1",
   "chapter": 10,
   "level": "beginner",
