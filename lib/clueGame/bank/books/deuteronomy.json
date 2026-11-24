@@ -17408,6 +17408,646 @@
   "ref": "Deuteronomy 25:17–19"
  },
  {
+  "id": "deuteronomy-25-e-01",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the greatest number of stripes a wicked man could receive?",
+  "choices": [
+   "Twenty",
+   "Forty",
+   "Thirty",
+   "Fifty"
+  ],
+  "answer": 1,
+  "explanation": "Forty stripes he may give him, and not exceed.",
+  "ref": "Deuteronomy 25:3"
+ },
+ {
+  "id": "deuteronomy-25-e-02",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was beaten before the judge's face?",
+  "choices": [
+   "The righteous man",
+   "The wicked man worthy to be beaten",
+   "The witness",
+   "The elder"
+  ],
+  "answer": 1,
+  "explanation": "If the wicked man be worthy to be beaten, the judge shall cause him to lie down, and to be beaten before his face.",
+  "ref": "Deuteronomy 25:2"
+ },
+ {
+  "id": "deuteronomy-25-e-03",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was to take a childless widow to wife?",
+  "choices": [
+   "A stranger",
+   "Her husband's brother",
+   "Her father",
+   "An elder"
+  ],
+  "answer": 1,
+  "explanation": "Her husband's brother shall go in unto her, and take her to him to wife.",
+  "ref": "Deuteronomy 25:5"
+ },
+ {
+  "id": "deuteronomy-25-e-04",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the widow go if her brother-in-law refused her?",
+  "choices": [
+   "To the priest",
+   "To the gate, to the elders",
+   "To her father's house",
+   "To the judge's tent"
+  ],
+  "answer": 1,
+  "explanation": "Let his brother's wife go up to the gate unto the elders.",
+  "ref": "Deuteronomy 25:7"
+ },
+ {
+  "id": "deuteronomy-25-e-05",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the widow loose from the man's foot?",
+  "choices": [
+   "His belt",
+   "His shoe",
+   "His sandal strap only",
+   "His robe"
+  ],
+  "answer": 1,
+  "explanation": "His brother's wife shall loose his shoe from off his foot.",
+  "ref": "Deuteronomy 25:9"
+ },
+ {
+  "id": "deuteronomy-25-e-06",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the widow do to his face?",
+  "choices": [
+   "Strike it",
+   "Spit in it",
+   "Cover it",
+   "Wash it"
+  ],
+  "answer": 1,
+  "explanation": "She shall loose his shoe from off his foot, and spit in his face.",
+  "ref": "Deuteronomy 25:9"
+ },
+ {
+  "id": "deuteronomy-25-e-07",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the man's name to be called in Israel after this?",
+  "choices": [
+   "The house of shame",
+   "The house of him that hath his shoe loosed",
+   "The house of the barren",
+   "The house of the fatherless"
+  ],
+  "answer": 1,
+  "explanation": "His name shall be called in Israel, The house of him that hath his shoe loosed.",
+  "ref": "Deuteronomy 25:10"
+ },
+ {
+  "id": "deuteronomy-25-e-08",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Israel not to keep divers weights?",
+  "choices": [
+   "In the temple",
+   "In their bag",
+   "In the field",
+   "At the gate"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not have in thy bag divers weights, a great and a small.",
+  "ref": "Deuteronomy 25:13"
+ },
+ {
+  "id": "deuteronomy-25-e-09",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Amalek smite on the way?",
+  "choices": [
+   "The firstborn",
+   "The hindmost, the feeble",
+   "The priests",
+   "The captains"
+  ],
+  "answer": 1,
+  "explanation": "He smote the hindmost of thee, even all that were feeble behind thee.",
+  "ref": "Deuteronomy 25:18"
+ },
+ {
+  "id": "deuteronomy-25-e-10",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Israel told not to do about Amalek?",
+  "choices": [
+   "Trade with them",
+   "Forget it",
+   "Make a treaty",
+   "Fight at once"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt blot out the remembrance of Amalek from under heaven; thou shalt not forget it.",
+  "ref": "Deuteronomy 25:19"
+ },
+ {
+  "id": "deuteronomy-25-m-01",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the judge to cause the wicked man to do?",
+  "choices": [
+   "Stand up",
+   "Kneel",
+   "Fast",
+   "Lie down"
+  ],
+  "answer": 3,
+  "explanation": "The judge shall cause him to lie down, and to be beaten before his face.",
+  "ref": "Deuteronomy 25:2"
+ },
+ {
+  "id": "deuteronomy-25-m-02",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the stripes not to exceed forty?",
+  "choices": [
+   "Lest he die",
+   "Lest the judge be fined",
+   "Lest the priest object",
+   "Lest thy brother seem vile unto thee"
+  ],
+  "answer": 3,
+  "explanation": "Lest, if he should exceed, then thy brother should seem vile unto thee.",
+  "ref": "Deuteronomy 25:3"
+ },
+ {
+  "id": "deuteronomy-25-m-03",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom was the childless widow not to marry outside the family?",
+  "choices": [
+   "A priest",
+   "A judge",
+   "An elder",
+   "A stranger"
+  ],
+  "answer": 3,
+  "explanation": "The wife of the dead shall not marry without unto a stranger.",
+  "ref": "Deuteronomy 25:5"
+ },
+ {
+  "id": "deuteronomy-25-m-04",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whose name was the firstborn to succeed?",
+  "choices": [
+   "The widow's father",
+   "The elder's",
+   "The priest's",
+   "His dead brother's"
+  ],
+  "answer": 3,
+  "explanation": "The firstborn which she beareth shall succeed in the name of his brother which is dead.",
+  "ref": "Deuteronomy 25:6"
+ },
+ {
+  "id": "deuteronomy-25-m-05",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the firstborn to succeed in the dead brother's name?",
+  "choices": [
+   "That the land stay in Levi",
+   "That the priests be paid",
+   "That the tribe grow",
+   "That his name not be put out of Israel"
+  ],
+  "answer": 3,
+  "explanation": "That his name be not put out of Israel.",
+  "ref": "Deuteronomy 25:6"
+ },
+ {
+  "id": "deuteronomy-25-m-06",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the widow say about her brother-in-law to the elders?",
+  "choices": [
+   "He has gone to war",
+   "He has taken another wife",
+   "He has died",
+   "He refuses to raise up a name for his brother"
+  ],
+  "answer": 3,
+  "explanation": "My husband's brother refuseth to raise up unto his brother a name in Israel.",
+  "ref": "Deuteronomy 25:7"
+ },
+ {
+  "id": "deuteronomy-25-m-07",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Who called the man and spoke to him about his refusal?",
+  "choices": [
+   "The priests",
+   "The judges",
+   "The captains",
+   "The elders of his city"
+  ],
+  "answer": 3,
+  "explanation": "The elders of his city shall call him, and speak unto him.",
+  "ref": "Deuteronomy 25:8"
+ },
+ {
+  "id": "deuteronomy-25-m-08",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the widow say as she loosed his shoe?",
+  "choices": [
+   "Thou art cursed",
+   "Thou art a stranger",
+   "Thou art free",
+   "So shall it be done unto that man"
+  ],
+  "answer": 3,
+  "explanation": "So shall it be done unto that man that will not build up his brother's house.",
+  "ref": "Deuteronomy 25:9"
+ },
+ {
+  "id": "deuteronomy-25-m-09",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the wife do when two men strove together?",
+  "choices": [
+   "Called the elders",
+   "Ran away",
+   "Went to the judge",
+   "Drew near to deliver her husband"
+  ],
+  "answer": 3,
+  "explanation": "The wife of the one draweth near for to deliver her husband out of the hand of him that smiteth him.",
+  "ref": "Deuteronomy 25:11"
+ },
+ {
+  "id": "deuteronomy-25-m-10",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done to the wife who acted shamefully?",
+  "choices": [
+   "Beat her",
+   "Stone her",
+   "Send her away",
+   "Cut off her hand"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt cut off her hand, thine eye shall not pity her.",
+  "ref": "Deuteronomy 25:12"
+ },
+ {
+  "id": "deuteronomy-25-m-11",
+  "chapter": 25,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Israel not to have divers measures?",
+  "choices": [
+   "At the gate",
+   "In the market",
+   "In the temple",
+   "In their house"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt not have in thine house divers measures, a great and a small.",
+  "ref": "Deuteronomy 25:14"
+ },
+ {
+  "id": "deuteronomy-25-m-12",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of weight and measure were Israel to have?",
+  "choices": [
+   "Great and small",
+   "Heavy and light",
+   "Old and new",
+   "Perfect and just"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt have a perfect and just weight, a perfect and just measure.",
+  "ref": "Deuteronomy 25:15"
+ },
+ {
+  "id": "deuteronomy-25-m-13",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would a just weight and measure bring?",
+  "choices": [
+   "Great wealth",
+   "Many sons",
+   "Peace from Amalek",
+   "Lengthened days in the land"
+  ],
+  "answer": 3,
+  "explanation": "That thy days may be lengthened in the land which the LORD thy God giveth thee.",
+  "ref": "Deuteronomy 25:15"
+ },
+ {
+  "id": "deuteronomy-25-m-14",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what state was Israel when Amalek attacked them?",
+  "choices": [
+   "Asleep",
+   "Feasting",
+   "Fighting",
+   "Faint and weary"
+  ],
+  "answer": 3,
+  "explanation": "He met thee by the way, when thou wast faint and weary.",
+  "ref": "Deuteronomy 25:18"
+ },
+ {
+  "id": "deuteronomy-25-m-15",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was said of Amalek's attitude toward God?",
+  "choices": [
+   "He hated Israel only",
+   "He worshipped idols",
+   "He envied Moses",
+   "He feared not God"
+  ],
+  "answer": 3,
+  "explanation": "And he feared not God.",
+  "ref": "Deuteronomy 25:18"
+ },
+ {
+  "id": "deuteronomy-25-h-01",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the wicked man's beating depend upon?",
+  "choices": [
+   "His fault",
+   "His age",
+   "His wealth",
+   "His family"
+  ],
+  "answer": 0,
+  "explanation": "The judge shall cause him to be beaten before his face, according to his fault, by a certain number.",
+  "ref": "Deuteronomy 25:2"
+ },
+ {
+  "id": "deuteronomy-25-h-02",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What duty was the husband's brother to perform for the widow?",
+  "choices": [
+   "The duty of a husband's brother",
+   "The duty of a priest",
+   "The duty of a judge",
+   "The duty of a servant"
+  ],
+  "answer": 0,
+  "explanation": "Perform the duty of an husband's brother unto her.",
+  "ref": "Deuteronomy 25:5"
+ },
+ {
+  "id": "deuteronomy-25-h-03",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the brother-in-law say if he stood to his refusal?",
+  "choices": [
+   "I like not to take her",
+   "I have no sons",
+   "I am poor",
+   "I am a priest"
+  ],
+  "answer": 0,
+  "explanation": "If he stand to it, and say, I like not to take her.",
+  "ref": "Deuteronomy 25:8"
+ },
+ {
+  "id": "deuteronomy-25-h-04",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Before whom did the widow loose the man's shoe?",
+  "choices": [
+   "The elders",
+   "The priests",
+   "The judges",
+   "Her father"
+  ],
+  "answer": 0,
+  "explanation": "His brother's wife shall come unto him in the presence of the elders.",
+  "ref": "Deuteronomy 25:9"
+ },
+ {
+  "id": "deuteronomy-25-h-05",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Amalek meet Israel by the way?",
+  "choices": [
+   "When they came forth out of Egypt",
+   "At Sinai",
+   "At the Jordan",
+   "In Moab"
+  ],
+  "answer": 0,
+  "explanation": "Remember what Amalek did unto thee by the way, when ye were come forth out of Egypt.",
+  "ref": "Deuteronomy 25:17"
+ },
+ {
+  "id": "deuteronomy-25-h-06",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When was Israel to blot out Amalek's remembrance?",
+  "choices": [
+   "When the LORD gave rest from all enemies",
+   "At once",
+   "After forty years",
+   "When they had a king"
+  ],
+  "answer": 0,
+  "explanation": "When the LORD thy God hath given thee rest from all thine enemies round about.",
+  "ref": "Deuteronomy 25:19"
+ },
+ {
+  "id": "deuteronomy-25-h-07",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where was Amalek's remembrance to be blotted out?",
+  "choices": [
+   "From under heaven",
+   "From the land",
+   "From the camp",
+   "From Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt blot out the remembrance of Amalek from under heaven.",
+  "ref": "Deuteronomy 25:19"
+ },
+ {
+  "id": "deuteronomy-25-h-08",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD call all that do unrighteously?",
+  "choices": [
+   "An abomination",
+   "A snare",
+   "A trespass",
+   "A stumblingblock"
+  ],
+  "answer": 0,
+  "explanation": "For all that do such things, and all that do unrighteously, are an abomination unto the LORD thy God.",
+  "ref": "Deuteronomy 25:16"
+ },
+ {
+  "id": "deuteronomy-25-h-09",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the widow say her husband's brother would not perform?",
+  "choices": [
+   "The duty of my husband's brother",
+   "His oath",
+   "His vow",
+   "His tithe"
+  ],
+  "answer": 0,
+  "explanation": "He will not perform the duty of my husband's brother.",
+  "ref": "Deuteronomy 25:7"
+ },
+ {
+  "id": "deuteronomy-25-h-10",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the wife in the strife not shown by Israel?",
+  "choices": [
+   "Pity",
+   "Honour",
+   "Justice",
+   "Mercy"
+  ],
+  "answer": 0,
+  "explanation": "Thine eye shall not pity her.",
+  "ref": "Deuteronomy 25:12"
+ },
+ {
+  "id": "deuteronomy-25-h-11",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the dead man have none of?",
+  "choices": [
+   "A child",
+   "A brother",
+   "A house",
+   "A field"
+  ],
+  "answer": 0,
+  "explanation": "If brethren dwell together, and one of them die, and have no child.",
+  "ref": "Deuteronomy 25:5"
+ },
+ {
+  "id": "deuteronomy-25-h-12",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two sizes of weights were not to be in the bag?",
+  "choices": [
+   "A great and a small",
+   "A heavy and a light",
+   "A new and an old",
+   "A gold and a silver"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt not have in thy bag divers weights, a great and a small.",
+  "ref": "Deuteronomy 25:13"
+ },
+ {
+  "id": "deuteronomy-25-h-13",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who had to dwell together for the duty of a husband's brother to apply?",
+  "choices": [
+   "Brethren",
+   "Neighbours",
+   "Tribes",
+   "Strangers"
+  ],
+  "answer": 0,
+  "explanation": "If brethren dwell together, and one of them die, and have no child.",
+  "ref": "Deuteronomy 25:5"
+ },
+ {
+  "id": "deuteronomy-25-h-14",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose presence was the wicked man beaten?",
+  "choices": [
+   "The judge's, before his face",
+   "The priests'",
+   "The people's",
+   "His family's"
+  ],
+  "answer": 0,
+  "explanation": "The judge shall cause him to lie down, and to be beaten before his face.",
+  "ref": "Deuteronomy 25:2"
+ },
+ {
+  "id": "deuteronomy-25-h-15",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the wife put forth in the strife between the men?",
+  "choices": [
+   "Her hand",
+   "Her voice",
+   "Her foot",
+   "Her veil"
+  ],
+  "answer": 0,
+  "explanation": "The wife of the one draweth near and putteth forth her hand.",
+  "ref": "Deuteronomy 25:11"
+ },
+ {
   "id": "old-deuteronomy-26-1",
   "chapter": 26,
   "level": "beginner",
