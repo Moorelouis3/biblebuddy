@@ -1520,6 +1520,646 @@
   "ref": "Deuteronomy 3:27"
  },
  {
+  "id": "deuteronomy-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses to do about Og?",
+  "choices": [
+   "Fear him not",
+   "Wait for a sign",
+   "Send spies",
+   "Make peace"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said unto me, Fear him not: for I will deliver him into thy hand.",
+  "ref": "Deuteronomy 3:2"
+ },
+ {
+  "id": "deuteronomy-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many cities did Israel take from Og in Bashan?",
+  "choices": [
+   "Seven",
+   "Threescore",
+   "Twelve",
+   "Four hundred"
+  ],
+  "answer": 1,
+  "explanation": "There was not a city which we took not from them, threescore cities, all the region of Argob.",
+  "ref": "Deuteronomy 3:4"
+ },
+ {
+  "id": "deuteronomy-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to Og and his people?",
+  "choices": [
+   "They fled",
+   "They made peace",
+   "They were smitten until none was left",
+   "They hid in caves"
+  ],
+  "answer": 2,
+  "explanation": "The LORD delivered Og into our hands: and we smote him until none was left to him remaining.",
+  "ref": "Deuteronomy 3:3"
+ },
+ {
+  "id": "deuteronomy-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which region held the sixty cities of Og's kingdom?",
+  "choices": [
+   "Argob",
+   "Gilead",
+   "Moab",
+   "Seir"
+  ],
+  "answer": 0,
+  "explanation": "Threescore cities, all the region of Argob, the kingdom of Og in Bashan.",
+  "ref": "Deuteronomy 3:4"
+ },
+ {
+  "id": "deuteronomy-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Of what was Og's bedstead made?",
+  "choices": [
+   "Cedar",
+   "Iron",
+   "Gold",
+   "Stone"
+  ],
+  "answer": 1,
+  "explanation": "His bedstead was a bedstead of iron.",
+  "ref": "Deuteronomy 3:11"
+ },
+ {
+  "id": "deuteronomy-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who alone remained of the remnant of giants?",
+  "choices": [
+   "Og king of Bashan",
+   "Sihon",
+   "Balak",
+   "Jair"
+  ],
+  "answer": 0,
+  "explanation": "Only Og king of Bashan remained of the remnant of giants.",
+  "ref": "Deuteronomy 3:11"
+ },
+ {
+  "id": "deuteronomy-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took the country of Argob and named it after himself?",
+  "choices": [
+   "Machir",
+   "Jair",
+   "Joshua",
+   "Caleb"
+  ],
+  "answer": 1,
+  "explanation": "Jair the son of Manasseh took all the country of Argob.",
+  "ref": "Deuteronomy 3:14"
+ },
+ {
+  "id": "deuteronomy-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel take for a prey from Og's cities?",
+  "choices": [
+   "The cattle and the spoil",
+   "The altars",
+   "The captives",
+   "The idols"
+  ],
+  "answer": 0,
+  "explanation": "All the cattle, and the spoil of the cities, we took for a prey to ourselves.",
+  "ref": "Deuteronomy 3:7"
+ },
+ {
+  "id": "deuteronomy-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses ask the LORD to let him do?",
+  "choices": [
+   "Rest in Gilead",
+   "Go over and see the good land",
+   "Rule Bashan",
+   "Build a city"
+  ],
+  "answer": 1,
+  "explanation": "I pray thee, let me go over, and see the good land that is beyond Jordan.",
+  "ref": "Deuteronomy 3:25"
+ },
+ {
+  "id": "deuteronomy-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Israel abide at the end of the chapter?",
+  "choices": [
+   "In the valley over against Beth-peor",
+   "At Hermon",
+   "At Edrei",
+   "In Argob"
+  ],
+  "answer": 0,
+  "explanation": "So we abode in the valley over against Beth-peor.",
+  "ref": "Deuteronomy 3:29"
+ },
+ {
+  "id": "deuteronomy-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "The land taken from the two kings ran from Arnon unto which mount?",
+  "choices": [
+   "Hermon",
+   "Sinai",
+   "Nebo",
+   "Carmel"
+  ],
+  "answer": 0,
+  "explanation": "The land from the river of Arnon unto mount Hermon.",
+  "ref": "Deuteronomy 3:8"
+ },
+ {
+  "id": "deuteronomy-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "What do the Sidonians call Hermon?",
+  "choices": [
+   "Shenir",
+   "Sirion",
+   "Lebanon",
+   "Zion"
+  ],
+  "answer": 1,
+  "explanation": "Which Hermon the Sidonians call Sirion.",
+  "ref": "Deuteronomy 3:9"
+ },
+ {
+  "id": "deuteronomy-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "What do the Amorites call Hermon?",
+  "choices": [
+   "Sirion",
+   "Gilead",
+   "Shenir",
+   "Moriah"
+  ],
+  "answer": 2,
+  "explanation": "The Amorites call it Shenir.",
+  "ref": "Deuteronomy 3:9"
+ },
+ {
+  "id": "deuteronomy-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was Og's bedstead?",
+  "choices": [
+   "Nine cubits",
+   "Four cubits",
+   "Twelve cubits",
+   "Twenty cubits"
+  ],
+  "answer": 0,
+  "explanation": "Nine cubits was the length thereof, and four cubits the breadth of it.",
+  "ref": "Deuteronomy 3:11"
+ },
+ {
+  "id": "deuteronomy-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Og's iron bedstead to be found?",
+  "choices": [
+   "In Heshbon",
+   "In Rabbath of the children of Ammon",
+   "In Edrei",
+   "In Bashan"
+  ],
+  "answer": 1,
+  "explanation": "Is it not in Rabbath of the children of Ammon?",
+  "ref": "Deuteronomy 3:11"
+ },
+ {
+  "id": "deuteronomy-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Which tribes received the land from Aroer and half mount Gilead?",
+  "choices": [
+   "Reubenites and Gadites",
+   "Judah and Benjamin",
+   "Simeon and Levi",
+   "Ephraim and Dan"
+  ],
+  "answer": 0,
+  "explanation": "From Aroer, and half mount Gilead, gave I unto the Reubenites and to the Gadites.",
+  "ref": "Deuteronomy 3:12"
+ },
+ {
+  "id": "deuteronomy-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who received the rest of Gilead and all Bashan?",
+  "choices": [
+   "Reuben",
+   "Gad",
+   "The half tribe of Manasseh",
+   "Ephraim"
+  ],
+  "answer": 2,
+  "explanation": "The rest of Gilead, and all Bashan, gave I unto the half tribe of Manasseh.",
+  "ref": "Deuteronomy 3:13"
+ },
+ {
+  "id": "deuteronomy-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Bashan called?",
+  "choices": [
+   "The land of giants",
+   "The land of milk",
+   "The land of cedars",
+   "The land of rest"
+  ],
+  "answer": 0,
+  "explanation": "All the region of Argob, with all Bashan, which was called the land of giants.",
+  "ref": "Deuteronomy 3:13"
+ },
+ {
+  "id": "deuteronomy-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What name did Jair give the villages he took?",
+  "choices": [
+   "Bashan-havoth-jair",
+   "Gilead-jair",
+   "Argob-jair",
+   "Edrei-jair"
+  ],
+  "answer": 0,
+  "explanation": "He called them after his own name, Bashan-havoth-jair, unto this day.",
+  "ref": "Deuteronomy 3:14"
+ },
+ {
+  "id": "deuteronomy-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was to pass over armed before their brethren?",
+  "choices": [
+   "All that are meet for the war",
+   "The priests",
+   "Only the elders",
+   "The wives"
+  ],
+  "answer": 0,
+  "explanation": "Ye shall pass over armed before your brethren, all that are meet for the war.",
+  "ref": "Deuteronomy 3:18"
+ },
+ {
+  "id": "deuteronomy-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were to stay in the cities Moses had given?",
+  "choices": [
+   "Wives, little ones and cattle",
+   "Only the old men",
+   "The captains",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "Your wives, and your little ones, and your cattle, shall abide in your cities.",
+  "ref": "Deuteronomy 3:19"
+ },
+ {
+  "id": "deuteronomy-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when were the warriors to stay with their brethren?",
+  "choices": [
+   "Until the LORD gave rest to their brethren",
+   "Until the harvest",
+   "Until Joshua died",
+   "Until Passover"
+  ],
+  "answer": 0,
+  "explanation": "Until the LORD have given rest unto your brethren, as well as unto you.",
+  "ref": "Deuteronomy 3:20"
+ },
+ {
+  "id": "deuteronomy-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses call the mountain he longed to see beyond Jordan?",
+  "choices": [
+   "That goodly mountain",
+   "That high place",
+   "That holy hill",
+   "That bare rock"
+  ],
+  "answer": 0,
+  "explanation": "Let me go over, and see that goodly mountain, and Lebanon.",
+  "ref": "Deuteronomy 3:25"
+ },
+ {
+  "id": "deuteronomy-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say when Moses begged to cross?",
+  "choices": [
+   "Let it suffice thee; speak no more unto me of this matter",
+   "Ask again tomorrow",
+   "Take Joshua with you",
+   "Wait forty days"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said unto me, Let it suffice thee; speak no more unto me of this matter.",
+  "ref": "Deuteronomy 3:26"
+ },
+ {
+  "id": "deuteronomy-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many directions was Moses to look from the top of Pisgah?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Six"
+  ],
+  "answer": 2,
+  "explanation": "Lift up thine eyes westward, and northward, and southward, and eastward.",
+  "ref": "Deuteronomy 3:27"
+ },
+ {
+  "id": "deuteronomy-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How wide was Og's iron bedstead?",
+  "choices": [
+   "Four cubits",
+   "Nine cubits",
+   "Two cubits",
+   "Seven cubits"
+  ],
+  "answer": 0,
+  "explanation": "Nine cubits was the length thereof, and four cubits the breadth of it.",
+  "ref": "Deuteronomy 3:11"
+ },
+ {
+  "id": "deuteronomy-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Og's cities stretched unto Salchah and which other city?",
+  "choices": [
+   "Edrei",
+   "Heshbon",
+   "Jahaz",
+   "Aroer"
+  ],
+  "answer": 0,
+  "explanation": "Unto Salchah and Edrei, cities of the kingdom of Og in Bashan.",
+  "ref": "Deuteronomy 3:10"
+ },
+ {
+  "id": "deuteronomy-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Jair took Argob unto the coasts of Geshuri and which other?",
+  "choices": [
+   "Maachathi",
+   "Edrei",
+   "Salchah",
+   "Sirion"
+  ],
+  "answer": 0,
+  "explanation": "Jair took all the country of Argob unto the coasts of Geshuri and Maachathi.",
+  "ref": "Deuteronomy 3:14"
+ },
+ {
+  "id": "deuteronomy-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "The plain and Jordan ran from Chinnereth to which sea?",
+  "choices": [
+   "The Great sea",
+   "The Red sea",
+   "The salt sea",
+   "The sea of Galilee"
+  ],
+  "answer": 2,
+  "explanation": "From Chinnereth even unto the sea of the plain, even the salt sea.",
+  "ref": "Deuteronomy 3:17"
+ },
+ {
+  "id": "deuteronomy-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Which river was the border of the children of Ammon?",
+  "choices": [
+   "Jabbok",
+   "Arnon",
+   "Zered",
+   "Jordan"
+  ],
+  "answer": 0,
+  "explanation": "The border even unto the river Jabbok, which is the border of the children of Ammon.",
+  "ref": "Deuteronomy 3:16"
+ },
+ {
+  "id": "deuteronomy-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Beside the walled cities, what else did Israel take?",
+  "choices": [
+   "Many unwalled towns",
+   "Fenced harbors",
+   "Strong towers",
+   "Silver mines"
+  ],
+  "answer": 0,
+  "explanation": "All these cities were fenced with high walls, gates, and bars; beside unwalled towns a great many.",
+  "ref": "Deuteronomy 3:5"
+ },
+ {
+  "id": "deuteronomy-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Which king was Og to be treated like?",
+  "choices": [
+   "Sihon",
+   "Balak",
+   "Jabin",
+   "Arad"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt do unto him as thou didst unto Sihon king of the Amorites.",
+  "ref": "Deuteronomy 3:2"
+ },
+ {
+  "id": "deuteronomy-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom was Gilead given in the chapter by name?",
+  "choices": [
+   "Jair",
+   "Machir",
+   "Reuben",
+   "Gad"
+  ],
+  "answer": 1,
+  "explanation": "And I gave Gilead unto Machir.",
+  "ref": "Deuteronomy 3:15"
+ },
+ {
+  "id": "deuteronomy-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses say the LORD had begun to show him?",
+  "choices": [
+   "Thy greatness and thy mighty hand",
+   "The promised land",
+   "The ark",
+   "A plan for the camp"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast begun to shew thy servant thy greatness, and thy mighty hand.",
+  "ref": "Deuteronomy 3:24"
+ },
+ {
+  "id": "deuteronomy-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was the LORD wroth with Moses?",
+  "choices": [
+   "For your sakes",
+   "For his anger",
+   "For his idols",
+   "For his pride"
+  ],
+  "answer": 0,
+  "explanation": "The LORD was wroth with me for your sakes, and would not hear me.",
+  "ref": "Deuteronomy 3:26"
+ },
+ {
+  "id": "deuteronomy-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many kings had Joshua's eyes seen the LORD deal with?",
+  "choices": [
+   "Two",
+   "One",
+   "Three",
+   "Five"
+  ],
+  "answer": 0,
+  "explanation": "Thine eyes have seen all that the LORD your God hath done unto these two kings.",
+  "ref": "Deuteronomy 3:21"
+ },
+ {
+  "id": "deuteronomy-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Joshua told to do besides encourage him?",
+  "choices": [
+   "Strengthen him",
+   "Teach him",
+   "Anoint him",
+   "Number him"
+  ],
+  "answer": 0,
+  "explanation": "Charge Joshua, and encourage him, and strengthen him.",
+  "ref": "Deuteronomy 3:28"
+ },
+ {
+  "id": "deuteronomy-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The bedstead's length was measured after what kind of cubit?",
+  "choices": [
+   "The cubit of a man",
+   "The cubit of the king",
+   "The cubit of the priest",
+   "The sacred cubit"
+  ],
+  "answer": 0,
+  "explanation": "After the cubit of a man.",
+  "ref": "Deuteronomy 3:11"
+ },
+ {
+  "id": "deuteronomy-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which direction was named first when Moses lifted up his eyes?",
+  "choices": [
+   "Westward",
+   "Northward",
+   "Eastward",
+   "Southward"
+  ],
+  "answer": 0,
+  "explanation": "Lift up thine eyes westward, and northward, and southward, and eastward.",
+  "ref": "Deuteronomy 3:27"
+ },
+ {
+  "id": "deuteronomy-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Reubenites and Gadites also received half of what, from Gilead to Arnon?",
+  "choices": [
+   "The valley",
+   "The mountain",
+   "The sea",
+   "The forest"
+  ],
+  "answer": 0,
+  "explanation": "Unto the Reubenites and the Gadites I gave from Gilead even unto the river Arnon half the valley.",
+  "ref": "Deuteronomy 3:16"
+ },
+ {
   "id": "old-deuteronomy-4-1",
   "chapter": 4,
   "level": "beginner",
