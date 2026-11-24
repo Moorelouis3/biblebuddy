@@ -800,6 +800,646 @@
   "ref": "Judges 2:19"
  },
  {
+  "id": "judges-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came up from Gilgal to Bochim?",
+  "choices": [
+   "Joshua",
+   "Phinehas",
+   "A prophet",
+   "An angel of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "An angel of the LORD came up from Gilgal to Bochim.",
+  "ref": "Judges 2:1"
+ },
+ {
+  "id": "judges-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people do when the angel spoke?",
+  "choices": [
+   "Went to war",
+   "Built an altar at once",
+   "Ran away",
+   "Lifted up their voice and wept"
+  ],
+  "answer": 3,
+  "explanation": "The people lifted up their voice, and wept.",
+  "ref": "Judges 2:4"
+ },
+ {
+  "id": "judges-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people do at Bochim after weeping?",
+  "choices": [
+   "Fought the Canaanites",
+   "Divided the land",
+   "Crowned a king",
+   "Sacrificed unto the LORD"
+  ],
+  "answer": 3,
+  "explanation": "They called the name of that place Bochim: and they sacrificed there unto the LORD.",
+  "ref": "Judges 2:5"
+ },
+ {
+  "id": "judges-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who let the people go, each to his inheritance?",
+  "choices": [
+   "Caleb",
+   "Eleazar",
+   "An angel",
+   "Joshua"
+  ],
+  "answer": 3,
+  "explanation": "When Joshua had let the people go, the children of Israel went every man unto his inheritance.",
+  "ref": "Judges 2:6"
+ },
+ {
+  "id": "judges-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "How old was Joshua when he died?",
+  "choices": [
+   "Eighty",
+   "A hundred",
+   "A hundred and twenty",
+   "A hundred and ten"
+  ],
+  "answer": 3,
+  "explanation": "Joshua the son of Nun, the servant of the LORD, died, being an hundred and ten years old.",
+  "ref": "Judges 2:8"
+ },
+ {
+  "id": "judges-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did the next generation not know?",
+  "choices": [
+   "Joshua",
+   "Moses",
+   "The Canaanites",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "Another generation arose after them, which knew not the LORD.",
+  "ref": "Judges 2:10"
+ },
+ {
+  "id": "judges-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which god did the children of Israel serve besides Baal?",
+  "choices": [
+   "Dagon",
+   "Chemosh",
+   "Molech",
+   "Ashtaroth"
+  ],
+  "answer": 3,
+  "explanation": "They forsook the LORD, and served Baal and Ashtaroth.",
+  "ref": "Judges 2:13"
+ },
+ {
+  "id": "judges-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD raise up to deliver Israel from spoilers?",
+  "choices": [
+   "Kings",
+   "Prophets",
+   "Priests",
+   "Judges"
+  ],
+  "answer": 3,
+  "explanation": "The LORD raised up judges, which delivered them out of the hand of those that spoiled them.",
+  "ref": "Judges 2:16"
+ },
+ {
+  "id": "judges-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who was with the judge when the LORD raised one up?",
+  "choices": [
+   "Joshua",
+   "The elders",
+   "The priests",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "The LORD was with the judge, and delivered them out of the hand of their enemies.",
+  "ref": "Judges 2:18"
+ },
+ {
+  "id": "judges-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the angel say Israel must not make with the inhabitants of the land?",
+  "choices": [
+   "A treaty of trade",
+   "A marriage",
+   "A feast",
+   "A league"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall make no league with the inhabitants of this land.",
+  "ref": "Judges 2:2"
+ },
+ {
+  "id": "judges-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel say the LORD would never break?",
+  "choices": [
+   "His rest",
+   "His covenant",
+   "His law",
+   "His altar"
+  ],
+  "answer": 1,
+  "explanation": "I said, I will never break my covenant with you.",
+  "ref": "Judges 2:1"
+ },
+ {
+  "id": "judges-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel say Israel should throw down?",
+  "choices": [
+   "The idols of Egypt",
+   "The altars of the inhabitants",
+   "The walls of Jericho",
+   "The tabernacle"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall throw down their altars.",
+  "ref": "Judges 2:2"
+ },
+ {
+  "id": "judges-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say the nations would be in Israel's sides?",
+  "choices": [
+   "Walls",
+   "Thorns",
+   "Shields",
+   "Rest"
+  ],
+  "answer": 1,
+  "explanation": "They shall be as thorns in your sides.",
+  "ref": "Judges 2:3"
+ },
+ {
+  "id": "judges-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the nations' gods be to Israel?",
+  "choices": [
+   "A shield",
+   "A snare",
+   "A comfort",
+   "A law"
+  ],
+  "answer": 1,
+  "explanation": "Their gods shall be a snare unto you.",
+  "ref": "Judges 2:3"
+ },
+ {
+  "id": "judges-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who served the LORD all the days of Joshua?",
+  "choices": [
+   "Only the priests",
+   "The people and the elders who outlived him",
+   "Only the Levites",
+   "Only Caleb's family"
+  ],
+  "answer": 1,
+  "explanation": "The people served the LORD all the days of Joshua, and all the days of the elders that outlived Joshua.",
+  "ref": "Judges 2:7"
+ },
+ {
+  "id": "judges-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Joshua buried?",
+  "choices": [
+   "Shechem",
+   "Timnath-heres",
+   "Shiloh",
+   "Bochim"
+  ],
+  "answer": 1,
+  "explanation": "They buried him in the border of his inheritance in Timnath-heres, in the mount of Ephraim.",
+  "ref": "Judges 2:9"
+ },
+ {
+  "id": "judges-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did that whole generation do?",
+  "choices": [
+   "Left Canaan",
+   "Were gathered unto their fathers",
+   "Built a temple",
+   "Went into Egypt"
+  ],
+  "answer": 1,
+  "explanation": "All that generation were gathered unto their fathers.",
+  "ref": "Judges 2:10"
+ },
+ {
+  "id": "judges-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the children of Israel serve when they did evil?",
+  "choices": [
+   "The LORD alone",
+   "Baalim",
+   "The Egyptians",
+   "The Hittites"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel did evil in the sight of the LORD, and served Baalim.",
+  "ref": "Judges 2:11"
+ },
+ {
+  "id": "judges-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose gods did Israel follow?",
+  "choices": [
+   "The Egyptians only",
+   "The people round about them",
+   "The Amorites beyond Jordan",
+   "The Kenites"
+  ],
+  "answer": 1,
+  "explanation": "They followed other gods, of the gods of the people that were round about them.",
+  "ref": "Judges 2:12"
+ },
+ {
+  "id": "judges-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into whose hands did the LORD deliver Israel when his anger was hot?",
+  "choices": [
+   "Judges",
+   "Spoilers",
+   "Their kings",
+   "Edomites"
+  ],
+  "answer": 1,
+  "explanation": "He delivered them into the hands of spoilers that spoiled them.",
+  "ref": "Judges 2:14"
+ },
+ {
+  "id": "judges-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel not do with their judges?",
+  "choices": [
+   "Pay tribute",
+   "Hearken unto them",
+   "Honour them",
+   "Count them"
+  ],
+  "answer": 1,
+  "explanation": "They would not hearken unto their judges.",
+  "ref": "Judges 2:17"
+ },
+ {
+  "id": "judges-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did it repent the LORD when he raised up a judge?",
+  "choices": [
+   "Because Israel gave offerings",
+   "Because of Israel's groanings under oppression",
+   "Because Joshua prayed",
+   "Because of Caleb"
+  ],
+  "answer": 1,
+  "explanation": "It repented the LORD because of their groanings by reason of them that oppressed them and vexed them.",
+  "ref": "Judges 2:18"
+ },
+ {
+  "id": "judges-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel do when the judge died?",
+  "choices": [
+   "Moved to Egypt",
+   "Returned and corrupted themselves more than their fathers",
+   "Crowned a king",
+   "Kept the law better"
+  ],
+  "answer": 1,
+  "explanation": "When the judge was dead, they returned, and corrupted themselves more than their fathers.",
+  "ref": "Judges 2:19"
+ },
+ {
+  "id": "judges-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about the nations Joshua left?",
+  "choices": [
+   "He would drive them out soon",
+   "He would no more drive them out",
+   "He would give them to Judah",
+   "He would send fire"
+  ],
+  "answer": 1,
+  "explanation": "I also will not henceforth drive out any from before them of the nations which Joshua left when he died.",
+  "ref": "Judges 2:21"
+ },
+ {
+  "id": "judges-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD leave the nations?",
+  "choices": [
+   "To punish Joshua",
+   "To prove Israel",
+   "To honour Caleb",
+   "To feed Israel"
+  ],
+  "answer": 1,
+  "explanation": "That through them I may prove Israel, whether they will keep the way of the LORD.",
+  "ref": "Judges 2:22"
+ },
+ {
+  "id": "judges-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "From which place did the angel come up to Bochim?",
+  "choices": [
+   "Gilgal",
+   "Shiloh",
+   "Bethel",
+   "Shechem"
+  ],
+  "answer": 0,
+  "explanation": "An angel of the LORD came up from Gilgal to Bochim.",
+  "ref": "Judges 2:1"
+ },
+ {
+  "id": "judges-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say he had sworn to Israel's fathers about the land?",
+  "choices": [
+   "To bring them unto it",
+   "To give it to Moab",
+   "To keep it empty",
+   "To give it to Esau"
+  ],
+  "answer": 0,
+  "explanation": "I have brought you unto the land which I sware unto your fathers.",
+  "ref": "Judges 2:1"
+ },
+ {
+  "id": "judges-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the angel ask the people about their disobedience?",
+  "choices": [
+   "Why have ye done this?",
+   "Who told you?",
+   "How long?",
+   "Where is your leader?"
+  ],
+  "answer": 0,
+  "explanation": "Ye have not obeyed my voice: why have ye done this?",
+  "ref": "Judges 2:2"
+ },
+ {
+  "id": "judges-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the LORD made Israel do, as the angel said?",
+  "choices": [
+   "Go up out of Egypt",
+   "Cross the Red sea alone",
+   "Build a tabernacle",
+   "Choose a king"
+  ],
+  "answer": 0,
+  "explanation": "I made you to go up out of Egypt.",
+  "ref": "Judges 2:1"
+ },
+ {
+  "id": "judges-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Of whom is it said they had seen all the great works of the LORD?",
+  "choices": [
+   "The elders that outlived Joshua",
+   "The judges",
+   "The Canaanites",
+   "Caleb alone"
+  ],
+  "answer": 0,
+  "explanation": "The elders that outlived Joshua, who had seen all the great works of the LORD.",
+  "ref": "Judges 2:7"
+ },
+ {
+  "id": "judges-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "On which side of the hill Gaash was Joshua buried?",
+  "choices": [
+   "The north side",
+   "The south side",
+   "The east side",
+   "The west side"
+  ],
+  "answer": 0,
+  "explanation": "In Timnath-heres, in the mount of Ephraim, on the north side of the hill Gaash.",
+  "ref": "Judges 2:9"
+ },
+ {
+  "id": "judges-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do to Israel so that they could not stand before their enemies?",
+  "choices": [
+   "Sold them into their enemies' hands",
+   "Took away their cities",
+   "Shut the heavens",
+   "Sent a plague"
+  ],
+  "answer": 0,
+  "explanation": "He sold them into the hands of their enemies round about.",
+  "ref": "Judges 2:14"
+ },
+ {
+  "id": "judges-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was against Israel wherever they went out?",
+  "choices": [
+   "The hand of the LORD",
+   "The armies of Moab",
+   "The plague",
+   "The wilderness"
+  ],
+  "answer": 0,
+  "explanation": "Whithersoever they went out, the hand of the LORD was against them for evil.",
+  "ref": "Judges 2:15"
+ },
+ {
+  "id": "judges-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the chapter say Israel did after other gods?",
+  "choices": [
+   "Went a whoring after them",
+   "Fought against them",
+   "Hid from them",
+   "Taxed them"
+  ],
+  "answer": 0,
+  "explanation": "They went a whoring after other gods, and bowed themselves unto them.",
+  "ref": "Judges 2:17"
+ },
+ {
+  "id": "judges-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How quickly did they turn out of the way of their fathers?",
+  "choices": [
+   "Quickly",
+   "After forty years",
+   "After a century",
+   "After a generation"
+  ],
+  "answer": 0,
+  "explanation": "They turned quickly out of the way which their fathers walked in.",
+  "ref": "Judges 2:17"
+ },
+ {
+  "id": "judges-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did the LORD deliver them for the judge?",
+  "choices": [
+   "All the days of the judge",
+   "Seven years",
+   "Forty years",
+   "One year"
+  ],
+  "answer": 0,
+  "explanation": "Delivered them out of the hand of their enemies all the days of the judge.",
+  "ref": "Judges 2:18"
+ },
+ {
+  "id": "judges-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel not cease from after the judge died?",
+  "choices": [
+   "Their own doings and stubborn way",
+   "Offerings",
+   "Prayer",
+   "Pilgrimage"
+  ],
+  "answer": 0,
+  "explanation": "They ceased not from their own doings, nor from their stubborn way.",
+  "ref": "Judges 2:19"
+ },
+ {
+  "id": "judges-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Israel had transgressed?",
+  "choices": [
+   "His covenant",
+   "The law of the king",
+   "The feast of Passover",
+   "The altar at Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "This people hath transgressed my covenant which I commanded their fathers.",
+  "ref": "Judges 2:20"
+ },
+ {
+  "id": "judges-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose hand did the LORD refuse to deliver the nations into?",
+  "choices": [
+   "Joshua's",
+   "Judah's",
+   "Caleb's",
+   "Othniel's"
+  ],
+  "answer": 0,
+  "explanation": "Neither delivered he them into the hand of Joshua.",
+  "ref": "Judges 2:23"
+ },
+ {
+  "id": "judges-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the LORD leave the nations?",
+  "choices": [
+   "Without driving them out hastily",
+   "By driving them out swiftly",
+   "By sending them to Egypt",
+   "By giving them cities"
+  ],
+  "answer": 0,
+  "explanation": "The LORD left those nations, without driving them out hastily.",
+  "ref": "Judges 2:23"
+ },
+ {
   "id": "old-judges-3-1",
   "chapter": 3,
   "level": "beginner",
