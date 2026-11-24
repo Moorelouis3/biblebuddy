@@ -20288,6 +20288,646 @@
   "ref": "Deuteronomy 29:29"
  },
  {
+  "id": "deuteronomy-29-e-01",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who called all Israel together and spoke to them?",
+  "choices": [
+   "Moses",
+   "Joshua",
+   "Aaron",
+   "Eleazar"
+  ],
+  "answer": 0,
+  "explanation": "Moses called unto all Israel, and said unto them, Ye have seen all that the LORD did.",
+  "ref": "Deuteronomy 29:2"
+ },
+ {
+  "id": "deuteronomy-29-e-02",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which land had Israel seen the LORD's great signs and miracles?",
+  "choices": [
+   "Egypt",
+   "Moab",
+   "Edom",
+   "Midian"
+  ],
+  "answer": 0,
+  "explanation": "Ye have seen all that the LORD did before your eyes in the land of Egypt.",
+  "ref": "Deuteronomy 29:2"
+ },
+ {
+  "id": "deuteronomy-29-e-03",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long had Moses led Israel in the wilderness?",
+  "choices": [
+   "Forty years",
+   "Seven years",
+   "Twenty years",
+   "Seventy years"
+  ],
+  "answer": 0,
+  "explanation": "I have led you forty years in the wilderness.",
+  "ref": "Deuteronomy 29:5"
+ },
+ {
+  "id": "deuteronomy-29-e-04",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had not waxed old upon Israel in the wilderness?",
+  "choices": [
+   "Their clothes and shoes",
+   "Their tents",
+   "Their flocks",
+   "Their swords"
+  ],
+  "answer": 0,
+  "explanation": "Your clothes are not waxen old upon you, and thy shoe is not waxen old upon thy foot.",
+  "ref": "Deuteronomy 29:5"
+ },
+ {
+  "id": "deuteronomy-29-e-05",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel do to Sihon and Og when they came out to battle?",
+  "choices": [
+   "Smote them",
+   "Made peace with them",
+   "Fled from them",
+   "Paid them tribute"
+  ],
+  "answer": 0,
+  "explanation": "Sihon... and Og... came out against us unto battle, and we smote them.",
+  "ref": "Deuteronomy 29:7"
+ },
+ {
+  "id": "deuteronomy-29-e-06",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel take from Sihon and Og?",
+  "choices": [
+   "Their land",
+   "Their gold",
+   "Their gods",
+   "Their ships"
+  ],
+  "answer": 0,
+  "explanation": "And we took their land, and gave it for an inheritance.",
+  "ref": "Deuteronomy 29:8"
+ },
+ {
+  "id": "deuteronomy-29-e-07",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which three fathers did the LORD swear to be a God unto their seed?",
+  "choices": [
+   "Abraham, Isaac and Jacob",
+   "Noah, Shem and Abraham",
+   "Isaac, Jacob and Joseph",
+   "Abraham, Lot and Isaac"
+  ],
+  "answer": 0,
+  "explanation": "As he hath sworn unto thy fathers, to Abraham, to Isaac, and to Jacob.",
+  "ref": "Deuteronomy 29:13"
+ },
+ {
+  "id": "deuteronomy-29-e-08",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which cities was the cursed land compared to?",
+  "choices": [
+   "Sodom and Gomorrah",
+   "Jericho and Ai",
+   "Tyre and Sidon",
+   "Hebron and Gerar"
+  ],
+  "answer": 0,
+  "explanation": "Like the overthrow of Sodom, and Gomorrah, Admah, and Zeboim.",
+  "ref": "Deuteronomy 29:23"
+ },
+ {
+  "id": "deuteronomy-29-e-09",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were Israel told to do with the words of this covenant?",
+  "choices": [
+   "Keep them and do them",
+   "Hide them in the ark",
+   "Sing them in the camp",
+   "Carry them to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Keep therefore the words of this covenant, and do them.",
+  "ref": "Deuteronomy 29:9"
+ },
+ {
+  "id": "deuteronomy-29-e-10",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would all nations ask about the cursed land?",
+  "choices": [
+   "Wherefore hath the LORD done thus unto this land?",
+   "Who is king of this land?",
+   "Where is the river?",
+   "Who has taken the harvest?"
+  ],
+  "answer": 0,
+  "explanation": "Even all nations shall say, Wherefore hath the LORD done thus unto this land?",
+  "ref": "Deuteronomy 29:24"
+ },
+ {
+  "id": "deuteronomy-29-m-01",
+  "chapter": 29,
+  "level": "medium",
+  "category": "place",
+  "question": "Beside the covenant made in the land of Moab, in which place had the LORD made an earlier covenant?",
+  "choices": [
+   "Kadesh",
+   "Beer",
+   "Horeb",
+   "Hebron"
+  ],
+  "answer": 2,
+  "explanation": "The covenant which he made with them in Horeb.",
+  "ref": "Deuteronomy 29:1"
+ },
+ {
+  "id": "deuteronomy-29-m-02",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why had Israel not eaten bread or drunk wine in the wilderness?",
+  "choices": [
+   "Because there was a famine",
+   "Because the priests forbade it",
+   "That they might know the LORD is their God",
+   "Because the manna was enough"
+  ],
+  "answer": 2,
+  "explanation": "Ye have not eaten bread, neither have ye drunk wine or strong drink: that ye might know that I am the LORD your God.",
+  "ref": "Deuteronomy 29:6"
+ },
+ {
+  "id": "deuteronomy-29-m-03",
+  "chapter": 29,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom was the land of Sihon and Og given?",
+  "choices": [
+   "Judah, Benjamin and Levi",
+   "Simeon, Dan and Asher",
+   "The Reubenites, Gadites and half tribe of Manasseh",
+   "Ephraim, Issachar and Zebulun"
+  ],
+  "answer": 2,
+  "explanation": "Gave it for an inheritance unto the Reubenites, and to the Gadites, and to the half tribe of Manasseh.",
+  "ref": "Deuteronomy 29:8"
+ },
+ {
+  "id": "deuteronomy-29-m-04",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were Israel to keep the words of this covenant?",
+  "choices": [
+   "That they may have a king",
+   "That they may conquer Egypt",
+   "That they may prosper in all they do",
+   "That they may avoid war"
+  ],
+  "answer": 2,
+  "explanation": "Keep therefore the words of this covenant, and do them, that ye may prosper in all that ye do.",
+  "ref": "Deuteronomy 29:9"
+ },
+ {
+  "id": "deuteronomy-29-m-05",
+  "chapter": 29,
+  "level": "medium",
+  "category": "person",
+  "question": "Which leaders stood before the LORD with all the men of Israel?",
+  "choices": [
+   "Priests, kings and judges",
+   "Prophets, scribes and singers",
+   "Captains, elders and officers",
+   "Levites, craftsmen and shepherds"
+  ],
+  "answer": 2,
+  "explanation": "Your captains of your tribes, your elders, and your officers, with all the men of Israel.",
+  "ref": "Deuteronomy 29:10"
+ },
+ {
+  "id": "deuteronomy-29-m-06",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How far did the covenant reach among the strangers in the camp?",
+  "choices": [
+   "From the priest to the king",
+   "From the old to the young only",
+   "From the hewer of wood to the drawer of water",
+   "From the east to the west"
+  ],
+  "answer": 2,
+  "explanation": "The stranger that is in thy camp, from the hewer of thy wood unto the drawer of thy water.",
+  "ref": "Deuteronomy 29:11"
+ },
+ {
+  "id": "deuteronomy-29-m-07",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD want to establish Israel to be, as He had said?",
+  "choices": [
+   "A kingdom of the earth",
+   "A nation without wars",
+   "A people unto Himself",
+   "A people of the sea"
+  ],
+  "answer": 2,
+  "explanation": "That he may establish thee to day for a people unto himself, and that he may be unto thee a God.",
+  "ref": "Deuteronomy 29:13"
+ },
+ {
+  "id": "deuteronomy-29-m-08",
+  "chapter": 29,
+  "level": "medium",
+  "category": "person",
+  "question": "Who besides those present was also included in the covenant?",
+  "choices": [
+   "Only the Levites",
+   "The nations of Canaan",
+   "Him that was not there that day",
+   "The kings of Moab"
+  ],
+  "answer": 2,
+  "explanation": "With him that standeth here with us this day... and also with him that is not here with us this day.",
+  "ref": "Deuteronomy 29:15"
+ },
+ {
+  "id": "deuteronomy-29-m-09",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the idols of the nations made of?",
+  "choices": [
+   "Clay and straw",
+   "Brass and iron",
+   "Wood and stone, silver and gold",
+   "Bone and horn"
+  ],
+  "answer": 2,
+  "explanation": "Their idols, wood and stone, silver and gold.",
+  "ref": "Deuteronomy 29:17"
+ },
+ {
+  "id": "deuteronomy-29-m-10",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of root did Moses warn might grow among Israel?",
+  "choices": [
+   "One that beareth thorns and briers",
+   "One that beareth figs",
+   "One that beareth gall and wormwood",
+   "One that beareth no fruit"
+  ],
+  "answer": 2,
+  "explanation": "Lest there should be among you a root that beareth gall and wormwood.",
+  "ref": "Deuteronomy 29:18"
+ },
+ {
+  "id": "deuteronomy-29-m-11",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose gods was a man not to turn his heart to serve?",
+  "choices": [
+   "The gods of Egypt only",
+   "The gods of Sihon",
+   "The gods of these nations",
+   "The gods of the stranger in the camp"
+  ],
+  "answer": 2,
+  "explanation": "Whose heart turneth away this day from the LORD our God, to go and serve the gods of these nations.",
+  "ref": "Deuteronomy 29:18"
+ },
+ {
+  "id": "deuteronomy-29-m-12",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the LORD blot out from under heaven?",
+  "choices": [
+   "The man's house",
+   "The man's flocks",
+   "The man's name",
+   "The man's land"
+  ],
+  "answer": 2,
+  "explanation": "The LORD shall blot out his name from under heaven.",
+  "ref": "Deuteronomy 29:20"
+ },
+ {
+  "id": "deuteronomy-29-m-13",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would men say was the reason for the land's ruin?",
+  "choices": [
+   "They had gone to war",
+   "They had grown too rich",
+   "They had forsaken the covenant of the LORD",
+   "They had neglected the harvest"
+  ],
+  "answer": 2,
+  "explanation": "Because they have forsaken the covenant of the LORD God of their fathers.",
+  "ref": "Deuteronomy 29:25"
+ },
+ {
+  "id": "deuteronomy-29-m-14",
+  "chapter": 29,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the LORD cast the people when He rooted them out?",
+  "choices": [
+   "Into the wilderness",
+   "Into the sea",
+   "Into another land",
+   "Into the north"
+  ],
+  "answer": 2,
+  "explanation": "The LORD rooted them out of their land... and cast them into another land.",
+  "ref": "Deuteronomy 29:28"
+ },
+ {
+  "id": "deuteronomy-29-m-15",
+  "chapter": 29,
+  "level": "medium",
+  "category": "person",
+  "question": "Besides the men, who else stood before the LORD that day?",
+  "choices": [
+   "The little ones, wives and strangers",
+   "The priests only",
+   "The kings of Moab",
+   "The old men only"
+  ],
+  "answer": 0,
+  "explanation": "Your little ones, your wives, and thy stranger that is in thy camp.",
+  "ref": "Deuteronomy 29:11"
+ },
+ {
+  "id": "deuteronomy-29-h-01",
+  "chapter": 29,
+  "level": "hard",
+  "category": "place",
+  "question": "Of which city was Sihon king?",
+  "choices": [
+   "Heshbon",
+   "Hebron",
+   "Jericho",
+   "Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "Sihon the king of Heshbon.",
+  "ref": "Deuteronomy 29:7"
+ },
+ {
+  "id": "deuteronomy-29-h-02",
+  "chapter": 29,
+  "level": "hard",
+  "category": "place",
+  "question": "Of which land was Og king?",
+  "choices": [
+   "Bashan",
+   "Moab",
+   "Edom",
+   "Heshbon"
+  ],
+  "answer": 0,
+  "explanation": "Og the king of Bashan.",
+  "ref": "Deuteronomy 29:7"
+ },
+ {
+  "id": "deuteronomy-29-h-03",
+  "chapter": 29,
+  "level": "hard",
+  "category": "place",
+  "question": "Which cities are named with Sodom and Gomorrah in the overthrow?",
+  "choices": [
+   "Admah and Zeboim",
+   "Tyre and Sidon",
+   "Gerar and Hebron",
+   "Ai and Bethel"
+  ],
+  "answer": 0,
+  "explanation": "Like the overthrow of Sodom, and Gomorrah, Admah, and Zeboim.",
+  "ref": "Deuteronomy 29:23"
+ },
+ {
+  "id": "deuteronomy-29-h-04",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why do the revealed things belong to Israel and their children for ever?",
+  "choices": [
+   "That they may do all the words of this law",
+   "That they may become kings",
+   "That they may know the future",
+   "That they may judge the nations"
+  ],
+  "answer": 0,
+  "explanation": "Those things which are revealed belong unto us and to our children for ever, that we may do all the words of this law.",
+  "ref": "Deuteronomy 29:29"
+ },
+ {
+  "id": "deuteronomy-29-h-05",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "Who would ask about the plagues of the cursed land?",
+  "choices": [
+   "The coming generation and the stranger from a far land",
+   "The priests and the Levites",
+   "The elders and the officers",
+   "The kings of Moab"
+  ],
+  "answer": 0,
+  "explanation": "The generation to come... and the stranger that shall come from a far land, shall say.",
+  "ref": "Deuteronomy 29:22"
+ },
+ {
+  "id": "deuteronomy-29-h-06",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man who blessed himself add to thirst?",
+  "choices": [
+   "Drunkenness",
+   "Hunger",
+   "Wine",
+   "Sorrow"
+  ],
+  "answer": 0,
+  "explanation": "Add drunkenness to thirst.",
+  "ref": "Deuteronomy 29:19"
+ },
+ {
+  "id": "deuteronomy-29-h-07",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would smoke against that man?",
+  "choices": [
+   "The anger and jealousy of the LORD",
+   "The fires of the altar",
+   "The smoke of the censer",
+   "The pits of the field"
+  ],
+  "answer": 0,
+  "explanation": "The anger of the LORD and his jealousy shall smoke against that man.",
+  "ref": "Deuteronomy 29:20"
+ },
+ {
+  "id": "deuteronomy-29-h-08",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the LORD do to the man out of all the tribes of Israel?",
+  "choices": [
+   "Separate him unto evil",
+   "Send him to Egypt",
+   "Stone him at the gate",
+   "Make him a servant"
+  ],
+  "answer": 0,
+  "explanation": "The LORD shall separate him unto evil out of all the tribes of Israel.",
+  "ref": "Deuteronomy 29:21"
+ },
+ {
+  "id": "deuteronomy-29-h-09",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of gods had the people served, according to the future men?",
+  "choices": [
+   "Gods they knew not and that He had not given them",
+   "Gods of the stranger they had met",
+   "Gods of their own fathers",
+   "Gods of the Egyptians"
+  ],
+  "answer": 0,
+  "explanation": "Other gods... gods whom they knew not, and whom he had not given unto them.",
+  "ref": "Deuteronomy 29:26"
+ },
+ {
+  "id": "deuteronomy-29-h-10",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what three ways did the LORD root them out of their land?",
+  "choices": [
+   "In anger, wrath and great indignation",
+   "In sword, famine and plague",
+   "In fire, flood and storm",
+   "In silence, sorrow and shame"
+  ],
+  "answer": 0,
+  "explanation": "The LORD rooted them out of their land in anger, and in wrath, and in great indignation.",
+  "ref": "Deuteronomy 29:28"
+ },
+ {
+  "id": "deuteronomy-29-h-11",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Moses call the signs Israel's eyes had seen?",
+  "choices": [
+   "Great temptations, signs and great miracles",
+   "Dreams, visions and parables",
+   "Wars, plagues and wonders",
+   "Songs, feasts and offerings"
+  ],
+  "answer": 0,
+  "explanation": "The great temptations which thine eyes have seen, the signs, and those great miracles.",
+  "ref": "Deuteronomy 29:3"
+ },
+ {
+  "id": "deuteronomy-29-h-12",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into what did Israel enter, along with the covenant?",
+  "choices": [
+   "His oath",
+   "His rest",
+   "His temple",
+   "His tent"
+  ],
+  "answer": 0,
+  "explanation": "That thou shouldest enter into covenant with the LORD thy God, and into his oath.",
+  "ref": "Deuteronomy 29:12"
+ },
+ {
+  "id": "deuteronomy-29-h-13",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides bread and wine, what had Israel not drunk in the wilderness?",
+  "choices": [
+   "Strong drink",
+   "Water",
+   "Milk",
+   "Honey"
+  ],
+  "answer": 0,
+  "explanation": "Ye have not eaten bread, neither have ye drunk wine or strong drink.",
+  "ref": "Deuteronomy 29:6"
+ },
+ {
+  "id": "deuteronomy-29-h-14",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "On whom had Israel seen the LORD act in Egypt, along with his land?",
+  "choices": [
+   "Pharaoh and all his servants",
+   "Pharaoh and the priests",
+   "The magicians only",
+   "The firstborn only"
+  ],
+  "answer": 0,
+  "explanation": "All that the LORD did... unto Pharaoh, and unto all his servants, and unto all his land.",
+  "ref": "Deuteronomy 29:2"
+ },
+ {
+  "id": "deuteronomy-29-h-15",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did the LORD command to make the covenant in Moab?",
+  "choices": [
+   "Moses",
+   "Joshua",
+   "Aaron",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "The covenant, which the LORD commanded Moses to make with the children of Israel in the land of Moab.",
+  "ref": "Deuteronomy 29:1"
+ },
+ {
   "id": "old-deuteronomy-30-1",
   "chapter": 30,
   "level": "beginner",
