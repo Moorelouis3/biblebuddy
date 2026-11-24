@@ -2960,6 +2960,646 @@
   "ref": "Judges 5:24"
  },
  {
+  "id": "judges-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Sisera ask for, and what did Jael give him?",
+  "choices": [
+   "He asked wine, she gave water",
+   "He asked water, she gave milk",
+   "He asked bread, she gave milk",
+   "He asked milk, she gave butter"
+  ],
+  "answer": 1,
+  "explanation": "He asked water, and she gave him milk.",
+  "ref": "Judges 5:25"
+ },
+ {
+  "id": "judges-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which river swept Sisera's army away?",
+  "choices": [
+   "The river Jordan",
+   "The river Arnon",
+   "The river Kishon",
+   "The river Jabbok"
+  ],
+  "answer": 2,
+  "explanation": "The river of Kishon swept them away, that ancient river.",
+  "ref": "Judges 5:21"
+ },
+ {
+  "id": "judges-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose mother looked out of a window waiting for him?",
+  "choices": [
+   "Barak's",
+   "Jael's",
+   "Deborah's",
+   "Sisera's"
+  ],
+  "answer": 3,
+  "explanation": "The mother of Sisera looked out at a window, and cried through the lattice.",
+  "ref": "Judges 5:28"
+ },
+ {
+  "id": "judges-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which place was cursed for not helping the LORD?",
+  "choices": [
+   "Meroz",
+   "Taanach",
+   "Megiddo",
+   "Gilead"
+  ],
+  "answer": 0,
+  "explanation": "Curse ye Meroz, because they came not to the help of the LORD.",
+  "ref": "Judges 5:23"
+ },
+ {
+  "id": "judges-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did the land have rest after the song?",
+  "choices": [
+   "Eighty years",
+   "Forty years",
+   "Twenty years",
+   "Seven years"
+  ],
+  "answer": 1,
+  "explanation": "The song ends, And the land had rest forty years.",
+  "ref": "Judges 5:31"
+ },
+ {
+  "id": "judges-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jael use to smite Sisera?",
+  "choices": [
+   "A sword",
+   "A spear",
+   "The workmen's hammer",
+   "A sling"
+  ],
+  "answer": 2,
+  "explanation": "She put her right hand to the workmen's hammer, and with the hammer she smote Sisera.",
+  "ref": "Judges 5:26"
+ },
+ {
+  "id": "judges-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Sisera fall down dead?",
+  "choices": [
+   "In his chariot",
+   "At the river",
+   "In the gate",
+   "At Jael's feet"
+  ],
+  "answer": 3,
+  "explanation": "At her feet he bowed, he fell: where he bowed, there he fell down dead.",
+  "ref": "Judges 5:27"
+ },
+ {
+  "id": "judges-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which two tribes jeoparded their lives unto the death?",
+  "choices": [
+   "Zebulun and Naphtali",
+   "Judah and Simeon",
+   "Reuben and Gad",
+   "Ephraim and Dan"
+  ],
+  "answer": 0,
+  "explanation": "Zebulun and Naphtali were a people that jeoparded their lives unto the death.",
+  "ref": "Judges 5:18"
+ },
+ {
+  "id": "judges-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said, Curse ye Meroz?",
+  "choices": [
+   "Deborah",
+   "The angel of the LORD",
+   "Barak",
+   "Jael"
+  ],
+  "answer": 1,
+  "explanation": "Curse ye Meroz, said the angel of the LORD.",
+  "ref": "Judges 5:23"
+ },
+ {
+  "id": "judges-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title does Deborah give herself in the song?",
+  "choices": [
+   "A queen of Israel",
+   "A judge of Canaan",
+   "A mother in Israel",
+   "A daughter of Zion"
+  ],
+  "answer": 2,
+  "explanation": "Until that I Deborah arose, that I arose a mother in Israel.",
+  "ref": "Judges 5:7"
+ },
+ {
+  "id": "judges-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the highways in the days of Shamgar and Jael?",
+  "choices": [
+   "They were guarded",
+   "They were paved",
+   "They were burned",
+   "They were unoccupied"
+  ],
+  "answer": 3,
+  "explanation": "In the days of Shamgar and Jael the highways were unoccupied, and travelers walked through byways.",
+  "ref": "Judges 5:6"
+ },
+ {
+  "id": "judges-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel choose before there was war in the gates?",
+  "choices": [
+   "New gods",
+   "A new king",
+   "New laws",
+   "A new land"
+  ],
+  "answer": 0,
+  "explanation": "They chose new gods; then was war in the gates.",
+  "ref": "Judges 5:8"
+ },
+ {
+  "id": "judges-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the kings of Canaan fight?",
+  "choices": [
+   "At Hazor by the sea",
+   "In Taanach by the waters of Megiddo",
+   "In Kedesh by Tabor",
+   "At Bethel by Ramah"
+  ],
+  "answer": 1,
+  "explanation": "The kings of Canaan fought in Taanach by the waters of Megiddo.",
+  "ref": "Judges 5:19"
+ },
+ {
+  "id": "judges-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the kings of Canaan take from the battle?",
+  "choices": [
+   "Much silver",
+   "A great spoil",
+   "No gain of money",
+   "Many captives"
+  ],
+  "answer": 2,
+  "explanation": "They fought in Taanach by the waters of Megiddo; they took no gain of money.",
+  "ref": "Judges 5:19"
+ },
+ {
+  "id": "judges-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was Barak sent into the valley?",
+  "choices": [
+   "By chariot",
+   "On horseback",
+   "By night",
+   "On foot"
+  ],
+  "answer": 3,
+  "explanation": "Barak was sent on foot into the valley.",
+  "ref": "Judges 5:15"
+ },
+ {
+  "id": "judges-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which tribe's princes were with Deborah and Barak?",
+  "choices": [
+   "Issachar",
+   "Reuben",
+   "Asher",
+   "Dan"
+  ],
+  "answer": 0,
+  "explanation": "The princes of Issachar were with Deborah; even Issachar, and also Barak.",
+  "ref": "Judges 5:15"
+ },
+ {
+  "id": "judges-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Which mountain melted from before the LORD?",
+  "choices": [
+   "Tabor",
+   "Sinai",
+   "Carmel",
+   "Ephraim"
+  ],
+  "answer": 1,
+  "explanation": "The mountains melted from before the LORD, even that Sinai.",
+  "ref": "Judges 5:5"
+ },
+ {
+  "id": "judges-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Sisera's mother ask at the window?",
+  "choices": [
+   "Where has my son gone?",
+   "Has Barak been slain?",
+   "Why is his chariot so long in coming?",
+   "Why is the tent silent?"
+  ],
+  "answer": 2,
+  "explanation": "She cried, Why is his chariot so long in coming? why tarry the wheels of his chariots?",
+  "ref": "Judges 5:28"
+ },
+ {
+  "id": "judges-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are those who love the LORD to be like?",
+  "choices": [
+   "The stars in their courses",
+   "A tree planted by waters",
+   "A shield in the gates",
+   "The sun when he goeth forth in his might"
+  ],
+  "answer": 3,
+  "explanation": "Let them that love him be as the sun when he goeth forth in his might.",
+  "ref": "Judges 5:31"
+ },
+ {
+  "id": "judges-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Gilead abide?",
+  "choices": [
+   "Beyond Jordan",
+   "On the sea shore",
+   "In ships",
+   "Among the sheepfolds"
+  ],
+  "answer": 0,
+  "explanation": "Gilead abode beyond Jordan.",
+  "ref": "Judges 5:17"
+ },
+ {
+  "id": "judges-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Dan remain, according to the song?",
+  "choices": [
+   "In sheepfolds",
+   "In ships",
+   "Beyond Jordan",
+   "In the high places"
+  ],
+  "answer": 1,
+  "explanation": "And why did Dan remain in ships?",
+  "ref": "Judges 5:17"
+ },
+ {
+  "id": "judges-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Asher continue?",
+  "choices": [
+   "In ships",
+   "Beyond Jordan",
+   "On the sea shore",
+   "Among the sheepfolds"
+  ],
+  "answer": 2,
+  "explanation": "Asher continued on the sea shore, and abode in his breaches.",
+  "ref": "Judges 5:17"
+ },
+ {
+  "id": "judges-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When the LORD went out of Seir, what did the earth do?",
+  "choices": [
+   "It opened",
+   "It burned",
+   "It was still",
+   "It trembled"
+  ],
+  "answer": 3,
+  "explanation": "LORD, when thou wentest out of Seir, the earth trembled, and the heavens dropped.",
+  "ref": "Judges 5:4"
+ },
+ {
+  "id": "judges-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Meroz cursed?",
+  "choices": [
+   "They came not to the help of the LORD",
+   "They sheltered Sisera",
+   "They worshipped Baal",
+   "They refused tribute"
+  ],
+  "answer": 0,
+  "explanation": "Curse ye the inhabitants thereof; because they came not to the help of the LORD against the mighty.",
+  "ref": "Judges 5:23"
+ },
+ {
+  "id": "judges-5-m-15",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Sisera's wise ladies say the army had done?",
+  "choices": [
+   "Fled to Hazor",
+   "Divided the prey",
+   "Made peace",
+   "Lost the chariots"
+  ],
+  "answer": 1,
+  "explanation": "Have they not sped? have they not divided the prey?",
+  "ref": "Judges 5:29–30"
+ },
+ {
+  "id": "judges-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Among how many in Israel was no shield or spear seen?",
+  "choices": [
+   "Ten thousand",
+   "Nine hundred",
+   "Forty thousand",
+   "Six hundred"
+  ],
+  "answer": 2,
+  "explanation": "Was there a shield or spear seen among forty thousand in Israel?",
+  "ref": "Judges 5:8"
+ },
+ {
+  "id": "judges-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of Zebulun came those who handled what?",
+  "choices": [
+   "The sword of valour",
+   "The staff of the judge",
+   "The harp of the singer",
+   "The pen of the writer"
+  ],
+  "answer": 3,
+  "explanation": "Out of Zebulun came they that handle the pen of the writer.",
+  "ref": "Judges 5:14"
+ },
+ {
+  "id": "judges-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of Ephraim there was a root of them against whom?",
+  "choices": [
+   "Amalek",
+   "Canaan",
+   "Moab",
+   "Midian"
+  ],
+  "answer": 0,
+  "explanation": "Out of Ephraim was there a root of them against Amalek.",
+  "ref": "Judges 5:14"
+ },
+ {
+  "id": "judges-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of Machir came down who?",
+  "choices": [
+   "Archers",
+   "Governors",
+   "Priests",
+   "Singers"
+  ],
+  "answer": 1,
+  "explanation": "Out of Machir came down governors.",
+  "ref": "Judges 5:14"
+ },
+ {
+  "id": "judges-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what animals did those ride whom the song tells to speak?",
+  "choices": [
+   "Camels",
+   "Horses",
+   "White asses",
+   "Mules"
+  ],
+  "answer": 2,
+  "explanation": "Speak, ye that ride on white asses, ye that sit in judgment.",
+  "ref": "Judges 5:10"
+ },
+ {
+  "id": "judges-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the song say Jael did to Sisera's head?",
+  "choices": [
+   "She covered it",
+   "She bound it",
+   "She struck it with a rock",
+   "She smote it off"
+  ],
+  "answer": 3,
+  "explanation": "She smote Sisera, she smote off his head.",
+  "ref": "Judges 5:26"
+ },
+ {
+  "id": "judges-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jael bring forth in a lordly dish?",
+  "choices": [
+   "Butter",
+   "Bread",
+   "Honey",
+   "Wine"
+  ],
+  "answer": 0,
+  "explanation": "She brought forth butter in a lordly dish.",
+  "ref": "Judges 5:25"
+ },
+ {
+  "id": "judges-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Sisera's mother look out?",
+  "choices": [
+   "From the city wall",
+   "At a window",
+   "From a tent door",
+   "From a hill"
+  ],
+  "answer": 1,
+  "explanation": "The mother of Sisera looked out at a window, and cried through the lattice.",
+  "ref": "Judges 5:28"
+ },
+ {
+  "id": "judges-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the ladies say each man would get as prey?",
+  "choices": [
+   "A chariot",
+   "A tent",
+   "A damsel or two",
+   "Silver and gold"
+  ],
+  "answer": 2,
+  "explanation": "To every man a damsel or two.",
+  "ref": "Judges 5:30"
+ },
+ {
+  "id": "judges-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of prey did they say Sisera would have?",
+  "choices": [
+   "Gold and silver",
+   "Iron chariots",
+   "Flocks and herds",
+   "Divers colours of needlework"
+  ],
+  "answer": 3,
+  "explanation": "To Sisera a prey of divers colours of needlework.",
+  "ref": "Judges 5:30"
+ },
+ {
+  "id": "judges-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides Shamgar, in whose days were the highways unoccupied?",
+  "choices": [
+   "Jael",
+   "Ehud",
+   "Othniel",
+   "Barak"
+  ],
+  "answer": 0,
+  "explanation": "In the days of Shamgar the son of Anath, in the days of Jael, the highways were unoccupied.",
+  "ref": "Judges 5:6"
+ },
+ {
+  "id": "judges-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tribe does the song address right after Ephraim?",
+  "choices": [
+   "Judah",
+   "Benjamin",
+   "Zebulun",
+   "Issachar"
+  ],
+  "answer": 1,
+  "explanation": "After thee, Benjamin, among thy people.",
+  "ref": "Judges 5:14"
+ },
+ {
+  "id": "judges-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is told to 'lead thy captivity captive'?",
+  "choices": [
+   "Barak",
+   "Deborah",
+   "Jael",
+   "Issachar"
+  ],
+  "answer": 0,
+  "explanation": "The song says, Arise, Barak, and lead thy captivity captive, thou son of Abinoam.",
+  "ref": "Judges 5:12"
+ },
+ {
+  "id": "judges-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What broke the horsehoofs, according to the song?",
+  "choices": [
+   "The fall of the hail",
+   "The fords of Kishon",
+   "The swords of Israel",
+   "The pransings of their mighty ones"
+  ],
+  "answer": 3,
+  "explanation": "Then were the horsehoofs broken by the means of the pransings of their mighty ones.",
+  "ref": "Judges 5:22"
+ },
+ {
+  "id": "judges-5-h-15",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the song first say to praise the LORD for?",
+  "choices": [
+   "The avenging of Israel",
+   "The giving of the law",
+   "The land of promise",
+   "The slaying of Sisera"
+  ],
+  "answer": 0,
+  "explanation": "Praise ye the LORD for the avenging of Israel, when the people willingly offered themselves.",
+  "ref": "Judges 5:2"
+ },
+ {
   "id": "old-judges-6-1",
   "chapter": 6,
   "level": "beginner",
