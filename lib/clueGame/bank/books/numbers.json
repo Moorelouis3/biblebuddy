@@ -14496,6 +14496,646 @@
   "ref": "Numbers 21:21–35"
  },
  {
+  "id": "numbers-21-e-01",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which Canaanite king fought Israel and took some prisoners?",
+  "choices": [
+   "King Sihon",
+   "King Arad",
+   "King Og",
+   "King Balak"
+  ],
+  "answer": 1,
+  "explanation": "King Arad the Canaanite fought against Israel, and took some of them prisoners.",
+  "ref": "Numbers 21:1"
+ },
+ {
+  "id": "numbers-21-e-02",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "What name did the LORD give the place where the Canaanites were destroyed?",
+  "choices": [
+   "Meribah",
+   "Hormah",
+   "Oboth",
+   "Beer"
+  ],
+  "answer": 1,
+  "explanation": "He called the name of the place Hormah.",
+  "ref": "Numbers 21:3"
+ },
+ {
+  "id": "numbers-21-e-03",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say their soul loathed?",
+  "choices": [
+   "The bitter water",
+   "The light bread",
+   "The quail",
+   "The cold nights"
+  ],
+  "answer": 1,
+  "explanation": "Our soul loatheth this light bread.",
+  "ref": "Numbers 21:5"
+ },
+ {
+  "id": "numbers-21-e-04",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD send among the people when they spoke against him?",
+  "choices": [
+   "Locusts",
+   "Fiery serpents",
+   "A plague of frogs",
+   "Hailstones"
+  ],
+  "answer": 1,
+  "explanation": "The LORD sent fiery serpents among the people, and they bit the people.",
+  "ref": "Numbers 21:6"
+ },
+ {
+  "id": "numbers-21-e-05",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people ask Moses to do after they confessed their sin?",
+  "choices": [
+   "Offer a sacrifice",
+   "Pray to the LORD to take away the serpents",
+   "Lead them back to Egypt",
+   "Strike the rock"
+  ],
+  "answer": 1,
+  "explanation": "They said, Pray unto the LORD, that he take away the serpents from us. And Moses prayed.",
+  "ref": "Numbers 21:7"
+ },
+ {
+  "id": "numbers-21-e-06",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses set the brass serpent upon?",
+  "choices": [
+   "A rock",
+   "A pole",
+   "The ark",
+   "An altar"
+  ],
+  "answer": 1,
+  "explanation": "Moses made a serpent of brass, and put it upon a pole.",
+  "ref": "Numbers 21:9"
+ },
+ {
+  "id": "numbers-21-e-07",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of the Amorites refused to let Israel pass?",
+  "choices": [
+   "Og",
+   "Sihon",
+   "Arad",
+   "Balak"
+  ],
+  "answer": 1,
+  "explanation": "Sihon would not suffer Israel to pass through his border.",
+  "ref": "Numbers 21:23"
+ },
+ {
+  "id": "numbers-21-e-08",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Bashan went out against Israel?",
+  "choices": [
+   "Sihon",
+   "Og",
+   "Arad",
+   "Moab"
+  ],
+  "answer": 1,
+  "explanation": "Og the king of Bashan went out against them, he, and all his people.",
+  "ref": "Numbers 21:33"
+ },
+ {
+  "id": "numbers-21-e-09",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "What was the city of Sihon the king of the Amorites?",
+  "choices": [
+   "Edrei",
+   "Heshbon",
+   "Jahaz",
+   "Medeba"
+  ],
+  "answer": 1,
+  "explanation": "Heshbon was the city of Sihon the king of the Amorites.",
+  "ref": "Numbers 21:26"
+ },
+ {
+  "id": "numbers-21-e-10",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses about Og?",
+  "choices": [
+   "Flee from him",
+   "Fear him not",
+   "Make peace with him",
+   "Wait for Joshua"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said unto Moses, Fear him not: for I have delivered him into thy hand.",
+  "ref": "Numbers 21:34"
+ },
+ {
+  "id": "numbers-21-m-01",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people say they lacked in the wilderness?",
+  "choices": [
+   "Meat and wine",
+   "Shade and oil",
+   "Salt and fire",
+   "Bread and water"
+  ],
+  "answer": 3,
+  "explanation": "There is no bread, neither is there any water.",
+  "ref": "Numbers 21:5"
+ },
+ {
+  "id": "numbers-21-m-02",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people confess to Moses?",
+  "choices": [
+   "We were deceived",
+   "We were hungry",
+   "We were afraid",
+   "We have sinned"
+  ],
+  "answer": 3,
+  "explanation": "We have sinned, for we have spoken against the LORD, and against thee.",
+  "ref": "Numbers 21:7"
+ },
+ {
+  "id": "numbers-21-m-03",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to many of the people who were bitten?",
+  "choices": [
+   "They ran away",
+   "They went blind",
+   "They became lame",
+   "They died"
+  ],
+  "answer": 3,
+  "explanation": "The LORD sent fiery serpents among the people, and much people of Israel died.",
+  "ref": "Numbers 21:6"
+ },
+ {
+  "id": "numbers-21-m-04",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which way did Israel journey from Mount Hor?",
+  "choices": [
+   "Through Edom's gates",
+   "By the way of Bashan",
+   "Along the Jordan",
+   "By the way of the Red sea"
+  ],
+  "answer": 3,
+  "explanation": "They journeyed from mount Hor by the way of the Red sea, to compass the land of Edom.",
+  "ref": "Numbers 21:4"
+ },
+ {
+  "id": "numbers-21-m-05",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel do to Arad's cities?",
+  "choices": [
+   "Rebuilt them",
+   "Left them alone",
+   "Sold them",
+   "Utterly destroyed them"
+  ],
+  "answer": 3,
+  "explanation": "The LORD delivered up the Canaanites; and they utterly destroyed them and their cities.",
+  "ref": "Numbers 21:3"
+ },
+ {
+  "id": "numbers-21-m-06",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel sing at the well?",
+  "choices": [
+   "Rise up, O LORD",
+   "Praise the LORD, O my soul",
+   "Sing unto the LORD a new song",
+   "Spring up, O well"
+  ],
+  "answer": 3,
+  "explanation": "Then Israel sang this song, Spring up, O well; sing ye unto it.",
+  "ref": "Numbers 21:17"
+ },
+ {
+  "id": "numbers-21-m-07",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD tell Moses at Beer?",
+  "choices": [
+   "Strike the rock",
+   "Make a brass serpent",
+   "Fear him not",
+   "Gather the people together, and I will give them water"
+  ],
+  "answer": 3,
+  "explanation": "Gather the people together, and I will give them water.",
+  "ref": "Numbers 21:16"
+ },
+ {
+  "id": "numbers-21-m-08",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Who dug the well that Israel sang about?",
+  "choices": [
+   "The Amorites",
+   "The priests",
+   "The Levites",
+   "The princes and nobles of the people"
+  ],
+  "answer": 3,
+  "explanation": "The princes digged the well, the nobles of the people digged it.",
+  "ref": "Numbers 21:18"
+ },
+ {
+  "id": "numbers-21-m-09",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel ask Sihon to let them do?",
+  "choices": [
+   "Buy his cities",
+   "Join his army",
+   "Trade with Moab",
+   "Pass through his land"
+  ],
+  "answer": 3,
+  "explanation": "Let me pass through thy land.",
+  "ref": "Numbers 21:22"
+ },
+ {
+  "id": "numbers-21-m-10",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "To which place did Sihon come to fight Israel?",
+  "choices": [
+   "Edrei",
+   "Mattanah",
+   "Beer",
+   "Jahaz"
+  ],
+  "answer": 3,
+  "explanation": "Sihon went out against Israel into the wilderness: and he came to Jahaz, and fought.",
+  "ref": "Numbers 21:23"
+ },
+ {
+  "id": "numbers-21-m-11",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Israel strike down Sihon?",
+  "choices": [
+   "With stones",
+   "With arrows only",
+   "With fire",
+   "With the edge of the sword"
+  ],
+  "answer": 3,
+  "explanation": "Israel smote him with the edge of the sword, and possessed his land.",
+  "ref": "Numbers 21:24"
+ },
+ {
+  "id": "numbers-21-m-12",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "What was Arnon?",
+  "choices": [
+   "A mountain of Edom",
+   "A city of Og",
+   "A well of the princes",
+   "The border of Moab"
+  ],
+  "answer": 3,
+  "explanation": "Arnon is the border of Moab, between Moab and the Amorites.",
+  "ref": "Numbers 21:13"
+ },
+ {
+  "id": "numbers-21-m-13",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose people did the song call people of Chemosh?",
+  "choices": [
+   "Edom",
+   "Ammon",
+   "Bashan",
+   "Moab"
+  ],
+  "answer": 3,
+  "explanation": "Woe to thee, Moab! thou art undone, O people of Chemosh.",
+  "ref": "Numbers 21:29"
+ },
+ {
+  "id": "numbers-21-m-14",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel do to Og and his people?",
+  "choices": [
+   "Took them captive",
+   "Made peace with them",
+   "Drove them to Moab",
+   "Smote them until none was left alive"
+  ],
+  "answer": 3,
+  "explanation": "They smote him, and his sons, and all his people, until there was none left him alive.",
+  "ref": "Numbers 21:35"
+ },
+ {
+  "id": "numbers-21-m-15",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses send men to do at Jaazer?",
+  "choices": [
+   "Build an altar",
+   "Dig a well",
+   "Count the people",
+   "Spy it out"
+  ],
+  "answer": 3,
+  "explanation": "Moses sent to spy out Jaazer, and they took the villages thereof.",
+  "ref": "Numbers 21:32"
+ },
+ {
+  "id": "numbers-21-h-01",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the first stop after the serpents, where Israel pitched?",
+  "choices": [
+   "Oboth",
+   "Mattanah",
+   "Zared",
+   "Pisgah"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel set forward, and pitched in Oboth.",
+  "ref": "Numbers 21:10"
+ },
+ {
+  "id": "numbers-21-h-02",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Israel pitch in the wilderness before Moab, toward the sunrising?",
+  "choices": [
+   "Ije-abarim",
+   "Oboth",
+   "Nahaliel",
+   "Bamoth"
+  ],
+  "answer": 0,
+  "explanation": "They pitched at Ije-abarim, in the wilderness which is before Moab, toward the sunrising.",
+  "ref": "Numbers 21:11"
+ },
+ {
+  "id": "numbers-21-h-03",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "In which valley did Israel pitch after Ije-abarim?",
+  "choices": [
+   "The valley of Zared",
+   "The valley of Jezreel",
+   "The valley of Hinnom",
+   "The valley of Elah"
+  ],
+  "answer": 0,
+  "explanation": "From thence they removed, and pitched in the valley of Zared.",
+  "ref": "Numbers 21:12"
+ },
+ {
+  "id": "numbers-21-h-04",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What book is named in the song about the brooks of Arnon?",
+  "choices": [
+   "The book of the wars of the LORD",
+   "The book of Jasher",
+   "The book of the covenant",
+   "The book of the law"
+  ],
+  "answer": 0,
+  "explanation": "It is said in the book of the wars of the LORD.",
+  "ref": "Numbers 21:14"
+ },
+ {
+  "id": "numbers-21-h-05",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the princes and nobles dig the well with?",
+  "choices": [
+   "Their staves",
+   "Their spears",
+   "Their hands",
+   "Shovels of brass"
+  ],
+  "answer": 0,
+  "explanation": "The princes digged the well by the direction of the lawgiver, with their staves.",
+  "ref": "Numbers 21:18"
+ },
+ {
+  "id": "numbers-21-h-06",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose direction did they follow in digging the well?",
+  "choices": [
+   "The lawgiver",
+   "The high priest",
+   "The king",
+   "The elders of Moab"
+  ],
+  "answer": 0,
+  "explanation": "The nobles digged it, by the direction of the lawgiver.",
+  "ref": "Numbers 21:18"
+ },
+ {
+  "id": "numbers-21-h-07",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Israel's journey ended at the top of which place that looks toward Jeshimon?",
+  "choices": [
+   "Pisgah",
+   "Hor",
+   "Nebo",
+   "Carmel"
+  ],
+  "answer": 0,
+  "explanation": "They went to the top of Pisgah, which looketh toward Jeshimon.",
+  "ref": "Numbers 21:20"
+ },
+ {
+  "id": "numbers-21-h-08",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Israel possessed Sihon's land from Arnon to which river?",
+  "choices": [
+   "Jabbok",
+   "Jordan",
+   "Zered",
+   "Kidron"
+  ],
+  "answer": 0,
+  "explanation": "Israel possessed his land from Arnon unto Jabbok, even unto the children of Ammon.",
+  "ref": "Numbers 21:24"
+ },
+ {
+  "id": "numbers-21-h-09",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Israel stop at the border of the children of Ammon?",
+  "choices": [
+   "The border of Ammon was strong",
+   "Ammon was Israel's brother",
+   "The river was in flood",
+   "Moses forbade it"
+  ],
+  "answer": 0,
+  "explanation": "Even unto the children of Ammon: for the border of the children of Ammon was strong.",
+  "ref": "Numbers 21:24"
+ },
+ {
+  "id": "numbers-21-h-10",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Og fight against Israel?",
+  "choices": [
+   "Edrei",
+   "Heshbon",
+   "Jahaz",
+   "Medeba"
+  ],
+  "answer": 0,
+  "explanation": "Og went out against them to the battle at Edrei.",
+  "ref": "Numbers 21:33"
+ },
+ {
+  "id": "numbers-21-h-11",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose land had Sihon taken before, even unto Arnon?",
+  "choices": [
+   "The former king of Moab",
+   "The king of Edom",
+   "King Arad",
+   "King Og"
+  ],
+  "answer": 0,
+  "explanation": "Sihon had fought against the former king of Moab, and taken all his land out of his hand.",
+  "ref": "Numbers 21:26"
+ },
+ {
+  "id": "numbers-21-h-12",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the soul of the people feel because of the way?",
+  "choices": [
+   "Much discouraged",
+   "Full of joy",
+   "Very proud",
+   "Fearful of Edom"
+  ],
+  "answer": 0,
+  "explanation": "The soul of the people was much discouraged because of the way.",
+  "ref": "Numbers 21:4"
+ },
+ {
+  "id": "numbers-21-h-13",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which way did Israel go up before meeting Og?",
+  "choices": [
+   "By the way of Bashan",
+   "By the king's high way",
+   "By the way of the Red sea",
+   "By the way of the spies"
+  ],
+  "answer": 0,
+  "explanation": "They turned and went up by the way of Bashan.",
+  "ref": "Numbers 21:33"
+ },
+ {
+  "id": "numbers-21-h-14",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the song say had gone out of Heshbon?",
+  "choices": [
+   "A fire",
+   "A sword",
+   "A cry",
+   "A host"
+  ],
+  "answer": 0,
+  "explanation": "There is a fire gone out of Heshbon, a flame from the city of Sihon.",
+  "ref": "Numbers 21:28"
+ },
+ {
+  "id": "numbers-21-h-15",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Israel go from the wilderness after the well?",
+  "choices": [
+   "Mattanah",
+   "Beer",
+   "Oboth",
+   "Nophah"
+  ],
+  "answer": 0,
+  "explanation": "From the wilderness they went to Mattanah.",
+  "ref": "Numbers 21:18"
+ },
+ {
   "id": "old-numbers-22-1",
   "chapter": 22,
   "level": "beginner",
