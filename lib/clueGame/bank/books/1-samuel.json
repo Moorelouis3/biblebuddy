@@ -3636,12 +3636,12 @@
   "chapter": 6,
   "level": "beginner",
   "category": "keyword",
-  "question": "What sign involving the cows would confirm that the plague came from the Lord?",
+  "question": "What sign would show the plague came from the Lord?",
   "choices": [
-   "They would go straight toward Beth-shemesh though their calves stayed behind",
-   "They would lie down",
-   "They would run back to Ashdod",
-   "They would die"
+   "The cows would go straight to Beth-shemesh",
+   "The cows would lie down",
+   "The cows would run back to Ashdod",
+   "The cows would die"
   ],
   "answer": 0,
   "explanation": "The unmanned cart drawn by milch kine would prove the Lord's hand if it went straight to Israel.",
@@ -3678,6 +3678,646 @@
   "answer": 2,
   "explanation": "Their irreverence toward the ark brought judgment.",
   "ref": "1 Samuel 6:19"
+ },
+ {
+  "id": "1-samuel-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the Philistines call for to ask what to do with the ark?",
+  "choices": [
+   "The priests and the diviners",
+   "The Levites and elders",
+   "Samuel and Eli",
+   "The kings of Gath"
+  ],
+  "answer": 0,
+  "explanation": "The Philistines called for the priests and the diviners, saying, What shall we do to the ark of the LORD?",
+  "ref": "1 Samuel 6:2"
+ },
+ {
+  "id": "1-samuel-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animals were tied to the new cart to pull the ark?",
+  "choices": [
+   "Two young bulls",
+   "Two milch kine",
+   "Two asses",
+   "Two horses"
+  ],
+  "answer": 1,
+  "explanation": "They took two milch kine, and tied them to the cart, and shut up their calves at home.",
+  "ref": "1 Samuel 6:10"
+ },
+ {
+  "id": "1-samuel-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides golden emerods, what golden images did the Philistines send?",
+  "choices": [
+   "Lions",
+   "Serpents",
+   "Mice",
+   "Locusts"
+  ],
+  "answer": 2,
+  "explanation": "The priests said to make images of your emerods, and images of your mice that mar the land.",
+  "ref": "1 Samuel 6:5"
+ },
+ {
+  "id": "1-samuel-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the men of Beth-shemesh feel when they saw the ark?",
+  "choices": [
+   "They fled",
+   "They wept",
+   "They hid",
+   "They rejoiced"
+  ],
+  "answer": 3,
+  "explanation": "They lifted up their eyes, and saw the ark, and rejoiced to see it.",
+  "ref": "1 Samuel 6:13"
+ },
+ {
+  "id": "1-samuel-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the men of Beth-shemesh offer to the Lord after splitting the cart?",
+  "choices": [
+   "The kine, as a burnt offering",
+   "A lamb",
+   "Wheat",
+   "Silver"
+  ],
+  "answer": 0,
+  "explanation": "They clave the wood of the cart, and offered the kine a burnt offering unto the LORD.",
+  "ref": "1 Samuel 6:14"
+ },
+ {
+  "id": "1-samuel-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which Philistine city did the five lords return the same day?",
+  "choices": [
+   "Gath",
+   "Ekron",
+   "Gaza",
+   "Ashdod"
+  ],
+  "answer": 1,
+  "explanation": "When the five lords of the Philistines had seen it, they returned to Ekron the same day.",
+  "ref": "1 Samuel 6:16"
+ },
+ {
+  "id": "1-samuel-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did the men of Beth-shemesh send messengers about the ark?",
+  "choices": [
+   "Ramah",
+   "Shiloh",
+   "Kirjath-jearim",
+   "Gibeah"
+  ],
+  "answer": 2,
+  "explanation": "They sent messengers to the inhabitants of Kirjath-jearim, saying, come ye down, and fetch it up to you.",
+  "ref": "1 Samuel 6:21"
+ },
+ {
+  "id": "1-samuel-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "The Philistine priests warned against hardening their hearts like the Egyptians and whom?",
+  "choices": [
+   "Sisera",
+   "Goliath",
+   "Nahash",
+   "Pharaoh"
+  ],
+  "answer": 3,
+  "explanation": "Wherefore then do ye harden your hearts, as the Egyptians and Pharaoh hardened their hearts?",
+  "ref": "1 Samuel 6:6"
+ },
+ {
+  "id": "1-samuel-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Philistines put in a coffer beside the ark on the cart?",
+  "choices": [
+   "Jewels of gold",
+   "Loaves of bread",
+   "Silver bowls",
+   "Spices"
+  ],
+  "answer": 0,
+  "explanation": "They put the jewels of gold, which ye return him for a trespass offering, in a coffer by the side thereof.",
+  "ref": "1 Samuel 6:8"
+ },
+ {
+  "id": "1-samuel-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did the Levites set the ark and the coffer after taking them down?",
+  "choices": [
+   "On an altar of brass",
+   "On the great stone",
+   "In a tent",
+   "In the field of Ekron"
+  ],
+  "answer": 1,
+  "explanation": "The Levites took down the ark and the coffer, and put them on the great stone.",
+  "ref": "1 Samuel 6:15"
+ },
+ {
+  "id": "1-samuel-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priests say would happen if the Philistines returned a trespass offering?",
+  "choices": [
+   "They would gain a king",
+   "Dagon would rise",
+   "They would be healed",
+   "The ark would stay"
+  ],
+  "answer": 2,
+  "explanation": "They said, send it with a trespass offering: then ye shall be healed.",
+  "ref": "1 Samuel 6:3"
+ },
+ {
+  "id": "1-samuel-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the priests say to make five golden emerods and five golden mice?",
+  "choices": [
+   "One for each tribe",
+   "One for each plague",
+   "One for each day",
+   "One for each lord of the Philistines"
+  ],
+  "answer": 3,
+  "explanation": "They answered, according to the number of the lords of the Philistines: for one plague was on you all, and on your lords.",
+  "ref": "1 Samuel 6:4"
+ },
+ {
+  "id": "1-samuel-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of cart did the priests tell the Philistines to make?",
+  "choices": [
+   "A new cart",
+   "A war chariot",
+   "An old cart",
+   "A cart of gold"
+  ],
+  "answer": 0,
+  "explanation": "The priests said, Now therefore make a new cart, and take two milch kine.",
+  "ref": "1 Samuel 6:7"
+ },
+ {
+  "id": "1-samuel-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had never been put on the two milch kine?",
+  "choices": [
+   "A bridle",
+   "A yoke",
+   "A burden",
+   "A saddle"
+  ],
+  "answer": 1,
+  "explanation": "Take two milch kine, on which there hath come no yoke.",
+  "ref": "1 Samuel 6:7"
+ },
+ {
+  "id": "1-samuel-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the Philistines told to do with the calves of the two cows?",
+  "choices": [
+   "Send them with the ark",
+   "Offer them to Dagon",
+   "Bring them home from the cows",
+   "Let them follow"
+  ],
+  "answer": 2,
+  "explanation": "Tie the kine to the cart, and bring their calves home from them.",
+  "ref": "1 Samuel 6:7"
+ },
+ {
+  "id": "1-samuel-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the Philistines conclude if the cows did not go to Beth-shemesh?",
+  "choices": [
+   "The ark was cursed",
+   "Dagon was angry",
+   "The priests were wrong",
+   "It was a chance that happened to them"
+  ],
+  "answer": 3,
+  "explanation": "If not, then we shall know that it is not his hand that smote us; it was a chance that happened to us.",
+  "ref": "1 Samuel 6:9"
+ },
+ {
+  "id": "1-samuel-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the men of Beth-shemesh offer their burnt offerings and sacrifices?",
+  "choices": [
+   "The same day",
+   "The next morning",
+   "After seven days",
+   "At the new moon"
+  ],
+  "answer": 0,
+  "explanation": "The men of Beth-shemesh offered burnt offerings and sacrificed sacrifices the same day unto the LORD.",
+  "ref": "1 Samuel 6:15"
+ },
+ {
+  "id": "1-samuel-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the cows do as they went along the highway?",
+  "choices": [
+   "Ran wildly",
+   "Lowed and turned not aside",
+   "Stopped to graze",
+   "Turned back twice"
+  ],
+  "answer": 1,
+  "explanation": "The kine took the straight way, lowing as they went, and turned not aside to the right hand or to the left.",
+  "ref": "1 Samuel 6:12"
+ },
+ {
+  "id": "1-samuel-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of Beth-shemesh use as wood for the burnt offering?",
+  "choices": [
+   "Cedar from Lebanon",
+   "Wood from the altar",
+   "The wood of the cart",
+   "Olive branches"
+  ],
+  "answer": 2,
+  "explanation": "They clave the wood of the cart, and offered the kine a burnt offering unto the LORD.",
+  "ref": "1 Samuel 6:14"
+ },
+ {
+  "id": "1-samuel-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Who took down the ark of the Lord from the cart?",
+  "choices": [
+   "The Philistine priests",
+   "The lords of Gath",
+   "The elders of Israel",
+   "The Levites"
+  ],
+  "answer": 3,
+  "explanation": "And the Levites took down the ark of the LORD, and the coffer that was with it.",
+  "ref": "1 Samuel 6:15"
+ },
+ {
+  "id": "1-samuel-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of Beth-shemesh ask after the slaughter?",
+  "choices": [
+   "Who is able to stand before this holy LORD God?",
+   "Where is Samuel?",
+   "Who will bring back the ark?",
+   "Why was Dagon silent?"
+  ],
+  "answer": 0,
+  "explanation": "The men of Beth-shemesh said, Who is able to stand before this holy LORD God? and to whom shall he go up from us?",
+  "ref": "1 Samuel 6:20"
+ },
+ {
+  "id": "1-samuel-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the people of Beth-shemesh respond to the great slaughter?",
+  "choices": [
+   "They fought",
+   "They lamented",
+   "They scattered",
+   "They sacrificed"
+  ],
+  "answer": 1,
+  "explanation": "The people lamented, because the LORD had smitten many of the people with a great slaughter.",
+  "ref": "1 Samuel 6:19"
+ },
+ {
+  "id": "1-samuel-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city sent one of the golden emerods?",
+  "choices": [
+   "Jerusalem",
+   "Bethel",
+   "Gaza",
+   "Hebron"
+  ],
+  "answer": 2,
+  "explanation": "The golden emerods were for Ashdod one, for Gaza one, for Askelon one, for Gath one, for Ekron one.",
+  "ref": "1 Samuel 6:17"
+ },
+ {
+  "id": "1-samuel-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom did the priests say the Philistines must give glory?",
+  "choices": [
+   "Dagon",
+   "The lords of Ekron",
+   "The ark",
+   "The God of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall give glory unto the God of Israel: peradventure he will lighten his hand from off you.",
+  "ref": "1 Samuel 6:5"
+ },
+ {
+  "id": "1-samuel-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the priests say the ark must not be sent away?",
+  "choices": [
+   "Empty",
+   "By night",
+   "Alone",
+   "Unwashed"
+  ],
+  "answer": 0,
+  "explanation": "If ye send away the ark of the God of Israel, send it not empty; but in any wise return him a trespass offering.",
+  "ref": "1 Samuel 6:3"
+ },
+ {
+  "id": "1-samuel-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of Beth-shemesh did the Lord smite for looking into the ark?",
+  "choices": [
+   "Seventy",
+   "Fifty thousand and threescore and ten",
+   "Five thousand",
+   "Thirty thousand"
+  ],
+  "answer": 1,
+  "explanation": "He smote of the people fifty thousand and threescore and ten men, because they had looked into the ark.",
+  "ref": "1 Samuel 6:19"
+ },
+ {
+  "id": "1-samuel-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose field did the cart stop in at Beth-shemesh?",
+  "choices": [
+   "Abinadab",
+   "Eleazar",
+   "Joshua the Beth-shemite",
+   "Kish"
+  ],
+  "answer": 2,
+  "explanation": "The cart came into the field of Joshua, a Beth-shemite, and stood there, where there was a great stone.",
+  "ref": "1 Samuel 6:14"
+ },
+ {
+  "id": "1-samuel-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the great stone, on which the ark was set down, called?",
+  "choices": [
+   "The stone of Ebenezer",
+   "The stone of Bochim",
+   "The stone of Zoheleth",
+   "The great stone of Abel"
+  ],
+  "answer": 3,
+  "explanation": "Even unto the great stone of Abel, whereon they set down the ark of the LORD.",
+  "ref": "1 Samuel 6:18"
+ },
+ {
+  "id": "1-samuel-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many golden emerods were sent for the city of Gath?",
+  "choices": [
+   "One",
+   "Two",
+   "Five",
+   "Seven"
+  ],
+  "answer": 0,
+  "explanation": "For Ashdod one, for Gaza one, for Askelon one, for Gath one, for Ekron one.",
+  "ref": "1 Samuel 6:17"
+ },
+ {
+  "id": "1-samuel-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Who followed the cows as far as the border of Beth-shemesh?",
+  "choices": [
+   "The priests of Dagon",
+   "The lords of the Philistines",
+   "The Levites",
+   "Samuel and the elders"
+  ],
+  "answer": 1,
+  "explanation": "The lords of the Philistines went after them unto the border of Beth-shemesh.",
+  "ref": "1 Samuel 6:12"
+ },
+ {
+  "id": "1-samuel-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The priests said one plague was on all the Philistines and on whom else?",
+  "choices": [
+   "Their priests",
+   "Their cattle",
+   "Their lords",
+   "Their children"
+  ],
+  "answer": 2,
+  "explanation": "One plague was on you all, and on your lords.",
+  "ref": "1 Samuel 6:4"
+ },
+ {
+  "id": "1-samuel-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the people and their land, from whom might God lighten his hand?",
+  "choices": [
+   "Their kings",
+   "Their priests",
+   "Their cities",
+   "Their gods"
+  ],
+  "answer": 3,
+  "explanation": "Peradventure he will lighten his hand from off you, and from off your gods, and from off your land.",
+  "ref": "1 Samuel 6:5"
+ },
+ {
+  "id": "1-samuel-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men of Beth-shemesh tell Kirjath-jearim to do?",
+  "choices": [
+   "Come down and fetch the ark up to them",
+   "Send soldiers to Ekron",
+   "Pay a trespass offering",
+   "Burn the ark's cart"
+  ],
+  "answer": 0,
+  "explanation": "Come ye down, and fetch it up to you.",
+  "ref": "1 Samuel 6:21"
+ },
+ {
+  "id": "1-samuel-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priests say the Philistines' mice did to the land?",
+  "choices": [
+   "They ate the wheat",
+   "They marred it",
+   "They fouled the wells",
+   "They burned the fields"
+  ],
+  "answer": 1,
+  "explanation": "Make images of your mice that mar the land.",
+  "ref": "1 Samuel 6:5"
+ },
+ {
+  "id": "1-samuel-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What harvest were the men of Beth-shemesh reaping?",
+  "choices": [
+   "Their barley harvest",
+   "Their grape harvest",
+   "Their wheat harvest",
+   "Their olive harvest"
+  ],
+  "answer": 2,
+  "explanation": "They of Beth-shemesh were reaping their wheat harvest in the valley.",
+  "ref": "1 Samuel 6:13"
+ },
+ {
+  "id": "1-samuel-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the messengers say the Philistines had done with the ark?",
+  "choices": [
+   "Burned it",
+   "Hidden it",
+   "Sold it",
+   "Brought it again"
+  ],
+  "answer": 3,
+  "explanation": "The Philistines have brought again the ark of the LORD; come ye down, and fetch it up to you.",
+  "ref": "1 Samuel 6:21"
+ },
+ {
+  "id": "1-samuel-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Which Philistine city is named first among the golden emerods?",
+  "choices": [
+   "Ashdod",
+   "Gaza",
+   "Gath",
+   "Ekron"
+  ],
+  "answer": 0,
+  "explanation": "The golden emerods: for Ashdod one, for Gaza one, for Askelon one, for Gath one, for Ekron one.",
+  "ref": "1 Samuel 6:17"
+ },
+ {
+  "id": "1-samuel-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the men leave the calves of the cows?",
+  "choices": [
+   "In the field",
+   "Shut up at home",
+   "With the priests",
+   "On the cart"
+  ],
+  "answer": 1,
+  "explanation": "They took two milch kine, and tied them to the cart, and shut up their calves at home.",
+  "ref": "1 Samuel 6:10"
+ },
+ {
+  "id": "1-samuel-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Lord had smitten many of the people with what?",
+  "choices": [
+   "A great famine",
+   "A great fire",
+   "A great slaughter",
+   "A great plague of mice"
+  ],
+  "answer": 2,
+  "explanation": "The people lamented, because the LORD had smitten many of the people with a great slaughter.",
+  "ref": "1 Samuel 6:19"
+ },
+ {
+  "id": "1-samuel-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides fenced cities, which settlements were counted for the golden mice?",
+  "choices": [
+   "Walled towns",
+   "Tents",
+   "Fortresses",
+   "Country villages"
+  ],
+  "answer": 3,
+  "explanation": "The golden mice were according to the number of all the cities, both of fenced cities, and of country villages.",
+  "ref": "1 Samuel 6:18"
  },
  {
   "id": "old-1-samuel-7-1",
