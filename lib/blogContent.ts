@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "1-samuel-24-explained",
+    title: "1 Samuel 24 Explained: David Spares Saul in the Cave at Engedi",
+    description:
+      "1 Samuel 24 explained verse by verse: David spares Saul in the cave at Engedi, cuts his robe, and refuses to harm the LORD's anointed.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/1-samuel-24-explained",
+    publishedAt: "2026-11-24",
+    readTime: "15 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "1 Samuel 24 Explained 📖",
+      content:
+        "Saul walks into the exact cave where David is hiding.\nDavid still won't kill him.\n\n📌 Having the chance to get even isn't the same as having the right.\n\n📖 David cuts Saul's robe instead of his life.\n📖 His own conscience convicts him over the cloth.\n📖 Saul weeps and calls David more righteous than himself.\n\nNew article on:\n🟢 why David calls Saul **the LORD's anointed**\n🟢 what the **cut robe** really symbolized\n🟢 whether Saul's **tears** actually changed anything\n\nHave you ever had the perfect chance to get even, and held back anyway? 🙏",
+    },
+  },
+  {
     slug: "who-was-judas",
     title: "Who Was Judas? How Close You Can Get and Still Miss It",
     description:
