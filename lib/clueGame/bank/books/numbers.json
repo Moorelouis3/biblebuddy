@@ -19536,6 +19536,646 @@
   "ref": "Numbers 28:26"
  },
  {
+  "id": "numbers-28-e-01",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When was the second lamb of the daily offering to be offered?",
+  "choices": [
+   "At midnight",
+   "At even",
+   "In the morning",
+   "At noon"
+  ],
+  "answer": 1,
+  "explanation": "The one lamb in the morning, and the other lamb shalt thou offer at even.",
+  "ref": "Numbers 28:4"
+ },
+ {
+  "id": "numbers-28-e-02",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old were the lambs of the daily burnt offering?",
+  "choices": [
+   "Of the first year",
+   "Newly weaned",
+   "Eight days old",
+   "Three years old"
+  ],
+  "answer": 0,
+  "explanation": "Two lambs of the first year without spot were offered day by day.",
+  "ref": "Numbers 28:3"
+ },
+ {
+  "id": "numbers-28-e-03",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days was unleavened bread to be eaten at the feast?",
+  "choices": [
+   "Three",
+   "Fourteen",
+   "Ten",
+   "Seven"
+  ],
+  "answer": 3,
+  "explanation": "In the fifteenth day of this month is the feast: seven days shall unleavened bread be eaten.",
+  "ref": "Numbers 28:17"
+ },
+ {
+  "id": "numbers-28-e-04",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was to be held on the first day of the feast of unleavened bread?",
+  "choices": [
+   "An holy convocation",
+   "A fast of forty days",
+   "A census",
+   "A war council"
+  ],
+  "answer": 0,
+  "explanation": "In the first day shall be an holy convocation.",
+  "ref": "Numbers 28:18"
+ },
+ {
+  "id": "numbers-28-e-05",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of work was forbidden at the holy convocation?",
+  "choices": [
+   "Shepherd work",
+   "Writing",
+   "Servile work",
+   "Travel"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall do no manner of servile work therein.",
+  "ref": "Numbers 28:18"
+ },
+ {
+  "id": "numbers-28-e-06",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was offered as a sin offering at the beginnings of the months?",
+  "choices": [
+   "One kid of the goats",
+   "Two rams",
+   "One young bullock",
+   "One dove"
+  ],
+  "answer": 0,
+  "explanation": "One kid of the goats for a sin offering unto the LORD shall be offered.",
+  "ref": "Numbers 28:15"
+ },
+ {
+  "id": "numbers-28-e-07",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say the offerings made by fire were to Him?",
+  "choices": [
+   "A tax",
+   "A burden",
+   "A sweet savour",
+   "A forgotten gift"
+  ],
+  "answer": 2,
+  "explanation": "My offering... for a sweet savour unto me.",
+  "ref": "Numbers 28:2"
+ },
+ {
+  "id": "numbers-28-e-08",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the LORD speak these commands about the offerings?",
+  "choices": [
+   "Caleb",
+   "Joshua",
+   "Moses",
+   "Aaron"
+  ],
+  "answer": 2,
+  "explanation": "And the LORD spake unto Moses, saying, Command the children of Israel.",
+  "ref": "Numbers 28:1"
+ },
+ {
+  "id": "numbers-28-e-09",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what day of the first month was the feast of unleavened bread to begin?",
+  "choices": [
+   "The tenth",
+   "The fifteenth",
+   "The first",
+   "The twentieth"
+  ],
+  "answer": 1,
+  "explanation": "In the fifteenth day of this month is the feast.",
+  "ref": "Numbers 28:17"
+ },
+ {
+  "id": "numbers-28-e-10",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the meat offering for the daily lamb made of?",
+  "choices": [
+   "Salt and wine",
+   "Dates and figs",
+   "Barley and honey",
+   "Flour mingled with oil"
+  ],
+  "answer": 3,
+  "explanation": "A tenth part of an ephah of flour mingled with the fourth part of an hin of beaten oil.",
+  "ref": "Numbers 28:5"
+ },
+ {
+  "id": "numbers-28-m-01",
+  "chapter": 28,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the continual burnt offering ordained?",
+  "choices": [
+   "Mount Sinai",
+   "Mount Hor",
+   "Mount Carmel",
+   "Mount Nebo"
+  ],
+  "answer": 0,
+  "explanation": "It is a continual burnt offering, which was ordained in mount Sinai.",
+  "ref": "Numbers 28:6"
+ },
+ {
+  "id": "numbers-28-m-02",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much flour was the meat offering for each daily lamb?",
+  "choices": [
+   "A fourth part of an ephah",
+   "A tenth part of an ephah",
+   "A whole ephah",
+   "Two ephahs"
+  ],
+  "answer": 1,
+  "explanation": "And a tenth part of an ephah of flour for a meat offering.",
+  "ref": "Numbers 28:5"
+ },
+ {
+  "id": "numbers-28-m-03",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much beaten oil was mingled with the flour for the daily lamb?",
+  "choices": [
+   "A whole hin",
+   "The half of an hin",
+   "The fourth part of an hin",
+   "The tenth part of an hin"
+  ],
+  "answer": 2,
+  "explanation": "Mingled with the fourth part of an hin of beaten oil.",
+  "ref": "Numbers 28:5"
+ },
+ {
+  "id": "numbers-28-m-04",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much wine was the drink offering for each daily lamb?",
+  "choices": [
+   "The fourth part of an hin",
+   "A whole hin",
+   "The third part of an hin",
+   "Half an hin"
+  ],
+  "answer": 0,
+  "explanation": "The drink offering thereof shall be the fourth part of an hin for the one lamb.",
+  "ref": "Numbers 28:7"
+ },
+ {
+  "id": "numbers-28-m-05",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much flour was offered with the two sabbath lambs?",
+  "choices": [
+   "One tenth deal",
+   "Three tenth deals",
+   "Two tenth deals",
+   "Four tenth deals"
+  ],
+  "answer": 2,
+  "explanation": "On the sabbath day two lambs, and two tenth deals of flour for a meat offering.",
+  "ref": "Numbers 28:9"
+ },
+ {
+  "id": "numbers-28-m-06",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many lambs were offered in the burnt offering at the beginning of each month?",
+  "choices": [
+   "Seven",
+   "Fourteen",
+   "Two",
+   "Three"
+  ],
+  "answer": 0,
+  "explanation": "Two young bullocks, and one ram, seven lambs of the first year without spot.",
+  "ref": "Numbers 28:11"
+ },
+ {
+  "id": "numbers-28-m-07",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many tenth deals of flour went with a bullock in the monthly offering?",
+  "choices": [
+   "Four",
+   "Three",
+   "Two",
+   "One"
+  ],
+  "answer": 1,
+  "explanation": "Three tenth deals of flour for a meat offering for one bullock.",
+  "ref": "Numbers 28:12"
+ },
+ {
+  "id": "numbers-28-m-08",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many tenth deals of flour went with a ram in the monthly offering?",
+  "choices": [
+   "One",
+   "Three",
+   "Five",
+   "Two"
+  ],
+  "answer": 3,
+  "explanation": "Two tenth deals of flour for a meat offering, mingled with oil, for one ram.",
+  "ref": "Numbers 28:12"
+ },
+ {
+  "id": "numbers-28-m-09",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much wine was the drink offering for a bullock?",
+  "choices": [
+   "A third part of an hin",
+   "A fourth part of an hin",
+   "A whole hin",
+   "Half an hin"
+  ],
+  "answer": 3,
+  "explanation": "Their drink offerings shall be half an hin of wine unto a bullock.",
+  "ref": "Numbers 28:14"
+ },
+ {
+  "id": "numbers-28-m-10",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much wine was the drink offering for a ram?",
+  "choices": [
+   "A whole hin",
+   "The third part of an hin",
+   "The fourth part of an hin",
+   "Half an hin"
+  ],
+  "answer": 1,
+  "explanation": "The third part of an hin unto a ram.",
+  "ref": "Numbers 28:14"
+ },
+ {
+  "id": "numbers-28-m-11",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many young bullocks were offered each day of the feast of unleavened bread?",
+  "choices": [
+   "One",
+   "Seven",
+   "Two",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "Two young bullocks, and one ram, and seven lambs of the first year.",
+  "ref": "Numbers 28:19"
+ },
+ {
+  "id": "numbers-28-m-12",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was offered as the sin offering each day of the feast to make atonement?",
+  "choices": [
+   "Seven lambs",
+   "One goat",
+   "One ram",
+   "One bullock"
+  ],
+  "answer": 1,
+  "explanation": "And one goat for a sin offering, to make an atonement for you.",
+  "ref": "Numbers 28:22"
+ },
+ {
+  "id": "numbers-28-m-13",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be held on the seventh day of the feast?",
+  "choices": [
+   "A solemn war",
+   "A census",
+   "An holy convocation",
+   "A trumpet fast"
+  ],
+  "answer": 2,
+  "explanation": "And on the seventh day ye shall have an holy convocation.",
+  "ref": "Numbers 28:25"
+ },
+ {
+  "id": "numbers-28-m-14",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many bullocks were offered on the day of the firstfruits?",
+  "choices": [
+   "Two young bullocks",
+   "One bullock",
+   "Thirteen bullocks",
+   "Seven bullocks"
+  ],
+  "answer": 0,
+  "explanation": "Two young bullocks, one ram, seven lambs of the first year.",
+  "ref": "Numbers 28:27"
+ },
+ {
+  "id": "numbers-28-m-15",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was offered at the day of the firstfruits to make an atonement?",
+  "choices": [
+   "One bullock",
+   "One kid of the goats",
+   "One ram",
+   "Two doves"
+  ],
+  "answer": 1,
+  "explanation": "And one kid of the goats, to make an atonement for you.",
+  "ref": "Numbers 28:30"
+ },
+ {
+  "id": "numbers-28-h-01",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much flour was the meat offering for each lamb in the monthly offering?",
+  "choices": [
+   "Two tenth deals",
+   "Three tenth deals",
+   "Half an ephah",
+   "A tenth deal"
+  ],
+  "answer": 3,
+  "explanation": "A several tenth deal of flour mingled with oil for a meat offering unto one lamb.",
+  "ref": "Numbers 28:13"
+ },
+ {
+  "id": "numbers-28-h-02",
+  "chapter": 28,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the strong wine of the drink offering to be poured out?",
+  "choices": [
+   "On the mountain",
+   "At the city gate",
+   "By the river",
+   "In the holy place"
+  ],
+  "answer": 3,
+  "explanation": "In the holy place shalt thou cause the strong wine to be poured unto the LORD.",
+  "ref": "Numbers 28:7"
+ },
+ {
+  "id": "numbers-28-h-03",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The sabbath offering was given beside which other offering?",
+  "choices": [
+   "The passover",
+   "The continual burnt offering",
+   "The firstfruits",
+   "The trumpet offering"
+  ],
+  "answer": 1,
+  "explanation": "This is the burnt offering of every sabbath, beside the continual burnt offering.",
+  "ref": "Numbers 28:10"
+ },
+ {
+  "id": "numbers-28-h-04",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which days of the feast of unleavened bread was there a holy convocation?",
+  "choices": [
+   "Only the fourth",
+   "The first and the seventh",
+   "The third and the fifth",
+   "Every day"
+  ],
+  "answer": 1,
+  "explanation": "The first day and the seventh day each had a holy convocation.",
+  "ref": "Numbers 28:18"
+ },
+ {
+  "id": "numbers-28-h-05",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long were the feast offerings to be offered daily?",
+  "choices": [
+   "For ten days",
+   "Throughout the seven days",
+   "For one day",
+   "For forty days"
+  ],
+  "answer": 1,
+  "explanation": "After this manner ye shall offer daily, throughout the seven days.",
+  "ref": "Numbers 28:24"
+ },
+ {
+  "id": "numbers-28-h-06",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of meat offering was brought on the day of the firstfruits?",
+  "choices": [
+   "A new meat offering",
+   "A wine offering",
+   "An old meat offering",
+   "A fruit offering"
+  ],
+  "answer": 0,
+  "explanation": "In the day of the firstfruits, when ye bring a new meat offering unto the LORD.",
+  "ref": "Numbers 28:26"
+ },
+ {
+  "id": "numbers-28-h-07",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD call the sacrifices made by fire?",
+  "choices": [
+   "My gift of peace",
+   "My salt",
+   "My bread",
+   "My gold"
+  ],
+  "answer": 2,
+  "explanation": "My offering, and my bread for my sacrifices made by fire.",
+  "ref": "Numbers 28:2"
+ },
+ {
+  "id": "numbers-28-h-08",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What condition must the lambs of the daily offering meet?",
+  "choices": [
+   "Without spot",
+   "Spotted",
+   "Two years old",
+   "Black"
+  ],
+  "answer": 0,
+  "explanation": "Two lambs of the first year without spot day by day.",
+  "ref": "Numbers 28:3"
+ },
+ {
+  "id": "numbers-28-h-09",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The evening lamb's meat and drink offering were to be like those of which?",
+  "choices": [
+   "The monthly",
+   "The morning's",
+   "The sabbath's",
+   "The feast's"
+  ],
+  "answer": 1,
+  "explanation": "The other lamb at even was offered as the meat offering of the morning, and drink offering.",
+  "ref": "Numbers 28:8"
+ },
+ {
+  "id": "numbers-28-h-10",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The monthly sin offering was offered beside what other offering?",
+  "choices": [
+   "The continual burnt offering",
+   "The firstfruits",
+   "The trumpet",
+   "The passover lamb"
+  ],
+  "answer": 0,
+  "explanation": "One kid of the goats... beside the continual burnt offering, and his drink offering.",
+  "ref": "Numbers 28:15"
+ },
+ {
+  "id": "numbers-28-h-11",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How often was the monthly burnt offering to be made?",
+  "choices": [
+   "Every month of the year",
+   "Once a year",
+   "Every sabbath",
+   "Every third month"
+  ],
+  "answer": 0,
+  "explanation": "This is the burnt offering of every month throughout the months of the year.",
+  "ref": "Numbers 28:14"
+ },
+ {
+  "id": "numbers-28-h-12",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was forbidden on the day of the firstfruits?",
+  "choices": [
+   "Travel",
+   "Eating bread",
+   "Servile work",
+   "Speaking"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall have an holy convocation; ye shall do no servile work.",
+  "ref": "Numbers 28:26"
+ },
+ {
+  "id": "numbers-28-h-13",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Israel offer at the feast beside the burnt offering of the morning?",
+  "choices": [
+   "Only the sin offering",
+   "The feast offerings",
+   "Firstfruits only",
+   "Nothing else"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall offer these beside the burnt offering in the morning, which is for a continual burnt offering.",
+  "ref": "Numbers 28:23"
+ },
+ {
+  "id": "numbers-28-h-14",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many rams were offered each day of the feast of unleavened bread?",
+  "choices": [
+   "One",
+   "None",
+   "Seven",
+   "Two"
+  ],
+  "answer": 0,
+  "explanation": "Two young bullocks, and one ram, and seven lambs of the first year.",
+  "ref": "Numbers 28:19"
+ },
+ {
+  "id": "numbers-28-h-15",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much flour went with each of the seven lambs at the feast?",
+  "choices": [
+   "A several tenth deal",
+   "Two tenth deals",
+   "Three tenth deals",
+   "A whole ephah"
+  ],
+  "answer": 0,
+  "explanation": "A several tenth deal shalt thou offer for every lamb, throughout the seven lambs.",
+  "ref": "Numbers 28:21"
+ },
+ {
   "id": "old-numbers-29-1",
   "chapter": 29,
   "level": "beginner",
