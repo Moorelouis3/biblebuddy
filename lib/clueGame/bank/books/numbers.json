@@ -8000,6 +8000,646 @@
   "ref": "Numbers 12:14–15"
  },
  {
+  "id": "numbers-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who spoke against Moses in this chapter?",
+  "choices": [
+   "Miriam and Aaron",
+   "Joshua and Caleb",
+   "Korah and Dathan",
+   "Eldad and Medad"
+  ],
+  "answer": 0,
+  "explanation": "Miriam and Aaron spake against Moses because of the Ethiopian woman whom he had married.",
+  "ref": "Numbers 12:1"
+ },
+ {
+  "id": "numbers-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Miriam's skin like when she became leprous?",
+  "choices": [
+   "Black as ash",
+   "White as snow",
+   "Spotted like a leopard",
+   "Red as blood"
+  ],
+  "answer": 1,
+  "explanation": "Miriam became leprous, white as snow.",
+  "ref": "Numbers 12:10"
+ },
+ {
+  "id": "numbers-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who looked at Miriam and saw she was leprous?",
+  "choices": [
+   "Aaron",
+   "The people",
+   "Moses",
+   "Joshua"
+  ],
+  "answer": 0,
+  "explanation": "Aaron looked upon Miriam, and, behold, she was leprous.",
+  "ref": "Numbers 12:10"
+ },
+ {
+  "id": "numbers-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the LORD tell the three to come out to?",
+  "choices": [
+   "The mount of Sinai",
+   "The tabernacle of the congregation",
+   "The camp gate",
+   "The river"
+  ],
+  "answer": 1,
+  "explanation": "Come out ye three unto the tabernacle of the congregation.",
+  "ref": "Numbers 12:4"
+ },
+ {
+  "id": "numbers-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what did the LORD come down?",
+  "choices": [
+   "A whirlwind",
+   "A chariot of fire",
+   "A burning bush",
+   "The pillar of the cloud"
+  ],
+  "answer": 3,
+  "explanation": "The LORD came down in the pillar of the cloud, and stood in the door of the tabernacle.",
+  "ref": "Numbers 12:5"
+ },
+ {
+  "id": "numbers-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses cry to God for Miriam?",
+  "choices": [
+   "Judge her",
+   "Heal her now",
+   "Cast her out",
+   "Remember her"
+  ],
+  "answer": 1,
+  "explanation": "Moses cried unto the LORD, saying, Heal her now, O God, I beseech thee.",
+  "ref": "Numbers 12:13"
+ },
+ {
+  "id": "numbers-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people not do until Miriam was brought in again?",
+  "choices": [
+   "Eat",
+   "Sleep",
+   "Journey",
+   "Pray"
+  ],
+  "answer": 2,
+  "explanation": "The people journeyed not till Miriam was brought in again.",
+  "ref": "Numbers 12:15"
+ },
+ {
+  "id": "numbers-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the people pitch after leaving Hazeroth?",
+  "choices": [
+   "Kadesh",
+   "Mount Hor",
+   "The wilderness of Paran",
+   "The wilderness of Sin"
+  ],
+  "answer": 2,
+  "explanation": "The people removed from Hazeroth, and pitched in the wilderness of Paran.",
+  "ref": "Numbers 12:16"
+ },
+ {
+  "id": "numbers-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which place did the people remove at the end of the chapter?",
+  "choices": [
+   "Taberah",
+   "Rephidim",
+   "Hazeroth",
+   "Kibroth-hattaavah"
+  ],
+  "answer": 2,
+  "explanation": "Afterward the people removed from Hazeroth.",
+  "ref": "Numbers 12:16"
+ },
+ {
+  "id": "numbers-12-e-10",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many came out to the tabernacle at the LORD's call?",
+  "choices": [
+   "Two",
+   "Twelve",
+   "Seven",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "The LORD spake suddenly unto Moses, and unto Aaron, and unto Miriam, Come out ye three.",
+  "ref": "Numbers 12:4"
+ },
+ {
+  "id": "numbers-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Miriam and Aaron ask about the LORD speaking?",
+  "choices": [
+   "Who made Moses a judge?",
+   "Why must we wander?",
+   "Hath the LORD forsaken us?",
+   "Hath the LORD indeed spoken only by Moses?"
+  ],
+  "answer": 3,
+  "explanation": "They said, Hath the LORD indeed spoken only by Moses? hath he not spoken also by us?",
+  "ref": "Numbers 12:2"
+ },
+ {
+  "id": "numbers-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Who heard what Miriam and Aaron said?",
+  "choices": [
+   "The people",
+   "Joshua",
+   "The elders",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "They said, Hath the LORD indeed spoken only by Moses? And the LORD heard it.",
+  "ref": "Numbers 12:2"
+ },
+ {
+  "id": "numbers-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the LORD stand when He called Aaron and Miriam?",
+  "choices": [
+   "In the door of the tabernacle",
+   "Within the camp",
+   "By the altar",
+   "On the mount"
+  ],
+  "answer": 0,
+  "explanation": "The LORD stood in the door of the tabernacle, and called Aaron and Miriam.",
+  "ref": "Numbers 12:5"
+ },
+ {
+  "id": "numbers-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the LORD make Himself known to a prophet?",
+  "choices": [
+   "By writing",
+   "In a vision",
+   "By trumpet",
+   "Face to face"
+  ],
+  "answer": 1,
+  "explanation": "If there be a prophet among you, I the LORD will make myself known unto him in a vision.",
+  "ref": "Numbers 12:6"
+ },
+ {
+  "id": "numbers-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of Moses the LORD said he was faithful in all what?",
+  "choices": [
+   "The wilderness",
+   "Mine house",
+   "The tabernacle",
+   "The camp"
+  ],
+  "answer": 1,
+  "explanation": "My servant Moses is not so, who is faithful in all mine house.",
+  "ref": "Numbers 12:7"
+ },
+ {
+  "id": "numbers-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say Moses would behold?",
+  "choices": [
+   "The similitude of the LORD",
+   "The glory of Sinai",
+   "The face of the cloud",
+   "The back of the ark"
+  ],
+  "answer": 0,
+  "explanation": "The similitude of the LORD shall he behold.",
+  "ref": "Numbers 12:8"
+ },
+ {
+  "id": "numbers-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD ask Aaron and Miriam they were not afraid to do?",
+  "choices": [
+   "Speak against my servant Moses",
+   "Leave the camp",
+   "Enter the tabernacle",
+   "Offer strange fire"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore then were ye not afraid to speak against my servant Moses?",
+  "ref": "Numbers 12:8"
+ },
+ {
+  "id": "numbers-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD do after His anger was kindled?",
+  "choices": [
+   "He destroyed the camp",
+   "He spoke again",
+   "He sent fire",
+   "He departed"
+  ],
+  "answer": 3,
+  "explanation": "The anger of the LORD was kindled against them; and he departed.",
+  "ref": "Numbers 12:9"
+ },
+ {
+  "id": "numbers-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What departed from off the tabernacle before Miriam became leprous?",
+  "choices": [
+   "The cloud",
+   "The priests",
+   "The ark",
+   "The glory"
+  ],
+  "answer": 0,
+  "explanation": "The cloud departed from off the tabernacle; and, behold, Miriam became leprous.",
+  "ref": "Numbers 12:10"
+ },
+ {
+  "id": "numbers-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Aaron beg Moses not to lay upon them?",
+  "choices": [
+   "The sin",
+   "The shame",
+   "The curse",
+   "The plague"
+  ],
+  "answer": 0,
+  "explanation": "Alas, my lord, I beseech thee, lay not the sin upon us.",
+  "ref": "Numbers 12:11"
+ },
+ {
+  "id": "numbers-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would shame a daughter seven days, said the LORD, if her father did it?",
+  "choices": [
+   "Sending her away",
+   "Striking her",
+   "Spitting in her face",
+   "Cursing her"
+  ],
+  "answer": 2,
+  "explanation": "If her father had but spit in her face, should she not be ashamed seven days?",
+  "ref": "Numbers 12:14"
+ },
+ {
+  "id": "numbers-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to happen to Miriam after the seven days?",
+  "choices": [
+   "She was received in again",
+   "She was sent away",
+   "She was made a priest",
+   "She was stoned"
+  ],
+  "answer": 0,
+  "explanation": "Let her be shut out from the camp seven days, and after that let her be received in again.",
+  "ref": "Numbers 12:14"
+ },
+ {
+  "id": "numbers-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is Moses described in the parenthesis of the chapter?",
+  "choices": [
+   "Faithful above all priests",
+   "Very meek, above all men on earth",
+   "Strong above all kings",
+   "Wise above all elders"
+  ],
+  "answer": 1,
+  "explanation": "The man Moses was very meek, above all the men which were upon the face of the earth.",
+  "ref": "Numbers 12:3"
+ },
+ {
+  "id": "numbers-12-m-14",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Aaron call 'my lord'?",
+  "choices": [
+   "The priest",
+   "Joshua",
+   "The LORD",
+   "Moses"
+  ],
+  "answer": 3,
+  "explanation": "Aaron said unto Moses, Alas, my lord, I beseech thee.",
+  "ref": "Numbers 12:11"
+ },
+ {
+  "id": "numbers-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what does the LORD speak to a prophet, besides a vision?",
+  "choices": [
+   "A trumpet",
+   "A burning bush",
+   "A whisper",
+   "A dream"
+  ],
+  "answer": 3,
+  "explanation": "I the LORD will make myself known unto him in a vision, and will speak unto him in a dream.",
+  "ref": "Numbers 12:6"
+ },
+ {
+  "id": "numbers-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How would the LORD not speak to Moses?",
+  "choices": [
+   "In dark speeches",
+   "By lots",
+   "By angels",
+   "In a whisper"
+  ],
+  "answer": 0,
+  "explanation": "With him will I speak mouth to mouth, even apparently, and not in dark speeches.",
+  "ref": "Numbers 12:8"
+ },
+ {
+  "id": "numbers-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD said He spoke to Moses mouth to mouth, even how?",
+  "choices": [
+   "In sleep",
+   "In haste",
+   "Secretly",
+   "Apparently"
+  ],
+  "answer": 3,
+  "explanation": "Mouth to mouth, even apparently, and not in dark speeches.",
+  "ref": "Numbers 12:8"
+ },
+ {
+  "id": "numbers-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Aaron asked that Miriam not be as one dead whose what is half consumed?",
+  "choices": [
+   "Hair",
+   "Heart",
+   "Bones",
+   "Flesh"
+  ],
+  "answer": 3,
+  "explanation": "Let her not be as one dead, of whom the flesh is half consumed.",
+  "ref": "Numbers 12:12"
+ },
+ {
+  "id": "numbers-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When is the flesh of that dead one half consumed, per Aaron?",
+  "choices": [
+   "When he lies in a tomb",
+   "When he is old",
+   "When he cometh out of his mother's womb",
+   "When he falls in war"
+  ],
+  "answer": 2,
+  "explanation": "Of whom the flesh is half consumed when he cometh out of his mother's womb.",
+  "ref": "Numbers 12:12"
+ },
+ {
+  "id": "numbers-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the LORD speak when He called the three?",
+  "choices": [
+   "In a vision",
+   "In thunder",
+   "Softly",
+   "Suddenly"
+  ],
+  "answer": 3,
+  "explanation": "The LORD spake suddenly unto Moses, and unto Aaron, and unto Miriam.",
+  "ref": "Numbers 12:4"
+ },
+ {
+  "id": "numbers-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did the LORD call forth from the tabernacle door?",
+  "choices": [
+   "Moses and Miriam",
+   "Aaron and Miriam",
+   "Moses and Aaron",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "The LORD called Aaron and Miriam: and they both came forth.",
+  "ref": "Numbers 12:5"
+ },
+ {
+  "id": "numbers-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Aaron said they had done foolishly and what else?",
+  "choices": [
+   "Rebelled",
+   "Sinned",
+   "Murmured",
+   "Fled"
+  ],
+  "answer": 1,
+  "explanation": "Wherein we have done foolishly, and wherein we have sinned.",
+  "ref": "Numbers 12:11"
+ },
+ {
+  "id": "numbers-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom was Moses meek above?",
+  "choices": [
+   "All the men upon the face of the earth",
+   "All the kings",
+   "All the priests of Israel",
+   "All the elders"
+  ],
+  "answer": 0,
+  "explanation": "Moses was very meek, above all the men which were upon the face of the earth.",
+  "ref": "Numbers 12:3"
+ },
+ {
+  "id": "numbers-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where was Miriam to be shut out?",
+  "choices": [
+   "The camp",
+   "The tabernacle",
+   "Her tent",
+   "The city"
+  ],
+  "answer": 0,
+  "explanation": "Let her be shut out from the camp seven days.",
+  "ref": "Numbers 12:14"
+ },
+ {
+  "id": "numbers-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of the two is named first among those who spoke against Moses?",
+  "choices": [
+   "Hur",
+   "Eleazar",
+   "Miriam",
+   "Aaron"
+  ],
+  "answer": 2,
+  "explanation": "Miriam and Aaron spake against Moses.",
+  "ref": "Numbers 12:1"
+ },
+ {
+  "id": "numbers-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many days would she be ashamed if her father spit in her face?",
+  "choices": [
+   "Three",
+   "Twelve",
+   "Seven",
+   "Forty"
+  ],
+  "answer": 2,
+  "explanation": "If her father had but spit in her face, should she not be ashamed seven days?",
+  "ref": "Numbers 12:14"
+ },
+ {
+  "id": "numbers-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD call Moses when He said he was not like other prophets?",
+  "choices": [
+   "My son",
+   "My servant",
+   "My prophet",
+   "My friend"
+  ],
+  "answer": 1,
+  "explanation": "My servant Moses is not so, who is faithful in all mine house.",
+  "ref": "Numbers 12:7"
+ },
+ {
+  "id": "numbers-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After Miriam was brought in again, what did the people do?",
+  "choices": [
+   "Built an altar",
+   "Removed from Hazeroth",
+   "Kept a feast",
+   "Numbered the camp"
+  ],
+  "answer": 1,
+  "explanation": "The people journeyed not till Miriam was brought in again. And afterward the people removed from Hazeroth.",
+  "ref": "Numbers 12:15"
+ },
+ {
+  "id": "numbers-12-m-15",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say to Aaron and Miriam when He called them forth?",
+  "choices": [
+   "Return to your tents",
+   "Stand still",
+   "Hear now my words",
+   "Be afraid"
+  ],
+  "answer": 2,
+  "explanation": "He said, Hear now my words.",
+  "ref": "Numbers 12:6"
+ },
+ {
+  "id": "numbers-12-h-16",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD said, If there be a what among you, I will make myself known in a vision?",
+  "choices": [
+   "Judge",
+   "Elder",
+   "Priest",
+   "Prophet"
+  ],
+  "answer": 3,
+  "explanation": "If there be a prophet among you, I the LORD will make myself known unto him in a vision.",
+  "ref": "Numbers 12:6"
+ },
+ {
   "id": "old-numbers-13-1",
   "chapter": 13,
   "level": "beginner",
