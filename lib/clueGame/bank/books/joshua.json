@@ -14512,6 +14512,646 @@
   "ref": "Joshua 21:44"
  },
  {
+  "id": "joshua-21-e-01",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where were the Levites when they asked for their cities?",
+  "choices": [
+   "Gilgal",
+   "Hebron",
+   "Shechem",
+   "Shiloh"
+  ],
+  "answer": 3,
+  "explanation": "They spake unto them at Shiloh in the land of Canaan.",
+  "ref": "Joshua 21:2"
+ },
+ {
+  "id": "joshua-21-e-02",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which priest, with Joshua, did the Levite heads come to?",
+  "choices": [
+   "Phinehas",
+   "Aaron",
+   "Caleb",
+   "Eleazar"
+  ],
+  "answer": 3,
+  "explanation": "The heads came unto Eleazar the priest, and unto Joshua the son of Nun.",
+  "ref": "Joshua 21:1"
+ },
+ {
+  "id": "joshua-21-e-03",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides cities to dwell in, what did the Levites ask the suburbs for?",
+  "choices": [
+   "Their gardens",
+   "Their tents",
+   "Their altars",
+   "Their cattle"
+  ],
+  "answer": 3,
+  "explanation": "The LORD commanded to give us cities to dwell in, with the suburbs thereof for our cattle.",
+  "ref": "Joshua 21:2"
+ },
+ {
+  "id": "joshua-21-e-04",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the families of the Levites receive their cities?",
+  "choices": [
+   "By purchase",
+   "By battle",
+   "By a vote",
+   "By lot"
+  ],
+  "answer": 3,
+  "explanation": "The lot came out for the families of the Kohathites.",
+  "ref": "Joshua 21:4"
+ },
+ {
+  "id": "joshua-21-e-05",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the father of Anak, whose city Hebron became?",
+  "choices": [
+   "Caleb",
+   "Aaron",
+   "Kohath",
+   "Arba"
+  ],
+  "answer": 3,
+  "explanation": "The city of Arba the father of Anak, which city is Hebron.",
+  "ref": "Joshua 21:11"
+ },
+ {
+  "id": "joshua-21-e-06",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom were the fields and villages of Hebron given?",
+  "choices": [
+   "Eleazar",
+   "Joshua",
+   "Phinehas",
+   "Caleb the son of Jephunneh"
+  ],
+  "answer": 3,
+  "explanation": "The fields of the city, and the villages thereof, gave they to Caleb the son of Jephunneh.",
+  "ref": "Joshua 21:12"
+ },
+ {
+  "id": "joshua-21-e-07",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Hebron to be for the slayer?",
+  "choices": [
+   "A royal city",
+   "A store city",
+   "A holy mountain",
+   "A city of refuge"
+  ],
+  "answer": 3,
+  "explanation": "Hebron with her suburbs, to be a city of refuge for the slayer.",
+  "ref": "Joshua 21:13"
+ },
+ {
+  "id": "joshua-21-e-08",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which family of Levites had the first lot?",
+  "choices": [
+   "The Gershonites",
+   "The Merarites",
+   "The sons of Ephraim",
+   "The children of Aaron"
+  ],
+  "answer": 3,
+  "explanation": "Theirs was the first lot.",
+  "ref": "Joshua 21:10"
+ },
+ {
+  "id": "joshua-21-e-09",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many cities in all did the priests of Aaron receive?",
+  "choices": [
+   "Ten",
+   "Twelve",
+   "Nine",
+   "Thirteen"
+  ],
+  "answer": 3,
+  "explanation": "All the cities of the children of Aaron were thirteen cities.",
+  "ref": "Joshua 21:19"
+ },
+ {
+  "id": "joshua-21-e-10",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD give Israel round about?",
+  "choices": [
+   "A king",
+   "Manna",
+   "A temple",
+   "Rest"
+  ],
+  "answer": 3,
+  "explanation": "The LORD gave them rest round about.",
+  "ref": "Joshua 21:44"
+ },
+ {
+  "id": "joshua-21-m-01",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Which tribes gave the thirteen cities to the sons of Aaron?",
+  "choices": [
+   "Ephraim, Dan and Manasseh",
+   "Judah, Simeon and Benjamin",
+   "Reuben, Gad and Zebulun",
+   "Asher, Naphtali and Issachar"
+  ],
+  "answer": 1,
+  "explanation": "Out of Judah, Simeon and Benjamin, thirteen cities.",
+  "ref": "Joshua 21:4"
+ },
+ {
+  "id": "joshua-21-m-02",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cities did the rest of the Kohathites receive?",
+  "choices": [
+   "Twelve",
+   "Ten",
+   "Thirteen",
+   "Four"
+  ],
+  "answer": 1,
+  "explanation": "The rest of the children of Kohath had by lot ten cities.",
+  "ref": "Joshua 21:5"
+ },
+ {
+  "id": "joshua-21-m-03",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cities did the Gershonites receive?",
+  "choices": [
+   "Ten",
+   "Thirteen",
+   "Twelve",
+   "Nine"
+  ],
+  "answer": 1,
+  "explanation": "All the cities of the Gershonites were thirteen cities.",
+  "ref": "Joshua 21:33"
+ },
+ {
+  "id": "joshua-21-m-04",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cities did the Merarites receive?",
+  "choices": [
+   "Ten",
+   "Twelve",
+   "Thirteen",
+   "Eight"
+  ],
+  "answer": 1,
+  "explanation": "All the cities for the children of Merari were twelve cities.",
+  "ref": "Joshua 21:40"
+ },
+ {
+  "id": "joshua-21-m-05",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which Levite family received cities from Reuben, Gad and Zebulun?",
+  "choices": [
+   "The Gershonites",
+   "The Merarites",
+   "The Kohathites",
+   "The sons of Aaron"
+  ],
+  "answer": 1,
+  "explanation": "The children of Merari had out of Reuben, Gad and Zebulun, twelve cities.",
+  "ref": "Joshua 21:7"
+ },
+ {
+  "id": "joshua-21-m-06",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city of refuge did the Gershonites receive out of Manasseh in Bashan?",
+  "choices": [
+   "Bezer",
+   "Golan",
+   "Ramoth",
+   "Shechem"
+  ],
+  "answer": 1,
+  "explanation": "Golan in Bashan with her suburbs, to be a city of refuge.",
+  "ref": "Joshua 21:27"
+ },
+ {
+  "id": "joshua-21-m-07",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city of refuge did the Merarites receive out of Gad?",
+  "choices": [
+   "Shechem",
+   "Ramoth in Gilead",
+   "Golan",
+   "Kedesh"
+  ],
+  "answer": 1,
+  "explanation": "Ramoth in Gilead with her suburbs, to be a city of refuge.",
+  "ref": "Joshua 21:38"
+ },
+ {
+  "id": "joshua-21-m-08",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city of refuge in Galilee did the Gershonites receive out of Naphtali?",
+  "choices": [
+   "Hebron",
+   "Kedesh",
+   "Shechem",
+   "Bezer"
+  ],
+  "answer": 1,
+  "explanation": "Kedesh in Galilee with her suburbs, to be a city of refuge for the slayer.",
+  "ref": "Joshua 21:32"
+ },
+ {
+  "id": "joshua-21-m-09",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city of refuge in mount Ephraim went to the Kohathites?",
+  "choices": [
+   "Hebron",
+   "Shechem",
+   "Gezer",
+   "Golan"
+  ],
+  "answer": 1,
+  "explanation": "Shechem with her suburbs in mount Ephraim, to be a city of refuge.",
+  "ref": "Joshua 21:21"
+ },
+ {
+  "id": "joshua-21-m-10",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city of refuge did the Merarites receive out of Reuben?",
+  "choices": [
+   "Heshbon",
+   "Bezer",
+   "Jahazah",
+   "Mahanaim"
+  ],
+  "answer": 1,
+  "explanation": "Out of the tribe of Reuben, Bezer with her suburbs.",
+  "ref": "Joshua 21:36"
+ },
+ {
+  "id": "joshua-21-m-11",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD give Israel that he sware to their fathers?",
+  "choices": [
+   "Great riches",
+   "All the land",
+   "A king",
+   "A temple"
+  ],
+  "answer": 1,
+  "explanation": "The LORD gave unto Israel all the land which he sware to give unto their fathers.",
+  "ref": "Joshua 21:43"
+ },
+ {
+  "id": "joshua-21-m-12",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD deliver into Israel's hand?",
+  "choices": [
+   "Their cattle",
+   "All their enemies",
+   "The cities of Moab",
+   "Jericho only"
+  ],
+  "answer": 1,
+  "explanation": "The LORD delivered all their enemies into their hand.",
+  "ref": "Joshua 21:44"
+ },
+ {
+  "id": "joshua-21-m-13",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many of the LORD's good things failed to come to pass?",
+  "choices": [
+   "One",
+   "None",
+   "A few",
+   "Most"
+  ],
+  "answer": 1,
+  "explanation": "There failed not ought of any good thing which the LORD had spoken; all came to pass.",
+  "ref": "Joshua 21:45"
+ },
+ {
+  "id": "joshua-21-m-14",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city of Judah, with its suburbs, was a city of the priests?",
+  "choices": [
+   "Shechem",
+   "Libnah",
+   "Kedesh",
+   "Golan"
+  ],
+  "answer": 1,
+  "explanation": "Hebron with her suburbs, and Libnah with her suburbs.",
+  "ref": "Joshua 21:13"
+ },
+ {
+  "id": "joshua-21-m-15",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which cities did the Kohathites of Ephraim receive besides Shechem?",
+  "choices": [
+   "Tanach and Gath-rimmon",
+   "Gezer, Kibzaim and Beth-horon",
+   "Eltekeh and Aijalon",
+   "Bezer and Jahazah"
+  ],
+  "answer": 1,
+  "explanation": "Shechem, Gezer, Kibzaim and Beth-horon; four cities.",
+  "ref": "Joshua 21:21–22"
+ },
+ {
+  "id": "joshua-21-h-01",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which two did the Levite heads speak to at Shiloh?",
+  "choices": [
+   "Eleazar and Joshua",
+   "Moses and Aaron",
+   "Caleb and Phinehas",
+   "Joshua and Caleb"
+  ],
+  "answer": 0,
+  "explanation": "They came unto Eleazar the priest, and unto Joshua the son of Nun.",
+  "ref": "Joshua 21:1"
+ },
+ {
+  "id": "joshua-21-h-02",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities belonged to the children of Aaron out of Benjamin?",
+  "choices": [
+   "Gibeon",
+   "Shechem",
+   "Golan",
+   "Ramoth"
+  ],
+  "answer": 0,
+  "explanation": "Out of Benjamin, Gibeon, Geba, Anathoth and Almon; four cities.",
+  "ref": "Joshua 21:17–18"
+ },
+ {
+  "id": "joshua-21-h-03",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cities did the priests receive out of Benjamin?",
+  "choices": [
+   "Four",
+   "Nine",
+   "Two",
+   "Thirteen"
+  ],
+  "answer": 0,
+  "explanation": "Out of Benjamin, Gibeon, Geba, Anathoth and Almon; four cities.",
+  "ref": "Joshua 21:17–18"
+ },
+ {
+  "id": "joshua-21-h-04",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cities did the priests receive out of Judah and Simeon?",
+  "choices": [
+   "Nine",
+   "Four",
+   "Ten",
+   "Thirteen"
+  ],
+  "answer": 0,
+  "explanation": "Nine cities out of those two tribes.",
+  "ref": "Joshua 21:16"
+ },
+ {
+  "id": "joshua-21-h-05",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities went to the Kohathites out of the tribe of Dan?",
+  "choices": [
+   "Aijalon",
+   "Tanach",
+   "Gezer",
+   "Kishon"
+  ],
+  "answer": 0,
+  "explanation": "Out of Dan, Eltekeh, Gibbethon, Aijalon, Gath-rimmon; four cities.",
+  "ref": "Joshua 21:23–24"
+ },
+ {
+  "id": "joshua-21-h-06",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cities did the Kohathites get out of the half tribe of Manasseh?",
+  "choices": [
+   "Two",
+   "Four",
+   "Three",
+   "Ten"
+  ],
+  "answer": 0,
+  "explanation": "Out of the half tribe of Manasseh, Tanach and Gath-rimmon; two cities.",
+  "ref": "Joshua 21:25"
+ },
+ {
+  "id": "joshua-21-h-07",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities did the Gershonites get out of Issachar?",
+  "choices": [
+   "Kishon",
+   "Mishal",
+   "Heshbon",
+   "Jazer"
+  ],
+  "answer": 0,
+  "explanation": "Out of Issachar, Kishon, Dabareh, Jarmuth, En-gannim.",
+  "ref": "Joshua 21:28–29"
+ },
+ {
+  "id": "joshua-21-h-08",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities was given to the Gershonites out of Asher?",
+  "choices": [
+   "Abdon",
+   "Kartan",
+   "Dimnah",
+   "Jahazah"
+  ],
+  "answer": 0,
+  "explanation": "Out of Asher, Mishal, Abdon, Helkath and Rehob.",
+  "ref": "Joshua 21:30–31"
+ },
+ {
+  "id": "joshua-21-h-09",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cities did the Gershonites get out of Naphtali?",
+  "choices": [
+   "Three",
+   "Four",
+   "Two",
+   "Thirteen"
+  ],
+  "answer": 0,
+  "explanation": "Kedesh, Hammoth-dor and Kartan; three cities.",
+  "ref": "Joshua 21:32"
+ },
+ {
+  "id": "joshua-21-h-10",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities did the Merarites get out of Gad?",
+  "choices": [
+   "Heshbon",
+   "Bezer",
+   "Dimnah",
+   "Kartah"
+  ],
+  "answer": 0,
+  "explanation": "Out of Gad, Ramoth, Mahanaim, Heshbon and Jazer; four cities.",
+  "ref": "Joshua 21:38–39"
+ },
+ {
+  "id": "joshua-21-h-11",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities did the Merarites get out of Zebulun?",
+  "choices": [
+   "Jokneam",
+   "Mahanaim",
+   "Kedemoth",
+   "Rehob"
+  ],
+  "answer": 0,
+  "explanation": "Out of Zebulun, Jokneam, Kartah, Dimnah and Nahalal; four cities.",
+  "ref": "Joshua 21:34–35"
+ },
+ {
+  "id": "joshua-21-h-12",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cities did the Merarites get out of Reuben?",
+  "choices": [
+   "Four",
+   "Two",
+   "Three",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "Out of Reuben, Bezer, Jahazah, Kedemoth and Mephaath; four cities.",
+  "ref": "Joshua 21:36–37"
+ },
+ {
+  "id": "joshua-21-h-13",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Caleb's possession consist of at Hebron?",
+  "choices": [
+   "The fields and villages",
+   "The city itself",
+   "The suburbs",
+   "The gate"
+  ],
+  "answer": 0,
+  "explanation": "The fields of the city, and the villages thereof, gave they to Caleb.",
+  "ref": "Joshua 21:12"
+ },
+ {
+  "id": "joshua-21-h-14",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities did the priests get out of Judah and Simeon?",
+  "choices": [
+   "Debir",
+   "Gezer",
+   "Golan",
+   "Heshbon"
+  ],
+  "answer": 0,
+  "explanation": "Holon with her suburbs, and Debir with her suburbs.",
+  "ref": "Joshua 21:15"
+ },
+ {
+  "id": "joshua-21-h-15",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What stood not before Israel according to the chapter?",
+  "choices": [
+   "A man of all their enemies",
+   "A king of Canaan",
+   "The walls of Jericho",
+   "The giants of Anak"
+  ],
+  "answer": 0,
+  "explanation": "There stood not a man of all their enemies before them.",
+  "ref": "Joshua 21:44"
+ },
+ {
   "id": "old-joshua-22-1",
   "chapter": 22,
   "level": "beginner",
