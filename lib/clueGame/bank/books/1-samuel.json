@@ -15936,6 +15936,646 @@
   "ref": "1 Samuel 23:28"
  },
  {
+  "id": "1-samuel-23-e-01",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who was fighting against Keilah and robbing its threshingfloors?",
+  "choices": [
+   "The Amalekites",
+   "The Philistines",
+   "The Edomites",
+   "The Ammonites"
+  ],
+  "answer": 1,
+  "explanation": "They told David, Behold, the Philistines fight against Keilah, and they rob the threshingfloors.",
+  "ref": "1 Samuel 23:1"
+ },
+ {
+  "id": "1-samuel-23-e-02",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David ask whether he should go and smite the Philistines?",
+  "choices": [
+   "The LORD",
+   "Abiathar's sons",
+   "Jonathan",
+   "Gad"
+  ],
+  "answer": 0,
+  "explanation": "David enquired of the LORD, saying, Shall I go and smite these Philistines?",
+  "ref": "1 Samuel 23:2"
+ },
+ {
+  "id": "1-samuel-23-e-03",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David's men feel about going to Keilah?",
+  "choices": [
+   "Eager",
+   "Angry",
+   "Proud",
+   "Afraid"
+  ],
+  "answer": 3,
+  "explanation": "David's men said unto him, Behold, we be afraid here in Judah.",
+  "ref": "1 Samuel 23:3"
+ },
+ {
+  "id": "1-samuel-23-e-04",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David bring away from the Philistines at Keilah?",
+  "choices": [
+   "Their gold",
+   "Their chariots",
+   "Their cattle",
+   "Their swords"
+  ],
+  "answer": 2,
+  "explanation": "David and his men went to Keilah, and fought with the Philistines, and brought away their cattle.",
+  "ref": "1 Samuel 23:5"
+ },
+ {
+  "id": "1-samuel-23-e-05",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Saul say when he heard David was in Keilah?",
+  "choices": [
+   "David is a fool",
+   "God hath delivered him into mine hand",
+   "Let him be",
+   "The LORD has left me"
+  ],
+  "answer": 1,
+  "explanation": "Saul said, God hath delivered him into mine hand.",
+  "ref": "1 Samuel 23:7"
+ },
+ {
+  "id": "1-samuel-23-e-06",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "About how many men were with David when they left Keilah?",
+  "choices": [
+   "Six hundred",
+   "Four hundred",
+   "Two hundred",
+   "One thousand"
+  ],
+  "answer": 0,
+  "explanation": "David and his men, which were about six hundred, arose and departed out of Keilah.",
+  "ref": "1 Samuel 23:13"
+ },
+ {
+  "id": "1-samuel-23-e-07",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which wilderness did David stay in strong holds?",
+  "choices": [
+   "The wilderness of Paran",
+   "The wilderness of Sin",
+   "The wilderness of Gibeah",
+   "The wilderness of Ziph"
+  ],
+  "answer": 3,
+  "explanation": "David remained in a mountain in the wilderness of Ziph.",
+  "ref": "1 Samuel 23:14"
+ },
+ {
+  "id": "1-samuel-23-e-08",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jonathan say David would be?",
+  "choices": [
+   "High priest",
+   "Captain of the host",
+   "King over Israel",
+   "Judge in Judah"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt be king over Israel, and I shall be next unto thee.",
+  "ref": "1 Samuel 23:17"
+ },
+ {
+  "id": "1-samuel-23-e-09",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Saul where David was hiding?",
+  "choices": [
+   "The men of Keilah",
+   "The Ziphites",
+   "The Philistines",
+   "Doeg"
+  ],
+  "answer": 1,
+  "explanation": "Then came up the Ziphites to Saul to Gibeah, saying, Doth not David hide himself with us?",
+  "ref": "1 Samuel 23:19"
+ },
+ {
+  "id": "1-samuel-23-e-10",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David dwell in strong holds at the end of the chapter?",
+  "choices": [
+   "En-gedi",
+   "Keilah",
+   "Gibeah",
+   "Maon"
+  ],
+  "answer": 0,
+  "explanation": "David went up from thence, and dwelt in strong holds at En-gedi.",
+  "ref": "1 Samuel 23:29"
+ },
+ {
+  "id": "1-samuel-23-m-01",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Philistines rob at Keilah?",
+  "choices": [
+   "The wells",
+   "The vineyards",
+   "The storehouses",
+   "The threshingfloors"
+  ],
+  "answer": 3,
+  "explanation": "They fight against Keilah, and they rob the threshingfloors.",
+  "ref": "1 Samuel 23:1"
+ },
+ {
+  "id": "1-samuel-23-m-02",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD promise David the second time he asked?",
+  "choices": [
+   "To send an army",
+   "To hide him from Saul",
+   "To deliver the Philistines into his hand",
+   "To give him a city"
+  ],
+  "answer": 2,
+  "explanation": "Arise, go down to Keilah; for I will deliver the Philistines into thine hand.",
+  "ref": "1 Samuel 23:4"
+ },
+ {
+  "id": "1-samuel-23-m-03",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Saul think David was shut in at Keilah?",
+  "choices": [
+   "It was surrounded by hills",
+   "It was a town with gates and bars",
+   "It had no water",
+   "The Philistines held it"
+  ],
+  "answer": 1,
+  "explanation": "He is shut in, by entering into a town that hath gates and bars.",
+  "ref": "1 Samuel 23:7"
+ },
+ {
+  "id": "1-samuel-23-m-04",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul call all the people together to do?",
+  "choices": [
+   "Go down to Keilah and besiege David",
+   "Fight the Philistines",
+   "Anoint Jonathan",
+   "Build a fortress"
+  ],
+  "answer": 0,
+  "explanation": "Saul called all the people together to war, to go down to Keilah, to besiege David and his men.",
+  "ref": "1 Samuel 23:8"
+ },
+ {
+  "id": "1-samuel-23-m-05",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David fear Saul would do to Keilah?",
+  "choices": [
+   "Take the cattle",
+   "Burn the threshingfloors",
+   "Make it his capital",
+   "Destroy the city for his sake"
+  ],
+  "answer": 3,
+  "explanation": "Saul seeketh to come to Keilah, to destroy the city for my sake.",
+  "ref": "1 Samuel 23:10"
+ },
+ {
+  "id": "1-samuel-23-m-06",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say about whether Saul would come down?",
+  "choices": [
+   "He will turn back",
+   "He will wait",
+   "He will come down",
+   "He will send Abner"
+  ],
+  "answer": 2,
+  "explanation": "O LORD God of Israel, I beseech thee, tell thy servant. And the LORD said, He will come down.",
+  "ref": "1 Samuel 23:11"
+ },
+ {
+  "id": "1-samuel-23-m-07",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul do when told David had escaped from Keilah?",
+  "choices": [
+   "He burned Keilah",
+   "He forbare to go forth",
+   "He chased him at once",
+   "He called for Abiathar"
+  ],
+  "answer": 1,
+  "explanation": "It was told Saul that David was escaped from Keilah; and he forbare to go forth.",
+  "ref": "1 Samuel 23:13"
+ },
+ {
+  "id": "1-samuel-23-m-08",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Saul do every day, according to the chapter?",
+  "choices": [
+   "Sought David",
+   "Prayed",
+   "Fought the Philistines",
+   "Called for Jonathan"
+  ],
+  "answer": 0,
+  "explanation": "Saul sought him every day, but God delivered him not into his hand.",
+  "ref": "1 Samuel 23:14"
+ },
+ {
+  "id": "1-samuel-23-m-09",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What place did Jonathan say he would have?",
+  "choices": [
+   "Captain of the host",
+   "Keeper of the ark",
+   "Ruler of Gibeah",
+   "Next unto David"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt be king over Israel, and I shall be next unto thee.",
+  "ref": "1 Samuel 23:17"
+ },
+ {
+  "id": "1-samuel-23-m-10",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Before whom did David and Jonathan make their covenant?",
+  "choices": [
+   "The elders",
+   "Abiathar",
+   "The LORD",
+   "Saul"
+  ],
+  "answer": 2,
+  "explanation": "They two made a covenant before the LORD.",
+  "ref": "1 Samuel 23:18"
+ },
+ {
+  "id": "1-samuel-23-m-11",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Saul bless the Ziphites?",
+  "choices": [
+   "They brought him gifts",
+   "They had compassion on him",
+   "They knew David's plans",
+   "They were Benjamites"
+  ],
+  "answer": 1,
+  "explanation": "Blessed be ye of the LORD; for ye have compassion on me.",
+  "ref": "1 Samuel 23:21"
+ },
+ {
+  "id": "1-samuel-23-m-12",
+  "chapter": 23,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the Ziphites say David hid?",
+  "choices": [
+   "The hill of Hachilah",
+   "The hill of Moreh",
+   "The hill of Gibeah",
+   "The hill of Ephraim"
+  ],
+  "answer": 0,
+  "explanation": "Doth not David hide himself with us in strong holds in the wood, in the hill of Hachilah?",
+  "ref": "1 Samuel 23:19"
+ },
+ {
+  "id": "1-samuel-23-m-13",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Saul turn back from pursuing David?",
+  "choices": [
+   "Jonathan pleaded",
+   "He lost the way",
+   "His men grew tired",
+   "A messenger said the Philistines had invaded"
+  ],
+  "answer": 3,
+  "explanation": "A messenger unto Saul, saying, Haste thee, and come; for the Philistines have invaded the land.",
+  "ref": "1 Samuel 23:27"
+ },
+ {
+  "id": "1-samuel-23-m-14",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say to Abiathar when he learned of Saul's plan?",
+  "choices": [
+   "Pray for us",
+   "Take the cattle",
+   "Bring hither the ephod",
+   "Go to Keilah's elders"
+  ],
+  "answer": 2,
+  "explanation": "David knew that Saul secretly practised mischief against him; and he said to Abiathar, Bring hither the ephod.",
+  "ref": "1 Samuel 23:9"
+ },
+ {
+  "id": "1-samuel-23-m-15",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Jonathan go after the covenant with David?",
+  "choices": [
+   "To Gibeah's gate",
+   "To his house",
+   "To Keilah",
+   "To Saul's camp"
+  ],
+  "answer": 1,
+  "explanation": "David abode in the wood, and Jonathan went to his house.",
+  "ref": "1 Samuel 23:18"
+ },
+ {
+  "id": "1-samuel-23-h-01",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "In which wilderness did Saul pursue David after the Ziphites came?",
+  "choices": [
+   "Maon",
+   "Ziph",
+   "En-gedi",
+   "Paran"
+  ],
+  "answer": 0,
+  "explanation": "Saul pursued after David in the wilderness of Maon.",
+  "ref": "1 Samuel 23:25"
+ },
+ {
+  "id": "1-samuel-23-h-02",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did David go when he was told Saul was coming?",
+  "choices": [
+   "Into a cave",
+   "Up a tree",
+   "Into Keilah",
+   "Down into a rock"
+  ],
+  "answer": 3,
+  "explanation": "They told David: wherefore he came down into a rock, and abode in the wilderness of Maon.",
+  "ref": "1 Samuel 23:25"
+ },
+ {
+  "id": "1-samuel-23-h-03",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Saul and his men close in on David and his men?",
+  "choices": [
+   "They set a fire",
+   "They split into three",
+   "They compassed them round about",
+   "They waited at the water"
+  ],
+  "answer": 2,
+  "explanation": "Saul and his men compassed David and his men round about to take them.",
+  "ref": "1 Samuel 23:26"
+ },
+ {
+  "id": "1-samuel-23-h-04",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Saul say David dealt?",
+  "choices": [
+   "Very boldly",
+   "Very subtilly",
+   "Very harshly",
+   "Very foolishly"
+  ],
+  "answer": 1,
+  "explanation": "It is told me that he dealeth very subtilly.",
+  "ref": "1 Samuel 23:22"
+ },
+ {
+  "id": "1-samuel-23-h-05",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Saul tell the Ziphites to take knowledge of?",
+  "choices": [
+   "The lurking places where David hid",
+   "The number of David's men",
+   "The cities of Judah",
+   "The roads to Gibeah"
+  ],
+  "answer": 0,
+  "explanation": "See therefore, and take knowledge of all the lurking places where he hideth himself.",
+  "ref": "1 Samuel 23:23"
+ },
+ {
+  "id": "1-samuel-23-h-06",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jonathan strengthen David's hand?",
+  "choices": [
+   "With gold",
+   "With a sword",
+   "With his men",
+   "In God"
+  ],
+  "answer": 3,
+  "explanation": "Jonathan went to David into the wood, and strengthened his hand in God.",
+  "ref": "1 Samuel 23:16"
+ },
+ {
+  "id": "1-samuel-23-h-07",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jonathan say Saul his father also knew?",
+  "choices": [
+   "Where David was hiding",
+   "That Jonathan loved David",
+   "That David would be king",
+   "That God had left Saul"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt be king over Israel, and I shall be next unto thee; and that also Saul my father knoweth.",
+  "ref": "1 Samuel 23:17"
+ },
+ {
+  "id": "1-samuel-23-h-08",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Through what did Saul say he would search for David?",
+  "choices": [
+   "All the hills of Benjamin",
+   "All the thousands of Judah",
+   "All the cities of the Philistines",
+   "All the strong holds of Moab"
+  ],
+  "answer": 1,
+  "explanation": "I will search him out throughout all the thousands of Judah.",
+  "ref": "1 Samuel 23:23"
+ },
+ {
+  "id": "1-samuel-23-h-09",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did David deal with the Philistines at Keilah?",
+  "choices": [
+   "He smote them with a great slaughter",
+   "He drove them out without fighting",
+   "He made peace",
+   "He only took their cattle"
+  ],
+  "answer": 0,
+  "explanation": "They fought with the Philistines, and smote them with a great slaughter. So David saved the inhabitants of Keilah.",
+  "ref": "1 Samuel 23:5"
+ },
+ {
+  "id": "1-samuel-23-h-10",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were Saul and David when Saul was closing in?",
+  "choices": [
+   "On opposite sides of a river",
+   "In the same cave",
+   "In the same wood",
+   "On opposite sides of a mountain"
+  ],
+  "answer": 3,
+  "explanation": "Saul went on this side of the mountain, and David and his men on that side of the mountain.",
+  "ref": "1 Samuel 23:26"
+ },
+ {
+  "id": "1-samuel-23-h-11",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Abiathar come with an ephod in his hand?",
+  "choices": [
+   "To Ziph",
+   "To Maon",
+   "Down to Keilah",
+   "To En-gedi"
+  ],
+  "answer": 2,
+  "explanation": "Abiathar the son of Ahimelech fled to David to Keilah, that he came down with an ephod in his hand.",
+  "ref": "1 Samuel 23:6"
+ },
+ {
+  "id": "1-samuel-23-h-12",
+  "chapter": 23,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the hill of Hachilah said to be?",
+  "choices": [
+   "North of Keilah",
+   "South of Jeshimon",
+   "East of Gibeah",
+   "West of Ziph"
+  ],
+  "answer": 1,
+  "explanation": "The hill of Hachilah, which is on the south of Jeshimon.",
+  "ref": "1 Samuel 23:19"
+ },
+ {
+  "id": "1-samuel-23-h-13",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the Ziphites' part be, according to their offer?",
+  "choices": [
+   "To deliver David into the king's hand",
+   "To fight Saul's war",
+   "To guard Gibeah",
+   "To give him gold"
+  ],
+  "answer": 0,
+  "explanation": "Our part shall be to deliver him into the king's hand.",
+  "ref": "1 Samuel 23:20"
+ },
+ {
+  "id": "1-samuel-23-h-14",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say when David asked if Keilah would deliver him up?",
+  "choices": [
+   "They will protect thee",
+   "They will hide thee",
+   "They will fight with thee",
+   "They will deliver thee up"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said, They will deliver thee up.",
+  "ref": "1 Samuel 23:12"
+ },
+ {
+  "id": "1-samuel-23-h-15",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Saul answer the Ziphites before they set out?",
+  "choices": [
+   "Go at once and bring him",
+   "Wait for the new moon",
+   "Go, prepare yet, and know and see his place",
+   "Take my army"
+  ],
+  "answer": 2,
+  "explanation": "Go, I pray you, prepare yet, and know and see his place where his haunt is.",
+  "ref": "1 Samuel 23:22"
+ },
+ {
   "id": "old-1-samuel-24-1",
   "chapter": 24,
   "level": "beginner",
