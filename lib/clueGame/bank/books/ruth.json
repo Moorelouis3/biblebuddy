@@ -800,6 +800,646 @@
   "ref": "Ruth 2:20"
  },
  {
+  "id": "ruth-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who asked to go to the field and glean?",
+  "choices": [
+   "Ruth",
+   "Orpah",
+   "Naomi",
+   "Boaz's servant"
+  ],
+  "answer": 0,
+  "explanation": "Ruth the Moabitess said, Let me now go to the field, and glean ears of corn.",
+  "ref": "Ruth 2:2"
+ },
+ {
+  "id": "ruth-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "What did Naomi say to Ruth when she asked to glean?",
+  "choices": [
+   "Stay here",
+   "Go, my daughter",
+   "Ask Boaz",
+   "Wait a year"
+  ],
+  "answer": 1,
+  "explanation": "Naomi said unto her, Go, my daughter.",
+  "ref": "Ruth 2:2"
+ },
+ {
+  "id": "ruth-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Boaz say to his reapers when he came from Bethlehem?",
+  "choices": [
+   "Go home",
+   "Rest now",
+   "The LORD be with you",
+   "Hurry"
+  ],
+  "answer": 2,
+  "explanation": "Boaz said unto the reapers, The LORD be with you.",
+  "ref": "Ruth 2:4"
+ },
+ {
+  "id": "ruth-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Boaz ask about, saying Whose damsel is this?",
+  "choices": [
+   "Naomi",
+   "Ruth",
+   "His mother",
+   "His servant over the reapers"
+  ],
+  "answer": 3,
+  "explanation": "Boaz said unto his servant that was set over the reapers, Whose damsel is this?",
+  "ref": "Ruth 2:5"
+ },
+ {
+  "id": "ruth-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Boaz tell Ruth to glean?",
+  "choices": [
+   "Fast by his maidens",
+   "In another field",
+   "Far away",
+   "In the city"
+  ],
+  "answer": 0,
+  "explanation": "Boaz said, Go not to glean in another field, but abide here fast by my maidens.",
+  "ref": "Ruth 2:8"
+ },
+ {
+  "id": "ruth-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Boaz tell Ruth she could drink from?",
+  "choices": [
+   "A river",
+   "The vessels the young men drew",
+   "A well in Moab",
+   "A cistern"
+  ],
+  "answer": 1,
+  "explanation": "When thou art athirst, go unto the vessels, and drink of that which the young men have drawn.",
+  "ref": "Ruth 2:9"
+ },
+ {
+  "id": "ruth-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much barley did Ruth beat out that day?",
+  "choices": [
+   "About a bushel",
+   "About a talent",
+   "About an ephah",
+   "About a cubit"
+  ],
+  "answer": 2,
+  "explanation": "She beat out that she had gleaned: and it was about an ephah of barley.",
+  "ref": "Ruth 2:17"
+ },
+ {
+  "id": "ruth-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did Ruth give the food she had saved?",
+  "choices": [
+   "Boaz",
+   "The reapers",
+   "Orpah",
+   "Her mother in law"
+  ],
+  "answer": 3,
+  "explanation": "She gave to her that she had reserved after she was sufficed.",
+  "ref": "Ruth 2:18"
+ },
+ {
+  "id": "ruth-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What name did Ruth tell Naomi about the man she worked with?",
+  "choices": [
+   "Boaz",
+   "Elimelech",
+   "Mahlon",
+   "Chilion"
+  ],
+  "answer": 0,
+  "explanation": "The man's name with whom I wrought to day is Boaz.",
+  "ref": "Ruth 2:19"
+ },
+ {
+  "id": "ruth-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Until when did Ruth keep to Boaz's maidens?",
+  "choices": [
+   "One week",
+   "The end of barley and wheat harvest",
+   "Midsummer",
+   "The first frost"
+  ],
+  "answer": 1,
+  "explanation": "She kept fast by the maidens of Boaz to glean unto the end of barley harvest and of wheat harvest.",
+  "ref": "Ruth 2:23"
+ },
+ {
+  "id": "ruth-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the servant describe Ruth to Boaz?",
+  "choices": [
+   "A beggar",
+   "A widow of Judah",
+   "The Moabitish damsel",
+   "A servant of Naomi"
+  ],
+  "answer": 2,
+  "explanation": "It is the Moabitish damsel that came back with Naomi.",
+  "ref": "Ruth 2:6"
+ },
+ {
+  "id": "ruth-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Boaz say he had charged the young men?",
+  "choices": [
+   "To feed her",
+   "To drive her away",
+   "To help her",
+   "Not to touch her"
+  ],
+  "answer": 3,
+  "explanation": "Have I not charged the young men that they shall not touch thee?",
+  "ref": "Ruth 2:9"
+ },
+ {
+  "id": "ruth-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Ruth respond when Boaz spoke to her?",
+  "choices": [
+   "Fell on her face and bowed",
+   "Ran away",
+   "Thanked silently",
+   "Laughed"
+  ],
+  "answer": 0,
+  "explanation": "She fell on her face, and bowed herself to the ground.",
+  "ref": "Ruth 2:10"
+ },
+ {
+  "id": "ruth-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Ruth say she was surprised at Boaz's kindness?",
+  "choices": [
+   "She was rich",
+   "She was a stranger",
+   "She was his kin",
+   "She was a judge"
+  ],
+  "answer": 1,
+  "explanation": "She said, Why have I found grace in thine eyes, seeing I am a stranger?",
+  "ref": "Ruth 2:10"
+ },
+ {
+  "id": "ruth-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Boaz say he knew about Ruth?",
+  "choices": [
+   "Where she was born",
+   "Her father's name",
+   "What she did for her mother in law",
+   "Her wealth"
+  ],
+  "answer": 2,
+  "explanation": "It hath fully been shewed me all that thou hast done unto thy mother in law.",
+  "ref": "Ruth 2:11"
+ },
+ {
+  "id": "ruth-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Under whose wings did Boaz say Ruth had come to trust?",
+  "choices": [
+   "The king",
+   "Naomi",
+   "The judges",
+   "The LORD God of Israel"
+  ],
+  "answer": 3,
+  "explanation": "A full reward be given thee of the LORD God of Israel, under whose wings thou art come to trust.",
+  "ref": "Ruth 2:12"
+ },
+ {
+  "id": "ruth-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ruth say Boaz had done for her?",
+  "choices": [
+   "Comforted her",
+   "Paid her",
+   "Fed her sheep",
+   "Gave her land"
+  ],
+  "answer": 0,
+  "explanation": "She said, for that thou hast comforted me, and for that thou hast spoken friendly.",
+  "ref": "Ruth 2:13"
+ },
+ {
+  "id": "ruth-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Boaz tell Ruth to dip her morsel in at mealtime?",
+  "choices": [
+   "Oil",
+   "Vinegar",
+   "Wine",
+   "Honey"
+  ],
+  "answer": 1,
+  "explanation": "Dip thy morsel in the vinegar.",
+  "ref": "Ruth 2:14"
+ },
+ {
+  "id": "ruth-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Boaz reach her at meal?",
+  "choices": [
+   "Bread and fish",
+   "Dates",
+   "Parched corn",
+   "Figs"
+  ],
+  "answer": 2,
+  "explanation": "He reached her parched corn, and she did eat, and was sufficed, and left.",
+  "ref": "Ruth 2:14"
+ },
+ {
+  "id": "ruth-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Boaz tell his young men to let her do?",
+  "choices": [
+   "Leave the field",
+   "Carry sheaves",
+   "Tie up grain",
+   "Glean among the sheaves"
+  ],
+  "answer": 3,
+  "explanation": "Boaz commanded, Let her glean even among the sheaves, and reproach her not.",
+  "ref": "Ruth 2:15"
+ },
+ {
+  "id": "ruth-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Boaz tell his men to let fall for her?",
+  "choices": [
+   "Handfuls of purpose",
+   "Silver",
+   "Barley cakes",
+   "Wheat"
+  ],
+  "answer": 0,
+  "explanation": "Let fall also some of the handfuls of purpose for her.",
+  "ref": "Ruth 2:16"
+ },
+ {
+  "id": "ruth-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did Ruth glean the first day?",
+  "choices": [
+   "Until noon",
+   "Until even",
+   "Three hours",
+   "All night"
+  ],
+  "answer": 1,
+  "explanation": "So she gleaned in the field until even.",
+  "ref": "Ruth 2:17"
+ },
+ {
+  "id": "ruth-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Naomi describe Boaz's kindness?",
+  "choices": [
+   "Fleeting",
+   "Because of silver",
+   "Not left off to the living and the dead",
+   "Short-lived"
+  ],
+  "answer": 2,
+  "explanation": "Blessed be he of the LORD, who hath not left off his kindness to the living and to the dead.",
+  "ref": "Ruth 2:20"
+ },
+ {
+  "id": "ruth-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Naomi say it was good for Ruth to do?",
+  "choices": [
+   "Stay home",
+   "Glean elsewhere",
+   "Marry",
+   "Go out with his maidens"
+  ],
+  "answer": 3,
+  "explanation": "Naomi said, It is good, my daughter, that thou go out with his maidens.",
+  "ref": "Ruth 2:22"
+ },
+ {
+  "id": "ruth-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose family was Boaz of?",
+  "choices": [
+   "Elimelech",
+   "Obed",
+   "Jesse",
+   "Judah"
+  ],
+  "answer": 0,
+  "explanation": "Naomi had a kinsman of her husband's, of the family of Elimelech; and his name was Boaz.",
+  "ref": "Ruth 2:1"
+ },
+ {
+  "id": "ruth-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of man was Boaz said to be at the start?",
+  "choices": [
+   "A priest",
+   "A mighty man of wealth",
+   "A judge",
+   "A prophet"
+  ],
+  "answer": 1,
+  "explanation": "Naomi had a kinsman, a mighty man of wealth, of the family of Elimelech.",
+  "ref": "Ruth 2:1"
+ },
+ {
+  "id": "ruth-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Ruth asked to do among the reapers?",
+  "choices": [
+   "Bind sheaves",
+   "Gather after them among the sheaves",
+   "Count grain",
+   "Pray"
+  ],
+  "answer": 1,
+  "explanation": "She said, let me glean and gather after the reapers among the sheaves.",
+  "ref": "Ruth 2:7"
+ },
+ {
+  "id": "ruth-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Ruth tarry a little?",
+  "choices": [
+   "At the gate",
+   "In the field",
+   "In the house",
+   "At the well"
+  ],
+  "answer": 2,
+  "explanation": "She had continued from the morning until now, that she tarried a little in the house.",
+  "ref": "Ruth 2:7"
+ },
+ {
+  "id": "ruth-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Boaz tell her to sit at meal?",
+  "choices": [
+   "Beside the reapers",
+   "Alone",
+   "With his maidens only",
+   "Under a tree"
+  ],
+  "answer": 0,
+  "explanation": "She sat beside the reapers.",
+  "ref": "Ruth 2:14"
+ },
+ {
+  "id": "ruth-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Naomi respond when Ruth said where she had gleaned?",
+  "choices": [
+   "Where is Boaz",
+   "Blessed be he that took knowledge",
+   "He is unknown",
+   "He must leave"
+  ],
+  "answer": 1,
+  "explanation": "Her mother in law said, blessed be he that did take knowledge of thee.",
+  "ref": "Ruth 2:19"
+ },
+ {
+  "id": "ruth-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Naomi call Boaz in relation?",
+  "choices": [
+   "A stranger",
+   "A priest",
+   "One of our next kinsmen",
+   "A judge"
+  ],
+  "answer": 2,
+  "explanation": "The man is near of kin unto us, one of our next kinsmen.",
+  "ref": "Ruth 2:20"
+ },
+ {
+  "id": "ruth-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whom did Ruth dwell after harvest?",
+  "choices": [
+   "Boaz",
+   "Her mother in law",
+   "Orpah",
+   "The reapers"
+  ],
+  "answer": 1,
+  "explanation": "She kept fast by the maidens of Boaz and dwelt with her mother in law.",
+  "ref": "Ruth 2:23"
+ },
+ {
+  "id": "ruth-2-h-20",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the reapers answer when Boaz blessed them?",
+  "choices": [
+   "The LORD be with you",
+   "The LORD bless thee",
+   "Peace be to thee",
+   "God save the field"
+  ],
+  "answer": 1,
+  "explanation": "They answered him, The LORD bless thee.",
+  "ref": "Ruth 2:4"
+ },
+ {
+  "id": "ruth-2-h-21",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ruth want to glean after in the beginning?",
+  "choices": [
+   "The king's men",
+   "Him in whose sight she found grace",
+   "Naomi's kin",
+   "The reapers' wives"
+  ],
+  "answer": 1,
+  "explanation": "She said, glean ears of corn after him in whose sight I shall find grace.",
+  "ref": "Ruth 2:2"
+ },
+ {
+  "id": "ruth-2-h-22",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Boaz ask the young men to leave for her?",
+  "choices": [
+   "Barley loaves",
+   "A basket",
+   "Handfuls of purpose",
+   "A sheaf each"
+  ],
+  "answer": 2,
+  "explanation": "He said, let fall also some of the handfuls of purpose for her, and leave them.",
+  "ref": "Ruth 2:16"
+ },
+ {
+  "id": "ruth-2-h-23",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Naomi say would keep Ruth safe from other fields?",
+  "choices": [
+   "Staying with Naomi",
+   "Hiding",
+   "Going home",
+   "Going out with Boaz's maidens"
+  ],
+  "answer": 3,
+  "explanation": "Naomi said, It is good, my daughter, that thou go out with his maidens, that they meet thee not in any other field.",
+  "ref": "Ruth 2:22"
+ },
+ {
+  "id": "ruth-2-h-24",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who did Boaz say would recompense Ruth's work?",
+  "choices": [
+   "The LORD",
+   "His servants",
+   "Naomi",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "Boaz said, The LORD recompense thy work.",
+  "ref": "Ruth 2:12"
+ },
+ {
+  "id": "ruth-2-h-25",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ruth say she was, even to Boaz's handmaidens?",
+  "choices": [
+   "Above them",
+   "Not like one of them",
+   "One of them",
+   "Their mistress"
+  ],
+  "answer": 1,
+  "explanation": "Ruth said, though I be not like unto one of thine handmaidens.",
+  "ref": "Ruth 2:13"
+ },
+ {
+  "id": "ruth-2-h-26",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After the meal, what did Ruth do with what she had left?",
+  "choices": [
+   "Threw it out",
+   "Kept it",
+   "Gave it to her mother in law",
+   "Sold it"
+  ],
+  "answer": 2,
+  "explanation": "She brought forth, and gave to her that she had reserved after she was sufficed.",
+  "ref": "Ruth 2:18"
+ },
+ {
+  "id": "ruth-2-m-30",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the mighty man of wealth of Elimelech's family?",
+  "choices": [
+   "Boaz",
+   "Obed",
+   "Jesse",
+   "Mahlon"
+  ],
+  "answer": 0,
+  "explanation": "Naomi had a kinsman of her husband's, a mighty man of wealth; and his name was Boaz.",
+  "ref": "Ruth 2:1"
+ },
+ {
   "id": "old-ruth-3-1",
   "chapter": 3,
   "level": "beginner",
