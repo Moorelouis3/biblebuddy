@@ -18806,14 +18806,654 @@
   "category": "keyword",
   "question": "Why did Saul stop searching for David?",
   "choices": [
-   "He was told David had fled to Gath",
-   "Saul died",
-   "Jonathan hid him",
-   "Samuel returned"
+   "He lost track of David's men",
+   "He was told that David had died",
+   "He was told that David had fled to Gath",
+   "He was called away to fight Amalek"
+  ],
+  "answer": 2,
+  "explanation": "It was told Saul that David was fled to Gath: and he sought no more again for him.",
+  "ref": "1 Samuel 27:4"
+ },
+ {
+  "id": "1-samuel-27-e-01",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say in his heart he would one day do by the hand of Saul?",
+  "choices": [
+   "Perish",
+   "Escape",
+   "Prevail",
+   "Reign"
   ],
   "answer": 0,
-  "explanation": "Saul stopped seeking David after hearing he had fled to Gath.",
+  "explanation": "David said in his heart, I shall now perish one day by the hand of Saul.",
+  "ref": "1 Samuel 27:1"
+ },
+ {
+  "id": "1-samuel-27-e-02",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men went with David when he passed over to Achish?",
+  "choices": [
+   "Six hundred",
+   "Two hundred",
+   "One thousand",
+   "Four hundred"
+  ],
+  "answer": 0,
+  "explanation": "David passed over with the six hundred men that were with him unto Achish.",
+  "ref": "1 Samuel 27:2"
+ },
+ {
+  "id": "1-samuel-27-e-03",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which Philistine city did David and his men dwell with Achish?",
+  "choices": [
+   "Gaza",
+   "Ekron",
+   "Ashdod",
+   "Gath"
+  ],
+  "answer": 3,
+  "explanation": "David dwelt with Achish at Gath, he and his men, every man with his household.",
+  "ref": "1 Samuel 27:3"
+ },
+ {
+  "id": "1-samuel-27-e-04",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David ask Achish to give him?",
+  "choices": [
+   "A chariot and horses",
+   "A share of the king's treasure",
+   "A place in some town in the country",
+   "Command of the army"
+  ],
+  "answer": 2,
+  "explanation": "David said, Let them give me a place in some town in the country, that I may dwell there.",
+  "ref": "1 Samuel 27:5"
+ },
+ {
+  "id": "1-samuel-27-e-05",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David leave of the people he struck when he raided?",
+  "choices": [
+   "Neither man nor woman alive",
+   "Their houses standing",
+   "Only the children",
+   "Only the old men"
+  ],
+  "answer": 0,
+  "explanation": "David smote the land, and left neither man nor woman alive.",
+  "ref": "1 Samuel 27:9"
+ },
+ {
+  "id": "1-samuel-27-e-06",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David hope Saul would do once he fled to the Philistines?",
+  "choices": [
+   "Despair of seeking him any more",
+   "Make peace with Achish",
+   "Join him in Gath",
+   "Send Jonathan to find him"
+  ],
+  "answer": 0,
+  "explanation": "David hoped Saul would despair of him, to seek him any more in any coast of Israel.",
+  "ref": "1 Samuel 27:1"
+ },
+ {
+  "id": "1-samuel-27-e-07",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Achish believe when David reported where he had raided?",
+  "choices": [
+   "Saul",
+   "A messenger from Gath",
+   "David",
+   "The lords of the Philistines"
+  ],
+  "answer": 2,
+  "explanation": "Achish believed David, saying, He hath made his people Israel utterly to abhor him.",
+  "ref": "1 Samuel 27:12"
+ },
+ {
+  "id": "1-samuel-27-e-08",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Achish say David would be to him for ever?",
+  "choices": [
+   "His priest",
+   "His brother",
+   "His servant",
+   "His captain"
+  ],
+  "answer": 2,
+  "explanation": "Achish said, Therefore he shall be my servant for ever.",
+  "ref": "1 Samuel 27:12"
+ },
+ {
+  "id": "1-samuel-27-e-09",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose widow was Abigail, one of David's two wives?",
+  "choices": [
+   "Jonathan's",
+   "Achish's",
+   "Saul's",
+   "Nabal's"
+  ],
+  "answer": 3,
+  "explanation": "David had with him his two wives, Ahinoam and Abigail, Nabal's wife.",
+  "ref": "1 Samuel 27:3"
+ },
+ {
+  "id": "1-samuel-27-e-10",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David tell Achish he had made a raid?",
+  "choices": [
+   "Against the land of Moab",
+   "Against the hill country of Ephraim",
+   "Against the south of Judah",
+   "Against the city of Gath"
+  ],
+  "answer": 2,
+  "explanation": "David said, Against the south of Judah, and against the south of the Jerahmeelites, and against the south of the Kenites.",
+  "ref": "1 Samuel 27:10"
+ },
+ {
+  "id": "1-samuel-27-m-01",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of David's wives was a Jezreelitess?",
+  "choices": [
+   "Michal",
+   "Abigail",
+   "Bathsheba",
+   "Ahinoam"
+  ],
+  "answer": 3,
+  "explanation": "David had with him Ahinoam the Jezreelitess, and Abigail the Carmelitess.",
+  "ref": "1 Samuel 27:3"
+ },
+ {
+  "id": "1-samuel-27-m-02",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Abigail called, to show where she was from?",
+  "choices": [
+   "The Shunammite",
+   "The Jezreelitess",
+   "The Carmelitess",
+   "The Gittite"
+  ],
+  "answer": 2,
+  "explanation": "Abigail the Carmelitess, Nabal's wife.",
+  "ref": "1 Samuel 27:3"
+ },
+ {
+  "id": "1-samuel-27-m-03",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Achish give David the town of Ziklag?",
+  "choices": [
+   "At the next harvest",
+   "After a full year",
+   "After the raid",
+   "That day"
+  ],
+  "answer": 3,
+  "explanation": "Then Achish gave him Ziklag that day.",
+  "ref": "1 Samuel 27:6"
+ },
+ {
+  "id": "1-samuel-27-m-04",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom does Ziklag belong, the chapter says, \"unto this day\"?",
+  "choices": [
+   "The tribe of Simeon",
+   "The kings of Judah",
+   "The Philistines",
+   "The Amalekites"
+  ],
+  "answer": 1,
+  "explanation": "Ziklag pertaineth unto the kings of Judah unto this day.",
+  "ref": "1 Samuel 27:6"
+ },
+ {
+  "id": "1-samuel-27-m-05",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which animals did David carry off, along with apparel?",
+  "choices": [
+   "Horses and chariots",
+   "Goats and swine",
+   "Sheep, oxen, asses and camels",
+   "Doves and lambs"
+  ],
+  "answer": 2,
+  "explanation": "David took away the sheep, and the oxen, and the asses, and the camels, and the apparel.",
+  "ref": "1 Samuel 27:9"
+ },
+ {
+  "id": "1-samuel-27-m-06",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Achish ask David when he returned from a raid?",
+  "choices": [
+   "Why he had come back so soon",
+   "Where he had made a road that day",
+   "How many he had slain",
+   "Whether Saul was near"
+  ],
+  "answer": 1,
+  "explanation": "Achish said, Whither have ye made a road to day?",
+  "ref": "1 Samuel 27:10"
+ },
+ {
+  "id": "1-samuel-27-m-07",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David leave neither man nor woman alive?",
+  "choices": [
+   "Because Achish commanded it",
+   "So his men would not be tempted to stay",
+   "So none could tell Gath what he had done",
+   "So the land would be empty for Israel"
+  ],
+  "answer": 2,
+  "explanation": "David saved none alive, to bring tidings to Gath, saying, Lest they should tell on us.",
+  "ref": "1 Samuel 27:11"
+ },
+ {
+  "id": "1-samuel-27-m-08",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Achish believe David had made his people Israel do?",
+  "choices": [
+   "Choose a new king",
+   "Cry out for mercy",
+   "Rise against Saul",
+   "Utterly abhor him"
+  ],
+  "answer": 3,
+  "explanation": "Achish believed David, saying, He hath made his people Israel utterly to abhor him.",
+  "ref": "1 Samuel 27:12"
+ },
+ {
+  "id": "1-samuel-27-m-09",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who lived with each of David's men at Gath?",
+  "choices": [
+   "His captain",
+   "His brothers",
+   "His household",
+   "His servants only"
+  ],
+  "answer": 2,
+  "explanation": "David dwelt with Achish at Gath, he and his men, every man with his household.",
+  "ref": "1 Samuel 27:3"
+ },
+ {
+  "id": "1-samuel-27-m-10",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many wives did David have with him in Gath?",
+  "choices": [
+   "Four",
+   "Two",
+   "One",
+   "Three"
+  ],
+  "answer": 1,
+  "explanation": "David had with him his two wives, Ahinoam the Jezreelitess, and Abigail the Carmelitess.",
+  "ref": "1 Samuel 27:3"
+ },
+ {
+  "id": "1-samuel-27-m-11",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David describe himself to Achish when he asked for a town?",
+  "choices": [
+   "Thy brother",
+   "Thy guest",
+   "Thy captain",
+   "Thy servant"
+  ],
+  "answer": 3,
+  "explanation": "David said, Why should thy servant dwell in the royal city with thee?",
+  "ref": "1 Samuel 27:5"
+ },
+ {
+  "id": "1-samuel-27-m-12",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David say he should not dwell in the royal city with Achish?",
+  "choices": [
+   "The city had no water",
+   "His men wanted open fields",
+   "He was only Achish's servant",
+   "Saul's spies were there"
+  ],
+  "answer": 2,
+  "explanation": "David asked, Why should thy servant dwell in the royal city with thee?",
+  "ref": "1 Samuel 27:5"
+ },
+ {
+  "id": "1-samuel-27-m-13",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David hope to find in Achish's eyes?",
+  "choices": [
+   "Fear",
+   "Pity",
+   "Gold",
+   "Grace"
+  ],
+  "answer": 3,
+  "explanation": "David said, If I have now found grace in thine eyes, let them give me a place in some town.",
+  "ref": "1 Samuel 27:5"
+ },
+ {
+  "id": "1-samuel-27-m-14",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the chapter describe the nations David invaded?",
+  "choices": [
+   "Cities of the Philistines",
+   "Allies of Saul",
+   "Of old the inhabitants of the land",
+   "Newcomers from Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Those nations were of old the inhabitants of the land.",
+  "ref": "1 Samuel 27:8"
+ },
+ {
+  "id": "1-samuel-27-m-15",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David do after he smote the land and took the spoil?",
+  "choices": [
+   "Went up to Hebron",
+   "Fled to Saul's camp",
+   "Returned and came to Achish",
+   "Hid in the wilderness"
+  ],
+  "answer": 2,
+  "explanation": "David smote the land, took the spoil, and returned, and came to Achish.",
+  "ref": "1 Samuel 27:9"
+ },
+ {
+  "id": "1-samuel-27-h-01",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the father of Achish, king of Gath?",
+  "choices": [
+   "Ahimaaz",
+   "Jesse",
+   "Maoch",
+   "Abinadab"
+  ],
+  "answer": 2,
+  "explanation": "Achish, the son of Maoch, king of Gath.",
+  "ref": "1 Samuel 27:2"
+ },
+ {
+  "id": "1-samuel-27-h-02",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the Jerahmeelites, whom did David tell Achish he had raided?",
+  "choices": [
+   "The Hittites",
+   "The Moabites",
+   "The Kenites",
+   "The Ammonites"
+  ],
+  "answer": 2,
+  "explanation": "David said, Against the south of the Jerahmeelites, and against the south of the Kenites.",
+  "ref": "1 Samuel 27:10"
+ },
+ {
+  "id": "1-samuel-27-h-03",
+  "chapter": 27,
+  "level": "hard",
+  "category": "place",
+  "question": "The nations David invaded lay on the way to Shur, as far as which land?",
+  "choices": [
+   "Egypt",
+   "Moab",
+   "Edom",
+   "Syria"
+  ],
+  "answer": 0,
+  "explanation": "The nations were the inhabitants of the land, as thou goest to Shur, even unto the land of Egypt.",
+  "ref": "1 Samuel 27:8"
+ },
+ {
+  "id": "1-samuel-27-h-04",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David fear survivors would say about him in Gath?",
+  "choices": [
+   "So did David, and so will be his manner",
+   "David has joined the Amalekites",
+   "David serves Saul still",
+   "David has no army left"
+  ],
+  "answer": 0,
+  "explanation": "David feared they would say, So did David, and so will be his manner all the while he dwelleth in the country of the Philistines.",
+  "ref": "1 Samuel 27:11"
+ },
+ {
+  "id": "1-samuel-27-h-05",
+  "chapter": 27,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did David say Saul would no more seek him?",
+  "choices": [
+   "In the hill of Hachilah",
+   "In the wilderness of Maon",
+   "In any coast of Israel",
+   "In the city of Gibeah"
+  ],
+  "answer": 2,
+  "explanation": "Saul shall despair of me, to seek me any more in any coast of Israel.",
+  "ref": "1 Samuel 27:1"
+ },
+ {
+  "id": "1-samuel-27-h-06",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say to himself that made him flee to the Philistines?",
+  "choices": [
+   "Saul has surely forgotten me",
+   "Jonathan will make peace",
+   "The Lord has left me",
+   "There is nothing better than to escape"
+  ],
+  "answer": 3,
+  "explanation": "David said, There is nothing better for me than that I should speedily escape into the land of the Philistines.",
+  "ref": "1 Samuel 27:1"
+ },
+ {
+  "id": "1-samuel-27-h-07",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these peoples did David invade from Ziklag?",
+  "choices": [
+   "Edomites",
+   "Hivites",
+   "Moabites",
+   "Gezrites"
+  ],
+  "answer": 3,
+  "explanation": "David and his men went up, and invaded the Geshurites, and the Gezrites, and the Amalekites.",
+  "ref": "1 Samuel 27:8"
+ },
+ {
+  "id": "1-samuel-27-h-08",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David and his men do after Achish gave them Ziklag?",
+  "choices": [
+   "Returned to Judah",
+   "Went up and invaded neighbouring nations",
+   "Built a wall around the town",
+   "Joined Achish in battle"
+  ],
+  "answer": 1,
+  "explanation": "David and his men went up, and invaded the Geshurites, and the Gezrites, and the Amalekites.",
+  "ref": "1 Samuel 27:8"
+ },
+ {
+  "id": "1-samuel-27-h-09",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Achish conclude about David's standing with Israel?",
+  "choices": [
+   "He was plotting a rebellion",
+   "He was still Saul's friend",
+   "He had won the people's love",
+   "He had made Israel utterly abhor him"
+  ],
+  "answer": 3,
+  "explanation": "Achish believed David, saying, He hath made his people Israel utterly to abhor him.",
+  "ref": "1 Samuel 27:12"
+ },
+ {
+  "id": "1-samuel-27-h-10",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David call the place he asked for, compared with the royal city?",
+  "choices": [
+   "A house in Gath",
+   "A fortress on the hill",
+   "Some town in the country",
+   "A tent by the gate"
+  ],
+  "answer": 2,
+  "explanation": "David asked for a place in some town in the country, that I may dwell there.",
+  "ref": "1 Samuel 27:5"
+ },
+ {
+  "id": "1-samuel-27-h-11",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Saul stop seeking after he heard David was in Gath?",
+  "choices": [
+   "Achish",
+   "David",
+   "Jonathan",
+   "Abiathar"
+  ],
+  "answer": 1,
+  "explanation": "It was told Saul that David was fled to Gath: and he sought no more again for him.",
   "ref": "1 Samuel 27:4"
+ },
+ {
+  "id": "1-samuel-27-h-12",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these did David take away besides livestock?",
+  "choices": [
+   "The apparel",
+   "The gold",
+   "The chariots",
+   "The captives"
+  ],
+  "answer": 0,
+  "explanation": "David took away the sheep, oxen, asses, camels, and the apparel.",
+  "ref": "1 Samuel 27:9"
+ },
+ {
+  "id": "1-samuel-27-h-13",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose house had David's wife Abigail belonged to before?",
+  "choices": [
+   "Maoch's",
+   "Nabal's",
+   "Achish's",
+   "Jesse's"
+  ],
+  "answer": 1,
+  "explanation": "Abigail the Carmelitess, Nabal's wife.",
+  "ref": "1 Samuel 27:3"
+ },
+ {
+  "id": "1-samuel-27-h-14",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David do before he came to Achish with the spoil?",
+  "choices": [
+   "Sent a letter to Saul",
+   "Offered a sacrifice",
+   "Counted his men",
+   "Struck the land and left none alive"
+  ],
+  "answer": 3,
+  "explanation": "David smote the land, and left neither man nor woman alive, and took away the spoil, and came to Achish.",
+  "ref": "1 Samuel 27:9"
+ },
+ {
+  "id": "1-samuel-27-h-15",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Achish think David would serve him?",
+  "choices": [
+   "Until the war ended",
+   "For ever",
+   "Until Saul died",
+   "One year"
+  ],
+  "answer": 1,
+  "explanation": "Achish said, He shall be my servant for ever.",
+  "ref": "1 Samuel 27:12"
  },
  {
   "id": "old-1-samuel-28-1",
