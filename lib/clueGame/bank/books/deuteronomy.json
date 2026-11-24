@@ -7011,17 +7011,17 @@
   "id": "deuteronomy-10-h-04",
   "chapter": 10,
   "level": "hard",
-  "category": "keyword",
-  "question": "What is the phrase for the highest heavens in the LORD's possession?",
+  "category": "place",
+  "question": "At which place did Aaron die and was buried?",
   "choices": [
-   "The throne of heaven",
-   "The gate of heaven",
-   "The mount of heaven",
-   "The heaven of heavens"
+   "Jotbath",
+   "Gudgodah",
+   "Beeroth",
+   "Mosera"
   ],
   "answer": 3,
-  "explanation": "Behold, the heaven and the heaven of heavens is the LORD'S thy God.",
-  "ref": "Deuteronomy 10:14"
+  "explanation": "From Beeroth they journeyed to Mosera: there Aaron died, and there he was buried.",
+  "ref": "Deuteronomy 10:6"
  },
  {
   "id": "deuteronomy-10-h-05",
@@ -7187,17 +7187,17 @@
   "id": "deuteronomy-10-h-15",
   "chapter": 10,
   "level": "hard",
-  "category": "person",
-  "question": "Whom shall Israel fear, serve and swear by?",
+  "category": "place",
+  "question": "Where had the LORD spoken the ten commandments to Israel?",
   "choices": [
-   "The elders",
-   "The priests",
-   "Moses",
-   "The LORD thy God"
+   "In the tent of meeting",
+   "On the plains of Moab",
+   "In the valley of Jordan",
+   "In the mount out of the midst of the fire"
   ],
   "answer": 3,
-  "explanation": "Thou shalt fear the LORD thy God; him shalt thou serve...and swear by his name.",
-  "ref": "Deuteronomy 10:20"
+  "explanation": "The ten commandments, which the LORD spake unto you in the mount out of the midst of the fire.",
+  "ref": "Deuteronomy 10:4"
  },
  {
   "id": "old-deuteronomy-11-1",
@@ -7278,6 +7278,646 @@
   "answer": 0,
   "explanation": "The words were to be treasured inwardly and taught continually.",
   "ref": "Deuteronomy 11:18–19"
+ },
+ {
+  "id": "deuteronomy-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two men did the earth swallow up?",
+  "choices": [
+   "Dathan and Abiram",
+   "Korah and Aaron",
+   "Nadab and Abihu",
+   "Moses and Joshua"
+  ],
+  "answer": 0,
+  "explanation": "The earth opened her mouth, and swallowed up Dathan and Abiram.",
+  "ref": "Deuteronomy 11:6"
+ },
+ {
+  "id": "deuteronomy-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the earth do to Dathan and Abiram?",
+  "choices": [
+   "Opened her mouth and swallowed them",
+   "Shook them out of camp",
+   "Covered them with dust",
+   "Burned them with fire"
+  ],
+  "answer": 0,
+  "explanation": "The earth opened her mouth, and swallowed them up.",
+  "ref": "Deuteronomy 11:6"
+ },
+ {
+  "id": "deuteronomy-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which sea overflowed the army of Egypt?",
+  "choices": [
+   "The Red sea",
+   "The Great sea",
+   "The Dead sea",
+   "The sea of Galilee"
+  ],
+  "answer": 0,
+  "explanation": "He made the water of the Red sea to overflow them as they pursued after you.",
+  "ref": "Deuteronomy 11:4"
+ },
+ {
+  "id": "deuteronomy-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which river is named as a boundary of Israel's coast?",
+  "choices": [
+   "The river Euphrates",
+   "The river Nile",
+   "The river Jordan",
+   "The river Jabbok"
+  ],
+  "answer": 0,
+  "explanation": "From the river, the river Euphrates, even unto the uttermost sea shall your coast be.",
+  "ref": "Deuteronomy 11:24"
+ },
+ {
+  "id": "deuteronomy-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Moses set before Israel this day?",
+  "choices": [
+   "A blessing and a curse",
+   "A king and a priest",
+   "A feast and a fast",
+   "A sword and a shield"
+  ],
+  "answer": 0,
+  "explanation": "Behold, I set before you this day a blessing and a curse.",
+  "ref": "Deuteronomy 11:26"
+ },
+ {
+  "id": "deuteronomy-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where does the promised land drink water?",
+  "choices": [
+   "The rain of heaven",
+   "The river Nile",
+   "The wells only",
+   "The snow of Lebanon"
+  ],
+  "answer": 0,
+  "explanation": "It is a land of hills and valleys, and drinketh water of the rain of heaven.",
+  "ref": "Deuteronomy 11:11"
+ },
+ {
+  "id": "deuteronomy-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD send in the fields for Israel's cattle?",
+  "choices": [
+   "Grass",
+   "Barley",
+   "Corn",
+   "Fruit"
+  ],
+  "answer": 0,
+  "explanation": "I will send grass in thy fields for thy cattle, that thou mayest eat and be full.",
+  "ref": "Deuteronomy 11:15"
+ },
+ {
+  "id": "deuteronomy-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will Israel possess if they keep the commandments?",
+  "choices": [
+   "Greater nations and mightier than themselves",
+   "Only the wilderness",
+   "Only Egypt",
+   "Only the hills"
+  ],
+  "answer": 0,
+  "explanation": "Then will the LORD drive out all these nations...and ye shall possess greater nations and mightier than yourselves.",
+  "ref": "Deuteronomy 11:23"
+ },
+ {
+  "id": "deuteronomy-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where are Israel to write the words of the LORD?",
+  "choices": [
+   "On the door posts of their house and on their gates",
+   "On the walls of the temple",
+   "On the banks of Jordan",
+   "On the tent of meeting"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt write them upon the door posts of thine house, and upon thy gates.",
+  "ref": "Deuteronomy 11:20"
+ },
+ {
+  "id": "deuteronomy-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king did the LORD show miracles against in the midst of Egypt?",
+  "choices": [
+   "Pharaoh",
+   "Og",
+   "Sihon",
+   "Balak"
+  ],
+  "answer": 0,
+  "explanation": "His miracles, and his acts, which he did in the midst of Egypt unto Pharaoh the king of Egypt.",
+  "ref": "Deuteronomy 11:3"
+ },
+ {
+  "id": "deuteronomy-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom is Moses not speaking to, since they have not seen the LORD's chastisement?",
+  "choices": [
+   "Their elders",
+   "Their priests",
+   "Their children",
+   "Their kings"
+  ],
+  "answer": 2,
+  "explanation": "I speak not with your children which have not known, and which have not seen the chastisement.",
+  "ref": "Deuteronomy 11:2"
+ },
+ {
+  "id": "deuteronomy-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD do to Egypt's army, horses and chariots?",
+  "choices": [
+   "Sent hail upon them",
+   "Turned them back",
+   "Made the Red sea overflow them",
+   "Struck them with plague"
+  ],
+  "answer": 2,
+  "explanation": "He made the water of the Red sea to overflow them as they pursued after you.",
+  "ref": "Deuteronomy 11:4"
+ },
+ {
+  "id": "deuteronomy-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of land is the land Israel goes to possess?",
+  "choices": [
+   "A land of sand and stones",
+   "A land of marshes",
+   "A land of hills and valleys",
+   "A flat land of reeds"
+  ],
+  "answer": 2,
+  "explanation": "A land of hills and valleys, and drinketh water of the rain of heaven.",
+  "ref": "Deuteronomy 11:11"
+ },
+ {
+  "id": "deuteronomy-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long are the eyes of the LORD upon the land?",
+  "choices": [
+   "Only in the spring",
+   "Only in the rains",
+   "From the beginning of the year to the end",
+   "Only in the harvest"
+  ],
+  "answer": 2,
+  "explanation": "The eyes of the LORD thy God are always upon it, from the beginning of the year even unto the end of the year.",
+  "ref": "Deuteronomy 11:12"
+ },
+ {
+  "id": "deuteronomy-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two rains does the LORD promise Israel in due season?",
+  "choices": [
+   "The spring rain and the winter snow",
+   "The morning rain and the evening rain",
+   "The first rain and the latter rain",
+   "The rain of Egypt and the rain of Canaan"
+  ],
+  "answer": 2,
+  "explanation": "I will give you the rain of your land in his due season, the first rain and the latter rain.",
+  "ref": "Deuteronomy 11:14"
+ },
+ {
+  "id": "deuteronomy-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Moses warn their heart not to be?",
+  "choices": [
+   "Proud",
+   "Afraid",
+   "Deceived",
+   "Quiet"
+  ],
+  "answer": 2,
+  "explanation": "Take heed to yourselves, that your heart be not deceived, and ye turn aside, and serve other gods.",
+  "ref": "Deuteronomy 11:16"
+ },
+ {
+  "id": "deuteronomy-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen if the LORD's wrath were kindled against them?",
+  "choices": [
+   "They would be taken to Egypt",
+   "They would be made kings",
+   "They would perish quickly from the good land",
+   "They would become priests"
+  ],
+  "answer": 2,
+  "explanation": "Lest ye perish quickly from off the good land which the LORD giveth you.",
+  "ref": "Deuteronomy 11:17"
+ },
+ {
+  "id": "deuteronomy-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long will the days of Israel and their children be multiplied?",
+  "choices": [
+   "As the years of Moses",
+   "As the days of Egypt",
+   "As the days of heaven upon the earth",
+   "As the sand of the sea"
+  ],
+  "answer": 2,
+  "explanation": "That your days may be multiplied...as the days of heaven upon the earth.",
+  "ref": "Deuteronomy 11:21"
+ },
+ {
+  "id": "deuteronomy-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "What place will be Israel's if they obey?",
+  "choices": [
+   "Only the hills",
+   "Only the cities",
+   "Every place their feet tread",
+   "Only the plains"
+  ],
+  "answer": 2,
+  "explanation": "Every place whereon the soles of your feet shall tread shall be yours.",
+  "ref": "Deuteronomy 11:24"
+ },
+ {
+  "id": "deuteronomy-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD lay upon the land Israel treads?",
+  "choices": [
+   "The wrath of the nations",
+   "The curse of Egypt",
+   "The fear of you and the dread of you",
+   "The famine of Moab"
+  ],
+  "answer": 2,
+  "explanation": "The LORD your God shall lay the fear of you and the dread of you upon all the land.",
+  "ref": "Deuteronomy 11:25"
+ },
+ {
+  "id": "deuteronomy-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "In whose land are Gerizim and Ebal?",
+  "choices": [
+   "The Egyptians",
+   "The Philistines",
+   "The Canaanites",
+   "The Edomites"
+  ],
+  "answer": 2,
+  "explanation": "They are on the other side Jordan, in the land of the Canaanites.",
+  "ref": "Deuteronomy 11:30"
+ },
+ {
+  "id": "deuteronomy-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Upon what condition is the blessing given?",
+  "choices": [
+   "If they build the temple",
+   "If they conquer Egypt",
+   "If they obey the commandments of the LORD",
+   "If they offer a thousand bulls"
+  ],
+  "answer": 2,
+  "explanation": "A blessing, if ye obey the commandments of the LORD your God.",
+  "ref": "Deuteronomy 11:27"
+ },
+ {
+  "id": "deuteronomy-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the curse for?",
+  "choices": [
+   "Leaving the land",
+   "Eating unclean meat",
+   "Not obeying and going after other gods",
+   "Forgetting the sabbath"
+  ],
+  "answer": 2,
+  "explanation": "A curse, if ye will not obey...but turn aside...to go after other gods, which ye have not known.",
+  "ref": "Deuteronomy 11:28"
+ },
+ {
+  "id": "deuteronomy-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why are Israel to keep all the commandments, so that they may be strong?",
+  "choices": [
+   "And return to Egypt",
+   "And win a great name",
+   "And go in and possess the land",
+   "And build many cities"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall keep all the commandments...that ye may be strong, and go in and possess the land.",
+  "ref": "Deuteronomy 11:8"
+ },
+ {
+  "id": "deuteronomy-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to Dathan and Abiram's households?",
+  "choices": [
+   "They were scattered",
+   "They fled to Egypt",
+   "The earth swallowed them up too",
+   "They were spared"
+  ],
+  "answer": 2,
+  "explanation": "The earth swallowed them up, and their households, and their tents.",
+  "ref": "Deuteronomy 11:6"
+ },
+ {
+  "id": "deuteronomy-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Dathan and Abiram were sons of Eliab, the son of whom?",
+  "choices": [
+   "Levi",
+   "Judah",
+   "Simeon",
+   "Reuben"
+  ],
+  "answer": 3,
+  "explanation": "Dathan and Abiram, the sons of Eliab, the son of Reuben.",
+  "ref": "Deuteronomy 11:6"
+ },
+ {
+  "id": "deuteronomy-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was swallowed along with the households and tents?",
+  "choices": [
+   "All the flocks of the camp",
+   "All the gold of Egypt",
+   "All the tents of the Levites",
+   "All the substance in their possession"
+  ],
+  "answer": 3,
+  "explanation": "The earth swallowed them up, and their households, and their tents, and all the substance that was in their possession.",
+  "ref": "Deuteronomy 11:6"
+ },
+ {
+  "id": "deuteronomy-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Which land is named with the wilderness as a boundary?",
+  "choices": [
+   "Moab",
+   "Edom",
+   "Egypt",
+   "Lebanon"
+  ],
+  "answer": 3,
+  "explanation": "From the wilderness and Lebanon, from the river, the river Euphrates.",
+  "ref": "Deuteronomy 11:24"
+ },
+ {
+  "id": "deuteronomy-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place is named as over against the Canaanites' champaign?",
+  "choices": [
+   "Jericho",
+   "Shechem",
+   "Hebron",
+   "Gilgal"
+  ],
+  "answer": 3,
+  "explanation": "In the champaign over against Gilgal, beside the plains of Moreh.",
+  "ref": "Deuteronomy 11:30"
+ },
+ {
+  "id": "deuteronomy-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Beside the plains of which place were the mounts Gerizim and Ebal?",
+  "choices": [
+   "Mamre",
+   "Sharon",
+   "Jordan",
+   "Moreh"
+  ],
+  "answer": 3,
+  "explanation": "Beside the plains of Moreh.",
+  "ref": "Deuteronomy 11:30"
+ },
+ {
+  "id": "deuteronomy-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was seed watered in the land of Egypt?",
+  "choices": [
+   "With the plow",
+   "With the rain",
+   "With the river only",
+   "With the foot"
+  ],
+  "answer": 3,
+  "explanation": "Where thou sowedst thy seed, and wateredst it with thy foot, as a garden of herbs.",
+  "ref": "Deuteronomy 11:10"
+ },
+ {
+  "id": "deuteronomy-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Egypt's watering is compared to what kind of garden?",
+  "choices": [
+   "A garden of vines",
+   "A garden of figs",
+   "A garden of lilies",
+   "A garden of herbs"
+  ],
+  "answer": 3,
+  "explanation": "Wateredst it with thy foot, as a garden of herbs.",
+  "ref": "Deuteronomy 11:10"
+ },
+ {
+  "id": "deuteronomy-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD give Israel in its due season?",
+  "choices": [
+   "The wind of the east",
+   "The snow of Lebanon",
+   "The dew of Egypt",
+   "The rain of their land"
+  ],
+  "answer": 3,
+  "explanation": "I will give you the rain of your land in his due season.",
+  "ref": "Deuteronomy 11:14"
+ },
+ {
+  "id": "deuteronomy-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The LORD will give rain that thou mayest gather in thy corn, thy wine and thine what?",
+  "choices": [
+   "Honey",
+   "Figs",
+   "Wheat",
+   "Oil"
+  ],
+  "answer": 3,
+  "explanation": "That thou mayest gather in thy corn, and thy wine, and thine oil.",
+  "ref": "Deuteronomy 11:14"
+ },
+ {
+  "id": "deuteronomy-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How often does Moses say to love the LORD and keep His charge?",
+  "choices": [
+   "Once a year",
+   "On the sabbath",
+   "At the feasts",
+   "Alway"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt love the LORD thy God, and keep his charge...alway.",
+  "ref": "Deuteronomy 11:1"
+ },
+ {
+  "id": "deuteronomy-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "In the midst of whom did the earth swallow Dathan and Abiram?",
+  "choices": [
+   "The Levites",
+   "The priests",
+   "The elders",
+   "All Israel"
+  ],
+  "answer": 3,
+  "explanation": "The earth swallowed them up in the midst of all Israel.",
+  "ref": "Deuteronomy 11:6"
+ },
+ {
+  "id": "deuteronomy-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides Pharaoh, unto whom did the LORD do miracles in the midst of Egypt?",
+  "choices": [
+   "All his priests",
+   "All his soldiers",
+   "All his sons",
+   "All his land"
+  ],
+  "answer": 3,
+  "explanation": "His miracles, and his acts, which he did...unto Pharaoh the king of Egypt, and unto all his land.",
+  "ref": "Deuteronomy 11:3"
+ },
+ {
+  "id": "deuteronomy-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Moses say Israel's eyes have seen?",
+  "choices": [
+   "Only the plagues",
+   "The walls of Jericho",
+   "The land of Canaan",
+   "All the great acts of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Your eyes have seen all the great acts of the LORD which he did.",
+  "ref": "Deuteronomy 11:7"
+ },
+ {
+  "id": "deuteronomy-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moses lists the LORD's greatness, His mighty hand and His what?",
+  "choices": [
+   "Everlasting name",
+   "Holy mountain",
+   "Burning bush",
+   "Stretched out arm"
+  ],
+  "answer": 3,
+  "explanation": "His greatness, his mighty hand, and his stretched out arm.",
+  "ref": "Deuteronomy 11:2"
+ },
+ {
+  "id": "deuteronomy-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will no man be able to do before Israel?",
+  "choices": [
+   "Cross Jordan",
+   "Enter the land",
+   "Eat of the fruit",
+   "Stand before them"
+  ],
+  "answer": 3,
+  "explanation": "There shall no man be able to stand before you.",
+  "ref": "Deuteronomy 11:25"
  },
  {
   "id": "old-deuteronomy-12-1",
