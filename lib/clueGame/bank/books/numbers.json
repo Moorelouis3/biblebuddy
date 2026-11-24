@@ -8711,13 +8711,669 @@
   "question": "Who urged the people to go up at once and possess the land?",
   "choices": [
    "Aaron",
-   "Joshua's father",
    "Eleazar",
+   "Shammua",
    "Caleb"
   ],
   "answer": 3,
   "explanation": "Caleb stilled the people and urged immediate faith and action.",
   "ref": "Numbers 13:30"
+ },
+ {
+  "id": "numbers-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Moses to send men to search the land of Canaan?",
+  "choices": [
+   "Aaron",
+   "The elders of Israel",
+   "The people of Israel",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "The LORD spake unto Moses, Send thou men, that they may search the land of Canaan.",
+  "ref": "Numbers 13:1–2"
+ },
+ {
+  "id": "numbers-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the spies say the land floweth with?",
+  "choices": [
+   "Wine and oil",
+   "Gold and silver",
+   "Milk and honey",
+   "Corn and barley"
+  ],
+  "answer": 2,
+  "explanation": "They said, surely it floweth with milk and honey; and this is the fruit of it.",
+  "ref": "Numbers 13:27"
+ },
+ {
+  "id": "numbers-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "At which brook did the spies cut down the huge cluster of grapes?",
+  "choices": [
+   "Kishon",
+   "Eshcol",
+   "Arnon",
+   "Jabbok"
+  ],
+  "answer": 1,
+  "explanation": "They came unto the brook of Eshcol, and cut down from thence a branch with one cluster of grapes.",
+  "ref": "Numbers 13:23"
+ },
+ {
+  "id": "numbers-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the spies say they were like in their own sight beside the giants?",
+  "choices": [
+   "Grasshoppers",
+   "Lions",
+   "Sheep",
+   "Ants"
+  ],
+  "answer": 0,
+  "explanation": "We were in our own sight as grasshoppers, and so we were in their sight.",
+  "ref": "Numbers 13:33"
+ },
+ {
+  "id": "numbers-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose sons did the spies say they saw, men of great stature?",
+  "choices": [
+   "Amalek",
+   "Canaan",
+   "Og",
+   "Anak"
+  ],
+  "answer": 3,
+  "explanation": "There we saw the giants, the sons of Anak.",
+  "ref": "Numbers 13:33"
+ },
+ {
+  "id": "numbers-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From which tribe was Caleb the spy?",
+  "choices": [
+   "Reuben",
+   "Ephraim",
+   "Judah",
+   "Dan"
+  ],
+  "answer": 2,
+  "explanation": "Of the tribe of Judah, Caleb the son of Jephunneh.",
+  "ref": "Numbers 13:6"
+ },
+ {
+  "id": "numbers-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From which tribe was Oshea, who was later called Jehoshua?",
+  "choices": [
+   "Judah",
+   "Ephraim",
+   "Benjamin",
+   "Asher"
+  ],
+  "answer": 1,
+  "explanation": "Of the tribe of Ephraim, Oshea the son of Nun.",
+  "ref": "Numbers 13:8"
+ },
+ {
+  "id": "numbers-13-e-08",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides the grapes, what two fruits did the spies bring back?",
+  "choices": [
+   "Pomegranates and figs",
+   "Dates and olives",
+   "Apples and melons",
+   "Figs and almonds"
+  ],
+  "answer": 0,
+  "explanation": "They brought of the pomegranates, and of the figs.",
+  "ref": "Numbers 13:23"
+ },
+ {
+  "id": "numbers-13-e-09",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "To where did the spies return to report to Moses, Aaron and the congregation?",
+  "choices": [
+   "Hebron",
+   "Mount Sinai",
+   "Rehob",
+   "Kadesh, in the wilderness of Paran"
+  ],
+  "answer": 3,
+  "explanation": "They came to Moses, and to Aaron, and to all the congregation, unto the wilderness of Paran, to Kadesh.",
+  "ref": "Numbers 13:26"
+ },
+ {
+  "id": "numbers-13-e-10",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of report did ten of the spies bring about the land?",
+  "choices": [
+   "A joyful report",
+   "A secret report",
+   "An evil report",
+   "A false prophecy"
+  ],
+  "answer": 2,
+  "explanation": "They brought up an evil report of the land which they had searched unto the children of Israel.",
+  "ref": "Numbers 13:32"
+ },
+ {
+  "id": "numbers-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the season when the spies went up, according to the chapter?",
+  "choices": [
+   "The time of the barley harvest",
+   "The time of the early rain",
+   "The time of the firstripe grapes",
+   "The feast of tabernacles"
+  ],
+  "answer": 2,
+  "explanation": "Now the time was the time of the firstripe grapes.",
+  "ref": "Numbers 13:20"
+ },
+ {
+  "id": "numbers-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which direction did Moses tell the spies to go up first?",
+  "choices": [
+   "Northward",
+   "Southward",
+   "Eastward",
+   "Toward the sea"
+  ],
+  "answer": 1,
+  "explanation": "Moses said unto them, Get you up this way southward, and go up into the mountain.",
+  "ref": "Numbers 13:17"
+ },
+ {
+  "id": "numbers-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the father of Caleb the spy?",
+  "choices": [
+   "Jephunneh",
+   "Nun",
+   "Hori",
+   "Zaccur"
+  ],
+  "answer": 0,
+  "explanation": "Of the tribe of Judah, Caleb the son of Jephunneh.",
+  "ref": "Numbers 13:6"
+ },
+ {
+  "id": "numbers-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the father of Oshea, whom Moses called Jehoshua?",
+  "choices": [
+   "Jephunneh",
+   "Joseph",
+   "Raphu",
+   "Nun"
+  ],
+  "answer": 3,
+  "explanation": "Of the tribe of Ephraim, Oshea the son of Nun. And Moses called Oshea the son of Nun Jehoshua.",
+  "ref": "Numbers 13:8"
+ },
+ {
+  "id": "numbers-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses want the spies to find out about the people living in the land?",
+  "choices": [
+   "Whether they worshipped idols",
+   "Whether they had kings",
+   "Whether they were strong or weak, few or many",
+   "Whether they would trade with Israel"
+  ],
+  "answer": 2,
+  "explanation": "See the people that dwelleth therein, whether they be strong or weak, few or many.",
+  "ref": "Numbers 13:18"
+ },
+ {
+  "id": "numbers-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Moses asked whether the people dwelt in tents or in what?",
+  "choices": [
+   "Caves",
+   "Strong holds",
+   "Villages",
+   "Tombs"
+  ],
+  "answer": 1,
+  "explanation": "Moses wanted to know what cities they be that they dwell in, whether in tents, or in strong holds.",
+  "ref": "Numbers 13:19"
+ },
+ {
+  "id": "numbers-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "The spies searched the land from the wilderness of Zin to where?",
+  "choices": [
+   "Rehob, as men come to Hamath",
+   "Hebron",
+   "Eshcol",
+   "Kadesh"
+  ],
+  "answer": 0,
+  "explanation": "They searched the land from the wilderness of Zin unto Rehob, as men come to Hamath.",
+  "ref": "Numbers 13:21"
+ },
+ {
+  "id": "numbers-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "In which place did the spies find the children of Anak?",
+  "choices": [
+   "Rehob",
+   "Zin",
+   "Paran",
+   "Hebron"
+  ],
+  "answer": 3,
+  "explanation": "They ascended by the south, and came unto Hebron; where Ahiman, Sheshai, and Talmai, the children of Anak, were.",
+  "ref": "Numbers 13:22"
+ },
+ {
+  "id": "numbers-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which people did the spies say dwell by the sea and by the coast of Jordan?",
+  "choices": [
+   "The Amalekites",
+   "The Hittites",
+   "The Canaanites",
+   "The Jebusites"
+  ],
+  "answer": 2,
+  "explanation": "The Canaanites dwell by the sea, and by the coast of Jordan.",
+  "ref": "Numbers 13:29"
+ },
+ {
+  "id": "numbers-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which people did the spies say dwell in the land of the south?",
+  "choices": [
+   "The Canaanites",
+   "The Amalekites",
+   "The Amorites",
+   "The Jebusites"
+  ],
+  "answer": 1,
+  "explanation": "The Amalekites dwell in the land of the south.",
+  "ref": "Numbers 13:29"
+ },
+ {
+  "id": "numbers-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which people dwell in the mountains along with the Hittites and the Jebusites?",
+  "choices": [
+   "The Amorites",
+   "The Amalekites",
+   "The Canaanites",
+   "The Anakim"
+  ],
+  "answer": 0,
+  "explanation": "The Hittites, and the Jebusites, and the Amorites, dwell in the mountains.",
+  "ref": "Numbers 13:29"
+ },
+ {
+  "id": "numbers-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was the place called the brook Eshcol?",
+  "choices": [
+   "Because Moses' men camped there",
+   "Because a battle was won there",
+   "Because a spring rose from the rock there",
+   "Because of the cluster of grapes cut down there"
+  ],
+  "answer": 3,
+  "explanation": "The place was called the brook Eshcol, because of the cluster of grapes which the children of Israel cut down from thence.",
+  "ref": "Numbers 13:24"
+ },
+ {
+  "id": "numbers-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Caleb do before Moses when the people heard the report?",
+  "choices": [
+   "He tore his clothes",
+   "He prayed on his face",
+   "He stilled the people",
+   "He left the camp"
+  ],
+  "answer": 2,
+  "explanation": "Caleb stilled the people before Moses, and said, Let us go up at once, and possess it.",
+  "ref": "Numbers 13:30"
+ },
+ {
+  "id": "numbers-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the men who went up with Caleb say they could not go against the people?",
+  "choices": [
+   "Because the LORD had left them",
+   "Because they were stronger than the spies",
+   "Because the Jordan was too deep",
+   "Because they had no weapons"
+  ],
+  "answer": 1,
+  "explanation": "We be not able to go up against the people; for they are stronger than we.",
+  "ref": "Numbers 13:31"
+ },
+ {
+  "id": "numbers-13-m-15",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the evil report say the land does to its inhabitants?",
+  "choices": [
+   "It eateth them up",
+   "It makes them sick",
+   "It drives them away",
+   "It scatters them"
+  ],
+  "answer": 0,
+  "explanation": "The land, through which we have gone to search it, is a land that eateth up the inhabitants thereof.",
+  "ref": "Numbers 13:32"
+ },
+ {
+  "id": "numbers-13-m-16",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses tell the spies to be as they went?",
+  "choices": [
+   "Quiet and secret",
+   "Swift and armed",
+   "Humble and patient",
+   "Of good courage"
+  ],
+  "answer": 3,
+  "explanation": "Be ye of good courage, and bring of the fruit of the land.",
+  "ref": "Numbers 13:20"
+ },
+ {
+  "id": "numbers-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the spy from the tribe of Reuben?",
+  "choices": [
+   "Shaphat the son of Hori",
+   "Igal the son of Joseph",
+   "Palti the son of Raphu",
+   "Shammua the son of Zaccur"
+  ],
+  "answer": 3,
+  "explanation": "Of the tribe of Reuben, Shammua the son of Zaccur.",
+  "ref": "Numbers 13:4"
+ },
+ {
+  "id": "numbers-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Which spy came from the tribe of Issachar?",
+  "choices": [
+   "Gaddiel the son of Sodi",
+   "Ammiel the son of Gemalli",
+   "Igal the son of Joseph",
+   "Nahbi the son of Vophsi"
+  ],
+  "answer": 2,
+  "explanation": "Of the tribe of Issachar, Igal the son of Joseph.",
+  "ref": "Numbers 13:7"
+ },
+ {
+  "id": "numbers-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Which spy came from the tribe of Asher?",
+  "choices": [
+   "Geuel the son of Machi",
+   "Sethur the son of Michael",
+   "Gaddi the son of Susi",
+   "Palti the son of Raphu"
+  ],
+  "answer": 1,
+  "explanation": "Of the tribe of Asher, Sethur the son of Michael.",
+  "ref": "Numbers 13:13"
+ },
+ {
+  "id": "numbers-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Which spy came from the tribe of Gad?",
+  "choices": [
+   "Geuel the son of Machi",
+   "Sethur the son of Michael",
+   "Gaddiel the son of Sodi",
+   "Shaphat the son of Hori"
+  ],
+  "answer": 0,
+  "explanation": "Of the tribe of Gad, Geuel the son of Machi.",
+  "ref": "Numbers 13:15"
+ },
+ {
+  "id": "numbers-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Which spy was sent from the tribe of Dan?",
+  "choices": [
+   "Nahbi the son of Vophsi",
+   "Gaddi the son of Susi",
+   "Shammua the son of Zaccur",
+   "Ammiel the son of Gemalli"
+  ],
+  "answer": 3,
+  "explanation": "Of the tribe of Dan, Ammiel the son of Gemalli.",
+  "ref": "Numbers 13:12"
+ },
+ {
+  "id": "numbers-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Which spy represented the tribe of Manasseh?",
+  "choices": [
+   "Gaddiel the son of Sodi",
+   "Igal the son of Joseph",
+   "Gaddi the son of Susi",
+   "Palti the son of Raphu"
+  ],
+  "answer": 2,
+  "explanation": "Of the tribe of Joseph, namely, of the tribe of Manasseh, Gaddi the son of Susi.",
+  "ref": "Numbers 13:11"
+ },
+ {
+  "id": "numbers-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was one of the children of Anak at Hebron?",
+  "choices": [
+   "Shammua",
+   "Talmai",
+   "Nahbi",
+   "Gemalli"
+  ],
+  "answer": 1,
+  "explanation": "Hebron, where Ahiman, Sheshai, and Talmai, the children of Anak, were.",
+  "ref": "Numbers 13:22"
+ },
+ {
+  "id": "numbers-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Hebron was built seven years before which city in Egypt?",
+  "choices": [
+   "Zoan",
+   "Pithom",
+   "Goshen",
+   "Rameses"
+  ],
+  "answer": 0,
+  "explanation": "Now Hebron was built seven years before Zoan in Egypt.",
+  "ref": "Numbers 13:22"
+ },
+ {
+  "id": "numbers-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of men was each tribe to send, according to the LORD?",
+  "choices": [
+   "A priest",
+   "A man of war",
+   "An elder of seventy",
+   "A ruler among them"
+  ],
+  "answer": 3,
+  "explanation": "Of every tribe of their fathers shall ye send a man, every one a ruler among them.",
+  "ref": "Numbers 13:2"
+ },
+ {
+  "id": "numbers-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After going southward, what did Moses tell the spies to go up into?",
+  "choices": [
+   "The valley",
+   "The wilderness",
+   "The mountain",
+   "The sea coast"
+  ],
+  "answer": 2,
+  "explanation": "Get you up this way southward, and go up into the mountain.",
+  "ref": "Numbers 13:17"
+ },
+ {
+  "id": "numbers-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides whether the land was fat or lean, what did Moses ask them to learn about it?",
+  "choices": [
+   "Whether it had rivers",
+   "Whether there was wood in it",
+   "Whether it had gold",
+   "Whether it had snow"
+  ],
+  "answer": 1,
+  "explanation": "See what the land is, whether it be fat or lean, whether there be wood therein, or not.",
+  "ref": "Numbers 13:20"
+ },
+ {
+  "id": "numbers-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "From which wilderness did Moses send the spies out?",
+  "choices": [
+   "Paran",
+   "Zin",
+   "Sinai",
+   "Sin"
+  ],
+  "answer": 0,
+  "explanation": "Moses by the commandment of the LORD sent them from the wilderness of Paran.",
+  "ref": "Numbers 13:3"
+ },
+ {
+  "id": "numbers-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Caleb say the people were well able to do?",
+  "choices": [
+   "Build cities there",
+   "Make peace with its people",
+   "Wait for the LORD's sign",
+   "Overcome the land"
+  ],
+  "answer": 3,
+  "explanation": "Let us go up at once, and possess it; for we are well able to overcome it.",
+  "ref": "Numbers 13:30"
+ },
+ {
+  "id": "numbers-13-h-14",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the spies say about the cities of the land?",
+  "choices": [
+   "They were empty and ruined",
+   "They were few and small",
+   "They were walled and very great",
+   "They were built upon the sea"
+  ],
+  "answer": 2,
+  "explanation": "The cities are walled, and very great: and moreover we saw the children of Anak there.",
+  "ref": "Numbers 13:28"
+ },
+ {
+  "id": "numbers-13-h-15",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Which spy came from the tribe of Zebulun?",
+  "choices": [
+   "Gaddi the son of Susi",
+   "Gaddiel the son of Sodi",
+   "Geuel the son of Machi",
+   "Sethur the son of Michael"
+  ],
+  "answer": 1,
+  "explanation": "Of the tribe of Zebulun, Gaddiel the son of Sodi.",
+  "ref": "Numbers 13:10"
  },
  {
   "id": "old-numbers-14-1",
