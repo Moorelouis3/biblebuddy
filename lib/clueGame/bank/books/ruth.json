@@ -80,6 +80,646 @@
   "ref": "Ruth 1:20"
  },
  {
+  "id": "ruth-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Naomi's husband?",
+  "choices": [
+   "Elimelech",
+   "Boaz",
+   "Mahlon",
+   "Chilion"
+  ],
+  "answer": 0,
+  "explanation": "The name of the man was Elimelech, and the name of his wife Naomi.",
+  "ref": "Ruth 1:2"
+ },
+ {
+  "id": "ruth-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which country did Elimelech's family go?",
+  "choices": [
+   "Egypt",
+   "Moab",
+   "Edom",
+   "Philistia"
+  ],
+  "answer": 1,
+  "explanation": "A certain man of Bethlehemjudah went to sojourn in the country of Moab.",
+  "ref": "Ruth 1:1"
+ },
+ {
+  "id": "ruth-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "What were the names of Naomi's two daughters in law?",
+  "choices": [
+   "Rachel and Leah",
+   "Hannah and Peninnah",
+   "Orpah and Ruth",
+   "Mara and Naomi"
+  ],
+  "answer": 2,
+  "explanation": "The name of the one was Orpah, and the name of the other Ruth.",
+  "ref": "Ruth 1:4"
+ },
+ {
+  "id": "ruth-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did Naomi lose in Moab?",
+  "choices": [
+   "Only her husband",
+   "Only her sons",
+   "Her daughters",
+   "Her husband and both sons"
+  ],
+  "answer": 3,
+  "explanation": "Elimelech died, and Mahlon and Chilion died also both of them.",
+  "ref": "Ruth 1:3"
+ },
+ {
+  "id": "ruth-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had Naomi heard that made her return?",
+  "choices": [
+   "The LORD had given his people bread",
+   "Her people wanted her",
+   "A king was crowned",
+   "A war had ended"
+  ],
+  "answer": 0,
+  "explanation": "She had heard how the LORD had visited his people in giving them bread.",
+  "ref": "Ruth 1:6"
+ },
+ {
+  "id": "ruth-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which daughter in law returned to her people and gods?",
+  "choices": [
+   "Ruth",
+   "Orpah",
+   "Naomi",
+   "Mara"
+  ],
+  "answer": 1,
+  "explanation": "Orpah kissed her mother in law; but Ruth clave unto her.",
+  "ref": "Ruth 1:14"
+ },
+ {
+  "id": "ruth-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ruth say about Naomi's people?",
+  "choices": [
+   "They are strangers",
+   "They are enemies",
+   "They shall be my people",
+   "They shall serve me"
+  ],
+  "answer": 2,
+  "explanation": "Ruth said, thy people shall be my people, and thy God my God.",
+  "ref": "Ruth 1:16"
+ },
+ {
+  "id": "ruth-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which town did Naomi and Ruth come?",
+  "choices": [
+   "Jericho",
+   "Gibeah",
+   "Shiloh",
+   "Bethlehem"
+  ],
+  "answer": 3,
+  "explanation": "So they two went until they came to Bethlehem.",
+  "ref": "Ruth 1:19"
+ },
+ {
+  "id": "ruth-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Naomi say the Almighty had done to her?",
+  "choices": [
+   "Dealt very bitterly",
+   "Given her peace",
+   "Forgotten her",
+   "Blessed her"
+  ],
+  "answer": 0,
+  "explanation": "She said, the Almighty hath dealt very bitterly with me.",
+  "ref": "Ruth 1:20"
+ },
+ {
+  "id": "ruth-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what season did Naomi and Ruth reach Bethlehem?",
+  "choices": [
+   "The beginning of wheat harvest",
+   "The beginning of barley harvest",
+   "Midwinter",
+   "A feast of weeks"
+  ],
+  "answer": 1,
+  "explanation": "They came to Bethlehem in the beginning of barley harvest.",
+  "ref": "Ruth 1:22"
+ },
+ {
+  "id": "ruth-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did Naomi's family live in Moab before the sons wed?",
+  "choices": [
+   "About three years",
+   "About forty years",
+   "About ten years",
+   "About one year"
+  ],
+  "answer": 2,
+  "explanation": "They took them wives, and they dwelled there about ten years.",
+  "ref": "Ruth 1:4"
+ },
+ {
+  "id": "ruth-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Naomi wish the LORD would do for her daughters in law?",
+  "choices": [
+   "Give them sons",
+   "Send them gold",
+   "Send them rain",
+   "Deal kindly with them"
+  ],
+  "answer": 3,
+  "explanation": "Naomi said, the LORD deal kindly with you, as ye have dealt with the dead, and with me.",
+  "ref": "Ruth 1:8"
+ },
+ {
+  "id": "ruth-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Naomi tell them to return?",
+  "choices": [
+   "Each to her mother's house",
+   "To Bethlehem",
+   "To Egypt",
+   "To Elimelech's tent"
+  ],
+  "answer": 0,
+  "explanation": "Naomi said, Go, return each to her mother's house.",
+  "ref": "Ruth 1:8"
+ },
+ {
+  "id": "ruth-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Naomi pray her daughters in law would find?",
+  "choices": [
+   "Silver",
+   "Rest in the house of a husband",
+   "A king",
+   "A new land"
+  ],
+  "answer": 1,
+  "explanation": "The LORD grant you that ye may find rest, each of you in the house of her husband.",
+  "ref": "Ruth 1:9"
+ },
+ {
+  "id": "ruth-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Naomi say she had no more of for them?",
+  "choices": [
+   "Silver",
+   "Servants",
+   "Sons in her womb",
+   "Fields"
+  ],
+  "answer": 2,
+  "explanation": "She asked, are there yet any more sons in my womb, that they may be your husbands?",
+  "ref": "Ruth 1:11"
+ },
+ {
+  "id": "ruth-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Naomi say she could not marry again for their sake?",
+  "choices": [
+   "She had no home",
+   "She was poor",
+   "She was a widow of Moab",
+   "She was too old"
+  ],
+  "answer": 3,
+  "explanation": "She said, for I am too old to have an husband.",
+  "ref": "Ruth 1:12"
+ },
+ {
+  "id": "ruth-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Naomi say had gone out against her?",
+  "choices": [
+   "The hand of the LORD",
+   "The people of Moab",
+   "A famine",
+   "A curse of Elimelech"
+  ],
+  "answer": 0,
+  "explanation": "It grieveth me much that the hand of the LORD is gone out against me.",
+  "ref": "Ruth 1:13"
+ },
+ {
+  "id": "ruth-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ruth refuse to do?",
+  "choices": [
+   "Eat in Moab",
+   "Leave Naomi",
+   "Speak to Orpah",
+   "Go to Bethlehem"
+  ],
+  "answer": 1,
+  "explanation": "Ruth said, Intreat me not to leave thee.",
+  "ref": "Ruth 1:16"
+ },
+ {
+  "id": "ruth-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ruth say about where she would be buried?",
+  "choices": [
+   "In Moab",
+   "In Bethlehem only",
+   "Where Naomi dies",
+   "With Elimelech"
+  ],
+  "answer": 2,
+  "explanation": "Ruth said, Where thou diest, will I die, and there will I be buried.",
+  "ref": "Ruth 1:17"
+ },
+ {
+  "id": "ruth-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the city say when Naomi arrived?",
+  "choices": [
+   "Welcome home",
+   "Where is Elimelech?",
+   "Blessed be the LORD",
+   "Is this Naomi?"
+  ],
+  "answer": 3,
+  "explanation": "All the city was moved about them, and they said, Is this Naomi?",
+  "ref": "Ruth 1:19"
+ },
+ {
+  "id": "ruth-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Naomi say she went out with?",
+  "choices": [
+   "Full",
+   "Empty",
+   "Gold",
+   "Her sons only"
+  ],
+  "answer": 0,
+  "explanation": "She said, I went out full, and the LORD hath brought me home again empty.",
+  "ref": "Ruth 1:21"
+ },
+ {
+  "id": "ruth-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Naomi say the LORD had done against her?",
+  "choices": [
+   "Healed her",
+   "Testified against her",
+   "Blessed her",
+   "Forgotten her"
+  ],
+  "answer": 1,
+  "explanation": "The LORD hath testified against me, and the Almighty hath afflicted me.",
+  "ref": "Ruth 1:21"
+ },
+ {
+  "id": "ruth-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Naomi do when she saw Ruth was steadfastly minded?",
+  "choices": [
+   "Sent her away",
+   "Called for Orpah",
+   "Left speaking to her",
+   "Wept alone"
+  ],
+  "answer": 2,
+  "explanation": "She saw she was stedfastly minded, then she left speaking unto her.",
+  "ref": "Ruth 1:18"
+ },
+ {
+  "id": "ruth-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the two women do when Naomi first kissed them?",
+  "choices": [
+   "Lifted up their voice and wept",
+   "Laughed",
+   "Said nothing",
+   "Ran away"
+  ],
+  "answer": 0,
+  "explanation": "She kissed them; and they lifted up their voice, and wept.",
+  "ref": "Ruth 1:9"
+ },
+ {
+  "id": "ruth-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose days did the famine come?",
+  "choices": [
+   "The days of Saul",
+   "The days when the judges ruled",
+   "The days of David",
+   "The days of Moses"
+  ],
+  "answer": 1,
+  "explanation": "It came to pass in the days when the judges ruled, that there was a famine.",
+  "ref": "Ruth 1:1"
+ },
+ {
+  "id": "ruth-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What tribe or place were Elimelech's family called?",
+  "choices": [
+   "Moabites of Zoar",
+   "Danites of Zorah",
+   "Ephrathites of Bethlehemjudah",
+   "Levites of Shiloh"
+  ],
+  "answer": 2,
+  "explanation": "They were Ephrathites of Bethlehemjudah.",
+  "ref": "Ruth 1:2"
+ },
+ {
+  "id": "ruth-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Naomi say the daughters had dealt with the dead and her?",
+  "choices": [
+   "Harshly",
+   "Slowly",
+   "Faithfully",
+   "Kindly"
+  ],
+  "answer": 3,
+  "explanation": "The LORD deal kindly with you, as ye have dealt with the dead, and with me.",
+  "ref": "Ruth 1:8"
+ },
+ {
+  "id": "ruth-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ruth say the LORD should do to her if anything but death parted them?",
+  "choices": [
+   "Do so to me, and more also",
+   "Judge her",
+   "Cut her off",
+   "Send her home"
+  ],
+  "answer": 0,
+  "explanation": "Ruth said, the LORD do so to me, and more also, if ought but death part thee and me.",
+  "ref": "Ruth 1:17"
+ },
+ {
+  "id": "ruth-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ruth say about where Naomi lodges?",
+  "choices": [
+   "I will go home",
+   "Where thou lodgest, I will lodge",
+   "We will separate",
+   "I will visit"
+  ],
+  "answer": 1,
+  "explanation": "Ruth said, whither thou goest, I will go; and where thou lodgest, I will lodge.",
+  "ref": "Ruth 1:16"
+ },
+ {
+  "id": "ruth-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose gods did Naomi say Orpah had gone back to?",
+  "choices": [
+   "The Philistines'",
+   "Her mother's",
+   "Her people's",
+   "The Egyptians'"
+  ],
+  "answer": 2,
+  "explanation": "Thy sister in law is gone back unto her people, and unto her gods.",
+  "ref": "Ruth 1:15"
+ },
+ {
+  "id": "ruth-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What name did Naomi ask to be called, and why?",
+  "choices": [
+   "Hannah, because of grief",
+   "Ruth, because of kindness",
+   "Naomi, because of joy",
+   "Mara, because of bitterness"
+  ],
+  "answer": 3,
+  "explanation": "She said, Call me not Naomi, call me Mara: for the Almighty hath dealt very bitterly with me.",
+  "ref": "Ruth 1:20"
+ },
+ {
+  "id": "ruth-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Naomi ask if she should say 'I have hope'?",
+  "choices": [
+   "If she should have a husband that night",
+   "If Ruth should stay",
+   "If Orpah returned",
+   "If Ruth would marry"
+  ],
+  "answer": 0,
+  "explanation": "She said, If I should say, I have hope, if I should have an husband also to night.",
+  "ref": "Ruth 1:12"
+ },
+ {
+  "id": "ruth-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the daughters have to wait for until grown, according to Naomi?",
+  "choices": [
+   "A harvest",
+   "Sons",
+   "A rain",
+   "A king"
+  ],
+  "answer": 1,
+  "explanation": "She asked, Would ye tarry for them till they were grown?",
+  "ref": "Ruth 1:13"
+ },
+ {
+  "id": "ruth-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Naomi tell Ruth to do after Orpah left?",
+  "choices": [
+   "Stay in Moab",
+   "Go to Egypt",
+   "Return after her sister in law",
+   "Marry"
+  ],
+  "answer": 2,
+  "explanation": "She said, return thou after thy sister in law.",
+  "ref": "Ruth 1:15"
+ },
+ {
+  "id": "ruth-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the daughters in law first say to Naomi?",
+  "choices": [
+   "We will return with thee",
+   "We will stay",
+   "We will marry",
+   "We will wait"
+  ],
+  "answer": 0,
+  "explanation": "They said, Surely we will return with thee unto thy people.",
+  "ref": "Ruth 1:10"
+ },
+ {
+  "id": "ruth-1-m-20",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD give his people that ended the famine?",
+  "choices": [
+   "Bread",
+   "Rain",
+   "A king",
+   "Silver"
+  ],
+  "answer": 0,
+  "explanation": "Naomi heard how the LORD had visited his people in giving them bread.",
+  "ref": "Ruth 1:6"
+ },
+ {
+  "id": "ruth-1-h-20",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was left with Naomi after Elimelech died?",
+  "choices": [
+   "Her two sons",
+   "Her two brothers",
+   "Her mother",
+   "Her servants"
+  ],
+  "answer": 0,
+  "explanation": "Elimelech Naomi's husband died; and she was left, and her two sons.",
+  "ref": "Ruth 1:3"
+ },
+ {
+  "id": "ruth-1-h-21",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Toward which land did the women go on the way?",
+  "choices": [
+   "The land of Judah",
+   "The land of Egypt",
+   "The land of Edom",
+   "The land of Gilead"
+  ],
+  "answer": 0,
+  "explanation": "They went on the way to return unto the land of Judah.",
+  "ref": "Ruth 1:7"
+ },
+ {
+  "id": "ruth-1-h-22",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "For whose sake did Naomi say it grieved her much?",
+  "choices": [
+   "Her daughters in law",
+   "Her sons",
+   "Her husband",
+   "Bethlehem"
+  ],
+  "answer": 0,
+  "explanation": "Naomi said, it grieveth me much for your sakes that the hand of the LORD is gone out against me.",
+  "ref": "Ruth 1:13"
+ },
+ {
+  "id": "ruth-1-h-23",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who did Naomi say had visited his people in the land of Judah?",
+  "choices": [
+   "The LORD",
+   "The Almighty",
+   "The judges",
+   "The king"
+  ],
+  "answer": 0,
+  "explanation": "She had heard in Moab how that the LORD had visited his people.",
+  "ref": "Ruth 1:6"
+ },
+ {
   "id": "old-ruth-2-1",
   "chapter": 2,
   "level": "beginner",
