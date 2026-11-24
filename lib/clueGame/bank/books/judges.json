@@ -13012,16 +13012,16 @@
   "chapter": 19,
   "level": "beginner",
   "category": "keyword",
-  "question": "What happened to the Levite's concubine by morning?",
+  "question": "What did the Levite find lying at the door in the morning?",
   "choices": [
-   "She died at the door of the house",
-   "She escaped safely",
-   "She returned home",
-   "She hid in the field"
+   "His concubine, hands on the threshold",
+   "The old man",
+   "His servant",
+   "A stranger"
   ],
   "answer": 0,
-  "explanation": "She collapsed at the door and was found dead in the morning.",
-  "ref": "Judges 19:26–28"
+  "explanation": "Her lord opened the doors, and behold, the woman his concubine was fallen down at the door, her hands upon the threshold.",
+  "ref": "Judges 19:27"
  },
  {
   "id": "old-judges-19-5",
@@ -13037,6 +13037,646 @@
   ],
   "answer": 0,
   "explanation": "He divided her body into twelve pieces to summon national response.",
+  "ref": "Judges 19:29"
+ },
+ {
+  "id": "judges-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did the Levite live when the chapter begins?",
+  "choices": [
+   "On the side of mount Ephraim",
+   "In Bethlehemjudah",
+   "In Gibeah",
+   "In Jebus"
+  ],
+  "answer": 0,
+  "explanation": "A certain Levite was sojourning on the side of mount Ephraim.",
+  "ref": "Judges 19:1"
+ },
+ {
+  "id": "judges-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Levite take to him from Bethlehemjudah?",
+  "choices": [
+   "A field",
+   "A concubine",
+   "A flock",
+   "A servant"
+  ],
+  "answer": 1,
+  "explanation": "He took to him a concubine out of Bethlehemjudah.",
+  "ref": "Judges 19:1"
+ },
+ {
+  "id": "judges-19-e-03",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did his concubine go when she left him?",
+  "choices": [
+   "Gibeah",
+   "Mount Ephraim",
+   "Her father's house",
+   "Jebus"
+  ],
+  "answer": 2,
+  "explanation": "She went away from him unto her father's house to Bethlehemjudah.",
+  "ref": "Judges 19:2"
+ },
+ {
+  "id": "judges-19-e-04",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came with the Levite on the journey home from Bethlehemjudah?",
+  "choices": [
+   "His brother",
+   "His son",
+   "The old man",
+   "His servant"
+  ],
+  "answer": 3,
+  "explanation": "The Levite had his servant with him and two saddled asses.",
+  "ref": "Judges 19:10"
+ },
+ {
+  "id": "judges-19-e-05",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city of the Jebusites did the Levite refuse to turn into?",
+  "choices": [
+   "Jebus",
+   "Gibeah",
+   "Ramah",
+   "Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "The master said, We will not turn aside hither into the city of a stranger.",
+  "ref": "Judges 19:11"
+ },
+ {
+  "id": "judges-19-e-06",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which Benjamite city did they reach at sundown?",
+  "choices": [
+   "Ramah",
+   "Gibeah",
+   "Jebus",
+   "Shiloh"
+  ],
+  "answer": 1,
+  "explanation": "The sun went down upon them when they were by Gibeah, which belongeth to Benjamin.",
+  "ref": "Judges 19:14"
+ },
+ {
+  "id": "judges-19-e-07",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took the travelers into his house in Gibeah?",
+  "choices": [
+   "A Benjamite",
+   "A priest",
+   "An old man of mount Ephraim",
+   "A judge"
+  ],
+  "answer": 2,
+  "explanation": "An old man from mount Ephraim, sojourning in Gibeah, said, lodge not in the street.",
+  "ref": "Judges 19:16"
+ },
+ {
+  "id": "judges-19-e-08",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Levite do with her body when he got home?",
+  "choices": [
+   "Buried it at once",
+   "Burned it",
+   "Sent it to her father",
+   "Divided it into twelve pieces"
+  ],
+  "answer": 3,
+  "explanation": "He divided her, together with her bones, into twelve pieces, and sent her into all the coasts of Israel.",
+  "ref": "Judges 19:29"
+ },
+ {
+  "id": "judges-19-e-09",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who beset the old man's house at night?",
+  "choices": [
+   "Men of the city, sons of Belial",
+   "The Jebusites",
+   "Her father's men",
+   "Philistines"
+  ],
+  "answer": 0,
+  "explanation": "The men of the city, certain sons of Belial, beset the house round about.",
+  "ref": "Judges 19:22"
+ },
+ {
+  "id": "judges-19-e-10",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did all who saw the pieces say about the deed?",
+  "choices": [
+   "It was a just judgment",
+   "No such deed was ever done",
+   "The LORD was angry",
+   "The Levite should die"
+  ],
+  "answer": 1,
+  "explanation": "They said, There was no such deed done nor seen from the day that Israel came up out of Egypt.",
+  "ref": "Judges 19:30"
+ },
+ {
+  "id": "judges-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the concubine stay at her father's house?",
+  "choices": [
+   "Three days",
+   "One year",
+   "Four whole months",
+   "Forty days"
+  ],
+  "answer": 2,
+  "explanation": "She was there four whole months.",
+  "ref": "Judges 19:2"
+ },
+ {
+  "id": "judges-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Levite go to Bethlehemjudah?",
+  "choices": [
+   "To trade",
+   "To fight",
+   "To sell asses",
+   "To speak friendly to her"
+  ],
+  "answer": 3,
+  "explanation": "He arose to speak friendly unto her, and to bring her again.",
+  "ref": "Judges 19:3"
+ },
+ {
+  "id": "judges-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many days did the Levite first stay with his father in law?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Two",
+   "Ten"
+  ],
+  "answer": 0,
+  "explanation": "His father in law retained him; and he abode with him three days.",
+  "ref": "Judges 19:4"
+ },
+ {
+  "id": "judges-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the father in law urge him to do again and again?",
+  "choices": [
+   "Go at once",
+   "Stay and be merry",
+   "Give a gift",
+   "Take another wife"
+  ],
+  "answer": 1,
+  "explanation": "He said, tarry all night, and let thine heart be merry.",
+  "ref": "Judges 19:6"
+ },
+ {
+  "id": "judges-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day did the Levite refuse to tarry and leave?",
+  "choices": [
+   "The third",
+   "The seventh",
+   "The fifth",
+   "The second"
+  ],
+  "answer": 2,
+  "explanation": "He arose early in the morning on the fifth day to depart.",
+  "ref": "Judges 19:8"
+ },
+ {
+  "id": "judges-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the servant want to stop at Jebus?",
+  "choices": [
+   "Rain was coming",
+   "His asses were tired",
+   "He knew a friend",
+   "The day was far spent"
+  ],
+  "answer": 3,
+  "explanation": "The day was far spent, and the servant said, turn in into this city of the Jebusites.",
+  "ref": "Judges 19:11"
+ },
+ {
+  "id": "judges-19-m-07",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the Levite not lodge in Jebus?",
+  "choices": [
+   "It was a city of strangers",
+   "It was too small",
+   "It was at war",
+   "Its gates were shut"
+  ],
+  "answer": 0,
+  "explanation": "His master said, We will not turn aside hither into the city of a stranger, that is not of the children of Israel.",
+  "ref": "Judges 19:12"
+ },
+ {
+  "id": "judges-19-m-08",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were they sitting in the street at Gibeah?",
+  "choices": [
+   "The gates were shut",
+   "No man took them in",
+   "They were waiting for rain",
+   "They wished to pray"
+  ],
+  "answer": 1,
+  "explanation": "There was no man that took them into his house to lodging.",
+  "ref": "Judges 19:15"
+ },
+ {
+  "id": "judges-19-m-09",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the old man say the Levite should not do?",
+  "choices": [
+   "Travel by night",
+   "Speak to the men",
+   "Lodge in the street",
+   "Open the gate"
+  ],
+  "answer": 2,
+  "explanation": "The old man said, only lodge not in the street.",
+  "ref": "Judges 19:20"
+ },
+ {
+  "id": "judges-19-m-10",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Levite say he was going to?",
+  "choices": [
+   "Bethlehemjudah",
+   "Mount Ephraim",
+   "Gibeah",
+   "The house of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "He said, I am now going to the house of the LORD.",
+  "ref": "Judges 19:18"
+ },
+ {
+  "id": "judges-19-m-11",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Levite say he already had for his asses and himself?",
+  "choices": [
+   "Straw, provender, bread and wine",
+   "Silver and gold",
+   "Oil and honey",
+   "Nothing at all"
+  ],
+  "answer": 0,
+  "explanation": "There is both straw and provender for our asses; and there is bread and wine also for me.",
+  "ref": "Judges 19:19"
+ },
+ {
+  "id": "judges-19-m-12",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men of the city want the old man to do?",
+  "choices": [
+   "Give them silver",
+   "Bring forth the man",
+   "Close the door",
+   "Send for the elders"
+  ],
+  "answer": 1,
+  "explanation": "They said, Bring forth the man that came into thine house.",
+  "ref": "Judges 19:22"
+ },
+ {
+  "id": "judges-19-m-13",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the old man say they should not do with his guest?",
+  "choices": [
+   "A thing of honour",
+   "A thing in secret",
+   "A vile thing",
+   "A holy thing"
+  ],
+  "answer": 2,
+  "explanation": "He said, unto this man do not so vile a thing.",
+  "ref": "Judges 19:24"
+ },
+ {
+  "id": "judges-19-m-14",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the woman found in the morning?",
+  "choices": [
+   "In the street",
+   "On the road",
+   "At the gate of the city",
+   "At the door of the house"
+  ],
+  "answer": 3,
+  "explanation": "She had fallen down at the door of the man's house, her hands upon the threshold.",
+  "ref": "Judges 19:26"
+ },
+ {
+  "id": "judges-19-m-15",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what did the Levite carry her home?",
+  "choices": [
+   "An ass",
+   "A cart",
+   "A camel",
+   "A litter"
+  ],
+  "answer": 0,
+  "explanation": "The man took her up upon an ass.",
+  "ref": "Judges 19:28"
+ },
+ {
+  "id": "judges-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides Gibeah, which other place did the Levite suggest lodging in?",
+  "choices": [
+   "Jebus",
+   "Shiloh",
+   "Ramah",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "He said, to lodge all night, in Gibeah, or in Ramah.",
+  "ref": "Judges 19:13"
+ },
+ {
+  "id": "judges-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the old man offer to bring out to the men?",
+  "choices": [
+   "His servant and his guest",
+   "His sons",
+   "His silver",
+   "His daughter and the concubine"
+  ],
+  "answer": 3,
+  "explanation": "He said, here is my daughter a maiden, and his concubine.",
+  "ref": "Judges 19:24"
+ },
+ {
+  "id": "judges-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At what time did the woman fall at the door?",
+  "choices": [
+   "In the dawning of the day",
+   "At midnight",
+   "At noon",
+   "At evening"
+  ],
+  "answer": 0,
+  "explanation": "Then came the woman in the dawning of the day, and fell down at the door.",
+  "ref": "Judges 19:26"
+ },
+ {
+  "id": "judges-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Levite say to the woman when he found her?",
+  "choices": [
+   "Who has done this",
+   "Up, and let us be going",
+   "Wake the old man",
+   "Call the servant"
+  ],
+  "answer": 1,
+  "explanation": "He said unto her, Up, and let us be going. But none answered.",
+  "ref": "Judges 19:28"
+ },
+ {
+  "id": "judges-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Levite use to divide her?",
+  "choices": [
+   "A sword",
+   "A stone",
+   "A knife",
+   "An axe"
+  ],
+  "answer": 2,
+  "explanation": "He took a knife, and laid hold on his concubine.",
+  "ref": "Judges 19:29"
+ },
+ {
+  "id": "judges-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into how many pieces did the Levite divide her?",
+  "choices": [
+   "Seven",
+   "Ten",
+   "Four",
+   "Twelve"
+  ],
+  "answer": 3,
+  "explanation": "He divided her, together with her bones, into twelve pieces.",
+  "ref": "Judges 19:29"
+ },
+ {
+  "id": "judges-19-h-09",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many asses did the Levite have saddled?",
+  "choices": [
+   "Four",
+   "Two",
+   "Three",
+   "One"
+  ],
+  "answer": 1,
+  "explanation": "There were with him two asses saddled, his concubine also was with him.",
+  "ref": "Judges 19:10"
+ },
+ {
+  "id": "judges-19-h-12",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the old man do for the asses and guests?",
+  "choices": [
+   "Gave provender and washed feet",
+   "Sold them bread",
+   "Sent them away",
+   "Lodged them in a barn"
+  ],
+  "answer": 0,
+  "explanation": "He gave provender unto the asses: and they washed their feet, and did eat and drink.",
+  "ref": "Judges 19:21"
+ },
+ {
+  "id": "judges-19-h-14",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "By whom was Gibeah inhabited, according to the old man's account?",
+  "choices": [
+   "Jebusites",
+   "Danites",
+   "Benjamites",
+   "Ephraimites"
+  ],
+  "answer": 2,
+  "explanation": "The old man sojourned in Gibeah: but the men of the place were Benjamites.",
+  "ref": "Judges 19:16"
+ },
+ {
+  "id": "judges-19-h-15",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the old man answer when asked whence they were?",
+  "choices": [
+   "From Jebus to Shiloh",
+   "From Gibeah to Ramah",
+   "From Dan to Zorah",
+   "From Bethlehemjudah toward mount Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "He said, We are passing from Bethlehemjudah toward the side of mount Ephraim.",
+  "ref": "Judges 19:18"
+ },
+ {
+  "id": "judges-19-h-20",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose idea was it to stay a second night when the Levite rose to leave?",
+  "choices": [
+   "His father in law's",
+   "His servant's",
+   "His own",
+   "The woman's"
+  ],
+  "answer": 0,
+  "explanation": "When the man rose up to depart, his father in law urged him: therefore he lodged there again.",
+  "ref": "Judges 19:7"
+ },
+ {
+  "id": "judges-19-h-21",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the father in law say should be done with the Levite's morning journey?",
+  "choices": [
+   "Leave early next day",
+   "Leave at once",
+   "Go by night",
+   "Wait a week"
+  ],
+  "answer": 0,
+  "explanation": "He said, to morrow get you early on your way, that thou mayest go home.",
+  "ref": "Judges 19:9"
+ },
+ {
+  "id": "judges-19-h-22",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man came from his work in the field at evening?",
+  "choices": [
+   "The old man",
+   "The Levite",
+   "The servant",
+   "A Benjamite"
+  ],
+  "answer": 0,
+  "explanation": "There came an old man from his work out of the field at even.",
+  "ref": "Judges 19:16"
+ },
+ {
+  "id": "judges-19-h-23",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the old man call the deed he begged the men not to do?",
+  "choices": [
+   "Folly",
+   "Justice",
+   "Custom",
+   "Sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "He said, do not so wickedly; seeing that this man is come into mine house, do not this folly.",
+  "ref": "Judges 19:23"
+ },
+ {
+  "id": "judges-19-h-24",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Levite send the pieces of his concubine into?",
+  "choices": [
+   "All the coasts of Israel",
+   "Only Benjamin",
+   "Mount Ephraim",
+   "Gibeah"
+  ],
+  "answer": 0,
+  "explanation": "He divided her into twelve pieces, and sent her into all the coasts of Israel.",
   "ref": "Judges 19:29"
  },
  {
