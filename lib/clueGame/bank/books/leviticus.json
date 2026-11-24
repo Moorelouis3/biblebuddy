@@ -16688,6 +16688,646 @@
   "ref": "Leviticus 24:19–20"
  },
  {
+  "id": "leviticus-24-e-01",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of oil were the people to bring for the lamps?",
+  "choices": [
+   "Fragrant spice oil",
+   "Pure oil olive beaten",
+   "Oil of balm",
+   "Oil of myrrh"
+  ],
+  "answer": 1,
+  "explanation": "Bring unto thee pure oil olive beaten for the light, to cause the lamps to burn continually.",
+  "ref": "Leviticus 24:2"
+ },
+ {
+  "id": "leviticus-24-e-02",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who ordered the lamps before the LORD?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "Eleazar",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "Aaron shall order it from the evening unto the morning before the LORD continually.",
+  "ref": "Leviticus 24:3"
+ },
+ {
+  "id": "leviticus-24-e-03",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many cakes were baked of fine flour for the table?",
+  "choices": [
+   "Seven",
+   "Twelve",
+   "Ten",
+   "Twenty"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt take fine flour, and bake twelve cakes thereof.",
+  "ref": "Leviticus 24:5"
+ },
+ {
+  "id": "leviticus-24-e-04",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How were the cakes set on the table?",
+  "choices": [
+   "In one row of twelve",
+   "In two rows, six on a row",
+   "In three rows of four",
+   "In a heap"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt set them in two rows, six on a row, upon the pure table before the LORD.",
+  "ref": "Leviticus 24:6"
+ },
+ {
+  "id": "leviticus-24-e-05",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was put upon each row of bread?",
+  "choices": [
+   "Salt",
+   "Pure frankincense",
+   "Oil",
+   "Honey"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt put pure frankincense upon each row, that it may be on the bread for a memorial.",
+  "ref": "Leviticus 24:7"
+ },
+ {
+  "id": "leviticus-24-e-06",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the mother of the man who blasphemed?",
+  "choices": [
+   "Dibri",
+   "Shelomith",
+   "Dan",
+   "Miriam"
+  ],
+  "answer": 1,
+  "explanation": "His mother's name was Shelomith, the daughter of Dibri, of the tribe of Dan.",
+  "ref": "Leviticus 24:11"
+ },
+ {
+  "id": "leviticus-24-e-07",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe was the blasphemer's mother from?",
+  "choices": [
+   "Judah",
+   "Dan",
+   "Levi",
+   "Benjamin"
+  ],
+  "answer": 1,
+  "explanation": "The daughter of Dibri, of the tribe of Dan.",
+  "ref": "Leviticus 24:11"
+ },
+ {
+  "id": "leviticus-24-e-08",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was the blasphemer to be brought to be stoned?",
+  "choices": [
+   "To the tabernacle door",
+   "Out of the camp",
+   "To the mountain",
+   "To the city gate"
+  ],
+  "answer": 1,
+  "explanation": "Bring forth him that hath cursed without the camp; and let all the congregation stone him.",
+  "ref": "Leviticus 24:14"
+ },
+ {
+  "id": "leviticus-24-e-09",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What law applied to both the stranger and the one born in the land?",
+  "choices": [
+   "Two laws",
+   "One manner of law",
+   "The law of the priests",
+   "No law"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall have one manner of law, as well for the stranger, as for one of your own country.",
+  "ref": "Leviticus 24:22"
+ },
+ {
+  "id": "leviticus-24-e-10",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did what the LORD commanded about the blasphemer?",
+  "choices": [
+   "Only the priests",
+   "The children of Israel",
+   "Only the Levites",
+   "Only Aaron"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel did as the LORD commanded Moses.",
+  "ref": "Leviticus 24:23"
+ },
+ {
+  "id": "leviticus-24-m-01",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long were the lamps to burn?",
+  "choices": [
+   "Only on sabbaths",
+   "From dawn to noon",
+   "Seven days",
+   "Continually"
+  ],
+  "answer": 3,
+  "explanation": "To cause the lamps to burn continually.",
+  "ref": "Leviticus 24:2"
+ },
+ {
+  "id": "leviticus-24-m-02",
+  "chapter": 24,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Aaron order the lamps?",
+  "choices": [
+   "In the court",
+   "On the altar",
+   "At the gate",
+   "Without the vail of the testimony in the tabernacle"
+  ],
+  "answer": 3,
+  "explanation": "Without the vail of the testimony, in the tabernacle of the congregation, shall Aaron order it.",
+  "ref": "Leviticus 24:3"
+ },
+ {
+  "id": "leviticus-24-m-03",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which candlestick held the lamps?",
+  "choices": [
+   "The golden altar",
+   "The great laver",
+   "The ark",
+   "The pure candlestick"
+  ],
+  "answer": 3,
+  "explanation": "He shall order the lamps upon the pure candlestick before the LORD continually.",
+  "ref": "Leviticus 24:4"
+ },
+ {
+  "id": "leviticus-24-m-04",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much flour was in one cake?",
+  "choices": [
+   "One tenth deal",
+   "Three tenth deals",
+   "Four tenth deals",
+   "Two tenth deals"
+  ],
+  "answer": 3,
+  "explanation": "Fine flour, and bake twelve cakes thereof: two tenth deals shall be in one cake.",
+  "ref": "Leviticus 24:5"
+ },
+ {
+  "id": "leviticus-24-m-05",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which table was the bread set?",
+  "choices": [
+   "The altar of brass",
+   "The sacred stone",
+   "The ark's lid",
+   "The pure table"
+  ],
+  "answer": 3,
+  "explanation": "Upon the pure table before the LORD.",
+  "ref": "Leviticus 24:6"
+ },
+ {
+  "id": "leviticus-24-m-06",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How often was the bread set in order?",
+  "choices": [
+   "Every day",
+   "Every month",
+   "Every year",
+   "Every sabbath"
+  ],
+  "answer": 3,
+  "explanation": "Every sabbath he shall set it in order before the LORD continually.",
+  "ref": "Leviticus 24:8"
+ },
+ {
+  "id": "leviticus-24-m-07",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was to eat the bread?",
+  "choices": [
+   "All Israel",
+   "The Levites",
+   "The poor",
+   "Aaron and his sons"
+  ],
+  "answer": 3,
+  "explanation": "It shall be Aaron's and his sons'; and they shall eat it in the holy place.",
+  "ref": "Leviticus 24:9"
+ },
+ {
+  "id": "leviticus-24-m-08",
+  "chapter": 24,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the bread to be eaten?",
+  "choices": [
+   "In the camp",
+   "At home",
+   "In the court",
+   "In the holy place"
+  ],
+  "answer": 3,
+  "explanation": "They shall eat it in the holy place: for it is most holy unto him.",
+  "ref": "Leviticus 24:9"
+ },
+ {
+  "id": "leviticus-24-m-09",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was the man who blasphemed?",
+  "choices": [
+   "A Levite's",
+   "A stranger's",
+   "A priest's",
+   "An Israelitish woman's, with an Egyptian father"
+  ],
+  "answer": 3,
+  "explanation": "The son of an Israelitish woman, whose father was an Egyptian, went out among the children of Israel.",
+  "ref": "Leviticus 24:10"
+ },
+ {
+  "id": "leviticus-24-m-10",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the blasphemer do?",
+  "choices": [
+   "Broke the sabbath",
+   "Took stolen goods",
+   "Killed a man",
+   "Blasphemed the name of the LORD and cursed"
+  ],
+  "answer": 3,
+  "explanation": "The Israelitish woman's son blasphemed the name of the LORD, and cursed.",
+  "ref": "Leviticus 24:11"
+ },
+ {
+  "id": "leviticus-24-m-11",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to him after they brought him to Moses?",
+  "choices": [
+   "He was released",
+   "He was scourged",
+   "He was sent away",
+   "He was put in ward"
+  ],
+  "answer": 3,
+  "explanation": "They put him in ward, that the mind of the LORD might be shewed them.",
+  "ref": "Leviticus 24:12"
+ },
+ {
+  "id": "leviticus-24-m-12",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did those who heard him do before the stoning?",
+  "choices": [
+   "Prayed",
+   "Washed their hands",
+   "Fasted",
+   "Laid their hands on his head"
+  ],
+  "answer": 3,
+  "explanation": "Let all that heard him lay their hands upon his head, and let all the congregation stone him.",
+  "ref": "Leviticus 24:14"
+ },
+ {
+  "id": "leviticus-24-m-13",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must a man who kills a beast do?",
+  "choices": [
+   "Pay a fine in silver",
+   "Bring a sin offering",
+   "Be cast out",
+   "Make it good, beast for beast"
+  ],
+  "answer": 3,
+  "explanation": "He that killeth a beast shall make it good; beast for beast.",
+  "ref": "Leviticus 24:18"
+ },
+ {
+  "id": "leviticus-24-m-14",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What penalty is given to the one who kills any man?",
+  "choices": [
+   "He shall pay a fine",
+   "He shall be exiled",
+   "He shall be scourged",
+   "He shall be put to death"
+  ],
+  "answer": 3,
+  "explanation": "He that killeth any man shall surely be put to death.",
+  "ref": "Leviticus 24:17"
+ },
+ {
+  "id": "leviticus-24-m-15",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was a man who injures his neighbour to be dealt with?",
+  "choices": [
+   "He pays double",
+   "He is scourged",
+   "He is exiled",
+   "As he hath done, so shall it be done to him"
+  ],
+  "answer": 3,
+  "explanation": "If a man cause a blemish in his neighbour; as he hath done, so shall it be done to him.",
+  "ref": "Leviticus 24:19"
+ },
+ {
+  "id": "leviticus-24-h-01",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose daughter was Shelomith?",
+  "choices": [
+   "Dibri's",
+   "Dan's",
+   "Aaron's",
+   "Moses'"
+  ],
+  "answer": 0,
+  "explanation": "His mother's name was Shelomith, the daughter of Dibri, of the tribe of Dan.",
+  "ref": "Leviticus 24:11"
+ },
+ {
+  "id": "leviticus-24-h-02",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was the blasphemer put in ward?",
+  "choices": [
+   "So the mind of the LORD might be shewed",
+   "To be tried by elders",
+   "To wait for the new moon",
+   "To be questioned by Aaron"
+  ],
+  "answer": 0,
+  "explanation": "They put him in ward, that the mind of the LORD might be shewed them.",
+  "ref": "Leviticus 24:12"
+ },
+ {
+  "id": "leviticus-24-h-03",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say of the one who curses his God?",
+  "choices": [
+   "He shall bear his sin",
+   "He shall be exiled",
+   "He shall be fined",
+   "He shall be scourged"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever curseth his God shall bear his sin.",
+  "ref": "Leviticus 24:15"
+ },
+ {
+  "id": "leviticus-24-h-04",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is also to be put to death for blaspheming the name of the LORD?",
+  "choices": [
+   "The stranger as well as the native",
+   "Only Israelites",
+   "Only priests",
+   "Only men"
+  ],
+  "answer": 0,
+  "explanation": "As well the stranger, as he that is born in the land, when he blasphemeth the name of the LORD, shall be put to death.",
+  "ref": "Leviticus 24:16"
+ },
+ {
+  "id": "leviticus-24-h-05",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the exchange for a breach?",
+  "choices": [
+   "Breach for breach",
+   "Silver for breach",
+   "Life for breach",
+   "Beast for breach"
+  ],
+  "answer": 0,
+  "explanation": "Breach for breach, eye for eye, tooth for tooth.",
+  "ref": "Leviticus 24:20"
+ },
+ {
+  "id": "leviticus-24-h-06",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From when until when was Aaron to order the lamps?",
+  "choices": [
+   "From the evening unto the morning",
+   "From dawn to noon",
+   "From noon to night",
+   "From sabbath to sabbath"
+  ],
+  "answer": 0,
+  "explanation": "Aaron shall order it from the evening unto the morning before the LORD continually.",
+  "ref": "Leviticus 24:3"
+ },
+ {
+  "id": "leviticus-24-h-07",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the bread called, in terms of the offering?",
+  "choices": [
+   "A memorial",
+   "A heave offering",
+   "A firstfruit",
+   "A peace offering"
+  ],
+  "answer": 0,
+  "explanation": "Pure frankincense upon each row, that it may be on the bread for a memorial.",
+  "ref": "Leviticus 24:7"
+ },
+ {
+  "id": "leviticus-24-h-08",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is the bread's covenant described?",
+  "choices": [
+   "An everlasting covenant",
+   "A temporary covenant",
+   "A covenant of salt",
+   "A covenant of peace"
+  ],
+  "answer": 0,
+  "explanation": "Being taken from the children of Israel by an everlasting covenant.",
+  "ref": "Leviticus 24:8"
+ },
+ {
+  "id": "leviticus-24-h-09",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is the bread described among the offerings of the LORD?",
+  "choices": [
+   "Most holy",
+   "Common",
+   "Hallowed only",
+   "Unclean"
+  ],
+  "answer": 0,
+  "explanation": "It is most holy unto him of the offerings of the LORD made by fire by a perpetual statute.",
+  "ref": "Leviticus 24:9"
+ },
+ {
+  "id": "leviticus-24-h-10",
+  "chapter": 24,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the blasphemer and a man of Israel strive?",
+  "choices": [
+   "In the camp",
+   "At the tabernacle",
+   "At the gate",
+   "In the field"
+  ],
+  "answer": 0,
+  "explanation": "This son of the Israelitish woman and a man of Israel strove together in the camp.",
+  "ref": "Leviticus 24:10"
+ },
+ {
+  "id": "leviticus-24-h-11",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the olive oil beaten for?",
+  "choices": [
+   "Anointing",
+   "The bread",
+   "The light",
+   "Cooking"
+  ],
+  "answer": 2,
+  "explanation": "Pure oil olive beaten for the light, to cause the lamps to burn continually.",
+  "ref": "Leviticus 24:2"
+ },
+ {
+  "id": "leviticus-24-h-12",
+  "chapter": 24,
+  "level": "hard",
+  "category": "person",
+  "question": "For how long was the ordering of the lamps a statute?",
+  "choices": [
+   "Until they entered the land",
+   "For ever in their generations",
+   "For seven years",
+   "Until the jubile"
+  ],
+  "answer": 1,
+  "explanation": "It shall be a statute for ever in your generations.",
+  "ref": "Leviticus 24:3"
+ },
+ {
+  "id": "leviticus-24-h-13",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who strove with the blasphemer in the camp?",
+  "choices": [
+   "An Egyptian",
+   "A Levite",
+   "A priest",
+   "A man of Israel"
+  ],
+  "answer": 3,
+  "explanation": "This son of the Israelitish woman and a man of Israel strove together in the camp.",
+  "ref": "Leviticus 24:10"
+ },
+ {
+  "id": "leviticus-24-h-14",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of he that killeth a beast?",
+  "choices": [
+   "He shall restore it",
+   "He shall bring a ram",
+   "He shall be stoned",
+   "He shall be fined silver"
+  ],
+  "answer": 0,
+  "explanation": "He that killeth a beast, he shall restore it: and he that killeth a man, he shall be put to death.",
+  "ref": "Leviticus 24:21"
+ },
+ {
+  "id": "leviticus-24-h-15",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say a man who blasphemes the name shall be put to death by?",
+  "choices": [
+   "All the congregation stoning him",
+   "The priests with a sword",
+   "The elders at the gate",
+   "Fire from the altar"
+  ],
+  "answer": 0,
+  "explanation": "He that blasphemeth the name of the LORD shall surely be put to death, and all the congregation shall certainly stone him.",
+  "ref": "Leviticus 24:16"
+ },
+ {
   "id": "old-leviticus-25-1",
   "chapter": 25,
   "level": "beginner",
