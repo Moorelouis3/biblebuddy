@@ -25294,5 +25294,645 @@
   "answer": 1,
   "explanation": "The book closes in the plains of Moab by Jordan near Jericho.",
   "ref": "Numbers 36:13"
+ },
+ {
+  "id": "numbers-36-e-01",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose daughters are the focus of this chapter?",
+  "choices": [
+   "Machir",
+   "Zelophehad",
+   "Gilead",
+   "Joseph"
+  ],
+  "answer": 1,
+  "explanation": "The LORD commanded to give the inheritance of Zelophehad unto his daughters.",
+  "ref": "Numbers 36:2"
+ },
+ {
+  "id": "numbers-36-e-02",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came near and spoke before Moses?",
+  "choices": [
+   "The chief fathers of the families of Gilead",
+   "The priests",
+   "The spies",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "The chief fathers of the children of Gilead came near, and spake before Moses.",
+  "ref": "Numbers 36:1"
+ },
+ {
+  "id": "numbers-36-e-03",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which tribe did the chief fathers who came to Moses belong to?",
+  "choices": [
+   "Judah",
+   "Manasseh",
+   "Dan",
+   "Reuben"
+  ],
+  "answer": 1,
+  "explanation": "They were of the families of the sons of Joseph, of Manasseh.",
+  "ref": "Numbers 36:1"
+ },
+ {
+  "id": "numbers-36-e-04",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses say of the tribe of the sons of Joseph?",
+  "choices": [
+   "They have sinned",
+   "They have said well",
+   "They ask too much",
+   "They must wait"
+  ],
+  "answer": 1,
+  "explanation": "Moses commanded according to the word of the LORD: The tribe of the sons of Joseph hath said well.",
+  "ref": "Numbers 36:5"
+ },
+ {
+  "id": "numbers-36-e-05",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the daughters of Zelophehad marry?",
+  "choices": [
+   "Their father's brothers' sons",
+   "Priests",
+   "Men of Gilead's enemies",
+   "Princes of Moab"
+  ],
+  "answer": 0,
+  "explanation": "They were married unto their father's brothers' sons.",
+  "ref": "Numbers 36:11"
+ },
+ {
+  "id": "numbers-36-e-06",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "person",
+  "question": "How many daughters of Zelophehad are named in the chapter?",
+  "choices": [
+   "Three",
+   "Five",
+   "Seven",
+   "Two"
+  ],
+  "answer": 1,
+  "explanation": "Mahlah, Tirzah, and Hoglah, and Milcah, and Noah, the daughters of Zelophehad.",
+  "ref": "Numbers 36:11"
+ },
+ {
+  "id": "numbers-36-e-07",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose command did the daughters of Zelophehad follow?",
+  "choices": [
+   "Moses' alone",
+   "The elders'",
+   "Eleazar's",
+   "The LORD's"
+  ],
+  "answer": 3,
+  "explanation": "Even as the LORD commanded Moses, so did the daughters of Zelophehad.",
+  "ref": "Numbers 36:10"
+ },
+ {
+  "id": "numbers-36-e-08",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "person",
+  "question": "Into whose families did the daughters marry?",
+  "choices": [
+   "The sons of Manasseh",
+   "The sons of Levi",
+   "The sons of Judah",
+   "The sons of Dan"
+  ],
+  "answer": 0,
+  "explanation": "They were married into the families of the sons of Manasseh the son of Joseph.",
+  "ref": "Numbers 36:12"
+ },
+ {
+  "id": "numbers-36-e-09",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would the daughters' marriage rule keep inside the tribe of their father?",
+  "choices": [
+   "Their flocks",
+   "Their inheritance",
+   "Their tents",
+   "Their names"
+  ],
+  "answer": 1,
+  "explanation": "Their inheritance remained in the tribe of the family of their father.",
+  "ref": "Numbers 36:12"
+ },
+ {
+  "id": "numbers-36-m-01",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the chief fathers say the LORD commanded Moses to give to Zelophehad's daughters?",
+  "choices": [
+   "The inheritance of Zelophehad",
+   "A city of refuge",
+   "The tabernacle's care",
+   "Gilead"
+  ],
+  "answer": 0,
+  "explanation": "My lord was commanded to give the inheritance of Zelophehad our brother unto his daughters.",
+  "ref": "Numbers 36:2"
+ },
+ {
+  "id": "numbers-36-m-02",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the chief fathers say the land was commanded to be given to Israel?",
+  "choices": [
+   "By battle",
+   "By lot",
+   "By purchase",
+   "By the priests"
+  ],
+  "answer": 1,
+  "explanation": "The LORD commanded my lord to give the land for an inheritance by lot.",
+  "ref": "Numbers 36:2"
+ },
+ {
+  "id": "numbers-36-m-03",
+  "chapter": 36,
+  "level": "medium",
+  "category": "person",
+  "question": "How did the chief fathers refer to Zelophehad?",
+  "choices": [
+   "Our father",
+   "Our prince",
+   "Our brother",
+   "Our judge"
+  ],
+  "answer": 2,
+  "explanation": "They said, the inheritance of Zelophehad our brother.",
+  "ref": "Numbers 36:2"
+ },
+ {
+  "id": "numbers-36-m-04",
+  "chapter": 36,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a daughter of Zelophehad?",
+  "choices": [
+   "Mahlah",
+   "Machir",
+   "Gilead",
+   "Kemuel"
+  ],
+  "answer": 0,
+  "explanation": "Mahlah, Tirzah, and Hoglah, and Milcah, and Noah, the daughters of Zelophehad.",
+  "ref": "Numbers 36:11"
+ },
+ {
+  "id": "numbers-36-m-05",
+  "chapter": 36,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Gilead?",
+  "choices": [
+   "Manasseh",
+   "Joseph",
+   "Machir",
+   "Zelophehad"
+  ],
+  "answer": 2,
+  "explanation": "The chief fathers of the children of Gilead, the son of Machir.",
+  "ref": "Numbers 36:1"
+ },
+ {
+  "id": "numbers-36-m-06",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What event would not return the inheritance to the tribe of their fathers?",
+  "choices": [
+   "The Sabbath",
+   "The jubile",
+   "The census",
+   "The new moon"
+  ],
+  "answer": 1,
+  "explanation": "When the jubile shall be, their inheritance shall be put unto the tribe whereunto they are received.",
+  "ref": "Numbers 36:4"
+ },
+ {
+  "id": "numbers-36-m-07",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How free were the daughters in choosing a husband?",
+  "choices": [
+   "They could marry whom they thought best",
+   "They could not marry",
+   "They had to marry priests",
+   "They had to marry in Moab"
+  ],
+  "answer": 0,
+  "explanation": "Let them marry to whom they think best; only to the family of the tribe of their father.",
+  "ref": "Numbers 36:6"
+ },
+ {
+  "id": "numbers-36-m-08",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must the inheritance not do?",
+  "choices": [
+   "Be sold",
+   "Remove from tribe to tribe",
+   "Be shared with Levites",
+   "Be measured"
+  ],
+  "answer": 1,
+  "explanation": "Neither shall the inheritance remove from one tribe to another tribe.",
+  "ref": "Numbers 36:9"
+ },
+ {
+  "id": "numbers-36-m-09",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Every daughter who possessed an inheritance was to be wife to whom?",
+  "choices": [
+   "A Levite",
+   "A stranger",
+   "One of the family of her father's tribe",
+   "Any prince"
+  ],
+  "answer": 2,
+  "explanation": "Every daughter that possesseth an inheritance shall be wife unto one of the family of the tribe of her father.",
+  "ref": "Numbers 36:8"
+ },
+ {
+  "id": "numbers-36-m-10",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was this rule given according to the text?",
+  "choices": [
+   "So each might enjoy his fathers’ inheritance",
+   "To please Moab",
+   "To build cities",
+   "To end the jubile"
+  ],
+  "answer": 0,
+  "explanation": "That the children of Israel may enjoy every man the inheritance of his fathers.",
+  "ref": "Numbers 36:8"
+ },
+ {
+  "id": "numbers-36-m-11",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the chief fathers' fear if the daughters married into other tribes?",
+  "choices": [
+   "Their inheritance would be taken from their fathers' tribe",
+   "The jubile would end",
+   "They would be driven out",
+   "Moses would be angry"
+  ],
+  "answer": 0,
+  "explanation": "Their inheritance shall be taken from the inheritance of our fathers.",
+  "ref": "Numbers 36:3"
+ },
+ {
+  "id": "numbers-36-m-12",
+  "chapter": 36,
+  "level": "medium",
+  "category": "person",
+  "question": "Who commanded the marriage rule for Zelophehad's daughters?",
+  "choices": [
+   "Moses",
+   "Eleazar",
+   "Joshua",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "This is the thing which the LORD doth command concerning the daughters of Zelophehad.",
+  "ref": "Numbers 36:6"
+ },
+ {
+  "id": "numbers-36-m-13",
+  "chapter": 36,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose word did Moses command Israel according to?",
+  "choices": [
+   "The elders",
+   "The word of the LORD",
+   "The chief fathers",
+   "The jubile law"
+  ],
+  "answer": 1,
+  "explanation": "Moses commanded the children of Israel according to the word of the LORD.",
+  "ref": "Numbers 36:5"
+ },
+ {
+  "id": "numbers-36-m-14",
+  "chapter": 36,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were the chief fathers addressing as \"my lord\"?",
+  "choices": [
+   "Moses",
+   "Eleazar",
+   "Machir",
+   "Joshua"
+  ],
+  "answer": 0,
+  "explanation": "The LORD commanded my lord to give the land for an inheritance by lot.",
+  "ref": "Numbers 36:2"
+ },
+ {
+  "id": "numbers-36-m-15",
+  "chapter": 36,
+  "level": "medium",
+  "category": "person",
+  "question": "How did the chief fathers describe themselves in relation to Joseph?",
+  "choices": [
+   "Of the sons of Joseph",
+   "Of the sons of Levi",
+   "Of the sons of Reuben",
+   "Of the sons of Judah"
+  ],
+  "answer": 0,
+  "explanation": "The chief fathers of the families of the sons of Joseph came near.",
+  "ref": "Numbers 36:1"
+ },
+ {
+  "id": "numbers-36-h-01",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Which name belongs to one of Zelophehad’s five daughters?",
+  "choices": [
+   "Tirzah",
+   "Zillah",
+   "Hannah",
+   "Abigail"
+  ],
+  "answer": 0,
+  "explanation": "Mahlah, Tirzah, and Hoglah, and Milcah, and Noah.",
+  "ref": "Numbers 36:11"
+ },
+ {
+  "id": "numbers-36-h-02",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these names is also among Zelophehad’s daughters?",
+  "choices": [
+   "Dinah",
+   "Milcah",
+   "Rachel",
+   "Tamar"
+  ],
+  "answer": 1,
+  "explanation": "Mahlah, Tirzah, and Hoglah, and Milcah, and Noah.",
+  "ref": "Numbers 36:11"
+ },
+ {
+  "id": "numbers-36-h-03",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "One of Zelophehad’s daughters was named what?",
+  "choices": [
+   "Ruth",
+   "Esther",
+   "Noah",
+   "Naomi"
+  ],
+  "answer": 2,
+  "explanation": "Mahlah, Tirzah, and Hoglah, and Milcah, and Noah.",
+  "ref": "Numbers 36:11"
+ },
+ {
+  "id": "numbers-36-h-04",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Zelophehad had a daughter called what?",
+  "choices": [
+   "Hoglah",
+   "Keturah",
+   "Zipporah",
+   "Orpah"
+  ],
+  "answer": 0,
+  "explanation": "Mahlah, Tirzah, and Hoglah, and Milcah, and Noah.",
+  "ref": "Numbers 36:11"
+ },
+ {
+  "id": "numbers-36-h-05",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The inheritance of a daughter who married out would be put to the inheritance of whom?",
+  "choices": [
+   "The tribe whereunto they are received",
+   "The priests",
+   "The Levites",
+   "Zelophehad's brothers"
+  ],
+  "answer": 0,
+  "explanation": "Their inheritance shall be put to the inheritance of the tribe whereunto they are received.",
+  "ref": "Numbers 36:3"
+ },
+ {
+  "id": "numbers-36-h-06",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the chapter describe the rules the LORD commanded by Moses?",
+  "choices": [
+   "Songs and prayers",
+   "Commandments and judgments",
+   "Feasts and fasts",
+   "Covenants and gifts"
+  ],
+  "answer": 1,
+  "explanation": "These are the commandments and the judgments, which the LORD commanded by the hand of Moses.",
+  "ref": "Numbers 36:13"
+ },
+ {
+  "id": "numbers-36-h-07",
+  "chapter": 36,
+  "level": "hard",
+  "category": "place",
+  "question": "Beside which river were the plains of Moab named in this chapter?",
+  "choices": [
+   "Jordan",
+   "Arnon",
+   "Jabbok",
+   "Euphrates"
+  ],
+  "answer": 0,
+  "explanation": "In the plains of Moab by Jordan near Jericho.",
+  "ref": "Numbers 36:13"
+ },
+ {
+  "id": "numbers-36-h-08",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did the chief fathers speak before, besides Moses?",
+  "choices": [
+   "The priests",
+   "The princes",
+   "The Levites",
+   "The judges"
+  ],
+  "answer": 1,
+  "explanation": "They spake before Moses, and before the princes, the chief fathers of the children of Israel.",
+  "ref": "Numbers 36:1"
+ },
+ {
+  "id": "numbers-36-h-09",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Gilead, the grandfather of these chief fathers, was the son of whom?",
+  "choices": [
+   "Machir",
+   "Joseph",
+   "Manasseh",
+   "Zelophehad"
+  ],
+  "answer": 0,
+  "explanation": "The children of Gilead, the son of Machir, the son of Manasseh.",
+  "ref": "Numbers 36:1"
+ },
+ {
+  "id": "numbers-36-h-10",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Machir was the son of whom?",
+  "choices": [
+   "Joseph",
+   "Manasseh",
+   "Gilead",
+   "Reuben"
+  ],
+  "answer": 1,
+  "explanation": "Gilead, the son of Machir, the son of Manasseh.",
+  "ref": "Numbers 36:1"
+ },
+ {
+  "id": "numbers-36-h-11",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say every Israelite must keep himself to?",
+  "choices": [
+   "The inheritance of the tribe of his fathers",
+   "The city of refuge",
+   "The camp of Judah",
+   "The tabernacle"
+  ],
+  "answer": 0,
+  "explanation": "Every one of the children of Israel shall keep himself to the inheritance of the tribe of his fathers.",
+  "ref": "Numbers 36:7"
+ },
+ {
+  "id": "numbers-36-h-12",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Which Israelites did the marriage rule cover?",
+  "choices": [
+   "Only the daughters of Zelophehad",
+   "Only the tribe of Judah",
+   "Every daughter that possesseth an inheritance",
+   "Only the Levites"
+  ],
+  "answer": 2,
+  "explanation": "Every daughter, that possesseth an inheritance in any tribe, shall be wife unto one of the family of the tribe of her father.",
+  "ref": "Numbers 36:8"
+ },
+ {
+  "id": "numbers-36-h-13",
+  "chapter": 36,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Every tribe was to keep himself to what?",
+  "choices": [
+   "His own inheritance",
+   "His own cities of refuge",
+   "His own prince",
+   "His own altar"
+  ],
+  "answer": 0,
+  "explanation": "Every one of the tribes of the children of Israel shall keep himself to his own inheritance.",
+  "ref": "Numbers 36:9"
+ },
+ {
+  "id": "numbers-36-e-10",
+  "chapter": 36,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who obeyed the LORD's command at the end of the chapter?",
+  "choices": [
+   "The chief fathers",
+   "The daughters of Zelophehad",
+   "The princes",
+   "The Levites"
+  ],
+  "answer": 1,
+  "explanation": "Even as the LORD commanded Moses, so did the daughters of Zelophehad.",
+  "ref": "Numbers 36:10"
+ },
+ {
+  "id": "numbers-36-h-14",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Which daughter of Zelophehad is named first in the list?",
+  "choices": [
+   "Noah",
+   "Tirzah",
+   "Mahlah",
+   "Milcah"
+  ],
+  "answer": 2,
+  "explanation": "Mahlah, Tirzah, and Hoglah, and Milcah, and Noah.",
+  "ref": "Numbers 36:11"
+ },
+ {
+  "id": "numbers-36-h-15",
+  "chapter": 36,
+  "level": "hard",
+  "category": "person",
+  "question": "Which daughter of Zelophehad is named last in the list?",
+  "choices": [
+   "Hoglah",
+   "Noah",
+   "Mahlah",
+   "Tirzah"
+  ],
+  "answer": 1,
+  "explanation": "Mahlah, Tirzah, and Hoglah, and Milcah, and Noah.",
+  "ref": "Numbers 36:11"
  }
 ]
