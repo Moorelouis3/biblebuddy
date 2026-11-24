@@ -86,6 +86,8 @@ export const DEFAULT_CLUE_SETTINGS: ClueSettings = {
  * you can tap past, speed points with streaks, and two helpers.
  */
 export const SOLO_SETTINGS: Partial<ClueSettings> = { speed: true, quick: true, lifelines: true, revealSeconds: 4 };
+/** The community Weekly Bible Trivia: 15 seconds a question, not 10 (Louis, 2026-11-24: "to hard.. make it easier"). */
+export const WEEKLY_SETTINGS: Partial<ClueSettings> = { ...SOLO_SETTINGS, answerSeconds: 15 };
 
 /** What a right answer is worth with speed points, before the streak. */
 export function speedPoints(msLeft: number, msTotal: number): number {

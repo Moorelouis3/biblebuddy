@@ -10,7 +10,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { bookItems, loadBook } from "@/lib/clueGame/bank";
-import { createMatch, SOLO_SETTINGS, soloSetup, type ClueSelection, type PublicCard } from "@/lib/clueGame/engine";
+import { createMatch, SOLO_SETTINGS, WEEKLY_SETTINGS, soloSetup, type ClueSelection, type PublicCard } from "@/lib/clueGame/engine";
 import type { ClueRef } from "@/lib/clueGame/types";
 import { clueApi, clueUserId, trackClue } from "@/lib/clueGame/track";
 import { supabase } from "@/lib/supabaseClient";
@@ -61,7 +61,7 @@ function Board({ c }: { c: Challenge }) {
 
 function ChallengeRound({ c, from, onDone }: { c: Challenge; from: string | null; onDone: (c: Challenge, ranked: boolean, post: string | null) => void }) {
   const { match, view, now, act } = useLocalMatch(
-    () => createMatch({ items: bookItems(c.selection.book), selection: c.selection, ...soloSetup("me", "You"), ...(c.speed ? { settings: SOLO_SETTINGS } : {}), seed: 1, cardIds: c.cardIds }),
+    () => createMatch({ items: bookItems(c.selection.book), selection: c.selection, ...soloSetup("me", "You"), ...(c.speed ? { settings: c.weekly ? WEEKLY_SETTINGS : SOLO_SETTINGS } : {}), seed: 1, cardIds: c.cardIds }),
     { persistKey: `bb:clue-challenge:${c.id}`, mode: "challenge", deckIds: c.deckIds },
   );
   const [study, setStudy] = useState<PublicCard | null>(null);

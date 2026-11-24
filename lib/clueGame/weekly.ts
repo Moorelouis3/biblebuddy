@@ -21,7 +21,7 @@
  */
 
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { BankItem } from "./engine";
+import { WEEKLY_SETTINGS, type BankItem } from "./engine";
 import { BIBLE_BUDDY_USER_ID } from "../bibleBuddyAccount";
 
 export type WeeklyTheme = {
@@ -127,7 +127,13 @@ export function themePool(theme: WeeklyTheme, bank: Iterable<BankItem>): BankIte
 
 const LEVEL_ORDER = { beginner: 0, medium: 1, hard: 2 } as const;
 
-/** Ten questions, not used by this theme before while any are left: 4 easy, 4 medium, 2 hard where it can. */
+
+/**
+ * Ten questions, not used by this theme before while any are left: 7 easy and
+ * 3 medium, never hard. The first week ran 4/4/2 and Louis got 4 right
+ * (2026-11-24: "very hard.. to hard.. make it easier"); a game the whole
+ * community plays should be one most people can do well in.
+ */
 export function drawWeek(pool: BankItem[], used: Set<string>, seed: number): BankItem[] {
   let rand = seed >>> 0 || 1;
   const next = () => ((rand = (rand * 1664525 + 1013904223) >>> 0) / 2 ** 32);
@@ -142,9 +148,9 @@ export function drawWeek(pool: BankItem[], used: Set<string>, seed: number): Ban
   const fresh = pool.filter((q) => !used.has(q.id));
   const from = fresh.length >= 10 ? fresh : pool;
   const byLevel = (level: keyof typeof LEVEL_ORDER) => shuffle(from.filter((q) => q.level === level));
-  const picked: BankItem[] = [...byLevel("beginner").slice(0, 4), ...byLevel("medium").slice(0, 4), ...byLevel("hard").slice(0, 2)];
-  // Not enough of a level: fill from the rest.
-  for (const q of shuffle(from)) {
+  const picked: BankItem[] = [...byLevel("beginner").slice(0, 7), ...byLevel("medium").slice(0, 3)];
+  // Not enough of a level: fill from the rest, easiest first.
+  for (const q of shuffle(from).sort((a, b) => LEVEL_ORDER[a.level] - LEVEL_ORDER[b.level])) {
     if (picked.length >= 10) break;
     if (!picked.includes(q)) picked.push(q);
   }
@@ -302,7 +308,7 @@ export async function ensureWeeklyTrivia(admin: SupabaseClient, bank: Iterable<B
     deck_ids: [theme.books[0][0]],
     card_ids: cards.map((c) => c.id),
     top_clue: {},
-    settings: { answerSeconds: 10, revealSeconds: 4, speed: true, weekly },
+    settings: { answerSeconds: WEEKLY_SETTINGS.answerSeconds, revealSeconds: 4, speed: true, weekly },
     creator_score: 0,
     creator_won: 0,
     attempts: 0,
