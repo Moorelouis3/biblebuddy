@@ -7024,6 +7024,406 @@
   "ref": "2 Chronicles 15:15"
  },
  {
+  "id": "2-chronicles-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose idol did Asa destroy after removing her from being queen?",
+  "choices": [
+   "Athaliah",
+   "Jezebel",
+   "Abijah",
+   "Maachah"
+  ],
+  "answer": 3,
+  "explanation": "Asa removed Maachah his mother from being queen because she had made an idol in a grove.",
+  "ref": "2 Chronicles 15:16"
+ },
+ {
+  "id": "2-chronicles-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Asa burn the idol that Maachah had made?",
+  "choices": [
+   "The Red Sea",
+   "The brook Kidron",
+   "The Jordan",
+   "The valley of Hinnom"
+  ],
+  "answer": 1,
+  "explanation": "Asa cut down her idol, and stamped it, and burnt it at the brook Kidron.",
+  "ref": "2 Chronicles 15:16"
+ },
+ {
+  "id": "2-chronicles-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Judah gather together in the fifteenth year of Asa?",
+  "choices": [
+   "Bethel",
+   "Hebron",
+   "Samaria",
+   "Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "They gathered themselves together at Jerusalem in the third month, in the fifteenth year of the reign of Asa.",
+  "ref": "2 Chronicles 15:10"
+ },
+ {
+  "id": "2-chronicles-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord give Judah after they sought him with their whole desire?",
+  "choices": [
+   "Rest round about",
+   "Great riches",
+   "A new king",
+   "A long drought"
+  ],
+  "answer": 0,
+  "explanation": "He was found of them: and the LORD gave them rest round about.",
+  "ref": "2 Chronicles 15:15"
+ },
+ {
+  "id": "2-chronicles-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Azariah say would happen if Judah forsook the Lord?",
+  "choices": [
+   "He will forsake you",
+   "He will send a plague",
+   "He will remove the king",
+   "He will close the temple"
+  ],
+  "answer": 0,
+  "explanation": "Azariah said, If ye forsake him, he will forsake you.",
+  "ref": "2 Chronicles 15:2"
+ },
+ {
+  "id": "2-chronicles-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to Azariah, what had Israel been without for a long season?",
+  "choices": [
+   "A temple, an altar, and a feast",
+   "Rain, bread, and peace",
+   "The true God, a teaching priest, and law",
+   "A king, a prophet, and an army"
+  ],
+  "answer": 2,
+  "explanation": "Israel had been without the true God, and without a teaching priest, and without law.",
+  "ref": "2 Chronicles 15:3"
+ },
+ {
+  "id": "2-chronicles-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened when Israel in their trouble turned to the Lord and sought him?",
+  "choices": [
+   "He was found of them",
+   "They were sent into exile",
+   "They were given a new king",
+   "They were left alone"
+  ],
+  "answer": 0,
+  "explanation": "When they in their trouble did turn unto the LORD God of Israel, and sought him, he was found of them.",
+  "ref": "2 Chronicles 15:4"
+ },
+ {
+  "id": "2-chronicles-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Azariah say would come to those who were strong and did not let their hands be weak?",
+  "choices": [
+   "They shall be made kings",
+   "They shall never be sick",
+   "They shall conquer Israel",
+   "Their work shall be rewarded"
+  ],
+  "answer": 3,
+  "explanation": "Be ye strong therefore, and let not your hands be weak: for your work shall be rewarded.",
+  "ref": "2 Chronicles 15:7"
+ },
+ {
+  "id": "2-chronicles-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Asa do to the altar of the Lord before the porch?",
+  "choices": [
+   "Hid it",
+   "Renewed it",
+   "Moved it",
+   "Covered it"
+  ],
+  "answer": 1,
+  "explanation": "Asa put away the idols and renewed the altar of the LORD, that was before the porch of the LORD.",
+  "ref": "2 Chronicles 15:8"
+ },
+ {
+  "id": "2-chronicles-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people sacrifice to the Lord from the spoil they had brought?",
+  "choices": [
+   "Seven thousand oxen",
+   "Seven hundred oxen and seven thousand sheep",
+   "Seven oxen and seven rams",
+   "One hundred bulls and a thousand goats"
+  ],
+  "answer": 1,
+  "explanation": "They offered unto the LORD of the spoil seven hundred oxen and seven thousand sheep.",
+  "ref": "2 Chronicles 15:11"
+ },
+ {
+  "id": "2-chronicles-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to happen to anyone who would not seek the Lord God of Israel?",
+  "choices": [
+   "He should be put to death",
+   "He should be sent away",
+   "He should pay a fine",
+   "He should lose his land"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever would not seek the LORD God of Israel should be put to death, whether small or great, whether man or woman.",
+  "ref": "2 Chronicles 15:13"
+ },
+ {
+  "id": "2-chronicles-15-m-10",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which things were not taken away out of Israel, though Asa's heart was perfect?",
+  "choices": [
+   "The groves",
+   "The altars of Baal",
+   "The brazen serpent",
+   "The high places"
+  ],
+  "answer": 3,
+  "explanation": "The high places were not taken away out of Israel: nevertheless the heart of Asa was perfect all his days.",
+  "ref": "2 Chronicles 15:17"
+ },
+ {
+  "id": "2-chronicles-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month did the people gather at Jerusalem?",
+  "choices": [
+   "The seventh month",
+   "The tenth month",
+   "The third month",
+   "The first month"
+  ],
+  "answer": 2,
+  "explanation": "They gathered themselves together at Jerusalem in the third month.",
+  "ref": "2 Chronicles 15:10"
+ },
+ {
+  "id": "2-chronicles-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Asa's reign did they gather at Jerusalem?",
+  "choices": [
+   "The fifteenth year",
+   "The fifth year",
+   "The tenth year",
+   "The thirty-fifth year"
+  ],
+  "answer": 0,
+  "explanation": "It was the fifteenth year of the reign of Asa.",
+  "ref": "2 Chronicles 15:10"
+ },
+ {
+  "id": "2-chronicles-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until which year of Asa's reign was there no more war?",
+  "choices": [
+   "The twentieth year",
+   "The fortieth year",
+   "The five and thirtieth year",
+   "The fifteenth year"
+  ],
+  "answer": 2,
+  "explanation": "There was no more war unto the five and thirtieth year of the reign of Asa.",
+  "ref": "2 Chronicles 15:19"
+ },
+ {
+  "id": "2-chronicles-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what did the people swear their oath to the Lord?",
+  "choices": [
+   "Sackcloth and ashes",
+   "A loud voice, shouting, trumpets and cornets",
+   "Silence and fasting",
+   "Harps and psalms"
+  ],
+  "answer": 1,
+  "explanation": "They sware unto the LORD with a loud voice, and with shouting, and with trumpets, and with cornets.",
+  "ref": "2 Chronicles 15:14"
+ },
+ {
+  "id": "2-chronicles-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Out of which mount did Asa take cities, from which he also put away idols?",
+  "choices": [
+   "Mount Carmel",
+   "Mount Gilboa",
+   "Mount Hermon",
+   "Mount Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "He put away idols out of the cities which he had taken from mount Ephraim.",
+  "ref": "2 Chronicles 15:8"
+ },
+ {
+  "id": "2-chronicles-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Asa bring into the house of God besides his father's dedicated things?",
+  "choices": [
+   "Idols to be destroyed",
+   "Things he himself had dedicated: silver, gold, vessels",
+   "Captured chariots and horses",
+   "Ivory and cedar"
+  ],
+  "answer": 1,
+  "explanation": "He brought in the things his father had dedicated, and that he himself had dedicated, silver, and gold, and vessels.",
+  "ref": "2 Chronicles 15:18"
+ },
+ {
+  "id": "2-chronicles-15-e-05",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the king of Judah in this chapter?",
+  "choices": [
+   "Rehoboam",
+   "Abijah",
+   "Asa",
+   "Jehoshaphat"
+  ],
+  "answer": 2,
+  "explanation": "Azariah went out to meet Asa, and the people gathered in the fifteenth year of Asa's reign.",
+  "ref": "2 Chronicles 15:2"
+ },
+ {
+  "id": "2-chronicles-15-m-11",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did many people out of Israel fall to Asa?",
+  "choices": [
+   "They fled a famine",
+   "They saw the Lord his God was with him",
+   "They feared his army",
+   "He paid them"
+  ],
+  "answer": 1,
+  "explanation": "They fell to him out of Israel in abundance, when they saw that the LORD his God was with him.",
+  "ref": "2 Chronicles 15:9"
+ },
+ {
+  "id": "2-chronicles-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Azariah say God did to nations in the times when Israel was without God?",
+  "choices": [
+   "Gave them all peace",
+   "Made them serve Judah",
+   "Sent prophets to them",
+   "Vexed them with all adversity"
+  ],
+  "answer": 3,
+  "explanation": "Nation was destroyed of nation, and city of city: for God did vex them with all adversity.",
+  "ref": "2 Chronicles 15:6"
+ },
+ {
+  "id": "2-chronicles-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides Ephraim and Manasseh, out of which tribe did strangers come to Asa?",
+  "choices": [
+   "Reuben",
+   "Dan",
+   "Gad",
+   "Simeon"
+  ],
+  "answer": 3,
+  "explanation": "The strangers came out of Ephraim and Manasseh, and out of Simeon.",
+  "ref": "2 Chronicles 15:9"
+ },
+ {
+  "id": "2-chronicles-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In those times, who had no peace, according to Azariah?",
+  "choices": [
+   "The kings of Israel only",
+   "Those who stayed at home",
+   "Him that went out, nor him that came in",
+   "The priests of the temple"
+  ],
+  "answer": 2,
+  "explanation": "There was no peace to him that went out, nor to him that came in, but great vexations upon all the inhabitants.",
+  "ref": "2 Chronicles 15:5"
+ },
+ {
+  "id": "2-chronicles-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Before which place stood the altar of the Lord that Asa renewed?",
+  "choices": [
+   "The porch of the Lord",
+   "The gate of the city",
+   "The ark",
+   "The brook Kidron"
+  ],
+  "answer": 0,
+  "explanation": "He renewed the altar of the LORD, that was before the porch of the LORD.",
+  "ref": "2 Chronicles 15:8"
+ },
+ {
+  "id": "2-chronicles-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose prophecy did Asa hear along with Azariah's words before he took courage?",
+  "choices": [
+   "Shemaiah the man of God",
+   "Oded the prophet",
+   "Hanani the seer",
+   "Iddo the prophet"
+  ],
+  "answer": 1,
+  "explanation": "When Asa heard these words, and the prophecy of Oded the prophet, he took courage.",
+  "ref": "2 Chronicles 15:8"
+ },
+ {
   "id": "old-2-chronicles-16-1",
   "chapter": 16,
   "level": "beginner",
