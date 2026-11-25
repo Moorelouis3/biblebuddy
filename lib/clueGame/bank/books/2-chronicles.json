@@ -3488,6 +3488,358 @@
   "ref": "2 Chronicles 8:18"
  },
  {
+  "id": "2-chronicles-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which place did Solomon go to and prevail against?",
+  "choices": [
+   "Hamath-zobah",
+   "Tadmor",
+   "Ezion-geber",
+   "Ophir"
+  ],
+  "answer": 0,
+  "explanation": "Solomon went to Hamath-zobah, and prevailed against it.",
+  "ref": "2 Chronicles 8:3"
+ },
+ {
+  "id": "2-chronicles-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Before what part of the house did Solomon offer burnt offerings on the altar?",
+  "choices": [
+   "The palace",
+   "The porch",
+   "The ark",
+   "The gate"
+  ],
+  "answer": 1,
+  "explanation": "Solomon offered burnt offerings unto the LORD on the altar which he had built before the porch.",
+  "ref": "2 Chronicles 8:12"
+ },
+ {
+  "id": "2-chronicles-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "According to whose commandment did Solomon offer on the sabbaths and feasts?",
+  "choices": [
+   "Samuel",
+   "Nathan",
+   "Moses",
+   "Aaron"
+  ],
+  "answer": 2,
+  "explanation": "He offered according to the commandment of Moses, on the sabbaths, new moons and solemn feasts.",
+  "ref": "2 Chronicles 8:13"
+ },
+ {
+  "id": "2-chronicles-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Solomon go in the land of Edom at the sea side?",
+  "choices": [
+   "Tadmor",
+   "Baalath",
+   "Hamath",
+   "Ezion-geber"
+  ],
+  "answer": 3,
+  "explanation": "Solomon went to Ezion-geber, and to Eloth, at the sea side in the land of Edom.",
+  "ref": "2 Chronicles 8:17"
+ },
+ {
+  "id": "2-chronicles-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "What did Solomon build in the wilderness?",
+  "choices": [
+   "Tadmor",
+   "Baalath",
+   "Eloth",
+   "Hamath"
+  ],
+  "answer": 0,
+  "explanation": "He built Tadmor in the wilderness, and all the store cities.",
+  "ref": "2 Chronicles 8:4"
+ },
+ {
+  "id": "2-chronicles-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Which fenced cities, upper and nether, did Solomon build with walls, gates and bars?",
+  "choices": [
+   "Ophir",
+   "Beth-horon",
+   "Gibeon",
+   "Hamath"
+  ],
+  "answer": 1,
+  "explanation": "Solomon built Beth-horon the upper, and Beth-horon the nether, fenced cities.",
+  "ref": "2 Chronicles 8:5"
+ },
+ {
+  "id": "2-chronicles-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon make the people left in the land from the old nations do?",
+  "choices": [
+   "Join his army",
+   "Leave the land",
+   "Pay tribute",
+   "Build the temple"
+  ],
+  "answer": 2,
+  "explanation": "Of their children left in the land he made them to pay tribute until this day.",
+  "ref": "2 Chronicles 8:7–8"
+ },
+ {
+  "id": "2-chronicles-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these peoples was among those left whom Solomon made pay tribute?",
+  "choices": [
+   "Philistines",
+   "Midianites",
+   "Moabites",
+   "Perizzites"
+  ],
+  "answer": 3,
+  "explanation": "The people left included the Hittites, Amorites, Perizzites, Hivites and Jebusites.",
+  "ref": "2 Chronicles 8:7"
+ },
+ {
+  "id": "2-chronicles-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which feast was one of the three yearly feasts when Solomon offered?",
+  "choices": [
+   "Feast of unleavened bread",
+   "Feast of Purim",
+   "Feast of trumpets",
+   "Feast of dedication"
+  ],
+  "answer": 0,
+  "explanation": "He offered three times in the year: the feast of unleavened bread, of weeks, and of tabernacles.",
+  "ref": "2 Chronicles 8:13"
+ },
+ {
+  "id": "2-chronicles-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the Levites appointed to do before the priests?",
+  "choices": [
+   "Carry the ark",
+   "Praise and minister",
+   "Guard the treasuries",
+   "Judge the people"
+  ],
+  "answer": 1,
+  "explanation": "The Levites were appointed to praise and minister before the priests.",
+  "ref": "2 Chronicles 8:14"
+ },
+ {
+  "id": "2-chronicles-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the porters serve by their courses?",
+  "choices": [
+   "At the porch",
+   "In the treasuries",
+   "At every gate",
+   "At the altar"
+  ],
+  "answer": 2,
+  "explanation": "The porters also served by their courses at every gate.",
+  "ref": "2 Chronicles 8:14"
+ },
+ {
+  "id": "2-chronicles-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many were the chief officers of king Solomon who bare rule over the people?",
+  "choices": [
+   "One hundred",
+   "Three hundred",
+   "Four hundred and fifty",
+   "Two hundred and fifty"
+  ],
+  "answer": 3,
+  "explanation": "These were the chief of king Solomon's officers, even two hundred and fifty.",
+  "ref": "2 Chronicles 8:10"
+ },
+ {
+  "id": "2-chronicles-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon build in Hamath?",
+  "choices": [
+   "Store cities",
+   "Temples",
+   "Palaces",
+   "Altars"
+  ],
+  "answer": 0,
+  "explanation": "He built Tadmor in the wilderness, and all the store cities, which he built in Hamath.",
+  "ref": "2 Chronicles 8:4"
+ },
+ {
+  "id": "2-chronicles-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of gold did they take from Ophir and bring to Solomon?",
+  "choices": [
+   "Two hundred and fifty",
+   "Four hundred and fifty",
+   "Six hundred and sixty-six",
+   "One hundred and twenty"
+  ],
+  "answer": 1,
+  "explanation": "They took from Ophir four hundred and fifty talents of gold, and brought them to king Solomon.",
+  "ref": "2 Chronicles 8:18"
+ },
+ {
+  "id": "2-chronicles-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city did Solomon build along with the chariot cities and the cities of the horsemen?",
+  "choices": [
+   "Eloth",
+   "Tarshish",
+   "Baalath",
+   "Gibeon"
+  ],
+  "answer": 2,
+  "explanation": "He built Baalath, and all the store cities, the chariot cities, and the cities of the horsemen.",
+  "ref": "2 Chronicles 8:6"
+ },
+ {
+  "id": "2-chronicles-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is called 'the man of God' for commanding the courses of the priests and Levites?",
+  "choices": [
+   "Moses",
+   "Samuel",
+   "Elijah",
+   "David"
+  ],
+  "answer": 3,
+  "explanation": "Solomon appointed the courses according to the order of David his father: for so had David the man of God commanded.",
+  "ref": "2 Chronicles 8:14"
+ },
+ {
+  "id": "2-chronicles-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The priests and Levites did not depart from the king's commandment concerning any matter or what?",
+  "choices": [
+   "The treasures",
+   "The sabbaths",
+   "The gates",
+   "The tribute"
+  ],
+  "answer": 0,
+  "explanation": "They departed not from the commandment of the king concerning any matter, or concerning the treasures.",
+  "ref": "2 Chronicles 8:15"
+ },
+ {
+  "id": "2-chronicles-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was 'perfected' when all Solomon's work was finished?",
+  "choices": [
+   "The wall of Jerusalem",
+   "The house of the LORD",
+   "The palace",
+   "The city of David"
+  ],
+  "answer": 1,
+  "explanation": "All the work of Solomon was prepared until it was finished. So the house of the LORD was perfected.",
+  "ref": "2 Chronicles 8:16"
+ },
+ {
+  "id": "2-chronicles-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides Jerusalem, where did Solomon build all that he desired?",
+  "choices": [
+   "Edom",
+   "Ophir",
+   "Lebanon",
+   "Egypt"
+  ],
+  "answer": 2,
+  "explanation": "He built all that Solomon desired in Jerusalem, and in Lebanon, and throughout all the land of his dominion.",
+  "ref": "2 Chronicles 8:6"
+ },
+ {
+  "id": "2-chronicles-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the servants Huram sent to Solomon have knowledge of?",
+  "choices": [
+   "Gold",
+   "Cedar",
+   "Horses",
+   "The sea"
+  ],
+  "answer": 3,
+  "explanation": "Huram sent ships, and servants that had knowledge of the sea.",
+  "ref": "2 Chronicles 8:18"
+ },
+ {
+  "id": "2-chronicles-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the fenced cities of Beth-horon have?",
+  "choices": [
+   "Walls, gates and bars",
+   "Towers and moats",
+   "Idols and altars",
+   "Gold and garrisons"
+  ],
+  "answer": 0,
+  "explanation": "He built Beth-horon the upper and nether, fenced cities, with walls, gates, and bars.",
+  "ref": "2 Chronicles 8:5"
+ },
+ {
+  "id": "2-chronicles-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the sabbaths and feasts, on which days did Solomon offer by the command of Moses?",
+  "choices": [
+   "The fasts",
+   "The new moons",
+   "Mondays",
+   "The harvests"
+  ],
+  "answer": 1,
+  "explanation": "He offered on the sabbaths, and on the new moons, and on the solemn feasts.",
+  "ref": "2 Chronicles 8:13"
+ },
+ {
   "id": "old-2-chronicles-9-1",
   "chapter": 9,
   "level": "beginner",
