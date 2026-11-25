@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Caveat, Nunito } from "next/font/google";
+import { Caveat } from "next/font/google";
+import localFont from "next/font/local";
 import { useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
 import { trackBlogPromoEvent } from "@/lib/blogViewTracking";
 import { useSupabaseUser } from "@/lib/useSupabaseUser";
@@ -11,7 +12,17 @@ import { BETA_OPEN, androidDestination } from "@/lib/androidBeta";
 import { isNativeApp } from "@/lib/nativeApp";
 import { recordAppStoreTap, recordPlayStoreTap } from "@/lib/appStoreAsk";
 
-const heading = Nunito({ subsets: ["latin"], weight: ["700", "800", "900"], display: "swap" });
+// Nunito lives in the repo, not at Google (2026-11-25). Both scheduled builds
+// that day failed on it: Turbopack could not resolve the font files Google
+// handed back ("next/font/google queries have exactly one entry"), with no
+// change on our side since September. One Latin file covers weights 700-900,
+// the only ones this card uses. Do not move it back to next/font/google.
+const heading = localFont({
+  src: "./fonts/Nunito-latin-700-900.woff2",
+  weight: "700 900",
+  style: "normal",
+  display: "swap",
+});
 const script = Caveat({ subsets: ["latin"], weight: ["500", "600"], display: "swap" });
 
 // End-of-post card (2026-09-17, replaces the "Written by Louis" box). Built
