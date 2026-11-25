@@ -78,5 +78,549 @@
   "answer": 0,
   "explanation": "Paul expresses confidence in Philemon's obedience and says he will do even more than requested.",
   "ref": "Philemon 1:21"
+ },
+ {
+  "id": "philemon-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom is Paul writing this letter?",
+  "choices": [
+   "Philemon",
+   "Onesimus",
+   "Archippus",
+   "Epaphras"
+  ],
+  "answer": 0,
+  "explanation": "Paul writes unto Philemon our dearly beloved, and fellowlabourer.",
+  "ref": "Philemon 1:1"
+ },
+ {
+  "id": "philemon-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named with Paul as sending the letter?",
+  "choices": [
+   "Epaphras",
+   "Marcus",
+   "Aristarchus",
+   "Timothy"
+  ],
+  "answer": 3,
+  "explanation": "The letter begins: Paul, a prisoner of Jesus Christ, and Timothy our brother.",
+  "ref": "Philemon 1:1"
+ },
+ {
+  "id": "philemon-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul describe himself at the start of the letter?",
+  "choices": [
+   "A servant of Philemon",
+   "A bishop of Crete",
+   "A prisoner of Jesus Christ",
+   "An elder of Ephesus"
+  ],
+  "answer": 2,
+  "explanation": "Paul calls himself a prisoner of Jesus Christ.",
+  "ref": "Philemon 1:1"
+ },
+ {
+  "id": "philemon-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which group meets in Philemon's house?",
+  "choices": [
+   "The elders of Crete",
+   "The church",
+   "Paul's fellowprisoners",
+   "Onesimus's family"
+  ],
+  "answer": 1,
+  "explanation": "Paul greets the church in thy house.",
+  "ref": "Philemon 1:2"
+ },
+ {
+  "id": "philemon-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul ask Philemon to prepare for him?",
+  "choices": [
+   "A lodging",
+   "A ship",
+   "A letter of recommendation",
+   "A feast"
+  ],
+  "answer": 0,
+  "explanation": "Paul writes, Prepare me also a lodging, trusting he will be given to them through their prayers.",
+  "ref": "Philemon 1:22"
+ },
+ {
+  "id": "philemon-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Toward whom does Paul hear that Philemon has love and faith?",
+  "choices": [
+   "Paul and Timothy only",
+   "The church at Rome",
+   "Onesimus and Apphia",
+   "The Lord Jesus and all saints"
+  ],
+  "answer": 3,
+  "explanation": "Paul hears of the love and faith Philemon has toward the Lord Jesus, and toward all saints.",
+  "ref": "Philemon 1:5"
+ },
+ {
+  "id": "philemon-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Paul call \"our fellowsoldier\"?",
+  "choices": [
+   "Epaphras",
+   "Timothy",
+   "Archippus",
+   "Aristarchus"
+  ],
+  "answer": 2,
+  "explanation": "Paul greets Apphia, and Archippus our fellowsoldier.",
+  "ref": "Philemon 1:2"
+ },
+ {
+  "id": "philemon-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Paul say he has sent again to Philemon?",
+  "choices": [
+   "Epaphras",
+   "Onesimus",
+   "Demas",
+   "Archippus"
+  ],
+  "answer": 1,
+  "explanation": "Paul says of Onesimus, Whom I have sent again: thou therefore receive him.",
+  "ref": "Philemon 1:12"
+ },
+ {
+  "id": "philemon-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Onesimus to Philemon in time past?",
+  "choices": [
+   "Rebellious",
+   "Unprofitable",
+   "A debtor",
+   "A stranger"
+  ],
+  "answer": 1,
+  "explanation": "In time past he was to thee unprofitable, but now profitable to thee and to me.",
+  "ref": "Philemon 1:11"
+ },
+ {
+  "id": "philemon-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Paul beget Onesimus as his son?",
+  "choices": [
+   "In his bonds",
+   "In Philemon's house",
+   "At Ephesus",
+   "In the synagogue"
+  ],
+  "answer": 0,
+  "explanation": "Paul beseeches Philemon for his son Onesimus, whom he begat in his bonds.",
+  "ref": "Philemon 1:10"
+ },
+ {
+  "id": "philemon-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Paul have liked Onesimus to do for him while in bonds?",
+  "choices": [
+   "Carry letters to the churches",
+   "Preach in the prison",
+   "Collect an offering",
+   "Minister to him in Philemon's stead"
+  ],
+  "answer": 3,
+  "explanation": "Paul would have retained him that in thy stead he might have ministered unto me in the bonds of the gospel.",
+  "ref": "Philemon 1:13"
+ },
+ {
+  "id": "philemon-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would Paul do nothing without Philemon's mind?",
+  "choices": [
+   "So the church would agree",
+   "So Roman law was kept",
+   "So Philemon's kindness would be willing, not forced",
+   "So Onesimus could choose"
+  ],
+  "answer": 2,
+  "explanation": "Paul says Philemon's benefit should not be as of necessity, but willingly.",
+  "ref": "Philemon 1:14"
+ },
+ {
+  "id": "philemon-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul suggest may be the reason Onesimus departed for a season?",
+  "choices": [
+   "That he might escape his debt",
+   "That Philemon would receive him for ever",
+   "That he might find Paul",
+   "That he might serve the church"
+  ],
+  "answer": 1,
+  "explanation": "Perhaps he therefore departed for a season, that thou shouldest receive him for ever.",
+  "ref": "Philemon 1:15"
+ },
+ {
+  "id": "philemon-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What gave Paul great joy and consolation?",
+  "choices": [
+   "Philemon's love",
+   "Philemon's wealth",
+   "Onesimus's return",
+   "The growth of the church"
+  ],
+  "answer": 0,
+  "explanation": "Paul writes, We have great joy and consolation in thy love.",
+  "ref": "Philemon 1:7"
+ },
+ {
+  "id": "philemon-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who is called Paul's fellowprisoner in Christ Jesus?",
+  "choices": [
+   "Archippus",
+   "Marcus",
+   "Demas",
+   "Epaphras"
+  ],
+  "answer": 3,
+  "explanation": "There salute thee Epaphras, my fellowprisoner in Christ Jesus.",
+  "ref": "Philemon 1:23"
+ },
+ {
+  "id": "philemon-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul describe himself when he begs rather than commands?",
+  "choices": [
+   "Paul the apostle",
+   "Paul the elder",
+   "Paul the aged",
+   "Paul the weary"
+  ],
+  "answer": 2,
+  "explanation": "Paul beseeches Philemon, being such an one as Paul the aged, and now also a prisoner of Jesus Christ.",
+  "ref": "Philemon 1:9"
+ },
+ {
+  "id": "philemon-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What could Paul have been bold in Christ to do?",
+  "choices": [
+   "Free Onesimus himself",
+   "Command Philemon what is fitting",
+   "Come to Philemon at once",
+   "Collect Philemon's debt"
+  ],
+  "answer": 1,
+  "explanation": "Though I might be much bold in Christ to enjoin thee that which is convenient.",
+  "ref": "Philemon 1:8"
+ },
+ {
+  "id": "philemon-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which fellowlabourer is named with Marcus, Aristarchus and Lucas?",
+  "choices": [
+   "Demas",
+   "Titus",
+   "Tychicus",
+   "Silas"
+  ],
+  "answer": 0,
+  "explanation": "Paul names Marcus, Aristarchus, Demas, Lucas, my fellowlabourers.",
+  "ref": "Philemon 1:24"
+ },
+ {
+  "id": "philemon-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who is greeted with Philemon and Archippus as \"our beloved\"?",
+  "choices": [
+   "Priscilla",
+   "Lydia",
+   "Eunice",
+   "Apphia"
+  ],
+  "answer": 3,
+  "explanation": "Paul writes also to our beloved Apphia.",
+  "ref": "Philemon 1:2"
+ },
+ {
+  "id": "philemon-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If Philemon counts Paul a partner, how should he receive Onesimus?",
+  "choices": [
+   "As a hired servant",
+   "As a stranger",
+   "As he would receive Paul himself",
+   "As a guest for a season"
+  ],
+  "answer": 2,
+  "explanation": "If thou count me therefore a partner, receive him as myself.",
+  "ref": "Philemon 1:17"
+ },
+ {
+  "id": "philemon-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul describe Onesimus when he sends him back?",
+  "choices": [
+   "My fellowprisoner",
+   "Mine own bowels",
+   "A faithful minister",
+   "A free man"
+  ],
+  "answer": 1,
+  "explanation": "Paul says, Whom I have sent again: thou therefore receive him, that is, mine own bowels.",
+  "ref": "Philemon 1:12"
+ },
+ {
+  "id": "philemon-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say Philemon owes him besides?",
+  "choices": [
+   "A lodging",
+   "Even his own self",
+   "A letter",
+   "A hundred pieces"
+  ],
+  "answer": 1,
+  "explanation": "Paul says he will repay, albeit he does not say how Philemon owes him even his own self besides.",
+  "ref": "Philemon 1:19"
+ },
+ {
+  "id": "philemon-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what two ways is Onesimus a brother to Philemon?",
+  "choices": [
+   "In the flesh and in the Lord",
+   "In the church and in the home",
+   "In prayer and in labour",
+   "In bonds and in freedom"
+  ],
+  "answer": 0,
+  "explanation": "He is a brother beloved, specially to Paul, but how much more to Philemon, both in the flesh, and in the Lord.",
+  "ref": "Philemon 1:16"
+ },
+ {
+  "id": "philemon-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "In whose place would Onesimus have ministered to Paul?",
+  "choices": [
+   "Timothy's",
+   "Epaphras's",
+   "Archippus's",
+   "Philemon's"
+  ],
+  "answer": 3,
+  "explanation": "Paul would have retained him that in thy stead he might have ministered unto me.",
+  "ref": "Philemon 1:13"
+ },
+ {
+  "id": "philemon-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom does Paul wish grace and peace to come?",
+  "choices": [
+   "Paul and Timothy",
+   "The church and its elders",
+   "God our Father and the Lord Jesus Christ",
+   "The saints and the apostles"
+  ],
+  "answer": 2,
+  "explanation": "Grace to you, and peace, from God our Father and the Lord Jesus Christ.",
+  "ref": "Philemon 1:3"
+ },
+ {
+  "id": "philemon-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these is named among Paul's fellowlabourers?",
+  "choices": [
+   "Tychicus",
+   "Aristarchus",
+   "Silas",
+   "Trophimus"
+  ],
+  "answer": 1,
+  "explanation": "Paul names Marcus, Aristarchus, Demas, Lucas, my fellowlabourers.",
+  "ref": "Philemon 1:24"
+ },
+ {
+  "id": "philemon-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul ask to have of Philemon in the Lord?",
+  "choices": [
+   "Joy",
+   "A gift",
+   "A promise",
+   "A lodging"
+  ],
+  "answer": 0,
+  "explanation": "Yea, brother, let me have joy of thee in the Lord.",
+  "ref": "Philemon 1:20"
+ },
+ {
+  "id": "philemon-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Paul describe Philemon alongside \"dearly beloved\"?",
+  "choices": [
+   "Fellowsoldier",
+   "Fellowprisoner",
+   "Fellowservant",
+   "Fellowlabourer"
+  ],
+  "answer": 3,
+  "explanation": "Paul writes unto Philemon our dearly beloved, and fellowlabourer.",
+  "ref": "Philemon 1:1"
+ },
+ {
+  "id": "philemon-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul pray will make the communication of Philemon's faith effectual?",
+  "choices": [
+   "Giving to the poor",
+   "Hospitality to travellers",
+   "Acknowledging every good thing in Christ Jesus",
+   "Forgiving every debt"
+  ],
+  "answer": 2,
+  "explanation": "That the communication of thy faith may become effectual by the acknowledging of every good thing which is in you in Christ Jesus.",
+  "ref": "Philemon 1:6"
+ },
+ {
+  "id": "philemon-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Paul write his promise to repay?",
+  "choices": [
+   "Before witnesses",
+   "With his own hand",
+   "On a scroll for the church",
+   "Through Timothy"
+  ],
+  "answer": 1,
+  "explanation": "I Paul have written it with mine own hand, I will repay it.",
+  "ref": "Philemon 1:19"
+ },
+ {
+  "id": "philemon-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul hope will bring him to Philemon and those with him?",
+  "choices": [
+   "Their prayers",
+   "Philemon's letter",
+   "Timothy's visit",
+   "The church's gift"
+  ],
+  "answer": 0,
+  "explanation": "I trust that through your prayers I shall be given unto you.",
+  "ref": "Philemon 1:22"
+ },
+ {
+  "id": "philemon-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul wish to be with the spirit of Philemon and the others at the end?",
+  "choices": [
+   "The peace of the saints",
+   "The love of the brethren",
+   "The joy of the church",
+   "The grace of our Lord Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "The grace of our Lord Jesus Christ be with your spirit.",
+  "ref": "Philemon 1:25"
+ },
+ {
+  "id": "philemon-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul do for love's sake rather than command?",
+  "choices": [
+   "Rebuke",
+   "Pray",
+   "Beseech",
+   "Prepare"
+  ],
+  "answer": 2,
+  "explanation": "Yet for love's sake I rather beseech thee.",
+  "ref": "Philemon 1:9"
+ },
+ {
+  "id": "philemon-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "By whom does Paul say the hearts of the saints are refreshed?",
+  "choices": [
+   "Onesimus",
+   "Philemon",
+   "Timothy",
+   "Epaphras"
+  ],
+  "answer": 1,
+  "explanation": "The bowels of the saints are refreshed by thee, brother.",
+  "ref": "Philemon 1:7"
  }
 ]

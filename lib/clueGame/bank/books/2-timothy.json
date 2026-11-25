@@ -144,22 +144,6 @@
   "ref": "2 Timothy 2:15"
  },
  {
-  "id": "old-2-timothy-2-5",
-  "chapter": 2,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What must a person purge himself from to be a vessel unto honour?",
-  "choices": [
-   "Dishonorable things",
-   "All hardship",
-   "Human wisdom",
-   "Church disputes"
-  ],
-  "answer": 0,
-  "explanation": "Purging from the wrong things makes one a sanctified vessel fit for the Master's use.",
-  "ref": "2 Timothy 2:21"
- },
- {
   "id": "old-2-timothy-3-1",
   "chapter": 3,
   "level": "beginner",
@@ -318,5 +302,1717 @@
   "answer": 2,
   "explanation": "Paul says a crown of righteousness is laid up for him.",
   "ref": "2 Timothy 4:8"
+ },
+ {
+  "id": "2-timothy-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Paul call his dearly beloved son?",
+  "choices": [
+   "Timothy",
+   "Titus",
+   "Onesiphorus",
+   "Mark"
+  ],
+  "answer": 0,
+  "explanation": "To Timothy, my dearly beloved son.",
+  "ref": "2 Timothy 1:2"
+ },
+ {
+  "id": "2-timothy-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who hath abolished death?",
+  "choices": [
+   "Paul",
+   "The apostles",
+   "The Holy Ghost",
+   "Our Saviour Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "Our Saviour Jesus Christ hath abolished death, and hath brought life and immortality to light through the gospel.",
+  "ref": "2 Timothy 1:10"
+ },
+ {
+  "id": "2-timothy-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Paul appointed as?",
+  "choices": [
+   "A bishop of Ephesus",
+   "A prophet of Israel",
+   "A preacher, an apostle and a teacher of the Gentiles",
+   "An elder in Rome"
+  ],
+  "answer": 2,
+  "explanation": "I am appointed a preacher, and an apostle, and a teacher of the Gentiles.",
+  "ref": "2 Timothy 1:11"
+ },
+ {
+  "id": "2-timothy-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who turned away from Paul?",
+  "choices": [
+   "The elders of Ephesus",
+   "All they which are in Asia",
+   "The Gentiles of Rome",
+   "Timothy's family"
+  ],
+  "answer": 1,
+  "explanation": "All they which are in Asia be turned away from me.",
+  "ref": "2 Timothy 1:15"
+ },
+ {
+  "id": "2-timothy-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul remember about Timothy that makes him long to see him?",
+  "choices": [
+   "His letters",
+   "His tears",
+   "His gifts",
+   "His prayers"
+  ],
+  "answer": 1,
+  "explanation": "Greatly desiring to see thee, being mindful of thy tears.",
+  "ref": "2 Timothy 1:4"
+ },
+ {
+  "id": "2-timothy-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what does Paul say he serves God from his forefathers?",
+  "choices": [
+   "Pure conscience",
+   "Great zeal",
+   "Joyful songs",
+   "Deep learning"
+  ],
+  "answer": 0,
+  "explanation": "I thank God, whom I serve from my forefathers with pure conscience.",
+  "ref": "2 Timothy 1:3"
+ },
+ {
+  "id": "2-timothy-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Timothy receive the gift of God?",
+  "choices": [
+   "By a vision",
+   "By his mother's prayers",
+   "By fasting",
+   "By the putting on of Paul's hands"
+  ],
+  "answer": 3,
+  "explanation": "Stir up the gift of God, which is in thee by the putting on of my hands.",
+  "ref": "2 Timothy 1:6"
+ },
+ {
+  "id": "2-timothy-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Not according to our works, but according to what has God saved us?",
+  "choices": [
+   "His holy law",
+   "His chosen people",
+   "His own purpose and grace",
+   "His ancient promise to Israel"
+  ],
+  "answer": 2,
+  "explanation": "Not according to our works, but according to his own purpose and grace.",
+  "ref": "2 Timothy 1:9"
+ },
+ {
+  "id": "2-timothy-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Onesiphorus seek Paul out diligently?",
+  "choices": [
+   "Ephesus",
+   "Rome",
+   "Asia",
+   "Athens"
+  ],
+  "answer": 1,
+  "explanation": "When he was in Rome, he sought me out very diligently, and found me.",
+  "ref": "2 Timothy 1:17"
+ },
+ {
+  "id": "2-timothy-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Timothy to hold fast?",
+  "choices": [
+   "The form of sound words",
+   "The traditions of the elders",
+   "The writings of the prophets",
+   "The laws of Moses"
+  ],
+  "answer": 0,
+  "explanation": "Hold fast the form of sound words, which thou hast heard of me.",
+  "ref": "2 Timothy 1:13"
+ },
+ {
+  "id": "2-timothy-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By whom is Timothy to keep that good thing committed to him?",
+  "choices": [
+   "The elders",
+   "The law",
+   "Paul's letters",
+   "The Holy Ghost"
+  ],
+  "answer": 3,
+  "explanation": "That good thing which was committed unto thee keep by the Holy Ghost which dwelleth in us.",
+  "ref": "2 Timothy 1:14"
+ },
+ {
+  "id": "2-timothy-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Through what has Christ brought life and immortality to light?",
+  "choices": [
+   "The law",
+   "The prophets",
+   "The gospel",
+   "The temple"
+  ],
+  "answer": 2,
+  "explanation": "He hath brought life and immortality to light through the gospel.",
+  "ref": "2 Timothy 1:10"
+ },
+ {
+  "id": "2-timothy-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whose house does Paul ask mercy from the Lord?",
+  "choices": [
+   "Phygellus",
+   "Onesiphorus",
+   "Hermogenes",
+   "Eunice"
+  ],
+  "answer": 1,
+  "explanation": "The Lord give mercy unto the house of Onesiphorus.",
+  "ref": "2 Timothy 1:16"
+ },
+ {
+  "id": "2-timothy-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two men are named among those in Asia who turned away?",
+  "choices": [
+   "Jannes and Jambres",
+   "Phygellus and Hermogenes",
+   "Hymenaeus and Philetus",
+   "Demas and Crescens"
+  ],
+  "answer": 1,
+  "explanation": "Of whom are Phygellus and Hermogenes.",
+  "ref": "2 Timothy 1:15"
+ },
+ {
+  "id": "2-timothy-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the Lord able to keep until that day?",
+  "choices": [
+   "That which Paul has committed to him",
+   "The churches of Asia",
+   "Paul's chains",
+   "The gift of Timothy"
+  ],
+  "answer": 0,
+  "explanation": "I am persuaded that he is able to keep that which I have committed unto him against that day.",
+  "ref": "2 Timothy 1:12"
+ },
+ {
+  "id": "2-timothy-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "At which city did Onesiphorus minister to Paul in many things?",
+  "choices": [
+   "Rome",
+   "Corinth",
+   "Troas",
+   "Ephesus"
+  ],
+  "answer": 3,
+  "explanation": "In how many things he ministered unto me at Ephesus, thou knowest very well.",
+  "ref": "2 Timothy 1:18"
+ },
+ {
+  "id": "2-timothy-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When was grace given us in Christ Jesus?",
+  "choices": [
+   "At the giving of the law",
+   "When Christ was born",
+   "Before the world began",
+   "In the days of David"
+  ],
+  "answer": 2,
+  "explanation": "His own purpose and grace, which was given us in Christ Jesus before the world began.",
+  "ref": "2 Timothy 1:9"
+ },
+ {
+  "id": "2-timothy-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Be partaker of the afflictions of the gospel according to what?",
+  "choices": [
+   "The will of the elders",
+   "The power of God",
+   "The example of the apostles",
+   "The wisdom of the law"
+  ],
+  "answer": 1,
+  "explanation": "Be thou partaker of the afflictions of the gospel according to the power of God.",
+  "ref": "2 Timothy 1:8"
+ },
+ {
+  "id": "2-timothy-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When does Paul remember Timothy in his prayers?",
+  "choices": [
+   "Night and day",
+   "At every feast",
+   "At morning only",
+   "Each Sabbath"
+  ],
+  "answer": 0,
+  "explanation": "Without ceasing I have remembrance of thee in my prayers night and day.",
+  "ref": "2 Timothy 1:3"
+ },
+ {
+  "id": "2-timothy-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does Paul greatly desire to see Timothy?",
+  "choices": [
+   "That Timothy may take his place",
+   "That he may send him to Asia",
+   "That they may pray together",
+   "That he may be filled with joy"
+  ],
+  "answer": 3,
+  "explanation": "Greatly desiring to see thee, that I may be filled with joy.",
+  "ref": "2 Timothy 1:4"
+ },
+ {
+  "id": "2-timothy-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say of the faith in Timothy?",
+  "choices": [
+   "It is weak",
+   "It is new",
+   "It is unfeigned",
+   "It is hidden"
+  ],
+  "answer": 2,
+  "explanation": "I call to remembrance the unfeigned faith that is in thee.",
+  "ref": "2 Timothy 1:5"
+ },
+ {
+  "id": "2-timothy-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul is an apostle according to what?",
+  "choices": [
+   "The law of Moses",
+   "The promise of life which is in Christ Jesus",
+   "The vision on the road",
+   "The laying on of hands"
+  ],
+  "answer": 1,
+  "explanation": "Paul, an apostle of Jesus Christ by the will of God, according to the promise of life which is in Christ Jesus.",
+  "ref": "2 Timothy 1:1"
+ },
+ {
+  "id": "2-timothy-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is of the seed of David and was raised from the dead?",
+  "choices": [
+   "Jesus Christ",
+   "Paul",
+   "Timothy",
+   "Hymenaeus"
+  ],
+  "answer": 0,
+  "explanation": "Remember that Jesus Christ of the seed of David was raised from the dead according to my gospel.",
+  "ref": "2 Timothy 2:8"
+ },
+ {
+  "id": "2-timothy-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say is not bound?",
+  "choices": [
+   "Paul's ministry",
+   "The church",
+   "Timothy",
+   "The word of God"
+  ],
+  "answer": 3,
+  "explanation": "I suffer trouble, even unto bonds; but the word of God is not bound.",
+  "ref": "2 Timothy 2:9"
+ },
+ {
+  "id": "2-timothy-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hymenaeus and Philetus say about the resurrection?",
+  "choices": [
+   "That it is yet to come",
+   "That it never will be",
+   "That it is past already",
+   "That it is only for the elect"
+  ],
+  "answer": 2,
+  "explanation": "Who concerning the truth have erred, saying that the resurrection is past already.",
+  "ref": "2 Timothy 2:17–18"
+ },
+ {
+  "id": "2-timothy-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which vessels are in a great house besides gold and silver?",
+  "choices": [
+   "Brass and iron",
+   "Wood and earth",
+   "Clay and glass",
+   "Stone and iron"
+  ],
+  "answer": 1,
+  "explanation": "There are not only vessels of gold and of silver, but also of wood and of earth.",
+  "ref": "2 Timothy 2:20"
+ },
+ {
+  "id": "2-timothy-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Timothy told to flee?",
+  "choices": [
+   "Youthful lusts",
+   "Persecution",
+   "False prophets",
+   "The synagogue"
+  ],
+  "answer": 0,
+  "explanation": "Flee also youthful lusts.",
+  "ref": "2 Timothy 2:22"
+ },
+ {
+  "id": "2-timothy-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How must the servant of the Lord be toward all men?",
+  "choices": [
+   "Strict",
+   "Silent",
+   "Cautious",
+   "Gentle"
+  ],
+  "answer": 3,
+  "explanation": "The servant of the Lord must not strive; but be gentle unto all men.",
+  "ref": "2 Timothy 2:24"
+ },
+ {
+  "id": "2-timothy-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall happen if we suffer with him?",
+  "choices": [
+   "We shall be forgiven",
+   "We shall be rewarded with gold",
+   "We shall also reign with him",
+   "We shall judge the angels"
+  ],
+  "answer": 2,
+  "explanation": "If we suffer, we shall also reign with him.",
+  "ref": "2 Timothy 2:12"
+ },
+ {
+  "id": "2-timothy-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what does Paul compare the word of the profane babblers?",
+  "choices": [
+   "A fire",
+   "A canker",
+   "A flood",
+   "A thorn"
+  ],
+  "answer": 1,
+  "explanation": "Their word will eat as doth a canker.",
+  "ref": "2 Timothy 2:17"
+ },
+ {
+  "id": "2-timothy-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say of those who deny him?",
+  "choices": [
+   "He also will deny them",
+   "He will forgive them",
+   "He will wait for them",
+   "He will rebuke them in love"
+  ],
+  "answer": 0,
+  "explanation": "If we deny him, he also will deny us.",
+  "ref": "2 Timothy 2:12"
+ },
+ {
+  "id": "2-timothy-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is a man who strives for masteries not crowned?",
+  "choices": [
+   "Unless he strives lawfully",
+   "Unless he finishes first",
+   "Unless he trains alone",
+   "Unless he is chosen"
+  ],
+  "answer": 0,
+  "explanation": "If a man strive for masteries, yet is he not crowned, except he strive lawfully.",
+  "ref": "2 Timothy 2:5"
+ },
+ {
+  "id": "2-timothy-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who must be first partaker of the fruits?",
+  "choices": [
+   "The master of the house",
+   "The soldier",
+   "The workman",
+   "The husbandman that laboureth"
+  ],
+  "answer": 3,
+  "explanation": "The husbandman that laboureth must be first partaker of the fruits.",
+  "ref": "2 Timothy 2:6"
+ },
+ {
+  "id": "2-timothy-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does a soldier not entangle himself with the affairs of this life?",
+  "choices": [
+   "To save his money",
+   "To avoid trouble",
+   "To please him who chose him",
+   "To keep the law"
+  ],
+  "answer": 2,
+  "explanation": "No man that warreth entangleth himself with the affairs of this life; that he may please him who hath chosen him to be a soldier.",
+  "ref": "2 Timothy 2:4"
+ },
+ {
+  "id": "2-timothy-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Paul endure all things for the elect's sakes?",
+  "choices": [
+   "That the churches will give",
+   "That they may obtain salvation with eternal glory",
+   "That he may be freed",
+   "That Timothy may succeed him"
+  ],
+  "answer": 1,
+  "explanation": "I endure all things for the elect's sakes, that they may also obtain the salvation which is in Christ Jesus with eternal glory.",
+  "ref": "2 Timothy 2:10"
+ },
+ {
+  "id": "2-timothy-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If we be dead with him, what shall follow?",
+  "choices": [
+   "We shall also live with him",
+   "We shall be forgotten",
+   "We shall be judged first",
+   "We shall be sent out"
+  ],
+  "answer": 0,
+  "explanation": "It is a faithful saying: For if we be dead with him, we shall also live with him.",
+  "ref": "2 Timothy 2:11"
+ },
+ {
+  "id": "2-timothy-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why can the Lord not deny himself?",
+  "choices": [
+   "He is the righteous judge",
+   "He keeps the covenant",
+   "He hath made all things",
+   "He abideth faithful even when we believe not"
+  ],
+  "answer": 3,
+  "explanation": "If we believe not, yet he abideth faithful: he cannot deny himself.",
+  "ref": "2 Timothy 2:13"
+ },
+ {
+  "id": "2-timothy-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do profane and vain babblings increase to?",
+  "choices": [
+   "More strife",
+   "More fear",
+   "More ungodliness",
+   "More wealth"
+  ],
+  "answer": 2,
+  "explanation": "Shun profane and vain babblings: for they will increase unto more ungodliness.",
+  "ref": "2 Timothy 2:16"
+ },
+ {
+  "id": "2-timothy-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What seal does the foundation of God have?",
+  "choices": [
+   "The Lord is one",
+   "The Lord knoweth them that are his",
+   "The Lord hath spoken",
+   "The Lord is faithful"
+  ],
+  "answer": 1,
+  "explanation": "The foundation of God standeth sure, having this seal, The Lord knoweth them that are his.",
+  "ref": "2 Timothy 2:19"
+ },
+ {
+  "id": "2-timothy-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are those who name Christ's name to depart from?",
+  "choices": [
+   "Iniquity",
+   "The world",
+   "Foolish questions",
+   "The synagogue"
+  ],
+  "answer": 0,
+  "explanation": "Let every one that nameth the name of Christ depart from iniquity.",
+  "ref": "2 Timothy 2:19"
+ },
+ {
+  "id": "2-timothy-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Timothy to follow with them that call on the Lord out of a pure heart?",
+  "choices": [
+   "Wisdom, strength, courage, honour",
+   "Truth, mercy, patience, zeal",
+   "Prayer, fasting, giving, labour",
+   "Righteousness, faith, charity, peace"
+  ],
+  "answer": 3,
+  "explanation": "Follow righteousness, faith, charity, peace, with them that call on the Lord out of a pure heart.",
+  "ref": "2 Timothy 2:22"
+ },
+ {
+  "id": "2-timothy-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are those who oppose themselves held captive by?",
+  "choices": [
+   "The law",
+   "Their own pride",
+   "The snare of the devil",
+   "The will of men"
+  ],
+  "answer": 2,
+  "explanation": "They may recover themselves out of the snare of the devil, who are taken captive by him at his will.",
+  "ref": "2 Timothy 2:26"
+ },
+ {
+  "id": "2-timothy-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do foolish and unlearned questions gender?",
+  "choices": [
+   "Fears",
+   "Strifes",
+   "Heresies",
+   "Riches"
+  ],
+  "answer": 1,
+  "explanation": "Foolish and unlearned questions avoid, knowing that they do gender strifes.",
+  "ref": "2 Timothy 2:23"
+ },
+ {
+  "id": "2-timothy-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of workman is Timothy to show himself?",
+  "choices": [
+   "One approved unto God who needeth not to be ashamed",
+   "One who works in secret",
+   "One skilled in the law",
+   "One who walks alone"
+  ],
+  "answer": 0,
+  "explanation": "Study to shew thyself approved unto God, a workman that needeth not to be ashamed.",
+  "ref": "2 Timothy 2:15"
+ },
+ {
+  "id": "2-timothy-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Paul suffer in the gospel?",
+  "choices": [
+   "As an evil doer, even unto bonds",
+   "As a stranger in Rome",
+   "As a slave in the city",
+   "As a prophet without honour"
+  ],
+  "answer": 0,
+  "explanation": "I suffer trouble, as an evil doer, even unto bonds.",
+  "ref": "2 Timothy 2:9"
+ },
+ {
+  "id": "2-timothy-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What may God peradventure give those who oppose themselves?",
+  "choices": [
+   "Forgiveness",
+   "A new law",
+   "Rest",
+   "Repentance"
+  ],
+  "answer": 3,
+  "explanation": "In meekness instructing those that oppose themselves; if God peradventure will give them repentance.",
+  "ref": "2 Timothy 2:25"
+ },
+ {
+  "id": "2-timothy-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the man who purges himself become?",
+  "choices": [
+   "A vessel of gold and silver",
+   "A vessel of mercy",
+   "A vessel unto honour, meet for the master's use",
+   "A vessel of wrath"
+  ],
+  "answer": 2,
+  "explanation": "He shall be a vessel unto honour, sanctified, and meet for the master's use.",
+  "ref": "2 Timothy 2:21"
+ },
+ {
+  "id": "2-timothy-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul ask the Lord to give Timothy?",
+  "choices": [
+   "A sound mind",
+   "Understanding in all things",
+   "Great boldness",
+   "A crown"
+  ],
+  "answer": 1,
+  "explanation": "Consider what I say; and the Lord give thee understanding in all things.",
+  "ref": "2 Timothy 2:7"
+ },
+ {
+  "id": "2-timothy-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Timothy to commit to faithful men?",
+  "choices": [
+   "The things he heard of Paul among many witnesses",
+   "The letters of the churches",
+   "The offerings of the saints",
+   "The vessels of the temple"
+  ],
+  "answer": 0,
+  "explanation": "The things that thou hast heard of me among many witnesses, the same commit thou to faithful men.",
+  "ref": "2 Timothy 2:2"
+ },
+ {
+  "id": "2-timothy-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must the servant of the Lord be besides gentle?",
+  "choices": [
+   "Strong and bold",
+   "Rich and wise",
+   "Quick and zealous",
+   "Apt to teach, patient"
+  ],
+  "answer": 3,
+  "explanation": "Be gentle unto all men, apt to teach, patient.",
+  "ref": "2 Timothy 2:24"
+ },
+ {
+  "id": "2-timothy-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does charging them not to strive about words do?",
+  "choices": [
+   "It brings peace",
+   "It builds the church",
+   "It subverts the hearers",
+   "It wins the lost"
+  ],
+  "answer": 2,
+  "explanation": "Charging them not to strive about words to no profit, but to the subverting of the hearers.",
+  "ref": "2 Timothy 2:14"
+ },
+ {
+  "id": "2-timothy-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Unto what is the purged vessel prepared?",
+  "choices": [
+   "Every trial",
+   "Every good work",
+   "Every sacrifice",
+   "Every journey"
+  ],
+  "answer": 1,
+  "explanation": "Sanctified, and meet for the master's use, and prepared unto every good work.",
+  "ref": "2 Timothy 2:21"
+ },
+ {
+  "id": "2-timothy-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the error of Hymenaeus and Philetus do to some?",
+  "choices": [
+   "Overthrow their faith",
+   "Divide their families",
+   "Silence their prayers",
+   "Drive them out"
+  ],
+  "answer": 0,
+  "explanation": "They overthrow the faith of some.",
+  "ref": "2 Timothy 2:18"
+ },
+ {
+  "id": "2-timothy-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must the servant of the Lord not do?",
+  "choices": [
+   "Teach",
+   "Pray",
+   "Travel",
+   "Strive"
+  ],
+  "answer": 3,
+  "explanation": "The servant of the Lord must not strive; but be gentle unto all men.",
+  "ref": "2 Timothy 2:24"
+ },
+ {
+  "id": "2-timothy-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom does Paul charge them not to strive about words?",
+  "choices": [
+   "The church",
+   "The elders",
+   "The Lord",
+   "The magistrates"
+  ],
+  "answer": 2,
+  "explanation": "Charging them before the Lord that they strive not about words to no profit.",
+  "ref": "2 Timothy 2:14"
+ },
+ {
+  "id": "2-timothy-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "At whose will are those who oppose themselves taken captive?",
+  "choices": [
+   "Their own",
+   "The devil's",
+   "The elders",
+   "The magistrates"
+  ],
+  "answer": 1,
+  "explanation": "They are taken captive by him at his will.",
+  "ref": "2 Timothy 2:26"
+ },
+ {
+  "id": "2-timothy-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In a great house, some vessels are to honour and some to what?",
+  "choices": [
+   "Dishonour",
+   "Judgement",
+   "Use",
+   "Silence"
+  ],
+  "answer": 0,
+  "explanation": "Some to honour, and some to dishonour.",
+  "ref": "2 Timothy 2:20"
+ },
+ {
+  "id": "2-timothy-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In the last days, whom shall men love?",
+  "choices": [
+   "Themselves",
+   "The law",
+   "The poor",
+   "The church"
+  ],
+  "answer": 0,
+  "explanation": "In the last days men shall be lovers of their own selves.",
+  "ref": "2 Timothy 3:1–2"
+ },
+ {
+  "id": "2-timothy-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who withstood Moses?",
+  "choices": [
+   "Hymenaeus and Philetus",
+   "Phygellus and Hermogenes",
+   "Lois and Eunice",
+   "Jannes and Jambres"
+  ],
+  "answer": 3,
+  "explanation": "As Jannes and Jambres withstood Moses, so do these also resist the truth.",
+  "ref": "2 Timothy 3:8"
+ },
+ {
+  "id": "2-timothy-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall evil men and seducers do?",
+  "choices": [
+   "Repent and turn",
+   "Be cast out",
+   "Wax worse and worse",
+   "Be silent"
+  ],
+  "answer": 2,
+  "explanation": "Evil men and seducers shall wax worse and worse, deceiving, and being deceived.",
+  "ref": "2 Timothy 3:13"
+ },
+ {
+  "id": "2-timothy-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the holy scriptures able to make Timothy?",
+  "choices": [
+   "Strong in battle",
+   "Wise unto salvation",
+   "Rich in the world",
+   "Perfect in the law"
+  ],
+  "answer": 1,
+  "explanation": "The holy scriptures are able to make thee wise unto salvation through faith which is in Christ Jesus.",
+  "ref": "2 Timothy 3:15"
+ },
+ {
+  "id": "2-timothy-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom shall men love more than God in the last days?",
+  "choices": [
+   "Riches",
+   "Pleasures",
+   "Rulers",
+   "Parents"
+  ],
+  "answer": 1,
+  "explanation": "Lovers of pleasures more than lovers of God.",
+  "ref": "2 Timothy 3:4"
+ },
+ {
+  "id": "2-timothy-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom shall men be disobedient in the last days?",
+  "choices": [
+   "Parents",
+   "Rulers",
+   "Elders",
+   "The church"
+  ],
+  "answer": 0,
+  "explanation": "Boasters, proud, blasphemers, disobedient to parents.",
+  "ref": "2 Timothy 3:2"
+ },
+ {
+  "id": "2-timothy-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say of those with a form of godliness?",
+  "choices": [
+   "Pray for them",
+   "Teach them the law",
+   "Receive them in the home",
+   "From such turn away"
+  ],
+  "answer": 3,
+  "explanation": "Having a form of godliness, but denying the power thereof: from such turn away.",
+  "ref": "2 Timothy 3:5"
+ },
+ {
+  "id": "2-timothy-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom do those who creep into houses lead captive?",
+  "choices": [
+   "The elders of the church",
+   "Young men",
+   "Silly women laden with sins",
+   "The magistrates"
+  ],
+  "answer": 2,
+  "explanation": "They creep into houses, and lead captive silly women laden with sins.",
+  "ref": "2 Timothy 3:6"
+ },
+ {
+  "id": "2-timothy-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are those who are ever learning never able to come to?",
+  "choices": [
+   "The end of the law",
+   "The knowledge of the truth",
+   "The house of God",
+   "The grace of Christ"
+  ],
+  "answer": 1,
+  "explanation": "Ever learning, and never able to come to the knowledge of the truth.",
+  "ref": "2 Timothy 3:7"
+ },
+ {
+  "id": "2-timothy-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "At which cities did persecutions come upon Paul?",
+  "choices": [
+   "Antioch, Iconium and Lystra",
+   "Corinth, Ephesus and Rome",
+   "Troas, Miletum and Crete",
+   "Galatia, Asia and Macedonia"
+  ],
+  "answer": 0,
+  "explanation": "Persecutions, afflictions, which came unto me at Antioch, at Iconium, at Lystra.",
+  "ref": "2 Timothy 3:11"
+ },
+ {
+  "id": "2-timothy-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Scripture profitable for?",
+  "choices": [
+   "Prophecy, healing, wonders, tongues",
+   "Songs, praise, feasting, rest",
+   "Law, judgement, sacrifice, war",
+   "Doctrine, reproof, correction, instruction in righteousness"
+  ],
+  "answer": 3,
+  "explanation": "All scripture is profitable for doctrine, for reproof, for correction, for instruction in righteousness.",
+  "ref": "2 Timothy 3:16"
+ },
+ {
+  "id": "2-timothy-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the man of God made by Scripture?",
+  "choices": [
+   "Wise above the elders",
+   "Free from persecution",
+   "Perfect, throughly furnished unto all good works",
+   "Rich in grace"
+  ],
+  "answer": 2,
+  "explanation": "That the man of God may be perfect, throughly furnished unto all good works.",
+  "ref": "2 Timothy 3:17"
+ },
+ {
+  "id": "2-timothy-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of what are men in the last days despisers?",
+  "choices": [
+   "The law",
+   "Those that are good",
+   "The elders",
+   "The poor"
+  ],
+  "answer": 1,
+  "explanation": "Without natural affection, trucebreakers, false accusers, despisers of those that are good.",
+  "ref": "2 Timothy 3:3"
+ },
+ {
+  "id": "2-timothy-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will happen to the resisters of the truth?",
+  "choices": [
+   "They will be cast out of the church",
+   "They shall proceed no further",
+   "They will repent in time",
+   "They will prosper"
+  ],
+  "answer": 1,
+  "explanation": "They shall proceed no further: for their folly shall be manifest unto all men.",
+  "ref": "2 Timothy 3:9"
+ },
+ {
+  "id": "2-timothy-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of minds do the resisters have?",
+  "choices": [
+   "Corrupt",
+   "Troubled",
+   "Simple",
+   "Learned"
+  ],
+  "answer": 0,
+  "explanation": "Men of corrupt minds, reprobate concerning the faith.",
+  "ref": "2 Timothy 3:8"
+ },
+ {
+  "id": "2-timothy-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Led away by what are the silly women laden with sins?",
+  "choices": [
+   "False prophets",
+   "Fear of the law",
+   "Their husbands",
+   "Divers lusts"
+  ],
+  "answer": 3,
+  "explanation": "Silly women laden with sins, led away with divers lusts.",
+  "ref": "2 Timothy 3:6"
+ },
+ {
+  "id": "2-timothy-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides doctrine, what did Paul say Timothy had fully known?",
+  "choices": [
+   "His house and family",
+   "His travels and gifts",
+   "His manner of life and purpose",
+   "His wealth and honour"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast fully known my doctrine, manner of life, purpose, faith, longsuffering, charity, patience.",
+  "ref": "2 Timothy 3:10"
+ },
+ {
+  "id": "2-timothy-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do evil men and seducers do besides growing worse?",
+  "choices": [
+   "Rebuke and be rebuked",
+   "Deceive and be deceived",
+   "Teach and be taught",
+   "Persecute and be persecuted"
+  ],
+  "answer": 1,
+  "explanation": "Deceiving, and being deceived.",
+  "ref": "2 Timothy 3:13"
+ },
+ {
+  "id": "2-timothy-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord do for Paul out of all his persecutions?",
+  "choices": [
+   "Delivered him",
+   "Hid him",
+   "Healed him",
+   "Honoured him"
+  ],
+  "answer": 0,
+  "explanation": "But out of them all the Lord delivered me.",
+  "ref": "2 Timothy 3:11"
+ },
+ {
+  "id": "2-timothy-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Through what faith do the scriptures make Timothy wise unto salvation?",
+  "choices": [
+   "Faith in the law of Moses",
+   "Faith in the elders",
+   "Faith in Paul's teaching",
+   "Faith which is in Christ Jesus"
+  ],
+  "answer": 3,
+  "explanation": "Able to make thee wise unto salvation through faith which is in Christ Jesus.",
+  "ref": "2 Timothy 3:15"
+ },
+ {
+  "id": "2-timothy-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Timothy to continue in?",
+  "choices": [
+   "The traditions of Rome",
+   "The way of the elders",
+   "The things he had learned and been assured of",
+   "The customs of his city"
+  ],
+  "answer": 2,
+  "explanation": "Continue thou in the things which thou hast learned and hast been assured of.",
+  "ref": "2 Timothy 3:14"
+ },
+ {
+  "id": "2-timothy-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these is said of men in the last days?",
+  "choices": [
+   "They are patient, gentle, meek",
+   "They are traitors, heady, highminded",
+   "They are faithful, sober, just",
+   "They are wise, humble, kind"
+  ],
+  "answer": 1,
+  "explanation": "Traitors, heady, highminded, lovers of pleasures more than lovers of God.",
+  "ref": "2 Timothy 3:4"
+ },
+ {
+  "id": "2-timothy-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who has forsaken Paul, having loved this present world?",
+  "choices": [
+   "Demas",
+   "Crescens",
+   "Titus",
+   "Tychicus"
+  ],
+  "answer": 0,
+  "explanation": "Demas hath forsaken me, having loved this present world.",
+  "ref": "2 Timothy 4:10"
+ },
+ {
+  "id": "2-timothy-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who alone is with Paul?",
+  "choices": [
+   "Mark",
+   "Titus",
+   "Timothy",
+   "Luke"
+  ],
+  "answer": 3,
+  "explanation": "Only Luke is with me.",
+  "ref": "2 Timothy 4:11"
+ },
+ {
+  "id": "2-timothy-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul leave at Troas with Carpus?",
+  "choices": [
+   "A scroll",
+   "A staff",
+   "A cloke",
+   "A purse"
+  ],
+  "answer": 2,
+  "explanation": "The cloke that I left at Troas with Carpus, bring with thee.",
+  "ref": "2 Timothy 4:13"
+ },
+ {
+  "id": "2-timothy-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did Paul say did him much evil?",
+  "choices": [
+   "Demas the traveller",
+   "Alexander the coppersmith",
+   "Carpus of Troas",
+   "Eubulus"
+  ],
+  "answer": 1,
+  "explanation": "Alexander the coppersmith did me much evil.",
+  "ref": "2 Timothy 4:14"
+ },
+ {
+  "id": "2-timothy-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom shall the Lord Jesus Christ judge?",
+  "choices": [
+   "The quick and the dead",
+   "The unjust only",
+   "The churches of Asia",
+   "The nations only"
+  ],
+  "answer": 0,
+  "explanation": "The Lord Jesus Christ, who shall judge the quick and the dead at his appearing and his kingdom.",
+  "ref": "2 Timothy 4:1"
+ },
+ {
+  "id": "2-timothy-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Paul tell Timothy to take with him?",
+  "choices": [
+   "Luke",
+   "Titus",
+   "Tychicus",
+   "Mark"
+  ],
+  "answer": 3,
+  "explanation": "Take Mark, and bring him with thee.",
+  "ref": "2 Timothy 4:11"
+ },
+ {
+  "id": "2-timothy-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Demas go?",
+  "choices": [
+   "Galatia",
+   "Dalmatia",
+   "Ephesus",
+   "Thessalonica"
+  ],
+  "answer": 3,
+  "explanation": "Demas is departed unto Thessalonica.",
+  "ref": "2 Timothy 4:10"
+ },
+ {
+  "id": "2-timothy-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Titus go?",
+  "choices": [
+   "Galatia",
+   "Thessalonica",
+   "Dalmatia",
+   "Ephesus"
+  ],
+  "answer": 2,
+  "explanation": "Titus unto Dalmatia.",
+  "ref": "2 Timothy 4:10"
+ },
+ {
+  "id": "2-timothy-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where had Paul sent Tychicus?",
+  "choices": [
+   "Rome",
+   "Ephesus",
+   "Troas",
+   "Miletum"
+  ],
+  "answer": 1,
+  "explanation": "And Tychicus have I sent to Ephesus.",
+  "ref": "2 Timothy 4:12"
+ },
+ {
+  "id": "2-timothy-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Paul want Mark?",
+  "choices": [
+   "He is profitable for the ministry",
+   "He is a skilled scribe",
+   "He is a good traveller",
+   "He is of Rome"
+  ],
+  "answer": 0,
+  "explanation": "Take Mark: for he is profitable to me for the ministry.",
+  "ref": "2 Timothy 4:11"
+ },
+ {
+  "id": "2-timothy-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened at Paul's first answer?",
+  "choices": [
+   "The judge freed him",
+   "Timothy spoke for him",
+   "He was beaten",
+   "No man stood with him"
+  ],
+  "answer": 3,
+  "explanation": "At my first answer no man stood with me, but all men forsook me.",
+  "ref": "2 Timothy 4:16"
+ },
+ {
+  "id": "2-timothy-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who stood with Paul and strengthened him?",
+  "choices": [
+   "Luke",
+   "Timothy",
+   "The Lord",
+   "Mark"
+  ],
+  "answer": 2,
+  "explanation": "Notwithstanding the Lord stood with me, and strengthened me.",
+  "ref": "2 Timothy 4:17"
+ },
+ {
+  "id": "2-timothy-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Before what season is Timothy to come to Paul?",
+  "choices": [
+   "Passover",
+   "Winter",
+   "Harvest",
+   "The feast"
+  ],
+  "answer": 1,
+  "explanation": "Do thy diligence to come before winter.",
+  "ref": "2 Timothy 4:21"
+ },
+ {
+  "id": "2-timothy-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will people heap to themselves because of itching ears?",
+  "choices": [
+   "Teachers",
+   "Riches",
+   "Fables",
+   "Idols"
+  ],
+  "answer": 0,
+  "explanation": "After their own lusts shall they heap to themselves teachers, having itching ears.",
+  "ref": "2 Timothy 4:3"
+ },
+ {
+  "id": "2-timothy-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Timothy to do besides watching and enduring afflictions?",
+  "choices": [
+   "The work of a bishop",
+   "The work of a deacon",
+   "The work of a judge",
+   "The work of an evangelist"
+  ],
+  "answer": 3,
+  "explanation": "Watch thou in all things, endure afflictions, do the work of an evangelist.",
+  "ref": "2 Timothy 4:5"
+ },
+ {
+  "id": "2-timothy-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two are greeted by Paul at the end?",
+  "choices": [
+   "Eubulus and Pudens",
+   "Linus and Claudia",
+   "Prisca and Aquila",
+   "Erastus and Trophimus"
+  ],
+  "answer": 2,
+  "explanation": "Salute Prisca and Aquila, and the household of Onesiphorus.",
+  "ref": "2 Timothy 4:19"
+ },
+ {
+  "id": "2-timothy-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Paul leave at Miletum sick?",
+  "choices": [
+   "Erastus",
+   "Trophimus",
+   "Crescens",
+   "Carpus"
+  ],
+  "answer": 1,
+  "explanation": "Trophimus have I left at Miletum sick.",
+  "ref": "2 Timothy 4:20"
+ },
+ {
+  "id": "2-timothy-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Erastus abide?",
+  "choices": [
+   "Troas",
+   "Corinth",
+   "Miletum",
+   "Rome"
+  ],
+  "answer": 1,
+  "explanation": "Erastus abode at Corinth.",
+  "ref": "2 Timothy 4:20"
+ },
+ {
+  "id": "2-timothy-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul especially ask Timothy to bring?",
+  "choices": [
+   "The parchments",
+   "The cloke",
+   "The sword",
+   "The scrolls of the law"
+  ],
+  "answer": 0,
+  "explanation": "Bring with thee the books, but especially the parchments.",
+  "ref": "2 Timothy 4:13"
+ },
+ {
+  "id": "2-timothy-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say about Alexander's reward?",
+  "choices": [
+   "That he be forgiven",
+   "That he be silenced",
+   "That he be sent away",
+   "The Lord reward him according to his works"
+  ],
+  "answer": 3,
+  "explanation": "The Lord reward him according to his works.",
+  "ref": "2 Timothy 4:14"
+ },
+ {
+  "id": "2-timothy-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul pray about those who forsook him?",
+  "choices": [
+   "That they be rebuked",
+   "That they return to him",
+   "That it not be laid to their charge",
+   "That they be judged"
+  ],
+  "answer": 2,
+  "explanation": "I pray God that it may not be laid to their charge.",
+  "ref": "2 Timothy 4:16"
+ },
+ {
+  "id": "2-timothy-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Crescens go?",
+  "choices": [
+   "Dalmatia",
+   "Galatia",
+   "Thessalonica",
+   "Ephesus"
+  ],
+  "answer": 1,
+  "explanation": "Crescens to Galatia.",
+  "ref": "2 Timothy 4:10"
+ },
+ {
+  "id": "2-timothy-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the Lord strengthen Paul at his first answer?",
+  "choices": [
+   "That all the Gentiles might hear the preaching",
+   "That the judge might release him",
+   "That the church might grow",
+   "That Timothy might come"
+  ],
+  "answer": 0,
+  "explanation": "The Lord stood with me, and strengthened me; that by me the preaching might be fully known, and that all the Gentiles might hear.",
+  "ref": "2 Timothy 4:17"
+ },
+ {
+  "id": "2-timothy-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what shall people be turned when they turn away from the truth?",
+  "choices": [
+   "Idols",
+   "The law",
+   "Rulers",
+   "Fables"
+  ],
+  "answer": 3,
+  "explanation": "They shall turn away their ears from the truth, and shall be turned unto fables.",
+  "ref": "2 Timothy 4:4"
+ },
+ {
+  "id": "2-timothy-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these sends greetings with Eubulus?",
+  "choices": [
+   "Carpus",
+   "Crescens",
+   "Pudens",
+   "Titus"
+  ],
+  "answer": 2,
+  "explanation": "Eubulus greeteth thee, and Pudens, and Linus, and Claudia.",
+  "ref": "2 Timothy 4:21"
+ },
+ {
+  "id": "2-timothy-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When is Timothy to preach the word?",
+  "choices": [
+   "Only on the Sabbath",
+   "In season, out of season",
+   "Only in the church",
+   "Only when asked"
+  ],
+  "answer": 1,
+  "explanation": "Preach the word; be instant in season, out of season.",
+  "ref": "2 Timothy 4:2"
+ },
+ {
+  "id": "2-timothy-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Unto what will the Lord preserve Paul?",
+  "choices": [
+   "His heavenly kingdom",
+   "His holy temple",
+   "His holy city",
+   "His rest"
+  ],
+  "answer": 0,
+  "explanation": "The Lord will preserve me unto his heavenly kingdom.",
+  "ref": "2 Timothy 4:18"
+ },
+ {
+  "id": "2-timothy-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what is Timothy to reprove, rebuke and exhort?",
+  "choices": [
+   "All power and authority",
+   "All wisdom and prayer",
+   "All mercy and fasting",
+   "All longsuffering and doctrine"
+  ],
+  "answer": 3,
+  "explanation": "Reprove, rebuke, exhort with all longsuffering and doctrine.",
+  "ref": "2 Timothy 4:2"
  }
 ]
