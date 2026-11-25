@@ -10176,6 +10176,646 @@
   "ref": "2 Kings 17:33"
  },
  {
+  "id": "2-kings-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city did the king of Assyria besiege for three years?",
+  "choices": [
+   "Jerusalem",
+   "Samaria",
+   "Damascus",
+   "Tirzah"
+  ],
+  "answer": 1,
+  "explanation": "The king of Assyria went up to Samaria, and besieged it three years.",
+  "ref": "2 Kings 17:5"
+ },
+ {
+  "id": "2-kings-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD send among the new settlers who feared not him?",
+  "choices": [
+   "Locusts",
+   "A plague",
+   "Lions",
+   "A famine"
+  ],
+  "answer": 2,
+  "explanation": "The LORD sent lions among them, which slew some of them.",
+  "ref": "2 Kings 17:25"
+ },
+ {
+  "id": "2-kings-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Hoshea compare with the kings of Israel before him?",
+  "choices": [
+   "Worse than all of them",
+   "Righteous like David",
+   "Exactly the same",
+   "Evil, but not as they were"
+  ],
+  "answer": 3,
+  "explanation": "He did evil in the sight of the LORD, but not as the kings of Israel that were before him.",
+  "ref": "2 Kings 17:2"
+ },
+ {
+  "id": "2-kings-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Egypt did Hoshea send messengers to?",
+  "choices": [
+   "So",
+   "Pharaoh Necho",
+   "Shishak",
+   "Zerah"
+  ],
+  "answer": 0,
+  "explanation": "Hoshea had sent messengers to So king of Egypt.",
+  "ref": "2 Kings 17:4"
+ },
+ {
+  "id": "2-kings-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose sins did the children of Israel walk in?",
+  "choices": [
+   "Ahab's",
+   "Jeroboam's",
+   "Jehu's",
+   "Omri's"
+  ],
+  "answer": 1,
+  "explanation": "The children of Israel walked in all the sins of Jeroboam which he did.",
+  "ref": "2 Kings 17:22"
+ },
+ {
+  "id": "2-kings-17-e-06",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel make besides a grove?",
+  "choices": [
+   "A golden ark",
+   "A brasen serpent",
+   "Two molten calves",
+   "A tower of stone"
+  ],
+  "answer": 2,
+  "explanation": "They made them molten images, even two calves, and made a grove.",
+  "ref": "2 Kings 17:16"
+ },
+ {
+  "id": "2-kings-17-e-07",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe was the only one left after Israel was removed?",
+  "choices": [
+   "Benjamin",
+   "Levi",
+   "Ephraim",
+   "Judah"
+  ],
+  "answer": 3,
+  "explanation": "The LORD removed them out of his sight: there was none left but the tribe of Judah only.",
+  "ref": "2 Kings 17:18"
+ },
+ {
+  "id": "2-kings-17-e-08",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the priest sent back to Samaria dwell?",
+  "choices": [
+   "Bethel",
+   "Dan",
+   "Gilgal",
+   "Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "One of the priests came and dwelt in Bethel, and taught them how they should fear the LORD.",
+  "ref": "2 Kings 17:28"
+ },
+ {
+  "id": "2-kings-17-e-09",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Out of which land had the LORD brought Israel?",
+  "choices": [
+   "Babylon",
+   "Egypt",
+   "Assyria",
+   "Edom"
+  ],
+  "answer": 1,
+  "explanation": "The LORD had brought them up out of the land of Egypt, from under the hand of Pharaoh.",
+  "ref": "2 Kings 17:7"
+ },
+ {
+  "id": "2-kings-17-e-10",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Israel cause their sons and daughters to do?",
+  "choices": [
+   "Serve in the temple",
+   "Cross the Jordan",
+   "Pass through the fire",
+   "Bow to the king"
+  ],
+  "answer": 2,
+  "explanation": "They caused their sons and their daughters to pass through the fire.",
+  "ref": "2 Kings 17:17"
+ },
+ {
+  "id": "2-kings-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the king of Assyria bind Hoshea in prison?",
+  "choices": [
+   "He refused to pay a ransom",
+   "He raised an army against Assyria",
+   "He stole the temple silver",
+   "He sent to So and brought no present"
+  ],
+  "answer": 3,
+  "explanation": "The king of Assyria found conspiracy in Hoshea, for he sent messengers to So and brought no present as year by year.",
+  "ref": "2 Kings 17:4"
+ },
+ {
+  "id": "2-kings-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the king of Assyria besiege Samaria?",
+  "choices": [
+   "Three years",
+   "One year",
+   "Seven years",
+   "Nine years"
+  ],
+  "answer": 0,
+  "explanation": "The king of Assyria besieged Samaria three years.",
+  "ref": "2 Kings 17:5"
+ },
+ {
+  "id": "2-kings-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hoshea do when Shalmaneser came against him?",
+  "choices": [
+   "Fled to Egypt",
+   "Became his servant and gave presents",
+   "Fought him at Samaria",
+   "Made peace with Judah"
+  ],
+  "answer": 1,
+  "explanation": "Hoshea became his servant, and gave him presents.",
+  "ref": "2 Kings 17:3"
+ },
+ {
+  "id": "2-kings-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Israel build their high places?",
+  "choices": [
+   "Only on Mount Gerizim",
+   "Only in Bethel",
+   "From the tower of the watchmen to the fenced city",
+   "Along the river of Gozan"
+  ],
+  "answer": 2,
+  "explanation": "They built them high places in all their cities, from the tower of the watchmen to the fenced city.",
+  "ref": "2 Kings 17:9"
+ },
+ {
+  "id": "2-kings-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Through whom did the LORD testify against Israel and Judah?",
+  "choices": [
+   "The priests",
+   "The judges",
+   "The kings",
+   "The prophets and seers"
+  ],
+  "answer": 3,
+  "explanation": "The LORD testified by all the prophets, and by all the seers.",
+  "ref": "2 Kings 17:13"
+ },
+ {
+  "id": "2-kings-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel do when they would not hear?",
+  "choices": [
+   "Hardened their necks",
+   "Tore their clothes",
+   "Fled to the hills",
+   "Fasted and wept"
+  ],
+  "answer": 0,
+  "explanation": "They would not hear, but hardened their necks, like to the neck of their fathers.",
+  "ref": "2 Kings 17:14"
+ },
+ {
+  "id": "2-kings-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Judah do, as well as Israel?",
+  "choices": [
+   "Joined the Assyrian army",
+   "Kept not the commandments of the LORD",
+   "Made a covenant with Egypt",
+   "Took the captives of Israel"
+  ],
+  "answer": 1,
+  "explanation": "Judah kept not the commandments, but walked in the statutes of Israel.",
+  "ref": "2 Kings 17:19"
+ },
+ {
+  "id": "2-kings-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Israel make king after being rent from the house of David?",
+  "choices": [
+   "Rehoboam",
+   "Ahab",
+   "Jeroboam the son of Nebat",
+   "Omri"
+  ],
+  "answer": 2,
+  "explanation": "They made Jeroboam the son of Nebat king, and he made them sin a great sin.",
+  "ref": "2 Kings 17:21"
+ },
+ {
+  "id": "2-kings-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD send lions among the new settlers?",
+  "choices": [
+   "They killed his prophets",
+   "They stole from the temple",
+   "They refused to farm the land",
+   "They feared not the LORD"
+  ],
+  "answer": 3,
+  "explanation": "At the beginning they feared not the LORD: therefore the LORD sent lions among them.",
+  "ref": "2 Kings 17:25"
+ },
+ {
+  "id": "2-kings-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the settlers tell the king of Assyria about the lions?",
+  "choices": [
+   "They knew not the manner of the God of the land",
+   "The land was cursed",
+   "Samaria had too many beasts",
+   "The Israelites had returned"
+  ],
+  "answer": 0,
+  "explanation": "They said they know not the manner of the God of the land.",
+  "ref": "2 Kings 17:26"
+ },
+ {
+  "id": "2-kings-17-m-11",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king of Assyria command to be done?",
+  "choices": [
+   "Burn the high places",
+   "Carry one of the priests back to teach them",
+   "Drive out the lions",
+   "Send the settlers home"
+  ],
+  "answer": 1,
+  "explanation": "Carry thither one of the priests, and let him teach them the manner of the God of the land.",
+  "ref": "2 Kings 17:27"
+ },
+ {
+  "id": "2-kings-17-m-12",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Israel use besides passing children through the fire?",
+  "choices": [
+   "Music and dance",
+   "Silver and gold",
+   "Divination and enchantments",
+   "Bread and wine"
+  ],
+  "answer": 2,
+  "explanation": "They used divination and enchantments, and sold themselves to do evil.",
+  "ref": "2 Kings 17:17"
+ },
+ {
+  "id": "2-kings-17-m-13",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the settlers make priests of the high places?",
+  "choices": [
+   "The firstborn",
+   "The elders",
+   "The Levites",
+   "The lowest of them"
+  ],
+  "answer": 3,
+  "explanation": "They made unto themselves of the lowest of them priests of the high places.",
+  "ref": "2 Kings 17:32"
+ },
+ {
+  "id": "2-kings-17-m-14",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD charge Israel in his covenant?",
+  "choices": [
+   "Ye shall not fear other gods",
+   "Ye shall build a temple",
+   "Ye shall rest every seventh year",
+   "Ye shall pay tribute"
+  ],
+  "answer": 0,
+  "explanation": "The LORD made a covenant and charged them, Ye shall not fear other gods.",
+  "ref": "2 Kings 17:35"
+ },
+ {
+  "id": "2-kings-17-m-15",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD promise those who feared him?",
+  "choices": [
+   "A king like David",
+   "Deliverance out of the hand of all enemies",
+   "Rain in due season",
+   "A long reign"
+  ],
+  "answer": 1,
+  "explanation": "The LORD your God ye shall fear; and he shall deliver you out of the hand of all your enemies.",
+  "ref": "2 Kings 17:39"
+ },
+ {
+  "id": "2-kings-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Hoshea reign in Samaria?",
+  "choices": [
+   "Twenty",
+   "Sixteen",
+   "Nine",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "Hoshea the son of Elah began to reign in Samaria over Israel nine years.",
+  "ref": "2 Kings 17:1"
+ },
+ {
+  "id": "2-kings-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Hoshea?",
+  "choices": [
+   "Remaliah",
+   "Gadi",
+   "Jabesh",
+   "Elah"
+  ],
+  "answer": 3,
+  "explanation": "Hoshea was the son of Elah.",
+  "ref": "2 Kings 17:1"
+ },
+ {
+  "id": "2-kings-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Ahaz did Hoshea begin to reign?",
+  "choices": [
+   "The twelfth",
+   "The second",
+   "The seventeenth",
+   "The fiftieth"
+  ],
+  "answer": 0,
+  "explanation": "In the twelfth year of Ahaz king of Judah began Hoshea the son of Elah to reign.",
+  "ref": "2 Kings 17:1"
+ },
+ {
+  "id": "2-kings-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Hoshea was Samaria taken?",
+  "choices": [
+   "The third",
+   "The ninth",
+   "The twelfth",
+   "The twentieth"
+  ],
+  "answer": 1,
+  "explanation": "In the ninth year of Hoshea the king of Assyria took Samaria.",
+  "ref": "2 Kings 17:6"
+ },
+ {
+  "id": "2-kings-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "By which river did the king of Assyria place Israel?",
+  "choices": [
+   "Jordan",
+   "Kishon",
+   "Gozan",
+   "Euphrates"
+  ],
+  "answer": 2,
+  "explanation": "He placed them in Halah and in Habor by the river of Gozan.",
+  "ref": "2 Kings 17:6"
+ },
+ {
+  "id": "2-kings-17-h-06",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which god did the men of Babylon make?",
+  "choices": [
+   "Nergal",
+   "Ashima",
+   "Nibhaz",
+   "Succoth-benoth"
+  ],
+  "answer": 3,
+  "explanation": "The men of Babylon made Succoth-benoth.",
+  "ref": "2 Kings 17:30"
+ },
+ {
+  "id": "2-kings-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which god did the men of Cuth make?",
+  "choices": [
+   "Nergal",
+   "Ashima",
+   "Tartak",
+   "Anammelech"
+  ],
+  "answer": 0,
+  "explanation": "The men of Cuth made Nergal.",
+  "ref": "2 Kings 17:30"
+ },
+ {
+  "id": "2-kings-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which god did the men of Hamath make?",
+  "choices": [
+   "Nergal",
+   "Ashima",
+   "Nibhaz",
+   "Adrammelech"
+  ],
+  "answer": 1,
+  "explanation": "The men of Hamath made Ashima.",
+  "ref": "2 Kings 17:30"
+ },
+ {
+  "id": "2-kings-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which gods did the Avites make?",
+  "choices": [
+   "Nergal and Ashima",
+   "Adrammelech and Anammelech",
+   "Nibhaz and Tartak",
+   "Succoth-benoth and Nergal"
+  ],
+  "answer": 2,
+  "explanation": "The Avites made Nibhaz and Tartak.",
+  "ref": "2 Kings 17:31"
+ },
+ {
+  "id": "2-kings-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To which gods did the Sepharvites burn their children?",
+  "choices": [
+   "Nibhaz and Tartak",
+   "Nergal and Ashima",
+   "Baal and Ashtoreth",
+   "Adrammelech and Anammelech"
+  ],
+  "answer": 3,
+  "explanation": "The Sepharvites burnt their children in fire to Adrammelech and Anammelech.",
+  "ref": "2 Kings 17:31"
+ },
+ {
+  "id": "2-kings-17-h-11",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these places did the king of Assyria bring men from?",
+  "choices": [
+   "Ava",
+   "Gaza",
+   "Tyre",
+   "Moab"
+  ],
+  "answer": 0,
+  "explanation": "The king of Assyria brought men from Babylon, Cuthah, Ava, Hamath, and Sepharvaim.",
+  "ref": "2 Kings 17:24"
+ },
+ {
+  "id": "2-kings-17-h-12",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Israel set up images and groves?",
+  "choices": [
+   "Inside the temple court",
+   "On every high hill and under every green tree",
+   "Along the river banks",
+   "In the valley of salt"
+  ],
+  "answer": 1,
+  "explanation": "They set them up images and groves in every high hill, and under every green tree.",
+  "ref": "2 Kings 17:10"
+ },
+ {
+  "id": "2-kings-17-h-13",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What heavenly thing did Israel worship?",
+  "choices": [
+   "The sun alone",
+   "The morning star",
+   "All the host of heaven",
+   "The moon alone"
+  ],
+  "answer": 2,
+  "explanation": "They worshipped all the host of heaven, and served Baal.",
+  "ref": "2 Kings 17:16"
+ },
+ {
+  "id": "2-kings-17-h-14",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did the LORD name Israel?",
+  "choices": [
+   "Isaac",
+   "Abraham",
+   "Joseph",
+   "Jacob"
+  ],
+  "answer": 3,
+  "explanation": "The commandment was given to the children of Jacob, whom he named Israel.",
+  "ref": "2 Kings 17:34"
+ },
+ {
+  "id": "2-kings-17-h-15",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the LORD bring Israel out of Egypt?",
+  "choices": [
+   "With great power and a stretched out arm",
+   "By a pillar of cloud only",
+   "Through Pharaoh's consent",
+   "By the sword of Joshua"
+  ],
+  "answer": 0,
+  "explanation": "The LORD brought you up out of Egypt with great power and a stretched out arm.",
+  "ref": "2 Kings 17:36"
+ },
+ {
   "id": "old-2-kings-18-1",
   "chapter": 18,
   "level": "beginner",
