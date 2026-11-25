@@ -1104,6 +1104,262 @@
   "ref": "Ezra 3:12"
  },
  {
+  "id": "ezra-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who built the altar together with Jeshua and his brethren the priests?",
+  "choices": [
+   "Zerubbabel",
+   "Mordecai",
+   "Sheshbazzar",
+   "Cyrus"
+  ],
+  "answer": 0,
+  "explanation": "Jeshua and Zerubbabel the son of Shealtiel and their brethren builded the altar of the God of Israel.",
+  "ref": "Ezra 3:2"
+ },
+ {
+  "id": "ezra-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Levites, the sons of Asaph, play to praise the LORD?",
+  "choices": [
+   "Harps",
+   "Cymbals",
+   "Flutes",
+   "Drums"
+  ],
+  "answer": 1,
+  "explanation": "The Levites the sons of Asaph were set with cymbals, to praise the LORD.",
+  "ref": "Ezra 3:10"
+ },
+ {
+  "id": "ezra-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month did the people gather as one man to Jerusalem?",
+  "choices": [
+   "The first",
+   "The second",
+   "The seventh",
+   "The tenth"
+  ],
+  "answer": 2,
+  "explanation": "When the seventh month was come, the people gathered themselves together as one man to Jerusalem.",
+  "ref": "Ezra 3:1"
+ },
+ {
+  "id": "ezra-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose law did they follow when they built the altar and offered burnt offerings?",
+  "choices": [
+   "Moses",
+   "Solomon",
+   "Cyrus",
+   "Jeremiah"
+  ],
+  "answer": 0,
+  "explanation": "They offered burnt offerings as it is written in the law of Moses the man of God.",
+  "ref": "Ezra 3:2"
+ },
+ {
+  "id": "ezra-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was not yet laid when they began to offer burnt offerings?",
+  "choices": [
+   "The altar",
+   "The foundation of the temple",
+   "The walls of the city",
+   "The gates"
+  ],
+  "answer": 1,
+  "explanation": "From the first day of the seventh month began they to offer; but the foundation of the temple was not yet laid.",
+  "ref": "Ezra 3:6"
+ },
+ {
+  "id": "ezra-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they send to Zidon and Tyre in exchange for cedar trees?",
+  "choices": [
+   "Gold and silver",
+   "Camels and mules",
+   "Meat, drink and oil",
+   "Garments and spices"
+  ],
+  "answer": 2,
+  "explanation": "They gave meat, and drink, and oil unto them of Zidon and Tyre to bring cedar trees from Lebanon.",
+  "ref": "Ezra 3:7"
+ },
+ {
+  "id": "ezra-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had granted them permission to bring in cedar from Lebanon?",
+  "choices": [
+   "Darius",
+   "Artaxerxes",
+   "Nebuchadnezzar",
+   "Cyrus king of Persia"
+  ],
+  "answer": 3,
+  "explanation": "They brought the cedar according to the grant that they had of Cyrus king of Persia.",
+  "ref": "Ezra 3:7"
+ },
+ {
+  "id": "ezra-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From what age were the Levites appointed to set forward the work?",
+  "choices": [
+   "Twenty years old and upward",
+   "Thirty years old and upward",
+   "Twelve years old",
+   "Fifty years old"
+  ],
+  "answer": 0,
+  "explanation": "They appointed the Levites, from twenty years old and upward, to set forward the work.",
+  "ref": "Ezra 3:8"
+ },
+ {
+  "id": "ezra-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priests in their apparel hold when the foundation was laid?",
+  "choices": [
+   "Cymbals",
+   "Trumpets",
+   "Harps",
+   "Censers"
+  ],
+  "answer": 1,
+  "explanation": "They set the priests in their apparel with trumpets.",
+  "ref": "Ezra 3:10"
+ },
+ {
+  "id": "ezra-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month of the second year did the work on the house begin?",
+  "choices": [
+   "The first",
+   "The seventh",
+   "The second",
+   "The fifth"
+  ],
+  "answer": 2,
+  "explanation": "In the second year, in the second month, began Zerubbabel and Jeshua.",
+  "ref": "Ezra 3:8"
+ },
+ {
+  "id": "ezra-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man stood with his sons alongside Jeshua to set forward the workmen?",
+  "choices": [
+   "Kadmiel",
+   "Mithredath",
+   "Asaph",
+   "Seraiah"
+  ],
+  "answer": 0,
+  "explanation": "Then stood Jeshua with his sons and his brethren, Kadmiel and his sons.",
+  "ref": "Ezra 3:9"
+ },
+ {
+  "id": "ezra-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "To which sea were the cedar trees brought from Lebanon?",
+  "choices": [
+   "The sea of Galilee",
+   "The sea of Joppa",
+   "The great sea of Tyre",
+   "The salt sea"
+  ],
+  "answer": 1,
+  "explanation": "They brought cedar trees from Lebanon to the sea of Joppa.",
+  "ref": "Ezra 3:7"
+ },
+ {
+  "id": "ezra-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "After whose ordinance did the priests and Levites praise the LORD?",
+  "choices": [
+   "Moses",
+   "Solomon",
+   "David king of Israel",
+   "Cyrus"
+  ],
+  "answer": 2,
+  "explanation": "They praised the LORD, after the ordinance of David king of Israel.",
+  "ref": "Ezra 3:10"
+ },
+ {
+  "id": "ezra-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they say in their song of thanks about the LORD's mercy?",
+  "choices": [
+   "It is new every morning",
+   "It reaches to the heavens",
+   "It is greater than the sea",
+   "It endureth for ever toward Israel"
+  ],
+  "answer": 3,
+  "explanation": "He is good, for his mercy endureth for ever toward Israel.",
+  "ref": "Ezra 3:11"
+ },
+ {
+  "id": "ezra-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What could the people not tell apart?",
+  "choices": [
+   "The noise of joy and the noise of weeping",
+   "The priests and the Levites",
+   "The young men and the old",
+   "Day from night"
+  ],
+  "answer": 0,
+  "explanation": "The people could not discern the noise of the shout of joy from the noise of the weeping.",
+  "ref": "Ezra 3:13"
+ },
+ {
+  "id": "ezra-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Jeshua, who stood up with the priests to build the altar?",
+  "choices": [
+   "Shealtiel",
+   "Jozadak",
+   "Asaph",
+   "Henadad"
+  ],
+  "answer": 1,
+  "explanation": "Then stood up Jeshua the son of Jozadak, and his brethren the priests.",
+  "ref": "Ezra 3:2"
+ },
+ {
   "id": "old-ezra-4-1",
   "chapter": 4,
   "level": "beginner",
