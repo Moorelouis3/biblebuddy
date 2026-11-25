@@ -4158,5 +4158,3109 @@
   "answer": 0,
   "explanation": "The night following the Lord stood by him, and said, Be of good cheer, Paul.",
   "ref": "Acts 23:11"
+ },
+ {
+  "id": "acts-24-e-01",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came down with the elders and Tertullus to accuse Paul before Felix?",
+  "choices": [
+   "Ananias the high priest",
+   "Gamaliel",
+   "Claudius Lysias",
+   "King Agrippa"
+  ],
+  "answer": 0,
+  "explanation": "After five days Ananias the high priest descended with the elders, and with a certain orator named Tertullus.",
+  "ref": "Acts 24:1"
+ },
+ {
+  "id": "acts-24-e-02",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Tertullus, who informed the governor against Paul?",
+  "choices": [
+   "A centurion",
+   "A scribe",
+   "A physician",
+   "An orator"
+  ],
+  "answer": 3,
+  "explanation": "Ananias came with a certain orator named Tertullus, who informed the governor against Paul.",
+  "ref": "Acts 24:1"
+ },
+ {
+  "id": "acts-24-e-03",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Tertullus call Paul in his accusation?",
+  "choices": [
+   "A false prophet",
+   "A Roman spy",
+   "A pestilent fellow",
+   "A worker of magic"
+  ],
+  "answer": 2,
+  "explanation": "Tertullus said, We have found this man a pestilent fellow, and a mover of sedition.",
+  "ref": "Acts 24:5"
+ },
+ {
+  "id": "acts-24-e-04",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did Tertullus say took Paul away from the Jews with great violence?",
+  "choices": [
+   "Felix",
+   "The chief captain Lysias",
+   "The centurion Julius",
+   "Festus"
+  ],
+  "answer": 1,
+  "explanation": "Tertullus said the chief captain Lysias came upon them, and with great violence took him away out of their hands.",
+  "ref": "Acts 24:7"
+ },
+ {
+  "id": "acts-24-e-05",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul say he came to bring to his nation after many years?",
+  "choices": [
+   "Alms and offerings",
+   "A letter from Caesar",
+   "Corn for the poor",
+   "A sacrifice for Felix"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, Now after many years I came to bring alms to my nation, and offerings.",
+  "ref": "Acts 24:17"
+ },
+ {
+  "id": "acts-24-e-06",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came with Felix when he sent for Paul to hear about the faith in Christ?",
+  "choices": [
+   "His brother",
+   "Tertullus",
+   "King Agrippa",
+   "His wife Drusilla"
+  ],
+  "answer": 3,
+  "explanation": "Felix came with his wife Drusilla, which was a Jewess, and heard Paul concerning the faith in Christ.",
+  "ref": "Acts 24:24"
+ },
+ {
+  "id": "acts-24-e-07",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Felix tell Paul when he trembled?",
+  "choices": [
+   "Thou art free to go",
+   "Thou shalt die",
+   "Go thy way for this time",
+   "Tell it to Caesar"
+  ],
+  "answer": 2,
+  "explanation": "Felix answered, Go thy way for this time; when I have a convenient season, I will call for thee.",
+  "ref": "Acts 24:25"
+ },
+ {
+  "id": "acts-24-e-08",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came into Felix's room after two years?",
+  "choices": [
+   "Claudius Lysias",
+   "Porcius Festus",
+   "King Agrippa",
+   "Julius"
+  ],
+  "answer": 1,
+  "explanation": "After two years Porcius Festus came into Felix' room.",
+  "ref": "Acts 24:27"
+ },
+ {
+  "id": "acts-24-e-09",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Felix command the centurion to let Paul have while he was kept?",
+  "choices": [
+   "Liberty",
+   "A prison cell alone",
+   "A writ of freedom",
+   "Paul's own ship"
+  ],
+  "answer": 0,
+  "explanation": "Felix commanded a centurion to keep Paul, and to let him have liberty.",
+  "ref": "Acts 24:23"
+ },
+ {
+  "id": "acts-24-m-01",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "After how many days did Ananias and Tertullus come down to accuse Paul?",
+  "choices": [
+   "Two days",
+   "Twelve days",
+   "Forty days",
+   "Five days"
+  ],
+  "answer": 3,
+  "explanation": "After five days Ananias the high priest descended with the elders and Tertullus.",
+  "ref": "Acts 24:1"
+ },
+ {
+  "id": "acts-24-m-02",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Tertullus say Felix had brought the nation?",
+  "choices": [
+   "Great riches",
+   "Great victory",
+   "Great quietness",
+   "Great fear"
+  ],
+  "answer": 2,
+  "explanation": "Tertullus said, Seeing that by thee we enjoy great quietness.",
+  "ref": "Acts 24:2"
+ },
+ {
+  "id": "acts-24-m-03",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of what sect did Tertullus say Paul was a ringleader?",
+  "choices": [
+   "The Pharisees",
+   "The Nazarenes",
+   "The Sadducees",
+   "The Galileans"
+  ],
+  "answer": 1,
+  "explanation": "Tertullus called Paul a ringleader of the sect of the Nazarenes.",
+  "ref": "Acts 24:5"
+ },
+ {
+  "id": "acts-24-m-04",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Tertullus say Paul had tried to profane?",
+  "choices": [
+   "The temple",
+   "The Sabbath",
+   "The law of Moses",
+   "The synagogue of Asia"
+  ],
+  "answer": 0,
+  "explanation": "Tertullus said Paul had gone about to profane the temple.",
+  "ref": "Acts 24:6"
+ },
+ {
+  "id": "acts-24-m-05",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many days did Paul say it had been since he went up to Jerusalem to worship?",
+  "choices": [
+   "Five",
+   "Seven",
+   "Forty",
+   "Twelve"
+  ],
+  "answer": 3,
+  "explanation": "Paul said, There are yet but twelve days since I went up to Jerusalem for to worship.",
+  "ref": "Acts 24:11"
+ },
+ {
+  "id": "acts-24-m-06",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say the Jews called the way he followed?",
+  "choices": [
+   "Sedition",
+   "Magic",
+   "Heresy",
+   "A new law"
+  ],
+  "answer": 2,
+  "explanation": "Paul confessed that after the way which they call heresy, so worship he the God of his fathers.",
+  "ref": "Acts 24:14"
+ },
+ {
+  "id": "acts-24-m-07",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Paul say there shall be a resurrection of?",
+  "choices": [
+   "The just only",
+   "Both the just and unjust",
+   "Israel only",
+   "The prophets only"
+  ],
+  "answer": 1,
+  "explanation": "Paul had hope toward God that there shall be a resurrection of the dead, both of the just and unjust.",
+  "ref": "Acts 24:15"
+ },
+ {
+  "id": "acts-24-m-08",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say he exercised himself to have toward God and men?",
+  "choices": [
+   "A conscience void of offence",
+   "A name of honour",
+   "A life of ease",
+   "A seat among the elders"
+  ],
+  "answer": 0,
+  "explanation": "Paul said he exercised himself to have always a conscience void of offence toward God, and toward men.",
+  "ref": "Acts 24:16"
+ },
+ {
+  "id": "acts-24-m-09",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Paul say the Jews did not find him disputing or raising up the people?",
+  "choices": [
+   "Only in the synagogues",
+   "In Asia",
+   "In the market of Tarsus",
+   "In the temple, the synagogues, or the city"
+  ],
+  "answer": 3,
+  "explanation": "Paul said they neither found him in the temple disputing, nor in the synagogues, nor in the city.",
+  "ref": "Acts 24:12"
+ },
+ {
+  "id": "acts-24-m-10",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Paul say ought to have come before Felix to object if they had anything against him?",
+  "choices": [
+   "The chief priests of Jerusalem",
+   "The elders of Caesarea",
+   "The Jews from Asia",
+   "Tertullus"
+  ],
+  "answer": 2,
+  "explanation": "Paul said the Jews from Asia ought to have been there before Felix, and object, if they had ought against him.",
+  "ref": "Acts 24:18"
+ },
+ {
+  "id": "acts-24-m-11",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose coming did Felix say he would wait for to know the uttermost of the matter?",
+  "choices": [
+   "Festus",
+   "The chief captain Lysias",
+   "King Agrippa",
+   "The high priest"
+  ],
+  "answer": 1,
+  "explanation": "Felix said, When Lysias the chief captain shall come down, I will know the uttermost of your matter.",
+  "ref": "Acts 24:22"
+ },
+ {
+  "id": "acts-24-m-12",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Felix have more perfect knowledge of when he deferred the case?",
+  "choices": [
+   "That way",
+   "The Roman law",
+   "Paul's family",
+   "The temple customs"
+  ],
+  "answer": 0,
+  "explanation": "Felix, having more perfect knowledge of that way, deferred them.",
+  "ref": "Acts 24:22"
+ },
+ {
+  "id": "acts-24-m-13",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what subject did Felix hear Paul when he sent for him?",
+  "choices": [
+   "The law of Moses",
+   "The temple offerings",
+   "The kingdom of Rome",
+   "The faith in Christ"
+  ],
+  "answer": 3,
+  "explanation": "Felix sent for Paul, and heard him concerning the faith in Christ.",
+  "ref": "Acts 24:24"
+ },
+ {
+  "id": "acts-24-m-14",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Felix say friends of Paul could do?",
+  "choices": [
+   "Take him to Rome",
+   "Pay his bail",
+   "Minister or come unto him",
+   "Speak for him before Caesar"
+  ],
+  "answer": 2,
+  "explanation": "He should forbid none of his acquaintance to minister or come unto him.",
+  "ref": "Acts 24:23"
+ },
+ {
+  "id": "acts-24-h-01",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Paul say he answered more cheerfully before Felix?",
+  "choices": [
+   "Felix was a Jew",
+   "Felix had been a judge to this nation many years",
+   "Felix had once freed him",
+   "Felix had known his father"
+  ],
+  "answer": 1,
+  "explanation": "Paul said, Forasmuch as I know that thou hast been of many years a judge unto this nation, I do the more cheerfully answer.",
+  "ref": "Acts 24:10"
+ },
+ {
+  "id": "acts-24-h-02",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Among whom did Tertullus say Paul moved sedition?",
+  "choices": [
+   "All the Jews throughout the world",
+   "The Roman soldiers",
+   "The elders of Jerusalem",
+   "The people of Asia only"
+  ],
+  "answer": 0,
+  "explanation": "Tertullus said Paul was a mover of sedition among all the Jews throughout the world.",
+  "ref": "Acts 24:5"
+ },
+ {
+  "id": "acts-24-h-03",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Tertullus say Felix's providence had done for the nation?",
+  "choices": [
+   "Great miracles",
+   "Many new roads",
+   "Peace with Rome",
+   "Very worthy deeds"
+  ],
+  "answer": 3,
+  "explanation": "Tertullus said that very worthy deeds are done unto this nation by thy providence.",
+  "ref": "Acts 24:2"
+ },
+ {
+  "id": "acts-24-h-04",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Tertullus ask Felix to hear of his clemency?",
+  "choices": [
+   "A long defence",
+   "A letter",
+   "A few words",
+   "Three witnesses"
+  ],
+  "answer": 2,
+  "explanation": "Tertullus said, I pray thee that thou wouldest hear us of thy clemency a few words.",
+  "ref": "Acts 24:4"
+ },
+ {
+  "id": "acts-24-h-05",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Tertullus say the Jews would have done with Paul?",
+  "choices": [
+   "Put him in the temple prison",
+   "Judged him according to their law",
+   "Sent him to Rome",
+   "Stoned him at once"
+  ],
+  "answer": 1,
+  "explanation": "Tertullus said they took Paul and would have judged him according to our law.",
+  "ref": "Acts 24:6"
+ },
+ {
+  "id": "acts-24-h-06",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul say about the accusers' charges?",
+  "choices": [
+   "They could not prove them",
+   "They had proved them",
+   "The charges were true in part",
+   "They were already forgiven"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, Neither can they prove the things whereof they now accuse me.",
+  "ref": "Acts 24:13"
+ },
+ {
+  "id": "acts-24-h-07",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what state did the Jews from Asia find Paul in the temple?",
+  "choices": [
+   "With a crowd of followers",
+   "Bound with chains",
+   "In prayer with Gentiles",
+   "Purified, with no multitude or tumult"
+  ],
+  "answer": 3,
+  "explanation": "They found Paul purified in the temple, neither with multitude, nor with tumult.",
+  "ref": "Acts 24:18"
+ },
+ {
+  "id": "acts-24-h-08",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before what body did Paul say they could name any evil doing in him?",
+  "choices": [
+   "The temple court",
+   "The synagogue of Asia",
+   "The council",
+   "King Agrippa"
+  ],
+  "answer": 2,
+  "explanation": "Paul said, Let these same here say, if they have found any evil doing in me, while I stood before the council.",
+  "ref": "Acts 24:20"
+ },
+ {
+  "id": "acts-24-h-09",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the one voice Paul said he cried among the council?",
+  "choices": [
+   "I am a Roman",
+   "Touching the resurrection of the dead",
+   "I have done no wrong to Caesar",
+   "The temple is holy"
+  ],
+  "answer": 1,
+  "explanation": "Paul said, Touching the resurrection of the dead I am called in question by you this day.",
+  "ref": "Acts 24:21"
+ },
+ {
+  "id": "acts-24-h-10",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Drusilla, the wife of Felix?",
+  "choices": [
+   "A Jewess",
+   "A Greek",
+   "A Roman",
+   "An Egyptian"
+  ],
+  "answer": 0,
+  "explanation": "Felix came with his wife Drusilla, which was a Jewess.",
+  "ref": "Acts 24:24"
+ },
+ {
+  "id": "acts-24-h-11",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years passed before Porcius Festus came into Felix's room?",
+  "choices": [
+   "Five",
+   "Seven",
+   "One",
+   "Two"
+  ],
+  "answer": 3,
+  "explanation": "After two years Porcius Festus came into Felix' room.",
+  "ref": "Acts 24:27"
+ },
+ {
+  "id": "acts-24-h-12",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Felix leave Paul bound when he left office?",
+  "choices": [
+   "He feared Caesar",
+   "He had no order for release",
+   "Willing to shew the Jews a pleasure",
+   "Paul had asked to stay"
+  ],
+  "answer": 2,
+  "explanation": "Felix, willing to shew the Jews a pleasure, left Paul bound.",
+  "ref": "Acts 24:27"
+ },
+ {
+  "id": "acts-24-h-13",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Jews do when Tertullus finished his accusation?",
+  "choices": [
+   "Cried out against Felix",
+   "Assented, saying these things were so",
+   "Left the hall",
+   "Called for Paul to be scourged"
+  ],
+  "answer": 1,
+  "explanation": "The Jews also assented, saying that these things were so.",
+  "ref": "Acts 24:9"
+ },
+ {
+  "id": "acts-24-h-14",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the governor do to let Paul speak?",
+  "choices": [
+   "Beckoned unto him",
+   "Stood up from his seat",
+   "Sent his centurion",
+   "Struck the floor"
+  ],
+  "answer": 0,
+  "explanation": "Paul answered after that the governor had beckoned unto him to speak.",
+  "ref": "Acts 24:10"
+ },
+ {
+  "id": "acts-25-e-01",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Festus go from Caesarea three days after coming into the province?",
+  "choices": [
+   "Antioch",
+   "Jerusalem",
+   "Rome",
+   "Damascus"
+  ],
+  "answer": 1,
+  "explanation": "After three days Festus ascended from Caesarea to Jerusalem.",
+  "ref": "Acts 25:1"
+ },
+ {
+  "id": "acts-25-e-02",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the Jews laying wait to do to Paul on the way if he was sent to Jerusalem?",
+  "choices": [
+   "Kill him",
+   "Rescue him",
+   "Rob him",
+   "Question him"
+  ],
+  "answer": 0,
+  "explanation": "They desired Paul be sent for to Jerusalem, laying wait in the way to kill him.",
+  "ref": "Acts 25:3"
+ },
+ {
+  "id": "acts-25-e-03",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Festus answer that Paul should be kept?",
+  "choices": [
+   "Jerusalem",
+   "Tarsus",
+   "Antipatris",
+   "Caesarea"
+  ],
+  "answer": 3,
+  "explanation": "Festus answered that Paul should be kept at Caesarea, and that he himself would depart shortly thither.",
+  "ref": "Acts 25:4"
+ },
+ {
+  "id": "acts-25-e-04",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was true of the many grievous complaints the Jews laid against Paul at Caesarea?",
+  "choices": [
+   "They were all proved",
+   "Paul admitted them",
+   "They could not prove them",
+   "Felix had already judged them"
+  ],
+  "answer": 2,
+  "explanation": "The Jews laid many and grievous complaints against Paul, which they could not prove.",
+  "ref": "Acts 25:7"
+ },
+ {
+  "id": "acts-25-e-05",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against whom did Paul say he had not offended in any way?",
+  "choices": [
+   "Festus, Felix and Agrippa",
+   "The law of the Jews, the temple, and Caesar",
+   "The council, the priests and the elders",
+   "Rome, Greece and Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Paul said, Neither against the law of the Jews, neither against the temple, nor yet against Caesar, have I offended any thing at all.",
+  "ref": "Acts 25:8"
+ },
+ {
+  "id": "acts-25-e-06",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Festus ask Paul because he wanted to do the Jews a pleasure?",
+  "choices": [
+   "Wilt thou go up to Jerusalem to be judged?",
+   "Wilt thou confess to Caesar?",
+   "Wilt thou pay a fine?",
+   "Wilt thou be silent?"
+  ],
+  "answer": 0,
+  "explanation": "Festus, willing to do the Jews a pleasure, asked Paul, Wilt thou go up to Jerusalem, and there be judged of these things before me?",
+  "ref": "Acts 25:9"
+ },
+ {
+  "id": "acts-25-e-07",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul say he would not refuse if he had done something worthy of death?",
+  "choices": [
+   "To pay",
+   "To be scourged",
+   "To leave Caesarea",
+   "To die"
+  ],
+  "answer": 3,
+  "explanation": "Paul said, If I be an offender, or have committed any thing worthy of death, I refuse not to die.",
+  "ref": "Acts 25:11"
+ },
+ {
+  "id": "acts-25-e-08",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Festus answer when Paul appealed to Caesar?",
+  "choices": [
+   "Thou shalt be set free",
+   "Thou shalt wait for Felix",
+   "Unto Caesar shalt thou go",
+   "Thou shalt go to Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Festus conferred with the council and answered, Hast thou appealed unto Caesar? unto Caesar shalt thou go.",
+  "ref": "Acts 25:12"
+ },
+ {
+  "id": "acts-25-e-09",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said, I would also hear the man myself?",
+  "choices": [
+   "Felix",
+   "Agrippa",
+   "Lysias",
+   "Festus"
+  ],
+  "answer": 1,
+  "explanation": "Agrippa said unto Festus, I would also hear the man myself. To morrow thou shalt hear him.",
+  "ref": "Acts 25:22"
+ },
+ {
+  "id": "acts-25-m-01",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Festus tell the able men among the Jews to do?",
+  "choices": [
+   "Go down with him and accuse Paul",
+   "Bring Paul to Jerusalem",
+   "Wait for Felix",
+   "Write to Caesar"
+  ],
+  "answer": 0,
+  "explanation": "Festus said, Let them therefore which among you are able, go down with me, and accuse this man, if there be any wickedness in him.",
+  "ref": "Acts 25:5"
+ },
+ {
+  "id": "acts-25-m-02",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Festus do the day after he went down to Caesarea?",
+  "choices": [
+   "Sent Paul to Rome",
+   "Set Paul free",
+   "Went up to Jerusalem again",
+   "Sat on the judgment seat and commanded Paul to be brought"
+  ],
+  "answer": 3,
+  "explanation": "The next day Festus sitting on the judgment seat commanded Paul to be brought.",
+  "ref": "Acts 25:6"
+ },
+ {
+  "id": "acts-25-m-03",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "At whose judgment seat did Paul say he stood and ought to be judged?",
+  "choices": [
+   "Festus's",
+   "The high priest's",
+   "Caesar's",
+   "King Agrippa's"
+  ],
+  "answer": 2,
+  "explanation": "Paul said, I stand at Caesar's judgment seat, where I ought to be judged.",
+  "ref": "Acts 25:10"
+ },
+ {
+  "id": "acts-25-m-04",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say Festus very well knew?",
+  "choices": [
+   "That Paul was a Roman",
+   "That Paul had done the Jews no wrong",
+   "That Paul was a Pharisee",
+   "That Paul had friends in Rome"
+  ],
+  "answer": 1,
+  "explanation": "Paul said, To the Jews have I done no wrong, as thou very well knowest.",
+  "ref": "Acts 25:10"
+ },
+ {
+  "id": "acts-25-m-05",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say if nothing his accusers charged him with was true?",
+  "choices": [
+   "No man may deliver me unto them",
+   "I will go up to Jerusalem",
+   "The council may judge me",
+   "Felix must be called"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, If there be none of these things whereof these accuse me, no man may deliver me unto them. I appeal unto Caesar.",
+  "ref": "Acts 25:11"
+ },
+ {
+  "id": "acts-25-m-06",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Festus tell Agrippa had left Paul in bonds?",
+  "choices": [
+   "Lysias",
+   "Julius",
+   "Tertullus",
+   "Felix"
+  ],
+  "answer": 3,
+  "explanation": "Festus declared Paul's cause unto the king, saying, There is a certain man left in bonds by Felix.",
+  "ref": "Acts 25:14"
+ },
+ {
+  "id": "acts-25-m-07",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Festus say was not the manner of the Romans?",
+  "choices": [
+   "To judge a man on the Sabbath",
+   "To send a prisoner to Caesar",
+   "To deliver a man to die before he faces his accusers",
+   "To scourge a Roman"
+  ],
+  "answer": 2,
+  "explanation": "Festus said it is not the manner of the Romans to deliver any man to die before the accused have the accusers face to face.",
+  "ref": "Acts 25:16"
+ },
+ {
+  "id": "acts-25-m-08",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Festus say the accusers' questions against Paul were about?",
+  "choices": [
+   "Taxes owed to Rome",
+   "Their own superstition and one Jesus",
+   "A riot in Jerusalem",
+   "Stolen treasure"
+  ],
+  "answer": 1,
+  "explanation": "The accusers had certain questions against Paul of their own superstition, and of one Jesus, which was dead, whom Paul affirmed to be alive.",
+  "ref": "Acts 25:19"
+ },
+ {
+  "id": "acts-25-m-09",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Festus do because he doubted of such questions?",
+  "choices": [
+   "Asked Paul if he would go to Jerusalem to be judged",
+   "Sent for Felix",
+   "Released Paul",
+   "Asked Agrippa to judge"
+  ],
+  "answer": 0,
+  "explanation": "Because I doubted of such manner of questions, I asked him whether he would go to Jerusalem.",
+  "ref": "Acts 25:20"
+ },
+ {
+  "id": "acts-25-m-10",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what hearing did Paul appeal to be reserved?",
+  "choices": [
+   "The council of Jerusalem",
+   "The judgment seat of Felix",
+   "The court of Agrippa",
+   "The hearing of Augustus"
+  ],
+  "answer": 3,
+  "explanation": "Paul had appealed to be reserved unto the hearing of Augustus.",
+  "ref": "Acts 25:21"
+ },
+ {
+  "id": "acts-25-m-11",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Agrippa and Bernice enter the place of hearing?",
+  "choices": [
+   "In silence",
+   "On foot with the people",
+   "With great pomp",
+   "Unseen"
+  ],
+  "answer": 2,
+  "explanation": "Agrippa came, and Bernice, with great pomp, and was entered into the place of hearing.",
+  "ref": "Acts 25:23"
+ },
+ {
+  "id": "acts-25-m-12",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Festus say the multitude of the Jews cried about Paul?",
+  "choices": [
+   "That he should be sent to Rome",
+   "That he ought not to live any longer",
+   "That he should be scourged",
+   "That he should be set free"
+  ],
+  "answer": 1,
+  "explanation": "Festus said the multitude of the Jews had dealt with him, crying that he ought not to live any longer.",
+  "ref": "Acts 25:24"
+ },
+ {
+  "id": "acts-25-m-13",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Festus say he found about Paul?",
+  "choices": [
+   "He had committed nothing worthy of death",
+   "He was guilty of sedition",
+   "He had profaned the temple",
+   "He was a Roman spy"
+  ],
+  "answer": 0,
+  "explanation": "Festus found that Paul had committed nothing worthy of death.",
+  "ref": "Acts 25:25"
+ },
+ {
+  "id": "acts-25-m-14",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Festus think unreasonable?",
+  "choices": [
+   "To judge a Roman",
+   "To keep Paul in bonds",
+   "To hear Agrippa",
+   "To send a prisoner without stating his crimes"
+  ],
+  "answer": 3,
+  "explanation": "Festus said, It seemeth to me unreasonable to send a prisoner, and not withal to signify the crimes laid against him.",
+  "ref": "Acts 25:27"
+ },
+ {
+  "id": "acts-25-h-01",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Festus tarry at Jerusalem before going down to Caesarea?",
+  "choices": [
+   "Three days",
+   "Five days",
+   "More than ten days",
+   "Forty days"
+  ],
+  "answer": 2,
+  "explanation": "When he had tarried among them more than ten days, he went down unto Caesarea.",
+  "ref": "Acts 25:6"
+ },
+ {
+  "id": "acts-25-h-02",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the Jews from Jerusalem stand when they laid their complaints?",
+  "choices": [
+   "At the door",
+   "Round about Paul",
+   "Behind Festus",
+   "In the temple court"
+  ],
+  "answer": 1,
+  "explanation": "The Jews which came down from Jerusalem stood round about, and laid many and grievous complaints.",
+  "ref": "Acts 25:7"
+ },
+ {
+  "id": "acts-25-h-03",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whom did Festus confer before answering Paul's appeal?",
+  "choices": [
+   "The council",
+   "The chief priests",
+   "King Agrippa",
+   "Felix"
+  ],
+  "answer": 0,
+  "explanation": "Festus, when he had conferred with the council, answered, Hast thou appealed unto Caesar?",
+  "ref": "Acts 25:12"
+ },
+ {
+  "id": "acts-25-h-04",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did King Agrippa and Bernice come to Caesarea?",
+  "choices": [
+   "To hear Paul",
+   "To judge Paul",
+   "To sail to Rome",
+   "To salute Festus"
+  ],
+  "answer": 3,
+  "explanation": "After certain days king Agrippa and Bernice came unto Caesarea to salute Festus.",
+  "ref": "Acts 25:13"
+ },
+ {
+  "id": "acts-25-h-05",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Festus say the chief priests and elders desired against Paul at Jerusalem?",
+  "choices": [
+   "Pardon for him",
+   "A ransom for him",
+   "Judgment against him",
+   "A guard for him"
+  ],
+  "answer": 2,
+  "explanation": "The chief priests and the elders of the Jews informed Festus, desiring to have judgment against him.",
+  "ref": "Acts 25:15"
+ },
+ {
+  "id": "acts-25-h-06",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How soon did Festus say he sat on the judgment seat after the accusers came?",
+  "choices": [
+   "After three days",
+   "Without any delay on the morrow",
+   "The same night",
+   "After ten days"
+  ],
+  "answer": 1,
+  "explanation": "Festus said, Without any delay on the morrow I sat on the judgment seat, and commanded the man to be brought forth.",
+  "ref": "Acts 25:17"
+ },
+ {
+  "id": "acts-25-h-07",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who attended the hearing with Agrippa and Bernice?",
+  "choices": [
+   "The chief captains and principal men of the city",
+   "The elders of Jerusalem",
+   "The Pharisees",
+   "The high priest and his sons"
+  ],
+  "answer": 0,
+  "explanation": "Agrippa came with Bernice into the place of hearing with the chief captains, and principal men of the city.",
+  "ref": "Acts 25:23"
+ },
+ {
+  "id": "acts-25-h-08",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which two places did the multitude of the Jews deal with Festus about Paul?",
+  "choices": [
+   "Antioch and Tarsus",
+   "Damascus and Jerusalem",
+   "Caesarea and Rome",
+   "Jerusalem and Caesarea"
+  ],
+  "answer": 3,
+  "explanation": "Festus said all the multitude of the Jews had dealt with him, both at Jerusalem, and also here.",
+  "ref": "Acts 25:24"
+ },
+ {
+  "id": "acts-25-h-09",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Festus say he had determined to do with Paul?",
+  "choices": [
+   "Set him free",
+   "Keep him at Caesarea",
+   "Send him",
+   "Scourge him"
+  ],
+  "answer": 2,
+  "explanation": "Festus said Paul had appealed to Augustus, I have determined to send him.",
+  "ref": "Acts 25:25"
+ },
+ {
+  "id": "acts-25-h-10",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Festus call his lord, to whom he had no certain thing to write?",
+  "choices": [
+   "Agrippa",
+   "Caesar",
+   "Felix",
+   "The high priest"
+  ],
+  "answer": 1,
+  "explanation": "Festus said, Of whom I have no certain thing to write unto my lord.",
+  "ref": "Acts 25:26"
+ },
+ {
+  "id": "acts-25-h-11",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Before whom did Festus say he brought Paul specially?",
+  "choices": [
+   "King Agrippa",
+   "Bernice",
+   "The chief captains",
+   "The high priest"
+  ],
+  "answer": 0,
+  "explanation": "Festus said, I have brought him forth before you, and specially before thee, O king Agrippa.",
+  "ref": "Acts 25:26"
+ },
+ {
+  "id": "acts-25-h-12",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Festus say Agrippa would hear Paul?",
+  "choices": [
+   "That evening",
+   "In three days",
+   "After the Sabbath",
+   "To morrow"
+  ],
+  "answer": 3,
+  "explanation": "Agrippa said, I would also hear the man myself. To morrow, said he, thou shalt hear him.",
+  "ref": "Acts 25:22"
+ },
+ {
+  "id": "acts-25-h-13",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long had Agrippa been at Caesarea when Festus told him of Paul?",
+  "choices": [
+   "Three days",
+   "A week",
+   "Many days",
+   "Ten days"
+  ],
+  "answer": 2,
+  "explanation": "When they had been there many days, Festus declared Paul's cause unto the king.",
+  "ref": "Acts 25:14"
+ },
+ {
+  "id": "acts-25-h-14",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Festus command be done with Paul until he could send him to Caesar?",
+  "choices": [
+   "That he be bound to a soldier",
+   "That he be kept",
+   "That he be sent to Felix",
+   "That he be set free"
+  ],
+  "answer": 1,
+  "explanation": "Festus said, I commanded him to be kept till I might send him to Caesar.",
+  "ref": "Acts 25:21"
+ },
+ {
+  "id": "acts-26-e-01",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What sect of the Jewish religion did Paul say he lived in as a young man?",
+  "choices": [
+   "A Sadducee",
+   "An Essene",
+   "A Pharisee",
+   "A Zealot"
+  ],
+  "answer": 2,
+  "explanation": "Paul said that after the most straitest sect of our religion he lived a Pharisee.",
+  "ref": "Acts 26:5"
+ },
+ {
+  "id": "acts-26-e-02",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul ask Agrippa why it should be thought a thing incredible?",
+  "choices": [
+   "That Jesus healed the blind",
+   "That God should raise the dead",
+   "That Rome would fall",
+   "That the temple would be rebuilt"
+  ],
+  "answer": 1,
+  "explanation": "Paul asked, Why should it be thought a thing incredible with you, that God should raise the dead?",
+  "ref": "Acts 26:8"
+ },
+ {
+  "id": "acts-26-e-03",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How bright was the light Paul saw on the Damascus road?",
+  "choices": [
+   "Above the brightness of the sun",
+   "Like a flame of fire",
+   "Like the moon at full",
+   "Like lightning"
+  ],
+  "answer": 0,
+  "explanation": "At midday Paul saw in the way a light from heaven, above the brightness of the sun.",
+  "ref": "Acts 26:13"
+ },
+ {
+  "id": "acts-26-e-04",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what language did the voice speak to Paul?",
+  "choices": [
+   "Greek",
+   "Latin",
+   "Aramaic only",
+   "Hebrew"
+  ],
+  "answer": 3,
+  "explanation": "Paul heard a voice speaking unto him in the Hebrew tongue.",
+  "ref": "Acts 26:14"
+ },
+ {
+  "id": "acts-26-e-05",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul say he was not toward the heavenly vision?",
+  "choices": [
+   "Doubtful",
+   "Ashamed",
+   "Disobedient",
+   "Fearful"
+  ],
+  "answer": 2,
+  "explanation": "Paul said, I was not disobedient unto the heavenly vision.",
+  "ref": "Acts 26:19"
+ },
+ {
+  "id": "acts-26-e-06",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Jews do to Paul in the temple for preaching to the Gentiles?",
+  "choices": [
+   "Cast him out into the street",
+   "Caught him and went about to kill him",
+   "Locked him in the temple",
+   "Brought him to Felix"
+  ],
+  "answer": 1,
+  "explanation": "For these causes the Jews caught me in the temple, and went about to kill me.",
+  "ref": "Acts 26:21"
+ },
+ {
+  "id": "acts-26-e-07",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul say Christ should do that Moses and the prophets foretold?",
+  "choices": [
+   "Suffer and be the first to rise from the dead",
+   "Reign as king in Jerusalem",
+   "Destroy the temple",
+   "Judge the Jews first"
+  ],
+  "answer": 0,
+  "explanation": "Paul said Moses and the prophets said that Christ should suffer, and that he should be the first that should rise from the dead.",
+  "ref": "Acts 26:22–23"
+ },
+ {
+  "id": "acts-26-e-08",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul wish for all who heard him that day?",
+  "choices": [
+   "That they were free from Rome",
+   "That they were Pharisees",
+   "That they were rich",
+   "That they were such as he is, except his bonds"
+  ],
+  "answer": 3,
+  "explanation": "Paul said, I would to God, that not only thou, but also all that hear me this day, were both almost, and altogether such as I am, except these bonds.",
+  "ref": "Acts 26:29"
+ },
+ {
+  "id": "acts-26-e-09",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did they say among themselves about Paul after they went aside?",
+  "choices": [
+   "He is mad",
+   "He must go to Caesar",
+   "He doeth nothing worthy of death or of bonds",
+   "He is a Roman spy"
+  ],
+  "answer": 2,
+  "explanation": "They said, This man doeth nothing worthy of death or of bonds.",
+  "ref": "Acts 26:31"
+ },
+ {
+  "id": "acts-26-e-10",
+  "chapter": 26,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Agrippa say might have happened to Paul if he had not appealed to Caesar?",
+  "choices": [
+   "He might have been beheaded",
+   "He might have been set at liberty",
+   "He might have been made king",
+   "He might have been sent to Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "Agrippa said, This man might have been set at liberty, if he had not appealed unto Caesar.",
+  "ref": "Acts 26:32"
+ },
+ {
+  "id": "acts-26-m-01",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul think himself happy to answer before Agrippa?",
+  "choices": [
+   "Agrippa was expert in all Jewish customs and questions",
+   "Agrippa was his friend",
+   "Agrippa was a Pharisee",
+   "Agrippa had freed him"
+  ],
+  "answer": 0,
+  "explanation": "Paul said he knew Agrippa to be expert in all customs and questions which are among the Jews.",
+  "ref": "Acts 26:2–3"
+ },
+ {
+  "id": "acts-26-m-02",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Paul say know his manner of life from his youth?",
+  "choices": [
+   "The Romans",
+   "Gamaliel only",
+   "The chief priests only",
+   "All the Jews"
+  ],
+  "answer": 3,
+  "explanation": "Paul said his manner of life from his youth, which was at the first among his own nation at Jerusalem, know all the Jews.",
+  "ref": "Acts 26:4"
+ },
+ {
+  "id": "acts-26-m-03",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what hope did Paul say he stood judged?",
+  "choices": [
+   "The coming of Caesar's kingdom",
+   "The end of Roman rule",
+   "The promise made of God unto our fathers",
+   "The rebuilding of Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Paul said, I stand and am judged for the hope of the promise made of God unto our fathers.",
+  "ref": "Acts 26:6"
+ },
+ {
+  "id": "acts-26-m-04",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Paul say the twelve tribes served God in hope of the promise?",
+  "choices": [
+   "Only on the Sabbath",
+   "Instantly, day and night",
+   "By offering sacrifices yearly",
+   "By silent prayer"
+  ],
+  "answer": 1,
+  "explanation": "Paul said the twelve tribes, instantly serving God day and night, hope to come to the promise.",
+  "ref": "Acts 26:7"
+ },
+ {
+  "id": "acts-26-m-05",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul once think he ought to do?",
+  "choices": [
+   "Many things contrary to the name of Jesus of Nazareth",
+   "Preach in every synagogue",
+   "Build a school for Pharisees",
+   "Go to Rome"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, I verily thought with myself, that I ought to do many things contrary to the name of Jesus of Nazareth.",
+  "ref": "Acts 26:9"
+ },
+ {
+  "id": "acts-26-m-06",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul do when the saints were put to death?",
+  "choices": [
+   "Hid from the council",
+   "Prayed for them",
+   "Carried their bodies away",
+   "Gave his voice against them"
+  ],
+  "answer": 3,
+  "explanation": "Paul said, When they were put to death, I gave my voice against them.",
+  "ref": "Acts 26:10"
+ },
+ {
+  "id": "acts-26-m-07",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say he compelled the saints to do?",
+  "choices": [
+   "Flee the city",
+   "Worship Caesar",
+   "Blaspheme",
+   "Eat unclean meat"
+  ],
+  "answer": 2,
+  "explanation": "Paul said he punished them oft in every synagogue, and compelled them to blaspheme.",
+  "ref": "Acts 26:11"
+ },
+ {
+  "id": "acts-26-m-08",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the voice say it was hard for Paul to do?",
+  "choices": [
+   "Run from the Lord",
+   "Kick against the pricks",
+   "Hide from the light",
+   "Stand before kings"
+  ],
+  "answer": 1,
+  "explanation": "The voice said, It is hard for thee to kick against the pricks.",
+  "ref": "Acts 26:14"
+ },
+ {
+  "id": "acts-26-m-09",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From whom did the Lord promise to deliver Paul?",
+  "choices": [
+   "The people and the Gentiles",
+   "The Pharisees and Sadducees",
+   "Felix and Festus",
+   "The soldiers of Rome"
+  ],
+  "answer": 0,
+  "explanation": "The Lord said, Delivering thee from the people, and from the Gentiles, unto whom now I send thee.",
+  "ref": "Acts 26:17"
+ },
+ {
+  "id": "acts-26-m-10",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord send Paul to do to the eyes of the Gentiles?",
+  "choices": [
+   "Heal them",
+   "Cover them",
+   "Wash them",
+   "Open them"
+  ],
+  "answer": 3,
+  "explanation": "The Lord sent Paul to open their eyes, and to turn them from darkness to light.",
+  "ref": "Acts 26:18"
+ },
+ {
+  "id": "acts-26-m-11",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what order did Paul say he showed the message?",
+  "choices": [
+   "Gentiles first, then Jerusalem",
+   "Jerusalem, Damascus, then Rome",
+   "Damascus, Jerusalem, Judaea, then the Gentiles",
+   "Rome, Greece, then Judaea"
+  ],
+  "answer": 2,
+  "explanation": "Paul showed first unto them of Damascus, and at Jerusalem, and throughout all the coasts of Judaea, and then to the Gentiles.",
+  "ref": "Acts 26:20"
+ },
+ {
+  "id": "acts-26-m-12",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom did Paul say he witnessed, having obtained help of God?",
+  "choices": [
+   "Only the Gentiles",
+   "Both small and great",
+   "Only kings",
+   "Only the Jews"
+  ],
+  "answer": 1,
+  "explanation": "Paul said, Having obtained help of God, I continue unto this day, witnessing both to small and great.",
+  "ref": "Acts 26:22"
+ },
+ {
+  "id": "acts-26-m-13",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Paul answer Festus who said he was beside himself?",
+  "choices": [
+   "I am not mad, but speak the words of truth and soberness",
+   "I speak only what I was told",
+   "Thou art mad thyself",
+   "I will say no more"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, I am not mad, most noble Festus; but speak forth the words of truth and soberness.",
+  "ref": "Acts 26:25"
+ },
+ {
+  "id": "acts-26-m-14",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul say he spoke freely before the king?",
+  "choices": [
+   "The king had asked him to",
+   "He had nothing to lose",
+   "The king was his friend",
+   "It was not done in a corner"
+  ],
+  "answer": 3,
+  "explanation": "Paul said he was persuaded that none of these things were hidden from the king, for this thing was not done in a corner.",
+  "ref": "Acts 26:26"
+ },
+ {
+  "id": "acts-26-m-15",
+  "chapter": 26,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul ask Agrippa about the prophets?",
+  "choices": [
+   "Hast thou read the prophets?",
+   "Who are the prophets?",
+   "Believest thou the prophets?",
+   "Will the prophets judge thee?"
+  ],
+  "answer": 2,
+  "explanation": "Paul asked, King Agrippa, believest thou the prophets? I know that thou believest.",
+  "ref": "Acts 26:27"
+ },
+ {
+  "id": "acts-26-h-01",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "About what time of day did the light shine round Paul?",
+  "choices": [
+   "Sunrise",
+   "Midday",
+   "Evening",
+   "Midnight"
+  ],
+  "answer": 1,
+  "explanation": "Paul said, At midday, O king, I saw in the way a light from heaven.",
+  "ref": "Acts 26:13"
+ },
+ {
+  "id": "acts-26-h-02",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to Paul and those who journeyed with him when the light shone?",
+  "choices": [
+   "They all fell to the earth",
+   "They all stood still",
+   "They ran away",
+   "They were struck blind"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, When we were all fallen to the earth, I heard a voice.",
+  "ref": "Acts 26:14"
+ },
+ {
+  "id": "acts-26-h-03",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom did Paul receive authority and commission to go to Damascus?",
+  "choices": [
+   "The Roman governor",
+   "Gamaliel",
+   "The high priest Ananias alone",
+   "The chief priests"
+  ],
+  "answer": 3,
+  "explanation": "Paul went to Damascus with authority and commission from the chief priests.",
+  "ref": "Acts 26:12"
+ },
+ {
+  "id": "acts-26-h-04",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From the power of whom did the Lord say people would be turned to God?",
+  "choices": [
+   "Caesar",
+   "The law",
+   "Satan",
+   "The world"
+  ],
+  "answer": 2,
+  "explanation": "The Lord sent Paul to turn them from the power of Satan unto God.",
+  "ref": "Acts 26:18"
+ },
+ {
+  "id": "acts-26-h-05",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord say people would receive among them which are sanctified by faith?",
+  "choices": [
+   "A crown",
+   "Inheritance",
+   "A new name",
+   "A place in the temple"
+  ],
+  "answer": 1,
+  "explanation": "The Lord said, That they may receive forgiveness of sins, and inheritance among them which are sanctified by faith that is in me.",
+  "ref": "Acts 26:18"
+ },
+ {
+  "id": "acts-26-h-06",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul say people should do besides repent and turn to God?",
+  "choices": [
+   "Works meet for repentance",
+   "Offer sacrifices",
+   "Be circumcised",
+   "Give alms"
+  ],
+  "answer": 0,
+  "explanation": "Paul preached that they should repent and turn to God, and do works meet for repentance.",
+  "ref": "Acts 26:20"
+ },
+ {
+  "id": "acts-26-h-07",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul say Christ should shew unto the people and the Gentiles?",
+  "choices": [
+   "Peace",
+   "Wisdom",
+   "Judgment",
+   "Light"
+  ],
+  "answer": 3,
+  "explanation": "Paul said Christ should rise from the dead, and should shew light unto the people, and to the Gentiles.",
+  "ref": "Acts 26:23"
+ },
+ {
+  "id": "acts-26-h-08",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Festus say made Paul mad?",
+  "choices": [
+   "Much sorrow",
+   "Much fasting",
+   "Much learning",
+   "Much travel"
+  ],
+  "answer": 2,
+  "explanation": "Festus said, Paul, thou art beside thyself; much learning doth make thee mad.",
+  "ref": "Acts 26:24"
+ },
+ {
+  "id": "acts-26-h-09",
+  "chapter": 26,
+  "level": "hard",
+  "category": "person",
+  "question": "Who rose up with Agrippa when Paul had finished?",
+  "choices": [
+   "Tertullus and Ananias",
+   "The governor and Bernice",
+   "The centurion and Julius",
+   "The chief captain and Lysias"
+  ],
+  "answer": 1,
+  "explanation": "When he had thus spoken, the king rose up, and the governor, and Bernice, and they that sat with them.",
+  "ref": "Acts 26:30"
+ },
+ {
+  "id": "acts-26-h-10",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul say he did to many of the saints in Jerusalem?",
+  "choices": [
+   "Shut them up in prison",
+   "Sent them out of the city",
+   "Fined them",
+   "Scourged them in the temple"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, Many of the saints did I shut up in prison, having received authority from the chief priests.",
+  "ref": "Acts 26:10"
+ },
+ {
+  "id": "acts-26-h-11",
+  "chapter": 26,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Paul say his manner of life was first spent among his own nation?",
+  "choices": [
+   "Tarsus",
+   "Damascus",
+   "Caesarea",
+   "Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "Paul said his manner of life from his youth was at the first among his own nation at Jerusalem.",
+  "ref": "Acts 26:4"
+ },
+ {
+  "id": "acts-26-h-12",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Agrippa's company do when they had heard Paul?",
+  "choices": [
+   "Sent Paul away at once",
+   "Voted to free Paul",
+   "Went aside and talked among themselves",
+   "Wrote to Caesar"
+  ],
+  "answer": 2,
+  "explanation": "When they were gone aside, they talked between themselves.",
+  "ref": "Acts 26:31"
+ },
+ {
+  "id": "acts-26-h-13",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides what he had seen, of what else was Paul to be a witness?",
+  "choices": [
+   "Things the prophets wrote",
+   "Things in which the Lord would appear to him",
+   "Things Ananias would tell him",
+   "Things done in Rome"
+  ],
+  "answer": 1,
+  "explanation": "The Lord said he would make Paul a witness both of these things which thou hast seen, and of those things in the which I will appear unto thee.",
+  "ref": "Acts 26:16"
+ },
+ {
+  "id": "acts-26-h-14",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul beseech King Agrippa to do?",
+  "choices": [
+   "Hear him patiently",
+   "Judge him quickly",
+   "Send him to Caesar",
+   "Forgive his accusers"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, I beseech thee to hear me patiently.",
+  "ref": "Acts 26:3"
+ },
+ {
+  "id": "acts-26-h-15",
+  "chapter": 26,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul say he was exceedingly toward the saints before his conversion?",
+  "choices": [
+   "Afraid of them",
+   "Sorry for them",
+   "Silent toward them",
+   "Mad against them"
+  ],
+  "answer": 3,
+  "explanation": "Paul said, being exceedingly mad against them, I persecuted them even unto strange cities.",
+  "ref": "Acts 26:11"
+ },
+ {
+  "id": "acts-27-e-01",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the Macedonian of Thessalonica sailing with Paul?",
+  "choices": [
+   "Timotheus",
+   "Titus",
+   "Trophimus",
+   "Aristarchus"
+  ],
+  "answer": 3,
+  "explanation": "One Aristarchus, a Macedonian of Thessalonica, was with them.",
+  "ref": "Acts 27:2"
+ },
+ {
+  "id": "acts-27-e-02",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Julius allow Paul to do at Sidon?",
+  "choices": [
+   "Preach in the synagogue",
+   "Leave the ship for good",
+   "Go to his friends to refresh himself",
+   "Send a letter to Caesar"
+  ],
+  "answer": 2,
+  "explanation": "Julius courteously entreated Paul, and gave him liberty to go unto his friends to refresh himself.",
+  "ref": "Acts 27:3"
+ },
+ {
+  "id": "acts-27-e-03",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did the centurion believe more than Paul about sailing on?",
+  "choices": [
+   "The soldiers",
+   "The master and the owner of the ship",
+   "The other prisoners",
+   "The sailors of Myra"
+  ],
+  "answer": 1,
+  "explanation": "The centurion believed the master and the owner of the ship, more than those things which were spoken by Paul.",
+  "ref": "Acts 27:11"
+ },
+ {
+  "id": "acts-27-e-04",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul say would be lost, but no man's life?",
+  "choices": [
+   "The ship",
+   "The cargo only",
+   "The wheat",
+   "The anchors"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, There shall be no loss of any man's life among you, but of the ship.",
+  "ref": "Acts 27:22"
+ },
+ {
+  "id": "acts-27-e-05",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who stood by Paul in the night and said, Fear not?",
+  "choices": [
+   "An old prophet",
+   "The Lord himself in a cloud",
+   "A sailor",
+   "The angel of God"
+  ],
+  "answer": 3,
+  "explanation": "Paul said there stood by him the angel of God, whose I am, and whom I serve, saying, Fear not, Paul.",
+  "ref": "Acts 27:23–24"
+ },
+ {
+  "id": "acts-27-e-06",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul do in the presence of them all before he ate?",
+  "choices": [
+   "Knelt and wept",
+   "Cast lots",
+   "Took bread and gave thanks to God",
+   "Read the law aloud"
+  ],
+  "answer": 2,
+  "explanation": "Paul took bread, and gave thanks to God in presence of them all, and when he had broken it, he began to eat.",
+  "ref": "Acts 27:35"
+ },
+ {
+  "id": "acts-27-e-07",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the soldiers' counsel about the prisoners?",
+  "choices": [
+   "To chain them below",
+   "To kill them, lest any swim out and escape",
+   "To leave them on the ship",
+   "To set them free"
+  ],
+  "answer": 1,
+  "explanation": "The soldiers' counsel was to kill the prisoners, lest any of them should swim out, and escape.",
+  "ref": "Acts 27:42"
+ },
+ {
+  "id": "acts-27-e-08",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who kept the soldiers from killing the prisoners?",
+  "choices": [
+   "The centurion",
+   "Paul himself",
+   "The master of the ship",
+   "Aristarchus"
+  ],
+  "answer": 0,
+  "explanation": "The centurion, willing to save Paul, kept them from their purpose.",
+  "ref": "Acts 27:43"
+ },
+ {
+  "id": "acts-27-e-09",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to everyone on board in the end?",
+  "choices": [
+   "Half were lost",
+   "All were taken by another ship",
+   "Only Paul survived",
+   "They escaped all safe to land"
+  ],
+  "answer": 3,
+  "explanation": "They escaped all safe to land.",
+  "ref": "Acts 27:44"
+ },
+ {
+  "id": "acts-27-e-10",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was taken away when neither sun nor stars appeared for many days?",
+  "choices": [
+   "The ship's sails",
+   "The boat",
+   "All hope that they should be saved",
+   "The wheat"
+  ],
+  "answer": 2,
+  "explanation": "When neither sun nor stars appeared in many days, all hope that we should be saved was then taken away.",
+  "ref": "Acts 27:20"
+ },
+ {
+  "id": "acts-27-m-01",
+  "chapter": 27,
+  "level": "medium",
+  "category": "place",
+  "question": "Of what place was the ship that Paul and the prisoners first boarded?",
+  "choices": [
+   "Alexandria",
+   "Adramyttium",
+   "Myra",
+   "Sidon"
+  ],
+  "answer": 1,
+  "explanation": "They entered into a ship of Adramyttium, meaning to sail by the coasts of Asia.",
+  "ref": "Acts 27:2"
+ },
+ {
+  "id": "acts-27-m-02",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did they sail under Cyprus?",
+  "choices": [
+   "The winds were contrary",
+   "To avoid pirates",
+   "To find fresh water",
+   "To meet Barnabas"
+  ],
+  "answer": 0,
+  "explanation": "They sailed under Cyprus, because the winds were contrary.",
+  "ref": "Acts 27:4"
+ },
+ {
+  "id": "acts-27-m-03",
+  "chapter": 27,
+  "level": "medium",
+  "category": "place",
+  "question": "At Myra, what kind of ship did the centurion find to put them on?",
+  "choices": [
+   "A ship of Tarsus bound for Rome",
+   "A ship of Sidon bound for Greece",
+   "A ship of Crete bound for Asia",
+   "A ship of Alexandria sailing into Italy"
+  ],
+  "answer": 3,
+  "explanation": "The centurion found a ship of Alexandria sailing into Italy; and he put us therein.",
+  "ref": "Acts 27:6"
+ },
+ {
+  "id": "acts-27-m-04",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul admonish them that sailing was now dangerous?",
+  "choices": [
+   "A storm was in sight",
+   "The ship was old",
+   "Much time was spent and the fast was already past",
+   "The sailors were sick"
+  ],
+  "answer": 2,
+  "explanation": "When much time was spent, and sailing was now dangerous, because the fast was now already past, Paul admonished them.",
+  "ref": "Acts 27:9"
+ },
+ {
+  "id": "acts-27-m-05",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did most advise departing from Fair Havens?",
+  "choices": [
+   "The water had run out",
+   "The haven was not commodious to winter in",
+   "The soldiers were afraid",
+   "Paul told them to go"
+  ],
+  "answer": 1,
+  "explanation": "Because the haven was not commodious to winter in, the more part advised to depart thence also.",
+  "ref": "Acts 27:12"
+ },
+ {
+  "id": "acts-27-m-06",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they do with the boat at Clauda before undergirding the ship?",
+  "choices": [
+   "Took it up with much work",
+   "Cast it off",
+   "Filled it with wheat",
+   "Sent it ahead"
+  ],
+  "answer": 0,
+  "explanation": "Running under Clauda, they had much work to come by the boat: which when they had taken up, they used helps, undergirding the ship.",
+  "ref": "Acts 27:16–17"
+ },
+ {
+  "id": "acts-27-m-07",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they fear would happen when they struck sail?",
+  "choices": [
+   "Meeting pirates",
+   "Hitting the rocks of Crete",
+   "Running out of food",
+   "Falling into the quicksands"
+  ],
+  "answer": 3,
+  "explanation": "Fearing lest they should fall into the quicksands, strake sail, and so were driven.",
+  "ref": "Acts 27:17"
+ },
+ {
+  "id": "acts-27-m-08",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say after long abstinence about leaving Crete?",
+  "choices": [
+   "They should have waited for the centurion",
+   "They should have sailed to Italy sooner",
+   "They should have hearkened and not left Crete",
+   "They should have sold the ship"
+  ],
+  "answer": 2,
+  "explanation": "Paul said, Sirs, ye should have hearkened unto me, and not have loosed from Crete, and to have gained this harm and loss.",
+  "ref": "Acts 27:21"
+ },
+ {
+  "id": "acts-27-m-09",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the angel say God had given Paul?",
+  "choices": [
+   "Safe passage to Rome",
+   "All them that sail with him",
+   "A new ship",
+   "Favour with the centurion"
+  ],
+  "answer": 1,
+  "explanation": "The angel said, God hath given thee all them that sail with thee.",
+  "ref": "Acts 27:24"
+ },
+ {
+  "id": "acts-27-m-10",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say about the island on which they must be cast?",
+  "choices": [
+   "They must be cast upon a certain island",
+   "They would find a harbour at Crete",
+   "They would reach Rome by morning",
+   "They would land in Italy"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, Howbeit we must be cast upon a certain island.",
+  "ref": "Acts 27:26"
+ },
+ {
+  "id": "acts-27-m-11",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the shipmen think at midnight on the fourteenth night?",
+  "choices": [
+   "That the storm had ended",
+   "That the sun would soon rise",
+   "That they were near Rome",
+   "That they drew near to some country"
+  ],
+  "answer": 3,
+  "explanation": "About midnight the shipmen deemed that they drew near to some country.",
+  "ref": "Acts 27:27"
+ },
+ {
+  "id": "acts-27-m-12",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the shipmen do under colour of casting anchors from the foreship?",
+  "choices": [
+   "Cast out the cargo",
+   "Hoisted the mainsail",
+   "Let down the boat to flee the ship",
+   "Cut the ropes of the anchor"
+  ],
+  "answer": 2,
+  "explanation": "The shipmen were about to flee out of the ship, when they had let down the boat into the sea, under colour as though they would have cast anchors.",
+  "ref": "Acts 27:30"
+ },
+ {
+  "id": "acts-27-m-13",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say to the centurion and soldiers about the shipmen?",
+  "choices": [
+   "Let them go",
+   "Except these abide in the ship, ye cannot be saved",
+   "Chain them below",
+   "They will carry us to land"
+  ],
+  "answer": 1,
+  "explanation": "Paul said, Except these abide in the ship, ye cannot be saved.",
+  "ref": "Acts 27:31"
+ },
+ {
+  "id": "acts-27-m-14",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the soldiers do after Paul's warning?",
+  "choices": [
+   "Cut off the ropes of the boat and let her fall off",
+   "Bound the shipmen",
+   "Cast the shipmen overboard",
+   "Rowed the boat to shore"
+  ],
+  "answer": 0,
+  "explanation": "Then the soldiers cut off the ropes of the boat, and let her fall off.",
+  "ref": "Acts 27:32"
+ },
+ {
+  "id": "acts-27-m-15",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say would not fall from the head of any of them?",
+  "choices": [
+   "A tear",
+   "A drop of water",
+   "A hand",
+   "An hair"
+  ],
+  "answer": 3,
+  "explanation": "Paul said, There shall not an hair fall from the head of any of you.",
+  "ref": "Acts 27:34"
+ },
+ {
+  "id": "acts-27-h-01",
+  "chapter": 27,
+  "level": "hard",
+  "category": "place",
+  "question": "In what city of Lycia did they come to land and change ships?",
+  "choices": [
+   "Sidon",
+   "Cnidus",
+   "Myra",
+   "Lasea"
+  ],
+  "answer": 2,
+  "explanation": "They came to Myra, a city of Lycia.",
+  "ref": "Acts 27:5"
+ },
+ {
+  "id": "acts-27-h-02",
+  "chapter": 27,
+  "level": "hard",
+  "category": "place",
+  "question": "Near what city was The fair havens?",
+  "choices": [
+   "Myra",
+   "Lasea",
+   "Phenice",
+   "Sidon"
+  ],
+  "answer": 1,
+  "explanation": "They came unto a place called The fair havens; nigh whereunto was the city of Lasea.",
+  "ref": "Acts 27:8"
+ },
+ {
+  "id": "acts-27-h-03",
+  "chapter": 27,
+  "level": "hard",
+  "category": "place",
+  "question": "Over against what place did they scarce come as the wind did not suffer them?",
+  "choices": [
+   "Cnidus",
+   "Salmone",
+   "Clauda",
+   "Melita"
+  ],
+  "answer": 0,
+  "explanation": "They sailed slowly many days, and scarce were come over against Cnidus, the wind not suffering us.",
+  "ref": "Acts 27:7"
+ },
+ {
+  "id": "acts-27-h-04",
+  "chapter": 27,
+  "level": "hard",
+  "category": "place",
+  "question": "Under what island did they run when they had much work to come by the boat?",
+  "choices": [
+   "Cyprus",
+   "Crete",
+   "Melita",
+   "Clauda"
+  ],
+  "answer": 3,
+  "explanation": "Running under a certain island which is called Clauda, they had much work to come by the boat.",
+  "ref": "Acts 27:16"
+ },
+ {
+  "id": "acts-27-h-05",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of wind blew softly just before the tempestuous wind arose?",
+  "choices": [
+   "The east wind",
+   "The north wind",
+   "The south wind",
+   "The west wind"
+  ],
+  "answer": 2,
+  "explanation": "When the south wind blew softly, supposing that they had obtained their purpose, they sailed close by Crete.",
+  "ref": "Acts 27:13"
+ },
+ {
+  "id": "acts-27-h-06",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the first depth they found with the sounding line?",
+  "choices": [
+   "Ten fathoms",
+   "Twenty fathoms",
+   "Fifteen fathoms",
+   "Forty fathoms"
+  ],
+  "answer": 1,
+  "explanation": "They sounded, and found it twenty fathoms: a little further they found it fifteen fathoms.",
+  "ref": "Acts 27:28"
+ },
+ {
+  "id": "acts-27-h-07",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many anchors did they cast out of the stern?",
+  "choices": [
+   "Four",
+   "Two",
+   "Three",
+   "Six"
+  ],
+  "answer": 0,
+  "explanation": "They cast four anchors out of the stern, and wished for the day.",
+  "ref": "Acts 27:29"
+ },
+ {
+  "id": "acts-27-h-08",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many days had they continued fasting when Paul urged them to eat?",
+  "choices": [
+   "Seven",
+   "Ten",
+   "Twenty",
+   "Fourteen"
+  ],
+  "answer": 3,
+  "explanation": "Paul said, This day is the fourteenth day that ye have tarried and continued fasting, having taken nothing.",
+  "ref": "Acts 27:33"
+ },
+ {
+  "id": "acts-27-h-09",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they cast into the sea after they had eaten enough?",
+  "choices": [
+   "The anchors",
+   "The boat",
+   "The wheat",
+   "The sails"
+  ],
+  "answer": 2,
+  "explanation": "When they had eaten enough, they lightened the ship, and cast out the wheat into the sea.",
+  "ref": "Acts 27:38"
+ },
+ {
+  "id": "acts-27-h-10",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they discover when the day came that they did not know the land?",
+  "choices": [
+   "A harbour with a lighthouse",
+   "A creek with a shore",
+   "A high cliff",
+   "A river mouth"
+  ],
+  "answer": 1,
+  "explanation": "They knew not the land: but they discovered a certain creek with a shore.",
+  "ref": "Acts 27:39"
+ },
+ {
+  "id": "acts-27-h-11",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who was told to cast themselves into the sea first to get to land?",
+  "choices": [
+   "Those who could swim",
+   "The soldiers",
+   "The prisoners",
+   "The sick"
+  ],
+  "answer": 0,
+  "explanation": "The centurion commanded that they which could swim should cast themselves first into the sea.",
+  "ref": "Acts 27:43"
+ },
+ {
+  "id": "acts-27-h-12",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the rest reach land who could not swim?",
+  "choices": [
+   "In the boat",
+   "By a rope from the shore",
+   "On the backs of the soldiers",
+   "Some on boards and some on broken pieces of the ship"
+  ],
+  "answer": 3,
+  "explanation": "The rest came some on boards, and some on broken pieces of the ship.",
+  "ref": "Acts 27:44"
+ },
+ {
+  "id": "acts-27-h-13",
+  "chapter": 27,
+  "level": "hard",
+  "category": "place",
+  "question": "To which haven of Crete did most hope to reach to winter?",
+  "choices": [
+   "Lasea",
+   "Fair Havens",
+   "Phenice",
+   "Salmone"
+  ],
+  "answer": 2,
+  "explanation": "The more part advised to depart if by any means they might attain to Phenice, and there to winter; which is an haven of Crete.",
+  "ref": "Acts 27:12"
+ },
+ {
+  "id": "acts-27-h-14",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what sea were they driven up and down on the fourteenth night?",
+  "choices": [
+   "The Great Sea",
+   "Adria",
+   "The sea of Cilicia",
+   "The Red Sea"
+  ],
+  "answer": 1,
+  "explanation": "When the fourteenth night was come, we were driven up and down in Adria.",
+  "ref": "Acts 27:27"
+ },
+ {
+  "id": "acts-27-h-15",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they loose when they hoised up the mainsail to the wind?",
+  "choices": [
+   "The rudder bands",
+   "The anchor ropes",
+   "The mast cords",
+   "The boat ropes"
+  ],
+  "answer": 0,
+  "explanation": "They took up the anchors, loosed the rudder bands, and hoised up the mainsail to the wind.",
+  "ref": "Acts 27:40"
+ },
+ {
+  "id": "acts-28-e-01",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people of the island treat Paul and the others when they landed?",
+  "choices": [
+   "They showed no little kindness and kindled a fire",
+   "They drove them back to the sea",
+   "They held them for ransom",
+   "They hid from them"
+  ],
+  "answer": 0,
+  "explanation": "The barbarous people shewed us no little kindness: for they kindled a fire, and received us every one.",
+  "ref": "Acts 28:2"
+ },
+ {
+  "id": "acts-28-e-02",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say Paul must be when they saw the viper hang on his hand?",
+  "choices": [
+   "A thief",
+   "A false prophet",
+   "A sorcerer",
+   "A murderer"
+  ],
+  "answer": 3,
+  "explanation": "They said, No doubt this man is a murderer, whom, though he hath escaped the sea, yet vengeance suffereth not to live.",
+  "ref": "Acts 28:4"
+ },
+ {
+  "id": "acts-28-e-03",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Paul do with the viper?",
+  "choices": [
+   "Killed it with a stick",
+   "Threw it into the sea",
+   "Shook it off into the fire",
+   "Held it up to the people"
+  ],
+  "answer": 2,
+  "explanation": "Paul shook off the beast into the fire, and felt no harm.",
+  "ref": "Acts 28:5"
+ },
+ {
+  "id": "acts-28-e-04",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say about Paul when he came to no harm?",
+  "choices": [
+   "That he was a prophet",
+   "That he was a god",
+   "That he was a king",
+   "That he was cursed"
+  ],
+  "answer": 1,
+  "explanation": "After they had looked a great while, and saw no harm come to him, they changed their minds, and said that he was a god.",
+  "ref": "Acts 28:6"
+ },
+ {
+  "id": "acts-28-e-05",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the chief man of the island?",
+  "choices": [
+   "Publius",
+   "Julius",
+   "Festus",
+   "Aristarchus"
+  ],
+  "answer": 0,
+  "explanation": "The chief man of the island, whose name was Publius, received them and lodged them three days courteously.",
+  "ref": "Acts 28:7"
+ },
+ {
+  "id": "acts-28-e-06",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the others on the island who had diseases?",
+  "choices": [
+   "They were sent away",
+   "They were given food",
+   "They were taken to Rome",
+   "They came and were healed"
+  ],
+  "answer": 3,
+  "explanation": "When this was done, others also, which had diseases in the island, came, and were healed.",
+  "ref": "Acts 28:9"
+ },
+ {
+  "id": "acts-28-e-07",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the brethren from Rome do when they heard of Paul's coming?",
+  "choices": [
+   "Sent him a letter",
+   "Waited at the city gate",
+   "Came to meet him as far as Appii Forum",
+   "Hid him in a house"
+  ],
+  "answer": 2,
+  "explanation": "The brethren came to meet us as far as Appii Forum, and The three taverns: whom when Paul saw, he thanked God, and took courage.",
+  "ref": "Acts 28:15"
+ },
+ {
+  "id": "acts-28-e-08",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was Paul allowed to dwell when they came to Rome?",
+  "choices": [
+   "In the common prison",
+   "By himself with a soldier that kept him",
+   "With the other prisoners",
+   "In the house of Publius"
+  ],
+  "answer": 1,
+  "explanation": "Paul was suffered to dwell by himself with a soldier that kept him.",
+  "ref": "Acts 28:16"
+ },
+ {
+  "id": "acts-28-e-09",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom did Paul say the salvation of God is sent?",
+  "choices": [
+   "The Gentiles",
+   "Only the Jews",
+   "The Romans only",
+   "The elders of Israel"
+  ],
+  "answer": 0,
+  "explanation": "Paul said, The salvation of God is sent unto the Gentiles, and that they will hear it.",
+  "ref": "Acts 28:28"
+ },
+ {
+  "id": "acts-28-e-10",
+  "chapter": 28,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what kind of ship did they depart from the island after three months?",
+  "choices": [
+   "A ship of Adramyttium",
+   "A ship of Tarsus",
+   "A ship of Sidon",
+   "A ship of Alexandria"
+  ],
+  "answer": 3,
+  "explanation": "After three months they departed in a ship of Alexandria, which had wintered in the isle.",
+  "ref": "Acts 28:11"
+ },
+ {
+  "id": "acts-28-m-01",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the people of the island kindle a fire?",
+  "choices": [
+   "To signal for a ship",
+   "To cook a feast",
+   "Because of the present rain and the cold",
+   "To warn of pirates"
+  ],
+  "answer": 2,
+  "explanation": "They kindled a fire, and received us every one, because of the present rain, and because of the cold.",
+  "ref": "Acts 28:2"
+ },
+ {
+  "id": "acts-28-m-02",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people expect to happen to Paul after the viper bit him?",
+  "choices": [
+   "That he would run away",
+   "That he would swell or fall down dead",
+   "That he would cry out",
+   "That he would be healed"
+  ],
+  "answer": 1,
+  "explanation": "They looked when he should have swollen, or fallen down dead suddenly.",
+  "ref": "Acts 28:6"
+ },
+ {
+  "id": "acts-28-m-03",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did Publius lodge Paul and his company?",
+  "choices": [
+   "Three days",
+   "One day",
+   "Seven days",
+   "Three months"
+  ],
+  "answer": 0,
+  "explanation": "Publius received us, and lodged us three days courteously.",
+  "ref": "Acts 28:7"
+ },
+ {
+  "id": "acts-28-m-04",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was wrong with the father of Publius?",
+  "choices": [
+   "Leprosy",
+   "Blindness",
+   "A broken leg",
+   "A fever and a bloody flux"
+  ],
+  "answer": 3,
+  "explanation": "The father of Publius lay sick of a fever and of a bloody flux.",
+  "ref": "Acts 28:8"
+ },
+ {
+  "id": "acts-28-m-05",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Paul heal the father of Publius?",
+  "choices": [
+   "He anointed him with oil",
+   "He spoke from the door",
+   "He entered in, prayed, and laid his hands on him",
+   "He sent a cloth"
+  ],
+  "answer": 2,
+  "explanation": "Paul entered in, and prayed, and laid his hands on him, and healed him.",
+  "ref": "Acts 28:8"
+ },
+ {
+  "id": "acts-28-m-06",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the islanders give them when they departed?",
+  "choices": [
+   "A ship",
+   "Such things as were necessary",
+   "Silver and gold",
+   "A letter for Rome"
+  ],
+  "answer": 1,
+  "explanation": "They honoured us with many honours; and when we departed, they laded us with such things as were necessary.",
+  "ref": "Acts 28:10"
+ },
+ {
+  "id": "acts-28-m-07",
+  "chapter": 28,
+  "level": "medium",
+  "category": "place",
+  "question": "How long did the brethren at Puteoli ask Paul to stay with them?",
+  "choices": [
+   "Seven days",
+   "Three days",
+   "One day",
+   "A month"
+  ],
+  "answer": 0,
+  "explanation": "At Puteoli they found brethren, and were desired to tarry with them seven days.",
+  "ref": "Acts 28:14"
+ },
+ {
+  "id": "acts-28-m-08",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul say the Romans would have done when they had examined him?",
+  "choices": [
+   "Sent him to Caesar",
+   "Beaten him",
+   "Fined him",
+   "Let him go, because there was no cause of death"
+  ],
+  "answer": 3,
+  "explanation": "When they had examined me, would have let me go, because there was no cause of death in me.",
+  "ref": "Acts 28:18"
+ },
+ {
+  "id": "acts-28-m-09",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul say he was constrained to appeal unto Caesar?",
+  "choices": [
+   "Festus told him to",
+   "He wished to see Rome",
+   "The Jews spake against his release",
+   "The chief captain advised it"
+  ],
+  "answer": 2,
+  "explanation": "When the Jews spake against it, I was constrained to appeal unto Caesar.",
+  "ref": "Acts 28:19"
+ },
+ {
+  "id": "acts-28-m-10",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what did Paul say he was bound with this chain?",
+  "choices": [
+   "The sedition of Jerusalem",
+   "The hope of Israel",
+   "A charge of treason",
+   "The temple tax"
+  ],
+  "answer": 1,
+  "explanation": "Paul said, For the hope of Israel I am bound with this chain.",
+  "ref": "Acts 28:20"
+ },
+ {
+  "id": "acts-28-m-11",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Jews say they had received out of Judaea concerning Paul?",
+  "choices": [
+   "No letters",
+   "A summons",
+   "A warning",
+   "A decree"
+  ],
+  "answer": 0,
+  "explanation": "They said, We neither received letters out of Judaea concerning thee.",
+  "ref": "Acts 28:21"
+ },
+ {
+  "id": "acts-28-m-12",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Jews say they knew about this sect?",
+  "choices": [
+   "That it is lawful",
+   "That it came from Galilee",
+   "That it was dying out",
+   "That it is spoken against everywhere"
+  ],
+  "answer": 3,
+  "explanation": "They said, As concerning this sect, we know that every where it is spoken against.",
+  "ref": "Acts 28:22"
+ },
+ {
+  "id": "acts-28-m-13",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did Paul expound and testify to those who came to his lodging?",
+  "choices": [
+   "For three hours",
+   "For one night",
+   "From morning till evening",
+   "For seven days"
+  ],
+  "answer": 2,
+  "explanation": "Paul expounded and testified the kingdom of God, persuading them concerning Jesus, from morning till evening.",
+  "ref": "Acts 28:23"
+ },
+ {
+  "id": "acts-28-m-14",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the Jews respond to what Paul said?",
+  "choices": [
+   "All believed",
+   "Some believed and some believed not",
+   "None believed",
+   "All were silent"
+  ],
+  "answer": 1,
+  "explanation": "Some believed the things which were spoken, and some believed not.",
+  "ref": "Acts 28:24"
+ },
+ {
+  "id": "acts-28-m-15",
+  "chapter": 28,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Paul preach in his own hired house?",
+  "choices": [
+   "With all confidence, no man forbidding him",
+   "In secret",
+   "Only at night",
+   "Only to Jews"
+  ],
+  "answer": 0,
+  "explanation": "Paul preached the kingdom of God, and taught those things which concern the Lord Jesus Christ, with all confidence, no man forbidding him.",
+  "ref": "Acts 28:31"
+ },
+ {
+  "id": "acts-28-h-01",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the sign of the ship of Alexandria that wintered in the isle?",
+  "choices": [
+   "The Anchor",
+   "The Dolphin",
+   "The Eagle",
+   "Castor and Pollux"
+  ],
+  "answer": 3,
+  "explanation": "They departed in a ship of Alexandria, whose sign was Castor and Pollux.",
+  "ref": "Acts 28:11"
+ },
+ {
+  "id": "acts-28-h-02",
+  "chapter": 28,
+  "level": "hard",
+  "category": "place",
+  "question": "At which city did they tarry three days after leaving Melita?",
+  "choices": [
+   "Rhegium",
+   "Puteoli",
+   "Syracuse",
+   "Antioch"
+  ],
+  "answer": 2,
+  "explanation": "Landing at Syracuse, they tarried there three days.",
+  "ref": "Acts 28:12"
+ },
+ {
+  "id": "acts-28-h-03",
+  "chapter": 28,
+  "level": "hard",
+  "category": "place",
+  "question": "To which city did they come the day after the south wind blew?",
+  "choices": [
+   "Syracuse",
+   "Puteoli",
+   "Rhegium",
+   "Rome"
+  ],
+  "answer": 1,
+  "explanation": "After one day the south wind blew, and they came the next day to Puteoli.",
+  "ref": "Acts 28:13"
+ },
+ {
+  "id": "acts-28-h-04",
+  "chapter": 28,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides Appii Forum, where did the brethren meet Paul?",
+  "choices": [
+   "The three taverns",
+   "The market of Puteoli",
+   "The gate of Rome",
+   "The house of Publius"
+  ],
+  "answer": 0,
+  "explanation": "The brethren came to meet them as far as Appii Forum, and The three taverns.",
+  "ref": "Acts 28:15"
+ },
+ {
+  "id": "acts-28-h-05",
+  "chapter": 28,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did the centurion deliver the prisoners at Rome?",
+  "choices": [
+   "The governor of Rome",
+   "The chief of the Jews",
+   "Caesar's steward",
+   "The captain of the guard"
+  ],
+  "answer": 3,
+  "explanation": "When we came to Rome, the centurion delivered the prisoners to the captain of the guard.",
+  "ref": "Acts 28:16"
+ },
+ {
+  "id": "acts-28-h-06",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After how many days did Paul call the chief of the Jews together?",
+  "choices": [
+   "One day",
+   "Seven days",
+   "Three days",
+   "Two years"
+  ],
+  "answer": 2,
+  "explanation": "After three days Paul called the chief of the Jews together.",
+  "ref": "Acts 28:17"
+ },
+ {
+  "id": "acts-28-h-07",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Jews say none of the brethren out of Judaea had done concerning Paul?",
+  "choices": [
+   "Written a letter for him",
+   "Shewed or spake any harm of him",
+   "Come to speak for him",
+   "Sent him money"
+  ],
+  "answer": 1,
+  "explanation": "They said, Neither any of the brethren that came shewed or spake any harm of thee.",
+  "ref": "Acts 28:21"
+ },
+ {
+  "id": "acts-28-h-08",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Jews say they desired to hear from Paul?",
+  "choices": [
+   "What he thought",
+   "Where he was born",
+   "Who had accused him",
+   "Why he came to Rome"
+  ],
+  "answer": 0,
+  "explanation": "They said, We desire to hear of thee what thou thinkest.",
+  "ref": "Acts 28:22"
+ },
+ {
+  "id": "acts-28-h-09",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul say at the end that the Holy Ghost spoke by Esaias?",
+  "choices": [
+   "Comfort ye my people",
+   "Arise, shine, for thy light is come",
+   "Behold, a virgin shall conceive",
+   "Go unto this people, and say, Hearing ye shall hear"
+  ],
+  "answer": 3,
+  "explanation": "Paul said, Well spake the Holy Ghost by Esaias the prophet unto our fathers.",
+  "ref": "Acts 28:25–26"
+ },
+ {
+  "id": "acts-28-h-10",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul say had grown dull about the people?",
+  "choices": [
+   "Their feet",
+   "Their hands",
+   "Their ears",
+   "Their tongues"
+  ],
+  "answer": 2,
+  "explanation": "Paul quoted that their ears are dull of hearing, and their eyes have they closed.",
+  "ref": "Acts 28:27"
+ },
+ {
+  "id": "acts-28-h-11",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the Jews depart after Paul spoke?",
+  "choices": [
+   "In anger and silence",
+   "With great reasoning among themselves",
+   "Rejoicing",
+   "Singing"
+  ],
+  "answer": 1,
+  "explanation": "When he had said these words, the Jews departed, and had great reasoning among themselves.",
+  "ref": "Acts 28:29"
+ },
+ {
+  "id": "acts-28-h-12",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did they depart from Paul after he had spoken one word?",
+  "choices": [
+   "They agreed not among themselves",
+   "They were afraid of the soldier",
+   "The night had come",
+   "Caesar had called them"
+  ],
+  "answer": 0,
+  "explanation": "When they agreed not among themselves, they departed, after that Paul had spoken one word.",
+  "ref": "Acts 28:25"
+ },
+ {
+  "id": "acts-28-h-13",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did Paul receive in his own hired house?",
+  "choices": [
+   "Only the brethren",
+   "Only the Gentiles",
+   "Only the soldiers",
+   "All that came in unto him"
+  ],
+  "answer": 3,
+  "explanation": "Paul dwelt two whole years in his own hired house, and received all that came in unto him.",
+  "ref": "Acts 28:30"
+ },
+ {
+  "id": "acts-28-h-14",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did many come to Paul on the day appointed?",
+  "choices": [
+   "Into the synagogue",
+   "Into the temple",
+   "Into his lodging",
+   "Into the market"
+  ],
+  "answer": 2,
+  "explanation": "There came many to him into his lodging; to whom he expounded and testified the kingdom of God.",
+  "ref": "Acts 28:23"
+ },
+ {
+  "id": "acts-28-h-15",
+  "chapter": 28,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Paul say the Jews would not do lest they be converted?",
+  "choices": [
+   "Keep the law",
+   "See, hear, or understand with the heart",
+   "Pray in the temple",
+   "Leave Rome"
+  ],
+  "answer": 1,
+  "explanation": "Paul quoted, Lest they should see with their eyes, and hear with their ears, and understand with their heart, and should be converted, and I should heal them.",
+  "ref": "Acts 28:27"
  }
 ]
