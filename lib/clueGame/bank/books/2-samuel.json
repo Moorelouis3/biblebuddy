@@ -6640,6 +6640,646 @@
   "ref": "2 Samuel 10:19"
  },
  {
+  "id": "2-samuel-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Ammon after his father the king died?",
+  "choices": [
+   "Shobach",
+   "Hanun",
+   "Hadarezer",
+   "Abishai"
+  ],
+  "answer": 1,
+  "explanation": "The king of the children of Ammon died, and Hanun his son reigned in his stead.",
+  "ref": "2 Samuel 10:1"
+ },
+ {
+  "id": "2-samuel-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did David send his servants to Hanun?",
+  "choices": [
+   "To comfort him for his father",
+   "To ask for soldiers",
+   "To demand tribute",
+   "To make a treaty of war"
+  ],
+  "answer": 0,
+  "explanation": "David sent to comfort Hanun by the hand of his servants for his father.",
+  "ref": "2 Samuel 10:2"
+ },
+ {
+  "id": "2-samuel-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David tell his shamed men to wait until their beards were grown?",
+  "choices": [
+   "Jerusalem",
+   "Hebron",
+   "Gilgal",
+   "Jericho"
+  ],
+  "answer": 3,
+  "explanation": "The king said, Tarry at Jericho until your beards be grown, and then return.",
+  "ref": "2 Samuel 10:5"
+ },
+ {
+  "id": "2-samuel-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which brother of Joab led part of the army against Ammon?",
+  "choices": [
+   "Asahel",
+   "Abner",
+   "Abishai",
+   "Benaiah"
+  ],
+  "answer": 2,
+  "explanation": "Joab delivered the rest of the people into the hand of Abishai his brother.",
+  "ref": "2 Samuel 10:10"
+ },
+ {
+  "id": "2-samuel-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Ammonites do when they saw they stank before David?",
+  "choices": [
+   "Surrendered to David",
+   "Hired Syrians to fight for them",
+   "Sent gifts to David",
+   "Fled to Egypt"
+  ],
+  "answer": 1,
+  "explanation": "The children of Ammon sent and hired the Syrians of Beth-rehob and Zoba and others.",
+  "ref": "2 Samuel 10:6"
+ },
+ {
+  "id": "2-samuel-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the Ammonites flee when they saw the Syrians had fled?",
+  "choices": [
+   "Into the city",
+   "Into the mountains",
+   "Across the Jordan",
+   "To Helam"
+  ],
+  "answer": 0,
+  "explanation": "When the Ammonites saw the Syrians flee, they fled before Abishai and entered into the city.",
+  "ref": "2 Samuel 10:14"
+ },
+ {
+  "id": "2-samuel-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did Joab return after the Ammonites fled into their city?",
+  "choices": [
+   "Jericho",
+   "Hebron",
+   "Rabbah",
+   "Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "Joab returned from the children of Ammon and came to Jerusalem.",
+  "ref": "2 Samuel 10:14"
+ },
+ {
+  "id": "2-samuel-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the captain of Hadarezer's army at Helam?",
+  "choices": [
+   "Hanun",
+   "Abishai",
+   "Shobach",
+   "Maacah"
+  ],
+  "answer": 2,
+  "explanation": "Shobach the captain of the host of Hadarezer went before the Syrians.",
+  "ref": "2 Samuel 10:16"
+ },
+ {
+  "id": "2-samuel-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "What river did David pass over to come to Helam?",
+  "choices": [
+   "The Euphrates",
+   "The Jordan",
+   "The Jabbok",
+   "The Kidron"
+  ],
+  "answer": 1,
+  "explanation": "David gathered all Israel together, and passed over Jordan, and came to Helam.",
+  "ref": "2 Samuel 10:17"
+ },
+ {
+  "id": "2-samuel-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "What happened to Shobach the captain of the Syrians?",
+  "choices": [
+   "He was struck down and died there",
+   "He escaped to Zoba",
+   "David captured him",
+   "He made peace with David"
+  ],
+  "answer": 0,
+  "explanation": "David smote Shobach the captain of their host, who died there.",
+  "ref": "2 Samuel 10:18"
+ },
+ {
+  "id": "2-samuel-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David say he would show kindness to Hanun?",
+  "choices": [
+   "Hanun had saved David's life",
+   "Hanun was David's cousin",
+   "David owed Hanun a debt",
+   "His father had shown kindness to David"
+  ],
+  "answer": 3,
+  "explanation": "David said, I will shew kindness unto Hanun the son of Nahash, as his father shewed kindness unto me.",
+  "ref": "2 Samuel 10:2"
+ },
+ {
+  "id": "2-samuel-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who told Hanun that David's comforters might be spies?",
+  "choices": [
+   "David's own servants",
+   "The priests of Ammon",
+   "The princes of the children of Ammon",
+   "The Syrian kings"
+  ],
+  "answer": 2,
+  "explanation": "The princes of the children of Ammon asked Hanun whether David had really sent comforters to honour his father.",
+  "ref": "2 Samuel 10:3"
+ },
+ {
+  "id": "2-samuel-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David tell his shamed men to wait for at Jericho?",
+  "choices": [
+   "Until Joab returned",
+   "Until their beards were grown",
+   "Until the war ended",
+   "Until Hanun apologized"
+  ],
+  "answer": 1,
+  "explanation": "The men were greatly ashamed, and the king said, Tarry at Jericho until your beards be grown.",
+  "ref": "2 Samuel 10:5"
+ },
+ {
+  "id": "2-samuel-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "Which Syrians did the Ammonites hire besides those of Zoba?",
+  "choices": [
+   "The Syrians of Beth-rehob",
+   "The Syrians of Damascus",
+   "The Syrians of Hamath",
+   "The Syrians of Tyre"
+  ],
+  "answer": 0,
+  "explanation": "The Ammonites hired the Syrians of Beth-rehob, and the Syrians of Zoba.",
+  "ref": "2 Samuel 10:6"
+ },
+ {
+  "id": "2-samuel-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did David send when he heard the Ammonites had hired the Syrians?",
+  "choices": [
+   "Abishai and the Cherethites",
+   "Nathan and the priests",
+   "Benaiah alone",
+   "Joab and all the host of the mighty men"
+  ],
+  "answer": 3,
+  "explanation": "When David heard of it, he sent Joab, and all the host of the mighty men.",
+  "ref": "2 Samuel 10:7"
+ },
+ {
+  "id": "2-samuel-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the Ammonites put their battle in array?",
+  "choices": [
+   "On the hills of Helam",
+   "By the Jordan",
+   "At the entering in of the gate",
+   "In the valley of Rephaim"
+  ],
+  "answer": 2,
+  "explanation": "The children of Ammon came out, and put the battle in array at the entering in of the gate.",
+  "ref": "2 Samuel 10:8"
+ },
+ {
+  "id": "2-samuel-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Joab divide the army into two parts?",
+  "choices": [
+   "He wanted to rest half his men",
+   "The battle was set against him before and behind",
+   "David commanded it",
+   "The Syrians had no weapons"
+  ],
+  "answer": 1,
+  "explanation": "Joab saw that the front of the battle was against him before and behind.",
+  "ref": "2 Samuel 10:9"
+ },
+ {
+  "id": "2-samuel-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Joab set in array against the Syrians?",
+  "choices": [
+   "The choice men of Israel",
+   "The rest of the people",
+   "The men of Judah only",
+   "David's household guard"
+  ],
+  "answer": 0,
+  "explanation": "Joab chose of all the choice men of Israel, and put them in array against the Syrians.",
+  "ref": "2 Samuel 10:9"
+ },
+ {
+  "id": "2-samuel-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joab promise Abishai if the Ammonites were too strong for him?",
+  "choices": [
+   "He would send for David",
+   "He would retreat to Jericho",
+   "He would hire more Syrians",
+   "He would come and help him"
+  ],
+  "answer": 3,
+  "explanation": "Joab said, if the children of Ammon be too strong for thee, then I will come and help thee.",
+  "ref": "2 Samuel 10:11"
+ },
+ {
+  "id": "2-samuel-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose cities did Joab say Israel was fighting for?",
+  "choices": [
+   "The cities of Judah only",
+   "The cities of our fathers",
+   "The cities of our God",
+   "The cities of the king"
+  ],
+  "answer": 2,
+  "explanation": "Joab said, Let us play the men for our people, and for the cities of our God.",
+  "ref": "2 Samuel 10:12"
+ },
+ {
+  "id": "2-samuel-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Joab trust with the outcome of the battle?",
+  "choices": [
+   "David",
+   "The LORD",
+   "Abishai",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Joab said, the LORD do that which seemeth him good.",
+  "ref": "2 Samuel 10:12"
+ },
+ {
+  "id": "2-samuel-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Syrians do when Joab drew near to battle?",
+  "choices": [
+   "They fled before him",
+   "They stood and fought",
+   "They asked for peace",
+   "They hid in the city"
+  ],
+  "answer": 0,
+  "explanation": "Joab drew nigh unto the battle against the Syrians: and they fled before him.",
+  "ref": "2 Samuel 10:13"
+ },
+ {
+  "id": "2-samuel-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Before whom did the Ammonites flee into the city?",
+  "choices": [
+   "Joab",
+   "David",
+   "Shobach",
+   "Abishai"
+  ],
+  "answer": 3,
+  "explanation": "When the children of Ammon saw that the Syrians were fled, then fled they also before Abishai.",
+  "ref": "2 Samuel 10:14"
+ },
+ {
+  "id": "2-samuel-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Hadarezer bring out to fight?",
+  "choices": [
+   "The Philistines of Gath",
+   "The Moabites",
+   "The Syrians that were beyond the river",
+   "The Edomites"
+  ],
+  "answer": 2,
+  "explanation": "Hadarezer sent, and brought out the Syrians that were beyond the river.",
+  "ref": "2 Samuel 10:16"
+ },
+ {
+  "id": "2-samuel-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did David meet the Syrians in battle?",
+  "choices": [
+   "Rabbah",
+   "Helam",
+   "Jericho",
+   "Zoba"
+  ],
+  "answer": 1,
+  "explanation": "David came to Helam. And the Syrians set themselves in array against David, and fought with him.",
+  "ref": "2 Samuel 10:17"
+ },
+ {
+  "id": "2-samuel-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many footmen did the Syrians of Beth-rehob and Zoba provide?",
+  "choices": [
+   "Twenty thousand",
+   "Twelve thousand",
+   "One thousand",
+   "Forty thousand"
+  ],
+  "answer": 0,
+  "explanation": "The Ammonites hired the Syrians of Beth-rehob and Zoba, twenty thousand footmen.",
+  "ref": "2 Samuel 10:6"
+ },
+ {
+  "id": "2-samuel-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men did Ish-tob provide to the Ammonites?",
+  "choices": [
+   "One thousand",
+   "Twenty thousand",
+   "Seven thousand",
+   "Twelve thousand"
+  ],
+  "answer": 3,
+  "explanation": "The Ammonites hired of Ish-tob twelve thousand men.",
+  "ref": "2 Samuel 10:6"
+ },
+ {
+  "id": "2-samuel-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men did king Maacah provide to the Ammonites?",
+  "choices": [
+   "Twelve thousand",
+   "Twenty thousand",
+   "One thousand",
+   "Seven hundred"
+  ],
+  "answer": 2,
+  "explanation": "The Ammonites hired of king Maacah a thousand men.",
+  "ref": "2 Samuel 10:6"
+ },
+ {
+  "id": "2-samuel-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many chariots' worth of Syrian men did David slay at Helam?",
+  "choices": [
+   "Seven thousand",
+   "Seven hundred",
+   "Forty thousand",
+   "Twelve hundred"
+  ],
+  "answer": 1,
+  "explanation": "David slew the men of seven hundred chariots of the Syrians, and forty thousand horsemen.",
+  "ref": "2 Samuel 10:18"
+ },
+ {
+  "id": "2-samuel-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many Syrian horsemen did David slay at Helam?",
+  "choices": [
+   "Forty thousand",
+   "Twenty thousand",
+   "Seven hundred",
+   "Twelve thousand"
+  ],
+  "answer": 0,
+  "explanation": "David slew the men of seven hundred chariots of the Syrians, and forty thousand horsemen.",
+  "ref": "2 Samuel 10:18"
+ },
+ {
+  "id": "2-samuel-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "How was Abishai related to Joab?",
+  "choices": [
+   "He was his son",
+   "He was his nephew",
+   "He was his servant",
+   "He was his brother"
+  ],
+  "answer": 3,
+  "explanation": "The rest of the people Joab delivered into the hand of Abishai his brother.",
+  "ref": "2 Samuel 10:10"
+ },
+ {
+  "id": "2-samuel-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Into whose hand did Joab deliver the rest of the people?",
+  "choices": [
+   "Shobach's",
+   "Benaiah's",
+   "Abishai's",
+   "Hadarezer's"
+  ],
+  "answer": 2,
+  "explanation": "The rest of the people he delivered into the hand of Abishai his brother.",
+  "ref": "2 Samuel 10:10"
+ },
+ {
+  "id": "2-samuel-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were the Syrians of Zoba, Rehob, Ish-tob and Maacah positioned in the battle?",
+  "choices": [
+   "Inside the city gate",
+   "By themselves in the field",
+   "On the mountain",
+   "Behind the Ammonites in the city"
+  ],
+  "answer": 1,
+  "explanation": "The Syrians were by themselves in the field, while the Ammonites stood at the gate.",
+  "ref": "2 Samuel 10:8"
+ },
+ {
+  "id": "2-samuel-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David do when told the Syrians had gathered at Helam?",
+  "choices": [
+   "Gathered all Israel and passed over Jordan",
+   "Sent Joab alone",
+   "Asked Hanun for peace",
+   "Stayed at Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "When it was told David, he gathered all Israel together, and passed over Jordan, and came to Helam.",
+  "ref": "2 Samuel 10:17"
+ },
+ {
+  "id": "2-samuel-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Syrians do when they saw they were smitten before Israel?",
+  "choices": [
+   "Fled to Ammon",
+   "Made peace at once",
+   "Hired the Philistines",
+   "Gathered themselves together"
+  ],
+  "answer": 3,
+  "explanation": "When the Syrians saw that they were smitten before Israel, they gathered themselves together.",
+  "ref": "2 Samuel 10:15"
+ },
+ {
+  "id": "2-samuel-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "What were the kings who made peace with Israel to Hadarezer?",
+  "choices": [
+   "His sons",
+   "His brothers",
+   "His servants",
+   "His captains"
+  ],
+  "answer": 2,
+  "explanation": "All the kings that were servants to Hadarezer saw they were smitten before Israel, and made peace with Israel.",
+  "ref": "2 Samuel 10:19"
+ },
+ {
+  "id": "2-samuel-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Which was NOT among the Syrian forces the Ammonites hired?",
+  "choices": [
+   "Zoba",
+   "Hamath",
+   "Maacah",
+   "Ish-tob"
+  ],
+  "answer": 1,
+  "explanation": "The Ammonites hired Beth-rehob, Zoba, king Maacah and Ish-tob.",
+  "ref": "2 Samuel 10:6"
+ },
+ {
+  "id": "2-samuel-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who sent for the Syrians that were beyond the river?",
+  "choices": [
+   "Hadarezer",
+   "Hanun",
+   "Shobach",
+   "Maacah"
+  ],
+  "answer": 0,
+  "explanation": "Hadarezer sent, and brought out the Syrians that were beyond the river.",
+  "ref": "2 Samuel 10:16"
+ },
+ {
+  "id": "2-samuel-10-h-14",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who fled first when Joab and Abishai went against them?",
+  "choices": [
+   "The Ammonites",
+   "Both at once",
+   "Neither fled",
+   "The Syrians"
+  ],
+  "answer": 3,
+  "explanation": "The Syrians fled before Joab; then the Ammonites fled before Abishai.",
+  "ref": "2 Samuel 10:13–14"
+ },
+ {
+  "id": "2-samuel-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David do when told his men were greatly ashamed?",
+  "choices": [
+   "Went to Rabbah himself",
+   "Sent them back to Hanun",
+   "Sent to meet them",
+   "Called for Joab"
+  ],
+  "answer": 2,
+  "explanation": "When they told it unto David, he sent to meet them, because the men were greatly ashamed.",
+  "ref": "2 Samuel 10:5"
+ },
+ {
   "id": "old-2-samuel-11-1",
   "chapter": 11,
   "level": "beginner",
