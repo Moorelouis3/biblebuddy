@@ -16515,17 +16515,689 @@
   "id": "old-1-chronicles-27-5",
   "chapter": 27,
   "level": "beginner",
-  "category": "keyword",
-  "question": "What broader picture of David's reign does this chapter give?",
+  "category": "person",
+  "question": "Who was the general of the king's army?",
   "choices": [
-   "Disorder and confusion",
-   "A carefully administered kingdom",
-   "A kingdom without officers",
-   "A kingdom ruled only by prophets"
+   "Benaiah",
+   "Abiathar",
+   "Asahel",
+   "Joab"
+  ],
+  "answer": 3,
+  "explanation": "Ahithophel was the king's counsellor, and the general of the king's army was Joab.",
+  "ref": "1 Chronicles 27:34"
+ },
+ {
+  "id": "1-chronicles-27-e-01",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was over the first course for the first month?",
+  "choices": [
+   "Jashobeam the son of Zabdiel",
+   "Dodai the Ahohite",
+   "Asahel the brother of Joab",
+   "Shamhuth the Izrahite"
+  ],
+  "answer": 0,
+  "explanation": "Over the first course for the first month was Jashobeam the son of Zabdiel.",
+  "ref": "1 Chronicles 27:2"
+ },
+ {
+  "id": "1-chronicles-27-e-02",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the third captain of the host, for the third month?",
+  "choices": [
+   "Asahel",
+   "Benaiah the son of Jehoiada",
+   "Ira the Tekoite",
+   "Heldai"
   ],
   "answer": 1,
-  "explanation": "The chapter displays organized civil and military administration.",
-  "ref": "1 Chronicles 27:1"
+  "explanation": "The third captain of the host for the third month was Benaiah the son of Jehoiada, a chief priest.",
+  "ref": "1 Chronicles 27:5"
+ },
+ {
+  "id": "1-chronicles-27-e-03",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the fourth captain, the brother of Joab?",
+  "choices": [
+   "Benaiah",
+   "Abiezer",
+   "Asahel",
+   "Sibbecai"
+  ],
+  "answer": 2,
+  "explanation": "The fourth captain for the fourth month was Asahel the brother of Joab.",
+  "ref": "1 Chronicles 27:7"
+ },
+ {
+  "id": "1-chronicles-27-e-04",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "What was Ahithophel to the king?",
+  "choices": [
+   "The scribe",
+   "The general",
+   "The treasurer",
+   "The king's counsellor"
+  ],
+  "answer": 3,
+  "explanation": "Ahithophel was the king's counsellor.",
+  "ref": "1 Chronicles 27:33"
+ },
+ {
+  "id": "1-chronicles-27-e-05",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the king's companion?",
+  "choices": [
+   "Hushai the Archite",
+   "Ahithophel",
+   "Jehiel",
+   "Obil"
+  ],
+  "answer": 0,
+  "explanation": "Hushai the Archite was the king's companion.",
+  "ref": "1 Chronicles 27:33"
+ },
+ {
+  "id": "1-chronicles-27-e-06",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was over the camels?",
+  "choices": [
+   "Jehdeiah the Meronothite",
+   "Obil the Ishmaelite",
+   "Jaziz the Hagerite",
+   "Shitrai the Sharonite"
+  ],
+  "answer": 1,
+  "explanation": "Over the camels also was Obil the Ishmaelite.",
+  "ref": "1 Chronicles 27:30"
+ },
+ {
+  "id": "1-chronicles-27-e-07",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was over the flocks?",
+  "choices": [
+   "Obil",
+   "Shaphat",
+   "Jaziz the Hagerite",
+   "Shitrai"
+  ],
+  "answer": 2,
+  "explanation": "Over the flocks was Jaziz the Hagerite.",
+  "ref": "1 Chronicles 27:31"
+ },
+ {
+  "id": "1-chronicles-27-e-08",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was over the herds that fed in Sharon?",
+  "choices": [
+   "Shaphat the son of Adlai",
+   "Obil",
+   "Jaziz",
+   "Shitrai the Sharonite"
+  ],
+  "answer": 3,
+  "explanation": "Over the herds that fed in Sharon was Shitrai the Sharonite.",
+  "ref": "1 Chronicles 27:29"
+ },
+ {
+  "id": "1-chronicles-27-e-09",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the ruler of the Reubenites?",
+  "choices": [
+   "Eliezer the son of Zichri",
+   "Shephatiah",
+   "Hashabiah",
+   "Omri"
+  ],
+  "answer": 0,
+  "explanation": "The ruler of the Reubenites was Eliezer the son of Zichri.",
+  "ref": "1 Chronicles 27:16"
+ },
+ {
+  "id": "1-chronicles-27-e-10",
+  "chapter": 27,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did David not number those twenty years old and under?",
+  "choices": [
+   "They were too few",
+   "The LORD had said he would increase Israel like the stars",
+   "They were away at war",
+   "Joab forbade it"
+  ],
+  "answer": 1,
+  "explanation": "David took not the number of them from twenty years old and under: because the LORD had said he would increase Israel like to the stars of the heavens.",
+  "ref": "1 Chronicles 27:23"
+ },
+ {
+  "id": "1-chronicles-27-m-01",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Benaiah said to be among the thirty?",
+  "choices": [
+   "The youngest",
+   "The oldest",
+   "Mighty among the thirty, and above the thirty",
+   "The only priest"
+  ],
+  "answer": 2,
+  "explanation": "This is that Benaiah, who was mighty among the thirty, and above the thirty.",
+  "ref": "1 Chronicles 27:6"
+ },
+ {
+  "id": "1-chronicles-27-m-02",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was in the course of Benaiah the son of Jehoiada?",
+  "choices": [
+   "Zebadiah",
+   "Mikloth",
+   "Zabdi",
+   "Ammizabad his son"
+  ],
+  "answer": 3,
+  "explanation": "In his course was Ammizabad his son.",
+  "ref": "1 Chronicles 27:6"
+ },
+ {
+  "id": "1-chronicles-27-m-03",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who followed Asahel in his course?",
+  "choices": [
+   "Zebadiah his son",
+   "Mikloth",
+   "Ammizabad",
+   "Jehoiada"
+  ],
+  "answer": 0,
+  "explanation": "Asahel the brother of Joab, and Zebadiah his son after him.",
+  "ref": "1 Chronicles 27:7"
+ },
+ {
+  "id": "1-chronicles-27-m-04",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the ruler of the Simeonites?",
+  "choices": [
+   "Hashabiah",
+   "Shephatiah the son of Maachah",
+   "Elihu",
+   "Ishmaiah"
+  ],
+  "answer": 1,
+  "explanation": "Of the Simeonites, Shephatiah the son of Maachah.",
+  "ref": "1 Chronicles 27:16"
+ },
+ {
+  "id": "1-chronicles-27-m-05",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the ruler of the Aaronites?",
+  "choices": [
+   "Hashabiah",
+   "Abiathar",
+   "Zadok",
+   "Ahimelech"
+  ],
+  "answer": 2,
+  "explanation": "Of the Levites, Hashabiah the son of Kemuel: of the Aaronites, Zadok.",
+  "ref": "1 Chronicles 27:17"
+ },
+ {
+  "id": "1-chronicles-27-m-06",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the ruler of Judah, one of David's brethren?",
+  "choices": [
+   "Omri",
+   "Ishmaiah",
+   "Joel",
+   "Elihu"
+  ],
+  "answer": 3,
+  "explanation": "Of Judah, Elihu, one of the brethren of David.",
+  "ref": "1 Chronicles 27:18"
+ },
+ {
+  "id": "1-chronicles-27-m-07",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the ruler of the Levites?",
+  "choices": [
+   "Hashabiah the son of Kemuel",
+   "Zadok",
+   "Jehiel",
+   "Eliezer"
+  ],
+  "answer": 0,
+  "explanation": "Of the Levites, Hashabiah the son of Kemuel.",
+  "ref": "1 Chronicles 27:17"
+ },
+ {
+  "id": "1-chronicles-27-m-08",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was over the king's treasures?",
+  "choices": [
+   "Jehonathan the son of Uzziah",
+   "Azmaveth the son of Adiel",
+   "Ezri the son of Chelub",
+   "Zabdi the Shiphmite"
+  ],
+  "answer": 1,
+  "explanation": "Over the king's treasures was Azmaveth the son of Adiel.",
+  "ref": "1 Chronicles 27:25"
+ },
+ {
+  "id": "1-chronicles-27-m-09",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was over the vineyards?",
+  "choices": [
+   "Zabdi",
+   "Baal-hanan",
+   "Shimei the Ramathite",
+   "Joash"
+  ],
+  "answer": 2,
+  "explanation": "Over the vineyards was Shimei the Ramathite.",
+  "ref": "1 Chronicles 27:27"
+ },
+ {
+  "id": "1-chronicles-27-m-10",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was over the asses?",
+  "choices": [
+   "Obil",
+   "Jaziz",
+   "Shaphat",
+   "Jehdeiah the Meronothite"
+  ],
+  "answer": 3,
+  "explanation": "Over the asses was Jehdeiah the Meronothite.",
+  "ref": "1 Chronicles 27:30"
+ },
+ {
+  "id": "1-chronicles-27-m-11",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was over the olive trees and sycomore trees in the low plains?",
+  "choices": [
+   "Baal-hanan the Gederite",
+   "Joash",
+   "Shimei",
+   "Ezri"
+  ],
+  "answer": 0,
+  "explanation": "Over the olive trees and the sycomore trees that were in the low plains was Baal-hanan the Gederite.",
+  "ref": "1 Chronicles 27:28"
+ },
+ {
+  "id": "1-chronicles-27-m-12",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was over the cellars of oil?",
+  "choices": [
+   "Baal-hanan",
+   "Joash",
+   "Zabdi",
+   "Ezri"
+  ],
+  "answer": 1,
+  "explanation": "Over the cellars of oil was Joash.",
+  "ref": "1 Chronicles 27:28"
+ },
+ {
+  "id": "1-chronicles-27-m-13",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was with the king's sons?",
+  "choices": [
+   "Hushai",
+   "Ahithophel",
+   "Jehiel the son of Hachmoni",
+   "Jonathan"
+  ],
+  "answer": 2,
+  "explanation": "Jehiel the son of Hachmoni was with the king's sons.",
+  "ref": "1 Chronicles 27:32"
+ },
+ {
+  "id": "1-chronicles-27-m-14",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who came after Ahithophel as the king's counsellor, along with Jehoiada?",
+  "choices": [
+   "Hushai",
+   "Joab",
+   "Zadok",
+   "Abiathar"
+  ],
+  "answer": 3,
+  "explanation": "After Ahithophel was Jehoiada the son of Benaiah, and Abiathar.",
+  "ref": "1 Chronicles 27:34"
+ },
+ {
+  "id": "1-chronicles-27-m-15",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was Joab's unfinished number not put in the account?",
+  "choices": [
+   "The chronicles of king David",
+   "The temple treasury",
+   "The tablets of the law",
+   "The book of Jasher"
+  ],
+  "answer": 0,
+  "explanation": "Neither was the number put in the account of the chronicles of king David.",
+  "ref": "1 Chronicles 27:24"
+ },
+ {
+  "id": "1-chronicles-27-m-16",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who began to number the people but did not finish?",
+  "choices": [
+   "Abner",
+   "Joab the son of Zeruiah",
+   "Benaiah",
+   "Asahel"
+  ],
+  "answer": 1,
+  "explanation": "Joab the son of Zeruiah began to number, but he finished not, because there fell wrath for it against Israel.",
+  "ref": "1 Chronicles 27:24"
+ },
+ {
+  "id": "1-chronicles-27-m-17",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Which relative of David was a counsellor, a wise man, and a scribe?",
+  "choices": [
+   "His brother Elihu",
+   "His son Absalom",
+   "Jonathan his uncle",
+   "His cousin Joab"
+  ],
+  "answer": 2,
+  "explanation": "Jonathan David's uncle was a counsellor, a wise man, and a scribe.",
+  "ref": "1 Chronicles 27:32"
+ },
+ {
+  "id": "1-chronicles-27-h-01",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was over the course of the second month?",
+  "choices": [
+   "Ira",
+   "Dodai an Ahohite",
+   "Shamhuth",
+   "Helez"
+  ],
+  "answer": 1,
+  "explanation": "Over the course of the second month was Dodai an Ahohite.",
+  "ref": "1 Chronicles 27:4"
+ },
+ {
+  "id": "1-chronicles-27-h-02",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was also the ruler in the course of Dodai the Ahohite?",
+  "choices": [
+   "Mikloth",
+   "Zebadiah",
+   "Ammizabad",
+   "Maharai"
+  ],
+  "answer": 0,
+  "explanation": "Over the course of the second month was Dodai an Ahohite, and of his course was Mikloth also the ruler.",
+  "ref": "1 Chronicles 27:4"
+ },
+ {
+  "id": "1-chronicles-27-h-03",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "The chief captain for the first month was of the children of whom?",
+  "choices": [
+   "Judah",
+   "Zerah",
+   "Perez",
+   "Ephraim"
+  ],
+  "answer": 2,
+  "explanation": "Of the children of Perez was the chief of all the captains of the host for the first month.",
+  "ref": "1 Chronicles 27:3"
+ },
+ {
+  "id": "1-chronicles-27-h-04",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the fifth captain, for the fifth month?",
+  "choices": [
+   "Ira the Tekoite",
+   "Helez the Pelonite",
+   "Heldai",
+   "Shamhuth the Izrahite"
+  ],
+  "answer": 3,
+  "explanation": "The fifth captain for the fifth month was Shamhuth the Izrahite.",
+  "ref": "1 Chronicles 27:8"
+ },
+ {
+  "id": "1-chronicles-27-h-05",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the sixth captain, the son of Ikkesh the Tekoite?",
+  "choices": [
+   "Ira",
+   "Shamhuth",
+   "Helez",
+   "Maharai"
+  ],
+  "answer": 0,
+  "explanation": "The sixth captain for the sixth month was Ira the son of Ikkesh the Tekoite.",
+  "ref": "1 Chronicles 27:9"
+ },
+ {
+  "id": "1-chronicles-27-h-06",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Helez the Pelonite, the seventh captain, was of the children of which tribe?",
+  "choices": [
+   "Benjamin",
+   "Ephraim",
+   "Judah",
+   "Manasseh"
+  ],
+  "answer": 1,
+  "explanation": "The seventh captain for the seventh month was Helez the Pelonite, of the children of Ephraim.",
+  "ref": "1 Chronicles 27:10"
+ },
+ {
+  "id": "1-chronicles-27-h-07",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the eighth captain, of the Zarhites?",
+  "choices": [
+   "Abiezer",
+   "Maharai",
+   "Sibbecai the Hushathite",
+   "Heldai"
+  ],
+  "answer": 2,
+  "explanation": "The eighth captain for the eighth month was Sibbecai the Hushathite, of the Zarhites.",
+  "ref": "1 Chronicles 27:11"
+ },
+ {
+  "id": "1-chronicles-27-h-08",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Abiezer the Anetothite, the ninth captain, was of which tribe?",
+  "choices": [
+   "Ephraim",
+   "Judah",
+   "Dan",
+   "Benjamin"
+  ],
+  "answer": 3,
+  "explanation": "The ninth captain for the ninth month was Abiezer the Anetothite, of the Benjamites.",
+  "ref": "1 Chronicles 27:12"
+ },
+ {
+  "id": "1-chronicles-27-h-09",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Which Benaiah was the eleventh captain, of the children of Ephraim?",
+  "choices": [
+   "The Pirathonite",
+   "The son of Jehoiada",
+   "The Netophathite",
+   "The Tekoite"
+  ],
+  "answer": 0,
+  "explanation": "The eleventh captain for the eleventh month was Benaiah the Pirathonite, of the children of Ephraim.",
+  "ref": "1 Chronicles 27:14"
+ },
+ {
+  "id": "1-chronicles-27-h-10",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the twelfth captain, of Othniel?",
+  "choices": [
+   "Maharai",
+   "Heldai the Netophathite",
+   "Abiezer",
+   "Sibbecai"
+  ],
+  "answer": 1,
+  "explanation": "The twelfth captain for the twelfth month was Heldai the Netophathite, of Othniel.",
+  "ref": "1 Chronicles 27:15"
+ },
+ {
+  "id": "1-chronicles-27-h-11",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the ruler of Issachar, the son of Michael?",
+  "choices": [
+   "Ishmaiah",
+   "Jerimoth",
+   "Omri",
+   "Hoshea"
+  ],
+  "answer": 2,
+  "explanation": "Of Issachar, Omri the son of Michael.",
+  "ref": "1 Chronicles 27:18"
+ },
+ {
+  "id": "1-chronicles-27-h-12",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the ruler of Dan, the son of Jeroham?",
+  "choices": [
+   "Jaasiel",
+   "Iddo",
+   "Joel",
+   "Azareel"
+  ],
+  "answer": 3,
+  "explanation": "Of Dan, Azareel the son of Jeroham.",
+  "ref": "1 Chronicles 27:22"
+ },
+ {
+  "id": "1-chronicles-27-h-13",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was over those who did the work of the field for tillage of the ground?",
+  "choices": [
+   "Ezri the son of Chelub",
+   "Zabdi",
+   "Shimei",
+   "Jehonathan"
+  ],
+  "answer": 0,
+  "explanation": "Over them that did the work of the field for tillage of the ground was Ezri the son of Chelub.",
+  "ref": "1 Chronicles 27:26"
+ },
+ {
+  "id": "1-chronicles-27-h-14",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was over the increase of the vineyards for the wine cellars?",
+  "choices": [
+   "Shimei the Ramathite",
+   "Zabdi the Shiphmite",
+   "Joash",
+   "Baal-hanan"
+  ],
+  "answer": 1,
+  "explanation": "Over the increase of the vineyards for the wine cellars was Zabdi the Shiphmite.",
+  "ref": "1 Chronicles 27:27"
+ },
+ {
+  "id": "1-chronicles-27-h-15",
+  "chapter": 27,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was over the herds that were in the valleys?",
+  "choices": [
+   "Shitrai",
+   "Jaziz",
+   "Shaphat the son of Adlai",
+   "Obil"
+  ],
+  "answer": 2,
+  "explanation": "Over the herds that were in the valleys was Shaphat the son of Adlai.",
+  "ref": "1 Chronicles 27:29"
  },
  {
   "id": "old-1-chronicles-28-1",
