@@ -7616,6 +7616,566 @@
   "ref": "2 Kings 13:21"
  },
  {
+  "id": "2-kings-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who began to reign over Israel in Samaria at the start of this chapter?",
+  "choices": [
+   "Jehu",
+   "Jehoahaz",
+   "Ahaziah",
+   "Jeroboam"
+  ],
+  "answer": 1,
+  "explanation": "Jehoahaz the son of Jehu began to reign over Israel in Samaria.",
+  "ref": "2 Kings 13:1"
+ },
+ {
+  "id": "2-kings-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jehoahaz do in the sight of the LORD?",
+  "choices": [
+   "He did right",
+   "He did right, yet not like David",
+   "He did evil",
+   "He did right until old age"
+  ],
+  "answer": 2,
+  "explanation": "He did that which was evil in the sight of the LORD.",
+  "ref": "2 Kings 13:2"
+ },
+ {
+  "id": "2-kings-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Israel came down to Elisha when Elisha was sick?",
+  "choices": [
+   "Jehoahaz",
+   "Jehu",
+   "Jeroboam",
+   "Joash"
+  ],
+  "answer": 3,
+  "explanation": "Joash the king of Israel came down unto Elisha and wept over his face.",
+  "ref": "2 Kings 13:14"
+ },
+ {
+  "id": "2-kings-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joash do when he came to the sick Elisha?",
+  "choices": [
+   "He wept over his face",
+   "He tore his clothes",
+   "He prayed all night",
+   "He offered a sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "Joash came down unto him, and wept over his face.",
+  "ref": "2 Kings 13:14"
+ },
+ {
+  "id": "2-kings-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elisha tell Joash to take?",
+  "choices": [
+   "A sword and shield",
+   "Bow and arrows",
+   "Oil and a horn",
+   "A cloak and a staff"
+  ],
+  "answer": 1,
+  "explanation": "Elisha said unto him, Take bow and arrows.",
+  "ref": "2 Kings 13:15"
+ },
+ {
+  "id": "2-kings-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who invaded the land after Elisha died?",
+  "choices": [
+   "The Philistines",
+   "The Edomites",
+   "The bands of the Moabites",
+   "The Ammonites"
+  ],
+  "answer": 2,
+  "explanation": "The bands of the Moabites invaded the land at the coming in of the year.",
+  "ref": "2 Kings 13:20"
+ },
+ {
+  "id": "2-kings-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Israel after Jehoahaz died?",
+  "choices": [
+   "Jeroboam",
+   "Jehu",
+   "Zachariah",
+   "Joash his son"
+  ],
+  "answer": 3,
+  "explanation": "Jehoahaz slept with his fathers, and Joash his son reigned in his stead.",
+  "ref": "2 Kings 13:9"
+ },
+ {
+  "id": "2-kings-13-e-08",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Syria after Hazael died?",
+  "choices": [
+   "Ben-hadad his son",
+   "Rezin",
+   "Benaiah",
+   "Jehoash"
+  ],
+  "answer": 0,
+  "explanation": "Hazael king of Syria died, and Ben-hadad his son reigned in his stead.",
+  "ref": "2 Kings 13:24"
+ },
+ {
+  "id": "2-kings-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose sins did Jehoahaz follow?",
+  "choices": [
+   "Ahab the son of Omri",
+   "Jeroboam the son of Nebat",
+   "Omri the king",
+   "Jehu the son of Nimshi"
+  ],
+  "answer": 1,
+  "explanation": "He followed the sins of Jeroboam the son of Nebat, which made Israel to sin.",
+  "ref": "2 Kings 13:2"
+ },
+ {
+  "id": "2-kings-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD hearken to Jehoahaz when he besought him?",
+  "choices": [
+   "Jehoahaz repented of every idol",
+   "Jehoahaz offered a great sacrifice",
+   "He saw the oppression of Israel",
+   "Elisha prayed for the king"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hearkened for he saw the oppression of Israel, because the king of Syria oppressed them.",
+  "ref": "2 Kings 13:4"
+ },
+ {
+  "id": "2-kings-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose hands did Elisha put his hands upon when the king held the bow?",
+  "choices": [
+   "The servant's hands",
+   "The priest's hands",
+   "The captain's hands",
+   "The king's hands"
+  ],
+  "answer": 3,
+  "explanation": "Elisha put his hands upon the king's hands.",
+  "ref": "2 Kings 13:16"
+ },
+ {
+  "id": "2-kings-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which way did Elisha tell the king to open the window?",
+  "choices": [
+   "Eastward",
+   "Westward",
+   "Northward",
+   "Southward"
+  ],
+  "answer": 0,
+  "explanation": "Elisha said, Open the window eastward.",
+  "ref": "2 Kings 13:17"
+ },
+ {
+  "id": "2-kings-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the arrow that Joash shot stand for?",
+  "choices": [
+   "The LORD's anger against Moab",
+   "The LORD's deliverance from Syria",
+   "Peace with Judah",
+   "The death of Hazael"
+  ],
+  "answer": 1,
+  "explanation": "It was the arrow of the LORD'S deliverance, and the arrow of deliverance from Syria.",
+  "ref": "2 Kings 13:17"
+ },
+ {
+  "id": "2-kings-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Elisha say Joash would smite the Syrians?",
+  "choices": [
+   "Samaria",
+   "Beth-shemesh",
+   "Aphek",
+   "Damascus"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt smite the Syrians in Aphek, till thou have consumed them.",
+  "ref": "2 Kings 13:17"
+ },
+ {
+  "id": "2-kings-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Against which king of Judah did Joash fight with his might?",
+  "choices": [
+   "Joash",
+   "Ahaziah",
+   "Uzziah",
+   "Amaziah"
+  ],
+  "answer": 3,
+  "explanation": "His might wherewith he fought against Amaziah king of Judah is written in the chronicles.",
+  "ref": "2 Kings 13:12"
+ },
+ {
+  "id": "2-kings-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did they cast the dead man who touched Elisha's bones?",
+  "choices": [
+   "Into the sepulchre of Elisha",
+   "Into the Jordan",
+   "Into a cave in Samaria",
+   "Into a pit by the road"
+  ],
+  "answer": 0,
+  "explanation": "They cast the man into the sepulchre of Elisha.",
+  "ref": "2 Kings 13:21"
+ },
+ {
+  "id": "2-kings-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD show compassion to Israel and not destroy them?",
+  "choices": [
+   "Their king had repented",
+   "His covenant with Abraham, Isaac, and Jacob",
+   "Elisha had prayed for them",
+   "They had torn down the high places"
+  ],
+  "answer": 1,
+  "explanation": "The LORD had respect unto them because of his covenant with Abraham, Isaac, and Jacob.",
+  "ref": "2 Kings 13:23"
+ },
+ {
+  "id": "2-kings-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joash take back from Ben-hadad?",
+  "choices": [
+   "The gold of the temple",
+   "The city of Damascus",
+   "The cities his father had lost",
+   "The ark of God"
+  ],
+  "answer": 2,
+  "explanation": "Jehoash took again out of the hand of Ben-hadad the cities which he had taken from Jehoahaz his father.",
+  "ref": "2 Kings 13:25"
+ },
+ {
+  "id": "2-kings-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who sat upon the throne after Joash slept with his fathers?",
+  "choices": [
+   "Jehoahaz",
+   "Jehu",
+   "Amaziah",
+   "Jeroboam"
+  ],
+  "answer": 3,
+  "explanation": "Joash slept with his fathers; and Jeroboam sat upon his throne.",
+  "ref": "2 Kings 13:13"
+ },
+ {
+  "id": "2-kings-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What still remained in Samaria in the days of Jehoahaz?",
+  "choices": [
+   "The grove",
+   "The temple",
+   "The brazen sea",
+   "The ark"
+  ],
+  "answer": 0,
+  "explanation": "There remained the grove also in Samaria.",
+  "ref": "2 Kings 13:6"
+ },
+ {
+  "id": "2-kings-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Who oppressed Israel all the days of Jehoahaz?",
+  "choices": [
+   "The king of Moab",
+   "Hazael king of Syria",
+   "The king of Egypt",
+   "Sennacherib"
+  ],
+  "answer": 1,
+  "explanation": "Hazael king of Syria oppressed Israel all the days of Jehoahaz.",
+  "ref": "2 Kings 13:22"
+ },
+ {
+  "id": "2-kings-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which city did Jehoahaz reign over Israel?",
+  "choices": [
+   "Jerusalem",
+   "Jezreel",
+   "Samaria",
+   "Tirzah"
+  ],
+  "answer": 2,
+  "explanation": "Jehoahaz began to reign over Israel in Samaria.",
+  "ref": "2 Kings 13:1"
+ },
+ {
+  "id": "2-kings-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Jehoahaz reign over Israel?",
+  "choices": [
+   "Twenty-nine",
+   "Forty",
+   "Sixteen",
+   "Seventeen"
+  ],
+  "answer": 3,
+  "explanation": "Jehoahaz reigned seventeen years.",
+  "ref": "2 Kings 13:1"
+ },
+ {
+  "id": "2-kings-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Joash the son of Jehoahaz reign over Israel?",
+  "choices": [
+   "Sixteen",
+   "Seventeen",
+   "Forty-one",
+   "Twenty"
+  ],
+  "answer": 0,
+  "explanation": "Jehoash the son of Jehoahaz reigned sixteen years.",
+  "ref": "2 Kings 13:10"
+ },
+ {
+  "id": "2-kings-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many horsemen did the king of Syria leave to Jehoahaz?",
+  "choices": [
+   "Ten",
+   "Fifty",
+   "Two hundred",
+   "A thousand"
+  ],
+  "answer": 1,
+  "explanation": "He left Jehoahaz but fifty horsemen, and ten chariots, and ten thousand footmen.",
+  "ref": "2 Kings 13:7"
+ },
+ {
+  "id": "2-kings-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many footmen were left to Jehoahaz?",
+  "choices": [
+   "Fifty thousand",
+   "Two hundred",
+   "Ten thousand",
+   "Ten"
+  ],
+  "answer": 2,
+  "explanation": "He left Jehoahaz but fifty horsemen, and ten chariots, and ten thousand footmen.",
+  "ref": "2 Kings 13:7"
+ },
+ {
+  "id": "2-kings-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king of Syria make the people like?",
+  "choices": [
+   "The chaff of the field",
+   "The sand of the sea",
+   "The grass of the field",
+   "The dust by threshing"
+  ],
+  "answer": 3,
+  "explanation": "The king of Syria had made them like the dust by threshing.",
+  "ref": "2 Kings 13:7"
+ },
+ {
+  "id": "2-kings-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times did Elisha say Joash should have smitten the ground?",
+  "choices": [
+   "Five or six times",
+   "Three times",
+   "Seven times",
+   "Ten times"
+  ],
+  "answer": 0,
+  "explanation": "Elisha said, Thou shouldest have smitten five or six times.",
+  "ref": "2 Kings 13:19"
+ },
+ {
+  "id": "2-kings-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the Moabite bands invade the land?",
+  "choices": [
+   "In the heat of summer",
+   "At the coming in of the year",
+   "At harvest time",
+   "In the dead of winter"
+  ],
+  "answer": 1,
+  "explanation": "The bands of the Moabites invaded the land at the coming in of the year.",
+  "ref": "2 Kings 13:20"
+ },
+ {
+  "id": "2-kings-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the burying men cast the dead man into Elisha's tomb?",
+  "choices": [
+   "The grave was too far away",
+   "They had no other tomb ready",
+   "They spied a band of men",
+   "The man had asked to lie there"
+  ],
+  "answer": 2,
+  "explanation": "As they were burying a man, they spied a band of men, and cast him into the sepulchre of Elisha.",
+  "ref": "2 Kings 13:21"
+ },
+ {
+  "id": "2-kings-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times did Joash beat Ben-hadad?",
+  "choices": [
+   "Five times",
+   "Seven times",
+   "Twice",
+   "Three times"
+  ],
+  "answer": 3,
+  "explanation": "Three times did Joash beat him, and recovered the cities of Israel.",
+  "ref": "2 Kings 13:25"
+ },
+ {
+  "id": "2-kings-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Israel dwell after the LORD gave them a saviour?",
+  "choices": [
+   "In their tents",
+   "In walled cities",
+   "In the hill country",
+   "In Samaria"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel dwelt in their tents, as beforetime.",
+  "ref": "2 Kings 13:5"
+ },
+ {
+  "id": "2-kings-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Ben-hadad that Joash fought?",
+  "choices": [
+   "Jehu",
+   "Hazael",
+   "Rezin",
+   "Naaman"
+  ],
+  "answer": 1,
+  "explanation": "Ben-hadad was the son of Hazael king of Syria.",
+  "ref": "2 Kings 13:25"
+ },
+ {
+  "id": "2-kings-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Jehoahaz?",
+  "choices": [
+   "Ahab",
+   "Jehoram",
+   "Jehu",
+   "Joash"
+  ],
+  "answer": 2,
+  "explanation": "Jehoahaz was the son of Jehu.",
+  "ref": "2 Kings 13:1"
+ },
+ {
+  "id": "2-kings-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whose hand had Ben-hadad taken the cities Joash won back?",
+  "choices": [
+   "Ahab, Joash's grandfather",
+   "Jehu, Joash's grandfather",
+   "Amaziah king of Judah",
+   "Jehoahaz, Joash's father"
+  ],
+  "answer": 3,
+  "explanation": "Jehoash took the cities which he had taken out of the hand of Jehoahaz his father by war.",
+  "ref": "2 Kings 13:25"
+ },
+ {
   "id": "old-2-kings-14-1",
   "chapter": 14,
   "level": "beginner",
