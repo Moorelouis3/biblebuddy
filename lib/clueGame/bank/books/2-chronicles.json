@@ -9072,6 +9072,214 @@
   "ref": "2 Chronicles 19:11"
  },
  {
+  "id": "2-chronicles-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Jehu's father, the seer?",
+  "choices": [
+   "Hanani",
+   "Oded",
+   "Iddo",
+   "Nathan"
+  ],
+  "answer": 0,
+  "explanation": "Jehu the son of Hanani the seer went out to meet Jehoshaphat.",
+  "ref": "2 Chronicles 19:2"
+ },
+ {
+  "id": "2-chronicles-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehu ask Jehoshaphat about helping the ungodly?",
+  "choices": [
+   "Why did you go to war?",
+   "Where is your army?",
+   "Will you seek the Lord?",
+   "Shouldest thou help them, and love them that hate the Lord?"
+  ],
+  "answer": 3,
+  "explanation": "Jehu said, Shouldest thou help the ungodly, and love them that hate the LORD?",
+  "ref": "2 Chronicles 19:2"
+ },
+ {
+  "id": "2-chronicles-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoshaphat do from Beer-sheba to mount Ephraim?",
+  "choices": [
+   "Fought the Philistines",
+   "Brought the people back to the Lord God of their fathers",
+   "Collected taxes",
+   "Built fortresses"
+  ],
+  "answer": 1,
+  "explanation": "He went out again through the people from Beer-sheba to mount Ephraim, and brought them back unto the LORD God of their fathers.",
+  "ref": "2 Chronicles 19:4"
+ },
+ {
+  "id": "2-chronicles-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Jehoshaphat set judges in the land?",
+  "choices": [
+   "Only in Jerusalem",
+   "In the cities of Israel",
+   "In the tents of the Levites",
+   "Throughout all the fenced cities of Judah"
+  ],
+  "answer": 3,
+  "explanation": "He set judges in the land throughout all the fenced cities of Judah, city by city.",
+  "ref": "2 Chronicles 19:5"
+ },
+ {
+  "id": "2-chronicles-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whom did Jehoshaphat say the judges judge?",
+  "choices": [
+   "Not for man, but for the Lord",
+   "For the king",
+   "For the elders",
+   "For the priests"
+  ],
+  "answer": 0,
+  "explanation": "Ye judge not for man, but for the LORD, who is with you in the judgment.",
+  "ref": "2 Chronicles 19:6"
+ },
+ {
+  "id": "2-chronicles-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoshaphat say there is not with the Lord?",
+  "choices": [
+   "Hunger or thirst",
+   "Sleep or weariness",
+   "Iniquity, respect of persons, or taking of gifts",
+   "Anger or wrath"
+  ],
+  "answer": 2,
+  "explanation": "There is no iniquity with the LORD our God, nor respect of persons, nor taking of gifts.",
+  "ref": "2 Chronicles 19:7"
+ },
+ {
+  "id": "2-chronicles-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the chief priest over all matters of the Lord?",
+  "choices": [
+   "Amariah",
+   "Zebadiah",
+   "Jehu",
+   "Hanani"
+  ],
+  "answer": 0,
+  "explanation": "Amariah the chief priest is over you in all matters of the LORD.",
+  "ref": "2 Chronicles 19:11"
+ },
+ {
+  "id": "2-chronicles-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the ruler of the house of Judah for all the king's matters?",
+  "choices": [
+   "Adnah",
+   "Zebadiah the son of Ishmael",
+   "Amariah",
+   "Jehu son of Hanani"
+  ],
+  "answer": 1,
+  "explanation": "Zebadiah the son of Ishmael, the ruler of the house of Judah, for all the king's matters.",
+  "ref": "2 Chronicles 19:11"
+ },
+ {
+  "id": "2-chronicles-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What good thing did Jehu say was found in Jehoshaphat?",
+  "choices": [
+   "He built a temple",
+   "He defeated Syria",
+   "He fasted",
+   "He took away the groves and prepared his heart to seek God"
+  ],
+  "answer": 3,
+  "explanation": "There are good things found in thee, in that thou hast taken away the groves, and hast prepared thine heart to seek God.",
+  "ref": "2 Chronicles 19:3"
+ },
+ {
+  "id": "2-chronicles-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "From where did Jehoshaphat go out through the people to mount Ephraim?",
+  "choices": [
+   "Bethel",
+   "Beer-sheba",
+   "Hebron",
+   "Gibeon"
+  ],
+  "answer": 1,
+  "explanation": "He went out again through the people from Beer-sheba to mount Ephraim.",
+  "ref": "2 Chronicles 19:4"
+ },
+ {
+  "id": "2-chronicles-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jehoshaphat say the judges must let be upon them?",
+  "choices": [
+   "Their own wisdom",
+   "The counsel of priests",
+   "The fear of the Lord",
+   "The fear of the king"
+  ],
+  "answer": 2,
+  "explanation": "Let the fear of the LORD be upon you; take heed and do it.",
+  "ref": "2 Chronicles 19:7"
+ },
+ {
+  "id": "2-chronicles-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How were the judges told to act in the fear of the Lord?",
+  "choices": [
+   "Faithfully, and with a perfect heart",
+   "Quickly and mercifully",
+   "Secretly and boldly",
+   "Loudly and firmly"
+  ],
+  "answer": 0,
+  "explanation": "Thus shall ye do in the fear of the LORD, faithfully, and with a perfect heart.",
+  "ref": "2 Chronicles 19:9"
+ },
+ {
+  "id": "2-chronicles-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jehoshaphat tell the judges to do, so the Lord would be with the good?",
+  "choices": [
+   "Deal secretly",
+   "Deal gently",
+   "Deal courageously",
+   "Deal swiftly"
+  ],
+  "answer": 2,
+  "explanation": "Deal courageously, and the LORD shall be with the good.",
+  "ref": "2 Chronicles 19:11"
+ },
+ {
   "id": "old-2-chronicles-20-1",
   "chapter": 20,
   "level": "beginner",
