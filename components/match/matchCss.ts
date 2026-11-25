@@ -305,6 +305,12 @@ html.bb-native.bb-game-screen body::before { display:none !important; }
 /* ---- the story screen after a win (WinStory): one picture, popping in and playing out ---- */
 .bbm-story { position:fixed; inset:0; z-index:40; display:grid; place-items:center; background:#120c06; overflow:hidden; animation: bbm-story-bg .35s ease-out both; }
 @keyframes bbm-story-bg { from { background-color: rgba(18,12,6,0); } }
+/* In the apps every [role="dialog"] gets the status bar's height as top
+   padding (globals.css), which is right for a popup with a close button and
+   wrong here: it pushed the picture down and left a blank strip under the
+   clock (Louis, 2026-11-25). The story is one full-screen picture, so it runs
+   to the very top like the board and the map do. */
+html.bb-native .bbm-story { padding-top: 0 !important; }
 .bbm-story-blur { position:absolute; inset:-40px; background-size:cover; background-position:center; filter: blur(24px) brightness(.7); animation: bbm-story-fade .4s ease-out both; }
 @keyframes bbm-story-fade { from { opacity:0; } }
 /* The picture is always the full screen height, top to bottom, so the title and the button

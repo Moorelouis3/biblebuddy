@@ -848,6 +848,646 @@
   "ref": "Nehemiah 3:1\u201332"
  },
  {
+  "id": "nehemiah-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who rose up first with his brethren the priests to build?",
+  "choices": [
+   "Eliashib the high priest",
+   "Meremoth the son of Urijah",
+   "Hanun of Zanoah",
+   "Shallum the son of Halohesh"
+  ],
+  "answer": 0,
+  "explanation": "Then Eliashib the high priest rose up with his brethren the priests, and they builded the sheep gate.",
+  "ref": "Nehemiah 3:1"
+ },
+ {
+  "id": "nehemiah-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the priests do to the sheep gate after building it?",
+  "choices": [
+   "Painted it",
+   "Guarded it",
+   "Named it",
+   "Sanctified it"
+  ],
+  "answer": 3,
+  "explanation": "They builded the sheep gate; they sanctified it, and set up the doors of it.",
+  "ref": "Nehemiah 3:1"
+ },
+ {
+  "id": "nehemiah-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who built the fish gate?",
+  "choices": [
+   "The men of Jericho",
+   "The Tekoites",
+   "The sons of Hassenaah",
+   "The goldsmiths"
+  ],
+  "answer": 2,
+  "explanation": "The fish gate did the sons of Hassenaah build.",
+  "ref": "Nehemiah 3:3"
+ },
+ {
+  "id": "nehemiah-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who built next to Eliashib and the priests?",
+  "choices": [
+   "The Tekoites",
+   "The men of Jericho",
+   "The Levites",
+   "The Gibeonites"
+  ],
+  "answer": 1,
+  "explanation": "And next unto him builded the men of Jericho.",
+  "ref": "Nehemiah 3:2"
+ },
+ {
+  "id": "nehemiah-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who repaired his part of the wall with his daughters?",
+  "choices": [
+   "Shallum the son of Halohesh",
+   "Hanun of Zanoah",
+   "Malchiah the son of Rechab",
+   "Rephaiah the son of Hur"
+  ],
+  "answer": 0,
+  "explanation": "Shallum the son of Halohesh, the ruler of the half part of Jerusalem, repaired, he and his daughters.",
+  "ref": "Nehemiah 3:12"
+ },
+ {
+  "id": "nehemiah-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who repaired the valley gate?",
+  "choices": [
+   "The sons of Hassenaah",
+   "The men of Jericho",
+   "The Nethinims",
+   "Hanun and the inhabitants of Zanoah"
+  ],
+  "answer": 3,
+  "explanation": "The valley gate repaired Hanun, and the inhabitants of Zanoah.",
+  "ref": "Nehemiah 3:13"
+ },
+ {
+  "id": "nehemiah-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who repaired the dung gate?",
+  "choices": [
+   "Shallun the son of Col-hozeh",
+   "Hanun of Zanoah",
+   "Malchiah the son of Rechab",
+   "Meremoth the son of Urijah"
+  ],
+  "answer": 2,
+  "explanation": "The dung gate repaired Malchiah the son of Rechab, the ruler of part of Beth-haccerem.",
+  "ref": "Nehemiah 3:14"
+ },
+ {
+  "id": "nehemiah-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the Nethinims dwell?",
+  "choices": [
+   "In Jericho",
+   "In Ophel",
+   "In Zanoah",
+   "In Keilah"
+  ],
+  "answer": 1,
+  "explanation": "The Nethinims dwelt in Ophel.",
+  "ref": "Nehemiah 3:26"
+ },
+ {
+  "id": "nehemiah-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who repaired between the going up of the corner and the sheep gate?",
+  "choices": [
+   "The goldsmiths and the merchants",
+   "The priests",
+   "The Levites",
+   "The Tekoites"
+  ],
+  "answer": 0,
+  "explanation": "Between the going up of the corner unto the sheep gate repaired the goldsmiths and the merchants.",
+  "ref": "Nehemiah 3:32"
+ },
+ {
+  "id": "nehemiah-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who repaired the old gate?",
+  "choices": [
+   "Hanun and Zanoah",
+   "Eliashib and the priests",
+   "Shallun and Rehum",
+   "Jehoiada and Meshullam"
+  ],
+  "answer": 3,
+  "explanation": "The old gate repaired Jehoiada the son of Paseah, and Meshullam the son of Besodeiah.",
+  "ref": "Nehemiah 3:6"
+ },
+ {
+  "id": "nehemiah-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "How far did Eliashib and the priests sanctify the wall?",
+  "choices": [
+   "To the dung gate",
+   "To the water gate",
+   "To the tower of Meah and the tower of Hananeel",
+   "To the corner of the temple"
+  ],
+  "answer": 2,
+  "explanation": "Even unto the tower of Meah they sanctified it, unto the tower of Hananeel.",
+  "ref": "Nehemiah 3:1"
+ },
+ {
+  "id": "nehemiah-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the sons of Hassenaah set up on the fish gate?",
+  "choices": [
+   "Towers and watchmen",
+   "Doors, locks and bars",
+   "Altars",
+   "Steps"
+  ],
+  "answer": 1,
+  "explanation": "They laid the beams thereof, and set up the doors thereof, the locks thereof, and the bars thereof.",
+  "ref": "Nehemiah 3:3"
+ },
+ {
+  "id": "nehemiah-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Uzziel's trade?",
+  "choices": [
+   "A goldsmith",
+   "An apothecary",
+   "A merchant",
+   "A shepherd"
+  ],
+  "answer": 0,
+  "explanation": "Next unto him repaired Uzziel the son of Harhaiah, of the goldsmiths.",
+  "ref": "Nehemiah 3:8"
+ },
+ {
+  "id": "nehemiah-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What office did Rephaiah the son of Hur hold?",
+  "choices": [
+   "Keeper of the east gate",
+   "Chief of the Nethinims",
+   "High priest",
+   "Ruler of half of Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "Rephaiah the son of Hur, the ruler of the half part of Jerusalem.",
+  "ref": "Nehemiah 3:9"
+ },
+ {
+  "id": "nehemiah-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cubits of the wall did the group at the valley gate repair?",
+  "choices": [
+   "Fifty",
+   "Two hundred",
+   "A thousand",
+   "Ten thousand"
+  ],
+  "answer": 2,
+  "explanation": "They set up the doors, locks and bars, and a thousand cubits on the wall unto the dung gate.",
+  "ref": "Nehemiah 3:13"
+ },
+ {
+  "id": "nehemiah-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "Of which place was Nehemiah the son of Azbuk ruler of half?",
+  "choices": [
+   "Keilah",
+   "Beth-zur",
+   "Mizpah",
+   "Zanoah"
+  ],
+  "answer": 1,
+  "explanation": "After him repaired Nehemiah the son of Azbuk, the ruler of the half part of Beth-zur.",
+  "ref": "Nehemiah 3:16"
+ },
+ {
+  "id": "nehemiah-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who repaired after the Levites' Rehum?",
+  "choices": [
+   "Hashabiah, ruler of half of Keilah",
+   "Baruch the son of Zabbai",
+   "Ezer the son of Jeshua",
+   "Pedaiah the son of Parosh"
+  ],
+  "answer": 0,
+  "explanation": "After him repaired the Levites, Rehum the son of Bani. Next unto him repaired Hashabiah, the ruler of the half part of Keilah.",
+  "ref": "Nehemiah 3:17"
+ },
+ {
+  "id": "nehemiah-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Which builder is said to have repaired earnestly?",
+  "choices": [
+   "Hanun the sixth son of Zalaph",
+   "Binnui the son of Henadad",
+   "Palal the son of Uzai",
+   "Baruch the son of Zabbai"
+  ],
+  "answer": 3,
+  "explanation": "Baruch the son of Zabbai earnestly repaired the other piece.",
+  "ref": "Nehemiah 3:20"
+ },
+ {
+  "id": "nehemiah-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who repaired after Meremoth's second piece?",
+  "choices": [
+   "The Tekoites",
+   "The goldsmiths",
+   "The priests, the men of the plain",
+   "The Gibeonites"
+  ],
+  "answer": 2,
+  "explanation": "And after him repaired the priests, the men of the plain.",
+  "ref": "Nehemiah 3:22"
+ },
+ {
+  "id": "nehemiah-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the keeper of the east gate?",
+  "choices": [
+   "Zadok the son of Immer",
+   "Shemaiah the son of Shechaniah",
+   "Hananiah the son of Shelemiah",
+   "Baruch the son of Zabbai"
+  ],
+  "answer": 1,
+  "explanation": "Shemaiah the son of Shechaniah, the keeper of the east gate.",
+  "ref": "Nehemiah 3:29"
+ },
+ {
+  "id": "nehemiah-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Which group repaired a second piece after their nobles held back?",
+  "choices": [
+   "The Tekoites",
+   "The Gibeonites",
+   "The Levites",
+   "The men of Jericho"
+  ],
+  "answer": 0,
+  "explanation": "After them the Tekoites repaired another piece, over against the great tower.",
+  "ref": "Nehemiah 3:27"
+ },
+ {
+  "id": "nehemiah-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Shallun do to the gate of the fountain besides build it?",
+  "choices": [
+   "Painted it",
+   "Guarded it",
+   "Named it",
+   "Covered it"
+  ],
+  "answer": 3,
+  "explanation": "He built it, and covered it, and set up the doors thereof, the locks thereof, and the bars thereof.",
+  "ref": "Nehemiah 3:15"
+ },
+ {
+  "id": "nehemiah-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "Of which place was Malchiah the son of Rechab ruler of part?",
+  "choices": [
+   "Beth-zur",
+   "Mizpah",
+   "Beth-haccerem",
+   "Keilah"
+  ],
+  "answer": 2,
+  "explanation": "Malchiah the son of Rechab, the ruler of part of Beth-haccerem.",
+  "ref": "Nehemiah 3:14"
+ },
+ {
+  "id": "nehemiah-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who repaired from above the horse gate?",
+  "choices": [
+   "The Levites",
+   "The priests, each over against his house",
+   "The merchants",
+   "The Nethinims"
+  ],
+  "answer": 1,
+  "explanation": "From above the horse gate repaired the priests, every one over against his house.",
+  "ref": "Nehemiah 3:28"
+ },
+ {
+  "id": "nehemiah-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the nobles of the Tekoites act toward the work?",
+  "choices": [
+   "They did not put their necks to the work of their Lord",
+   "They paid for the work",
+   "They led the builders",
+   "They gave their sons"
+  ],
+  "answer": 0,
+  "explanation": "Their nobles put not their necks to the work of their Lord.",
+  "ref": "Nehemiah 3:5"
+ },
+ {
+  "id": "nehemiah-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Zaccur, who built next to the men of Jericho, was the son of whom?",
+  "choices": [
+   "Koz",
+   "Baana",
+   "Paseah",
+   "Imri"
+  ],
+  "answer": 3,
+  "explanation": "Next to them builded Zaccur the son of Imri.",
+  "ref": "Nehemiah 3:2"
+ },
+ {
+  "id": "nehemiah-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Zadok who repaired near Meremoth was the son of whom?",
+  "choices": [
+   "Immer",
+   "Imri",
+   "Baana",
+   "Harim"
+  ],
+  "answer": 2,
+  "explanation": "Next unto them repaired Zadok the son of Baana.",
+  "ref": "Nehemiah 3:4"
+ },
+ {
+  "id": "nehemiah-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Jehoiada, who repaired the old gate, was the son of whom?",
+  "choices": [
+   "Besodeiah",
+   "Paseah",
+   "Koz",
+   "Harumaph"
+  ],
+  "answer": 1,
+  "explanation": "The old gate repaired Jehoiada the son of Paseah.",
+  "ref": "Nehemiah 3:6"
+ },
+ {
+  "id": "nehemiah-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Up to which wall did Uzziel and Hananiah fortify Jerusalem?",
+  "choices": [
+   "The broad wall",
+   "The old wall",
+   "The wall of Ophel",
+   "The corner wall"
+  ],
+  "answer": 0,
+  "explanation": "They fortified Jerusalem unto the broad wall.",
+  "ref": "Nehemiah 3:8"
+ },
+ {
+  "id": "nehemiah-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides the other piece, which tower did Malchijah and Hashub repair?",
+  "choices": [
+   "The tower of Meah",
+   "The great tower",
+   "The tower of Hananeel",
+   "The tower of the furnaces"
+  ],
+  "answer": 3,
+  "explanation": "Malchijah and Hashub repaired the other piece, and the tower of the furnaces.",
+  "ref": "Nehemiah 3:11"
+ },
+ {
+  "id": "nehemiah-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Hanun, who repaired another piece, was which son of Zalaph?",
+  "choices": [
+   "The first",
+   "The third",
+   "The sixth",
+   "The seventh"
+  ],
+  "answer": 2,
+  "explanation": "Hanun the sixth son of Zalaph repaired another piece.",
+  "ref": "Nehemiah 3:30"
+ },
+ {
+  "id": "nehemiah-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Binnui, who repaired another piece, was the son of whom?",
+  "choices": [
+   "Zalaph",
+   "Henadad",
+   "Hur",
+   "Koz"
+  ],
+  "answer": 1,
+  "explanation": "After him repaired Binnui the son of Henadad another piece.",
+  "ref": "Nehemiah 3:24"
+ },
+ {
+  "id": "nehemiah-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Palal's piece was over against a tower by which place?",
+  "choices": [
+   "The court of the prison",
+   "The pool of Siloah",
+   "The armoury",
+   "The horse gate"
+  ],
+  "answer": 0,
+  "explanation": "Palal repaired the tower which lieth out from the king's high house, that was by the court of the prison.",
+  "ref": "Nehemiah 3:25"
+ },
+ {
+  "id": "nehemiah-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Pedaiah, who repaired after Palal, was the son of whom?",
+  "choices": [
+   "Uzai",
+   "Zalaph",
+   "Immer",
+   "Parosh"
+  ],
+  "answer": 3,
+  "explanation": "After him Pedaiah the son of Parosh.",
+  "ref": "Nehemiah 3:25"
+ },
+ {
+  "id": "nehemiah-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who repaired near the gate Miphkad?",
+  "choices": [
+   "Baruch the son of Zabbai",
+   "Shemaiah the son of Shechaniah",
+   "Malchiah the goldsmith's son",
+   "Hanun of Zanoah"
+  ],
+  "answer": 2,
+  "explanation": "Malchiah the goldsmith's son repaired over against the gate Miphkad.",
+  "ref": "Nehemiah 3:31"
+ },
+ {
+  "id": "nehemiah-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "To whose house did Baruch repair, from the turning of the wall?",
+  "choices": [
+   "Azariah the son of Maaseiah",
+   "Eliashib the high priest",
+   "Meremoth the son of Urijah",
+   "Zadok the son of Immer"
+  ],
+  "answer": 1,
+  "explanation": "Baruch repaired from the turning of the wall unto the door of the house of Eliashib the high priest.",
+  "ref": "Nehemiah 3:20"
+ },
+ {
+  "id": "nehemiah-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who repaired two different pieces of the wall?",
+  "choices": [
+   "Meremoth the son of Urijah",
+   "Rehum the son of Bani",
+   "Binnui the son of Henadad",
+   "Azariah the son of Maaseiah"
+  ],
+  "answer": 0,
+  "explanation": "Meremoth the son of Urijah repaired one piece, and after others he repaired another piece, from the door of Eliashib's house.",
+  "ref": "Nehemiah 3:21"
+ },
+ {
+  "id": "nehemiah-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Bavai, a ruler of half of Keilah, was the son of whom?",
+  "choices": [
+   "Bani",
+   "Zabbai",
+   "Jeshua",
+   "Henadad"
+  ],
+  "answer": 3,
+  "explanation": "After him repaired their brethren, Bavai the son of Henadad, the ruler of the half part of Keilah.",
+  "ref": "Nehemiah 3:18"
+ },
+ {
+  "id": "nehemiah-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Ezer the son of Jeshua, ruler of Mizpah, repaired over against what?",
+  "choices": [
+   "The east gate",
+   "The king's garden",
+   "The going up to the armoury",
+   "The tower of Meah"
+  ],
+  "answer": 2,
+  "explanation": "Ezer repaired another piece over against the going up to the armoury at the turning of the wall.",
+  "ref": "Nehemiah 3:19"
+ },
+ {
+  "id": "nehemiah-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who repaired over against his chamber?",
+  "choices": [
+   "Zadok the son of Immer",
+   "Meshullam the son of Berechiah",
+   "Hanun the sixth son of Zalaph",
+   "Hananiah the son of Shelemiah"
+  ],
+  "answer": 1,
+  "explanation": "After him repaired Meshullam the son of Berechiah over against his chamber.",
+  "ref": "Nehemiah 3:30"
+ },
+ {
   "id": "old-nehemiah-4-1",
   "chapter": 4,
   "level": "beginner",
