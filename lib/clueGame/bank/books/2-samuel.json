@@ -10960,6 +10960,646 @@
   "ref": "2 Samuel 16:21–22"
  },
  {
+  "id": "2-samuel-16-e-01",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose servant was Ziba?",
+  "choices": [
+   "Shimei's",
+   "Mephibosheth's",
+   "Ahithophel's",
+   "Hushai's"
+  ],
+  "answer": 1,
+  "explanation": "Ziba the servant of Mephibosheth met him, with a couple of asses saddled.",
+  "ref": "2 Samuel 16:1"
+ },
+ {
+  "id": "2-samuel-16-e-02",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ziba say the asses were for?",
+  "choices": [
+   "The king's household to ride on",
+   "To carry the ark",
+   "To plough the field",
+   "To be sacrificed"
+  ],
+  "answer": 0,
+  "explanation": "Ziba said, The asses be for the king's household to ride on.",
+  "ref": "2 Samuel 16:2"
+ },
+ {
+  "id": "2-samuel-16-e-03",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Shimei come out to curse David?",
+  "choices": [
+   "Hebron",
+   "Jericho",
+   "Gibeah",
+   "Bahurim"
+  ],
+  "answer": 3,
+  "explanation": "When king David came to Bahurim, behold, thence came out a man of the family of the house of Saul, whose name was Shimei.",
+  "ref": "2 Samuel 16:5"
+ },
+ {
+  "id": "2-samuel-16-e-04",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Of whose family was Shimei?",
+  "choices": [
+   "The house of Jonathan",
+   "The house of Zadok",
+   "The house of Saul",
+   "The house of Ittai"
+  ],
+  "answer": 2,
+  "explanation": "Thence came out a man of the family of the house of Saul, whose name was Shimei, the son of Gera.",
+  "ref": "2 Samuel 16:5"
+ },
+ {
+  "id": "2-samuel-16-e-05",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Shimei call David when he cursed him?",
+  "choices": [
+   "A shepherd boy",
+   "A bloody man",
+   "A false prophet",
+   "A coward"
+  ],
+  "answer": 1,
+  "explanation": "Come out, come out, thou bloody man, and thou man of Belial.",
+  "ref": "2 Samuel 16:7"
+ },
+ {
+  "id": "2-samuel-16-e-06",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did David say had told Shimei to curse him?",
+  "choices": [
+   "The LORD",
+   "Absalom",
+   "Ahithophel",
+   "Saul's house"
+  ],
+  "answer": 0,
+  "explanation": "Let him curse, because the LORD hath said unto him, Curse David.",
+  "ref": "2 Samuel 16:10"
+ },
+ {
+  "id": "2-samuel-16-e-07",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say his own son was seeking?",
+  "choices": [
+   "His crown",
+   "His house",
+   "His wives",
+   "His life"
+  ],
+  "answer": 3,
+  "explanation": "Behold, my son, which came forth of my bowels, seeketh my life.",
+  "ref": "2 Samuel 16:11"
+ },
+ {
+  "id": "2-samuel-16-e-08",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hushai say to Absalom when he came?",
+  "choices": [
+   "Peace be with thee",
+   "The LORD curse thee",
+   "God save the king",
+   "Hail, Judge of Israel"
+  ],
+  "answer": 2,
+  "explanation": "Hushai said unto Absalom, God save the king, God save the king.",
+  "ref": "2 Samuel 16:16"
+ },
+ {
+  "id": "2-samuel-16-e-09",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to Jerusalem with Absalom and the men of Israel?",
+  "choices": [
+   "Ittai",
+   "Ahithophel",
+   "Zadok",
+   "Joab"
+  ],
+  "answer": 1,
+  "explanation": "Absalom, and all the people the men of Israel, came to Jerusalem, and Ahithophel with him.",
+  "ref": "2 Samuel 16:15"
+ },
+ {
+  "id": "2-samuel-16-e-10",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did they spread a tent for Absalom?",
+  "choices": [
+   "On the top of the house",
+   "In the wilderness",
+   "By the Kidron",
+   "In Hebron"
+  ],
+  "answer": 0,
+  "explanation": "They spread Absalom a tent upon the top of the house.",
+  "ref": "2 Samuel 16:22"
+ },
+ {
+  "id": "2-samuel-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides bread, what else did Ziba bring to David?",
+  "choices": [
+   "Oil and honey",
+   "Swords and spears",
+   "Silver and gold",
+   "Raisins, summer fruits and a bottle of wine"
+  ],
+  "answer": 3,
+  "explanation": "Ziba brought two hundred loaves of bread, an hundred bunches of raisins, an hundred of summer fruits, and a bottle of wine.",
+  "ref": "2 Samuel 16:1"
+ },
+ {
+  "id": "2-samuel-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Ziba say the wine was for?",
+  "choices": [
+   "The priests",
+   "The king alone",
+   "Those faint in the wilderness",
+   "The mighty men"
+  ],
+  "answer": 2,
+  "explanation": "The wine, that such as be faint in the wilderness may drink.",
+  "ref": "2 Samuel 16:2"
+ },
+ {
+  "id": "2-samuel-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say about Mephibosheth's belongings?",
+  "choices": [
+   "They would be returned",
+   "They were all Ziba's",
+   "They would be sold",
+   "They belonged to the king"
+  ],
+  "answer": 1,
+  "explanation": "Behold, thine are all that pertained unto Mephibosheth.",
+  "ref": "2 Samuel 16:4"
+ },
+ {
+  "id": "2-samuel-16-m-04",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Shimei say the LORD had returned on David?",
+  "choices": [
+   "All the blood of the house of Saul",
+   "A curse on his sons",
+   "The famine of Judah",
+   "The sword of Ammon"
+  ],
+  "answer": 0,
+  "explanation": "The LORD hath returned upon thee all the blood of the house of Saul, in whose stead thou hast reigned.",
+  "ref": "2 Samuel 16:8"
+ },
+ {
+  "id": "2-samuel-16-m-05",
+  "chapter": 16,
+  "level": "medium",
+  "category": "person",
+  "question": "Into whose hand did Shimei say the LORD had delivered the kingdom?",
+  "choices": [
+   "Ahithophel's",
+   "Joab's",
+   "Mephibosheth's",
+   "Absalom's"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hath delivered the kingdom into the hand of Absalom thy son.",
+  "ref": "2 Samuel 16:8"
+ },
+ {
+  "id": "2-samuel-16-m-06",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abishai call Shimei?",
+  "choices": [
+   "A fool",
+   "A thief",
+   "A dead dog",
+   "A traitor"
+  ],
+  "answer": 2,
+  "explanation": "Abishai said, Why should this dead dog curse my lord the king?",
+  "ref": "2 Samuel 16:9"
+ },
+ {
+  "id": "2-samuel-16-m-07",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David call Abishai and Joab?",
+  "choices": [
+   "Sons of Thunder",
+   "Sons of Zeruiah",
+   "Sons of Belial",
+   "Sons of Jesse"
+  ],
+  "answer": 1,
+  "explanation": "The king said, What have I to do with you, ye sons of Zeruiah?",
+  "ref": "2 Samuel 16:10"
+ },
+ {
+  "id": "2-samuel-16-m-08",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David compare Shimei with his own son?",
+  "choices": [
+   "If my son seeks my life, how much more this Benjamite",
+   "Shimei was worse than Absalom",
+   "Shimei was Absalom's friend",
+   "Shimei was loyal"
+  ],
+  "answer": 0,
+  "explanation": "My son seeketh my life: how much more now may this Benjamite do it? let him alone, and let him curse.",
+  "ref": "2 Samuel 16:11"
+ },
+ {
+  "id": "2-samuel-16-m-09",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David hope the LORD would do for him?",
+  "choices": [
+   "Strike Shimei dead",
+   "Return him to the throne at once",
+   "Bring back the ark",
+   "Look on his affliction and requite him good"
+  ],
+  "answer": 3,
+  "explanation": "It may be that the LORD will look on mine affliction, and that the LORD will requite me good for his cursing this day.",
+  "ref": "2 Samuel 16:12"
+ },
+ {
+  "id": "2-samuel-16-m-10",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Shimei do as he went along the hill's side?",
+  "choices": [
+   "Wept and followed",
+   "Prayed for David",
+   "Cursed, threw stones and cast dust",
+   "Led an army"
+  ],
+  "answer": 2,
+  "explanation": "Shimei went along on the hill's side over against him, and cursed as he went, and threw stones at him, and cast dust.",
+  "ref": "2 Samuel 16:13"
+ },
+ {
+  "id": "2-samuel-16-m-11",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Absalom ask Hushai when he arrived?",
+  "choices": [
+   "Where is David?",
+   "Is this thy kindness to thy friend?",
+   "Why did you flee?",
+   "Who sent you?"
+  ],
+  "answer": 1,
+  "explanation": "Absalom said to Hushai, Is this thy kindness to thy friend? why wentest thou not with thy friend?",
+  "ref": "2 Samuel 16:17"
+ },
+ {
+  "id": "2-samuel-16-m-12",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Hushai say he would serve?",
+  "choices": [
+   "Whom the LORD, the people and all Israel choose",
+   "Only David",
+   "Only Ahithophel",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "Whom the LORD, and this people, and all the men of Israel, choose, his will I be.",
+  "ref": "2 Samuel 16:18"
+ },
+ {
+  "id": "2-samuel-16-m-13",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hushai say about serving in the presence of Absalom?",
+  "choices": [
+   "He would serve only for a year",
+   "He had no master",
+   "He served the LORD only",
+   "He served the father, so he would serve the son"
+  ],
+  "answer": 3,
+  "explanation": "Should I not serve in the presence of his son? as I have served in thy father's presence, so will I be in thy presence.",
+  "ref": "2 Samuel 16:19"
+ },
+ {
+  "id": "2-samuel-16-m-14",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Absalom ask Ahithophel and the others?",
+  "choices": [
+   "Where is David?",
+   "Who shall be priest?",
+   "Give counsel what we shall do",
+   "When shall we fight?"
+  ],
+  "answer": 2,
+  "explanation": "Absalom said to Ahithophel, Give counsel among you what we shall do.",
+  "ref": "2 Samuel 16:20"
+ },
+ {
+  "id": "2-samuel-16-m-15",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What condition were the king and people in when they stopped to refresh themselves?",
+  "choices": [
+   "Hungry",
+   "Weary",
+   "Wounded",
+   "Armed"
+  ],
+  "answer": 1,
+  "explanation": "The king, and all the people that were with him, came weary, and refreshed themselves there.",
+  "ref": "2 Samuel 16:14"
+ },
+ {
+  "id": "2-samuel-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many loaves of bread did Ziba bring?",
+  "choices": [
+   "Two hundred",
+   "One hundred",
+   "Fifty",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "Ziba brought two hundred loaves of bread.",
+  "ref": "2 Samuel 16:1"
+ },
+ {
+  "id": "2-samuel-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many bunches of raisins did Ziba bring?",
+  "choices": [
+   "Two hundred",
+   "Twelve",
+   "Seven",
+   "An hundred"
+  ],
+  "answer": 3,
+  "explanation": "Ziba brought an hundred bunches of raisins.",
+  "ref": "2 Samuel 16:1"
+ },
+ {
+  "id": "2-samuel-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many asses did Ziba bring?",
+  "choices": [
+   "Four",
+   "Ten",
+   "A couple",
+   "One"
+  ],
+  "answer": 2,
+  "explanation": "Ziba met him with a couple of asses saddled.",
+  "ref": "2 Samuel 16:1"
+ },
+ {
+  "id": "2-samuel-16-h-04",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Shimei's father?",
+  "choices": [
+   "Zeruiah",
+   "Gera",
+   "Ammihud",
+   "Jesse"
+  ],
+  "answer": 1,
+  "explanation": "A man whose name was Shimei, the son of Gera.",
+  "ref": "2 Samuel 16:5"
+ },
+ {
+  "id": "2-samuel-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say no one could ask about Shimei's cursing?",
+  "choices": [
+   "Wherefore hast thou done so?",
+   "Who gave thee leave?",
+   "Why does he not fear?",
+   "Whom does he serve?"
+  ],
+  "answer": 0,
+  "explanation": "So let him curse, because the LORD hath said unto him, Curse David. Who shall then say, Wherefore hast thou done so?",
+  "ref": "2 Samuel 16:10"
+ },
+ {
+  "id": "2-samuel-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "In whose stead did Shimei say David had reigned?",
+  "choices": [
+   "Ish-bosheth's",
+   "Absalom's",
+   "Abner's",
+   "Saul's"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hath returned upon thee all the blood of the house of Saul, in whose stead thou hast reigned.",
+  "ref": "2 Samuel 16:8"
+ },
+ {
+  "id": "2-samuel-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Shimei say David was taken in?",
+  "choices": [
+   "A snare",
+   "A trap of Absalom",
+   "His mischief",
+   "His folly"
+  ],
+  "answer": 2,
+  "explanation": "Behold, thou art taken in thy mischief, because thou art a bloody man.",
+  "ref": "2 Samuel 16:8"
+ },
+ {
+  "id": "2-samuel-16-h-08",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who was on David's right and left hand as Shimei threw stones?",
+  "choices": [
+   "The priests",
+   "All the people and all the mighty men",
+   "The Gittites alone",
+   "Joab and Abishai"
+  ],
+  "answer": 1,
+  "explanation": "All the people and all the mighty men were on his right hand and on his left.",
+  "ref": "2 Samuel 16:6"
+ },
+ {
+  "id": "2-samuel-16-h-09",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Ahithophel's counsel in those days compared to?",
+  "choices": [
+   "One who enquired at the oracle of God",
+   "The words of Samuel",
+   "The laws of Moses",
+   "A prophet's dream"
+  ],
+  "answer": 0,
+  "explanation": "The counsel of Ahithophel was as if a man had enquired at the oracle of God.",
+  "ref": "2 Samuel 16:23"
+ },
+ {
+  "id": "2-samuel-16-h-10",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Ahithophel say Absalom should go in to his father's concubines?",
+  "choices": [
+   "To honour David",
+   "To humble Joab",
+   "To claim the house",
+   "That Israel hear he was abhorred and be strengthened"
+  ],
+  "answer": 3,
+  "explanation": "All Israel shall hear that thou art abhorred of thy father: then shall the hands of all that are with thee be strong.",
+  "ref": "2 Samuel 16:21"
+ },
+ {
+  "id": "2-samuel-16-h-11",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "How is Hushai described when he came to Absalom?",
+  "choices": [
+   "David's servant",
+   "David's captain",
+   "David's friend",
+   "David's brother"
+  ],
+  "answer": 2,
+  "explanation": "When Hushai the Archite, David's friend, was come unto Absalom, Hushai said, God save the king.",
+  "ref": "2 Samuel 16:16"
+ },
+ {
+  "id": "2-samuel-16-h-12",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times did Hushai say 'God save the king'?",
+  "choices": [
+   "Once",
+   "Twice",
+   "Three times",
+   "Seven times"
+  ],
+  "answer": 1,
+  "explanation": "Hushai said unto Absalom, God save the king, God save the king.",
+  "ref": "2 Samuel 16:16"
+ },
+ {
+  "id": "2-samuel-16-h-13",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom did Absalom go in unto his father's concubines?",
+  "choices": [
+   "All Israel",
+   "The priests",
+   "Ahithophel only",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "Absalom went in unto his father's concubines in the sight of all Israel.",
+  "ref": "2 Samuel 16:22"
+ },
+ {
+  "id": "2-samuel-16-h-14",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Shimei do continually as he came forth?",
+  "choices": [
+   "Wept as he came",
+   "Prayed as he came",
+   "Sang as he came",
+   "Cursed still as he came"
+  ],
+  "answer": 3,
+  "explanation": "Shimei came forth, and cursed still as he came.",
+  "ref": "2 Samuel 16:5"
+ },
+ {
+  "id": "2-samuel-16-h-15",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ziba say when David gave him all that was Mephibosheth's?",
+  "choices": [
+   "I do not deserve it",
+   "I will give it to Absalom",
+   "I beseech thee that I may find grace in thy sight",
+   "I will restore it"
+  ],
+  "answer": 2,
+  "explanation": "Ziba said, I humbly beseech thee that I may find grace in thy sight, my lord, O king.",
+  "ref": "2 Samuel 16:4"
+ },
+ {
   "id": "old-2-samuel-17-1",
   "chapter": 17,
   "level": "beginner",
