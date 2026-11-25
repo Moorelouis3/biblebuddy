@@ -5214,5 +5214,645 @@
   "answer": 0,
   "explanation": "He cited Solomon's downfall through foreign wives as a warning.",
   "ref": "Nehemiah 13:26"
+ },
+ {
+  "id": "nehemiah-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From which book did the people read to the audience on that day?",
+  "choices": [
+   "The book of the covenant of Josiah",
+   "The book of Moses",
+   "The book of the chronicles",
+   "The book of Psalms"
+  ],
+  "answer": 1,
+  "explanation": "On that day they read in the book of Moses in the audience of the people.",
+  "ref": "Nehemiah 13:1"
+ },
+ {
+  "id": "nehemiah-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which priest was allied to Tobiah and gave him a chamber in the temple?",
+  "choices": [
+   "Eliashib",
+   "Zadok",
+   "Shelemiah",
+   "Pedaiah"
+  ],
+  "answer": 0,
+  "explanation": "Eliashib the priest, having the oversight of the chamber of the house of our God, was allied unto Tobiah.",
+  "ref": "Nehemiah 13:4"
+ },
+ {
+  "id": "nehemiah-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why had the Levites and singers fled every one to his field?",
+  "choices": [
+   "The wall had fallen",
+   "Persian soldiers drove them out",
+   "They were afraid of Tobiah",
+   "Their portions had not been given them"
+  ],
+  "answer": 3,
+  "explanation": "Nehemiah perceived that the portions of the Levites had not been given them, so the Levites and singers fled every one to his field.",
+  "ref": "Nehemiah 13:10"
+ },
+ {
+  "id": "nehemiah-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who brought the tithe of the corn, new wine, and oil to the treasuries?",
+  "choices": [
+   "The men of Tyre",
+   "The Persian king",
+   "All Judah",
+   "Only the priests"
+  ],
+  "answer": 2,
+  "explanation": "Then brought all Judah the tithe of the corn and the new wine and the oil unto the treasuries.",
+  "ref": "Nehemiah 13:12"
+ },
+ {
+  "id": "nehemiah-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "place",
+  "question": "Men from which city brought fish and wares and sold them on the sabbath?",
+  "choices": [
+   "Samaria",
+   "Tyre",
+   "Ashdod",
+   "Babylon"
+  ],
+  "answer": 1,
+  "explanation": "There dwelt men of Tyre also in Jerusalem, which brought fish, and all manner of ware, and sold on the sabbath.",
+  "ref": "Nehemiah 13:16"
+ },
+ {
+  "id": "nehemiah-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the sellers after Nehemiah warned he would lay hands on them?",
+  "choices": [
+   "They came no more on the sabbath",
+   "They were driven out of Judah",
+   "They paid a fine to the temple",
+   "They sold in secret at night"
+  ],
+  "answer": 0,
+  "explanation": "From that time forth came they no more on the sabbath.",
+  "ref": "Nehemiah 13:21"
+ },
+ {
+  "id": "nehemiah-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was wrong with the speech of the children of the mixed marriages?",
+  "choices": [
+   "They could not speak at all",
+   "They spoke only Persian",
+   "They spoke only the language of Moab",
+   "They spoke half in the speech of Ashdod"
+  ],
+  "answer": 3,
+  "explanation": "Their children spake half in the speech of Ashdod, and could not speak in the Jews’ language.",
+  "ref": "Nehemiah 13:24"
+ },
+ {
+  "id": "nehemiah-13-e-08",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son-in-law was one of the sons of Joiada, whom Nehemiah chased away?",
+  "choices": [
+   "Eliashib the priest",
+   "Artaxerxes the king",
+   "Sanballat the Horonite",
+   "Tobiah the Ammonite"
+  ],
+  "answer": 2,
+  "explanation": "One of the sons of Joiada was son in law to Sanballat the Horonite: therefore Nehemiah chased him from him.",
+  "ref": "Nehemiah 13:28"
+ },
+ {
+  "id": "nehemiah-13-e-09",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nehemiah ask God to do at the end of his reforms?",
+  "choices": [
+   "Make him king",
+   "Remember him for good",
+   "Destroy Tobiah",
+   "Send fire on the merchants"
+  ],
+  "answer": 1,
+  "explanation": "Nehemiah prayed, Remember me, O my God, for good.",
+  "ref": "Nehemiah 13:31"
+ },
+ {
+  "id": "nehemiah-13-e-10",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nehemiah do to some of the men who had married foreign wives?",
+  "choices": [
+   "Smote them and plucked off their hair",
+   "Fined them silver",
+   "Sent them to Babylon",
+   "Took away their land"
+  ],
+  "answer": 0,
+  "explanation": "Nehemiah contended with them, and cursed them, and smote certain of them, and plucked off their hair.",
+  "ref": "Nehemiah 13:25"
+ },
+ {
+  "id": "nehemiah-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the Ammonite and the Moabite barred from the congregation of God?",
+  "choices": [
+   "They burned the temple",
+   "They worshipped Baal in Jerusalem",
+   "They would not pay tribute",
+   "They met not Israel with bread and water"
+  ],
+  "answer": 3,
+  "explanation": "They met not the children of Israel with bread and with water, but hired Balaam against them.",
+  "ref": "Nehemiah 13:1–2"
+ },
+ {
+  "id": "nehemiah-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God do with the curse that Balaam was hired to speak?",
+  "choices": [
+   "Stopped Balaam’s mouth",
+   "Hid it from Israel",
+   "Turned it into a blessing",
+   "Sent it back on Moab"
+  ],
+  "answer": 2,
+  "explanation": "Howbeit our God turned the curse into a blessing.",
+  "ref": "Nehemiah 13:2"
+ },
+ {
+  "id": "nehemiah-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people do when they had heard the law?",
+  "choices": [
+   "Sent the priests to Babylon",
+   "Separated from Israel all the mixed multitude",
+   "Tore their clothes and fasted",
+   "Rebuilt the altar"
+  ],
+  "answer": 1,
+  "explanation": "When they had heard the law, they separated from Israel all the mixed multitude.",
+  "ref": "Nehemiah 13:3"
+ },
+ {
+  "id": "nehemiah-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the chamber given to Tobiah been used for aforetime?",
+  "choices": [
+   "Storing offerings, frankincense, vessels, and tithes",
+   "Housing the singers",
+   "Keeping the king’s letters",
+   "Sheltering the porters"
+  ],
+  "answer": 0,
+  "explanation": "Aforetime they laid there the meat offerings, the frankincense, the vessels, and the tithes of the corn, the new wine, and the oil.",
+  "ref": "Nehemiah 13:5"
+ },
+ {
+  "id": "nehemiah-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nehemiah bring back into the chambers after they were cleansed?",
+  "choices": [
+   "The ark of the covenant",
+   "The gold of the temple",
+   "The household stuff of Tobiah",
+   "The vessels, the meat offering, and the frankincense"
+  ],
+  "answer": 3,
+  "explanation": "He commanded, and they cleansed the chambers: and thither brought he again the vessels of the house of God, with the meat offering and the frankincense.",
+  "ref": "Nehemiah 13:9"
+ },
+ {
+  "id": "nehemiah-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question did Nehemiah ask the rulers about the Levites?",
+  "choices": [
+   "Where are the tithes of Judah?",
+   "Why have the gates been opened?",
+   "Why is the house of God forsaken?",
+   "Who gave you leave to leave Jerusalem?"
+  ],
+  "answer": 2,
+  "explanation": "Then contended I with the rulers, and said, Why is the house of God forsaken?",
+  "ref": "Nehemiah 13:11"
+ },
+ {
+  "id": "nehemiah-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nehemiah say the nobles would bring on Israel by profaning the sabbath?",
+  "choices": [
+   "A plague on the city",
+   "More wrath",
+   "A famine",
+   "A new captivity in Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Ye bring more wrath upon Israel by profaning the sabbath.",
+  "ref": "Nehemiah 13:18"
+ },
+ {
+  "id": "nehemiah-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were some in Judah doing on the sabbath?",
+  "choices": [
+   "Treading winepresses and lading asses",
+   "Building houses",
+   "Gathering manna",
+   "Offering sacrifices at the gates"
+  ],
+  "answer": 0,
+  "explanation": "Nehemiah saw some treading winepresses on the sabbath, and bringing in sheaves, and lading asses.",
+  "ref": "Nehemiah 13:15"
+ },
+ {
+  "id": "nehemiah-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Nehemiah command that the gates of Jerusalem be shut?",
+  "choices": [
+   "At the dawn of the sabbath",
+   "At noon on the sabbath",
+   "At the end of the sabbath",
+   "When they began to be dark before the sabbath"
+  ],
+  "answer": 3,
+  "explanation": "When the gates of Jerusalem began to be dark before the sabbath, I commanded that the gates should be shut.",
+  "ref": "Nehemiah 13:19"
+ },
+ {
+  "id": "nehemiah-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Nehemiah command to cleanse themselves and keep the gates?",
+  "choices": [
+   "The men of Tyre",
+   "The priests’ sons",
+   "The Levites",
+   "The princes of Judah"
+  ],
+  "answer": 2,
+  "explanation": "I commanded the Levites that they should cleanse themselves, and that they should come and keep the gates, to sanctify the sabbath day.",
+  "ref": "Nehemiah 13:22"
+ },
+ {
+  "id": "nehemiah-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "place",
+  "question": "Jews had married wives from which three places?",
+  "choices": [
+   "Babylon, Persia, and Media",
+   "Ashdod, Ammon, and Moab",
+   "Tyre, Sidon, and Egypt",
+   "Samaria, Gilgal, and Bethel"
+  ],
+  "answer": 1,
+  "explanation": "In those days also saw I Jews that had married wives of Ashdod, of Ammon, and of Moab.",
+  "ref": "Nehemiah 13:23"
+ },
+ {
+  "id": "nehemiah-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the treasurers over the treasuries chosen?",
+  "choices": [
+   "They were counted faithful",
+   "They were of the tribe of Levi only",
+   "They were the oldest in Jerusalem",
+   "They had been scribes of the king"
+  ],
+  "answer": 0,
+  "explanation": "They were counted faithful, and their office was to distribute unto their brethren.",
+  "ref": "Nehemiah 13:13"
+ },
+ {
+  "id": "nehemiah-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nehemiah threaten the merchants who lodged about the wall?",
+  "choices": [
+   "To fine them ten talents",
+   "To burn their wares",
+   "To send them to the king",
+   "To lay hands on them"
+  ],
+  "answer": 3,
+  "explanation": "If ye do so again, I will lay hands on you.",
+  "ref": "Nehemiah 13:21"
+ },
+ {
+  "id": "nehemiah-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What oath did Nehemiah make the men swear about their children’s marriages?",
+  "choices": [
+   "To keep the sabbath every week",
+   "To pay a tithe of all their increase",
+   "Not to give daughters to their sons nor take theirs",
+   "Never to leave Jerusalem again"
+  ],
+  "answer": 2,
+  "explanation": "He made them swear by God, saying, Ye shall not give your daughters unto their sons, nor take their daughters unto your sons.",
+  "ref": "Nehemiah 13:25"
+ },
+ {
+  "id": "nehemiah-13-m-15",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nehemiah call marrying strange wives?",
+  "choices": [
+   "A lawful choice",
+   "Great evil and a transgression against God",
+   "A small mistake of the young",
+   "A custom of the Persians"
+  ],
+  "answer": 1,
+  "explanation": "Shall we then hearken unto you to do all this great evil, to transgress against our God in marrying strange wives?",
+  "ref": "Nehemiah 13:27"
+ },
+ {
+  "id": "nehemiah-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Artaxerxes did Nehemiah go to the king?",
+  "choices": [
+   "The two and thirtieth",
+   "The twentieth",
+   "The seventh",
+   "The twelfth"
+  ],
+  "answer": 0,
+  "explanation": "In the two and thirtieth year of Artaxerxes king of Babylon came I unto the king.",
+  "ref": "Nehemiah 13:6"
+ },
+ {
+  "id": "nehemiah-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Which priest was named among the treasurers Nehemiah appointed?",
+  "choices": [
+   "Eliashib",
+   "Jehohanan",
+   "Meshullam",
+   "Shelemiah"
+  ],
+  "answer": 3,
+  "explanation": "I made treasurers over the treasuries, Shelemiah the priest, and Zadok the scribe, and of the Levites, Pedaiah.",
+  "ref": "Nehemiah 13:13"
+ },
+ {
+  "id": "nehemiah-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Which Levite was among the treasurers Nehemiah appointed?",
+  "choices": [
+   "Hanan",
+   "Shelemiah",
+   "Pedaiah",
+   "Zadok"
+  ],
+  "answer": 2,
+  "explanation": "Of the Levites, Pedaiah was made a treasurer over the treasuries.",
+  "ref": "Nehemiah 13:13"
+ },
+ {
+  "id": "nehemiah-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Nehemiah ask God not to wipe out?",
+  "choices": [
+   "The book of Moses",
+   "His good deeds for the house of God",
+   "The names of the priests",
+   "The sins of Tobiah"
+  ],
+  "answer": 1,
+  "explanation": "Remember me, O my God, and wipe not out my good deeds that I have done for the house of my God.",
+  "ref": "Nehemiah 13:14"
+ },
+ {
+  "id": "nehemiah-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which fruits did Judah bring into Jerusalem on the sabbath?",
+  "choices": [
+   "Wine, grapes, and figs",
+   "Olives, dates, and pomegranates",
+   "Barley, wheat, and flax",
+   "Apples, nuts, and honey"
+  ],
+  "answer": 0,
+  "explanation": "They brought wine, grapes, and figs, and all manner of burdens into Jerusalem on the sabbath day.",
+  "ref": "Nehemiah 13:15"
+ },
+ {
+  "id": "nehemiah-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Nehemiah contend with over profaning the sabbath?",
+  "choices": [
+   "The rulers",
+   "The priests of Eliashib",
+   "The men of Tyre",
+   "The nobles of Judah"
+  ],
+  "answer": 3,
+  "explanation": "Then I contended with the nobles of Judah, and said unto them, What evil thing is this that ye do?",
+  "ref": "Nehemiah 13:17"
+ },
+ {
+  "id": "nehemiah-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Nehemiah set at the gates so no burden came in on the sabbath?",
+  "choices": [
+   "The Levites’ sons",
+   "The men of Tyre",
+   "Some of his servants",
+   "The princes of Judah"
+  ],
+  "answer": 2,
+  "explanation": "Some of my servants set I at the gates, that there should no burden be brought in on the sabbath day.",
+  "ref": "Nehemiah 13:19"
+ },
+ {
+  "id": "nehemiah-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How often did the merchants lodge outside Jerusalem before Nehemiah warned them?",
+  "choices": [
+   "For a whole month",
+   "Once or twice",
+   "Every sabbath",
+   "Three times"
+  ],
+  "answer": 1,
+  "explanation": "So the merchants and sellers of all kind of ware lodged without Jerusalem once or twice.",
+  "ref": "Nehemiah 13:20"
+ },
+ {
+  "id": "nehemiah-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Nehemiah ask God to do for him in the matter of the sabbath?",
+  "choices": [
+   "Spare him according to the greatness of his mercy",
+   "Send rain on Judah",
+   "Strike the merchants",
+   "Give him a new wall"
+  ],
+  "answer": 0,
+  "explanation": "Remember me, O my God, concerning this also, and spare me according to the greatness of thy mercy.",
+  "ref": "Nehemiah 13:22"
+ },
+ {
+  "id": "nehemiah-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which tithes, meant for the Levites, singers, and porters, had been stored in the chamber?",
+  "choices": [
+   "The meat of the passover",
+   "Their pay in silver",
+   "The first of the flock",
+   "The tithes of the corn, new wine, and oil"
+  ],
+  "answer": 3,
+  "explanation": "The tithes of the corn, the new wine, and the oil were commanded to be given to the Levites, and the singers, and the porters.",
+  "ref": "Nehemiah 13:5"
+ },
+ {
+  "id": "nehemiah-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After asking why the house of God was forsaken, what did Nehemiah do?",
+  "choices": [
+   "Fined each ruler a talent",
+   "Wrote to the king about them",
+   "Gathered them together and set them in their place",
+   "Sent them away from the city"
+  ],
+  "answer": 2,
+  "explanation": "I gathered them together, and set them in their place.",
+  "ref": "Nehemiah 13:11"
+ },
+ {
+  "id": "nehemiah-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Nehemiah say the marriage into Sanballat’s family had defiled?",
+  "choices": [
+   "The sabbath gates",
+   "The priesthood and the covenant of the priesthood",
+   "The wall of Jerusalem",
+   "The temple vessels"
+  ],
+  "answer": 1,
+  "explanation": "Remember them, O my God, because they have defiled the priesthood, and the covenant of the priesthood, and of the Levites.",
+  "ref": "Nehemiah 13:29"
+ },
+ {
+  "id": "nehemiah-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Nehemiah say he cleansed the priests and Levites from?",
+  "choices": [
+   "All strangers",
+   "The dust of the wall",
+   "The blood of the offerings",
+   "The household stuff of Tobiah"
+  ],
+  "answer": 0,
+  "explanation": "Thus cleansed I them from all strangers, and appointed the wards of the priests and the Levites.",
+  "ref": "Nehemiah 13:30"
+ },
+ {
+  "id": "nehemiah-13-h-14",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For which offering, at times appointed, did Nehemiah make provision besides the firstfruits?",
+  "choices": [
+   "The meat offering",
+   "The peace offering",
+   "The drink offering",
+   "The wood offering"
+  ],
+  "answer": 3,
+  "explanation": "And for the wood offering, at times appointed, and for the firstfruits.",
+  "ref": "Nehemiah 13:31"
+ },
+ {
+  "id": "nehemiah-13-h-15",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Nehemiah describe Solomon among many nations?",
+  "choices": [
+   "No king like him, beloved of his God",
+   "The wisest of the Persian kings",
+   "A king who never sinned",
+   "A king feared by Tyre"
+  ],
+  "answer": 0,
+  "explanation": "Among many nations was there no king like him, who was beloved of his God, and God made him king over all Israel.",
+  "ref": "Nehemiah 13:26"
  }
 ]
