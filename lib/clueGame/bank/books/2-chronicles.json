@@ -2960,6 +2960,454 @@
   "ref": "2 Chronicles 7:19–22"
  },
  {
+  "id": "2-chronicles-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people do when they saw the fire and the glory of the Lord?",
+  "choices": [
+   "Ran from the house",
+   "Bowed with their faces to the ground and worshipped",
+   "Sang and danced",
+   "Offered more sheep"
+  ],
+  "answer": 1,
+  "explanation": "They bowed themselves with their faces to the ground upon the pavement, and worshipped, and praised the LORD.",
+  "ref": "2 Chronicles 7:3"
+ },
+ {
+  "id": "2-chronicles-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say as they praised the Lord?",
+  "choices": [
+   "The LORD reigneth",
+   "Holy is his name",
+   "For he is good; for his mercy endureth for ever",
+   "Hosanna in the highest"
+  ],
+  "answer": 2,
+  "explanation": "They praised the LORD, saying, For he is good; for his mercy endureth for ever.",
+  "ref": "2 Chronicles 7:3"
+ },
+ {
+  "id": "2-chronicles-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the fire from heaven consume?",
+  "choices": [
+   "The tabernacle",
+   "The ark",
+   "The brasen scaffold",
+   "The burnt offering and the sacrifices"
+  ],
+  "answer": 3,
+  "explanation": "The fire came down from heaven, and consumed the burnt offering and the sacrifices.",
+  "ref": "2 Chronicles 7:1"
+ },
+ {
+  "id": "2-chronicles-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did the Lord appear to Solomon after the dedication?",
+  "choices": [
+   "By night",
+   "At noon",
+   "At the feast",
+   "At sunrise"
+  ],
+  "answer": 0,
+  "explanation": "The LORD appeared to Solomon by night.",
+  "ref": "2 Chronicles 7:12"
+ },
+ {
+  "id": "2-chronicles-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord say he had chosen for himself?",
+  "choices": [
+   "A new city for a palace",
+   "This place for a house of sacrifice",
+   "A mountain for an altar",
+   "A tent for the ark"
+  ],
+  "answer": 1,
+  "explanation": "I have heard thy prayer, and have chosen this place to myself for an house of sacrifice.",
+  "ref": "2 Chronicles 7:12"
+ },
+ {
+  "id": "2-chronicles-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king and all the people dedicate?",
+  "choices": [
+   "The city wall",
+   "The king's palace",
+   "The house of God",
+   "The court of the priests"
+  ],
+  "answer": 2,
+  "explanation": "The king and all the people dedicated the house of God.",
+  "ref": "2 Chronicles 7:5"
+ },
+ {
+  "id": "2-chronicles-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had made the instruments of music the Levites played?",
+  "choices": [
+   "Asaph",
+   "Huram",
+   "Solomon",
+   "David the king"
+  ],
+  "answer": 3,
+  "explanation": "The Levites with instruments of musick of the LORD, which David the king had made to praise the LORD.",
+  "ref": "2 Chronicles 7:6"
+ },
+ {
+  "id": "2-chronicles-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Solomon hallow the middle of the court?",
+  "choices": [
+   "The brasen altar could not hold all the offerings",
+   "The court was unclean",
+   "The priests asked him to",
+   "The altar had been moved"
+  ],
+  "answer": 0,
+  "explanation": "The brasen altar which Solomon had made was not able to receive the burnt offerings, and the meat offerings, and the fat.",
+  "ref": "2 Chronicles 7:7"
+ },
+ {
+  "id": "2-chronicles-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they hold on the eighth day?",
+  "choices": [
+   "A feast of trumpets",
+   "A solemn assembly",
+   "A day of fasting",
+   "A new dedication"
+  ],
+  "answer": 1,
+  "explanation": "In the eighth day they made a solemn assembly.",
+  "ref": "2 Chronicles 7:9"
+ },
+ {
+  "id": "2-chronicles-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "The great congregation gathered from where to where?",
+  "choices": [
+   "From Dan to Beersheba",
+   "From Tyre to Joppa",
+   "From the entering in of Hamath to the river of Egypt",
+   "From Gibeon to Hebron"
+  ],
+  "answer": 2,
+  "explanation": "A very great congregation, from the entering in of Hamath unto the river of Egypt.",
+  "ref": "2 Chronicles 7:8"
+ },
+ {
+  "id": "2-chronicles-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which troubles did the Lord say he might send on the land?",
+  "choices": [
+   "War, famine and exile",
+   "Fire, flood and hail",
+   "Darkness, frogs and lice",
+   "No rain, locusts and pestilence"
+  ],
+  "answer": 3,
+  "explanation": "If I shut up heaven that there be no rain, or if I command the locusts to devour the land, or if I send pestilence among my people.",
+  "ref": "2 Chronicles 7:13"
+ },
+ {
+  "id": "2-chronicles-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say would be open and attent to the prayer made in this place?",
+  "choices": [
+   "His eyes and his ears",
+   "His hands and feet",
+   "His doors",
+   "His altars"
+  ],
+  "answer": 0,
+  "explanation": "Now mine eyes shall be open, and mine ears attent unto the prayer that is made in this place.",
+  "ref": "2 Chronicles 7:15"
+ },
+ {
+  "id": "2-chronicles-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "What did God tell Solomon he must do to have his throne established?",
+  "choices": [
+   "Build more cities",
+   "Walk before him as David his father walked",
+   "Gather more gold",
+   "Send away strangers"
+  ],
+  "answer": 1,
+  "explanation": "If thou wilt walk before me, as David thy father walked, then will I stablish the throne of thy kingdom.",
+  "ref": "2 Chronicles 7:17–18"
+ },
+ {
+  "id": "2-chronicles-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Solomon send the people after the feast?",
+  "choices": [
+   "Back to Egypt",
+   "To the high places",
+   "Into their tents, glad and merry in heart",
+   "To the great court"
+  ],
+  "answer": 2,
+  "explanation": "He sent the people away into their tents, glad and merry in heart for the goodness that the LORD had shewed.",
+  "ref": "2 Chronicles 7:10"
+ },
+ {
+  "id": "2-chronicles-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the Lord make of the house if Israel forsook him?",
+  "choices": [
+   "A fortress",
+   "A treasury",
+   "A school",
+   "A proverb and a byword among all nations"
+  ],
+  "answer": 3,
+  "explanation": "This house, which I have sanctified for my name, will I cast out of my sight, and will make it to be a proverb and a byword among all nations.",
+  "ref": "2 Chronicles 7:20"
+ },
+ {
+  "id": "2-chronicles-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason would be given for the evil that came on the land?",
+  "choices": [
+   "They forsook the LORD and served other gods",
+   "They had shed innocent blood",
+   "They had numbered the people",
+   "They had married strangers"
+  ],
+  "answer": 0,
+  "explanation": "Because they forsook the LORD God of their fathers, which brought them forth out of the land of Egypt, and laid hold on other gods.",
+  "ref": "2 Chronicles 7:22"
+ },
+ {
+  "id": "2-chronicles-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would God do to Israel if they turned away and served other gods?",
+  "choices": [
+   "Send them to Egypt",
+   "Pluck them up by the roots out of his land",
+   "Burn their cities at once",
+   "Make them wander forty years"
+  ],
+  "answer": 1,
+  "explanation": "Then will I pluck them up by the roots out of my land which I have given them.",
+  "ref": "2 Chronicles 7:20"
+ },
+ {
+  "id": "2-chronicles-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many oxen did Solomon offer?",
+  "choices": [
+   "Twelve thousand",
+   "One hundred and twenty thousand",
+   "Twenty-two thousand",
+   "Two thousand"
+  ],
+  "answer": 2,
+  "explanation": "King Solomon offered a sacrifice of twenty and two thousand oxen.",
+  "ref": "2 Chronicles 7:5"
+ },
+ {
+  "id": "2-chronicles-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sheep did Solomon offer?",
+  "choices": [
+   "Twenty-two thousand",
+   "Twelve thousand",
+   "Six hundred thousand",
+   "One hundred and twenty thousand"
+  ],
+  "answer": 3,
+  "explanation": "King Solomon offered an hundred and twenty thousand sheep.",
+  "ref": "2 Chronicles 7:5"
+ },
+ {
+  "id": "2-chronicles-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day of the seventh month did Solomon send the people away?",
+  "choices": [
+   "The twenty-third",
+   "The first",
+   "The tenth",
+   "The fifteenth"
+  ],
+  "answer": 0,
+  "explanation": "On the three and twentieth day of the seventh month he sent the people away into their tents.",
+  "ref": "2 Chronicles 7:10"
+ },
+ {
+  "id": "2-chronicles-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was the dedication of the altar kept, and how long the feast?",
+  "choices": [
+   "Three days each",
+   "Seven days each",
+   "Seven days and fourteen days",
+   "Twelve days each"
+  ],
+  "answer": 1,
+  "explanation": "They kept the dedication of the altar seven days, and the feast seven days.",
+  "ref": "2 Chronicles 7:9"
+ },
+ {
+  "id": "2-chronicles-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the house of the Lord, what else did Solomon finish?",
+  "choices": [
+   "The walls of Jerusalem",
+   "The city of Hamath",
+   "The king's house",
+   "The court at Gibeon"
+  ],
+  "answer": 2,
+  "explanation": "Solomon finished the house of the LORD, and the king's house.",
+  "ref": "2 Chronicles 7:11"
+ },
+ {
+  "id": "2-chronicles-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the Lord say his eyes and heart would be perpetually?",
+  "choices": [
+   "On the throne of David",
+   "On the mount of Sinai",
+   "With the ark in Zion",
+   "In the house he had sanctified"
+  ],
+  "answer": 3,
+  "explanation": "I have chosen and sanctified this house, that my name may be there for ever: and mine eyes and mine heart shall be there perpetually.",
+  "ref": "2 Chronicles 7:16"
+ },
+ {
+  "id": "2-chronicles-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the house be to every one who passed by it, if Israel forsook God?",
+  "choices": [
+   "An astonishment",
+   "A wonder of praise",
+   "A place of refuge",
+   "A shelter"
+  ],
+  "answer": 0,
+  "explanation": "This house, which is high, shall be an astonishment to every one that passeth by it.",
+  "ref": "2 Chronicles 7:21"
+ },
+ {
+  "id": "2-chronicles-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the one passing by ask about the ruined house?",
+  "choices": [
+   "Who built this house?",
+   "Why hath the LORD done thus unto this land?",
+   "Where is the ark?",
+   "What god dwelt here?"
+  ],
+  "answer": 1,
+  "explanation": "He shall say, Why hath the LORD done thus unto this land, and unto this house?",
+  "ref": "2 Chronicles 7:21"
+ },
+ {
+  "id": "2-chronicles-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God say would not fail Solomon if he kept his statutes?",
+  "choices": [
+   "A son to be a priest",
+   "Peace in all the land",
+   "A man to be ruler in Israel",
+   "Riches of Egypt"
+  ],
+  "answer": 2,
+  "explanation": "I will stablish the throne of thy kingdom, saying, There shall not fail thee a man to be ruler in Israel.",
+  "ref": "2 Chronicles 7:18"
+ },
+ {
+  "id": "2-chronicles-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did all Israel do while the priests sounded trumpets before the Levites?",
+  "choices": [
+   "Knelt",
+   "Sang",
+   "Marched",
+   "Stood"
+  ],
+  "answer": 3,
+  "explanation": "The priests sounded trumpets before them, and all Israel stood.",
+  "ref": "2 Chronicles 7:6"
+ },
+ {
+  "id": "2-chronicles-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did Solomon offer burnt offerings in the middle of the court?",
+  "choices": [
+   "The fat of the peace offerings",
+   "The firstfruits",
+   "The shewbread",
+   "The wine"
+  ],
+  "answer": 0,
+  "explanation": "There he offered burnt offerings, and the fat of the peace offerings.",
+  "ref": "2 Chronicles 7:7"
+ },
+ {
   "id": "old-2-chronicles-8-1",
   "chapter": 8,
   "level": "beginner",
