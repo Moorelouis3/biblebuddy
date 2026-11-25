@@ -2912,6 +2912,358 @@
   "ref": "Esther 8:17"
  },
  {
+  "id": "esther-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Esther do when she spoke again before the king about Haman's plot?",
+  "choices": [
+   "Fell at his feet and begged with tears",
+   "Sent Mordecai in her place",
+   "Wrote him a long letter",
+   "Stood silent in the court"
+  ],
+  "answer": 0,
+  "explanation": "Esther spake yet again before the king, and fell down at his feet, and besought him with tears to put away the mischief of Haman.",
+  "ref": "Esther 8:3"
+ },
+ {
+  "id": "esther-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Esther set over the house of Haman?",
+  "choices": [
+   "Mordecai",
+   "Harbonah",
+   "Hegai",
+   "Her maidens"
+  ],
+  "answer": 0,
+  "explanation": "The king gave Haman's house to Esther, and Esther set Mordecai over the house of Haman.",
+  "ref": "Esther 8:2"
+ },
+ {
+  "id": "esther-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Mordecai look when he went out from the king's presence?",
+  "choices": [
+   "In royal apparel with a great crown of gold",
+   "In sackcloth with ashes",
+   "In a plain linen robe",
+   "In armour with a sword"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai went out from the presence of the king in royal apparel of blue and white, and with a great crown of gold.",
+  "ref": "Esther 8:15"
+ },
+ {
+  "id": "esther-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "How did the city of Shushan react when Mordecai went out in royal apparel?",
+  "choices": [
+   "It rejoiced and was glad",
+   "It wept and mourned",
+   "It was afraid and quiet",
+   "It rose up in anger"
+  ],
+  "answer": 0,
+  "explanation": "The city of Shushan rejoiced and was glad.",
+  "ref": "Esther 8:15"
+ },
+ {
+  "id": "esther-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Esther ask the king to have written to reverse?",
+  "choices": [
+   "The letters devised by Haman",
+   "The law of the Medes",
+   "The list of the provinces",
+   "The king's decree on Vashti"
+  ],
+  "answer": 0,
+  "explanation": "Esther asked that it be written to reverse the letters devised by Haman, which he wrote to destroy the Jews.",
+  "ref": "Esther 8:5"
+ },
+ {
+  "id": "esther-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Esther say she could not endure to see?",
+  "choices": [
+   "The destruction of her kindred",
+   "The fall of Shushan",
+   "Mordecai in sackcloth",
+   "Haman's wealth"
+  ],
+  "answer": 0,
+  "explanation": "Esther said, How can I endure to see the destruction of my kindred?",
+  "ref": "Esther 8:6"
+ },
+ {
+  "id": "esther-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the new decree to be written and sealed?",
+  "choices": [
+   "In the king's name, sealed with his ring",
+   "By Esther, with her own seal",
+   "By Mordecai in the Jews' tongue",
+   "In secret, with no seal"
+  ],
+  "answer": 0,
+  "explanation": "The king said, Write ye also for the Jews in the king's name, and seal it with the king's ring.",
+  "ref": "Esther 8:8"
+ },
+ {
+  "id": "esther-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the posts ride to carry the letters out?",
+  "choices": [
+   "Mules, camels and young dromedaries",
+   "Chariots and horses",
+   "Asses and oxen",
+   "Camels and elephants"
+  ],
+  "answer": 0,
+  "explanation": "He sent letters by posts on horseback, and riders on mules, camels, and young dromedaries.",
+  "ref": "Esther 8:10"
+ },
+ {
+  "id": "esther-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what day were the Jews to be ready to defend themselves?",
+  "choices": [
+   "The thirteenth day of the twelfth month, Adar",
+   "The first day of the first month",
+   "The fourteenth day of Nisan",
+   "The twenty-third day of Sivan"
+  ],
+  "answer": 0,
+  "explanation": "The decree was for one day: the thirteenth day of the twelfth month, which is the month Adar.",
+  "ref": "Esther 8:12"
+ },
+ {
+  "id": "esther-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Why did Mordecai come before the king at the start of the chapter?",
+  "choices": [
+   "Esther had told what he was to her",
+   "The king had sent for him",
+   "He had brought a petition",
+   "He came to report on Haman"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai came before the king; for Esther had told what he was unto her.",
+  "ref": "Esther 8:1"
+ },
+ {
+  "id": "esther-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the Jews allowed to take from those who attacked them?",
+  "choices": [
+   "The spoil",
+   "Their houses",
+   "Their children",
+   "Their horses"
+  ],
+  "answer": 0,
+  "explanation": "The king granted the Jews to destroy all the power of the people that would assault them, and to take the spoil of them for a prey.",
+  "ref": "Esther 8:11"
+ },
+ {
+  "id": "esther-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king do when Esther spoke again and wept?",
+  "choices": [
+   "Held out the golden sceptre",
+   "Rose and left the room",
+   "Called for Haman's sons",
+   "Sent for the scribes at once"
+  ],
+  "answer": 0,
+  "explanation": "Then the king held out the golden sceptre toward Esther. So Esther arose, and stood before the king.",
+  "ref": "Esther 8:4"
+ },
+ {
+  "id": "esther-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "The provinces of the kingdom ran from India to which land?",
+  "choices": [
+   "Ethiopia",
+   "Egypt",
+   "Babylon",
+   "Greece"
+  ],
+  "answer": 0,
+  "explanation": "The letters went to the provinces from India unto Ethiopia, an hundred twenty and seven provinces.",
+  "ref": "Esther 8:9"
+ },
+ {
+  "id": "esther-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many provinces did the king's kingdom have?",
+  "choices": [
+   "One hundred twenty-seven",
+   "One hundred twenty",
+   "Seventy-five",
+   "Two hundred"
+  ],
+  "answer": 0,
+  "explanation": "The scribes wrote to the lieutenants, deputies and rulers of the provinces, an hundred twenty and seven provinces.",
+  "ref": "Esther 8:9"
+ },
+ {
+  "id": "esther-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month and on which day were the king's scribes called?",
+  "choices": [
+   "The twenty-third day of Sivan",
+   "The thirteenth day of Adar",
+   "The first day of Nisan",
+   "The fourteenth day of Adar"
+  ],
+  "answer": 0,
+  "explanation": "The king's scribes were called in the third month, that is, the month Sivan, on the three and twentieth day thereof.",
+  "ref": "Esther 8:9"
+ },
+ {
+  "id": "esther-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Haman is called the son of whom?",
+  "choices": [
+   "Hammedatha",
+   "Hegai",
+   "Abihail",
+   "Parshandatha"
+  ],
+  "answer": 0,
+  "explanation": "Esther asked to reverse the letters devised by Haman the son of Hammedatha the Agagite.",
+  "ref": "Esther 8:5"
+ },
+ {
+  "id": "esther-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What colours was Mordecai's royal apparel?",
+  "choices": [
+   "Blue and white",
+   "Scarlet and gold",
+   "Purple and black",
+   "Green and white"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai went out in royal apparel of blue and white, a great crown of gold, and a garment of fine linen and purple.",
+  "ref": "Esther 8:15"
+ },
+ {
+  "id": "esther-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what language was the decree written to each people?",
+  "choices": [
+   "Their own language",
+   "Hebrew only",
+   "The language of Persia only",
+   "Aramaic only"
+  ],
+  "answer": 0,
+  "explanation": "The writing went to every province, and unto every people after their language, and to the Jews according to their language.",
+  "ref": "Esther 8:9"
+ },
+ {
+  "id": "esther-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the decree given?",
+  "choices": [
+   "Shushan the palace",
+   "The king's gate",
+   "The inner court",
+   "Babylon"
+  ],
+  "answer": 0,
+  "explanation": "So the posts went out hastened by the king's commandment, and the decree was given at Shushan the palace.",
+  "ref": "Esther 8:14"
+ },
+ {
+  "id": "esther-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Jews have in every province where the decree came?",
+  "choices": [
+   "A feast and a good day",
+   "A time of fasting",
+   "A day of rest only",
+   "A day of battle"
+  ],
+  "answer": 0,
+  "explanation": "In every province, and in every city, the Jews had joy and gladness, a feast and a good day.",
+  "ref": "Esther 8:17"
+ },
+ {
+  "id": "esther-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the king say Haman had been hanged?",
+  "choices": [
+   "Because he laid his hand upon the Jews",
+   "Because he had lied to Esther",
+   "Because he insulted Mordecai",
+   "Because he stole from the king"
+  ],
+  "answer": 0,
+  "explanation": "The king said, him they have hanged upon the gallows, because he laid his hand upon the Jews.",
+  "ref": "Esther 8:7"
+ },
+ {
+  "id": "esther-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the Jews told to be ready to do on that day?",
+  "choices": [
+   "Avenge themselves on their enemies",
+   "Flee from the provinces",
+   "Fast and weep",
+   "Leave for Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "The Jews should be ready against that day to avenge themselves on their enemies.",
+  "ref": "Esther 8:13"
+ },
+ {
   "id": "old-esther-9-1",
   "chapter": 9,
   "level": "beginner",
