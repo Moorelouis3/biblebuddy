@@ -560,566 +560,6 @@
   "ref": "Job 7:21"
  },
  {
-  "id": "old-job-8-1",
-  "chapter": 8,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Bildad say God never does?",
-  "choices": [
-   "Sleeps",
-   "Sends rain",
-   "Perverts judgment",
-   "Exalts the humble"
-  ],
-  "answer": 2,
-  "explanation": "Bildad insists God never perverts justice.",
-  "ref": "Job 8:3"
- },
- {
-  "id": "old-job-8-2",
-  "chapter": 8,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Bildad imply about Job's children?",
-  "choices": [
-   "They were innocent",
-   "They were cast away for their transgression",
-   "They became priests",
-   "They were hidden"
-  ],
-  "answer": 1,
-  "explanation": "He harshly suggests their deaths reflected their sin.",
-  "ref": "Job 8:4"
- },
- {
-  "id": "old-job-8-3",
-  "chapter": 8,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Bildad say God would do if Job were pure and upright?",
-  "choices": [
-   "Ignore him",
-   "Send him to Egypt",
-   "Give him a throne",
-   "Awake for him and make his dwelling prosperous"
-  ],
-  "answer": 3,
-  "explanation": "Bildad predicts restoration for the truly upright.",
-  "ref": "Job 8:6"
- },
- {
-  "id": "old-job-8-4",
-  "chapter": 8,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "From whom does Bildad urge Job to seek wisdom?",
-  "choices": [
-   "Persian scribes",
-   "His servants",
-   "The former generations",
-   "Dream interpreters"
-  ],
-  "answer": 2,
-  "explanation": "He tells Job to inquire of past generations.",
-  "ref": "Job 8:8"
- },
- {
-  "id": "old-job-8-5",
-  "chapter": 8,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How does Bildad say God treats the righteous and the wicked in the end?",
-  "choices": [
-   "He laughs at both",
-   "He forgets both",
-   "He makes both kings",
-   "He will not cast away a perfect man nor help evil doers"
-  ],
-  "answer": 3,
-  "explanation": "Bildad contrasts God's treatment of the blameless and wicked.",
-  "ref": "Job 8:20"
- },
- {
-  "id": "old-job-9-1",
-  "chapter": 9,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What problem does Job raise about being just before God?",
-  "choices": [
-   "How should man be just with God?",
-   "Man can easily answer Him",
-   "God has no power",
-   "There is no judgment"
-  ],
-  "answer": 0,
-  "explanation": "Job asks how a person can be righteous before God.",
-  "ref": "Job 9:2"
- },
- {
-  "id": "old-job-9-2",
-  "chapter": 9,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Job say about answering God?",
-  "choices": [
-   "One could answer Him in a thousand matters",
-   "Only kings can answer",
-   "Angels answer for men",
-   "One cannot answer Him one of a thousand"
-  ],
-  "answer": 3,
-  "explanation": "He says no one can contend successfully with God.",
-  "ref": "Job 9:3"
- },
- {
-  "id": "old-job-9-3",
-  "chapter": 9,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What examples of God's power over creation does Job list?",
-  "choices": [
-   "He only sends rain",
-   "He plants vineyards",
-   "He builds temples",
-   "He moves mountains and commands the sun"
-  ],
-  "answer": 3,
-  "explanation": "Job describes God's immense power over nature.",
-  "ref": "Job 9:5–7"
- },
- {
-  "id": "old-job-9-4",
-  "chapter": 9,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Job say is lacking between him and God?",
-  "choices": [
-   "A king",
-   "A daysman or mediator",
-   "A prophet",
-   "A city wall"
-  ],
-  "answer": 1,
-  "explanation": "He longs for one who could lay a hand on both.",
-  "ref": "Job 9:33"
- },
- {
-  "id": "old-job-9-5",
-  "chapter": 9,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How does Job describe the speed of his days?",
-  "choices": [
-   "Standing still",
-   "Like a mountain",
-   "Swifter than a post or eagle",
-   "Like a cedar"
-  ],
-  "answer": 2,
-  "explanation": "He says his days are swift and without seeing good.",
-  "ref": "Job 9:25–26"
- },
- {
-  "id": "old-job-10-1",
-  "chapter": 10,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Job say he will do because his soul is weary of life?",
-  "choices": [
-   "Remain silent",
-   "Go to Egypt",
-   "Leave his complaint upon himself and speak in bitterness",
-   "Build an altar"
-  ],
-  "answer": 2,
-  "explanation": "Job says he will speak out of bitterness.",
-  "ref": "Job 10:1"
- },
- {
-  "id": "old-job-10-2",
-  "chapter": 10,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Job ask God not to do?",
-  "choices": [
-   "Send rain",
-   "Speak to him",
-   "Condemn him",
-   "Remember him"
-  ],
-  "answer": 2,
-  "explanation": "He asks God to show him why He contends with him instead of condemning him.",
-  "ref": "Job 10:2"
- },
- {
-  "id": "old-job-10-3",
-  "chapter": 10,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How does Job describe God's forming of him?",
-  "choices": [
-   "As an accident",
-   "As shaping him like clay",
-   "As writing on stone",
-   "As weaving a crown"
-  ],
-  "answer": 1,
-  "explanation": "He asks why the One who formed him from clay would destroy him.",
-  "ref": "Job 10:9"
- },
- {
-  "id": "old-job-10-4",
-  "chapter": 10,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What question does Job ask about God's perspective?",
-  "choices": [
-   "Hast thou eyes of flesh?",
-   "Wilt thou forget forever?",
-   "Canst thou sin?",
-   "Dost thou sleep?"
-  ],
-  "answer": 0,
-  "explanation": "He asks whether God sees like man sees.",
-  "ref": "Job 10:4"
- },
- {
-  "id": "old-job-10-5",
-  "chapter": 10,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How does Job describe the place he will go to and not return from?",
-  "choices": [
-   "A land of darkness and the shadow of death",
-   "The promised land",
-   "Egypt",
-   "Shushan"
-  ],
-  "answer": 0,
-  "explanation": "He speaks of the grave as a land of darkness.",
-  "ref": "Job 10:21–22"
- },
- {
-  "id": "old-job-11-1",
-  "chapter": 11,
-  "level": "beginner",
-  "category": "person",
-  "question": "Who tells Job that God is punishing him less than his sin deserves?",
-  "choices": [
-   "Eliphaz",
-   "Zophar",
-   "Bildad",
-   "Elihu"
-  ],
-  "answer": 1,
-  "explanation": "Zophar says God exacteth of Job less than his iniquity deserveth.",
-  "ref": "Job 11:6"
- },
- {
-  "id": "old-job-11-2",
-  "chapter": 11,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How does Zophar describe God's wisdom compared with human reach?",
-  "choices": [
-   "Shorter than earth",
-   "As high as heaven and deeper than hell",
-   "Equal to kings",
-   "Weaker than men"
-  ],
-  "answer": 1,
-  "explanation": "He says God's wisdom is beyond human measurement.",
-  "ref": "Job 11:8–9"
- },
- {
-  "id": "old-job-11-3",
-  "chapter": 11,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Zophar tell Job to do with his heart and hands?",
-  "choices": [
-   "Prepare his heart and stretch out his hands to God",
-   "Hide them",
-   "Lift them against heaven",
-   "Wash and leave"
-  ],
-  "answer": 0,
-  "explanation": "He calls Job to repentance and prayer.",
-  "ref": "Job 11:13"
- },
- {
-  "id": "old-job-11-4",
-  "chapter": 11,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What hopeful result does Zophar promise if Job repents?",
-  "choices": [
-   "Certain death",
-   "He will become king",
-   "He shall lift up his face without spot",
-   "His friends will flee"
-  ],
-  "answer": 2,
-  "explanation": "Zophar promises restored confidence and security.",
-  "ref": "Job 11:15"
- },
- {
-  "id": "old-job-11-5",
-  "chapter": 11,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How does Zophar describe the hope of the wicked?",
-  "choices": [
-   "As a rich harvest",
-   "As the giving up of the ghost",
-   "As treasure hidden in heaven",
-   "As a gift kept for kings"
-  ],
-  "answer": 1,
-  "explanation": "He ends by saying the hope of the wicked shall be as the giving up of the ghost.",
-  "ref": "Job 11:20"
- },
- {
-  "id": "old-job-12-1",
-  "chapter": 12,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How does Job sarcastically describe his friends' wisdom?",
-  "choices": [
-   "You know nothing",
-   "You are kings",
-   "Wisdom shall die with you",
-   "You are angels"
-  ],
-  "answer": 2,
-  "explanation": "Job mocks their self-importance.",
-  "ref": "Job 12:2"
- },
- {
-  "id": "old-job-12-2",
-  "chapter": 12,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Job say even the beasts and birds can teach?",
-  "choices": [
-   "Nothing",
-   "Military strategy",
-   "That God's hand has wrought all things",
-   "Temple law"
-  ],
-  "answer": 2,
-  "explanation": "He says creation itself testifies to God's power.",
-  "ref": "Job 12:7–9"
- },
- {
-  "id": "old-job-12-3",
-  "chapter": 12,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Job say about his own understanding compared to theirs?",
-  "choices": [
-   "He has none",
-   "He is a child",
-   "He is not inferior to them",
-   "He envies them"
-  ],
-  "answer": 2,
-  "explanation": "Job insists he understands as well as they do.",
-  "ref": "Job 12:3"
- },
- {
-  "id": "old-job-12-4",
-  "chapter": 12,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What can God do to counselors and judges according to Job?",
-  "choices": [
-   "Ignore them",
-   "Make them fools",
-   "Crown them forever",
-   "Hide them"
-  ],
-  "answer": 1,
-  "explanation": "Job lists how God overturns human authority.",
-  "ref": "Job 12:17"
- },
- {
-  "id": "old-job-12-5",
-  "chapter": 12,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What broad theme dominates this chapter?",
-  "choices": [
-   "Man controls God",
-   "Only the wicked prosper",
-   "Israel's history",
-   "God rules nature, rulers, and nations"
-  ],
-  "answer": 3,
-  "explanation": "Job emphasizes God's unmatched sovereignty.",
-  "ref": "Job 12:13–25"
- },
- {
-  "id": "old-job-13-1",
-  "chapter": 13,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What kind of physicians does Job call his friends?",
-  "choices": [
-   "Wise physicians",
-   "Physicians of no value",
-   "Royal doctors",
-   "Priestly healers"
-  ],
-  "answer": 1,
-  "explanation": "Job calls his friends forgers of lies and physicians of no value.",
-  "ref": "Job 13:4"
- },
- {
-  "id": "old-job-13-2",
-  "chapter": 13,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Job say he desires to do?",
-  "choices": [
-   "Leave the land",
-   "Join the wicked",
-   "Build a city",
-   "Speak to the Almighty"
-  ],
-  "answer": 3,
-  "explanation": "Job wants to reason directly with God.",
-  "ref": "Job 13:3"
- },
- {
-  "id": "old-job-13-3",
-  "chapter": 13,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What famous declaration does Job make about trusting God?",
-  "choices": [
-   "Though he slay me, yet will I trust in him",
-   "I will curse Him",
-   "I shall never die",
-   "My friends are right"
-  ],
-  "answer": 0,
-  "explanation": "Job declares trust even under severe suffering.",
-  "ref": "Job 13:15"
- },
- {
-  "id": "old-job-13-4",
-  "chapter": 13,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What two things does Job ask God to do so he can speak?",
-  "choices": [
-   "Give wealth and honor",
-   "Send angels and horses",
-   "Restore his children immediately",
-   "Withdraw His hand and not make him afraid"
-  ],
-  "answer": 3,
-  "explanation": "He asks for relief from terror and affliction while pleading his case.",
-  "ref": "Job 13:21"
- },
- {
-  "id": "old-job-13-5",
-  "chapter": 13,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Job ask God to show him regarding his sin?",
-  "choices": [
-   "The names of his enemies",
-   "The date of his death",
-   "How many are his iniquities and sins",
-   "The path to Egypt"
-  ],
-  "answer": 2,
-  "explanation": "He asks for clarity about his alleged guilt.",
-  "ref": "Job 13:23"
- },
- {
-  "id": "old-job-14-1",
-  "chapter": 14,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How does Job describe man born of a woman?",
-  "choices": [
-   "Long-lived and full of laughter",
-   "Mighty and secure",
-   "Of few days and full of trouble",
-   "Sinless"
-  ],
-  "answer": 2,
-  "explanation": "He describes human life as brief and troubled.",
-  "ref": "Job 14:1"
- },
- {
-  "id": "old-job-14-2",
-  "chapter": 14,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What plant image does Job use to show renewed hope compared with man?",
-  "choices": [
-   "A cedar",
-   "A vine",
-   "A lily",
-   "A tree that can sprout again"
-  ],
-  "answer": 3,
-  "explanation": "He says a tree may sprout again even after being cut down.",
-  "ref": "Job 14:7–9"
- },
- {
-  "id": "old-job-14-3",
-  "chapter": 14,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What question does Job ask about death and renewed life?",
-  "choices": [
-   "If a man die, shall he live again?",
-   "Can kings die?",
-   "Can angels fall?",
-   "Will rivers stop?"
-  ],
-  "answer": 0,
-  "explanation": "He wrestles with hope beyond death.",
-  "ref": "Job 14:14"
- },
- {
-  "id": "old-job-14-4",
-  "chapter": 14,
-  "level": "beginner",
-  "category": "place",
-  "question": "Where does Job wish God would hide him until wrath be past?",
-  "choices": [
-   "In Egypt",
-   "In the temple",
-   "In heaven",
-   "In the grave"
-  ],
-  "answer": 3,
-  "explanation": "He longs to be hidden in the grave until God's wrath is past.",
-  "ref": "Job 14:13"
- },
- {
-  "id": "old-job-14-5",
-  "chapter": 14,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Job say happens to man at death in contrast to the tree?",
-  "choices": [
-   "He surely rises at once",
-   "He wasteth away and gives up the ghost",
-   "He becomes an angel",
-   "He returns to his throne"
-  ],
-  "answer": 1,
-  "explanation": "He contrasts man's death with the tree's regrowth.",
-  "ref": "Job 14:10"
- },
- {
   "id": "job-15-e-01",
   "chapter": 15,
   "level": "beginner",
@@ -17918,5 +17358,4085 @@
   "answer": 1,
   "explanation": "\"So Job died, being old and full of days.\"",
   "ref": "Job 42:17"
+ },
+ {
+  "id": "job-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Because his soul is weary of his life, what does Job say he will do?",
+  "choices": [
+   "Keep silent before his friends",
+   "Curse the day of his birth",
+   "Go out into the wilderness",
+   "Leave his complaint upon himself and speak in bitterness"
+  ],
+  "answer": 3,
+  "explanation": "I will leave my complaint upon myself; I will speak in the bitterness of my soul.",
+  "ref": "Job 10:1"
+ },
+ {
+  "id": "job-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say he will ask God not to do?",
+  "choices": [
+   "Remember his sins",
+   "Take his children",
+   "Send his friends",
+   "Condemn him"
+  ],
+  "answer": 3,
+  "explanation": "I will say unto God, Do not condemn me; shew me wherefore thou contendest with me.",
+  "ref": "Job 10:2"
+ },
+ {
+  "id": "job-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job ask God to show him?",
+  "choices": [
+   "Where his children are",
+   "When his trouble will end",
+   "Who has accused him",
+   "Why God contends with him"
+  ],
+  "answer": 3,
+  "explanation": "Shew me wherefore thou contendest with me.",
+  "ref": "Job 10:2"
+ },
+ {
+  "id": "job-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job ask whether God has?",
+  "choices": [
+   "Ears that sleep",
+   "A hand that is short",
+   "A heart of stone",
+   "Eyes of flesh"
+  ],
+  "answer": 3,
+  "explanation": "Hast thou eyes of flesh? or seest thou as man seeth?",
+  "ref": "Job 10:4"
+ },
+ {
+  "id": "job-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say God made him as?",
+  "choices": [
+   "Gold",
+   "Stone",
+   "A reed",
+   "Clay"
+  ],
+  "answer": 3,
+  "explanation": "Remember, I beseech thee, that thou hast made me as the clay.",
+  "ref": "Job 10:9"
+ },
+ {
+  "id": "job-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What picture does Job use of God pouring him out?",
+  "choices": [
+   "Water spilled on the ground",
+   "Wine poured from a vessel",
+   "Oil poured on a rock",
+   "Milk, curdled like cheese"
+  ],
+  "answer": 3,
+  "explanation": "Hast thou not poured me out as milk, and curdled me like cheese?",
+  "ref": "Job 10:10"
+ },
+ {
+  "id": "job-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what does Job say God clothed him?",
+  "choices": [
+   "Garments of honour",
+   "A robe of righteousness",
+   "Sackcloth and ashes",
+   "Skin and flesh"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast clothed me with skin and flesh, and hast fenced me with bones and sinews.",
+  "ref": "Job 10:11"
+ },
+ {
+  "id": "job-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what animal does Job compare God hunting him?",
+  "choices": [
+   "A swift eagle",
+   "A wild ox",
+   "A leopard",
+   "A fierce lion"
+  ],
+  "answer": 3,
+  "explanation": "Thou huntest me as a fierce lion.",
+  "ref": "Job 10:16"
+ },
+ {
+  "id": "job-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job wish had happened instead of being brought out of the womb?",
+  "choices": [
+   "He had been born a king",
+   "He had been hidden in the earth",
+   "He had lived a hundred years",
+   "He had given up the ghost"
+  ],
+  "answer": 3,
+  "explanation": "Wherefore then hast thou brought me forth out of the womb? Oh that I had given up the ghost, and no eye had seen me!",
+  "ref": "Job 10:18"
+ },
+ {
+  "id": "job-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job ask God to do so that he may take comfort a little?",
+  "choices": [
+   "Send him a messenger",
+   "Answer him in the whirlwind",
+   "Restore his children",
+   "Cease and let him alone"
+  ],
+  "answer": 3,
+  "explanation": "Are not my days few? cease then, and let me alone, that I may take comfort a little.",
+  "ref": "Job 10:20"
+ },
+ {
+  "id": "job-10-e-11",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "What land does Job say he is going to, from which he shall not return?",
+  "choices": [
+   "The land of Uz",
+   "The land of promise",
+   "The land of the east",
+   "The land of darkness and the shadow of death"
+  ],
+  "answer": 3,
+  "explanation": "Before I go whence I shall not return, even to the land of darkness and the shadow of death.",
+  "ref": "Job 10:21"
+ },
+ {
+  "id": "job-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say his Maker does, though his hands fashioned him round about?",
+  "choices": [
+   "Destroys him",
+   "Hides him",
+   "Forgets him",
+   "Heals him"
+  ],
+  "answer": 0,
+  "explanation": "Thine hands have made me and fashioned me together round about; yet thou dost destroy me.",
+  "ref": "Job 10:8"
+ },
+ {
+  "id": "job-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Job reminds God he made him as the clay and asks, will he bring him into what?",
+  "choices": [
+   "Dust again",
+   "The deep again",
+   "The grave of his fathers",
+   "The land of darkness"
+  ],
+  "answer": 0,
+  "explanation": "Remember, I beseech thee, that thou hast made me as the clay; and wilt thou bring me into dust again?",
+  "ref": "Job 10:9"
+ },
+ {
+  "id": "job-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God has granted him?",
+  "choices": [
+   "Life and favour",
+   "Sons and daughters",
+   "Wealth and honour",
+   "Wisdom and strength"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast granted me life and favour, and thy visitation hath preserved my spirit.",
+  "ref": "Job 10:12"
+ },
+ {
+  "id": "job-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If Job sins, what does he say God does?",
+  "choices": [
+   "Marks him and will not acquit him",
+   "Forgives him at once",
+   "Sends an angel to teach him",
+   "Hides his sin in the sea"
+  ],
+  "answer": 0,
+  "explanation": "If I sin, then thou markest me, and thou wilt not acquit me from mine iniquity.",
+  "ref": "Job 10:14"
+ },
+ {
+  "id": "job-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If Job be righteous, what does he say he will not do?",
+  "choices": [
+   "Lift up his head",
+   "Open his mouth",
+   "Bow his knee",
+   "Leave his house"
+  ],
+  "answer": 0,
+  "explanation": "If I be righteous, yet will I not lift up my head. I am full of confusion.",
+  "ref": "Job 10:15"
+ },
+ {
+  "id": "job-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God renews against him?",
+  "choices": [
+   "His witnesses",
+   "His promises",
+   "His mercies",
+   "His angels"
+  ],
+  "answer": 0,
+  "explanation": "Thou renewest thy witnesses against me, and increasest thine indignation upon me.",
+  "ref": "Job 10:17"
+ },
+ {
+  "id": "job-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job ask whether it is good for God to do?",
+  "choices": [
+   "Oppress and despise the work of his hands",
+   "Judge the wicked and spare the proud",
+   "Hear the poor and forget the rich",
+   "Forsake the earth and sleep"
+  ],
+  "answer": 0,
+  "explanation": "Is it good unto thee that thou shouldest oppress, that thou shouldest despise the work of thine hands?",
+  "ref": "Job 10:3"
+ },
+ {
+  "id": "job-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God knows about him?",
+  "choices": [
+   "That he is not wicked",
+   "That he has sinned in secret",
+   "That he is without a friend",
+   "That his children are gone"
+  ],
+  "answer": 0,
+  "explanation": "Thou knowest that I am not wicked; and there is none that can deliver out of thine hand.",
+  "ref": "Job 10:7"
+ },
+ {
+  "id": "job-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say none can do out of God's hand?",
+  "choices": [
+   "Deliver",
+   "Hide",
+   "Flee",
+   "Plead"
+  ],
+  "answer": 0,
+  "explanation": "Thou knowest that I am not wicked; and there is none that can deliver out of thine hand.",
+  "ref": "Job 10:7"
+ },
+ {
+  "id": "job-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say the light is like in the land of the shadow of death?",
+  "choices": [
+   "As darkness",
+   "As the noonday",
+   "As a lamp in the night",
+   "As the morning"
+  ],
+  "answer": 0,
+  "explanation": "A land of darkness, as darkness itself; and where the light is as darkness.",
+  "ref": "Job 10:22"
+ },
+ {
+  "id": "job-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job ask whether God's days and years are like?",
+  "choices": [
+   "The days of man",
+   "The days of the earth",
+   "The days of the angels",
+   "The days of the oak"
+  ],
+  "answer": 0,
+  "explanation": "Are thy days as the days of man? are thy years as man's days, that thou enquirest after mine iniquity?",
+  "ref": "Job 10:5"
+ },
+ {
+  "id": "job-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what does Job say God has fenced him?",
+  "choices": [
+   "A wall of brass",
+   "Bones and sinews",
+   "A hedge of thorns",
+   "A shield of fire"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast clothed me with skin and flesh, and hast fenced me with bones and sinews.",
+  "ref": "Job 10:11"
+ },
+ {
+  "id": "job-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say are against him?",
+  "choices": [
+   "Famine and plague",
+   "Changes and war",
+   "Fire and flood",
+   "Sword and pestilence"
+  ],
+  "answer": 1,
+  "explanation": "Changes and war are against me.",
+  "ref": "Job 10:17"
+ },
+ {
+  "id": "job-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Where does Job say he would have been carried from the womb?",
+  "choices": [
+   "To the wilderness",
+   "To the grave",
+   "To the house of his father",
+   "To the sea"
+  ],
+  "answer": 1,
+  "explanation": "I should have been as though I had not been; I should have been carried from the womb to the grave.",
+  "ref": "Job 10:19"
+ },
+ {
+  "id": "job-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Had he given up the ghost at birth, what does Job say he would have been?",
+  "choices": [
+   "A king in the earth",
+   "As though he had not been",
+   "Remembered by his friends",
+   "A son of the morning"
+  ],
+  "answer": 1,
+  "explanation": "I should have been as though I had not been.",
+  "ref": "Job 10:19"
+ },
+ {
+  "id": "job-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say of his days as he asks God to cease?",
+  "choices": [
+   "They are evil",
+   "They are few",
+   "They are long",
+   "They are hidden"
+  ],
+  "answer": 1,
+  "explanation": "Are not my days few? cease then, and let me alone.",
+  "ref": "Job 10:20"
+ },
+ {
+  "id": "job-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say of the place he goes, from which he shall not do what?",
+  "choices": [
+   "Escape",
+   "Return",
+   "Awake",
+   "Speak"
+  ],
+  "answer": 1,
+  "explanation": "Before I go whence I shall not return.",
+  "ref": "Job 10:21"
+ },
+ {
+  "id": "job-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose counsel does Job ask whether God shines upon?",
+  "choices": [
+   "The proud",
+   "The wicked",
+   "The princes",
+   "The wise"
+  ],
+  "answer": 1,
+  "explanation": "Is it good unto thee that thou shouldest despise the work of thine hands, and shine upon the counsel of the wicked?",
+  "ref": "Job 10:3"
+ },
+ {
+  "id": "job-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say he is full of?",
+  "choices": [
+   "Sorrow",
+   "Confusion",
+   "Silence",
+   "Anger"
+  ],
+  "answer": 1,
+  "explanation": "I am full of confusion; therefore see thou mine affliction.",
+  "ref": "Job 10:15"
+ },
+ {
+  "id": "job-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If Job be wicked, what does he say will come upon him?",
+  "choices": [
+   "Fire",
+   "Woe",
+   "Famine",
+   "Death at once"
+  ],
+  "answer": 1,
+  "explanation": "If I be wicked, woe unto me.",
+  "ref": "Job 10:15"
+ },
+ {
+  "id": "job-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say God's visitation has preserved?",
+  "choices": [
+   "His house",
+   "His spirit",
+   "His children",
+   "His flocks"
+  ],
+  "answer": 1,
+  "explanation": "Thy visitation hath preserved my spirit.",
+  "ref": "Job 10:12"
+ },
+ {
+  "id": "job-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After hunting Job as a lion, what does Job say God shows himself to be?",
+  "choices": [
+   "Merciful to him",
+   "Marvellous upon him",
+   "Silent before him",
+   "Far from him"
+  ],
+  "answer": 1,
+  "explanation": "Thou huntest me as a fierce lion: and again thou shewest thyself marvellous upon me.",
+  "ref": "Job 10:16"
+ },
+ {
+  "id": "job-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who answers Job at the start of chapter 11?",
+  "choices": [
+   "Zophar the Naamathite",
+   "Bildad the Shuhite",
+   "Eliphaz the Temanite",
+   "Elihu the Buzite"
+  ],
+  "answer": 0,
+  "explanation": "Then answered Zophar the Naamathite, and said.",
+  "ref": "Job 11:1"
+ },
+ {
+  "id": "job-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Zophar say Job has claimed about his doctrine?",
+  "choices": [
+   "That it is pure",
+   "That it is hidden",
+   "That it is old",
+   "That it is the law of God"
+  ],
+  "answer": 0,
+  "explanation": "For thou hast said, My doctrine is pure, and I am clean in thine eyes.",
+  "ref": "Job 11:4"
+ },
+ {
+  "id": "job-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Zophar wish God would do?",
+  "choices": [
+   "Speak and open his lips against Job",
+   "Send Job a messenger",
+   "Heal Job's body",
+   "Answer Job in the whirlwind"
+  ],
+  "answer": 0,
+  "explanation": "But oh that God would speak, and open his lips against thee.",
+  "ref": "Job 11:5"
+ },
+ {
+  "id": "job-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Zophar say God exacts of Job?",
+  "choices": [
+   "Less than his iniquity deserves",
+   "More than he can pay",
+   "Nothing at all",
+   "All that he owns"
+  ],
+  "answer": 0,
+  "explanation": "Know therefore that God exacteth of thee less than thine iniquity deserveth.",
+  "ref": "Job 11:6"
+ },
+ {
+  "id": "job-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Zophar ask whether Job can do by searching?",
+  "choices": [
+   "Find out God",
+   "Find his children",
+   "Find the end of the earth",
+   "Find a daysman"
+  ],
+  "answer": 0,
+  "explanation": "Canst thou by searching find out God? canst thou find out the Almighty unto perfection?",
+  "ref": "Job 11:7"
+ },
+ {
+  "id": "job-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Zophar describe the heights and depths of God?",
+  "choices": [
+   "High as heaven, deeper than hell",
+   "Wide as the east, long as the west",
+   "Brighter than the sun, darker than night",
+   "Older than the hills, wider than the sea"
+  ],
+  "answer": 0,
+  "explanation": "It is as high as heaven; what canst thou do? deeper than hell; what canst thou know?",
+  "ref": "Job 11:8"
+ },
+ {
+  "id": "job-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If God cuts off, shuts up or gathers together, what does Zophar ask?",
+  "choices": [
+   "Who can hinder him?",
+   "Who can forgive him?",
+   "Who can hide from him?",
+   "Who can number him?"
+  ],
+  "answer": 0,
+  "explanation": "If he cut off, and shut up, or gather together, then who can hinder him?",
+  "ref": "Job 11:10"
+ },
+ {
+  "id": "job-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Zophar say vain man is born like?",
+  "choices": [
+   "A wild ass's colt",
+   "A young lion",
+   "A creeping thing",
+   "A fool in the market"
+  ],
+  "answer": 0,
+  "explanation": "For vain man would be wise, though man be born like a wild ass's colt.",
+  "ref": "Job 11:12"
+ },
+ {
+  "id": "job-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If Job puts iniquity far away, what does Zophar say he shall lift up?",
+  "choices": [
+   "His face without spot",
+   "His hands in praise",
+   "His voice in song",
+   "His eyes to the hills"
+  ],
+  "answer": 0,
+  "explanation": "For then shalt thou lift up thy face without spot; yea, thou shalt be stedfast.",
+  "ref": "Job 11:15"
+ },
+ {
+  "id": "job-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Zophar say Job shall remember his misery?",
+  "choices": [
+   "As waters that pass away",
+   "As a dream of the night",
+   "As a wound that heals",
+   "As a cloud over the sea"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt forget thy misery, and remember it as waters that pass away.",
+  "ref": "Job 11:16"
+ },
+ {
+  "id": "job-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Zophar say God sees in vain men, and will therefore consider?",
+  "choices": [
+   "Their children",
+   "Their labours",
+   "Wickedness",
+   "Their prayers"
+  ],
+  "answer": 2,
+  "explanation": "For he knoweth vain men: he seeth wickedness also; will he not then consider it?",
+  "ref": "Job 11:11"
+ },
+ {
+  "id": "job-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Zophar say the secrets of wisdom are?",
+  "choices": [
+   "Hidden in the earth",
+   "Written in the stars",
+   "Double to that which is",
+   "Known to the aged"
+  ],
+  "answer": 2,
+  "explanation": "That he would shew thee the secrets of wisdom, that they are double to that which is!",
+  "ref": "Job 11:6"
+ },
+ {
+  "id": "job-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Zophar say the measure of God compares with the earth and sea?",
+  "choices": [
+   "Smaller than the earth, deeper than the sea",
+   "As old as the earth, as wide as the sea",
+   "Longer than the earth, broader than the sea",
+   "Higher than the earth, calmer than the sea"
+  ],
+  "answer": 2,
+  "explanation": "The measure thereof is longer than the earth, and broader than the sea.",
+  "ref": "Job 11:9"
+ },
+ {
+  "id": "job-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Zophar tell Job to do with iniquity in his hand?",
+  "choices": [
+   "Wash it in snow water",
+   "Offer it to God",
+   "Put it far away",
+   "Confess it to his friends"
+  ],
+  "answer": 2,
+  "explanation": "If iniquity be in thine hand, put it far away, and let not wickedness dwell in thy tabernacles.",
+  "ref": "Job 11:14"
+ },
+ {
+  "id": "job-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Zophar say Job's age shall be clearer than?",
+  "choices": [
+   "The morning star",
+   "The snow",
+   "The noonday",
+   "The sea"
+  ],
+  "answer": 2,
+  "explanation": "Thine age shall be clearer than the noonday.",
+  "ref": "Job 11:17"
+ },
+ {
+  "id": "job-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Because there is hope, what does Zophar say Job shall do?",
+  "choices": [
+   "Build a city and rule it",
+   "Journey to the east",
+   "Dig about him and take his rest in safety",
+   "Raise up his children"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt be secure, because there is hope; yea, thou shalt dig about thee, and thou shalt take thy rest in safety.",
+  "ref": "Job 11:18"
+ },
+ {
+  "id": "job-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Zophar say many shall make to Job?",
+  "choices": [
+   "War",
+   "A feast",
+   "Suit",
+   "Offerings"
+  ],
+  "answer": 2,
+  "explanation": "Yea, many shall make suit unto thee.",
+  "ref": "Job 11:19"
+ },
+ {
+  "id": "job-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Zophar say shall fail, and shall not escape?",
+  "choices": [
+   "The strength of the poor",
+   "The tents of the proud",
+   "The eyes of the wicked",
+   "The words of the false"
+  ],
+  "answer": 2,
+  "explanation": "But the eyes of the wicked shall fail, and they shall not escape.",
+  "ref": "Job 11:20"
+ },
+ {
+  "id": "job-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Zophar say the hope of the wicked shall be as?",
+  "choices": [
+   "A morning without light",
+   "A tree that is cut down",
+   "The giving up of the ghost",
+   "A house without a door"
+  ],
+  "answer": 2,
+  "explanation": "Their hope shall be as the giving up of the ghost.",
+  "ref": "Job 11:20"
+ },
+ {
+  "id": "job-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does Zophar say should not be justified?",
+  "choices": [
+   "A man of no value",
+   "A man born of a woman",
+   "A man full of talk",
+   "A man who mocks the poor"
+  ],
+  "answer": 2,
+  "explanation": "Should not the multitude of words be answered? and should a man full of talk be justified?",
+  "ref": "Job 11:2"
+ },
+ {
+  "id": "job-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Zophar ask whether Job's lies should make men do?",
+  "choices": [
+   "Hold their peace",
+   "Leave the city",
+   "Bow before him",
+   "Take up a proverb"
+  ],
+  "answer": 0,
+  "explanation": "Should thy lies make men hold their peace?",
+  "ref": "Job 11:3"
+ },
+ {
+  "id": "job-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose eyes does Zophar say Job claims to be clean?",
+  "choices": [
+   "God's",
+   "His friends'",
+   "The elders'",
+   "The priests'"
+  ],
+  "answer": 0,
+  "explanation": "My doctrine is pure, and I am clean in thine eyes.",
+  "ref": "Job 11:4"
+ },
+ {
+  "id": "job-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Zophar ask whether Job can find out unto perfection?",
+  "choices": [
+   "The Almighty",
+   "The wisdom of the ancient",
+   "The end of the earth",
+   "The way of the wicked"
+  ],
+  "answer": 0,
+  "explanation": "Canst thou find out the Almighty unto perfection?",
+  "ref": "Job 11:7"
+ },
+ {
+  "id": "job-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Zophar say Job shall be as?",
+  "choices": [
+   "The morning",
+   "The noonday sun",
+   "A flourishing tree",
+   "A fountain of water"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt shine forth, thou shalt be as the morning.",
+  "ref": "Job 11:17"
+ },
+ {
+  "id": "job-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If Job lifts up his face without spot, what does Zophar say he shall be, and not do?",
+  "choices": [
+   "Stedfast, and not fear",
+   "Rich, and not want",
+   "Wise, and not err",
+   "Silent, and not speak"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt lift up thy face without spot; yea, thou shalt be stedfast, and shalt not fear.",
+  "ref": "Job 11:15"
+ },
+ {
+  "id": "job-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who does Zophar say would be wise?",
+  "choices": [
+   "Vain man",
+   "The ancient",
+   "The mighty",
+   "The poor"
+  ],
+  "answer": 0,
+  "explanation": "For vain man would be wise, though man be born like a wild ass's colt.",
+  "ref": "Job 11:12"
+ },
+ {
+  "id": "job-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If Job prepares his heart, what does Zophar tell him to stretch out?",
+  "choices": [
+   "His hands toward God",
+   "His staff to the poor",
+   "His tent to the stranger",
+   "His voice to the heavens"
+  ],
+  "answer": 0,
+  "explanation": "If thou prepare thine heart, and stretch out thine hands toward him.",
+  "ref": "Job 11:13"
+ },
+ {
+  "id": "job-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "What does Zophar say must not dwell in Job's tabernacles?",
+  "choices": [
+   "Wickedness",
+   "Strangers",
+   "Sorrow",
+   "Idols"
+  ],
+  "answer": 0,
+  "explanation": "Let not wickedness dwell in thy tabernacles.",
+  "ref": "Job 11:14"
+ },
+ {
+  "id": "job-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Zophar say Job shall do, with none to make him afraid?",
+  "choices": [
+   "Lie down",
+   "Rise early",
+   "Sit at the gate",
+   "Go out to the field"
+  ],
+  "answer": 0,
+  "explanation": "Also thou shalt lie down, and none shall make thee afraid.",
+  "ref": "Job 11:19"
+ },
+ {
+  "id": "job-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Zophar say should be done with the multitude of Job's words?",
+  "choices": [
+   "They should be answered",
+   "They should be forgiven",
+   "They should be written down",
+   "They should be left alone"
+  ],
+  "answer": 0,
+  "explanation": "Should not the multitude of words be answered?",
+  "ref": "Job 11:2"
+ },
+ {
+  "id": "job-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Job sarcastically describe his friends?",
+  "choices": [
+   "Ye are the wise, and wisdom shall guide you",
+   "Ye are the people, and wisdom shall die with you",
+   "Ye are the priests, and the law is with you",
+   "Ye are the elders, and none can teach you"
+  ],
+  "answer": 1,
+  "explanation": "No doubt but ye are the people, and wisdom shall die with you.",
+  "ref": "Job 12:2"
+ },
+ {
+  "id": "job-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say he has as well as his friends?",
+  "choices": [
+   "A multitude of words",
+   "Understanding",
+   "A house in the city",
+   "A son to speak for him"
+  ],
+  "answer": 1,
+  "explanation": "But I have understanding as well as you; I am not inferior to you.",
+  "ref": "Job 12:3"
+ },
+ {
+  "id": "job-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Though Job calls upon God and is answered, how is he treated by his neighbour?",
+  "choices": [
+   "Honoured and visited",
+   "Mocked and laughed to scorn",
+   "Ignored and forgotten",
+   "Helped and comforted"
+  ],
+  "answer": 1,
+  "explanation": "I am as one mocked of his neighbour, who calleth upon God, and he answereth him: the just upright man is laughed to scorn.",
+  "ref": "Job 12:4"
+ },
+ {
+  "id": "job-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say prospers?",
+  "choices": [
+   "The fields of the poor",
+   "The tabernacles of robbers",
+   "The houses of the righteous",
+   "The cities of the east"
+  ],
+  "answer": 1,
+  "explanation": "The tabernacles of robbers prosper, and they that provoke God are secure.",
+  "ref": "Job 12:6"
+ },
+ {
+  "id": "job-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom does Job tell his friends to ask, so that they shall teach them?",
+  "choices": [
+   "The elders and the aged",
+   "The beasts, the fowls, the earth and the fishes",
+   "The priests and the prophets",
+   "The kings and the judges"
+  ],
+  "answer": 1,
+  "explanation": "Ask now the beasts, and they shall teach thee; and the fowls of the air, and they shall tell thee.",
+  "ref": "Job 12:7"
+ },
+ {
+  "id": "job-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In whose hand does Job say is the soul of every living thing?",
+  "choices": [
+   "The ancient's",
+   "The LORD's",
+   "The king's",
+   "The deceiver's"
+  ],
+  "answer": 1,
+  "explanation": "In whose hand is the soul of every living thing, and the breath of all mankind.",
+  "ref": "Job 12:10"
+ },
+ {
+  "id": "job-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "With whom does Job say is wisdom?",
+  "choices": [
+   "The young",
+   "The ancient",
+   "The poor",
+   "The princes"
+  ],
+  "answer": 1,
+  "explanation": "With the ancient is wisdom; and in length of days understanding.",
+  "ref": "Job 12:12"
+ },
+ {
+  "id": "job-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say God does that cannot be built again?",
+  "choices": [
+   "He lays a foundation",
+   "He breaks down",
+   "He opens the gates",
+   "He scatters the stones"
+  ],
+  "answer": 1,
+  "explanation": "Behold, he breaketh down, and it cannot be built again: he shutteth up a man, and there can be no opening.",
+  "ref": "Job 12:14"
+ },
+ {
+  "id": "job-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God do with the waters, according to Job?",
+  "choices": [
+   "Gathers them into heaps",
+   "Withholds them and they dry up",
+   "Stirs them with a wind",
+   "Hides them in the deep"
+  ],
+  "answer": 1,
+  "explanation": "Behold, he withholdeth the waters, and they dry up.",
+  "ref": "Job 12:15"
+ },
+ {
+  "id": "job-12-e-10",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say God makes of judges?",
+  "choices": [
+   "Kings",
+   "Fools",
+   "Servants",
+   "Priests"
+  ],
+  "answer": 1,
+  "explanation": "He leadeth counsellors away spoiled, and maketh the judges fools.",
+  "ref": "Job 12:17"
+ },
+ {
+  "id": "job-12-e-11",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say God looses from kings?",
+  "choices": [
+   "Their crowns",
+   "Their bond",
+   "Their armies",
+   "Their thrones"
+  ],
+  "answer": 1,
+  "explanation": "He looseth the bond of kings, and girdeth their loins with a girdle.",
+  "ref": "Job 12:18"
+ },
+ {
+  "id": "job-12-e-12",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "What does Job say God does with the nations?",
+  "choices": [
+   "Hides them and forgets them",
+   "Increases them and destroys them",
+   "Gathers them to Jerusalem",
+   "Sends them rain and corn"
+  ],
+  "answer": 1,
+  "explanation": "He increaseth the nations, and destroyeth them: he enlargeth the nations, and straiteneth them again.",
+  "ref": "Job 12:23"
+ },
+ {
+  "id": "job-12-e-13",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what does Job liken those God leaves to grope in the dark?",
+  "choices": [
+   "A blind beggar",
+   "A drunken man",
+   "A wounded beast",
+   "A child in the night"
+  ],
+  "answer": 1,
+  "explanation": "They grope in the dark without light, and he maketh them to stagger like a drunken man.",
+  "ref": "Job 12:25"
+ },
+ {
+  "id": "job-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does Job say is laughed to scorn?",
+  "choices": [
+   "The just upright man",
+   "The rich and proud",
+   "The wicked and the robber",
+   "The king of the land"
+  ],
+  "answer": 0,
+  "explanation": "The just upright man is laughed to scorn.",
+  "ref": "Job 12:4"
+ },
+ {
+  "id": "job-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say he that is ready to slip with his feet is like?",
+  "choices": [
+   "A lamp despised by him that is at ease",
+   "A tree uprooted by the wind",
+   "A stone cast into the sea",
+   "A reed shaken in the water"
+  ],
+  "answer": 0,
+  "explanation": "He that is ready to slip with his feet is as a lamp despised in the thought of him that is at ease.",
+  "ref": "Job 12:5"
+ },
+ {
+  "id": "job-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Who does Job say are secure?",
+  "choices": [
+   "They that provoke God",
+   "They that fear God",
+   "They that fast and pray",
+   "They that dwell in tents"
+  ],
+  "answer": 0,
+  "explanation": "They that provoke God are secure; into whose hand God bringeth abundantly.",
+  "ref": "Job 12:6"
+ },
+ {
+  "id": "job-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say the ear tries and the mouth tastes?",
+  "choices": [
+   "The ear tries words; the mouth tastes meat",
+   "The ear tries music; the mouth tastes wine",
+   "The ear tries wisdom; the mouth tastes honey",
+   "The ear tries the law; the mouth tastes bread"
+  ],
+  "answer": 0,
+  "explanation": "Doth not the ear try words? and the mouth taste his meat?",
+  "ref": "Job 12:11"
+ },
+ {
+  "id": "job-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say is found in length of days?",
+  "choices": [
+   "Understanding",
+   "Sorrow",
+   "Riches",
+   "Rest"
+  ],
+  "answer": 0,
+  "explanation": "With the ancient is wisdom; and in length of days understanding.",
+  "ref": "Job 12:12"
+ },
+ {
+  "id": "job-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "What does God do to counsellors?",
+  "choices": [
+   "Leads them away spoiled",
+   "Raises them to the throne",
+   "Makes them judges",
+   "Sends them to the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "He leadeth counsellors away spoiled, and maketh the judges fools.",
+  "ref": "Job 12:17"
+ },
+ {
+  "id": "job-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "What does God do to princes and the mighty?",
+  "choices": [
+   "Leads princes away spoiled and overthrows the mighty",
+   "Gives them rule over nations",
+   "Sends them to the grave in peace",
+   "Lifts them above kings"
+  ],
+  "answer": 0,
+  "explanation": "He leadeth princes away spoiled, and overthroweth the mighty.",
+  "ref": "Job 12:19"
+ },
+ {
+  "id": "job-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God removes from the trusty?",
+  "choices": [
+   "Their speech",
+   "Their riches",
+   "Their children",
+   "Their gates"
+  ],
+  "answer": 0,
+  "explanation": "He removeth away the speech of the trusty, and taketh away the understanding of the aged.",
+  "ref": "Job 12:20"
+ },
+ {
+  "id": "job-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God discover out of darkness?",
+  "choices": [
+   "Deep things",
+   "The treasures of kings",
+   "The paths of the wicked",
+   "The graves of the fathers"
+  ],
+  "answer": 0,
+  "explanation": "He discovereth deep things out of darkness, and bringeth out to light the shadow of death.",
+  "ref": "Job 12:22"
+ },
+ {
+  "id": "job-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "What does God cause the chief of the people to do, in a wilderness?",
+  "choices": [
+   "Wander where there is no way",
+   "Build a city",
+   "Find a well",
+   "Raise an altar"
+  ],
+  "answer": 0,
+  "explanation": "He taketh away the heart of the chief of the people of the earth, and causeth them to wander in a wilderness where there is no way.",
+  "ref": "Job 12:24"
+ },
+ {
+  "id": "job-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God girdle the loins of kings with, once he loosens their bond?",
+  "choices": [
+   "A girdle",
+   "A crown",
+   "A sword",
+   "A robe"
+  ],
+  "answer": 0,
+  "explanation": "He looseth the bond of kings, and girdeth their loins with a girdle.",
+  "ref": "Job 12:18"
+ },
+ {
+  "id": "job-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God pour on princes and weaken in the mighty?",
+  "choices": [
+   "Contempt on princes, weakness in the strength of the mighty",
+   "Honour on princes, strength in the mighty",
+   "Fear on princes, silence in the mighty",
+   "Gold on princes, famine in the mighty"
+  ],
+  "answer": 0,
+  "explanation": "He poureth contempt upon princes, and weakeneth the strength of the mighty.",
+  "ref": "Job 12:21"
+ },
+ {
+  "id": "job-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God take away from the aged?",
+  "choices": [
+   "Their understanding",
+   "Their riches",
+   "Their children",
+   "Their speech"
+  ],
+  "answer": 0,
+  "explanation": "He taketh away the understanding of the aged.",
+  "ref": "Job 12:20"
+ },
+ {
+  "id": "job-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God take away from the chief of the people?",
+  "choices": [
+   "Their sword",
+   "Their name",
+   "Their land",
+   "Their heart"
+  ],
+  "answer": 3,
+  "explanation": "He taketh away the heart of the chief of the people of the earth.",
+  "ref": "Job 12:24"
+ },
+ {
+  "id": "job-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the mouth taste, according to Job's comparison?",
+  "choices": [
+   "New wine",
+   "Honey",
+   "Bread of the field",
+   "His meat"
+  ],
+  "answer": 3,
+  "explanation": "Doth not the ear try words? and the mouth taste his meat?",
+  "ref": "Job 12:11"
+ },
+ {
+  "id": "job-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God bring out to light?",
+  "choices": [
+   "The hidden treasures",
+   "The paths of the sea",
+   "The names of the dead",
+   "The shadow of death"
+  ],
+  "answer": 3,
+  "explanation": "He discovereth deep things out of darkness, and bringeth out to light the shadow of death.",
+  "ref": "Job 12:22"
+ },
+ {
+  "id": "job-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God shut up, so that there can be no opening?",
+  "choices": [
+   "A city",
+   "A door",
+   "A river",
+   "A man"
+  ],
+  "answer": 3,
+  "explanation": "He shutteth up a man, and there can be no opening.",
+  "ref": "Job 12:14"
+ },
+ {
+  "id": "job-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who does Job say shall tell his friends, besides the beasts?",
+  "choices": [
+   "The sons of the east",
+   "The stars of heaven",
+   "The sheep of the field",
+   "The fowls of the air"
+  ],
+  "answer": 3,
+  "explanation": "Ask now the beasts, and they shall teach thee; and the fowls of the air, and they shall tell thee.",
+  "ref": "Job 12:7"
+ },
+ {
+  "id": "job-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say shall declare to his friends?",
+  "choices": [
+   "The mountains of the earth",
+   "The clouds of heaven",
+   "The rivers of the land",
+   "The fishes of the sea"
+  ],
+  "answer": 3,
+  "explanation": "Speak to the earth, and it shall teach thee: and the fishes of the sea shall declare unto thee.",
+  "ref": "Job 12:8"
+ },
+ {
+  "id": "job-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the soul of every living thing, what does God hold in his hand?",
+  "choices": [
+   "The keys of the grave",
+   "The days of the kings",
+   "The sceptre of the earth",
+   "The breath of all mankind"
+  ],
+  "answer": 3,
+  "explanation": "In whose hand is the soul of every living thing, and the breath of all mankind.",
+  "ref": "Job 12:10"
+ },
+ {
+  "id": "job-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Who does Job say are God's?",
+  "choices": [
+   "The proud and the humble",
+   "The rich and the poor",
+   "The young and the aged",
+   "The deceived and the deceiver"
+  ],
+  "answer": 3,
+  "explanation": "With him is strength and wisdom: the deceived and the deceiver are his.",
+  "ref": "Job 12:16"
+ },
+ {
+  "id": "job-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say he is not, compared with his friends?",
+  "choices": [
+   "Wiser than them",
+   "Older than them",
+   "Richer than them",
+   "Inferior to them"
+  ],
+  "answer": 3,
+  "explanation": "But I have understanding as well as you; I am not inferior to you: yea, who knoweth not such things as these?",
+  "ref": "Job 12:3"
+ },
+ {
+  "id": "job-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose hand does Job say hath wrought all this?",
+  "choices": [
+   "The ancient's",
+   "The deceiver's",
+   "The earth's",
+   "The LORD's"
+  ],
+  "answer": 3,
+  "explanation": "Who knoweth not in all these that the hand of the LORD hath wrought this?",
+  "ref": "Job 12:9"
+ },
+ {
+  "id": "job-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When God sends the waters out, what do they do?",
+  "choices": [
+   "Fill the valleys",
+   "Water the fields",
+   "Fall upon the wicked",
+   "Overturn the earth"
+  ],
+  "answer": 3,
+  "explanation": "Also he sendeth them out, and they overturn the earth.",
+  "ref": "Job 12:15"
+ },
+ {
+  "id": "job-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does Job tell them to speak to, so that it shall teach them?",
+  "choices": [
+   "The sea",
+   "The mountains",
+   "The wilderness",
+   "The earth"
+  ],
+  "answer": 3,
+  "explanation": "Or speak to the earth, and it shall teach thee.",
+  "ref": "Job 12:8"
+ },
+ {
+  "id": "job-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the wicked grope in, without light?",
+  "choices": [
+   "The wilderness",
+   "The night watches",
+   "A pit",
+   "The dark"
+  ],
+  "answer": 3,
+  "explanation": "They grope in the dark without light.",
+  "ref": "Job 12:25"
+ },
+ {
+  "id": "job-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say he desires to do?",
+  "choices": [
+   "Flee from God",
+   "Offer a sacrifice to God",
+   "Reason with God",
+   "Curse the day of his birth"
+  ],
+  "answer": 2,
+  "explanation": "Surely I would speak to the Almighty, and I desire to reason with God.",
+  "ref": "Job 13:3"
+ },
+ {
+  "id": "job-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job call his friends?",
+  "choices": [
+   "Wise men and faithful comforters",
+   "Princes of the east and men of renown",
+   "Forgers of lies and physicians of no value",
+   "Priests of the temple and men of peace"
+  ],
+  "answer": 2,
+  "explanation": "But ye are forgers of lies, ye are all physicians of no value.",
+  "ref": "Job 13:4"
+ },
+ {
+  "id": "job-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say would be his friends' wisdom?",
+  "choices": [
+   "To pray for him",
+   "To bring a sacrifice",
+   "To hold their peace",
+   "To plead with God"
+  ],
+  "answer": 2,
+  "explanation": "Oh that ye would altogether hold your peace! and it should be your wisdom.",
+  "ref": "Job 13:5"
+ },
+ {
+  "id": "job-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job ask whether his friends will do for God?",
+  "choices": [
+   "Pray and make supplication",
+   "Teach and give counsel",
+   "Speak wickedly and talk deceitfully",
+   "Fast and sit in ashes"
+  ],
+  "answer": 2,
+  "explanation": "Will ye speak wickedly for God? and talk deceitfully for him?",
+  "ref": "Job 13:7"
+ },
+ {
+  "id": "job-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say his friends' remembrances are like?",
+  "choices": [
+   "Gold",
+   "Smoke",
+   "Ashes",
+   "Dust of the earth"
+  ],
+  "answer": 2,
+  "explanation": "Your remembrances are like unto ashes, your bodies to bodies of clay.",
+  "ref": "Job 13:12"
+ },
+ {
+  "id": "job-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job declare about trusting God, though he slay him?",
+  "choices": [
+   "Yet will he curse him",
+   "Yet will he flee from him",
+   "Yet will he trust in him",
+   "Yet will he cease to speak"
+  ],
+  "answer": 2,
+  "explanation": "Though he slay me, yet will I trust in him: but I will maintain mine own ways before him.",
+  "ref": "Job 13:15"
+ },
+ {
+  "id": "job-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who does Job say shall not come before God?",
+  "choices": [
+   "A righteous man",
+   "A king",
+   "An hypocrite",
+   "A stranger"
+  ],
+  "answer": 2,
+  "explanation": "He also shall be my salvation: for an hypocrite shall not come before him.",
+  "ref": "Job 13:16"
+ },
+ {
+  "id": "job-13-e-08",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say he has ordered, and knows he shall be justified?",
+  "choices": [
+   "His house",
+   "His words",
+   "His cause",
+   "His sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "Behold now, I have ordered my cause; I know that I shall be justified.",
+  "ref": "Job 13:18"
+ },
+ {
+  "id": "job-13-e-09",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job ask God to withdraw far from him?",
+  "choices": [
+   "His angels",
+   "His rod and staff",
+   "His hand",
+   "His mercy"
+  ],
+  "answer": 2,
+  "explanation": "Withdraw thine hand far from me: and let not thy dread make me afraid.",
+  "ref": "Job 13:21"
+ },
+ {
+  "id": "job-13-e-10",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job ask God to make him know?",
+  "choices": [
+   "The day of his death",
+   "The names of his accusers",
+   "His transgression and sin",
+   "The way of the wicked"
+  ],
+  "answer": 2,
+  "explanation": "How many are mine iniquities and sins? make me to know my transgression and my sin.",
+  "ref": "Job 13:23"
+ },
+ {
+  "id": "job-13-e-11",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job ask God about hiding his face?",
+  "choices": [
+   "When he will show it again",
+   "Whether he hides it from the wicked",
+   "Why he hides it and holds Job for his enemy",
+   "How long he will hide it from the earth"
+  ],
+  "answer": 2,
+  "explanation": "Wherefore hidest thou thy face, and holdest me for thine enemy?",
+  "ref": "Job 13:24"
+ },
+ {
+  "id": "job-13-e-12",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things does Job liken himself to, asking if God will break and pursue them?",
+  "choices": [
+   "A reed in the water and a withered tree",
+   "A cloud in the sky and the dust of the earth",
+   "A leaf driven to and fro and dry stubble",
+   "A flower of the field and chaff before the wind"
+  ],
+  "answer": 2,
+  "explanation": "Wilt thou break a leaf driven to and fro? and wilt thou pursue the dry stubble?",
+  "ref": "Job 13:25"
+ },
+ {
+  "id": "job-13-e-13",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say God puts his feet in?",
+  "choices": [
+   "A pit",
+   "A net",
+   "The stocks",
+   "Chains of iron"
+  ],
+  "answer": 2,
+  "explanation": "Thou puttest my feet also in the stocks, and lookest narrowly unto all my paths.",
+  "ref": "Job 13:27"
+ },
+ {
+  "id": "job-13-e-14",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what does Job liken a man who consumes away?",
+  "choices": [
+   "A broken vessel and a withered branch",
+   "A fallen tower and a dry well",
+   "A rotten thing and a moth-eaten garment",
+   "A fading flower and a falling star"
+  ],
+  "answer": 2,
+  "explanation": "And he, as a rotten thing, consumeth, as a garment that is moth eaten.",
+  "ref": "Job 13:28"
+ },
+ {
+  "id": "job-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say of what his friends know?",
+  "choices": [
+   "He knows the same and is not inferior",
+   "He knows far more than they",
+   "He knows nothing of it",
+   "He knows only what the ancient said"
+  ],
+  "answer": 0,
+  "explanation": "What ye know, the same do I know also: I am not inferior unto you.",
+  "ref": "Job 13:2"
+ },
+ {
+  "id": "job-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job ask whether it is good for God to do to his friends?",
+  "choices": [
+   "Search them out",
+   "Bless them",
+   "Teach them",
+   "Forgive them"
+  ],
+  "answer": 0,
+  "explanation": "Is it good that he should search you out? or as one man mocketh another, do ye so mock him?",
+  "ref": "Job 13:9"
+ },
+ {
+  "id": "job-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God will surely do if they secretly accept persons?",
+  "choices": [
+   "Reprove them",
+   "Hide them",
+   "Reward them",
+   "Forget them"
+  ],
+  "answer": 0,
+  "explanation": "He will surely reprove you, if ye do secretly accept persons.",
+  "ref": "Job 13:10"
+ },
+ {
+  "id": "job-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say should make his friends afraid?",
+  "choices": [
+   "God's excellency and dread",
+   "The wrath of kings",
+   "The thunder from heaven",
+   "The grave"
+  ],
+  "answer": 0,
+  "explanation": "Shall not his excellency make you afraid? and his dread fall upon you?",
+  "ref": "Job 13:11"
+ },
+ {
+  "id": "job-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say he does with his flesh and his life?",
+  "choices": [
+   "Takes his flesh in his teeth and puts his life in his hand",
+   "Gives his flesh to the poor and his life to God",
+   "Hides his flesh and keeps his life",
+   "Cuts his flesh and sheds his blood"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore do I take my flesh in my teeth, and put my life in mine hand?",
+  "ref": "Job 13:14"
+ },
+ {
+  "id": "job-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say he will do before God?",
+  "choices": [
+   "Maintain his own ways",
+   "Confess his sins",
+   "Give up his cause",
+   "Hold his peace"
+  ],
+  "answer": 0,
+  "explanation": "Though he slay me, yet will I trust in him: but I will maintain mine own ways before him.",
+  "ref": "Job 13:15"
+ },
+ {
+  "id": "job-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If Job held his tongue, what does he say would happen to him?",
+  "choices": [
+   "He would give up the ghost",
+   "He would be justified",
+   "He would be healed",
+   "He would be forgotten"
+  ],
+  "answer": 0,
+  "explanation": "Who is he that will plead with me? for now, if I hold my tongue, I shall give up the ghost.",
+  "ref": "Job 13:19"
+ },
+ {
+  "id": "job-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Job asks God to call, and he will answer. Or what else?",
+  "choices": [
+   "Let him speak, and God answer",
+   "Let him sleep, and God watch",
+   "Let him flee, and God follow",
+   "Let him weep, and God comfort"
+  ],
+  "answer": 0,
+  "explanation": "Then call thou, and I will answer: or let me speak, and answer thou me.",
+  "ref": "Job 13:22"
+ },
+ {
+  "id": "job-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God writes against him?",
+  "choices": [
+   "Bitter things",
+   "Words of mercy",
+   "His name in a book",
+   "The names of his friends"
+  ],
+  "answer": 0,
+  "explanation": "For thou writest bitter things against me, and makest me to possess the iniquities of my youth.",
+  "ref": "Job 13:26"
+ },
+ {
+  "id": "job-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God looks narrowly unto?",
+  "choices": [
+   "All his paths",
+   "All his words",
+   "All his sacrifices",
+   "All his friends"
+  ],
+  "answer": 0,
+  "explanation": "Thou puttest my feet also in the stocks, and lookest narrowly unto all my paths.",
+  "ref": "Job 13:27"
+ },
+ {
+  "id": "job-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job ask his friends about accepting God's person?",
+  "choices": [
+   "Will they accept his person and contend for God?",
+   "Will they pray for him and bless him?",
+   "Will they fear him and keep silent?",
+   "Will they serve him and bring offerings?"
+  ],
+  "answer": 0,
+  "explanation": "Will ye accept his person? will ye contend for God?",
+  "ref": "Job 13:8"
+ },
+ {
+  "id": "job-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job ask his friends to hear?",
+  "choices": [
+   "His reasoning and the pleadings of his lips",
+   "His vows and his prayers",
+   "His dreams and his visions",
+   "His songs and his proverbs"
+  ],
+  "answer": 0,
+  "explanation": "Hear now my reasoning, and hearken to the pleadings of my lips.",
+  "ref": "Job 13:6"
+ },
+ {
+  "id": "job-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If God does two things, what does Job say he will not do?",
+  "choices": [
+   "Hide himself from God",
+   "Speak of his troubles",
+   "Plead his cause",
+   "Ask for his children"
+  ],
+  "answer": 0,
+  "explanation": "Only do not two things unto me: then will I not hide myself from thee.",
+  "ref": "Job 13:20"
+ },
+ {
+  "id": "job-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job ask his friends to let him do, whatever comes?",
+  "choices": [
+   "Speak, and let come on him what will",
+   "Rest, and let the Almighty answer",
+   "Pray, and let God hear",
+   "Leave, and let come what may"
+  ],
+  "answer": 0,
+  "explanation": "Hold your peace, let me alone, that I may speak, and let come on me what will.",
+  "ref": "Job 13:13"
+ },
+ {
+  "id": "job-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say his eye has seen?",
+  "choices": [
+   "The face of God",
+   "The end of the wicked",
+   "All this",
+   "The glory of kings"
+  ],
+  "answer": 2,
+  "explanation": "Lo, mine eye hath seen all this, mine ear hath heard and understood it.",
+  "ref": "Job 13:1"
+ },
+ {
+  "id": "job-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say his ear has done?",
+  "choices": [
+   "Heard and hidden it",
+   "Heard and forgotten it",
+   "Heard and understood it",
+   "Heard and doubted it"
+  ],
+  "answer": 2,
+  "explanation": "Mine ear hath heard and understood it.",
+  "ref": "Job 13:1"
+ },
+ {
+  "id": "job-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say his friends' bodies are like?",
+  "choices": [
+   "Bodies of brass",
+   "Vessels of wrath",
+   "Bodies of clay",
+   "Stones of the field"
+  ],
+  "answer": 2,
+  "explanation": "Your remembrances are like unto ashes, your bodies to bodies of clay.",
+  "ref": "Job 13:12"
+ },
+ {
+  "id": "job-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who does Job say shall be his salvation?",
+  "choices": [
+   "His friends",
+   "His children",
+   "God",
+   "A daysman"
+  ],
+  "answer": 2,
+  "explanation": "He also shall be my salvation.",
+  "ref": "Job 13:16"
+ },
+ {
+  "id": "job-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job ask God not to let make him afraid?",
+  "choices": [
+   "His anger",
+   "His servants",
+   "His dread",
+   "His angels"
+  ],
+  "answer": 2,
+  "explanation": "Withdraw thine hand far from me: and let not thy dread make me afraid.",
+  "ref": "Job 13:21"
+ },
+ {
+  "id": "job-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job ask whether God will pursue?",
+  "choices": [
+   "The wild ass",
+   "The fleeing deer",
+   "The dry stubble",
+   "The scattered flock"
+  ],
+  "answer": 2,
+  "explanation": "Wilt thou break a leaf driven to and fro? and wilt thou pursue the dry stubble?",
+  "ref": "Job 13:25"
+ },
+ {
+  "id": "job-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say God sets upon the heels of his feet?",
+  "choices": [
+   "A chain",
+   "A mark of shame",
+   "A print",
+   "A burden"
+  ],
+  "answer": 2,
+  "explanation": "Thou settest a print upon the heels of my feet.",
+  "ref": "Job 13:27"
+ },
+ {
+  "id": "job-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say he puts in his hand?",
+  "choices": [
+   "His staff",
+   "His cause",
+   "His life",
+   "His sword"
+  ],
+  "answer": 2,
+  "explanation": "Wherefore do I take my flesh in my teeth, and put my life in mine hand?",
+  "ref": "Job 13:14"
+ },
+ {
+  "id": "job-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Job says he shall give up what, if he holds his tongue?",
+  "choices": [
+   "His cause",
+   "His peace",
+   "The ghost",
+   "His hope"
+  ],
+  "answer": 2,
+  "explanation": "For now, if I hold my tongue, I shall give up the ghost.",
+  "ref": "Job 13:19"
+ },
+ {
+  "id": "job-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say God makes him possess?",
+  "choices": [
+   "The sins of his fathers",
+   "The riches of the wicked",
+   "The iniquities of his youth",
+   "The graves of his children"
+  ],
+  "answer": 2,
+  "explanation": "Thou writest bitter things against me, and makest me to possess the iniquities of my youth.",
+  "ref": "Job 13:26"
+ },
+ {
+  "id": "job-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say he knows he shall be?",
+  "choices": [
+   "Silent",
+   "Forgiven",
+   "Justified",
+   "Restored"
+  ],
+  "answer": 2,
+  "explanation": "Behold now, I have ordered my cause; I know that I shall be justified.",
+  "ref": "Job 13:18"
+ },
+ {
+  "id": "job-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say of the hypocrite's coming before God?",
+  "choices": [
+   "He shall come first",
+   "He shall come with a gift",
+   "He shall not come",
+   "He shall come in the morning"
+  ],
+  "answer": 2,
+  "explanation": "For an hypocrite shall not come before him.",
+  "ref": "Job 13:16"
+ },
+ {
+  "id": "job-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom does Job say, 'Hold your peace, let me alone'?",
+  "choices": [
+   "The Almighty",
+   "His wife",
+   "His friends",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "Hold your peace, let me alone, that I may speak.",
+  "ref": "Job 13:13"
+ },
+ {
+  "id": "job-13-h-14",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say he is not, compared with his friends?",
+  "choices": [
+   "Wiser",
+   "Older",
+   "Inferior",
+   "Richer"
+  ],
+  "answer": 2,
+  "explanation": "What ye know, the same do I know also: I am not inferior unto you.",
+  "ref": "Job 13:2"
+ },
+ {
+  "id": "job-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Job describe a man born of a woman?",
+  "choices": [
+   "Of long life and full of joy",
+   "Of great strength and full of pride",
+   "Of little wisdom and full of years",
+   "Of few days and full of trouble"
+  ],
+  "answer": 3,
+  "explanation": "Man that is born of a woman is of few days, and full of trouble.",
+  "ref": "Job 14:1"
+ },
+ {
+  "id": "job-14-e-02",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what does Job compare man, who comes forth and is cut down?",
+  "choices": [
+   "A cedar, and a river that does not cease",
+   "A star, and a cloud that does not pass",
+   "A lion, and a wind that does not rest",
+   "A flower, and a shadow that does not continue"
+  ],
+  "answer": 3,
+  "explanation": "He cometh forth like a flower, and is cut down: he fleeth also as a shadow, and continueth not.",
+  "ref": "Job 14:2"
+ },
+ {
+  "id": "job-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who can bring a clean thing out of an unclean, according to Job?",
+  "choices": [
+   "Only the priests",
+   "The Almighty alone",
+   "The righteous man",
+   "Not one"
+  ],
+  "answer": 3,
+  "explanation": "Who can bring a clean thing out of an unclean? not one.",
+  "ref": "Job 14:4"
+ },
+ {
+  "id": "job-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say there is hope of for a tree that is cut down?",
+  "choices": [
+   "That it will be carried away",
+   "That it will be used for an altar",
+   "That it will be remembered",
+   "That it will sprout again"
+  ],
+  "answer": 3,
+  "explanation": "For there is hope of a tree, if it be cut down, that it will sprout again.",
+  "ref": "Job 14:7"
+ },
+ {
+  "id": "job-14-e-05",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Through what does Job say a tree will bud, though the root is old?",
+  "choices": [
+   "The warmth of the sun",
+   "The strength of the earth",
+   "The dew of the morning",
+   "The scent of water"
+  ],
+  "answer": 3,
+  "explanation": "Yet through the scent of water it will bud, and bring forth boughs like a plant.",
+  "ref": "Job 14:9"
+ },
+ {
+  "id": "job-14-e-06",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job ask of man when he dies, wastes away and gives up the ghost?",
+  "choices": [
+   "Who shall remember him?",
+   "Why was he born?",
+   "What will he leave behind?",
+   "Where is he?"
+  ],
+  "answer": 3,
+  "explanation": "But man dieth, and wasteth away: yea, man giveth up the ghost, and where is he?",
+  "ref": "Job 14:10"
+ },
+ {
+  "id": "job-14-e-07",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does Job wish God would hide him until his wrath be past?",
+  "choices": [
+   "In the wilderness",
+   "In the cave of the rock",
+   "In the land of darkness",
+   "In the grave"
+  ],
+  "answer": 3,
+  "explanation": "Oh that thou wouldest hide me in the grave, that thou wouldest keep me secret, until thy wrath be past.",
+  "ref": "Job 14:13"
+ },
+ {
+  "id": "job-14-e-08",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What famous question does Job ask about death?",
+  "choices": [
+   "Who shall deliver me from the grave?",
+   "Where is the way to the dead?",
+   "How long shall the dead sleep?",
+   "If a man die, shall he live again?"
+  ],
+  "answer": 3,
+  "explanation": "If a man die, shall he live again?",
+  "ref": "Job 14:14"
+ },
+ {
+  "id": "job-14-e-09",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say he will do all the days of his appointed time?",
+  "choices": [
+   "Pray without ceasing",
+   "Mourn for his children",
+   "Seek for his friends",
+   "Wait till his change come"
+  ],
+  "answer": 3,
+  "explanation": "All the days of my appointed time will I wait, till my change come.",
+  "ref": "Job 14:14"
+ },
+ {
+  "id": "job-14-e-10",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say wear the stones?",
+  "choices": [
+   "The winds",
+   "The rains of heaven",
+   "The footsteps of men",
+   "The waters"
+  ],
+  "answer": 3,
+  "explanation": "The waters wear the stones: thou washest away the things which grow out of the dust of the earth.",
+  "ref": "Job 14:19"
+ },
+ {
+  "id": "job-14-e-11",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say a man does not know when his sons come to honour?",
+  "choices": [
+   "Where they are",
+   "Who they are",
+   "Why they came",
+   "That it has happened"
+  ],
+  "answer": 3,
+  "explanation": "His sons come to honour, and he knoweth it not; and they are brought low, but he perceiveth it not of them.",
+  "ref": "Job 14:21"
+ },
+ {
+  "id": "job-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job ask God to do to man, so that he may rest as an hireling?",
+  "choices": [
+   "Turn from him",
+   "Visit him",
+   "Teach him",
+   "Number him"
+  ],
+  "answer": 0,
+  "explanation": "Turn from him, that he may rest, till he shall accomplish, as an hireling, his day.",
+  "ref": "Job 14:6"
+ },
+ {
+  "id": "job-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God has done to man's days and bounds?",
+  "choices": [
+   "Determined his days and appointed bounds he cannot pass",
+   "Hidden his days and given him no bounds",
+   "Lengthened his days and given him rest",
+   "Numbered his days and given him wealth"
+  ],
+  "answer": 0,
+  "explanation": "His days are determined, the number of his months are with thee, thou hast appointed his bounds that he cannot pass.",
+  "ref": "Job 14:5"
+ },
+ {
+  "id": "job-14-m-03",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job ask whether God does upon such a frail man?",
+  "choices": [
+   "Bring him into judgment",
+   "Bring him to honour",
+   "Lead him to rest",
+   "Hide him from the wicked"
+  ],
+  "answer": 0,
+  "explanation": "And dost thou open thine eyes upon such an one, and bringest me into judgment with thee?",
+  "ref": "Job 14:3"
+ },
+ {
+  "id": "job-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job compare man lying down and not rising to?",
+  "choices": [
+   "Waters failing from the sea and a flood drying up",
+   "A cloud passing over the earth",
+   "A candle burning out in the night",
+   "A leaf falling from a tree"
+  ],
+  "answer": 0,
+  "explanation": "As the waters fail from the sea, and the flood decayeth and drieth up: so man lieth down, and riseth not.",
+  "ref": "Job 14:11"
+ },
+ {
+  "id": "job-14-m-05",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when does Job say man shall not awake nor be raised from sleep?",
+  "choices": [
+   "Till the heavens be no more",
+   "Till the day of the Lord",
+   "Till the morning come",
+   "Till his sons return"
+  ],
+  "answer": 0,
+  "explanation": "Till the heavens be no more, they shall not awake, nor be raised out of their sleep.",
+  "ref": "Job 14:12"
+ },
+ {
+  "id": "job-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job ask God to appoint him?",
+  "choices": [
+   "A set time, and to remember him",
+   "A daysman, and to hear him",
+   "A city, and to guard him",
+   "A friend, and to comfort him"
+  ],
+  "answer": 0,
+  "explanation": "That thou wouldest appoint me a set time, and remember me!",
+  "ref": "Job 14:13"
+ },
+ {
+  "id": "job-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God will have a desire to?",
+  "choices": [
+   "The work of his hands",
+   "The prayers of his people",
+   "The house of his fathers",
+   "The sons of men"
+  ],
+  "answer": 0,
+  "explanation": "Thou wilt have a desire to the work of thine hands.",
+  "ref": "Job 14:15"
+ },
+ {
+  "id": "job-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God numbers and watches over?",
+  "choices": [
+   "His steps, and his sin",
+   "His days, and his sleep",
+   "His words, and his tears",
+   "His flocks, and his fields"
+  ],
+  "answer": 0,
+  "explanation": "For now thou numberest my steps: dost thou not watch over my sin?",
+  "ref": "Job 14:16"
+ },
+ {
+  "id": "job-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say is sealed up in a bag?",
+  "choices": [
+   "His transgression",
+   "His tears",
+   "His name",
+   "His days"
+  ],
+  "answer": 0,
+  "explanation": "My transgression is sealed up in a bag, and thou sewest up mine iniquity.",
+  "ref": "Job 14:17"
+ },
+ {
+  "id": "job-14-m-10",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God does against man for ever?",
+  "choices": [
+   "Prevails, changes his countenance and sends him away",
+   "Pleads, restores his strength and raises him up",
+   "Hears, comforts him and gives him rest",
+   "Waits, forgives him and calls him back"
+  ],
+  "answer": 0,
+  "explanation": "Thou prevailest for ever against him, and he passeth: thou changest his countenance, and sendest him away.",
+  "ref": "Job 14:20"
+ },
+ {
+  "id": "job-14-h-01",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Though the root grows old and the stock dies, where does Job say it dies?",
+  "choices": [
+   "In the fire",
+   "In the water",
+   "In the ground",
+   "On the mountain"
+  ],
+  "answer": 2,
+  "explanation": "Though the root thereof wax old in the earth, and the stock thereof die in the ground.",
+  "ref": "Job 14:8"
+ },
+ {
+  "id": "job-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As what does Job say man shall accomplish his day?",
+  "choices": [
+   "A servant",
+   "A shepherd",
+   "An hireling",
+   "A soldier"
+  ],
+  "answer": 2,
+  "explanation": "Turn from him, that he may rest, till he shall accomplish, as an hireling, his day.",
+  "ref": "Job 14:6"
+ },
+ {
+  "id": "job-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say God sews up?",
+  "choices": [
+   "His wounds",
+   "His days",
+   "His iniquity",
+   "His garment"
+  ],
+  "answer": 2,
+  "explanation": "My transgression is sealed up in a bag, and thou sewest up mine iniquity.",
+  "ref": "Job 14:17"
+ },
+ {
+  "id": "job-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say is removed out of his place?",
+  "choices": [
+   "The tent",
+   "The cloud",
+   "The rock",
+   "The pillar"
+  ],
+  "answer": 2,
+  "explanation": "And surely the mountain falling cometh to nought, and the rock is removed out of his place.",
+  "ref": "Job 14:18"
+ },
+ {
+  "id": "job-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say God destroys, as the waters wear the stones?",
+  "choices": [
+   "The strength of man",
+   "The days of man",
+   "The hope of man",
+   "The sons of man"
+  ],
+  "answer": 2,
+  "explanation": "Thou destroyest the hope of man.",
+  "ref": "Job 14:19"
+ },
+ {
+  "id": "job-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say his flesh shall have?",
+  "choices": [
+   "Rest",
+   "Healing",
+   "Pain",
+   "Honour"
+  ],
+  "answer": 2,
+  "explanation": "But his flesh upon him shall have pain, and his soul within him shall mourn.",
+  "ref": "Job 14:22"
+ },
+ {
+  "id": "job-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say a man's soul within him shall do?",
+  "choices": [
+   "Rejoice",
+   "Rest",
+   "Mourn",
+   "Wait"
+  ],
+  "answer": 2,
+  "explanation": "His flesh upon him shall have pain, and his soul within him shall mourn.",
+  "ref": "Job 14:22"
+ },
+ {
+  "id": "job-14-m-11",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say of the mountain that falls?",
+  "choices": [
+   "It rises again",
+   "It comes to nought",
+   "It is carried to the sea",
+   "It is built up again"
+  ],
+  "answer": 1,
+  "explanation": "And surely the mountain falling cometh to nought, and the rock is removed out of his place.",
+  "ref": "Job 14:18"
+ },
+ {
+  "id": "job-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say he will do when God calls?",
+  "choices": [
+   "Hide",
+   "Answer",
+   "Weep",
+   "Pray"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt call, and I will answer thee.",
+  "ref": "Job 14:15"
+ },
+ {
+  "id": "job-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the tree bring forth like a plant?",
+  "choices": [
+   "Roots",
+   "Boughs",
+   "Fruit",
+   "Leaves"
+  ],
+  "answer": 1,
+  "explanation": "Yet through the scent of water it will bud, and bring forth boughs like a plant.",
+  "ref": "Job 14:9"
+ },
+ {
+  "id": "job-14-h-10",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say drieth up with the waters of the sea?",
+  "choices": [
+   "The river",
+   "The flood",
+   "The well",
+   "The brook"
+  ],
+  "answer": 1,
+  "explanation": "As the waters fail from the sea, and the flood decayeth and drieth up.",
+  "ref": "Job 14:11"
+ },
+ {
+  "id": "job-14-h-11",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say God has appointed to man that he cannot pass?",
+  "choices": [
+   "His years",
+   "His bounds",
+   "His sons",
+   "His rest"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast appointed his bounds that he cannot pass.",
+  "ref": "Job 14:5"
+ },
+ {
+  "id": "job-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who answers Job at the start of chapter 8?",
+  "choices": [
+   "Eliphaz the Temanite",
+   "Bildad the Shuhite",
+   "Zophar the Naamathite",
+   "Elihu the Buzite"
+  ],
+  "answer": 1,
+  "explanation": "Then answered Bildad the Shuhite, and said.",
+  "ref": "Job 8:1"
+ },
+ {
+  "id": "job-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Bildad say the words of Job's mouth are like?",
+  "choices": [
+   "A rushing river",
+   "A strong wind",
+   "A consuming fire",
+   "A sharp sword"
+  ],
+  "answer": 1,
+  "explanation": "How long shall the words of thy mouth be like a strong wind?",
+  "ref": "Job 8:2"
+ },
+ {
+  "id": "job-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Bildad ask whether God perverts?",
+  "choices": [
+   "The ways of the wise",
+   "Judgment and justice",
+   "The prayers of the poor",
+   "The covenant with the fathers"
+  ],
+  "answer": 1,
+  "explanation": "Doth God pervert judgment? or doth the Almighty pervert justice?",
+  "ref": "Job 8:3"
+ },
+ {
+  "id": "job-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Bildad suggest happened to Job's children?",
+  "choices": [
+   "They were hidden from the wicked",
+   "They sinned and God cast them away",
+   "They were taken in a whirlwind",
+   "They were forgotten by their friends"
+  ],
+  "answer": 1,
+  "explanation": "If thy children have sinned against him, and he have cast them away for their transgression.",
+  "ref": "Job 8:4"
+ },
+ {
+  "id": "job-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Bildad tell Job to do, if he would have God awake for him?",
+  "choices": [
+   "Offer burnt offerings",
+   "Seek unto God betimes",
+   "Curse the day of his birth",
+   "Go up to the house of God"
+  ],
+  "answer": 1,
+  "explanation": "If thou wouldest seek unto God betimes, and make thy supplication to the Almighty.",
+  "ref": "Job 8:5"
+ },
+ {
+  "id": "job-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Bildad tell Job to enquire of?",
+  "choices": [
+   "The wise men of the east",
+   "The former age and their fathers",
+   "The priests of the city",
+   "The beasts and the birds"
+  ],
+  "answer": 1,
+  "explanation": "Enquire, I pray thee, of the former age, and prepare thyself to the search of their fathers.",
+  "ref": "Job 8:8"
+ },
+ {
+  "id": "job-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Bildad ask whether the rush can grow up without?",
+  "choices": [
+   "Rain",
+   "Mire",
+   "Sunlight",
+   "A river bank"
+  ],
+  "answer": 1,
+  "explanation": "Can the rush grow up without mire? can the flag grow without water?",
+  "ref": "Job 8:11"
+ },
+ {
+  "id": "job-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Bildad say the hypocrite's trust shall be?",
+  "choices": [
+   "A broken reed",
+   "A spider's web",
+   "A house of sand",
+   "A withered tree"
+  ],
+  "answer": 1,
+  "explanation": "Whose hope shall be cut off, and whose trust shall be a spider's web.",
+  "ref": "Job 8:14"
+ },
+ {
+  "id": "job-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Bildad say God will not do to a perfect man?",
+  "choices": [
+   "Hear his voice",
+   "Cast him away",
+   "Forgive his youth",
+   "Raise him up"
+  ],
+  "answer": 1,
+  "explanation": "Behold, God will not cast away a perfect man, neither will he help the evil doers.",
+  "ref": "Job 8:20"
+ },
+ {
+  "id": "job-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Bildad say God will fill Job's mouth with, if he seeks him?",
+  "choices": [
+   "Praise of the Almighty",
+   "Laughing",
+   "Words of wisdom",
+   "Bread and honey"
+  ],
+  "answer": 1,
+  "explanation": "Till he fill thy mouth with laughing, and thy lips with rejoicing.",
+  "ref": "Job 8:21"
+ },
+ {
+  "id": "job-8-e-11",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Bildad say will come to nought?",
+  "choices": [
+   "The tents of the Chaldeans",
+   "The dwelling place of the wicked",
+   "The cities of the east",
+   "The words of Job"
+  ],
+  "answer": 1,
+  "explanation": "The dwelling place of the wicked shall come to nought.",
+  "ref": "Job 8:22"
+ },
+ {
+  "id": "job-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If Job were pure and upright, what does Bildad say God would make prosperous?",
+  "choices": [
+   "His flocks and herds",
+   "The works of his hands",
+   "The habitation of his righteousness",
+   "The house of his sons"
+  ],
+  "answer": 2,
+  "explanation": "Surely now he would awake for thee, and make the habitation of thy righteousness prosperous.",
+  "ref": "Job 8:6"
+ },
+ {
+  "id": "job-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Bildad promise about Job's latter end?",
+  "choices": [
+   "It would be hidden",
+   "It would be like his beginning",
+   "It would greatly increase",
+   "It would be remembered by kings"
+  ],
+  "answer": 2,
+  "explanation": "Though thy beginning was small, yet thy latter end should greatly increase.",
+  "ref": "Job 8:7"
+ },
+ {
+  "id": "job-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Bildad say the fathers will do if Job asks them?",
+  "choices": [
+   "Rebuke him for his pride",
+   "Show him the books of the law",
+   "Teach him and utter words from their heart",
+   "Plead with God for him"
+  ],
+  "answer": 2,
+  "explanation": "Shall not they teach thee, and tell thee, and utter words out of their heart?",
+  "ref": "Job 8:10"
+ },
+ {
+  "id": "job-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the rush, while still green and uncut?",
+  "choices": [
+   "It grows taller than the cedar",
+   "It is carried away by the flood",
+   "It withers before any other herb",
+   "It is eaten by the beasts"
+  ],
+  "answer": 2,
+  "explanation": "Whilst it is yet in his greenness, and not cut down, it withereth before any other herb.",
+  "ref": "Job 8:12"
+ },
+ {
+  "id": "job-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose hope does Bildad say shall perish?",
+  "choices": [
+   "All that fear the Lord",
+   "Every man born of a woman",
+   "All that forget God, the hypocrite",
+   "The sons of the east"
+  ],
+  "answer": 2,
+  "explanation": "So are the paths of all that forget God; and the hypocrite's hope shall perish.",
+  "ref": "Job 8:13"
+ },
+ {
+  "id": "job-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If God destroys the hypocrite from his place, what will the place say?",
+  "choices": [
+   "Return to thy dwelling",
+   "Thou hast been faithful",
+   "I have not seen thee",
+   "Let him live a while"
+  ],
+  "answer": 2,
+  "explanation": "If he destroy him from his place, then it shall deny him, saying, I have not seen thee.",
+  "ref": "Job 8:18"
+ },
+ {
+  "id": "job-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of the hypocrite's way, what does Bildad say shall grow out of the earth?",
+  "choices": [
+   "Thorns and thistles",
+   "A tall cedar",
+   "Others",
+   "Fruit for his children"
+  ],
+  "answer": 2,
+  "explanation": "Behold, this is the joy of his way, and out of the earth shall others grow.",
+  "ref": "Job 8:19"
+ },
+ {
+  "id": "job-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Bildad say shall clothe those who hate Job?",
+  "choices": [
+   "Sackcloth",
+   "Righteousness",
+   "Shame",
+   "Silence"
+  ],
+  "answer": 2,
+  "explanation": "They that hate thee shall be clothed with shame.",
+  "ref": "Job 8:22"
+ },
+ {
+  "id": "job-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Bildad say the hypocrite's roots are wrapped about?",
+  "choices": [
+   "The rock",
+   "The river",
+   "The heap",
+   "The altar"
+  ],
+  "answer": 2,
+  "explanation": "His roots are wrapped about the heap, and seeth the place of stones.",
+  "ref": "Job 8:17"
+ },
+ {
+  "id": "job-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where does Bildad say the hypocrite's branch shoots forth?",
+  "choices": [
+   "By the river",
+   "On the mountain",
+   "In his garden",
+   "Beside the well"
+  ],
+  "answer": 2,
+  "explanation": "He is green before the sun, and his branch shooteth forth in his garden.",
+  "ref": "Job 8:16"
+ },
+ {
+  "id": "job-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Bildad say God will not do for evil doers?",
+  "choices": [
+   "Hear them",
+   "Hide them",
+   "Help them",
+   "Judge them"
+  ],
+  "answer": 2,
+  "explanation": "God will not cast away a perfect man, neither will he help the evil doers.",
+  "ref": "Job 8:20"
+ },
+ {
+  "id": "job-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Bildad say our days upon earth are?",
+  "choices": [
+   "A vapour",
+   "A weaver's shuttle",
+   "A handbreadth",
+   "A shadow"
+  ],
+  "answer": 3,
+  "explanation": "We are but of yesterday, and know nothing, because our days upon earth are a shadow.",
+  "ref": "Job 8:9"
+ },
+ {
+  "id": "job-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two things must Job be, for God to awake for him?",
+  "choices": [
+   "Rich and honoured",
+   "Silent and patient",
+   "Young and strong",
+   "Pure and upright"
+  ],
+  "answer": 3,
+  "explanation": "If thou wert pure and upright; surely now he would awake for thee.",
+  "ref": "Job 8:6"
+ },
+ {
+  "id": "job-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before what is the hypocrite green, in Bildad's picture?",
+  "choices": [
+   "The rain",
+   "The morning",
+   "The harvest",
+   "The sun"
+  ],
+  "answer": 3,
+  "explanation": "He is green before the sun, and his branch shooteth forth in his garden.",
+  "ref": "Job 8:16"
+ },
+ {
+  "id": "job-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What other plant does Bildad ask whether can grow without water?",
+  "choices": [
+   "The lily",
+   "The vine",
+   "The hyssop",
+   "The flag"
+  ],
+  "answer": 3,
+  "explanation": "Can the rush grow up without mire? can the flag grow without water?",
+  "ref": "Job 8:11"
+ },
+ {
+  "id": "job-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does Bildad say his generation knows nothing?",
+  "choices": [
+   "We have not travelled",
+   "We were not taught",
+   "We never saw God",
+   "We are but of yesterday"
+  ],
+  "answer": 3,
+  "explanation": "We are but of yesterday, and know nothing, because our days upon earth are a shadow.",
+  "ref": "Job 8:9"
+ },
+ {
+  "id": "job-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Bildad tell Job to prepare himself to?",
+  "choices": [
+   "The day of the Lord",
+   "A long journey",
+   "The judgment of God",
+   "The search of their fathers"
+  ],
+  "answer": 3,
+  "explanation": "Enquire of the former age, and prepare thyself to the search of their fathers.",
+  "ref": "Job 8:8"
+ },
+ {
+  "id": "job-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Bildad say the hypocrite shall lean upon?",
+  "choices": [
+   "His staff",
+   "His sons",
+   "His riches",
+   "His house"
+  ],
+  "answer": 3,
+  "explanation": "He shall lean upon his house, but it shall not stand.",
+  "ref": "Job 8:15"
+ },
+ {
+  "id": "job-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the hypocrite's root see, according to Bildad?",
+  "choices": [
+   "The face of the sun",
+   "The depths of the sea",
+   "The gate of the city",
+   "The place of stones"
+  ],
+  "answer": 3,
+  "explanation": "His roots are wrapped about the heap, and seeth the place of stones.",
+  "ref": "Job 8:17"
+ },
+ {
+  "id": "job-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Bildad asks how long Job will go on doing what?",
+  "choices": [
+   "Mourning for his children",
+   "Sitting in the ashes",
+   "Pleading with the Almighty",
+   "Speaking these things"
+  ],
+  "answer": 3,
+  "explanation": "How long wilt thou speak these things?",
+  "ref": "Job 8:2"
+ },
+ {
+  "id": "job-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Bildad say shall be cut off?",
+  "choices": [
+   "The hypocrite's children",
+   "The hypocrite's name",
+   "The hypocrite's flocks",
+   "The hypocrite's hope"
+  ],
+  "answer": 3,
+  "explanation": "Whose hope shall be cut off, and whose trust shall be a spider's web.",
+  "ref": "Job 8:14"
+ },
+ {
+  "id": "job-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Bildad say God would do for Job if he were pure and upright?",
+  "choices": [
+   "Slumber and forget",
+   "Stand afar off",
+   "Hide his face",
+   "Awake for him"
+  ],
+  "answer": 3,
+  "explanation": "If thou wert pure and upright; surely now he would awake for thee.",
+  "ref": "Job 8:6"
+ },
+ {
+  "id": "job-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who answers Bildad at the start of chapter 9?",
+  "choices": [
+   "Eliphaz",
+   "Zophar",
+   "Job",
+   "Elihu"
+  ],
+  "answer": 2,
+  "explanation": "Then Job answered and said.",
+  "ref": "Job 9:1"
+ },
+ {
+  "id": "job-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question does Job ask about man and God?",
+  "choices": [
+   "How can God forget the poor?",
+   "Who shall plead for the wicked?",
+   "How should man be just with God?",
+   "Where is the way to the Almighty?"
+  ],
+  "answer": 2,
+  "explanation": "I know it is so of a truth: but how should man be just with God?",
+  "ref": "Job 9:2"
+ },
+ {
+  "id": "job-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say God removes and overturns in his anger?",
+  "choices": [
+   "The cities",
+   "The seas",
+   "The mountains",
+   "The kings"
+  ],
+  "answer": 2,
+  "explanation": "Which removeth the mountains, and they know not: which overturneth them in his anger.",
+  "ref": "Job 9:5"
+ },
+ {
+  "id": "job-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say God commands so that it does not rise?",
+  "choices": [
+   "The moon",
+   "The wind",
+   "The sun",
+   "The morning mist"
+  ],
+  "answer": 2,
+  "explanation": "Which commandeth the sun, and it riseth not; and sealeth up the stars.",
+  "ref": "Job 9:7"
+ },
+ {
+  "id": "job-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which stars or constellations does Job say God makes?",
+  "choices": [
+   "The sun, the moon, and the morning star",
+   "The Bear, the Lion, and the Eagle",
+   "Arcturus, Orion, and Pleiades",
+   "Leviathan, Behemoth, and the eagle"
+  ],
+  "answer": 2,
+  "explanation": "Which maketh Arcturus, Orion, and Pleiades, and the chambers of the south.",
+  "ref": "Job 9:9"
+ },
+ {
+  "id": "job-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say God alone does with the heavens?",
+  "choices": [
+   "Keeps them closed",
+   "Measures them with a line",
+   "Spreads them out",
+   "Hides them from men"
+  ],
+  "answer": 2,
+  "explanation": "Which alone spreadeth out the heavens, and treadeth upon the waves of the sea.",
+  "ref": "Job 9:8"
+ },
+ {
+  "id": "job-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When God passes by Job, what does Job say about seeing him?",
+  "choices": [
+   "He passes and Job bows down",
+   "He stops and speaks to Job",
+   "He goes by and Job does not see him",
+   "He passes and Job calls to him"
+  ],
+  "answer": 2,
+  "explanation": "Lo, he goeth by me, and I see him not: he passeth on also, but I perceive him not.",
+  "ref": "Job 9:11"
+ },
+ {
+  "id": "job-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say no one can say to God when he takes away?",
+  "choices": [
+   "Why hast thou forsaken us?",
+   "Where art thou?",
+   "What doest thou?",
+   "Forgive us our sins"
+  ],
+  "answer": 2,
+  "explanation": "He taketh away, who can hinder him? who will say unto him, What doest thou?",
+  "ref": "Job 9:12"
+ },
+ {
+  "id": "job-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Job say God breaks him?",
+  "choices": [
+   "With a plague of boils",
+   "With the sword of the Chaldeans",
+   "With a tempest, multiplying his wounds without cause",
+   "With a consuming fire"
+  ],
+  "answer": 2,
+  "explanation": "For he breaketh me with a tempest, and multiplieth my wounds without cause.",
+  "ref": "Job 9:17"
+ },
+ {
+  "id": "job-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say his days are swifter than?",
+  "choices": [
+   "A cloud",
+   "A deer",
+   "A post",
+   "A shadow"
+  ],
+  "answer": 2,
+  "explanation": "Now my days are swifter than a post: they flee away, they see no good.",
+  "ref": "Job 9:25"
+ },
+ {
+  "id": "job-9-e-11",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If Job washes with snow water and cleans his hands, what does he say God will do?",
+  "choices": [
+   "Raise him up and clothe him",
+   "Hear him and forgive",
+   "Plunge him in the ditch",
+   "Turn his anger away"
+  ],
+  "answer": 2,
+  "explanation": "If I wash myself with snow water, and make my hands never so clean; yet shalt thou plunge me in the ditch.",
+  "ref": "Job 9:30"
+ },
+ {
+  "id": "job-9-e-12",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say is missing between him and God?",
+  "choices": [
+   "A priest",
+   "A prophet",
+   "A daysman",
+   "A king"
+  ],
+  "answer": 2,
+  "explanation": "Neither is there any daysman betwixt us, that might lay his hand upon us both.",
+  "ref": "Job 9:33"
+ },
+ {
+  "id": "job-9-e-13",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say God does to the perfect and the wicked?",
+  "choices": [
+   "Spares both",
+   "Judges the wicked only",
+   "Destroys both",
+   "Rewards the perfect"
+  ],
+  "answer": 2,
+  "explanation": "This is one thing, therefore I said it, He destroyeth the perfect and the wicked.",
+  "ref": "Job 9:22"
+ },
+ {
+  "id": "job-9-e-14",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into whose hand does Job say the earth is given?",
+  "choices": [
+   "The judges",
+   "The kings",
+   "The wicked",
+   "The righteous"
+  ],
+  "answer": 2,
+  "explanation": "The earth is given into the hand of the wicked.",
+  "ref": "Job 9:24"
+ },
+ {
+  "id": "job-9-e-15",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If Job justifies himself, what does he say will condemn him?",
+  "choices": [
+   "His friends",
+   "His children",
+   "His own mouth",
+   "His conscience"
+  ],
+  "answer": 2,
+  "explanation": "If I justify myself, mine own mouth shall condemn me.",
+  "ref": "Job 9:20"
+ },
+ {
+  "id": "job-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Though he were righteous, what would Job do rather than answer God?",
+  "choices": [
+   "Offer a sacrifice",
+   "Flee into the wilderness",
+   "Call on his friends",
+   "Make supplication to his judge"
+  ],
+  "answer": 3,
+  "explanation": "Whom, though I were righteous, yet would I not answer, but I would make supplication to my judge.",
+  "ref": "Job 9:15"
+ },
+ {
+  "id": "job-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God does to the earth and its pillars?",
+  "choices": [
+   "Lifts them to the heavens",
+   "Washes them with waters",
+   "Binds them with a line",
+   "Shakes the earth out of her place"
+  ],
+  "answer": 3,
+  "explanation": "Which shaketh the earth out of her place, and the pillars thereof tremble.",
+  "ref": "Job 9:6"
+ },
+ {
+  "id": "job-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Even if God had answered his call, what would Job not believe?",
+  "choices": [
+   "That he was a righteous man",
+   "That his children were safe",
+   "That his friends were wise",
+   "That he had hearkened to his voice"
+  ],
+  "answer": 3,
+  "explanation": "If I had called, and he had answered me; yet would I not believe that he had hearkened unto my voice.",
+  "ref": "Job 9:16"
+ },
+ {
+  "id": "job-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God will not suffer him to take?",
+  "choices": [
+   "His rest",
+   "His food",
+   "His sleep",
+   "His breath"
+  ],
+  "answer": 3,
+  "explanation": "He will not suffer me to take my breath, but filleth me with bitterness.",
+  "ref": "Job 9:18"
+ },
+ {
+  "id": "job-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God does when the scourge slays suddenly?",
+  "choices": [
+   "Weeps for the innocent",
+   "Hides the innocent",
+   "Sends a comforter",
+   "Laughs at the trial of the innocent"
+  ],
+  "answer": 3,
+  "explanation": "If the scourge slay suddenly, he will laugh at the trial of the innocent.",
+  "ref": "Job 9:23"
+ },
+ {
+  "id": "job-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If God will not withdraw his anger, what do the proud helpers do?",
+  "choices": [
+   "Rise against him",
+   "Flee from him",
+   "Plead for Job",
+   "Stoop under him"
+  ],
+  "answer": 3,
+  "explanation": "If God will not withdraw his anger, the proud helpers do stoop under him.",
+  "ref": "Job 9:13"
+ },
+ {
+  "id": "job-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Job say he cannot answer God and come with him to judgment?",
+  "choices": [
+   "God is hidden in the clouds",
+   "God has no ears to hear",
+   "God is too far away",
+   "God is not a man as he is"
+  ],
+  "answer": 3,
+  "explanation": "For he is not a man, as I am, that I should answer him, and we should come together in judgment.",
+  "ref": "Job 9:32"
+ },
+ {
+  "id": "job-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God covers in the earth given to the wicked?",
+  "choices": [
+   "The eyes of the poor",
+   "The graves of the dead",
+   "The gates of the city",
+   "The faces of the judges"
+  ],
+  "answer": 3,
+  "explanation": "He covereth the faces of the judges thereof.",
+  "ref": "Job 9:24"
+ },
+ {
+  "id": "job-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Job say God's wonders are counted?",
+  "choices": [
+   "Few and hidden from men",
+   "Written in the stars",
+   "Known to the wise",
+   "Great things past finding out, wonders without number"
+  ],
+  "answer": 3,
+  "explanation": "Which doeth great things past finding out; yea, and wonders without number.",
+  "ref": "Job 9:10"
+ },
+ {
+  "id": "job-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say God does to the stars?",
+  "choices": [
+   "Scatters them",
+   "Numbers them",
+   "Hangs them on a line",
+   "Seals them up"
+  ],
+  "answer": 3,
+  "explanation": "Which commandeth the sun, and it riseth not; and sealeth up the stars.",
+  "ref": "Job 9:7"
+ },
+ {
+  "id": "job-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what vessels does Job compare his days passing away?",
+  "choices": [
+   "Wooden barks",
+   "Great merchant fleets",
+   "Ships at harbour",
+   "Swift ships"
+  ],
+  "answer": 3,
+  "explanation": "They are passed away as the swift ships.",
+  "ref": "Job 9:26"
+ },
+ {
+  "id": "job-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When Job thinks to comfort himself, what is he afraid of?",
+  "choices": [
+   "His friends",
+   "The night",
+   "His own thoughts",
+   "All his sorrows"
+  ],
+  "answer": 3,
+  "explanation": "I am afraid of all my sorrows, I know that thou wilt not hold me innocent.",
+  "ref": "Job 9:28"
+ },
+ {
+  "id": "job-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If he were wicked, what does Job ask about his labour?",
+  "choices": [
+   "Who will reward it?",
+   "When will it end?",
+   "Who will remember it?",
+   "Why labour in vain?"
+  ],
+  "answer": 3,
+  "explanation": "If I be wicked, why then labour I in vain?",
+  "ref": "Job 9:29"
+ },
+ {
+  "id": "job-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Job do if God took his rod away?",
+  "choices": [
+   "Fall silent for ever",
+   "Flee from his presence",
+   "Curse the day of his birth",
+   "Speak and not fear him"
+  ],
+  "answer": 3,
+  "explanation": "Let him take his rod away from me, and let not his fear terrify me: then would I speak, and not fear him.",
+  "ref": "Job 9:34"
+ },
+ {
+  "id": "job-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say of anyone who hardened himself against God?",
+  "choices": [
+   "He was cast into the sea",
+   "He was swept away at once",
+   "He was spared for a time",
+   "He has not prospered"
+  ],
+  "answer": 3,
+  "explanation": "Who hath hardened himself against him, and hath prospered?",
+  "ref": "Job 9:4"
+ },
+ {
+  "id": "job-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides a post and swift ships, what does Job compare his days to?",
+  "choices": [
+   "An eagle that hastens to the prey",
+   "A lion that hunts the prey",
+   "A dove that flies to its nest",
+   "A cloud driven by the wind"
+  ],
+  "answer": 0,
+  "explanation": "They are passed away as the swift ships: as the eagle that hasteth to the prey.",
+  "ref": "Job 9:26"
+ },
+ {
+  "id": "job-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Besides Arcturus, Orion and Pleiades, what does Job say God makes?",
+  "choices": [
+   "The chambers of the south",
+   "The pillars of the earth",
+   "The gates of the morning",
+   "The springs of the sea"
+  ],
+  "answer": 0,
+  "explanation": "Which maketh Arcturus, Orion, and Pleiades, and the chambers of the south.",
+  "ref": "Job 9:9"
+ },
+ {
+  "id": "job-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Though he were perfect, what would Job do to his life?",
+  "choices": [
+   "Despise it",
+   "Give it up quietly",
+   "Lay it down for his friends",
+   "Spend it in prayer"
+  ],
+  "answer": 0,
+  "explanation": "Though I were perfect, yet would I not know my soul: I would despise my life.",
+  "ref": "Job 9:21"
+ },
+ {
+  "id": "job-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If God plunged Job in the ditch, what would abhor him?",
+  "choices": [
+   "His own clothes",
+   "His own children",
+   "His own friends",
+   "His own servants"
+  ],
+  "answer": 0,
+  "explanation": "Yet shalt thou plunge me in the ditch, and mine own clothes shall abhor me.",
+  "ref": "Job 9:31"
+ },
+ {
+  "id": "job-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "What does Job say God treads upon?",
+  "choices": [
+   "The waves of the sea",
+   "The mountains of the earth",
+   "The clouds of heaven",
+   "The pillars of the deep"
+  ],
+  "answer": 0,
+  "explanation": "Which alone spreadeth out the heavens, and treadeth upon the waves of the sea.",
+  "ref": "Job 9:8"
+ },
+ {
+  "id": "job-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If Job said he would forget his complaint, what would he do?",
+  "choices": [
+   "Leave off heaviness and comfort himself",
+   "Offer a burnt offering",
+   "Go to his friends for counsel",
+   "Curse God and die"
+  ],
+  "answer": 0,
+  "explanation": "If I say, I will forget my complaint, I will leave off my heaviness, and comfort myself.",
+  "ref": "Job 9:27"
+ },
+ {
+  "id": "job-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say God will not hold him?",
+  "choices": [
+   "Innocent",
+   "Forgiven",
+   "Blameless",
+   "Righteous"
+  ],
+  "answer": 0,
+  "explanation": "I am afraid of all my sorrows, I know that thou wilt not hold me innocent.",
+  "ref": "Job 9:28"
+ },
+ {
+  "id": "job-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where does Job say he and God cannot come together?",
+  "choices": [
+   "In judgment",
+   "At the altar",
+   "In the temple",
+   "At the gate"
+  ],
+  "answer": 0,
+  "explanation": "He is not a man, as I am, that I should answer him, and we should come together in judgment.",
+  "ref": "Job 9:32"
+ },
+ {
+  "id": "job-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do Job's days not see as they flee away?",
+  "choices": [
+   "Any good",
+   "The morning",
+   "The face of God",
+   "Their end"
+  ],
+  "answer": 0,
+  "explanation": "Now my days are swifter than a post: they flee away, they see no good.",
+  "ref": "Job 9:25"
+ },
+ {
+  "id": "job-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job ask: who shall set him a time to do what?",
+  "choices": [
+   "Plead",
+   "Rest",
+   "Return",
+   "Repent"
+  ],
+  "answer": 0,
+  "explanation": "If I speak of judgment, who shall set me a time to plead?",
+  "ref": "Job 9:19"
+ },
+ {
+  "id": "job-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job ask God to take away from him?",
+  "choices": [
+   "His rod",
+   "His hand",
+   "His sword",
+   "His staff of bread"
+  ],
+  "answer": 0,
+  "explanation": "Let him take his rod away from me, and let not his fear terrify me.",
+  "ref": "Job 9:34"
+ },
+ {
+  "id": "job-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of a thousand things, how many does Job say man can answer if he contends with God?",
+  "choices": [
+   "One",
+   "Ten",
+   "A hundred",
+   "Not even one"
+  ],
+  "answer": 0,
+  "explanation": "If he will contend with him, he cannot answer him one of a thousand.",
+  "ref": "Job 9:3"
+ },
+ {
+  "id": "job-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Job say God multiplies his wounds?",
+  "choices": [
+   "Without cause",
+   "In secret",
+   "For his youth",
+   "By the hand of men"
+  ],
+  "answer": 0,
+  "explanation": "He breaketh me with a tempest, and multiplieth my wounds without cause.",
+  "ref": "Job 9:17"
+ },
+ {
+  "id": "job-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Though he were perfect, what would Job not know?",
+  "choices": [
+   "His soul",
+   "His end",
+   "His sin",
+   "His name"
+  ],
+  "answer": 0,
+  "explanation": "Though I were perfect, yet would I not know my soul: I would despise my life.",
+  "ref": "Job 9:21"
+ },
+ {
+  "id": "job-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say God does that none can hinder?",
+  "choices": [
+   "Takes away",
+   "Gives and withholds rain",
+   "Raises up kings",
+   "Opens the graves"
+  ],
+  "answer": 0,
+  "explanation": "Behold, he taketh away, who can hinder him?",
+  "ref": "Job 9:12"
  }
 ]
