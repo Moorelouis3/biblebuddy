@@ -1312,22 +1312,6 @@
   "ref": "Luke 17:6"
  },
  {
-  "id": "old-luke-17-3",
-  "chapter": 17,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How many lepers were cleansed?",
-  "choices": [
-   "Five",
-   "Twelve",
-   "Ten",
-   "Seventy"
-  ],
-  "answer": 2,
-  "explanation": "Jesus sent ten lepers to show themselves to the priests.",
-  "ref": "Luke 17:12–14"
- },
- {
   "id": "old-luke-17-4",
   "chapter": 17,
   "level": "beginner",
@@ -1918,5 +1902,5141 @@
   "answer": 3,
   "explanation": "They were to wait until they were endued with power from on high.",
   "ref": "Luke 24:49"
+ },
+ {
+  "id": "luke-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the nationality of the one leper who came back to thank Jesus?",
+  "choices": [
+   "A Galilean",
+   "A Samaritan",
+   "A Roman",
+   "A Syrian"
+  ],
+  "answer": 1,
+  "explanation": "He fell down on his face at Jesus' feet, giving him thanks: and he was a Samaritan.",
+  "ref": "Luke 17:16"
+ },
+ {
+  "id": "luke-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the ten lepers cry out to Jesus?",
+  "choices": [
+   "Have mercy on us",
+   "Heal our families",
+   "Give us bread",
+   "Teach us to pray"
+  ],
+  "answer": 0,
+  "explanation": "They lifted up their voices and said, Jesus, Master, have mercy on us.",
+  "ref": "Luke 17:13"
+ },
+ {
+  "id": "luke-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus tell the lepers to go and show themselves to?",
+  "choices": [
+   "The scribes",
+   "The elders",
+   "The Pharisees",
+   "The priests"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said, Go shew yourselves unto the priests.",
+  "ref": "Luke 17:14"
+ },
+ {
+  "id": "luke-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When were the ten lepers cleansed?",
+  "choices": [
+   "Before Jesus spoke",
+   "At the priests' house",
+   "As they went",
+   "When they reached Samaria"
+  ],
+  "answer": 2,
+  "explanation": "As they went, they were cleansed.",
+  "ref": "Luke 17:14"
+ },
+ {
+  "id": "luke-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the apostles ask the Lord for?",
+  "choices": [
+   "Teach us to pray",
+   "Increase our faith",
+   "Show us the Father",
+   "Give us more wisdom"
+  ],
+  "answer": 1,
+  "explanation": "The apostles said unto the Lord, Increase our faith.",
+  "ref": "Luke 17:5"
+ },
+ {
+  "id": "luke-17-e-06",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which woman did Jesus tell his hearers to remember?",
+  "choices": [
+   "Lot's wife",
+   "Sarah's maid",
+   "Rahab",
+   "Naomi"
+  ],
+  "answer": 0,
+  "explanation": "Jesus said, Remember Lot's wife.",
+  "ref": "Luke 17:32"
+ },
+ {
+  "id": "luke-17-e-07",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What rained from heaven the day Lot went out of Sodom?",
+  "choices": [
+   "Hail and stones",
+   "Darkness",
+   "Bread",
+   "Fire and brimstone"
+  ],
+  "answer": 3,
+  "explanation": "The same day that Lot went out of Sodom it rained fire and brimstone from heaven, and destroyed them all.",
+  "ref": "Luke 17:29"
+ },
+ {
+  "id": "luke-17-e-08",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Jesus going as he passed through Samaria and Galilee?",
+  "choices": [
+   "Bethany",
+   "Nazareth",
+   "Jerusalem",
+   "Capernaum"
+  ],
+  "answer": 2,
+  "explanation": "As he went to Jerusalem, he passed through the midst of Samaria and Galilee.",
+  "ref": "Luke 17:11"
+ },
+ {
+  "id": "luke-17-e-09",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Jesus say the kingdom of God is?",
+  "choices": [
+   "On the mountain",
+   "Within you",
+   "In the temple",
+   "In Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "Behold, the kingdom of God is within you.",
+  "ref": "Luke 17:21"
+ },
+ {
+  "id": "luke-17-e-10",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who asked Jesus when the kingdom of God should come?",
+  "choices": [
+   "The Pharisees",
+   "The Sadducees",
+   "The scribes",
+   "The apostles"
+  ],
+  "answer": 0,
+  "explanation": "When he was demanded of the Pharisees when the kingdom of God should come, he answered them.",
+  "ref": "Luke 17:20"
+ },
+ {
+  "id": "luke-17-e-11",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say the Son of man must first do before his day?",
+  "choices": [
+   "Raise the dead",
+   "Build a temple",
+   "Gather the twelve",
+   "Suffer many things and be rejected"
+  ],
+  "answer": 3,
+  "explanation": "But first must he suffer many things, and be rejected of this generation.",
+  "ref": "Luke 17:25"
+ },
+ {
+  "id": "luke-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to do first if your brother trespasses against you?",
+  "choices": [
+   "Ignore him",
+   "Tell the priests",
+   "Rebuke him",
+   "Take him to court"
+  ],
+  "answer": 2,
+  "explanation": "If thy brother trespass against thee, rebuke him; and if he repent, forgive him.",
+  "ref": "Luke 17:3"
+ },
+ {
+  "id": "luke-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "Through which two regions did Jesus pass on the way to Jerusalem?",
+  "choices": [
+   "Judaea and Perea",
+   "Samaria and Galilee",
+   "Galilee and Decapolis",
+   "Samaria and Idumaea"
+  ],
+  "answer": 1,
+  "explanation": "He passed through the midst of Samaria and Galilee.",
+  "ref": "Luke 17:11"
+ },
+ {
+  "id": "luke-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the ten lepers stand when they met Jesus?",
+  "choices": [
+   "Afar off",
+   "Kneeling at his feet",
+   "Behind the crowd",
+   "Blocking the road"
+  ],
+  "answer": 0,
+  "explanation": "There met him ten men that were lepers, which stood afar off.",
+  "ref": "Luke 17:12"
+ },
+ {
+  "id": "luke-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Samaritan do when he turned back to Jesus?",
+  "choices": [
+   "Offered a sacrifice",
+   "Followed him to Jerusalem",
+   "Ran to the priests",
+   "Fell on his face at his feet"
+  ],
+  "answer": 3,
+  "explanation": "He fell down on his face at his feet, giving him thanks.",
+  "ref": "Luke 17:16"
+ },
+ {
+  "id": "luke-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus tell the returning Samaritan had made him whole?",
+  "choices": [
+   "His prayers",
+   "His thanks",
+   "His faith",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "Arise, go thy way: thy faith hath made thee whole.",
+  "ref": "Luke 17:19"
+ },
+ {
+  "id": "luke-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "What did Jesus call the one leper who returned to give glory to God?",
+  "choices": [
+   "This servant",
+   "This stranger",
+   "This sinner",
+   "This Gentile"
+  ],
+  "answer": 1,
+  "explanation": "There are not found that returned to give glory to God, save this stranger.",
+  "ref": "Luke 17:18"
+ },
+ {
+  "id": "luke-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Jesus said the kingdom of God cometh not with what?",
+  "choices": [
+   "Observation",
+   "Trumpets",
+   "Armies",
+   "Wonders"
+  ],
+  "answer": 0,
+  "explanation": "The kingdom of God cometh not with observation.",
+  "ref": "Luke 17:20"
+ },
+ {
+  "id": "luke-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus compare the Son of man's day to?",
+  "choices": [
+   "A thief in the night",
+   "A shepherd's return",
+   "A wedding feast",
+   "Lightning shining from one part of heaven to the other"
+  ],
+  "answer": 3,
+  "explanation": "As the lightning shineth unto the other part under heaven, so shall also the Son of man be in his day.",
+  "ref": "Luke 17:24"
+ },
+ {
+  "id": "luke-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should servants say when they have done all that is commanded?",
+  "choices": [
+   "We deserve a reward",
+   "We are faithful servants",
+   "We are unprofitable servants",
+   "We are free men"
+  ],
+  "answer": 2,
+  "explanation": "Say, We are unprofitable servants: we have done that which was our duty to do.",
+  "ref": "Luke 17:10"
+ },
+ {
+  "id": "luke-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In Jesus' example, what was the servant doing in the field?",
+  "choices": [
+   "Reaping wheat",
+   "Plowing or feeding cattle",
+   "Pruning vines",
+   "Tending sheep by night"
+  ],
+  "answer": 1,
+  "explanation": "Having a servant plowing or feeding cattle.",
+  "ref": "Luke 17:7"
+ },
+ {
+  "id": "luke-17-m-11",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which things did people do in the days of Lot before the fire fell?",
+  "choices": [
+   "Bought, sold, planted and built",
+   "Fasted and prayed",
+   "Fought wars",
+   "Gathered manna"
+  ],
+  "answer": 0,
+  "explanation": "They did eat, they drank, they bought, they sold, they planted, they builded.",
+  "ref": "Luke 17:28"
+ },
+ {
+  "id": "luke-17-m-12",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In Noe's days, until what did people eat, drink and marry?",
+  "choices": [
+   "The rain began",
+   "The mountains were covered",
+   "Noe built an altar",
+   "Noe entered the ark"
+  ],
+  "answer": 3,
+  "explanation": "They did eat, they drank, they married wives, until the day that Noe entered into the ark.",
+  "ref": "Luke 17:27"
+ },
+ {
+  "id": "luke-17-m-13",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say about those who say, See here, or, see there?",
+  "choices": [
+   "Test them",
+   "Ask the priests",
+   "Go not after them",
+   "Follow the first one"
+  ],
+  "answer": 2,
+  "explanation": "They shall say to you, See here; or, see there: go not after them, nor follow them.",
+  "ref": "Luke 17:23"
+ },
+ {
+  "id": "luke-17-m-14",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus pronounce on the one through whom offences come?",
+  "choices": [
+   "Blessing",
+   "Woe",
+   "Exile",
+   "Silence"
+  ],
+  "answer": 1,
+  "explanation": "It is impossible but that offences will come: but woe unto him, through whom they come!",
+  "ref": "Luke 17:1"
+ },
+ {
+  "id": "luke-17-m-15",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say will happen to whoever seeks to save his life?",
+  "choices": [
+   "He shall lose it",
+   "He shall be spared",
+   "He shall be honoured",
+   "He shall be rich"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever shall seek to save his life shall lose it.",
+  "ref": "Luke 17:33"
+ },
+ {
+  "id": "luke-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After the Samaritan came back, how many did Jesus ask about, saying, where are the?",
+  "choices": [
+   "Ten",
+   "Seven",
+   "Twelve",
+   "Nine"
+  ],
+  "answer": 3,
+  "explanation": "Were there not ten cleansed? but where are the nine?",
+  "ref": "Luke 17:17"
+ },
+ {
+  "id": "luke-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the two women doing when one was taken and the other left?",
+  "choices": [
+   "Baking bread",
+   "Drawing water",
+   "Grinding together",
+   "Weaving cloth"
+  ],
+  "answer": 2,
+  "explanation": "Two women shall be grinding together; the one shall be taken, and the other left.",
+  "ref": "Luke 17:35"
+ },
+ {
+  "id": "luke-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Jesus say the two men would be when one is taken and the other left in that night?",
+  "choices": [
+   "On the road",
+   "In one bed",
+   "In a boat",
+   "On a housetop"
+  ],
+  "answer": 1,
+  "explanation": "In that night there shall be two men in one bed; the one shall be taken, and the other shall be left.",
+  "ref": "Luke 17:34"
+ },
+ {
+  "id": "luke-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What gathers where the body is, according to Jesus' answer to 'Where, Lord?'",
+  "choices": [
+   "Eagles",
+   "Vultures",
+   "Sheep",
+   "Doves"
+  ],
+  "answer": 0,
+  "explanation": "Wheresoever the body is, thither will the eagles be gathered together.",
+  "ref": "Luke 17:37"
+ },
+ {
+  "id": "luke-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides eating and drinking, what did people do in the days of Noe?",
+  "choices": [
+   "Bought and sold",
+   "Planted and built",
+   "Fought and plundered",
+   "Married and were given in marriage"
+  ],
+  "answer": 3,
+  "explanation": "They did eat, they drank, they married wives, they were given in marriage.",
+  "ref": "Luke 17:27"
+ },
+ {
+  "id": "luke-17-h-06",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus tell the disciples they would desire but not see?",
+  "choices": [
+   "The temple restored",
+   "Moses and Elijah",
+   "One of the days of the Son of man",
+   "The ark of the covenant"
+  ],
+  "answer": 2,
+  "explanation": "The days will come, when ye shall desire to see one of the days of the Son of man, and ye shall not see it.",
+  "ref": "Luke 17:22"
+ },
+ {
+  "id": "luke-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must the offending brother say when he turns again seven times in a day?",
+  "choices": [
+   "Forgive me",
+   "I repent",
+   "Have mercy",
+   "I will pay"
+  ],
+  "answer": 1,
+  "explanation": "If he trespass against thee seven times in a day, and seven times in a day turn again, saying, I repent; thou shalt forgive him.",
+  "ref": "Luke 17:4"
+ },
+ {
+  "id": "luke-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would be hanged about the neck of one who offends a little one?",
+  "choices": [
+   "A millstone",
+   "A chain",
+   "A yoke",
+   "A stone tablet"
+  ],
+  "answer": 0,
+  "explanation": "It were better for him that a millstone were hanged about his neck, and he cast into the sea.",
+  "ref": "Luke 17:2"
+ },
+ {
+  "id": "luke-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the master tell the servant to do till he had eaten and drunken?",
+  "choices": [
+   "Rest in the house",
+   "Go to the market",
+   "Sit and eat",
+   "Gird himself and serve"
+  ],
+  "answer": 3,
+  "explanation": "Make ready wherewith I may sup, and gird thyself, and serve me, till I have eaten and drunken.",
+  "ref": "Luke 17:8"
+ },
+ {
+  "id": "luke-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say is impossible?",
+  "choices": [
+   "That faith will fail",
+   "That lepers be healed",
+   "That offences will not come",
+   "That the temple fall"
+  ],
+  "answer": 2,
+  "explanation": "It is impossible but that offences will come: but woe unto him, through whom they come!",
+  "ref": "Luke 17:1"
+ },
+ {
+  "id": "luke-17-h-11",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say of the one in the field in that day?",
+  "choices": [
+   "Let him gather his flock",
+   "Let him not return back",
+   "Let him run to the temple",
+   "Let him sow quickly"
+  ],
+  "answer": 1,
+  "explanation": "He that is in the field, let him likewise not return back.",
+  "ref": "Luke 17:31"
+ },
+ {
+  "id": "luke-17-h-12",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the Samaritan glorify God when he saw he was healed?",
+  "choices": [
+   "With a loud voice",
+   "With a song",
+   "In silence",
+   "With a sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "One of them, when he saw that he was healed, turned back, and with a loud voice glorified God.",
+  "ref": "Luke 17:15"
+ },
+ {
+  "id": "luke-17-h-13",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What destroyed them all in the days of Noe?",
+  "choices": [
+   "Fire from heaven",
+   "A great famine",
+   "The sword",
+   "The flood"
+  ],
+  "answer": 3,
+  "explanation": "Noe entered into the ark, and the flood came, and destroyed them all.",
+  "ref": "Luke 17:27"
+ },
+ {
+  "id": "luke-17-h-14",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the man on the housetop must not do in that day?",
+  "choices": [
+   "Pray aloud",
+   "Cry out to the crowd",
+   "Come down to take his stuff",
+   "Sit and wait"
+  ],
+  "answer": 2,
+  "explanation": "He which shall be upon the housetop, and his stuff in the house, let him not come down to take it away.",
+  "ref": "Luke 17:31"
+ },
+ {
+  "id": "luke-17-h-15",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say a master does not do for a servant who did what was commanded?",
+  "choices": [
+   "Feed him",
+   "Thank him",
+   "Free him",
+   "Pay him"
+  ],
+  "answer": 1,
+  "explanation": "Doth he thank that servant because he did the things that were commanded him? I trow not.",
+  "ref": "Luke 17:9"
+ },
+ {
+  "id": "luke-18-e-01",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the publican say as he smote upon his breast?",
+  "choices": [
+   "God, I thank thee",
+   "God be merciful to me a sinner",
+   "Lord, remember me",
+   "Forgive them all"
+  ],
+  "answer": 1,
+  "explanation": "The publican smote upon his breast, saying, God be merciful to me a sinner.",
+  "ref": "Luke 18:13"
+ },
+ {
+  "id": "luke-18-e-02",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the widow ask of the unjust judge?",
+  "choices": [
+   "Avenge me of mine adversary",
+   "Give me bread",
+   "Judge my sons",
+   "Return my land"
+  ],
+  "answer": 0,
+  "explanation": "She came unto him, saying, Avenge me of mine adversary.",
+  "ref": "Luke 18:3"
+ },
+ {
+  "id": "luke-18-e-03",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who asked Jesus what he must do to inherit eternal life?",
+  "choices": [
+   "A scribe",
+   "A centurion",
+   "A Sadducee",
+   "A certain ruler"
+  ],
+  "answer": 3,
+  "explanation": "A certain ruler asked him, Good Master, what shall I do to inherit eternal life?",
+  "ref": "Luke 18:18"
+ },
+ {
+  "id": "luke-18-e-04",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell the ruler to do with all that he had?",
+  "choices": [
+   "Give it to the temple",
+   "Bury it",
+   "Sell it and give to the poor",
+   "Give it to his sons"
+  ],
+  "answer": 2,
+  "explanation": "Sell all that thou hast, and distribute unto the poor, and thou shalt have treasure in heaven.",
+  "ref": "Luke 18:22"
+ },
+ {
+  "id": "luke-18-e-05",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say is easier than for a rich man to enter the kingdom of God?",
+  "choices": [
+   "A cedar bending",
+   "A camel going through a needle's eye",
+   "A mountain moving",
+   "A lamb crossing the sea"
+  ],
+  "answer": 1,
+  "explanation": "It is easier for a camel to go through a needle's eye, than for a rich man to enter the kingdom of God.",
+  "ref": "Luke 18:25"
+ },
+ {
+  "id": "luke-18-e-06",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "Near which city did the blind man sit by the wayside begging?",
+  "choices": [
+   "Jericho",
+   "Bethany",
+   "Capernaum",
+   "Nain"
+  ],
+  "answer": 0,
+  "explanation": "As he was come nigh unto Jericho, a certain blind man sat by the way side begging.",
+  "ref": "Luke 18:35"
+ },
+ {
+  "id": "luke-18-e-07",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title did the blind man use for Jesus when he cried for mercy?",
+  "choices": [
+   "Prophet of Galilee",
+   "King of Israel",
+   "Teacher of Moses",
+   "Son of David"
+  ],
+  "answer": 3,
+  "explanation": "He cried, saying, Jesus, thou Son of David, have mercy on me.",
+  "ref": "Luke 18:38"
+ },
+ {
+  "id": "luke-18-e-08",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who rebuked those who brought infants to Jesus?",
+  "choices": [
+   "The Pharisees",
+   "The priests",
+   "His disciples",
+   "The parents"
+  ],
+  "answer": 2,
+  "explanation": "They brought unto him also infants, that he would touch them: but when his disciples saw it, they rebuked them.",
+  "ref": "Luke 18:15"
+ },
+ {
+  "id": "luke-18-e-09",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus say he and the twelve were going up to?",
+  "choices": [
+   "Jericho",
+   "Jerusalem",
+   "Bethany",
+   "Galilee"
+  ],
+  "answer": 1,
+  "explanation": "Behold, we go up to Jerusalem, and all things that are written by the prophets concerning the Son of man shall be accomplished.",
+  "ref": "Luke 18:31"
+ },
+ {
+  "id": "luke-18-e-10",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say would happen to the Son of man the third day?",
+  "choices": [
+   "He shall rise again",
+   "He shall ascend",
+   "He shall be crowned",
+   "He shall return to Galilee"
+  ],
+  "answer": 0,
+  "explanation": "They shall scourge him, and put him to death: and the third day he shall rise again.",
+  "ref": "Luke 18:33"
+ },
+ {
+  "id": "luke-18-m-01",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the judge in the parable described?",
+  "choices": [
+   "He was a friend of the poor",
+   "He was a priest",
+   "He judged for money",
+   "He feared not God, neither regarded man"
+  ],
+  "answer": 3,
+  "explanation": "There was in a city a judge, which feared not God, neither regarded man.",
+  "ref": "Luke 18:2"
+ },
+ {
+  "id": "luke-18-m-02",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the judge finally avenge the widow?",
+  "choices": [
+   "He feared the king",
+   "She paid him",
+   "So her continual coming would not weary him",
+   "The people demanded it"
+  ],
+  "answer": 2,
+  "explanation": "Because this widow troubleth me, I will avenge her, lest by her continual coming she weary me.",
+  "ref": "Luke 18:5"
+ },
+ {
+  "id": "luke-18-m-03",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did Jesus speak the parable of the Pharisee and the publican?",
+  "choices": [
+   "The twelve disciples",
+   "Some who trusted in themselves that they were righteous",
+   "The chief priests",
+   "A crowd of lepers"
+  ],
+  "answer": 1,
+  "explanation": "He spake this parable unto certain which trusted in themselves that they were righteous, and despised others.",
+  "ref": "Luke 18:9"
+ },
+ {
+  "id": "luke-18-m-04",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Pharisee say he did twice in the week?",
+  "choices": [
+   "Fast",
+   "Pray at the temple",
+   "Give alms",
+   "Wash the cup"
+  ],
+  "answer": 0,
+  "explanation": "I fast twice in the week, I give tithes of all that I possess.",
+  "ref": "Luke 18:12"
+ },
+ {
+  "id": "luke-18-m-05",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the publican stand in the temple?",
+  "choices": [
+   "At the front",
+   "Beside the Pharisee",
+   "Facing the altar",
+   "Afar off"
+  ],
+  "answer": 3,
+  "explanation": "The publican, standing afar off, would not lift up so much as his eyes unto heaven.",
+  "ref": "Luke 18:13"
+ },
+ {
+  "id": "luke-18-m-06",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say will happen to everyone who exalts himself?",
+  "choices": [
+   "He shall be justified",
+   "He shall be loved",
+   "He shall be abased",
+   "He shall be chosen"
+  ],
+  "answer": 2,
+  "explanation": "Every one that exalteth himself shall be abased; and he that humbleth himself shall be exalted.",
+  "ref": "Luke 18:14"
+ },
+ {
+  "id": "luke-18-m-07",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the ruler answer when Jesus reminded him of the commandments?",
+  "choices": [
+   "I have broken them",
+   "All these have I kept from my youth up",
+   "I know them not",
+   "I taught them to many"
+  ],
+  "answer": 1,
+  "explanation": "And he said, All these have I kept from my youth up.",
+  "ref": "Luke 18:21"
+ },
+ {
+  "id": "luke-18-m-08",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Jesus say alone is good?",
+  "choices": [
+   "God",
+   "The Son of David",
+   "The prophets",
+   "The angels"
+  ],
+  "answer": 0,
+  "explanation": "Why callest thou me good? none is good, save one, that is, God.",
+  "ref": "Luke 18:19"
+ },
+ {
+  "id": "luke-18-m-09",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say about whoever does not receive the kingdom of God as a little child?",
+  "choices": [
+   "He shall be rebuked",
+   "He shall wait",
+   "He shall be taught",
+   "He shall in no wise enter"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever shall not receive the kingdom of God as a little child shall in no wise enter therein.",
+  "ref": "Luke 18:17"
+ },
+ {
+  "id": "luke-18-m-10",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Peter say to Jesus after the rich ruler left?",
+  "choices": [
+   "We will sell our boats",
+   "We are not worthy",
+   "We have left all, and followed thee",
+   "We will go to Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Then Peter said, Lo, we have left all, and followed thee.",
+  "ref": "Luke 18:28"
+ },
+ {
+  "id": "luke-18-m-11",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus promise those who left house, family or wife for the kingdom's sake?",
+  "choices": [
+   "A place in the temple",
+   "Manifold more in this present time and life everlasting",
+   "Riches from Caesar",
+   "A new house in Galilee"
+  ],
+  "answer": 1,
+  "explanation": "Who shall not receive manifold more in this present time, and in the world to come life everlasting.",
+  "ref": "Luke 18:29–30"
+ },
+ {
+  "id": "luke-18-m-12",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom did Jesus say the Son of man would be delivered?",
+  "choices": [
+   "The Gentiles",
+   "The Sadducees",
+   "The elders only",
+   "The Samaritans"
+  ],
+  "answer": 0,
+  "explanation": "He shall be delivered unto the Gentiles, and shall be mocked, and spitefully entreated, and spitted on.",
+  "ref": "Luke 18:32"
+ },
+ {
+  "id": "luke-18-m-13",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much of what Jesus said about his death did the disciples understand?",
+  "choices": [
+   "Most of it",
+   "The part about rising",
+   "Only Peter understood",
+   "None of it"
+  ],
+  "answer": 3,
+  "explanation": "They understood none of these things: and this saying was hid from them.",
+  "ref": "Luke 18:34"
+ },
+ {
+  "id": "luke-18-m-14",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the crowd tell the blind man was passing by?",
+  "choices": [
+   "The king",
+   "A prophet",
+   "Jesus of Nazareth",
+   "A Roman governor"
+  ],
+  "answer": 2,
+  "explanation": "They told him, that Jesus of Nazareth passeth by.",
+  "ref": "Luke 18:37"
+ },
+ {
+  "id": "luke-18-m-15",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "Who rebuked the blind man for crying out?",
+  "choices": [
+   "His own friends",
+   "Those who went before",
+   "The Pharisees",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "They which went before rebuked him, that he should hold his peace.",
+  "ref": "Luke 18:39"
+ },
+ {
+  "id": "luke-18-h-01",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the judge do at first when the widow came to him?",
+  "choices": [
+   "He would not for a while",
+   "He sent her away to the priest",
+   "He heard her at once",
+   "He threw her out"
+  ],
+  "answer": 0,
+  "explanation": "He would not for a while: but afterward he said within himself.",
+  "ref": "Luke 18:4"
+ },
+ {
+  "id": "luke-18-h-02",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Pharisee thanked God he was not an extortioner, unjust, or what?",
+  "choices": [
+   "A thief",
+   "A liar",
+   "A drunkard",
+   "An adulterer"
+  ],
+  "answer": 3,
+  "explanation": "I thank thee, that I am not as other men are, extortioners, unjust, adulterers, or even as this publican.",
+  "ref": "Luke 18:11"
+ },
+ {
+  "id": "luke-18-h-03",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Pharisee say he gave tithes of?",
+  "choices": [
+   "His flocks only",
+   "His wheat and oil",
+   "All that he possessed",
+   "A tenth of his gold"
+  ],
+  "answer": 2,
+  "explanation": "I give tithes of all that I possess.",
+  "ref": "Luke 18:12"
+ },
+ {
+  "id": "luke-18-h-04",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus ask whether the Son of man would find on the earth when he comes?",
+  "choices": [
+   "Peace",
+   "Faith",
+   "Obedience",
+   "Justice"
+  ],
+  "answer": 1,
+  "explanation": "When the Son of man cometh, shall he find faith on the earth?",
+  "ref": "Luke 18:8"
+ },
+ {
+  "id": "luke-18-h-05",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jesus say God's elect cry to him?",
+  "choices": [
+   "Day and night",
+   "In the morning",
+   "In the temple",
+   "In secret"
+  ],
+  "answer": 0,
+  "explanation": "Shall not God avenge his own elect, which cry day and night unto him?",
+  "ref": "Luke 18:7"
+ },
+ {
+  "id": "luke-18-h-06",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these commandments did Jesus recite to the ruler?",
+  "choices": [
+   "Remember the sabbath",
+   "Thou shalt not covet",
+   "Thou shalt have no other gods",
+   "Honour thy father and thy mother"
+  ],
+  "answer": 3,
+  "explanation": "Do not commit adultery, Do not kill, Do not steal, Do not bear false witness, Honour thy father and thy mother.",
+  "ref": "Luke 18:20"
+ },
+ {
+  "id": "luke-18-h-07",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What treasure did Jesus say the ruler would have if he sold all?",
+  "choices": [
+   "A place at the table",
+   "A seat by Caesar",
+   "Treasure in heaven",
+   "Land in Judaea"
+  ],
+  "answer": 2,
+  "explanation": "Sell all that thou hast, and distribute unto the poor, and thou shalt have treasure in heaven.",
+  "ref": "Luke 18:22"
+ },
+ {
+  "id": "luke-18-h-08",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say is possible with God?",
+  "choices": [
+   "Anything for rich men",
+   "The things impossible with men",
+   "Only the law",
+   "Only prayer"
+  ],
+  "answer": 1,
+  "explanation": "The things which are impossible with men are possible with God.",
+  "ref": "Luke 18:27"
+ },
+ {
+  "id": "luke-18-h-09",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Son of man would be mocked, spitefully entreated and what else?",
+  "choices": [
+   "Spitted on",
+   "Stoned",
+   "Crowned with thorns",
+   "Left in the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "He shall be delivered unto the Gentiles, and shall be mocked, and spitefully entreated, and spitted on.",
+  "ref": "Luke 18:32"
+ },
+ {
+  "id": "luke-18-h-10",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the blind man do when they told him to hold his peace?",
+  "choices": [
+   "Fell silent",
+   "Walked away",
+   "Waited for Jesus' return",
+   "Cried so much the more"
+  ],
+  "answer": 3,
+  "explanation": "He cried so much the more, Thou Son of David, have mercy on me.",
+  "ref": "Luke 18:39"
+ },
+ {
+  "id": "luke-18-h-11",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do when he heard the blind man cry?",
+  "choices": [
+   "Sent a disciple to heal him",
+   "Walked on by",
+   "Stood and commanded him to be brought",
+   "Touched him with clay"
+  ],
+  "answer": 2,
+  "explanation": "Jesus stood, and commanded him to be brought unto him.",
+  "ref": "Luke 18:40"
+ },
+ {
+  "id": "luke-18-h-12",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus ask the blind man?",
+  "choices": [
+   "Who told you to cry out?",
+   "What wilt thou that I shall do unto thee?",
+   "Do you believe in the Son of David?",
+   "Where is your home?"
+  ],
+  "answer": 1,
+  "explanation": "What wilt thou that I shall do unto thee?",
+  "ref": "Luke 18:41"
+ },
+ {
+  "id": "luke-18-h-13",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the healed man do as he followed Jesus?",
+  "choices": [
+   "Glorified God",
+   "Went to the priests",
+   "Told no man",
+   "Returned to Jericho"
+  ],
+  "answer": 0,
+  "explanation": "Immediately he received his sight, and followed him, glorifying God.",
+  "ref": "Luke 18:43"
+ },
+ {
+  "id": "luke-18-h-14",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say had saved the blind man?",
+  "choices": [
+   "His persistence",
+   "His prayer",
+   "His humility",
+   "His faith"
+  ],
+  "answer": 3,
+  "explanation": "Receive thy sight: thy faith hath saved thee.",
+  "ref": "Luke 18:42"
+ },
+ {
+  "id": "luke-18-h-15",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus tell the ruler to do after selling all?",
+  "choices": [
+   "Return in a month",
+   "Join the Pharisees",
+   "Come and follow him",
+   "Go to Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Distribute unto the poor... and come, follow me.",
+  "ref": "Luke 18:22"
+ },
+ {
+  "id": "luke-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Zacchaeus' position?",
+  "choices": [
+   "A Pharisee",
+   "Chief among the publicans",
+   "A priest",
+   "A centurion"
+  ],
+  "answer": 1,
+  "explanation": "There was a man named Zacchaeus, which was the chief among the publicans, and he was rich.",
+  "ref": "Luke 19:2"
+ },
+ {
+  "id": "luke-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why could Zacchaeus not see Jesus for the crowd?",
+  "choices": [
+   "He was little of stature",
+   "He was blind in one eye",
+   "He was sick",
+   "He was far from the road"
+  ],
+  "answer": 0,
+  "explanation": "He sought to see Jesus; and could not for the press, because he was little of stature.",
+  "ref": "Luke 19:3"
+ },
+ {
+  "id": "luke-19-e-03",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to Zacchaeus when he looked up at him?",
+  "choices": [
+   "Follow me at once",
+   "Sell all thou hast",
+   "Go and sin no more",
+   "Make haste and come down; today I must abide at thy house"
+  ],
+  "answer": 3,
+  "explanation": "Zacchaeus, make haste, and come down; for to day I must abide at thy house.",
+  "ref": "Luke 19:5"
+ },
+ {
+  "id": "luke-19-e-04",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people murmur about Jesus going to Zacchaeus' house?",
+  "choices": [
+   "He broke the sabbath",
+   "He was a false prophet",
+   "He was gone to be guest with a man that is a sinner",
+   "He was too poor to host"
+  ],
+  "answer": 2,
+  "explanation": "They all murmured, saying, That he was gone to be guest with a man that is a sinner.",
+  "ref": "Luke 19:7"
+ },
+ {
+  "id": "luke-19-e-05",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say had come to Zacchaeus' house that day?",
+  "choices": [
+   "Judgment",
+   "Salvation",
+   "Peace on earth",
+   "A blessing of wealth"
+  ],
+  "answer": 1,
+  "explanation": "This day is salvation come to this house, forsomuch as he also is a son of Abraham.",
+  "ref": "Luke 19:9"
+ },
+ {
+  "id": "luke-19-e-06",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say the Son of man came to do?",
+  "choices": [
+   "Seek and save the lost",
+   "Judge the nations",
+   "Fulfil the law",
+   "Cast out the money-changers"
+  ],
+  "answer": 0,
+  "explanation": "The Son of man is come to seek and to save that which was lost.",
+  "ref": "Luke 19:10"
+ },
+ {
+  "id": "luke-19-e-07",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the nobleman tell his servants to do until he came back?",
+  "choices": [
+   "Pray",
+   "Fast",
+   "Guard the house",
+   "Occupy"
+  ],
+  "answer": 3,
+  "explanation": "He called his ten servants, and delivered them ten pounds, and said unto them, Occupy till I come.",
+  "ref": "Luke 19:13"
+ },
+ {
+  "id": "luke-19-e-08",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the third servant do with his pound?",
+  "choices": [
+   "Buried it in a field",
+   "Spent it",
+   "Kept it laid up in a napkin",
+   "Gave it to the poor"
+  ],
+  "answer": 2,
+  "explanation": "Behold, here is thy pound, which I have kept laid up in a napkin.",
+  "ref": "Luke 19:20"
+ },
+ {
+  "id": "luke-19-e-09",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal did Jesus send two disciples to bring him?",
+  "choices": [
+   "A donkey mare",
+   "A colt",
+   "A horse",
+   "A camel"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall find a colt tied, whereon yet never man sat: loose him, and bring him hither.",
+  "ref": "Luke 19:30"
+ },
+ {
+  "id": "luke-19-e-10",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say would cry out if the disciples held their peace?",
+  "choices": [
+   "The stones",
+   "The mountains",
+   "The trees",
+   "The sea"
+  ],
+  "answer": 0,
+  "explanation": "If these should hold their peace, the stones would immediately cry out.",
+  "ref": "Luke 19:40"
+ },
+ {
+  "id": "luke-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city was Jesus passing through when he met Zacchaeus?",
+  "choices": [
+   "Bethphage",
+   "Bethany",
+   "Jerusalem",
+   "Jericho"
+  ],
+  "answer": 3,
+  "explanation": "Jesus entered and passed through Jericho.",
+  "ref": "Luke 19:1"
+ },
+ {
+  "id": "luke-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son did Jesus say Zacchaeus also was?",
+  "choices": [
+   "David",
+   "Moses",
+   "Abraham",
+   "Jacob"
+  ],
+  "answer": 2,
+  "explanation": "This day is salvation come to this house, forsomuch as he also is a son of Abraham.",
+  "ref": "Luke 19:9"
+ },
+ {
+  "id": "luke-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Zacchaeus receive Jesus into his house?",
+  "choices": [
+   "Fearfully",
+   "Joyfully",
+   "Silently",
+   "Reluctantly"
+  ],
+  "answer": 1,
+  "explanation": "He made haste, and came down, and received him joyfully.",
+  "ref": "Luke 19:6"
+ },
+ {
+  "id": "luke-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus speak the parable of the pounds?",
+  "choices": [
+   "They thought the kingdom would appear at once",
+   "The disciples asked for riches",
+   "The Pharisees demanded a sign",
+   "A rich man had refused him"
+  ],
+  "answer": 0,
+  "explanation": "He spake a parable, because he was nigh to Jerusalem, and because they thought that the kingdom of God should immediately appear.",
+  "ref": "Luke 19:11"
+ },
+ {
+  "id": "luke-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the nobleman go into a far country?",
+  "choices": [
+   "To trade in goods",
+   "To flee his enemies",
+   "To marry",
+   "To receive a kingdom for himself and return"
+  ],
+  "answer": 3,
+  "explanation": "A certain nobleman went into a far country to receive for himself a kingdom, and to return.",
+  "ref": "Luke 19:12"
+ },
+ {
+  "id": "luke-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the nobleman's citizens say about him?",
+  "choices": [
+   "Let him return soon",
+   "He is a good lord",
+   "We will not have this man to reign over us",
+   "Give us a new king"
+  ],
+  "answer": 2,
+  "explanation": "His citizens hated him, and sent a message after him, saying, We will not have this man to reign over us.",
+  "ref": "Luke 19:14"
+ },
+ {
+  "id": "luke-19-m-07",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the first servant's reward for gaining ten pounds?",
+  "choices": [
+   "Ten pounds more",
+   "Authority over ten cities",
+   "A house in the city",
+   "His freedom"
+  ],
+  "answer": 1,
+  "explanation": "Well, thou good servant: because thou hast been faithful in a very little, have thou authority over ten cities.",
+  "ref": "Luke 19:17"
+ },
+ {
+  "id": "luke-19-m-08",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the third servant say he hid his pound?",
+  "choices": [
+   "He feared the nobleman, an austere man",
+   "He had lost the rest",
+   "He was told to hide it",
+   "He did not know where to trade"
+  ],
+  "answer": 0,
+  "explanation": "I feared thee, because thou art an austere man: thou takest up that thou layedst not down.",
+  "ref": "Luke 19:21"
+ },
+ {
+  "id": "luke-19-m-09",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the nobleman say the wicked servant should have done with the money?",
+  "choices": [
+   "Hidden it in the field",
+   "Given it to the poor",
+   "Lent it to a friend",
+   "Put it in the bank"
+  ],
+  "answer": 3,
+  "explanation": "Wherefore then gavest not thou my money into the bank, that at my coming I might have required mine own with usury?",
+  "ref": "Luke 19:23"
+ },
+ {
+  "id": "luke-19-m-10",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who was given the third servant's pound?",
+  "choices": [
+   "The one who had five",
+   "The poor",
+   "The one who had ten pounds",
+   "The nobleman's son"
+  ],
+  "answer": 2,
+  "explanation": "Take from him the pound, and give it to him that hath ten pounds.",
+  "ref": "Luke 19:24"
+ },
+ {
+  "id": "luke-19-m-11",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Near which two villages did Jesus send two disciples for the colt?",
+  "choices": [
+   "Bethlehem and Nain",
+   "Bethphage and Bethany",
+   "Jericho and Emmaus",
+   "Capernaum and Cana"
+  ],
+  "answer": 1,
+  "explanation": "When he was come nigh to Bethphage and Bethany, at the mount called the mount of Olives, he sent two of his disciples.",
+  "ref": "Luke 19:29"
+ },
+ {
+  "id": "luke-19-m-12",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the disciples to say if asked why they loosed the colt?",
+  "choices": [
+   "The Lord hath need of him",
+   "The master sent us",
+   "It belongs to the temple",
+   "We will return it"
+  ],
+  "answer": 0,
+  "explanation": "Thus shall ye say unto him, Because the Lord hath need of him.",
+  "ref": "Luke 19:31"
+ },
+ {
+  "id": "luke-19-m-13",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people spread in the way as Jesus rode?",
+  "choices": [
+   "Palm branches",
+   "Rushes",
+   "Flowers",
+   "Their clothes"
+  ],
+  "answer": 3,
+  "explanation": "As he went, they spread their clothes in the way.",
+  "ref": "Luke 19:36"
+ },
+ {
+  "id": "luke-19-m-14",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus do when he went into the temple?",
+  "choices": [
+   "Taught the scribes",
+   "Healed the blind",
+   "Cast out them that sold and bought",
+   "Prayed with the priests"
+  ],
+  "answer": 2,
+  "explanation": "He went into the temple, and began to cast out them that sold therein, and them that bought.",
+  "ref": "Luke 19:45"
+ },
+ {
+  "id": "luke-19-m-15",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus do when he came near and beheld the city?",
+  "choices": [
+   "Prayed in silence",
+   "Wept over it",
+   "Cursed it",
+   "Blessed it"
+  ],
+  "answer": 1,
+  "explanation": "When he was come near, he beheld the city, and wept over it.",
+  "ref": "Luke 19:41"
+ },
+ {
+  "id": "luke-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Who said to Jesus, Master, rebuke thy disciples?",
+  "choices": [
+   "Some of the Pharisees",
+   "The chief priests",
+   "The scribes",
+   "The owners of the colt"
+  ],
+  "answer": 0,
+  "explanation": "Some of the Pharisees from among the multitude said unto him, Master, rebuke thy disciples.",
+  "ref": "Luke 19:39"
+ },
+ {
+  "id": "luke-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the disciples cast upon the colt?",
+  "choices": [
+   "Palm branches",
+   "A saddle",
+   "Blankets of wool",
+   "Their garments"
+  ],
+  "answer": 3,
+  "explanation": "They cast their garments upon the colt, and they set Jesus thereon.",
+  "ref": "Luke 19:35"
+ },
+ {
+  "id": "luke-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say Jerusalem's enemies would cast about it?",
+  "choices": [
+   "A wall of fire",
+   "Siege towers",
+   "A trench",
+   "A net"
+  ],
+  "answer": 2,
+  "explanation": "Thine enemies shall cast a trench about thee, and compass thee round, and keep thee in on every side.",
+  "ref": "Luke 19:43"
+ },
+ {
+  "id": "luke-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would not be left in Jerusalem, because it knew not the time of its visitation?",
+  "choices": [
+   "One house standing",
+   "One stone upon another",
+   "One gate",
+   "One altar"
+  ],
+  "answer": 1,
+  "explanation": "They shall not leave in thee one stone upon another; because thou knewest not the time of thy visitation.",
+  "ref": "Luke 19:44"
+ },
+ {
+  "id": "luke-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say they had made the house of prayer?",
+  "choices": [
+   "A den of thieves",
+   "A market of merchants",
+   "A house of idols",
+   "A fortress"
+  ],
+  "answer": 0,
+  "explanation": "It is written, My house is the house of prayer: but ye have made it a den of thieves.",
+  "ref": "Luke 19:46"
+ },
+ {
+  "id": "luke-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the chief priests and scribes, who sought to destroy Jesus?",
+  "choices": [
+   "The Roman soldiers",
+   "The Pharisees",
+   "The elders of Galilee",
+   "The chief of the people"
+  ],
+  "answer": 3,
+  "explanation": "The chief priests and the scribes and the chief of the people sought to destroy him.",
+  "ref": "Luke 19:47"
+ },
+ {
+  "id": "luke-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why could the chief priests and scribes find no way to destroy Jesus?",
+  "choices": [
+   "They feared Rome",
+   "The temple guards refused",
+   "All the people were very attentive to hear him",
+   "He left Jerusalem each night"
+  ],
+  "answer": 2,
+  "explanation": "Could not find what they might do: for all the people were very attentive to hear him.",
+  "ref": "Luke 19:48"
+ },
+ {
+  "id": "luke-19-h-08",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many pounds did the second servant's pound gain?",
+  "choices": [
+   "Two",
+   "Five",
+   "Ten",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "Lord, thy pound hath gained five pounds.",
+  "ref": "Luke 19:18"
+ },
+ {
+  "id": "luke-19-h-09",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the nobleman want to know when he returned with the kingdom?",
+  "choices": [
+   "How much every man had gained by trading",
+   "Who had been loyal",
+   "Who had stayed home",
+   "Who had given alms"
+  ],
+  "answer": 0,
+  "explanation": "He commanded these servants to be called unto him, that he might know how much every man had gained by trading.",
+  "ref": "Luke 19:15"
+ },
+ {
+  "id": "luke-19-h-10",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the nobleman command about his enemies who would not have him reign?",
+  "choices": [
+   "Drive them out",
+   "Imprison them",
+   "Forgive them",
+   "Bring them and slay them before him"
+  ],
+  "answer": 3,
+  "explanation": "Those mine enemies, which would not that I should reign over them, bring hither, and slay them before me.",
+  "ref": "Luke 19:27"
+ },
+ {
+  "id": "luke-19-h-11",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the nobleman say will be taken away from him that hath not?",
+  "choices": [
+   "His good name",
+   "His life",
+   "Even that which he hath",
+   "His servants"
+  ],
+  "answer": 2,
+  "explanation": "From him that hath not, even that he hath shall be taken away from him.",
+  "ref": "Luke 19:26"
+ },
+ {
+  "id": "luke-19-h-12",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the nobleman call the servant who hid his pound?",
+  "choices": [
+   "Slothful steward",
+   "Wicked servant",
+   "Unfaithful son",
+   "Foolish man"
+  ],
+  "answer": 1,
+  "explanation": "Out of thine own mouth will I judge thee, thou wicked servant.",
+  "ref": "Luke 19:22"
+ },
+ {
+  "id": "luke-19-h-13",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the bystanders say about the servant who had ten pounds?",
+  "choices": [
+   "Lord, he hath ten pounds",
+   "He is worthy",
+   "He is already rich",
+   "Give him the kingdom"
+  ],
+  "answer": 0,
+  "explanation": "And they said unto him, Lord, he hath ten pounds.",
+  "ref": "Luke 19:25"
+ },
+ {
+  "id": "luke-19-h-14",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Zacchaeus do before climbing the sycomore tree?",
+  "choices": [
+   "Hid in the crowd",
+   "Called to Jesus",
+   "Paid a boy to lift him",
+   "Ran before"
+  ],
+  "answer": 3,
+  "explanation": "He ran before, and climbed up into a sycomore tree to see him.",
+  "ref": "Luke 19:4"
+ },
+ {
+  "id": "luke-19-h-15",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Jesus when the whole multitude began to rejoice and praise God?",
+  "choices": [
+   "At the temple gate",
+   "In Bethany",
+   "At the descent of the mount of Olives",
+   "Outside Jericho"
+  ],
+  "answer": 2,
+  "explanation": "When he was come nigh, even now at the descent of the mount of Olives, the whole multitude of the disciples began to rejoice.",
+  "ref": "Luke 19:37"
+ },
+ {
+  "id": "luke-20-e-01",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came upon Jesus in the temple to ask by what authority he acted?",
+  "choices": [
+   "The Sadducees and Herodians",
+   "The chief priests, scribes and elders",
+   "The Pharisees and lawyers",
+   "The Roman soldiers"
+  ],
+  "answer": 1,
+  "explanation": "The chief priests and the scribes came upon him with the elders.",
+  "ref": "Luke 20:1"
+ },
+ {
+  "id": "luke-20-e-02",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the man in the parable plant?",
+  "choices": [
+   "A vineyard",
+   "A fig orchard",
+   "A field of wheat",
+   "An olive grove"
+  ],
+  "answer": 0,
+  "explanation": "A certain man planted a vineyard, and let it forth to husbandmen.",
+  "ref": "Luke 20:9"
+ },
+ {
+  "id": "luke-20-e-03",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom did the lord of the vineyard finally send to the husbandmen?",
+  "choices": [
+   "An armed servant",
+   "His steward",
+   "His brother",
+   "His beloved son"
+  ],
+  "answer": 3,
+  "explanation": "Then said the lord of the vineyard, I will send my beloved son: it may be they will reverence him.",
+  "ref": "Luke 20:13"
+ },
+ {
+  "id": "luke-20-e-04",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What stone did Jesus say became the head of the corner?",
+  "choices": [
+   "The first foundation stone",
+   "The stone from the temple",
+   "The stone the builders rejected",
+   "The stone of the altar"
+  ],
+  "answer": 2,
+  "explanation": "The stone which the builders rejected, the same is become the head of the corner.",
+  "ref": "Luke 20:17"
+ },
+ {
+  "id": "luke-20-e-05",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the spies ask Jesus about Caesar?",
+  "choices": [
+   "Should we fight Caesar?",
+   "Is it lawful to give tribute to Caesar?",
+   "Is Caesar a god?",
+   "Will Caesar visit the temple?"
+  ],
+  "answer": 1,
+  "explanation": "Is it lawful for us to give tribute unto Caesar, or no?",
+  "ref": "Luke 20:22"
+ },
+ {
+  "id": "luke-20-e-06",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose image and superscription was on the penny?",
+  "choices": [
+   "Caesar's",
+   "Herod's",
+   "Pilate's",
+   "David's"
+  ],
+  "answer": 0,
+  "explanation": "Whose image and superscription hath it? They answered and said, Caesar's.",
+  "ref": "Luke 20:24"
+ },
+ {
+  "id": "luke-20-e-07",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which group came to Jesus saying there is no resurrection?",
+  "choices": [
+   "The Pharisees",
+   "The scribes",
+   "The Herodians",
+   "The Sadducees"
+  ],
+  "answer": 3,
+  "explanation": "Then came to him certain of the Sadducees, which deny that there is any resurrection.",
+  "ref": "Luke 20:27"
+ },
+ {
+  "id": "luke-20-e-08",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many brothers had the woman as wife in the Sadducees' question?",
+  "choices": [
+   "Three",
+   "Five",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "There were therefore seven brethren: and the first took a wife, and died without children.",
+  "ref": "Luke 20:29"
+ },
+ {
+  "id": "luke-20-e-09",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say God is not?",
+  "choices": [
+   "A God of the Gentiles",
+   "A God of the dead",
+   "A God of the proud",
+   "A God of Caesar"
+  ],
+  "answer": 1,
+  "explanation": "For he is not a God of the dead, but of the living: for all live unto him.",
+  "ref": "Luke 20:38"
+ },
+ {
+  "id": "luke-20-e-10",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus tell the people to beware of?",
+  "choices": [
+   "The scribes",
+   "The Sadducees",
+   "The Romans",
+   "The publicans"
+  ],
+  "answer": 0,
+  "explanation": "Beware of the scribes, which desire to walk in long robes.",
+  "ref": "Luke 20:46"
+ },
+ {
+  "id": "luke-20-m-01",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the chief priests not say John's baptism was of men?",
+  "choices": [
+   "The elders would turn on them",
+   "Herod would punish them",
+   "Jesus would answer them",
+   "The people would stone them"
+  ],
+  "answer": 3,
+  "explanation": "If we say, Of men; all the people will stone us: for they be persuaded that John was a prophet.",
+  "ref": "Luke 20:6"
+ },
+ {
+  "id": "luke-20-m-02",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would they not say John's baptism was from heaven?",
+  "choices": [
+   "They did not believe in heaven",
+   "The people would mock them",
+   "He would ask why they did not believe John",
+   "The governor forbade it"
+  ],
+  "answer": 2,
+  "explanation": "If we shall say, From heaven; he will say, Why then believed ye him not?",
+  "ref": "Luke 20:5"
+ },
+ {
+  "id": "luke-20-m-03",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the chief priests answer Jesus' question about John's baptism?",
+  "choices": [
+   "It was of men",
+   "They could not tell whence it was",
+   "It was from heaven",
+   "John was a false prophet"
+  ],
+  "answer": 1,
+  "explanation": "They answered, that they could not tell whence it was.",
+  "ref": "Luke 20:7"
+ },
+ {
+  "id": "luke-20-m-04",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the husbandmen do to the first servant?",
+  "choices": [
+   "Beat him and sent him away empty",
+   "Killed him",
+   "Welcomed him",
+   "Bound him"
+  ],
+  "answer": 0,
+  "explanation": "The husbandmen beat him, and sent him away empty.",
+  "ref": "Luke 20:10"
+ },
+ {
+  "id": "luke-20-m-05",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the husbandmen do to the third servant?",
+  "choices": [
+   "Sent him home with fruit",
+   "Killed him",
+   "Threw him into prison",
+   "Wounded him and cast him out"
+  ],
+  "answer": 3,
+  "explanation": "He sent a third: and they wounded him also, and cast him out.",
+  "ref": "Luke 20:12"
+ },
+ {
+  "id": "luke-20-m-06",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the husbandmen say they would kill the son?",
+  "choices": [
+   "He had insulted them",
+   "He demanded rent",
+   "He was the heir, and the inheritance would be theirs",
+   "He threatened their lives"
+  ],
+  "answer": 2,
+  "explanation": "This is the heir: come, let us kill him, that the inheritance may be ours.",
+  "ref": "Luke 20:14"
+ },
+ {
+  "id": "luke-20-m-07",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say the lord of the vineyard would do to the husbandmen?",
+  "choices": [
+   "Forgive them",
+   "Destroy them and give the vineyard to others",
+   "Send another son",
+   "Sell the vineyard"
+  ],
+  "answer": 1,
+  "explanation": "He shall come and destroy these husbandmen, and shall give the vineyard to others.",
+  "ref": "Luke 20:16"
+ },
+ {
+  "id": "luke-20-m-08",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people say when they heard the parable's ending?",
+  "choices": [
+   "God forbid",
+   "Amen",
+   "It is just",
+   "Let it be so"
+  ],
+  "answer": 0,
+  "explanation": "And when they heard it, they said, God forbid.",
+  "ref": "Luke 20:16"
+ },
+ {
+  "id": "luke-20-m-09",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the chief priests not lay hands on Jesus that hour?",
+  "choices": [
+   "They feared Rome",
+   "They lacked a witness",
+   "It was the sabbath",
+   "They feared the people"
+  ],
+  "answer": 3,
+  "explanation": "They sought to lay hands on him; and they feared the people: for they perceived that he had spoken this parable against them.",
+  "ref": "Luke 20:19"
+ },
+ {
+  "id": "luke-20-m-10",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the spies feign themselves to be?",
+  "choices": [
+   "Disciples of John",
+   "Pilgrims",
+   "Just men",
+   "Tax collectors"
+  ],
+  "answer": 2,
+  "explanation": "They sent forth spies, which should feign themselves just men.",
+  "ref": "Luke 20:20"
+ },
+ {
+  "id": "luke-20-m-11",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say after they would not answer his question?",
+  "choices": [
+   "Then go and learn",
+   "Neither tell I you by what authority I do these things",
+   "Ye shall know in time",
+   "Ask the elders"
+  ],
+  "answer": 1,
+  "explanation": "Neither tell I you by what authority I do these things.",
+  "ref": "Luke 20:8"
+ },
+ {
+  "id": "luke-20-m-12",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the spies try to take hold of Jesus' words?",
+  "choices": [
+   "To deliver him to the power of the governor",
+   "To bring him before the Sanhedrin",
+   "To make the people leave him",
+   "To prove him a Sadducee"
+  ],
+  "answer": 0,
+  "explanation": "That they might take hold of his words, that so they might deliver him unto the power and authority of the governor.",
+  "ref": "Luke 20:20"
+ },
+ {
+  "id": "luke-20-m-13",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say about the spies' craftiness?",
+  "choices": [
+   "Shew me your hands",
+   "Depart from me",
+   "Ye know not what ye ask",
+   "Why tempt ye me?"
+  ],
+  "answer": 3,
+  "explanation": "He perceived their craftiness, and said unto them, Why tempt ye me?",
+  "ref": "Luke 20:23"
+ },
+ {
+  "id": "luke-20-m-14",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses write about a man who died childless?",
+  "choices": [
+   "His wife should return to her father",
+   "His land should go to the temple",
+   "His brother should take his wife and raise up seed",
+   "His wife should remain a widow"
+  ],
+  "answer": 2,
+  "explanation": "If any man's brother die, having a wife, and he die without children, that his brother should take his wife, and raise up seed unto his brother.",
+  "ref": "Luke 20:28"
+ },
+ {
+  "id": "luke-20-m-15",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say of those worthy to obtain the resurrection?",
+  "choices": [
+   "They rule cities",
+   "They neither marry nor are given in marriage",
+   "They remain in the grave",
+   "They are judged first"
+  ],
+  "answer": 1,
+  "explanation": "They which shall be accounted worthy to obtain that world, and the resurrection from the dead, neither marry, nor are given in marriage.",
+  "ref": "Luke 20:35"
+ },
+ {
+  "id": "luke-20-h-01",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the children of the resurrection are equal unto?",
+  "choices": [
+   "The angels",
+   "The prophets",
+   "The patriarchs",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "Neither can they die any more: for they are equal unto the angels.",
+  "ref": "Luke 20:36"
+ },
+ {
+  "id": "luke-20-h-02",
+  "chapter": 20,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jesus say Moses showed that the dead are raised?",
+  "choices": [
+   "On the mountain",
+   "In the tabernacle",
+   "At the Red Sea",
+   "At the bush"
+  ],
+  "answer": 3,
+  "explanation": "Even Moses shewed at the bush, when he calleth the Lord the God of Abraham, and the God of Isaac, and the God of Jacob.",
+  "ref": "Luke 20:37"
+ },
+ {
+  "id": "luke-20-h-03",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Moses called the Lord the God of Abraham, the God of Isaac and the God of whom?",
+  "choices": [
+   "Joseph",
+   "Moses",
+   "Jacob",
+   "David"
+  ],
+  "answer": 2,
+  "explanation": "The God of Abraham, and the God of Isaac, and the God of Jacob.",
+  "ref": "Luke 20:37"
+ },
+ {
+  "id": "luke-20-h-04",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did certain scribes say after Jesus' answer?",
+  "choices": [
+   "We know thou art a prophet",
+   "Master, thou hast well said",
+   "Thou speakest as Moses",
+   "Teach us more"
+  ],
+  "answer": 1,
+  "explanation": "Then certain of the scribes answering said, Master, thou hast well said.",
+  "ref": "Luke 20:39"
+ },
+ {
+  "id": "luke-20-h-05",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After Jesus answered the Sadducees, what did they not dare to do?",
+  "choices": [
+   "Ask him any question",
+   "Leave Jerusalem",
+   "Face the people",
+   "Enter the temple"
+  ],
+  "answer": 0,
+  "explanation": "After that they durst not ask him any question at all.",
+  "ref": "Luke 20:40"
+ },
+ {
+  "id": "luke-20-h-06",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which book did Jesus say David wrote, The LORD said unto my Lord?",
+  "choices": [
+   "Proverbs",
+   "Isaiah",
+   "Samuel",
+   "Psalms"
+  ],
+  "answer": 3,
+  "explanation": "David himself saith in the book of Psalms, The LORD said unto my Lord, Sit thou on my right hand.",
+  "ref": "Luke 20:42"
+ },
+ {
+  "id": "luke-20-h-07",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Till the LORD makes David's enemies what, was David's Lord to sit at his right hand?",
+  "choices": [
+   "His servants",
+   "A heap of ashes",
+   "His footstool",
+   "Dust"
+  ],
+  "answer": 2,
+  "explanation": "Sit thou on my right hand, till I make thine enemies thy footstool.",
+  "ref": "Luke 20:42–43"
+ },
+ {
+  "id": "luke-20-h-08",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the scribes desire to walk in?",
+  "choices": [
+   "Purple garments",
+   "Long robes",
+   "White linen",
+   "Gold sandals"
+  ],
+  "answer": 1,
+  "explanation": "Beware of the scribes, which desire to walk in long robes.",
+  "ref": "Luke 20:46"
+ },
+ {
+  "id": "luke-20-h-09",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the scribes devour?",
+  "choices": [
+   "Widows' houses",
+   "Temple offerings",
+   "The poor's bread",
+   "Priests' portions"
+  ],
+  "answer": 0,
+  "explanation": "Which devour widows' houses, and for a shew make long prayers.",
+  "ref": "Luke 20:47"
+ },
+ {
+  "id": "luke-20-h-10",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the scribes shall receive?",
+  "choices": [
+   "A double portion",
+   "Great honour",
+   "Exile",
+   "Greater damnation"
+  ],
+  "answer": 3,
+  "explanation": "The same shall receive greater damnation.",
+  "ref": "Luke 20:47"
+ },
+ {
+  "id": "luke-20-h-11",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the man who planted the vineyard do after letting it to husbandmen?",
+  "choices": [
+   "Stayed to watch",
+   "Returned the next season",
+   "Went into a far country for a long time",
+   "Sold his house"
+  ],
+  "answer": 2,
+  "explanation": "A certain man planted a vineyard, and let it forth to husbandmen, and went into a far country for a long time.",
+  "ref": "Luke 20:9"
+ },
+ {
+  "id": "luke-20-h-12",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say will happen to the one on whom the stone shall fall?",
+  "choices": [
+   "He will be cast into the sea",
+   "It will grind him to powder",
+   "He will be cast out",
+   "He will be buried"
+  ],
+  "answer": 1,
+  "explanation": "On whomsoever it shall fall, it will grind him to powder.",
+  "ref": "Luke 20:18"
+ },
+ {
+  "id": "luke-20-h-13",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the spies say Jesus teaches truly?",
+  "choices": [
+   "The way of God",
+   "The law of Moses",
+   "The words of the prophets",
+   "The ways of the elders"
+  ],
+  "answer": 0,
+  "explanation": "Thou sayest and teachest rightly, neither acceptest thou the person of any, but teachest the way of God truly.",
+  "ref": "Luke 20:21"
+ },
+ {
+  "id": "luke-20-h-14",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the children of this world do, according to Jesus?",
+  "choices": [
+   "Dwell in tents",
+   "Gather treasure",
+   "Wait for the kingdom",
+   "Marry and are given in marriage"
+  ],
+  "answer": 3,
+  "explanation": "The children of this world marry, and are given in marriage.",
+  "ref": "Luke 20:34"
+ },
+ {
+  "id": "luke-20-h-15",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Jesus doing in the temple when the leaders came upon him?",
+  "choices": [
+   "Healing the sick",
+   "Praying alone",
+   "Teaching the people and preaching the gospel",
+   "Overturning tables"
+  ],
+  "answer": 2,
+  "explanation": "As he taught the people in the temple, and preached the gospel, the chief priests and the scribes came upon him.",
+  "ref": "Luke 20:1"
+ },
+ {
+  "id": "luke-21-e-01",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose gift did Jesus say was more than all the others?",
+  "choices": [
+   "The rich men's",
+   "The poor widow's",
+   "A scribe's",
+   "A priest's"
+  ],
+  "answer": 1,
+  "explanation": "Of a truth I say unto you, that this poor widow hath cast in more than they all.",
+  "ref": "Luke 21:3"
+ },
+ {
+  "id": "luke-21-e-02",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what did some say the temple was adorned?",
+  "choices": [
+   "Goodly stones and gifts",
+   "Gold and silver doors",
+   "Purple curtains",
+   "Carved cedar"
+  ],
+  "answer": 0,
+  "explanation": "Some spake of the temple, how it was adorned with goodly stones and gifts.",
+  "ref": "Luke 21:5"
+ },
+ {
+  "id": "luke-21-e-03",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the disciples ask Jesus about the temple's fall?",
+  "choices": [
+   "Who will rebuild it?",
+   "Where will we flee?",
+   "Why would God allow it?",
+   "When shall these things be, and what sign?"
+  ],
+  "answer": 3,
+  "explanation": "Master, but when shall these things be? and what sign will there be when these things shall come to pass?",
+  "ref": "Luke 21:7"
+ },
+ {
+  "id": "luke-21-e-04",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would many say who come in Jesus' name?",
+  "choices": [
+   "I am a prophet",
+   "I am Elijah",
+   "I am Christ",
+   "I am the Son of David"
+  ],
+  "answer": 2,
+  "explanation": "Many shall come in my name, saying, I am Christ; and the time draweth near: go ye not therefore after them.",
+  "ref": "Luke 21:8"
+ },
+ {
+  "id": "luke-21-e-05",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say not to be terrified at?",
+  "choices": [
+   "Rumours of plague",
+   "Wars and commotions",
+   "Eclipses",
+   "Persecution by neighbours"
+  ],
+  "answer": 1,
+  "explanation": "When ye shall hear of wars and commotions, be not terrified.",
+  "ref": "Luke 21:9"
+ },
+ {
+  "id": "luke-21-e-06",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what will they see the Son of man coming?",
+  "choices": [
+   "A cloud with power and great glory",
+   "A chariot of fire",
+   "The east wind",
+   "A pillar of smoke"
+  ],
+  "answer": 0,
+  "explanation": "Then shall they see the Son of man coming in a cloud with power and great glory.",
+  "ref": "Luke 21:27"
+ },
+ {
+  "id": "luke-21-e-07",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say draweth nigh when these things begin to come to pass?",
+  "choices": [
+   "The harvest",
+   "The judgment",
+   "The feast",
+   "Your redemption"
+  ],
+  "answer": 3,
+  "explanation": "Then look up, and lift up your heads; for your redemption draweth nigh.",
+  "ref": "Luke 21:28"
+ },
+ {
+  "id": "luke-21-e-08",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tree did Jesus use in his parable about summer being near?",
+  "choices": [
+   "The olive tree",
+   "The vine",
+   "The fig tree",
+   "The palm"
+  ],
+  "answer": 2,
+  "explanation": "Behold the fig tree, and all the trees; when they now shoot forth, ye know that summer is now nigh at hand.",
+  "ref": "Luke 21:29–30"
+ },
+ {
+  "id": "luke-21-e-09",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say shall not pass away, though heaven and earth do?",
+  "choices": [
+   "The temple",
+   "His words",
+   "The law",
+   "The people of Israel"
+  ],
+  "answer": 1,
+  "explanation": "Heaven and earth shall pass away: but my words shall not pass away.",
+  "ref": "Luke 21:33"
+ },
+ {
+  "id": "luke-21-e-10",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus stay at night while teaching in the temple by day?",
+  "choices": [
+   "The mount of Olives",
+   "Bethany",
+   "Jericho",
+   "Jerusalem's upper room"
+  ],
+  "answer": 0,
+  "explanation": "At night he went out, and abode in the mount that is called the mount of Olives.",
+  "ref": "Luke 21:37"
+ },
+ {
+  "id": "luke-21-m-01",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say the widow cast in, compared with the rich?",
+  "choices": [
+   "Half of what she had",
+   "Her husband's inheritance",
+   "A tenth of her goods",
+   "All the living that she had"
+  ],
+  "answer": 3,
+  "explanation": "Of her penury hath cast in all the living that she had.",
+  "ref": "Luke 21:4"
+ },
+ {
+  "id": "luke-21-m-02",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Out of what did the rich cast their gifts into the offerings of God?",
+  "choices": [
+   "Their tithes",
+   "Their pride",
+   "Their abundance",
+   "Their sorrow"
+  ],
+  "answer": 2,
+  "explanation": "All these have of their abundance cast in unto the offerings of God.",
+  "ref": "Luke 21:4"
+ },
+ {
+  "id": "luke-21-m-03",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides wars, what did Jesus say there would be in divers places?",
+  "choices": [
+   "Floods and droughts",
+   "Great earthquakes, famines and pestilences",
+   "Locusts and fire",
+   "Darkness and hail"
+  ],
+  "answer": 1,
+  "explanation": "Great earthquakes shall be in divers places, and famines, and pestilences.",
+  "ref": "Luke 21:11"
+ },
+ {
+  "id": "luke-21-m-04",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Into what places would the disciples be delivered up?",
+  "choices": [
+   "The synagogues and prisons",
+   "The temple and the market",
+   "The courts of Rome",
+   "Deserts"
+  ],
+  "answer": 0,
+  "explanation": "They shall lay their hands on you, and persecute you, delivering you up to the synagogues, and into prisons.",
+  "ref": "Luke 21:12"
+ },
+ {
+  "id": "luke-21-m-05",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "Before whom would they be brought for Jesus' name's sake?",
+  "choices": [
+   "Priests and elders",
+   "Pharisees and scribes",
+   "Judges and soldiers",
+   "Kings and rulers"
+  ],
+  "answer": 3,
+  "explanation": "Being brought before kings and rulers for my name's sake.",
+  "ref": "Luke 21:12"
+ },
+ {
+  "id": "luke-21-m-06",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say their persecution would turn to?",
+  "choices": [
+   "A reward",
+   "A warning",
+   "A testimony",
+   "A curse"
+  ],
+  "answer": 2,
+  "explanation": "And it shall turn to you for a testimony.",
+  "ref": "Luke 21:13"
+ },
+ {
+  "id": "luke-21-m-07",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus tell them not to meditate before?",
+  "choices": [
+   "Where they should flee",
+   "What they shall answer",
+   "How they should pray",
+   "Whom they should trust"
+  ],
+  "answer": 1,
+  "explanation": "Settle it therefore in your hearts, not to meditate before what ye shall answer.",
+  "ref": "Luke 21:14"
+ },
+ {
+  "id": "luke-21-m-08",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Jesus give them that no adversary could resist?",
+  "choices": [
+   "A mouth and wisdom",
+   "Signs and wonders",
+   "Swords and shields",
+   "Silence and peace"
+  ],
+  "answer": 0,
+  "explanation": "I will give you a mouth and wisdom, which all your adversaries shall not be able to gainsay nor resist.",
+  "ref": "Luke 21:15"
+ },
+ {
+  "id": "luke-21-m-09",
+  "chapter": 21,
+  "level": "medium",
+  "category": "person",
+  "question": "By whom did Jesus say they would be betrayed?",
+  "choices": [
+   "Pharisees and priests",
+   "Romans and Greeks",
+   "Servants and neighbours",
+   "Parents, brethren, kinsfolks and friends"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall be betrayed both by parents, and brethren, and kinsfolks, and friends.",
+  "ref": "Luke 21:16"
+ },
+ {
+  "id": "luke-21-m-10",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say shall not perish?",
+  "choices": [
+   "Their names",
+   "Their children",
+   "An hair of their head",
+   "Their houses"
+  ],
+  "answer": 2,
+  "explanation": "There shall not an hair of your head perish.",
+  "ref": "Luke 21:18"
+ },
+ {
+  "id": "luke-21-m-11",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say they should possess in their patience?",
+  "choices": [
+   "Their land",
+   "Their souls",
+   "Their reward",
+   "Their peace"
+  ],
+  "answer": 1,
+  "explanation": "In your patience possess ye your souls.",
+  "ref": "Luke 21:19"
+ },
+ {
+  "id": "luke-21-m-12",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What sign showed that Jerusalem's desolation was near?",
+  "choices": [
+   "Jerusalem compassed with armies",
+   "The temple veil torn",
+   "A comet",
+   "The sun darkened"
+  ],
+  "answer": 0,
+  "explanation": "When ye shall see Jerusalem compassed with armies, then know that the desolation thereof is nigh.",
+  "ref": "Luke 21:20"
+ },
+ {
+  "id": "luke-21-m-13",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Jesus say those in Judaea should flee?",
+  "choices": [
+   "To Egypt",
+   "To the temple",
+   "To Galilee",
+   "To the mountains"
+  ],
+  "answer": 3,
+  "explanation": "Then let them which are in Judaea flee to the mountains.",
+  "ref": "Luke 21:21"
+ },
+ {
+  "id": "luke-21-m-14",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Jesus say would suffer woe in those days?",
+  "choices": [
+   "The rich and powerful",
+   "The priests",
+   "Those with child and those who give suck",
+   "Those in prison"
+  ],
+  "answer": 2,
+  "explanation": "Woe unto them that are with child, and to them that give suck, in those days!",
+  "ref": "Luke 21:23"
+ },
+ {
+  "id": "luke-21-m-15",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Jerusalem will be trodden down of the Gentiles until what?",
+  "choices": [
+   "The temple is rebuilt",
+   "The times of the Gentiles be fulfilled",
+   "The Son of man returns",
+   "The sword departs"
+  ],
+  "answer": 1,
+  "explanation": "Jerusalem shall be trodden down of the Gentiles, until the times of the Gentiles be fulfilled.",
+  "ref": "Luke 21:24"
+ },
+ {
+  "id": "luke-21-h-01",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the sea and the waves would be doing?",
+  "choices": [
+   "Roaring",
+   "Rising",
+   "Parting",
+   "Standing still"
+  ],
+  "answer": 0,
+  "explanation": "Upon the earth distress of nations, with perplexity; the sea and the waves roaring.",
+  "ref": "Luke 21:25"
+ },
+ {
+  "id": "luke-21-h-02",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say would fail men for fear?",
+  "choices": [
+   "Their strength",
+   "Their knees",
+   "Their voices",
+   "Their hearts"
+  ],
+  "answer": 3,
+  "explanation": "Men's hearts failing them for fear, and for looking after those things which are coming on the earth.",
+  "ref": "Luke 21:26"
+ },
+ {
+  "id": "luke-21-h-03",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say would happen to those who fall by the sword?",
+  "choices": [
+   "They would be buried in the temple",
+   "They would return after a year",
+   "They would be led captive into all nations",
+   "They would be forgotten"
+  ],
+  "answer": 2,
+  "explanation": "They shall fall by the edge of the sword, and shall be led away captive into all nations.",
+  "ref": "Luke 21:24"
+ },
+ {
+  "id": "luke-21-h-04",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say would not pass away till all be fulfilled?",
+  "choices": [
+   "The law",
+   "This generation",
+   "The temple",
+   "The prophets"
+  ],
+  "answer": 1,
+  "explanation": "This generation shall not pass away, till all be fulfilled.",
+  "ref": "Luke 21:32"
+ },
+ {
+  "id": "luke-21-h-05",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these did Jesus warn could overcharge the heart?",
+  "choices": [
+   "Cares of this life",
+   "Fear of Rome",
+   "Love of the law",
+   "Pride of knowledge"
+  ],
+  "answer": 0,
+  "explanation": "Take heed lest your hearts be overcharged with surfeiting, and drunkenness, and cares of this life.",
+  "ref": "Luke 21:34"
+ },
+ {
+  "id": "luke-21-h-06",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what did Jesus liken the coming of that day on all the earth?",
+  "choices": [
+   "A thief",
+   "A flood",
+   "A flame",
+   "A snare"
+  ],
+  "answer": 3,
+  "explanation": "For as a snare shall it come on all them that dwell on the face of the whole earth.",
+  "ref": "Luke 21:35"
+ },
+ {
+  "id": "luke-21-h-07",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say to do that they might escape and stand before the Son of man?",
+  "choices": [
+   "Fast and give alms",
+   "Flee and hide",
+   "Watch and pray always",
+   "Read and obey"
+  ],
+  "answer": 2,
+  "explanation": "Watch ye therefore, and pray always, that ye may be accounted worthy to escape all these things.",
+  "ref": "Luke 21:36"
+ },
+ {
+  "id": "luke-21-h-08",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When the trees shoot forth, what do you know of yourselves?",
+  "choices": [
+   "That harvest is past",
+   "That summer is nigh",
+   "That rain is coming",
+   "That winter is over"
+  ],
+  "answer": 1,
+  "explanation": "When they now shoot forth, ye see and know of your own selves that summer is now nigh at hand.",
+  "ref": "Luke 21:30"
+ },
+ {
+  "id": "luke-21-h-09",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did all the people come to hear Jesus in the temple?",
+  "choices": [
+   "Early in the morning",
+   "At the evening sacrifice",
+   "At noon",
+   "On the sabbath"
+  ],
+  "answer": 0,
+  "explanation": "All the people came early in the morning to him in the temple, for to hear him.",
+  "ref": "Luke 21:38"
+ },
+ {
+  "id": "luke-21-h-10",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which heavenly bodies did Jesus say there would be signs?",
+  "choices": [
+   "Clouds and rainbow",
+   "Lightning and thunder",
+   "Sky and wind",
+   "Sun, moon and stars"
+  ],
+  "answer": 3,
+  "explanation": "There shall be signs in the sun, and in the moon, and in the stars.",
+  "ref": "Luke 21:25"
+ },
+ {
+  "id": "luke-21-h-11",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus call the days of Jerusalem's trouble?",
+  "choices": [
+   "Days of mourning",
+   "Days of testing",
+   "Days of vengeance",
+   "Days of exile"
+  ],
+  "answer": 2,
+  "explanation": "These be the days of vengeance, that all things which are written may be fulfilled.",
+  "ref": "Luke 21:22"
+ },
+ {
+  "id": "luke-21-h-12",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say would happen to the disciples before all these signs?",
+  "choices": [
+   "They would see the Son of man",
+   "They would be laid hold of and persecuted",
+   "They would be taken up",
+   "They would be given swords"
+  ],
+  "answer": 1,
+  "explanation": "But before all these, they shall lay their hands on you, and persecute you.",
+  "ref": "Luke 21:12"
+ },
+ {
+  "id": "luke-21-h-13",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus tell those in the countries to do about Jerusalem?",
+  "choices": [
+   "Not to enter into it",
+   "To gather to it",
+   "To pray for it",
+   "To bring gifts to it"
+  ],
+  "answer": 0,
+  "explanation": "Let not them that are in the countries enter thereinto.",
+  "ref": "Luke 21:21"
+ },
+ {
+  "id": "luke-21-h-14",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say would be shaken?",
+  "choices": [
+   "The mountains",
+   "The foundations of the temple",
+   "The gates of Jerusalem",
+   "The powers of heaven"
+  ],
+  "answer": 3,
+  "explanation": "For the powers of heaven shall be shaken.",
+  "ref": "Luke 21:26"
+ },
+ {
+  "id": "luke-21-h-15",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How would the disciples be hated?",
+  "choices": [
+   "By the Gentiles only",
+   "By the Pharisees alone",
+   "Of all men for his name's sake",
+   "By their own households only"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall be hated of all men for my name's sake.",
+  "ref": "Luke 21:17"
+ },
+ {
+  "id": "luke-22-e-01",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two disciples did Jesus send to prepare the passover?",
+  "choices": [
+   "James and John",
+   "Peter and John",
+   "Peter and Andrew",
+   "Philip and Thomas"
+  ],
+  "answer": 1,
+  "explanation": "He sent Peter and John, saying, Go and prepare us the passover, that we may eat.",
+  "ref": "Luke 22:8"
+ },
+ {
+  "id": "luke-22-e-02",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the man who would meet them carrying?",
+  "choices": [
+   "A pitcher of water",
+   "A basket of bread",
+   "A lamb",
+   "A jar of oil"
+  ],
+  "answer": 0,
+  "explanation": "There shall a man meet you, bearing a pitcher of water; follow him into the house where he entereth in.",
+  "ref": "Luke 22:10"
+ },
+ {
+  "id": "luke-22-e-03",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus say they would eat the passover?",
+  "choices": [
+   "A garden",
+   "The temple court",
+   "A house in Bethany",
+   "A large upper room furnished"
+  ],
+  "answer": 3,
+  "explanation": "He shall shew you a large upper room furnished: there make ready.",
+  "ref": "Luke 22:12"
+ },
+ {
+  "id": "luke-22-e-04",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say of the bread he broke?",
+  "choices": [
+   "This is the bread of heaven",
+   "This is the manna",
+   "This is my body which is given for you",
+   "This is the bread of affliction"
+  ],
+  "answer": 2,
+  "explanation": "He took bread, and gave thanks, and brake it, saying, This is my body which is given for you: this do in remembrance of me.",
+  "ref": "Luke 22:19"
+ },
+ {
+  "id": "luke-22-e-05",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the chief priests covenant to give Judas?",
+  "choices": [
+   "A position",
+   "Money",
+   "Land",
+   "A house"
+  ],
+  "answer": 1,
+  "explanation": "They were glad, and covenanted to give him money.",
+  "ref": "Luke 22:5"
+ },
+ {
+  "id": "luke-22-e-06",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say Peter would do before the cock crew?",
+  "choices": [
+   "Thrice deny that he knew him",
+   "Run away",
+   "Fall asleep",
+   "Draw his sword"
+  ],
+  "answer": 0,
+  "explanation": "The cock shall not crow this day, before that thou shalt thrice deny that thou knowest me.",
+  "ref": "Luke 22:34"
+ },
+ {
+  "id": "luke-22-e-07",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which mount did Jesus go as he was wont?",
+  "choices": [
+   "Mount Hermon",
+   "Mount Zion",
+   "Mount Tabor",
+   "The mount of Olives"
+  ],
+  "answer": 3,
+  "explanation": "He came out, and went, as he was wont, to the mount of Olives.",
+  "ref": "Luke 22:39"
+ },
+ {
+  "id": "luke-22-e-08",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say in prayer after asking for the cup to be removed?",
+  "choices": [
+   "Thy will be done in heaven",
+   "Let it pass",
+   "Not my will, but thine, be done",
+   "Send me twelve legions"
+  ],
+  "answer": 2,
+  "explanation": "Father, if thou be willing, remove this cup from me: nevertheless not my will, but thine, be done.",
+  "ref": "Luke 22:42"
+ },
+ {
+  "id": "luke-22-e-09",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Judas betray Jesus?",
+  "choices": [
+   "By pointing",
+   "With a kiss",
+   "By calling his name",
+   "By an oath"
+  ],
+  "answer": 1,
+  "explanation": "Judas, betrayest thou the Son of man with a kiss?",
+  "ref": "Luke 22:47–48"
+ },
+ {
+  "id": "luke-22-e-10",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Peter do after the cock crew and the Lord looked at him?",
+  "choices": [
+   "Went out and wept bitterly",
+   "Ran to the tomb",
+   "Hid in the upper room",
+   "Returned to Galilee"
+  ],
+  "answer": 0,
+  "explanation": "Peter went out, and wept bitterly.",
+  "ref": "Luke 22:62"
+ },
+ {
+  "id": "luke-22-m-01",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the chief priests not openly kill Jesus?",
+  "choices": [
+   "They feared Pilate",
+   "It was the sabbath",
+   "They had no witnesses",
+   "They feared the people"
+  ],
+  "answer": 3,
+  "explanation": "The chief priests and scribes sought how they might kill him; for they feared the people.",
+  "ref": "Luke 22:2"
+ },
+ {
+  "id": "luke-22-m-02",
+  "chapter": 22,
+  "level": "medium",
+  "category": "person",
+  "question": "With whom did Judas commune about betraying Jesus?",
+  "choices": [
+   "Pilate and Herod",
+   "The scribes and elders",
+   "The chief priests and captains",
+   "The Sadducees"
+  ],
+  "answer": 2,
+  "explanation": "He went his way, and communed with the chief priests and captains, how he might betray him unto them.",
+  "ref": "Luke 22:4"
+ },
+ {
+  "id": "luke-22-m-03",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Judas seek opportunity to betray Jesus?",
+  "choices": [
+   "At night in the garden",
+   "In the absence of the multitude",
+   "On the sabbath",
+   "During the feast"
+  ],
+  "answer": 1,
+  "explanation": "He sought opportunity to betray him unto them in the absence of the multitude.",
+  "ref": "Luke 22:6"
+ },
+ {
+  "id": "luke-22-m-04",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say when he gave them the first cup?",
+  "choices": [
+   "Take this, and divide it among yourselves",
+   "Drink all of it",
+   "Pour it on the ground",
+   "Give it to the poor"
+  ],
+  "answer": 0,
+  "explanation": "He took the cup, and gave thanks, and said, Take this, and divide it among yourselves.",
+  "ref": "Luke 22:17"
+ },
+ {
+  "id": "luke-22-m-05",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when did Jesus say he would not drink of the fruit of the vine?",
+  "choices": [
+   "Until the feast ended",
+   "Until he rose",
+   "Until Passover next year",
+   "Until the kingdom of God shall come"
+  ],
+  "answer": 3,
+  "explanation": "I will not drink of the fruit of the vine, until the kingdom of God shall come.",
+  "ref": "Luke 22:18"
+ },
+ {
+  "id": "luke-22-m-06",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Jesus say the hand of the one who betrayed him was?",
+  "choices": [
+   "In the dish",
+   "Behind him",
+   "With him on the table",
+   "On the cup"
+  ],
+  "answer": 2,
+  "explanation": "The hand of him that betrayeth me is with me on the table.",
+  "ref": "Luke 22:21"
+ },
+ {
+  "id": "luke-22-m-07",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the disciples begin to enquire among themselves?",
+  "choices": [
+   "Who would deny him",
+   "Which of them would betray him",
+   "Who would leave first",
+   "Who had the sword"
+  ],
+  "answer": 1,
+  "explanation": "They began to enquire among themselves, which of them it was that should do this thing.",
+  "ref": "Luke 22:23"
+ },
+ {
+  "id": "luke-22-m-08",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What strife arose among the disciples?",
+  "choices": [
+   "Which of them should be accounted the greatest",
+   "Who should hold the purse",
+   "Who should sit by Jesus",
+   "Who had denied him"
+  ],
+  "answer": 0,
+  "explanation": "There was also a strife among them, which of them should be accounted the greatest.",
+  "ref": "Luke 22:24"
+ },
+ {
+  "id": "luke-22-m-09",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say the greatest among them should be?",
+  "choices": [
+   "As the oldest",
+   "As a king",
+   "As a priest",
+   "As he that doth serve"
+  ],
+  "answer": 3,
+  "explanation": "He that is greatest among you, let him be as the younger; and he that is chief, as he that doth serve.",
+  "ref": "Luke 22:26"
+ },
+ {
+  "id": "luke-22-m-10",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say Satan desired to do to Simon?",
+  "choices": [
+   "Break him as a reed",
+   "Burn him as chaff",
+   "Sift him as wheat",
+   "Carry him to a mountain"
+  ],
+  "answer": 2,
+  "explanation": "Simon, Simon, behold, Satan hath desired to have you, that he may sift you as wheat.",
+  "ref": "Luke 22:31"
+ },
+ {
+  "id": "luke-22-m-11",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say he had prayed for Peter?",
+  "choices": [
+   "That he would not sleep",
+   "That his faith fail not",
+   "That he would be bold",
+   "That he would lead the twelve"
+  ],
+  "answer": 1,
+  "explanation": "I have prayed for thee, that thy faith fail not: and when thou art converted, strengthen thy brethren.",
+  "ref": "Luke 22:32"
+ },
+ {
+  "id": "luke-22-m-12",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Peter reply when Jesus warned him?",
+  "choices": [
+   "I am ready to go with thee into prison and to death",
+   "I will not leave thee",
+   "I will never deny thee",
+   "I will carry the cross"
+  ],
+  "answer": 0,
+  "explanation": "Lord, I am ready to go with thee, both into prison, and to death.",
+  "ref": "Luke 22:33"
+ },
+ {
+  "id": "luke-22-m-13",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the disciples say they had when Jesus spoke of buying a sword?",
+  "choices": [
+   "One sword",
+   "Twelve swords",
+   "No swords",
+   "Two swords"
+  ],
+  "answer": 3,
+  "explanation": "Lord, behold, here are two swords. And he said unto them, It is enough.",
+  "ref": "Luke 22:38"
+ },
+ {
+  "id": "luke-22-m-14",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How far did Jesus withdraw from them to pray?",
+  "choices": [
+   "A bowshot",
+   "Across the brook",
+   "About a stone's cast",
+   "To the garden gate"
+  ],
+  "answer": 2,
+  "explanation": "He was withdrawn from them about a stone's cast, and kneeled down, and prayed.",
+  "ref": "Luke 22:41"
+ },
+ {
+  "id": "luke-22-m-15",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who appeared to Jesus as he prayed?",
+  "choices": [
+   "Elijah",
+   "An angel from heaven, strengthening him",
+   "Moses",
+   "Gabriel at the door"
+  ],
+  "answer": 1,
+  "explanation": "There appeared an angel unto him from heaven, strengthening him.",
+  "ref": "Luke 22:43"
+ },
+ {
+  "id": "luke-22-h-01",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jesus find the disciples sleeping?",
+  "choices": [
+   "For sorrow",
+   "From the wine",
+   "From the long walk",
+   "From weakness of faith"
+  ],
+  "answer": 0,
+  "explanation": "He found them sleeping for sorrow.",
+  "ref": "Luke 22:45"
+ },
+ {
+  "id": "luke-22-h-02",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the disciples ask when they saw what would follow Judas' kiss?",
+  "choices": [
+   "Lord, shall we flee?",
+   "Lord, shall we pray?",
+   "Lord, shall we hide?",
+   "Lord, shall we smite with the sword?"
+  ],
+  "answer": 3,
+  "explanation": "They said unto him, Lord, shall we smite with the sword?",
+  "ref": "Luke 22:49"
+ },
+ {
+  "id": "luke-22-h-03",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus ask the chief priests and captains who came for him?",
+  "choices": [
+   "Why do you come by night?",
+   "Who sent you?",
+   "Why come with swords and staves as against a thief?",
+   "Where is the high priest?"
+  ],
+  "answer": 2,
+  "explanation": "Be ye come out, as against a thief, with swords and staves?",
+  "ref": "Luke 22:52"
+ },
+ {
+  "id": "luke-22-h-04",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus call the hour of the arrest?",
+  "choices": [
+   "The hour of prayer",
+   "Their hour, and the power of darkness",
+   "The hour of the feast",
+   "The hour of the sword"
+  ],
+  "answer": 1,
+  "explanation": "This is your hour, and the power of darkness.",
+  "ref": "Luke 22:53"
+ },
+ {
+  "id": "luke-22-h-05",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Peter follow Jesus to the high priest's house?",
+  "choices": [
+   "Afar off",
+   "Close behind",
+   "In disguise",
+   "With John"
+  ],
+  "answer": 0,
+  "explanation": "Then took they him, and brought him into the high priest's house. And Peter followed afar off.",
+  "ref": "Luke 22:54"
+ },
+ {
+  "id": "luke-22-h-06",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the fire kindled where Peter sat?",
+  "choices": [
+   "In the courtyard gate",
+   "Beside the pool",
+   "Outside the wall",
+   "In the midst of the hall"
+  ],
+  "answer": 3,
+  "explanation": "They had kindled a fire in the midst of the hall, and were set down together, Peter sat down among them.",
+  "ref": "Luke 22:55"
+ },
+ {
+  "id": "luke-22-h-07",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Peter say to the maid who said he was with Jesus?",
+  "choices": [
+   "I am not of Galilee",
+   "I never saw him",
+   "Woman, I know him not",
+   "I serve the high priest"
+  ],
+  "answer": 2,
+  "explanation": "He denied him, saying, Woman, I know him not.",
+  "ref": "Luke 22:57"
+ },
+ {
+  "id": "luke-22-h-08",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What reason did the third accuser give for saying Peter was with Jesus?",
+  "choices": [
+   "He had a sword",
+   "He was a Galilaean",
+   "He spoke like the disciples",
+   "He ate with Jesus"
+  ],
+  "answer": 1,
+  "explanation": "Another confidently affirmed, saying, Of a truth this fellow also was with him: for he is a Galilaean.",
+  "ref": "Luke 22:59"
+ },
+ {
+  "id": "luke-22-h-09",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord do when the cock crew?",
+  "choices": [
+   "Turned and looked upon Peter",
+   "Called to Peter",
+   "Walked away",
+   "Sent for Peter"
+  ],
+  "answer": 0,
+  "explanation": "The Lord turned, and looked upon Peter.",
+  "ref": "Luke 22:61"
+ },
+ {
+  "id": "luke-22-h-10",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men who held Jesus ask when they had blindfolded him?",
+  "choices": [
+   "Where is thy kingdom?",
+   "Art thou a prophet of Galilee?",
+   "Who is thy father?",
+   "Prophesy, who is it that smote thee?"
+  ],
+  "answer": 3,
+  "explanation": "When they had blindfolded him, they struck him on the face, and asked him, Prophesy, who is it that smote thee?",
+  "ref": "Luke 22:64"
+ },
+ {
+  "id": "luke-22-h-11",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the elders and chief priests lead Jesus into their council?",
+  "choices": [
+   "At midnight",
+   "At the third hour",
+   "As soon as it was day",
+   "Before the cock crew"
+  ],
+  "answer": 2,
+  "explanation": "As soon as it was day, the elders of the people and the chief priests and the scribes came together, and led him into their council.",
+  "ref": "Luke 22:66"
+ },
+ {
+  "id": "luke-22-h-12",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus answer when asked if he was the Son of God?",
+  "choices": [
+   "I am he",
+   "Ye say that I am",
+   "It is as ye say not",
+   "Ask the high priest"
+  ],
+  "answer": 1,
+  "explanation": "Then said they all, Art thou then the Son of God? And he said unto them, Ye say that I am.",
+  "ref": "Luke 22:70"
+ },
+ {
+  "id": "luke-22-h-13",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Jesus say the Son of man would sit hereafter?",
+  "choices": [
+   "On the right hand of the power of God",
+   "On the throne of David",
+   "On the mount of Olives",
+   "On the seat of judgment in Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Hereafter shall the Son of man sit on the right hand of the power of God.",
+  "ref": "Luke 22:69"
+ },
+ {
+  "id": "luke-22-h-14",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the disciples answer when Jesus asked whether they lacked anything when sent without purse?",
+  "choices": [
+   "Bread",
+   "Shoes",
+   "A staff",
+   "Nothing"
+  ],
+  "answer": 3,
+  "explanation": "When I sent you without purse, and scrip, and shoes, lacked ye any thing? And they said, Nothing.",
+  "ref": "Luke 22:35"
+ },
+ {
+  "id": "luke-22-h-15",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say the disciples would do on thrones?",
+  "choices": [
+   "Rule the Gentiles",
+   "Judge the angels",
+   "Judge the twelve tribes of Israel",
+   "Teach all nations"
+  ],
+  "answer": 2,
+  "explanation": "That ye may eat and drink at my table in my kingdom, and sit on thrones judging the twelve tribes of Israel.",
+  "ref": "Luke 22:30"
+ },
+ {
+  "id": "luke-23-e-01",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Before whom did the whole multitude lead Jesus?",
+  "choices": [
+   "Herod",
+   "Pilate",
+   "Caiaphas",
+   "Caesar"
+  ],
+  "answer": 1,
+  "explanation": "The whole multitude of them arose, and led him unto Pilate.",
+  "ref": "Luke 23:1"
+ },
+ {
+  "id": "luke-23-e-02",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Pilate ask Jesus?",
+  "choices": [
+   "Art thou the King of the Jews?",
+   "Art thou the Son of God?",
+   "Art thou Elijah?",
+   "Art thou a Galilaean?"
+  ],
+  "answer": 0,
+  "explanation": "Pilate asked him, saying, Art thou the King of the Jews? And he answered him and said, Thou sayest it.",
+  "ref": "Luke 23:3"
+ },
+ {
+  "id": "luke-23-e-03",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Pilate say of Jesus to the chief priests?",
+  "choices": [
+   "He is guilty of sedition",
+   "He is a prophet",
+   "He must be scourged at once",
+   "I find no fault in this man"
+  ],
+  "answer": 3,
+  "explanation": "Then said Pilate to the chief priests and to the people, I find no fault in this man.",
+  "ref": "Luke 23:4"
+ },
+ {
+  "id": "luke-23-e-04",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who arrayed Jesus in a gorgeous robe?",
+  "choices": [
+   "Pilate",
+   "The centurion",
+   "Herod",
+   "The chief priests"
+  ],
+  "answer": 2,
+  "explanation": "Herod with his men of war set him at nought, and mocked him, and arrayed him in a gorgeous robe.",
+  "ref": "Luke 23:11"
+ },
+ {
+  "id": "luke-23-e-05",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened between Pilate and Herod that same day?",
+  "choices": [
+   "They went to war",
+   "They were made friends",
+   "They quarrelled",
+   "They sent a letter to Caesar"
+  ],
+  "answer": 1,
+  "explanation": "The same day Pilate and Herod were made friends together: for before they were at enmity between themselves.",
+  "ref": "Luke 23:12"
+ },
+ {
+  "id": "luke-23-e-06",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was made to bear the cross after Jesus?",
+  "choices": [
+   "Simon, a Cyrenian",
+   "Joseph of Arimathaea",
+   "Barabbas",
+   "Peter"
+  ],
+  "answer": 0,
+  "explanation": "They laid hold upon one Simon, a Cyrenian, coming out of the country, and on him they laid the cross.",
+  "ref": "Luke 23:26"
+ },
+ {
+  "id": "luke-23-e-07",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "place",
+  "question": "What was the place called where they crucified Jesus?",
+  "choices": [
+   "Golgotha's gate",
+   "Bethphage",
+   "Gethsemane",
+   "Calvary"
+  ],
+  "answer": 3,
+  "explanation": "When they were come to the place, which is called Calvary, there they crucified him.",
+  "ref": "Luke 23:33"
+ },
+ {
+  "id": "luke-23-e-08",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say about those who crucified him?",
+  "choices": [
+   "Father, judge them",
+   "Father, send angels",
+   "Father, forgive them; for they know not what they do",
+   "Father, why hast thou forsaken me"
+  ],
+  "answer": 2,
+  "explanation": "Then said Jesus, Father, forgive them; for they know not what they do.",
+  "ref": "Luke 23:34"
+ },
+ {
+  "id": "luke-23-e-09",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were Jesus' last words on the cross in Luke?",
+  "choices": [
+   "It is finished",
+   "Father, into thy hands I commend my spirit",
+   "I thirst",
+   "Eloi, Eloi"
+  ],
+  "answer": 1,
+  "explanation": "Jesus cried with a loud voice, Father, into thy hands I commend my spirit: and having said thus, he gave up the ghost.",
+  "ref": "Luke 23:46"
+ },
+ {
+  "id": "luke-23-e-10",
+  "chapter": 23,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was rent in the midst when the sun was darkened?",
+  "choices": [
+   "The veil of the temple",
+   "The great stone",
+   "The city wall",
+   "The altar"
+  ],
+  "answer": 0,
+  "explanation": "The sun was darkened, and the veil of the temple was rent in the midst.",
+  "ref": "Luke 23:45"
+ },
+ {
+  "id": "luke-23-m-01",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the chief priests accuse Jesus of forbidding?",
+  "choices": [
+   "Keeping the sabbath",
+   "Paying the temple tax",
+   "Teaching in the synagogue",
+   "Giving tribute to Caesar"
+  ],
+  "answer": 3,
+  "explanation": "We found this fellow perverting the nation, and forbidding to give tribute to Caesar.",
+  "ref": "Luke 23:2"
+ },
+ {
+  "id": "luke-23-m-02",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Herod exceeding glad to see Jesus?",
+  "choices": [
+   "He wanted to free him",
+   "He wished to question the priests",
+   "He hoped to see a miracle done by him",
+   "He had been told Jesus was dead"
+  ],
+  "answer": 2,
+  "explanation": "He was exceeding glad: for he was desirous to see him of a long season, and he hoped to have seen some miracle done by him.",
+  "ref": "Luke 23:8"
+ },
+ {
+  "id": "luke-23-m-03",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jesus answer Herod's many questions?",
+  "choices": [
+   "He quoted Scripture",
+   "He answered him nothing",
+   "He spoke of a kingdom",
+   "He asked about John"
+  ],
+  "answer": 1,
+  "explanation": "Then he questioned with him in many words; but he answered him nothing.",
+  "ref": "Luke 23:9"
+ },
+ {
+  "id": "luke-23-m-04",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Pilate say he would do to Jesus before releasing him?",
+  "choices": [
+   "Chastise him",
+   "Imprison him",
+   "Scourge him to death",
+   "Send him to Rome"
+  ],
+  "answer": 0,
+  "explanation": "I will therefore chastise him, and release him.",
+  "ref": "Luke 23:16"
+ },
+ {
+  "id": "luke-23-m-05",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Pilate have to release one prisoner?",
+  "choices": [
+   "By Herod's command",
+   "As a gift to the priests",
+   "In payment of a debt",
+   "Of necessity at the feast"
+  ],
+  "answer": 3,
+  "explanation": "For of necessity he must release one unto them at the feast.",
+  "ref": "Luke 23:17"
+ },
+ {
+  "id": "luke-23-m-06",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they cry when Pilate, willing to release Jesus, spoke again?",
+  "choices": [
+   "Release Barabbas to us",
+   "Let Herod judge him",
+   "Crucify him, crucify him",
+   "Stone him"
+  ],
+  "answer": 2,
+  "explanation": "Pilate, willing to release Jesus, spake again to them. But they cried, saying, Crucify him, crucify him.",
+  "ref": "Luke 23:20–21"
+ },
+ {
+  "id": "luke-23-m-07",
+  "chapter": 23,
+  "level": "medium",
+  "category": "person",
+  "question": "For what was Barabbas cast into prison?",
+  "choices": [
+   "Theft and fraud",
+   "Sedition and murder",
+   "Blasphemy",
+   "Rebellion against Herod only"
+  ],
+  "answer": 1,
+  "explanation": "Barabbas, who for a certain sedition made in the city, and for murder, was cast into prison.",
+  "ref": "Luke 23:19"
+ },
+ {
+  "id": "luke-23-m-08",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus tell the weeping daughters of Jerusalem?",
+  "choices": [
+   "Weep for yourselves and your children",
+   "Weep not at all",
+   "Follow me",
+   "Go home and pray"
+  ],
+  "answer": 0,
+  "explanation": "Daughters of Jerusalem, weep not for me, but weep for yourselves, and for your children.",
+  "ref": "Luke 23:28"
+ },
+ {
+  "id": "luke-23-m-09",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would people say to the mountains in the coming days?",
+  "choices": [
+   "Hide us",
+   "Shake no more",
+   "Stand firm",
+   "Fall on us"
+  ],
+  "answer": 3,
+  "explanation": "Then shall they begin to say to the mountains, Fall on us; and to the hills, Cover us.",
+  "ref": "Luke 23:30"
+ },
+ {
+  "id": "luke-23-m-10",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was written on the superscription over Jesus?",
+  "choices": [
+   "Jesus of Nazareth",
+   "King of Israel",
+   "This is the King of the Jews",
+   "The Son of David"
+  ],
+  "answer": 2,
+  "explanation": "A superscription also was written over him in letters of Greek, and Latin, and Hebrew, THIS IS THE KING OF THE JEWS.",
+  "ref": "Luke 23:38"
+ },
+ {
+  "id": "luke-23-m-11",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the soldiers offer Jesus when they mocked him?",
+  "choices": [
+   "Wine mixed with myrrh",
+   "Vinegar",
+   "Water",
+   "Bread"
+  ],
+  "answer": 1,
+  "explanation": "The soldiers also mocked him, coming to him, and offering him vinegar.",
+  "ref": "Luke 23:36"
+ },
+ {
+  "id": "luke-23-m-12",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did they do with Jesus' raiment?",
+  "choices": [
+   "Parted it and cast lots",
+   "Burned it",
+   "Gave it to Joseph",
+   "Sold it"
+  ],
+  "answer": 0,
+  "explanation": "They parted his raiment, and cast lots.",
+  "ref": "Luke 23:34"
+ },
+ {
+  "id": "luke-23-m-13",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the repentant malefactor ask of the other?",
+  "choices": [
+   "Why do you curse him?",
+   "Will you not be silent?",
+   "Do you not see the sign?",
+   "Dost not thou fear God?"
+  ],
+  "answer": 3,
+  "explanation": "The other answering rebuked him, saying, Dost not thou fear God, seeing thou art in the same condemnation?",
+  "ref": "Luke 23:40"
+ },
+ {
+  "id": "luke-23-m-14",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Between which hours was there darkness over all the earth?",
+  "choices": [
+   "The third and sixth hour",
+   "The ninth and twelfth hour",
+   "The sixth and the ninth hour",
+   "Dawn and noon"
+  ],
+  "answer": 2,
+  "explanation": "It was about the sixth hour, and there was a darkness over all the earth until the ninth hour.",
+  "ref": "Luke 23:44"
+ },
+ {
+  "id": "luke-23-m-15",
+  "chapter": 23,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the centurion say when he saw what was done?",
+  "choices": [
+   "This was the Son of God",
+   "Certainly this was a righteous man",
+   "This was a king",
+   "This was a prophet"
+  ],
+  "answer": 1,
+  "explanation": "The centurion saw what was done, he glorified God, saying, Certainly this was a righteous man.",
+  "ref": "Luke 23:47"
+ },
+ {
+  "id": "luke-23-h-01",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pilate ask when he heard of Galilee?",
+  "choices": [
+   "Whether the man were a Galilaean",
+   "Whether he had a following",
+   "Whether Herod knew him",
+   "Whether he was a Nazarene"
+  ],
+  "answer": 0,
+  "explanation": "When Pilate heard of Galilee, he asked whether the man were a Galilaean.",
+  "ref": "Luke 23:6"
+ },
+ {
+  "id": "luke-23-h-02",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Pilate ask the third time?",
+  "choices": [
+   "Whom will ye release?",
+   "What shall I do?",
+   "Is he the King?",
+   "Why, what evil hath he done?"
+  ],
+  "answer": 3,
+  "explanation": "He said unto them the third time, Why, what evil hath he done? I have found no cause of death in him.",
+  "ref": "Luke 23:22"
+ },
+ {
+  "id": "luke-23-h-03",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What prevailed against Pilate's wish to release Jesus?",
+  "choices": [
+   "The warning from Herod",
+   "The anger of soldiers",
+   "The voices of the people and chief priests",
+   "A letter from Caesar"
+  ],
+  "answer": 2,
+  "explanation": "The voices of them and of the chief priests prevailed.",
+  "ref": "Luke 23:23"
+ },
+ {
+  "id": "luke-23-h-04",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where was Simon the Cyrenian coming when they seized him?",
+  "choices": [
+   "From the temple",
+   "Out of the country",
+   "From the city gate",
+   "From Bethany"
+  ],
+  "answer": 1,
+  "explanation": "They laid hold upon one Simon, a Cyrenian, coming out of the country.",
+  "ref": "Luke 23:26"
+ },
+ {
+  "id": "luke-23-h-05",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say about doing these things in a green tree?",
+  "choices": [
+   "What shall be done in the dry?",
+   "Who will water it?",
+   "How will it grow?",
+   "Who shall cut it down?"
+  ],
+  "answer": 0,
+  "explanation": "If they do these things in a green tree, what shall be done in the dry?",
+  "ref": "Luke 23:31"
+ },
+ {
+  "id": "luke-23-h-06",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the rulers say about Jesus as they derided him?",
+  "choices": [
+   "He healed many; let him heal himself",
+   "He taught the crowds; let them follow him",
+   "He called himself a king; let him reign",
+   "He saved others; let him save himself"
+  ],
+  "answer": 3,
+  "explanation": "He saved others; let him save himself, if he be Christ, the chosen of God.",
+  "ref": "Luke 23:35"
+ },
+ {
+  "id": "luke-23-h-07",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the repentant malefactor say of Jesus?",
+  "choices": [
+   "He is a righteous man",
+   "He is the Son of God",
+   "He hath done nothing amiss",
+   "He is innocent of the law"
+  ],
+  "answer": 2,
+  "explanation": "We receive the due reward of our deeds: but this man hath done nothing amiss.",
+  "ref": "Luke 23:41"
+ },
+ {
+  "id": "luke-23-h-08",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people do who beheld the sight and returned?",
+  "choices": [
+   "Wept and fell down",
+   "Smote their breasts",
+   "Praised God",
+   "Tore their garments"
+  ],
+  "answer": 1,
+  "explanation": "All the people that came together to that sight smote their breasts, and returned.",
+  "ref": "Luke 23:48"
+ },
+ {
+  "id": "luke-23-h-09",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who stood afar off beholding these things?",
+  "choices": [
+   "His acquaintance and the women from Galilee",
+   "The twelve apostles",
+   "The priests",
+   "The soldiers"
+  ],
+  "answer": 0,
+  "explanation": "All his acquaintance, and the women that followed him from Galilee, stood afar off.",
+  "ref": "Luke 23:49"
+ },
+ {
+  "id": "luke-23-h-10",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What office did Joseph of Arimathaea hold?",
+  "choices": [
+   "A priest",
+   "A scribe",
+   "A centurion",
+   "A counsellor"
+  ],
+  "answer": 3,
+  "explanation": "There was a man named Joseph, a counsellor; and he was a good man, and a just.",
+  "ref": "Luke 23:50"
+ },
+ {
+  "id": "luke-23-h-11",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph of Arimathaea wait for?",
+  "choices": [
+   "The Messiah's return",
+   "The temple's restoration",
+   "The kingdom of God",
+   "The feast of weeks"
+  ],
+  "answer": 2,
+  "explanation": "He was of Arimathaea, a city of the Jews: who also himself waited for the kingdom of God.",
+  "ref": "Luke 23:51"
+ },
+ {
+  "id": "luke-23-h-12",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did Joseph wrap the body of Jesus?",
+  "choices": [
+   "Silk",
+   "Linen",
+   "Spices and wool",
+   "A purple robe"
+  ],
+  "answer": 1,
+  "explanation": "He took it down, and wrapped it in linen, and laid it in a sepulchre that was hewn in stone.",
+  "ref": "Luke 23:53"
+ },
+ {
+  "id": "luke-23-h-13",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the women prepare before resting the sabbath?",
+  "choices": [
+   "Spices and ointments",
+   "A shroud",
+   "Oil and wine",
+   "Bread for the poor"
+  ],
+  "answer": 0,
+  "explanation": "They returned, and prepared spices and ointments; and rested the sabbath day according to the commandment.",
+  "ref": "Luke 23:56"
+ },
+ {
+  "id": "luke-23-h-14",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say people would call blessed in the days coming?",
+  "choices": [
+   "The poor and meek",
+   "The childless and the widows",
+   "Those who mourn",
+   "The barren and the wombs that never bare"
+  ],
+  "answer": 3,
+  "explanation": "Blessed are the barren, and the wombs that never bare, and the paps which never gave suck.",
+  "ref": "Luke 23:29"
+ },
+ {
+  "id": "luke-23-h-15",
+  "chapter": 23,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Pilate say he had found no fault in Jesus, and neither had Herod?",
+  "choices": [
+   "He was a prophet",
+   "His witnesses disagreed",
+   "Nothing worthy of death was done to him",
+   "He had not claimed a kingdom"
+  ],
+  "answer": 2,
+  "explanation": "Nor yet Herod: for I sent you to him; and, lo, nothing worthy of death is done unto him.",
+  "ref": "Luke 23:15"
+ },
+ {
+  "id": "luke-24-e-01",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the women find when they entered the sepulchre?",
+  "choices": [
+   "Angels guarding it",
+   "Not the body of the Lord Jesus",
+   "Soldiers asleep",
+   "Grave clothes burned"
+  ],
+  "answer": 1,
+  "explanation": "They entered in, and found not the body of the Lord Jesus.",
+  "ref": "Luke 24:3"
+ },
+ {
+  "id": "luke-24-e-02",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who stood by the women in shining garments?",
+  "choices": [
+   "Two men",
+   "One angel",
+   "Three disciples",
+   "Joseph and Nicodemus"
+  ],
+  "answer": 0,
+  "explanation": "Behold, two men stood by them in shining garments.",
+  "ref": "Luke 24:4"
+ },
+ {
+  "id": "luke-24-e-03",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the two men ask the women?",
+  "choices": [
+   "Whom seek ye?",
+   "Why do you weep?",
+   "Where have you laid him?",
+   "Why seek ye the living among the dead?"
+  ],
+  "answer": 3,
+  "explanation": "Why seek ye the living among the dead? He is not here, but is risen.",
+  "ref": "Luke 24:5–6"
+ },
+ {
+  "id": "luke-24-e-04",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the apostles think of the women's words?",
+  "choices": [
+   "A great sign",
+   "A vision of angels",
+   "Idle tales",
+   "A prophecy"
+  ],
+  "answer": 2,
+  "explanation": "Their words seemed to them as idle tales, and they believed them not.",
+  "ref": "Luke 24:11"
+ },
+ {
+  "id": "luke-24-e-05",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which apostle ran to the sepulchre?",
+  "choices": [
+   "John",
+   "Peter",
+   "Thomas",
+   "Andrew"
+  ],
+  "answer": 1,
+  "explanation": "Then arose Peter, and ran unto the sepulchre.",
+  "ref": "Luke 24:12"
+ },
+ {
+  "id": "luke-24-e-06",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which village did two of them go that same day?",
+  "choices": [
+   "Emmaus",
+   "Bethany",
+   "Nain",
+   "Bethphage"
+  ],
+  "answer": 0,
+  "explanation": "Two of them went that same day to a village called Emmaus.",
+  "ref": "Luke 24:13"
+ },
+ {
+  "id": "luke-24-e-07",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of the two travellers is named?",
+  "choices": [
+   "Cephas",
+   "Clement",
+   "Cornelius",
+   "Cleopas"
+  ],
+  "answer": 3,
+  "explanation": "The one of them, whose name was Cleopas, answering said unto him.",
+  "ref": "Luke 24:18"
+ },
+ {
+  "id": "luke-24-e-08",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jesus explain the things concerning himself?",
+  "choices": [
+   "By signs and wonders",
+   "By a parable",
+   "Beginning at Moses and all the prophets",
+   "By reading the law aloud"
+  ],
+  "answer": 2,
+  "explanation": "Beginning at Moses and all the prophets, he expounded unto them in all the scriptures the things concerning himself.",
+  "ref": "Luke 24:27"
+ },
+ {
+  "id": "luke-24-e-09",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the disciples give Jesus to eat?",
+  "choices": [
+   "Bread and wine",
+   "A piece of broiled fish and an honeycomb",
+   "A lamb",
+   "Figs and dates"
+  ],
+  "answer": 1,
+  "explanation": "They gave him a piece of a broiled fish, and of an honeycomb.",
+  "ref": "Luke 24:42"
+ },
+ {
+  "id": "luke-24-e-10",
+  "chapter": 24,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the disciples suppose when Jesus stood among them?",
+  "choices": [
+   "That they had seen a spirit",
+   "That he was an angel",
+   "That it was a dream",
+   "That Elijah had returned"
+  ],
+  "answer": 0,
+  "explanation": "They were terrified and affrighted, and supposed that they had seen a spirit.",
+  "ref": "Luke 24:37"
+ },
+ {
+  "id": "luke-24-m-01",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the women come to the sepulchre?",
+  "choices": [
+   "On the sabbath evening",
+   "At the third hour",
+   "At midnight",
+   "The first day of the week, very early"
+  ],
+  "answer": 3,
+  "explanation": "Upon the first day of the week, very early in the morning, they came unto the sepulchre.",
+  "ref": "Luke 24:1"
+ },
+ {
+  "id": "luke-24-m-02",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the two men tell the women to remember?",
+  "choices": [
+   "The words of Moses",
+   "The words of John",
+   "How Jesus spake to them in Galilee",
+   "The sign of Jonah"
+  ],
+  "answer": 2,
+  "explanation": "Remember how he spake unto you when he was yet in Galilee.",
+  "ref": "Luke 24:6"
+ },
+ {
+  "id": "luke-24-m-03",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Jesus said the Son of man must do?",
+  "choices": [
+   "Be taken up to heaven",
+   "Be crucified and rise on the third day",
+   "Be anointed king",
+   "Be buried in a garden"
+  ],
+  "answer": 1,
+  "explanation": "The Son of man must be delivered into the hands of sinful men, and be crucified, and the third day rise again.",
+  "ref": "Luke 24:7"
+ },
+ {
+  "id": "luke-24-m-04",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "Which women told these things to the apostles?",
+  "choices": [
+   "Mary Magdalene, Joanna and Mary the mother of James",
+   "Martha, Mary and Salome",
+   "Elisabeth and Anna",
+   "Joanna and Susanna"
+  ],
+  "answer": 0,
+  "explanation": "It was Mary Magdalene, and Joanna, and Mary the mother of James, and other women that were with them.",
+  "ref": "Luke 24:10"
+ },
+ {
+  "id": "luke-24-m-05",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Peter see when he stooped into the sepulchre?",
+  "choices": [
+   "An angel sitting",
+   "The stone inside",
+   "Nothing at all",
+   "The linen clothes laid by themselves"
+  ],
+  "answer": 3,
+  "explanation": "Stooping down, he beheld the linen clothes laid by themselves, and departed, wondering in himself.",
+  "ref": "Luke 24:12"
+ },
+ {
+  "id": "luke-24-m-06",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How far was Emmaus from Jerusalem?",
+  "choices": [
+   "Ten furlongs",
+   "A day's journey",
+   "About threescore furlongs",
+   "About a hundred furlongs"
+  ],
+  "answer": 2,
+  "explanation": "A village called Emmaus, which was from Jerusalem about threescore furlongs.",
+  "ref": "Luke 24:13"
+ },
+ {
+  "id": "luke-24-m-07",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jesus find the two travellers as they walked?",
+  "choices": [
+   "Joyful",
+   "Sad",
+   "Angry",
+   "Silent and afraid"
+  ],
+  "answer": 1,
+  "explanation": "What manner of communications are these that ye have one to another, as ye walk, and are sad?",
+  "ref": "Luke 24:17"
+ },
+ {
+  "id": "luke-24-m-08",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Cleopas describe Jesus of Nazareth?",
+  "choices": [
+   "A prophet mighty in deed and word",
+   "A king of David's line",
+   "A great teacher of the law",
+   "The Son of God"
+  ],
+  "answer": 0,
+  "explanation": "Jesus of Nazareth, which was a prophet mighty in deed and word before God and all the people.",
+  "ref": "Luke 24:19"
+ },
+ {
+  "id": "luke-24-m-09",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the two travellers trusted Jesus would do?",
+  "choices": [
+   "Judge the nations",
+   "Rebuild the temple",
+   "Rule from Jerusalem",
+   "Redeem Israel"
+  ],
+  "answer": 3,
+  "explanation": "We trusted that it had been he which should have redeemed Israel.",
+  "ref": "Luke 24:21"
+ },
+ {
+  "id": "luke-24-m-10",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jesus describe the two travellers?",
+  "choices": [
+   "Faithless and proud",
+   "Weak in the law",
+   "Fools and slow of heart to believe",
+   "Blind of eye"
+  ],
+  "answer": 2,
+  "explanation": "O fools, and slow of heart to believe all that the prophets have spoken.",
+  "ref": "Luke 24:25"
+ },
+ {
+  "id": "luke-24-m-11",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the two urge Jesus to stay with them?",
+  "choices": [
+   "They wanted him to teach",
+   "It was toward evening and the day was far spent",
+   "They feared the road",
+   "They had prepared a feast"
+  ],
+  "answer": 1,
+  "explanation": "They constrained him, saying, Abide with us: for it is toward evening, and the day is far spent.",
+  "ref": "Luke 24:29"
+ },
+ {
+  "id": "luke-24-m-12",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the two say about their hearts as Jesus talked?",
+  "choices": [
+   "Did not our heart burn within us",
+   "Our hearts were hardened",
+   "Our hearts were troubled",
+   "Our hearts were glad"
+  ],
+  "answer": 0,
+  "explanation": "Did not our heart burn within us, while he talked with us by the way, and while he opened to us the scriptures?",
+  "ref": "Luke 24:32"
+ },
+ {
+  "id": "luke-24-m-13",
+  "chapter": 24,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom had the Lord appeared, according to the eleven?",
+  "choices": [
+   "Mary",
+   "John",
+   "Cleopas",
+   "Simon"
+  ],
+  "answer": 3,
+  "explanation": "The Lord is risen indeed, and hath appeared to Simon.",
+  "ref": "Luke 24:34"
+ },
+ {
+  "id": "luke-24-m-14",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus tell them to behold to prove it was he?",
+  "choices": [
+   "His side",
+   "The nail prints on a cloth",
+   "His hands and feet",
+   "His grave clothes"
+  ],
+  "answer": 2,
+  "explanation": "Behold my hands and my feet, that it is I myself: handle me, and see; for a spirit hath not flesh and bones.",
+  "ref": "Luke 24:39"
+ },
+ {
+  "id": "luke-24-m-15",
+  "chapter": 24,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the two find the eleven when they returned?",
+  "choices": [
+   "At Bethany",
+   "Gathered together at Jerusalem",
+   "In Galilee",
+   "On the road"
+  ],
+  "answer": 1,
+  "explanation": "They returned to Jerusalem, and found the eleven gathered together, and them that were with them.",
+  "ref": "Luke 24:33"
+ },
+ {
+  "id": "luke-24-h-01",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what three parts of Scripture did Jesus say things were written concerning him?",
+  "choices": [
+   "The law of Moses, the prophets and the psalms",
+   "The law, the proverbs and the kings",
+   "Genesis, Isaiah and Daniel",
+   "The gospels, the epistles and Acts"
+  ],
+  "answer": 0,
+  "explanation": "All things must be fulfilled, which were written in the law of Moses, and in the prophets, and in the psalms, concerning me.",
+  "ref": "Luke 24:44"
+ },
+ {
+  "id": "luke-24-h-02",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do so the disciples might understand the scriptures?",
+  "choices": [
+   "Read them aloud",
+   "Sent them an angel",
+   "Gave them a scroll",
+   "Opened their understanding"
+  ],
+  "answer": 3,
+  "explanation": "Then opened he their understanding, that they might understand the scriptures.",
+  "ref": "Luke 24:45"
+ },
+ {
+  "id": "luke-24-h-03",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say would be preached in his name among all nations?",
+  "choices": [
+   "Peace and goodwill",
+   "The law of Moses",
+   "Repentance and remission of sins",
+   "The kingdom of David"
+  ],
+  "answer": 2,
+  "explanation": "Repentance and remission of sins should be preached in his name among all nations, beginning at Jerusalem.",
+  "ref": "Luke 24:47"
+ },
+ {
+  "id": "luke-24-h-04",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Jesus say the preaching should begin?",
+  "choices": [
+   "Galilee",
+   "Jerusalem",
+   "Samaria",
+   "Rome"
+  ],
+  "answer": 1,
+  "explanation": "Beginning at Jerusalem. And ye are witnesses of these things.",
+  "ref": "Luke 24:47–48"
+ },
+ {
+  "id": "luke-24-h-05",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus tell the disciples to do until they were endued with power?",
+  "choices": [
+   "Tarry in Jerusalem",
+   "Return to Galilee",
+   "Go to Bethany",
+   "Fast in the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "Tarry ye in the city of Jerusalem, until ye be endued with power from on high.",
+  "ref": "Luke 24:49"
+ },
+ {
+  "id": "luke-24-h-06",
+  "chapter": 24,
+  "level": "hard",
+  "category": "place",
+  "question": "How far did Jesus lead them out when he blessed them?",
+  "choices": [
+   "To the mount of Olives top",
+   "To Emmaus",
+   "To Bethphage",
+   "As far as Bethany"
+  ],
+  "answer": 3,
+  "explanation": "He led them out as far as to Bethany, and he lifted up his hands, and blessed them.",
+  "ref": "Luke 24:50"
+ },
+ {
+  "id": "luke-24-h-07",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened while Jesus blessed them?",
+  "choices": [
+   "He vanished as at Emmaus",
+   "A cloud hid the disciples",
+   "He was parted from them and carried up into heaven",
+   "He was taken to the mount of Olives"
+  ],
+  "answer": 2,
+  "explanation": "While he blessed them, he was parted from them, and carried up into heaven.",
+  "ref": "Luke 24:51"
+ },
+ {
+  "id": "luke-24-h-08",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the disciples do after he was carried up?",
+  "choices": [
+   "Fell silent and went to Galilee",
+   "Worshipped him and returned to Jerusalem with great joy",
+   "Waited by the sepulchre",
+   "Spread out to preach"
+  ],
+  "answer": 1,
+  "explanation": "They worshipped him, and returned to Jerusalem with great joy.",
+  "ref": "Luke 24:52"
+ },
+ {
+  "id": "luke-24-h-09",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were the disciples continually, praising and blessing God?",
+  "choices": [
+   "In the temple",
+   "In the upper room",
+   "In Bethany",
+   "In the synagogue"
+  ],
+  "answer": 0,
+  "explanation": "And were continually in the temple, praising and blessing God. Amen.",
+  "ref": "Luke 24:53"
+ },
+ {
+  "id": "luke-24-h-10",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the women react when the two men spoke?",
+  "choices": [
+   "Ran away",
+   "Fell silent",
+   "Ran to find Peter",
+   "Bowed down their faces to the earth"
+  ],
+  "answer": 3,
+  "explanation": "As they were afraid, and bowed down their faces to the earth, they said unto them, Why seek ye the living among the dead?",
+  "ref": "Luke 24:5"
+ },
+ {
+  "id": "luke-24-h-11",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many days since the crucifixion did Cleopas say it was?",
+  "choices": [
+   "The second day",
+   "The fourth day",
+   "The third day",
+   "The seventh day"
+  ],
+  "answer": 2,
+  "explanation": "Beside all this, to day is the third day since these things were done.",
+  "ref": "Luke 24:21"
+ },
+ {
+  "id": "luke-24-h-12",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Cleopas say of those who went to the sepulchre after the women?",
+  "choices": [
+   "They saw angels",
+   "They found it so, but him they saw not",
+   "They found the stone sealed",
+   "They saw Jesus"
+  ],
+  "answer": 1,
+  "explanation": "Certain of them which were with us went to the sepulchre, and found it even so as the women had said: but him they saw not.",
+  "ref": "Luke 24:24"
+ },
+ {
+  "id": "luke-24-h-13",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do as they drew nigh the village?",
+  "choices": [
+   "Made as though he would have gone further",
+   "Went on alone",
+   "Sat by the road",
+   "Left them"
+  ],
+  "answer": 0,
+  "explanation": "He made as though he would have gone further.",
+  "ref": "Luke 24:28"
+ },
+ {
+  "id": "luke-24-h-14",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened when their eyes were opened and they knew him?",
+  "choices": [
+   "He blessed them",
+   "He ate with them",
+   "He walked on to Jerusalem",
+   "He vanished out of their sight"
+  ],
+  "answer": 3,
+  "explanation": "Their eyes were opened, and they knew him; and he vanished out of their sight.",
+  "ref": "Luke 24:31"
+ },
+ {
+  "id": "luke-24-h-15",
+  "chapter": 24,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the disciples still not believe, even while wondering?",
+  "choices": [
+   "For fear",
+   "For doubt of the women",
+   "For joy",
+   "For sorrow"
+  ],
+  "answer": 2,
+  "explanation": "While they yet believed not for joy, and wondered, he said unto them, Have ye here any meat?",
+  "ref": "Luke 24:41"
  }
 ]
