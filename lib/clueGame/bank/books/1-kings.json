@@ -12336,6 +12336,646 @@
   "ref": "1 Kings 18:44"
  },
  {
+  "id": "1-kings-18-e-01",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say he would send after Elijah showed himself to Ahab?",
+  "choices": [
+   "Fire from heaven",
+   "Rain upon the earth",
+   "A great army",
+   "A new king"
+  ],
+  "answer": 1,
+  "explanation": "Go, shew thyself unto Ahab; and I will send rain upon the earth.",
+  "ref": "1 Kings 18:1"
+ },
+ {
+  "id": "1-kings-18-e-02",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which city was there a sore famine?",
+  "choices": [
+   "Samaria",
+   "Jericho",
+   "Tirzah",
+   "Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "Elijah went to shew himself unto Ahab. And there was a sore famine in Samaria.",
+  "ref": "1 Kings 18:2"
+ },
+ {
+  "id": "1-kings-18-e-03",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ahab ask Elijah when he saw him?",
+  "choices": [
+   "Hast thou brought rain?",
+   "Where hast thou been hid?",
+   "Wilt thou serve Baal?",
+   "Art thou he that troubleth Israel?"
+  ],
+  "answer": 3,
+  "explanation": "When Ahab saw Elijah, Ahab said unto him, Art thou he that troubleth Israel?",
+  "ref": "1 Kings 18:17"
+ },
+ {
+  "id": "1-kings-18-e-04",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which mountain did Elijah gather Israel and the prophets of Baal?",
+  "choices": [
+   "Mount Horeb",
+   "Mount Gilboa",
+   "Mount Carmel",
+   "Mount Hermon"
+  ],
+  "answer": 2,
+  "explanation": "Gather to me all Israel unto mount Carmel.",
+  "ref": "1 Kings 18:19"
+ },
+ {
+  "id": "1-kings-18-e-05",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many prophets of the groves ate at Jezebel's table?",
+  "choices": [
+   "Four hundred and fifty",
+   "Four hundred",
+   "Seven thousand",
+   "Two hundred and thirty"
+  ],
+  "answer": 1,
+  "explanation": "The prophets of the groves four hundred, which eat at Jezebel's table.",
+  "ref": "1 Kings 18:19"
+ },
+ {
+  "id": "1-kings-18-e-06",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many stones did Elijah take to build the altar?",
+  "choices": [
+   "Twelve",
+   "Seven",
+   "Three",
+   "Forty"
+  ],
+  "answer": 0,
+  "explanation": "Elijah took twelve stones, according to the number of the tribes of the sons of Jacob.",
+  "ref": "1 Kings 18:31"
+ },
+ {
+  "id": "1-kings-18-e-07",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What fell when Elijah prayed at the time of the evening sacrifice?",
+  "choices": [
+   "A great rain",
+   "A thunderbolt of hail",
+   "A cloud of smoke",
+   "The fire of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Then the fire of the LORD fell, and consumed the burnt sacrifice, and the wood, and the stones, and the dust.",
+  "ref": "1 Kings 18:38"
+ },
+ {
+  "id": "1-kings-18-e-08",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say when they saw the fire fall?",
+  "choices": [
+   "Great is Baal",
+   "Long live the king",
+   "The LORD, he is the God",
+   "Let us build a house for the LORD"
+  ],
+  "answer": 2,
+  "explanation": "They fell on their faces: and they said, The LORD, he is the God; the LORD, he is the God.",
+  "ref": "1 Kings 18:39"
+ },
+ {
+  "id": "1-kings-18-e-09",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Elijah bring the prophets of Baal to slay them?",
+  "choices": [
+   "The brook Cherith",
+   "The brook Kishon",
+   "The river Jordan",
+   "The valley of Jezreel"
+  ],
+  "answer": 1,
+  "explanation": "Elijah brought them down to the brook Kishon, and slew them there.",
+  "ref": "1 Kings 18:40"
+ },
+ {
+  "id": "1-kings-18-e-10",
+  "chapter": 18,
+  "level": "beginner",
+  "category": "person",
+  "question": "Before whom did Elijah run to the entrance of Jezreel?",
+  "choices": [
+   "Ahab",
+   "Obadiah",
+   "Jezebel",
+   "His servant"
+  ],
+  "answer": 0,
+  "explanation": "He girded up his loins, and ran before Ahab to the entrance of Jezreel.",
+  "ref": "1 Kings 18:46"
+ },
+ {
+  "id": "1-kings-18-m-01",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year did the word of the LORD come telling Elijah to show himself to Ahab?",
+  "choices": [
+   "The first year",
+   "The seventh year",
+   "The twelfth year",
+   "The third year"
+  ],
+  "answer": 3,
+  "explanation": "The word of the LORD came to Elijah in the third year, saying, Go, shew thyself unto Ahab.",
+  "ref": "1 Kings 18:1"
+ },
+ {
+  "id": "1-kings-18-m-02",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ahab send Obadiah to look for in the land?",
+  "choices": [
+   "Water for the people",
+   "Elijah the prophet",
+   "Grass to save the horses and mules",
+   "Grain for the army"
+  ],
+  "answer": 2,
+  "explanation": "Peradventure we may find grass to save the horses and mules alive.",
+  "ref": "1 Kings 18:5"
+ },
+ {
+  "id": "1-kings-18-m-03",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Ahab and Obadiah search the land?",
+  "choices": [
+   "They went together with chariots",
+   "They divided it, each going a different way alone",
+   "They sent servants in every direction",
+   "They sent a company to Carmel"
+  ],
+  "answer": 1,
+  "explanation": "They divided the land between them: Ahab went one way by himself, and Obadiah went another way by himself.",
+  "ref": "1 Kings 18:6"
+ },
+ {
+  "id": "1-kings-18-m-04",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Obadiah do when he met Elijah on the way?",
+  "choices": [
+   "Fell on his face and asked, Art thou that my lord Elijah?",
+   "Ran to tell Ahab",
+   "Hid in a cave",
+   "Offered him bread and water"
+  ],
+  "answer": 0,
+  "explanation": "Obadiah knew him, and fell on his face, and said, Art thou that my lord Elijah?",
+  "ref": "1 Kings 18:7"
+ },
+ {
+  "id": "1-kings-18-m-05",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Obadiah afraid to tell Ahab that Elijah was there?",
+  "choices": [
+   "Ahab had sworn to kill Obadiah",
+   "Elijah had cursed his house",
+   "Jezebel had spies on him",
+   "The Spirit might carry Elijah away and Ahab would slay him"
+  ],
+  "answer": 3,
+  "explanation": "As soon as I am gone from thee, the Spirit of the LORD shall carry thee whither I know not; and when Ahab cannot find thee, he shall slay me.",
+  "ref": "1 Kings 18:12"
+ },
+ {
+  "id": "1-kings-18-m-06",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had cut off the prophets of the LORD?",
+  "choices": [
+   "Ahab",
+   "Obadiah",
+   "Jezebel",
+   "Omri"
+  ],
+  "answer": 2,
+  "explanation": "When Jezebel cut off the prophets of the LORD, Obadiah took an hundred prophets, and hid them.",
+  "ref": "1 Kings 18:4"
+ },
+ {
+  "id": "1-kings-18-m-07",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Elijah say had troubled Israel?",
+  "choices": [
+   "Jezebel alone",
+   "Ahab and his father's house",
+   "The prophets of Baal",
+   "The people of Samaria"
+  ],
+  "answer": 1,
+  "explanation": "I have not troubled Israel; but thou, and thy father's house, in that ye have forsaken the commandments of the LORD.",
+  "ref": "1 Kings 18:18"
+ },
+ {
+  "id": "1-kings-18-m-08",
+  "chapter": 18,
+  "level": "medium",
+  "category": "person",
+  "question": "At whose table did the prophets of the groves eat?",
+  "choices": [
+   "Jezebel's",
+   "Ahab's",
+   "Obadiah's",
+   "Omri's"
+  ],
+  "answer": 0,
+  "explanation": "The prophets of the groves four hundred, which eat at Jezebel's table.",
+  "ref": "1 Kings 18:19"
+ },
+ {
+  "id": "1-kings-18-m-09",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah ask the people on Carmel?",
+  "choices": [
+   "Why have you forsaken your fathers?",
+   "Who will stand for the LORD?",
+   "Where is the ark of God?",
+   "How long halt ye between two opinions?"
+  ],
+  "answer": 3,
+  "explanation": "How long halt ye between two opinions? if the LORD be God, follow him: but if Baal, then follow him.",
+  "ref": "1 Kings 18:21"
+ },
+ {
+  "id": "1-kings-18-m-10",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah say must not be put under the bullocks?",
+  "choices": [
+   "Oil",
+   "Water",
+   "Fire",
+   "Salt"
+  ],
+  "answer": 2,
+  "explanation": "Lay it on wood, and put no fire under.",
+  "ref": "1 Kings 18:23"
+ },
+ {
+  "id": "1-kings-18-m-11",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long did the prophets of Baal call on Baal on the first day?",
+  "choices": [
+   "From noon until night",
+   "From morning until noon",
+   "All night until morning",
+   "For three days"
+  ],
+  "answer": 1,
+  "explanation": "They called on the name of Baal from morning even until noon, saying, O Baal, hear us.",
+  "ref": "1 Kings 18:26"
+ },
+ {
+  "id": "1-kings-18-m-12",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah say Baal might be doing when he mocked them?",
+  "choices": [
+   "Talking, pursuing, on a journey, or sleeping",
+   "Mourning, fasting, praying, or hiding",
+   "Fighting, feasting, building, or resting",
+   "Reigning, judging, hunting, or dreaming"
+  ],
+  "answer": 0,
+  "explanation": "Cry aloud: for he is a god; either he is talking, or he is pursuing, or he is in a journey, or peradventure he sleepeth.",
+  "ref": "1 Kings 18:27"
+ },
+ {
+  "id": "1-kings-18-m-13",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the prophets of Baal cut themselves?",
+  "choices": [
+   "With swords",
+   "With stones",
+   "With thorns",
+   "With knives and lancets"
+  ],
+  "answer": 3,
+  "explanation": "They cried aloud, and cut themselves after their manner with knives and lancets, till the blood gushed out upon them.",
+  "ref": "1 Kings 18:28"
+ },
+ {
+  "id": "1-kings-18-m-14",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah repair before the sacrifice?",
+  "choices": [
+   "The house of Baal",
+   "The wall of Jezreel",
+   "The altar of the LORD that was broken down",
+   "The ark of the covenant"
+  ],
+  "answer": 2,
+  "explanation": "He repaired the altar of the LORD that was broken down.",
+  "ref": "1 Kings 18:30"
+ },
+ {
+  "id": "1-kings-18-m-15",
+  "chapter": 18,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah tell them to fill and pour on the sacrifice?",
+  "choices": [
+   "Twelve jars of oil",
+   "Four barrels with water",
+   "Seven pots of wine",
+   "Two measures of seed"
+  ],
+  "answer": 1,
+  "explanation": "Fill four barrels with water, and pour it on the burnt sacrifice, and on the wood.",
+  "ref": "1 Kings 18:33"
+ },
+ {
+  "id": "1-kings-18-h-01",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How great a trench did Elijah make around the altar?",
+  "choices": [
+   "As great as would contain two measures of seed",
+   "Twelve cubits wide",
+   "Seven spans deep",
+   "Four barrels wide"
+  ],
+  "answer": 0,
+  "explanation": "He made a trench about the altar, as great as would contain two measures of seed.",
+  "ref": "1 Kings 18:32"
+ },
+ {
+  "id": "1-kings-18-h-02",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the fire of the LORD lick up besides the sacrifice, wood and stones?",
+  "choices": [
+   "The oil in the cruse",
+   "The ashes of the altar",
+   "The garments of the people",
+   "The water in the trench"
+  ],
+  "answer": 3,
+  "explanation": "The fire of the LORD fell, and consumed the burnt sacrifice, and the wood, and the stones, and the dust, and licked up the water that was in the trench.",
+  "ref": "1 Kings 18:38"
+ },
+ {
+  "id": "1-kings-18-h-03",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the prophets of Baal do on the altar they made?",
+  "choices": [
+   "Slept beside it",
+   "Burned incense on it",
+   "Leaped upon it",
+   "Covered it with gold"
+  ],
+  "answer": 2,
+  "explanation": "They leaped upon the altar which was made.",
+  "ref": "1 Kings 18:26"
+ },
+ {
+  "id": "1-kings-18-h-04",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the people answer Elijah when he asked how long they halted between two opinions?",
+  "choices": [
+   "They said, Follow the LORD",
+   "They answered him not a word",
+   "They said, We follow Baal",
+   "They fell on their faces"
+  ],
+  "answer": 1,
+  "explanation": "And the people answered him not a word.",
+  "ref": "1 Kings 18:21"
+ },
+ {
+  "id": "1-kings-18-h-05",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Elijah address the LORD in his prayer at the evening sacrifice?",
+  "choices": [
+   "LORD God of Abraham, Isaac, and of Israel",
+   "LORD God of David and Solomon",
+   "LORD God of Moses and Aaron",
+   "LORD God of heaven and earth"
+  ],
+  "answer": 0,
+  "explanation": "LORD God of Abraham, Isaac, and of Israel, let it be known this day that thou art God in Israel.",
+  "ref": "1 Kings 18:36"
+ },
+ {
+  "id": "1-kings-18-h-06",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elijah do on the top of Carmel before sending his servant?",
+  "choices": [
+   "Built a new altar",
+   "Fasted three days",
+   "Offered a second bullock",
+   "Cast himself down and put his face between his knees"
+  ],
+  "answer": 3,
+  "explanation": "Elijah went up to the top of Carmel; and he cast himself down upon the earth, and put his face between his knees.",
+  "ref": "1 Kings 18:42"
+ },
+ {
+  "id": "1-kings-18-h-07",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times did Elijah's servant go to look toward the sea?",
+  "choices": [
+   "Three times",
+   "Twelve times",
+   "Seven times",
+   "Twice"
+  ],
+  "answer": 2,
+  "explanation": "Go again seven times. And it came to pass at the seventh time, that he said, Behold, there ariseth a little cloud.",
+  "ref": "1 Kings 18:43–44"
+ },
+ {
+  "id": "1-kings-18-h-08",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elijah tell Ahab to do before the rain stopped him?",
+  "choices": [
+   "Return to Samaria on foot",
+   "Prepare his chariot and get down",
+   "Go up to Carmel",
+   "Flee to Jezreel by night"
+  ],
+  "answer": 1,
+  "explanation": "Go up, say unto Ahab, Prepare thy chariot, and get thee down, that the rain stop thee not.",
+  "ref": "1 Kings 18:44"
+ },
+ {
+  "id": "1-kings-18-h-09",
+  "chapter": 18,
+  "level": "hard",
+  "category": "place",
+  "question": "To which city did Ahab ride in the rain?",
+  "choices": [
+   "Jezreel",
+   "Samaria",
+   "Tirzah",
+   "Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "There was a great rain. And Ahab rode, and went to Jezreel.",
+  "ref": "1 Kings 18:45"
+ },
+ {
+  "id": "1-kings-18-h-10",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elijah tell Ahab to do because of the sound of rain?",
+  "choices": [
+   "Fast and pray",
+   "Go to Samaria",
+   "Build an altar",
+   "Get up, eat and drink"
+  ],
+  "answer": 3,
+  "explanation": "Get thee up, eat and drink; for there is a sound of abundance of rain.",
+  "ref": "1 Kings 18:41"
+ },
+ {
+  "id": "1-kings-18-h-11",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Since when did Obadiah say he had feared the LORD?",
+  "choices": [
+   "Since Jezebel's coming",
+   "Since the famine began",
+   "From his youth",
+   "Since Elijah first came"
+  ],
+  "answer": 2,
+  "explanation": "I thy servant fear the LORD from my youth.",
+  "ref": "1 Kings 18:12"
+ },
+ {
+  "id": "1-kings-18-h-12",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ahab do to a kingdom or nation that said Elijah was not there?",
+  "choices": [
+   "Burned their cities",
+   "Took an oath of them that they had not found him",
+   "Took their sons as hostages",
+   "Fined them silver"
+  ],
+  "answer": 1,
+  "explanation": "There is no nation or kingdom, whither my lord hath not sent to seek thee: and when they said, He is not there; he took an oath of the kingdom and nation.",
+  "ref": "1 Kings 18:10"
+ },
+ {
+  "id": "1-kings-18-h-13",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Elijah tell the prophets of Baal to dress their bullock first?",
+  "choices": [
+   "Because they were many",
+   "Because they were older",
+   "Because Ahab commanded it",
+   "Because Baal was greater"
+  ],
+  "answer": 0,
+  "explanation": "Choose you one bullock for yourselves, and dress it first; for ye are many.",
+  "ref": "1 Kings 18:25"
+ },
+ {
+  "id": "1-kings-18-h-14",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elijah ask the LORD to show the people by his prayer?",
+  "choices": [
+   "That Baal was dead",
+   "That rain would come",
+   "That Ahab would repent",
+   "That he had turned their heart back again"
+  ],
+  "answer": 3,
+  "explanation": "Hear me, O LORD, that this people may know that thou art the LORD God, and that thou hast turned their heart back again.",
+  "ref": "1 Kings 18:37"
+ },
+ {
+  "id": "1-kings-18-h-15",
+  "chapter": 18,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did all the people say about Elijah's plan for the two bullocks?",
+  "choices": [
+   "It is well spoken",
+   "It is too hard",
+   "Let Baal choose first",
+   "We will not consent"
+  ],
+  "answer": 0,
+  "explanation": "Elijah said the God that answereth by fire, let him be God. And all the people answered and said, It is well spoken.",
+  "ref": "1 Kings 18:24"
+ },
+ {
   "id": "old-1-kings-19-1",
   "chapter": 19,
   "level": "beginner",
