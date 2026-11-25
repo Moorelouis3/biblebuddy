@@ -4416,6 +4416,646 @@
   "ref": "1 Kings 7:51"
  },
  {
+  "id": "1-kings-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What wood covered the house of the forest of Lebanon?",
+  "choices": [
+   "Cedar",
+   "Olive wood",
+   "Cypress",
+   "Almug"
+  ],
+  "answer": 0,
+  "explanation": "The house was covered with cedar above upon the beams, and stood on four rows of cedar pillars.",
+  "ref": "1 Kings 7:2–3"
+ },
+ {
+  "id": "1-kings-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose daughter did Solomon make a house for, whom he had taken to wife?",
+  "choices": [
+   "Hiram's daughter",
+   "Pharaoh's daughter",
+   "David's daughter",
+   "The queen of Sheba"
+  ],
+  "answer": 1,
+  "explanation": "Solomon made also an house for Pharaoh's daughter, whom he had taken to wife.",
+  "ref": "1 Kings 7:8"
+ },
+ {
+  "id": "1-kings-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What metal did Hiram of Tyre work in?",
+  "choices": [
+   "Iron",
+   "Silver",
+   "Brass",
+   "Lead"
+  ],
+  "answer": 2,
+  "explanation": "Hiram was a worker in brass, filled with wisdom, understanding and cunning to work all works in brass.",
+  "ref": "1 Kings 7:14"
+ },
+ {
+  "id": "1-kings-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many pillars of brass did Hiram cast?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "For he cast two pillars of brass.",
+  "ref": "1 Kings 7:15"
+ },
+ {
+  "id": "1-kings-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many bases of brass did Hiram make for the lavers?",
+  "choices": [
+   "Twelve",
+   "Seven",
+   "Ten",
+   "Five"
+  ],
+  "answer": 2,
+  "explanation": "And he made ten bases of brass.",
+  "ref": "1 Kings 7:27"
+ },
+ {
+  "id": "1-kings-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What stood upon each of the ten bases?",
+  "choices": [
+   "A laver",
+   "A candlestick",
+   "An altar",
+   "A pillar"
+  ],
+  "answer": 0,
+  "explanation": "Then made he ten lavers of brass, and upon every one of the ten bases one laver.",
+  "ref": "1 Kings 7:38"
+ },
+ {
+  "id": "1-kings-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the king cast the vessels of brass?",
+  "choices": [
+   "In Tyre",
+   "In the plain of Jordan",
+   "On Mount Moriah",
+   "In the house of the forest"
+  ],
+  "answer": 1,
+  "explanation": "In the plain of Jordan did the king cast them, in the clay ground between Succoth and Zarthan.",
+  "ref": "1 Kings 7:46"
+ },
+ {
+  "id": "1-kings-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Solomon leave all the vessels unweighed?",
+  "choices": [
+   "Hiram forbade it",
+   "They were stolen",
+   "They were exceeding many",
+   "The Lord forbade it"
+  ],
+  "answer": 2,
+  "explanation": "Solomon left all the vessels unweighed, because they were exceeding many.",
+  "ref": "1 Kings 7:47"
+ },
+ {
+  "id": "1-kings-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the table whereupon the shewbread was made of?",
+  "choices": [
+   "Brass",
+   "Silver",
+   "Cedar",
+   "Gold"
+  ],
+  "answer": 3,
+  "explanation": "Solomon made the altar of gold, and the table of gold, whereupon the shewbread was.",
+  "ref": "1 Kings 7:48"
+ },
+ {
+  "id": "1-kings-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king sent and fetched Hiram out of Tyre?",
+  "choices": [
+   "Solomon",
+   "David",
+   "Hiram king of Tyre",
+   "Pharaoh"
+  ],
+  "answer": 0,
+  "explanation": "And king Solomon sent and fetched Hiram out of Tyre.",
+  "ref": "1 Kings 7:13"
+ },
+ {
+  "id": "1-kings-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Hiram's mother was a widow of which tribe?",
+  "choices": [
+   "Judah",
+   "Naphtali",
+   "Dan",
+   "Asher"
+  ],
+  "answer": 1,
+  "explanation": "He was a widow's son of the tribe of Naphtali.",
+  "ref": "1 Kings 7:14"
+ },
+ {
+  "id": "1-kings-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city was Hiram's father from?",
+  "choices": [
+   "Tyre",
+   "Sidon",
+   "Gebal",
+   "Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "His father was a man of Tyre, a worker in brass.",
+  "ref": "1 Kings 7:14"
+ },
+ {
+  "id": "1-kings-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the left pillar in the porch called?",
+  "choices": [
+   "Jachin",
+   "Hiram",
+   "Boaz",
+   "Zadok"
+  ],
+  "answer": 2,
+  "explanation": "He set up the left pillar, and he called the name thereof Boaz.",
+  "ref": "1 Kings 7:21"
+ },
+ {
+  "id": "1-kings-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What fruit decorated the nets on the tops of the pillars?",
+  "choices": [
+   "Grapes",
+   "Pomegranates",
+   "Figs",
+   "Olives"
+  ],
+  "answer": 1,
+  "explanation": "He made the pillars, and two rows round about upon the one network, with pomegranates.",
+  "ref": "1 Kings 7:18"
+ },
+ {
+  "id": "1-kings-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of work was upon the top of the pillars?",
+  "choices": [
+   "Lily work",
+   "Palm work",
+   "Lion work",
+   "Cherub work"
+  ],
+  "answer": 0,
+  "explanation": "And upon the top of the pillars was lily work: so was the work of the pillars finished.",
+  "ref": "1 Kings 7:22"
+ },
+ {
+  "id": "1-kings-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the brim of the molten sea made like?",
+  "choices": [
+   "A crown, with pomegranates",
+   "The brim of a cup, with flowers of lilies",
+   "A wall, with cherubims",
+   "A bowl, with palm trees"
+  ],
+  "answer": 1,
+  "explanation": "The brim thereof was wrought like the brim of a cup, with flowers of lilies.",
+  "ref": "1 Kings 7:26"
+ },
+ {
+  "id": "1-kings-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many of the twelve oxen looked toward each direction?",
+  "choices": [
+   "Two",
+   "Four",
+   "Three",
+   "Six"
+  ],
+  "answer": 2,
+  "explanation": "It stood upon twelve oxen, three looking toward the north, three toward the west, three toward the south, and three toward the east.",
+  "ref": "1 Kings 7:25"
+ },
+ {
+  "id": "1-kings-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which figures were on the borders between the ledges of the bases?",
+  "choices": [
+   "Lions, oxen, and cherubims",
+   "Lions, eagles, and cherubims",
+   "Oxen, lilies, and palm trees",
+   "Lions, oxen, and pomegranates"
+  ],
+  "answer": 0,
+  "explanation": "On the borders between the ledges were lions, oxen, and cherubims.",
+  "ref": "1 Kings 7:29"
+ },
+ {
+  "id": "1-kings-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did every base have four of, made like chariot wheels?",
+  "choices": [
+   "Lions",
+   "Handles",
+   "Pillars",
+   "Brasen wheels"
+  ],
+  "answer": 3,
+  "explanation": "And every base had four brasen wheels, and plates of brass. The work of the wheels was like the work of a chariot wheel.",
+  "ref": "1 Kings 7:30–33"
+ },
+ {
+  "id": "1-kings-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Solomon set the molten sea?",
+  "choices": [
+   "On the right side of the house",
+   "On the left side of the house",
+   "In the most holy place",
+   "In the porch of judgment"
+  ],
+  "answer": 0,
+  "explanation": "He set the sea on the right side of the house eastward over against the south.",
+  "ref": "1 Kings 7:39"
+ },
+ {
+  "id": "1-kings-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "The brass was cast in the clay ground between Succoth and which place?",
+  "choices": [
+   "Zoar",
+   "Zaphon",
+   "Zarthan",
+   "Zarephath"
+  ],
+  "answer": 2,
+  "explanation": "In the plain of Jordan did the king cast them, in the clay ground between Succoth and Zarthan.",
+  "ref": "1 Kings 7:46"
+ },
+ {
+  "id": "1-kings-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon do at the porch he made for the throne?",
+  "choices": [
+   "Judge",
+   "Feast",
+   "Teach",
+   "Offer sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "Then he made a porch for the throne where he might judge, even the porch of judgment.",
+  "ref": "1 Kings 7:7"
+ },
+ {
+  "id": "1-kings-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The great court had three rows of hewed stones and a row of what?",
+  "choices": [
+   "Gold plates",
+   "Cedar beams",
+   "Brass pillars",
+   "Olive wood"
+  ],
+  "answer": 1,
+  "explanation": "The great court round about was with three rows of hewed stones, and a row of cedar beams.",
+  "ref": "1 Kings 7:12"
+ },
+ {
+  "id": "1-kings-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the vessels Hiram made for the house of the Lord made of?",
+  "choices": [
+   "Pure silver",
+   "Hammered iron",
+   "Bright brass",
+   "Polished stone"
+  ],
+  "answer": 2,
+  "explanation": "All these vessels, which Hiram made to king Solomon for the house of the Lord, were of bright brass.",
+  "ref": "1 Kings 7:45"
+ },
+ {
+  "id": "1-kings-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the hinges for the doors of the most holy place made of?",
+  "choices": [
+   "Gold",
+   "Brass",
+   "Silver",
+   "Cedar"
+  ],
+  "answer": 0,
+  "explanation": "And the hinges of gold, both for the doors of the inner house, the most holy place.",
+  "ref": "1 Kings 7:50"
+ },
+ {
+  "id": "1-kings-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits long was the house of the forest of Lebanon?",
+  "choices": [
+   "Fifty",
+   "Thirty",
+   "A hundred",
+   "Sixty"
+  ],
+  "answer": 2,
+  "explanation": "The length thereof was an hundred cubits, and the breadth thereof fifty cubits, and the height thereof thirty cubits.",
+  "ref": "1 Kings 7:2"
+ },
+ {
+  "id": "1-kings-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many pillars held up the cedar covering, fifteen in a row?",
+  "choices": [
+   "Thirty",
+   "Forty five",
+   "Sixty",
+   "Fifteen"
+  ],
+  "answer": 1,
+  "explanation": "It was covered with cedar above upon the beams, that lay on forty five pillars, fifteen in a row.",
+  "ref": "1 Kings 7:3"
+ },
+ {
+  "id": "1-kings-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The windows of the forest house were set in how many rows?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Five"
+  ],
+  "answer": 1,
+  "explanation": "And there were windows in three rows, and light was against light in three ranks.",
+  "ref": "1 Kings 7:4"
+ },
+ {
+  "id": "1-kings-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits long was the porch of pillars?",
+  "choices": [
+   "Thirty",
+   "A hundred",
+   "Fifty",
+   "Twenty"
+  ],
+  "answer": 2,
+  "explanation": "He made a porch of pillars; the length thereof was fifty cubits, and the breadth thereof thirty cubits.",
+  "ref": "1 Kings 7:6"
+ },
+ {
+  "id": "1-kings-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The foundation stones were of eight cubits and how many other cubits?",
+  "choices": [
+   "Twelve",
+   "Six",
+   "Fifteen",
+   "Ten"
+  ],
+  "answer": 3,
+  "explanation": "The foundation was of costly stones, even great stones, stones of ten cubits, and stones of eight cubits.",
+  "ref": "1 Kings 7:10"
+ },
+ {
+  "id": "1-kings-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits high was each of the two pillars of brass?",
+  "choices": [
+   "Twelve",
+   "Eighteen",
+   "Twenty-three",
+   "Thirty-five"
+  ],
+  "answer": 1,
+  "explanation": "He cast two pillars of brass, of eighteen cubits high apiece.",
+  "ref": "1 Kings 7:15"
+ },
+ {
+  "id": "1-kings-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits high was each chapiter of molten brass?",
+  "choices": [
+   "Three",
+   "Four",
+   "Five",
+   "Ten"
+  ],
+  "answer": 2,
+  "explanation": "The height of the one chapiter was five cubits, and the height of the other chapiter was five cubits.",
+  "ref": "1 Kings 7:16"
+ },
+ {
+  "id": "1-kings-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many nets of checker work and wreaths of chain work were for each chapiter?",
+  "choices": [
+   "Five",
+   "Seven",
+   "Ten",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Nets of checker work, and wreaths of chain work, for the chapiters; seven for the one chapiter, and seven for the other.",
+  "ref": "1 Kings 7:17"
+ },
+ {
+  "id": "1-kings-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits was the molten sea from one brim to the other?",
+  "choices": [
+   "Five",
+   "Twelve",
+   "Ten",
+   "Thirty"
+  ],
+  "answer": 2,
+  "explanation": "He made a molten sea, ten cubits from the one brim to the other.",
+  "ref": "1 Kings 7:23"
+ },
+ {
+  "id": "1-kings-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many baths did the molten sea contain?",
+  "choices": [
+   "One thousand",
+   "Two thousand",
+   "Forty",
+   "Three thousand"
+  ],
+  "answer": 1,
+  "explanation": "It contained two thousand baths.",
+  "ref": "1 Kings 7:26"
+ },
+ {
+  "id": "1-kings-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many baths did each laver contain?",
+  "choices": [
+   "Twenty",
+   "Forty",
+   "Ten",
+   "Two thousand"
+  ],
+  "answer": 1,
+  "explanation": "One laver contained forty baths: and every laver was four cubits.",
+  "ref": "1 Kings 7:38"
+ },
+ {
+  "id": "1-kings-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cubits high was each of the ten bases?",
+  "choices": [
+   "Two",
+   "Three",
+   "Four",
+   "Five"
+  ],
+  "answer": 1,
+  "explanation": "Four cubits was the length of one base, and four cubits the breadth, and three cubits the height of it.",
+  "ref": "1 Kings 7:27"
+ },
+ {
+  "id": "1-kings-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many knops to a cubit went round the molten sea under its brim?",
+  "choices": [
+   "Five",
+   "Twelve",
+   "Ten",
+   "Twenty"
+  ],
+  "answer": 2,
+  "explanation": "Under the brim of it round about there were knops compassing it, ten in a cubit.",
+  "ref": "1 Kings 7:24"
+ },
+ {
+  "id": "1-kings-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many bases did Solomon put on the right side of the house?",
+  "choices": [
+   "Three",
+   "Seven",
+   "Ten",
+   "Five"
+  ],
+  "answer": 3,
+  "explanation": "He put five bases on the right side of the house, and five on the left side of the house.",
+  "ref": "1 Kings 7:39"
+ },
+ {
+  "id": "1-kings-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How high was each wheel of the bases?",
+  "choices": [
+   "A cubit",
+   "A cubit and a half",
+   "Two cubits",
+   "Half a cubit"
+  ],
+  "answer": 1,
+  "explanation": "The height of a wheel was a cubit and a half a cubit.",
+  "ref": "1 Kings 7:32"
+ },
+ {
   "id": "old-1-kings-8-1",
   "chapter": 8,
   "level": "beginner",
