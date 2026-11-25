@@ -20,6 +20,7 @@ import {
 import LoadFailedNotice from "../LoadFailedNotice";
 import { getLiveCommunityEvent, getUpcomingCommunityEvent, upcomingEventHref } from "../../lib/communityEvents";
 import { cardTint } from "../../lib/cardTints";
+import { imageThumb } from "../../lib/imageThumb";
 
 /**
  * The Library bookshelf - what the Plans tab used to be.
@@ -198,7 +199,7 @@ export default function LibraryPage({ embedded = false, onStudySelect }: Library
       return {
         id: study.id,
         title: study.title,
-        cover: study.cover_image || null,
+        cover: imageThumb(study.cover_image) || null,
         totalDays: study.total_days,
         comingSoon,
         label,
@@ -214,7 +215,7 @@ export default function LibraryPage({ embedded = false, onStudySelect }: Library
       entries.push({
         id: BIBLE_YEAR_SHELF_ID,
         title: BIBLE_YEAR_SHELF_TITLE,
-        cover: BIBLE_YEAR_SHELF_COVER,
+        cover: imageThumb(BIBLE_YEAR_SHELF_COVER),
         totalDays: BIBLE_YEAR_TOTAL_DAYS,
         comingSoon: false,
         label: null,
@@ -333,7 +334,7 @@ export default function LibraryPage({ embedded = false, onStudySelect }: Library
                 {study.cover_image ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={study.cover_image}
+                    src={imageThumb(study.cover_image)}
                     alt=""
                     className="h-24 w-16 shrink-0 rounded-xl object-cover"
                   />
