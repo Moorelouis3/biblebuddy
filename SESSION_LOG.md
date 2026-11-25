@@ -14194,3 +14194,8 @@ Next: next scheduled run picks up the oldest 5 of the remaining 13, including a 
 Article: Who Was Judas? How Close You Can Get and Still Miss It | Words: ~3,017 | Category: Character Studies | Status: pass
 Not live yet: no [deploy] tag on this commit (Louis removed the blog exception 2026-10-10) - goes live at the next scheduled deploy, `npm run pending`.
 Queue remaining: 35
+
+## 2026-11-25T22:12:12Z (blog writer run)
+Article: Who Created God? | Words: ~3,068 | Category: Bible Insights | Status: pass
+Not live yet: no [deploy] tag on this commit (Louis removed the blog exception 2026-10-10) - goes live at the next scheduled deploy, `npm run pending`.
+Queue remaining: 34
