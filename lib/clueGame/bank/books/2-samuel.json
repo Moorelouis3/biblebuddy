@@ -13888,6 +13888,646 @@
   "ref": "2 Samuel 20:16–22"
  },
  {
+  "id": "2-samuel-20-e-01",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Sheba say as he blew the trumpet?",
+  "choices": [
+   "Long live the king",
+   "Every man to his tents, O Israel",
+   "Gather to Jerusalem",
+   "Follow Absalom"
+  ],
+  "answer": 1,
+  "explanation": "Sheba said, We have no part in David: every man to his tents, O Israel.",
+  "ref": "2 Samuel 20:1"
+ },
+ {
+  "id": "2-samuel-20-e-02",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who stayed loyal to David from Jordan to Jerusalem?",
+  "choices": [
+   "The men of Benjamin",
+   "The men of Judah",
+   "The men of Ephraim",
+   "The men of Dan"
+  ],
+  "answer": 1,
+  "explanation": "The men of Judah clave unto their king, from Jordan even to Jerusalem.",
+  "ref": "2 Samuel 20:2"
+ },
+ {
+  "id": "2-samuel-20-e-03",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do with the ten concubines he had left to keep the house?",
+  "choices": [
+   "Sent them home",
+   "Put them in ward and fed them",
+   "Gave them to Amasa",
+   "Married them"
+  ],
+  "answer": 1,
+  "explanation": "The king put them in ward, and fed them, but went not in unto them.",
+  "ref": "2 Samuel 20:3"
+ },
+ {
+  "id": "2-samuel-20-e-04",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days did David give Amasa to assemble Judah?",
+  "choices": [
+   "Seven",
+   "Three",
+   "Two",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "David said to Amasa, Assemble me the men of Judah within three days.",
+  "ref": "2 Samuel 20:4"
+ },
+ {
+  "id": "2-samuel-20-e-05",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David send after Sheba with the servants?",
+  "choices": [
+   "Amasa",
+   "Abishai",
+   "Ira",
+   "Adoram"
+  ],
+  "answer": 1,
+  "explanation": "David said to Abishai, Take thou thy lord's servants, and pursue after him.",
+  "ref": "2 Samuel 20:6"
+ },
+ {
+  "id": "2-samuel-20-e-06",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Amasa meet Joab, at the great stone?",
+  "choices": [
+   "Hebron",
+   "Gibeon",
+   "Gilgal",
+   "Bethel"
+  ],
+  "answer": 1,
+  "explanation": "They were at the great stone which is in Gibeon when Amasa went before them.",
+  "ref": "2 Samuel 20:8"
+ },
+ {
+  "id": "2-samuel-20-e-07",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Joab greet Amasa?",
+  "choices": [
+   "Hail, captain",
+   "Art thou in health, my brother?",
+   "Peace to thee, my king",
+   "Where is the king?"
+  ],
+  "answer": 1,
+  "explanation": "Joab said to Amasa, Art thou in health, my brother?",
+  "ref": "2 Samuel 20:9"
+ },
+ {
+  "id": "2-samuel-20-e-08",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who cried out of the city, Hear, hear?",
+  "choices": [
+   "The watchman",
+   "A wise woman",
+   "Sheba",
+   "An elder"
+  ],
+  "answer": 1,
+  "explanation": "Then cried a wise woman out of the city, Hear, hear.",
+  "ref": "2 Samuel 20:16"
+ },
+ {
+  "id": "2-samuel-20-e-09",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the wise woman say would be thrown to Joab over the wall?",
+  "choices": [
+   "Silver and gold",
+   "Sheba's head",
+   "A hostage",
+   "The city keys"
+  ],
+  "answer": 1,
+  "explanation": "The woman said, Behold, his head shall be thrown to thee over the wall.",
+  "ref": "2 Samuel 20:21"
+ },
+ {
+  "id": "2-samuel-20-e-10",
+  "chapter": 20,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joab do when Sheba's head was cast out?",
+  "choices": [
+   "Burned the city",
+   "Blew a trumpet and the people left the city",
+   "Took captives",
+   "Camped at the gate"
+  ],
+  "answer": 1,
+  "explanation": "Joab blew a trumpet, and they retired from the city, every man to his tent.",
+  "ref": "2 Samuel 20:22"
+ },
+ {
+  "id": "2-samuel-20-m-01",
+  "chapter": 20,
+  "level": "medium",
+  "category": "person",
+  "question": "What was Sheba the son of?",
+  "choices": [
+   "Jesse",
+   "Gera",
+   "Ahilud",
+   "Bichri"
+  ],
+  "answer": 3,
+  "explanation": "A man of Belial, whose name was Sheba, the son of Bichri, a Benjamite.",
+  "ref": "2 Samuel 20:1"
+ },
+ {
+  "id": "2-samuel-20-m-02",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which tribe did Sheba belong to?",
+  "choices": [
+   "Judah",
+   "Ephraim",
+   "Reuben",
+   "Benjamin"
+  ],
+  "answer": 3,
+  "explanation": "Sheba the son of Bichri was a Benjamite.",
+  "ref": "2 Samuel 20:1"
+ },
+ {
+  "id": "2-samuel-20-m-03",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say Sheba would do compared with Absalom?",
+  "choices": [
+   "The same as Absalom",
+   "Less than Absalom",
+   "No harm",
+   "More harm than did Absalom"
+  ],
+  "answer": 3,
+  "explanation": "David said, Now shall Sheba the son of Bichri do us more harm than did Absalom.",
+  "ref": "2 Samuel 20:6"
+ },
+ {
+  "id": "2-samuel-20-m-04",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David fear Sheba might escape?",
+  "choices": [
+   "He might reach the Philistines",
+   "He might cross Jordan",
+   "He might raise Gilead",
+   "He might get fenced cities"
+  ],
+  "answer": 3,
+  "explanation": "David feared lest he get him fenced cities, and escape us.",
+  "ref": "2 Samuel 20:6"
+ },
+ {
+  "id": "2-samuel-20-m-05",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which groups, beside Joab's men, went out after Sheba?",
+  "choices": [
+   "The Gittites",
+   "The men of Judah",
+   "The priests",
+   "The Cherethites and the Pelethites"
+  ],
+  "answer": 3,
+  "explanation": "There went out after him Joab's men, and the Cherethites, and the Pelethites, and all the mighty men.",
+  "ref": "2 Samuel 20:7"
+ },
+ {
+  "id": "2-samuel-20-m-06",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What fell out of Joab's girdle as he went forth?",
+  "choices": [
+   "His purse",
+   "His dart",
+   "His trumpet",
+   "His sword"
+  ],
+  "answer": 3,
+  "explanation": "Upon it a girdle with a sword fastened; and as he went forth it fell out.",
+  "ref": "2 Samuel 20:8"
+ },
+ {
+  "id": "2-samuel-20-m-07",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joab take Amasa by to kiss him?",
+  "choices": [
+   "The hand",
+   "The shoulder",
+   "The cloak",
+   "The beard with the right hand"
+  ],
+  "answer": 3,
+  "explanation": "Joab took Amasa by the beard with the right hand to kiss him.",
+  "ref": "2 Samuel 20:9"
+ },
+ {
+  "id": "2-samuel-20-m-08",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Joab smite Amasa?",
+  "choices": [
+   "In the neck",
+   "In the heart",
+   "In the side near the gate",
+   "In the fifth rib"
+  ],
+  "answer": 3,
+  "explanation": "Amasa took no heed to the sword in Joab's hand: so he smote him therewith in the fifth rib.",
+  "ref": "2 Samuel 20:10"
+ },
+ {
+  "id": "2-samuel-20-m-09",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the man by Amasa say to the people?",
+  "choices": [
+   "Stand and mourn Amasa",
+   "Return to Jerusalem",
+   "Choose a new captain",
+   "He that favoureth Joab, let him go after Joab"
+  ],
+  "answer": 3,
+  "explanation": "He that favoureth Joab, and he that is for David, let him go after Joab.",
+  "ref": "2 Samuel 20:11"
+ },
+ {
+  "id": "2-samuel-20-m-10",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the man remove Amasa into the field?",
+  "choices": [
+   "The king commanded it",
+   "To bury him",
+   "Joab ordered it",
+   "Every one who came by stood still"
+  ],
+  "answer": 3,
+  "explanation": "He saw that every one that came by him stood still.",
+  "ref": "2 Samuel 20:12"
+ },
+ {
+  "id": "2-samuel-20-m-11",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the man cast upon Amasa?",
+  "choices": [
+   "A garment of Joab",
+   "Stones",
+   "Branches",
+   "A cloth"
+  ],
+  "answer": 3,
+  "explanation": "He removed Amasa out of the highway into the field, and cast a cloth upon him.",
+  "ref": "2 Samuel 20:12"
+ },
+ {
+  "id": "2-samuel-20-m-12",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "What was the city that Joab besieged called?",
+  "choices": [
+   "Gibeon",
+   "Bethel",
+   "Beer-sheba",
+   "Abel of Beth-maachah"
+  ],
+  "answer": 3,
+  "explanation": "They besieged him in Abel of Beth-maachah.",
+  "ref": "2 Samuel 20:15"
+ },
+ {
+  "id": "2-samuel-20-m-13",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the besiegers cast up against the city?",
+  "choices": [
+   "A tower",
+   "A fire",
+   "A ram",
+   "A bank"
+  ],
+  "answer": 3,
+  "explanation": "They cast up a bank against the city, and it stood in the trench.",
+  "ref": "2 Samuel 20:15"
+ },
+ {
+  "id": "2-samuel-20-m-14",
+  "chapter": 20,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the woman say Joab sought to destroy besides a city?",
+  "choices": [
+   "The king's friends",
+   "A priest",
+   "A prophet",
+   "A mother in Israel"
+  ],
+  "answer": 3,
+  "explanation": "Thou seekest to destroy a city and a mother in Israel.",
+  "ref": "2 Samuel 20:19"
+ },
+ {
+  "id": "2-samuel-20-m-15",
+  "chapter": 20,
+  "level": "medium",
+  "category": "place",
+  "question": "Which mount was Sheba from, according to Joab?",
+  "choices": [
+   "Mount Gilboa",
+   "Mount Carmel",
+   "Mount Hermon",
+   "Mount Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "A man of mount Ephraim, Sheba the son of Bichri by name, hath lifted up his hand against the king.",
+  "ref": "2 Samuel 20:21"
+ },
+ {
+  "id": "2-samuel-20-h-01",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was over the Cherethites and Pelethites?",
+  "choices": [
+   "Benaiah the son of Jehoiada",
+   "Joab",
+   "Adoram",
+   "Ira"
+  ],
+  "answer": 0,
+  "explanation": "Benaiah the son of Jehoiada was over the Cherethites and over the Pelethites.",
+  "ref": "2 Samuel 20:23"
+ },
+ {
+  "id": "2-samuel-20-h-02",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was over the tribute?",
+  "choices": [
+   "Adoram",
+   "Sheva",
+   "Ira",
+   "Benaiah"
+  ],
+  "answer": 0,
+  "explanation": "Adoram was over the tribute.",
+  "ref": "2 Samuel 20:24"
+ },
+ {
+  "id": "2-samuel-20-h-03",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was recorder?",
+  "choices": [
+   "Jehoshaphat the son of Ahilud",
+   "Sheva",
+   "Adoram",
+   "Zadok"
+  ],
+  "answer": 0,
+  "explanation": "Jehoshaphat the son of Ahilud was recorder.",
+  "ref": "2 Samuel 20:24"
+ },
+ {
+  "id": "2-samuel-20-h-04",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was scribe?",
+  "choices": [
+   "Sheva",
+   "Adoram",
+   "Ira",
+   "Abiathar"
+  ],
+  "answer": 0,
+  "explanation": "Sheva was scribe.",
+  "ref": "2 Samuel 20:25"
+ },
+ {
+  "id": "2-samuel-20-h-05",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Ira, listed among David's officers?",
+  "choices": [
+   "A chief ruler about David, the Jairite",
+   "A priest",
+   "A captain of the host",
+   "The recorder"
+  ],
+  "answer": 0,
+  "explanation": "Ira also the Jairite was a chief ruler about David.",
+  "ref": "2 Samuel 20:26"
+ },
+ {
+  "id": "2-samuel-20-h-06",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two were the priests at the end of the chapter?",
+  "choices": [
+   "Zadok and Abiathar",
+   "Zadok and Ira",
+   "Abiathar and Sheva",
+   "Benaiah and Zadok"
+  ],
+  "answer": 0,
+  "explanation": "Zadok and Abiathar were the priests.",
+  "ref": "2 Samuel 20:25"
+ },
+ {
+  "id": "2-samuel-20-h-07",
+  "chapter": 20,
+  "level": "hard",
+  "category": "place",
+  "question": "What did the wise woman say people used to ask counsel at in old time?",
+  "choices": [
+   "Abel",
+   "Gibeon",
+   "Bethel",
+   "Hebron"
+  ],
+  "answer": 0,
+  "explanation": "They shall surely ask counsel at Abel: and so they ended the matter.",
+  "ref": "2 Samuel 20:18"
+ },
+ {
+  "id": "2-samuel-20-h-08",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the woman call herself, as one of the peaceable and faithful?",
+  "choices": [
+   "Thine handmaid",
+   "A widow",
+   "A daughter of Judah",
+   "A servant of the king"
+  ],
+  "answer": 0,
+  "explanation": "Hear the words of thine handmaid. And he answered, I do hear.",
+  "ref": "2 Samuel 20:17"
+ },
+ {
+  "id": "2-samuel-20-h-09",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joab say he would not do to the city?",
+  "choices": [
+   "Swallow up or destroy",
+   "Burn it",
+   "Take its spoil",
+   "Break its gates"
+  ],
+  "answer": 0,
+  "explanation": "Far be it, far be it from me, that I should swallow up or destroy.",
+  "ref": "2 Samuel 20:20"
+ },
+ {
+  "id": "2-samuel-20-h-10",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joab ask the woman to deliver to him?",
+  "choices": [
+   "Sheba only",
+   "The elders",
+   "The gates",
+   "All the arms"
+  ],
+  "answer": 0,
+  "explanation": "Deliver him only, and I will depart from the city.",
+  "ref": "2 Samuel 20:21"
+ },
+ {
+  "id": "2-samuel-20-h-11",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the woman act to save the city?",
+  "choices": [
+   "She went unto all the people in her wisdom",
+   "She paid tribute",
+   "She fled to David",
+   "She prayed on the wall"
+  ],
+  "answer": 0,
+  "explanation": "Then the woman went unto all the people in her wisdom.",
+  "ref": "2 Samuel 20:22"
+ },
+ {
+  "id": "2-samuel-20-h-12",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Who went through all the tribes unto Abel and Beth-maachah?",
+  "choices": [
+   "Sheba",
+   "Joab",
+   "Amasa",
+   "Abishai"
+  ],
+  "answer": 0,
+  "explanation": "Sheba went through all the tribes of Israel unto Abel, and to Beth-maachah, and all the Berites.",
+  "ref": "2 Samuel 20:14"
+ },
+ {
+  "id": "2-samuel-20-h-13",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened when Joab and Abishai went on?",
+  "choices": [
+   "They pursued after Sheba",
+   "They fought Judah",
+   "They buried Amasa",
+   "They returned to David"
+  ],
+  "answer": 0,
+  "explanation": "So Joab and Abishai his brother pursued after Sheba the son of Bichri.",
+  "ref": "2 Samuel 20:10"
+ },
+ {
+  "id": "2-samuel-20-h-14",
+  "chapter": 20,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Amasa do instead of obeying the set time?",
+  "choices": [
+   "Tarried longer than the set time",
+   "Fled to Sheba",
+   "Came early",
+   "Refused David"
+  ],
+  "answer": 0,
+  "explanation": "Amasa tarried longer than the set time which he had appointed him.",
+  "ref": "2 Samuel 20:5"
+ },
+ {
+  "id": "2-samuel-20-h-15",
+  "chapter": 20,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was over all the host of Israel at the end?",
+  "choices": [
+   "Joab",
+   "Amasa",
+   "Abishai",
+   "Benaiah"
+  ],
+  "answer": 0,
+  "explanation": "Joab was over all the host of Israel.",
+  "ref": "2 Samuel 20:23"
+ },
+ {
   "id": "old-2-samuel-21-1",
   "chapter": 21,
   "level": "beginner",
