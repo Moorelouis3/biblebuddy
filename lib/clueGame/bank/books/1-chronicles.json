@@ -15059,17 +15059,673 @@
   "id": "old-1-chronicles-25-5",
   "chapter": 25,
   "level": "beginner",
-  "category": "keyword",
-  "question": "What does this chapter reveal about worship in David's kingdom?",
+  "category": "person",
+  "question": "Which of the three music leaders was called the king's seer in the words of God?",
   "choices": [
-   "Music was unimportant",
-   "Only kings could sing",
-   "Priests never used instruments",
-   "Musical praise was an organized, sacred ministry"
+   "Asaph",
+   "Jeduthun",
+   "Heman",
+   "Zaccur"
+  ],
+  "answer": 2,
+  "explanation": "All these were the sons of Heman the king's seer in the words of God, to lift up the horn.",
+  "ref": "1 Chronicles 25:5"
+ },
+ {
+  "id": "1-chronicles-25-e-01",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sons did Jeduthun have?",
+  "choices": [
+   "Four",
+   "Six",
+   "Fourteen",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Of Jeduthun: the sons of Jeduthun; Gedaliah, and Zeri, and Jeshaiah, Hashabiah, and Mattithiah, six.",
+  "ref": "1 Chronicles 25:3"
+ },
+ {
+  "id": "1-chronicles-25-e-02",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What instrument did Jeduthun prophesy with?",
+  "choices": [
+   "A trumpet",
+   "A flute",
+   "A harp",
+   "A drum"
+  ],
+  "answer": 2,
+  "explanation": "Jeduthun prophesied with a harp, to give thanks and to praise the LORD.",
+  "ref": "1 Chronicles 25:3"
+ },
+ {
+  "id": "1-chronicles-25-e-03",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who had fourteen sons and three daughters?",
+  "choices": [
+   "Asaph",
+   "Jeduthun",
+   "Zaccur",
+   "Heman"
   ],
   "answer": 3,
-  "explanation": "Music was a formal part of worship, not an afterthought.",
+  "explanation": "God gave to Heman fourteen sons and three daughters.",
+  "ref": "1 Chronicles 25:5"
+ },
+ {
+  "id": "1-chronicles-25-e-04",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did the first lot come forth?",
+  "choices": [
+   "Joseph of Asaph",
+   "Gedaliah",
+   "Zaccur",
+   "Izri"
+  ],
+  "answer": 0,
+  "explanation": "The first lot came forth for Asaph to Joseph.",
+  "ref": "1 Chronicles 25:9"
+ },
+ {
+  "id": "1-chronicles-25-e-05",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many in all were the singers with their brethren, instructed in the songs of the LORD?",
+  "choices": [
+   "Twelve",
+   "288",
+   "24",
+   "4,000"
+  ],
+  "answer": 1,
+  "explanation": "The number of them, with their brethren that were instructed in the songs of the LORD, was two hundred fourscore and eight.",
+  "ref": "1 Chronicles 25:7"
+ },
+ {
+  "id": "1-chronicles-25-e-06",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Under whose hands did the sons of Asaph prophesy?",
+  "choices": [
+   "Heman",
+   "Jeduthun",
+   "Asaph",
+   "David"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Asaph were under the hands of Asaph, which prophesied according to the order of the king.",
+  "ref": "1 Chronicles 25:2"
+ },
+ {
+  "id": "1-chronicles-25-e-07",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men were in each of the twenty-four courses?",
+  "choices": [
+   "Six",
+   "Fourteen",
+   "Twenty-four",
+   "Twelve"
+  ],
+  "answer": 3,
+  "explanation": "Each course, he, his sons, and his brethren, were twelve.",
+  "ref": "1 Chronicles 25:9–31"
+ },
+ {
+  "id": "1-chronicles-25-e-08",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who joined David in separating the sons of Asaph, Heman and Jeduthun to the service?",
+  "choices": [
+   "The captains of the host",
+   "The priests",
+   "The porters",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "David and the captains of the host separated to the service of the sons of Asaph, and of Heman, and of Jeduthun.",
   "ref": "1 Chronicles 25:1"
+ },
+ {
+  "id": "1-chronicles-25-e-09",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose sons were Gedaliah, Zeri, Jeshaiah, Hashabiah and Mattithiah?",
+  "choices": [
+   "Asaph's",
+   "Jeduthun's",
+   "Heman's",
+   "David's"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Jeduthun; Gedaliah, and Zeri, and Jeshaiah, Hashabiah, and Mattithiah, six.",
+  "ref": "1 Chronicles 25:3"
+ },
+ {
+  "id": "1-chronicles-25-e-10",
+  "chapter": 25,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the singers receive their places in the courses?",
+  "choices": [
+   "By age",
+   "By tribe",
+   "By casting lots",
+   "By the king's choosing alone"
+  ],
+  "answer": 2,
+  "explanation": "They cast lots, ward against ward, as well the small as the great, the teacher as the scholar.",
+  "ref": "1 Chronicles 25:8"
+ },
+ {
+  "id": "1-chronicles-25-m-01",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many daughters did God give Heman?",
+  "choices": [
+   "Seven",
+   "Fourteen",
+   "Six",
+   "Three"
+  ],
+  "answer": 3,
+  "explanation": "God gave to Heman fourteen sons and three daughters.",
+  "ref": "1 Chronicles 25:5"
+ },
+ {
+  "id": "1-chronicles-25-m-02",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were Heman's sons to lift up?",
+  "choices": [
+   "The horn",
+   "The banner",
+   "The censer",
+   "The harp"
+  ],
+  "answer": 0,
+  "explanation": "All these were the sons of Heman the king's seer in the words of God, to lift up the horn.",
+  "ref": "1 Chronicles 25:5"
+ },
+ {
+  "id": "1-chronicles-25-m-03",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Who cast lots together, ward against ward?",
+  "choices": [
+   "Only the priests",
+   "The small as well as the great",
+   "Only the oldest",
+   "Only the sons of Asaph"
+  ],
+  "answer": 1,
+  "explanation": "They cast lots, ward against ward, as well the small as the great, the teacher as the scholar.",
+  "ref": "1 Chronicles 25:8"
+ },
+ {
+  "id": "1-chronicles-25-m-04",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "According to whose order did the sons of Asaph prophesy?",
+  "choices": [
+   "The priests'",
+   "Zadok's",
+   "The king's",
+   "Moses'"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Asaph prophesied according to the order of the king.",
+  "ref": "1 Chronicles 25:2"
+ },
+ {
+  "id": "1-chronicles-25-m-05",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Asaph?",
+  "choices": [
+   "Gedaliah",
+   "Bukkiah",
+   "Hananiah",
+   "Nethaniah"
+  ],
+  "answer": 3,
+  "explanation": "Of the sons of Asaph; Zaccur, and Joseph, and Nethaniah, and Asarelah.",
+  "ref": "1 Chronicles 25:2"
+ },
+ {
+  "id": "1-chronicles-25-m-06",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Heman?",
+  "choices": [
+   "Hananiah",
+   "Zaccur",
+   "Gedaliah",
+   "Joseph"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Heman; Bukkiah, Mattaniah, Uzziel, Shebuel, and Jerimoth, Hananiah.",
+  "ref": "1 Chronicles 25:4"
+ },
+ {
+  "id": "1-chronicles-25-m-07",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Jeduthun?",
+  "choices": [
+   "Zaccur",
+   "Mattithiah",
+   "Hanani",
+   "Mahazioth"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Jeduthun; Gedaliah, and Zeri, and Jeshaiah, Hashabiah, and Mattithiah.",
+  "ref": "1 Chronicles 25:3"
+ },
+ {
+  "id": "1-chronicles-25-m-08",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many sons of Asaph are named?",
+  "choices": [
+   "Six",
+   "Three",
+   "Four",
+   "Fourteen"
+  ],
+  "answer": 2,
+  "explanation": "Of the sons of Asaph; Zaccur, and Joseph, and Nethaniah, and Asarelah.",
+  "ref": "1 Chronicles 25:2"
+ },
+ {
+  "id": "1-chronicles-25-m-09",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How were the 288 singers described?",
+  "choices": [
+   "Great warriors",
+   "Sons of princes",
+   "Priests of Aaron",
+   "Cunning and instructed in the songs of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Their brethren that were instructed in the songs of the LORD, even all that were cunning.",
+  "ref": "1 Chronicles 25:7"
+ },
+ {
+  "id": "1-chronicles-25-m-10",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Who received the second lot?",
+  "choices": [
+   "Gedaliah",
+   "Zaccur",
+   "Izri",
+   "Nethaniah"
+  ],
+  "answer": 0,
+  "explanation": "The first lot came forth for Asaph to Joseph: the second to Gedaliah.",
+  "ref": "1 Chronicles 25:9"
+ },
+ {
+  "id": "1-chronicles-25-m-11",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Who received the third lot?",
+  "choices": [
+   "Gedaliah",
+   "Zaccur",
+   "Bukkiah",
+   "Shimei"
+  ],
+  "answer": 1,
+  "explanation": "The third to Zaccur.",
+  "ref": "1 Chronicles 25:10"
+ },
+ {
+  "id": "1-chronicles-25-m-12",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Who received the fourth lot?",
+  "choices": [
+   "Nethaniah",
+   "Jesharelah",
+   "Izri",
+   "Shimei"
+  ],
+  "answer": 2,
+  "explanation": "The fourth to Izri.",
+  "ref": "1 Chronicles 25:11"
+ },
+ {
+  "id": "1-chronicles-25-m-13",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Who received the fifth lot?",
+  "choices": [
+   "Izri",
+   "Bukkiah",
+   "Mattaniah",
+   "Nethaniah"
+  ],
+  "answer": 3,
+  "explanation": "The fifth to Nethaniah.",
+  "ref": "1 Chronicles 25:12"
+ },
+ {
+  "id": "1-chronicles-25-m-14",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what were all of Heman's sons under the hands of their father?",
+  "choices": [
+   "Song in the house of the LORD",
+   "Keeping the gates",
+   "Judging the people",
+   "Carrying the ark"
+  ],
+  "answer": 0,
+  "explanation": "All these were under the hands of their father for song in the house of the LORD.",
+  "ref": "1 Chronicles 25:6"
+ },
+ {
+  "id": "1-chronicles-25-m-15",
+  "chapter": 25,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was named first among Jeduthun's six sons?",
+  "choices": [
+   "Zeri",
+   "Gedaliah",
+   "Jeshaiah",
+   "Mattithiah"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Jeduthun; Gedaliah, and Zeri, and Jeshaiah, Hashabiah, and Mattithiah, six.",
+  "ref": "1 Chronicles 25:3"
+ },
+ {
+  "id": "1-chronicles-25-m-16",
+  "chapter": 25,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Asaph's sons, Jeduthun's sons and Heman's sons do with cymbals, psalteries and harps?",
+  "choices": [
+   "Marched to battle",
+   "Offered sacrifices",
+   "Served in song in God's house",
+   "Guarded the treasuries"
+  ],
+  "answer": 2,
+  "explanation": "All these were under the hands of their father for song, with cymbals, psalteries, and harps, for the service of the house of God.",
+  "ref": "1 Chronicles 25:6"
+ },
+ {
+  "id": "1-chronicles-25-h-01",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who received the sixth lot?",
+  "choices": [
+   "Jesharelah",
+   "Mattaniah",
+   "Bukkiah",
+   "Shimei"
+  ],
+  "answer": 2,
+  "explanation": "The sixth to Bukkiah.",
+  "ref": "1 Chronicles 25:13"
+ },
+ {
+  "id": "1-chronicles-25-h-02",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who received the seventh lot?",
+  "choices": [
+   "Jesharelah",
+   "Jeshaiah",
+   "Azareel",
+   "Hashabiah"
+  ],
+  "answer": 0,
+  "explanation": "The seventh to Jesharelah.",
+  "ref": "1 Chronicles 25:14"
+ },
+ {
+  "id": "1-chronicles-25-h-03",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who received the eighth lot?",
+  "choices": [
+   "Mattaniah",
+   "Jeshaiah",
+   "Shimei",
+   "Shubael"
+  ],
+  "answer": 1,
+  "explanation": "The eighth to Jeshaiah.",
+  "ref": "1 Chronicles 25:15"
+ },
+ {
+  "id": "1-chronicles-25-h-04",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who received the ninth lot?",
+  "choices": [
+   "Shimei",
+   "Azareel",
+   "Mattaniah",
+   "Jeremoth"
+  ],
+  "answer": 2,
+  "explanation": "The ninth to Mattaniah.",
+  "ref": "1 Chronicles 25:16"
+ },
+ {
+  "id": "1-chronicles-25-h-05",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who received the tenth lot?",
+  "choices": [
+   "Azareel",
+   "Hashabiah",
+   "Hananiah",
+   "Shimei"
+  ],
+  "answer": 3,
+  "explanation": "The tenth to Shimei.",
+  "ref": "1 Chronicles 25:17"
+ },
+ {
+  "id": "1-chronicles-25-h-06",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who received the eleventh lot?",
+  "choices": [
+   "Azareel",
+   "Shubael",
+   "Hanani",
+   "Mallothi"
+  ],
+  "answer": 0,
+  "explanation": "The eleventh to Azareel.",
+  "ref": "1 Chronicles 25:18"
+ },
+ {
+  "id": "1-chronicles-25-h-07",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who received the twelfth lot?",
+  "choices": [
+   "Shubael",
+   "Hashabiah",
+   "Mattithiah",
+   "Hothir"
+  ],
+  "answer": 1,
+  "explanation": "The twelfth to Hashabiah.",
+  "ref": "1 Chronicles 25:19"
+ },
+ {
+  "id": "1-chronicles-25-h-08",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who received the thirteenth lot?",
+  "choices": [
+   "Hashabiah",
+   "Mattithiah",
+   "Shubael",
+   "Jeremoth"
+  ],
+  "answer": 2,
+  "explanation": "The thirteenth to Shubael.",
+  "ref": "1 Chronicles 25:20"
+ },
+ {
+  "id": "1-chronicles-25-h-09",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who received the fourteenth lot?",
+  "choices": [
+   "Shubael",
+   "Jeremoth",
+   "Hananiah",
+   "Mattithiah"
+  ],
+  "answer": 3,
+  "explanation": "The fourteenth to Mattithiah.",
+  "ref": "1 Chronicles 25:21"
+ },
+ {
+  "id": "1-chronicles-25-h-10",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who received the fifteenth lot?",
+  "choices": [
+   "Jeremoth",
+   "Hananiah",
+   "Hanani",
+   "Eliathah"
+  ],
+  "answer": 0,
+  "explanation": "The fifteenth to Jeremoth.",
+  "ref": "1 Chronicles 25:22"
+ },
+ {
+  "id": "1-chronicles-25-h-11",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which lot came to Hananiah?",
+  "choices": [
+   "The fifteenth",
+   "The sixteenth",
+   "The seventeenth",
+   "The eighteenth"
+  ],
+  "answer": 1,
+  "explanation": "The sixteenth to Hananiah.",
+  "ref": "1 Chronicles 25:23"
+ },
+ {
+  "id": "1-chronicles-25-h-12",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which lot came to Eliathah?",
+  "choices": [
+   "The eighteenth",
+   "The nineteenth",
+   "The twentieth",
+   "The twenty-first"
+  ],
+  "answer": 2,
+  "explanation": "The twentieth to Eliathah.",
+  "ref": "1 Chronicles 25:27"
+ },
+ {
+  "id": "1-chronicles-25-h-13",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which lot came to Hothir?",
+  "choices": [
+   "The twentieth",
+   "The nineteenth",
+   "The twenty-second",
+   "The twenty-first"
+  ],
+  "answer": 3,
+  "explanation": "The one and twentieth to Hothir.",
+  "ref": "1 Chronicles 25:28"
+ },
+ {
+  "id": "1-chronicles-25-h-14",
+  "chapter": 25,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which lot came to Giddalti?",
+  "choices": [
+   "The twenty-second",
+   "The twenty-third",
+   "The twenty-fourth",
+   "The twenty-first"
+  ],
+  "answer": 0,
+  "explanation": "The two and twentieth to Giddalti.",
+  "ref": "1 Chronicles 25:29"
+ },
+ {
+  "id": "1-chronicles-25-h-15",
+  "chapter": 25,
+  "level": "hard",
+  "category": "person",
+  "question": "Who received the twenty-fourth and last lot?",
+  "choices": [
+   "Mahazioth",
+   "Romamti-ezer",
+   "Giddalti",
+   "Hothir"
+  ],
+  "answer": 1,
+  "explanation": "The four and twentieth to Romamti-ezer.",
+  "ref": "1 Chronicles 25:31"
  },
  {
   "id": "old-1-chronicles-26-1",
