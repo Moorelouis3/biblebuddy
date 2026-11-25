@@ -10240,6 +10240,646 @@
   "ref": "2 Samuel 15:13–14"
  },
  {
+  "id": "2-samuel-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Absalom stand early in the morning to meet those seeking judgment?",
+  "choices": [
+   "On the temple steps",
+   "Beside the way of the gate",
+   "At the river",
+   "On the city wall"
+  ],
+  "answer": 1,
+  "explanation": "Absalom rose up early, and stood beside the way of the gate.",
+  "ref": "2 Samuel 15:2"
+ },
+ {
+  "id": "2-samuel-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Absalom say he wished he were made?",
+  "choices": [
+   "Judge in the land",
+   "King in Hebron",
+   "Captain of the host",
+   "Priest of Israel"
+  ],
+  "answer": 0,
+  "explanation": "Absalom said, Oh that I were made judge in the land, that every man which hath any suit or cause might come unto me!",
+  "ref": "2 Samuel 15:4"
+ },
+ {
+  "id": "2-samuel-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Absalom do when a man came near to bow to him?",
+  "choices": [
+   "Turned him away",
+   "Gave him silver",
+   "Sent him to David",
+   "Took him and kissed him"
+  ],
+  "answer": 3,
+  "explanation": "When any man came nigh to him to do him obeisance, he put forth his hand, and took him, and kissed him.",
+  "ref": "2 Samuel 15:5"
+ },
+ {
+  "id": "2-samuel-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What reason did Absalom give David for going to Hebron?",
+  "choices": [
+   "To rest from his labours",
+   "To visit Ahithophel",
+   "To pay a vow he had made to the LORD",
+   "To meet the elders"
+  ],
+  "answer": 2,
+  "explanation": "Let me go and pay my vow, which I have vowed unto the LORD, in Hebron.",
+  "ref": "2 Samuel 15:7"
+ },
+ {
+  "id": "2-samuel-15-e-05",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say to Absalom when he asked to go to Hebron?",
+  "choices": [
+   "Stay in Jerusalem",
+   "Go in peace",
+   "Take Joab",
+   "Return in a week"
+  ],
+  "answer": 1,
+  "explanation": "The king said unto him, Go in peace. So he arose, and went to Hebron.",
+  "ref": "2 Samuel 15:9"
+ },
+ {
+  "id": "2-samuel-15-e-06",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would Absalom's spies say at the sound of the trumpet?",
+  "choices": [
+   "Absalom reigneth in Hebron",
+   "David is dead",
+   "The king has fled",
+   "The ark is taken"
+  ],
+  "answer": 0,
+  "explanation": "As soon as ye hear the sound of the trumpet, then ye shall say, Absalom reigneth in Hebron.",
+  "ref": "2 Samuel 15:10"
+ },
+ {
+  "id": "2-samuel-15-e-07",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many concubines did David leave to keep the house?",
+  "choices": [
+   "Seven",
+   "Two",
+   "Twelve",
+   "Ten"
+  ],
+  "answer": 3,
+  "explanation": "The king left ten women, which were concubines, to keep the house.",
+  "ref": "2 Samuel 15:16"
+ },
+ {
+  "id": "2-samuel-15-e-08",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which Gittite did David urge to go back instead of fleeing with him?",
+  "choices": [
+   "Hushai",
+   "Zadok",
+   "Ittai",
+   "Ahimaaz"
+  ],
+  "answer": 2,
+  "explanation": "Then said the king to Ittai the Gittite, Wherefore goest thou also with us? return to thy place.",
+  "ref": "2 Samuel 15:19"
+ },
+ {
+  "id": "2-samuel-15-e-09",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "place",
+  "question": "What brook did David pass over as he left Jerusalem?",
+  "choices": [
+   "The Jabbok",
+   "The Kidron",
+   "The Arnon",
+   "The Jordan"
+  ],
+  "answer": 1,
+  "explanation": "The king also himself passed over the brook Kidron, toward the way of the wilderness.",
+  "ref": "2 Samuel 15:23"
+ },
+ {
+  "id": "2-samuel-15-e-10",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David tell Zadok to do with the ark of God?",
+  "choices": [
+   "Carry it back into the city",
+   "Bring it to the wilderness",
+   "Hide it in Hebron",
+   "Set it by the Kidron"
+  ],
+  "answer": 0,
+  "explanation": "The king said unto Zadok, Carry back the ark of God into the city.",
+  "ref": "2 Samuel 15:25"
+ },
+ {
+  "id": "2-samuel-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "What was Ahithophel's position before he joined Absalom?",
+  "choices": [
+   "Captain of the guard",
+   "Priest of Hebron",
+   "Judge of Israel",
+   "David's counsellor"
+  ],
+  "answer": 3,
+  "explanation": "Absalom sent for Ahithophel the Gilonite, David's counsellor, from his city, even from Giloh.",
+  "ref": "2 Samuel 15:12"
+ },
+ {
+  "id": "2-samuel-15-m-02",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question did Absalom ask each man who came to the king for judgment?",
+  "choices": [
+   "What is your cause?",
+   "Who sent thee?",
+   "Of what city art thou?",
+   "What do you bring?"
+  ],
+  "answer": 2,
+  "explanation": "Absalom called unto him, and said, Of what city art thou?",
+  "ref": "2 Samuel 15:2"
+ },
+ {
+  "id": "2-samuel-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Absalom say to each man about his case?",
+  "choices": [
+   "The king was dead",
+   "His matters were good and right, but no one was deputed",
+   "He must pay a fine",
+   "His case was lost"
+  ],
+  "answer": 1,
+  "explanation": "Absalom said, See, thy matters are good and right; but there is no man deputed of the king to hear thee.",
+  "ref": "2 Samuel 15:3"
+ },
+ {
+  "id": "2-samuel-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Absalom say he had made his vow?",
+  "choices": [
+   "At Geshur in Syria",
+   "At Hebron",
+   "At Gilgal",
+   "At Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "Thy servant vowed a vow while I abode at Geshur in Syria.",
+  "ref": "2 Samuel 15:8"
+ },
+ {
+  "id": "2-samuel-15-m-05",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the two hundred men who went with Absalom know?",
+  "choices": [
+   "That he planned a revolt",
+   "That David had sent them",
+   "That Ahithophel led them",
+   "Nothing; they went in simplicity"
+  ],
+  "answer": 3,
+  "explanation": "Two hundred men went with Absalom, and they went in their simplicity, and they knew not any thing.",
+  "ref": "2 Samuel 15:11"
+ },
+ {
+  "id": "2-samuel-15-m-06",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say Absalom would do if they did not flee?",
+  "choices": [
+   "Burn the ark",
+   "Take the throne by law",
+   "Smite the city with the edge of the sword",
+   "Starve the city"
+  ],
+  "answer": 2,
+  "explanation": "Arise, and let us flee, lest he overtake us suddenly, and bring evil upon us, and smite the city with the edge of the sword.",
+  "ref": "2 Samuel 15:14"
+ },
+ {
+  "id": "2-samuel-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David's servants answer when he said to flee?",
+  "choices": [
+   "They refused",
+   "They were ready to do whatever he appointed",
+   "They asked for Joab",
+   "They would stay with Absalom"
+  ],
+  "answer": 1,
+  "explanation": "Thy servants are ready to do whatsoever my lord the king shall appoint.",
+  "ref": "2 Samuel 15:15"
+ },
+ {
+  "id": "2-samuel-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which groups passed on before the king?",
+  "choices": [
+   "Cherethites, Pelethites and Gittites",
+   "Priests and Levites",
+   "The elders of Judah",
+   "The Benjamites"
+  ],
+  "answer": 0,
+  "explanation": "All the Cherethites, and all the Pelethites, and all the Gittites passed on before the king.",
+  "ref": "2 Samuel 15:18"
+ },
+ {
+  "id": "2-samuel-15-m-09",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David tell Ittai to return?",
+  "choices": [
+   "He was too old",
+   "He was sick",
+   "He was Absalom's servant",
+   "He was a stranger and an exile"
+  ],
+  "answer": 3,
+  "explanation": "Return to thy place: for thou art a stranger, and also an exile.",
+  "ref": "2 Samuel 15:19"
+ },
+ {
+  "id": "2-samuel-15-m-10",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ittai answer David?",
+  "choices": [
+   "He would return to Gath",
+   "He would follow Absalom",
+   "Wherever the king is, in death or life, he will be there",
+   "He needed his brothers"
+  ],
+  "answer": 2,
+  "explanation": "Surely in what place my lord the king shall be, whether in death or life, even there also will thy servant be.",
+  "ref": "2 Samuel 15:21"
+ },
+ {
+  "id": "2-samuel-15-m-11",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say about the ark if he found favour with the LORD?",
+  "choices": [
+   "He would carry it himself",
+   "The LORD would bring him again to see it",
+   "It would go to Hebron",
+   "It would stay in the tent"
+  ],
+  "answer": 1,
+  "explanation": "If I shall find favour in the eyes of the LORD, he will bring me again, and shew me both it, and his habitation.",
+  "ref": "2 Samuel 15:25"
+ },
+ {
+  "id": "2-samuel-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did David say he would tarry until he heard from the priests?",
+  "choices": [
+   "The plain of the wilderness",
+   "The cave of Adullam",
+   "The hill of Zion",
+   "The city of Giloh"
+  ],
+  "answer": 0,
+  "explanation": "I will tarry in the plain of the wilderness, until there come word from you.",
+  "ref": "2 Samuel 15:28"
+ },
+ {
+  "id": "2-samuel-15-m-13",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David go up the ascent of mount Olivet?",
+  "choices": [
+   "On a mule, singing",
+   "Armed and silent",
+   "Running, with the ark",
+   "Weeping, head covered, barefoot"
+  ],
+  "answer": 3,
+  "explanation": "David went up weeping, with his head covered, and he went barefoot.",
+  "ref": "2 Samuel 15:30"
+ },
+ {
+  "id": "2-samuel-15-m-14",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David pray when told Ahithophel was among the conspirators?",
+  "choices": [
+   "That the LORD smite him",
+   "That Ahithophel return",
+   "That the LORD turn his counsel into foolishness",
+   "That Joab slay him"
+  ],
+  "answer": 2,
+  "explanation": "David said, O LORD, I pray thee, turn the counsel of Ahithophel into foolishness.",
+  "ref": "2 Samuel 15:31"
+ },
+ {
+  "id": "2-samuel-15-m-15",
+  "chapter": 15,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did David ask to return and defeat the counsel of Ahithophel?",
+  "choices": [
+   "Ittai the Gittite",
+   "Hushai the Archite",
+   "Zadok",
+   "Abiathar"
+  ],
+  "answer": 1,
+  "explanation": "If thou return to the city, and say unto Absalom, I will be thy servant, then mayest thou for me defeat the counsel of Ahithophel.",
+  "ref": "2 Samuel 15:32–34"
+ },
+ {
+  "id": "2-samuel-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men from Gath followed David?",
+  "choices": [
+   "Six hundred",
+   "Two hundred",
+   "Fifty",
+   "One thousand"
+  ],
+  "answer": 0,
+  "explanation": "All the Gittites, six hundred men which came after him from Gath, passed on before the king.",
+  "ref": "2 Samuel 15:18"
+ },
+ {
+  "id": "2-samuel-15-h-02",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After how many years did Absalom ask to pay his vow?",
+  "choices": [
+   "Two",
+   "Seven",
+   "Twenty",
+   "Forty"
+  ],
+  "answer": 3,
+  "explanation": "It came to pass after forty years, that Absalom said unto the king, I pray thee, let me go and pay my vow.",
+  "ref": "2 Samuel 15:7"
+ },
+ {
+  "id": "2-samuel-15-h-03",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men went out of Jerusalem with Absalom, called by him?",
+  "choices": [
+   "Fifty",
+   "Six hundred",
+   "Two hundred",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "With Absalom went two hundred men out of Jerusalem, that were called.",
+  "ref": "2 Samuel 15:11"
+ },
+ {
+  "id": "2-samuel-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Ahithophel doing when Absalom sent for him?",
+  "choices": [
+   "Counselling David",
+   "Offering sacrifices",
+   "Judging at the gate",
+   "Hunting"
+  ],
+  "answer": 1,
+  "explanation": "Absalom sent for Ahithophel the Gilonite from Giloh, while he offered sacrifices.",
+  "ref": "2 Samuel 15:12"
+ },
+ {
+  "id": "2-samuel-15-h-05",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Who are the two sons mentioned as messengers, Zadok's and Abiathar's?",
+  "choices": [
+   "Ahimaaz and Jonathan",
+   "Absalom and Amnon",
+   "Joab and Abishai",
+   "Hushai and Ittai"
+  ],
+  "answer": 0,
+  "explanation": "Your two sons, Ahimaaz thy son, and Jonathan the son of Abiathar.",
+  "ref": "2 Samuel 15:27"
+ },
+ {
+  "id": "2-samuel-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was Hushai dressed when he met David at the top of the mount?",
+  "choices": [
+   "In a priestly ephod",
+   "With a crown",
+   "In sackcloth only",
+   "With his coat rent and earth on his head"
+  ],
+  "answer": 3,
+  "explanation": "Hushai the Archite came to meet him with his coat rent, and earth upon his head.",
+  "ref": "2 Samuel 15:32"
+ },
+ {
+  "id": "2-samuel-15-h-07",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say Hushai would be if he passed on with him?",
+  "choices": [
+   "A guard",
+   "A counsellor",
+   "A burden",
+   "A priest"
+  ],
+  "answer": 2,
+  "explanation": "If thou passest on with me, then thou shalt be a burden unto me.",
+  "ref": "2 Samuel 15:33"
+ },
+ {
+  "id": "2-samuel-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did David worship God at the top of the mount?",
+  "choices": [
+   "At Hebron",
+   "On the mount Olivet",
+   "At Gibeah",
+   "At Shiloh"
+  ],
+  "answer": 1,
+  "explanation": "When David was come to the top of the mount, where he worshipped God, behold, Hushai the Archite came to meet him.",
+  "ref": "2 Samuel 15:32"
+ },
+ {
+  "id": "2-samuel-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Who were the priests Hushai was to report to?",
+  "choices": [
+   "Zadok and Abiathar",
+   "Ahimaaz and Jonathan",
+   "Ittai and Joab",
+   "Nathan and Abishai"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt tell it to Zadok and Abiathar the priests.",
+  "ref": "2 Samuel 15:35"
+ },
+ {
+  "id": "2-samuel-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did all the country do as David and the people passed over?",
+  "choices": [
+   "Cheered",
+   "Fled",
+   "Hid",
+   "Wept with a loud voice"
+  ],
+  "answer": 3,
+  "explanation": "All the country wept with a loud voice, and all the people passed over.",
+  "ref": "2 Samuel 15:23"
+ },
+ {
+  "id": "2-samuel-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "person",
+  "question": "Who came into the city of Jerusalem as Hushai did?",
+  "choices": [
+   "Joab",
+   "Ahithophel",
+   "Absalom",
+   "Ittai"
+  ],
+  "answer": 2,
+  "explanation": "So Hushai David's friend came into the city, and Absalom came into Jerusalem.",
+  "ref": "2 Samuel 15:37"
+ },
+ {
+  "id": "2-samuel-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Absalom say he would do for a man with a suit or cause?",
+  "choices": [
+   "Give him silver",
+   "Do him justice",
+   "Send him to David",
+   "Judge him quickly"
+  ],
+  "answer": 1,
+  "explanation": "That every man which hath any suit or cause might come unto me, and I would do him justice!",
+  "ref": "2 Samuel 15:4"
+ },
+ {
+  "id": "2-samuel-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who went with Ittai when he passed over?",
+  "choices": [
+   "All his men and the little ones",
+   "Only his brothers",
+   "Zadok and the Levites",
+   "The Cherethites"
+  ],
+  "answer": 0,
+  "explanation": "Ittai the Gittite passed over, and all his men, and all the little ones that were with him.",
+  "ref": "2 Samuel 15:22"
+ },
+ {
+  "id": "2-samuel-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ittai swear by when he answered the king?",
+  "choices": [
+   "By the ark",
+   "By Gath",
+   "By David's sword",
+   "As the LORD liveth and as the king liveth"
+  ],
+  "answer": 3,
+  "explanation": "Ittai answered the king, and said, As the LORD liveth, and as my lord the king liveth.",
+  "ref": "2 Samuel 15:21"
+ },
+ {
+  "id": "2-samuel-15-h-15",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What blessing did David give Ittai as he told him to go back?",
+  "choices": [
+   "Peace and honour be with thee",
+   "The LORD bless thee and keep thee",
+   "Mercy and truth be with thee",
+   "Strength and joy be with thee"
+  ],
+  "answer": 2,
+  "explanation": "David said, return thou, and take back thy brethren: mercy and truth be with thee.",
+  "ref": "2 Samuel 15:20"
+ },
+ {
   "id": "old-2-samuel-16-1",
   "chapter": 16,
   "level": "beginner",
