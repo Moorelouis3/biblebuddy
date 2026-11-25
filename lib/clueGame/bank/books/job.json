@@ -192,22 +192,6 @@
   "ref": "Job 3:11"
  },
  {
-  "id": "old-job-3-3",
-  "chapter": 3,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How does Job describe death in relation to the troubled and weary?",
-  "choices": [
-   "As endless labor",
-   "As rest",
-   "As judgment only",
-   "As exile"
-  ],
-  "answer": 1,
-  "explanation": "He says the weary are at rest there.",
-  "ref": "Job 3:17"
- },
- {
   "id": "old-job-3-4",
   "chapter": 3,
   "level": "beginner",
@@ -21438,5 +21422,2949 @@
   "answer": 0,
   "explanation": "Behold, he taketh away, who can hinder him?",
   "ref": "Job 9:12"
+ },
+ {
+  "id": "job-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came among the sons of God to present himself before the LORD?",
+  "choices": [
+   "Eliphaz",
+   "Satan",
+   "Bildad",
+   "Zophar"
+  ],
+  "answer": 1,
+  "explanation": "The sons of God came to present themselves before the LORD, and Satan came also among them.",
+  "ref": "Job 2:1"
+ },
+ {
+  "id": "job-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Job take to scrape himself?",
+  "choices": [
+   "A potsherd",
+   "A sharp knife",
+   "A shepherd's staff",
+   "A flint stone"
+  ],
+  "answer": 0,
+  "explanation": "He took him a potsherd to scrape himself withal; and he sat down among the ashes.",
+  "ref": "Job 2:8"
+ },
+ {
+  "id": "job-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Satan say he had come from when the LORD asked him?",
+  "choices": [
+   "From going to and fro in the earth",
+   "From the camp of the Sabeans",
+   "From the land of Uz",
+   "From the tents of Job's friends"
+  ],
+  "answer": 0,
+  "explanation": "Satan answered the LORD: From going to and fro in the earth, and from walking up and down in it.",
+  "ref": "Job 2:2"
+ },
+ {
+  "id": "job-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD describe Job to Satan?",
+  "choices": [
+   "A mighty man and a wise ruler",
+   "A perfect and an upright man, one that feareth God",
+   "A faithful priest of the land",
+   "A man who gave all he had to the poor"
+  ],
+  "answer": 1,
+  "explanation": "The LORD said there is none like him in the earth, a perfect and an upright man, one that feareth God, and escheweth evil.",
+  "ref": "Job 2:3"
+ },
+ {
+  "id": "job-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Satan say Job would do if his bone and flesh were touched?",
+  "choices": [
+   "Run away into the wilderness",
+   "Curse God to his face",
+   "Ask his friends for help",
+   "Offer a sacrifice for his sin"
+  ],
+  "answer": 1,
+  "explanation": "Satan said: Put forth thine hand now, and touch his bone and his flesh, and he will curse thee to thy face.",
+  "ref": "Job 2:5"
+ },
+ {
+  "id": "job-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Job sit down after he was smitten with boils?",
+  "choices": [
+   "Among the ashes",
+   "Under a tree",
+   "In the gate of the city",
+   "On the roof of his house"
+  ],
+  "answer": 0,
+  "explanation": "He took him a potsherd to scrape himself withal; and he sat down among the ashes.",
+  "ref": "Job 2:8"
+ },
+ {
+  "id": "job-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Job describe his wife's words to him?",
+  "choices": [
+   "As the words of a grieving mother",
+   "As the speaking of one of the foolish women",
+   "As the counsel of the wise",
+   "As a test sent from God"
+  ],
+  "answer": 1,
+  "explanation": "Job said to her: Thou speakest as one of the foolish women speaketh.",
+  "ref": "Job 2:10"
+ },
+ {
+  "id": "job-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Job's three friends come to him?",
+  "choices": [
+   "To buy his flocks",
+   "To mourn with him and to comfort him",
+   "To bring him back to the city",
+   "To judge his sin"
+  ],
+  "answer": 1,
+  "explanation": "They had made an appointment together to come to mourn with him and to comfort him.",
+  "ref": "Job 2:11"
+ },
+ {
+  "id": "job-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the friends do when they saw Job afar off and knew him not?",
+  "choices": [
+   "They turned back home",
+   "They wept, tore their mantles and sprinkled dust",
+   "They offered burnt offerings",
+   "They sang a song of mourning"
+  ],
+  "answer": 1,
+  "explanation": "They lifted up their voice, and wept; and they rent every one his mantle, and sprinkled dust upon their heads toward heaven.",
+  "ref": "Job 2:12"
+ },
+ {
+  "id": "job-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of Job's friends is called the Temanite?",
+  "choices": [
+   "Eliphaz",
+   "Bildad",
+   "Zophar",
+   "Elihu"
+  ],
+  "answer": 0,
+  "explanation": "Job's three friends were Eliphaz the Temanite, and Bildad the Shuhite, and Zophar the Naamathite.",
+  "ref": "Job 2:11"
+ },
+ {
+  "id": "job-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Satan say a man will give for his life?",
+  "choices": [
+   "His house and his servants",
+   "All that he hath",
+   "His firstborn son",
+   "Half of his flocks"
+  ],
+  "answer": 1,
+  "explanation": "Satan said: Skin for skin, yea, all that a man hath will he give for his life.",
+  "ref": "Job 2:4"
+ },
+ {
+  "id": "job-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How far did the sore boils reach on Job's body?",
+  "choices": [
+   "From his hands to his shoulders",
+   "From the sole of his foot unto his crown",
+   "From his neck to his knees",
+   "From his back to his breast"
+  ],
+  "answer": 1,
+  "explanation": "Satan smote Job with sore boils from the sole of his foot unto his crown.",
+  "ref": "Job 2:7"
+ },
+ {
+  "id": "job-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did the three friends sit on the ground with Job?",
+  "choices": [
+   "Three days and three nights",
+   "Seven days and seven nights",
+   "Ten days and ten nights",
+   "Forty days and forty nights"
+  ],
+  "answer": 1,
+  "explanation": "They sat down with him upon the ground seven days and seven nights.",
+  "ref": "Job 2:13"
+ },
+ {
+  "id": "job-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did none of the friends speak a word to Job?",
+  "choices": [
+   "They had been told to keep silent",
+   "They did not know what had happened",
+   "They saw that his grief was very great",
+   "They were ashamed of what they had said"
+  ],
+  "answer": 2,
+  "explanation": "None spake a word unto him: for they saw that his grief was very great.",
+  "ref": "Job 2:13"
+ },
+ {
+  "id": "job-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Satan had moved Him to do to Job?",
+  "choices": [
+   "To destroy him without cause",
+   "To prove him in the wilderness",
+   "To humble him before his friends",
+   "To drive him from his land"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said Job still held fast his integrity, although Satan moved Him against him, to destroy him without cause.",
+  "ref": "Job 2:3"
+ },
+ {
+  "id": "job-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of Job's friends is called the Naamathite?",
+  "choices": [
+   "Bildad",
+   "Eliphaz",
+   "Zophar",
+   "Elihu"
+  ],
+  "answer": 2,
+  "explanation": "Job's friends were Eliphaz the Temanite, Bildad the Shuhite, and Zophar the Naamathite.",
+  "ref": "Job 2:11"
+ },
+ {
+  "id": "job-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Job say cease from troubling in the place he describes?",
+  "choices": [
+   "The wicked",
+   "The righteous",
+   "The kings",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "Job says: There the wicked cease from troubling; and there the weary be at rest.",
+  "ref": "Job 3:17"
+ },
+ {
+  "id": "job-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Job want the day of his birth to be?",
+  "choices": [
+   "A day of feasting",
+   "Darkness",
+   "A day of mourning for the land",
+   "A day forgotten by the priests"
+  ],
+  "answer": 1,
+  "explanation": "Job said: Let that day be darkness; let not God regard it from above.",
+  "ref": "Job 3:4"
+ },
+ {
+  "id": "job-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "With whom does Job say he would have been at rest, had he died at birth?",
+  "choices": [
+   "Priests and prophets",
+   "His sons and daughters",
+   "Kings and counsellors of the earth",
+   "Shepherds and servants"
+  ],
+  "answer": 2,
+  "explanation": "He would have lain still with kings and counsellors of the earth, which built desolate places for themselves.",
+  "ref": "Job 3:13–14"
+ },
+ {
+  "id": "job-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Job say is free from his master in the grave?",
+  "choices": [
+   "The soldier",
+   "The prisoner",
+   "The stranger",
+   "The servant"
+  ],
+  "answer": 3,
+  "explanation": "Job says the small and great are there; and the servant is free from his master.",
+  "ref": "Job 3:19"
+ },
+ {
+  "id": "job-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the prisoners not hear in the place Job describes?",
+  "choices": [
+   "The voice of the oppressor",
+   "The sound of trumpets",
+   "The voice of their children",
+   "The sound of the sea"
+  ],
+  "answer": 0,
+  "explanation": "Job says the prisoners rest together; they hear not the voice of the oppressor.",
+  "ref": "Job 3:18"
+ },
+ {
+  "id": "job-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the princes Job mentions have?",
+  "choices": [
+   "Many sons and servants",
+   "Gold, and houses filled with silver",
+   "Flocks and herds beyond number",
+   "Fields of wheat and barley"
+  ],
+  "answer": 1,
+  "explanation": "Job speaks of princes that had gold, who filled their houses with silver.",
+  "ref": "Job 3:15"
+ },
+ {
+  "id": "job-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are Job's roarings poured out like?",
+  "choices": [
+   "The wind",
+   "Fire",
+   "The waters",
+   "The thunder"
+  ],
+  "answer": 2,
+  "explanation": "Job says: My sighing cometh before I eat, and my roarings are poured out like the waters.",
+  "ref": "Job 3:24"
+ },
+ {
+  "id": "job-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say God has done to a man whose way is hid?",
+  "choices": [
+   "Cast him out",
+   "Taken his house",
+   "Forgotten his name",
+   "Hedged him in"
+  ],
+  "answer": 3,
+  "explanation": "Job asks why light is given to a man whose way is hid, and whom God hath hedged in.",
+  "ref": "Job 3:23"
+ },
+ {
+  "id": "job-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What came upon Job though he had no safety, rest or quiet?",
+  "choices": [
+   "Trouble",
+   "Sickness",
+   "Hunger",
+   "War"
+  ],
+  "answer": 0,
+  "explanation": "Job says: I was not in safety, neither had I rest, neither was I quiet; yet trouble came.",
+  "ref": "Job 3:26"
+ },
+ {
+  "id": "job-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the day he was born, what else did Job want to perish?",
+  "choices": [
+   "The harvest of that year",
+   "The night in which a man child was conceived",
+   "The house of his father",
+   "The city where he was born"
+  ],
+  "answer": 1,
+  "explanation": "Job said: Let the day perish wherein I was born, and the night in which it was said, There is a man child conceived.",
+  "ref": "Job 3:3"
+ },
+ {
+  "id": "job-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Job ask to stain the day of his birth?",
+  "choices": [
+   "Fire and smoke",
+   "Blood and ashes",
+   "Darkness and the shadow of death",
+   "Rain and storm"
+  ],
+  "answer": 2,
+  "explanation": "Job said: Let darkness and the shadow of death stain it.",
+  "ref": "Job 3:5"
+ },
+ {
+  "id": "job-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Job want to dwell upon the day of his birth?",
+  "choices": [
+   "A flock of birds",
+   "A fire",
+   "A strong wind",
+   "A cloud"
+  ],
+  "answer": 3,
+  "explanation": "Job said: Let a cloud dwell upon it; let the blackness of the day terrify it.",
+  "ref": "Job 3:5"
+ },
+ {
+  "id": "job-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Job say should not happen to that night?",
+  "choices": [
+   "It should not be joined unto the days of the year",
+   "It should not be a Sabbath",
+   "It should not bring a storm",
+   "It should not be warm"
+  ],
+  "answer": 0,
+  "explanation": "Job said: Let it not be joined unto the days of the year, let it not come into the number of the months.",
+  "ref": "Job 3:6"
+ },
+ {
+  "id": "job-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Job say should not come into that night?",
+  "choices": [
+   "A guest",
+   "A joyful voice",
+   "A watchman",
+   "A messenger"
+  ],
+  "answer": 1,
+  "explanation": "Job said: Let that night be solitary, let no joyful voice come therein.",
+  "ref": "Job 3:7"
+ },
+ {
+  "id": "job-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who did Job say should curse the day?",
+  "choices": [
+   "The elders of the city",
+   "His three friends",
+   "They that curse the day, ready to raise up their mourning",
+   "The priests of the land"
+  ],
+  "answer": 2,
+  "explanation": "Job said: Let them curse it that curse the day, who are ready to raise up their mourning.",
+  "ref": "Job 3:8"
+ },
+ {
+  "id": "job-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Job want to happen to the stars of the twilight?",
+  "choices": [
+   "Fall from heaven",
+   "Shine brighter",
+   "Hide behind the clouds",
+   "Be dark"
+  ],
+  "answer": 3,
+  "explanation": "Job said: Let the stars of the twilight thereof be dark.",
+  "ref": "Job 3:9"
+ },
+ {
+  "id": "job-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Job curse the day of his birth?",
+  "choices": [
+   "It shut not the womb's doors nor hid sorrow from him",
+   "It was the day his sons died",
+   "It was the day his cattle were taken",
+   "It was the day God left him"
+  ],
+  "answer": 0,
+  "explanation": "Job said: Because it shut not up the doors of my mother's womb, nor hid sorrow from mine eyes.",
+  "ref": "Job 3:10"
+ },
+ {
+  "id": "job-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Job have done if he had died at birth?",
+  "choices": [
+   "Walked with God",
+   "Lain still, been quiet, and slept",
+   "Prayed for his friends",
+   "Sat among the princes"
+  ],
+  "answer": 1,
+  "explanation": "Job said: For now should I have lain still and been quiet, I should have slept: then had I been at rest.",
+  "ref": "Job 3:13"
+ },
+ {
+  "id": "job-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job wish he had been, never to see the light?",
+  "choices": [
+   "A shepherd in the field",
+   "A king of the earth",
+   "An hidden untimely birth",
+   "A servant in a rich house"
+  ],
+  "answer": 2,
+  "explanation": "Job said: Or as an hidden untimely birth I had not been; as infants which never saw light.",
+  "ref": "Job 3:16"
+ },
+ {
+  "id": "job-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do those who long for death do when they find the grave?",
+  "choices": [
+   "Weep and mourn",
+   "Fall silent",
+   "Cry out to God",
+   "Rejoice exceedingly and are glad"
+  ],
+  "answer": 3,
+  "explanation": "Job says they rejoice exceedingly, and are glad, when they can find the grave.",
+  "ref": "Job 3:22"
+ },
+ {
+  "id": "job-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What comes before Job eats?",
+  "choices": [
+   "His sighing",
+   "His prayers",
+   "His sleep",
+   "His laughter"
+  ],
+  "answer": 0,
+  "explanation": "Job says: My sighing cometh before I eat.",
+  "ref": "Job 3:24"
+ },
+ {
+  "id": "job-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do those who long for death dig for more than?",
+  "choices": [
+   "Wells of water",
+   "Hid treasures",
+   "Their own graves",
+   "Bread"
+  ],
+  "answer": 1,
+  "explanation": "Job says they long for death, but it cometh not; and dig for it more than for hid treasures.",
+  "ref": "Job 3:21"
+ },
+ {
+  "id": "job-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job ask about the knees and the breasts?",
+  "choices": [
+   "Why his mother wept",
+   "Why his father blessed him",
+   "Why knees met him and breasts were there to nurse him",
+   "Why they were not cursed"
+  ],
+  "answer": 2,
+  "explanation": "Job asks: Why did the knees prevent me? or why the breasts that I should suck?",
+  "ref": "Job 3:12"
+ },
+ {
+  "id": "job-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the kings and counsellors of the earth build?",
+  "choices": [
+   "Great cities",
+   "Altars",
+   "Fortified towers",
+   "Desolate places for themselves"
+  ],
+  "answer": 3,
+  "explanation": "Job says kings and counsellors of the earth built desolate places for themselves.",
+  "ref": "Job 3:14"
+ },
+ {
+  "id": "job-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who does Job say are in the place of rest, along with the servant?",
+  "choices": [
+   "The small and great",
+   "The old and young",
+   "The rich and poor",
+   "The wise and foolish"
+  ],
+  "answer": 0,
+  "explanation": "Job says: The small and great are there; and the servant is free from his master.",
+  "ref": "Job 3:19"
+ },
+ {
+  "id": "job-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who does Job say are at rest in that place, apart from the wicked?",
+  "choices": [
+   "The widows",
+   "The weary",
+   "The strangers",
+   "The shepherds"
+  ],
+  "answer": 1,
+  "explanation": "Job says: There the wicked cease from troubling; and there the weary be at rest.",
+  "ref": "Job 3:17"
+ },
+ {
+  "id": "job-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Job ask that God should not do to the day of his birth?",
+  "choices": [
+   "Remember it in judgment",
+   "Number it among the days",
+   "Regard it from above",
+   "Send rain upon it"
+  ],
+  "answer": 2,
+  "explanation": "Job said: Let that day be darkness; let not God regard it from above.",
+  "ref": "Job 3:4"
+ },
+ {
+  "id": "job-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Job say should terrify the day of his birth?",
+  "choices": [
+   "The voice of God",
+   "The sound of war",
+   "The wrath of the king",
+   "The blackness of the day"
+  ],
+  "answer": 3,
+  "explanation": "Job said: Let a cloud dwell upon it; let the blackness of the day terrify it.",
+  "ref": "Job 3:5"
+ },
+ {
+  "id": "job-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Job say that night should be?",
+  "choices": [
+   "Solitary",
+   "Peaceful",
+   "Short",
+   "Holy"
+  ],
+  "answer": 0,
+  "explanation": "Job said: Lo, let that night be solitary, let no joyful voice come therein.",
+  "ref": "Job 3:7"
+ },
+ {
+  "id": "job-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Job want that night to look for, but never have?",
+  "choices": [
+   "Rest",
+   "Light",
+   "Sleep",
+   "A watchman"
+  ],
+  "answer": 1,
+  "explanation": "Job said: Let it look for light, but have none; neither let it see the dawning of the day.",
+  "ref": "Job 3:9"
+ },
+ {
+  "id": "job-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Job want to seize upon that night?",
+  "choices": [
+   "A storm",
+   "Fear",
+   "Darkness",
+   "A curse"
+  ],
+  "answer": 2,
+  "explanation": "Job said: As for that night, let darkness seize upon it.",
+  "ref": "Job 3:6"
+ },
+ {
+  "id": "job-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said in the night Job wished to perish?",
+  "choices": [
+   "The LORD is with thee",
+   "The sons of God have come",
+   "The day of trouble is at hand",
+   "There is a man child conceived"
+  ],
+  "answer": 3,
+  "explanation": "Job spoke of the night in which it was said, There is a man child conceived.",
+  "ref": "Job 3:3"
+ },
+ {
+  "id": "job-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say of those who long for death?",
+  "choices": [
+   "It cometh not",
+   "It comes in the night",
+   "It is far from them",
+   "It passes them by in the day"
+  ],
+  "answer": 0,
+  "explanation": "Job says they long for death, but it cometh not.",
+  "ref": "Job 3:21"
+ },
+ {
+  "id": "job-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the doors of his mother's womb fail to hide from Job's eyes?",
+  "choices": [
+   "The grave",
+   "Sorrow",
+   "Darkness",
+   "Wickedness"
+  ],
+  "answer": 1,
+  "explanation": "Job said the day shut not up the doors of his mother's womb, nor hid sorrow from his eyes.",
+  "ref": "Job 3:10"
+ },
+ {
+  "id": "job-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Job want those who curse the day to be ready to do?",
+  "choices": [
+   "Sing a song",
+   "Offer sacrifice",
+   "Raise up their mourning",
+   "Fast and pray"
+  ],
+  "answer": 2,
+  "explanation": "Job said: Let them curse it that curse the day, who are ready to raise up their mourning.",
+  "ref": "Job 3:8"
+ },
+ {
+  "id": "job-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Eliphaz say no one can do when he has so much to say?",
+  "choices": [
+   "Keep the law",
+   "Withhold himself from speaking",
+   "Hide from God",
+   "Comfort the grieving"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz asks: If we assay to commune with thee, wilt thou be grieved? but who can withhold himself from speaking?",
+  "ref": "Job 4:2"
+ },
+ {
+  "id": "job-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Eliphaz say those who plow iniquity and sow wickedness reap?",
+  "choices": [
+   "A great harvest",
+   "Mercy at the last",
+   "The same",
+   "Nothing at all"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says: They that plow iniquity, and sow wickedness, reap the same.",
+  "ref": "Job 4:8"
+ },
+ {
+  "id": "job-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By what does Eliphaz say the wicked perish?",
+  "choices": [
+   "The sword of the enemy",
+   "The flood of waters",
+   "The famine in the land",
+   "The blast of God"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says: By the blast of God they perish, and by the breath of his nostrils are they consumed.",
+  "ref": "Job 4:9"
+ },
+ {
+  "id": "job-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Eliphaz ask whether a mortal man can be more than God?",
+  "choices": [
+   "More just",
+   "More patient",
+   "More wise",
+   "More mighty"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz asks: Shall mortal man be more just than God? shall a man be more pure than his maker?",
+  "ref": "Job 4:17"
+ },
+ {
+  "id": "job-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where does Eliphaz say men dwell?",
+  "choices": [
+   "In tents of wool",
+   "In houses of clay",
+   "In houses of stone",
+   "In caves of the mountains"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz speaks of them that dwell in houses of clay, whose foundation is in the dust.",
+  "ref": "Job 4:19"
+ },
+ {
+  "id": "job-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Before what does Eliphaz say men are crushed?",
+  "choices": [
+   "The wind",
+   "The lion",
+   "The moth",
+   "The flood"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says men are crushed before the moth.",
+  "ref": "Job 4:19"
+ },
+ {
+  "id": "job-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eliphaz say Job's words had done for the one who was falling?",
+  "choices": [
+   "Cast him down",
+   "Warned him",
+   "Judged him",
+   "Upholden him"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says: Thy words have upholden him that was falling, and thou hast strengthened the feeble knees.",
+  "ref": "Job 4:4"
+ },
+ {
+  "id": "job-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eliphaz say Job did when trouble came upon him?",
+  "choices": [
+   "He fainted and was troubled",
+   "He cursed the day",
+   "He rose up and prayed",
+   "He fled to the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz says: It is come upon thee, and thou faintest; it toucheth thee, and thou art troubled.",
+  "ref": "Job 4:5"
+ },
+ {
+  "id": "job-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Eliphaz say happens to the teeth of the young lions?",
+  "choices": [
+   "They grow sharp",
+   "They are broken",
+   "They are hid in dens",
+   "They fail in the night"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz says the roaring of the lion, and the voice of the fierce lion, and the teeth of the young lions, are broken.",
+  "ref": "Job 4:10"
+ },
+ {
+  "id": "job-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Eliphaz say the old lion perishes?",
+  "choices": [
+   "From the sword of hunters",
+   "From the blast of God",
+   "For lack of prey",
+   "From sickness"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says: The old lion perisheth for lack of prey.",
+  "ref": "Job 4:11"
+ },
+ {
+  "id": "job-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How much of the secret thing did Eliphaz say his ear received?",
+  "choices": [
+   "All of it",
+   "Nothing at all",
+   "Only the first words",
+   "A little thereof"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says: A thing was secretly brought to me, and mine ear received a little thereof.",
+  "ref": "Job 4:12"
+ },
+ {
+  "id": "job-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Eliphaz say the vision came to him?",
+  "choices": [
+   "In night visions, when deep sleep falls on men",
+   "At the dawning of the day",
+   "In the heat of noon",
+   "While walking with his friends"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz says it came in thoughts from the visions of the night, when deep sleep falleth on men.",
+  "ref": "Job 4:13"
+ },
+ {
+  "id": "job-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What came upon Eliphaz in the vision?",
+  "choices": [
+   "Great joy",
+   "Fear and trembling",
+   "A burning fire",
+   "A deep hunger"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz says: Fear came upon me, and trembling, which made all my bones to shake.",
+  "ref": "Job 4:14"
+ },
+ {
+  "id": "job-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eliphaz say he could not discern about the spirit?",
+  "choices": [
+   "The name thereof",
+   "The voice thereof",
+   "The form thereof",
+   "The place thereof"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says it stood still, but he could not discern the form thereof.",
+  "ref": "Job 4:16"
+ },
+ {
+  "id": "job-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long does Eliphaz say men are destroyed?",
+  "choices": [
+   "From summer to winter",
+   "From youth to old age",
+   "From seed time to harvest",
+   "From morning to evening"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says: They are destroyed from morning to evening: they perish for ever without any regarding it.",
+  "ref": "Job 4:20"
+ },
+ {
+  "id": "job-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Eliphaz say men die?",
+  "choices": [
+   "Even without wisdom",
+   "Even in their sleep",
+   "Even among their children",
+   "Even by the sword"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz says: Doth not their excellency which is in them go away? they die, even without wisdom.",
+  "ref": "Job 4:21"
+ },
+ {
+  "id": "job-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Job done for the many whom he instructed, according to Eliphaz?",
+  "choices": [
+   "Healed their sicknesses",
+   "Strengthened their weak hands",
+   "Paid their debts",
+   "Judged their quarrels"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz says: Thou hast instructed many, and thou hast strengthened the weak hands.",
+  "ref": "Job 4:3"
+ },
+ {
+  "id": "job-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Eliphaz say stood up when the spirit passed before his face?",
+  "choices": [
+   "His knees",
+   "His voice",
+   "The hair of his flesh",
+   "His heart"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says: Then a spirit passed before my face; the hair of my flesh stood up.",
+  "ref": "Job 4:15"
+ },
+ {
+  "id": "job-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Eliphaz hear after the silence in the vision?",
+  "choices": [
+   "A trumpet",
+   "A rushing wind",
+   "A sound of weeping",
+   "A voice"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says there was silence, and he heard a voice, saying: Shall mortal man be more just than God?",
+  "ref": "Job 4:16"
+ },
+ {
+  "id": "job-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to the stout lion's whelps?",
+  "choices": [
+   "They are scattered abroad",
+   "They are taken in a net",
+   "They are fed by the old lion",
+   "They are driven to the mountains"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz says: The stout lion's whelps are scattered abroad.",
+  "ref": "Job 4:11"
+ },
+ {
+  "id": "job-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Eliphaz say God puts no trust in?",
+  "choices": [
+   "The rich",
+   "His servants",
+   "The kings of the earth",
+   "The wise"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz says: Behold, he put no trust in his servants; and his angels he charged with folly.",
+  "ref": "Job 4:18"
+ },
+ {
+  "id": "job-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How do men perish, according to Eliphaz, with no one doing what?",
+  "choices": [
+   "Burying them",
+   "Weeping for them",
+   "Regarding it",
+   "Remembering them"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says they perish for ever without any regarding it.",
+  "ref": "Job 4:20"
+ },
+ {
+  "id": "job-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question about the righteous does Eliphaz ask Job to remember?",
+  "choices": [
+   "Why do the righteous suffer?",
+   "Who shall deliver the righteous?",
+   "When shall the righteous be heard?",
+   "Where were the righteous cut off?"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says: Remember, I pray thee, who ever perished, being innocent? or where were the righteous cut off?",
+  "ref": "Job 4:7"
+ },
+ {
+  "id": "job-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Eliphaz say Job's confidence and hope should be?",
+  "choices": [
+   "The uprightness of his ways",
+   "The wisdom of his friends",
+   "The riches of his house",
+   "The length of his days"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz asks: Is not this thy fear, thy confidence, thy hope, and the uprightness of thy ways?",
+  "ref": "Job 4:6"
+ },
+ {
+  "id": "job-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Eliphaz say Job's words had strengthened?",
+  "choices": [
+   "The weary heart",
+   "The feeble knees",
+   "The tired eyes",
+   "The aged voice"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz says: Thy words have upholden him that was falling, and thou hast strengthened the feeble knees.",
+  "ref": "Job 4:4"
+ },
+ {
+  "id": "job-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the fear and trembling make shake in Eliphaz?",
+  "choices": [
+   "His hands",
+   "His voice",
+   "All his bones",
+   "His whole house"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says: Fear came upon me, and trembling, which made all my bones to shake.",
+  "ref": "Job 4:14"
+ },
+ {
+  "id": "job-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Eliphaz say goes away from men?",
+  "choices": [
+   "Their children",
+   "Their strength",
+   "Their years",
+   "Their excellency"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz asks: Doth not their excellency which is in them go away?",
+  "ref": "Job 4:21"
+ },
+ {
+  "id": "job-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Eliphaz say is in the dust?",
+  "choices": [
+   "The foundation of men's houses of clay",
+   "The graves of the wicked",
+   "The gold of the rich",
+   "The bones of the righteous"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz says men dwell in houses of clay, whose foundation is in the dust.",
+  "ref": "Job 4:19"
+ },
+ {
+  "id": "job-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Eliphaz say killeth the foolish man?",
+  "choices": [
+   "Famine",
+   "The sword",
+   "Wrath",
+   "Plague"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says: Wrath killeth the foolish man, and envy slayeth the silly one.",
+  "ref": "Job 5:2"
+ },
+ {
+  "id": "job-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Man is born unto trouble, as what fly upward?",
+  "choices": [
+   "The eagles",
+   "The clouds",
+   "The seeds",
+   "The sparks"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says: Man is born unto trouble, as the sparks fly upward.",
+  "ref": "Job 5:7"
+ },
+ {
+  "id": "job-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom does Eliphaz call happy?",
+  "choices": [
+   "The man whom God correcteth",
+   "The man who is rich",
+   "The man who has many sons",
+   "The man who is never sick"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz says: Behold, happy is the man whom God correcteth.",
+  "ref": "Job 5:17"
+ },
+ {
+  "id": "job-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God give upon the earth, according to Eliphaz?",
+  "choices": [
+   "Gold",
+   "Rain",
+   "Bread from heaven",
+   "Fire"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz says God giveth rain upon the earth, and sendeth waters upon the fields.",
+  "ref": "Job 5:10"
+ },
+ {
+  "id": "job-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Eliphaz say God will do for Job in famine?",
+  "choices": [
+   "Send him bread from heaven",
+   "Move him to another land",
+   "Redeem him from death",
+   "Hide him in a cave"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says: In famine he shall redeem thee from death.",
+  "ref": "Job 5:20"
+ },
+ {
+  "id": "job-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who will be at peace with Job, according to Eliphaz?",
+  "choices": [
+   "The kings of the earth",
+   "The robbers of the land",
+   "The enemies of his house",
+   "The beasts of the field"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says the beasts of the field shall be at peace with thee.",
+  "ref": "Job 5:23"
+ },
+ {
+  "id": "job-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Eliphaz say Job's offspring shall be like?",
+  "choices": [
+   "The grass of the earth",
+   "The stars of heaven",
+   "The sand of the sea",
+   "The dust of the ground"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz says: Thy seed shall be great, and thine offspring as the grass of the earth.",
+  "ref": "Job 5:25"
+ },
+ {
+  "id": "job-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what does Eliphaz say God saves the poor?",
+  "choices": [
+   "The famine",
+   "The sword",
+   "The flood",
+   "The fire"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz says God saveth the poor from the sword, from their mouth, and from the hand of the mighty.",
+  "ref": "Job 5:15"
+ },
+ {
+  "id": "job-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Eliphaz say Job will know about his tabernacle?",
+  "choices": [
+   "It shall be rebuilt",
+   "It shall be moved",
+   "It shall be in peace",
+   "It shall be hidden"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says: Thou shalt know that thy tabernacle shall be in peace.",
+  "ref": "Job 5:24"
+ },
+ {
+  "id": "job-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Eliphaz tell Job to do first?",
+  "choices": [
+   "Call his friends to witness",
+   "Call his wife to him",
+   "Call for the priest",
+   "Call for an answer, and turn to one of the saints"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says: Call now, if there be any that will answer thee; and to which of the saints wilt thou turn?",
+  "ref": "Job 5:1"
+ },
+ {
+  "id": "job-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Eliphaz say envy does to the silly one?",
+  "choices": [
+   "Slays him",
+   "Blinds him",
+   "Humbles him",
+   "Heals him"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz says: Wrath killeth the foolish man, and envy slayeth the silly one.",
+  "ref": "Job 5:2"
+ },
+ {
+  "id": "job-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Eliphaz say he did after seeing the foolish taking root?",
+  "choices": [
+   "Prayed for his house",
+   "Suddenly cursed his habitation",
+   "Warned his sons",
+   "Gave him a blessing"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz says: I have seen the foolish taking root: but suddenly I cursed his habitation.",
+  "ref": "Job 5:3"
+ },
+ {
+  "id": "job-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does Eliphaz say the foolish man's children are crushed?",
+  "choices": [
+   "In the field",
+   "In the tent",
+   "In the gate",
+   "In the wilderness"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says his children are far from safety, and they are crushed in the gate.",
+  "ref": "Job 5:4"
+ },
+ {
+  "id": "job-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who does Eliphaz say eats up the foolish man's harvest?",
+  "choices": [
+   "The locusts",
+   "The shepherds",
+   "The kings",
+   "The hungry"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says: Whose harvest the hungry eateth up, and taketh it even out of the thorns.",
+  "ref": "Job 5:5"
+ },
+ {
+  "id": "job-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Eliphaz say affliction does not come out of?",
+  "choices": [
+   "The dust",
+   "The sea",
+   "The mountains",
+   "The heavens"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz says affliction cometh not forth of the dust, neither doth trouble spring out of the ground.",
+  "ref": "Job 5:6"
+ },
+ {
+  "id": "job-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Eliphaz describe the things God does?",
+  "choices": [
+   "Hidden and silent",
+   "Great and unsearchable, marvellous without number",
+   "Swift and terrible",
+   "Wise and few"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz says God doeth great things and unsearchable; marvellous things without number.",
+  "ref": "Job 5:9"
+ },
+ {
+  "id": "job-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God do to the devices of the crafty?",
+  "choices": [
+   "Reveals them",
+   "Rewards them",
+   "Disappoints them",
+   "Forgets them"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says: He disappointeth the devices of the crafty, so that their hands cannot perform their enterprise.",
+  "ref": "Job 5:12"
+ },
+ {
+  "id": "job-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does Eliphaz say God takes the wise?",
+  "choices": [
+   "In their own houses",
+   "In the gate of the city",
+   "In the pit",
+   "In their own craftiness"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says: He taketh the wise in their own craftiness.",
+  "ref": "Job 5:13"
+ },
+ {
+  "id": "job-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the crafty meet with in the daytime?",
+  "choices": [
+   "Darkness",
+   "Rain",
+   "Wind",
+   "Fire"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz says: They meet with darkness in the daytime, and grope in the noonday as in the night.",
+  "ref": "Job 5:14"
+ },
+ {
+  "id": "job-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Eliphaz say the poor has because God saves them?",
+  "choices": [
+   "Silver",
+   "Hope",
+   "Strength",
+   "Wisdom"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz says: So the poor hath hope, and iniquity stoppeth her mouth.",
+  "ref": "Job 5:16"
+ },
+ {
+  "id": "job-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will Job be hid from, according to Eliphaz?",
+  "choices": [
+   "The wrath of the king",
+   "The heat of the sun",
+   "The scourge of the tongue",
+   "The sword of the enemy"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says: Thou shalt be hid from the scourge of the tongue.",
+  "ref": "Job 5:21"
+ },
+ {
+  "id": "job-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Eliphaz say Job shall do at destruction and famine?",
+  "choices": [
+   "Weep",
+   "Flee",
+   "Pray",
+   "Laugh"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says: At destruction and famine thou shalt laugh.",
+  "ref": "Job 5:22"
+ },
+ {
+  "id": "job-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Eliphaz say he and the others have done?",
+  "choices": [
+   "Searched it, and found it so",
+   "Prayed over it",
+   "Written it down",
+   "Questioned the elders"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz says: Lo this, we have searched it, so it is; hear it, and know thou it for thy good.",
+  "ref": "Job 5:27"
+ },
+ {
+  "id": "job-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Eliphaz say is not found for the foolish man's children?",
+  "choices": [
+   "Any to bury them",
+   "Any to deliver them",
+   "Any to remember them",
+   "Any to feed them"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz says his children are crushed in the gate, neither is there any to deliver them.",
+  "ref": "Job 5:4"
+ },
+ {
+  "id": "job-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Who swalloweth up the foolish man's substance?",
+  "choices": [
+   "The Chaldeans",
+   "The stranger",
+   "The robber",
+   "The hungry"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says: The robber swalloweth up their substance.",
+  "ref": "Job 5:5"
+ },
+ {
+  "id": "job-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of what does the hungry take the harvest?",
+  "choices": [
+   "The barns",
+   "The furrows",
+   "The mountains",
+   "The thorns"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says the hungry taketh it even out of the thorns.",
+  "ref": "Job 5:5"
+ },
+ {
+  "id": "job-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Upon what does Eliphaz say God sends waters?",
+  "choices": [
+   "The fields",
+   "The mountains",
+   "The deserts",
+   "The cities"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz says God giveth rain upon the earth, and sendeth waters upon the fields.",
+  "ref": "Job 5:10"
+ },
+ {
+  "id": "job-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Eliphaz say happens to the counsel of the froward?",
+  "choices": [
+   "It is turned to praise",
+   "It is carried headlong",
+   "It is hidden in a pit",
+   "It is forgotten in time"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz says the counsel of the froward is carried headlong.",
+  "ref": "Job 5:13"
+ },
+ {
+  "id": "job-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When do the crafty grope as in the night?",
+  "choices": [
+   "In the morning",
+   "At sunset",
+   "In the noonday",
+   "At midnight"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says: They meet with darkness in the daytime, and grope in the noonday as in the night.",
+  "ref": "Job 5:14"
+ },
+ {
+  "id": "job-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What stoppeth her mouth, according to Eliphaz?",
+  "choices": [
+   "The poor",
+   "The righteous",
+   "The wise",
+   "Iniquity"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says: So the poor hath hope, and iniquity stoppeth her mouth.",
+  "ref": "Job 5:16"
+ },
+ {
+  "id": "job-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Eliphaz tell Job not to despise?",
+  "choices": [
+   "The chastening of the Almighty",
+   "The counsel of his friends",
+   "The words of the elders",
+   "The riches of the wicked"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz says: Despise not thou the chastening of the Almighty.",
+  "ref": "Job 5:17"
+ },
+ {
+  "id": "job-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what does God redeem Job in war?",
+  "choices": [
+   "The hand of the stranger",
+   "The power of the sword",
+   "The voice of the enemy",
+   "The walls of the city"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz says: In famine he shall redeem thee from death: and in war from the power of the sword.",
+  "ref": "Job 5:20"
+ },
+ {
+  "id": "job-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will Job not be afraid of when it cometh?",
+  "choices": [
+   "Famine",
+   "The night",
+   "Destruction",
+   "The grave"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says: Neither shalt thou be afraid of destruction when it cometh.",
+  "ref": "Job 5:21"
+ },
+ {
+  "id": "job-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will Job not be afraid of at destruction and famine?",
+  "choices": [
+   "The sword of the enemy",
+   "The slander of the tongue",
+   "The darkness of the night",
+   "The beasts of the earth"
+  ],
+  "answer": 3,
+  "explanation": "Eliphaz says: Neither shalt thou be afraid of the beasts of the earth.",
+  "ref": "Job 5:22"
+ },
+ {
+  "id": "job-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what does Eliphaz say Job shall be in league?",
+  "choices": [
+   "The stones of the field",
+   "The kings of the earth",
+   "The mighty men of old",
+   "The wise of the east"
+  ],
+  "answer": 0,
+  "explanation": "Eliphaz says: Thou shalt be in league with the stones of the field.",
+  "ref": "Job 5:23"
+ },
+ {
+  "id": "job-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will Job visit and not sin, according to Eliphaz?",
+  "choices": [
+   "His father's grave",
+   "His habitation",
+   "The house of God",
+   "The gate of the city"
+  ],
+  "answer": 1,
+  "explanation": "Eliphaz says: Thou shalt visit thy habitation, and shalt not sin.",
+  "ref": "Job 5:24"
+ },
+ {
+  "id": "job-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What can the hands of the crafty not do?",
+  "choices": [
+   "Hold the sword",
+   "Lift a burden",
+   "Perform their enterprise",
+   "Reach the harvest"
+  ],
+  "answer": 2,
+  "explanation": "Eliphaz says God disappointeth the devices of the crafty, so that their hands cannot perform their enterprise.",
+  "ref": "Job 5:12"
+ },
+ {
+  "id": "job-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say the wild ass does not do when he has grass?",
+  "choices": [
+   "Run",
+   "Graze",
+   "Lie down",
+   "Bray"
+  ],
+  "answer": 3,
+  "explanation": "Job asks: Doth the wild ass bray when he hath grass? or loweth the ox over his fodder?",
+  "ref": "Job 6:5"
+ },
+ {
+  "id": "job-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say cannot be eaten without salt?",
+  "choices": [
+   "That which is unsavoury",
+   "Bread of the poor",
+   "The fruit of the field",
+   "The flesh of the ox"
+  ],
+  "answer": 0,
+  "explanation": "Job asks: Can that which is unsavoury be eaten without salt?",
+  "ref": "Job 6:6"
+ },
+ {
+  "id": "job-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job long for God to grant him?",
+  "choices": [
+   "That God would restore his sons",
+   "That God would destroy him and cut him off",
+   "That God would heal his sores",
+   "That God would answer his friends"
+  ],
+  "answer": 1,
+  "explanation": "Job says: Oh that God would grant me the thing that I long for! Even that it would please God to destroy me.",
+  "ref": "Job 6:8–9"
+ },
+ {
+  "id": "job-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job ask whether his strength is like?",
+  "choices": [
+   "The strength of oxen",
+   "The strength of a lion",
+   "The strength of stones",
+   "The strength of the sea"
+  ],
+  "answer": 2,
+  "explanation": "Job asks: Is my strength the strength of stones? or is my flesh of brass?",
+  "ref": "Job 6:12"
+ },
+ {
+  "id": "job-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say should be shown to him that is afflicted?",
+  "choices": [
+   "Wealth from his kin",
+   "A sacrifice from the priest",
+   "A wall from the king",
+   "Pity from his friend"
+  ],
+  "answer": 3,
+  "explanation": "Job says: To him that is afflicted pity should be shewed from his friend.",
+  "ref": "Job 6:14"
+ },
+ {
+  "id": "job-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who looked for the brooks, according to Job?",
+  "choices": [
+   "The troops of Tema",
+   "The troops of Edom",
+   "The tribes of Dan",
+   "The men of Uz"
+  ],
+  "answer": 0,
+  "explanation": "Job says: The troops of Tema looked, the companies of Sheba waited for them.",
+  "ref": "Job 6:19"
+ },
+ {
+  "id": "job-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say his friends dig for their friend?",
+  "choices": [
+   "A well",
+   "A pit",
+   "A grave",
+   "A trench"
+  ],
+  "answer": 1,
+  "explanation": "Job says: Ye overwhelm the fatherless, and ye dig a pit for your friend.",
+  "ref": "Job 6:27"
+ },
+ {
+  "id": "job-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job say his friends feel when they see his casting down?",
+  "choices": [
+   "They are glad",
+   "They are angry",
+   "They are afraid",
+   "They are asleep"
+  ],
+  "answer": 2,
+  "explanation": "Job says: Now ye are no thing; ye see my casting down, and are afraid.",
+  "ref": "Job 6:21"
+ },
+ {
+  "id": "job-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Job say he never asked his friends to give?",
+  "choices": [
+   "A song for his grief",
+   "A seat in the gate",
+   "A name for his sons",
+   "A reward of their substance"
+  ],
+  "answer": 3,
+  "explanation": "Job asks: Did I say, Bring unto me? or, Give a reward for me of your substance?",
+  "ref": "Job 6:22"
+ },
+ {
+  "id": "job-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job ask whether there is in his tongue?",
+  "choices": [
+   "Iniquity",
+   "Flattery",
+   "Silence",
+   "Mockery"
+  ],
+  "answer": 0,
+  "explanation": "Job asks: Is there iniquity in my tongue? cannot my taste discern perverse things?",
+  "ref": "Job 6:30"
+ },
+ {
+  "id": "job-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say the ox does not do over his fodder?",
+  "choices": [
+   "Rest",
+   "Low",
+   "Tremble",
+   "Flee"
+  ],
+  "answer": 1,
+  "explanation": "Job asks: Doth the wild ass bray when he hath grass? or loweth the ox over his fodder?",
+  "ref": "Job 6:5"
+ },
+ {
+  "id": "job-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job ask whether there is any taste in?",
+  "choices": [
+   "A dry crust",
+   "A bitter herb",
+   "The white of an egg",
+   "A cup of water"
+  ],
+  "answer": 2,
+  "explanation": "Job asks: Is there any taste in the white of an egg?",
+  "ref": "Job 6:6"
+ },
+ {
+  "id": "job-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the things Job's soul refused to touch now to him?",
+  "choices": [
+   "As his daily bread",
+   "As his comfort",
+   "As his reward",
+   "As his sorrowful meat"
+  ],
+  "answer": 3,
+  "explanation": "Job says: The things that my soul refused to touch are as my sorrowful meat.",
+  "ref": "Job 6:7"
+ },
+ {
+  "id": "job-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say he would do in sorrow if God cut him off?",
+  "choices": [
+   "Harden himself in sorrow",
+   "Sing for joy",
+   "Flee to the mountains",
+   "Plead with his friends"
+  ],
+  "answer": 0,
+  "explanation": "Job says: Then should I yet have comfort; yea, I would harden myself in sorrow: let him not spare.",
+  "ref": "Job 6:10"
+ },
+ {
+  "id": "job-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job ask about his strength?",
+  "choices": [
+   "Who gave me this strength?",
+   "What is my strength, that I should hope?",
+   "Where is my strength now?",
+   "Why was I strong in youth?"
+  ],
+  "answer": 1,
+  "explanation": "Job asks: What is my strength, that I should hope? and what is mine end, that I should prolong my life?",
+  "ref": "Job 6:11"
+ },
+ {
+  "id": "job-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job ask about wisdom?",
+  "choices": [
+   "Is wisdom found in my friends?",
+   "Is wisdom better than gold?",
+   "Is wisdom driven quite from me?",
+   "Is wisdom hid from the proud?"
+  ],
+  "answer": 2,
+  "explanation": "Job asks: Is not my help in me? and is wisdom driven quite from me?",
+  "ref": "Job 6:13"
+ },
+ {
+  "id": "job-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say his brethren's brooks are blackish by reason of?",
+  "choices": [
+   "The mud",
+   "The shade",
+   "The clay",
+   "The ice"
+  ],
+  "answer": 3,
+  "explanation": "Job says the brooks are blackish by reason of the ice, and wherein the snow is hid.",
+  "ref": "Job 6:16"
+ },
+ {
+  "id": "job-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the brooks when they wax warm?",
+  "choices": [
+   "They vanish",
+   "They overflow",
+   "They freeze",
+   "They turn red"
+  ],
+  "answer": 0,
+  "explanation": "Job says: What time they wax warm, they vanish: when it is hot, they are consumed out of their place.",
+  "ref": "Job 6:17"
+ },
+ {
+  "id": "job-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say of the paths of the brooks' way?",
+  "choices": [
+   "They are made straight",
+   "They are turned aside",
+   "They are crowded",
+   "They are lit by the sun"
+  ],
+  "answer": 1,
+  "explanation": "Job says: The paths of their way are turned aside; they go to nothing, and perish.",
+  "ref": "Job 6:18"
+ },
+ {
+  "id": "job-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the companies of Sheba ashamed?",
+  "choices": [
+   "They had lost their way",
+   "They had been robbed",
+   "They had hoped, and came and found nothing",
+   "They had been refused water"
+  ],
+  "answer": 2,
+  "explanation": "Job says: They were confounded because they had hoped; they came thither, and were ashamed.",
+  "ref": "Job 6:20"
+ },
+ {
+  "id": "job-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Job say he never asked his friends to do from the enemy's hand?",
+  "choices": [
+   "Hide him",
+   "Ransom his sons",
+   "Plead for him",
+   "Deliver him"
+  ],
+  "answer": 3,
+  "explanation": "Job asks: Or, Deliver me from the enemy's hand?",
+  "ref": "Job 6:23"
+ },
+ {
+  "id": "job-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say of right words?",
+  "choices": [
+   "How forcible they are",
+   "How rare they are",
+   "How soft they are",
+   "How lasting they are"
+  ],
+  "answer": 0,
+  "explanation": "Job says: How forcible are right words! but what doth your arguing reprove?",
+  "ref": "Job 6:25"
+ },
+ {
+  "id": "job-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job ask his friends to do for evidence that he does not lie?",
+  "choices": [
+   "Swear an oath",
+   "Be content and look upon him",
+   "Call the elders",
+   "Search his tent"
+  ],
+  "answer": 1,
+  "explanation": "Job says: Now therefore be content, look upon me; for it is evident unto you if I lie.",
+  "ref": "Job 6:28"
+ },
+ {
+  "id": "job-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say is in his answer when he asks them to return?",
+  "choices": [
+   "His sin",
+   "His fear",
+   "His righteousness",
+   "His hope"
+  ],
+  "answer": 2,
+  "explanation": "Job says: Return, I pray you, let it not be iniquity; yea, return again, my righteousness is in it.",
+  "ref": "Job 6:29"
+ },
+ {
+  "id": "job-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does Job say his friends overwhelm?",
+  "choices": [
+   "The stranger",
+   "The widow",
+   "The servant",
+   "The fatherless"
+  ],
+  "answer": 3,
+  "explanation": "Job says: Ye overwhelm the fatherless, and ye dig a pit for your friend.",
+  "ref": "Job 6:27"
+ },
+ {
+  "id": "job-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say are swallowed up because his grief is heavier than the sand?",
+  "choices": [
+   "His words",
+   "His tears",
+   "His days",
+   "His sons"
+  ],
+  "answer": 0,
+  "explanation": "Job says: Now it would be heavier than the sand of the sea: therefore my words are swallowed up.",
+  "ref": "Job 6:3"
+ },
+ {
+  "id": "job-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the poison of the Almighty's arrows drink up?",
+  "choices": [
+   "His blood",
+   "His spirit",
+   "His strength",
+   "His days"
+  ],
+  "answer": 1,
+  "explanation": "Job says: The arrows of the Almighty are within me, the poison whereof drinketh up my spirit.",
+  "ref": "Job 6:4"
+ },
+ {
+  "id": "job-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say the terrors of God do against him?",
+  "choices": [
+   "Cry aloud at night",
+   "Fall upon his house",
+   "Set themselves in array",
+   "Wait at his gate"
+  ],
+  "answer": 2,
+  "explanation": "Job says: The terrors of God do set themselves in array against me.",
+  "ref": "Job 6:4"
+ },
+ {
+  "id": "job-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job want God to let loose?",
+  "choices": [
+   "His wrath",
+   "His sword",
+   "His fire",
+   "His hand"
+  ],
+  "answer": 3,
+  "explanation": "Job says: That he would let loose his hand, and cut me off!",
+  "ref": "Job 6:9"
+ },
+ {
+  "id": "job-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has Job not concealed?",
+  "choices": [
+   "The words of the Holy One",
+   "The sins of his youth",
+   "The names of his enemies",
+   "The place of his grief"
+  ],
+  "answer": 0,
+  "explanation": "Job says: Let him not spare; for I have not concealed the words of the Holy One.",
+  "ref": "Job 6:10"
+ },
+ {
+  "id": "job-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what does Job ask whether his flesh is made?",
+  "choices": [
+   "Iron",
+   "Brass",
+   "Clay",
+   "Stone"
+  ],
+  "answer": 1,
+  "explanation": "Job asks: Is my strength the strength of stones? or is my flesh of brass?",
+  "ref": "Job 6:12"
+ },
+ {
+  "id": "job-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the friend who withholds pity forsake?",
+  "choices": [
+   "The law of his fathers",
+   "The house of his brother",
+   "The fear of the Almighty",
+   "The covenant of his youth"
+  ],
+  "answer": 2,
+  "explanation": "Job says: To him that is afflicted pity should be shewed from his friend; but he forsaketh the fear of the Almighty.",
+  "ref": "Job 6:14"
+ },
+ {
+  "id": "job-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose companies waited for the brooks along with the troops of Tema?",
+  "choices": [
+   "Edom",
+   "Midian",
+   "Chaldea",
+   "Sheba"
+  ],
+  "answer": 3,
+  "explanation": "Job says: The troops of Tema looked, the companies of Sheba waited for them.",
+  "ref": "Job 6:19"
+ },
+ {
+  "id": "job-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job ask about his end?",
+  "choices": [
+   "What is mine end, that I should prolong my life?",
+   "Who shall see mine end?",
+   "When shall mine end come?",
+   "Where shall I find mine end?"
+  ],
+  "answer": 0,
+  "explanation": "Job asks: What is my strength, that I should hope? and what is mine end, that I should prolong my life?",
+  "ref": "Job 6:11"
+ },
+ {
+  "id": "job-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job ask whether is not in him?",
+  "choices": [
+   "His wisdom",
+   "His help",
+   "His strength",
+   "His comfort"
+  ],
+  "answer": 1,
+  "explanation": "Job asks: Is not my help in me? and is wisdom driven quite from me?",
+  "ref": "Job 6:13"
+ },
+ {
+  "id": "job-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job ask his friends to help him understand?",
+  "choices": [
+   "Why God hid his face",
+   "Where his sons had gone",
+   "Wherein he has erred",
+   "What the wicked deserve"
+  ],
+  "answer": 2,
+  "explanation": "Job says: Teach me, and I will hold my tongue: and cause me to understand wherein I have erred.",
+  "ref": "Job 6:24"
+ },
+ {
+  "id": "job-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say his friends are now?",
+  "choices": [
+   "His judges",
+   "His shame",
+   "His rock",
+   "No thing"
+  ],
+  "answer": 3,
+  "explanation": "Job says: Now ye are no thing; ye see my casting down, and are afraid.",
+  "ref": "Job 6:21"
+ },
+ {
+  "id": "job-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whose hand did Job say he did not ask to be redeemed?",
+  "choices": [
+   "The hand of the mighty",
+   "The hand of the stranger",
+   "The hand of the Chaldeans",
+   "The hand of the king"
+  ],
+  "answer": 0,
+  "explanation": "Job asks: Or, Redeem me from the hand of the mighty?",
+  "ref": "Job 6:23"
+ },
+ {
+  "id": "job-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say it is evident to his friends if he does?",
+  "choices": [
+   "If he fears",
+   "If he lies",
+   "If he sins",
+   "If he prays"
+  ],
+  "answer": 1,
+  "explanation": "Job says: Look upon me; for it is evident unto you if I lie.",
+  "ref": "Job 6:28"
+ },
+ {
+  "id": "job-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say his taste can discern?",
+  "choices": [
+   "Bitter herbs",
+   "Hidden gold",
+   "Perverse things",
+   "False prophets"
+  ],
+  "answer": 2,
+  "explanation": "Job asks: Is there iniquity in my tongue? cannot my taste discern perverse things?",
+  "ref": "Job 6:30"
+ },
+ {
+  "id": "job-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things does Job ask whether he is, that God sets a watch over him?",
+  "choices": [
+   "A sea, or a whale",
+   "A mountain, or a river",
+   "A lion, or a bear",
+   "A cloud, or a wind"
+  ],
+  "answer": 0,
+  "explanation": "Job asks God: Am I a sea, or a whale, that thou settest a watch over me?",
+  "ref": "Job 7:12"
+ },
+ {
+  "id": "job-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what does Job say his flesh is clothed?",
+  "choices": [
+   "Sackcloth and ashes",
+   "Worms and clods of dust",
+   "Boils and sores",
+   "Silver and gold"
+  ],
+  "answer": 1,
+  "explanation": "Job says: My flesh is clothed with worms and clods of dust; my skin is broken, and become loathsome.",
+  "ref": "Job 7:5"
+ },
+ {
+  "id": "job-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job ask God to remember his life is?",
+  "choices": [
+   "Grass",
+   "Smoke",
+   "Wind",
+   "A shadow"
+  ],
+  "answer": 2,
+  "explanation": "Job says: O remember that my life is wind: mine eye shall no more see good.",
+  "ref": "Job 7:7"
+ },
+ {
+  "id": "job-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what does Job compare a man who goes down to the grave?",
+  "choices": [
+   "A tree cut down",
+   "A river that dries up",
+   "A star that falls",
+   "A cloud that is consumed and vanishes away"
+  ],
+  "answer": 3,
+  "explanation": "Job says: As the cloud is consumed and vanisheth away: so he that goeth down to the grave shall come up no more.",
+  "ref": "Job 7:9"
+ },
+ {
+  "id": "job-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God use to scare Job when his bed should comfort him?",
+  "choices": [
+   "Dreams and visions",
+   "Thunder and lightning",
+   "Voices and trumpets",
+   "Fire and storm"
+  ],
+  "answer": 0,
+  "explanation": "Job says: Then thou scarest me with dreams, and terrifiest me through visions.",
+  "ref": "Job 7:13–14"
+ },
+ {
+  "id": "job-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Job call God when he asks what he shall do unto Him?",
+  "choices": [
+   "Judge of all the earth",
+   "Preserver of men",
+   "King of kings",
+   "Shepherd of Israel"
+  ],
+  "answer": 1,
+  "explanation": "Job says: I have sinned; what shall I do unto thee, O thou preserver of men?",
+  "ref": "Job 7:20"
+ },
+ {
+  "id": "job-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say a servant earnestly desires?",
+  "choices": [
+   "The harvest",
+   "The morning",
+   "The shadow",
+   "The wage"
+  ],
+  "answer": 2,
+  "explanation": "Job says: As a servant earnestly desireth the shadow, and as an hireling looketh for the reward of his work.",
+  "ref": "Job 7:2"
+ },
+ {
+  "id": "job-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say he has been made to possess?",
+  "choices": [
+   "Years of plenty",
+   "Days of rest",
+   "Nights of peace",
+   "Months of vanity"
+  ],
+  "answer": 3,
+  "explanation": "Job says: So am I made to possess months of vanity, and wearisome nights are appointed to me.",
+  "ref": "Job 7:3"
+ },
+ {
+  "id": "job-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has become of Job's skin?",
+  "choices": [
+   "It is broken and loathsome",
+   "It is white as snow",
+   "It is dry as dust",
+   "It is hard as brass"
+  ],
+  "answer": 0,
+  "explanation": "Job says: My skin is broken, and become loathsome.",
+  "ref": "Job 7:5"
+ },
+ {
+  "id": "job-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say his eye shall no more do?",
+  "choices": [
+   "See the dawn",
+   "See good",
+   "See his friends",
+   "See the grave"
+  ],
+  "answer": 1,
+  "explanation": "Job says: O remember that my life is wind: mine eye shall no more see good.",
+  "ref": "Job 7:7"
+ },
+ {
+  "id": "job-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say of the man who goes down to the grave?",
+  "choices": [
+   "He shall rise in the morning",
+   "He shall be remembered",
+   "He shall not return to his house",
+   "He shall be judged by his friends"
+  ],
+  "answer": 2,
+  "explanation": "Job says: He shall return no more to his house, neither shall his place know him any more.",
+  "ref": "Job 7:10"
+ },
+ {
+  "id": "job-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say he will not do?",
+  "choices": [
+   "Curse God",
+   "Leave his friends",
+   "Hold his peace",
+   "Refrain his mouth"
+  ],
+  "answer": 3,
+  "explanation": "Job says: Therefore I will not refrain my mouth; I will speak in the anguish of my spirit.",
+  "ref": "Job 7:11"
+ },
+ {
+  "id": "job-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say he hoped his bed would do?",
+  "choices": [
+   "Comfort him",
+   "Heal him",
+   "Hide him",
+   "Rest him forever"
+  ],
+  "answer": 0,
+  "explanation": "Job says: When I say, My bed shall comfort me, my couch shall ease my complaint.",
+  "ref": "Job 7:13"
+ },
+ {
+  "id": "job-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say his soul chooses?",
+  "choices": [
+   "Silence, and sleep rather than speech",
+   "Strangling, and death rather than his life",
+   "Exile, and wandering rather than home",
+   "Fasting, and prayer rather than food"
+  ],
+  "answer": 1,
+  "explanation": "Job says: My soul chooseth strangling, and death rather than my life.",
+  "ref": "Job 7:15"
+ },
+ {
+  "id": "job-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Job say he would not do?",
+  "choices": [
+   "Speak to his friends",
+   "Seek God",
+   "Live alway",
+   "Eat bread"
+  ],
+  "answer": 2,
+  "explanation": "Job says: I loathe it; I would not live alway: let me alone; for my days are vanity.",
+  "ref": "Job 7:16"
+ },
+ {
+  "id": "job-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How often does Job say God visits man?",
+  "choices": [
+   "Every evening",
+   "Every Sabbath",
+   "Every year",
+   "Every morning"
+  ],
+  "answer": 3,
+  "explanation": "Job asks: That thou shouldest visit him every morning, and try him every moment?",
+  "ref": "Job 7:18"
+ },
+ {
+  "id": "job-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until what does Job ask how long God will not depart from him?",
+  "choices": [
+   "Till he swallow down his spittle",
+   "Till the morning comes",
+   "Till his friends are gone",
+   "Till he is laid in the grave"
+  ],
+  "answer": 0,
+  "explanation": "Job asks: How long wilt thou not depart from me, nor let me alone till I swallow down my spittle?",
+  "ref": "Job 7:19"
+ },
+ {
+  "id": "job-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say an hireling looketh for?",
+  "choices": [
+   "The end of the day",
+   "The reward of his work",
+   "A place to sleep",
+   "A master's blessing"
+  ],
+  "answer": 1,
+  "explanation": "Job says an hireling looketh for the reward of his work.",
+  "ref": "Job 7:2"
+ },
+ {
+  "id": "job-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Job say his days are spent?",
+  "choices": [
+   "In sorrow",
+   "In silence",
+   "Without hope",
+   "In prayer"
+  ],
+  "answer": 2,
+  "explanation": "Job says: My days are swifter than a weaver's shuttle, and are spent without hope.",
+  "ref": "Job 7:6"
+ },
+ {
+  "id": "job-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say of the eye of him that hath seen him?",
+  "choices": [
+   "It shall weep for him",
+   "It shall judge him",
+   "It shall turn away from him",
+   "It shall see him no more"
+  ],
+  "answer": 3,
+  "explanation": "Job says: The eye of him that hath seen me shall see me no more: thine eyes are upon me, and I am not.",
+  "ref": "Job 7:8"
+ },
+ {
+  "id": "job-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say the man who goes down to the grave shall not do?",
+  "choices": [
+   "Come up any more",
+   "Remember his sins",
+   "Know his friends",
+   "Hear the voice of God"
+  ],
+  "answer": 0,
+  "explanation": "Job says: He that goeth down to the grave shall come up no more.",
+  "ref": "Job 7:9"
+ },
+ {
+  "id": "job-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall not know the man who has died any more?",
+  "choices": [
+   "His children",
+   "His place",
+   "His friends",
+   "His name"
+  ],
+  "answer": 1,
+  "explanation": "Job says: He shall return no more to his house, neither shall his place know him any more.",
+  "ref": "Job 7:10"
+ },
+ {
+  "id": "job-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say God does over him, as though he were a sea or a whale?",
+  "choices": [
+   "Sends a storm upon him",
+   "Builds a wall about him",
+   "Sets a watch over him",
+   "Calls a witness against him"
+  ],
+  "answer": 2,
+  "explanation": "Job asks: Am I a sea, or a whale, that thou settest a watch over me?",
+  "ref": "Job 7:12"
+ },
+ {
+  "id": "job-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Job hope his couch would ease?",
+  "choices": [
+   "His pain",
+   "His sleep",
+   "His fear",
+   "His complaint"
+  ],
+  "answer": 3,
+  "explanation": "Job says: My bed shall comfort me, my couch shall ease my complaint.",
+  "ref": "Job 7:13"
+ },
+ {
+  "id": "job-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job's soul choose rather than his life?",
+  "choices": [
+   "Death",
+   "Exile",
+   "Silence",
+   "Poverty"
+  ],
+  "answer": 0,
+  "explanation": "Job says: My soul chooseth strangling, and death rather than my life.",
+  "ref": "Job 7:15"
+ },
+ {
+  "id": "job-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say God has set him up as against Himself?",
+  "choices": [
+   "A shield",
+   "A mark",
+   "A servant",
+   "A witness"
+  ],
+  "answer": 1,
+  "explanation": "Job asks: Why hast thou set me as a mark against thee, so that I am a burden to myself?",
+  "ref": "Job 7:20"
+ },
+ {
+  "id": "job-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom does Job say he has become a burden?",
+  "choices": [
+   "His friends",
+   "His wife",
+   "Himself",
+   "His servants"
+  ],
+  "answer": 2,
+  "explanation": "Job asks why God set him as a mark, so that he is a burden to himself.",
+  "ref": "Job 7:20"
+ },
+ {
+  "id": "job-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Job say God shall do in the morning, but find him not?",
+  "choices": [
+   "Judge him",
+   "Call him",
+   "Forgive him",
+   "Seek him"
+  ],
+  "answer": 3,
+  "explanation": "Job says: Thou shalt seek me in the morning, but I shall not be.",
+  "ref": "Job 7:21"
  }
 ]
