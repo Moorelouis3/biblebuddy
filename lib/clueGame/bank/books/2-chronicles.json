@@ -10112,6 +10112,470 @@
   "ref": "2 Chronicles 21:20"
  },
  {
+  "id": "2-chronicles-21-e-01",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned after Jehoshaphat?",
+  "choices": [
+   "Jehoram his son",
+   "Jehoahaz",
+   "Azariah",
+   "Ahaziah"
+  ],
+  "answer": 0,
+  "explanation": "Jehoshaphat slept with his fathers, and Jehoram his son reigned in his stead.",
+  "ref": "2 Chronicles 21:1"
+ },
+ {
+  "id": "2-chronicles-21-e-02",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Jehoshaphat buried?",
+  "choices": [
+   "In Hebron",
+   "In Mareshah",
+   "In the city of David",
+   "In Samaria"
+  ],
+  "answer": 2,
+  "explanation": "He was buried with his fathers in the city of David.",
+  "ref": "2 Chronicles 21:1"
+ },
+ {
+  "id": "2-chronicles-21-e-03",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did Jehoshaphat give the kingdom to Jehoram?",
+  "choices": [
+   "He was the firstborn",
+   "He was the strongest",
+   "He was the oldest brother's choice",
+   "He had the most gold"
+  ],
+  "answer": 0,
+  "explanation": "The kingdom gave he to Jehoram; because he was the firstborn.",
+  "ref": "2 Chronicles 21:3"
+ },
+ {
+  "id": "2-chronicles-21-e-04",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jehoram do to his brethren after becoming king?",
+  "choices": [
+   "Gave them cities",
+   "Sent them to Egypt",
+   "Made them captains",
+   "Slew them with the sword"
+  ],
+  "answer": 3,
+  "explanation": "He strengthened himself, and slew all his brethren with the sword.",
+  "ref": "2 Chronicles 21:4"
+ },
+ {
+  "id": "2-chronicles-21-e-05",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose daughter did Jehoram have as his wife?",
+  "choices": [
+   "Baasha's",
+   "Ahab's",
+   "Omri's",
+   "Jehu's"
+  ],
+  "answer": 1,
+  "explanation": "He walked in the way of the kings of Israel, like as did the house of Ahab: for he had the daughter of Ahab to wife.",
+  "ref": "2 Chronicles 21:6"
+ },
+ {
+  "id": "2-chronicles-21-e-06",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophet sent Jehoram a writing?",
+  "choices": [
+   "Elisha",
+   "Isaiah",
+   "Hanani",
+   "Elijah"
+  ],
+  "answer": 3,
+  "explanation": "There came a writing to him from Elijah the prophet.",
+  "ref": "2 Chronicles 21:12"
+ },
+ {
+  "id": "2-chronicles-21-e-07",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who revolted from under Judah in Jehoram's days?",
+  "choices": [
+   "The Egyptians",
+   "The Edomites",
+   "The Moabites",
+   "The Syrians"
+  ],
+  "answer": 1,
+  "explanation": "In his days the Edomites revolted from under the dominion of Judah, and made themselves a king.",
+  "ref": "2 Chronicles 21:8"
+ },
+ {
+  "id": "2-chronicles-21-e-08",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What disease struck Jehoram at the end of his life?",
+  "choices": [
+   "An incurable disease of the bowels",
+   "Leprosy",
+   "Blindness",
+   "Fever"
+  ],
+  "answer": 0,
+  "explanation": "The LORD smote him in his bowels with an incurable disease.",
+  "ref": "2 Chronicles 21:18"
+ },
+ {
+  "id": "2-chronicles-21-m-01",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoshaphat give his other sons?",
+  "choices": [
+   "Command of the army",
+   "Seats on the throne",
+   "Land in Israel",
+   "Great gifts of silver, gold and fenced cities"
+  ],
+  "answer": 3,
+  "explanation": "Their father gave them great gifts of silver, and of gold, and of precious things, with fenced cities in Judah.",
+  "ref": "2 Chronicles 21:3"
+ },
+ {
+  "id": "2-chronicles-21-m-02",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides his brothers, whom else did Jehoram slay?",
+  "choices": [
+   "Elijah's followers",
+   "Divers of the princes of Israel",
+   "The priests",
+   "The Edomite king"
+  ],
+  "answer": 1,
+  "explanation": "He slew all his brethren with the sword, and divers also of the princes of Israel.",
+  "ref": "2 Chronicles 21:4"
+ },
+ {
+  "id": "2-chronicles-21-m-03",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Lord not destroy the house of David?",
+  "choices": [
+   "Because Jehoram repented",
+   "Because of Jehoshaphat's prayers",
+   "Because of the temple",
+   "Because of the covenant he made with David"
+  ],
+  "answer": 3,
+  "explanation": "The LORD would not destroy the house of David, because of the covenant that he had made with David.",
+  "ref": "2 Chronicles 21:7"
+ },
+ {
+  "id": "2-chronicles-21-m-04",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jehoram defeat the Edomites who compassed him in?",
+  "choices": [
+   "He rose up by night and smote them",
+   "He bribed their captains",
+   "He starved them",
+   "He asked Egypt for help"
+  ],
+  "answer": 0,
+  "explanation": "Jehoram rose up by night, and smote the Edomites which compassed him in, and the captains of the chariots.",
+  "ref": "2 Chronicles 21:9"
+ },
+ {
+  "id": "2-chronicles-21-m-05",
+  "chapter": 21,
+  "level": "medium",
+  "category": "place",
+  "question": "Which other place revolted from under Jehoram's hand?",
+  "choices": [
+   "Gibeah",
+   "Beersheba",
+   "Libnah",
+   "Hebron"
+  ],
+  "answer": 2,
+  "explanation": "The same time also did Libnah revolt from under his hand.",
+  "ref": "2 Chronicles 21:10"
+ },
+ {
+  "id": "2-chronicles-21-m-06",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Libnah revolt?",
+  "choices": [
+   "He had forsaken the Lord God of his fathers",
+   "He taxed them heavily",
+   "He was weak in war",
+   "He was sick"
+  ],
+  "answer": 0,
+  "explanation": "Libnah revolt from under his hand; because he had forsaken the LORD God of his fathers.",
+  "ref": "2 Chronicles 21:10"
+ },
+ {
+  "id": "2-chronicles-21-m-07",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoram make in the mountains of Judah?",
+  "choices": [
+   "Idols of gold",
+   "Wells",
+   "High places",
+   "Fortresses"
+  ],
+  "answer": 2,
+  "explanation": "He made high places in the mountains of Judah, and caused the inhabitants of Jerusalem to commit fornication.",
+  "ref": "2 Chronicles 21:11"
+ },
+ {
+  "id": "2-chronicles-21-m-08",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose ways had Jehoram not walked in, according to Elijah's writing?",
+  "choices": [
+   "Ahab's and Omri's",
+   "David's and Saul's",
+   "Rehoboam's and Abijah's",
+   "Jehoshaphat's and Asa's"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast not walked in the ways of Jehoshaphat thy father, nor in the ways of Asa king of Judah.",
+  "ref": "2 Chronicles 21:12"
+ },
+ {
+  "id": "2-chronicles-21-m-09",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah's writing say about Jehoram's slain brethren?",
+  "choices": [
+   "They were forgotten",
+   "They were better than himself",
+   "They were traitors",
+   "They were few"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast slain thy brethren of thy father's house, which were better than thyself.",
+  "ref": "2 Chronicles 21:13"
+ },
+ {
+  "id": "2-chronicles-21-m-10",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah say the Lord would smite with a great plague?",
+  "choices": [
+   "His people, children, wives and goods",
+   "His army only",
+   "His brothers' houses",
+   "His horses"
+  ],
+  "answer": 0,
+  "explanation": "With a great plague will the LORD smite thy people, and thy children, and thy wives, and all thy goods.",
+  "ref": "2 Chronicles 21:14"
+ },
+ {
+  "id": "2-chronicles-21-m-11",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the Lord stir up against Jehoram?",
+  "choices": [
+   "The Edomites",
+   "The Egyptians",
+   "The Philistines and the Arabians",
+   "The Syrians"
+  ],
+  "answer": 2,
+  "explanation": "The LORD stirred up against Jehoram the spirit of the Philistines, and of the Arabians, that were near the Ethiopians.",
+  "ref": "2 Chronicles 21:16"
+ },
+ {
+  "id": "2-chronicles-21-h-01",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons of Jehoshaphat are named besides Jehoram?",
+  "choices": [
+   "Five",
+   "Six",
+   "Four",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "Azariah, and Jehiel, and Zechariah, and Azariah, and Michael, and Shephatiah: all these were the sons of Jehoshaphat.",
+  "ref": "2 Chronicles 21:2"
+ },
+ {
+  "id": "2-chronicles-21-h-02",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How old was Jehoram when he began to reign?",
+  "choices": [
+   "Twenty and five",
+   "Forty",
+   "Eighteen",
+   "Thirty and two"
+  ],
+  "answer": 3,
+  "explanation": "Jehoram was thirty and two years old when he began to reign.",
+  "ref": "2 Chronicles 21:5"
+ },
+ {
+  "id": "2-chronicles-21-h-03",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Jehoram reign in Jerusalem?",
+  "choices": [
+   "Forty",
+   "Eight",
+   "Twenty-five",
+   "Four"
+  ],
+  "answer": 1,
+  "explanation": "He reigned eight years in Jerusalem.",
+  "ref": "2 Chronicles 21:5"
+ },
+ {
+  "id": "2-chronicles-21-h-04",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord promise to give David and his sons for ever?",
+  "choices": [
+   "A great name",
+   "A temple",
+   "A light",
+   "A kingdom of gold"
+  ],
+  "answer": 2,
+  "explanation": "He promised to give a light to him and to his sons for ever.",
+  "ref": "2 Chronicles 21:7"
+ },
+ {
+  "id": "2-chronicles-21-h-05",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Edomites make for themselves when they revolted?",
+  "choices": [
+   "A king",
+   "A fortress",
+   "A treaty",
+   "An altar"
+  ],
+  "answer": 0,
+  "explanation": "The Edomites revolted from under the dominion of Judah, and made themselves a king.",
+  "ref": "2 Chronicles 21:8"
+ },
+ {
+  "id": "2-chronicles-21-h-06",
+  "chapter": 21,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son was left to Jehoram after the raid?",
+  "choices": [
+   "Ahaziah the eldest",
+   "Michael",
+   "Jehoahaz, the youngest",
+   "Azariah"
+  ],
+  "answer": 2,
+  "explanation": "There was never a son left him, save Jehoahaz, the youngest of his sons.",
+  "ref": "2 Chronicles 21:17"
+ },
+ {
+  "id": "2-chronicles-21-h-07",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the invaders carry away from the king's house?",
+  "choices": [
+   "All the substance, his sons and his wives",
+   "Only the temple vessels",
+   "Only the royal horses",
+   "His crown"
+  ],
+  "answer": 0,
+  "explanation": "They carried away all the substance that was found in the king's house, and his sons also, and his wives.",
+  "ref": "2 Chronicles 21:17"
+ },
+ {
+  "id": "2-chronicles-21-h-08",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After how long did Jehoram's bowels fall out?",
+  "choices": [
+   "After ten years",
+   "After the end of two years",
+   "After one year",
+   "After seven days"
+  ],
+  "answer": 1,
+  "explanation": "In process of time, after the end of two years, his bowels fell out by reason of his sickness.",
+  "ref": "2 Chronicles 21:19"
+ },
+ {
+  "id": "2-chronicles-21-h-09",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people not make for Jehoram, unlike his fathers?",
+  "choices": [
+   "A feast",
+   "A tomb",
+   "A song",
+   "A burning"
+  ],
+  "answer": 3,
+  "explanation": "His people made no burning for him, like the burning of his fathers.",
+  "ref": "2 Chronicles 21:19"
+ },
+ {
+  "id": "2-chronicles-21-h-10",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is Jehoram's departure described?",
+  "choices": [
+   "In a great battle",
+   "In secret exile",
+   "Without being desired",
+   "With great mourning"
+  ],
+  "answer": 2,
+  "explanation": "He reigned in Jerusalem eight years, and departed without being desired.",
+  "ref": "2 Chronicles 21:20"
+ },
+ {
   "id": "old-2-chronicles-22-1",
   "chapter": 22,
   "level": "beginner",
