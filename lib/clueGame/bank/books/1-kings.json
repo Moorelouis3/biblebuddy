@@ -8016,6 +8016,646 @@
   "ref": "1 Kings 12:28–29"
  },
  {
+  "id": "1-kings-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Jeroboam when he heard Rehoboam was being made king?",
+  "choices": [
+   "Egypt",
+   "Edom",
+   "Syria",
+   "Shechem"
+  ],
+  "answer": 0,
+  "explanation": "Jeroboam the son of Nebat, who was yet in Egypt, heard of it.",
+  "ref": "1 Kings 12:2"
+ },
+ {
+  "id": "1-kings-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did the people say had made their yoke grievous?",
+  "choices": [
+   "Jeroboam",
+   "Rehoboam's father",
+   "Jesse",
+   "Ahijah"
+  ],
+  "answer": 1,
+  "explanation": "Thy father made our yoke grievous.",
+  "ref": "1 Kings 12:4"
+ },
+ {
+  "id": "1-kings-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Rehoboam consult first?",
+  "choices": [
+   "The young men",
+   "The priests",
+   "The old men who stood before Solomon",
+   "Jeroboam"
+  ],
+  "answer": 2,
+  "explanation": "King Rehoboam consulted with the old men, that stood before Solomon his father while he yet lived.",
+  "ref": "1 Kings 12:6"
+ },
+ {
+  "id": "1-kings-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the young men say would be thicker than Solomon's loins?",
+  "choices": [
+   "Rehoboam's little finger",
+   "Rehoboam's sword",
+   "Rehoboam's yoke",
+   "Rehoboam's throne"
+  ],
+  "answer": 0,
+  "explanation": "My little finger shall be thicker than my father's loins.",
+  "ref": "1 Kings 12:10"
+ },
+ {
+  "id": "1-kings-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what did Rehoboam say he would chastise the people?",
+  "choices": [
+   "Whips",
+   "Scorpions",
+   "Rods",
+   "Chains"
+  ],
+  "answer": 1,
+  "explanation": "My father hath chastised you with whips, but I will chastise you with scorpions.",
+  "ref": "1 Kings 12:11"
+ },
+ {
+  "id": "1-kings-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was sent over the tribute, and was stoned by all Israel?",
+  "choices": [
+   "Shemaiah",
+   "Ahijah",
+   "Adoram",
+   "Rezon"
+  ],
+  "answer": 2,
+  "explanation": "King Rehoboam sent Adoram, who was over the tribute; and all Israel stoned him with stones, that he died.",
+  "ref": "1 Kings 12:18"
+ },
+ {
+  "id": "1-kings-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe only followed the house of David?",
+  "choices": [
+   "Judah",
+   "Benjamin",
+   "Ephraim",
+   "Levi"
+  ],
+  "answer": 0,
+  "explanation": "There was none that followed the house of David, but the tribe of Judah only.",
+  "ref": "1 Kings 12:20"
+ },
+ {
+  "id": "1-kings-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did all Israel make king over them?",
+  "choices": [
+   "Rehoboam",
+   "Jeroboam",
+   "Adoram",
+   "Hadad"
+  ],
+  "answer": 1,
+  "explanation": "They sent and called him unto the congregation, and made him king over all Israel.",
+  "ref": "1 Kings 12:20"
+ },
+ {
+  "id": "1-kings-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were the two calves Jeroboam made of?",
+  "choices": [
+   "Brass",
+   "Silver",
+   "Gold",
+   "Wood"
+  ],
+  "answer": 2,
+  "explanation": "The king took counsel, and made two calves of gold.",
+  "ref": "1 Kings 12:28"
+ },
+ {
+  "id": "1-kings-12-e-10",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the man of God to whom the word of God came about not fighting?",
+  "choices": [
+   "Shemaiah",
+   "Ahijah",
+   "Nathan",
+   "Gad"
+  ],
+  "answer": 0,
+  "explanation": "But the word of God came unto Shemaiah the man of God.",
+  "ref": "1 Kings 12:22"
+ },
+ {
+  "id": "1-kings-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the old men advise Rehoboam to be to the people?",
+  "choices": [
+   "A conqueror",
+   "A servant",
+   "A judge",
+   "A priest"
+  ],
+  "answer": 1,
+  "explanation": "If thou wilt be a servant unto this people this day, and wilt serve them, then they will be thy servants for ever.",
+  "ref": "1 Kings 12:7"
+ },
+ {
+  "id": "1-kings-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did the young men say Solomon had chastised the people?",
+  "choices": [
+   "Whips",
+   "Scorpions",
+   "Rods",
+   "Fines"
+  ],
+  "answer": 0,
+  "explanation": "My father hath chastised you with whips, but I will chastise you with scorpions.",
+  "ref": "1 Kings 12:11"
+ },
+ {
+  "id": "1-kings-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Rehoboam answer the people?",
+  "choices": [
+   "Kindly",
+   "Humbly",
+   "Roughly",
+   "Silently"
+  ],
+  "answer": 2,
+  "explanation": "And the king answered the people roughly, and forsook the old men's counsel.",
+  "ref": "1 Kings 12:13"
+ },
+ {
+  "id": "1-kings-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the king not hearken to the people?",
+  "choices": [
+   "The cause was from the Lord",
+   "His princes forbade it",
+   "He was afraid of Egypt",
+   "The priests advised against it"
+  ],
+  "answer": 0,
+  "explanation": "The king hearkened not unto the people; for the cause was from the Lord, that he might perform his saying.",
+  "ref": "1 Kings 12:15"
+ },
+ {
+  "id": "1-kings-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son did the people say they had no inheritance in?",
+  "choices": [
+   "Nebat",
+   "Jesse",
+   "Solomon",
+   "Joseph"
+  ],
+  "answer": 1,
+  "explanation": "What portion have we in David? neither have we inheritance in the son of Jesse.",
+  "ref": "1 Kings 12:16"
+ },
+ {
+  "id": "1-kings-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Rehoboam reign over after the others left?",
+  "choices": [
+   "All Israel",
+   "Only the tribe of Levi",
+   "Children of Israel in the cities of Judah",
+   "The people of Shechem"
+  ],
+  "answer": 2,
+  "explanation": "As for the children of Israel which dwelt in the cities of Judah, Rehoboam reigned over them.",
+  "ref": "1 Kings 12:17"
+ },
+ {
+  "id": "1-kings-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Rehoboam flee after Adoram was stoned?",
+  "choices": [
+   "Shechem",
+   "Jerusalem",
+   "Bethel",
+   "Hebron"
+  ],
+  "answer": 1,
+  "explanation": "King Rehoboam made speed to get him up to his chariot, to flee to Jerusalem.",
+  "ref": "1 Kings 12:18"
+ },
+ {
+  "id": "1-kings-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two tribes did Rehoboam assemble to fight Israel?",
+  "choices": [
+   "Judah and Benjamin",
+   "Judah and Levi",
+   "Ephraim and Benjamin",
+   "Judah and Simeon"
+  ],
+  "answer": 0,
+  "explanation": "He assembled all the house of Judah, with the tribe of Benjamin.",
+  "ref": "1 Kings 12:21"
+ },
+ {
+  "id": "1-kings-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Lord say they must not fight their brethren?",
+  "choices": [
+   "The temple was unfinished",
+   "Egypt would attack",
+   "This thing is from the Lord",
+   "The people were too few"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall not go up, nor fight against your brethren the children of Israel: for this thing is from me.",
+  "ref": "1 Kings 12:24"
+ },
+ {
+  "id": "1-kings-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city in mount Ephraim did Jeroboam build and dwell in?",
+  "choices": [
+   "Shiloh",
+   "Samaria",
+   "Bethel",
+   "Shechem"
+  ],
+  "answer": 3,
+  "explanation": "Then Jeroboam built Shechem in mount Ephraim, and dwelt therein.",
+  "ref": "1 Kings 12:25"
+ },
+ {
+  "id": "1-kings-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jeroboam fear if the people went to sacrifice at Jerusalem?",
+  "choices": [
+   "That the temple would be robbed",
+   "That they would kill him and return to Rehoboam",
+   "That Egypt would invade",
+   "That they would pay no tribute"
+  ],
+  "answer": 1,
+  "explanation": "They shall kill me, and go again to Rehoboam king of Judah.",
+  "ref": "1 Kings 12:27"
+ },
+ {
+  "id": "1-kings-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jeroboam say was too much for the people?",
+  "choices": [
+   "Paying tribute",
+   "Fighting Judah",
+   "Going up to Jerusalem",
+   "Keeping the feasts"
+  ],
+  "answer": 2,
+  "explanation": "It is too much for you to go up to Jerusalem.",
+  "ref": "1 Kings 12:28"
+ },
+ {
+  "id": "1-kings-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "From whom did Jeroboam make priests?",
+  "choices": [
+   "The lowest of the people",
+   "The elders of Israel",
+   "The sons of Aaron",
+   "The men of Judah"
+  ],
+  "answer": 0,
+  "explanation": "He made priests of the lowest of the people, which were not of the sons of Levi.",
+  "ref": "1 Kings 12:31"
+ },
+ {
+  "id": "1-kings-12-m-14",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which month did Jeroboam ordain a feast?",
+  "choices": [
+   "The seventh",
+   "The eighth",
+   "The first",
+   "The tenth"
+  ],
+  "answer": 1,
+  "explanation": "Jeroboam ordained a feast in the eighth month, on the fifteenth day of the month.",
+  "ref": "1 Kings 12:32"
+ },
+ {
+  "id": "1-kings-12-m-15",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people promise if Rehoboam made the yoke lighter?",
+  "choices": [
+   "We will give gold",
+   "We will serve thee",
+   "We will build thee a house",
+   "We will bring tribute"
+  ],
+  "answer": 1,
+  "explanation": "Make the yoke lighter, and we will serve thee.",
+  "ref": "1 Kings 12:4"
+ },
+ {
+  "id": "1-kings-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many chosen warriors did Rehoboam assemble?",
+  "choices": [
+   "A hundred and twenty thousand",
+   "A hundred and fourscore thousand",
+   "Eighty thousand",
+   "Twelve thousand"
+  ],
+  "answer": 1,
+  "explanation": "An hundred and fourscore thousand chosen men, which were warriors.",
+  "ref": "1 Kings 12:21"
+ },
+ {
+  "id": "1-kings-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place did Jeroboam build after he went out from Shechem?",
+  "choices": [
+   "Penuel",
+   "Bethel",
+   "Dan",
+   "Gilgal"
+  ],
+  "answer": 0,
+  "explanation": "Jeroboam built Shechem in mount Ephraim, and went out from thence, and built Penuel.",
+  "ref": "1 Kings 12:25"
+ },
+ {
+  "id": "1-kings-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day of the eighth month was Jeroboam's feast?",
+  "choices": [
+   "The tenth",
+   "The seventh",
+   "The twentieth",
+   "The fifteenth"
+  ],
+  "answer": 3,
+  "explanation": "Jeroboam ordained a feast in the eighth month, on the fifteenth day of the month.",
+  "ref": "1 Kings 12:32"
+ },
+ {
+  "id": "1-kings-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "By whom had the Lord spoken the saying he was now performing?",
+  "choices": [
+   "Shemaiah",
+   "Ahijah the Shilonite",
+   "Nathan",
+   "Elijah"
+  ],
+  "answer": 1,
+  "explanation": "That he might perform his saying, which the Lord spake by Ahijah the Shilonite unto Jeroboam the son of Nebat.",
+  "ref": "1 Kings 12:15"
+ },
+ {
+  "id": "1-kings-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides Rehoboam and Judah and Benjamin, to whom was Shemaiah to speak?",
+  "choices": [
+   "The priests",
+   "The elders of Israel",
+   "The remnant of the people",
+   "The captains of the host"
+  ],
+  "answer": 2,
+  "explanation": "Speak unto Rehoboam, and unto all the house of Judah and Benjamin, and to the remnant of the people.",
+  "ref": "1 Kings 12:23"
+ },
+ {
+  "id": "1-kings-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Unto which place did the people go to worship before the one calf?",
+  "choices": [
+   "Dan",
+   "Bethel",
+   "Shechem",
+   "Penuel"
+  ],
+  "answer": 0,
+  "explanation": "The people went to worship before the one, even unto Dan.",
+  "ref": "1 Kings 12:30"
+ },
+ {
+  "id": "1-kings-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jeroboam say the calves had done?",
+  "choices": [
+   "Given Israel the land",
+   "Brought Israel up out of the land of Egypt",
+   "Delivered Israel from Judah",
+   "Made Israel a great nation"
+  ],
+  "answer": 1,
+  "explanation": "Behold thy gods, O Israel, which brought thee up out of the land of Egypt.",
+  "ref": "1 Kings 12:28"
+ },
+ {
+  "id": "1-kings-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of house did Jeroboam make?",
+  "choices": [
+   "A house of cedar",
+   "A house of ivory",
+   "A house of high places",
+   "A house of the forest"
+  ],
+  "answer": 2,
+  "explanation": "And he made an house of high places.",
+  "ref": "1 Kings 12:31"
+ },
+ {
+  "id": "1-kings-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Jeroboam place the priests of the high places?",
+  "choices": [
+   "Bethel",
+   "Dan",
+   "Shechem",
+   "Penuel"
+  ],
+  "answer": 0,
+  "explanation": "He placed in Bethel the priests of the high places which he had made.",
+  "ref": "1 Kings 12:32"
+ },
+ {
+  "id": "1-kings-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Adoram, whom Rehoboam sent, was over what?",
+  "choices": [
+   "The army",
+   "The tribute",
+   "The treasury",
+   "The cities of store"
+  ],
+  "answer": 1,
+  "explanation": "King Rehoboam sent Adoram, who was over the tribute.",
+  "ref": "1 Kings 12:18"
+ },
+ {
+  "id": "1-kings-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which day did Jeroboam and the people come again to Rehoboam?",
+  "choices": [
+   "The first",
+   "The second",
+   "The third",
+   "The seventh"
+  ],
+  "answer": 2,
+  "explanation": "Jeroboam and all the people came to Rehoboam the third day, as the king had appointed.",
+  "ref": "1 Kings 12:12"
+ },
+ {
+  "id": "1-kings-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jeroboam's priests were not of the sons of whom?",
+  "choices": [
+   "Levi",
+   "Judah",
+   "Joseph",
+   "Dan"
+  ],
+  "answer": 0,
+  "explanation": "He made priests of the lowest of the people, which were not of the sons of Levi.",
+  "ref": "1 Kings 12:31"
+ },
+ {
+  "id": "1-kings-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Jeroboam's feast was like the feast that is in which kingdom?",
+  "choices": [
+   "Egypt",
+   "Judah",
+   "Edom",
+   "Syria"
+  ],
+  "answer": 1,
+  "explanation": "Jeroboam ordained a feast like unto the feast that is in Judah.",
+  "ref": "1 Kings 12:32"
+ },
+ {
+  "id": "1-kings-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides offering, what did Jeroboam do upon the altar he made in Bethel?",
+  "choices": [
+   "Poured out wine",
+   "Sounded trumpets",
+   "Burnt incense",
+   "Anointed the calves"
+  ],
+  "answer": 2,
+  "explanation": "He offered upon the altar, and burnt incense.",
+  "ref": "1 Kings 12:33"
+ },
+ {
+  "id": "1-kings-12-h-15",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Rehoboam say he would add to, since his father had laded them with a heavy yoke?",
+  "choices": [
+   "Your tribute",
+   "Your yoke",
+   "Your flocks",
+   "Your service years"
+  ],
+  "answer": 1,
+  "explanation": "My father did lade you with a heavy yoke, I will add to your yoke.",
+  "ref": "1 Kings 12:11"
+ },
+ {
   "id": "old-1-kings-13-1",
   "chapter": 13,
   "level": "beginner",
