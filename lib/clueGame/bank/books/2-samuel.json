@@ -13152,6 +13152,662 @@
   "ref": "2 Samuel 19:31–37"
  },
  {
+  "id": "2-samuel-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What turned the day's victory into mourning for all the people?",
+  "choices": [
+   "Joab's death",
+   "The king grieved for his son",
+   "A plague",
+   "Defeat at the Jordan"
+  ],
+  "answer": 1,
+  "explanation": "The victory that day was turned into mourning, for the people heard how the king was grieved for his son.",
+  "ref": "2 Samuel 19:2"
+ },
+ {
+  "id": "2-samuel-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people come into the city that day?",
+  "choices": [
+   "With singing and trumpets",
+   "By stealth, like those ashamed after a flight",
+   "In chariots",
+   "In the night with torches"
+  ],
+  "answer": 1,
+  "explanation": "The people gat them by stealth into the city, as people being ashamed steal away when they flee in battle.",
+  "ref": "2 Samuel 19:3"
+ },
+ {
+  "id": "2-samuel-19-e-03",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David sit after Joab spoke to him?",
+  "choices": [
+   "On the wall",
+   "In the gate",
+   "In the temple",
+   "In the wood"
+  ],
+  "answer": 1,
+  "explanation": "The king arose, and sat in the gate, and all the people came before him.",
+  "ref": "2 Samuel 19:8"
+ },
+ {
+  "id": "2-samuel-19-e-04",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two priests did David send to speak to the elders of Judah?",
+  "choices": [
+   "Hushai and Ahimaaz",
+   "Zadok and Abiathar",
+   "Zadok and Ahimaaz",
+   "Abiathar and Jonathan"
+  ],
+  "answer": 1,
+  "explanation": "King David sent to Zadok and to Abiathar the priests.",
+  "ref": "2 Samuel 19:11"
+ },
+ {
+  "id": "2-samuel-19-e-05",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David promise to make captain of the host instead of Joab?",
+  "choices": [
+   "Abishai",
+   "Amasa",
+   "Ittai",
+   "Barzillai"
+  ],
+  "answer": 1,
+  "explanation": "David said, God do so to me, if thou be not captain of the host before me in the room of Joab.",
+  "ref": "2 Samuel 19:13"
+ },
+ {
+  "id": "2-samuel-19-e-06",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who fell down before David at the Jordan and asked not to be remembered for his sin?",
+  "choices": [
+   "Ziba",
+   "Shimei",
+   "Chimham",
+   "Amasa"
+  ],
+  "answer": 1,
+  "explanation": "Shimei the son of Gera fell down before the king.",
+  "ref": "2 Samuel 19:18"
+ },
+ {
+  "id": "2-samuel-19-e-07",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Abishai say Shimei should be for cursing the LORD's anointed?",
+  "choices": [
+   "Banished",
+   "Put to death",
+   "Imprisoned",
+   "Fined"
+  ],
+  "answer": 1,
+  "explanation": "Abishai said, Shall not Shimei be put to death for this, because he cursed the LORD'S anointed?",
+  "ref": "2 Samuel 19:21"
+ },
+ {
+  "id": "2-samuel-19-e-08",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David answer Shimei?",
+  "choices": [
+   "Thou shalt pay",
+   "Thou shalt not die",
+   "Go to Gath",
+   "Thou shalt serve me"
+  ],
+  "answer": 1,
+  "explanation": "The king said unto Shimei, Thou shalt not die. And the king sware unto him.",
+  "ref": "2 Samuel 19:23"
+ },
+ {
+  "id": "2-samuel-19-e-09",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son was Mephibosheth, who came down to meet the king?",
+  "choices": [
+   "Jonathan's brother Ish-bosheth",
+   "Saul",
+   "Abner",
+   "Ziba"
+  ],
+  "answer": 1,
+  "explanation": "Mephibosheth the son of Saul came down to meet the king.",
+  "ref": "2 Samuel 19:24"
+ },
+ {
+  "id": "2-samuel-19-e-10",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which very aged man had provided the king with food at Mahanaim?",
+  "choices": [
+   "Shimei",
+   "Barzillai",
+   "Ziba",
+   "Machir"
+  ],
+  "answer": 1,
+  "explanation": "Barzillai was a very aged man, and he had provided the king of sustenance while he lay at Mahanaim.",
+  "ref": "2 Samuel 19:32"
+ },
+ {
+  "id": "2-samuel-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who told Joab the king was weeping and mourning for Absalom?",
+  "choices": [
+   "A priest",
+   "Ittai",
+   "Abishai",
+   "Some of the people told him"
+  ],
+  "answer": 3,
+  "explanation": "It was told Joab, Behold, the king weepeth and mourneth for Absalom.",
+  "ref": "2 Samuel 19:1"
+ },
+ {
+  "id": "2-samuel-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joab say David had declared by loving his enemies?",
+  "choices": [
+   "That he hated Israel",
+   "That he would give up the throne",
+   "That he feared the Philistines",
+   "That he regarded neither princes nor servants"
+  ],
+  "answer": 3,
+  "explanation": "Joab said, Thou hast declared this day, that thou regardest neither princes nor servants.",
+  "ref": "2 Samuel 19:6"
+ },
+ {
+  "id": "2-samuel-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joab swear would happen if David did not go forth?",
+  "choices": [
+   "The army would revolt in a year",
+   "Judah would rebel",
+   "Joab would resign",
+   "Not one would tarry with him that night"
+  ],
+  "answer": 3,
+  "explanation": "I swear by the LORD, if thou go not forth, there will not tarry one with thee this night.",
+  "ref": "2 Samuel 19:7"
+ },
+ {
+  "id": "2-samuel-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people throughout the tribes say David had done for them?",
+  "choices": [
+   "Built them cities",
+   "Given them corn",
+   "Freed them from taxes",
+   "Saved them from their enemies and the Philistines"
+  ],
+  "answer": 3,
+  "explanation": "The king saved us out of the hand of our enemies, and he delivered us out of the hand of the Philistines.",
+  "ref": "2 Samuel 19:9"
+ },
+ {
+  "id": "2-samuel-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David call the elders of Judah, urging them to bring him back?",
+  "choices": [
+   "His sons",
+   "His captains",
+   "His servants",
+   "His bones and his flesh"
+  ],
+  "answer": 3,
+  "explanation": "Ye are my brethren, ye are my bones and my flesh.",
+  "ref": "2 Samuel 19:12"
+ },
+ {
+  "id": "2-samuel-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the heart of the men of Judah?",
+  "choices": [
+   "It was hardened",
+   "It was divided",
+   "It was afraid",
+   "It was bowed as the heart of one man"
+  ],
+  "answer": 3,
+  "explanation": "He bowed the heart of all the men of Judah, even as the heart of one man.",
+  "ref": "2 Samuel 19:14"
+ },
+ {
+  "id": "2-samuel-19-m-07",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Judah come to meet the king?",
+  "choices": [
+   "Bethel",
+   "Hebron",
+   "Gilead",
+   "Gilgal"
+  ],
+  "answer": 3,
+  "explanation": "Judah came to Gilgal, to go to meet the king, to conduct the king over Jordan.",
+  "ref": "2 Samuel 19:15"
+ },
+ {
+  "id": "2-samuel-19-m-08",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Shimei the son of Gera from?",
+  "choices": [
+   "Rogelim",
+   "Gilgal",
+   "Hebron",
+   "Bahurim"
+  ],
+  "answer": 3,
+  "explanation": "Shimei the son of Gera, a Benjamite, which was of Bahurim, came down to meet David.",
+  "ref": "2 Samuel 19:16"
+ },
+ {
+  "id": "2-samuel-19-m-09",
+  "chapter": 19,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did David call adversaries, saying What have I to do with you?",
+  "choices": [
+   "The men of Judah",
+   "The elders of Israel",
+   "The sons of Saul",
+   "The sons of Zeruiah"
+  ],
+  "answer": 3,
+  "explanation": "David said, What have I to do with you, ye sons of Zeruiah, that ye should this day be adversaries unto me?",
+  "ref": "2 Samuel 19:22"
+ },
+ {
+  "id": "2-samuel-19-m-10",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Mephibosheth not done from the day the king left until he returned in peace?",
+  "choices": [
+   "Eaten at his own table",
+   "Spoken to Ziba",
+   "Left Jerusalem",
+   "Dressed his feet, trimmed his beard or washed his clothes"
+  ],
+  "answer": 3,
+  "explanation": "He had neither dressed his feet, nor trimmed his beard, nor washed his clothes.",
+  "ref": "2 Samuel 19:24"
+ },
+ {
+  "id": "2-samuel-19-m-11",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Mephibosheth say he had not gone with David?",
+  "choices": [
+   "He was ill",
+   "He was afraid",
+   "He did not know",
+   "His servant deceived him"
+  ],
+  "answer": 3,
+  "explanation": "My servant deceived me: thy servant said, I will saddle me an ass, but thy servant is lame.",
+  "ref": "2 Samuel 19:26"
+ },
+ {
+  "id": "2-samuel-19-m-12",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David tell Mephibosheth about the land?",
+  "choices": [
+   "Ziba shall keep it all",
+   "It is thine alone",
+   "It returns to the crown",
+   "Thou and Ziba divide the land"
+  ],
+  "answer": 3,
+  "explanation": "I have said, Thou and Ziba divide the land.",
+  "ref": "2 Samuel 19:29"
+ },
+ {
+  "id": "2-samuel-19-m-13",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How old was Barzillai?",
+  "choices": [
+   "Seventy years",
+   "A hundred years",
+   "Sixty years",
+   "Fourscore years"
+  ],
+  "answer": 3,
+  "explanation": "Barzillai was a very aged man, even fourscore years old.",
+  "ref": "2 Samuel 19:32"
+ },
+ {
+  "id": "2-samuel-19-m-14",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David offer Barzillai if he came over with him?",
+  "choices": [
+   "A house in Gilead",
+   "A captaincy",
+   "Silver and gold",
+   "To feed him in Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "The king said, Come thou over with me, and I will feed thee with me in Jerusalem.",
+  "ref": "2 Samuel 19:33"
+ },
+ {
+  "id": "2-samuel-19-m-15",
+  "chapter": 19,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Barzillai ask the king to take over Jordan in his place?",
+  "choices": [
+   "Ziba",
+   "Shimei",
+   "Amasa",
+   "Chimham"
+  ],
+  "answer": 3,
+  "explanation": "Barzillai said, Behold thy servant Chimham; let him go over with my lord the king.",
+  "ref": "2 Samuel 19:37"
+ },
+ {
+  "id": "2-samuel-19-m-16",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David do before Barzillai returned to his own place?",
+  "choices": [
+   "Gave him a robe",
+   "Made him a captain",
+   "Fed him at his table",
+   "Kissed him and blessed him"
+  ],
+  "answer": 3,
+  "explanation": "The king kissed Barzillai, and blessed him; and he returned unto his own place.",
+  "ref": "2 Samuel 19:39"
+ },
+ {
+  "id": "2-samuel-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of Benjamin were with Shimei?",
+  "choices": [
+   "Two hundred",
+   "Five hundred",
+   "Twenty",
+   "A thousand"
+  ],
+  "answer": 3,
+  "explanation": "There were a thousand men of Benjamin with him.",
+  "ref": "2 Samuel 19:17"
+ },
+ {
+  "id": "2-samuel-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sons and servants did Ziba bring with him?",
+  "choices": [
+   "Ten sons and ten servants",
+   "Twelve sons and thirty servants",
+   "Seven sons and fifteen servants",
+   "Fifteen sons and twenty servants"
+  ],
+  "answer": 3,
+  "explanation": "Ziba the servant of the house of Saul, and his fifteen sons and his twenty servants with him.",
+  "ref": "2 Samuel 19:17"
+ },
+ {
+  "id": "2-samuel-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What went over Jordan to carry the king's household?",
+  "choices": [
+   "A bridge of boats",
+   "A chariot",
+   "Camels",
+   "A ferry boat"
+  ],
+  "answer": 3,
+  "explanation": "There went over a ferry boat to carry over the king's household.",
+  "ref": "2 Samuel 19:18"
+ },
+ {
+  "id": "2-samuel-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Shimei say about his coming first to meet the king?",
+  "choices": [
+   "He was first of Benjamin",
+   "He was first of Judah",
+   "He came before the army",
+   "He was first of all the house of Joseph"
+  ],
+  "answer": 3,
+  "explanation": "I am come the first this day of all the house of Joseph to go down to meet my lord the king.",
+  "ref": "2 Samuel 19:20"
+ },
+ {
+  "id": "2-samuel-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Mephibosheth call David, as one who is like an angel?",
+  "choices": [
+   "A man of God",
+   "A shepherd",
+   "A prophet",
+   "An angel of God"
+  ],
+  "answer": 3,
+  "explanation": "My lord the king is as an angel of God: do therefore what is good in thine eyes.",
+  "ref": "2 Samuel 19:27"
+ },
+ {
+  "id": "2-samuel-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where had David set Mephibosheth to eat?",
+  "choices": [
+   "In the gate",
+   "In Mahanaim",
+   "In the temple",
+   "At his own table"
+  ],
+  "answer": 3,
+  "explanation": "Thou didst set thy servant among them that did eat at thine own table.",
+  "ref": "2 Samuel 19:28"
+ },
+ {
+  "id": "2-samuel-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Mephibosheth say Ziba could do with the land?",
+  "choices": [
+   "Sell it",
+   "Give it back",
+   "Burn it",
+   "Take all"
+  ],
+  "answer": 3,
+  "explanation": "Mephibosheth said, Yea, let him take all, forasmuch as my lord the king is come again in peace.",
+  "ref": "2 Samuel 19:30"
+ },
+ {
+  "id": "2-samuel-19-h-08",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Barzillai say he could no longer hear?",
+  "choices": [
+   "The sound of trumpets",
+   "The king's counsel",
+   "The harp",
+   "The voice of singing men and singing women"
+  ],
+  "answer": 3,
+  "explanation": "Can I hear any more the voice of singing men and singing women?",
+  "ref": "2 Samuel 19:35"
+ },
+ {
+  "id": "2-samuel-19-h-09",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Barzillai want to be buried?",
+  "choices": [
+   "In Jerusalem",
+   "At Mahanaim",
+   "In the king's garden",
+   "By the grave of his father and mother"
+  ],
+  "answer": 3,
+  "explanation": "Let thy servant turn back again, that I may die in mine own city, and be buried by the grave of my father and of my mother.",
+  "ref": "2 Samuel 19:37"
+ },
+ {
+  "id": "2-samuel-19-h-10",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Barzillai from?",
+  "choices": [
+   "Bahurim",
+   "Lo-debar",
+   "Gilgal",
+   "Rogelim"
+  ],
+  "answer": 3,
+  "explanation": "Barzillai the Gileadite came down from Rogelim.",
+  "ref": "2 Samuel 19:31"
+ },
+ {
+  "id": "2-samuel-19-h-11",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the king go after Jordan, with Chimham?",
+  "choices": [
+   "Hebron",
+   "Bethel",
+   "Jericho",
+   "Gilgal"
+  ],
+  "answer": 3,
+  "explanation": "The king went on to Gilgal, and Chimham went on with him.",
+  "ref": "2 Samuel 19:40"
+ },
+ {
+  "id": "2-samuel-19-h-12",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who conducted the king, besides all the people of Judah?",
+  "choices": [
+   "The priests only",
+   "The Philistines",
+   "All of Benjamin",
+   "Half the people of Israel"
+  ],
+  "answer": 3,
+  "explanation": "All the people of Judah conducted the king, and also half the people of Israel.",
+  "ref": "2 Samuel 19:40"
+ },
+ {
+  "id": "2-samuel-19-h-13",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men of Judah say when Israel was angry?",
+  "choices": [
+   "The king chose Judah",
+   "Israel had rebelled",
+   "The king was ours by lot",
+   "The king is near of kin to us"
+  ],
+  "answer": 3,
+  "explanation": "Because the king is near of kin to us: have we eaten at all of the king's cost?",
+  "ref": "2 Samuel 19:42"
+ },
+ {
+  "id": "2-samuel-19-h-14",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many parts in the king did the men of Israel say they had?",
+  "choices": [
+   "Twelve",
+   "Eleven",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 3,
+  "explanation": "We have ten parts in the king, and we have also more right in David than ye.",
+  "ref": "2 Samuel 19:43"
+ },
+ {
+  "id": "2-samuel-19-h-15",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose words were fiercer, Judah's or Israel's?",
+  "choices": [
+   "Israel's",
+   "Joab's",
+   "Shimei's",
+   "Judah's"
+  ],
+  "answer": 3,
+  "explanation": "The words of the men of Judah were fiercer than the words of the men of Israel.",
+  "ref": "2 Samuel 19:43"
+ },
+ {
   "id": "old-2-samuel-20-1",
   "chapter": 20,
   "level": "beginner",
