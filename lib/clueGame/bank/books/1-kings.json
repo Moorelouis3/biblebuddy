@@ -11616,6 +11616,646 @@
   "ref": "1 Kings 17:21–22"
  },
  {
+  "id": "1-kings-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Elijah the Tishbite from?",
+  "choices": [
+   "Gilead",
+   "Samaria",
+   "Zarephath",
+   "Shiloh"
+  ],
+  "answer": 0,
+  "explanation": "Elijah the Tishbite was of the inhabitants of Gilead.",
+  "ref": "1 Kings 17:1"
+ },
+ {
+  "id": "1-kings-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "To which king did Elijah say there would be no dew nor rain?",
+  "choices": [
+   "Omri",
+   "Jehoshaphat",
+   "Ben-hadad",
+   "Ahab"
+  ],
+  "answer": 3,
+  "explanation": "Elijah said unto Ahab, there shall not be dew nor rain these years, but according to my word.",
+  "ref": "1 Kings 17:1"
+ },
+ {
+  "id": "1-kings-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "By which brook did the LORD tell Elijah to hide?",
+  "choices": [
+   "The brook Kishon",
+   "The brook Kidron",
+   "The brook Cherith",
+   "The brook Arnon"
+  ],
+  "answer": 2,
+  "explanation": "Hide thyself by the brook Cherith, that is before Jordan.",
+  "ref": "1 Kings 17:3"
+ },
+ {
+  "id": "1-kings-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the ravens bring Elijah to eat?",
+  "choices": [
+   "Fish and honey",
+   "Bread and flesh",
+   "Figs and olives",
+   "Bread and cheese"
+  ],
+  "answer": 1,
+  "explanation": "The ravens brought him bread and flesh in the morning, and bread and flesh in the evening.",
+  "ref": "1 Kings 17:6"
+ },
+ {
+  "id": "1-kings-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the brook Cherith dry up?",
+  "choices": [
+   "There had been no rain in the land",
+   "The ravens drank it",
+   "The Jordan turned it away",
+   "An earthquake closed it"
+  ],
+  "answer": 0,
+  "explanation": "The brook dried up, because there had been no rain in the land.",
+  "ref": "1 Kings 17:7"
+ },
+ {
+  "id": "1-kings-17-e-06",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the widow of Zarephath gathering when Elijah met her?",
+  "choices": [
+   "Barley",
+   "Water",
+   "Figs",
+   "Sticks"
+  ],
+  "answer": 3,
+  "explanation": "The widow woman was there gathering of sticks.",
+  "ref": "1 Kings 17:10"
+ },
+ {
+  "id": "1-kings-17-e-07",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the widow have left in the house?",
+  "choices": [
+   "A loaf and two fishes",
+   "A lamb and a skin of wine",
+   "A handful of meal and a little oil",
+   "A measure of barley and a cake"
+  ],
+  "answer": 2,
+  "explanation": "I have not a cake, but an handful of meal in a barrel, and a little oil in a cruse.",
+  "ref": "1 Kings 17:12"
+ },
+ {
+  "id": "1-kings-17-e-08",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Elijah first ask the widow to fetch him?",
+  "choices": [
+   "A morsel of bread",
+   "A little water",
+   "A cup of wine",
+   "A handful of meal"
+  ],
+  "answer": 1,
+  "explanation": "Fetch me, I pray thee, a little water in a vessel, that I may drink.",
+  "ref": "1 Kings 17:10"
+ },
+ {
+  "id": "1-kings-17-e-09",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Elijah carry the widow's dead son?",
+  "choices": [
+   "Up into a loft",
+   "To the city gate",
+   "Down to the brook",
+   "Into the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "He took him out of her bosom, and carried him up into a loft, where he abode.",
+  "ref": "1 Kings 17:19"
+ },
+ {
+  "id": "1-kings-17-e-10",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the woman say Elijah was when her son lived?",
+  "choices": [
+   "A prophet of Baal",
+   "A king of Israel",
+   "A healer of the sick",
+   "A man of God whose word was truth"
+  ],
+  "answer": 3,
+  "explanation": "Now by this I know that thou art a man of God, and that the word of the LORD in thy mouth is truth.",
+  "ref": "1 Kings 17:24"
+ },
+ {
+  "id": "1-kings-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Beside what river was the brook Cherith?",
+  "choices": [
+   "Kishon",
+   "Jabbok",
+   "Jordan",
+   "Arnon"
+  ],
+  "answer": 2,
+  "explanation": "The brook Cherith, that is before Jordan.",
+  "ref": "1 Kings 17:3"
+ },
+ {
+  "id": "1-kings-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which direction did the LORD tell Elijah to turn?",
+  "choices": [
+   "Westward",
+   "Eastward",
+   "Northward",
+   "Southward"
+  ],
+  "answer": 1,
+  "explanation": "Get thee hence, and turn thee eastward.",
+  "ref": "1 Kings 17:3"
+ },
+ {
+  "id": "1-kings-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did the ravens bring Elijah bread and flesh?",
+  "choices": [
+   "In the morning and in the evening",
+   "At noon only",
+   "Every third day",
+   "Once each morning"
+  ],
+  "answer": 0,
+  "explanation": "The ravens brought him bread and flesh in the morning, and bread and flesh in the evening.",
+  "ref": "1 Kings 17:6"
+ },
+ {
+  "id": "1-kings-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "To which city did the LORD tell Elijah to go next?",
+  "choices": [
+   "Shunem, which belonged to Issachar",
+   "Jezreel, which belonged to Ahab",
+   "Dan, which belonged to Naphtali",
+   "Zarephath, which belonged to Zidon"
+  ],
+  "answer": 3,
+  "explanation": "Arise, get thee to Zarephath, which belongeth to Zidon.",
+  "ref": "1 Kings 17:9"
+ },
+ {
+  "id": "1-kings-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who had the LORD commanded to sustain Elijah in Zarephath?",
+  "choices": [
+   "A prophet's son",
+   "The governor of the city",
+   "A widow woman",
+   "A band of shepherds"
+  ],
+  "answer": 2,
+  "explanation": "I have commanded a widow woman there to sustain thee.",
+  "ref": "1 Kings 17:9"
+ },
+ {
+  "id": "1-kings-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the widow when Elijah first saw her?",
+  "choices": [
+   "At the well",
+   "At the gate of the city",
+   "In her house",
+   "On the road to Sidon"
+  ],
+  "answer": 1,
+  "explanation": "When he came to the gate of the city, behold, the widow woman was there gathering of sticks.",
+  "ref": "1 Kings 17:10"
+ },
+ {
+  "id": "1-kings-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the widow say she planned to do with the last of her meal and oil?",
+  "choices": [
+   "Make a cake for herself and her son to eat, then die",
+   "Give it to the poor",
+   "Sell it to buy bread",
+   "Offer it to the LORD at the altar"
+  ],
+  "answer": 0,
+  "explanation": "I am gathering two sticks, that I may go in and dress it for me and my son, that we may eat it, and die.",
+  "ref": "1 Kings 17:12"
+ },
+ {
+  "id": "1-kings-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah tell the widow to make first?",
+  "choices": [
+   "A loaf for her son",
+   "A drink offering",
+   "A fire of sticks for the altar",
+   "A little cake for him"
+  ],
+  "answer": 3,
+  "explanation": "Make me thereof a little cake first, and bring it unto me, and after make for thee and for thy son.",
+  "ref": "1 Kings 17:13"
+ },
+ {
+  "id": "1-kings-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when did the LORD say the barrel of meal would not waste?",
+  "choices": [
+   "Until the end of the year",
+   "Until Ahab died",
+   "Until the day the LORD sent rain on the earth",
+   "Until Elijah left Zarephath"
+  ],
+  "answer": 2,
+  "explanation": "The barrel of meal shall not waste, neither shall the cruse of oil fail, until the day that the LORD sendeth rain upon the earth.",
+  "ref": "1 Kings 17:14"
+ },
+ {
+  "id": "1-kings-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the widow fear Elijah had come to do?",
+  "choices": [
+   "Take her house",
+   "Call her sin to remembrance and slay her son",
+   "Send her away from Zarephath",
+   "Ask for her husband's field"
+  ],
+  "answer": 1,
+  "explanation": "Art thou come unto me to call my sin to remembrance, and to slay my son?",
+  "ref": "1 Kings 17:18"
+ },
+ {
+  "id": "1-kings-17-m-11",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what did Elijah lay the child in the loft?",
+  "choices": [
+   "His own bed",
+   "The floor",
+   "A bed of straw",
+   "The widow's bed"
+  ],
+  "answer": 0,
+  "explanation": "He laid him upon his own bed.",
+  "ref": "1 Kings 17:19"
+ },
+ {
+  "id": "1-kings-17-m-12",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah ask the LORD to do for the child?",
+  "choices": [
+   "Send fire from heaven",
+   "Send rain on the land",
+   "Show the widow a sign",
+   "Let his soul come into him again"
+  ],
+  "answer": 3,
+  "explanation": "O LORD my God, I pray thee, let this child's soul come into him again.",
+  "ref": "1 Kings 17:21"
+ },
+ {
+  "id": "1-kings-17-m-13",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Elijah say when he gave the child back to his mother?",
+  "choices": [
+   "Blessed be the LORD",
+   "Fear not, he sleepeth",
+   "See, thy son liveth",
+   "Take thy son and depart"
+  ],
+  "answer": 2,
+  "explanation": "Elijah took the child, and delivered him unto his mother: and Elijah said, See, thy son liveth.",
+  "ref": "1 Kings 17:23"
+ },
+ {
+  "id": "1-kings-17-m-14",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the widow's son's sickness described?",
+  "choices": [
+   "It lasted for forty days",
+   "So sore that no breath was left in him",
+   "It came from the famine",
+   "It left him blind"
+  ],
+  "answer": 1,
+  "explanation": "His sickness was so sore, that there was no breath left in him.",
+  "ref": "1 Kings 17:17"
+ },
+ {
+  "id": "1-kings-17-m-15",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who ate for many days from the widow's meal and oil?",
+  "choices": [
+   "She, Elijah and her house",
+   "Only Elijah",
+   "Only the widow and her son",
+   "The people of Zarephath"
+  ],
+  "answer": 0,
+  "explanation": "She, and he, and her house, did eat many days.",
+  "ref": "1 Kings 17:15"
+ },
+ {
+  "id": "1-kings-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Elijah describe the LORD when he spoke to Ahab?",
+  "choices": [
+   "The LORD who sitteth on the cherubims",
+   "The LORD who made heaven and earth",
+   "The LORD of the covenant",
+   "The LORD before whom I stand"
+  ],
+  "answer": 3,
+  "explanation": "As the LORD God of Israel liveth, before whom I stand.",
+  "ref": "1 Kings 17:1"
+ },
+ {
+  "id": "1-kings-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what would the dew and rain return, according to Elijah?",
+  "choices": [
+   "When Ahab repented",
+   "After three days",
+   "According to his word",
+   "When the people prayed"
+  ],
+  "answer": 2,
+  "explanation": "There shall not be dew nor rain these years, but according to my word.",
+  "ref": "1 Kings 17:1"
+ },
+ {
+  "id": "1-kings-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elijah ask the widow to bring in her hand?",
+  "choices": [
+   "A cup of oil",
+   "A morsel of bread",
+   "A bundle of sticks",
+   "A skin of water"
+  ],
+  "answer": 1,
+  "explanation": "Bring me, I pray thee, a morsel of bread in thine hand.",
+  "ref": "1 Kings 17:11"
+ },
+ {
+  "id": "1-kings-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many sticks was the widow gathering?",
+  "choices": [
+   "Two",
+   "Seven",
+   "Twelve",
+   "Three"
+  ],
+  "answer": 0,
+  "explanation": "Behold, I am gathering two sticks.",
+  "ref": "1 Kings 17:12"
+ },
+ {
+  "id": "1-kings-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By whom did the widow swear when she answered Elijah?",
+  "choices": [
+   "By the gods of Zidon",
+   "By her husband's name",
+   "By the altar of Baal",
+   "As the LORD thy God liveth"
+  ],
+  "answer": 3,
+  "explanation": "And she said, As the LORD thy God liveth, I have not a cake.",
+  "ref": "1 Kings 17:12"
+ },
+ {
+  "id": "1-kings-17-h-06",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did the widow keep her handful of meal?",
+  "choices": [
+   "A cruse",
+   "A basket",
+   "A barrel",
+   "A jar of clay"
+  ],
+  "answer": 2,
+  "explanation": "I have an handful of meal in a barrel, and a little oil in a cruse.",
+  "ref": "1 Kings 17:12"
+ },
+ {
+  "id": "1-kings-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elijah say to the widow before telling her to make him a cake?",
+  "choices": [
+   "Be of good courage",
+   "Fear not",
+   "Peace be unto thee",
+   "Trust in the LORD"
+  ],
+  "answer": 1,
+  "explanation": "Elijah said unto her, Fear not; go and do as thou hast said.",
+  "ref": "1 Kings 17:13"
+ },
+ {
+  "id": "1-kings-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elijah say to the widow when her son had died?",
+  "choices": [
+   "Give me thy son",
+   "Bring me water",
+   "Let me pray alone",
+   "Fear not, he sleepeth"
+  ],
+  "answer": 0,
+  "explanation": "And he said unto her, Give me thy son.",
+  "ref": "1 Kings 17:19"
+ },
+ {
+  "id": "1-kings-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Elijah ask the LORD about the widow when her son died?",
+  "choices": [
+   "Wilt thou not spare her house?",
+   "Why hast thou sent me to Zarephath?",
+   "Hast thou forgotten the famine?",
+   "Hast thou also brought evil upon her by slaying her son?"
+  ],
+  "answer": 3,
+  "explanation": "O LORD my God, hast thou also brought evil upon the widow with whom I sojourn, by slaying her son?",
+  "ref": "1 Kings 17:20"
+ },
+ {
+  "id": "1-kings-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whom did Elijah take the child before carrying him to the loft?",
+  "choices": [
+   "From the bed",
+   "From the gate",
+   "From his mother's bosom",
+   "From the servant"
+  ],
+  "answer": 2,
+  "explanation": "He took him out of her bosom, and carried him up into a loft.",
+  "ref": "1 Kings 17:19"
+ },
+ {
+  "id": "1-kings-17-h-11",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After the child revived, where did Elijah bring him down to?",
+  "choices": [
+   "To the gate of the city",
+   "Out of the chamber into the house",
+   "Down to the brook",
+   "Into the street"
+  ],
+  "answer": 1,
+  "explanation": "Elijah brought him down out of the chamber into the house, and delivered him unto his mother.",
+  "ref": "1 Kings 17:23"
+ },
+ {
+  "id": "1-kings-17-h-12",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the woman say was in Elijah's mouth?",
+  "choices": [
+   "The word of the LORD, which is truth",
+   "A prophecy of rain",
+   "A blessing for her house",
+   "A curse on Ahab"
+  ],
+  "answer": 0,
+  "explanation": "The word of the LORD in thy mouth is truth.",
+  "ref": "1 Kings 17:24"
+ },
+ {
+  "id": "1-kings-17-h-13",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many times did Elijah stretch himself upon the child?",
+  "choices": [
+   "Seven times",
+   "Twice",
+   "Twelve times",
+   "Three times"
+  ],
+  "answer": 3,
+  "explanation": "He stretched himself upon the child three times, and cried unto the LORD.",
+  "ref": "1 Kings 17:21"
+ },
+ {
+  "id": "1-kings-17-h-14",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What word of the LORD came to Elijah after the brook dried up?",
+  "choices": [
+   "Go show thyself unto Ahab",
+   "Go up to Horeb",
+   "Arise, get thee to Zarephath and dwell there",
+   "Return to Gilead"
+  ],
+  "answer": 2,
+  "explanation": "The word of the LORD came unto him, saying, Arise, get thee to Zarephath, which belongeth to Zidon, and dwell there.",
+  "ref": "1 Kings 17:8–9"
+ },
+ {
+  "id": "1-kings-17-h-15",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the widow's meal and oil according to the LORD's word spoken by Elijah?",
+  "choices": [
+   "They doubled each week",
+   "They did not run out",
+   "They turned to bread",
+   "They ran out after a month"
+  ],
+  "answer": 1,
+  "explanation": "The barrel of meal wasted not, neither did the cruse of oil fail, according to the word of the LORD, which he spake by Elijah.",
+  "ref": "1 Kings 17:16"
+ },
+ {
   "id": "old-1-kings-18-1",
   "chapter": 18,
   "level": "beginner",
