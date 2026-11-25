@@ -9700,15 +9700,15 @@
   "chapter": 16,
   "level": "beginner",
   "category": "keyword",
-  "question": "What repeated command opens the song of thanks?",
+  "question": "What does the song tell Israel to make known among the people?",
   "choices": [
-   "Fear not",
-   "Build the temple",
-   "Remember Saul",
-   "Give thanks unto the Lord"
+   "His deeds",
+   "His laws",
+   "His armies",
+   "His temple"
   ],
-  "answer": 3,
-  "explanation": "The song begins with thanksgiving and making God's deeds known.",
+  "answer": 0,
+  "explanation": "The song says, Make known his deeds among the people.",
   "ref": "1 Chronicles 16:8"
  },
  {
@@ -9716,16 +9716,672 @@
   "chapter": 16,
   "level": "beginner",
   "category": "keyword",
-  "question": "What ongoing pattern did David establish before the ark?",
+  "question": "Where did David leave Asaph and his brethren to minister continually?",
   "choices": [
-   "Weekly battles",
-   "Monthly census taking",
-   "Daily thanksgiving and ministry",
-   "Only annual feasts"
+   "In the house of Obed-edom",
+   "In the high place at Gibeon",
+   "Before the ark of the covenant",
+   "At the gate of Jerusalem"
   ],
   "answer": 2,
-  "explanation": "He appointed Levites to minister continually before the ark.",
+  "explanation": "David left Asaph and his brethren before the ark of the covenant to minister continually, as every day's work required.",
   "ref": "1 Chronicles 16:37"
+ },
+ {
+  "id": "1-chronicles-16-e-01",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did they set the ark of God?",
+  "choices": [
+   "In the tabernacle at Gibeon",
+   "In the house of Obed-edom",
+   "In the tent David had pitched for it",
+   "In a cave near Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "They set it in the midst of the tent that David had pitched for it.",
+  "ref": "1 Chronicles 16:1"
+ },
+ {
+  "id": "1-chronicles-16-e-02",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "After the offerings, in whose name did David bless the people?",
+  "choices": [
+   "The king of Israel",
+   "Moses",
+   "Abraham",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "David blessed the people in the name of the LORD.",
+  "ref": "1 Chronicles 16:2"
+ },
+ {
+  "id": "1-chronicles-16-e-03",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the chief of the Levites ministering before the ark?",
+  "choices": [
+   "Jeduthun",
+   "Heman",
+   "Zadok",
+   "Asaph"
+  ],
+  "answer": 3,
+  "explanation": "Asaph the chief was appointed to minister before the ark.",
+  "ref": "1 Chronicles 16:5"
+ },
+ {
+  "id": "1-chronicles-16-e-04",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which priest served before the tabernacle of the LORD at Gibeon?",
+  "choices": [
+   "Benaiah",
+   "Asaph",
+   "Zadok",
+   "Obed-edom"
+  ],
+  "answer": 2,
+  "explanation": "Zadok the priest and his brethren served before the tabernacle at Gibeon.",
+  "ref": "1 Chronicles 16:39"
+ },
+ {
+  "id": "1-chronicles-16-e-05",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "person",
+  "question": "With whom did God make the covenant mentioned in the song?",
+  "choices": [
+   "Moses",
+   "Noah",
+   "Adam",
+   "Abraham"
+  ],
+  "answer": 3,
+  "explanation": "The song speaks of the covenant which he made with Abraham.",
+  "ref": "1 Chronicles 16:16"
+ },
+ {
+  "id": "1-chronicles-16-e-06",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "What land did God promise as the lot of Israel's inheritance?",
+  "choices": [
+   "Egypt",
+   "Canaan",
+   "Moab",
+   "Syria"
+  ],
+  "answer": 1,
+  "explanation": "God said, Unto thee will I give the land of Canaan, the lot of your inheritance.",
+  "ref": "1 Chronicles 16:18"
+ },
+ {
+  "id": "1-chronicles-16-e-07",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did all the people say at the end of the song?",
+  "choices": [
+   "Glory",
+   "Hosanna",
+   "Selah",
+   "Amen"
+  ],
+  "answer": 3,
+  "explanation": "All the people said, Amen, and praised the LORD.",
+  "ref": "1 Chronicles 16:36"
+ },
+ {
+  "id": "1-chronicles-16-e-08",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "According to the song, who made the heavens?",
+  "choices": [
+   "The LORD",
+   "The kings of the earth",
+   "The gods of the people",
+   "The angels"
+  ],
+  "answer": 0,
+  "explanation": "For all the gods of the people are idols: but the LORD made the heavens.",
+  "ref": "1 Chronicles 16:26"
+ },
+ {
+  "id": "1-chronicles-16-e-09",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did David go back to when the people departed?",
+  "choices": [
+   "The tent of Zadok",
+   "The battlefield",
+   "The house of Obed-edom",
+   "His own house, to bless it"
+  ],
+  "answer": 3,
+  "explanation": "All the people departed every man to his house: and David returned to bless his house.",
+  "ref": "1 Chronicles 16:43"
+ },
+ {
+  "id": "1-chronicles-16-e-10",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David offer, with the people, before God at the start?",
+  "choices": [
+   "Firstfruits of the field",
+   "Gold and silver",
+   "Burnt sacrifices and peace offerings",
+   "Incense only"
+  ],
+  "answer": 2,
+  "explanation": "They offered burnt sacrifices and peace offerings before God.",
+  "ref": "1 Chronicles 16:1"
+ },
+ {
+  "id": "1-chronicles-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David appoint certain Levites to do before the ark?",
+  "choices": [
+   "Guard the gates and fight",
+   "Minister, record, thank and praise the LORD",
+   "Count the people",
+   "Build the temple"
+  ],
+  "answer": 1,
+  "explanation": "He appointed Levites to minister before the ark, and to record, and to thank and praise the LORD God of Israel.",
+  "ref": "1 Chronicles 16:4"
+ },
+ {
+  "id": "1-chronicles-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two priests blew trumpets continually before the ark?",
+  "choices": [
+   "Asaph and Zechariah",
+   "Benaiah and Jahaziel",
+   "Heman and Jeduthun",
+   "Zadok and Obed-edom"
+  ],
+  "answer": 1,
+  "explanation": "Benaiah also and Jahaziel the priests with trumpets continually before the ark of the covenant of God.",
+  "ref": "1 Chronicles 16:6"
+ },
+ {
+  "id": "1-chronicles-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say to kings about his anointed?",
+  "choices": [
+   "Touch not mine anointed",
+   "Bow before mine anointed",
+   "Fear mine anointed",
+   "Hide mine anointed"
+  ],
+  "answer": 0,
+  "explanation": "He reproved kings for their sakes, saying, Touch not mine anointed, and do my prophets no harm.",
+  "ref": "1 Chronicles 16:21–22"
+ },
+ {
+  "id": "1-chronicles-16-m-04",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the song describe Israel when God promised them Canaan?",
+  "choices": [
+   "Slaves in a strange land",
+   "Many and mighty",
+   "Few, and strangers in it",
+   "Kings over many nations"
+  ],
+  "answer": 2,
+  "explanation": "When ye were but few, even a few, and strangers in it.",
+  "ref": "1 Chronicles 16:19"
+ },
+ {
+  "id": "1-chronicles-16-m-05",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the people told to seek, besides the LORD himself?",
+  "choices": [
+   "His temple",
+   "His gold",
+   "His strength",
+   "His armies"
+  ],
+  "answer": 2,
+  "explanation": "Seek the LORD and his strength, seek his face continually.",
+  "ref": "1 Chronicles 16:11"
+ },
+ {
+  "id": "1-chronicles-16-m-06",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the song say the people should be mindful of always?",
+  "choices": [
+   "His kings",
+   "His temple",
+   "His covenant",
+   "His feasts"
+  ],
+  "answer": 2,
+  "explanation": "Be ye mindful always of his covenant.",
+  "ref": "1 Chronicles 16:15"
+ },
+ {
+  "id": "1-chronicles-16-m-07",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the song call the gods of the peoples?",
+  "choices": [
+   "Princes",
+   "Idols",
+   "Stones of Canaan",
+   "Servants of the LORD"
+  ],
+  "answer": 1,
+  "explanation": "For all the gods of the people are idols: but the LORD made the heavens.",
+  "ref": "1 Chronicles 16:26"
+ },
+ {
+  "id": "1-chronicles-16-m-08",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will the trees of the wood sing out?",
+  "choices": [
+   "Because the ark is in Zion",
+   "Because the harvest is come",
+   "Because he cometh to judge the earth",
+   "Because the enemies are gone"
+  ],
+  "answer": 2,
+  "explanation": "Then shall the trees of the wood sing out at the presence of the LORD, because he cometh to judge the earth.",
+  "ref": "1 Chronicles 16:33"
+ },
+ {
+  "id": "1-chronicles-16-m-09",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the song say to give thanks to the LORD?",
+  "choices": [
+   "He is good, and his mercy endureth for ever",
+   "He gave Israel a king",
+   "He fills the barns",
+   "He broke the Philistines"
+  ],
+  "answer": 0,
+  "explanation": "O give thanks unto the LORD; for he is good; for his mercy endureth for ever.",
+  "ref": "1 Chronicles 16:34"
+ },
+ {
+  "id": "1-chronicles-16-m-10",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From whom does the song ask God to deliver Israel?",
+  "choices": [
+   "The Philistines",
+   "The heathen",
+   "The Egyptians",
+   "The sea"
+  ],
+  "answer": 1,
+  "explanation": "Save us, O God of our salvation, and gather us together, and deliver us from the heathen.",
+  "ref": "1 Chronicles 16:35"
+ },
+ {
+  "id": "1-chronicles-16-m-11",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What work was given to Obed-edom and his brethren?",
+  "choices": [
+   "Trumpeters",
+   "Singers",
+   "Porters",
+   "Priests at the altar"
+  ],
+  "answer": 2,
+  "explanation": "Obed-edom with their brethren were to be porters.",
+  "ref": "1 Chronicles 16:38"
+ },
+ {
+  "id": "1-chronicles-16-m-12",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were Zadok and his brethren to offer continually morning and evening?",
+  "choices": [
+   "Burnt offerings on the altar",
+   "Peace offerings of oil",
+   "Drink offerings only",
+   "Firstfruits"
+  ],
+  "answer": 0,
+  "explanation": "To offer burnt offerings unto the LORD upon the altar of the burnt offering continually morning and evening.",
+  "ref": "1 Chronicles 16:39–40"
+ },
+ {
+  "id": "1-chronicles-16-m-13",
+  "chapter": 16,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two men were chosen with others to give thanks because his mercy endureth for ever?",
+  "choices": [
+   "Asaph and Jeiel",
+   "Heman and Jeduthun",
+   "Zadok and Benaiah",
+   "Obed-edom and Hosah"
+  ],
+  "answer": 1,
+  "explanation": "With them Heman and Jeduthun, and the rest that were chosen, to give thanks to the LORD, because his mercy endureth for ever.",
+  "ref": "1 Chronicles 16:41"
+ },
+ {
+  "id": "1-chronicles-16-m-14",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the song say to worship the LORD?",
+  "choices": [
+   "In the beauty of holiness",
+   "With a loud voice only",
+   "In the high places",
+   "With silence"
+  ],
+  "answer": 0,
+  "explanation": "Bring an offering, and come before him: worship the LORD in the beauty of holiness.",
+  "ref": "1 Chronicles 16:29"
+ },
+ {
+  "id": "1-chronicles-16-m-15",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who is the LORD to be feared above, according to the song?",
+  "choices": [
+   "All the earth",
+   "All kings",
+   "All nations",
+   "All gods"
+  ],
+  "answer": 3,
+  "explanation": "For great is the LORD, and greatly to be praised: he also is to be feared above all gods.",
+  "ref": "1 Chronicles 16:25"
+ },
+ {
+  "id": "1-chronicles-16-m-16",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should men say among the nations, according to the song?",
+  "choices": [
+   "Israel is blessed",
+   "The LORD is a man of war",
+   "The LORD is our king of kings",
+   "The LORD reigneth"
+  ],
+  "answer": 3,
+  "explanation": "Let men say among the nations, The LORD reigneth.",
+  "ref": "1 Chronicles 16:31"
+ },
+ {
+  "id": "1-chronicles-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What instrument did Asaph play?",
+  "choices": [
+   "Psaltery",
+   "Harp",
+   "Cymbals",
+   "Trumpet"
+  ],
+  "answer": 2,
+  "explanation": "Jeiel was with psalteries and with harps; but Asaph made a sound with cymbals.",
+  "ref": "1 Chronicles 16:5"
+ },
+ {
+  "id": "1-chronicles-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Who played with psalteries and with harps?",
+  "choices": [
+   "Asaph",
+   "Jeiel",
+   "Eliab",
+   "Zechariah"
+  ],
+  "answer": 1,
+  "explanation": "And Jeiel with psalteries and with harps; but Asaph made a sound with cymbals.",
+  "ref": "1 Chronicles 16:5"
+ },
+ {
+  "id": "1-chronicles-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many brethren did Obed-edom have with him, as porters?",
+  "choices": [
+   "Seventy",
+   "Twelve",
+   "Threescore and eight",
+   "A hundred and twenty"
+  ],
+  "answer": 2,
+  "explanation": "Obed-edom with their brethren, threescore and eight.",
+  "ref": "1 Chronicles 16:38"
+ },
+ {
+  "id": "1-chronicles-16-h-04",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the tabernacle of the LORD, before which Zadok served in the high place?",
+  "choices": [
+   "Hebron",
+   "Shiloh",
+   "Gibeon",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "Zadok the priest served before the tabernacle of the LORD in the high place that was at Gibeon.",
+  "ref": "1 Chronicles 16:39"
+ },
+ {
+  "id": "1-chronicles-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how many generations did God command his word?",
+  "choices": [
+   "Twelve",
+   "Seven",
+   "A thousand",
+   "Forty"
+  ],
+  "answer": 2,
+  "explanation": "Be ye mindful always of his covenant; the word which he commanded to a thousand generations.",
+  "ref": "1 Chronicles 16:15"
+ },
+ {
+  "id": "1-chronicles-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom was the oath sworn, along with the covenant made with Abraham?",
+  "choices": [
+   "Joshua",
+   "Ishmael",
+   "Moses",
+   "Isaac"
+  ],
+  "answer": 3,
+  "explanation": "Even of the covenant which he made with Abraham, and of his oath unto Isaac.",
+  "ref": "1 Chronicles 16:16"
+ },
+ {
+  "id": "1-chronicles-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God confirm to Jacob for a law, and to Israel as what?",
+  "choices": [
+   "An everlasting covenant",
+   "A kingdom without end",
+   "A land of rest",
+   "A priesthood"
+  ],
+  "answer": 0,
+  "explanation": "He confirmed the same to Jacob for a law, and to Israel for an everlasting covenant.",
+  "ref": "1 Chronicles 16:17"
+ },
+ {
+  "id": "1-chronicles-16-h-08",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two things are in the LORD's place, according to the song?",
+  "choices": [
+   "Wisdom and might",
+   "Peace and plenty",
+   "Strength and gladness",
+   "Fire and cloud"
+  ],
+  "answer": 2,
+  "explanation": "Glory and honour are in his presence; strength and gladness are in his place.",
+  "ref": "1 Chronicles 16:27"
+ },
+ {
+  "id": "1-chronicles-16-h-09",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What should the sea do, according to the song?",
+  "choices": [
+   "Sing",
+   "Be still",
+   "Part",
+   "Roar"
+  ],
+  "answer": 3,
+  "explanation": "Let the sea roar, and the fulness thereof: let the fields rejoice.",
+  "ref": "1 Chronicles 16:32"
+ },
+ {
+  "id": "1-chronicles-16-h-10",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the people told to show forth from day to day?",
+  "choices": [
+   "His judgments",
+   "His covenant",
+   "His wonders",
+   "His salvation"
+  ],
+  "answer": 3,
+  "explanation": "Sing unto the LORD, all the earth; shew forth from day to day his salvation.",
+  "ref": "1 Chronicles 16:23"
+ },
+ {
+  "id": "1-chronicles-16-h-11",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did God reprove for the sake of his wandering people?",
+  "choices": [
+   "Priests",
+   "Kings",
+   "Princes of Egypt",
+   "Judges"
+  ],
+  "answer": 1,
+  "explanation": "He suffered no man to do them wrong: yea, he reproved kings for their sakes.",
+  "ref": "1 Chronicles 16:21"
+ },
+ {
+  "id": "1-chronicles-16-h-12",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which instruments did Heman and Jeduthun use for those that should make a sound?",
+  "choices": [
+   "Flutes and timbrels",
+   "Harps and psalteries",
+   "Trumpets and cymbals",
+   "Rams' horns"
+  ],
+  "answer": 2,
+  "explanation": "With them Heman and Jeduthun with trumpets and cymbals for those that should make a sound.",
+  "ref": "1 Chronicles 16:42"
+ },
+ {
+  "id": "1-chronicles-16-h-13",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were the priests to do according to all that was written in the law of the LORD?",
+  "choices": [
+   "Offer burnt offerings morning and evening",
+   "Sound the trumpet at dawn",
+   "Keep the sabbath only",
+   "Teach the people daily"
+  ],
+  "answer": 0,
+  "explanation": "To offer burnt offerings continually morning and evening, and to do according to all that is written in the law of the LORD.",
+  "ref": "1 Chronicles 16:40"
+ },
+ {
+  "id": "1-chronicles-16-h-14",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose sons were also porters, according to the end of the chapter?",
+  "choices": [
+   "Zadok's",
+   "Asaph's",
+   "Jeduthun's",
+   "Benaiah's"
+  ],
+  "answer": 2,
+  "explanation": "And the sons of Jeduthun were porters.",
+  "ref": "1 Chronicles 16:42"
+ },
+ {
+  "id": "1-chronicles-16-h-15",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the people's gift to give before the LORD, besides glory due his name?",
+  "choices": [
+   "An offering",
+   "A tithe of oil",
+   "A sword",
+   "A song only"
+  ],
+  "answer": 0,
+  "explanation": "Give unto the LORD the glory due unto his name: bring an offering, and come before him.",
+  "ref": "1 Chronicles 16:29"
  },
  {
   "id": "old-1-chronicles-17-1",
