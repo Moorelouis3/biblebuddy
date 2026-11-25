@@ -1536,6 +1536,662 @@
   "ref": "2 Samuel 3:27"
  },
  {
+  "id": "2-samuel-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In which city were David's sons born during the long war?",
+  "choices": [
+   "Hebron",
+   "Jerusalem",
+   "Ziklag",
+   "Bethlehem"
+  ],
+  "answer": 0,
+  "explanation": "These were born to David in Hebron.",
+  "ref": "2 Samuel 3:2–5"
+ },
+ {
+  "id": "2-samuel-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was David's firstborn son, born in Hebron?",
+  "choices": [
+   "Absalom",
+   "Adonijah",
+   "Chileab",
+   "Amnon"
+  ],
+  "answer": 3,
+  "explanation": "His firstborn was Amnon, of Ahinoam the Jezreelitess.",
+  "ref": "2 Samuel 3:2"
+ },
+ {
+  "id": "2-samuel-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who made himself strong for the house of Saul during the war?",
+  "choices": [
+   "Joab",
+   "Asahel",
+   "Abner",
+   "Benaiah"
+  ],
+  "answer": 2,
+  "explanation": "Abner made himself strong for the house of Saul.",
+  "ref": "2 Samuel 3:6"
+ },
+ {
+  "id": "2-samuel-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "What was the name of Saul's concubine, the daughter of Aiah?",
+  "choices": [
+   "Michal",
+   "Rizpah",
+   "Abigail",
+   "Ahinoam"
+  ],
+  "answer": 1,
+  "explanation": "Saul had a concubine, whose name was Rizpah, the daughter of Aiah.",
+  "ref": "2 Samuel 3:7"
+ },
+ {
+  "id": "2-samuel-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David make for Abner and his men when they came to Hebron?",
+  "choices": [
+   "A feast",
+   "A sacrifice",
+   "A treaty",
+   "A gift of silver"
+  ],
+  "answer": 0,
+  "explanation": "David made Abner and the men that were with him a feast.",
+  "ref": "2 Samuel 3:20"
+ },
+ {
+  "id": "2-samuel-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David send Abner away from Hebron?",
+  "choices": [
+   "In chains",
+   "By night",
+   "With an army",
+   "In peace"
+  ],
+  "answer": 3,
+  "explanation": "David sent Abner away; and he went in peace.",
+  "ref": "2 Samuel 3:21"
+ },
+ {
+  "id": "2-samuel-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose death did Joab avenge when he killed Abner?",
+  "choices": [
+   "Amasa",
+   "Jonathan",
+   "Asahel",
+   "Uriah"
+  ],
+  "answer": 2,
+  "explanation": "Joab slew Abner for the blood of Asahel his brother.",
+  "ref": "2 Samuel 3:27"
+ },
+ {
+  "id": "2-samuel-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David tell the people to put on to mourn for Abner?",
+  "choices": [
+   "Purple robes",
+   "Sackcloth",
+   "Ashes only",
+   "White linen"
+  ],
+  "answer": 1,
+  "explanation": "David said, Rend your clothes, and gird you with sackcloth, and mourn before Abner.",
+  "ref": "2 Samuel 3:31"
+ },
+ {
+  "id": "2-samuel-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who followed Abner's bier as the people mourned?",
+  "choices": [
+   "King David",
+   "Joab",
+   "Ish-bosheth",
+   "Abishai"
+  ],
+  "answer": 0,
+  "explanation": "King David himself followed the bier.",
+  "ref": "2 Samuel 3:31"
+ },
+ {
+  "id": "2-samuel-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David swear not to taste until the sun went down?",
+  "choices": [
+   "Wine",
+   "Water",
+   "Honey",
+   "Bread"
+  ],
+  "answer": 3,
+  "explanation": "David swore, So do God to me, and more also, if I taste bread, or ought else, till the sun be down.",
+  "ref": "2 Samuel 3:35"
+ },
+ {
+  "id": "2-samuel-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was David's second son, born to Abigail the wife of Nabal?",
+  "choices": [
+   "Amnon",
+   "Shephatiah",
+   "Chileab",
+   "Ithream"
+  ],
+  "answer": 2,
+  "explanation": "His second, Chileab, of Abigail the wife of Nabal the Carmelite.",
+  "ref": "2 Samuel 3:3"
+ },
+ {
+  "id": "2-samuel-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the mother of Absalom, David's third son?",
+  "choices": [
+   "Haggith",
+   "Maacah",
+   "Abital",
+   "Eglah"
+  ],
+  "answer": 1,
+  "explanation": "The third was Absalom the son of Maacah the daughter of Talmai king of Geshur.",
+  "ref": "2 Samuel 3:3"
+ },
+ {
+  "id": "2-samuel-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Ish-bosheth react when Abner answered him angrily?",
+  "choices": [
+   "He could not answer a word, for he feared him",
+   "He had Abner arrested",
+   "He sent for David",
+   "He fled from the house"
+  ],
+  "answer": 0,
+  "explanation": "He could not answer Abner a word again, because he feared him.",
+  "ref": "2 Samuel 3:11"
+ },
+ {
+  "id": "2-samuel-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "How far did Abner say David's throne would reach?",
+  "choices": [
+   "From Hebron to Gibeon",
+   "From Jordan to the sea",
+   "From Gilgal to Jezreel",
+   "From Dan to Beer-sheba"
+  ],
+  "answer": 3,
+  "explanation": "Abner would set up the throne of David over Israel and over Judah, from Dan even to Beer-sheba.",
+  "ref": "2 Samuel 3:10"
+ },
+ {
+  "id": "2-samuel-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abner promise David when he made his offer through messengers?",
+  "choices": [
+   "He would give David his daughter",
+   "He would deliver Ish-bosheth's head",
+   "His hand would be with David to bring all Israel to him",
+   "He would pay tribute in silver"
+  ],
+  "answer": 2,
+  "explanation": "Abner said, My hand shall be with thee, to bring about all Israel unto thee.",
+  "ref": "2 Samuel 3:12"
+ },
+ {
+  "id": "2-samuel-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What price had David paid to marry Michal?",
+  "choices": [
+   "Two hundred Philistines' heads",
+   "An hundred foreskins of the Philistines",
+   "Seven years of service",
+   "A thousand shekels of silver"
+  ],
+  "answer": 1,
+  "explanation": "David said Michal was the wife he espoused to himself for an hundred foreskins of the Philistines.",
+  "ref": "2 Samuel 3:14"
+ },
+ {
+  "id": "2-samuel-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "From whom was Michal taken to be returned to David?",
+  "choices": [
+   "Phaltiel the son of Laish",
+   "Abner the son of Ner",
+   "Ish-bosheth the son of Saul",
+   "Jonathan the son of Saul"
+  ],
+  "answer": 0,
+  "explanation": "Ish-bosheth took her from her husband, even from Phaltiel the son of Laish.",
+  "ref": "2 Samuel 3:15"
+ },
+ {
+  "id": "2-samuel-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Who told Michal's weeping husband to go back home?",
+  "choices": [
+   "David",
+   "Ish-bosheth",
+   "Joab",
+   "Abner"
+  ],
+  "answer": 3,
+  "explanation": "Abner said unto him, Go, return. And he returned.",
+  "ref": "2 Samuel 3:16"
+ },
+ {
+  "id": "2-samuel-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the elders of Israel, to which tribe did Abner speak about David?",
+  "choices": [
+   "Judah",
+   "Ephraim",
+   "Benjamin",
+   "Reuben"
+  ],
+  "answer": 2,
+  "explanation": "Abner also spake in the ears of Benjamin.",
+  "ref": "2 Samuel 3:19"
+ },
+ {
+  "id": "2-samuel-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Joab's men brought back when Abner had already left Hebron?",
+  "choices": [
+   "Philistine captives",
+   "A great spoil",
+   "Saul's armour",
+   "A flock of sheep"
+  ],
+  "answer": 1,
+  "explanation": "The servants of David and Joab came from pursuing a troop, and brought in a great spoil with them.",
+  "ref": "2 Samuel 3:22"
+ },
+ {
+  "id": "2-samuel-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of what did Joab accuse Abner when he spoke to David?",
+  "choices": [
+   "Coming to deceive him and learn all he did",
+   "Plotting to kill the king",
+   "Stealing the spoil",
+   "Serving Ish-bosheth in secret"
+  ],
+  "answer": 0,
+  "explanation": "Joab said Abner came to deceive thee, and to know thy going out and thy coming in.",
+  "ref": "2 Samuel 3:25"
+ },
+ {
+  "id": "2-samuel-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Joab take Abner aside to speak with him quietly?",
+  "choices": [
+   "On the roof",
+   "In the tent",
+   "By the well",
+   "In the gate"
+  ],
+  "answer": 3,
+  "explanation": "Joab took him aside in the gate to speak with him quietly, and smote him there.",
+  "ref": "2 Samuel 3:27"
+ },
+ {
+  "id": "2-samuel-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David ask as he lamented over Abner?",
+  "choices": [
+   "Why did the LORD forsake him?",
+   "Who will lead the host now?",
+   "Died Abner as a fool dieth?",
+   "Was he not my friend?"
+  ],
+  "answer": 2,
+  "explanation": "The king lamented over Abner, and said, Died Abner as a fool dieth?",
+  "ref": "2 Samuel 3:33"
+ },
+ {
+  "id": "2-samuel-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose sons did David say were too hard for him?",
+  "choices": [
+   "Ner",
+   "Zeruiah",
+   "Rimmon",
+   "Abigail"
+  ],
+  "answer": 1,
+  "explanation": "David said, these men the sons of Zeruiah be too hard for me.",
+  "ref": "2 Samuel 3:39"
+ },
+ {
+  "id": "2-samuel-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did all the people and all Israel understand that day?",
+  "choices": [
+   "That the king had not ordered Abner's death",
+   "That Joab would be king",
+   "That the war was over",
+   "That Abner had been a traitor"
+  ],
+  "answer": 0,
+  "explanation": "All the people and all Israel understood that day that it was not of the king to slay Abner.",
+  "ref": "2 Samuel 3:37"
+ },
+ {
+  "id": "2-samuel-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Absalom's mother was the daughter of which king?",
+  "choices": [
+   "Talmai king of Geshur",
+   "Rimmon the Beerothite",
+   "Aiah the Jezreelite",
+   "Nabal the Carmelite"
+  ],
+  "answer": 0,
+  "explanation": "Absalom was the son of Maacah the daughter of Talmai king of Geshur.",
+  "ref": "2 Samuel 3:3"
+ },
+ {
+  "id": "2-samuel-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was David's fourth son, the son of Haggith?",
+  "choices": [
+   "Absalom",
+   "Ithream",
+   "Adonijah",
+   "Chileab"
+  ],
+  "answer": 2,
+  "explanation": "And the fourth, Adonijah the son of Haggith.",
+  "ref": "2 Samuel 3:4"
+ },
+ {
+  "id": "2-samuel-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Which son was born to David by Eglah?",
+  "choices": [
+   "Shephatiah",
+   "Ithream",
+   "Chileab",
+   "Amnon"
+  ],
+  "answer": 1,
+  "explanation": "The sixth, Ithream, by Eglah David's wife.",
+  "ref": "2 Samuel 3:5"
+ },
+ {
+  "id": "2-samuel-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the fifth son of David, born of Abital?",
+  "choices": [
+   "Shephatiah",
+   "Ithream",
+   "Adonijah",
+   "Chileab"
+  ],
+  "answer": 0,
+  "explanation": "The fifth was Shephatiah the son of Abital.",
+  "ref": "2 Samuel 3:4"
+ },
+ {
+  "id": "2-samuel-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose daughter was Rizpah, Saul's concubine?",
+  "choices": [
+   "Ner",
+   "Laish",
+   "Zeruiah",
+   "Aiah"
+  ],
+  "answer": 3,
+  "explanation": "Saul had a concubine, whose name was Rizpah, the daughter of Aiah.",
+  "ref": "2 Samuel 3:7"
+ },
+ {
+  "id": "2-samuel-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did angry Abner ask Ish-bosheth if he was?",
+  "choices": [
+   "A servant",
+   "A traitor",
+   "A dog's head",
+   "A deserter"
+  ],
+  "answer": 2,
+  "explanation": "Abner said, Am I a dog's head, which against Judah do shew kindness this day unto the house of Saul thy father?",
+  "ref": "2 Samuel 3:8"
+ },
+ {
+  "id": "2-samuel-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "To what town did Michal's husband follow her, weeping?",
+  "choices": [
+   "Gibeon",
+   "Bahurim",
+   "Hebron",
+   "Mahanaim"
+  ],
+  "answer": 1,
+  "explanation": "Her husband went with her along weeping behind her to Bahurim.",
+  "ref": "2 Samuel 3:16"
+ },
+ {
+  "id": "2-samuel-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "From which place did Joab's messengers bring Abner back?",
+  "choices": [
+   "The well of Sirah",
+   "The pool of Gibeon",
+   "The gate of Hebron",
+   "The valley of Rephaim"
+  ],
+  "answer": 0,
+  "explanation": "Joab sent messengers after Abner, which brought him again from the well of Sirah.",
+  "ref": "2 Samuel 3:26"
+ },
+ {
+  "id": "2-samuel-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Under which rib did Joab strike Abner?",
+  "choices": [
+   "The first",
+   "The third",
+   "The seventh",
+   "The fifth"
+  ],
+  "answer": 3,
+  "explanation": "Joab smote him there under the fifth rib, that he died.",
+  "ref": "2 Samuel 3:27"
+ },
+ {
+  "id": "2-samuel-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "place",
+  "question": "Where had Abner killed Joab's brother Asahel?",
+  "choices": [
+   "At Hebron, in the gate",
+   "At Jezreel, on the mount",
+   "At Gibeon, in the battle",
+   "At Mahanaim, by the field"
+  ],
+  "answer": 2,
+  "explanation": "They slew Abner, because he had slain their brother Asahel at Gibeon in the battle.",
+  "ref": "2 Samuel 3:30"
+ },
+ {
+  "id": "2-samuel-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Which brother helped Joab slay Abner?",
+  "choices": [
+   "Asahel",
+   "Abishai",
+   "Amasa",
+   "Jonathan"
+  ],
+  "answer": 1,
+  "explanation": "Joab and Abishai his brother slew Abner.",
+  "ref": "2 Samuel 3:30"
+ },
+ {
+  "id": "2-samuel-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say had not been done to Abner's hands?",
+  "choices": [
+   "They were not bound",
+   "They were not washed",
+   "They were not raised",
+   "They were not wounded"
+  ],
+  "answer": 0,
+  "explanation": "David said, Thy hands were not bound, nor thy feet put into fetters.",
+  "ref": "2 Samuel 3:34"
+ },
+ {
+  "id": "2-samuel-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men came with Abner to David at Hebron?",
+  "choices": [
+   "Ten",
+   "Fifty",
+   "A hundred",
+   "Twenty"
+  ],
+  "answer": 3,
+  "explanation": "Abner came to David to Hebron, and twenty men with him.",
+  "ref": "2 Samuel 3:20"
+ },
+ {
+  "id": "2-samuel-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On whose head did David say the blood of Abner should rest?",
+  "choices": [
+   "Ish-bosheth and his house",
+   "Abishai alone",
+   "Joab and his father's house",
+   "The elders of Israel"
+  ],
+  "answer": 2,
+  "explanation": "David said, Let it rest on the head of Joab, and on all his father's house.",
+  "ref": "2 Samuel 3:29"
+ },
+ {
+  "id": "2-samuel-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David call Abner when he spoke to his servants?",
+  "choices": [
+   "A faithful captain",
+   "A prince and a great man",
+   "A mighty traitor",
+   "The shield of Israel"
+  ],
+  "answer": 1,
+  "explanation": "Know ye not that there is a prince and a great man fallen this day in Israel?",
+  "ref": "2 Samuel 3:38"
+ },
+ {
+  "id": "2-samuel-3-h-16",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say he was that day, though anointed king?",
+  "choices": [
+   "Weak",
+   "Afraid",
+   "Alone",
+   "Guilty"
+  ],
+  "answer": 0,
+  "explanation": "I am this day weak, though anointed king.",
+  "ref": "2 Samuel 3:39"
+ },
+ {
   "id": "old-2-samuel-4-1",
   "chapter": 4,
   "level": "beginner",
