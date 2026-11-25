@@ -176,22 +176,6 @@
   "ref": "Philippians 3:1"
  },
  {
-  "id": "old-philippians-3-2",
-  "chapter": 3,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Paul count as loss?",
-  "choices": [
-   "Only his sufferings",
-   "The things that once were gain to him",
-   "His Roman citizenship",
-   "His friendships"
-  ],
-  "answer": 1,
-  "explanation": "Paul counts his former gains as loss for Christ.",
-  "ref": "Philippians 3:7"
- },
- {
   "id": "old-philippians-3-3",
   "chapter": 3,
   "level": "beginner",
@@ -318,5 +302,2245 @@
   "answer": 1,
   "explanation": "Paul says Christ gives him strength for all things.",
   "ref": "Philippians 4:13"
+ },
+ {
+  "id": "philippians-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named with Paul at the start of the letter?",
+  "choices": [
+   "Silas",
+   "Epaphroditus",
+   "Tychicus",
+   "Timotheus"
+  ],
+  "answer": 3,
+  "explanation": "'Paul and Timotheus, the servants of Jesus Christ.'",
+  "ref": "Philippians 1:1"
+ },
+ {
+  "id": "philippians-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "To the saints in which city is the letter written?",
+  "choices": [
+   "Colosse",
+   "Corinth",
+   "Philippi",
+   "Rome"
+  ],
+  "answer": 2,
+  "explanation": "'To all the saints in Christ Jesus which are at Philippi.'",
+  "ref": "Philippians 1:1"
+ },
+ {
+  "id": "philippians-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "With whom are the saints at Philippi addressed?",
+  "choices": [
+   "The elders and prophets",
+   "The bishops and deacons",
+   "The priests and Levites",
+   "The apostles and evangelists"
+  ],
+  "answer": 1,
+  "explanation": "'To all the saints... which are at Philippi, with the bishops and deacons.'",
+  "ref": "Philippians 1:1"
+ },
+ {
+  "id": "philippians-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "In what place had Paul's bonds become manifest?",
+  "choices": [
+   "All the palace",
+   "The temple",
+   "The synagogue",
+   "The marketplace"
+  ],
+  "answer": 0,
+  "explanation": "'My bonds in Christ are manifest in all the palace, and in all other places.'",
+  "ref": "Philippians 1:13"
+ },
+ {
+  "id": "philippians-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides envy and strife, from what motive do some preach Christ?",
+  "choices": [
+   "Fear",
+   "Greed",
+   "Pride",
+   "Good will"
+  ],
+  "answer": 3,
+  "explanation": "'Some indeed preach Christ even of envy and strife; and some also of good will.'",
+  "ref": "Philippians 1:15"
+ },
+ {
+  "id": "philippians-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say he rejoices in about the preaching?",
+  "choices": [
+   "That Paul is praised",
+   "That the rulers are afraid",
+   "That Christ is preached",
+   "That the churches are rich"
+  ],
+  "answer": 2,
+  "explanation": "'Every way, whether in pretence, or in truth, Christ is preached; and I therein do rejoice.'",
+  "ref": "Philippians 1:18"
+ },
+ {
+  "id": "philippians-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say is 'far better' than staying in the flesh?",
+  "choices": [
+   "To be set free from prison",
+   "To depart and be with Christ",
+   "To visit Philippi again",
+   "To preach in Rome"
+  ],
+  "answer": 1,
+  "explanation": "'Having a desire to depart, and to be with Christ; which is far better.'",
+  "ref": "Philippians 1:23"
+ },
+ {
+  "id": "philippians-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does Paul say it is more needful to stay in the flesh?",
+  "choices": [
+   "For the Philippians' sake",
+   "For the law's sake",
+   "For the sake of Rome",
+   "For his own work in prison"
+  ],
+  "answer": 0,
+  "explanation": "'Nevertheless to abide in the flesh is more needful for you.'",
+  "ref": "Philippians 1:24"
+ },
+ {
+  "id": "philippians-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has been given to believers besides believing on Christ?",
+  "choices": [
+   "To rule with him now",
+   "To escape persecution",
+   "To judge the nations",
+   "To suffer for his sake"
+  ],
+  "answer": 3,
+  "explanation": "'It is given in the behalf of Christ, not only to believe on him, but also to suffer for his sake.'",
+  "ref": "Philippians 1:29"
+ },
+ {
+  "id": "philippians-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When does Paul thank his God for the Philippians?",
+  "choices": [
+   "Only when they send a gift",
+   "Only on the sabbath",
+   "Upon every remembrance of them",
+   "Only when Timotheus returns"
+  ],
+  "answer": 2,
+  "explanation": "'I thank my God upon every remembrance of you.'",
+  "ref": "Philippians 1:3"
+ },
+ {
+  "id": "philippians-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul make request in every prayer for the Philippians?",
+  "choices": [
+   "With joy",
+   "With fasting",
+   "With tears",
+   "With fear"
+  ],
+  "answer": 0,
+  "explanation": "'Always in every prayer of mine for you all making request with joy.'",
+  "ref": "Philippians 1:4"
+ },
+ {
+  "id": "philippians-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of what were the Philippians partakers in Paul's bonds?",
+  "choices": [
+   "His wealth",
+   "His sufferings of the flesh",
+   "His travels",
+   "His grace"
+  ],
+  "answer": 3,
+  "explanation": "'Both in my bonds... ye all are partakers of my grace.'",
+  "ref": "Philippians 1:7"
+ },
+ {
+  "id": "philippians-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does Paul call as his record that he longs after them all?",
+  "choices": [
+   "Timotheus",
+   "Epaphroditus",
+   "God",
+   "The church at Rome"
+  ],
+  "answer": 2,
+  "explanation": "'God is my record, how greatly I long after you all.'",
+  "ref": "Philippians 1:8"
+ },
+ {
+  "id": "philippians-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what does Paul pray their love will abound more and more?",
+  "choices": [
+   "Gifts and tongues",
+   "Knowledge and all judgment",
+   "Wealth and honour",
+   "Prophecy and power"
+  ],
+  "answer": 1,
+  "explanation": "'That your love may abound yet more and more in knowledge and in all judgment.'",
+  "ref": "Philippians 1:9"
+ },
+ {
+  "id": "philippians-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul pray they may approve?",
+  "choices": [
+   "Things that are excellent",
+   "Things that are ancient",
+   "Things that are lawful",
+   "Things that are profitable"
+  ],
+  "answer": 0,
+  "explanation": "'That ye may approve things that are excellent.'",
+  "ref": "Philippians 1:10"
+ },
+ {
+  "id": "philippians-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what does Paul pray they will be filled?",
+  "choices": [
+   "The riches of the nations",
+   "The wisdom of the elders",
+   "The words of the prophets",
+   "The fruits of righteousness by Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "'Being filled with the fruits of righteousness, which are by Jesus Christ.'",
+  "ref": "Philippians 1:11"
+ },
+ {
+  "id": "philippians-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did many of the brethren do because of Paul's bonds?",
+  "choices": [
+   "Left Rome for Philippi",
+   "Went into hiding",
+   "Became more bold to speak the word without fear",
+   "Stopped speaking in public"
+  ],
+  "answer": 2,
+  "explanation": "'Many of the brethren... waxing confident by my bonds, are much more bold to speak the word without fear.'",
+  "ref": "Philippians 1:14"
+ },
+ {
+  "id": "philippians-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do some preach Christ out of contention?",
+  "choices": [
+   "To win honour from the rulers",
+   "Supposing to add affliction to Paul's bonds",
+   "To please the Philippians",
+   "To earn a living"
+  ],
+  "answer": 1,
+  "explanation": "They preach 'of contention, not sincerely, supposing to add affliction to my bonds.'",
+  "ref": "Philippians 1:16"
+ },
+ {
+  "id": "philippians-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do those who preach of love know?",
+  "choices": [
+   "That Paul is set for the defence of the gospel",
+   "That Paul will soon be freed",
+   "That Paul is the chief apostle",
+   "That Rome will fall"
+  ],
+  "answer": 0,
+  "explanation": "'The other of love, knowing that I am set for the defence of the gospel.'",
+  "ref": "Philippians 1:17"
+ },
+ {
+  "id": "philippians-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Through what does Paul know his situation will turn to his salvation?",
+  "choices": [
+   "Through the mercy of Caesar",
+   "Through the work of the bishops",
+   "Through the gifts of the saints",
+   "Through the Philippians' prayer and the supply of the Spirit"
+  ],
+  "answer": 3,
+  "explanation": "'This shall turn to my salvation through your prayer, and the supply of the Spirit of Jesus Christ.'",
+  "ref": "Philippians 1:19"
+ },
+ {
+  "id": "philippians-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Paul's earnest expectation and hope?",
+  "choices": [
+   "That he will be freed within the year",
+   "That he will see Philippi again",
+   "That in nothing he shall be ashamed",
+   "That he will rule with Christ"
+  ],
+  "answer": 2,
+  "explanation": "'That in nothing I shall be ashamed, but that with all boldness... Christ shall be magnified in my body.'",
+  "ref": "Philippians 1:20"
+ },
+ {
+  "id": "philippians-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say he knows about his future with them?",
+  "choices": [
+   "That he shall be put to death",
+   "That he shall abide and continue with them all",
+   "That he shall go to Spain",
+   "That he shall never see them"
+  ],
+  "answer": 1,
+  "explanation": "'I know that I shall abide and continue with you all.'",
+  "ref": "Philippians 1:25"
+ },
+ {
+  "id": "philippians-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will Paul's coming to them again make more abundant?",
+  "choices": [
+   "Their rejoicing in Jesus Christ",
+   "Their giving to the poor",
+   "Their number in the church",
+   "Their peace with Rome"
+  ],
+  "answer": 0,
+  "explanation": "'That your rejoicing may be more abundant in Jesus Christ for me by my coming to you again.'",
+  "ref": "Philippians 1:26"
+ },
+ {
+  "id": "philippians-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How are the Philippians told to face their adversaries?",
+  "choices": [
+   "With open argument",
+   "By hiding in the city",
+   "With force",
+   "In nothing terrified"
+  ],
+  "answer": 3,
+  "explanation": "'And in nothing terrified by your adversaries.'",
+  "ref": "Philippians 1:28"
+ },
+ {
+  "id": "philippians-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To their adversaries, the Philippians' fearlessness is an evident token of what?",
+  "choices": [
+   "Weakness",
+   "Folly",
+   "Perdition",
+   "Pride"
+  ],
+  "answer": 2,
+  "explanation": "'An evident token of perdition, but to you of salvation, and that of God.'",
+  "ref": "Philippians 1:28"
+ },
+ {
+  "id": "philippians-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say the Philippians share with him in the conflict?",
+  "choices": [
+   "The same prison cell",
+   "The same conflict they saw in him and now hear to be in him",
+   "The same trial before Caesar",
+   "The same fear of Rome"
+  ],
+  "answer": 1,
+  "explanation": "'Having the same conflict which ye saw in me, and now hear to be in me.'",
+  "ref": "Philippians 1:30"
+ },
+ {
+  "id": "philippians-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides his bonds, in what were the Philippians partakers of Paul's grace?",
+  "choices": [
+   "The defence and confirmation of the gospel",
+   "The healing of the sick",
+   "The planting of churches",
+   "The writing of letters"
+  ],
+  "answer": 0,
+  "explanation": "'In the defence and confirmation of the gospel, ye all are partakers of my grace.'",
+  "ref": "Philippians 1:7"
+ },
+ {
+  "id": "philippians-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul prays they may be sincere and without offence until when?",
+  "choices": [
+   "The coming of Timotheus",
+   "The end of his imprisonment",
+   "The next sabbath",
+   "The day of Christ"
+  ],
+  "answer": 3,
+  "explanation": "'That ye may be sincere and without offence till the day of Christ.'",
+  "ref": "Philippians 1:10"
+ },
+ {
+  "id": "philippians-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "To whose glory and praise are the fruits of righteousness?",
+  "choices": [
+   "Paul's",
+   "The church's",
+   "God's",
+   "Caesar's"
+  ],
+  "answer": 2,
+  "explanation": "The fruits of righteousness are 'unto the glory and praise of God.'",
+  "ref": "Philippians 1:11"
+ },
+ {
+  "id": "philippians-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Between life and death, what does Paul say he does not know?",
+  "choices": [
+   "Which will come first",
+   "Which he shall choose",
+   "Which the Lord will send",
+   "Which the Philippians want"
+  ],
+  "answer": 1,
+  "explanation": "'Yet what I shall choose I wot not.'",
+  "ref": "Philippians 1:22"
+ },
+ {
+  "id": "philippians-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what two ways does Paul say Christ is preached?",
+  "choices": [
+   "In pretence or in truth",
+   "In Rome or in Philippi",
+   "In words or in miracles",
+   "In public or in private"
+  ],
+  "answer": 0,
+  "explanation": "'Whether in pretence, or in truth, Christ is preached.'",
+  "ref": "Philippians 1:18"
+ },
+ {
+  "id": "philippians-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must be 'as it becometh the gospel of Christ'?",
+  "choices": [
+   "Their offering",
+   "Their worship",
+   "Their baptism",
+   "Their conversation"
+  ],
+  "answer": 3,
+  "explanation": "'Only let your conversation be as it becometh the gospel of Christ.'",
+  "ref": "Philippians 1:27"
+ },
+ {
+  "id": "philippians-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Paul describe those who preach Christ of contention?",
+  "choices": [
+   "Not boldly",
+   "Not freely",
+   "Not sincerely",
+   "Not wisely"
+  ],
+  "answer": 2,
+  "explanation": "'The one preach Christ of contention, not sincerely.'",
+  "ref": "Philippians 1:16"
+ },
+ {
+  "id": "philippians-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Paul expect Christ to be magnified in his body?",
+  "choices": [
+   "With miracles and signs",
+   "With all boldness, as always",
+   "With silence in suffering",
+   "With his release from prison"
+  ],
+  "answer": 1,
+  "explanation": "'With all boldness, as always, so now also Christ shall be magnified in my body.'",
+  "ref": "Philippians 1:20"
+ },
+ {
+  "id": "philippians-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whom does Paul wish grace and peace?",
+  "choices": [
+   "God our Father and the Lord Jesus Christ",
+   "The Spirit and the apostles",
+   "The bishops and deacons",
+   "Timotheus and the saints"
+  ],
+  "answer": 0,
+  "explanation": "'Grace be unto you, and peace, from God our Father, and from the Lord Jesus Christ.'",
+  "ref": "Philippians 1:2"
+ },
+ {
+  "id": "philippians-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What reason does Paul give for thinking well of them all?",
+  "choices": [
+   "They have sent him a gift",
+   "They have never failed him",
+   "They are the oldest church",
+   "He has them in his heart"
+  ],
+  "answer": 3,
+  "explanation": "'It is meet for me to think this of you all, because I have you in my heart.'",
+  "ref": "Philippians 1:7"
+ },
+ {
+  "id": "philippians-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose Spirit does Paul say will supply him?",
+  "choices": [
+   "The Spirit of the prophets",
+   "The Spirit of the law",
+   "The Spirit of Jesus Christ",
+   "The Spirit of Timotheus"
+  ],
+  "answer": 2,
+  "explanation": "'The supply of the Spirit of Jesus Christ.'",
+  "ref": "Philippians 1:19"
+ },
+ {
+  "id": "philippians-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says the salvation shown by their fearlessness is of whom?",
+  "choices": [
+   "The apostles",
+   "God",
+   "The bishops",
+   "Caesar"
+  ],
+  "answer": 1,
+  "explanation": "'To them an evident token of perdition, but to you of salvation, and that of God.'",
+  "ref": "Philippians 1:28"
+ },
+ {
+  "id": "philippians-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what purpose does Paul say he will continue with them?",
+  "choices": [
+   "Their furtherance and joy of faith",
+   "Their relief from prison",
+   "Their instruction in the law",
+   "Their gifts to the poor"
+  ],
+  "answer": 0,
+  "explanation": "'I shall abide and continue with you all for your furtherance and joy of faith.'",
+  "ref": "Philippians 1:25"
+ },
+ {
+  "id": "philippians-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "What do Paul and Timotheus call themselves?",
+  "choices": [
+   "The apostles of the Gentiles",
+   "The prisoners of Caesar",
+   "The elders of Philippi",
+   "The servants of Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "'Paul and Timotheus, the servants of Jesus Christ.'",
+  "ref": "Philippians 1:1"
+ },
+ {
+  "id": "philippians-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Unto what death did Christ become obedient?",
+  "choices": [
+   "Death by the sword",
+   "Death by stoning",
+   "Death in prison",
+   "The death of the cross"
+  ],
+  "answer": 3,
+  "explanation": "He 'became obedient unto death, even the death of the cross.'",
+  "ref": "Philippians 2:8"
+ },
+ {
+  "id": "philippians-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall every tongue confess about Jesus Christ?",
+  "choices": [
+   "That he is a prophet",
+   "That he is a teacher",
+   "That he is Lord",
+   "That he is the king of the Jews"
+  ],
+  "answer": 2,
+  "explanation": "'Every tongue should confess that Jesus Christ is Lord.'",
+  "ref": "Philippians 2:11"
+ },
+ {
+  "id": "philippians-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "To the glory of whom do tongues confess that Jesus is Lord?",
+  "choices": [
+   "The apostles",
+   "God the Father",
+   "The church",
+   "Timotheus"
+  ],
+  "answer": 1,
+  "explanation": "'To the glory of God the Father.'",
+  "ref": "Philippians 2:11"
+ },
+ {
+  "id": "philippians-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Paul call 'my brother, and companion in labour'?",
+  "choices": [
+   "Epaphroditus",
+   "Timotheus",
+   "Tychicus",
+   "Silas"
+  ],
+  "answer": 0,
+  "explanation": "'Epaphroditus, my brother, and companion in labour, and fellow soldier.'",
+  "ref": "Philippians 2:25"
+ },
+ {
+  "id": "philippians-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "What happened to Epaphroditus?",
+  "choices": [
+   "He was imprisoned in Rome",
+   "He was lost at sea",
+   "He was beaten by a crowd",
+   "He was sick nigh unto death"
+  ],
+  "answer": 3,
+  "explanation": "'For indeed he was sick nigh unto death.'",
+  "ref": "Philippians 2:27"
+ },
+ {
+  "id": "philippians-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who had mercy on Epaphroditus?",
+  "choices": [
+   "Caesar",
+   "Timotheus",
+   "God",
+   "The bishops"
+  ],
+  "answer": 2,
+  "explanation": "'But God had mercy on him; and not on him only, but on me also.'",
+  "ref": "Philippians 2:27"
+ },
+ {
+  "id": "philippians-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "As what do the Philippians shine in the world?",
+  "choices": [
+   "Stars",
+   "Lights",
+   "Lamps in the temple",
+   "Cities on a hill"
+  ],
+  "answer": 1,
+  "explanation": "'Among whom ye shine as lights in the world.'",
+  "ref": "Philippians 2:15"
+ },
+ {
+  "id": "philippians-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the Philippians told to do without?",
+  "choices": [
+   "Murmurings and disputings",
+   "Gold and silver",
+   "Food and drink",
+   "Prayer and fasting"
+  ],
+  "answer": 0,
+  "explanation": "'Do all things without murmurings and disputings.'",
+  "ref": "Philippians 2:14"
+ },
+ {
+  "id": "philippians-2-e-09",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what are they told to work out their own salvation?",
+  "choices": [
+   "Fasting and weeping",
+   "Zeal and boldness",
+   "Song and thanksgiving",
+   "Fear and trembling"
+  ],
+  "answer": 3,
+  "explanation": "'Work out your own salvation with fear and trembling.'",
+  "ref": "Philippians 2:12"
+ },
+ {
+  "id": "philippians-2-e-10",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who worketh in believers both to will and to do?",
+  "choices": [
+   "Paul",
+   "The Spirit of the law",
+   "God",
+   "The church"
+  ],
+  "answer": 2,
+  "explanation": "'It is God which worketh in you both to will and to do of his good pleasure.'",
+  "ref": "Philippians 2:13"
+ },
+ {
+  "id": "philippians-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Through what is nothing to be done?",
+  "choices": [
+   "Strife or vainglory",
+   "Fear or favour",
+   "Haste or delay",
+   "Silence or boasting"
+  ],
+  "answer": 0,
+  "explanation": "'Let nothing be done through strife or vainglory.'",
+  "ref": "Philippians 2:3"
+ },
+ {
+  "id": "philippians-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On whose things are believers told to look, as well as their own?",
+  "choices": [
+   "The things of the elders",
+   "The things of Rome",
+   "The things of the temple",
+   "The things of others"
+  ],
+  "answer": 3,
+  "explanation": "'Look not every man on his own things, but every man also on the things of others.'",
+  "ref": "Philippians 2:4"
+ },
+ {
+  "id": "philippians-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Being in the form of God, Christ thought it not robbery to be what?",
+  "choices": [
+   "Lord of the angels",
+   "King of Israel",
+   "Equal with God",
+   "A ruler of the earth"
+  ],
+  "answer": 2,
+  "explanation": "'Who, being in the form of God, thought it not robbery to be equal with God.'",
+  "ref": "Philippians 2:6"
+ },
+ {
+  "id": "philippians-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whose likeness was Christ made?",
+  "choices": [
+   "Angels'",
+   "Men's",
+   "Kings'",
+   "Priests'"
+  ],
+  "answer": 1,
+  "explanation": "He 'was made in the likeness of men.'",
+  "ref": "Philippians 2:7"
+ },
+ {
+  "id": "philippians-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Of what places does Paul say every knee shall bow?",
+  "choices": [
+   "Heaven, earth and under the earth",
+   "Jerusalem, Rome and Antioch",
+   "The temple, the city and the field",
+   "Land, sea and sky"
+  ],
+  "answer": 0,
+  "explanation": "'Of things in heaven, and things in earth, and things under the earth.'",
+  "ref": "Philippians 2:10"
+ },
+ {
+  "id": "philippians-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Being found in fashion as a man, what did Christ do?",
+  "choices": [
+   "Called twelve disciples",
+   "Taught in the temple",
+   "Refused the cross",
+   "Humbled himself"
+  ],
+  "answer": 3,
+  "explanation": "'Being found in fashion as a man, he humbled himself.'",
+  "ref": "Philippians 2:8"
+ },
+ {
+  "id": "philippians-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Obeying not only in his presence, how does Paul say they should obey now?",
+  "choices": [
+   "With less zeal",
+   "Only by letter",
+   "Much more in his absence",
+   "Only on the sabbath"
+  ],
+  "answer": 2,
+  "explanation": "'As ye have always obeyed, not as in my presence only, but now much more in my absence.'",
+  "ref": "Philippians 2:12"
+ },
+ {
+  "id": "philippians-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Without murmuring they will be blameless and harmless, the what of God?",
+  "choices": [
+   "Servants",
+   "Sons",
+   "Friends",
+   "Heirs"
+  ],
+  "answer": 1,
+  "explanation": "'That ye may be blameless and harmless, the sons of God.'",
+  "ref": "Philippians 2:15"
+ },
+ {
+  "id": "philippians-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In the midst of what kind of nation do they shine?",
+  "choices": [
+   "A crooked and perverse nation",
+   "A mighty and proud nation",
+   "A scattered and weary nation",
+   "A rich and idle nation"
+  ],
+  "answer": 0,
+  "explanation": "'In the midst of a crooked and perverse nation.'",
+  "ref": "Philippians 2:15"
+ },
+ {
+  "id": "philippians-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are they to hold forth?",
+  "choices": [
+   "The lamp of the law",
+   "The sword of the Spirit",
+   "The cup of blessing",
+   "The word of life"
+  ],
+  "answer": 3,
+  "explanation": "'Holding forth the word of life.'",
+  "ref": "Philippians 2:16"
+ },
+ {
+  "id": "philippians-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul want to be able to say in the day of Christ?",
+  "choices": [
+   "That he has finished the temple",
+   "That he has converted Rome",
+   "That he has not run in vain",
+   "That he has been freed"
+  ],
+  "answer": 2,
+  "explanation": "'That I may rejoice in the day of Christ, that I have not run in vain, neither laboured in vain.'",
+  "ref": "Philippians 2:16"
+ },
+ {
+  "id": "philippians-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul ask the Philippians to do for the same cause?",
+  "choices": [
+   "Mourn with him",
+   "Joy and rejoice with him",
+   "Pray and fast",
+   "Write to Caesar"
+  ],
+  "answer": 1,
+  "explanation": "'For the same cause also do ye joy, and rejoice with me.'",
+  "ref": "Philippians 2:18"
+ },
+ {
+  "id": "philippians-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Paul hope to send Timotheus to them?",
+  "choices": [
+   "That he may be of good comfort when he knows their state",
+   "That Timotheus may rest",
+   "That the church may collect a gift",
+   "That the bishops may be appointed"
+  ],
+  "answer": 0,
+  "explanation": "'That I also may be of good comfort, when I know your state.'",
+  "ref": "Philippians 2:19"
+ },
+ {
+  "id": "philippians-2-m-14",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "What does Paul say of Timotheus compared with others?",
+  "choices": [
+   "He is the oldest of the apostles",
+   "He is the best teacher of the law",
+   "He is the most feared by Rome",
+   "He has no one likeminded to naturally care for them"
+  ],
+  "answer": 3,
+  "explanation": "'I have no man likeminded, who will naturally care for your state.'",
+  "ref": "Philippians 2:20"
+ },
+ {
+  "id": "philippians-2-m-15",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "How has Timotheus served with Paul in the gospel?",
+  "choices": [
+   "As a slave with his master",
+   "As a soldier with his captain",
+   "As a son with the father",
+   "As a scribe with a prophet"
+  ],
+  "answer": 2,
+  "explanation": "'As a son with the father, he hath served with me in the gospel.'",
+  "ref": "Philippians 2:22"
+ },
+ {
+  "id": "philippians-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say 'all seek'?",
+  "choices": [
+   "Honour from Caesar",
+   "Their own, not the things of Jesus Christ",
+   "Safety in Rome",
+   "The favour of the elders"
+  ],
+  "answer": 1,
+  "explanation": "'All seek their own, not the things which are Jesus Christ's.'",
+  "ref": "Philippians 2:21"
+ },
+ {
+  "id": "philippians-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When does Paul hope to send Timotheus?",
+  "choices": [
+   "As soon as he sees how it will go with him",
+   "After the feast",
+   "When winter is past",
+   "When Epaphroditus is well"
+  ],
+  "answer": 0,
+  "explanation": "'Him therefore I hope to send presently, so soon as I shall see how it will go with me.'",
+  "ref": "Philippians 2:23"
+ },
+ {
+  "id": "philippians-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul trust the Lord he himself will do?",
+  "choices": [
+   "Return to Jerusalem",
+   "Leave Rome for Spain",
+   "Send a gift",
+   "Come shortly"
+  ],
+  "answer": 3,
+  "explanation": "'I trust in the Lord that I also myself shall come shortly.'",
+  "ref": "Philippians 2:24"
+ },
+ {
+  "id": "philippians-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was Epaphroditus full of heaviness?",
+  "choices": [
+   "He had been parted from Paul",
+   "He had lost the gift",
+   "The Philippians had heard that he had been sick",
+   "He had been beaten"
+  ],
+  "answer": 2,
+  "explanation": "'He longed after you all, and was full of heaviness, because that ye had heard that he had been sick.'",
+  "ref": "Philippians 2:26"
+ },
+ {
+  "id": "philippians-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does Paul say God's mercy on Epaphroditus was also mercy on him?",
+  "choices": [
+   "Lest he be left alone in prison",
+   "Lest he should have sorrow upon sorrow",
+   "Lest his letter be lost",
+   "Lest his gift be wasted"
+  ],
+  "answer": 1,
+  "explanation": "'Not on him only, but on me also, lest I should have sorrow upon sorrow.'",
+  "ref": "Philippians 2:27"
+ },
+ {
+  "id": "philippians-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Paul send Epaphroditus the more carefully?",
+  "choices": [
+   "That they may rejoice and he be the less sorrowful",
+   "That the church might be warned",
+   "That Rome might be informed",
+   "That the gift might be returned"
+  ],
+  "answer": 0,
+  "explanation": "'That, when ye see him again, ye may rejoice, and that I may be the less sorrowful.'",
+  "ref": "Philippians 2:28"
+ },
+ {
+  "id": "philippians-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are they told to receive Epaphroditus?",
+  "choices": [
+   "With a feast and gifts",
+   "In silence and prayer",
+   "With a letter of thanks",
+   "In the Lord with all gladness"
+  ],
+  "answer": 3,
+  "explanation": "'Receive him therefore in the Lord with all gladness; and hold such in reputation.'",
+  "ref": "Philippians 2:29"
+ },
+ {
+  "id": "philippians-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was Epaphroditus nigh unto death?",
+  "choices": [
+   "For preaching in the market",
+   "For fighting against Rome",
+   "For Christ's work, to supply their lack of service",
+   "For crossing the sea"
+  ],
+  "answer": 2,
+  "explanation": "'For the work of Christ he was nigh unto death... to supply your lack of service toward me.'",
+  "ref": "Philippians 2:30"
+ },
+ {
+  "id": "philippians-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "What role does Paul give Epaphroditus toward the Philippians?",
+  "choices": [
+   "Their bishop and teacher",
+   "Their messenger, who ministered to Paul's wants",
+   "Their judge in disputes",
+   "Their keeper of the gift"
+  ],
+  "answer": 1,
+  "explanation": "'Your messenger, and he that ministered to my wants.'",
+  "ref": "Philippians 2:25"
+ },
+ {
+  "id": "philippians-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these does Paul list in his appeal beginning 'if any'?",
+  "choices": [
+   "Fellowship of the Spirit",
+   "Wisdom of the elders",
+   "Gifts of the apostles",
+   "Victory over Rome"
+  ],
+  "answer": 0,
+  "explanation": "'If any comfort of love, if any fellowship of the Spirit.'",
+  "ref": "Philippians 2:1"
+ },
+ {
+  "id": "philippians-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Upon what does Paul say he may be offered?",
+  "choices": [
+   "The altar of the temple",
+   "The cross of Christ",
+   "The feast of the Passover",
+   "The sacrifice and service of their faith"
+  ],
+  "answer": 3,
+  "explanation": "'If I be offered upon the sacrifice and service of your faith, I joy, and rejoice with you all.'",
+  "ref": "Philippians 2:17"
+ },
+ {
+  "id": "philippians-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides brother and companion in labour, what does Paul call Epaphroditus?",
+  "choices": [
+   "Fellowprisoner",
+   "Fellowservant",
+   "Fellow soldier",
+   "Fellow elder"
+  ],
+  "answer": 2,
+  "explanation": "'Epaphroditus, my brother, and companion in labour, and fellow soldier.'",
+  "ref": "Philippians 2:25"
+ },
+ {
+  "id": "philippians-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose proof, Paul says, do the Philippians know?",
+  "choices": [
+   "Epaphroditus'",
+   "Timotheus'",
+   "Clement's",
+   "Silas'"
+  ],
+  "answer": 1,
+  "explanation": "'Ye know the proof of him, that, as a son with the father, he hath served with me.'",
+  "ref": "Philippians 2:22"
+ },
+ {
+  "id": "philippians-2-h-14",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "In whom does Paul trust to send Timotheus?",
+  "choices": [
+   "The Lord Jesus",
+   "The church at Rome",
+   "The bishops",
+   "Caesar"
+  ],
+  "answer": 0,
+  "explanation": "'I trust in the Lord Jesus to send Timotheus shortly unto you.'",
+  "ref": "Philippians 2:19"
+ },
+ {
+  "id": "philippians-2-h-15",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to what does God work in believers to will and to do?",
+  "choices": [
+   "His holy law",
+   "His ancient promise",
+   "His chosen people",
+   "His good pleasure"
+  ],
+  "answer": 3,
+  "explanation": "'It is God which worketh in you both to will and to do of his good pleasure.'",
+  "ref": "Philippians 2:13"
+ },
+ {
+  "id": "philippians-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On which day was Paul circumcised?",
+  "choices": [
+   "The seventh day",
+   "The fortieth day",
+   "The thirteenth year",
+   "The eighth day"
+  ],
+  "answer": 3,
+  "explanation": "Paul was 'circumcised the eighth day.'",
+  "ref": "Philippians 3:5"
+ },
+ {
+  "id": "philippians-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Of which tribe was Paul?",
+  "choices": [
+   "Judah",
+   "Levi",
+   "Benjamin",
+   "Ephraim"
+  ],
+  "answer": 2,
+  "explanation": "'Of the stock of Israel, of the tribe of Benjamin.'",
+  "ref": "Philippians 3:5"
+ },
+ {
+  "id": "philippians-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "As touching the law, what was Paul?",
+  "choices": [
+   "A Sadducee",
+   "A Pharisee",
+   "A scribe",
+   "A priest"
+  ],
+  "answer": 1,
+  "explanation": "'As touching the law, a Pharisee.'",
+  "ref": "Philippians 3:5"
+ },
+ {
+  "id": "philippians-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Concerning zeal, what had Paul done?",
+  "choices": [
+   "Persecuted the church",
+   "Built synagogues",
+   "Fasted twice a week",
+   "Taught in the temple"
+  ],
+  "answer": 0,
+  "explanation": "'Concerning zeal, persecuting the church.'",
+  "ref": "Philippians 3:6"
+ },
+ {
+  "id": "philippians-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "For whose sake did Paul count his gains as loss?",
+  "choices": [
+   "The law's",
+   "Israel's",
+   "The church's",
+   "Christ's"
+  ],
+  "answer": 3,
+  "explanation": "'What things were gain to me, those I counted loss for Christ.'",
+  "ref": "Philippians 3:7"
+ },
+ {
+  "id": "philippians-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Of which of these does Paul say 'Beware'?",
+  "choices": [
+   "Pharisees",
+   "Rulers",
+   "Evil workers",
+   "Merchants"
+  ],
+  "answer": 2,
+  "explanation": "'Beware of dogs, beware of evil workers, beware of the concision.'",
+  "ref": "Philippians 3:2"
+ },
+ {
+  "id": "philippians-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will Christ do for our vile body?",
+  "choices": [
+   "Raise it in three days",
+   "Change it to be like his glorious body",
+   "Heal it of every sickness",
+   "Hide it from the world"
+  ],
+  "answer": 1,
+  "explanation": "He 'shall change our vile body, that it may be fashioned like unto his glorious body.'",
+  "ref": "Philippians 3:21"
+ },
+ {
+  "id": "philippians-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say writing the same things is for them?",
+  "choices": [
+   "Safe",
+   "Wearisome",
+   "Foolish",
+   "Unneeded"
+  ],
+  "answer": 0,
+  "explanation": "'To write the same things to you, to me indeed is not grievous, but for you it is safe.'",
+  "ref": "Philippians 3:1"
+ },
+ {
+  "id": "philippians-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "We who worship God in the spirit have no what?",
+  "choices": [
+   "Fear of death",
+   "Need of the law",
+   "Lack of bread",
+   "Confidence in the flesh"
+  ],
+  "answer": 3,
+  "explanation": "'We are the circumcision, which worship God in the spirit... and have no confidence in the flesh.'",
+  "ref": "Philippians 3:3"
+ },
+ {
+  "id": "philippians-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul describe his Hebrew standing?",
+  "choices": [
+   "A Hebrew of Rome",
+   "A Hebrew by adoption",
+   "An Hebrew of the Hebrews",
+   "A Hebrew of the dispersion"
+  ],
+  "answer": 2,
+  "explanation": "'An Hebrew of the Hebrews.'",
+  "ref": "Philippians 3:5"
+ },
+ {
+  "id": "philippians-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Touching the righteousness in the law, what was Paul?",
+  "choices": [
+   "Imperfect",
+   "Blameless",
+   "Zealous but proud",
+   "Condemned"
+  ],
+  "answer": 1,
+  "explanation": "'Touching the righteousness which is in the law, blameless.'",
+  "ref": "Philippians 3:6"
+ },
+ {
+  "id": "philippians-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say he wants to win?",
+  "choices": [
+   "Christ",
+   "The prize of Rome",
+   "The favour of the elders",
+   "A crown of gold"
+  ],
+  "answer": 0,
+  "explanation": "'That I may win Christ.'",
+  "ref": "Philippians 3:8"
+ },
+ {
+  "id": "philippians-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides knowing Christ, what does Paul want to know?",
+  "choices": [
+   "The secrets of the law",
+   "The names of the angels",
+   "The end of the age",
+   "The power of his resurrection"
+  ],
+  "answer": 3,
+  "explanation": "'That I may know him, and the power of his resurrection, and the fellowship of his sufferings.'",
+  "ref": "Philippians 3:10"
+ },
+ {
+  "id": "philippians-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul do with the things which are behind?",
+  "choices": [
+   "Counts them again",
+   "Teaches them",
+   "Forgets them",
+   "Writes them down"
+  ],
+  "answer": 2,
+  "explanation": "'Forgetting those things which are behind, and reaching forth unto those things which are before.'",
+  "ref": "Philippians 3:13"
+ },
+ {
+  "id": "philippians-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul say he stands regarding being perfect?",
+  "choices": [
+   "He is already perfect",
+   "He has not already attained or been made perfect",
+   "He is nearly perfect",
+   "He has no wish to be perfect"
+  ],
+  "answer": 1,
+  "explanation": "'Not as though I had already attained, either were already perfect.'",
+  "ref": "Philippians 3:12"
+ },
+ {
+  "id": "philippians-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of those who are enemies of the cross, whose God is what?",
+  "choices": [
+   "Their belly",
+   "Their gold",
+   "Their pride",
+   "Their law"
+  ],
+  "answer": 0,
+  "explanation": "'Whose God is their belly, and whose glory is in their shame, who mind earthly things.'",
+  "ref": "Philippians 3:19"
+ },
+ {
+  "id": "philippians-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the end of those enemies of the cross?",
+  "choices": [
+   "Exile",
+   "Silence",
+   "Poverty",
+   "Destruction"
+  ],
+  "answer": 3,
+  "explanation": "'Whose end is destruction.'",
+  "ref": "Philippians 3:19"
+ },
+ {
+  "id": "philippians-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul tell of the enemies of the cross?",
+  "choices": [
+   "Angrily",
+   "Secretly",
+   "Weeping",
+   "Gladly"
+  ],
+  "answer": 2,
+  "explanation": "'I have told you often, and now tell you even weeping.'",
+  "ref": "Philippians 3:18"
+ },
+ {
+  "id": "philippians-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For the excellency of what does Paul count all things but loss?",
+  "choices": [
+   "The law of Moses",
+   "The knowledge of Christ Jesus his Lord",
+   "The fellowship of the saints",
+   "The hope of Israel"
+  ],
+  "answer": 1,
+  "explanation": "'I count all things but loss for the excellency of the knowledge of Christ Jesus my Lord.'",
+  "ref": "Philippians 3:8"
+ },
+ {
+  "id": "philippians-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say he counts the things he lost?",
+  "choices": [
+   "Dung",
+   "A burden",
+   "A shadow",
+   "A debt"
+  ],
+  "answer": 0,
+  "explanation": "'Do count them but dung, that I may win Christ.'",
+  "ref": "Philippians 3:8"
+ },
+ {
+  "id": "philippians-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul hope, by any means, to attain?",
+  "choices": [
+   "The favour of Caesar",
+   "A seat among the apostles",
+   "Release from prison",
+   "The resurrection of the dead"
+  ],
+  "answer": 3,
+  "explanation": "'If by any means I might attain unto the resurrection of the dead.'",
+  "ref": "Philippians 3:11"
+ },
+ {
+  "id": "philippians-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "For whom does Paul say he is apprehended?",
+  "choices": [
+   "The church",
+   "The apostles",
+   "Christ Jesus",
+   "The law"
+  ],
+  "answer": 2,
+  "explanation": "'That I may apprehend that for which also I am apprehended of Christ Jesus.'",
+  "ref": "Philippians 3:12"
+ },
+ {
+  "id": "philippians-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul tell the brethren to do about those who walk as he does?",
+  "choices": [
+   "Avoid them",
+   "Be followers together of him and mark them",
+   "Send them letters",
+   "Teach them the law"
+  ],
+  "answer": 1,
+  "explanation": "'Be followers together of me, and mark them which walk so as ye have us for an ensample.'",
+  "ref": "Philippians 3:17"
+ },
+ {
+  "id": "philippians-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If any are otherwise minded, what does Paul say God will do?",
+  "choices": [
+   "Reveal even this to them",
+   "Judge them",
+   "Send a teacher",
+   "Ignore them"
+  ],
+  "answer": 0,
+  "explanation": "'If in any thing ye be otherwise minded, God shall reveal even this unto you.'",
+  "ref": "Philippians 3:15"
+ },
+ {
+  "id": "philippians-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what working can Christ change our vile body?",
+  "choices": [
+   "The working of the law",
+   "The working of the apostles",
+   "The working of the Spirit in the church",
+   "The working by which he subdues all things to himself"
+  ],
+  "answer": 3,
+  "explanation": "'According to the working whereby he is able even to subdue all things unto himself.'",
+  "ref": "Philippians 3:21"
+ },
+ {
+  "id": "philippians-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Paul compare himself with any who trust in the flesh?",
+  "choices": [
+   "He has less reason to",
+   "He has the same reason",
+   "He has more reason to",
+   "He has no reason to"
+  ],
+  "answer": 2,
+  "explanation": "'If any other man thinketh that he hath whereof he might trust in the flesh, I more.'",
+  "ref": "Philippians 3:4"
+ },
+ {
+  "id": "philippians-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what does Paul want to be made conformable?",
+  "choices": [
+   "His law",
+   "His death",
+   "His teaching",
+   "His kingdom"
+  ],
+  "answer": 1,
+  "explanation": "'Being made conformable unto his death.'",
+  "ref": "Philippians 3:10"
+ },
+ {
+  "id": "philippians-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what stock was Paul?",
+  "choices": [
+   "Israel",
+   "Judah",
+   "Rome",
+   "Tarsus"
+  ],
+  "answer": 0,
+  "explanation": "'Of the stock of Israel, of the tribe of Benjamin.'",
+  "ref": "Philippians 3:5"
+ },
+ {
+  "id": "philippians-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does Paul call 'the circumcision'?",
+  "choices": [
+   "Those who keep the law",
+   "Those who are born Hebrew",
+   "Those who fast and pray",
+   "Those who worship God in the spirit and rejoice in Christ"
+  ],
+  "answer": 3,
+  "explanation": "'We are the circumcision, which worship God in the spirit, and rejoice in Christ Jesus.'",
+  "ref": "Philippians 3:3"
+ },
+ {
+  "id": "philippians-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom does Paul call his joy and crown?",
+  "choices": [
+   "The elders of Rome",
+   "The bishops",
+   "Timotheus",
+   "The Philippian brethren he loves"
+  ],
+  "answer": 3,
+  "explanation": "'My brethren dearly beloved and longed for, my joy and crown.'",
+  "ref": "Philippians 4:1"
+ },
+ {
+  "id": "philippians-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will keep the hearts and minds of believers through Christ Jesus?",
+  "choices": [
+   "The wisdom of the elders",
+   "The strength of the church",
+   "The peace of God, which passeth all understanding",
+   "The law of the Lord"
+  ],
+  "answer": 2,
+  "explanation": "'The peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus.'",
+  "ref": "Philippians 4:7"
+ },
+ {
+  "id": "philippians-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In whatever state he is, what has Paul learned to be?",
+  "choices": [
+   "Silent",
+   "Content",
+   "Watchful",
+   "Bold"
+  ],
+  "answer": 1,
+  "explanation": "'I have learned, in whatsoever state I am, therewith to be content.'",
+  "ref": "Philippians 4:11"
+ },
+ {
+  "id": "philippians-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "According to what will God supply all their need?",
+  "choices": [
+   "His riches in glory by Christ Jesus",
+   "The gifts of the saints",
+   "The labour of their hands",
+   "The law of the Lord"
+  ],
+  "answer": 0,
+  "explanation": "'My God shall supply all your need according to his riches in glory by Christ Jesus.'",
+  "ref": "Philippians 4:19"
+ },
+ {
+  "id": "philippians-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who brought Paul the things sent from Philippi?",
+  "choices": [
+   "Timotheus",
+   "Clement",
+   "Tychicus",
+   "Epaphroditus"
+  ],
+  "answer": 3,
+  "explanation": "'Having received of Epaphroditus the things which were sent from you.'",
+  "ref": "Philippians 4:18"
+ },
+ {
+  "id": "philippians-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Chiefly which saints salute them?",
+  "choices": [
+   "The bishops of Rome",
+   "The elders of Jerusalem",
+   "Those of Caesar's household",
+   "The deacons of Macedonia"
+  ],
+  "answer": 2,
+  "explanation": "'All the saints salute you, chiefly they that are of Caesar's household.'",
+  "ref": "Philippians 4:22"
+ },
+ {
+  "id": "philippians-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which city did the Philippians send help to Paul more than once?",
+  "choices": [
+   "Corinth",
+   "Thessalonica",
+   "Ephesus",
+   "Athens"
+  ],
+  "answer": 1,
+  "explanation": "'Even in Thessalonica ye sent once and again unto my necessity.'",
+  "ref": "Philippians 4:16"
+ },
+ {
+  "id": "philippians-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul rejoice greatly in the Lord?",
+  "choices": [
+   "Their care of him had flourished again",
+   "They had finished a building",
+   "They had sent Timotheus",
+   "They had defeated their enemies"
+  ],
+  "answer": 0,
+  "explanation": "'Now at the last your care of me hath flourished again.'",
+  "ref": "Philippians 4:10"
+ },
+ {
+  "id": "philippians-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the Philippians lacked in caring for Paul?",
+  "choices": [
+   "Money",
+   "Courage",
+   "Knowledge",
+   "Opportunity"
+  ],
+  "answer": 3,
+  "explanation": "'Wherein ye were also careful, but ye lacked opportunity.'",
+  "ref": "Philippians 4:10"
+ },
+ {
+  "id": "philippians-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which pair of conditions has Paul been instructed to bear?",
+  "choices": [
+   "To be free and to be bound",
+   "To be young and to be old",
+   "To be full and to be hungry",
+   "To be near and to be far"
+  ],
+  "answer": 2,
+  "explanation": "'I am instructed both to be full and to be hungry, both to abound and to suffer need.'",
+  "ref": "Philippians 4:12"
+ },
+ {
+  "id": "philippians-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which pair does Paul say he knows how to live through?",
+  "choices": [
+   "To be praised and to be shamed",
+   "To be abased and to abound",
+   "To be sick and to be well",
+   "To be alone and to be with friends"
+  ],
+  "answer": 1,
+  "explanation": "'I know both how to be abased, and I know how to abound.'",
+  "ref": "Philippians 4:12"
+ },
+ {
+  "id": "philippians-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the Philippians done with Paul's affliction?",
+  "choices": [
+   "Communicated with it",
+   "Written about it",
+   "Sent word of it to Rome",
+   "Prayed against it"
+  ],
+  "answer": 0,
+  "explanation": "'Ye have well done, that ye did communicate with my affliction.'",
+  "ref": "Philippians 4:14"
+ },
+ {
+  "id": "philippians-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say he desires, rather than a gift?",
+  "choices": [
+   "Release from prison",
+   "Honour among the churches",
+   "Companions for his journey",
+   "Fruit that may abound to their account"
+  ],
+  "answer": 3,
+  "explanation": "'Not because I desire a gift: but I desire fruit that may abound to your account.'",
+  "ref": "Philippians 4:17"
+ },
+ {
+  "id": "philippians-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul describe the gift to God?",
+  "choices": [
+   "A payment of a debt",
+   "A tithe of the first fruits",
+   "A sweet-smelling odour, a sacrifice acceptable to God",
+   "A token of friendship"
+  ],
+  "answer": 2,
+  "explanation": "'An odour of a sweet smell, a sacrifice acceptable, wellpleasing to God.'",
+  "ref": "Philippians 4:18"
+ },
+ {
+  "id": "philippians-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul say he stands after receiving the gift?",
+  "choices": [
+   "He still lacks much",
+   "He has all and abounds, and is full",
+   "He must return it",
+   "He is in debt to them"
+  ],
+  "answer": 1,
+  "explanation": "'But I have all, and abound: I am full.'",
+  "ref": "Philippians 4:18"
+ },
+ {
+  "id": "philippians-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason does Paul give after 'Let your moderation be known unto all men'?",
+  "choices": [
+   "The Lord is at hand",
+   "The law is satisfied",
+   "The rulers are watching",
+   "The feast is near"
+  ],
+  "answer": 0,
+  "explanation": "'Let your moderation be known unto all men. The Lord is at hand.'",
+  "ref": "Philippians 4:5"
+ },
+ {
+  "id": "philippians-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who will be with those who do the things they learned and saw in Paul?",
+  "choices": [
+   "The angel of the Lord",
+   "The elders of the church",
+   "The Spirit of the law",
+   "The God of peace"
+  ],
+  "answer": 3,
+  "explanation": "'Those things... do: and the God of peace shall be with you.'",
+  "ref": "Philippians 4:9"
+ },
+ {
+  "id": "philippians-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When Paul left Macedonia, how many churches shared with him in giving and receiving?",
+  "choices": [
+   "Every church in Asia",
+   "The churches of Judaea",
+   "Only the Philippians",
+   "The church at Rome only"
+  ],
+  "answer": 2,
+  "explanation": "No church communicated with Paul in giving and receiving, 'but ye only.'",
+  "ref": "Philippians 4:15"
+ },
+ {
+  "id": "philippians-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom does Paul ask the true yokefellow to help?",
+  "choices": [
+   "The sick in Philippi",
+   "Those women who laboured with him in the gospel",
+   "The prisoners in Rome",
+   "The poor in Macedonia"
+  ],
+  "answer": 1,
+  "explanation": "'Help those women which laboured with me in the gospel.'",
+  "ref": "Philippians 4:3"
+ },
+ {
+  "id": "philippians-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man is named with the women whom the yokefellow is asked to help?",
+  "choices": [
+   "Timotheus",
+   "Clement",
+   "Epaphroditus",
+   "Tychicus"
+  ],
+  "answer": 1,
+  "explanation": "'With Clement also, and with other my fellowlabourers.'",
+  "ref": "Philippians 4:3"
+ },
+ {
+  "id": "philippians-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose names are in the book of life?",
+  "choices": [
+   "Paul's fellowlabourers",
+   "Only the bishops",
+   "Only the apostles",
+   "Only the women of Philippi"
+  ],
+  "answer": 0,
+  "explanation": "'With other my fellowlabourers, whose names are in the book of life.'",
+  "ref": "Philippians 4:3"
+ },
+ {
+  "id": "philippians-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these is named among the things to think on?",
+  "choices": [
+   "Whatsoever things are profitable",
+   "Whatsoever things are famous",
+   "Whatsoever things are powerful",
+   "Whatsoever things are lovely"
+  ],
+  "answer": 3,
+  "explanation": "'Whatsoever things are true, honest, just, pure, lovely, of good report.'",
+  "ref": "Philippians 4:8"
+ },
+ {
+  "id": "philippians-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "From where had Paul departed when no church but theirs shared with him?",
+  "choices": [
+   "Corinth",
+   "Jerusalem",
+   "Macedonia",
+   "Rome"
+  ],
+  "answer": 2,
+  "explanation": "'When I departed from Macedonia, no church communicated with me... but ye only.'",
+  "ref": "Philippians 4:15"
+ },
+ {
+  "id": "philippians-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does Paul tell them to salute?",
+  "choices": [
+   "Only the bishops",
+   "Every saint in Christ Jesus",
+   "Only the women",
+   "Only Epaphroditus"
+  ],
+  "answer": 1,
+  "explanation": "'Salute every saint in Christ Jesus.'",
+  "ref": "Philippians 4:21"
+ },
+ {
+  "id": "philippians-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who greet the Philippians, besides all the saints?",
+  "choices": [
+   "The brethren with Paul",
+   "The elders of Macedonia",
+   "The women of Rome",
+   "The apostles"
+  ],
+  "answer": 0,
+  "explanation": "'The brethren which are with me greet you.'",
+  "ref": "Philippians 4:21"
+ },
+ {
+  "id": "philippians-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom does Paul give glory for ever and ever?",
+  "choices": [
+   "The Lord Jesus alone",
+   "The church",
+   "The apostles",
+   "God and our Father"
+  ],
+  "answer": 3,
+  "explanation": "'Now unto God and our Father be glory for ever and ever. Amen.'",
+  "ref": "Philippians 4:20"
+ },
+ {
+  "id": "philippians-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose grace does Paul close the letter with?",
+  "choices": [
+   "God the Father's",
+   "The Spirit's",
+   "Our Lord Jesus Christ's",
+   "The church's"
+  ],
+  "answer": 2,
+  "explanation": "'The grace of our Lord Jesus Christ be with you all.'",
+  "ref": "Philippians 4:23"
+ },
+ {
+  "id": "philippians-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whom does Paul tell them to stand fast?",
+  "choices": [
+   "The law",
+   "The Lord",
+   "The church",
+   "The apostles"
+  ],
+  "answer": 1,
+  "explanation": "'So stand fast in the Lord, my dearly beloved.'",
+  "ref": "Philippians 4:1"
+ },
+ {
+  "id": "philippians-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say should be known unto all men?",
+  "choices": [
+   "Their moderation",
+   "Their zeal",
+   "Their giving",
+   "Their faith"
+  ],
+  "answer": 0,
+  "explanation": "'Let your moderation be known unto all men.'",
+  "ref": "Philippians 4:5"
+ },
+ {
+  "id": "philippians-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did the women labour with Paul?",
+  "choices": [
+   "The temple",
+   "The harvest",
+   "The prison",
+   "The gospel"
+  ],
+  "answer": 3,
+  "explanation": "'Those women which laboured with me in the gospel.'",
+  "ref": "Philippians 4:3"
+ },
+ {
+  "id": "philippians-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says he does not speak 'in respect of' what?",
+  "choices": [
+   "Praise",
+   "Pride",
+   "Want",
+   "Plenty"
+  ],
+  "answer": 2,
+  "explanation": "'Not that I speak in respect of want.'",
+  "ref": "Philippians 4:11"
  }
 ]

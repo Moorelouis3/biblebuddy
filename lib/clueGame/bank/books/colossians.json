@@ -176,22 +176,6 @@
   "ref": "Colossians 3:2"
  },
  {
-  "id": "old-colossians-3-2",
-  "chapter": 3,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does Paul tell believers to mortify?",
-  "choices": [
-   "Their members upon the earth",
-   "Only outward habits",
-   "Their friendships",
-   "Their memories"
-  ],
-  "answer": 0,
-  "explanation": "Believers are told to put to death what is earthly in them.",
-  "ref": "Colossians 3:5"
- },
- {
   "id": "old-colossians-3-3",
   "chapter": 3,
   "level": "beginner",
@@ -317,6 +301,2054 @@
   ],
   "answer": 2,
   "explanation": "Tychicus is the beloved brother and faithful minister who will tell them Paul's situation.",
+  "ref": "Colossians 4:7"
+ },
+ {
+  "id": "colossians-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named with Paul as sending the letter?",
+  "choices": [
+   "Tychicus",
+   "Epaphras",
+   "Aristarchus",
+   "Timotheus"
+  ],
+  "answer": 3,
+  "explanation": "The letter begins, 'Paul, an apostle of Jesus Christ by the will of God, and Timotheus our brother.'",
+  "ref": "Colossians 1:1"
+ },
+ {
+  "id": "colossians-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "To the saints and faithful brethren at which city is the letter written?",
+  "choices": [
+   "Laodicea",
+   "Philippi",
+   "Colosse",
+   "Hierapolis"
+  ],
+  "answer": 2,
+  "explanation": "Paul writes 'to the saints and faithful brethren in Christ which are at Colosse.'",
+  "ref": "Colossians 1:2"
+ },
+ {
+  "id": "colossians-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do we have in Christ through his blood?",
+  "choices": [
+   "A seat among the thrones",
+   "Redemption, even the forgiveness of sins",
+   "Authority over the powers of darkness",
+   "The wisdom of all the ages"
+  ],
+  "answer": 1,
+  "explanation": "In Christ 'we have redemption through his blood, even the forgiveness of sins.'",
+  "ref": "Colossians 1:14"
+ },
+ {
+  "id": "colossians-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "From whom had the Colossians learned the gospel?",
+  "choices": [
+   "Epaphras",
+   "Tychicus",
+   "Timotheus",
+   "Archippus"
+  ],
+  "answer": 0,
+  "explanation": "They learned it from 'Epaphras our dear fellowservant, who is for you a faithful minister of Christ.'",
+  "ref": "Colossians 1:7"
+ },
+ {
+  "id": "colossians-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Christ is the firstborn from what?",
+  "choices": [
+   "The prophets",
+   "Every nation",
+   "The angels",
+   "The dead"
+  ],
+  "answer": 3,
+  "explanation": "Christ is 'the beginning, the firstborn from the dead; that in all things he might have the preeminence.'",
+  "ref": "Colossians 1:18"
+ },
+ {
+  "id": "colossians-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Through what did Christ make peace?",
+  "choices": [
+   "The law of Moses",
+   "The preaching of the apostles",
+   "The blood of his cross",
+   "The temple sacrifices"
+  ],
+  "answer": 2,
+  "explanation": "He made 'peace through the blood of his cross,' to reconcile all things to himself.",
+  "ref": "Colossians 1:20"
+ },
+ {
+  "id": "colossians-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say about all things in heaven and earth?",
+  "choices": [
+   "They were made by the angels",
+   "They were created by Christ and for him",
+   "They were made before Christ was born",
+   "They are ruled by thrones and powers"
+  ],
+  "answer": 1,
+  "explanation": "'All things were created by him, and for him.'",
+  "ref": "Colossians 1:16"
+ },
+ {
+  "id": "colossians-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom do Paul and Timotheus give thanks, praying always for the Colossians?",
+  "choices": [
+   "God and the Father of our Lord Jesus Christ",
+   "The apostles at Jerusalem",
+   "The angels of the churches",
+   "Epaphras their minister"
+  ],
+  "answer": 0,
+  "explanation": "'We give thanks to God and the Father of our Lord Jesus Christ, praying always for you.'",
+  "ref": "Colossians 1:3"
+ },
+ {
+  "id": "colossians-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where is the hope of the Colossians laid up?",
+  "choices": [
+   "In Colosse",
+   "In the temple",
+   "In the law",
+   "In heaven"
+  ],
+  "answer": 3,
+  "explanation": "Paul speaks of 'the hope which is laid up for you in heaven.'",
+  "ref": "Colossians 1:5"
+ },
+ {
+  "id": "colossians-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Paul pray the Colossians will walk?",
+  "choices": [
+   "In secret",
+   "Apart from the world",
+   "Worthy of the Lord",
+   "By the traditions of men"
+  ],
+  "answer": 2,
+  "explanation": "He prays 'that ye might walk worthy of the Lord unto all pleasing.'",
+  "ref": "Colossians 1:10"
+ },
+ {
+  "id": "colossians-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Paul and Timotheus heard of in the Colossians?",
+  "choices": [
+   "Their faith in Christ and love to all the saints",
+   "Their gifts to the poor",
+   "Their courage in prison",
+   "Their knowledge of the law"
+  ],
+  "answer": 0,
+  "explanation": "They heard 'of your faith in Christ Jesus, and of the love which ye have to all the saints.'",
+  "ref": "Colossians 1:4"
+ },
+ {
+  "id": "colossians-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the gospel do in the Colossians, as in all the world?",
+  "choices": [
+   "Divides households",
+   "Brings persecution",
+   "Ends the old feasts",
+   "Brings forth fruit"
+  ],
+  "answer": 3,
+  "explanation": "The gospel 'bringeth forth fruit, as it doth also in you.'",
+  "ref": "Colossians 1:6"
+ },
+ {
+  "id": "colossians-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Epaphras declare to Paul about the Colossians?",
+  "choices": [
+   "Their troubles with the law",
+   "Their need of money",
+   "Their love in the Spirit",
+   "Their wish for Paul to visit"
+  ],
+  "answer": 2,
+  "explanation": "Epaphras 'declared unto us your love in the Spirit.'",
+  "ref": "Colossians 1:8"
+ },
+ {
+  "id": "colossians-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul prays they will be fruitful in every what?",
+  "choices": [
+   "City",
+   "Good work",
+   "Prayer meeting",
+   "Sacrifice"
+  ],
+  "answer": 1,
+  "explanation": "He prays they may be 'fruitful in every good work, and increasing in the knowledge of God.'",
+  "ref": "Colossians 1:10"
+ },
+ {
+  "id": "colossians-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Strengthened with all might, Paul prays, unto what?",
+  "choices": [
+   "All patience and longsuffering with joyfulness",
+   "Victory over their enemies",
+   "The ending of all trials",
+   "Great honour among the churches"
+  ],
+  "answer": 0,
+  "explanation": "They are to be 'strengthened with all might... unto all patience and longsuffering with joyfulness.'",
+  "ref": "Colossians 1:11"
+ },
+ {
+  "id": "colossians-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into whose kingdom has God translated believers?",
+  "choices": [
+   "Caesar's",
+   "The angels'",
+   "Moses'",
+   "His dear Son's"
+  ],
+  "answer": 3,
+  "explanation": "God 'hath translated us into the kingdom of his dear Son.'",
+  "ref": "Colossians 1:13"
+ },
+ {
+  "id": "colossians-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the Father made believers fit to share?",
+  "choices": [
+   "The glory of the angels",
+   "The throne of David",
+   "The inheritance of the saints in light",
+   "The feasts of Israel"
+  ],
+  "answer": 2,
+  "explanation": "He 'hath made us meet to be partakers of the inheritance of the saints in light.'",
+  "ref": "Colossians 1:12"
+ },
+ {
+  "id": "colossians-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these does Paul name among things created by Christ?",
+  "choices": [
+   "Idols",
+   "Thrones",
+   "Temples",
+   "Prophets"
+  ],
+  "answer": 1,
+  "explanation": "All things were created by him, 'whether they be thrones, or dominions, or principalities, or powers.'",
+  "ref": "Colossians 1:16"
+ },
+ {
+  "id": "colossians-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say of Christ's place in relation to all things?",
+  "choices": [
+   "He is before all things",
+   "He is equal to all things",
+   "He is hidden within all things",
+   "He came after all things"
+  ],
+  "answer": 0,
+  "explanation": "'He is before all things, and by him all things consist.'",
+  "ref": "Colossians 1:17"
+ },
+ {
+  "id": "colossians-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is Christ the firstborn from the dead?",
+  "choices": [
+   "That the church might be saved from the law",
+   "That the Gentiles might be made Jews",
+   "That angels might serve him",
+   "That in all things he might have the preeminence"
+  ],
+  "answer": 3,
+  "explanation": "He is the firstborn from the dead 'that in all things he might have the preeminence.'",
+  "ref": "Colossians 1:18"
+ },
+ {
+  "id": "colossians-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What pleased the Father to dwell in Christ?",
+  "choices": [
+   "The glory of the temple",
+   "The spirit of prophecy",
+   "All fulness",
+   "The wisdom of the law"
+  ],
+  "answer": 2,
+  "explanation": "'It pleased the Father that in him should all fulness dwell.'",
+  "ref": "Colossians 1:19"
+ },
+ {
+  "id": "colossians-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul describe the Colossians before they were reconciled?",
+  "choices": [
+   "Strangers to the law of Moses",
+   "Alienated and enemies in their mind by wicked works",
+   "Slaves to the Roman rulers",
+   "Wandering without a teacher"
+  ],
+  "answer": 1,
+  "explanation": "They were 'sometime alienated and enemies in your mind by wicked works.'",
+  "ref": "Colossians 1:21"
+ },
+ {
+  "id": "colossians-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what end has Christ reconciled them through his death?",
+  "choices": [
+   "To present them holy and unblameable and unreproveable",
+   "To make them rulers over the nations",
+   "To free them from every earthly master",
+   "To give them a place in the temple"
+  ],
+  "answer": 0,
+  "explanation": "He reconciled them 'to present you holy and unblameable and unreproveable in his sight.'",
+  "ref": "Colossians 1:22"
+ },
+ {
+  "id": "colossians-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What condition does Paul give for being presented holy?",
+  "choices": [
+   "Give up their possessions",
+   "Be baptized again",
+   "Keep the feasts of Israel",
+   "Continue in the faith, grounded and settled"
+  ],
+  "answer": 3,
+  "explanation": "'If ye continue in the faith grounded and settled, and be not moved away from the hope of the gospel.'",
+  "ref": "Colossians 1:23"
+ },
+ {
+  "id": "colossians-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long had the mystery been hid?",
+  "choices": [
+   "Since the days of Moses",
+   "Since the flood",
+   "From ages and from generations",
+   "Until the Gentiles asked"
+  ],
+  "answer": 2,
+  "explanation": "It is 'the mystery which hath been hid from ages and from generations, but now is made manifest to his saints.'",
+  "ref": "Colossians 1:26"
+ },
+ {
+  "id": "colossians-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was Paul made a minister according to the dispensation of God?",
+  "choices": [
+   "To build a church in every city",
+   "To fulfil the word of God",
+   "To be a witness before Caesar",
+   "To gather an offering for the poor"
+  ],
+  "answer": 1,
+  "explanation": "He is a minister 'according to the dispensation of God which is given to me for you, to fulfil the word of God.'",
+  "ref": "Colossians 1:25"
+ },
+ {
+  "id": "colossians-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does Paul say he warns and teaches in all wisdom?",
+  "choices": [
+   "Every man",
+   "The Jews only",
+   "The elders of the church",
+   "The Gentiles alone"
+  ],
+  "answer": 0,
+  "explanation": "'Whom we preach, warning every man, and teaching every man in all wisdom.'",
+  "ref": "Colossians 1:28"
+ },
+ {
+  "id": "colossians-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is Paul's aim in preaching, warning and teaching?",
+  "choices": [
+   "To gather a great crowd in every city",
+   "To win favour with the rulers",
+   "To bring all nations under the law",
+   "To present every man perfect in Christ Jesus"
+  ],
+  "answer": 3,
+  "explanation": "'That we may present every man perfect in Christ Jesus.'",
+  "ref": "Colossians 1:28"
+ },
+ {
+  "id": "colossians-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When the Colossians heard the gospel, what did they come to know in truth?",
+  "choices": [
+   "The law of Moses",
+   "The names of the angels",
+   "The grace of God",
+   "The mystery of the ages"
+  ],
+  "answer": 2,
+  "explanation": "They heard and 'knew the grace of God in truth.'",
+  "ref": "Colossians 1:6"
+ },
+ {
+  "id": "colossians-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what does Paul pray they will be filled with the knowledge of God's will?",
+  "choices": [
+   "Great power and might",
+   "All wisdom and spiritual understanding",
+   "Fasting and prayer",
+   "Boldness and patience"
+  ],
+  "answer": 1,
+  "explanation": "He prays they will be 'filled with the knowledge of his will in all wisdom and spiritual understanding.'",
+  "ref": "Colossians 1:9"
+ },
+ {
+  "id": "colossians-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where had the Colossians first heard of the hope laid up in heaven?",
+  "choices": [
+   "In the word of the truth of the gospel",
+   "In the books of Moses",
+   "In the words of the prophets",
+   "In the traditions of the elders"
+  ],
+  "answer": 0,
+  "explanation": "They heard of it 'before in the word of the truth of the gospel.'",
+  "ref": "Colossians 1:5"
+ },
+ {
+  "id": "colossians-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what is Christ called the firstborn, in the verse where he is the image of the invisible God?",
+  "choices": [
+   "Of all the prophets",
+   "Of the house of David",
+   "Of the Gentiles",
+   "Of every creature"
+  ],
+  "answer": 3,
+  "explanation": "Christ is 'the image of the invisible God, the firstborn of every creature.'",
+  "ref": "Colossians 1:15"
+ },
+ {
+  "id": "colossians-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Among whom is the riches of the glory of this mystery made known?",
+  "choices": [
+   "The Pharisees",
+   "The prophets",
+   "The Gentiles",
+   "The angels"
+  ],
+  "answer": 2,
+  "explanation": "God would make known 'the riches of the glory of this mystery among the Gentiles.'",
+  "ref": "Colossians 1:27"
+ },
+ {
+  "id": "colossians-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul says he fills up what is behind of what, in his flesh?",
+  "choices": [
+   "The labours of the apostles",
+   "The afflictions of Christ",
+   "The sacrifices of the law",
+   "The prayers of the saints"
+  ],
+  "answer": 1,
+  "explanation": "He fills up 'that which is behind of the afflictions of Christ in my flesh for his body's sake, which is the church.'",
+  "ref": "Colossians 1:24"
+ },
+ {
+  "id": "colossians-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Paul regard his sufferings for the Colossians?",
+  "choices": [
+   "He rejoices in them",
+   "He is ashamed of them",
+   "He asks to be spared them",
+   "He counts them a punishment"
+  ],
+  "answer": 0,
+  "explanation": "Paul says, 'Who now rejoice in my sufferings for you.'",
+  "ref": "Colossians 1:24"
+ },
+ {
+  "id": "colossians-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who has made believers fit for the inheritance of the saints in light?",
+  "choices": [
+   "The Spirit",
+   "Epaphras",
+   "Paul",
+   "The Father"
+  ],
+  "answer": 3,
+  "explanation": "Paul gives thanks 'unto the Father, which hath made us meet to be partakers of the inheritance.'",
+  "ref": "Colossians 1:12"
+ },
+ {
+  "id": "colossians-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul wish for the Colossians in his greeting?",
+  "choices": [
+   "Mercy and truth from the Holy Spirit",
+   "Wisdom and power from the apostles",
+   "Grace and peace from God the Father and the Lord Jesus",
+   "Faith and hope from the saints"
+  ],
+  "answer": 2,
+  "explanation": "'Grace be unto you, and peace, from God our Father and the Lord Jesus Christ.'",
+  "ref": "Colossians 1:2"
+ },
+ {
+  "id": "colossians-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Since when has Paul not ceased to pray for the Colossians?",
+  "choices": [
+   "Since the day he was imprisoned",
+   "Since the day he heard of their faith and love",
+   "Since the day Timotheus joined him",
+   "Since the day he left Colosse"
+  ],
+  "answer": 1,
+  "explanation": "'Since the day we heard it, [we] do not cease to pray for you.'",
+  "ref": "Colossians 1:9"
+ },
+ {
+  "id": "colossians-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what does Paul say he is made a minister, in the verse about the gospel preached to every creature?",
+  "choices": [
+   "The gospel",
+   "The law",
+   "The temple",
+   "The new moon"
+  ],
+  "answer": 0,
+  "explanation": "The gospel was 'preached to every creature which is under heaven; whereof I Paul am made a minister.'",
+  "ref": "Colossians 1:23"
+ },
+ {
+  "id": "colossians-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did Christ reconcile the Colossians to himself?",
+  "choices": [
+   "In the waters of baptism",
+   "In the temple at Jerusalem",
+   "In the teaching of the apostles",
+   "In the body of his flesh through death"
+  ],
+  "answer": 3,
+  "explanation": "He reconciled them 'in the body of his flesh through death.'",
+  "ref": "Colossians 1:22"
+ },
+ {
+  "id": "colossians-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "For whom does Paul say he has great conflict?",
+  "choices": [
+   "The elders of Jerusalem",
+   "The Philippians",
+   "The Romans",
+   "The Colossians and those at Laodicea"
+  ],
+  "answer": 3,
+  "explanation": "Paul has 'great conflict for you, and for them at Laodicea.'",
+  "ref": "Colossians 2:1"
+ },
+ {
+  "id": "colossians-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Having received Christ Jesus the Lord, what are the Colossians told to do?",
+  "choices": [
+   "Wait for him",
+   "Hide in him",
+   "Walk in him",
+   "Argue about him"
+  ],
+  "answer": 2,
+  "explanation": "'As ye have therefore received Christ Jesus the Lord, so walk ye in him.'",
+  "ref": "Colossians 2:6"
+ },
+ {
+  "id": "colossians-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With Christ, in what are believers buried?",
+  "choices": [
+   "The temple",
+   "Baptism",
+   "Silence",
+   "The law"
+  ],
+  "answer": 1,
+  "explanation": "They are 'buried with him in baptism, wherein also ye are risen with him.'",
+  "ref": "Colossians 2:12"
+ },
+ {
+  "id": "colossians-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who raised Christ from the dead?",
+  "choices": [
+   "God",
+   "The apostles",
+   "The angels",
+   "The Colossians' faith alone"
+  ],
+  "answer": 0,
+  "explanation": "Believers rise through 'the operation of God, who hath raised him from the dead.'",
+  "ref": "Colossians 2:12"
+ },
+ {
+  "id": "colossians-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has God done for those who were dead in their sins?",
+  "choices": [
+   "Sent them to Laodicea",
+   "Freed them from Caesar",
+   "Given them the law again",
+   "Quickened them with Christ, forgiving all trespasses"
+  ],
+  "answer": 3,
+  "explanation": "'Being dead in your sins... hath he quickened together with him, having forgiven you all trespasses.'",
+  "ref": "Colossians 2:13"
+ },
+ {
+  "id": "colossians-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the Colossians in Christ?",
+  "choices": [
+   "Strangers",
+   "Teachers",
+   "Complete",
+   "Guests"
+  ],
+  "answer": 2,
+  "explanation": "'Ye are complete in him, which is the head of all principality and power.'",
+  "ref": "Colossians 2:10"
+ },
+ {
+  "id": "colossians-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Christ do to principalities and powers?",
+  "choices": [
+   "Made peace with them",
+   "Spoiled them and triumphed over them",
+   "Gave them rule over the church",
+   "Hid them from the world"
+  ],
+  "answer": 1,
+  "explanation": "'Having spoiled principalities and powers, he made a shew of them openly, triumphing over them.'",
+  "ref": "Colossians 2:15"
+ },
+ {
+  "id": "colossians-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Paul say 'this I say'?",
+  "choices": [
+   "Lest any man should beguile them with enticing words",
+   "Lest the Romans arrest them",
+   "Lest the church be divided",
+   "Lest the letter be lost"
+  ],
+  "answer": 0,
+  "explanation": "'This I say, lest any man should beguile you with enticing words.'",
+  "ref": "Colossians 2:4"
+ },
+ {
+  "id": "colossians-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Though absent in the flesh, what is Paul doing among them?",
+  "choices": [
+   "Preparing to visit them soon",
+   "Writing to every church",
+   "Praying for rain",
+   "Joying in their order and the stedfastness of their faith"
+  ],
+  "answer": 3,
+  "explanation": "'Though I be absent in the flesh, yet am I with you in the spirit, joying and beholding your order.'",
+  "ref": "Colossians 2:5"
+ },
+ {
+  "id": "colossians-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul want for the hearts of those he struggles for?",
+  "choices": [
+   "That they be proud of their wisdom",
+   "That they be free from the law",
+   "That they be comforted and knit together in love",
+   "That they be given leadership"
+  ],
+  "answer": 2,
+  "explanation": "'That their hearts might be comforted, being knit together in love.'",
+  "ref": "Colossians 2:2"
+ },
+ {
+  "id": "colossians-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Rooted and built up in him, abounding therein with what?",
+  "choices": [
+   "Prophecy",
+   "Thanksgiving",
+   "Sacrifice",
+   "Silence"
+  ],
+  "answer": 1,
+  "explanation": "They are to be 'stablished in the faith... abounding therein with thanksgiving.'",
+  "ref": "Colossians 2:7"
+ },
+ {
+  "id": "colossians-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Paul warns against philosophy after the tradition of men and what else?",
+  "choices": [
+   "The rudiments of the world",
+   "The law of Moses",
+   "The word of the prophets",
+   "The teaching of Epaphras"
+  ],
+  "answer": 0,
+  "explanation": "'After the tradition of men, after the rudiments of the world, and not after Christ.'",
+  "ref": "Colossians 2:8"
+ },
+ {
+  "id": "colossians-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of circumcision do believers have in Christ?",
+  "choices": [
+   "One made on the eighth day",
+   "One performed by the apostles",
+   "One kept every year",
+   "One made without hands"
+  ],
+  "answer": 3,
+  "explanation": "'Ye are circumcised with the circumcision made without hands.'",
+  "ref": "Colossians 2:11"
+ },
+ {
+  "id": "colossians-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what are they told not to be beguiled of their reward?",
+  "choices": [
+   "The keeping of the sabbath",
+   "The giving of tithes",
+   "A voluntary humility and worshipping of angels",
+   "The reading of the law"
+  ],
+  "answer": 2,
+  "explanation": "'Let no man beguile you of your reward in a voluntary humility and worshipping of angels.'",
+  "ref": "Colossians 2:18"
+ },
+ {
+  "id": "colossians-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From whom does the whole body receive nourishment?",
+  "choices": [
+   "The apostles",
+   "The Head, Christ",
+   "The angels",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Not holding 'the Head, from which all the body by joints and bands having nourishment ministered... increaseth.'",
+  "ref": "Colossians 2:19"
+ },
+ {
+  "id": "colossians-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which commands does Paul quote from the ordinances?",
+  "choices": [
+   "Touch not; taste not; handle not",
+   "Eat not; drink not; speak not",
+   "Pray not; fast not; give not",
+   "Sell not; buy not; travel not"
+  ],
+  "answer": 0,
+  "explanation": "The ordinances say, 'Touch not; taste not; handle not.'",
+  "ref": "Colossians 2:21"
+ },
+ {
+  "id": "colossians-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the things covered by those rules?",
+  "choices": [
+   "They return in the last day",
+   "They are kept by the church",
+   "They are given to the poor",
+   "They all perish with the using"
+  ],
+  "answer": 3,
+  "explanation": "'Which all are to perish with the using.'",
+  "ref": "Colossians 2:22"
+ },
+ {
+  "id": "colossians-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what do such ordinances have a show of wisdom?",
+  "choices": [
+   "Prayer, fasting and giving",
+   "Teaching, prophecy and tongues",
+   "Will worship, humility and neglecting of the body",
+   "Study, argument and song"
+  ],
+  "answer": 2,
+  "explanation": "They have 'a shew of wisdom in will worship, and humility, and neglecting of the body.'",
+  "ref": "Colossians 2:23"
+ },
+ {
+  "id": "colossians-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these does Paul say believers are not to be judged in?",
+  "choices": [
+   "Prayer",
+   "Meat or drink",
+   "Baptism",
+   "Giving"
+  ],
+  "answer": 1,
+  "explanation": "'Let no man therefore judge you in meat, or in drink.'",
+  "ref": "Colossians 2:16"
+ },
+ {
+  "id": "colossians-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what is Christ the head, making the Colossians complete in him?",
+  "choices": [
+   "The law and the prophets",
+   "All principality and power",
+   "The temple and the priests",
+   "Every nation on earth"
+  ],
+  "answer": 1,
+  "explanation": "Christ 'is the head of all principality and power.'",
+  "ref": "Colossians 2:10"
+ },
+ {
+  "id": "colossians-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Unto the acknowledgement of what does Paul want their hearts to come?",
+  "choices": [
+   "The mystery of God, and of the Father, and of Christ",
+   "The law of Moses and the prophets",
+   "The names of the angels",
+   "The history of Israel"
+  ],
+  "answer": 0,
+  "explanation": "'Unto the acknowledgement of the mystery of God, and of the Father, and of Christ.'",
+  "ref": "Colossians 2:2"
+ },
+ {
+  "id": "colossians-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul asks why those dead with Christ are subject to what?",
+  "choices": [
+   "Rulers",
+   "Famine",
+   "Angels",
+   "Ordinances"
+  ],
+  "answer": 3,
+  "explanation": "'Why, as though living in the world, are ye subject to ordinances?'",
+  "ref": "Colossians 2:20"
+ },
+ {
+  "id": "colossians-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "By whose circumcision are believers circumcised?",
+  "choices": [
+   "Moses'",
+   "Abraham's",
+   "Christ's",
+   "The apostles'"
+  ],
+  "answer": 2,
+  "explanation": "They put off 'the body of the sins of the flesh by the circumcision of Christ.'",
+  "ref": "Colossians 2:11"
+ },
+ {
+  "id": "colossians-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Believers rise with Christ through the faith of what?",
+  "choices": [
+   "The law of Moses",
+   "The operation of God",
+   "The prayers of the saints",
+   "The wisdom of the world"
+  ],
+  "answer": 1,
+  "explanation": "'Risen with him through the faith of the operation of God.'",
+  "ref": "Colossians 2:12"
+ },
+ {
+  "id": "colossians-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these is named with holy days and sabbath days?",
+  "choices": [
+   "A new moon",
+   "A tithe",
+   "A vow",
+   "A sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "'In respect of an holyday, or of the new moon, or of the sabbath days.'",
+  "ref": "Colossians 2:16"
+ },
+ {
+  "id": "colossians-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is the beguiler of this chapter described?",
+  "choices": [
+   "Cast out by the church",
+   "Zealous for the law",
+   "Unlearned in the Scriptures",
+   "Vainly puffed up by his fleshly mind"
+  ],
+  "answer": 3,
+  "explanation": "He is 'vainly puffed up by his fleshly mind.'",
+  "ref": "Colossians 2:18"
+ },
+ {
+  "id": "colossians-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what increase does the body, held to the Head, grow?",
+  "choices": [
+   "The increase of the church's gifts",
+   "The increase of the apostles' labour",
+   "The increase of God",
+   "The increase of the nations"
+  ],
+  "answer": 2,
+  "explanation": "The body 'increaseth with the increase of God.'",
+  "ref": "Colossians 2:19"
+ },
+ {
+  "id": "colossians-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Such ordinances are not in any honour to the satisfying of what?",
+  "choices": [
+   "The law",
+   "The flesh",
+   "The Spirit",
+   "The church"
+  ],
+  "answer": 1,
+  "explanation": "'Not in any honour to the satisfying of the flesh.'",
+  "ref": "Colossians 2:23"
+ },
+ {
+  "id": "colossians-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul wants them to have all riches of what?",
+  "choices": [
+   "The full assurance of understanding",
+   "The glory of the temple",
+   "The gifts of the apostles",
+   "The wealth of the nations"
+  ],
+  "answer": 0,
+  "explanation": "'Unto all riches of the full assurance of understanding.'",
+  "ref": "Colossians 2:2"
+ },
+ {
+  "id": "colossians-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul's conflict is also for those who have not done what?",
+  "choices": [
+   "Heard the gospel preached",
+   "Kept the law of Moses",
+   "Received baptism",
+   "Seen his face in the flesh"
+  ],
+  "answer": 3,
+  "explanation": "He struggles 'for as many as have not seen my face in the flesh.'",
+  "ref": "Colossians 2:1"
+ },
+ {
+  "id": "colossians-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Paul warns against philosophy that is 'not after' whom?",
+  "choices": [
+   "Moses",
+   "The angels",
+   "Christ",
+   "The elders"
+  ],
+  "answer": 2,
+  "explanation": "'Beware lest any man spoil you through philosophy and vain deceit... and not after Christ.'",
+  "ref": "Colossians 2:8"
+ },
+ {
+  "id": "colossians-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does Christ sit?",
+  "choices": [
+   "In the temple",
+   "On the throne of David",
+   "On the Mount of Olives",
+   "On the right hand of God"
+  ],
+  "answer": 3,
+  "explanation": "Christ 'sitteth on the right hand of God.'",
+  "ref": "Colossians 3:1"
+ },
+ {
+  "id": "colossians-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With whom is the believer's life hid?",
+  "choices": [
+   "The church in Colosse",
+   "The apostles",
+   "Christ in God",
+   "The angels"
+  ],
+  "answer": 2,
+  "explanation": "'Ye are dead, and your life is hid with Christ in God.'",
+  "ref": "Colossians 3:3"
+ },
+ {
+  "id": "colossians-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say covetousness is?",
+  "choices": [
+   "Foolishness",
+   "Idolatry",
+   "Weakness",
+   "Ignorance"
+  ],
+  "answer": 1,
+  "explanation": "'Covetousness, which is idolatry.'",
+  "ref": "Colossians 3:5"
+ },
+ {
+  "id": "colossians-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens when Christ, who is our life, appears?",
+  "choices": [
+   "Believers will appear with him in glory",
+   "The graves will be sealed",
+   "The churches will be judged first",
+   "The law will be restored"
+  ],
+  "answer": 0,
+  "explanation": "'When Christ, who is our life, shall appear, then shall ye also appear with him in glory.'",
+  "ref": "Colossians 3:4"
+ },
+ {
+  "id": "colossians-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul tell wives to do?",
+  "choices": [
+   "Teach the congregation",
+   "Rule the household",
+   "Keep silent in the church",
+   "Submit to their own husbands"
+  ],
+  "answer": 3,
+  "explanation": "'Wives, submit yourselves unto your own husbands, as it is fit in the Lord.'",
+  "ref": "Colossians 3:18"
+ },
+ {
+  "id": "colossians-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul tell husbands to do?",
+  "choices": [
+   "Rule their wives",
+   "Guard their wives",
+   "Love their wives",
+   "Teach their wives"
+  ],
+  "answer": 2,
+  "explanation": "'Husbands, love your wives, and be not bitter against them.'",
+  "ref": "Colossians 3:19"
+ },
+ {
+  "id": "colossians-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul tell children to do?",
+  "choices": [
+   "Honour their elders in the church",
+   "Obey their parents in all things",
+   "Work for their parents",
+   "Leave their parents' house"
+  ],
+  "answer": 1,
+  "explanation": "'Children, obey your parents in all things: for this is well pleasing unto the Lord.'",
+  "ref": "Colossians 3:20"
+ },
+ {
+  "id": "colossians-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Christ, in the place of all earthly divisions?",
+  "choices": [
+   "All, and in all",
+   "Judge of all",
+   "Lord over a few",
+   "King of the Jews"
+  ],
+  "answer": 0,
+  "explanation": "'Christ is all, and in all.'",
+  "ref": "Colossians 3:11"
+ },
+ {
+  "id": "colossians-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In whose name are believers to do whatever they do in word or deed?",
+  "choices": [
+   "The apostle Paul",
+   "The church",
+   "The Father alone",
+   "The Lord Jesus"
+  ],
+  "answer": 3,
+  "explanation": "'Do all in the name of the Lord Jesus, giving thanks to God and the Father by him.'",
+  "ref": "Colossians 3:17"
+ },
+ {
+  "id": "colossians-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why are fathers told not to provoke their children to anger?",
+  "choices": [
+   "Lest they be discouraged",
+   "Lest they leave home",
+   "Lest they dishonour the family",
+   "Lest they stop praying"
+  ],
+  "answer": 0,
+  "explanation": "'Fathers, provoke not your children to anger, lest they be discouraged.'",
+  "ref": "Colossians 3:21"
+ },
+ {
+  "id": "colossians-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these does Paul tell the Colossians to put off?",
+  "choices": [
+   "Meekness",
+   "Kindness",
+   "Longsuffering",
+   "Malice"
+  ],
+  "answer": 3,
+  "explanation": "'Put off all these; anger, wrath, malice, blasphemy, filthy communication.'",
+  "ref": "Colossians 3:8"
+ },
+ {
+  "id": "colossians-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul forbid the Colossians to do to one another?",
+  "choices": [
+   "Judge",
+   "Borrow",
+   "Lie",
+   "Argue"
+  ],
+  "answer": 2,
+  "explanation": "'Lie not one to another, seeing that ye have put off the old man with his deeds.'",
+  "ref": "Colossians 3:9"
+ },
+ {
+  "id": "colossians-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "After whose image is the new man renewed?",
+  "choices": [
+   "The first Adam",
+   "Him that created him",
+   "The angels",
+   "The prophets"
+  ],
+  "answer": 1,
+  "explanation": "The new man is 'renewed in knowledge after the image of him that created him.'",
+  "ref": "Colossians 3:10"
+ },
+ {
+  "id": "colossians-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these does Paul list to put on as the elect of God?",
+  "choices": [
+   "Humbleness of mind",
+   "Zeal",
+   "Boldness",
+   "Self-denial"
+  ],
+  "answer": 0,
+  "explanation": "'Put on... bowels of mercies, kindness, humbleness of mind, meekness, longsuffering.'",
+  "ref": "Colossians 3:12"
+ },
+ {
+  "id": "colossians-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How are believers told to forgive one another?",
+  "choices": [
+   "Seven times a day",
+   "Only after repentance",
+   "Before witnesses",
+   "Even as Christ forgave them"
+  ],
+  "answer": 3,
+  "explanation": "'Even as Christ forgave you, so also do ye.'",
+  "ref": "Colossians 3:13"
+ },
+ {
+  "id": "colossians-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What forms of song does Paul name for teaching and admonishing one another?",
+  "choices": [
+   "Prayers, chants and lamentations",
+   "Trumpets, harps and cymbals",
+   "Psalms, hymns and spiritual songs",
+   "Proverbs, parables and riddles"
+  ],
+  "answer": 2,
+  "explanation": "'Teaching and admonishing one another in psalms and hymns and spiritual songs.'",
+  "ref": "Colossians 3:16"
+ },
+ {
+  "id": "colossians-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Servants are told not to work with what?",
+  "choices": [
+   "Complaint, as the unwilling",
+   "Eyeservice, as menpleasers",
+   "Haste, as the greedy",
+   "Silence, as the fearful"
+  ],
+  "answer": 1,
+  "explanation": "'Not with eyeservice, as menpleasers.'",
+  "ref": "Colossians 3:22"
+ },
+ {
+  "id": "colossians-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How are servants told to obey, instead of eyeservice?",
+  "choices": [
+   "In singleness of heart, fearing God",
+   "With great speed and skill",
+   "For fear of their masters",
+   "With gifts for their masters"
+  ],
+  "answer": 0,
+  "explanation": "'But in singleness of heart, fearing God.'",
+  "ref": "Colossians 3:22"
+ },
+ {
+  "id": "colossians-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whatever they do, how are they told to do it?",
+  "choices": [
+   "Quietly, as to the elders",
+   "Carefully, as to the law",
+   "Boldly, as to the rulers",
+   "Heartily, as to the Lord and not unto men"
+  ],
+  "answer": 3,
+  "explanation": "'Do it heartily, as to the Lord, and not unto men.'",
+  "ref": "Colossians 3:23"
+ },
+ {
+  "id": "colossians-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will servants receive from the Lord as their reward?",
+  "choices": [
+   "Their freedom",
+   "A crown of gold",
+   "The inheritance",
+   "Wealth in this life"
+  ],
+  "answer": 2,
+  "explanation": "'Of the Lord ye shall receive the reward of the inheritance.'",
+  "ref": "Colossians 3:24"
+ },
+ {
+  "id": "colossians-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say will happen to the one who does wrong?",
+  "choices": [
+   "He shall be forgiven at once",
+   "He shall receive for the wrong he has done",
+   "He shall be cast out of the church",
+   "He shall be hidden from the Lord"
+  ],
+  "answer": 1,
+  "explanation": "'He that doeth wrong shall receive for the wrong which he hath done.'",
+  "ref": "Colossians 3:25"
+ },
+ {
+  "id": "colossians-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides doing all in the Lord's name, what else are they to do?",
+  "choices": [
+   "Give thanks to God and the Father by him",
+   "Pray in secret each hour",
+   "Fast with the church",
+   "Teach every stranger"
+  ],
+  "answer": 0,
+  "explanation": "'Giving thanks to God and the Father by him.'",
+  "ref": "Colossians 3:17"
+ },
+ {
+  "id": "colossians-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these does Paul name among those with no distinction in Christ?",
+  "choices": [
+   "Samaritan",
+   "Scythian",
+   "Roman",
+   "Egyptian"
+  ],
+  "answer": 1,
+  "explanation": "'Neither Greek nor Jew, circumcision nor uncircumcision, Barbarian, Scythian, bond nor free.'",
+  "ref": "Colossians 3:11"
+ },
+ {
+  "id": "colossians-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say to put off 'out of your mouth'?",
+  "choices": [
+   "Filthy communication",
+   "Vain boasting",
+   "Idle songs",
+   "Foolish jesting"
+  ],
+  "answer": 0,
+  "explanation": "'Put off all these; anger, wrath, malice, blasphemy, filthy communication out of your mouth.'",
+  "ref": "Colossians 3:8"
+ },
+ {
+  "id": "colossians-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what are the Colossians called to the peace of God?",
+  "choices": [
+   "One city",
+   "One faith alone",
+   "One law",
+   "One body"
+  ],
+  "answer": 3,
+  "explanation": "'Let the peace of God rule in your hearts, to the which also ye are called in one body.'",
+  "ref": "Colossians 3:15"
+ },
+ {
+  "id": "colossians-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Paul say a wife's submission is fitting?",
+  "choices": [
+   "As the law commands",
+   "As the elders decide",
+   "As it is fit in the Lord",
+   "As the custom of the land"
+  ],
+  "answer": 2,
+  "explanation": "'Submit yourselves unto your own husbands, as it is fit in the Lord.'",
+  "ref": "Colossians 3:18"
+ },
+ {
+  "id": "colossians-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Children's obedience to parents is what to the Lord?",
+  "choices": [
+   "Counted as sacrifice",
+   "Well pleasing",
+   "Rewarded with long life",
+   "A matter of the law"
+  ],
+  "answer": 1,
+  "explanation": "'Obey your parents in all things: for this is well pleasing unto the Lord.'",
+  "ref": "Colossians 3:20"
+ },
+ {
+  "id": "colossians-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Servants are to obey their masters according to what?",
+  "choices": [
+   "The flesh",
+   "The law",
+   "The custom",
+   "The contract"
+  ],
+  "answer": 0,
+  "explanation": "'Servants, obey in all things your masters according to the flesh.'",
+  "ref": "Colossians 3:22"
+ },
+ {
+  "id": "colossians-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Paul reminds servants that they serve whom?",
+  "choices": [
+   "The elders of the church",
+   "The apostles",
+   "Their own households",
+   "The Lord Christ"
+  ],
+  "answer": 3,
+  "explanation": "'Ye serve the Lord Christ.'",
+  "ref": "Colossians 3:24"
+ },
+ {
+  "id": "colossians-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say there is no 'respect' of?",
+  "choices": [
+   "Rank",
+   "Wealth",
+   "Persons",
+   "Nations"
+  ],
+  "answer": 2,
+  "explanation": "'There is no respect of persons.'",
+  "ref": "Colossians 3:25"
+ },
+ {
+  "id": "colossians-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "On whom does the wrath of God come because of those sins?",
+  "choices": [
+   "The rulers of the world",
+   "The children of disobedience",
+   "The unbelieving Jews",
+   "The enemies of Paul"
+  ],
+  "answer": 1,
+  "explanation": "'For which things' sake the wrath of God cometh on the children of disobedience.'",
+  "ref": "Colossians 3:6"
+ },
+ {
+  "id": "colossians-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what situation does Paul tell them to forgive one another?",
+  "choices": [
+   "If any man have a quarrel against any",
+   "If any man steals from them",
+   "If any man leaves the church",
+   "If any man mocks the gospel"
+  ],
+  "answer": 0,
+  "explanation": "'Forgiving one another, if any man have a quarrel against any.'",
+  "ref": "Colossians 3:13"
+ },
+ {
+  "id": "colossians-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what condition does Paul tell them to seek things above?",
+  "choices": [
+   "If they are wise enough",
+   "If they are free from sin",
+   "If they are chosen as elders",
+   "If they be risen with Christ"
+  ],
+  "answer": 3,
+  "explanation": "'If ye then be risen with Christ, seek those things which are above.'",
+  "ref": "Colossians 3:1"
+ },
+ {
+  "id": "colossians-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are husbands told not to treat their wives?",
+  "choices": [
+   "Harshly in public",
+   "As servants",
+   "Bitterly",
+   "With flattery"
+  ],
+  "answer": 2,
+  "explanation": "'Husbands, love your wives, and be not bitter against them.'",
+  "ref": "Colossians 3:19"
+ },
+ {
+  "id": "colossians-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What have the Colossians put off along with the old man?",
+  "choices": [
+   "His name",
+   "His deeds",
+   "His family",
+   "His riches"
+  ],
+  "answer": 1,
+  "explanation": "'Ye have put off the old man with his deeds.'",
+  "ref": "Colossians 3:9"
+ },
+ {
+  "id": "colossians-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "How does Paul describe Luke?",
+  "choices": [
+   "The faithful scribe",
+   "The fellowprisoner",
+   "The zealous teacher",
+   "The beloved physician"
+  ],
+  "answer": 3,
+  "explanation": "'Luke, the beloved physician, and Demas, greet you.'",
+  "ref": "Colossians 4:14"
+ },
+ {
+  "id": "colossians-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "How does Paul describe Onesimus?",
+  "choices": [
+   "A prisoner from Rome",
+   "A teacher from Jerusalem",
+   "A faithful and beloved brother, one of them",
+   "A servant of Caesar"
+  ],
+  "answer": 2,
+  "explanation": "'Onesimus, a faithful and beloved brother, who is one of you.'",
+  "ref": "Colossians 4:9"
+ },
+ {
+  "id": "colossians-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Marcus is the sister's son of whom?",
+  "choices": [
+   "Aristarchus",
+   "Barnabas",
+   "Tychicus",
+   "Epaphras"
+  ],
+  "answer": 1,
+  "explanation": "'Marcus, sister's son to Barnabas.'",
+  "ref": "Colossians 4:10"
+ },
+ {
+  "id": "colossians-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul tell masters to give their servants?",
+  "choices": [
+   "That which is just and equal",
+   "More work and less pay",
+   "Freedom after seven years",
+   "Gifts at the feasts"
+  ],
+  "answer": 0,
+  "explanation": "'Masters, give unto your servants that which is just and equal.'",
+  "ref": "Colossians 4:1"
+ },
+ {
+  "id": "colossians-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why are masters to treat their servants justly?",
+  "choices": [
+   "They also have a Master in heaven",
+   "The law demands it",
+   "Servants may leave them",
+   "Caesar commands it"
+  ],
+  "answer": 0,
+  "explanation": "'Knowing that ye also have a Master in heaven.'",
+  "ref": "Colossians 4:1"
+ },
+ {
+  "id": "colossians-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is Paul in bonds?",
+  "choices": [
+   "For a debt he owed",
+   "For a dispute with Rome over taxes",
+   "For leaving Jerusalem",
+   "For the mystery of Christ"
+  ],
+  "answer": 3,
+  "explanation": "He asks to speak 'the mystery of Christ, for which I am also in bonds.'",
+  "ref": "Colossians 4:3"
+ },
+ {
+  "id": "colossians-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why has Paul sent Tychicus to the Colossians?",
+  "choices": [
+   "To collect an offering",
+   "To appoint elders",
+   "To know their estate and comfort their hearts",
+   "To bring a letter from Rome"
+  ],
+  "answer": 2,
+  "explanation": "'That he might know your estate, and comfort your hearts.'",
+  "ref": "Colossians 4:8"
+ },
+ {
+  "id": "colossians-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Which companion does Paul call his fellowprisoner?",
+  "choices": [
+   "Marcus",
+   "Aristarchus",
+   "Luke",
+   "Demas"
+  ],
+  "answer": 1,
+  "explanation": "'Aristarchus my fellowprisoner saluteth you.'",
+  "ref": "Colossians 4:10"
+ },
+ {
+  "id": "colossians-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had the Colossians been told about Marcus?",
+  "choices": [
+   "If he come, receive him",
+   "Do not let him teach",
+   "Send him to Rome",
+   "Wait for Barnabas first"
+  ],
+  "answer": 0,
+  "explanation": "'Touching whom ye received commandments: if he come unto you, receive him.'",
+  "ref": "Colossians 4:10"
+ },
+ {
+  "id": "colossians-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Epaphras do for the Colossians?",
+  "choices": [
+   "Collects gifts for them",
+   "Teaches in Laodicea",
+   "Writes their letters",
+   "Labours fervently for them in prayers"
+  ],
+  "answer": 3,
+  "explanation": "Epaphras is 'always labouring fervently for you in prayers.'",
+  "ref": "Colossians 4:12"
+ },
+ {
+  "id": "colossians-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city does Paul name with Laodicea for Epaphras' zeal?",
+  "choices": [
+   "Philippi",
+   "Ephesus",
+   "Hierapolis",
+   "Thessalonica"
+  ],
+  "answer": 2,
+  "explanation": "'He hath a great zeal for you, and them that are in Laodicea, and them in Hierapolis.'",
+  "ref": "Colossians 4:13"
+ },
+ {
+  "id": "colossians-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who has a church in his house?",
+  "choices": [
+   "Archippus",
+   "Nymphas",
+   "Aristarchus",
+   "Justus"
+  ],
+  "answer": 1,
+  "explanation": "'Salute... Nymphas, and the church which is in his house.'",
+  "ref": "Colossians 4:15"
+ },
+ {
+  "id": "colossians-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Archippus told to do?",
+  "choices": [
+   "Take heed to the ministry he received and fulfil it",
+   "Carry the letter to Laodicea",
+   "Visit Paul in prison",
+   "Teach the children"
+  ],
+  "answer": 0,
+  "explanation": "'Say to Archippus, Take heed to the ministry which thou hast received in the Lord, that thou fulfil it.'",
+  "ref": "Colossians 4:17"
+ },
+ {
+  "id": "colossians-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "What other name does the Jesus who greets them have?",
+  "choices": [
+   "Barnabas",
+   "Justus",
+   "Marcus",
+   "Demas"
+  ],
+  "answer": 1,
+  "explanation": "'And Jesus, which is called Justus.'",
+  "ref": "Colossians 4:11"
+ },
+ {
+  "id": "colossians-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where does Paul want the letter read, besides among the Colossians?",
+  "choices": [
+   "In the church of the Laodiceans",
+   "In the church at Hierapolis",
+   "In the church at Philippi",
+   "In the house of Nymphas only"
+  ],
+  "answer": 0,
+  "explanation": "'Cause that it be read also in the church of the Laodiceans.'",
+  "ref": "Colossians 4:16"
+ },
+ {
+  "id": "colossians-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which other letter does Paul tell the Colossians to read?",
+  "choices": [
+   "The epistle from Ephesus",
+   "The epistle to Philemon",
+   "The epistle from Jerusalem",
+   "The epistle from Laodicea"
+  ],
+  "answer": 3,
+  "explanation": "'That ye likewise read the epistle from Laodicea.'",
+  "ref": "Colossians 4:16"
+ },
+ {
+  "id": "colossians-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose name is paired with Luke's in greeting?",
+  "choices": [
+   "Marcus",
+   "Tychicus",
+   "Demas",
+   "Justus"
+  ],
+  "answer": 2,
+  "explanation": "'Luke, the beloved physician, and Demas, greet you.'",
+  "ref": "Colossians 4:14"
+ },
+ {
+  "id": "colossians-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul ask them to remember at the end of the letter?",
+  "choices": [
+   "His journeys",
+   "His bonds",
+   "His prayers",
+   "His stripes"
+  ],
+  "answer": 1,
+  "explanation": "'The salutation by the hand of me Paul. Remember my bonds.'",
+  "ref": "Colossians 4:18"
+ },
+ {
+  "id": "colossians-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Walking in wisdom toward outsiders, believers are to redeem what?",
+  "choices": [
+   "The time",
+   "The land",
+   "The offering",
+   "The captives"
+  ],
+  "answer": 0,
+  "explanation": "'Walk in wisdom toward them that are without, redeeming the time.'",
+  "ref": "Colossians 4:5"
+ },
+ {
+  "id": "colossians-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why are their words to be seasoned with salt?",
+  "choices": [
+   "That they may avoid every quarrel",
+   "That they may be heard by the elders",
+   "That they may please the rulers",
+   "That they may know how to answer every man"
+  ],
+  "answer": 3,
+  "explanation": "'Seasoned with salt, that ye may know how ye ought to answer every man.'",
+  "ref": "Colossians 4:6"
+ },
+ {
+  "id": "colossians-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Continue in prayer and watch in the same with what?",
+  "choices": [
+   "Fasting",
+   "Singing",
+   "Thanksgiving",
+   "Silence"
+  ],
+  "answer": 2,
+  "explanation": "'Continue in prayer, and watch in the same with thanksgiving.'",
+  "ref": "Colossians 4:2"
+ },
+ {
+  "id": "colossians-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides a beloved brother and faithful minister, what is Tychicus called?",
+  "choices": [
+   "Fellowprisoner",
+   "Fellowservant in the Lord",
+   "Companion in labour",
+   "Steward of the church"
+  ],
+  "answer": 1,
+  "explanation": "Tychicus is 'a beloved brother, and a faithful minister and fellowservant in the Lord.'",
   "ref": "Colossians 4:7"
  }
 ]
