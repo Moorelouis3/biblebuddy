@@ -13120,6 +13120,438 @@
   "ref": "1 Chronicles 22:17"
  },
  {
+  "id": "1-chronicles-22-e-01",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did David call and charge to build a house for the LORD?",
+  "choices": [
+   "Nathan",
+   "Solomon his son",
+   "Joab",
+   "Zadok"
+  ],
+  "answer": 1,
+  "explanation": "He called for Solomon his son, and charged him to build an house for the LORD God of Israel.",
+  "ref": "1 Chronicles 22:6"
+ },
+ {
+  "id": "1-chronicles-22-e-02",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Zidonians and those of Tyre bring David?",
+  "choices": [
+   "Gold",
+   "Cedar wood",
+   "Horses",
+   "Wheat"
+  ],
+  "answer": 1,
+  "explanation": "The Zidonians and they of Tyre brought much cedar wood to David.",
+  "ref": "1 Chronicles 22:4"
+ },
+ {
+  "id": "1-chronicles-22-e-03",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David prepare in abundance for nails and joinings?",
+  "choices": [
+   "Iron",
+   "Silver",
+   "Wood",
+   "Clay"
+  ],
+  "answer": 0,
+  "explanation": "David prepared iron in abundance for the nails for the doors of the gates, and for the joinings.",
+  "ref": "1 Chronicles 22:3"
+ },
+ {
+  "id": "1-chronicles-22-e-04",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say Solomon would be a man of?",
+  "choices": [
+   "Wealth",
+   "War",
+   "Wisdom only",
+   "Rest"
+  ],
+  "answer": 3,
+  "explanation": "A son shall be born to thee, who shall be a man of rest.",
+  "ref": "1 Chronicles 22:9"
+ },
+ {
+  "id": "1-chronicles-22-e-05",
+  "chapter": 22,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David wish for Solomon as he charged him to build?",
+  "choices": [
+   "Fight the Philistines",
+   "Prosper and build the house",
+   "Number the people",
+   "Reign forty years"
+  ],
+  "answer": 1,
+  "explanation": "Now, my son, the LORD be with thee; and prosper thou, and build the house of the LORD thy God.",
+  "ref": "1 Chronicles 22:11"
+ },
+ {
+  "id": "1-chronicles-22-m-01",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did David gather to help build the house of God?",
+  "choices": [
+   "The strangers in the land of Israel",
+   "The prisoners from Ammon",
+   "The elders of Judah",
+   "The Zidonians"
+  ],
+  "answer": 0,
+  "explanation": "David commanded to gather together the strangers that were in the land of Israel; and he set masons to hew wrought stones.",
+  "ref": "1 Chronicles 22:2"
+ },
+ {
+  "id": "1-chronicles-22-m-02",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What work did David set the masons to do?",
+  "choices": [
+   "Melt the brass",
+   "Cut cedar trees",
+   "Hew wrought stones",
+   "Weave curtains"
+  ],
+  "answer": 2,
+  "explanation": "He set masons to hew wrought stones to build the house of God.",
+  "ref": "1 Chronicles 22:2"
+ },
+ {
+  "id": "1-chronicles-22-m-03",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say the house for the LORD must be?",
+  "choices": [
+   "Exceeding magnifical, of fame and glory",
+   "Plain and humble",
+   "Built in one year",
+   "Made of cedar only"
+  ],
+  "answer": 0,
+  "explanation": "The house must be exceeding magnifical, of fame and of glory throughout all countries.",
+  "ref": "1 Chronicles 22:5"
+ },
+ {
+  "id": "1-chronicles-22-m-04",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David say he would prepare for the house himself?",
+  "choices": [
+   "Solomon was away",
+   "Solomon was young and tender",
+   "He had no sons",
+   "Joab asked him"
+  ],
+  "answer": 1,
+  "explanation": "Solomon my son is young and tender; I will therefore now make preparation for it.",
+  "ref": "1 Chronicles 22:5"
+ },
+ {
+  "id": "1-chronicles-22-m-05",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was David not allowed to build the house?",
+  "choices": [
+   "He was too old",
+   "He was a sinner against Uriah",
+   "He had shed blood abundantly and made great wars",
+   "He was no priest"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast shed blood abundantly, and hast made great wars: thou shalt not build an house unto my name.",
+  "ref": "1 Chronicles 22:8"
+ },
+ {
+  "id": "1-chronicles-22-m-06",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What name did God give the son who should be born to David?",
+  "choices": [
+   "Solomon",
+   "Jedidiah",
+   "Absalom",
+   "Adonijah"
+  ],
+  "answer": 0,
+  "explanation": "His name shall be Solomon, and I will give peace and quietness unto Israel in his days.",
+  "ref": "1 Chronicles 22:9"
+ },
+ {
+  "id": "1-chronicles-22-m-07",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say he would give Solomon?",
+  "choices": [
+   "A larger land",
+   "A great army",
+   "Rest from all his enemies round about",
+   "A second temple"
+  ],
+  "answer": 2,
+  "explanation": "I will give him rest from all his enemies round about.",
+  "ref": "1 Chronicles 22:9"
+ },
+ {
+  "id": "1-chronicles-22-m-08",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say would be his father-and-son bond with God?",
+  "choices": [
+   "God would be David's shield",
+   "God would be Solomon's father and Solomon his son",
+   "God would be Israel's king",
+   "Solomon would be a priest"
+  ],
+  "answer": 1,
+  "explanation": "He shall be my son, and I will be his father.",
+  "ref": "1 Chronicles 22:10"
+ },
+ {
+  "id": "1-chronicles-22-m-09",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David ask the LORD to give Solomon?",
+  "choices": [
+   "Victory in war",
+   "Riches and honour",
+   "Long life",
+   "Wisdom and understanding"
+  ],
+  "answer": 3,
+  "explanation": "Only the LORD give thee wisdom and understanding, and give thee charge concerning Israel.",
+  "ref": "1 Chronicles 22:12"
+ },
+ {
+  "id": "1-chronicles-22-m-10",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say would make Solomon prosper?",
+  "choices": [
+   "Taking heed to fulfil the statutes and judgments",
+   "Gathering gold",
+   "Winning battles",
+   "Making treaties"
+  ],
+  "answer": 0,
+  "explanation": "Then shalt thou prosper, if thou takest heed to fulfil the statutes and judgments which the LORD charged Moses.",
+  "ref": "1 Chronicles 22:13"
+ },
+ {
+  "id": "1-chronicles-22-m-11",
+  "chapter": 22,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David command all the princes of Israel to do?",
+  "choices": [
+   "Help Solomon his son",
+   "Stop the war",
+   "Pay tribute",
+   "Bring the ark"
+  ],
+  "answer": 0,
+  "explanation": "David also commanded all the princes of Israel to help Solomon his son.",
+  "ref": "1 Chronicles 22:17"
+ },
+ {
+  "id": "1-chronicles-22-h-01",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much gold had David prepared for the house of the LORD?",
+  "choices": [
+   "Seven thousand talents",
+   "A thousand talents",
+   "An hundred thousand talents",
+   "A thousand thousand talents"
+  ],
+  "answer": 2,
+  "explanation": "In my trouble I have prepared an hundred thousand talents of gold, and a thousand thousand talents of silver.",
+  "ref": "1 Chronicles 22:14"
+ },
+ {
+  "id": "1-chronicles-22-h-02",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much silver had David prepared for the house of the LORD?",
+  "choices": [
+   "Ten thousand talents",
+   "An hundred thousand talents",
+   "A thousand thousand talents",
+   "Seven hundred talents"
+  ],
+  "answer": 2,
+  "explanation": "A thousand thousand talents of silver.",
+  "ref": "1 Chronicles 22:14"
+ },
+ {
+  "id": "1-chronicles-22-h-03",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what circumstance did David say he had prepared for the house?",
+  "choices": [
+   "After Absalom died",
+   "In peace",
+   "In his youth",
+   "In my trouble"
+  ],
+  "answer": 3,
+  "explanation": "In my trouble I have prepared for the house of the LORD.",
+  "ref": "1 Chronicles 22:14"
+ },
+ {
+  "id": "1-chronicles-22-h-04",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kinds of workmen did David say Solomon had in abundance?",
+  "choices": [
+   "Weavers and dyers",
+   "Hewers and workers of stone and timber",
+   "Soldiers",
+   "Shepherds"
+  ],
+  "answer": 1,
+  "explanation": "There are workmen with thee in abundance, hewers and workers of stone and timber, and all manner of cunning men.",
+  "ref": "1 Chronicles 22:15"
+ },
+ {
+  "id": "1-chronicles-22-h-05",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say the gold, silver, brass and iron had?",
+  "choices": [
+   "A weight of two hundred talents",
+   "No number",
+   "A tithe set aside",
+   "A seal"
+  ],
+  "answer": 1,
+  "explanation": "Of the gold, the silver, and the brass, and the iron, there is no number.",
+  "ref": "1 Chronicles 22:16"
+ },
+ {
+  "id": "1-chronicles-22-h-06",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had David said to Solomon about the building, 'it was in my mind' to what?",
+  "choices": [
+   "Build a house unto the name of the LORD",
+   "Number Israel",
+   "Move to Gibeon",
+   "Take Rabbah"
+  ],
+  "answer": 0,
+  "explanation": "It was in my mind to build an house unto the name of the LORD my God.",
+  "ref": "1 Chronicles 22:7"
+ },
+ {
+  "id": "1-chronicles-22-h-07",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say would be established for ever over Israel?",
+  "choices": [
+   "The throne of Solomon's kingdom",
+   "The altar at Gibeon",
+   "The house of Levi",
+   "The ark"
+  ],
+  "answer": 0,
+  "explanation": "I will establish the throne of his kingdom over Israel for ever.",
+  "ref": "1 Chronicles 22:10"
+ },
+ {
+  "id": "1-chronicles-22-h-08",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David tell Solomon to be, and not to dread?",
+  "choices": [
+   "Strong and of good courage",
+   "Wise and slow to speak",
+   "Strong and of good courage",
+   "Swift and watchful"
+  ],
+  "answer": 2,
+  "explanation": "Be strong, and of good courage; dread not, nor be dismayed.",
+  "ref": "1 Chronicles 22:13"
+ },
+ {
+  "id": "1-chronicles-22-h-09",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say the LORD had given Israel on every side?",
+  "choices": [
+   "Cities",
+   "Gold",
+   "Rest",
+   "Peace offerings"
+  ],
+  "answer": 2,
+  "explanation": "Is not the LORD your God with you? and hath he not given you rest on every side?",
+  "ref": "1 Chronicles 22:18"
+ },
+ {
+  "id": "1-chronicles-22-h-10",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was to be brought into the house, besides the ark of the covenant?",
+  "choices": [
+   "The brass sea",
+   "The tabernacle curtains",
+   "The holy vessels of God",
+   "The shields of gold"
+  ],
+  "answer": 2,
+  "explanation": "To bring the ark of the covenant of the LORD, and the holy vessels of God, into the house.",
+  "ref": "1 Chronicles 22:19"
+ },
+ {
+  "id": "1-chronicles-22-h-11",
+  "chapter": 22,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David tell the princes to set to seek the LORD?",
+  "choices": [
+   "Their hands and feet",
+   "Their heart and their soul",
+   "Their armies",
+   "Their silver"
+  ],
+  "answer": 1,
+  "explanation": "Now set your heart and your soul to seek the LORD your God.",
+  "ref": "1 Chronicles 22:19"
+ },
+ {
   "id": "old-1-chronicles-23-1",
   "chapter": 23,
   "level": "beginner",
