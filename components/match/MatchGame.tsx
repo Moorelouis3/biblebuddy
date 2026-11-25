@@ -205,7 +205,7 @@ export default function MatchGame() {
     <div className="bbm-root">
       <style>{MATCH_CSS}</style>
       {screen.name === "home" ? (
-        <Home label={allDone ? `All ${MATCH_LEVELS.length} boards ✓` : `${latest.book} · ${latest.title}`.length <= 22 ? `${latest.book} · ${latest.title}` : latest.title} onPlay={() => setScreen({ name: "map" })} ready={ready} />
+        <Home label={allDone ? `All ${MATCH_LEVELS.length} boards ✓` : `${latest.book} · ${latest.title}`.length <= 22 ? `${latest.book} · ${latest.title}` : latest.title} onPlay={() => setScreen({ name: "map" })} ready={ready} maps={[...new Set(sectionsNear(sectionOfLevel(Math.min(progress.unlocked, MATCH_LEVELS.length) - 1)).map((s) => SECTIONS[s].src))]} />
       ) : screen.name === "map" ? (
         <GenesisMap
           progress={progress}
@@ -253,15 +253,20 @@ export default function MatchGame() {
  * are tappable spots on the picture; the level label is live text on the
  * blank plaque so it can say Eden.
  */
-function Home({ label, onPlay, ready }: { label: string; onPlay: () => void; ready: boolean }) {
+function Home({ label, onPlay, ready, maps }: { label: string; onPlay: () => void; ready: boolean; maps: string[] }) {
   const [settings, setSettings] = useState(false);
-  // The map pictures start downloading while the home screen is up, so the map opens ready.
+  // The map the player is about to open starts downloading while the home
+  // screen is up, so it opens ready. Only that map and its neighbours: this
+  // used to fetch every book's map, 14 pictures and about 11 MB, on every
+  // visit (Louis, 2026-11-25: "people have to wait for stuff to load").
+  const wanted = maps.join("|");
   useEffect(() => {
-    for (const src of Object.values(BOOK_MAPS).map((m) => m.src)) {
+    if (!ready) return;
+    for (const src of wanted.split("|").filter(Boolean)) {
       const img = new Image();
       img.src = src;
     }
-  }, []);
+  }, [ready, wanted]);
   return (
     <div className="bbm-home2">
       <div className="bbm-home2-blur" aria-hidden="true" />
@@ -432,6 +437,19 @@ const SECTIONS: Section[] = (() => {
   return out;
 })();
 const SEGMENTS = SECTIONS.length;
+/** Which painted map a board sits on (0 is the bottom one), by the board's place in MATCH_LEVELS. */
+function sectionOfLevel(levelIndex: number): number {
+  let n = 0;
+  for (let s = 0; s < SECTIONS.length; s++) {
+    n += SECTIONS[s].levels.length;
+    if (levelIndex < n) return s;
+  }
+  return SECTIONS.length - 1;
+}
+/** A map and the one either side of it: what can be on screen at once. */
+const sectionsNear = (seg: number) => [seg - 1, seg, seg + 1].filter((s) => s >= 0 && s < SECTIONS.length);
+/** A 1x1 transparent picture: what a map section holds until it is scrolled near. */
+const BLANK_PIXEL = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
 /** Every section but the bottom is drawn 6% taller, its bottom fading over the one below (see the img). */
 const BLEND = 1.06;
 const toWorld = (seg: number, x: number, y: number) => ({ x, y: ((SEGMENTS - 1 - seg) * 100 + y * (seg > 0 ? BLEND : 1)) / SEGMENTS });
@@ -505,11 +523,28 @@ function GenesisMap({
   const allDone = MATCH_LEVELS.every((l) => progress.done.includes(l.id));
   // The banner names the map in view as you scroll (Louis: "it should change to Exodus when we get there").
   const [book, setBook] = useState(MATCH_LEVELS[current - 1]?.book || "Genesis");
+  // Only the maps near the player are downloaded; the rest hold their blurred
+  // preview until they are scrolled near. All of them at once was about 11 MB.
+  const [shown, setShown] = useState<Set<number>>(
+    () => new Set([...sectionsNear(sectionOfLevel(current - 1)), ...(travel ? sectionsNear(sectionOfLevel(current - 2)) : [])]),
+  );
+  // The board about to be played starts downloading while the map is up.
+  useEffect(() => {
+    const level = MATCH_LEVELS[current - 1];
+    if (!level) return;
+    const wide = window.matchMedia("(min-aspect-ratio: 1/1)").matches;
+    const img = new Image();
+    img.src = level.backgrounds ? (wide ? level.backgrounds.desktop : level.backgrounds.phone) : level.background;
+  }, [current]);
   const onScroll = () => {
     const el = scroller.current;
     if (!el) return;
     const mid = ((el.scrollTop + el.clientHeight / 2) / el.scrollHeight) * 100;
     const seg = Math.min(SEGMENTS - 1, Math.max(0, SEGMENTS - 1 - Math.floor((mid / 100) * SEGMENTS)));
+    setShown((prev) => {
+      const near = sectionsNear(seg).filter((n) => !prev.has(n));
+      return near.length ? new Set([...prev, ...near]) : prev;
+    });
     const s = SECTIONS[seg];
     // Named for the book whose map it is.
     const name = s.book || "Genesis";
@@ -595,7 +630,7 @@ function GenesisMap({
                 // A tiny blurred preview shows at once while the full picture loads.
                 backgroundImage: `url(${(MAP_PREVIEWS[s.book.toLowerCase()] || (GENERATED_MAPS as Record<string, { preview?: string }>)[s.book]?.preview || MAP_PREVIEWS[s.fx])})`,
               }}
-              src={s.src}
+              src={shown.has(i) ? s.src : BLANK_PIXEL}
               alt={i === 0 ? "The Bible Buddy trail through Genesis, Exodus and Leviticus" : ""}
               draggable={false}
             />
