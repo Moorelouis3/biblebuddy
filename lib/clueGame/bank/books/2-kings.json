@@ -6560,6 +6560,454 @@
   "ref": "2 Kings 11:17–18"
  },
  {
+  "id": "2-kings-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who took Joash and hid him from Athaliah?",
+  "choices": [
+   "Jehoiada",
+   "Zibiah",
+   "Athaliah's nurse",
+   "Jehosheba"
+  ],
+  "answer": 3,
+  "explanation": "Jehosheba, the daughter of king Joram, sister of Ahaziah, took Joash and stole him from among the king's sons.",
+  "ref": "2 Kings 11:2"
+ },
+ {
+  "id": "2-kings-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Joash hid for six years?",
+  "choices": [
+   "In Samaria",
+   "In Jezreel",
+   "In the king's house",
+   "In the house of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "He was with her hid in the house of the LORD six years.",
+  "ref": "2 Kings 11:3"
+ },
+ {
+  "id": "2-kings-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned over the land while Joash was hidden?",
+  "choices": [
+   "Jehosheba",
+   "Jehu",
+   "Mattan",
+   "Athaliah"
+  ],
+  "answer": 3,
+  "explanation": "Athaliah did reign over the land.",
+  "ref": "2 Kings 11:3"
+ },
+ {
+  "id": "2-kings-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people say as they clapped their hands when Joash was made king?",
+  "choices": [
+   "Treason, treason",
+   "God save the king",
+   "Long live Jehoiada",
+   "Hosanna"
+  ],
+  "answer": 1,
+  "explanation": "They clapped their hands, and said, God save the king.",
+  "ref": "2 Kings 11:12"
+ },
+ {
+  "id": "2-kings-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How old was Jehoash when he began to reign?",
+  "choices": [
+   "Seven years old",
+   "Twelve years old",
+   "Three years old",
+   "Twenty years old"
+  ],
+  "answer": 0,
+  "explanation": "Seven years old was Jehoash when he began to reign.",
+  "ref": "2 Kings 11:21"
+ },
+ {
+  "id": "2-kings-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Athaliah slain?",
+  "choices": [
+   "At the altar of Baal",
+   "In Jezreel",
+   "By the way the horses came into the king's house",
+   "In the temple"
+  ],
+  "answer": 2,
+  "explanation": "She went by the way by the which the horses came into the king's house: and there was she slain.",
+  "ref": "2 Kings 11:16"
+ },
+ {
+  "id": "2-kings-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Athaliah do when she saw that her son was dead?",
+  "choices": [
+   "Destroyed all the seed royal",
+   "Fled to Tyre",
+   "Went to the temple to mourn",
+   "Crowned herself in the gate"
+  ],
+  "answer": 0,
+  "explanation": "When Athaliah saw that her son was dead, she arose and destroyed all the seed royal.",
+  "ref": "2 Kings 11:1"
+ },
+ {
+  "id": "2-kings-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoiada do with the captains in the seventh year?",
+  "choices": [
+   "Told them to pay tribute",
+   "Made a covenant and took an oath in the house of the LORD",
+   "Led them out to fight Syria",
+   "Sent them to Jezreel"
+  ],
+  "answer": 1,
+  "explanation": "Jehoiada made a covenant with them, and took an oath of them in the house of the LORD.",
+  "ref": "2 Kings 11:4"
+ },
+ {
+  "id": "2-kings-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoiada show the captains in the house of the LORD?",
+  "choices": [
+   "The ark",
+   "A chest of silver",
+   "Athaliah's crown",
+   "The king's son"
+  ],
+  "answer": 3,
+  "explanation": "He shewed them the king's son.",
+  "ref": "2 Kings 11:4"
+ },
+ {
+  "id": "2-kings-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priest give the captains from the temple?",
+  "choices": [
+   "Priestly robes",
+   "King David's spears and shields",
+   "Silver trumpets",
+   "The golden calves"
+  ],
+  "answer": 1,
+  "explanation": "To the captains over hundreds did the priest give king David's spears and shields, that were in the temple of the LORD.",
+  "ref": "2 Kings 11:10"
+ },
+ {
+  "id": "2-kings-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoiada put upon the king's son and give him?",
+  "choices": [
+   "A robe and a ring",
+   "A staff and a scroll",
+   "The crown and the testimony",
+   "A sword and a sceptre"
+  ],
+  "answer": 2,
+  "explanation": "He put the crown upon him, and gave him the testimony; and they made him king, and anointed him.",
+  "ref": "2 Kings 11:12"
+ },
+ {
+  "id": "2-kings-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where was the king standing when Athaliah looked into the temple?",
+  "choices": [
+   "At the gate",
+   "On the roof",
+   "By a pillar",
+   "On the altar steps"
+  ],
+  "answer": 2,
+  "explanation": "The king stood by a pillar, as the manner was.",
+  "ref": "2 Kings 11:14"
+ },
+ {
+  "id": "2-kings-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Athaliah do and cry when she saw the king crowned?",
+  "choices": [
+   "Fell on her face",
+   "Called for her guard",
+   "Fled to Jezreel",
+   "Rent her clothes and cried Treason, Treason"
+  ],
+  "answer": 3,
+  "explanation": "Athaliah rent her clothes, and cried, Treason, Treason.",
+  "ref": "2 Kings 11:14"
+ },
+ {
+  "id": "2-kings-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Jehoiada say Athaliah must not be slain?",
+  "choices": [
+   "In the house of the LORD",
+   "In the king's house",
+   "At the gate",
+   "In the city"
+  ],
+  "answer": 0,
+  "explanation": "The priest had said, Let her not be slain in the house of the LORD.",
+  "ref": "2 Kings 11:15"
+ },
+ {
+  "id": "2-kings-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Between whom did Jehoiada make a covenant?",
+  "choices": [
+   "The LORD, the king and the people",
+   "The king and Athaliah",
+   "The priests and the captains",
+   "Judah and Israel"
+  ],
+  "answer": 0,
+  "explanation": "Jehoiada made a covenant between the LORD and the king and the people that they should be the LORD'S people.",
+  "ref": "2 Kings 11:17"
+ },
+ {
+  "id": "2-kings-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the priest of Baal slain before the altars?",
+  "choices": [
+   "Jehonadab",
+   "Mahlon",
+   "Mattan",
+   "Hazael"
+  ],
+  "answer": 2,
+  "explanation": "They slew Mattan the priest of Baal before the altars.",
+  "ref": "2 Kings 11:18"
+ },
+ {
+  "id": "2-kings-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was a third part of the guard to be, besides at the king's house?",
+  "choices": [
+   "At the gate of Sur",
+   "At the gate of Jezreel",
+   "At Millo",
+   "By the Jordan"
+  ],
+  "answer": 0,
+  "explanation": "A third part shall be at the gate of Sur; and a third part at the gate behind the guard.",
+  "ref": "2 Kings 11:6"
+ },
+ {
+  "id": "2-kings-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who was to keep watch about the king in the house of the LORD?",
+  "choices": [
+   "The priests only",
+   "The princes",
+   "Two parts of those who went forth on the sabbath",
+   "A third of the guard"
+  ],
+  "answer": 2,
+  "explanation": "Two parts of all you that go forth on the sabbath, even they shall keep the watch of the house of the LORD about the king.",
+  "ref": "2 Kings 11:7"
+ },
+ {
+  "id": "2-kings-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the order for any who came within the ranges around the king?",
+  "choices": [
+   "Let him be slain",
+   "Let him pass",
+   "Let him be bound",
+   "Let him be sent away"
+  ],
+  "answer": 0,
+  "explanation": "He that cometh within the ranges, let him be slain.",
+  "ref": "2 Kings 11:8"
+ },
+ {
+  "id": "2-kings-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the guard stand around the king?",
+  "choices": [
+   "On the temple roof",
+   "Outside the house of Baal",
+   "Right corner to left corner of the temple, by the altar",
+   "At the city gate"
+  ],
+  "answer": 2,
+  "explanation": "The guard stood from the right corner of the temple to the left corner, along by the altar and the temple.",
+  "ref": "2 Kings 11:11"
+ },
+ {
+  "id": "2-kings-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who stood by the king beside the pillar?",
+  "choices": [
+   "The princes and the trumpeters",
+   "The priests of Baal",
+   "Athaliah's guard",
+   "Jehosheba and the nurse"
+  ],
+  "answer": 0,
+  "explanation": "The king stood by a pillar, and the princes and the trumpeters by the king.",
+  "ref": "2 Kings 11:14"
+ },
+ {
+  "id": "2-kings-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did all the people of the land do when the king was crowned?",
+  "choices": [
+   "Rejoiced and blew with trumpets",
+   "Fled in fear",
+   "Wept before the LORD",
+   "Fasted"
+  ],
+  "answer": 0,
+  "explanation": "All the people of the land rejoiced, and blew with trumpets.",
+  "ref": "2 Kings 11:14"
+ },
+ {
+  "id": "2-kings-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Jehoiada command to take Athaliah out of the ranges?",
+  "choices": [
+   "The princes",
+   "The trumpeters",
+   "The priests",
+   "The captains of the hundreds"
+  ],
+  "answer": 3,
+  "explanation": "Jehoiada the priest commanded the captains of the hundreds, Have her forth without the ranges.",
+  "ref": "2 Kings 11:15"
+ },
+ {
+  "id": "2-kings-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priest appoint after the house of Baal was broken down?",
+  "choices": [
+   "Officers over the house of the LORD",
+   "Guards at Samaria",
+   "New priests of Baal",
+   "Judges over Judah"
+  ],
+  "answer": 0,
+  "explanation": "The priest appointed officers over the house of the LORD.",
+  "ref": "2 Kings 11:18"
+ },
+ {
+  "id": "2-kings-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "By which gate was the king brought to the king's house?",
+  "choices": [
+   "The gate of Sur",
+   "The horse gate",
+   "The gate of Samaria",
+   "The gate of the guard"
+  ],
+  "answer": 3,
+  "explanation": "They brought down the king from the house of the LORD, and came by the way of the gate of the guard to the king's house.",
+  "ref": "2 Kings 11:19"
+ },
+ {
+  "id": "2-kings-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king do once he came to the king's house?",
+  "choices": [
+   "Sent for Jehu",
+   "Sat on the throne of the kings",
+   "Went to the temple",
+   "Made a feast"
+  ],
+  "answer": 1,
+  "explanation": "He sat on the throne of the kings.",
+  "ref": "2 Kings 11:19"
+ },
+ {
+  "id": "2-kings-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was the condition of the city after Athaliah was slain?",
+  "choices": [
+   "It was under siege",
+   "It was empty",
+   "It was in quiet",
+   "It was in turmoil"
+  ],
+  "answer": 2,
+  "explanation": "All the people of the land rejoiced, and the city was in quiet.",
+  "ref": "2 Kings 11:20"
+ },
+ {
+  "id": "2-kings-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year did Jehoiada fetch the rulers and captains?",
+  "choices": [
+   "The twelfth year",
+   "The seventh year",
+   "The first year",
+   "The third year"
+  ],
+  "answer": 1,
+  "explanation": "The seventh year Jehoiada sent and fetched the rulers over hundreds, with the captains and the guard.",
+  "ref": "2 Kings 11:4"
+ },
+ {
   "id": "old-2-kings-12-1",
   "chapter": 12,
   "level": "beginner",
