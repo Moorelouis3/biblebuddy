@@ -4128,22 +4128,6 @@
   "ref": "Jeremiah 52:17"
  },
  {
-  "id": "old-jeremiah-52-4",
-  "chapter": 52,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "How many Jews were carried away in the last captivity listed, the one led by Nebuzaradan?",
-  "choices": [
-   "745",
-   "4600",
-   "832",
-   "3023"
-  ],
-  "answer": 0,
-  "explanation": "Jeremiah records several deportations with specific numbers, the last being 745.",
-  "ref": "Jeremiah 52:30"
- },
- {
   "id": "old-jeremiah-52-5",
   "chapter": 52,
   "level": "beginner",
@@ -4158,5 +4142,3893 @@
   "answer": 3,
   "explanation": "The closing note offers a small sign of hope through Jehoiachin's release and favor.",
   "ref": "Jeremiah 52:31–34"
+ },
+ {
+  "id": "jeremiah-46-e-01",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose army was by the river Euphrates in Carchemish?",
+  "choices": [
+   "Pharaoh-hophra",
+   "Pharaoh-necho king of Egypt",
+   "Nebuchadrezzar",
+   "Jehoiakim"
+  ],
+  "answer": 1,
+  "explanation": "The word came against the army of Pharaoh-necho king of Egypt, which was by the river Euphrates in Carchemish.",
+  "ref": "Jeremiah 46:2"
+ },
+ {
+  "id": "jeremiah-46-e-02",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "place",
+  "question": "By which river was the Egyptian army smitten?",
+  "choices": [
+   "The Jordan",
+   "The Nile",
+   "The Kishon",
+   "The Euphrates"
+  ],
+  "answer": 3,
+  "explanation": "The army of Pharaoh-necho was by the river Euphrates in Carchemish.",
+  "ref": "Jeremiah 46:2"
+ },
+ {
+  "id": "jeremiah-46-e-03",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Egypt rise up like, saying he will cover the earth?",
+  "choices": [
+   "A flood",
+   "A fire",
+   "A lion",
+   "A storm of locusts"
+  ],
+  "answer": 0,
+  "explanation": "Egypt riseth up like a flood, and he saith, I will go up, and will cover the earth.",
+  "ref": "Jeremiah 46:8"
+ },
+ {
+  "id": "jeremiah-46-e-04",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Egypt like, though destruction cometh out of the north?",
+  "choices": [
+   "A tall cedar",
+   "A great eagle",
+   "A very fair heifer",
+   "A mighty ox"
+  ],
+  "answer": 2,
+  "explanation": "Egypt is like a very fair heifer, but destruction cometh; it cometh out of the north.",
+  "ref": "Jeremiah 46:20"
+ },
+ {
+  "id": "jeremiah-46-e-05",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the daughter of Egypt told to take from Gilead?",
+  "choices": [
+   "Gold",
+   "Balm",
+   "Spices",
+   "Oil"
+  ],
+  "answer": 1,
+  "explanation": "Go up into Gilead, and take balm, O virgin, the daughter of Egypt: in vain shalt thou use many medicines.",
+  "ref": "Jeremiah 46:11"
+ },
+ {
+  "id": "jeremiah-46-e-06",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "person",
+  "question": "Into whose hand shall the daughter of Egypt be delivered?",
+  "choices": [
+   "The Ethiopians",
+   "The Philistines",
+   "The Assyrians",
+   "The people of the north"
+  ],
+  "answer": 3,
+  "explanation": "The daughter of Egypt shall be confounded; she shall be delivered into the hand of the people of the north.",
+  "ref": "Jeremiah 46:24"
+ },
+ {
+  "id": "jeremiah-46-e-07",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city shall be waste and desolate without an inhabitant?",
+  "choices": [
+   "Noph",
+   "Migdol",
+   "Gaza",
+   "Carmel"
+  ],
+  "answer": 0,
+  "explanation": "Noph shall be waste and desolate without an inhabitant.",
+  "ref": "Jeremiah 46:19"
+ },
+ {
+  "id": "jeremiah-46-e-08",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall devour round about Egypt?",
+  "choices": [
+   "The famine",
+   "The flood",
+   "The sword",
+   "The plague"
+  ],
+  "answer": 2,
+  "explanation": "Stand fast, and prepare thee; for the sword shall devour round about thee.",
+  "ref": "Jeremiah 46:14"
+ },
+ {
+  "id": "jeremiah-46-e-09",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where will the LORD save Jacob's seed?",
+  "choices": [
+   "The land of Egypt",
+   "The land of their captivity",
+   "The north country",
+   "The sea"
+  ],
+  "answer": 1,
+  "explanation": "I will save thee from afar off, and thy seed from the land of their captivity.",
+  "ref": "Jeremiah 46:27"
+ },
+ {
+  "id": "jeremiah-46-m-01",
+  "chapter": 46,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city is named with Noph and Tahpanhes where the word is to be published?",
+  "choices": [
+   "Gaza",
+   "Gilead",
+   "Nebo",
+   "Migdol"
+  ],
+  "answer": 3,
+  "explanation": "Declare ye in Egypt, and publish in Migdol, and publish in Noph and in Tahpanhes.",
+  "ref": "Jeremiah 46:14"
+ },
+ {
+  "id": "jeremiah-46-m-02",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are her hired men like in the midst of her?",
+  "choices": [
+   "Fatted bullocks",
+   "Lions",
+   "Wild asses",
+   "Hungry wolves"
+  ],
+  "answer": 0,
+  "explanation": "Her hired men are in the midst of her like fatted bullocks; for they also are turned back.",
+  "ref": "Jeremiah 46:21"
+ },
+ {
+  "id": "jeremiah-46-m-03",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How shall the enemy come against Egypt with axes?",
+  "choices": [
+   "As reapers of grain",
+   "As diggers of pits",
+   "As hewers of wood",
+   "As builders of walls"
+  ],
+  "answer": 2,
+  "explanation": "They shall march with an army, and come against her with axes, as hewers of wood.",
+  "ref": "Jeremiah 46:22"
+ },
+ {
+  "id": "jeremiah-46-m-04",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why shall they cut down her forest, though it cannot be searched?",
+  "choices": [
+   "They are cunning in war",
+   "They are more than the grasshoppers",
+   "They have iron chariots",
+   "They have the LORD's sword"
+  ],
+  "answer": 1,
+  "explanation": "They shall cut down her forest, though it cannot be searched; because they are more than the grasshoppers, and are innumerable.",
+  "ref": "Jeremiah 46:23"
+ },
+ {
+  "id": "jeremiah-46-m-05",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How will the LORD deal with Jacob, though he makes a full end of the nations?",
+  "choices": [
+   "Make a full end of him",
+   "Leave him alone",
+   "Send him to Egypt",
+   "Correct him in measure"
+  ],
+  "answer": 3,
+  "explanation": "I will not make a full end of thee, but correct thee in measure; yet will I not leave thee wholly unpunished.",
+  "ref": "Jeremiah 46:28"
+ },
+ {
+  "id": "jeremiah-46-m-06",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the valiant men swept away?",
+  "choices": [
+   "The LORD did drive them",
+   "They were too few",
+   "They were betrayed",
+   "They were hungry"
+  ],
+  "answer": 0,
+  "explanation": "Why are thy valiant men swept away? they stood not, because the LORD did drive them.",
+  "ref": "Jeremiah 46:15"
+ },
+ {
+  "id": "jeremiah-46-m-07",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say will happen to Egypt afterward?",
+  "choices": [
+   "It shall rule Judah",
+   "It shall be waste for ever",
+   "It shall be inhabited as in the days of old",
+   "It shall be given to Edom"
+  ],
+  "answer": 2,
+  "explanation": "Afterward it shall be inhabited, as in the days of old, saith the LORD.",
+  "ref": "Jeremiah 46:26"
+ },
+ {
+  "id": "jeremiah-46-m-08",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD punish with Pharaoh and the multitude of No?",
+  "choices": [
+   "Their rivers",
+   "Their gods and their kings",
+   "Their ships",
+   "Their harvests"
+  ],
+  "answer": 1,
+  "explanation": "I will punish the multitude of No, and Pharaoh, and Egypt, with their gods, and their kings.",
+  "ref": "Jeremiah 46:25"
+ },
+ {
+  "id": "jeremiah-46-m-09",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Egypt say he will do?",
+  "choices": [
+   "Hide in Noph",
+   "Flee to Gilead",
+   "Make peace with Babylon",
+   "Go up and cover the earth"
+  ],
+  "answer": 3,
+  "explanation": "He saith, I will go up, and will cover the earth; I will destroy the city and the inhabitants thereof.",
+  "ref": "Jeremiah 46:8"
+ },
+ {
+  "id": "jeremiah-46-m-10",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD tell the virgin daughter of Egypt about her medicines?",
+  "choices": [
+   "In vain shalt thou use many; thou shalt not be cured",
+   "They shall heal her in time",
+   "They are sold in Gilead",
+   "They shall be brought by Jacob"
+  ],
+  "answer": 0,
+  "explanation": "In vain shalt thou use many medicines; for thou shalt not be cured.",
+  "ref": "Jeremiah 46:11"
+ },
+ {
+  "id": "jeremiah-46-m-11",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do those who fall say, wanting to go to their own people?",
+  "choices": [
+   "Let us build again",
+   "Let us fight the north",
+   "Let us go again to the land of our nativity",
+   "Let us ask Pharaoh"
+  ],
+  "answer": 2,
+  "explanation": "They said, Arise, and let us go again to our own people, and to the land of our nativity, from the oppressing sword.",
+  "ref": "Jeremiah 46:16"
+ },
+ {
+  "id": "jeremiah-46-m-12",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What two places does the King say the enemy shall come like?",
+  "choices": [
+   "Sinai among the hills and Jordan by the plain",
+   "Tabor among the mountains and Carmel by the sea",
+   "Zion among the cities and Hermon by the cloud",
+   "Nebo among the rocks and Lebanon by the sea"
+  ],
+  "answer": 1,
+  "explanation": "Surely as Tabor is among the mountains, and as Carmel by the sea, so shall he come.",
+  "ref": "Jeremiah 46:18"
+ },
+ {
+  "id": "jeremiah-46-m-13",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which people are named among the mighty men, that handle and bend the bow?",
+  "choices": [
+   "The Libyans",
+   "The Ethiopians",
+   "The Philistines",
+   "The Lydians"
+  ],
+  "answer": 3,
+  "explanation": "The Ethiopians and the Libyans, that handle the shield; and the Lydians, that handle and bend the bow.",
+  "ref": "Jeremiah 46:9"
+ },
+ {
+  "id": "jeremiah-46-h-01",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are they told to order and draw near to battle?",
+  "choices": [
+   "The buckler and shield",
+   "The chariots and horses",
+   "The bow and spear",
+   "The sword and helmet"
+  ],
+  "answer": 0,
+  "explanation": "Order ye the buckler and shield, and draw near to battle.",
+  "ref": "Jeremiah 46:3"
+ },
+ {
+  "id": "jeremiah-46-h-02",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where shall the swift and mighty stumble and fall?",
+  "choices": [
+   "By the sea at Tyre",
+   "In the valley of Gilead",
+   "Toward the north by the river Euphrates",
+   "Toward Egypt by the Nile"
+  ],
+  "answer": 2,
+  "explanation": "They shall stumble, and fall toward the north by the river Euphrates.",
+  "ref": "Jeremiah 46:6"
+ },
+ {
+  "id": "jeremiah-46-h-03",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what shall the sword be satiate and made drunk?",
+  "choices": [
+   "Their wine",
+   "Their blood",
+   "Their tears",
+   "Their gold"
+  ],
+  "answer": 1,
+  "explanation": "The sword shall devour, and it shall be satiate and made drunk with their blood.",
+  "ref": "Jeremiah 46:10"
+ },
+ {
+  "id": "jeremiah-46-h-04",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened when the mighty man stumbled against the mighty?",
+  "choices": [
+   "They fled to Noph",
+   "They begged for peace",
+   "They stood fast",
+   "They fell both together"
+  ],
+  "answer": 3,
+  "explanation": "The mighty man hath stumbled against the mighty, and they are fallen both together.",
+  "ref": "Jeremiah 46:12"
+ },
+ {
+  "id": "jeremiah-46-h-05",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What have the nations heard of Egypt, so that her cry fills the land?",
+  "choices": [
+   "Her shame",
+   "Her wealth",
+   "Her gods",
+   "Her alliances"
+  ],
+  "answer": 0,
+  "explanation": "The nations have heard of thy shame, and thy cry hath filled the land.",
+  "ref": "Jeremiah 46:12"
+ },
+ {
+  "id": "jeremiah-46-h-06",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the daughter dwelling in Egypt told to furnish?",
+  "choices": [
+   "Her house for guests",
+   "Her storehouse for famine",
+   "Herself to go into captivity",
+   "Her sons for war"
+  ],
+  "answer": 2,
+  "explanation": "O thou daughter dwelling in Egypt, furnish thyself to go into captivity.",
+  "ref": "Jeremiah 46:19"
+ },
+ {
+  "id": "jeremiah-46-h-07",
+  "chapter": 46,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides Pharaoh, who else will the LORD punish?",
+  "choices": [
+   "All the priests of Noph",
+   "All them that trust in him",
+   "All the captains of the guard",
+   "All the nations of the north"
+  ],
+  "answer": 1,
+  "explanation": "I will punish Pharaoh, and Egypt, even Pharaoh, and all them that trust in him.",
+  "ref": "Jeremiah 46:25"
+ },
+ {
+  "id": "jeremiah-46-h-08",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will Jacob be, with none to make him afraid?",
+  "choices": [
+   "A king over the nations",
+   "A servant of Egypt",
+   "A wanderer in the north",
+   "In rest and at ease"
+  ],
+  "answer": 3,
+  "explanation": "Jacob shall return, and be in rest and at ease, and none shall make him afraid.",
+  "ref": "Jeremiah 46:27"
+ },
+ {
+  "id": "jeremiah-46-h-09",
+  "chapter": 46,
+  "level": "hard",
+  "category": "person",
+  "question": "Into whose hands will the LORD deliver those that seek their lives, besides Nebuchadrezzar?",
+  "choices": [
+   "His servants",
+   "The Ethiopians",
+   "The Lydians",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "I will deliver them into the hand of Nebuchadrezzar king of Babylon, and into the hand of his servants.",
+  "ref": "Jeremiah 46:26"
+ },
+ {
+  "id": "jeremiah-46-h-10",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the voice of Egypt to go like?",
+  "choices": [
+   "A lion",
+   "A trumpet",
+   "A serpent",
+   "A river"
+  ],
+  "answer": 2,
+  "explanation": "The voice thereof shall go like a serpent.",
+  "ref": "Jeremiah 46:22"
+ },
+ {
+  "id": "jeremiah-46-h-11",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How do the mighty ones flee when beaten down?",
+  "choices": [
+   "In chariots",
+   "Apace, not looking back",
+   "Across the river",
+   "By night"
+  ],
+  "answer": 1,
+  "explanation": "Their mighty ones are beaten down, and are fled apace, and look not back: for fear was round about.",
+  "ref": "Jeremiah 46:5"
+ },
+ {
+  "id": "jeremiah-46-h-12",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say to Jacob, as he declares he will not make a full end of him?",
+  "choices": [
+   "Thou art mine",
+   "I will go before thee",
+   "I have forgiven thee",
+   "I am with thee"
+  ],
+  "answer": 3,
+  "explanation": "Fear thou not, O Jacob my servant, saith the LORD: for I am with thee.",
+  "ref": "Jeremiah 46:28"
+ },
+ {
+  "id": "jeremiah-46-h-13",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD of hosts have in the north country by the river Euphrates?",
+  "choices": [
+   "A sacrifice",
+   "A temple",
+   "A watchtower",
+   "A treasure"
+  ],
+  "answer": 0,
+  "explanation": "The Lord GOD of hosts hath a sacrifice in the north country by the river Euphrates.",
+  "ref": "Jeremiah 46:10"
+ },
+ {
+  "id": "jeremiah-46-m-14",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was round about when the mighty ones were beaten down?",
+  "choices": [
+   "Fire",
+   "Water",
+   "Fear",
+   "Darkness"
+  ],
+  "answer": 2,
+  "explanation": "Their mighty ones are beaten down, and are fled apace: for fear was round about, saith the LORD.",
+  "ref": "Jeremiah 46:5"
+ },
+ {
+  "id": "jeremiah-46-h-14",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the Ethiopians and the Libyans handle?",
+  "choices": [
+   "The bow",
+   "The shield",
+   "The spear",
+   "The chariot"
+  ],
+  "answer": 1,
+  "explanation": "The Ethiopians and the Libyans, that handle the shield; and the Lydians, that handle and bend the bow.",
+  "ref": "Jeremiah 46:9"
+ },
+ {
+  "id": "jeremiah-47-m-01",
+  "chapter": 47,
+  "level": "medium",
+  "category": "place",
+  "question": "Which Philistine city did Pharaoh smite, before the word came?",
+  "choices": [
+   "Ashkelon",
+   "Gaza",
+   "Ekron",
+   "Gath"
+  ],
+  "answer": 1,
+  "explanation": "The word of the LORD came against the Philistines, before that Pharaoh smote Gaza.",
+  "ref": "Jeremiah 47:1"
+ },
+ {
+  "id": "jeremiah-47-m-02",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why shall the fathers not look back to their children?",
+  "choices": [
+   "For fear of the king",
+   "For shame of their sins",
+   "For haste to flee",
+   "For feebleness of hands"
+  ],
+  "answer": 3,
+  "explanation": "At the noise of the stamping of the hoofs of his strong horses, the fathers shall not look back to their children for feebleness of hands.",
+  "ref": "Jeremiah 47:3"
+ },
+ {
+  "id": "jeremiah-47-m-03",
+  "chapter": 47,
+  "level": "medium",
+  "category": "place",
+  "question": "From which two cities shall every remaining helper be cut off?",
+  "choices": [
+   "Tyrus and Zidon",
+   "Sodom and Gomorrah",
+   "Damascus and Hamath",
+   "Nineveh and Babylon"
+  ],
+  "answer": 0,
+  "explanation": "The day cometh to cut off from Tyrus and Zidon every helper that remaineth.",
+  "ref": "Jeremiah 47:4"
+ },
+ {
+  "id": "jeremiah-47-m-04",
+  "chapter": 47,
+  "level": "medium",
+  "category": "place",
+  "question": "Of what country are the Philistines the remnant?",
+  "choices": [
+   "Egypt",
+   "Gilead",
+   "Caphtor",
+   "Cush"
+  ],
+  "answer": 2,
+  "explanation": "The LORD will spoil the Philistines, the remnant of the country of Caphtor.",
+  "ref": "Jeremiah 47:4"
+ },
+ {
+  "id": "jeremiah-47-m-05",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is come upon Gaza?",
+  "choices": [
+   "Famine",
+   "Baldness",
+   "Fire",
+   "Darkness"
+  ],
+  "answer": 1,
+  "explanation": "Baldness is come upon Gaza; Ashkelon is cut off with the remnant of their valley.",
+  "ref": "Jeremiah 47:5"
+ },
+ {
+  "id": "jeremiah-47-h-01",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What makes the noise of stamping at the coming of the enemy?",
+  "choices": [
+   "The feet of his foot soldiers",
+   "The wheels of the ships",
+   "The drums of his army",
+   "The hoofs of his strong horses"
+  ],
+  "answer": 3,
+  "explanation": "At the noise of the stamping of the hoofs of his strong horses, at the rushing of his chariots.",
+  "ref": "Jeremiah 47:3"
+ },
+ {
+  "id": "jeremiah-47-h-02",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where is the sword of the LORD asked to put itself up?",
+  "choices": [
+   "Into its scabbard",
+   "Into the sea",
+   "Into the sand",
+   "Into the temple"
+  ],
+  "answer": 0,
+  "explanation": "O thou sword of the LORD, put up thyself into thy scabbard, rest, and be still.",
+  "ref": "Jeremiah 47:6"
+ },
+ {
+  "id": "jeremiah-47-h-03",
+  "chapter": 47,
+  "level": "hard",
+  "category": "place",
+  "question": "Against Ashkelon and what other place has the LORD given the sword a charge?",
+  "choices": [
+   "The mountains",
+   "The wilderness",
+   "The sea shore",
+   "The river"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hath given it a charge against Ashkelon, and against the sea shore.",
+  "ref": "Jeremiah 47:7"
+ },
+ {
+  "id": "jeremiah-47-h-04",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the men do and all the inhabitants of the land, when the waters overflow?",
+  "choices": [
+   "Flee and hide",
+   "Cry and howl",
+   "Fight and fall",
+   "Pray and fast"
+  ],
+  "answer": 1,
+  "explanation": "Then the men shall cry, and all the inhabitants of the land shall howl.",
+  "ref": "Jeremiah 47:2"
+ },
+ {
+  "id": "jeremiah-47-h-05",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD ask the Philistines about how long they will do it?",
+  "choices": [
+   "How long wilt thou wait",
+   "How long wilt thou fast",
+   "How long wilt thou flee",
+   "How long wilt thou cut thyself"
+  ],
+  "answer": 3,
+  "explanation": "How long wilt thou cut thyself?",
+  "ref": "Jeremiah 47:5"
+ },
+ {
+  "id": "jeremiah-48-e-01",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall go forth into captivity with his priests and his princes?",
+  "choices": [
+   "Baal",
+   "Chemosh",
+   "Dagon",
+   "Molech"
+  ],
+  "answer": 1,
+  "explanation": "Chemosh shall go forth into captivity with his priests and his princes together.",
+  "ref": "Jeremiah 48:7"
+ },
+ {
+  "id": "jeremiah-48-e-02",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "place",
+  "question": "Over which city does the chapter begin with woe, because it is spoiled?",
+  "choices": [
+   "Dibon",
+   "Heshbon",
+   "Kerioth",
+   "Nebo"
+  ],
+  "answer": 3,
+  "explanation": "Woe unto Nebo! for it is spoiled: Kiriathaim is confounded and taken.",
+  "ref": "Jeremiah 48:1"
+ },
+ {
+  "id": "jeremiah-48-e-03",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who is cursed in the chapter, besides him that does the LORD's work deceitfully?",
+  "choices": [
+   "He that keepeth back his sword from blood",
+   "He that serves Chemosh",
+   "He that flees from Moab",
+   "He that sells his vineyard"
+  ],
+  "answer": 0,
+  "explanation": "Cursed be he that doeth the work of the LORD deceitfully, and cursed be he that keepeth back his sword from blood.",
+  "ref": "Jeremiah 48:10"
+ },
+ {
+  "id": "jeremiah-48-e-04",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why is Moab to be made drunken and wallow in his vomit?",
+  "choices": [
+   "He mocked the prophet",
+   "He robbed the temple",
+   "He magnified himself against the LORD",
+   "He broke the covenant"
+  ],
+  "answer": 2,
+  "explanation": "Make ye him drunken: for he magnified himself against the LORD: Moab also shall wallow in his vomit.",
+  "ref": "Jeremiah 48:26"
+ },
+ {
+  "id": "jeremiah-48-e-05",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where are those who dwell in Moab told to dwell, like the dove?",
+  "choices": [
+   "In the vineyards",
+   "In the rock",
+   "In the tents",
+   "In the valley"
+  ],
+  "answer": 1,
+  "explanation": "O ye that dwell in Moab, leave the cities, and dwell in the rock, and be like the dove.",
+  "ref": "Jeremiah 48:28"
+ },
+ {
+  "id": "jeremiah-48-e-06",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is cut off and what is broken, says the LORD?",
+  "choices": [
+   "The gates of Moab and his wall",
+   "The staff of Moab and his crown",
+   "The vine of Moab and his field",
+   "The horn of Moab and his arm"
+  ],
+  "answer": 3,
+  "explanation": "The horn of Moab is cut off, and his arm is broken, saith the LORD.",
+  "ref": "Jeremiah 48:25"
+ },
+ {
+  "id": "jeremiah-48-e-07",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall fly and spread his wings over Moab?",
+  "choices": [
+   "An eagle",
+   "A dove",
+   "A hawk",
+   "A raven"
+  ],
+  "answer": 0,
+  "explanation": "He shall fly as an eagle, and shall spread his wings over Moab.",
+  "ref": "Jeremiah 48:40"
+ },
+ {
+  "id": "jeremiah-48-e-08",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What three things shall be upon the inhabitant of Moab?",
+  "choices": [
+   "Famine, plague and sword",
+   "Fire, flood and wind",
+   "Fear, the pit, and the snare",
+   "Shame, exile and silence"
+  ],
+  "answer": 2,
+  "explanation": "Fear, and the pit, and the snare, shall be upon thee, O inhabitant of Moab.",
+  "ref": "Jeremiah 48:43"
+ },
+ {
+  "id": "jeremiah-48-e-09",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has the LORD broken Moab like?",
+  "choices": [
+   "A reed in the wind",
+   "A vessel wherein is no pleasure",
+   "A tree in the storm",
+   "A wall of clay"
+  ],
+  "answer": 1,
+  "explanation": "I have broken Moab like a vessel wherein is no pleasure, saith the LORD.",
+  "ref": "Jeremiah 48:38"
+ },
+ {
+  "id": "jeremiah-48-e-10",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why shall Moab be destroyed from being a people?",
+  "choices": [
+   "He loved Chemosh",
+   "He took Israel captive",
+   "He would not pay tribute",
+   "He magnified himself against the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Moab shall be destroyed from being a people, because he hath magnified himself against the LORD.",
+  "ref": "Jeremiah 48:42"
+ },
+ {
+  "id": "jeremiah-48-m-01",
+  "chapter": 48,
+  "level": "medium",
+  "category": "place",
+  "question": "Who is told to come down from her glory and sit in thirst?",
+  "choices": [
+   "The daughter that inhabits Dibon",
+   "The virgin of Nebo",
+   "The queen of Heshbon",
+   "The mother of Kir-heres"
+  ],
+  "answer": 0,
+  "explanation": "Thou daughter that dost inhabit Dibon, come down from thy glory, and sit in thirst.",
+  "ref": "Jeremiah 48:18"
+ },
+ {
+  "id": "jeremiah-48-m-02",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the two things mourned as broken at the fall of Moab?",
+  "choices": [
+   "The mighty gate and the wall",
+   "The golden horn and the crown",
+   "The strong staff and the beautiful rod",
+   "The great tree and the vine"
+  ],
+  "answer": 2,
+  "explanation": "How is the strong staff broken, and the beautiful rod!",
+  "ref": "Jeremiah 48:17"
+ },
+ {
+  "id": "jeremiah-48-m-03",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the people told to be like in the wilderness as they flee?",
+  "choices": [
+   "The deer",
+   "The heath",
+   "The eagle",
+   "The sparrow"
+  ],
+  "answer": 1,
+  "explanation": "Flee, save your lives, and be like the heath in the wilderness.",
+  "ref": "Jeremiah 48:6"
+ },
+ {
+  "id": "jeremiah-48-m-04",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD send to Moab to empty his vessels and break their bottles?",
+  "choices": [
+   "Reapers",
+   "Watchmen",
+   "Shepherds",
+   "Wanderers"
+  ],
+  "answer": 3,
+  "explanation": "I will send unto him wanderers, that shall cause him to wander, and shall empty his vessels, and break their bottles.",
+  "ref": "Jeremiah 48:12"
+ },
+ {
+  "id": "jeremiah-48-m-05",
+  "chapter": 48,
+  "level": "medium",
+  "category": "person",
+  "question": "Where have Moab's chosen young men gone?",
+  "choices": [
+   "Down to the slaughter",
+   "Up to the mountains",
+   "Over the sea",
+   "Into Egypt"
+  ],
+  "answer": 0,
+  "explanation": "His chosen young men are gone down to the slaughter, saith the King, whose name is the LORD of hosts.",
+  "ref": "Jeremiah 48:15"
+ },
+ {
+  "id": "jeremiah-48-m-06",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel found to Moab, though not found among thieves?",
+  "choices": [
+   "A servant",
+   "A burden",
+   "A derision",
+   "A friend"
+  ],
+  "answer": 2,
+  "explanation": "Was not Israel a derision unto thee? was he found among thieves?",
+  "ref": "Jeremiah 48:27"
+ },
+ {
+  "id": "jeremiah-48-m-07",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For which plant does the LORD say he will weep, with the weeping of Jazer?",
+  "choices": [
+   "The olive of Kerioth",
+   "The vine of Sibmah",
+   "The fig of Nebo",
+   "The cedar of Heshbon"
+  ],
+  "answer": 1,
+  "explanation": "O vine of Sibmah, I will weep for thee with the weeping of Jazer.",
+  "ref": "Jeremiah 48:32"
+ },
+ {
+  "id": "jeremiah-48-m-08",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD caused to fail from the winepresses?",
+  "choices": [
+   "Oil",
+   "Corn",
+   "Grapes",
+   "Wine"
+  ],
+  "answer": 3,
+  "explanation": "I have caused wine to fail from the winepresses: none shall tread with shouting.",
+  "ref": "Jeremiah 48:33"
+ },
+ {
+  "id": "jeremiah-48-m-09",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who will the LORD cause to cease in Moab?",
+  "choices": [
+   "Him that offereth in the high places",
+   "The priests of Chemosh only",
+   "The kings of the plain",
+   "The watchmen of the wall"
+  ],
+  "answer": 0,
+  "explanation": "I will cause to cease in Moab him that offereth in the high places, and him that burneth incense to his gods.",
+  "ref": "Jeremiah 48:35"
+ },
+ {
+  "id": "jeremiah-48-m-10",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the mighty men's hearts be like at that day?",
+  "choices": [
+   "A stone",
+   "A lion's",
+   "The heart of a woman in her pangs",
+   "A broken reed"
+  ],
+  "answer": 2,
+  "explanation": "The mighty men's hearts in Moab at that day shall be as the heart of a woman in her pangs.",
+  "ref": "Jeremiah 48:41"
+ },
+ {
+  "id": "jeremiah-48-m-11",
+  "chapter": 48,
+  "level": "medium",
+  "category": "place",
+  "question": "Out of which city shall a fire come forth?",
+  "choices": [
+   "Dibon",
+   "Heshbon",
+   "Arnon",
+   "Aroer"
+  ],
+  "answer": 1,
+  "explanation": "A fire shall come forth out of Heshbon, and a flame from the midst of Sihon.",
+  "ref": "Jeremiah 48:45"
+ },
+ {
+  "id": "jeremiah-48-m-12",
+  "chapter": 48,
+  "level": "medium",
+  "category": "person",
+  "question": "What has become of the sons and daughters of Moab?",
+  "choices": [
+   "They are hidden in the rock",
+   "They flee to Egypt",
+   "They are made kings",
+   "They are taken captives"
+  ],
+  "answer": 3,
+  "explanation": "Woe be unto thee, O Moab! the people of Chemosh perisheth: for thy sons are taken captives, and thy daughters captives.",
+  "ref": "Jeremiah 48:46"
+ },
+ {
+  "id": "jeremiah-48-m-13",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD's heart sound like for the men of Kir-heres?",
+  "choices": [
+   "Pipes",
+   "Trumpets",
+   "Harps",
+   "Bells"
+  ],
+  "answer": 0,
+  "explanation": "Mine heart shall sound for Moab like pipes, and mine heart shall sound like pipes for the men of Kir-heres.",
+  "ref": "Jeremiah 48:36"
+ },
+ {
+  "id": "jeremiah-48-m-14",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say should be given unto Moab so that it may flee?",
+  "choices": [
+   "Horses",
+   "Bread",
+   "Wings",
+   "Chariots"
+  ],
+  "answer": 2,
+  "explanation": "Give wings unto Moab, that it may flee and get away: for the cities thereof shall be desolate.",
+  "ref": "Jeremiah 48:9"
+ },
+ {
+  "id": "jeremiah-48-m-15",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall perish when the spoiler comes upon every city?",
+  "choices": [
+   "The river and the sea",
+   "The valley and the plain",
+   "The temple and the altar",
+   "The mountain and the wall"
+  ],
+  "answer": 1,
+  "explanation": "The spoiler shall come upon every city, and no city shall escape: the valley also shall perish, and the plain shall be destroyed.",
+  "ref": "Jeremiah 48:8"
+ },
+ {
+  "id": "jeremiah-48-h-01",
+  "chapter": 48,
+  "level": "hard",
+  "category": "place",
+  "question": "Who devised evil against Moab, saying, Let us cut it off from being a nation?",
+  "choices": [
+   "They in Nebo",
+   "They in Dibon",
+   "They in Aroer",
+   "They in Heshbon"
+  ],
+  "answer": 3,
+  "explanation": "In Heshbon they have devised evil against it; come, and let us cut it off from being a nation.",
+  "ref": "Jeremiah 48:2"
+ },
+ {
+  "id": "jeremiah-48-h-02",
+  "chapter": 48,
+  "level": "hard",
+  "category": "place",
+  "question": "From which place shall a voice of crying be heard, with great destruction?",
+  "choices": [
+   "Horonaim",
+   "Nimrim",
+   "Zoar",
+   "Elealeh"
+  ],
+  "answer": 0,
+  "explanation": "A voice of crying shall be from Horonaim, spoiling and great destruction.",
+  "ref": "Jeremiah 48:3"
+ },
+ {
+  "id": "jeremiah-48-h-03",
+  "chapter": 48,
+  "level": "hard",
+  "category": "person",
+  "question": "Who have caused a cry to be heard when Moab is destroyed?",
+  "choices": [
+   "Her priests",
+   "Her kings",
+   "Her little ones",
+   "Her elders"
+  ],
+  "answer": 2,
+  "explanation": "Moab is destroyed; her little ones have caused a cry to be heard.",
+  "ref": "Jeremiah 48:4"
+ },
+ {
+  "id": "jeremiah-48-h-04",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In the going up of which place shall continual weeping go up?",
+  "choices": [
+   "Heshbon",
+   "Luhith",
+   "Arnon",
+   "Jazer"
+  ],
+  "answer": 1,
+  "explanation": "In the going up of Luhith continual weeping shall go up.",
+  "ref": "Jeremiah 48:5"
+ },
+ {
+  "id": "jeremiah-48-h-05",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moab has not been emptied from what to what, nor gone into captivity?",
+  "choices": [
+   "From land to land",
+   "From field to field",
+   "From house to house",
+   "From vessel to vessel"
+  ],
+  "answer": 3,
+  "explanation": "He hath not been emptied from vessel to vessel, neither hath he gone into captivity.",
+  "ref": "Jeremiah 48:11"
+ },
+ {
+  "id": "jeremiah-48-h-06",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Moab shall be ashamed of Chemosh as Israel was ashamed of what?",
+  "choices": [
+   "Bethel their confidence",
+   "Dan their idol",
+   "Shiloh their altar",
+   "Zion their king"
+  ],
+  "answer": 0,
+  "explanation": "Moab shall be ashamed of Chemosh, as the house of Israel was ashamed of Bethel their confidence.",
+  "ref": "Jeremiah 48:13"
+ },
+ {
+  "id": "jeremiah-48-h-07",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the Moabites say about themselves in the war?",
+  "choices": [
+   "We are few but wise",
+   "We are servants of the LORD",
+   "We are mighty and strong men",
+   "We are hidden in the rock"
+  ],
+  "answer": 2,
+  "explanation": "How say ye, We are mighty and strong men for the war?",
+  "ref": "Jeremiah 48:14"
+ },
+ {
+  "id": "jeremiah-48-h-08",
+  "chapter": 48,
+  "level": "hard",
+  "category": "place",
+  "question": "Who is told to stand by the way and espy, asking him that fleeth what is done?",
+  "choices": [
+   "The daughter of Dibon",
+   "The inhabitant of Aroer",
+   "The elders of Nebo",
+   "The vine of Sibmah"
+  ],
+  "answer": 1,
+  "explanation": "O inhabitant of Aroer, stand by the way, and espy; ask him that fleeth, and her that escapeth, and say, What is done?",
+  "ref": "Jeremiah 48:19"
+ },
+ {
+  "id": "jeremiah-48-h-09",
+  "chapter": 48,
+  "level": "hard",
+  "category": "place",
+  "question": "Where is it told that Moab is spoiled?",
+  "choices": [
+   "In Jordan",
+   "In Zoar",
+   "In Kedar",
+   "In Arnon"
+  ],
+  "answer": 3,
+  "explanation": "Moab is confounded; for it is broken down: howl and cry; and tell ye it in Arnon, that Moab is spoiled.",
+  "ref": "Jeremiah 48:20"
+ },
+ {
+  "id": "jeremiah-48-h-10",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say of his wrath and lies?",
+  "choices": [
+   "It shall not be so; his lies shall not effect it",
+   "His wrath shall prevail",
+   "His lies shall save him",
+   "His wrath is known to all"
+  ],
+  "answer": 0,
+  "explanation": "I know his wrath, saith the LORD; but it shall not be so; his lies shall not so effect it.",
+  "ref": "Jeremiah 48:30"
+ },
+ {
+  "id": "jeremiah-48-h-11",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The cry from Heshbon to Elealeh is like what animal?",
+  "choices": [
+   "A lion of the forest",
+   "A dove in the rock",
+   "A heifer of three years old",
+   "A hart in the wilderness"
+  ],
+  "answer": 2,
+  "explanation": "They have uttered their voice, as an heifer of three years old.",
+  "ref": "Jeremiah 48:34"
+ },
+ {
+  "id": "jeremiah-48-h-12",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall be upon all the hands, and upon the loins?",
+  "choices": [
+   "Rings and chains",
+   "Cuttings and sackcloth",
+   "Ashes and oil",
+   "Dust and stones"
+  ],
+  "answer": 1,
+  "explanation": "Upon all the hands shall be cuttings, and upon the loins sackcloth.",
+  "ref": "Jeremiah 48:37"
+ },
+ {
+  "id": "jeremiah-48-h-13",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to him that getteth up out of the pit?",
+  "choices": [
+   "He shall be saved",
+   "He shall reach Heshbon",
+   "He shall be given wings",
+   "He shall be taken in the snare"
+  ],
+  "answer": 3,
+  "explanation": "He that fleeth from the fear shall fall into the pit; and he that getteth up out of the pit shall be taken in the snare.",
+  "ref": "Jeremiah 48:44"
+ },
+ {
+  "id": "jeremiah-48-h-14",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What have they heard of Moab, that he is exceeding proud?",
+  "choices": [
+   "His loftiness and arrogancy",
+   "His wealth and his wine",
+   "His walls and gates",
+   "His songs and his idols"
+  ],
+  "answer": 0,
+  "explanation": "We have heard the pride of Moab, (he is exceeding proud) his loftiness, and his arrogancy.",
+  "ref": "Jeremiah 48:29"
+ },
+ {
+  "id": "jeremiah-48-h-15",
+  "chapter": 48,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place is confounded and dismayed, with Nebo and Kiriathaim?",
+  "choices": [
+   "Heshbon",
+   "Dibon",
+   "Misgab",
+   "Aroer"
+  ],
+  "answer": 2,
+  "explanation": "Nebo is spoiled: Kiriathaim is confounded and taken: Misgab is confounded and dismayed.",
+  "ref": "Jeremiah 48:1"
+ },
+ {
+  "id": "jeremiah-49-e-01",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city of the Ammonites shall be a desolate heap, her daughters burned with fire?",
+  "choices": [
+   "Heshbon",
+   "Rabbah",
+   "Ai",
+   "Kedar"
+  ],
+  "answer": 1,
+  "explanation": "I will cause an alarm of war to be heard in Rabbah of the Ammonites; and it shall be a desolate heap.",
+  "ref": "Jeremiah 49:2"
+ },
+ {
+  "id": "jeremiah-49-e-02",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which city is it asked whether wisdom is no more?",
+  "choices": [
+   "Bozrah",
+   "Dedan",
+   "Damascus",
+   "Teman"
+  ],
+  "answer": 3,
+  "explanation": "Concerning Edom: Is wisdom no more in Teman? is counsel perished from the prudent?",
+  "ref": "Jeremiah 49:7"
+ },
+ {
+  "id": "jeremiah-49-e-03",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say he will do with Edom's fatherless children?",
+  "choices": [
+   "Preserve them alive",
+   "Send them to Babylon",
+   "Make them servants",
+   "Give them Esau's land"
+  ],
+  "answer": 0,
+  "explanation": "Leave thy fatherless children, I will preserve them alive; and let thy widows trust in me.",
+  "ref": "Jeremiah 49:11"
+ },
+ {
+  "id": "jeremiah-49-e-04",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "place",
+  "question": "By himself the LORD swears that which city shall become a desolation and a curse?",
+  "choices": [
+   "Teman",
+   "Rabbah",
+   "Bozrah",
+   "Hazor"
+  ],
+  "answer": 2,
+  "explanation": "I have sworn by myself, saith the LORD, that Bozrah shall become a desolation, a reproach, a waste, and a curse.",
+  "ref": "Jeremiah 49:13"
+ },
+ {
+  "id": "jeremiah-49-e-05",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "place",
+  "question": "As in the overthrow of which cities shall no man abide in Edom?",
+  "choices": [
+   "Nineveh and Babylon",
+   "Sodom and Gomorrah",
+   "Tyre and Zidon",
+   "Ai and Bethel"
+  ],
+  "answer": 1,
+  "explanation": "As in the overthrow of Sodom and Gomorrah and the neighbour cities thereof, no man shall abide there.",
+  "ref": "Jeremiah 49:18"
+ },
+ {
+  "id": "jeremiah-49-e-06",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose palaces shall the fire in the wall of Damascus consume?",
+  "choices": [
+   "Hazael",
+   "Nebuchadrezzar",
+   "Pharaoh",
+   "Ben-hadad"
+  ],
+  "answer": 3,
+  "explanation": "I will kindle a fire in the wall of Damascus, and it shall consume the palaces of Ben-hadad.",
+  "ref": "Jeremiah 49:27"
+ },
+ {
+  "id": "jeremiah-49-e-07",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall the men of Kedar's camels become?",
+  "choices": [
+   "A booty",
+   "A sacrifice",
+   "A burden",
+   "A gift"
+  ],
+  "answer": 0,
+  "explanation": "Their camels shall be a booty, and the multitude of their cattle a spoil.",
+  "ref": "Jeremiah 49:32"
+ },
+ {
+  "id": "jeremiah-49-e-08",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall Hazor be for ever?",
+  "choices": [
+   "A city of refuge",
+   "A pasture for flocks",
+   "A dwelling for dragons",
+   "A watchtower"
+  ],
+  "answer": 2,
+  "explanation": "Hazor shall be a dwelling for dragons, and a desolation for ever.",
+  "ref": "Jeremiah 49:33"
+ },
+ {
+  "id": "jeremiah-49-e-09",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD break, the chief of Elam's might?",
+  "choices": [
+   "The sword of Elam",
+   "The bow of Elam",
+   "The gates of Elam",
+   "The chariots of Elam"
+  ],
+  "answer": 1,
+  "explanation": "I will break the bow of Elam, the chief of their might.",
+  "ref": "Jeremiah 49:35"
+ },
+ {
+  "id": "jeremiah-49-e-10",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where will the LORD set his throne, destroying the king and princes?",
+  "choices": [
+   "In Edom",
+   "In Hazor",
+   "In Damascus",
+   "In Elam"
+  ],
+  "answer": 3,
+  "explanation": "I will set my throne in Elam, and will destroy from thence the king and the princes.",
+  "ref": "Jeremiah 49:38"
+ },
+ {
+  "id": "jeremiah-49-m-01",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will their king go into, with his priests and his princes?",
+  "choices": [
+   "Captivity",
+   "The mountains",
+   "Egypt",
+   "The wilderness"
+  ],
+  "answer": 0,
+  "explanation": "Their king shall go into captivity, and his priests and his princes together.",
+  "ref": "Jeremiah 49:3"
+ },
+ {
+  "id": "jeremiah-49-m-02",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the backsliding daughter trust in, asking Who shall come unto me?",
+  "choices": [
+   "Her gods",
+   "Her walls",
+   "Her treasures",
+   "Her king"
+  ],
+  "answer": 2,
+  "explanation": "Wherefore gloriest thou in the valleys, O backsliding daughter? that trusted in her treasures, saying, Who shall come unto me?",
+  "ref": "Jeremiah 49:4"
+ },
+ {
+  "id": "jeremiah-49-m-03",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD promise Ammon afterward?",
+  "choices": [
+   "He will make them a kingdom",
+   "He will bring again their captivity",
+   "He will give them Gad",
+   "He will give them Edom"
+  ],
+  "answer": 1,
+  "explanation": "Afterward I will bring again the captivity of the children of Ammon.",
+  "ref": "Jeremiah 49:6"
+ },
+ {
+  "id": "jeremiah-49-m-04",
+  "chapter": 49,
+  "level": "medium",
+  "category": "place",
+  "question": "Who are told to flee, turn back and dwell deep, because the calamity of Esau comes?",
+  "choices": [
+   "The daughters of Rabbah",
+   "The men of Hazor",
+   "The people of Kedar",
+   "The inhabitants of Dedan"
+  ],
+  "answer": 3,
+  "explanation": "Flee ye, turn back, dwell deep, O inhabitants of Dedan; for I will bring the calamity of Esau upon him.",
+  "ref": "Jeremiah 49:8"
+ },
+ {
+  "id": "jeremiah-49-m-05",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If grapegatherers came to Edom, what would they leave?",
+  "choices": [
+   "Some gleaning grapes",
+   "The whole vine",
+   "Nothing at all",
+   "A single branch"
+  ],
+  "answer": 0,
+  "explanation": "If grapegatherers came, what would they leave?",
+  "ref": "Jeremiah 49:9"
+ },
+ {
+  "id": "jeremiah-49-m-06",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD made Esau?",
+  "choices": [
+   "A king",
+   "A wall",
+   "Bare",
+   "Wise"
+  ],
+  "answer": 2,
+  "explanation": "I have made Esau bare, I have uncovered his secret places, and he shall not be able to hide himself.",
+  "ref": "Jeremiah 49:10"
+ },
+ {
+  "id": "jeremiah-49-m-07",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had they whose judgment was not to drink of it assuredly drunken?",
+  "choices": [
+   "The waters",
+   "The cup",
+   "The wine of Edom",
+   "The bitter herbs"
+  ],
+  "answer": 1,
+  "explanation": "They whose judgment was not to drink of the cup have assuredly drunken.",
+  "ref": "Jeremiah 49:12"
+ },
+ {
+  "id": "jeremiah-49-m-08",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD make Edom among the heathen?",
+  "choices": [
+   "Great and feared",
+   "Rich and wise",
+   "Wild and free",
+   "Small and despised"
+  ],
+  "answer": 3,
+  "explanation": "I will make thee small among the heathen, and despised among men.",
+  "ref": "Jeremiah 49:15"
+ },
+ {
+  "id": "jeremiah-49-m-09",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does Edom dwell, holding the height of the hill?",
+  "choices": [
+   "In the clefts of the rock",
+   "In the plain of Sharon",
+   "In the valley of Gilead",
+   "By the Red sea"
+  ],
+  "answer": 0,
+  "explanation": "O thou that dwellest in the clefts of the rock, that holdest the height of the hill.",
+  "ref": "Jeremiah 49:16"
+ },
+ {
+  "id": "jeremiah-49-m-10",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD say shall draw out the inhabitants of Teman?",
+  "choices": [
+   "The mightiest of the host",
+   "The prophets of Israel",
+   "The least of the flock",
+   "The kings of the east"
+  ],
+  "answer": 2,
+  "explanation": "Surely the least of the flock shall draw them out.",
+  "ref": "Jeremiah 49:20"
+ },
+ {
+  "id": "jeremiah-49-m-11",
+  "chapter": 49,
+  "level": "medium",
+  "category": "place",
+  "question": "Which two cities are confounded, having heard evil tidings?",
+  "choices": [
+   "Ammon and Moab",
+   "Hamath and Arpad",
+   "Bozrah and Teman",
+   "Kedar and Hazor"
+  ],
+  "answer": 1,
+  "explanation": "Hamath is confounded, and Arpad: for they have heard evil tidings.",
+  "ref": "Jeremiah 49:23"
+ },
+ {
+  "id": "jeremiah-49-m-12",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Damascus called in the lament?",
+  "choices": [
+   "The city of kings",
+   "The city of peace",
+   "The gate of the east",
+   "The city of praise"
+  ],
+  "answer": 3,
+  "explanation": "How is the city of praise not left, the city of my joy!",
+  "ref": "Jeremiah 49:25"
+ },
+ {
+  "id": "jeremiah-49-m-13",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is the wealthy nation described, which dwells without care?",
+  "choices": [
+   "It has neither gates nor bars",
+   "It has walls of brass",
+   "It has many kings",
+   "It has no flocks"
+  ],
+  "answer": 0,
+  "explanation": "The wealthy nation, that dwelleth without care, which have neither gates nor bars, which dwell alone.",
+  "ref": "Jeremiah 49:31"
+ },
+ {
+  "id": "jeremiah-49-m-14",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do with them that are in the utmost corners?",
+  "choices": [
+   "Gather them to Zion",
+   "Give them cities",
+   "Scatter them into all winds",
+   "Send them to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "I will scatter into all winds them that are in the utmost corners.",
+  "ref": "Jeremiah 49:32"
+ },
+ {
+  "id": "jeremiah-49-m-15",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD send among the heathen, saying, Gather ye together against Edom?",
+  "choices": [
+   "A prophet",
+   "An ambassador",
+   "A plague",
+   "A fire"
+  ],
+  "answer": 1,
+  "explanation": "An ambassador is sent unto the heathen, saying, Gather ye together, and come against her.",
+  "ref": "Jeremiah 49:14"
+ },
+ {
+  "id": "jeremiah-49-h-01",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall every one that goeth by Edom do?",
+  "choices": [
+   "Pray for its people",
+   "Pay it tribute",
+   "Pass it in silence",
+   "Be astonished and hiss at its plagues"
+  ],
+  "answer": 3,
+  "explanation": "Every one that goeth by it shall be astonished, and shall hiss at all the plagues thereof.",
+  "ref": "Jeremiah 49:17"
+ },
+ {
+  "id": "jeremiah-49-h-02",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has deceived Edom?",
+  "choices": [
+   "His terribleness and the pride of his heart",
+   "His walls and his gates",
+   "His riches and his wine",
+   "His kings and his priests"
+  ],
+  "answer": 0,
+  "explanation": "Thy terribleness hath deceived thee, and the pride of thine heart.",
+  "ref": "Jeremiah 49:16"
+ },
+ {
+  "id": "jeremiah-49-h-03",
+  "chapter": 49,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was the noise of Edom's fall heard?",
+  "choices": [
+   "In the Jordan",
+   "In the mountains",
+   "In the Red sea",
+   "In the north"
+  ],
+  "answer": 2,
+  "explanation": "The earth is moved at the noise of their fall, at the cry the noise thereof was heard in the Red sea.",
+  "ref": "Jeremiah 49:21"
+ },
+ {
+  "id": "jeremiah-49-h-04",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the heart of the mighty men of Edom be as?",
+  "choices": [
+   "A lion's heart",
+   "The heart of a woman in her pangs",
+   "A broken reed",
+   "A stone"
+  ],
+  "answer": 1,
+  "explanation": "At that day shall the heart of the mighty men of Edom be as the heart of a woman in her pangs.",
+  "ref": "Jeremiah 49:22"
+ },
+ {
+  "id": "jeremiah-49-h-05",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is Damascus said to be taken, as a woman in travail?",
+  "choices": [
+   "Joy and singing have filled her",
+   "Fire has devoured her",
+   "Silence has covered her",
+   "Anguish and sorrows have taken her"
+  ],
+  "answer": 3,
+  "explanation": "Damascus is waxed feeble, and turneth herself to flee, and fear hath seized on her: anguish and sorrows have taken her, as a woman in travail.",
+  "ref": "Jeremiah 49:24"
+ },
+ {
+  "id": "jeremiah-49-h-06",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to the young men of Damascus?",
+  "choices": [
+   "They shall fall in her streets",
+   "They shall flee to Hamath",
+   "They shall be taken captive",
+   "They shall hide in the rock"
+  ],
+  "answer": 0,
+  "explanation": "Her young men shall fall in her streets, and all the men of war shall be cut off in that day.",
+  "ref": "Jeremiah 49:26"
+ },
+ {
+  "id": "jeremiah-49-h-07",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where is there sorrow that cannot be quiet?",
+  "choices": [
+   "In the mountains",
+   "In the wilderness",
+   "On the sea",
+   "In the gates"
+  ],
+  "answer": 2,
+  "explanation": "They are fainthearted; there is sorrow on the sea; it cannot be quiet.",
+  "ref": "Jeremiah 49:23"
+ },
+ {
+  "id": "jeremiah-49-h-08",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall they cry unto the men of Kedar when they take their tents and flocks?",
+  "choices": [
+   "Peace be with you",
+   "Fear is on every side",
+   "Where is the LORD",
+   "Flee to the rock"
+  ],
+  "answer": 1,
+  "explanation": "They shall take to themselves their curtains, and all their vessels, and their camels; and they shall cry unto them, Fear is on every side.",
+  "ref": "Jeremiah 49:29"
+ },
+ {
+  "id": "jeremiah-49-h-09",
+  "chapter": 49,
+  "level": "hard",
+  "category": "person",
+  "question": "Who has taken counsel and conceived a purpose against the inhabitants of Hazor?",
+  "choices": [
+   "Pharaoh king of Egypt",
+   "The king of Assyria",
+   "The king of Elam",
+   "Nebuchadrezzar king of Babylon"
+  ],
+  "answer": 3,
+  "explanation": "Nebuchadrezzar king of Babylon hath taken counsel against you, and hath conceived a purpose against you.",
+  "ref": "Jeremiah 49:30"
+ },
+ {
+  "id": "jeremiah-49-h-10",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD bring upon Ammon from all that be about it?",
+  "choices": [
+   "A fear",
+   "A famine",
+   "A plague",
+   "A flood"
+  ],
+  "answer": 0,
+  "explanation": "I will bring a fear upon thee from all those that be about thee; and ye shall be driven out every man right forth.",
+  "ref": "Jeremiah 49:5"
+ },
+ {
+  "id": "jeremiah-49-h-11",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the daughters of Rabbah told to do, running to and fro by the hedges?",
+  "choices": [
+   "Pray in the temple",
+   "Sing in the streets",
+   "Gird on sackcloth and lament",
+   "Flee to Heshbon"
+  ],
+  "answer": 2,
+  "explanation": "Cry, ye daughters of Rabbah, gird you with sackcloth; lament, and run to and fro by the hedges.",
+  "ref": "Jeremiah 49:3"
+ },
+ {
+  "id": "jeremiah-49-h-12",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD send after Elam until he has consumed them?",
+  "choices": [
+   "The famine",
+   "The sword",
+   "The fire",
+   "The plague"
+  ],
+  "answer": 1,
+  "explanation": "I will send the sword after them, till I have consumed them.",
+  "ref": "Jeremiah 49:37"
+ },
+ {
+  "id": "jeremiah-49-h-13",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the LORD bring upon Elam from the four quarters of heaven?",
+  "choices": [
+   "Four armies",
+   "Four plagues",
+   "Four kings",
+   "The four winds"
+  ],
+  "answer": 3,
+  "explanation": "Upon Elam will I bring the four winds from the four quarters of heaven.",
+  "ref": "Jeremiah 49:36"
+ },
+ {
+  "id": "jeremiah-49-h-14",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is like the LORD, that will appoint him the time?",
+  "choices": [
+   "No one",
+   "The king of Babylon",
+   "The shepherd of Edom",
+   "The chosen man"
+  ],
+  "answer": 0,
+  "explanation": "Who is a chosen man, that I may appoint over her? for who is like me? and who will appoint me the time?",
+  "ref": "Jeremiah 49:19"
+ },
+ {
+  "id": "jeremiah-49-h-15",
+  "chapter": 49,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides his seed, who else is spoiled with Esau?",
+  "choices": [
+   "His priests and his kings",
+   "His wise men and his elders",
+   "His brethren and his neighbours",
+   "His wives and his servants"
+  ],
+  "answer": 2,
+  "explanation": "His seed is spoiled, and his brethren, and his neighbours, and he is not.",
+  "ref": "Jeremiah 49:10"
+ },
+ {
+  "id": "jeremiah-50-e-01",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which god of Babylon is said to be broken in pieces, with Bel confounded?",
+  "choices": [
+   "Chemosh",
+   "Merodach",
+   "Dagon",
+   "Molech"
+  ],
+  "answer": 1,
+  "explanation": "Babylon is taken, Bel is confounded, Merodach is broken in pieces.",
+  "ref": "Jeremiah 50:2"
+ },
+ {
+  "id": "jeremiah-50-e-02",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has the LORD's people been, with their shepherds causing them to go astray?",
+  "choices": [
+   "Fallen stars",
+   "Scattered seed",
+   "Wandering birds",
+   "Lost sheep"
+  ],
+  "answer": 3,
+  "explanation": "My people hath been lost sheep: their shepherds have caused them to go astray.",
+  "ref": "Jeremiah 50:6"
+ },
+ {
+  "id": "jeremiah-50-e-03",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the people told to be as, before the flocks, as they leave Babylon?",
+  "choices": [
+   "The he goats",
+   "The shepherds",
+   "The lions",
+   "The oxen"
+  ],
+  "answer": 0,
+  "explanation": "Remove out of the midst of Babylon, and be as the he goats before the flocks.",
+  "ref": "Jeremiah 50:8"
+ },
+ {
+  "id": "jeremiah-50-e-04",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who is strong, and shall throughly plead the cause of Israel and Judah?",
+  "choices": [
+   "Their king",
+   "Their prophet",
+   "Their Redeemer",
+   "Their shepherd"
+  ],
+  "answer": 2,
+  "explanation": "Their Redeemer is strong; the LORD of hosts is his name: he shall throughly plead their cause.",
+  "ref": "Jeremiah 50:34"
+ },
+ {
+  "id": "jeremiah-50-e-05",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is upon the waters of Babylon, so that they shall be dried up?",
+  "choices": [
+   "A curse",
+   "A drought",
+   "A sword",
+   "A fire"
+  ],
+  "answer": 1,
+  "explanation": "A drought is upon her waters; and they shall be dried up: for it is the land of graven images.",
+  "ref": "Jeremiah 50:38"
+ },
+ {
+  "id": "jeremiah-50-e-06",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which mountains and lands shall Israel feed when he is brought again to his habitation?",
+  "choices": [
+   "Sinai and Horeb",
+   "Hermon and Tabor",
+   "Nebo and Pisgah",
+   "Carmel and Bashan"
+  ],
+  "answer": 3,
+  "explanation": "I will bring Israel again to his habitation, and he shall feed on Carmel and Bashan.",
+  "ref": "Jeremiah 50:19"
+ },
+ {
+  "id": "jeremiah-50-e-07",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who first devoured the scattered sheep, and who last broke his bones?",
+  "choices": [
+   "Assyria first, Nebuchadrezzar last",
+   "Egypt first, Assyria last",
+   "Edom first, Babylon last",
+   "Moab first, Egypt last"
+  ],
+  "answer": 0,
+  "explanation": "First the king of Assyria hath devoured him; and last this Nebuchadrezzar king of Babylon hath broken his bones.",
+  "ref": "Jeremiah 50:17"
+ },
+ {
+  "id": "jeremiah-50-e-08",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has the LORD opened to bring forth the weapons of his indignation?",
+  "choices": [
+   "His storehouse",
+   "His temple",
+   "His armoury",
+   "His treasury"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hath opened his armoury, and hath brought forth the weapons of his indignation.",
+  "ref": "Jeremiah 50:25"
+ },
+ {
+  "id": "jeremiah-50-e-09",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which creatures shall dwell in Babylon, with the wild beasts of the islands?",
+  "choices": [
+   "Lions and leopards",
+   "The wild beasts of the desert and owls",
+   "Eagles and ravens",
+   "Serpents and scorpions"
+  ],
+  "answer": 1,
+  "explanation": "The wild beasts of the desert with the wild beasts of the islands shall dwell there, and the owls shall dwell therein.",
+  "ref": "Jeremiah 50:39"
+ },
+ {
+  "id": "jeremiah-50-e-10",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "place",
+  "question": "As God overthrew which cities shall no man abide in Babylon?",
+  "choices": [
+   "Nineveh and Tyre",
+   "Ai and Bethel",
+   "Hamath and Arpad",
+   "Sodom and Gomorrah"
+  ],
+  "answer": 3,
+  "explanation": "As God overthrew Sodom and Gomorrah, so shall no man abide there.",
+  "ref": "Jeremiah 50:40"
+ },
+ {
+  "id": "jeremiah-50-m-01",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From where shall a nation come up against Babylon?",
+  "choices": [
+   "Out of the north",
+   "Out of the east",
+   "Out of Egypt",
+   "Out of the sea"
+  ],
+  "answer": 0,
+  "explanation": "Out of the north there cometh up a nation against her, which shall make her land desolate.",
+  "ref": "Jeremiah 50:3"
+ },
+ {
+  "id": "jeremiah-50-m-02",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the children of Israel and Judah ask to join themselves to?",
+  "choices": [
+   "The nations in peace",
+   "The king of Babylon",
+   "The LORD in a perpetual covenant",
+   "The house of David"
+  ],
+  "answer": 2,
+  "explanation": "Come, and let us join ourselves to the LORD in a perpetual covenant that shall not be forgotten.",
+  "ref": "Jeremiah 50:5"
+ },
+ {
+  "id": "jeremiah-50-m-03",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did their adversaries say, because Israel had sinned against the LORD?",
+  "choices": [
+   "We are the LORD's",
+   "We offend not",
+   "We have not found them",
+   "We will spare them"
+  ],
+  "answer": 1,
+  "explanation": "Their adversaries said, We offend not, because they have sinned against the LORD.",
+  "ref": "Jeremiah 50:7"
+ },
+ {
+  "id": "jeremiah-50-m-04",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom will the LORD raise against Babylon from the north country?",
+  "choices": [
+   "A single king",
+   "The Ethiopians",
+   "The army of Egypt",
+   "An assembly of great nations"
+  ],
+  "answer": 3,
+  "explanation": "I will raise and cause to come up against Babylon an assembly of great nations from the north country.",
+  "ref": "Jeremiah 50:9"
+ },
+ {
+  "id": "jeremiah-50-m-05",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall Chaldea be, so that all that spoil her are satisfied?",
+  "choices": [
+   "A spoil",
+   "A desert",
+   "A prison",
+   "A shadow"
+  ],
+  "answer": 0,
+  "explanation": "Chaldea shall be a spoil: all that spoil her shall be satisfied, saith the LORD.",
+  "ref": "Jeremiah 50:10"
+ },
+ {
+  "id": "jeremiah-50-m-06",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the destroyers of the LORD's heritage grown fat like?",
+  "choices": [
+   "The oxen of Bashan",
+   "The calves of Egypt",
+   "The heifer at grass",
+   "The lambs of the flock"
+  ],
+  "answer": 2,
+  "explanation": "Ye are grown fat as the heifer at grass, and bellow as bulls.",
+  "ref": "Jeremiah 50:11"
+ },
+ {
+  "id": "jeremiah-50-m-07",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who are to be cut off from Babylon?",
+  "choices": [
+   "The priests and the prophets",
+   "The sower and him that handleth the sickle",
+   "The kings and the princes",
+   "The potters and the smiths"
+  ],
+  "answer": 1,
+  "explanation": "Cut off the sower from Babylon, and him that handleth the sickle in the time of harvest.",
+  "ref": "Jeremiah 50:16"
+ },
+ {
+  "id": "jeremiah-50-m-08",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall be sought for in Israel and Judah, and not found?",
+  "choices": [
+   "Gold and silver",
+   "Prophets and priests",
+   "Kings and princes",
+   "Iniquity and sin"
+  ],
+  "answer": 3,
+  "explanation": "The iniquity of Israel shall be sought for, and there shall be none; for I will pardon them whom I reserve.",
+  "ref": "Jeremiah 50:20"
+ },
+ {
+  "id": "jeremiah-50-m-09",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD laid for Babylon, which she was not aware of?",
+  "choices": [
+   "A snare",
+   "A pit",
+   "A net of gold",
+   "A hidden sword"
+  ],
+  "answer": 0,
+  "explanation": "I have laid a snare for thee, and thou art also taken, O Babylon, and thou wast not aware.",
+  "ref": "Jeremiah 50:24"
+ },
+ {
+  "id": "jeremiah-50-m-10",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are slain, as the time of their visitation comes?",
+  "choices": [
+   "Her horses",
+   "Her princes",
+   "Her bullocks",
+   "Her children"
+  ],
+  "answer": 2,
+  "explanation": "Slay all her bullocks; let them go down to the slaughter: woe unto them! for their day is come.",
+  "ref": "Jeremiah 50:27"
+ },
+ {
+  "id": "jeremiah-50-m-11",
+  "chapter": 50,
+  "level": "medium",
+  "category": "place",
+  "question": "Where do those who flee out of Babylon declare the LORD's vengeance?",
+  "choices": [
+   "In Egypt",
+   "In Zion",
+   "In Gilead",
+   "In Bashan"
+  ],
+  "answer": 1,
+  "explanation": "The voice of them that flee and escape out of the land of Babylon, to declare in Zion the vengeance of the LORD our God.",
+  "ref": "Jeremiah 50:28"
+ },
+ {
+  "id": "jeremiah-50-m-12",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who were oppressed together, and held fast by their captors?",
+  "choices": [
+   "The Chaldeans and the Medes",
+   "The priests and the Levites",
+   "The Egyptians and the Assyrians",
+   "The children of Israel and Judah"
+  ],
+  "answer": 3,
+  "explanation": "The children of Israel and the children of Judah were oppressed together: and all that took them captives held them fast; they refused to let them go.",
+  "ref": "Jeremiah 50:33"
+ },
+ {
+  "id": "jeremiah-50-m-13",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Upon whom does the LORD say a sword is: the Chaldeans, her princes and who else?",
+  "choices": [
+   "Her wise men",
+   "Her prophets",
+   "Her priests",
+   "Her kings"
+  ],
+  "answer": 0,
+  "explanation": "A sword is upon the Chaldeans, and upon the inhabitants of Babylon, and upon her princes, and upon her wise men.",
+  "ref": "Jeremiah 50:35"
+ },
+ {
+  "id": "jeremiah-50-m-14",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the voice of the cruel people from the north roar like?",
+  "choices": [
+   "A lion",
+   "Thunder",
+   "The sea",
+   "A storm"
+  ],
+  "answer": 2,
+  "explanation": "They are cruel, and will not shew mercy: their voice shall roar like the sea.",
+  "ref": "Jeremiah 50:42"
+ },
+ {
+  "id": "jeremiah-50-m-15",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the king of Babylon when he heard the report of them?",
+  "choices": [
+   "He fled to Egypt",
+   "His hands waxed feeble",
+   "He gathered an army",
+   "He prayed to Bel"
+  ],
+  "answer": 1,
+  "explanation": "The king of Babylon hath heard the report of them, and his hands waxed feeble: anguish took hold of him.",
+  "ref": "Jeremiah 50:43"
+ },
+ {
+  "id": "jeremiah-50-h-01",
+  "chapter": 50,
+  "level": "hard",
+  "category": "place",
+  "question": "Against which two places does the LORD command them to go up?",
+  "choices": [
+   "Kedar and Hazor",
+   "Heshbon and Rabbah",
+   "Nebo and Dibon",
+   "Merathaim and Pekod"
+  ],
+  "answer": 3,
+  "explanation": "Go up against the land of Merathaim, even against it, and against the inhabitants of Pekod.",
+  "ref": "Jeremiah 50:21"
+ },
+ {
+  "id": "jeremiah-50-h-02",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has Babylon given, whose foundations are fallen?",
+  "choices": [
+   "Her hand",
+   "Her sons",
+   "Her gold",
+   "Her keys"
+  ],
+  "answer": 0,
+  "explanation": "She hath given her hand: her foundations are fallen, her walls are thrown down.",
+  "ref": "Jeremiah 50:15"
+ },
+ {
+  "id": "jeremiah-50-h-03",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does the LORD say to call together against Babylon, to camp round about it?",
+  "choices": [
+   "The horsemen",
+   "The princes",
+   "The archers",
+   "The spies"
+  ],
+  "answer": 2,
+  "explanation": "Call together the archers against Babylon: all ye that bend the bow, camp against it round about; let none thereof escape.",
+  "ref": "Jeremiah 50:29"
+ },
+ {
+  "id": "jeremiah-50-h-04",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to the most proud, so that none raise him up?",
+  "choices": [
+   "He shall be taken captive",
+   "He shall stumble and fall",
+   "He shall be made small",
+   "He shall be sent away"
+  ],
+  "answer": 1,
+  "explanation": "The most proud shall stumble and fall, and none shall raise him up: and I will kindle a fire in his cities.",
+  "ref": "Jeremiah 50:32"
+ },
+ {
+  "id": "jeremiah-50-h-05",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the liars do when the sword is upon them?",
+  "choices": [
+   "Flee",
+   "Repent",
+   "Pray",
+   "Dote"
+  ],
+  "answer": 3,
+  "explanation": "A sword is upon the liars; and they shall dote.",
+  "ref": "Jeremiah 50:36"
+ },
+ {
+  "id": "jeremiah-50-h-06",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the mingled people become, with a sword upon them?",
+  "choices": [
+   "As women",
+   "As stone",
+   "As servants",
+   "As dust"
+  ],
+  "answer": 0,
+  "explanation": "A sword is upon all the mingled people that are in the midst of her; and they shall become as women.",
+  "ref": "Jeremiah 50:37"
+ },
+ {
+  "id": "jeremiah-50-h-07",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why are the people of Babylon said to be mad upon idols?",
+  "choices": [
+   "It is a land of gold",
+   "It is a land of kings",
+   "It is the land of graven images",
+   "It is a land of pride"
+  ],
+  "answer": 2,
+  "explanation": "It is the land of graven images, and they are mad upon their idols.",
+  "ref": "Jeremiah 50:38"
+ },
+ {
+  "id": "jeremiah-50-h-08",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is moved at the noise of the taking of Babylon?",
+  "choices": [
+   "The sea",
+   "The earth",
+   "The mountains",
+   "The sun"
+  ],
+  "answer": 1,
+  "explanation": "At the noise of the taking of Babylon the earth is moved, and the cry is heard among the nations.",
+  "ref": "Jeremiah 50:46"
+ },
+ {
+  "id": "jeremiah-50-h-09",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say to do to her storehouses?",
+  "choices": [
+   "Seal them",
+   "Burn them",
+   "Guard them",
+   "Open them"
+  ],
+  "answer": 3,
+  "explanation": "Come against her from the utmost border, open her storehouses: cast her up as heaps.",
+  "ref": "Jeremiah 50:26"
+ },
+ {
+  "id": "jeremiah-50-h-10",
+  "chapter": 50,
+  "level": "hard",
+  "category": "person",
+  "question": "Who shall be ashamed, and shall be a wilderness, a dry land and a desert?",
+  "choices": [
+   "The mother that bare Babylon",
+   "The king of Babylon",
+   "The inhabitants of Chaldea",
+   "The wise men of Babylon"
+  ],
+  "answer": 0,
+  "explanation": "Your mother shall be sore confounded; she that bare you shall be ashamed: the hindermost of the nations shall be a wilderness, a dry land, and a desert.",
+  "ref": "Jeremiah 50:12"
+ },
+ {
+  "id": "jeremiah-50-h-11",
+  "chapter": 50,
+  "level": "hard",
+  "category": "place",
+  "question": "Where shall Israel's soul be satisfied?",
+  "choices": [
+   "In Jerusalem and Bethel",
+   "By Jordan and Hebron",
+   "Upon mount Ephraim and Gilead",
+   "At Shiloh and Beersheba"
+  ],
+  "answer": 2,
+  "explanation": "His soul shall be satisfied upon mount Ephraim and Gilead.",
+  "ref": "Jeremiah 50:19"
+ },
+ {
+  "id": "jeremiah-50-h-12",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Israel forgotten, going from mountain to hill?",
+  "choices": [
+   "Their covenant",
+   "Their restingplace",
+   "Their king",
+   "Their feasts"
+  ],
+  "answer": 1,
+  "explanation": "They have gone from mountain to hill, they have forgotten their restingplace.",
+  "ref": "Jeremiah 50:6"
+ },
+ {
+  "id": "jeremiah-50-h-13",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the arrows be like, which none shall return in vain?",
+  "choices": [
+   "Of a flaming fire",
+   "Of a swift eagle",
+   "Of a roaring lion",
+   "Of a mighty expert man"
+  ],
+  "answer": 3,
+  "explanation": "Their arrows shall be as of a mighty expert man; none shall return in vain.",
+  "ref": "Jeremiah 50:9"
+ },
+ {
+  "id": "jeremiah-50-h-14",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why shall Babylon not be inhabited, but be wholly desolate?",
+  "choices": [
+   "Because of the wrath of the LORD",
+   "Because of the drought",
+   "Because of the north wind",
+   "Because of her kings"
+  ],
+  "answer": 0,
+  "explanation": "Because of the wrath of the LORD it shall not be inhabited, but it shall be wholly desolate.",
+  "ref": "Jeremiah 50:13"
+ },
+ {
+  "id": "jeremiah-50-h-15",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are the shooters told to deal with Babylon?",
+  "choices": [
+   "Spare her children",
+   "Take her gold",
+   "As she hath done, do unto her",
+   "Leave her walls"
+  ],
+  "answer": 2,
+  "explanation": "It is the vengeance of the LORD: take vengeance upon her; as she hath done, do unto her.",
+  "ref": "Jeremiah 50:15"
+ },
+ {
+  "id": "jeremiah-51-e-01",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose spirit has the LORD raised up against Babylon?",
+  "choices": [
+   "The kings of Egypt",
+   "The kings of the Medes",
+   "The princes of Edom",
+   "The captains of Elam"
+  ],
+  "answer": 1,
+  "explanation": "The LORD hath raised up the spirit of the kings of the Medes: for his device is against Babylon, to destroy it.",
+  "ref": "Jeremiah 51:11"
+ },
+ {
+  "id": "jeremiah-51-e-02",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are they told to take for Babylon's pain, if she may be healed?",
+  "choices": [
+   "Oil",
+   "Wine",
+   "Water",
+   "Balm"
+  ],
+  "answer": 3,
+  "explanation": "Babylon is suddenly fallen and destroyed: howl for her; take balm for her pain, if so she may be healed.",
+  "ref": "Jeremiah 51:8"
+ },
+ {
+  "id": "jeremiah-51-e-03",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By what has the LORD made the earth?",
+  "choices": [
+   "His power",
+   "His hands",
+   "His rest",
+   "His word of fire"
+  ],
+  "answer": 0,
+  "explanation": "He hath made the earth by his power, he hath established the world by his wisdom.",
+  "ref": "Jeremiah 51:15"
+ },
+ {
+  "id": "jeremiah-51-e-04",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is there not in the molten images, which are falsehood?",
+  "choices": [
+   "Gold",
+   "Strength",
+   "Breath",
+   "Names"
+  ],
+  "answer": 2,
+  "explanation": "His molten image is falsehood, and there is no breath in them.",
+  "ref": "Jeremiah 51:17"
+ },
+ {
+  "id": "jeremiah-51-e-05",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD call Israel, to break in pieces the nations?",
+  "choices": [
+   "His shepherd and flock",
+   "His battle axe and weapons of war",
+   "His vineyard and tower",
+   "His crown and sceptre"
+  ],
+  "answer": 1,
+  "explanation": "Thou art my battle axe and weapons of war: for with thee will I break in pieces the nations.",
+  "ref": "Jeremiah 51:20"
+ },
+ {
+  "id": "jeremiah-51-e-06",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the daughter of Babylon like, whose time of harvest shall come?",
+  "choices": [
+   "A vineyard",
+   "A fig tree",
+   "A flock",
+   "A threshingfloor"
+  ],
+  "answer": 3,
+  "explanation": "The daughter of Babylon is like a threshingfloor, it is time to thresh her.",
+  "ref": "Jeremiah 51:33"
+ },
+ {
+  "id": "jeremiah-51-e-07",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD do for Zion, drying up Babylon's sea?",
+  "choices": [
+   "Plead her cause and take vengeance",
+   "Send her a king",
+   "Give her a new law",
+   "Bring her to Egypt"
+  ],
+  "answer": 0,
+  "explanation": "I will plead thy cause, and take vengeance for thee; and I will dry up her sea.",
+  "ref": "Jeremiah 51:36"
+ },
+ {
+  "id": "jeremiah-51-e-08",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD bring Babylon's people down like?",
+  "choices": [
+   "Lions to the pit",
+   "Eagles to the ground",
+   "Lambs to the slaughter",
+   "Oxen to the field"
+  ],
+  "answer": 2,
+  "explanation": "I will bring them down like lambs to the slaughter, like rams with he goats.",
+  "ref": "Jeremiah 51:40"
+ },
+ {
+  "id": "jeremiah-51-e-09",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which god will the LORD punish in Babylon?",
+  "choices": [
+   "Dagon",
+   "Bel",
+   "Chemosh",
+   "Molech"
+  ],
+  "answer": 1,
+  "explanation": "I will punish Bel in Babylon, and I will bring forth out of his mouth that which he hath swallowed up.",
+  "ref": "Jeremiah 51:44"
+ },
+ {
+  "id": "jeremiah-51-e-10",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the quiet prince that went with Zedekiah into Babylon?",
+  "choices": [
+   "Baruch",
+   "Neriah",
+   "Maaseiah",
+   "Seraiah"
+  ],
+  "answer": 3,
+  "explanation": "The word which Jeremiah commanded Seraiah, when he went with Zedekiah the king of Judah into Babylon. And this Seraiah was a quiet prince.",
+  "ref": "Jeremiah 51:59"
+ },
+ {
+  "id": "jeremiah-51-m-01",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD send unto Babylon to fan her and empty her land?",
+  "choices": [
+   "Fanners",
+   "Reapers",
+   "Winds of Egypt",
+   "Lions"
+  ],
+  "answer": 0,
+  "explanation": "I will send unto Babylon fanners, that shall fan her, and shall empty her land.",
+  "ref": "Jeremiah 51:2"
+ },
+ {
+  "id": "jeremiah-51-m-02",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What command is given about Babylon's young men and her host?",
+  "choices": [
+   "Take them captive",
+   "Let them go free",
+   "Spare not, destroy utterly",
+   "Bring them to Zion"
+  ],
+  "answer": 2,
+  "explanation": "Spare ye not her young men; destroy ye utterly all her host.",
+  "ref": "Jeremiah 51:3"
+ },
+ {
+  "id": "jeremiah-51-m-03",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the nations say of Babylon, whom they would have healed?",
+  "choices": [
+   "She is a queen",
+   "She is not healed",
+   "She is not guilty",
+   "She is our friend"
+  ],
+  "answer": 1,
+  "explanation": "We would have healed Babylon, but she is not healed: forsake her, and let us go every one into his own country.",
+  "ref": "Jeremiah 51:9"
+ },
+ {
+  "id": "jeremiah-51-m-04",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD fill Babylon with, as with caterpillers?",
+  "choices": [
+   "Locusts",
+   "Fire",
+   "Water",
+   "Men"
+  ],
+  "answer": 3,
+  "explanation": "The LORD of hosts hath sworn by himself, Surely I will fill thee with men, as with caterpillers.",
+  "ref": "Jeremiah 51:14"
+ },
+ {
+  "id": "jeremiah-51-m-05",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of what is the portion of Jacob not like, because he is the former of all things?",
+  "choices": [
+   "The idols",
+   "The nations",
+   "The kings",
+   "The mountains"
+  ],
+  "answer": 0,
+  "explanation": "The portion of Jacob is not like them; for he is the former of all things.",
+  "ref": "Jeremiah 51:19"
+ },
+ {
+  "id": "jeremiah-51-m-06",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD make of the destroying mountain?",
+  "choices": [
+   "A river",
+   "A plain",
+   "A burnt mountain",
+   "A field"
+  ],
+  "answer": 2,
+  "explanation": "I am against thee, O destroying mountain, which destroyest all the earth: and I will make thee a burnt mountain.",
+  "ref": "Jeremiah 51:25"
+ },
+ {
+  "id": "jeremiah-51-m-07",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which kingdoms are called together against Babylon with Ararat and Minni?",
+  "choices": [
+   "Egypt",
+   "Ashchenaz",
+   "Elam",
+   "Edom"
+  ],
+  "answer": 1,
+  "explanation": "Call together against her the kingdoms of Ararat, Minni, and Ashchenaz.",
+  "ref": "Jeremiah 51:27"
+ },
+ {
+  "id": "jeremiah-51-m-08",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the mighty men of Babylon become, having forborn to fight?",
+  "choices": [
+   "As stones",
+   "As captives",
+   "As shepherds",
+   "As women"
+  ],
+  "answer": 3,
+  "explanation": "The mighty men of Babylon have forborn to fight; their might hath failed; they became as women.",
+  "ref": "Jeremiah 51:30"
+ },
+ {
+  "id": "jeremiah-51-m-09",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall run to meet another, to tell the king of Babylon his city is taken?",
+  "choices": [
+   "One post and one messenger",
+   "One army and one captain",
+   "One priest and one prophet",
+   "One camel and one horse"
+  ],
+  "answer": 0,
+  "explanation": "One post shall run to meet another, and one messenger to meet another, to shew the king of Babylon that his city is taken at one end.",
+  "ref": "Jeremiah 51:31"
+ },
+ {
+  "id": "jeremiah-51-m-10",
+  "chapter": 51,
+  "level": "medium",
+  "category": "place",
+  "question": "What name is used in the lament, How is it taken?",
+  "choices": [
+   "Merathaim",
+   "Pekod",
+   "Sheshach",
+   "Ararat"
+  ],
+  "answer": 2,
+  "explanation": "How is Sheshach taken! and how is the praise of the whole earth surprised!",
+  "ref": "Jeremiah 51:41"
+ },
+ {
+  "id": "jeremiah-51-m-11",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is come up upon Babylon, covering her with waves?",
+  "choices": [
+   "A flood of fire",
+   "The sea",
+   "A dark cloud",
+   "A river"
+  ],
+  "answer": 1,
+  "explanation": "The sea is come up upon Babylon: she is covered with the multitude of the waves thereof.",
+  "ref": "Jeremiah 51:42"
+ },
+ {
+  "id": "jeremiah-51-m-12",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why are they confounded, with shame covering their faces?",
+  "choices": [
+   "Their king has fled",
+   "Their city is burned",
+   "Their children are slain",
+   "Strangers have come into the LORD's sanctuaries"
+  ],
+  "answer": 3,
+  "explanation": "We are confounded, because we have heard reproach: shame hath covered our faces: for strangers are come into the sanctuaries of the LORD'S house.",
+  "ref": "Jeremiah 51:51"
+ },
+ {
+  "id": "jeremiah-51-m-13",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Though Babylon mounts up to heaven, from whom shall spoilers come?",
+  "choices": [
+   "From the LORD",
+   "From Egypt",
+   "From Edom",
+   "From the north only"
+  ],
+  "answer": 0,
+  "explanation": "Though Babylon should mount up to heaven, yet from me shall spoilers come unto her, saith the LORD.",
+  "ref": "Jeremiah 51:53"
+ },
+ {
+  "id": "jeremiah-51-m-14",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall be broken and burned, so that the people labour in vain?",
+  "choices": [
+   "Her palaces and temples",
+   "Her ships and harbours",
+   "Her broad walls and high gates",
+   "Her fields and vineyards"
+  ],
+  "answer": 2,
+  "explanation": "The broad walls of Babylon shall be utterly broken, and her high gates shall be burned with fire.",
+  "ref": "Jeremiah 51:58"
+ },
+ {
+  "id": "jeremiah-51-h-01",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are they told to set up upon the walls of Babylon?",
+  "choices": [
+   "The altar and the lamp",
+   "The standard and the watch",
+   "The gate and the bar",
+   "The sword and the shield"
+  ],
+  "answer": 1,
+  "explanation": "Set up the standard upon the walls of Babylon, make the watch strong, set up the watchmen, prepare the ambushes.",
+  "ref": "Jeremiah 51:12"
+ },
+ {
+  "id": "jeremiah-51-h-02",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Upon what does Babylon dwell, abundant in treasures?",
+  "choices": [
+   "A high mountain",
+   "A great plain",
+   "A rock",
+   "Many waters"
+  ],
+  "answer": 3,
+  "explanation": "O thou that dwellest upon many waters, abundant in treasures, thine end is come.",
+  "ref": "Jeremiah 51:13"
+ },
+ {
+  "id": "jeremiah-51-h-03",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD make with rain?",
+  "choices": [
+   "Lightnings",
+   "Rainbows",
+   "Snow",
+   "Hail"
+  ],
+  "answer": 0,
+  "explanation": "He maketh lightnings with rain, and bringeth forth the wind out of his treasures.",
+  "ref": "Jeremiah 51:16"
+ },
+ {
+  "id": "jeremiah-51-h-04",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is Israel called, the LORD's possession?",
+  "choices": [
+   "The crown of his glory",
+   "The gate of his house",
+   "The rod of his inheritance",
+   "The root of his vine"
+  ],
+  "answer": 2,
+  "explanation": "Israel is the rod of his inheritance: the LORD of hosts is his name.",
+  "ref": "Jeremiah 51:19"
+ },
+ {
+  "id": "jeremiah-51-h-05",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD break in pieces with Israel, besides the shepherd and his flock?",
+  "choices": [
+   "The potter and his clay",
+   "The husbandman and his yoke of oxen",
+   "The smith and his hammer",
+   "The sower and his seed"
+  ],
+  "answer": 1,
+  "explanation": "I will also break in pieces with thee the shepherd and his flock; and the husbandman and his yoke of oxen.",
+  "ref": "Jeremiah 51:23"
+ },
+ {
+  "id": "jeremiah-51-h-06",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall they not take of the destroying mountain?",
+  "choices": [
+   "A tree for fire",
+   "Gold for the temple",
+   "Water for the plain",
+   "A stone for a corner"
+  ],
+  "answer": 3,
+  "explanation": "They shall not take of thee a stone for a corner, nor a stone for foundations; but thou shalt be desolate for ever.",
+  "ref": "Jeremiah 51:26"
+ },
+ {
+  "id": "jeremiah-51-h-07",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What have the Chaldeans burned with fire, and stopped the passages?",
+  "choices": [
+   "The reeds",
+   "The gates",
+   "The ships",
+   "The bridges"
+  ],
+  "answer": 0,
+  "explanation": "The passages are stopped, and the reeds they have burned with fire, and the men of war are affrighted.",
+  "ref": "Jeremiah 51:32"
+ },
+ {
+  "id": "jeremiah-51-h-08",
+  "chapter": 51,
+  "level": "hard",
+  "category": "person",
+  "question": "Who says, My blood upon the inhabitants of Chaldea?",
+  "choices": [
+   "The king of Judah",
+   "The priests",
+   "Jerusalem",
+   "The captives"
+  ],
+  "answer": 2,
+  "explanation": "The violence done to me and to my flesh be upon Babylon, shall the inhabitant of Zion say; and my blood upon the inhabitants of Chaldea, shall Jerusalem say.",
+  "ref": "Jeremiah 51:35"
+ },
+ {
+  "id": "jeremiah-51-h-09",
+  "chapter": 51,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom will the LORD make drunk, so that they sleep a perpetual sleep?",
+  "choices": [
+   "Her priests and prophets",
+   "Her princes, wise men and mighty men",
+   "Her sons and daughters",
+   "Her shepherds and farmers"
+  ],
+  "answer": 1,
+  "explanation": "I will make drunk her princes, and her wise men, her captains, and her rulers, and her mighty men: and they shall sleep a perpetual sleep.",
+  "ref": "Jeremiah 51:57"
+ },
+ {
+  "id": "jeremiah-51-h-10",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What rumour does the chapter say shall come, so that their heart should not faint?",
+  "choices": [
+   "A rumour of peace",
+   "A rumour of Egypt's help",
+   "A rumour of the king's death",
+   "One year, and another year after, with violence"
+  ],
+  "answer": 3,
+  "explanation": "A rumour shall both come one year, and after that in another year shall come a rumour, and violence in the land, ruler against ruler.",
+  "ref": "Jeremiah 51:46"
+ },
+ {
+  "id": "jeremiah-51-h-11",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did Babylon cause to fall, so that the slain of all the earth shall fall at Babylon?",
+  "choices": [
+   "The slain of Israel",
+   "The slain of Egypt",
+   "The slain of Edom",
+   "The slain of the Medes"
+  ],
+  "answer": 0,
+  "explanation": "As Babylon hath caused the slain of Israel to fall, so at Babylon shall fall the slain of all the earth.",
+  "ref": "Jeremiah 51:49"
+ },
+ {
+  "id": "jeremiah-51-h-12",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom are the escaped from the sword told to remember afar off?",
+  "choices": [
+   "Egypt and her kings",
+   "Their fathers' graves",
+   "The LORD, and let Jerusalem come into mind",
+   "Babylon and her gods"
+  ],
+  "answer": 2,
+  "explanation": "Ye that have escaped the sword, go away, stand not still: remember the LORD afar off, and let Jerusalem come into your mind.",
+  "ref": "Jeremiah 51:50"
+ },
+ {
+  "id": "jeremiah-51-h-13",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Seraiah say to the LORD when he reads the book?",
+  "choices": [
+   "Let it be rebuilt again",
+   "None shall remain in it, neither man nor beast",
+   "Spare it for the righteous",
+   "Send us home again"
+  ],
+  "answer": 1,
+  "explanation": "O LORD, thou hast spoken against this place, to cut it off, that none shall remain in it, neither man nor beast, but that it shall be desolate for ever.",
+  "ref": "Jeremiah 51:62"
+ },
+ {
+  "id": "jeremiah-51-h-14",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall Babylon do, and not rise from the evil?",
+  "choices": [
+   "Burn",
+   "Flee",
+   "Weep",
+   "Sink"
+  ],
+  "answer": 3,
+  "explanation": "Thus shall Babylon sink, and shall not rise from the evil that I will bring upon her.",
+  "ref": "Jeremiah 51:64"
+ },
+ {
+  "id": "jeremiah-51-h-15",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will not flow together any more unto Bel?",
+  "choices": [
+   "The nations",
+   "The waters",
+   "The treasures",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "The nations shall not flow together any more unto him: yea, the wall of Babylon shall fall.",
+  "ref": "Jeremiah 51:44"
+ },
+ {
+  "id": "jeremiah-51-m-15",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Zion say Nebuchadrezzar has made her, swallowing her up like a dragon?",
+  "choices": [
+   "A broken wall",
+   "A burnt city",
+   "An empty vessel",
+   "A captive queen"
+  ],
+  "answer": 2,
+  "explanation": "Nebuchadrezzar hath made me an empty vessel, he hath swallowed me up like a dragon.",
+  "ref": "Jeremiah 51:34"
+ },
+ {
+  "id": "jeremiah-52-e-01",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose sons did the king of Babylon slay before his eyes?",
+  "choices": [
+   "Jehoiakim's",
+   "Zedekiah's",
+   "Jehoiachin's",
+   "Josiah's"
+  ],
+  "answer": 1,
+  "explanation": "The king of Babylon slew the sons of Zedekiah before his eyes.",
+  "ref": "Jeremiah 52:10"
+ },
+ {
+  "id": "jeremiah-52-e-02",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king of Babylon do to Zedekiah's eyes?",
+  "choices": [
+   "Closed them",
+   "Covered them",
+   "Healed them",
+   "Put them out"
+  ],
+  "answer": 3,
+  "explanation": "He put out the eyes of Zedekiah; and the king of Babylon bound him in chains, and carried him to Babylon.",
+  "ref": "Jeremiah 52:11"
+ },
+ {
+  "id": "jeremiah-52-e-03",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which place was Zedekiah carried up, where the king of Babylon gave judgment upon him?",
+  "choices": [
+   "Riblah",
+   "Libnah",
+   "Hamath",
+   "Jericho"
+  ],
+  "answer": 0,
+  "explanation": "They took the king, and carried him up unto the king of Babylon to Riblah in the land of Hamath; where he gave judgment upon him.",
+  "ref": "Jeremiah 52:9"
+ },
+ {
+  "id": "jeremiah-52-e-04",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the army of the Chaldeans overtake Zedekiah?",
+  "choices": [
+   "At the gate of Jerusalem",
+   "By the river Euphrates",
+   "In the plains of Jericho",
+   "In the valley of Hinnom"
+  ],
+  "answer": 2,
+  "explanation": "The army of the Chaldeans pursued after the king, and overtook Zedekiah in the plains of Jericho.",
+  "ref": "Jeremiah 52:8"
+ },
+ {
+  "id": "jeremiah-52-e-05",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was sore in the city, so that there was no bread for the people?",
+  "choices": [
+   "The plague",
+   "The famine",
+   "The siege engines",
+   "The drought"
+  ],
+  "answer": 1,
+  "explanation": "The famine was sore in the city, so that there was no bread for the people of the land.",
+  "ref": "Jeremiah 52:6"
+ },
+ {
+  "id": "jeremiah-52-e-06",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Chaldeans do to the walls of Jerusalem?",
+  "choices": [
+   "Left them standing",
+   "Rebuilt them",
+   "Painted them",
+   "Brake them down round about"
+  ],
+  "answer": 3,
+  "explanation": "All the army of the Chaldeans brake down all the walls of Jerusalem round about.",
+  "ref": "Jeremiah 52:14"
+ },
+ {
+  "id": "jeremiah-52-e-07",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did Nebuzar-adan leave in the land, for vinedressers and husbandmen?",
+  "choices": [
+   "Certain of the poor of the land",
+   "The priests of the temple",
+   "The sons of the king",
+   "The princes of Judah"
+  ],
+  "answer": 0,
+  "explanation": "Nebuzar-adan left certain of the poor of the land for vinedressers and for husbandmen.",
+  "ref": "Jeremiah 52:16"
+ },
+ {
+  "id": "jeremiah-52-e-08",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king had made the two pillars, the sea, and the twelve brasen bulls?",
+  "choices": [
+   "David",
+   "Hezekiah",
+   "Solomon",
+   "Josiah"
+  ],
+  "answer": 2,
+  "explanation": "The two pillars, one sea, and twelve brasen bulls, which king Solomon had made in the house of the LORD.",
+  "ref": "Jeremiah 52:20"
+ },
+ {
+  "id": "jeremiah-52-e-09",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the captain of the guard take as chief priest?",
+  "choices": [
+   "Zephaniah",
+   "Seraiah",
+   "Hilkiah",
+   "Hananiah"
+  ],
+  "answer": 1,
+  "explanation": "The captain of the guard took Seraiah the chief priest, and Zephaniah the second priest.",
+  "ref": "Jeremiah 52:24"
+ },
+ {
+  "id": "jeremiah-52-e-10",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who lifted up the head of Jehoiachin and brought him out of prison?",
+  "choices": [
+   "Nebuchadrezzar",
+   "Nebuzar-adan",
+   "Zedekiah",
+   "Evil-merodach"
+  ],
+  "answer": 3,
+  "explanation": "Evil-merodach king of Babylon lifted up the head of Jehoiachin king of Judah, and brought him forth out of prison.",
+  "ref": "Jeremiah 52:31"
+ },
+ {
+  "id": "jeremiah-52-e-11",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Against whom did Zedekiah rebel?",
+  "choices": [
+   "The king of Babylon",
+   "The king of Egypt",
+   "The king of Assyria",
+   "The king of Moab"
+  ],
+  "answer": 0,
+  "explanation": "Zedekiah rebelled against the king of Babylon.",
+  "ref": "Jeremiah 52:3"
+ },
+ {
+  "id": "jeremiah-52-m-01",
+  "chapter": 52,
+  "level": "medium",
+  "category": "person",
+  "question": "According to whose deeds did Zedekiah do evil in the eyes of the LORD?",
+  "choices": [
+   "Josiah's",
+   "Manasseh's",
+   "Jehoiakim's",
+   "Hezekiah's"
+  ],
+  "answer": 2,
+  "explanation": "He did that which was evil in the eyes of the LORD, according to all that Jehoiakim had done.",
+  "ref": "Jeremiah 52:2"
+ },
+ {
+  "id": "jeremiah-52-m-02",
+  "chapter": 52,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nebuchadrezzar build against Jerusalem round about?",
+  "choices": [
+   "Altars",
+   "Forts",
+   "Gates",
+   "Bridges"
+  ],
+  "answer": 1,
+  "explanation": "Nebuchadrezzar king of Babylon pitched against it, and built forts against it round about.",
+  "ref": "Jeremiah 52:4"
+ },
+ {
+  "id": "jeremiah-52-m-03",
+  "chapter": 52,
+  "level": "medium",
+  "category": "place",
+  "question": "By what way did the men of war flee the city by night?",
+  "choices": [
+   "The gate of the valley",
+   "The north gate to Hamath",
+   "The way of the temple",
+   "The gate between the two walls, by the king's garden"
+  ],
+  "answer": 3,
+  "explanation": "The men of war fled by night by the way of the gate between the two walls, which was by the king's garden.",
+  "ref": "Jeremiah 52:7"
+ },
+ {
+  "id": "jeremiah-52-m-04",
+  "chapter": 52,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to Zedekiah's army when he was overtaken?",
+  "choices": [
+   "It was scattered from him",
+   "It surrendered",
+   "It fought bravely",
+   "It reached Egypt"
+  ],
+  "answer": 0,
+  "explanation": "All his army was scattered from him.",
+  "ref": "Jeremiah 52:8"
+ },
+ {
+  "id": "jeremiah-52-m-05",
+  "chapter": 52,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the king of Babylon also slay in Riblah?",
+  "choices": [
+   "All the priests of Judah",
+   "All the elders of Jerusalem",
+   "All the princes of Judah",
+   "All the prophets"
+  ],
+  "answer": 2,
+  "explanation": "He slew also all the princes of Judah in Riblah.",
+  "ref": "Jeremiah 52:10"
+ },
+ {
+  "id": "jeremiah-52-m-06",
+  "chapter": 52,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to Zedekiah in Babylon until his death?",
+  "choices": [
+   "He was set on a throne",
+   "He was put in prison",
+   "He was made a servant",
+   "He was sent home"
+  ],
+  "answer": 1,
+  "explanation": "The king of Babylon put him in prison till the day of his death.",
+  "ref": "Jeremiah 52:11"
+ },
+ {
+  "id": "jeremiah-52-m-07",
+  "chapter": 52,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nebuzar-adan burn besides the house of the LORD?",
+  "choices": [
+   "The temple of Bel",
+   "The walls and the gates",
+   "The fields and the vineyards",
+   "The king's house and all the houses of the great men"
+  ],
+  "answer": 3,
+  "explanation": "He burned the house of the LORD, and the king's house; and all the houses of the great men, burned he with fire.",
+  "ref": "Jeremiah 52:13"
+ },
+ {
+  "id": "jeremiah-52-m-08",
+  "chapter": 52,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Nebuzar-adan carry away besides certain of the poor?",
+  "choices": [
+   "The rest of the people and deserters",
+   "The kings of Judah",
+   "The sons of Josiah",
+   "The prophets only"
+  ],
+  "answer": 0,
+  "explanation": "He carried away captive certain of the poor of the people, and the residue of the people, and those that fell away, that fell to the king of Babylon.",
+  "ref": "Jeremiah 52:15"
+ },
+ {
+  "id": "jeremiah-52-m-11",
+  "chapter": 52,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the second priest taken by the captain of the guard?",
+  "choices": [
+   "Seraiah",
+   "Baruch",
+   "Neriah",
+   "Zephaniah"
+  ],
+  "answer": 3,
+  "explanation": "The captain of the guard took Seraiah the chief priest, and Zephaniah the second priest.",
+  "ref": "Jeremiah 52:24"
+ },
+ {
+  "id": "jeremiah-52-m-12",
+  "chapter": 52,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides the eunuch, whom else was taken out of the city?",
+  "choices": [
+   "The principal scribe of the host",
+   "The captain of the temple",
+   "The prophet Jeremiah",
+   "The queen mother"
+  ],
+  "answer": 0,
+  "explanation": "He took also the principal scribe of the host, who mustered the people of the land; and threescore men of the people.",
+  "ref": "Jeremiah 52:25"
+ },
+ {
+  "id": "jeremiah-52-m-13",
+  "chapter": 52,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were those taken by the captain of the guard put to death?",
+  "choices": [
+   "In Jerusalem",
+   "In Babylon",
+   "In Riblah",
+   "In Jericho"
+  ],
+  "answer": 2,
+  "explanation": "The king of Babylon smote them, and put them to death in Riblah in the land of Hamath.",
+  "ref": "Jeremiah 52:26-27"
+ },
+ {
+  "id": "jeremiah-52-m-14",
+  "chapter": 52,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Evil-merodach set above the throne of the kings with him in Babylon?",
+  "choices": [
+   "His own crown",
+   "Jehoiachin's throne",
+   "A new palace",
+   "A golden table"
+  ],
+  "answer": 1,
+  "explanation": "He spake kindly unto him, and set his throne above the throne of the kings that were with him in Babylon.",
+  "ref": "Jeremiah 52:32"
+ },
+ {
+  "id": "jeremiah-52-m-15",
+  "chapter": 52,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jehoiachin continually do before the king all the days of his life?",
+  "choices": [
+   "Pour wine",
+   "Offer sacrifice",
+   "Keep watch",
+   "Eat bread"
+  ],
+  "answer": 3,
+  "explanation": "He did continually eat bread before him all the days of his life.",
+  "ref": "Jeremiah 52:33"
+ },
+ {
+  "id": "jeremiah-52-h-01",
+  "chapter": 52,
+  "level": "hard",
+  "category": "person",
+  "question": "What was the name of Zedekiah's mother?",
+  "choices": [
+   "Hamutal",
+   "Neriah",
+   "Maachah",
+   "Jedidah"
+  ],
+  "answer": 0,
+  "explanation": "His mother's name was Hamutal the daughter of Jeremiah of Libnah.",
+  "ref": "Jeremiah 52:1"
+ },
+ {
+  "id": "jeremiah-52-h-02",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Through what did it come to pass that Zedekiah rebelled, and Judah was cast out?",
+  "choices": [
+   "Through the pride of the king",
+   "Through famine",
+   "Through the anger of the LORD",
+   "Through the counsel of princes"
+  ],
+  "answer": 2,
+  "explanation": "Through the anger of the LORD it came to pass in Jerusalem and Judah, till he had cast them out from his presence, that Zedekiah rebelled.",
+  "ref": "Jeremiah 52:3"
+ },
+ {
+  "id": "jeremiah-52-h-03",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until which year of King Zedekiah was the city besieged?",
+  "choices": [
+   "The ninth",
+   "The eleventh",
+   "The fifth",
+   "The twentieth"
+  ],
+  "answer": 1,
+  "explanation": "So the city was besieged unto the eleventh year of king Zedekiah.",
+  "ref": "Jeremiah 52:5"
+ },
+ {
+  "id": "jeremiah-52-h-04",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which brass vessels did they take, wherewith they ministered?",
+  "choices": [
+   "Swords and shields",
+   "Chains and fetters",
+   "Plough and yoke",
+   "Caldrons, shovels, snuffers, bowls and spoons"
+  ],
+  "answer": 3,
+  "explanation": "The caldrons also, and the shovels, and the snuffers, and the bowls, and the spoons, and all the vessels of brass wherewith they ministered, took they away.",
+  "ref": "Jeremiah 52:18"
+ },
+ {
+  "id": "jeremiah-52-h-05",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What else did the captain of the guard take, besides the basons, firepans and cups?",
+  "choices": [
+   "The candlesticks",
+   "The ark",
+   "The altar",
+   "The tables of stone"
+  ],
+  "answer": 0,
+  "explanation": "The basons, and the firepans, and the bowls, and the caldrons, and the candlesticks, and the spoons, and the cups.",
+  "ref": "Jeremiah 52:19"
+ },
+ {
+  "id": "jeremiah-52-h-09",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Evil-merodach speak to Jehoiachin?",
+  "choices": [
+   "Kindly",
+   "Sternly",
+   "Sadly",
+   "Fearfully"
+  ],
+  "answer": 0,
+  "explanation": "He spake kindly unto him, and set his throne above the throne of the kings.",
+  "ref": "Jeremiah 52:32"
+ },
+ {
+  "id": "jeremiah-52-h-10",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Evil-merodach change for Jehoiachin?",
+  "choices": [
+   "His name",
+   "His house",
+   "His prison garments",
+   "His servants"
+  ],
+  "answer": 2,
+  "explanation": "He changed his prison garments: and he did continually eat bread before him.",
+  "ref": "Jeremiah 52:33"
+ },
+ {
+  "id": "jeremiah-52-h-11",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was given Jehoiachin every day until the day of his death?",
+  "choices": [
+   "A gift of silver",
+   "A portion, a continual diet",
+   "A new robe",
+   "A place of honour"
+  ],
+  "answer": 1,
+  "explanation": "For his diet, there was a continual diet given him of the king of Babylon, every day a portion until the day of his death.",
+  "ref": "Jeremiah 52:34"
+ },
+ {
+  "id": "jeremiah-52-h-12",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By which way did the men of war go forth after the gate between the two walls?",
+  "choices": [
+   "The way of the sea",
+   "The way of Egypt",
+   "The way of the temple",
+   "The way of the plain"
+  ],
+  "answer": 3,
+  "explanation": "They went forth by the gate between the two walls, which was by the king's garden: and they went by the way of the plain.",
+  "ref": "Jeremiah 52:7"
+ },
+ {
+  "id": "jeremiah-52-h-13",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Chaldeans do with the brass of the pillars, bases and sea?",
+  "choices": [
+   "Carried it to Babylon",
+   "Buried it in Zion",
+   "Melted it for walls",
+   "Left it in Judah"
+  ],
+  "answer": 0,
+  "explanation": "The Chaldeans brake the pillars of brass, and the bases, and the brasen sea, and carried all the brass of them to Babylon.",
+  "ref": "Jeremiah 52:17"
+ },
+ {
+  "id": "jeremiah-52-h-14",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said to have happened to Judah?",
+  "choices": [
+   "It was left unharmed",
+   "It was given to Edom",
+   "It was carried away captive out of his own land",
+   "It was made tributary to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Thus Judah was carried away captive out of his own land.",
+  "ref": "Jeremiah 52:27"
+ },
+ {
+  "id": "jeremiah-52-h-15",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What office did Nebuzar-adan hold under the king of Babylon?",
+  "choices": [
+   "Chief of the eunuchs",
+   "Captain of the guard",
+   "Governor of Judah",
+   "Chief priest"
+  ],
+  "answer": 1,
+  "explanation": "Came Nebuzar-adan, captain of the guard, which served the king of Babylon, into Jerusalem.",
+  "ref": "Jeremiah 52:12"
  }
 ]

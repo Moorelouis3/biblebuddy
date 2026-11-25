@@ -398,5 +398,2437 @@
   "answer": 1,
   "explanation": "The book ends with a plea for God to restore His people to Himself.",
   "ref": "Lamentations 5:21"
+ },
+ {
+  "id": "lamentations-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did all her people seek as they sighed?",
+  "choices": [
+   "Silver",
+   "Bread",
+   "Water",
+   "Oil"
+  ],
+  "answer": 1,
+  "explanation": "All her people sigh, they seek bread; they have given their pleasant things for meat to relieve the soul.",
+  "ref": "Lamentations 1:11"
+ },
+ {
+  "id": "lamentations-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the heathen enter into, against God's command?",
+  "choices": [
+   "The king's house",
+   "The city gates",
+   "The valley of Hinnom",
+   "Her sanctuary"
+  ],
+  "answer": 3,
+  "explanation": "The heathen entered into her sanctuary, whom thou didst command that they should not enter into thy congregation.",
+  "ref": "Lamentations 1:10"
+ },
+ {
+  "id": "lamentations-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom does Jerusalem ask to behold and see if any sorrow is like hers?",
+  "choices": [
+   "All that pass by",
+   "Her priests",
+   "Her elders",
+   "Her lovers"
+  ],
+  "answer": 0,
+  "explanation": "Is it nothing to you, all ye that pass by? behold, and see if there be any sorrow like unto my sorrow.",
+  "ref": "Lamentations 1:12"
+ },
+ {
+  "id": "lamentations-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who is said to have afflicted her for the multitude of her transgressions?",
+  "choices": [
+   "Her adversaries",
+   "Her lovers",
+   "The LORD",
+   "Her priests"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hath afflicted her for the multitude of her transgressions.",
+  "ref": "Lamentations 1:5"
+ },
+ {
+  "id": "lamentations-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who deceived Jerusalem when she called for them?",
+  "choices": [
+   "Her priests",
+   "Her lovers",
+   "Her elders",
+   "Her princes"
+  ],
+  "answer": 1,
+  "explanation": "I called for my lovers, but they deceived me.",
+  "ref": "Lamentations 1:19"
+ },
+ {
+  "id": "lamentations-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why do the ways of Zion mourn?",
+  "choices": [
+   "The wells are dry",
+   "The harvest has failed",
+   "The king is dead",
+   "None come to the solemn feasts"
+  ],
+  "answer": 3,
+  "explanation": "The ways of Zion do mourn, because none come to the solemn feasts.",
+  "ref": "Lamentations 1:4"
+ },
+ {
+  "id": "lamentations-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are her princes like, that find no pasture?",
+  "choices": [
+   "Harts",
+   "Sheep",
+   "Oxen",
+   "Lions"
+  ],
+  "answer": 0,
+  "explanation": "Her princes are become like harts that find no pasture, and they are gone without strength before the pursuer.",
+  "ref": "Lamentations 1:6"
+ },
+ {
+  "id": "lamentations-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the adversaries do at her sabbaths?",
+  "choices": [
+   "Keep them",
+   "Pillage them",
+   "Mock at them",
+   "Forbid them"
+  ],
+  "answer": 2,
+  "explanation": "The adversaries saw her, and did mock at her sabbaths.",
+  "ref": "Lamentations 1:7"
+ },
+ {
+  "id": "lamentations-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is Jerusalem removed, according to the chapter?",
+  "choices": [
+   "She was too small",
+   "She hath grievously sinned",
+   "She would not pay tribute",
+   "Her walls were weak"
+  ],
+  "answer": 1,
+  "explanation": "Jerusalem hath grievously sinned; therefore she is removed.",
+  "ref": "Lamentations 1:8"
+ },
+ {
+  "id": "lamentations-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is bound by God's hand and wreathed upon her neck?",
+  "choices": [
+   "A chain of iron",
+   "The crown of her king",
+   "A garment of sackcloth",
+   "The yoke of her transgressions"
+  ],
+  "answer": 3,
+  "explanation": "The yoke of my transgressions is bound by his hand: they are wreathed, and come up upon my neck.",
+  "ref": "Lamentations 1:14"
+ },
+ {
+  "id": "lamentations-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD spread for her feet?",
+  "choices": [
+   "A net",
+   "A snare of gold",
+   "A path of thorns",
+   "A pit of water"
+  ],
+  "answer": 0,
+  "explanation": "He hath spread a net for my feet, he hath turned me back: he hath made me desolate and faint all the day.",
+  "ref": "Lamentations 1:13"
+ },
+ {
+  "id": "lamentations-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord do to the virgin, the daughter of Judah, as in a winepress?",
+  "choices": [
+   "Pressed her grapes",
+   "Crushed her walls",
+   "Trodden her",
+   "Poured her out"
+  ],
+  "answer": 2,
+  "explanation": "The Lord hath trodden the virgin, the daughter of Judah, as in a winepress.",
+  "ref": "Lamentations 1:15"
+ },
+ {
+  "id": "lamentations-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD send from above into her bones?",
+  "choices": [
+   "A sword",
+   "Fire",
+   "A plague",
+   "A flood"
+  ],
+  "answer": 1,
+  "explanation": "From above hath he sent fire into my bones, and it prevaileth against them.",
+  "ref": "Lamentations 1:13"
+ },
+ {
+  "id": "lamentations-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who gave up the ghost in the city while they sought food?",
+  "choices": [
+   "Her princes and mighty men",
+   "Her virgins and young men",
+   "Her children and widows",
+   "Her priests and elders"
+  ],
+  "answer": 3,
+  "explanation": "My priests and mine elders gave up the ghost in the city, while they sought their meat to relieve their souls.",
+  "ref": "Lamentations 1:19"
+ },
+ {
+  "id": "lamentations-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jerusalem remember in the days of her affliction?",
+  "choices": [
+   "All her pleasant things of old",
+   "The covenant with Abraham",
+   "The Passover in Egypt",
+   "The voice of the prophets"
+  ],
+  "answer": 0,
+  "explanation": "Jerusalem remembered in the days of her affliction all her pleasant things that she had in the days of old.",
+  "ref": "Lamentations 1:7"
+ },
+ {
+  "id": "lamentations-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does she say of her enemies' fate when God brings the day he has called?",
+  "choices": [
+   "They shall be forgiven",
+   "They shall rule her",
+   "They shall be like her",
+   "They shall flee"
+  ],
+  "answer": 2,
+  "explanation": "Thou wilt bring the day that thou hast called, and they shall be like unto me.",
+  "ref": "Lamentations 1:21"
+ },
+ {
+  "id": "lamentations-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did all her persecutors overtake Judah?",
+  "choices": [
+   "In the wilderness",
+   "Between the straits",
+   "At the river",
+   "By the gates"
+  ],
+  "answer": 1,
+  "explanation": "All her persecutors overtook her between the straits.",
+  "ref": "Lamentations 1:3"
+ },
+ {
+  "id": "lamentations-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has she that was princess among the provinces become?",
+  "choices": [
+   "A captive queen",
+   "A widow of Babylon",
+   "A servant of the temple",
+   "Tributary"
+  ],
+  "answer": 3,
+  "explanation": "How is she become tributary, that was great among the nations, and princess among the provinces.",
+  "ref": "Lamentations 1:1"
+ },
+ {
+  "id": "lamentations-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why do all that once honoured her now despise her?",
+  "choices": [
+   "They have seen her nakedness",
+   "She is poor",
+   "She lost her king",
+   "She forsook her gods"
+  ],
+  "answer": 0,
+  "explanation": "All that honoured her despise her, because they have seen her nakedness.",
+  "ref": "Lamentations 1:8"
+ },
+ {
+  "id": "lamentations-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which day did the LORD afflict her?",
+  "choices": [
+   "The day of the feast",
+   "The day of the harvest",
+   "The day of his fierce anger",
+   "The day of the new moon"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hath afflicted me in the day of his fierce anger.",
+  "ref": "Lamentations 1:12"
+ },
+ {
+  "id": "lamentations-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord call against her to crush her young men?",
+  "choices": [
+   "A famine",
+   "An assembly",
+   "A sword",
+   "A plague"
+  ],
+  "answer": 1,
+  "explanation": "He hath called an assembly against me to crush my young men.",
+  "ref": "Lamentations 1:15"
+ },
+ {
+  "id": "lamentations-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why are her children desolate?",
+  "choices": [
+   "Their fathers fled",
+   "The famine was sore",
+   "The gates were shut",
+   "The enemy prevailed"
+  ],
+  "answer": 3,
+  "explanation": "My children are desolate, because the enemy prevailed.",
+  "ref": "Lamentations 1:16"
+ },
+ {
+  "id": "lamentations-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is Jerusalem said to be among her neighbours, since the LORD commanded adversaries round about Jacob?",
+  "choices": [
+   "A menstruous woman",
+   "A forsaken wife",
+   "A captive queen",
+   "A widow in sackcloth"
+  ],
+  "answer": 0,
+  "explanation": "The LORD hath commanded concerning Jacob, that his adversaries should be round about him: Jerusalem is as a menstruous woman among them.",
+  "ref": "Lamentations 1:17"
+ },
+ {
+  "id": "lamentations-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does she say bereaves abroad while at home there is as death?",
+  "choices": [
+   "Famine",
+   "Fire",
+   "The sword",
+   "Plague"
+  ],
+  "answer": 2,
+  "explanation": "Abroad the sword bereaveth, at home there is as death.",
+  "ref": "Lamentations 1:20"
+ },
+ {
+  "id": "lamentations-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who does she say are gone into captivity as she asks all people to hear?",
+  "choices": [
+   "My priests and my elders",
+   "My virgins and my young men",
+   "My princes and my kings",
+   "My mothers and my children"
+  ],
+  "answer": 1,
+  "explanation": "Hear, I pray you, all people, and behold my sorrow: my virgins and my young men are gone into captivity.",
+  "ref": "Lamentations 1:18"
+ },
+ {
+  "id": "lamentations-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are her adversaries and enemies faring?",
+  "choices": [
+   "They are scattered",
+   "They are weary",
+   "They are in mourning",
+   "They are the chief and prosper"
+  ],
+  "answer": 3,
+  "explanation": "Her adversaries are the chief, her enemies prosper.",
+  "ref": "Lamentations 1:5"
+ },
+ {
+  "id": "lamentations-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did she not remember, so that she came down wonderfully?",
+  "choices": [
+   "Her last end",
+   "Her covenant",
+   "Her fathers",
+   "Her feasts"
+  ],
+  "answer": 0,
+  "explanation": "Her filthiness is in her skirts; she remembereth not her last end; therefore she came down wonderfully.",
+  "ref": "Lamentations 1:9"
+ },
+ {
+  "id": "lamentations-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When does she weep sore, with tears on her cheeks?",
+  "choices": [
+   "At the feasts",
+   "At the gates",
+   "In the night",
+   "At the sabbath"
+  ],
+  "answer": 2,
+  "explanation": "She weepeth sore in the night, and her tears are on her cheeks.",
+  "ref": "Lamentations 1:2"
+ },
+ {
+  "id": "lamentations-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the elders of Zion do as they sat on the ground?",
+  "choices": [
+   "Tore their gates",
+   "Cast dust on their heads",
+   "Sang psalms",
+   "Lit the lamps"
+  ],
+  "answer": 1,
+  "explanation": "The elders sit upon the ground, and keep silence: they have cast up dust upon their heads; they have girded themselves with sackcloth.",
+  "ref": "Lamentations 2:10"
+ },
+ {
+  "id": "lamentations-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the children ask their mothers as they faint in the streets?",
+  "choices": [
+   "Where is our father?",
+   "Where is the king?",
+   "Where is the temple?",
+   "Where is corn and wine?"
+  ],
+  "answer": 3,
+  "explanation": "They say to their mothers, Where is corn and wine? when they swooned as the wounded in the streets of the city.",
+  "ref": "Lamentations 2:12"
+ },
+ {
+  "id": "lamentations-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do passers-by call the city when they mock it?",
+  "choices": [
+   "The perfection of beauty",
+   "The city of David",
+   "The mother of nations",
+   "The gate of heaven"
+  ],
+  "answer": 0,
+  "explanation": "Is this the city that men call The perfection of beauty, The joy of the whole earth?",
+  "ref": "Lamentations 2:15"
+ },
+ {
+  "id": "lamentations-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does the writer ask the LORD to consider being slain in the sanctuary?",
+  "choices": [
+   "The king and the princes",
+   "The elders and the virgins",
+   "The priest and the prophet",
+   "The mothers and the children"
+  ],
+  "answer": 2,
+  "explanation": "Shall the priest and the prophet be slain in the sanctuary of the Lord?",
+  "ref": "Lamentations 2:20"
+ },
+ {
+  "id": "lamentations-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the enemies say as they hiss and gnash their teeth?",
+  "choices": [
+   "We will build her again",
+   "We have swallowed her up",
+   "We fear her God",
+   "We will spare her"
+  ],
+  "answer": 1,
+  "explanation": "All thine enemies have opened their mouth against thee: they hiss and gnash the teeth: they say, We have swallowed her up.",
+  "ref": "Lamentations 2:16"
+ },
+ {
+  "id": "lamentations-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who are among the Gentiles now?",
+  "choices": [
+   "Her priests and prophets",
+   "Her elders and virgins",
+   "Her mothers and children",
+   "Her king and her princes"
+  ],
+  "answer": 3,
+  "explanation": "Her king and her princes are among the Gentiles: the law is no more.",
+  "ref": "Lamentations 2:9"
+ },
+ {
+  "id": "lamentations-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord bend like an enemy?",
+  "choices": [
+   "His bow",
+   "His sword",
+   "His staff",
+   "His spear"
+  ],
+  "answer": 0,
+  "explanation": "He hath bent his bow like an enemy: he stood with his right hand as an adversary.",
+  "ref": "Lamentations 2:4"
+ },
+ {
+  "id": "lamentations-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord stretch out against the wall of the daughter of Zion?",
+  "choices": [
+   "A rod",
+   "A chain",
+   "A line",
+   "A net"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hath purposed to destroy the wall of the daughter of Zion: he hath stretched out a line.",
+  "ref": "Lamentations 2:8"
+ },
+ {
+  "id": "lamentations-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord violently take away as if it were of a garden?",
+  "choices": [
+   "His vineyard",
+   "His tabernacle",
+   "His altar",
+   "His throne"
+  ],
+  "answer": 1,
+  "explanation": "He hath violently taken away his tabernacle, as if it were of a garden.",
+  "ref": "Lamentations 2:6"
+ },
+ {
+  "id": "lamentations-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD cause to be forgotten in Zion?",
+  "choices": [
+   "The names of the tribes",
+   "The songs of David",
+   "The sacrifices of Abel",
+   "The solemn feasts and sabbaths"
+  ],
+  "answer": 3,
+  "explanation": "The LORD hath caused the solemn feasts and sabbaths to be forgotten in Zion.",
+  "ref": "Lamentations 2:6"
+ },
+ {
+  "id": "lamentations-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the prophets see for Zion instead of her iniquity?",
+  "choices": [
+   "Vain and foolish things",
+   "Fire and a sword",
+   "Dreams of peace",
+   "A river of tears"
+  ],
+  "answer": 0,
+  "explanation": "Thy prophets have seen vain and foolish things for thee: and they have not discovered thine iniquity.",
+  "ref": "Lamentations 2:14"
+ },
+ {
+  "id": "lamentations-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD fulfilled that he commanded in the days of old?",
+  "choices": [
+   "His covenant of peace",
+   "His promise of rest",
+   "His word",
+   "His law of Moses"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hath done that which he had devised; he hath fulfilled his word that he had commanded in the days of old.",
+  "ref": "Lamentations 2:17"
+ },
+ {
+  "id": "lamentations-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How are the people told to let their tears run down?",
+  "choices": [
+   "Like rain on the mountains",
+   "Like a river day and night",
+   "Like water from a rock",
+   "Like a flood at harvest"
+  ],
+  "answer": 1,
+  "explanation": "O wall of the daughter of Zion, let tears run down like a river day and night.",
+  "ref": "Lamentations 2:18"
+ },
+ {
+  "id": "lamentations-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where do the young children faint for hunger?",
+  "choices": [
+   "In the temple courts",
+   "At the city gates",
+   "In the wilderness",
+   "In the top of every street"
+  ],
+  "answer": 3,
+  "explanation": "Lift up thy hands toward him for the life of thy young children, that faint for hunger in the top of every street.",
+  "ref": "Lamentations 2:19"
+ },
+ {
+  "id": "lamentations-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord burn against Jacob like?",
+  "choices": [
+   "A flaming fire",
+   "A furnace",
+   "A torch",
+   "A hot wind"
+  ],
+  "answer": 0,
+  "explanation": "He burned against Jacob like a flaming fire, which devoureth round about.",
+  "ref": "Lamentations 2:3"
+ },
+ {
+  "id": "lamentations-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Zion's breach said to be great like?",
+  "choices": [
+   "A mountain",
+   "A river",
+   "The sea",
+   "A flood"
+  ],
+  "answer": 2,
+  "explanation": "Thy breach is great like the sea: who can heal thee?",
+  "ref": "Lamentations 2:13"
+ },
+ {
+  "id": "lamentations-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is no more, while her prophets find no vision from the LORD?",
+  "choices": [
+   "The temple",
+   "The law",
+   "The feast",
+   "The altar"
+  ],
+  "answer": 1,
+  "explanation": "The law is no more; her prophets also find no vision from the LORD.",
+  "ref": "Lamentations 2:9"
+ },
+ {
+  "id": "lamentations-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord cut off in his fierce anger?",
+  "choices": [
+   "The right hand of Judah",
+   "The staff of Zion",
+   "The crown of David",
+   "The horn of Israel"
+  ],
+  "answer": 3,
+  "explanation": "He hath cut off in his fierce anger all the horn of Israel.",
+  "ref": "Lamentations 2:3"
+ },
+ {
+  "id": "lamentations-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord draw back from before the enemy?",
+  "choices": [
+   "His right hand",
+   "His shield",
+   "His sword",
+   "His arm of fire"
+  ],
+  "answer": 0,
+  "explanation": "He hath drawn back his right hand from before the enemy.",
+  "ref": "Lamentations 2:3"
+ },
+ {
+  "id": "lamentations-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the Lord not remembered in the day of his anger?",
+  "choices": [
+   "His covenant",
+   "His temple",
+   "His footstool",
+   "His servant David"
+  ],
+  "answer": 2,
+  "explanation": "He remembered not his footstool in the day of his anger.",
+  "ref": "Lamentations 2:1"
+ },
+ {
+  "id": "lamentations-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the Lord covered the daughter of Zion with in his anger?",
+  "choices": [
+   "A veil",
+   "A cloud",
+   "Darkness",
+   "Sackcloth"
+  ],
+  "answer": 1,
+  "explanation": "How hath the Lord covered the daughter of Zion with a cloud in his anger!",
+  "ref": "Lamentations 2:1"
+ },
+ {
+  "id": "lamentations-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to her gates?",
+  "choices": [
+   "They were carried off",
+   "They were set on fire",
+   "They were sealed shut",
+   "They are sunk into the ground"
+  ],
+  "answer": 3,
+  "explanation": "Her gates are sunk into the ground; he hath destroyed and broken her bars.",
+  "ref": "Lamentations 2:9"
+ },
+ {
+  "id": "lamentations-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who sit upon the ground and keep silence?",
+  "choices": [
+   "The elders of the daughter of Zion",
+   "The princes of Judah",
+   "The priests of the sanctuary",
+   "The mothers of Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "The elders of the daughter of Zion sit upon the ground, and keep silence.",
+  "ref": "Lamentations 2:10"
+ },
+ {
+  "id": "lamentations-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "What do the virgins of Jerusalem do?",
+  "choices": [
+   "Cry out in the streets",
+   "Flee to the mountains",
+   "Hang down their heads to the ground",
+   "Gird on swords"
+  ],
+  "answer": 2,
+  "explanation": "The virgins of Jerusalem hang down their heads to the ground.",
+  "ref": "Lamentations 2:10"
+ },
+ {
+  "id": "lamentations-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose horn has the LORD set up?",
+  "choices": [
+   "Her princes'",
+   "His adversaries'",
+   "Her priests'",
+   "Jacob's"
+  ],
+  "answer": 1,
+  "explanation": "He hath caused thine enemy to rejoice over thee, he hath set up the horn of thine adversaries.",
+  "ref": "Lamentations 2:17"
+ },
+ {
+  "id": "lamentations-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the writer say of the day of the LORD's anger?",
+  "choices": [
+   "The wicked were spared",
+   "The temple stood",
+   "The city was passed over",
+   "None escaped nor remained"
+  ],
+  "answer": 3,
+  "explanation": "In the day of the LORD'S anger none escaped nor remained.",
+  "ref": "Lamentations 2:22"
+ },
+ {
+  "id": "lamentations-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord do to the strong holds of the daughter of Judah?",
+  "choices": [
+   "Threw them down to the ground",
+   "Left them unwatched",
+   "Gave them to Edom",
+   "Hid them in a cloud"
+  ],
+  "answer": 0,
+  "explanation": "He hath thrown down in his wrath the strong holds of the daughter of Judah; he hath brought them down to the ground.",
+  "ref": "Lamentations 2:2"
+ },
+ {
+  "id": "lamentations-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord pollute?",
+  "choices": [
+   "The altar and the priests",
+   "The wells and the gardens",
+   "The kingdom and its princes",
+   "The gates and the walls"
+  ],
+  "answer": 2,
+  "explanation": "He hath polluted the kingdom and the princes thereof.",
+  "ref": "Lamentations 2:2"
+ },
+ {
+  "id": "lamentations-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When is it good for a man to bear the yoke?",
+  "choices": [
+   "In his old age",
+   "In his youth",
+   "In the harvest",
+   "In the night"
+  ],
+  "answer": 1,
+  "explanation": "It is good for a man that he bear the yoke in his youth.",
+  "ref": "Lamentations 3:27"
+ },
+ {
+  "id": "lamentations-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said to be great, as the LORD's mercies are new every morning?",
+  "choices": [
+   "His wrath",
+   "His kingdom",
+   "His wisdom",
+   "His faithfulness"
+  ],
+  "answer": 3,
+  "explanation": "They are new every morning: great is thy faithfulness.",
+  "ref": "Lamentations 3:23"
+ },
+ {
+  "id": "lamentations-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does his soul say the LORD is, so that he will hope in him?",
+  "choices": [
+   "His portion",
+   "His shield",
+   "His fortress",
+   "His banner"
+  ],
+  "answer": 0,
+  "explanation": "The LORD is my portion, saith my soul; therefore will I hope in him.",
+  "ref": "Lamentations 3:24"
+ },
+ {
+  "id": "lamentations-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two creatures is the LORD compared to, lying in wait?",
+  "choices": [
+   "A wolf and a leopard",
+   "A serpent and an eagle",
+   "A bear and a lion",
+   "A lion and an ox"
+  ],
+  "answer": 2,
+  "explanation": "He was unto me as a bear lying in wait, and as a lion in secret places.",
+  "ref": "Lamentations 3:10"
+ },
+ {
+  "id": "lamentations-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has the LORD made him drunken with?",
+  "choices": [
+   "Gall",
+   "Wormwood",
+   "Vinegar",
+   "Wine"
+  ],
+  "answer": 1,
+  "explanation": "He hath filled me with bitterness, he hath made me drunken with wormwood.",
+  "ref": "Lamentations 3:15"
+ },
+ {
+  "id": "lamentations-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does he say his enemies chased him like, without cause?",
+  "choices": [
+   "A deer",
+   "A hare",
+   "A sheep",
+   "A bird"
+  ],
+  "answer": 3,
+  "explanation": "Mine enemies chased me sore, like a bird, without cause.",
+  "ref": "Lamentations 3:52"
+ },
+ {
+  "id": "lamentations-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was he when he called upon the LORD's name?",
+  "choices": [
+   "In the low dungeon",
+   "On the mountain",
+   "In the temple",
+   "By the river"
+  ],
+  "answer": 0,
+  "explanation": "I called upon thy name, O LORD, out of the low dungeon.",
+  "ref": "Lamentations 3:55"
+ },
+ {
+  "id": "lamentations-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say in the day that he called upon him?",
+  "choices": [
+   "Peace be still",
+   "Arise and go",
+   "Fear not",
+   "I am with thee"
+  ],
+  "answer": 2,
+  "explanation": "Thou drewest near in the day that I called upon thee: thou saidst, Fear not.",
+  "ref": "Lamentations 3:57"
+ },
+ {
+  "id": "lamentations-3-e-09",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does he say the Lord will not do for ever?",
+  "choices": [
+   "Forget his people",
+   "Cast off",
+   "Hide his face",
+   "Send famine"
+  ],
+  "answer": 1,
+  "explanation": "For the Lord will not cast off for ever.",
+  "ref": "Lamentations 3:31"
+ },
+ {
+  "id": "lamentations-3-e-10",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has the LORD set him up as a mark for?",
+  "choices": [
+   "The sword",
+   "The stone",
+   "The fire",
+   "The arrow"
+  ],
+  "answer": 3,
+  "explanation": "He hath bent his bow, and set me as a mark for the arrow.",
+  "ref": "Lamentations 3:12"
+ },
+ {
+  "id": "lamentations-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD covered himself with so that prayer should not pass through?",
+  "choices": [
+   "A cloud",
+   "A veil",
+   "Darkness",
+   "A wall"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast covered thyself with a cloud, that our prayer should not pass through.",
+  "ref": "Lamentations 3:44"
+ },
+ {
+  "id": "lamentations-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was he to all his people, and their song all the day?",
+  "choices": [
+   "A prophet",
+   "A comfort",
+   "A derision",
+   "A stranger"
+  ],
+  "answer": 2,
+  "explanation": "I was a derision to all my people; and their song all the day.",
+  "ref": "Lamentations 3:14"
+ },
+ {
+  "id": "lamentations-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the LORD made heavy so that he cannot get out?",
+  "choices": [
+   "His yoke",
+   "His chain",
+   "His burden",
+   "His gate"
+  ],
+  "answer": 1,
+  "explanation": "He hath hedged me about, that I cannot get out: he hath made my chain heavy.",
+  "ref": "Lamentations 3:7"
+ },
+ {
+  "id": "lamentations-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he say has perished from the LORD?",
+  "choices": [
+   "His tears and his prayer",
+   "His home and his city",
+   "His flocks and his fields",
+   "His strength and his hope"
+  ],
+  "answer": 3,
+  "explanation": "I said, My strength and my hope is perished from the LORD.",
+  "ref": "Lamentations 3:18"
+ },
+ {
+  "id": "lamentations-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the man put his mouth in the dust?",
+  "choices": [
+   "If so be there may be hope",
+   "To hide from the enemy",
+   "To mourn the dead",
+   "To seek the grave"
+  ],
+  "answer": 0,
+  "explanation": "He putteth his mouth in the dust; if so be there may be hope.",
+  "ref": "Lamentations 3:29"
+ },
+ {
+  "id": "lamentations-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the man do to him that smiteth him?",
+  "choices": [
+   "Cries for justice",
+   "Returns the blow",
+   "Giveth him his cheek",
+   "Flees to the city"
+  ],
+  "answer": 2,
+  "explanation": "He giveth his cheek to him that smiteth him: he is filled full with reproach.",
+  "ref": "Lamentations 3:30"
+ },
+ {
+  "id": "lamentations-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Though the Lord cause grief, what will he have according to the multitude of his mercies?",
+  "choices": [
+   "Vengeance",
+   "Compassion",
+   "Wisdom",
+   "Silence"
+  ],
+  "answer": 1,
+  "explanation": "Though he cause grief, yet will he have compassion according to the multitude of his mercies.",
+  "ref": "Lamentations 3:32"
+ },
+ {
+  "id": "lamentations-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the writer say the Lord afflicts the children of men?",
+  "choices": [
+   "Without pity",
+   "In secret",
+   "For a season only",
+   "Not willingly"
+  ],
+  "answer": 3,
+  "explanation": "He doth not afflict willingly nor grieve the children of men.",
+  "ref": "Lamentations 3:33"
+ },
+ {
+  "id": "lamentations-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is a living man told not to complain?",
+  "choices": [
+   "He is punished for his sins",
+   "He is too weak",
+   "He is a stranger",
+   "He is poor"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore doth a living man complain, a man for the punishment of his sins?",
+  "ref": "Lamentations 3:39"
+ },
+ {
+  "id": "lamentations-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the people urged to lift up with their hands unto God?",
+  "choices": [
+   "Their voice",
+   "Their offering",
+   "Their heart",
+   "Their eyes"
+  ],
+  "answer": 2,
+  "explanation": "Let us lift up our heart with our hands unto God in the heavens.",
+  "ref": "Lamentations 3:41"
+ },
+ {
+  "id": "lamentations-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the Lord made them in the midst of the people?",
+  "choices": [
+   "The head of the nations",
+   "The offscouring and refuse",
+   "A byword",
+   "A burden"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast made us as the offscouring and refuse in the midst of the people.",
+  "ref": "Lamentations 3:45"
+ },
+ {
+  "id": "lamentations-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when does his eye run down without intermission?",
+  "choices": [
+   "Till the city is rebuilt",
+   "Till the king returns",
+   "Till the enemy departs",
+   "Till the LORD look down from heaven"
+  ],
+  "answer": 3,
+  "explanation": "Mine eye trickleth down, and ceaseth not, without any intermission, till the LORD look down, and behold from heaven.",
+  "ref": "Lamentations 3:49–50"
+ },
+ {
+  "id": "lamentations-3-m-13",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What flowed over his head, so that he said, I am cut off?",
+  "choices": [
+   "Waters",
+   "Ashes",
+   "Stones",
+   "Blood"
+  ],
+  "answer": 0,
+  "explanation": "Waters flowed over mine head; then I said, I am cut off.",
+  "ref": "Lamentations 3:54"
+ },
+ {
+  "id": "lamentations-3-m-14",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the people confess in prayer, saying thou hast not pardoned?",
+  "choices": [
+   "We have been faithful",
+   "We have kept thy law",
+   "We have transgressed and rebelled",
+   "We have not known thee"
+  ],
+  "answer": 2,
+  "explanation": "We have transgressed and have rebelled: thou hast not pardoned.",
+  "ref": "Lamentations 3:42"
+ },
+ {
+  "id": "lamentations-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into what has the LORD led him, but not into light?",
+  "choices": [
+   "The wilderness",
+   "Darkness",
+   "A pit",
+   "A cave"
+  ],
+  "answer": 1,
+  "explanation": "He hath led me, and brought me into darkness, but not into light.",
+  "ref": "Lamentations 3:2"
+ },
+ {
+  "id": "lamentations-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the LORD made old and broken?",
+  "choices": [
+   "His eyes and his hair",
+   "His hands and his feet",
+   "His heart and his voice",
+   "His flesh and skin, and his bones"
+  ],
+  "answer": 3,
+  "explanation": "My flesh and my skin hath he made old; he hath broken my bones.",
+  "ref": "Lamentations 3:4"
+ },
+ {
+  "id": "lamentations-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the LORD compassed him with?",
+  "choices": [
+   "Gall and travail",
+   "Fire and smoke",
+   "Iron and brass",
+   "Waters and mire"
+  ],
+  "answer": 0,
+  "explanation": "He hath builded against me, and compassed me with gall and travail.",
+  "ref": "Lamentations 3:5"
+ },
+ {
+  "id": "lamentations-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where has he been set, as they that be dead of old?",
+  "choices": [
+   "In the pit",
+   "In the deep",
+   "In dark places",
+   "In the wilderness"
+  ],
+  "answer": 2,
+  "explanation": "He hath set me in dark places, as they that be dead of old.",
+  "ref": "Lamentations 3:6"
+ },
+ {
+  "id": "lamentations-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the LORD inclosed his ways with?",
+  "choices": [
+   "Thorns",
+   "Hewn stone",
+   "Iron bars",
+   "A wall of fire"
+  ],
+  "answer": 1,
+  "explanation": "He hath inclosed my ways with hewn stone, he hath made my paths crooked.",
+  "ref": "Lamentations 3:9"
+ },
+ {
+  "id": "lamentations-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the arrows of the LORD's quiver enter?",
+  "choices": [
+   "Into his heart",
+   "Into his hands",
+   "Into his feet",
+   "Into his reins"
+  ],
+  "answer": 3,
+  "explanation": "He hath caused the arrows of his quiver to enter into my reins.",
+  "ref": "Lamentations 3:13"
+ },
+ {
+  "id": "lamentations-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the LORD covered him with, after breaking his teeth with gravel stones?",
+  "choices": [
+   "Ashes",
+   "Sackcloth",
+   "Dust",
+   "Mire"
+  ],
+  "answer": 0,
+  "explanation": "He hath also broken my teeth with gravel stones, he hath covered me with ashes.",
+  "ref": "Lamentations 3:16"
+ },
+ {
+  "id": "lamentations-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did he forget when his soul was removed far off from peace?",
+  "choices": [
+   "His father's house",
+   "The law",
+   "Prosperity",
+   "His prayers"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast removed my soul far off from peace: I forgat prosperity.",
+  "ref": "Lamentations 3:17"
+ },
+ {
+  "id": "lamentations-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does the man sit alone and keep silence?",
+  "choices": [
+   "Because the city is empty",
+   "Because he hath borne the yoke upon him",
+   "Because he is ashamed of his youth",
+   "Because none will speak to him"
+  ],
+  "answer": 1,
+  "explanation": "He sitteth alone and keepeth silence, because he hath borne it upon him.",
+  "ref": "Lamentations 3:28"
+ },
+ {
+  "id": "lamentations-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who does the Lord not approve of crushing under feet?",
+  "choices": [
+   "The widows and orphans",
+   "The poor of the land",
+   "The priests of Zion",
+   "All the prisoners of the earth"
+  ],
+  "answer": 3,
+  "explanation": "To crush under his feet all the prisoners of the earth, the Lord approveth not.",
+  "ref": "Lamentations 3:34–36"
+ },
+ {
+  "id": "lamentations-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has come upon the people, with desolation and destruction?",
+  "choices": [
+   "Fear and a snare",
+   "Famine and plague",
+   "Fire and sword",
+   "War and exile"
+  ],
+  "answer": 0,
+  "explanation": "Fear and a snare is come upon us, desolation and destruction.",
+  "ref": "Lamentations 3:47"
+ },
+ {
+  "id": "lamentations-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they do to him in the dungeon and cast upon him?",
+  "choices": [
+   "Bound him and cast him in a pit",
+   "Wounded him and cast ashes",
+   "Cut off his life and cast a stone",
+   "Starved him and cast him out"
+  ],
+  "answer": 2,
+  "explanation": "They have cut off my life in the dungeon, and cast a stone upon me.",
+  "ref": "Lamentations 3:53"
+ },
+ {
+  "id": "lamentations-3-h-13",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he ask the LORD to render unto his enemies?",
+  "choices": [
+   "Pardon for their sin",
+   "A recompence according to the work of their hands",
+   "Bread and water",
+   "A king to rule them"
+  ],
+  "answer": 1,
+  "explanation": "Render unto them a recompence, O LORD, according to the work of their hands.",
+  "ref": "Lamentations 3:64"
+ },
+ {
+  "id": "lamentations-3-h-14",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he ask the LORD to give his enemies, as his curse?",
+  "choices": [
+   "A famine",
+   "Blindness",
+   "Exile",
+   "Sorrow of heart"
+  ],
+  "answer": 3,
+  "explanation": "Give them sorrow of heart, thy curse unto them.",
+  "ref": "Lamentations 3:65"
+ },
+ {
+  "id": "lamentations-3-h-15",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he say he is to his enemies as they sit down and rise up?",
+  "choices": [
+   "Their musick",
+   "Their prisoner",
+   "Their king",
+   "Their jest"
+  ],
+  "answer": 0,
+  "explanation": "Behold their sitting down, and their rising up; I am their musick.",
+  "ref": "Lamentations 3:63"
+ },
+ {
+  "id": "lamentations-3-m-15",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD do to his prayer when he cries and shouts?",
+  "choices": [
+   "Answers it at once",
+   "Writes it down",
+   "Shutteth it out",
+   "Carries it to the king"
+  ],
+  "answer": 2,
+  "explanation": "Also when I cry and shout, he shutteth out my prayer.",
+  "ref": "Lamentations 3:8"
+ },
+ {
+  "id": "lamentations-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were her Nazarites purer than?",
+  "choices": [
+   "Silver",
+   "Snow",
+   "Water",
+   "Light"
+  ],
+  "answer": 1,
+  "explanation": "Her Nazarites were purer than snow, they were whiter than milk.",
+  "ref": "Lamentations 4:7"
+ },
+ {
+  "id": "lamentations-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the young children ask for, with no man to break it to them?",
+  "choices": [
+   "Water",
+   "Milk",
+   "Corn",
+   "Bread"
+  ],
+  "answer": 3,
+  "explanation": "The young children ask bread, and no man breaketh it unto them.",
+  "ref": "Lamentations 4:4"
+ },
+ {
+  "id": "lamentations-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which land does the daughter of Edom dwell?",
+  "choices": [
+   "Uz",
+   "Seir",
+   "Moab",
+   "Midian"
+  ],
+  "answer": 0,
+  "explanation": "Rejoice and be glad, O daughter of Edom, that dwellest in the land of Uz.",
+  "ref": "Lamentations 4:21"
+ },
+ {
+  "id": "lamentations-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD kindle in Zion that devoured its foundations?",
+  "choices": [
+   "A flood",
+   "A famine",
+   "A fire",
+   "A storm"
+  ],
+  "answer": 2,
+  "explanation": "He hath kindled a fire in Zion, and it hath devoured the foundations thereof.",
+  "ref": "Lamentations 4:11"
+ },
+ {
+  "id": "lamentations-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "The punishment of her iniquity is said to be greater than the punishment of which city's sin?",
+  "choices": [
+   "Nineveh",
+   "Sodom",
+   "Babylon",
+   "Tyre"
+  ],
+  "answer": 1,
+  "explanation": "The punishment of the iniquity of the daughter of my people is greater than the punishment of the sin of Sodom.",
+  "ref": "Lamentations 4:6"
+ },
+ {
+  "id": "lamentations-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the people watch for in vain, saying it could not save them?",
+  "choices": [
+   "A prophet",
+   "A king",
+   "An angel",
+   "A nation"
+  ],
+  "answer": 3,
+  "explanation": "In our watching we have watched for a nation that could not save us.",
+  "ref": "Lamentations 4:17"
+ },
+ {
+  "id": "lamentations-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where are the stones of the sanctuary poured out?",
+  "choices": [
+   "In the top of every street",
+   "In the river",
+   "In the valley",
+   "At the city gates"
+  ],
+  "answer": 0,
+  "explanation": "The stones of the sanctuary are poured out in the top of every street.",
+  "ref": "Lamentations 4:1"
+ },
+ {
+  "id": "lamentations-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the daughter of my people become like, in the wilderness?",
+  "choices": [
+   "The wild asses",
+   "The jackals",
+   "The ostriches",
+   "The wolves"
+  ],
+  "answer": 2,
+  "explanation": "The daughter of my people is become cruel, like the ostriches in the wilderness.",
+  "ref": "Lamentations 4:3"
+ },
+ {
+  "id": "lamentations-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do they that were brought up in scarlet now embrace?",
+  "choices": [
+   "Ashes",
+   "Dunghills",
+   "Stones",
+   "Thorns"
+  ],
+  "answer": 1,
+  "explanation": "They that were brought up in scarlet embrace dunghills.",
+  "ref": "Lamentations 4:5"
+ },
+ {
+  "id": "lamentations-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who does the chapter say are better off than those slain with hunger?",
+  "choices": [
+   "They that are carried captive",
+   "They that flee to Egypt",
+   "They that dwell in Uz",
+   "They that are slain with the sword"
+  ],
+  "answer": 3,
+  "explanation": "They that be slain with the sword are better than they that be slain with hunger.",
+  "ref": "Lamentations 4:9"
+ },
+ {
+  "id": "lamentations-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the kings of the earth not have believed?",
+  "choices": [
+   "That the enemy would enter Jerusalem's gates",
+   "That Zion would be rebuilt",
+   "That the temple would burn",
+   "That Edom would be spared"
+  ],
+  "answer": 0,
+  "explanation": "The kings of the earth would not have believed that the adversary and the enemy should have entered into the gates of Jerusalem.",
+  "ref": "Lamentations 4:12"
+ },
+ {
+  "id": "lamentations-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the prophets and priests wander in the streets?",
+  "choices": [
+   "As beggars",
+   "As captives",
+   "As blind men",
+   "As shepherds"
+  ],
+  "answer": 2,
+  "explanation": "They have wandered as blind men in the streets, they have polluted themselves with blood.",
+  "ref": "Lamentations 4:14"
+ },
+ {
+  "id": "lamentations-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did men cry to the unclean priests and prophets as they fled?",
+  "choices": [
+   "Return to Zion",
+   "Depart ye; touch not",
+   "Come and eat",
+   "Speak to us"
+  ],
+  "answer": 1,
+  "explanation": "They cried unto them, Depart ye; it is unclean; depart, depart, touch not.",
+  "ref": "Lamentations 4:15"
+ },
+ {
+  "id": "lamentations-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who was taken in their pits, of whom they said, Under his shadow we shall live?",
+  "choices": [
+   "The prophet Jeremiah",
+   "The captain of the guard",
+   "The high priest",
+   "The anointed of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "The anointed of the LORD, was taken in their pits, of whom we said, Under his shadow we shall live among the heathen.",
+  "ref": "Lamentations 4:20"
+ },
+ {
+  "id": "lamentations-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD promise the daughter of Zion about captivity?",
+  "choices": [
+   "He will no more carry her away",
+   "He will bring her to Babylon",
+   "He will end it in seventy years",
+   "He will give it to Edom"
+  ],
+  "answer": 0,
+  "explanation": "The punishment of thine iniquity is accomplished, O daughter of Zion; he will no more carry thee away into captivity.",
+  "ref": "Lamentations 4:22"
+ },
+ {
+  "id": "lamentations-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall Edom do when the cup passes through unto her?",
+  "choices": [
+   "Rejoice and sing",
+   "Flee to the mountains",
+   "Be drunken and make herself naked",
+   "Build a wall"
+  ],
+  "answer": 2,
+  "explanation": "The cup also shall pass through unto thee: thou shalt be drunken, and shalt make thyself naked.",
+  "ref": "Lamentations 4:21"
+ },
+ {
+  "id": "lamentations-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has their skin become, because it cleaveth to their bones?",
+  "choices": [
+   "Pale as ashes",
+   "Withered, like a stick",
+   "Hard as stone",
+   "Dry as dust"
+  ],
+  "answer": 1,
+  "explanation": "Their skin cleaveth to their bones; it is withered, it is become like a stick.",
+  "ref": "Lamentations 4:8"
+ },
+ {
+  "id": "lamentations-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What were her Nazarites more ruddy in body than?",
+  "choices": [
+   "Roses",
+   "Wine",
+   "Pomegranates",
+   "Rubies"
+  ],
+  "answer": 3,
+  "explanation": "They were more ruddy in body than rubies, their polishing was of sapphire.",
+  "ref": "Lamentations 4:7"
+ },
+ {
+  "id": "lamentations-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What cleaveth to the roof of the sucking child's mouth for thirst?",
+  "choices": [
+   "His tongue",
+   "His lips",
+   "His breath",
+   "His cry"
+  ],
+  "answer": 0,
+  "explanation": "The tongue of the sucking child cleaveth to the roof of his mouth for thirst.",
+  "ref": "Lamentations 4:4"
+ },
+ {
+  "id": "lamentations-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is their visage said to be blacker than?",
+  "choices": [
+   "Night",
+   "A raven",
+   "A coal",
+   "Pitch"
+  ],
+  "answer": 2,
+  "explanation": "Their visage is blacker than a coal; they are not known in the streets.",
+  "ref": "Lamentations 4:8"
+ },
+ {
+  "id": "lamentations-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are their persecutors said to be swifter than?",
+  "choices": [
+   "The horses of Egypt",
+   "The eagles of the heaven",
+   "The wind",
+   "The deer"
+  ],
+  "answer": 1,
+  "explanation": "Our persecutors are swifter than the eagles of the heaven.",
+  "ref": "Lamentations 4:19"
+ },
+ {
+  "id": "lamentations-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the persecutors lay wait for them?",
+  "choices": [
+   "At the gates",
+   "By the river",
+   "In the vineyards",
+   "In the wilderness"
+  ],
+  "answer": 3,
+  "explanation": "They pursued us upon the mountains, they laid wait for us in the wilderness.",
+  "ref": "Lamentations 4:19"
+ },
+ {
+  "id": "lamentations-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the enemies hunt so that they cannot go in the streets?",
+  "choices": [
+   "Their steps",
+   "Their children",
+   "Their princes",
+   "Their flocks"
+  ],
+  "answer": 0,
+  "explanation": "They hunt our steps, that we cannot go in our streets.",
+  "ref": "Lamentations 4:18"
+ },
+ {
+  "id": "lamentations-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the anger of the LORD done to the priests and prophets?",
+  "choices": [
+   "Hidden them",
+   "Honoured them",
+   "Divided them",
+   "Fed them"
+  ],
+  "answer": 2,
+  "explanation": "The anger of the LORD hath divided them; he will no more regard them.",
+  "ref": "Lamentations 4:16"
+ },
+ {
+  "id": "lamentations-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do even the sea monsters do for their young ones?",
+  "choices": [
+   "Hide them in the deep",
+   "Draw out the breast and give suck",
+   "Carry them on their backs",
+   "Teach them to hunt"
+  ],
+  "answer": 1,
+  "explanation": "Even the sea monsters draw out the breast, they give suck to their young ones.",
+  "ref": "Lamentations 4:3"
+ },
+ {
+  "id": "lamentations-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Those slain with hunger pine away for want of what?",
+  "choices": [
+   "The waters of the well",
+   "The bread of the temple",
+   "The milk of the flock",
+   "The fruits of the field"
+  ],
+  "answer": 3,
+  "explanation": "These pine away, stricken through for want of the fruits of the field.",
+  "ref": "Lamentations 4:9"
+ },
+ {
+  "id": "lamentations-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the LORD accomplished and poured out?",
+  "choices": [
+   "His fury and fierce anger",
+   "His wrath and his sword",
+   "His mercy and his peace",
+   "His judgment and his flood"
+  ],
+  "answer": 0,
+  "explanation": "The LORD hath accomplished his fury; he hath poured out his fierce anger.",
+  "ref": "Lamentations 4:11"
+ },
+ {
+  "id": "lamentations-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the priests, whom did they not favour?",
+  "choices": [
+   "The princes",
+   "The prophets",
+   "The elders",
+   "The virgins"
+  ],
+  "answer": 2,
+  "explanation": "They respected not the persons of the priests, they favoured not the elders.",
+  "ref": "Lamentations 4:16"
+ },
+ {
+  "id": "lamentations-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is fallen from their head?",
+  "choices": [
+   "The helmet",
+   "The crown",
+   "The turban",
+   "The garland"
+  ],
+  "answer": 1,
+  "explanation": "The crown is fallen from our head: woe unto us, that we have sinned!",
+  "ref": "Lamentations 5:16"
+ },
+ {
+  "id": "lamentations-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What walk upon the desolate mountain of Zion?",
+  "choices": [
+   "Lions",
+   "Wolves",
+   "Jackals",
+   "Foxes"
+  ],
+  "answer": 3,
+  "explanation": "Because of the mountain of Zion, which is desolate, the foxes walk upon it.",
+  "ref": "Lamentations 5:18"
+ },
+ {
+  "id": "lamentations-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do they have to pay money for?",
+  "choices": [
+   "Their water",
+   "Their bread",
+   "Their houses",
+   "Their oil"
+  ],
+  "answer": 0,
+  "explanation": "We have drunken our water for money; our wood is sold unto us.",
+  "ref": "Lamentations 5:4"
+ },
+ {
+  "id": "lamentations-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are their mothers said to be?",
+  "choices": [
+   "As captives",
+   "As queens",
+   "As widows",
+   "As servants"
+  ],
+  "answer": 2,
+  "explanation": "We are orphans and fatherless, our mothers are as widows.",
+  "ref": "Lamentations 5:3"
+ },
+ {
+  "id": "lamentations-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has their dance been turned into?",
+  "choices": [
+   "Silence",
+   "Mourning",
+   "Weeping in the night",
+   "Sackcloth"
+  ],
+  "answer": 1,
+  "explanation": "The joy of our heart is ceased; our dance is turned into mourning.",
+  "ref": "Lamentations 5:15"
+ },
+ {
+  "id": "lamentations-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "To which two nations have they given the hand to be satisfied with bread?",
+  "choices": [
+   "The Edomites and the Moabites",
+   "The Philistines and the Syrians",
+   "The Chaldeans and the Medes",
+   "The Egyptians and the Assyrians"
+  ],
+  "answer": 3,
+  "explanation": "We have given the hand to the Egyptians, and to the Assyrians, to be satisfied with bread.",
+  "ref": "Lamentations 5:6"
+ },
+ {
+  "id": "lamentations-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is under persecution, so that they labour and have no rest?",
+  "choices": [
+   "Their necks",
+   "Their hands",
+   "Their backs",
+   "Their feet"
+  ],
+  "answer": 0,
+  "explanation": "Our necks are under persecution: we labour, and have no rest.",
+  "ref": "Lamentations 5:5"
+ },
+ {
+  "id": "lamentations-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do they say of their fathers, whose iniquities they have borne?",
+  "choices": [
+   "They have kept the law",
+   "They are in Egypt",
+   "They have sinned and are not",
+   "They were carried to Babylon"
+  ],
+  "answer": 2,
+  "explanation": "Our fathers have sinned, and are not; and we have borne their iniquities.",
+  "ref": "Lamentations 5:7"
+ },
+ {
+  "id": "lamentations-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did they get their bread with the peril of their lives?",
+  "choices": [
+   "Because of the wild beasts",
+   "Because of the sword of the wilderness",
+   "Because of the Egyptians",
+   "Because of the drought"
+  ],
+  "answer": 1,
+  "explanation": "We gat our bread with the peril of our lives because of the sword of the wilderness.",
+  "ref": "Lamentations 5:9"
+ },
+ {
+  "id": "lamentations-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was black like an oven because of the terrible famine?",
+  "choices": [
+   "Their faces",
+   "Their garments",
+   "Their houses",
+   "Their skin"
+  ],
+  "answer": 3,
+  "explanation": "Our skin was black like an oven because of the terrible famine.",
+  "ref": "Lamentations 5:10"
+ },
+ {
+  "id": "lamentations-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "What was done to the princes?",
+  "choices": [
+   "They were hanged up by their hand",
+   "They were sent to Egypt",
+   "They were made servants",
+   "They were driven out of the gate"
+  ],
+  "answer": 0,
+  "explanation": "Princes are hanged up by their hand: the faces of elders were not honoured.",
+  "ref": "Lamentations 5:12"
+ },
+ {
+  "id": "lamentations-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the young men taken to do?",
+  "choices": [
+   "To build",
+   "To fight",
+   "To grind",
+   "To plough"
+  ],
+  "answer": 2,
+  "explanation": "They took the young men to grind, and the children fell under the wood.",
+  "ref": "Lamentations 5:13"
+ },
+ {
+  "id": "lamentations-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Who have ceased from the gate?",
+  "choices": [
+   "The princes",
+   "The elders",
+   "The priests",
+   "The prophets"
+  ],
+  "answer": 1,
+  "explanation": "The elders have ceased from the gate, the young men from their musick.",
+  "ref": "Lamentations 5:14"
+ },
+ {
+  "id": "lamentations-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question does the writer ask the LORD about forgetting?",
+  "choices": [
+   "When wilt thou remember Zion",
+   "Where is thy mercy",
+   "How long shall the enemy rule",
+   "Why dost thou forget us for ever"
+  ],
+  "answer": 3,
+  "explanation": "Wherefore dost thou forget us for ever, and forsake us so long time?",
+  "ref": "Lamentations 5:20"
+ },
+ {
+  "id": "lamentations-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he ask the LORD to renew?",
+  "choices": [
+   "Our days as of old",
+   "Our walls and gates",
+   "Our crown and throne",
+   "Our flocks and fields"
+  ],
+  "answer": 0,
+  "explanation": "Turn thou us unto thee, O LORD, and we shall be turned; renew our days as of old.",
+  "ref": "Lamentations 5:21"
+ },
+ {
+  "id": "lamentations-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the closing verse say the LORD has done?",
+  "choices": [
+   "Utterly forgiven us",
+   "Hidden us from Babylon",
+   "Utterly rejected us and is very wroth",
+   "Raised up a king"
+  ],
+  "answer": 2,
+  "explanation": "But thou hast utterly rejected us; thou art very wroth against us.",
+  "ref": "Lamentations 5:22"
+ },
+ {
+  "id": "lamentations-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has made their heart faint and their eyes dim?",
+  "choices": [
+   "The long journey",
+   "The sins and desolation",
+   "The famine only",
+   "The shining of the sun"
+  ],
+  "answer": 1,
+  "explanation": "For this our heart is faint; for these things our eyes are dim.",
+  "ref": "Lamentations 5:17"
+ },
+ {
+  "id": "lamentations-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is sold unto them besides their water?",
+  "choices": [
+   "Their bread",
+   "Their oil",
+   "Their salt",
+   "Their wood"
+  ],
+  "answer": 3,
+  "explanation": "We have drunken our water for money; our wood is sold unto us.",
+  "ref": "Lamentations 5:4"
+ },
+ {
+  "id": "lamentations-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Who have ruled over them, with none to deliver them?",
+  "choices": [
+   "Servants",
+   "Strangers",
+   "Egyptians",
+   "Foreign kings"
+  ],
+  "answer": 0,
+  "explanation": "Servants have ruled over us: there is none that doth deliver us out of their hand.",
+  "ref": "Lamentations 5:8"
+ },
+ {
+  "id": "lamentations-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did they ravish in Zion and in the cities of Judah?",
+  "choices": [
+   "The elders and the princes",
+   "The priests and the Levites",
+   "The women and the maids",
+   "The children and the old"
+  ],
+  "answer": 2,
+  "explanation": "They ravished the women in Zion, and the maids in the cities of Judah.",
+  "ref": "Lamentations 5:11"
+ },
+ {
+  "id": "lamentations-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose faces were not honoured?",
+  "choices": [
+   "The priests",
+   "The elders",
+   "The prophets",
+   "The kings"
+  ],
+  "answer": 1,
+  "explanation": "Princes are hanged up by their hand: the faces of elders were not honoured.",
+  "ref": "Lamentations 5:12"
+ },
+ {
+  "id": "lamentations-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What fell under the wood?",
+  "choices": [
+   "The young men",
+   "The elders",
+   "The mighty men",
+   "The children"
+  ],
+  "answer": 3,
+  "explanation": "They took the young men to grind, and the children fell under the wood.",
+  "ref": "Lamentations 5:13"
+ },
+ {
+  "id": "lamentations-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What have the young men ceased from?",
+  "choices": [
+   "Their musick",
+   "Their labour",
+   "Their feasts",
+   "Their watch"
+  ],
+  "answer": 0,
+  "explanation": "The elders have ceased from the gate, the young men from their musick.",
+  "ref": "Lamentations 5:14"
+ },
+ {
+  "id": "lamentations-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has ceased from their heart?",
+  "choices": [
+   "Fear",
+   "Hope",
+   "Joy",
+   "Pride"
+  ],
+  "answer": 2,
+  "explanation": "The joy of our heart is ceased; our dance is turned into mourning.",
+  "ref": "Lamentations 5:15"
+ },
+ {
+  "id": "lamentations-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why do they cry woe unto us?",
+  "choices": [
+   "The king is dead",
+   "They have sinned",
+   "The walls are broken",
+   "The LORD has left"
+  ],
+  "answer": 1,
+  "explanation": "The crown is fallen from our head: woe unto us, that we have sinned!",
+  "ref": "Lamentations 5:16"
+ },
+ {
+  "id": "lamentations-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long does the LORD's throne endure?",
+  "choices": [
+   "Until the captivity ends",
+   "For seventy years",
+   "As long as Zion stands",
+   "From generation to generation"
+  ],
+  "answer": 3,
+  "explanation": "Thou, O LORD, remainest for ever; thy throne from generation to generation.",
+  "ref": "Lamentations 5:19"
+ },
+ {
+  "id": "lamentations-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was turned to aliens?",
+  "choices": [
+   "Their houses",
+   "Their gates",
+   "Their children",
+   "Their vineyards"
+  ],
+  "answer": 0,
+  "explanation": "Our inheritance is turned to strangers, our houses to aliens.",
+  "ref": "Lamentations 5:2"
+ },
+ {
+  "id": "lamentations-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they give the hand to Egypt and Assyria to be satisfied with?",
+  "choices": [
+   "Silver",
+   "Water",
+   "Bread",
+   "Peace"
+  ],
+  "answer": 2,
+  "explanation": "We have given the hand to the Egyptians, and to the Assyrians, to be satisfied with bread.",
+  "ref": "Lamentations 5:6"
  }
 ]
