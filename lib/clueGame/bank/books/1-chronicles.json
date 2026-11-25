@@ -80,6 +80,646 @@
   "ref": "1 Chronicles 1:19"
  },
  {
+  "id": "1-chronicles-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "What other name is given for Abram in this chapter?",
+  "choices": [
+   "Israel",
+   "Isaac",
+   "Abraham",
+   "Eber"
+  ],
+  "answer": 2,
+  "explanation": "Abram; the same is Abraham.",
+  "ref": "1 Chronicles 1:27"
+ },
+ {
+  "id": "1-chronicles-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who began to be mighty upon the earth?",
+  "choices": [
+   "Nimrod",
+   "Esau",
+   "Magog",
+   "Peleg"
+  ],
+  "answer": 0,
+  "explanation": "Cush begat Nimrod: he began to be mighty upon the earth.",
+  "ref": "1 Chronicles 1:10"
+ },
+ {
+  "id": "1-chronicles-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Abraham's concubine?",
+  "choices": [
+   "Hagar",
+   "Keturah",
+   "Timna",
+   "Sarah"
+  ],
+  "answer": 1,
+  "explanation": "Now the sons of Keturah, Abraham's concubine.",
+  "ref": "1 Chronicles 1:32"
+ },
+ {
+  "id": "1-chronicles-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Isaac's father?",
+  "choices": [
+   "Eber",
+   "Terah",
+   "Esau",
+   "Abraham"
+  ],
+  "answer": 3,
+  "explanation": "And Abraham begat Isaac.",
+  "ref": "1 Chronicles 1:34"
+ },
+ {
+  "id": "1-chronicles-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two sons did Isaac have?",
+  "choices": [
+   "Cain and Abel",
+   "Esau and Israel",
+   "Isaac and Ishmael",
+   "Shem and Ham"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Isaac; Esau and Israel.",
+  "ref": "1 Chronicles 1:34"
+ },
+ {
+  "id": "1-chronicles-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these was a son of Ham?",
+  "choices": [
+   "Gomer",
+   "Elam",
+   "Canaan",
+   "Peleg"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Ham; Cush, and Mizraim, Put, and Canaan.",
+  "ref": "1 Chronicles 1:8"
+ },
+ {
+  "id": "1-chronicles-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these was a son of Japheth?",
+  "choices": [
+   "Cush",
+   "Gomer",
+   "Aram",
+   "Eber"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Japheth; Gomer, and Magog, and Madai, and Javan.",
+  "ref": "1 Chronicles 1:5"
+ },
+ {
+  "id": "1-chronicles-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which of these peoples came from Canaan?",
+  "choices": [
+   "The Jebusite",
+   "The Philistine",
+   "The Moabite",
+   "The Edomite"
+  ],
+  "answer": 0,
+  "explanation": "Canaan begat Zidon his firstborn, and Heth, the Jebusite also, and the Amorite.",
+  "ref": "1 Chronicles 1:13–14"
+ },
+ {
+  "id": "1-chronicles-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these was a son of Abraham by Keturah?",
+  "choices": [
+   "Edom",
+   "Lotan",
+   "Midian",
+   "Nebaioth"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Keturah: Zimran, and Jokshan, and Medan, and Midian.",
+  "ref": "1 Chronicles 1:32"
+ },
+ {
+  "id": "1-chronicles-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these was a son of Eliphaz, the son of Esau?",
+  "choices": [
+   "Lotan",
+   "Midian",
+   "Kedar",
+   "Amalek"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Eliphaz; Teman, and Omar, Zephi, and Gatam, Kenaz, and Timna, and Amalek.",
+  "ref": "1 Chronicles 1:36"
+ },
+ {
+  "id": "1-chronicles-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Peleg's brother?",
+  "choices": [
+   "Reu",
+   "Joktan",
+   "Serug",
+   "Shelah"
+  ],
+  "answer": 1,
+  "explanation": "Unto Eber were born two sons: Peleg, and his brother's name was Joktan.",
+  "ref": "1 Chronicles 1:19"
+ },
+ {
+  "id": "1-chronicles-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "From which son of Mizraim did the Philistines come?",
+  "choices": [
+   "Ludim",
+   "Anamim",
+   "Lehabim",
+   "Casluhim"
+  ],
+  "answer": 3,
+  "explanation": "Casluhim, of whom came the Philistines.",
+  "ref": "1 Chronicles 1:12"
+ },
+ {
+  "id": "1-chronicles-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Canaan's firstborn?",
+  "choices": [
+   "Heth",
+   "Hamath",
+   "Zidon",
+   "Arvad"
+  ],
+  "answer": 2,
+  "explanation": "Canaan begat Zidon his firstborn, and Heth.",
+  "ref": "1 Chronicles 1:13"
+ },
+ {
+  "id": "1-chronicles-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the firstborn of Ishmael?",
+  "choices": [
+   "Kedar",
+   "Tema",
+   "Dumah",
+   "Nebaioth"
+  ],
+  "answer": 3,
+  "explanation": "The firstborn of Ishmael, Nebaioth; then Kedar, and Adbeel.",
+  "ref": "1 Chronicles 1:29"
+ },
+ {
+  "id": "1-chronicles-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Eber's father?",
+  "choices": [
+   "Arphaxad",
+   "Peleg",
+   "Joktan",
+   "Shelah"
+  ],
+  "answer": 3,
+  "explanation": "Arphaxad begat Shelah, and Shelah begat Eber.",
+  "ref": "1 Chronicles 1:18"
+ },
+ {
+  "id": "1-chronicles-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Javan?",
+  "choices": [
+   "Meshech",
+   "Tiras",
+   "Tarshish",
+   "Magog"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Javan; Elishah, and Tarshish, Kittim, and Dodanim.",
+  "ref": "1 Chronicles 1:7"
+ },
+ {
+  "id": "1-chronicles-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Midian?",
+  "choices": [
+   "Jokshan",
+   "Zimran",
+   "Ephah",
+   "Seba"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Midian; Ephah, and Epher, and Henoch, and Abida, and Eldaah.",
+  "ref": "1 Chronicles 1:33"
+ },
+ {
+  "id": "1-chronicles-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Esau?",
+  "choices": [
+   "Lotan",
+   "Zibeon",
+   "Shobal",
+   "Reuel"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Esau; Eliphaz, Reuel, and Jeush, and Jaalam, and Korah.",
+  "ref": "1 Chronicles 1:35"
+ },
+ {
+  "id": "1-chronicles-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Timna to Lotan?",
+  "choices": [
+   "His sister",
+   "His wife",
+   "His mother",
+   "His daughter"
+  ],
+  "answer": 0,
+  "explanation": "Timna was Lotan's sister.",
+  "ref": "1 Chronicles 1:39"
+ },
+ {
+  "id": "1-chronicles-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the first king of Edom named in the chapter?",
+  "choices": [
+   "Bela the son of Beor",
+   "Jobab",
+   "Husham",
+   "Baal-hanan"
+  ],
+  "answer": 0,
+  "explanation": "Bela the son of Beor: and the name of his city was Dinhabah.",
+  "ref": "1 Chronicles 1:43"
+ },
+ {
+  "id": "1-chronicles-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which Edomite king smote Midian in the field of Moab?",
+  "choices": [
+   "Hadad the son of Bedad",
+   "Bela the son of Beor",
+   "Husham",
+   "Samlah"
+  ],
+  "answer": 0,
+  "explanation": "Hadad the son of Bedad, which smote Midian in the field of Moab.",
+  "ref": "1 Chronicles 1:46"
+ },
+ {
+  "id": "1-chronicles-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was the Edomite king Baal-hanan?",
+  "choices": [
+   "Achbor's",
+   "Beor's",
+   "Bedad's",
+   "Zerah's"
+  ],
+  "answer": 0,
+  "explanation": "Baal-hanan the son of Achbor reigned in his stead.",
+  "ref": "1 Chronicles 1:49"
+ },
+ {
+  "id": "1-chronicles-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the wife of the last Edomite king named, Hadad?",
+  "choices": [
+   "Mehetabel",
+   "Timna",
+   "Aholibamah",
+   "Mahalath"
+  ],
+  "answer": 0,
+  "explanation": "His wife's name was Mehetabel, the daughter of Matred.",
+  "ref": "1 Chronicles 1:50"
+ },
+ {
+  "id": "1-chronicles-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a duke of Edom?",
+  "choices": [
+   "Bela",
+   "Husham",
+   "Magdiel",
+   "Jobab"
+  ],
+  "answer": 2,
+  "explanation": "Duke Magdiel, duke Iram. These are the dukes of Edom.",
+  "ref": "1 Chronicles 1:54"
+ },
+ {
+  "id": "1-chronicles-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Seir?",
+  "choices": [
+   "Zibeon",
+   "Eliphaz",
+   "Reuel",
+   "Korah"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Seir; Lotan, and Shobal, and Zibeon, and Anah, and Dishon.",
+  "ref": "1 Chronicles 1:38"
+ },
+ {
+  "id": "1-chronicles-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "What was the name of Bela's city?",
+  "choices": [
+   "Avith",
+   "Pai",
+   "Bozrah",
+   "Dinhabah"
+  ],
+  "answer": 3,
+  "explanation": "Bela the son of Beor: and the name of his city was Dinhabah.",
+  "ref": "1 Chronicles 1:43"
+ },
+ {
+  "id": "1-chronicles-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city was Jobab, the second king of Edom, from?",
+  "choices": [
+   "Rehoboth",
+   "Bozrah",
+   "Masrekah",
+   "Temani"
+  ],
+  "answer": 1,
+  "explanation": "Jobab the son of Zerah of Bozrah reigned in his stead.",
+  "ref": "1 Chronicles 1:44"
+ },
+ {
+  "id": "1-chronicles-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Which land was Husham from?",
+  "choices": [
+   "The land of Moab",
+   "The land of Seir",
+   "The land of Hamath",
+   "The land of the Temanites"
+  ],
+  "answer": 3,
+  "explanation": "Husham of the land of the Temanites reigned in his stead.",
+  "ref": "1 Chronicles 1:45"
+ },
+ {
+  "id": "1-chronicles-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "What was the name of Hadad the son of Bedad's city?",
+  "choices": [
+   "Pai",
+   "Dinhabah",
+   "Avith",
+   "Rehoboth"
+  ],
+  "answer": 2,
+  "explanation": "Hadad the son of Bedad reigned in his stead: and the name of his city was Avith.",
+  "ref": "1 Chronicles 1:46"
+ },
+ {
+  "id": "1-chronicles-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Which place was Samlah, an Edomite king, from?",
+  "choices": [
+   "Masrekah",
+   "Bozrah",
+   "Rehoboth",
+   "Avith"
+  ],
+  "answer": 0,
+  "explanation": "Samlah of Masrekah reigned in his stead.",
+  "ref": "1 Chronicles 1:47"
+ },
+ {
+  "id": "1-chronicles-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Shaul, an Edomite king, was from which place?",
+  "choices": [
+   "Masrekah by the sea",
+   "Bozrah by the mountain",
+   "Rehoboth by the river",
+   "Temani by the plain"
+  ],
+  "answer": 2,
+  "explanation": "Shaul of Rehoboth by the river reigned in his stead.",
+  "ref": "1 Chronicles 1:48"
+ },
+ {
+  "id": "1-chronicles-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "What was the name of the city of the last Edomite king Hadad?",
+  "choices": [
+   "Avith",
+   "Pai",
+   "Dinhabah",
+   "Bozrah"
+  ],
+  "answer": 1,
+  "explanation": "Hadad reigned in his stead: and the name of his city was Pai.",
+  "ref": "1 Chronicles 1:50"
+ },
+ {
+  "id": "1-chronicles-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose daughter was Mehetabel?",
+  "choices": [
+   "Matred's",
+   "Mezahab's",
+   "Achbor's",
+   "Bedad's"
+  ],
+  "answer": 0,
+  "explanation": "Mehetabel, the daughter of Matred, the daughter of Mezahab.",
+  "ref": "1 Chronicles 1:50"
+ },
+ {
+  "id": "1-chronicles-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Joktan?",
+  "choices": [
+   "Cush",
+   "Ophir",
+   "Elam",
+   "Lud"
+  ],
+  "answer": 1,
+  "explanation": "Joktan begat... Ophir, and Havilah, and Jobab. All these were the sons of Joktan.",
+  "ref": "1 Chronicles 1:23"
+ },
+ {
+  "id": "1-chronicles-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Ishmael?",
+  "choices": [
+   "Midian",
+   "Kedar",
+   "Zimran",
+   "Amalek"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Ishmael: Nebaioth; then Kedar, and Adbeel, and Mibsam.",
+  "ref": "1 Chronicles 1:29"
+ },
+ {
+  "id": "1-chronicles-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Lotan?",
+  "choices": [
+   "Aiah",
+   "Shephi",
+   "Hori",
+   "Onam"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Lotan; Hori, and Homam.",
+  "ref": "1 Chronicles 1:39"
+ },
+ {
+  "id": "1-chronicles-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Mizraim?",
+  "choices": [
+   "Seba",
+   "Havilah",
+   "Raamah",
+   "Ludim"
+  ],
+  "answer": 3,
+  "explanation": "Mizraim begat Ludim, and Anamim, and Lehabim, and Napthtuhim.",
+  "ref": "1 Chronicles 1:11"
+ },
+ {
+  "id": "1-chronicles-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Gomer?",
+  "choices": [
+   "Riphath",
+   "Elishah",
+   "Tiras",
+   "Madai"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Gomer; Ashchenaz, and Riphath, and Togarmah.",
+  "ref": "1 Chronicles 1:6"
+ },
+ {
+  "id": "1-chronicles-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Eliphaz?",
+  "choices": [
+   "Nahath",
+   "Teman",
+   "Zerah",
+   "Shammah"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Eliphaz; Teman, and Omar, Zephi, and Gatam, Kenaz, and Timna, and Amalek.",
+  "ref": "1 Chronicles 1:36"
+ },
+ {
+  "id": "1-chronicles-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Shem?",
+  "choices": [
+   "Cush",
+   "Aram",
+   "Gomer",
+   "Put"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Shem; Elam, and Asshur, and Arphaxad, and Lud, and Aram.",
+  "ref": "1 Chronicles 1:17"
+ },
+ {
   "id": "old-1-chronicles-2-1",
   "chapter": 2,
   "level": "beginner",
