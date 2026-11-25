@@ -6576,6 +6576,646 @@
   "ref": "1 Kings 10:28"
  },
  {
+  "id": "1-kings-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the queen's camels carry besides gold and precious stones?",
+  "choices": [
+   "Spices",
+   "Grain",
+   "Wine",
+   "Cedar logs"
+  ],
+  "answer": 0,
+  "explanation": "She came to Jerusalem with a very great train, with camels that bare spices, and very much gold, and precious stones.",
+  "ref": "1 Kings 10:2"
+ },
+ {
+  "id": "1-kings-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which land did the queen who visited Solomon come?",
+  "choices": [
+   "Egypt",
+   "Sheba",
+   "Tyre",
+   "Edom"
+  ],
+  "answer": 1,
+  "explanation": "When the queen of Sheba heard of the fame of Solomon, she came to prove him with hard questions.",
+  "ref": "1 Kings 10:1"
+ },
+ {
+  "id": "1-kings-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much of Solomon's greatness did the queen say had been told her?",
+  "choices": [
+   "All of it",
+   "A third",
+   "The half",
+   "Nothing"
+  ],
+  "answer": 2,
+  "explanation": "Behold, the half was not told me: thy wisdom and prosperity exceedeth the fame which I heard.",
+  "ref": "1 Kings 10:7"
+ },
+ {
+  "id": "1-kings-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the queen say should be blessed for setting Solomon on the throne?",
+  "choices": [
+   "The Lord thy God",
+   "Hiram",
+   "David",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "Blessed be the Lord thy God, which delighted in thee, to set thee on the throne of Israel.",
+  "ref": "1 Kings 10:9"
+ },
+ {
+  "id": "1-kings-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Solomon's great throne made of, overlaid with the best gold?",
+  "choices": [
+   "Cedar",
+   "Almug wood",
+   "Ivory",
+   "Brass"
+  ],
+  "answer": 2,
+  "explanation": "Moreover the king made a great throne of ivory, and overlaid it with the best gold.",
+  "ref": "1 Kings 10:18"
+ },
+ {
+  "id": "1-kings-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animals stood beside the stays of the throne?",
+  "choices": [
+   "Lions",
+   "Oxen",
+   "Eagles",
+   "Cherubims"
+  ],
+  "answer": 0,
+  "explanation": "There were stays on either side on the place of the seat, and two lions stood beside the stays.",
+  "ref": "1 Kings 10:19"
+ },
+ {
+  "id": "1-kings-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were all king Solomon's drinking vessels made of?",
+  "choices": [
+   "Silver",
+   "Gold",
+   "Brass",
+   "Ivory"
+  ],
+  "answer": 1,
+  "explanation": "All king Solomon's drinking vessels were of gold.",
+  "ref": "1 Kings 10:21"
+ },
+ {
+  "id": "1-kings-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king make to be in Jerusalem as stones?",
+  "choices": [
+   "Gold",
+   "Ivory",
+   "Silver",
+   "Cedar"
+  ],
+  "answer": 2,
+  "explanation": "And the king made silver to be in Jerusalem as stones.",
+  "ref": "1 Kings 10:27"
+ },
+ {
+  "id": "1-kings-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which of these did the navy of Tharshish bring?",
+  "choices": [
+   "Peacocks",
+   "Camels",
+   "Elephants",
+   "Lambs"
+  ],
+  "answer": 0,
+  "explanation": "Once in three years came the navy of Tharshish, bringing gold, and silver, ivory, and apes, and peacocks.",
+  "ref": "1 Kings 10:22"
+ },
+ {
+  "id": "1-kings-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what did Solomon exceed all the kings of the earth?",
+  "choices": [
+   "Armies and land",
+   "Riches and wisdom",
+   "Years and sons",
+   "Ships and horses"
+  ],
+  "answer": 1,
+  "explanation": "So king Solomon exceeded all the kings of the earth for riches and for wisdom.",
+  "ref": "1 Kings 10:23"
+ },
+ {
+  "id": "1-kings-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What made the queen finally believe the report she had heard?",
+  "choices": [
+   "A letter from Hiram",
+   "Her servants' word",
+   "Her own eyes had seen it",
+   "A sign from the Lord"
+  ],
+  "answer": 2,
+  "explanation": "I believed not the words, until I came, and mine eyes had seen it.",
+  "ref": "1 Kings 10:7"
+ },
+ {
+  "id": "1-kings-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the queen call Solomon's servants happy?",
+  "choices": [
+   "They stand continually before him and hear his wisdom",
+   "They wore fine apparel",
+   "They ate at his table",
+   "They ruled the cities"
+  ],
+  "answer": 0,
+  "explanation": "Happy are these thy servants, which stand continually before thee, and that hear thy wisdom.",
+  "ref": "1 Kings 10:8"
+ },
+ {
+  "id": "1-kings-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the queen say the Lord made Solomon king to do?",
+  "choices": [
+   "Build the temple",
+   "Judgment and justice",
+   "Conquer the nations",
+   "Gather gold"
+  ],
+  "answer": 1,
+  "explanation": "Therefore made he thee king, to do judgment and justice.",
+  "ref": "1 Kings 10:9"
+ },
+ {
+  "id": "1-kings-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hiram's navy bring from Ophir besides precious stones?",
+  "choices": [
+   "Apes",
+   "Silver",
+   "Almug trees",
+   "Linen yarn"
+  ],
+  "answer": 2,
+  "explanation": "The navy also of Hiram brought in from Ophir great plenty of almug trees, and precious stones.",
+  "ref": "1 Kings 10:11"
+ },
+ {
+  "id": "1-kings-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon make from almug trees for singers?",
+  "choices": [
+   "Harps and psalteries",
+   "Pillars and doors",
+   "Thrones and tables",
+   "Cups and bowls"
+  ],
+  "answer": 0,
+  "explanation": "The king made of the almug trees pillars for the house of the Lord, harps also and psalteries for singers.",
+  "ref": "1 Kings 10:12"
+ },
+ {
+  "id": "1-kings-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon give the queen of Sheba?",
+  "choices": [
+   "Only spices",
+   "All her desire, whatsoever she asked",
+   "A chariot and horses",
+   "Twelve cities"
+  ],
+  "answer": 1,
+  "explanation": "King Solomon gave unto the queen of Sheba all her desire, whatsoever she asked.",
+  "ref": "1 Kings 10:13"
+ },
+ {
+  "id": "1-kings-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Besides the spice merchants, which kings brought gold to Solomon?",
+  "choices": [
+   "The kings of Moab",
+   "The kings of Edom",
+   "The kings of Arabia",
+   "The kings of Ammon"
+  ],
+  "answer": 2,
+  "explanation": "Beside that he had of the merchantmen, and of the traffick of the spice merchants, and of all the kings of Arabia.",
+  "ref": "1 Kings 10:15"
+ },
+ {
+  "id": "1-kings-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the king put the shields of beaten gold?",
+  "choices": [
+   "In the house of the forest of Lebanon",
+   "In the temple",
+   "In Hiram's treasury",
+   "In the porch of judgment"
+  ],
+  "answer": 0,
+  "explanation": "The king put them in the house of the forest of Lebanon.",
+  "ref": "1 Kings 10:17"
+ },
+ {
+  "id": "1-kings-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shape was the top of the throne behind?",
+  "choices": [
+   "Square",
+   "Round",
+   "Pointed",
+   "Flat"
+  ],
+  "answer": 1,
+  "explanation": "The top of the throne was round behind.",
+  "ref": "1 Kings 10:19"
+ },
+ {
+  "id": "1-kings-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was nothing accounted of in the days of Solomon?",
+  "choices": [
+   "Gold",
+   "Ivory",
+   "Silver",
+   "Brass"
+  ],
+  "answer": 2,
+  "explanation": "None were of silver: it was nothing accounted of in the days of Solomon.",
+  "ref": "1 Kings 10:21"
+ },
+ {
+  "id": "1-kings-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How often did the navy of Tharshish come?",
+  "choices": [
+   "Once in three years",
+   "Every year",
+   "Twice a year",
+   "Once in seven years"
+  ],
+  "answer": 0,
+  "explanation": "Once in three years came the navy of Tharshish.",
+  "ref": "1 Kings 10:22"
+ },
+ {
+  "id": "1-kings-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did all the earth seek to Solomon?",
+  "choices": [
+   "To trade for gold",
+   "To hear his wisdom",
+   "To see the temple",
+   "To buy horses"
+  ],
+  "answer": 1,
+  "explanation": "All the earth sought to Solomon, to hear his wisdom, which God had put in his heart.",
+  "ref": "1 Kings 10:24"
+ },
+ {
+  "id": "1-kings-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these did people bring Solomon as yearly presents?",
+  "choices": [
+   "Sheep",
+   "Wheat",
+   "Mules",
+   "Oil"
+  ],
+  "answer": 2,
+  "explanation": "They brought every man his present, vessels of silver, and vessels of gold, and garments, and armour, and spices, horses, and mules.",
+  "ref": "1 Kings 10:25"
+ },
+ {
+  "id": "1-kings-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Cedars were made as plentiful as which trees in the vale?",
+  "choices": [
+   "Sycomore",
+   "Olive",
+   "Fig",
+   "Palm"
+  ],
+  "answer": 0,
+  "explanation": "Cedars made he to be as the sycomore trees that are in the vale, for abundance.",
+  "ref": "1 Kings 10:27"
+ },
+ {
+  "id": "1-kings-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king's merchants receive at a price out of Egypt?",
+  "choices": [
+   "Fine flour",
+   "Linen yarn",
+   "Purple cloth",
+   "Iron"
+  ],
+  "answer": 1,
+  "explanation": "Solomon had horses brought out of Egypt, and linen yarn: the king's merchants received the linen yarn at a price.",
+  "ref": "1 Kings 10:28"
+ },
+ {
+  "id": "1-kings-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of gold came to Solomon in one year?",
+  "choices": [
+   "One hundred and twenty",
+   "Four hundred and twenty",
+   "Six hundred threescore and six",
+   "Six hundred"
+  ],
+  "answer": 2,
+  "explanation": "The weight of gold that came to Solomon in one year was six hundred threescore and six talents of gold.",
+  "ref": "1 Kings 10:14"
+ },
+ {
+  "id": "1-kings-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of gold did the queen give the king?",
+  "choices": [
+   "One hundred and twenty",
+   "Four hundred and twenty",
+   "Six hundred threescore and six",
+   "Twenty"
+  ],
+  "answer": 0,
+  "explanation": "She gave the king an hundred and twenty talents of gold, and of spices very great store.",
+  "ref": "1 Kings 10:10"
+ },
+ {
+  "id": "1-kings-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shekels of gold went to one target?",
+  "choices": [
+   "Two hundred",
+   "Three hundred",
+   "Six hundred",
+   "One hundred and fifty"
+  ],
+  "answer": 2,
+  "explanation": "Six hundred shekels of gold went to one target.",
+  "ref": "1 Kings 10:16"
+ },
+ {
+  "id": "1-kings-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many pound of gold went to one shield?",
+  "choices": [
+   "Two",
+   "Three",
+   "Six",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Three hundred shields of beaten gold; three pound of gold went to one shield.",
+  "ref": "1 Kings 10:17"
+ },
+ {
+  "id": "1-kings-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shields of beaten gold did Solomon make?",
+  "choices": [
+   "Two hundred",
+   "Six hundred",
+   "Three hundred",
+   "One hundred"
+  ],
+  "answer": 2,
+  "explanation": "And he made three hundred shields of beaten gold.",
+  "ref": "1 Kings 10:17"
+ },
+ {
+  "id": "1-kings-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many steps did the throne have?",
+  "choices": [
+   "Six",
+   "Three",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "The throne had six steps.",
+  "ref": "1 Kings 10:19"
+ },
+ {
+  "id": "1-kings-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many lions stood on the six steps?",
+  "choices": [
+   "Two",
+   "Six",
+   "Twelve",
+   "Fourteen"
+  ],
+  "answer": 2,
+  "explanation": "Twelve lions stood there on the one side and on the other upon the six steps.",
+  "ref": "1 Kings 10:20"
+ },
+ {
+  "id": "1-kings-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many chariots did Solomon have?",
+  "choices": [
+   "Twelve hundred",
+   "A thousand and four hundred",
+   "Six hundred",
+   "Twelve thousand"
+  ],
+  "answer": 1,
+  "explanation": "He had a thousand and four hundred chariots, and twelve thousand horsemen.",
+  "ref": "1 Kings 10:26"
+ },
+ {
+  "id": "1-kings-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many horsemen did Solomon have?",
+  "choices": [
+   "Twelve thousand",
+   "Fourteen hundred",
+   "Six hundred",
+   "Two hundred"
+  ],
+  "answer": 0,
+  "explanation": "He had a thousand and four hundred chariots, and twelve thousand horsemen.",
+  "ref": "1 Kings 10:26"
+ },
+ {
+  "id": "1-kings-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shekels of silver did a chariot out of Egypt cost?",
+  "choices": [
+   "One hundred",
+   "One hundred and fifty",
+   "Four hundred",
+   "Six hundred"
+  ],
+  "answer": 3,
+  "explanation": "A chariot came up and went out of Egypt for six hundred shekels of silver.",
+  "ref": "1 Kings 10:29"
+ },
+ {
+  "id": "1-kings-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shekels of silver did a horse out of Egypt cost?",
+  "choices": [
+   "Fifty",
+   "One hundred and fifty",
+   "Three hundred",
+   "Six hundred"
+  ],
+  "answer": 1,
+  "explanation": "And an horse for an hundred and fifty.",
+  "ref": "1 Kings 10:29"
+ },
+ {
+  "id": "1-kings-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "For which kings, besides Solomon, were chariots and horses brought out of Egypt?",
+  "choices": [
+   "The kings of Moab and Edom",
+   "The kings of Tyre and Sidon",
+   "The kings of the Hittites and of Syria",
+   "The kings of Arabia and Sheba"
+  ],
+  "answer": 2,
+  "explanation": "So for all the kings of the Hittites, and for the kings of Syria, did they bring them out by their means.",
+  "ref": "1 Kings 10:29"
+ },
+ {
+  "id": "1-kings-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the queen commune with Solomon of?",
+  "choices": [
+   "All that was in her heart",
+   "The history of her land",
+   "The war with Egypt",
+   "The weight of her gold"
+  ],
+  "answer": 0,
+  "explanation": "She communed with him of all that was in her heart.",
+  "ref": "1 Kings 10:2"
+ },
+ {
+  "id": "1-kings-10-h-14",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these did the queen see before there was no more spirit in her?",
+  "choices": [
+   "His shields",
+   "His chariots",
+   "His cupbearers",
+   "His ships"
+  ],
+  "answer": 2,
+  "explanation": "She saw the meat of his table, the attendance of his ministers, their apparel, and his cupbearers.",
+  "ref": "1 Kings 10:5"
+ },
+ {
+  "id": "1-kings-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Solomon bestow his chariots and horsemen?",
+  "choices": [
+   "Only in Jerusalem",
+   "In the cities for chariots, and with the king at Jerusalem",
+   "In Tyre and Sidon",
+   "In Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Whom he bestowed in the cities for chariots, and with the king at Jerusalem.",
+  "ref": "1 Kings 10:26"
+ },
+ {
   "id": "old-1-kings-11-1",
   "chapter": 11,
   "level": "beginner",
