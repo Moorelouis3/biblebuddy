@@ -2215,9 +2215,9 @@
   "question": "What natural-world subjects is Solomon said to have spoken about?",
   "choices": [
    "Trees, beasts, fowl, creeping things, and fishes",
-   "Only stars",
-   "Only rivers",
-   "Only mountains"
+   "Kings, priests, and judges",
+   "Cities, walls, and gates",
+   "Stars, winds, and seasons"
   ],
   "answer": 0,
   "explanation": "The text highlights Solomon's broad wisdom about creation.",
@@ -2238,6 +2238,646 @@
   "answer": 0,
   "explanation": "His reputation drew people from many nations.",
   "ref": "1 Kings 4:34"
+ },
+ {
+  "id": "1-kings-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Over how much of Israel was Solomon king?",
+  "choices": [
+   "Only Judah",
+   "All Israel",
+   "Only the northern tribes",
+   "Only Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "So king Solomon was king over all Israel.",
+  "ref": "1 Kings 4:1"
+ },
+ {
+  "id": "1-kings-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was over Solomon's host?",
+  "choices": [
+   "Benaiah the son of Jehoiada",
+   "Joab",
+   "Abiathar",
+   "Adoniram"
+  ],
+  "answer": 0,
+  "explanation": "Benaiah the son of Jehoiada was over the host.",
+  "ref": "1 Kings 4:4"
+ },
+ {
+  "id": "1-kings-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did every man in Judah and Israel dwell safely?",
+  "choices": [
+   "Behind high walls",
+   "In tents in the wilderness",
+   "In the cities of refuge",
+   "Under his vine and his fig tree"
+  ],
+  "answer": 3,
+  "explanation": "Judah and Israel dwelt safely, every man under his vine and under his fig tree.",
+  "ref": "1 Kings 4:25"
+ },
+ {
+  "id": "1-kings-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What were Judah and Israel doing in the days of Solomon?",
+  "choices": [
+   "Fighting wars",
+   "Building the temple",
+   "Eating, drinking and making merry",
+   "Fasting and praying"
+  ],
+  "answer": 2,
+  "explanation": "Judah and Israel were many, as the sand, eating and drinking, and making merry.",
+  "ref": "1 Kings 4:20"
+ },
+ {
+  "id": "1-kings-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God give Solomon exceeding much of?",
+  "choices": [
+   "Gold and silver",
+   "Wisdom and understanding",
+   "Chariots and horses",
+   "Land and cities"
+  ],
+  "answer": 1,
+  "explanation": "God gave Solomon wisdom and understanding exceeding much, and largeness of heart.",
+  "ref": "1 Kings 4:29"
+ },
+ {
+  "id": "1-kings-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Solomon's wisdom excelled that of the east country and of which land?",
+  "choices": [
+   "Egypt",
+   "Tyre",
+   "Moab",
+   "Assyria"
+  ],
+  "answer": 0,
+  "explanation": "Solomon's wisdom excelled the wisdom of all the children of the east country, and all the wisdom of Egypt.",
+  "ref": "1 Kings 4:30"
+ },
+ {
+  "id": "1-kings-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon have on all sides round about him?",
+  "choices": [
+   "Armies",
+   "Walls",
+   "Enemies",
+   "Peace"
+  ],
+  "answer": 3,
+  "explanation": "He had peace on all sides round about him.",
+  "ref": "1 Kings 4:24"
+ },
+ {
+  "id": "1-kings-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the kingdoms do for Solomon?",
+  "choices": [
+   "Fought against him",
+   "Paid no tribute",
+   "Brought presents and served him",
+   "Sent spies"
+  ],
+  "answer": 2,
+  "explanation": "They brought presents, and served Solomon all the days of his life.",
+  "ref": "1 Kings 4:21"
+ },
+ {
+  "id": "1-kings-4-e-09",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was Solomon's largeness of heart compared to?",
+  "choices": [
+   "The stars of heaven",
+   "The sand on the sea shore",
+   "The mountains of Lebanon",
+   "The waters of the Jordan"
+  ],
+  "answer": 1,
+  "explanation": "God gave Solomon largeness of heart, even as the sand that is on the sea shore.",
+  "ref": "1 Kings 4:29"
+ },
+ {
+  "id": "1-kings-4-e-10",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where was Solomon's fame known?",
+  "choices": [
+   "In all nations round about",
+   "Only in Egypt",
+   "Only in Israel",
+   "Only in Tyre"
+  ],
+  "answer": 0,
+  "explanation": "His fame was in all nations round about.",
+  "ref": "1 Kings 4:31"
+ },
+ {
+  "id": "1-kings-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was over the tribute?",
+  "choices": [
+   "Ahishar",
+   "Zabud",
+   "Azariah",
+   "Adoniram the son of Abda"
+  ],
+  "answer": 3,
+  "explanation": "Adoniram the son of Abda was over the tribute.",
+  "ref": "1 Kings 4:6"
+ },
+ {
+  "id": "1-kings-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the recorder?",
+  "choices": [
+   "Zabud the son of Nathan",
+   "Ahishar",
+   "Jehoshaphat the son of Ahilud",
+   "Elihoreph"
+  ],
+  "answer": 2,
+  "explanation": "Jehoshaphat the son of Ahilud, the recorder.",
+  "ref": "1 Kings 4:3"
+ },
+ {
+  "id": "1-kings-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were the scribes?",
+  "choices": [
+   "Zabud and Ahishar",
+   "Elihoreph and Ahiah, the sons of Shisha",
+   "Azariah and Adoniram",
+   "Baana and Geber"
+  ],
+  "answer": 1,
+  "explanation": "Elihoreph and Ahiah, the sons of Shisha, scribes.",
+  "ref": "1 Kings 4:3"
+ },
+ {
+  "id": "1-kings-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was over the household?",
+  "choices": [
+   "Ahishar",
+   "Zabud",
+   "Adoniram",
+   "Azariah the son of Nathan"
+  ],
+  "answer": 0,
+  "explanation": "And Ahishar was over the household.",
+  "ref": "1 Kings 4:6"
+ },
+ {
+  "id": "1-kings-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the principal officer and the king's friend?",
+  "choices": [
+   "Ahishar",
+   "Azariah the son of Zadok",
+   "Benaiah",
+   "Zabud the son of Nathan"
+  ],
+  "answer": 3,
+  "explanation": "Zabud the son of Nathan was principal officer, and the king's friend.",
+  "ref": "1 Kings 4:5"
+ },
+ {
+  "id": "1-kings-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon's twelve officers provide?",
+  "choices": [
+   "Soldiers for the army",
+   "Silver for the temple",
+   "Victuals for the king and his household",
+   "Horses for the chariots"
+  ],
+  "answer": 2,
+  "explanation": "Twelve officers provided victuals for the king and his household: each man his month in a year.",
+  "ref": "1 Kings 4:7"
+ },
+ {
+  "id": "1-kings-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How far did Solomon's rule reach, from the river unto what land?",
+  "choices": [
+   "The sea and the land of Tyre",
+   "The land of the Philistines and the border of Egypt",
+   "The Jordan and the land of Moab",
+   "Damascus and the land of Edom"
+  ],
+  "answer": 1,
+  "explanation": "Solomon reigned over all kingdoms from the river unto the land of the Philistines, and unto the border of Egypt.",
+  "ref": "1 Kings 4:21"
+ },
+ {
+  "id": "1-kings-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many measures of fine flour did Solomon's household use in a day?",
+  "choices": [
+   "Thirty",
+   "Ten",
+   "Sixty",
+   "One hundred"
+  ],
+  "answer": 0,
+  "explanation": "Solomon's provision for one day was thirty measures of fine flour, and threescore measures of meal.",
+  "ref": "1 Kings 4:22"
+ },
+ {
+  "id": "1-kings-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many fat oxen were part of Solomon's provision for one day?",
+  "choices": [
+   "Twenty",
+   "Thirty",
+   "One hundred",
+   "Ten"
+  ],
+  "answer": 3,
+  "explanation": "Ten fat oxen, and twenty oxen out of the pastures, and an hundred sheep.",
+  "ref": "1 Kings 4:23"
+ },
+ {
+  "id": "1-kings-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many sheep were part of Solomon's provision for one day?",
+  "choices": [
+   "Ten",
+   "Twenty",
+   "An hundred",
+   "Sixty"
+  ],
+  "answer": 2,
+  "explanation": "Ten fat oxen, and twenty oxen out of the pastures, and an hundred sheep.",
+  "ref": "1 Kings 4:23"
+ },
+ {
+  "id": "1-kings-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many stalls of horses did Solomon have for his chariots?",
+  "choices": [
+   "Four thousand",
+   "Forty thousand",
+   "Twelve thousand",
+   "One thousand"
+  ],
+  "answer": 1,
+  "explanation": "Solomon had forty thousand stalls of horses for his chariots, and twelve thousand horsemen.",
+  "ref": "1 Kings 4:26"
+ },
+ {
+  "id": "1-kings-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many horsemen did Solomon have?",
+  "choices": [
+   "Twelve thousand",
+   "Forty thousand",
+   "Four thousand",
+   "Seven thousand"
+  ],
+  "answer": 0,
+  "explanation": "Solomon had forty thousand stalls of horses for his chariots, and twelve thousand horsemen.",
+  "ref": "1 Kings 4:26"
+ },
+ {
+  "id": "1-kings-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many songs did Solomon speak?",
+  "choices": [
+   "Three thousand",
+   "A hundred and five",
+   "Five thousand",
+   "A thousand and five"
+  ],
+  "answer": 3,
+  "explanation": "He spake three thousand proverbs: and his songs were a thousand and five.",
+  "ref": "1 Kings 4:32"
+ },
+ {
+  "id": "1-kings-4-m-14",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many proverbs did Solomon speak?",
+  "choices": [
+   "A thousand and five",
+   "Three hundred",
+   "Three thousand",
+   "Five thousand"
+  ],
+  "answer": 2,
+  "explanation": "He spake three thousand proverbs.",
+  "ref": "1 Kings 4:32"
+ },
+ {
+  "id": "1-kings-4-m-15",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Azariah the son of Zadok the priest was listed among Solomon's what?",
+  "choices": [
+   "Scribes",
+   "Princes",
+   "Officers over the months",
+   "Captains of the host"
+  ],
+  "answer": 1,
+  "explanation": "These were the princes which he had; Azariah the son of Zadok the priest.",
+  "ref": "1 Kings 4:2"
+ },
+ {
+  "id": "1-kings-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose sons were Heman, Chalcol and Darda?",
+  "choices": [
+   "Mahol",
+   "Zerah",
+   "Asaph",
+   "Korah"
+  ],
+  "answer": 0,
+  "explanation": "He was wiser than all men; than Ethan the Ezrahite, and Heman, and Chalcol, and Darda, the sons of Mahol.",
+  "ref": "1 Kings 4:31"
+ },
+ {
+  "id": "1-kings-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Solomon spoke of trees from the cedar in Lebanon to what?",
+  "choices": [
+   "The palm of Jericho",
+   "The vine of Engedi",
+   "The olive of Gilead",
+   "The hyssop that springeth out of the wall"
+  ],
+  "answer": 3,
+  "explanation": "He spake of trees, from the cedar tree that is in Lebanon even unto the hyssop that springeth out of the wall.",
+  "ref": "1 Kings 4:33"
+ },
+ {
+  "id": "1-kings-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Solomon's dominion on this side the river reached from Tiphsah to where?",
+  "choices": [
+   "Tyre",
+   "Damascus",
+   "Azzah",
+   "Hamath"
+  ],
+  "answer": 2,
+  "explanation": "He had dominion over all the region on this side the river, from Tiphsah even to Azzah.",
+  "ref": "1 Kings 4:24"
+ },
+ {
+  "id": "1-kings-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of Solomon's daughters married Ahimaaz of Naphtali?",
+  "choices": [
+   "Taphath",
+   "Basmath",
+   "Maacah",
+   "Tamar"
+  ],
+  "answer": 1,
+  "explanation": "Ahimaaz was in Naphtali; he also took Basmath the daughter of Solomon to wife.",
+  "ref": "1 Kings 4:15"
+ },
+ {
+  "id": "1-kings-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of Solomon's daughters married the officer in Dor?",
+  "choices": [
+   "Taphath",
+   "Basmath",
+   "Maacah",
+   "Tamar"
+  ],
+  "answer": 0,
+  "explanation": "The son of Abinadab, in all the region of Dor; which had Taphath the daughter of Solomon to wife.",
+  "ref": "1 Kings 4:11"
+ },
+ {
+  "id": "1-kings-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Which officer served in mount Ephraim?",
+  "choices": [
+   "The son of Dekar",
+   "The son of Hesed",
+   "The son of Geber",
+   "The son of Hur"
+  ],
+  "answer": 3,
+  "explanation": "These are their names: The son of Hur, in mount Ephraim.",
+  "ref": "1 Kings 4:8"
+ },
+ {
+  "id": "1-kings-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Which officer had Taanach and Megiddo?",
+  "choices": [
+   "Baanah the son of Hushai",
+   "Ahinadab the son of Iddo",
+   "Baana the son of Ahilud",
+   "Shimei the son of Elah"
+  ],
+  "answer": 2,
+  "explanation": "Baana the son of Ahilud; to him pertained Taanach and Megiddo.",
+  "ref": "1 Kings 4:12"
+ },
+ {
+  "id": "1-kings-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the only officer in the land of Gilead?",
+  "choices": [
+   "Geber the son of Hur",
+   "Geber the son of Uri",
+   "Baana the son of Ahilud",
+   "Ahinadab the son of Iddo"
+  ],
+  "answer": 1,
+  "explanation": "Geber the son of Uri was in the country of Gilead; and he was the only officer which was in the land.",
+  "ref": "1 Kings 4:19"
+ },
+ {
+  "id": "1-kings-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many great cities with walls and brasen bars were in the region of Argob?",
+  "choices": [
+   "Threescore",
+   "Twelve",
+   "Forty",
+   "One hundred"
+  ],
+  "answer": 0,
+  "explanation": "The region of Argob, which is in Bashan, threescore great cities with walls and brasen bars.",
+  "ref": "1 Kings 4:13"
+ },
+ {
+  "id": "1-kings-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Which officer served in Benjamin?",
+  "choices": [
+   "Baanah the son of Hushai",
+   "Jehoshaphat the son of Paruah",
+   "Ahimaaz",
+   "Shimei the son of Elah"
+  ],
+  "answer": 3,
+  "explanation": "Shimei the son of Elah, in Benjamin.",
+  "ref": "1 Kings 4:18"
+ },
+ {
+  "id": "1-kings-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Which officer served in Issachar?",
+  "choices": [
+   "Shimei the son of Elah",
+   "Baanah the son of Hushai",
+   "Jehoshaphat the son of Paruah",
+   "Ahimaaz"
+  ],
+  "answer": 2,
+  "explanation": "Jehoshaphat the son of Paruah, in Issachar.",
+  "ref": "1 Kings 4:17"
+ },
+ {
+  "id": "1-kings-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Which officer served in Asher and Aloth?",
+  "choices": [
+   "Ahimaaz",
+   "Baanah the son of Hushai",
+   "Shimei the son of Elah",
+   "Ahinadab the son of Iddo"
+  ],
+  "answer": 1,
+  "explanation": "Baanah the son of Hushai was in Asher and in Aloth.",
+  "ref": "1 Kings 4:16"
+ },
+ {
+  "id": "1-kings-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which animals besides horses were brought barley and straw?",
+  "choices": [
+   "Dromedaries",
+   "Camels of Midian",
+   "Mules",
+   "Asses"
+  ],
+  "answer": 0,
+  "explanation": "Barley also and straw for the horses and dromedaries brought they unto the place where the officers were.",
+  "ref": "1 Kings 4:28"
+ },
+ {
+  "id": "1-kings-4-h-14",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "What was Azariah the son of Nathan over?",
+  "choices": [
+   "The household",
+   "The tribute",
+   "The host",
+   "The officers"
+  ],
+  "answer": 3,
+  "explanation": "Azariah the son of Nathan was over the officers.",
+  "ref": "1 Kings 4:5"
+ },
+ {
+  "id": "1-kings-4-h-15",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of the officers' supply for Solomon's table?",
+  "choices": [
+   "It was never enough",
+   "It came late",
+   "They lacked nothing",
+   "It was paid for in silver"
+  ],
+  "answer": 2,
+  "explanation": "Those officers provided victual for king Solomon, and for all that came unto king Solomon's table: they lacked nothing.",
+  "ref": "1 Kings 4:27"
  },
  {
   "id": "old-1-kings-5-1",
