@@ -5568,22 +5568,6 @@
   "ref": "1 Chronicles 9:2"
  },
  {
-  "id": "old-1-chronicles-9-3",
-  "chapter": 9,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What responsibility is especially associated with the porters or gatekeepers?",
-  "choices": [
-   "Leading the army",
-   "Writing the law",
-   "Keeping the gates of the house of the Lord",
-   "Collecting tribute"
-  ],
-  "answer": 2,
-  "explanation": "The gatekeepers were entrusted with the entrances of God's house.",
-  "ref": "1 Chronicles 9:17–27"
- },
- {
   "id": "old-1-chronicles-9-4",
   "chapter": 9,
   "level": "beginner",
@@ -5600,20 +5584,772 @@
   "ref": "1 Chronicles 9:35–44"
  },
  {
-  "id": "old-1-chronicles-9-5",
+  "id": "1-chronicles-9-e-01",
   "chapter": 9,
   "level": "beginner",
   "category": "keyword",
-  "question": "What major theme does this chapter emphasize after the exile?",
+  "question": "Where were the genealogies of all Israel written?",
   "choices": [
-   "Trade expansion",
-   "Foreign alliances",
-   "Royal conquest",
-   "Restored worship and ordered service"
+   "In the book of the law",
+   "In the book of the kings of Israel and Judah",
+   "In the book of Jasher",
+   "On the temple wall"
+  ],
+  "answer": 1,
+  "explanation": "All Israel were reckoned by genealogies, and they were written in the book of the kings of Israel and Judah.",
+  "ref": "1 Chronicles 9:1"
+ },
+ {
+  "id": "1-chronicles-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which city did the chief fathers of the Levites dwell?",
+  "choices": [
+   "Bethlehem",
+   "Hebron",
+   "Jerusalem",
+   "Gibeon"
+  ],
+  "answer": 2,
+  "explanation": "These chief fathers of the Levites were chief throughout their generations; these dwelt at Jerusalem.",
+  "ref": "1 Chronicles 9:34"
+ },
+ {
+  "id": "1-chronicles-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tribe is NOT named among those who dwelt in Jerusalem?",
+  "choices": [
+   "Judah",
+   "Benjamin",
+   "Ephraim",
+   "Reuben"
   ],
   "answer": 3,
-  "explanation": "The chronicler shows restored life centered on God's house.",
-  "ref": "1 Chronicles 9:1"
+  "explanation": "In Jerusalem dwelt of the children of Judah, Benjamin, Ephraim, and Manasseh.",
+  "ref": "1 Chronicles 9:3"
+ },
+ {
+  "id": "1-chronicles-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the father of Saul in the genealogy?",
+  "choices": [
+   "Kish",
+   "Ner",
+   "Jehiel",
+   "Abdon"
+  ],
+  "answer": 0,
+  "explanation": "Ner begat Kish; and Kish begat Saul.",
+  "ref": "1 Chronicles 9:39"
+ },
+ {
+  "id": "1-chronicles-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these was a son of Saul?",
+  "choices": [
+   "Micah",
+   "Jonathan",
+   "Mikloth",
+   "Zimri"
+  ],
+  "answer": 1,
+  "explanation": "Saul begat Jonathan, and Malchi-shua, and Abinadab, and Esh-baal.",
+  "ref": "1 Chronicles 9:39"
+ },
+ {
+  "id": "1-chronicles-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was the work of the porters at the house of God?",
+  "choices": [
+   "They led the singing",
+   "They offered the sacrifices",
+   "They kept the gates",
+   "They judged the people"
+  ],
+  "answer": 2,
+  "explanation": "The porters had the oversight of the gates of the house of the Lord.",
+  "ref": "1 Chronicles 9:23"
+ },
+ {
+  "id": "1-chronicles-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did some of the sons of the priests make?",
+  "choices": [
+   "The shewbread",
+   "The altar fire",
+   "The temple curtains",
+   "The ointment of the spices"
+  ],
+  "answer": 3,
+  "explanation": "Some of the sons of the priests made the ointment of the spices.",
+  "ref": "1 Chronicles 9:30"
+ },
+ {
+  "id": "1-chronicles-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Kohathites prepare every sabbath?",
+  "choices": [
+   "The shewbread",
+   "The ointment",
+   "The wine",
+   "The incense"
+  ],
+  "answer": 0,
+  "explanation": "Other brethren of the sons of the Kohathites were over the shewbread, to prepare it every sabbath.",
+  "ref": "1 Chronicles 9:32"
+ },
+ {
+  "id": "1-chronicles-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In how many quarters were the porters stationed?",
+  "choices": [
+   "Two",
+   "Four",
+   "Three",
+   "Seven"
+  ],
+  "answer": 1,
+  "explanation": "In four quarters were the porters, toward the east, west, north, and south.",
+  "ref": "1 Chronicles 9:24"
+ },
+ {
+  "id": "1-chronicles-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who dwelt in Gibeon as the father of Gibeon?",
+  "choices": [
+   "Kish",
+   "Ner",
+   "Jehiel",
+   "Azel"
+  ],
+  "answer": 2,
+  "explanation": "In Gibeon dwelt the father of Gibeon, Jehiel, whose wife's name was Maachah.",
+  "ref": "1 Chronicles 9:35"
+ },
+ {
+  "id": "1-chronicles-9-e-11",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sons did Azel have?",
+  "choices": [
+   "Four",
+   "Seven",
+   "Twelve",
+   "Six"
+  ],
+  "answer": 3,
+  "explanation": "Azel had six sons, whose names are these, Azrikam, Bocheru, and Ishmael, and Sheariah, and Obadiah, and Hanan.",
+  "ref": "1 Chronicles 9:44"
+ },
+ {
+  "id": "1-chronicles-9-e-12",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the son of Jonathan in the genealogy of Saul?",
+  "choices": [
+   "Merib-baal",
+   "Micah",
+   "Pithon",
+   "Moza"
+  ],
+  "answer": 0,
+  "explanation": "The son of Jonathan was Merib-baal: and Merib-baal begat Micah.",
+  "ref": "1 Chronicles 9:40"
+ },
+ {
+  "id": "1-chronicles-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the chief of the porters?",
+  "choices": [
+   "Akkub",
+   "Talmon",
+   "Shallum",
+   "Ahiman"
+  ],
+  "answer": 2,
+  "explanation": "The porters were Shallum, and Akkub, and Talmon, and Ahiman, and their brethren: Shallum was the chief.",
+  "ref": "1 Chronicles 9:17"
+ },
+ {
+  "id": "1-chronicles-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was ruler over the keepers of the entry in time past, and the Lord was with him?",
+  "choices": [
+   "Eleazar",
+   "Zadok",
+   "Samuel",
+   "Phinehas"
+  ],
+  "answer": 3,
+  "explanation": "Phinehas the son of Eleazar was the ruler over them in time past, and the Lord was with him.",
+  "ref": "1 Chronicles 9:20"
+ },
+ {
+  "id": "1-chronicles-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many were chosen to be porters in the gates?",
+  "choices": [
+   "Two hundred and twelve",
+   "One hundred and twenty",
+   "Two hundred and forty",
+   "Seven hundred and sixty"
+  ],
+  "answer": 0,
+  "explanation": "All these which were chosen to be porters in the gates were two hundred and twelve.",
+  "ref": "1 Chronicles 9:22"
+ },
+ {
+  "id": "1-chronicles-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was porter of the door of the tabernacle of the congregation?",
+  "choices": [
+   "Shallum the son of Kore",
+   "Zechariah the son of Meshelemiah",
+   "Mattithiah",
+   "Jehiel"
+  ],
+  "answer": 1,
+  "explanation": "Zechariah the son of Meshelemiah was porter of the door of the tabernacle of the congregation.",
+  "ref": "1 Chronicles 9:21"
+ },
+ {
+  "id": "1-chronicles-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the four chief porters lodge round about the house of God?",
+  "choices": [
+   "They had no homes",
+   "They feared the enemy",
+   "The charge was upon them",
+   "The king commanded it"
+  ],
+  "answer": 2,
+  "explanation": "They lodged round about the house of God, because the charge was upon them, and the opening thereof every morning pertained to them.",
+  "ref": "1 Chronicles 9:27"
+ },
+ {
+  "id": "1-chronicles-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was it their duty to do every morning?",
+  "choices": [
+   "Bring the offering",
+   "Sound the trumpet",
+   "Count the vessels",
+   "Open the house of God"
+  ],
+  "answer": 3,
+  "explanation": "The charge was upon them, and the opening thereof every morning pertained to them.",
+  "ref": "1 Chronicles 9:27"
+ },
+ {
+  "id": "1-chronicles-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had the set office over the things that were made in the pans?",
+  "choices": [
+   "Mattithiah",
+   "Shallum",
+   "Zechariah",
+   "Shemaiah"
+  ],
+  "answer": 0,
+  "explanation": "Mattithiah, one of the Levites, the firstborn of Shallum the Korahite, had the set office over the things made in the pans.",
+  "ref": "1 Chronicles 9:31"
+ },
+ {
+  "id": "1-chronicles-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the singers free while they remained in the chambers?",
+  "choices": [
+   "They were too old",
+   "They worked day and night",
+   "They were exiles",
+   "They were not Levites"
+  ],
+  "answer": 1,
+  "explanation": "The singers remaining in the chambers were free: for they were employed in that work day and night.",
+  "ref": "1 Chronicles 9:33"
+ },
+ {
+  "id": "1-chronicles-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many of the priests' brethren, heads of their fathers' houses, are numbered?",
+  "choices": [
+   "Nine hundred and fifty and six",
+   "Six hundred and ninety",
+   "A thousand seven hundred and threescore",
+   "Two hundred and twelve"
+  ],
+  "answer": 2,
+  "explanation": "Their brethren, heads of the house of their fathers, were a thousand and seven hundred and threescore.",
+  "ref": "1 Chronicles 9:13"
+ },
+ {
+  "id": "1-chronicles-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How are the priests' brethren described?",
+  "choices": [
+   "Mighty men of valour",
+   "Men of renown",
+   "Wise men and scribes",
+   "Very able men for the work of the service"
+  ],
+  "answer": 3,
+  "explanation": "They were very able men for the work of the service of the house of God.",
+  "ref": "1 Chronicles 9:13"
+ },
+ {
+  "id": "1-chronicles-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of the sons of Zerah, how many were Jeuel and his brethren?",
+  "choices": [
+   "Six hundred and ninety",
+   "Nine hundred and fifty and six",
+   "One thousand",
+   "Two hundred and twelve"
+  ],
+  "answer": 0,
+  "explanation": "Of the sons of Zerah; Jeuel, and their brethren, six hundred and ninety.",
+  "ref": "1 Chronicles 9:6"
+ },
+ {
+  "id": "1-chronicles-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "After how many days did the porters' brethren come from their villages to serve?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Ten days",
+   "Thirty days"
+  ],
+  "answer": 1,
+  "explanation": "Their brethren in their villages were to come after seven days from time to time with them.",
+  "ref": "1 Chronicles 9:25"
+ },
+ {
+  "id": "1-chronicles-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was brought in and out by tale (by number)?",
+  "choices": [
+   "The shewbread loaves",
+   "The offerings of oil",
+   "The ministering vessels",
+   "The singers' instruments"
+  ],
+  "answer": 2,
+  "explanation": "Certain of them had the charge of the ministering vessels, that they should bring them in and out by tale.",
+  "ref": "1 Chronicles 9:28"
+ },
+ {
+  "id": "1-chronicles-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was Azariah, the son of Hilkiah, ruler of?",
+  "choices": [
+   "The porters",
+   "The singers",
+   "The tribe of Levi",
+   "The house of God"
+  ],
+  "answer": 3,
+  "explanation": "Azariah the son of Hilkiah was the ruler of the house of God.",
+  "ref": "1 Chronicles 9:11"
+ },
+ {
+  "id": "1-chronicles-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Obadiah and Berechiah dwell?",
+  "choices": [
+   "In the villages of the Netophathites",
+   "In Gibeon",
+   "At Geba",
+   "In Hebron"
+  ],
+  "answer": 0,
+  "explanation": "Berechiah the son of Asa dwelt in the villages of the Netophathites.",
+  "ref": "1 Chronicles 9:16"
+ },
+ {
+  "id": "1-chronicles-9-m-16",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the firstborn of the Shilonites?",
+  "choices": [
+   "Jeuel",
+   "Asaiah",
+   "Sallu",
+   "Uthai"
+  ],
+  "answer": 1,
+  "explanation": "Of the Shilonites; Asaiah the firstborn, and his sons.",
+  "ref": "1 Chronicles 9:5"
+ },
+ {
+  "id": "1-chronicles-9-m-17",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who remained in the chambers, employed in their work day and night?",
+  "choices": [
+   "The porters",
+   "The priests",
+   "The singers",
+   "The Nethinims"
+  ],
+  "answer": 2,
+  "explanation": "These are the singers, chief of the fathers of the Levites, who remaining in the chambers were free.",
+  "ref": "1 Chronicles 9:33"
+ },
+ {
+  "id": "1-chronicles-9-m-18",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who ordained the porters in their set office, along with David?",
+  "choices": [
+   "Nathan the prophet",
+   "Zadok the priest",
+   "Gad the seer",
+   "Samuel the seer"
+  ],
+  "answer": 3,
+  "explanation": "David and Samuel the seer did ordain them in their set office.",
+  "ref": "1 Chronicles 9:22"
+ },
+ {
+  "id": "1-chronicles-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many were the brethren of Benjamin, chief of the fathers' houses?",
+  "choices": [
+   "Six hundred and ninety",
+   "One thousand seven hundred and sixty",
+   "Two hundred and twelve",
+   "Nine hundred and fifty and six"
+  ],
+  "answer": 3,
+  "explanation": "Their brethren, according to their generations, were nine hundred and fifty and six.",
+  "ref": "1 Chronicles 9:9"
+ },
+ {
+  "id": "1-chronicles-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Azel?",
+  "choices": [
+   "Bocheru",
+   "Ulam",
+   "Zimri",
+   "Moza"
+  ],
+  "answer": 0,
+  "explanation": "Azel's sons were Azrikam, Bocheru, and Ishmael, and Sheariah, and Obadiah, and Hanan.",
+  "ref": "1 Chronicles 9:44"
+ },
+ {
+  "id": "1-chronicles-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the firstborn son of Jehiel and Maachah?",
+  "choices": [
+   "Zur",
+   "Abdon",
+   "Kish",
+   "Ner"
+  ],
+  "answer": 1,
+  "explanation": "His firstborn son Abdon, then Zur, and Kish, and Baal, and Ner, and Nadab.",
+  "ref": "1 Chronicles 9:36"
+ },
+ {
+  "id": "1-chronicles-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Mikloth was the father of which man?",
+  "choices": [
+   "Gedor",
+   "Ahio",
+   "Shimeam",
+   "Merib-baal"
+  ],
+  "answer": 2,
+  "explanation": "Mikloth begat Shimeam.",
+  "ref": "1 Chronicles 9:38"
+ },
+ {
+  "id": "1-chronicles-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the son of Merib-baal?",
+  "choices": [
+   "Moza",
+   "Jarah",
+   "Ahaz",
+   "Micah"
+  ],
+  "answer": 3,
+  "explanation": "Merib-baal begat Micah.",
+  "ref": "1 Chronicles 9:40"
+ },
+ {
+  "id": "1-chronicles-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was NOT a son of Micah?",
+  "choices": [
+   "Alemeth",
+   "Pithon",
+   "Melech",
+   "Tahrea"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Micah were Pithon, and Melech, and Tahrea, and Ahaz.",
+  "ref": "1 Chronicles 9:41"
+ },
+ {
+  "id": "1-chronicles-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Who begat Jarah?",
+  "choices": [
+   "Micah",
+   "Ahaz",
+   "Zimri",
+   "Moza"
+  ],
+  "answer": 1,
+  "explanation": "Ahaz begat Jarah; and Jarah begat Alemeth, and Azmaveth, and Zimri.",
+  "ref": "1 Chronicles 9:42"
+ },
+ {
+  "id": "1-chronicles-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Zimri begat which son?",
+  "choices": [
+   "Binea",
+   "Rephaiah",
+   "Moza",
+   "Eleasah"
+  ],
+  "answer": 2,
+  "explanation": "Zimri begat Moza.",
+  "ref": "1 Chronicles 9:42"
+ },
+ {
+  "id": "1-chronicles-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Rephaiah?",
+  "choices": [
+   "Moza",
+   "Eleasah",
+   "Azel",
+   "Binea"
+  ],
+  "answer": 3,
+  "explanation": "Moza begat Binea; and Rephaiah his son, Eleasah his son, Azel his son.",
+  "ref": "1 Chronicles 9:43"
+ },
+ {
+  "id": "1-chronicles-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Shallum the porter was the son of whom?",
+  "choices": [
+   "Kore",
+   "Meshelemiah",
+   "Asaph",
+   "Korah"
+  ],
+  "answer": 0,
+  "explanation": "Shallum the son of Kore, the son of Ebiasaph, the son of Korah, of the Korahites.",
+  "ref": "1 Chronicles 9:19"
+ },
+ {
+  "id": "1-chronicles-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Mattaniah, a Levite, was the son of Micah and descended from whom?",
+  "choices": [
+   "Jeduthun",
+   "Asaph",
+   "Heman",
+   "Merari"
+  ],
+  "answer": 1,
+  "explanation": "Mattaniah the son of Micah, the son of Zichri, the son of Asaph.",
+  "ref": "1 Chronicles 9:15"
+ },
+ {
+  "id": "1-chronicles-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Shemaiah the Levite was of the sons of whom?",
+  "choices": [
+   "Kohath",
+   "Gershon",
+   "Merari",
+   "Asaph"
+  ],
+  "answer": 2,
+  "explanation": "Shemaiah the son of Hasshub, the son of Azrikam, the son of Hashabiah, of the sons of Merari.",
+  "ref": "1 Chronicles 9:14"
+ },
+ {
+  "id": "1-chronicles-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Berechiah, who dwelt in the villages of the Netophathites, was the son of whom?",
+  "choices": [
+   "Elkanah",
+   "Shemaiah",
+   "Galal",
+   "Asa"
+  ],
+  "answer": 3,
+  "explanation": "Berechiah the son of Asa, the son of Elkanah.",
+  "ref": "1 Chronicles 9:16"
+ },
+ {
+  "id": "1-chronicles-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Sallu, of the sons of Benjamin, was the son of whom?",
+  "choices": [
+   "Meshullam",
+   "Hodaviah",
+   "Hasenuah",
+   "Jeroham"
+  ],
+  "answer": 0,
+  "explanation": "Sallu the son of Meshullam, the son of Hodaviah, the son of Hasenuah.",
+  "ref": "1 Chronicles 9:7"
+ },
+ {
+  "id": "1-chronicles-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Uthai, of the children of Judah, descended from which son of Judah?",
+  "choices": [
+   "Zerah",
+   "Pharez",
+   "Shelah",
+   "Hezron"
+  ],
+  "answer": 1,
+  "explanation": "Uthai the son of Ammihud, of the children of Pharez the son of Judah.",
+  "ref": "1 Chronicles 9:4"
+ },
+ {
+  "id": "1-chronicles-9-h-16",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was one of the four sons born to Saul?",
+  "choices": [
+   "Rephaiah",
+   "Zichri",
+   "Esh-baal",
+   "Hanan"
+  ],
+  "answer": 2,
+  "explanation": "Saul begat Jonathan, and Malchi-shua, and Abinadab, and Esh-baal.",
+  "ref": "1 Chronicles 9:39"
+ },
+ {
+  "id": "1-chronicles-9-h-17",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which items were the keepers overseeing along with the vessels and instruments of the sanctuary?",
+  "choices": [
+   "Gold, silver and brass",
+   "Lambs, rams and bullocks",
+   "Bread, fish and honey",
+   "Fine flour, wine, oil, frankincense and spices"
+  ],
+  "answer": 3,
+  "explanation": "Some were appointed to oversee the vessels, and the instruments of the sanctuary, and the fine flour, and the wine, and the oil, and the frankincense, and the spices.",
+  "ref": "1 Chronicles 9:29"
+ },
+ {
+  "id": "1-chronicles-9-h-18",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which Levite house were Shallum and his brethren of?",
+  "choices": [
+   "The Korahites",
+   "The Netophathites",
+   "The Shilonites",
+   "The Nethinims"
+  ],
+  "answer": 0,
+  "explanation": "Shallum the son of Kore, and his brethren, of the house of his father, the Korahites, were keepers of the gates of the tabernacle.",
+  "ref": "1 Chronicles 9:19"
  },
  {
   "id": "old-1-chronicles-10-1",
