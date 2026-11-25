@@ -4883,17 +4883,657 @@
   "id": "old-1-chronicles-8-5",
   "chapter": 8,
   "level": "beginner",
-  "category": "keyword",
-  "question": "Why does Chronicles give such attention to Benjamin here?",
+  "category": "person",
+  "question": "Who begat Kish, the father of Saul?",
   "choices": [
-   "To preserve the line of Israel's first king",
-   "To explain the exile of Judah",
-   "To teach temple worship",
-   "To describe foreign nations"
+   "Ner",
+   "Gera",
+   "Shaharaim",
+   "Azel"
   ],
   "answer": 0,
-  "explanation": "Benjamin's line matters because Saul came from that tribe.",
+  "explanation": "Ner begat Kish, and Kish begat Saul.",
+  "ref": "1 Chronicles 8:33"
+ },
+ {
+  "id": "1-chronicles-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was Benjamin's firstborn son?",
+  "choices": [
+   "Bela",
+   "Ashbel",
+   "Aharah",
+   "Rapha"
+  ],
+  "answer": 0,
+  "explanation": "Benjamin begat Bela his firstborn.",
   "ref": "1 Chronicles 8:1"
+ },
+ {
+  "id": "1-chronicles-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who built Ono and Lod with the towns thereof?",
+  "choices": [
+   "Eber",
+   "Shaharaim",
+   "Misham",
+   "Shamed"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Elpaal; Eber, and Misham, and Shamed, who built Ono, and Lod.",
+  "ref": "1 Chronicles 8:12"
+ },
+ {
+  "id": "1-chronicles-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the son of Jonathan?",
+  "choices": [
+   "Merib-baal",
+   "Micah",
+   "Moza",
+   "Ahaz"
+  ],
+  "answer": 0,
+  "explanation": "The son of Jonathan was Merib-baal.",
+  "ref": "1 Chronicles 8:34"
+ },
+ {
+  "id": "1-chronicles-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sons did Azel have?",
+  "choices": [
+   "Ten",
+   "Twelve",
+   "Three",
+   "Six"
+  ],
+  "answer": 3,
+  "explanation": "Azel had six sons.",
+  "ref": "1 Chronicles 8:38"
+ },
+ {
+  "id": "1-chronicles-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many sons and sons' sons did the sons of Ulam have?",
+  "choices": [
+   "Twelve",
+   "An hundred and fifty",
+   "Seventy",
+   "Four hundred"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Ulam had many sons, and sons' sons, an hundred and fifty.",
+  "ref": "1 Chronicles 8:40"
+ },
+ {
+  "id": "1-chronicles-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Beriah and Shema were heads of the fathers of which place?",
+  "choices": [
+   "Geba",
+   "Moab",
+   "Gibeon",
+   "Aijalon"
+  ],
+  "answer": 3,
+  "explanation": "Beriah also, and Shema, who were heads of the fathers of the inhabitants of Aijalon.",
+  "ref": "1 Chronicles 8:13"
+ },
+ {
+  "id": "1-chronicles-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the chief men of Benjamin's heads dwell?",
+  "choices": [
+   "Ono",
+   "Jerusalem",
+   "Moab",
+   "Gath"
+  ],
+  "answer": 1,
+  "explanation": "These were heads of the fathers, chief men. These dwelt in Jerusalem.",
+  "ref": "1 Chronicles 8:28"
+ },
+ {
+  "id": "1-chronicles-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these was a son of Saul?",
+  "choices": [
+   "Ner",
+   "Kish",
+   "Abinadab",
+   "Micah"
+  ],
+  "answer": 2,
+  "explanation": "Saul begat Jonathan, and Malchi-shua, and Abinadab, and Esh-baal.",
+  "ref": "1 Chronicles 8:33"
+ },
+ {
+  "id": "1-chronicles-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which country did Shaharaim beget children?",
+  "choices": [
+   "Egypt",
+   "Ammon",
+   "Gath",
+   "Moab"
+  ],
+  "answer": 3,
+  "explanation": "Shaharaim begat children in the country of Moab.",
+  "ref": "1 Chronicles 8:8"
+ },
+ {
+  "id": "1-chronicles-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who were the wives of Shaharaim?",
+  "choices": [
+   "Hodesh and Maachah",
+   "Hushim and Baara",
+   "Hushim and Maachah",
+   "Bilhah and Serah"
+  ],
+  "answer": 1,
+  "explanation": "Hushim and Baara were his wives.",
+  "ref": "1 Chronicles 8:8"
+ },
+ {
+  "id": "1-chronicles-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "The sons of Ehud were heads of the fathers of the inhabitants of which place?",
+  "choices": [
+   "Gibeon",
+   "Aijalon",
+   "Ono",
+   "Geba"
+  ],
+  "answer": 3,
+  "explanation": "These are the sons of Ehud: heads of the fathers of the inhabitants of Geba.",
+  "ref": "1 Chronicles 8:6"
+ },
+ {
+  "id": "1-chronicles-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "To which place were the sons of Ehud removed?",
+  "choices": [
+   "Ono",
+   "Lod",
+   "Gath",
+   "Manahath"
+  ],
+  "answer": 3,
+  "explanation": "The inhabitants of Geba, and they removed them to Manahath.",
+  "ref": "1 Chronicles 8:6"
+ },
+ {
+  "id": "1-chronicles-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who sent away his wives Hushim and Baara?",
+  "choices": [
+   "Shaharaim",
+   "Ehud",
+   "Ner",
+   "Elpaal"
+  ],
+  "answer": 0,
+  "explanation": "Shaharaim begat children in the country of Moab, after he had sent them away.",
+  "ref": "1 Chronicles 8:8"
+ },
+ {
+  "id": "1-chronicles-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who bare Jobab, Zibia, Mesha and Malcham to Shaharaim?",
+  "choices": [
+   "Baara",
+   "Maachah",
+   "Hushim",
+   "Hodesh his wife"
+  ],
+  "answer": 3,
+  "explanation": "He begat of Hodesh his wife, Jobab, and Zibia, and Mesha, and Malcham.",
+  "ref": "1 Chronicles 8:9"
+ },
+ {
+  "id": "1-chronicles-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Of Hushim, Shaharaim begat which two sons?",
+  "choices": [
+   "Beriah and Shema",
+   "Mesha and Malcham",
+   "Abitub and Elpaal",
+   "Jobab and Zibia"
+  ],
+  "answer": 2,
+  "explanation": "Of Hushim he begat Abitub, and Elpaal.",
+  "ref": "1 Chronicles 8:11"
+ },
+ {
+  "id": "1-chronicles-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Elpaal?",
+  "choices": [
+   "Misham",
+   "Abitub",
+   "Hushim",
+   "Gera"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Elpaal; Eber, and Misham, and Shamed.",
+  "ref": "1 Chronicles 8:12"
+ },
+ {
+  "id": "1-chronicles-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Whom did Beriah and Shema drive away?",
+  "choices": [
+   "The men of Gibeon",
+   "The Amalekites",
+   "The inhabitants of Gath",
+   "The men of Moab"
+  ],
+  "answer": 2,
+  "explanation": "Who drove away the inhabitants of Gath.",
+  "ref": "1 Chronicles 8:13"
+ },
+ {
+  "id": "1-chronicles-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of men were the sons of Ulam?",
+  "choices": [
+   "Priests",
+   "Shepherds",
+   "Mighty men of valour, archers",
+   "Scribes"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Ulam were mighty men of valour, archers.",
+  "ref": "1 Chronicles 8:40"
+ },
+ {
+  "id": "1-chronicles-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the wife of the father of Gibeon?",
+  "choices": [
+   "Hushim",
+   "Baara",
+   "Hodesh",
+   "Maachah"
+  ],
+  "answer": 3,
+  "explanation": "At Gibeon dwelt the father of Gibeon; whose wife's name was Maachah.",
+  "ref": "1 Chronicles 8:29"
+ },
+ {
+  "id": "1-chronicles-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the firstborn son of the father of Gibeon?",
+  "choices": [
+   "Abdon",
+   "Zur",
+   "Baal",
+   "Kish"
+  ],
+  "answer": 0,
+  "explanation": "His firstborn son Abdon, and Zur, and Kish, and Baal, and Nadab.",
+  "ref": "1 Chronicles 8:30"
+ },
+ {
+  "id": "1-chronicles-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Mikloth begat which man?",
+  "choices": [
+   "Micah",
+   "Moza",
+   "Shimeah",
+   "Kish"
+  ],
+  "answer": 2,
+  "explanation": "Mikloth begat Shimeah.",
+  "ref": "1 Chronicles 8:32"
+ },
+ {
+  "id": "1-chronicles-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Merib-baal begat which man?",
+  "choices": [
+   "Pithon",
+   "Ahaz",
+   "Micah",
+   "Melech"
+  ],
+  "answer": 2,
+  "explanation": "Merib-baal begat Micah.",
+  "ref": "1 Chronicles 8:34"
+ },
+ {
+  "id": "1-chronicles-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Which of these was a son of Micah?",
+  "choices": [
+   "Kish",
+   "Pithon",
+   "Binea",
+   "Abdon"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Micah were, Pithon, and Melech, and Tarea, and Ahaz.",
+  "ref": "1 Chronicles 8:35"
+ },
+ {
+  "id": "1-chronicles-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Eshek was the brother of whom?",
+  "choices": [
+   "Ulam",
+   "Micah",
+   "Moza",
+   "Azel"
+  ],
+  "answer": 3,
+  "explanation": "The sons of Eshek his brother, after the six sons of Azel.",
+  "ref": "1 Chronicles 8:38–39"
+ },
+ {
+  "id": "1-chronicles-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Who was the firstborn son of Eshek?",
+  "choices": [
+   "Jehush",
+   "Ulam",
+   "Eliphelet",
+   "Azrikam"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Eshek his brother were, Ulam his firstborn.",
+  "ref": "1 Chronicles 8:39"
+ },
+ {
+  "id": "1-chronicles-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "place",
+  "question": "Shamed built Ono and which other place?",
+  "choices": [
+   "Gath",
+   "Geba",
+   "Lod",
+   "Aijalon"
+  ],
+  "answer": 2,
+  "explanation": "Shamed, who built Ono, and Lod, with the towns thereof.",
+  "ref": "1 Chronicles 8:12"
+ },
+ {
+  "id": "1-chronicles-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Azel?",
+  "choices": [
+   "Moza",
+   "Ulam",
+   "Zimri",
+   "Bocheru"
+  ],
+  "answer": 3,
+  "explanation": "Azrikam, Bocheru, and Ishmael, and Sheariah, and Obadiah, and Hanan.",
+  "ref": "1 Chronicles 8:38"
+ },
+ {
+  "id": "1-chronicles-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who begat Moza?",
+  "choices": [
+   "Binea",
+   "Jehoadah",
+   "Alemeth",
+   "Zimri"
+  ],
+  "answer": 3,
+  "explanation": "Zimri begat Moza.",
+  "ref": "1 Chronicles 8:36"
+ },
+ {
+  "id": "1-chronicles-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Jehoadah begat Alemeth, Azmaveth and which other son?",
+  "choices": [
+   "Binea",
+   "Zimri",
+   "Rapha",
+   "Moza"
+  ],
+  "answer": 1,
+  "explanation": "Jehoadah begat Alemeth, and Azmaveth, and Zimri.",
+  "ref": "1 Chronicles 8:36"
+ },
+ {
+  "id": "1-chronicles-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the father of Azel?",
+  "choices": [
+   "Binea",
+   "Eleasah",
+   "Moza",
+   "Rapha"
+  ],
+  "answer": 1,
+  "explanation": "Rapha was his son, Eleasah his son, Azel his son.",
+  "ref": "1 Chronicles 8:37"
+ },
+ {
+  "id": "1-chronicles-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Moza begat which man?",
+  "choices": [
+   "Rapha",
+   "Azel",
+   "Eleasah",
+   "Binea"
+  ],
+  "answer": 3,
+  "explanation": "Moza begat Binea.",
+  "ref": "1 Chronicles 8:37"
+ },
+ {
+  "id": "1-chronicles-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Jeroham?",
+  "choices": [
+   "Jezliah",
+   "Jaresiah",
+   "Beraiah",
+   "Penuel"
+  ],
+  "answer": 1,
+  "explanation": "Jaresiah, and Eliah, and Zichri, the sons of Jeroham.",
+  "ref": "1 Chronicles 8:27"
+ },
+ {
+  "id": "1-chronicles-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Shashak?",
+  "choices": [
+   "Adaiah",
+   "Jaresiah",
+   "Penuel",
+   "Joha"
+  ],
+  "answer": 2,
+  "explanation": "Iphedeiah, and Penuel, the sons of Shashak.",
+  "ref": "1 Chronicles 8:25"
+ },
+ {
+  "id": "1-chronicles-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Shimhi?",
+  "choices": [
+   "Beraiah",
+   "Penuel",
+   "Joha",
+   "Jezliah"
+  ],
+  "answer": 0,
+  "explanation": "Adaiah, and Beraiah, and Shimrath, the sons of Shimhi.",
+  "ref": "1 Chronicles 8:21"
+ },
+ {
+  "id": "1-chronicles-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Elpaal, besides Eber?",
+  "choices": [
+   "Joha",
+   "Shimrath",
+   "Elam",
+   "Jezliah"
+  ],
+  "answer": 3,
+  "explanation": "Ishmerai also, and Jezliah, and Jobab, the sons of Elpaal.",
+  "ref": "1 Chronicles 8:18"
+ },
+ {
+  "id": "1-chronicles-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Beriah?",
+  "choices": [
+   "Jezliah",
+   "Hanan",
+   "Eliah",
+   "Joha"
+  ],
+  "answer": 3,
+  "explanation": "Michael, and Ispah, and Joha, the sons of Beriah.",
+  "ref": "1 Chronicles 8:16"
+ },
+ {
+  "id": "1-chronicles-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Bela?",
+  "choices": [
+   "Ispah",
+   "Zur",
+   "Addar",
+   "Pithon"
+  ],
+  "answer": 2,
+  "explanation": "The sons of Bela were, Addar, and Gera, and Abihud.",
+  "ref": "1 Chronicles 8:3"
+ },
+ {
+  "id": "1-chronicles-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Ahaz begat which man?",
+  "choices": [
+   "Jehoadah",
+   "Alemeth",
+   "Moza",
+   "Zimri"
+  ],
+  "answer": 0,
+  "explanation": "Ahaz begat Jehoadah; and Jehoadah begat Alemeth, and Azmaveth, and Zimri.",
+  "ref": "1 Chronicles 8:36"
+ },
+ {
+  "id": "1-chronicles-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of Eshek?",
+  "choices": [
+   "Jehush",
+   "Hanan",
+   "Bocheru",
+   "Obadiah"
+  ],
+  "answer": 0,
+  "explanation": "Ulam his firstborn, Jehush the second, and Eliphelet the third.",
+  "ref": "1 Chronicles 8:39"
+ },
+ {
+  "id": "1-chronicles-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was a son of the father of Gibeon?",
+  "choices": [
+   "Pithon",
+   "Melech",
+   "Tarea",
+   "Zur"
+  ],
+  "answer": 3,
+  "explanation": "His firstborn son Abdon, and Zur, and Kish, and Baal, and Nadab.",
+  "ref": "1 Chronicles 8:30"
  },
  {
   "id": "old-1-chronicles-9-1",
