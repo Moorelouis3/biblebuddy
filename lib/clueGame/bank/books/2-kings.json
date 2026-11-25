@@ -11616,6 +11616,646 @@
   "ref": "2 Kings 19:35"
  },
  {
+  "id": "2-kings-19-e-01",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Isaiah tell Hezekiah's servants about the words of the Assyrians?",
+  "choices": [
+   "Answer them quickly",
+   "Be not afraid",
+   "Pay the tribute",
+   "Close the gates"
+  ],
+  "answer": 1,
+  "explanation": "Isaiah said, Be not afraid of the words which thou hast heard.",
+  "ref": "2 Kings 19:6"
+ },
+ {
+  "id": "2-kings-19-e-02",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Sennacherib go and dwell after leaving Judah?",
+  "choices": [
+   "Babylon",
+   "Lachish",
+   "Nineveh",
+   "Samaria"
+  ],
+  "answer": 2,
+  "explanation": "Sennacherib departed, and returned, and dwelt at Nineveh.",
+  "ref": "2 Kings 19:36"
+ },
+ {
+  "id": "2-kings-19-e-03",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who killed Sennacherib with the sword?",
+  "choices": [
+   "His servants",
+   "The king of Egypt",
+   "Hezekiah",
+   "His sons"
+  ],
+  "answer": 3,
+  "explanation": "Adrammelech and Sharezer his sons smote him with the sword.",
+  "ref": "2 Kings 19:37"
+ },
+ {
+  "id": "2-kings-19-e-04",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in Assyria after Sennacherib?",
+  "choices": [
+   "Esar-haddon his son",
+   "Shalmaneser",
+   "Tiglath-pileser",
+   "Adrammelech"
+  ],
+  "answer": 0,
+  "explanation": "Esar-haddon his son reigned in his stead.",
+  "ref": "2 Kings 19:37"
+ },
+ {
+  "id": "2-kings-19-e-05",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah ask the LORD to do for them?",
+  "choices": [
+   "Send rain",
+   "Save them out of Sennacherib's hand",
+   "Raise up a king",
+   "Give them a sign of fire"
+  ],
+  "answer": 1,
+  "explanation": "Hezekiah prayed, O LORD our God, I beseech thee, save thou us out of his hand.",
+  "ref": "2 Kings 19:19"
+ },
+ {
+  "id": "2-kings-19-e-06",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "For whose sake did the LORD say he would defend Jerusalem, besides his own?",
+  "choices": [
+   "Abraham's",
+   "Moses'",
+   "David's",
+   "Isaiah's"
+  ],
+  "answer": 2,
+  "explanation": "I will defend this city, for mine own sake, and for my servant David's sake.",
+  "ref": "2 Kings 19:34"
+ },
+ {
+  "id": "2-kings-19-e-07",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD say the king of Assyria would not do at Jerusalem?",
+  "choices": [
+   "Take the temple gold",
+   "Speak to the people",
+   "Camp in the valley",
+   "Shoot an arrow there"
+  ],
+  "answer": 3,
+  "explanation": "He shall not come into this city, nor shoot an arrow there.",
+  "ref": "2 Kings 19:32"
+ },
+ {
+  "id": "2-kings-19-e-08",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah do with the letter before he spread it before the LORD?",
+  "choices": [
+   "He read it",
+   "He burned a corner",
+   "He sent it to Isaiah",
+   "He tore it"
+  ],
+  "answer": 0,
+  "explanation": "Hezekiah received the letter of the hand of the messengers, and read it.",
+  "ref": "2 Kings 19:14"
+ },
+ {
+  "id": "2-kings-19-e-09",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hezekiah say the LORD had made?",
+  "choices": [
+   "Only the mountains",
+   "Heaven and earth",
+   "The cherubims",
+   "The Assyrian army"
+  ],
+  "answer": 1,
+  "explanation": "Thou art the God alone of all the kingdoms of the earth: thou hast made heaven and earth.",
+  "ref": "2 Kings 19:15"
+ },
+ {
+  "id": "2-kings-19-e-10",
+  "chapter": 19,
+  "level": "beginner",
+  "category": "person",
+  "question": "To which prophet did Hezekiah send Eliakim, Shebna and the elders of the priests?",
+  "choices": [
+   "Elisha",
+   "Jonah",
+   "Isaiah",
+   "Micah"
+  ],
+  "answer": 2,
+  "explanation": "He sent them to Isaiah the prophet the son of Amoz.",
+  "ref": "2 Kings 19:2"
+ },
+ {
+  "id": "2-kings-19-m-01",
+  "chapter": 19,
+  "level": "medium",
+  "category": "person",
+  "question": "Who went with Eliakim and Shebna to Isaiah?",
+  "choices": [
+   "The captains of the army",
+   "The sons of Hezekiah",
+   "The king's guard",
+   "The elders of the priests"
+  ],
+  "answer": 3,
+  "explanation": "He sent Eliakim, Shebna the scribe, and the elders of the priests, covered with sackcloth.",
+  "ref": "2 Kings 19:2"
+ },
+ {
+  "id": "2-kings-19-m-02",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hezekiah say the children were come to, with no strength to bring forth?",
+  "choices": [
+   "The birth",
+   "The grave",
+   "The wall",
+   "The altar"
+  ],
+  "answer": 0,
+  "explanation": "The children are come to the birth, and there is not strength to bring forth.",
+  "ref": "2 Kings 19:3"
+ },
+ {
+  "id": "2-kings-19-m-03",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say he would send upon the king of Assyria?",
+  "choices": [
+   "A famine",
+   "A blast",
+   "A flood",
+   "A plague of lions"
+  ],
+  "answer": 1,
+  "explanation": "I will send a blast upon him, and he shall hear a rumour, and shall return to his own land.",
+  "ref": "2 Kings 19:7"
+ },
+ {
+  "id": "2-kings-19-m-04",
+  "chapter": 19,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Rab-shakeh find the king of Assyria warring?",
+  "choices": [
+   "Lachish",
+   "Samaria",
+   "Libnah",
+   "Arpad"
+  ],
+  "answer": 2,
+  "explanation": "Rab-shakeh found the king of Assyria warring against Libnah.",
+  "ref": "2 Kings 19:8"
+ },
+ {
+  "id": "2-kings-19-m-05",
+  "chapter": 19,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the king of Assyria hear was coming out to fight him?",
+  "choices": [
+   "Pharaoh Necho",
+   "Rezin king of Syria",
+   "Hoshea king of Israel",
+   "Tirhakah king of Ethiopia"
+  ],
+  "answer": 3,
+  "explanation": "He heard say of Tirhakah king of Ethiopia, Behold, he is come out to fight against thee.",
+  "ref": "2 Kings 19:9"
+ },
+ {
+  "id": "2-kings-19-m-06",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king's letter say should not deceive Hezekiah?",
+  "choices": [
+   "His God in whom he trusted",
+   "His fenced walls",
+   "The king of Egypt",
+   "His own counsellors"
+  ],
+  "answer": 0,
+  "explanation": "Let not thy God in whom thou trustest deceive thee.",
+  "ref": "2 Kings 19:10"
+ },
+ {
+  "id": "2-kings-19-m-07",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Between what did Hezekiah say the LORD dwells?",
+  "choices": [
+   "The mountains",
+   "The cherubims",
+   "The two pillars",
+   "The seas"
+  ],
+  "answer": 1,
+  "explanation": "O LORD God of Israel, which dwellest between the cherubims.",
+  "ref": "2 Kings 19:15"
+ },
+ {
+  "id": "2-kings-19-m-08",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hezekiah say the gods of the nations were made of?",
+  "choices": [
+   "Silver and gold",
+   "Clay and iron",
+   "Wood and stone",
+   "Brass and wood"
+  ],
+  "answer": 2,
+  "explanation": "They were no gods, but the work of men's hands, wood and stone.",
+  "ref": "2 Kings 19:18"
+ },
+ {
+  "id": "2-kings-19-m-09",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Hezekiah want to be saved from Assyria?",
+  "choices": [
+   "So the temple would be rebuilt",
+   "So Egypt would be shamed",
+   "So the king could rest",
+   "So all kingdoms would know the LORD alone is God"
+  ],
+  "answer": 3,
+  "explanation": "Save us, that all the kingdoms of the earth may know that thou art the LORD God, even thou only.",
+  "ref": "2 Kings 19:19"
+ },
+ {
+  "id": "2-kings-19-m-10",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the daughter of Zion do to Sennacherib?",
+  "choices": [
+   "Despised and laughed him to scorn",
+   "Bowed down before him",
+   "Sent him gifts",
+   "Opened the gates to him"
+  ],
+  "answer": 0,
+  "explanation": "The virgin the daughter of Zion hath despised thee, and laughed thee to scorn.",
+  "ref": "2 Kings 19:21"
+ },
+ {
+  "id": "2-kings-19-m-11",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Against whom had Sennacherib lifted his voice?",
+  "choices": [
+   "The king of Egypt",
+   "The Holy One of Israel",
+   "The prophet Isaiah",
+   "The elders of Judah"
+  ],
+  "answer": 1,
+  "explanation": "Whom hast thou reproached? even against the Holy One of Israel.",
+  "ref": "2 Kings 19:22"
+ },
+ {
+  "id": "2-kings-19-m-12",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say he would put in the nose of Sennacherib?",
+  "choices": [
+   "A ring",
+   "A rope",
+   "A hook",
+   "A chain"
+  ],
+  "answer": 2,
+  "explanation": "I will put my hook in thy nose, and my bridle in thy lips.",
+  "ref": "2 Kings 19:28"
+ },
+ {
+  "id": "2-kings-19-m-13",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the remnant of Judah do again?",
+  "choices": [
+   "Return to Egypt",
+   "Build the walls of Samaria",
+   "Serve Assyria",
+   "Take root downward and bear fruit upward"
+  ],
+  "answer": 3,
+  "explanation": "The remnant shall yet again take root downward, and bear fruit upward.",
+  "ref": "2 Kings 19:30"
+ },
+ {
+  "id": "2-kings-19-m-14",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what way would the king of Assyria return?",
+  "choices": [
+   "The way he came",
+   "Through Egypt",
+   "Through Samaria",
+   "By the sea"
+  ],
+  "answer": 0,
+  "explanation": "By the way that he came, by the same shall he return.",
+  "ref": "2 Kings 19:33"
+ },
+ {
+  "id": "2-kings-19-m-15",
+  "chapter": 19,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Sennacherib doing when his sons killed him?",
+  "choices": [
+   "Sleeping in his tent",
+   "Worshipping in the house of his god",
+   "Hunting in the field",
+   "Counting his spoil"
+  ],
+  "answer": 1,
+  "explanation": "He was worshipping in the house of Nisroch his god when his sons smote him.",
+  "ref": "2 Kings 19:37"
+ },
+ {
+  "id": "2-kings-19-h-01",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these places had the kings of Assyria destroyed, as named in the letter?",
+  "choices": [
+   "Tyre",
+   "Gaza",
+   "Rezeph",
+   "Bethel"
+  ],
+  "answer": 2,
+  "explanation": "The letter named Gozan, and Haran, and Rezeph, and the children of Eden which were in Thelasar.",
+  "ref": "2 Kings 19:12"
+ },
+ {
+  "id": "2-kings-19-h-02",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Where were the children of Eden, named in the letter?",
+  "choices": [
+   "In Hamath",
+   "In Egypt",
+   "In Lachish",
+   "In Thelasar"
+  ],
+  "answer": 3,
+  "explanation": "The children of Eden were in Thelasar.",
+  "ref": "2 Kings 19:12"
+ },
+ {
+  "id": "2-kings-19-h-03",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Which of these cities did the letter ask about?",
+  "choices": [
+   "Hena",
+   "Nineveh",
+   "Jericho",
+   "Bethel"
+  ],
+  "answer": 0,
+  "explanation": "The letter asked, Where is the king of Arpad, and of Sepharvaim, of Hena, and Ivah?",
+  "ref": "2 Kings 19:13"
+ },
+ {
+  "id": "2-kings-19-h-04",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two sons killed Sennacherib?",
+  "choices": [
+   "Esar-haddon and Nisroch",
+   "Adrammelech and Sharezer",
+   "Tartan and Rabsaris",
+   "Nibhaz and Tartak"
+  ],
+  "answer": 1,
+  "explanation": "Adrammelech and Sharezer his sons smote him with the sword.",
+  "ref": "2 Kings 19:37"
+ },
+ {
+  "id": "2-kings-19-h-05",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "To which land did Sennacherib's killers escape?",
+  "choices": [
+   "Egypt",
+   "Ethiopia",
+   "Armenia",
+   "Babylon"
+  ],
+  "answer": 2,
+  "explanation": "They escaped into the land of Armenia.",
+  "ref": "2 Kings 19:37"
+ },
+ {
+  "id": "2-kings-19-h-06",
+  "chapter": 19,
+  "level": "hard",
+  "category": "person",
+  "question": "What was the name of Sennacherib's god?",
+  "choices": [
+   "Nergal",
+   "Ashima",
+   "Dagon",
+   "Nisroch"
+  ],
+  "answer": 3,
+  "explanation": "He was worshipping in the house of Nisroch his god.",
+  "ref": "2 Kings 19:37"
+ },
+ {
+  "id": "2-kings-19-h-07",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose forest did Sennacherib boast he would enter?",
+  "choices": [
+   "His Carmel",
+   "His Lebanon",
+   "His Gilead",
+   "His Bashan"
+  ],
+  "answer": 0,
+  "explanation": "He said he would enter the lodgings of his borders, and into the forest of his Carmel.",
+  "ref": "2 Kings 19:23"
+ },
+ {
+  "id": "2-kings-19-h-08",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Isaiah say the inhabitants were like, besides the green herb?",
+  "choices": [
+   "Sand on the shore",
+   "Grass on the house tops",
+   "Dust of the threshing floor",
+   "Stars in heaven"
+  ],
+  "answer": 1,
+  "explanation": "They were as the grass of the field, and as the green herb, as the grass on the house tops.",
+  "ref": "2 Kings 19:26"
+ },
+ {
+  "id": "2-kings-19-h-09",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "From which city had the king of Assyria departed?",
+  "choices": [
+   "Libnah",
+   "Samaria",
+   "Lachish",
+   "Hamath"
+  ],
+  "answer": 2,
+  "explanation": "He had heard that he was departed from Lachish.",
+  "ref": "2 Kings 19:8"
+ },
+ {
+  "id": "2-kings-19-h-10",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What three things did the LORD say he knew about Sennacherib?",
+  "choices": [
+   "His wealth, wives and gods",
+   "His army, chariots and horses",
+   "His sons, servants and spoil",
+   "His abode, going out and coming in"
+  ],
+  "answer": 3,
+  "explanation": "I know thy abode, and thy going out, and thy coming in, and thy rage against me.",
+  "ref": "2 Kings 19:27"
+ },
+ {
+  "id": "2-kings-19-h-11",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Sennacherib boast he had dried up with the soles of his feet?",
+  "choices": [
+   "All the rivers of besieged places",
+   "The sea of the plain",
+   "The brook of Kidron",
+   "The pool of Siloam"
+  ],
+  "answer": 0,
+  "explanation": "With the sole of my feet have I dried up all the rivers of besieged places.",
+  "ref": "2 Kings 19:24"
+ },
+ {
+  "id": "2-kings-19-h-12",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which trees did Sennacherib boast he would cut down?",
+  "choices": [
+   "The olive trees and fig trees",
+   "The tall cedar trees and choice fir trees",
+   "The palm trees",
+   "The oaks and terebinths"
+  ],
+  "answer": 1,
+  "explanation": "I will cut down the tall cedar trees thereof, and the choice fir trees thereof.",
+  "ref": "2 Kings 19:23"
+ },
+ {
+  "id": "2-kings-19-h-13",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whom did Hezekiah ask Isaiah to lift up a prayer?",
+  "choices": [
+   "The sick of the land",
+   "The sons of the priests",
+   "The remnant that are left",
+   "The captives in Assyria"
+  ],
+  "answer": 2,
+  "explanation": "Wherefore lift up thy prayer for the remnant that are left.",
+  "ref": "2 Kings 19:4"
+ },
+ {
+  "id": "2-kings-19-h-14",
+  "chapter": 19,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the people find the Assyrians dead?",
+  "choices": [
+   "At noon the next day",
+   "After three days",
+   "On the evening of the same day",
+   "When they arose early in the morning"
+  ],
+  "answer": 3,
+  "explanation": "When they arose early in the morning, behold, they were all dead corpses.",
+  "ref": "2 Kings 19:35"
+ },
+ {
+  "id": "2-kings-19-h-15",
+  "chapter": 19,
+  "level": "hard",
+  "category": "place",
+  "question": "Out of which place would a remnant escape, said the LORD?",
+  "choices": [
+   "Mount Zion",
+   "Mount Carmel",
+   "Mount Gerizim",
+   "Mount Hermon"
+  ],
+  "answer": 0,
+  "explanation": "Out of Jerusalem shall go forth a remnant, and they that escape out of mount Zion.",
+  "ref": "2 Kings 19:31"
+ },
+ {
   "id": "old-2-kings-20-1",
   "chapter": 20,
   "level": "beginner",
