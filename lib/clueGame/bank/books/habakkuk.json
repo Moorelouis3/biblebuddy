@@ -64,22 +64,6 @@
   "ref": "Habakkuk 1:6"
  },
  {
-  "id": "old-habakkuk-1-5",
-  "chapter": 1,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "Why is Habakkuk troubled by God's answer?",
-  "choices": [
-   "Because Babylon is stronger than Egypt",
-   "Because God is using a nation more wicked than Judah",
-   "Because Judah will become rich",
-   "Because the temple will be rebuilt"
-  ],
-  "answer": 1,
-  "explanation": "Habakkuk wrestles with how a holy God could use the more wicked Babylonians to judge Judah.",
-  "ref": "Habakkuk 1:13"
- },
- {
   "id": "old-habakkuk-2-1",
   "chapter": 2,
   "level": "beginner",
@@ -160,22 +144,6 @@
   "ref": "Habakkuk 2:20"
  },
  {
-  "id": "old-habakkuk-3-1",
-  "chapter": 3,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What is this chapter called in its opening line?",
-  "choices": [
-   "A lament for Jerusalem",
-   "A prayer of Habakkuk",
-   "A proverb of the wise",
-   "A decree of the king"
-  ],
-  "answer": 1,
-  "explanation": "The chapter opens as a prayer, shifting the book from complaint into worship.",
-  "ref": "Habakkuk 3:1"
- },
- {
   "id": "old-habakkuk-3-2",
   "chapter": 3,
   "level": "beginner",
@@ -238,5 +206,1189 @@
   "answer": 2,
   "explanation": "Habakkuk ends by saying the Lord gives him sure-footed strength like the feet of a deer.",
   "ref": "Habakkuk 3:19"
+ },
+ {
+  "id": "habakkuk-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which animal are the Chaldeans' horses said to be swifter than?",
+  "choices": [
+   "Lions",
+   "Leopards",
+   "Deer",
+   "Bears"
+  ],
+  "answer": 1,
+  "explanation": "Their horses are swifter than the leopards and more fierce than the evening wolves.",
+  "ref": "Habakkuk 1:8"
+ },
+ {
+  "id": "habakkuk-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To which bird are the Chaldean horsemen compared as they fly to eat?",
+  "choices": [
+   "The eagle",
+   "The raven",
+   "The dove",
+   "The hawk"
+  ],
+  "answer": 0,
+  "explanation": "They shall fly as the eagle that hasteth to eat.",
+  "ref": "Habakkuk 1:8"
+ },
+ {
+  "id": "habakkuk-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Habakkuk say God makes men like?",
+  "choices": [
+   "The birds of the air",
+   "The sheep of the fold",
+   "The stars of heaven",
+   "The fishes of the sea"
+  ],
+  "answer": 3,
+  "explanation": "Habakkuk asks why God makes men as the fishes of the sea, as the creeping things, that have no ruler over them.",
+  "ref": "Habakkuk 1:14"
+ },
+ {
+  "id": "habakkuk-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Habakkuk say the wicked compass about?",
+  "choices": [
+   "The priests",
+   "The kings",
+   "The righteous",
+   "The poor"
+  ],
+  "answer": 2,
+  "explanation": "The wicked doth compass about the righteous, therefore wrong judgment proceedeth.",
+  "ref": "Habakkuk 1:4"
+ },
+ {
+  "id": "habakkuk-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say of the work He will work in Habakkuk's days?",
+  "choices": [
+   "It will be forgotten by all",
+   "They will not believe it, though told",
+   "It will be done in secret",
+   "It will bring great wealth"
+  ],
+  "answer": 1,
+  "explanation": "The LORD says He will work a work which ye will not believe, though it be told you.",
+  "ref": "Habakkuk 1:5"
+ },
+ {
+  "id": "habakkuk-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the LORD say the Chaldeans march through the land?",
+  "choices": [
+   "To possess dwellingplaces that are not theirs",
+   "To collect tribute for their king",
+   "To rebuild their own cities",
+   "To spread their worship"
+  ],
+  "answer": 0,
+  "explanation": "The Chaldeans march through the breadth of the land to possess dwellingplaces that are not theirs.",
+  "ref": "Habakkuk 1:6"
+ },
+ {
+  "id": "habakkuk-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the Chaldeans do to kings and princes?",
+  "choices": [
+   "They make treaties with them",
+   "They bow before them",
+   "They ignore them",
+   "They scoff at and deride them"
+  ],
+  "answer": 3,
+  "explanation": "They shall scoff at the kings, and the princes shall be a scorn unto them.",
+  "ref": "Habakkuk 1:10"
+ },
+ {
+  "id": "habakkuk-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How will the Chaldeans take every stronghold?",
+  "choices": [
+   "They starve it with famine",
+   "They burn it by night",
+   "They heap dust and take it",
+   "They break it with rams"
+  ],
+  "answer": 2,
+  "explanation": "They shall deride every strong hold; for they shall heap dust, and take it.",
+  "ref": "Habakkuk 1:10"
+ },
+ {
+  "id": "habakkuk-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom does the Chaldean impute his power?",
+  "choices": [
+   "The king",
+   "His god",
+   "His horses",
+   "His armies"
+  ],
+  "answer": 1,
+  "explanation": "His mind shall change, and he shall pass over, imputing this his power unto his god.",
+  "ref": "Habakkuk 1:11"
+ },
+ {
+  "id": "habakkuk-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Habakkuk say about the LORD's eyes?",
+  "choices": [
+   "They are purer than to behold evil",
+   "They never sleep",
+   "They see only the righteous",
+   "They are turned from Judah"
+  ],
+  "answer": 0,
+  "explanation": "Thou art of purer eyes than to behold evil, and canst not look on iniquity.",
+  "ref": "Habakkuk 1:13"
+ },
+ {
+  "id": "habakkuk-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What troubles Habakkuk about God holding His tongue?",
+  "choices": [
+   "The Chaldeans have no king",
+   "The temple is empty",
+   "The prophets are silent",
+   "The wicked devours a man more righteous than he"
+  ],
+  "answer": 3,
+  "explanation": "He asks why God holds His tongue when the wicked devoureth the man that is more righteous than he.",
+  "ref": "Habakkuk 1:13"
+ },
+ {
+  "id": "habakkuk-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Habakkuk conclude God has set the Chaldeans up to do?",
+  "choices": [
+   "Rebuild the temple",
+   "Trade with Judah",
+   "Judge and correct",
+   "Rule over Egypt"
+  ],
+  "answer": 2,
+  "explanation": "O LORD, thou hast ordained them for judgment; and, O mighty God, thou hast established them for correction.",
+  "ref": "Habakkuk 1:12"
+ },
+ {
+  "id": "habakkuk-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Habakkuk picture the Chaldeans treating the nations?",
+  "choices": [
+   "Herding them like sheep",
+   "Catching them like fish in a net",
+   "Feeding them like birds",
+   "Gathering them like grain"
+  ],
+  "answer": 1,
+  "explanation": "They take up all of them with the angle, they catch them in their net, and gather them in their drag.",
+  "ref": "Habakkuk 1:15"
+ },
+ {
+  "id": "habakkuk-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do the Chaldeans sacrifice unto their net?",
+  "choices": [
+   "By it their portion is fat and their meat plenteous",
+   "It was given them by their king",
+   "It saved them in a storm",
+   "It was made by their fathers"
+  ],
+  "answer": 0,
+  "explanation": "They sacrifice unto their net because by them their portion is fat, and their meat plenteous.",
+  "ref": "Habakkuk 1:16"
+ },
+ {
+  "id": "habakkuk-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Habakkuk say after asking whether the LORD is from everlasting?",
+  "choices": [
+   "We shall be saved",
+   "We shall be few",
+   "We shall wait",
+   "We shall not die"
+  ],
+  "answer": 3,
+  "explanation": "Art thou not from everlasting, O LORD my God, mine Holy One? we shall not die.",
+  "ref": "Habakkuk 1:12"
+ },
+ {
+  "id": "habakkuk-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where do the Chaldeans' judgment and dignity come from?",
+  "choices": [
+   "From the LORD",
+   "From their king",
+   "From themselves",
+   "From their gods"
+  ],
+  "answer": 2,
+  "explanation": "Their judgment and their dignity shall proceed of themselves.",
+  "ref": "Habakkuk 1:7"
+ },
+ {
+  "id": "habakkuk-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What complaint does Habakkuk make about what God lets him see?",
+  "choices": [
+   "Famine and drought",
+   "Iniquity and grievance, spoiling and violence",
+   "Idols and altars",
+   "Plague and war"
+  ],
+  "answer": 1,
+  "explanation": "Why dost thou shew me iniquity, and cause me to behold grievance? for spoiling and violence are before me.",
+  "ref": "Habakkuk 1:3"
+ },
+ {
+  "id": "habakkuk-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Among whom does the LORD tell the people to look and wonder marvellously?",
+  "choices": [
+   "The heathen",
+   "The priests",
+   "The elders",
+   "The prophets"
+  ],
+  "answer": 0,
+  "explanation": "Behold ye among the heathen, and regard, and wonder marvellously.",
+  "ref": "Habakkuk 1:5"
+ },
+ {
+  "id": "habakkuk-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD say the Chaldeans' horses are more fierce than?",
+  "choices": [
+   "The mountain lions",
+   "The desert serpents",
+   "The wild boars",
+   "The evening wolves"
+  ],
+  "answer": 3,
+  "explanation": "Their horses are swifter than the leopards, and more fierce than the evening wolves.",
+  "ref": "Habakkuk 1:8"
+ },
+ {
+  "id": "habakkuk-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the Chaldeans burn incense unto?",
+  "choices": [
+   "Their idols of gold",
+   "Their king",
+   "Their drag",
+   "Their sword"
+  ],
+  "answer": 2,
+  "explanation": "They sacrifice unto their net, and burn incense unto their drag.",
+  "ref": "Habakkuk 1:16"
+ },
+ {
+  "id": "habakkuk-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Habakkuk ask whether the Chaldeans should not spare to do continually?",
+  "choices": [
+   "Rule the sea",
+   "Slay the nations",
+   "Burn the cities",
+   "Gather the captives"
+  ],
+  "answer": 1,
+  "explanation": "Shall they therefore empty their net, and not spare continually to slay the nations?",
+  "ref": "Habakkuk 1:17"
+ },
+ {
+  "id": "habakkuk-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does Habakkuk say the LORD looks upon, though He cannot look on iniquity?",
+  "choices": [
+   "Them that deal treacherously",
+   "Them that fear Him",
+   "Them that dwell in Zion",
+   "Them that keep the law"
+  ],
+  "answer": 0,
+  "explanation": "Thou canst not look on iniquity: wherefore lookest thou upon them that deal treacherously?",
+  "ref": "Habakkuk 1:13"
+ },
+ {
+  "id": "habakkuk-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the LORD describe the Chaldeans to Habakkuk?",
+  "choices": [
+   "Weak and fearful",
+   "Wise and just",
+   "Few and poor",
+   "Terrible and dreadful"
+  ],
+  "answer": 3,
+  "explanation": "They are terrible and dreadful: their judgment and their dignity shall proceed of themselves.",
+  "ref": "Habakkuk 1:7"
+ },
+ {
+  "id": "habakkuk-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "Upon what does Habakkuk set himself to watch?",
+  "choices": [
+   "The wall",
+   "The mountain",
+   "The tower",
+   "The gate"
+  ],
+  "answer": 2,
+  "explanation": "I will stand upon my watch, and set me upon the tower.",
+  "ref": "Habakkuk 2:1"
+ },
+ {
+  "id": "habakkuk-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD say about the vision, though it tarry?",
+  "choices": [
+   "Hide it until the end",
+   "Wait for it, it will surely come",
+   "Forget it",
+   "Sell it"
+  ],
+  "answer": 1,
+  "explanation": "Though it tarry, wait for it; because it will surely come, it will not tarry.",
+  "ref": "Habakkuk 2:3"
+ },
+ {
+  "id": "habakkuk-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Habakkuk wait to see from the tower?",
+  "choices": [
+   "What the LORD will say to him",
+   "Which army comes first",
+   "When the rain returns",
+   "Who will be king"
+  ],
+  "answer": 0,
+  "explanation": "I will watch to see what he will say unto me, and what I shall answer when I am reproved.",
+  "ref": "Habakkuk 2:1"
+ },
+ {
+  "id": "habakkuk-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is missing in the idol laid over with gold and silver?",
+  "choices": [
+   "Weight",
+   "Colour",
+   "Beauty",
+   "Breath"
+  ],
+  "answer": 3,
+  "explanation": "It is laid over with gold and silver, and there is no breath at all in the midst of it.",
+  "ref": "Habakkuk 2:19"
+ },
+ {
+  "id": "habakkuk-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How must all the earth be before the LORD in His holy temple?",
+  "choices": [
+   "Joyful",
+   "Kneeling",
+   "Silent",
+   "Singing"
+  ],
+  "answer": 2,
+  "explanation": "The LORD is in his holy temple: let all the earth keep silence before him.",
+  "ref": "Habakkuk 2:20"
+ },
+ {
+  "id": "habakkuk-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is the vision to be written plain upon tables?",
+  "choices": [
+   "That kings may copy it",
+   "That he may run that readeth it",
+   "That it may be sealed",
+   "That children may sing it"
+  ],
+  "answer": 1,
+  "explanation": "Write the vision, and make it plain upon tables, that he may run that readeth it.",
+  "ref": "Habakkuk 2:2"
+ },
+ {
+  "id": "habakkuk-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is not upright in the proud man?",
+  "choices": [
+   "His soul which is lifted up",
+   "His house",
+   "His tongue",
+   "His hand"
+  ],
+  "answer": 0,
+  "explanation": "His soul which is lifted up is not upright in him.",
+  "ref": "Habakkuk 2:4"
+ },
+ {
+  "id": "habakkuk-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the proud man enlarge as hell?",
+  "choices": [
+   "His house",
+   "His army",
+   "His name",
+   "His desire"
+  ],
+  "answer": 3,
+  "explanation": "He enlargeth his desire as hell, and is as death, and cannot be satisfied.",
+  "ref": "Habakkuk 2:5"
+ },
+ {
+  "id": "habakkuk-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall be turned unto the proud drinker?",
+  "choices": [
+   "The sword of the Chaldeans",
+   "The cup of wine",
+   "The cup of the LORD's right hand",
+   "The bowl of ashes"
+  ],
+  "answer": 2,
+  "explanation": "The cup of the LORD'S right hand shall be turned unto thee.",
+  "ref": "Habakkuk 2:16"
+ },
+ {
+  "id": "habakkuk-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the LORD say the plundered will rise against the plunderer?",
+  "choices": [
+   "Slowly, with gifts of peace",
+   "Suddenly, to bite and vex him",
+   "In secret, to flee from him",
+   "With his own army"
+  ],
+  "answer": 1,
+  "explanation": "Shall they not rise up suddenly that shall bite thee, and awake that shall vex thee, and thou shalt be for booties unto them?",
+  "ref": "Habakkuk 2:7"
+ },
+ {
+  "id": "habakkuk-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why shall the remnant of the people spoil the plunderer?",
+  "choices": [
+   "Because he has spoiled many nations",
+   "Because he broke his oath",
+   "Because he built idols",
+   "Because he fled"
+  ],
+  "answer": 0,
+  "explanation": "Because thou hast spoiled many nations, all the remnant of the people shall spoil thee.",
+  "ref": "Habakkuk 2:8"
+ },
+ {
+  "id": "habakkuk-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the covetous man set his nest on high?",
+  "choices": [
+   "To see the stars",
+   "To hide his gold",
+   "To look on the sea",
+   "To be delivered from the power of evil"
+  ],
+  "answer": 3,
+  "explanation": "Woe to him that coveteth an evil covetousness to his house, that he may set his nest on high.",
+  "ref": "Habakkuk 2:9"
+ },
+ {
+  "id": "habakkuk-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what does the LORD say a man builds a town wrongly?",
+  "choices": [
+   "Stone",
+   "Silver",
+   "Blood",
+   "Timber"
+  ],
+  "answer": 2,
+  "explanation": "Woe to him that buildeth a town with blood, and stablisheth a city by iniquity!",
+  "ref": "Habakkuk 2:12"
+ },
+ {
+  "id": "habakkuk-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what shall the people labour, as the LORD of hosts decrees?",
+  "choices": [
+   "The deep sea",
+   "The very fire",
+   "The thorny field",
+   "The brick kiln"
+  ],
+  "answer": 1,
+  "explanation": "Is it not of the LORD of hosts that the people shall labour in the very fire?",
+  "ref": "Habakkuk 2:13"
+ },
+ {
+  "id": "habakkuk-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the wicked neighbour give his friend drink?",
+  "choices": [
+   "To look on their nakedness",
+   "To win his house",
+   "To seal a bargain",
+   "To heal him"
+  ],
+  "answer": 0,
+  "explanation": "Woe unto him that giveth his neighbour drink, that thou mayest look on their nakedness!",
+  "ref": "Habakkuk 2:15"
+ },
+ {
+  "id": "habakkuk-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What witness does the LORD say will come from a house built by violence?",
+  "choices": [
+   "The walls will fall at once",
+   "The gates will be burned",
+   "The floor will sink",
+   "The stone cries out of the wall and the beam answers"
+  ],
+  "answer": 3,
+  "explanation": "For the stone shall cry out of the wall, and the beam out of the timber shall answer it.",
+  "ref": "Habakkuk 2:11"
+ },
+ {
+  "id": "habakkuk-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What woe do the victims cry in their taunting proverb?",
+  "choices": [
+   "Woe to him that sleeps by day",
+   "Woe to him that hides his sword",
+   "Woe to him that increaseth that which is not his",
+   "Woe to him that forsakes the poor"
+  ],
+  "answer": 2,
+  "explanation": "They shall take up a parable against him, and say, Woe to him that increaseth that which is not his! how long?",
+  "ref": "Habakkuk 2:6"
+ },
+ {
+  "id": "habakkuk-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides shaming his house, what has the plunderer done?",
+  "choices": [
+   "Broken the covenant",
+   "Sinned against his own soul",
+   "Burned the temple",
+   "Robbed the poor"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast consulted shame to thy house by cutting off many people, and hast sinned against thy soul.",
+  "ref": "Habakkuk 2:10"
+ },
+ {
+  "id": "habakkuk-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why will the spoil of beasts cover the plunderer?",
+  "choices": [
+   "Because of men's blood and the violence of the land and city",
+   "Because of his idols",
+   "Because of his drunkenness",
+   "Because of his pride"
+  ],
+  "answer": 0,
+  "explanation": "The spoil of beasts shall cover thee, because of men's blood, and for the violence of the land, of the city, and of all that dwell therein.",
+  "ref": "Habakkuk 2:17"
+ },
+ {
+  "id": "habakkuk-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what does the maker of a graven image trust?",
+  "choices": [
+   "His own strength",
+   "His own gods",
+   "His own wealth",
+   "His own work"
+  ],
+  "answer": 3,
+  "explanation": "The maker of his work trusteth therein, to make dumb idols.",
+  "ref": "Habakkuk 2:18"
+ },
+ {
+  "id": "habakkuk-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the foolish man say to the wood and the dumb stone?",
+  "choices": [
+   "Speak and bless",
+   "Fall and break",
+   "Awake and Arise",
+   "Burn and give light"
+  ],
+  "answer": 2,
+  "explanation": "Woe unto him that saith to the wood, Awake; to the dumb stone, Arise, it shall teach!",
+  "ref": "Habakkuk 2:19"
+ },
+ {
+  "id": "habakkuk-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what two things is the proud man's desire likened?",
+  "choices": [
+   "Fire and flood",
+   "Hell and death",
+   "The sea and sand",
+   "Wind and storm"
+  ],
+  "answer": 1,
+  "explanation": "He enlargeth his desire as hell, and is as death, and cannot be satisfied.",
+  "ref": "Habakkuk 2:5"
+ },
+ {
+  "id": "habakkuk-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what does the LORD say the people weary themselves?",
+  "choices": [
+   "Very vanity",
+   "Their harvest",
+   "Their king",
+   "Their idols"
+  ],
+  "answer": 0,
+  "explanation": "The people shall labour in the very fire, and the people shall weary themselves for very vanity.",
+  "ref": "Habakkuk 2:13"
+ },
+ {
+  "id": "habakkuk-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the LORD describe the molten image?",
+  "choices": [
+   "A work of beauty",
+   "A guide to the lost",
+   "A gift of kings",
+   "A teacher of lies"
+  ],
+  "answer": 3,
+  "explanation": "What profiteth the graven image; the molten image, and a teacher of lies?",
+  "ref": "Habakkuk 2:18"
+ },
+ {
+  "id": "habakkuk-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the proud man gather unto him?",
+  "choices": [
+   "All gold and silver",
+   "All the cattle",
+   "All nations and all people",
+   "All the cities of Judah"
+  ],
+  "answer": 2,
+  "explanation": "He gathereth unto him all nations, and heapeth unto him all people.",
+  "ref": "Habakkuk 2:5"
+ },
+ {
+  "id": "habakkuk-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Habakkuk feel when he heard the LORD's speech?",
+  "choices": [
+   "Glad",
+   "Afraid",
+   "Angry",
+   "Proud"
+  ],
+  "answer": 1,
+  "explanation": "O LORD, I have heard thy speech, and was afraid.",
+  "ref": "Habakkuk 3:2"
+ },
+ {
+  "id": "habakkuk-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which mount did the Holy One come?",
+  "choices": [
+   "Paran",
+   "Sinai",
+   "Carmel",
+   "Zion"
+  ],
+  "answer": 0,
+  "explanation": "God came from Teman, and the Holy One from mount Paran.",
+  "ref": "Habakkuk 3:3"
+ },
+ {
+  "id": "habakkuk-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Upon what will the LORD make Habakkuk walk?",
+  "choices": [
+   "The sea",
+   "The desert",
+   "The valleys",
+   "His high places"
+  ],
+  "answer": 3,
+  "explanation": "He will make me to walk upon mine high places.",
+  "ref": "Habakkuk 3:19"
+ },
+ {
+  "id": "habakkuk-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which tree does Habakkuk say shall not blossom?",
+  "choices": [
+   "The palm tree",
+   "The cedar",
+   "The fig tree",
+   "The almond"
+  ],
+  "answer": 2,
+  "explanation": "Although the fig tree shall not blossom, neither shall fruit be in the vines.",
+  "ref": "Habakkuk 3:17"
+ },
+ {
+  "id": "habakkuk-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall be cut off from the fold?",
+  "choices": [
+   "The shepherd",
+   "The flock",
+   "The lambs only",
+   "The dogs"
+  ],
+  "answer": 1,
+  "explanation": "The flock shall be cut off from the fold, and there shall be no herd in the stalls.",
+  "ref": "Habakkuk 3:17"
+ },
+ {
+  "id": "habakkuk-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Habakkuk ask the LORD to do in the midst of the years?",
+  "choices": [
+   "Revive His work",
+   "Destroy Judah",
+   "Close the heavens",
+   "Send a king"
+  ],
+  "answer": 0,
+  "explanation": "O LORD, revive thy work in the midst of the years.",
+  "ref": "Habakkuk 3:2"
+ },
+ {
+  "id": "habakkuk-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What went before the LORD?",
+  "choices": [
+   "A cloud",
+   "The ark",
+   "A trumpet",
+   "Pestilence"
+  ],
+  "answer": 3,
+  "explanation": "Before him went the pestilence, and burning coals went forth at his feet.",
+  "ref": "Habakkuk 3:5"
+ },
+ {
+  "id": "habakkuk-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose tents did Habakkuk see in affliction?",
+  "choices": [
+   "Edom",
+   "Moab",
+   "Cushan",
+   "Ammon"
+  ],
+  "answer": 2,
+  "explanation": "I saw the tents of Cushan in affliction.",
+  "ref": "Habakkuk 3:7"
+ },
+ {
+  "id": "habakkuk-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "place",
+  "question": "Which land's curtains trembled when Habakkuk saw the tents of Cushan in affliction?",
+  "choices": [
+   "Edom",
+   "Midian",
+   "Moab",
+   "Egypt"
+  ],
+  "answer": 1,
+  "explanation": "I saw the tents of Cushan in affliction: and the curtains of the land of Midian did tremble.",
+  "ref": "Habakkuk 3:7"
+ },
+ {
+  "id": "habakkuk-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Habakkuk asks whether the LORD's anger was against which things, as He rode on His horses?",
+  "choices": [
+   "The rivers and the sea",
+   "The mountains and hills",
+   "The kings and nations",
+   "The idols and temples"
+  ],
+  "answer": 0,
+  "explanation": "Was the LORD displeased against the rivers? was thy wrath against the sea, that thou didst ride upon thine horses?",
+  "ref": "Habakkuk 3:8"
+ },
+ {
+  "id": "habakkuk-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did the LORD wound?",
+  "choices": [
+   "The king of Babylon",
+   "The priests of Judah",
+   "The kings of Egypt",
+   "The head out of the house of the wicked"
+  ],
+  "answer": 3,
+  "explanation": "Thou woundedst the head out of the house of the wicked.",
+  "ref": "Habakkuk 3:13"
+ },
+ {
+  "id": "habakkuk-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD thresh in anger?",
+  "choices": [
+   "The mountains",
+   "The sea",
+   "The heathen",
+   "The fields"
+  ],
+  "answer": 2,
+  "explanation": "Thou didst march through the land in indignation, thou didst thresh the heathen in anger.",
+  "ref": "Habakkuk 3:12"
+ },
+ {
+  "id": "habakkuk-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With whom did the LORD go forth for the salvation of His people?",
+  "choices": [
+   "The tribes",
+   "His anointed",
+   "The priests",
+   "The angels"
+  ],
+  "answer": 1,
+  "explanation": "Thou wentest forth for the salvation of thy people, even for salvation with thine anointed.",
+  "ref": "Habakkuk 3:13"
+ },
+ {
+  "id": "habakkuk-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Through what did the LORD walk with His horses?",
+  "choices": [
+   "The sea",
+   "The desert",
+   "The valley",
+   "The fire"
+  ],
+  "answer": 0,
+  "explanation": "Thou didst walk through the sea with thine horses, through the heap of great waters.",
+  "ref": "Habakkuk 3:15"
+ },
+ {
+  "id": "habakkuk-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the sun and moon do at the light of the LORD's arrows?",
+  "choices": [
+   "Turn to blood",
+   "Fall from heaven",
+   "Hide behind the clouds",
+   "Stand still in their habitation"
+  ],
+  "answer": 3,
+  "explanation": "The sun and moon stood still in their habitation: at the light of thine arrows they went.",
+  "ref": "Habakkuk 3:11"
+ },
+ {
+  "id": "habakkuk-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Habakkuk say he might do in the day of trouble?",
+  "choices": [
+   "Flee",
+   "Fight",
+   "Rest",
+   "Sing"
+  ],
+  "answer": 2,
+  "explanation": "I trembled in myself, that I might rest in the day of trouble.",
+  "ref": "Habakkuk 3:16"
+ },
+ {
+  "id": "habakkuk-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God do when He stood and measured the earth?",
+  "choices": [
+   "Raised the sea",
+   "Drove asunder the nations",
+   "Built a city",
+   "Numbered the stars"
+  ],
+  "answer": 1,
+  "explanation": "He stood, and measured the earth: he beheld, and drove asunder the nations.",
+  "ref": "Habakkuk 3:6"
+ },
+ {
+  "id": "habakkuk-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What came out of the LORD's hand?",
+  "choices": [
+   "Horns",
+   "Fire",
+   "Arrows",
+   "Water"
+  ],
+  "answer": 0,
+  "explanation": "He had horns coming out of his hand: and there was the hiding of his power.",
+  "ref": "Habakkuk 3:4"
+ },
+ {
+  "id": "habakkuk-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD cleave with rivers?",
+  "choices": [
+   "The sea",
+   "The mountains",
+   "The sky",
+   "The earth"
+  ],
+  "answer": 3,
+  "explanation": "Thou didst cleave the earth with rivers.",
+  "ref": "Habakkuk 3:9"
+ },
+ {
+  "id": "habakkuk-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Habakkuk call the LORD God as he ends his prayer?",
+  "choices": [
+   "My shepherd",
+   "My shield",
+   "My strength",
+   "My rock"
+  ],
+  "answer": 2,
+  "explanation": "The LORD God is my strength, and he will make my feet like hinds' feet.",
+  "ref": "Habakkuk 3:19"
+ },
+ {
+  "id": "habakkuk-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is the rejoicing of the enemy described?",
+  "choices": [
+   "To scatter the proud",
+   "To devour the poor secretly",
+   "To divide the spoil openly",
+   "To feast in the temple"
+  ],
+  "answer": 1,
+  "explanation": "Their rejoicing was as to devour the poor secretly.",
+  "ref": "Habakkuk 3:14"
+ },
+ {
+  "id": "habakkuk-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the deep do before the LORD?",
+  "choices": [
+   "Lifted up his hands on high",
+   "Dried up",
+   "Roared like lions",
+   "Sank away"
+  ],
+  "answer": 0,
+  "explanation": "The deep uttered his voice, and lifted up his hands on high.",
+  "ref": "Habakkuk 3:10"
+ },
+ {
+  "id": "habakkuk-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the LORD's horses said to draw?",
+  "choices": [
+   "Chariots of fire",
+   "Chariots of iron",
+   "Chariots of war",
+   "Chariots of salvation"
+  ],
+  "answer": 3,
+  "explanation": "Thou didst ride upon thine horses and thy chariots of salvation.",
+  "ref": "Habakkuk 3:8"
+ },
+ {
+  "id": "habakkuk-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Habakkuk say shall fail?",
+  "choices": [
+   "The wells of the field",
+   "The towers of the city",
+   "The labour of the olive",
+   "The walls of Judah"
+  ],
+  "answer": 2,
+  "explanation": "The labour of the olive shall fail, and the fields shall yield no meat.",
+  "ref": "Habakkuk 3:17"
+ },
+ {
+  "id": "habakkuk-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When God came from Teman, what covered the heavens?",
+  "choices": [
+   "A great cloud",
+   "His glory",
+   "Smoke",
+   "Darkness"
+  ],
+  "answer": 1,
+  "explanation": "His glory covered the heavens, and the earth was full of his praise.",
+  "ref": "Habakkuk 3:3"
+ },
+ {
+  "id": "habakkuk-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the enemies come out like, to scatter Habakkuk's people?",
+  "choices": [
+   "A whirlwind",
+   "A flood",
+   "A flame",
+   "A swarm of locusts"
+  ],
+  "answer": 0,
+  "explanation": "They came out as a whirlwind to scatter me.",
+  "ref": "Habakkuk 3:14"
  }
 ]

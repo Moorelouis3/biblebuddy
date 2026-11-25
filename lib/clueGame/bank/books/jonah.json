@@ -318,5 +318,885 @@
   "answer": 0,
   "explanation": "The book ends with God's searching question about His compassion for Nineveh.",
   "ref": "Jonah 4:11"
+ },
+ {
+  "id": "jonah-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son was Jonah?",
+  "choices": [
+   "Amoz",
+   "Amittai",
+   "Beeri",
+   "Hilkiah"
+  ],
+  "answer": 1,
+  "explanation": "Now the word of the LORD came unto Jonah the son of Amittai.",
+  "ref": "Jonah 1:1"
+ },
+ {
+  "id": "jonah-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which port did Jonah go down to find a ship?",
+  "choices": [
+   "Joppa",
+   "Tyre",
+   "Gaza",
+   "Sidon"
+  ],
+  "answer": 0,
+  "explanation": "Jonah rose up to flee unto Tarshish, and went down to Joppa; and he found a ship going to Tarshish.",
+  "ref": "Jonah 1:3"
+ },
+ {
+  "id": "jonah-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the mariners do when the storm came?",
+  "choices": [
+   "Raised the sails",
+   "Fasted for three days",
+   "Prayed to the LORD",
+   "Cried every man unto his god"
+  ],
+  "answer": 3,
+  "explanation": "The mariners were afraid, and cried every man unto his god.",
+  "ref": "Jonah 1:5"
+ },
+ {
+  "id": "jonah-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "What was Jonah doing in the ship during the storm?",
+  "choices": [
+   "Rowing hard",
+   "Praying aloud",
+   "Fast asleep",
+   "Casting lots"
+  ],
+  "answer": 2,
+  "explanation": "Jonah was gone down into the sides of the ship; and he lay, and was fast asleep.",
+  "ref": "Jonah 1:5"
+ },
+ {
+  "id": "jonah-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD send Jonah to Nineveh?",
+  "choices": [
+   "Their king had asked for a prophet",
+   "Their wickedness had come up before Him",
+   "Their city had never heard of God",
+   "Their army threatened Israel"
+  ],
+  "answer": 1,
+  "explanation": "Arise, go to Nineveh, that great city, and cry against it; for their wickedness is come up before me.",
+  "ref": "Jonah 1:2"
+ },
+ {
+  "id": "jonah-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the mariners cast into the sea to lighten the ship?",
+  "choices": [
+   "The wares",
+   "The anchors",
+   "The sails",
+   "The food"
+  ],
+  "answer": 0,
+  "explanation": "The mariners cast forth the wares that were in the ship into the sea, to lighten it of them.",
+  "ref": "Jonah 1:5"
+ },
+ {
+  "id": "jonah-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "What did the shipmaster say to Jonah?",
+  "choices": [
+   "Take an oar and help us row",
+   "Tell us the name of your king",
+   "Get up and fetch water",
+   "What meanest thou, O sleeper? arise, call upon thy God"
+  ],
+  "answer": 3,
+  "explanation": "The shipmaster said, What meanest thou, O sleeper? arise, call upon thy God.",
+  "ref": "Jonah 1:6"
+ },
+ {
+  "id": "jonah-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the men find out for whose cause the evil was upon them?",
+  "choices": [
+   "They asked the shipmaster",
+   "They searched the ship",
+   "They cast lots",
+   "They consulted a priest"
+  ],
+  "answer": 2,
+  "explanation": "They said, Come, and let us cast lots; and the lot fell upon Jonah.",
+  "ref": "Jonah 1:7"
+ },
+ {
+  "id": "jonah-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "How did Jonah describe himself to the men?",
+  "choices": [
+   "I am a prophet of Samaria",
+   "I am an Hebrew; and I fear the LORD",
+   "I am a servant of the king",
+   "I am a man of Tarshish"
+  ],
+  "answer": 1,
+  "explanation": "And he said unto them, I am an Hebrew; and I fear the LORD, the God of heaven.",
+  "ref": "Jonah 1:9"
+ },
+ {
+  "id": "jonah-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the men know Jonah fled from the LORD?",
+  "choices": [
+   "He had told them",
+   "The shipmaster saw him",
+   "A sailor heard him pray",
+   "They read it in the lot"
+  ],
+  "answer": 0,
+  "explanation": "The men knew that he fled from the presence of the LORD, because he had told them.",
+  "ref": "Jonah 1:10"
+ },
+ {
+  "id": "jonah-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jonah tell the men to do with him?",
+  "choices": [
+   "Row him back to Joppa",
+   "Leave him on a rock",
+   "Bind him in the hold",
+   "Take him up and cast him into the sea"
+  ],
+  "answer": 3,
+  "explanation": "Take me up, and cast me forth into the sea; so shall the sea be calm unto you.",
+  "ref": "Jonah 1:12"
+ },
+ {
+  "id": "jonah-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men first try to do before casting Jonah out?",
+  "choices": [
+   "Lower the sails",
+   "Pray to Jonah's God",
+   "Row hard to bring the ship to land",
+   "Throw out the wares"
+  ],
+  "answer": 2,
+  "explanation": "The men rowed hard to bring it to the land; but they could not.",
+  "ref": "Jonah 1:13"
+ },
+ {
+  "id": "jonah-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the men do after the sea ceased from raging?",
+  "choices": [
+   "Sailed home to Tarshish",
+   "Offered a sacrifice and made vows",
+   "Searched for Jonah",
+   "Prayed to their gods"
+  ],
+  "answer": 1,
+  "explanation": "The men feared the LORD exceedingly, and offered a sacrifice unto the LORD, and made vows.",
+  "ref": "Jonah 1:16"
+ },
+ {
+  "id": "jonah-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jonah do to go with them to Tarshish?",
+  "choices": [
+   "Paid the fare",
+   "Worked as a sailor",
+   "Gave his cloak",
+   "Bound himself to the oar"
+  ],
+  "answer": 0,
+  "explanation": "He found a ship going to Tarshish: so he paid the fare thereof.",
+  "ref": "Jonah 1:3"
+ },
+ {
+  "id": "jonah-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jonah say the great tempest was upon them?",
+  "choices": [
+   "For the sake of the wares",
+   "For the sake of the king",
+   "For the sake of their gods",
+   "For his sake"
+  ],
+  "answer": 3,
+  "explanation": "I know that for my sake this great tempest is upon you.",
+  "ref": "Jonah 1:12"
+ },
+ {
+  "id": "jonah-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Where in the ship had Jonah gone down?",
+  "choices": [
+   "Into the hold with the wares",
+   "Onto the deck",
+   "Into the sides of the ship",
+   "Under the sail"
+  ],
+  "answer": 2,
+  "explanation": "Jonah was gone down into the sides of the ship.",
+  "ref": "Jonah 1:5"
+ },
+ {
+  "id": "jonah-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Jonah say the LORD hath made?",
+  "choices": [
+   "The stars and the moon",
+   "The sea and the dry land",
+   "The wind and the fire",
+   "The hills and the valleys"
+  ],
+  "answer": 1,
+  "explanation": "I fear the LORD, the God of heaven, which hath made the sea and the dry land.",
+  "ref": "Jonah 1:9"
+ },
+ {
+  "id": "jonah-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was Jonah in the belly of the fish?",
+  "choices": [
+   "Three days and three nights",
+   "Seven days and seven nights",
+   "Forty days and forty nights",
+   "One night"
+  ],
+  "answer": 0,
+  "explanation": "Jonah was in the belly of the fish three days and three nights.",
+  "ref": "Jonah 1:17"
+ },
+ {
+  "id": "jonah-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men pray not to be laid upon them?",
+  "choices": [
+   "A curse",
+   "A heavy fine",
+   "The sea",
+   "Innocent blood"
+  ],
+  "answer": 3,
+  "explanation": "Lay not upon us innocent blood: for thou, O LORD, hast done as it pleased thee.",
+  "ref": "Jonah 1:14"
+ },
+ {
+  "id": "jonah-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men ask Jonah besides his country and people?",
+  "choices": [
+   "What is thy father's name",
+   "What is thy price",
+   "What is thine occupation",
+   "What is thy sin"
+  ],
+  "answer": 2,
+  "explanation": "Tell us, What is thine occupation? and whence comest thou? what is thy country? and of what people art thou?",
+  "ref": "Jonah 1:8"
+ },
+ {
+  "id": "jonah-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the men feel when Jonah told them he fled from the LORD?",
+  "choices": [
+   "Greatly relieved",
+   "Exceedingly afraid",
+   "Very angry",
+   "Full of joy"
+  ],
+  "answer": 1,
+  "explanation": "Then were the men exceedingly afraid, and said unto him, Why hast thou done this?",
+  "ref": "Jonah 1:10"
+ },
+ {
+  "id": "jonah-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men say the LORD had done?",
+  "choices": [
+   "As it pleased Him",
+   "As He had warned",
+   "As Jonah wished",
+   "As the lot decreed"
+  ],
+  "answer": 0,
+  "explanation": "O LORD, hast done as it pleased thee.",
+  "ref": "Jonah 1:14"
+ },
+ {
+  "id": "jonah-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Toward what did Jonah say he would look again?",
+  "choices": [
+   "The land of Israel",
+   "The mountains of Judah",
+   "The sun",
+   "Thy holy temple"
+  ],
+  "answer": 3,
+  "explanation": "I am cast out of thy sight; yet I will look again toward thy holy temple.",
+  "ref": "Jonah 2:4"
+ },
+ {
+  "id": "jonah-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What compassed Jonah about even to the soul?",
+  "choices": [
+   "The weeds",
+   "The fish",
+   "The waters",
+   "The darkness"
+  ],
+  "answer": 2,
+  "explanation": "The waters compassed me about, even to the soul.",
+  "ref": "Jonah 2:5"
+ },
+ {
+  "id": "jonah-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "To where did Jonah go down?",
+  "choices": [
+   "The roots of the cedars",
+   "The bottoms of the mountains",
+   "The gates of the city",
+   "The caves of the sea"
+  ],
+  "answer": 1,
+  "explanation": "I went down to the bottoms of the mountains.",
+  "ref": "Jonah 2:6"
+ },
+ {
+  "id": "jonah-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When did Jonah remember the LORD?",
+  "choices": [
+   "When his soul fainted within him",
+   "When the ship was tossed",
+   "When the fish swallowed him",
+   "When the storm began"
+  ],
+  "answer": 0,
+  "explanation": "When my soul fainted within me I remembered the LORD.",
+  "ref": "Jonah 2:7"
+ },
+ {
+  "id": "jonah-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what will Jonah sacrifice?",
+  "choices": [
+   "A burnt offering of rams",
+   "The firstfruits of the sea",
+   "A lamb without blemish",
+   "The voice of thanksgiving"
+  ],
+  "answer": 3,
+  "explanation": "I will sacrifice unto thee with the voice of thanksgiving.",
+  "ref": "Jonah 2:9"
+ },
+ {
+  "id": "jonah-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of the belly of what did Jonah cry?",
+  "choices": [
+   "The deep",
+   "The sea",
+   "Hell",
+   "The earth"
+  ],
+  "answer": 2,
+  "explanation": "Out of the belly of hell cried I, and thou heardest my voice.",
+  "ref": "Jonah 2:2"
+ },
+ {
+  "id": "jonah-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will Jonah pay?",
+  "choices": [
+   "The tithe of the sea",
+   "That that he vowed",
+   "The fare of the ship",
+   "The price of his life"
+  ],
+  "answer": 1,
+  "explanation": "I will pay that that I have vowed. Salvation is of the LORD.",
+  "ref": "Jonah 2:9"
+ },
+ {
+  "id": "jonah-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who forsake their own mercy?",
+  "choices": [
+   "They that observe lying vanities",
+   "They that fear the sea",
+   "They that flee the LORD",
+   "They that curse the king"
+  ],
+  "answer": 0,
+  "explanation": "They that observe lying vanities forsake their own mercy.",
+  "ref": "Jonah 2:8"
+ },
+ {
+  "id": "jonah-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the LORD brought up from corruption?",
+  "choices": [
+   "Jonah's ship",
+   "Jonah's people",
+   "Jonah's prayer",
+   "Jonah's life"
+  ],
+  "answer": 3,
+  "explanation": "Yet hast thou brought up my life from corruption, O LORD my God.",
+  "ref": "Jonah 2:6"
+ },
+ {
+  "id": "jonah-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What passed over Jonah?",
+  "choices": [
+   "All the LORD's fire and smoke",
+   "All the LORD's wind and rain",
+   "All the LORD's billows and waves",
+   "All the LORD's thunder"
+  ],
+  "answer": 2,
+  "explanation": "All thy billows and thy waves passed over me.",
+  "ref": "Jonah 2:3"
+ },
+ {
+  "id": "jonah-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king decree about man, beast, herd and flock?",
+  "choices": [
+   "Let them rest from work",
+   "Let them not taste anything, feed or drink water",
+   "Let them be gathered at the temple",
+   "Let them be sent out of the city"
+  ],
+  "answer": 1,
+  "explanation": "Let neither man nor beast, herd nor flock, taste any thing: let them not feed, nor drink water.",
+  "ref": "Jonah 3:7"
+ },
+ {
+  "id": "jonah-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king command man and beast to be covered with?",
+  "choices": [
+   "Sackcloth",
+   "Ashes",
+   "Linen",
+   "Dust"
+  ],
+  "answer": 0,
+  "explanation": "Let man and beast be covered with sackcloth, and cry mightily unto God.",
+  "ref": "Jonah 3:8"
+ },
+ {
+  "id": "jonah-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From what did the king say to turn?",
+  "choices": [
+   "Their idols and their feasts",
+   "Their wealth and their trade",
+   "Their walls and their weapons",
+   "Their evil way and the violence in their hands"
+  ],
+  "answer": 3,
+  "explanation": "Let them turn every one from his evil way, and from the violence that is in their hands.",
+  "ref": "Jonah 3:8"
+ },
+ {
+  "id": "jonah-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king hope God might do?",
+  "choices": [
+   "Send rain upon the land",
+   "Give them a new king",
+   "Turn and repent so that they perish not",
+   "Send Jonah back"
+  ],
+  "answer": 2,
+  "explanation": "Who can tell if God will turn and repent, and turn away from his fierce anger, that we perish not?",
+  "ref": "Jonah 3:9"
+ },
+ {
+  "id": "jonah-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God see when He saw the people of Nineveh?",
+  "choices": [
+   "Their sackcloth",
+   "Their works",
+   "Their ashes",
+   "Their tears"
+  ],
+  "answer": 1,
+  "explanation": "God saw their works, that they turned from their evil way.",
+  "ref": "Jonah 3:10"
+ },
+ {
+  "id": "jonah-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whom to whom did the fast and sackcloth extend?",
+  "choices": [
+   "From the greatest to the least",
+   "From the king to the nobles",
+   "From the old to the young",
+   "From the rich to the poor"
+  ],
+  "answer": 0,
+  "explanation": "The people of Nineveh proclaimed a fast, and put on sackcloth, from the greatest of them even to the least of them.",
+  "ref": "Jonah 3:5"
+ },
+ {
+  "id": "jonah-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "By whose decree was the fast published?",
+  "choices": [
+   "The priests of the temple",
+   "The elders of the city",
+   "The prophet Jonah",
+   "The king and his nobles"
+  ],
+  "answer": 3,
+  "explanation": "He caused it to be proclaimed and published through Nineveh by the decree of the king and his nobles.",
+  "ref": "Jonah 3:7"
+ },
+ {
+  "id": "jonah-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did the king of Nineveh sit?",
+  "choices": [
+   "Dust",
+   "A pit",
+   "Ashes",
+   "A field"
+  ],
+  "answer": 2,
+  "explanation": "He arose from his throne, and covered him with sackcloth, and sat in ashes.",
+  "ref": "Jonah 3:6"
+ },
+ {
+  "id": "jonah-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the king describe God's anger?",
+  "choices": [
+   "Slow",
+   "Fierce",
+   "Small",
+   "Hidden"
+  ],
+  "answer": 1,
+  "explanation": "Who can tell if God will turn and repent, and turn away from his fierce anger, that we perish not?",
+  "ref": "Jonah 3:9"
+ },
+ {
+  "id": "jonah-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king lay from him before covering himself with sackcloth?",
+  "choices": [
+   "His robe",
+   "His crown",
+   "His sword",
+   "His sandals"
+  ],
+  "answer": 0,
+  "explanation": "He laid his robe from him, and covered him with sackcloth.",
+  "ref": "Jonah 3:6"
+ },
+ {
+  "id": "jonah-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "On which side of the city did Jonah sit?",
+  "choices": [
+   "The west side",
+   "The north side",
+   "The south side",
+   "The east side"
+  ],
+  "answer": 3,
+  "explanation": "Jonah went out of the city, and sat on the east side of the city.",
+  "ref": "Jonah 4:5"
+ },
+ {
+  "id": "jonah-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jonah ask the LORD to take from him?",
+  "choices": [
+   "His staff",
+   "His booth",
+   "His life",
+   "His voice"
+  ],
+  "answer": 2,
+  "explanation": "O LORD, take, I beseech thee, my life from me; for it is better for me to die than to live.",
+  "ref": "Jonah 4:3"
+ },
+ {
+  "id": "jonah-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jonah make for himself outside the city?",
+  "choices": [
+   "A tent",
+   "A booth",
+   "A wall",
+   "A house"
+  ],
+  "answer": 1,
+  "explanation": "Jonah made him a booth, and sat under it in the shadow, till he might see what would become of the city.",
+  "ref": "Jonah 4:5"
+ },
+ {
+  "id": "jonah-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the gourd made to be over Jonah's head?",
+  "choices": [
+   "A shadow",
+   "A roof",
+   "A bed",
+   "A shield"
+  ],
+  "answer": 0,
+  "explanation": "The LORD God prepared a gourd, that it might be a shadow over his head, to deliver him from his grief.",
+  "ref": "Jonah 4:6"
+ },
+ {
+  "id": "jonah-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God prepare to beat upon Jonah?",
+  "choices": [
+   "A burning sun",
+   "A great storm",
+   "A swarm of locusts",
+   "A vehement east wind"
+  ],
+  "answer": 3,
+  "explanation": "God prepared a vehement east wind; and the sun beat upon the head of Jonah.",
+  "ref": "Jonah 4:8"
+ },
+ {
+  "id": "jonah-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jonah answer when God asked if he did well to be angry for the gourd?",
+  "choices": [
+   "I do not know",
+   "I am sorry, Lord",
+   "I do well to be angry, even unto death",
+   "I will leave this place"
+  ],
+  "answer": 2,
+  "explanation": "I do well to be angry, even unto death.",
+  "ref": "Jonah 4:9"
+ },
+ {
+  "id": "jonah-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many persons does God say are in Nineveh?",
+  "choices": [
+   "More than twelve thousand",
+   "More than sixscore thousand",
+   "More than seven hundred",
+   "More than three thousand"
+  ],
+  "answer": 1,
+  "explanation": "Wherein are more than sixscore thousand persons that cannot discern between their right hand and their left hand.",
+  "ref": "Jonah 4:11"
+ },
+ {
+  "id": "jonah-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What can the persons of Nineveh not discern between?",
+  "choices": [
+   "Their right hand and their left",
+   "Good and evil",
+   "Day and night",
+   "Truth and lies"
+  ],
+  "answer": 0,
+  "explanation": "Persons that cannot discern between their right hand and their left hand.",
+  "ref": "Jonah 4:11"
+ },
+ {
+  "id": "jonah-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What else does God name that He would spare in Nineveh?",
+  "choices": [
+   "Many gardens",
+   "Great treasure",
+   "The temple",
+   "Much cattle"
+  ],
+  "answer": 3,
+  "explanation": "And also much cattle?",
+  "ref": "Jonah 4:11"
+ },
+ {
+  "id": "jonah-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In how long did the gourd come up and perish?",
+  "choices": [
+   "It grew a week and withered in a day",
+   "It grew forty days and died in three",
+   "It came up in a night and perished in a night",
+   "It lasted a year"
+  ],
+  "answer": 2,
+  "explanation": "The gourd came up in a night, and perished in a night.",
+  "ref": "Jonah 4:10"
+ },
+ {
+  "id": "jonah-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Jonah not done for the gourd?",
+  "choices": [
+   "Planted it",
+   "Laboured or made it grow",
+   "Watered it",
+   "Seen it"
+  ],
+  "answer": 1,
+  "explanation": "Thou hast had pity on the gourd, for the which thou hast not laboured, neither madest it grow.",
+  "ref": "Jonah 4:10"
+ },
+ {
+  "id": "jonah-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did the worm smite the gourd?",
+  "choices": [
+   "When the morning rose the next day",
+   "At noon the same day",
+   "At midnight",
+   "At the evening"
+  ],
+  "answer": 0,
+  "explanation": "God prepared a worm when the morning rose the next day, and it smote the gourd that it withered.",
+  "ref": "Jonah 4:7"
+ },
+ {
+  "id": "jonah-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jonah feel about the gourd?",
+  "choices": [
+   "Quietly thankful",
+   "Very afraid",
+   "Indifferent",
+   "Exceeding glad"
+  ],
+  "answer": 3,
+  "explanation": "So Jonah was exceeding glad of the gourd.",
+  "ref": "Jonah 4:6"
  }
 ]

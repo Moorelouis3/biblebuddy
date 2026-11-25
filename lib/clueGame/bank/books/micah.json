@@ -208,22 +208,6 @@
   "ref": "Micah 3:4"
  },
  {
-  "id": "old-micah-3-4",
-  "chapter": 3,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What do false prophets cry when they have something to bite with their teeth?",
-  "choices": [
-   "War",
-   "Repentance",
-   "Peace",
-   "Victory"
-  ],
-  "answer": 2,
-  "explanation": "Their message is driven by self-interest rather than truth.",
-  "ref": "Micah 3:5"
- },
- {
   "id": "old-micah-3-5",
   "chapter": 3,
   "level": "beginner",
@@ -558,5 +542,2053 @@
   "answer": 0,
   "explanation": "Micah closes by celebrating God's unmatched mercy and forgiveness.",
   "ref": "Micah 7:18–19"
+ },
+ {
+  "id": "micah-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "In the days of which kings did Micah receive the word?",
+  "choices": [
+   "Saul, David and Solomon",
+   "Uzziah, Manasseh and Josiah",
+   "Rehoboam, Asa and Jehoshaphat",
+   "Jotham, Ahaz and Hezekiah"
+  ],
+  "answer": 3,
+  "explanation": "The word came to Micah in the days of Jotham, Ahaz, and Hezekiah, kings of Judah.",
+  "ref": "Micah 1:1"
+ },
+ {
+  "id": "micah-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "What is Micah called in the first verse?",
+  "choices": [
+   "The Elkoshite",
+   "The Tishbite",
+   "The Morasthite",
+   "The Tekoite"
+  ],
+  "answer": 2,
+  "explanation": "The word of the LORD that came to Micah the Morasthite.",
+  "ref": "Micah 1:1"
+ },
+ {
+  "id": "micah-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "What will the LORD make Samaria?",
+  "choices": [
+   "A fortress",
+   "An heap of the field",
+   "A garden",
+   "A pool of water"
+  ],
+  "answer": 1,
+  "explanation": "I will make Samaria as an heap of the field, and as plantings of a vineyard.",
+  "ref": "Micah 1:6"
+ },
+ {
+  "id": "micah-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD pour down into the valley?",
+  "choices": [
+   "The stones of Samaria",
+   "The waters of Jordan",
+   "The gold of the temple",
+   "The ashes of the altar"
+  ],
+  "answer": 0,
+  "explanation": "I will pour down the stones thereof into the valley, and I will discover the foundations thereof.",
+  "ref": "Micah 1:6"
+ },
+ {
+  "id": "micah-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall happen to all the graven images of Samaria?",
+  "choices": [
+   "They shall be hidden",
+   "They shall be carried to Assyria",
+   "They shall be sold",
+   "They shall be beaten to pieces"
+  ],
+  "answer": 3,
+  "explanation": "All the graven images thereof shall be beaten to pieces.",
+  "ref": "Micah 1:7"
+ },
+ {
+  "id": "micah-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Samaria gather her hires from?",
+  "choices": [
+   "The spoil of Egypt",
+   "The tribute of kings",
+   "The hire of an harlot",
+   "The tithes of the temple"
+  ],
+  "answer": 2,
+  "explanation": "For she gathered it of the hire of an harlot, and they shall return to the hire of an harlot.",
+  "ref": "Micah 1:7"
+ },
+ {
+  "id": "micah-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Micah say he will go?",
+  "choices": [
+   "In sackcloth and ashes",
+   "Stripped and naked",
+   "Barefoot and weeping",
+   "Alone and silent"
+  ],
+  "answer": 1,
+  "explanation": "I will wail and howl, I will go stripped and naked.",
+  "ref": "Micah 1:8"
+ },
+ {
+  "id": "micah-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "In whose house is the inhabitant told to roll in the dust?",
+  "choices": [
+   "Aphrah",
+   "Gath",
+   "Lachish",
+   "Zaanan"
+  ],
+  "answer": 0,
+  "explanation": "In the house of Aphrah roll thyself in the dust.",
+  "ref": "Micah 1:10"
+ },
+ {
+  "id": "micah-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "What is said of Lachish?",
+  "choices": [
+   "She is the strongest city of Judah",
+   "She sheltered the prophets",
+   "She was spared from the invader",
+   "She is the beginning of the sin to the daughter of Zion"
+  ],
+  "answer": 3,
+  "explanation": "She is the beginning of the sin to the daughter of Zion: for the transgressions of Israel were found in thee.",
+  "ref": "Micah 1:13"
+ },
+ {
+  "id": "micah-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "What came down from the LORD unto the gate of Jerusalem?",
+  "choices": [
+   "A king",
+   "A prophet",
+   "Evil",
+   "A famine"
+  ],
+  "answer": 2,
+  "explanation": "Evil came down from the LORD unto the gate of Jerusalem.",
+  "ref": "Micah 1:12"
+ },
+ {
+  "id": "micah-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD do when He comes forth from His place?",
+  "choices": [
+   "Sits upon the mountains of Zion",
+   "Comes down and treads upon the high places of the earth",
+   "Sends fire upon the temple",
+   "Calls the kings together"
+  ],
+  "answer": 1,
+  "explanation": "The LORD cometh forth out of his place, and will come down, and tread upon the high places of the earth.",
+  "ref": "Micah 1:3"
+ },
+ {
+  "id": "micah-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what does Micah liken his wailing and his mourning?",
+  "choices": [
+   "The dragons and the owls",
+   "The lions and the wolves",
+   "The doves and the ravens",
+   "The eagles and the bears"
+  ],
+  "answer": 0,
+  "explanation": "I will make a wailing like the dragons, and mourning as the owls.",
+  "ref": "Micah 1:8"
+ },
+ {
+  "id": "micah-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "To which place shall the heir of Mareshah come?",
+  "choices": [
+   "Hebron",
+   "Bethel",
+   "Gilgal",
+   "Adullam"
+  ],
+  "answer": 3,
+  "explanation": "I will bring an heir unto thee, O inhabitant of Mareshah: he shall come unto Adullam.",
+  "ref": "Micah 1:15"
+ },
+ {
+  "id": "micah-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why are the people told to make themselves bald?",
+  "choices": [
+   "Their king has died",
+   "Their harvest has failed",
+   "Their delicate children are gone into captivity",
+   "Their temple is burned"
+  ],
+  "answer": 2,
+  "explanation": "Make thee bald, and poll thee for thy delicate children: for they are gone into captivity from thee.",
+  "ref": "Micah 1:16"
+ },
+ {
+  "id": "micah-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "Who shall give presents to Moresheth-gath?",
+  "choices": [
+   "Samaria",
+   "Lachish",
+   "Jerusalem",
+   "Gath"
+  ],
+  "answer": 1,
+  "explanation": "Therefore shalt thou give presents to Moresheth-gath.",
+  "ref": "Micah 1:14"
+ },
+ {
+  "id": "micah-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does Micah call to hear, with the Lord GOD as witness?",
+  "choices": [
+   "All people and the earth",
+   "The priests of Judah",
+   "The kings of Israel",
+   "The elders of Samaria"
+  ],
+  "answer": 0,
+  "explanation": "Hear, all ye people; hearken, O earth, and let the Lord GOD be witness against you.",
+  "ref": "Micah 1:2"
+ },
+ {
+  "id": "micah-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "What did the inhabitant of Maroth do?",
+  "choices": [
+   "Fled to the mountains",
+   "Built a wall",
+   "Opened the gate",
+   "Waited carefully for good"
+  ],
+  "answer": 3,
+  "explanation": "The inhabitant of Maroth waited carefully for good: but evil came down from the LORD.",
+  "ref": "Micah 1:12"
+ },
+ {
+  "id": "micah-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Micah say the mountains are like before the fire?",
+  "choices": [
+   "Straw",
+   "Iron",
+   "Wax",
+   "Mist"
+  ],
+  "answer": 2,
+  "explanation": "The mountains shall be molten under him, as wax before the fire.",
+  "ref": "Micah 1:4"
+ },
+ {
+  "id": "micah-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "place",
+  "question": "What does Micah say are the high places of Judah?",
+  "choices": [
+   "Hebron",
+   "Jerusalem",
+   "Bethel",
+   "Gibeah"
+  ],
+  "answer": 1,
+  "explanation": "What are the high places of Judah? are they not Jerusalem?",
+  "ref": "Micah 1:5"
+ },
+ {
+  "id": "micah-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When do the wicked carry out the evil they devise?",
+  "choices": [
+   "When the morning is light",
+   "At the dead of night",
+   "At the feast days",
+   "At the time of harvest"
+  ],
+  "answer": 0,
+  "explanation": "When the morning is light, they practise it, because it is in the power of their hand.",
+  "ref": "Micah 2:1"
+ },
+ {
+  "id": "micah-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do they pull off from those who pass by securely?",
+  "choices": [
+   "The sandals and staff",
+   "The gold and silver",
+   "The sheep and goats",
+   "The robe with the garment"
+  ],
+  "answer": 3,
+  "explanation": "Ye pull off the robe with the garment from them that pass by securely as men averse from war.",
+  "ref": "Micah 2:8"
+ },
+ {
+  "id": "micah-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom have the oppressors cast out from their pleasant houses?",
+  "choices": [
+   "The prophets of Israel",
+   "The elders of Judah",
+   "The women of my people",
+   "The priests of the temple"
+  ],
+  "answer": 2,
+  "explanation": "The women of my people have ye cast out from their pleasant houses.",
+  "ref": "Micah 2:9"
+ },
+ {
+  "id": "micah-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the people say to those that prophesy?",
+  "choices": [
+   "Prophesy of peace",
+   "Prophesy ye not",
+   "Prophesy in the temple",
+   "Prophesy for hire"
+  ],
+  "answer": 1,
+  "explanation": "Prophesy ye not, say they to them that prophesy.",
+  "ref": "Micah 2:6"
+ },
+ {
+  "id": "micah-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Micah ask about the spirit of the LORD?",
+  "choices": [
+   "Is it straitened",
+   "Is it departed",
+   "Is it silent",
+   "Is it grieved"
+  ],
+  "answer": 0,
+  "explanation": "O thou that art named the house of Jacob, is the spirit of the LORD straitened?",
+  "ref": "Micah 2:7"
+ },
+ {
+  "id": "micah-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will the land destroy those who dwell in it?",
+  "choices": [
+   "Because it is barren",
+   "Because it is far from the sea",
+   "Because it is divided",
+   "Because it is polluted"
+  ],
+  "answer": 3,
+  "explanation": "Arise ye, and depart; for this is not your rest: because it is polluted, it shall destroy you.",
+  "ref": "Micah 2:10"
+ },
+ {
+  "id": "micah-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would the false prophet prophesy of?",
+  "choices": [
+   "Peace and plenty",
+   "War and famine",
+   "Wine and strong drink",
+   "Gold and silver"
+  ],
+  "answer": 2,
+  "explanation": "I will prophesy unto thee of wine and of strong drink; he shall even be the prophet of this people.",
+  "ref": "Micah 2:11"
+ },
+ {
+  "id": "micah-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who shall be on the head of the breakers as they pass through the gate?",
+  "choices": [
+   "The prince",
+   "The LORD",
+   "The priest",
+   "The judge"
+  ],
+  "answer": 1,
+  "explanation": "Their king shall pass before them, and the LORD on the head of them.",
+  "ref": "Micah 2:13"
+ },
+ {
+  "id": "micah-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As what will the LORD put the remnant of Israel together?",
+  "choices": [
+   "The sheep of Bozrah",
+   "The stars of heaven",
+   "The sands of the sea",
+   "The grass of the field"
+  ],
+  "answer": 0,
+  "explanation": "I will put them together as the sheep of Bozrah, as the flock in the midst of their fold.",
+  "ref": "Micah 2:12"
+ },
+ {
+  "id": "micah-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the oppressors do to a man and his house?",
+  "choices": [
+   "Feed him and his house",
+   "Honour him and his name",
+   "Judge him fairly",
+   "Oppress him and his heritage"
+  ],
+  "answer": 3,
+  "explanation": "They oppress a man and his house, even a man and his heritage.",
+  "ref": "Micah 2:2"
+ },
+ {
+  "id": "micah-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why shall the oppressors not go haughtily?",
+  "choices": [
+   "For the king is near",
+   "For the harvest has failed",
+   "For this time is evil",
+   "For the temple is closed"
+  ],
+  "answer": 2,
+  "explanation": "Neither shall ye go haughtily: for this time is evil.",
+  "ref": "Micah 2:3"
+ },
+ {
+  "id": "micah-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What lament will be taken up against the oppressors?",
+  "choices": [
+   "We are forsaken",
+   "We be utterly spoiled",
+   "We are free",
+   "We are rich"
+  ],
+  "answer": 1,
+  "explanation": "One shall take up a parable against you, and say, We be utterly spoiled.",
+  "ref": "Micah 2:4"
+ },
+ {
+  "id": "micah-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why do the wicked practise their evil?",
+  "choices": [
+   "It is in the power of their hand",
+   "They are poor",
+   "They fear the king",
+   "They are commanded"
+  ],
+  "answer": 0,
+  "explanation": "They practise it, because it is in the power of their hand.",
+  "ref": "Micah 2:1"
+ },
+ {
+  "id": "micah-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does the LORD say has risen up as an enemy?",
+  "choices": [
+   "Assyria",
+   "Egypt",
+   "The Chaldeans",
+   "My own people"
+  ],
+  "answer": 3,
+  "explanation": "Even of late my people is risen up as an enemy.",
+  "ref": "Micah 2:8"
+ },
+ {
+  "id": "micah-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who has come up before the people and passed through the gate?",
+  "choices": [
+   "The shepherd",
+   "The judge",
+   "The breaker",
+   "The scribe"
+  ],
+  "answer": 2,
+  "explanation": "The breaker is come up before them: they have broken up, and have passed through the gate.",
+  "ref": "Micah 2:13"
+ },
+ {
+  "id": "micah-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom do the LORD's words do good?",
+  "choices": [
+   "He that offereth most",
+   "He that walketh uprightly",
+   "He that dwelleth in Zion",
+   "He that fasteth"
+  ],
+  "answer": 1,
+  "explanation": "Do not my words do good to him that walketh uprightly?",
+  "ref": "Micah 2:7"
+ },
+ {
+  "id": "micah-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "What shall Jerusalem become?",
+  "choices": [
+   "Heaps",
+   "A garden",
+   "A fortress",
+   "A pool"
+  ],
+  "answer": 0,
+  "explanation": "Zion shall be plowed as a field, and Jerusalem shall become heaps.",
+  "ref": "Micah 3:12"
+ },
+ {
+  "id": "micah-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Micah say he is full of?",
+  "choices": [
+   "Wisdom of the elders",
+   "Sorrow for the people",
+   "Riches of the temple",
+   "Power by the spirit of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Truly I am full of power by the spirit of the LORD, and of judgment, and of might.",
+  "ref": "Micah 3:8"
+ },
+ {
+  "id": "micah-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does Micah say hate the good and love the evil?",
+  "choices": [
+   "The poor of the land",
+   "The elders of the gate",
+   "The heads of Jacob",
+   "The women of Zion"
+  ],
+  "answer": 2,
+  "explanation": "He addresses the heads of Jacob and the princes of the house of Israel, who hate the good, and love the evil.",
+  "ref": "Micah 3:2"
+ },
+ {
+  "id": "micah-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will the LORD hide His face from them?",
+  "choices": [
+   "They have forsaken the temple",
+   "They have behaved themselves ill in their doings",
+   "They have refused the offerings",
+   "They have not kept the feasts"
+  ],
+  "answer": 1,
+  "explanation": "He will even hide his face from them, as they have behaved themselves ill in their doings.",
+  "ref": "Micah 3:4"
+ },
+ {
+  "id": "micah-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Against whom do the false prophets prepare war?",
+  "choices": [
+   "He that puts nothing into their mouths",
+   "He that pays them a reward",
+   "He that comes to Jerusalem",
+   "He that is the king"
+  ],
+  "answer": 0,
+  "explanation": "Whoever putteth not into their mouths, they even prepare war against him.",
+  "ref": "Micah 3:5"
+ },
+ {
+  "id": "micah-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall be unto the prophets so they shall not have a vision?",
+  "choices": [
+   "Silence",
+   "Famine",
+   "Fire",
+   "Night"
+  ],
+  "answer": 3,
+  "explanation": "Night shall be unto you, that ye shall not have a vision.",
+  "ref": "Micah 3:6"
+ },
+ {
+  "id": "micah-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "What do the seers and diviners do when there is no answer of God?",
+  "choices": [
+   "Tear their robes",
+   "Flee the city",
+   "Cover their lips",
+   "Offer sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "The seers shall be ashamed; they shall all cover their lips; for there is no answer of God.",
+  "ref": "Micah 3:7"
+ },
+ {
+  "id": "micah-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the leaders say while leaning upon the LORD?",
+  "choices": [
+   "The LORD has left us",
+   "Is not the LORD among us",
+   "The LORD is our king",
+   "The LORD will fight for us"
+  ],
+  "answer": 1,
+  "explanation": "They lean upon the LORD, and say, Is not the LORD among us? none evil can come upon us.",
+  "ref": "Micah 3:11"
+ },
+ {
+  "id": "micah-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what do they build up Zion?",
+  "choices": [
+   "Blood",
+   "Stone",
+   "Cedar",
+   "Gold"
+  ],
+  "answer": 0,
+  "explanation": "They build up Zion with blood, and Jerusalem with iniquity.",
+  "ref": "Micah 3:10"
+ },
+ {
+  "id": "micah-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who among Zion's leaders teach for hire?",
+  "choices": [
+   "The princes",
+   "The seers",
+   "The elders",
+   "The priests"
+  ],
+  "answer": 3,
+  "explanation": "The priests thereof teach for hire.",
+  "ref": "Micah 3:11"
+ },
+ {
+  "id": "micah-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Micah say he is empowered to declare?",
+  "choices": [
+   "The coming of the king",
+   "The end of the exile",
+   "To Jacob his transgression and to Israel his sin",
+   "The rebuilding of the temple"
+  ],
+  "answer": 2,
+  "explanation": "I am full of power to declare unto Jacob his transgression, and to Israel his sin.",
+  "ref": "Micah 3:8"
+ },
+ {
+  "id": "micah-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what shall the mountain of the house become like?",
+  "choices": [
+   "A plowed field",
+   "The high places of the forest",
+   "A heap of stones",
+   "A desert"
+  ],
+  "answer": 1,
+  "explanation": "The mountain of the house shall be as the high places of the forest.",
+  "ref": "Micah 3:12"
+ },
+ {
+  "id": "micah-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall go down over the prophets?",
+  "choices": [
+   "The sun",
+   "The moon",
+   "The rain",
+   "The night"
+  ],
+  "answer": 0,
+  "explanation": "The sun shall go down over the prophets, and the day shall be dark over them.",
+  "ref": "Micah 3:6"
+ },
+ {
+  "id": "micah-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How do the heads and princes treat judgment and equity?",
+  "choices": [
+   "They teach it to the people",
+   "They write it on tables",
+   "They sell it to the rich",
+   "They abhor judgment and pervert equity"
+  ],
+  "answer": 3,
+  "explanation": "Ye that abhor judgment, and pervert all equity.",
+  "ref": "Micah 3:9"
+ },
+ {
+  "id": "micah-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall nations not learn any more?",
+  "choices": [
+   "Prayer",
+   "Trade",
+   "War",
+   "The law"
+  ],
+  "answer": 2,
+  "explanation": "Nation shall not lift up a sword against nation, neither shall they learn war any more.",
+  "ref": "Micah 4:3"
+ },
+ {
+  "id": "micah-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "What shall go forth of Zion?",
+  "choices": [
+   "The army",
+   "The law",
+   "The king",
+   "The ark"
+  ],
+  "answer": 1,
+  "explanation": "The law shall go forth of Zion, and the word of the LORD from Jerusalem.",
+  "ref": "Micah 4:2"
+ },
+ {
+  "id": "micah-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the people of Zion say they will walk in?",
+  "choices": [
+   "The name of the LORD our God for ever and ever",
+   "The ways of their fathers",
+   "The paths of the nations",
+   "The law of the kings"
+  ],
+  "answer": 0,
+  "explanation": "We will walk in the name of the LORD our God for ever and ever.",
+  "ref": "Micah 4:5"
+ },
+ {
+  "id": "micah-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why shall none make them afraid?",
+  "choices": [
+   "The army of Israel will protect them",
+   "The walls will be strong",
+   "The king will rule justly",
+   "The mouth of the LORD of hosts hath spoken it"
+  ],
+  "answer": 3,
+  "explanation": "None shall make them afraid: for the mouth of the LORD of hosts hath spoken it.",
+  "ref": "Micah 4:4"
+ },
+ {
+  "id": "micah-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom will the LORD assemble in that day?",
+  "choices": [
+   "The young men",
+   "The kings",
+   "Her that halteth",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "In that day, saith the LORD, will I assemble her that halteth.",
+  "ref": "Micah 4:6"
+ },
+ {
+  "id": "micah-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "place",
+  "question": "Where shall the LORD reign over the remnant?",
+  "choices": [
+   "In Bethel",
+   "In mount Zion",
+   "In Babylon",
+   "In Samaria"
+  ],
+  "answer": 1,
+  "explanation": "The LORD shall reign over them in mount Zion from henceforth, even for ever.",
+  "ref": "Micah 4:7"
+ },
+ {
+  "id": "micah-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall come to the tower of the flock?",
+  "choices": [
+   "The first dominion",
+   "The remnant of Babylon",
+   "The word of the prophets",
+   "The wealth of nations"
+  ],
+  "answer": 0,
+  "explanation": "Unto thee shall it come, even the first dominion; the kingdom shall come to the daughter of Jerusalem.",
+  "ref": "Micah 4:8"
+ },
+ {
+  "id": "micah-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the gathered nations say of Zion?",
+  "choices": [
+   "Let her be spared",
+   "Let her be crowned",
+   "Let her be silent",
+   "Let her be defiled"
+  ],
+  "answer": 3,
+  "explanation": "Many nations are gathered against thee, that say, Let her be defiled, and let our eye look upon Zion.",
+  "ref": "Micah 4:11"
+ },
+ {
+  "id": "micah-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How will the LORD gather the nations that know not His thoughts?",
+  "choices": [
+   "As fish in a net",
+   "As sheep into a fold",
+   "As the sheaves into the floor",
+   "As grapes into a press"
+  ],
+  "answer": 2,
+  "explanation": "They know not the thoughts of the LORD: for he shall gather them as the sheaves into the floor.",
+  "ref": "Micah 4:12"
+ },
+ {
+  "id": "micah-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the daughter of Zion told to do, with an iron horn?",
+  "choices": [
+   "Build a wall around the city",
+   "Arise and thresh, beating in pieces many people",
+   "Flee to the mountains",
+   "Sit and weep"
+  ],
+  "answer": 1,
+  "explanation": "Arise and thresh, O daughter of Zion: for I will make thine horn iron, and thou shalt beat in pieces many people.",
+  "ref": "Micah 4:13"
+ },
+ {
+  "id": "micah-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Unto whom will the LORD consecrate the gain of the nations?",
+  "choices": [
+   "The LORD of the whole earth",
+   "The temple treasury",
+   "The poor of Zion",
+   "The kings of Judah"
+  ],
+  "answer": 0,
+  "explanation": "I will consecrate their gain unto the LORD, and their substance unto the Lord of the whole earth.",
+  "ref": "Micah 4:13"
+ },
+ {
+  "id": "micah-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question is asked of the daughter of Zion crying out aloud?",
+  "choices": [
+   "Is there no rain in thee",
+   "Is there no peace in thee",
+   "Is there no temple in thee",
+   "Is there no king in thee"
+  ],
+  "answer": 3,
+  "explanation": "Why dost thou cry out aloud? is there no king in thee? is thy counsellor perished?",
+  "ref": "Micah 4:9"
+ },
+ {
+  "id": "micah-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom shall the LORD rebuke afar off?",
+  "choices": [
+   "The judges of Israel",
+   "The false prophets",
+   "Strong nations",
+   "The idols"
+  ],
+  "answer": 2,
+  "explanation": "He shall judge among many people, and rebuke strong nations afar off.",
+  "ref": "Micah 4:3"
+ },
+ {
+  "id": "micah-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom is the pain of the daughter of Zion compared?",
+  "choices": [
+   "A shepherd in the field",
+   "A woman in travail",
+   "A king in battle",
+   "A vine in winter"
+  ],
+  "answer": 1,
+  "explanation": "Be in pain, and labour to bring forth, O daughter of Zion, like a woman in travail.",
+  "ref": "Micah 4:10"
+ },
+ {
+  "id": "micah-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where shall Zion dwell when she goes out of the city?",
+  "choices": [
+   "In the field",
+   "In the wilderness",
+   "In the cave",
+   "In the tents"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt go forth out of the city, and thou shalt dwell in the field, and thou shalt go even to Babylon.",
+  "ref": "Micah 4:10"
+ },
+ {
+  "id": "micah-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD make of her that was cast far off?",
+  "choices": [
+   "A holy priesthood",
+   "A great city",
+   "A fruitful vine",
+   "A strong nation"
+  ],
+  "answer": 3,
+  "explanation": "I will make her that halted a remnant, and her that was cast far off a strong nation.",
+  "ref": "Micah 4:7"
+ },
+ {
+  "id": "micah-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "From whom will the ruler deliver Israel?",
+  "choices": [
+   "The Egyptian",
+   "The Philistine",
+   "The Assyrian",
+   "The Edomite"
+  ],
+  "answer": 2,
+  "explanation": "Thus shall he deliver us from the Assyrian, when he cometh into our land.",
+  "ref": "Micah 5:6"
+ },
+ {
+  "id": "micah-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom shall they smite with a rod upon the cheek?",
+  "choices": [
+   "The king of Assyria",
+   "The judge of Israel",
+   "The prophet of Jacob",
+   "The captain of the host"
+  ],
+  "answer": 1,
+  "explanation": "They shall smite the judge of Israel with a rod upon the cheek.",
+  "ref": "Micah 5:1"
+ },
+ {
+  "id": "micah-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom shall the remnant of his brethren return?",
+  "choices": [
+   "The children of Israel",
+   "The tribe of Judah",
+   "The house of David",
+   "The land of Assyria"
+  ],
+  "answer": 0,
+  "explanation": "The remnant of his brethren shall return unto the children of Israel.",
+  "ref": "Micah 5:3"
+ },
+ {
+  "id": "micah-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "How is Bethlehem Ephratah described?",
+  "choices": [
+   "Great among the cities of Israel",
+   "Strong among the fortresses",
+   "Hidden among the mountains",
+   "Little among the thousands of Judah"
+  ],
+  "answer": 3,
+  "explanation": "Thou, Bethlehem Ephratah, though thou be little among the thousands of Judah.",
+  "ref": "Micah 5:2"
+ },
+ {
+  "id": "micah-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until what time will the LORD give them up?",
+  "choices": [
+   "The king shall come to Zion",
+   "The temple is rebuilt",
+   "She which travaileth hath brought forth",
+   "Seventy years have passed"
+  ],
+  "answer": 2,
+  "explanation": "He will give them up, until the time that she which travaileth hath brought forth.",
+  "ref": "Micah 5:3"
+ },
+ {
+  "id": "micah-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "As what shall the remnant of Jacob be in the midst of many people?",
+  "choices": [
+   "A flame of fire",
+   "A dew from the LORD",
+   "A cloud of dust",
+   "A stream of water"
+  ],
+  "answer": 1,
+  "explanation": "The remnant of Jacob shall be as a dew from the LORD, as the showers upon the grass.",
+  "ref": "Micah 5:7"
+ },
+ {
+  "id": "micah-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Which land is named besides Assyria as wasted with the sword?",
+  "choices": [
+   "The land of Nimrod",
+   "The land of Moab",
+   "The land of Edom",
+   "The land of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "They shall waste the land of Assyria with the sword, and the land of Nimrod.",
+  "ref": "Micah 5:6"
+ },
+ {
+  "id": "micah-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD cut off out of the midst of His people?",
+  "choices": [
+   "Sheep and oxen",
+   "Swords and spears",
+   "Gold and silver",
+   "Horses and chariots"
+  ],
+  "answer": 3,
+  "explanation": "I will cut off thy horses out of the midst of thee, and I will destroy thy chariots.",
+  "ref": "Micah 5:10"
+ },
+ {
+  "id": "micah-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD cut off out of their hand?",
+  "choices": [
+   "Weapons",
+   "Tribute",
+   "Witchcrafts",
+   "Burdens"
+  ],
+  "answer": 2,
+  "explanation": "I will cut off witchcrafts out of thine hand; and thou shalt have no more soothsayers.",
+  "ref": "Micah 5:12"
+ },
+ {
+  "id": "micah-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Upon whom will the LORD execute vengeance in anger and fury?",
+  "choices": [
+   "The priests",
+   "The heathen",
+   "The kings of Judah",
+   "The false prophets"
+  ],
+  "answer": 1,
+  "explanation": "I will execute vengeance in anger and fury upon the heathen, such as they have not heard.",
+  "ref": "Micah 5:15"
+ },
+ {
+  "id": "micah-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many shepherds and principal men shall they raise against the Assyrian?",
+  "choices": [
+   "Seven shepherds and eight principal men",
+   "Three shepherds and four principal men",
+   "Ten shepherds and twelve principal men",
+   "Twelve shepherds and seven principal men"
+  ],
+  "answer": 0,
+  "explanation": "Then shall we raise against him seven shepherds, and eight principal men.",
+  "ref": "Micah 5:5"
+ },
+ {
+  "id": "micah-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the people no more worship?",
+  "choices": [
+   "The LORD of hosts",
+   "The sun and moon",
+   "The high places",
+   "The work of their hands"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt no more worship the work of thine hands.",
+  "ref": "Micah 5:13"
+ },
+ {
+  "id": "micah-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do to the cities and strong holds of Israel?",
+  "choices": [
+   "Fill them with peace",
+   "Give them to Assyria",
+   "Cut off the cities and throw down the strong holds",
+   "Make them the capital"
+  ],
+  "answer": 2,
+  "explanation": "I will cut off the cities of thy land, and throw down all thy strong holds.",
+  "ref": "Micah 5:11"
+ },
+ {
+  "id": "micah-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As what shall the remnant of Jacob be among the Gentiles?",
+  "choices": [
+   "A dove among the birds",
+   "A lion among the beasts of the forest",
+   "A ram among the flock",
+   "A tree among the thorns"
+  ],
+  "answer": 1,
+  "explanation": "The remnant of Jacob shall be among the Gentiles as a lion among the beasts of the forest.",
+  "ref": "Micah 5:8"
+ },
+ {
+  "id": "micah-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How far shall the ruler be great?",
+  "choices": [
+   "Unto the ends of the earth",
+   "Unto the great river",
+   "Unto the sea",
+   "Unto Babylon"
+  ],
+  "answer": 0,
+  "explanation": "Now shall he be great unto the ends of the earth.",
+  "ref": "Micah 5:4"
+ },
+ {
+  "id": "micah-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose hand shall be lifted up upon their adversaries?",
+  "choices": [
+   "The king's hand",
+   "The prophet's hand",
+   "The LORD's hand",
+   "Thine hand"
+  ],
+  "answer": 3,
+  "explanation": "Thine hand shall be lifted up upon thine adversaries, and all thine enemies shall be cut off.",
+  "ref": "Micah 5:9"
+ },
+ {
+  "id": "micah-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has been laid against Jerusalem as the daughter of troops gathers?",
+  "choices": [
+   "A famine",
+   "A plague",
+   "A siege",
+   "A flood"
+  ],
+  "answer": 2,
+  "explanation": "Now gather thyself in troops, O daughter of troops: he hath laid siege against us.",
+  "ref": "Micah 5:1"
+ },
+ {
+  "id": "micah-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the remnant do among the many people like a young lion?",
+  "choices": [
+   "Feed and rest",
+   "Tread down and tear in pieces",
+   "Hide and wait",
+   "Cry and flee"
+  ],
+  "answer": 1,
+  "explanation": "As a young lion among the flocks of sheep, he treadeth down, and teareth in pieces, and none can deliver.",
+  "ref": "Micah 5:8"
+ },
+ {
+  "id": "micah-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the Assyrian do when he comes into the land?",
+  "choices": [
+   "Tread in our palaces",
+   "Plant vineyards",
+   "Make peace with Israel",
+   "Rebuild the temple"
+  ],
+  "answer": 0,
+  "explanation": "When the Assyrian shall come into our land, and when he shall tread in our palaces.",
+  "ref": "Micah 5:5"
+ },
+ {
+  "id": "micah-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the LORD send before Israel?",
+  "choices": [
+   "Joshua, Caleb and Eleazar",
+   "Samuel, Eli and Hannah",
+   "David, Nathan and Gad",
+   "Moses, Aaron and Miriam"
+  ],
+  "answer": 3,
+  "explanation": "I sent before thee Moses, Aaron, and Miriam.",
+  "ref": "Micah 6:4"
+ },
+ {
+  "id": "micah-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Moab is named?",
+  "choices": [
+   "Eglon",
+   "Mesha",
+   "Balak",
+   "Sihon"
+  ],
+  "answer": 2,
+  "explanation": "Remember what Balak king of Moab consulted.",
+  "ref": "Micah 6:5"
+ },
+ {
+  "id": "micah-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who answered Balak from Shittim unto Gilgal?",
+  "choices": [
+   "Moses the son of Amram",
+   "Balaam the son of Beor",
+   "Aaron the priest",
+   "Joshua the son of Nun"
+  ],
+  "answer": 1,
+  "explanation": "Remember what Balaam the son of Beor answered him from Shittim unto Gilgal.",
+  "ref": "Micah 6:5"
+ },
+ {
+  "id": "micah-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the worshipper ask whether the LORD would be pleased with ten thousands of?",
+  "choices": [
+   "Rivers of oil",
+   "Rams of the flock",
+   "Measures of wheat",
+   "Vessels of silver"
+  ],
+  "answer": 0,
+  "explanation": "Will the LORD be pleased with thousands of rams, or with ten thousands of rivers of oil?",
+  "ref": "Micah 6:7"
+ },
+ {
+  "id": "micah-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the worshipper ask about giving for his transgression?",
+  "choices": [
+   "His house",
+   "His silver",
+   "His flock",
+   "His firstborn"
+  ],
+  "answer": 3,
+  "explanation": "Shall I give my firstborn for my transgression, the fruit of my body for the sin of my soul?",
+  "ref": "Micah 6:7"
+ },
+ {
+  "id": "micah-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom does the LORD's voice cry unto?",
+  "choices": [
+   "The temple",
+   "The nations",
+   "The city",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "The LORD'S voice crieth unto the city, and the man of wisdom shall see thy name.",
+  "ref": "Micah 6:9"
+ },
+ {
+  "id": "micah-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the rich men of the city full of?",
+  "choices": [
+   "Pride",
+   "Violence",
+   "Wine",
+   "Fear"
+  ],
+  "answer": 1,
+  "explanation": "The rich men thereof are full of violence, and the inhabitants thereof have spoken lies.",
+  "ref": "Micah 6:12"
+ },
+ {
+  "id": "micah-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will the LORD smite Israel and make her desolate?",
+  "choices": [
+   "Because of her sins",
+   "Because of Assyria",
+   "Because of the temple",
+   "Because of the famine"
+  ],
+  "answer": 0,
+  "explanation": "Therefore also will I make thee sick in smiting thee, in making thee desolate because of thy sins.",
+  "ref": "Micah 6:13"
+ },
+ {
+  "id": "micah-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will Israel sow but not do?",
+  "choices": [
+   "Eat",
+   "Gather",
+   "Sell",
+   "Reap"
+  ],
+  "answer": 3,
+  "explanation": "Thou shalt sow, but thou shalt not reap; thou shalt tread the olives, but thou shalt not anoint thee with oil.",
+  "ref": "Micah 6:15"
+ },
+ {
+  "id": "micah-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will the LORD make Israel a desolation?",
+  "choices": [
+   "They have forgotten the feasts",
+   "They have robbed the temple",
+   "They keep Omri's statutes and Ahab's works",
+   "They have followed Egypt"
+  ],
+  "answer": 2,
+  "explanation": "The statutes of Omri are kept, and all the works of the house of Ahab; that I should make thee a desolation.",
+  "ref": "Micah 6:16"
+ },
+ {
+  "id": "micah-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD ask His people in His controversy?",
+  "choices": [
+   "Why have you forsaken Me",
+   "What have I done unto thee, and wherein have I wearied thee",
+   "Where is your king",
+   "When will you return"
+  ],
+  "answer": 1,
+  "explanation": "O my people, what have I done unto thee? and wherein have I wearied thee? testify against me.",
+  "ref": "Micah 6:3"
+ },
+ {
+  "id": "micah-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the worshipper first offer to bring before the high God?",
+  "choices": [
+   "Burnt offerings, calves of a year old",
+   "Thousands of rams",
+   "Rivers of oil",
+   "His firstborn"
+  ],
+  "answer": 0,
+  "explanation": "Shall I come before him with burnt offerings, with calves of a year old?",
+  "ref": "Micah 6:6"
+ },
+ {
+  "id": "micah-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to what Israel delivers?",
+  "choices": [
+   "It is stored in the temple",
+   "It is carried to Egypt",
+   "It is given to the poor",
+   "The LORD gives it up to the sword"
+  ],
+  "answer": 3,
+  "explanation": "That which thou deliverest will I give up to the sword.",
+  "ref": "Micah 6:14"
+ },
+ {
+  "id": "micah-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD ask whether He shall count pure along with the wicked balances?",
+  "choices": [
+   "The house of the rich",
+   "The altar of the temple",
+   "The bag of deceitful weights",
+   "The ships of trade"
+  ],
+  "answer": 2,
+  "explanation": "Shall I count them pure with the wicked balances, and with the bag of deceitful weights?",
+  "ref": "Micah 6:11"
+ },
+ {
+  "id": "micah-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does the LORD tell Israel to remember Balak and Balaam?",
+  "choices": [
+   "That ye may fear the king",
+   "That ye may know the righteousness of the LORD",
+   "That ye may keep the feasts",
+   "That ye may build the temple"
+  ],
+  "answer": 1,
+  "explanation": "Remember what Balak consulted, and what Balaam answered, that ye may know the righteousness of the LORD.",
+  "ref": "Micah 6:5"
+ },
+ {
+  "id": "micah-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "With whom does the LORD say He has a controversy?",
+  "choices": [
+   "His people Israel",
+   "The nations",
+   "Moab",
+   "Assyria"
+  ],
+  "answer": 0,
+  "explanation": "The LORD hath a controversy with his people, and he will plead with Israel.",
+  "ref": "Micah 6:2"
+ },
+ {
+  "id": "micah-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the LORD describe the speech of the city's inhabitants?",
+  "choices": [
+   "They speak peace",
+   "They speak wisdom",
+   "They are silent",
+   "They have spoken lies"
+  ],
+  "answer": 3,
+  "explanation": "The inhabitants thereof have spoken lies, and their tongue is deceitful in their mouth.",
+  "ref": "Micah 6:12"
+ },
+ {
+  "id": "micah-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom does the LORD tell Israel to plead their case?",
+  "choices": [
+   "The kings",
+   "The priests",
+   "The mountains and hills",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "Arise, contend thou before the mountains, and let the hills hear thy voice.",
+  "ref": "Micah 6:1"
+ },
+ {
+  "id": "micah-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Who shall see the LORD's name, as His voice cries to the city?",
+  "choices": [
+   "The king",
+   "The man of wisdom",
+   "The priest",
+   "The elder"
+  ],
+  "answer": 1,
+  "explanation": "The man of wisdom shall see thy name.",
+  "ref": "Micah 6:9"
+ },
+ {
+  "id": "micah-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the LORD delight in?",
+  "choices": [
+   "Mercy",
+   "Sacrifice",
+   "Silence",
+   "Vengeance"
+  ],
+  "answer": 0,
+  "explanation": "He retaineth not his anger for ever, because he delighteth in mercy.",
+  "ref": "Micah 7:18"
+ },
+ {
+  "id": "micah-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom has the LORD sworn mercy?",
+  "choices": [
+   "Isaac",
+   "Moses",
+   "David",
+   "Abraham"
+  ],
+  "answer": 3,
+  "explanation": "Thou wilt perform the truth to Jacob, and the mercy to Abraham, which thou hast sworn unto our fathers.",
+  "ref": "Micah 7:20"
+ },
+ {
+  "id": "micah-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does the son dishonour?",
+  "choices": [
+   "The king",
+   "The priest",
+   "The father",
+   "The elder"
+  ],
+  "answer": 2,
+  "explanation": "For the son dishonoureth the father, the daughter riseth up against her mother.",
+  "ref": "Micah 7:6"
+ },
+ {
+  "id": "micah-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the enemies lick like a serpent?",
+  "choices": [
+   "The water",
+   "The dust",
+   "The ground",
+   "The fire"
+  ],
+  "answer": 1,
+  "explanation": "They shall lick the dust like a serpent.",
+  "ref": "Micah 7:17"
+ },
+ {
+  "id": "micah-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Micah say there is no cluster of?",
+  "choices": [
+   "Fruit to eat",
+   "Wine to drink",
+   "Bread to bake",
+   "Oil to burn"
+  ],
+  "answer": 0,
+  "explanation": "There is no cluster to eat: my soul desired the firstripe fruit.",
+  "ref": "Micah 7:1"
+ },
+ {
+  "id": "micah-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what do men hunt every man his brother?",
+  "choices": [
+   "A sword",
+   "A snare of gold",
+   "A bow",
+   "A net"
+  ],
+  "answer": 3,
+  "explanation": "They all lie in wait for blood; they hunt every man his brother with a net.",
+  "ref": "Micah 7:2"
+ },
+ {
+  "id": "micah-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Who asks for a reward?",
+  "choices": [
+   "The priest and the prophet",
+   "The widow and the orphan",
+   "The prince and the judge",
+   "The king and the captain"
+  ],
+  "answer": 2,
+  "explanation": "The prince asketh, and the judge asketh for a reward.",
+  "ref": "Micah 7:3"
+ },
+ {
+  "id": "micah-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the best of them as?",
+  "choices": [
+   "A rose",
+   "A brier",
+   "A reed",
+   "A tree"
+  ],
+  "answer": 1,
+  "explanation": "The best of them is as a brier: the most upright is sharper than a thorn hedge.",
+  "ref": "Micah 7:4"
+ },
+ {
+  "id": "micah-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "From whom should a man keep the doors of his mouth?",
+  "choices": [
+   "Her that lieth in his bosom",
+   "His enemy",
+   "The judge",
+   "The prince"
+  ],
+  "answer": 0,
+  "explanation": "Keep the doors of thy mouth from her that lieth in thy bosom.",
+  "ref": "Micah 7:5"
+ },
+ {
+  "id": "micah-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will Micah bear the indignation of the LORD?",
+  "choices": [
+   "Because he is a prophet",
+   "Because he is poor",
+   "Because he is old",
+   "Because he has sinned against Him"
+  ],
+  "answer": 3,
+  "explanation": "I will bear the indignation of the LORD, because I have sinned against him.",
+  "ref": "Micah 7:9"
+ },
+ {
+  "id": "micah-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the enemy say to Micah?",
+  "choices": [
+   "Where is thy king",
+   "Where is thy temple",
+   "Where is the LORD thy God",
+   "Where is thy strength"
+  ],
+  "answer": 2,
+  "explanation": "Shame shall cover her which said unto me, Where is the LORD thy God?",
+  "ref": "Micah 7:10"
+ },
+ {
+  "id": "micah-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen to the enemy who mocked Micah?",
+  "choices": [
+   "She will be honoured",
+   "Shame will cover her and she will be trodden down",
+   "She will flee to Egypt",
+   "She will be forgiven"
+  ],
+  "answer": 1,
+  "explanation": "Shame shall cover her which said, Where is the LORD thy God? now shall she be trodden down as the mire of the streets.",
+  "ref": "Micah 7:10"
+ },
+ {
+  "id": "micah-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where does Micah ask that the LORD's flock feed?",
+  "choices": [
+   "Bashan and Gilead",
+   "Sharon and Carmel",
+   "Moab and Edom",
+   "Egypt and Assyria"
+  ],
+  "answer": 0,
+  "explanation": "Let them feed in Bashan and Gilead, as in the days of old.",
+  "ref": "Micah 7:14"
+ },
+ {
+  "id": "micah-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to what days will the LORD show marvellous things?",
+  "choices": [
+   "The days of David",
+   "The days of Solomon",
+   "The days of Noah",
+   "The days of coming out of Egypt"
+  ],
+  "answer": 3,
+  "explanation": "According to the days of thy coming out of the land of Egypt will I shew unto him marvellous things.",
+  "ref": "Micah 7:15"
+ },
+ {
+  "id": "micah-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when does Micah bear the indignation?",
+  "choices": [
+   "Until the king returns",
+   "Until the temple is built",
+   "Until the LORD plead his cause",
+   "Until the new moon"
+  ],
+  "answer": 2,
+  "explanation": "I will bear the indignation, until he plead my cause, and execute judgment for me.",
+  "ref": "Micah 7:9"
+ },
+ {
+  "id": "micah-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the most upright of them sharper than?",
+  "choices": [
+   "A two-edged sword",
+   "A thorn hedge",
+   "A flint stone",
+   "A bramble bush"
+  ],
+  "answer": 1,
+  "explanation": "The most upright is sharper than a thorn hedge.",
+  "ref": "Micah 7:4"
+ },
+ {
+  "id": "micah-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Who riseth up against her mother in law?",
+  "choices": [
+   "The daughter in law",
+   "The sister",
+   "The neighbour",
+   "The maid"
+  ],
+  "answer": 0,
+  "explanation": "The daughter in law against her mother in law.",
+  "ref": "Micah 7:6"
+ },
+ {
+  "id": "micah-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will happen in the day that Israel's walls are to be built?",
+  "choices": [
+   "The enemy shall rule",
+   "The king shall fall",
+   "The river shall dry",
+   "The decree shall be far removed"
+  ],
+  "answer": 3,
+  "explanation": "In the day that thy walls are to be built, in that day shall the decree be far removed.",
+  "ref": "Micah 7:11"
+ },
+ {
+  "id": "micah-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "place",
+  "question": "From where shall they come to Israel in that day?",
+  "choices": [
+   "From Babylon and Persia",
+   "From Tyre and Sidon",
+   "From Assyria and the fortified cities",
+   "From Moab and Edom"
+  ],
+  "answer": 2,
+  "explanation": "He shall come even to thee from Assyria, and from the fortified cities.",
+  "ref": "Micah 7:12"
+ },
+ {
+  "id": "micah-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How will the nations respond when they see the LORD's marvellous things?",
+  "choices": [
+   "Rejoicing, with songs",
+   "Confounded, with their hand upon their mouth",
+   "Fleeing, in fear",
+   "Bringing gifts"
+  ],
+  "answer": 1,
+  "explanation": "The nations shall see and be confounded; they shall lay their hand upon their mouth.",
+  "ref": "Micah 7:16"
+ },
+ {
+  "id": "micah-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Like what shall they move out of their holes?",
+  "choices": [
+   "Worms of the earth",
+   "Lions of the forest",
+   "Foxes of the field",
+   "Doves of the rock"
+  ],
+  "answer": 0,
+  "explanation": "They shall move out of their holes like worms of the earth.",
+  "ref": "Micah 7:17"
+ },
+ {
+  "id": "micah-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Micah ask in praise of the LORD?",
+  "choices": [
+   "Who is a king like unto thee",
+   "Who is a shepherd like unto thee",
+   "Who is a judge like unto thee",
+   "Who is a God like unto thee that pardoneth iniquity"
+  ],
+  "answer": 3,
+  "explanation": "Who is a God like unto thee, that pardoneth iniquity?",
+  "ref": "Micah 7:18"
+ },
+ {
+  "id": "micah-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD do with the transgression of the remnant of His heritage?",
+  "choices": [
+   "Counts it",
+   "Hides it",
+   "Passes by it",
+   "Remembers it"
+  ],
+  "answer": 2,
+  "explanation": "Who is a God like unto thee, that pardoneth iniquity, and passeth by the transgression of the remnant of his heritage?",
+  "ref": "Micah 7:18"
+ },
+ {
+  "id": "micah-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the day of the watchmen and their visitation bring?",
+  "choices": [
+   "Their rest",
+   "Their perplexity",
+   "Their joy",
+   "Their silence"
+  ],
+  "answer": 1,
+  "explanation": "The day of thy watchmen and thy visitation cometh; now shall be their perplexity.",
+  "ref": "Micah 7:4"
+ },
+ {
+  "id": "micah-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the LORD do when He turns again to His people?",
+  "choices": [
+   "Have compassion upon us and subdue our iniquities",
+   "Send a king",
+   "Bring a drought",
+   "Gather the nations"
+  ],
+  "answer": 0,
+  "explanation": "He will turn again, he will have compassion upon us; he will subdue our iniquities.",
+  "ref": "Micah 7:19"
  }
 ]
