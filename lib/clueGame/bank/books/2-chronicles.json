@@ -7504,6 +7504,262 @@
   "ref": "2 Chronicles 16:12"
  },
  {
+  "id": "2-chronicles-16-e-01",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "place",
+  "question": "What did Baasha king of Israel build against Judah?",
+  "choices": [
+   "Damascus",
+   "Ramah",
+   "Geba",
+   "Mizpah"
+  ],
+  "answer": 1,
+  "explanation": "Baasha king of Israel came up against Judah, and built Ramah.",
+  "ref": "2 Chronicles 16:1"
+ },
+ {
+  "id": "2-chronicles-16-e-02",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Asa get the silver and gold to send to Ben-hadad?",
+  "choices": [
+   "Taxes from Judah",
+   "Spoil from Ethiopia",
+   "A gift from Baasha",
+   "The treasures of the temple and the king's house"
+  ],
+  "answer": 3,
+  "explanation": "Asa brought out silver and gold out of the treasures of the house of the LORD and of the king's house.",
+  "ref": "2 Chronicles 16:2"
+ },
+ {
+  "id": "2-chronicles-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Baasha build Ramah?",
+  "choices": [
+   "To store his treasure",
+   "To honour his father",
+   "To let none go out or come in to Asa",
+   "To defend Israel from Syria"
+  ],
+  "answer": 2,
+  "explanation": "Baasha built Ramah to the intent that he might let none go out or come in to Asa king of Judah.",
+  "ref": "2 Chronicles 16:1"
+ },
+ {
+  "id": "2-chronicles-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Asa ask Ben-hadad to do about his league with Baasha?",
+  "choices": [
+   "Break it",
+   "Renew it",
+   "Double it",
+   "Hide it"
+  ],
+  "answer": 0,
+  "explanation": "Asa said, Go, break thy league with Baasha king of Israel, that he may depart from me.",
+  "ref": "2 Chronicles 16:3"
+ },
+ {
+  "id": "2-chronicles-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to the building of Ramah when Baasha heard of Ben-hadad's attack?",
+  "choices": [
+   "He fled to Syria",
+   "He asked Asa for peace",
+   "He left off and let his work cease",
+   "He doubled the workmen"
+  ],
+  "answer": 2,
+  "explanation": "When Baasha heard it, he left off building of Ramah, and let his work cease.",
+  "ref": "2 Chronicles 16:5"
+ },
+ {
+  "id": "2-chronicles-16-m-04",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Asa do with the stones and timber of Ramah?",
+  "choices": [
+   "Built the temple wall",
+   "Built Geba and Mizpah with them",
+   "Burned them",
+   "Sent them to Syria"
+  ],
+  "answer": 1,
+  "explanation": "Asa took the stones of Ramah and the timber, and built therewith Geba and Mizpah.",
+  "ref": "2 Chronicles 16:6"
+ },
+ {
+  "id": "2-chronicles-16-m-05",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Hanani say the host of the king of Syria had escaped Asa's hand?",
+  "choices": [
+   "Asa had no army",
+   "The Syrians were too strong",
+   "Asa waited too long",
+   "Asa relied on Syria, not on the Lord"
+  ],
+  "answer": 3,
+  "explanation": "Because thou hast relied on the king of Syria, and not relied on the LORD thy God, therefore is the host of Syria escaped out of thine hand.",
+  "ref": "2 Chronicles 16:7"
+ },
+ {
+  "id": "2-chronicles-16-m-06",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which peoples did Hanani remind Asa the Lord had delivered into his hand?",
+  "choices": [
+   "The Edomites and the Syrians",
+   "The Ethiopians and the Lubims",
+   "The Philistines and the Arabians",
+   "The Moabites and the Ammonites"
+  ],
+  "answer": 1,
+  "explanation": "Were not the Ethiopians and the Lubims a huge host? Yet, because thou didst rely on the LORD, he delivered them into thine hand.",
+  "ref": "2 Chronicles 16:8"
+ },
+ {
+  "id": "2-chronicles-16-m-07",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hanani say Asa would have from then on?",
+  "choices": [
+   "Peace",
+   "Famine",
+   "Plagues",
+   "Wars"
+  ],
+  "answer": 3,
+  "explanation": "Hanani said, Herein thou hast done foolishly: therefore from henceforth thou shalt have wars.",
+  "ref": "2 Chronicles 16:9"
+ },
+ {
+  "id": "2-chronicles-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Which people did Ben-hadad's captains smite, besides Ijon and Dan?",
+  "choices": [
+   "Abel-maim and the store cities of Naphtali",
+   "Damascus and Samaria",
+   "Tirzah and Shechem",
+   "Jericho and Bethel"
+  ],
+  "answer": 0,
+  "explanation": "They smote Ijon, and Dan, and Abel-maim, and all the store cities of Naphtali.",
+  "ref": "2 Chronicles 16:4"
+ },
+ {
+  "id": "2-chronicles-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Asa's reign did Baasha come up against Judah?",
+  "choices": [
+   "The fifteenth",
+   "The one and fortieth",
+   "The six and thirtieth",
+   "The tenth"
+  ],
+  "answer": 2,
+  "explanation": "In the six and thirtieth year of the reign of Asa Baasha king of Israel came up against Judah.",
+  "ref": "2 Chronicles 16:1"
+ },
+ {
+  "id": "2-chronicles-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Ben-hadad king of Syria dwell?",
+  "choices": [
+   "Damascus",
+   "Samaria",
+   "Tyre",
+   "Babylon"
+  ],
+  "answer": 0,
+  "explanation": "Asa sent to Ben-hadad king of Syria, that dwelt at Damascus.",
+  "ref": "2 Chronicles 16:2"
+ },
+ {
+  "id": "2-chronicles-16-h-04",
+  "chapter": 16,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Asa put in a prison house?",
+  "choices": [
+   "Azariah the prophet",
+   "Baasha",
+   "Ben-hadad",
+   "Hanani the seer"
+  ],
+  "answer": 3,
+  "explanation": "Asa was wroth with the seer, and put him in a prison house.",
+  "ref": "2 Chronicles 16:10"
+ },
+ {
+  "id": "2-chronicles-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of his reign was Asa diseased in his feet?",
+  "choices": [
+   "The twentieth",
+   "The thirty and ninth",
+   "The fifteenth",
+   "The thirty-sixth"
+  ],
+  "answer": 1,
+  "explanation": "Asa in the thirty and ninth year of his reign was diseased in his feet.",
+  "ref": "2 Chronicles 16:12"
+ },
+ {
+  "id": "2-chronicles-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did they bury Asa?",
+  "choices": [
+   "In the valley of Kidron",
+   "In Samaria",
+   "In a cave near Mamre",
+   "In his own sepulchres in the city of David"
+  ],
+  "answer": 3,
+  "explanation": "They buried him in his own sepulchres, which he had made for himself in the city of David.",
+  "ref": "2 Chronicles 16:14"
+ },
+ {
+  "id": "2-chronicles-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they lay Asa's body on, and what was made for him?",
+  "choices": [
+   "A stone slab; a lament",
+   "A bed of sweet odours and spices; a very great burning",
+   "A royal chariot; a feast",
+   "A bed of cedar; a monument"
+  ],
+  "answer": 1,
+  "explanation": "They laid him in the bed filled with sweet odours and divers kinds of spices, and made a very great burning for him.",
+  "ref": "2 Chronicles 16:14"
+ },
+ {
   "id": "old-2-chronicles-17-1",
   "chapter": 17,
   "level": "beginner",
