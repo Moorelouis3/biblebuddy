@@ -55,13 +55,17 @@ const GAMES: Game[] = [
   },
 ];
 
-const GOLD = "#e9b45a";
+// Colours come from the selected Bible Cover (lib/bibleCovers.ts sets these
+// variables), so the menu matches the cover instead of one fixed brown
+// (Louis, 2026-11-25: "the menus need to match the theme selected").
+const GOLD = "var(--bb-accent,#e9b45a)";
+const mix = (c: string, pct: number) => `color-mix(in srgb, ${c} ${pct}%, transparent)`;
 
 function ControllerBadge() {
   return (
     <span
       className="grid h-14 w-14 place-items-center rounded-2xl"
-      style={{ background: "linear-gradient(160deg,#3a2614,#1c120a)", boxShadow: `inset 0 0 0 2px ${GOLD}, 0 0 18px rgba(233,180,90,.35)` }}
+      style={{ background: "var(--bb-card,#1c120a)", boxShadow: `inset 0 0 0 2px ${GOLD}, 0 0 18px ${mix(GOLD, 35)}` }}
       aria-hidden="true"
     >
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke={GOLD} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -80,10 +84,12 @@ function Row({ game, featured }: { game: Game; featured: boolean }) {
       href={game.href}
       className="group flex items-center gap-3 rounded-2xl p-3 transition hover:-translate-y-0.5 sm:gap-4 sm:p-4"
       style={{
-        background: featured ? "linear-gradient(180deg,rgba(64,40,20,.82),rgba(34,22,14,.86))" : "rgba(28,20,16,.72)",
+        background: featured
+          ? `linear-gradient(180deg, ${mix(GOLD, 22)}, transparent), var(--bb-card,rgba(34,22,14,.86))`
+          : "var(--bb-card,rgba(28,20,16,.72))",
         boxShadow: featured
-          ? `inset 0 0 0 1.5px ${GOLD}, 0 0 24px rgba(233,180,90,.28), 0 10px 24px rgba(0,0,0,.35)`
-          : "inset 0 0 0 1px rgba(233,180,90,.28), 0 8px 20px rgba(0,0,0,.3)",
+          ? `inset 0 0 0 1.5px ${GOLD}, 0 0 24px ${mix(GOLD, 28)}, 0 10px 24px rgba(0,0,0,.35)`
+          : `inset 0 0 0 1px ${mix(GOLD, 30)}, 0 8px 20px rgba(0,0,0,.3)`,
         backdropFilter: "blur(6px)",
         WebkitBackdropFilter: "blur(6px)",
       }}
@@ -95,33 +101,33 @@ function Row({ game, featured }: { game: Game; featured: boolean }) {
       >
         {game.icon ? <img src={game.icon} alt="" className="h-full w-full object-contain" /> : game.emoji}
       </span>
-      <span className="hidden h-12 w-px shrink-0 sm:block" style={{ background: "rgba(233,180,90,.35)" }} aria-hidden="true" />
+      <span className="hidden h-12 w-px shrink-0 sm:block" style={{ background: mix(GOLD, 35) }} aria-hidden="true" />
       <span className="min-w-0 flex-1">
         <span className="flex flex-wrap items-center gap-2">
-          <span className="text-[19px] font-black leading-tight text-[#fbf3e4] sm:text-[22px]">{game.title}</span>
+          <span className="text-[19px] font-black leading-tight text-[var(--bb-text-primary,#fbf3e4)] sm:text-[22px]">{game.title}</span>
           {game.badge ? (
             <span className="rounded-full px-2 py-0.5 text-[10px] font-black uppercase tracking-wide" style={{ background: "#f4c64e", color: "#2a1d05" }}>
               {game.badge}
             </span>
           ) : null}
         </span>
-        <span className="mt-0.5 block text-[13px] leading-snug text-[#e9dcc6] sm:text-[15px]">{game.line}</span>
+        <span className="mt-0.5 block text-[13px] leading-snug text-[var(--bb-text-secondary,#e9dcc6)] sm:text-[15px]">{game.line}</span>
       </span>
       {featured ? (
         <span
           className="grid h-11 w-14 shrink-0 place-items-center rounded-full"
-          style={{ background: "linear-gradient(180deg,#f1c06a,#c9852e)", boxShadow: "0 0 14px rgba(233,180,90,.55), inset 0 1px 0 rgba(255,255,255,.5)" }}
+          style={{ background: "var(--bb-button,#d99a3e)", boxShadow: `0 0 14px ${mix(GOLD, 55)}, inset 0 1px 0 rgba(255,255,255,.5)` }}
           aria-hidden="true"
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z" /></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--bb-button-text,#fff)"><path d="M8 5v14l11-7z" /></svg>
         </span>
       ) : (
         <span
           className="grid h-10 w-10 shrink-0 place-items-center rounded-full transition group-hover:translate-x-0.5"
-          style={{ background: "rgba(0,0,0,.35)", boxShadow: "inset 0 0 0 1px rgba(233,220,198,.45)" }}
+          style={{ background: "var(--bb-surface-soft,rgba(0,0,0,.35))", boxShadow: `inset 0 0 0 1px ${mix("var(--bb-text-secondary,#e9dcc6)", 45)}` }}
           aria-hidden="true"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fbf3e4" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--bb-text-primary,#fbf3e4)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6" /></svg>
         </span>
       )}
     </Link>
@@ -139,11 +145,11 @@ export default function GamesMenu() {
         </span>
         <h1
           className="mt-2 text-[40px] font-black leading-none sm:text-[52px]"
-          style={{ background: "linear-gradient(180deg,#fff6e3 0%,#f0c98a 100%)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", textShadow: "0 2px 18px rgba(240,201,138,.25)" }}
+          style={{ color: "var(--bb-text-primary,#fff6e3)", textShadow: `0 2px 18px ${mix(GOLD, 45)}, 0 2px 4px rgba(0,0,0,.5)` }}
         >
           Games
         </h1>
-        <p className="mt-2 text-[14px] font-semibold text-[#e9dcc6] sm:text-[16px]" style={{ textShadow: "0 1px 6px rgba(0,0,0,.6)" }}>
+        <p className="mt-2 text-[14px] font-semibold text-[var(--bb-text-secondary,#e9dcc6)] sm:text-[16px]" style={{ textShadow: "0 1px 6px rgba(0,0,0,.6)" }}>
           Test what you remember after reading and studying Scripture.
         </p>
       </header>
