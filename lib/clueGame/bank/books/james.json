@@ -398,5 +398,2309 @@
   "answer": 3,
   "explanation": "James points to Elijah's prayers as an example of powerful prayer.",
   "ref": "James 5:17–18"
+ },
+ {
+  "id": "james-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom does James address his letter?",
+  "choices": [
+   "The twelve tribes scattered abroad",
+   "The church at Jerusalem",
+   "The elders of Antioch",
+   "The Gentiles of Asia"
+  ],
+  "answer": 0,
+  "explanation": "James writes to the twelve tribes which are scattered abroad.",
+  "ref": "James 1:1"
+ },
+ {
+  "id": "james-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does God give wisdom to everyone who asks?",
+  "choices": [
+   "Sparingly",
+   "Slowly",
+   "Only to the old",
+   "Liberally"
+  ],
+  "answer": 3,
+  "explanation": "God giveth to all men liberally, and upbraideth not; and it shall be given him.",
+  "ref": "James 1:5"
+ },
+ {
+  "id": "james-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does James describe a double minded man?",
+  "choices": [
+   "Wise in all his ways",
+   "Poor in spirit",
+   "Unstable in all his ways",
+   "Slow to anger"
+  ],
+  "answer": 2,
+  "explanation": "A double minded man is unstable in all his ways.",
+  "ref": "James 1:8"
+ },
+ {
+  "id": "james-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the man who endures temptation receive when he is tried?",
+  "choices": [
+   "A kingdom",
+   "A white stone",
+   "The crown of life",
+   "Great riches"
+  ],
+  "answer": 2,
+  "explanation": "When he is tried, he shall receive the crown of life, which the Lord hath promised to them that love him.",
+  "ref": "James 1:12"
+ },
+ {
+  "id": "james-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does James say about God and temptation?",
+  "choices": [
+   "God tempts only the proud",
+   "God cannot be tempted with evil and tempts no man",
+   "God tempts to test our faith",
+   "God tempts those who disobey"
+  ],
+  "answer": 1,
+  "explanation": "God cannot be tempted with evil, neither tempteth he any man.",
+  "ref": "James 1:13"
+ },
+ {
+  "id": "james-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does sin bring forth when it is finished?",
+  "choices": [
+   "Death",
+   "Shame",
+   "Sorrow",
+   "Exile"
+  ],
+  "answer": 0,
+  "explanation": "Sin, when it is finished, bringeth forth death.",
+  "ref": "James 1:15"
+ },
+ {
+  "id": "james-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "James says every man should be swift to do what?",
+  "choices": [
+   "Hear",
+   "Speak",
+   "Judge",
+   "Give"
+  ],
+  "answer": 0,
+  "explanation": "Let every man be swift to hear, slow to speak, slow to wrath.",
+  "ref": "James 1:19"
+ },
+ {
+  "id": "james-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does a hearer who is not a doer resemble?",
+  "choices": [
+   "A tree without fruit",
+   "A house on sand",
+   "A servant who sleeps",
+   "A man looking at his face in a glass"
+  ],
+  "answer": 3,
+  "explanation": "He is like unto a man beholding his natural face in a glass, who goeth his way and forgetteth what manner of man he was.",
+  "ref": "James 1:23–24"
+ },
+ {
+  "id": "james-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does a man who wavers when he asks God think he will get?",
+  "choices": [
+   "Half of what he asked",
+   "Only wisdom",
+   "He should not think he will receive anything of the Lord",
+   "What he asked, later"
+  ],
+  "answer": 2,
+  "explanation": "Let not that man think that he shall receive any thing of the Lord.",
+  "ref": "James 1:6–7"
+ },
+ {
+  "id": "james-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the wavering man like?",
+  "choices": [
+   "A reed shaken",
+   "A cloud without rain",
+   "A wave of the sea driven with the wind",
+   "A bird in a snare"
+  ],
+  "answer": 2,
+  "explanation": "He that wavereth is like a wave of the sea driven with the wind and tossed.",
+  "ref": "James 1:6"
+ },
+ {
+  "id": "james-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who is told to rejoice in that he is exalted?",
+  "choices": [
+   "The elder",
+   "The brother of low degree",
+   "The rich man",
+   "The teacher"
+  ],
+  "answer": 1,
+  "explanation": "Let the brother of low degree rejoice in that he is exalted.",
+  "ref": "James 1:9"
+ },
+ {
+  "id": "james-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does James say the rich man shall pass away like?",
+  "choices": [
+   "The flower of the grass",
+   "Smoke",
+   "A shadow",
+   "A vapour"
+  ],
+  "answer": 0,
+  "explanation": "Because as the flower of the grass he shall pass away.",
+  "ref": "James 1:10"
+ },
+ {
+  "id": "james-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to James, what draws a person away into temptation?",
+  "choices": [
+   "His own lust",
+   "The devil alone",
+   "His neighbours",
+   "God's testing"
+  ],
+  "answer": 0,
+  "explanation": "Every man is tempted, when he is drawn away of his own lust, and enticed.",
+  "ref": "James 1:14"
+ },
+ {
+  "id": "james-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From whom does every good and perfect gift come down?",
+  "choices": [
+   "The angels",
+   "The prophets",
+   "The Lord of hosts",
+   "The Father of lights"
+  ],
+  "answer": 3,
+  "explanation": "Every good gift and every perfect gift is from above, and cometh down from the Father of lights.",
+  "ref": "James 1:17"
+ },
+ {
+  "id": "james-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why should a man be slow to wrath?",
+  "choices": [
+   "Anger shortens life",
+   "Wrath is forgiven quickly",
+   "The wrath of man worketh not the righteousness of God",
+   "God punishes anger at once"
+  ],
+  "answer": 2,
+  "explanation": "For the wrath of man worketh not the righteousness of God.",
+  "ref": "James 1:20"
+ },
+ {
+  "id": "james-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is able to save your souls?",
+  "choices": [
+   "Fasting",
+   "The law of Moses",
+   "The engrafted word",
+   "Good deeds"
+  ],
+  "answer": 2,
+  "explanation": "Receive with meekness the engrafted word, which is able to save your souls.",
+  "ref": "James 1:21"
+ },
+ {
+  "id": "james-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does James call the law the doer looks into and continues in?",
+  "choices": [
+   "The royal law",
+   "The perfect law of liberty",
+   "The law of Moses",
+   "The law of faith"
+  ],
+  "answer": 1,
+  "explanation": "Whoso looketh into the perfect law of liberty, and continueth therein, he being not a forgetful hearer, but a doer of the work, this man shall be blessed in his deed.",
+  "ref": "James 1:25"
+ },
+ {
+  "id": "james-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the man who seems religious but does not bridle his tongue do?",
+  "choices": [
+   "Deceives his own heart",
+   "Wins his brother",
+   "Loses his wealth",
+   "Teaches others"
+  ],
+  "answer": 0,
+  "explanation": "He deceiveth his own heart, and this man's religion is vain.",
+  "ref": "James 1:26"
+ },
+ {
+  "id": "james-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the sun with a burning heat do to the grass?",
+  "choices": [
+   "It withered it",
+   "It scorched the field",
+   "It dried the rivers",
+   "It ripened it"
+  ],
+  "answer": 0,
+  "explanation": "The sun is no sooner risen with a burning heat, but it withereth the grass, and the flower thereof falleth.",
+  "ref": "James 1:11"
+ },
+ {
+  "id": "james-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whom is there no variableness, neither shadow of turning?",
+  "choices": [
+   "The Son of man",
+   "The Lord of sabaoth",
+   "The God of Jacob",
+   "The Father of lights"
+  ],
+  "answer": 3,
+  "explanation": "Of the Father of lights, with whom is no variableness, neither shadow of turning.",
+  "ref": "James 1:17"
+ },
+ {
+  "id": "james-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what did God of his own will beget us?",
+  "choices": [
+   "The Spirit of promise",
+   "The blood of the covenant",
+   "The word of truth",
+   "The law of liberty"
+  ],
+  "answer": 2,
+  "explanation": "Of his own will begat he us with the word of truth.",
+  "ref": "James 1:18"
+ },
+ {
+  "id": "james-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of his creatures does James say believers should be?",
+  "choices": [
+   "A holy nation",
+   "Fellow servants",
+   "A kind of firstfruits",
+   "A royal priesthood"
+  ],
+  "answer": 2,
+  "explanation": "That we should be a kind of firstfruits of his creatures.",
+  "ref": "James 1:18"
+ },
+ {
+  "id": "james-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what spirit is the engrafted word to be received?",
+  "choices": [
+   "With fasting",
+   "With meekness",
+   "With fear",
+   "With joy"
+  ],
+  "answer": 1,
+  "explanation": "Receive with meekness the engrafted word.",
+  "ref": "James 1:21"
+ },
+ {
+  "id": "james-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the man who looked in the glass do straightway?",
+  "choices": [
+   "Forgets what manner of man he was",
+   "Washes his face",
+   "Tells his neighbour",
+   "Looks again"
+  ],
+  "answer": 0,
+  "explanation": "He beholdeth himself, and goeth his way, and straightway forgetteth what manner of man he was.",
+  "ref": "James 1:24"
+ },
+ {
+  "id": "james-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does James describe himself at the start of his letter?",
+  "choices": [
+   "A servant of God and of the Lord Jesus Christ",
+   "An apostle of the circumcision",
+   "A brother of the Lord",
+   "A minister of the church"
+  ],
+  "answer": 0,
+  "explanation": "James, a servant of God and of the Lord Jesus Christ.",
+  "ref": "James 1:1"
+ },
+ {
+  "id": "james-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does James call the man who endures temptation?",
+  "choices": [
+   "Blessed",
+   "Perfect",
+   "Righteous",
+   "Wise"
+  ],
+  "answer": 0,
+  "explanation": "Blessed is the man that endureth temptation: for when he is tried, he shall receive the crown of life.",
+  "ref": "James 1:12"
+ },
+ {
+  "id": "james-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How must a man ask God for wisdom?",
+  "choices": [
+   "With fasting",
+   "With many words",
+   "In the congregation",
+   "In faith, nothing wavering"
+  ],
+  "answer": 3,
+  "explanation": "But let him ask in faith, nothing wavering.",
+  "ref": "James 1:6"
+ },
+ {
+  "id": "james-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are believers told to lay apart before receiving the word?",
+  "choices": [
+   "Their riches and honour",
+   "Their idols and altars",
+   "All filthiness and superfluity of naughtiness",
+   "Their old teachers"
+  ],
+  "answer": 2,
+  "explanation": "Lay apart all filthiness and superfluity of naughtiness, and receive with meekness the engrafted word.",
+  "ref": "James 1:21"
+ },
+ {
+  "id": "james-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must no man say when he is tempted?",
+  "choices": [
+   "I am tempted of the devil",
+   "I am tempted of God",
+   "I cannot resist",
+   "I am forsaken"
+  ],
+  "answer": 1,
+  "explanation": "Let no man say when he is tempted, I am tempted of God.",
+  "ref": "James 1:13"
+ },
+ {
+  "id": "james-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom do hearers of the word deceive if they are not doers?",
+  "choices": [
+   "Their own selves",
+   "Their neighbours",
+   "The elders",
+   "The poor"
+  ],
+  "answer": 0,
+  "explanation": "Be ye doers of the word, and not hearers only, deceiving your own selves.",
+  "ref": "James 1:22"
+ },
+ {
+  "id": "james-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom has the Lord promised the crown of life?",
+  "choices": [
+   "Them that fear him",
+   "Them that fast",
+   "Them that suffer unto death",
+   "Them that love him"
+  ],
+  "answer": 3,
+  "explanation": "The crown of life, which the Lord hath promised to them that love him.",
+  "ref": "James 1:12"
+ },
+ {
+  "id": "james-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does lust bring forth when it has conceived?",
+  "choices": [
+   "Death",
+   "Envy",
+   "Sin",
+   "Strife"
+  ],
+  "answer": 2,
+  "explanation": "When lust hath conceived, it bringeth forth sin: and sin, when it is finished, bringeth forth death.",
+  "ref": "James 1:15"
+ },
+ {
+  "id": "james-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what does the rich man rejoice, according to James?",
+  "choices": [
+   "In that he is exalted",
+   "In that he is made low",
+   "In that he is blessed",
+   "In that he is tried"
+  ],
+  "answer": 1,
+  "explanation": "But the rich, in that he is made low: because as the flower of the grass he shall pass away.",
+  "ref": "James 1:10"
+ },
+ {
+  "id": "james-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the rich man do in his ways?",
+  "choices": [
+   "Fade away",
+   "Prosper",
+   "Be judged",
+   "Repent"
+  ],
+  "answer": 0,
+  "explanation": "So also shall the rich man fade away in his ways.",
+  "ref": "James 1:11"
+ },
+ {
+  "id": "james-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does James say patience should have so that you may be perfect and entire?",
+  "choices": [
+   "Her full reward",
+   "Her quiet time",
+   "Her strong hold",
+   "Her perfect work"
+  ],
+  "answer": 3,
+  "explanation": "Let patience have her perfect work, that ye may be perfect and entire, wanting nothing.",
+  "ref": "James 1:4"
+ },
+ {
+  "id": "james-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the man who looks into the perfect law and continues in it not?",
+  "choices": [
+   "A proud teacher",
+   "A hasty judge",
+   "A forgetful hearer",
+   "A hidden doer"
+  ],
+  "answer": 2,
+  "explanation": "He being not a forgetful hearer, but a doer of the work, this man shall be blessed in his deed.",
+  "ref": "James 1:25"
+ },
+ {
+  "id": "james-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose face does the hearer-only behold in the glass?",
+  "choices": [
+   "The face of Christ",
+   "His brother's face",
+   "His natural face",
+   "The face of the law"
+  ],
+  "answer": 2,
+  "explanation": "He is like unto a man beholding his natural face in a glass.",
+  "ref": "James 1:23"
+ },
+ {
+  "id": "james-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom has God chosen to be rich in faith?",
+  "choices": [
+   "The poor of this world",
+   "The rulers of the synagogue",
+   "The wise and learned",
+   "The scattered tribes"
+  ],
+  "answer": 0,
+  "explanation": "Hath not God chosen the poor of this world rich in faith, and heirs of the kingdom?",
+  "ref": "James 2:5"
+ },
+ {
+  "id": "james-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Abraham offer upon the altar?",
+  "choices": [
+   "Ishmael",
+   "Lot",
+   "Jacob",
+   "Isaac"
+  ],
+  "answer": 3,
+  "explanation": "Abraham our father was justified by works, when he had offered Isaac his son upon the altar.",
+  "ref": "James 2:21"
+ },
+ {
+  "id": "james-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "What was Abraham called after he believed God?",
+  "choices": [
+   "The Servant of the Lord",
+   "The Father of nations",
+   "The Friend of God",
+   "The Man of faith"
+  ],
+  "answer": 2,
+  "explanation": "Abraham believed God, and it was imputed unto him for righteousness: and he was called the Friend of God.",
+  "ref": "James 2:23"
+ },
+ {
+  "id": "james-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "How does James describe Rahab?",
+  "choices": [
+   "The prophetess",
+   "The widow",
+   "The harlot",
+   "The judge"
+  ],
+  "answer": 2,
+  "explanation": "Likewise also was not Rahab the harlot justified by works?",
+  "ref": "James 2:25"
+ },
+ {
+  "id": "james-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Rahab do that James uses as proof of faith with works?",
+  "choices": [
+   "Fed the poor in Jericho",
+   "Received the messengers and sent them out another way",
+   "Offered a sacrifice",
+   "Gave all her goods away"
+  ],
+  "answer": 1,
+  "explanation": "Rahab was justified by works, when she had received the messengers, and had sent them out another way.",
+  "ref": "James 2:25"
+ },
+ {
+  "id": "james-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If you show respect to persons, what do you commit?",
+  "choices": [
+   "Sin",
+   "Folly",
+   "Idolatry",
+   "Blasphemy"
+  ],
+  "answer": 0,
+  "explanation": "If ye have respect to persons, ye commit sin, and are convinced of the law as transgressors.",
+  "ref": "James 2:9"
+ },
+ {
+  "id": "james-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the poor of this world inherit as heirs?",
+  "choices": [
+   "The kingdom",
+   "The land of Canaan",
+   "The temple",
+   "All things on earth"
+  ],
+  "answer": 0,
+  "explanation": "God hath chosen the poor of this world rich in faith, and heirs of the kingdom which he hath promised to them that love him.",
+  "ref": "James 2:5"
+ },
+ {
+  "id": "james-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of ring does the man wear who comes into the assembly?",
+  "choices": [
+   "A signet ring",
+   "A silver ring",
+   "An iron ring",
+   "A gold ring"
+  ],
+  "answer": 3,
+  "explanation": "If there come unto your assembly a man with a gold ring, in goodly apparel.",
+  "ref": "James 2:2"
+ },
+ {
+  "id": "james-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where is the poor man told to sit?",
+  "choices": [
+   "At the door",
+   "In the courtyard",
+   "Under my footstool",
+   "At the back"
+  ],
+  "answer": 2,
+  "explanation": "Ye say to the poor, Stand thou there, or sit here under my footstool.",
+  "ref": "James 2:3"
+ },
+ {
+  "id": "james-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do rich men do to the believers, according to James?",
+  "choices": [
+   "Pay their wages",
+   "Feed their poor",
+   "Oppress them and draw them before the judgment seats",
+   "Build their houses"
+  ],
+  "answer": 2,
+  "explanation": "Do not rich men oppress you, and draw you before the judgment seats?",
+  "ref": "James 2:6"
+ },
+ {
+  "id": "james-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two commands does James quote to show the whole law matters?",
+  "choices": [
+   "Do not steal and do not lie",
+   "Do not commit adultery and do not kill",
+   "Honour your parents and keep the sabbath",
+   "Have no other gods and make no idols"
+  ],
+  "answer": 1,
+  "explanation": "He that said, Do not commit adultery, said also, Do not kill.",
+  "ref": "James 2:11"
+ },
+ {
+  "id": "james-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What rejoices against judgment?",
+  "choices": [
+   "Mercy",
+   "Faith",
+   "Truth",
+   "Peace"
+  ],
+  "answer": 0,
+  "explanation": "Mercy rejoiceth against judgment.",
+  "ref": "James 2:13"
+ },
+ {
+  "id": "james-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who will have judgment without mercy?",
+  "choices": [
+   "He that hath shewed no mercy",
+   "He that offends in one point",
+   "The man of low degree",
+   "He that doubts"
+  ],
+  "answer": 0,
+  "explanation": "He shall have judgment without mercy, that hath shewed no mercy.",
+  "ref": "James 2:13"
+ },
+ {
+  "id": "james-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What empty words does James picture being said to a brother who is naked and hungry?",
+  "choices": [
+   "God will provide for you",
+   "Come to the feast tomorrow",
+   "Pray and fast for seven days",
+   "Depart in peace, be ye warmed and filled"
+  ],
+  "answer": 3,
+  "explanation": "One of you say unto them, Depart in peace, be ye warmed and filled; notwithstanding ye give them not those things which are needful.",
+  "ref": "James 2:16"
+ },
+ {
+  "id": "james-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was imputed to Abraham for righteousness?",
+  "choices": [
+   "His circumcision",
+   "His offering of Isaac",
+   "He believed God",
+   "His obedience to the law"
+  ],
+  "answer": 2,
+  "explanation": "Abraham believed God, and it was imputed unto him for righteousness.",
+  "ref": "James 2:23"
+ },
+ {
+  "id": "james-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what was Abraham's faith made perfect?",
+  "choices": [
+   "Prayer",
+   "Patience",
+   "Works",
+   "The law"
+  ],
+  "answer": 2,
+  "explanation": "Seest thou how faith wrought with his works, and by works was faith made perfect?",
+  "ref": "James 2:22"
+ },
+ {
+  "id": "james-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do rich men blaspheme, according to James?",
+  "choices": [
+   "The temple of God",
+   "That worthy name by which ye are called",
+   "The law of Moses",
+   "The prophets"
+  ],
+  "answer": 1,
+  "explanation": "Do not they blaspheme that worthy name by the which ye are called?",
+  "ref": "James 2:7"
+ },
+ {
+  "id": "james-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what law does James say we shall be judged?",
+  "choices": [
+   "The law of liberty",
+   "The law of Moses",
+   "The law of works",
+   "The law of the prophets"
+  ],
+  "answer": 0,
+  "explanation": "So speak ye, and so do, as they that shall be judged by the law of liberty.",
+  "ref": "James 2:12"
+ },
+ {
+  "id": "james-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does James call the man who needs to be shown that faith without works is dead?",
+  "choices": [
+   "O vain man",
+   "O foolish Galatian",
+   "Thou hypocrite",
+   "Thou fool"
+  ],
+  "answer": 0,
+  "explanation": "But wilt thou know, O vain man, that faith without works is dead?",
+  "ref": "James 2:20"
+ },
+ {
+  "id": "james-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of clothing does the poor man wear when he enters the assembly?",
+  "choices": [
+   "Sackcloth",
+   "A torn coat",
+   "Goatskins",
+   "Vile raiment"
+  ],
+  "answer": 3,
+  "explanation": "There come in also a poor man in vile raiment.",
+  "ref": "James 2:2"
+ },
+ {
+  "id": "james-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whoever keeps the whole law but offends in one point is guilty of what?",
+  "choices": [
+   "Half of it",
+   "That one commandment",
+   "All of it",
+   "Nothing, if he repents"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever shall keep the whole law, and yet offend in one point, he is guilty of all.",
+  "ref": "James 2:10"
+ },
+ {
+  "id": "james-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what does James compare faith without works?",
+  "choices": [
+   "A lamp without oil",
+   "A tree without fruit",
+   "A body without the spirit",
+   "A well without water"
+  ],
+  "answer": 2,
+  "explanation": "As the body without the spirit is dead, so faith without works is dead also.",
+  "ref": "James 2:26"
+ },
+ {
+  "id": "james-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said to the man in goodly apparel?",
+  "choices": [
+   "Come and sit at the head",
+   "Welcome to the feast",
+   "Stand beside the door",
+   "Sit thou here in a good place"
+  ],
+  "answer": 3,
+  "explanation": "Ye have respect to him that weareth the gay clothing, and say unto him, Sit thou here in a good place.",
+  "ref": "James 2:3"
+ },
+ {
+  "id": "james-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of what does James say partial people become judges?",
+  "choices": [
+   "Good works",
+   "The law of Moses",
+   "Evil thoughts",
+   "The poor"
+  ],
+  "answer": 2,
+  "explanation": "Are ye not then partial in yourselves, and are become judges of evil thoughts?",
+  "ref": "James 2:4"
+ },
+ {
+  "id": "james-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the man with works say he will show?",
+  "choices": [
+   "His works by his faith",
+   "His faith by his works",
+   "His faith by his words",
+   "His law by his deeds"
+  ],
+  "answer": 1,
+  "explanation": "Shew me thy faith without thy works, and I will shew thee my faith by my works.",
+  "ref": "James 2:18"
+ },
+ {
+  "id": "james-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what does James say a man is justified, and not by faith only?",
+  "choices": [
+   "Works",
+   "The law",
+   "Mercy",
+   "Sacrifice"
+  ],
+  "answer": 0,
+  "explanation": "Ye see then how that by works a man is justified, and not by faith only.",
+  "ref": "James 2:24"
+ },
+ {
+  "id": "james-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the poor man told to do?",
+  "choices": [
+   "Wait outside",
+   "Go to the back of the assembly",
+   "Sit beside the rich",
+   "Stand there, or sit under my footstool"
+  ],
+  "answer": 3,
+  "explanation": "Say to the poor, Stand thou there, or sit here under my footstool.",
+  "ref": "James 2:3"
+ },
+ {
+  "id": "james-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What have the brethren done to the poor, according to James?",
+  "choices": [
+   "Fed them",
+   "Judged them",
+   "Despised them",
+   "Hidden them"
+  ],
+  "answer": 2,
+  "explanation": "But ye have despised the poor.",
+  "ref": "James 2:6"
+ },
+ {
+  "id": "james-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do you do if you fulfil the royal law according to the scripture?",
+  "choices": [
+   "Ye are justified",
+   "Ye do well",
+   "Ye are called sons",
+   "Ye are made perfect"
+  ],
+  "answer": 1,
+  "explanation": "If ye fulfil the royal law according to the scripture, Thou shalt love thy neighbour as thyself, ye do well.",
+  "ref": "James 2:8"
+ },
+ {
+  "id": "james-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are those who have respect to persons convinced of by the law?",
+  "choices": [
+   "As transgressors",
+   "As debtors",
+   "As foolish builders",
+   "As offenders in word"
+  ],
+  "answer": 0,
+  "explanation": "If ye have respect to persons, ye commit sin, and are convinced of the law as transgressors.",
+  "ref": "James 2:9"
+ },
+ {
+  "id": "james-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does James call Abraham?",
+  "choices": [
+   "The first of the prophets",
+   "The root of Jesse",
+   "The elder of Israel",
+   "Our father"
+  ],
+  "answer": 3,
+  "explanation": "Was not Abraham our father justified by works, when he had offered Isaac his son upon the altar?",
+  "ref": "James 2:21"
+ },
+ {
+  "id": "james-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the brother or sister in James lack?",
+  "choices": [
+   "A house and a bed",
+   "Friends and counsel",
+   "Daily food, and is naked",
+   "Wine and oil"
+  ],
+  "answer": 2,
+  "explanation": "If a brother or sister be naked, and destitute of daily food.",
+  "ref": "James 2:15"
+ },
+ {
+  "id": "james-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom has God promised the kingdom the poor shall inherit?",
+  "choices": [
+   "Them that fear him",
+   "Them that keep the law",
+   "Them that love him",
+   "Them that are poor in spirit"
+  ],
+  "answer": 2,
+  "explanation": "Heirs of the kingdom which he hath promised to them that love him.",
+  "ref": "James 2:5"
+ },
+ {
+  "id": "james-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does James say to the man who believes there is one God?",
+  "choices": [
+   "Thou art justified",
+   "Thou doest well",
+   "Thou art saved",
+   "Thou art perfect"
+  ],
+  "answer": 1,
+  "explanation": "Thou believest that there is one God; thou doest well: the devils also believe, and tremble.",
+  "ref": "James 2:19"
+ },
+ {
+  "id": "james-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do we put in horses' mouths so that they obey us?",
+  "choices": [
+   "Bits",
+   "Ropes",
+   "Cords",
+   "Yokes"
+  ],
+  "answer": 0,
+  "explanation": "We put bits in the horses' mouths, that they may obey us; and we turn about their whole body.",
+  "ref": "James 3:3"
+ },
+ {
+  "id": "james-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What small thing turns a great ship driven by fierce winds?",
+  "choices": [
+   "A single oar",
+   "A sail",
+   "An anchor",
+   "A very small helm"
+  ],
+  "answer": 3,
+  "explanation": "The ships, though they be so great, and are driven of fierce winds, yet are they turned about with a very small helm.",
+  "ref": "James 3:4"
+ },
+ {
+  "id": "james-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does James say the tongue is?",
+  "choices": [
+   "A sword",
+   "A river",
+   "A fire",
+   "A lamp"
+  ],
+  "answer": 2,
+  "explanation": "And the tongue is a fire, a world of iniquity.",
+  "ref": "James 3:6"
+ },
+ {
+  "id": "james-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what is the untamed tongue said to be full?",
+  "choices": [
+   "Bitter water",
+   "Hot coals",
+   "Deadly poison",
+   "Sharp thorns"
+  ],
+  "answer": 2,
+  "explanation": "The tongue can no man tame; it is an unruly evil, full of deadly poison.",
+  "ref": "James 3:8"
+ },
+ {
+  "id": "james-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things come out of the same mouth?",
+  "choices": [
+   "Truth and lies",
+   "Blessing and cursing",
+   "Praise and boasting",
+   "Prayer and anger"
+  ],
+  "answer": 1,
+  "explanation": "Out of the same mouth proceedeth blessing and cursing. My brethren, these things ought not so to be.",
+  "ref": "James 3:10"
+ },
+ {
+  "id": "james-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom does the tongue curse, though they are made after the similitude of God?",
+  "choices": [
+   "Men",
+   "Angels",
+   "Kings",
+   "Enemies of Israel"
+  ],
+  "answer": 0,
+  "explanation": "Therewith bless we God, even the Father; and therewith curse we men, which are made after the similitude of God.",
+  "ref": "James 3:9"
+ },
+ {
+  "id": "james-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What can a fig tree not bear?",
+  "choices": [
+   "Olive berries",
+   "Grapes",
+   "Pomegranates",
+   "Dates"
+  ],
+  "answer": 0,
+  "explanation": "Can the fig tree, my brethren, bear olive berries? either a vine, figs?",
+  "ref": "James 3:12"
+ },
+ {
+  "id": "james-3-e-08",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does James say is found wherever envying and strife are?",
+  "choices": [
+   "Wisdom and knowledge",
+   "Peace and plenty",
+   "Mourning and weeping",
+   "Confusion and every evil work"
+  ],
+  "answer": 3,
+  "explanation": "Where envying and strife is, there is confusion and every evil work.",
+  "ref": "James 3:16"
+ },
+ {
+  "id": "james-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does James describe wisdom that does not come from above?",
+  "choices": [
+   "Foolish, slow, heavy",
+   "Proud, hidden, bitter",
+   "Earthly, sensual, devilish",
+   "Weak, loud, restless"
+  ],
+  "answer": 2,
+  "explanation": "This wisdom descendeth not from above, but is earthly, sensual, devilish.",
+  "ref": "James 3:15"
+ },
+ {
+  "id": "james-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who is a perfect man and able to bridle the whole body?",
+  "choices": [
+   "He who fasts often",
+   "He who teaches many",
+   "He who offends not in word",
+   "He who never sleeps"
+  ],
+  "answer": 2,
+  "explanation": "If any man offend not in word, the same is a perfect man, and able also to bridle the whole body.",
+  "ref": "James 3:2"
+ },
+ {
+  "id": "james-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what is the tongue itself set on fire?",
+  "choices": [
+   "The heart",
+   "Hell",
+   "The devil's breath",
+   "Anger"
+  ],
+  "answer": 1,
+  "explanation": "It defileth the whole body, and setteth on fire the course of nature; and it is set on fire of hell.",
+  "ref": "James 3:6"
+ },
+ {
+  "id": "james-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which creatures does James say mankind has tamed?",
+  "choices": [
+   "Beasts, birds, serpents and things in the sea",
+   "Only horses and oxen",
+   "Lions and eagles only",
+   "Sheep and goats"
+  ],
+  "answer": 0,
+  "explanation": "Every kind of beasts, and of birds, and of serpents, and of things in the sea, is tamed, and hath been tamed of mankind.",
+  "ref": "James 3:7"
+ },
+ {
+  "id": "james-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does James call the tongue among our members?",
+  "choices": [
+   "A world of iniquity",
+   "A little sword",
+   "A root of bitterness",
+   "A lamp of evil"
+  ],
+  "answer": 0,
+  "explanation": "The tongue is a fire, a world of iniquity: so is the tongue among our members, that it defileth the whole body.",
+  "ref": "James 3:6"
+ },
+ {
+  "id": "james-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does James say a fountain cannot send forth at the same place?",
+  "choices": [
+   "Hot water and cold",
+   "Clear water and mud",
+   "Rain and dew",
+   "Sweet water and bitter"
+  ],
+  "answer": 3,
+  "explanation": "Doth a fountain send forth at the same place sweet water and bitter?",
+  "ref": "James 3:11"
+ },
+ {
+  "id": "james-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How should a wise man show his works?",
+  "choices": [
+   "By teaching in the synagogue",
+   "By long prayers",
+   "Out of a good conversation, with meekness of wisdom",
+   "By giving to the poor in public"
+  ],
+  "answer": 2,
+  "explanation": "Let him shew out of a good conversation his works with meekness of wisdom.",
+  "ref": "James 3:13"
+ },
+ {
+  "id": "james-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are those with bitter envying and strife told not to do?",
+  "choices": [
+   "Pray in public",
+   "Speak at all",
+   "Glory and lie against the truth",
+   "Judge the law"
+  ],
+  "answer": 2,
+  "explanation": "If ye have bitter envying and strife in your hearts, glory not, and lie not against the truth.",
+  "ref": "James 3:14"
+ },
+ {
+  "id": "james-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the tongue set on fire, according to James?",
+  "choices": [
+   "The house of God",
+   "The course of nature",
+   "The city",
+   "The harvest"
+  ],
+  "answer": 1,
+  "explanation": "It defileth the whole body, and setteth on fire the course of nature.",
+  "ref": "James 3:6"
+ },
+ {
+  "id": "james-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides pure, peaceable and gentle, how is wisdom from above described?",
+  "choices": [
+   "Easy to be intreated",
+   "Quick to anger",
+   "Hard to please",
+   "Slow to give"
+  ],
+  "answer": 0,
+  "explanation": "The wisdom that is from above is first pure, then peaceable, gentle, and easy to be intreated, full of mercy and good fruits.",
+  "ref": "James 3:17"
+ },
+ {
+  "id": "james-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two things is wisdom from above without?",
+  "choices": [
+   "Partiality and hypocrisy",
+   "Pride and wealth",
+   "Fear and shame",
+   "Law and judgment"
+  ],
+  "answer": 0,
+  "explanation": "The wisdom that is from above is without partiality, and without hypocrisy.",
+  "ref": "James 3:17"
+ },
+ {
+  "id": "james-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does James say we all do in many things?",
+  "choices": [
+   "Grow weary",
+   "Doubt",
+   "Fear",
+   "Offend"
+  ],
+  "answer": 3,
+  "explanation": "For in many things we offend all.",
+  "ref": "James 3:2"
+ },
+ {
+  "id": "james-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does James say the tongue, a little member, does?",
+  "choices": [
+   "Hides great things",
+   "Bears great burdens",
+   "Boasteth great things",
+   "Judges great matters"
+  ],
+  "answer": 2,
+  "explanation": "Even so the tongue is a little member, and boasteth great things.",
+  "ref": "James 3:5"
+ },
+ {
+  "id": "james-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is wisdom from above full of?",
+  "choices": [
+   "Mercy and good fruits",
+   "Knowledge and power",
+   "Patience and zeal",
+   "Honour and glory"
+  ],
+  "answer": 0,
+  "explanation": "The wisdom that is from above is full of mercy and good fruits.",
+  "ref": "James 3:17"
+ },
+ {
+  "id": "james-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What can no fountain yield both?",
+  "choices": [
+   "Hot water and cold",
+   "Clear water and troubled",
+   "Sweet water and sour",
+   "Salt water and fresh"
+  ],
+  "answer": 3,
+  "explanation": "So can no fountain both yield salt water and fresh.",
+  "ref": "James 3:12"
+ },
+ {
+  "id": "james-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does James say they have not what they desire?",
+  "choices": [
+   "Because they ask not",
+   "Because they ask too often",
+   "Because God is far away",
+   "Because they have no faith"
+  ],
+  "answer": 0,
+  "explanation": "Ye fight and war, yet ye have not, because ye ask not.",
+  "ref": "James 4:2"
+ },
+ {
+  "id": "james-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens when you draw nigh to God?",
+  "choices": [
+   "He will send an angel",
+   "He will forgive every sin at once",
+   "He will give you wealth",
+   "He will draw nigh to you"
+  ],
+  "answer": 3,
+  "explanation": "Draw nigh to God, and he will draw nigh to you.",
+  "ref": "James 4:8"
+ },
+ {
+  "id": "james-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the Lord do when you humble yourselves in his sight?",
+  "choices": [
+   "Make you rich",
+   "Hide you",
+   "Lift you up",
+   "Send you out"
+  ],
+  "answer": 2,
+  "explanation": "Humble yourselves in the sight of the Lord, and he shall lift you up.",
+  "ref": "James 4:10"
+ },
+ {
+  "id": "james-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom are believers told to submit themselves?",
+  "choices": [
+   "The elders",
+   "The rulers",
+   "God",
+   "One another"
+  ],
+  "answer": 2,
+  "explanation": "Submit yourselves therefore to God. Resist the devil, and he will flee from you.",
+  "ref": "James 4:7"
+ },
+ {
+  "id": "james-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom does God resist?",
+  "choices": [
+   "The poor",
+   "The proud",
+   "The doubting",
+   "The rich"
+  ],
+  "answer": 1,
+  "explanation": "God resisteth the proud, but giveth grace unto the humble.",
+  "ref": "James 4:6"
+ },
+ {
+  "id": "james-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is it to him that knows to do good and does it not?",
+  "choices": [
+   "Sin",
+   "Folly",
+   "A small fault",
+   "Weakness"
+  ],
+  "answer": 0,
+  "explanation": "To him that knoweth to do good, and doeth it not, to him it is sin.",
+  "ref": "James 4:17"
+ },
+ {
+  "id": "james-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does James say there is only one of, able to save and to destroy?",
+  "choices": [
+   "Lawgiver",
+   "Mediator",
+   "Judge of the earth",
+   "Shepherd"
+  ],
+  "answer": 0,
+  "explanation": "There is one lawgiver, who is able to save and to destroy: who art thou that judgest another?",
+  "ref": "James 4:12"
+ },
+ {
+  "id": "james-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What should people say about their plans for tomorrow?",
+  "choices": [
+   "God has given us the day",
+   "We will go, if we are able",
+   "As the Lord has promised",
+   "If the Lord will, we shall live, and do this, or that"
+  ],
+  "answer": 3,
+  "explanation": "Ye ought to say, If the Lord will, we shall live, and do this, or that.",
+  "ref": "James 4:15"
+ },
+ {
+  "id": "james-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do some ask and receive not?",
+  "choices": [
+   "They ask too quietly",
+   "They have not fasted",
+   "They ask amiss, to consume it upon their lusts",
+   "They ask on the sabbath"
+  ],
+  "answer": 2,
+  "explanation": "Ye ask, and receive not, because ye ask amiss, that ye may consume it upon your lusts.",
+  "ref": "James 4:3"
+ },
+ {
+  "id": "james-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who are told to purify their hearts?",
+  "choices": [
+   "Ye fatherless",
+   "Ye brethren of low degree",
+   "Ye double minded",
+   "Ye elders"
+  ],
+  "answer": 2,
+  "explanation": "Cleanse your hands, ye sinners; and purify your hearts, ye double minded.",
+  "ref": "James 4:8"
+ },
+ {
+  "id": "james-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is their laughter to be turned into?",
+  "choices": [
+   "Silence",
+   "Mourning",
+   "Prayer",
+   "Fasting"
+  ],
+  "answer": 1,
+  "explanation": "Let your laughter be turned to mourning, and your joy to heaviness.",
+  "ref": "James 4:9"
+ },
+ {
+  "id": "james-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What plan does James say people make about a city?",
+  "choices": [
+   "Continue there a year, and buy and sell, and get gain",
+   "Build a house there",
+   "Preach there for a season",
+   "Flee there for refuge"
+  ],
+  "answer": 0,
+  "explanation": "To day or to morrow we will go into such a city, and continue there a year, and buy and sell, and get gain.",
+  "ref": "James 4:13"
+ },
+ {
+  "id": "james-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does James call all rejoicing in boastings?",
+  "choices": [
+   "Evil",
+   "Vain",
+   "Foolish",
+   "Pride"
+  ],
+  "answer": 0,
+  "explanation": "Now ye rejoice in your boastings: all such rejoicing is evil.",
+  "ref": "James 4:16"
+ },
+ {
+  "id": "james-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does one who speaks evil of his brother also speak evil of?",
+  "choices": [
+   "The prophets",
+   "The temple",
+   "The elders",
+   "The law"
+  ],
+  "answer": 3,
+  "explanation": "He that speaketh evil of his brother, and judgeth his brother, speaketh evil of the law, and judgeth the law.",
+  "ref": "James 4:11"
+ },
+ {
+  "id": "james-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the spirit that dwells in us lust after, according to the scripture James cites?",
+  "choices": [
+   "To wealth",
+   "To power",
+   "To envy",
+   "To pleasure"
+  ],
+  "answer": 2,
+  "explanation": "The scripture saith, The spirit that dwelleth in us lusteth to envy.",
+  "ref": "James 4:5"
+ },
+ {
+  "id": "james-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is their joy to be turned into?",
+  "choices": [
+   "Silence",
+   "Weeping",
+   "Heaviness",
+   "Shame"
+  ],
+  "answer": 2,
+  "explanation": "Let your laughter be turned to mourning, and your joy to heaviness.",
+  "ref": "James 4:9"
+ },
+ {
+  "id": "james-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the person who judges the law fail to be?",
+  "choices": [
+   "A keeper of the sabbath",
+   "A doer of the law",
+   "A friend of God",
+   "A teacher of the law"
+  ],
+  "answer": 1,
+  "explanation": "If thou judge the law, thou art not a doer of the law, but a judge.",
+  "ref": "James 4:11"
+ },
+ {
+  "id": "james-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does James address those who befriend the world?",
+  "choices": [
+   "Ye adulterers and adulteresses",
+   "Ye hypocrites",
+   "Ye offspring of vipers",
+   "Ye brethren of low degree"
+  ],
+  "answer": 0,
+  "explanation": "Ye adulterers and adulteresses, know ye not that the friendship of the world is enmity with God?",
+  "ref": "James 4:4"
+ },
+ {
+  "id": "james-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are sinners told to cleanse?",
+  "choices": [
+   "Your hands",
+   "Your feet",
+   "Your garments",
+   "Your lips"
+  ],
+  "answer": 0,
+  "explanation": "Cleanse your hands, ye sinners.",
+  "ref": "James 4:8"
+ },
+ {
+  "id": "james-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does James say those who lust do, and yet cannot obtain?",
+  "choices": [
+   "Steal and hide",
+   "Labour and sow",
+   "Pray and wait",
+   "Kill and desire to have"
+  ],
+  "answer": 3,
+  "explanation": "Ye lust, and have not: ye kill, and desire to have, and cannot obtain.",
+  "ref": "James 4:2"
+ },
+ {
+  "id": "james-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do those who plan for tomorrow not know?",
+  "choices": [
+   "The day of the Lord",
+   "What shall be on the morrow",
+   "The price of goods",
+   "The way to the city"
+  ],
+  "answer": 1,
+  "explanation": "Ye know not what shall be on the morrow. For what is your life? It is even a vapour.",
+  "ref": "James 4:14"
+ },
+ {
+  "id": "james-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the double minded told to be, mourn, and weep?",
+  "choices": [
+   "Afflicted",
+   "Silent",
+   "Humble",
+   "Forgiven"
+  ],
+  "answer": 0,
+  "explanation": "Be afflicted, and mourn, and weep: let your laughter be turned to mourning.",
+  "ref": "James 4:9"
+ },
+ {
+  "id": "james-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has happened to the garments of the rich men?",
+  "choices": [
+   "They are motheaten",
+   "They are torn",
+   "They are sold",
+   "They are stolen"
+  ],
+  "answer": 0,
+  "explanation": "Your riches are corrupted, and your garments are motheaten.",
+  "ref": "James 5:2"
+ },
+ {
+  "id": "james-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose hire has been kept back by fraud and cries out?",
+  "choices": [
+   "The servants of the house",
+   "The soldiers",
+   "The merchants",
+   "The labourers who reaped the fields"
+  ],
+  "answer": 3,
+  "explanation": "The hire of the labourers who have reaped down your fields, which is of you kept back by fraud, crieth.",
+  "ref": "James 5:4"
+ },
+ {
+  "id": "james-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose patience does James say you have heard of?",
+  "choices": [
+   "Abraham",
+   "Joseph",
+   "Job",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "Ye have heard of the patience of Job, and have seen the end of the Lord.",
+  "ref": "James 5:11"
+ },
+ {
+  "id": "james-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does James say to let your yea be?",
+  "choices": [
+   "Amen",
+   "Truth",
+   "Yea",
+   "An oath"
+  ],
+  "answer": 2,
+  "explanation": "Let your yea be yea; and your nay, nay; lest ye fall into condemnation.",
+  "ref": "James 5:12"
+ },
+ {
+  "id": "james-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should the merry person do?",
+  "choices": [
+   "Give thanks in silence",
+   "Sing psalms",
+   "Give to the poor",
+   "Fast"
+  ],
+  "answer": 1,
+  "explanation": "Is any merry? let him sing psalms.",
+  "ref": "James 5:13"
+ },
+ {
+  "id": "james-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what do the elders anoint the sick man?",
+  "choices": [
+   "Oil",
+   "Water",
+   "Ashes",
+   "Balm"
+  ],
+  "answer": 0,
+  "explanation": "Let them pray over him, anointing him with oil in the name of the Lord.",
+  "ref": "James 5:14"
+ },
+ {
+  "id": "james-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does James say believers should do to one another to be healed?",
+  "choices": [
+   "Confess their faults and pray for one another",
+   "Fast for one another",
+   "Forgive their debts",
+   "Give offerings"
+  ],
+  "answer": 0,
+  "explanation": "Confess your faults one to another, and pray one for another, that ye may be healed.",
+  "ref": "James 5:16"
+ },
+ {
+  "id": "james-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did it not rain after Elias prayed?",
+  "choices": [
+   "Forty days",
+   "Seven years",
+   "One year",
+   "Three years and six months"
+  ],
+  "answer": 3,
+  "explanation": "He prayed earnestly that it might not rain: and it rained not on the earth by the space of three years and six months.",
+  "ref": "James 5:17"
+ },
+ {
+  "id": "james-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when Elias prayed again?",
+  "choices": [
+   "Fire fell from heaven",
+   "The river dried up",
+   "The heaven gave rain",
+   "A cloud covered the sun"
+  ],
+  "answer": 2,
+  "explanation": "He prayed again, and the heaven gave rain, and the earth brought forth her fruit.",
+  "ref": "James 5:18"
+ },
+ {
+  "id": "james-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does he save who converts a sinner from the error of his way?",
+  "choices": [
+   "A nation",
+   "A city",
+   "A soul from death",
+   "A household"
+  ],
+  "answer": 2,
+  "explanation": "He which converteth the sinner from the error of his way shall save a soul from death, and shall hide a multitude of sins.",
+  "ref": "James 5:20"
+ },
+ {
+  "id": "james-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall be a witness against the rich men and eat their flesh as fire?",
+  "choices": [
+   "Their servants",
+   "The rust of their gold and silver",
+   "Their garments",
+   "Their granaries"
+  ],
+  "answer": 1,
+  "explanation": "Your gold and silver is cankered; and the rust of them shall be a witness against you, and shall eat your flesh as it were fire.",
+  "ref": "James 5:3"
+ },
+ {
+  "id": "james-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose ears do the cries of the reapers enter?",
+  "choices": [
+   "The Lord of sabaoth",
+   "The elders",
+   "The judge's",
+   "The king's"
+  ],
+  "answer": 0,
+  "explanation": "The cries of them which have reaped are entered into the ears of the Lord of sabaoth.",
+  "ref": "James 5:4"
+ },
+ {
+  "id": "james-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the husbandman wait for with long patience?",
+  "choices": [
+   "The precious fruit of the earth",
+   "The market day",
+   "The harvest feast",
+   "The end of winter"
+  ],
+  "answer": 0,
+  "explanation": "The husbandman waiteth for the precious fruit of the earth, and hath long patience for it, until he receive the early and latter rain.",
+  "ref": "James 5:7"
+ },
+ {
+  "id": "james-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does James say the judge stands?",
+  "choices": [
+   "On the mountain",
+   "At the gate of the city",
+   "In the temple",
+   "Before the door"
+  ],
+  "answer": 3,
+  "explanation": "Grudge not one against another, brethren, lest ye be condemned: behold, the judge standeth before the door.",
+  "ref": "James 5:9"
+ },
+ {
+  "id": "james-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the end of the Lord show him to be?",
+  "choices": [
+   "Slow to anger",
+   "Rich in glory",
+   "Very pitiful, and of tender mercy",
+   "A consuming fire"
+  ],
+  "answer": 2,
+  "explanation": "Ye have seen the end of the Lord; that the Lord is very pitiful, and of tender mercy.",
+  "ref": "James 5:11"
+ },
+ {
+  "id": "james-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should the afflicted person do?",
+  "choices": [
+   "Fast",
+   "Call the elders",
+   "Pray",
+   "Sing"
+  ],
+  "answer": 2,
+  "explanation": "Is any among you afflicted? let him pray.",
+  "ref": "James 5:13"
+ },
+ {
+  "id": "james-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the prayer of faith do for the sick?",
+  "choices": [
+   "Give him wisdom",
+   "Save the sick, and the Lord shall raise him up",
+   "Bring him to the elders",
+   "Keep him from the grave"
+  ],
+  "answer": 1,
+  "explanation": "The prayer of faith shall save the sick, and the Lord shall raise him up; and if he have committed sins, they shall be forgiven him.",
+  "ref": "James 5:15"
+ },
+ {
+  "id": "james-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What availeth much, according to James?",
+  "choices": [
+   "The effectual fervent prayer of a righteous man",
+   "The offering of the rich",
+   "The counsel of the elders",
+   "The fasting of the poor"
+  ],
+  "answer": 0,
+  "explanation": "The effectual fervent prayer of a righteous man availeth much.",
+  "ref": "James 5:16"
+ },
+ {
+  "id": "james-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does James say Elias was?",
+  "choices": [
+   "A man subject to like passions as we are",
+   "A man born without sin",
+   "A prophet of fire",
+   "The chief of the prophets"
+  ],
+  "answer": 0,
+  "explanation": "Elias was a man subject to like passions as we are, and he prayed earnestly that it might not rain.",
+  "ref": "James 5:17"
+ },
+ {
+  "id": "james-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What have the rich heaped together for the last days?",
+  "choices": [
+   "Grain",
+   "Servants",
+   "Land",
+   "Treasure"
+  ],
+  "answer": 3,
+  "explanation": "Ye have heaped treasure together for the last days.",
+  "ref": "James 5:3"
+ },
+ {
+  "id": "james-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom have the rich condemned and killed?",
+  "choices": [
+   "The prophets",
+   "The labourers' sons",
+   "The just",
+   "The strangers"
+  ],
+  "answer": 2,
+  "explanation": "Ye have condemned and killed the just; and he doth not resist you.",
+  "ref": "James 5:6"
+ },
+ {
+  "id": "james-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what does James forbid swearing, besides heaven?",
+  "choices": [
+   "The temple",
+   "The altar",
+   "The earth",
+   "The name of the Lord"
+  ],
+  "answer": 2,
+  "explanation": "Swear not, neither by heaven, neither by the earth, neither by any other oath.",
+  "ref": "James 5:12"
+ },
+ {
+  "id": "james-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does James say the rich have lived in on the earth?",
+  "choices": [
+   "Peace",
+   "Pleasure",
+   "Idleness",
+   "Plenty"
+  ],
+  "answer": 1,
+  "explanation": "Ye have lived in pleasure on the earth, and been wanton; ye have nourished your hearts, as in a day of slaughter.",
+  "ref": "James 5:5"
+ },
+ {
+  "id": "james-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why are believers told to stablish their hearts?",
+  "choices": [
+   "The coming of the Lord draweth nigh",
+   "The harvest is near",
+   "The judge is at the gate",
+   "The trial will pass"
+  ],
+  "answer": 0,
+  "explanation": "Be ye also patient; stablish your hearts: for the coming of the Lord draweth nigh.",
+  "ref": "James 5:8"
+ },
+ {
+  "id": "james-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does James say the converting of a sinner will hide?",
+  "choices": [
+   "A multitude of sins",
+   "The shame of the brother",
+   "The face of God",
+   "The wrath to come"
+  ],
+  "answer": 0,
+  "explanation": "He which converteth the sinner shall save a soul from death, and shall hide a multitude of sins.",
+  "ref": "James 5:20"
+ },
+ {
+  "id": "james-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are believers told not to do against one another, lest they be condemned?",
+  "choices": [
+   "Grudge",
+   "Judge",
+   "Boast",
+   "Swear"
+  ],
+  "answer": 0,
+  "explanation": "Grudge not one against another, brethren, lest ye be condemned.",
+  "ref": "James 5:9"
+ },
+ {
+  "id": "james-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom do we count happy, according to James?",
+  "choices": [
+   "Them that are rich",
+   "Them that are healed",
+   "Them that are zealous",
+   "Them which endure"
+  ],
+  "answer": 3,
+  "explanation": "Behold, we count them happy which endure.",
+  "ref": "James 5:11"
+ },
+ {
+  "id": "james-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to the sick man's sins if the prayer of faith is offered?",
+  "choices": [
+   "They shall be remembered",
+   "They shall be judged",
+   "They shall be forgiven him",
+   "They shall be hid"
+  ],
+  "answer": 2,
+  "explanation": "If he have committed sins, they shall be forgiven him.",
+  "ref": "James 5:15"
  }
 ]

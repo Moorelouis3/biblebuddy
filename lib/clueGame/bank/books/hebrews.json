@@ -1038,5 +1038,1845 @@
   "answer": 3,
   "explanation": "Believers now offer praise, the fruit of lips giving thanks to His name.",
   "ref": "Hebrews 13:15"
+ },
+ {
+  "id": "hebrews-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "By faith, Abel offered a more excellent sacrifice than whom?",
+  "choices": [
+   "Cain",
+   "Seth",
+   "Enoch",
+   "Noah"
+  ],
+  "answer": 0,
+  "explanation": "By faith Abel offered unto God a more excellent sacrifice than Cain.",
+  "ref": "Hebrews 11:4"
+ },
+ {
+  "id": "hebrews-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was translated that he should not see death?",
+  "choices": [
+   "Elijah",
+   "Noah",
+   "Abel",
+   "Enoch"
+  ],
+  "answer": 3,
+  "explanation": "By faith Enoch was translated that he should not see death.",
+  "ref": "Hebrews 11:5"
+ },
+ {
+  "id": "hebrews-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is impossible without faith?",
+  "choices": [
+   "To keep the law",
+   "To enter the land",
+   "To please God",
+   "To find wisdom"
+  ],
+  "answer": 2,
+  "explanation": "Without faith it is impossible to please him.",
+  "ref": "Hebrews 11:6"
+ },
+ {
+  "id": "hebrews-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who received strength to conceive seed when she was past age?",
+  "choices": [
+   "Rebekah",
+   "Rachel",
+   "Sara",
+   "Hannah"
+  ],
+  "answer": 2,
+  "explanation": "Through faith also Sara herself received strength to conceive seed, and was delivered of a child when she was past age.",
+  "ref": "Hebrews 11:11"
+ },
+ {
+  "id": "hebrews-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Abraham offer up when he was tried?",
+  "choices": [
+   "Ishmael",
+   "Isaac",
+   "Jacob",
+   "Lot"
+  ],
+  "answer": 1,
+  "explanation": "By faith Abraham, when he was tried, offered up Isaac.",
+  "ref": "Hebrews 11:17"
+ },
+ {
+  "id": "hebrews-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Isaac bless by faith concerning things to come?",
+  "choices": [
+   "Jacob and Esau",
+   "Joseph and Benjamin",
+   "Ephraim and Manasseh",
+   "Reuben and Judah"
+  ],
+  "answer": 0,
+  "explanation": "By faith Isaac blessed Jacob and Esau concerning things to come.",
+  "ref": "Hebrews 11:20"
+ },
+ {
+  "id": "hebrews-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose two sons did Jacob bless when he was dying?",
+  "choices": [
+   "Joseph's",
+   "Judah's",
+   "Reuben's",
+   "Benjamin's"
+  ],
+  "answer": 0,
+  "explanation": "By faith Jacob, when he was a dying, blessed both the sons of Joseph.",
+  "ref": "Hebrews 11:21"
+ },
+ {
+  "id": "hebrews-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Joseph, when he died, give commandment about?",
+  "choices": [
+   "His coat",
+   "His house",
+   "His inheritance",
+   "His bones"
+  ],
+  "answer": 3,
+  "explanation": "By faith Joseph, when he died, made mention of the departing of the children of Israel; and gave commandment concerning his bones.",
+  "ref": "Hebrews 11:22"
+ },
+ {
+  "id": "hebrews-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For how long was Moses hid by his parents when he was born?",
+  "choices": [
+   "Seven days",
+   "Forty days",
+   "Three months",
+   "One year"
+  ],
+  "answer": 2,
+  "explanation": "By faith Moses, when he was born, was hid three months of his parents.",
+  "ref": "Hebrews 11:23"
+ },
+ {
+  "id": "hebrews-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Moses refuse to be called when he came to years?",
+  "choices": [
+   "The prince of Egypt",
+   "The deliverer of Israel",
+   "The son of Pharaoh's daughter",
+   "The servant of Pharaoh"
+  ],
+  "answer": 2,
+  "explanation": "By faith Moses, when he was come to years, refused to be called the son of Pharaoh's daughter.",
+  "ref": "Hebrews 11:24"
+ },
+ {
+  "id": "hebrews-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Who, though dead, yet speaketh?",
+  "choices": [
+   "Enoch",
+   "Abel",
+   "Noah",
+   "Isaac"
+  ],
+  "answer": 1,
+  "explanation": "By faith Abel offered unto God a more excellent sacrifice, and by it he being dead yet speaketh.",
+  "ref": "Hebrews 11:4"
+ },
+ {
+  "id": "hebrews-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must he that cometh to God believe about God?",
+  "choices": [
+   "That he is, and a rewarder of them that diligently seek him",
+   "That he is just and slow to anger",
+   "That he is a king over all nations",
+   "That he forgives all who ask"
+  ],
+  "answer": 0,
+  "explanation": "He that cometh to God must believe that he is, and that he is a rewarder of them that diligently seek him.",
+  "ref": "Hebrews 11:6"
+ },
+ {
+  "id": "hebrews-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Noah do to the world by preparing the ark?",
+  "choices": [
+   "Condemned it",
+   "Warned it",
+   "Saved it",
+   "Taught it"
+  ],
+  "answer": 0,
+  "explanation": "Noah prepared an ark to the saving of his house; by the which he condemned the world.",
+  "ref": "Hebrews 11:7"
+ },
+ {
+  "id": "hebrews-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what did Abraham dwell in the land of promise with Isaac and Jacob?",
+  "choices": [
+   "Walled cities",
+   "Caves",
+   "Houses of stone",
+   "Tabernacles"
+  ],
+  "answer": 3,
+  "explanation": "By faith he sojourned in the land of promise, as in a strange country, dwelling in tabernacles with Isaac and Jacob.",
+  "ref": "Hebrews 11:9"
+ },
+ {
+  "id": "hebrews-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What city did Abraham look for?",
+  "choices": [
+   "The city of David",
+   "Jerusalem on the hill",
+   "One with foundations, whose builder and maker is God",
+   "A city of refuge"
+  ],
+  "answer": 2,
+  "explanation": "He looked for a city which hath foundations, whose builder and maker is God.",
+  "ref": "Hebrews 11:10"
+ },
+ {
+  "id": "hebrews-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Sara receive strength to conceive?",
+  "choices": [
+   "She prayed in the temple",
+   "Abraham fasted",
+   "She judged him faithful who had promised",
+   "An angel touched her"
+  ],
+  "answer": 2,
+  "explanation": "Sara received strength to conceive seed... because she judged him faithful who had promised.",
+  "ref": "Hebrews 11:11"
+ },
+ {
+  "id": "hebrews-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what is the multitude from one man as good as dead compared?",
+  "choices": [
+   "The dust of the earth",
+   "The stars of the sky and the sand by the sea shore",
+   "The leaves of the trees",
+   "The drops of the morning dew"
+  ],
+  "answer": 1,
+  "explanation": "Therefore sprang there even of one, and him as good as dead, so many as the stars of the sky in multitude, and as the sand which is by the sea shore innumerable.",
+  "ref": "Hebrews 11:12"
+ },
+ {
+  "id": "hebrews-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did those who died in faith confess they were on the earth?",
+  "choices": [
+   "Strangers and pilgrims",
+   "Servants and slaves",
+   "Sojourners and kings",
+   "Exiles and captives"
+  ],
+  "answer": 0,
+  "explanation": "These all died in faith, not having received the promises, and confessed that they were strangers and pilgrims on the earth.",
+  "ref": "Hebrews 11:13"
+ },
+ {
+  "id": "hebrews-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Abraham account that God was able to do for Isaac?",
+  "choices": [
+   "Raise him up, even from the dead",
+   "Heal him of sickness",
+   "Hide him from harm",
+   "Give him a long life"
+  ],
+  "answer": 0,
+  "explanation": "Accounting that God was able to raise him up, even from the dead.",
+  "ref": "Hebrews 11:19"
+ },
+ {
+  "id": "hebrews-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had God said about Isaac before Abraham offered him?",
+  "choices": [
+   "Isaac shall be a great nation",
+   "Isaac shall rule his brothers",
+   "Isaac shall inherit the land",
+   "In Isaac shall thy seed be called"
+  ],
+  "answer": 3,
+  "explanation": "Of whom it was said, That in Isaac shall thy seed be called.",
+  "ref": "Hebrews 11:18"
+ },
+ {
+  "id": "hebrews-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Jacob doing as he blessed Joseph's sons and worshipped?",
+  "choices": [
+   "Lying on his bed",
+   "Standing at the altar",
+   "Leaning upon the top of his staff",
+   "Kneeling on the ground"
+  ],
+  "answer": 2,
+  "explanation": "Jacob, when he was a dying, blessed both the sons of Joseph; and worshipped, leaning upon the top of his staff.",
+  "ref": "Hebrews 11:21"
+ },
+ {
+  "id": "hebrews-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Moses' parents hide him for three months?",
+  "choices": [
+   "An angel warned them",
+   "He was sick",
+   "They saw he was a proper child",
+   "They feared the Egyptians' soldiers"
+  ],
+  "answer": 2,
+  "explanation": "They saw he was a proper child; and they were not afraid of the king's commandment.",
+  "ref": "Hebrews 11:23"
+ },
+ {
+  "id": "hebrews-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Moses esteem greater riches than the treasures in Egypt?",
+  "choices": [
+   "The land of promise",
+   "The reproach of Christ",
+   "The law of God",
+   "The favour of Pharaoh"
+  ],
+  "answer": 1,
+  "explanation": "Esteeming the reproach of Christ greater riches than the treasures in Egypt.",
+  "ref": "Hebrews 11:26"
+ },
+ {
+  "id": "hebrews-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Moses keep the passover and the sprinkling of blood?",
+  "choices": [
+   "Lest he that destroyed the firstborn should touch them",
+   "To remember the flood",
+   "To please Pharaoh",
+   "To end the plagues of frogs"
+  ],
+  "answer": 0,
+  "explanation": "Through faith he kept the passover, and the sprinkling of blood, lest he that destroyed the firstborn should touch them.",
+  "ref": "Hebrews 11:28"
+ },
+ {
+  "id": "hebrews-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "What fell down by faith after the people compassed it seven days?",
+  "choices": [
+   "The walls of Jericho",
+   "The walls of Ai",
+   "The gates of Gaza",
+   "The temple of Dagon"
+  ],
+  "answer": 0,
+  "explanation": "By faith the walls of Jericho fell down, after they were compassed about seven days.",
+  "ref": "Hebrews 11:30"
+ },
+ {
+  "id": "hebrews-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What testimony did Enoch have before his translation?",
+  "choices": [
+   "That he walked with the Lord",
+   "That he was a prophet",
+   "That he was righteous",
+   "That he pleased God"
+  ],
+  "answer": 3,
+  "explanation": "Before his translation he had this testimony, that he pleased God.",
+  "ref": "Hebrews 11:5"
+ },
+ {
+  "id": "hebrews-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what did Noah become heir?",
+  "choices": [
+   "The new earth",
+   "The land of promise",
+   "The righteousness which is by faith",
+   "The blessing of the firstborn"
+  ],
+  "answer": 2,
+  "explanation": "Noah became heir of the righteousness which is by faith.",
+  "ref": "Hebrews 11:7"
+ },
+ {
+  "id": "hebrews-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What opportunity does the text say those who died in faith might have had if mindful of their old country?",
+  "choices": [
+   "To have rested",
+   "To have built there",
+   "To have returned",
+   "To have been judged"
+  ],
+  "answer": 2,
+  "explanation": "If they had been mindful of that country from whence they came out, they might have had opportunity to have returned.",
+  "ref": "Hebrews 11:15"
+ },
+ {
+  "id": "hebrews-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why is God not ashamed to be called their God?",
+  "choices": [
+   "They kept his law",
+   "He hath prepared for them a city",
+   "They offered sacrifice",
+   "They built his house"
+  ],
+  "answer": 1,
+  "explanation": "God is not ashamed to be called their God: for he hath prepared for them a city.",
+  "ref": "Hebrews 11:16"
+ },
+ {
+  "id": "hebrews-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joseph make mention of when he died?",
+  "choices": [
+   "The departing of the children of Israel",
+   "The famine in Egypt",
+   "The coat of many colours",
+   "The burial of Jacob"
+  ],
+  "answer": 0,
+  "explanation": "Joseph, when he died, made mention of the departing of the children of Israel.",
+  "ref": "Hebrews 11:22"
+ },
+ {
+  "id": "hebrews-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what were Moses' parents not afraid?",
+  "choices": [
+   "The king's commandment",
+   "The Nile",
+   "The soldiers of Pharaoh",
+   "The midwives"
+  ],
+  "answer": 0,
+  "explanation": "They saw he was a proper child; and they were not afraid of the king's commandment.",
+  "ref": "Hebrews 11:23"
+ },
+ {
+  "id": "hebrews-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Moses endure when he forsook Egypt?",
+  "choices": [
+   "With a pillar of cloud",
+   "With the staff in his hand",
+   "With his brother beside him",
+   "As seeing him who is invisible"
+  ],
+  "answer": 3,
+  "explanation": "By faith he forsook Egypt, not fearing the wrath of the king: for he endured, as seeing him who is invisible.",
+  "ref": "Hebrews 11:27"
+ },
+ {
+  "id": "hebrews-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happened to the Egyptians when they tried to cross the Red sea as by dry land?",
+  "choices": [
+   "They turned back",
+   "They were scattered",
+   "They were drowned",
+   "They were blinded"
+  ],
+  "answer": 2,
+  "explanation": "By faith they passed through the Red sea as by dry land: which the Egyptians assaying to do were drowned.",
+  "ref": "Hebrews 11:29"
+ },
+ {
+  "id": "hebrews-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these is NOT named among those the writer lacks time to tell of?",
+  "choices": [
+   "Gedeon",
+   "Barak",
+   "Joshua",
+   "Jephthae"
+  ],
+  "answer": 2,
+  "explanation": "The writer names Gedeon, Barak, Samson, Jephthae, David, Samuel and the prophets; Joshua is not among them.",
+  "ref": "Hebrews 11:32"
+ },
+ {
+  "id": "hebrews-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did those who acted through faith stop?",
+  "choices": [
+   "The rivers",
+   "The mouths of lions",
+   "The sun",
+   "The armies of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Who through faith subdued kingdoms, wrought righteousness, obtained promises, stopped the mouths of lions.",
+  "ref": "Hebrews 11:33"
+ },
+ {
+  "id": "hebrews-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did those through faith quench?",
+  "choices": [
+   "The violence of fire",
+   "The flame of the altar",
+   "The thirst of the people",
+   "The fury of the sea"
+  ],
+  "answer": 0,
+  "explanation": "Through faith they quenched the violence of fire, escaped the edge of the sword.",
+  "ref": "Hebrews 11:34"
+ },
+ {
+  "id": "hebrews-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did women receive through faith?",
+  "choices": [
+   "Their dead raised to life again",
+   "Many children",
+   "Houses and land",
+   "Freedom from bondage"
+  ],
+  "answer": 0,
+  "explanation": "Women received their dead raised to life again.",
+  "ref": "Hebrews 11:35"
+ },
+ {
+  "id": "hebrews-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did some wander about in, being destitute and afflicted?",
+  "choices": [
+   "Sackcloth and ashes",
+   "Camel hair",
+   "Linen robes",
+   "Sheepskins and goatskins"
+  ],
+  "answer": 3,
+  "explanation": "They wandered about in sheepskins and goatskins; being destitute, afflicted, tormented.",
+  "ref": "Hebrews 11:37"
+ },
+ {
+  "id": "hebrews-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what were the worlds framed?",
+  "choices": [
+   "The wisdom of God",
+   "The hand of Moses",
+   "The word of God",
+   "The spirit of the Lord"
+  ],
+  "answer": 2,
+  "explanation": "Through faith we understand that the worlds were framed by the word of God.",
+  "ref": "Hebrews 11:3"
+ },
+ {
+  "id": "hebrews-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God provide so that those of old should not be made perfect without us?",
+  "choices": [
+   "A heavenly priest",
+   "A new law",
+   "Some better thing for us",
+   "A promised land"
+  ],
+  "answer": 2,
+  "explanation": "God having provided some better thing for us, that they without us should not be made perfect.",
+  "ref": "Hebrews 11:40"
+ },
+ {
+  "id": "hebrews-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are believers compassed about with?",
+  "choices": [
+   "A cloud of witnesses",
+   "A wall of fire",
+   "A host of angels",
+   "A garden of peace"
+  ],
+  "answer": 0,
+  "explanation": "Seeing we also are compassed about with so great a cloud of witnesses, let us run with patience the race that is set before us.",
+  "ref": "Hebrews 12:1"
+ },
+ {
+  "id": "hebrews-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are we told to lay aside as we run the race?",
+  "choices": [
+   "Our riches",
+   "Our fear of men",
+   "Our old friends",
+   "Every weight and the sin that easily besets us"
+  ],
+  "answer": 3,
+  "explanation": "Let us lay aside every weight, and the sin which doth so easily beset us.",
+  "ref": "Hebrews 12:1"
+ },
+ {
+  "id": "hebrews-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is called the author and finisher of our faith?",
+  "choices": [
+   "Moses",
+   "Abraham",
+   "Jesus",
+   "Paul"
+  ],
+  "answer": 2,
+  "explanation": "Looking unto Jesus the author and finisher of our faith.",
+  "ref": "Hebrews 12:2"
+ },
+ {
+  "id": "hebrews-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where is Jesus now set down?",
+  "choices": [
+   "On Mount Sion",
+   "In the temple",
+   "At the right hand of the throne of God",
+   "At the table of the firstborn"
+  ],
+  "answer": 2,
+  "explanation": "Jesus is set down at the right hand of the throne of God.",
+  "ref": "Hebrews 12:2"
+ },
+ {
+  "id": "hebrews-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sold his birthright for one morsel of meat?",
+  "choices": [
+   "Cain",
+   "Esau",
+   "Reuben",
+   "Ishmael"
+  ],
+  "answer": 1,
+  "explanation": "Esau, who for one morsel of meat sold his birthright.",
+  "ref": "Hebrews 12:16"
+ },
+ {
+  "id": "hebrews-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which mount have believers come, according to the writer?",
+  "choices": [
+   "Mount Sion",
+   "Mount Sinai",
+   "Mount Carmel",
+   "Mount Ararat"
+  ],
+  "answer": 0,
+  "explanation": "But ye are come unto mount Sion, and unto the city of the living God, the heavenly Jerusalem.",
+  "ref": "Hebrews 12:22"
+ },
+ {
+  "id": "hebrews-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Jesus is the mediator of what?",
+  "choices": [
+   "The new covenant",
+   "The old law",
+   "The temple",
+   "The kingdom of Israel"
+  ],
+  "answer": 0,
+  "explanation": "And to Jesus the mediator of the new covenant, and to the blood of sprinkling.",
+  "ref": "Hebrews 12:24"
+ },
+ {
+  "id": "hebrews-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the writer say our God is?",
+  "choices": [
+   "A rock of refuge",
+   "A shepherd of sheep",
+   "A king of peace",
+   "A consuming fire"
+  ],
+  "answer": 3,
+  "explanation": "For our God is a consuming fire.",
+  "ref": "Hebrews 12:29"
+ },
+ {
+  "id": "hebrews-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are we told to follow with all men, along with holiness?",
+  "choices": [
+   "Wisdom",
+   "Truth",
+   "Peace",
+   "Mercy"
+  ],
+  "answer": 2,
+  "explanation": "Follow peace with all men, and holiness, without which no man shall see the Lord.",
+  "ref": "Hebrews 12:14"
+ },
+ {
+  "id": "hebrews-12-e-10",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said, \"I exceedingly fear and quake\" at the mountain?",
+  "choices": [
+   "Aaron",
+   "Joshua",
+   "Moses",
+   "Elijah"
+  ],
+  "answer": 2,
+  "explanation": "So terrible was the sight, that Moses said, I exceedingly fear and quake.",
+  "ref": "Hebrews 12:21"
+ },
+ {
+  "id": "hebrews-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How are we told to run the race that is set before us?",
+  "choices": [
+   "With speed",
+   "With patience",
+   "In secret",
+   "With joy"
+  ],
+  "answer": 1,
+  "explanation": "Let us run with patience the race that is set before us.",
+  "ref": "Hebrews 12:1"
+ },
+ {
+  "id": "hebrews-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus do to the shame as he endured the cross?",
+  "choices": [
+   "Despised it",
+   "Welcomed it",
+   "Hid it",
+   "Answered it"
+  ],
+  "answer": 0,
+  "explanation": "Jesus, who for the joy that was set before him endured the cross, despising the shame.",
+  "ref": "Hebrews 12:2"
+ },
+ {
+  "id": "hebrews-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How far had the readers resisted in striving against sin?",
+  "choices": [
+   "Not yet unto blood",
+   "Unto prison",
+   "Unto death",
+   "Unto exile"
+  ],
+  "answer": 0,
+  "explanation": "Ye have not yet resisted unto blood, striving against sin.",
+  "ref": "Hebrews 12:4"
+ },
+ {
+  "id": "hebrews-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are believers told not to despise?",
+  "choices": [
+   "The rulers",
+   "The poor",
+   "The prophets",
+   "The chastening of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "My son, despise not thou the chastening of the Lord, nor faint when thou art rebuked of him.",
+  "ref": "Hebrews 12:5"
+ },
+ {
+  "id": "hebrews-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are those called who are without chastisement?",
+  "choices": [
+   "Strangers",
+   "Servants",
+   "Bastards, and not sons",
+   "Orphans"
+  ],
+  "answer": 2,
+  "explanation": "If ye be without chastisement, whereof all are partakers, then are ye bastards, and not sons.",
+  "ref": "Hebrews 12:8"
+ },
+ {
+  "id": "hebrews-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom do we give reverence to, and to whom should we much rather be in subjection?",
+  "choices": [
+   "Elders; the high priest",
+   "Kings; the Lord of hosts",
+   "Fathers of our flesh; the Father of spirits",
+   "Teachers; the Son"
+  ],
+  "answer": 2,
+  "explanation": "We have had fathers of our flesh which corrected us, and we gave them reverence: shall we not much rather be in subjection unto the Father of spirits, and live?",
+  "ref": "Hebrews 12:9"
+ },
+ {
+  "id": "hebrews-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does God chasten us?",
+  "choices": [
+   "To punish our fathers' sins",
+   "For our profit, that we may be partakers of his holiness",
+   "To show his power",
+   "To prove we are rejected"
+  ],
+  "answer": 1,
+  "explanation": "He chastens us for our profit, that we might be partakers of his holiness.",
+  "ref": "Hebrews 12:10"
+ },
+ {
+  "id": "hebrews-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does no chastening seem for the present?",
+  "choices": [
+   "Grievous, not joyous",
+   "Light",
+   "Short",
+   "Foolish"
+  ],
+  "answer": 0,
+  "explanation": "No chastening for the present seemeth to be joyous, but grievous.",
+  "ref": "Hebrews 12:11"
+ },
+ {
+  "id": "hebrews-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are we told to lift up?",
+  "choices": [
+   "The hands which hang down, and the feeble knees",
+   "Our voices in praise",
+   "Our eyes to the hills",
+   "Our banners"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore lift up the hands which hang down, and the feeble knees.",
+  "ref": "Hebrews 12:12"
+ },
+ {
+  "id": "hebrews-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does a root of bitterness springing up do?",
+  "choices": [
+   "Divides the church",
+   "Hides the truth",
+   "Strengthens the weak",
+   "Troubles you and defiles many"
+  ],
+  "answer": 3,
+  "explanation": "Lest any root of bitterness springing up trouble you, and thereby many be defiled.",
+  "ref": "Hebrews 12:15"
+ },
+ {
+  "id": "hebrews-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Esau find no place of, though he sought it carefully with tears?",
+  "choices": [
+   "Pardon",
+   "Mercy",
+   "Repentance",
+   "Favour"
+  ],
+  "answer": 2,
+  "explanation": "He was rejected: for he found no place of repentance, though he sought it carefully with tears.",
+  "ref": "Hebrews 12:17"
+ },
+ {
+  "id": "hebrews-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was said would happen to a beast that touched the mountain?",
+  "choices": [
+   "It would be burned",
+   "It would be driven out",
+   "It would be stoned or thrust through with a dart",
+   "It would be sacrificed"
+  ],
+  "answer": 2,
+  "explanation": "If so much as a beast touch the mountain, it shall be stoned, or thrust through with a dart.",
+  "ref": "Hebrews 12:20"
+ },
+ {
+  "id": "hebrews-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do believers come to along with the heavenly Jerusalem?",
+  "choices": [
+   "A great multitude of priests",
+   "An innumerable company of angels",
+   "The ark of the covenant",
+   "Twelve tribes"
+  ],
+  "answer": 1,
+  "explanation": "Ye are come unto the heavenly Jerusalem, and to an innumerable company of angels.",
+  "ref": "Hebrews 12:22"
+ },
+ {
+  "id": "hebrews-12-m-14",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What speaks better things than the blood of Abel?",
+  "choices": [
+   "The blood of sprinkling",
+   "The voice of the prophets",
+   "The law of Moses",
+   "The cry of the poor"
+  ],
+  "answer": 0,
+  "explanation": "To the blood of sprinkling, that speaketh better things than that of Abel.",
+  "ref": "Hebrews 12:24"
+ },
+ {
+  "id": "hebrews-12-m-15",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the mount that might be touched do?",
+  "choices": [
+   "Burned with fire",
+   "Flowed with water",
+   "Shone with light",
+   "Dripped with blood"
+  ],
+  "answer": 0,
+  "explanation": "Ye are not come unto the mount that might be touched, and that burned with fire.",
+  "ref": "Hebrews 12:18"
+ },
+ {
+  "id": "hebrews-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the writer say believers should consider, lest they be wearied and faint?",
+  "choices": [
+   "The patience of Job",
+   "The promises of the fathers",
+   "The works of the law",
+   "Him that endured such contradiction of sinners"
+  ],
+  "answer": 3,
+  "explanation": "Consider him that endured such contradiction of sinners against himself, lest ye be wearied and faint in your minds.",
+  "ref": "Hebrews 12:3"
+ },
+ {
+  "id": "hebrews-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As what does the exhortation about chastening speak to believers?",
+  "choices": [
+   "As unto servants",
+   "As unto priests",
+   "As unto children",
+   "As unto kings"
+  ],
+  "answer": 2,
+  "explanation": "Ye have forgotten the exhortation which speaketh unto you as unto children.",
+  "ref": "Hebrews 12:5"
+ },
+ {
+  "id": "hebrews-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did earthly fathers chasten us, and by whose pleasure?",
+  "choices": [
+   "Many years, after the law",
+   "Forty days, after the rod",
+   "A few days, after their own pleasure",
+   "A season, after the Lord's will"
+  ],
+  "answer": 2,
+  "explanation": "They verily for a few days chastened us after their own pleasure; but he for our profit.",
+  "ref": "Hebrews 12:10"
+ },
+ {
+  "id": "hebrews-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the writer say to make for your feet, lest the lame be turned out of the way?",
+  "choices": [
+   "Wide roads",
+   "Straight paths",
+   "Narrow gates",
+   "Stone steps"
+  ],
+  "answer": 1,
+  "explanation": "Make straight paths for your feet, lest that which is lame be turned out of the way; but let it rather be healed.",
+  "ref": "Hebrews 12:13"
+ },
+ {
+  "id": "hebrews-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Without what shall no man see the Lord?",
+  "choices": [
+   "Holiness",
+   "Baptism",
+   "Sacrifice",
+   "Wisdom"
+  ],
+  "answer": 0,
+  "explanation": "Follow peace with all men, and holiness, without which no man shall see the Lord.",
+  "ref": "Hebrews 12:14"
+ },
+ {
+  "id": "hebrews-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which three things surrounded the mount that burned with fire?",
+  "choices": [
+   "Blackness, darkness and tempest",
+   "Thunder, lightning and rain",
+   "Smoke, cloud and fire",
+   "Silence, night and wind"
+  ],
+  "answer": 0,
+  "explanation": "Ye are not come unto the mount that burned with fire, nor unto blackness, and darkness, and tempest.",
+  "ref": "Hebrews 12:18"
+ },
+ {
+  "id": "hebrews-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did those who heard the voice entreat?",
+  "choices": [
+   "That Moses should speak for them",
+   "That the fire be put out",
+   "That they might see God",
+   "That the word should not be spoken to them any more"
+  ],
+  "answer": 3,
+  "explanation": "The voice of words; which voice they that heard intreated that the word should not be spoken to them any more.",
+  "ref": "Hebrews 12:19"
+ },
+ {
+  "id": "hebrews-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose names are written in heaven, in the general assembly?",
+  "choices": [
+   "The spirits of just men",
+   "The angels",
+   "The church of the firstborn",
+   "The twelve tribes"
+  ],
+  "answer": 2,
+  "explanation": "To the general assembly and church of the firstborn, which are written in heaven.",
+  "ref": "Hebrews 12:23"
+ },
+ {
+  "id": "hebrews-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is God called when believers come to him in Mount Sion?",
+  "choices": [
+   "The Father of lights",
+   "The God of Jacob",
+   "The Judge of all",
+   "The King of glory"
+  ],
+  "answer": 2,
+  "explanation": "And to God the Judge of all, and to the spirits of just men made perfect.",
+  "ref": "Hebrews 12:23"
+ },
+ {
+  "id": "hebrews-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the Lord promised to shake besides the earth?",
+  "choices": [
+   "The sea",
+   "Heaven",
+   "The mountains",
+   "The nations"
+  ],
+  "answer": 1,
+  "explanation": "Yet once more I shake not the earth only, but also heaven.",
+  "ref": "Hebrews 12:26"
+ },
+ {
+  "id": "hebrews-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the word \"Yet once more\" signify?",
+  "choices": [
+   "The removing of things that are shaken",
+   "The coming of the Lord",
+   "The return of Moses",
+   "The end of the law"
+  ],
+  "answer": 0,
+  "explanation": "This word, Yet once more, signifieth the removing of those things that are shaken, that those things which cannot be shaken may remain.",
+  "ref": "Hebrews 12:27"
+ },
+ {
+  "id": "hebrews-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are believers to serve God acceptably?",
+  "choices": [
+   "With reverence and godly fear",
+   "With songs and sacrifice",
+   "With boldness and joy",
+   "With fasting and tears"
+  ],
+  "answer": 0,
+  "explanation": "Let us have grace, whereby we may serve God acceptably with reverence and godly fear.",
+  "ref": "Hebrews 12:28"
+ },
+ {
+  "id": "hebrews-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to us if we turn away from him that speaketh from heaven?",
+  "choices": [
+   "We shall be forgiven",
+   "The law will stand for us",
+   "Mercy will be shown",
+   "We shall not escape, much more than they"
+  ],
+  "answer": 3,
+  "explanation": "If they escaped not who refused him that spake on earth, much more shall not we escape, if we turn away from him that speaketh from heaven.",
+  "ref": "Hebrews 12:25"
+ },
+ {
+  "id": "hebrews-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What could those at the mountain not endure?",
+  "choices": [
+   "The sound of the trumpet",
+   "The sight of Moses",
+   "That which was commanded",
+   "The darkness"
+  ],
+  "answer": 2,
+  "explanation": "For they could not endure that which was commanded, And if so much as a beast touch the mountain, it shall be stoned.",
+  "ref": "Hebrews 12:20"
+ },
+ {
+  "id": "hebrews-12-h-15",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Looking diligently, what are believers told to take care no man fails of?",
+  "choices": [
+   "The faith of the fathers",
+   "The peace of the church",
+   "The grace of God",
+   "The law of Moses"
+  ],
+  "answer": 2,
+  "explanation": "Looking diligently lest any man fail of the grace of God.",
+  "ref": "Hebrews 12:15"
+ },
+ {
+  "id": "hebrews-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom are believers told to remember as though bound with them?",
+  "choices": [
+   "Them that are in bonds",
+   "The widows",
+   "The elders",
+   "The strangers"
+  ],
+  "answer": 0,
+  "explanation": "Remember them that are in bonds, as bound with them.",
+  "ref": "Hebrews 13:3"
+ },
+ {
+  "id": "hebrews-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the writer say is honourable in all?",
+  "choices": [
+   "Labour",
+   "Obedience",
+   "Wealth",
+   "Marriage"
+  ],
+  "answer": 3,
+  "explanation": "Marriage is honourable in all, and the bed undefiled.",
+  "ref": "Hebrews 13:4"
+ },
+ {
+  "id": "hebrews-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has God said to those who are content?",
+  "choices": [
+   "I will give thee rest",
+   "I will bless thy house",
+   "I will never leave thee, nor forsake thee",
+   "I will make thee great"
+  ],
+  "answer": 2,
+  "explanation": "Be content with such things as ye have: for he hath said, I will never leave thee, nor forsake thee.",
+  "ref": "Hebrews 13:5"
+ },
+ {
+  "id": "hebrews-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What can believers boldly say about the Lord?",
+  "choices": [
+   "The Lord is my shepherd",
+   "The Lord is my light",
+   "The Lord is my helper",
+   "The Lord is my rock"
+  ],
+  "answer": 2,
+  "explanation": "We may boldly say, The Lord is my helper, and I will not fear what man shall do unto me.",
+  "ref": "Hebrews 13:6"
+ },
+ {
+  "id": "hebrews-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Jesus suffer, to sanctify the people with his own blood?",
+  "choices": [
+   "In the temple",
+   "Without the gate",
+   "Upon the mount",
+   "In the garden"
+  ],
+  "answer": 1,
+  "explanation": "Jesus also, that he might sanctify the people with his own blood, suffered without the gate.",
+  "ref": "Hebrews 13:12"
+ },
+ {
+  "id": "hebrews-13-e-06",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do believers have no continuing here?",
+  "choices": [
+   "City",
+   "Rest",
+   "Tent",
+   "Law"
+  ],
+  "answer": 0,
+  "explanation": "For here have we no continuing city, but we seek one to come.",
+  "ref": "Hebrews 13:14"
+ },
+ {
+  "id": "hebrews-13-e-07",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things are we told not to forget, with which God is well pleased?",
+  "choices": [
+   "To do good and to communicate",
+   "To pray and to fast",
+   "To teach and to give",
+   "To sing and to rejoice"
+  ],
+  "answer": 0,
+  "explanation": "But to do good and to communicate forget not: for with such sacrifices God is well pleased.",
+  "ref": "Hebrews 13:16"
+ },
+ {
+  "id": "hebrews-13-h-11",
+  "chapter": 13,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is set at liberty, according to the writer?",
+  "choices": [
+   "Paul",
+   "Silas",
+   "Titus",
+   "Timothy"
+  ],
+  "answer": 3,
+  "explanation": "Know ye that our brother Timothy is set at liberty.",
+  "ref": "Hebrews 13:23"
+ },
+ {
+  "id": "hebrews-13-e-09",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Jesus called, brought again from the dead?",
+  "choices": [
+   "The Lamb of God",
+   "The bright morning star",
+   "That great shepherd of the sheep",
+   "The cornerstone"
+  ],
+  "answer": 2,
+  "explanation": "The God of peace, that brought again from the dead our Lord Jesus, that great shepherd of the sheep.",
+  "ref": "Hebrews 13:20"
+ },
+ {
+  "id": "hebrews-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "place",
+  "question": "Who send their greetings at the end of the letter?",
+  "choices": [
+   "They of Macedonia",
+   "They of Asia",
+   "They of Italy",
+   "They of Judaea"
+  ],
+  "answer": 2,
+  "explanation": "They of Italy salute you.",
+  "ref": "Hebrews 13:24"
+ },
+ {
+  "id": "hebrews-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom will God judge?",
+  "choices": [
+   "The proud and the rich",
+   "Whoremongers and adulterers",
+   "The unbelieving only",
+   "Kings and rulers"
+  ],
+  "answer": 1,
+  "explanation": "Whoremongers and adulterers God will judge.",
+  "ref": "Hebrews 13:4"
+ },
+ {
+  "id": "hebrews-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should your conversation be without, and with what should you be content?",
+  "choices": [
+   "Covetousness; such things as ye have",
+   "Anger; a little bread",
+   "Pride; a quiet life",
+   "Fear; a true friend"
+  ],
+  "answer": 0,
+  "explanation": "Let your conversation be without covetousness; and be content with such things as ye have.",
+  "ref": "Hebrews 13:5"
+ },
+ {
+  "id": "hebrews-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom are believers told to remember, and whose faith to follow?",
+  "choices": [
+   "Them which have the rule over you, who spoke the word of God",
+   "The prophets of old",
+   "The apostles who saw Christ",
+   "The martyrs of the church"
+  ],
+  "answer": 0,
+  "explanation": "Remember them which have the rule over you, who have spoken unto you the word of God: whose faith follow.",
+  "ref": "Hebrews 13:7"
+ },
+ {
+  "id": "hebrews-13-m-04",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should the heart be established with, not meats?",
+  "choices": [
+   "Law",
+   "Fasting",
+   "Offerings",
+   "Grace"
+  ],
+  "answer": 3,
+  "explanation": "It is a good thing that the heart be established with grace; not with meats.",
+  "ref": "Hebrews 13:9"
+ },
+ {
+  "id": "hebrews-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where were the bodies of the beasts burned whose blood was brought into the sanctuary?",
+  "choices": [
+   "Upon the altar",
+   "In the valley",
+   "Without the camp",
+   "At the gate of the temple"
+  ],
+  "answer": 2,
+  "explanation": "The bodies of those beasts, whose blood is brought into the sanctuary by the high priest for sin, are burned without the camp.",
+  "ref": "Hebrews 13:11"
+ },
+ {
+  "id": "hebrews-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did Jesus sanctify the people?",
+  "choices": [
+   "The water of purifying",
+   "The law",
+   "His own blood",
+   "The blood of bulls"
+  ],
+  "answer": 2,
+  "explanation": "Jesus also, that he might sanctify the people with his own blood, suffered without the gate.",
+  "ref": "Hebrews 13:12"
+ },
+ {
+  "id": "hebrews-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are believers told to bear as they go forth unto him without the camp?",
+  "choices": [
+   "His cross",
+   "His reproach",
+   "His yoke",
+   "His name"
+  ],
+  "answer": 1,
+  "explanation": "Let us go forth therefore unto him without the camp, bearing his reproach.",
+  "ref": "Hebrews 13:13"
+ },
+ {
+  "id": "hebrews-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the sacrifice of praise, according to the writer?",
+  "choices": [
+   "The fruit of our lips giving thanks to his name",
+   "A bullock without blemish",
+   "A tenth of all increase",
+   "The firstfruits of the field"
+  ],
+  "answer": 0,
+  "explanation": "The sacrifice of praise to God continually, that is, the fruit of our lips giving thanks to his name.",
+  "ref": "Hebrews 13:15"
+ },
+ {
+  "id": "hebrews-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why are believers told to obey them that have the rule over them?",
+  "choices": [
+   "They watch for your souls, as they that must give account",
+   "They are the elders of Israel",
+   "They hold the law",
+   "They bring the offerings"
+  ],
+  "answer": 0,
+  "explanation": "Obey them that have the rule over you: for they watch for your souls, as they that must give account.",
+  "ref": "Hebrews 13:17"
+ },
+ {
+  "id": "hebrews-13-m-10",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the writer say he and his companions trust they have?",
+  "choices": [
+   "A clear name",
+   "A faithful friend",
+   "A sure hope",
+   "A good conscience"
+  ],
+  "answer": 3,
+  "explanation": "Pray for us: for we trust we have a good conscience, in all things willing to live honestly.",
+  "ref": "Hebrews 13:18"
+ },
+ {
+  "id": "hebrews-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Through what blood did God bring again our Lord Jesus from the dead?",
+  "choices": [
+   "The passover lamb",
+   "The altar of burnt offering",
+   "The everlasting covenant",
+   "The mercy seat"
+  ],
+  "answer": 2,
+  "explanation": "The God of peace, that brought again from the dead our Lord Jesus, through the blood of the everlasting covenant.",
+  "ref": "Hebrews 13:20"
+ },
+ {
+  "id": "hebrews-13-m-12",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the writer ask God to make you perfect in?",
+  "choices": [
+   "Faith and patience",
+   "Love and knowledge",
+   "Every good work to do his will",
+   "All wisdom"
+  ],
+  "answer": 2,
+  "explanation": "Make you perfect in every good work to do his will, working in you that which is wellpleasing in his sight.",
+  "ref": "Hebrews 13:21"
+ },
+ {
+  "id": "hebrews-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the writer say he has written his letter?",
+  "choices": [
+   "In a long scroll",
+   "In few words",
+   "With his own hand",
+   "In the night"
+  ],
+  "answer": 1,
+  "explanation": "Suffer the word of exhortation: for I have written a letter unto you in few words.",
+  "ref": "Hebrews 13:22"
+ },
+ {
+  "id": "hebrews-13-m-14",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do some, who entertain strangers, thereby entertain?",
+  "choices": [
+   "Angels unawares",
+   "Prophets of old",
+   "The Lord in disguise",
+   "Kings"
+  ],
+  "answer": 0,
+  "explanation": "Be not forgetful to entertain strangers: for thereby some have entertained angels unawares.",
+  "ref": "Hebrews 13:2"
+ },
+ {
+  "id": "hebrews-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why are we told to remember those who suffer adversity?",
+  "choices": [
+   "We are ourselves also in the body",
+   "They are our brothers in the temple",
+   "God will reward us",
+   "They will remember us"
+  ],
+  "answer": 0,
+  "explanation": "Remember them which suffer adversity, as being yourselves also in the body.",
+  "ref": "Hebrews 13:3"
+ },
+ {
+  "id": "hebrews-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the writer say to consider about those who had the rule?",
+  "choices": [
+   "The length of their days",
+   "The wealth they left",
+   "The number of their disciples",
+   "The end of their conversation"
+  ],
+  "answer": 3,
+  "explanation": "Whose faith follow, considering the end of their conversation.",
+  "ref": "Hebrews 13:7"
+ },
+ {
+  "id": "hebrews-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What have meats done for those occupied with them?",
+  "choices": [
+   "Cleansed them",
+   "Made them holy",
+   "Not profited them",
+   "Fed the poor"
+  ],
+  "answer": 2,
+  "explanation": "Be not carried about with divers and strange doctrines... not with meats, which have not profited them that have been occupied therein.",
+  "ref": "Hebrews 13:9"
+ },
+ {
+  "id": "hebrews-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who has no right to eat of the altar the writer speaks of?",
+  "choices": [
+   "The priests of Aaron",
+   "The strangers",
+   "They which serve the tabernacle",
+   "The Levites"
+  ],
+  "answer": 2,
+  "explanation": "We have an altar, whereof they have no right to eat which serve the tabernacle.",
+  "ref": "Hebrews 13:10"
+ },
+ {
+  "id": "hebrews-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does the writer want those who rule to do it with joy, not grief?",
+  "choices": [
+   "They are weary",
+   "Grief is unprofitable for you",
+   "God commands it",
+   "The elders are old"
+  ],
+  "answer": 1,
+  "explanation": "That they may do it with joy, and not with grief: for that is unprofitable for you.",
+  "ref": "Hebrews 13:17"
+ },
+ {
+  "id": "hebrews-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does the writer beseech them to pray for him?",
+  "choices": [
+   "That he may be restored to them the sooner",
+   "That he may be freed from prison",
+   "That he may find rest",
+   "That he may visit Rome"
+  ],
+  "answer": 0,
+  "explanation": "But I beseech you the rather to do this, that I may be restored to you the sooner.",
+  "ref": "Hebrews 13:19"
+ },
+ {
+  "id": "hebrews-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the writer say he will do if Timothy comes shortly?",
+  "choices": [
+   "See you with him",
+   "Send word by him",
+   "Remain in Italy",
+   "Write again"
+  ],
+  "answer": 0,
+  "explanation": "Timothy is set at liberty; with whom, if he come shortly, I will see you.",
+  "ref": "Hebrews 13:23"
+ },
+ {
+  "id": "hebrews-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom are the readers told to salute, besides the saints?",
+  "choices": [
+   "The strangers",
+   "The prophets",
+   "The elders of Italy",
+   "All them that have the rule over you"
+  ],
+  "answer": 3,
+  "explanation": "Salute all them that have the rule over you, and all the saints.",
+  "ref": "Hebrews 13:24"
+ },
+ {
+  "id": "hebrews-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who brings the blood of the beasts into the sanctuary for sin?",
+  "choices": [
+   "The Levites",
+   "The elders",
+   "The high priest",
+   "The king"
+  ],
+  "answer": 2,
+  "explanation": "The bodies of those beasts, whose blood is brought into the sanctuary by the high priest for sin, are burned without the camp.",
+  "ref": "Hebrews 13:11"
+ },
+ {
+  "id": "hebrews-13-h-12",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God work in you through Jesus Christ?",
+  "choices": [
+   "That which is wellpleasing in his sight",
+   "Peace that passeth knowledge",
+   "A new heart",
+   "Strength for the day"
+  ],
+  "answer": 0,
+  "explanation": "Working in you that which is wellpleasing in his sight, through Jesus Christ.",
+  "ref": "Hebrews 13:21"
+ },
+ {
+  "id": "hebrews-13-h-13",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the writer say is undefiled, along with marriage being honourable?",
+  "choices": [
+   "The altar",
+   "The camp",
+   "The word",
+   "The bed"
+  ],
+  "answer": 3,
+  "explanation": "Marriage is honourable in all, and the bed undefiled.",
+  "ref": "Hebrews 13:4"
  }
 ]
