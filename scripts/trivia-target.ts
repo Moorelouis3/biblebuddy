@@ -40,6 +40,8 @@ const LIST_CHAPTERS = new Set([
   "1-chronicles:1", "1-chronicles:2", "1-chronicles:3", "1-chronicles:4", "1-chronicles:5",
   "1-chronicles:6", "1-chronicles:7", "1-chronicles:8", "1-chronicles:9",
   "ezra:2", "nehemiah:7", "nehemiah:10", "nehemiah:11", "nehemiah:12",
+  // Ezekiel's temple measurements and the tribes' land portions.
+  "ezekiel:40", "ezekiel:41", "ezekiel:42", "ezekiel:45", "ezekiel:48",
 ]);
 
 export const targetFor = (book: string, chapter: number) =>
