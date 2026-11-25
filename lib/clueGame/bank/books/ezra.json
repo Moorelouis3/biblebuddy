@@ -2464,6 +2464,454 @@
   "ref": "Ezra 6:19"
  },
  {
+  "id": "ezra-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king ordered a search to be made in the house of the rolls?",
+  "choices": [
+   "Cyrus",
+   "Darius",
+   "Artaxerxes",
+   "Nebuchadnezzar"
+  ],
+  "answer": 1,
+  "explanation": "Then Darius the king made a decree, and search was made in the house of the rolls.",
+  "ref": "Ezra 6:1"
+ },
+ {
+  "id": "ezra-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two prophets helped the elders prosper in the building?",
+  "choices": [
+   "Haggai and Zechariah",
+   "Isaiah and Jeremiah",
+   "Ezra and Nehemiah",
+   "Daniel and Ezekiel"
+  ],
+  "answer": 0,
+  "explanation": "The elders prospered through the prophesying of Haggai the prophet and Zechariah the son of Iddo.",
+  "ref": "Ezra 6:14"
+ },
+ {
+  "id": "ezra-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the people keep the dedication of the house of God?",
+  "choices": [
+   "In silence",
+   "In fasting",
+   "With joy",
+   "With war"
+  ],
+  "answer": 2,
+  "explanation": "They kept the dedication of this house of God with joy.",
+  "ref": "Ezra 6:16"
+ },
+ {
+  "id": "ezra-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long did they keep the feast of unleavened bread?",
+  "choices": [
+   "Three days",
+   "Seven days",
+   "Twelve days",
+   "Forty days"
+  ],
+  "answer": 1,
+  "explanation": "They kept the feast of unleavened bread seven days with joy.",
+  "ref": "Ezra 6:22"
+ },
+ {
+  "id": "ezra-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who were purified together before the passover was killed?",
+  "choices": [
+   "The priests and the Levites",
+   "The elders and the prophets",
+   "The singers and the porters",
+   "The children only"
+  ],
+  "answer": 0,
+  "explanation": "The priests and the Levites were purified together, all of them were pure.",
+  "ref": "Ezra 6:20"
+ },
+ {
+  "id": "ezra-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Tatnai and his companions carry out Darius's decree?",
+  "choices": [
+   "Slowly and in secret",
+   "With complaints",
+   "Speedily",
+   "Not at all"
+  ],
+  "answer": 2,
+  "explanation": "According to that which Darius the king had sent, so they did speedily.",
+  "ref": "Ezra 6:13"
+ },
+ {
+  "id": "ezra-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How high and how broad did Cyrus's decree say the house should be?",
+  "choices": [
+   "Twenty cubits",
+   "Forty cubits",
+   "Fifty cubits",
+   "Threescore cubits"
+  ],
+  "answer": 3,
+  "explanation": "The height thereof threescore cubits, and the breadth thereof threescore cubits.",
+  "ref": "Ezra 6:3"
+ },
+ {
+  "id": "ezra-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the house to be built, according to Cyrus's decree?",
+  "choices": [
+   "Three rows of great stones and a row of new timber",
+   "Only of cedar",
+   "Of brick and clay",
+   "Of gold and silver plates"
+  ],
+  "answer": 0,
+  "explanation": "With three rows of great stones, and a row of new timber.",
+  "ref": "Ezra 6:4"
+ },
+ {
+  "id": "ezra-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was to be done with the golden and silver vessels?",
+  "choices": [
+   "Melted into coins",
+   "Restored to the temple at Jerusalem",
+   "Given to the king's house",
+   "Kept in Babylon"
+  ],
+  "answer": 1,
+  "explanation": "Let the golden and silver vessels be restored, and brought again unto the temple at Jerusalem.",
+  "ref": "Ezra 6:5"
+ },
+ {
+  "id": "ezra-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the Jews to pray for as they offered sacrifices?",
+  "choices": [
+   "Rain for the land",
+   "Peace in Jerusalem",
+   "The life of the king and of his sons",
+   "The fall of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "That they may pray for the life of the king, and of his sons.",
+  "ref": "Ezra 6:10"
+ },
+ {
+  "id": "ezra-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would happen to anyone who altered Darius's word?",
+  "choices": [
+   "He was fined heavily",
+   "He was sent to Babylon",
+   "He was banished",
+   "He would be hanged on timber pulled from his house"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever shall alter this word, let timber be pulled down from his house, and being set up, let him be hanged thereon.",
+  "ref": "Ezra 6:11"
+ },
+ {
+  "id": "ezra-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many bullocks were offered at the dedication of the house?",
+  "choices": [
+   "An hundred",
+   "Two hundred",
+   "Four hundred",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "They offered an hundred bullocks, two hundred rams, four hundred lambs.",
+  "ref": "Ezra 6:17"
+ },
+ {
+  "id": "ezra-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many he goats were offered as a sin offering for all Israel?",
+  "choices": [
+   "Seven",
+   "Twelve",
+   "Forty",
+   "Two hundred"
+  ],
+  "answer": 1,
+  "explanation": "For a sin offering for all Israel, twelve he goats, according to the number of the tribes of Israel.",
+  "ref": "Ezra 6:17"
+ },
+ {
+  "id": "ezra-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to which book were the priests set in their divisions and the Levites in their courses?",
+  "choices": [
+   "The book of Jeremiah",
+   "The book of the rolls",
+   "The book of Moses",
+   "The book of the kings"
+  ],
+  "answer": 2,
+  "explanation": "They set the priests in their divisions, and the Levites in their courses, as it is written in the book of Moses.",
+  "ref": "Ezra 6:18"
+ },
+ {
+  "id": "ezra-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what day of the first month did they keep the passover?",
+  "choices": [
+   "The first",
+   "The tenth",
+   "The twenty-first",
+   "The fourteenth"
+  ],
+  "answer": 3,
+  "explanation": "The children of the captivity kept the passover upon the fourteenth day of the first month.",
+  "ref": "Ezra 6:19"
+ },
+ {
+  "id": "ezra-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the LORD turn to strengthen their hands in the work?",
+  "choices": [
+   "The heart of the king of Assyria",
+   "The heart of Cyrus",
+   "The princes of Media",
+   "The governor Tatnai"
+  ],
+  "answer": 0,
+  "explanation": "The LORD had made them joyful, and turned the heart of the king of Assyria unto them.",
+  "ref": "Ezra 6:22"
+ },
+ {
+  "id": "ezra-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Besides bullocks, rams and lambs, what else was to be given day by day for the offerings?",
+  "choices": [
+   "Honey and figs",
+   "Wheat, salt, wine and oil",
+   "Doves and spices",
+   "Barley and olives"
+  ],
+  "answer": 1,
+  "explanation": "Wheat, salt, wine, and oil, according to the appointment of the priests, let it be given them day by day.",
+  "ref": "Ezra 6:9"
+ },
+ {
+  "id": "ezra-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what day of which month was the house finished?",
+  "choices": [
+   "The third day of Adar",
+   "The fourteenth day of the first month",
+   "The first day of the seventh month",
+   "The twenty-fourth day of the sixth month"
+  ],
+  "answer": 0,
+  "explanation": "This house was finished on the third day of the month Adar.",
+  "ref": "Ezra 6:15"
+ },
+ {
+  "id": "ezra-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Darius's reign was the house finished?",
+  "choices": [
+   "The second",
+   "The sixth",
+   "The tenth",
+   "The twentieth"
+  ],
+  "answer": 1,
+  "explanation": "It was finished in the sixth year of the reign of Darius the king.",
+  "ref": "Ezra 6:15"
+ },
+ {
+  "id": "ezra-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Darius's decree to make of the house of anyone who altered the word?",
+  "choices": [
+   "A ruin",
+   "A prison",
+   "A dunghill",
+   "A temple"
+  ],
+  "answer": 2,
+  "explanation": "Let his house be made a dunghill for this.",
+  "ref": "Ezra 6:11"
+ },
+ {
+  "id": "ezra-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "According to whose appointment was the daily supply to be given?",
+  "choices": [
+   "The governor's",
+   "The king's",
+   "The scribes'",
+   "The priests at Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "According to the appointment of the priests which are at Jerusalem.",
+  "ref": "Ezra 6:9"
+ },
+ {
+  "id": "ezra-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Which king is named with Cyrus and Darius in the commandments for finishing the house?",
+  "choices": [
+   "Ahasuerus",
+   "Nebuchadnezzar",
+   "Artaxerxes",
+   "Esar-haddon"
+  ],
+  "answer": 2,
+  "explanation": "They finished it, according to the commandment of Cyrus, and Darius, and Artaxerxes king of Persia.",
+  "ref": "Ezra 6:14"
+ },
+ {
+  "id": "ezra-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whom did the Levites kill the passover?",
+  "choices": [
+   "Only the priests",
+   "The exiles, their brethren the priests, and themselves",
+   "Only the children",
+   "Only the Levites"
+  ],
+  "answer": 1,
+  "explanation": "They killed the passover for all the children of the captivity, and for their brethren the priests, and for themselves.",
+  "ref": "Ezra 6:20"
+ },
+ {
+  "id": "ezra-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had those who joined the returned exiles done?",
+  "choices": [
+   "Separated themselves from the filthiness of the heathen",
+   "Come from Babylon",
+   "Paid tribute",
+   "Been born in Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "All such as had separated themselves unto them from the filthiness of the heathen of the land, to seek the LORD.",
+  "ref": "Ezra 6:21"
+ },
+ {
+  "id": "ezra-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Where in Babylon were treasures laid up when Darius ordered the search?",
+  "choices": [
+   "The king's palace",
+   "The house of the rolls",
+   "The temple of his gods",
+   "The river house"
+  ],
+  "answer": 1,
+  "explanation": "Search was made in the house of the rolls, where the treasures were laid up in Babylon.",
+  "ref": "Ezra 6:1"
+ },
+ {
+  "id": "ezra-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Darius call on God to do to kings and people who altered or destroyed the house?",
+  "choices": [
+   "Remove them",
+   "Forgive them",
+   "Destroy them",
+   "Strengthen them"
+  ],
+  "answer": 2,
+  "explanation": "The God that hath caused his name to dwell there destroy all kings and people, that shall put to their hand to alter and to destroy this house.",
+  "ref": "Ezra 6:12"
+ },
+ {
+  "id": "ezra-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why were the expenses to be given forthwith to the elders?",
+  "choices": [
+   "So that the king would be thanked",
+   "So the work would finish by winter",
+   "So the Jews would pay tax",
+   "That they be not hindered"
+  ],
+  "answer": 3,
+  "explanation": "Forthwith expenses be given unto these men, that they be not hindered.",
+  "ref": "Ezra 6:8"
+ },
+ {
+  "id": "ezra-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Darius say his decree should be carried out?",
+  "choices": [
+   "With speed",
+   "In secret",
+   "After a year",
+   "By the priests only"
+  ],
+  "answer": 0,
+  "explanation": "I Darius have made a decree; let it be done with speed.",
+  "ref": "Ezra 6:12"
+ },
+ {
   "id": "old-ezra-7-1",
   "chapter": 7,
   "level": "beginner",
