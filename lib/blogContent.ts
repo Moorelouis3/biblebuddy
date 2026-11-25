@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "2-samuel-2-explained",
+    title: "2 Samuel 2 Explained: David Crowned, Civil War Begins",
+    description:
+      "2 Samuel 2 explained verse by verse: David is anointed king over Judah, Abner crowns Ishbosheth over Israel, and the clash at Gibeon kills Asahel.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/2-samuel-2-explained",
+    publishedAt: "2026-11-25",
+    readTime: "13 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "2 Samuel 2 Explained 📖",
+      content:
+        "David finally gets a crown.\nThe very same day, a rival king gets one too.\n\n📌 Asking God first doesn't guarantee a simple outcome.\n\n📖 Judah anoints David king over just one tribe.\n📖 Abner crowns Saul's son Ishbosheth over the rest.\n📖 A contest at Gibeon turns into a battle that kills Asahel.\n\nNew article on:\n🟢 why **David** asks God before moving at all\n🟢 the **duel** that was supposed to settle things\n🟢 the death that starts a feud **Joab** won't forget\n\nHave you ever gotten exactly what you waited for, and found it messier than you expected? 🙏",
+    },
+  },
+  {
     slug: "2-samuel-1-explained",
     title: "2 Samuel 1 Explained: The Amalekite's Lie and David's Lament",
     description:
