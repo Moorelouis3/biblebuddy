@@ -55,6 +55,23 @@ const nextConfig: NextConfig = {
       // catalogue was other people's films and series. Old shared links and
       // bookmarks land on the home page instead of a 404. Not permanent, so
       // the path is free if it ever comes back with licensed or own content.
+      // A study is read on the Plans screen. Its own address used to load the
+      // study, draw nothing, go to /dashboard, draw nothing, and go to /plan:
+      // three blank screens before "Loading plan...". The server now sends
+      // the address straight there (docs/SPEED_REPORT_2026-11-25.md, cause
+      // 3). Only uuid ids, so the named study pages under /devotionals are
+      // untouched; ?day=N rides along by itself. Not permanent, so the
+      // address is free if a study ever gets a page of its own again.
+      {
+        source: "/devotionals/:id([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})",
+        destination: "/plan?view=bible_studies&study=:id",
+        permanent: false,
+      },
+      {
+        source: "/bible-studies/:id([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})",
+        destination: "/plan?view=bible_studies&study=:id",
+        permanent: false,
+      },
       { source: "/biblebuddy-tv", destination: "/", permanent: false },
       { source: "/biblebuddy-tv/:path*", destination: "/", permanent: false },
       { source: "/study-groups", destination: "/bb-feed", permanent: false },

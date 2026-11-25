@@ -77,7 +77,11 @@ import { getYouTubeVideoId, type BibleYearAudioDay } from "../lib/bibleYearAudio
 import { getBibleYearDayContent } from "../lib/bibleYearDaysContent";
 import type { BibleYearDeepStudySection } from "../lib/bibleYearDayOneDeepStudy";
 import { BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME } from "../lib/bibleYearDayOneDeepStudy";
-import { getBibleReaderStudySections, type BibleReaderStudySection } from "../lib/bibleReaderStudyNotes";
+// Type only from the aggregator; the lookup comes from the lazy module, which
+// fetches one chapter at a time instead of bundling every note in the Bible.
+import type { BibleReaderStudySection } from "../lib/bibleReaderStudyNotes";
+import { getBibleReaderStudySections } from "../lib/bibleReaderStudyNotesLazy";
+import { useStudySectionsVersion } from "../lib/useStudySectionsVersion";
 import { clearLegacyBibleYearOfflineStorage } from "../lib/bibleYearOfflinePack";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
@@ -2296,6 +2300,10 @@ export default function DashboardJourneyExperience({
   onBibleYearProgressLoadedChange,
 }: Props) {
   const router = useRouter();
+  // Study notes arrive one chapter at a time now (lib/bibleReaderStudyNotesLazy).
+  // Reading this draws the screen again when a chapter lands, so anything
+  // below that looked a chapter up and got "not here yet" gets the real notes.
+  useStudySectionsVersion();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const analyticsDashboardPreloadStartedRef = useRef(false);
   const previousDoneByKindRef = useRef<Record<string, boolean> | null>(null);
@@ -10925,9 +10933,52 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (bibleYearXpBackfillKeyRef.current === backfillKey) return;
     bibleYearXpBackfillKeyRef.current = backfillKey;
 
-    void Promise.all(completedEntries.map(({ day, card }) => ensureBibleYearCardActionLogged(day, card, false)))
-      .then(() => onDevotionalChanged())
-      .catch((error) => console.error("[BIBLE_YEAR_PROGRESS] Could not backfill Bible in One Year task progress:", error));
+    // One question for everything already logged, then only the missing ones.
+    //
+    // This used to ask the database about every finished task separately and
+    // all at once: three requests per finished day, so a reader on day 324
+    // sent about 385 requests the moment the Plans screen opened. Measured on
+    // 2026-11-25 the browser gave up on some of them (ERR_INSUFFICIENT_
+    // RESOURCES) and took unrelated requests on the screen down with them.
+    void (async () => {
+      const actionTypes = Array.from(
+        new Set(
+          completedEntries
+            .map(({ card }) => (card === "study_notes" ? null : BIBLE_YEAR_CARD_ACTION_TYPE[card]))
+            .filter((value): value is ActionType => Boolean(value)),
+        ),
+      );
+      const alreadyLogged = new Set<string>();
+      if (actionTypes.length > 0) {
+        const PAGE = 1000;
+        for (let offset = 0; ; offset += PAGE) {
+          const { data, error } = await supabase
+            .from("master_actions")
+            .select("action_type, action_label")
+            .eq("user_id", userId)
+            .in("action_type", actionTypes)
+            .like("action_label", "Day % finished - %")
+            .order("created_at", { ascending: true })
+            .range(offset, offset + PAGE - 1);
+          if (error) throw error;
+          (data || []).forEach((row: { action_type: string; action_label: string | null }) => {
+            alreadyLogged.add(`${row.action_type}|${row.action_label}`);
+          });
+          if (!data || data.length < PAGE) break;
+        }
+      }
+
+      const missing = completedEntries.filter(({ day, card }) => {
+        const actionType = BIBLE_YEAR_CARD_ACTION_TYPE[card];
+        if (!actionType || card === "study_notes") return false;
+        return !alreadyLogged.has(`${actionType}|${getBibleYearCardActionLabel(day, card)}`);
+      });
+      // One at a time: there are normally none, and never a burst.
+      for (const { day, card } of missing) {
+        await ensureBibleYearCardActionLogged(day, card, false);
+      }
+      onDevotionalChanged();
+    })().catch((error) => console.error("[BIBLE_YEAR_PROGRESS] Could not backfill Bible in One Year task progress:", error));
   }, [bibleYearCompletedCardsByDay, onDevotionalChanged, userId]);
 
   function getBibleYearReadingTaskSubtitle(day: GenesisBibleYearDay) {

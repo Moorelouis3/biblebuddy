@@ -58,6 +58,7 @@
     "verify:popups": "tsx scripts/verify-popups.ts",
     "verify:product-health": "tsx scripts/verify-product-health.ts",
     "verify:reader-notes": "tsx scripts/verify-reader-notes-load.ts",
+    "verify:study-speed": "tsx scripts/verify-study-speed.ts",
     "verify:trivia": "tsx scripts/verify-trivia.ts",
     "verify:badges": "tsx scripts/verify-badges.ts",
     "verify:memory": "tsx scripts/verify-memory.ts",
