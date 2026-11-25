@@ -17806,5 +17806,645 @@
   "answer": 3,
   "explanation": "The chapter ends with Solomon firmly established.",
   "ref": "1 Chronicles 29:22–25"
+ },
+ {
+  "id": "1-chronicles-29-e-01",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many years did David reign over Israel?",
+  "choices": [
+   "Thirty years",
+   "Forty years",
+   "Seventy years",
+   "Fifty years"
+  ],
+  "answer": 1,
+  "explanation": "The time that he reigned over Israel was forty years.",
+  "ref": "1 Chronicles 29:27"
+ },
+ {
+  "id": "1-chronicles-29-e-02",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David reign seven years?",
+  "choices": [
+   "Jerusalem",
+   "Bethlehem",
+   "Hebron",
+   "Gilgal"
+  ],
+  "answer": 2,
+  "explanation": "Seven years reigned he in Hebron, and thirty and three years reigned he in Jerusalem.",
+  "ref": "1 Chronicles 29:27"
+ },
+ {
+  "id": "1-chronicles-29-e-03",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was made priest when Solomon was anointed chief governor?",
+  "choices": [
+   "Abiathar",
+   "Nathan",
+   "Jehiel",
+   "Zadok"
+  ],
+  "answer": 3,
+  "explanation": "They anointed Solomon unto the LORD to be the chief governor, and Zadok to be priest.",
+  "ref": "1 Chronicles 29:22"
+ },
+ {
+  "id": "1-chronicles-29-e-04",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "David was the son of whom?",
+  "choices": [
+   "Jesse",
+   "Kish",
+   "Nathan",
+   "Zadok"
+  ],
+  "answer": 0,
+  "explanation": "Thus David the son of Jesse reigned over all Israel.",
+  "ref": "1 Chronicles 29:26"
+ },
+ {
+  "id": "1-chronicles-29-e-05",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did all the congregation do after David told them to bless the LORD?",
+  "choices": [
+   "Went home in silence",
+   "Bowed their heads and worshipped the LORD and the king",
+   "Built an altar",
+   "Fled to the hills"
+  ],
+  "answer": 1,
+  "explanation": "All the congregation blessed the LORD God of their fathers, and bowed down their heads, and worshipped the LORD, and the king.",
+  "ref": "1 Chronicles 29:20"
+ },
+ {
+  "id": "1-chronicles-29-e-06",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many bullocks did they offer as burnt offerings?",
+  "choices": [
+   "Seven hundred",
+   "One hundred",
+   "A thousand",
+   "Twelve"
+  ],
+  "answer": 2,
+  "explanation": "They offered burnt offerings unto the LORD, even a thousand bullocks, a thousand rams, and a thousand lambs.",
+  "ref": "1 Chronicles 29:21"
+ },
+ {
+  "id": "1-chronicles-29-e-07",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On whose throne did Solomon sit as king instead of David?",
+  "choices": [
+   "Saul's",
+   "Jesse's",
+   "The throne of Egypt",
+   "The throne of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Solomon sat on the throne of the LORD as king instead of David his father, and prospered.",
+  "ref": "1 Chronicles 29:23"
+ },
+ {
+  "id": "1-chronicles-29-e-08",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophet's book records the acts of David, along with Samuel's and Gad's?",
+  "choices": [
+   "Nathan's",
+   "Isaiah's",
+   "Zadok's",
+   "Jehiel's"
+  ],
+  "answer": 0,
+  "explanation": "The acts of David are written in the book of Samuel the seer, and in the book of Nathan the prophet, and in the book of Gad the seer.",
+  "ref": "1 Chronicles 29:29"
+ },
+ {
+  "id": "1-chronicles-29-e-09",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David die?",
+  "choices": [
+   "In battle",
+   "In a good old age, full of days, riches, and honour",
+   "By a sickness in Hebron",
+   "In exile"
+  ],
+  "answer": 1,
+  "explanation": "He died in a good old age, full of days, riches, and honour.",
+  "ref": "1 Chronicles 29:28"
+ },
+ {
+  "id": "1-chronicles-29-e-10",
+  "chapter": 29,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who reigned in David's stead?",
+  "choices": [
+   "Adonijah",
+   "Absalom",
+   "Solomon",
+   "Joab"
+  ],
+  "answer": 2,
+  "explanation": "Solomon his son reigned in his stead.",
+  "ref": "1 Chronicles 29:28"
+ },
+ {
+  "id": "1-chronicles-29-m-01",
+  "chapter": 29,
+  "level": "medium",
+  "category": "place",
+  "question": "David gave three thousand talents of the gold of which place?",
+  "choices": [
+   "Tarshish",
+   "Sheba",
+   "Egypt",
+   "Ophir"
+  ],
+  "answer": 3,
+  "explanation": "Three thousand talents of gold, of the gold of Ophir, and seven thousand talents of refined silver.",
+  "ref": "1 Chronicles 29:4"
+ },
+ {
+  "id": "1-chronicles-29-m-02",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many talents of refined silver did David give from his own goods?",
+  "choices": [
+   "Seven thousand",
+   "Three thousand",
+   "Ten thousand",
+   "One hundred thousand"
+  ],
+  "answer": 0,
+  "explanation": "Seven thousand talents of refined silver, to overlay the walls of the houses withal.",
+  "ref": "1 Chronicles 29:4"
+ },
+ {
+  "id": "1-chronicles-29-m-03",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was David's refined silver given to overlay?",
+  "choices": [
+   "The ark",
+   "The walls of the houses",
+   "The altar",
+   "The throne"
+  ],
+  "answer": 1,
+  "explanation": "Seven thousand talents of refined silver, to overlay the walls of the houses withal.",
+  "ref": "1 Chronicles 29:4"
+ },
+ {
+  "id": "1-chronicles-29-m-04",
+  "chapter": 29,
+  "level": "medium",
+  "category": "person",
+  "question": "Who offered willingly for the service of the house of God?",
+  "choices": [
+   "Only the priests",
+   "Only the king's sons",
+   "The chief of the fathers, the princes, and the captains",
+   "Only the Levites"
+  ],
+  "answer": 2,
+  "explanation": "The chief of the fathers and princes of the tribes of Israel, and the captains of thousands and of hundreds, with the rulers of the king's work, offered willingly.",
+  "ref": "1 Chronicles 29:6"
+ },
+ {
+  "id": "1-chronicles-29-m-05",
+  "chapter": 29,
+  "level": "medium",
+  "category": "person",
+  "question": "Who rejoiced with great joy when the people offered willingly?",
+  "choices": [
+   "The priests",
+   "The princes",
+   "Solomon",
+   "David the king"
+  ],
+  "answer": 3,
+  "explanation": "The people rejoiced, for that they offered willingly; and David the king also rejoiced with great joy.",
+  "ref": "1 Chronicles 29:9"
+ },
+ {
+  "id": "1-chronicles-29-m-06",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say he and his fathers were before the LORD?",
+  "choices": [
+   "Strangers and sojourners",
+   "Kings and priests",
+   "Servants and stewards",
+   "Judges and captains"
+  ],
+  "answer": 0,
+  "explanation": "We are strangers before thee, and sojourners, as were all our fathers.",
+  "ref": "1 Chronicles 29:15"
+ },
+ {
+  "id": "1-chronicles-29-m-07",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what did David compare our days on the earth?",
+  "choices": [
+   "A flower",
+   "A shadow",
+   "A river",
+   "A vapour"
+  ],
+  "answer": 1,
+  "explanation": "Our days on the earth are as a shadow, and there is none abiding.",
+  "ref": "1 Chronicles 29:15"
+ },
+ {
+  "id": "1-chronicles-29-m-08",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD try, according to David's prayer?",
+  "choices": [
+   "The works",
+   "The tongue",
+   "The heart",
+   "The offerings"
+  ],
+  "answer": 2,
+  "explanation": "I know also, my God, that thou triest the heart, and hast pleasure in uprightness.",
+  "ref": "1 Chronicles 29:17"
+ },
+ {
+  "id": "1-chronicles-29-m-09",
+  "chapter": 29,
+  "level": "medium",
+  "category": "person",
+  "question": "For whom did David pray for a perfect heart to keep God's commandments?",
+  "choices": [
+   "The princes",
+   "Zadok",
+   "The people",
+   "Solomon his son"
+  ],
+  "answer": 3,
+  "explanation": "Give unto Solomon my son a perfect heart, to keep thy commandments, thy testimonies, and thy statutes.",
+  "ref": "1 Chronicles 29:19"
+ },
+ {
+  "id": "1-chronicles-29-m-10",
+  "chapter": 29,
+  "level": "medium",
+  "category": "person",
+  "question": "Who submitted themselves to Solomon the king?",
+  "choices": [
+   "All the princes, the mighty men, and David's sons",
+   "Only the priests",
+   "Only the captains",
+   "Only Zadok"
+  ],
+  "answer": 0,
+  "explanation": "All the princes, and the mighty men, and all the sons likewise of king David, submitted themselves unto Solomon the king.",
+  "ref": "1 Chronicles 29:24"
+ },
+ {
+  "id": "1-chronicles-29-m-11",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people do before the LORD on the day of the sacrifices?",
+  "choices": [
+   "Fasted in sackcloth",
+   "Ate and drank with great gladness",
+   "Marched around the city",
+   "Stayed silent"
+  ],
+  "answer": 1,
+  "explanation": "They did eat and drink before the LORD on that day with great gladness.",
+  "ref": "1 Chronicles 29:22"
+ },
+ {
+  "id": "1-chronicles-29-m-12",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For whom did David say the palace was?",
+  "choices": [
+   "For man",
+   "For Solomon",
+   "For the LORD God",
+   "For the priests"
+  ],
+  "answer": 2,
+  "explanation": "The palace is not for man, but for the LORD God.",
+  "ref": "1 Chronicles 29:1"
+ },
+ {
+  "id": "1-chronicles-29-m-13",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which stones did David say he had prepared in abundance?",
+  "choices": [
+   "Onyx stones",
+   "Glistering stones",
+   "Sapphire stones",
+   "Marble stones"
+  ],
+  "answer": 3,
+  "explanation": "Onyx stones, and stones to be set, glistering stones, and all manner of precious stones, and marble stones in abundance.",
+  "ref": "1 Chronicles 29:2"
+ },
+ {
+  "id": "1-chronicles-29-m-14",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what had David set his affection?",
+  "choices": [
+   "The house of his God",
+   "The throne of Israel",
+   "The conquest of nations",
+   "The ark's journey"
+  ],
+  "answer": 0,
+  "explanation": "Because I have set my affection to the house of my God, I have of mine own proper good given gold and silver.",
+  "ref": "1 Chronicles 29:3"
+ },
+ {
+  "id": "1-chronicles-29-m-15",
+  "chapter": 29,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of whose own did David say the people had given?",
+  "choices": [
+   "Their own",
+   "The king's",
+   "The LORD's",
+   "The Levites'"
+  ],
+  "answer": 2,
+  "explanation": "All things come of thee, and of thine own have we given thee.",
+  "ref": "1 Chronicles 29:14"
+ },
+ {
+  "id": "1-chronicles-29-h-01",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of iron did they give for the house of God?",
+  "choices": [
+   "Eighteen thousand",
+   "Ten thousand",
+   "Five thousand",
+   "One hundred thousand"
+  ],
+  "answer": 3,
+  "explanation": "Of brass eighteen thousand talents, and one hundred thousand talents of iron.",
+  "ref": "1 Chronicles 29:7"
+ },
+ {
+  "id": "1-chronicles-29-h-02",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of brass did they give?",
+  "choices": [
+   "Eighteen thousand",
+   "One hundred thousand",
+   "Ten thousand",
+   "Seven thousand"
+  ],
+  "answer": 0,
+  "explanation": "Of brass eighteen thousand talents.",
+  "ref": "1 Chronicles 29:7"
+ },
+ {
+  "id": "1-chronicles-29-h-03",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of silver did they give?",
+  "choices": [
+   "Seven thousand",
+   "Ten thousand",
+   "Eighteen thousand",
+   "Three thousand"
+  ],
+  "answer": 1,
+  "explanation": "And of silver ten thousand talents.",
+  "ref": "1 Chronicles 29:7"
+ },
+ {
+  "id": "1-chronicles-29-h-04",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of gold did they give, besides ten thousand drams?",
+  "choices": [
+   "Three thousand",
+   "Seven thousand",
+   "Five thousand",
+   "Ten thousand"
+  ],
+  "answer": 2,
+  "explanation": "They gave of gold five thousand talents and ten thousand drams.",
+  "ref": "1 Chronicles 29:7"
+ },
+ {
+  "id": "1-chronicles-29-h-05",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "By whose hand were the precious stones given to the treasure of the house of the LORD?",
+  "choices": [
+   "Zadok",
+   "Azmaveth",
+   "Shelomith",
+   "Jehiel the Gershonite"
+  ],
+  "answer": 3,
+  "explanation": "They gave them to the treasure of the house of the LORD, by the hand of Jehiel the Gershonite.",
+  "ref": "1 Chronicles 29:8"
+ },
+ {
+  "id": "1-chronicles-29-h-06",
+  "chapter": 29,
+  "level": "hard",
+  "category": "person",
+  "question": "Which seer's book is named alongside the books of Samuel and Nathan?",
+  "choices": [
+   "Isaiah's",
+   "Zadok's",
+   "Jehiel's",
+   "Gad's"
+  ],
+  "answer": 3,
+  "explanation": "They are written in the book of Samuel the seer, and in the book of Nathan the prophet, and in the book of Gad the seer.",
+  "ref": "1 Chronicles 29:29"
+ },
+ {
+  "id": "1-chronicles-29-h-07",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say come of the LORD, together with honour?",
+  "choices": [
+   "Wisdom",
+   "Riches",
+   "Victory",
+   "Peace"
+  ],
+  "answer": 1,
+  "explanation": "Both riches and honour come of thee, and thou reignest over all.",
+  "ref": "1 Chronicles 29:12"
+ },
+ {
+  "id": "1-chronicles-29-h-08",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did David say the LORD has pleasure?",
+  "choices": [
+   "Uprightness",
+   "Sacrifice",
+   "Silver and gold",
+   "Great houses"
+  ],
+  "answer": 0,
+  "explanation": "I know also, my God, that thou triest the heart, and hast pleasure in uprightness.",
+  "ref": "1 Chronicles 29:17"
+ },
+ {
+  "id": "1-chronicles-29-h-09",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which three fathers did David name when he prayed for the people's hearts?",
+  "choices": [
+   "Noah, Shem and Abram",
+   "Abraham, Isaac and Israel",
+   "Moses, Aaron and Joshua",
+   "Jesse, Obed and Boaz"
+  ],
+  "answer": 1,
+  "explanation": "O LORD God of Abraham, Isaac, and of Israel, our fathers, keep this for ever.",
+  "ref": "1 Chronicles 29:18"
+ },
+ {
+  "id": "1-chronicles-29-h-10",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What three things did David pray Solomon would keep?",
+  "choices": [
+   "Thy gates, thy walls and thy towers",
+   "Thy flocks, thy herds and thy fields",
+   "Thy commandments, thy testimonies and thy statutes",
+   "Thy sabbaths, thy feasts and thy altars"
+  ],
+  "answer": 2,
+  "explanation": "Give unto Solomon my son a perfect heart, to keep thy commandments, thy testimonies, and thy statutes.",
+  "ref": "1 Chronicles 29:19"
+ },
+ {
+  "id": "1-chronicles-29-h-11",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did David reign in Jerusalem?",
+  "choices": [
+   "Seven",
+   "Forty",
+   "Twenty-three",
+   "Thirty-three"
+  ],
+  "answer": 3,
+  "explanation": "Seven years reigned he in Hebron, and thirty and three years reigned he in Jerusalem.",
+  "ref": "1 Chronicles 29:27"
+ },
+ {
+  "id": "1-chronicles-29-h-12",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did they offer the sacrifices and burnt offerings?",
+  "choices": [
+   "On the morrow after that day",
+   "On the sabbath",
+   "At the new moon",
+   "Seven days later"
+  ],
+  "answer": 0,
+  "explanation": "They offered burnt offerings unto the LORD, on the morrow after that day.",
+  "ref": "1 Chronicles 29:21"
+ },
+ {
+  "id": "1-chronicles-29-h-13",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD bestow on Solomon that had not been on any king before him in Israel?",
+  "choices": [
+   "A great army",
+   "Royal majesty",
+   "Many wives",
+   "A golden throne"
+  ],
+  "answer": 1,
+  "explanation": "The LORD magnified Solomon exceedingly, and bestowed upon him such royal majesty as had not been on any king before him in Israel.",
+  "ref": "1 Chronicles 29:25"
+ },
+ {
+  "id": "1-chronicles-29-h-14",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did those who had precious stones do with them?",
+  "choices": [
+   "Kept them for their sons",
+   "Sold them for silver",
+   "Gave them to the treasure of the house of the LORD",
+   "Buried them in the field"
+  ],
+  "answer": 2,
+  "explanation": "They with whom precious stones were found gave them to the treasure of the house of the LORD.",
+  "ref": "1 Chronicles 29:8"
+ },
+ {
+  "id": "1-chronicles-29-h-15",
+  "chapter": 29,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As what did David say the LORD is exalted?",
+  "choices": [
+   "Judge over all the earth",
+   "Head above all",
+   "King of the nations",
+   "Shepherd of Israel"
+  ],
+  "answer": 1,
+  "explanation": "Thine is the kingdom, O LORD, and thou art exalted as head above all.",
+  "ref": "1 Chronicles 29:11"
  }
 ]
