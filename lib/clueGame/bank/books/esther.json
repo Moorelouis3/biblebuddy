@@ -3344,6 +3344,646 @@
   "ref": "Esther 9:24–26"
  },
  {
+  "id": "esther-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Jews do in their cities on the day the enemy hoped to have power?",
+  "choices": [
+   "Gathered together against those who sought their hurt",
+   "Fled to the mountains",
+   "Fasted in sackcloth",
+   "Marched on Shushan"
+  ],
+  "answer": 0,
+  "explanation": "The Jews gathered themselves together in their cities to lay hand on such as sought their hurt: and no man could withstand them.",
+  "ref": "Esther 9:2"
+ },
+ {
+  "id": "esther-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who helped the Jews because the fear of Mordecai fell on them?",
+  "choices": [
+   "The rulers, deputies and officers of the king",
+   "The priests and the Levites",
+   "Haman's household",
+   "The queen's maidens"
+  ],
+  "answer": 0,
+  "explanation": "All the rulers of the provinces, and the lieutenants, and the deputies, and officers of the king, helped the Jews.",
+  "ref": "Esther 9:3"
+ },
+ {
+  "id": "esther-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men did the Jews slay in Shushan the palace on the first day?",
+  "choices": [
+   "Five hundred",
+   "Three hundred",
+   "Seventy-five thousand",
+   "Ten thousand"
+  ],
+  "answer": 0,
+  "explanation": "In Shushan the palace the Jews slew and destroyed five hundred men.",
+  "ref": "Esther 9:6"
+ },
+ {
+  "id": "esther-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Esther ask the king to have done with Haman's ten sons?",
+  "choices": [
+   "That they be hanged on the gallows",
+   "That they be sent away",
+   "That they be spared",
+   "That they be made servants"
+  ],
+  "answer": 0,
+  "explanation": "Esther said, let Haman's ten sons be hanged upon the gallows, and they hanged Haman's ten sons.",
+  "ref": "Esther 9:13"
+ },
+ {
+  "id": "esther-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many of their foes did the Jews in the king's provinces slay?",
+  "choices": [
+   "Seventy-five thousand",
+   "Five hundred",
+   "Three hundred",
+   "Ten thousand"
+  ],
+  "answer": 0,
+  "explanation": "The other Jews in the provinces stood for their lives and slew of their foes seventy and five thousand.",
+  "ref": "Esther 9:16"
+ },
+ {
+  "id": "esther-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who wrote letters telling the Jews to keep days of Purim every year?",
+  "choices": [
+   "Mordecai",
+   "Haman",
+   "Harbonah",
+   "Hegai"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai wrote these things, and sent letters unto all the Jews that were in all the provinces.",
+  "ref": "Esther 9:20"
+ },
+ {
+  "id": "esther-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To which Jews did Mordecai send his letters?",
+  "choices": [
+   "All the Jews, near and far",
+   "Only those in Shushan",
+   "Only those in Jerusalem",
+   "Only the leaders"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai sent letters unto all the Jews in all the provinces of Ahasuerus, both nigh and far.",
+  "ref": "Esther 9:20"
+ },
+ {
+  "id": "esther-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "What was said of Mordecai in the king's house?",
+  "choices": [
+   "He was great and grew greater",
+   "He was feared and hated",
+   "He was forgotten",
+   "He was sent away"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai was great in the king's house, and his fame went out throughout all the provinces.",
+  "ref": "Esther 9:4"
+ },
+ {
+  "id": "esther-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who wrote with Mordecai to confirm the second letter of Purim?",
+  "choices": [
+   "Esther the queen",
+   "Zeresh",
+   "The king's scribes",
+   "Vashti"
+  ],
+  "answer": 0,
+  "explanation": "Esther the queen, and Mordecai the Jew, wrote with all authority to confirm this second letter of Purim.",
+  "ref": "Esther 9:29"
+ },
+ {
+  "id": "esther-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Jews in the provinces do after they rested from their enemies?",
+  "choices": [
+   "Made it a day of feasting and gladness",
+   "Went up to Jerusalem",
+   "Fasted and wept",
+   "Built a wall"
+  ],
+  "answer": 0,
+  "explanation": "On the fourteenth day they rested, and made it a day of feasting and gladness.",
+  "ref": "Esther 9:17"
+ },
+ {
+  "id": "esther-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king ask Esther after hearing how many were slain in Shushan?",
+  "choices": [
+   "What had been done in the other provinces",
+   "Who had begun the fighting",
+   "Where Haman's sons were",
+   "Why Mordecai was silent"
+  ],
+  "answer": 0,
+  "explanation": "The king said, what have they done in the rest of the king's provinces? now what is thy petition?",
+  "ref": "Esther 9:12"
+ },
+ {
+  "id": "esther-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Esther ask for the Jews in Shushan after the first day?",
+  "choices": [
+   "To do the next day also as the decree",
+   "To leave the city",
+   "To rest from all fighting",
+   "To take the spoil"
+  ],
+  "answer": 0,
+  "explanation": "Esther said, let it be granted to the Jews in Shushan to do to morrow also according unto this day's decree.",
+  "ref": "Esther 9:13"
+ },
+ {
+  "id": "esther-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many men did the Jews of Shushan slay on the fourteenth day?",
+  "choices": [
+   "Three hundred",
+   "Five hundred",
+   "Seventy-five thousand",
+   "One hundred"
+  ],
+  "answer": 0,
+  "explanation": "The Jews in Shushan gathered themselves on the fourteenth day also, and slew three hundred men at Shushan.",
+  "ref": "Esther 9:15"
+ },
+ {
+  "id": "esther-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Which Jews made the fourteenth of Adar a day of gladness and sending portions?",
+  "choices": [
+   "The Jews of the unwalled towns",
+   "The Jews of Shushan",
+   "The captains of the army",
+   "The priests"
+  ],
+  "answer": 0,
+  "explanation": "The Jews of the villages, that dwelt in the unwalled towns, made the fourteenth day a day of gladness and feasting.",
+  "ref": "Esther 9:19"
+ },
+ {
+  "id": "esther-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the month Adar turn from and into for the Jews?",
+  "choices": [
+   "From sorrow to joy",
+   "From war to peace",
+   "From fasting to feast",
+   "From exile to home"
+  ],
+  "answer": 0,
+  "explanation": "The month was turned unto them from sorrow to joy, and from mourning into a good day.",
+  "ref": "Esther 9:22"
+ },
+ {
+  "id": "esther-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Haman cast Pur, that is the lot?",
+  "choices": [
+   "To consume and destroy the Jews",
+   "To choose a king's wife",
+   "To pick a day for a feast",
+   "To divide the spoil"
+  ],
+  "answer": 0,
+  "explanation": "Haman had cast Pur, that is, the lot, to consume them, and to destroy them.",
+  "ref": "Esther 9:24"
+ },
+ {
+  "id": "esther-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long were the days of Purim to be remembered?",
+  "choices": [
+   "Throughout every generation",
+   "For seven years",
+   "Until the king died",
+   "Until Mordecai died"
+  ],
+  "answer": 0,
+  "explanation": "These days should be remembered and kept throughout every generation, every family, every province, and every city.",
+  "ref": "Esther 9:28"
+ },
+ {
+  "id": "esther-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Mordecai's letters say the Jews should do on those days?",
+  "choices": [
+   "Feast, send portions and give gifts to the poor",
+   "Fast and pray",
+   "Rebuild the temple",
+   "Offer a lamb"
+  ],
+  "answer": 0,
+  "explanation": "They were to be days of feasting and joy, and of sending portions one to another, and gifts to the poor.",
+  "ref": "Esther 9:22"
+ },
+ {
+  "id": "esther-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two days of Adar were the Jews to keep every year?",
+  "choices": [
+   "The fourteenth and the fifteenth",
+   "The first and the second",
+   "The seventh and the eighth",
+   "The thirteenth and the fourteenth"
+  ],
+  "answer": 0,
+  "explanation": "Mordecai said they should keep the fourteenth day of the month Adar, and the fifteenth day of the same, yearly.",
+  "ref": "Esther 9:21"
+ },
+ {
+  "id": "esther-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Esther and Mordecai confirm in the second letter of Purim?",
+  "choices": [
+   "The days of Purim in their appointed times",
+   "A new law for the king",
+   "A treaty with Persia",
+   "The rebuilding of Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "They wrote to confirm these days of Purim in their times appointed.",
+  "ref": "Esther 9:31"
+ },
+ {
+  "id": "esther-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day of Adar did the king's decree come to be carried out?",
+  "choices": [
+   "The thirteenth day",
+   "The first day",
+   "The seventh day",
+   "The twenty-third day"
+  ],
+  "answer": 0,
+  "explanation": "In the twelfth month, Adar, on the thirteenth day, the king's commandment and his decree drew near to be put in execution.",
+  "ref": "Esther 9:1"
+ },
+ {
+  "id": "esther-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was brought before the king on the day of fighting in Shushan?",
+  "choices": [
+   "The number of those slain",
+   "A list of the Jews",
+   "Haman's seal",
+   "A letter from Mordecai"
+  ],
+  "answer": 0,
+  "explanation": "On that day the number of those that were slain in Shushan the palace was brought before the king.",
+  "ref": "Esther 9:11"
+ },
+ {
+  "id": "esther-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day did the Jews of Shushan rest and feast?",
+  "choices": [
+   "The fifteenth day",
+   "The thirteenth day",
+   "The fourteenth day",
+   "The sixteenth day"
+  ],
+  "answer": 0,
+  "explanation": "The Jews at Shushan assembled on the thirteenth and fourteenth, and on the fifteenth day they rested, and made it a day of feasting and gladness.",
+  "ref": "Esther 9:18"
+ },
+ {
+  "id": "esther-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were Haman's ten sons slain?",
+  "choices": [
+   "In Shushan the palace",
+   "In the king's gate",
+   "In Haman's house",
+   "In the unwalled towns"
+  ],
+  "answer": 0,
+  "explanation": "In Shushan the palace the Jews slew five hundred men, and the ten sons of Haman.",
+  "ref": "Esther 9:6–10"
+ },
+ {
+  "id": "esther-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Haman was called the enemy of the Jews and a man of what people?",
+  "choices": [
+   "An Agagite",
+   "A Persian",
+   "A Babylonian",
+   "An Amalekite king"
+  ],
+  "answer": 0,
+  "explanation": "Haman the son of Hammedatha, the Agagite, the enemy of all the Jews, had devised against the Jews to destroy them.",
+  "ref": "Esther 9:24"
+ },
+ {
+  "id": "esther-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Which of these was one of Haman's ten sons?",
+  "choices": [
+   "Dalphon",
+   "Harbonah",
+   "Bigthan",
+   "Memucan"
+  ],
+  "answer": 0,
+  "explanation": "The ten sons of Haman included Parshandatha, and Dalphon, and Aspatha.",
+  "ref": "Esther 9:7"
+ },
+ {
+  "id": "esther-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Esther the queen was the daughter of whom?",
+  "choices": [
+   "Abihail",
+   "Hammedatha",
+   "Parshandatha",
+   "Teresh"
+  ],
+  "answer": 0,
+  "explanation": "Esther the queen, the daughter of Abihail, and Mordecai the Jew, wrote to confirm this second letter of Purim.",
+  "ref": "Esther 9:29"
+ },
+ {
+  "id": "esther-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Besides the Jews' own seed, who else took the two days upon themselves?",
+  "choices": [
+   "All who joined themselves to them",
+   "The queen's servants only",
+   "The rulers of the provinces",
+   "Only the priests"
+  ],
+  "answer": 0,
+  "explanation": "The Jews ordained for their seed, and upon all such as joined themselves unto them, that they would keep these two days.",
+  "ref": "Esther 9:27"
+ },
+ {
+  "id": "esther-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the decree of Esther about Purim written?",
+  "choices": [
+   "In the book",
+   "On the city gate",
+   "On a tablet of stone",
+   "In the king's treasury"
+  ],
+  "answer": 0,
+  "explanation": "The decree of Esther confirmed these matters of Purim; and it was written in the book.",
+  "ref": "Esther 9:32"
+ },
+ {
+  "id": "esther-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To how many provinces were the letters of Purim sent?",
+  "choices": [
+   "A hundred and twenty-seven",
+   "Seventy-five",
+   "A hundred and twenty",
+   "Two hundred"
+  ],
+  "answer": 0,
+  "explanation": "He sent the letters unto all the Jews, to the hundred twenty and seven provinces of the kingdom of Ahasuerus.",
+  "ref": "Esther 9:30"
+ },
+ {
+  "id": "esther-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what words did the letters go out to the Jews?",
+  "choices": [
+   "Words of peace and truth",
+   "Words of war and vengeance",
+   "Words of fasting and prayer",
+   "Words of law and judgement"
+  ],
+  "answer": 0,
+  "explanation": "He sent the letters with words of peace and truth.",
+  "ref": "Esther 9:30"
+ },
+ {
+  "id": "esther-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why could no man withstand the Jews on that day?",
+  "choices": [
+   "The fear of them fell on all people",
+   "The king's army fought for them",
+   "They had more weapons",
+   "Haman was dead"
+  ],
+  "answer": 0,
+  "explanation": "No man could withstand them; for the fear of them fell upon all people.",
+  "ref": "Esther 9:2"
+ },
+ {
+  "id": "esther-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Mordecai's letter of Purim, sent with Esther's, called?",
+  "choices": [
+   "The second letter",
+   "The first letter",
+   "The final letter",
+   "The royal letter"
+  ],
+  "answer": 0,
+  "explanation": "Esther and Mordecai wrote to confirm this second letter of Purim.",
+  "ref": "Esther 9:29"
+ },
+ {
+  "id": "esther-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What should never perish from the Jews' seed?",
+  "choices": [
+   "The memorial of the days of Purim",
+   "The name of Haman",
+   "The book of the law",
+   "The ring of the king"
+  ],
+  "answer": 0,
+  "explanation": "These days of Purim should not fail from among the Jews, nor the memorial of them perish from their seed.",
+  "ref": "Esther 9:28"
+ },
+ {
+  "id": "esther-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On which days did the Jews of Shushan assemble before they rested?",
+  "choices": [
+   "The thirteenth and the fourteenth",
+   "The fourteenth and fifteenth",
+   "The first and the second",
+   "Only the fifteenth"
+  ],
+  "answer": 0,
+  "explanation": "The Jews that were at Shushan assembled on the thirteenth day and on the fourteenth, and on the fifteenth they rested.",
+  "ref": "Esther 9:18"
+ },
+ {
+  "id": "esther-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "person",
+  "question": "Haman the Agagite was the son of whom?",
+  "choices": [
+   "Hammedatha",
+   "Abihail",
+   "Aridatha",
+   "Parmashta"
+  ],
+  "answer": 0,
+  "explanation": "Haman the son of Hammedatha, the Agagite, the enemy of all the Jews.",
+  "ref": "Esther 9:24"
+ },
+ {
+  "id": "esther-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Jews smite their enemies with?",
+  "choices": [
+   "The stroke of the sword",
+   "Spears and arrows",
+   "Stones and clubs",
+   "Fire and flood"
+  ],
+  "answer": 0,
+  "explanation": "Thus the Jews smote all their enemies with the stroke of the sword, and slaughter, and destruction.",
+  "ref": "Esther 9:5"
+ },
+ {
+  "id": "esther-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king's letters say should return upon Haman's own head?",
+  "choices": [
+   "His wicked device",
+   "His riches",
+   "His children",
+   "His office"
+  ],
+  "answer": 0,
+  "explanation": "The king commanded by letters that his wicked device, which he devised against the Jews, should return upon his own head.",
+  "ref": "Esther 9:25"
+ },
+ {
+  "id": "esther-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Esther and Mordecai write to confirm the letter of Purim?",
+  "choices": [
+   "With all authority",
+   "In secret",
+   "With the king's army",
+   "In fear"
+  ],
+  "answer": 0,
+  "explanation": "Esther the queen and Mordecai the Jew wrote with all authority, to confirm this second letter of Purim.",
+  "ref": "Esther 9:29"
+ },
+ {
+  "id": "esther-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Along with the days of Purim, what matters did the letter confirm?",
+  "choices": [
+   "The fastings and their cry",
+   "The feasts and the offerings",
+   "The temple and its gifts",
+   "The walls and the gates"
+  ],
+  "answer": 0,
+  "explanation": "Esther and Mordecai confirmed these days of Purim, the matters of the fastings and their cry.",
+  "ref": "Esther 9:31"
+ },
+ {
   "id": "old-esther-10-1",
   "chapter": 10,
   "level": "beginner",
