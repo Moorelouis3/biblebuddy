@@ -18195,17 +18195,17 @@
   "id": "2-chronicles-34-h-15",
   "chapter": 34,
   "level": "hard",
-  "category": "person",
-  "question": "Whom did the high priest Hilkiah meet when Shaphan and the others came to him?",
+  "category": "keyword",
+  "question": "What did the workmen floor, which the kings of Judah had destroyed?",
   "choices": [
-   "The workmen",
-   "The scribes",
-   "The porters",
-   "The money was delivered to Hilkiah the high priest"
+   "The houses",
+   "The courts",
+   "The porches",
+   "The gates"
   ],
-  "answer": 3,
-  "explanation": "When they came to Hilkiah the high priest, they delivered the money.",
-  "ref": "2 Chronicles 34:9"
+  "answer": 0,
+  "explanation": "They bought timber to floor the houses which the kings of Judah had destroyed.",
+  "ref": "2 Chronicles 34:11"
  },
  {
   "id": "old-2-chronicles-35-1",
@@ -18243,16 +18243,16 @@
   "id": "old-2-chronicles-35-3",
   "chapter": 35,
   "level": "beginner",
-  "category": "keyword",
-  "question": "Which Egyptian ruler did Josiah go out against at Megiddo?",
+  "category": "person",
+  "question": "Which king of Egypt did Josiah go out against?",
   "choices": [
-   "Pharaoh-necho",
+   "Necho",
    "Shishak",
    "Hophra",
-   "Ramses"
+   "So"
   ],
   "answer": 0,
-  "explanation": "Josiah confronted Pharaoh-necho at Megiddo.",
+  "explanation": "Necho king of Egypt came up to fight against Charchemish by Euphrates: and Josiah went out against him.",
   "ref": "2 Chronicles 35:20"
  },
  {
@@ -18286,6 +18286,598 @@
   "answer": 2,
   "explanation": "Josiah was wounded by archers and died.",
   "ref": "2 Chronicles 35:23–24"
+ },
+ {
+  "id": "2-chronicles-35-e-01",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who set the priests in their charges and encouraged them in the service?",
+  "choices": [
+   "Josiah",
+   "Hilkiah",
+   "Jeremiah",
+   "Necho"
+  ],
+  "answer": 0,
+  "explanation": "Josiah set the priests in their charges, and encouraged them to the service of the house of the LORD.",
+  "ref": "2 Chronicles 35:2"
+ },
+ {
+  "id": "2-chronicles-35-e-02",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Josiah tell the Levites to put in the house Solomon built?",
+  "choices": [
+   "The golden altar",
+   "The holy ark",
+   "The brazen sea",
+   "The shewbread table"
+  ],
+  "answer": 1,
+  "explanation": "Put the holy ark in the house which Solomon the son of David king of Israel did build.",
+  "ref": "2 Chronicles 35:3"
+ },
+ {
+  "id": "2-chronicles-35-e-03",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Josiah give the people for the passover offerings?",
+  "choices": [
+   "Silver and gold",
+   "Oil and wine",
+   "Lambs, kids and bullocks",
+   "Doves and pigeons"
+  ],
+  "answer": 2,
+  "explanation": "Josiah gave to the people, of the flock, lambs and kids, and three thousand bullocks.",
+  "ref": "2 Chronicles 35:7"
+ },
+ {
+  "id": "2-chronicles-35-e-04",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which valley did Josiah come to fight Necho?",
+  "choices": [
+   "The valley of Hinnom",
+   "The valley of Elah",
+   "The valley of Jezreel",
+   "The valley of Megiddo"
+  ],
+  "answer": 3,
+  "explanation": "He came to fight in the valley of Megiddo.",
+  "ref": "2 Chronicles 35:22"
+ },
+ {
+  "id": "2-chronicles-35-e-05",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "place",
+  "question": "Necho came up to fight against Charchemish by which river?",
+  "choices": [
+   "Euphrates",
+   "Jordan",
+   "Nile",
+   "Kidron"
+  ],
+  "answer": 0,
+  "explanation": "Necho king of Egypt came up to fight against Charchemish by Euphrates.",
+  "ref": "2 Chronicles 35:20"
+ },
+ {
+  "id": "2-chronicles-35-e-06",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who lamented for Josiah?",
+  "choices": [
+   "Isaiah",
+   "Jeremiah",
+   "Huldah",
+   "Hilkiah"
+  ],
+  "answer": 1,
+  "explanation": "Jeremiah lamented for Josiah.",
+  "ref": "2 Chronicles 35:25"
+ },
+ {
+  "id": "2-chronicles-35-e-07",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was Josiah buried?",
+  "choices": [
+   "In the valley of Megiddo",
+   "In his own house",
+   "In one of the sepulchres of his fathers",
+   "In the garden of Uzza"
+  ],
+  "answer": 2,
+  "explanation": "He died, and was buried in one of the sepulchres of his fathers.",
+  "ref": "2 Chronicles 35:24"
+ },
+ {
+  "id": "2-chronicles-35-e-08",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who mourned for Josiah?",
+  "choices": [
+   "Only the priests",
+   "The king of Egypt",
+   "The Levites alone",
+   "All Judah and Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "All Judah and Jerusalem mourned for Josiah.",
+  "ref": "2 Chronicles 35:24"
+ },
+ {
+  "id": "2-chronicles-35-e-09",
+  "chapter": 35,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many days did Israel keep the feast of unleavened bread?",
+  "choices": [
+   "Seven days",
+   "Three days",
+   "Fourteen days",
+   "One day"
+  ],
+  "answer": 0,
+  "explanation": "The children of Israel kept the passover at that time, and the feast of unleavened bread seven days.",
+  "ref": "2 Chronicles 35:17"
+ },
+ {
+  "id": "2-chronicles-35-m-01",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On which day of the first month did they kill the passover?",
+  "choices": [
+   "The first day",
+   "The fourteenth day",
+   "The tenth day",
+   "The twenty-first day"
+  ],
+  "answer": 1,
+  "explanation": "They killed the passover on the fourteenth day of the first month.",
+  "ref": "2 Chronicles 35:1"
+ },
+ {
+  "id": "2-chronicles-35-m-02",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Josiah say the ark would not be on the Levites' shoulders?",
+  "choices": [
+   "A sign",
+   "A treasure",
+   "A burden",
+   "A shame"
+  ],
+  "answer": 2,
+  "explanation": "Put the holy ark in the house; it shall not be a burden upon your shoulders.",
+  "ref": "2 Chronicles 35:3"
+ },
+ {
+  "id": "2-chronicles-35-m-03",
+  "chapter": 35,
+  "level": "medium",
+  "category": "person",
+  "question": "According to whose writing were the Levites to prepare themselves by their courses?",
+  "choices": [
+   "Moses and Aaron",
+   "Samuel and Nathan",
+   "Hezekiah and Isaiah",
+   "David and Solomon"
+  ],
+  "answer": 3,
+  "explanation": "According to the writing of David king of Israel, and according to the writing of Solomon his son.",
+  "ref": "2 Chronicles 35:4"
+ },
+ {
+  "id": "2-chronicles-35-m-04",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many bullocks did Josiah give for the passover offerings?",
+  "choices": [
+   "Three thousand",
+   "Three hundred",
+   "Five hundred",
+   "Thirty thousand"
+  ],
+  "answer": 0,
+  "explanation": "Josiah gave thirty thousand lambs and kids, and three thousand bullocks: these were of the king's substance.",
+  "ref": "2 Chronicles 35:7"
+ },
+ {
+  "id": "2-chronicles-35-m-05",
+  "chapter": 35,
+  "level": "medium",
+  "category": "person",
+  "question": "Who gave willingly to the people, priests and Levites besides the king?",
+  "choices": [
+   "The strangers",
+   "His princes",
+   "The singers",
+   "The porters"
+  ],
+  "answer": 1,
+  "explanation": "His princes gave willingly unto the people, to the priests, and to the Levites.",
+  "ref": "2 Chronicles 35:8"
+ },
+ {
+  "id": "2-chronicles-35-m-06",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did they prepare the passover itself?",
+  "choices": [
+   "They boiled it in pots",
+   "They baked it in ovens",
+   "They roasted it with fire",
+   "They ate it raw"
+  ],
+  "answer": 2,
+  "explanation": "They roasted the passover with fire according to the ordinance.",
+  "ref": "2 Chronicles 35:13"
+ },
+ {
+  "id": "2-chronicles-35-m-07",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what did they boil the other holy offerings?",
+  "choices": [
+   "Brazen basins",
+   "Golden vessels",
+   "Earthen jars only",
+   "Pots, caldrons and pans"
+  ],
+  "answer": 3,
+  "explanation": "The other holy offerings sod they in pots, and in caldrons, and in pans.",
+  "ref": "2 Chronicles 35:13"
+ },
+ {
+  "id": "2-chronicles-35-m-08",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Levites prepare for the priests as well as for themselves?",
+  "choices": [
+   "The priests were busied offering until night",
+   "The priests were not sanctified",
+   "The priests were absent",
+   "The king commanded the priests to rest"
+  ],
+  "answer": 0,
+  "explanation": "The priests the sons of Aaron were busied in offering of burnt offerings and the fat until night.",
+  "ref": "2 Chronicles 35:14"
+ },
+ {
+  "id": "2-chronicles-35-m-09",
+  "chapter": 35,
+  "level": "medium",
+  "category": "person",
+  "question": "Who were in their place according to the commandment of David?",
+  "choices": [
+   "The princes",
+   "The singers the sons of Asaph",
+   "The elders",
+   "The captains"
+  ],
+  "answer": 1,
+  "explanation": "The singers the sons of Asaph were in their place, according to the commandment of David.",
+  "ref": "2 Chronicles 35:15"
+ },
+ {
+  "id": "2-chronicles-35-m-10",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Necho say was the reason he came, not against Josiah?",
+  "choices": [
+   "To take Jerusalem",
+   "To gather tribute",
+   "Against the house wherewith he had war",
+   "To seek the ark"
+  ],
+  "answer": 2,
+  "explanation": "I come not against thee this day, but against the house wherewith I have war.",
+  "ref": "2 Chronicles 35:21"
+ },
+ {
+  "id": "2-chronicles-35-m-11",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Josiah do to himself before fighting Necho?",
+  "choices": [
+   "Anointed himself",
+   "Fasted",
+   "Put on sackcloth",
+   "Disguised himself"
+  ],
+  "answer": 3,
+  "explanation": "Josiah would not turn his face from him, but disguised himself, that he might fight with him.",
+  "ref": "2 Chronicles 35:22"
+ },
+ {
+  "id": "2-chronicles-35-m-12",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Josiah say to his servants when the archers shot him?",
+  "choices": [
+   "Have me away; I am sore wounded",
+   "Fight on; the LORD is with us",
+   "Take me to Jeremiah",
+   "Leave me in the field"
+  ],
+  "answer": 0,
+  "explanation": "The king said to his servants, Have me away; for I am sore wounded.",
+  "ref": "2 Chronicles 35:23"
+ },
+ {
+  "id": "2-chronicles-35-m-13",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into what did his servants take Josiah out of his chariot?",
+  "choices": [
+   "A litter",
+   "The second chariot he had",
+   "A cart of oxen",
+   "The king's horse"
+  ],
+  "answer": 1,
+  "explanation": "His servants took him out of that chariot, and put him in the second chariot that he had.",
+  "ref": "2 Chronicles 35:24"
+ },
+ {
+  "id": "2-chronicles-35-m-14",
+  "chapter": 35,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had not been kept like Josiah's passover since the days of Samuel?",
+  "choices": [
+   "The feast of tabernacles",
+   "The sabbath year",
+   "Any passover in Israel",
+   "The day of atonement"
+  ],
+  "answer": 2,
+  "explanation": "There was no passover like to that kept in Israel from the days of Samuel the prophet.",
+  "ref": "2 Chronicles 35:18"
+ },
+ {
+  "id": "2-chronicles-35-h-01",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many small cattle did Hilkiah, Zechariah and Jehiel give to the priests?",
+  "choices": [
+   "Five thousand",
+   "Three thousand",
+   "Six hundred",
+   "Two thousand and six hundred"
+  ],
+  "answer": 3,
+  "explanation": "Hilkiah and Zechariah and Jehiel gave unto the priests two thousand and six hundred small cattle, and three hundred oxen.",
+  "ref": "2 Chronicles 35:8"
+ },
+ {
+  "id": "2-chronicles-35-h-02",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many oxen did the chief of the Levites give to the Levites?",
+  "choices": [
+   "Five hundred",
+   "Three hundred",
+   "Seven hundred",
+   "Two thousand"
+  ],
+  "answer": 0,
+  "explanation": "Chief of the Levites gave unto the Levites five thousand small cattle, and five hundred oxen.",
+  "ref": "2 Chronicles 35:9"
+ },
+ {
+  "id": "2-chronicles-35-h-03",
+  "chapter": 35,
+  "level": "hard",
+  "category": "person",
+  "question": "Which men are named as rulers of the house of God who gave to the priests?",
+  "choices": [
+   "Conaniah, Shemaiah and Nethaneel",
+   "Hilkiah, Zechariah and Jehiel",
+   "Jahath, Obadiah and Meshullam",
+   "Asaph, Heman and Jeduthun"
+  ],
+  "answer": 1,
+  "explanation": "Hilkiah and Zechariah and Jehiel, rulers of the house of God, gave unto the priests.",
+  "ref": "2 Chronicles 35:8"
+ },
+ {
+  "id": "2-chronicles-35-h-04",
+  "chapter": 35,
+  "level": "hard",
+  "category": "person",
+  "question": "Which man was among the chief of the Levites who gave to the Levites?",
+  "choices": [
+   "Hilkiah",
+   "Zechariah",
+   "Hashabiah",
+   "Jehiel"
+  ],
+  "answer": 2,
+  "explanation": "Conaniah also, and Shemaiah and Nethaneel, and Hashabiah and Jeiel and Jozabad, chief of the Levites.",
+  "ref": "2 Chronicles 35:9"
+ },
+ {
+  "id": "2-chronicles-35-h-05",
+  "chapter": 35,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is called the king's seer among those named in David's commandment?",
+  "choices": [
+   "Heman",
+   "Asaph",
+   "Gad",
+   "Jeduthun"
+  ],
+  "answer": 3,
+  "explanation": "According to the commandment of David, and Asaph, and Heman, and Jeduthun the king's seer.",
+  "ref": "2 Chronicles 35:15"
+ },
+ {
+  "id": "2-chronicles-35-h-06",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why could the porters not depart from the gates?",
+  "choices": [
+   "Their brethren the Levites prepared for them",
+   "The king commanded it",
+   "The passover would be defiled",
+   "Necho was near"
+  ],
+  "answer": 0,
+  "explanation": "The porters waited at every gate; they might not depart from their service; for their brethren the Levites prepared for them.",
+  "ref": "2 Chronicles 35:15"
+ },
+ {
+  "id": "2-chronicles-35-h-07",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Levites do to the killed passover animals?",
+  "choices": [
+   "Roasted them",
+   "Flayed them",
+   "Carried them away",
+   "Divided them"
+  ],
+  "answer": 1,
+  "explanation": "The priests sprinkled the blood from their hands, and the Levites flayed them.",
+  "ref": "2 Chronicles 35:11"
+ },
+ {
+  "id": "2-chronicles-35-h-08",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Josiah's reign was this passover kept?",
+  "choices": [
+   "The twelfth year",
+   "The eighth year",
+   "The eighteenth year",
+   "The thirty-first year"
+  ],
+  "answer": 2,
+  "explanation": "In the eighteenth year of the reign of Josiah was this passover kept.",
+  "ref": "2 Chronicles 35:19"
+ },
+ {
+  "id": "2-chronicles-35-h-09",
+  "chapter": 35,
+  "level": "hard",
+  "category": "person",
+  "question": "How does the chapter describe the Levites Josiah addressed?",
+  "choices": [
+   "They were singers of Asaph",
+   "They were porters of the gates",
+   "They were captains of the host",
+   "They taught all Israel and were holy unto the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Josiah said unto the Levites that taught all Israel, which were holy unto the LORD.",
+  "ref": "2 Chronicles 35:3"
+ },
+ {
+  "id": "2-chronicles-35-h-10",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Necho tell Josiah to forbear from?",
+  "choices": [
+   "Meddling with God",
+   "Entering Megiddo",
+   "Fighting at the river",
+   "Raising an army"
+  ],
+  "answer": 0,
+  "explanation": "Forbear thee from meddling with God, who is with me, that he destroy thee not.",
+  "ref": "2 Chronicles 35:21"
+ },
+ {
+  "id": "2-chronicles-35-h-11",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Necho say God had commanded him to do?",
+  "choices": [
+   "To wait at Megiddo",
+   "To make haste",
+   "To spare Judah",
+   "To fight Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "For God commanded me to make haste.",
+  "ref": "2 Chronicles 35:21"
+ },
+ {
+  "id": "2-chronicles-35-h-12",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the singing men and women make of their lamentations for Josiah?",
+  "choices": [
+   "A feast day",
+   "A psalm for the temple",
+   "An ordinance in Israel",
+   "A law for the priests"
+  ],
+  "answer": 2,
+  "explanation": "They made them an ordinance in Israel: and, behold, they are written in the lamentations.",
+  "ref": "2 Chronicles 35:25"
+ },
+ {
+  "id": "2-chronicles-35-h-13",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what book are Josiah's deeds, first and last, written?",
+  "choices": [
+   "The book of Jasher",
+   "The vision of Isaiah",
+   "The sayings of the seers",
+   "The book of the kings of Israel and Judah"
+  ],
+  "answer": 3,
+  "explanation": "His deeds, first and last, are written in the book of the kings of Israel and Judah.",
+  "ref": "2 Chronicles 35:27"
+ },
+ {
+  "id": "2-chronicles-35-h-14",
+  "chapter": 35,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the priests and Levites do according to the king's commandment?",
+  "choices": [
+   "Stood in their place and their courses",
+   "Marched to Megiddo",
+   "Sang at the gates",
+   "Gathered the tithes"
+  ],
+  "answer": 0,
+  "explanation": "The priests stood in their place, and the Levites in their courses, according to the king's commandment.",
+  "ref": "2 Chronicles 35:10"
  },
  {
   "id": "old-2-chronicles-36-1",
