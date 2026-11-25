@@ -5728,6 +5728,310 @@
   "ref": "2 Chronicles 12:12"
  },
  {
+  "id": "2-chronicles-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Egypt came up against Jerusalem?",
+  "choices": [
+   "Shishak",
+   "Pharaoh Necho",
+   "Zerah",
+   "So"
+  ],
+  "answer": 0,
+  "explanation": "In the fifth year of king Rehoboam Shishak king of Egypt came up against Jerusalem.",
+  "ref": "2 Chronicles 12:2"
+ },
+ {
+  "id": "2-chronicles-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Rehoboam make to replace the golden shields Shishak took?",
+  "choices": [
+   "Shields of iron",
+   "Shields of brass",
+   "Shields of silver",
+   "Shields of wood"
+  ],
+  "answer": 1,
+  "explanation": "Instead of which king Rehoboam made shields of brass.",
+  "ref": "2 Chronicles 12:10"
+ },
+ {
+  "id": "2-chronicles-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose son reigned in Rehoboam's stead after he died?",
+  "choices": [
+   "Asa",
+   "Shemaiah",
+   "Abijah",
+   "Jeroboam"
+  ],
+  "answer": 2,
+  "explanation": "Rehoboam slept with his fathers, and Abijah his son reigned in his stead.",
+  "ref": "2 Chronicles 12:16"
+ },
+ {
+  "id": "2-chronicles-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year of king Rehoboam did Shishak come up against Jerusalem?",
+  "choices": [
+   "The first",
+   "The tenth",
+   "The seventeenth",
+   "The fifth"
+  ],
+  "answer": 3,
+  "explanation": "In the fifth year of king Rehoboam Shishak king of Egypt came up against Jerusalem.",
+  "ref": "2 Chronicles 12:2"
+ },
+ {
+  "id": "2-chronicles-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many chariots did Shishak bring?",
+  "choices": [
+   "Twelve hundred",
+   "Four hundred",
+   "Six hundred",
+   "Three thousand"
+  ],
+  "answer": 0,
+  "explanation": "Shishak came with twelve hundred chariots, and threescore thousand horsemen.",
+  "ref": "2 Chronicles 12:3"
+ },
+ {
+  "id": "2-chronicles-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Shishak take that pertained to Judah before coming to Jerusalem?",
+  "choices": [
+   "The ark",
+   "The fenced cities",
+   "The cattle",
+   "The temple vessels"
+  ],
+  "answer": 1,
+  "explanation": "He took the fenced cities which pertained to Judah, and came to Jerusalem.",
+  "ref": "2 Chronicles 12:4"
+ },
+ {
+  "id": "2-chronicles-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the princes and the king say when they humbled themselves?",
+  "choices": [
+   "Deliver us",
+   "The LORD is our shield",
+   "The LORD is righteous",
+   "We have sinned"
+  ],
+  "answer": 2,
+  "explanation": "They said, The LORD is righteous.",
+  "ref": "2 Chronicles 12:6"
+ },
+ {
+  "id": "2-chronicles-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD promise because they humbled themselves?",
+  "choices": [
+   "Another king",
+   "Victory over Egypt",
+   "Gold from Ophir",
+   "Some deliverance"
+  ],
+  "answer": 3,
+  "explanation": "I will not destroy them, but I will grant them some deliverance.",
+  "ref": "2 Chronicles 12:7"
+ },
+ {
+  "id": "2-chronicles-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Who kept the shields of brass in his hands, at the entrance of the king's house?",
+  "choices": [
+   "The chief of the guard",
+   "The priests",
+   "Shemaiah",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "Rehoboam committed them to the hands of the chief of the guard, that kept the entrance of the king's house.",
+  "ref": "2 Chronicles 12:10"
+ },
+ {
+  "id": "2-chronicles-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How old was Rehoboam when he began to reign?",
+  "choices": [
+   "Thirty-five",
+   "One and forty",
+   "Twenty and one",
+   "Sixteen"
+  ],
+  "answer": 1,
+  "explanation": "Rehoboam was one and forty years old when he began to reign.",
+  "ref": "2 Chronicles 12:13"
+ },
+ {
+  "id": "2-chronicles-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Rehoboam reign in Jerusalem?",
+  "choices": [
+   "Twelve",
+   "Three",
+   "Seventeen",
+   "Forty"
+  ],
+  "answer": 2,
+  "explanation": "He reigned seventeen years in Jerusalem.",
+  "ref": "2 Chronicles 12:13"
+ },
+ {
+  "id": "2-chronicles-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which peoples came with Shishak out of Egypt?",
+  "choices": [
+   "The Philistines and Arabians",
+   "The Moabites and Ammonites",
+   "The Syrians and Edomites",
+   "The Lubim, Sukkiims and Ethiopians"
+  ],
+  "answer": 3,
+  "explanation": "The people came with him out of Egypt; the Lubim, the Sukkiims, and the Ethiopians.",
+  "ref": "2 Chronicles 12:3"
+ },
+ {
+  "id": "2-chronicles-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say Judah would be to Shishak, that they might know his service?",
+  "choices": [
+   "His servants",
+   "His allies",
+   "His captives only",
+   "His tributaries in Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Nevertheless they shall be his servants; that they may know my service.",
+  "ref": "2 Chronicles 12:8"
+ },
+ {
+  "id": "2-chronicles-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the guard do with the brass shields when the king entered the house of the LORD?",
+  "choices": [
+   "Gave them to the priests",
+   "Fetched them and brought them back to the guard chamber",
+   "Left them at the gate",
+   "Hid them in the temple"
+  ],
+  "answer": 1,
+  "explanation": "The guard came and fetched them, and brought them again into the guard chamber.",
+  "ref": "2 Chronicles 12:11"
+ },
+ {
+  "id": "2-chronicles-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "What was the name of Rehoboam's mother?",
+  "choices": [
+   "Michaiah",
+   "Mahalath",
+   "Naamah",
+   "Maachah"
+  ],
+  "answer": 2,
+  "explanation": "His mother's name was Naamah an Ammonitess.",
+  "ref": "2 Chronicles 12:13"
+ },
+ {
+  "id": "2-chronicles-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many horsemen came with Shishak?",
+  "choices": [
+   "Twelve hundred",
+   "Four hundred thousand",
+   "Twelve thousand",
+   "Threescore thousand"
+  ],
+  "answer": 3,
+  "explanation": "Shishak came with twelve hundred chariots, and threescore thousand horsemen.",
+  "ref": "2 Chronicles 12:3"
+ },
+ {
+  "id": "2-chronicles-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Rehoboam do evil?",
+  "choices": [
+   "He prepared not his heart to seek the LORD",
+   "He worshipped the calves",
+   "He killed Shemaiah",
+   "He married foreign wives"
+  ],
+  "answer": 0,
+  "explanation": "He did evil, because he prepared not his heart to seek the LORD.",
+  "ref": "2 Chronicles 12:14"
+ },
+ {
+  "id": "2-chronicles-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Which seer wrote Rehoboam's acts concerning genealogies?",
+  "choices": [
+   "Hanani",
+   "Iddo",
+   "Nathan",
+   "Ahijah"
+  ],
+  "answer": 1,
+  "explanation": "The acts of Rehoboam are written in the book of Shemaiah the prophet, and of Iddo the seer concerning genealogies.",
+  "ref": "2 Chronicles 12:15"
+ },
+ {
+  "id": "2-chronicles-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Between whom were there wars continually?",
+  "choices": [
+   "Abijah and Asa",
+   "Judah and Egypt",
+   "Rehoboam and Jeroboam",
+   "Rehoboam and Shishak"
+  ],
+  "answer": 2,
+  "explanation": "There were wars between Rehoboam and Jeroboam continually.",
+  "ref": "2 Chronicles 12:15"
+ },
+ {
   "id": "old-2-chronicles-13-1",
   "chapter": 13,
   "level": "beginner",
