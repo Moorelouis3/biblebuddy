@@ -1,21 +1,5 @@
 [
  {
-  "id": "old-proverbs-1-1",
-  "chapter": 1,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "According to Proverbs 1:2, what is one main purpose of this book?",
-  "choices": [
-   "To record Israel's history",
-   "To know wisdom and instruction",
-   "To describe temple rituals",
-   "To announce future kings"
-  ],
-  "answer": 1,
-  "explanation": "The book opens by saying its purpose includes knowing wisdom and instruction.",
-  "ref": "Proverbs 1:2"
- },
- {
   "id": "old-proverbs-1-2",
   "chapter": 1,
   "level": "beginner",
@@ -78,22 +62,6 @@
   "answer": 2,
   "explanation": "The chapter warns that rejecting wisdom leads to painful consequences.",
   "ref": "Proverbs 1:29–31"
- },
- {
-  "id": "old-proverbs-2-1",
-  "chapter": 2,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What must a person do with wisdom according to the opening verses of Proverbs 2?",
-  "choices": [
-   "Wait passively for it",
-   "Borrow it from kings",
-   "Find it in battle",
-   "Seek it like silver"
-  ],
-  "answer": 3,
-  "explanation": "The chapter says wisdom should be sought earnestly like hidden treasure.",
-  "ref": "Proverbs 2:1–4"
  },
  {
   "id": "old-proverbs-2-2",
@@ -190,22 +158,6 @@
   "answer": 2,
   "explanation": "The chapter calls for wholehearted trust and acknowledgment of God.",
   "ref": "Proverbs 3:5–6"
- },
- {
-  "id": "old-proverbs-3-3",
-  "chapter": 3,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What should not be leaned on?",
-  "choices": [
-   "The law of Moses",
-   "The counsel of parents",
-   "Thine own understanding",
-   "The words of prophets"
-  ],
-  "answer": 2,
-  "explanation": "The warning is against relying on one's own understanding.",
-  "ref": "Proverbs 3:5"
  },
  {
   "id": "old-proverbs-3-4",
@@ -448,22 +400,6 @@
   "ref": "Proverbs 6:16"
  },
  {
-  "id": "old-proverbs-6-4",
-  "chapter": 6,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What is listed first among the things the Lord hates?",
-  "choices": [
-   "Proud look",
-   "False witness",
-   "Feet swift in mischief",
-   "Hands that shed innocent blood"
-  ],
-  "answer": 0,
-  "explanation": "A proud look heads the list.",
-  "ref": "Proverbs 6:17"
- },
- {
   "id": "old-proverbs-6-5",
   "chapter": 6,
   "level": "beginner",
@@ -608,22 +544,6 @@
   "ref": "Proverbs 8:13"
  },
  {
-  "id": "old-proverbs-8-4",
-  "chapter": 8,
-  "level": "beginner",
-  "category": "place",
-  "question": "Where does wisdom say she was when God prepared the heavens?",
-  "choices": [
-   "There",
-   "Absent",
-   "In Egypt",
-   "Among the stars only"
-  ],
-  "answer": 0,
-  "explanation": "Wisdom poetically describes being present at creation.",
-  "ref": "Proverbs 8:27"
- },
- {
   "id": "old-proverbs-8-5",
   "chapter": 8,
   "level": "beginner",
@@ -750,38 +670,6 @@
   "answer": 2,
   "explanation": "Righteousness is said to deliver from death.",
   "ref": "Proverbs 10:2"
- },
- {
-  "id": "old-proverbs-10-3",
-  "chapter": 10,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What kind of hand makes rich?",
-  "choices": [
-   "Diligent hand",
-   "Idle hand",
-   "Violent hand",
-   "Royal hand"
-  ],
-  "answer": 0,
-  "explanation": "Diligence is connected to provision and prosperity.",
-  "ref": "Proverbs 10:4"
- },
- {
-  "id": "old-proverbs-10-4",
-  "chapter": 10,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does hatred stir up?",
-  "choices": [
-   "Wisdom",
-   "Peace",
-   "Strifes",
-   "Mercy"
-  ],
-  "answer": 2,
-  "explanation": "Hatred stirs up strife, but love covers sins.",
-  "ref": "Proverbs 10:12"
  },
  {
   "id": "old-proverbs-10-5",
@@ -1134,22 +1022,6 @@
   "answer": 1,
   "explanation": "Gentleness is shown as powerful in calming anger.",
   "ref": "Proverbs 15:1"
- },
- {
-  "id": "old-proverbs-15-2",
-  "chapter": 15,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does the tongue of the wise use aright?",
-  "choices": [
-   "Riches",
-   "Royal power",
-   "Knowledge",
-   "Silence"
-  ],
-  "answer": 2,
-  "explanation": "Wise speech handles knowledge well.",
-  "ref": "Proverbs 15:2"
  },
  {
   "id": "old-proverbs-15-3",
@@ -2478,5 +2350,6485 @@
   "answer": 0,
   "explanation": "Charm fades, but a woman who fears the Lord is to be praised.",
   "ref": "Proverbs 31:30"
+ },
+ {
+  "id": "proverbs-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named as the author of these proverbs?",
+  "choices": [
+   "Hezekiah the son of Ahaz",
+   "Agur the son of Jakeh",
+   "Solomon the son of David",
+   "Lemuel the king"
+  ],
+  "answer": 2,
+  "explanation": "\"The proverbs of Solomon the son of David, king of Israel.\"",
+  "ref": "Proverbs 1:1"
+ },
+ {
+  "id": "proverbs-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whose law is the son told not to forsake?",
+  "choices": [
+   "His elder brother's",
+   "The priest's",
+   "His mother's",
+   "The king's"
+  ],
+  "answer": 2,
+  "explanation": "\"My son, hear the instruction of thy father, and forsake not the law of thy mother.\"",
+  "ref": "Proverbs 1:8"
+ },
+ {
+  "id": "proverbs-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are a father's instruction and a mother's law said to be?",
+  "choices": [
+   "A shield and a fortress",
+   "A lamp and a light",
+   "An ornament of grace and chains about the neck",
+   "A crown of gold and a ring"
+  ],
+  "answer": 2,
+  "explanation": "\"They shall be an ornament of grace unto thy head, and chains about thy neck.\"",
+  "ref": "Proverbs 1:9"
+ },
+ {
+  "id": "proverbs-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If sinners entice you, what does the father say to do?",
+  "choices": [
+   "Argue with them",
+   "Pay them to leave",
+   "Not consent to them",
+   "Go along and watch"
+  ],
+  "answer": 2,
+  "explanation": "\"My son, if sinners entice thee, consent thou not.\"",
+  "ref": "Proverbs 1:10"
+ },
+ {
+  "id": "proverbs-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the sinners say they will lay wait for?",
+  "choices": [
+   "The rich, to beg from them",
+   "The king's caravans",
+   "The innocent, to shed blood",
+   "The shepherds' flocks"
+  ],
+  "answer": 2,
+  "explanation": "\"Come with us, let us lay wait for blood, let us lurk privily for the innocent without cause.\"",
+  "ref": "Proverbs 1:11"
+ },
+ {
+  "id": "proverbs-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What picture shows that evil ambush is in vain?",
+  "choices": [
+   "A pit dug in plain view",
+   "A sword drawn by a sleeper",
+   "A net spread in sight of a bird",
+   "A lamp hidden under a bushel"
+  ],
+  "answer": 2,
+  "explanation": "\"Surely in vain the net is spread in the sight of any bird.\"",
+  "ref": "Proverbs 1:17"
+ },
+ {
+  "id": "proverbs-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the sinners promise to those who join them?",
+  "choices": [
+   "A share of the king's vineyards",
+   "Safety in the city gates",
+   "Honour among the elders",
+   "Precious substance and houses full of spoil"
+  ],
+  "answer": 3,
+  "explanation": "\"We shall find all precious substance, we shall fill our houses with spoil.\"",
+  "ref": "Proverbs 1:13"
+ },
+ {
+  "id": "proverbs-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How do the sinners say they will swallow up their victims?",
+  "choices": [
+   "In the night, as a flood does",
+   "By famine, as a drought does",
+   "In the sight of all, as a lion does",
+   "Alive, as the grave does"
+  ],
+  "answer": 3,
+  "explanation": "\"Let us swallow them up alive as the grave.\"",
+  "ref": "Proverbs 1:12"
+ },
+ {
+  "id": "proverbs-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the feet of the sinners do?",
+  "choices": [
+   "Wander without a path",
+   "Stand in the gate",
+   "Stumble in the dark",
+   "Run to evil and make haste to shed blood"
+  ],
+  "answer": 3,
+  "explanation": "\"Their feet run to evil, and make haste to shed blood.\"",
+  "ref": "Proverbs 1:16"
+ },
+ {
+  "id": "proverbs-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the way of those greedy of gain take away?",
+  "choices": [
+   "The honour of the king",
+   "The peace of the city",
+   "The wisdom of the old",
+   "The life of the owners"
+  ],
+  "answer": 3,
+  "explanation": "\"So are the ways of every one that is greedy of gain; which taketh away the life of the owners thereof.\"",
+  "ref": "Proverbs 1:19"
+ },
+ {
+  "id": "proverbs-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose blood do the ambushers really lay wait for?",
+  "choices": [
+   "The king's",
+   "Their neighbours'",
+   "Their fathers'",
+   "Their own"
+  ],
+  "answer": 3,
+  "explanation": "\"They lay wait for their own blood; they lurk privily for their own lives.\"",
+  "ref": "Proverbs 1:18"
+ },
+ {
+  "id": "proverbs-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does wisdom ask \"How long will ye love simplicity?\"",
+  "choices": [
+   "The elders of the city",
+   "The sons of the prophets",
+   "The kings of the nations",
+   "The simple ones"
+  ],
+  "answer": 3,
+  "explanation": "\"How long, ye simple ones, will ye love simplicity?\"",
+  "ref": "Proverbs 1:22"
+ },
+ {
+  "id": "proverbs-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the scorners do, according to wisdom?",
+  "choices": [
+   "Hide in the gates",
+   "Seek counsel by night",
+   "Gather in the temple",
+   "Delight in their scorning"
+  ],
+  "answer": 3,
+  "explanation": "\"The scorners delight in their scorning, and fools hate knowledge.\"",
+  "ref": "Proverbs 1:22"
+ },
+ {
+  "id": "proverbs-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will wisdom not answer them in their distress?",
+  "choices": [
+   "They came too late in the day",
+   "They had no gift to bring",
+   "They had not been taught to read",
+   "They hated knowledge and refused the fear of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "\"For that they hated knowledge, and did not choose the fear of the LORD.\"",
+  "ref": "Proverbs 1:29"
+ },
+ {
+  "id": "proverbs-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did wisdom stretch out when she called and none regarded?",
+  "choices": [
+   "Her staff",
+   "Her voice over the wall",
+   "Her banner",
+   "Her hand"
+  ],
+  "answer": 3,
+  "explanation": "\"I have called, and ye refused; I have stretched out my hand, and no man regarded.\"",
+  "ref": "Proverbs 1:24"
+ },
+ {
+  "id": "proverbs-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the destruction of the refusers come as?",
+  "choices": [
+   "A flood",
+   "A flame",
+   "A famine",
+   "A whirlwind"
+  ],
+  "answer": 3,
+  "explanation": "\"Your destruction cometh as a whirlwind.\"",
+  "ref": "Proverbs 1:27"
+ },
+ {
+  "id": "proverbs-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the proverbs give to the young man?",
+  "choices": [
+   "Knowledge and discretion",
+   "Strength and honour",
+   "Silver and gold",
+   "Length of days"
+  ],
+  "answer": 0,
+  "explanation": "\"To the young man knowledge and discretion.\"",
+  "ref": "Proverbs 1:4"
+ },
+ {
+  "id": "proverbs-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall a man of understanding attain unto?",
+  "choices": [
+   "Wise counsels",
+   "A kingdom",
+   "A long life",
+   "Many sons"
+  ],
+  "answer": 0,
+  "explanation": "\"A man of understanding shall attain unto wise counsels.\"",
+  "ref": "Proverbs 1:5"
+ },
+ {
+  "id": "proverbs-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides a proverb, what else does the reader come to understand?",
+  "choices": [
+   "The words of the wise and their dark sayings",
+   "The laws of the priests",
+   "The songs of the temple",
+   "The records of the kings"
+  ],
+  "answer": 0,
+  "explanation": "\"To understand a proverb, and the interpretation; the words of the wise, and their dark sayings.\"",
+  "ref": "Proverbs 1:6"
+ },
+ {
+  "id": "proverbs-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When the refusers seek wisdom early, what happens?",
+  "choices": [
+   "They shall not find her",
+   "They are given a second chance",
+   "They find her in the city gate",
+   "They are welcomed home"
+  ],
+  "answer": 0,
+  "explanation": "\"They shall seek me early, but they shall not find me.\"",
+  "ref": "Proverbs 1:28"
+ },
+ {
+  "id": "proverbs-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the scorners set at nought?",
+  "choices": [
+   "All wisdom's counsel",
+   "The temple offerings",
+   "The king's decree",
+   "The old boundary stones"
+  ],
+  "answer": 0,
+  "explanation": "\"Ye have set at nought all my counsel, and would none of my reproof.\"",
+  "ref": "Proverbs 1:25"
+ },
+ {
+  "id": "proverbs-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what shall the refusers be filled?",
+  "choices": [
+   "Their own devices",
+   "Bread and wine",
+   "The wrath of the king",
+   "Sorrow for their fathers"
+  ],
+  "answer": 0,
+  "explanation": "\"Be filled with their own devices.\"",
+  "ref": "Proverbs 1:31"
+ },
+ {
+  "id": "proverbs-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does wisdom say will come upon the refusers besides desolation and a whirlwind?",
+  "choices": [
+   "Distress and anguish",
+   "Plague and sword",
+   "Poverty and shame",
+   "Exile and famine"
+  ],
+  "answer": 0,
+  "explanation": "\"When distress and anguish cometh upon you.\"",
+  "ref": "Proverbs 1:27"
+ },
+ {
+  "id": "proverbs-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what does the father tell his son to refrain his foot?",
+  "choices": [
+   "The path of sinners",
+   "The gate of the city",
+   "The house of the scorner",
+   "The field of the sluggard"
+  ],
+  "answer": 0,
+  "explanation": "\"Walk not thou in the way with them; refrain thy foot from their path.\"",
+  "ref": "Proverbs 1:15"
+ },
+ {
+  "id": "proverbs-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does wisdom say she will make known to those who turn?",
+  "choices": [
+   "Her words",
+   "The hour of judgment",
+   "The way of the stars",
+   "The names of the wicked"
+  ],
+  "answer": 0,
+  "explanation": "\"I will make known my words unto you.\"",
+  "ref": "Proverbs 1:23"
+ },
+ {
+  "id": "proverbs-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Like those going down into what do the sinners say they will swallow the innocent whole?",
+  "choices": [
+   "The pit",
+   "The sea",
+   "The wilderness",
+   "The dust"
+  ],
+  "answer": 0,
+  "explanation": "\"And whole, as those that go down into the pit.\"",
+  "ref": "Proverbs 1:12"
+ },
+ {
+  "id": "proverbs-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is a foolish son to his mother?",
+  "choices": [
+   "Her joy",
+   "Her crown",
+   "Her heaviness",
+   "Her teacher"
+  ],
+  "answer": 2,
+  "explanation": "\"A wise son maketh a glad father: but a foolish son is the heaviness of his mother.\"",
+  "ref": "Proverbs 10:1"
+ },
+ {
+  "id": "proverbs-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is a wise son, according to the proverb?",
+  "choices": [
+   "He that rises before dawn",
+   "He that obeys the king",
+   "He that gathereth in summer",
+   "He that keeps the flocks"
+  ],
+  "answer": 2,
+  "explanation": "\"He that gathereth in summer is a wise son: but he that sleepeth in harvest is a son that causeth shame.\"",
+  "ref": "Proverbs 10:5"
+ },
+ {
+  "id": "proverbs-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the name of the wicked?",
+  "choices": [
+   "It shall be written in gold",
+   "It shall be forgotten at once",
+   "It shall rot",
+   "It shall be carried to far lands"
+  ],
+  "answer": 2,
+  "explanation": "\"The memory of the just is blessed: but the name of the wicked shall rot.\"",
+  "ref": "Proverbs 10:7"
+ },
+ {
+  "id": "proverbs-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the mouth of a righteous man called?",
+  "choices": [
+   "A gate of heaven",
+   "A door of peace",
+   "A well of life",
+   "A tower of strength"
+  ],
+  "answer": 2,
+  "explanation": "\"The mouth of a righteous man is a well of life.\"",
+  "ref": "Proverbs 10:11"
+ },
+ {
+  "id": "proverbs-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does love cover?",
+  "choices": [
+   "The face of the poor",
+   "The shame of a fool",
+   "All sins",
+   "The cost of a house"
+  ],
+  "answer": 2,
+  "explanation": "\"Hatred stirreth up strifes: but love covereth all sins.\"",
+  "ref": "Proverbs 10:12"
+ },
+ {
+  "id": "proverbs-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the rich man's wealth to him?",
+  "choices": [
+   "His heavy burden",
+   "His quiet rest",
+   "His strong city",
+   "His brother's debt"
+  ],
+  "answer": 2,
+  "explanation": "\"The rich man's wealth is his strong city: the destruction of the poor is their poverty.\"",
+  "ref": "Proverbs 10:15"
+ },
+ {
+  "id": "proverbs-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the fear of the LORD do?",
+  "choices": [
+   "Fills barns",
+   "Lengthens the road",
+   "Prolongeth days",
+   "Brings kings low"
+  ],
+  "answer": 2,
+  "explanation": "\"The fear of the LORD prolongeth days: but the years of the wicked shall be shortened.\"",
+  "ref": "Proverbs 10:27"
+ },
+ {
+  "id": "proverbs-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who will receive commandments, and who shall fall?",
+  "choices": [
+   "The king receives; the priest falls",
+   "The old receive; the young fall",
+   "The rich receive; the poor fall",
+   "The wise in heart receive; a prating fool falls"
+  ],
+  "answer": 3,
+  "explanation": "\"The wise in heart will receive commandments: but a prating fool shall fall.\"",
+  "ref": "Proverbs 10:8"
+ },
+ {
+  "id": "proverbs-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of the one who walks uprightly?",
+  "choices": [
+   "He walks alone",
+   "He walks far",
+   "He walks slowly",
+   "He walks surely"
+  ],
+  "answer": 3,
+  "explanation": "\"He that walketh uprightly walketh surely: but he that perverteth his ways shall be known.\"",
+  "ref": "Proverbs 10:9"
+ },
+ {
+  "id": "proverbs-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is for the back of him that is void of understanding?",
+  "choices": [
+   "A cloak",
+   "A burden of grain",
+   "A seat",
+   "A rod"
+  ],
+  "answer": 3,
+  "explanation": "\"A rod is for the back of him that is void of understanding.\"",
+  "ref": "Proverbs 10:13"
+ },
+ {
+  "id": "proverbs-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the one who refuseth reproof?",
+  "choices": [
+   "He prospers",
+   "He is praised",
+   "He is hidden",
+   "He erreth"
+  ],
+  "answer": 3,
+  "explanation": "\"He is in the way of life that keepeth instruction: but he that refuseth reproof erreth.\"",
+  "ref": "Proverbs 10:17"
+ },
+ {
+  "id": "proverbs-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "person",
+  "question": "Who is a fool, according to verse 18?",
+  "choices": [
+   "He that speaks little and sits alone",
+   "He that gives to the poor",
+   "He that rules a city",
+   "He that hideth hatred with lying lips"
+  ],
+  "answer": 3,
+  "explanation": "\"He that hideth hatred with lying lips, and he that uttereth a slander, is a fool.\"",
+  "ref": "Proverbs 10:18"
+ },
+ {
+  "id": "proverbs-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the tongue of the just compared to?",
+  "choices": [
+   "Fine gold",
+   "Running water",
+   "A sharp sword",
+   "Choice silver"
+  ],
+  "answer": 3,
+  "explanation": "\"The tongue of the just is as choice silver: the heart of the wicked is little worth.\"",
+  "ref": "Proverbs 10:20"
+ },
+ {
+  "id": "proverbs-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is sport to a fool?",
+  "choices": [
+   "To labour in the field",
+   "To rule a city",
+   "To give counsel",
+   "To do mischief"
+  ],
+  "answer": 3,
+  "explanation": "\"It is as sport to a fool to do mischief: but a man of understanding hath wisdom.\"",
+  "ref": "Proverbs 10:23"
+ },
+ {
+  "id": "proverbs-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall come upon the wicked, and what shall be granted to the righteous?",
+  "choices": [
+   "His shame; the honour of the righteous",
+   "His grief; the peace of the righteous",
+   "His fall; the land of the righteous",
+   "His fear; the desire of the righteous"
+  ],
+  "answer": 3,
+  "explanation": "\"The fear of the wicked, it shall come upon him: but the desire of the righteous shall be granted.\"",
+  "ref": "Proverbs 10:24"
+ },
+ {
+  "id": "proverbs-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the destruction of the poor?",
+  "choices": [
+   "Their pride",
+   "Their master",
+   "Their children",
+   "Their poverty"
+  ],
+  "answer": 3,
+  "explanation": "\"The destruction of the poor is their poverty.\"",
+  "ref": "Proverbs 10:15"
+ },
+ {
+  "id": "proverbs-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In the lips of whom is wisdom found?",
+  "choices": [
+   "Him that is rich",
+   "Him that is old",
+   "Him that rules",
+   "Him that hath understanding"
+  ],
+  "answer": 3,
+  "explanation": "\"In the lips of him that hath understanding wisdom is found.\"",
+  "ref": "Proverbs 10:13"
+ },
+ {
+  "id": "proverbs-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall be gladness to the righteous, and what shall perish for the wicked?",
+  "choices": [
+   "Their hope; the wicked's expectation",
+   "Their land; the wicked's flocks",
+   "Their house; the wicked's name",
+   "Their sons; the wicked's wealth"
+  ],
+  "answer": 0,
+  "explanation": "\"The hope of the righteous shall be gladness: but the expectation of the wicked shall perish.\"",
+  "ref": "Proverbs 10:28"
+ },
+ {
+  "id": "proverbs-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of the wicked and the earth?",
+  "choices": [
+   "They shall not inhabit it",
+   "They shall rule it",
+   "They shall divide it",
+   "They shall flee it"
+  ],
+  "answer": 0,
+  "explanation": "\"The wicked shall not inhabit the earth.\"",
+  "ref": "Proverbs 10:30"
+ },
+ {
+  "id": "proverbs-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to the froward tongue?",
+  "choices": [
+   "It shall be cut out",
+   "It shall be healed",
+   "It shall be silent",
+   "It shall be rewarded"
+  ],
+  "answer": 0,
+  "explanation": "\"The froward tongue shall be cut out.\"",
+  "ref": "Proverbs 10:31"
+ },
+ {
+  "id": "proverbs-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the lips of the righteous know?",
+  "choices": [
+   "What is acceptable",
+   "What is hidden",
+   "What is coming",
+   "What is old"
+  ],
+  "answer": 0,
+  "explanation": "\"The lips of the righteous know what is acceptable: but the mouth of the wicked speaketh frowardness.\"",
+  "ref": "Proverbs 10:32"
+ },
+ {
+  "id": "proverbs-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As what does the wicked pass away?",
+  "choices": [
+   "As the whirlwind passeth",
+   "As the dew in the morning",
+   "As the grass in the field",
+   "As the smoke of a fire"
+  ],
+  "answer": 0,
+  "explanation": "\"As the whirlwind passeth, so is the wicked no more: but the righteous is an everlasting foundation.\"",
+  "ref": "Proverbs 10:25"
+ },
+ {
+  "id": "proverbs-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the righteous called, compared with the wicked?",
+  "choices": [
+   "An everlasting foundation",
+   "A tree by the water",
+   "A strong tower",
+   "A lamp of the LORD"
+  ],
+  "answer": 0,
+  "explanation": "\"The righteous is an everlasting foundation.\"",
+  "ref": "Proverbs 10:25"
+ },
+ {
+  "id": "proverbs-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why do fools die?",
+  "choices": [
+   "For want of wisdom",
+   "For want of bread",
+   "For want of friends",
+   "For want of years"
+  ],
+  "answer": 0,
+  "explanation": "\"The lips of the righteous feed many: but fools die for want of wisdom.\"",
+  "ref": "Proverbs 10:21"
+ },
+ {
+  "id": "proverbs-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall happen to the years of the wicked?",
+  "choices": [
+   "They shall be shortened",
+   "They shall be doubled",
+   "They shall be hidden",
+   "They shall be forgotten"
+  ],
+  "answer": 0,
+  "explanation": "\"The years of the wicked shall be shortened.\"",
+  "ref": "Proverbs 10:27"
+ },
+ {
+  "id": "proverbs-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD do with the substance of the wicked?",
+  "choices": [
+   "Casteth it away",
+   "Gives it to the poor",
+   "Lets him keep it",
+   "Hides it"
+  ],
+  "answer": 0,
+  "explanation": "\"He casteth away the substance of the wicked.\"",
+  "ref": "Proverbs 10:3"
+ },
+ {
+  "id": "proverbs-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the heart of the wicked?",
+  "choices": [
+   "Little worth",
+   "Full of fire",
+   "Hard as stone",
+   "Bitter as gall"
+  ],
+  "answer": 0,
+  "explanation": "\"The heart of the wicked is little worth.\"",
+  "ref": "Proverbs 10:20"
+ },
+ {
+  "id": "proverbs-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does a talebearer do?",
+  "choices": [
+   "Keeps the peace",
+   "Reveals secrets",
+   "Guards the gate",
+   "Teaches the young"
+  ],
+  "answer": 1,
+  "explanation": "\"A talebearer revealeth secrets: but he that is of a faithful spirit concealeth the matter.\"",
+  "ref": "Proverbs 11:13"
+ },
+ {
+  "id": "proverbs-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens where no counsel is?",
+  "choices": [
+   "The king rejoices",
+   "The people fall",
+   "The harvest fails",
+   "The poor are fed"
+  ],
+  "answer": 1,
+  "explanation": "\"Where no counsel is, the people fall: but in the multitude of counsellors there is safety.\"",
+  "ref": "Proverbs 11:14"
+ },
+ {
+  "id": "proverbs-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to the one who is surety for a stranger?",
+  "choices": [
+   "He shall be honoured",
+   "He shall smart for it",
+   "He shall be repaid double",
+   "He shall go free"
+  ],
+  "answer": 1,
+  "explanation": "\"He that is surety for a stranger shall smart for it.\"",
+  "ref": "Proverbs 11:15"
+ },
+ {
+  "id": "proverbs-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what is a fair woman without discretion compared?",
+  "choices": [
+   "A lamp in a closed room",
+   "A jewel of gold in a swine's snout",
+   "A rose among thorns",
+   "A crown on a fool"
+  ],
+  "answer": 1,
+  "explanation": "\"As a jewel of gold in a swine's snout, so is a fair woman which is without discretion.\"",
+  "ref": "Proverbs 11:22"
+ },
+ {
+  "id": "proverbs-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the people do to him that withholdeth corn?",
+  "choices": [
+   "Praise him",
+   "Curse him",
+   "Pay him",
+   "Follow him"
+  ],
+  "answer": 1,
+  "explanation": "\"He that withholdeth corn, the people shall curse him: but blessing shall be upon the head of him that selleth it.\"",
+  "ref": "Proverbs 11:26"
+ },
+ {
+  "id": "proverbs-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does an hypocrite with his mouth do?",
+  "choices": [
+   "Feeds his neighbour",
+   "Warns his neighbour",
+   "Destroys his neighbour",
+   "Blesses his neighbour"
+  ],
+  "answer": 2,
+  "explanation": "\"An hypocrite with his mouth destroyeth his neighbour: but through knowledge shall the just be delivered.\"",
+  "ref": "Proverbs 11:9"
+ },
+ {
+  "id": "proverbs-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what is the city exalted and by what overthrown?",
+  "choices": [
+   "The wealth of kings; the sword of enemies",
+   "The counsel of elders; the folly of youth",
+   "The blessing of the upright; the mouth of the wicked",
+   "The strength of walls; the length of siege"
+  ],
+  "answer": 2,
+  "explanation": "\"By the blessing of the upright the city is exalted: but it is overthrown by the mouth of the wicked.\"",
+  "ref": "Proverbs 11:11"
+ },
+ {
+  "id": "proverbs-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he that is void of wisdom do to his neighbour?",
+  "choices": [
+   "Teaches him",
+   "Feeds him",
+   "Despises him",
+   "Fears him"
+  ],
+  "answer": 2,
+  "explanation": "\"He that is void of wisdom despiseth his neighbour: but a man of understanding holdeth his peace.\"",
+  "ref": "Proverbs 11:12"
+ },
+ {
+  "id": "proverbs-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom does the merciful man do good?",
+  "choices": [
+   "The king",
+   "The poor only",
+   "His own soul",
+   "His enemies"
+  ],
+  "answer": 2,
+  "explanation": "\"The merciful man doeth good to his own soul: but he that is cruel troubleth his own flesh.\"",
+  "ref": "Proverbs 11:17"
+ },
+ {
+  "id": "proverbs-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the reward of him that soweth righteousness?",
+  "choices": [
+   "A swift harvest",
+   "A large house",
+   "A sure reward",
+   "A long journey"
+  ],
+  "answer": 2,
+  "explanation": "\"The wicked worketh a deceitful work: but to him that soweth righteousness shall be a sure reward.\"",
+  "ref": "Proverbs 11:18"
+ },
+ {
+  "id": "proverbs-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does he that pursueth evil pursue it?",
+  "choices": [
+   "To the city",
+   "To the sea",
+   "To his own death",
+   "To the king"
+  ],
+  "answer": 2,
+  "explanation": "\"So he that pursueth evil pursueth it to his own death.\"",
+  "ref": "Proverbs 11:19"
+ },
+ {
+  "id": "proverbs-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who are an abomination to the LORD?",
+  "choices": [
+   "They that are poor",
+   "They that are slow",
+   "They that are of a froward heart",
+   "They that are young"
+  ],
+  "answer": 2,
+  "explanation": "\"They that are of a froward heart are abomination to the LORD.\"",
+  "ref": "Proverbs 11:20"
+ },
+ {
+  "id": "proverbs-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said though hand join in hand?",
+  "choices": [
+   "The poor shall be fed",
+   "The king shall be pleased",
+   "The wicked shall not be unpunished",
+   "The land shall rest"
+  ],
+  "answer": 2,
+  "explanation": "\"Though hand join in hand, the wicked shall not be unpunished.\"",
+  "ref": "Proverbs 11:21"
+ },
+ {
+  "id": "proverbs-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to him who withholdeth more than is meet?",
+  "choices": [
+   "He grows rich",
+   "He is honoured",
+   "It tendeth to poverty",
+   "He is forgotten"
+  ],
+  "answer": 2,
+  "explanation": "\"There is that withholdeth more than is meet, but it tendeth to poverty.\"",
+  "ref": "Proverbs 11:24"
+ },
+ {
+  "id": "proverbs-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who shall be servant to the wise of heart?",
+  "choices": [
+   "The rich",
+   "The poor",
+   "The fool",
+   "The stranger"
+  ],
+  "answer": 2,
+  "explanation": "\"The fool shall be servant to the wise of heart.\"",
+  "ref": "Proverbs 11:29"
+ },
+ {
+  "id": "proverbs-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall direct the way of the perfect?",
+  "choices": [
+   "His wealth",
+   "His counsel",
+   "His sword",
+   "His righteousness"
+  ],
+  "answer": 3,
+  "explanation": "\"The righteousness of the perfect shall direct his way.\"",
+  "ref": "Proverbs 11:5"
+ },
+ {
+  "id": "proverbs-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what shall transgressors be taken?",
+  "choices": [
+   "The net of the hunter",
+   "The snare of the king",
+   "The pit of the stranger",
+   "Their own naughtiness"
+  ],
+  "answer": 3,
+  "explanation": "\"Transgressors shall be taken in their own naughtiness.\"",
+  "ref": "Proverbs 11:6"
+ },
+ {
+  "id": "proverbs-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What perishes when a wicked man dieth?",
+  "choices": [
+   "His house",
+   "His name",
+   "His servants",
+   "His expectation"
+  ],
+  "answer": 3,
+  "explanation": "\"When a wicked man dieth, his expectation shall perish.\"",
+  "ref": "Proverbs 11:7"
+ },
+ {
+  "id": "proverbs-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who cometh in the stead of the righteous delivered out of trouble?",
+  "choices": [
+   "The simple",
+   "The stranger",
+   "The king",
+   "The wicked"
+  ],
+  "answer": 3,
+  "explanation": "\"The righteous is delivered out of trouble, and the wicked cometh in his stead.\"",
+  "ref": "Proverbs 11:8"
+ },
+ {
+  "id": "proverbs-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the cruel man trouble?",
+  "choices": [
+   "His own house",
+   "His own field",
+   "His own name",
+   "His own flesh"
+  ],
+  "answer": 3,
+  "explanation": "\"He that is cruel troubleth his own flesh.\"",
+  "ref": "Proverbs 11:17"
+ },
+ {
+  "id": "proverbs-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who are the LORD's delight?",
+  "choices": [
+   "Such as are rich in flocks",
+   "Such as are old in years",
+   "Such as are strong in battle",
+   "Such as are upright in their way"
+  ],
+  "answer": 3,
+  "explanation": "\"Such as are upright in their way are his delight.\"",
+  "ref": "Proverbs 11:20"
+ },
+ {
+  "id": "proverbs-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who shall be delivered according to verse 21?",
+  "choices": [
+   "The wise men",
+   "The kings",
+   "The poor",
+   "The seed of the righteous"
+  ],
+  "answer": 3,
+  "explanation": "\"The seed of the righteous shall be delivered.\"",
+  "ref": "Proverbs 11:21"
+ },
+ {
+  "id": "proverbs-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall come unto him that seeketh mischief?",
+  "choices": [
+   "Honour",
+   "Silver",
+   "Peace",
+   "The mischief itself"
+  ],
+  "answer": 3,
+  "explanation": "\"He that seeketh mischief, it shall come unto him.\"",
+  "ref": "Proverbs 11:27"
+ },
+ {
+  "id": "proverbs-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of him that hateth suretiship?",
+  "choices": [
+   "He is poor",
+   "He is proud",
+   "He is alone",
+   "He is sure"
+  ],
+  "answer": 3,
+  "explanation": "\"He that hateth suretiship is sure.\"",
+  "ref": "Proverbs 11:15"
+ },
+ {
+  "id": "proverbs-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the LORD's delight, besides the upright?",
+  "choices": [
+   "A full barn",
+   "A strong wall",
+   "A loud song",
+   "A just weight"
+  ],
+  "answer": 3,
+  "explanation": "\"A false balance is abomination to the LORD: but a just weight is his delight.\"",
+  "ref": "Proverbs 11:1"
+ },
+ {
+  "id": "proverbs-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the woman who maketh ashamed to her husband?",
+  "choices": [
+   "A thorn in his side",
+   "A chain on his neck",
+   "Rottenness in his bones",
+   "A burden on his back"
+  ],
+  "answer": 2,
+  "explanation": "\"A virtuous woman is a crown to her husband: but she that maketh ashamed is as rottenness in his bones.\"",
+  "ref": "Proverbs 12:4"
+ },
+ {
+  "id": "proverbs-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does a righteous man regard?",
+  "choices": [
+   "The gold of his house",
+   "The words of kings",
+   "The life of his beast",
+   "The fame of his name"
+  ],
+  "answer": 2,
+  "explanation": "\"A righteous man regardeth the life of his beast: but the tender mercies of the wicked are cruel.\"",
+  "ref": "Proverbs 12:10"
+ },
+ {
+  "id": "proverbs-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happens to him that tilleth his land?",
+  "choices": [
+   "He is made king",
+   "He is robbed",
+   "He is satisfied with bread",
+   "He is sent away"
+  ],
+  "answer": 2,
+  "explanation": "\"He that tilleth his land shall be satisfied with bread: but he that followeth vain persons is void of understanding.\"",
+  "ref": "Proverbs 12:11"
+ },
+ {
+  "id": "proverbs-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are lying lips to the LORD?",
+  "choices": [
+   "A delight",
+   "A sorrow",
+   "An abomination",
+   "A wonder"
+  ],
+  "answer": 2,
+  "explanation": "\"Lying lips are abomination to the LORD: but they that deal truly are his delight.\"",
+  "ref": "Proverbs 12:22"
+ },
+ {
+  "id": "proverbs-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall the hand of the diligent do?",
+  "choices": [
+   "Pay tribute",
+   "Gather alone",
+   "Bear rule",
+   "Fall asleep"
+  ],
+  "answer": 2,
+  "explanation": "\"The hand of the diligent shall bear rule: but the slothful shall be under tribute.\"",
+  "ref": "Proverbs 12:24"
+ },
+ {
+  "id": "proverbs-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "According to what shall a man be commended?",
+  "choices": [
+   "His wisdom",
+   "His riches",
+   "His years",
+   "His strength"
+  ],
+  "answer": 0,
+  "explanation": "\"A man shall be commended according to his wisdom: but he that is of a perverse heart shall be despised.\"",
+  "ref": "Proverbs 12:8"
+ },
+ {
+  "id": "proverbs-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who is better, according to verse 9?",
+  "choices": [
+   "He that is despised and hath a servant",
+   "He that honours himself and lacks bread",
+   "He that rules a city",
+   "He that is rich and proud"
+  ],
+  "answer": 0,
+  "explanation": "\"He that is despised, and hath a servant, is better than he that honoureth himself, and lacketh bread.\"",
+  "ref": "Proverbs 12:9"
+ },
+ {
+  "id": "proverbs-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Who is void of understanding in verse 11?",
+  "choices": [
+   "He that followeth vain persons",
+   "He that tilleth the land",
+   "He that serves a king",
+   "He that counts his silver"
+  ],
+  "answer": 0,
+  "explanation": "\"He that followeth vain persons is void of understanding.\"",
+  "ref": "Proverbs 12:11"
+ },
+ {
+  "id": "proverbs-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what is the wicked snared?",
+  "choices": [
+   "The transgression of his lips",
+   "The net of the hunter",
+   "The wrath of the king",
+   "The counsel of fools"
+  ],
+  "answer": 0,
+  "explanation": "\"The wicked is snared by the transgression of his lips: but the just shall come out of trouble.\"",
+  "ref": "Proverbs 12:13"
+ },
+ {
+  "id": "proverbs-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is presently known?",
+  "choices": [
+   "A fool's wrath",
+   "A wise man's plan",
+   "A king's decree",
+   "A thief's name"
+  ],
+  "answer": 0,
+  "explanation": "\"A fool's wrath is presently known: but a prudent man covereth shame.\"",
+  "ref": "Proverbs 12:16"
+ },
+ {
+  "id": "proverbs-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall be established for ever?",
+  "choices": [
+   "The lip of truth",
+   "The house of the wicked",
+   "The wealth of the rich",
+   "The name of the fool"
+  ],
+  "answer": 0,
+  "explanation": "\"The lip of truth shall be established for ever: but a lying tongue is but for a moment.\"",
+  "ref": "Proverbs 12:19"
+ },
+ {
+  "id": "proverbs-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is a lying tongue, in comparison?",
+  "choices": [
+   "Only for a moment",
+   "Strong for a year",
+   "Hidden for a season",
+   "Long and bitter"
+  ],
+  "answer": 0,
+  "explanation": "\"A lying tongue is but for a moment.\"",
+  "ref": "Proverbs 12:19"
+ },
+ {
+  "id": "proverbs-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does heaviness in the heart do, and what makes it glad?",
+  "choices": [
+   "Makes it stoop; a good word",
+   "Makes it weep; a gift",
+   "Makes it sleep; a song",
+   "Makes it fast; a feast"
+  ],
+  "answer": 0,
+  "explanation": "\"Heaviness in the heart of man maketh it stoop: but a good word maketh it glad.\"",
+  "ref": "Proverbs 12:25"
+ },
+ {
+  "id": "proverbs-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the slothful man not do?",
+  "choices": [
+   "Roast what he took in hunting",
+   "Plant his field",
+   "Sell his goods",
+   "Pay his tribute"
+  ],
+  "answer": 0,
+  "explanation": "\"The slothful man roasteth not that which he took in hunting.\"",
+  "ref": "Proverbs 12:27"
+ },
+ {
+  "id": "proverbs-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the righteous compared to his neighbour?",
+  "choices": [
+   "More excellent",
+   "Poorer",
+   "Older",
+   "Louder"
+  ],
+  "answer": 0,
+  "explanation": "\"The righteous is more excellent than his neighbour: but the way of the wicked seduceth them.\"",
+  "ref": "Proverbs 12:26"
+ },
+ {
+  "id": "proverbs-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the thoughts of the righteous, and the counsels of the wicked?",
+  "choices": [
+   "Strong; weakness",
+   "Hidden; open",
+   "Right; deceit",
+   "Long; short"
+  ],
+  "answer": 2,
+  "explanation": "\"The thoughts of the righteous are right: but the counsels of the wicked are deceit.\"",
+  "ref": "Proverbs 12:5"
+ },
+ {
+  "id": "proverbs-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the words of the wicked to do?",
+  "choices": [
+   "Hide from the king",
+   "Bless the poor",
+   "Lie in wait for blood",
+   "Judge the city"
+  ],
+  "answer": 2,
+  "explanation": "\"The words of the wicked are to lie in wait for blood: but the mouth of the upright shall deliver them.\"",
+  "ref": "Proverbs 12:6"
+ },
+ {
+  "id": "proverbs-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to the wicked?",
+  "choices": [
+   "They are made rich",
+   "They are healed",
+   "They are overthrown and are not",
+   "They are crowned"
+  ],
+  "answer": 2,
+  "explanation": "\"The wicked are overthrown, and are not.\"",
+  "ref": "Proverbs 12:7"
+ },
+ {
+  "id": "proverbs-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the wicked desire?",
+  "choices": [
+   "The house of the righteous",
+   "The crown of kings",
+   "The net of evil men",
+   "The fruit of the field"
+  ],
+  "answer": 2,
+  "explanation": "\"The wicked desireth the net of evil men: but the root of the righteous yieldeth fruit.\"",
+  "ref": "Proverbs 12:12"
+ },
+ {
+  "id": "proverbs-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what is a man satisfied with good?",
+  "choices": [
+   "The work of his hands only",
+   "The wealth of his house",
+   "The fruit of his mouth",
+   "The favour of kings"
+  ],
+  "answer": 2,
+  "explanation": "\"A man shall be satisfied with good by the fruit of his mouth.\"",
+  "ref": "Proverbs 12:14"
+ },
+ {
+  "id": "proverbs-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall be rendered unto a man?",
+  "choices": [
+   "The honour of his sons",
+   "The silver of his house",
+   "The recompense of his hands",
+   "The crown of the king"
+  ],
+  "answer": 2,
+  "explanation": "\"The recompense of a man's hands shall be rendered unto him.\"",
+  "ref": "Proverbs 12:14"
+ },
+ {
+  "id": "proverbs-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where is deceit found?",
+  "choices": [
+   "In the house of the rich",
+   "In the gate of the city",
+   "In the heart of them that imagine evil",
+   "In the mouth of kings"
+  ],
+  "answer": 2,
+  "explanation": "\"Deceit is in the heart of them that imagine evil.\"",
+  "ref": "Proverbs 12:20"
+ },
+ {
+  "id": "proverbs-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the way of the wicked do to them?",
+  "choices": [
+   "Feeds them",
+   "Teaches them",
+   "Seduces them",
+   "Hides them"
+  ],
+  "answer": 2,
+  "explanation": "\"The way of the wicked seduceth them.\"",
+  "ref": "Proverbs 12:26"
+ },
+ {
+  "id": "proverbs-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is precious?",
+  "choices": [
+   "The words of a talebearer",
+   "The house of a fool",
+   "The substance of a diligent man",
+   "The laughter of the idle"
+  ],
+  "answer": 2,
+  "explanation": "\"The substance of a diligent man is precious.\"",
+  "ref": "Proverbs 12:27"
+ },
+ {
+  "id": "proverbs-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is in the pathway of righteousness?",
+  "choices": [
+   "No toil",
+   "No wealth",
+   "No death",
+   "No night"
+  ],
+  "answer": 2,
+  "explanation": "\"In the way of righteousness is life; and in the pathway thereof there is no death.\"",
+  "ref": "Proverbs 12:28"
+ },
+ {
+  "id": "proverbs-13-e-01",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does he that spareth his rod do, according to the proverb?",
+  "choices": [
+   "Teaches his son",
+   "Honours his son",
+   "Fears his son",
+   "Hateth his son"
+  ],
+  "answer": 3,
+  "explanation": "\"He that spareth his rod hateth his son: but he that loveth him chasteneth him betimes.\"",
+  "ref": "Proverbs 13:24"
+ },
+ {
+  "id": "proverbs-13-e-02",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does hope deferred do?",
+  "choices": [
+   "Makes the heart glad",
+   "Makes the heart hard",
+   "Makes the heart proud",
+   "Maketh the heart sick"
+  ],
+  "answer": 3,
+  "explanation": "\"Hope deferred maketh the heart sick: but when the desire cometh, it is a tree of life.\"",
+  "ref": "Proverbs 13:12"
+ },
+ {
+  "id": "proverbs-13-e-03",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is a desire that comes, according to the proverb?",
+  "choices": [
+   "A river of peace",
+   "A crown of glory",
+   "A well of strength",
+   "A tree of life"
+  ],
+  "answer": 3,
+  "explanation": "\"When the desire cometh, it is a tree of life.\"",
+  "ref": "Proverbs 13:12"
+ },
+ {
+  "id": "proverbs-13-e-04",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said of the light of the righteous and the lamp of the wicked?",
+  "choices": [
+   "The light fades; the lamp burns on",
+   "Both are hidden",
+   "Both are put out",
+   "The light rejoices; the lamp is put out"
+  ],
+  "answer": 3,
+  "explanation": "\"The light of the righteous rejoiceth: but the lamp of the wicked shall be put out.\"",
+  "ref": "Proverbs 13:9"
+ },
+ {
+  "id": "proverbs-13-e-05",
+  "chapter": 13,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does a good man leave to his children's children?",
+  "choices": [
+   "A name only",
+   "A sword",
+   "A debt",
+   "An inheritance"
+  ],
+  "answer": 3,
+  "explanation": "\"A good man leaveth an inheritance to his children's children.\"",
+  "ref": "Proverbs 13:22"
+ },
+ {
+  "id": "proverbs-13-m-01",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what shall a man eat good?",
+  "choices": [
+   "The sweat of his brow",
+   "The gifts of kings",
+   "The fruit of his mouth",
+   "The wealth of his father"
+  ],
+  "answer": 2,
+  "explanation": "\"A man shall eat good by the fruit of his mouth: but the soul of the transgressors shall eat violence.\"",
+  "ref": "Proverbs 13:2"
+ },
+ {
+  "id": "proverbs-13-m-02",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall he have that openeth wide his lips?",
+  "choices": [
+   "Honour",
+   "Peace",
+   "Destruction",
+   "Riches"
+  ],
+  "answer": 2,
+  "explanation": "\"He that openeth wide his lips shall have destruction.\"",
+  "ref": "Proverbs 13:3"
+ },
+ {
+  "id": "proverbs-13-m-03",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the soul of the sluggard have?",
+  "choices": [
+   "Everything he asks",
+   "A little bread",
+   "Nothing though he desires",
+   "Fruit in season"
+  ],
+  "answer": 2,
+  "explanation": "\"The soul of the sluggard desireth, and hath nothing.\"",
+  "ref": "Proverbs 13:4"
+ },
+ {
+  "id": "proverbs-13-m-05",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does righteousness do for him that is upright?",
+  "choices": [
+   "Makes him rich",
+   "Makes him known",
+   "Keeps him in the way",
+   "Sets him free"
+  ],
+  "answer": 2,
+  "explanation": "\"Righteousness keepeth him that is upright in the way.\"",
+  "ref": "Proverbs 13:6"
+ },
+ {
+  "id": "proverbs-13-m-06",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is said of the one who makes himself rich?",
+  "choices": [
+   "He has great honour",
+   "He has many friends",
+   "He has nothing",
+   "He has long life"
+  ],
+  "answer": 2,
+  "explanation": "\"There is that maketh himself rich, yet hath nothing: there is that maketh himself poor, yet hath great riches.\"",
+  "ref": "Proverbs 13:7"
+ },
+ {
+  "id": "proverbs-13-m-07",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the ransom of a man's life?",
+  "choices": [
+   "His friends",
+   "His sons",
+   "His riches",
+   "His wisdom"
+  ],
+  "answer": 2,
+  "explanation": "\"The ransom of a man's life are his riches: but the poor heareth not rebuke.\"",
+  "ref": "Proverbs 13:8"
+ },
+ {
+  "id": "proverbs-13-m-08",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to whoso despiseth the word?",
+  "choices": [
+   "He shall be crowned",
+   "He shall be taught",
+   "He shall be destroyed",
+   "He shall be sent away"
+  ],
+  "answer": 2,
+  "explanation": "\"Whoso despiseth the word shall be destroyed: but he that feareth the commandment shall be rewarded.\"",
+  "ref": "Proverbs 13:13"
+ },
+ {
+  "id": "proverbs-13-m-09",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the law of the wise?",
+  "choices": [
+   "A rock of defence",
+   "A lamp for the feet",
+   "A fountain of life",
+   "A crown of grace"
+  ],
+  "answer": 2,
+  "explanation": "\"The law of the wise is a fountain of life, to depart from the snares of death.\"",
+  "ref": "Proverbs 13:14"
+ },
+ {
+  "id": "proverbs-13-m-11",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does a fool lay open?",
+  "choices": [
+   "His house",
+   "His purse",
+   "His folly",
+   "His field"
+  ],
+  "answer": 2,
+  "explanation": "\"Every prudent man dealeth with knowledge: but a fool layeth open his folly.\"",
+  "ref": "Proverbs 13:16"
+ },
+ {
+  "id": "proverbs-13-m-13",
+  "chapter": 13,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall be to him that refuseth instruction?",
+  "choices": [
+   "Silver and gold",
+   "Rest and quiet",
+   "Poverty and shame",
+   "Anger and war"
+  ],
+  "answer": 2,
+  "explanation": "\"Poverty and shame shall be to him that refuseth instruction: but he that regardeth reproof shall be honoured.\"",
+  "ref": "Proverbs 13:18"
+ },
+ {
+  "id": "proverbs-13-h-01",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is sweet to the soul?",
+  "choices": [
+   "The bread of the poor",
+   "The desire accomplished",
+   "The sleep of the diligent",
+   "The song of the wise"
+  ],
+  "answer": 1,
+  "explanation": "\"The desire accomplished is sweet to the soul.\"",
+  "ref": "Proverbs 13:19"
+ },
+ {
+  "id": "proverbs-13-h-02",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is an abomination to fools?",
+  "choices": [
+   "To sit in silence",
+   "To depart from evil",
+   "To work in the field",
+   "To hear a rebuke"
+  ],
+  "answer": 1,
+  "explanation": "\"It is abomination to fools to depart from evil.\"",
+  "ref": "Proverbs 13:19"
+ },
+ {
+  "id": "proverbs-13-h-03",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whom is the wealth of the sinner laid up?",
+  "choices": [
+   "The king",
+   "The just",
+   "The poor",
+   "His sons"
+  ],
+  "answer": 1,
+  "explanation": "\"The wealth of the sinner is laid up for the just.\"",
+  "ref": "Proverbs 13:22"
+ },
+ {
+  "id": "proverbs-13-h-04",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where is much food?",
+  "choices": [
+   "In the barns of the rich",
+   "In the tillage of the poor",
+   "In the house of the king",
+   "In the market of the city"
+  ],
+  "answer": 1,
+  "explanation": "\"Much food is in the tillage of the poor: but there is that is destroyed for want of judgment.\"",
+  "ref": "Proverbs 13:23"
+ },
+ {
+  "id": "proverbs-13-h-05",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the belly of the wicked do?",
+  "choices": [
+   "Overflow",
+   "Want",
+   "Rejoice",
+   "Sleep"
+  ],
+  "answer": 1,
+  "explanation": "\"The righteous eateth to the satisfying of his soul: but the belly of the wicked shall want.\"",
+  "ref": "Proverbs 13:25"
+ },
+ {
+  "id": "proverbs-13-h-06",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who heareth not rebuke?",
+  "choices": [
+   "The rich",
+   "The poor",
+   "The wise",
+   "The king"
+  ],
+  "answer": 1,
+  "explanation": "\"The ransom of a man's life are his riches: but the poor heareth not rebuke.\"",
+  "ref": "Proverbs 13:8"
+ },
+ {
+  "id": "proverbs-13-h-07",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who heareth not rebuke, in the first verse?",
+  "choices": [
+   "A fool",
+   "A scorner",
+   "A sluggard",
+   "A stranger"
+  ],
+  "answer": 1,
+  "explanation": "\"A wise son heareth his father's instruction: but a scorner heareth not rebuke.\"",
+  "ref": "Proverbs 13:1"
+ },
+ {
+  "id": "proverbs-13-h-08",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall he that regardeth reproof be?",
+  "choices": [
+   "Rich",
+   "Honoured",
+   "Feared",
+   "Alone"
+  ],
+  "answer": 1,
+  "explanation": "\"He that regardeth reproof shall be honoured.\"",
+  "ref": "Proverbs 13:18"
+ },
+ {
+  "id": "proverbs-13-h-09",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is a wicked man?",
+  "choices": [
+   "Strong, and he cometh to rule",
+   "Loathsome, and he cometh to shame",
+   "Rich, and he cometh to rest",
+   "Wise, and he cometh to honour"
+  ],
+  "answer": 1,
+  "explanation": "\"A wicked man is loathsome, and cometh to shame.\"",
+  "ref": "Proverbs 13:5"
+ },
+ {
+  "id": "proverbs-13-h-10",
+  "chapter": 13,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What overthroweth the sinner?",
+  "choices": [
+   "The sword",
+   "Wickedness",
+   "The flood",
+   "The king"
+  ],
+  "answer": 1,
+  "explanation": "\"Wickedness overthroweth the sinner.\"",
+  "ref": "Proverbs 13:6"
+ },
+ {
+  "id": "proverbs-14-e-01",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the foolish woman do to her house?",
+  "choices": [
+   "Plucks it down with her hands",
+   "Builds it with stone",
+   "Sells it for silver",
+   "Fills it with guests"
+  ],
+  "answer": 0,
+  "explanation": "\"Every wise woman buildeth her house: but the foolish plucketh it down with her hands.\"",
+  "ref": "Proverbs 14:1"
+ },
+ {
+  "id": "proverbs-14-e-03",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said of the heart even in laughter?",
+  "choices": [
+   "It is sorrowful",
+   "It is glad",
+   "It is hard",
+   "It is free"
+  ],
+  "answer": 0,
+  "explanation": "\"Even in laughter the heart is sorrowful; and the end of that mirth is heaviness.\"",
+  "ref": "Proverbs 14:13"
+ },
+ {
+  "id": "proverbs-14-e-04",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who believeth every word?",
+  "choices": [
+   "The simple",
+   "The wise",
+   "The prudent",
+   "The king"
+  ],
+  "answer": 0,
+  "explanation": "\"The simple believeth every word: but the prudent man looketh well to his going.\"",
+  "ref": "Proverbs 14:15"
+ },
+ {
+  "id": "proverbs-14-e-05",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who hath many friends, and who is hated even of his own neighbour?",
+  "choices": [
+   "The rich has many; the poor is hated",
+   "The poor has many; the rich is hated",
+   "The wise has many; the fool is hated",
+   "The old has many; the young is hated"
+  ],
+  "answer": 0,
+  "explanation": "\"The poor is hated even of his own neighbour: but the rich hath many friends.\"",
+  "ref": "Proverbs 14:20"
+ },
+ {
+  "id": "proverbs-14-e-06",
+  "chapter": 14,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said of the one who hath mercy on the poor?",
+  "choices": [
+   "Happy is he",
+   "Poor is he",
+   "Hated is he",
+   "Lonely is he"
+  ],
+  "answer": 0,
+  "explanation": "\"He that despiseth his neighbour sinneth: but he that hath mercy on the poor, happy is he.\"",
+  "ref": "Proverbs 14:21"
+ },
+ {
+  "id": "proverbs-14-m-01",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is in the mouth of the foolish?",
+  "choices": [
+   "A word of grace",
+   "A rod of pride",
+   "A song of praise",
+   "A seed of wisdom"
+  ],
+  "answer": 1,
+  "explanation": "\"In the mouth of the foolish is a rod of pride: but the lips of the wise shall preserve them.\"",
+  "ref": "Proverbs 14:3"
+ },
+ {
+  "id": "proverbs-14-m-02",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who feareth the LORD, according to verse 2?",
+  "choices": [
+   "He that walks in great riches",
+   "He that walketh in his uprightness",
+   "He that walks with kings",
+   "He that walks alone"
+  ],
+  "answer": 1,
+  "explanation": "\"He that walketh in his uprightness feareth the LORD.\"",
+  "ref": "Proverbs 14:2"
+ },
+ {
+  "id": "proverbs-14-m-04",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the son told to do when he perceives not the lips of knowledge in a foolish man?",
+  "choices": [
+   "Teach him",
+   "Go from his presence",
+   "Mock him",
+   "Pay him"
+  ],
+  "answer": 1,
+  "explanation": "\"Go from the presence of a foolish man, when thou perceivest not in him the lips of knowledge.\"",
+  "ref": "Proverbs 14:7"
+ },
+ {
+  "id": "proverbs-14-m-06",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the heart know?",
+  "choices": [
+   "The future",
+   "Its own bitterness",
+   "The poor",
+   "The law"
+  ],
+  "answer": 1,
+  "explanation": "\"The heart knoweth his own bitterness; and a stranger doth not intermeddle with his joy.\"",
+  "ref": "Proverbs 14:10"
+ },
+ {
+  "id": "proverbs-14-m-07",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall happen to the house of the wicked and the tabernacle of the upright?",
+  "choices": [
+   "The house flourishes; the tabernacle falls",
+   "The house is overthrown; the tabernacle flourishes",
+   "Both are overthrown",
+   "Both are rebuilt"
+  ],
+  "answer": 1,
+  "explanation": "\"The house of the wicked shall be overthrown: but the tabernacle of the upright shall flourish.\"",
+  "ref": "Proverbs 14:11"
+ },
+ {
+  "id": "proverbs-14-m-08",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what shall the backslider in heart be filled?",
+  "choices": [
+   "Bread and wine",
+   "His own ways",
+   "Silver",
+   "Shame only"
+  ],
+  "answer": 1,
+  "explanation": "\"The backslider in heart shall be filled with his own ways.\"",
+  "ref": "Proverbs 14:14"
+ },
+ {
+  "id": "proverbs-14-m-09",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the prudent man look well to?",
+  "choices": [
+   "His house",
+   "His going",
+   "His flocks",
+   "His neighbour"
+  ],
+  "answer": 1,
+  "explanation": "\"The prudent man looketh well to his going.\"",
+  "ref": "Proverbs 14:15"
+ },
+ {
+  "id": "proverbs-14-m-10",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the fool do, while the wise man departs from evil?",
+  "choices": [
+   "Weeps and is afraid",
+   "Rageth and is confident",
+   "Sleeps and is calm",
+   "Hides and is silent"
+  ],
+  "answer": 1,
+  "explanation": "\"A wise man feareth, and departeth from evil: but the fool rageth, and is confident.\"",
+  "ref": "Proverbs 14:16"
+ },
+ {
+  "id": "proverbs-14-m-11",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does he that is soon angry do?",
+  "choices": [
+   "Dealeth wisely",
+   "Dealeth foolishly",
+   "Dealeth justly",
+   "Dealeth quickly"
+  ],
+  "answer": 1,
+  "explanation": "\"He that is soon angry dealeth foolishly.\"",
+  "ref": "Proverbs 14:17"
+ },
+ {
+  "id": "proverbs-14-m-12",
+  "chapter": 14,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the simple inherit, and with what are the prudent crowned?",
+  "choices": [
+   "Silver; honour",
+   "Folly; knowledge",
+   "Poverty; wealth",
+   "Sorrow; joy"
+  ],
+  "answer": 1,
+  "explanation": "\"The simple inherit folly: but the prudent are crowned with knowledge.\"",
+  "ref": "Proverbs 14:18"
+ },
+ {
+  "id": "proverbs-14-h-02",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the wisdom of the prudent?",
+  "choices": [
+   "To gather riches",
+   "To rule the city",
+   "To understand his way",
+   "To keep silence"
+  ],
+  "answer": 2,
+  "explanation": "\"The wisdom of the prudent is to understand his way: but the folly of fools is deceit.\"",
+  "ref": "Proverbs 14:8"
+ },
+ {
+  "id": "proverbs-14-h-03",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who does not intermeddle with a man's joy?",
+  "choices": [
+   "His friend",
+   "His brother",
+   "A stranger",
+   "The king"
+  ],
+  "answer": 2,
+  "explanation": "\"A stranger doth not intermeddle with his joy.\"",
+  "ref": "Proverbs 14:10"
+ },
+ {
+  "id": "proverbs-14-h-04",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From whom shall a good man be satisfied?",
+  "choices": [
+   "From the king",
+   "From his neighbour",
+   "From himself",
+   "From the poor"
+  ],
+  "answer": 2,
+  "explanation": "\"A good man shall be satisfied from himself.\"",
+  "ref": "Proverbs 14:14"
+ },
+ {
+  "id": "proverbs-14-h-05",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where do the wicked bow before the good?",
+  "choices": [
+   "At the court of the king",
+   "At the altar of the LORD",
+   "At the gates of the righteous",
+   "At the feast of the city"
+  ],
+  "answer": 2,
+  "explanation": "\"The evil bow before the good; and the wicked at the gates of the righteous.\"",
+  "ref": "Proverbs 14:19"
+ },
+ {
+  "id": "proverbs-14-h-06",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who sinneth, according to verse 21?",
+  "choices": [
+   "He that gives to the poor",
+   "He that works",
+   "He that despiseth his neighbour",
+   "He that rests"
+  ],
+  "answer": 2,
+  "explanation": "\"He that despiseth his neighbour sinneth.\"",
+  "ref": "Proverbs 14:21"
+ },
+ {
+  "id": "proverbs-14-h-07",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question is asked of those that devise evil?",
+  "choices": [
+   "Do they not prosper?",
+   "Do they not repent?",
+   "Do they not err?",
+   "Do they not rule?"
+  ],
+  "answer": 2,
+  "explanation": "\"Do they not err that devise evil? but mercy and truth shall be to them that devise good.\"",
+  "ref": "Proverbs 14:22"
+ },
+ {
+  "id": "proverbs-14-h-08",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the crown of the wise?",
+  "choices": [
+   "Their children",
+   "Their years",
+   "Their riches",
+   "Their law"
+  ],
+  "answer": 2,
+  "explanation": "\"The crown of the wise is their riches: but the foolishness of fools is folly.\"",
+  "ref": "Proverbs 14:24"
+ },
+ {
+  "id": "proverbs-14-h-09",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall his children have in the fear of the LORD?",
+  "choices": [
+   "A great inheritance",
+   "A long life",
+   "A place of refuge",
+   "A crown of gold"
+  ],
+  "answer": 2,
+  "explanation": "\"His children shall have a place of refuge.\"",
+  "ref": "Proverbs 14:26"
+ },
+ {
+  "id": "proverbs-14-h-10",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what is the king's honour?",
+  "choices": [
+   "In the strength of his army",
+   "In the wealth of his house",
+   "In the multitude of people",
+   "In the length of his reign"
+  ],
+  "answer": 2,
+  "explanation": "\"In the multitude of people is the king's honour: but in the want of people is the destruction of the prince.\"",
+  "ref": "Proverbs 14:28"
+ },
+ {
+  "id": "proverbs-14-h-11",
+  "chapter": 14,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what does the righteous have hope?",
+  "choices": [
+   "In his riches",
+   "In his sons",
+   "In his death",
+   "In his house"
+  ],
+  "answer": 2,
+  "explanation": "\"The wicked is driven away in his wickedness: but the righteous hath hope in his death.\"",
+  "ref": "Proverbs 14:32"
+ },
+ {
+  "id": "proverbs-15-e-01",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is better, according to the proverb about the fear of the LORD?",
+  "choices": [
+   "Little with the fear of the LORD",
+   "Great treasure with trouble",
+   "Much with pride",
+   "A house full of feasting"
+  ],
+  "answer": 0,
+  "explanation": "\"Better is little with the fear of the LORD than great treasure and trouble therewith.\"",
+  "ref": "Proverbs 15:16"
+ },
+ {
+  "id": "proverbs-15-e-02",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is better than a stalled ox?",
+  "choices": [
+   "A dinner of herbs where love is",
+   "A feast where wine flows",
+   "A house of cedar",
+   "A field of grain"
+  ],
+  "answer": 0,
+  "explanation": "\"Better is a dinner of herbs where love is, than a stalled ox and hatred therewith.\"",
+  "ref": "Proverbs 15:17"
+ },
+ {
+  "id": "proverbs-15-e-03",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what is the way of the slothful man compared?",
+  "choices": [
+   "An hedge of thorns",
+   "A winding river",
+   "A dark cave",
+   "A broken wall"
+  ],
+  "answer": 0,
+  "explanation": "\"The way of the slothful man is as an hedge of thorns: but the way of the righteous is made plain.\"",
+  "ref": "Proverbs 15:19"
+ },
+ {
+  "id": "proverbs-15-e-04",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said of a word spoken in due season?",
+  "choices": [
+   "How good it is",
+   "How short it is",
+   "How rare it is",
+   "How costly it is"
+  ],
+  "answer": 0,
+  "explanation": "\"A word spoken in due season, how good is it!\"",
+  "ref": "Proverbs 15:23"
+ },
+ {
+  "id": "proverbs-15-e-06",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the LORD do to the house of the proud and the border of the widow?",
+  "choices": [
+   "Destroy the house; establish the border",
+   "Establish the house; destroy the border",
+   "Bless both",
+   "Judge both"
+  ],
+  "answer": 0,
+  "explanation": "\"The LORD will destroy the house of the proud: but he will establish the border of the widow.\"",
+  "ref": "Proverbs 15:25"
+ },
+ {
+  "id": "proverbs-15-e-07",
+  "chapter": 15,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is an abomination to the LORD, and what is his delight?",
+  "choices": [
+   "The sacrifice of the wicked; the prayer of the upright",
+   "The prayer of the wicked; the sacrifice of the upright",
+   "The feast of kings; the song of the poor",
+   "The gold of the rich; the work of the poor"
+  ],
+  "answer": 0,
+  "explanation": "\"The sacrifice of the wicked is an abomination to the LORD: but the prayer of the upright is his delight.\"",
+  "ref": "Proverbs 15:8"
+ },
+ {
+  "id": "proverbs-15-m-01",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do grievous words do?",
+  "choices": [
+   "Turn away wrath",
+   "Stir up anger",
+   "Bring peace",
+   "Feed the poor"
+  ],
+  "answer": 1,
+  "explanation": "\"A soft answer turneth away wrath: but grievous words stir up anger.\"",
+  "ref": "Proverbs 15:1"
+ },
+ {
+  "id": "proverbs-15-m-03",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who is prudent, as opposed to the fool who despises his father's instruction?",
+  "choices": [
+   "He that works at night",
+   "He that regardeth reproof",
+   "He that hoards silver",
+   "He that rules the house"
+  ],
+  "answer": 1,
+  "explanation": "\"A fool despiseth his father's instruction: but he that regardeth reproof is prudent.\"",
+  "ref": "Proverbs 15:5"
+ },
+ {
+  "id": "proverbs-15-m-04",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is in the house of the righteous?",
+  "choices": [
+   "Great fear",
+   "Much treasure",
+   "Many idols",
+   "Empty barns"
+  ],
+  "answer": 1,
+  "explanation": "\"In the house of the righteous is much treasure: but in the revenues of the wicked is trouble.\"",
+  "ref": "Proverbs 15:6"
+ },
+ {
+  "id": "proverbs-15-m-06",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the way of the wicked to the LORD?",
+  "choices": [
+   "A delight",
+   "An abomination",
+   "A wonder",
+   "A sorrow"
+  ],
+  "answer": 1,
+  "explanation": "\"The way of the wicked is an abomination unto the LORD: but he loveth him that followeth after righteousness.\"",
+  "ref": "Proverbs 15:9"
+ },
+ {
+  "id": "proverbs-15-m-07",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom is correction grievous?",
+  "choices": [
+   "Him that follows the way",
+   "Him that forsaketh the way",
+   "Him that rules the way",
+   "Him that guards the way"
+  ],
+  "answer": 1,
+  "explanation": "\"Correction is grievous unto him that forsaketh the way: and he that hateth reproof shall die.\"",
+  "ref": "Proverbs 15:10"
+ },
+ {
+  "id": "proverbs-15-m-08",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are before the LORD, and how much more the hearts of men?",
+  "choices": [
+   "Heaven and earth",
+   "Hell and destruction",
+   "Silver and gold",
+   "Kings and princes"
+  ],
+  "answer": 1,
+  "explanation": "\"Hell and destruction are before the LORD: how much more then the hearts of the children of men?\"",
+  "ref": "Proverbs 15:11"
+ },
+ {
+  "id": "proverbs-15-m-09",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does a scorner not love?",
+  "choices": [
+   "One that feeds him",
+   "One that reproveth him",
+   "One that follows him",
+   "One that pities him"
+  ],
+  "answer": 1,
+  "explanation": "\"A scorner loveth not one that reproveth him: neither will he go unto the wise.\"",
+  "ref": "Proverbs 15:12"
+ },
+ {
+  "id": "proverbs-15-m-12",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what does a man have joy?",
+  "choices": [
+   "The labour of his hands",
+   "The answer of his mouth",
+   "The wealth of his house",
+   "The favour of kings"
+  ],
+  "answer": 1,
+  "explanation": "\"A man hath joy by the answer of his mouth.\"",
+  "ref": "Proverbs 15:23"
+ },
+ {
+  "id": "proverbs-15-m-13",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where is the way of life for the wise?",
+  "choices": [
+   "Below, that he may find silver",
+   "Above, that he may depart from hell beneath",
+   "In the city, that he may rule",
+   "In the field, that he may rest"
+  ],
+  "answer": 1,
+  "explanation": "\"The way of life is above to the wise, that he may depart from hell beneath.\"",
+  "ref": "Proverbs 15:24"
+ },
+ {
+  "id": "proverbs-15-m-14",
+  "chapter": 15,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the thoughts of the wicked to the LORD?",
+  "choices": [
+   "A mystery",
+   "An abomination",
+   "A delight",
+   "A burden"
+  ],
+  "answer": 1,
+  "explanation": "\"The thoughts of the wicked are an abomination to the LORD: but the words of the pure are pleasant words.\"",
+  "ref": "Proverbs 15:26"
+ },
+ {
+  "id": "proverbs-15-h-01",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is perverseness in a wholesome tongue?",
+  "choices": [
+   "A crack in the wall",
+   "A thorn in the foot",
+   "A breach in the spirit",
+   "A cloud on the sun"
+  ],
+  "answer": 2,
+  "explanation": "\"A wholesome tongue is a tree of life: but perverseness therein is a breach in the spirit.\"",
+  "ref": "Proverbs 15:4"
+ },
+ {
+  "id": "proverbs-15-h-04",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What breaks the spirit?",
+  "choices": [
+   "Labour of the hands",
+   "Length of days",
+   "Sorrow of the heart",
+   "Loss of silver"
+  ],
+  "answer": 2,
+  "explanation": "\"By sorrow of the heart the spirit is broken.\"",
+  "ref": "Proverbs 15:13"
+ },
+ {
+  "id": "proverbs-15-h-06",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he that is greedy of gain trouble?",
+  "choices": [
+   "His neighbour",
+   "His field",
+   "His own house",
+   "The poor"
+  ],
+  "answer": 2,
+  "explanation": "\"He that is greedy of gain troubleth his own house; but he that hateth gifts shall live.\"",
+  "ref": "Proverbs 15:27"
+ },
+ {
+  "id": "proverbs-15-h-08",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the heart of the righteous do before answering?",
+  "choices": [
+   "Prays for silver",
+   "Looks for friends",
+   "Studieth to answer",
+   "Hides the matter"
+  ],
+  "answer": 2,
+  "explanation": "\"The heart of the righteous studieth to answer: but the mouth of the wicked poureth out evil things.\"",
+  "ref": "Proverbs 15:28"
+ },
+ {
+  "id": "proverbs-15-h-09",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What rejoices the heart, and what makes the bones fat?",
+  "choices": [
+   "A full table; a quiet house",
+   "A loud song; a long feast",
+   "The light of the eyes; a good report",
+   "A new coat; a fair name"
+  ],
+  "answer": 2,
+  "explanation": "\"The light of the eyes rejoiceth the heart: and a good report maketh the bones fat.\"",
+  "ref": "Proverbs 15:30"
+ },
+ {
+  "id": "proverbs-15-h-10",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Among whom does the ear that heareth reproof abide?",
+  "choices": [
+   "The rich",
+   "The kings",
+   "The wise",
+   "The poor"
+  ],
+  "answer": 2,
+  "explanation": "\"The ear that heareth the reproof of life abideth among the wise.\"",
+  "ref": "Proverbs 15:31"
+ },
+ {
+  "id": "proverbs-15-h-11",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does he despise who refuseth instruction?",
+  "choices": [
+   "His father",
+   "His neighbour",
+   "His own soul",
+   "The king"
+  ],
+  "answer": 2,
+  "explanation": "\"He that refuseth instruction despiseth his own soul: but he that heareth reproof getteth understanding.\"",
+  "ref": "Proverbs 15:32"
+ },
+ {
+  "id": "proverbs-15-h-12",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the instruction of wisdom?",
+  "choices": [
+   "The counsel of kings",
+   "The strength of the ox",
+   "The fear of the LORD",
+   "The words of the old"
+  ],
+  "answer": 2,
+  "explanation": "\"The fear of the LORD is the instruction of wisdom.\"",
+  "ref": "Proverbs 15:33"
+ },
+ {
+  "id": "proverbs-15-h-13",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the words of the pure?",
+  "choices": [
+   "Hard words",
+   "Secret words",
+   "Pleasant words",
+   "Many words"
+  ],
+  "answer": 2,
+  "explanation": "\"The words of the pure are pleasant words.\"",
+  "ref": "Proverbs 15:26"
+ },
+ {
+  "id": "proverbs-15-h-14",
+  "chapter": 15,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does the LORD love?",
+  "choices": [
+   "Him that gives gold",
+   "Him that rules well",
+   "Him that followeth after righteousness",
+   "Him that fasts often"
+  ],
+  "answer": 2,
+  "explanation": "\"He loveth him that followeth after righteousness.\"",
+  "ref": "Proverbs 15:9"
+ },
+ {
+  "id": "proverbs-16-e-01",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For whom has the LORD made all things?",
+  "choices": [
+   "For kings",
+   "For the righteous",
+   "For himself",
+   "For the angels"
+  ],
+  "answer": 2,
+  "explanation": "\"The LORD hath made all things for himself: yea, even the wicked for the day of evil.\"",
+  "ref": "Proverbs 16:4"
+ },
+ {
+  "id": "proverbs-16-e-02",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does a man's heart devise, and who directs his steps?",
+  "choices": [
+   "His fortune; the king",
+   "His house; the priest",
+   "His way; the LORD",
+   "His work; the elders"
+  ],
+  "answer": 2,
+  "explanation": "\"A man's heart deviseth his way: but the LORD directeth his steps.\"",
+  "ref": "Proverbs 16:9"
+ },
+ {
+  "id": "proverbs-16-e-03",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is better than great revenues without right?",
+  "choices": [
+   "A great house with peace",
+   "Silver with honour",
+   "A little with righteousness",
+   "A long road with friends"
+  ],
+  "answer": 2,
+  "explanation": "\"Better is a little with righteousness than great revenues without right.\"",
+  "ref": "Proverbs 16:8"
+ },
+ {
+  "id": "proverbs-16-e-05",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is better than to divide the spoil with the proud?",
+  "choices": [
+   "To rule a city with kings",
+   "To sit in judgment",
+   "To be of an humble spirit with the lowly",
+   "To sleep in a palace"
+  ],
+  "answer": 2,
+  "explanation": "\"Better it is to be of an humble spirit with the lowly, than to divide the spoil with the proud.\"",
+  "ref": "Proverbs 16:19"
+ },
+ {
+  "id": "proverbs-16-e-06",
+  "chapter": 16,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who is happy, according to verse 20?",
+  "choices": [
+   "Whoso counts his silver",
+   "Whoso rules a city",
+   "Whoso trusteth in the LORD",
+   "Whoso sleeps long"
+  ],
+  "answer": 2,
+  "explanation": "\"He that handleth a matter wisely shall find good: and whoso trusteth in the LORD, happy is he.\"",
+  "ref": "Proverbs 16:20"
+ },
+ {
+  "id": "proverbs-16-m-01",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is every one that is proud in heart to the LORD?",
+  "choices": [
+   "A delight",
+   "A sorrow",
+   "A wonder",
+   "An abomination"
+  ],
+  "answer": 3,
+  "explanation": "\"Every one that is proud in heart is an abomination to the LORD: though hand join in hand, he shall not be unpunished.\"",
+  "ref": "Proverbs 16:5"
+ },
+ {
+  "id": "proverbs-16-m-02",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what is iniquity purged?",
+  "choices": [
+   "Gold and silver",
+   "Fire and water",
+   "Law and sacrifice",
+   "Mercy and truth"
+  ],
+  "answer": 3,
+  "explanation": "\"By mercy and truth iniquity is purged: and by the fear of the LORD men depart from evil.\"",
+  "ref": "Proverbs 16:6"
+ },
+ {
+  "id": "proverbs-16-m-03",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what do men depart from evil?",
+  "choices": [
+   "The counsel of kings",
+   "The law of the elders",
+   "The fear of death",
+   "The fear of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "\"By the fear of the LORD men depart from evil.\"",
+  "ref": "Proverbs 16:6"
+ },
+ {
+  "id": "proverbs-16-m-04",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD do when a man's ways please him?",
+  "choices": [
+   "Gives him a crown",
+   "Sends him far away",
+   "Makes him a judge",
+   "Makes even his enemies be at peace with him"
+  ],
+  "answer": 3,
+  "explanation": "\"When a man's ways please the LORD, he maketh even his enemies to be at peace with him.\"",
+  "ref": "Proverbs 16:7"
+ },
+ {
+  "id": "proverbs-16-m-05",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose are a just weight and balance?",
+  "choices": [
+   "The merchant's",
+   "The king's",
+   "The priest's",
+   "The LORD's"
+  ],
+  "answer": 3,
+  "explanation": "\"A just weight and balance are the LORD'S: all the weights of the bag are his work.\"",
+  "ref": "Proverbs 16:11"
+ },
+ {
+  "id": "proverbs-16-m-06",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is in the lips of the king?",
+  "choices": [
+   "A hidden word",
+   "A cruel law",
+   "A secret oath",
+   "A divine sentence"
+  ],
+  "answer": 3,
+  "explanation": "\"A divine sentence is in the lips of the king: his mouth transgresseth not in judgment.\"",
+  "ref": "Proverbs 16:10"
+ },
+ {
+  "id": "proverbs-16-m-08",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the delight of kings?",
+  "choices": [
+   "Loud songs",
+   "Rich gifts",
+   "Strong walls",
+   "Righteous lips"
+  ],
+  "answer": 3,
+  "explanation": "\"Righteous lips are the delight of kings; and they love him that speaketh right.\"",
+  "ref": "Proverbs 16:13"
+ },
+ {
+  "id": "proverbs-16-m-09",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The wrath of a king is as what?",
+  "choices": [
+   "A roaring lion",
+   "A flood in spring",
+   "A fire in the field",
+   "Messengers of death"
+  ],
+  "answer": 3,
+  "explanation": "\"The wrath of a king is as messengers of death: but a wise man will pacify it.\"",
+  "ref": "Proverbs 16:14"
+ },
+ {
+  "id": "proverbs-16-m-10",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what is the king's favour compared?",
+  "choices": [
+   "A morning dew",
+   "A river in the desert",
+   "A tree by the water",
+   "A cloud of the latter rain"
+  ],
+  "answer": 3,
+  "explanation": "\"In the light of the king's countenance is life; and his favour is as a cloud of the latter rain.\"",
+  "ref": "Proverbs 16:15"
+ },
+ {
+  "id": "proverbs-16-m-11",
+  "chapter": 16,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the highway of the upright?",
+  "choices": [
+   "To rule with wisdom",
+   "To journey to the city",
+   "To cry at the gates",
+   "To depart from evil"
+  ],
+  "answer": 3,
+  "explanation": "\"The highway of the upright is to depart from evil: he that keepeth his way preserveth his soul.\"",
+  "ref": "Proverbs 16:17"
+ },
+ {
+  "id": "proverbs-16-h-01",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How do a man's ways seem to him, while the LORD weighs the spirits?",
+  "choices": [
+   "Clean in his own eyes",
+   "Hidden from his neighbour",
+   "Heavy on his shoulders",
+   "Far from the king"
+  ],
+  "answer": 0,
+  "explanation": "\"All the ways of a man are clean in his own eyes; but the LORD weigheth the spirits.\"",
+  "ref": "Proverbs 16:2"
+ },
+ {
+  "id": "proverbs-16-h-02",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall be established when works are committed unto the LORD?",
+  "choices": [
+   "Thy thoughts",
+   "Thy house",
+   "Thy name",
+   "Thy land"
+  ],
+  "answer": 0,
+  "explanation": "\"Commit thy works unto the LORD, and thy thoughts shall be established.\"",
+  "ref": "Proverbs 16:3"
+ },
+ {
+  "id": "proverbs-16-h-03",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what has the LORD made even the wicked?",
+  "choices": [
+   "The day of evil",
+   "The day of harvest",
+   "The day of rest",
+   "The day of feast"
+  ],
+  "answer": 0,
+  "explanation": "\"The LORD hath made all things for himself: yea, even the wicked for the day of evil.\"",
+  "ref": "Proverbs 16:4"
+ },
+ {
+  "id": "proverbs-16-h-05",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who can pacify the wrath of a king?",
+  "choices": [
+   "A wise man",
+   "A strong man",
+   "A rich man",
+   "A young man"
+  ],
+  "answer": 0,
+  "explanation": "\"The wrath of a king is as messengers of death: but a wise man will pacify it.\"",
+  "ref": "Proverbs 16:14"
+ },
+ {
+  "id": "proverbs-16-h-06",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he that keepeth his way preserve?",
+  "choices": [
+   "His soul",
+   "His house",
+   "His name",
+   "His silver"
+  ],
+  "answer": 0,
+  "explanation": "\"He that keepeth his way preserveth his soul.\"",
+  "ref": "Proverbs 16:17"
+ },
+ {
+  "id": "proverbs-16-h-07",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What increaseth learning?",
+  "choices": [
+   "The sweetness of the lips",
+   "The length of years",
+   "The wealth of kings",
+   "The silence of fools"
+  ],
+  "answer": 0,
+  "explanation": "\"The sweetness of the lips increaseth learning.\"",
+  "ref": "Proverbs 16:21"
+ },
+ {
+  "id": "proverbs-16-h-09",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whom does he that laboureth labour?",
+  "choices": [
+   "For himself",
+   "For his master",
+   "For the king",
+   "For his sons"
+  ],
+  "answer": 0,
+  "explanation": "\"He that laboureth laboureth for himself; for his mouth craveth it of him.\"",
+  "ref": "Proverbs 16:26"
+ },
+ {
+  "id": "proverbs-16-h-12",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does a violent man entice?",
+  "choices": [
+   "His neighbour",
+   "The king",
+   "The stranger",
+   "The poor"
+  ],
+  "answer": 0,
+  "explanation": "\"A violent man enticeth his neighbour, and leadeth him into the way that is not good.\"",
+  "ref": "Proverbs 16:29"
+ },
+ {
+  "id": "proverbs-16-h-13",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he do who shutteth his eyes?",
+  "choices": [
+   "Devises froward things",
+   "Gives to the poor",
+   "Seeks counsel",
+   "Keeps the law"
+  ],
+  "answer": 0,
+  "explanation": "\"He shutteth his eyes to devise froward things: moving his lips he bringeth evil to pass.\"",
+  "ref": "Proverbs 16:30"
+ },
+ {
+  "id": "proverbs-16-h-14",
+  "chapter": 16,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who disposes the whole of the lot?",
+  "choices": [
+   "The LORD",
+   "The king",
+   "The priest",
+   "The lowly"
+  ],
+  "answer": 0,
+  "explanation": "\"The whole disposing thereof is of the LORD.\"",
+  "ref": "Proverbs 16:33"
+ },
+ {
+  "id": "proverbs-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things is wisdom to be sought like?",
+  "choices": [
+   "Gold and precious stones",
+   "Pearls and fine linen",
+   "Oil and wine",
+   "Silver and hid treasures"
+  ],
+  "answer": 3,
+  "explanation": "\"If thou seekest her as silver, and searchest for her as for hid treasures.\"",
+  "ref": "Proverbs 2:4"
+ },
+ {
+  "id": "proverbs-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom is the LORD a buckler?",
+  "choices": [
+   "Kings and rulers",
+   "The simple and the young",
+   "Those who bring offerings",
+   "Them that walk uprightly"
+  ],
+  "answer": 3,
+  "explanation": "\"He is a buckler to them that walk uprightly.\"",
+  "ref": "Proverbs 2:7"
+ },
+ {
+  "id": "proverbs-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD lay up for the righteous?",
+  "choices": [
+   "Great treasure",
+   "Sound wisdom",
+   "A long life",
+   "A crown of honour"
+  ],
+  "answer": 1,
+  "explanation": "\"He layeth up sound wisdom for the righteous.\"",
+  "ref": "Proverbs 2:7"
+ },
+ {
+  "id": "proverbs-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "From whom will wisdom deliver the young man, who flatters with her words?",
+  "choices": [
+   "The foolish king",
+   "The false prophet",
+   "The strange woman",
+   "The wicked judge"
+  ],
+  "answer": 2,
+  "explanation": "\"To deliver thee from the strange woman, even from the stranger which flattereth with her words.\"",
+  "ref": "Proverbs 2:16"
+ },
+ {
+  "id": "proverbs-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Toward what does the strange woman's house incline?",
+  "choices": [
+   "The city gates",
+   "A far country",
+   "Death",
+   "The wilderness"
+  ],
+  "answer": 2,
+  "explanation": "\"For her house inclineth unto death, and her paths unto the dead.\"",
+  "ref": "Proverbs 2:18"
+ },
+ {
+  "id": "proverbs-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is said of everyone who goes unto the strange woman?",
+  "choices": [
+   "All are forgiven",
+   "Most escape in time",
+   "None return again",
+   "They return wiser"
+  ],
+  "answer": 2,
+  "explanation": "\"None that go unto her return again, neither take they hold of the paths of life.\"",
+  "ref": "Proverbs 2:19"
+ },
+ {
+  "id": "proverbs-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall happen to the wicked?",
+  "choices": [
+   "They shall be given a second chance",
+   "They shall wander in the wilderness",
+   "They shall be cut off from the earth",
+   "They shall be made servants"
+  ],
+  "answer": 2,
+  "explanation": "\"The wicked shall be cut off from the earth, and the transgressors shall be rooted out of it.\"",
+  "ref": "Proverbs 2:22"
+ },
+ {
+  "id": "proverbs-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the son told to hide with him?",
+  "choices": [
+   "My commandments",
+   "My silver",
+   "My sword",
+   "My secrets from the king"
+  ],
+  "answer": 0,
+  "explanation": "\"My son, if thou wilt receive my words, and hide my commandments with thee.\"",
+  "ref": "Proverbs 2:1"
+ },
+ {
+  "id": "proverbs-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the son to incline toward wisdom, and what to apply to understanding?",
+  "choices": [
+   "His ear and his heart",
+   "His hand and his foot",
+   "His eyes and his mouth",
+   "His knees and his voice"
+  ],
+  "answer": 0,
+  "explanation": "\"Incline thine ear unto wisdom, and apply thine heart to understanding.\"",
+  "ref": "Proverbs 2:2"
+ },
+ {
+  "id": "proverbs-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If the son cries after knowledge, what else does he do?",
+  "choices": [
+   "Lifts up his voice for understanding",
+   "Fasts for forty days",
+   "Goes up to the temple",
+   "Gives away his goods"
+  ],
+  "answer": 0,
+  "explanation": "\"If thou criest after knowledge, and liftest up thy voice for understanding.\"",
+  "ref": "Proverbs 2:3"
+ },
+ {
+  "id": "proverbs-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If the son seeks wisdom like treasure, what shall he understand?",
+  "choices": [
+   "The fear of the LORD and the knowledge of God",
+   "The riddles of the wise",
+   "The ways of kings",
+   "The stars of heaven"
+  ],
+  "answer": 0,
+  "explanation": "\"Then shalt thou understand the fear of the LORD, and find the knowledge of God.\"",
+  "ref": "Proverbs 2:5"
+ },
+ {
+  "id": "proverbs-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of whose mouth do knowledge and understanding come?",
+  "choices": [
+   "The king's",
+   "The LORD's",
+   "The elders'",
+   "The father's"
+  ],
+  "answer": 1,
+  "explanation": "\"The LORD giveth wisdom: out of his mouth cometh knowledge and understanding.\"",
+  "ref": "Proverbs 2:6"
+ },
+ {
+  "id": "proverbs-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD keep and preserve?",
+  "choices": [
+   "The gates of the city",
+   "The flocks of the field",
+   "The treasures of kings",
+   "The paths of judgment and the way of his saints"
+  ],
+  "answer": 3,
+  "explanation": "\"He keepeth the paths of judgment, and preserveth the way of his saints.\"",
+  "ref": "Proverbs 2:8"
+ },
+ {
+  "id": "proverbs-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do evil men leave, and what do they walk in?",
+  "choices": [
+   "The house of God; the way of kings",
+   "The fields; the city streets",
+   "The law; the wilderness",
+   "The paths of uprightness; the ways of darkness"
+  ],
+  "answer": 3,
+  "explanation": "\"Who leave the paths of uprightness, to walk in the ways of darkness.\"",
+  "ref": "Proverbs 2:13"
+ },
+ {
+  "id": "proverbs-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the strange woman forsake?",
+  "choices": [
+   "Her father's house",
+   "The king's court",
+   "The guide of her youth",
+   "Her inheritance"
+  ],
+  "answer": 2,
+  "explanation": "\"Which forsaketh the guide of her youth, and forgetteth the covenant of her God.\"",
+  "ref": "Proverbs 2:17"
+ },
+ {
+  "id": "proverbs-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose way is the son told to walk in, and whose paths to keep?",
+  "choices": [
+   "Kings; the priests",
+   "Prophets; the elders",
+   "Good men; the righteous",
+   "Old men; the simple"
+  ],
+  "answer": 2,
+  "explanation": "\"That thou mayest walk in the way of good men, and keep the paths of the righteous.\"",
+  "ref": "Proverbs 2:20"
+ },
+ {
+  "id": "proverbs-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who shall be rooted out of the earth?",
+  "choices": [
+   "The simple",
+   "The strangers",
+   "The transgressors",
+   "The scorners"
+  ],
+  "answer": 2,
+  "explanation": "\"The transgressors shall be rooted out of it.\"",
+  "ref": "Proverbs 2:22"
+ },
+ {
+  "id": "proverbs-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the son understand when wisdom enters his heart, besides righteousness?",
+  "choices": [
+   "Riches, honour and long life",
+   "The law, the prophets and the psalms",
+   "Peace, strength and victory",
+   "Judgment, equity and every good path"
+  ],
+  "answer": 3,
+  "explanation": "\"Then shalt thou understand righteousness, and judgment, and equity; yea, every good path.\"",
+  "ref": "Proverbs 2:9"
+ },
+ {
+  "id": "proverbs-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do those who go to her fail to take hold of?",
+  "choices": [
+   "The covenant of God",
+   "The law of their fathers",
+   "The hand of a friend",
+   "The paths of life"
+  ],
+  "answer": 3,
+  "explanation": "\"Neither take they hold of the paths of life.\"",
+  "ref": "Proverbs 2:19"
+ },
+ {
+  "id": "proverbs-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose covenant does the strange woman forget?",
+  "choices": [
+   "The covenant of her husband",
+   "The covenant of her fathers",
+   "The covenant of the king",
+   "The covenant of her God"
+  ],
+  "answer": 3,
+  "explanation": "\"Forgetteth the covenant of her God.\"",
+  "ref": "Proverbs 2:17"
+ },
+ {
+  "id": "proverbs-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose ways are crooked and froward in their paths?",
+  "choices": [
+   "The simple who follow wisdom",
+   "The kings of the nations",
+   "The strangers in the land",
+   "The men who leave the paths of uprightness"
+  ],
+  "answer": 3,
+  "explanation": "\"Whose ways are crooked, and they froward in their paths.\"",
+  "ref": "Proverbs 2:13–15"
+ },
+ {
+  "id": "proverbs-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the strange woman use to draw a young man in?",
+  "choices": [
+   "Gifts of silver",
+   "Songs at the gate",
+   "Threats against his house",
+   "Flattering words"
+  ],
+  "answer": 3,
+  "explanation": "\"The stranger which flattereth with her words.\"",
+  "ref": "Proverbs 2:16"
+ },
+ {
+  "id": "proverbs-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the LORD preserve, besides keeping the paths of judgment?",
+  "choices": [
+   "The house of the king",
+   "The wall of the city",
+   "The fields of the simple",
+   "The way of his saints"
+  ],
+  "answer": 3,
+  "explanation": "\"He keepeth the paths of judgment, and preserveth the way of his saints.\"",
+  "ref": "Proverbs 2:8"
+ },
+ {
+  "id": "proverbs-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is knowledge described once wisdom enters the heart?",
+  "choices": [
+   "Heavy upon the mind",
+   "Hidden from the eyes",
+   "Sweet as honey in the mouth",
+   "Pleasant unto the soul"
+  ],
+  "answer": 3,
+  "explanation": "\"When wisdom entereth into thine heart, and knowledge is pleasant unto thy soul.\"",
+  "ref": "Proverbs 2:10"
+ },
+ {
+  "id": "proverbs-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of the perfect in the land?",
+  "choices": [
+   "They shall be scattered from it",
+   "They shall divide it among their sons",
+   "They shall leave it for a better one",
+   "They shall remain in it"
+  ],
+  "answer": 3,
+  "explanation": "\"The upright shall dwell in the land, and the perfect shall remain in it.\"",
+  "ref": "Proverbs 2:21"
+ },
+ {
+  "id": "proverbs-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "From what kind of man will wisdom deliver the son?",
+  "choices": [
+   "The rich man who hoards silver",
+   "The king who judges in haste",
+   "The evil man who speaks froward things",
+   "The prophet who speaks in riddles"
+  ],
+  "answer": 2,
+  "explanation": "\"To deliver thee from the way of the evil man, from the man that speaketh froward things.\"",
+  "ref": "Proverbs 2:12"
+ },
+ {
+  "id": "proverbs-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what are we told to honour the LORD?",
+  "choices": [
+   "Our substance and the firstfruits of all our increase",
+   "Burnt offerings at the altar",
+   "The tenth of our flocks only",
+   "Songs and sacrifices at the gate"
+  ],
+  "answer": 0,
+  "explanation": "\"Honour the LORD with thy substance, and with the firstfruits of all thine increase.\"",
+  "ref": "Proverbs 3:9"
+ },
+ {
+  "id": "proverbs-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will happen to the barns and presses of the one who honours the LORD?",
+  "choices": [
+   "Barns filled with plenty, presses bursting with new wine",
+   "Barns emptied, presses sealed",
+   "Barns doubled, presses given to the priests",
+   "Barns guarded, presses hidden"
+  ],
+  "answer": 0,
+  "explanation": "\"So shall thy barns be filled with plenty, and thy presses shall burst out with new wine.\"",
+  "ref": "Proverbs 3:10"
+ },
+ {
+  "id": "proverbs-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom is the LORD's correction compared?",
+  "choices": [
+   "A father correcting the son in whom he delights",
+   "A shepherd leading his sheep",
+   "A king judging his people",
+   "A teacher with a pupil"
+  ],
+  "answer": 0,
+  "explanation": "\"For whom the LORD loveth he correcteth; even as a father the son in whom he delighteth.\"",
+  "ref": "Proverbs 3:12"
+ },
+ {
+  "id": "proverbs-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is in wisdom's right hand?",
+  "choices": [
+   "Length of days",
+   "Riches and honour",
+   "A sword",
+   "A crown of gold"
+  ],
+  "answer": 0,
+  "explanation": "\"Length of days is in her right hand; and in her left hand riches and honour.\"",
+  "ref": "Proverbs 3:16"
+ },
+ {
+  "id": "proverbs-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the ways and paths of wisdom said to be?",
+  "choices": [
+   "Pleasantness and peace",
+   "Narrow and hard",
+   "Dark and hidden",
+   "Swift and lonely"
+  ],
+  "answer": 0,
+  "explanation": "\"Her ways are ways of pleasantness, and all her paths are peace.\"",
+  "ref": "Proverbs 3:17"
+ },
+ {
+  "id": "proverbs-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is promised when you lie down in the way of wisdom?",
+  "choices": [
+   "You shall not be afraid and your sleep shall be sweet",
+   "You shall dream of the future",
+   "You shall be guarded by angels",
+   "You shall wake before the dawn"
+  ],
+  "answer": 0,
+  "explanation": "\"Thou shalt not be afraid: yea, thou shalt lie down, and thy sleep shall be sweet.\"",
+  "ref": "Proverbs 3:24"
+ },
+ {
+  "id": "proverbs-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the son find if he does not let mercy and truth forsake him?",
+  "choices": [
+   "Honour only before the king",
+   "Silver and gold in plenty",
+   "Favour and good understanding in the sight of God and man",
+   "Many friends at the gate"
+  ],
+  "answer": 2,
+  "explanation": "\"So shalt thou find favour and good understanding in the sight of God and man.\"",
+  "ref": "Proverbs 3:4"
+ },
+ {
+  "id": "proverbs-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the LORD do if we acknowledge him in all our ways?",
+  "choices": [
+   "Remove our enemies",
+   "Give us a crown",
+   "Direct our paths",
+   "Fill our barns"
+  ],
+  "answer": 2,
+  "explanation": "\"In all thy ways acknowledge him, and he shall direct thy paths.\"",
+  "ref": "Proverbs 3:6"
+ },
+ {
+  "id": "proverbs-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are we told not to be, and what are we told to do instead?",
+  "choices": [
+   "Proud of our riches; give to the poor",
+   "Slow to speak; hear the elders",
+   "Wise in our own eyes; fear the LORD and depart from evil",
+   "Idle; rise early"
+  ],
+  "answer": 2,
+  "explanation": "\"Be not wise in thine own eyes: fear the LORD, and depart from evil.\"",
+  "ref": "Proverbs 3:7"
+ },
+ {
+  "id": "proverbs-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will fearing the LORD and departing from evil be to the body?",
+  "choices": [
+   "Strength to the arm and sight to the eye",
+   "Rest to the head and warmth to the feet",
+   "Health to the navel and marrow to the bones",
+   "Length to the days and sweetness to the sleep"
+  ],
+  "answer": 2,
+  "explanation": "\"It shall be health to thy navel, and marrow to thy bones.\"",
+  "ref": "Proverbs 3:8"
+ },
+ {
+  "id": "proverbs-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the merchandise of wisdom compare with silver and gold?",
+  "choices": [
+   "It is equal to them",
+   "It costs more than them",
+   "It is better than silver and fine gold",
+   "It is never sold"
+  ],
+  "answer": 2,
+  "explanation": "\"The merchandise of it is better than the merchandise of silver, and the gain thereof than fine gold.\"",
+  "ref": "Proverbs 3:14"
+ },
+ {
+  "id": "proverbs-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who is called happy?",
+  "choices": [
+   "The man who is rich in flocks",
+   "The man who never works",
+   "The man that findeth wisdom and getteth understanding",
+   "The man who rules a city"
+  ],
+  "answer": 2,
+  "explanation": "\"Happy is the man that findeth wisdom, and the man that getteth understanding.\"",
+  "ref": "Proverbs 3:13"
+ },
+ {
+  "id": "proverbs-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD do by his knowledge, according to the chapter?",
+  "choices": [
+   "Lifts up the mountains and calms the sea",
+   "Sends the rain and withers the grass",
+   "Breaks up the depths and drops the dew from the clouds",
+   "Lights the stars and holds the sun"
+  ],
+  "answer": 2,
+  "explanation": "\"By his knowledge the depths are broken up, and the clouds drop down the dew.\"",
+  "ref": "Proverbs 3:20"
+ },
+ {
+  "id": "proverbs-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are we told not to be afraid of?",
+  "choices": [
+   "The wrath of kings",
+   "The dark of night",
+   "Sudden fear and the desolation of the wicked",
+   "The sword of enemies"
+  ],
+  "answer": 2,
+  "explanation": "\"Be not afraid of sudden fear, neither of the desolation of the wicked, when it cometh.\"",
+  "ref": "Proverbs 3:25"
+ },
+ {
+  "id": "proverbs-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why should you not devise evil against your neighbour?",
+  "choices": [
+   "He is richer than you",
+   "He is a kinsman",
+   "He dwells securely by you",
+   "He holds a lawsuit against you"
+  ],
+  "answer": 2,
+  "explanation": "\"Devise not evil against thy neighbour, seeing he dwelleth securely by thee.\"",
+  "ref": "Proverbs 3:29"
+ },
+ {
+  "id": "proverbs-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With whom are we told not to strive?",
+  "choices": [
+   "A man who owes us debt",
+   "A man of a foreign city",
+   "A man without cause who has done no harm",
+   "A scorner at the gate"
+  ],
+  "answer": 2,
+  "explanation": "\"Strive not with a man without cause, if he have done thee no harm.\"",
+  "ref": "Proverbs 3:30"
+ },
+ {
+  "id": "proverbs-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where is the son to write mercy and truth?",
+  "choices": [
+   "On the doorposts of his house",
+   "On a scroll in the temple",
+   "On the gate of the city",
+   "Upon the table of his heart"
+  ],
+  "answer": 3,
+  "explanation": "\"Write them upon the table of thine heart.\"",
+  "ref": "Proverbs 3:3"
+ },
+ {
+  "id": "proverbs-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall sound wisdom and discretion be to the soul and the neck?",
+  "choices": [
+   "Armour for the body and a crown for the head",
+   "Light for the eyes and a staff for the hand",
+   "Riches for the house and honour for the name",
+   "Life unto the soul and grace to the neck"
+  ],
+  "answer": 3,
+  "explanation": "\"So shall they be life unto thy soul, and grace to thy neck.\"",
+  "ref": "Proverbs 3:22"
+ },
+ {
+  "id": "proverbs-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is promised about the son's walk and his foot?",
+  "choices": [
+   "He walks far and never tires",
+   "He walks with kings and never stands alone",
+   "He walks by night and never fears",
+   "He walks safely and his foot shall not stumble"
+  ],
+  "answer": 3,
+  "explanation": "\"Then shalt thou walk in thy way safely, and thy foot shall not stumble.\"",
+  "ref": "Proverbs 3:23"
+ },
+ {
+  "id": "proverbs-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the LORD keep the son's foot from?",
+  "choices": [
+   "Wandering",
+   "Falling asleep",
+   "Running too fast",
+   "Being taken"
+  ],
+  "answer": 3,
+  "explanation": "\"The LORD shall be thy confidence, and shall keep thy foot from being taken.\"",
+  "ref": "Proverbs 3:26"
+ },
+ {
+  "id": "proverbs-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the son told not to be weary of?",
+  "choices": [
+   "The work of the field",
+   "The counsel of the elders",
+   "The length of the road",
+   "The LORD's correction"
+  ],
+  "answer": 3,
+  "explanation": "\"My son, despise not the chastening of the LORD; neither be weary of his correction.\"",
+  "ref": "Proverbs 3:11"
+ },
+ {
+  "id": "proverbs-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is called happy besides the one who lays hold on wisdom?",
+  "choices": [
+   "Every one that fears the king",
+   "Every one that pays his debts",
+   "Every one that keeps the sabbath",
+   "Every one that retaineth her"
+  ],
+  "answer": 3,
+  "explanation": "\"She is a tree of life to them that lay hold upon her: and happy is every one that retaineth her.\"",
+  "ref": "Proverbs 3:18"
+ },
+ {
+  "id": "proverbs-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of all the things a man can desire, compared with wisdom?",
+  "choices": [
+   "They are worth half of her",
+   "They are her servants",
+   "They come before her",
+   "They are not to be compared unto her"
+  ],
+  "answer": 3,
+  "explanation": "\"All the things thou canst desire are not to be compared unto her.\"",
+  "ref": "Proverbs 3:15"
+ },
+ {
+  "id": "proverbs-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are we told not to withhold, and from whom?",
+  "choices": [
+   "Bread, from strangers",
+   "Honour, from kings",
+   "Silver, from the priests",
+   "Good, from those to whom it is due"
+  ],
+  "answer": 3,
+  "explanation": "\"Withhold not good from them to whom it is due, when it is in the power of thine hand to do it.\"",
+  "ref": "Proverbs 3:27"
+ },
+ {
+  "id": "proverbs-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What excuse are we told not to give a neighbour who asks for help?",
+  "choices": [
+   "I have nothing to give you",
+   "Ask your father first",
+   "The time is not right",
+   "Go, and come again, and to morrow I will give"
+  ],
+  "answer": 3,
+  "explanation": "\"Say not unto thy neighbour, Go, and come again, and to morrow I will give; when thou hast it by thee.\"",
+  "ref": "Proverbs 3:28"
+ },
+ {
+  "id": "proverbs-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must not depart from the son's eyes?",
+  "choices": [
+   "The law of Moses",
+   "The words of the prophets",
+   "Sound wisdom and discretion",
+   "The gifts of the king"
+  ],
+  "answer": 2,
+  "explanation": "\"My son, let not them depart from thine eyes: keep sound wisdom and discretion.\"",
+  "ref": "Proverbs 3:21"
+ },
+ {
+  "id": "proverbs-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "How does the father describe himself as a son in his mother's sight?",
+  "choices": [
+   "Strong and well taught",
+   "Proud and well provided for",
+   "Tender and only beloved",
+   "First in rank and honour"
+  ],
+  "answer": 2,
+  "explanation": "\"I was my father's son, tender and only beloved in the sight of my mother.\"",
+  "ref": "Proverbs 4:3"
+ },
+ {
+  "id": "proverbs-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will wisdom give to the head of the one who embraces her?",
+  "choices": [
+   "A garland of flowers and a ring",
+   "A helmet of brass and a shield",
+   "An ornament of grace and a crown of glory",
+   "A mantle of purple and a staff"
+  ],
+  "answer": 2,
+  "explanation": "\"She shall give to thine head an ornament of grace: a crown of glory shall she deliver to thee.\"",
+  "ref": "Proverbs 4:9"
+ },
+ {
+  "id": "proverbs-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which path is the son told not to enter?",
+  "choices": [
+   "The path of the simple",
+   "The path of the king",
+   "The path of the wicked",
+   "The path through the field"
+  ],
+  "answer": 2,
+  "explanation": "\"Enter not into the path of the wicked, and go not in the way of evil men.\"",
+  "ref": "Proverbs 4:14"
+ },
+ {
+  "id": "proverbs-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When do the wicked not sleep?",
+  "choices": [
+   "Until the morning comes",
+   "Unless they have eaten",
+   "Unless they have done mischief",
+   "Until their debts are paid"
+  ],
+  "answer": 2,
+  "explanation": "\"They sleep not, except they have done mischief; and their sleep is taken away, unless they cause some to fall.\"",
+  "ref": "Proverbs 4:16"
+ },
+ {
+  "id": "proverbs-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the wicked eat and drink?",
+  "choices": [
+   "The fruit of the field and the wine of the vine",
+   "The bread of sorrow and the water of tears",
+   "The bread of wickedness and the wine of violence",
+   "The bread of idleness and the wine of feasts"
+  ],
+  "answer": 2,
+  "explanation": "\"They eat the bread of wickedness, and drink the wine of violence.\"",
+  "ref": "Proverbs 4:17"
+ },
+ {
+  "id": "proverbs-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the father's own father tell him to keep, so that he may live?",
+  "choices": [
+   "His commandments",
+   "His flocks",
+   "His sword",
+   "His inheritance"
+  ],
+  "answer": 0,
+  "explanation": "\"Let thine heart retain my words: keep my commandments, and live.\"",
+  "ref": "Proverbs 4:4"
+ },
+ {
+  "id": "proverbs-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall wisdom do for the one who does not forsake her and who loves her?",
+  "choices": [
+   "Preserve and keep him",
+   "Enrich and crown him",
+   "Teach and warn him",
+   "Hide and heal him"
+  ],
+  "answer": 0,
+  "explanation": "\"Forsake her not, and she shall preserve thee: love her, and she shall keep thee.\"",
+  "ref": "Proverbs 4:6"
+ },
+ {
+  "id": "proverbs-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen to the steps of the one led in right paths?",
+  "choices": [
+   "They shall not be straitened, nor stumble when he runs",
+   "They shall be swift and light",
+   "They shall be hidden from enemies",
+   "They shall never tire"
+  ],
+  "answer": 0,
+  "explanation": "\"When thou goest, thy steps shall not be straitened; and when thou runnest, thou shalt not stumble.\"",
+  "ref": "Proverbs 4:12"
+ },
+ {
+  "id": "proverbs-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the eyes told to do?",
+  "choices": [
+   "Look right on, and the eyelids look straight before",
+   "Look to the hills",
+   "Turn away from the crowd",
+   "Close at night and open at dawn"
+  ],
+  "answer": 0,
+  "explanation": "\"Let thine eyes look right on, and let thine eyelids look straight before thee.\"",
+  "ref": "Proverbs 4:25"
+ },
+ {
+  "id": "proverbs-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the son told to ponder?",
+  "choices": [
+   "The path of his feet",
+   "The words of the wicked",
+   "The counsel of the elders",
+   "The days of the year"
+  ],
+  "answer": 0,
+  "explanation": "\"Ponder the path of thy feet, and let all thy ways be established.\"",
+  "ref": "Proverbs 4:26"
+ },
+ {
+  "id": "proverbs-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the son told not to do, and what to remove from evil?",
+  "choices": [
+   "Turn right or left; his foot",
+   "Look back; his hand",
+   "Speak much; his eyes",
+   "Rest long; his heart"
+  ],
+  "answer": 0,
+  "explanation": "\"Turn not to the right hand nor to the left: remove thy foot from evil.\"",
+  "ref": "Proverbs 4:27"
+ },
+ {
+  "id": "proverbs-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the father say he has done with his son?",
+  "choices": [
+   "Taught him in the way of wisdom and led him in right paths",
+   "Sent him to a far country",
+   "Given him a share in the field",
+   "Set him over the household"
+  ],
+  "answer": 0,
+  "explanation": "\"I have taught thee in the way of wisdom; I have led thee in right paths.\"",
+  "ref": "Proverbs 4:11"
+ },
+ {
+  "id": "proverbs-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the father say about the path of the wicked: what is the son to do with it?",
+  "choices": [
+   "Avoid it, pass not by it, turn from it and pass away",
+   "Warn it and teach it",
+   "Walk it once and learn",
+   "Watch it from a distance"
+  ],
+  "answer": 0,
+  "explanation": "\"Avoid it, pass not by it, turn from it, and pass away.\"",
+  "ref": "Proverbs 4:15"
+ },
+ {
+  "id": "proverbs-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the wicked man not know about his way?",
+  "choices": [
+   "At what he stumbles",
+   "Where he is going",
+   "Who is following",
+   "How long it is"
+  ],
+  "answer": 0,
+  "explanation": "\"They know not at what they stumble.\"",
+  "ref": "Proverbs 4:19"
+ },
+ {
+  "id": "proverbs-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the son told to do with instruction?",
+  "choices": [
+   "Take fast hold and not let her go",
+   "Sell her for silver",
+   "Keep her only for a season",
+   "Hide her from his house"
+  ],
+  "answer": 0,
+  "explanation": "\"Take fast hold of instruction; let her not go.\"",
+  "ref": "Proverbs 4:13"
+ },
+ {
+  "id": "proverbs-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of the heart come what?",
+  "choices": [
+   "The words of the wise",
+   "The counsel of kings",
+   "The issues of life",
+   "The fruit of the field"
+  ],
+  "answer": 2,
+  "explanation": "\"Keep thy heart with all diligence; for out of it are the issues of life.\"",
+  "ref": "Proverbs 4:23"
+ },
+ {
+  "id": "proverbs-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until what does the path of the just shine more and more?",
+  "choices": [
+   "The coming of the king",
+   "The end of the year",
+   "The perfect day",
+   "The midst of the night"
+  ],
+  "answer": 2,
+  "explanation": "\"The path of the just is as the shining light, that shineth more and more unto the perfect day.\"",
+  "ref": "Proverbs 4:18"
+ },
+ {
+  "id": "proverbs-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what is the son told not to decline?",
+  "choices": [
+   "The law of the priests",
+   "The path of the elders",
+   "The words of the father's mouth",
+   "The feast of the LORD"
+  ],
+  "answer": 2,
+  "explanation": "\"Get wisdom, get understanding: forget it not; neither decline from the words of my mouth.\"",
+  "ref": "Proverbs 4:5"
+ },
+ {
+  "id": "proverbs-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who taught the father to let his heart retain his words?",
+  "choices": [
+   "His mother",
+   "A priest",
+   "His own father",
+   "A king"
+  ],
+  "answer": 2,
+  "explanation": "\"He taught me also, and said unto me, Let thine heart retain my words.\"",
+  "ref": "Proverbs 4:4"
+ },
+ {
+  "id": "proverbs-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where are the father's words to be kept?",
+  "choices": [
+   "In the house of God",
+   "In the book of the law",
+   "In the midst of the heart",
+   "On the gate of the city"
+  ],
+  "answer": 2,
+  "explanation": "\"Let them not depart from thine eyes; keep them in the midst of thine heart.\"",
+  "ref": "Proverbs 4:21"
+ },
+ {
+  "id": "proverbs-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the son told to put far from him besides a froward mouth?",
+  "choices": [
+   "Proud eyes",
+   "Idle hands",
+   "Perverse lips",
+   "A hasty foot"
+  ],
+  "answer": 2,
+  "explanation": "\"Put away from thee a froward mouth, and perverse lips put far from thee.\"",
+  "ref": "Proverbs 4:24"
+ },
+ {
+  "id": "proverbs-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What takes away the sleep of the wicked?",
+  "choices": [
+   "A guilty conscience",
+   "The cries of the poor",
+   "Not having caused some to fall",
+   "The watch of the city"
+  ],
+  "answer": 2,
+  "explanation": "\"Their sleep is taken away, unless they cause some to fall.\"",
+  "ref": "Proverbs 4:16"
+ },
+ {
+  "id": "proverbs-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall wisdom deliver to the one who embraces her?",
+  "choices": [
+   "A kingdom",
+   "A house of cedar",
+   "A crown of glory",
+   "A fruitful vineyard"
+  ],
+  "answer": 2,
+  "explanation": "\"A crown of glory shall she deliver to thee.\"",
+  "ref": "Proverbs 4:9"
+ },
+ {
+  "id": "proverbs-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the father say not to forsake when he gives good doctrine?",
+  "choices": [
+   "His house",
+   "His name",
+   "His law",
+   "His field"
+  ],
+  "answer": 2,
+  "explanation": "\"For I give you good doctrine, forsake ye not my law.\"",
+  "ref": "Proverbs 4:2"
+ },
+ {
+  "id": "proverbs-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must the son not let depart from his eyes?",
+  "choices": [
+   "The gates of the city",
+   "The face of the king",
+   "The father's words and sayings",
+   "The path of the sun"
+  ],
+  "answer": 2,
+  "explanation": "\"My son, attend to my words; incline thine ear unto my sayings. Let them not depart from thine eyes.\"",
+  "ref": "Proverbs 4:20–21"
+ },
+ {
+  "id": "proverbs-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "The end of the strange woman is sharp as what?",
+  "choices": [
+   "A thorn in the flesh",
+   "A fire in the field",
+   "A dart of the archer",
+   "A twoedged sword"
+  ],
+  "answer": 3,
+  "explanation": "\"Her end is bitter as wormwood, sharp as a twoedged sword.\"",
+  "ref": "Proverbs 5:4"
+ },
+ {
+  "id": "proverbs-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where do the strange woman's feet go down?",
+  "choices": [
+   "To the sea",
+   "To the wilderness",
+   "To a far country",
+   "To death"
+  ],
+  "answer": 3,
+  "explanation": "\"Her feet go down to death; her steps take hold on hell.\"",
+  "ref": "Proverbs 5:5"
+ },
+ {
+  "id": "proverbs-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How far is the son told to remove his way from her?",
+  "choices": [
+   "Out of the city",
+   "Beyond the sea",
+   "Past the gate of the temple",
+   "Far, not even near the door of her house"
+  ],
+  "answer": 3,
+  "explanation": "\"Remove thy way far from her, and come not nigh the door of her house.\"",
+  "ref": "Proverbs 5:8"
+ },
+ {
+  "id": "proverbs-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where is the son told to drink waters?",
+  "choices": [
+   "The river of the city",
+   "The well of the stranger",
+   "The fountain of the temple",
+   "His own cistern and his own well"
+  ],
+  "answer": 3,
+  "explanation": "\"Drink waters out of thine own cistern, and running waters out of thine own well.\"",
+  "ref": "Proverbs 5:15"
+ },
+ {
+  "id": "proverbs-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what animals is the wife of thy youth compared?",
+  "choices": [
+   "The faithful dove and gentle lamb",
+   "The strong ox and patient ass",
+   "The swift eagle and quiet sheep",
+   "The loving hind and pleasant roe"
+  ],
+  "answer": 3,
+  "explanation": "\"Let her be as the loving hind and pleasant roe.\"",
+  "ref": "Proverbs 5:19"
+ },
+ {
+  "id": "proverbs-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the father warn the son he may give to others and to the cruel?",
+  "choices": [
+   "His house and his flocks",
+   "His name and his sons",
+   "His sword and his shield",
+   "His honour and his years"
+  ],
+  "answer": 3,
+  "explanation": "\"Lest thou give thine honour unto others, and thy years unto the cruel.\"",
+  "ref": "Proverbs 5:9"
+ },
+ {
+  "id": "proverbs-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When will the man mourn, according to the father?",
+  "choices": [
+   "In the morning, when he awakes",
+   "On the sabbath, in the temple",
+   "At the gate, before the elders",
+   "At the last, when his flesh and body are consumed"
+  ],
+  "answer": 3,
+  "explanation": "\"And thou mourn at the last, when thy flesh and thy body are consumed.\"",
+  "ref": "Proverbs 5:11"
+ },
+ {
+  "id": "proverbs-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the man say at the last about instruction?",
+  "choices": [
+   "Why did I not seek riches",
+   "How shall I escape the city",
+   "Where is my father's house",
+   "How have I hated instruction, and my heart despised reproof"
+  ],
+  "answer": 3,
+  "explanation": "\"How have I hated instruction, and my heart despised reproof!\"",
+  "ref": "Proverbs 5:12"
+ },
+ {
+  "id": "proverbs-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose voice had the man not obeyed?",
+  "choices": [
+   "His brothers",
+   "The king",
+   "The prophets",
+   "His teachers"
+  ],
+  "answer": 3,
+  "explanation": "\"And have not obeyed the voice of my teachers, nor inclined mine ear to them that instructed me!\"",
+  "ref": "Proverbs 5:13"
+ },
+ {
+  "id": "proverbs-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "place",
+  "question": "Where does the man say he was almost in all evil?",
+  "choices": [
+   "In the house of the stranger",
+   "On the road to the city",
+   "In the field of the sluggard",
+   "In the midst of the congregation and assembly"
+  ],
+  "answer": 3,
+  "explanation": "\"I was almost in all evil in the midst of the congregation and assembly.\"",
+  "ref": "Proverbs 5:14"
+ },
+ {
+  "id": "proverbs-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the father say should be dispersed abroad?",
+  "choices": [
+   "Thy flocks and herds in the field",
+   "Thy words and counsels in the gate",
+   "Thy gifts and alms in the city",
+   "Thy fountains, and rivers of waters in the streets"
+  ],
+  "answer": 3,
+  "explanation": "\"Let thy fountains be dispersed abroad, and rivers of waters in the streets.\"",
+  "ref": "Proverbs 5:16"
+ },
+ {
+  "id": "proverbs-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question does the father ask the son about the strange woman?",
+  "choices": [
+   "Why not marry before the elders?",
+   "Why not leave the city?",
+   "Why not pay a ransom?",
+   "Why be ravished with a stranger?"
+  ],
+  "answer": 3,
+  "explanation": "\"And why wilt thou, my son, be ravished with a strange woman, and embrace the bosom of a stranger?\"",
+  "ref": "Proverbs 5:20"
+ },
+ {
+  "id": "proverbs-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the LORD do with all a man's goings?",
+  "choices": [
+   "Forgets them",
+   "Blesses them",
+   "Counts them",
+   "Pondereth them"
+  ],
+  "answer": 3,
+  "explanation": "\"For the ways of man are before the eyes of the LORD, and he pondereth all his goings.\"",
+  "ref": "Proverbs 5:21"
+ },
+ {
+  "id": "proverbs-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How shall the wicked man die?",
+  "choices": [
+   "In battle",
+   "In a far country",
+   "Without sons",
+   "Without instruction"
+  ],
+  "answer": 3,
+  "explanation": "\"He shall die without instruction; and in the greatness of his folly he shall go astray.\"",
+  "ref": "Proverbs 5:23"
+ },
+ {
+  "id": "proverbs-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why can the son not know the strange woman's ways?",
+  "choices": [
+   "They are hidden in the night",
+   "They are many",
+   "They are guarded",
+   "They are moveable"
+  ],
+  "answer": 3,
+  "explanation": "\"Lest thou shouldest ponder the path of life, her ways are moveable, that thou canst not know them.\"",
+  "ref": "Proverbs 5:6"
+ },
+ {
+  "id": "proverbs-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the son told to bow to the father's understanding?",
+  "choices": [
+   "His knee",
+   "His head",
+   "His heart",
+   "His ear"
+  ],
+  "answer": 3,
+  "explanation": "\"My son, attend unto my wisdom, and bow thine ear to my understanding.\"",
+  "ref": "Proverbs 5:1"
+ },
+ {
+  "id": "proverbs-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what is the son told not to depart?",
+  "choices": [
+   "The house of the LORD",
+   "The company of friends",
+   "The way of the field",
+   "The words of the father's mouth"
+  ],
+  "answer": 3,
+  "explanation": "\"Hear me now therefore, O ye children, and depart not from the words of my mouth.\"",
+  "ref": "Proverbs 5:7"
+ },
+ {
+  "id": "proverbs-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the wicked do in the greatness of his folly?",
+  "choices": [
+   "Build a house",
+   "Cry for help",
+   "Offer a sacrifice",
+   "Go astray"
+  ],
+  "answer": 3,
+  "explanation": "\"In the greatness of his folly he shall go astray.\"",
+  "ref": "Proverbs 5:23"
+ },
+ {
+  "id": "proverbs-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall take the wicked himself?",
+  "choices": [
+   "The wrath of the king",
+   "The sword of strangers",
+   "The flood of the sea",
+   "His own iniquities"
+  ],
+  "answer": 3,
+  "explanation": "\"His own iniquities shall take the wicked himself.\"",
+  "ref": "Proverbs 5:22"
+ },
+ {
+  "id": "proverbs-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Who will receive the years of the one who follows the strange woman?",
+  "choices": [
+   "The elders",
+   "The king",
+   "The priests",
+   "The cruel"
+  ],
+  "answer": 3,
+  "explanation": "\"Lest thou give thine honour unto others, and thy years unto the cruel.\"",
+  "ref": "Proverbs 5:9"
+ },
+ {
+  "id": "proverbs-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "In whose house will the man's labours be?",
+  "choices": [
+   "The house of the king",
+   "The house of his father",
+   "The house of the priest",
+   "The house of a stranger"
+  ],
+  "answer": 3,
+  "explanation": "\"And thy labours be in the house of a stranger.\"",
+  "ref": "Proverbs 5:10"
+ },
+ {
+  "id": "proverbs-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will be consumed when the man mourns?",
+  "choices": [
+   "His house and his silver",
+   "His name and his sons",
+   "His years and his days",
+   "His flesh and his body"
+  ],
+  "answer": 3,
+  "explanation": "\"When thy flesh and thy body are consumed.\"",
+  "ref": "Proverbs 5:11"
+ },
+ {
+  "id": "proverbs-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the son told to let be blessed?",
+  "choices": [
+   "His barn",
+   "His field",
+   "His house",
+   "His fountain"
+  ],
+  "answer": 3,
+  "explanation": "\"Let thy fountain be blessed: and rejoice with the wife of thy youth.\"",
+  "ref": "Proverbs 5:18"
+ },
+ {
+  "id": "proverbs-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what is the son to be ravished always?",
+  "choices": [
+   "The wealth of his house",
+   "The praise of the city",
+   "The words of wisdom",
+   "The love of his wife"
+  ],
+  "answer": 3,
+  "explanation": "\"Be thou ravished always with her love.\"",
+  "ref": "Proverbs 5:19"
+ },
+ {
+  "id": "proverbs-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the man say his heart did to reproof?",
+  "choices": [
+   "Feared it",
+   "Answered it",
+   "Forgot it",
+   "Despised it"
+  ],
+  "answer": 3,
+  "explanation": "\"And say, How have I hated instruction, and my heart despised reproof!\"",
+  "ref": "Proverbs 5:12"
+ },
+ {
+  "id": "proverbs-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the ant have, according to the chapter?",
+  "choices": [
+   "A queen and a king",
+   "A watchman on a tower",
+   "A captain and a scribe",
+   "No guide, overseer or ruler"
+  ],
+  "answer": 3,
+  "explanation": "\"Which having no guide, overseer, or ruler, provideth her meat in the summer.\"",
+  "ref": "Proverbs 6:7–8"
+ },
+ {
+  "id": "proverbs-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When does the ant provide her meat and gather her food?",
+  "choices": [
+   "In the winter and the spring",
+   "In the night and the morning",
+   "In the sabbath and the feast",
+   "In the summer and the harvest"
+  ],
+  "answer": 3,
+  "explanation": "\"Provideth her meat in the summer, and gathereth her food in the harvest.\"",
+  "ref": "Proverbs 6:8"
+ },
+ {
+  "id": "proverbs-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What question is asked of the sluggard about sleep?",
+  "choices": [
+   "Why dost thou not plough?",
+   "Where is thy master?",
+   "Who shall wake thee?",
+   "How long wilt thou sleep? when wilt thou arise?"
+  ],
+  "answer": 3,
+  "explanation": "\"How long wilt thou sleep, O sluggard? when wilt thou arise out of thy sleep?\"",
+  "ref": "Proverbs 6:9"
+ },
+ {
+  "id": "proverbs-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How will poverty come upon the sluggard?",
+  "choices": [
+   "As a flood and as a famine",
+   "As a thief and as a fire",
+   "As a lion and as a wolf",
+   "As one that travelleth, and want as an armed man"
+  ],
+  "answer": 3,
+  "explanation": "\"So shall thy poverty come as one that travelleth, and thy want as an armed man.\"",
+  "ref": "Proverbs 6:11"
+ },
+ {
+  "id": "proverbs-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of tongue does the LORD hate?",
+  "choices": [
+   "A silent tongue",
+   "A sharp tongue",
+   "A flattering tongue",
+   "A lying tongue"
+  ],
+  "answer": 3,
+  "explanation": "\"A proud look, a lying tongue, and hands that shed innocent blood.\"",
+  "ref": "Proverbs 6:17"
+ },
+ {
+  "id": "proverbs-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who is the one that the LORD hates for what he sows among brethren?",
+  "choices": [
+   "The one that borrows from brothers",
+   "He that leaves his brothers",
+   "He that judges his brothers",
+   "The one that soweth discord"
+  ],
+  "answer": 3,
+  "explanation": "\"He that soweth discord among brethren.\"",
+  "ref": "Proverbs 6:19"
+ },
+ {
+  "id": "proverbs-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the man who is surety for his friend snared with?",
+  "choices": [
+   "The words of his mouth",
+   "The cords of the creditor",
+   "The law of the king",
+   "The bonds of the stranger"
+  ],
+  "answer": 0,
+  "explanation": "\"Thou art snared with the words of thy mouth, thou art taken with the words of thy mouth.\"",
+  "ref": "Proverbs 6:2"
+ },
+ {
+  "id": "proverbs-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the son told not to give to his eyes and eyelids?",
+  "choices": [
+   "Sleep and slumber",
+   "Rest and food",
+   "Wine and bread",
+   "Peace and quiet"
+  ],
+  "answer": 0,
+  "explanation": "\"Give not sleep to thine eyes, nor slumber to thine eyelids.\"",
+  "ref": "Proverbs 6:4"
+ },
+ {
+  "id": "proverbs-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the sluggard say he wants: how does he put it?",
+  "choices": [
+   "A little sleep, slumber and folding of the hands",
+   "A little bread and a little wine",
+   "A little time and a little rest",
+   "A little silver and a little peace"
+  ],
+  "answer": 0,
+  "explanation": "\"Yet a little sleep, a little slumber, a little folding of the hands to sleep.\"",
+  "ref": "Proverbs 6:10"
+ },
+ {
+  "id": "proverbs-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the naughty person use his eyes, feet and fingers?",
+  "choices": [
+   "He winks, speaks with his feet and teaches with his fingers",
+   "He stares, runs and points",
+   "He weeps, kneels and prays",
+   "He hides, listens and waits"
+  ],
+  "answer": 0,
+  "explanation": "\"He winketh with his eyes, he speaketh with his feet, he teacheth with his fingers.\"",
+  "ref": "Proverbs 6:13"
+ },
+ {
+  "id": "proverbs-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the wicked man continually devise and sow?",
+  "choices": [
+   "Mischief and discord",
+   "Peace and plenty",
+   "Wheat and barley",
+   "Lies and riches"
+  ],
+  "answer": 0,
+  "explanation": "\"He deviseth mischief continually; he soweth discord.\"",
+  "ref": "Proverbs 6:14"
+ },
+ {
+  "id": "proverbs-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen suddenly to the naughty person?",
+  "choices": [
+   "Sudden calamity, broken without remedy",
+   "He shall be made king",
+   "He shall be exiled for a season",
+   "He shall be healed"
+  ],
+  "answer": 0,
+  "explanation": "\"Therefore shall his calamity come suddenly; suddenly shall he be broken without remedy.\"",
+  "ref": "Proverbs 6:15"
+ },
+ {
+  "id": "proverbs-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of heart does the LORD hate?",
+  "choices": [
+   "A heart that deviseth wicked imaginations",
+   "A heart that is quick to forgive",
+   "A heart that is full of grief",
+   "A heart that is closed to strangers"
+  ],
+  "answer": 0,
+  "explanation": "\"An heart that deviseth wicked imaginations.\"",
+  "ref": "Proverbs 6:18"
+ },
+ {
+  "id": "proverbs-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of feet does the LORD hate?",
+  "choices": [
+   "Feet that are swift in running to mischief",
+   "Feet that are slow to follow",
+   "Feet that tread on holy ground",
+   "Feet that wander far from home"
+  ],
+  "answer": 0,
+  "explanation": "\"Feet that be swift in running to mischief.\"",
+  "ref": "Proverbs 6:18"
+ },
+ {
+  "id": "proverbs-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Which witness does the LORD hate?",
+  "choices": [
+   "A false witness that speaketh lies",
+   "A silent witness",
+   "A witness who is afraid",
+   "A witness who is paid"
+  ],
+  "answer": 0,
+  "explanation": "\"A false witness that speaketh lies.\"",
+  "ref": "Proverbs 6:19"
+ },
+ {
+  "id": "proverbs-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose commandment and whose law is the son told to keep?",
+  "choices": [
+   "His father's commandment and his mother's law",
+   "The king's decree and the priest's law",
+   "The elders' counsel and the prophets' word",
+   "His teacher's rule and his brother's law"
+  ],
+  "answer": 0,
+  "explanation": "\"My son, keep thy father's commandment, and forsake not the law of thy mother.\"",
+  "ref": "Proverbs 6:20"
+ },
+ {
+  "id": "proverbs-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the man done who is surety for a stranger?",
+  "choices": [
+   "Paid his silver",
+   "Stricken his hand",
+   "Sworn by the temple",
+   "Written a letter"
+  ],
+  "answer": 1,
+  "explanation": "\"If thou hast stricken thy hand with a stranger.\"",
+  "ref": "Proverbs 6:1"
+ },
+ {
+  "id": "proverbs-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the surety told to do to his friend?",
+  "choices": [
+   "Take the friend to the judge",
+   "Humble himself and make sure his friend",
+   "Forgive the debt",
+   "Pay in secret"
+  ],
+  "answer": 1,
+  "explanation": "\"Go, humble thyself, and make sure thy friend.\"",
+  "ref": "Proverbs 6:3"
+ },
+ {
+  "id": "proverbs-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the hands the LORD hates do?",
+  "choices": [
+   "Steal from the poor",
+   "Shed innocent blood",
+   "Break the sabbath",
+   "Bind the weak"
+  ],
+  "answer": 1,
+  "explanation": "\"Hands that shed innocent blood.\"",
+  "ref": "Proverbs 6:17"
+ },
+ {
+  "id": "proverbs-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what is a man brought by a whorish woman?",
+  "choices": [
+   "The house of a stranger",
+   "A piece of bread",
+   "A prison",
+   "A far country"
+  ],
+  "answer": 1,
+  "explanation": "\"By means of a whorish woman a man is brought to a piece of bread.\"",
+  "ref": "Proverbs 6:26"
+ },
+ {
+  "id": "proverbs-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the adulteress hunt for?",
+  "choices": [
+   "The treasure of the house",
+   "The precious life",
+   "The honour of the king",
+   "The sons of the elders"
+  ],
+  "answer": 1,
+  "explanation": "\"The adulteress will hunt for the precious life.\"",
+  "ref": "Proverbs 6:26"
+ },
+ {
+  "id": "proverbs-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of anyone who touches his neighbour's wife?",
+  "choices": [
+   "He shall be forgiven",
+   "He shall not be innocent",
+   "He shall pay a fine",
+   "He shall be sent away"
+  ],
+  "answer": 1,
+  "explanation": "\"Whosoever toucheth her shall not be innocent.\"",
+  "ref": "Proverbs 6:29"
+ },
+ {
+  "id": "proverbs-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of the thief who steals because he is hungry?",
+  "choices": [
+   "Men hang him",
+   "Men do not despise him",
+   "Men pity him not",
+   "Men bind him"
+  ],
+  "answer": 1,
+  "explanation": "\"Men do not despise a thief, if he steal to satisfy his soul when he is hungry.\"",
+  "ref": "Proverbs 6:30"
+ },
+ {
+  "id": "proverbs-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must the thief who is found restore?",
+  "choices": [
+   "Double, and half his land",
+   "Sevenfold, and all the substance of his house",
+   "Tenfold, and his flocks",
+   "Fourfold, and his garments"
+  ],
+  "answer": 1,
+  "explanation": "\"If he be found, he shall restore sevenfold; he shall give all the substance of his house.\"",
+  "ref": "Proverbs 6:31"
+ },
+ {
+  "id": "proverbs-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the adulterer get?",
+  "choices": [
+   "Silver and gold",
+   "A wound and dishonour",
+   "A crown of shame only",
+   "A blessing and a curse"
+  ],
+  "answer": 1,
+  "explanation": "\"A wound and dishonour shall he get; and his reproach shall not be wiped away.\"",
+  "ref": "Proverbs 6:33"
+ },
+ {
+  "id": "proverbs-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is jealousy said to be?",
+  "choices": [
+   "The fear of a woman",
+   "The rage of a man",
+   "The pride of a king",
+   "The song of a fool"
+  ],
+  "answer": 1,
+  "explanation": "\"For jealousy is the rage of a man: therefore he will not spare in the day of vengeance.\"",
+  "ref": "Proverbs 6:34"
+ },
+ {
+  "id": "proverbs-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the son to keep the father's law?",
+  "choices": [
+   "As a crown on his head",
+   "As the apple of his eye",
+   "As a seal on his hand",
+   "As a stone in his shoe"
+  ],
+  "answer": 1,
+  "explanation": "\"Keep my commandments, and live; and my law as the apple of thine eye.\"",
+  "ref": "Proverbs 7:2"
+ },
+ {
+  "id": "proverbs-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the son told to say unto wisdom?",
+  "choices": [
+   "Thou art my mother",
+   "Thou art my sister",
+   "Thou art my teacher",
+   "Thou art my queen"
+  ],
+  "answer": 1,
+  "explanation": "\"Say unto wisdom, Thou art my sister; and call understanding thy kinswoman.\"",
+  "ref": "Proverbs 7:4"
+ },
+ {
+  "id": "proverbs-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "What kind of young man did the father see among the simple ones?",
+  "choices": [
+   "One rich in silver",
+   "One void of understanding",
+   "One strong in battle",
+   "One wise beyond his years"
+  ],
+  "answer": 1,
+  "explanation": "\"I discerned among the youths, a young man void of understanding.\"",
+  "ref": "Proverbs 7:7"
+ },
+ {
+  "id": "proverbs-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "At what time of day did the young man go the way to her house?",
+  "choices": [
+   "At the break of dawn",
+   "In the twilight, evening and dark night",
+   "At noon in the heat",
+   "At the feast of the harvest"
+  ],
+  "answer": 1,
+  "explanation": "\"In the twilight, in the evening, in the black and dark night.\"",
+  "ref": "Proverbs 7:9"
+ },
+ {
+  "id": "proverbs-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is the woman described, besides her attire?",
+  "choices": [
+   "Quiet and gentle, keeping to her house",
+   "Loud and stubborn, her feet abiding not in her house",
+   "Poor and weeping at the gate",
+   "Old and wise in counsel"
+  ],
+  "answer": 1,
+  "explanation": "\"She is loud and stubborn; her feet abide not in her house.\"",
+  "ref": "Proverbs 7:11"
+ },
+ {
+  "id": "proverbs-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the father say to do with his commandments, so that the son may live?",
+  "choices": [
+   "Sell them",
+   "Hide them from others",
+   "Teach them to the king",
+   "Keep them"
+  ],
+  "answer": 3,
+  "explanation": "\"Keep my commandments, and live.\"",
+  "ref": "Proverbs 7:2"
+ },
+ {
+  "id": "proverbs-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where are the commandments to be written?",
+  "choices": [
+   "On the doorposts",
+   "On a scroll",
+   "On the city wall",
+   "Upon the table of the heart"
+  ],
+  "answer": 3,
+  "explanation": "\"Bind them upon thy fingers, write them upon the table of thine heart.\"",
+  "ref": "Proverbs 7:3"
+ },
+ {
+  "id": "proverbs-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the young man pass through?",
+  "choices": [
+   "The gate of the city",
+   "The fields of the vineyard",
+   "The court of the temple",
+   "The street near her corner"
+  ],
+  "answer": 3,
+  "explanation": "\"Passing through the street near her corner; and he went the way to her house.\"",
+  "ref": "Proverbs 7:8"
+ },
+ {
+  "id": "proverbs-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is the woman who met him described in her heart?",
+  "choices": [
+   "Humble of heart",
+   "Pure of heart",
+   "Broken of heart",
+   "Subtil of heart"
+  ],
+  "answer": 3,
+  "explanation": "\"There met him a woman with the attire of an harlot, and subtil of heart.\"",
+  "ref": "Proverbs 7:10"
+ },
+ {
+  "id": "proverbs-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where does she lie in wait?",
+  "choices": [
+   "At the city gate",
+   "At the well",
+   "At the door of the temple",
+   "At every corner"
+  ],
+  "answer": 3,
+  "explanation": "\"Now is she without, now in the streets, and lieth in wait at every corner.\"",
+  "ref": "Proverbs 7:12"
+ },
+ {
+  "id": "proverbs-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did she take hold of him?",
+  "choices": [
+   "She called him from the window",
+   "She sent a servant to him",
+   "She wept before him",
+   "She caught him, kissed him and spoke with an impudent face"
+  ],
+  "answer": 3,
+  "explanation": "\"So she caught him, and kissed him, and with an impudent face said unto him.\"",
+  "ref": "Proverbs 7:13"
+ },
+ {
+  "id": "proverbs-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does she say she came forth to meet him?",
+  "choices": [
+   "To bring him a message",
+   "To buy his goods",
+   "To ask him for counsel",
+   "Diligently to seek his face"
+  ],
+  "answer": 3,
+  "explanation": "\"Therefore came I forth to meet thee, diligently to seek thy face, and I have found thee.\"",
+  "ref": "Proverbs 7:15"
+ },
+ {
+  "id": "proverbs-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what does she say she has perfumed her bed?",
+  "choices": [
+   "Frankincense and balm",
+   "Oil and honey",
+   "Spikenard and saffron",
+   "Myrrh, aloes and cinnamon"
+  ],
+  "answer": 3,
+  "explanation": "\"I have perfumed my bed with myrrh, aloes, and cinnamon.\"",
+  "ref": "Proverbs 7:17"
+ },
+ {
+  "id": "proverbs-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does she invite him to do until the morning?",
+  "choices": [
+   "Feast and drink wine",
+   "Sing and dance",
+   "Rest and sleep",
+   "Take their fill of love"
+  ],
+  "answer": 3,
+  "explanation": "\"Come, let us take our fill of love until the morning.\"",
+  "ref": "Proverbs 7:18"
+ },
+ {
+  "id": "proverbs-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the husband take with him, and when will he return?",
+  "choices": [
+   "A sword; at the new moon",
+   "A servant; at the feast",
+   "A letter; at the harvest",
+   "A bag of money; at the day appointed"
+  ],
+  "answer": 3,
+  "explanation": "\"He hath taken a bag of money with him, and will come home at the day appointed.\"",
+  "ref": "Proverbs 7:20"
+ },
+ {
+  "id": "proverbs-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the young man not know as he hurries to the snare?",
+  "choices": [
+   "That the master is near",
+   "That it is for his life",
+   "That the night is long",
+   "That the road is far"
+  ],
+  "answer": 1,
+  "explanation": "\"As a bird hasteth to the snare, and knoweth not that it is for his life.\"",
+  "ref": "Proverbs 7:23"
+ },
+ {
+  "id": "proverbs-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the son told to call understanding?",
+  "choices": [
+   "His mother",
+   "His kinswoman",
+   "His friend",
+   "His servant"
+  ],
+  "answer": 1,
+  "explanation": "\"Call understanding thy kinswoman.\"",
+  "ref": "Proverbs 7:4"
+ },
+ {
+  "id": "proverbs-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do wisdom and understanding keep the son from?",
+  "choices": [
+   "The wicked king",
+   "The strange woman who flatters with her words",
+   "The false prophet",
+   "The scorners at the gate"
+  ],
+  "answer": 1,
+  "explanation": "\"That they may keep thee from the strange woman, from the stranger which flattereth with her words.\"",
+  "ref": "Proverbs 7:5"
+ },
+ {
+  "id": "proverbs-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the son told not to let his heart do?",
+  "choices": [
+   "Rejoice in her house",
+   "Decline to her ways",
+   "Ponder her words",
+   "Fear her husband"
+  ],
+  "answer": 1,
+  "explanation": "\"Let not thine heart decline to her ways, go not astray in her paths.\"",
+  "ref": "Proverbs 7:25"
+ },
+ {
+  "id": "proverbs-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has she done to many?",
+  "choices": [
+   "Led them to riches",
+   "Cast them down wounded",
+   "Taught them wisdom",
+   "Sent them to the king"
+  ],
+  "answer": 1,
+  "explanation": "\"For she hath cast down many wounded.\"",
+  "ref": "Proverbs 7:26"
+ },
+ {
+  "id": "proverbs-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the father tell the son to lay up with him?",
+  "choices": [
+   "His silver",
+   "His commandments",
+   "His sword",
+   "His secrets"
+  ],
+  "answer": 1,
+  "explanation": "\"My son, keep my words, and lay up my commandments with thee.\"",
+  "ref": "Proverbs 7:1"
+ },
+ {
+  "id": "proverbs-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the woman say she has done this day?",
+  "choices": [
+   "Fasted",
+   "Payed her vows",
+   "Journeyed far",
+   "Given to the poor"
+  ],
+  "answer": 1,
+  "explanation": "\"This day have I payed my vows.\"",
+  "ref": "Proverbs 7:14"
+ },
+ {
+  "id": "proverbs-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where is the woman now, and where is she then?",
+  "choices": [
+   "Now at the gate, now in the temple",
+   "Now without, now in the streets",
+   "Now at home, now at the well",
+   "Now in the field, now in the vineyard"
+  ],
+  "answer": 1,
+  "explanation": "\"Now is she without, now in the streets.\"",
+  "ref": "Proverbs 7:12"
+ },
+ {
+  "id": "proverbs-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does she say she has found?",
+  "choices": [
+   "A bag of silver",
+   "Him whom she sought",
+   "A house in the city",
+   "A lost sheep"
+  ],
+  "answer": 1,
+  "explanation": "\"I have found thee.\"",
+  "ref": "Proverbs 7:15"
+ },
+ {
+  "id": "proverbs-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What forced the young man, besides her fair speech?",
+  "choices": [
+   "The threats of her husband",
+   "The flattering of her lips",
+   "The gifts of her hands",
+   "The command of the king"
+  ],
+  "answer": 1,
+  "explanation": "\"With the flattering of her lips she forced him.\"",
+  "ref": "Proverbs 7:21"
+ },
+ {
+  "id": "proverbs-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where does wisdom cry besides the high places?",
+  "choices": [
+   "In the temple court",
+   "At the gates, at the entry of the city",
+   "In the king's house",
+   "On the sea shore"
+  ],
+  "answer": 1,
+  "explanation": "\"She crieth at the gates, at the entry of the city, at the coming in at the doors.\"",
+  "ref": "Proverbs 8:3"
+ },
+ {
+  "id": "proverbs-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does wisdom say about those who love her?",
+  "choices": [
+   "She hides from them",
+   "She loves them",
+   "She tests them",
+   "She ignores them"
+  ],
+  "answer": 1,
+  "explanation": "\"I love them that love me; and those that seek me early shall find me.\"",
+  "ref": "Proverbs 8:17"
+ },
+ {
+  "id": "proverbs-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who possessed wisdom in the beginning of his way?",
+  "choices": [
+   "The king",
+   "The LORD",
+   "The prophet",
+   "The angel"
+  ],
+  "answer": 1,
+  "explanation": "\"The LORD possessed me in the beginning of his way, before his works of old.\"",
+  "ref": "Proverbs 8:22"
+ },
+ {
+  "id": "proverbs-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God give to the sea?",
+  "choices": [
+   "A wall of stone",
+   "His decree, that the waters should not pass his commandment",
+   "A king to rule it",
+   "A name of its own"
+  ],
+  "answer": 1,
+  "explanation": "\"When he gave to the sea his decree, that the waters should not pass his commandment.\"",
+  "ref": "Proverbs 8:29"
+ },
+ {
+  "id": "proverbs-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was wisdom daily to the LORD?",
+  "choices": [
+   "His servant",
+   "His delight",
+   "His counsellor",
+   "His shield"
+  ],
+  "answer": 1,
+  "explanation": "\"Then I was by him, as one brought up with him: and I was daily his delight, rejoicing always before him.\"",
+  "ref": "Proverbs 8:30"
+ },
+ {
+  "id": "proverbs-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With whom were the delights of wisdom?",
+  "choices": [
+   "The angels",
+   "The sons of men",
+   "The kings",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "\"Rejoicing in the habitable part of his earth; and my delights were with the sons of men.\"",
+  "ref": "Proverbs 8:31"
+ },
+ {
+  "id": "proverbs-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where does wisdom stand?",
+  "choices": [
+   "By the well in the field",
+   "In the valley of the shadow",
+   "On the top of high places, by the paths",
+   "In the camp of the army"
+  ],
+  "answer": 2,
+  "explanation": "\"She standeth in the top of high places, by the way in the places of the paths.\"",
+  "ref": "Proverbs 8:2"
+ },
+ {
+  "id": "proverbs-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom does wisdom call?",
+  "choices": [
+   "To kings alone",
+   "To the priests",
+   "To men, and to the sons of man",
+   "To the elders only"
+  ],
+  "answer": 2,
+  "explanation": "\"Unto you, O men, I call; and my voice is to the sons of man.\"",
+  "ref": "Proverbs 8:4"
+ },
+ {
+  "id": "proverbs-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does wisdom tell to understand wisdom and have an understanding heart?",
+  "choices": [
+   "The kings and princes",
+   "The priests and elders",
+   "The simple and the fools",
+   "The widows and orphans"
+  ],
+  "answer": 2,
+  "explanation": "\"O ye simple, understand wisdom: and, ye fools, be ye of an understanding heart.\"",
+  "ref": "Proverbs 8:5"
+ },
+ {
+  "id": "proverbs-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the opening of wisdom's lips be?",
+  "choices": [
+   "Hard sayings",
+   "Secret things",
+   "Right things",
+   "New things"
+  ],
+  "answer": 2,
+  "explanation": "\"The opening of my lips shall be right things.\"",
+  "ref": "Proverbs 8:6"
+ },
+ {
+  "id": "proverbs-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is nothing in the words of wisdom?",
+  "choices": [
+   "Hard or heavy",
+   "Quick or slow",
+   "Froward or perverse",
+   "Costly or cheap"
+  ],
+  "answer": 2,
+  "explanation": "\"All the words of my mouth are in righteousness; there is nothing froward or perverse in them.\"",
+  "ref": "Proverbs 8:8"
+ },
+ {
+  "id": "proverbs-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the fear of the LORD said to be?",
+  "choices": [
+   "To flee from kings",
+   "To fear the night",
+   "To hate evil",
+   "To keep silence"
+  ],
+  "answer": 2,
+  "explanation": "\"The fear of the LORD is to hate evil.\"",
+  "ref": "Proverbs 8:13"
+ },
+ {
+  "id": "proverbs-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does wisdom say is hers?",
+  "choices": [
+   "Silver, gold and honour",
+   "Pride, power and rule",
+   "Counsel, sound wisdom and strength",
+   "Rest, peace and plenty"
+  ],
+  "answer": 2,
+  "explanation": "\"Counsel is mine, and sound wisdom: I am understanding; I have strength.\"",
+  "ref": "Proverbs 8:14"
+ },
+ {
+  "id": "proverbs-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of riches are with wisdom?",
+  "choices": [
+   "Hidden riches and honour",
+   "Swift riches and ease",
+   "Durable riches and righteousness",
+   "Foreign riches and spice"
+  ],
+  "answer": 2,
+  "explanation": "\"Riches and honour are with me; yea, durable riches and righteousness.\"",
+  "ref": "Proverbs 8:18"
+ },
+ {
+  "id": "proverbs-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does wisdom say is better than gold and silver?",
+  "choices": [
+   "Her voice and her house",
+   "Her counsel and her honour",
+   "Her fruit and her revenue",
+   "Her law and her wealth"
+  ],
+  "answer": 2,
+  "explanation": "\"My fruit is better than gold, yea, than fine gold; and my revenue than choice silver.\"",
+  "ref": "Proverbs 8:19"
+ },
+ {
+  "id": "proverbs-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does wisdom lead in?",
+  "choices": [
+   "The way of the sea",
+   "The way of the wilderness",
+   "The way of righteousness",
+   "The way of the army"
+  ],
+  "answer": 2,
+  "explanation": "\"I lead in the way of righteousness, in the midst of the paths of judgment.\"",
+  "ref": "Proverbs 8:20"
+ },
+ {
+  "id": "proverbs-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD do to the clouds, and to the fountains of the deep?",
+  "choices": [
+   "Scattered the clouds and sealed the fountains",
+   "Lifted the clouds and dried the fountains",
+   "Named the clouds and counted the fountains",
+   "Established the clouds and strengthened the fountains"
+  ],
+  "answer": 3,
+  "explanation": "\"When he established the clouds above: when he strengthened the fountains of the deep.\"",
+  "ref": "Proverbs 8:28"
+ },
+ {
+  "id": "proverbs-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD appoint?",
+  "choices": [
+   "The paths of the stars",
+   "The seasons of the year",
+   "The kings of men",
+   "The foundations of the earth"
+  ],
+  "answer": 3,
+  "explanation": "\"When he appointed the foundations of the earth.\"",
+  "ref": "Proverbs 8:29"
+ },
+ {
+  "id": "proverbs-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had he not yet made, not even the highest part of?",
+  "choices": [
+   "The mountains of the earth",
+   "The waters of the deep",
+   "The stars of heaven",
+   "The dust of the world"
+  ],
+  "answer": 3,
+  "explanation": "\"While as yet he had not made the earth, nor the fields, nor the highest part of the dust of the world.\"",
+  "ref": "Proverbs 8:26"
+ },
+ {
+  "id": "proverbs-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who are blessed for keeping wisdom's ways?",
+  "choices": [
+   "The kings who rule",
+   "The priests who serve",
+   "The rich who give",
+   "Her children who hearken"
+  ],
+  "answer": 3,
+  "explanation": "\"Hearken unto me, O ye children: for blessed are they that keep my ways.\"",
+  "ref": "Proverbs 8:32"
+ },
+ {
+  "id": "proverbs-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are we told not to do with instruction?",
+  "choices": [
+   "Sell it",
+   "Hide it",
+   "Fear it",
+   "Refuse it"
+  ],
+  "answer": 3,
+  "explanation": "\"Hear instruction, and be wise, and refuse it not.\"",
+  "ref": "Proverbs 8:33"
+ },
+ {
+  "id": "proverbs-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where does the blessed man wait?",
+  "choices": [
+   "At the gate of the king",
+   "At the altar of the LORD",
+   "At the well of the city",
+   "At the posts of wisdom's doors"
+  ],
+  "answer": 3,
+  "explanation": "\"Waiting at the posts of my doors.\"",
+  "ref": "Proverbs 8:34"
+ },
+ {
+  "id": "proverbs-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose favour does the one who finds wisdom obtain?",
+  "choices": [
+   "The king's",
+   "The elders'",
+   "The people's",
+   "The LORD's"
+  ],
+  "answer": 3,
+  "explanation": "\"Whoso findeth me findeth life, and shall obtain favour of the LORD.\"",
+  "ref": "Proverbs 8:35"
+ },
+ {
+  "id": "proverbs-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From when was wisdom set up?",
+  "choices": [
+   "From the flood",
+   "From the days of Noah",
+   "From the first king",
+   "From everlasting, before the earth was"
+  ],
+  "answer": 3,
+  "explanation": "\"I was set up from everlasting, from the beginning, or ever the earth was.\"",
+  "ref": "Proverbs 8:23"
+ },
+ {
+  "id": "proverbs-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does wisdom say about those who seek her early?",
+  "choices": [
+   "They shall be warned",
+   "They shall be tested",
+   "They shall be sent away",
+   "They shall find her"
+  ],
+  "answer": 3,
+  "explanation": "\"Those that seek me early shall find me.\"",
+  "ref": "Proverbs 8:17"
+ },
+ {
+  "id": "proverbs-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does wisdom find out?",
+  "choices": [
+   "The secrets of kings",
+   "The names of the stars",
+   "The ways of the sea",
+   "Knowledge of witty inventions"
+  ],
+  "answer": 3,
+  "explanation": "\"I wisdom dwell with prudence, and find out knowledge of witty inventions.\"",
+  "ref": "Proverbs 8:12"
+ },
+ {
+  "id": "proverbs-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has wisdom prepared for her feast?",
+  "choices": [
+   "Bread baked and oil poured",
+   "Lambs sacrificed and incense burned",
+   "Fruit gathered and honey stored",
+   "Beasts killed, wine mingled and a table furnished"
+  ],
+  "answer": 3,
+  "explanation": "\"She hath killed her beasts; she hath mingled her wine; she hath also furnished her table.\"",
+  "ref": "Proverbs 9:2"
+ },
+ {
+  "id": "proverbs-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Whom does wisdom send forth?",
+  "choices": [
+   "Her sons",
+   "Her servants to the king",
+   "Her messengers to Egypt",
+   "Her maidens"
+  ],
+  "answer": 3,
+  "explanation": "\"She hath sent forth her maidens: she crieth upon the highest places of the city.\"",
+  "ref": "Proverbs 9:3"
+ },
+ {
+  "id": "proverbs-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does wisdom invite the simple to eat and drink?",
+  "choices": [
+   "The fruit of the vine and olive oil",
+   "The meat of the feast and the cup of blessing",
+   "Honey and milk",
+   "Her bread and the wine she has mingled"
+  ],
+  "answer": 3,
+  "explanation": "\"Come, eat of my bread, and drink of the wine which I have mingled.\"",
+  "ref": "Proverbs 9:5"
+ },
+ {
+  "id": "proverbs-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the foolish woman say is sweet?",
+  "choices": [
+   "Honey from the rock",
+   "Wine of the vineyard",
+   "Water from the well",
+   "Stolen waters"
+  ],
+  "answer": 3,
+  "explanation": "\"Stolen waters are sweet, and bread eaten in secret is pleasant.\"",
+  "ref": "Proverbs 9:17"
+ },
+ {
+  "id": "proverbs-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does wisdom say to do with the foolish?",
+  "choices": [
+   "Teach them",
+   "Pity them",
+   "Forsake them and live",
+   "Send them away with a gift"
+  ],
+  "answer": 2,
+  "explanation": "\"Forsake the foolish, and live; and go in the way of understanding.\"",
+  "ref": "Proverbs 9:6"
+ },
+ {
+  "id": "proverbs-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the man who reproves a scorner get to himself?",
+  "choices": [
+   "Honour",
+   "Riches",
+   "Shame",
+   "Friends"
+  ],
+  "answer": 2,
+  "explanation": "\"He that reproveth a scorner getteth to himself shame.\"",
+  "ref": "Proverbs 9:7"
+ },
+ {
+  "id": "proverbs-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why is the son told not to reprove a scorner?",
+  "choices": [
+   "Lest he strike you",
+   "Lest he flee",
+   "Lest he hate you",
+   "Lest he laugh"
+  ],
+  "answer": 2,
+  "explanation": "\"Reprove not a scorner, lest he hate thee: rebuke a wise man, and he will love thee.\"",
+  "ref": "Proverbs 9:8"
+ },
+ {
+  "id": "proverbs-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How will a wise man respond when rebuked?",
+  "choices": [
+   "He will hate him",
+   "He will flee",
+   "He will love the one who rebukes him",
+   "He will mock"
+  ],
+  "answer": 2,
+  "explanation": "\"Rebuke a wise man, and he will love thee.\"",
+  "ref": "Proverbs 9:8"
+ },
+ {
+  "id": "proverbs-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens when instruction is given to a wise man?",
+  "choices": [
+   "He will become proud",
+   "He will grow tired",
+   "He will be yet wiser",
+   "He will reject it"
+  ],
+  "answer": 2,
+  "explanation": "\"Give instruction to a wise man, and he will be yet wiser.\"",
+  "ref": "Proverbs 9:9"
+ },
+ {
+  "id": "proverbs-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does wisdom say shall be multiplied by her?",
+  "choices": [
+   "Thy silver, and thy flocks shall be increased",
+   "Thy sons, and thy honour shall be increased",
+   "Thy days, and the years of thy life shall be increased",
+   "Thy house, and thy land shall be increased"
+  ],
+  "answer": 2,
+  "explanation": "\"For by me thy days shall be multiplied, and the years of thy life shall be increased.\"",
+  "ref": "Proverbs 9:11"
+ },
+ {
+  "id": "proverbs-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who alone bears it if a man scorns?",
+  "choices": [
+   "His father",
+   "His neighbour",
+   "He himself",
+   "His children"
+  ],
+  "answer": 2,
+  "explanation": "\"If thou be wise, thou shalt be wise for thyself: but if thou scornest, thou alone shalt bear it.\"",
+  "ref": "Proverbs 9:12"
+ },
+ {
+  "id": "proverbs-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "place",
+  "question": "Where does the foolish woman sit?",
+  "choices": [
+   "In the market of the city",
+   "By the well in the field",
+   "On a seat in the high places of the city",
+   "At the gate of the temple"
+  ],
+  "answer": 2,
+  "explanation": "\"For she sitteth at the door of her house, on a seat in the high places of the city.\"",
+  "ref": "Proverbs 9:14"
+ },
+ {
+  "id": "proverbs-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does the foolish woman call?",
+  "choices": [
+   "The simple of the city",
+   "The kings of the land",
+   "Passengers who go right on their ways",
+   "The elders at the gate"
+  ],
+  "answer": 2,
+  "explanation": "\"To call passengers who go right on their ways.\"",
+  "ref": "Proverbs 9:15"
+ },
+ {
+  "id": "proverbs-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the knowledge of the holy said to be?",
+  "choices": [
+   "Wisdom",
+   "Understanding",
+   "Riches",
+   "Honour"
+  ],
+  "answer": 1,
+  "explanation": "\"The knowledge of the holy is understanding.\"",
+  "ref": "Proverbs 9:10"
+ },
+ {
+  "id": "proverbs-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does he get who rebukes a wicked man?",
+  "choices": [
+   "A reward",
+   "A blot",
+   "A friend",
+   "A crown"
+  ],
+  "answer": 1,
+  "explanation": "\"He that rebuketh a wicked man getteth himself a blot.\"",
+  "ref": "Proverbs 9:7"
+ },
+ {
+  "id": "proverbs-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will a just man do when taught?",
+  "choices": [
+   "Grow proud",
+   "Increase in learning",
+   "Grow weary",
+   "Turn away"
+  ],
+  "answer": 1,
+  "explanation": "\"Teach a just man, and he will increase in learning.\"",
+  "ref": "Proverbs 9:9"
+ },
+ {
+  "id": "proverbs-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does the foolish woman address, as wisdom does?",
+  "choices": [
+   "The rich and the poor",
+   "Whoso is simple and him that wanteth understanding",
+   "The old and the young",
+   "The kings and the priests"
+  ],
+  "answer": 1,
+  "explanation": "\"Whoso is simple, let him turn in hither: and as for him that wanteth understanding, she saith to him.\"",
+  "ref": "Proverbs 9:16"
+ },
+ {
+  "id": "proverbs-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the foolish woman know?",
+  "choices": [
+   "Many things",
+   "Nothing",
+   "Only the law",
+   "Only the future"
+  ],
+  "answer": 1,
+  "explanation": "\"A foolish woman is clamorous: she is simple, and knoweth nothing.\"",
+  "ref": "Proverbs 9:13"
+ },
+ {
+  "id": "proverbs-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said to be pleasant besides stolen waters?",
+  "choices": [
+   "Bread of the poor",
+   "Bread eaten in secret",
+   "Bread of the feast",
+   "Bread of the field"
+  ],
+  "answer": 1,
+  "explanation": "\"Stolen waters are sweet, and bread eaten in secret is pleasant.\"",
+  "ref": "Proverbs 9:17"
+ },
+ {
+  "id": "proverbs-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whom shall a wise man be wise?",
+  "choices": [
+   "For his father",
+   "For himself",
+   "For the king",
+   "For the city"
+  ],
+  "answer": 1,
+  "explanation": "\"If thou be wise, thou shalt be wise for thyself.\"",
+  "ref": "Proverbs 9:12"
+ },
+ {
+  "id": "proverbs-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Where does wisdom cry?",
+  "choices": [
+   "At the gate of the temple",
+   "Upon the highest places of the city",
+   "By the well in the field",
+   "In the valley of the stream"
+  ],
+  "answer": 1,
+  "explanation": "\"She crieth upon the highest places of the city.\"",
+  "ref": "Proverbs 9:3"
+ },
+ {
+  "id": "proverbs-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has wisdom mingled?",
+  "choices": [
+   "Her oil",
+   "Her wine",
+   "Her spices",
+   "Her honey"
+  ],
+  "answer": 1,
+  "explanation": "\"She hath mingled her wine; she hath also furnished her table.\"",
+  "ref": "Proverbs 9:2"
  }
 ]
