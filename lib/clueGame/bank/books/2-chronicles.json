@@ -17568,6 +17568,646 @@
   "ref": "2 Chronicles 34:27–28"
  },
  {
+  "id": "2-chronicles-34-e-01",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "In whose ways did Josiah walk?",
+  "choices": [
+   "David his father",
+   "Hezekiah",
+   "Manasseh",
+   "Solomon"
+  ],
+  "answer": 0,
+  "explanation": "He did that which was right in the sight of the LORD, and walked in the ways of David his father.",
+  "ref": "2 Chronicles 34:2"
+ },
+ {
+  "id": "2-chronicles-34-e-02",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who found the book of the law in the house of the LORD?",
+  "choices": [
+   "Shaphan the scribe",
+   "Hilkiah the priest",
+   "Josiah",
+   "Ahikam"
+  ],
+  "answer": 1,
+  "explanation": "Hilkiah the priest found a book of the law of the LORD given by Moses.",
+  "ref": "2 Chronicles 34:14"
+ },
+ {
+  "id": "2-chronicles-34-e-03",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom did Hilkiah deliver the book?",
+  "choices": [
+   "Maaseiah",
+   "Joah the recorder",
+   "Shaphan the scribe",
+   "Abdon"
+  ],
+  "answer": 2,
+  "explanation": "Hilkiah delivered the book to Shaphan.",
+  "ref": "2 Chronicles 34:15"
+ },
+ {
+  "id": "2-chronicles-34-e-04",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophetess did Hilkiah and the king's men go to?",
+  "choices": [
+   "Deborah",
+   "Miriam",
+   "Anna",
+   "Huldah"
+  ],
+  "answer": 3,
+  "explanation": "Hilkiah and they that the king had appointed went to Huldah the prophetess.",
+  "ref": "2 Chronicles 34:22"
+ },
+ {
+  "id": "2-chronicles-34-e-05",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Josiah do with the bones of the priests?",
+  "choices": [
+   "Burnt them upon their altars",
+   "Buried them in the valley",
+   "Threw them in the brook",
+   "Carried them to Babylon"
+  ],
+  "answer": 0,
+  "explanation": "He burnt the bones of the priests upon their altars, and cleansed Judah and Jerusalem.",
+  "ref": "2 Chronicles 34:5"
+ },
+ {
+  "id": "2-chronicles-34-e-06",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Josiah read in the ears of the people at the house of the LORD?",
+  "choices": [
+   "The psalms of David",
+   "The book of the covenant",
+   "The words of Isaiah",
+   "The genealogies"
+  ],
+  "answer": 1,
+  "explanation": "He read in their ears all the words of the book of the covenant that was found in the house of the LORD.",
+  "ref": "2 Chronicles 34:30"
+ },
+ {
+  "id": "2-chronicles-34-e-07",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Josiah make before the LORD as he stood in his place?",
+  "choices": [
+   "A new altar",
+   "A treaty with Egypt",
+   "A covenant",
+   "A vow to build"
+  ],
+  "answer": 2,
+  "explanation": "The king stood in his place, and made a covenant before the LORD.",
+  "ref": "2 Chronicles 34:31"
+ },
+ {
+  "id": "2-chronicles-34-e-08",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Josiah's men do to the altars of Baalim?",
+  "choices": [
+   "Covered them with gold",
+   "Moved them to Jerusalem",
+   "Hid them in the temple",
+   "Brake them down"
+  ],
+  "answer": 3,
+  "explanation": "They brake down the altars of Baalim in his presence.",
+  "ref": "2 Chronicles 34:4"
+ },
+ {
+  "id": "2-chronicles-34-e-09",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Josiah send men to repair in the eighteenth year of his reign?",
+  "choices": [
+   "The house of the LORD",
+   "The wall of Jerusalem",
+   "The palace",
+   "The fenced cities"
+  ],
+  "answer": 0,
+  "explanation": "He sent Shaphan, Maaseiah and Joah to repair the house of the LORD his God.",
+  "ref": "2 Chronicles 34:8"
+ },
+ {
+  "id": "2-chronicles-34-e-10",
+  "chapter": 34,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For how long did the people not depart from following the LORD?",
+  "choices": [
+   "Seven years",
+   "All Josiah's days",
+   "Only the first year",
+   "Until the eighteenth year"
+  ],
+  "answer": 1,
+  "explanation": "All his days they departed not from following the LORD, the God of their fathers.",
+  "ref": "2 Chronicles 34:33"
+ },
+ {
+  "id": "2-chronicles-34-m-01",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many years did Josiah reign in Jerusalem?",
+  "choices": [
+   "Twenty-nine",
+   "Fifty-five",
+   "Thirty-one",
+   "Eight"
+  ],
+  "answer": 2,
+  "explanation": "He reigned in Jerusalem one and thirty years.",
+  "ref": "2 Chronicles 34:1"
+ },
+ {
+  "id": "2-chronicles-34-m-02",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year of his reign did Josiah begin to purge Judah and Jerusalem?",
+  "choices": [
+   "The eighth year",
+   "The eighteenth year",
+   "The first year",
+   "The twelfth year"
+  ],
+  "answer": 3,
+  "explanation": "In the twelfth year he began to purge Judah and Jerusalem from the high places.",
+  "ref": "2 Chronicles 34:3"
+ },
+ {
+  "id": "2-chronicles-34-m-03",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Josiah do with the broken images and strew upon the graves?",
+  "choices": [
+   "Made dust of them",
+   "Melted them into silver",
+   "Burned them with fire",
+   "Sold them for gold"
+  ],
+  "answer": 0,
+  "explanation": "He brake in pieces the images, and made dust of them, and strowed it upon the graves of them that had sacrificed unto them.",
+  "ref": "2 Chronicles 34:4"
+ },
+ {
+  "id": "2-chronicles-34-m-04",
+  "chapter": 34,
+  "level": "medium",
+  "category": "place",
+  "question": "In the cities of Manasseh, Ephraim and Simeon, even unto which tribe, did Josiah purge?",
+  "choices": [
+   "Dan",
+   "Naphtali",
+   "Judah",
+   "Reuben"
+  ],
+  "answer": 1,
+  "explanation": "So did he in the cities of Manasseh, and Ephraim, and Simeon, even unto Naphtali.",
+  "ref": "2 Chronicles 34:6"
+ },
+ {
+  "id": "2-chronicles-34-m-05",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what tools did Josiah purge the cities round about?",
+  "choices": [
+   "Swords",
+   "Axes of iron",
+   "Mattocks",
+   "Hammers of brass"
+  ],
+  "answer": 2,
+  "explanation": "He did so in the cities with their mattocks round about.",
+  "ref": "2 Chronicles 34:6"
+ },
+ {
+  "id": "2-chronicles-34-m-06",
+  "chapter": 34,
+  "level": "medium",
+  "category": "person",
+  "question": "Who went with Maaseiah the governor and Joah the recorder to repair the house?",
+  "choices": [
+   "Hilkiah",
+   "Ahikam",
+   "Asaiah",
+   "Shaphan the son of Azaliah"
+  ],
+  "answer": 3,
+  "explanation": "He sent Shaphan the son of Azaliah, and Maaseiah the governor of the city, and Joah the son of Joahaz the recorder.",
+  "ref": "2 Chronicles 34:8"
+ },
+ {
+  "id": "2-chronicles-34-m-07",
+  "chapter": 34,
+  "level": "medium",
+  "category": "person",
+  "question": "Who had gathered the money brought into the house of God?",
+  "choices": [
+   "The Levites that kept the doors",
+   "The princes of Judah",
+   "The priests of the courses",
+   "The elders of Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "The money was gathered by the Levites that kept the doors.",
+  "ref": "2 Chronicles 34:9"
+ },
+ {
+  "id": "2-chronicles-34-m-08",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the workmen buy with the money?",
+  "choices": [
+   "Silver vessels",
+   "Hewn stone and timber for couplings",
+   "Cedar and gold",
+   "Oil and wine"
+  ],
+  "answer": 1,
+  "explanation": "To buy hewn stone, and timber for couplings, and to floor the houses.",
+  "ref": "2 Chronicles 34:11"
+ },
+ {
+  "id": "2-chronicles-34-m-09",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the men do the work on the house?",
+  "choices": [
+   "Quickly",
+   "In secret",
+   "Faithfully",
+   "Reluctantly"
+  ],
+  "answer": 2,
+  "explanation": "The men did the work faithfully.",
+  "ref": "2 Chronicles 34:12"
+ },
+ {
+  "id": "2-chronicles-34-m-10",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Josiah say the wrath of the LORD was poured out upon them?",
+  "choices": [
+   "They had not paid the tithe",
+   "They had lost the ark",
+   "They had made peace with Egypt",
+   "Their fathers had not kept the word of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Great is the wrath of the LORD that is poured out upon us, because our fathers have not kept the word of the LORD.",
+  "ref": "2 Chronicles 34:21"
+ },
+ {
+  "id": "2-chronicles-34-m-11",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Huldah say the LORD would bring upon the place?",
+  "choices": [
+   "All the curses written in the book",
+   "A famine of seven years",
+   "A plague of locusts",
+   "The armies of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "I will bring evil upon this place, even all the curses that are written in the book.",
+  "ref": "2 Chronicles 34:24"
+ },
+ {
+  "id": "2-chronicles-34-m-12",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why would the LORD's wrath be poured out on Jerusalem, according to Huldah?",
+  "choices": [
+   "They had broken the sabbath",
+   "They had forsaken him and burned incense to other gods",
+   "They had not repaired the house",
+   "They had slain the prophets"
+  ],
+  "answer": 1,
+  "explanation": "They have forsaken me, and have burned incense unto other gods, that they might provoke me to anger.",
+  "ref": "2 Chronicles 34:25"
+ },
+ {
+  "id": "2-chronicles-34-m-13",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD hear Josiah, according to Huldah?",
+  "choices": [
+   "He built a great altar",
+   "He fought for Judah",
+   "His heart was tender and he humbled himself",
+   "He offered a thousand bullocks"
+  ],
+  "answer": 2,
+  "explanation": "Because thine heart was tender, and thou didst humble thyself before God.",
+  "ref": "2 Chronicles 34:27"
+ },
+ {
+  "id": "2-chronicles-34-m-14",
+  "chapter": 34,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Josiah's eyes not see, according to Huldah?",
+  "choices": [
+   "The fall of Nineveh",
+   "The rebuilding of the temple",
+   "The return of the ark",
+   "The evil the LORD would bring on the place"
+  ],
+  "answer": 3,
+  "explanation": "Neither shall thine eyes see all the evil that I will bring upon this place.",
+  "ref": "2 Chronicles 34:28"
+ },
+ {
+  "id": "2-chronicles-34-m-15",
+  "chapter": 34,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the king gather together after receiving Huldah's word?",
+  "choices": [
+   "All the elders of Judah and Jerusalem",
+   "The priests of Ephraim",
+   "The captains of war",
+   "The princes of Israel"
+  ],
+  "answer": 0,
+  "explanation": "The king sent and gathered together all the elders of Judah and Jerusalem.",
+  "ref": "2 Chronicles 34:29"
+ },
+ {
+  "id": "2-chronicles-34-h-01",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Shaphan the scribe was the son of whom?",
+  "choices": [
+   "Joahaz",
+   "Azaliah",
+   "Hilkiah",
+   "Micah"
+  ],
+  "answer": 1,
+  "explanation": "Shaphan the son of Azaliah.",
+  "ref": "2 Chronicles 34:8"
+ },
+ {
+  "id": "2-chronicles-34-h-02",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Joah the recorder was the son of whom?",
+  "choices": [
+   "Azaliah",
+   "Tikvath",
+   "Joahaz",
+   "Shaphan"
+  ],
+  "answer": 2,
+  "explanation": "Joah the son of Joahaz the recorder.",
+  "ref": "2 Chronicles 34:8"
+ },
+ {
+  "id": "2-chronicles-34-h-03",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two Levites, sons of Merari, were overseers of the work?",
+  "choices": [
+   "Zechariah and Meshullam",
+   "Shimri and Jeiel",
+   "Mahath and Joel",
+   "Jahath and Obadiah"
+  ],
+  "answer": 3,
+  "explanation": "The overseers were Jahath and Obadiah, the Levites, of the sons of Merari.",
+  "ref": "2 Chronicles 34:12"
+ },
+ {
+  "id": "2-chronicles-34-h-04",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two Levites, sons of the Kohathites, set the work forward?",
+  "choices": [
+   "Zechariah and Meshullam",
+   "Jahath and Obadiah",
+   "Ahikam and Abdon",
+   "Maaseiah and Joah"
+  ],
+  "answer": 0,
+  "explanation": "Zechariah and Meshullam, of the sons of the Kohathites, to set it forward.",
+  "ref": "2 Chronicles 34:12"
+ },
+ {
+  "id": "2-chronicles-34-h-05",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Levites overseers have skill in?",
+  "choices": [
+   "Building with stone",
+   "Instruments of musick",
+   "Carving timber",
+   "Writing laws"
+  ],
+  "answer": 1,
+  "explanation": "Other of the Levites, all that could skill of instruments of musick.",
+  "ref": "2 Chronicles 34:12"
+ },
+ {
+  "id": "2-chronicles-34-h-06",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of the Levites, which three groups are named as scribes, officers and what else?",
+  "choices": [
+   "Singers",
+   "Judges",
+   "Porters",
+   "Priests"
+  ],
+  "answer": 2,
+  "explanation": "Of the Levites there were scribes, and officers, and porters.",
+  "ref": "2 Chronicles 34:13"
+ },
+ {
+  "id": "2-chronicles-34-h-07",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Of whose hand, among others, was the money gathered?",
+  "choices": [
+   "Reuben and Gad",
+   "Simeon and Levi",
+   "Dan and Naphtali",
+   "Manasseh and Ephraim"
+  ],
+  "answer": 3,
+  "explanation": "The money was gathered of the hand of Manasseh and Ephraim, and of all the remnant of Israel, and of all Judah and Benjamin.",
+  "ref": "2 Chronicles 34:9"
+ },
+ {
+  "id": "2-chronicles-34-h-08",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Huldah was the wife of which man?",
+  "choices": [
+   "Shallum the son of Tikvath",
+   "Ahikam the son of Shaphan",
+   "Abdon the son of Micah",
+   "Hilkiah the priest"
+  ],
+  "answer": 0,
+  "explanation": "Huldah the prophetess, the wife of Shallum the son of Tikvath, the son of Hasrah, keeper of the wardrobe.",
+  "ref": "2 Chronicles 34:22"
+ },
+ {
+  "id": "2-chronicles-34-h-09",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Shallum, Huldah's husband, keeper of?",
+  "choices": [
+   "The treasury",
+   "The wardrobe",
+   "The gates",
+   "The king's horses"
+  ],
+  "answer": 1,
+  "explanation": "Shallum the son of Tikvath, the son of Hasrah, keeper of the wardrobe.",
+  "ref": "2 Chronicles 34:22"
+ },
+ {
+  "id": "2-chronicles-34-h-10",
+  "chapter": 34,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Huldah dwell in Jerusalem?",
+  "choices": [
+   "In the king's house",
+   "By the fish gate",
+   "In the college",
+   "In the temple court"
+  ],
+  "answer": 2,
+  "explanation": "She dwelt in Jerusalem in the college.",
+  "ref": "2 Chronicles 34:22"
+ },
+ {
+  "id": "2-chronicles-34-h-11",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Ahikam, one of those sent to enquire, was the son of whom?",
+  "choices": [
+   "Micah",
+   "Azaliah",
+   "Hasrah",
+   "Shaphan"
+  ],
+  "answer": 3,
+  "explanation": "The king commanded Hilkiah, and Ahikam the son of Shaphan, and Abdon the son of Micah.",
+  "ref": "2 Chronicles 34:20"
+ },
+ {
+  "id": "2-chronicles-34-h-12",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Abdon, one of those sent to enquire, was the son of whom?",
+  "choices": [
+   "Micah",
+   "Shaphan",
+   "Joahaz",
+   "Tikvath"
+  ],
+  "answer": 0,
+  "explanation": "Abdon the son of Micah.",
+  "ref": "2 Chronicles 34:20"
+ },
+ {
+  "id": "2-chronicles-34-h-13",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With how much of his being did Josiah covenant to keep the commandments?",
+  "choices": [
+   "His strength and mind",
+   "All his heart and all his soul",
+   "His days and his sons",
+   "His house and kingdom"
+  ],
+  "answer": 1,
+  "explanation": "To walk after the LORD, and to keep his commandments, with all his heart, and with all his soul.",
+  "ref": "2 Chronicles 34:31"
+ },
+ {
+  "id": "2-chronicles-34-h-14",
+  "chapter": 34,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which year of Josiah's reign did he send men to repair the house?",
+  "choices": [
+   "The twelfth year",
+   "The eighth year",
+   "The eighteenth year",
+   "The thirty-first year"
+  ],
+  "answer": 2,
+  "explanation": "In the eighteenth year of his reign, when he had purged the land, and the house, he sent Shaphan.",
+  "ref": "2 Chronicles 34:8"
+ },
+ {
+  "id": "2-chronicles-34-h-15",
+  "chapter": 34,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did the high priest Hilkiah meet when Shaphan and the others came to him?",
+  "choices": [
+   "The workmen",
+   "The scribes",
+   "The porters",
+   "The money was delivered to Hilkiah the high priest"
+  ],
+  "answer": 3,
+  "explanation": "When they came to Hilkiah the high priest, they delivered the money.",
+  "ref": "2 Chronicles 34:9"
+ },
+ {
   "id": "old-2-chronicles-35-1",
   "chapter": 35,
   "level": "beginner",
