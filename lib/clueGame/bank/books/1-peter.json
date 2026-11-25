@@ -398,5 +398,2229 @@
   "answer": 0,
   "explanation": "Peter warns that the devil walks about like a roaring lion seeking whom he may devour.",
   "ref": "1 Peter 5:8"
+ },
+ {
+  "id": "1-peter-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who writes this letter to the strangers scattered abroad?",
+  "choices": [
+   "Peter, an apostle of Jesus Christ",
+   "Paul, an apostle of Jesus Christ",
+   "John, the elder",
+   "James, the servant of God"
+  ],
+  "answer": 0,
+  "explanation": "The letter begins: Peter, an apostle of Jesus Christ, to the strangers scattered throughout Pontus, Galatia, Cappadocia, Asia, and Bithynia.",
+  "ref": "1 Peter 1:1"
+ },
+ {
+  "id": "1-peter-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is the trial of your faith said to be much more precious than?",
+  "choices": [
+   "Silver and rubies",
+   "Gold that perisheth",
+   "The riches of kings",
+   "The pearls of the sea"
+  ],
+  "answer": 1,
+  "explanation": "The trial of your faith is much more precious than of gold that perisheth, though it be tried with fire.",
+  "ref": "1 Peter 1:7"
+ },
+ {
+  "id": "1-peter-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what is all flesh compared?",
+  "choices": [
+   "A mist",
+   "A shadow",
+   "Grass",
+   "Dust"
+  ],
+  "answer": 2,
+  "explanation": "All flesh is as grass, and all the glory of man as the flower of grass.",
+  "ref": "1 Peter 1:24"
+ },
+ {
+  "id": "1-peter-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What endures for ever, according to Peter?",
+  "choices": [
+   "The glory of man",
+   "The kingdoms of the earth",
+   "The flower of the field",
+   "The word of the Lord"
+  ],
+  "answer": 3,
+  "explanation": "The grass withereth, but the word of the Lord endureth for ever.",
+  "ref": "1 Peter 1:24–25"
+ },
+ {
+  "id": "1-peter-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "In which region were the strangers to whom Peter writes scattered?",
+  "choices": [
+   "Bithynia",
+   "Egypt",
+   "Macedonia",
+   "Judaea"
+  ],
+  "answer": 0,
+  "explanation": "Peter writes to the strangers scattered throughout Pontus, Galatia, Cappadocia, Asia, and Bithynia.",
+  "ref": "1 Peter 1:1"
+ },
+ {
+  "id": "1-peter-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what are believers kept unto salvation?",
+  "choices": [
+   "Their own strength and works",
+   "The power of God through faith",
+   "The law and the prophets",
+   "The prayers of the elders"
+  ],
+  "answer": 1,
+  "explanation": "They are kept by the power of God through faith unto salvation ready to be revealed in the last time.",
+  "ref": "1 Peter 1:5"
+ },
+ {
+  "id": "1-peter-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of Christ, whom believers have not seen, what does Peter say they do?",
+  "choices": [
+   "Fear him and keep silent",
+   "Seek him and find him",
+   "Love him and rejoice with joy unspeakable",
+   "Follow him and suffer"
+  ],
+  "answer": 2,
+  "explanation": "Whom having not seen, ye love; yet believing, ye rejoice with joy unspeakable and full of glory.",
+  "ref": "1 Peter 1:8"
+ },
+ {
+  "id": "1-peter-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are believers told to gird up?",
+  "choices": [
+   "Their swords",
+   "Their garments",
+   "Their strength",
+   "The loins of their mind"
+  ],
+  "answer": 3,
+  "explanation": "Gird up the loins of your mind, be sober, and hope to the end for the grace brought unto you.",
+  "ref": "1 Peter 1:13"
+ },
+ {
+  "id": "1-peter-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the prophets search to learn about the sufferings of Christ?",
+  "choices": [
+   "What manner of time the Spirit of Christ did signify",
+   "Who would betray him",
+   "In which city he would die",
+   "Which tribe he would come from"
+  ],
+  "answer": 0,
+  "explanation": "They searched what, or what manner of time the Spirit of Christ did signify, when it testified beforehand the sufferings of Christ, and the glory that should follow.",
+  "ref": "1 Peter 1:11"
+ },
+ {
+  "id": "1-peter-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which beings desire to look into the things preached in the gospel?",
+  "choices": [
+   "The prophets",
+   "The angels",
+   "The elders",
+   "The Gentiles"
+  ],
+  "answer": 1,
+  "explanation": "These are the things which the angels desire to look into.",
+  "ref": "1 Peter 1:12"
+ },
+ {
+  "id": "1-peter-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Peter say it is written that believers must be holy?",
+  "choices": [
+   "Because the law demands it",
+   "Because the world is watching",
+   "Because God says, Be ye holy; for I am holy",
+   "Because Christ will soon return"
+  ],
+  "answer": 2,
+  "explanation": "It is written, Be ye holy; for I am holy.",
+  "ref": "1 Peter 1:16"
+ },
+ {
+  "id": "1-peter-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did believers purify their souls in obeying the truth to reach?",
+  "choices": [
+   "A place in the temple",
+   "Freedom from the law",
+   "Wisdom to teach others",
+   "Unfeigned love of the brethren"
+  ],
+  "answer": 3,
+  "explanation": "Seeing ye have purified your souls in obeying the truth through the Spirit unto unfeigned love of the brethren.",
+  "ref": "1 Peter 1:22"
+ },
+ {
+  "id": "1-peter-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "Who judges without respect of persons, according to every man's work?",
+  "choices": [
+   "The Father",
+   "The Son alone",
+   "The angels",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "If ye call on the Father, who without respect of persons judgeth according to every man's work.",
+  "ref": "1 Peter 1:17"
+ },
+ {
+  "id": "1-peter-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When was Christ foreordained?",
+  "choices": [
+   "At the giving of the law",
+   "Before the foundation of the world",
+   "When David was king",
+   "At his baptism"
+  ],
+  "answer": 1,
+  "explanation": "Christ verily was foreordained before the foundation of the world, but was manifest in these last times for you.",
+  "ref": "1 Peter 1:20"
+ },
+ {
+  "id": "1-peter-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For whom did the prophets minister the things now reported by those who preached the gospel?",
+  "choices": [
+   "Only unto the kings of Israel",
+   "Unto the angels",
+   "Not unto themselves, but unto us",
+   "Unto their own generation"
+  ],
+  "answer": 2,
+  "explanation": "It was revealed to the prophets that not unto themselves, but unto us they did minister the things now reported.",
+  "ref": "1 Peter 1:12"
+ },
+ {
+  "id": "1-peter-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say believers receive as the end of their faith?",
+  "choices": [
+   "A crown of life",
+   "Rest from their labours",
+   "A new name",
+   "The salvation of their souls"
+  ],
+  "answer": 3,
+  "explanation": "Receiving the end of your faith, even the salvation of your souls.",
+  "ref": "1 Peter 1:9"
+ },
+ {
+  "id": "1-peter-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say believers are chosen unto, through sanctification of the Spirit?",
+  "choices": [
+   "Obedience and sprinkling of the blood of Jesus Christ",
+   "Teaching and fasting",
+   "Service and sacrifice",
+   "Prayer and almsgiving"
+  ],
+  "answer": 0,
+  "explanation": "Elect through sanctification of the Spirit unto obedience and sprinkling of the blood of Jesus Christ.",
+  "ref": "1 Peter 1:2"
+ },
+ {
+  "id": "1-peter-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As obedient children, what are believers told not to fashion themselves according to?",
+  "choices": [
+   "The customs of the Gentiles",
+   "The former lusts in their ignorance",
+   "The traditions of the fathers",
+   "The vain words of teachers"
+  ],
+  "answer": 1,
+  "explanation": "As obedient children, not fashioning yourselves according to the former lusts in your ignorance.",
+  "ref": "1 Peter 1:14"
+ },
+ {
+  "id": "1-peter-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Peter bless for begetting believers again to a lively hope?",
+  "choices": [
+   "The Holy Spirit alone",
+   "The prophets of old",
+   "The God and Father of our Lord Jesus Christ",
+   "The apostles"
+  ],
+  "answer": 2,
+  "explanation": "Blessed be the God and Father of our Lord Jesus Christ, which hath begotten us again unto a lively hope.",
+  "ref": "1 Peter 1:3"
+ },
+ {
+  "id": "1-peter-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "As what kind of lamb was Christ's precious blood shed?",
+  "choices": [
+   "A lamb of the first year",
+   "A lamb for the Passover feast",
+   "A lamb from the flock of kings",
+   "A lamb without blemish and without spot"
+  ],
+  "answer": 3,
+  "explanation": "The precious blood of Christ, as of a lamb without blemish and without spot.",
+  "ref": "1 Peter 1:19"
+ },
+ {
+  "id": "1-peter-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who raised Christ from the dead and gave him glory?",
+  "choices": [
+   "God",
+   "The angels",
+   "The Holy Spirit alone",
+   "The apostles"
+  ],
+  "answer": 0,
+  "explanation": "God raised him up from the dead, and gave him glory; that your faith and hope might be in God.",
+  "ref": "1 Peter 1:21"
+ },
+ {
+  "id": "1-peter-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does Peter tell believers to love one another?",
+  "choices": [
+   "Quietly, in secret",
+   "Fervently, with a pure heart",
+   "Only in public",
+   "With caution"
+  ],
+  "answer": 1,
+  "explanation": "See that ye love one another with a pure heart fervently.",
+  "ref": "1 Peter 1:22"
+ },
+ {
+  "id": "1-peter-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of what kind of seed are believers born again?",
+  "choices": [
+   "Seed of Abraham",
+   "Seed of David",
+   "Incorruptible seed",
+   "Corruptible seed"
+  ],
+  "answer": 2,
+  "explanation": "Born again, not of corruptible seed, but of incorruptible, by the word of God.",
+  "ref": "1 Peter 1:23"
+ },
+ {
+  "id": "1-peter-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long are believers in heaviness through manifold temptations?",
+  "choices": [
+   "All their days",
+   "For forty years",
+   "Until the harvest",
+   "For a season"
+  ],
+  "answer": 3,
+  "explanation": "Now for a season, if need be, ye are in heaviness through manifold temptations.",
+  "ref": "1 Peter 1:6"
+ },
+ {
+  "id": "1-peter-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of what did the prophets prophesy that should come to believers?",
+  "choices": [
+   "Grace",
+   "The law",
+   "The kingdom of David",
+   "A new temple"
+  ],
+  "answer": 0,
+  "explanation": "The prophets prophesied of the grace that should come unto you.",
+  "ref": "1 Peter 1:10"
+ },
+ {
+  "id": "1-peter-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From whom did believers receive the vain conversation they were redeemed from?",
+  "choices": [
+   "The Gentile rulers",
+   "Tradition from their fathers",
+   "The false prophets",
+   "The scribes"
+  ],
+  "answer": 1,
+  "explanation": "Ye were redeemed from your vain conversation received by tradition from your fathers.",
+  "ref": "1 Peter 1:18"
+ },
+ {
+  "id": "1-peter-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "At what are believers told to hope to the end for grace to be brought?",
+  "choices": [
+   "The rebuilding of the temple",
+   "The day of Pentecost",
+   "The revelation of Jesus Christ",
+   "The end of persecution"
+  ],
+  "answer": 2,
+  "explanation": "Hope to the end for the grace that is to be brought unto you at the revelation of Jesus Christ.",
+  "ref": "1 Peter 1:13"
+ },
+ {
+  "id": "1-peter-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "According to whose foreknowledge are believers elect?",
+  "choices": [
+   "The Son",
+   "The prophets",
+   "The apostles",
+   "God the Father"
+  ],
+  "answer": 3,
+  "explanation": "Elect according to the foreknowledge of God the Father, through sanctification of the Spirit.",
+  "ref": "1 Peter 1:2"
+ },
+ {
+  "id": "1-peter-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Through sanctification of whom are believers elect?",
+  "choices": [
+   "The Spirit",
+   "The law",
+   "The angels",
+   "The church"
+  ],
+  "answer": 0,
+  "explanation": "Elect through sanctification of the Spirit unto obedience and sprinkling of the blood of Jesus Christ.",
+  "ref": "1 Peter 1:2"
+ },
+ {
+  "id": "1-peter-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "At what time will the tried faith be found unto praise, honour and glory?",
+  "choices": [
+   "At the end of the trial",
+   "At the appearing of Jesus Christ",
+   "At the day of rest",
+   "At the death of the believer"
+  ],
+  "answer": 1,
+  "explanation": "That the trial of your faith might be found unto praise and honour and glory at the appearing of Jesus Christ.",
+  "ref": "1 Peter 1:7"
+ },
+ {
+  "id": "1-peter-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are believers told to pass the time of their sojourning here?",
+  "choices": [
+   "In rest",
+   "In silence",
+   "In fear",
+   "In haste"
+  ],
+  "answer": 2,
+  "explanation": "Pass the time of your sojourning here in fear.",
+  "ref": "1 Peter 1:17"
+ },
+ {
+  "id": "1-peter-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what time is the salvation ready to be revealed?",
+  "choices": [
+   "The first year",
+   "The time of the law",
+   "The days of the kings",
+   "The last time"
+  ],
+  "answer": 3,
+  "explanation": "Kept by the power of God through faith unto salvation ready to be revealed in the last time.",
+  "ref": "1 Peter 1:5"
+ },
+ {
+  "id": "1-peter-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose Spirit was in the prophets, testifying beforehand of the sufferings of Christ?",
+  "choices": [
+   "The Spirit of Christ",
+   "The Spirit of Moses",
+   "The Spirit of the law",
+   "The Spirit of Elijah"
+  ],
+  "answer": 0,
+  "explanation": "The Spirit of Christ which was in them did testify beforehand the sufferings of Christ, and the glory that should follow.",
+  "ref": "1 Peter 1:11"
+ },
+ {
+  "id": "1-peter-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whom does Peter say believers' faith and hope might be?",
+  "choices": [
+   "The prophets",
+   "God",
+   "The law",
+   "The church"
+  ],
+  "answer": 1,
+  "explanation": "That your faith and hope might be in God.",
+  "ref": "1 Peter 1:21"
+ },
+ {
+  "id": "1-peter-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into what has God called believers out of darkness?",
+  "choices": [
+   "His holy mountain",
+   "His eternal rest",
+   "His marvellous light",
+   "His promised land"
+  ],
+  "answer": 2,
+  "explanation": "He hath called you out of darkness into his marvellous light.",
+  "ref": "1 Peter 2:9"
+ },
+ {
+  "id": "1-peter-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Christ leave for believers to follow?",
+  "choices": [
+   "A written law",
+   "A new commandment",
+   "A staff",
+   "An example"
+  ],
+  "answer": 3,
+  "explanation": "Christ also suffered for us, leaving us an example, that ye should follow his steps.",
+  "ref": "1 Peter 2:21"
+ },
+ {
+  "id": "1-peter-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Peter say believers were like before they returned to the Shepherd?",
+  "choices": [
+   "Sheep going astray",
+   "Lambs in the fold",
+   "Wolves among sheep",
+   "Goats on the left hand"
+  ],
+  "answer": 0,
+  "explanation": "Ye were as sheep going astray; but are now returned unto the Shepherd and Bishop of your souls.",
+  "ref": "1 Peter 2:25"
+ },
+ {
+  "id": "1-peter-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Christ respond when he was reviled?",
+  "choices": [
+   "He called down judgment",
+   "He reviled not again",
+   "He answered nothing and left",
+   "He rebuked them sharply"
+  ],
+  "answer": 1,
+  "explanation": "When he was reviled, reviled not again; when he suffered, he threatened not.",
+  "ref": "1 Peter 2:23"
+ },
+ {
+  "id": "1-peter-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these does Peter tell believers to lay aside?",
+  "choices": [
+   "Pride of birth",
+   "Wealth",
+   "Guile",
+   "Old friends"
+  ],
+  "answer": 2,
+  "explanation": "Laying aside all malice, and all guile, and hypocrisies, and envies, and all evil speakings.",
+  "ref": "1 Peter 2:1"
+ },
+ {
+  "id": "1-peter-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "place",
+  "question": "Where does the scripture say God lays a chief corner stone?",
+  "choices": [
+   "Bethel",
+   "Shiloh",
+   "Carmel",
+   "Sion"
+  ],
+  "answer": 3,
+  "explanation": "Behold, I lay in Sion a chief corner stone, elect, precious.",
+  "ref": "1 Peter 2:6"
+ },
+ {
+  "id": "1-peter-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the stone the builders disallowed become?",
+  "choices": [
+   "The head of the corner",
+   "A stumbling place only",
+   "A foundation under the temple",
+   "A boundary stone"
+  ],
+  "answer": 0,
+  "explanation": "The stone which the builders disallowed, the same is made the head of the corner.",
+  "ref": "1 Peter 2:7"
+ },
+ {
+  "id": "1-peter-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the stone to those who stumble at the word, being disobedient?",
+  "choices": [
+   "A wall of judgment",
+   "A stone of stumbling and a rock of offence",
+   "A burden too heavy",
+   "A hidden pit"
+  ],
+  "answer": 1,
+  "explanation": "He is a stone of stumbling, and a rock of offence, even to them which stumble at the word, being disobedient.",
+  "ref": "1 Peter 2:8"
+ },
+ {
+  "id": "1-peter-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why has God called believers to be a chosen generation and a royal priesthood?",
+  "choices": [
+   "To rule over the nations",
+   "To keep the law of Moses",
+   "To shew forth his praises",
+   "To build a new temple"
+  ],
+  "answer": 2,
+  "explanation": "Ye are a chosen generation, a royal priesthood, that ye should shew forth the praises of him who hath called you.",
+  "ref": "1 Peter 2:9"
+ },
+ {
+  "id": "1-peter-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Peter say believers once were not, but now are?",
+  "choices": [
+   "The heirs of Abraham",
+   "The servants of the king",
+   "The church of Jerusalem",
+   "The people of God"
+  ],
+  "answer": 3,
+  "explanation": "Which in time past were not a people, but are now the people of God.",
+  "ref": "1 Peter 2:10"
+ },
+ {
+  "id": "1-peter-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Peter urge strangers and pilgrims to abstain from?",
+  "choices": [
+   "Fleshly lusts, which war against the soul",
+   "The company of Gentiles",
+   "Idol feasts",
+   "The courts of the king"
+  ],
+  "answer": 0,
+  "explanation": "Abstain from fleshly lusts, which war against the soul.",
+  "ref": "1 Peter 2:11"
+ },
+ {
+  "id": "1-peter-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why should believers keep an honest conversation among the Gentiles?",
+  "choices": [
+   "That they may win a good name for themselves",
+   "That they may glorify God in the day of visitation",
+   "That they may escape persecution",
+   "That they may be left alone"
+  ],
+  "answer": 1,
+  "explanation": "They may by your good works, which they shall behold, glorify God in the day of visitation.",
+  "ref": "1 Peter 2:12"
+ },
+ {
+  "id": "1-peter-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Peter tells servants to be subject to masters, not only the good and gentle, but also to which?",
+  "choices": [
+   "The proud",
+   "The foolish",
+   "The froward",
+   "The idle"
+  ],
+  "answer": 2,
+  "explanation": "Servants, be subject to your masters with all fear; not only to the good and gentle, but also to the froward.",
+  "ref": "1 Peter 2:18"
+ },
+ {
+  "id": "1-peter-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of the one who believes on the chief corner stone?",
+  "choices": [
+   "He shall never hunger",
+   "He shall be a king",
+   "He shall see the Father",
+   "He shall not be confounded"
+  ],
+  "answer": 3,
+  "explanation": "He that believeth on him shall not be confounded.",
+  "ref": "1 Peter 2:6"
+ },
+ {
+  "id": "1-peter-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Through whom are the spiritual sacrifices of the holy priesthood acceptable to God?",
+  "choices": [
+   "Jesus Christ",
+   "The high priest",
+   "The prophets",
+   "The apostles"
+  ],
+  "answer": 0,
+  "explanation": "An holy priesthood, to offer up spiritual sacrifices, acceptable to God by Jesus Christ.",
+  "ref": "1 Peter 2:5"
+ },
+ {
+  "id": "1-peter-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say well doing will do to foolish men, as the will of God?",
+  "choices": [
+   "Turn them to repentance",
+   "Put their ignorance to silence",
+   "Make them afraid",
+   "Bring them to the church"
+  ],
+  "answer": 1,
+  "explanation": "So is the will of God, that with well doing ye may put to silence the ignorance of foolish men.",
+  "ref": "1 Peter 2:15"
+ },
+ {
+  "id": "1-peter-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is thankworthy, according to Peter?",
+  "choices": [
+   "Fasting and praying in secret",
+   "Giving all one's goods away",
+   "Enduring grief, suffering wrongfully",
+   "Keeping silent before accusers"
+  ],
+  "answer": 2,
+  "explanation": "This is thankworthy, if a man for conscience toward God endure grief, suffering wrongfully.",
+  "ref": "1 Peter 2:19"
+ },
+ {
+  "id": "1-peter-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did Christ commit himself when he suffered?",
+  "choices": [
+   "The elders of the people",
+   "The angels of heaven",
+   "The governor",
+   "Him that judgeth righteously"
+  ],
+  "answer": 3,
+  "explanation": "He committed himself to him that judgeth righteously.",
+  "ref": "1 Peter 2:23"
+ },
+ {
+  "id": "1-peter-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Christ bear our sins in his own body on the tree?",
+  "choices": [
+   "That we, being dead to sins, should live unto righteousness",
+   "That the law might be ended",
+   "That the temple might be opened",
+   "That the angels might rejoice"
+  ],
+  "answer": 0,
+  "explanation": "He bare our sins in his own body on the tree, that we, being dead to sins, should live unto righteousness.",
+  "ref": "1 Peter 2:24"
+ },
+ {
+  "id": "1-peter-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say believers must not use their liberty as?",
+  "choices": [
+   "A reason for pride",
+   "A cloke of maliciousness",
+   "A chance to rest",
+   "A weapon of the law"
+  ],
+  "answer": 1,
+  "explanation": "As free, and not using your liberty for a cloke of maliciousness, but as the servants of God.",
+  "ref": "1 Peter 2:16"
+ },
+ {
+  "id": "1-peter-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Peter say believers have tasted?",
+  "choices": [
+   "That the law is good",
+   "That the land is fruitful",
+   "That the Lord is gracious",
+   "That bread is sweet"
+  ],
+  "answer": 2,
+  "explanation": "If so be ye have tasted that the Lord is gracious.",
+  "ref": "1 Peter 2:3"
+ },
+ {
+  "id": "1-peter-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are believers, as lively stones, built up to be?",
+  "choices": [
+   "A great city",
+   "A high tower",
+   "A temple of gold",
+   "A spiritual house"
+  ],
+  "answer": 3,
+  "explanation": "Ye also, as lively stones, are built up a spiritual house, an holy priesthood.",
+  "ref": "1 Peter 2:5"
+ },
+ {
+  "id": "1-peter-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Peter tell believers to fear?",
+  "choices": [
+   "God",
+   "The king",
+   "Their masters",
+   "Evildoers"
+  ],
+  "answer": 0,
+  "explanation": "Honour all men. Love the brotherhood. Fear God. Honour the king.",
+  "ref": "1 Peter 2:17"
+ },
+ {
+  "id": "1-peter-2-e-08",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did no sin, neither was guile found in his mouth?",
+  "choices": [
+   "Moses",
+   "Christ",
+   "John the Baptist",
+   "Paul"
+  ],
+  "answer": 1,
+  "explanation": "Christ, who did no sin, neither was guile found in his mouth.",
+  "ref": "1 Peter 2:21–22"
+ },
+ {
+  "id": "1-peter-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For what are governors sent, according to Peter?",
+  "choices": [
+   "Collecting taxes",
+   "Teaching the law",
+   "Punishing evildoers and praising the good",
+   "Defending the temple"
+  ],
+  "answer": 2,
+  "explanation": "Governors are sent for the punishment of evildoers, and for the praise of them that do well.",
+  "ref": "1 Peter 2:14"
+ },
+ {
+  "id": "1-peter-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had believers not obtained in time past, but now have?",
+  "choices": [
+   "Wealth",
+   "Freedom",
+   "Knowledge",
+   "Mercy"
+  ],
+  "answer": 3,
+  "explanation": "Which had not obtained mercy, but now have obtained mercy.",
+  "ref": "1 Peter 2:10"
+ },
+ {
+  "id": "1-peter-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why are believers told to desire the sincere milk of the word?",
+  "choices": [
+   "That they may grow thereby",
+   "That they may be strong in battle",
+   "That they may be rich",
+   "That they may teach"
+  ],
+  "answer": 0,
+  "explanation": "As newborn babes, desire the sincere milk of the word, that ye may grow thereby.",
+  "ref": "1 Peter 2:2"
+ },
+ {
+  "id": "1-peter-2-m-13",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Peter say believers were called to suffer patiently?",
+  "choices": [
+   "The law demands it",
+   "Christ suffered for us, leaving an example",
+   "The king commands it",
+   "Suffering brings wealth"
+  ],
+  "answer": 1,
+  "explanation": "Even hereunto were ye called: because Christ also suffered for us, leaving us an example.",
+  "ref": "1 Peter 2:21"
+ },
+ {
+  "id": "1-peter-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the scripture describe the chief corner stone laid in Sion?",
+  "choices": [
+   "Strong, tried",
+   "Holy, high",
+   "Elect, precious",
+   "Ancient, hidden"
+  ],
+  "answer": 2,
+  "explanation": "Behold, I lay in Sion a chief corner stone, elect, precious.",
+  "ref": "1 Peter 2:6"
+ },
+ {
+  "id": "1-peter-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By whom was the living stone disallowed?",
+  "choices": [
+   "Angels",
+   "The prophets",
+   "The Gentiles",
+   "Men"
+  ],
+  "answer": 3,
+  "explanation": "To whom coming, as unto a living stone, disallowed indeed of men, but chosen of God.",
+  "ref": "1 Peter 2:4"
+ },
+ {
+  "id": "1-peter-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom is the stone precious?",
+  "choices": [
+   "Them which believe",
+   "The builders",
+   "The wise",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "Unto you therefore which believe he is precious.",
+  "ref": "1 Peter 2:7"
+ },
+ {
+  "id": "1-peter-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides a chosen generation, a royal priesthood and an holy nation, what are believers called?",
+  "choices": [
+   "A faithful remnant",
+   "A peculiar people",
+   "A kingdom of priests",
+   "A people of the book"
+  ],
+  "answer": 1,
+  "explanation": "Ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people.",
+  "ref": "1 Peter 2:9"
+ },
+ {
+  "id": "1-peter-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say happened to believers by the stripes of Christ?",
+  "choices": [
+   "They were forgiven at once",
+   "They were set apart",
+   "They were healed",
+   "They were silenced"
+  ],
+  "answer": 2,
+  "explanation": "Who his own self bare our sins in his own body on the tree: by whose stripes ye were healed.",
+  "ref": "1 Peter 2:24"
+ },
+ {
+  "id": "1-peter-2-h-13",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does Peter tell believers to love, in his four short commands?",
+  "choices": [
+   "The world",
+   "The law",
+   "Their masters",
+   "The brotherhood"
+  ],
+  "answer": 3,
+  "explanation": "Honour all men. Love the brotherhood. Fear God. Honour the king.",
+  "ref": "1 Peter 2:17"
+ },
+ {
+  "id": "1-peter-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which woman does Peter hold up as obeying Abraham and calling him lord?",
+  "choices": [
+   "Sarah",
+   "Rebekah",
+   "Rachel",
+   "Hagar"
+  ],
+  "answer": 0,
+  "explanation": "Even as Sarah obeyed Abraham, calling him lord: whose daughters ye are, as long as ye do well.",
+  "ref": "1 Peter 3:6"
+ },
+ {
+  "id": "1-peter-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many souls were saved by water in the ark?",
+  "choices": [
+   "Two",
+   "Eight",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "While the ark was a preparing, few, that is, eight souls were saved by water.",
+  "ref": "1 Peter 3:20"
+ },
+ {
+  "id": "1-peter-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "In whose days did the longsuffering of God wait while the ark was preparing?",
+  "choices": [
+   "Abraham",
+   "Moses",
+   "Noah",
+   "Lot"
+  ],
+  "answer": 2,
+  "explanation": "The longsuffering of God waited in the days of Noah, while the ark was a preparing.",
+  "ref": "1 Peter 3:20"
+ },
+ {
+  "id": "1-peter-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where is Christ now, according to Peter?",
+  "choices": [
+   "In the temple",
+   "At the mount of Olives",
+   "In Galilee",
+   "On the right hand of God"
+  ],
+  "answer": 3,
+  "explanation": "Christ is gone into heaven, and is on the right hand of God; angels and authorities and powers being made subject unto him.",
+  "ref": "1 Peter 3:22"
+ },
+ {
+  "id": "1-peter-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Peter say now saves us, by the resurrection of Jesus Christ?",
+  "choices": [
+   "Baptism",
+   "The law",
+   "Fasting",
+   "Offerings"
+  ],
+  "answer": 0,
+  "explanation": "The like figure whereunto even baptism doth also now save us, by the resurrection of Jesus Christ.",
+  "ref": "1 Peter 3:21"
+ },
+ {
+  "id": "1-peter-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How may husbands who obey not the word be won, according to Peter?",
+  "choices": [
+   "By long arguments",
+   "By the conversation of their wives",
+   "By gifts",
+   "By the elders of the church"
+  ],
+  "answer": 1,
+  "explanation": "If any obey not the word, they also may without the word be won by the conversation of the wives.",
+  "ref": "1 Peter 3:1"
+ },
+ {
+  "id": "1-peter-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why are husbands to honour their wives and dwell with them according to knowledge?",
+  "choices": [
+   "That their houses be at peace",
+   "That their children obey",
+   "That their prayers be not hindered",
+   "That their neighbours see"
+  ],
+  "answer": 2,
+  "explanation": "Giving honour unto the wife, as being heirs together of the grace of life; that your prayers be not hindered.",
+  "ref": "1 Peter 3:7"
+ },
+ {
+  "id": "1-peter-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Peter say husbands and wives are heirs together of?",
+  "choices": [
+   "The promise of Abraham",
+   "The kingdom of David",
+   "The land of rest",
+   "The grace of life"
+  ],
+  "answer": 3,
+  "explanation": "Husbands give honour unto the wife as being heirs together of the grace of life.",
+  "ref": "1 Peter 3:7"
+ },
+ {
+  "id": "1-peter-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must he refrain from who will love life and see good days?",
+  "choices": [
+   "His tongue from evil",
+   "His hands from labour",
+   "His feet from the market",
+   "His eyes from the poor"
+  ],
+  "answer": 0,
+  "explanation": "He that will love life, and see good days, let him refrain his tongue from evil, and his lips that they speak no guile.",
+  "ref": "1 Peter 3:10"
+ },
+ {
+  "id": "1-peter-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the ears of the Lord open to?",
+  "choices": [
+   "The cries of the nations",
+   "The prayers of the righteous",
+   "The praises of Zion",
+   "The words of the prophets"
+  ],
+  "answer": 1,
+  "explanation": "The eyes of the Lord are over the righteous, and his ears are open unto their prayers.",
+  "ref": "1 Peter 3:12"
+ },
+ {
+  "id": "1-peter-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Peter say of those who suffer for righteousness' sake?",
+  "choices": [
+   "Blessed are the poor",
+   "Great is your reward",
+   "Happy are ye",
+   "Ye shall be silent"
+  ],
+  "answer": 2,
+  "explanation": "If ye suffer for righteousness' sake, happy are ye: and be not afraid of their terror, neither be troubled.",
+  "ref": "1 Peter 3:14"
+ },
+ {
+  "id": "1-peter-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Peter say should be sanctified in believers' hearts?",
+  "choices": [
+   "The name of the church",
+   "The word of the law",
+   "The day of rest",
+   "The Lord God"
+  ],
+  "answer": 3,
+  "explanation": "Sanctify the Lord God in your hearts: and be ready always to give an answer.",
+  "ref": "1 Peter 3:15"
+ },
+ {
+  "id": "1-peter-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why should believers have a good conscience?",
+  "choices": [
+   "That those who speak evil may be ashamed",
+   "That the church may grow",
+   "That the king may favour them",
+   "That they may be left in peace"
+  ],
+  "answer": 0,
+  "explanation": "Having a good conscience; that, whereas they speak evil of you, they may be ashamed that falsely accuse your good conversation in Christ.",
+  "ref": "1 Peter 3:16"
+ },
+ {
+  "id": "1-peter-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Christ suffer once for sins, the just for the unjust?",
+  "choices": [
+   "That the law might be fulfilled",
+   "That he might bring us to God",
+   "That the temple might be rebuilt",
+   "That the world might be judged"
+  ],
+  "answer": 1,
+  "explanation": "Christ also hath once suffered for sins, the just for the unjust, that he might bring us to God.",
+  "ref": "1 Peter 3:18"
+ },
+ {
+  "id": "1-peter-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Peter say baptism is not, but the answer of a good conscience toward God?",
+  "choices": [
+   "A sign for the Gentiles",
+   "A work of the law",
+   "The putting away of the filth of the flesh",
+   "A reward for the faithful"
+  ],
+  "answer": 2,
+  "explanation": "Baptism saves, not the putting away of the filth of the flesh, but the answer of a good conscience toward God.",
+  "ref": "1 Peter 3:21"
+ },
+ {
+  "id": "1-peter-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How was Christ made alive after being put to death in the flesh?",
+  "choices": [
+   "Raised by the angels",
+   "Lifted by the elders",
+   "Brought back by the prophets",
+   "Quickened by the Spirit"
+  ],
+  "answer": 3,
+  "explanation": "Christ was put to death in the flesh, but quickened by the Spirit.",
+  "ref": "1 Peter 3:18"
+ },
+ {
+  "id": "1-peter-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did Christ go and preach, by the Spirit?",
+  "choices": [
+   "Unto the spirits in prison",
+   "To the lost sheep of Israel",
+   "To the kings of the earth",
+   "To the angels in heaven"
+  ],
+  "answer": 0,
+  "explanation": "By the Spirit he went and preached unto the spirits in prison, which sometime were disobedient in the days of Noah.",
+  "ref": "1 Peter 3:19–20"
+ },
+ {
+  "id": "1-peter-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say it is better to suffer for?",
+  "choices": [
+   "The name of Christ only",
+   "Well doing, if it is the will of God",
+   "The sake of the brethren",
+   "Being silent"
+  ],
+  "answer": 1,
+  "explanation": "It is better, if the will of God be so, that ye suffer for well doing, than for evil doing.",
+  "ref": "1 Peter 3:17"
+ },
+ {
+  "id": "1-peter-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter ask, speaking to those who follow that which is good?",
+  "choices": [
+   "Who shall separate you?",
+   "Who will save you?",
+   "Who is he that will harm you?",
+   "Who hath believed our report?"
+  ],
+  "answer": 2,
+  "explanation": "And who is he that will harm you, if ye be followers of that which is good?",
+  "ref": "1 Peter 3:13"
+ },
+ {
+  "id": "1-peter-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say the holy women of old time did?",
+  "choices": [
+   "Fasted and prayed in the temple",
+   "Taught the young women",
+   "Wore plain garments of linen",
+   "Trusted in God and were in subjection to husbands"
+  ],
+  "answer": 3,
+  "explanation": "The holy women also, who trusted in God, adorned themselves, being in subjection unto their own husbands.",
+  "ref": "1 Peter 3:5"
+ },
+ {
+  "id": "1-peter-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Peter say believers should have of one another?",
+  "choices": [
+   "Compassion",
+   "Fear",
+   "Pride",
+   "Silence"
+  ],
+  "answer": 0,
+  "explanation": "Be ye all of one mind, having compassion one of another, love as brethren.",
+  "ref": "1 Peter 3:8"
+ },
+ {
+  "id": "1-peter-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are believers called to inherit when they bless instead of rendering evil?",
+  "choices": [
+   "The earth",
+   "A blessing",
+   "A crown",
+   "A new name"
+  ],
+  "answer": 1,
+  "explanation": "Knowing that ye are thereunto called, that ye should inherit a blessing.",
+  "ref": "1 Peter 3:9"
+ },
+ {
+  "id": "1-peter-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say of the face of the Lord?",
+  "choices": [
+   "It is hidden from the proud",
+   "It shines on the humble",
+   "It is against them that do evil",
+   "It is turned from Israel"
+  ],
+  "answer": 2,
+  "explanation": "The face of the Lord is against them that do evil.",
+  "ref": "1 Peter 3:12"
+ },
+ {
+  "id": "1-peter-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must he who will love life seek and ensue?",
+  "choices": [
+   "Wisdom",
+   "Riches",
+   "Honour",
+   "Peace"
+  ],
+  "answer": 3,
+  "explanation": "Let him eschew evil, and do good; let him seek peace, and ensue it.",
+  "ref": "1 Peter 3:11"
+ },
+ {
+  "id": "1-peter-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these does Peter name among outward adornings?",
+  "choices": [
+   "Plaiting the hair",
+   "Wearing a crown",
+   "Using ointments",
+   "Carrying a staff"
+  ],
+  "answer": 0,
+  "explanation": "Let it not be that outward adorning of plaiting the hair, and of wearing of gold, or of putting on of apparel.",
+  "ref": "1 Peter 3:3"
+ },
+ {
+  "id": "1-peter-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what attitude are believers to give an answer about their hope?",
+  "choices": [
+   "Boldness and pride",
+   "Meekness and fear",
+   "Anger and zeal",
+   "Haste and joy"
+  ],
+  "answer": 1,
+  "explanation": "Be ready always to give an answer to every man that asketh you a reason of the hope that is in you with meekness and fear.",
+  "ref": "1 Peter 3:15"
+ },
+ {
+  "id": "1-peter-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are made subject to Christ, who is on the right hand of God?",
+  "choices": [
+   "Kings and rulers",
+   "Elders and prophets",
+   "Angels, authorities and powers",
+   "The nations of the earth"
+  ],
+  "answer": 2,
+  "explanation": "Angels and authorities and powers being made subject unto him.",
+  "ref": "1 Peter 3:22"
+ },
+ {
+  "id": "1-peter-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "As what does Peter say husbands should honour their wives?",
+  "choices": [
+   "The younger sister",
+   "The servant of the house",
+   "The mother of children",
+   "The weaker vessel"
+  ],
+  "answer": 3,
+  "explanation": "Giving honour unto the wife, as unto the weaker vessel.",
+  "ref": "1 Peter 3:7"
+ },
+ {
+  "id": "1-peter-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are believers told to use one to another without grudging?",
+  "choices": [
+   "Hospitality",
+   "Correction",
+   "Their possessions",
+   "Silence"
+  ],
+  "answer": 0,
+  "explanation": "Use hospitality one to another without grudging.",
+  "ref": "1 Peter 4:9"
+ },
+ {
+  "id": "1-peter-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of trial does Peter say should not be thought strange?",
+  "choices": [
+   "The trial of the court",
+   "The fiery trial",
+   "The trial of famine",
+   "The trial of the sea"
+  ],
+  "answer": 1,
+  "explanation": "Think it not strange concerning the fiery trial which is to try you, as though some strange thing happened unto you.",
+  "ref": "1 Peter 4:12"
+ },
+ {
+  "id": "1-peter-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom should those who suffer commit the keeping of their souls?",
+  "choices": [
+   "The elders",
+   "The apostles",
+   "A faithful Creator",
+   "A righteous judge"
+  ],
+  "answer": 2,
+  "explanation": "Let them that suffer according to the will of God commit the keeping of their souls to him in well doing, as unto a faithful Creator.",
+  "ref": "1 Peter 4:19"
+ },
+ {
+  "id": "1-peter-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where does Peter say judgment must begin?",
+  "choices": [
+   "In the cities of the Gentiles",
+   "At the throne of kings",
+   "In the temple court",
+   "At the house of God"
+  ],
+  "answer": 3,
+  "explanation": "The time is come that judgment must begin at the house of God.",
+  "ref": "1 Peter 4:17"
+ },
+ {
+  "id": "1-peter-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "As which of these does Peter say none of them should suffer?",
+  "choices": [
+   "A murderer",
+   "A prophet",
+   "A pilgrim",
+   "A servant"
+  ],
+  "answer": 0,
+  "explanation": "Let none of you suffer as a murderer, or as a thief, or as an evildoer, or as a busybody in other men's matters.",
+  "ref": "1 Peter 4:15"
+ },
+ {
+  "id": "1-peter-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Peter tell believers to rejoice in fiery trials?",
+  "choices": [
+   "They will be rewarded on earth",
+   "They share Christ's sufferings and his coming glory",
+   "They will be freed from the law",
+   "They will soon be delivered"
+  ],
+  "answer": 1,
+  "explanation": "Rejoice, inasmuch as ye are partakers of Christ's sufferings; that, when his glory shall be revealed, ye may be glad also with exceeding joy.",
+  "ref": "1 Peter 4:13"
+ },
+ {
+  "id": "1-peter-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What rests upon those who are reproached for the name of Christ?",
+  "choices": [
+   "The peace of the Lord",
+   "The blessing of the fathers",
+   "The spirit of glory and of God",
+   "The shadow of his wings"
+  ],
+  "answer": 2,
+  "explanation": "If ye be reproached for the name of Christ, happy are ye; for the spirit of glory and of God resteth upon you.",
+  "ref": "1 Peter 4:14"
+ },
+ {
+  "id": "1-peter-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are believers called, as they minister the gift they have received?",
+  "choices": [
+   "Faithful servants of the king",
+   "Wise builders of the church",
+   "Watchmen of the flock",
+   "Good stewards of the manifold grace of God"
+  ],
+  "answer": 3,
+  "explanation": "As every man hath received the gift, minister the same one to another, as good stewards of the manifold grace of God.",
+  "ref": "1 Peter 4:10"
+ },
+ {
+  "id": "1-peter-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How should any man who speaks in the church speak?",
+  "choices": [
+   "As the oracles of God",
+   "With wise words of men",
+   "In a quiet voice",
+   "In the words of the law"
+  ],
+  "answer": 0,
+  "explanation": "If any man speak, let him speak as the oracles of God.",
+  "ref": "1 Peter 4:11"
+ },
+ {
+  "id": "1-peter-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do the Gentiles think it strange and speak evil of believers?",
+  "choices": [
+   "They refuse to eat their food",
+   "They do not run with them to the same excess of riot",
+   "They keep a different day of rest",
+   "They will not pay tribute"
+  ],
+  "answer": 1,
+  "explanation": "They think it strange that ye run not with them to the same excess of riot, speaking evil of you.",
+  "ref": "1 Peter 4:4"
+ },
+ {
+  "id": "1-peter-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom shall the Gentiles give account?",
+  "choices": [
+   "The elders of the church",
+   "The rulers of the earth",
+   "Him that is ready to judge the quick and the dead",
+   "The angels"
+  ],
+  "answer": 2,
+  "explanation": "Who shall give account to him that is ready to judge the quick and the dead.",
+  "ref": "1 Peter 4:5"
+ },
+ {
+  "id": "1-peter-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should a man do if he suffers as a Christian?",
+  "choices": [
+   "Hide his faith",
+   "Ask for deliverance",
+   "Leave the city",
+   "Not be ashamed, but glorify God"
+  ],
+  "answer": 3,
+  "explanation": "If any man suffer as a Christian, let him not be ashamed; but let him glorify God on this behalf.",
+  "ref": "1 Peter 4:16"
+ },
+ {
+  "id": "1-peter-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these did the Gentiles walk in, according to Peter?",
+  "choices": [
+   "Excess of wine and revellings",
+   "Strict fasting",
+   "Love of the law",
+   "Pride of kings"
+  ],
+  "answer": 0,
+  "explanation": "We walked in lasciviousness, lusts, excess of wine, revellings, banquetings, and abominable idolatries.",
+  "ref": "1 Peter 4:3"
+ },
+ {
+  "id": "1-peter-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Through whom is God to be glorified in all things?",
+  "choices": [
+   "The apostles",
+   "Jesus Christ",
+   "The prophets",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "That God in all things may be glorified through Jesus Christ, to whom be praise and dominion for ever and ever.",
+  "ref": "1 Peter 4:11"
+ },
+ {
+  "id": "1-peter-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was the gospel preached also to them that are dead?",
+  "choices": [
+   "That they might repent before the end",
+   "That they might see the Lord's glory",
+   "To be judged in the flesh, but live to God in spirit",
+   "That they might be set free from the grave"
+  ],
+  "answer": 2,
+  "explanation": "For this cause was the gospel preached also to them that are dead, that they might be judged according to men in the flesh, but live according to God in the spirit.",
+  "ref": "1 Peter 4:6"
+ },
+ {
+  "id": "1-peter-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has he who suffered in the flesh ceased from?",
+  "choices": [
+   "Labour",
+   "Fear",
+   "Hunger",
+   "Sin"
+  ],
+  "answer": 3,
+  "explanation": "He that hath suffered in the flesh hath ceased from sin.",
+  "ref": "1 Peter 4:1"
+ },
+ {
+  "id": "1-peter-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter ask if the righteous scarcely be saved?",
+  "choices": [
+   "Where shall the ungodly and the sinner appear?",
+   "Who then can be saved?",
+   "What shall the end be?",
+   "Where is the Lord?"
+  ],
+  "answer": 0,
+  "explanation": "If the righteous scarcely be saved, where shall the ungodly and the sinner appear?",
+  "ref": "1 Peter 4:18"
+ },
+ {
+  "id": "1-peter-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say believers should no longer live to, but to the will of God?",
+  "choices": [
+   "The traditions of the elders",
+   "The lusts of men",
+   "The cares of the world",
+   "The praise of others"
+  ],
+  "answer": 1,
+  "explanation": "That he no longer should live the rest of his time in the flesh to the lusts of men, but to the will of God.",
+  "ref": "1 Peter 4:2"
+ },
+ {
+  "id": "1-peter-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Peter say believers should have above all things among themselves?",
+  "choices": [
+   "Great wisdom",
+   "Strict order",
+   "Fervent charity",
+   "Steady prayer"
+  ],
+  "answer": 2,
+  "explanation": "And above all things have fervent charity among yourselves.",
+  "ref": "1 Peter 4:8"
+ },
+ {
+  "id": "1-peter-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When believers are reproached for Christ's name, what is said on their part?",
+  "choices": [
+   "He is silent",
+   "He is mocked",
+   "He is hidden",
+   "He is glorified"
+  ],
+  "answer": 3,
+  "explanation": "On their part he is evil spoken of, but on your part he is glorified.",
+  "ref": "1 Peter 4:14"
+ },
+ {
+  "id": "1-peter-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say the time past of life may suffice us to have wrought?",
+  "choices": [
+   "The will of the Gentiles",
+   "The works of the law",
+   "The service of kings",
+   "The labour of the field"
+  ],
+  "answer": 0,
+  "explanation": "The time past of our life may suffice us to have wrought the will of the Gentiles.",
+  "ref": "1 Peter 4:3"
+ },
+ {
+  "id": "1-peter-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Unto what are believers told to watch, being sober?",
+  "choices": [
+   "Fasting",
+   "Prayer",
+   "The gates",
+   "The Lord's coming"
+  ],
+  "answer": 1,
+  "explanation": "The end of all things is at hand: be ye therefore sober, and watch unto prayer.",
+  "ref": "1 Peter 4:7"
+ },
+ {
+  "id": "1-peter-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is each believer to do with the gift he has received?",
+  "choices": [
+   "Keep it hidden",
+   "Teach it to the Gentiles",
+   "Minister it to one another",
+   "Offer it in the temple"
+  ],
+  "answer": 2,
+  "explanation": "As every man hath received the gift, even so minister the same one to another.",
+  "ref": "1 Peter 4:10"
+ },
+ {
+  "id": "1-peter-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is said of Christ on the part of those who reproach believers?",
+  "choices": [
+   "He is forgotten",
+   "He is feared",
+   "He is denied",
+   "He is evil spoken of"
+  ],
+  "answer": 3,
+  "explanation": "On their part he is evil spoken of, but on your part he is glorified.",
+  "ref": "1 Peter 4:14"
+ },
+ {
+  "id": "1-peter-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who does Peter say is scarcely saved?",
+  "choices": [
+   "The righteous",
+   "The rich",
+   "The rulers",
+   "The proud"
+  ],
+  "answer": 0,
+  "explanation": "If the righteous scarcely be saved, where shall the ungodly and the sinner appear?",
+  "ref": "1 Peter 4:18"
+ },
+ {
+  "id": "1-peter-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "By whom does Peter say he wrote this letter, calling him a faithful brother?",
+  "choices": [
+   "Timothy",
+   "Silvanus",
+   "Marcus",
+   "Titus"
+  ],
+  "answer": 1,
+  "explanation": "By Silvanus, a faithful brother unto you, as I suppose, I have written briefly.",
+  "ref": "1 Peter 5:12"
+ },
+ {
+  "id": "1-peter-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Peter call \"my son\" in his closing greeting?",
+  "choices": [
+   "Silvanus",
+   "Timothy",
+   "Marcus",
+   "Luke"
+  ],
+  "answer": 2,
+  "explanation": "The church that is at Babylon saluteth you; and so doth Marcus my son.",
+  "ref": "1 Peter 5:13"
+ },
+ {
+  "id": "1-peter-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which place is named as the church that sends greetings?",
+  "choices": [
+   "Antioch",
+   "Rome",
+   "Ephesus",
+   "Babylon"
+  ],
+  "answer": 3,
+  "explanation": "The church that is at Babylon, elected together with you, saluteth you.",
+  "ref": "1 Peter 5:13"
+ },
+ {
+  "id": "1-peter-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what are believers told to greet one another?",
+  "choices": [
+   "A kiss of charity",
+   "A holy word",
+   "An open hand",
+   "A blessing of peace"
+  ],
+  "answer": 0,
+  "explanation": "Greet ye one another with a kiss of charity.",
+  "ref": "1 Peter 5:14"
+ },
+ {
+  "id": "1-peter-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should elders be to the flock, rather than lords over God's heritage?",
+  "choices": [
+   "Judges",
+   "Ensamples",
+   "Teachers",
+   "Guards"
+  ],
+  "answer": 1,
+  "explanation": "Neither as being lords over God's heritage, but being ensamples to the flock.",
+  "ref": "1 Peter 5:3"
+ },
+ {
+  "id": "1-peter-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should elders feed the flock out of, instead of filthy lucre?",
+  "choices": [
+   "A strong will",
+   "A full purse",
+   "A ready mind",
+   "A sense of duty"
+  ],
+  "answer": 2,
+  "explanation": "Feed the flock of God, not for filthy lucre, but of a ready mind.",
+  "ref": "1 Peter 5:2"
+ },
+ {
+  "id": "1-peter-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To whom does God give grace?",
+  "choices": [
+   "The strong",
+   "The wise",
+   "The patient",
+   "The humble"
+  ],
+  "answer": 3,
+  "explanation": "God resisteth the proud, and giveth grace to the humble.",
+  "ref": "1 Peter 5:5"
+ },
+ {
+  "id": "1-peter-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will God do if believers humble themselves under his mighty hand?",
+  "choices": [
+   "Exalt them in due time",
+   "Make them rulers",
+   "Remove their suffering at once",
+   "Give them peace on earth"
+  ],
+  "answer": 0,
+  "explanation": "Humble yourselves therefore under the mighty hand of God, that he may exalt you in due time.",
+  "ref": "1 Peter 5:6"
+ },
+ {
+  "id": "1-peter-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Peter say believers should do to the devil?",
+  "choices": [
+   "Rebuke him by name",
+   "Resist him stedfast in the faith",
+   "Flee from his presence",
+   "Pray against him"
+  ],
+  "answer": 1,
+  "explanation": "Whom resist stedfast in the faith, knowing that the same afflictions are accomplished in your brethren that are in the world.",
+  "ref": "1 Peter 5:9"
+ },
+ {
+  "id": "1-peter-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Peter say the devil is doing as he walks about?",
+  "choices": [
+   "Spreading false teaching",
+   "Tempting the strong",
+   "Seeking whom he may devour",
+   "Hiding in the dark"
+  ],
+  "answer": 2,
+  "explanation": "Your adversary the devil, as a roaring lion, walketh about, seeking whom he may devour.",
+  "ref": "1 Peter 5:8"
+ },
+ {
+  "id": "1-peter-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "After believers have suffered a while, what will the God of all grace do?",
+  "choices": [
+   "Take them to heaven",
+   "End the persecution",
+   "Give them a crown",
+   "Make them perfect, stablish, strengthen, settle them"
+  ],
+  "answer": 3,
+  "explanation": "The God of all grace, after that ye have suffered a while, make you perfect, stablish, strengthen, settle you.",
+  "ref": "1 Peter 5:10"
+ },
+ {
+  "id": "1-peter-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say he is, beside an apostle, in addressing the elders?",
+  "choices": [
+   "An elder and a witness of the sufferings of Christ",
+   "A deacon and a servant",
+   "A prophet and a teacher",
+   "A shepherd and a fisher"
+  ],
+  "answer": 0,
+  "explanation": "The elders which are among you I exhort, who am also an elder, and a witness of the sufferings of Christ.",
+  "ref": "1 Peter 5:1"
+ },
+ {
+  "id": "1-peter-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why are believers told to cast all their care upon God?",
+  "choices": [
+   "For he knows the future",
+   "For he careth for you",
+   "For he hath promised rest",
+   "For he is mighty"
+  ],
+  "answer": 1,
+  "explanation": "Casting all your care upon him; for he careth for you.",
+  "ref": "1 Peter 5:7"
+ },
+ {
+  "id": "1-peter-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say the younger should do toward the elder?",
+  "choices": [
+   "Learn from them in silence",
+   "Follow them into battle",
+   "Submit themselves",
+   "Obey them without question"
+  ],
+  "answer": 2,
+  "explanation": "Likewise, ye younger, submit yourselves unto the elder; all of you be subject one to another, and be clothed with humility.",
+  "ref": "1 Peter 5:5"
+ },
+ {
+  "id": "1-peter-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Peter say he wrote this letter?",
+  "choices": [
+   "At great length",
+   "In secret",
+   "By his own hand",
+   "Briefly"
+  ],
+  "answer": 3,
+  "explanation": "By Silvanus, a faithful brother unto you, as I suppose, I have written briefly.",
+  "ref": "1 Peter 5:12"
+ },
+ {
+  "id": "1-peter-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter wish upon all that are in Christ Jesus?",
+  "choices": [
+   "Peace",
+   "Wealth",
+   "Long life",
+   "Many sons"
+  ],
+  "answer": 0,
+  "explanation": "Peace be with you all that are in Christ Jesus. Amen.",
+  "ref": "1 Peter 5:14"
+ },
+ {
+  "id": "1-peter-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By whom has the God of all grace called us unto his eternal glory?",
+  "choices": [
+   "Moses",
+   "Christ Jesus",
+   "The angels",
+   "The prophets"
+  ],
+  "answer": 1,
+  "explanation": "The God of all grace, who hath called us unto his eternal glory by Christ Jesus.",
+  "ref": "1 Peter 5:10"
+ },
+ {
+  "id": "1-peter-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two things does Peter tell believers to be before warning of the roaring lion?",
+  "choices": [
+   "Bold and strong",
+   "Humble and quiet",
+   "Sober and vigilant",
+   "Wise and patient"
+  ],
+  "answer": 2,
+  "explanation": "Be sober, be vigilant; because your adversary the devil, as a roaring lion, walketh about.",
+  "ref": "1 Peter 5:8"
  }
 ]

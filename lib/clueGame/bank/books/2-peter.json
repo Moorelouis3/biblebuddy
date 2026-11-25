@@ -238,5 +238,1269 @@
   "answer": 0,
   "explanation": "Peter closes by urging believers to grow in grace and in the knowledge of Christ.",
   "ref": "2 Peter 3:18"
+ },
+ {
+  "id": "2-peter-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who calls himself a servant and an apostle of Jesus Christ at the start of this letter?",
+  "choices": [
+   "Paul",
+   "John",
+   "Jude",
+   "Simon Peter"
+  ],
+  "answer": 3,
+  "explanation": "The letter opens: Simon Peter, a servant and an apostle of Jesus Christ.",
+  "ref": "2 Peter 1:1"
+ },
+ {
+  "id": "2-peter-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the voice from heaven call Jesus?",
+  "choices": [
+   "My chosen servant",
+   "My beloved Son",
+   "My holy one",
+   "My anointed king"
+  ],
+  "answer": 1,
+  "explanation": "The voice said, This is my beloved Son, in whom I am well pleased.",
+  "ref": "2 Peter 1:17"
+ },
+ {
+  "id": "2-peter-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Into what kingdom will an entrance be ministered abundantly to those who do these things?",
+  "choices": [
+   "The everlasting kingdom of our Lord and Saviour Jesus Christ",
+   "The kingdom of David",
+   "The kingdom of the first resurrection",
+   "The kingdom of Israel"
+  ],
+  "answer": 0,
+  "explanation": "An entrance shall be ministered unto you abundantly into the everlasting kingdom of our Lord and Saviour Jesus Christ.",
+  "ref": "2 Peter 1:11"
+ },
+ {
+  "id": "2-peter-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Peter say believers should add to brotherly kindness?",
+  "choices": [
+   "Patience",
+   "Charity",
+   "Godliness",
+   "Temperance"
+  ],
+  "answer": 1,
+  "explanation": "Add to godliness brotherly kindness, and to brotherly kindness charity.",
+  "ref": "2 Peter 1:7"
+ },
+ {
+  "id": "2-peter-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Peter say of the person who lacks these things?",
+  "choices": [
+   "He is dead in his sins",
+   "He is blind and cannot see afar off",
+   "He is cast out of the church",
+   "He is deaf to the word"
+  ],
+  "answer": 1,
+  "explanation": "He that lacketh these things is blind, and cannot see afar off.",
+  "ref": "2 Peter 1:9"
+ },
+ {
+  "id": "2-peter-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the person who lacks these things forgotten?",
+  "choices": [
+   "That the Lord is coming",
+   "That he was called by name",
+   "That he was purged from his old sins",
+   "That grace is free"
+  ],
+  "answer": 2,
+  "explanation": "He hath forgotten that he was purged from his old sins.",
+  "ref": "2 Peter 1:9"
+ },
+ {
+  "id": "2-peter-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If these things are in believers and abound, what will they not be?",
+  "choices": [
+   "Weak nor afraid",
+   "Sorrowful nor poor",
+   "Slow nor silent",
+   "Barren nor unfruitful"
+  ],
+  "answer": 3,
+  "explanation": "They make you that ye shall neither be barren nor unfruitful in the knowledge of our Lord Jesus Christ.",
+  "ref": "2 Peter 1:8"
+ },
+ {
+  "id": "2-peter-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What word does Peter use for his own body, which he must shortly put off?",
+  "choices": [
+   "Tabernacle",
+   "Temple",
+   "Garment",
+   "House of clay"
+  ],
+  "answer": 0,
+  "explanation": "Peter says he must shortly put off this his tabernacle, as the Lord Jesus Christ had shewed him.",
+  "ref": "2 Peter 1:14"
+ },
+ {
+  "id": "2-peter-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "place",
+  "question": "Where were Peter and the others when they heard the voice from heaven?",
+  "choices": [
+   "On the sea",
+   "In the holy mount",
+   "In the temple",
+   "In the wilderness"
+  ],
+  "answer": 1,
+  "explanation": "This voice which came from heaven we heard, when we were with him in the holy mount.",
+  "ref": "2 Peter 1:18"
+ },
+ {
+  "id": "2-peter-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Peter say they had NOT followed when they made known the power and coming of Christ?",
+  "choices": [
+   "The traditions of the elders",
+   "The wisdom of the Greeks",
+   "Cunningly devised fables",
+   "The law of Moses"
+  ],
+  "answer": 2,
+  "explanation": "We have not followed cunningly devised fables, but were eyewitnesses of his majesty.",
+  "ref": "2 Peter 1:16"
+ },
+ {
+  "id": "2-peter-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what does Peter compare the word of prophecy?",
+  "choices": [
+   "A fire in the wilderness",
+   "A seed in good ground",
+   "A sword with two edges",
+   "A light that shineth in a dark place"
+  ],
+  "answer": 3,
+  "explanation": "We have a more sure word of prophecy, as unto a light that shineth in a dark place.",
+  "ref": "2 Peter 1:19"
+ },
+ {
+  "id": "2-peter-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By the great and precious promises, believers might become partakers of what?",
+  "choices": [
+   "The divine nature",
+   "The heavenly throne",
+   "The first resurrection",
+   "The Spirit of glory"
+  ],
+  "answer": 0,
+  "explanation": "By these ye might be partakers of the divine nature, having escaped the corruption that is in the world through lust.",
+  "ref": "2 Peter 1:4"
+ },
+ {
+  "id": "2-peter-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If believers do these things, what does Peter say they shall never do?",
+  "choices": [
+   "Hunger",
+   "Fall",
+   "Doubt",
+   "Stand alone"
+  ],
+  "answer": 1,
+  "explanation": "Give diligence to make your calling and election sure: for if ye do these things, ye shall never fall.",
+  "ref": "2 Peter 1:10"
+ },
+ {
+  "id": "2-peter-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom did Christ receive honour and glory, according to Peter?",
+  "choices": [
+   "The angels",
+   "The prophets",
+   "God the Father",
+   "The Holy Ghost"
+  ],
+  "answer": 2,
+  "explanation": "He received from God the Father honour and glory, when there came such a voice to him from the excellent glory.",
+  "ref": "2 Peter 1:17"
+ },
+ {
+  "id": "2-peter-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until what does Peter say believers should take heed to the word of prophecy?",
+  "choices": [
+   "Until the temple is rebuilt",
+   "Until the trumpet sounds",
+   "Until all the prophets are fulfilled",
+   "Until the day dawn and the day star arise in their hearts"
+  ],
+  "answer": 3,
+  "explanation": "Take heed until the day dawn, and the day star arise in your hearts.",
+  "ref": "2 Peter 1:19"
+ },
+ {
+  "id": "2-peter-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say he will not be negligent to do, even though they already know these things?",
+  "choices": [
+   "Put them always in remembrance of these things",
+   "Send teachers to them",
+   "Rebuke them in public",
+   "Visit them in person"
+  ],
+  "answer": 0,
+  "explanation": "I will not be negligent to put you always in remembrance of these things, though ye know them.",
+  "ref": "2 Peter 1:12"
+ },
+ {
+  "id": "2-peter-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Peter says no prophecy of the scripture is of what?",
+  "choices": [
+   "Human wisdom",
+   "Private interpretation",
+   "Earthly origin",
+   "Silent tradition"
+  ],
+  "answer": 1,
+  "explanation": "No prophecy of the scripture is of any private interpretation.",
+  "ref": "2 Peter 1:20"
+ },
+ {
+  "id": "2-peter-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Through the knowledge of whom are grace and peace multiplied?",
+  "choices": [
+   "The prophets and apostles",
+   "Moses and the law",
+   "God, and of Jesus our Lord",
+   "The Father alone"
+  ],
+  "answer": 2,
+  "explanation": "Grace and peace be multiplied unto you through the knowledge of God, and of Jesus our Lord.",
+  "ref": "2 Peter 1:2"
+ },
+ {
+  "id": "2-peter-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From what have believers escaped through the promises?",
+  "choices": [
+   "The wrath of the law",
+   "The power of Rome",
+   "The sorrow of the grave",
+   "The corruption of the world through lust"
+  ],
+  "answer": 3,
+  "explanation": "Having escaped the corruption that is in the world through lust.",
+  "ref": "2 Peter 1:4"
+ },
+ {
+  "id": "2-peter-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Peter say to add to knowledge?",
+  "choices": [
+   "Temperance",
+   "Virtue",
+   "Charity",
+   "Godliness"
+  ],
+  "answer": 0,
+  "explanation": "And to knowledge temperance; and to temperance patience.",
+  "ref": "2 Peter 1:6"
+ },
+ {
+  "id": "2-peter-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Peter say to add to patience?",
+  "choices": [
+   "Charity",
+   "Godliness",
+   "Knowledge",
+   "Virtue"
+  ],
+  "answer": 1,
+  "explanation": "And to patience godliness.",
+  "ref": "2 Peter 1:6"
+ },
+ {
+  "id": "2-peter-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "As long as Peter is in his tabernacle, what does he think it meet to do?",
+  "choices": [
+   "Travel to every church",
+   "Write a new gospel",
+   "Stir them up by putting them in remembrance",
+   "Appoint new elders"
+  ],
+  "answer": 2,
+  "explanation": "I think it meet, as long as I am in this tabernacle, to stir you up by putting you in remembrance.",
+  "ref": "2 Peter 1:13"
+ },
+ {
+  "id": "2-peter-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what truth does Peter say his readers are established?",
+  "choices": [
+   "The ancient truth",
+   "The truth of the law",
+   "The hidden truth",
+   "The present truth"
+  ],
+  "answer": 3,
+  "explanation": "Though ye know them, and be established in the present truth.",
+  "ref": "2 Peter 1:12"
+ },
+ {
+  "id": "2-peter-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From where did the voice that said \"This is my beloved Son\" come?",
+  "choices": [
+   "The excellent glory",
+   "A burning bush",
+   "A cloud of fire",
+   "The temple"
+  ],
+  "answer": 0,
+  "explanation": "There came such a voice to him from the excellent glory.",
+  "ref": "2 Peter 1:17"
+ },
+ {
+  "id": "2-peter-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what has God's divine power called believers?",
+  "choices": [
+   "Rest and peace",
+   "Glory and virtue",
+   "Wisdom and law",
+   "Priesthood and kingship"
+  ],
+  "answer": 1,
+  "explanation": "Through the knowledge of him that hath called us to glory and virtue.",
+  "ref": "2 Peter 1:3"
+ },
+ {
+  "id": "2-peter-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To what word does Peter say believers do well to take heed?",
+  "choices": [
+   "The commandments of Moses",
+   "The sayings of the elders",
+   "The more sure word of prophecy",
+   "The letters of Paul"
+  ],
+  "answer": 2,
+  "explanation": "We have also a more sure word of prophecy; whereunto ye do well that ye take heed.",
+  "ref": "2 Peter 1:19"
+ },
+ {
+  "id": "2-peter-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Through whose righteousness have believers obtained like precious faith?",
+  "choices": [
+   "The prophets and apostles",
+   "The law and the elders",
+   "Peter and the apostles",
+   "God and our Saviour Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "Like precious faith through the righteousness of God and our Saviour Jesus Christ.",
+  "ref": "2 Peter 1:1"
+ },
+ {
+  "id": "2-peter-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter tell believers to add to virtue?",
+  "choices": [
+   "Knowledge",
+   "Patience",
+   "Temperance",
+   "Charity"
+  ],
+  "answer": 0,
+  "explanation": "Add to your faith virtue; and to virtue knowledge.",
+  "ref": "2 Peter 1:5"
+ },
+ {
+  "id": "2-peter-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which prophet loved the wages of unrighteousness?",
+  "choices": [
+   "Elijah",
+   "Balaam",
+   "Jonah",
+   "Samuel"
+  ],
+  "answer": 1,
+  "explanation": "They follow the way of Balaam the son of Bosor, who loved the wages of unrighteousness.",
+  "ref": "2 Peter 2:15"
+ },
+ {
+  "id": "2-peter-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What rebuked the madness of the prophet Balaam?",
+  "choices": [
+   "An angel with a sword",
+   "A fire from heaven",
+   "A dumb ass speaking with man's voice",
+   "A voice from a cloud"
+  ],
+  "answer": 2,
+  "explanation": "The dumb ass speaking with man's voice forbad the madness of the prophet.",
+  "ref": "2 Peter 2:16"
+ },
+ {
+  "id": "2-peter-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God turn Sodom and Gomorrah into?",
+  "choices": [
+   "A salt sea",
+   "A desert",
+   "Ruins of stone",
+   "Ashes"
+  ],
+  "answer": 3,
+  "explanation": "God turned the cities of Sodom and Gomorrah into ashes, condemning them with an overthrow.",
+  "ref": "2 Peter 2:6"
+ },
+ {
+  "id": "2-peter-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God bring upon the world of the ungodly in Noah's day?",
+  "choices": [
+   "The flood",
+   "A famine",
+   "Fire from heaven",
+   "A plague"
+  ],
+  "answer": 0,
+  "explanation": "God spared not the old world, but saved Noah, bringing in the flood upon the world of the ungodly.",
+  "ref": "2 Peter 2:5"
+ },
+ {
+  "id": "2-peter-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What animal is described as washed and then returning to wallowing in the mire?",
+  "choices": [
+   "The ox",
+   "The sow",
+   "The lamb",
+   "The goat"
+  ],
+  "answer": 1,
+  "explanation": "The true proverb says, the sow that was washed to her wallowing in the mire.",
+  "ref": "2 Peter 2:22"
+ },
+ {
+  "id": "2-peter-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the false teachers deny?",
+  "choices": [
+   "The resurrection of the dead",
+   "The law of Moses",
+   "The Lord that bought them",
+   "The coming judgment"
+  ],
+  "answer": 2,
+  "explanation": "They shall privily bring in damnable heresies, even denying the Lord that bought them.",
+  "ref": "2 Peter 2:1"
+ },
+ {
+  "id": "2-peter-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Through what do the false teachers, with feigned words, make merchandise of believers?",
+  "choices": [
+   "Fear",
+   "Miracles",
+   "Flattery of kings",
+   "Covetousness"
+  ],
+  "answer": 3,
+  "explanation": "Through covetousness shall they with feigned words make merchandise of you.",
+  "ref": "2 Peter 2:3"
+ },
+ {
+  "id": "2-peter-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did God deliver the angels that sinned to be reserved unto judgment?",
+  "choices": [
+   "Into chains of darkness",
+   "Into the sea",
+   "Into a pit of fire",
+   "Into the wilderness"
+  ],
+  "answer": 0,
+  "explanation": "God cast the angels that sinned down to hell, and delivered them into chains of darkness, to be reserved unto judgment.",
+  "ref": "2 Peter 2:4"
+ },
+ {
+  "id": "2-peter-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was Lot's righteous soul affected by living among the wicked?",
+  "choices": [
+   "It grew cold toward God",
+   "It was vexed from day to day",
+   "It was hardened over time",
+   "It was filled with pride"
+  ],
+  "answer": 1,
+  "explanation": "That righteous man dwelling among them vexed his righteous soul from day to day with their unlawful deeds.",
+  "ref": "2 Peter 2:8"
+ },
+ {
+  "id": "2-peter-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the overthrow of Sodom and Gomorrah make them to those who would live ungodly after?",
+  "choices": [
+   "A warning sign",
+   "A boundary",
+   "An ensample",
+   "A memorial"
+  ],
+  "answer": 2,
+  "explanation": "God made them an ensample unto those that after should live ungodly.",
+  "ref": "2 Peter 2:6"
+ },
+ {
+  "id": "2-peter-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To what does Peter compare the false teachers who promise much and give nothing?",
+  "choices": [
+   "Dry bones and empty tombs",
+   "Broken cisterns and withered trees",
+   "Barren fields and burning sand",
+   "Wells without water and clouds carried with a tempest"
+  ],
+  "answer": 3,
+  "explanation": "These are wells without water, clouds that are carried with a tempest.",
+  "ref": "2 Peter 2:17"
+ },
+ {
+  "id": "2-peter-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Peter say would have been better for them than turning from the holy commandment?",
+  "choices": [
+   "Not to have known the way of righteousness",
+   "To have been taught longer",
+   "To have died in their sins",
+   "To have left the church earlier"
+  ],
+  "answer": 0,
+  "explanation": "It had been better for them not to have known the way of righteousness, than after they have known it to turn from the holy commandment.",
+  "ref": "2 Peter 2:21"
+ },
+ {
+  "id": "2-peter-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose son was Balaam, according to Peter?",
+  "choices": [
+   "Beor",
+   "Bosor",
+   "Zippor",
+   "Amram"
+  ],
+  "answer": 1,
+  "explanation": "Peter says Balaam was the son of Bosor.",
+  "ref": "2 Peter 2:15"
+ },
+ {
+  "id": "2-peter-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is reserved for ever for these false teachers?",
+  "choices": [
+   "The lake of fire",
+   "A place of weeping",
+   "The mist of darkness",
+   "The outer wilderness"
+  ],
+  "answer": 2,
+  "explanation": "They are wells without water; to them the mist of darkness is reserved for ever.",
+  "ref": "2 Peter 2:17"
+ },
+ {
+  "id": "2-peter-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Lord know how to do with the godly and the unjust?",
+  "choices": [
+   "Gather the godly and scatter the unjust",
+   "Forgive the godly and forget the unjust",
+   "Test the godly and warn the unjust",
+   "Deliver the godly and reserve the unjust for judgment"
+  ],
+  "answer": 3,
+  "explanation": "The Lord knoweth how to deliver the godly out of temptations, and to reserve the unjust unto the day of judgment to be punished.",
+  "ref": "2 Peter 2:9"
+ },
+ {
+  "id": "2-peter-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say their eyes are full of?",
+  "choices": [
+   "Adultery",
+   "Pride",
+   "Envy",
+   "Tears"
+  ],
+  "answer": 0,
+  "explanation": "They have eyes full of adultery, and that cannot cease from sin.",
+  "ref": "2 Peter 2:14"
+ },
+ {
+  "id": "2-peter-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will happen to the way of truth because many follow their pernicious ways?",
+  "choices": [
+   "It will be forgotten",
+   "It will be evil spoken of",
+   "It will be hidden",
+   "It will be shut"
+  ],
+  "answer": 1,
+  "explanation": "Many shall follow their pernicious ways; by reason of whom the way of truth shall be evil spoken of.",
+  "ref": "2 Peter 2:2"
+ },
+ {
+  "id": "2-peter-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If those who escaped the pollutions of the world are entangled again, what does Peter say?",
+  "choices": [
+   "They shall be forgiven",
+   "They shall be tested",
+   "The latter end is worse than the beginning",
+   "They shall be cast out at once"
+  ],
+  "answer": 2,
+  "explanation": "If they are again entangled therein, and overcome, the latter end is worse with them than the beginning.",
+  "ref": "2 Peter 2:20"
+ },
+ {
+  "id": "2-peter-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what does Peter liken those who speak evil of things they understand not?",
+  "choices": [
+   "Wild asses",
+   "Wandering stars",
+   "Barren trees",
+   "Natural brute beasts"
+  ],
+  "answer": 3,
+  "explanation": "These, as natural brute beasts, speak evil of the things that they understand not.",
+  "ref": "2 Peter 2:12"
+ },
+ {
+  "id": "2-peter-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What number of person was Noah, when God saved him?",
+  "choices": [
+   "The eighth",
+   "The second",
+   "The fourth",
+   "The tenth"
+  ],
+  "answer": 0,
+  "explanation": "God saved Noah the eighth person, a preacher of righteousness.",
+  "ref": "2 Peter 2:5"
+ },
+ {
+  "id": "2-peter-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do angels, greater in power and might, not bring against them before the Lord?",
+  "choices": [
+   "A plague",
+   "Railing accusation",
+   "A curse",
+   "A witness"
+  ],
+  "answer": 1,
+  "explanation": "Angels, which are greater in power and might, bring not railing accusation against them before the Lord.",
+  "ref": "2 Peter 2:11"
+ },
+ {
+  "id": "2-peter-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do these false teachers count pleasure?",
+  "choices": [
+   "To feast with kings",
+   "To rule over many",
+   "To riot in the daytime",
+   "To teach in the temple"
+  ],
+  "answer": 2,
+  "explanation": "They count it pleasure to riot in the daytime.",
+  "ref": "2 Peter 2:13"
+ },
+ {
+  "id": "2-peter-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who does Peter say were among the people in old time, as false teachers shall be among you?",
+  "choices": [
+   "Wise elders",
+   "Faithful priests",
+   "Foreign kings",
+   "False prophets"
+  ],
+  "answer": 3,
+  "explanation": "There were false prophets also among the people, even as there shall be false teachers among you.",
+  "ref": "2 Peter 2:1"
+ },
+ {
+  "id": "2-peter-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of whom are the flesh-following teachers not afraid to speak evil?",
+  "choices": [
+   "Dignities",
+   "The poor",
+   "Their own families",
+   "The Gentiles"
+  ],
+  "answer": 0,
+  "explanation": "They despise government. Presumptuous are they, selfwilled, they are not afraid to speak evil of dignities.",
+  "ref": "2 Peter 2:10"
+ },
+ {
+  "id": "2-peter-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter call these teachers, whose heart is exercised with covetous practices?",
+  "choices": [
+   "Lost sheep",
+   "Cursed children",
+   "Broken vessels",
+   "Hired servants"
+  ],
+  "answer": 1,
+  "explanation": "An heart they have exercised with covetous practices; cursed children.",
+  "ref": "2 Peter 2:14"
+ },
+ {
+  "id": "2-peter-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of words do they speak when they allure those who had escaped error?",
+  "choices": [
+   "Soft words of peace",
+   "Hard words of judgment",
+   "Great swelling words of vanity",
+   "Secret words of wisdom"
+  ],
+  "answer": 2,
+  "explanation": "They speak great swelling words of vanity, they allure through the lusts of the flesh.",
+  "ref": "2 Peter 2:18"
+ },
+ {
+  "id": "2-peter-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter call them as they feast with believers?",
+  "choices": [
+   "Wells and clouds",
+   "Thieves and robbers",
+   "Wolves and dogs",
+   "Spots and blemishes"
+  ],
+  "answer": 3,
+  "explanation": "Spots they are and blemishes, sporting themselves with their own deceivings while they feast with you.",
+  "ref": "2 Peter 2:13"
+ },
+ {
+  "id": "2-peter-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of whom is a man brought in bondage, according to Peter?",
+  "choices": [
+   "Of whom he is overcome",
+   "Of the king",
+   "Of the law",
+   "Of his own sins"
+  ],
+  "answer": 0,
+  "explanation": "Of whom a man is overcome, of the same is he brought in bondage.",
+  "ref": "2 Peter 2:19"
+ },
+ {
+  "id": "2-peter-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the scoffers say?",
+  "choices": [
+   "Who is the Lord that we should obey him?",
+   "Where is the promise of his coming?",
+   "Let us eat and drink, for tomorrow we die",
+   "There is no resurrection of the dead"
+  ],
+  "answer": 1,
+  "explanation": "Scoffers shall come saying, Where is the promise of his coming?",
+  "ref": "2 Peter 3:3–4"
+ },
+ {
+  "id": "2-peter-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do believers look for, according to God's promise?",
+  "choices": [
+   "A rebuilt temple",
+   "A thousand-year feast",
+   "New heavens and a new earth",
+   "A return to Eden"
+  ],
+  "answer": 2,
+  "explanation": "We, according to his promise, look for new heavens and a new earth, wherein dwelleth righteousness.",
+  "ref": "2 Peter 3:13"
+ },
+ {
+  "id": "2-peter-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the world that then was perish?",
+  "choices": [
+   "By fire from heaven",
+   "By famine",
+   "By an earthquake",
+   "Being overflowed with water"
+  ],
+  "answer": 3,
+  "explanation": "The world that then was, being overflowed with water, perished.",
+  "ref": "2 Peter 3:6"
+ },
+ {
+  "id": "2-peter-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which fellow apostle does Peter call \"our beloved brother\"?",
+  "choices": [
+   "Paul",
+   "John",
+   "James",
+   "Barnabas"
+  ],
+  "answer": 0,
+  "explanation": "Peter says, even as our beloved brother Paul also according to the wisdom given unto him hath written unto you.",
+  "ref": "2 Peter 3:15"
+ },
+ {
+  "id": "2-peter-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the heavens do when the day of the Lord comes?",
+  "choices": [
+   "Open like a scroll",
+   "Pass away with a great noise",
+   "Grow dark for three days",
+   "Shake and then stand still"
+  ],
+  "answer": 1,
+  "explanation": "In the day of the Lord the heavens shall pass away with a great noise.",
+  "ref": "2 Peter 3:10"
+ },
+ {
+  "id": "2-peter-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall melt with fervent heat in the day of the Lord?",
+  "choices": [
+   "The mountains",
+   "The seas",
+   "The elements",
+   "The stars"
+  ],
+  "answer": 2,
+  "explanation": "The elements shall melt with fervent heat, the earth also and the works that are therein shall be burned up.",
+  "ref": "2 Peter 3:10"
+ },
+ {
+  "id": "2-peter-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the heavens and the earth that are now kept in store reserved unto?",
+  "choices": [
+   "Another flood",
+   "Silence",
+   "A new covenant",
+   "Fire"
+  ],
+  "answer": 3,
+  "explanation": "The heavens and the earth, which are now, by the same word are kept in store, reserved unto fire against the day of judgment.",
+  "ref": "2 Peter 3:7"
+ },
+ {
+  "id": "2-peter-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "After what do the scoffers of the last days walk?",
+  "choices": [
+   "Their own lusts",
+   "Their own fathers",
+   "The prophets of old",
+   "The wisdom of the world"
+  ],
+  "answer": 0,
+  "explanation": "There shall come in the last days scoffers, walking after their own lusts.",
+  "ref": "2 Peter 3:3"
+ },
+ {
+  "id": "2-peter-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason do the scoffers give for saying that things have not changed?",
+  "choices": [
+   "No prophet has spoken in their lifetime",
+   "The fathers fell asleep and all things continue",
+   "The temple still stands",
+   "Nobody has seen the Lord"
+  ],
+  "answer": 1,
+  "explanation": "Since the fathers fell asleep, all things continue as they were from the beginning of the creation.",
+  "ref": "2 Peter 3:4"
+ },
+ {
+  "id": "2-peter-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who twist the hard-to-understand things in Paul's letters, to their own destruction?",
+  "choices": [
+   "The proud and rich",
+   "The scoffers and thieves",
+   "The unlearned and unstable",
+   "The elders and teachers"
+  ],
+  "answer": 2,
+  "explanation": "Some things are hard to be understood, which they that are unlearned and unstable wrest, as they do also the other scriptures, unto their own destruction.",
+  "ref": "2 Peter 3:16"
+ },
+ {
+  "id": "2-peter-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Peter tell believers to account the longsuffering of the Lord to be?",
+  "choices": [
+   "Weakness",
+   "Judgment",
+   "A trial",
+   "Salvation"
+  ],
+  "answer": 3,
+  "explanation": "Account that the longsuffering of our Lord is salvation.",
+  "ref": "2 Peter 3:15"
+ },
+ {
+  "id": "2-peter-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Peter say believers should be found by the Lord?",
+  "choices": [
+   "In peace, without spot, and blameless",
+   "Watching and praying",
+   "Rich in good works",
+   "Standing in the temple"
+  ],
+  "answer": 0,
+  "explanation": "Be diligent that ye may be found of him in peace, without spot, and blameless.",
+  "ref": "2 Peter 3:14"
+ },
+ {
+  "id": "2-peter-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say he stirs up by way of remembrance?",
+  "choices": [
+   "Their sleeping hearts",
+   "Their pure minds",
+   "Their old zeal",
+   "Their first love"
+  ],
+  "answer": 1,
+  "explanation": "In both letters, I stir up your pure minds by way of remembrance.",
+  "ref": "2 Peter 3:1"
+ },
+ {
+  "id": "2-peter-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose words does Peter want his readers to remember, besides the commandment of the apostles?",
+  "choices": [
+   "The twelve patriarchs",
+   "The elders of Israel",
+   "The holy prophets",
+   "The kings of Judah"
+  ],
+  "answer": 2,
+  "explanation": "That ye may be mindful of the words which were spoken before by the holy prophets, and of the commandment of us the apostles.",
+  "ref": "2 Peter 3:2"
+ },
+ {
+  "id": "2-peter-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say the scoffers are willingly ignorant of?",
+  "choices": [
+   "That the Lord would come again",
+   "That they had been forgiven",
+   "That the prophets had spoken",
+   "That the heavens and earth were made by the word of God"
+  ],
+  "answer": 3,
+  "explanation": "They willingly are ignorant that by the word of God the heavens were of old, and the earth standing out of the water and in the water.",
+  "ref": "2 Peter 3:5"
+ },
+ {
+  "id": "2-peter-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Peter warns believers not to fall from what?",
+  "choices": [
+   "Their own stedfastness",
+   "The promises of old",
+   "The fellowship of saints",
+   "The fear of the Lord"
+  ],
+  "answer": 0,
+  "explanation": "Beware lest ye also, being led away with the error of the wicked, fall from your own stedfastness.",
+  "ref": "2 Peter 3:17"
+ },
+ {
+  "id": "2-peter-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Peter say believers are doing as they look for the coming of the day of God?",
+  "choices": [
+   "Fearing it",
+   "Hasting unto it",
+   "Preparing a feast for it",
+   "Sealing the scriptures for it"
+  ],
+  "answer": 1,
+  "explanation": "Looking for and hasting unto the coming of the day of God.",
+  "ref": "2 Peter 3:12"
+ },
+ {
+  "id": "2-peter-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will be burned up in the day of the Lord, along with the earth?",
+  "choices": [
+   "The temple of God",
+   "The cities of Israel",
+   "The works that are therein",
+   "The scriptures"
+  ],
+  "answer": 2,
+  "explanation": "The earth also and the works that are therein shall be burned up.",
+  "ref": "2 Peter 3:10"
+ },
+ {
+  "id": "2-peter-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What manner of persons does Peter say believers ought to be?",
+  "choices": [
+   "Quiet and hidden",
+   "Strong and bold",
+   "Wise and learned",
+   "In all holy conversation and godliness"
+  ],
+  "answer": 3,
+  "explanation": "What manner of persons ought ye to be in all holy conversation and godliness.",
+  "ref": "2 Peter 3:11"
+ },
+ {
+  "id": "2-peter-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the heavens on fire be, in the day of God?",
+  "choices": [
+   "Dissolved",
+   "Opened",
+   "Rolled up",
+   "Made new"
+  ],
+  "answer": 0,
+  "explanation": "The heavens being on fire shall be dissolved, and the elements shall melt with fervent heat.",
+  "ref": "2 Peter 3:12"
+ },
+ {
+  "id": "2-peter-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to what was Paul given wisdom to write?",
+  "choices": [
+   "The law of Moses",
+   "The wisdom given unto him",
+   "The words of the prophets",
+   "The traditions of the elders"
+  ],
+  "answer": 1,
+  "explanation": "Our beloved brother Paul also according to the wisdom given unto him hath written unto you.",
+  "ref": "2 Peter 3:15"
+ },
+ {
+  "id": "2-peter-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom does Peter ascribe glory both now and for ever?",
+  "choices": [
+   "The Father alone",
+   "The Holy Spirit",
+   "Our Lord and Saviour Jesus Christ",
+   "The holy prophets"
+  ],
+  "answer": 2,
+  "explanation": "To him be glory both now and for ever. Amen.",
+  "ref": "2 Peter 3:18"
+ },
+ {
+  "id": "2-peter-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The heavens and earth are reserved against the day of judgment and perdition of whom?",
+  "choices": [
+   "The scoffers only",
+   "The fallen angels",
+   "All nations",
+   "Ungodly men"
+  ],
+  "answer": 3,
+  "explanation": "Reserved unto fire against the day of judgment and perdition of ungodly men.",
+  "ref": "2 Peter 3:7"
  }
 ]
