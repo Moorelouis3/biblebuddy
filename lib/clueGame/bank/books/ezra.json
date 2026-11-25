@@ -1440,6 +1440,502 @@
   "ref": "Ezra 4:12\u201313"
  },
  {
+  "id": "ezra-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the chancellor who wrote a letter against Jerusalem?",
+  "choices": [
+   "Rehum",
+   "Bishlam",
+   "Tabeel",
+   "Zerubbabel"
+  ],
+  "answer": 0,
+  "explanation": "Rehum the chancellor and Shimshai the scribe wrote a letter against Jerusalem to Artaxerxes the king.",
+  "ref": "Ezra 4:8"
+ },
+ {
+  "id": "ezra-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the scribe who wrote with Rehum against Jerusalem?",
+  "choices": [
+   "Mithredath",
+   "Shimshai",
+   "Asnapper",
+   "Jeshua"
+  ],
+  "answer": 1,
+  "explanation": "Rehum the chancellor and Shimshai the scribe wrote a letter.",
+  "ref": "Ezra 4:8"
+ },
+ {
+  "id": "ezra-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In what tongue was the letter to Artaxerxes written?",
+  "choices": [
+   "Hebrew",
+   "Greek",
+   "Syrian",
+   "Egyptian"
+  ],
+  "answer": 2,
+  "explanation": "The writing of the letter was written in the Syrian tongue, and interpreted in the Syrian tongue.",
+  "ref": "Ezra 4:7"
+ },
+ {
+  "id": "ezra-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which leaders answered the adversaries, Ye have nothing to do with us?",
+  "choices": [
+   "Rehum and Shimshai",
+   "Bishlam and Tabeel",
+   "Haggai and Zechariah",
+   "Zerubbabel and Jeshua"
+  ],
+  "answer": 3,
+  "explanation": "Zerubbabel, and Jeshua, and the rest of the chief of the fathers said, Ye have nothing to do with us.",
+  "ref": "Ezra 4:3"
+ },
+ {
+  "id": "ezra-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the king command about the city in his answer?",
+  "choices": [
+   "That the men cease and the city not be builded",
+   "That the walls be finished",
+   "That the temple be taxed",
+   "That the Jews be sent to Babylon"
+  ],
+  "answer": 0,
+  "explanation": "Cause these men to cease, and that this city be not builded, until another commandment shall be given.",
+  "ref": "Ezra 4:21"
+ },
+ {
+  "id": "ezra-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Rehum and Shimshai do when the king's letter was read before them?",
+  "choices": [
+   "They sent gifts to Jerusalem",
+   "Went up in haste and made the Jews cease by force",
+   "They wrote another letter",
+   "They went home in peace"
+  ],
+  "answer": 1,
+  "explanation": "They went up in haste to Jerusalem unto the Jews, and made them to cease by force and power.",
+  "ref": "Ezra 4:23"
+ },
+ {
+  "id": "ezra-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Until when did the work of the house of God cease?",
+  "choices": [
+   "The death of Artaxerxes",
+   "The reign of Cyrus",
+   "The second year of the reign of Darius",
+   "The seventh month"
+  ],
+  "answer": 2,
+  "explanation": "Then ceased the work of the house of God. So it ceased unto the second year of the reign of Darius king of Persia.",
+  "ref": "Ezra 4:24"
+ },
+ {
+  "id": "ezra-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose adversaries heard that the captives were building the temple?",
+  "choices": [
+   "Of Egypt and Tyre",
+   "Of Persia and Media",
+   "Of Moab and Ammon",
+   "Of Judah and Benjamin"
+  ],
+  "answer": 3,
+  "explanation": "The adversaries of Judah and Benjamin heard that the children of the captivity builded the temple.",
+  "ref": "Ezra 4:1"
+ },
+ {
+  "id": "ezra-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Since the days of which king did the adversaries say they had sacrificed to God?",
+  "choices": [
+   "Esar-haddon king of Assur",
+   "Nebuchadnezzar",
+   "Cyrus",
+   "Darius"
+  ],
+  "answer": 0,
+  "explanation": "We do sacrifice unto him since the days of Esar-haddon king of Assur, which brought us up hither.",
+  "ref": "Ezra 4:2"
+ },
+ {
+  "id": "ezra-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did the adversaries give for wanting to help build?",
+  "choices": [
+   "They were paid by the king",
+   "We seek your God, as ye do",
+   "They were Levites",
+   "They owned the land"
+  ],
+  "answer": 1,
+  "explanation": "Let us build with you: for we seek your God, as ye do.",
+  "ref": "Ezra 4:2"
+ },
+ {
+  "id": "ezra-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "For how long did the hired counsellors work against the Jews?",
+  "choices": [
+   "Seven years",
+   "Forty years",
+   "All the days of Cyrus until the reign of Darius",
+   "Until the death of Zerubbabel"
+  ],
+  "answer": 2,
+  "explanation": "They hired counsellors against them all the days of Cyrus king of Persia, even until the reign of Darius.",
+  "ref": "Ezra 4:5"
+ },
+ {
+  "id": "ezra-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "To which king did they write an accusation at the start of his reign?",
+  "choices": [
+   "Cyrus",
+   "Darius",
+   "Artaxerxes",
+   "Ahasuerus"
+  ],
+  "answer": 3,
+  "explanation": "In the reign of Ahasuerus, in the beginning of his reign, wrote they unto him an accusation.",
+  "ref": "Ezra 4:6"
+ },
+ {
+  "id": "ezra-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Who wrote to Artaxerxes with Mithredath and Tabeel?",
+  "choices": [
+   "Bishlam",
+   "Rehum",
+   "Shimshai",
+   "Asnapper"
+  ],
+  "answer": 0,
+  "explanation": "In the days of Artaxerxes wrote Bishlam, Mithredath, Tabeel, and the rest of their companions.",
+  "ref": "Ezra 4:7"
+ },
+ {
+  "id": "ezra-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What three payments did the letter say the Jews would stop paying?",
+  "choices": [
+   "Tithe, firstfruits and offering",
+   "Toll, tribute and custom",
+   "Silver, gold and grain",
+   "Tax, rent and dowry"
+  ],
+  "answer": 1,
+  "explanation": "If this city be builded, then will they not pay toll, tribute, and custom.",
+  "ref": "Ezra 4:13"
+ },
+ {
+  "id": "ezra-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the letter-writers say the king should search for proof?",
+  "choices": [
+   "In the temple at Jerusalem",
+   "In the treasury of Babylon",
+   "In the book of the records of his fathers",
+   "In the writings of Moses"
+  ],
+  "answer": 2,
+  "explanation": "That search may be made in the book of the records of thy fathers.",
+  "ref": "Ezra 4:15"
+ },
+ {
+  "id": "ezra-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the letter describe the city of Jerusalem?",
+  "choices": [
+   "Faithful and old",
+   "Holy and strong",
+   "Poor and small",
+   "Rebellious and bad"
+  ],
+  "answer": 3,
+  "explanation": "The Jews are come unto Jerusalem, building the rebellious and the bad city.",
+  "ref": "Ezra 4:12"
+ },
+ {
+  "id": "ezra-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king's search find about the city?",
+  "choices": [
+   "It had always paid tribute",
+   "It of old had made insurrection against kings",
+   "It had never had a king",
+   "It had been built by Persia"
+  ],
+  "answer": 1,
+  "explanation": "It is found that this city of old time hath made insurrection against kings.",
+  "ref": "Ezra 4:19"
+ },
+ {
+  "id": "ezra-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the king say about the kings who once ruled over Jerusalem?",
+  "choices": [
+   "They were weak",
+   "They had ruled all countries beyond the river",
+   "They were Persians",
+   "They had served Babylon"
+  ],
+  "answer": 1,
+  "explanation": "There have been mighty kings also over Jerusalem, which have ruled over all countries beyond the river.",
+  "ref": "Ezra 4:20"
+ },
+ {
+  "id": "ezra-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What reason did the writers give for sending word to the king?",
+  "choices": [
+   "They had maintenance from the king's palace",
+   "They feared the Jews",
+   "They were Jews",
+   "They wanted land"
+  ],
+  "answer": 0,
+  "explanation": "Because we have maintenance from the king's palace, and it was not meet for us to see the king's dishonour.",
+  "ref": "Ezra 4:14"
+ },
+ {
+  "id": "ezra-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Who brought the nations over and set them in the cities of Samaria?",
+  "choices": [
+   "Esar-haddon",
+   "Cyrus",
+   "Asnapper",
+   "Rehum"
+  ],
+  "answer": 2,
+  "explanation": "The great and noble Asnapper brought them over, and set them in the cities of Samaria.",
+  "ref": "Ezra 4:10"
+ },
+ {
+  "id": "ezra-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these peoples is named among those who joined in writing the letter?",
+  "choices": [
+   "The Egyptians",
+   "The Hittites",
+   "The Philistines",
+   "The Babylonians"
+  ],
+  "answer": 3,
+  "explanation": "The Dinaites, the Apharsathchites, the Tarpelites, the Apharsites, the Archevites, the Babylonians, the Susanchites.",
+  "ref": "Ezra 4:9"
+ },
+ {
+  "id": "ezra-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the letter say the king would have no portion in, if the city were built?",
+  "choices": [
+   "The temple",
+   "This side the river",
+   "The tribute of Egypt",
+   "The land of Judah"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt have no portion on this side the river.",
+  "ref": "Ezra 4:16"
+ },
+ {
+  "id": "ezra-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had the Jews set up and joined, according to the letter?",
+  "choices": [
+   "Altars and gates",
+   "Towers and bridges",
+   "The walls and the foundations",
+   "Houses and fields"
+  ],
+  "answer": 2,
+  "explanation": "They have set up the walls thereof, and joined the foundations.",
+  "ref": "Ezra 4:12"
+ },
+ {
+  "id": "ezra-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How had the king's letter been read, he said?",
+  "choices": [
+   "Plainly before him",
+   "In secret",
+   "In the Syrian tongue only",
+   "By the priests"
+  ],
+  "answer": 0,
+  "explanation": "The letter which ye sent unto us hath been plainly read before me.",
+  "ref": "Ezra 4:18"
+ },
+ {
+  "id": "ezra-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Until what did the king say the building must not go on?",
+  "choices": [
+   "The next king arose",
+   "Another commandment is given from him",
+   "The Jews paid tribute",
+   "The walls were torn down"
+  ],
+  "answer": 1,
+  "explanation": "Let the city not be builded, until another commandment shall be given from me.",
+  "ref": "Ezra 4:21"
+ },
+ {
+  "id": "ezra-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king say he had commanded to be made?",
+  "choices": [
+   "A census",
+   "A decree to Babylon",
+   "A search",
+   "A gift"
+  ],
+  "answer": 2,
+  "explanation": "I commanded, and search hath been made, and it is found.",
+  "ref": "Ezra 4:19"
+ },
+ {
+  "id": "ezra-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the hired counsellors seek to frustrate?",
+  "choices": [
+   "The king's army",
+   "The temple tax",
+   "The Levites' service",
+   "Their purpose"
+  ],
+  "answer": 3,
+  "explanation": "They hired counsellors against them, to frustrate their purpose.",
+  "ref": "Ezra 4:5"
+ },
+ {
+  "id": "ezra-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did those the king addressed in his answer dwell?",
+  "choices": [
+   "Samaria",
+   "Babylon",
+   "Tyre",
+   "Susa"
+  ],
+  "answer": 0,
+  "explanation": "The king sent an answer unto Rehum and Shimshai and the rest of their companions that dwell in Samaria.",
+  "ref": "Ezra 4:17"
+ },
+ {
+  "id": "ezra-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the letter say the Jews had moved within the city of old time?",
+  "choices": [
+   "Sedition",
+   "A famine",
+   "Idolatry",
+   "A war with Egypt"
+  ],
+  "answer": 0,
+  "explanation": "They have moved sedition within the same of old time: for which cause was this city destroyed.",
+  "ref": "Ezra 4:15"
+ },
+ {
+  "id": "ezra-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What city did the letter say was destroyed because of rebellion?",
+  "choices": [
+   "Babylon",
+   "Jerusalem",
+   "Samaria",
+   "Susa"
+  ],
+  "answer": 1,
+  "explanation": "This city is rebellious and hurtful unto kings; for which cause was this city destroyed.",
+  "ref": "Ezra 4:15"
+ },
+ {
+  "id": "ezra-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did Zerubbabel and Jeshua say they were building as king Cyrus had commanded?",
+  "choices": [
+   "The God of heaven and earth",
+   "The LORD God of Israel",
+   "The king of Persia",
+   "Esar-haddon"
+  ],
+  "answer": 1,
+  "explanation": "We ourselves together will build unto the LORD God of Israel, as king Cyrus the king of Persia hath commanded us.",
+  "ref": "Ezra 4:3"
+ },
+ {
   "id": "old-ezra-5-1",
   "chapter": 5,
   "level": "beginner",
