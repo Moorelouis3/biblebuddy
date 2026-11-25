@@ -2992,6 +2992,598 @@
   "ref": "Ezra 7:28"
  },
  {
+  "id": "ezra-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which king of Persia was reigning when Ezra went up to Jerusalem?",
+  "choices": [
+   "Artaxerxes",
+   "Cyrus",
+   "Darius",
+   "Nebuchadnezzar"
+  ],
+  "answer": 0,
+  "explanation": "Ezra went up in the reign of Artaxerxes king of Persia.",
+  "ref": "Ezra 7:1"
+ },
+ {
+  "id": "ezra-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which city did Ezra go up?",
+  "choices": [
+   "Susa",
+   "Nineveh",
+   "Damascus",
+   "Babylon"
+  ],
+  "answer": 3,
+  "explanation": "This Ezra went up from Babylon.",
+  "ref": "Ezra 7:6"
+ },
+ {
+  "id": "ezra-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "place",
+  "question": "To which city did Ezra and the people go up?",
+  "choices": [
+   "Bethel",
+   "Samaria",
+   "Jerusalem",
+   "Shechem"
+  ],
+  "answer": 2,
+  "explanation": "They went up unto Jerusalem in the seventh year of Artaxerxes the king.",
+  "ref": "Ezra 7:7"
+ },
+ {
+  "id": "ezra-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Ezra traced his family back to which chief priest?",
+  "choices": [
+   "Moses",
+   "Aaron",
+   "David",
+   "Zadok"
+  ],
+  "answer": 1,
+  "explanation": "Ezra was the son of Seraiah, back to Eleazar, the son of Aaron the chief priest.",
+  "ref": "Ezra 7:5"
+ },
+ {
+  "id": "ezra-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which group went up to Jerusalem with the priests and the Levites?",
+  "choices": [
+   "The singers",
+   "The prophets",
+   "The soldiers",
+   "The shepherds"
+  ],
+  "answer": 0,
+  "explanation": "There went up some of the priests, the Levites, the singers, the porters, and the Nethinims.",
+  "ref": "Ezra 7:7"
+ },
+ {
+  "id": "ezra-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who could go up to Jerusalem with Ezra, by the king's decree?",
+  "choices": [
+   "Only the priests",
+   "Only men of Judah",
+   "Only those chosen by lot",
+   "Any Israelite who was willing"
+  ],
+  "answer": 3,
+  "explanation": "The king decreed that all of Israel minded of their own freewill to go up to Jerusalem might go with Ezra.",
+  "ref": "Ezra 7:13"
+ },
+ {
+  "id": "ezra-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who had put it into the king's heart to beautify the house of the LORD?",
+  "choices": [
+   "The king's counsellors",
+   "Ezra the scribe",
+   "The LORD God of their fathers",
+   "The priests of Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Ezra blessed the LORD God of our fathers, which hath put such a thing in the king's heart.",
+  "ref": "Ezra 7:27"
+ },
+ {
+  "id": "ezra-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What title does Artaxerxes give himself at the start of his letter?",
+  "choices": [
+   "Lord of the earth",
+   "King of kings",
+   "Ruler of Babylon",
+   "Great king of Persia"
+  ],
+  "answer": 1,
+  "explanation": "The letter begins, Artaxerxes, king of kings, unto Ezra the priest.",
+  "ref": "Ezra 7:12"
+ },
+ {
+  "id": "ezra-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the king and his counsellors freely offered to the God of Israel?",
+  "choices": [
+   "Silver and gold",
+   "Land and cattle",
+   "Horses and chariots",
+   "Wheat and wine"
+  ],
+  "answer": 0,
+  "explanation": "Ezra was to carry the silver and gold which the king and his counsellors had freely offered.",
+  "ref": "Ezra 7:15"
+ },
+ {
+  "id": "ezra-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many counsellors joined the king in sending Ezra?",
+  "choices": [
+   "Three",
+   "Ten",
+   "Twelve",
+   "Seven"
+  ],
+  "answer": 3,
+  "explanation": "Ezra was sent of the king, and of his seven counsellors.",
+  "ref": "Ezra 7:14"
+ },
+ {
+  "id": "ezra-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezra sent to enquire about?",
+  "choices": [
+   "Babylon and Persia",
+   "The temple treasures only",
+   "Judah and Jerusalem",
+   "The borders of the empire"
+  ],
+  "answer": 2,
+  "explanation": "He was sent to enquire concerning Judah and Jerusalem, according to the law of his God.",
+  "ref": "Ezra 7:14"
+ },
+ {
+  "id": "ezra-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezra to buy speedily with the silver and gold?",
+  "choices": [
+   "Doves and pigeons",
+   "Bullocks, rams and lambs",
+   "Oxen and camels",
+   "Goats and calves"
+  ],
+  "answer": 1,
+  "explanation": "The money was to buy bullocks, rams, lambs, with their meat offerings and drink offerings.",
+  "ref": "Ezra 7:17"
+ },
+ {
+  "id": "ezra-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ezra to do with the vessels given for the service of the house of God?",
+  "choices": [
+   "Deliver them before the God of Jerusalem",
+   "Melt them for the treasury",
+   "Hide them in the hills",
+   "Sell them to pay the builders"
+  ],
+  "answer": 0,
+  "explanation": "The vessels were to be delivered before the God of Jerusalem.",
+  "ref": "Ezra 7:19"
+ },
+ {
+  "id": "ezra-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Ezra to get whatever else the house of God needed?",
+  "choices": [
+   "The temple storerooms",
+   "The governors' houses",
+   "The people's gifts",
+   "The king's treasure house"
+  ],
+  "answer": 3,
+  "explanation": "Whatever more is needful, bestow it out of the king's treasure house.",
+  "ref": "Ezra 7:20"
+ },
+ {
+  "id": "ezra-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the king command to do speedily whatever Ezra the priest required?",
+  "choices": [
+   "The priests of Jerusalem",
+   "The Levites at the river",
+   "The treasurers beyond the river",
+   "The princes of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "The king made a decree to all the treasurers which are beyond the river.",
+  "ref": "Ezra 7:21"
+ },
+ {
+  "id": "ezra-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why must the work for the house of God be done diligently, said the king?",
+  "choices": [
+   "So the king could be praised",
+   "So no wrath fall on the king's realm",
+   "So the work would end in a year",
+   "So the people would pay less"
+  ],
+  "answer": 1,
+  "explanation": "The king asked, why should there be wrath against the realm of the king and his sons?",
+  "ref": "Ezra 7:23"
+ },
+ {
+  "id": "ezra-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which groups did the king exempt from toll, tribute or custom?",
+  "choices": [
+   "Priests, Levites, singers and porters",
+   "Merchants and travellers",
+   "Soldiers and governors",
+   "Farmers and shepherds"
+  ],
+  "answer": 0,
+  "explanation": "It was not lawful to impose toll, tribute, or custom on the priests, Levites, singers, porters, Nethinims.",
+  "ref": "Ezra 7:24"
+ },
+ {
+  "id": "ezra-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was one penalty for refusing to do the law of God and the law of the king?",
+  "choices": [
+   "Forced labour",
+   "Public beating",
+   "Branding",
+   "Banishment"
+  ],
+  "answer": 3,
+  "explanation": "Judgment was to be executed on the disobedient, whether unto death, or banishment, or confiscation of goods, or imprisonment.",
+  "ref": "Ezra 7:26"
+ },
+ {
+  "id": "ezra-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In which year of Artaxerxes did Ezra go up?",
+  "choices": [
+   "The first",
+   "The twentieth",
+   "The seventh",
+   "The fortieth"
+  ],
+  "answer": 2,
+  "explanation": "They went up unto Jerusalem in the seventh year of Artaxerxes the king.",
+  "ref": "Ezra 7:7"
+ },
+ {
+  "id": "ezra-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Ezra?",
+  "choices": [
+   "Hilkiah",
+   "Seraiah",
+   "Zadok",
+   "Azariah"
+  ],
+  "answer": 1,
+  "explanation": "Ezra the son of Seraiah, the son of Azariah.",
+  "ref": "Ezra 7:1"
+ },
+ {
+  "id": "ezra-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What title does the king use for Ezra's God in his letter?",
+  "choices": [
+   "The God of heaven",
+   "The Lord of hosts",
+   "The God of Babylon",
+   "The King of Israel"
+  ],
+  "answer": 0,
+  "explanation": "The king calls Ezra a scribe of the law of the God of heaven.",
+  "ref": "Ezra 7:12"
+ },
+ {
+  "id": "ezra-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom was Ezra to teach?",
+  "choices": [
+   "Only the king's children",
+   "The priests of Babylon",
+   "The Persian judges",
+   "Those who did not know God's laws"
+  ],
+  "answer": 3,
+  "explanation": "Ezra was to set judges and teach them that know not the laws of his God.",
+  "ref": "Ezra 7:25"
+ },
+ {
+  "id": "ezra-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where besides the king's gift was Ezra to collect silver and gold?",
+  "choices": [
+   "In the cities of Judah",
+   "In the land of Egypt",
+   "In all the province of Babylon",
+   "In the temple at Susa"
+  ],
+  "answer": 2,
+  "explanation": "The king told Ezra to take all the silver and gold he could find in all the province of Babylon.",
+  "ref": "Ezra 7:16"
+ },
+ {
+  "id": "ezra-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of silver could Ezra ask from the treasurers?",
+  "choices": [
+   "An hundred",
+   "Fifty",
+   "Two hundred",
+   "Five hundred"
+  ],
+  "answer": 0,
+  "explanation": "The decree allowed up to an hundred talents of silver.",
+  "ref": "Ezra 7:22"
+ },
+ {
+  "id": "ezra-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was given without prescribing how much?",
+  "choices": [
+   "Wheat",
+   "Oil",
+   "Wine",
+   "Salt"
+  ],
+  "answer": 3,
+  "explanation": "The decree gave an hundred measures of wheat, baths of wine and oil, and salt without prescribing how much.",
+  "ref": "Ezra 7:22"
+ },
+ {
+  "id": "ezra-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Up to a hundred measures of which grain did the king allow?",
+  "choices": [
+   "Barley",
+   "Millet",
+   "Wheat",
+   "Spelt"
+  ],
+  "answer": 2,
+  "explanation": "The decree allowed an hundred measures of wheat.",
+  "ref": "Ezra 7:22"
+ },
+ {
+  "id": "ezra-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what day of the first month did Ezra begin to go up from Babylon?",
+  "choices": [
+   "The seventh day",
+   "The first day",
+   "The twelfth day",
+   "The fifteenth day"
+  ],
+  "answer": 1,
+  "explanation": "Upon the first day of the first month began he to go up from Babylon.",
+  "ref": "Ezra 7:9"
+ },
+ {
+  "id": "ezra-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which month did Ezra come to Jerusalem?",
+  "choices": [
+   "The fifth month",
+   "The first month",
+   "The seventh month",
+   "The tenth month"
+  ],
+  "answer": 0,
+  "explanation": "On the first day of the fifth month came he to Jerusalem.",
+  "ref": "Ezra 7:8\u20139"
+ },
+ {
+  "id": "ezra-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Ezra's ancestor Abishua was the son of whom?",
+  "choices": [
+   "Eleazar",
+   "Aaron",
+   "Zadok",
+   "Phinehas"
+  ],
+  "answer": 3,
+  "explanation": "The list reads: the son of Abishua, the son of Phinehas, the son of Eleazar.",
+  "ref": "Ezra 7:5"
+ },
+ {
+  "id": "ezra-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Ezra's ancestor Zadok was the son of whom?",
+  "choices": [
+   "Shallum",
+   "Meraioth",
+   "Ahitub",
+   "Bukki"
+  ],
+  "answer": 2,
+  "explanation": "The list reads: the son of Shallum, the son of Zadok, the son of Ahitub.",
+  "ref": "Ezra 7:2"
+ },
+ {
+  "id": "ezra-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which group of temple servants is named among those who went up?",
+  "choices": [
+   "The Gibeonites",
+   "The Nethinims",
+   "The Rechabites",
+   "The Nazarites"
+  ],
+  "answer": 1,
+  "explanation": "Those who went up included the Nethinims, with the priests, Levites, singers and porters.",
+  "ref": "Ezra 7:7"
+ },
+ {
+  "id": "ezra-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What offerings were to go with the bullocks, rams and lambs?",
+  "choices": [
+   "Meat offerings and drink offerings",
+   "Incense and first fruits",
+   "Wave offerings and tithes",
+   "Peace offerings and vows"
+  ],
+  "answer": 0,
+  "explanation": "The king wrote of bullocks, rams, lambs, with their meat offerings and their drink offerings.",
+  "ref": "Ezra 7:17"
+ },
+ {
+  "id": "ezra-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had Ezra prepared his heart to teach in Israel?",
+  "choices": [
+   "Songs and psalms",
+   "Parables",
+   "The history of the kings",
+   "Statutes and judgments"
+  ],
+  "answer": 3,
+  "explanation": "Ezra prepared his heart to seek the law of the LORD, and to do it, and to teach in Israel statutes and judgments.",
+  "ref": "Ezra 7:10"
+ },
+ {
+  "id": "ezra-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had God extended to Ezra before the king and his counsellors?",
+  "choices": [
+   "Wealth",
+   "Wisdom",
+   "Mercy",
+   "Victory"
+  ],
+  "answer": 2,
+  "explanation": "God hath extended mercy unto me before the king, and his counsellors.",
+  "ref": "Ezra 7:28"
+ },
+ {
+  "id": "ezra-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom were Ezra's magistrates and judges to judge?",
+  "choices": [
+   "Only the priests of Jerusalem",
+   "All the people beyond the river who knew God's laws",
+   "The princes of Persia",
+   "The Levites of the temple"
+  ],
+  "answer": 1,
+  "explanation": "Judges were set to judge all the people beyond the river, all such as know the laws of God.",
+  "ref": "Ezra 7:25"
+ },
+ {
+  "id": "ezra-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the people and priests offer willingly for the house of God?",
+  "choices": [
+   "On the altar of the house of God in Jerusalem",
+   "At the river of Ahava",
+   "In the king's palace",
+   "In the province of Babylon"
+  ],
+  "answer": 0,
+  "explanation": "The animals were to be offered upon the altar of the house of your God in Jerusalem.",
+  "ref": "Ezra 7:16"
+ },
+ {
+  "id": "ezra-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what was Ezra to judge the matter of Judah and Jerusalem?",
+  "choices": [
+   "The law of his God",
+   "The law of Persia",
+   "The words of the prophets",
+   "The counsel of the elders"
+  ],
+  "answer": 3,
+  "explanation": "Ezra was to enquire concerning Judah and Jerusalem according to the law of thy God which is in thine hand.",
+  "ref": "Ezra 7:16"
+ },
+ {
   "id": "old-ezra-8-1",
   "chapter": 8,
   "level": "beginner",
