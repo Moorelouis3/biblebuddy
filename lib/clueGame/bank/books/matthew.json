@@ -12142,5 +12142,6517 @@
   "answer": 0,
   "explanation": "They say unto him, Lord, that our eyes may be opened.",
   "ref": "Matthew 20:33"
+ },
+ {
+  "id": "matthew-10-e-01",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which apostle is named as the one who also betrayed him?",
+  "choices": [
+   "Simon the Canaanite",
+   "Thomas",
+   "Judas Iscariot",
+   "Philip"
+  ],
+  "answer": 2,
+  "explanation": "Simon the Canaanite, and Judas Iscariot, who also betrayed him.",
+  "ref": "Matthew 10:4"
+ },
+ {
+  "id": "matthew-10-e-02",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which apostle is called the publican?",
+  "choices": [
+   "Thomas",
+   "Bartholomew",
+   "Philip",
+   "Matthew"
+  ],
+  "answer": 3,
+  "explanation": "Thomas, and Matthew the publican.",
+  "ref": "Matthew 10:3"
+ },
+ {
+  "id": "matthew-10-e-03",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named as Peter's brother among the twelve?",
+  "choices": [
+   "Andrew",
+   "James",
+   "John",
+   "Philip"
+  ],
+  "answer": 0,
+  "explanation": "Simon, who is called Peter, and Andrew his brother.",
+  "ref": "Matthew 10:2"
+ },
+ {
+  "id": "matthew-10-e-04",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to the apostles about what they had received?",
+  "choices": [
+   "Keep it to thyself",
+   "Freely ye have received, freely give",
+   "Sell it for gold",
+   "Give it to the priests"
+  ],
+  "answer": 1,
+  "explanation": "Heal the sick, cleanse the lepers, raise the dead, cast out devils: freely ye have received, freely give.",
+  "ref": "Matthew 10:8"
+ },
+ {
+  "id": "matthew-10-e-05",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two creatures did Jesus compare the apostles to in wisdom and harmlessness?",
+  "choices": [
+   "Lions and lambs",
+   "Eagles and sparrows",
+   "Serpents and doves",
+   "Foxes and sheep"
+  ],
+  "answer": 2,
+  "explanation": "Be ye therefore wise as serpents, and harmless as doves.",
+  "ref": "Matthew 10:16"
+ },
+ {
+  "id": "matthew-10-e-06",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus say is numbered?",
+  "choices": [
+   "The days of your life",
+   "The tribes of Israel",
+   "The stars of heaven",
+   "The very hairs of your head"
+  ],
+  "answer": 3,
+  "explanation": "But the very hairs of your head are all numbered.",
+  "ref": "Matthew 10:30"
+ },
+ {
+  "id": "matthew-10-e-07",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Compared to what are the disciples of more value?",
+  "choices": [
+   "Many sparrows",
+   "Many lilies",
+   "The fowls of the air",
+   "The grass of the field"
+  ],
+  "answer": 0,
+  "explanation": "Fear ye not therefore, ye are of more value than many sparrows.",
+  "ref": "Matthew 10:31"
+ },
+ {
+  "id": "matthew-10-e-08",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What must a man take to be worthy of Jesus?",
+  "choices": [
+   "His staff",
+   "His cross",
+   "His sword",
+   "His coat"
+  ],
+  "answer": 1,
+  "explanation": "He that taketh not his cross, and followeth after me, is not worthy of me.",
+  "ref": "Matthew 10:38"
+ },
+ {
+  "id": "matthew-10-e-09",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall be given to one of these little ones in a disciple's name that will not lose its reward?",
+  "choices": [
+   "A loaf of bread",
+   "A coat",
+   "A cup of cold water",
+   "A piece of silver"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever shall give to drink unto one of these little ones a cup of cold water only in the name of a disciple, he shall in no wise lose his reward.",
+  "ref": "Matthew 10:42"
+ },
+ {
+  "id": "matthew-10-e-10",
+  "chapter": 10,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will Jesus do for the man who confesses him before men?",
+  "choices": [
+   "Give him a crown",
+   "Make him a prince",
+   "Raise him up at once",
+   "Confess him before his Father in heaven"
+  ],
+  "answer": 3,
+  "explanation": "Whosoever therefore shall confess me before men, him will I confess also before my Father which is in heaven.",
+  "ref": "Matthew 10:32"
+ },
+ {
+  "id": "matthew-10-m-01",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Jesus tell the twelve not to go?",
+  "choices": [
+   "Into the way of the Gentiles or any city of the Samaritans",
+   "To the cities of Judaea",
+   "Into the synagogues",
+   "To the house of Israel"
+  ],
+  "answer": 0,
+  "explanation": "Go not into the way of the Gentiles, and into any city of the Samaritans enter ye not.",
+  "ref": "Matthew 10:5"
+ },
+ {
+  "id": "matthew-10-m-02",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the apostles told to do for the sick and the dead?",
+  "choices": [
+   "Pray for them",
+   "Heal the sick and raise the dead",
+   "Anoint them with oil",
+   "Send them to the priest"
+  ],
+  "answer": 1,
+  "explanation": "Heal the sick, cleanse the lepers, raise the dead, cast out devils.",
+  "ref": "Matthew 10:8"
+ },
+ {
+  "id": "matthew-10-m-03",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the apostles not to provide in their purses?",
+  "choices": [
+   "Bread and wine",
+   "Oil and salt",
+   "Gold, silver and brass",
+   "Letters and scrolls"
+  ],
+  "answer": 2,
+  "explanation": "Provide neither gold, nor silver, nor brass in your purses.",
+  "ref": "Matthew 10:9"
+ },
+ {
+  "id": "matthew-10-m-04",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the apostles to take no provisions?",
+  "choices": [
+   "The journey was short",
+   "The people would be hostile",
+   "Herod forbade it",
+   "The workman is worthy of his meat"
+  ],
+  "answer": 3,
+  "explanation": "Nor scrip for your journey... for the workman is worthy of his meat.",
+  "ref": "Matthew 10:10"
+ },
+ {
+  "id": "matthew-10-m-05",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the apostles to do on entering a city or town?",
+  "choices": [
+   "Enquire who in it is worthy and abide there",
+   "Preach in the market",
+   "Go to the synagogue",
+   "Find a lodging by the gate"
+  ],
+  "answer": 0,
+  "explanation": "Into whatsoever city or town ye shall enter, enquire who in it is worthy; and there abide till ye go thence.",
+  "ref": "Matthew 10:11"
+ },
+ {
+  "id": "matthew-10-m-06",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the peace if the house is not worthy?",
+  "choices": [
+   "It is lost",
+   "It returns to you",
+   "It rests on the city",
+   "It is taken by the Lord"
+  ],
+  "answer": 1,
+  "explanation": "If the house be not worthy, let your peace return to you.",
+  "ref": "Matthew 10:13"
+ },
+ {
+  "id": "matthew-10-m-07",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were they to do if a house or city would not receive them?",
+  "choices": [
+   "Curse the city",
+   "Call fire from heaven",
+   "Shake off the dust of their feet",
+   "Return to Jesus"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever shall not receive you, nor hear your words, shake off the dust of your feet.",
+  "ref": "Matthew 10:14"
+ },
+ {
+  "id": "matthew-10-m-08",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say would be more tolerable in the day of judgment than for the city that rejects them?",
+  "choices": [
+   "The land of Egypt",
+   "The land of Tyre",
+   "The land of Babylon",
+   "The land of Sodom and Gomorrha"
+  ],
+  "answer": 3,
+  "explanation": "It shall be more tolerable for the land of Sodom and Gomorrha in the day of judgment, than for that city.",
+  "ref": "Matthew 10:15"
+ },
+ {
+  "id": "matthew-10-m-09",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where would men scourge the apostles?",
+  "choices": [
+   "In their synagogues",
+   "In the temple court",
+   "In the market",
+   "In the prison"
+  ],
+  "answer": 0,
+  "explanation": "They will deliver you up to the councils, and they will scourge you in their synagogues.",
+  "ref": "Matthew 10:17"
+ },
+ {
+  "id": "matthew-10-m-10",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Before whom would the apostles be brought for his sake?",
+  "choices": [
+   "Priests and scribes",
+   "Governors and kings",
+   "Judges and elders",
+   "Pharisees and Sadducees"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall be brought before governors and kings for my sake.",
+  "ref": "Matthew 10:18"
+ },
+ {
+  "id": "matthew-10-m-11",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to do when they deliver you up?",
+  "choices": [
+   "Prepare a defence",
+   "Remain silent",
+   "Take no thought how or what ye shall speak",
+   "Call for witnesses"
+  ],
+  "answer": 2,
+  "explanation": "Take no thought how or what ye shall speak: for it shall be given you in that same hour what ye shall speak.",
+  "ref": "Matthew 10:19"
+ },
+ {
+  "id": "matthew-10-m-12",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who speaks in the apostles when they are brought before rulers?",
+  "choices": [
+   "The Son of man",
+   "The angel of the Lord",
+   "The prophets",
+   "The Spirit of their Father"
+  ],
+  "answer": 3,
+  "explanation": "It is not ye that speak, but the Spirit of your Father which speaketh in you.",
+  "ref": "Matthew 10:20"
+ },
+ {
+  "id": "matthew-10-m-13",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jesus say the brother will do to the brother?",
+  "choices": [
+   "Deliver him up to death",
+   "Forsake him",
+   "Betray him to Rome",
+   "Hide from him"
+  ],
+  "answer": 0,
+  "explanation": "The brother shall deliver up the brother to death, and the father the child.",
+  "ref": "Matthew 10:21"
+ },
+ {
+  "id": "matthew-10-m-14",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jesus say of him that endureth to the end?",
+  "choices": [
+   "He shall be rich",
+   "He shall be saved",
+   "He shall be a prophet",
+   "He shall rule"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall be hated of all men for my name's sake: but he that endureth to the end shall be saved.",
+  "ref": "Matthew 10:22"
+ },
+ {
+  "id": "matthew-10-m-15",
+  "chapter": 10,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to do when persecuted in one city?",
+  "choices": [
+   "Stand and preach",
+   "Call for help",
+   "Flee into another",
+   "Go to Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "When they persecute you in this city, flee ye into another.",
+  "ref": "Matthew 10:23"
+ },
+ {
+  "id": "matthew-10-h-01",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which apostle is called the son of Alphaeus?",
+  "choices": [
+   "John",
+   "Thomas",
+   "Philip",
+   "James"
+  ],
+  "answer": 3,
+  "explanation": "James the son of Alphaeus, and Lebbaeus, whose surname was Thaddaeus.",
+  "ref": "Matthew 10:3"
+ },
+ {
+  "id": "matthew-10-h-02",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Which apostle's surname was Thaddaeus?",
+  "choices": [
+   "Lebbaeus",
+   "Bartholomew",
+   "Simon",
+   "Philip"
+  ],
+  "answer": 0,
+  "explanation": "Lebbaeus, whose surname was Thaddaeus.",
+  "ref": "Matthew 10:3"
+ },
+ {
+  "id": "matthew-10-h-03",
+  "chapter": 10,
+  "level": "hard",
+  "category": "person",
+  "question": "Who does Jesus say is not above his master?",
+  "choices": [
+   "The apostle",
+   "The disciple",
+   "The prophet",
+   "The scribe"
+  ],
+  "answer": 1,
+  "explanation": "The disciple is not above his master, nor the servant above his lord.",
+  "ref": "Matthew 10:24"
+ },
+ {
+  "id": "matthew-10-h-04",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say not to take on the journey besides purses?",
+  "choices": [
+   "A tent and a mat",
+   "Bread and fish",
+   "Two coats, shoes or staves",
+   "A sword and a bow"
+  ],
+  "answer": 2,
+  "explanation": "Nor scrip for your journey, neither two coats, neither shoes, nor yet staves.",
+  "ref": "Matthew 10:10"
+ },
+ {
+  "id": "matthew-10-h-05",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say would not have gone over before the Son of man be come?",
+  "choices": [
+   "The seas of Galilee",
+   "The mountains of Judaea",
+   "The lands of the Gentiles",
+   "The cities of Israel"
+  ],
+  "answer": 3,
+  "explanation": "Ye shall not have gone over the cities of Israel, till the Son of man be come.",
+  "ref": "Matthew 10:23"
+ },
+ {
+  "id": "matthew-10-h-06",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say about things that are covered?",
+  "choices": [
+   "There is nothing covered that shall not be revealed",
+   "They shall be burned",
+   "They shall pass away",
+   "They shall be forgotten"
+  ],
+  "answer": 0,
+  "explanation": "Fear them not therefore: for there is nothing covered, that shall not be revealed; and hid, that shall not be known.",
+  "ref": "Matthew 10:26"
+ },
+ {
+  "id": "matthew-10-h-07",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where were the apostles to preach what they heard in the ear?",
+  "choices": [
+   "In the temple",
+   "Upon the housetops",
+   "In the synagogues",
+   "On the mountain"
+  ],
+  "answer": 1,
+  "explanation": "What ye hear in the ear, that preach ye upon the housetops.",
+  "ref": "Matthew 10:27"
+ },
+ {
+  "id": "matthew-10-h-08",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom should the apostles fear rather than those who kill the body?",
+  "choices": [
+   "The high priest",
+   "The governors",
+   "Him which is able to destroy both soul and body in hell",
+   "The scribes"
+  ],
+  "answer": 2,
+  "explanation": "Fear him which is able to destroy both soul and body in hell.",
+  "ref": "Matthew 10:28"
+ },
+ {
+  "id": "matthew-10-h-09",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how much are two sparrows sold?",
+  "choices": [
+   "A penny",
+   "A shekel",
+   "Two pieces of silver",
+   "A farthing"
+  ],
+  "answer": 3,
+  "explanation": "Are not two sparrows sold for a farthing?",
+  "ref": "Matthew 10:29"
+ },
+ {
+  "id": "matthew-10-h-10",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will Jesus do to the man who denies him before men?",
+  "choices": [
+   "Deny him before his Father in heaven",
+   "Cast him out of the city",
+   "Give him over to the council",
+   "Leave him alone"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever shall deny me before men, him will I also deny before my Father which is in heaven.",
+  "ref": "Matthew 10:33"
+ },
+ {
+  "id": "matthew-10-h-11",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say he came not to send on earth, but rather a sword?",
+  "choices": [
+   "Fire",
+   "Peace",
+   "Famine",
+   "A king"
+  ],
+  "answer": 1,
+  "explanation": "I came not to send peace, but a sword.",
+  "ref": "Matthew 10:34"
+ },
+ {
+  "id": "matthew-10-h-12",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose foes shall be a man's foes?",
+  "choices": [
+   "The Gentiles",
+   "The scribes",
+   "They of his own household",
+   "The Pharisees"
+  ],
+  "answer": 2,
+  "explanation": "A man's foes shall be they of his own household.",
+  "ref": "Matthew 10:36"
+ },
+ {
+  "id": "matthew-10-h-13",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who is not worthy of Jesus?",
+  "choices": [
+   "He that has no sword",
+   "He that is rich",
+   "He that fears the council",
+   "He that loveth father or mother more than him"
+  ],
+  "answer": 3,
+  "explanation": "He that loveth father or mother more than me is not worthy of me.",
+  "ref": "Matthew 10:37"
+ },
+ {
+  "id": "matthew-10-h-14",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to him that findeth his life?",
+  "choices": [
+   "He shall lose it",
+   "He shall keep it",
+   "He shall be rich",
+   "He shall be hated"
+  ],
+  "answer": 0,
+  "explanation": "He that findeth his life shall lose it: and he that loseth his life for my sake shall find it.",
+  "ref": "Matthew 10:39"
+ },
+ {
+  "id": "matthew-10-h-15",
+  "chapter": 10,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall he that receiveth a prophet receive?",
+  "choices": [
+   "A crown of glory",
+   "A prophet's reward",
+   "The kingdom",
+   "A double portion"
+  ],
+  "answer": 1,
+  "explanation": "He that receiveth a prophet in the name of a prophet shall receive a prophet's reward.",
+  "ref": "Matthew 10:41"
+ },
+ {
+  "id": "matthew-11-e-01",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was John when he heard the works of Christ?",
+  "choices": [
+   "In the wilderness",
+   "At Jordan",
+   "In Capernaum",
+   "In prison"
+  ],
+  "answer": 3,
+  "explanation": "When John had heard in the prison the works of Christ, he sent two of his disciples.",
+  "ref": "Matthew 11:2"
+ },
+ {
+  "id": "matthew-11-e-02",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many of his disciples did John send to Jesus?",
+  "choices": [
+   "Two",
+   "Three",
+   "Seven",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "He sent two of his disciples.",
+  "ref": "Matthew 11:2"
+ },
+ {
+  "id": "matthew-11-e-03",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the blind receive, according to Jesus' answer to John?",
+  "choices": [
+   "Their strength",
+   "Their sight",
+   "Their sleep",
+   "Their bread"
+  ],
+  "answer": 1,
+  "explanation": "The blind receive their sight, and the lame walk, the lepers are cleansed.",
+  "ref": "Matthew 11:5"
+ },
+ {
+  "id": "matthew-11-e-04",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus ask the multitudes they went into the wilderness to see?",
+  "choices": [
+   "A king in a palace",
+   "A flock of sheep",
+   "A reed shaken with the wind",
+   "A burning bush"
+  ],
+  "answer": 2,
+  "explanation": "What went ye out into the wilderness to see? A reed shaken with the wind?",
+  "ref": "Matthew 11:7"
+ },
+ {
+  "id": "matthew-11-e-05",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say of himself in heart?",
+  "choices": [
+   "I am strong and wise",
+   "I am pure and holy",
+   "I am rich and mighty",
+   "I am meek and lowly in heart"
+  ],
+  "answer": 3,
+  "explanation": "Take my yoke upon you, and learn of me; for I am meek and lowly in heart.",
+  "ref": "Matthew 11:29"
+ },
+ {
+  "id": "matthew-11-e-06",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did people say of John because he came neither eating nor drinking?",
+  "choices": [
+   "He hath a devil",
+   "He is a prophet",
+   "He is a hypocrite",
+   "He is mad"
+  ],
+  "answer": 0,
+  "explanation": "John came neither eating nor drinking, and they say, He hath a devil.",
+  "ref": "Matthew 11:18"
+ },
+ {
+  "id": "matthew-11-e-07",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did people say of the Son of man who came eating and drinking?",
+  "choices": [
+   "A teacher of the law",
+   "A gluttonous winebibber, friend of publicans and sinners",
+   "A prophet of Galilee",
+   "A deceiver of the people"
+  ],
+  "answer": 1,
+  "explanation": "Behold a man gluttonous, and a winebibber, a friend of publicans and sinners.",
+  "ref": "Matthew 11:19"
+ },
+ {
+  "id": "matthew-11-e-08",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Jesus thank, as Lord of heaven and earth?",
+  "choices": [
+   "The Holy Ghost",
+   "John",
+   "The Father",
+   "Moses"
+  ],
+  "answer": 2,
+  "explanation": "I thank thee, O Father, Lord of heaven and earth.",
+  "ref": "Matthew 11:25"
+ },
+ {
+  "id": "matthew-11-e-09",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To whom has the Father revealed these things, which he hid from the wise and prudent?",
+  "choices": [
+   "Kings",
+   "Priests",
+   "Scribes",
+   "Babes"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast hid these things from the wise and prudent, and hast revealed them unto babes.",
+  "ref": "Matthew 11:25"
+ },
+ {
+  "id": "matthew-11-e-10",
+  "chapter": 11,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to take upon you?",
+  "choices": [
+   "My yoke",
+   "My cross",
+   "My staff",
+   "My cloak"
+  ],
+  "answer": 0,
+  "explanation": "Take my yoke upon you, and learn of me.",
+  "ref": "Matthew 11:29"
+ },
+ {
+  "id": "matthew-11-m-01",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who have the gospel preached to them, according to Jesus' answer?",
+  "choices": [
+   "The rich",
+   "The poor",
+   "The scribes",
+   "The Gentiles"
+  ],
+  "answer": 1,
+  "explanation": "The dead are raised up, and the poor have the gospel preached to them.",
+  "ref": "Matthew 11:5"
+ },
+ {
+  "id": "matthew-11-m-02",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Jesus say is blessed?",
+  "choices": [
+   "Whosoever keeps the sabbath",
+   "Whosoever fasts and prays",
+   "Whosoever shall not be offended in him",
+   "Whosoever gives alms"
+  ],
+  "answer": 2,
+  "explanation": "Blessed is he, whosoever shall not be offended in me.",
+  "ref": "Matthew 11:6"
+ },
+ {
+  "id": "matthew-11-m-03",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where do they that wear soft clothing dwell?",
+  "choices": [
+   "In the wilderness",
+   "In the cities of Judaea",
+   "In the temple",
+   "In kings' houses"
+  ],
+  "answer": 3,
+  "explanation": "They that wear soft clothing are in kings' houses.",
+  "ref": "Matthew 11:8"
+ },
+ {
+  "id": "matthew-11-m-04",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of whom is it written, Behold, I send my messenger before thy face?",
+  "choices": [
+   "John the Baptist",
+   "Elias",
+   "Jesus",
+   "Moses"
+  ],
+  "answer": 0,
+  "explanation": "This is he, of whom it is written, Behold, I send my messenger before thy face, which shall prepare thy way before thee.",
+  "ref": "Matthew 11:10"
+ },
+ {
+  "id": "matthew-11-m-05",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Jesus say had not risen among them born of women?",
+  "choices": [
+   "A greater than Moses",
+   "A greater than John the Baptist",
+   "A greater than Elias",
+   "A greater than David"
+  ],
+  "answer": 1,
+  "explanation": "Among them that are born of women there hath not risen a greater than John the Baptist.",
+  "ref": "Matthew 11:11"
+ },
+ {
+  "id": "matthew-11-m-06",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say the kingdom of heaven suffereth from the days of John?",
+  "choices": [
+   "Delay",
+   "Silence",
+   "Violence",
+   "Doubt"
+  ],
+  "answer": 2,
+  "explanation": "From the days of John the Baptist until now the kingdom of heaven suffereth violence, and the violent take it by force.",
+  "ref": "Matthew 11:12"
+ },
+ {
+  "id": "matthew-11-m-07",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until whom did all the prophets and the law prophesy?",
+  "choices": [
+   "Elias",
+   "Moses",
+   "Jesus",
+   "John"
+  ],
+  "answer": 3,
+  "explanation": "For all the prophets and the law prophesied until John.",
+  "ref": "Matthew 11:13"
+ },
+ {
+  "id": "matthew-11-m-08",
+  "chapter": 11,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Jesus say John was, if they would receive it?",
+  "choices": [
+   "Elias, which was for to come",
+   "Moses",
+   "Jeremy",
+   "Esaias"
+  ],
+  "answer": 0,
+  "explanation": "If ye will receive it, this is Elias, which was for to come.",
+  "ref": "Matthew 11:14"
+ },
+ {
+  "id": "matthew-11-m-09",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Jesus liken this generation?",
+  "choices": [
+   "To children in the temple",
+   "To children sitting in the markets",
+   "To sheep without a shepherd",
+   "To seed on stony ground"
+  ],
+  "answer": 1,
+  "explanation": "It is like unto children sitting in the markets, and calling unto their fellows.",
+  "ref": "Matthew 11:16"
+ },
+ {
+  "id": "matthew-11-m-10",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the children in the markets say about piping?",
+  "choices": [
+   "We have sung unto you, and ye have not wept",
+   "We have called unto you, and ye have not come",
+   "We have piped unto you, and ye have not danced",
+   "We have worked for you, and ye have not paid"
+  ],
+  "answer": 2,
+  "explanation": "We have piped unto you, and ye have not danced; we have mourned unto you, and ye have not lamented.",
+  "ref": "Matthew 11:17"
+ },
+ {
+  "id": "matthew-11-m-11",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jesus say is justified of her children?",
+  "choices": [
+   "Mercy",
+   "The law",
+   "Faith",
+   "Wisdom"
+  ],
+  "answer": 3,
+  "explanation": "But wisdom is justified of her children.",
+  "ref": "Matthew 11:19"
+ },
+ {
+  "id": "matthew-11-m-12",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus upbraid the cities?",
+  "choices": [
+   "They repented not",
+   "They rejected his disciples",
+   "They sold in the temple",
+   "They had no faith in Moses"
+  ],
+  "answer": 0,
+  "explanation": "He began to upbraid the cities wherein most of his mighty works were done, because they repented not.",
+  "ref": "Matthew 11:20"
+ },
+ {
+  "id": "matthew-11-m-13",
+  "chapter": 11,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How would Tyre and Sidon have repented?",
+  "choices": [
+   "With fasting and prayer",
+   "In sackcloth and ashes",
+   "With tears and gifts",
+   "At the temple"
+  ],
+  "answer": 1,
+  "explanation": "They would have repented long ago in sackcloth and ashes.",
+  "ref": "Matthew 11:21"
+ },
+ {
+  "id": "matthew-11-m-14",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city was exalted unto heaven and would be brought down to hell?",
+  "choices": [
+   "Chorazin",
+   "Bethsaida",
+   "Capernaum",
+   "Nazareth"
+  ],
+  "answer": 2,
+  "explanation": "And thou, Capernaum, which art exalted unto heaven, shalt be brought down to hell.",
+  "ref": "Matthew 11:23"
+ },
+ {
+  "id": "matthew-11-m-15",
+  "chapter": 11,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city would have remained until this day if Capernaum's works had been done in it?",
+  "choices": [
+   "Tyre",
+   "Sidon",
+   "Gomorrha",
+   "Sodom"
+  ],
+  "answer": 3,
+  "explanation": "If the mighty works, which have been done in thee, had been done in Sodom, it would have remained until this day.",
+  "ref": "Matthew 11:23"
+ },
+ {
+  "id": "matthew-11-h-01",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do when he had made an end of commanding his twelve disciples?",
+  "choices": [
+   "Departed to teach and to preach in their cities",
+   "Went up into a mountain",
+   "Returned to Capernaum",
+   "Fled into Galilee"
+  ],
+  "answer": 0,
+  "explanation": "He departed thence to teach and to preach in their cities.",
+  "ref": "Matthew 11:1"
+ },
+ {
+  "id": "matthew-11-h-02",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus tell John's disciples to do?",
+  "choices": [
+   "Wait for him in Capernaum",
+   "Go and shew John again those things which they hear and see",
+   "Stay and follow him",
+   "Tell John to be still"
+  ],
+  "answer": 1,
+  "explanation": "Go and shew John again those things which ye do hear and see.",
+  "ref": "Matthew 11:4"
+ },
+ {
+  "id": "matthew-11-h-03",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the deaf do, among the works Jesus listed?",
+  "choices": [
+   "Speak",
+   "See",
+   "Hear",
+   "Walk"
+  ],
+  "answer": 2,
+  "explanation": "The blind receive their sight, and the lame walk, the lepers are cleansed, and the deaf hear.",
+  "ref": "Matthew 11:5"
+ },
+ {
+  "id": "matthew-11-h-04",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say of the greatness of the one least in the kingdom of heaven?",
+  "choices": [
+   "He is equal to John",
+   "He is less than John",
+   "He is as the prophets",
+   "He is greater than John"
+  ],
+  "answer": 3,
+  "explanation": "He that is least in the kingdom of heaven is greater than he.",
+  "ref": "Matthew 11:11"
+ },
+ {
+  "id": "matthew-11-h-05",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Jesus say of Tyre and Sidon at the day of judgment?",
+  "choices": [
+   "More tolerable for them than for Chorazin and Bethsaida",
+   "They shall be condemned first",
+   "They shall be forgotten",
+   "They shall be cast out"
+  ],
+  "answer": 0,
+  "explanation": "It shall be more tolerable for Tyre and Sidon at the day of judgment, than for you.",
+  "ref": "Matthew 11:22"
+ },
+ {
+  "id": "matthew-11-h-06",
+  "chapter": 11,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city, with Chorazin, is named in the woe?",
+  "choices": [
+   "Capernaum",
+   "Bethsaida",
+   "Nazareth",
+   "Jericho"
+  ],
+  "answer": 1,
+  "explanation": "Woe unto thee, Chorazin! woe unto thee, Bethsaida!",
+  "ref": "Matthew 11:21"
+ },
+ {
+  "id": "matthew-11-h-07",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who knoweth the Son, according to Jesus?",
+  "choices": [
+   "The wise",
+   "The prophets",
+   "The Father",
+   "The angels"
+  ],
+  "answer": 2,
+  "explanation": "No man knoweth the Son, but the Father.",
+  "ref": "Matthew 11:27"
+ },
+ {
+  "id": "matthew-11-h-08",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "To whom does the Son reveal the Father?",
+  "choices": [
+   "To the wise and prudent",
+   "To the prophets only",
+   "To the twelve only",
+   "To whomsoever the Son will"
+  ],
+  "answer": 3,
+  "explanation": "He to whomsoever the Son will reveal him.",
+  "ref": "Matthew 11:27"
+ },
+ {
+  "id": "matthew-11-h-09",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are all things delivered to Jesus by?",
+  "choices": [
+   "His Father",
+   "The prophets",
+   "The law",
+   "The angels"
+  ],
+  "answer": 0,
+  "explanation": "All things are delivered unto me of my Father.",
+  "ref": "Matthew 11:27"
+ },
+ {
+  "id": "matthew-11-h-10",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say of the Father's will in hiding things from the wise?",
+  "choices": [
+   "Because they were proud",
+   "So it seemed good in thy sight",
+   "Because they rejected John",
+   "Because the time had not come"
+  ],
+  "answer": 1,
+  "explanation": "Even so, Father: for so it seemed good in thy sight.",
+  "ref": "Matthew 11:26"
+ },
+ {
+  "id": "matthew-11-h-11",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will those who take his yoke and learn of him find?",
+  "choices": [
+   "Peace upon the earth",
+   "Wisdom of the prophets",
+   "Rest unto their souls",
+   "Riches in heaven"
+  ],
+  "answer": 2,
+  "explanation": "Ye shall find rest unto your souls.",
+  "ref": "Matthew 11:29"
+ },
+ {
+  "id": "matthew-11-h-12",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Jesus say his burden is?",
+  "choices": [
+   "Heavy",
+   "Hidden",
+   "Long",
+   "Light"
+  ],
+  "answer": 3,
+  "explanation": "For my yoke is easy, and my burden is light.",
+  "ref": "Matthew 11:30"
+ },
+ {
+  "id": "matthew-11-h-13",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say whoever hath ears should do?",
+  "choices": [
+   "Hear",
+   "Repent",
+   "Follow",
+   "Fear"
+  ],
+  "answer": 0,
+  "explanation": "He that hath ears to hear, let him hear.",
+  "ref": "Matthew 11:15"
+ },
+ {
+  "id": "matthew-11-h-14",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the children in the markets say they had done and not been answered?",
+  "choices": [
+   "Sold and ye have not bought",
+   "Mourned and ye have not lamented",
+   "Wept and ye have not eaten",
+   "Called and ye have not come"
+  ],
+  "answer": 1,
+  "explanation": "We have mourned unto you, and ye have not lamented.",
+  "ref": "Matthew 11:17"
+ },
+ {
+  "id": "matthew-11-h-15",
+  "chapter": 11,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will Jesus give to all that labour and are heavy laden?",
+  "choices": [
+   "Bread",
+   "Peace",
+   "Rest",
+   "A crown"
+  ],
+  "answer": 2,
+  "explanation": "Come unto me, all ye that labour and are heavy laden, and I will give you rest.",
+  "ref": "Matthew 11:28"
+ },
+ {
+  "id": "matthew-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was wrong with the man in the synagogue?",
+  "choices": [
+   "He had a withered hand",
+   "He was blind",
+   "He was possessed with a devil",
+   "He was sick of the palsy"
+  ],
+  "answer": 0,
+  "explanation": "Behold, there was a man which had his hand withered.",
+  "ref": "Matthew 12:10"
+ },
+ {
+  "id": "matthew-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell the man to do?",
+  "choices": [
+   "Rise and go home",
+   "Stretch forth thine hand",
+   "Wash in the pool",
+   "Show thyself to the priest"
+  ],
+  "answer": 1,
+  "explanation": "Then saith he to the man, Stretch forth thine hand. And he stretched it forth; and it was restored whole, like as the other.",
+  "ref": "Matthew 12:13"
+ },
+ {
+  "id": "matthew-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Pharisees do after the healing of the hand?",
+  "choices": [
+   "Thanked God",
+   "Asked for a sign",
+   "Held a council against him how they might destroy him",
+   "Brought a sick man"
+  ],
+  "answer": 2,
+  "explanation": "Then the Pharisees went out, and held a council against him, how they might destroy him.",
+  "ref": "Matthew 12:14"
+ },
+ {
+  "id": "matthew-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened to the possessed man who was blind and dumb?",
+  "choices": [
+   "He fell down dead",
+   "He fled into the tombs",
+   "He followed Jesus",
+   "He saw and spake"
+  ],
+  "answer": 3,
+  "explanation": "He healed him, insomuch that the blind and dumb both spake and saw.",
+  "ref": "Matthew 12:22"
+ },
+ {
+  "id": "matthew-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did all the people say when they saw this?",
+  "choices": [
+   "Is not this the son of David?",
+   "Who is this that forgives sins?",
+   "This is the Christ, Elias",
+   "Never man spake like this"
+  ],
+  "answer": 0,
+  "explanation": "All the people were amazed, and said, Is not this the son of David?",
+  "ref": "Matthew 12:23"
+ },
+ {
+  "id": "matthew-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who entered the house of God and ate the shewbread when he was an hungred?",
+  "choices": [
+   "Saul",
+   "David",
+   "Solomon",
+   "Moses"
+  ],
+  "answer": 1,
+  "explanation": "Have ye not read what David did... he entered into the house of God, and did eat the shewbread.",
+  "ref": "Matthew 12:3–4"
+ },
+ {
+  "id": "matthew-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose sign did Jesus say would be given to an evil generation?",
+  "choices": [
+   "The prophet Esaias",
+   "The prophet Elias",
+   "The prophet Jonas",
+   "The prophet Daniel"
+  ],
+  "answer": 2,
+  "explanation": "There shall no sign be given to it, but the sign of the prophet Jonas.",
+  "ref": "Matthew 12:39"
+ },
+ {
+  "id": "matthew-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How long was Jonas in the whale's belly?",
+  "choices": [
+   "Seven days",
+   "Forty days",
+   "One night",
+   "Three days and three nights"
+  ],
+  "answer": 3,
+  "explanation": "As Jonas was three days and three nights in the whale's belly.",
+  "ref": "Matthew 12:40"
+ },
+ {
+  "id": "matthew-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came from the uttermost parts of the earth to hear the wisdom of Solomon?",
+  "choices": [
+   "The queen of the south",
+   "The queen of the east",
+   "The men of Nineveh",
+   "The prophet Jonas"
+  ],
+  "answer": 0,
+  "explanation": "The queen of the south came from the uttermost parts of the earth to hear the wisdom of Solomon.",
+  "ref": "Matthew 12:42"
+ },
+ {
+  "id": "matthew-12-e-10",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who stood without desiring to speak with Jesus?",
+  "choices": [
+   "The scribes",
+   "His mother and his brethren",
+   "The Pharisees",
+   "The multitudes"
+  ],
+  "answer": 1,
+  "explanation": "While he yet talked to the people, behold, his mother and his brethren stood without, desiring to speak with him.",
+  "ref": "Matthew 12:46"
+ },
+ {
+  "id": "matthew-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the disciples pluck the ears of corn?",
+  "choices": [
+   "They were to offer them",
+   "They wanted to anger the Pharisees",
+   "They were an hungred",
+   "They had no bread to give"
+  ],
+  "answer": 2,
+  "explanation": "His disciples were an hungred, and began to pluck the ears of corn, and to eat.",
+  "ref": "Matthew 12:1"
+ },
+ {
+  "id": "matthew-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who alone could lawfully eat the shewbread?",
+  "choices": [
+   "The scribes",
+   "The Levites",
+   "The elders",
+   "The priests"
+  ],
+  "answer": 3,
+  "explanation": "The shewbread was not lawful for him to eat, but only for the priests.",
+  "ref": "Matthew 12:4"
+ },
+ {
+  "id": "matthew-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jesus say the priests do on the sabbath in the temple and are blameless?",
+  "choices": [
+   "Profane the sabbath",
+   "Keep the feast",
+   "Offer sacrifice for sin",
+   "Teach the law"
+  ],
+  "answer": 0,
+  "explanation": "On the sabbath days the priests in the temple profane the sabbath, and are blameless.",
+  "ref": "Matthew 12:5"
+ },
+ {
+  "id": "matthew-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say was in this place?",
+  "choices": [
+   "One greater than Solomon",
+   "One greater than the temple",
+   "One greater than Jonas",
+   "One greater than the law"
+  ],
+  "answer": 1,
+  "explanation": "In this place is one greater than the temple.",
+  "ref": "Matthew 12:6"
+ },
+ {
+  "id": "matthew-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom would the Pharisees not have condemned if they knew what it meant?",
+  "choices": [
+   "The disciples of John",
+   "The sinners",
+   "The guiltless",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "If ye had known what this meaneth, I will have mercy, and not sacrifice, ye would not have condemned the guiltless.",
+  "ref": "Matthew 12:7"
+ },
+ {
+  "id": "matthew-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did they ask if it is lawful to heal on the sabbath?",
+  "choices": [
+   "That they might learn",
+   "That they might see a miracle",
+   "That they might believe",
+   "That they might accuse him"
+  ],
+  "answer": 3,
+  "explanation": "They asked him, Is it lawful to heal on the sabbath days? that they might accuse him.",
+  "ref": "Matthew 12:10"
+ },
+ {
+  "id": "matthew-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What example did Jesus give of one sheep on the sabbath?",
+  "choices": [
+   "A man will lay hold on it and lift it out of the pit",
+   "If it strays, he leaves it",
+   "If it is lame, he sells it",
+   "If it is sick, he heals it not"
+  ],
+  "answer": 0,
+  "explanation": "What man shall there be among you, that shall have one sheep, and if it fall into a pit on the sabbath day, will he not lay hold on it, and lift it out?",
+  "ref": "Matthew 12:11"
+ },
+ {
+  "id": "matthew-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say it is lawful to do on the sabbath days?",
+  "choices": [
+   "Rest only",
+   "Do well",
+   "Carry a burden",
+   "Take a journey"
+  ],
+  "answer": 1,
+  "explanation": "How much then is a man better than a sheep? Wherefore it is lawful to do well on the sabbath days.",
+  "ref": "Matthew 12:12"
+ },
+ {
+  "id": "matthew-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus do when he knew the Pharisees' council?",
+  "choices": [
+   "Went to the temple",
+   "Rebuked them openly",
+   "Withdrew himself from thence and healed all the multitudes",
+   "Sent his disciples away"
+  ],
+  "answer": 2,
+  "explanation": "When Jesus knew it, he withdrew himself from thence: and great multitudes followed him, and he healed them all.",
+  "ref": "Matthew 12:15"
+ },
+ {
+  "id": "matthew-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus charge the multitudes not to do?",
+  "choices": [
+   "Follow him",
+   "Bring the sick",
+   "Speak to the Pharisees",
+   "Make him known"
+  ],
+  "answer": 3,
+  "explanation": "He charged them that they should not make him known.",
+  "ref": "Matthew 12:16"
+ },
+ {
+  "id": "matthew-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Which prophet said, Behold my servant, whom I have chosen?",
+  "choices": [
+   "Esaias",
+   "Jeremy",
+   "Jonas",
+   "Daniel"
+  ],
+  "answer": 0,
+  "explanation": "That it might be fulfilled which was spoken by Esaias the prophet.",
+  "ref": "Matthew 12:17"
+ },
+ {
+  "id": "matthew-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the prophet say the chosen servant would not do?",
+  "choices": [
+   "Teach nor heal",
+   "Strive nor cry",
+   "Judge nor rule",
+   "Come nor go"
+  ],
+  "answer": 1,
+  "explanation": "He shall not strive, nor cry; neither shall any man hear his voice in the streets.",
+  "ref": "Matthew 12:19"
+ },
+ {
+  "id": "matthew-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the chosen servant not break?",
+  "choices": [
+   "A broken vessel",
+   "A staff",
+   "A bruised reed",
+   "A crooked path"
+  ],
+  "answer": 2,
+  "explanation": "A bruised reed shall he not break, and smoking flax shall he not quench.",
+  "ref": "Matthew 12:20"
+ },
+ {
+  "id": "matthew-12-m-14",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whose name shall the Gentiles trust?",
+  "choices": [
+   "The name of Moses",
+   "The name of David",
+   "The name of Israel",
+   "His name"
+  ],
+  "answer": 3,
+  "explanation": "And in his name shall the Gentiles trust.",
+  "ref": "Matthew 12:21"
+ },
+ {
+  "id": "matthew-12-m-15",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does every kingdom divided against itself come to?",
+  "choices": [
+   "Desolation",
+   "Peace",
+   "Victory",
+   "Silence"
+  ],
+  "answer": 0,
+  "explanation": "Every kingdom divided against itself is brought to desolation.",
+  "ref": "Matthew 12:25"
+ },
+ {
+  "id": "matthew-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say of Satan casting out Satan?",
+  "choices": [
+   "He is made strong",
+   "He is divided against himself",
+   "He is forgiven",
+   "He is blind"
+  ],
+  "answer": 1,
+  "explanation": "If Satan cast out Satan, he is divided against himself; how shall then his kingdom stand?",
+  "ref": "Matthew 12:26"
+ },
+ {
+  "id": "matthew-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who did Jesus say would be the judges of the Pharisees?",
+  "choices": [
+   "The elders",
+   "Moses",
+   "Their children who cast out devils",
+   "The queen of the south"
+  ],
+  "answer": 2,
+  "explanation": "By whom do your children cast them out? therefore they shall be your judges.",
+  "ref": "Matthew 12:27"
+ },
+ {
+  "id": "matthew-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say is come if he casts out devils by the Spirit of God?",
+  "choices": [
+   "The judgment",
+   "The law",
+   "The end of the age",
+   "The kingdom of God"
+  ],
+  "answer": 3,
+  "explanation": "If I cast out devils by the Spirit of God, then the kingdom of God is come unto you.",
+  "ref": "Matthew 12:28"
+ },
+ {
+  "id": "matthew-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must be done first to spoil a strong man's house?",
+  "choices": [
+   "Bind the strong man",
+   "Break the door",
+   "Set a watch",
+   "Wait for night"
+  ],
+  "answer": 0,
+  "explanation": "How can one enter into a strong man's house, and spoil his goods, except he first bind the strong man?",
+  "ref": "Matthew 12:29"
+ },
+ {
+  "id": "matthew-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Jesus say of him who is not with him?",
+  "choices": [
+   "He is blessed",
+   "He is against me",
+   "He is a stranger",
+   "He is free"
+  ],
+  "answer": 1,
+  "explanation": "He that is not with me is against me.",
+  "ref": "Matthew 12:30"
+ },
+ {
+  "id": "matthew-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Speaking a word against whom shall be forgiven?",
+  "choices": [
+   "The Holy Ghost",
+   "The Father",
+   "The Son of man",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever speaketh a word against the Son of man, it shall be forgiven him.",
+  "ref": "Matthew 12:32"
+ },
+ {
+  "id": "matthew-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where shall blasphemy against the Holy Ghost not be forgiven?",
+  "choices": [
+   "In the day of judgment only",
+   "In the temple only",
+   "Until the third day",
+   "Neither in this world, neither in the world to come"
+  ],
+  "answer": 3,
+  "explanation": "It shall not be forgiven him, neither in this world, neither in the world to come.",
+  "ref": "Matthew 12:32"
+ },
+ {
+  "id": "matthew-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what is the tree known?",
+  "choices": [
+   "His fruit",
+   "His leaves",
+   "His shade",
+   "His roots"
+  ],
+  "answer": 0,
+  "explanation": "Either make the tree good, and his fruit good... for the tree is known by his fruit.",
+  "ref": "Matthew 12:33"
+ },
+ {
+  "id": "matthew-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Out of what does the mouth speak?",
+  "choices": [
+   "The wisdom of the mind",
+   "The abundance of the heart",
+   "The need of the body",
+   "The fear of man"
+  ],
+  "answer": 1,
+  "explanation": "Out of the abundance of the heart the mouth speaketh.",
+  "ref": "Matthew 12:34"
+ },
+ {
+  "id": "matthew-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall men give account of in the day of judgment?",
+  "choices": [
+   "Every secret deed",
+   "Every gift withheld",
+   "Every idle word",
+   "Every promise made"
+  ],
+  "answer": 2,
+  "explanation": "Every idle word that men shall speak, they shall give account thereof in the day of judgment.",
+  "ref": "Matthew 12:36"
+ },
+ {
+  "id": "matthew-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what shall a man be justified and condemned?",
+  "choices": [
+   "His deeds",
+   "His gifts",
+   "His birth",
+   "His words"
+  ],
+  "answer": 3,
+  "explanation": "By thy words thou shalt be justified, and by thy words thou shalt be condemned.",
+  "ref": "Matthew 12:37"
+ },
+ {
+  "id": "matthew-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the scribes and Pharisees ask to see from Jesus?",
+  "choices": [
+   "A sign",
+   "A miracle in the temple",
+   "A healing of the dead",
+   "A word of the law"
+  ],
+  "answer": 0,
+  "explanation": "Master, we would see a sign from thee.",
+  "ref": "Matthew 12:38"
+ },
+ {
+  "id": "matthew-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who shall rise in judgment against this generation because they repented at Jonas' preaching?",
+  "choices": [
+   "The queen of the south",
+   "The men of Nineveh",
+   "The scribes",
+   "The Gentiles of Tyre"
+  ],
+  "answer": 1,
+  "explanation": "The men of Nineveh shall rise in judgment with this generation, because they repented at the preaching of Jonas.",
+  "ref": "Matthew 12:41"
+ },
+ {
+  "id": "matthew-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the unclean spirit do when it is gone out of a man?",
+  "choices": [
+   "Dwells in the tombs",
+   "Returns at once",
+   "Walks through dry places seeking rest",
+   "Enters the swine"
+  ],
+  "answer": 2,
+  "explanation": "When the unclean spirit is gone out of a man, he walketh through dry places, seeking rest, and findeth none.",
+  "ref": "Matthew 12:43"
+ },
+ {
+  "id": "matthew-12-h-15",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many other spirits does the unclean spirit take with him?",
+  "choices": [
+   "Two",
+   "Twelve",
+   "A legion",
+   "Seven"
+  ],
+  "answer": 3,
+  "explanation": "He taketh with himself seven other spirits more wicked than himself.",
+  "ref": "Matthew 12:45"
+ },
+ {
+  "id": "matthew-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was king when Jesus was born in Bethlehem?",
+  "choices": [
+   "Archelaus",
+   "Pilate",
+   "Herod",
+   "Caesar"
+  ],
+  "answer": 2,
+  "explanation": "Jesus was born in Bethlehem of Judaea in the days of Herod the king.",
+  "ref": "Matthew 2:1"
+ },
+ {
+  "id": "matthew-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the wise men ask when they came to Jerusalem?",
+  "choices": [
+   "Where is the temple of the Lord?",
+   "Where is the son of David?",
+   "Where is the Governor of Judaea?",
+   "Where is he that is born King of the Jews?"
+  ],
+  "answer": 3,
+  "explanation": "They said, Where is he that is born King of the Jews? for we have seen his star in the east.",
+  "ref": "Matthew 2:2"
+ },
+ {
+  "id": "matthew-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the wise men do when they saw the young child with Mary?",
+  "choices": [
+   "Fell down and worshipped him",
+   "Went back to Herod",
+   "Asked Mary his name",
+   "Hid him in Nazareth"
+  ],
+  "answer": 0,
+  "explanation": "They fell down, and worshipped him: and presented unto him gifts.",
+  "ref": "Matthew 2:11"
+ },
+ {
+  "id": "matthew-2-e-04",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How was Joseph told to flee into Egypt?",
+  "choices": [
+   "A prophet sent him a letter",
+   "An angel of the Lord appeared to him in a dream",
+   "The wise men warned him",
+   "A star led him"
+  ],
+  "answer": 1,
+  "explanation": "The angel of the Lord appeareth to Joseph in a dream, saying, Arise, and flee into Egypt.",
+  "ref": "Matthew 2:13"
+ },
+ {
+  "id": "matthew-2-e-05",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Herod do to the children of Bethlehem?",
+  "choices": [
+   "Sent them to Egypt",
+   "Gathered them to the chief priests",
+   "Slew all the children two years old and under",
+   "Took them to Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Herod slew all the children in Bethlehem, from two years old and under.",
+  "ref": "Matthew 2:16"
+ },
+ {
+  "id": "matthew-2-e-06",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which city did Joseph settle after he came to the land of Israel?",
+  "choices": [
+   "Bethlehem",
+   "Capernaum",
+   "Jerusalem",
+   "Nazareth"
+  ],
+  "answer": 3,
+  "explanation": "He came and dwelt in a city called Nazareth.",
+  "ref": "Matthew 2:23"
+ },
+ {
+  "id": "matthew-2-e-07",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did the wise men feel when they saw the star again?",
+  "choices": [
+   "They rejoiced with exceeding great joy",
+   "They were afraid",
+   "They were troubled",
+   "They wept"
+  ],
+  "answer": 0,
+  "explanation": "When they saw the star, they rejoiced with exceeding great joy.",
+  "ref": "Matthew 2:10"
+ },
+ {
+  "id": "matthew-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the wise men say they had come?",
+  "choices": [
+   "Herod had sent for them",
+   "They had seen his star and were come to worship him",
+   "They sought a place to rest",
+   "They had a message for the priests"
+  ],
+  "answer": 1,
+  "explanation": "We have seen his star in the east, and are come to worship him.",
+  "ref": "Matthew 2:2"
+ },
+ {
+  "id": "matthew-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who was troubled along with Herod when he heard the news?",
+  "choices": [
+   "The chief priests only",
+   "The wise men",
+   "All Jerusalem",
+   "Joseph"
+  ],
+  "answer": 2,
+  "explanation": "Herod the king was troubled, and all Jerusalem with him.",
+  "ref": "Matthew 2:3"
+ },
+ {
+  "id": "matthew-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Herod gather to ask where Christ should be born?",
+  "choices": [
+   "The elders of Galilee",
+   "The wise men",
+   "The soldiers of Judaea",
+   "The chief priests and scribes of the people"
+  ],
+  "answer": 3,
+  "explanation": "He gathered all the chief priests and scribes of the people together.",
+  "ref": "Matthew 2:4"
+ },
+ {
+  "id": "matthew-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would come out of Bethlehem, according to the prophet?",
+  "choices": [
+   "A Governor that shall rule my people Israel",
+   "A mighty army",
+   "A prophet like Moses",
+   "A priest for the temple"
+  ],
+  "answer": 0,
+  "explanation": "Out of thee shall come a Governor, that shall rule my people Israel.",
+  "ref": "Matthew 2:6"
+ },
+ {
+  "id": "matthew-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Herod privily ask the wise men?",
+  "choices": [
+   "How many men travelled with them",
+   "What time the star appeared",
+   "Where they had left their gifts",
+   "Which road they would take"
+  ],
+  "answer": 1,
+  "explanation": "Herod enquired of them diligently what time the star appeared.",
+  "ref": "Matthew 2:7"
+ },
+ {
+  "id": "matthew-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Herod say he wished to do when the wise men found the child?",
+  "choices": [
+   "Send soldiers to guard him",
+   "Give him gifts",
+   "Come and worship him also",
+   "Make him king"
+  ],
+  "answer": 2,
+  "explanation": "Bring me word again, that I may come and worship him also.",
+  "ref": "Matthew 2:8"
+ },
+ {
+  "id": "matthew-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did the star stand when it stopped?",
+  "choices": [
+   "Over Jerusalem",
+   "Over the temple",
+   "Over Herod's palace",
+   "Over where the young child was"
+  ],
+  "answer": 3,
+  "explanation": "The star went before them, till it came and stood over where the young child was.",
+  "ref": "Matthew 2:9"
+ },
+ {
+  "id": "matthew-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where were the wise men when they saw the young child?",
+  "choices": [
+   "In the house",
+   "In a stable",
+   "At the temple",
+   "Beside the road"
+  ],
+  "answer": 0,
+  "explanation": "When they were come into the house, they saw the young child with Mary his mother.",
+  "ref": "Matthew 2:11"
+ },
+ {
+  "id": "matthew-2-m-09",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the wise men go home after being warned in a dream?",
+  "choices": [
+   "By ship",
+   "Another way",
+   "Through Jerusalem",
+   "By night through Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Being warned of God in a dream that they should not return to Herod, they departed another way.",
+  "ref": "Matthew 2:12"
+ },
+ {
+  "id": "matthew-2-m-10",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Joseph told to flee into Egypt?",
+  "choices": [
+   "There was famine in Bethlehem",
+   "The wise men demanded it",
+   "Herod will seek the young child to destroy him",
+   "The temple was to be shut"
+  ],
+  "answer": 2,
+  "explanation": "Flee into Egypt: for Herod will seek the young child to destroy him.",
+  "ref": "Matthew 2:13"
+ },
+ {
+  "id": "matthew-2-m-11",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How long was Joseph to stay in Egypt?",
+  "choices": [
+   "Two years",
+   "Until the wise men returned",
+   "Seven years",
+   "Until the angel brought him word"
+  ],
+  "answer": 3,
+  "explanation": "Be thou there until I bring thee word.",
+  "ref": "Matthew 2:13"
+ },
+ {
+  "id": "matthew-2-m-12",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What words did Matthew say were fulfilled by the flight into Egypt?",
+  "choices": [
+   "Out of Egypt have I called my son",
+   "Thou shalt not tempt the Lord thy God",
+   "The voice of one crying in the wilderness",
+   "He shall be called a Nazarene"
+  ],
+  "answer": 0,
+  "explanation": "They were there until the death of Herod, that it might be fulfilled: Out of Egypt have I called my son.",
+  "ref": "Matthew 2:15"
+ },
+ {
+  "id": "matthew-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was Herod exceeding wroth?",
+  "choices": [
+   "The priests had defied him",
+   "He saw that he was mocked of the wise men",
+   "Joseph had left Bethlehem",
+   "The star had gone out"
+  ],
+  "answer": 1,
+  "explanation": "Herod saw that he was mocked of the wise men, was exceeding wroth.",
+  "ref": "Matthew 2:16"
+ },
+ {
+  "id": "matthew-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is said to be weeping for her children in Rama?",
+  "choices": [
+   "Mary",
+   "Elisabeth",
+   "Rachel",
+   "Sarah"
+  ],
+  "answer": 2,
+  "explanation": "In Rama was there a voice heard, Rachel weeping for her children, and would not be comforted.",
+  "ref": "Matthew 2:18"
+ },
+ {
+  "id": "matthew-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Which prophet spoke of Rachel weeping?",
+  "choices": [
+   "Esaias",
+   "Daniel",
+   "Moses",
+   "Jeremy"
+  ],
+  "answer": 3,
+  "explanation": "Then was fulfilled that which was spoken by Jeremy the prophet.",
+  "ref": "Matthew 2:17"
+ },
+ {
+  "id": "matthew-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who reigned in Judaea in the room of his father Herod?",
+  "choices": [
+   "Archelaus",
+   "Pilate",
+   "Philip",
+   "Caesar"
+  ],
+  "answer": 0,
+  "explanation": "Joseph heard that Archelaus did reign in Judaea in the room of his father Herod.",
+  "ref": "Matthew 2:22"
+ },
+ {
+  "id": "matthew-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why was Joseph afraid to go to Judaea?",
+  "choices": [
+   "Herod himself was alive",
+   "Archelaus reigned there in the room of Herod",
+   "The wise men were waiting",
+   "There was no room in Bethlehem"
+  ],
+  "answer": 1,
+  "explanation": "He heard that Archelaus did reign in Judaea in the room of his father Herod, he was afraid to go thither.",
+  "ref": "Matthew 2:22"
+ },
+ {
+  "id": "matthew-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Joseph turn aside after being warned of God in a dream?",
+  "choices": [
+   "The wilderness of Judaea",
+   "The land of Egypt",
+   "The parts of Galilee",
+   "The coasts of Tyre"
+  ],
+  "answer": 2,
+  "explanation": "Being warned of God in a dream, he turned aside into the parts of Galilee.",
+  "ref": "Matthew 2:22"
+ },
+ {
+  "id": "matthew-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why could Joseph return to the land of Israel?",
+  "choices": [
+   "Herod had sent for him",
+   "The star had appeared again",
+   "The wise men had sent word",
+   "They were dead which sought the young child's life"
+  ],
+  "answer": 3,
+  "explanation": "Go into the land of Israel: for they are dead which sought the young child's life.",
+  "ref": "Matthew 2:20"
+ },
+ {
+  "id": "matthew-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "When did Joseph take the child and Mary and depart into Egypt?",
+  "choices": [
+   "By night",
+   "At the break of day",
+   "At noon",
+   "After the sabbath"
+  ],
+  "answer": 0,
+  "explanation": "He took the young child and his mother by night, and departed into Egypt.",
+  "ref": "Matthew 2:14"
+ },
+ {
+  "id": "matthew-2-h-09",
+  "chapter": 2,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did Herod slay the children?",
+  "choices": [
+   "In Jerusalem and Judaea",
+   "In Bethlehem and all the coasts thereof",
+   "In Rama and Galilee",
+   "In Nazareth and Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Herod slew all the children that were in Bethlehem, and in all the coasts thereof.",
+  "ref": "Matthew 2:16"
+ },
+ {
+  "id": "matthew-2-h-10",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the prophets say Jesus would be called, as he dwelt in Nazareth?",
+  "choices": [
+   "A Galilean",
+   "The son of Joseph",
+   "A Nazarene",
+   "The Governor"
+  ],
+  "answer": 2,
+  "explanation": "He dwelt in Nazareth: that it might be fulfilled, He shall be called a Nazarene.",
+  "ref": "Matthew 2:23"
+ },
+ {
+  "id": "matthew-2-h-11",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the wise men do before presenting their gifts?",
+  "choices": [
+   "Anointed his feet",
+   "Spoke to Joseph",
+   "Prayed in the temple",
+   "Opened their treasures"
+  ],
+  "answer": 3,
+  "explanation": "When they had opened their treasures, they presented unto him gifts; gold, and frankincense, and myrrh.",
+  "ref": "Matthew 2:11"
+ },
+ {
+  "id": "matthew-2-h-12",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Herod tell the wise men to do in Bethlehem?",
+  "choices": [
+   "Search diligently for the young child",
+   "Take him to the temple",
+   "Gather the priests",
+   "Count the children"
+  ],
+  "answer": 0,
+  "explanation": "Go and search diligently for the young child.",
+  "ref": "Matthew 2:8"
+ },
+ {
+  "id": "matthew-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What was John the Baptist's meat?",
+  "choices": [
+   "Bread and fish",
+   "Figs and olives",
+   "Barley and milk",
+   "Locusts and wild honey"
+  ],
+  "answer": 3,
+  "explanation": "His meat was locusts and wild honey.",
+  "ref": "Matthew 3:4"
+ },
+ {
+  "id": "matthew-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "place",
+  "question": "From which region did Jesus come to John at Jordan?",
+  "choices": [
+   "Galilee",
+   "Judaea",
+   "Egypt",
+   "Samaria"
+  ],
+  "answer": 0,
+  "explanation": "Then cometh Jesus from Galilee to Jordan unto John, to be baptized of him.",
+  "ref": "Matthew 3:13"
+ },
+ {
+  "id": "matthew-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did John call the Pharisees and Sadducees who came to his baptism?",
+  "choices": [
+   "Children of Abraham",
+   "A generation of vipers",
+   "Blind guides",
+   "Sons of the prophets"
+  ],
+  "answer": 1,
+  "explanation": "He said unto them, O generation of vipers.",
+  "ref": "Matthew 3:7"
+ },
+ {
+  "id": "matthew-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the voice from heaven say?",
+  "choices": [
+   "Repent ye",
+   "Prepare ye the way of the Lord",
+   "This is my beloved Son, in whom I am well pleased",
+   "Follow me"
+  ],
+  "answer": 2,
+  "explanation": "A voice from heaven said, This is my beloved Son, in whom I am well pleased.",
+  "ref": "Matthew 3:17"
+ },
+ {
+  "id": "matthew-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "person",
+  "question": "Which prophet spoke of the voice crying in the wilderness?",
+  "choices": [
+   "Jeremy",
+   "Moses",
+   "Daniel",
+   "Esaias"
+  ],
+  "answer": 3,
+  "explanation": "This is he that was spoken of by the prophet Esaias.",
+  "ref": "Matthew 3:3"
+ },
+ {
+  "id": "matthew-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the voice in the wilderness cry?",
+  "choices": [
+   "Prepare ye the way of the Lord",
+   "Behold the Lamb of God",
+   "Fear not",
+   "Build ye a temple"
+  ],
+  "answer": 0,
+  "explanation": "The voice of one crying in the wilderness, Prepare ye the way of the Lord, make his paths straight.",
+  "ref": "Matthew 3:3"
+ },
+ {
+  "id": "matthew-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did John wear about his loins?",
+  "choices": [
+   "A purple sash",
+   "A leathern girdle",
+   "A linen cloth",
+   "A cord of silver"
+  ],
+  "answer": 1,
+  "explanation": "John had a raiment of camel's hair, and a leathern girdle about his loins.",
+  "ref": "Matthew 3:4"
+ },
+ {
+  "id": "matthew-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the people doing as they were baptized in Jordan?",
+  "choices": [
+   "Giving thanks",
+   "Offering sacrifices",
+   "Confessing their sins",
+   "Singing psalms"
+  ],
+  "answer": 2,
+  "explanation": "They were baptized of him in Jordan, confessing their sins.",
+  "ref": "Matthew 3:6"
+ },
+ {
+  "id": "matthew-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did John say God is able to raise up from stones?",
+  "choices": [
+   "Prophets for Israel",
+   "A new temple",
+   "Kings for Judah",
+   "Children unto Abraham"
+  ],
+  "answer": 3,
+  "explanation": "God is able of these stones to raise up children unto Abraham.",
+  "ref": "Matthew 3:9"
+ },
+ {
+  "id": "matthew-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to every tree that brings not forth good fruit?",
+  "choices": [
+   "It is hewn down and cast into the fire",
+   "It is left to grow wild",
+   "It is moved to another field",
+   "It is dug about and dunged"
+  ],
+  "answer": 0,
+  "explanation": "Every tree which bringeth not forth good fruit is hewn down, and cast into the fire.",
+  "ref": "Matthew 3:10"
+ },
+ {
+  "id": "matthew-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what did John say the mightier one would baptize?",
+  "choices": [
+   "Water only",
+   "The Holy Ghost and with fire",
+   "Oil and with fire",
+   "Wind and with water"
+  ],
+  "answer": 1,
+  "explanation": "He shall baptize you with the Holy Ghost, and with fire.",
+  "ref": "Matthew 3:11"
+ },
+ {
+  "id": "matthew-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did John say when Jesus came to be baptized?",
+  "choices": [
+   "Depart from me",
+   "Who art thou?",
+   "I have need to be baptized of thee",
+   "Go to Jerusalem first"
+  ],
+  "answer": 2,
+  "explanation": "John forbad him, saying, I have need to be baptized of thee, and comest thou to me?",
+  "ref": "Matthew 3:14"
+ },
+ {
+  "id": "matthew-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did John ask the Pharisees and Sadducees about the wrath to come?",
+  "choices": [
+   "Who will save you from it?",
+   "When will it come?",
+   "Why do you fear it?",
+   "Who hath warned you to flee from it?"
+  ],
+  "answer": 3,
+  "explanation": "O generation of vipers, who hath warned you to flee from the wrath to come?",
+  "ref": "Matthew 3:7"
+ },
+ {
+  "id": "matthew-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did John tell the Pharisees to bring forth?",
+  "choices": [
+   "Fruits meet for repentance",
+   "Sacrifices for the temple",
+   "Gifts for the poor",
+   "Witness of the Lord"
+  ],
+  "answer": 0,
+  "explanation": "Bring forth therefore fruits meet for repentance.",
+  "ref": "Matthew 3:8"
+ },
+ {
+  "id": "matthew-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did John say the Pharisees thought to say within themselves?",
+  "choices": [
+   "We keep the law of Moses",
+   "We have Abraham to our father",
+   "We are the sons of David",
+   "We have no need of baptism"
+  ],
+  "answer": 1,
+  "explanation": "Think not to say within yourselves, We have Abraham to our father.",
+  "ref": "Matthew 3:9"
+ },
+ {
+  "id": "matthew-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the mightier one do with the chaff?",
+  "choices": [
+   "Sow it in the field",
+   "Cast it into the river",
+   "Burn it up with unquenchable fire",
+   "Gather it into the garner"
+  ],
+  "answer": 2,
+  "explanation": "He will gather his wheat into the garner; but he will burn up the chaff with unquenchable fire.",
+  "ref": "Matthew 3:12"
+ },
+ {
+  "id": "matthew-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Jesus say he should be baptized?",
+  "choices": [
+   "To cleanse his sins",
+   "To begin his ministry in Jerusalem",
+   "To honour the priests",
+   "To fulfil all righteousness"
+  ],
+  "answer": 3,
+  "explanation": "Suffer it to be so now: for thus it becometh us to fulfil all righteousness.",
+  "ref": "Matthew 3:15"
+ },
+ {
+  "id": "matthew-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do when he was baptized?",
+  "choices": [
+   "Went up straightway out of the water",
+   "Went into the wilderness at once",
+   "Spoke to the multitude",
+   "Knelt in the river"
+  ],
+  "answer": 0,
+  "explanation": "Jesus, when he was baptized, went up straightway out of the water.",
+  "ref": "Matthew 3:16"
+ },
+ {
+  "id": "matthew-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus see when the heavens were opened?",
+  "choices": [
+   "Angels ascending",
+   "The Spirit of God descending like a dove",
+   "A pillar of fire",
+   "A great star"
+  ],
+  "answer": 1,
+  "explanation": "He saw the Spirit of God descending like a dove, and lighting upon him.",
+  "ref": "Matthew 3:16"
+ },
+ {
+  "id": "matthew-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "John said he baptized with water unto what?",
+  "choices": [
+   "Salvation",
+   "Forgiveness of kings",
+   "Repentance",
+   "The kingdom"
+  ],
+  "answer": 2,
+  "explanation": "I indeed baptize you with water unto repentance.",
+  "ref": "Matthew 3:11"
+ },
+ {
+  "id": "matthew-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose shoes did John say he was not worthy to bear?",
+  "choices": [
+   "The high priest's",
+   "Herod's",
+   "The prophet Esaias'",
+   "The one who comes after him"
+  ],
+  "answer": 3,
+  "explanation": "He that cometh after me is mightier than I, whose shoes I am not worthy to bear.",
+  "ref": "Matthew 3:11"
+ },
+ {
+  "id": "matthew-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus tell John to do when John forbad him?",
+  "choices": [
+   "Suffer it to be so now",
+   "Go to the temple",
+   "Baptize the multitude first",
+   "Wait for the Holy Ghost"
+  ],
+  "answer": 0,
+  "explanation": "Jesus answering said unto him, Suffer it to be so now. Then he suffered him.",
+  "ref": "Matthew 3:15"
+ },
+ {
+  "id": "matthew-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to Jesus in the wilderness as the tempter?",
+  "choices": [
+   "The devil",
+   "Herod",
+   "John the Baptist",
+   "A scribe"
+  ],
+  "answer": 0,
+  "explanation": "When the tempter came to him, he said, If thou be the Son of God.",
+  "ref": "Matthew 4:3"
+ },
+ {
+  "id": "matthew-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did the devil set Jesus in the holy city?",
+  "choices": [
+   "At the city gate",
+   "On a pinnacle of the temple",
+   "On the mount of Olives",
+   "In the synagogue"
+  ],
+  "answer": 1,
+  "explanation": "The devil taketh him up into the holy city, and setteth him on a pinnacle of the temple.",
+  "ref": "Matthew 4:5"
+ },
+ {
+  "id": "matthew-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the devil show Jesus from an exceeding high mountain?",
+  "choices": [
+   "The land of Israel",
+   "The sea of Galilee",
+   "All the kingdoms of the world and their glory",
+   "The city of Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "He sheweth him all the kingdoms of the world, and the glory of them.",
+  "ref": "Matthew 4:8"
+ },
+ {
+  "id": "matthew-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to the devil at the last temptation?",
+  "choices": [
+   "Depart in peace",
+   "Follow me",
+   "Repent",
+   "Get thee hence, Satan"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said, Get thee hence, Satan: for it is written, Thou shalt worship the Lord thy God.",
+  "ref": "Matthew 4:10"
+ },
+ {
+  "id": "matthew-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who came and ministered to Jesus after the devil left him?",
+  "choices": [
+   "Angels",
+   "Peter and Andrew",
+   "John the Baptist",
+   "The disciples"
+  ],
+  "answer": 0,
+  "explanation": "The devil leaveth him, and, behold, angels came and ministered unto him.",
+  "ref": "Matthew 4:11"
+ },
+ {
+  "id": "matthew-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus go when he heard John was cast into prison?",
+  "choices": [
+   "Jerusalem",
+   "Galilee",
+   "Egypt",
+   "Jordan"
+  ],
+  "answer": 1,
+  "explanation": "When Jesus had heard that John was cast into prison, he departed into Galilee.",
+  "ref": "Matthew 4:12"
+ },
+ {
+  "id": "matthew-4-e-07",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which city did Jesus come and dwell after leaving Nazareth?",
+  "choices": [
+   "Bethlehem",
+   "Jericho",
+   "Capernaum",
+   "Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "Leaving Nazareth, he came and dwelt in Capernaum.",
+  "ref": "Matthew 4:13"
+ },
+ {
+  "id": "matthew-4-e-08",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus do for the sick people brought to him?",
+  "choices": [
+   "He sent them to the priests",
+   "He prayed for them in the temple",
+   "He told them to repent",
+   "He healed them"
+  ],
+  "answer": 3,
+  "explanation": "They brought unto him all sick people; and he healed them.",
+  "ref": "Matthew 4:24"
+ },
+ {
+  "id": "matthew-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say when the devil told him to cast himself down?",
+  "choices": [
+   "Thou shalt not tempt the Lord thy God",
+   "Man shall not live by bread alone",
+   "Get thee behind me",
+   "Follow me"
+  ],
+  "answer": 0,
+  "explanation": "Jesus said, It is written again, Thou shalt not tempt the Lord thy God.",
+  "ref": "Matthew 4:7"
+ },
+ {
+  "id": "matthew-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the devil say the angels would keep Jesus from?",
+  "choices": [
+   "Falling into the sea",
+   "Dashing his foot against a stone",
+   "Being seized by the priests",
+   "Hunger and thirst"
+  ],
+  "answer": 1,
+  "explanation": "In their hands they shall bear thee up, lest at any time thou dash thy foot against a stone.",
+  "ref": "Matthew 4:6"
+ },
+ {
+  "id": "matthew-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say we are to worship and serve?",
+  "choices": [
+   "The Son of God",
+   "The kingdom of heaven",
+   "The Lord thy God, and him only",
+   "The angels of the Lord"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt worship the Lord thy God, and him only shalt thou serve.",
+  "ref": "Matthew 4:10"
+ },
+ {
+  "id": "matthew-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the devil ask Jesus to do in return for all the kingdoms?",
+  "choices": [
+   "Cast himself down",
+   "Turn stones into bread",
+   "Leave Galilee",
+   "Fall down and worship him"
+  ],
+  "answer": 3,
+  "explanation": "All these things will I give thee, if thou wilt fall down and worship me.",
+  "ref": "Matthew 4:9"
+ },
+ {
+  "id": "matthew-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Which prophet said the people in darkness saw great light?",
+  "choices": [
+   "Esaias",
+   "Jeremy",
+   "Moses",
+   "Daniel"
+  ],
+  "answer": 0,
+  "explanation": "That it might be fulfilled which was spoken by Esaias the prophet.",
+  "ref": "Matthew 4:14"
+ },
+ {
+  "id": "matthew-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus begin to preach from that time?",
+  "choices": [
+   "Prepare ye the way of the Lord",
+   "Repent: for the kingdom of heaven is at hand",
+   "Blessed are the poor in spirit",
+   "Follow me"
+  ],
+  "answer": 1,
+  "explanation": "From that time Jesus began to preach, and to say, Repent: for the kingdom of heaven is at hand.",
+  "ref": "Matthew 4:17"
+ },
+ {
+  "id": "matthew-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose sons were James and John?",
+  "choices": [
+   "Jonas",
+   "Alphaeus",
+   "Zebedee",
+   "Simon"
+  ],
+  "answer": 2,
+  "explanation": "He saw other two brethren, James the son of Zebedee, and John his brother.",
+  "ref": "Matthew 4:21"
+ },
+ {
+  "id": "matthew-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were James and John doing when Jesus called them?",
+  "choices": [
+   "Casting a net into the sea",
+   "Mending nets on the shore alone",
+   "Selling fish in Capernaum",
+   "Mending their nets in a ship with their father"
+  ],
+  "answer": 3,
+  "explanation": "They were in a ship with Zebedee their father, mending their nets; and he called them.",
+  "ref": "Matthew 4:21"
+ },
+ {
+  "id": "matthew-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did James and John leave to follow Jesus?",
+  "choices": [
+   "The ship and their father",
+   "Their home and their mother",
+   "Their nets and their boat only",
+   "Their fish and their wages"
+  ],
+  "answer": 0,
+  "explanation": "They immediately left the ship and their father, and followed him.",
+  "ref": "Matthew 4:22"
+ },
+ {
+  "id": "matthew-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Simon and Andrew do straightway when Jesus called them?",
+  "choices": [
+   "Asked to bury their father",
+   "Left their nets and followed him",
+   "Finished the catch first",
+   "Went to tell Zebedee"
+  ],
+  "answer": 1,
+  "explanation": "They straightway left their nets, and followed him.",
+  "ref": "Matthew 4:20"
+ },
+ {
+  "id": "matthew-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Jesus go teaching in all Galilee?",
+  "choices": [
+   "In the temple at Jerusalem",
+   "Only in Capernaum",
+   "In their synagogues",
+   "On the sea"
+  ],
+  "answer": 2,
+  "explanation": "Jesus went about all Galilee, teaching in their synagogues, and preaching the gospel of the kingdom.",
+  "ref": "Matthew 4:23"
+ },
+ {
+  "id": "matthew-4-m-12",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the text say Simon and Andrew were casting a net?",
+  "choices": [
+   "They were paying a tax",
+   "Jesus had asked for fish",
+   "They were mending the boat",
+   "They were fishers"
+  ],
+  "answer": 3,
+  "explanation": "They were casting a net into the sea: for they were fishers.",
+  "ref": "Matthew 4:18"
+ },
+ {
+  "id": "matthew-4-m-13",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus heal among the people as he went about Galilee?",
+  "choices": [
+   "All manner of sickness and disease",
+   "Only the blind",
+   "Only those in Capernaum",
+   "Only the lame"
+  ],
+  "answer": 0,
+  "explanation": "He went about healing all manner of sickness and all manner of disease among the people.",
+  "ref": "Matthew 4:23"
+ },
+ {
+  "id": "matthew-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the devil say to Jesus in the first two temptations?",
+  "choices": [
+   "Thou art the Christ",
+   "If thou be the Son of God",
+   "Fear not",
+   "Behold the Lamb of God"
+  ],
+  "answer": 1,
+  "explanation": "He said, If thou be the Son of God, command that these stones be made bread; and, If thou be the Son of God, cast thyself down.",
+  "ref": "Matthew 4:3–6"
+ },
+ {
+  "id": "matthew-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say man shall not live by alone?",
+  "choices": [
+   "Water",
+   "Wine",
+   "Bread",
+   "Honey"
+  ],
+  "answer": 2,
+  "explanation": "Man shall not live by bread alone, but by every word that proceedeth out of the mouth of God.",
+  "ref": "Matthew 4:4"
+ },
+ {
+  "id": "matthew-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What kind of mountain did the devil take Jesus to?",
+  "choices": [
+   "A mountain in Galilee",
+   "The mount of Olives",
+   "The mountain of Moses",
+   "An exceeding high mountain"
+  ],
+  "answer": 3,
+  "explanation": "Again, the devil taketh him up into an exceeding high mountain.",
+  "ref": "Matthew 4:8"
+ },
+ {
+  "id": "matthew-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus feel after he had fasted forty days and nights?",
+  "choices": [
+   "He was afterward an hungred",
+   "He was faint and fell down",
+   "He was weary and slept",
+   "He was thirsty"
+  ],
+  "answer": 0,
+  "explanation": "When he had fasted forty days and forty nights, he was afterward an hungred.",
+  "ref": "Matthew 4:2"
+ },
+ {
+  "id": "matthew-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which land did the prophet call Galilee of the Gentiles?",
+  "choices": [
+   "The land of Judaea",
+   "The land of Zabulon and Nephthalim",
+   "The land of Egypt",
+   "The land of Syria"
+  ],
+  "answer": 1,
+  "explanation": "The land of Zabulon, and the land of Nephthalim, beyond Jordan, Galilee of the Gentiles.",
+  "ref": "Matthew 4:15"
+ },
+ {
+  "id": "matthew-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is Capernaum described?",
+  "choices": [
+   "On the Jordan, near Jericho",
+   "Within the walls of Jerusalem",
+   "Upon the sea coast, in the borders of Zabulon and Nephthalim",
+   "In the wilderness of Judaea"
+  ],
+  "answer": 2,
+  "explanation": "He came and dwelt in Capernaum, which is upon the sea coast, in the borders of Zabulon and Nephthalim.",
+  "ref": "Matthew 4:13"
+ },
+ {
+  "id": "matthew-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Through which land did the fame of Jesus go?",
+  "choices": [
+   "Egypt",
+   "Samaria",
+   "Idumaea",
+   "Syria"
+  ],
+  "answer": 3,
+  "explanation": "His fame went throughout all Syria.",
+  "ref": "Matthew 4:24"
+ },
+ {
+  "id": "matthew-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Which region is named among those the multitudes came from?",
+  "choices": [
+   "Decapolis",
+   "Egypt",
+   "Samaria",
+   "Idumaea"
+  ],
+  "answer": 0,
+  "explanation": "There followed him great multitudes from Galilee, and from Decapolis, and from Jerusalem, and from Judaea, and from beyond Jordan.",
+  "ref": "Matthew 4:25"
+ },
+ {
+  "id": "matthew-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which sickness is named among those brought to Jesus?",
+  "choices": [
+   "Leprosy",
+   "The palsy",
+   "Blindness",
+   "Fever"
+  ],
+  "answer": 1,
+  "explanation": "They brought those possessed with devils, and those which were lunatick, and those that had the palsy.",
+  "ref": "Matthew 4:24"
+ },
+ {
+  "id": "matthew-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the devil say the angels would do with their hands?",
+  "choices": [
+   "Guard the temple",
+   "Strike thy enemies",
+   "Bear thee up",
+   "Carry thee to Jerusalem"
+  ],
+  "answer": 2,
+  "explanation": "In their hands they shall bear thee up.",
+  "ref": "Matthew 4:6"
+ },
+ {
+  "id": "matthew-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the people who sat in darkness live, per the prophet?",
+  "choices": [
+   "In the wilderness of Judaea",
+   "Beyond the Jordan only",
+   "By the sea of Egypt",
+   "In the region and shadow of death"
+  ],
+  "answer": 3,
+  "explanation": "To them which sat in the region and shadow of death light is sprung up.",
+  "ref": "Matthew 4:16"
+ },
+ {
+  "id": "matthew-4-h-12",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the devil say Jesus should command to be made bread?",
+  "choices": [
+   "These stones",
+   "The sand of the sea",
+   "The waters of Jordan",
+   "The dust of the earth"
+  ],
+  "answer": 0,
+  "explanation": "Command that these stones be made bread.",
+  "ref": "Matthew 4:3"
+ },
+ {
+  "id": "matthew-4-h-13",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What scripture did the devil quote when he tempted Jesus to cast himself down?",
+  "choices": [
+   "Thou shalt not kill",
+   "He shall give his angels charge concerning thee",
+   "Man shall not live by bread alone",
+   "Fear not, I am with thee"
+  ],
+  "answer": 1,
+  "explanation": "He saith unto him, If thou be the Son of God, cast thyself down: for it is written, He shall give his angels charge concerning thee.",
+  "ref": "Matthew 4:6"
+ },
+ {
+  "id": "matthew-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus go when he saw the multitudes?",
+  "choices": [
+   "Into a synagogue",
+   "Up into a mountain",
+   "Down to the sea",
+   "Into the wilderness"
+  ],
+  "answer": 1,
+  "explanation": "Seeing the multitudes, he went up into a mountain: and when he was set, his disciples came unto him.",
+  "ref": "Matthew 5:1"
+ },
+ {
+  "id": "matthew-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is promised to those that mourn?",
+  "choices": [
+   "They shall inherit the earth",
+   "They shall see God",
+   "They shall be comforted",
+   "They shall be filled"
+  ],
+  "answer": 2,
+  "explanation": "Blessed are they that mourn: for they shall be comforted.",
+  "ref": "Matthew 5:4"
+ },
+ {
+  "id": "matthew-5-e-03",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is promised to those who hunger and thirst after righteousness?",
+  "choices": [
+   "They shall be comforted",
+   "They shall obtain mercy",
+   "They shall inherit the earth",
+   "They shall be filled"
+  ],
+  "answer": 3,
+  "explanation": "Blessed are they which do hunger and thirst after righteousness: for they shall be filled.",
+  "ref": "Matthew 5:6"
+ },
+ {
+  "id": "matthew-5-e-04",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is promised to the merciful?",
+  "choices": [
+   "They shall obtain mercy",
+   "They shall be filled",
+   "They shall see God",
+   "They shall be comforted"
+  ],
+  "answer": 0,
+  "explanation": "Blessed are the merciful: for they shall obtain mercy.",
+  "ref": "Matthew 5:7"
+ },
+ {
+  "id": "matthew-5-e-05",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the pure in heart do?",
+  "choices": [
+   "Inherit the earth",
+   "See God",
+   "Obtain mercy",
+   "Be called the children of God"
+  ],
+  "answer": 1,
+  "explanation": "Blessed are the pure in heart: for they shall see God.",
+  "ref": "Matthew 5:8"
+ },
+ {
+  "id": "matthew-5-e-06",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall the peacemakers be called?",
+  "choices": [
+   "The salt of the earth",
+   "The light of the world",
+   "The children of God",
+   "The great in the kingdom"
+  ],
+  "answer": 2,
+  "explanation": "Blessed are the peacemakers: for they shall be called the children of God.",
+  "ref": "Matthew 5:9"
+ },
+ {
+  "id": "matthew-5-e-07",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is promised to those persecuted for righteousness' sake?",
+  "choices": [
+   "They shall inherit the earth",
+   "They shall see God",
+   "They shall be comforted",
+   "Theirs is the kingdom of heaven"
+  ],
+  "answer": 3,
+  "explanation": "Blessed are they which are persecuted for righteousness sake: for theirs is the kingdom of heaven.",
+  "ref": "Matthew 5:10"
+ },
+ {
+  "id": "matthew-5-e-08",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say cannot be hid?",
+  "choices": [
+   "A city that is set on an hill",
+   "A candle under a bushel",
+   "The salt of the earth",
+   "A good work in secret"
+  ],
+  "answer": 0,
+  "explanation": "Ye are the light of the world. A city that is set on an hill cannot be hid.",
+  "ref": "Matthew 5:14"
+ },
+ {
+  "id": "matthew-5-e-09",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say to do if someone smites you on the right cheek?",
+  "choices": [
+   "Smite him back",
+   "Turn to him the other also",
+   "Call the judge",
+   "Leave the place"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever shall smite thee on thy right cheek, turn to him the other also.",
+  "ref": "Matthew 5:39"
+ },
+ {
+  "id": "matthew-5-e-10",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Which commandment did Jesus first quote as said by them of old time?",
+  "choices": [
+   "Thou shalt not steal",
+   "Honour thy father",
+   "Thou shalt not kill",
+   "Thou shalt not covet"
+  ],
+  "answer": 2,
+  "explanation": "Ye have heard that it was said by them of old time, Thou shalt not kill.",
+  "ref": "Matthew 5:21"
+ },
+ {
+  "id": "matthew-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Who came to Jesus when he was set on the mountain?",
+  "choices": [
+   "The scribes",
+   "The Pharisees",
+   "The multitudes",
+   "His disciples"
+  ],
+  "answer": 3,
+  "explanation": "When he was set, his disciples came unto him.",
+  "ref": "Matthew 5:1"
+ },
+ {
+  "id": "matthew-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to salt that has lost its savour?",
+  "choices": [
+   "It is cast out and trodden under foot of men",
+   "It is mixed with new salt",
+   "It is kept for the altar",
+   "It is given to the poor"
+  ],
+  "answer": 0,
+  "explanation": "It is thenceforth good for nothing, but to be cast out, and to be trodden under foot of men.",
+  "ref": "Matthew 5:13"
+ },
+ {
+  "id": "matthew-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where do men set a lighted candle?",
+  "choices": [
+   "Under a bushel",
+   "On a candlestick",
+   "In a closet",
+   "Under a bed"
+  ],
+  "answer": 1,
+  "explanation": "Neither do men light a candle, and put it under a bushel, but on a candlestick.",
+  "ref": "Matthew 5:15"
+ },
+ {
+  "id": "matthew-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Jesus say to let your light shine before men?",
+  "choices": [
+   "That they may praise you",
+   "That you may be rich",
+   "That they may see your good works and glorify your Father",
+   "That the law may be kept"
+  ],
+  "answer": 2,
+  "explanation": "Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven.",
+  "ref": "Matthew 5:16"
+ },
+ {
+  "id": "matthew-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall in no wise pass from the law till all be fulfilled?",
+  "choices": [
+   "The first commandment",
+   "The sabbath day",
+   "The ten words",
+   "One jot or one tittle"
+  ],
+  "answer": 3,
+  "explanation": "One jot or one tittle shall in no wise pass from the law, till all be fulfilled.",
+  "ref": "Matthew 5:18"
+ },
+ {
+  "id": "matthew-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the man called who breaks one of the least commandments and teaches men so?",
+  "choices": [
+   "The least in the kingdom of heaven",
+   "Great in the kingdom of heaven",
+   "A scribe of the kingdom",
+   "Cast out of the kingdom"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever shall break one of these least commandments, and shall teach men so, shall be called the least in the kingdom of heaven.",
+  "ref": "Matthew 5:19"
+ },
+ {
+  "id": "matthew-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose righteousness must ours exceed to enter the kingdom of heaven?",
+  "choices": [
+   "The prophets",
+   "The scribes and Pharisees",
+   "The publicans",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "Except your righteousness shall exceed the righteousness of the scribes and Pharisees, ye shall in no case enter into the kingdom of heaven.",
+  "ref": "Matthew 5:20"
+ },
+ {
+  "id": "matthew-5-m-08",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must you do if you remember at the altar that your brother has aught against you?",
+  "choices": [
+   "Finish the offering first",
+   "Send a servant to him",
+   "Leave your gift and first be reconciled to him",
+   "Pray for him in secret"
+  ],
+  "answer": 2,
+  "explanation": "Leave there thy gift before the altar, and go thy way; first be reconciled to thy brother.",
+  "ref": "Matthew 5:23–24"
+ },
+ {
+  "id": "matthew-5-m-09",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to do with your adversary while in the way with him?",
+  "choices": [
+   "Avoid him",
+   "Take him to the judge",
+   "Pay him double",
+   "Agree with him quickly"
+  ],
+  "answer": 3,
+  "explanation": "Agree with thine adversary quickly, whiles thou art in the way with him.",
+  "ref": "Matthew 5:25"
+ },
+ {
+  "id": "matthew-5-m-10",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jesus say about looking on a woman to lust after her?",
+  "choices": [
+   "He hath committed adultery with her already in his heart",
+   "He is in danger of the council",
+   "He must bring a gift to the altar",
+   "He must give her a writing of divorcement"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever looketh on a woman to lust after her hath committed adultery with her already in his heart.",
+  "ref": "Matthew 5:28"
+ },
+ {
+  "id": "matthew-5-m-11",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to do if your right eye offend you?",
+  "choices": [
+   "Close it",
+   "Pluck it out and cast it from you",
+   "Wash it in the sea",
+   "Keep it hid"
+  ],
+  "answer": 1,
+  "explanation": "If thy right eye offend thee, pluck it out, and cast it from thee.",
+  "ref": "Matthew 5:29"
+ },
+ {
+  "id": "matthew-5-m-12",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the old saying require of a man who put away his wife?",
+  "choices": [
+   "A gift at the altar",
+   "An oath before the Lord",
+   "A writing of divorcement",
+   "A year of waiting"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever shall put away his wife, let him give her a writing of divorcement.",
+  "ref": "Matthew 5:31"
+ },
+ {
+  "id": "matthew-5-m-13",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If a man sues you for your coat, what should you let him have also?",
+  "choices": [
+   "Thy girdle",
+   "Thy shoes",
+   "Thy tent",
+   "Thy cloke"
+  ],
+  "answer": 3,
+  "explanation": "If any man will sue thee at the law, and take away thy coat, let him have thy cloke also.",
+  "ref": "Matthew 5:40"
+ },
+ {
+  "id": "matthew-5-m-14",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God do for the evil and the good?",
+  "choices": [
+   "Makes his sun rise on them",
+   "Hides his face from them",
+   "Sends them a prophet",
+   "Gives them a king"
+  ],
+  "answer": 0,
+  "explanation": "He maketh his sun to rise on the evil and on the good, and sendeth rain on the just and on the unjust.",
+  "ref": "Matthew 5:45"
+ },
+ {
+  "id": "matthew-5-m-15",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jesus say to give to him that asketh?",
+  "choices": [
+   "Give only to the poor",
+   "Give to him that asketh thee",
+   "Give a tenth",
+   "Give in secret"
+  ],
+  "answer": 1,
+  "explanation": "Give to him that asketh thee, and from him that would borrow of thee turn not thou away.",
+  "ref": "Matthew 5:42"
+ },
+ {
+  "id": "matthew-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did Jesus say the persecutors had persecuted before the disciples?",
+  "choices": [
+   "The kings",
+   "The priests",
+   "The prophets",
+   "The scribes"
+  ],
+  "answer": 2,
+  "explanation": "Great is your reward in heaven: for so persecuted they the prophets which were before you.",
+  "ref": "Matthew 5:12"
+ },
+ {
+  "id": "matthew-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus tell the disciples to do when men revile and persecute them falsely?",
+  "choices": [
+   "Fast and pray",
+   "Flee from the city",
+   "Answer them in the synagogue",
+   "Rejoice and be exceeding glad"
+  ],
+  "answer": 3,
+  "explanation": "Rejoice, and be exceeding glad: for great is your reward in heaven.",
+  "ref": "Matthew 5:11–12"
+ },
+ {
+  "id": "matthew-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whoever says Raca to his brother is in danger of what?",
+  "choices": [
+   "The council",
+   "The judgment",
+   "Hell fire",
+   "The altar"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever shall say to his brother, Raca, shall be in danger of the council.",
+  "ref": "Matthew 5:22"
+ },
+ {
+  "id": "matthew-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whoever says Thou fool is in danger of what?",
+  "choices": [
+   "The council",
+   "Hell fire",
+   "The judgment",
+   "The prison"
+  ],
+  "answer": 1,
+  "explanation": "Whosoever shall say, Thou fool, shall be in danger of hell fire.",
+  "ref": "Matthew 5:22"
+ },
+ {
+  "id": "matthew-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long must the man in prison stay before he comes out?",
+  "choices": [
+   "Seven days",
+   "Till the judge forgives him",
+   "Till he has paid the uttermost farthing",
+   "Forty days"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt by no means come out thence, till thou hast paid the uttermost farthing.",
+  "ref": "Matthew 5:26"
+ },
+ {
+  "id": "matthew-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why is it wrong to swear by heaven?",
+  "choices": [
+   "It is the Lord's temple",
+   "It is his footstool",
+   "It is the city of the great King",
+   "It is God's throne"
+  ],
+  "answer": 3,
+  "explanation": "Swear not at all; neither by heaven; for it is God's throne.",
+  "ref": "Matthew 5:34"
+ },
+ {
+  "id": "matthew-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why should we not swear by the earth?",
+  "choices": [
+   "It is his footstool",
+   "It is God's throne",
+   "It is the city of the great King",
+   "It cannot be held"
+  ],
+  "answer": 0,
+  "explanation": "Nor by the earth; for it is his footstool.",
+  "ref": "Matthew 5:35"
+ },
+ {
+  "id": "matthew-5-h-08",
+  "chapter": 5,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city is called the city of the great King?",
+  "choices": [
+   "Bethlehem",
+   "Jerusalem",
+   "Capernaum",
+   "Nazareth"
+  ],
+  "answer": 1,
+  "explanation": "Neither by Jerusalem; for it is the city of the great King.",
+  "ref": "Matthew 5:35"
+ },
+ {
+  "id": "matthew-5-h-09",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why should a man not swear by his head?",
+  "choices": [
+   "It belongs to the king",
+   "It is God's throne",
+   "He cannot make one hair white or black",
+   "It is his footstool"
+  ],
+  "answer": 2,
+  "explanation": "Neither shalt thou swear by thy head, because thou canst not make one hair white or black.",
+  "ref": "Matthew 5:36"
+ },
+ {
+  "id": "matthew-5-h-10",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How should your communication be?",
+  "choices": [
+   "With a solemn oath",
+   "In few words and softly",
+   "With a witness",
+   "Yea, yea; Nay, nay"
+  ],
+  "answer": 3,
+  "explanation": "Let your communication be, Yea, yea; Nay, nay: for whatsoever is more than these cometh of evil.",
+  "ref": "Matthew 5:37"
+ },
+ {
+  "id": "matthew-5-h-11",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If someone compels you to go a mile, how far should you go?",
+  "choices": [
+   "Twain",
+   "Two miles and a half",
+   "Ten",
+   "As far as he asks"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever shall compel thee to go a mile, go with him twain.",
+  "ref": "Matthew 5:41"
+ },
+ {
+  "id": "matthew-5-h-12",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom does Jesus say even the publicans love?",
+  "choices": [
+   "Their enemies",
+   "Those who love them",
+   "Strangers",
+   "The poor"
+  ],
+  "answer": 1,
+  "explanation": "If ye love them which love you, what reward have ye? do not even the publicans the same?",
+  "ref": "Matthew 5:46"
+ },
+ {
+  "id": "matthew-5-h-13",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How perfect does Jesus say we should be?",
+  "choices": [
+   "As Abraham was perfect",
+   "As the prophets were perfect",
+   "Even as your Father which is in heaven is perfect",
+   "As the law requires"
+  ],
+  "answer": 2,
+  "explanation": "Be ye therefore perfect, even as your Father which is in heaven is perfect.",
+  "ref": "Matthew 5:48"
+ },
+ {
+  "id": "matthew-5-h-14",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God send on the just and on the unjust?",
+  "choices": [
+   "Fire",
+   "Dew",
+   "Wind",
+   "Rain"
+  ],
+  "answer": 3,
+  "explanation": "He maketh his sun to rise on the evil and on the good, and sendeth rain on the just and on the unjust.",
+  "ref": "Matthew 5:45"
+ },
+ {
+  "id": "matthew-5-h-15",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which hand did Jesus say to cut off if it offends you?",
+  "choices": [
+   "Right hand",
+   "Left hand",
+   "Either hand",
+   "Both hands"
+  ],
+  "answer": 0,
+  "explanation": "If thy right hand offend thee, cut it off, and cast it from thee.",
+  "ref": "Matthew 5:30"
+ },
+ {
+  "id": "matthew-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do we ask God for each day in the Lord's prayer?",
+  "choices": [
+   "Our daily wine",
+   "A daily sign",
+   "Our daily bread",
+   "Daily strength"
+  ],
+  "answer": 2,
+  "explanation": "Give us this day our daily bread.",
+  "ref": "Matthew 6:11"
+ },
+ {
+  "id": "matthew-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did Jesus say to pray to your Father in secret?",
+  "choices": [
+   "On the housetop",
+   "In the synagogue",
+   "In the street corners",
+   "In your closet with the door shut"
+  ],
+  "answer": 3,
+  "explanation": "When thou prayest, enter into thy closet, and when thou hast shut thy door, pray to thy Father which is in secret.",
+  "ref": "Matthew 6:6"
+ },
+ {
+  "id": "matthew-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell his hearers to consider, to show them not to take thought for raiment?",
+  "choices": [
+   "The lilies of the field",
+   "The stars of heaven",
+   "The sheep of the fold",
+   "The cedars of Lebanon"
+  ],
+  "answer": 0,
+  "explanation": "Consider the lilies of the field, how they grow; they toil not, neither do they spin.",
+  "ref": "Matthew 6:28"
+ },
+ {
+  "id": "matthew-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Jesus say to lay up treasures?",
+  "choices": [
+   "In the temple",
+   "In heaven",
+   "In barns",
+   "In the earth"
+  ],
+  "answer": 1,
+  "explanation": "Lay up for yourselves treasures in heaven, where neither moth nor rust doth corrupt.",
+  "ref": "Matthew 6:20"
+ },
+ {
+  "id": "matthew-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Father do for the fowls of the air?",
+  "choices": [
+   "He builds them nests",
+   "He gathers them into barns",
+   "He feeds them",
+   "He teaches them to sow"
+  ],
+  "answer": 2,
+  "explanation": "They sow not, neither do they reap; yet your heavenly Father feedeth them.",
+  "ref": "Matthew 6:26"
+ },
+ {
+  "id": "matthew-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How does the Lord's prayer say we should forgive?",
+  "choices": [
+   "Seven times a day",
+   "Before we pray",
+   "Only our brethren",
+   "As we forgive our debtors"
+  ],
+  "answer": 3,
+  "explanation": "Forgive us our debts, as we forgive our debtors.",
+  "ref": "Matthew 6:12"
+ },
+ {
+  "id": "matthew-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who in all his glory was not arrayed like the lilies?",
+  "choices": [
+   "Solomon",
+   "David",
+   "Herod",
+   "Moses"
+  ],
+  "answer": 0,
+  "explanation": "Even Solomon in all his glory was not arrayed like one of these.",
+  "ref": "Matthew 6:29"
+ },
+ {
+  "id": "matthew-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will be where your treasure is?",
+  "choices": [
+   "Your hands",
+   "Your heart",
+   "Your reward",
+   "Your rest"
+  ],
+  "answer": 1,
+  "explanation": "Where your treasure is, there will your heart be also.",
+  "ref": "Matthew 6:21"
+ },
+ {
+  "id": "matthew-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say the hypocrites do when they give alms?",
+  "choices": [
+   "Give in secret",
+   "Give a tenth",
+   "Sound a trumpet before them",
+   "Give in the temple only"
+  ],
+  "answer": 2,
+  "explanation": "When thou doest thine alms, do not sound a trumpet before thee, as the hypocrites do.",
+  "ref": "Matthew 6:2"
+ },
+ {
+  "id": "matthew-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How is God's will to be done on earth in the Lord's prayer?",
+  "choices": [
+   "As it was of old",
+   "In secret",
+   "With the law",
+   "As it is in heaven"
+  ],
+  "answer": 3,
+  "explanation": "Thy will be done in earth, as it is in heaven.",
+  "ref": "Matthew 6:10"
+ },
+ {
+  "id": "matthew-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should your left hand not know when you give alms?",
+  "choices": [
+   "What your right hand doeth",
+   "Who receives the gift",
+   "How much you give",
+   "When you give"
+  ],
+  "answer": 0,
+  "explanation": "Let not thy left hand know what thy right hand doeth.",
+  "ref": "Matthew 6:3"
+ },
+ {
+  "id": "matthew-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who will reward openly the alms given in secret?",
+  "choices": [
+   "The priests of the temple",
+   "Your Father which seeth in secret",
+   "The poor",
+   "The scribes"
+  ],
+  "answer": 1,
+  "explanation": "Thy Father which seeth in secret himself shall reward thee openly.",
+  "ref": "Matthew 6:4"
+ },
+ {
+  "id": "matthew-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Where do the hypocrites love to pray standing?",
+  "choices": [
+   "On the temple steps",
+   "In their closets",
+   "In the synagogues and the corners of the streets",
+   "In the wilderness"
+  ],
+  "answer": 2,
+  "explanation": "They love to pray standing in the synagogues and in the corners of the streets.",
+  "ref": "Matthew 6:5"
+ },
+ {
+  "id": "matthew-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say not to use when praying, as the heathen do?",
+  "choices": [
+   "Long psalms",
+   "Loud trumpets",
+   "Written words",
+   "Vain repetitions"
+  ],
+  "answer": 3,
+  "explanation": "When ye pray, use not vain repetitions, as the heathen do.",
+  "ref": "Matthew 6:7"
+ },
+ {
+  "id": "matthew-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why do the heathen use vain repetitions?",
+  "choices": [
+   "They think they shall be heard for their much speaking",
+   "They want to be seen of men",
+   "They fear their gods",
+   "They have no closet"
+  ],
+  "answer": 0,
+  "explanation": "They think that they shall be heard for their much speaking.",
+  "ref": "Matthew 6:7"
+ },
+ {
+  "id": "matthew-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does your Father know before you ask him?",
+  "choices": [
+   "Who has wronged you",
+   "What things ye have need of",
+   "How long you will pray",
+   "What you will fear"
+  ],
+  "answer": 1,
+  "explanation": "Your Father knoweth what things ye have need of, before ye ask him.",
+  "ref": "Matthew 6:8"
+ },
+ {
+  "id": "matthew-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen if you forgive not men their trespasses?",
+  "choices": [
+   "You will be cast into prison",
+   "You will be cast out",
+   "Your Father will not forgive your trespasses",
+   "Your gift will be refused"
+  ],
+  "answer": 2,
+  "explanation": "If ye forgive not men their trespasses, neither will your Father forgive your trespasses.",
+  "ref": "Matthew 6:15"
+ },
+ {
+  "id": "matthew-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How should you look when you fast?",
+  "choices": [
+   "Wear sackcloth and ashes",
+   "Cover your head",
+   "Look sad and humble",
+   "Anoint your head and wash your face"
+  ],
+  "answer": 3,
+  "explanation": "When thou fastest, anoint thine head, and wash thy face.",
+  "ref": "Matthew 6:17"
+ },
+ {
+  "id": "matthew-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What corrupts treasures laid up on earth?",
+  "choices": [
+   "Moth and rust",
+   "Fire and flood",
+   "Thieves and war",
+   "Time and dust"
+  ],
+  "answer": 0,
+  "explanation": "Lay not up treasures upon earth, where moth and rust doth corrupt, and where thieves break through and steal.",
+  "ref": "Matthew 6:19"
+ },
+ {
+  "id": "matthew-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the light of the body?",
+  "choices": [
+   "The heart",
+   "The eye",
+   "The hand",
+   "The mind"
+  ],
+  "answer": 1,
+  "explanation": "The light of the body is the eye: if therefore thine eye be single, thy whole body shall be full of light.",
+  "ref": "Matthew 6:22"
+ },
+ {
+  "id": "matthew-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which two masters can no man serve together?",
+  "choices": [
+   "God and Caesar",
+   "Heaven and earth",
+   "God and mammon",
+   "Law and prophets"
+  ],
+  "answer": 2,
+  "explanation": "No man can serve two masters... Ye cannot serve God and mammon.",
+  "ref": "Matthew 6:24"
+ },
+ {
+  "id": "matthew-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say we should take no thought for?",
+  "choices": [
+   "Who will rule us",
+   "When the kingdom comes",
+   "How to pray",
+   "What we shall eat, drink and put on"
+  ],
+  "answer": 3,
+  "explanation": "Take no thought for your life, what ye shall eat, or what ye shall drink; nor yet for your body, what ye shall put on.",
+  "ref": "Matthew 6:25"
+ },
+ {
+  "id": "matthew-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What can no one add by taking thought?",
+  "choices": [
+   "One cubit unto his stature",
+   "One day to his life",
+   "One coin to his purse",
+   "One friend to his house"
+  ],
+  "answer": 0,
+  "explanation": "Which of you by taking thought can add one cubit unto his stature?",
+  "ref": "Matthew 6:27"
+ },
+ {
+  "id": "matthew-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the grass of the field that God clothes?",
+  "choices": [
+   "It is cut and sold",
+   "Today it is, and tomorrow it is cast into the oven",
+   "It is eaten by the fowls",
+   "It is gathered into barns"
+  ],
+  "answer": 1,
+  "explanation": "God so clothes the grass of the field, which to day is, and to morrow is cast into the oven.",
+  "ref": "Matthew 6:30"
+ },
+ {
+  "id": "matthew-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jesus call those who fear for their clothing?",
+  "choices": [
+   "Hypocrites",
+   "Ye fools",
+   "O ye of little faith",
+   "Ye generation of vipers"
+  ],
+  "answer": 2,
+  "explanation": "Shall he not much more clothe you, O ye of little faith?",
+  "ref": "Matthew 6:30"
+ },
+ {
+  "id": "matthew-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why do hypocrites give alms and pray in public?",
+  "choices": [
+   "That they may be thanked by God",
+   "That they may teach the people",
+   "That they may be heard of heaven",
+   "That they may have glory of men"
+  ],
+  "answer": 3,
+  "explanation": "They do it that they may have glory of men.",
+  "ref": "Matthew 6:2"
+ },
+ {
+  "id": "matthew-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Jesus say the hypocrites have for their public alms and prayer?",
+  "choices": [
+   "Their reward",
+   "No reward",
+   "A double reward",
+   "A hidden reward"
+  ],
+  "answer": 0,
+  "explanation": "Verily I say unto you, They have their reward.",
+  "ref": "Matthew 6:2"
+ },
+ {
+  "id": "matthew-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What should you do after entering your closet to pray?",
+  "choices": [
+   "Light a candle",
+   "Shut your door",
+   "Kneel at the altar",
+   "Send for a witness"
+  ],
+  "answer": 1,
+  "explanation": "When thou hast shut thy door, pray to thy Father which is in secret.",
+  "ref": "Matthew 6:6"
+ },
+ {
+  "id": "matthew-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How do hypocrites appear when they fast?",
+  "choices": [
+   "With ashes on their heads",
+   "Clothed in sackcloth",
+   "Of a sad countenance, disfiguring their faces",
+   "Standing at the gate"
+  ],
+  "answer": 2,
+  "explanation": "Be not, as the hypocrites, of a sad countenance: for they disfigure their faces.",
+  "ref": "Matthew 6:16"
+ },
+ {
+  "id": "matthew-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What follows 'lead us not into temptation' in the prayer?",
+  "choices": [
+   "But keep us in thy law",
+   "But give us this day",
+   "And forgive our debts",
+   "But deliver us from evil"
+  ],
+  "answer": 3,
+  "explanation": "Lead us not into temptation, but deliver us from evil.",
+  "ref": "Matthew 6:13"
+ },
+ {
+  "id": "matthew-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the prayer say belongs to God for ever?",
+  "choices": [
+   "The kingdom, the power and the glory",
+   "The wisdom, the mercy and the law",
+   "The earth, the sea and the sky",
+   "The throne, the temple and the name"
+  ],
+  "answer": 0,
+  "explanation": "For thine is the kingdom, and the power, and the glory, for ever.",
+  "ref": "Matthew 6:13"
+ },
+ {
+  "id": "matthew-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who will forgive you if you forgive men their trespasses?",
+  "choices": [
+   "The priests",
+   "Your heavenly Father",
+   "The judge",
+   "Your brother"
+  ],
+  "answer": 1,
+  "explanation": "If ye forgive men their trespasses, your heavenly Father will also forgive you.",
+  "ref": "Matthew 6:14"
+ },
+ {
+  "id": "matthew-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will your whole body be full of if your eye be single?",
+  "choices": [
+   "Peace",
+   "Strength",
+   "Light",
+   "Joy"
+  ],
+  "answer": 2,
+  "explanation": "If thine eye be single, thy whole body shall be full of light.",
+  "ref": "Matthew 6:22"
+ },
+ {
+  "id": "matthew-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will your whole body be full of if your eye be evil?",
+  "choices": [
+   "Fire",
+   "Sorrow",
+   "Wrath",
+   "Darkness"
+  ],
+  "answer": 3,
+  "explanation": "If thine eye be evil, thy whole body shall be full of darkness.",
+  "ref": "Matthew 6:23"
+ },
+ {
+  "id": "matthew-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Jesus say about the light in you being darkness?",
+  "choices": [
+   "How great is that darkness",
+   "It will soon be put out",
+   "It cannot be mended",
+   "It is better than none"
+  ],
+  "answer": 0,
+  "explanation": "If therefore the light that is in thee be darkness, how great is that darkness!",
+  "ref": "Matthew 6:23"
+ },
+ {
+  "id": "matthew-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question does Jesus ask about life and the body?",
+  "choices": [
+   "Is not the soul worth more than gold?",
+   "Is not the life more than meat, and the body than raiment?",
+   "Is not the body a temple?",
+   "Is not man better than the beasts?"
+  ],
+  "answer": 1,
+  "explanation": "Is not the life more than meat, and the body than raiment?",
+  "ref": "Matthew 6:25"
+ },
+ {
+  "id": "matthew-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the fowls of the air not do?",
+  "choices": [
+   "Fly by night",
+   "Build nests",
+   "Sow, reap or gather into barns",
+   "Fear the hunter"
+  ],
+  "answer": 2,
+  "explanation": "They sow not, neither do they reap, nor gather into barns.",
+  "ref": "Matthew 6:26"
+ },
+ {
+  "id": "matthew-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the lilies of the field not do?",
+  "choices": [
+   "Sow or reap",
+   "Bloom in winter",
+   "Grow in barns",
+   "Toil or spin"
+  ],
+  "answer": 3,
+  "explanation": "They toil not, neither do they spin.",
+  "ref": "Matthew 6:28"
+ },
+ {
+  "id": "matthew-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the Gentiles seek after, according to Jesus?",
+  "choices": [
+   "All these things: food, drink and clothing",
+   "Wisdom and understanding",
+   "Signs from heaven",
+   "Honour among men"
+  ],
+  "answer": 0,
+  "explanation": "After all these things do the Gentiles seek.",
+  "ref": "Matthew 6:31–32"
+ },
+ {
+  "id": "matthew-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will be added to those who seek first the kingdom of God and his righteousness?",
+  "choices": [
+   "Great honour",
+   "All these things",
+   "Long life",
+   "Many sons"
+  ],
+  "answer": 1,
+  "explanation": "Seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.",
+  "ref": "Matthew 6:33"
+ },
+ {
+  "id": "matthew-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus say is in your own eye while you pick at the mote in your brother's?",
+  "choices": [
+   "A thorn",
+   "A stone",
+   "A veil",
+   "A beam"
+  ],
+  "answer": 3,
+  "explanation": "Why beholdest thou the mote that is in thy brother's eye, but considerest not the beam that is in thine own eye?",
+  "ref": "Matthew 7:3"
+ },
+ {
+  "id": "matthew-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say not to cast before swine?",
+  "choices": [
+   "Your pearls",
+   "Your bread",
+   "Your nets",
+   "Your coats"
+  ],
+  "answer": 0,
+  "explanation": "Neither cast ye your pearls before swine, lest they trample them under their feet.",
+  "ref": "Matthew 7:6"
+ },
+ {
+  "id": "matthew-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will you do if you seek, according to Jesus?",
+  "choices": [
+   "Be filled",
+   "Find",
+   "Be forgiven",
+   "Be healed"
+  ],
+  "answer": 1,
+  "explanation": "Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you.",
+  "ref": "Matthew 7:7"
+ },
+ {
+  "id": "matthew-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who will give good things to them that ask him?",
+  "choices": [
+   "The prophets",
+   "The priests",
+   "Your Father which is in heaven",
+   "Your brother"
+  ],
+  "answer": 2,
+  "explanation": "How much more shall your Father which is in heaven give good things to them that ask him?",
+  "ref": "Matthew 7:11"
+ },
+ {
+  "id": "matthew-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How do false prophets come to you?",
+  "choices": [
+   "In fine linen",
+   "In the temple",
+   "In the night",
+   "In sheep's clothing"
+  ],
+  "answer": 3,
+  "explanation": "Beware of false prophets, which come to you in sheep's clothing, but inwardly they are ravening wolves.",
+  "ref": "Matthew 7:15"
+ },
+ {
+  "id": "matthew-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On what did the foolish man build his house?",
+  "choices": [
+   "The sand",
+   "The rock",
+   "The clay",
+   "The mountain"
+  ],
+  "answer": 0,
+  "explanation": "Every one that heareth these sayings of mine, and doeth them not, shall be likened unto a foolish man, which built his house upon the sand.",
+  "ref": "Matthew 7:26"
+ },
+ {
+  "id": "matthew-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where does the wide gate and broad way lead?",
+  "choices": [
+   "To the temple",
+   "To destruction",
+   "To life",
+   "To the kingdom of heaven"
+  ],
+  "answer": 1,
+  "explanation": "Wide is the gate, and broad is the way, that leadeth to destruction, and many there be which go in thereat.",
+  "ref": "Matthew 7:13"
+ },
+ {
+  "id": "matthew-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom does Jesus liken to a wise man who built upon a rock?",
+  "choices": [
+   "Whosoever fasts and prays",
+   "Whosoever gives alms",
+   "Whosoever hears his sayings and does them",
+   "Whosoever knows the law"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever heareth these sayings of mine, and doeth them, I will liken him unto a wise man.",
+  "ref": "Matthew 7:24"
+ },
+ {
+  "id": "matthew-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who shall enter the kingdom of heaven, according to Jesus?",
+  "choices": [
+   "Every one that says Lord, Lord",
+   "He that prophesies in my name",
+   "He that is a scribe",
+   "He that doeth the will of my Father"
+  ],
+  "answer": 3,
+  "explanation": "Not every one that saith unto me, Lord, Lord, shall enter; but he that doeth the will of my Father.",
+  "ref": "Matthew 7:21"
+ },
+ {
+  "id": "matthew-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will Jesus say to those who work iniquity?",
+  "choices": [
+   "I never knew you: depart from me",
+   "Enter into my joy",
+   "Go thy way",
+   "Follow me"
+  ],
+  "answer": 0,
+  "explanation": "I will profess unto them, I never knew you: depart from me, ye that work iniquity.",
+  "ref": "Matthew 7:23"
+ },
+ {
+  "id": "matthew-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say about the measure you use?",
+  "choices": [
+   "It shall be forgiven you",
+   "It shall be measured to you again",
+   "It shall be blessed",
+   "It shall be hid"
+  ],
+  "answer": 1,
+  "explanation": "With what measure ye mete, it shall be measured to you again.",
+  "ref": "Matthew 7:2"
+ },
+ {
+  "id": "matthew-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must you do before you can see clearly to cast the mote out of your brother's eye?",
+  "choices": [
+   "Wash your hands",
+   "Ask the priest",
+   "Cast the beam out of your own eye",
+   "Pray in secret"
+  ],
+  "answer": 2,
+  "explanation": "First cast out the beam out of thine own eye; and then shalt thou see clearly.",
+  "ref": "Matthew 7:5"
+ },
+ {
+  "id": "matthew-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jesus call the man who tries to remove his brother's mote while he has a beam?",
+  "choices": [
+   "A fool",
+   "A scribe",
+   "A publican",
+   "A hypocrite"
+  ],
+  "answer": 3,
+  "explanation": "Thou hypocrite, first cast out the beam out of thine own eye.",
+  "ref": "Matthew 7:5"
+ },
+ {
+  "id": "matthew-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the dogs and swine do to those who give them holy things and pearls?",
+  "choices": [
+   "Turn again and rend you",
+   "Guard them",
+   "Flee from you",
+   "Carry them away"
+  ],
+  "answer": 0,
+  "explanation": "Lest they trample them under their feet, and turn again and rend you.",
+  "ref": "Matthew 7:6"
+ },
+ {
+  "id": "matthew-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would a man not give his son who asks bread?",
+  "choices": [
+   "A coin",
+   "A stone",
+   "A fish",
+   "A fig"
+  ],
+  "answer": 1,
+  "explanation": "What man is there of you, whom if his son ask bread, will he give him a stone?",
+  "ref": "Matthew 7:9"
+ },
+ {
+  "id": "matthew-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Jesus say is the law and the prophets?",
+  "choices": [
+   "Love the Lord with all your heart",
+   "Keep the sabbath",
+   "Do to others what you would have them do to you",
+   "Offer sacrifices"
+  ],
+  "answer": 2,
+  "explanation": "All things whatsoever ye would that men should do to you, do ye even so to them: for this is the law and the prophets.",
+  "ref": "Matthew 7:12"
+ },
+ {
+  "id": "matthew-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of the narrow way that leads to life, what does Jesus say?",
+  "choices": [
+   "Many there be that find it",
+   "All who seek it find it",
+   "None enter it",
+   "Few there be that find it"
+  ],
+  "answer": 3,
+  "explanation": "Strait is the gate, and narrow is the way, which leadeth unto life, and few there be that find it.",
+  "ref": "Matthew 7:14"
+ },
+ {
+  "id": "matthew-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the false prophets inwardly?",
+  "choices": [
+   "Ravening wolves",
+   "Hungry lions",
+   "Wandering sheep",
+   "Wild beasts"
+  ],
+  "answer": 0,
+  "explanation": "Inwardly they are ravening wolves.",
+  "ref": "Matthew 7:15"
+ },
+ {
+  "id": "matthew-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do men not gather from thorns and thistles?",
+  "choices": [
+   "Wheat and barley",
+   "Grapes and figs",
+   "Olives and dates",
+   "Apples and pears"
+  ],
+  "answer": 1,
+  "explanation": "Do men gather grapes of thorns, or figs of thistles?",
+  "ref": "Matthew 7:16"
+ },
+ {
+  "id": "matthew-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does a good tree bring forth?",
+  "choices": [
+   "Fair leaves",
+   "Many branches",
+   "Good fruit",
+   "Seed for sowing"
+  ],
+  "answer": 2,
+  "explanation": "Every good tree bringeth forth good fruit; but a corrupt tree bringeth forth evil fruit.",
+  "ref": "Matthew 7:17"
+ },
+ {
+  "id": "matthew-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to every tree that brings not forth good fruit?",
+  "choices": [
+   "It is dug about",
+   "It is left for another year",
+   "It is moved to another field",
+   "It is hewn down and cast into the fire"
+  ],
+  "answer": 3,
+  "explanation": "Every tree that bringeth not forth good fruit is hewn down, and cast into the fire.",
+  "ref": "Matthew 7:19"
+ },
+ {
+  "id": "matthew-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what shall ye know the false prophets?",
+  "choices": [
+   "By their fruits",
+   "By their words",
+   "By their robes",
+   "By their prayers"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore by their fruits ye shall know them.",
+  "ref": "Matthew 7:20"
+ },
+ {
+  "id": "matthew-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will many say to Jesus in that day?",
+  "choices": [
+   "Lord, remember us in thy kingdom",
+   "Lord, Lord, have we not prophesied in thy name?",
+   "Lord, we kept the sabbath",
+   "Lord, we gave to the poor"
+  ],
+  "answer": 1,
+  "explanation": "Many will say to me in that day, Lord, Lord, have we not prophesied in thy name?",
+  "ref": "Matthew 7:22"
+ },
+ {
+  "id": "matthew-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What beat upon the house that was built on a rock?",
+  "choices": [
+   "Fire and hail",
+   "The sun and the wind",
+   "The rain, the floods and the winds",
+   "Locusts and storms"
+  ],
+  "answer": 2,
+  "explanation": "The rain descended, and the floods came, and the winds blew, and beat upon that house; and it fell not.",
+  "ref": "Matthew 7:25"
+ },
+ {
+  "id": "matthew-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the man with a beam in his eye offer to do for his brother?",
+  "choices": [
+   "Cast him out of the house",
+   "Give him bread",
+   "Judge him before the council",
+   "Pull out the mote out of his eye"
+  ],
+  "answer": 3,
+  "explanation": "How wilt thou say to thy brother, Let me pull out the mote out of thine eye; and, behold, a beam is in thine own eye?",
+  "ref": "Matthew 7:4"
+ },
+ {
+  "id": "matthew-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what judgment ye judge, what shall happen to you?",
+  "choices": [
+   "Ye shall be judged",
+   "Ye shall be forgiven",
+   "Ye shall be rewarded",
+   "Ye shall be hidden"
+  ],
+  "answer": 0,
+  "explanation": "With what judgment ye judge, ye shall be judged.",
+  "ref": "Matthew 7:2"
+ },
+ {
+  "id": "matthew-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why should you not give that which is holy to the dogs?",
+  "choices": [
+   "Lest they steal it",
+   "Lest they turn again and rend you",
+   "Lest it be lost",
+   "Lest it be profaned by the priests"
+  ],
+  "answer": 1,
+  "explanation": "Give not that which is holy unto the dogs... lest they trample them under their feet, and turn again and rend you.",
+  "ref": "Matthew 7:6"
+ },
+ {
+  "id": "matthew-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would a man not give his son who asks a fish?",
+  "choices": [
+   "A stone",
+   "A scorpion",
+   "A serpent",
+   "A bird"
+  ],
+  "answer": 2,
+  "explanation": "Or if he ask a fish, will he give him a serpent?",
+  "ref": "Matthew 7:10"
+ },
+ {
+  "id": "matthew-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Jesus describe those who give good gifts to their children?",
+  "choices": [
+   "Being rich",
+   "Being wise",
+   "Being just",
+   "Being evil"
+  ],
+  "answer": 3,
+  "explanation": "If ye then, being evil, know how to give good gifts unto your children.",
+  "ref": "Matthew 7:11"
+ },
+ {
+  "id": "matthew-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does a corrupt tree not bring forth?",
+  "choices": [
+   "Good fruit",
+   "Any leaves",
+   "Any shade",
+   "Any wood"
+  ],
+  "answer": 0,
+  "explanation": "A good tree cannot bring forth evil fruit, neither can a corrupt tree bring forth good fruit.",
+  "ref": "Matthew 7:18"
+ },
+ {
+  "id": "matthew-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whose name did those who say Lord, Lord claim to have cast out devils?",
+  "choices": [
+   "Moses' name",
+   "Jesus' name",
+   "The name of the Father only",
+   "The name of the prophets"
+  ],
+  "answer": 1,
+  "explanation": "Have we not prophesied in thy name? and in thy name have cast out devils?",
+  "ref": "Matthew 7:22"
+ },
+ {
+  "id": "matthew-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the fault of the foolish man?",
+  "choices": [
+   "He hears them not at all",
+   "He mocks the prophets",
+   "He heareth these sayings and doeth them not",
+   "He builds in haste"
+  ],
+  "answer": 2,
+  "explanation": "Every one that heareth these sayings of mine, and doeth them not, shall be likened unto a foolish man.",
+  "ref": "Matthew 7:26"
+ },
+ {
+  "id": "matthew-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did the wise man's house not fall?",
+  "choices": [
+   "It was built in haste",
+   "It had a strong roof",
+   "It was built on a hill",
+   "It was founded upon a rock"
+  ],
+  "answer": 3,
+  "explanation": "It fell not: for it was founded upon a rock.",
+  "ref": "Matthew 7:25"
+ },
+ {
+  "id": "matthew-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of the fall of the house built on sand?",
+  "choices": [
+   "Great was the fall of it",
+   "It fell slowly",
+   "It was soon rebuilt",
+   "It was not seen"
+  ],
+  "answer": 0,
+  "explanation": "It fell: and great was the fall of it.",
+  "ref": "Matthew 7:27"
+ },
+ {
+  "id": "matthew-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the people react when Jesus ended these sayings?",
+  "choices": [
+   "They went away in anger",
+   "They were astonished at his doctrine",
+   "They asked for a sign",
+   "They crowned him king"
+  ],
+  "answer": 1,
+  "explanation": "It came to pass, when Jesus had ended these sayings, the people were astonished at his doctrine.",
+  "ref": "Matthew 7:28"
+ },
+ {
+  "id": "matthew-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Jesus teach, compared with the scribes?",
+  "choices": [
+   "As one learned in the law",
+   "As one afraid of the Pharisees",
+   "As one having authority",
+   "As one reading from the prophets"
+  ],
+  "answer": 2,
+  "explanation": "He taught them as one having authority, and not as the scribes.",
+  "ref": "Matthew 7:29"
+ },
+ {
+  "id": "matthew-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Jesus say of the many who go in at the wide gate?",
+  "choices": [
+   "Few go in thereat",
+   "They find life",
+   "They are the children of the kingdom",
+   "Many there be which go in thereat"
+  ],
+  "answer": 3,
+  "explanation": "Wide is the gate, and broad is the way, that leadeth to destruction, and many there be which go in thereat.",
+  "ref": "Matthew 7:13"
+ },
+ {
+  "id": "matthew-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides prophesying and casting out devils, what did they claim in his name?",
+  "choices": [
+   "Many wonderful works",
+   "Healed the sick",
+   "Fasted often",
+   "Built the temple"
+  ],
+  "answer": 0,
+  "explanation": "In thy name done many wonderful works?",
+  "ref": "Matthew 7:22"
+ },
+ {
+  "id": "matthew-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Jesus call the small thing in the eye of a brother?",
+  "choices": [
+   "A splinter",
+   "A mote",
+   "A thorn",
+   "A speck of dust"
+  ],
+  "answer": 1,
+  "explanation": "Why beholdest thou the mote that is in thy brother2019s eye?",
+  "ref": "Matthew 7:3"
+ },
+ {
+  "id": "matthew-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does Jesus say he never knew?",
+  "choices": [
+   "The scribes",
+   "The Pharisees only",
+   "Them that work iniquity",
+   "The false prophets only"
+  ],
+  "answer": 2,
+  "explanation": "I never knew you: depart from me, ye that work iniquity.",
+  "ref": "Matthew 7:23"
+ },
+ {
+  "id": "matthew-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the leper say to Jesus?",
+  "choices": [
+   "Lord, if thou wilt, thou canst make me clean",
+   "Master, have mercy on me",
+   "Son of David, heal me",
+   "Lord, say the word only"
+  ],
+  "answer": 0,
+  "explanation": "There came a leper and worshipped him, saying, Lord, if thou wilt, thou canst make me clean.",
+  "ref": "Matthew 8:2"
+ },
+ {
+  "id": "matthew-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus do when the leper asked to be made clean?",
+  "choices": [
+   "Sent him to the pool",
+   "Put forth his hand and touched him",
+   "Anointed him with oil",
+   "Spoke from a distance"
+  ],
+  "answer": 1,
+  "explanation": "Jesus put forth his hand, and touched him, saying, I will; be thou clean.",
+  "ref": "Matthew 8:3"
+ },
+ {
+  "id": "matthew-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "In which town did the centurion come to Jesus?",
+  "choices": [
+   "Nazareth",
+   "Jerusalem",
+   "Capernaum",
+   "Bethlehem"
+  ],
+  "answer": 2,
+  "explanation": "When Jesus was entered into Capernaum, there came unto him a centurion.",
+  "ref": "Matthew 8:5"
+ },
+ {
+  "id": "matthew-8-e-04",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where was Jesus when the great tempest arose?",
+  "choices": [
+   "At the helm",
+   "On the shore",
+   "Praying on a mountain",
+   "Asleep in the ship"
+  ],
+  "answer": 3,
+  "explanation": "There arose a great tempest in the sea, insomuch that the ship was covered with the waves: but he was asleep.",
+  "ref": "Matthew 8:24"
+ },
+ {
+  "id": "matthew-8-e-05",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the disciples cry when they woke Jesus in the storm?",
+  "choices": [
+   "Lord, save us: we perish",
+   "Master, carest thou not?",
+   "Lord, help our unbelief",
+   "Command the sea to rest"
+  ],
+  "answer": 0,
+  "explanation": "His disciples came to him, and awoke him, saying, Lord, save us: we perish.",
+  "ref": "Matthew 8:25"
+ },
+ {
+  "id": "matthew-8-e-06",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What followed when Jesus rebuked the winds and the sea?",
+  "choices": [
+   "A great wind",
+   "A great calm",
+   "A great rain",
+   "A great light"
+  ],
+  "answer": 1,
+  "explanation": "Then he arose, and rebuked the winds and the sea; and there was a great calm.",
+  "ref": "Matthew 8:26"
+ },
+ {
+  "id": "matthew-8-e-07",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "place",
+  "question": "Into whose country did Jesus come on the other side of the sea?",
+  "choices": [
+   "The Egyptians",
+   "The Samaritans",
+   "The Gergesenes",
+   "The Syrians"
+  ],
+  "answer": 2,
+  "explanation": "He was come to the other side into the country of the Gergesenes.",
+  "ref": "Matthew 8:28"
+ },
+ {
+  "id": "matthew-8-e-08",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many possessed with devils met Jesus coming out of the tombs?",
+  "choices": [
+   "One",
+   "Three",
+   "Seven",
+   "Two"
+  ],
+  "answer": 3,
+  "explanation": "There met him two possessed with devils, coming out of the tombs.",
+  "ref": "Matthew 8:28"
+ },
+ {
+  "id": "matthew-8-e-09",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Jesus say the Son of man has not?",
+  "choices": [
+   "Where to lay his head",
+   "A place at the altar",
+   "A home in Nazareth",
+   "A friend in Jerusalem"
+  ],
+  "answer": 0,
+  "explanation": "The foxes have holes, and the birds of the air have nests; but the Son of man hath not where to lay his head.",
+  "ref": "Matthew 8:20"
+ },
+ {
+  "id": "matthew-8-e-10",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did Jesus cast out the spirits at evening?",
+  "choices": [
+   "With prayer and fasting",
+   "With his word",
+   "By laying on hands",
+   "By anointing with oil"
+  ],
+  "answer": 1,
+  "explanation": "When the even was come... he cast out the spirits with his word, and healed all that were sick.",
+  "ref": "Matthew 8:16"
+ },
+ {
+  "id": "matthew-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus tell the healed leper to do?",
+  "choices": [
+   "Go and tell all Capernaum",
+   "Sell all he had",
+   "Tell no man, but show himself to the priest",
+   "Stay with Jesus"
+  ],
+  "answer": 2,
+  "explanation": "See thou tell no man; but go thy way, shew thyself to the priest.",
+  "ref": "Matthew 8:4"
+ },
+ {
+  "id": "matthew-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the leper to offer with it?",
+  "choices": [
+   "A lamb without blemish",
+   "A tenth of his goods",
+   "Two turtledoves",
+   "The gift that Moses commanded"
+  ],
+  "answer": 3,
+  "explanation": "Offer the gift that Moses commanded, for a testimony unto them.",
+  "ref": "Matthew 8:4"
+ },
+ {
+  "id": "matthew-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was wrong with the centurion's servant?",
+  "choices": [
+   "He lay at home sick of the palsy, grievously tormented",
+   "He was blind from birth",
+   "He was possessed with a devil",
+   "He had a fever"
+  ],
+  "answer": 0,
+  "explanation": "My servant lieth at home sick of the palsy, grievously tormented.",
+  "ref": "Matthew 8:6"
+ },
+ {
+  "id": "matthew-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say to the centurion about his servant?",
+  "choices": [
+   "Go thy way, thy servant lives",
+   "I will come and heal him",
+   "Bring him to me",
+   "Thy sins are forgiven"
+  ],
+  "answer": 1,
+  "explanation": "Jesus saith unto him, I will come and heal him.",
+  "ref": "Matthew 8:7"
+ },
+ {
+  "id": "matthew-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the centurion say he was not worthy of?",
+  "choices": [
+   "To speak to a Jew",
+   "To kneel before him",
+   "That Jesus should come under his roof",
+   "To ask for healing"
+  ],
+  "answer": 2,
+  "explanation": "Lord, I am not worthy that thou shouldest come under my roof: but speak the word only.",
+  "ref": "Matthew 8:8"
+ },
+ {
+  "id": "matthew-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the centurion describe himself?",
+  "choices": [
+   "A ruler of the synagogue",
+   "A friend of the Pharisees",
+   "A servant of Herod",
+   "A man under authority, having soldiers under him"
+  ],
+  "answer": 3,
+  "explanation": "I am a man under authority, having soldiers under me.",
+  "ref": "Matthew 8:9"
+ },
+ {
+  "id": "matthew-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who shall come from east and west and sit down with Abraham, Isaac and Jacob?",
+  "choices": [
+   "Many",
+   "The children of the kingdom",
+   "Only the Jews",
+   "The scribes"
+  ],
+  "answer": 0,
+  "explanation": "Many shall come from the east and west, and shall sit down with Abraham, and Isaac, and Jacob, in the kingdom of heaven.",
+  "ref": "Matthew 8:11"
+ },
+ {
+  "id": "matthew-8-m-08",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where shall the children of the kingdom be cast out to?",
+  "choices": [
+   "The wilderness",
+   "Outer darkness",
+   "The sea",
+   "A far country"
+  ],
+  "answer": 1,
+  "explanation": "The children of the kingdom shall be cast out into outer darkness: there shall be weeping and gnashing of teeth.",
+  "ref": "Matthew 8:12"
+ },
+ {
+  "id": "matthew-8-m-09",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When was the centurion's servant healed?",
+  "choices": [
+   "The next day",
+   "After three days",
+   "In the selfsame hour",
+   "At evening"
+  ],
+  "answer": 2,
+  "explanation": "Go thy way; and as thou hast believed, so be it done unto thee. And his servant was healed in the selfsame hour.",
+  "ref": "Matthew 8:13"
+ },
+ {
+  "id": "matthew-8-m-10",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened when Jesus touched Peter's wife's mother?",
+  "choices": [
+   "She was raised from the dead",
+   "She went home",
+   "She was cleansed",
+   "The fever left her and she ministered to them"
+  ],
+  "answer": 3,
+  "explanation": "He touched her hand, and the fever left her: and she arose, and ministered unto them.",
+  "ref": "Matthew 8:15"
+ },
+ {
+  "id": "matthew-8-m-11",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Which prophet's words were fulfilled by the healing at evening?",
+  "choices": [
+   "Esaias",
+   "Jeremy",
+   "Moses",
+   "Daniel"
+  ],
+  "answer": 0,
+  "explanation": "That it might be fulfilled which was spoken by Esaias the prophet.",
+  "ref": "Matthew 8:17"
+ },
+ {
+  "id": "matthew-8-m-12",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the scribe say to Jesus?",
+  "choices": [
+   "Master, what must I do to be saved?",
+   "Master, I will follow thee whithersoever thou goest",
+   "Master, we have left all",
+   "Master, teach us to pray"
+  ],
+  "answer": 1,
+  "explanation": "A certain scribe came, and said unto him, Master, I will follow thee whithersoever thou goest.",
+  "ref": "Matthew 8:19"
+ },
+ {
+  "id": "matthew-8-m-13",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did another disciple ask before following Jesus?",
+  "choices": [
+   "To say farewell to his family",
+   "To sell his house",
+   "To go and bury his father",
+   "To finish his harvest"
+  ],
+  "answer": 2,
+  "explanation": "Lord, suffer me first to go and bury my father.",
+  "ref": "Matthew 8:21"
+ },
+ {
+  "id": "matthew-8-m-14",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the ship covered with in the tempest?",
+  "choices": [
+   "Spray",
+   "Darkness",
+   "Rain",
+   "The waves"
+  ],
+  "answer": 3,
+  "explanation": "There arose a great tempest in the sea, insomuch that the ship was covered with the waves.",
+  "ref": "Matthew 8:24"
+ },
+ {
+  "id": "matthew-8-m-15",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus ask the fearful disciples?",
+  "choices": [
+   "Why are ye fearful, O ye of little faith?",
+   "Where is your faith?",
+   "Why did ye wake me?",
+   "Who touched me?"
+  ],
+  "answer": 0,
+  "explanation": "And he saith unto them, Why are ye fearful, O ye of little faith?",
+  "ref": "Matthew 8:26"
+ },
+ {
+  "id": "matthew-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say to the one who wanted to bury his father?",
+  "choices": [
+   "Go and bury him, then follow me",
+   "Follow me; and let the dead bury their dead",
+   "Honour thy father",
+   "Leave all thou hast"
+  ],
+  "answer": 1,
+  "explanation": "Jesus said unto him, Follow me; and let the dead bury their dead.",
+  "ref": "Matthew 8:22"
+ },
+ {
+  "id": "matthew-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the leper do when he came to Jesus?",
+  "choices": [
+   "Cried out from afar",
+   "Wept at his feet",
+   "Worshipped him",
+   "Fled from the crowd"
+  ],
+  "answer": 2,
+  "explanation": "There came a leper and worshipped him.",
+  "ref": "Matthew 8:2"
+ },
+ {
+  "id": "matthew-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say he had not found even in Israel?",
+  "choices": [
+   "So great love",
+   "So great knowledge",
+   "So great obedience",
+   "So great faith"
+  ],
+  "answer": 3,
+  "explanation": "I have not found so great faith, no, not in Israel.",
+  "ref": "Matthew 8:10"
+ },
+ {
+  "id": "matthew-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall there be in outer darkness?",
+  "choices": [
+   "Weeping and gnashing of teeth",
+   "Silence and fear",
+   "Fire and smoke",
+   "Hunger and thirst"
+  ],
+  "answer": 0,
+  "explanation": "There shall be weeping and gnashing of teeth.",
+  "ref": "Matthew 8:12"
+ },
+ {
+  "id": "matthew-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus give commandment to do when he saw great multitudes about him?",
+  "choices": [
+   "Sit down on the grass",
+   "Depart unto the other side",
+   "Go up into the mountain",
+   "Return to Capernaum"
+  ],
+  "answer": 1,
+  "explanation": "When Jesus saw great multitudes about him, he gave commandment to depart unto the other side.",
+  "ref": "Matthew 8:18"
+ },
+ {
+  "id": "matthew-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the men say when the winds and the sea obeyed him?",
+  "choices": [
+   "Who is this that forgives sins?",
+   "Surely this is the Christ",
+   "What manner of man is this?",
+   "This is a prophet of God"
+  ],
+  "answer": 2,
+  "explanation": "The men marvelled, saying, What manner of man is this, that even the winds and the sea obey him!",
+  "ref": "Matthew 8:27"
+ },
+ {
+  "id": "matthew-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was said of the two possessed men coming out of the tombs?",
+  "choices": [
+   "They were naked and bound in chains",
+   "They cried day and night in the hills",
+   "They were silent and sat by the tombs",
+   "They were exceeding fierce, no man might pass"
+  ],
+  "answer": 3,
+  "explanation": "Two possessed with devils, coming out of the tombs, exceeding fierce, so that no man might pass by that way.",
+  "ref": "Matthew 8:28"
+ },
+ {
+  "id": "matthew-8-h-08",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the devils cry out to Jesus?",
+  "choices": [
+   "Art thou come hither to torment us before the time?",
+   "Depart from us, Lord",
+   "Let us alone",
+   "Why art thou come to Gadara?"
+  ],
+  "answer": 0,
+  "explanation": "What have we to do with thee, Jesus, thou Son of God? art thou come hither to torment us before the time?",
+  "ref": "Matthew 8:29"
+ },
+ {
+  "id": "matthew-8-h-09",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was feeding a good way off from them?",
+  "choices": [
+   "A flock of sheep",
+   "A herd of many swine",
+   "A herd of goats",
+   "A drove of oxen"
+  ],
+  "answer": 1,
+  "explanation": "There was a good way off from them an herd of many swine feeding.",
+  "ref": "Matthew 8:30"
+ },
+ {
+  "id": "matthew-8-h-10",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the devils beseech Jesus to let them do?",
+  "choices": [
+   "Return to the tombs",
+   "Stay in the country",
+   "Go away into the herd of swine",
+   "Enter the city"
+  ],
+  "answer": 2,
+  "explanation": "If thou cast us out, suffer us to go away into the herd of swine.",
+  "ref": "Matthew 8:31"
+ },
+ {
+  "id": "matthew-8-h-11",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What one word did Jesus say to the devils?",
+  "choices": [
+   "Come out",
+   "Depart",
+   "Be silent",
+   "Go"
+  ],
+  "answer": 3,
+  "explanation": "And he said unto them, Go.",
+  "ref": "Matthew 8:32"
+ },
+ {
+  "id": "matthew-8-h-12",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the whole herd of swine do?",
+  "choices": [
+   "Ran violently down a steep place into the sea and perished",
+   "Scattered into the mountains",
+   "Fled into the city",
+   "Were driven into the tombs"
+  ],
+  "answer": 0,
+  "explanation": "The whole herd of swine ran violently down a steep place into the sea, and perished in the waters.",
+  "ref": "Matthew 8:32"
+ },
+ {
+  "id": "matthew-8-h-13",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did they that kept the swine do?",
+  "choices": [
+   "Followed Jesus",
+   "Fled into the city and told every thing",
+   "Gathered the swine again",
+   "Struck the possessed men"
+  ],
+  "answer": 1,
+  "explanation": "They that kept them fled, and went their ways into the city, and told every thing.",
+  "ref": "Matthew 8:33"
+ },
+ {
+  "id": "matthew-8-h-14",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the whole city ask of Jesus?",
+  "choices": [
+   "That he would heal their sick",
+   "That he would stay with them",
+   "That he would depart out of their coasts",
+   "That he would teach in their synagogue"
+  ],
+  "answer": 2,
+  "explanation": "They besought him that he would depart out of their coasts.",
+  "ref": "Matthew 8:34"
+ },
+ {
+  "id": "matthew-8-h-15",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was Jesus when the multitudes first followed him in this chapter?",
+  "choices": [
+   "Entering Capernaum",
+   "Sitting by the sea",
+   "Teaching in the synagogue",
+   "Come down from the mountain"
+  ],
+  "answer": 3,
+  "explanation": "When he was come down from the mountain, great multitudes followed him.",
+  "ref": "Matthew 8:1"
+ },
+ {
+  "id": "matthew-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the ruler ask Jesus to do for his dead daughter?",
+  "choices": [
+   "Speak the word only",
+   "Come and lay his hand upon her",
+   "Pray at her bedside",
+   "Send his disciples"
+  ],
+  "answer": 1,
+  "explanation": "My daughter is even now dead: but come and lay thy hand upon her, and she shall live.",
+  "ref": "Matthew 9:18"
+ },
+ {
+  "id": "matthew-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "For how many years had the woman been diseased with an issue of blood?",
+  "choices": [
+   "Seven",
+   "Thirty-eight",
+   "Twelve",
+   "Three"
+  ],
+  "answer": 2,
+  "explanation": "A woman, which was diseased with an issue of blood twelve years, came behind him.",
+  "ref": "Matthew 9:20"
+ },
+ {
+  "id": "matthew-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say made the woman whole?",
+  "choices": [
+   "Her touch",
+   "Her prayer",
+   "Her offering",
+   "Her faith"
+  ],
+  "answer": 3,
+  "explanation": "Daughter, be of good comfort; thy faith hath made thee whole.",
+  "ref": "Matthew 9:22"
+ },
+ {
+  "id": "matthew-9-e-04",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the two blind men cry as they followed Jesus?",
+  "choices": [
+   "Thou Son of David, have mercy on us",
+   "Lord, that we may see",
+   "Master, we perish",
+   "Hosanna in the highest"
+  ],
+  "answer": 0,
+  "explanation": "Two blind men followed him, crying, and saying, Thou Son of David, have mercy on us.",
+  "ref": "Matthew 9:27"
+ },
+ {
+  "id": "matthew-9-e-05",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus say about those who need a physician?",
+  "choices": [
+   "The rich need a physician",
+   "The whole need no physician, but the sick do",
+   "Every man needs a physician",
+   "Only the sick of the palsy"
+  ],
+  "answer": 1,
+  "explanation": "They that be whole need not a physician, but they that are sick.",
+  "ref": "Matthew 9:12"
+ },
+ {
+  "id": "matthew-9-e-06",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who said within themselves, This man blasphemeth?",
+  "choices": [
+   "The Pharisees",
+   "The disciples of John",
+   "Certain of the scribes",
+   "The multitudes"
+  ],
+  "answer": 2,
+  "explanation": "Certain of the scribes said within themselves, This man blasphemeth.",
+  "ref": "Matthew 9:3"
+ },
+ {
+  "id": "matthew-9-e-07",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the man sick of the palsy do when Jesus told him to arise?",
+  "choices": [
+   "Stayed upon his bed",
+   "Followed Jesus",
+   "Went to the priest",
+   "Arose and departed to his house"
+  ],
+  "answer": 3,
+  "explanation": "He arose, and departed to his house.",
+  "ref": "Matthew 9:7"
+ },
+ {
+  "id": "matthew-9-e-08",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Jesus tell his disciples to pray for?",
+  "choices": [
+   "That the Lord of the harvest send forth labourers",
+   "That the harvest be gathered",
+   "That the rain be sent",
+   "That the scribes be silent"
+  ],
+  "answer": 0,
+  "explanation": "Pray ye therefore the Lord of the harvest, that he will send forth labourers into his harvest.",
+  "ref": "Matthew 9:38"
+ },
+ {
+  "id": "matthew-9-e-09",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the multitudes look like to Jesus when he was moved with compassion?",
+  "choices": [
+   "Wolves among the flock",
+   "Sheep having no shepherd",
+   "Birds without nests",
+   "Fish without a net"
+  ],
+  "answer": 1,
+  "explanation": "He was moved with compassion on them, because they fainted, and were scattered abroad, as sheep having no shepherd.",
+  "ref": "Matthew 9:36"
+ },
+ {
+  "id": "matthew-9-e-10",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What happened when the devil was cast out of the dumb man?",
+  "choices": [
+   "He fell down dead",
+   "He fled",
+   "The dumb spake",
+   "He was blind"
+  ],
+  "answer": 2,
+  "explanation": "When the devil was cast out, the dumb spake: and the multitudes marvelled.",
+  "ref": "Matthew 9:33"
+ },
+ {
+  "id": "matthew-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus see that led him to forgive the palsied man?",
+  "choices": [
+   "Their gifts",
+   "Their tears",
+   "Their sacrifice",
+   "Their faith"
+  ],
+  "answer": 3,
+  "explanation": "Jesus seeing their faith said unto the sick of the palsy; Son, be of good cheer; thy sins be forgiven thee.",
+  "ref": "Matthew 9:2"
+ },
+ {
+  "id": "matthew-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What question did Jesus ask about which is easier?",
+  "choices": [
+   "To say Thy sins be forgiven, or to say Arise, and walk",
+   "To heal the blind or the lame",
+   "To feed the multitude or to heal",
+   "To cast out devils or to raise the dead"
+  ],
+  "answer": 0,
+  "explanation": "Whether is easier, to say, Thy sins be forgiven thee; or to say, Arise, and walk?",
+  "ref": "Matthew 9:5"
+ },
+ {
+  "id": "matthew-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say he wanted them to know about the Son of man?",
+  "choices": [
+   "He hath no place to lay his head",
+   "He hath power on earth to forgive sins",
+   "He is come to heal the sick",
+   "He shall be taken from them"
+  ],
+  "answer": 1,
+  "explanation": "That ye may know that the Son of man hath power on earth to forgive sins.",
+  "ref": "Matthew 9:6"
+ },
+ {
+  "id": "matthew-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the multitudes glorify God?",
+  "choices": [
+   "He had sent a prophet",
+   "He had healed their city",
+   "He had given such power unto men",
+   "He had ended the law"
+  ],
+  "answer": 2,
+  "explanation": "The multitudes marvelled, and glorified God, which had given such power unto men.",
+  "ref": "Matthew 9:8"
+ },
+ {
+  "id": "matthew-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who sat down with Jesus and his disciples at meat in the house?",
+  "choices": [
+   "The Pharisees",
+   "The scribes",
+   "The priests",
+   "Many publicans and sinners"
+  ],
+  "answer": 3,
+  "explanation": "Many publicans and sinners came and sat down with him and his disciples.",
+  "ref": "Matthew 9:10"
+ },
+ {
+  "id": "matthew-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Pharisees ask the disciples?",
+  "choices": [
+   "Why eateth your Master with publicans and sinners?",
+   "Why do your disciples not fast?",
+   "By what authority does he teach?",
+   "Why does he break the sabbath?"
+  ],
+  "answer": 0,
+  "explanation": "The Pharisees said unto his disciples, Why eateth your Master with publicans and sinners?",
+  "ref": "Matthew 9:11"
+ },
+ {
+  "id": "matthew-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus tell them to go and learn?",
+  "choices": [
+   "Love thy neighbour as thyself",
+   "I will have mercy, and not sacrifice",
+   "Honour the sabbath",
+   "Thou shalt not kill"
+  ],
+  "answer": 1,
+  "explanation": "Go ye and learn what that meaneth, I will have mercy, and not sacrifice.",
+  "ref": "Matthew 9:13"
+ },
+ {
+  "id": "matthew-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Jesus say he came to call?",
+  "choices": [
+   "The righteous to the temple",
+   "The scribes to the law",
+   "Sinners to repentance",
+   "The poor to the kingdom"
+  ],
+  "answer": 2,
+  "explanation": "I am not come to call the righteous, but sinners to repentance.",
+  "ref": "Matthew 9:13"
+ },
+ {
+  "id": "matthew-9-m-09",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who asked why Jesus' disciples did not fast?",
+  "choices": [
+   "The Pharisees",
+   "The scribes",
+   "The centurion",
+   "The disciples of John"
+  ],
+  "answer": 3,
+  "explanation": "Then came to him the disciples of John, saying, Why do we and the Pharisees fast oft, but thy disciples fast not?",
+  "ref": "Matthew 9:14"
+ },
+ {
+  "id": "matthew-9-m-10",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did Jesus compare himself to when he spoke of fasting?",
+  "choices": [
+   "The bridegroom",
+   "The shepherd",
+   "The physician",
+   "The husbandman"
+  ],
+  "answer": 0,
+  "explanation": "Can the children of the bridechamber mourn, as long as the bridegroom is with them?",
+  "ref": "Matthew 9:15"
+ },
+ {
+  "id": "matthew-9-m-11",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens if new cloth is put to an old garment?",
+  "choices": [
+   "The garment is mended",
+   "The rent is made worse",
+   "The cloth shrinks",
+   "The garment is made new"
+  ],
+  "answer": 1,
+  "explanation": "That which is put in to fill it up taketh from the garment, and the rent is made worse.",
+  "ref": "Matthew 9:16"
+ },
+ {
+  "id": "matthew-9-m-12",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens if new wine is put into old bottles?",
+  "choices": [
+   "The wine turns sour",
+   "The bottles harden",
+   "The bottles break and the wine runs out",
+   "The wine is preserved"
+  ],
+  "answer": 2,
+  "explanation": "Neither do men put new wine into old bottles: else the bottles break, and the wine runneth out.",
+  "ref": "Matthew 9:17"
+ },
+ {
+  "id": "matthew-9-m-13",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the woman say within herself?",
+  "choices": [
+   "If he would but speak, I shall be healed",
+   "If he would but pray, I shall live",
+   "If I follow him, I shall be saved",
+   "If I may but touch his garment, I shall be whole"
+  ],
+  "answer": 3,
+  "explanation": "For she said within herself, If I may but touch his garment, I shall be whole.",
+  "ref": "Matthew 9:21"
+ },
+ {
+  "id": "matthew-9-m-14",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus see when he came into the ruler's house?",
+  "choices": [
+   "Minstrels and the people making a noise",
+   "Many mourners in silence",
+   "The priests praying",
+   "His daughter laid on the floor"
+  ],
+  "answer": 0,
+  "explanation": "Jesus saw the minstrels and the people making a noise.",
+  "ref": "Matthew 9:23"
+ },
+ {
+  "id": "matthew-9-m-15",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Jesus say of the maid?",
+  "choices": [
+   "She is dead, and shall rise",
+   "She is not dead, but sleepeth",
+   "She shall live again",
+   "She is lost"
+  ],
+  "answer": 1,
+  "explanation": "Give place: for the maid is not dead, but sleepeth. And they laughed him to scorn.",
+  "ref": "Matthew 9:24"
+ },
+ {
+  "id": "matthew-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "How did Jesus come into his own city?",
+  "choices": [
+   "On foot over the hills",
+   "By night",
+   "By ship",
+   "With the ruler"
+  ],
+  "answer": 2,
+  "explanation": "He entered into a ship, and passed over, and came into his own city.",
+  "ref": "Matthew 9:1"
+ },
+ {
+  "id": "matthew-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus first call the man sick of the palsy?",
+  "choices": [
+   "Friend",
+   "Brother",
+   "Man",
+   "Son"
+  ],
+  "answer": 3,
+  "explanation": "Jesus said unto the sick of the palsy; Son, be of good cheer; thy sins be forgiven thee.",
+  "ref": "Matthew 9:2"
+ },
+ {
+  "id": "matthew-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus know when the scribes said This man blasphemeth?",
+  "choices": [
+   "Their thoughts",
+   "Their names",
+   "Their errand",
+   "Their number"
+  ],
+  "answer": 0,
+  "explanation": "Jesus knowing their thoughts said, Wherefore think ye evil in your hearts?",
+  "ref": "Matthew 9:4"
+ },
+ {
+  "id": "matthew-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the blind men come to Jesus?",
+  "choices": [
+   "At the sea",
+   "Into the house",
+   "In the synagogue",
+   "On the road"
+  ],
+  "answer": 1,
+  "explanation": "When he was come into the house, the blind men came to him.",
+  "ref": "Matthew 9:28"
+ },
+ {
+  "id": "matthew-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Matthew do when Jesus said Follow me?",
+  "choices": [
+   "Asked for time",
+   "Left his money behind",
+   "Arose and followed him",
+   "Went to call his friends"
+  ],
+  "answer": 2,
+  "explanation": "He saith unto him, Follow me. And he arose, and followed him.",
+  "ref": "Matthew 9:9"
+ },
+ {
+  "id": "matthew-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question did Jesus ask the blind men?",
+  "choices": [
+   "What will ye that I do?",
+   "Have ye faith as a grain?",
+   "Who touched you?",
+   "Believe ye that I am able to do this?"
+  ],
+  "answer": 3,
+  "explanation": "Jesus saith unto them, Believe ye that I am able to do this? They said unto him, Yea, Lord.",
+  "ref": "Matthew 9:28"
+ },
+ {
+  "id": "matthew-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say as he touched the eyes of the blind men?",
+  "choices": [
+   "According to your faith be it unto you",
+   "Be opened",
+   "Receive your sight",
+   "Go, thy faith hath saved thee"
+  ],
+  "answer": 0,
+  "explanation": "Then touched he their eyes, saying, According to your faith be it unto you.",
+  "ref": "Matthew 9:29"
+ },
+ {
+  "id": "matthew-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus straitly charge the blind men?",
+  "choices": [
+   "Go and tell the priest",
+   "See that no man know it",
+   "Follow me",
+   "Tell all Galilee"
+  ],
+  "answer": 1,
+  "explanation": "Jesus straitly charged them, saying, See that no man know it.",
+  "ref": "Matthew 9:30"
+ },
+ {
+  "id": "matthew-9-h-09",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the two men do after they departed?",
+  "choices": [
+   "Kept silence",
+   "Followed him to the house",
+   "Spread abroad his fame in all that country",
+   "Offered a gift"
+  ],
+  "answer": 2,
+  "explanation": "They, when they were departed, spread abroad his fame in all that country.",
+  "ref": "Matthew 9:31"
+ },
+ {
+  "id": "matthew-9-h-10",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the multitudes say when the dumb man spoke?",
+  "choices": [
+   "This is the Christ",
+   "He hath done all things well",
+   "We have seen strange things",
+   "It was never so seen in Israel"
+  ],
+  "answer": 3,
+  "explanation": "The multitudes marvelled, saying, It was never so seen in Israel.",
+  "ref": "Matthew 9:33"
+ },
+ {
+  "id": "matthew-9-h-11",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Pharisees say of the casting out of devils?",
+  "choices": [
+   "He casteth out devils through the prince of the devils",
+   "He is a Samaritan",
+   "He hath a devil",
+   "He is a deceiver"
+  ],
+  "answer": 0,
+  "explanation": "But the Pharisees said, He casteth out devils through the prince of the devils.",
+  "ref": "Matthew 9:34"
+ },
+ {
+  "id": "matthew-9-h-12",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus do in all the cities and villages?",
+  "choices": [
+   "Sat at meat with publicans",
+   "Taught in their synagogues and healed every sickness",
+   "Fasted in the wilderness",
+   "Sent out the twelve"
+  ],
+  "answer": 1,
+  "explanation": "Jesus went about all the cities and villages, teaching in their synagogues, and preaching the gospel of the kingdom.",
+  "ref": "Matthew 9:35"
+ },
+ {
+  "id": "matthew-9-h-13",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jesus say will happen when the bridegroom is taken away?",
+  "choices": [
+   "Then shall they mourn for ever",
+   "Then shall they scatter",
+   "Then shall they fast",
+   "Then shall they rejoice"
+  ],
+  "answer": 2,
+  "explanation": "The days will come, when the bridegroom shall be taken from them, and then shall they fast.",
+  "ref": "Matthew 9:15"
+ },
+ {
+  "id": "matthew-9-h-14",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the ruler do when he came to Jesus?",
+  "choices": [
+   "Fell on his face and wept",
+   "Took him by the hand",
+   "Sent a servant",
+   "Worshipped him"
+  ],
+  "answer": 3,
+  "explanation": "There came a certain ruler, and worshipped him.",
+  "ref": "Matthew 9:18"
+ },
+ {
+  "id": "matthew-9-h-15",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Jesus say about the harvest and the labourers?",
+  "choices": [
+   "The harvest is plenteous but the labourers are few",
+   "The harvest is great and the labourers many",
+   "The harvest is failing",
+   "The labourers are weary"
+  ],
+  "answer": 0,
+  "explanation": "The harvest truly is plenteous, but the labourers are few.",
+  "ref": "Matthew 9:37"
  }
 ]
