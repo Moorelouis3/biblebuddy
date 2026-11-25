@@ -2148,16 +2148,16 @@
   "chapter": 5,
   "level": "hard",
   "category": "keyword",
-  "question": "Where were the ends of the ark's staves not seen?",
+  "question": "Where did the singing Levites stand at the dedication?",
   "choices": [
-   "Outside the oracle",
-   "Before the oracle",
-   "In the court",
-   "Beside the altar"
+   "At the east end of the altar",
+   "Before the veil",
+   "On the brasen scaffold",
+   "In the porch"
   ],
   "answer": 0,
-  "explanation": "The ends of the staves were seen from the ark before the oracle; but they were not seen without.",
-  "ref": "2 Chronicles 5:9"
+  "explanation": "The Levites which were the singers stood at the east end of the altar, with an hundred and twenty priests sounding with trumpets.",
+  "ref": "2 Chronicles 5:12"
  },
  {
   "id": "old-2-chronicles-6-1",
@@ -2238,6 +2238,646 @@
   "answer": 0,
   "explanation": "Solomon prays that even foreigners who seek the Lord would be heard.",
   "ref": "2 Chronicles 6:32–33"
+ },
+ {
+  "id": "2-chronicles-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon do first when he turned his face to the congregation?",
+  "choices": [
+   "Rebuked them",
+   "Blessed them",
+   "Sent them home",
+   "Counted them"
+  ],
+  "answer": 1,
+  "explanation": "The king turned his face, and blessed the whole congregation of Israel.",
+  "ref": "2 Chronicles 6:3"
+ },
+ {
+  "id": "2-chronicles-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the Lord choose to be over his people Israel?",
+  "choices": [
+   "Saul",
+   "Samuel",
+   "David",
+   "Joab"
+  ],
+  "answer": 2,
+  "explanation": "I have chosen David to be over my people Israel.",
+  "ref": "2 Chronicles 6:6"
+ },
+ {
+  "id": "2-chronicles-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city did the Lord choose for his name to be there?",
+  "choices": [
+   "Hebron",
+   "Shiloh",
+   "Bethel",
+   "Jerusalem"
+  ],
+  "answer": 3,
+  "explanation": "But I have chosen Jerusalem, that my name might be there.",
+  "ref": "2 Chronicles 6:6"
+ },
+ {
+  "id": "2-chronicles-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was told he would not build the house for the Lord's name?",
+  "choices": [
+   "David",
+   "Solomon",
+   "Nathan",
+   "Zadok"
+  ],
+  "answer": 0,
+  "explanation": "The LORD said to David, thou shalt not build the house.",
+  "ref": "2 Chronicles 6:8–9"
+ },
+ {
+  "id": "2-chronicles-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon say he had put in the house?",
+  "choices": [
+   "The golden table",
+   "The ark with the covenant of the LORD",
+   "The brasen altar",
+   "The tabernacle of Moses"
+  ],
+  "answer": 1,
+  "explanation": "In it have I put the ark, wherein is the covenant of the LORD.",
+  "ref": "2 Chronicles 6:11"
+ },
+ {
+  "id": "2-chronicles-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon say about the Lord among all gods in heaven and earth?",
+  "choices": [
+   "He is one of many",
+   "He lives only in Zion",
+   "There is no God like him",
+   "He rests in the sea"
+  ],
+  "answer": 2,
+  "explanation": "Solomon said, O LORD God of Israel, there is no God like thee in the heaven, nor in the earth.",
+  "ref": "2 Chronicles 6:14"
+ },
+ {
+  "id": "2-chronicles-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon spread toward heaven as he knelt to pray?",
+  "choices": [
+   "His robe",
+   "A scroll",
+   "Incense",
+   "His hands"
+  ],
+  "answer": 3,
+  "explanation": "He kneeled down upon his knees before all the congregation, and spread forth his hands toward heaven.",
+  "ref": "2 Chronicles 6:13"
+ },
+ {
+  "id": "2-chronicles-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Solomon keep asking God to do when his people prayed toward the house?",
+  "choices": [
+   "Hear from heaven and forgive",
+   "Send fire",
+   "Send an angel",
+   "Close the house"
+  ],
+  "answer": 0,
+  "explanation": "Solomon prayed, Then hear thou from the heavens, and forgive the sin of thy people Israel.",
+  "ref": "2 Chronicles 6:25"
+ },
+ {
+  "id": "2-chronicles-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of house did Solomon say he had built for the Lord?",
+  "choices": [
+   "A house of war",
+   "An house of habitation",
+   "A house of treasures",
+   "A house of judgment"
+  ],
+  "answer": 1,
+  "explanation": "I have built an house of habitation for thee, and a place for thy dwelling for ever.",
+  "ref": "2 Chronicles 6:2"
+ },
+ {
+  "id": "2-chronicles-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does God show to servants who walk before him with all their hearts?",
+  "choices": [
+   "Wealth",
+   "Long life",
+   "Mercy",
+   "Victory"
+  ],
+  "answer": 2,
+  "explanation": "Thou keepest covenant, and shewest mercy unto thy servants, that walk before thee with all their hearts.",
+  "ref": "2 Chronicles 6:14"
+ },
+ {
+  "id": "2-chronicles-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Lord say David did well?",
+  "choices": [
+   "He had won many battles",
+   "He had gathered much gold",
+   "He had numbered the people",
+   "It was in his heart to build the house"
+  ],
+  "answer": 3,
+  "explanation": "The LORD said, Forasmuch as it was in thine heart to build an house for my name, thou didst well.",
+  "ref": "2 Chronicles 6:8"
+ },
+ {
+  "id": "2-chronicles-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How many cities had the Lord chosen to build a house in, since bringing Israel out of Egypt, before Jerusalem?",
+  "choices": [
+   "None",
+   "One",
+   "Three",
+   "Twelve"
+  ],
+  "answer": 0,
+  "explanation": "Since the day that I brought forth my people out of the land of Egypt I chose no city among all the tribes of Israel to build an house in.",
+  "ref": "2 Chronicles 6:5"
+ },
+ {
+  "id": "2-chronicles-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon stand on before the congregation to pray?",
+  "choices": [
+   "The altar steps",
+   "A brasen scaffold",
+   "A golden throne",
+   "The veil"
+  ],
+  "answer": 1,
+  "explanation": "Solomon had made a brasen scaffold, and had set it in the midst of the court: and upon it he stood.",
+  "ref": "2 Chronicles 6:13"
+ },
+ {
+  "id": "2-chronicles-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "On what condition would David's descendants keep sitting on the throne?",
+  "choices": [
+   "If they built more cities",
+   "If they offered a thousand offerings",
+   "If his children took heed to walk in God's law",
+   "If they defeated Egypt"
+  ],
+  "answer": 2,
+  "explanation": "There shall not fail thee a man to sit upon the throne; yet so that thy children take heed to their way to walk in my law.",
+  "ref": "2 Chronicles 6:16"
+ },
+ {
+  "id": "2-chronicles-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If Israel was beaten by an enemy for sin, what would God do when they returned and prayed?",
+  "choices": [
+   "Destroy the enemy at once",
+   "Send a new king",
+   "Give them a new law",
+   "Hear, forgive, and bring them again to the land"
+  ],
+  "answer": 3,
+  "explanation": "Then hear thou from the heavens, and forgive the sin of thy people Israel, and bring them again unto the land.",
+  "ref": "2 Chronicles 6:24–25"
+ },
+ {
+  "id": "2-chronicles-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which pests did Solomon name among the troubles that might come on the land?",
+  "choices": [
+   "Locusts and caterpillers",
+   "Frogs and lice",
+   "Flies and hail",
+   "Serpents and scorpions"
+  ],
+  "answer": 0,
+  "explanation": "If there be dearth in the land, if there be pestilence, blasting, or mildew, locusts, or caterpillers.",
+  "ref": "2 Chronicles 6:28"
+ },
+ {
+  "id": "2-chronicles-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom besides Israel did Solomon ask God to answer when they prayed in the house?",
+  "choices": [
+   "The priests of Tyre",
+   "The stranger from a far country",
+   "The king of Egypt",
+   "The captains of Israel"
+  ],
+  "answer": 1,
+  "explanation": "Concerning the stranger, which is not of thy people Israel, but is come from a far country for thy great name's sake.",
+  "ref": "2 Chronicles 6:32"
+ },
+ {
+  "id": "2-chronicles-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Solomon ask God to do all that the stranger called for?",
+  "choices": [
+   "That Israel would pay tribute",
+   "That the stranger would build",
+   "That all people of the earth may know his name and fear him",
+   "That the stranger would leave"
+  ],
+  "answer": 2,
+  "explanation": "Do according to all that the stranger calleth to thee for; that all people of the earth may know thy name, and fear thee.",
+  "ref": "2 Chronicles 6:33"
+ },
+ {
+  "id": "2-chronicles-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When the people went out to war, toward what did Solomon say they would pray?",
+  "choices": [
+   "The tabernacle at Gibeon",
+   "The mount of Sinai",
+   "The ark in the wilderness",
+   "The chosen city and the house built for God's name"
+  ],
+  "answer": 3,
+  "explanation": "They pray unto thee toward this city which thou hast chosen, and the house which I have built for thy name.",
+  "ref": "2 Chronicles 6:34"
+ },
+ {
+  "id": "2-chronicles-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Toward what would captives pray in a far land?",
+  "choices": [
+   "Their land, the chosen city and the house",
+   "The east gate",
+   "The river of Egypt",
+   "The mountains of Lebanon"
+  ],
+  "answer": 0,
+  "explanation": "They pray toward their land, and toward the city which thou hast chosen, and toward the house which I have built.",
+  "ref": "2 Chronicles 6:38"
+ },
+ {
+  "id": "2-chronicles-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Solomon say is true of every man regarding sin?",
+  "choices": [
+   "Most men sin rarely",
+   "There is no man which sinneth not",
+   "Only kings sin",
+   "Priests do not sin"
+  ],
+  "answer": 1,
+  "explanation": "There is no man which sinneth not.",
+  "ref": "2 Chronicles 6:36"
+ },
+ {
+  "id": "2-chronicles-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "From where did Solomon ask God to hear?",
+  "choices": [
+   "The ark",
+   "The brasen altar",
+   "Heaven, his dwelling place",
+   "The mount Moriah"
+  ],
+  "answer": 2,
+  "explanation": "Then hear thou from heaven thy dwelling place, and forgive.",
+  "ref": "2 Chronicles 6:30"
+ },
+ {
+  "id": "2-chronicles-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into what did Solomon ask the Lord God to arise?",
+  "choices": [
+   "His chariot",
+   "His temple court",
+   "His holy mountain",
+   "His resting place"
+  ],
+  "answer": 3,
+  "explanation": "Now therefore arise, O LORD God, into thy resting place, thou, and the ark of thy strength.",
+  "ref": "2 Chronicles 6:41"
+ },
+ {
+  "id": "2-chronicles-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose mercies did Solomon ask the Lord to remember at the end of the prayer?",
+  "choices": [
+   "David's",
+   "Moses'",
+   "Abraham's",
+   "Joshua's"
+  ],
+  "answer": 0,
+  "explanation": "O LORD God, turn not away the face of thine anointed: remember the mercies of David thy servant.",
+  "ref": "2 Chronicles 6:42"
+ },
+ {
+  "id": "2-chronicles-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If heaven was shut up with no rain, what must the people do?",
+  "choices": [
+   "Offer a thousand burnt offerings",
+   "Pray toward this place, confess his name and turn from sin",
+   "Send for the king of Tyre",
+   "Leave the land"
+  ],
+  "answer": 1,
+  "explanation": "If they pray toward this place, and confess thy name, and turn from their sin, when thou dost afflict them.",
+  "ref": "2 Chronicles 6:26"
+ },
+ {
+  "id": "2-chronicles-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long and how broad was the brasen scaffold?",
+  "choices": [
+   "Three by three cubits",
+   "Ten by five cubits",
+   "Five cubits by five cubits",
+   "Twenty by ten cubits"
+  ],
+  "answer": 2,
+  "explanation": "The brasen scaffold was five cubits long, and five cubits broad.",
+  "ref": "2 Chronicles 6:13"
+ },
+ {
+  "id": "2-chronicles-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How high was the brasen scaffold?",
+  "choices": [
+   "Five cubits",
+   "Ten cubits",
+   "One cubit",
+   "Three cubits"
+  ],
+  "answer": 3,
+  "explanation": "The brasen scaffold was three cubits high.",
+  "ref": "2 Chronicles 6:13"
+ },
+ {
+  "id": "2-chronicles-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who alone knows the hearts of the children of men?",
+  "choices": [
+   "The Lord",
+   "The priests",
+   "The prophets",
+   "The king"
+  ],
+  "answer": 0,
+  "explanation": "Thou only knowest the hearts of the children of men.",
+  "ref": "2 Chronicles 6:30"
+ },
+ {
+  "id": "2-chronicles-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Solomon ask that the priests be clothed with?",
+  "choices": [
+   "White linen",
+   "Salvation",
+   "Righteousness",
+   "Gold"
+  ],
+  "answer": 1,
+  "explanation": "Let thy priests, O LORD God, be clothed with salvation.",
+  "ref": "2 Chronicles 6:41"
+ },
+ {
+  "id": "2-chronicles-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what did Solomon ask that the saints rejoice?",
+  "choices": [
+   "Victory",
+   "Plenty",
+   "Goodness",
+   "Peace"
+  ],
+  "answer": 2,
+  "explanation": "Let thy saints rejoice in goodness.",
+  "ref": "2 Chronicles 6:41"
+ },
+ {
+  "id": "2-chronicles-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Solomon's final plea, before he ended the prayer?",
+  "choices": [
+   "Destroy our enemies",
+   "Give us a king like David",
+   "Send us rain",
+   "Turn not away the face of thine anointed"
+  ],
+  "answer": 3,
+  "explanation": "O LORD God, turn not away the face of thine anointed: remember the mercies of David thy servant.",
+  "ref": "2 Chronicles 6:42"
+ },
+ {
+  "id": "2-chronicles-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long did Solomon say the people would fear God and walk in his ways?",
+  "choices": [
+   "As long as they live in the land",
+   "For seven years",
+   "Until the king dies",
+   "Until the temple falls"
+  ],
+  "answer": 0,
+  "explanation": "That they may fear thee, to walk in thy ways, so long as they live in the land which thou gavest unto our fathers.",
+  "ref": "2 Chronicles 6:31"
+ },
+ {
+  "id": "2-chronicles-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Solomon ask God to do for the righteous?",
+  "choices": [
+   "Make him a judge",
+   "Justify him and give him according to his righteousness",
+   "Send him to the temple",
+   "Give him a new name"
+  ],
+  "answer": 1,
+  "explanation": "Judge thy servants, by requiting the wicked, and by justifying the righteous, by giving him according to his righteousness.",
+  "ref": "2 Chronicles 6:23"
+ },
+ {
+  "id": "2-chronicles-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Solomon say the Lord had kept his word to David?",
+  "choices": [
+   "Wrote it on tablets",
+   "Sent an angel with it",
+   "Spoke with his mouth, fulfilled it with his hand",
+   "Gave it in a dream"
+  ],
+  "answer": 2,
+  "explanation": "Thou spakest with thy mouth, and hast fulfilled it with thine hand, as it is this day.",
+  "ref": "2 Chronicles 6:15"
+ },
+ {
+  "id": "2-chronicles-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how long did Solomon ask that God's eyes be open on the house?",
+  "choices": [
+   "Seven days",
+   "Every sabbath",
+   "Every new moon",
+   "Day and night"
+  ],
+  "answer": 3,
+  "explanation": "That thine eyes may be open upon this house day and night.",
+  "ref": "2 Chronicles 6:20"
+ },
+ {
+  "id": "2-chronicles-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What confession did captives in a far land say?",
+  "choices": [
+   "We have sinned, we have done amiss, and have dealt wickedly",
+   "We were deceived",
+   "We have been wronged",
+   "We have forgotten thee"
+  ],
+  "answer": 0,
+  "explanation": "Saying, We have sinned, we have done amiss, and have dealt wickedly.",
+  "ref": "2 Chronicles 6:37"
+ },
+ {
+  "id": "2-chronicles-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Solomon ask God to do for his people who prayed toward the house in time of war?",
+  "choices": [
+   "Give them chariots",
+   "Maintain their cause",
+   "Raise a prophet",
+   "Send them peace treaties"
+  ],
+  "answer": 1,
+  "explanation": "Then hear thou from the heavens their prayer and their supplication, and maintain their cause.",
+  "ref": "2 Chronicles 6:35"
+ },
+ {
+  "id": "2-chronicles-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was Solomon's first example of a prayer made in the house?",
+  "choices": [
+   "A famine in the land",
+   "A war with Egypt",
+   "A man who sinned against his neighbour and swore an oath",
+   "A stranger from afar"
+  ],
+  "answer": 2,
+  "explanation": "If a man sin against his neighbour, and an oath be laid upon him, and the oath come before thine altar in this house.",
+  "ref": "2 Chronicles 6:22"
+ },
+ {
+  "id": "2-chronicles-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the congregation of Israel do while Solomon blessed them?",
+  "choices": [
+   "Knelt",
+   "Sang",
+   "Offered sacrifices",
+   "Stood"
+  ],
+  "answer": 3,
+  "explanation": "The king blessed the whole congregation of Israel: and all the congregation of Israel stood.",
+  "ref": "2 Chronicles 6:3"
+ },
+ {
+  "id": "2-chronicles-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "In whose room did Solomon say he had risen up and been set on the throne?",
+  "choices": [
+   "David his father's",
+   "Saul's",
+   "Samuel's",
+   "Joab's"
+  ],
+  "answer": 0,
+  "explanation": "I am risen up in the room of David my father, and am set on the throne of Israel.",
+  "ref": "2 Chronicles 6:10"
  },
  {
   "id": "old-2-chronicles-7-1",
