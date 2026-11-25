@@ -36,6 +36,7 @@ import {
 } from "../../lib/homeWidgets";
 import { availability, withTotals, type LibraryStudy, type StudyProgress } from "../../lib/libraryCatalog";
 import { loadStudyShelf } from "./HomeExtraWidgets";
+import { imageThumb } from "../../lib/imageThumb";
 
 const LONG_PRESS_MS = 550;
 /** In edit mode, how long a finger holds still on a widget to pick it up. */
@@ -527,7 +528,7 @@ function StudyPicker({ userId, onBoard, onAdd }: { userId: string | null; onBoar
             >
               {study.cover_image ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={study.cover_image} alt="" className={`aspect-[2/3] w-full rounded-lg object-cover ${comingSoon ? "grayscale" : ""}`} />
+                <img src={imageThumb(study.cover_image)} alt="" className={`aspect-[2/3] w-full rounded-lg object-cover ${comingSoon ? "grayscale" : ""}`} />
               ) : null}
               <span className="mt-1.5 line-clamp-2 block text-xs font-black text-[var(--bb-text-primary,#111827)]">{study.title}</span>
               <span className="block text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">

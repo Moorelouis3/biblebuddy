@@ -42,6 +42,7 @@ import { getBibleYearAudioApiSrc } from "../../lib/bibleYearAudio";
 import { BIBLE_YEAR_PLAN_HREF } from "../../lib/bibleYearProgress";
 import { fetchVotdEntriesByIds, type VerseOfTheDayEntry } from "../../lib/verseOfTheDayContent";
 import type { WidgetSize } from "../../lib/homeWidgets";
+import { imageThumb } from "../../lib/imageThumb";
 
 /* ---------- shared pieces ---------- */
 
@@ -145,7 +146,7 @@ export function StudyGuideWidget({ studyId, userId, size }: { studyId: string; u
       <Link href={href} className="bb-hw flex h-full flex-col rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-2 shadow-sm">
         {study.cover_image ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={study.cover_image} alt={study.title} className={`aspect-[2/3] w-full rounded-lg object-cover ${comingSoon ? "grayscale" : ""}`} />
+          <img src={imageThumb(study.cover_image)} alt={study.title} className={`aspect-[2/3] w-full rounded-lg object-cover ${comingSoon ? "grayscale" : ""}`} />
         ) : null}
         <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#eef2f7)]">
           <span className="block h-full rounded-full bg-[var(--bb-accent,#2f7fe8)]" style={{ width: `${p.percent}%` }} />
@@ -162,7 +163,7 @@ export function StudyGuideWidget({ studyId, userId, size }: { studyId: string; u
       <div className="flex gap-3">
         {study.cover_image ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={study.cover_image} alt="" className={`h-28 w-[75px] shrink-0 rounded-lg object-cover shadow ${comingSoon ? "grayscale" : ""}`} />
+          <img src={imageThumb(study.cover_image)} alt="" className={`h-28 w-[75px] shrink-0 rounded-lg object-cover shadow ${comingSoon ? "grayscale" : ""}`} />
         ) : null}
         <div className="flex min-w-0 flex-1 flex-col">
           <Title icon="📚">Study Guide</Title>

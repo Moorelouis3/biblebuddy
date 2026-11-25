@@ -90,6 +90,7 @@ import { preloadAdminAnalytics } from "../lib/adminAnalyticsPreload";
 import { preloadGroupFeedForUser, writeGroupFeedCache } from "../lib/groupFeedCache";
 import { buildPersistedFeatureTours, normalizeFeatureTours } from "../lib/featureTours";
 import { getTriviaChapter } from "../lib/triviaGameData";
+import { imageThumb } from "../lib/imageThumb";
 
 const EmbeddedSettingsPage = dynamic(() => import("../app/settings/page"), { ssr: false });
 const EmbeddedAdminAnalyticsPage = dynamic(() => import("./admin/AnalyticsDashboard"), { ssr: false });
@@ -17437,7 +17438,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                           <>
                           {renderBibleYearPlanOption()}
                           {devotionalOptions.map((devotional) => {
-                            const cover = getDashboardStudyCover(devotional.title) ?? devotional.cover_image ?? null;
+                            const cover = imageThumb(getDashboardStudyCover(devotional.title) ?? devotional.cover_image ?? null);
                             const selected = selectedDevotionalId === devotional.id;
                             return (
                               <button
@@ -18720,7 +18721,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <>
                 {renderBibleYearPlanOption()}
                 {devotionalOptions.map((devotional) => {
-                  const cover = getDashboardStudyCover(devotional.title) ?? devotional.cover_image ?? null;
+                  const cover = imageThumb(getDashboardStudyCover(devotional.title) ?? devotional.cover_image ?? null);
                   const selected = selectedDevotionalId === devotional.id;
                   return (
                     <button

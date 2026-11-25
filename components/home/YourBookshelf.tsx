@@ -25,6 +25,7 @@ import {
   withTotals,
   type LibraryStudy,
 } from "../../lib/libraryCatalog";
+import { imageThumb } from "../../lib/imageThumb";
 
 /**
  * Your Bookshelf - one row of six books, chosen for the person looking.
@@ -310,7 +311,7 @@ export default function YourBookshelf({
         return {
           key: s.id,
           title: s.title,
-          cover: s.cover_image || "",
+          cover: imageThumb(s.cover_image) || "",
           /**
            * THE STUDY'S OWN PAGE, NOT THE NEXT DAY (Louis, 2026-10-25, from
            * Rachel's message: "people can't get to the past days"). Tapping a
@@ -341,7 +342,7 @@ export default function YourBookshelf({
       const bibleYear: ShelfBook = {
         key: BIBLE_YEAR_KEY,
         title: BIBLE_YEAR_SHELF_TITLE,
-        cover: BIBLE_YEAR_SHELF_COVER,
+        cover: imageThumb(BIBLE_YEAR_SHELF_COVER),
         href: BIBLE_YEAR_PLAN_HREF,
         role: "recommended",
         reason: "",

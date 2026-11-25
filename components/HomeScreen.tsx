@@ -113,6 +113,38 @@ function BibleProgressRing({ percent }: { percent: number }) {
   );
 }
 
+/**
+ * What Home showed last time, kept on the phone.
+ *
+ * Home used to open with its streak, Bible percentage and plan day blank,
+ * and fill them in once three requests had answered, on every single visit
+ * (docs/SPEED_REPORT_2026-11-25.md, cause 9). Now the last known numbers are
+ * on screen at once and the fresh ones replace them a moment later.
+ *
+ * Keyed by reader, so a shared phone never shows somebody else's streak.
+ */
+const HOME_STATS_CACHE = "bb:home-stats:v1:";
+const HOME_GROUP_CACHE = "bb:home-group:v1";
+
+function readHomeCache<T>(key: string): T | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(key);
+    return raw ? (JSON.parse(raw) as T) : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeHomeCache(key: string, value: unknown) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    // Full or blocked storage: Home still loads from the database.
+  }
+}
+
 export default function HomeScreen() {
   const { userId } = useSupabaseUser();
   const homeLayout = useHomeLayout(userId ?? null);
@@ -172,6 +204,10 @@ export default function HomeScreen() {
   useEffect(() => {
     if (!userId) return;
 
+    // Last visit's numbers first. The fresh ones follow below.
+    const remembered = readHomeCache<HomeStats>(HOME_STATS_CACHE + userId);
+    if (remembered) setStats({ ...remembered, loaded: true });
+
     void (async () => {
       // Each of these is independent, so one failing must not blank the others.
       const [profileResult, chapterResult, planResult] = await Promise.allSettled([
@@ -191,14 +227,21 @@ export default function HomeScreen() {
           .limit(500),
       ]);
 
-      const profile = profileResult.status === "fulfilled" ? (profileResult.value.data as any) : null;
-      const chapterCount = chapterResult.status === "fulfilled" ? chapterResult.value.count : null;
+      // supabase-js does not throw on a failed request, it answers with an
+      // error. So "fulfilled" is not "worked": check the error too, and when a
+      // read failed keep what the phone remembered instead of blanking it.
+      const profileOk = profileResult.status === "fulfilled" && !profileResult.value.error;
+      const chaptersOk = chapterResult.status === "fulfilled" && !chapterResult.value.error;
+      const planOk = planResult.status === "fulfilled" && !planResult.value.error;
+
+      const profile = profileOk ? (profileResult.value.data as any) : null;
+      const chapterCount = chaptersOk ? chapterResult.value.count : null;
       // One shared rule now - see lib/bibleYearProgress.ts for why.
       const { planDay, planFinished, highestReadDay, completedDays } = calculateBibleYearPosition(
-        planResult.status === "fulfilled" ? (planResult.value.data as any) : null,
+        planOk ? (planResult.value.data as any) : null,
       );
 
-      setStats({
+      const fresh: HomeStats = {
         loaded: true,
         streak: typeof profile?.current_streak === "number" ? profile.current_streak : null,
         chaptersRead: typeof chapterCount === "number" ? chapterCount : null,
@@ -210,7 +253,27 @@ export default function HomeScreen() {
         planCompletedDays: completedDays,
         displayName: profile?.display_name || profile?.username || null,
         flameId: profile?.selected_streak_flame ?? null,
-      });
+      };
+      const next: HomeStats = remembered
+        ? {
+            ...fresh,
+            ...(profileOk
+              ? {}
+              : { streak: remembered.streak, displayName: remembered.displayName, flameId: remembered.flameId }),
+            ...(chaptersOk ? {} : { chaptersRead: remembered.chaptersRead }),
+            ...(planOk
+              ? {}
+              : {
+                  planDay: remembered.planDay,
+                  planFinished: remembered.planFinished,
+                  lastCompletedDay: remembered.lastCompletedDay,
+                  planCompletedDays: remembered.planCompletedDays,
+                }),
+          }
+        : fresh;
+      setStats(next);
+      // Only a complete answer is worth remembering.
+      if (profileOk && chaptersOk && planOk) writeHomeCache(HOME_STATS_CACHE + userId, next);
       // The Streak widget on the iPhone home screen.
       if (typeof profile?.current_streak === "number") updateWidgets({ streak: profile.current_streak });
     })();
@@ -219,6 +282,10 @@ export default function HomeScreen() {
   // Real group activity: how many posts landed today, and who posted lately.
   // A failed query leaves the simple link, never fake numbers or faces.
   useEffect(() => {
+    // Last visit's faces and preview first; today's count is recounted below.
+    const rememberedGroup = readHomeCache<GroupActivity>(HOME_GROUP_CACHE);
+    if (rememberedGroup) setGroup({ ...rememberedGroup, loaded: true, postsToday: null });
+
     void (async () => {
       try {
         const todayStart = new Date();
@@ -273,15 +340,18 @@ export default function HomeScreen() {
             })
             .filter(Boolean) as GroupActivity["avatars"];
         }
-        setGroup({
+        const freshGroup: GroupActivity = {
           loaded: true,
           postsToday,
           avatars,
           extraCount: Math.max(0, allPosterIds.size - avatars.length),
           preview,
-        });
+        };
+        setGroup(freshGroup);
+        writeHomeCache(HOME_GROUP_CACHE, freshGroup);
       } catch {
-        setGroup({ loaded: true, postsToday: null, avatars: [], extraCount: 0, preview: null });
+        // A failed read keeps what the phone remembered, if anything.
+        if (!rememberedGroup) setGroup({ loaded: true, postsToday: null, avatars: [], extraCount: 0, preview: null });
       }
     })();
   }, []);
