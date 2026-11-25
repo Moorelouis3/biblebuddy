@@ -10464,6 +10464,630 @@
   "ref": "1 Chronicles 17:11–12"
  },
  {
+  "id": "1-chronicles-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was the prophet David spoke to about the ark?",
+  "choices": [
+   "Asaph",
+   "Gad",
+   "Samuel",
+   "Nathan"
+  ],
+  "answer": 3,
+  "explanation": "David said to Nathan the prophet, I dwell in an house of cedars, but the ark remaineth under curtains.",
+  "ref": "1 Chronicles 17:1"
+ },
+ {
+  "id": "1-chronicles-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say the ark of the covenant remained under?",
+  "choices": [
+   "A heap of stones",
+   "A roof of cedar",
+   "Curtains",
+   "A tent of gold"
+  ],
+  "answer": 2,
+  "explanation": "David lived in a house of cedars, but the ark remaineth under curtains.",
+  "ref": "1 Chronicles 17:1"
+ },
+ {
+  "id": "1-chronicles-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Nathan first tell David to do?",
+  "choices": [
+   "Go to war first",
+   "Wait for Solomon",
+   "Do all that is in thine heart",
+   "Ask the priests"
+  ],
+  "answer": 2,
+  "explanation": "Nathan said, Do all that is in thine heart; for God is with thee.",
+  "ref": "1 Chronicles 17:2"
+ },
+ {
+  "id": "1-chronicles-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When did the word of God come to Nathan?",
+  "choices": [
+   "Three days later",
+   "At the next feast",
+   "The same night",
+   "At sunrise"
+  ],
+  "answer": 2,
+  "explanation": "The same night, the word of God came to Nathan.",
+  "ref": "1 Chronicles 17:3"
+ },
+ {
+  "id": "1-chronicles-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who would build God a house, rather than David?",
+  "choices": [
+   "Nathan",
+   "David's son",
+   "A judge of Israel",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "God said David's seed, of his sons, shall build him an house.",
+  "ref": "1 Chronicles 17:11–12"
+ },
+ {
+  "id": "1-chronicles-17-e-06",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did God say he would do for David's throne?",
+  "choices": [
+   "Give it to Saul's house",
+   "Move it to Shiloh",
+   "Stablish it for ever",
+   "Break it in pieces"
+  ],
+  "answer": 2,
+  "explanation": "I will stablish his throne for ever.",
+  "ref": "1 Chronicles 17:12"
+ },
+ {
+  "id": "1-chronicles-17-e-07",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David come before the LORD to pray?",
+  "choices": [
+   "He sat before the LORD",
+   "He fell on his face in the field",
+   "He climbed the hill",
+   "He stood before the priests"
+  ],
+  "answer": 0,
+  "explanation": "David the king came and sat before the LORD.",
+  "ref": "1 Chronicles 17:16"
+ },
+ {
+  "id": "1-chronicles-17-e-08",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say there is none like?",
+  "choices": [
+   "The LORD",
+   "His kingdom",
+   "His son",
+   "His house"
+  ],
+  "answer": 0,
+  "explanation": "O LORD, there is none like thee, neither is there any God beside thee.",
+  "ref": "1 Chronicles 17:20"
+ },
+ {
+  "id": "1-chronicles-17-e-09",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where had God redeemed his people Israel?",
+  "choices": [
+   "Babylon",
+   "Egypt",
+   "Moab",
+   "Philistia"
+  ],
+  "answer": 1,
+  "explanation": "Whom thou hast redeemed out of Egypt.",
+  "ref": "1 Chronicles 17:21"
+ },
+ {
+  "id": "1-chronicles-17-e-10",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where had David been taken from, to be ruler over Israel?",
+  "choices": [
+   "The army of Saul",
+   "The vineyard",
+   "The gates of Bethlehem",
+   "The sheepcote, following the sheep"
+  ],
+  "answer": 3,
+  "explanation": "I took thee from the sheepcote, even from following the sheep.",
+  "ref": "1 Chronicles 17:7"
+ },
+ {
+  "id": "1-chronicles-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where had God dwelt since the day he brought up Israel?",
+  "choices": [
+   "On a high mountain",
+   "In a house of cedar",
+   "In a house of stone",
+   "Going from tent to tent"
+  ],
+  "answer": 3,
+  "explanation": "I have gone from tent to tent, and from one tabernacle to another.",
+  "ref": "1 Chronicles 17:5"
+ },
+ {
+  "id": "1-chronicles-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say he had never asked the judges of Israel?",
+  "choices": [
+   "Why have ye not fought?",
+   "Why do you not fast?",
+   "Why have ye not built me an house of cedars?",
+   "Why have ye not anointed a king?"
+  ],
+  "answer": 2,
+  "explanation": "Spake I a word to any of the judges... saying, Why have ye not built me an house of cedars?",
+  "ref": "1 Chronicles 17:6"
+ },
+ {
+  "id": "1-chronicles-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say he had made for David's name?",
+  "choices": [
+   "A name that no one knows",
+   "A name above every king",
+   "A name like the great men of the earth",
+   "A name written in the temple"
+  ],
+  "answer": 2,
+  "explanation": "I have made thee a name like the name of the great men that are in the earth.",
+  "ref": "1 Chronicles 17:8"
+ },
+ {
+  "id": "1-chronicles-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say he would do for his people Israel in their place?",
+  "choices": [
+   "Give them a king every year",
+   "Send them back to Egypt",
+   "Divide them into two nations",
+   "Plant them so they are moved no more"
+  ],
+  "answer": 3,
+  "explanation": "I will ordain a place for my people Israel, and will plant them, and they shall dwell in their place, and shall be moved no more.",
+  "ref": "1 Chronicles 17:9"
+ },
+ {
+  "id": "1-chronicles-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God promise to do to David's enemies?",
+  "choices": [
+   "Send them away",
+   "Subdue them",
+   "Make them his servants",
+   "Give them into his hand"
+  ],
+  "answer": 1,
+  "explanation": "Moreover I will subdue all thine enemies.",
+  "ref": "1 Chronicles 17:10"
+ },
+ {
+  "id": "1-chronicles-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God tell David the LORD would build for him?",
+  "choices": [
+   "An house",
+   "A city",
+   "A temple of cedar",
+   "A wall"
+  ],
+  "answer": 0,
+  "explanation": "Furthermore I tell thee that the LORD will build thee an house.",
+  "ref": "1 Chronicles 17:10"
+ },
+ {
+  "id": "1-chronicles-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen when David's days are expired?",
+  "choices": [
+   "His son becomes a priest",
+   "He goes to be with his fathers",
+   "The ark goes up to Zion",
+   "Israel is divided"
+  ],
+  "answer": 1,
+  "explanation": "When thy days be expired that thou must go to be with thy fathers, I will raise up thy seed after thee.",
+  "ref": "1 Chronicles 17:11"
+ },
+ {
+  "id": "1-chronicles-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God say he would be to David's son?",
+  "choices": [
+   "A shepherd",
+   "A father",
+   "A shield",
+   "A king"
+  ],
+  "answer": 1,
+  "explanation": "I will be his father, and he shall be my son.",
+  "ref": "1 Chronicles 17:13"
+ },
+ {
+  "id": "1-chronicles-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David call his house when he prayed, asking who he was?",
+  "choices": [
+   "The house of Saul",
+   "Small compared with what the LORD had done",
+   "The house of Obed-edom",
+   "A house of cedar"
+  ],
+  "answer": 1,
+  "explanation": "Who am I, O LORD God, and what is mine house, that thou hast brought me hitherto?",
+  "ref": "1 Chronicles 17:16"
+ },
+ {
+  "id": "1-chronicles-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David say Israel is like among the nations?",
+  "choices": [
+   "The greatest of seven nations",
+   "No nation is like Israel",
+   "The least of all nations",
+   "Like all the other nations"
+  ],
+  "answer": 1,
+  "explanation": "What one nation in the earth is like thy people Israel?",
+  "ref": "1 Chronicles 17:21"
+ },
+ {
+  "id": "1-chronicles-17-m-11",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say became of the LORD in relation to Israel?",
+  "choices": [
+   "Their shepherd in the wilderness",
+   "Their only king",
+   "Their God for ever",
+   "Their judge"
+  ],
+  "answer": 2,
+  "explanation": "Thy people Israel didst thou make thine own people for ever; and thou, LORD, becamest their God.",
+  "ref": "1 Chronicles 17:22"
+ },
+ {
+  "id": "1-chronicles-17-m-12",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David find in his heart to pray?",
+  "choices": [
+   "God had told him he would build him a house",
+   "He feared the Philistines",
+   "He was sick",
+   "The ark was brought up"
+  ],
+  "answer": 0,
+  "explanation": "For thou, O my God, hast told thy servant that thou wilt build him an house: therefore thy servant hath found in his heart to pray.",
+  "ref": "1 Chronicles 17:25"
+ },
+ {
+  "id": "1-chronicles-17-m-13",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David ask God to do for the house of his servant?",
+  "choices": [
+   "Bless it, that it may be before him for ever",
+   "Remove it from Jerusalem",
+   "Make it a house of war",
+   "Turn it into a priestly house"
+  ],
+  "answer": 0,
+  "explanation": "Let it please thee to bless the house of thy servant, that it may be before thee for ever.",
+  "ref": "1 Chronicles 17:27"
+ },
+ {
+  "id": "1-chronicles-17-m-14",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does David say God's name will be, if his word is established?",
+  "choices": [
+   "Known by all kings",
+   "Written in stone",
+   "Magnified for ever",
+   "Feared by the Philistines"
+  ],
+  "answer": 2,
+  "explanation": "Let it even be established, that thy name may be magnified for ever.",
+  "ref": "1 Chronicles 17:24"
+ },
+ {
+  "id": "1-chronicles-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Nathan do after the vision, according to the text?",
+  "choices": [
+   "Built an altar",
+   "Went to Gibeon",
+   "Asked for a sign",
+   "Spoke to David all these words"
+  ],
+  "answer": 3,
+  "explanation": "According to all these words, and according to all this vision, so did Nathan speak unto David.",
+  "ref": "1 Chronicles 17:15"
+ },
+ {
+  "id": "1-chronicles-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God said he had not dwelt in a house since when?",
+  "choices": [
+   "Since he brought up Israel",
+   "Since Noah",
+   "Since Moses died",
+   "Since Saul reigned"
+  ],
+  "answer": 0,
+  "explanation": "I have not dwelt in an house since the day that I brought up Israel unto this day.",
+  "ref": "1 Chronicles 17:5"
+ },
+ {
+  "id": "1-chronicles-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom did God say he commanded to feed his people?",
+  "choices": [
+   "The Levites",
+   "The priests of Aaron",
+   "The elders of Judah",
+   "The judges of Israel"
+  ],
+  "answer": 3,
+  "explanation": "A word to any of the judges of Israel, whom I commanded to feed my people.",
+  "ref": "1 Chronicles 17:6"
+ },
+ {
+  "id": "1-chronicles-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "God said he would not take his mercy from David's son as he took it from whom?",
+  "choices": [
+   "Eli",
+   "Him that was before David",
+   "Samuel",
+   "Goliath"
+  ],
+  "answer": 1,
+  "explanation": "I will not take my mercy away from him, as I took it from him that was before thee.",
+  "ref": "1 Chronicles 17:13"
+ },
+ {
+  "id": "1-chronicles-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God said he would settle David's son in what, for ever?",
+  "choices": [
+   "The high place",
+   "His city and his tent",
+   "The land of Judah",
+   "His house and his kingdom"
+  ],
+  "answer": 3,
+  "explanation": "I will settle him in mine house and in my kingdom for ever.",
+  "ref": "1 Chronicles 17:14"
+ },
+ {
+  "id": "1-chronicles-17-h-06",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say would be seen in the earth when God made the thing established?",
+  "choices": [
+   "Solomon on the throne",
+   "The ark in the temple",
+   "The LORD of hosts is the God of Israel",
+   "Israel at peace"
+  ],
+  "answer": 2,
+  "explanation": "Let it be established that thy name may be magnified for ever, saying, The LORD of hosts is the God of Israel.",
+  "ref": "1 Chronicles 17:24"
+ },
+ {
+  "id": "1-chronicles-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "By what did God make a name of greatness and terribleness for himself?",
+  "choices": [
+   "Driving out nations before his people",
+   "Sending plagues on Pharaoh",
+   "Dividing the Red Sea",
+   "Giving the law"
+  ],
+  "answer": 0,
+  "explanation": "To make thee a name of greatness and terribleness, by driving out nations from before thy people.",
+  "ref": "1 Chronicles 17:21"
+ },
+ {
+  "id": "1-chronicles-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did David say God had regarded him?",
+  "choices": [
+   "As a servant of Saul",
+   "As the least of his brethren",
+   "As a shepherd boy",
+   "According to the estate of a man of high degree"
+  ],
+  "answer": 3,
+  "explanation": "Hast regarded me according to the estate of a man of high degree, O LORD God.",
+  "ref": "1 Chronicles 17:17"
+ },
+ {
+  "id": "1-chronicles-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "David said God had spoken of his servant's house for how long?",
+  "choices": [
+   "Forty years",
+   "Seven years",
+   "A great while to come",
+   "For one generation"
+  ],
+  "answer": 2,
+  "explanation": "Thou hast also spoken of thy servant's house for a great while to come.",
+  "ref": "1 Chronicles 17:17"
+ },
+ {
+  "id": "1-chronicles-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "David said God did these great things for whose sake?",
+  "choices": [
+   "His servant's sake",
+   "Israel's sake",
+   "Nathan's sake",
+   "Solomon's sake"
+  ],
+  "answer": 0,
+  "explanation": "O LORD, for thy servant's sake, and according to thine own heart, hast thou done all this greatness.",
+  "ref": "1 Chronicles 17:19"
+ },
+ {
+  "id": "1-chronicles-17-h-11",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does David say he has heard with his ears about God?",
+  "choices": [
+   "That he is slow to anger",
+   "That he is a man of war",
+   "There is no God beside him",
+   "That he dwells in cedar"
+  ],
+  "answer": 2,
+  "explanation": "There is none like thee, neither is there any God beside thee, according to all that we have heard with our ears.",
+  "ref": "1 Chronicles 17:20"
+ },
+ {
+  "id": "1-chronicles-17-h-12",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say he could speak no more about?",
+  "choices": [
+   "The honour of his servant",
+   "The temple",
+   "The ark",
+   "The enemies"
+  ],
+  "answer": 0,
+  "explanation": "What can David speak more to thee for the honour of thy servant? for thou knowest thy servant.",
+  "ref": "1 Chronicles 17:18"
+ },
+ {
+  "id": "1-chronicles-17-h-13",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "God said he would raise up David's seed, which shall be of whom?",
+  "choices": [
+   "The tribe of Levi",
+   "His brethren",
+   "His servants",
+   "His sons"
+  ],
+  "answer": 3,
+  "explanation": "I will raise up thy seed after thee, which shall be of thy sons; and I will establish his kingdom.",
+  "ref": "1 Chronicles 17:11"
+ },
+ {
+  "id": "1-chronicles-17-h-14",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does God say he did to all of David's enemies?",
+  "choices": [
+   "Drove them into Egypt",
+   "Gave them to Joab",
+   "Cut them off from before him",
+   "Scattered them"
+  ],
+  "answer": 2,
+  "explanation": "I have been with thee whithersoever thou hast walked, and have cut off all thine enemies from before thee.",
+  "ref": "1 Chronicles 17:8"
+ },
+ {
+  "id": "1-chronicles-17-h-15",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does David refer to himself in his prayer to the LORD?",
+  "choices": [
+   "Thy servant",
+   "Thy son",
+   "Thy shepherd",
+   "Thy priest"
+  ],
+  "answer": 0,
+  "explanation": "David prays of thy servant's house, thy servant's sake and thy servant.",
+  "ref": "1 Chronicles 17:17–19"
+ },
+ {
   "id": "old-1-chronicles-18-1",
   "chapter": 18,
   "level": "beginner",
