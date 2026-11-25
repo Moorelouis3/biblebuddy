@@ -12352,6 +12352,694 @@
   "ref": "1 Chronicles 21:24"
  },
  {
+  "id": "1-chronicles-21-e-01",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "From where to where did David tell Joab to number Israel?",
+  "choices": [
+   "Egypt to Babylon",
+   "Beer-sheba to Dan",
+   "Hebron to Jericho",
+   "Dan to Gibeon"
+  ],
+  "answer": 1,
+  "explanation": "David said, Go, number Israel from Beer-sheba even to Dan.",
+  "ref": "1 Chronicles 21:2"
+ },
+ {
+  "id": "1-chronicles-21-e-02",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David feel about what he had done once God smote Israel?",
+  "choices": [
+   "He said nothing",
+   "He blamed Joab",
+   "He thanked God",
+   "He said he had sinned greatly"
+  ],
+  "answer": 3,
+  "explanation": "David said unto God, I have sinned greatly, because I have done this thing.",
+  "ref": "1 Chronicles 21:8"
+ },
+ {
+  "id": "1-chronicles-21-e-03",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who was David's seer through whom the LORD spoke?",
+  "choices": [
+   "Asaph",
+   "Nathan",
+   "Samuel",
+   "Gad"
+  ],
+  "answer": 3,
+  "explanation": "The LORD spake unto Gad, David's seer.",
+  "ref": "1 Chronicles 21:9"
+ },
+ {
+  "id": "1-chronicles-21-e-04",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many choices did the LORD offer David?",
+  "choices": [
+   "Four",
+   "Two",
+   "Three",
+   "Seven"
+  ],
+  "answer": 2,
+  "explanation": "I offer thee three things: choose thee one of them.",
+  "ref": "1 Chronicles 21:10"
+ },
+ {
+  "id": "1-chronicles-21-e-05",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David say he preferred to fall into?",
+  "choices": [
+   "The hand of the elders",
+   "The hand of the Philistines",
+   "The hand of Joab",
+   "The hand of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "Let me fall now into the hand of the LORD; for very great are his mercies: but let me not fall into the hand of man.",
+  "ref": "1 Chronicles 21:13"
+ },
+ {
+  "id": "1-chronicles-21-e-06",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the LORD send upon Israel?",
+  "choices": [
+   "Famine",
+   "Pestilence",
+   "A flood",
+   "Locusts"
+  ],
+  "answer": 1,
+  "explanation": "So the LORD sent pestilence upon Israel: and there fell of Israel seventy thousand men.",
+  "ref": "1 Chronicles 21:14"
+ },
+ {
+  "id": "1-chronicles-21-e-07",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David and the elders wear when they fell on their faces?",
+  "choices": [
+   "Ashes only",
+   "Purple robes",
+   "Linen ephods",
+   "Sackcloth"
+  ],
+  "answer": 3,
+  "explanation": "David and the elders of Israel, who were clothed in sackcloth, fell upon their faces.",
+  "ref": "1 Chronicles 21:16"
+ },
+ {
+  "id": "1-chronicles-21-e-08",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose threshingfloor was the place David bought?",
+  "choices": [
+   "Obed-edom",
+   "Ornan the Jebusite",
+   "Araunah the Hittite",
+   "Hanun"
+  ],
+  "answer": 1,
+  "explanation": "The angel of the LORD stood by the threshingfloor of Ornan the Jebusite.",
+  "ref": "1 Chronicles 21:15"
+ },
+ {
+  "id": "1-chronicles-21-e-09",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David build there unto the LORD?",
+  "choices": [
+   "A temple",
+   "An altar",
+   "A tent",
+   "A tower"
+  ],
+  "answer": 1,
+  "explanation": "David built there an altar unto the LORD, and offered burnt offerings and peace offerings.",
+  "ref": "1 Chronicles 21:26"
+ },
+ {
+  "id": "1-chronicles-21-m-01",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joab say about the people when David commanded the numbering?",
+  "choices": [
+   "Are they not all my lord's servants?",
+   "They are too few",
+   "They are unwilling",
+   "They are divided"
+  ],
+  "answer": 0,
+  "explanation": "Joab answered, My lord the king, are they not all my lord's servants? why then doth my lord require this thing?",
+  "ref": "1 Chronicles 21:3"
+ },
+ {
+  "id": "1-chronicles-21-m-02",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joab fear the numbering would make David be?",
+  "choices": [
+   "A cause of trespass to Israel",
+   "A king like the nations",
+   "A burden to Levi",
+   "A foe of God"
+  ],
+  "answer": 0,
+  "explanation": "Why will he be a cause of trespass to Israel?",
+  "ref": "1 Chronicles 21:3"
+ },
+ {
+  "id": "1-chronicles-21-m-03",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which tribes did Joab not count, because the king's word was abominable to him?",
+  "choices": [
+   "Judah and Simeon",
+   "Reuben and Gad",
+   "Levi and Benjamin",
+   "Ephraim and Manasseh"
+  ],
+  "answer": 2,
+  "explanation": "But Levi and Benjamin counted he not among them: for the king's word was abominable to Joab.",
+  "ref": "1 Chronicles 21:6"
+ },
+ {
+  "id": "1-chronicles-21-m-04",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did God do when he was displeased with the numbering?",
+  "choices": [
+   "He sent a drought",
+   "He took the ark",
+   "He took the kingdom",
+   "He smote Israel"
+  ],
+  "answer": 3,
+  "explanation": "God was displeased with this thing; therefore he smote Israel.",
+  "ref": "1 Chronicles 21:7"
+ },
+ {
+  "id": "1-chronicles-21-m-05",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which choice was three years long?",
+  "choices": [
+   "Famine",
+   "The sword of enemies",
+   "Pestilence",
+   "Captivity"
+  ],
+  "answer": 0,
+  "explanation": "Either three years' famine; or three months to be destroyed before thy foes; or else three days the sword of the LORD.",
+  "ref": "1 Chronicles 21:12"
+ },
+ {
+  "id": "1-chronicles-21-m-06",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say when the angel was destroying Jerusalem?",
+  "choices": [
+   "Spare the city",
+   "It is enough, stay now thine hand",
+   "Destroy it all",
+   "Go back to Gibeon"
+  ],
+  "answer": 1,
+  "explanation": "The LORD beheld, and he repented him of the evil, and said to the angel that destroyed, It is enough, stay now thine hand.",
+  "ref": "1 Chronicles 21:15"
+ },
+ {
+  "id": "1-chronicles-21-m-07",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David see the angel of the LORD holding?",
+  "choices": [
+   "A censer of fire",
+   "A drawn sword stretched out over Jerusalem",
+   "A flaming torch",
+   "A bow"
+  ],
+  "answer": 1,
+  "explanation": "The angel of the LORD stand between the earth and the heaven, having a drawn sword in his hand stretched out over Jerusalem.",
+  "ref": "1 Chronicles 21:16"
+ },
+ {
+  "id": "1-chronicles-21-m-08",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whom did David ask to be punished instead of the people?",
+  "choices": [
+   "The elders",
+   "Himself and his father's house",
+   "The priests",
+   "Joab"
+  ],
+  "answer": 1,
+  "explanation": "Let thine hand be on me, and on my father's house; but not on thy people.",
+  "ref": "1 Chronicles 21:17"
+ },
+ {
+  "id": "1-chronicles-21-m-09",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David call the people in his prayer?",
+  "choices": [
+   "Sheep",
+   "Servants",
+   "Children",
+   "Soldiers"
+  ],
+  "answer": 0,
+  "explanation": "As for these sheep, what have they done?",
+  "ref": "1 Chronicles 21:17"
+ },
+ {
+  "id": "1-chronicles-21-m-10",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Ornan doing when David came?",
+  "choices": [
+   "Sacrificing",
+   "Plowing",
+   "Pressing grapes",
+   "Threshing wheat"
+  ],
+  "answer": 3,
+  "explanation": "Now Ornan was threshing wheat.",
+  "ref": "1 Chronicles 21:20"
+ },
+ {
+  "id": "1-chronicles-21-m-11",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happened to Ornan's four sons when he saw the angel?",
+  "choices": [
+   "They took up swords",
+   "They fled to Gibeon",
+   "They fell on their faces",
+   "They hid themselves"
+  ],
+  "answer": 3,
+  "explanation": "Ornan turned back, and saw the angel; and his four sons with him hid themselves.",
+  "ref": "1 Chronicles 21:20"
+ },
+ {
+  "id": "1-chronicles-21-m-12",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ornan offer David for burnt offerings and wood?",
+  "choices": [
+   "Cedar and brass",
+   "Gold and silver",
+   "Sheep and goats",
+   "Oxen and threshing instruments"
+  ],
+  "answer": 3,
+  "explanation": "I give thee the oxen for burnt offerings, and the threshing instruments for wood, and the wheat for the meat offering.",
+  "ref": "1 Chronicles 21:23"
+ },
+ {
+  "id": "1-chronicles-21-m-13",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David refuse to take Ornan's gift?",
+  "choices": [
+   "He would not offer burnt offerings without cost",
+   "Ornan was a Jebusite",
+   "The place was unclean",
+   "He feared the angel"
+  ],
+  "answer": 0,
+  "explanation": "I will not take that which is thine for the LORD, nor offer burnt offerings without cost.",
+  "ref": "1 Chronicles 21:24"
+ },
+ {
+  "id": "1-chronicles-21-m-14",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the LORD answer David at the altar?",
+  "choices": [
+   "By a cloud",
+   "By a voice",
+   "By fire from heaven",
+   "By an earthquake"
+  ],
+  "answer": 2,
+  "explanation": "He answered him from heaven by fire upon the altar of burnt offering.",
+  "ref": "1 Chronicles 21:26"
+ },
+ {
+  "id": "1-chronicles-21-m-15",
+  "chapter": 21,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD command the angel to do after David's offering?",
+  "choices": [
+   "Leave Israel",
+   "Return to heaven",
+   "Smite Jebus",
+   "Put up his sword into the sheath"
+  ],
+  "answer": 3,
+  "explanation": "The LORD commanded the angel; and he put up his sword again into the sheath thereof.",
+  "ref": "1 Chronicles 21:27"
+ },
+ {
+  "id": "1-chronicles-21-h-01",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men drew sword in all Israel, according to Joab's count?",
+  "choices": [
+   "A thousand thousand and an hundred thousand",
+   "Four hundred threescore and ten thousand",
+   "Seventy thousand",
+   "Three hundred thousand"
+  ],
+  "answer": 0,
+  "explanation": "All they of Israel were a thousand thousand and an hundred thousand men that drew sword.",
+  "ref": "1 Chronicles 21:5"
+ },
+ {
+  "id": "1-chronicles-21-h-02",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men that drew sword did Judah have?",
+  "choices": [
+   "Seventy thousand",
+   "A thousand thousand",
+   "Four hundred threescore and ten thousand",
+   "A hundred thousand"
+  ],
+  "answer": 2,
+  "explanation": "Judah was four hundred threescore and ten thousand men that drew sword.",
+  "ref": "1 Chronicles 21:5"
+ },
+ {
+  "id": "1-chronicles-21-h-03",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many men of Israel fell in the pestilence?",
+  "choices": [
+   "Seventy thousand",
+   "Forty thousand",
+   "Thirty thousand",
+   "A hundred thousand"
+  ],
+  "answer": 0,
+  "explanation": "There fell of Israel seventy thousand men.",
+  "ref": "1 Chronicles 21:14"
+ },
+ {
+  "id": "1-chronicles-21-h-04",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was the choice that involved the pestilence?",
+  "choices": [
+   "Three months",
+   "Three days",
+   "Three years",
+   "Seven days"
+  ],
+  "answer": 1,
+  "explanation": "Or else three days the sword of the LORD, even the pestilence, in the land.",
+  "ref": "1 Chronicles 21:12"
+ },
+ {
+  "id": "1-chronicles-21-h-05",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How long was the choice of being destroyed before David's foes?",
+  "choices": [
+   "Three months",
+   "Three days",
+   "Three years",
+   "Forty days"
+  ],
+  "answer": 0,
+  "explanation": "Or three months to be destroyed before thy foes, while that the sword of thine enemies overtaketh thee.",
+  "ref": "1 Chronicles 21:12"
+ },
+ {
+  "id": "1-chronicles-21-h-06",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say he was in, when asked to choose?",
+  "choices": [
+   "A great strait",
+   "A deep pit",
+   "Great fear",
+   "A snare"
+  ],
+  "answer": 0,
+  "explanation": "David said unto Gad, I am in a great strait.",
+  "ref": "1 Chronicles 21:13"
+ },
+ {
+  "id": "1-chronicles-21-h-07",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the angel of the LORD stand when he was destroying?",
+  "choices": [
+   "By the threshingfloor of Ornan",
+   "At the gate of Jerusalem",
+   "On Mount Zion",
+   "At Gibeon"
+  ],
+  "answer": 0,
+  "explanation": "The angel of the LORD stood by the threshingfloor of Ornan the Jebusite.",
+  "ref": "1 Chronicles 21:15"
+ },
+ {
+  "id": "1-chronicles-21-h-08",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who commanded Gad to tell David to build an altar?",
+  "choices": [
+   "The elders",
+   "Joab",
+   "Ornan",
+   "The angel of the LORD"
+  ],
+  "answer": 3,
+  "explanation": "The angel of the LORD commanded Gad to say to David, that David should go up, and set up an altar.",
+  "ref": "1 Chronicles 21:18"
+ },
+ {
+  "id": "1-chronicles-21-h-09",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did Ornan greet David when he came to the threshingfloor?",
+  "choices": [
+   "Gave him bread",
+   "Bowed with his face to the ground",
+   "Ran away",
+   "Offered gold"
+  ],
+  "answer": 1,
+  "explanation": "Ornan went out of the threshingfloor, and bowed himself to David with his face to the ground.",
+  "ref": "1 Chronicles 21:21"
+ },
+ {
+  "id": "1-chronicles-21-h-10",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much gold did David pay Ornan for the place?",
+  "choices": [
+   "Fifty shekels",
+   "A hundred talents",
+   "Six hundred shekels by weight",
+   "Seven hundred shekels"
+  ],
+  "answer": 2,
+  "explanation": "David gave to Ornan for the place six hundred shekels of gold by weight.",
+  "ref": "1 Chronicles 21:25"
+ },
+ {
+  "id": "1-chronicles-21-h-11",
+  "chapter": 21,
+  "level": "hard",
+  "category": "place",
+  "question": "Where were the tabernacle of Moses and the altar of burnt offering at that season?",
+  "choices": [
+   "Jerusalem",
+   "Shiloh",
+   "Hebron",
+   "The high place at Gibeon"
+  ],
+  "answer": 3,
+  "explanation": "The tabernacle of the LORD, which Moses made in the wilderness, and the altar of the burnt offering, were at that season in the high place at Gibeon.",
+  "ref": "1 Chronicles 21:29"
+ },
+ {
+  "id": "1-chronicles-21-h-12",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why could David not go before the tabernacle to enquire of God?",
+  "choices": [
+   "Joab forbade it",
+   "He was sick",
+   "The altar was destroyed",
+   "He was afraid of the sword of the angel"
+  ],
+  "answer": 3,
+  "explanation": "David could not go before it to enquire of God: for he was afraid because of the sword of the angel of the LORD.",
+  "ref": "1 Chronicles 21:30"
+ },
+ {
+  "id": "1-chronicles-21-h-13",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Joab say he hoped the LORD would do for his people?",
+  "choices": [
+   "Give them peace",
+   "Make them a hundred times as many",
+   "Teach them",
+   "Judge them"
+  ],
+  "answer": 1,
+  "explanation": "The LORD make his people an hundred times so many more as they be.",
+  "ref": "1 Chronicles 21:3"
+ },
+ {
+  "id": "1-chronicles-21-h-14",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the king's word do against Joab?",
+  "choices": [
+   "It failed",
+   "It prevailed",
+   "It was delayed",
+   "It was changed"
+  ],
+  "answer": 1,
+  "explanation": "Nevertheless the king's word prevailed against Joab.",
+  "ref": "1 Chronicles 21:4"
+ },
+ {
+  "id": "1-chronicles-21-h-15",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David call himself, asking God to do away his iniquity?",
+  "choices": [
+   "Having done very foolishly",
+   "Unworthy of a crown",
+   "A man of blood",
+   "The least of the tribes"
+  ],
+  "answer": 0,
+  "explanation": "Do away the iniquity of thy servant; for I have done very foolishly.",
+  "ref": "1 Chronicles 21:8"
+ },
+ {
+  "id": "1-chronicles-21-h-16",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David say he wanted Ornan to grant him?",
+  "choices": [
+   "A stone",
+   "His oxen only",
+   "The wheat",
+   "The place of the threshingfloor for an altar"
+  ],
+  "answer": 3,
+  "explanation": "Grant me the place of this threshingfloor, that I may build an altar therein unto the LORD.",
+  "ref": "1 Chronicles 21:22"
+ },
+ {
+  "id": "1-chronicles-21-h-17",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "David said the plague should be stayed from whom, if he built the altar?",
+  "choices": [
+   "The priests",
+   "The people",
+   "His house",
+   "Jerusalem only"
+  ],
+  "answer": 1,
+  "explanation": "That the plague may be stayed from the people.",
+  "ref": "1 Chronicles 21:22"
+ },
+ {
+  "id": "1-chronicles-21-h-18",
+  "chapter": 21,
+  "level": "hard",
+  "category": "keyword",
+  "question": "After the LORD answered him, what did David do at the threshingfloor?",
+  "choices": [
+   "Sacrificed there",
+   "Built a house",
+   "Left Jerusalem",
+   "Counted the people"
+  ],
+  "answer": 0,
+  "explanation": "When David saw that the LORD had answered him in the threshingfloor of Ornan the Jebusite, then he sacrificed there.",
+  "ref": "1 Chronicles 21:28"
+ },
+ {
+  "id": "1-chronicles-21-e-10",
+  "chapter": 21,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where did Joab go when he finished going throughout Israel?",
+  "choices": [
+   "Gibeon",
+   "Jerusalem",
+   "Hebron",
+   "Beer-sheba"
+  ],
+  "answer": 1,
+  "explanation": "Joab departed, and went throughout all Israel, and came to Jerusalem.",
+  "ref": "1 Chronicles 21:4"
+ },
+ {
   "id": "old-1-chronicles-22-1",
   "chapter": 22,
   "level": "beginner",
