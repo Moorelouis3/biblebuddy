@@ -11680,6 +11680,662 @@
   "ref": "2 Samuel 17:23"
  },
  {
+  "id": "2-samuel-17-e-01",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How many men did Ahithophel ask to choose out to pursue David?",
+  "choices": [
+   "Six hundred",
+   "Twelve thousand",
+   "Ten thousand",
+   "Forty thousand"
+  ],
+  "answer": 1,
+  "explanation": "Ahithophel said, Let me now choose out twelve thousand men, and I will arise and pursue after David this night.",
+  "ref": "2 Samuel 17:1"
+ },
+ {
+  "id": "2-samuel-17-e-02",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did Absalom call to hear his counsel after Ahithophel spoke?",
+  "choices": [
+   "Zadok",
+   "Hushai the Archite",
+   "Amasa",
+   "Ittai"
+  ],
+  "answer": 1,
+  "explanation": "Absalom said, Call now Hushai the Archite also, and let us hear likewise what he saith.",
+  "ref": "2 Samuel 17:5"
+ },
+ {
+  "id": "2-samuel-17-e-03",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Hushai say about Ahithophel's counsel?",
+  "choices": [
+   "It is the word of God",
+   "It is not good at this time",
+   "It is too slow",
+   "It is too cruel"
+  ],
+  "answer": 1,
+  "explanation": "Hushai said, The counsel that Ahithophel hath given is not good at this time.",
+  "ref": "2 Samuel 17:7"
+ },
+ {
+  "id": "2-samuel-17-e-04",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two men carried the message to David?",
+  "choices": [
+   "Joab and Abishai",
+   "Jonathan and Ahimaaz",
+   "Zadok and Abiathar",
+   "Amasa and Shobi"
+  ],
+  "answer": 1,
+  "explanation": "Jonathan and Ahimaaz went and told king David what Ahithophel had counselled.",
+  "ref": "2 Samuel 17:17"
+ },
+ {
+  "id": "2-samuel-17-e-05",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where was David told to pass over, so he would not lodge in the plains?",
+  "choices": [
+   "The Red Sea",
+   "The Jordan",
+   "The Kidron",
+   "The Arnon"
+  ],
+  "answer": 1,
+  "explanation": "David and all the people passed over Jordan, and by morning light not one of them was left behind.",
+  "ref": "2 Samuel 17:22"
+ },
+ {
+  "id": "2-samuel-17-e-06",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "What happened to Ahithophel when his counsel was not followed?",
+  "choices": [
+   "He fled to David",
+   "He hanged himself",
+   "He was slain in battle",
+   "He was made captain"
+  ],
+  "answer": 1,
+  "explanation": "He put his household in order, hanged himself, and died.",
+  "ref": "2 Samuel 17:23"
+ },
+ {
+  "id": "2-samuel-17-e-07",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where did David come after crossing the Jordan?",
+  "choices": [
+   "Bethlehem",
+   "Mahanaim",
+   "Hebron",
+   "Bahurim"
+  ],
+  "answer": 1,
+  "explanation": "Then David came to Mahanaim.",
+  "ref": "2 Samuel 17:24"
+ },
+ {
+  "id": "2-samuel-17-e-08",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did Absalom make captain of the host instead of Joab?",
+  "choices": [
+   "Abner",
+   "Amasa",
+   "Ittai",
+   "Hushai"
+  ],
+  "answer": 1,
+  "explanation": "Absalom made Amasa captain of the host instead of Joab.",
+  "ref": "2 Samuel 17:25"
+ },
+ {
+  "id": "2-samuel-17-e-09",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Barzillai and the others bring to David and his people?",
+  "choices": [
+   "Gold and silver",
+   "Food, beds and vessels",
+   "Horses and chariots",
+   "Spears and shields"
+  ],
+  "answer": 1,
+  "explanation": "They brought beds, basons, earthen vessels, wheat, barley, honey, butter, sheep and cheese for the hungry people.",
+  "ref": "2 Samuel 17:27–29"
+ },
+ {
+  "id": "2-samuel-17-e-10",
+  "chapter": 17,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why did the three men bring supplies to David?",
+  "choices": [
+   "David had asked for tribute",
+   "The people were hungry, weary and thirsty",
+   "They feared Absalom",
+   "It was a feast day"
+  ],
+  "answer": 1,
+  "explanation": "They said, The people is hungry, and weary, and thirsty, in the wilderness.",
+  "ref": "2 Samuel 17:29"
+ },
+ {
+  "id": "2-samuel-17-m-01",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Hushai compare David and his men to, chafed in their minds?",
+  "choices": [
+   "A lion in a pit",
+   "An eagle over its nest",
+   "A wolf at night",
+   "A bear robbed of her whelps"
+  ],
+  "answer": 3,
+  "explanation": "Hushai said they were chafed in their minds, as a bear robbed of her whelps in the field.",
+  "ref": "2 Samuel 17:8"
+ },
+ {
+  "id": "2-samuel-17-m-02",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "What did Ahithophel say he would smite?",
+  "choices": [
+   "The captains",
+   "All of David's men",
+   "The priests",
+   "The king only"
+  ],
+  "answer": 3,
+  "explanation": "He said, I will smite the king only, and bring back all the people.",
+  "ref": "2 Samuel 17:2"
+ },
+ {
+  "id": "2-samuel-17-m-03",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who did Ahithophel say would be at peace once the king was gone?",
+  "choices": [
+   "The elders only",
+   "Absalom's household",
+   "The Philistines",
+   "All the people"
+  ],
+  "answer": 3,
+  "explanation": "Ahithophel said that the man whom Absalom sought being gone, all the people shall be in peace.",
+  "ref": "2 Samuel 17:3"
+ },
+ {
+  "id": "2-samuel-17-m-04",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Where did Hushai say David was probably hid?",
+  "choices": [
+   "In Jerusalem",
+   "In a cave in Gilead",
+   "With the Philistines",
+   "In some pit"
+  ],
+  "answer": 3,
+  "explanation": "Hushai said, Behold, he is hid now in some pit, or in some other place.",
+  "ref": "2 Samuel 17:9"
+ },
+ {
+  "id": "2-samuel-17-m-05",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Hushai said even a valiant man with the heart of what would utterly melt?",
+  "choices": [
+   "A bear",
+   "An ox",
+   "An eagle",
+   "A lion"
+  ],
+  "answer": 3,
+  "explanation": "The valiant man whose heart is as the heart of a lion shall utterly melt.",
+  "ref": "2 Samuel 17:10"
+ },
+ {
+  "id": "2-samuel-17-m-06",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "Hushai advised gathering all Israel from Dan to where?",
+  "choices": [
+   "Hebron",
+   "Gilgal",
+   "Jericho",
+   "Beer-sheba"
+  ],
+  "answer": 3,
+  "explanation": "All Israel was to be gathered from Dan even to Beer-sheba, as the sand by the sea for multitude.",
+  "ref": "2 Samuel 17:11"
+ },
+ {
+  "id": "2-samuel-17-m-07",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Hushai advise to go to battle in person?",
+  "choices": [
+   "Amasa",
+   "Joab",
+   "Ahithophel",
+   "Absalom"
+  ],
+  "answer": 3,
+  "explanation": "Hushai counselled that Absalom go to battle in his own person.",
+  "ref": "2 Samuel 17:11"
+ },
+ {
+  "id": "2-samuel-17-m-08",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the LORD defeat the good counsel of Ahithophel?",
+  "choices": [
+   "To protect Jerusalem",
+   "To honour Hushai",
+   "To test the elders",
+   "To bring evil upon Absalom"
+  ],
+  "answer": 3,
+  "explanation": "The LORD had appointed to defeat the good counsel of Ahithophel, that the LORD might bring evil upon Absalom.",
+  "ref": "2 Samuel 17:14"
+ },
+ {
+  "id": "2-samuel-17-m-09",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Hushai tell what both counsels had been?",
+  "choices": [
+   "Joab and Abishai",
+   "Jonathan and Ahimaaz",
+   "Barzillai and Machir",
+   "Zadok and Abiathar"
+  ],
+  "answer": 3,
+  "explanation": "Hushai said to Zadok and to Abiathar the priests, Thus and thus did Ahithophel counsel.",
+  "ref": "2 Samuel 17:15"
+ },
+ {
+  "id": "2-samuel-17-m-10",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Jonathan and Ahimaaz stay so they would not be seen?",
+  "choices": [
+   "By Bahurim",
+   "By Mahanaim",
+   "By the Jordan",
+   "By En-rogel"
+  ],
+  "answer": 3,
+  "explanation": "Jonathan and Ahimaaz stayed by En-rogel; for they might not be seen to come into the city.",
+  "ref": "2 Samuel 17:17"
+ },
+ {
+  "id": "2-samuel-17-m-11",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did the two messengers hide in a man's court?",
+  "choices": [
+   "Gilead",
+   "Rabbah",
+   "Lo-debar",
+   "Bahurim"
+  ],
+  "answer": 3,
+  "explanation": "They came to a man's house in Bahurim, which had a well in his court.",
+  "ref": "2 Samuel 17:18"
+ },
+ {
+  "id": "2-samuel-17-m-12",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the woman spread over the well's mouth?",
+  "choices": [
+   "A wooden door",
+   "Branches",
+   "A great stone",
+   "A covering with ground corn"
+  ],
+  "answer": 3,
+  "explanation": "She spread a covering over the well's mouth, and spread ground corn thereon.",
+  "ref": "2 Samuel 17:19"
+ },
+ {
+  "id": "2-samuel-17-m-13",
+  "chapter": 17,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the woman say to Absalom's servants about the two men?",
+  "choices": [
+   "They fled to Jerusalem",
+   "They went to Hebron",
+   "They are in the house",
+   "They be gone over the brook of water"
+  ],
+  "answer": 3,
+  "explanation": "She said, They be gone over the brook of water.",
+  "ref": "2 Samuel 17:20"
+ },
+ {
+  "id": "2-samuel-17-m-14",
+  "chapter": 17,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose son was Amasa, according to the chapter?",
+  "choices": [
+   "Nahash",
+   "Zeruiah",
+   "Ammiel",
+   "Ithra an Israelite"
+  ],
+  "answer": 3,
+  "explanation": "Amasa was a man's son, whose name was Ithra an Israelite.",
+  "ref": "2 Samuel 17:25"
+ },
+ {
+  "id": "2-samuel-17-m-15",
+  "chapter": 17,
+  "level": "medium",
+  "category": "place",
+  "question": "Where did Israel and Absalom pitch?",
+  "choices": [
+   "The plain of Jordan",
+   "Mount Ephraim",
+   "Beer-sheba",
+   "The land of Gilead"
+  ],
+  "answer": 3,
+  "explanation": "So Israel and Absalom pitched in the land of Gilead.",
+  "ref": "2 Samuel 17:26"
+ },
+ {
+  "id": "2-samuel-17-h-01",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Ahithophel buried?",
+  "choices": [
+   "In his father's sepulchre",
+   "Under an oak",
+   "In Jerusalem",
+   "In the king's garden"
+  ],
+  "answer": 0,
+  "explanation": "He hanged himself, and died, and was buried in the sepulchre of his father.",
+  "ref": "2 Samuel 17:23"
+ },
+ {
+  "id": "2-samuel-17-h-02",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ahithophel saddle before going home?",
+  "choices": [
+   "His ass",
+   "His horse",
+   "His mule",
+   "His camel"
+  ],
+  "answer": 0,
+  "explanation": "He saddled his ass, and arose, and gat him home to his city.",
+  "ref": "2 Samuel 17:23"
+ },
+ {
+  "id": "2-samuel-17-h-03",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Who saw the messengers and told Absalom?",
+  "choices": [
+   "A lad",
+   "A wench",
+   "A priest",
+   "A captain"
+  ],
+  "answer": 0,
+  "explanation": "Nevertheless a lad saw them, and told Absalom.",
+  "ref": "2 Samuel 17:18"
+ },
+ {
+  "id": "2-samuel-17-h-04",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Who went and told Jonathan and Ahimaaz what to say to David?",
+  "choices": [
+   "A wench",
+   "Hushai himself",
+   "Zadok",
+   "Abiathar"
+  ],
+  "answer": 0,
+  "explanation": "A wench went and told them; and they went and told king David.",
+  "ref": "2 Samuel 17:17"
+ },
+ {
+  "id": "2-samuel-17-h-05",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Amasa's mother Abigail was the sister of whose mother?",
+  "choices": [
+   "Joab's",
+   "Absalom's",
+   "David's",
+   "Hushai's"
+  ],
+  "answer": 0,
+  "explanation": "Abigail the daughter of Nahash was sister to Zeruiah Joab's mother.",
+  "ref": "2 Samuel 17:25"
+ },
+ {
+  "id": "2-samuel-17-h-06",
+  "chapter": 17,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was Shobi, who brought supplies, the son of?",
+  "choices": [
+   "Nahash of Rabbah",
+   "Ammiel of Lo-debar",
+   "Barzillai",
+   "Ithra"
+  ],
+  "answer": 0,
+  "explanation": "Shobi the son of Nahash of Rabbah of the children of Ammon.",
+  "ref": "2 Samuel 17:27"
+ },
+ {
+  "id": "2-samuel-17-h-07",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Machir the son of Ammiel from?",
+  "choices": [
+   "Lo-debar",
+   "Rabbah",
+   "Rogelim",
+   "Bahurim"
+  ],
+  "answer": 0,
+  "explanation": "Machir the son of Ammiel of Lo-debar brought supplies to David.",
+  "ref": "2 Samuel 17:27"
+ },
+ {
+  "id": "2-samuel-17-h-08",
+  "chapter": 17,
+  "level": "hard",
+  "category": "place",
+  "question": "Where was Barzillai the Gileadite from?",
+  "choices": [
+   "Rogelim",
+   "Lo-debar",
+   "Rabbah",
+   "Mahanaim"
+  ],
+  "answer": 0,
+  "explanation": "Barzillai the Gileadite of Rogelim brought supplies to David.",
+  "ref": "2 Samuel 17:27"
+ },
+ {
+  "id": "2-samuel-17-h-09",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hushai say would be done if David got into a city?",
+  "choices": [
+   "Bring ropes and draw it into the river",
+   "Burn it with fire",
+   "Starve it for a year",
+   "Break its gates"
+  ],
+  "answer": 0,
+  "explanation": "All Israel would bring ropes to that city and draw it into the river, until not one small stone was found.",
+  "ref": "2 Samuel 17:13"
+ },
+ {
+  "id": "2-samuel-17-h-10",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Hushai said they would light on David as what falls on the ground?",
+  "choices": [
+   "The dew",
+   "The rain",
+   "The hail",
+   "The snow"
+  ],
+  "answer": 0,
+  "explanation": "We will light upon him as the dew falleth on the ground.",
+  "ref": "2 Samuel 17:12"
+ },
+ {
+  "id": "2-samuel-17-h-11",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Hushai said David would not lodge with whom?",
+  "choices": [
+   "The people",
+   "His sons",
+   "The priests",
+   "The Philistines"
+  ],
+  "answer": 0,
+  "explanation": "Thy father is a man of war, and will not lodge with the people.",
+  "ref": "2 Samuel 17:8"
+ },
+ {
+  "id": "2-samuel-17-h-12",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ahithophel say David was when he would come upon him?",
+  "choices": [
+   "Weary and weak handed",
+   "Sleeping and unarmed",
+   "Hungry and alone",
+   "Far from his men"
+  ],
+  "answer": 0,
+  "explanation": "I will come upon him while he is weary and weak handed, and will make him afraid.",
+  "ref": "2 Samuel 17:2"
+ },
+ {
+  "id": "2-samuel-17-h-13",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Hushai say would be said if some of Absalom's followers fell first?",
+  "choices": [
+   "There is a slaughter among the people that follow Absalom",
+   "David is dead",
+   "The kingdom is lost",
+   "God is with David"
+  ],
+  "answer": 0,
+  "explanation": "Whosoever heareth it will say, There is a slaughter among the people that follow Absalom.",
+  "ref": "2 Samuel 17:9"
+ },
+ {
+  "id": "2-samuel-17-h-14",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many of David's people were missing after they crossed Jordan?",
+  "choices": [
+   "Not one",
+   "Ten",
+   "Twelve",
+   "About a hundred"
+  ],
+  "answer": 0,
+  "explanation": "By the morning light there lacked not one of them that was not gone over Jordan.",
+  "ref": "2 Samuel 17:22"
+ },
+ {
+  "id": "2-samuel-17-h-15",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these did the three men bring for David besides wheat and barley?",
+  "choices": [
+   "Lentiles",
+   "Figs",
+   "Olives",
+   "Raisins"
+  ],
+  "answer": 0,
+  "explanation": "They brought wheat, and barley, and flour, and parched corn, and beans, and lentiles, and parched pulse.",
+  "ref": "2 Samuel 17:28"
+ },
+ {
+  "id": "2-samuel-17-h-16",
+  "chapter": 17,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the elders of Israel think of Ahithophel's saying at first?",
+  "choices": [
+   "It pleased them well",
+   "They rejected it",
+   "They feared it",
+   "They ignored it"
+  ],
+  "answer": 0,
+  "explanation": "The saying pleased Absalom well, and all the elders of Israel.",
+  "ref": "2 Samuel 17:4"
+ },
+ {
   "id": "old-2-samuel-18-1",
   "chapter": 18,
   "level": "beginner",
