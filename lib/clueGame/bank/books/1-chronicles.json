@@ -3379,49 +3379,49 @@
   "id": "old-1-chronicles-6-1",
   "chapter": 6,
   "level": "beginner",
-  "category": "keyword",
-  "question": "Which tribe is the main focus of this chapter?",
+  "category": "person",
+  "question": "Who were the three sons of Levi?",
   "choices": [
-   "Judah",
-   "Benjamin",
-   "Ephraim",
-   "Levi"
+   "Gershon, Kohath and Merari",
+   "Amram, Izhar and Hebron",
+   "Libni, Shimei and Mahli",
+   "Aaron, Moses and Miriam"
   ],
-  "answer": 3,
-  "explanation": "This chapter centers on the tribe of Levi.",
+  "answer": 0,
+  "explanation": "The sons of Levi; Gershon, Kohath, and Merari.",
   "ref": "1 Chronicles 6:1"
  },
  {
   "id": "old-1-chronicles-6-2",
   "chapter": 6,
   "level": "beginner",
-  "category": "keyword",
-  "question": "Which two priestly names appear prominently in the line from Levi?",
+  "category": "person",
+  "question": "Which son of Aaron begat Phinehas?",
   "choices": [
-   "Joshua and Caleb",
-   "Aaron and Eleazar",
-   "Saul and Jonathan",
-   "Boaz and Obed"
+   "Eleazar",
+   "Nadab",
+   "Abihu",
+   "Ithamar"
   ],
-  "answer": 1,
-  "explanation": "Aaron and Eleazar are key links in the priestly line.",
+  "answer": 0,
+  "explanation": "Eleazar begat Phinehas, Phinehas begat Abishua.",
   "ref": "1 Chronicles 6:3–4"
  },
  {
   "id": "old-1-chronicles-6-3",
   "chapter": 6,
   "level": "beginner",
-  "category": "keyword",
-  "question": "What service group is described later in the chapter besides priests?",
+  "category": "person",
+  "question": "Which Kohathite is called a singer?",
   "choices": [
-   "Kings",
-   "Judges",
-   "Captains",
-   "Singers appointed in the house of the Lord"
+   "Heman",
+   "Zadok",
+   "Ahimaaz",
+   "Hilkiah"
   ],
-  "answer": 3,
-  "explanation": "The chapter includes musicians appointed for temple service.",
-  "ref": "1 Chronicles 6:31–32"
+  "answer": 0,
+  "explanation": "Of the sons of the Kohathites: Heman a singer, the son of Joel, the son of Shemuel.",
+  "ref": "1 Chronicles 6:33"
  },
  {
   "id": "old-1-chronicles-6-4",
@@ -3443,17 +3443,657 @@
   "id": "old-1-chronicles-6-5",
   "chapter": 6,
   "level": "beginner",
-  "category": "keyword",
-  "question": "What geographical provision for Levi is recorded at the end of the chapter?",
+  "category": "person",
+  "question": "Who was given the fields and villages of the city of Hebron?",
   "choices": [
-   "A kingdom",
-   "An inheritance east of Jordan only",
-   "Cities and suburbs among the tribes",
-   "A palace in Jerusalem"
+   "Caleb the son of Jephunneh",
+   "The sons of Aaron",
+   "Heman",
+   "Asaph"
+  ],
+  "answer": 0,
+  "explanation": "The fields of the city, and the villages thereof, they gave to Caleb the son of Jephunneh.",
+  "ref": "1 Chronicles 6:56"
+ },
+ {
+  "id": "1-chronicles-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which woman is named among the children of Amram?",
+  "choices": [
+   "Miriam",
+   "Tamar",
+   "Abigail",
+   "Hannah"
+  ],
+  "answer": 0,
+  "explanation": "The children of Amram; Aaron, and Moses, and Miriam.",
+  "ref": "1 Chronicles 6:3"
+ },
+ {
+  "id": "1-chronicles-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who executed the priest's office in the temple that Solomon built?",
+  "choices": [
+   "Zadok",
+   "Jehozadak",
+   "Seraiah",
+   "Azariah"
+  ],
+  "answer": 3,
+  "explanation": "Johanan begat Azariah, he it is that executed the priest's office in the temple that Solomon built in Jerusalem.",
+  "ref": "1 Chronicles 6:10"
+ },
+ {
+  "id": "1-chronicles-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who went into captivity when the LORD carried away Judah and Jerusalem?",
+  "choices": [
+   "Jehozadak",
+   "Shallum",
+   "Seraiah",
+   "Hilkiah"
+  ],
+  "answer": 0,
+  "explanation": "Jehozadak went into captivity, when the LORD carried away Judah and Jerusalem.",
+  "ref": "1 Chronicles 6:15"
+ },
+ {
+  "id": "1-chronicles-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "By whose hand did the LORD carry away Judah and Jerusalem?",
+  "choices": [
+   "Pul",
+   "Nebuchadnezzar",
+   "Solomon",
+   "Tilgath-pilneser"
+  ],
+  "answer": 1,
+  "explanation": "The LORD carried away Judah and Jerusalem by the hand of Nebuchadnezzar.",
+  "ref": "1 Chronicles 6:15"
+ },
+ {
+  "id": "1-chronicles-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Aaron and his sons offer upon the altar?",
+  "choices": [
+   "Only oil",
+   "Burnt offering and incense",
+   "Only first fruits",
+   "Only grain"
+  ],
+  "answer": 1,
+  "explanation": "Aaron and his sons offered upon the altar of the burnt offering, and on the altar of incense.",
+  "ref": "1 Chronicles 6:49"
+ },
+ {
+  "id": "1-chronicles-6-e-06",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who had commanded the work of Aaron and his sons?",
+  "choices": [
+   "Moses the servant of God",
+   "Samuel",
+   "David",
+   "Solomon"
+  ],
+  "answer": 0,
+  "explanation": "According to all that Moses the servant of God had commanded.",
+  "ref": "1 Chronicles 6:49"
+ },
+ {
+  "id": "1-chronicles-6-e-07",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose sons were Vashni and Abiah?",
+  "choices": [
+   "Korah's",
+   "Samuel's",
+   "Heman's",
+   "Asaph's"
+  ],
+  "answer": 1,
+  "explanation": "The sons of Samuel; the firstborn Vashni, and Abiah.",
+  "ref": "1 Chronicles 6:28"
+ },
+ {
+  "id": "1-chronicles-6-e-08",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which two sons of Merari are named?",
+  "choices": [
+   "Mahli and Mushi",
+   "Libni and Shimei",
+   "Amram and Izhar",
+   "Hebron and Uzziel"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Merari; Mahli, and Mushi.",
+  "ref": "1 Chronicles 6:19"
+ },
+ {
+  "id": "1-chronicles-6-e-09",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city of refuge in mount Ephraim was given to the Levites?",
+  "choices": [
+   "Shechem",
+   "Hebron",
+   "Golan",
+   "Heshbon"
+  ],
+  "answer": 0,
+  "explanation": "Of the cities of refuge, Shechem in mount Ephraim with her suburbs.",
+  "ref": "1 Chronicles 6:67"
+ },
+ {
+  "id": "1-chronicles-6-e-10",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Which of these was a son of Gershom?",
+  "choices": [
+   "Mahli",
+   "Mushi",
+   "Amram",
+   "Libni"
+  ],
+  "answer": 3,
+  "explanation": "These be the names of the sons of Gershom; Libni, and Shimei.",
+  "ref": "1 Chronicles 6:17"
+ },
+ {
+  "id": "1-chronicles-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Heman the singer was the son of whom?",
+  "choices": [
+   "Ethan",
+   "Korah",
+   "Joel",
+   "Shemuel"
   ],
   "answer": 2,
-  "explanation": "Levi received cities and surrounding pasturelands rather than one territorial allotment.",
-  "ref": "1 Chronicles 6:54–81"
+  "explanation": "Heman a singer, the son of Joel, the son of Shemuel.",
+  "ref": "1 Chronicles 6:33"
+ },
+ {
+  "id": "1-chronicles-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Which singer of the sons of Merari stood on the left hand?",
+  "choices": [
+   "Ethan",
+   "Asaph",
+   "Heman",
+   "Korah"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Merari stood on the left hand: Ethan the son of Kishi.",
+  "ref": "1 Chronicles 6:44"
+ },
+ {
+  "id": "1-chronicles-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Asaph was the son of whom?",
+  "choices": [
+   "Elkanah",
+   "Joel",
+   "Berachiah",
+   "Kishi"
+  ],
+  "answer": 2,
+  "explanation": "Asaph the son of Berachiah, the son of Shimea.",
+  "ref": "1 Chronicles 6:39"
+ },
+ {
+  "id": "1-chronicles-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Who begat Hilkiah?",
+  "choices": [
+   "Ahitub",
+   "Zadok",
+   "Shallum",
+   "Azariah"
+  ],
+  "answer": 2,
+  "explanation": "Zadok begat Shallum, and Shallum begat Hilkiah.",
+  "ref": "1 Chronicles 6:12–13"
+ },
+ {
+  "id": "1-chronicles-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Seraiah begat which man who went into captivity?",
+  "choices": [
+   "Meraioth",
+   "Azariah",
+   "Ahimaaz",
+   "Jehozadak"
+  ],
+  "answer": 3,
+  "explanation": "Seraiah begat Jehozadak. And Jehozadak went into captivity.",
+  "ref": "1 Chronicles 6:14–15"
+ },
+ {
+  "id": "1-chronicles-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Over what did David set Heman and the singers?",
+  "choices": [
+   "The treasuries",
+   "The army",
+   "The service of song in the house of the LORD",
+   "The city gates"
+  ],
+  "answer": 2,
+  "explanation": "These are they whom David set over the service of song in the house of the LORD.",
+  "ref": "1 Chronicles 6:31"
+ },
+ {
+  "id": "1-chronicles-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "The singers ministered before the tabernacle until when?",
+  "choices": [
+   "The captivity",
+   "Solomon had built the house of the LORD",
+   "David died",
+   "The ark was taken"
+  ],
+  "answer": 1,
+  "explanation": "They ministered before the dwelling place of the tabernacle with singing, until Solomon had built the house of the LORD.",
+  "ref": "1 Chronicles 6:32"
+ },
+ {
+  "id": "1-chronicles-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city in Judah is named as a city of refuge given to Aaron's sons?",
+  "choices": [
+   "Libnah",
+   "Ashan",
+   "Debir",
+   "Hebron"
+  ],
+  "answer": 3,
+  "explanation": "To the sons of Aaron they gave Hebron, the city of refuge.",
+  "ref": "1 Chronicles 6:57"
+ },
+ {
+  "id": "1-chronicles-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Which of these cities in Benjamin was given to the sons of Aaron?",
+  "choices": [
+   "Gezer",
+   "Ashan",
+   "Shechem",
+   "Anathoth"
+  ],
+  "answer": 3,
+  "explanation": "Out of the tribe of Benjamin; Geba, Alemeth, and Anathoth.",
+  "ref": "1 Chronicles 6:60"
+ },
+ {
+  "id": "1-chronicles-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city in Bashan was given to the sons of Gershom?",
+  "choices": [
+   "Heshbon",
+   "Bezer",
+   "Shechem",
+   "Golan"
+  ],
+  "answer": 3,
+  "explanation": "Unto the sons of Gershom were given Golan in Bashan with her suburbs.",
+  "ref": "1 Chronicles 6:71"
+ },
+ {
+  "id": "1-chronicles-6-m-11",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Which Naphtali city was in Galilee?",
+  "choices": [
+   "Kedesh",
+   "Hammon",
+   "Kirjathaim",
+   "Mashal"
+  ],
+  "answer": 0,
+  "explanation": "Out of the tribe of Naphtali; Kedesh in Galilee with her suburbs.",
+  "ref": "1 Chronicles 6:76"
+ },
+ {
+  "id": "1-chronicles-6-m-12",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Which of these did the sons of Merari receive out of Zebulun?",
+  "choices": [
+   "Heshbon",
+   "Tabor",
+   "Mahanaim",
+   "Jazer"
+  ],
+  "answer": 1,
+  "explanation": "Out of the tribe of Zebulun. Rimmon with her suburbs, Tabor with her suburbs.",
+  "ref": "1 Chronicles 6:77"
+ },
+ {
+  "id": "1-chronicles-6-m-13",
+  "chapter": 6,
+  "level": "medium",
+  "category": "place",
+  "question": "Which city of Gad was given to the sons of Merari?",
+  "choices": [
+   "Bezer",
+   "Rimmon",
+   "Heshbon",
+   "Tabor"
+  ],
+  "answer": 2,
+  "explanation": "Out of the tribe of Gad; Ramoth in Gilead, and Mahanaim, and Heshbon, and Jazer.",
+  "ref": "1 Chronicles 6:80–81"
+ },
+ {
+  "id": "1-chronicles-6-m-14",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the Levites' brethren appointed unto?",
+  "choices": [
+   "All manner of service of the tabernacle",
+   "Making war",
+   "Judging Israel",
+   "Offering incense"
+  ],
+  "answer": 0,
+  "explanation": "Their brethren also the Levites were appointed unto all manner of service of the tabernacle of the house of God.",
+  "ref": "1 Chronicles 6:48"
+ },
+ {
+  "id": "1-chronicles-6-m-15",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the cities of Aaron's sons called in the chapter, given by lot?",
+  "choices": [
+   "Their treasure cities",
+   "Their tents",
+   "Their dwelling places in their castles",
+   "Their camps"
+  ],
+  "answer": 2,
+  "explanation": "These are their dwelling places throughout their castles in their coasts, for theirs was the lot.",
+  "ref": "1 Chronicles 6:54"
+ },
+ {
+  "id": "1-chronicles-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cities did the sons of Aaron receive in all?",
+  "choices": [
+   "Nine",
+   "Thirteen",
+   "Twelve",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "All their cities throughout their families were thirteen cities.",
+  "ref": "1 Chronicles 6:60"
+ },
+ {
+  "id": "1-chronicles-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cities did the rest of Kohath's sons receive from the half tribe of Manasseh?",
+  "choices": [
+   "Ten",
+   "Twelve",
+   "Seven",
+   "Thirteen"
+  ],
+  "answer": 0,
+  "explanation": "Out of the half tribe of Manasseh, by lot, ten cities.",
+  "ref": "1 Chronicles 6:61"
+ },
+ {
+  "id": "1-chronicles-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cities did the sons of Gershom receive?",
+  "choices": [
+   "Ten",
+   "Thirteen",
+   "Eight",
+   "Twelve"
+  ],
+  "answer": 1,
+  "explanation": "Out of Issachar, Asher, Naphtali, and Manasseh in Bashan, thirteen cities.",
+  "ref": "1 Chronicles 6:62"
+ },
+ {
+  "id": "1-chronicles-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many cities did the sons of Merari receive?",
+  "choices": [
+   "Eleven",
+   "Ten",
+   "Thirteen",
+   "Twelve"
+  ],
+  "answer": 3,
+  "explanation": "Unto the sons of Merari were given by lot, out of Reuben, Gad, and Zebulun, twelve cities.",
+  "ref": "1 Chronicles 6:63"
+ },
+ {
+  "id": "1-chronicles-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Phinehas begat which man?",
+  "choices": [
+   "Bukki",
+   "Zerahiah",
+   "Abishua",
+   "Uzzi"
+  ],
+  "answer": 2,
+  "explanation": "Phinehas begat Abishua, And Abishua begat Bukki.",
+  "ref": "1 Chronicles 6:4"
+ },
+ {
+  "id": "1-chronicles-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Who begat Uzzi?",
+  "choices": [
+   "Zerahiah",
+   "Meraioth",
+   "Bukki",
+   "Abishua"
+  ],
+  "answer": 2,
+  "explanation": "Bukki begat Uzzi.",
+  "ref": "1 Chronicles 6:5"
+ },
+ {
+  "id": "1-chronicles-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two sons of Elkanah are named together?",
+  "choices": [
+   "Amasai and Ahimoth",
+   "Eliab and Jeroham",
+   "Vashni and Abiah",
+   "Zophai and Nahath"
+  ],
+  "answer": 0,
+  "explanation": "The sons of Elkanah; Amasai, and Ahimoth.",
+  "ref": "1 Chronicles 6:25"
+ },
+ {
+  "id": "1-chronicles-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Heman was the son of Joel, the son of whom?",
+  "choices": [
+   "Korah",
+   "Shemuel",
+   "Jeroham",
+   "Elkanah"
+  ],
+  "answer": 1,
+  "explanation": "Heman a singer, the son of Joel, the son of Shemuel.",
+  "ref": "1 Chronicles 6:33"
+ },
+ {
+  "id": "1-chronicles-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Ethan, who stood on the left hand, was the son of whom?",
+  "choices": [
+   "Berachiah",
+   "Joel",
+   "Shimea",
+   "Kishi"
+  ],
+  "answer": 3,
+  "explanation": "Ethan the son of Kishi, the son of Abdi, the son of Malluch.",
+  "ref": "1 Chronicles 6:44"
+ },
+ {
+  "id": "1-chronicles-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Berachiah, the father of Asaph, was the son of whom?",
+  "choices": [
+   "Michael",
+   "Elkanah",
+   "Shimea",
+   "Kishi"
+  ],
+  "answer": 2,
+  "explanation": "Asaph the son of Berachiah, the son of Shimea.",
+  "ref": "1 Chronicles 6:39"
+ },
+ {
+  "id": "1-chronicles-6-h-11",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Which Reubenite city was in the wilderness?",
+  "choices": [
+   "Jahzah",
+   "Kedemoth",
+   "Bezer",
+   "Mephaath"
+  ],
+  "answer": 2,
+  "explanation": "Out of the tribe of Reuben, Bezer in the wilderness with her suburbs.",
+  "ref": "1 Chronicles 6:78"
+ },
+ {
+  "id": "1-chronicles-6-h-12",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Which Gad city was in Gilead?",
+  "choices": [
+   "Jazer",
+   "Heshbon",
+   "Mahanaim",
+   "Ramoth"
+  ],
+  "answer": 3,
+  "explanation": "Out of the tribe of Gad; Ramoth in Gilead with her suburbs.",
+  "ref": "1 Chronicles 6:80"
+ },
+ {
+  "id": "1-chronicles-6-h-13",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city of Judah was given with Libnah and Jattir?",
+  "choices": [
+   "Hilen",
+   "Eshtemoa",
+   "Ashan",
+   "Debir"
+  ],
+  "answer": 1,
+  "explanation": "Libnah with her suburbs, and Jattir, and Eshtemoa, with their suburbs.",
+  "ref": "1 Chronicles 6:57"
+ },
+ {
+  "id": "1-chronicles-6-h-14",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city did the rest of Kohath's sons receive out of the half tribe of Manasseh?",
+  "choices": [
+   "Ashtaroth",
+   "Aner",
+   "Kedesh",
+   "Golan"
+  ],
+  "answer": 1,
+  "explanation": "Out of the half tribe of Manasseh; Aner with her suburbs, and Bileam with her suburbs.",
+  "ref": "1 Chronicles 6:70"
+ },
+ {
+  "id": "1-chronicles-6-h-15",
+  "chapter": 6,
+  "level": "hard",
+  "category": "place",
+  "question": "Which city was given with Golan in Bashan to the sons of Gershom?",
+  "choices": [
+   "Bileam",
+   "Aner",
+   "Daberath",
+   "Ashtaroth"
+  ],
+  "answer": 3,
+  "explanation": "Golan in Bashan with her suburbs, and Ashtaroth with her suburbs.",
+  "ref": "1 Chronicles 6:71"
  },
  {
   "id": "old-1-chronicles-7-1",
