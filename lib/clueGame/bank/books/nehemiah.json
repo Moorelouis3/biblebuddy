@@ -4731,7 +4731,7 @@
    "In Babylon with the exiles",
    "In the cities of Tyre"
   ],
-  "answer": 2,
+  "answer": 0,
   "explanation": "Many others remained distributed in Judah's towns.",
   "ref": "Nehemiah 11:20"
  },
@@ -4899,17 +4899,17 @@
   "id": "old-nehemiah-12-1",
   "chapter": 12,
   "level": "beginner",
-  "category": "keyword",
-  "question": "What kind of names fill much of the first half of this chapter?",
+  "category": "person",
+  "question": "With which two leaders did the priests and Levites go up?",
   "choices": [
-   "Priests and Levites",
-   "Persian generals",
-   "Foreign kings",
-   "Builders from Tyre"
+   "Nehemiah and Ezra",
+   "Zerubbabel and Jeshua",
+   "Eliashib and Joiakim",
+   "Mattaniah and Bakbukiah"
   ],
-  "answer": 0,
-  "explanation": "The chapter begins with records of priests and Levites.",
-  "ref": "Nehemiah 12:1–26"
+  "answer": 1,
+  "explanation": "These are the priests and the Levites that went up with Zerubbabel the son of Shealtiel, and Jeshua.",
+  "ref": "Nehemiah 12:1"
  },
  {
   "id": "old-nehemiah-12-2",
@@ -4918,10 +4918,10 @@
   "category": "keyword",
   "question": "What joyful event does Nehemiah organize later in the chapter?",
   "choices": [
-   "A coronation",
-   "The destruction of idols in Persia",
+   "The rebuilding of the temple",
+   "The crowning of a new governor",
    "The dedication of the wall of Jerusalem",
-   "A military parade"
+   "The keeping of Passover"
   ],
   "answer": 2,
   "explanation": "The wall dedication is the centerpiece of the chapter.",
@@ -4974,6 +4974,166 @@
   "answer": 1,
   "explanation": "Provision for temple workers was organized faithfully.",
   "ref": "Nehemiah 12:44–47"
+ },
+ {
+  "id": "nehemiah-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the priests and Levites do before the wall was dedicated?",
+  "choices": [
+   "Purified themselves, the people, the gates, and the wall",
+   "Fasted for seven days",
+   "Rebuilt the altar",
+   "Offered a sin offering for the princes"
+  ],
+  "answer": 0,
+  "explanation": "The priests and the Levites purified themselves, and purified the people, and the gates, and the wall.",
+  "ref": "Nehemiah 12:30"
+ },
+ {
+  "id": "nehemiah-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Who brought the princes of Judah up upon the wall and appointed the two companies?",
+  "choices": [
+   "Ezra",
+   "Zerubbabel",
+   "Jeshua",
+   "Nehemiah"
+  ],
+  "answer": 3,
+  "explanation": "Nehemiah said, Then I brought up the princes of Judah upon the wall, and appointed two great companies of them that gave thanks.",
+  "ref": "Nehemiah 12:31"
+ },
+ {
+  "id": "nehemiah-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Who went before the first company with the musical instruments of David?",
+  "choices": [
+   "Hanani",
+   "Jezrahiah",
+   "Ezra the scribe",
+   "Hoshaiah"
+  ],
+  "answer": 2,
+  "explanation": "The sons of the priests went with the musical instruments of David the man of God, and Ezra the scribe before them.",
+  "ref": "Nehemiah 12:36"
+ },
+ {
+  "id": "nehemiah-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "place",
+  "question": "Toward which gate did the first company go upon the wall?",
+  "choices": [
+   "The prison gate",
+   "The dung gate",
+   "The sheep gate",
+   "The fish gate"
+  ],
+  "answer": 1,
+  "explanation": "One company went upon the wall on the right hand toward the dung gate.",
+  "ref": "Nehemiah 12:31"
+ },
+ {
+  "id": "nehemiah-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the people offer on the day of the dedication?",
+  "choices": [
+   "Great sacrifices",
+   "A tenth of the spoil",
+   "Only incense",
+   "Firstfruits of the wine"
+  ],
+  "answer": 0,
+  "explanation": "That day they offered great sacrifices, and rejoiced: for God had made them rejoice with great joy.",
+  "ref": "Nehemiah 12:43"
+ },
+ {
+  "id": "nehemiah-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Who was the overseer of the singers who sang loud?",
+  "choices": [
+   "Mattaniah",
+   "Eliakim",
+   "Zechariah",
+   "Jezrahiah"
+  ],
+  "answer": 3,
+  "explanation": "The singers sang loud, with Jezrahiah their overseer.",
+  "ref": "Nehemiah 12:42"
+ },
+ {
+  "id": "nehemiah-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "place",
+  "question": "Where did the two companies of thanksgiving stand at the end?",
+  "choices": [
+   "At the water gate",
+   "In the city of David",
+   "In the house of God",
+   "At the prison gate"
+  ],
+  "answer": 2,
+  "explanation": "So stood the two companies of them that gave thanks in the house of God.",
+  "ref": "Nehemiah 12:40"
+ },
+ {
+  "id": "nehemiah-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Judah rejoice when portions were gathered into the chambers?",
+  "choices": [
+   "For the Persian king’s gifts",
+   "For the priests and for the Levites that waited",
+   "Because the harvest was great",
+   "Because the wall was finished"
+  ],
+  "answer": 1,
+  "explanation": "Judah rejoiced for the priests and for the Levites that waited.",
+  "ref": "Nehemiah 12:44"
+ },
+ {
+  "id": "nehemiah-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "The Levites sanctified the holy things unto whom?",
+  "choices": [
+   "The children of Aaron",
+   "The princes of Judah",
+   "The singers and porters",
+   "The scribes"
+  ],
+  "answer": 0,
+  "explanation": "They sanctified holy things unto the Levites; and the Levites sanctified them unto the children of Aaron.",
+  "ref": "Nehemiah 12:47"
+ },
+ {
+  "id": "nehemiah-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "The singers and the porters kept their ward according to the commandment of David and of whom?",
+  "choices": [
+   "Asaph",
+   "Ezra",
+   "Zerubbabel",
+   "Solomon his son"
+  ],
+  "answer": 3,
+  "explanation": "Both the singers and the porters kept the ward of their God according to the commandment of David, and of Solomon his son.",
+  "ref": "Nehemiah 12:45"
  },
  {
   "id": "old-nehemiah-13-1",
