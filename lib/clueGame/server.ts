@@ -369,22 +369,70 @@ export type ChallengeInput = {
 const clampScore = (raw: unknown, speed: boolean) =>
   speed ? Math.max(0, Math.min(40000, Math.round(Number(raw) || 0))) : Math.max(-50, Math.min(50, Math.round(Number(raw) || 0)));
 
-/** The player's Bible Buddies (the buddies table, either side): id, first name, photo. */
-export async function listBuddies(admin: SupabaseClient, userId: string) {
-  const [{ data: a }, { data: b }] = await Promise.all([
-    admin.from("buddies").select("user_id_2").eq("user_id_1", userId).limit(500),
-    admin.from("buddies").select("user_id_1").eq("user_id_2", userId).limit(500),
-  ]);
-  const ids = [...new Set([...(a || []).map((r) => r.user_id_2 as string), ...(b || []).map((r) => r.user_id_1 as string)])].filter((id) => id && id !== userId);
+/** Every id on one side of the buddies table, a page at a time (PostgREST caps a response at 1000 rows). */
+async function buddySide(admin: SupabaseClient, mine: "user_id_1" | "user_id_2", theirs: "user_id_1" | "user_id_2", userId: string) {
+  const out: string[] = [];
+  for (let from = 0; from < 20000; from += 1000) {
+    const { data } = await admin.from("buddies").select(theirs).eq(mine, userId).range(from, from + 999);
+    out.push(...(data || []).map((r) => (r as Record<string, string>)[theirs]));
+    if (!data || data.length < 1000) break;
+  }
+  return out;
+}
+
+type BuddyRow = { id: string; name: string; avatar: string | null; active: string | null };
+
+/**
+ * The player's Bible Buddies (the buddies table, either side): id, name,
+ * photo, last active. Profiles are read 150 ids at a time: Louis has 1,000+
+ * Buddies, and one `in` list that long is a URL the API refuses (Bad
+ * Request), which left every name as "Buddy" (2026-11-25).
+ */
+export async function listBuddies(admin: SupabaseClient, userId: string): Promise<BuddyRow[]> {
+  const [a, b] = await Promise.all([buddySide(admin, "user_id_1", "user_id_2", userId), buddySide(admin, "user_id_2", "user_id_1", userId)]);
+  const ids = [...new Set([...a, ...b])].filter((id) => id && id !== userId);
   if (!ids.length) return [];
-  const { data: profiles } = await admin.from("profile_stats").select("user_id, display_name, username, profile_image_url").in("user_id", ids);
-  const prof = new Map((profiles || []).map((p) => [p.user_id as string, p]));
+  const chunks: string[][] = [];
+  for (let i = 0; i < ids.length; i += 150) chunks.push(ids.slice(i, i + 150));
+  const pages = await Promise.all(
+    chunks.map((chunk) => admin.from("profile_stats").select("user_id, display_name, username, profile_image_url, last_active_at").in("user_id", chunk)),
+  );
+  const prof = new Map(pages.flatMap((p) => p.data || []).map((p) => [p.user_id as string, p]));
   return ids
     .map((id) => {
       const p = prof.get(id);
-      return { id, name: String((p?.display_name as string) || (p?.username as string) || "Buddy").trim(), avatar: (p?.profile_image_url as string | null) ?? null };
+      return {
+        id,
+        name: String((p?.display_name as string) || (p?.username as string) || "Buddy").trim(),
+        avatar: (p?.profile_image_url as string | null) ?? null,
+        active: (p?.last_active_at as string | null) ?? null,
+      };
     })
     .sort((x, y) => x.name.localeCompare(y.name));
+}
+
+/**
+ * Who the challenge picker shows (Louis, 2026-11-25: "the most active buddies
+ * like 10 plus a search option"): with no search, the 10 Buddies active most
+ * recently; with a search, up to 30 whose name contains it.
+ */
+const buddyCache = new Map<string, { at: number; list: BuddyRow[] }>();
+
+export async function buddyChoices(admin: SupabaseClient, userId: string, q: string, exclude: string[] = []) {
+  // Louis has 7,600 Buddies: reading them all takes ~3s, so typing in the
+  // search box reuses the list for two minutes instead of reading it per key.
+  const hit = buddyCache.get(userId);
+  const fresh = hit && Date.now() - hit.at < 120_000 ? hit.list : await listBuddies(admin, userId);
+  if (!hit || hit.list !== fresh) buddyCache.set(userId, { at: Date.now(), list: fresh });
+  if (buddyCache.size > 500) buddyCache.delete(buddyCache.keys().next().value as string);
+  const skip = new Set(exclude);
+  const all = fresh.filter((b) => !skip.has(b.id));
+  const term = q.trim().toLowerCase();
+  const starts = (b: BuddyRow) => (b.name.toLowerCase().startsWith(term) ? 0 : 1);
+  const list = term
+    ? all.filter((b) => b.name.toLowerCase().includes(term)).sort((x, y) => starts(x) - starts(y)).slice(0, 30)
+    : [...all].sort((x, y) => (y.active || "").localeCompare(x.active || "")).slice(0, 10);
+  return { buddies: list.map(({ id, name, avatar }) => ({ id, name, avatar })), total: all.length };
 }
 
 export async function createChallenge(admin: SupabaseClient, user: ClueUser, input: ChallengeInput, opts: { postToFeed?: boolean } = {}) {

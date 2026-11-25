@@ -222,14 +222,15 @@ export default function ClueChallenge({ id }: { id: string }) {
                 : `in ${c.deckName}. Same ${c.cardIds.length} questions. Can you beat it?`}
             </p>
             {c.yourRanked && !finished ? <p className="mt-2 text-[14px] font-bold">Your score: ⭐ {c.yourRanked.score}. You can play again for practice.</p> : null}
-            {c.chain && c.chain.length > 1 ? (
+            {!c.weekly && c.chain && c.chain.length > 1 ? (
               <p className="mt-3 rounded-xl px-3 py-2 text-[14px] font-bold" style={{ background: "rgba(255,255,255,.45)" }}>
                 🔗 The chain: {c.chain.map((r) => r.name.split(/\s+/)[0]).join(" → ")}
               </p>
             ) : null}
             <div className="mt-4"><Board c={c} /></div>
             {/* Pass it on: anyone in the chain sends it to their own Buddies (2026-11-23). */}
-            {!c.outdated && myId && (c.creatorId === myId || c.chain?.some((r) => r.userId === myId)) ? (
+            {/* Never on the Weekly Bible Trivia: the whole community already plays it (Louis, 2026-11-25). */}
+            {!c.outdated && !c.weekly && myId && (c.creatorId === myId || c.chain?.some((r) => r.userId === myId)) ? (
               <div className="mt-4 grid gap-2">
                 <ChallengeChoices passId={c.id} exclude={(c.chain || []).map((r) => r.userId).concat(c.creatorId ? [c.creatorId] : [])} />
               </div>
