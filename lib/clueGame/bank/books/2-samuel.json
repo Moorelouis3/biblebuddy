@@ -8080,6 +8080,646 @@
   "ref": "2 Samuel 12:24"
  },
  {
+  "id": "2-samuel-12-e-01",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who sent Nathan to David?",
+  "choices": [
+   "Joab",
+   "The LORD",
+   "Bath-sheba",
+   "Solomon"
+  ],
+  "answer": 1,
+  "explanation": "The LORD sent Nathan unto David.",
+  "ref": "2 Samuel 12:1"
+ },
+ {
+  "id": "2-samuel-12-e-02",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the poor man in Nathan's story have?",
+  "choices": [
+   "One little ewe lamb",
+   "One ox",
+   "One vineyard",
+   "Two goats"
+  ],
+  "answer": 0,
+  "explanation": "The poor man had nothing, save one little ewe lamb, which he had bought and nourished up.",
+  "ref": "2 Samuel 12:3"
+ },
+ {
+  "id": "2-samuel-12-e-03",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the rich man take to feed the traveller?",
+  "choices": [
+   "One of his own herd",
+   "A calf from the field",
+   "Bread from the poor man",
+   "The poor man's lamb"
+  ],
+  "answer": 3,
+  "explanation": "He spared to take of his own flock, but took the poor man's lamb, and dressed it for the man that was come to him.",
+  "ref": "2 Samuel 12:4"
+ },
+ {
+  "id": "2-samuel-12-e-04",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How did David react to Nathan's story?",
+  "choices": [
+   "He wept",
+   "He laughed",
+   "His anger was greatly kindled",
+   "He fell silent"
+  ],
+  "answer": 2,
+  "explanation": "David's anger was greatly kindled against the man.",
+  "ref": "2 Samuel 12:5"
+ },
+ {
+  "id": "2-samuel-12-e-05",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How much did David say the man must restore for the lamb?",
+  "choices": [
+   "Twofold",
+   "Fourfold",
+   "Sevenfold",
+   "Tenfold"
+  ],
+  "answer": 1,
+  "explanation": "He shall restore the lamb fourfold, because he did this thing, and because he had no pity.",
+  "ref": "2 Samuel 12:6"
+ },
+ {
+  "id": "2-samuel-12-e-06",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who did Nathan say anointed David king over Israel?",
+  "choices": [
+   "The LORD God of Israel",
+   "Samuel alone",
+   "Saul",
+   "Joab"
+  ],
+  "answer": 0,
+  "explanation": "Nathan said, Thus saith the LORD God of Israel, I anointed thee king over Israel.",
+  "ref": "2 Samuel 12:7"
+ },
+ {
+  "id": "2-samuel-12-e-07",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did David do while the child was sick?",
+  "choices": [
+   "Left Jerusalem",
+   "Sent for Nathan",
+   "Offered a thousand sheep",
+   "Fasted and lay all night on the earth"
+  ],
+  "answer": 3,
+  "explanation": "David besought God for the child; and David fasted, and went in, and lay all night upon the earth.",
+  "ref": "2 Samuel 12:16"
+ },
+ {
+  "id": "2-samuel-12-e-08",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "On which day did the child die?",
+  "choices": [
+   "The third day",
+   "The first day",
+   "The seventh day",
+   "The tenth day"
+  ],
+  "answer": 2,
+  "explanation": "It came to pass on the seventh day, that the child died.",
+  "ref": "2 Samuel 12:18"
+ },
+ {
+  "id": "2-samuel-12-e-09",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "place",
+  "question": "Which city of Ammon did Joab fight against?",
+  "choices": [
+   "Jericho",
+   "Rabbah",
+   "Helam",
+   "Gath"
+  ],
+  "answer": 1,
+  "explanation": "Joab fought against Rabbah of the children of Ammon, and took the royal city.",
+  "ref": "2 Samuel 12:26"
+ },
+ {
+  "id": "2-samuel-12-e-10",
+  "chapter": 12,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who finally took Rabbah after Joab sent word?",
+  "choices": [
+   "David",
+   "Abishai",
+   "Nathan",
+   "Uriah"
+  ],
+  "answer": 0,
+  "explanation": "David gathered all the people together, and went to Rabbah, and fought against it, and took it.",
+  "ref": "2 Samuel 12:29"
+ },
+ {
+  "id": "2-samuel-12-m-01",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the rich man in the story have?",
+  "choices": [
+   "Many vineyards",
+   "A house of ivory",
+   "Many servants only",
+   "Exceeding many flocks and herds"
+  ],
+  "answer": 3,
+  "explanation": "The rich man had exceeding many flocks and herds.",
+  "ref": "2 Samuel 12:2"
+ },
+ {
+  "id": "2-samuel-12-m-02",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was the poor man's lamb treated?",
+  "choices": [
+   "Like a servant",
+   "Like a hired animal",
+   "Like a daughter",
+   "Like a sacrifice"
+  ],
+  "answer": 2,
+  "explanation": "It grew up with him and his children, and lay in his bosom, and was unto him as a daughter.",
+  "ref": "2 Samuel 12:3"
+ },
+ {
+  "id": "2-samuel-12-m-03",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did David say the man must restore the lamb fourfold?",
+  "choices": [
+   "He was a thief by trade",
+   "He had no pity",
+   "He had broken a vow",
+   "He had killed a servant"
+  ],
+  "answer": 1,
+  "explanation": "He shall restore the lamb fourfold, because he did this thing, and because he had no pity.",
+  "ref": "2 Samuel 12:6"
+ },
+ {
+  "id": "2-samuel-12-m-04",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He gave David besides the house of Israel and Judah?",
+  "choices": [
+   "His master's house and wives",
+   "The ark of God",
+   "The land of Moab",
+   "The crown of Ammon"
+  ],
+  "answer": 0,
+  "explanation": "I gave thee thy master's house, and thy master's wives into thy bosom, and gave thee the house of Israel and of Judah.",
+  "ref": "2 Samuel 12:8"
+ },
+ {
+  "id": "2-samuel-12-m-05",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did Nathan say David had killed with the sword of the Ammonites?",
+  "choices": [
+   "Abner",
+   "Eliam",
+   "Joab",
+   "Uriah the Hittite"
+  ],
+  "answer": 3,
+  "explanation": "Thou hast killed Uriah the Hittite with the sword, and hast slain him with the sword of the children of Ammon.",
+  "ref": "2 Samuel 12:9"
+ },
+ {
+  "id": "2-samuel-12-m-06",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the LORD say He would raise up against David?",
+  "choices": [
+   "An army from Ammon",
+   "A famine",
+   "Evil out of his own house",
+   "A rebellion in Judah only"
+  ],
+  "answer": 2,
+  "explanation": "I will raise up evil against thee out of thine own house.",
+  "ref": "2 Samuel 12:11"
+ },
+ {
+  "id": "2-samuel-12-m-07",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Nathan say the LORD had done with David's sin after he confessed?",
+  "choices": [
+   "Delayed judgment a year",
+   "Put it away so he would not die",
+   "Hidden it from Israel",
+   "Given it to Joab"
+  ],
+  "answer": 1,
+  "explanation": "Nathan said, The LORD also hath put away thy sin; thou shalt not die.",
+  "ref": "2 Samuel 12:13"
+ },
+ {
+  "id": "2-samuel-12-m-08",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Nathan say the child would die?",
+  "choices": [
+   "David gave the LORD's enemies occasion to blaspheme",
+   "Bath-sheba had sinned",
+   "Uriah had cursed David",
+   "The child was unclean"
+  ],
+  "answer": 0,
+  "explanation": "By this deed thou hast given great occasion to the enemies of the LORD to blaspheme, the child also shall surely die.",
+  "ref": "2 Samuel 12:14"
+ },
+ {
+  "id": "2-samuel-12-m-09",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were David's servants afraid to tell him the child was dead?",
+  "choices": [
+   "He would punish them",
+   "He was asleep",
+   "He had forbidden any news",
+   "He would not listen to them while it lived"
+  ],
+  "answer": 3,
+  "explanation": "They said, while the child was yet alive, we spake unto him, and he would not hearken unto our voice: how will he then vex himself?",
+  "ref": "2 Samuel 12:18"
+ },
+ {
+  "id": "2-samuel-12-m-10",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did David realize the child was dead?",
+  "choices": [
+   "Nathan told him",
+   "Joab sent word",
+   "He saw his servants whispering",
+   "A messenger came from Rabbah"
+  ],
+  "answer": 2,
+  "explanation": "When David saw that his servants whispered, David perceived that the child was dead.",
+  "ref": "2 Samuel 12:19"
+ },
+ {
+  "id": "2-samuel-12-m-11",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David do after he rose from the earth?",
+  "choices": [
+   "Tore his clothes again",
+   "Washed, anointed himself, changed apparel and worshipped",
+   "Went to Rabbah",
+   "Called Nathan"
+  ],
+  "answer": 1,
+  "explanation": "David arose from the earth, and washed, and anointed himself, and changed his apparel, and came into the house of the LORD, and worshipped.",
+  "ref": "2 Samuel 12:20"
+ },
+ {
+  "id": "2-samuel-12-m-12",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David say about the child when explaining why he ate?",
+  "choices": [
+   "I shall go to him, but he shall not return to me",
+   "He will be raised again",
+   "He is with Uriah",
+   "He was a gift from God to Nathan"
+  ],
+  "answer": 0,
+  "explanation": "Can I bring him back again? I shall go to him, but he shall not return to me.",
+  "ref": "2 Samuel 12:23"
+ },
+ {
+  "id": "2-samuel-12-m-13",
+  "chapter": 12,
+  "level": "medium",
+  "category": "person",
+  "question": "Who sent word of the child's name Jedidiah?",
+  "choices": [
+   "Joab",
+   "Bath-sheba",
+   "Zadok",
+   "Nathan the prophet"
+  ],
+  "answer": 3,
+  "explanation": "He sent by the hand of Nathan the prophet; and he called his name Jedidiah, because of the LORD.",
+  "ref": "2 Samuel 12:25"
+ },
+ {
+  "id": "2-samuel-12-m-14",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Joab call Rabbah in his message to David?",
+  "choices": [
+   "The city of palms",
+   "The royal mountain",
+   "The city of waters",
+   "The city of Ammon's king"
+  ],
+  "answer": 2,
+  "explanation": "Joab said, I have fought against Rabbah, and have taken the city of waters.",
+  "ref": "2 Samuel 12:27"
+ },
+ {
+  "id": "2-samuel-12-h-01",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What other name was given to David's son, by Nathan the prophet?",
+  "choices": [
+   "Jehoiada",
+   "Jedidiah",
+   "Jehoram",
+   "Jedaiah"
+  ],
+  "answer": 1,
+  "explanation": "He called his name Jedidiah, because of the LORD.",
+  "ref": "2 Samuel 12:25"
+ },
+ {
+  "id": "2-samuel-12-h-02",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much did the crown of the Ammonite king weigh?",
+  "choices": [
+   "A talent of gold",
+   "A hundred shekels",
+   "Ten pounds of silver",
+   "Seven talents"
+  ],
+  "answer": 0,
+  "explanation": "The weight of the crown was a talent of gold with the precious stones.",
+  "ref": "2 Samuel 12:30"
+ },
+ {
+  "id": "2-samuel-12-h-03",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where was the royal crown of the king set after Rabbah fell?",
+  "choices": [
+   "On Joab's head",
+   "In the house of the LORD",
+   "On Solomon's head",
+   "On David's head"
+  ],
+  "answer": 3,
+  "explanation": "He took their king's crown from off his head, and it was set on David's head.",
+  "ref": "2 Samuel 12:30"
+ },
+ {
+  "id": "2-samuel-12-h-04",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why did Joab tell David to come take Rabbah himself?",
+  "choices": [
+   "Joab was wounded",
+   "The army had no food",
+   "Lest the city be called after Joab's name",
+   "David had promised to come"
+  ],
+  "answer": 2,
+  "explanation": "Take it, lest I take the city, and it be called after my name.",
+  "ref": "2 Samuel 12:28"
+ },
+ {
+  "id": "2-samuel-12-h-05",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "To whom did Nathan say the LORD would give David's wives?",
+  "choices": [
+   "His brother",
+   "His neighbour",
+   "Joab",
+   "The king of Ammon"
+  ],
+  "answer": 1,
+  "explanation": "I will take thy wives before thine eyes, and give them unto thy neighbour.",
+  "ref": "2 Samuel 12:11"
+ },
+ {
+  "id": "2-samuel-12-h-06",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where did the lamb lie in the poor man's house?",
+  "choices": [
+   "In his bosom",
+   "At the door",
+   "By the fire",
+   "In the stall"
+  ],
+  "answer": 0,
+  "explanation": "It did eat of his own meat, and drank of his own cup, and lay in his bosom.",
+  "ref": "2 Samuel 12:3"
+ },
+ {
+  "id": "2-samuel-12-h-07",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Nathan say would never depart from David's house?",
+  "choices": [
+   "The famine",
+   "The curse",
+   "The sorrow",
+   "The sword"
+  ],
+  "answer": 3,
+  "explanation": "Now therefore the sword shall never depart from thine house.",
+  "ref": "2 Samuel 12:10"
+ },
+ {
+  "id": "2-samuel-12-h-08",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Before whom did the LORD say He would do this thing openly?",
+  "choices": [
+   "The elders of Judah",
+   "The Ammonites",
+   "All Israel and the sun",
+   "The priests"
+  ],
+  "answer": 2,
+  "explanation": "Thou didst it secretly: but I will do this thing before all Israel, and before the sun.",
+  "ref": "2 Samuel 12:12"
+ },
+ {
+  "id": "2-samuel-12-h-09",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who rose to raise David from the earth while he fasted?",
+  "choices": [
+   "The priests",
+   "The elders of his house",
+   "The servants of Joab",
+   "Bath-sheba"
+  ],
+  "answer": 1,
+  "explanation": "The elders of his house arose, and went to him, to raise him up from the earth.",
+  "ref": "2 Samuel 12:17"
+ },
+ {
+  "id": "2-samuel-12-h-10",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David do just before he asked for bread after the child died?",
+  "choices": [
+   "Worshipped in the house of the LORD",
+   "Spoke to Nathan",
+   "Visited Bath-sheba",
+   "Prayed on the roof"
+  ],
+  "answer": 0,
+  "explanation": "He came into the house of the LORD, and worshipped: then he came to his own house; and he did eat.",
+  "ref": "2 Samuel 12:20"
+ },
+ {
+  "id": "2-samuel-12-h-11",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David hope while the child was alive?",
+  "choices": [
+   "That Nathan was wrong",
+   "That Joab would return",
+   "That the child would be named",
+   "That God would be gracious to him"
+  ],
+  "answer": 3,
+  "explanation": "While the child was yet alive, I fasted: for I said, Who can tell whether GOD will be gracious to me, that the child may live?",
+  "ref": "2 Samuel 12:22"
+ },
+ {
+  "id": "2-samuel-12-h-12",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did David make the Ammonites pass through?",
+  "choices": [
+   "The Jordan",
+   "Fire on the altar",
+   "The brickkiln",
+   "The city gate"
+  ],
+  "answer": 2,
+  "explanation": "He brought forth the people, and made them pass through the brickkiln.",
+  "ref": "2 Samuel 12:31"
+ },
+ {
+  "id": "2-samuel-12-h-13",
+  "chapter": 12,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom did David comfort after the child died?",
+  "choices": [
+   "Absalom",
+   "Bath-sheba his wife",
+   "Nathan",
+   "Joab"
+  ],
+  "answer": 1,
+  "explanation": "David comforted Bath-sheba his wife, and went in unto her.",
+  "ref": "2 Samuel 12:24"
+ },
+ {
+  "id": "2-samuel-12-h-14",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How much spoil did David bring out of the city of Rabbah?",
+  "choices": [
+   "In great abundance",
+   "Only the crown",
+   "Ten talents of silver",
+   "Nothing but captives"
+  ],
+  "answer": 0,
+  "explanation": "He brought forth the spoil of the city in great abundance.",
+  "ref": "2 Samuel 12:30"
+ },
+ {
+  "id": "2-samuel-12-h-15",
+  "chapter": 12,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the LORD say He would have given David if his gifts had been too little?",
+  "choices": [
+   "A second kingdom",
+   "Ten more wives",
+   "The land of Ammon",
+   "Such and such things"
+  ],
+  "answer": 3,
+  "explanation": "If that had been too little, I would moreover have given unto thee such and such things.",
+  "ref": "2 Samuel 12:8"
+ },
+ {
+  "id": "2-samuel-12-m-15",
+  "chapter": 12,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did David's servants ask about his fasting?",
+  "choices": [
+   "Why he went to Rabbah",
+   "Why he sent for Nathan",
+   "Why he rose and ate after the child died",
+   "Why he anointed Solomon"
+  ],
+  "answer": 2,
+  "explanation": "They said, thou didst fast and weep for the child, while it was alive; but when the child was dead, thou didst rise and eat bread.",
+  "ref": "2 Samuel 12:21"
+ },
+ {
   "id": "old-2-samuel-13-1",
   "chapter": 13,
   "level": "beginner",
