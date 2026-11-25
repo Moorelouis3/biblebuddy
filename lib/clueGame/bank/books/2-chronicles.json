@@ -13392,6 +13392,166 @@
   "ref": "2 Chronicles 27:6"
  },
  {
+  "id": "2-chronicles-27-m-01",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose daughter was Jerushah, the mother of Jotham?",
+  "choices": [
+   "Zadok",
+   "Uzziah",
+   "Jehoiada",
+   "Azariah"
+  ],
+  "answer": 0,
+  "explanation": "His mother's name also was Jerushah, the daughter of Zadok.",
+  "ref": "2 Chronicles 27:1"
+ },
+ {
+  "id": "2-chronicles-27-m-02",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which gate of the house of the LORD did Jotham build?",
+  "choices": [
+   "The high gate",
+   "The horse gate",
+   "The sheep gate",
+   "The corner gate"
+  ],
+  "answer": 0,
+  "explanation": "He built the high gate of the house of the LORD.",
+  "ref": "2 Chronicles 27:3"
+ },
+ {
+  "id": "2-chronicles-27-m-03",
+  "chapter": 27,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Ammonites give Jotham besides silver?",
+  "choices": [
+   "Cattle and sheep",
+   "Wheat and barley",
+   "Gold and spices",
+   "Oil and wine"
+  ],
+  "answer": 1,
+  "explanation": "The children of Ammon gave him an hundred talents of silver, and ten thousand measures of wheat, and ten thousand of barley.",
+  "ref": "2 Chronicles 27:5"
+ },
+ {
+  "id": "2-chronicles-27-m-04",
+  "chapter": 27,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was Jotham buried?",
+  "choices": [
+   "In the city of David",
+   "In the field of the burial",
+   "In Ophel",
+   "In Samaria"
+  ],
+  "answer": 0,
+  "explanation": "Jotham slept with his fathers, and they buried him in the city of David.",
+  "ref": "2 Chronicles 27:9"
+ },
+ {
+  "id": "2-chronicles-27-m-05",
+  "chapter": 27,
+  "level": "medium",
+  "category": "person",
+  "question": "Who reigned in Jotham's stead?",
+  "choices": [
+   "Hezekiah",
+   "Ahaz his son",
+   "Amaziah",
+   "Manasseh"
+  ],
+  "answer": 1,
+  "explanation": "Ahaz his son reigned in his stead.",
+  "ref": "2 Chronicles 27:9"
+ },
+ {
+  "id": "2-chronicles-27-h-01",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many years did Jotham reign in Jerusalem?",
+  "choices": [
+   "Sixteen",
+   "Twenty and five",
+   "Fifty and two",
+   "Twenty and nine"
+  ],
+  "answer": 0,
+  "explanation": "He reigned sixteen years in Jerusalem.",
+  "ref": "2 Chronicles 27:1"
+ },
+ {
+  "id": "2-chronicles-27-h-02",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How many talents of silver did the Ammonites give Jotham the same year?",
+  "choices": [
+   "Ten",
+   "Fifty",
+   "A hundred",
+   "A thousand"
+  ],
+  "answer": 2,
+  "explanation": "The children of Ammon gave him the same year an hundred talents of silver.",
+  "ref": "2 Chronicles 27:5"
+ },
+ {
+  "id": "2-chronicles-27-h-03",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For how many years does the chapter say the Ammonites paid Jotham?",
+  "choices": [
+   "One",
+   "Three",
+   "Seven",
+   "Ten"
+  ],
+  "answer": 1,
+  "explanation": "The children of Ammon paid unto him the same year, both the second year, and the third.",
+  "ref": "2 Chronicles 27:5"
+ },
+ {
+  "id": "2-chronicles-27-h-04",
+  "chapter": 27,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the people still act during Jotham's reign?",
+  "choices": [
+   "Corruptly",
+   "Faithfully",
+   "Fearfully",
+   "Idly"
+  ],
+  "answer": 0,
+  "explanation": "And the people did yet corruptly.",
+  "ref": "2 Chronicles 27:2"
+ },
+ {
+  "id": "2-chronicles-27-h-05",
+  "chapter": 27,
+  "level": "hard",
+  "category": "place",
+  "question": "On the wall of which place did Jotham build much?",
+  "choices": [
+   "Zion",
+   "Ophel",
+   "Millo",
+   "Hinnom"
+  ],
+  "answer": 1,
+  "explanation": "On the wall of Ophel he built much.",
+  "ref": "2 Chronicles 27:3"
+ },
+ {
   "id": "old-2-chronicles-28-1",
   "chapter": 28,
   "level": "beginner",
