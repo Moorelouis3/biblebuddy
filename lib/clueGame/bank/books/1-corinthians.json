@@ -1,21 +1,5 @@
 [
  {
-  "id": "old-1-corinthians-1-1",
-  "chapter": 1,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "In 1 Corinthians 1:2, to whom is Paul writing?",
-  "choices": [
-   "The church of Rome",
-   "The churches of Galatia",
-   "The saints at Philippi",
-   "The church of God at Corinth"
-  ],
-  "answer": 3,
-  "explanation": "Paul addresses the church of God which is at Corinth.",
-  "ref": "1 Corinthians 1:2"
- },
- {
   "id": "old-1-corinthians-1-2",
   "chapter": 1,
   "level": "beginner",
@@ -62,22 +46,6 @@
   "answer": 0,
   "explanation": "Paul says the preaching of the cross is foolishness to them that perish.",
   "ref": "1 Corinthians 1:18"
- },
- {
-  "id": "old-1-corinthians-1-5",
-  "chapter": 1,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "According to 1 Corinthians 1:31, in whom should a person glory?",
-  "choices": [
-   "In wisdom",
-   "In the church",
-   "In spiritual gifts",
-   "In the Lord"
-  ],
-  "answer": 3,
-  "explanation": "He that glories, let him glory in the Lord.",
-  "ref": "1 Corinthians 1:31"
  },
  {
   "id": "old-1-corinthians-2-1",
@@ -544,22 +512,6 @@
   "ref": "1 Corinthians 7:32"
  },
  {
-  "id": "old-1-corinthians-7-5",
-  "chapter": 7,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "According to 1 Corinthians 7:39, when is a wife free to be married to whom she will?",
-  "choices": [
-   "At any time",
-   "If her husband be dead",
-   "Only after a vow",
-   "After moving cities"
-  ],
-  "answer": 1,
-  "explanation": "She is bound as long as her husband lives, but if he dies, she is free to marry in the Lord.",
-  "ref": "1 Corinthians 7:39"
- },
- {
   "id": "old-1-corinthians-8-1",
   "chapter": 8,
   "level": "beginner",
@@ -573,22 +525,6 @@
   ],
   "answer": 1,
   "explanation": "Paul says knowledge puffs up, but charity edifies.",
-  "ref": "1 Corinthians 8:1"
- },
- {
-  "id": "old-1-corinthians-8-2",
-  "chapter": 8,
-  "level": "beginner",
-  "category": "keyword",
-  "question": "What does love do?",
-  "choices": [
-   "It judges",
-   "It hides truth",
-   "It edifies",
-   "It weakens zeal"
-  ],
-  "answer": 2,
-  "explanation": "Paul says charity edifieth. Charity here means love, and to edify is to build up.",
   "ref": "1 Corinthians 8:1"
  },
  {
@@ -5822,5 +5758,3509 @@
   "answer": 0,
   "explanation": "Are not ye my work in the Lord?",
   "ref": "1 Corinthians 9:1"
+ },
+ {
+  "id": "1-corinthians-1-e-01",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named with Paul as the sender of this letter?",
+  "choices": [
+   "Timothy",
+   "Silas",
+   "Apollos",
+   "Sosthenes"
+  ],
+  "answer": 3,
+  "explanation": "The letter opens: Paul, called to be an apostle of Jesus Christ through the will of God, and Sosthenes our brother.",
+  "ref": "1 Corinthians 1:1"
+ },
+ {
+  "id": "1-corinthians-1-e-02",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Paul called to be, at the start of the letter?",
+  "choices": [
+   "A prophet",
+   "An apostle",
+   "An elder",
+   "A deacon"
+  ],
+  "answer": 1,
+  "explanation": "Paul says he is called to be an apostle of Jesus Christ through the will of God.",
+  "ref": "1 Corinthians 1:1"
+ },
+ {
+  "id": "1-corinthians-1-e-03",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "place",
+  "question": "To the church in which city is the letter written?",
+  "choices": [
+   "Corinth",
+   "Ephesus",
+   "Philippi",
+   "Thessalonica"
+  ],
+  "answer": 0,
+  "explanation": "The letter is to the church of God which is at Corinth.",
+  "ref": "1 Corinthians 1:2"
+ },
+ {
+  "id": "1-corinthians-1-e-04",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who told Paul that there were contentions among the Corinthians?",
+  "choices": [
+   "They of the house of Chloe",
+   "The household of Stephanas",
+   "Timothy and Silas",
+   "Crispus and Gaius"
+  ],
+  "answer": 0,
+  "explanation": "It hath been declared unto me of you, my brethren, by them which are of the house of Chloe, that there are contentions among you.",
+  "ref": "1 Corinthians 1:11"
+ },
+ {
+  "id": "1-corinthians-1-e-05",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Christ send Paul to do, rather than to baptize?",
+  "choices": [
+   "To build synagogues",
+   "To teach the law",
+   "To heal the sick",
+   "To preach the gospel"
+  ],
+  "answer": 3,
+  "explanation": "Christ sent me not to baptize, but to preach the gospel.",
+  "ref": "1 Corinthians 1:17"
+ },
+ {
+  "id": "1-corinthians-1-e-06",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say he and his fellow preachers preach?",
+  "choices": [
+   "The law of Moses",
+   "A kingdom on earth",
+   "Christ crucified",
+   "Signs and wonders"
+  ],
+  "answer": 2,
+  "explanation": "But we preach Christ crucified, unto the Jews a stumblingblock, and unto the Greeks foolishness.",
+  "ref": "1 Corinthians 1:23"
+ },
+ {
+  "id": "1-corinthians-1-e-07",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "By whose name does Paul beseech the brethren to speak the same thing?",
+  "choices": [
+   "Moses",
+   "Apollos",
+   "Our Lord Jesus Christ",
+   "Cephas"
+  ],
+  "answer": 2,
+  "explanation": "Paul beseeches them by the name of our Lord Jesus Christ that they all speak the same thing and have no divisions.",
+  "ref": "1 Corinthians 1:10"
+ },
+ {
+  "id": "1-corinthians-1-e-08",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul thank God for on the Corinthians’ behalf?",
+  "choices": [
+   "Their gifts to the poor",
+   "The grace of God given them by Jesus Christ",
+   "Their fasting",
+   "Their zeal for the law"
+  ],
+  "answer": 1,
+  "explanation": "I thank my God always on your behalf, for the grace of God which is given you by Jesus Christ.",
+  "ref": "1 Corinthians 1:4"
+ },
+ {
+  "id": "1-corinthians-1-e-09",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the Corinthians said to be waiting for?",
+  "choices": [
+   "The return of Paul",
+   "The end of persecution",
+   "A sign from heaven",
+   "The coming of our Lord Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "They come behind in no gift, waiting for the coming of our Lord Jesus Christ.",
+  "ref": "1 Corinthians 1:7"
+ },
+ {
+  "id": "1-corinthians-1-e-10",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is faithful, by whom the Corinthians were called?",
+  "choices": [
+   "Paul",
+   "God",
+   "Apollos",
+   "Cephas"
+  ],
+  "answer": 1,
+  "explanation": "God is faithful, by whom ye were called unto the fellowship of his Son Jesus Christ our Lord.",
+  "ref": "1 Corinthians 1:9"
+ },
+ {
+  "id": "1-corinthians-1-e-11",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Where should the one who glories glory, as it is written?",
+  "choices": [
+   "In the Lord",
+   "In his wisdom",
+   "In the apostle he follows",
+   "In his own strength"
+  ],
+  "answer": 0,
+  "explanation": "That, according as it is written, He that glorieth, let him glory in the Lord.",
+  "ref": "1 Corinthians 1:31"
+ },
+ {
+  "id": "1-corinthians-1-e-12",
+  "chapter": 1,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who does Paul ask “was ... crucified for you?”",
+  "choices": [
+   "Paul",
+   "Apollos",
+   "Cephas",
+   "Crispus"
+  ],
+  "answer": 0,
+  "explanation": "Paul asks: Is Christ divided? was Paul crucified for you? or were ye baptized in the name of Paul?",
+  "ref": "1 Corinthians 1:13"
+ },
+ {
+  "id": "1-corinthians-1-m-01",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Which two men does Paul thank God he baptized?",
+  "choices": [
+   "Stephanas and Sosthenes",
+   "Apollos and Cephas",
+   "Timothy and Titus",
+   "Crispus and Gaius"
+  ],
+  "answer": 3,
+  "explanation": "I thank God that I baptized none of you, but Crispus and Gaius.",
+  "ref": "1 Corinthians 1:14"
+ },
+ {
+  "id": "1-corinthians-1-m-02",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why was Paul glad that he baptized so few?",
+  "choices": [
+   "Because baptism was not commanded",
+   "Because Apollos baptized the rest",
+   "So no one could say he baptized in his own name",
+   "Because the church feared Rome"
+  ],
+  "answer": 2,
+  "explanation": "He baptized only Crispus and Gaius, lest any should say that I had baptized in mine own name.",
+  "ref": "1 Corinthians 1:14–15"
+ },
+ {
+  "id": "1-corinthians-1-m-03",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose household did Paul also baptize?",
+  "choices": [
+   "Chloe",
+   "Crispus",
+   "Stephanas",
+   "Gaius"
+  ],
+  "answer": 2,
+  "explanation": "And I baptized also the household of Stephanas.",
+  "ref": "1 Corinthians 1:16"
+ },
+ {
+  "id": "1-corinthians-1-m-04",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say is stronger than men?",
+  "choices": [
+   "The wisdom of Greeks",
+   "The weakness of God",
+   "The law",
+   "The strength of Rome"
+  ],
+  "answer": 1,
+  "explanation": "The foolishness of God is wiser than men; and the weakness of God is stronger than men.",
+  "ref": "1 Corinthians 1:25"
+ },
+ {
+  "id": "1-corinthians-1-m-05",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "To the Jews, what is Christ crucified?",
+  "choices": [
+   "A comfort",
+   "A mystery",
+   "A fulfilment",
+   "A stumblingblock"
+  ],
+  "answer": 3,
+  "explanation": "We preach Christ crucified, unto the Jews a stumblingblock, and unto the Greeks foolishness.",
+  "ref": "1 Corinthians 1:23"
+ },
+ {
+  "id": "1-corinthians-1-m-06",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God say, as it is written, he will destroy?",
+  "choices": [
+   "The temple of the proud",
+   "The wisdom of the wise",
+   "The kingdoms of the earth",
+   "The law of the scribes"
+  ],
+  "answer": 1,
+  "explanation": "For it is written, I will destroy the wisdom of the wise, and will bring to nothing the understanding of the prudent.",
+  "ref": "1 Corinthians 1:19"
+ },
+ {
+  "id": "1-corinthians-1-m-07",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did it please God to save them that believe?",
+  "choices": [
+   "By the foolishness of preaching",
+   "By signs and wonders",
+   "By the law",
+   "By angels"
+  ],
+  "answer": 0,
+  "explanation": "It pleased God by the foolishness of preaching to save them that believe.",
+  "ref": "1 Corinthians 1:21"
+ },
+ {
+  "id": "1-corinthians-1-m-08",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul not preach with wisdom of words?",
+  "choices": [
+   "Lest the cross of Christ be made of none effect",
+   "Because he lacked learning",
+   "Because Corinth forbade it",
+   "Because Apollos preached that way"
+  ],
+  "answer": 0,
+  "explanation": "Christ sent Paul to preach the gospel, not with wisdom of words, lest the cross of Christ should be made of none effect.",
+  "ref": "1 Corinthians 1:17"
+ },
+ {
+  "id": "1-corinthians-1-m-09",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who does Paul say were not many among those called?",
+  "choices": [
+   "The poor, the sick and widows",
+   "Jews and Greeks",
+   "Prophets, elders and deacons",
+   "Wise men after the flesh, the mighty and the noble"
+  ],
+  "answer": 3,
+  "explanation": "Not many wise men after the flesh, not many mighty, not many noble, are called.",
+  "ref": "1 Corinthians 1:26"
+ },
+ {
+  "id": "1-corinthians-1-m-10",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why has God chosen the foolish, weak and base things of the world?",
+  "choices": [
+   "That the Greeks might believe",
+   "That the law be fulfilled",
+   "That no flesh should glory in his presence",
+   "That the Corinthians stay poor"
+  ],
+  "answer": 2,
+  "explanation": "God chose them that no flesh should glory in his presence.",
+  "ref": "1 Corinthians 1:27–29"
+ },
+ {
+  "id": "1-corinthians-1-m-11",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what two things does Paul say the Corinthians are enriched?",
+  "choices": [
+   "Gold and silver",
+   "Faith and works",
+   "All utterance and all knowledge",
+   "Wisdom and signs"
+  ],
+  "answer": 2,
+  "explanation": "In every thing ye are enriched by him, in all utterance, and in all knowledge.",
+  "ref": "1 Corinthians 1:5"
+ },
+ {
+  "id": "1-corinthians-1-m-12",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Confirmed unto the end, what may the Corinthians be in the day of the Lord Jesus?",
+  "choices": [
+   "Rewarded with crowns",
+   "Blameless",
+   "Free from the law",
+   "Made wise"
+  ],
+  "answer": 1,
+  "explanation": "He shall confirm you unto the end, that ye may be blameless in the day of our Lord Jesus Christ.",
+  "ref": "1 Corinthians 1:8"
+ },
+ {
+  "id": "1-corinthians-1-m-13",
+  "chapter": 1,
+  "level": "medium",
+  "category": "person",
+  "question": "Into the fellowship of whom were the Corinthians called by God?",
+  "choices": [
+   "The saints of old",
+   "Paul and Apollos",
+   "The prophets",
+   "His Son Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "God is faithful, by whom ye were called unto the fellowship of his Son Jesus Christ our Lord.",
+  "ref": "1 Corinthians 1:9"
+ },
+ {
+  "id": "1-corinthians-1-m-14",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Christ to them which are called, both Jews and Greeks?",
+  "choices": [
+   "A teacher and a judge",
+   "The power of God and the wisdom of God",
+   "A sign and a wonder",
+   "A priest and a king"
+  ],
+  "answer": 1,
+  "explanation": "Unto them which are called, both Jews and Greeks, Christ the power of God, and the wisdom of God.",
+  "ref": "1 Corinthians 1:24"
+ },
+ {
+  "id": "1-corinthians-1-m-15",
+  "chapter": 1,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the house of Chloe report to Paul?",
+  "choices": [
+   "That there are contentions among them",
+   "That some denied the resurrection",
+   "That offerings were stolen",
+   "That Paul was in danger"
+  ],
+  "answer": 0,
+  "explanation": "It hath been declared unto me by them of the house of Chloe, that there are contentions among you.",
+  "ref": "1 Corinthians 1:11"
+ },
+ {
+  "id": "1-corinthians-1-h-01",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say about whether he baptized anyone else?",
+  "choices": [
+   "He knew not whether he baptized any other",
+   "He baptized no others",
+   "Timothy baptized the rest",
+   "He baptized many in Asia"
+  ],
+  "answer": 0,
+  "explanation": "I baptized also the household of Stephanas: besides, I know not whether I baptized any other.",
+  "ref": "1 Corinthians 1:16"
+ },
+ {
+  "id": "1-corinthians-1-h-02",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has God made foolish, according to Paul’s question?",
+  "choices": [
+   "The traditions of the elders",
+   "The strength of kings",
+   "The words of the prophets",
+   "The wisdom of this world"
+  ],
+  "answer": 3,
+  "explanation": "Hath not God made foolish the wisdom of this world?",
+  "ref": "1 Corinthians 1:20"
+ },
+ {
+  "id": "1-corinthians-1-h-03",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the world fail to do by its wisdom?",
+  "choices": [
+   "Find the cross",
+   "Keep the law",
+   "Know God",
+   "Believe Moses"
+  ],
+  "answer": 2,
+  "explanation": "After that in the wisdom of God the world by wisdom knew not God.",
+  "ref": "1 Corinthians 1:21"
+ },
+ {
+  "id": "1-corinthians-1-h-04",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these does Paul say Christ Jesus is made unto us?",
+  "choices": [
+   "Dominion",
+   "Inheritance",
+   "Redemption",
+   "Prophecy"
+  ],
+  "answer": 2,
+  "explanation": "Of God is made unto us wisdom, and righteousness, and sanctification, and redemption.",
+  "ref": "1 Corinthians 1:30"
+ },
+ {
+  "id": "1-corinthians-1-h-05",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what does Paul want the Corinthians to be perfectly joined together?",
+  "choices": [
+   "The same temple and altar",
+   "The same mind and the same judgment",
+   "The same baptism",
+   "The same fast and prayer"
+  ],
+  "answer": 1,
+  "explanation": "That ye be perfectly joined together in the same mind and in the same judgment.",
+  "ref": "1 Corinthians 1:10"
+ },
+ {
+  "id": "1-corinthians-1-h-06",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the foolish and the weak, which things of the world has God chosen?",
+  "choices": [
+   "Rich things and honourable things",
+   "Hidden things and holy things",
+   "Ancient things and noble things",
+   "Base things and things which are despised"
+  ],
+  "answer": 3,
+  "explanation": "Base things of the world, and things which are despised, hath God chosen.",
+  "ref": "1 Corinthians 1:28"
+ },
+ {
+  "id": "1-corinthians-1-h-07",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say was confirmed in the Corinthians?",
+  "choices": [
+   "The law of Moses",
+   "The testimony of Christ",
+   "The promise to Abraham",
+   "Their baptism"
+  ],
+  "answer": 1,
+  "explanation": "Even as the testimony of Christ was confirmed in you.",
+  "ref": "1 Corinthians 1:6"
+ },
+ {
+  "id": "1-corinthians-1-h-08",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "The Corinthians come behind in no what?",
+  "choices": [
+   "Gift",
+   "Wisdom",
+   "Work",
+   "Offering"
+  ],
+  "answer": 0,
+  "explanation": "So that ye come behind in no gift; waiting for the coming of our Lord Jesus Christ.",
+  "ref": "1 Corinthians 1:7"
+ },
+ {
+  "id": "1-corinthians-1-h-09",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul tell the brethren to see, to show how few of them were wise or mighty?",
+  "choices": [
+   "Their calling",
+   "Their works",
+   "Their number",
+   "Their riches"
+  ],
+  "answer": 0,
+  "explanation": "For ye see your calling, brethren, how that not many wise men after the flesh, not many mighty, not many noble, are called.",
+  "ref": "1 Corinthians 1:26"
+ },
+ {
+  "id": "1-corinthians-1-h-10",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "By whom is the grace of God given to the Corinthians?",
+  "choices": [
+   "Paul",
+   "The Holy Ghost",
+   "Sosthenes",
+   "Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "The grace of God which is given you by Jesus Christ.",
+  "ref": "1 Corinthians 1:4"
+ },
+ {
+  "id": "1-corinthians-1-h-11",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did God choose “things which are not” to do?",
+  "choices": [
+   "Build up the church",
+   "Judge the angels",
+   "Bring to nought things that are",
+   "Confound the Greeks"
+  ],
+  "answer": 2,
+  "explanation": "God hath chosen things which are not, to bring to nought things that are.",
+  "ref": "1 Corinthians 1:28"
+ },
+ {
+  "id": "1-corinthians-1-h-12",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul want all the Corinthians to do?",
+  "choices": [
+   "Fast together",
+   "Give equally",
+   "Speak the same thing",
+   "Baptize alike"
+  ],
+  "answer": 2,
+  "explanation": "I beseech you, brethren, that ye all speak the same thing, and that there be no divisions among you.",
+  "ref": "1 Corinthians 1:10"
+ },
+ {
+  "id": "1-corinthians-1-h-13",
+  "chapter": 1,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom does Paul wish grace and peace to the Corinthians?",
+  "choices": [
+   "Paul and Sosthenes",
+   "God our Father and the Lord Jesus Christ",
+   "The apostles and elders",
+   "God and the angels"
+  ],
+  "answer": 1,
+  "explanation": "Grace be unto you, and peace, from God our Father, and from the Lord Jesus Christ.",
+  "ref": "1 Corinthians 1:3"
+ },
+ {
+  "id": "1-corinthians-1-h-14",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the church at Corinth, whom does Paul include in his greeting?",
+  "choices": [
+   "All the Jews",
+   "The rulers of the Gentiles",
+   "Only the apostles",
+   "All that in every place call upon the name of Jesus Christ"
+  ],
+  "answer": 3,
+  "explanation": "The church of God at Corinth, with all that in every place call upon the name of Jesus Christ our Lord, both theirs and ours.",
+  "ref": "1 Corinthians 1:2"
+ },
+ {
+  "id": "1-corinthians-1-h-15",
+  "chapter": 1,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the Greeks seek after?",
+  "choices": [
+   "A sign",
+   "Wisdom",
+   "A king",
+   "A temple"
+  ],
+  "answer": 1,
+  "explanation": "For the Jews require a sign, and the Greeks seek after wisdom.",
+  "ref": "1 Corinthians 1:22"
+ },
+ {
+  "id": "1-corinthians-2-e-01",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "For whom has God prepared things that eye has not seen?",
+  "choices": [
+   "The Jews only",
+   "The wise of this world",
+   "The prophets",
+   "Them that love him"
+  ],
+  "answer": 3,
+  "explanation": "Eye hath not seen, nor ear heard, neither have entered into the heart of man, the things which God hath prepared for them that love him.",
+  "ref": "1 Corinthians 2:9"
+ },
+ {
+  "id": "1-corinthians-2-e-02",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who has revealed the things of God to us by his Spirit?",
+  "choices": [
+   "The apostles",
+   "God",
+   "The princes of this world",
+   "The scribes"
+  ],
+  "answer": 1,
+  "explanation": "But God hath revealed them unto us by his Spirit.",
+  "ref": "1 Corinthians 2:10"
+ },
+ {
+  "id": "1-corinthians-2-e-03",
+  "chapter": 2,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose mind do the spiritual have?",
+  "choices": [
+   "Christ",
+   "The prophets",
+   "Paul",
+   "The angels"
+  ],
+  "answer": 0,
+  "explanation": "For who hath known the mind of the Lord? But we have the mind of Christ.",
+  "ref": "1 Corinthians 2:16"
+ },
+ {
+  "id": "1-corinthians-2-m-01",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Paul declare when he came to the Corinthians?",
+  "choices": [
+   "The testimony of God",
+   "The law of Moses",
+   "The wisdom of the Greeks",
+   "The history of Israel"
+  ],
+  "answer": 0,
+  "explanation": "I came not with excellency of speech or of wisdom, declaring unto you the testimony of God.",
+  "ref": "1 Corinthians 2:1"
+ },
+ {
+  "id": "1-corinthians-2-m-02",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How was Paul with the Corinthians, besides in weakness and in fear?",
+  "choices": [
+   "In much boldness",
+   "In great haste",
+   "In great sorrow",
+   "In much trembling"
+  ],
+  "answer": 3,
+  "explanation": "I was with you in weakness, and in fear, and in much trembling.",
+  "ref": "1 Corinthians 2:3"
+ },
+ {
+  "id": "1-corinthians-2-m-03",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Among whom does Paul say they speak wisdom?",
+  "choices": [
+   "The princes of this world",
+   "The scribes",
+   "Them that are perfect",
+   "The Greeks"
+  ],
+  "answer": 2,
+  "explanation": "Howbeit we speak wisdom among them that are perfect.",
+  "ref": "1 Corinthians 2:6"
+ },
+ {
+  "id": "1-corinthians-2-m-04",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul call the wisdom of God that he speaks?",
+  "choices": [
+   "A new law",
+   "The wisdom of princes",
+   "A mystery, even the hidden wisdom",
+   "A parable"
+  ],
+  "answer": 2,
+  "explanation": "We speak the wisdom of God in a mystery, even the hidden wisdom.",
+  "ref": "1 Corinthians 2:7"
+ },
+ {
+  "id": "1-corinthians-2-m-05",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom did the princes of this world crucify, not knowing?",
+  "choices": [
+   "The Son of David",
+   "The Lord of glory",
+   "A prophet",
+   "The King of Israel"
+  ],
+  "answer": 1,
+  "explanation": "Had they known it, they would not have crucified the Lord of glory.",
+  "ref": "1 Corinthians 2:8"
+ },
+ {
+  "id": "1-corinthians-2-m-06",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who alone knows the things of God?",
+  "choices": [
+   "The prophets",
+   "The apostles",
+   "The angels",
+   "The Spirit of God"
+  ],
+  "answer": 3,
+  "explanation": "Even so the things of God knoweth no man, but the Spirit of God.",
+  "ref": "1 Corinthians 2:11"
+ },
+ {
+  "id": "1-corinthians-2-m-07",
+  "chapter": 2,
+  "level": "medium",
+  "category": "person",
+  "question": "Who teaches the words Paul speaks, rather than man’s wisdom?",
+  "choices": [
+   "The elders",
+   "The Holy Ghost",
+   "Apollos",
+   "Timothy"
+  ],
+  "answer": 1,
+  "explanation": "Not in the words which man’s wisdom teacheth, but which the Holy Ghost teacheth.",
+  "ref": "1 Corinthians 2:13"
+ },
+ {
+  "id": "1-corinthians-2-m-08",
+  "chapter": 2,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What kind of spirit have believers received, rather than the spirit of the world?",
+  "choices": [
+   "The spirit which is of God",
+   "A spirit of fear",
+   "A spirit of slumber",
+   "A spirit of bondage"
+  ],
+  "answer": 0,
+  "explanation": "We have received, not the spirit of the world, but the spirit which is of God.",
+  "ref": "1 Corinthians 2:12"
+ },
+ {
+  "id": "1-corinthians-2-h-01",
+  "chapter": 2,
+  "level": "hard",
+  "category": "person",
+  "question": "Who judges all things, yet is judged of no man?",
+  "choices": [
+   "He that is spiritual",
+   "The prince",
+   "The natural man",
+   "The wise"
+  ],
+  "answer": 0,
+  "explanation": "But he that is spiritual judgeth all things, yet he himself is judged of no man.",
+  "ref": "1 Corinthians 2:15"
+ },
+ {
+  "id": "1-corinthians-2-h-02",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why can the natural man not know the things of the Spirit?",
+  "choices": [
+   "They are written in secret",
+   "They are too long to learn",
+   "They belong only to Israel",
+   "They are spiritually discerned"
+  ],
+  "answer": 3,
+  "explanation": "Neither can he know them, because they are spiritually discerned.",
+  "ref": "1 Corinthians 2:14"
+ },
+ {
+  "id": "1-corinthians-2-h-03",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what end did God ordain the hidden wisdom before the world?",
+  "choices": [
+   "For the princes’ judgment",
+   "For the sake of Israel",
+   "Unto our glory",
+   "For the temple"
+  ],
+  "answer": 2,
+  "explanation": "The hidden wisdom, which God ordained before the world unto our glory.",
+  "ref": "1 Corinthians 2:7"
+ },
+ {
+  "id": "1-corinthians-2-h-04",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What question does Paul ask about the mind of the Lord?",
+  "choices": [
+   "Who hath seen it?",
+   "Who hath written it?",
+   "Who hath known it, that he may instruct him?",
+   "Who hath hidden it?"
+  ],
+  "answer": 2,
+  "explanation": "For who hath known the mind of the Lord, that he may instruct him?",
+  "ref": "1 Corinthians 2:16"
+ },
+ {
+  "id": "1-corinthians-2-h-05",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will happen to the princes of this world, whose wisdom Paul does not speak?",
+  "choices": [
+   "They will believe",
+   "They come to nought",
+   "They will rule",
+   "They will be judged by angels"
+  ],
+  "answer": 1,
+  "explanation": "Not the wisdom of this world, nor of the princes of this world, that come to nought.",
+  "ref": "1 Corinthians 2:6"
+ },
+ {
+  "id": "1-corinthians-2-h-06",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Who knows the things of a man, in Paul’s comparison?",
+  "choices": [
+   "His closest friend",
+   "The angels",
+   "The Holy Ghost",
+   "The spirit of man which is in him"
+  ],
+  "answer": 3,
+  "explanation": "For what man knoweth the things of a man, save the spirit of man which is in him?",
+  "ref": "1 Corinthians 2:11"
+ },
+ {
+  "id": "1-corinthians-2-h-07",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why have believers received the Spirit which is of God?",
+  "choices": [
+   "That we might rule the nations",
+   "That we might know the things freely given to us of God",
+   "That we might see angels",
+   "That we might escape trials"
+  ],
+  "answer": 1,
+  "explanation": "That we might know the things that are freely given to us of God.",
+  "ref": "1 Corinthians 2:12"
+ },
+ {
+  "id": "1-corinthians-2-h-08",
+  "chapter": 2,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say he does by comparing spiritual things with spiritual?",
+  "choices": [
+   "Speaks the things the Holy Ghost teaches",
+   "Judges the princes",
+   "Teaches the Greeks",
+   "Writes the law"
+  ],
+  "answer": 0,
+  "explanation": "Which things also we speak, not in the words which man’s wisdom teacheth, but which the Holy Ghost teacheth; comparing spiritual things with spiritual.",
+  "ref": "1 Corinthians 2:13"
+ },
+ {
+  "id": "1-corinthians-3-e-01",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had Paul fed the Corinthians, rather than meat?",
+  "choices": [
+   "Bread",
+   "Wine",
+   "Manna",
+   "Milk"
+  ],
+  "answer": 3,
+  "explanation": "I have fed you with milk, and not with meat.",
+  "ref": "1 Corinthians 3:2"
+ },
+ {
+  "id": "1-corinthians-3-e-02",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who gave the increase?",
+  "choices": [
+   "Paul",
+   "God",
+   "Apollos",
+   "The church"
+  ],
+  "answer": 1,
+  "explanation": "I have planted, Apollos watered; but God gave the increase.",
+  "ref": "1 Corinthians 3:6"
+ },
+ {
+  "id": "1-corinthians-3-e-03",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides God’s building, what does Paul call the Corinthians?",
+  "choices": [
+   "God’s husbandry",
+   "God’s army",
+   "God’s treasure",
+   "God’s priests"
+  ],
+  "answer": 0,
+  "explanation": "For we are labourers together with God: ye are God’s husbandry, ye are God’s building.",
+  "ref": "1 Corinthians 3:9"
+ },
+ {
+  "id": "1-corinthians-3-e-04",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall be tried by fire?",
+  "choices": [
+   "Every man’s work",
+   "Every man’s words",
+   "Every man’s house",
+   "Every man’s riches"
+  ],
+  "answer": 0,
+  "explanation": "The fire shall try every man’s work of what sort it is.",
+  "ref": "1 Corinthians 3:13"
+ },
+ {
+  "id": "1-corinthians-3-e-05",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "In whom does Paul say let no man glory?",
+  "choices": [
+   "The Lord",
+   "The law",
+   "Himself",
+   "Men"
+  ],
+  "answer": 3,
+  "explanation": "Therefore let no man glory in men.",
+  "ref": "1 Corinthians 3:21"
+ },
+ {
+  "id": "1-corinthians-3-e-06",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose are the Corinthians, in the chapter’s last verse?",
+  "choices": [
+   "Paul’s",
+   "Apollos’s",
+   "Christ’s",
+   "Cephas’s"
+  ],
+  "answer": 2,
+  "explanation": "And ye are Christ’s; and Christ is God’s.",
+  "ref": "1 Corinthians 3:23"
+ },
+ {
+  "id": "1-corinthians-3-e-07",
+  "chapter": 3,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul call himself and Apollos?",
+  "choices": [
+   "Lords of the church",
+   "Prophets of God",
+   "Ministers by whom they believed",
+   "Rulers of Corinth"
+  ],
+  "answer": 2,
+  "explanation": "Who then is Paul, and who is Apollos, but ministers by whom ye believed, even as the Lord gave to every man?",
+  "ref": "1 Corinthians 3:5"
+ },
+ {
+  "id": "1-corinthians-3-m-01",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul call himself as he laid the foundation?",
+  "choices": [
+   "A faithful shepherd",
+   "A wise masterbuilder",
+   "A skilful scribe",
+   "A chosen priest"
+  ],
+  "answer": 1,
+  "explanation": "As a wise masterbuilder, I have laid the foundation, and another buildeth thereon.",
+  "ref": "1 Corinthians 3:10"
+ },
+ {
+  "id": "1-corinthians-3-m-02",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must every man take heed to?",
+  "choices": [
+   "What he eats",
+   "Who he follows",
+   "When he speaks",
+   "How he buildeth thereupon"
+  ],
+  "answer": 3,
+  "explanation": "But let every man take heed how he buildeth thereupon.",
+  "ref": "1 Corinthians 3:10"
+ },
+ {
+  "id": "1-corinthians-3-m-03",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these does Paul name as something a man may build on the foundation?",
+  "choices": [
+   "Iron",
+   "Stubble",
+   "Brass",
+   "Marble"
+  ],
+  "answer": 1,
+  "explanation": "If any man build upon this foundation gold, silver, precious stones, wood, hay, stubble.",
+  "ref": "1 Corinthians 3:12"
+ },
+ {
+  "id": "1-corinthians-3-m-04",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what shall every man’s work be revealed?",
+  "choices": [
+   "Fire",
+   "Water",
+   "Wind",
+   "The law"
+  ],
+  "answer": 0,
+  "explanation": "It shall be revealed by fire; and the fire shall try every man’s work of what sort it is.",
+  "ref": "1 Corinthians 3:13"
+ },
+ {
+  "id": "1-corinthians-3-m-05",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the man whose work abides receive?",
+  "choices": [
+   "A reward",
+   "A crown of gold",
+   "A place of honour",
+   "Praise of men"
+  ],
+  "answer": 0,
+  "explanation": "If any man’s work abide which he hath built thereupon, he shall receive a reward.",
+  "ref": "1 Corinthians 3:14"
+ },
+ {
+  "id": "1-corinthians-3-m-06",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the man whose work is burned?",
+  "choices": [
+   "He is destroyed",
+   "He is cast out of the church",
+   "He receives double reward",
+   "He suffers loss, but is himself saved as by fire"
+  ],
+  "answer": 3,
+  "explanation": "If any man’s work shall be burned, he shall suffer loss: but he himself shall be saved; yet so as by fire.",
+  "ref": "1 Corinthians 3:15"
+ },
+ {
+  "id": "1-corinthians-3-m-07",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does God do to anyone who defiles the temple of God?",
+  "choices": [
+   "Forgive him",
+   "Cast him out",
+   "Destroy him",
+   "Send him a warning"
+  ],
+  "answer": 2,
+  "explanation": "If any man defile the temple of God, him shall God destroy.",
+  "ref": "1 Corinthians 3:17"
+ },
+ {
+  "id": "1-corinthians-3-m-08",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did Paul feed them milk and not meat?",
+  "choices": [
+   "Meat was costly",
+   "Meat was forbidden",
+   "They were not able to bear it",
+   "They refused it"
+  ],
+  "answer": 2,
+  "explanation": "Hitherto ye were not able to bear it, neither yet now are ye able.",
+  "ref": "1 Corinthians 3:2"
+ },
+ {
+  "id": "1-corinthians-3-m-09",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What must a man who seems wise in this world become, that he may be wise?",
+  "choices": [
+   "A servant",
+   "A fool",
+   "A child",
+   "A stranger"
+  ],
+  "answer": 1,
+  "explanation": "Let him become a fool, that he may be wise.",
+  "ref": "1 Corinthians 3:18"
+ },
+ {
+  "id": "1-corinthians-3-m-10",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In what does Paul quote that God takes the wise?",
+  "choices": [
+   "Their own pride",
+   "Their own words",
+   "Their own snares",
+   "Their own craftiness"
+  ],
+  "answer": 3,
+  "explanation": "He taketh the wise in their own craftiness.",
+  "ref": "1 Corinthians 3:19"
+ },
+ {
+  "id": "1-corinthians-3-m-11",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Which of these does Paul say is the Corinthians’?",
+  "choices": [
+   "The temple at Jerusalem",
+   "Death",
+   "The kings of the earth",
+   "The throne of heaven"
+  ],
+  "answer": 1,
+  "explanation": "Whether Paul, or Apollos, or Cephas, or the world, or life, or death, or things present, or things to come; all are yours.",
+  "ref": "1 Corinthians 3:22"
+ },
+ {
+  "id": "1-corinthians-3-m-12",
+  "chapter": 3,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say of him that planteth and him that watereth?",
+  "choices": [
+   "They are one",
+   "They are rivals",
+   "The planter is greater",
+   "They are strangers"
+  ],
+  "answer": 0,
+  "explanation": "Now he that planteth and he that watereth are one.",
+  "ref": "1 Corinthians 3:8"
+ },
+ {
+  "id": "1-corinthians-3-h-01",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to what does each man receive his own reward?",
+  "choices": [
+   "His own labour",
+   "His own words",
+   "His own wisdom",
+   "His own rank"
+  ],
+  "answer": 0,
+  "explanation": "Every man shall receive his own reward according to his own labour.",
+  "ref": "1 Corinthians 3:8"
+ },
+ {
+  "id": "1-corinthians-3-h-02",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "With whom are Paul and Apollos labourers together?",
+  "choices": [
+   "The church",
+   "The elders",
+   "The Corinthians",
+   "God"
+  ],
+  "answer": 3,
+  "explanation": "For we are labourers together with God.",
+  "ref": "1 Corinthians 3:9"
+ },
+ {
+  "id": "1-corinthians-3-h-03",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Because of envying and divisions, how does Paul say the Corinthians walk?",
+  "choices": [
+   "As babes",
+   "As strangers",
+   "As men",
+   "As Gentiles"
+  ],
+  "answer": 2,
+  "explanation": "Whereas there is among you envying, and strife, and divisions, are ye not carnal, and walk as men?",
+  "ref": "1 Corinthians 3:3"
+ },
+ {
+  "id": "1-corinthians-3-h-04",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "The wisdom of this world is foolishness with whom?",
+  "choices": [
+   "The Greeks",
+   "The angels",
+   "God",
+   "The prophets"
+  ],
+  "answer": 2,
+  "explanation": "For the wisdom of this world is foolishness with God.",
+  "ref": "1 Corinthians 3:19"
+ },
+ {
+  "id": "1-corinthians-3-h-05",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Lord know the thoughts of the wise to be?",
+  "choices": [
+   "Hidden",
+   "Vain",
+   "Proud",
+   "Few"
+  ],
+  "answer": 1,
+  "explanation": "The Lord knoweth the thoughts of the wise, that they are vain.",
+  "ref": "1 Corinthians 3:20"
+ },
+ {
+  "id": "1-corinthians-3-h-06",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "According to what was Paul able to lay the foundation?",
+  "choices": [
+   "His own wisdom",
+   "The law of Moses",
+   "The counsel of Apollos",
+   "The grace of God given to him"
+  ],
+  "answer": 3,
+  "explanation": "According to the grace of God which is given unto me, as a wise masterbuilder, I have laid the foundation.",
+  "ref": "1 Corinthians 3:10"
+ },
+ {
+  "id": "1-corinthians-3-h-07",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say a man must not do to himself?",
+  "choices": [
+   "Judge himself",
+   "Deceive himself",
+   "Glory in himself",
+   "Deny himself"
+  ],
+  "answer": 1,
+  "explanation": "Let no man deceive himself.",
+  "ref": "1 Corinthians 3:18"
+ },
+ {
+  "id": "1-corinthians-3-h-08",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall make every man’s work manifest?",
+  "choices": [
+   "The day",
+   "The angels",
+   "The prophets",
+   "The elders"
+  ],
+  "answer": 0,
+  "explanation": "Every man’s work shall be made manifest: for the day shall declare it.",
+  "ref": "1 Corinthians 3:13"
+ },
+ {
+  "id": "1-corinthians-3-h-09",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Who buildeth on the foundation Paul laid?",
+  "choices": [
+   "Another",
+   "Apollos",
+   "Cephas",
+   "Timothy"
+  ],
+  "answer": 0,
+  "explanation": "I have laid the foundation, and another buildeth thereon.",
+  "ref": "1 Corinthians 3:10"
+ },
+ {
+  "id": "1-corinthians-3-h-10",
+  "chapter": 3,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say of the temple of God, which they are?",
+  "choices": [
+   "It is hidden",
+   "It is ancient",
+   "It is made with hands",
+   "It is holy"
+  ],
+  "answer": 3,
+  "explanation": "The temple of God is holy, which temple ye are.",
+  "ref": "1 Corinthians 3:17"
+ },
+ {
+  "id": "1-corinthians-3-h-11",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Which two names do the Corinthians’ slogans use in this chapter?",
+  "choices": [
+   "Paul and Cephas",
+   "Apollos and Timothy",
+   "Paul and Apollos",
+   "Cephas and Christ"
+  ],
+  "answer": 2,
+  "explanation": "For while one saith, I am of Paul; and another, I am of Apollos; are ye not carnal?",
+  "ref": "1 Corinthians 3:4"
+ },
+ {
+  "id": "1-corinthians-3-h-12",
+  "chapter": 3,
+  "level": "hard",
+  "category": "person",
+  "question": "Whose is Christ, in the chapter’s last words?",
+  "choices": [
+   "Paul’s",
+   "The church’s",
+   "God’s",
+   "Apollos’s"
+  ],
+  "answer": 2,
+  "explanation": "And ye are Christ’s; and Christ is God’s.",
+  "ref": "1 Corinthians 3:23"
+ },
+ {
+  "id": "1-corinthians-4-e-01",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What has God made the apostles to the world, to angels and to men?",
+  "choices": [
+   "A sacrifice",
+   "A light",
+   "A burden",
+   "A spectacle"
+  ],
+  "answer": 3,
+  "explanation": "We are made a spectacle unto the world, and to angels, and to men.",
+  "ref": "1 Corinthians 4:9"
+ },
+ {
+  "id": "1-corinthians-4-e-02",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say the apostles are for Christ’s sake?",
+  "choices": [
+   "Wise",
+   "Fools",
+   "Strong",
+   "Honourable"
+  ],
+  "answer": 1,
+  "explanation": "We are fools for Christ’s sake, but ye are wise in Christ.",
+  "ref": "1 Corinthians 4:10"
+ },
+ {
+  "id": "1-corinthians-4-e-03",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What do the apostles do when they are reviled?",
+  "choices": [
+   "Bless",
+   "Answer back",
+   "Flee",
+   "Call for judgment"
+  ],
+  "answer": 0,
+  "explanation": "Being reviled, we bless; being persecuted, we suffer it.",
+  "ref": "1 Corinthians 4:12"
+ },
+ {
+  "id": "1-corinthians-4-e-04",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul beseech the Corinthians to be?",
+  "choices": [
+   "Followers of him",
+   "Teachers of men",
+   "Rulers of the church",
+   "Labourers in the field"
+  ],
+  "answer": 0,
+  "explanation": "Wherefore I beseech you, be ye followers of me.",
+  "ref": "1 Corinthians 4:16"
+ },
+ {
+  "id": "1-corinthians-4-e-05",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul ask whether he should come with?",
+  "choices": [
+   "A letter or a visit",
+   "Gold or silver",
+   "An army or a sword",
+   "A rod, or in love and the spirit of meekness"
+  ],
+  "answer": 3,
+  "explanation": "What will ye? shall I come unto you with a rod, or in love, and in the spirit of meekness?",
+  "ref": "1 Corinthians 4:21"
+ },
+ {
+  "id": "1-corinthians-4-e-06",
+  "chapter": 4,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Why does Paul write these things to the Corinthians?",
+  "choices": [
+   "To collect an offering",
+   "To announce a visit",
+   "Not to shame them, but to warn them as beloved sons",
+   "To praise their wisdom"
+  ],
+  "answer": 2,
+  "explanation": "I write not these things to shame you, but as my beloved sons I warn you.",
+  "ref": "1 Corinthians 4:14"
+ },
+ {
+  "id": "1-corinthians-4-m-01",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say about being judged of the Corinthians?",
+  "choices": [
+   "It is a great honour",
+   "It is a great fear",
+   "It is a very small thing",
+   "It is a command"
+  ],
+  "answer": 2,
+  "explanation": "With me it is a very small thing that I should be judged of you, or of man’s judgment.",
+  "ref": "1 Corinthians 4:3"
+ },
+ {
+  "id": "1-corinthians-4-m-02",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Though Paul knows nothing by himself, what does he say about being justified?",
+  "choices": [
+   "He is justified by it",
+   "He is not hereby justified",
+   "He is justified by the Corinthians",
+   "He is justified by works"
+  ],
+  "answer": 1,
+  "explanation": "I know nothing by myself; yet am I not hereby justified: but he that judgeth me is the Lord.",
+  "ref": "1 Corinthians 4:4"
+ },
+ {
+  "id": "1-corinthians-4-m-03",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when does Paul say to judge nothing?",
+  "choices": [
+   "Until Paul arrives",
+   "Until the feast",
+   "Until the harvest",
+   "Until the Lord come"
+  ],
+  "answer": 3,
+  "explanation": "Judge nothing before the time, until the Lord come.",
+  "ref": "1 Corinthians 4:5"
+ },
+ {
+  "id": "1-corinthians-4-m-04",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the Lord bring to light when he comes?",
+  "choices": [
+   "The books of the law",
+   "The hidden things of darkness",
+   "The names of the saints",
+   "The gifts of the church"
+  ],
+  "answer": 1,
+  "explanation": "Who both will bring to light the hidden things of darkness, and will make manifest the counsels of the hearts.",
+  "ref": "1 Corinthians 4:5"
+ },
+ {
+  "id": "1-corinthians-4-m-05",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Paul use himself and Apollos as a figure?",
+  "choices": [
+   "That they might not think of men above that which is written",
+   "That they might give more",
+   "That they might fast",
+   "That they might build a temple"
+  ],
+  "answer": 0,
+  "explanation": "That ye might learn in us not to think of men above that which is written.",
+  "ref": "1 Corinthians 4:6"
+ },
+ {
+  "id": "1-corinthians-4-m-06",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul ask, to show no one has reason to glory?",
+  "choices": [
+   "What hast thou that thou didst not receive?",
+   "What hast thou that is not thine own?",
+   "What hast thou that is not written?",
+   "What hast thou that God has not seen?"
+  ],
+  "answer": 0,
+  "explanation": "What hast thou that thou didst not receive? now if thou didst receive it, why dost thou glory?",
+  "ref": "1 Corinthians 4:7"
+ },
+ {
+  "id": "1-corinthians-4-m-07",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say the Corinthians have done without the apostles?",
+  "choices": [
+   "Fasted for a year",
+   "Built a temple",
+   "Sailed to Rome",
+   "Reigned as kings"
+  ],
+  "answer": 3,
+  "explanation": "Now ye are full, now ye are rich, ye have reigned as kings without us.",
+  "ref": "1 Corinthians 4:8"
+ },
+ {
+  "id": "1-corinthians-4-m-08",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How has God set forth the apostles?",
+  "choices": [
+   "First, as rulers",
+   "In the middle, as judges",
+   "Last, as appointed to death",
+   "Apart, as priests"
+  ],
+  "answer": 2,
+  "explanation": "God hath set forth us the apostles last, as it were appointed to death.",
+  "ref": "1 Corinthians 4:9"
+ },
+ {
+  "id": "1-corinthians-4-m-09",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say the apostles are made, unto this day?",
+  "choices": [
+   "The salt of the earth",
+   "The light of the world",
+   "The filth of the world and the offscouring of all things",
+   "The rulers of the Gentiles"
+  ],
+  "answer": 2,
+  "explanation": "We are made as the filth of the world, and are the offscouring of all things unto this day.",
+  "ref": "1 Corinthians 4:13"
+ },
+ {
+  "id": "1-corinthians-4-m-10",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Though they have ten thousand instructers, what do the Corinthians not have many of?",
+  "choices": [
+   "Teachers",
+   "Fathers",
+   "Prophets",
+   "Elders"
+  ],
+  "answer": 1,
+  "explanation": "Though ye have ten thousand instructers in Christ, yet have ye not many fathers.",
+  "ref": "1 Corinthians 4:15"
+ },
+ {
+  "id": "1-corinthians-4-m-11",
+  "chapter": 4,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would Timothy bring the Corinthians into remembrance of?",
+  "choices": [
+   "The law of Moses",
+   "The sayings of Apollos",
+   "The feasts of Israel",
+   "Paul’s ways which be in Christ"
+  ],
+  "answer": 3,
+  "explanation": "Timotheus shall bring you into remembrance of my ways which be in Christ.",
+  "ref": "1 Corinthians 4:17"
+ },
+ {
+  "id": "1-corinthians-4-h-01",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these does Paul list among the apostles’ sufferings?",
+  "choices": [
+   "Being shipwrecked",
+   "Being buffeted",
+   "Being stoned",
+   "Being imprisoned in Rome"
+  ],
+  "answer": 1,
+  "explanation": "Even unto this present hour we both hunger, and thirst, and are naked, and are buffeted.",
+  "ref": "1 Corinthians 4:11"
+ },
+ {
+  "id": "1-corinthians-4-h-02",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the apostles do when they are defamed?",
+  "choices": [
+   "Intreat",
+   "Rebuke",
+   "Depart",
+   "Appeal to Caesar"
+  ],
+  "answer": 0,
+  "explanation": "Being defamed, we intreat.",
+  "ref": "1 Corinthians 4:13"
+ },
+ {
+  "id": "1-corinthians-4-h-03",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why were some puffed up, according to Paul?",
+  "choices": [
+   "As though Paul would not come to them",
+   "Because of their gifts",
+   "Because of Apollos’ teaching",
+   "Because of their wealth"
+  ],
+  "answer": 0,
+  "explanation": "Now some are puffed up, as though I would not come to you.",
+  "ref": "1 Corinthians 4:18"
+ },
+ {
+  "id": "1-corinthians-4-h-04",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "On what condition does Paul say he will come shortly?",
+  "choices": [
+   "If they send for him",
+   "If the winter is past",
+   "If Timothy returns",
+   "If the Lord will"
+  ],
+  "answer": 3,
+  "explanation": "But I will come to you shortly, if the Lord will.",
+  "ref": "1 Corinthians 4:19"
+ },
+ {
+  "id": "1-corinthians-4-h-05",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say he will know about them that are puffed up?",
+  "choices": [
+   "Their names and cities",
+   "Their gifts",
+   "Not their speech, but their power",
+   "Their works of charity"
+  ],
+  "answer": 2,
+  "explanation": "Will know, not the speech of them which are puffed up, but the power.",
+  "ref": "1 Corinthians 4:19"
+ },
+ {
+  "id": "1-corinthians-4-h-06",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Ye are honourable, but we are what?",
+  "choices": [
+   "Strong",
+   "Rich",
+   "Despised",
+   "Wise"
+  ],
+  "answer": 2,
+  "explanation": "Ye are honourable, but we are despised.",
+  "ref": "1 Corinthians 4:10"
+ },
+ {
+  "id": "1-corinthians-4-h-07",
+  "chapter": 4,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does Paul say he does not judge?",
+  "choices": [
+   "Apollos",
+   "Himself",
+   "The Corinthians",
+   "Timothy"
+  ],
+  "answer": 1,
+  "explanation": "Yea, I judge not mine own self.",
+  "ref": "1 Corinthians 4:3"
+ },
+ {
+  "id": "1-corinthians-4-h-08",
+  "chapter": 4,
+  "level": "hard",
+  "category": "place",
+  "question": "Where does Paul say he teaches his ways?",
+  "choices": [
+   "In Corinth only",
+   "In the synagogues",
+   "In Jerusalem",
+   "Every where in every church"
+  ],
+  "answer": 3,
+  "explanation": "As I teach every where in every church.",
+  "ref": "1 Corinthians 4:17"
+ },
+ {
+  "id": "1-corinthians-4-h-09",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall every man have of God when the Lord comes?",
+  "choices": [
+   "A crown",
+   "Praise",
+   "Judgment",
+   "Mercy"
+  ],
+  "answer": 1,
+  "explanation": "And then shall every man have praise of God.",
+  "ref": "1 Corinthians 4:5"
+ },
+ {
+  "id": "1-corinthians-4-h-10",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the apostles do when they are persecuted?",
+  "choices": [
+   "Suffer it",
+   "Flee",
+   "Fight",
+   "Appeal"
+  ],
+  "answer": 0,
+  "explanation": "Being persecuted, we suffer it.",
+  "ref": "1 Corinthians 4:12"
+ },
+ {
+  "id": "1-corinthians-4-h-11",
+  "chapter": 4,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say the apostles have no certain of?",
+  "choices": [
+   "Dwellingplace",
+   "Food",
+   "Clothing",
+   "Friends"
+  ],
+  "answer": 0,
+  "explanation": "And are buffeted, and have no certain dwellingplace.",
+  "ref": "1 Corinthians 4:11"
+ },
+ {
+  "id": "1-corinthians-5-e-01",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Instead of mourning, what have the Corinthians done?",
+  "choices": [
+   "Fasted",
+   "Prayed",
+   "Sent a letter",
+   "Are puffed up"
+  ],
+  "answer": 3,
+  "explanation": "And ye are puffed up, and have not rather mourned.",
+  "ref": "1 Corinthians 5:2"
+ },
+ {
+  "id": "1-corinthians-5-e-02",
+  "chapter": 5,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Among whom is this fornication not so much as named?",
+  "choices": [
+   "The Jews",
+   "The Gentiles",
+   "The Romans",
+   "The priests"
+  ],
+  "answer": 1,
+  "explanation": "Such fornication as is not so much as named among the Gentiles.",
+  "ref": "1 Corinthians 5:1"
+ },
+ {
+  "id": "1-corinthians-5-m-01",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "To whom does Paul say to deliver the man?",
+  "choices": [
+   "Satan",
+   "The elders",
+   "The magistrate",
+   "The Gentiles"
+  ],
+  "answer": 0,
+  "explanation": "To deliver such an one unto Satan for the destruction of the flesh.",
+  "ref": "1 Corinthians 5:5"
+ },
+ {
+  "id": "1-corinthians-5-m-02",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say is not good?",
+  "choices": [
+   "Their glorying",
+   "Their fasting",
+   "Their feasts",
+   "Their offerings"
+  ],
+  "answer": 0,
+  "explanation": "Your glorying is not good.",
+  "ref": "1 Corinthians 5:6"
+ },
+ {
+  "id": "1-corinthians-5-m-03",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Purge out the old leaven, that ye may be what?",
+  "choices": [
+   "A holy nation",
+   "A fair temple",
+   "A strong house",
+   "A new lump"
+  ],
+  "answer": 3,
+  "explanation": "Purge out therefore the old leaven, that ye may be a new lump, as ye are unleavened.",
+  "ref": "1 Corinthians 5:7"
+ },
+ {
+  "id": "1-corinthians-5-m-04",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Paul written to them in an epistle?",
+  "choices": [
+   "To give to the poor",
+   "To send Timothy",
+   "Not to company with fornicators",
+   "To keep the feast of weeks"
+  ],
+  "answer": 2,
+  "explanation": "I wrote unto you in an epistle not to company with fornicators.",
+  "ref": "1 Corinthians 5:9"
+ },
+ {
+  "id": "1-corinthians-5-m-05",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does Paul not mean keeping away from all the fornicators of this world?",
+  "choices": [
+   "The world would judge them",
+   "They would lose their trade",
+   "Then they must needs go out of the world",
+   "They are not to judge"
+  ],
+  "answer": 2,
+  "explanation": "Then must ye needs go out of the world.",
+  "ref": "1 Corinthians 5:10"
+ },
+ {
+  "id": "1-corinthians-5-m-06",
+  "chapter": 5,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are they told not to do with such a brother?",
+  "choices": [
+   "Greet him",
+   "Eat with him",
+   "Pray for him",
+   "Write to him"
+  ],
+  "answer": 1,
+  "explanation": "If any man that is called a brother be a fornicator, with such an one no not to eat.",
+  "ref": "1 Corinthians 5:11"
+ },
+ {
+  "id": "1-corinthians-5-h-01",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does Paul say to deliver the man to Satan?",
+  "choices": [
+   "That he may be put to death",
+   "That the church may be warned",
+   "That he may leave the city",
+   "That the spirit may be saved in the day of the Lord Jesus"
+  ],
+  "answer": 3,
+  "explanation": "To deliver such an one unto Satan for the destruction of the flesh, that the spirit may be saved in the day of the Lord Jesus.",
+  "ref": "1 Corinthians 5:5"
+ },
+ {
+  "id": "1-corinthians-5-h-02",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these does Paul name among those he says not to keep company with?",
+  "choices": [
+   "A murderer",
+   "A drunkard",
+   "A liar",
+   "A sorcerer"
+  ],
+  "answer": 1,
+  "explanation": "If any man that is called a brother be a fornicator, or covetous, or an idolater, or a railer, or a drunkard, or an extortioner.",
+  "ref": "1 Corinthians 5:11"
+ },
+ {
+  "id": "1-corinthians-5-h-03",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom does Paul say he has nothing to do with judging?",
+  "choices": [
+   "Them that are without",
+   "The Corinthian elders",
+   "Those within the church",
+   "The apostles"
+  ],
+  "answer": 0,
+  "explanation": "For what have I to do to judge them also that are without?",
+  "ref": "1 Corinthians 5:12"
+ },
+ {
+  "id": "1-corinthians-5-h-04",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "Who judges them that are without?",
+  "choices": [
+   "God",
+   "The saints",
+   "The magistrates",
+   "The apostles"
+  ],
+  "answer": 0,
+  "explanation": "But them that are without God judgeth.",
+  "ref": "1 Corinthians 5:13"
+ },
+ {
+  "id": "1-corinthians-5-h-05",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Paul say he is with them, though absent in body?",
+  "choices": [
+   "Present in prayer",
+   "Present in letters",
+   "Present in Timothy",
+   "Present in spirit"
+  ],
+  "answer": 3,
+  "explanation": "I verily, as absent in body, but present in spirit, have judged already.",
+  "ref": "1 Corinthians 5:3"
+ },
+ {
+  "id": "1-corinthians-5-h-06",
+  "chapter": 5,
+  "level": "hard",
+  "category": "person",
+  "question": "In whose name should the church be gathered to act?",
+  "choices": [
+   "Paul",
+   "The elders",
+   "Our Lord Jesus Christ",
+   "The Holy Spirit"
+  ],
+  "answer": 2,
+  "explanation": "In the name of our Lord Jesus Christ, when ye are gathered together, and my spirit.",
+  "ref": "1 Corinthians 5:4"
+ },
+ {
+  "id": "1-corinthians-5-h-07",
+  "chapter": 5,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides old leaven, what leaven must the feast be kept without?",
+  "choices": [
+   "Pride and envy",
+   "Strife and anger",
+   "Malice and wickedness",
+   "Greed and idolatry"
+  ],
+  "answer": 2,
+  "explanation": "Not with old leaven, neither with the leaven of malice and wickedness.",
+  "ref": "1 Corinthians 5:8"
+ },
+ {
+  "id": "1-corinthians-5-m-07",
+  "chapter": 5,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does Paul say the church ought to judge?",
+  "choices": [
+   "Them that are without",
+   "Them that are within",
+   "The Gentile rulers",
+   "The apostles"
+  ],
+  "answer": 1,
+  "explanation": "Do not ye judge them that are within?",
+  "ref": "1 Corinthians 5:12"
+ },
+ {
+  "id": "1-corinthians-6-e-01",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom shall the saints judge besides the world?",
+  "choices": [
+   "Kings",
+   "Prophets",
+   "The Gentiles",
+   "Angels"
+  ],
+  "answer": 3,
+  "explanation": "Know ye not that we shall judge angels?",
+  "ref": "1 Corinthians 6:3"
+ },
+ {
+  "id": "1-corinthians-6-e-02",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say they should rather do than go to law?",
+  "choices": [
+   "Fast",
+   "Take wrong",
+   "Appeal to Caesar",
+   "Leave the church"
+  ],
+  "answer": 1,
+  "explanation": "Why do ye not rather take wrong? why do ye not rather suffer yourselves to be defrauded?",
+  "ref": "1 Corinthians 6:7"
+ },
+ {
+  "id": "1-corinthians-6-e-03",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall not inherit the kingdom of God?",
+  "choices": [
+   "The unrighteous",
+   "The poor",
+   "The Gentiles",
+   "The weak"
+  ],
+  "answer": 0,
+  "explanation": "Know ye not that the unrighteous shall not inherit the kingdom of God?",
+  "ref": "1 Corinthians 6:9"
+ },
+ {
+  "id": "1-corinthians-6-e-04",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had happened to the Corinthians who were once among the unrighteous?",
+  "choices": [
+   "They were washed, sanctified and justified",
+   "They were fasted and prayed over",
+   "They were exiled",
+   "They were sent to Rome"
+  ],
+  "answer": 0,
+  "explanation": "Such were some of you: but ye are washed, but ye are sanctified, but ye are justified in the name of the Lord Jesus.",
+  "ref": "1 Corinthians 6:11"
+ },
+ {
+  "id": "1-corinthians-6-e-05",
+  "chapter": 6,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will God do for believers, as he raised up the Lord?",
+  "choices": [
+   "Take us to Rome",
+   "Make us kings now",
+   "Judge us first",
+   "Raise us up by his own power"
+  ],
+  "answer": 3,
+  "explanation": "God hath both raised up the Lord, and will also raise up us by his own power.",
+  "ref": "1 Corinthians 6:14"
+ },
+ {
+  "id": "1-corinthians-6-m-01",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Before whom do brother and brother go to law?",
+  "choices": [
+   "The elders",
+   "The saints",
+   "The unbelievers",
+   "The apostles"
+  ],
+  "answer": 2,
+  "explanation": "But brother goeth to law with brother, and that before the unbelievers.",
+  "ref": "1 Corinthians 6:6"
+ },
+ {
+  "id": "1-corinthians-6-m-02",
+  "chapter": 6,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom does Paul say to set to judge matters of this life?",
+  "choices": [
+   "The apostles",
+   "The richest",
+   "Them who are least esteemed in the church",
+   "The oldest"
+  ],
+  "answer": 2,
+  "explanation": "Set them to judge who are least esteemed in the church.",
+  "ref": "1 Corinthians 6:4"
+ },
+ {
+  "id": "1-corinthians-6-m-03",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul ask is not found among them, to judge between brethren?",
+  "choices": [
+   "A priest",
+   "A wise man",
+   "A prophet",
+   "A scribe"
+  ],
+  "answer": 1,
+  "explanation": "Is it so, that there is not a wise man among you? no, not one that shall be able to judge between his brethren?",
+  "ref": "1 Corinthians 6:5"
+ },
+ {
+  "id": "1-corinthians-6-m-04",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say they do to their brethren?",
+  "choices": [
+   "Slander and betray",
+   "Rob and abandon",
+   "Curse and judge",
+   "Wrong and defraud"
+  ],
+  "answer": 3,
+  "explanation": "Nay, ye do wrong, and defraud, and that your brethren.",
+  "ref": "1 Corinthians 6:8"
+ },
+ {
+  "id": "1-corinthians-6-m-05",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say of all things that are lawful for him?",
+  "choices": [
+   "All are good",
+   "Not all are expedient",
+   "All are forbidden",
+   "All are commanded"
+  ],
+  "answer": 1,
+  "explanation": "All things are lawful unto me, but all things are not expedient.",
+  "ref": "1 Corinthians 6:12"
+ },
+ {
+  "id": "1-corinthians-6-m-06",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say the bodies of believers are?",
+  "choices": [
+   "The members of Christ",
+   "The lamps of the church",
+   "The servants of the law",
+   "The gifts of Apollos"
+  ],
+  "answer": 0,
+  "explanation": "Know ye not that your bodies are the members of Christ?",
+  "ref": "1 Corinthians 6:15"
+ },
+ {
+  "id": "1-corinthians-6-m-07",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say of him who is joined to a harlot?",
+  "choices": [
+   "He is one body with her",
+   "He is cut off from the law",
+   "He is no brother",
+   "He is under the law of Moses"
+  ],
+  "answer": 0,
+  "explanation": "He which is joined to an harlot is one body: for two, saith he, shall be one flesh.",
+  "ref": "1 Corinthians 6:16"
+ },
+ {
+  "id": "1-corinthians-6-m-08",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is he that is joined to the Lord?",
+  "choices": [
+   "One body",
+   "One nation",
+   "One house",
+   "One spirit"
+  ],
+  "answer": 3,
+  "explanation": "But he that is joined unto the Lord is one spirit.",
+  "ref": "1 Corinthians 6:17"
+ },
+ {
+  "id": "1-corinthians-6-m-09",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Against what does the fornicator sin?",
+  "choices": [
+   "The law of Moses",
+   "The church",
+   "His own body",
+   "The temple"
+  ],
+  "answer": 2,
+  "explanation": "He that committeth fornication sinneth against his own body.",
+  "ref": "1 Corinthians 6:18"
+ },
+ {
+  "id": "1-corinthians-6-m-10",
+  "chapter": 6,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say believers are not?",
+  "choices": [
+   "Free from the law",
+   "Strangers",
+   "Their own",
+   "Rich"
+  ],
+  "answer": 2,
+  "explanation": "Ye are not your own.",
+  "ref": "1 Corinthians 6:19"
+ },
+ {
+  "id": "1-corinthians-6-h-01",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will God do to the belly and meats?",
+  "choices": [
+   "Bless both",
+   "Destroy both",
+   "Cleanse both",
+   "Judge both"
+  ],
+  "answer": 1,
+  "explanation": "Meats for the belly, and the belly for meats: but God shall destroy both it and them.",
+  "ref": "1 Corinthians 6:13"
+ },
+ {
+  "id": "1-corinthians-6-h-02",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "For whom is the body, according to Paul, rather than for fornication?",
+  "choices": [
+   "The church",
+   "The world",
+   "The law",
+   "The Lord"
+  ],
+  "answer": 3,
+  "explanation": "Now the body is not for fornication, but for the Lord; and the Lord for the body.",
+  "ref": "1 Corinthians 6:13"
+ },
+ {
+  "id": "1-corinthians-6-h-03",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these does Paul say shall not inherit the kingdom of God?",
+  "choices": [
+   "Liars",
+   "Thieves",
+   "Murderers",
+   "Sorcerers"
+  ],
+  "answer": 1,
+  "explanation": "Nor thieves, nor covetous, nor drunkards, nor revilers, nor extortioners, shall inherit the kingdom of God.",
+  "ref": "1 Corinthians 6:10"
+ },
+ {
+  "id": "1-corinthians-6-h-04",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If the saints shall judge the world, what does Paul say they are not unworthy to judge?",
+  "choices": [
+   "The smallest matters",
+   "The angels",
+   "The apostles",
+   "The temple"
+  ],
+  "answer": 0,
+  "explanation": "If the world shall be judged by you, are ye unworthy to judge the smallest matters?",
+  "ref": "1 Corinthians 6:2"
+ },
+ {
+  "id": "1-corinthians-6-h-05",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What warning does Paul give before listing the unrighteous?",
+  "choices": [
+   "Be not deceived",
+   "Be not afraid",
+   "Be not proud",
+   "Be not hasty"
+  ],
+  "answer": 0,
+  "explanation": "Be not deceived: neither fornicators, nor idolaters, nor adulterers.",
+  "ref": "1 Corinthians 6:9"
+ },
+ {
+  "id": "1-corinthians-6-h-06",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does Paul answer the thought of making the members of Christ the members of a harlot?",
+  "choices": [
+   "It is lawful",
+   "It is a small thing",
+   "It is for the Lord",
+   "God forbid"
+  ],
+  "answer": 3,
+  "explanation": "Shall I then take the members of Christ, and make them the members of an harlot? God forbid.",
+  "ref": "1 Corinthians 6:15"
+ },
+ {
+  "id": "1-corinthians-6-h-07",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul quote saying the two shall be?",
+  "choices": [
+   "One house",
+   "One spirit",
+   "One flesh",
+   "One nation"
+  ],
+  "answer": 2,
+  "explanation": "For two, saith he, shall be one flesh.",
+  "ref": "1 Corinthians 6:16"
+ },
+ {
+  "id": "1-corinthians-6-h-08",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "From whom do believers have the Holy Ghost?",
+  "choices": [
+   "The apostles",
+   "The church",
+   "God",
+   "The law"
+  ],
+  "answer": 2,
+  "explanation": "Your body is the temple of the Holy Ghost which is in you, which ye have of God.",
+  "ref": "1 Corinthians 6:19"
+ },
+ {
+  "id": "1-corinthians-6-h-09",
+  "chapter": 6,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what two things does Paul say to glorify God?",
+  "choices": [
+   "Word and deed",
+   "Body and spirit",
+   "Heart and mind",
+   "Prayer and fasting"
+  ],
+  "answer": 1,
+  "explanation": "Therefore glorify God in your body, and in your spirit, which are God’s.",
+  "ref": "1 Corinthians 6:20"
+ },
+ {
+  "id": "1-corinthians-6-h-10",
+  "chapter": 6,
+  "level": "hard",
+  "category": "person",
+  "question": "Instead of before the saints, before whom does Paul ask if any dare go to law?",
+  "choices": [
+   "The elders",
+   "The angels",
+   "The apostles",
+   "The unjust"
+  ],
+  "answer": 3,
+  "explanation": "Dare any of you, having a matter against another, go to law before the unjust, and not before the saints?",
+  "ref": "1 Corinthians 6:1"
+ },
+ {
+  "id": "1-corinthians-7-e-01",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When is a wife free to be married to whom she will?",
+  "choices": [
+   "At any time",
+   "Only after a vow",
+   "After a year",
+   "If her husband be dead"
+  ],
+  "answer": 3,
+  "explanation": "The wife is bound by the law as long as her husband liveth; but if her husband be dead, she is at liberty to be married to whom she will.",
+  "ref": "1 Corinthians 7:39"
+ },
+ {
+  "id": "1-corinthians-7-e-02",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What should the husband render unto the wife?",
+  "choices": [
+   "A gift",
+   "Due benevolence",
+   "A dowry",
+   "A vow"
+  ],
+  "answer": 1,
+  "explanation": "Let the husband render unto the wife due benevolence: and likewise also the wife unto the husband.",
+  "ref": "1 Corinthians 7:3"
+ },
+ {
+  "id": "1-corinthians-7-e-03",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say every man has of God?",
+  "choices": [
+   "His proper gift",
+   "A temple",
+   "A calling to the apostles",
+   "A house"
+  ],
+  "answer": 0,
+  "explanation": "Every man hath his proper gift of God, one after this manner, and another after that.",
+  "ref": "1 Corinthians 7:7"
+ },
+ {
+  "id": "1-corinthians-7-e-04",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say is better than to burn?",
+  "choices": [
+   "To marry",
+   "To fast",
+   "To travel",
+   "To wait"
+  ],
+  "answer": 0,
+  "explanation": "But if they cannot contain, let them marry: for it is better to marry than to burn.",
+  "ref": "1 Corinthians 7:9"
+ },
+ {
+  "id": "1-corinthians-7-e-05",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Lord command the wife not to do?",
+  "choices": [
+   "Speak in church",
+   "Lend money",
+   "Sell her goods",
+   "Depart from her husband"
+  ],
+  "answer": 3,
+  "explanation": "Unto the married I command, yet not I, but the Lord, Let not the wife depart from her husband.",
+  "ref": "1 Corinthians 7:10"
+ },
+ {
+  "id": "1-corinthians-7-e-06",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "If the unbelieving partner departs, what does Paul say?",
+  "choices": [
+   "Pursue him",
+   "Appeal to the elders",
+   "Let him depart",
+   "Put him out"
+  ],
+  "answer": 2,
+  "explanation": "But if the unbelieving depart, let him depart.",
+  "ref": "1 Corinthians 7:15"
+ },
+ {
+  "id": "1-corinthians-7-e-07",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What matters, since circumcision is nothing and uncircumcision is nothing?",
+  "choices": [
+   "Fasting and prayer",
+   "The feasts",
+   "The keeping of the commandments of God",
+   "Gifts to the church"
+  ],
+  "answer": 2,
+  "explanation": "Circumcision is nothing, and uncircumcision is nothing, but the keeping of the commandments of God.",
+  "ref": "1 Corinthians 7:19"
+ },
+ {
+  "id": "1-corinthians-7-e-08",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul tell them not to be, since they are bought with a price?",
+  "choices": [
+   "Servants of God",
+   "Servants of men",
+   "Judges of men",
+   "Teachers of men"
+  ],
+  "answer": 1,
+  "explanation": "Ye are bought with a price; be not ye the servants of men.",
+  "ref": "1 Corinthians 7:23"
+ },
+ {
+  "id": "1-corinthians-7-e-09",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say to one called being a servant?",
+  "choices": [
+   "Leave at once",
+   "Rebel",
+   "Appeal to Caesar",
+   "Care not for it"
+  ],
+  "answer": 3,
+  "explanation": "Art thou called being a servant? care not for it: but if thou mayest be made free, use it rather.",
+  "ref": "1 Corinthians 7:21"
+ },
+ {
+  "id": "1-corinthians-7-e-10",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say about the time?",
+  "choices": [
+   "It is long",
+   "It is short",
+   "It is hidden",
+   "It is fulfilled"
+  ],
+  "answer": 1,
+  "explanation": "But this I say, brethren, the time is short.",
+  "ref": "1 Corinthians 7:29"
+ },
+ {
+  "id": "1-corinthians-7-e-11",
+  "chapter": 7,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say he has not about virgins?",
+  "choices": [
+   "A commandment of the Lord",
+   "A letter from Apollos",
+   "An opinion",
+   "A vision"
+  ],
+  "answer": 0,
+  "explanation": "Now concerning virgins I have no commandment of the Lord: yet I give my judgment.",
+  "ref": "1 Corinthians 7:25"
+ },
+ {
+  "id": "1-corinthians-7-m-01",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why might a couple part for a time, by consent?",
+  "choices": [
+   "To give themselves to fasting and prayer",
+   "To travel",
+   "To work",
+   "To visit the poor"
+  ],
+  "answer": 0,
+  "explanation": "Defraud ye not one the other, except it be with consent for a time, that ye may give yourselves to fasting and prayer.",
+  "ref": "1 Corinthians 7:5"
+ },
+ {
+  "id": "1-corinthians-7-m-02",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why should they come together again after fasting and prayer?",
+  "choices": [
+   "That the law be kept",
+   "That children be born",
+   "That the church be pleased",
+   "That Satan tempt them not"
+  ],
+  "answer": 3,
+  "explanation": "Come together again, that Satan tempt you not for your incontinency.",
+  "ref": "1 Corinthians 7:5"
+ },
+ {
+  "id": "1-corinthians-7-m-03",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does Paul say he speaks about their coming together again?",
+  "choices": [
+   "By a vision",
+   "By the law",
+   "By permission, not of commandment",
+   "By Apollos"
+  ],
+  "answer": 2,
+  "explanation": "But I speak this by permission, and not of commandment.",
+  "ref": "1 Corinthians 7:6"
+ },
+ {
+  "id": "1-corinthians-7-m-04",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "If a wife departs, what must she do?",
+  "choices": [
+   "Marry again",
+   "Return to her father",
+   "Remain unmarried or be reconciled to her husband",
+   "Go to law"
+  ],
+  "answer": 2,
+  "explanation": "But and if she depart, let her remain unmarried, or be reconciled to her husband.",
+  "ref": "1 Corinthians 7:11"
+ },
+ {
+  "id": "1-corinthians-7-m-05",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What should a brother do whose unbelieving wife is pleased to dwell with him?",
+  "choices": [
+   "Send her to her family",
+   "Not put her away",
+   "Wait a year",
+   "Ask the elders"
+  ],
+  "answer": 1,
+  "explanation": "If any brother hath a wife that believeth not, and she be pleased to dwell with him, let him not put her away.",
+  "ref": "1 Corinthians 7:12"
+ },
+ {
+  "id": "1-corinthians-7-m-06",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say of the children when one parent believes?",
+  "choices": [
+   "They are unclean",
+   "They are slaves",
+   "They are strangers",
+   "They are holy"
+  ],
+  "answer": 3,
+  "explanation": "Else were your children unclean; but now are they holy.",
+  "ref": "1 Corinthians 7:14"
+ },
+ {
+  "id": "1-corinthians-7-m-07",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul ask the wife?",
+  "choices": [
+   "Whether she will leave him",
+   "Whether she shall save her husband",
+   "Whether she will fast",
+   "Whether she will teach"
+  ],
+  "answer": 1,
+  "explanation": "For what knowest thou, O wife, whether thou shalt save thy husband?",
+  "ref": "1 Corinthians 7:16"
+ },
+ {
+  "id": "1-corinthians-7-m-08",
+  "chapter": 7,
+  "level": "medium",
+  "category": "place",
+  "question": "Where does Paul say he ordains this rule?",
+  "choices": [
+   "In all churches",
+   "In Corinth only",
+   "In Jerusalem",
+   "In the synagogues"
+  ],
+  "answer": 0,
+  "explanation": "As the Lord hath called every one, so let him walk. And so ordain I in all churches.",
+  "ref": "1 Corinthians 7:17"
+ },
+ {
+  "id": "1-corinthians-7-m-09",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul tell a circumcised man who is called?",
+  "choices": [
+   "Not to become uncircumcised",
+   "To be circumcised again",
+   "To leave the church",
+   "To keep the feast"
+  ],
+  "answer": 0,
+  "explanation": "Is any man called being circumcised? let him not become uncircumcised.",
+  "ref": "1 Corinthians 7:18"
+ },
+ {
+  "id": "1-corinthians-7-m-10",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the servant who is called in the Lord?",
+  "choices": [
+   "A friend of Caesar",
+   "A bondman of men",
+   "A steward",
+   "The Lord’s freeman"
+  ],
+  "answer": 3,
+  "explanation": "He that is called in the Lord, being a servant, is the Lord’s freeman.",
+  "ref": "1 Corinthians 7:22"
+ },
+ {
+  "id": "1-corinthians-7-m-11",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul tell a man who is bound unto a wife?",
+  "choices": [
+   "Put her away",
+   "Leave in haste",
+   "Seek not to be loosed",
+   "Fast for a year"
+  ],
+  "answer": 2,
+  "explanation": "Art thou bound unto a wife? seek not to be loosed.",
+  "ref": "1 Corinthians 7:27"
+ },
+ {
+  "id": "1-corinthians-7-m-12",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say about one who marries?",
+  "choices": [
+   "He has sinned",
+   "He is unclean",
+   "He has not sinned",
+   "He is blessed above others"
+  ],
+  "answer": 2,
+  "explanation": "But and if thou marry, thou hast not sinned; and if a virgin marry, she hath not sinned.",
+  "ref": "1 Corinthians 7:28"
+ },
+ {
+  "id": "1-corinthians-7-m-13",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul wish for the Corinthians?",
+  "choices": [
+   "That they be rich",
+   "That they be without carefulness",
+   "That they be bold",
+   "That they be wise"
+  ],
+  "answer": 1,
+  "explanation": "But I would have you without carefulness.",
+  "ref": "1 Corinthians 7:32"
+ },
+ {
+  "id": "1-corinthians-7-m-14",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say he does not want to cast upon them?",
+  "choices": [
+   "A burden",
+   "A fine",
+   "A shadow",
+   "A snare"
+  ],
+  "answer": 3,
+  "explanation": "Not that I may cast a snare upon you, but for that which is comely.",
+  "ref": "1 Corinthians 7:35"
+ },
+ {
+  "id": "1-corinthians-7-m-15",
+  "chapter": 7,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say makes a widow happier?",
+  "choices": [
+   "Marrying again",
+   "Abiding as she is",
+   "Leaving the city",
+   "Joining the elders"
+  ],
+  "answer": 1,
+  "explanation": "But she is happier if she so abide, after my judgment.",
+  "ref": "1 Corinthians 7:40"
+ },
+ {
+  "id": "1-corinthians-7-h-01",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say is good for a man, in answer to what they wrote?",
+  "choices": [
+   "Not to touch a woman",
+   "To leave his home",
+   "To fast often",
+   "To travel widely"
+  ],
+  "answer": 0,
+  "explanation": "Now concerning the things whereof ye wrote unto me: It is good for a man not to touch a woman.",
+  "ref": "1 Corinthians 7:1"
+ },
+ {
+  "id": "1-corinthians-7-h-02",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the woman with an unbelieving husband told, if he is pleased to dwell with her?",
+  "choices": [
+   "Not to leave him",
+   "To send him away",
+   "To fast",
+   "To go to law"
+  ],
+  "answer": 0,
+  "explanation": "If he be pleased to dwell with her, let her not leave him.",
+  "ref": "1 Corinthians 7:13"
+ },
+ {
+  "id": "1-corinthians-7-h-03",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is a brother or sister not under, when the unbeliever departs?",
+  "choices": [
+   "The law",
+   "Judgment",
+   "Obligation to the elders",
+   "Bondage"
+  ],
+  "answer": 3,
+  "explanation": "A brother or a sister is not under bondage in such cases: but God hath called us to peace.",
+  "ref": "1 Corinthians 7:15"
+ },
+ {
+  "id": "1-corinthians-7-h-04",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "For what does Paul think it good for a man to remain as he is?",
+  "choices": [
+   "The coming of the Lord",
+   "The law of Moses",
+   "The present distress",
+   "The cost of living"
+  ],
+  "answer": 2,
+  "explanation": "I suppose therefore that this is good for the present distress.",
+  "ref": "1 Corinthians 7:26"
+ },
+ {
+  "id": "1-corinthians-7-h-05",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How should those who have wives be, says Paul?",
+  "choices": [
+   "Twice as careful",
+   "Far from home",
+   "As though they had none",
+   "Silent in church"
+  ],
+  "answer": 2,
+  "explanation": "The time is short: it remaineth, that both they that have wives be as though they had none.",
+  "ref": "1 Corinthians 7:29"
+ },
+ {
+  "id": "1-corinthians-7-h-06",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How should they that weep be, says Paul?",
+  "choices": [
+   "More sorrowful",
+   "As though they wept not",
+   "Silent",
+   "Comforted by men"
+  ],
+  "answer": 1,
+  "explanation": "And they that weep, as though they wept not.",
+  "ref": "1 Corinthians 7:30"
+ },
+ {
+  "id": "1-corinthians-7-h-07",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say passeth away?",
+  "choices": [
+   "The law",
+   "The temple",
+   "The prophets",
+   "The fashion of this world"
+  ],
+  "answer": 3,
+  "explanation": "For the fashion of this world passeth away.",
+  "ref": "1 Corinthians 7:31"
+ },
+ {
+  "id": "1-corinthians-7-h-08",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How does the unmarried woman seek to be holy?",
+  "choices": [
+   "In word and deed",
+   "Both in body and in spirit",
+   "In fasting and prayer",
+   "In heart and house"
+  ],
+  "answer": 1,
+  "explanation": "The unmarried woman careth for the things of the Lord, that she may be holy both in body and in spirit.",
+  "ref": "1 Corinthians 7:34"
+ },
+ {
+  "id": "1-corinthians-7-h-09",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does Paul speak, so they may attend upon the Lord?",
+  "choices": [
+   "Without distraction",
+   "With all haste",
+   "Without delay",
+   "Without fear"
+  ],
+  "answer": 0,
+  "explanation": "That ye may attend upon the Lord without distraction.",
+  "ref": "1 Corinthians 7:35"
+ },
+ {
+  "id": "1-corinthians-7-h-10",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "If his virgin passes the flower of her age, what may a man do?",
+  "choices": [
+   "Let them marry; he sinneth not",
+   "Wait another year",
+   "Send her away",
+   "Seek the elders"
+  ],
+  "answer": 0,
+  "explanation": "If she pass the flower of her age, and need so require, let him do what he will, he sinneth not: let them marry.",
+  "ref": "1 Corinthians 7:36"
+ },
+ {
+  "id": "1-corinthians-7-h-11",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say of the man who stands stedfast in his heart and keeps his virgin?",
+  "choices": [
+   "He sinneth",
+   "He doeth better",
+   "He is judged",
+   "He doeth well"
+  ],
+  "answer": 3,
+  "explanation": "He that standeth stedfast in his heart, having no necessity, but hath power over his own will, and hath so decreed in his heart that he will keep his virgin, doeth well.",
+  "ref": "1 Corinthians 7:37"
+ },
+ {
+  "id": "1-corinthians-7-h-12",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say of him that giveth her not in marriage?",
+  "choices": [
+   "He sinneth",
+   "He doeth worse",
+   "He doeth better",
+   "He is judged"
+  ],
+  "answer": 2,
+  "explanation": "He that giveth her in marriage doeth well; but he that giveth her not in marriage doeth better.",
+  "ref": "1 Corinthians 7:38"
+ },
+ {
+  "id": "1-corinthians-7-h-13",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In whom only is a widow free to marry?",
+  "choices": [
+   "In the church",
+   "In Corinth",
+   "In the Lord",
+   "In the law"
+  ],
+  "answer": 2,
+  "explanation": "She is at liberty to be married to whom she will; only in the Lord.",
+  "ref": "1 Corinthians 7:39"
+ },
+ {
+  "id": "1-corinthians-7-h-14",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul think he has?",
+  "choices": [
+   "The commandment of the Lord",
+   "The Spirit of God",
+   "A vision",
+   "The gift of tongues"
+  ],
+  "answer": 1,
+  "explanation": "I think also that I have the Spirit of God.",
+  "ref": "1 Corinthians 7:40"
+ },
+ {
+  "id": "1-corinthians-7-h-15",
+  "chapter": 7,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Of what has Paul obtained mercy, as he gives his judgment?",
+  "choices": [
+   "Of the church",
+   "Of the apostles",
+   "Of Caesar",
+   "Of the Lord, to be faithful"
+  ],
+  "answer": 3,
+  "explanation": "I give my judgment, as one that hath obtained mercy of the Lord to be faithful.",
+  "ref": "1 Corinthians 7:25"
+ },
+ {
+  "id": "1-corinthians-8-e-01",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does Paul say an idol is?",
+  "choices": [
+   "A god of wood",
+   "A stumblingblock",
+   "A power in heaven",
+   "Nothing in the world"
+  ],
+  "answer": 3,
+  "explanation": "We know that an idol is nothing in the world, and that there is none other God but one.",
+  "ref": "1 Corinthians 8:4"
+ },
+ {
+  "id": "1-corinthians-8-e-02",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "To whom must their liberty not become a stumblingblock?",
+  "choices": [
+   "The Jews",
+   "Them that are weak",
+   "The rulers",
+   "The elders"
+  ],
+  "answer": 1,
+  "explanation": "Take heed lest by any means this liberty of yours become a stumblingblock to them that are weak.",
+  "ref": "1 Corinthians 8:9"
+ },
+ {
+  "id": "1-corinthians-8-e-03",
+  "chapter": 8,
+  "level": "beginner",
+  "category": "person",
+  "question": "Through your knowledge, who shall perish, for whom Christ died?",
+  "choices": [
+   "The weak brother",
+   "The unbeliever",
+   "The idol priest",
+   "The elder"
+  ],
+  "answer": 0,
+  "explanation": "Through thy knowledge shall the weak brother perish, for whom Christ died?",
+  "ref": "1 Corinthians 8:11"
+ },
+ {
+  "id": "1-corinthians-8-m-01",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say of the man who thinks he knows any thing?",
+  "choices": [
+   "He knows nothing yet as he ought to know",
+   "He knows all things",
+   "He is wise indeed",
+   "He is judged by God"
+  ],
+  "answer": 0,
+  "explanation": "If any man think that he knoweth any thing, he knoweth nothing yet as he ought to know.",
+  "ref": "1 Corinthians 8:2"
+ },
+ {
+  "id": "1-corinthians-8-m-02",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is true of the man who loves God?",
+  "choices": [
+   "He is justified",
+   "He is rich",
+   "He is without sin",
+   "He is known of God"
+  ],
+  "answer": 3,
+  "explanation": "But if any man love God, the same is known of him.",
+  "ref": "1 Corinthians 8:3"
+ },
+ {
+  "id": "1-corinthians-8-m-03",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say there be that are called gods, in heaven or in earth?",
+  "choices": [
+   "No gods at all",
+   "One god of the Gentiles",
+   "Gods many and lords many",
+   "Two lords"
+  ],
+  "answer": 2,
+  "explanation": "Though there be that are called gods, whether in heaven or in earth, as there be gods many, and lords many.",
+  "ref": "1 Corinthians 8:5"
+ },
+ {
+  "id": "1-corinthians-8-m-04",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say some still have when they eat meat offered to idols?",
+  "choices": [
+   "Joy in the Lord",
+   "Doubt of the law",
+   "Conscience of the idol",
+   "Fear of Caesar"
+  ],
+  "answer": 2,
+  "explanation": "Some with conscience of the idol unto this hour eat it as a thing offered unto an idol.",
+  "ref": "1 Corinthians 8:7"
+ },
+ {
+  "id": "1-corinthians-8-m-05",
+  "chapter": 8,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Paul say about whether eating makes us better?",
+  "choices": [
+   "We are better if we eat",
+   "We are not the better if we eat, nor the worse if we eat not",
+   "We are worse if we eat",
+   "We are judged by what we eat"
+  ],
+  "answer": 1,
+  "explanation": "Neither, if we eat, are we the better; neither, if we eat not, are we the worse.",
+  "ref": "1 Corinthians 8:8"
+ },
+ {
+  "id": "1-corinthians-8-m-06",
+  "chapter": 8,
+  "level": "medium",
+  "category": "place",
+  "question": "Where does Paul picture the man with knowledge sitting at meat?",
+  "choices": [
+   "At a feast of Caesar",
+   "In the synagogue",
+   "In a house of the weak",
+   "In the idol’s temple"
+  ],
+  "answer": 3,
+  "explanation": "If any man see thee which hast knowledge sit at meat in the idol’s temple.",
+  "ref": "1 Corinthians 8:10"
+ },
+ {
+  "id": "1-corinthians-8-m-07",
+  "chapter": 8,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom do they sin against when they wound the weak conscience?",
+  "choices": [
+   "The apostles",
+   "Christ",
+   "The elders",
+   "The law"
+  ],
+  "answer": 1,
+  "explanation": "When ye sin so against the brethren, and wound their weak conscience, ye sin against Christ.",
+  "ref": "1 Corinthians 8:12"
+ },
+ {
+  "id": "1-corinthians-8-h-01",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say is not in every man?",
+  "choices": [
+   "That knowledge",
+   "That faith",
+   "That love",
+   "That fear of God"
+  ],
+  "answer": 0,
+  "explanation": "Howbeit there is not in every man that knowledge.",
+  "ref": "1 Corinthians 8:7"
+ },
+ {
+  "id": "1-corinthians-8-h-02",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What happens to the weak conscience, when the weak eat as a thing offered to an idol?",
+  "choices": [
+   "It is defiled",
+   "It is strengthened",
+   "It is cleansed",
+   "It is judged"
+  ],
+  "answer": 0,
+  "explanation": "Their conscience being weak is defiled.",
+  "ref": "1 Corinthians 8:7"
+ },
+ {
+  "id": "1-corinthians-8-h-03",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What would the weak man’s conscience be emboldened to do?",
+  "choices": [
+   "Leave the church",
+   "Judge the strong",
+   "Offer sacrifice",
+   "Eat the things offered to idols"
+  ],
+  "answer": 3,
+  "explanation": "Shall not the conscience of him which is weak be emboldened to eat those things which are offered to idols?",
+  "ref": "1 Corinthians 8:10"
+ },
+ {
+  "id": "1-corinthians-8-h-04",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "By whom are all things, and we by him?",
+  "choices": [
+   "The Father",
+   "Moses",
+   "One Lord Jesus Christ",
+   "The Holy Ghost"
+  ],
+  "answer": 2,
+  "explanation": "And one Lord Jesus Christ, by whom are all things, and we by him.",
+  "ref": "1 Corinthians 8:6"
+ },
+ {
+  "id": "1-corinthians-8-h-05",
+  "chapter": 8,
+  "level": "hard",
+  "category": "person",
+  "question": "Of whom are all things, and we in him?",
+  "choices": [
+   "The Lord Jesus",
+   "The apostles",
+   "God the Father",
+   "The angels"
+  ],
+  "answer": 2,
+  "explanation": "But to us there is but one God, the Father, of whom are all things, and we in him.",
+  "ref": "1 Corinthians 8:6"
+ },
+ {
+  "id": "1-corinthians-8-h-06",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say we all have, concerning things offered to idols?",
+  "choices": [
+   "Faith",
+   "Knowledge",
+   "Fear",
+   "Freedom"
+  ],
+  "answer": 1,
+  "explanation": "Now as touching things offered unto idols, we know that we all have knowledge.",
+  "ref": "1 Corinthians 8:1"
+ },
+ {
+  "id": "1-corinthians-8-h-07",
+  "chapter": 8,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Paul say there is none other of, besides an idol being nothing?",
+  "choices": [
+   "Lord but Christ",
+   "Law but Moses",
+   "Name but Paul",
+   "God but one"
+  ],
+  "answer": 3,
+  "explanation": "An idol is nothing in the world, and that there is none other God but one.",
+  "ref": "1 Corinthians 8:4"
  }
 ]
