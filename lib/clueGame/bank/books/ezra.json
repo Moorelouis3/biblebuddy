@@ -4384,6 +4384,310 @@
   "ref": "Ezra 9:6"
  },
  {
+  "id": "ezra-9-e-01",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who came to Ezra to say the people had not separated themselves from the people of the lands?",
+  "choices": [
+   "The princes",
+   "The priests",
+   "The prophets",
+   "The Levites"
+  ],
+  "answer": 0,
+  "explanation": "The princes came to me, saying, The people of Israel have not separated themselves from the people of the lands.",
+  "ref": "Ezra 9:1"
+ },
+ {
+  "id": "ezra-9-e-02",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did Ezra do when he heard about the mixed marriages?",
+  "choices": [
+   "Wrote to the king",
+   "Called for an army",
+   "Fled to Babylon",
+   "Rent his garment and mantle and plucked off his hair"
+  ],
+  "answer": 3,
+  "explanation": "I rent my garment and my mantle, and plucked off the hair of my head and of my beard, and sat down astonied.",
+  "ref": "Ezra 9:3"
+ },
+ {
+  "id": "ezra-9-e-03",
+  "chapter": 9,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What had the people of Israel done that troubled the princes?",
+  "choices": [
+   "Stopped keeping the passover",
+   "Robbed the temple",
+   "Taken the daughters of the lands as wives",
+   "Worshipped in Babylon"
+  ],
+  "answer": 2,
+  "explanation": "They have taken of their daughters for themselves, and for their sons.",
+  "ref": "Ezra 9:2"
+ },
+ {
+  "id": "ezra-9-m-01",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Who gathered to Ezra as he sat astonied?",
+  "choices": [
+   "The princes and rulers",
+   "Everyone who trembled at the words of the God of Israel",
+   "The king's lieutenants",
+   "The singers and porters"
+  ],
+  "answer": 1,
+  "explanation": "Then were assembled unto me every one that trembled at the words of the God of Israel.",
+  "ref": "Ezra 9:4"
+ },
+ {
+  "id": "ezra-9-m-02",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when did Ezra sit astonied?",
+  "choices": [
+   "The evening sacrifice",
+   "The morning",
+   "The new moon",
+   "The sabbath"
+  ],
+  "answer": 0,
+  "explanation": "I sat astonied until the evening sacrifice.",
+  "ref": "Ezra 9:4"
+ },
+ {
+  "id": "ezra-9-m-03",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did Ezra pray to the LORD at the evening sacrifice?",
+  "choices": [
+   "Standing with his face covered",
+   "Lying on his face in silence",
+   "Walking round the altar",
+   "On his knees with his hands spread out"
+  ],
+  "answer": 3,
+  "explanation": "I fell upon my knees, and spread out my hands unto the LORD my God.",
+  "ref": "Ezra 9:5"
+ },
+ {
+  "id": "ezra-9-m-04",
+  "chapter": 9,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose hand had been chief in the trespass?",
+  "choices": [
+   "The priests and Levites",
+   "The singers",
+   "The princes and rulers",
+   "The people of the lands"
+  ],
+  "answer": 2,
+  "explanation": "The hand of the princes and rulers hath been chief in this trespass.",
+  "ref": "Ezra 9:2"
+ },
+ {
+  "id": "ezra-9-m-05",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezra say had grown up unto the heavens?",
+  "choices": [
+   "Their towers",
+   "Their trespass",
+   "Their prayers",
+   "Their wealth"
+  ],
+  "answer": 1,
+  "explanation": "Our iniquities are increased over our head, and our trespass is grown up unto the heavens.",
+  "ref": "Ezra 9:6"
+ },
+ {
+  "id": "ezra-9-m-06",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezra say God had given them in his holy place?",
+  "choices": [
+   "A nail",
+   "A wall",
+   "A lamp",
+   "An altar"
+  ],
+  "answer": 0,
+  "explanation": "God had given them a nail in his holy place, that he may lighten our eyes.",
+  "ref": "Ezra 9:8"
+ },
+ {
+  "id": "ezra-9-m-07",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did the prophets describe the land Israel went to possess?",
+  "choices": [
+   "A land of giants",
+   "A land of rest",
+   "A barren land",
+   "An unclean land"
+  ],
+  "answer": 3,
+  "explanation": "The land is an unclean land with the filthiness of the people of the lands.",
+  "ref": "Ezra 9:11"
+ },
+ {
+  "id": "ezra-9-m-08",
+  "chapter": 9,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Ezra say God had commanded about their daughters and sons?",
+  "choices": [
+   "Marry only within your own tribe",
+   "Send them away to Persia",
+   "Do not give or take daughters in marriage with them",
+   "Teach them the law"
+  ],
+  "answer": 2,
+  "explanation": "Give not your daughters unto their sons, neither take their daughters unto your sons.",
+  "ref": "Ezra 9:12"
+ },
+ {
+  "id": "ezra-9-h-01",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which of these peoples is named among the people of the lands?",
+  "choices": [
+   "The Philistines",
+   "The Perizzites",
+   "The Edomites",
+   "The Assyrians"
+  ],
+  "answer": 1,
+  "explanation": "The list names the Canaanites, Hittites, Perizzites, Jebusites, Ammonites, Moabites, Egyptians and Amorites.",
+  "ref": "Ezra 9:1"
+ },
+ {
+  "id": "ezra-9-h-02",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Ezra call Israel when he says it has mingled with the peoples of the lands?",
+  "choices": [
+   "The holy seed",
+   "The chosen flock",
+   "The royal house",
+   "The remnant of Judah"
+  ],
+  "answer": 0,
+  "explanation": "The holy seed have mingled themselves with the people of those lands.",
+  "ref": "Ezra 9:2"
+ },
+ {
+  "id": "ezra-9-h-03",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had God given them in Judah and Jerusalem, besides setting up the house?",
+  "choices": [
+   "A king",
+   "A river",
+   "A new law",
+   "A wall"
+  ],
+  "answer": 3,
+  "explanation": "God extended mercy to set up the house of our God and to give us a wall in Judah and in Jerusalem.",
+  "ref": "Ezra 9:9"
+ },
+ {
+  "id": "ezra-9-h-04",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Into whose hand were Israel, their kings and priests delivered for their iniquities?",
+  "choices": [
+   "The Philistines",
+   "The judges",
+   "The kings of the lands",
+   "The Levites"
+  ],
+  "answer": 2,
+  "explanation": "We, our kings, and our priests, been delivered into the hand of the kings of the lands, to the sword, to captivity, and to a spoil.",
+  "ref": "Ezra 9:7"
+ },
+ {
+  "id": "ezra-9-h-05",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did obeying the command let them do with the land?",
+  "choices": [
+   "Build cities there",
+   "Eat the good of it and leave it as an inheritance",
+   "Gather an army",
+   "Pay no tribute"
+  ],
+  "answer": 1,
+  "explanation": "That ye may be strong, and eat the good of the land, and leave it for an inheritance to your children.",
+  "ref": "Ezra 9:12"
+ },
+ {
+  "id": "ezra-9-h-06",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How had God punished them, in Ezra's words?",
+  "choices": [
+   "Less than their iniquities deserved",
+   "More than they could bear",
+   "Only by famine",
+   "Not at all"
+  ],
+  "answer": 0,
+  "explanation": "Thou our God hast punished us less than our iniquities deserve.",
+  "ref": "Ezra 9:13"
+ },
+ {
+  "id": "ezra-9-h-07",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ezra call God in the closing words of his prayer?",
+  "choices": [
+   "Faithful",
+   "Mighty",
+   "Jealous",
+   "Righteous"
+  ],
+  "answer": 3,
+  "explanation": "O LORD God of Israel, thou art righteous.",
+  "ref": "Ezra 9:15"
+ },
+ {
+  "id": "ezra-9-h-08",
+  "chapter": 9,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Ezra say they were not to seek of the people of the lands for ever?",
+  "choices": [
+   "Their land or their gods",
+   "Their wives or their daughters",
+   "Their peace or their wealth",
+   "Their help in war"
+  ],
+  "answer": 2,
+  "explanation": "Nor seek their peace or their wealth for ever.",
+  "ref": "Ezra 9:12"
+ },
+ {
   "id": "old-ezra-10-1",
   "chapter": 10,
   "level": "beginner",
