@@ -9150,5 +9150,3925 @@
   "answer": 3,
   "explanation": "A voice of noise from the city, a voice from the temple, a voice of the LORD that rendereth recompence to his enemies.",
   "ref": "Isaiah 66:6"
+ },
+ {
+  "id": "isaiah-45-e-01",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What picture does the Lord use for the man who strives with his Maker?",
+  "choices": [
+   "A branch cutting itself from the vine",
+   "A sheep ignoring its shepherd",
+   "Clay arguing with the one who fashions it",
+   "A builder rejecting the stone"
+  ],
+  "answer": 2,
+  "explanation": "Woe unto him that striveth with his Maker! Shall the clay say to him that fashioneth it, What makest thou?",
+  "ref": "Isaiah 45:9"
+ },
+ {
+  "id": "isaiah-45-e-02",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whose labour and merchandise will come over to Israel in chains?",
+  "choices": [
+   "Assyria, Moab and Edom",
+   "Babylon, Tyre and Sidon",
+   "Egypt, Ethiopia and the Sabeans",
+   "Syria, Philistia and Ammon"
+  ],
+  "answer": 2,
+  "explanation": "The labour of Egypt, and merchandise of Ethiopia and of the Sabeans, men of stature, shall come over unto thee, and they shall be thine.",
+  "ref": "Isaiah 45:14"
+ },
+ {
+  "id": "isaiah-45-e-03",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What does the Lord say he formed the earth to be?",
+  "choices": [
+   "A place of judgment",
+   "Ruled by kings",
+   "Inhabited",
+   "Left empty"
+  ],
+  "answer": 2,
+  "explanation": "He created it not in vain, he formed it to be inhabited.",
+  "ref": "Isaiah 45:18"
+ },
+ {
+  "id": "isaiah-45-e-04",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will happen to the makers of idols?",
+  "choices": [
+   "They will be given the nations",
+   "They will rule over Israel",
+   "They will be ashamed and confounded",
+   "They will be carried to Egypt"
+  ],
+  "answer": 2,
+  "explanation": "They shall be ashamed, and also confounded, all of them: they shall go to confusion together that are makers of idols.",
+  "ref": "Isaiah 45:16"
+ },
+ {
+  "id": "isaiah-45-e-05",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What kind of salvation does the Lord promise Israel?",
+  "choices": [
+   "A salvation for a season",
+   "A salvation by the sword",
+   "An everlasting salvation",
+   "A salvation by Egypt"
+  ],
+  "answer": 2,
+  "explanation": "Israel shall be saved in the LORD with an everlasting salvation: ye shall not be ashamed nor confounded world without end.",
+  "ref": "Isaiah 45:17"
+ },
+ {
+  "id": "isaiah-45-e-06",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the Lord give to Cyrus?",
+  "choices": [
+   "The throne of David",
+   "The temple vessels of gold",
+   "The treasures of darkness and hidden riches",
+   "The crown of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "I will give thee the treasures of darkness, and hidden riches of secret places.",
+  "ref": "Isaiah 45:3"
+ },
+ {
+  "id": "isaiah-45-e-07",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the one the Lord raised up do for the Lord's city and captives?",
+  "choices": [
+   "Destroy his city and gather his captives",
+   "Guard his city and judge his captives",
+   "Build his city and let his captives go",
+   "Rule his city and sell his captives"
+  ],
+  "answer": 2,
+  "explanation": "He shall build my city, and he shall let go my captives, not for price nor reward, saith the LORD of hosts.",
+  "ref": "Isaiah 45:13"
+ },
+ {
+  "id": "isaiah-45-e-08",
+  "chapter": 45,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Besides being a just God, what does the Lord call himself?",
+  "choices": [
+   "A warrior",
+   "A shepherd",
+   "A Saviour",
+   "A king"
+  ],
+  "answer": 2,
+  "explanation": "There is no God else beside me; a just God and a Saviour; there is none beside me.",
+  "ref": "Isaiah 45:21"
+ },
+ {
+  "id": "isaiah-45-m-01",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the Lord break in pieces before Cyrus?",
+  "choices": [
+   "The towers of Babylon",
+   "The gates of brass and bars of iron",
+   "The idols of Egypt",
+   "The walls of Nineveh"
+  ],
+  "answer": 1,
+  "explanation": "I will break in pieces the gates of brass, and cut in sunder the bars of iron.",
+  "ref": "Isaiah 45:2"
+ },
+ {
+  "id": "isaiah-45-m-02",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the Lord give Cyrus treasures of darkness?",
+  "choices": [
+   "That he may rebuild the temple himself",
+   "That he may know the LORD calls him by name",
+   "That he may pay tribute to Egypt",
+   "That he may reward his generals"
+  ],
+  "answer": 1,
+  "explanation": "That thou mayest know that I, the LORD, which call thee by thy name, am the God of Israel.",
+  "ref": "Isaiah 45:3"
+ },
+ {
+  "id": "isaiah-45-m-03",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Lord say he forms, as well as creating darkness?",
+  "choices": [
+   "Fire",
+   "Light",
+   "The seas",
+   "The stars"
+  ],
+  "answer": 1,
+  "explanation": "I form the light, and create darkness: I make peace, and create evil: I the LORD do all these things.",
+  "ref": "Isaiah 45:7"
+ },
+ {
+  "id": "isaiah-45-m-04",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the skies told to pour down?",
+  "choices": [
+   "Rain upon the nations",
+   "Righteousness",
+   "Fire upon Babylon",
+   "Manna for the people"
+  ],
+  "answer": 1,
+  "explanation": "Drop down, ye heavens, from above, and let the skies pour down righteousness.",
+  "ref": "Isaiah 45:8"
+ },
+ {
+  "id": "isaiah-45-m-05",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What may God's people ask him about?",
+  "choices": [
+   "The name of Cyrus",
+   "Things to come concerning his sons",
+   "The fall of Egypt",
+   "The size of Zion"
+  ],
+  "answer": 1,
+  "explanation": "Ask me of things to come concerning my sons, and concerning the work of my hands command ye me.",
+  "ref": "Isaiah 45:11"
+ },
+ {
+  "id": "isaiah-45-m-06",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord's own hands do?",
+  "choices": [
+   "Divided the sea",
+   "Stretched out the heavens",
+   "Carved the tables of stone",
+   "Raised up Cyrus's armies"
+  ],
+  "answer": 1,
+  "explanation": "I have made the earth, and created man upon it: I, even my hands, have stretched out the heavens.",
+  "ref": "Isaiah 45:12"
+ },
+ {
+  "id": "isaiah-45-m-07",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the one raised up in righteousness not take for letting the captives go?",
+  "choices": [
+   "Silver and gold",
+   "Price or reward",
+   "Land and cities",
+   "Oaths of peace"
+  ],
+  "answer": 1,
+  "explanation": "He shall let go my captives, not for price nor reward, saith the LORD of hosts.",
+  "ref": "Isaiah 45:13"
+ },
+ {
+  "id": "isaiah-45-m-08",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the nations say when they come over to Israel in chains?",
+  "choices": [
+   "Our gods have forsaken us",
+   "Surely God is in thee",
+   "We were deceived by Babylon",
+   "Spare us, O Israel"
+  ],
+  "answer": 1,
+  "explanation": "They shall fall down unto thee, they shall make supplication unto thee, saying, Surely God is in thee; and there is none else.",
+  "ref": "Isaiah 45:14"
+ },
+ {
+  "id": "isaiah-45-m-09",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Lord say he has not done?",
+  "choices": [
+   "Chosen Israel above others",
+   "Spoken in secret, in a dark place",
+   "Remembered the sins of Jacob",
+   "Taken the nations as his own"
+  ],
+  "answer": 1,
+  "explanation": "I have not spoken in secret, in a dark place of the earth.",
+  "ref": "Isaiah 45:19"
+ },
+ {
+  "id": "isaiah-45-m-10",
+  "chapter": 45,
+  "level": "medium",
+  "category": "person",
+  "question": "Who is told to assemble and draw near together?",
+  "choices": [
+   "The elders of Jacob",
+   "Those escaped of the nations",
+   "The kings of Babylon",
+   "The priests of Zion"
+  ],
+  "answer": 1,
+  "explanation": "Assemble yourselves and come; draw near together, ye that are escaped of the nations.",
+  "ref": "Isaiah 45:20"
+ },
+ {
+  "id": "isaiah-45-m-11",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By whom has the Lord sworn that every knee shall bow?",
+  "choices": [
+   "By Jacob his servant",
+   "By himself",
+   "By heaven and earth",
+   "By the throne of David"
+  ],
+  "answer": 1,
+  "explanation": "I have sworn by myself, the word is gone out of my mouth in righteousness, and shall not return.",
+  "ref": "Isaiah 45:23"
+ },
+ {
+  "id": "isaiah-45-m-12",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the earth told to bring forth when it opens?",
+  "choices": [
+   "Fruit for the nations",
+   "Salvation",
+   "Gold for the temple",
+   "Springs of water"
+  ],
+  "answer": 1,
+  "explanation": "Let the earth open, and let them bring forth salvation, and let righteousness spring up together.",
+  "ref": "Isaiah 45:8"
+ },
+ {
+  "id": "isaiah-45-m-13",
+  "chapter": 45,
+  "level": "medium",
+  "category": "keyword",
+  "question": "In whom shall all the seed of Israel be justified and glory?",
+  "choices": [
+   "In their fathers",
+   "In the LORD",
+   "In Cyrus",
+   "In the holy city"
+  ],
+  "answer": 1,
+  "explanation": "In the LORD shall all the seed of Israel be justified, and shall glory.",
+  "ref": "Isaiah 45:25"
+ },
+ {
+  "id": "isaiah-45-h-01",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Lord say about the one who says to his father, What begettest thou?",
+  "choices": [
+   "Woe unto him",
+   "He shall be cut off from Israel",
+   "He shall be given into captivity",
+   "He shall be called a fool"
+  ],
+  "answer": 0,
+  "explanation": "Woe unto him that saith unto his father, What begettest thou? or to the woman, What hast thou brought forth?",
+  "ref": "Isaiah 45:10"
+ },
+ {
+  "id": "isaiah-45-h-02",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord do for Cyrus, though Cyrus had not known him?",
+  "choices": [
+   "Girded him",
+   "Crowned him",
+   "Taught him",
+   "Anointed him with oil"
+  ],
+  "answer": 0,
+  "explanation": "I girded thee, though thou hast not known me.",
+  "ref": "Isaiah 45:5"
+ },
+ {
+  "id": "isaiah-45-h-03",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whose loins will the Lord loose?",
+  "choices": [
+   "The loins of kings",
+   "The loins of Cyrus's sons",
+   "The loins of the idol makers",
+   "The loins of the Chaldeans"
+  ],
+  "answer": 0,
+  "explanation": "I will loose the loins of kings, to open before him the two leaved gates.",
+  "ref": "Isaiah 45:1"
+ },
+ {
+  "id": "isaiah-45-h-04",
+  "chapter": 45,
+  "level": "hard",
+  "category": "place",
+  "question": "From where will people know there is none beside the Lord?",
+  "choices": [
+   "From the rising of the sun to the west",
+   "From Zion to Egypt",
+   "From Jacob to the isles",
+   "From the mountains to the sea"
+  ],
+  "answer": 0,
+  "explanation": "That they may know from the rising of the sun, and from the west, that there is none beside me.",
+  "ref": "Isaiah 45:6"
+ },
+ {
+  "id": "isaiah-45-h-05",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Lord say he makes, as well as creating evil?",
+  "choices": [
+   "Peace",
+   "War",
+   "Wisdom",
+   "Justice"
+  ],
+  "answer": 0,
+  "explanation": "I make peace, and create evil: I the LORD do all these things.",
+  "ref": "Isaiah 45:7"
+ },
+ {
+  "id": "isaiah-45-h-06",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With whom may the potsherd strive?",
+  "choices": [
+   "The potsherds of the earth",
+   "The clay of the potter",
+   "The idols of the nations",
+   "The stones of the field"
+  ],
+  "answer": 0,
+  "explanation": "Let the potsherd strive with the potsherds of the earth.",
+  "ref": "Isaiah 45:9"
+ },
+ {
+  "id": "isaiah-45-h-07",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Besides the Holy One of Israel, what does the Lord call himself?",
+  "choices": [
+   "His people's Maker",
+   "Their shepherd",
+   "Their fortress",
+   "Their judge"
+  ],
+  "answer": 0,
+  "explanation": "Thus saith the LORD, the Holy One of Israel, and his Maker.",
+  "ref": "Isaiah 45:11"
+ },
+ {
+  "id": "isaiah-45-h-08",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the Lord commanded?",
+  "choices": [
+   "All the host of the heavens",
+   "The kings of the earth",
+   "The waters of the deep",
+   "The nations of the east"
+  ],
+  "answer": 0,
+  "explanation": "My hands have stretched out the heavens, and all their host have I commanded.",
+  "ref": "Isaiah 45:12"
+ },
+ {
+  "id": "isaiah-45-h-09",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has gone out of the Lord's mouth and shall not return?",
+  "choices": [
+   "The word in righteousness",
+   "The decree against Babylon",
+   "The oath to Cyrus",
+   "The curse upon idols"
+  ],
+  "answer": 0,
+  "explanation": "I have sworn by myself, the word is gone out of my mouth in righteousness, and shall not return.",
+  "ref": "Isaiah 45:23"
+ },
+ {
+  "id": "isaiah-45-h-10",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Lord say Cyrus is to do before him?",
+  "choices": [
+   "Subdue nations",
+   "Build ships",
+   "Number the people",
+   "Plant vineyards"
+  ],
+  "answer": 0,
+  "explanation": "Thus saith the LORD to his anointed, to Cyrus... to subdue nations before him.",
+  "ref": "Isaiah 45:1"
+ },
+ {
+  "id": "isaiah-45-h-11",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Lord ask to prove he alone is God?",
+  "choices": [
+   "Who declared this from ancient time",
+   "Who made the idols of the nations",
+   "Who saved Egypt from Pharaoh",
+   "Who gave Jacob the land"
+  ],
+  "answer": 0,
+  "explanation": "Who hath declared this from ancient time? who hath told it from that time? have not I the LORD?",
+  "ref": "Isaiah 45:21"
+ },
+ {
+  "id": "isaiah-45-h-12",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the Lord do with all the ways of the one he raised up?",
+  "choices": [
+   "Direct them",
+   "Make them hard",
+   "Hide them",
+   "Number them"
+  ],
+  "answer": 0,
+  "explanation": "I have raised him up in righteousness, and I will direct all his ways.",
+  "ref": "Isaiah 45:13"
+ },
+ {
+  "id": "isaiah-45-h-13",
+  "chapter": 45,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the person say he has in the LORD?",
+  "choices": [
+   "Righteousness and strength",
+   "Wisdom and riches",
+   "Peace and rest",
+   "Mercy and honour"
+  ],
+  "answer": 0,
+  "explanation": "Surely, shall one say, in the LORD have I righteousness and strength.",
+  "ref": "Isaiah 45:24"
+ },
+ {
+  "id": "isaiah-46-e-01",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What becomes of the idols and those who bear them?",
+  "choices": [
+   "They are set up in Zion",
+   "They are given to Cyrus",
+   "They are hidden in a cave",
+   "They go into captivity"
+  ],
+  "answer": 3,
+  "explanation": "They could not deliver the burden, but themselves are gone into captivity.",
+  "ref": "Isaiah 46:2"
+ },
+ {
+  "id": "isaiah-46-e-02",
+  "chapter": 46,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How do idol makers make a god?",
+  "choices": [
+   "They cut it from a cedar of Lebanon",
+   "They draw it by lot from the temple",
+   "They raise it up from a stone of the field",
+   "They hire a goldsmith to make it"
+  ],
+  "answer": 3,
+  "explanation": "They lavish gold out of the bag, and weigh silver in the balance, and hire a goldsmith; and he maketh it a god.",
+  "ref": "Isaiah 46:6"
+ },
+ {
+  "id": "isaiah-46-m-01",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What were the idols of Bel and Nebo loaded upon?",
+  "choices": [
+   "Beasts and cattle",
+   "Chariots and horses",
+   "Ships of Tarshish",
+   "Camels and asses"
+  ],
+  "answer": 0,
+  "explanation": "Their idols were upon the beasts, and upon the cattle: your carriages were heavy loaden.",
+  "ref": "Isaiah 46:1"
+ },
+ {
+  "id": "isaiah-46-m-02",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Until when does the Lord say he will carry his people?",
+  "choices": [
+   "Even to hoar hairs",
+   "Until they reach Zion",
+   "Until the exile ends",
+   "Until Cyrus comes"
+  ],
+  "answer": 0,
+  "explanation": "Even to your old age I am he; and even to hoar hairs will I carry you.",
+  "ref": "Isaiah 46:4"
+ },
+ {
+  "id": "isaiah-46-m-03",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens when someone cries to a carried idol?",
+  "choices": [
+   "It cannot answer or save him",
+   "It speaks in a dream",
+   "It sends fire from heaven",
+   "It answers by the priest"
+  ],
+  "answer": 0,
+  "explanation": "One shall cry unto him, yet can he not answer, nor save him out of his trouble.",
+  "ref": "Isaiah 46:7"
+ },
+ {
+  "id": "isaiah-46-m-04",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Lord say of his counsel?",
+  "choices": [
+   "It shall stand",
+   "It shall be hidden",
+   "It shall be changed",
+   "It shall be forgotten"
+  ],
+  "answer": 0,
+  "explanation": "My counsel shall stand, and I will do all my pleasure.",
+  "ref": "Isaiah 46:10"
+ },
+ {
+  "id": "isaiah-46-m-05",
+  "chapter": 46,
+  "level": "medium",
+  "category": "place",
+  "question": "Where will the Lord place salvation for Israel?",
+  "choices": [
+   "In Zion",
+   "In Jerusalem's gates",
+   "In Babylon",
+   "In the east"
+  ],
+  "answer": 0,
+  "explanation": "I will place salvation in Zion for Israel my glory.",
+  "ref": "Isaiah 46:13"
+ },
+ {
+  "id": "isaiah-46-m-06",
+  "chapter": 46,
+  "level": "medium",
+  "category": "person",
+  "question": "Who are told to hearken to the Lord?",
+  "choices": [
+   "The stouthearted, far from righteousness",
+   "The weary, far from home",
+   "The proud kings of the east",
+   "The captives of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Hearken unto me, ye stouthearted, that are far from righteousness.",
+  "ref": "Isaiah 46:12"
+ },
+ {
+  "id": "isaiah-46-m-07",
+  "chapter": 46,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the transgressors told to remember?",
+  "choices": [
+   "The former things of old",
+   "The words of Moses",
+   "The kings of Judah",
+   "The days of the exodus"
+  ],
+  "answer": 0,
+  "explanation": "Remember the former things of old: for I am God, and there is none else.",
+  "ref": "Isaiah 46:8–9"
+ },
+ {
+  "id": "isaiah-46-h-01",
+  "chapter": 46,
+  "level": "hard",
+  "category": "place",
+  "question": "From where does the Lord call the man who executes his counsel?",
+  "choices": [
+   "The north country",
+   "A far country",
+   "The sea coast",
+   "The land of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "Calling a ravenous bird from the east, the man that executeth my counsel from a far country.",
+  "ref": "Isaiah 46:11"
+ },
+ {
+  "id": "isaiah-46-h-02",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How do the makers of idols carry their god?",
+  "choices": [
+   "In a chariot",
+   "Upon the shoulder",
+   "By the hand of a priest",
+   "On a bier of cedar"
+  ],
+  "answer": 1,
+  "explanation": "They bear him upon the shoulder, they carry him, and set him in his place, and he standeth.",
+  "ref": "Isaiah 46:7"
+ },
+ {
+  "id": "isaiah-46-h-03",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Lord say of his salvation?",
+  "choices": [
+   "It shall be sudden",
+   "It shall not tarry",
+   "It shall be hidden",
+   "It shall come by night"
+  ],
+  "answer": 1,
+  "explanation": "I bring near my righteousness; it shall not be far off, and my salvation shall not tarry.",
+  "ref": "Isaiah 46:13"
+ },
+ {
+  "id": "isaiah-46-h-04",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What are the carried idols to the weary beast?",
+  "choices": [
+   "A shelter",
+   "A burden",
+   "A guide",
+   "A treasure"
+  ],
+  "answer": 1,
+  "explanation": "Your carriages were heavy loaden; they are a burden to the weary beast.",
+  "ref": "Isaiah 46:1"
+ },
+ {
+  "id": "isaiah-46-h-05",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the idol makers weigh in the balance?",
+  "choices": [
+   "Brass",
+   "Silver",
+   "Iron",
+   "Pearls"
+  ],
+  "answer": 1,
+  "explanation": "They lavish gold out of the bag, and weigh silver in the balance.",
+  "ref": "Isaiah 46:6"
+ },
+ {
+  "id": "isaiah-46-h-06",
+  "chapter": 46,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is addressed along with the house of Jacob?",
+  "choices": [
+   "The elders of Judah",
+   "The remnant of the house of Israel",
+   "The captives of Babylon",
+   "The priests of Zion"
+  ],
+  "answer": 1,
+  "explanation": "Hearken unto me, O house of Jacob, and all the remnant of the house of Israel.",
+  "ref": "Isaiah 46:3"
+ },
+ {
+  "id": "isaiah-46-h-07",
+  "chapter": 46,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Lord say of what he has spoken and purposed?",
+  "choices": [
+   "He will delay it a while",
+   "He will bring it to pass and do it",
+   "He will leave it to Cyrus",
+   "He will hide it from Israel"
+  ],
+  "answer": 1,
+  "explanation": "I have spoken it, I will also bring it to pass; I have purposed it, I will also do it.",
+  "ref": "Isaiah 46:11"
+ },
+ {
+  "id": "isaiah-47-e-01",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What two things will come to Babylon in one day?",
+  "choices": [
+   "Loss of children and widowhood",
+   "Famine and plague",
+   "Fire and flood",
+   "Exile and slavery"
+  ],
+  "answer": 0,
+  "explanation": "These two things shall come to thee in a moment in one day, the loss of children, and widowhood.",
+  "ref": "Isaiah 47:9"
+ },
+ {
+  "id": "isaiah-47-e-02",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "place",
+  "question": "Where is the daughter of Babylon told to sit?",
+  "choices": [
+   "In the dust on the ground, with no throne",
+   "In the temple court",
+   "On a high place",
+   "At the city gate"
+  ],
+  "answer": 0,
+  "explanation": "Come down, and sit in the dust, O virgin daughter of Babylon, sit on the ground: there is no throne.",
+  "ref": "Isaiah 47:1"
+ },
+ {
+  "id": "isaiah-47-e-03",
+  "chapter": 47,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who is named as Israel's redeemer in this chapter?",
+  "choices": [
+   "The LORD of hosts, the Holy One of Israel",
+   "Cyrus king of Persia",
+   "The God of the Chaldeans",
+   "The prophet Isaiah"
+  ],
+  "answer": 0,
+  "explanation": "As for our redeemer, the LORD of hosts is his name, the Holy One of Israel.",
+  "ref": "Isaiah 47:4"
+ },
+ {
+  "id": "isaiah-47-m-01",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Lord give his people into Babylon's hand?",
+  "choices": [
+   "He was wroth with his people",
+   "They asked for a king",
+   "They refused the covenant",
+   "Babylon had paid him tribute"
+  ],
+  "answer": 0,
+  "explanation": "I was wroth with my people, I have polluted mine inheritance, and given them into thine hand.",
+  "ref": "Isaiah 47:6"
+ },
+ {
+  "id": "isaiah-47-m-02",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Babylon do to the ancient people?",
+  "choices": [
+   "Showed no mercy and laid a heavy yoke",
+   "Sold them for silver",
+   "Left them in their land",
+   "Taught them her wisdom"
+  ],
+  "answer": 0,
+  "explanation": "Thou didst shew them no mercy; upon the ancient hast thou very heavily laid thy yoke.",
+  "ref": "Isaiah 47:6"
+ },
+ {
+  "id": "isaiah-47-m-03",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Babylon said she would be for ever?",
+  "choices": [
+   "A lady",
+   "A queen",
+   "A mother of nations",
+   "A free city"
+  ],
+  "answer": 0,
+  "explanation": "And thou saidst, I shall be a lady for ever: so that thou didst not lay these things to thy heart.",
+  "ref": "Isaiah 47:7"
+ },
+ {
+  "id": "isaiah-47-m-04",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why will the loss of children and widowhood come on Babylon?",
+  "choices": [
+   "For her sorceries and enchantments",
+   "For her idols of silver",
+   "For her wars with Judah",
+   "For her love of gold"
+  ],
+  "answer": 0,
+  "explanation": "They shall come upon thee in their perfection for the multitude of thy sorceries, and for the great abundance of thine enchantments.",
+  "ref": "Isaiah 47:9"
+ },
+ {
+  "id": "isaiah-47-m-05",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What perverted Babylon, according to the Lord?",
+  "choices": [
+   "Her wisdom and knowledge",
+   "Her wealth and power",
+   "Her kings and counsellors",
+   "Her armies and walls"
+  ],
+  "answer": 0,
+  "explanation": "Thy wisdom and thy knowledge, it hath perverted thee.",
+  "ref": "Isaiah 47:10"
+ },
+ {
+  "id": "isaiah-47-m-06",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is Babylon wearied in?",
+  "choices": [
+   "The multitude of her counsels",
+   "The weight of her tribute",
+   "The length of her wars",
+   "The building of her walls"
+  ],
+  "answer": 0,
+  "explanation": "Thou art wearied in the multitude of thy counsels.",
+  "ref": "Isaiah 47:13"
+ },
+ {
+  "id": "isaiah-47-m-07",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Into what is the daughter of the Chaldeans told to go, sitting silent?",
+  "choices": [
+   "Darkness",
+   "The wilderness",
+   "The mountains",
+   "Exile"
+  ],
+  "answer": 0,
+  "explanation": "Sit thou silent, and get thee into darkness, O daughter of the Chaldeans.",
+  "ref": "Isaiah 47:5"
+ },
+ {
+  "id": "isaiah-47-m-08",
+  "chapter": 47,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did Babylon not lay to her heart?",
+  "choices": [
+   "The latter end of it",
+   "The cry of the poor",
+   "The voice of the prophets",
+   "The law of the Lord"
+  ],
+  "answer": 0,
+  "explanation": "Thou didst not lay these things to thy heart, neither didst remember the latter end of it.",
+  "ref": "Isaiah 47:7"
+ },
+ {
+  "id": "isaiah-47-h-01",
+  "chapter": 47,
+  "level": "hard",
+  "category": "place",
+  "question": "What is Babylon told to pass over?",
+  "choices": [
+   "The rivers",
+   "The mountains",
+   "The desert",
+   "The sea"
+  ],
+  "answer": 0,
+  "explanation": "Take the millstones, and grind meal: uncover thy locks, make bare the leg, uncover the thigh, pass over the rivers.",
+  "ref": "Isaiah 47:2"
+ },
+ {
+  "id": "isaiah-47-h-02",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will not be left after the fire burns the astrologers?",
+  "choices": [
+   "A coal to warm at",
+   "A sword to fight with",
+   "A seed to sow",
+   "A wall to hide behind"
+  ],
+  "answer": 0,
+  "explanation": "There shall not be a coal to warm at, nor fire to sit before it.",
+  "ref": "Isaiah 47:14"
+ },
+ {
+  "id": "isaiah-47-h-03",
+  "chapter": 47,
+  "level": "hard",
+  "category": "person",
+  "question": "Who will wander every one to his quarter, with none to save Babylon?",
+  "choices": [
+   "Her merchants",
+   "Her priests",
+   "Her captains",
+   "Her prophets"
+  ],
+  "answer": 0,
+  "explanation": "They shall be unto thee with whom thou hast laboured, even thy merchants, from thy youth: they shall wander every one to his quarter.",
+  "ref": "Isaiah 47:15"
+ },
+ {
+  "id": "isaiah-47-h-04",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Since when has Babylon laboured in her sorceries?",
+  "choices": [
+   "From her youth",
+   "From the days of Nimrod",
+   "From the fall of Nineveh",
+   "From the time of Cyrus"
+  ],
+  "answer": 0,
+  "explanation": "Wherein thou hast laboured from thy youth.",
+  "ref": "Isaiah 47:12"
+ },
+ {
+  "id": "isaiah-47-h-05",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How quickly will the two losses come on Babylon?",
+  "choices": [
+   "In a moment, in one day",
+   "In seven days",
+   "In a year",
+   "In forty days"
+  ],
+  "answer": 0,
+  "explanation": "These two things shall come to thee in a moment in one day.",
+  "ref": "Isaiah 47:9"
+ },
+ {
+  "id": "isaiah-47-h-06",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will Babylon not know about the evil that comes upon her?",
+  "choices": [
+   "From whence it riseth",
+   "How long it will last",
+   "Who sent it",
+   "Where it will end"
+  ],
+  "answer": 0,
+  "explanation": "Evil shall come upon thee; thou shalt not know from whence it riseth.",
+  "ref": "Isaiah 47:11"
+ },
+ {
+  "id": "isaiah-47-h-07",
+  "chapter": 47,
+  "level": "hard",
+  "category": "person",
+  "question": "Whom are the Chaldeans' advisers told to ask to stand and save her?",
+  "choices": [
+   "Astrologers, stargazers and monthly prognosticators",
+   "Priests, scribes and magicians",
+   "Princes, captains and judges",
+   "Prophets, seers and diviners"
+  ],
+  "answer": 0,
+  "explanation": "Let now the astrologers, the stargazers, the monthly prognosticators, stand up, and save thee.",
+  "ref": "Isaiah 47:13"
+ },
+ {
+  "id": "isaiah-47-h-08",
+  "chapter": 47,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Lord say he will not do as he takes vengeance?",
+  "choices": [
+   "Meet her as a man",
+   "Spare her children",
+   "Send a prophet",
+   "Make her a servant"
+  ],
+  "answer": 0,
+  "explanation": "I will take vengeance, and I will not meet thee as a man.",
+  "ref": "Isaiah 47:3"
+ },
+ {
+  "id": "isaiah-48-e-01",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the Lord defer for his name's sake?",
+  "choices": [
+   "His promise",
+   "His anger",
+   "His redemption",
+   "His judgment of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "For my name's sake will I defer mine anger, and for my praise will I refrain for thee, that I cut thee not off.",
+  "ref": "Isaiah 48:9"
+ },
+ {
+  "id": "isaiah-48-e-02",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What did the Lord cause to gush out for Israel in the deserts?",
+  "choices": [
+   "Manna from the sky",
+   "Waters from the rock",
+   "Oil from the olive",
+   "Wine from the vine"
+  ],
+  "answer": 1,
+  "explanation": "He caused the waters to flow out of the rock for them: he clave the rock also, and the waters gushed out.",
+  "ref": "Isaiah 48:21"
+ },
+ {
+  "id": "isaiah-48-e-03",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the Lord not give to another?",
+  "choices": [
+   "His covenant",
+   "His glory",
+   "His throne",
+   "His land"
+  ],
+  "answer": 1,
+  "explanation": "For how should my name be polluted? and I will not give my glory unto another.",
+  "ref": "Isaiah 48:11"
+ },
+ {
+  "id": "isaiah-48-e-04",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "place",
+  "question": "On whom will the Lord do his pleasure?",
+  "choices": [
+   "Egypt and Ethiopia",
+   "Babylon and the Chaldeans",
+   "Edom and Moab",
+   "Tyre and Sidon"
+  ],
+  "answer": 1,
+  "explanation": "He will do his pleasure on Babylon, and his arm shall be on the Chaldeans.",
+  "ref": "Isaiah 48:14"
+ },
+ {
+  "id": "isaiah-48-e-05",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would Israel's peace have been like if they had hearkened?",
+  "choices": [
+   "A mountain",
+   "A river",
+   "A shepherd's tent",
+   "A well of water"
+  ],
+  "answer": 1,
+  "explanation": "O that thou hadst hearkened to my commandments! then had thy peace been as a river.",
+  "ref": "Isaiah 48:18"
+ },
+ {
+  "id": "isaiah-48-e-06",
+  "chapter": 48,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What would Israel's seed have been like if they had hearkened?",
+  "choices": [
+   "The stars",
+   "The sand",
+   "The dust",
+   "The grass"
+  ],
+  "answer": 1,
+  "explanation": "Thy seed also had been as the sand, and the offspring of thy bowels like the gravel thereof.",
+  "ref": "Isaiah 48:19"
+ },
+ {
+  "id": "isaiah-48-m-01",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why did the Lord declare things beforehand?",
+  "choices": [
+   "Lest the nations make war",
+   "Lest Israel forget the temple",
+   "Lest Israel say their idol had done them",
+   "Lest Cyrus take the glory"
+  ],
+  "answer": 2,
+  "explanation": "I have declared it to thee; lest thou shouldest say, Mine idol hath done them, and my graven image hath commanded them.",
+  "ref": "Isaiah 48:5"
+ },
+ {
+  "id": "isaiah-48-m-02",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How do the house of Jacob swear by the Lord's name?",
+  "choices": [
+   "In fear and trembling",
+   "With oil and with blood",
+   "Not in truth, nor in righteousness",
+   "Before the altar of Zion"
+  ],
+  "answer": 2,
+  "explanation": "Which swear by the name of the LORD, and make mention of the God of Israel, but not in truth, nor in righteousness.",
+  "ref": "Isaiah 48:1"
+ },
+ {
+  "id": "isaiah-48-m-03",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Of what do they call themselves?",
+  "choices": [
+   "The tribe of Judah",
+   "The house of David",
+   "The holy city",
+   "The chosen mountain"
+  ],
+  "answer": 2,
+  "explanation": "For they call themselves of the holy city, and stay themselves upon the God of Israel.",
+  "ref": "Isaiah 48:2"
+ },
+ {
+  "id": "isaiah-48-m-04",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was Israel called from the womb?",
+  "choices": [
+   "A servant",
+   "A firstborn",
+   "A transgressor",
+   "A stranger"
+  ],
+  "answer": 2,
+  "explanation": "I knew that thou wouldest deal very treacherously, and wast called a transgressor from the womb.",
+  "ref": "Isaiah 48:8"
+ },
+ {
+  "id": "isaiah-48-m-05",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the Lord refined Israel with, if not silver?",
+  "choices": [
+   "The fire of the altar",
+   "The waters of Babylon",
+   "The furnace of affliction",
+   "The sword of Cyrus"
+  ],
+  "answer": 2,
+  "explanation": "Behold, I have refined thee, but not with silver; I have chosen thee in the furnace of affliction.",
+  "ref": "Isaiah 48:10"
+ },
+ {
+  "id": "isaiah-48-m-06",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord's hand lay the foundation of?",
+  "choices": [
+   "The temple",
+   "The holy city",
+   "The earth",
+   "The mountains of Zion"
+  ],
+  "answer": 2,
+  "explanation": "Mine hand also hath laid the foundation of the earth, and my right hand hath spanned the heavens.",
+  "ref": "Isaiah 48:13"
+ },
+ {
+  "id": "isaiah-48-m-07",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Lord say he teaches Israel?",
+  "choices": [
+   "To fight and to build",
+   "To pray and to sing",
+   "To profit and the way to go",
+   "To plant and to reap"
+  ],
+  "answer": 2,
+  "explanation": "I am the LORD thy God which teacheth thee to profit, which leadeth thee by the way that thou shouldest go.",
+  "ref": "Isaiah 48:17"
+ },
+ {
+  "id": "isaiah-48-m-08",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are the people to declare as they leave Babylon?",
+  "choices": [
+   "The LORD hath destroyed Babylon",
+   "The LORD hath sent Cyrus",
+   "The LORD hath redeemed his servant Jacob",
+   "The LORD hath returned the temple"
+  ],
+  "answer": 2,
+  "explanation": "With a voice of singing declare ye, say ye, The LORD hath redeemed his servant Jacob.",
+  "ref": "Isaiah 48:20"
+ },
+ {
+  "id": "isaiah-48-m-09",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What would not have been cut off if Israel had hearkened?",
+  "choices": [
+   "His altar",
+   "His temple",
+   "His name",
+   "His land"
+  ],
+  "answer": 2,
+  "explanation": "His name should not have been cut off nor destroyed from before me.",
+  "ref": "Isaiah 48:19"
+ },
+ {
+  "id": "isaiah-48-m-10",
+  "chapter": 48,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What new things does the Lord now show Israel?",
+  "choices": [
+   "Songs of the nations",
+   "Laws for the land",
+   "Hidden things they did not know",
+   "Names of kings"
+  ],
+  "answer": 2,
+  "explanation": "I have shewed thee new things from this time, even hidden things, and thou didst not know them.",
+  "ref": "Isaiah 48:6"
+ },
+ {
+  "id": "isaiah-48-m-11",
+  "chapter": 48,
+  "level": "medium",
+  "category": "person",
+  "question": "Who has sent the speaker?",
+  "choices": [
+   "The prophets of Judah",
+   "Cyrus king of Persia",
+   "The Lord GOD and his Spirit",
+   "The elders of Israel"
+  ],
+  "answer": 2,
+  "explanation": "Now the Lord GOD, and his Spirit, hath sent me.",
+  "ref": "Isaiah 48:16"
+ },
+ {
+  "id": "isaiah-48-h-01",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is Israel's brow like?",
+  "choices": [
+   "Iron",
+   "Flint",
+   "Silver",
+   "Brass"
+  ],
+  "answer": 3,
+  "explanation": "Thou art obstinate, and thy neck is an iron sinew, and thy brow brass.",
+  "ref": "Isaiah 48:4"
+ },
+ {
+  "id": "isaiah-48-h-02",
+  "chapter": 48,
+  "level": "hard",
+  "category": "place",
+  "question": "Out of what waters did the house of Jacob come forth?",
+  "choices": [
+   "The waters of Jordan",
+   "The waters of Babylon",
+   "The waters of the Nile",
+   "The waters of Judah"
+  ],
+  "answer": 3,
+  "explanation": "Which are come forth out of the waters of Judah.",
+  "ref": "Isaiah 48:1"
+ },
+ {
+  "id": "isaiah-48-h-03",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Lord call Jacob and Israel?",
+  "choices": [
+   "My firstborn",
+   "My treasure",
+   "My vineyard",
+   "My called"
+  ],
+  "answer": 3,
+  "explanation": "Hearken unto me, O Jacob and Israel, my called; I am he; I am the first, I also am the last.",
+  "ref": "Isaiah 48:12"
+ },
+ {
+  "id": "isaiah-48-h-04",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do the heavens and earth do when the Lord calls them?",
+  "choices": [
+   "Fall silent",
+   "Pass away",
+   "Bow down",
+   "Stand up together"
+  ],
+  "answer": 3,
+  "explanation": "When I call unto them, they stand up together.",
+  "ref": "Isaiah 48:13"
+ },
+ {
+  "id": "isaiah-48-h-05",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How did the Lord do the former things?",
+  "choices": [
+   "Slowly over years",
+   "In secret",
+   "By the hand of Cyrus",
+   "Suddenly"
+  ],
+  "answer": 3,
+  "explanation": "I have declared the former things from the beginning; I did them suddenly, and they came to pass.",
+  "ref": "Isaiah 48:3"
+ },
+ {
+  "id": "isaiah-48-h-06",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What has the Lord not done from the beginning?",
+  "choices": [
+   "Chosen Israel",
+   "Judged the nations",
+   "Sent a prophet",
+   "Spoken in secret"
+  ],
+  "answer": 3,
+  "explanation": "I have not spoken in secret from the beginning.",
+  "ref": "Isaiah 48:16"
+ },
+ {
+  "id": "isaiah-48-h-07",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the one the Lord has called and brought make?",
+  "choices": [
+   "His kingdom great",
+   "His armies strong",
+   "His name known",
+   "His way prosperous"
+  ],
+  "answer": 3,
+  "explanation": "I, even I, have spoken; yea, I have called him: I have brought him, and he shall make his way prosperous.",
+  "ref": "Isaiah 48:15"
+ },
+ {
+  "id": "isaiah-48-h-08",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What had not been opened from that time?",
+  "choices": [
+   "Israel's eyes",
+   "The gates of Zion",
+   "The book of the law",
+   "Israel's ear"
+  ],
+  "answer": 3,
+  "explanation": "Yea, thou heardest not; yea, thou knewest not; yea, from that time that thine ear was not opened.",
+  "ref": "Isaiah 48:8"
+ },
+ {
+  "id": "isaiah-48-h-09",
+  "chapter": 48,
+  "level": "hard",
+  "category": "place",
+  "question": "How far are the redeemed to utter the news?",
+  "choices": [
+   "To the gates of Zion",
+   "To the sea",
+   "To the isles of Tarshish",
+   "To the end of the earth"
+  ],
+  "answer": 3,
+  "explanation": "Declare ye, tell this, utter it even to the end of the earth.",
+  "ref": "Isaiah 48:20"
+ },
+ {
+  "id": "isaiah-48-h-10",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How are the redeemed to go forth from Babylon?",
+  "choices": [
+   "In silence by night",
+   "With shouts of war",
+   "On the beasts of burden",
+   "With a voice of singing"
+  ],
+  "answer": 3,
+  "explanation": "Go ye forth of Babylon, flee ye from the Chaldeans, with a voice of singing declare ye.",
+  "ref": "Isaiah 48:20"
+ },
+ {
+  "id": "isaiah-48-h-11",
+  "chapter": 48,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Upon what do the people stay themselves?",
+  "choices": [
+   "The walls of the city",
+   "The house of David",
+   "The sons of Abraham",
+   "The God of Israel"
+  ],
+  "answer": 3,
+  "explanation": "They call themselves of the holy city, and stay themselves upon the God of Israel.",
+  "ref": "Isaiah 48:2"
+ },
+ {
+  "id": "isaiah-49-e-01",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom will the Lord give the servant to be a light to?",
+  "choices": [
+   "The tribes of Jacob",
+   "The kings of Babylon",
+   "The Gentiles",
+   "The remnant of Judah"
+  ],
+  "answer": 2,
+  "explanation": "I will also give thee for a light to the Gentiles, that thou mayest be my salvation unto the end of the earth.",
+  "ref": "Isaiah 49:6"
+ },
+ {
+  "id": "isaiah-49-e-02",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who will see the despised servant and worship him?",
+  "choices": [
+   "Priests and prophets",
+   "Elders and judges",
+   "Kings and princes",
+   "Captains and soldiers"
+  ],
+  "answer": 2,
+  "explanation": "Kings shall see and arise, princes also shall worship, because of the LORD that is faithful.",
+  "ref": "Isaiah 49:7"
+ },
+ {
+  "id": "isaiah-49-e-03",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What will the servant say to the prisoners?",
+  "choices": [
+   "Stay and wait",
+   "Be silent",
+   "Go forth",
+   "Come and eat"
+  ],
+  "answer": 2,
+  "explanation": "That thou mayest say to the prisoners, Go forth; to them that are in darkness, Shew yourselves.",
+  "ref": "Isaiah 49:9"
+ },
+ {
+  "id": "isaiah-49-e-04",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "By what will the Lord guide those he has mercy on?",
+  "choices": [
+   "A pillar of fire",
+   "The stars of heaven",
+   "The springs of water",
+   "A mighty angel"
+  ],
+  "answer": 2,
+  "explanation": "He that hath mercy on them shall lead them, even by the springs of water shall he guide them.",
+  "ref": "Isaiah 49:10"
+ },
+ {
+  "id": "isaiah-49-e-05",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "Who is told to sing because the Lord has comforted his people?",
+  "choices": [
+   "The kings, the priests and the people",
+   "The isles, the seas and the rivers",
+   "The heavens, the earth and the mountains",
+   "The prisoners, the poor and the weary"
+  ],
+  "answer": 2,
+  "explanation": "Sing, O heavens; and be joyful, O earth; and break forth into singing, O mountains: for the LORD hath comforted his people.",
+  "ref": "Isaiah 49:13"
+ },
+ {
+  "id": "isaiah-49-e-06",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "person",
+  "question": "What will kings be to Zion?",
+  "choices": [
+   "Watchmen",
+   "Servants",
+   "Nursing fathers",
+   "Stewards"
+  ],
+  "answer": 2,
+  "explanation": "Kings shall be thy nursing fathers, and their queens thy nursing mothers.",
+  "ref": "Isaiah 49:23"
+ },
+ {
+  "id": "isaiah-49-e-07",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "When was the servant called, according to the chapter's opening?",
+  "choices": [
+   "In the wilderness",
+   "At the temple",
+   "From the womb",
+   "In a vision by night"
+  ],
+  "answer": 2,
+  "explanation": "The LORD hath called me from the womb; from the bowels of my mother hath he made mention of my name.",
+  "ref": "Isaiah 49:1"
+ },
+ {
+  "id": "isaiah-49-e-08",
+  "chapter": 49,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who will bring Zion's sons in their arms?",
+  "choices": [
+   "The kings of Egypt",
+   "The Assyrians",
+   "The Gentiles",
+   "The watchmen of Zion"
+  ],
+  "answer": 2,
+  "explanation": "I will lift up mine hand to the Gentiles, and set up my standard to the people: and they shall bring thy sons in their arms.",
+  "ref": "Isaiah 49:22"
+ },
+ {
+  "id": "isaiah-49-m-01",
+  "chapter": 49,
+  "level": "medium",
+  "category": "place",
+  "question": "Where was the servant hid, made like a polished shaft?",
+  "choices": [
+   "In the temple",
+   "In the Lord's quiver",
+   "In a cave",
+   "In the wilderness"
+  ],
+  "answer": 1,
+  "explanation": "In the shadow of his hand hath he hid me, and made me a polished shaft; in his quiver hath he hid me.",
+  "ref": "Isaiah 49:2"
+ },
+ {
+  "id": "isaiah-49-m-02",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the servant say of his labour?",
+  "choices": [
+   "I have laboured in fear",
+   "I have laboured in vain",
+   "I have laboured alone",
+   "I have laboured for Israel's kings"
+  ],
+  "answer": 1,
+  "explanation": "Then I said, I have laboured in vain, I have spent my strength for nought, and in vain.",
+  "ref": "Isaiah 49:4"
+ },
+ {
+  "id": "isaiah-49-m-03",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is the servant described when the Lord speaks to him?",
+  "choices": [
+   "Praised by kings and loved by nations",
+   "Despised by man and abhorred by the nation",
+   "Feared by the people and honoured by priests",
+   "Unknown to Israel and unseen by the nations"
+  ],
+  "answer": 1,
+  "explanation": "To him whom man despiseth, to him whom the nation abhorreth, to a servant of rulers.",
+  "ref": "Isaiah 49:7"
+ },
+ {
+  "id": "isaiah-49-m-04",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When has the Lord heard and helped the servant?",
+  "choices": [
+   "In the day of battle",
+   "In an acceptable time, in a day of salvation",
+   "In the time of famine",
+   "In the year of release"
+  ],
+  "answer": 1,
+  "explanation": "In an acceptable time have I heard thee, and in a day of salvation have I helped thee.",
+  "ref": "Isaiah 49:8"
+ },
+ {
+  "id": "isaiah-49-m-05",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the servant given to be, to establish the earth?",
+  "choices": [
+   "A sword for the nations",
+   "A covenant of the people",
+   "A king over Israel",
+   "A wall for Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "I will preserve thee, and give thee for a covenant of the people, to establish the earth.",
+  "ref": "Isaiah 49:8"
+ },
+ {
+  "id": "isaiah-49-m-06",
+  "chapter": 49,
+  "level": "medium",
+  "category": "place",
+  "question": "Where will the prisoners' pastures be?",
+  "choices": [
+   "In the valleys",
+   "In all high places",
+   "By the rivers of Babylon",
+   "In the land of Egypt"
+  ],
+  "answer": 1,
+  "explanation": "They shall feed in the ways, and their pastures shall be in all high places.",
+  "ref": "Isaiah 49:9"
+ },
+ {
+  "id": "isaiah-49-m-07",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Lord make of all his mountains?",
+  "choices": [
+   "A wall",
+   "A way",
+   "A throne",
+   "An altar"
+  ],
+  "answer": 1,
+  "explanation": "I will make all my mountains a way, and my highways shall be exalted.",
+  "ref": "Isaiah 49:11"
+ },
+ {
+  "id": "isaiah-49-m-08",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Lord say is continually before him?",
+  "choices": [
+   "Zion's gates",
+   "Zion's walls",
+   "Zion's altar",
+   "Zion's children"
+  ],
+  "answer": 1,
+  "explanation": "Behold, I have graven thee upon the palms of my hands; thy walls are continually before me.",
+  "ref": "Isaiah 49:16"
+ },
+ {
+  "id": "isaiah-49-m-09",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall go forth of Zion?",
+  "choices": [
+   "Her children into exile",
+   "Her destroyers and they that made her waste",
+   "Her priests and elders",
+   "Her watchmen"
+  ],
+  "answer": 1,
+  "explanation": "Thy destroyers and they that made thee waste shall go forth of thee.",
+  "ref": "Isaiah 49:17"
+ },
+ {
+  "id": "isaiah-49-m-10",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How shall Zion wear the gathered ones?",
+  "choices": [
+   "As a crown of gold",
+   "As an ornament, as a bride does",
+   "As a garment of war",
+   "As a seal upon her hand"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt surely clothe thee with them all, as with an ornament, and bind them on thee, as a bride doeth.",
+  "ref": "Isaiah 49:18"
+ },
+ {
+  "id": "isaiah-49-m-11",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the children born after Zion's loss say?",
+  "choices": [
+   "We want to return to Babylon",
+   "The place is too strait for me",
+   "Who will lead us home",
+   "Where is our father"
+  ],
+  "answer": 1,
+  "explanation": "The children which thou shalt have, after thou hast lost the other, shall say again in thine ears, The place is too strait for me.",
+  "ref": "Isaiah 49:20"
+ },
+ {
+  "id": "isaiah-49-m-12",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does Zion ask when she sees all these children?",
+  "choices": [
+   "Who will feed these?",
+   "Who hath begotten me these?",
+   "Who has sent these?",
+   "Who will guard these?"
+  ],
+  "answer": 1,
+  "explanation": "Who hath begotten me these, seeing I have lost my children, and am desolate, a captive?",
+  "ref": "Isaiah 49:21"
+ },
+ {
+  "id": "isaiah-49-m-13",
+  "chapter": 49,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will happen to the captives of the mighty?",
+  "choices": [
+   "They shall be sold",
+   "They shall be taken away",
+   "They shall be hidden",
+   "They shall be slain"
+  ],
+  "answer": 1,
+  "explanation": "Even the captives of the mighty shall be taken away, and the prey of the terrible shall be delivered.",
+  "ref": "Isaiah 49:25"
+ },
+ {
+  "id": "isaiah-49-h-01",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord form the servant from the womb to do?",
+  "choices": [
+   "To bring Jacob again to him",
+   "To rule the nations",
+   "To rebuild the temple",
+   "To judge Babylon"
+  ],
+  "answer": 0,
+  "explanation": "The LORD that formed me from the womb to be his servant, to bring Jacob again to him.",
+  "ref": "Isaiah 49:5"
+ },
+ {
+  "id": "isaiah-49-h-02",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall be the servant's strength?",
+  "choices": [
+   "His God",
+   "His people",
+   "His sword",
+   "His arm"
+  ],
+  "answer": 0,
+  "explanation": "Though Israel be not gathered, yet shall I be glorious in the eyes of the LORD, and my God shall be my strength.",
+  "ref": "Isaiah 49:5"
+ },
+ {
+  "id": "isaiah-49-h-03",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How shall Zion's daughters be carried?",
+  "choices": [
+   "Upon their shoulders",
+   "In chariots",
+   "On the backs of camels",
+   "By the hand of the priests"
+  ],
+  "answer": 0,
+  "explanation": "Thy sons in their arms, and thy daughters shall be carried upon their shoulders.",
+  "ref": "Isaiah 49:22"
+ },
+ {
+  "id": "isaiah-49-h-04",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall kings and queens do to Zion?",
+  "choices": [
+   "Bow down and lick up the dust of her feet",
+   "Bring tribute of gold and silver",
+   "Build her walls",
+   "Raise her sons as their own"
+  ],
+  "answer": 0,
+  "explanation": "They shall bow down to thee with their face toward the earth, and lick up the dust of thy feet.",
+  "ref": "Isaiah 49:23"
+ },
+ {
+  "id": "isaiah-49-h-05",
+  "chapter": 49,
+  "level": "hard",
+  "category": "person",
+  "question": "Who shall not be ashamed?",
+  "choices": [
+   "They that wait for the Lord",
+   "They that fear the king",
+   "They that trust in princes",
+   "They that dwell in Zion"
+  ],
+  "answer": 0,
+  "explanation": "Thou shalt know that I am the LORD: for they shall not be ashamed that wait for me.",
+  "ref": "Isaiah 49:23"
+ },
+ {
+  "id": "isaiah-49-h-06",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What will the oppressors be drunk with?",
+  "choices": [
+   "Their own blood, as with sweet wine",
+   "Wine of Babylon",
+   "The cup of the Lord's fury",
+   "Their own tears"
+  ],
+  "answer": 0,
+  "explanation": "They shall be drunken with their own blood, as with sweet wine.",
+  "ref": "Isaiah 49:26"
+ },
+ {
+  "id": "isaiah-49-h-07",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the Lord call himself at the end of the chapter?",
+  "choices": [
+   "Thy Saviour and Redeemer, the mighty One of Jacob",
+   "The shepherd and judge of Israel",
+   "The fortress and strength of Zion",
+   "The King of glory and Lord of hosts"
+  ],
+  "answer": 0,
+  "explanation": "All flesh shall know that I the LORD am thy Saviour and thy Redeemer, the mighty One of Jacob.",
+  "ref": "Isaiah 49:26"
+ },
+ {
+  "id": "isaiah-49-h-08",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom will the Lord contend with?",
+  "choices": [
+   "Him that contends with Zion",
+   "The kings of the east",
+   "Those who rebel in Zion",
+   "The idols of the nations"
+  ],
+  "answer": 0,
+  "explanation": "I will contend with him that contendeth with thee, and I will save thy children.",
+  "ref": "Isaiah 49:25"
+ },
+ {
+  "id": "isaiah-49-h-09",
+  "chapter": 49,
+  "level": "hard",
+  "category": "place",
+  "question": "From what land are some to come, besides the north and west?",
+  "choices": [
+   "Sinim",
+   "Egypt",
+   "Tarshish",
+   "Lebanon"
+  ],
+  "answer": 0,
+  "explanation": "Behold, these shall come from far: and, lo, these from the north and from the west; and these from the land of Sinim.",
+  "ref": "Isaiah 49:12"
+ },
+ {
+  "id": "isaiah-49-h-10",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where will those who swallowed up Zion be?",
+  "choices": [
+   "Far away",
+   "In the dust",
+   "In chains",
+   "In Babylon"
+  ],
+  "answer": 0,
+  "explanation": "They that swallowed thee up shall be far away.",
+  "ref": "Isaiah 49:19"
+ },
+ {
+  "id": "isaiah-49-h-11",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Because of whom shall kings see and arise?",
+  "choices": [
+   "The LORD that is faithful",
+   "The servant of rulers",
+   "The nation of Israel",
+   "The Gentiles"
+  ],
+  "answer": 0,
+  "explanation": "Kings shall see and arise, princes also shall worship, because of the LORD that is faithful, and the Holy One of Israel.",
+  "ref": "Isaiah 49:7"
+ },
+ {
+  "id": "isaiah-49-h-12",
+  "chapter": 49,
+  "level": "hard",
+  "category": "person",
+  "question": "Who is told to listen at the start of the chapter?",
+  "choices": [
+   "The isles and the people from far",
+   "The house of Jacob and the elders",
+   "The kings of Babylon and Egypt",
+   "The priests and the prophets"
+  ],
+  "answer": 0,
+  "explanation": "Listen, O isles, unto me; and hearken, ye people, from far.",
+  "ref": "Isaiah 49:1"
+ },
+ {
+  "id": "isaiah-49-h-13",
+  "chapter": 49,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does Zion say she was left, in her surprise at her new children?",
+  "choices": [
+   "Alone",
+   "Poor",
+   "Blind",
+   "Forgotten"
+  ],
+  "answer": 0,
+  "explanation": "Behold, I was left alone; these, where had they been?",
+  "ref": "Isaiah 49:21"
+ },
+ {
+  "id": "isaiah-50-e-01",
+  "chapter": 50,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what does the Lord clothe the heavens?",
+  "choices": [
+   "Light",
+   "Clouds of fire",
+   "Silver",
+   "Blackness"
+  ],
+  "answer": 3,
+  "explanation": "I clothe the heavens with blackness, and I make sackcloth their covering.",
+  "ref": "Isaiah 50:3"
+ },
+ {
+  "id": "isaiah-50-m-01",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why were the people sold, according to the Lord?",
+  "choices": [
+   "For their fathers' pride",
+   "For their iniquities",
+   "For a debt to creditors",
+   "For the sins of their kings"
+  ],
+  "answer": 1,
+  "explanation": "Behold, for your iniquities have ye sold yourselves, and for your transgressions is your mother put away.",
+  "ref": "Isaiah 50:1"
+ },
+ {
+  "id": "isaiah-50-m-02",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What happens to the fish when the Lord dries up the sea?",
+  "choices": [
+   "They flee to the rivers",
+   "They stink and die of thirst",
+   "They are caught by fishermen",
+   "They are carried into the land"
+  ],
+  "answer": 1,
+  "explanation": "At my rebuke I dry up the sea: their fish stinketh, because there is no water, and dieth for thirst.",
+  "ref": "Isaiah 50:2"
+ },
+ {
+  "id": "isaiah-50-m-03",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the servant set his face like?",
+  "choices": [
+   "A sword",
+   "A flint",
+   "A rock",
+   "A fire"
+  ],
+  "answer": 1,
+  "explanation": "Therefore have I set my face like a flint, and I know that I shall not be ashamed.",
+  "ref": "Isaiah 50:7"
+ },
+ {
+  "id": "isaiah-50-m-04",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the servant not hide his face from?",
+  "choices": [
+   "Fire and sword",
+   "Shame and spitting",
+   "Kings and princes",
+   "Famine and thirst"
+  ],
+  "answer": 1,
+  "explanation": "I hid not my face from shame and spitting.",
+  "ref": "Isaiah 50:6"
+ },
+ {
+  "id": "isaiah-50-m-05",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall happen to the servant's adversaries?",
+  "choices": [
+   "They shall be cut down like grass",
+   "They shall wax old as a garment, eaten by the moth",
+   "They shall be scattered by the wind",
+   "They shall fall into the pit"
+  ],
+  "answer": 1,
+  "explanation": "They all shall wax old as a garment; the moth shall eat them up.",
+  "ref": "Isaiah 50:9"
+ },
+ {
+  "id": "isaiah-50-m-06",
+  "chapter": 50,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the servant's tongue given him to do?",
+  "choices": [
+   "Sing praise to the Lord",
+   "Speak a word in season to the weary",
+   "Rebuke the kings",
+   "Judge the nations"
+  ],
+  "answer": 1,
+  "explanation": "The Lord GOD hath given me the tongue of the learned, that I should know how to speak a word in season to him that is weary.",
+  "ref": "Isaiah 50:4"
+ },
+ {
+  "id": "isaiah-50-h-01",
+  "chapter": 50,
+  "level": "hard",
+  "category": "person",
+  "question": "Who wakens the servant's ear morning by morning?",
+  "choices": [
+   "The prophets",
+   "The watchmen",
+   "The Spirit of Zion",
+   "The Lord GOD"
+  ],
+  "answer": 3,
+  "explanation": "He wakeneth morning by morning, he wakeneth mine ear to hear as the learned.",
+  "ref": "Isaiah 50:4"
+ },
+ {
+  "id": "isaiah-50-h-02",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What was plucked off the servant's cheeks?",
+  "choices": [
+   "The beard of the priests",
+   "The skin",
+   "The garments",
+   "The hair"
+  ],
+  "answer": 3,
+  "explanation": "I gave my back to the smiters, and my cheeks to them that plucked off the hair.",
+  "ref": "Isaiah 50:6"
+ },
+ {
+  "id": "isaiah-50-h-03",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the servant say he was not?",
+  "choices": [
+   "Weary",
+   "Silent",
+   "Afraid",
+   "Rebellious"
+  ],
+  "answer": 3,
+  "explanation": "The Lord GOD hath opened mine ear, and I was not rebellious, neither turned away back.",
+  "ref": "Isaiah 50:5"
+ },
+ {
+  "id": "isaiah-50-h-04",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Where shall those who kindle their own fire lie down?",
+  "choices": [
+   "In the darkness of the pit",
+   "By their own fire",
+   "In the wilderness",
+   "In sorrow"
+  ],
+  "answer": 3,
+  "explanation": "Walk in the light of your fire, and in the sparks that ye have kindled. This shall ye have of mine hand; ye shall lie down in sorrow.",
+  "ref": "Isaiah 50:11"
+ },
+ {
+  "id": "isaiah-50-h-05",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the servant say is near?",
+  "choices": [
+   "The day of the Lord",
+   "The help of Zion",
+   "The time of rest",
+   "He that justifieth me"
+  ],
+  "answer": 3,
+  "explanation": "He is near that justifieth me; who will contend with me?",
+  "ref": "Isaiah 50:8"
+ },
+ {
+  "id": "isaiah-50-h-06",
+  "chapter": 50,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the servant challenge his adversary to do?",
+  "choices": [
+   "Flee to the mountains",
+   "Speak in secret",
+   "Bring his witnesses",
+   "Come near and stand together"
+  ],
+  "answer": 3,
+  "explanation": "Who will contend with me? let us stand together: who is mine adversary? let him come near to me.",
+  "ref": "Isaiah 50:8"
+ },
+ {
+  "id": "isaiah-51-e-01",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "place",
+  "question": "What will the Lord make Zion's wilderness like?",
+  "choices": [
+   "Eden",
+   "The land of Canaan",
+   "A watered garden of Egypt",
+   "The mountain of Lebanon"
+  ],
+  "answer": 0,
+  "explanation": "He will make her wilderness like Eden, and her desert like the garden of the LORD.",
+  "ref": "Isaiah 51:3"
+ },
+ {
+  "id": "isaiah-51-e-02",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall proceed from the Lord to be a light of the people?",
+  "choices": [
+   "A law",
+   "A prophet",
+   "A king",
+   "A sword"
+  ],
+  "answer": 0,
+  "explanation": "A law shall proceed from me, and I will make my judgment to rest for a light of the people.",
+  "ref": "Isaiah 51:4"
+ },
+ {
+  "id": "isaiah-51-e-03",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall return with singing to Zion?",
+  "choices": [
+   "The redeemed of the LORD",
+   "The kings of the isles",
+   "The elders of Jacob",
+   "The men of Judah"
+  ],
+  "answer": 0,
+  "explanation": "The redeemed of the LORD shall return, and come with singing unto Zion.",
+  "ref": "Isaiah 51:11"
+ },
+ {
+  "id": "isaiah-51-e-04",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall flee away from the redeemed?",
+  "choices": [
+   "Sorrow and mourning",
+   "Hunger and thirst",
+   "Sword and famine",
+   "Heat and cold"
+  ],
+  "answer": 0,
+  "explanation": "They shall obtain gladness and joy; and sorrow and mourning shall flee away.",
+  "ref": "Isaiah 51:11"
+ },
+ {
+  "id": "isaiah-51-e-05",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "person",
+  "question": "Whom did the arm of the Lord cut and wound in the ancient days?",
+  "choices": [
+   "Rahab and the dragon",
+   "Pharaoh and his horsemen",
+   "Og and Sihon",
+   "Leviathan and Behemoth"
+  ],
+  "answer": 0,
+  "explanation": "Art thou not it that hath cut Rahab, and wounded the dragon?",
+  "ref": "Isaiah 51:9"
+ },
+ {
+  "id": "isaiah-51-e-06",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "place",
+  "question": "What did the Lord divide, whose waves roared?",
+  "choices": [
+   "The sea",
+   "The river",
+   "The land",
+   "The desert"
+  ],
+  "answer": 0,
+  "explanation": "I am the LORD thy God, that divided the sea, whose waves roared.",
+  "ref": "Isaiah 51:15"
+ },
+ {
+  "id": "isaiah-51-e-07",
+  "chapter": 51,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are Jerusalem's sons like as they lie in the streets?",
+  "choices": [
+   "A wild bull in a net",
+   "A flock without a shepherd",
+   "A fire among stubble",
+   "A bird in a snare"
+  ],
+  "answer": 0,
+  "explanation": "Thy sons have fainted, they lie at the head of all the streets, as a wild bull in a net.",
+  "ref": "Isaiah 51:20"
+ },
+ {
+  "id": "isaiah-51-m-01",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why does the Lord say he called Abraham alone?",
+  "choices": [
+   "He blessed him and increased him",
+   "He found him righteous",
+   "He wanted a nation of kings",
+   "He promised him Zion"
+  ],
+  "answer": 0,
+  "explanation": "Look unto Abraham your father: for I called him alone, and blessed him, and increased him.",
+  "ref": "Isaiah 51:2"
+ },
+ {
+  "id": "isaiah-51-m-02",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall the earth wax old like?",
+  "choices": [
+   "A garment",
+   "A tree",
+   "A cloud",
+   "A shadow"
+  ],
+  "answer": 0,
+  "explanation": "The heavens shall vanish away like smoke, and the earth shall wax old like a garment.",
+  "ref": "Isaiah 51:6"
+ },
+ {
+  "id": "isaiah-51-m-03",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall eat up those who revile God's people?",
+  "choices": [
+   "The moth and the worm",
+   "The fire and sword",
+   "The famine and plague",
+   "The wolf and lion"
+  ],
+  "answer": 0,
+  "explanation": "The moth shall eat them up like a garment, and the worm shall eat them like wool.",
+  "ref": "Isaiah 51:8"
+ },
+ {
+  "id": "isaiah-51-m-04",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the Lord make of the depths of the sea?",
+  "choices": [
+   "A way for the ransomed to pass over",
+   "A tomb for the Egyptians",
+   "A road for Cyrus",
+   "A bridge for the kings"
+  ],
+  "answer": 0,
+  "explanation": "That hath made the depths of the sea a way for the ransomed to pass over.",
+  "ref": "Isaiah 51:10"
+ },
+ {
+  "id": "isaiah-51-m-05",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who should Israel not be afraid of?",
+  "choices": [
+   "A man that shall die",
+   "A king of Babylon",
+   "The idols of the nations",
+   "The armies of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "Who art thou, that thou shouldest be afraid of a man that shall die, and of the son of man which shall be made as grass?",
+  "ref": "Isaiah 51:12"
+ },
+ {
+  "id": "isaiah-51-m-06",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What has the Lord put in the servant's mouth?",
+  "choices": [
+   "His words",
+   "A new song",
+   "A sharp sword",
+   "A hot coal"
+  ],
+  "answer": 0,
+  "explanation": "I have put my words in thy mouth, and I have covered thee in the shadow of mine hand.",
+  "ref": "Isaiah 51:16"
+ },
+ {
+  "id": "isaiah-51-m-07",
+  "chapter": 51,
+  "level": "medium",
+  "category": "person",
+  "question": "Into whose hand will the Lord put the cup of fury?",
+  "choices": [
+   "Them that afflict Jerusalem",
+   "The kings of Egypt",
+   "Her own sons",
+   "The idols of Babylon"
+  ],
+  "answer": 0,
+  "explanation": "I will put it into the hand of them that afflict thee; which have said to thy soul, Bow down, that we may go over.",
+  "ref": "Isaiah 51:23"
+ },
+ {
+  "id": "isaiah-51-m-08",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What had Jerusalem's oppressors said to her?",
+  "choices": [
+   "Bow down, that we may go over",
+   "Give us your sons",
+   "Build us a city",
+   "Serve us seventy years"
+  ],
+  "answer": 0,
+  "explanation": "Which have said to thy soul, Bow down, that we may go over.",
+  "ref": "Isaiah 51:23"
+ },
+ {
+  "id": "isaiah-51-m-09",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Lord say is near, with his salvation gone forth?",
+  "choices": [
+   "My righteousness",
+   "My judgment",
+   "My covenant",
+   "My Spirit"
+  ],
+  "answer": 0,
+  "explanation": "My righteousness is near; my salvation is gone forth, and mine arms shall judge the people.",
+  "ref": "Isaiah 51:5"
+ },
+ {
+  "id": "isaiah-51-m-10",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is there none to do for Jerusalem?",
+  "choices": [
+   "Guide her",
+   "Feed her",
+   "Judge her",
+   "Defend her"
+  ],
+  "answer": 0,
+  "explanation": "There is none to guide her among all the sons whom she hath brought forth.",
+  "ref": "Isaiah 51:18"
+ },
+ {
+  "id": "isaiah-51-m-11",
+  "chapter": 51,
+  "level": "medium",
+  "category": "place",
+  "question": "Who shall wait on the Lord and trust on his arm?",
+  "choices": [
+   "The isles",
+   "The mountains",
+   "The nations of the east",
+   "The kings of Egypt"
+  ],
+  "answer": 0,
+  "explanation": "The isles shall wait upon me, and on mine arm shall they trust.",
+  "ref": "Isaiah 51:5"
+ },
+ {
+  "id": "isaiah-51-m-12",
+  "chapter": 51,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Whose cause does the Lord God plead?",
+  "choices": [
+   "His people's",
+   "The kings of Israel's",
+   "The stranger's",
+   "The poor man's"
+  ],
+  "answer": 0,
+  "explanation": "Thus saith thy Lord the LORD, and thy God that pleadeth the cause of his people.",
+  "ref": "Isaiah 51:22"
+ },
+ {
+  "id": "isaiah-51-h-01",
+  "chapter": 51,
+  "level": "hard",
+  "category": "place",
+  "question": "Whence were the people digged?",
+  "choices": [
+   "The hole of the pit",
+   "The valley of Hinnom",
+   "The cave of Machpelah",
+   "The mountain of Zion"
+  ],
+  "answer": 0,
+  "explanation": "Look unto the rock whence ye are hewn, and to the hole of the pit whence ye are digged.",
+  "ref": "Isaiah 51:1"
+ },
+ {
+  "id": "isaiah-51-h-02",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the Lord's name, when he divided the sea?",
+  "choices": [
+   "The LORD of hosts",
+   "The Holy One of Jacob",
+   "The King of glory",
+   "The Rock of Israel"
+  ],
+  "answer": 0,
+  "explanation": "I am the LORD thy God, that divided the sea, whose waves roared: The LORD of hosts is his name.",
+  "ref": "Isaiah 51:15"
+ },
+ {
+  "id": "isaiah-51-h-03",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did Jerusalem wring out?",
+  "choices": [
+   "The dregs of the cup of trembling",
+   "The waters of the great deep",
+   "The wine of the nations",
+   "The blood of her sons"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast drunken the dregs of the cup of trembling, and wrung them out.",
+  "ref": "Isaiah 51:17"
+ },
+ {
+  "id": "isaiah-51-h-04",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the son of man be made as?",
+  "choices": [
+   "Grass",
+   "Dust",
+   "A shadow",
+   "Smoke"
+  ],
+  "answer": 0,
+  "explanation": "Who art thou, that thou shouldest be afraid of the son of man which shall be made as grass?",
+  "ref": "Isaiah 51:12"
+ },
+ {
+  "id": "isaiah-51-h-05",
+  "chapter": 51,
+  "level": "hard",
+  "category": "place",
+  "question": "Where do Jerusalem's fainted sons lie?",
+  "choices": [
+   "At the head of all the streets",
+   "In the gates of the city",
+   "On the walls of Zion",
+   "In the valley of the pit"
+  ],
+  "answer": 0,
+  "explanation": "Thy sons have fainted, they lie at the head of all the streets.",
+  "ref": "Isaiah 51:20"
+ },
+ {
+  "id": "isaiah-51-h-06",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the captive exile fear will fail?",
+  "choices": [
+   "His bread",
+   "His strength",
+   "His sight",
+   "His children"
+  ],
+  "answer": 0,
+  "explanation": "The captive exile hasteneth that he may be loosed, and that he should not die in the pit, nor that his bread should fail.",
+  "ref": "Isaiah 51:14"
+ },
+ {
+  "id": "isaiah-51-h-07",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How is Jerusalem called drunken?",
+  "choices": [
+   "Drunken, but not with wine",
+   "Drunken with sleep",
+   "Drunken with grief and pride",
+   "Drunken with blood"
+  ],
+  "answer": 0,
+  "explanation": "Therefore hear now this, thou afflicted, and drunken, but not with wine.",
+  "ref": "Isaiah 51:21"
+ },
+ {
+  "id": "isaiah-51-h-08",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How had Jerusalem laid her body to those who went over?",
+  "choices": [
+   "As the ground and the street",
+   "As a wall and a gate",
+   "As a bridge and a road",
+   "As a bed and a seat"
+  ],
+  "answer": 0,
+  "explanation": "Thou hast laid thy body as the ground, and as the street, to them that went over.",
+  "ref": "Isaiah 51:23"
+ },
+ {
+  "id": "isaiah-51-h-09",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What two things came upon Jerusalem along with famine and the sword?",
+  "choices": [
+   "Desolation and destruction",
+   "Plague and fire",
+   "Shame and mourning",
+   "Exile and slavery"
+  ],
+  "answer": 0,
+  "explanation": "These two things are come unto thee: desolation, and destruction, and the famine, and the sword.",
+  "ref": "Isaiah 51:19"
+ },
+ {
+  "id": "isaiah-51-h-10",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did the Lord stretch forth, which Israel forgot?",
+  "choices": [
+   "The heavens",
+   "The sea",
+   "The wilderness",
+   "The mountains"
+  ],
+  "answer": 0,
+  "explanation": "And forgettest the LORD thy maker, that hath stretched forth the heavens, and laid the foundations of the earth.",
+  "ref": "Isaiah 51:13"
+ },
+ {
+  "id": "isaiah-51-h-11",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Which days does the Lord's arm remember when asked to awake?",
+  "choices": [
+   "The ancient days, the generations of old",
+   "The days of Noah",
+   "The days of Egypt",
+   "The days of David"
+  ],
+  "answer": 0,
+  "explanation": "Awake, as in the ancient days, in the generations of old.",
+  "ref": "Isaiah 51:9"
+ },
+ {
+  "id": "isaiah-51-h-12",
+  "chapter": 51,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what are the fainted sons full?",
+  "choices": [
+   "The fury of the LORD",
+   "The sorrow of Zion",
+   "The sins of the fathers",
+   "The wine of Babylon"
+  ],
+  "answer": 0,
+  "explanation": "They are full of the fury of the LORD, the rebuke of thy God.",
+  "ref": "Isaiah 51:20"
+ },
+ {
+  "id": "isaiah-52-e-01",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall no more come into Jerusalem?",
+  "choices": [
+   "The Assyrian and the Egyptian",
+   "The uncircumcised and the unclean",
+   "The kings of the earth",
+   "The idols of the nations"
+  ],
+  "answer": 1,
+  "explanation": "Henceforth there shall no more come into thee the uncircumcised and the unclean.",
+  "ref": "Isaiah 52:1"
+ },
+ {
+  "id": "isaiah-52-e-02",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "How shall the Lord's people be redeemed?",
+  "choices": [
+   "With silver",
+   "Without money",
+   "With sacrifice",
+   "By a ransom of kings"
+  ],
+  "answer": 1,
+  "explanation": "Ye have sold yourselves for nought; and ye shall be redeemed without money.",
+  "ref": "Isaiah 52:3"
+ },
+ {
+  "id": "isaiah-52-e-03",
+  "chapter": 52,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What is Zion told to put on?",
+  "choices": [
+   "Sackcloth and ashes",
+   "Her strength and beautiful garments",
+   "Armour and a helmet",
+   "A crown of gold"
+  ],
+  "answer": 1,
+  "explanation": "Awake, awake; put on thy strength, O Zion; put on thy beautiful garments, O Jerusalem, the holy city.",
+  "ref": "Isaiah 52:1"
+ },
+ {
+  "id": "isaiah-52-m-01",
+  "chapter": 52,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is the captive daughter of Zion told to shake off?",
+  "choices": [
+   "The chains of Babylon",
+   "The dust",
+   "The yoke of Assyria",
+   "The ashes of mourning"
+  ],
+  "answer": 1,
+  "explanation": "Shake thyself from the dust; arise, and sit down, O Jerusalem.",
+  "ref": "Isaiah 52:2"
+ },
+ {
+  "id": "isaiah-52-m-02",
+  "chapter": 52,
+  "level": "medium",
+  "category": "person",
+  "question": "Who oppressed the Lord's people without cause?",
+  "choices": [
+   "The Philistine",
+   "The Assyrian",
+   "The Edomite",
+   "The Moabite"
+  ],
+  "answer": 1,
+  "explanation": "My people went down aforetime into Egypt to sojourn there; and the Assyrian oppressed them without cause.",
+  "ref": "Isaiah 52:4"
+ },
+ {
+  "id": "isaiah-52-m-03",
+  "chapter": 52,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What is continually blasphemed every day?",
+  "choices": [
+   "The Lord's temple",
+   "The Lord's name",
+   "The Lord's law",
+   "The Lord's servant"
+  ],
+  "answer": 1,
+  "explanation": "They that rule over them make them to howl, saith the LORD; and my name continually every day is blasphemed.",
+  "ref": "Isaiah 52:5"
+ },
+ {
+  "id": "isaiah-52-m-04",
+  "chapter": 52,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What do the messengers on the mountains say to Zion?",
+  "choices": [
+   "Thy king cometh",
+   "Thy God reigneth",
+   "Thy walls are rebuilt",
+   "Thy sins are forgiven"
+  ],
+  "answer": 1,
+  "explanation": "That saith unto Zion, Thy God reigneth!",
+  "ref": "Isaiah 52:7"
+ },
+ {
+  "id": "isaiah-52-m-05",
+  "chapter": 52,
+  "level": "medium",
+  "category": "person",
+  "question": "Who are told to depart and touch no unclean thing?",
+  "choices": [
+   "The elders of Zion",
+   "They that bear the vessels of the LORD",
+   "The kings of the isles",
+   "The watchmen of Jerusalem"
+  ],
+  "answer": 1,
+  "explanation": "Go ye out of the midst of her; be ye clean, that bear the vessels of the LORD.",
+  "ref": "Isaiah 52:11"
+ },
+ {
+  "id": "isaiah-52-m-06",
+  "chapter": 52,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Who will go before the departing people and be their rereward?",
+  "choices": [
+   "The servant of the Lord",
+   "The LORD, the God of Israel",
+   "The watchmen of Zion",
+   "The kings of the isles"
+  ],
+  "answer": 1,
+  "explanation": "The LORD will go before you; and the God of Israel will be your rereward.",
+  "ref": "Isaiah 52:12"
+ },
+ {
+  "id": "isaiah-52-m-07",
+  "chapter": 52,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the kings do at the servant?",
+  "choices": [
+   "Bow their heads",
+   "Shut their mouths",
+   "Take up arms",
+   "Cast off their crowns"
+  ],
+  "answer": 1,
+  "explanation": "So shall he sprinkle many nations; the kings shall shut their mouths at him.",
+  "ref": "Isaiah 52:15"
+ },
+ {
+  "id": "isaiah-52-m-08",
+  "chapter": 52,
+  "level": "medium",
+  "category": "keyword",
+  "question": "Why shall the people not go out in haste?",
+  "choices": [
+   "Babylon will be silent",
+   "The LORD will go before them",
+   "The gates are guarded",
+   "Cyrus will protect them"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall not go out with haste, nor go by flight: for the LORD will go before you.",
+  "ref": "Isaiah 52:12"
+ },
+ {
+  "id": "isaiah-52-h-01",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the watchmen see eye to eye?",
+  "choices": [
+   "The fall of Babylon",
+   "The LORD bringing again Zion",
+   "The temple rebuilt",
+   "The servant exalted"
+  ],
+  "answer": 1,
+  "explanation": "They shall see eye to eye, when the LORD shall bring again Zion.",
+  "ref": "Isaiah 52:8"
+ },
+ {
+  "id": "isaiah-52-h-02",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What do those who rule over the Lord's people make them do?",
+  "choices": [
+   "Pray",
+   "Howl",
+   "Hide",
+   "Labour"
+  ],
+  "answer": 1,
+  "explanation": "They that rule over them make them to howl, saith the LORD.",
+  "ref": "Isaiah 52:5"
+ },
+ {
+  "id": "isaiah-52-h-03",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Whom shall the servant sprinkle?",
+  "choices": [
+   "The house of Israel",
+   "Many nations",
+   "The priests of the Lord",
+   "The captives of Zion"
+  ],
+  "answer": 1,
+  "explanation": "So shall he sprinkle many nations; the kings shall shut their mouths at him.",
+  "ref": "Isaiah 52:15"
+ },
+ {
+  "id": "isaiah-52-h-04",
+  "chapter": 52,
+  "level": "hard",
+  "category": "place",
+  "question": "Who are told to break forth into joy and sing together?",
+  "choices": [
+   "The watchmen of Zion",
+   "The waste places of Jerusalem",
+   "The kings of the isles",
+   "The captives in Babylon"
+  ],
+  "answer": 1,
+  "explanation": "Break forth into joy, sing together, ye waste places of Jerusalem: for the LORD hath comforted his people.",
+  "ref": "Isaiah 52:9"
+ },
+ {
+  "id": "isaiah-52-h-05",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the kings see that had not been told them?",
+  "choices": [
+   "The fall of Babylon",
+   "That which they had not heard",
+   "The glory of Zion",
+   "The face of the Lord"
+  ],
+  "answer": 1,
+  "explanation": "That which had not been told them shall they see; and that which they had not heard shall they consider.",
+  "ref": "Isaiah 52:15"
+ },
+ {
+  "id": "isaiah-52-h-06",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the people know in that day?",
+  "choices": [
+   "That Babylon is fallen",
+   "That the Lord is he that doth speak",
+   "That Cyrus is king",
+   "That the temple is rebuilt"
+  ],
+  "answer": 1,
+  "explanation": "Therefore they shall know in that day that I am he that doth speak: behold, it is I.",
+  "ref": "Isaiah 52:6"
+ },
+ {
+  "id": "isaiah-52-h-07",
+  "chapter": 52,
+  "level": "hard",
+  "category": "keyword",
+  "question": "From what is the captive daughter of Zion told to loose herself?",
+  "choices": [
+   "The chains of her feet",
+   "The bands of her neck",
+   "The walls of her prison",
+   "The yoke of her oxen"
+  ],
+  "answer": 1,
+  "explanation": "Loose thyself from the bands of thy neck, O captive daughter of Zion.",
+  "ref": "Isaiah 52:2"
+ },
+ {
+  "id": "isaiah-52-h-08",
+  "chapter": 52,
+  "level": "hard",
+  "category": "person",
+  "question": "Who were astonied at the servant?",
+  "choices": [
+   "The kings",
+   "Many",
+   "The priests",
+   "The watchmen"
+  ],
+  "answer": 1,
+  "explanation": "As many were astonied at thee; his visage was so marred more than any man.",
+  "ref": "Isaiah 52:14"
+ },
+ {
+  "id": "isaiah-53-e-01",
+  "chapter": 53,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "To what animal is the servant compared when oppressed and silent?",
+  "choices": [
+   "A lion in a pit",
+   "A bird in a snare",
+   "A lamb to the slaughter",
+   "A wild bull in a net"
+  ],
+  "answer": 2,
+  "explanation": "He is brought as a lamb to the slaughter, and as a sheep before her shearers is dumb, so he openeth not his mouth.",
+  "ref": "Isaiah 53:7"
+ },
+ {
+  "id": "isaiah-53-m-01",
+  "chapter": 53,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How does the servant grow up before the Lord?",
+  "choices": [
+   "As a tender plant, a root out of dry ground",
+   "As a mighty cedar in Lebanon",
+   "As a vine planted by waters",
+   "As a branch cut from the oak"
+  ],
+  "answer": 0,
+  "explanation": "He shall grow up before him as a tender plant, and as a root out of a dry ground.",
+  "ref": "Isaiah 53:2"
+ },
+ {
+  "id": "isaiah-53-m-02",
+  "chapter": 53,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How did people esteem the servant?",
+  "choices": [
+   "Stricken, smitten of God and afflicted",
+   "Wise, honoured of kings and blessed",
+   "Strong, a leader and a commander",
+   "Foolish, ignorant and wicked"
+  ],
+  "answer": 0,
+  "explanation": "We did esteem him stricken, smitten of God, and afflicted.",
+  "ref": "Isaiah 53:4"
+ },
+ {
+  "id": "isaiah-53-m-03",
+  "chapter": 53,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What was the servant wounded and bruised for?",
+  "choices": [
+   "Our transgressions and iniquities",
+   "The sins of Babylon",
+   "The idols of Israel",
+   "The pride of the kings"
+  ],
+  "answer": 0,
+  "explanation": "He was wounded for our transgressions, he was bruised for our iniquities.",
+  "ref": "Isaiah 53:5"
+ },
+ {
+  "id": "isaiah-53-m-04",
+  "chapter": 53,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What are we like, who have gone astray?",
+  "choices": [
+   "Sheep",
+   "Birds",
+   "Lambs without a mother",
+   "Wild asses"
+  ],
+  "answer": 0,
+  "explanation": "All we like sheep have gone astray; we have turned every one to his own way.",
+  "ref": "Isaiah 53:6"
+ },
+ {
+  "id": "isaiah-53-m-05",
+  "chapter": 53,
+  "level": "medium",
+  "category": "person",
+  "question": "With whom did the servant make his grave?",
+  "choices": [
+   "The wicked and the rich",
+   "The kings and priests",
+   "The prophets and the poor",
+   "The captives and the strangers"
+  ],
+  "answer": 0,
+  "explanation": "He made his grave with the wicked, and with the rich in his death.",
+  "ref": "Isaiah 53:9"
+ },
+ {
+  "id": "isaiah-53-m-06",
+  "chapter": 53,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What did the servant do for the transgressors?",
+  "choices": [
+   "Made intercession for them",
+   "Led them out of captivity",
+   "Drove them out of the land",
+   "Judged them in the gate"
+  ],
+  "answer": 0,
+  "explanation": "He bare the sin of many, and made intercession for the transgressors.",
+  "ref": "Isaiah 53:12"
+ },
+ {
+  "id": "isaiah-53-h-01",
+  "chapter": 53,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What did people do with their faces from the servant?",
+  "choices": [
+   "Turned them toward him",
+   "Covered them with dust",
+   "Hid them",
+   "Lifted them in prayer"
+  ],
+  "answer": 2,
+  "explanation": "We hid as it were our faces from him; he was despised, and we esteemed him not.",
+  "ref": "Isaiah 53:3"
+ },
+ {
+  "id": "isaiah-53-h-02",
+  "chapter": 53,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does a sheep before her shearers do?",
+  "choices": [
+   "Runs away",
+   "Cries aloud",
+   "Is dumb",
+   "Lies down"
+  ],
+  "answer": 2,
+  "explanation": "As a sheep before her shearers is dumb, so he openeth not his mouth.",
+  "ref": "Isaiah 53:7"
+ },
+ {
+  "id": "isaiah-53-h-03",
+  "chapter": 53,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the servant see after his soul is made an offering for sin?",
+  "choices": [
+   "His enemies fallen",
+   "The temple rebuilt",
+   "His seed",
+   "The nations gathered"
+  ],
+  "answer": 2,
+  "explanation": "When thou shalt make his soul an offering for sin, he shall see his seed, he shall prolong his days.",
+  "ref": "Isaiah 53:10"
+ },
+ {
+  "id": "isaiah-53-h-04",
+  "chapter": 53,
+  "level": "hard",
+  "category": "person",
+  "question": "With whom will the Lord divide the servant a portion?",
+  "choices": [
+   "The kings of the isles",
+   "The priests of Israel",
+   "The great",
+   "The elders of Zion"
+  ],
+  "answer": 2,
+  "explanation": "Therefore will I divide him a portion with the great, and he shall divide the spoil with the strong.",
+  "ref": "Isaiah 53:12"
+ },
+ {
+  "id": "isaiah-53-h-05",
+  "chapter": 53,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why does the Lord give the servant a portion with the great?",
+  "choices": [
+   "He conquered the nations",
+   "He built the Lord's house",
+   "He poured out his soul unto death",
+   "He ruled Israel in righteousness"
+  ],
+  "answer": 2,
+  "explanation": "Because he hath poured out his soul unto death: and he was numbered with the transgressors.",
+  "ref": "Isaiah 53:12"
+ },
+ {
+  "id": "isaiah-53-h-06",
+  "chapter": 53,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the righteous servant do by his knowledge?",
+  "choices": [
+   "Judge the nations",
+   "Rebuild the walls",
+   "Justify many",
+   "Teach the kings"
+  ],
+  "answer": 2,
+  "explanation": "By his knowledge shall my righteous servant justify many; for he shall bear their iniquities.",
+  "ref": "Isaiah 53:11"
+ },
+ {
+  "id": "isaiah-54-e-01",
+  "chapter": 54,
+  "level": "beginner",
+  "category": "person",
+  "question": "What shall the seed of the barren woman inherit?",
+  "choices": [
+   "The land of Egypt",
+   "The cities of Moab",
+   "The throne of David",
+   "The Gentiles"
+  ],
+  "answer": 3,
+  "explanation": "Thy seed shall inherit the Gentiles, and make the desolate cities to be inhabited.",
+  "ref": "Isaiah 54:3"
+ },
+ {
+  "id": "isaiah-54-e-02",
+  "chapter": 54,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "With what will the Lord lay Zion's foundations?",
+  "choices": [
+   "Silver",
+   "Cedar beams",
+   "Hewn stones of Lebanon",
+   "Sapphires"
+  ],
+  "answer": 3,
+  "explanation": "I will lay thy stones with fair colors, and lay thy foundations with sapphires.",
+  "ref": "Isaiah 54:11"
+ },
+ {
+  "id": "isaiah-54-e-03",
+  "chapter": 54,
+  "level": "beginner",
+  "category": "person",
+  "question": "Who shall teach all Zion's children?",
+  "choices": [
+   "The priests",
+   "The prophets",
+   "The elders",
+   "The LORD"
+  ],
+  "answer": 3,
+  "explanation": "All thy children shall be taught of the LORD; and great shall be the peace of thy children.",
+  "ref": "Isaiah 54:13"
+ },
+ {
+  "id": "isaiah-54-e-04",
+  "chapter": 54,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What shall happen to every weapon formed against Zion?",
+  "choices": [
+   "It shall be broken by Cyrus",
+   "It shall be turned on Babylon",
+   "It shall be hidden in the earth",
+   "It shall not prosper"
+  ],
+  "answer": 3,
+  "explanation": "No weapon that is formed against thee shall prosper.",
+  "ref": "Isaiah 54:17"
+ },
+ {
+  "id": "isaiah-54-m-01",
+  "chapter": 54,
+  "level": "medium",
+  "category": "person",
+  "question": "Whose children are more, according to the Lord?",
+  "choices": [
+   "The children of the married wife",
+   "The children of the Gentiles",
+   "The children of the desolate",
+   "The children of the priests"
+  ],
+  "answer": 2,
+  "explanation": "More are the children of the desolate than the children of the married wife, saith the LORD.",
+  "ref": "Isaiah 54:1"
+ },
+ {
+  "id": "isaiah-54-m-02",
+  "chapter": 54,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall Zion forget?",
+  "choices": [
+   "The sins of her fathers",
+   "The days of Egypt",
+   "The shame of her youth",
+   "The sound of Babylon"
+  ],
+  "answer": 2,
+  "explanation": "Thou shalt forget the shame of thy youth, and shalt not remember the reproach of thy widowhood any more.",
+  "ref": "Isaiah 54:4"
+ },
+ {
+  "id": "isaiah-54-m-03",
+  "chapter": 54,
+  "level": "medium",
+  "category": "keyword",
+  "question": "With what will the Lord gather Zion after forsaking her for a small moment?",
+  "choices": [
+   "Great armies",
+   "Great signs",
+   "Great mercies",
+   "Great wealth"
+  ],
+  "answer": 2,
+  "explanation": "For a small moment have I forsaken thee; but with great mercies will I gather thee.",
+  "ref": "Isaiah 54:7"
+ },
+ {
+  "id": "isaiah-54-m-04",
+  "chapter": 54,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the Lord make Zion's windows of?",
+  "choices": [
+   "Cedar",
+   "Silver",
+   "Agates",
+   "Pearls"
+  ],
+  "answer": 2,
+  "explanation": "I will make thy windows of agates, and thy gates of carbuncles, and all thy borders of pleasant stones.",
+  "ref": "Isaiah 54:12"
+ },
+ {
+  "id": "isaiah-54-m-05",
+  "chapter": 54,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How is Zion described before the Lord rebuilds her?",
+  "choices": [
+   "Rich, honoured and at rest",
+   "Strong, armed and fearless",
+   "Afflicted, tossed with tempest, not comforted",
+   "Silent, hidden and forgotten"
+  ],
+  "answer": 2,
+  "explanation": "O thou afflicted, tossed with tempest, and not comforted, behold, I will lay thy stones with fair colors.",
+  "ref": "Isaiah 54:11"
+ },
+ {
+  "id": "isaiah-54-m-06",
+  "chapter": 54,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Lord say about those who gather against Zion?",
+  "choices": [
+   "They shall make peace with her",
+   "They shall serve her",
+   "They shall fall for her sake",
+   "They shall flee to Babylon"
+  ],
+  "answer": 2,
+  "explanation": "Whosoever shall gather together against thee shall fall for thy sake.",
+  "ref": "Isaiah 54:15"
+ },
+ {
+  "id": "isaiah-54-m-07",
+  "chapter": 54,
+  "level": "medium",
+  "category": "person",
+  "question": "Whom has the Lord created to destroy?",
+  "choices": [
+   "The smith",
+   "The watchman",
+   "The waster",
+   "The king"
+  ],
+  "answer": 2,
+  "explanation": "I have created the smith that bloweth the coals in the fire; and I have created the waster to destroy.",
+  "ref": "Isaiah 54:16"
+ },
+ {
+  "id": "isaiah-54-m-08",
+  "chapter": 54,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What shall Zion do to every tongue that rises against her in judgment?",
+  "choices": [
+   "Answer it in silence",
+   "Forgive it",
+   "Condemn it",
+   "Hide from it"
+  ],
+  "answer": 2,
+  "explanation": "Every tongue that shall rise against thee in judgment thou shalt condemn.",
+  "ref": "Isaiah 54:17"
+ },
+ {
+  "id": "isaiah-54-m-09",
+  "chapter": 54,
+  "level": "medium",
+  "category": "keyword",
+  "question": "By what name shall the Lord be called?",
+  "choices": [
+   "The King of Israel",
+   "The Judge of the nations",
+   "The God of the whole earth",
+   "The Shepherd of Jacob"
+  ],
+  "answer": 2,
+  "explanation": "The God of the whole earth shall he be called.",
+  "ref": "Isaiah 54:5"
+ },
+ {
+  "id": "isaiah-54-h-01",
+  "chapter": 54,
+  "level": "hard",
+  "category": "keyword",
+  "question": "How has the Lord called Zion?",
+  "choices": [
+   "As a queen set on a throne",
+   "As a woman forsaken and grieved in spirit",
+   "As a vine planted in a vineyard",
+   "As a widow with children"
+  ],
+  "answer": 1,
+  "explanation": "The LORD hath called thee as a woman forsaken and grieved in spirit, and a wife of youth, when thou wast refused.",
+  "ref": "Isaiah 54:6"
+ },
+ {
+  "id": "isaiah-54-h-02",
+  "chapter": 54,
+  "level": "hard",
+  "category": "place",
+  "question": "What shall depart while the Lord's covenant of peace stays?",
+  "choices": [
+   "The sun and moon",
+   "The mountains and hills",
+   "The nations of the earth",
+   "The waters of the sea"
+  ],
+  "answer": 1,
+  "explanation": "The mountains shall depart, and the hills be removed; but my kindness shall not depart from thee.",
+  "ref": "Isaiah 54:10"
+ },
+ {
+  "id": "isaiah-54-h-03",
+  "chapter": 54,
+  "level": "hard",
+  "category": "keyword",
+  "question": "With what will the Lord lay Zion's stones?",
+  "choices": [
+   "Fine gold",
+   "Fair colors",
+   "Hewn cedar",
+   "Bright silver"
+  ],
+  "answer": 1,
+  "explanation": "I will lay thy stones with fair colors, and lay thy foundations with sapphires.",
+  "ref": "Isaiah 54:11"
+ },
+ {
+  "id": "isaiah-54-h-04",
+  "chapter": 54,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In which directions shall Zion break forth?",
+  "choices": [
+   "North and south",
+   "The right hand and the left",
+   "East and west",
+   "Toward the sea and the land"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt break forth on the right hand and on the left.",
+  "ref": "Isaiah 54:3"
+ },
+ {
+  "id": "isaiah-54-h-05",
+  "chapter": 54,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the seed of Zion make of the desolate cities?",
+  "choices": [
+   "Fortified",
+   "Inhabited",
+   "Peaceful",
+   "Burned"
+  ],
+  "answer": 1,
+  "explanation": "Thy seed shall inherit the Gentiles, and make the desolate cities to be inhabited.",
+  "ref": "Isaiah 54:3"
+ },
+ {
+  "id": "isaiah-54-h-06",
+  "chapter": 54,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is the heritage of the servants of the LORD?",
+  "choices": [
+   "The land of Canaan",
+   "No weapon against them shall prosper",
+   "A throne in Zion",
+   "A name for ever"
+  ],
+  "answer": 1,
+  "explanation": "No weapon that is formed against thee shall prosper. This is the heritage of the servants of the LORD.",
+  "ref": "Isaiah 54:17"
+ },
+ {
+  "id": "isaiah-54-h-07",
+  "chapter": 54,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What is Zion told to stretch forth?",
+  "choices": [
+   "The walls of her city",
+   "The curtains of her habitations",
+   "The gates of her temple",
+   "The banners of her armies"
+  ],
+  "answer": 1,
+  "explanation": "Enlarge the place of thy tent, and let them stretch forth the curtains of thine habitations.",
+  "ref": "Isaiah 54:2"
+ },
+ {
+  "id": "isaiah-54-h-08",
+  "chapter": 54,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall Zion be far from?",
+  "choices": [
+   "Famine and sword",
+   "Oppression and terror",
+   "Sorrow and exile",
+   "Idols and shame"
+  ],
+  "answer": 1,
+  "explanation": "In righteousness shalt thou be established: thou shalt be far from oppression; for thou shalt not fear: and from terror.",
+  "ref": "Isaiah 54:14"
+ },
+ {
+  "id": "isaiah-54-h-09",
+  "chapter": 54,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What reproach shall Zion not remember any more?",
+  "choices": [
+   "The reproach of her captivity",
+   "The reproach of her widowhood",
+   "The reproach of her idols",
+   "The reproach of her kings"
+  ],
+  "answer": 1,
+  "explanation": "Thou shalt not remember the reproach of thy widowhood any more.",
+  "ref": "Isaiah 54:4"
+ },
+ {
+  "id": "isaiah-55-e-01",
+  "chapter": 55,
+  "level": "beginner",
+  "category": "place",
+  "question": "What shall the mountains and hills do before the people who go out?",
+  "choices": [
+   "Break forth into singing",
+   "Be removed",
+   "Bow down",
+   "Fall into the sea"
+  ],
+  "answer": 0,
+  "explanation": "The mountains and the hills shall break forth before you into singing, and all the trees of the field shall clap their hands.",
+  "ref": "Isaiah 55:12"
+ },
+ {
+  "id": "isaiah-55-e-02",
+  "chapter": 55,
+  "level": "beginner",
+  "category": "keyword",
+  "question": "What are the wicked told to do?",
+  "choices": [
+   "Forsake their way and return to the LORD",
+   "Offer a sacrifice at the altar",
+   "Flee to the mountains",
+   "Wait for the king"
+  ],
+  "answer": 0,
+  "explanation": "Let the wicked forsake his way, and the unrighteous man his thoughts: and let him return unto the LORD, and he will have mercy upon him.",
+  "ref": "Isaiah 55:7"
+ },
+ {
+  "id": "isaiah-55-m-01",
+  "chapter": 55,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the Lord say about buying wine and milk?",
+  "choices": [
+   "It costs silver and gold",
+   "It is without money and without price",
+   "It costs a year's labour",
+   "It is for kings only"
+  ],
+  "answer": 1,
+  "explanation": "Come, buy wine and milk without money and without price.",
+  "ref": "Isaiah 55:1"
+ },
+ {
+  "id": "isaiah-55-m-02",
+  "chapter": 55,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the Lord make with those who hear and come to him?",
+  "choices": [
+   "A covenant of salt with Levi",
+   "An everlasting covenant, the sure mercies of David",
+   "A covenant of the rainbow",
+   "A covenant of the law of Moses"
+  ],
+  "answer": 1,
+  "explanation": "I will make an everlasting covenant with you, even the sure mercies of David.",
+  "ref": "Isaiah 55:3"
+ },
+ {
+  "id": "isaiah-55-m-03",
+  "chapter": 55,
+  "level": "medium",
+  "category": "person",
+  "question": "What has the Lord given the people, as a witness?",
+  "choices": [
+   "A prophet and priest",
+   "A leader and commander",
+   "A king and shepherd",
+   "A judge and teacher"
+  ],
+  "answer": 1,
+  "explanation": "Behold, I have given him for a witness to the people, a leader and commander to the people.",
+  "ref": "Isaiah 55:4"
+ },
+ {
+  "id": "isaiah-55-m-04",
+  "chapter": 55,
+  "level": "medium",
+  "category": "keyword",
+  "question": "When are the people told to seek the Lord?",
+  "choices": [
+   "In the morning only",
+   "While he may be found",
+   "At the feast",
+   "When trouble comes"
+  ],
+  "answer": 1,
+  "explanation": "Seek ye the LORD while he may be found, call ye upon him while he is near.",
+  "ref": "Isaiah 55:6"
+ },
+ {
+  "id": "isaiah-55-m-05",
+  "chapter": 55,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What will the Lord do for the one who returns to him?",
+  "choices": [
+   "Make him a king",
+   "Abundantly pardon",
+   "Give him the land",
+   "Remember his sins"
+  ],
+  "answer": 1,
+  "explanation": "Let him return unto the LORD, and he will have mercy upon him; and to our God, for he will abundantly pardon.",
+  "ref": "Isaiah 55:7"
+ },
+ {
+  "id": "isaiah-55-m-06",
+  "chapter": 55,
+  "level": "medium",
+  "category": "keyword",
+  "question": "What does the rain and snow do for the earth?",
+  "choices": [
+   "Washes the land clean",
+   "Waters it, making it bring forth and bud",
+   "Fills the rivers",
+   "Cools the heat of the sun"
+  ],
+  "answer": 1,
+  "explanation": "The rain cometh down, and the snow from heaven, and returneth not thither, but watereth the earth, and maketh it bring forth and bud.",
+  "ref": "Isaiah 55:10"
+ },
+ {
+  "id": "isaiah-55-m-07",
+  "chapter": 55,
+  "level": "medium",
+  "category": "keyword",
+  "question": "How shall the people go out?",
+  "choices": [
+   "In haste and by flight",
+   "With joy and led forth with peace",
+   "In chains and with weeping",
+   "By night and in silence"
+  ],
+  "answer": 1,
+  "explanation": "Ye shall go out with joy, and be led forth with peace.",
+  "ref": "Isaiah 55:12"
+ },
+ {
+  "id": "isaiah-55-h-01",
+  "chapter": 55,
+  "level": "hard",
+  "category": "keyword",
+  "question": "In what is the soul told to delight itself?",
+  "choices": [
+   "Silver",
+   "Wine",
+   "Fatness",
+   "Honey"
+  ],
+  "answer": 2,
+  "explanation": "Eat ye that which is good, and let your soul delight itself in fatness.",
+  "ref": "Isaiah 55:2"
+ },
+ {
+  "id": "isaiah-55-h-02",
+  "chapter": 55,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What does the rain give to the sower and the eater?",
+  "choices": [
+   "Wine to the sower and oil to the eater",
+   "Wool to the sower and meat to the eater",
+   "Seed to the sower and bread to the eater",
+   "Water to the sower and fruit to the eater"
+  ],
+  "answer": 2,
+  "explanation": "That it may give seed to the sower, and bread to the eater.",
+  "ref": "Isaiah 55:10"
+ },
+ {
+  "id": "isaiah-55-h-03",
+  "chapter": 55,
+  "level": "hard",
+  "category": "keyword",
+  "question": "Why will nations that knew not Israel run to her?",
+  "choices": [
+   "Because of her wealth",
+   "Because of her armies",
+   "Because the LORD has glorified her",
+   "Because of her king"
+  ],
+  "answer": 2,
+  "explanation": "Nations that knew not thee shall run unto thee because of the LORD thy God, and for the Holy One of Israel; for he hath glorified thee.",
+  "ref": "Isaiah 55:5"
+ },
+ {
+  "id": "isaiah-55-h-04",
+  "chapter": 55,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the Lord's word accomplish?",
+  "choices": [
+   "All the people's wishes",
+   "The conquest of Babylon",
+   "That which he pleases",
+   "Peace among the nations"
+  ],
+  "answer": 2,
+  "explanation": "It shall not return unto me void, but it shall accomplish that which I please, and it shall prosper in the thing whereto I sent it.",
+  "ref": "Isaiah 55:11"
+ },
+ {
+  "id": "isaiah-55-h-05",
+  "chapter": 55,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What must the unrighteous man forsake?",
+  "choices": [
+   "His riches",
+   "His idols",
+   "His thoughts",
+   "His house"
+  ],
+  "answer": 2,
+  "explanation": "Let the wicked forsake his way, and the unrighteous man his thoughts.",
+  "ref": "Isaiah 55:7"
+ },
+ {
+  "id": "isaiah-55-h-06",
+  "chapter": 55,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall the Lord's new growth be for?",
+  "choices": [
+   "A feast for the nations",
+   "A shelter for the weary",
+   "A name and an everlasting sign",
+   "A wall for Zion"
+  ],
+  "answer": 2,
+  "explanation": "It shall be to the LORD for a name, for an everlasting sign that shall not be cut off.",
+  "ref": "Isaiah 55:13"
+ },
+ {
+  "id": "isaiah-55-h-07",
+  "chapter": 55,
+  "level": "hard",
+  "category": "keyword",
+  "question": "What shall come up instead of the brier?",
+  "choices": [
+   "The cedar tree",
+   "The olive tree",
+   "The myrtle tree",
+   "The palm tree"
+  ],
+  "answer": 2,
+  "explanation": "Instead of the thorn shall come up the fir tree, and instead of the brier shall come up the myrtle tree.",
+  "ref": "Isaiah 55:13"
  }
 ]
